@@ -1,0 +1,57 @@
+<div class="dhx_form_repeat">
+	<form>
+    <div class="dhx_repeat_left">
+               <label><input class="dhx_repeat_radio" type="radio" name="repeat" value="day" />Î—Î¼ÎµÏÎ·ÏƒÎ¯Ï‰Ï‚</label><br />
+               <label><input class="dhx_repeat_radio" type="radio" name="repeat" value="week"/>Î•Î²Î´Î¿Î¼Î±Î´Î¹Î±Î¯Ï‰Ï‚</label><br />
+               <label><input class="dhx_repeat_radio" type="radio" name="repeat" value="month" checked />ÎœÎ·Î½Î¹Î±Î¯Ï‰Ï‚</label><br />
+               <label><input class="dhx_repeat_radio" type="radio" name="repeat" value="year" />Î•Ï„Î·ÏƒÎ¯Ï‰Ï‚</label>
+    </div>
+    <div class="dhx_repeat_divider"></div>
+    <div class="dhx_repeat_center">
+               <div style="display:none;" id="dhx_repeat_day">
+                   <label><input class="dhx_repeat_radio" type="radio" name="day_type" value="d"/>ÎšÎ¬Î¸Îµ</label><input class="dhx_repeat_text" type="text" name="day_count" value="1" />Î·Î¼Î­ÏÎ±<br />
+                   <label><input class="dhx_repeat_radio" type="radio" name="day_type" checked value="w"/>ÎšÎ¬Î¸Îµ ÎµÏÎ³Î¬ÏƒÎ¹Î¼Î·</label>
+               </div>
+               <div style="display:none;" id="dhx_repeat_week">
+                   Î•Ï€Î±Î½Î¬Î»Î·ÏˆÎ· ÎºÎ¬Î¸Îµ<input class="dhx_repeat_text" type="text" name="week_count" value="1" />ÎµÎ²Î´Î¿Î¼Î¬Î´Î± Ï„Î¹Ï‚ ÎµÏ€ÏŒÎ¼ÎµÎ½ÎµÏ‚ Î·Î¼Î­ÏÎµÏ‚:<br />
+
+                   <table class="dhx_repeat_days">
+                       <tr>
+                           <td>
+                               <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day" value="1" />Î”ÎµÏ…Ï„Î­ÏÎ±</label><br />
+                               <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day" value="4" />Î Î­Î¼Ï€Ï„Î·</label>
+                           </td>
+                           <td>
+                               <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day" value="2" />Î¤ÏÎ¯Ï„Î·</label><br />
+                               <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day" value="5" />Î Î±ÏÎ±ÏƒÎºÎµÏ…Î®</label>
+                           </td>
+                           <td>
+                               <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day" value="3" />Î¤ÎµÏ„Î¬ÏÏ„Î·</label><br />
+                               <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day" value="6" />Î£Î¬Î²Î²Î±Ï„Î¿</label>
+                           </td>
+                           <td>
+                               <label><input class="dhx_repeat_checkbox" type="checkbox" name="week_day" value="0" />ÎšÏ…ÏÎ¹Î±ÎºÎ®</label><br /><br />
+                           </td>
+                       </tr>
+                   </table>
+
+               </div>
+               <div id="dhx_repeat_month">
+                   <label><input class="dhx_repeat_radio" type="radio" name="month_type" value="d"/>Î•Ï€Î±Î½Î¬Î»Î·ÏˆÎ·</label><input class="dhx_repeat_text" type="text" name="month_day" value="1" />Î·Î¼Î­ÏÎ± ÎºÎ¬Î¸Îµ<input class="dhx_repeat_text" type="text" name="month_count" value="1" />Î¼Î®Î½Î±<br />
+                   <label><input class="dhx_repeat_radio" type="radio" name="month_type" checked value="w"/>Î¤Î·Î½</label><input class="dhx_repeat_text" type="text" name="month_week2" value="1" /><select name="month_day2"><option value="1" selected >Î”ÎµÏ…Ï„Î­ÏÎ±<option value="2">Î¤ÏÎ¯Ï„Î·<option value="3">Î¤ÎµÏ„Î¬ÏÏ„Î·<option value="4">Î Î­Î¼Ï€Ï„Î·<option value="5">Î Î±ÏÎ±ÏƒÎºÎµÏ…Î®<option value="6">Î£Î¬Î²Î²Î±Ï„Î¿<option value="0">ÎšÏ…ÏÎ¹Î±ÎºÎ®</select>ÎºÎ¬Î¸Îµ<input class="dhx_repeat_text" type="text" name="month_count2" value="1" />Î¼Î®Î½Î±<br />
+               </div>
+               <div style="display:none;" id="dhx_repeat_year">
+                   <label><input class="dhx_repeat_radio" type="radio" name="year_type" value="d"/>ÎšÎ¬Î¸Îµ</label><input class="dhx_repeat_text" type="text" name="year_day" value="1" />Î·Î¼Î­ÏÎ±<select name="year_month"><option value="0" selected >Î™Î±Î½Î¿Ï…Î¬ÏÎ¹Î¿Ï‚<option value="1">Î¦ÎµÎ²ÏÎ¿Ï…Î¬ÏÎ¹Î¿Ï‚<option value="2">ÎœÎ¬ÏÏ„Î¹Î¿Ï‚<option value="3">Î‘Ï€ÏÎ¯Î»Î¹Î¿Ï‚<option value="4">ÎœÎ¬ÏŠÎ¿Ï‚<option value="5">Î™Î¿ÏÎ½Î¹Î¿Ï‚<option value="6">Î™Î¿ÏÎ»Î¹Î¿Ï‚<option value="7">Î‘ÏÎ³Î¿Ï…ÏƒÏ„Î¿Ï‚<option value="8">Î£ÎµÏ€Ï„Î­Î¼Î²ÏÎ¹Î¿Ï‚<option value="9">ÎŸÎºÏ„ÏŽÎ²ÏÎ¹Î¿Ï‚<option value="10">ÎÎ¿Î­Î¼Î²ÏÎ¹Î¿Ï‚<option value="11">Î”ÎµÎºÎ­Î¼Î²ÏÎ¹Î¿Ï‚</select>Î¼Î®Î½Î±<br />
+                   <label><input class="dhx_repeat_radio" type="radio" name="year_type" checked value="w"/>Î¤Î·Î½</label><input class="dhx_repeat_text" type="text" name="year_week2" value="1" /><select name="year_day2"><option value="1" selected >Î”ÎµÏ…Ï„Î­ÏÎ±<option value="2">Î¤ÏÎ¯Ï„Î·<option value="3">Î¤ÎµÏ„Î¬ÏÏ„Î·<option value="4">Î Î­Î¼Ï€Ï„Î·<option value="5">Î Î±ÏÎ±ÏƒÎºÎµÏ…Î®<option value="6">Î£Î¬Î²Î²Î±Ï„Î¿<option value="7">ÎšÏ…ÏÎ¹Î±ÎºÎ®</select>Ï„Î¿Ï…<select name="year_month2"><option value="0" selected >Î™Î±Î½Î¿Ï…Î¬ÏÎ¹Î¿Ï‚<option value="1">Î¦ÎµÎ²ÏÎ¿Ï…Î¬ÏÎ¹Î¿Ï‚<option value="2">ÎœÎ¬ÏÏ„Î¹Î¿Ï‚<option value="3">Î‘Ï€ÏÎ¯Î»Î¹Î¿Ï‚<option value="4">ÎœÎ¬ÏŠÎ¿Ï‚<option value="5">Î™Î¿ÏÎ½Î¹Î¿Ï‚<option value="6">Î™Î¿ÏÎ»Î¹Î¿Ï‚<option value="7">Î‘ÏÎ³Î¿Ï…ÏƒÏ„Î¿Ï‚<option value="8">Î£ÎµÏ€Ï„Î­Î¼Î²ÏÎ¹Î¿Ï‚<option value="9">ÎŸÎºÏ„ÏŽÎ²ÏÎ¹Î¿Ï‚<option value="10">ÎÎ¿Î­Î¼Î²ÏÎ¹Î¿Ï‚<option value="11">Î”ÎµÎºÎ­Î¼Î²ÏÎ¹Î¿Ï‚</select><br />
+               </div>
+    </div>
+    <div class="dhx_repeat_divider"></div>
+    <div class="dhx_repeat_right">
+               <label><input class="dhx_repeat_radio" type="radio" name="end" checked/>Î§Ï‰ÏÎ¯Ï‚ Î·Î¼ÎµÏÎ¿Î¼Î·Î½Î¯Î± Î»Î®Î¾ÎµÏ‰Ï‚</label><br />
+               <label><input class="dhx_repeat_radio" type="radio" name="end" />ÎœÎµÏ„Î¬ Î±Ï€ÏŒ</label><input class="dhx_repeat_text" type="text" name="occurences_count" value="1" />ÎµÏ€Î±Î½Î±Î»Î®ÏˆÎµÎ¹Ï‚<br />
+               <label><input class="dhx_repeat_radio" type="radio" name="end" />Î›Î®Î³ÎµÎ¹ Ï„Î·Î½</label><input class="dhx_repeat_date" type="text" name="date_of_end" value="'+scheduler.config.repeat_date_of_end+'" /><br />
+    </div>
+    </form>
+ </div>
+ <div style="clear:both">
+ </div>
