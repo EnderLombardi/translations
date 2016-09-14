@@ -12,7 +12,7 @@ airbus.mes.stationtracker.ModelManager = {
 				
 			core.setModel(new sap.ui.model.json.JSONModel(),"stationTrackerModel");
 						
-			core.getModel("stationTrackerModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.fnOnStationTrackerLoad);
+			core.getModel("stationTrackerModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onStationTrackerLoad);
 			
 			var dest;
 
@@ -44,12 +44,12 @@ airbus.mes.stationtracker.ModelManager = {
 						
 		},
 				
-		fnLoadStationTracker : function() {
+		loadStationTracker : function() {
 			var oViewModel = sap.ui.getCore().getModel("stationTrackerModel");
 			oViewModel.loadData(this.urlModel.getProperty("urlstationtracker"), null, false);
 		},	
 		
-		fnOnStationTrackerLoad : function() {
+		onStationTrackerLoad : function() {
 			
 			var oModel = sap.ui.getCore().getModel("stationTrackerModel").oData.Rowsets.Rowset[0].Row;
 			 elements = [ // original hierarhical array to display
@@ -75,34 +75,13 @@ airbus.mes.stationtracker.ModelManager = {
 	                         ]},
 	           ];
 	    
-//	     if (showInitial) {
-//	                   
-//	            elements[0].children.unshift({"key":"I1", "initial":"Initial plan", });
-//	            elements[1].children.unshift({"key":"I2", "initial":"Initial plan", });
-//	            elements[2].children.unshift({"key":"I3", "initial":"Initial plan", });
-//	            elements[3].children.unshift({"key":"I4", "initial":"Initial plan", });
-//	            
-//	     }
-	          scheduler.createTimelineView({
-	                section_autoheight: false,
-	                name:  "timeline",
-	                x_unit:      "minute",
-	                x_date:      "%H:%i",
-	                x_step:      120,
-	                x_size: 6,
-	                x_start: 3,
-	                x_length:    12,
-	                y_unit:      elements,
-	                y_property:  "section_id",
-	                render:"tree",
-	                folder_dy: 50,
-	                dy: 30,
-	                
-	         });
+			
 
-	     scheduler.config.update_render = true;
+		 scheduler.matrix['timeline'].y_unit_original = elements;
+		 scheduler.callEvent("onOptionsLoad", []);
+		 
 	     scheduler.init(sap.ui.getCore().byId("stationTrackerView").getId() + "--test" ,  new Date(2014,5,30),"timeline");
-	     scheduler.clearAll();
+	     //scheduler.clearAll();
 	     scheduler.parse([
 	                       
 	{ start_date: "2014-06-30 09:00", end_date: "2014-06-30 12:00", text:"Task A-12458", section_id:"I1" , type:"I" , progress:50, text:"WO1 OP30",},
@@ -145,7 +124,7 @@ airbus.mes.stationtracker.ModelManager = {
 	     { start_date: "2014-06-30 11:40", end_date: "2014-06-30 16:30", text:"Task D-46588",  section_id:"A2" , type:"R" , progress:50, text:"WO1 OP30",},
 	     { start_date: "2014-06-30 12:00", end_date: "2014-06-30 18:00", text:"Task D-12458",  section_id:"A3" , type:"R" , progress:50, text:"WO1 OP30",}
 	                  ],"json");
-	     scheduler.updateView();
+	     
 			
 		},
 		

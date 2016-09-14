@@ -25,7 +25,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 */
 	onAfterRendering: function() {
 
-		airbus.mes.stationtracker.ModelManager.fnLoadStationTracker();
+		airbus.mes.stationtracker.ModelManager.loadStationTracker();
 		
 	},
 
@@ -36,5 +36,20 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 //	onExit: function() {
 //
 //	}
-
+	 spaceInsecable : function(sText){
+		 
+	    var sTextF="";
+	    var aText=sText.split(new RegExp("[ ]+", "g"));    // Récupère tous les mots dans un tableau : texte_decoup
+	 
+	    for (var i=0; i<aText.length; i++)
+	    {
+	        sTextF += aText[i] + "&nbsp;";  // le + " " NE FONCTIONNE PAS. IDEM AVEC String.fromCharCode(32) 
+	      
+	    }
+	    
+	    return sTextF;
+	}
+	
+	
+	
 });
