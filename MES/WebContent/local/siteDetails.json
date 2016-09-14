@@ -1,0 +1,17 @@
+{ "Rowsets" : { 
+        "DateCreated" : "2016-09-08T17:31:05", "Version" : "15.1 SP2 Patch 5 (Jul 20, 2016)", "StartDate" : "2016-09-08T16:31:05+0200", "EndDate" : "2016-09-08T17:31:05+0200", "CachedTime" : "", 
+        "Rowset" : [ 
+        { "Columns" : { 
+               "Column" : [ 
+               { "Name" : "site", "SourceColumn" : "site", "Description" : "Site Name", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+               { "Name" : "site_desc", "SourceColumn" : "site_desc", "Description" : "Site Description", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+               { "Name" : "time_zone", "SourceColumn" : "time_zone", "Description" : "Time Zone", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 } ] }, 
+        "Row" : [ 
+               { "site" : "*", "site_desc" : "Global Site", "time_zone" : "Europe/Paris" }, 
+               { "site" : "TEST", "site_desc" : "Test Site", "time_zone" : "Europe/Paris" }, 
+               { "site" : "FNZ1", "site_desc" : "Saint Nazaire", "time_zone" : "Europe/Paris" }, 
+               { "site" : "CHES", "site_desc" : "Chester", "time_zone" : "Europe/London" } ]
+               } ]
+        }
+}
+
