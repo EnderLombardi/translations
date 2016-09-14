@@ -126,7 +126,7 @@ ModelManager = {
 			});
 
 		
-			scheduler.init(sap.ui.getCore().byId("stationTrackerView").getId() + "--test");
+			scheduler.init(sap.ui.getCore().byId("stationTrackerView").getId() + "--test" ,  new Date("2016-07-07"), "timeline");
 			scheduler.clearAll();
 			scheduler.parse(jsonData, "json");
 			scheduler.xy.scroll_width = 20;

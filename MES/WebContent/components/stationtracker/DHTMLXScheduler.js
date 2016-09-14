@@ -4,7 +4,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",{
 
 						oRm.write("<div ");
 						oRm.writeControlData(oControl);
-						oRm.write(" class='dhx_cal_container'  style='width:100%; height:100%;'>");
+						oRm.write(" class='dhx_cal_container'  style='width:100%; height:950px;'>");
 						oRm.write("	<div class='dhx_cal_navline'>");
 						oRm.write("		<div class='dhx_cal_prev_button'></div>");
 						oRm.write("	 	<div class='dhx_cal_next_button'></div>");
@@ -19,7 +19,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",{
 						scheduler.xy.scale_height = 20;
 						scheduler.locale.labels.timeline_tab = "Timeline";
 						scheduler.locale.labels.section_custom = "Section";
-						scheduler.config.xml_date = "config.xml_date";
+						scheduler.config.xml_date = "%Y-%m-%d %H:%i";
 						scheduler.config.markedCells = 0;
 						scheduler.config.mark_now = true;
 						scheduler.config.drag_create = false;
