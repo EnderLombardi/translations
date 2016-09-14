@@ -1,5 +1,6 @@
 //"use strict";
-ModelManager = {
+jQuery.sap.declare("airbus.mes.stationtracker.ModelManager")
+airbus.mes.stationtracker.ModelManager = {
 		urlModel : undefined,
 		queryParams : jQuery.sap.getUriParameters(),
 		
@@ -11,7 +12,7 @@ ModelManager = {
 				
 			core.setModel(new sap.ui.model.json.JSONModel(),"stationTrackerModel");
 						
-			core.getModel("stationTrackerModel").attachRequestCompleted(ModelManager.fnOnStationTrackerLoad);
+			core.getModel("stationTrackerModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.fnOnStationTrackerLoad);
 			
 			var dest;
 
@@ -51,88 +52,102 @@ ModelManager = {
 		fnOnStationTrackerLoad : function() {
 			
 			var oModel = sap.ui.getCore().getModel("stationTrackerModel").oData.Rowsets.Rowset[0].Row;
-			var jsonData = [];
-			var elements = [];
-			
-			
-			for (var index = 0; index < oModel.length; ++index) {
+			 elements = [ // original hierarhical array to display
+	                        {key:10, label:"FUEL ACTIVITIES", open: true, children: [
+	                        {key:"F1" , name:"Jae J.", subname:"JJ", hours:'6.0hs'},
+	                        {key:"F2", name:"Mark K.", subname:"MK", hours:'4.0hs'},
+	                        {key:"F3", name:"Steve S.", subname:"SS", hours:'3.0hs'},
+	                        ]},
+	                         {key:105, label:"ELEC ACTIVITIES", open:true, children: [
+	                         {key:"E1", name:"Jae J.", subname:"JJ", hours:'6.0hs'},
+	                         {key:"E2", name:"Mark K.", subname:"MK", hours:'4.0hs'},
+	                         {key:"E3", name:"Steve S.", subname:"SS", hours:'3.0hs'},                                                    
+	                         ]},
+	                         {key:115, label:"MEC ACTIVITIES", open:true, children: [
+	                         {key:"M1", name:"Jae J.", subname:"JJ", hours:'6.0hs'},
+	                         {key:"M2", name:"Mark K.", subname:"MK", hours:'4.0hs'},
+	                         {key:"M3", name:"Steve S.", subname:"SS", hours:'3.0hs'},
+	                         ]},
+	                         {key:120, label:"FLY ACTIVITIES", open:true, children: [
+	                         {key:"A1", name:"Jae J.", subname:"JJ", hours:'6.0hs'},
+	                         {key:"A2", name:"Mark K.", subname:"MK", hours:'4.0hs'},
+	                         {key:"A3", name:"Steve S.", subname:"SS", hours:'3.0hs'},
+	                         ]},
+	           ];
+	    
+//	     if (showInitial) {
+//	                   
+//	            elements[0].children.unshift({"key":"I1", "initial":"Initial plan", });
+//	            elements[1].children.unshift({"key":"I2", "initial":"Initial plan", });
+//	            elements[2].children.unshift({"key":"I3", "initial":"Initial plan", });
+//	            elements[3].children.unshift({"key":"I4", "initial":"Initial plan", });
+//	            
+//	     }
+	          scheduler.createTimelineView({
+	                section_autoheight: false,
+	                name:  "timeline",
+	                x_unit:      "minute",
+	                x_date:      "%H:%i",
+	                x_step:      120,
+	                x_size: 6,
+	                x_start: 3,
+	                x_length:    12,
+	                y_unit:      elements,
+	                y_property:  "section_id",
+	                render:"tree",
+	                folder_dy: 50,
+	                dy: 30,
+	                
+	         });
 
-				// Add something to the beginning of the id in
-				// case the ID is empty
-				var section = oModel[index].groupId;
-				//var subsection = "_sub_" + bindArray[index].mProperties.subsection_id;
-																
-				if (elements.some(function(el) {
-					return el.key ===  section + oModel[index].schedType
-				})) {
-				} else {
+	     scheduler.config.update_render = true;
+	     scheduler.init(sap.ui.getCore().byId("stationTrackerView").getId() + "--test" ,  new Date(2014,5,30),"timeline");
+	     scheduler.clearAll();
+	     scheduler.parse([
+	                       
+	{ start_date: "2014-06-30 09:00", end_date: "2014-06-30 12:00", text:"Task A-12458", section_id:"I1" , type:"I" , progress:50, text:"WO1 OP30",},
+	{ start_date: "2014-06-30 12:00", end_date: "2014-06-30 14:00", text:"Task A-89411", section_id:"I1" , type:"I" , available : "ok",},
+	{ start_date: "2014-06-30 10:00", end_date: "2014-06-30 14:00", text:"Task A-64168",  section_id:"I1" , type:"I" , progress:50, text:"WO1 OP30",},
+	{ start_date: "2014-06-30 16:00", end_date: "2014-06-30 17:00", text:"Task A-46598",  section_id:"I1" , type:"I" , progress:50, text:"WO1 OP30", },
 
-					elements.push({
-						"key" : section + 'I',
-						"label" : oModel[index].schedType
-			
-					}); //
+	                       
+	                       
+	     { start_date: "2014-06-30 09:00", end_date: "2014-06-30 12:00", text:"Task A-12458", section_id:"F1" , type:"R" , progress:50, text:"WO1 OP30",},
+	     { start_date: "2014-06-30 12:00", end_date: "2014-06-30 14:00", text:"Task A-89411", section_id:"F2" , type:"R" , available : "ok",},
+	     { start_date: "2014-06-30 10:00", end_date: "2014-06-30 14:00", text:"Task A-64168",  section_id:"F3" , type:"R" , progress:50, text:"WO1 OP30",},
+	     { start_date: "2014-06-30 16:00", end_date: "2014-06-30 17:00", text:"Task A-46598",  section_id:"F1" , type:"R" , progress:50, text:"WO1 OP40", },
+	     
 
-					elements.push({
-						"key" : section + 'R',
-						"label" : ''
-					});
+	     { start_date: "2014-06-30 12:00", end_date: "2014-06-30 20:00", text:"Task B-48865",  section_id:"I2" , type:"I" , progress:50, text:"WO1 OP30",},
+	     { start_date: "2014-06-30 14:00", end_date: "2014-06-30 16:00", text:"Task B-44864",  section_id:"I2" , type:"I" , progress:50, text:"WO1 OP30",},
+	     { start_date: "2014-06-30 16:30", end_date: "2014-06-30 18:00", text:"Task B-46558",  section_id:"I2" , type:"I" , progress:50, text:"WO1 OP30",},
+	     { start_date: "2014-06-30 18:30", end_date: "2014-06-30 20:00", text:"Task B-45564",  section_id:"I2" , type:"I" , progress:50, text:"WO1 OP30",},
+	     
+	     
+	     { start_date: "2014-06-30 12:00", end_date: "2014-06-30 20:00", text:"Task B-48865",  section_id:"E1" , type:"R" , progress:50, text:"WO1 OP30",},
+	     { start_date: "2014-06-30 14:00", end_date: "2014-06-30 16:00", text:"Task B-44864",  section_id:"E2" , type:"R" , progress:50, text:"WO1 OP30",},
+	     { start_date: "2014-06-30 16:30", end_date: "2014-06-30 18:00", text:"Task B-46558",  section_id:"E3" , type:"R" , progress:50, text:"WO1 OP30",},
+	     { start_date: "2014-06-30 18:30", end_date: "2014-06-30 20:00", text:"Task B-45564",  section_id:"E3" , type:"R" , progress:50, text:"WO1 OP30",},
+	     
+	     
+	     { start_date: "2014-06-30 08:00", end_date: "2014-06-30 12:00", text:"Task C-32421",  section_id:"I3" , type:"I" , progress:50, text:"WO1 OP30",},
+	     { start_date: "2014-06-30 14:30", end_date: "2014-06-30 16:45", text:"Task C-14244",  section_id:"I3" , type:"I" , progress:50, text:"WO1 OP30",},
+	     
+	     { start_date: "2014-06-30 08:00", end_date: "2014-06-30 12:00", text:"Task C-32421",  section_id:"M1" , type:"R" , progress:50, text:"WO1 OP30",},
+	     { start_date: "2014-06-30 14:30", end_date: "2014-06-30 16:45", text:"Task C-14244",  section_id:"M2" , type:"R" , progress:50, text:"WO1 OP30",},
+	     
 
-				}
-
-			}
-			
-			
-			for ( index = 0; index < oModel.length; ++index) {
-
-				if(oModel[index].start != "---"){
-				
-					jsonData.push({
-
-						"start_date" : oModel[index].start,
-						"end_date" : oModel[index].end,
-						"section_id" : oModel[index].groupId + oModel[index].schedType,
-						"text" : oModel[index].boxId,
-						"progress" : oModel[index].progress,
-						"desc" : oModel[index].boxId + "[" + oModel[index].progress + "%]",
-						color : oModel[index].schedType === 'I' ? "#b7b7b7" :"#8dd1e0",
-						readonly : oModel[index].schedType === 'I' ? true : false,
-						
-					});
-
-				}
-			}
-
-			// ==========
-			// Initialize
-			// ==========
-
-			scheduler.createTimelineView({
-				name : "timeline",
-				render : "bar",
-				x_unit : "minute",
-				x_date : "%H:%i",
-				x_step : 30,
-				x_size : 18,
-				x_start : 0,
-				x_length : 18,
-				second_scale : {
-					x_unit : "day",
-					x_date : "%F %d"
-				},
-				y_unit : elements,
-				y_property : "section_id",
-			
-			});
-
-		
-			scheduler.init(sap.ui.getCore().byId("stationTrackerView").getId() + "--test" ,  new Date("2016-07-07"), "timeline");
-			scheduler.clearAll();
-			scheduler.parse(jsonData, "json");
-			scheduler.xy.scroll_width = 20;
-			scheduler.updateView();
+	     { start_date: "2014-06-30 09:20", end_date: "2014-06-30 12:20", text:"Task D-52688",  section_id:"I4" , type:"I" , progress:50, text:"WO1 OP30",},
+	     { start_date: "2014-06-30 11:40", end_date: "2014-06-30 16:30", text:"Task D-46588",  section_id:"I4" , type:"I" , progress:50, text:"WO1 OP30",},
+	     { start_date: "2014-06-30 12:00", end_date: "2014-06-30 18:00", text:"Task D-12458",  section_id:"I4" , type:"I" , progress:50, text:"WO1 OP30",},
+	     
+	     { start_date: "2014-06-30 09:20", end_date: "2014-06-30 12:20", text:"Task D-52688",  section_id:"A1" , type:"R" , progress:50, text:"WO1 OP30",},
+	     { start_date: "2014-06-30 11:40", end_date: "2014-06-30 16:30", text:"Task D-46588",  section_id:"A2" , type:"R" , progress:50, text:"WO1 OP30",},
+	     { start_date: "2014-06-30 12:00", end_date: "2014-06-30 18:00", text:"Task D-12458",  section_id:"A3" , type:"R" , progress:50, text:"WO1 OP30",}
+	                  ],"json");
+	     scheduler.updateView();
 			
 		},
 		
 }
-ModelManager.init(sap.ui.getCore());
+airbus.mes.stationtracker.ModelManager.init(sap.ui.getCore());

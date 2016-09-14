@@ -1,0 +1,192 @@
+.ylabel:hover .tooltip {
+    visibility: visible;
+}
+.tooltip{
+        visibility: hidden;
+    position: absolute;
+    width: 120px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    z-index: 1;
+    bottom: 115%;
+    left: 50%;
+    margin-left: -60px;
+}
+
+/* .dhx_cal_event_line {
+    padding-left: 0px !important;
+} */
+.dhx_scell_expand {
+       display: inline-block;
+       font: normal normal normal 14px/1 FontAwesome;
+       font-size: inherit;
+       text-rendering: auto;
+       -webkit-font-smoothing: antialiased;
+       -moz-osx-font-smoothing: grayscale;
+       }
+
+
+.ylabelfolder{
+                           position:relative;
+                           width: 120px;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.dhx_scell_name{
+padding-left : 0px !important;
+}
+.dhx_matrix_scell.folder {
+background-color : white;
+}
+.dhx_matrix_scell.folder .dhx_scell_name{
+width : 100%;
+}
+.otherStations{
+background-color: #515456;
+}
+
+.fa-chevron-right.custom{
+float: left;
+padding-left: 10px;
+}
+
+.fa-chevron-down.custom{
+float: left;
+padding-left: 10px;
+}
+
+.fa-user-plus.custom{
+font-size: 1.5em;
+float: right;
+padding-right: 10px;
+}
+.fa-user-plus:hover {
+       color: blue;
+       font-size: 1.7em
+}
+
+.Blue {
+       background-color: #006CA7 !important;
+       z-index: 1 !important;
+}
+
+.white {
+       background-color: white !important;
+}
+
+.whiteButton .sapMBtnIcon {
+       color: white !important;
+}
+.whiteTextButton .sapMBtnTransparent {
+       color: white !important;
+
+}
+.blackTextButton .sapMBtnTransparent {
+       color: black !important;
+       text-align: left;
+    padding-left: 12.5%;
+}
+.blackTextButton2 .sapMBtn{
+    border-bottom-style: inset;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+.whiteColor .sapMBtnInner.sapMBtnText {
+       color: white !important;
+       font-family: "Arial", Sans-serif !important;
+       font-size: 14px !important;
+}
+.alignTextLeft .sapMIBar-CTX .sapMTitle{
+      font-family: "Verdana";
+    font-weight: bold !important;
+     padding-right: 75%;
+} 
+.hachure {
+       background-image: url(../img/fat_lines.png);
+}
+.panelContent .sapMPanelContent{
+padding : 0rem;
+background-color : #CCE6EE;
+}
+.panelContentList .sapMListBGSolid .sapMLIB{
+background-color : #CCE6EE;
+}
+.initial {
+       background-color: #F5F6F8 !important;
+}
+
+.pageHeaderBlue .sapMSltLabel {
+       color: white !important;
+}
+
+.pageHeader {
+       color: white !important;
+       background: #0085AD !important;
+}
+
+.pageStation {
+       background: #006CA7 !important;
+}
+
+.pageTitle {
+       color: white !important;
+       font-family: "Arial", Sans-serif !important;
+       font-size: 24px !important;
+}
+
+.pageWelcome {
+       color: white !important;
+       font-family: "Arial", Sans-serif !important;
+       font-size: 14px !important;
+}
+.stationTitle {
+       color: #006CA7 !important;
+       font-family: "Arial", Sans-serif !important;
+       font-size: 24px !important;
+}
+
+.stationWelcome {
+       color: #006CA7 !important;
+       font-family: "Arial", Sans-serif !important;
+       font-size: 14px !important;
+}
+
+.pageUsername {
+       color: white !important;
+       font-family: "Arial", Sans-serif !important;
+       font-size: 14px !important;
+}
+
+.kpiValue {
+       font-size: 24px !important;
+}
+
+.green {
+       color: #6B8E23 !important;
+}
+
+.red {
+       color: red !important;
+}
+
+.rond {
+       color: white;
+       display: inline-table;;
+       width: 20px !important;
+       height: 20px !important;
+       background: #3498db;
+       -webkit-border-radius: 100px;
+       -moz-border-radius: 100px;
+       -o-border-radius: 100px;
+       border-radius: 100px;
+       float: left !important;
+}
+
+.dhx_row_folder {
+       height: 20px ! important;
+}

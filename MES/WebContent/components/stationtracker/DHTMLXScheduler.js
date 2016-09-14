@@ -9,17 +9,17 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",{
 						oRm.write("		<div class='dhx_cal_prev_button'></div>");
 						oRm.write("	 	<div class='dhx_cal_next_button'></div>");
 						oRm.write("		<div class='dhx_cal_today_button'></div>");
-						oRm.write("		<div class='dhx_cal_date'></div>");
+						oRm.write("		<div class='dhx_cal_date' Style='font-weight:bold; text-align:left; padding-left: 1.5%'></div>");
 						oRm.write("	</div>");
-						oRm.write("	<div class='dhx_cal_header'></div>");
+						oRm.write("	<div class='dhx_cal_header' Style='text-align:left;'></div>");
 						oRm.write("	<div class='dhx_cal_data'></div>");
 						oRm.write("</div>");
-						
+					
 						
 						scheduler.xy.scale_height = 20;
 						scheduler.locale.labels.timeline_tab = "Timeline";
 						scheduler.locale.labels.section_custom = "Section";
-						scheduler.config.xml_date = "%Y-%m-%d %H:%i";
+						scheduler.config.xml_date="%Y-%m-%d %H:%i";
 						scheduler.config.markedCells = 0;
 						scheduler.config.mark_now = true;
 						scheduler.config.drag_create = false;

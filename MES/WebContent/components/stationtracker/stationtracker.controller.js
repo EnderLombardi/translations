@@ -25,7 +25,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 */
 	onAfterRendering: function() {
 
-		ModelManager.fnLoadStationTracker();
+		airbus.mes.stationtracker.ModelManager.fnLoadStationTracker();
 		
 	},
 
