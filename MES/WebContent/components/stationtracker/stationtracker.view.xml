@@ -1,0 +1,31 @@
+<core:View xmlns:core="sap.ui.core" xmlns="sap.m" controllerName="components.stationtracker.stationtracker"	xmlns:html="http://www.w3.org/1999/xhtml"
+	 xmlns:custom="components.stationtracker">
+	<Page title="Station Tracker" showHeader="false" enableScrolling="false">
+		<customHeader>
+			<Toolbar>
+				<Button icon="sap-icon://nav-back" press="onMainScreen" />
+			</Toolbar>
+		</customHeader>
+		<content>
+			<Toolbar design="Solid">
+				<content>
+					<Label text="WA" design="sap.m.LabelDesign.Bold"></Label>
+					<Button text="70%" type="Emphasized"></Button>
+					<ToolbarSpacer></ToolbarSpacer>
+					<Label text="QA" design="sap.m.LabelDesign.Bold"></Label>
+					<Button text="70%" type="Emphasized"></Button>
+					<ToolbarSpacer></ToolbarSpacer>
+					<ProgressIndicator displayValue="70%"
+						percentValue="70" state="sap.ui.core.ValueState.Success" width="20rem"></ProgressIndicator>
+					<ToolbarSpacer></ToolbarSpacer>
+					<Label text="Time Remaining To Takt" design="sap.m.LabelDesign.Bold"></Label>
+					<Button text="10 H" type="Emphasized"></Button>
+					<ToolbarSpacer></ToolbarSpacer>
+					<Label text="Takt Time" design="sap.m.LabelDesign.Bold"></Label>
+					<Button text="15 H" type="Emphasized"></Button>
+				</content>
+			</Toolbar>
+			<custom:DHTMLXScheduler id="test"></custom:DHTMLXScheduler>
+		</content>
+	</Page>
+</core:View>
