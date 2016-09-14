@@ -10,34 +10,23 @@
 				data-sap-ui-theme="sap_bluecrystal">
 		</script>
 		<!-- only load the mobile lib "sap.m" and the "sap_bluecrystal" theme -->
-		<link rel="stylesheet" href="../components/css/SettingScreen.css" type="text/css">
-		<script type="text/javascript" src="../components/settingscreen/ModelManager.js"></script>
+		
 		<script>
-/* 				 sap.ui.localResources("../../components/SettingScreen"); 
-				var app = new sap.m.App({initialPage:"idPlantDataFilter"});
-				var page = sap.ui.view({id:"idPlantDataFilter", viewName:"components.SettingScreen.FilterPlantData", type:sap.ui.core.mvc.ViewType.XML});
-				app.addPage(page);
-				app.placeAt("content"); */
 				
-			 	jQuery.sap.registerModulePath("airbus.mes.settingscreen","/MES/components/settingscreen");
+			 	jQuery.sap.registerModulePath("airbus.mes.settings","/MES/components/settings");
 
 				//Create a component
 				var oComp = sap.ui.getCore().createComponent({
-					name : "airbus.mes.settingscreen", // root component folder is resources
-					id : "Comp",
-/* 					settings : {
-						idButton : "velo",
-						textButton : "Hello World"
-					} */
+					name : "airbus.mes.settings", // root component folder is resources
 				});
-				
 
-				ModelManager.init(oComp);
+				airbus.mes.settings.ModelManager.init(oComp);
 
 				// Create a Ui container 
-				var oCompCont = new sap.ui.core.ComponentContainer("CompCont", {
+				var oCompCont = new sap.ui.core.ComponentContainer("settings", {
 					component : oComp
 				});
+								
 				// place this Ui Container with the Component inside into UI Area 
 				oCompCont.placeAt("content");				
 				

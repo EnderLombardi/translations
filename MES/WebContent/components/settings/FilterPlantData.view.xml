@@ -1,10 +1,10 @@
 <core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
 	xmlns:f="sap.ui.layout.form" xmlns="sap.m" xmlns:l="sap.ui.layout"
-	controllerName="airbus.mes.settingscreen.FilterPlantData" xmlns:html="http://www.w3.org/1999/xhtml">
-	<Page class="GenricBgColor" title="MES" height="900px">
+	controllerName="airbus.mes.settings.FilterPlantData" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page class="GenricBgColor" title="MES" enableScrolling="false">
 		<customHeader>
 			<Toolbar>
-				<Image src="/components/images/Airbus.png" height="2.0REM" />
+				<Image src="/MES/images/Airbus.png" height="2.0REM" />
 				<ToolbarSpacer />
 				<Title id="customHeaderTitle" titleStyle="H3" text="MES" />
 				<ToolbarSpacer />
@@ -55,7 +55,7 @@
 									<f:FormElement label="Plant">
 										<f:fields>
 											<ComboBox items="{siteModel>/Rowsets/Rowset/0/Row}"
-												selectionChange="ModelManager.loadPlantModel">
+												selectionChange="airbus.mes.settings.ModelManager.loadPlantModel">
 												<items>
 													<core:Item key="key1" text="{siteModel>site}">
 													</core:Item>
