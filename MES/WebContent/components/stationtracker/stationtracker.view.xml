@@ -36,7 +36,7 @@
              <content>
                     <suite:HeaderContainer showDividers="false">
                     <suite:items>
-                    <suite:HeaderCell height="auto">
+                    <suite:HeaderCell>
                  <suite:north>  
                                   <suite:HeaderCellItem>
                                         <suite:content>
@@ -194,8 +194,8 @@
                            <core:Item text="Competency" />
                            </Select>
                            <ToolbarSpacer />
-                           <Button text="show CP" type="Transparent" icon="sap-icon://popup-window" class="sapUiTinyMarginBeginEnd" press="onCPPress"></Button>
-                           <Button text="show initial plan" type="Transparent" icon="sap-icon://popup-window" class="sapUiTinyMarginBeginEnd" press="onInitialPlanPress"></Button>
+                           <Button text="show CP" type="Transparent" icon="sap-icon://ppt-attachment" class="sapUiTinyMarginBeginEnd" press="onCPPress"></Button>
+                           <Button text="show initial plan" type="Transparent" icon="sap-icon://ppt-attachment" class="sapUiTinyMarginBeginEnd" press="onInitialPlanPress"></Button>
                            <SegmentedButton >
                            <!-- <layout:layoutData>
                                   <ObjectPageHeaderLayoutData/>

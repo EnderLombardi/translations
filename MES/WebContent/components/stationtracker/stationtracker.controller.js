@@ -28,6 +28,19 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		airbus.mes.stationtracker.ModelManager.fnLoadStationTracker();
 		
 	},
+	
+	onTeamPress :function(oEvent){
+		
+		 var bindingContext = oEvent.getSource().getBindingContext();			 
+		 // open team popover fragment		 
+		if (! this._oPopover) {
+			this._oPopover = sap.ui.xmlfragment("airbus.mes.stationtracker.teamPopover", this);
+			this._oPopover.addStyleClass("alignTextLeft");
+			this.getView().addDependent(this._oPopover);
+		}
+		this._oPopover.openBy(oEvent.getSource());							
+
+	}
 
 /**
 * Called when the Controller is destroyed. Use this one to free resources and finalize activities.
