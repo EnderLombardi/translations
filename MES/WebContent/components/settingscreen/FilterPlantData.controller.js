@@ -1,4 +1,4 @@
-sap.ui.controller("components.SettingScreen.FilterPlantData",
+sap.ui.controller("airbus.mes.settingscreen.FilterPlantData",
 		{
 
 			/**
@@ -149,7 +149,7 @@ sap.ui.controller("components.SettingScreen.FilterPlantData",
 			 * @memberOf application2.initialview
 			 */
 			onAfterRendering : function() {
-				this.filterField(this.selectTree);
+//				this.filterField(this.selectTree);
 			},
 			
 			

@@ -3,9 +3,11 @@
 var ModelManager = {
 	site : undefined,
 	queryParams : jQuery.sap.getUriParameters(),
-
+	core : undefined,
 	init : function(core) {
-
+		
+		this.core = core;
+		
 		core.setModel(new sap.ui.model.json.JSONModel(), "plantModel");
 		core.setModel(new sap.ui.model.json.JSONModel(), "siteModel");
 
@@ -28,10 +30,11 @@ var ModelManager = {
 		}
 
 		this.urlModel = new sap.ui.model.resource.ResourceModel({
-			bundleUrl : "config/url_config.properties",
+			bundleUrl : "/MES/components/settingscreen/config/url_config.properties",
 			bundleLocale : dest
 		});
 		ModelManager.loadsiteModel();
+		ModelManager.loadPlantModel();
 
 	},
 	// ************************************************************************************
@@ -41,7 +44,7 @@ var ModelManager = {
 	},
 
 	loadsiteModel : function() {
-		var oViewModel = sap.ui.getCore().getModel("siteModel");
+		var oViewModel = this.core.getModel("siteModel");
 		oViewModel.loadData(ModelManager.getUrlSite(), null, false);
 	},
 
@@ -52,9 +55,8 @@ var ModelManager = {
 	},
 
 	loadPlantModel : function() {
-		var oViewModel = sap.ui.getCore().getModel("plantModel");
+		var oViewModel = this.core.getModel("plantModel");
 		oViewModel.loadData(ModelManager.getUrlPlant(), null, false);
 	},
 
 };
-ModelManager.init(sap.ui.getCore());

@@ -1,7 +1,7 @@
 <core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
 	xmlns:f="sap.ui.layout.form" xmlns="sap.m" xmlns:l="sap.ui.layout"
-	controllerName="components.SettingScreen.FilterPlantData" xmlns:html="http://www.w3.org/1999/xhtml">
-	<Page class="GenricBgColor" title="MES">
+	controllerName="airbus.mes.settingscreen.FilterPlantData" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page class="GenricBgColor" title="MES" height="900px">
 		<customHeader>
 			<Toolbar>
 				<Image src="/components/images/Airbus.png" height="2.0REM" />
@@ -20,7 +20,7 @@
 			</Toolbar>
 		</customHeader>
 		<content>
-			<Panel width="60%" height="auto" class="elementContainer">
+			<Panel width="60%" height="900px" class="elementContainer">
 				<headerToolbar>
 					<Toolbar class="titleToolbar">
 						<content>
