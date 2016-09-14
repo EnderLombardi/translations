@@ -1,4 +1,4 @@
-sap.ui.controller("components.stationtracker.stationtracker", {
+sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 
 /**
 * Called when a controller is instantiated and its View controls (if available) are already created.

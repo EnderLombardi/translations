@@ -1,4 +1,4 @@
-sap.ui.core.Control.extend("mes_aos_gui.DHTMLXScheduler",{
+sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",{
 				
 					renderer : function(oRm, oControl) {
 
