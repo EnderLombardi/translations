@@ -19,7 +19,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",{
 						scheduler.xy.scale_height = 20;
 						scheduler.locale.labels.timeline_tab = "Timeline";
 						scheduler.locale.labels.section_custom = "Section";
-						scheduler.config.xml_date = ShiftManager.dateFormat;
+						scheduler.config.xml_date = "config.xml_date";
 						scheduler.config.markedCells = 0;
 						scheduler.config.mark_now = true;
 						scheduler.config.drag_create = false;
