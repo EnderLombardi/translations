@@ -1,0 +1,70 @@
+16:01:20,717  INFO Activator:55 - Logging is configured using using log4j /D:/Profiles/vsingh/Desktop/eclipse luna/configuration/org.eclipse.osgi/1045/0/.cp/log4j.properties
+16:01:22,914  INFO ConverterJNI:301 - the library doesnt exist. Perform onw library load
+16:01:22,946  INFO ConvertSimpleBase:301 - Load shortcut failed. RscpInfo: Load shortcut failed.
+InCp: 0100 OutCp: 0000
+Rscp return code: 2048
+Rscp error info: 
+.------------------------------============----------------------------.
+|                              RSCP - Error                            |
+| Error from:             Codepage handling (RSCP)                     |
+| code: 2048  RSCPENOCONV  Wanted conversion not available.            |
+| no shortcut conversion table                                         |
+| module: rscpc    no:  259 line: 22257                    T100: TS012 |
+| TSL01: CP9  p3: len=1,data=00                                        |
+|             p4: (0100->4103): kind of T1 entry 536870912             |
+`----------------------------------------------------------------------'
+
+
+16:01:22,980  INFO jco:301 - ************************  Fri Jul 29 16:01:22 IST 2016  ************************
+16:01:22,982  INFO jco:301 - SAP Java Connector runtime information
+16:01:22,983  INFO jco:301 - 
+16:01:22,983  INFO jco:301 - Java Runtime:
+16:01:22,984  INFO jco:301 - 	Operating System    : Windows 7 6.1 for amd64
+16:01:22,985  INFO jco:301 - 	Java VM             : 1.8.0_65 Oracle Corporation
+16:01:22,986  INFO jco:301 - 	Default charset     : windows-1252
+16:01:22,987  INFO jco:301 - 
+16:01:22,988  INFO jco:301 - Versions:
+16:01:22,988  INFO jco:301 - 	JCo API             : 3.1.0 Embedded (2015-12-15)
+16:01:22,989  INFO jco:301 - 	JCo middleware      : JavaRfc 2.2.4
+16:01:22,990  INFO jco:301 - 	JCo library         : 721.619
+16:01:22,991  INFO jco:301 - 
+16:01:22,992  INFO jco:301 - Library Paths:
+16:01:22,993  INFO jco:301 - 	Path to JCo archive : not found
+16:01:22,994  INFO jco:301 - 	Path to JCo library : System-defined path to sapjco3.dll
+16:01:22,995  INFO jco:301 - 
+16:01:22,996  INFO jco:301 - Configuration:
+16:01:22,997  INFO jco:301 - 	jco.ni.dnscache.negative.ttl = 10
+16:01:22,998  INFO jco:301 - 	jco.trace.format = jco
+16:01:22,999  INFO jco:301 - 	jco.delta_management = 1
+16:01:23,000  INFO jco:301 - 	jco.jdsr_provider = 0
+16:01:23,001  INFO jco:301 - 	jco.cpic_maxconv = 202
+16:01:23,002  INFO jco:301 - 	jco.cpic_keep_alive_period = 300
+16:01:23,003  INFO jco:301 - 	jco.use_repository_roundtrip_optimization = 0
+16:01:23,004  INFO jco:301 - 	jco.allow_non_abap_partner = 0
+16:01:23,005  INFO jco:301 - 	jco.ni.dnscache.ttl = 86400
+16:01:23,006  INFO jco:301 - 	jco.jarm = 0
+16:01:23,006  INFO jco:301 - 	jco.jdsr = 0
+16:01:23,007  INFO jco:301 - 	jco.program_name = SAPJCo31
+16:01:23,008  INFO jco:301 - 	jco.ignore_jdsr_error = 1
+16:01:23,009  INFO jco:301 - 	jco.cpic_keep_alive_timeout = 10
+16:01:23,009  INFO jco:301 - 
+16:01:23,010  INFO jco:301 - ********************************************************************************
+16:01:23,011  INFO jco:301 - [JCoAPI] Current JCo trace level is 0
+16:01:38,373  WARN workbench:84 - org.eclipse.ui.workbench - org.eclipse.egit.ui - 0 - Warning: EGit couldn't detect the installation path "gitPrefix" of native Git. Hence EGit can't respect system level
+Git settings which might be configured in ${gitPrefix}/etc/gitconfig under the native Git installation directory.
+The most important of these settings is core.autocrlf. Git for Windows by default sets this parameter to true in
+this system level configuration. The Git installation location can be configured on the
+Team > Git > Configuration preference page's 'System Settings' tab.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+16:01:38,386  WARN workbench:84 - org.eclipse.ui.workbench - org.eclipse.egit.ui - 0 - Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'V:\'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+16:01:56,015  INFO services:84 - com.sap.ide.ui5.services - 1 - Internal Info
+   Plugin Name: SAPUI5 Services
+   Plugin ID  : com.sap.ide.ui5.services
+   Class      : com.sap.ide.ui5.services.preferences.UI5LibrariesRegistry
+   Method     : getBundleNamesUI5CoreLibs
+   Message    : found UI libraries null
+   Exception  :

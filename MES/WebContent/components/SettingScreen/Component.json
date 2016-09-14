@@ -1,0 +1,14 @@
+{
+	"id": "component.SettingScreenComponent",
+    "name": "component.SettingScreenComponent",
+    "version": "0.1.0",
+    "description": "Setting screen component",
+    "keywords": [
+        "view" 
+    ],
+    "dependencies": {
+	    "libs": {
+	        "sap.ui.core.UIComponent": {},
+	        "sap.ui.base.Event":{}
+    }
+}

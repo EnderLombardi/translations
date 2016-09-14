@@ -1,0 +1,23 @@
+{ "Rowsets" : { 
+	"DateCreated" : "2016-05-10T13:58:10", "Version" : "15.1 SP1 Patch 0 (Jan 21, 2016)", "StartDate" : "2016-05-10T12:58:10+0200", "EndDate" : "2016-05-10T13:58:10+0200", "CachedTime" : "", 
+	"Rowset" : [ 
+		{ "Columns" : { 
+			"Column" : [ 
+				{ "Name" : "Program", "SourceColumn" : "tf", "Description" : "", "SQLDataType" : 12, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+				{ "Name" : "Line", "SourceColumn" : "assemblyLine", "Description" : "", "SQLDataType" : 12, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+				{ "Name" : "prodUnit", "SourceColumn" : "prodUnit", "Description" : "", "SQLDataType" : 12, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+				{ "Name" : "prodGroup", "SourceColumn" : "prodGroup", "Description" : "", "SQLDataType" : 12, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+				{ "Name" : "station", "SourceColumn" : "PP_stationExec", "Description" : "", "SQLDataType" : 12, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+				{ "Name" : "MSN", "SourceColumn" : "MSN", "Description" : "", "SQLDataType" : 12, "MinRange" : 1.0, "MaxRange" : 1.0 }
+			] }, 
+		"Row" : [ 
+			{ "tf" : "F", "assemblyLine" : "F_AS1", "prodUnit" : "F_AS1_PU1", "prodGroup" : "F_AS1_PU1_PG1", "PP_stationExec" : "F_AS1_PU1_PG1_PP1", "MSN" : "00001", "assemblyStage" : "AS_F_1"}, 
+			{ "tf" : "F", "assemblyLine" : "F_AS1", "prodUnit" : "F_AS1_PU2", "prodGroup" : "F_AS1_PU2_PG1", "PP_stationExec" : "F_AS1_PU2_PG1_PP1", "MSN" : "00001", "assemblyStage" : "AS_F_2"}, 
+			{ "tf" : "F", "assemblyLine" : "F_AS1", "prodUnit" : "F_AS1_PU2", "prodGroup" : "F_AS1_PU2_PG2", "PP_stationExec" : "S_PP_1", "MSN" : "00001", "assemblyStage" : "AS_F_3"}, 
+			{ "tf" : "F", "assemblyLine" : "F_AS1", "prodUnit" : "F_AS1_PU2", "prodGroup" : "F_AS1_PU2_PG2", "PP_stationExec" : "S_PP_2", "MSN" : "00001", "assemblyStage" : "AS_F_4"}, 
+			{ "tf" : "F", "assemblyLine" : "F_AS2", "prodUnit" : "F_AS2_PU1", "prodGroup" : "F_AS2_PU1_PG1", "PP_stationExec" : "F_AS2_PU1_PG1_PP1", "MSN" : "00001", "assemblyStage" : "AS_Fb_2" }, 
+			{ "tf" : "F", "assemblyLine" : "F_AS2", "prodUnit" : "F_AS2_PU2", "prodGroup" : "F_AS2_PU2_PG1", "PP_stationExec" : "F_AS2_PU1_PG1_PP1", "MSN" : "00001", "assemblyStage" : "AS_Fb_2" }, 
+			{ "tf" : "L", "assemblyLine" : "L_AS1", "prodUnit" : "L_AS1_PU1", "prodGroup" : "L_AS1_PU1_PG1", "PP_stationExec" : "L_AS1_PU1_PG1_PP1", "MSN" : "00002", "assemblyStage" : "AS_L_1" }
+		] }
+	] }
+ }

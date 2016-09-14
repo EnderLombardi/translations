@@ -1,0 +1,155 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:f="sap.ui.layout.form" xmlns="sap.m" xmlns:l="sap.ui.layout"
+	controllerName="components.SettingScreen.FilterPlantData" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page class="GenricBgColor" title="MES">
+		<customHeader>
+			<Toolbar>
+				<Image src="/components/images/Airbus.png" height="2.0REM" />
+				<ToolbarSpacer />
+				<Title id="customHeaderTitle" titleStyle="H3" text="MES" />
+				<ToolbarSpacer />
+				<Select height="2rem">
+					<items>
+						<core:ListItem icon="sap-icon://slim-arrow-down"
+							text="English">
+
+						</core:ListItem>
+					</items>
+				</Select>
+				<Button icon="sap-icon://action-settings" />
+			</Toolbar>
+		</customHeader>
+		<content>
+			<Panel width="60%" height="auto" class="elementContainer">
+				<headerToolbar>
+					<Toolbar class="titleToolbar">
+						<content>
+							<Text class="textSize" text="Welcome to Airbus MES" />
+							<ToolbarSpacer />
+							<!-- <Button type="Transparent" text="English" icon="sap-icon://slim-arrow-down" 
+								iconFirst="false" /> -->
+						</content>
+					</Toolbar>
+				</headerToolbar>
+				<infoToolbar  >
+				<Toolbar class="subHeader">
+					<content>
+					<Text class="subHeaderText" text="Station Tracker"/>
+					</content>
+					</Toolbar>
+				</infoToolbar>
+				<content>
+					<f:Form id="Form1" minWidth="1024" maxContainerCols="3"
+						editable="true">
+
+						<f:layout>
+							<f:ResponsiveGridLayout labelSpanL="2"
+								labelSpanM="2" emptySpanL="7" emptySpanM="7" labelSpanS="2"
+								emptySpanS="7" columnsL="1" columnsM="1" />
+						</f:layout>
+
+
+						<f:formContainers>
+							<f:FormContainer>
+								<f:formElements>
+									<f:FormElement label="Plant">
+										<f:fields>
+											<ComboBox items="{siteModel>/Rowsets/Rowset/0/Row}"
+												selectionChange="ModelManager.loadPlantModel">
+												<items>
+													<core:Item key="key1" text="{siteModel>site}">
+													</core:Item>
+
+												</items>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Program">
+										<f:fields>
+											<ComboBox id="ComboBoxProgram" items="{plantModel>/Rowsets/Rowset/0/Row}"
+												selectionChange="onSelectionChange">
+												<items>
+													<core:Item key="key2" text="{plantModel>tf}">
+													</core:Item>
+
+												</items>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Line">
+										<f:fields>
+											<ComboBox id="ComboBoxLine" items="{plantModel>/Rowsets/Rowset/0/Row}"
+												selectionChange="onSelectionChange">
+												<items>
+													<core:Item key="key3" text="{plantModel>assemblyLine}">
+													</core:Item>
+
+												</items>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Station">
+										<f:fields>
+											<ComboBox id="ComboBoxStation" selectionChange="onSelectionChange"
+												items="{plantModel>/Rowsets/Rowset/0/Row}">
+												<items>
+													<core:Item key="key4" text="{plantModel>PP_stationExec}">
+													</core:Item>
+
+												</items>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+									<f:FormElement label="Optional">
+										<f:fields>
+										</f:fields>
+
+
+									</f:FormElement>
+									<f:FormElement label="MSN">
+										<f:fields>
+											<ComboBox id="ComboBoxMSN" items="{plantModel>/Rowsets/Rowset/0/Row}">
+												<items>
+													<core:Item key="key5" text="{plantModel>MSN}">
+													</core:Item>
+
+												</items>
+											</ComboBox>
+										</f:fields>
+									</f:FormElement>
+								</f:formElements>
+							</f:FormContainer>
+						</f:formContainers>
+					</f:Form>
+
+				</content>
+			</Panel>
+			<Toolbar class="footerToolbar" width="60%">
+				<ToolbarSpacer />
+				<Button class="buttonLoad" id="btn1" type="Transparent"
+					text="Load Station Tracker" icon="sap-icon://slim-arrow-right"
+					iconFirst="false" />
+			</Toolbar>
+
+
+		</content>
+	</Page>
+</core:View>
+
+<!-- <l:Grid> <l:content> <Label text="Program:"> <layoutData> <l:GridData 
+	span="L2 M3 S8" linebreakL="true" linebreakM="true" linebreakS="true" /> 
+	</layoutData> </Label> <ComboBox> <items> <core:Item key="key1" text="A350"> 
+	</core:Item> </items> </ComboBox> -->
+<!-- <Label text="Plant:"> <layoutData> <l:GridData span="L2 M3 S8" linebreakL="true" 
+	linebreakM="true" linebreakS="FAL" /> </layoutData> </Label> <ComboBox> <items> 
+	<core:Item key="key2" text="FAL" /> </items> </ComboBox> -->
+<!-- <Label text="Line:"> <layoutData> <l:GridData span="L2 M3 S8" linebreakL="true" 
+	linebreakM="true" linebreakS="true" /> </layoutData> </Label> <ComboBox> 
+	<items> <core:Item key="key3" text="P59/50" /> </items> </ComboBox> -->
+<!-- <Label text="Station:"> <layoutData> <l:GridData span="L2 M3 S8" linebreakL="true" 
+	linebreakM="true" linebreakS="true" /> </layoutData> </Label> <ComboBox> 
+	<items> <core:Item key="key4" text="P50C" /> </items> </ComboBox> -->
+<!-- <Label text="MSN:"> <layoutData> <l:GridData span="L2 M3 S8" linebreakL="true" 
+	linebreakM="true" linebreakS="true" /> </layoutData> </Label> <ComboBox> 
+	<items> <core:Item key="key5" text="352" /> </items> </ComboBox> -->
+<!-- </l:content> </l:Grid> -->
