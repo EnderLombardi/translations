@@ -1,7 +1,5 @@
-"use strict";
-var Station_Scheduler= Scheduler.getSchedulerInstance(); 
-var DailyTeam_Scheduler= Scheduler.getSchedulerInstance(); 
-var ModelManager = {
+//"use strict";
+ModelManager = {
 		urlModel : undefined,
 		queryParams : jQuery.sap.getUriParameters(),
 		
@@ -34,7 +32,7 @@ var ModelManager = {
 			}
 
 			this.urlModel = new sap.ui.model.resource.ResourceModel({
-				bundleUrl : "config/url_config.properties",
+				bundleUrl : "../stationtracker/config/url_config.properties",
 				bundleLocale : dest
 			});
 //			this.i18nModel = new sap.ui.model.resource.ResourceModel({
@@ -47,7 +45,7 @@ var ModelManager = {
 				
 		fnLoadStationTracker : function() {
 			var oViewModel = sap.ui.getCore().getModel("stationTrackerModel");
-			oViewModel.loadData(this.urlModel.getProperty("stationTrackerModel"), null, false);
+			oViewModel.loadData(this.urlModel.getProperty("urlstationtracker"), null, false);
 		},	
 		
 		fnOnStationTrackerLoad : function() {
@@ -128,7 +126,7 @@ var ModelManager = {
 			});
 
 		
-			scheduler.init(sap.ui.getCore().byId("dhtmlx").getId() + "--test", new Date("2016-07-07"), "timeline");
+			scheduler.init(sap.ui.getCore().byId("stationTrackerView").getId() + "--test");
 			scheduler.clearAll();
 			scheduler.parse(jsonData, "json");
 			scheduler.xy.scroll_width = 20;

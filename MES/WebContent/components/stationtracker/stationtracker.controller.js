@@ -23,9 +23,11 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 * This hook is the same one that SAPUI5 controls get after being rendered.
 * @memberOf components.stationtracker.stationtracker
 */
-//	onAfterRendering: function() {
-//
-//	},
+	onAfterRendering: function() {
+
+		ModelManager.fnLoadStationTracker();
+		
+	},
 
 /**
 * Called when the Controller is destroyed. Use this one to free resources and finalize activities.
