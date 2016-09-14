@@ -28,14 +28,52 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		airbus.mes.stationtracker.ModelManager.loadStationTracker();
 		
 	},
+	
+	onTeamPress :function(oEvent){
+		
+		 var bindingContext = oEvent.getSource().getBindingContext();			 
+		 // open team popover fragment		 
+		if (! this._oPopover) {
+			this._oPopover = sap.ui.xmlfragment("airbus.mes.stationtracker.teamPopover", this);
+			this._oPopover.addStyleClass("alignTextLeft");
+			this.getView().addDependent(this._oPopover);
+		}
+		this._oPopover.openBy(oEvent.getSource());							
 
-/**
-* Called when the Controller is destroyed. Use this one to free resources and finalize activities.
-* @memberOf components.stationtracker.stationtracker
-*/
-//	onExit: function() {
-//
-//	}
+	},
+
+	 onShiftPress : function(){
+		
+  	  scheduler.matrix['timeline'].x_unit = 'minute';
+  	  scheduler.matrix['timeline'].x_step = 120;
+  	  scheduler.matrix['timeline'].x_size = 6;
+  	  scheduler.matrix['timeline'].x_length = 12;
+  	  scheduler.matrix['timeline'].x_start= 3,
+  	  scheduler.matrix['timeline'].x_date = '%H %i';
+  	  scheduler.templates.timeline_scale_date = function(date){
+         var func=scheduler.date.date_to_str(scheduler.matrix['timeline'].x_date );
+         return func(date);
+      };
+      scheduler.updateView();
+  	  
+	 },
+	 
+	 onDayPress : function(){
+			
+		  scheduler.matrix['timeline'].x_unit = 'minute';
+       	  scheduler.matrix['timeline'].x_step = 120;
+       	  scheduler.matrix['timeline'].x_start= 3,
+       	  scheduler.matrix['timeline'].x_size = 8.5;
+       	  scheduler.matrix['timeline'].x_length = 12;
+       	  scheduler.matrix['timeline'].x_date = '%H %i';
+       	  scheduler.templates.timeline_scale_date = function(date){
+             var func=scheduler.date.date_to_str(scheduler.matrix['timeline'].x_date );
+             return func(date);
+          };
+          scheduler.updateView();
+	  	  
+		 },
+	
 	 spaceInsecable : function(sText){
 		 
 	    var sTextF="";
@@ -48,8 +86,84 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	    }
 	    
 	    return sTextF;
+	},
+	
+	onInitialPlanPress : function() {
+	
+		// XX TO REDEFINE
+
+	if (airbus.mes.stationtracker.AssignmentManager.bInitial) {
+		
+			airbus.mes.stationtracker.AssignmentManager.bInitial = false;
+			 elements = [ // original hierarhical array to display
+	                        {key:10, label:"FUEL ACTIVITIES", open: true, children: [
+	                                                                                 
+	                        {key:"F1" , name:"Jae J.", subname:"JJ", hours:'6.0hs'},
+	                        {key:"F2", name:"Mark K.", subname:"MK", hours:'4.0hs'},
+	                        {key:"F3", name:"Steve S.", subname:"SS", hours:'3.0hs'},
+	                        ]},
+	                         {key:105, label:"ELEC ACTIVITIES", open:true, children: [
+	                      
+	                         {key:"E2", name:"Jae J.", subname:"JJ", hours:'6.0hs'},
+	                         {key:"E2", name:"Mark K.", subname:"MK", hours:'4.0hs'},
+	                         {key:"E3", name:"Steve S.", subname:"SS", hours:'3.0hs'},                                                    
+	                         ]},
+	                         {key:115, label:"MEC ACTIVITIES", open:true, children: [
+	                                                                                                     
+	                         {key:"M1", name:"Jae J.", subname:"JJ", hours:'6.0hs'},
+	                         {key:"M2", name:"Mark K.", subname:"MK", hours:'4.0hs'},
+	                         {key:"M3", name:"Steve S.", subname:"SS", hours:'3.0hs'},
+	                         ]},
+	                         {key:120, label:"FLY ACTIVITIES", open:true, children: [
+	                     
+	                         {key:"A1", name:"Jae J.", subname:"JJ", hours:'6.0hs'},
+	                         {key:"A2", name:"Mark K.", subname:"MK", hours:'4.0hs'},
+	                         {key:"A3", name:"Steve S.", subname:"SS", hours:'3.0hs'},
+	                         ]},
+	           ];
+
+
+		 scheduler.matrix['timeline'].y_unit_original = elements;
+		 scheduler.callEvent("onOptionsLoad", []);
+			scheduler.updateView();
+			
+		} else {
+			
+			airbus.mes.stationtracker.AssignmentManager.bInitial = true;
+			 elements = [ // original hierarhical array to display
+	                        {key:10, label:"FUEL ACTIVITIES", open: true, children: [
+	                        {"key":"I1", "initial":"Initial plan", },
+	                        {key:"F1" , name:"Jae J.", subname:"JJ", hours:'6.0hs'},
+	                        {key:"F2", name:"Mark K.", subname:"MK", hours:'4.0hs'},
+	                        {key:"F3", name:"Steve S.", subname:"SS", hours:'3.0hs'},
+	                        ]},
+	                         {key:105, label:"ELEC ACTIVITIES", open:true, children: [
+	                         {"key":"I2", "initial":"Initial plan", },
+	                         {key:"E2", name:"Jae J.", subname:"JJ", hours:'6.0hs'},
+	                         {key:"E2", name:"Mark K.", subname:"MK", hours:'4.0hs'},
+	                         {key:"E3", name:"Steve S.", subname:"SS", hours:'3.0hs'},                                                    
+	                         ]},
+	                         {key:115, label:"MEC ACTIVITIES", open:true, children: [
+	                         {"key":"I3", "initial":"Initial plan",},	                                                                                 
+	                         {key:"M1", name:"Jae J.", subname:"JJ", hours:'6.0hs'},
+	                         {key:"M2", name:"Mark K.", subname:"MK", hours:'4.0hs'},
+	                         {key:"M3", name:"Steve S.", subname:"SS", hours:'3.0hs'},
+	                         ]},
+	                         {key:120, label:"FLY ACTIVITIES", open:true, children: [
+	                         {"key":"I3", "initial":"Initial plan", },
+	                         {key:"A1", name:"Jae J.", subname:"JJ", hours:'6.0hs'},
+	                         {key:"A2", name:"Mark K.", subname:"MK", hours:'4.0hs'},
+	                         {key:"A3", name:"Steve S.", subname:"SS", hours:'3.0hs'},
+	                         ]},
+	           ];
+
+
+		 scheduler.matrix['timeline'].y_unit_original = elements;
+		 scheduler.callEvent("onOptionsLoad", []);
+			
+			scheduler.updateView();
+			
+		}
 	}
-	
-	
 	
 });

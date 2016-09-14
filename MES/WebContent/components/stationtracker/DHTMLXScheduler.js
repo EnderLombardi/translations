@@ -59,7 +59,7 @@ sap.ui.core.Control.extend(
 
 							}
 
-							if (section.initial != undefined) {
+							if (section.initial != undefined && airbus.mes.stationtracker.AssignmentManager.bInitial) {
 
 								var html = '<span  style="float: right;margin-right: 5px;" >' + section.initial
 										+ '</span>'

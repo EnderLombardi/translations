@@ -203,7 +203,6 @@
                                   <items>
                                         <SegmentedButtonItem text="Shift" press="onShiftPress"/>
                                         <SegmentedButtonItem text="Day" press="onDayPress" />
-                                        <SegmentedButtonItem text="Takt" press="onTaktPress" />
                                   </items>
                            </SegmentedButton>
                            </content>

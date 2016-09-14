@@ -2,6 +2,7 @@ jQuery.sap.declare("airbus.mes.stationtracker.AssignmentManager")
 airbus.mes.stationtracker.AssignmentManager = {
 	
 	bOpen : undefined,
+	bInitial : false,
 	
 	newLine : function(sKey) {
 			

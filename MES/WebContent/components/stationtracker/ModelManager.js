@@ -54,28 +54,31 @@ airbus.mes.stationtracker.ModelManager = {
 			var oModel = sap.ui.getCore().getModel("stationTrackerModel").oData.Rowsets.Rowset[0].Row;
 			 elements = [ // original hierarhical array to display
 	                        {key:10, label:"FUEL ACTIVITIES", open: true, children: [
+	                                                                                 
 	                        {key:"F1" , name:"Jae J.", subname:"JJ", hours:'6.0hs'},
 	                        {key:"F2", name:"Mark K.", subname:"MK", hours:'4.0hs'},
 	                        {key:"F3", name:"Steve S.", subname:"SS", hours:'3.0hs'},
 	                        ]},
 	                         {key:105, label:"ELEC ACTIVITIES", open:true, children: [
-	                         {key:"E1", name:"Jae J.", subname:"JJ", hours:'6.0hs'},
+	                      
+	                         {key:"E2", name:"Jae J.", subname:"JJ", hours:'6.0hs'},
 	                         {key:"E2", name:"Mark K.", subname:"MK", hours:'4.0hs'},
 	                         {key:"E3", name:"Steve S.", subname:"SS", hours:'3.0hs'},                                                    
 	                         ]},
 	                         {key:115, label:"MEC ACTIVITIES", open:true, children: [
+	                                                                                                     
 	                         {key:"M1", name:"Jae J.", subname:"JJ", hours:'6.0hs'},
 	                         {key:"M2", name:"Mark K.", subname:"MK", hours:'4.0hs'},
 	                         {key:"M3", name:"Steve S.", subname:"SS", hours:'3.0hs'},
 	                         ]},
 	                         {key:120, label:"FLY ACTIVITIES", open:true, children: [
+	                     
 	                         {key:"A1", name:"Jae J.", subname:"JJ", hours:'6.0hs'},
 	                         {key:"A2", name:"Mark K.", subname:"MK", hours:'4.0hs'},
 	                         {key:"A3", name:"Steve S.", subname:"SS", hours:'3.0hs'},
 	                         ]},
 	           ];
-	    
-			
+
 
 		 scheduler.matrix['timeline'].y_unit_original = elements;
 		 scheduler.callEvent("onOptionsLoad", []);
