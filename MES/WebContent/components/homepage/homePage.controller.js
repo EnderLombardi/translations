@@ -11,16 +11,18 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 //		oModel.loadData("/MES/components/homepage/data/url.json",null,false);
 	},
 	onPress:function(oEvt){
-	    jQuery.sap.registerModulePath("airbus.mes.settings","/MES/components/settings");
-	    
-	    if (oComp3 != undefined) {
-	    	nav.to(oComp3.oView.getId());
+//	    jQuery.sap.registerModulePath("airbus.mes.settings","/MES/components/settings");
+//	    
+	    if (airbus.mes.settings != undefined) {
+	    	nav.to(airbus.mes.settings.oView.getId());
 		}
-	    else {var oComp3 = sap.ui.getCore().createComponent({
+	    else {
+	    	sap.ui.getCore().createComponent({
 			name : "airbus.mes.settings", // root component folder is resources
 		});
-		nav.addPage(oComp3.oView);
-		nav.to(oComp3.oView.getId());  }
+	    	
+		nav.addPage(airbus.mes.settings.oView);
+		nav.to(airbus.mes.settings.oView.getId()); }
 	},
 /**
 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered

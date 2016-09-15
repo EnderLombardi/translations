@@ -22,13 +22,20 @@ sap.ui.core.UIComponent.extend("airbus.mes.settings.Component", {
 // override the createContent function to return user interface
 airbus.mes.settings.Component.prototype.createContent = function() {
 
-	airbus.mes.settings.ModelManager.init(this);
+	if (airbus.mes.settings.oView === undefined) {
+		airbus.mes.settings.ModelManager.init(this);
 
-	this.oView = sap.ui.view({
-		id : "View1",
-		viewName : "airbus.mes.settings.FilterPlantData",
-		type : "XML",
-	})
+		this.oView = sap.ui.view({
+			id : "View1",
+			viewName : "airbus.mes.settings.FilterPlantData",
+			type : "XML",
+		})
 
-	return this.oView;
+		airbus.mes.settings.oView = this.oView;
+
+		return this.oView;
+
+	}
+
 }
+

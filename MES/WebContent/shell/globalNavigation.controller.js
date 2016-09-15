@@ -16,8 +16,19 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 	
 	},
 	onBack : function(){
-		nav.addPage(oComp3.oView);
-		nav.to(oComp3.oView.getId()); 
+		  jQuery.sap.registerModulePath("airbus.mes.settings","/MES/components/settings");
+		    
+		    if (airbus.mes.settings != undefined) {
+		    	nav.to(airbus.mes.settings.oView.getId());
+			}
+		    else {
+		    	sap.ui.getCore().createComponent({
+				name : "airbus.mes.settings", // root component folder is resources
+			});
+		    	
+			nav.addPage(airbus.mes.settings.oView);
+			nav.to(airbus.mes.settings.oView.getId()); }
+		
 	},
 
 /**

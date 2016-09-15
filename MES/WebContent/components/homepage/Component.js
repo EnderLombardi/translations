@@ -15,14 +15,23 @@ airbus.mes.homepage.Component.prototype.createContent = function() {
 	this.setModel(oModel , "buttonUrl");
 	oModel.loadData("/MES/components/homepage/data/url.json",null,false);
 	
+	if (airbus.mes.homepage.oView === undefined) {
 //	View on XML
 	this.oView = sap.ui.view({
 	  id : "homePageView",
 	  viewName : "airbus.mes.homepage.homePage",
 	  type : "XML",
 	  height : "100%"
+<<<<<<< Upstream, based on origin/MESv0.9.2.1
   }).addStyleClass("absolutePosition");
 
+=======
+  }).addStyleClass("absoultePosition");
+	  airbus.mes.homepage.oView = this.oView;
+>>>>>>> 49316da Navigation done.
 	  return this.oView;
+	  
+	}
+	  
 };
 

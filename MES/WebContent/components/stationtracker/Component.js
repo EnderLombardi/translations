@@ -24,12 +24,14 @@ sap.ui.core.UIComponent.extend("airbus.mes.stationtracker.Component", {
 });
 
 airbus.mes.stationtracker.Component.prototype.createContent = function() {
-//	View on XML
+	 if (airbus.mes.stationtracker.oView === undefined) {
+	//	View on XML
 	this.oView = sap.ui.view({
 	  id : "stationTrackerView",
 	  viewName : "airbus.mes.stationtracker.stationtracker",
 	  type : "XML",
   })
-
+  	  airbus.mes.stationtracker.oView = this.oView;	
 	  return this.oView;
+	 }
 };

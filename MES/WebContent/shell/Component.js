@@ -1,5 +1,5 @@
 jQuery.sap.require("sap.ui.core.UIComponent");
-
+jQuery.sap.registerModulePath("airbus.mes.settings","/MES/components/settings");
 
 jQuery.sap.declare("airbus.mes.shell.Component");
 
@@ -15,6 +15,7 @@ sap.ui.core.UIComponent.extend("airbus.mes.shell.Component", {
 });
 
 airbus.mes.shell.Component.prototype.createContent = function() {
+	
 	//	View on XML
 	if (airbus.mes.shell.oView === undefined) {
 

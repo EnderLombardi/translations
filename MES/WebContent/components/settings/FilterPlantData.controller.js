@@ -128,15 +128,19 @@ sap.ui.controller("airbus.mes.settings.FilterPlantData",
 			naviguate : function(){
 			    jQuery.sap.registerModulePath("airbus.mes.settings","/MES/components/settings");
 			    jQuery.sap.registerModulePath("airbus.mes.stationtracker","/MES/components/stationtracker");
-			    
-			    if (oComp2 != undefined) {
-			    	nav.to(oComp2.oView.getId());
+			  
+			    if (airbus.mes.stationtracker != undefined) {
+			    	nav.to(airbus.mes.stationtracker.oView.getId());
 				}
-			    else {var oComp2 = sap.ui.getCore().createComponent({
+			    else {
+			    	sap.ui.getCore().createComponent({
 					name : "airbus.mes.stationtracker", // root component folder is resources
 				});
-				nav.addPage(oComp2.oView);
-				nav.to(oComp2.oView.getId());  }
+			    	
+				nav.addPage(airbus.mes.stationtracker.oView);
+				nav.to(airbus.mes.stationtracker.oView.getId()); }
+			    
+			    
 			},
 			
 			
