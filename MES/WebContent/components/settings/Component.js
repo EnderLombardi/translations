@@ -11,23 +11,20 @@ jQuery.sap.declare("airbus.mes.settings.Component");
 sap.ui.core.UIComponent.extend("airbus.mes.settings.Component", {
 	manifestUrl : "Component.json",
 	metadata : {
-		properties : {
-		/*
-		 * idButton : "string", textButton : "string"
-		 */
-		}
-	}
+		properties : {}
+	},
 });
 
 // override the createContent function to return user interface
 airbus.mes.settings.Component.prototype.createContent = function() {
 
 	airbus.mes.settings.ModelManager.init(this);
-	
+
 	this.oView = sap.ui.view({
 		id : "View1",
 		viewName : "airbus.mes.settings.FilterPlantData",
 		type : "XML",
 	})
+
 	return this.oView;
 }

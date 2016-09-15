@@ -16,7 +16,7 @@ airbus.mes.homepage.Component.prototype.createContent = function() {
 	  viewName : "airbus.mes.homepage.homePage",
 	  type : "XML",
 	  height : "100%"
-  }).addStyleClass("absoultePosition");
+  }).addStyleClass("absolutePosition");
 
 	  return this.oView;
 };

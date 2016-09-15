@@ -47,36 +47,14 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 //	}
 	naviguate : function(){
 		
-//		var oComp1 = sap.ui.getCore().createComponent({
-//			name : "airbus.mes.globalnav", // root component folder is resources
-//			});
-//
-//		// Create a Ui container 
-//		var oCompCont1 = new sap.ui.core.ComponentContainer({
-//			component : oComp1
-//		});
-//		// place this Ui Container with the Component inside into UI Area 
-//		oCompCont1.placeAt("content");
-
-		
 	    jQuery.sap.registerModulePath("airbus.mes.settings","/MES/components/settings");
 	    jQuery.sap.registerModulePath("airbus.mes.stationtracker","/MES/components/stationtracker");
-		var oComp = sap.ui.getCore().createComponent({
-			name : "airbus.mes.stationtracker", // root component folder is resources
+		
+	    var oComp = sap.ui.getCore().createComponent({
+			name : "airbus.mes.settings", // root component folder is resources
 		});
 
-		// Create a Ui container 
-//		var oCompCont = new sap.ui.core.ComponentContainer("CompCont", {
-//			component : oComp
-//		});
-		
-		
-//		var navCon = this.getView().byId("navCon");
-//		
-//		
-//		
 		nav.addPage(oComp.oView);
-//		nav.to(oComp.oView);
 		nav.to(oComp.oView.getId()); 
 		
 	},
