@@ -6,7 +6,7 @@ sap.ui.core.Control.extend(
 
 						oRm.write("<div ");
 						oRm.writeControlData(oControl);
-						oRm.write(" class='dhx_cal_container'  style='width:100%; height:950px;'>");
+						oRm.write(" class='dhx_cal_container'  style='width:100%;'>");
 						oRm.write("	<div class='dhx_cal_navline'>");
 						oRm.write("		<div class='dhx_cal_prev_button'></div>");
 						oRm.write("	 	<div class='dhx_cal_next_button'></div>");

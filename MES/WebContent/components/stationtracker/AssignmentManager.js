@@ -3,6 +3,7 @@ airbus.mes.stationtracker.AssignmentManager = {
 	
 	bOpen : undefined,
 	bInitial : false,
+	CpPress : false,
 	
 	newLine : function(sKey) {
 			

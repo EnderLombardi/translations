@@ -164,6 +164,41 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			scheduler.updateView();
 			
 		}
-	}
+	},
+	
+
+		onCPPress : function() {
+
+		if (airbus.mes.stationtracker.AssignmentManager.CpPress === false) {
+			
+			scheduler.templates.event_class = function(start, end, ev) {
+				
+				if (ev.cp != undefined) {
+					
+					return "operationCP";
+					
+				} else {
+					
+					return "grey";
+				}
+
+			};
+			
+			airbus.mes.stationtracker.AssignmentManager.CpPress = true;
+			scheduler.updateView();
+			
+		} else {
+			
+			scheduler.templates.event_class = function(start, end, ev) {
+
+				return "grey";
+
+			};
+			
+			airbus.mes.stationtracker.AssignmentManager.CpPress = false;
+			scheduler.updateView();
+			
+		}
+	},
 	
 });

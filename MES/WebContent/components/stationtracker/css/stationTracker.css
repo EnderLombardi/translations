@@ -193,4 +193,7 @@ background-color : #CCE6EE;
 .grey {
 	background-color: #D8D8D8;
 }
-
+.operationCP {
+	background-color: #D8D8D8;
+	border: 2px solid blue;
+}
