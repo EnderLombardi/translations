@@ -1,0 +1,1270 @@
+<!DOCTYPE HTML>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<title>Scheduler Performances Demo - AOS</title>
+	
+	<script src="https://sapui5.netweaver.ondemand.com/resources/sap-ui-core.js" id="sap-ui-bootstrap"
+		data-sap-ui-libs="sap.m,sap.ui.layout, sap.ui.commons, sap.ui.core,sap.suite.ui.commons"
+		data-sap-ui-theme="sap_bluecrystal" data-sap-ui-inspect="true"
+		data-sap-ui-language="en" data-sap-ui-xx-bindingSyntax="complex">
+	</script>
+
+<link rel="stylesheet" href="../lib/dhtmlxscheduler/dhtmlxscheduler.css"	type="text/css" title="no title">
+<script type="text/javascript"	src="../lib/dhtmlxscheduler/dhtmlxscheduler.js" charset="utf-8"></script>
+<script type="text/javascript"	src='../lib/dhtmlxscheduler/ext/dhtmlxscheduler_limit.js'	charset="utf-8"></script>
+<script type="text/javascript"	src='../lib/dhtmlxscheduler/ext/dhtmlxscheduler_timeline.js'	charset="utf-8"></script>
+<script type="text/javascript"	src='../lib/dhtmlxscheduler/ext/dhtmlxscheduler_treetimeline.js'charset="utf-8"></script>
+<script type="text/javascript"	src='../lib/dhtmlxscheduler/ext/dhtmlxscheduler_units.js'charset="utf-8"></script>
+<script type="text/javascript"	src='../lib/dhtmlxscheduler/ext/dhtmlxscheduler_drag_between.js'charset="utf-8"></script>
+<script type="text/javascript" src="./customProgressIndicator.js"></script>
+
+	<link rel='stylesheet' type='text/css' href='../lib/dhtmlxscheduler/dhtmlxscheduler_flat.css'>
+	<link rel="stylesheet" href="./font-awesome.min.css">
+	
+	<style type="text/css" media="screen">
+html, body {
+	margin: 0px;
+	padding: 0px;
+	height: 100%;
+	overflow: hidden;
+}
+.ylabel:hover .tooltip {
+    visibility: visible;
+}
+.tooltip{
+ 	  visibility: hidden;
+    position: absolute;
+    width: 120px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    z-index: 1;
+    bottom: 115%;
+    left: 50%;
+    margin-left: -60px;
+}
+
+/* .dhx_cal_event_line {
+    padding-left: 0px !important;
+} */
+ .dhx_scell_expand {
+	display: inline-block;
+	font: normal normal normal 14px/1 FontAwesome;
+	font-size: inherit;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	}
+
+
+.ylabelfolder{
+				position:relative;
+				width: 120px;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.dhx_scell_name{
+padding-left : 0px !important;
+}
+.dhx_matrix_scell.folder {
+background-color : white;
+}
+ .dhx_matrix_scell.folder .dhx_scell_name{
+width : 100%;
+}
+.otherStations{
+background-color: #515456;
+}
+
+.fa-chevron-right.custom{
+float: left;
+padding-left: 10px;
+}
+
+.fa-chevron-down.custom{
+float: left;
+padding-left: 10px;
+}
+
+.fa-user-plus.custom{
+font-size: 1.5em;
+float: right;
+padding-right: 10px;
+}
+.fa-user-plus:hover {
+	color: blue;
+	font-size: 1.7em
+}
+
+.Blue {
+	background-color: #006CA7 !important;
+	z-index: 1 !important;
+}
+
+.white {
+	background-color: white !important;
+}
+
+.whiteButton .sapMBtnIcon {
+	color: white !important;
+}
+.whiteTextButton .sapMBtnTransparent {
+	color: white !important;
+
+}
+.blackTextButton .sapMBtnTransparent {
+	color: black !important;
+	text-align: left;
+    padding-left: 12.5%;
+}
+.blackTextButton2 .sapMBtn{
+    border-bottom-style: inset;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+.whiteColor .sapMBtnInner.sapMBtnText {
+	color: white !important;
+	font-family: "Arial", Sans-serif !important;
+	font-size: 14px !important;
+}
+ .alignTextLeft .sapMIBar-CTX .sapMTitle{
+ 	font-family: "Verdana";
+    font-weight: bold !important;
+     padding-right: 75%;
+} 
+.hachure {
+	background-image: url(../img/fat_lines.png);
+}
+.panelContent .sapMPanelContent{
+padding : 0rem;
+background-color : #CCE6EE;
+}
+.panelContentList .sapMListBGSolid .sapMLIB{
+background-color : #CCE6EE;
+}
+.initial {
+	background-color: #F5F6F8 !important;
+}
+
+.pageHeaderBlue .sapMSltLabel {
+	color: white !important;
+}
+
+.pageHeader {
+	color: white !important;
+	background: #0085AD !important;
+}
+
+.pageStation {
+	background: #006CA7 !important;
+}
+
+.pageTitle {
+	color: white !important;
+	font-family: "Arial", Sans-serif !important;
+	font-size: 24px !important;
+}
+
+.pageWelcome {
+	color: white !important;
+	font-family: "Arial", Sans-serif !important;
+	font-size: 14px !important;
+}
+.stationTitle {
+	color: #006CA7 !important;
+	font-family: "Arial", Sans-serif !important;
+	font-size: 24px !important;
+}
+
+.stationWelcome {
+	color: #006CA7 !important;
+	font-family: "Arial", Sans-serif !important;
+	font-size: 14px !important;
+}
+
+.pageUsername {
+	color: white !important;
+	font-family: "Arial", Sans-serif !important;
+	font-size: 14px !important;
+}
+
+.kpiValue {
+	font-size: 24px !important;
+}
+
+.green {
+	color: #6B8E23 !important;
+}
+
+.red {
+	color: red !important;
+}
+
+.rond {
+	color: white;
+	display: inline-table;;
+	width: 20px !important;
+	height: 20px !important;
+	background: #3498db;
+	-webkit-border-radius: 100px;
+	-moz-border-radius: 100px;
+	-o-border-radius: 100px;
+	border-radius: 100px;
+	float: left !important;
+}
+
+.dhx_row_folder {
+	height: 20px ! important;
+}
+
+.eventOrange {
+	background-color: #F9DAAB;
+	color: black;
+}
+
+.dhx_cal_container {
+	height: 100%;
+}
+
+.grey {
+	background-color: #D8D8D8;
+}
+
+.Hour {
+	background-color: grey;
+	opacity: 0.5;
+	filter: alpha(opacity = 25);
+}
+
+.buttonStatus .sapMBtnInner.sapMBtnText {
+	font-weight: bold !important;
+ /* 	padding-left: 50% !important;
+ */    padding-top: 15% !important; 
+}
+
+.buttonNotif .sapMBtnContent{
+	
+	/* padding-top: 15% !important; 	
+	color: white;
+	display: inline-table;;
+	width: 20px !important;
+	height: 20px !important;
+	background: orange;
+	-webkit-border-radius: 100px;
+	-moz-border-radius: 100px;
+	-o-border-radius: 100px;
+	border-radius: 100px; */
+
+	color: orange;
+	font-weight : Bold;
+	padding-top: 10px !important; 
+	
+	/* width:20px;
+
+	border-radius:50%;
+	padding-top: 20%;
+	text-align:center;
+	background:orange;
+	display: inline-table; */
+}
+
+.notifDetails {
+	font-size: smaller !important;
+}
+
+.sapMPIBarBlue {
+	background: -moz-linear-gradient(top, #008cda 0, #006ca7 100%)
+		!important;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #008cda),
+		color-stop(100%, #006ca7)) !important;
+	background: -webkit-linear-gradient(top, #008cda 0, #006ca7 100%)
+		!important;
+	background: -ms-linear-gradient(top, #008cda 0, #006ca7 100%) !important;
+	background: linear-gradient(to bottom, #008cda 0, #006ca7 100%)
+		!important;
+	filter: progid: DXImageTransform.Microsoft.gradient(startColorstr=#008cda,
+		endColorstr=#006ca7, GradientType=0)
+}
+
+.orange {
+	color: orange;
+}
+
+.sapMPIText2 {
+	margin-top: -1.1rem;
+	float: left;
+	font-family: Arial, Helvetica, sans-serif;
+	/*font-weight: bold;*/
+	line-height: normal !important;
+	text-overflow: clip;
+	display: inline-block;
+	/*white-space: nowrap;*/
+	overflow: hidden;
+	height: 1.2em;
+	line-height: 1.2em;
+	color: white;
+	padding-left: 0.5rem;
+	font-size: 100%;
+	word-break: break-all;
+}
+
+.triangle {
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 10px 5px 0 5px;
+	border-color: #000000 transparent transparent transparent;
+	float: right;
+	margin: 6px;
+}
+.operatorList .sapMListHdr{
+    text-align: left;
+    font-size : small;
+    font-weight : bold;
+    border-bottom: 0px;
+    
+    }
+.initialCell {
+	background-color: rgba(255, 255, 204, 0.5);
+}
+
+.margin {
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.borderCell {
+	background-color: rgba(242, 180, 87, 0.2);
+}
+
+.borderX {
+	border-left: none !important;
+	border-right: none !important;
+	background-color: rgba(242, 180, 87, 0.2);
+}
+
+.borderY {
+	border-top: none !important;
+	border-bottom: none !important;
+}
+
+.boxColor {
+	background-color: #ecf0f1;
+	margin: 1px;
+	border: 1px solid #bdc3c7;
+}
+
+.boxColorInitial {
+	background-color: transparent;
+	margin: 1px;
+	border: 1px solid #bdc3c7;
+}
+
+.user {
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.initial {
+	background-color: transparent;
+	padding-left: 0px;
+}
+
+.task {
+	height: 50px !important;
+}
+
+.padding {
+	padding: 5px;
+}
+
+.one_line {
+	white-space: nowrap;
+	overflow: hidden;
+	padding-top: 5px;
+	padding-left: 5px;
+	text-align: left !important;
+}
+
+.progressIndicator {
+	padding: 0px;
+	margin: 0px;
+	height: 1.5rem;
+}
+</style>
+
+	<script type="text/javascript" charset="utf-8">
+		
+	var scheduler1 = Scheduler.getSchedulerInstance();
+	var scheduler2 = Scheduler.getSchedulerInstance();
+	var dTime = new Date(2014,05,30,8);
+	var dTime2 = new Date(2014,05,30,9);
+	var showInitial = false;
+	var elements = [];
+	var sOpen = ""; 
+	var CPActive = false;
+	
+	
+	var myFunction = function(sKey) {
+		
+		sOpen = true;
+		scheduler1.addSection({ key: Math.random() , newop:"" , name:"Select Operator"}, sKey);   
+			
+	};
+	
+	
+sap.ui.core.Control.extend("pocaos.DHTMLXScheduler1",	{
+	
+			renderer : function(oRm, oControl) {
+
+			oRm.write("<div ");
+			oRm.writeControlData(oControl);
+			oRm.write(" class='dhx_cal_container'>");
+			oRm.write("	<div class='dhx_cal_navline'>");
+			oRm.write(" 	<div id='test'>");
+			oRm.write(" 	</div>");
+			oRm.write("		<div class='dhx_cal_prev_button'></div>");
+			oRm.write("	    <div class='dhx_cal_next_button'></div>");
+			oRm.write("		<div class='dhx_cal_date' Style='font-weight:bold; text-align:left; padding-left: 1.5%'></div>");
+			oRm.write("	</div>");
+			oRm.write("	<div class='dhx_cal_header' Style='text-align:left;'>");
+
+			oRm.write("	</div>");
+
+			oRm.write("	<div class='dhx_cal_data'></div>");
+			oRm.write("</div>");
+			
+		},
+		
+		 
+		onAfterRendering : function(oEvt) {
+			scheduler1.eventId = scheduler.eventId || [];
+			scheduler1.eventId.forEach(function(el) { scheduler.detachEvent(el) });
+			scheduler1.eventId = [];
+			scheduler1.deleteMarkedTimespan();
+			
+			scheduler1.config.drag_resize = false;
+			scheduler1.xy.bar_height = 30;
+			scheduler1.locale.labels.timeline_tab = "Timeline";
+			scheduler1.locale.labels.section_custom="Section";
+ 		scheduler1.config.details_on_create=true;
+			scheduler1.config.details_on_dblclick=true;
+			scheduler1.config.xml_date="%Y-%m-%d %H:%i";
+			
+			 elements = [ // original hierarhical array to display
+			     			{key:10, label:"FUEL ACTIVITIES", open: true, children: [
+			     			 {key:"F1" , name:"Jae J.", subname:"JJ", hours:'6.0hs'},
+			     				{key:"F2", name:"Mark K.", subname:"MK", hours:'4.0hs'},
+			     				{key:"F3", name:"Steve S.", subname:"SS", hours:'3.0hs'},
+			      
+			     		
+			     			]},
+			     			{key:105, label:"ELEC ACTIVITIES", open:true, children: [
+											  {key:"E1", name:"Jae J.", subname:"JJ", hours:'6.0hs'},
+													{key:"E2", name:"Mark K.", subname:"MK", hours:'4.0hs'},
+													{key:"E3", name:"Steve S.", subname:"SS", hours:'3.0hs'},
+										
+           ]},
+       	{key:115, label:"MEC ACTIVITIES", open:true, children: [
+           {key:"M1", name:"Jae J.", subname:"JJ", hours:'6.0hs'},
+											{key:"M2", name:"Mark K.", subname:"MK", hours:'4.0hs'},
+											{key:"M3", name:"Steve S.", subname:"SS", hours:'3.0hs'},
+											
+  			     	]},
+  			     	{key:120, label:"FLY ACTIVITIES", open:true, children: [
+											{key:"A1", name:"Jae J.", subname:"JJ", hours:'6.0hs'},
+											{key:"A2", name:"Mark K.", subname:"MK", hours:'4.0hs'},
+											{key:"A3", name:"Steve S.", subname:"SS", hours:'3.0hs'},
+											]},
+										];
+			  
+			
+			
+			if (showInitial) {
+					
+				elements[0].children.unshift({"key":"I1", "initial":"Initial plan", });
+				elements[1].children.unshift({"key":"I2", "initial":"Initial plan", });
+				elements[2].children.unshift({"key":"I3", "initial":"Initial plan", });
+				elements[3].children.unshift({"key":"I4", "initial":"Initial plan", });
+				
+			}
+			
+			
+			
+			
+			scheduler1.createTimelineView({
+				section_autoheight: false,
+				name:	"timeline",
+				x_unit:	"minute",
+				x_date:	"%H:%i",
+				x_step:	120,
+				x_size: 6,
+				x_start: 3,
+				x_length:	12,
+				y_unit:	elements,
+				y_property:	"section_id",
+				render:"tree",
+				folder_dy: 50,
+				dy: 30,
+				
+			});
+			
+		/* 	Custom group display */
+			
+ 		scheduler1.templates.timeline_scale_label = function(key, label, section) {
+				
+ 			if ( section.name && section.subname) {
+  				var html = '<div><span class="rond"  >' +  section.subname + '</span><span class="ylabel">' + section.name  + '</span><span  style="float: right;margin-right: 5px;" >' + section.hours +'</span></div>';
+  	 		return html;							
+ 				
+ 			}
+ 			
+ 			if ( section.initial != undefined ) {
+ 				
+ 				var html = '<span  style="float: right;margin-right: 5px;" >' + section.initial +'</span>'
+ 				return html;
+ 				
+ 			}
+ 						
+			if ( section.newop != undefined ) {
+ 				
+ 				var html = '<div><i class="fa fa-plus-circle" style="float:left; padding-left:4px;" ></i><span class="ylabel">Select operator</span></div>';
+ 	  	return html;		
+ 				
+ 			}
+ 			
+			if ( section.children != undefined ) {
+				
+				var html = '<div><span id= folder_' + section.key + ' class="fa fa-chevron-down custom" ></span><div class="ylabelfolder">' + section.label + '<span class="tooltip">' + section.label  + '</span></div><span class="fa fa-user-plus custom" onclick="myFunction(' + section.key + ')" ></span></div>';
+		 	return html;		
+		 				
+				
+			}
+ 			
+	 };
+	 
+	
+	 
+	 scheduler1.templates.timeline_scaley_class = function(key, label,  section){ 
+		
+		 if ( section.initial != undefined ) {
+			
+			 return "initial";
+			 
+		 }
+		 
+		 if ( section.label != undefined ) {
+			 
+			 return "white";
+			 
+		 }
+		    
+		};
+	 
+/* 	 Custom progress display  */	 
+ 
+ scheduler1.templates.event_class = function(start, end, event) {
+									
+				return "grey";
+		
+			};
+ 
+			scheduler1.attachEvent("onYScaleClick", function (index, section, e){
+				
+				if (sOpen && section.children != undefined ) {
+					
+					scheduler1.openSection(section.key);
+					sOpen = false;
+				}
+				
+				
+				if (section.subname && !section.children) {
+					
+				new sap.m.Popover({
+					 placement : "Bottom",
+				 }).openBy(e.srcElement);
+				
+				}
+				
+			});
+			
+			
+			
+			
+		scheduler1.templates.event_bar_text = function(start, end, event) {
+			
+			var html = "";
+			
+			
+			html += '<div  style="width:inherit; height:inherit; position:absolute; z-index: 1; padding-left: 5px;line-height: 23px;left: 0px;" >' +  event.text + '</div>';
+			html += '<div  style="width:inherit; height:inherit; position:absolute" ></div>';
+				
+			if ( event.progress != undefined && event.type === "R" ){
+						html += '<div style="width:' + event.progress + '%; height:inherit; background-color:#7ED320; position:absolute; z-index: 0; left: 0px;">&nbsp;<span  style="width:3px; float:right; background:#417506; height:inherit;" ></span> </div>'
+					}
+			
+			return html;
+		
+				
+			}
+	
+	/* custom initial */
+	
+		scheduler1.templates.timeline_cell_class = function(evs, date, section){
+			if ( section.initial != undefined ) {
+				
+				 return "initial";
+				 
+			 }
+			 if ( section.label != undefined ) {
+				 
+				 return "white";
+				 
+			 }
+		};
+	 
+		scheduler1.attachEvent("onScaleAdd", function(){
+						for (i = 0; i < $("div[class='dhx_scell_expand']").length; i++) { 
+										$("div[class='dhx_scell_expand']")[i].remove();
+						}
+	
+});
+		
+		scheduler1.attachEvent("onAfterFolderToggle", function(section, isOpen, allSections){
+			if (isOpen){
+				
+				$( '#folder_' + section.key  ).removeClass();
+				$( '#folder_' + section.key  ).addClass("fa fa-chevron-down custom");
+				
+			} else {
+				
+				$( '#folder_' + section.key  ).removeClass();
+				$( '#folder_' + section.key  ).addClass("fa fa-chevron-right custom");
+				
+				
+			}
+					
+		});
+	
+		
+		
+	 scheduler1.config.lightbox.sections=[	
+	                         			{name:"description", height:130, map_to:"text", type:"textarea" , focus:true},
+	                         			{name:"custom", height:23, type:"timeline", options:null , map_to:"section_id" }, //type should be the same as name of the tab
+	                         			{name:"time", height:72, type:"time", map_to:"auto"}
+	                         		]
+			
+			scheduler1.addMarkedTimespan({start_date : dTime ,end_date : dTime2, css: "hachure",sections :{  timeline :[ "F1" ,"E1","A1"]}});
+		 scheduler1.addMarkedTimespan({start_date : new Date(2014,05,30,10,30) ,end_date : new Date(2014,05,30,10,33), css: "Blue",});
+		 // to refine can not display marker on all section when the section is allready use before
+		 scheduler1.addMarkedTimespan({start_date : new Date(2014,05,30,10,30) ,end_date : new Date(2014,05,30,10,33), css: "Blue",sections :{  timeline :[ "F1" ,"E1","A1"]}});
+		
+		 scheduler1.attachEvent("onClick", function(id, e) {
+  
+				 new sap.m.Popover({
+					 placement : "Bottom",
+				 }).openBy(e.srcElement);
+    });
+
+		 	scheduler1.config.update_render = true;
+			scheduler1.init(oEvt.srcControl.sId,new Date(2014,5,30),"timeline");
+			scheduler1.clearAll();
+
+			scheduler1.parse([
+			                  
+{ start_date: "2014-06-30 09:00", end_date: "2014-06-30 12:00", text:"Task A-12458", section_id:"I1" , type:"I" , progress:50, text:"WO1 OP30",},
+	{ start_date: "2014-06-30 12:00", end_date: "2014-06-30 14:00", text:"Task A-89411", section_id:"I1" , type:"I" , available : "ok",},
+	{ start_date: "2014-06-30 10:00", end_date: "2014-06-30 14:00", text:"Task A-64168",  section_id:"I1" , type:"I" , progress:50, text:"WO1 OP30",},
+	{ start_date: "2014-06-30 16:00", end_date: "2014-06-30 17:00", text:"Task A-46598",  section_id:"I1" , type:"I" , progress:50, text:"WO1 OP30", },
+	
+			                  
+			                  
+  			{ start_date: "2014-06-30 09:00", end_date: "2014-06-30 12:00", text:"Task A-12458", section_id:"F1" , type:"R" , progress:50, text:"WO1 OP30",},
+  			{ start_date: "2014-06-30 12:00", end_date: "2014-06-30 14:00", text:"Task A-89411", section_id:"F2" , type:"R" , available : "ok",},
+  			{ start_date: "2014-06-30 10:00", end_date: "2014-06-30 14:00", text:"Task A-64168",  section_id:"F3" , type:"R" , progress:50, text:"WO1 OP30",},
+  			{ start_date: "2014-06-30 16:00", end_date: "2014-06-30 17:00", text:"Task A-46598",  section_id:"F1" , type:"R" , progress:50, text:"WO1 OP40", },
+  			
+  	
+  			{ start_date: "2014-06-30 12:00", end_date: "2014-06-30 20:00", text:"Task B-48865",  section_id:"I2" , type:"I" , progress:50, text:"WO1 OP30",},
+  			{ start_date: "2014-06-30 14:00", end_date: "2014-06-30 16:00", text:"Task B-44864",  section_id:"I2" , type:"I" , progress:50, text:"WO1 OP30",},
+  			{ start_date: "2014-06-30 16:30", end_date: "2014-06-30 18:00", text:"Task B-46558",  section_id:"I2" , type:"I" , progress:50, text:"WO1 OP30",},
+  			{ start_date: "2014-06-30 18:30", end_date: "2014-06-30 20:00", text:"Task B-45564",  section_id:"I2" , type:"I" , progress:50, text:"WO1 OP30",},
+  			
+  			
+  			{ start_date: "2014-06-30 12:00", end_date: "2014-06-30 20:00", text:"Task B-48865",  section_id:"E1" , type:"R" , progress:50, text:"WO1 OP30",},
+  			{ start_date: "2014-06-30 14:00", end_date: "2014-06-30 16:00", text:"Task B-44864",  section_id:"E2" , type:"R" , progress:50, text:"WO1 OP30",},
+  			{ start_date: "2014-06-30 16:30", end_date: "2014-06-30 18:00", text:"Task B-46558",  section_id:"E3" , type:"R" , progress:50, text:"WO1 OP30",},
+  			{ start_date: "2014-06-30 18:30", end_date: "2014-06-30 20:00", text:"Task B-45564",  section_id:"E3" , type:"R" , progress:50, text:"WO1 OP30",},
+  			
+  			
+  			{ start_date: "2014-06-30 08:00", end_date: "2014-06-30 12:00", text:"Task C-32421",  section_id:"I3" , type:"I" , progress:50, text:"WO1 OP30",},
+  			{ start_date: "2014-06-30 14:30", end_date: "2014-06-30 16:45", text:"Task C-14244",  section_id:"I3" , type:"I" , progress:50, text:"WO1 OP30",},
+  			
+  			{ start_date: "2014-06-30 08:00", end_date: "2014-06-30 12:00", text:"Task C-32421",  section_id:"M1" , type:"R" , progress:50, text:"WO1 OP30",},
+  			{ start_date: "2014-06-30 14:30", end_date: "2014-06-30 16:45", text:"Task C-14244",  section_id:"M2" , type:"R" , progress:50, text:"WO1 OP30",},
+  			
+
+  			{ start_date: "2014-06-30 09:20", end_date: "2014-06-30 12:20", text:"Task D-52688",  section_id:"I4" , type:"I" , progress:50, text:"WO1 OP30",},
+  			{ start_date: "2014-06-30 11:40", end_date: "2014-06-30 16:30", text:"Task D-46588",  section_id:"I4" , type:"I" , progress:50, text:"WO1 OP30",},
+  			{ start_date: "2014-06-30 12:00", end_date: "2014-06-30 18:00", text:"Task D-12458",  section_id:"I4" , type:"I" , progress:50, text:"WO1 OP30",},
+  			
+  			{ start_date: "2014-06-30 09:20", end_date: "2014-06-30 12:20", text:"Task D-52688",  section_id:"A1" , type:"R" , progress:50, text:"WO1 OP30",},
+  			{ start_date: "2014-06-30 11:40", end_date: "2014-06-30 16:30", text:"Task D-46588",  section_id:"A2" , type:"R" , progress:50, text:"WO1 OP30",},
+  			{ start_date: "2014-06-30 12:00", end_date: "2014-06-30 18:00", text:"Task D-12458",  section_id:"A3" , type:"R" , progress:50, text:"WO1 OP30",}
+			     		],"json");
+			scheduler1.updateView();
+		}
+});
+
+
+
+
+
+
+sap.ui.core.Control.extend("pocaos.DHTMLXScheduler2",	{
+	
+
+	renderer : function(oRm, oControl) {
+
+		oRm.write("<div ");
+		oRm.writeControlData(oControl);
+		oRm.write(" class='dhx_cal_container' style='background-color:rgba(242, 180, 87, 1) ;'>");
+	
+		oRm.write("	<div class='dhx_cal_navline' >");
+		oRm.write(" 	<div id='test'>");
+		oRm.write(" 	</div>");
+		oRm.write("		<div class='dhx_cal_date'></div>");
+		oRm.write("	</div>");
+		oRm.write("	<div class='dhx_cal_header' style='border:none;'></div>");
+		oRm.write("	<div class='dhx_cal_data'></div>");
+		oRm.write("</div>");
+
+	},
+
+	onAfterRendering : function(oEvt) {
+		scheduler2.xy.bar_height = 30;
+		scheduler2.locale.labels.timeline_tab = "Timeline";
+		scheduler2.locale.labels.section_custom="Section";
+		scheduler2.config.details_on_create=true;
+		scheduler2.config.details_on_dblclick=true;
+		scheduler2.config.xml_date="%Y-%m-%d %H:%i";
+
+		var sections=[
+		  			{key:1, label:"FUEL"},
+		  			{key:2, label:"MECA"},
+		  			
+		  		];
+		
+		scheduler2.createTimelineView({
+			section_autoheight: false,
+			name:	"timeline",
+			x_unit:	"minute",
+			x_date:	"%H:%i",
+			x_step:	30,
+			x_size: 24,
+			x_start: 16,
+			x_length:	48,
+			y_unit:	sections,
+			y_property:	"section_id",
+			render:"bar"
+		});
+		
+		scheduler2.templates.timeline_scaley_class = function(key, label,  section){ 
+		    return "borderY";
+		};
+		scheduler2.templates.timeline_scale_date = function(date){
+			  return "";
+			}
+		scheduler2.templates.timeline_scalex_class = function(date){
+					return "borderX";
+		};
+		scheduler2.templates.timeline_cell_class = function(evs, date, section){
+		    return "borderCell";
+		};
+scheduler2.templates.timeline_date = function(date1, date2){
+    return "IMPORT OSW";
+};
+scheduler2.templates.event_class = function(start,end,ev){
+    return "eventOrange";
+};
+		
+		scheduler2.config.lightbox.sections=[
+		                        			{name:"description", height:130, map_to:"text", type:"textarea" , focus:true},
+		                        			{name:"custom", height:23, type:"select", options:sections, map_to:"section_id" },
+		                        			{name:"time", height:72, type:"time", map_to:"auto"}
+		                        		];
+		
+		scheduler2.init(oEvt.srcControl.sId,new Date(2014,5,30),"timeline");
+		scheduler2.clearAll();
+		scheduler2.parse([
+		     			{ start_date: "2014-06-30 08:00", end_date: "2014-06-30 10:00", text:"WO1 OP10 4,0hrs", section_id:1},
+		     			{ start_date: "2014-06-30 10:00", end_date: "2014-06-30 16:00", text:"WO1 OP10 4,0hrs", section_id:1},
+		     			{ start_date: "2014-06-30 16:00", end_date: "2014-06-30 19:30", text:"WO1 OP10 4,0hrs", section_id:1},
+		     			{ start_date: "2014-06-30 08:00", end_date: "2014-06-30 9:00", text:"WO1 OP10 4,0hrs", section_id:1},
+		     			{ start_date: "2014-06-30 09:00", end_date: "2014-06-30 15:00", text:"WO1 OP10 4,0hrs", section_id:1},
+		     			{ start_date: "2014-06-30 15:00", end_date: "2014-06-30 19:00", text:"WO1 OP10 4,0hrs", section_id:1},
+		     			{ start_date: "2014-06-30 08:00", end_date: "2014-06-30 10:00", text:"WO1 OP10 4,0hrs", section_id:1},
+		     			{ start_date: "2014-06-30 10:00", end_date: "2014-06-30 16:00", text:"WO1 OP10 4,0hrs", section_id:1},
+		     			{ start_date: "2014-06-30 16:00", end_date: "2014-06-30 19:30", text:"WO1 OP10 4,0hrs", section_id:1},
+		     			{ start_date: "2014-06-30 08:00", end_date: "2014-06-30 9:00", text:"WO1 OP10 4,0hrs", section_id:1},
+		     			{ start_date: "2014-06-30 09:00", end_date: "2014-06-30 15:00", text:"WO1 OP10 4,0hrs", section_id:1},
+		     			{ start_date: "2014-06-30 15:00", end_date: "2014-06-30 19:00", text:"WO1 OP10 4,0hrs", section_id:1},
+		     			
+		     			{ start_date: "2014-06-30 08:00", end_date: "2014-06-30 10:00", text:"WO1 OP10 4,0hrs", section_id:2},
+		     			{ start_date: "2014-06-30 10:00", end_date: "2014-06-30 16:00", text:"WO1 OP10 4,0hrs", section_id:2},
+		     			{ start_date: "2014-06-30 16:00", end_date: "2014-06-30 19:30", text:"WO1 OP10 4,0hrs", section_id:2},
+		     			{ start_date: "2014-06-30 08:00", end_date: "2014-06-30 9:00", text:"WO1 OP10 4,0hrs", section_id:2},
+		     			{ start_date: "2014-06-30 09:00", end_date: "2014-06-30 15:00", text:"WO1 OP10 4,0hrs", section_id:2},
+		     			{ start_date: "2014-06-30 15:00", end_date: "2014-06-30 19:00", text:"WO1 OP10 4,0hrs", section_id:2},
+		    				{ start_date: "2014-06-30 08:00", end_date: "2014-06-30 10:00", text:"WO1 OP10 4,0hrs", section_id:2},
+		     			{ start_date: "2014-06-30 10:00", end_date: "2014-06-30 16:00", text:"WO1 OP10 4,0hrs", section_id:2},
+		     			{ start_date: "2014-06-30 16:00", end_date: "2014-06-30 19:30", text:"WO1 OP10 4,0hrs", section_id:2},
+		     			{ start_date: "2014-06-30 08:00", end_date: "2014-06-30 9:00", text:"WO1 OP10 4,0hrs", section_id:2},
+		     			{ start_date: "2014-06-30 09:00", end_date: "2014-06-30 15:00", text:"WO1 OP10 4,0hrs", section_id:2},
+		     			{ start_date: "2014-06-30 15:00", end_date: "2014-06-30 19:00", text:"WO1 OP10 4,0hrs", section_id:2},
+		     		],"json");
+		scheduler2.updateView();
+	}
+
+});
+
+ var oGantt1 = new pocaos.DHTMLXScheduler1({
+	 
+	 layoutData : new sap.ui.layout.SplitterLayoutData({ size : "auto"})
+ 
+ });
+ 
+ var oGantt2 = new pocaos.DHTMLXScheduler2({
+	 
+	 layoutData : new sap.ui.layout.SplitterLayoutData({ size : "auto"})
+ 
+ });
+ 
+	var bGantt2 = false;
+
+	var myPage = new sap.m.Page({
+		
+		
+		enableScrolling : false,
+		customHeader : [ new  sap.m.Toolbar({
+ 					
+						content : [
+						               			new sap.m.Image({src : "../img/Airbus.png", width :"10rem", height :"2rem"}),
+						           				new sap.m.ToolbarSeparator(),
+ 					             				new sap.m.Label({ text : "MES"  }).addStyleClass("pageTitle"),
+ 					             				
+ 					             				new sap.m.ToolbarSpacer(),
+ 					             				
+ 					             				new sap.ui.core.Icon({src : "sap-icon://customer"}),
+								              	new sap.m.Label({ text : "Welcome "}).addStyleClass("pageWelcome"), 
+								              	new sap.m.Label({ text : "Username", design :"Bold"}).addStyleClass("pageUsername"), 
+ 								             	
+ 								             	new sap.m.ToolbarSeparator(),								           
+
+ 												new sap.m.Button({text :"Logout", icon :"sap-icon://log", type : "Transparent" }).addStyleClass("whiteColor").addStyleClass("whiteButton"),
+ 										        new sap.m.ToolbarSeparator(),
+												new sap.m.Select({ items : [ new sap.ui.core.Item({ text : "English" }),new sap.ui.core.Item({ text : "Deutsch" })]}).addStyleClass("sapUiTinyMarginBeginEnd").addStyleClass("pageHeader").addStyleClass("pageHeaderBlue"),
+ 										        new sap.m.ToolbarSeparator(),
+ 												new sap.m.Button({icon :"sap-icon://action-settings", type : "Transparent"}).addStyleClass("whiteColor").addStyleClass("whiteButton"),
+
+
+						           ],
+					}).addStyleClass("pageHeader")
+		              ],             
+		   
+ 				content : [
+ 				           new sap.m.Panel({expandable : true, expanded : true, headerToolbar : new  sap.m.Toolbar({
+			 					
+								content : [
+		 					             				new sap.m.Label({ text : "Station 10"  }).addStyleClass("pageTitle").addStyleClass("sapUiTinyMarginBeginEnd"),
+		 					             				new sap.m.Label({ text : "MSN 1485"  }).addStyleClass("pageWelcome").addStyleClass("sapUiTinyMarginBeginEnd"),
+		 					             				new sap.m.Label({ text : "Plant DZ"  }).addStyleClass("pageWelcome").addStyleClass("sapUiTinyMarginBeginEnd"),
+		 					             				new sap.m.Label({ text : "Line : Comet"  }).addStyleClass("pageWelcome").addStyleClass("sapUiTinyMarginBeginEnd"),
+								           ],
+							}), content :	new sap.suite.ui.commons.HeaderContainer({showDividers : false, items :[
+							                                                         						                                                  
+							                                                                              	                    							new sap.suite.ui.commons.HeaderCell ({
+							                                                                              	                    								north : new sap.suite.ui.commons.HeaderCellItem({content : [new sap.m.Label({text : "TAKT ADHERENCE" , design :"Bold"})]}) , 
+							                                                                              	                    								south : new sap.suite.ui.commons.HeaderCellItem({content : [new sap.m.HBox({alignItems:"Baseline",
+							                                                                              	                    								items : [new sap.m.VBox({alignItems:"Stretch", items : [ new sap.m.Label({
+							                                                                              	                    									text : "Planned"
+							                                                                              	                    								}).addStyleClass("sapUiLargeMarginEnd"),new sap.m.Label({
+							                                                                              	                    									text : "80%", design :"Bold"
+							                                                                              	                    								}).addStyleClass("sapUiSmallMarginTop").addStyleClass("kpiValue")]}),new sap.m.VBox({items : [ new sap.m.Label({
+							                                                                              	                    									text : "Real"
+							                                                                              	                    								}).addStyleClass("sapUiLargeMarginEnd").addStyleClass("red"),new sap.m.Label({
+							                                                                              	                    									text : "60%", design :"Bold"
+							                                                                              	                    								}).addStyleClass("sapUiSmallMarginTop").addStyleClass("kpiValue").addStyleClass("red")]}),new sap.m.VBox({items : [ new sap.m.Label({
+							                                                                              	                    									text : "Remaining time"
+							                                                                              	                    								}).addStyleClass("sapUiLargeMarginEnd"),new sap.m.Label({
+							                                                                              	                    									text : "20:30:12", design :"Bold"
+							                                                                              	                    								}).addStyleClass("sapUiSmallMarginTop").addStyleClass("kpiValue")]})
+							                                                                              	                    										
+							                                                                              	                    								]
+							                                                                              	                    							})
+							                                                                              	                    							 ]})
+							                                                                              	                    							}),
+							                                                                              	                    							/* new sap.suite.ui.commons.HeaderCell ({
+							                                                                              	                    								north : new sap.suite.ui.commons.HeaderCellItem({content : [new sap.m.Label({text : "TREND" , design :"Bold"})]}) , 
+							                                                                              	                    								south : new sap.suite.ui.commons.HeaderCellItem({content : [new sap.suite.ui.microchart.AreaMicroChart({width:"164px", height:"42px", chart : new sap.suite.ui.microchart.AreaMicroChartItem({points : [ new sap.suite.ui.microchart.AreaMicroChartPoint({x : 0, y :5}), new sap.suite.ui.microchart.AreaMicroChartPoint({x : 10, y :10}), new sap.suite.ui.microchart.AreaMicroChartPoint({x : 20, y :-5}), new sap.suite.ui.microchart.AreaMicroChartPoint({x : 70, y :-10}), new sap.suite.ui.microchart.AreaMicroChartPoint({x : 80, y :-20}), new sap.suite.ui.microchart.AreaMicroChartPoint({x : 100, y :-5})]}), target : new sap.suite.ui.microchart.AreaMicroChartItem({points : [ new sap.suite.ui.microchart.AreaMicroChartPoint({x : 0, y :0}), new sap.suite.ui.microchart.AreaMicroChartPoint({x : 100, y :0})]})})]})
+							                                                                              	                    							}),  */                                          
+							                                                                              	                    							new sap.suite.ui.commons.HeaderCell ({
+							                                                                              	                    								north : new sap.suite.ui.commons.HeaderCellItem({content : [new sap.m.Label({text : "PROGRESS STATUS" , design :"Bold"})]}) , 
+							                                                                              	                    								south : new sap.suite.ui.commons.HeaderCellItem({content : [new sap.m.HBox({alignItems:"Baseline",
+							                                                                              	                    								items : [new sap.m.VBox({alignItems:"Stretch", items : [ new sap.m.Label({
+							                                                                              	                    									text : "OP Done"
+							                                                                              	                    								}).addStyleClass("sapUiLargeMarginEnd").addStyleClass("green"),new sap.m.Label({
+							                                                                              	                    									text : "20%", design :"Bold"
+							                                                                              	                    								}).addStyleClass("sapUiSmallMarginTop").addStyleClass("kpiValue").addStyleClass("green")]}),new sap.m.VBox({items : [ new sap.m.Label({
+							                                                                              	                    									text : "OP Late"
+							                                                                              	                    								}).addStyleClass("sapUiLargeMarginEnd"),new sap.m.Label({
+							                                                                              	                    									text : "20%", design :"Bold"
+							                                                                              	                    								}).addStyleClass("sapUiSmallMarginTop").addStyleClass("kpiValue")]}),new sap.m.VBox({items : [ new sap.m.Label({
+							                                                                              	                    									text : "OP Ahead"
+							                                                                              	                    								}).addStyleClass("sapUiLargeMarginEnd"),new sap.m.Label({
+							                                                                              	                    									text : "20%", design :"Bold"
+							                                                                              	                    								}).addStyleClass("sapUiSmallMarginTop").addStyleClass("kpiValue")]})
+							                                                                              	                    										
+							                                                                              	                    								]
+							                                                                              	                    							})
+							                                                                              	                    							 ]})
+							                                                                              	                    							}),
+							                                                                              	                    							new sap.suite.ui.commons.HeaderCell ({
+							                                                                              	                    								north : new sap.suite.ui.commons.HeaderCellItem({content : [new sap.m.Label({text : "OPERATION STATUS" , design :"Bold"})]}) , 
+							                                                                              	                    								south : new sap.suite.ui.commons.HeaderCellItem({content : [new sap.m.HBox({alignItems:"Baseline",
+							                                                                              	                    								items : [new sap.m.VBox({alignItems:"Stretch", items : [ new sap.m.Label({
+							                                                                              	                    									text : "Confirmed"
+							                                                                              	                    								}).addStyleClass("sapUiLargeMarginEnd").addStyleClass("green"),new sap.m.Label({
+							                                                                              	                    									text : "20%", design :"Bold"
+							                                                                              	                    								}).addStyleClass("sapUiSmallMarginTop").addStyleClass("kpiValue").addStyleClass("green")]}),new sap.m.VBox({items : [ new sap.m.Label({
+							                                                                              	                    									text : "Partially Conf."
+							                                                                              	                    								}).addStyleClass("sapUiLargeMarginEnd"),new sap.m.Label({
+							                                                                              	                    									text : "20%", design :"Bold"
+							                                                                              	                    								}).addStyleClass("sapUiSmallMarginTop").addStyleClass("kpiValue")]})
+							                                                                              	                    										
+							                                                                              	                    								]
+							                                                                              	                    							})
+							                                                                              	                    							 ]})
+							                                                                              	                    							}),
+							                                                                              	                    							new sap.suite.ui.commons.HeaderCell ({
+							                                                                              	                    								north : new sap.suite.ui.commons.HeaderCellItem({content : [new sap.m.Label({text : "DISRUPTIONS" , design :"Bold"})]}) , 
+							                                                                              	                    								south : new sap.suite.ui.commons.HeaderCellItem({content : [new sap.m.HBox({alignItems:"Baseline",
+							                                                                              	                    								items : [new sap.m.VBox({alignItems:"Stretch", items : [ new sap.m.Label({
+							                                                                              	                    									text : "Other"
+							                                                                              	                    								}).addStyleClass("sapUiLargeMarginEnd"),new sap.m.Label({
+							                                                                              	                    									text : "5", design :"Bold"
+							                                                                              	                    								}).addStyleClass("sapUiSmallMarginTop").addStyleClass("kpiValue")]}),new sap.m.VBox({items : [ new sap.m.Label({
+							                                                                              	                    									text : "NC"
+							                                                                              	                    								}).addStyleClass("sapUiLargeMarginEnd"),new sap.m.Label({
+							                                                                              	                    									text : "1", design :"Bold"
+							                                                                              	                    								}).addStyleClass("sapUiSmallMarginTop").addStyleClass("kpiValue")]}),new sap.m.VBox({items : [ new sap.m.Label({
+							                                                                              	                    									text : "Missing part"
+							                                                                              	                    								}).addStyleClass("sapUiLargeMarginEnd"),new sap.m.Label({
+							                                                                              	                    									text : "2", design :"Bold"
+							                                                                              	                    								}).addStyleClass("sapUiSmallMarginTop").addStyleClass("kpiValue")]})
+							                                                                              	                    										
+							                                                                              	                    								]
+							                                                                              	                    							})
+							                                                                              	                    							 ]})
+							                                                                              	                    							}),
+							                                                                              	                    							new sap.suite.ui.commons.HeaderCell ({
+							                                                                              	                    								north : new sap.suite.ui.commons.HeaderCellItem({content : [new sap.m.Label({text : "DISRUPTIONS STATUS" , design :"Bold"})]}) , 
+							                                                                              	                    								south : new sap.suite.ui.commons.HeaderCellItem({content : [new sap.m.HBox({alignItems:"Baseline",
+							                                                                              	                    								items : [new sap.m.VBox({alignItems:"Stretch", items : [ new sap.m.Label({
+							                                                                              	                    									text : "Closed"
+							                                                                              	                    								}).addStyleClass("sapUiLargeMarginEnd").addStyleClass("green"),new sap.m.Label({
+							                                                                              	                    									text : "3", design :"Bold"
+							                                                                              	                    								}).addStyleClass("sapUiSmallMarginTop").addStyleClass("kpiValue").addStyleClass("green")]}),new sap.m.VBox({items : [ new sap.m.Label({
+							                                                                              	                    									text : "Opened"
+							                                                                              	                    								}).addStyleClass("sapUiLargeMarginEnd").addStyleClass("red"),new sap.m.Label({
+							                                                                              	                    									text : "5", design :"Bold"
+							                                                                              	                    								}).addStyleClass("sapUiSmallMarginTop").addStyleClass("kpiValue").addStyleClass("red")]})
+							                                                                              	                    										
+							                                                                              	                    								]
+							                                                                              	                    							})
+							                                                                              	                    							 ]})
+							                                                                              	                    							}),
+							                                                                              	                    							                                                                                         
+							                                                                              	                    	                                                  
+							                                                                              	                     						]}) }).addStyleClass("pageHeader").addStyleClass("sapUiSmallMarginTop"),
+ 				          
+			
+ 				           
+ 				           
+ 				           
+ 				           
+ 				           new sap.m.OverflowToolbar({
+ 					
+						content : [ new sap.m.Button({
+							
+						 	text : "42",
+						 	icon : "sap-icon://group",
+						 	type :"Transparent",
+						 	press : function() {if (! this._oPopover1) {
+								this._oPopover1 = new sap.m.Popover({placement:"Bottom", horizontalScrolling: false, title:"Team", content:[ 
+								                                                                                                             
+								                                                                                                             
+new sap.m.List({items :[new sap.m.CustomListItem({
+	content : [
+		         new sap.m.Button({type :"Transparent",text:"Open team availability",iconFirst:false, icon:"sap-icon://feeder-arrow", width:"100%"}).addStyleClass("blackTextButton").addStyleClass("blackTextButton2"),
+		         new sap.m.Button({type :"Transparent",type :"Transparent",text:"Open poly poly matrix",iconFirst:false,icon:"sap-icon://feeder-arrow",width:"100%"}).addStyleClass("blackTextButton").addStyleClass("blackTextButton2"),
+		         new sap.m.Panel({expandable : true, expanded : false, headerToolbar : new  sap.m.Toolbar({width:"100%", content :[new sap.m.Label({text:"List of team members"})]}), content :[
+					new sap.m.List({headerText:"List of 42 operators", items :[new sap.m.CustomListItem({
+					content : [
+								new sap.m.HBox({items : [ new sap.m.Label({text : "MK" }).addStyleClass("rond").addStyleClass("sapUiSmallMarginBeginEnd"),new sap.m.Label({ text : "Mark K." })]}).addStyleClass("sapUiSmallMarginBottom"),
+								new sap.m.HBox({items : [ new sap.m.Label({text : "LA" }).addStyleClass("rond").addStyleClass("sapUiSmallMarginBeginEnd"),new sap.m.Label({ text : "Luca" })]}).addStyleClass("sapUiSmallMarginBottom"),
+								new sap.m.HBox({items : [ new sap.m.Label({text : "PC" }).addStyleClass("rond").addStyleClass("sapUiSmallMarginBeginEnd"),new sap.m.Label({ text : "Paola C." })]}).addStyleClass("sapUiSmallMarginBottom"),
+								new sap.m.HBox({items : [ new sap.m.Label({text : "JJ" }).addStyleClass("rond").addStyleClass("sapUiSmallMarginBeginEnd"),new sap.m.Label({ text : "Jae J." })]}).addStyleClass("sapUiSmallMarginBottom"),
+								new sap.m.HBox({items : [ new sap.m.Label({text : "MK" }).addStyleClass("rond").addStyleClass("sapUiSmallMarginBeginEnd"),new sap.m.Label({ text : "Mark K." })]}).addStyleClass("sapUiSmallMarginBottom"),
+								new sap.m.HBox({items : [ new sap.m.Label({text : "SS" }).addStyleClass("rond").addStyleClass("sapUiSmallMarginBeginEnd"),new sap.m.Label({ text : "Steve S." })]}).addStyleClass("sapUiSmallMarginBottom"),
+					           ]})]}).addStyleClass("operatorList")   
+							]}).addStyleClass("panelContent").addStyleClass("panelContentList") ,
+		         new sap.m.Button({type :"Transparent",type :"Transparent",text:"Load operators from other stations",icon:"sap-icon://sort",width:"100%"}).addStyleClass("otherStations").addStyleClass("whiteTextButton").addStyleClass("whiteButton")
+
+		         
+				
+	]
+	})] })                                                                                                
+								                                                                                                             
+								                                                                                                             
+								                                                                                                             
+								                                                                                                             
+								                                                                                                             
+								                                                                                                             
+								                                                                                                             
+								                                                                                                             
+								                                                                                                             
+								                                                                                                             
+								                                                                                                             
+								                                                                                                             
+								                                                                                                             
+								                                                                                                             ]  }).addStyleClass("alignTextLeft")
+							}this._oPopover1.openBy(this);}
+						 	}).addStyleClass("buttonStatus"),new sap.m.ToolbarSeparator(),	 						           
+
+						 	/* new sap.m.Button({ 
+							 	icon : "sap-icon://email",
+							 	text : "5",
+							 	type :"Transparent",
+							 	press : function() {if (! this._oPopover2) {
+									this._oPopover2 = new sap.m.Popover({placement:"Bottom", title: "NOTIFICATIONS", horizontalScrolling: false , content:[
+									    new sap.m.VBox({
+										items : [ new sap.m.Label({
+											text : "JJ"
+										}).addStyleClass("rond"),new sap.m.Label({
+											text : "Jae J.", design :"Bold"
+										}),new sap.m.Label({
+											text : "Not available for the current shift"
+										}).addStyleClass("notifDetails"),new sap.m.Label({
+											text : "Mark K." , design :"Bold"
+										}),new sap.m.Label({
+											text : "Not available from 10:00 to 12:00"
+										}).addStyleClass("notifDetails"),new sap.m.Label({
+											text : "Mark K." , design :"Bold"
+										}),new sap.m.Label({
+											text : "Has reported a disruption on operation W01 OP20"
+										}).addStyleClass("notifDetails")
+												
+										]
+									})]});
+								}this._oPopover2.openBy(this);}
+							 	}).addStyleClass("buttonNotif"), *//* new sap.m.ToolbarSeparator(), */
+						               
+						               new sap.m.Label({ text : "Sort By : "  }),
+						               
+						               new sap.m.Select({ items : [ new sap.ui.core.Item({ text : "Competence " }),
+						            		  																											new sap.ui.core.Item({ text : "Avl" })
+						              																] }).addStyleClass("sapUiTinyMarginBeginEnd"),
+						              																
+						              	new sap.m.Label({ text : "Show : "  }),
+						              	
+						              	new sap.m.Select({ items : [ new sap.ui.core.Item({ text : "Operations " }),
+										new sap.ui.core.Item({ text : "Competency" })] }).addStyleClass("sapUiTinyMarginBeginEnd"),
+										//
+										new sap.m.ToolbarSpacer(),
+										/* new sap.m.ToolbarSeparator(), */
+
+										new sap.m.Button({ 
+							 	text : "show CP",
+							 	type :"Transparent",
+							 	icon : "sap-icon://popup-window",
+							 	press : function() {
+							 		
+							 		
+							 		if (CPActive == false) {
+							 		scheduler1.templates.event_class = function(start,end,ev){
+										if ((ev.text=="WO1 OP30" && ev.section_id=="F1") || (ev.text=="WO1 OP30" && (ev.section_id=="E2" || ev.section_id=="E3" )) ){
+							 		    return "OperationCP";}
+										else {return "grey";}
+							 		    
+							 		};
+							 		  CPActive = true;
+						        	  scheduler1.updateView();}
+							 		else {
+							 			scheduler1.templates.event_class = function(start,end,ev){
+											
+								 		    return "grey";
+								 		    
+								 		};
+								 		  CPActive = false;
+							        	  scheduler1.updateView();
+							 		}
+							 		
+
+							 		
+							 	}
+							 	}).addStyleClass("sapUiTinyMarginBeginEnd"),
+/* 							 	new sap.m.ToolbarSeparator(),
+ */							 	/* new sap.m.Button({ 
+								 	text : "show ANDON",
+								 	type :"Transparent",
+								 	icon : "sap-icon://popup-window",
+								 	press : function() {
+								 	}
+								 	}).addStyleClass("sapUiTinyMarginBeginEnd"), */
+								 	/* new sap.m.ToolbarSeparator(),
+																				new sap.m.Button({ 
+																				 	text : "show OSW",
+																				 	type :"Transparent",
+																				 	icon : "sap-icon://popup-window",
+																				 	press : function() {
+																				 		
+																				 		if( !bGantt2 ){
+																				 		sap.ui.getCore().byId("splitter").removeAllContentAreas();
+																				 		sap.ui.getCore().byId("splitter").addContentArea(oGantt1);
+																				 		sap.ui.getCore().byId("splitter").addContentArea(oGantt2);
+																				 		bGantt2 = true;
+																				 		
+																				 		} else {
+																				 			sap.ui.getCore().byId("splitter").removeAllContentAreas();
+																				 			sap.ui.getCore().byId("splitter").addContentArea(oGantt1);
+																				 	 
+																					 		bGantt2 = false;
+																				 			
+																				 		}
+																				 	}
+																				 	}).addStyleClass("sapUiTinyMarginBeginEnd"), */
+/* 																				 	new sap.m.ToolbarSeparator(),
+ */																					
+																				 	new sap.m.Button({ 
+																					 	text : "show initial plan",
+																					 	type :"Transparent",
+																					 	icon : "sap-icon://popup-window",
+																					 	press : function() {
+																					 		
+																					 		if ( showInitial ) {
+																					 			showInitial = false;
+																					 			oGantt1.rerender();
+																					 		} else {
+																					 			showInitial = true;
+																					 			oGantt1.rerender();
+																					 		}
+																					 		
+																					 	}
+																					 	}).addStyleClass("sapUiTinyMarginBeginEnd"),
+																					
+																					 	 new sap.m.SegmentedButton({
+																					 		 																 		 
+																					 		layoutData : new sap.m.OverflowToolbarLayoutData({		priority:sap.m.OverflowToolbarPriority.NeverOverflow }),
+																					 		
+																								items : [	new sap.m.SegmentedButtonItem({ text : "Shift", press	: function(){
+																						        	  scheduler1.matrix['timeline'].x_unit = 'minute';
+																						        	  scheduler1.matrix['timeline'].x_step = 120;
+																						        	  scheduler1.matrix['timeline'].x_size = 6;
+																						        	  scheduler1.matrix['timeline'].x_length = 12;
+																						        	  scheduler1.matrix['timeline'].x_start=	3,
+																						        	  scheduler1.matrix['timeline'].x_date = "%H:%i";
+																						        	  scheduler1.templates.timeline_scale_date = function(date){
+																						        		   var func=scheduler1.date.date_to_str(scheduler1.matrix['timeline'].x_date );
+																						        		   return func(date);
+																						        		};
+																						        	  scheduler1.updateView();
+
+																						          }}),
+																								          new sap.m.SegmentedButtonItem({ text : "Day", press	: function(){
+																								        	  scheduler1.matrix['timeline'].x_unit = 'minute';
+																								        	  scheduler1.matrix['timeline'].x_step = 120;
+																								        	  scheduler1.matrix['timeline'].x_start=	3,
+																								        	  scheduler1.matrix['timeline'].x_size = 8.5;
+																								        	  scheduler1.matrix['timeline'].x_length = 12;
+																								        	  scheduler1.matrix['timeline'].x_date = "%H:%i";
+																								        	  scheduler1.templates.timeline_scale_date = function(date){
+																								        		   var func=scheduler1.date.date_to_str(scheduler1.matrix['timeline'].x_date);
+																								        		   return func(date);
+																								        		};
+																								        	  scheduler1.updateView();
+
+																								          }}),
+																								          new sap.m.SegmentedButtonItem({ text : "Takt", press	: function(){
+																								        	  scheduler1.matrix['timeline'].x_unit = 'day';
+																								        	  scheduler1.matrix['timeline'].x_step = 1;
+																								        	  scheduler1.matrix['timeline'].x_size = 5;
+																								        	  scheduler1.matrix['timeline'].x_start= -2,
+																								        	  scheduler1.matrix['timeline'].x_date = '%j/%m';
+																								        	  scheduler1.templates.timeline_scale_date = function(date){
+																								        		   var func=scheduler1.date.date_to_str(scheduler1.matrix['timeline'].x_date);
+																								        		   return func(date);
+																								        		};
+																								        	  scheduler1.updateView();
+
+																								        	  
+																								        	  
+																								          }}),
+																								         ]
+																								})
+
+
+							              
+						              																
+						              																],
+						
+							
+					}).addStyleClass("white"), 
+
+															new sap.ui.layout.Splitter("splitter",{
+																height : "auto",
+																
+																resize : function() {
+																	
+																	if ( document.getElementById(oGantt1.sId) != null ){
+																		
+																		oGantt1.setLayoutData(new sap.ui.layout.SplitterLayoutData({ size : "auto"}));
+																		scheduler1.updateView();
+																		
+																		
+																	}
+																
+																if ( document.getElementById(oGantt2.sId) != null ){
+																	
+																	scheduler2.updateView();
+																	
+																}
+																																	
+																},
+																height : "950px", 
+																orientation : "Vertical",
+																contentAreas : [ oGantt1  ]
+															
+																
+															})
+															
+															
+ 				        ]
+		
+	});
+  
+	myPage.placeAt("content");
+	
+	
+	
+	
+	</script>
+</head>
+<body 
+			class="sapUiBody" role="application">
+		<div id="content"></div>
+</body>
