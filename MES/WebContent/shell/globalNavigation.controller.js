@@ -60,13 +60,16 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 		
 	    jQuery.sap.registerModulePath("airbus.mes.settings","/MES/components/settings");
 	    jQuery.sap.registerModulePath("airbus.mes.stationtracker","/MES/components/stationtracker");
-		
-	    var oComp = sap.ui.getCore().createComponent({
+
+	    if (airbus.mes.settings != undefined) {
+	    	nav.to(airbus.mes.settings.oView.getId());
+		}
+	    else {
+	    	sap.ui.getCore().createComponent({
 			name : "airbus.mes.settings", // root component folder is resources
 		});
-
-		nav.addPage(oComp.oView);
-		nav.to(oComp.oView.getId()); 
-		
+	    	
+		nav.addPage(airbus.mes.settings.oView);
+		nav.to(airbus.mes.settings.oView.getId()); }
 	},
 });
