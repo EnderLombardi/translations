@@ -1,11 +1,15 @@
+"use strict";
+
 jQuery.sap.require("sap.ui.core.UIComponent");
 jQuery.sap.require("sap.ui.base.Event");
 
+jQuery.sap.require("airbus.mes.settings.ModelManager");
+
 // Declare the current Component
-jQuery.sap.declare("SettingScreenComponent.Component");
+jQuery.sap.declare("airbus.mes.settings.Component");
 
 // Extend current Component
-sap.ui.core.UIComponent.extend("SettingScreenComponent.Component", {
+sap.ui.core.UIComponent.extend("airbus.mes.settings.Component", {
 	manifestUrl : "Component.json",
 	metadata : {
 		properties : {
@@ -17,10 +21,10 @@ sap.ui.core.UIComponent.extend("SettingScreenComponent.Component", {
 });
 
 // override the createContent function to return user interface
-SettingScreenComponent.Component.prototype.createContent = function() {
+airbus.mes.settings.Component.prototype.createContent = function() {
 	this.oView = sap.ui.view({
 		id : "View1",
-		viewName : "SettingScreen.FilterPlantData",
+		viewName : "airbus.mes.settings.FilterPlantData",
 		type : "XML",
 	})
 	return this.oView;

@@ -1,0 +1,56 @@
+{
+	"buttonDetail": [{
+
+		"text": "Station Tracker",
+		"url": "http://item-s24562:52456/application2/index.html"
+	}, {
+
+		"text": "OSW Input Mgt",
+		"url": "http://item-s24562:52456/application2/index.html"
+	}, {
+
+		"text": "Team Availability",
+		"url": "http://item-s24562:52456/application2/index.html"
+	}, {
+
+		"text": "Team Competencies",
+		"url": "http://item-s24562:52456/application2/index.html"
+	}, {
+
+		"text": "Team Assignment",
+		"url": "http://item-s24562:54356/MES/index.html"
+	},
+	{
+
+		"text": "Means Managment",
+		"url": "http://item-s24562:54356/MES/index.html"
+	},
+	{
+
+		"text": "Work Order Tracker",
+		"url": "http://item-s24562:54356/MES/index.html"
+	},
+	{
+
+		"text": "Disruption Andon",
+		"url": "http://item-s24562:52456/application2/index.html"
+	},{
+
+		"text": "Missing Parts Tracker",
+		"url": "http://item-s24562:54356/MES/index.html"
+	},
+	{
+
+		"text": "Station SQCDP Pareto",
+		"url": "http://item-s24562:54356/MES/index.html"
+	},
+	{
+
+		"text": "Problem Solving Tracker",
+		"url": "http://item-s24562:54356/MES/index.html"
+	}
+	
+	]
+}
+
+

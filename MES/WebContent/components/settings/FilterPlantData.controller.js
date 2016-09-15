@@ -1,4 +1,4 @@
-sap.ui.controller("components.SettingScreen.FilterPlantData",
+sap.ui.controller("airbus.mes.settings.FilterPlantData",
 		{
 
 			/**

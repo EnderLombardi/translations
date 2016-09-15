@@ -1,8 +1,8 @@
 {
-	"id": "component.SettingScreenComponent",
-    "name": "component.SettingScreenComponent",
+	"id": "airbus.mes.settings.SettingsScreenComponent",
+    "name": "airbus.mes.settings.SettingsScreenComponent",
     "version": "0.1.0",
-    "description": "Setting screen component",
+    "description": "Settings Screen Component",
     "keywords": [
         "view" 
     ],

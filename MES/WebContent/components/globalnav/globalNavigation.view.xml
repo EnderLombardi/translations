@@ -1,0 +1,54 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:cData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+		controllerName="airbus.mes.globalnav.globalNavigation" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="MES" enableScrolling="false" class="GenricBgColor">
+		<customHeader>
+			<Toolbar>
+				<Image src="/MES/images/Airbus.png" height="2.0REM" />
+				<ToolbarSpacer /><!-- <core:Icon src="sap-icon://vertical-grip" /> -->
+				<Title id="customHeaderTitle" titleStyle="H3" text="MES" />
+				<ToolbarSpacer />
+				<Select>
+					<items>
+						<core:ListItem icon="sap-icon://slim-arrow-down"
+							text="English">
+
+						</core:ListItem>
+					</items>
+				</Select>
+				<Button icon="sap-icon://action-settings" />
+			</Toolbar>
+		</customHeader>
+
+		<content>
+
+			<FlexBox height="100%" width="100%" alignItems="Center"
+				justifyContent="Center">
+				<items>
+					<VBox id="appNameBox" width="60%">
+						<items>
+							<Toolbar class="titleToolbar">
+								<content>
+									<Text class="textSize" text="Welcome to Airbus MES" />
+									<ToolbarSpacer />
+									<!-- <Button type="Transparent" text="English" icon="sap-icon://slim-arrow-down" 
+										iconFirst="false" /> -->
+								</content>
+							</Toolbar>
+							<Panel content="{buttonUrl>/buttonDetail}" class="PanelbgImg"
+								backgroundDesign="Transparent">
+
+								<Button type="Transparent" text="{buttonUrl>text}" class="langbutton"
+									icon="sap-icon://slim-arrow-right" iconFirst="false" press="onPress"
+									cData:link="{buttonUrl>url}" />
+							</Panel>
+						</items>
+					</VBox>
+				</items>
+			</FlexBox>
+			<HBox>
+
+			</HBox>
+
+		</content>
+	</Page>
+</core:View>
