@@ -11,8 +11,12 @@ jQuery.sap.declare("airbus.mes.settings.Component");
 sap.ui.core.UIComponent.extend("airbus.mes.settings.Component", {
 	manifestUrl : "Component.json",
 	metadata : {
-		properties : {}
-	},
+		
+		properties : {},
+		includes : [ "/MES/components/settings/css/SettingScreen.css" ] //array of css and/or javascript files that should be used in the component  
+
+	}
+
 });
 
 // override the createContent function to return user interface

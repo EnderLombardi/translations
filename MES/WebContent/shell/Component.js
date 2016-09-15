@@ -4,6 +4,12 @@ jQuery.sap.require("sap.ui.core.UIComponent");
 jQuery.sap.declare("airbus.mes.shell.Component");
 
 sap.ui.core.UIComponent.extend("airbus.mes.shell.Component", {
+	
+	metadata : {
+		properties : {},
+		includes : [ "css/shell.css" ] //array of css and/or javascript files that should be used in the component  
+
+	},
 	//manifestUrl : "component.json",
 	oView:undefined,
 });

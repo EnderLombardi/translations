@@ -14,6 +14,12 @@ jQuery.sap.require("airbus.mes.dhtmlx.ext.dhtmlxscheduler_tooltip");
 jQuery.sap.declare("airbus.mes.stationtracker.Component");
 
 sap.ui.core.UIComponent.extend("airbus.mes.stationtracker.Component", {
+	metadata : {
+		properties : {},
+		includes : [ "/MES/components/stationtracker/css/stationTracker.css" ] //array of css and/or javascript files that should be used in the component  
+
+	}
+	
 	//manifestUrl : "component.json",
 });
 
