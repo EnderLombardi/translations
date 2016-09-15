@@ -1,4 +1,4 @@
-sap.ui.controller("components.globalnav.globalNavigation", {
+sap.ui.controller("airbus.mes.globalnav.globalNavigation", {
 
 /**
 * Called when a controller is instantiated and its View controls (if available) are already created.
@@ -6,16 +6,11 @@ sap.ui.controller("components.globalnav.globalNavigation", {
 * @memberOf components.globalnav.globalNavigation
 */
 	onInit: function() {
-		var oModel = new sap.ui.model.json.JSONModel();
-		sap.ui.getCore().setModel(oModel , "buttonUrl");
-		oModel.loadData("data/url.json",null,false);
 		
 
 	},
 	onPress:function(oEvt){
-		var url = oEvt.getSource().getCustomData()[0].getValue();
-		window .location.href = url;
-
+	
 	},
 
 /**

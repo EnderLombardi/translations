@@ -13,17 +13,18 @@
 		
 		<script>
 				
-			 	jQuery.sap.registerModulePath("airbus.mes.settings","/MES/components/settings");
-
+			 jQuery.sap.registerModulePath("airbus.mes.settings","/MES/components/settings");
+				jQuery.sap.registerModulePath("airbus.mes.globalnav","/MES/components/globalnav");
+				
 				//Create a component
 				var oComp = sap.ui.getCore().createComponent({
-					name : "airbus.mes.settings", // root component folder is resources
+					name : "airbus.mes.globalnav",	// root component folder is resources
 				});
 
-				airbus.mes.settings.ModelManager.init(oComp);
+				//airbus.mes.settings.ModelManager.init(oComp);
 
 				// Create a Ui container 
-				var oCompCont = new sap.ui.core.ComponentContainer("settings", {
+				var oCompCont = new sap.ui.core.ComponentContainer({
 					component : oComp
 				});
 								
