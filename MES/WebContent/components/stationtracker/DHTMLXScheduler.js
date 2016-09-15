@@ -3,7 +3,8 @@ sap.ui.core.Control.extend(
 				{
 
 					renderer : function(oRm, oControl) {
-
+						if( airbus.mes.stationtracker.test != undefined ) {
+																	
 						oRm.write("<div ");
 						oRm.writeControlData(oControl);
 						oRm.write(" class='dhx_cal_container'  style='width:100%; height:900px;'>");
@@ -25,7 +26,7 @@ sap.ui.core.Control.extend(
 						scheduler.locale.labels.section_custom="Section";
 			 		    scheduler.config.details_on_create=true;
 						scheduler.config.details_on_dblclick=true;
-						scheduler.config.xml_date="%Y-%m-%d %H:%i";
+						scheduler.config.xml_date='%H %i';
 				    
 							scheduler.createTimelineView({
 								section_autoheight: false,
@@ -190,6 +191,10 @@ sap.ui.core.Control.extend(
 								placement : "Bottom",
 							}).openBy(e.srcElement);
 						});
-
+						} else {
+							
+							airbus.mes.stationtracker.test = 1 ;
+						}
 					},
+					
 				});

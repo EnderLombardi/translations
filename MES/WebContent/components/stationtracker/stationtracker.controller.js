@@ -24,9 +24,15 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 * @memberOf components.stationtracker.stationtracker
 */
 	onAfterRendering: function() {
-
+		
+		if( airbus.mes.stationtracker.test2 != undefined ) {
+	
 		airbus.mes.stationtracker.ModelManager.loadStationTracker();
 		
+		} else {
+			
+			airbus.mes.stationtracker.test2 = 1 ;
+		}
 	},
 	
 	onTeamPress :function(oEvent){
