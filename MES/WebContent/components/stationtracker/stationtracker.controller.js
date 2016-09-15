@@ -39,11 +39,6 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			this.getView().addDependent(this._oPopover);
 		}
 		this._oPopover.openBy(oEvent.getSource());							
-<<<<<<< HEAD
-=======
-
-	}
->>>>>>> refs/heads/MESv0.9.1
 
 	},
 
