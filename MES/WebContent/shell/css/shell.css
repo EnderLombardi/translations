@@ -30,7 +30,7 @@
 
 .PanelbgImg {
 	background-color: white;
-	background-image: url(MES/images/dottedCarbon.png);
+	background-image: url(../../images/dottedCarbon.png);
 	opacity: 3%;
 	/* background-size: contain; */
 	display: block;
@@ -228,7 +228,6 @@ background-color : #CCE6EE;
 .dhx_row_folder {
 	height: 20px ! important;
 }
-<<<<<<< HEAD
 .grey {
 	background-color: #D8D8D8;
 }
@@ -236,7 +235,6 @@ background-color : #CCE6EE;
 	background-color: #D8D8D8;
 	border: 2px solid blue;
 }
-=======
 
 .eventOrange {
 	background-color: #F9DAAB;
@@ -412,4 +410,7 @@ background-color : #CCE6EE;
 	margin: 0px;
 	height: 1.5rem;
 }
->>>>>>> refs/heads/MESv0.9.1
+.absoultePosition{
+	position: absolute !important;
+	display:block !important;
+} 

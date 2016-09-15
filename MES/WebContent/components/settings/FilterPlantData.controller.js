@@ -1,184 +1,257 @@
-sap.ui.controller("airbus.mes.settings.FilterPlantData",
-		{
+sap.ui
+              .controller(
+                           "airbus.mes.settings.FilterPlantData",
+                           {
 
-			/**
-			 * Called when a controller is instantiated and its View controls
-			 * (if available) are already created. Can be used to modify the
-			 * View before it is displayed, to bind event handlers and do other
-			 * one-time initialization.
-			 * 
-			 * @memberOf components.SettingScreen.FilterPlantData
-			 */
-			selectTree : {
-				id : "ComboBoxProgram",
-				type : "select",
-				path : "tf",
-				attr : "tf",
-				childs : [ {
-					id : "ComboBoxLine",
-					type : "select",
-					path : "assemblyLine",
-					attr : "acpLine",
-					childs : [ {
-						id : "ComboBoxStation",
-						type : "select",
-						path : "PP_stationExec",
-						attr : "stationExec",
-						childs : []
-					}, {
-						id : "ComboBoxMSN",
-						type : "select",
-						path : "MSN",
-						childs : []
-					}, {
-						id : "Return",
-						type : "Return",
-						childs : []
-					} ]
-				} ]
-			},
+                                  /**
+                                  * Called when a controller is instantiated and its View
+                                  * controls (if available) are already created. Can be used
+                                  * to modify the View before it is displayed, to bind event
+                                  * handlers and do other one-time initialization.
+                                  * 
+                                   * @memberOf components.SettingScreen.FilterPlantData
+                                  */
+                                  selectTree : {
+                                         id : "ComboBoxProgram",
+                                         type : "select",
+                                         path : "program",
+                                         attr : "program",
+                                         childs : [ {
+                                                id : "ComboBoxLine",
+                                                type : "select",
+                                                path : "line",
+                                                attr : "line",
+                                                childs : [ {
+                                                       id : "ComboBoxStation",
+                                                       type : "select",
+                                                       path : "station",
+                                                       attr : "station",
+                                                       childs : []
+                                                }, {
+                                                       id : "ComboBoxMSN",
+                                                       type : "select",
+                                                       path : "msn",
+                                                       childs : []
+                                                }, {
+                                                       id : "Return",
+                                                       type : "Return",
+                                                       childs : []
+                                                } ]
+                                         } ]
+                                  },
 
-			onInit : function() {
+                                  onInit : function() {
 
-				this.addParent(this.selectTree, undefined);
+                                         this.addParent(this.selectTree, undefined);
+                                         airbus.mes.settings.ModelManager.loadLangModel();
+                                         airbus.mes.settings.ModelManager.loadUserSettingsModel();
 
-			},
+                                         // this.getView().setModel().sap.ui.getCore().getModel("siteModel");
+                                  },
 
-			addParent : function(oTree, oParent) {
-				var that = this;
-				oTree.parent = oParent;
-				oTree.childs.forEach(function(oElement) {
-					that.addParent(oElement, oTree);
-				});
-			},
-			findElement : function(oTree, sId) {
-				if (oTree.id == sId) {
-					return oTree;
-				} else {
-					var oElement;
-					for (var i = 0; i < oTree.childs.length; i++) {
-						oElement = this.findElement(oTree.childs[i], sId);
-						if (oElement) {
-							return oElement;
-						}
-					}
-				}
-			},
+                                  addParent : function(oTree, oParent) {
+                                         var that = this;
+                                         oTree.parent = oParent;
+                                         oTree.childs.forEach(function(oElement) {
+                                                that.addParent(oElement, oTree);
+                                         });
+                                  },
+                                  findElement : function(oTree, sId) {
+                                         if (oTree.id == sId) {
+                                                return oTree;
+                                         } else {
+                                                var oElement;
+                                                for (var i = 0; i < oTree.childs.length; i++) {
+                                                       oElement = this.findElement(oTree.childs[i],
+                                                                     sId);
+                                                       if (oElement) {
+                                                              return oElement;
+                                                       }
+                                                }
+                                         }
+                                  },
 
-			// *******************on change of item in the ComboBox *******************
-			onSelectionChange : function(oEvt) {
-				var that = this;
-				this.findElement(this.selectTree, oEvt.getSource().getId().split("--")[1]).childs
-						.forEach(function(oElement) {
-							that.clearField(oElement);
-							that.filterField(oElement);
-						});
+                                  // *******************on change of item in the ComboBox
+                                  // *******************
+                                  onSelectionChange : function(oEvt) {
+                                         var that = this;
+                                         this.findElement(this.selectTree, oEvt.getSource()
+                                                       .getId().split("--")[1]).childs
+                                                       .forEach(function(oElement) {
+                                                              that.clearField(oElement);
+                                                              that.filterField(oElement);
+                                                       });
 
-			},
+                                  },
 
-			// ****************** clear other ComboBoxes after changing the item of one comboBox *****
-			clearField : function(oTree) {
-				var that = this;
-					if (oTree.type == "select") {
-						that.getView().byId(oTree.id).setSelectedKey();
-					}
-				oTree.childs.forEach(that.clearField.bind(that));
-			},
+                                  // ****************** clear other ComboBoxes after changing
+                                  // the item of one comboBox *****
+                                  clearField : function(oTree) {
+                                         var that = this;
+                                         if (oTree.type == "select") {
+                                                that.getView().byId(oTree.id).setSelectedKey();
+                                         }
+                                         oTree.childs.forEach(that.clearField.bind(that));
+                                  },
 
-			filterField : function(oTree) {
-				if (oTree.type == "Return") {
-					return;
-				}
-				var that = this;
-				var aFilters = [];
-				var oElement = oTree.parent;
-				while (oElement) {
-					var val = this.getView().byId(oElement.id).getValue();
-					if (val) {
-						var oFilter = new sap.ui.model.Filter(oElement.path,
-								"EQ", val);
-						aFilters.push(oFilter);
-					}
-					;
-					oElement = oElement.parent;
-				}
-				;
-				var temp = [];
-				var duplicatesFilter = new sap.ui.model.Filter({
-					path : oTree.path,
-					test : function(value) {
-						if (temp.indexOf(value) == -1) {
-							temp.push(value)
-							return true;
-						} else {
-							return false;
-						}
-					}
-				});
-				aFilters.push(duplicatesFilter);
+                                  filterField : function(oTree) {
+                                         if (oTree.type == "Return") {
+                                                return;
+                                         }
+                                         var that = this;
+                                         var aFilters = [];
+                                         var oElement = oTree.parent;
+                                         while (oElement) {
+                                                var val = this.getView().byId(oElement.id)
+                                                              .getValue();
+                                                if (val) {
+                                                       var oFilter = new sap.ui.model.Filter(
+                                                                     oElement.path, "EQ", val);
+                                                       aFilters.push(oFilter);
+                                                }
+                                                ;
+                                                oElement = oElement.parent;
+                                         }
+                                         ;
+                                         var temp = [];
+                                         var duplicatesFilter = new sap.ui.model.Filter({
+                                                path : oTree.path,
+                                                test : function(value) {
+                                                       if (temp.indexOf(value) == -1) {
+                                                              temp.push(value)
+                                                              return true;
+                                                       } else {
+                                                              return false;
+                                                       }
+                                                }
+                                         });
+                                         aFilters.push(duplicatesFilter);
 
-				this.getView().byId(oTree.id).getBinding("items").filter(
-						new sap.ui.model.Filter(aFilters, true));
+                                         this
+                                                       .getView()
+                                                       .byId(oTree.id)
+                                                       .getBinding("items")
+                                                       .filter(new sap.ui.model.Filter(aFilters, true));
 
-				oTree.childs.forEach(function(oElement) {
-					that.filterField(oElement);
-				});
-			},
-			
-			naviguate : function(){
-			    jQuery.sap.registerModulePath("airbus.mes.settings","/MES/components/settings");
-			    jQuery.sap.registerModulePath("airbus.mes.stationtracker","/MES/components/stationtracker");
-			  
-			    if (airbus.mes.stationtracker != undefined) {
-			    	nav.to(airbus.mes.stationtracker.oView.getId());
-				}
-			    else {
-			    	sap.ui.getCore().createComponent({
-					name : "airbus.mes.stationtracker", // root component folder is resources
-				});
-			    	
-				nav.addPage(airbus.mes.stationtracker.oView);
-				nav.to(airbus.mes.stationtracker.oView.getId()); }
-			    
-			    
-			},
-			
-			
-			/**
-			 * Similar to onAfterRendering, but this hook is invoked before the
-			 * controller's View is re-rendered (NOT before the first rendering!
-			 * onInit() is used for that one!).
-			 * 
-			 * @memberOf application2.initialview
-			 */
-			// onBeforeRendering: function() {
-			//
-			// },
-			
-			
-			
-			
-			/**
-			 * Called when the View has been rendered (so its HTML is part of
-			 * the document). Post-rendering manipulations of the HTML could be
-			 * done here. This hook is the same one that SAPUI5 controls get
-			 * after being rendered.
-			 * 
-			 * @memberOf application2.initialview
-			 */
-			onAfterRendering : function() {
-				this.filterField(this.selectTree);
-			},
-			
-			
-			
-			/**
-			 * Called when the Controller is destroyed. Use this one to free
-			 * resources and finalize activities.
-			 * 
-			 * @memberOf application2.initialview
-			 */
-			// onExit: function() {
-			//
-			// }
-		});
+                                         oTree.childs.forEach(function(oElement) {
+                                                that.filterField(oElement);
+                                         });
+                                  },
+                                  loadPlantModel : function(oEvt) {
+                                         airbus.mes.settings.ModelManager.site=this.getView().byId("ComboBoxPlant").getValue();
+                                         airbus.mes.settings.ModelManager.loadPlantModel();
+                                  
+                                         this.getView().byId("ComboBoxProgram").setValue("");
+                                         this.getView().byId("ComboBoxLine").setValue("");
+                                         this.getView().byId("ComboBoxStation").setValue("");
+                                         this.getView().byId("ComboBoxMSN").setValue("");
+                                         
+                                  },
+                                  
+                                  getUserSettings:function(){
+                                         var oModel = sap.ui.getCore().getModel("userSettingModel").oData;
+                                         
+                                         airbus.mes.settings.ModelManager.plant = oModel.Rowsets.Rowset[0].Row[0].plant;
+                                         airbus.mes.settings.ModelManager.program =oModel.Rowsets.Rowset[0].Row[0].program;
+                                         airbus.mes.settings.ModelManager.line=oModel.Rowsets.Rowset[0].Row[0].line;
+                                         airbus.mes.settings.ModelManager.station =oModel.Rowsets.Rowset[0].Row[0].station;
+                                         airbus.mes.settings.ModelManager.msn=oModel.Rowsets.Rowset[0].Row[0].msn;
+                                         
+                                         this.getView().byId("ComboBoxPlant").setValue(airbus.mes.settings.ModelManager.plant);
+                                         this.getView().byId("ComboBoxProgram").setValue(airbus.mes.settings.ModelManager.program);
+                                         this.getView().byId("ComboBoxLine").setValue(airbus.mes.settings.ModelManager.line);
+                                         this.getView().byId("ComboBoxStation").setValue(airbus.mes.settings.ModelManager.station);
+                                         this.getView().byId("ComboBoxMSN").setValue(airbus.mes.settings.ModelManager.msn);
+                                         
+                                         
+                                  },
+                                  loadStationTracker:function(){
+                                                       var that=this;
+                                                       if (!this.getView().byId("ComboBoxPlant").getValue()) {
+                                                              airbus.mes.settings.ModelManager.messageShow("Please Select Plant");
+                                                              return;
+                                                       } else if (!this.getView().byId("ComboBoxProgram").getValue()) {
+                                                              airbus.mes.settings.ModelManager.messageShow("Please Select Progarm");
+                                                              return;
+                                                       } else if (!this.getView().byId("ComboBoxLine").getValue()) {
+                                                              airbus.mes.settings.ModelManager.messageShow("Please Select Line");
+                                                              return;
+                                                       } else if (!this.getView().byId("ComboBoxStation").getValue()) {
+                                                              airbus.mes.settings.ModelManager.messageShow("Please Select Staton");
+                                                              return;
+                                                       }
+                                                       else{
+                                                              airbus.mes.settings.ModelManager.plant = this.getView().byId("ComboBoxPlant").getValue();
+                                                              airbus.mes.settings.ModelManager.program = this.getView().byId("ComboBoxProgram").getValue();
+                                                              airbus.mes.settings.ModelManager.line = this.getView().byId("ComboBoxLine").getValue();
+                                                              airbus.mes.settings.ModelManager.station = this.getView().byId("ComboBoxStation").getValue();
+                                                              airbus.mes.settings.ModelManager.msn = this.getView().byId("ComboBoxMSN").getValue();
+                                                              jQuery.ajax({
+                                                                     url: airbus.mes.settings.ModelManager.getUrlSaveUserSetting(),
+                                                                     error:function(xhr,status,error){
+                                                                            airbus.mes.settings.ModelManager.messageShow("Couldn't Save Changes");
+                                                                           that.navigate();
+                                                                           //window.location.pathname = "/MES/WebContent/components/stationtracker/index.html";
+                                                                     },
+                                                                     success:function(result,status,xhr){
+                                                                           // window.location.href = url;
+                                                                            airbus.mes.settings.ModelManager.messageShow("Settings Saved Successfully");
+                                                                           that.navigate();
+                                                                           //window.location.pathname = "/MES/WebContent/components/stationtracker/index.html";
+
+                                                                     }
+                                                              });
+                                                       }
+                                  },
+                                  navigate : function(){
+                                      jQuery.sap.registerModulePath("airbus.mes.settings","/MES/components/settings");
+                                      jQuery.sap.registerModulePath("airbus.mes.stationtracker","/MES/components/stationtracker");
+                                    
+                                      if (airbus.mes.stationtracker != undefined) {
+                                         nav.to(airbus.mes.stationtracker.oView.getId());
+                                          }
+                                      else {
+                                         sap.ui.getCore().createComponent({
+                                                name : "airbus.mes.stationtracker", // root component folder is resources
+                                         });
+                                         
+                                         nav.addPage(airbus.mes.stationtracker.oView);
+                                         nav.to(airbus.mes.stationtracker.oView.getId()); }
+                                      
+                                      
+                                  },
+
+                                  /**
+                                  * Similar to onAfterRendering, but this hook is invoked
+                                  * before the controller's View is re-rendered (NOT before
+                                  * the first rendering! onInit() is used for that one!).
+                                  * 
+                                   * @memberOf application2.initialview
+                                  */
+                                  // onBeforeRendering: function() {
+                                  //
+                                  // },
+
+                                  /**
+                                  * Called when the View has been rendered (so its HTML is
+                                  * part of the document). Post-rendering manipulations of
+                                  * the HTML could be done here. This hook is the same one
+                                  * that SAPUI5 controls get after being rendered.
+                                  * 
+                                   * @memberOf application2.initialview
+                                  */
+                                  onAfterRendering : function() {
+                                         this.filterField(this.selectTree);
+                                         this.getUserSettings();
+                                  },
+                     
+                     /**
+                     * Called when the Controller is destroyed. Use this one to free
+                     * resources and finalize activities.
+                     * 
+                      * @memberOf application2.initialview
+                     */
+                     // onExit: function() {
+                     //
+                     // }
+              });

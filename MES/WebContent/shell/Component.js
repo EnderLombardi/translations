@@ -23,7 +23,9 @@ airbus.mes.shell.Component.prototype.createContent = function() {
 			id : "globalNavView",
 			viewName : "airbus.mes.shell.globalNavigation",
 			type : "XML",
-		})
+			height:"100%"
+			
+		}).addStyleClass("absoultePosition");
 
 		airbus.mes.shell.oView = this.oView;
 		return this.oView;

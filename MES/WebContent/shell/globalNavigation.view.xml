@@ -53,7 +53,7 @@
 			<HBox>
 
 			</HBox> -->			
-				<NavContainer id="navCont" height="1500px"></NavContainer>							
+				<NavContainer id="navCont" height="100%"></NavContainer>							
 				
 		</content>
 	</Page>
