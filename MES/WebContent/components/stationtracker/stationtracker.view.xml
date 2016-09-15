@@ -1,6 +1,6 @@
 <core:View xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:suite="sap.suite.ui.commons" controllerName="airbus.mes.stationtracker.stationtracker"       xmlns:html="http://www.w3.org/1999/xhtml"
        xmlns:custom="airbus.mes.stationtracker" xmlns:layout="sap.ui.layout">
-       <Page title="Station Tracker" showHeader="true" enableScrolling="false ">
+       <Page title="Station Tracker" showHeader="false" enableScrolling="false ">
              <customHeader>
                     <Toolbar class="pageHeader">
                            <content>

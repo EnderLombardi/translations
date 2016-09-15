@@ -9,27 +9,51 @@
 				data-sap-ui-libs="sap.m"
 				data-sap-ui-theme="sap_bluecrystal">
 		</script>
+		<link rel="stylesheet" href="../lib/dhtmlxscheduler/dhtmlxscheduler.css"	type="text/css" title="no title">
+		<script type="text/javascript"	src="../lib/dhtmlxscheduler/dhtmlxscheduler.js" charset="utf-8"></script>
+		<script type="text/javascript"	src='../lib/dhtmlxscheduler/ext/dhtmlxscheduler_limit.js'	charset="utf-8"></script>
+		<script type="text/javascript"	src='../lib/dhtmlxscheduler/ext/dhtmlxscheduler_timeline.js'	charset="utf-8"></script>
+		<script type="text/javascript"	src='../lib/dhtmlxscheduler/ext/dhtmlxscheduler_treetimeline.js'charset="utf-8"></script>
+		<script type="text/javascript"	src='../lib/dhtmlxscheduler/ext/dhtmlxscheduler_units.js'charset="utf-8"></script>
+		<script type="text/javascript"	src='../lib/dhtmlxscheduler/ext/dhtmlxscheduler_drag_between.js'charset="utf-8"></script>
+		<script type="text/javascript"	src=../lib/dhtmlxscheduler/ext/dhtmlxscheduler_tooltip.js'charset="utf-8"></script>
+		<link rel='stylesheet' type='text/css' href='../lib/dhtmlxscheduler/dhtmlxscheduler_flat.css'>
+		
 		<!-- only load the mobile lib "sap.m" and the "sap_bluecrystal" theme -->
+		<link rel="stylesheet" href="css/shell.css" type="text/css">
+		<link rel="stylesheet" href="/MES/components/stationtracker/css/stationTracker.css" type="text/css">
+		<link rel="stylesheet" href="/MES/components/settings/css/SettingScreen.css" type="text/css">
+		<link rel="stylesheet" type="text/css" href="/MES/components/homepage/css/margin.css">
 		
 		<script>
-				
-			 jQuery.sap.registerModulePath("airbus.mes.settings","/MES/components/settings");
-				jQuery.sap.registerModulePath("airbus.mes.globalnav","/MES/components/globalnav");
-				
-				//Create a component
+
+				jQuery.sap.registerModulePath("airbus.mes.shell","/MES/shell");
+			    jQuery.sap.registerModulePath("airbus.mes.homepage","/MES/components/homepage");
+			  	//Create a component
 				var oComp = sap.ui.getCore().createComponent({
-					name : "airbus.mes.globalnav",	// root component folder is resources
+					name : "airbus.mes.shell",	// root component folder is resources
 				});
-
-				//airbus.mes.settings.ModelManager.init(oComp);
-
+			  	
+/* 				airbus.mes.shell.oComponent = oComp; */
+				
+				var oComp1 = sap.ui.getCore().createComponent({
+					name : "airbus.mes.homepage",	// root component folder is resources
+				});
 				// Create a Ui container 
 				var oCompCont = new sap.ui.core.ComponentContainer({
 					component : oComp
 				});
-								
+				
+			 	var nav = oComp.oView.byId("navCont");
+				nav.addPage(oComp1.oView);
+				oComp1.oView.placeAt(nav);
+		 
 				// place this Ui Container with the Component inside into UI Area 
-				oCompCont.placeAt("content");				
+ 				oCompCont.placeAt("content");
+ 			
+
+			
+				
 				
 				
 		</script>

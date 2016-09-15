@@ -33,7 +33,7 @@ airbus.mes.stationtracker.ModelManager = {
 			}
 
 			this.urlModel = new sap.ui.model.resource.ResourceModel({
-				bundleUrl : "../stationtracker/config/url_config.properties",
+				bundleUrl : "/MES/components/stationtracker/config/url_config.properties",
 				bundleLocale : dest
 			});
 //			this.i18nModel = new sap.ui.model.resource.ResourceModel({

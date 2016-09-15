@@ -1,12 +1,11 @@
-
 .titleToolbar {
 	background-color: lightgrey;
 }
 
 .sapMSlt>.sapMSltLabel, .sapMSlt, .sapMSltArrow {
 	line-height: 1.9rem;
-	border:none;
-	height:1.9rem
+	border: none;
+	height: 1.9rem
 }
 
 .GenricBgColor {
@@ -30,9 +29,12 @@
 
 .PanelbgImg {
 	background-color: white;
-	background-image: url(MES/images/dottedCarbon.png);
+	background-image: url(../../../images/dottedCarbon.png);
 	opacity: 3%;
 	/* background-size: contain; */
 	display: block;
 	background-size: 100% 100%;
 }
+.absoultePosition{
+	position: absolute !important;
+} 

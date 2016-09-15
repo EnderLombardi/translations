@@ -1,0 +1,60 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:cData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+		controllerName="airbus.mes.shell.globalNavigation" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="MES" enableScrolling="false" class="GenricBgColor">
+		<customHeader>
+			<Toolbar class="pageHeader">
+                           <content>
+                           <Image src="/MES/images/Airbus.png" width="10rem" height="2rem" />
+                           <ToolbarSeparator />
+                           <Label text="MES" class="pageTitle"/>
+                           <ToolbarSpacer />
+                           <core:Icon src="sap-icon://customer"/>
+                           <Label text="Welcome" class="pageWelcome"/>
+                           <Label text="Username" design="Bold" class="pageUsername"/>
+                           <ToolbarSeparator />
+                           <Button text="Logout" type="Transparent" icon="sap-icon://log" class="whiteColor whiteButton"></Button>
+                           <ToolbarSeparator />
+                           <Select class="sapUiTinyMarginBeginEnd pageHeader pageHeaderBlue"> 
+                           <core:Item text="English" />
+                           <core:Item text="Deutsch" />
+                           </Select>
+                           <ToolbarSeparator />
+                           <Button type="Transparent" icon="sap-icon://action-settings" class="whiteColor whiteButton" press="onBack"></Button> 
+                           </content>
+                    </Toolbar>
+		</customHeader>
+
+		<content width="100%" height="100%">
+<!-- 
+			<FlexBox height="100%" width="100%" alignItems="Center"
+				justifyContent="Center">
+				<items>
+					<VBox id="appNameBox" width="60%">
+						<items>
+							<Toolbar class="titleToolbar">
+								<content>
+									<Text class="textSize" text="Welcome to Airbus MES" />
+									<ToolbarSpacer />
+									<Button type="Transparent" text="English" icon="sap-icon://slim-arrow-down" 
+										iconFirst="false" />
+								</content>
+							</Toolbar>
+							<Panel content="{buttonUrl>/buttonDetail}" class="PanelbgImg"
+								backgroundDesign="Transparent">
+
+								<Button type="Transparent" text="{buttonUrl>text}" class="langbutton"
+									icon="sap-icon://slim-arrow-right" iconFirst="false" press="onPress"
+									cData:link="{buttonUrl>url}" />
+							</Panel>
+						</items>
+					</VBox>
+				</items>
+			</FlexBox>
+			<HBox>
+
+			</HBox> -->			
+				<NavContainer id="navCont" height="1500px"></NavContainer>							
+				
+		</content>
+	</Page>
+</core:View>

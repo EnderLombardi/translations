@@ -1,7 +1,7 @@
 <core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
 	xmlns:f="sap.ui.layout.form" xmlns="sap.m" xmlns:l="sap.ui.layout"
 	controllerName="airbus.mes.settings.FilterPlantData" xmlns:html="http://www.w3.org/1999/xhtml">
-	<Page class="GenricBgColor" title="MES" enableScrolling="false">
+	<Page class="GenricBgColor" title="MES" enableScrolling="false" showHeader="false">
 		<customHeader>
 			<Toolbar>
 				<Image src="/MES/images/Airbus.png" height="2.0REM" />
@@ -20,7 +20,7 @@
 			</Toolbar>
 		</customHeader>
 		<content>
-			<Panel width="60%" height="900px" class="elementContainer">
+			<Panel width="60%" class="elementContainer" >
 				<headerToolbar>
 					<Toolbar class="titleToolbar">
 						<content>
@@ -40,7 +40,8 @@
 				</infoToolbar>
 				<content>
 					<f:Form id="Form1" minWidth="1024" maxContainerCols="3"
-						editable="true">
+						editable="true" alignItems="Center"
+				justifyContent="Center">
 
 						<f:layout>
 							<f:ResponsiveGridLayout labelSpanL="2"
@@ -128,7 +129,7 @@
 				<ToolbarSpacer />
 				<Button class="buttonLoad" id="btn1" type="Transparent"
 					text="Load Station Tracker" icon="sap-icon://slim-arrow-right"
-					iconFirst="false" />
+					iconFirst="false" press="naviguate" />
 			</Toolbar>
 
 

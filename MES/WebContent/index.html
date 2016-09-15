@@ -10,20 +10,26 @@
 				data-sap-ui-theme="sap_bluecrystal">
 		</script>
 		<!-- only load the mobile lib "sap.m" and the "sap_bluecrystal" theme -->
-		<link rel="stylesheet" href="css/SettingScreen.css" type="text/css">
+		<link rel="stylesheet" href="components/globalnav/css/margin.css" type="text/css">
 		<script type="text/javascript" src="components/settingscreen/ModelManager.js"></script>
 		<script>
 				
-	 			jQuery.sap.registerModulePath("airbus.mes.settingscreen","/MES/components/settingscreen");
-	 			
- 				sap.ui.localResources("components");
-				var app = new sap.m.App({initialPage:"idPlantDataFilter"});
+				jQuery.sap.registerModulePath("airbus.mes.globalnav","/MES/components/globalnav");
+			    jQuery.sap.registerModulePath("airbus.mes.settings","/MES/components/settings");
+
+ 				/* sap.ui.localResources("components"); */
+			/* 	var app = new sap.m.App({initialPage:"idPlantDataFilter"});
 				var page = sap.ui.view({id:"idPlantDataFilter", viewName:"components.settingscreen.FilterPlantData", type:sap.ui.core.mvc.ViewType.XML});
 				app.addPage(page);
+				app.placeAt("content"); */
+				
+				var page = sap.ui.view({id:"idGlobalNavigation", viewName:"airbus.mes.globalnav.globalNavigation", type:sap.ui.core.mvc.ViewType.XML});
+			 	var nav = page.byId("navCont");
+
+				var app = new sap.m.App({initialPage:"idGlobalNavigation"});
+				
+				app.addPage(page);
 				app.placeAt("content");
-				
-				
-				
 		</script>
 
 	</head>

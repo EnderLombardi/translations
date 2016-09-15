@@ -2,7 +2,6 @@
 
 jQuery.sap.require("sap.ui.core.UIComponent");
 jQuery.sap.require("sap.ui.base.Event");
-
 jQuery.sap.require("airbus.mes.settings.ModelManager");
 
 // Declare the current Component
@@ -22,6 +21,9 @@ sap.ui.core.UIComponent.extend("airbus.mes.settings.Component", {
 
 // override the createContent function to return user interface
 airbus.mes.settings.Component.prototype.createContent = function() {
+
+	airbus.mes.settings.ModelManager.init(this);
+	
 	this.oView = sap.ui.view({
 		id : "View1",
 		viewName : "airbus.mes.settings.FilterPlantData",
