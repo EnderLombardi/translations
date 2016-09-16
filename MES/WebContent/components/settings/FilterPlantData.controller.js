@@ -204,30 +204,60 @@ sap.ui
                                                        }
                                   },
                                   navigate : function(){
+                                	  
                                       jQuery.sap.registerModulePath("airbus.mes.settings","/MES/components/settings");
                                       jQuery.sap.registerModulePath("airbus.mes.stationtracker","/MES/components/stationtracker");
-                                    
-                                      if (airbus.mes.stationtracker != undefined) {
-                                         nav.to(airbus.mes.stationtracker.oView.getId());
-                                          }
-                                      else {
-                                         sap.ui.getCore().createComponent({
-                                                name : "airbus.mes.stationtracker", // root component folder is resources
-                                         });
-                                         
-                                         nav.addPage(airbus.mes.stationtracker.oView);
-                                         nav.to(airbus.mes.stationtracker.oView.getId()); }
+                                      
+                                      if (this.getOwnerComponent().mProperties.buttonAction === "stationtracker") {
+                                    	  if(airbus.mes.stationtracker != undefined) {
+						            		  nav.to(airbus.mes.stationtracker.oView.getId());                                    		  
+                                    	  }	else {
+						            		  sap.ui.getCore().createComponent({
+						            			  name : "airbus.mes.stationtracker", // root component folder is resources
+									             });
+									             nav.addPage(airbus.mes.stationtracker.oView);
+											     nav.to(airbus.mes.stationtracker.oView.getId());
+                                    	  }
+				  
+                                    	  
+                                      } else if ( this.getOwnerComponent().mProperties.buttonAction === "back" ) {
+                                     	  nav.back();       	  
+                                      }
                                       
                                       
+                                      
+                                      
+                                      
+//                                      if ( nav.getPreviousPage().getId() === "homePageView" ) {
+//                                     	  nav.back(); 
+//                                    
+//
+//						              } else {
+//
+//						            	  if (airbus.mes.stationtracker != undefined) {
+//						            		  nav.to(airbus.mes.stationtracker.oView.getId());
+//						            	  } else {
+//						            		  sap.ui.getCore().createComponent({
+//						            			  name : "airbus.mes.stationtracker", // root component folder is resources
+//						             });
+//
+//						             nav.addPage(airbus.mes.stationtracker.oView);
+//								     nav.to(airbus.mes.stationtracker.oView.getId());
+//							}
+
+//						}
+                                	  
                                   },
 
                                   /**
-                                  * Similar to onAfterRendering, but this hook is invoked
-                                  * before the controller's View is re-rendered (NOT before
-                                  * the first rendering! onInit() is used for that one!).
-                                  * 
-                                   * @memberOf application2.initialview
-                                  */
+									 * Similar to onAfterRendering, but this
+									 * hook is invoked before the controller's
+									 * View is re-rendered (NOT before the first
+									 * rendering! onInit() is used for that
+									 * one!).
+									 * 
+									 * @memberOf application2.initialview
+									 */
                                   // onBeforeRendering: function() {
                                   //
                                   // },

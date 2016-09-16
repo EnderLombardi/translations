@@ -14,15 +14,40 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 //	    jQuery.sap.registerModulePath("airbus.mes.settings","/MES/components/settings");
 //	    
 	    if (airbus.mes.settings != undefined) {
-	    	nav.to(airbus.mes.settings.oView.getId());
-		}
-	    else {
-	    	sap.ui.getCore().createComponent({
-			name : "airbus.mes.settings", // root component folder is resources
-		});
-	    	
-		nav.addPage(airbus.mes.settings.oView);
-		nav.to(airbus.mes.settings.oView.getId()); }
+	    	airbus.mes.settings.oView.destroy();
+	    	airbus.mes.settings.oView = undefined
+	    }
+
+	       sap.ui.getCore().createComponent({
+				name : "airbus.mes.settings", // root component folder is resources
+				settings : {
+					textButtonTo : "go to Station Tracker",
+					buttonAction : "stationtracker"
+				}	
+			});	    
+	    
+	    nav.addPage(airbus.mes.settings.oView);
+		nav.to(airbus.mes.settings.oView.getId());		
+		
+//	    if (airbus.mes.settings != undefined) {
+//	    	nav.to(airbus.mes.settings.oView.getId());
+//		}
+//	    else {
+//	    	
+//	    	if( this.oView.getId() === "homePageView") {
+//	    		
+//		    	var sTextButtonTo = "go to Station Tracker";    		
+//	    	}
+//	    		    	
+//	    	sap.ui.getCore().createComponent({
+//			name : "airbus.mes.settings", // root component folder is resources
+//			settings : {
+//				textButtonTo : sTextButtonTo
+//			}	    	
+//		});
+//
+//		nav.addPage(airbus.mes.settings.oView);
+//		nav.to(airbus.mes.settings.oView.getId()); }
 	},
 /**
 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
