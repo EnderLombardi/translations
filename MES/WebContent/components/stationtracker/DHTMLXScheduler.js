@@ -7,11 +7,10 @@ sap.ui.core.Control.extend(
 																	
 						oRm.write("<div ");
 						oRm.writeControlData(oControl);
-						oRm.write(" class='dhx_cal_container'  style='width:100%; height:900px;'>");
+						oRm.write(" class='dhx_cal_container'  style='width:100%; height:71%;'>");
 						oRm.write("	<div class='dhx_cal_navline'>");
 						oRm.write("		<div class='dhx_cal_prev_button'></div>");
 						oRm.write("	 	<div class='dhx_cal_next_button'></div>");
-						oRm.write("		<div class='dhx_cal_today_button'></div>");
 						oRm.write("		<div class='dhx_cal_date' Style='font-weight:bold; text-align:left; padding-left: 1.5%'></div>");
 						oRm.write("	</div>");
 						oRm.write("	<div class='dhx_cal_header' Style='text-align:left;'></div>");
@@ -24,15 +23,22 @@ sap.ui.core.Control.extend(
 						scheduler.xy.bar_height = 30;
 						scheduler.locale.labels.timeline_tab = "Timeline";
 						scheduler.locale.labels.section_custom="Section";
-			 		    scheduler.config.details_on_create=true;
-						scheduler.config.details_on_dblclick=true;
-						scheduler.config.xml_date='%H %i';
-				    
-							scheduler.createTimelineView({
+			 		    scheduler.config.details_on_create=false;
+						scheduler.config.details_on_dblclick=false;
+						scheduler.config.xml_date="%Y-%m-%d %H:%i";
+						scheduler.config.mark_now = true;
+						scheduler.config.drag_create = false;
+						scheduler.config.drag_resize = false;
+						scheduler.config.touch = "force";
+						scheduler.config.preserve_length = true;
+						scheduler.config.dblclick_create = false;
+					
+						
+						scheduler.createTimelineView({
 								section_autoheight: false,
 								name:	"timeline",
 								x_unit:	"minute",
-								x_date:	"%d/%m/%Y",
+								x_date:	"%H:%i",
 								x_step:	120,
 								x_size: 6,
 								x_start: 3,

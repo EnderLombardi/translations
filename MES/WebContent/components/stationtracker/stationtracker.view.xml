@@ -1,217 +1,236 @@
-<core:View xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:suite="sap.suite.ui.commons" controllerName="airbus.mes.stationtracker.stationtracker"       xmlns:html="http://www.w3.org/1999/xhtml"
-       xmlns:custom="airbus.mes.stationtracker" xmlns:layout="sap.ui.layout">
-       <Page title="Station Tracker" showHeader="false" enableScrolling="false ">
-             <customHeader>
-                    <Toolbar class="pageHeader">
-                           <content>
-                           <Image src="/MES/images/Airbus.png" width="10rem" height="2rem" />
-                           <ToolbarSeparator />
-                           <Label text="MES" class="pageTitle"/>
-                           <ToolbarSpacer />
-                           <core:Icon src="sap-icon://customer"/>
-                           <Label text="Welcome" class="pageWelcome"/>
-                           <Label text="Username" design="Bold" class="pageUsername"/>
-                           <ToolbarSeparator />
-                           <Button text="Logout" type="Transparent" icon="sap-icon://log" class="whiteColor whiteButton"></Button>
-                           <ToolbarSeparator />
-                           <Select class="sapUiTinyMarginBeginEnd pageHeader pageHeaderBlue"> 
-                           <core:Item text="English" />
-                           <core:Item text="Deutsch" />
-                           </Select>
-                           <ToolbarSeparator />
-                           <Button type="Transparent" icon="sap-icon://action-settings" class="whiteColor whiteButton"></Button> 
-                           </content>
-                    </Toolbar>
-             </customHeader>
-             <content>
-                    <Panel expandable="true" expanded="true" class="pageHeader sapUiSmallMarginTop">
-             <headerToolbar>
-                    <Toolbar>
-                           <Label text="Station 10" class="pageTitle sapUiTinyMarginBeginEnd"/>
-                           <Label text="MSN 1485" class="pageWelcome sapUiTinyMarginBeginEnd"/>
-                           <Label text="Plant DZ" class="pageWelcome sapUiTinyMarginBeginEnd"/>
-                           <Label text="Line : Comet" class="pageWelcome sapUiTinyMarginBeginEnd"/>  
-                    </Toolbar>
-             </headerToolbar>
-             <content>
-                    <suite:HeaderContainer showDividers="false">
-                    <suite:items>
-                    <suite:HeaderCell>
-                 <suite:north>  
-                                  <suite:HeaderCellItem>
-                                        <suite:content>
-                                        <Label text="TAKT ADHERENCE" design="Bold"/>
-                                        </suite:content>
-                                  </suite:HeaderCellItem>
-                           </suite:north>
-                           <suite:south>
-                                  <suite:HeaderCellItem>
-                                        <suite:content>
-                                        <HBox alignItems="Baseline" >
-                                                      <VBox alignItems="Stretch" >
-                                                                   <Label text="Planned" class="sapUiLargeMarginEnd"/>
-                                                                   <Label text="80%" design="Bold" class="sapUiSmallMarginTop kpiValue"/>                
-                                                      </VBox>
-                                                      <VBox alignItems="Stretch" >
-                                                                   <Label text="Real" class="sapUiLargeMarginEnd red"/>
-                                                                   <Label text="60%" design="Bold" class="sapUiSmallMarginTop kpiValue red"/>                  
-                                                      </VBox>
-                                                      <VBox alignItems="Stretch" >
-                                                                   <Label text="Remaining time" class="sapUiLargeMarginEnd"/>
-                                                                   <Label text="20:30:12" design="Bold" class="sapUiSmallMarginTop kpiValue"/>               
-                                                      </VBox>
-                                        </HBox>      
-                                        </suite:content>
-                                  </suite:HeaderCellItem>
-                           </suite:south>
-                    </suite:HeaderCell>
-                    <suite:HeaderCell>
-                           <suite:north>
-                                  <suite:HeaderCellItem>
-                                        <suite:content>
-                                        <Label text="PROGRESS STATUS" design="Bold"/>
-                                        </suite:content>
-                                  </suite:HeaderCellItem>
-                           </suite:north>
-                           <suite:south>
-                                  <suite:HeaderCellItem>
-                                        <suite:content>
-                                        <HBox alignItems="Baseline" >
-                                                      <VBox alignItems="Stretch" >
-                                                                   <Label text="OP Done" class="sapUiLargeMarginEnd green"/>
-                                                                   <Label text="20%" design="Bold" class="sapUiSmallMarginTop kpiValue green"/>                
-                                                      </VBox>
-                                                      <VBox alignItems="Stretch" >
-                                                                   <Label text="OP Late" class="sapUiLargeMarginEnd"/>
-                                                                   <Label text="20%" design="Bold" class="sapUiSmallMarginTop kpiValue"/>                
-                                                      </VBox>
-                                                      <VBox alignItems="Stretch" >
-                                                                   <Label text="OP Ahead" class="sapUiLargeMarginEnd"/>
-                                                                   <Label text="20%" design="Bold" class="sapUiSmallMarginTop kpiValue"/>                
-                                                      </VBox>
-                                        </HBox>      
-                                        </suite:content>
-                                  </suite:HeaderCellItem>
-                           </suite:south>
-                    </suite:HeaderCell>
-                           <suite:HeaderCell>
-                           <suite:north>
-                                  <suite:HeaderCellItem>
-                                        <suite:content>
-                                        <Label text="OPERATION STATUS" design="Bold"/>
-                                        </suite:content>
-                                  </suite:HeaderCellItem>
-                           </suite:north>
-                           <suite:south>
-                                  <suite:HeaderCellItem>
-                                        <suite:content>
-                                        <HBox alignItems="Baseline" >
-                                                      <VBox alignItems="Stretch" >
-                                                                   <Label text="Confirmed" class="sapUiLargeMarginEnd green"/>
-                                                                   <Label text="20%" design="Bold" class="sapUiSmallMarginTop kpiValue green"/>                
-                                                      </VBox>
-                                                      <VBox alignItems="Stretch" >
-                                                                   <Label text="Partially Conf." class="sapUiLargeMarginEnd"/>
-                                                                   <Label text="20%" design="Bold" class="sapUiSmallMarginTop kpiValue"/>                
-                                                      </VBox>
-                                        </HBox>      
-                                        </suite:content>
-                                  </suite:HeaderCellItem>
-                           </suite:south>
-                    </suite:HeaderCell>
-                                  <suite:HeaderCell>
-                           <suite:north>
-                                  <suite:HeaderCellItem>
-                                        <suite:content>
-                                        <Label text="DISRUPTIONS" design="Bold"/>
-                                        </suite:content>
-                                  </suite:HeaderCellItem>
-                           </suite:north>
-                           <suite:south>
-                                  <suite:HeaderCellItem>
-                                        <suite:content>
-                                        <HBox alignItems="Baseline" >
-                                                      <VBox alignItems="Stretch" >
-                                                                   <Label text="Other" class="sapUiLargeMarginEnd"/>
-                                                                   <Label text="5" design="Bold" class="sapUiSmallMarginTop kpiValue"/>                
-                                                      </VBox>
-                                                      <VBox alignItems="Stretch" >
-                                                                   <Label text="NC" class="sapUiLargeMarginEnd"/>
-                                                                   <Label text="1" design="Bold" class="sapUiSmallMarginTop kpiValue"/>                
-                                                      </VBox>
-                                                      <VBox alignItems="Stretch" >
-                                                                   <Label text="Missing part" class="sapUiLargeMarginEnd"/>
-                                                                   <Label text="2" design="Bold" class="sapUiSmallMarginTop kpiValue"/>                
-                                                      </VBox>
-                                        </HBox>      
-                                        </suite:content>
-                                  </suite:HeaderCellItem>
-                           </suite:south>
-                    </suite:HeaderCell>
-                           <suite:HeaderCell>
-                           <suite:north>
-                                  <suite:HeaderCellItem>
-                                        <suite:content>
-                                        <Label text="DISRUPTIONS STATUS" design="Bold"/>
-                                        </suite:content>
-                                  </suite:HeaderCellItem>
-                           </suite:north>
-                           <suite:south>
-                                  <suite:HeaderCellItem>
-                                        <suite:content>
-                                        <HBox alignItems="Baseline" >
-                                                      <VBox alignItems="Stretch" >
-                                                                   <Label text="Closed" class="sapUiLargeMarginEnd green"/>
-                                                                   <Label text="3" design="Bold" class="sapUiSmallMarginTop kpiValue green"/>                
-                                                      </VBox>
-                                                      <VBox alignItems="Stretch" >
-                                                                   <Label text="Opened" class="sapUiLargeMarginEnd red"/>
-                                                                   <Label text="5" design="Bold" class="sapUiSmallMarginTop kpiValue red"/>                  
-                                                      </VBox>
-                                        </HBox>      
-                                        </suite:content>
-                                  </suite:HeaderCellItem>
-                           </suite:south>
-                    </suite:HeaderCell> 
-                    </suite:items>
-                    </suite:HeaderContainer> 
-             </content>
-                    </Panel>
-                    
-                    
-                    <Toolbar class="white">
-                           <content>
-                           <Button text="42" type="Transparent" icon="sap-icon://group" class="buttonStatus" press="onTeamPress"></Button>
-                           <ToolbarSeparator />
-                           <Label text="Sort By : "/>
-                           <Select class="sapUiTinyMarginBeginEnd"> 
-                           <core:Item text="Competence" />
-                           <core:Item text="Avl" />
-                           </Select>
-                           <Label text="Show : "/>
-                           <Select class="sapUiTinyMarginBeginEnd"> 
-                           <core:Item text="Operations" />
-                           <core:Item text="Competency" />
-                           </Select>
-                           <ToolbarSpacer />
-                           <Button text="show CP" type="Transparent" icon="sap-icon://ppt-attachment" class="sapUiTinyMarginBeginEnd" press="onCPPress"></Button>
-                           <Button text="show initial plan" type="Transparent" icon="sap-icon://ppt-attachment" class="sapUiTinyMarginBeginEnd" press="onInitialPlanPress"></Button>
-                           <SegmentedButton >
-                           <!-- <layout:layoutData>
-                                  <ObjectPageHeaderLayoutData/>
-                           </layout:layoutData> -->
-                                  <items>
-                                        <SegmentedButtonItem text="Shift" press="onShiftPress"/>
-                                        <SegmentedButtonItem text="Day" press="onDayPress" />
-                                  </items>
-                           </SegmentedButton>
-                           </content>
-                    </Toolbar>
-                    
-                    
-                    <custom:DHTMLXScheduler height="100%" id="test"></custom:DHTMLXScheduler>
-             </content>
-       </Page>
+<core:View xmlns:core="sap.ui.core" xmlns="sap.m"
+	xmlns:suite="sap.suite.ui.commons" controllerName="airbus.mes.stationtracker.stationtracker"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:custom="airbus.mes.stationtracker"
+	xmlns:layout="sap.ui.layout">
+	<Page title="Station Tracker" height="100%" showHeader="false"
+		enableScrolling="false ">
+		<customHeader>
+			<Toolbar class="pageHeader">
+				<content>
+					<Image src="/MES/images/Airbus.png" width="10rem" height="2rem" />
+					<ToolbarSeparator />
+					<Label text="MES" class="pageTitle" />
+					<ToolbarSpacer />
+					<core:Icon src="sap-icon://customer" />
+					<Label text="Welcome" class="pageWelcome" />
+					<Label text="Username" design="Bold" class="pageUsername" />
+					<ToolbarSeparator />
+					<Button text="Logout" type="Transparent" icon="sap-icon://log"
+						class="whiteColor whiteButton"></Button>
+					<ToolbarSeparator />
+					<Select class="sapUiTinyMarginBeginEnd pageHeader pageHeaderBlue">
+						<core:Item text="English" />
+						<core:Item text="Deutsch" />
+					</Select>
+					<ToolbarSeparator />
+					<Button type="Transparent" icon="sap-icon://action-settings"
+						class="whiteColor whiteButton"></Button>
+				</content>
+			</Toolbar>
+		</customHeader>
+		<content width="100%" height="100%">
+			<Panel expandable="true" expanded="true"
+				class="pageHeader sapUiSmallMarginTop">
+				<headerToolbar>
+					<Toolbar>
+						<Label text="Station 10" class="pageTitle sapUiTinyMarginBeginEnd" />
+						<Label text="MSN 1485" class="pageWelcome sapUiTinyMarginBeginEnd" />
+						<Label text="Plant DZ" class="pageWelcome sapUiTinyMarginBeginEnd" />
+						<Label text="Line : Comet" class="pageWelcome sapUiTinyMarginBeginEnd" />
+					</Toolbar>
+				</headerToolbar>
+				<content>
+					<suite:HeaderContainer showDividers="false">
+						<suite:items>
+							<suite:HeaderCell>
+								<suite:north>
+									<suite:HeaderCellItem>
+										<suite:content>
+											<Label text="TAKT ADHERENCE" design="Bold" />
+										</suite:content>
+									</suite:HeaderCellItem>
+								</suite:north>
+								<suite:south>
+									<suite:HeaderCellItem>
+										<suite:content>
+											<HBox alignItems="Baseline">
+												<VBox alignItems="Stretch">
+													<Label text="Planned" class="sapUiLargeMarginEnd" />
+													<Label text="80%" design="Bold"
+														class="sapUiSmallMarginTop kpiValue" />
+												</VBox>
+												<VBox alignItems="Stretch">
+													<Label text="Real" class="sapUiLargeMarginEnd red" />
+													<Label text="60%" design="Bold"
+														class="sapUiSmallMarginTop kpiValue red" />
+												</VBox>
+												<VBox alignItems="Stretch">
+													<Label text="Remaining time" class="sapUiLargeMarginEnd" />
+													<Label text="20:30:12" design="Bold"
+														class="sapUiSmallMarginTop kpiValue" />
+												</VBox>
+											</HBox>
+										</suite:content>
+									</suite:HeaderCellItem>
+								</suite:south>
+							</suite:HeaderCell>
+							<suite:HeaderCell>
+								<suite:north>
+									<suite:HeaderCellItem>
+										<suite:content>
+											<Label text="PROGRESS STATUS" design="Bold" />
+										</suite:content>
+									</suite:HeaderCellItem>
+								</suite:north>
+								<suite:south>
+									<suite:HeaderCellItem>
+										<suite:content>
+											<HBox alignItems="Baseline">
+												<VBox alignItems="Stretch">
+													<Label text="OP Done" class="sapUiLargeMarginEnd green" />
+													<Label text="20%" design="Bold"
+														class="sapUiSmallMarginTop kpiValue green" />
+												</VBox>
+												<VBox alignItems="Stretch">
+													<Label text="OP Late" class="sapUiLargeMarginEnd" />
+													<Label text="20%" design="Bold"
+														class="sapUiSmallMarginTop kpiValue" />
+												</VBox>
+												<VBox alignItems="Stretch">
+													<Label text="OP Ahead" class="sapUiLargeMarginEnd" />
+													<Label text="20%" design="Bold"
+														class="sapUiSmallMarginTop kpiValue" />
+												</VBox>
+											</HBox>
+										</suite:content>
+									</suite:HeaderCellItem>
+								</suite:south>
+							</suite:HeaderCell>
+							<suite:HeaderCell>
+								<suite:north>
+									<suite:HeaderCellItem>
+										<suite:content>
+											<Label text="OPERATION STATUS" design="Bold" />
+										</suite:content>
+									</suite:HeaderCellItem>
+								</suite:north>
+								<suite:south>
+									<suite:HeaderCellItem>
+										<suite:content>
+											<HBox alignItems="Baseline">
+												<VBox alignItems="Stretch">
+													<Label text="Confirmed" class="sapUiLargeMarginEnd green" />
+													<Label text="20%" design="Bold"
+														class="sapUiSmallMarginTop kpiValue green" />
+												</VBox>
+												<VBox alignItems="Stretch">
+													<Label text="Partially Conf." class="sapUiLargeMarginEnd" />
+													<Label text="20%" design="Bold"
+														class="sapUiSmallMarginTop kpiValue" />
+												</VBox>
+											</HBox>
+										</suite:content>
+									</suite:HeaderCellItem>
+								</suite:south>
+							</suite:HeaderCell>
+							<suite:HeaderCell>
+								<suite:north>
+									<suite:HeaderCellItem>
+										<suite:content>
+											<Label text="DISRUPTIONS" design="Bold" />
+										</suite:content>
+									</suite:HeaderCellItem>
+								</suite:north>
+								<suite:south>
+									<suite:HeaderCellItem>
+										<suite:content>
+											<HBox alignItems="Baseline">
+												<VBox alignItems="Stretch">
+													<Label text="Other" class="sapUiLargeMarginEnd" />
+													<Label text="5" design="Bold" class="sapUiSmallMarginTop kpiValue" />
+												</VBox>
+												<VBox alignItems="Stretch">
+													<Label text="NC" class="sapUiLargeMarginEnd" />
+													<Label text="1" design="Bold" class="sapUiSmallMarginTop kpiValue" />
+												</VBox>
+												<VBox alignItems="Stretch">
+													<Label text="Missing part" class="sapUiLargeMarginEnd" />
+													<Label text="2" design="Bold" class="sapUiSmallMarginTop kpiValue" />
+												</VBox>
+											</HBox>
+										</suite:content>
+									</suite:HeaderCellItem>
+								</suite:south>
+							</suite:HeaderCell>
+							<suite:HeaderCell>
+								<suite:north>
+									<suite:HeaderCellItem>
+										<suite:content>
+											<Label text="DISRUPTIONS STATUS" design="Bold" />
+										</suite:content>
+									</suite:HeaderCellItem>
+								</suite:north>
+								<suite:south>
+									<suite:HeaderCellItem>
+										<suite:content>
+											<HBox alignItems="Baseline">
+												<VBox alignItems="Stretch">
+													<Label text="Closed" class="sapUiLargeMarginEnd green" />
+													<Label text="3" design="Bold"
+														class="sapUiSmallMarginTop kpiValue green" />
+												</VBox>
+												<VBox alignItems="Stretch">
+													<Label text="Opened" class="sapUiLargeMarginEnd red" />
+													<Label text="5" design="Bold"
+														class="sapUiSmallMarginTop kpiValue red" />
+												</VBox>
+											</HBox>
+										</suite:content>
+									</suite:HeaderCellItem>
+								</suite:south>
+							</suite:HeaderCell>
+						</suite:items>
+					</suite:HeaderContainer>
+				</content>
+			</Panel>
+
+
+			<Toolbar class="white">
+				<content>
+					<Button text="42" type="Transparent" icon="sap-icon://group"
+						class="buttonStatus" press="onTeamPress"></Button>
+					<ToolbarSeparator />
+					<Label text="Sort By : " />
+					<Select class="sapUiTinyMarginBeginEnd">
+						<core:Item text="Competence" />
+						<core:Item text="Avl" />
+					</Select>
+					<Label text="Show : " />
+					<Select class="sapUiTinyMarginBeginEnd">
+						<core:Item text="Operations" />
+						<core:Item text="Competency" />
+					</Select>
+					<ToolbarSpacer />
+					<Button text="show CP" type="Transparent" icon="sap-icon://ppt-attachment"
+						class="sapUiTinyMarginBeginEnd" press="onCPPress"></Button>
+					<Button text="show initial plan" type="Transparent"
+						icon="sap-icon://ppt-attachment" class="sapUiTinyMarginBeginEnd"
+						press="onInitialPlanPress"></Button>
+					<SegmentedButton>
+						<!-- <layout:layoutData> <ObjectPageHeaderLayoutData/> </layout:layoutData> -->
+						<items>
+							<SegmentedButtonItem text="Shift" press="onShiftPress" />
+							<SegmentedButtonItem text="Day" press="onDayPress" />
+						</items>
+					</SegmentedButton>
+				</content>
+			</Toolbar>
+
+
+			<custom:DHTMLXScheduler id="test"></custom:DHTMLXScheduler>
+
+		</content>
+	</Page>
 </core:View>
 
 

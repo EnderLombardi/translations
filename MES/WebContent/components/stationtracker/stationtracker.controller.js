@@ -55,7 +55,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
   	  scheduler.matrix['timeline'].x_size = 6;
   	  scheduler.matrix['timeline'].x_length = 12;
   	  scheduler.matrix['timeline'].x_start= 3,
-  	  scheduler.matrix['timeline'].x_date = '%H %i';
+  	  scheduler.matrix['timeline'].x_date = '%H:%i';
   	  scheduler.templates.timeline_scale_date = function(date){
          var func=scheduler.date.date_to_str(scheduler.matrix['timeline'].x_date );
          return func(date);
@@ -71,7 +71,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
        	  scheduler.matrix['timeline'].x_start= 3,
        	  scheduler.matrix['timeline'].x_size = 8.5;
        	  scheduler.matrix['timeline'].x_length = 12;
-       	  scheduler.matrix['timeline'].x_date = '%H %i';
+       	  scheduler.matrix['timeline'].x_date = '%H:%i';
        	  scheduler.templates.timeline_scale_date = function(date){
              var func=scheduler.date.date_to_str(scheduler.matrix['timeline'].x_date );
              return func(date);

@@ -11,9 +11,13 @@ jQuery.sap.declare("airbus.mes.settings.Component");
 sap.ui.core.UIComponent.extend("airbus.mes.settings.Component", {
 	manifestUrl : "Component.json",
 	metadata : {
-		
-		properties : {},
-		includes : [ "/MES/components/settings/css/SettingScreen.css" ] //array of css and/or javascript files that should be used in the component  
+
+		properties : {
+			textButtonTo : "string",
+			buttonAction : "string"
+		},
+		includes : [ "/MES/components/settings/css/SettingScreen.css" ]
+	// array of css and/or javascript files that should be used in the component
 
 	}
 
@@ -23,10 +27,7 @@ sap.ui.core.UIComponent.extend("airbus.mes.settings.Component", {
 airbus.mes.settings.Component.prototype.createContent = function() {
 
 	if (airbus.mes.settings.oView === undefined) {
-		
 		airbus.mes.settings.ModelManager.init(this);
-//		airbus.mes.settings.ModelManager.init(sap.ui.getCore());
-
 		this.oView = sap.ui.view({
 			id : "View1",
 			viewName : "airbus.mes.settings.FilterPlantData",
@@ -38,6 +39,17 @@ airbus.mes.settings.Component.prototype.createContent = function() {
 		return this.oView;
 
 	}
+};
 
-}
+// override the setTextButtonTo function to return user interface
+airbus.mes.settings.Component.prototype.setTextButtonTo = function(sText) {
+	this.oView.byId("btn1").setText(sText);
+	this.setProperty("textButtonTo", sText);
+	return this;
+};
 
+// override the setButtonAction function to return user interface
+airbus.mes.settings.Component.prototype.buttonAction = function(sText) {
+	this.setProperty("buttonAction", sText);
+	return this;
+};

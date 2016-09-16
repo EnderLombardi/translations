@@ -4,6 +4,7 @@
 		<customHeader>
 			<Toolbar class="pageHeader">
                            <content>	
+
                            <Image src="/MES/images/Airbus.png" width="10rem" height="2rem" press="goToHome"/>
                            <ToolbarSeparator />
                            <Label text="MES" class="pageTitle"/>
@@ -19,7 +20,7 @@
                            <core:Item text="Deutsch" />
                            </Select>
                            <ToolbarSeparator />
-                           <Button id="settingsButton" type="Transparent" icon="sap-icon://action-settings" class="whiteColor whiteButton" press="naviguate"></Button> 
+                           <Button id="settingsButton" type="Transparent" icon="sap-icon://action-settings" class="whiteColor whiteButton" press="navigate"></Button> 
                            </content>
                     </Toolbar>
 		</customHeader>
