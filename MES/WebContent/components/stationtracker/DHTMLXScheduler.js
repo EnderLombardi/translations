@@ -26,13 +26,13 @@ sap.ui.core.Control.extend(
 						scheduler.locale.labels.section_custom="Section";
 			 		    scheduler.config.details_on_create=true;
 						scheduler.config.details_on_dblclick=true;
-						scheduler.config.xml_date='%H %i';
+						scheduler.config.xml_date="%Y-%m-%d %H:%i";
 				    
 							scheduler.createTimelineView({
 								section_autoheight: false,
 								name:	"timeline",
 								x_unit:	"minute",
-								x_date:	"%d/%m/%Y",
+								x_date:	"%H %i",
 								x_step:	120,
 								x_size: 6,
 								x_start: 3,
