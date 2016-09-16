@@ -4,7 +4,7 @@
 		<customHeader>
 			<Toolbar class="pageHeader">
                            <content>
-                           <Image src="/MES/images/Airbus.png" width="10rem" height="2rem" />
+                           <Image src="/MES/images/Airbus.png" width="10rem" height="2rem" press="goToHome"/>
                            <ToolbarSeparator />
                            <Label text="MES" class="pageTitle"/>
                            <ToolbarSpacer />

@@ -30,6 +30,26 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 			nav.to(airbus.mes.settings.oView.getId()); }
 		
 	},
+	goToHome :function(){
+		
+			
+					//jQuery.sap.registerModulePath("airbus.mes.homepage","/MES/components/settings");
+				    //jQuery.sap.registerModulePath("airbus.mes.stationtracker","/MES/components/stationtracker");
+
+				    if (airbus.mes.homepage != undefined) {
+				    	nav.to(airbus.mes.homepage.oView.getId());
+					}
+				    else {
+				    	sap.ui.getCore().createComponent({
+						name : "airbus.mes.homepage", // root component folder is resources
+					});
+				    	
+					nav.addPage(airbus.mes.homepage.oView);
+					nav.to(airbus.mes.homepage.oView.getId());
+				    }
+				} ,
+
+
 
 /**
 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
