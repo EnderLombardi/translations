@@ -7,7 +7,7 @@
 		<script src="https://sapui5.netweaver.ondemand.com/1.36.11/resources/sap-ui-core.js"
 				id="sap-ui-bootstrap"
 				data-sap-ui-libs="sap.m"
-				data-sap-ui-theme="sap_bluecrystal">
+				data-sap-ui-theme="sap_bluecrystal" data-sap-ui-xx-bindingSyntax="complex" >
 		</script>
 		<link rel="stylesheet" href="/MES/lib/dhtmlxscheduler/dhtmlxscheduler.css"	type="text/css" title="no title">
 		<link rel='stylesheet' type='text/css' href='/MES/lib/dhtmlxscheduler/dhtmlxscheduler_flat.css'>
@@ -26,6 +26,7 @@
 				var oCompCont = new sap.ui.core.ComponentContainer({
 					component : sap.ui.getCore().createComponent({
 						name : "airbus.mes.shell",	// root component folder is resources
+						propagateModel:false
 					})
 				});
 				

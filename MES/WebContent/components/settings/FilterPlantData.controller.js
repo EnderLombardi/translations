@@ -39,11 +39,12 @@ sap.ui
                                                 } ]
                                          } ]
                                   },
-
+                                  ModelManager:undefined,
                                   onInit : function() {
 
                                          this.addParent(this.selectTree, undefined);
-                                         airbus.mes.settings.ModelManager.loadLangModel();
+                                         this.ModelManager = airbus.mes.settings.ModelManager; 
+//                                         airbus.mes.settings.ModelManager.loadLangModel();
                                          airbus.mes.settings.ModelManager.loadUserSettingsModel();
 
                                          // this.getView().setModel().sap.ui.getCore().getModel("siteModel");
@@ -75,12 +76,22 @@ sap.ui
                                   // *******************
                                   onSelectionChange : function(oEvt) {
                                          var that = this;
-                                         this.findElement(this.selectTree, oEvt.getSource()
-                                                       .getId().split("--")[1]).childs
+                                         var id=oEvt.getSource().getId().split("--")[1];
+                                         this.findElement(this.selectTree, oEvt.getSource().getId().split("--")[1]).childs
                                                        .forEach(function(oElement) {
                                                               that.clearField(oElement);
                                                               that.filterField(oElement);
                                                        });
+                                         
+                                         if(id==="ComboBoxProgram"){
+                                        	 this.setEnabledCombobox(true,true,false,false); 
+                                         }
+                                         else if(id==="ComboBoxLine"){
+                                        	 this.setEnabledCombobox(true,true,true,false);
+                                         }
+                                         else{
+                                        	 this.setEnabledCombobox(true,true,true,true);
+                                         }
 
                                   },
 
@@ -126,12 +137,14 @@ sap.ui
                                                 }
                                          });
                                          aFilters.push(duplicatesFilter);
-
-                                         this
-                                                       .getView()
-                                                       .byId(oTree.id)
-                                                       .getBinding("items")
-                                                       .filter(new sap.ui.model.Filter(aFilters, true));
+                                         if(this
+                                         .getView()
+                                         .byId(oTree.id)
+                                         .getBinding("items"))          
+                                        	 this
+                                             .getView()
+                                             .byId(oTree.id)
+                                             .getBinding("items").filter(new sap.ui.model.Filter(aFilters, true));
 
                                          oTree.childs.forEach(function(oElement) {
                                                 that.filterField(oElement);
@@ -140,17 +153,19 @@ sap.ui
                                   loadPlantModel : function(oEvt) {
                                          airbus.mes.settings.ModelManager.site=this.getView().byId("ComboBoxPlant").getValue();
                                          airbus.mes.settings.ModelManager.loadPlantModel();
-                                  
+                                         this.filterField(this.selectTree);
                                          this.getView().byId("ComboBoxProgram").setValue("");
                                          this.getView().byId("ComboBoxLine").setValue("");
                                          this.getView().byId("ComboBoxStation").setValue("");
                                          this.getView().byId("ComboBoxMSN").setValue("");
                                          
+                                         this.setEnabledCombobox(true,false,false,false);
+                                         
+                                         
                                   },
                                   
                                   getUserSettings:function(){
-                                         var oModel = sap.ui.getCore().getModel("userSettingModel").oData;
-                                         
+                                         var oModel = this.ModelManager.core.getModel("userSettingModel").getData(); 
                                          airbus.mes.settings.ModelManager.plant = oModel.Rowsets.Rowset[0].Row[0].plant;
                                          airbus.mes.settings.ModelManager.program =oModel.Rowsets.Rowset[0].Row[0].program;
                                          airbus.mes.settings.ModelManager.line=oModel.Rowsets.Rowset[0].Row[0].line;
@@ -158,12 +173,26 @@ sap.ui
                                          airbus.mes.settings.ModelManager.msn=oModel.Rowsets.Rowset[0].Row[0].msn;
                                          
                                          this.getView().byId("ComboBoxPlant").setValue(airbus.mes.settings.ModelManager.plant);
-                                         this.getView().byId("ComboBoxProgram").setValue(airbus.mes.settings.ModelManager.program);
-                                         this.getView().byId("ComboBoxLine").setValue(airbus.mes.settings.ModelManager.line);
-                                         this.getView().byId("ComboBoxStation").setValue(airbus.mes.settings.ModelManager.station);
-                                         this.getView().byId("ComboBoxMSN").setValue(airbus.mes.settings.ModelManager.msn);
-                                         
-                                         
+                                         if(airbus.mes.settings.ModelManager.plant){
+                                        	 this.loadPlantModel();
+                                             if(airbus.mes.settings.ModelManager.program)
+                                            	 this.getView().byId("ComboBoxProgram").setSelectedKey(airbus.mes.settings.ModelManager.program);
+                                             if(airbus.mes.settings.ModelManager.line)
+                                            	 this.getView().byId("ComboBoxLine").setSelectedKey(airbus.mes.settings.ModelManager.line);
+                                             if(airbus.mes.settings.ModelManager.station)
+                                            	 this.getView().byId("ComboBoxStation").setSelectedKey(airbus.mes.settings.ModelManager.station);
+                                             if(airbus.mes.settings.ModelManager.msn)
+                                            	 this.getView().byId("ComboBoxMSN").setSelectedKey(airbus.mes.settings.ModelManager.msn);
+                                             
+                                             if(this.fromHomepage){
+                                            	 this.navigate();
+                                            	 this.fromHomepage=false;
+                                             }
+                                        	 this.setEnabledCombobox(true,true,true,true);
+                                         }
+                                         else{
+                                        	 this.setEnabledCombobox(true,false,false,false);
+                                         }            
                                   },
                                   loadStationTracker:function(){
                                                        var that=this;
@@ -181,7 +210,7 @@ sap.ui
                                                               return;
                                                        }
                                                        else{
-                                                              airbus.mes.settings.ModelManager.plant = this.getView().byId("ComboBoxPlant").getValue();
+                                                              this.ModelManager.plant = this.getView().byId("ComboBoxPlant").getValue();
                                                               airbus.mes.settings.ModelManager.program = this.getView().byId("ComboBoxProgram").getValue();
                                                               airbus.mes.settings.ModelManager.line = this.getView().byId("ComboBoxLine").getValue();
                                                               airbus.mes.settings.ModelManager.station = this.getView().byId("ComboBoxStation").getValue();
@@ -241,10 +270,18 @@ sap.ui
                                    * @memberOf application2.initialview
                                   */
                                   onAfterRendering : function() {
-                                         this.filterField(this.selectTree);
                                          this.getUserSettings();
+                                         this.filterField(this.selectTree);
                                   },
-                     
+                                  fromHomepage: true,
+                                  
+                                  setEnabledCombobox:function(fProg,fLine,fStation,fMsn){
+                                	  this.getView().byId("ComboBoxProgram").setEnabled(fProg);
+                                	  this.getView().byId("ComboBoxLine").setEnabled(fLine);
+                                	  this.getView().byId("ComboBoxStation").setEnabled(fStation);
+                                	  this.getView().byId("ComboBoxMSN").setEnabled(fMsn);      	  
+                                	  
+                                  },
                      /**
                      * Called when the Controller is destroyed. Use this one to free
                      * resources and finalize activities.

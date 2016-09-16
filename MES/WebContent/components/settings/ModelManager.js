@@ -49,6 +49,8 @@ airbus.mes.settings.ModelManager = {
 		});
 		
 		airbus.mes.settings.ModelManager.loadSiteModel();
+//        airbus.mes.settings.ModelManager.loadLangModel();
+        airbus.mes.settings.ModelManager.loadUserSettingsModel();
 
 	},
 	
@@ -59,7 +61,7 @@ airbus.mes.settings.ModelManager = {
 	},
 
 	loadSiteModel : function() {
-		var oViewModel = airbus.mes.settings.ModelManager.core.getModel("siteModel");
+		var oViewModel = this.core.getModel("siteModel");
 		oViewModel.loadData(airbus.mes.settings.ModelManager.getUrlSite(), null, false);
 	},
 	// ********************************************************************************
@@ -79,7 +81,7 @@ airbus.mes.settings.ModelManager = {
 		return langUrl;
 	},
 	loadLangModel:function(){
-		var oLangModel = sap.ui.getCore().getModel("langModel");
+		var oLangModel = this.core.getModel("langModel");
 		oLangModel.loadData(airbus.mes.settings.ModelManager.getUrlLang(),null,false);
 	},
 	// ********************************************************************************
@@ -90,7 +92,7 @@ airbus.mes.settings.ModelManager = {
 		
 	},
 	loadUserSettingsModel:function(){
-		var oUserSettingModel = sap.ui.getCore().getModel("userSettingModel");
+		var oUserSettingModel = this.core.getModel("userSettingModel");
 		oUserSettingModel.loadData(airbus.mes.settings.ModelManager.getUrlUserSetting(),null,false);
 	},
 	// ********************************************************************************
@@ -131,4 +133,4 @@ airbus.mes.settings.ModelManager = {
 		}
 
 };
-airbus.mes.settings.ModelManager.init(sap.ui.getCore());
+//airbus.mes.settings.ModelManager.init(sap.ui.getCore());
