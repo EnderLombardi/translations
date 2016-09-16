@@ -238,7 +238,7 @@ sap.ui
                                       jQuery.sap.registerModulePath("airbus.mes.settings","/MES/components/settings");
                                       jQuery.sap.registerModulePath("airbus.mes.stationtracker","/MES/components/stationtracker");
                                       
-                                      if (this.getOwnerComponent().mProperties.buttonAction === "stationtracker") {
+//                                      if (this.getOwnerComponent().mProperties.buttonAction === "stationtracker") {
                                     	  if(airbus.mes.stationtracker != undefined) {
 						            		  nav.to(airbus.mes.stationtracker.oView.getId());                                    		  
                                     	  }	else {
@@ -250,11 +250,13 @@ sap.ui
                                     	  }
 				  
                                     	  
-                                     } 
-                                      else if ( this.getOwnerComponent().mProperties.buttonAction === "back" ) {
-                                     	  nav.back();       	  
-                                      }
-//                                      
+//                                     } 
+//                                      else if ( this.getOwnerComponent().mProperties.buttonAction === "back" ) {
+////                                     	  nav.back();
+//								             nav.addPage(airbus.mes.stationtracker.oView);                                    	  
+//										     nav.to(airbus.mes.stationtracker.oView.getId());                                    	  
+//                                      }
+////                                      
                                       
                                       
                                       
