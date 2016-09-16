@@ -11,7 +11,6 @@ sap.ui.core.Control.extend(
 						oRm.write("	<div class='dhx_cal_navline'>");
 						oRm.write("		<div class='dhx_cal_prev_button'></div>");
 						oRm.write("	 	<div class='dhx_cal_next_button'></div>");
-						oRm.write("		<div class='dhx_cal_today_button'></div>");
 						oRm.write("		<div class='dhx_cal_date' Style='font-weight:bold; text-align:left; padding-left: 1.5%'></div>");
 						oRm.write("	</div>");
 						oRm.write("	<div class='dhx_cal_header' Style='text-align:left;'></div>");
@@ -32,7 +31,7 @@ sap.ui.core.Control.extend(
 								section_autoheight: false,
 								name:	"timeline",
 								x_unit:	"minute",
-								x_date:	"%H %i",
+								x_date:	"%H:%i",
 								x_step:	120,
 								x_size: 6,
 								x_start: 3,
