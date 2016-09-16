@@ -76,7 +76,7 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 //	onExit: function() {
 //
 //	}
-	naviguate : function(){
+	navigate : function(){
 		
 	    jQuery.sap.registerModulePath("airbus.mes.settings","/MES/components/settings");
 	    jQuery.sap.registerModulePath("airbus.mes.stationtracker","/MES/components/stationtracker");
