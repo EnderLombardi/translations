@@ -21,6 +21,9 @@ sap.ui.core.UIComponent.extend("airbus.mes.settings.Component", {
 
 	}
 
+
+
+
 });
 
 // override the createContent function to return user interface
@@ -40,6 +43,10 @@ airbus.mes.settings.Component.prototype.createContent = function() {
 
 	}
 };
+
+
+
+
 
 // override the setTextButtonTo function to return user interface
 airbus.mes.settings.Component.prototype.setTextButtonTo = function(sText) {

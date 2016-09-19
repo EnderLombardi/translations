@@ -84,7 +84,8 @@ airbus.mes.stationtracker.ModelManager = {
 		 scheduler.callEvent("onOptionsLoad", []);
 		 
 	     scheduler.init(sap.ui.getCore().byId("stationTrackerView").getId() + "--test" ,  new Date(2014,5,30),"timeline");
-	     //scheduler.clearAll();
+	     scheduler.clearAll();
+	     
 	     scheduler.parse([
 	                       
 	{ start_date: "2014-06-30 09:00", end_date: "2014-06-30 12:00", text:"Task A-12458", section_id:"I1" , type:"I" , progress:50, text:"WO1 OP30",},
@@ -127,6 +128,8 @@ airbus.mes.stationtracker.ModelManager = {
 	     { start_date: "2014-06-30 11:40", end_date: "2014-06-30 16:30", text:"Task D-46588",  section_id:"A2" , type:"R" , progress:50, text:"WO1 OP30",},
 	     { start_date: "2014-06-30 12:00", end_date: "2014-06-30 18:00", text:"Task D-12458",  section_id:"A3" , type:"R" , progress:50, text:"WO1 OP30",}
 	                  ],"json");
+	     
+	     
 	     
 			
 		},

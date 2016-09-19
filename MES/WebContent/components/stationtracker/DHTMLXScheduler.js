@@ -3,8 +3,7 @@ sap.ui.core.Control.extend(
 				{
 
 					renderer : function(oRm, oControl) {
-						if( airbus.mes.stationtracker.test != undefined ) {
-																	
+				
 						oRm.write("<div ");
 						oRm.writeControlData(oControl);
 						oRm.write(" class='dhx_cal_container'  style='width:100%; height:71%;'>");
@@ -17,10 +16,10 @@ sap.ui.core.Control.extend(
 						oRm.write("	<div class='dhx_cal_data'></div>");
 						oRm.write("</div>");
 
-						scheduler.xy.scale_height = 20;
+						scheduler.xy.scroll_width=20;
+						scheduler.xy.bar_height = 30;
 						scheduler.deleteMarkedTimespan();
 						scheduler.config.drag_resize = false;
-						scheduler.xy.bar_height = 30;
 						scheduler.locale.labels.timeline_tab = "Timeline";
 						scheduler.locale.labels.section_custom="Section";
 			 		    scheduler.config.details_on_create=false;
@@ -83,12 +82,12 @@ sap.ui.core.Control.extend(
 
 							if (section.children != undefined) {
 
-								var html = '<div><span id= folder_' + section.key
-										+ ' class="fa fa-chevron-down custom" ></span><div title='
-										+ sap.ui.getCore().byId("stationTrackerView").getController().spaceInsecable(section.label) + ' class="ylabelfolder">' + section.label
-										+ '</div><span class="fa fa-user-plus custom" onclick="airbus.mes.stationtracker.AssignmentManager.newLine('
-										+ section.key + ')" ></span></div>';
-								return html;
+//								var html = '<div><span id= folder_' + section.key
+//										+ ' class="fa fa-chevron-down custom" ></span><div title='
+//										+ sap.ui.getCore().byId("stationTrackerView").getController().spaceInsecable(section.label) + ' class="ylabelfolder">' + section.label
+//										+ '</div><span class="fa fa-user-plus custom" onclick="airbus.mes.stationtracker.AssignmentManager.newLine('
+//										+ section.key + ')" ></span></div>';
+//								return html;
 
 							}
 
@@ -197,10 +196,7 @@ sap.ui.core.Control.extend(
 								placement : "Bottom",
 							}).openBy(e.srcElement);
 						});
-						} else {
-							
-							airbus.mes.stationtracker.test = 1 ;
-						}
+				
 					},
-					
+									
 				});

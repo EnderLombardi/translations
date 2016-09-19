@@ -117,4 +117,15 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 		nav.addPage(airbus.mes.settings.oView);
 		nav.to(airbus.mes.settings.oView.getId()); }
 	},
+	
+	renderStationTracker : function() {
+		
+		if ( nav.getCurrentPage().getId() === "stationTrackerView" ) {
+		
+		scheduler.xy.scroll_width=20;
+		airbus.mes.stationtracker.ModelManager.loadStationTracker();
+		scheduler.updateView();
+		
+		}
+	}
 });
