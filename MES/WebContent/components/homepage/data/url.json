@@ -2,52 +2,63 @@
 	"buttonDetail": [{
 
 		"text": "Station Tracker",
-		"url": "/MES/WebContent/components/settings/index.html"
+		"url": "/MES/WebContent/components/settings/index.html",
+		"enable": true
 	}, {
 
 		"text": "OSW Input Mgt",
-		"url": "/MES/WebContent/components/stationtracker/index.html"
+		"url": "/MES/WebContent/components/stationtracker/index.html",
+		"enable": false
 	}, {
 
 		"text": "Team Availability",
-		"url": "/MES/WebContent/components/stationtracker/index.html"
+		"url": "/MES/WebContent/components/stationtracker/index.html",
+		"enable": false
 	}, {
 
 		"text": "Team Competencies",
-		"url": "/MES/WebContent/components/stationtracker/index.html"
+		"url": "/MES/WebContent/components/stationtracker/index.html",
+		"enable": false
 	}, {
 
 		"text": "Team Assignment",
-		"url": "/MES/WebContent/components/stationtracker/index.html"
+		"url": "/MES/WebContent/components/stationtracker/index.html",
+		"enable": false
 	},
 	{
 
 		"text": "Means Managment",
-		"url": "/MES/WebContent/components/stationtracker/index.html"
+		"url": "/MES/WebContent/components/stationtracker/index.html",
+		"enable": false
 	},
 	{
 
 		"text": "Work Order Tracker",
-		"url": "/MES/WebContent/components/stationtracker/index.html"
+		"url": "/MES/WebContent/components/stationtracker/index.html",
+		"enable": false
 	},
 	{
 
 		"text": "Disruption Andon",
-		"url": "/MES/WebContent/components/stationtracker/index.html"
+		"url": "/MES/WebContent/components/stationtracker/index.html",
+		"enable": false
 	},{
 
 		"text": "Missing Parts Tracker",
-		"url": "/MES/WebContent/components/stationtracker/index.html"
+		"url": "/MES/WebContent/components/stationtracker/index.html",
+		"enable": false
 	},
 	{
 
 		"text": "Station SQCDP Pareto",
-		"url": "/MES/WebContent/components/stationtracker/index.html"
+		"url": "/MES/WebContent/components/stationtracker/index.html",
+		"enable": false
 	},
 	{
 
 		"text": "Problem Solving Tracker",
-		"url": "/MES/WebContent/components/stationtracker/index.html"
+		"url": "/MES/WebContent/components/stationtracker/index.html",
+		"enable": false
 	}
 	
 	]
