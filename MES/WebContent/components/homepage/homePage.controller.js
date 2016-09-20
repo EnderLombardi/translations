@@ -19,6 +19,7 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 	    }
 
 	       sap.ui.getCore().createComponent({
+				id : "CompSettings",
 				name : "airbus.mes.settings", // root component folder is resources
 				settings : {
 					textButtonTo : "go to Station Tracker",
