@@ -51,8 +51,51 @@ airbus.mes.stationtracker.ModelManager = {
 		
 		onStationTrackerLoad : function() {
 			
-			var oModel = sap.ui.getCore().getModel("stationTrackerModel").oData.Rowsets.Rowset[0].Row;
-			 elements = [ // original hierarhical array to display
+			airbus.mes.stationtracker.GroupingBoxingManager.groupingBoxing("workOrderId","operationId");
+			
+			var oModel = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy;
+			aElements2 = []
+			aBox = [];
+			
+			for( var i in oModel ) { 
+				
+				var oparent = {
+						
+						"key":i,
+						"children":[],
+				}
+				aElements2.push(oparent);
+				
+				for ( var a in oModel[i] ) {
+					
+					var fIndex = aElements2.indexOf(oparent);
+					var ochild = {
+							
+							"key": i + "_" + a,
+					}
+					aElements2[fIndex].children.push(ochild);
+					
+					for ( var e in oModel[i][a]) {
+						
+						var fIndexOperation = aElements2[fIndex].children.indexOf(ochild);
+						oOperation = {
+								
+								"section_id" : 	i + "_" + a,
+								"startDate" : oModel[i][a][e][fIndexOperation].startDate,
+								"endDate" : oModel[i][a][e][fIndexOperation].endDate,
+						}
+						
+						aBox.push(oOperation);
+						
+					}
+				}
+				
+			}
+			
+			
+			
+			
+			elements = [ // original hierarhical array to display
 	                        {key:10, label:"FUEL ACTIVITIES", open: true, children: [
 	                                                                                 
 	                        {key:"F1" , name:"Jae J.", subname:"JJ", hours:'6.0hs'},
@@ -61,7 +104,7 @@ airbus.mes.stationtracker.ModelManager = {
 	                        ]},
 	                         {key:105, label:"ELEC ACTIVITIES", open:true, children: [
 	                      
-	                         {key:"E2", name:"Jae J.", subname:"JJ", hours:'6.0hs'},
+	                         {key:"F1", name:"Jae J.", subname:"JJ", hours:'6.0hs'},
 	                         {key:"E2", name:"Mark K.", subname:"MK", hours:'4.0hs'},
 	                         {key:"E3", name:"Steve S.", subname:"SS", hours:'3.0hs'},                                                    
 	                         ]},

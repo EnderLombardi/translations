@@ -82,12 +82,12 @@ sap.ui.core.Control.extend(
 
 							if (section.children != undefined) {
 
-//								var html = '<div><span id= folder_' + section.key
-//										+ ' class="fa fa-chevron-down custom" ></span><div title='
-//										+ sap.ui.getCore().byId("stationTrackerView").getController().spaceInsecable(section.label) + ' class="ylabelfolder">' + section.label
-//										+ '</div><span class="fa fa-user-plus custom" onclick="airbus.mes.stationtracker.AssignmentManager.newLine('
-//										+ section.key + ')" ></span></div>';
-//								return html;
+								var html = '<div><span id= folder_' + section.key
+										+ ' class="fa fa-chevron-down custom" ></span><div title='
+										+ sap.ui.getCore().byId("stationTrackerView").getController().spaceInsecable(section.label) + ' class="ylabelfolder">' + section.label
+										+ '</div><span class="fa fa-user-plus custom" onclick="airbus.mes.stationtracker.AssignmentManager.newLine('
+										+ section.key + ')" ></span></div>';
+								return html;
 
 							}
 

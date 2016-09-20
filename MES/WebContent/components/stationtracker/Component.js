@@ -1,6 +1,8 @@
 jQuery.sap.require("sap.ui.core.UIComponent");
 jQuery.sap.require("airbus.mes.stationtracker.ModelManager");
 jQuery.sap.require("airbus.mes.stationtracker.AssignmentManager");
+jQuery.sap.require("airbus.mes.stationtracker.GroupingBoxingManager");
+
 
 jQuery.sap.registerModulePath("airbus.mes.dhtmlx","/MES/lib/dhtmlxscheduler");
 jQuery.sap.require("airbus.mes.dhtmlx.dhtmlxscheduler");

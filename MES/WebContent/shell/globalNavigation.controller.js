@@ -136,8 +136,9 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 		
 		if ( nav.getCurrentPage().getId() === "stationTrackerView" ) {
 		
-		scheduler.xy.scroll_width=20;
+		
 		airbus.mes.stationtracker.ModelManager.loadStationTracker();
+		scheduler.xy.scroll_width=20;
 		scheduler.updateView();
 		
 		}
