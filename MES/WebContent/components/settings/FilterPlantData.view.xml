@@ -7,7 +7,7 @@
 				<headerToolbar>
 					<Toolbar class="titleToolbar">
 						<content>
-							<Text class="textSize" text="Welcome to Airbus MES" />
+							<Text class="textSize" text="{messageBundle>Headertext}" />
 							<ToolbarSpacer />
 							<!-- <Button type="Transparent" text="English" icon="sap-icon://slim-arrow-down" 
 								iconFirst="false" /> -->

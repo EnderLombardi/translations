@@ -16,6 +16,8 @@ airbus.mes.settings.ModelManager = {
 	current_flag:"X",
 	queryParams : jQuery.sap.getUriParameters(),
 	
+	i18nModel: undefined,
+	
 	init : function(core) {
 		
 		this.core = core;
@@ -51,6 +53,13 @@ airbus.mes.settings.ModelManager = {
 		airbus.mes.settings.ModelManager.loadSiteModel();
 //        airbus.mes.settings.ModelManager.loadLangModel();
         airbus.mes.settings.ModelManager.loadUserSettingsModel();
+        
+//  ***************************Define i18nModel**************************************
+		this.i18nModel = new sap.ui.model.resource.ResourceModel({
+		bundleUrl : "i18n/messageBundle.properties",
+		bundleLocale : core.getConfiguration().getLanguage()
+	});
+	core.setModel(this.i18nModel, "messageBundle");
 
 	},
 	
