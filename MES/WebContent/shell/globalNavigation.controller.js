@@ -15,21 +15,21 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 	onPress:function(oEvt){
 	
 	},
-	onBack : function(){
-		  jQuery.sap.registerModulePath("airbus.mes.settings","/MES/components/settings");
-		    
-		    if (airbus.mes.settings != undefined) {
-		    	nav.to(airbus.mes.settings.oView.getId());
-			}
-		    else {
-		    	sap.ui.getCore().createComponent({
-				name : "airbus.mes.settings", // root component folder is resources
-			});
-		    	
-			nav.addPage(airbus.mes.settings.oView);
-			nav.to(airbus.mes.settings.oView.getId()); }
-		
-	},
+//	onBack : function(){
+//		  jQuery.sap.registerModulePath("airbus.mes.settings","/MES/components/settings");
+//		    
+//		    if (airbus.mes.settings != undefined) {
+//		    	nav.to(airbus.mes.settings.oView.getId());
+//			}
+//		    else {
+//		    	sap.ui.getCore().createComponent({
+//				name : "airbus.mes.settings", // root component folder is resources
+//			});
+//		    	
+//			nav.addPage(airbus.mes.settings.oView);
+//			nav.to(airbus.mes.settings.oView.getId()); }
+//		
+//	},
 	goToHome :function(){
 		
 			
@@ -74,62 +74,22 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 //	onExit: function() {
 //
 //	}
-	navigate : function(){
+	navigate : function() {
+
+		jQuery.sap.registerModulePath("airbus.mes.settings", "/MES/components/settings");
+		jQuery.sap.registerModulePath("airbus.mes.stationtracker", "/MES/components/stationtracker");
+
 		
-	    jQuery.sap.registerModulePath("airbus.mes.settings","/MES/components/settings");
-	    jQuery.sap.registerModulePath("airbus.mes.stationtracker","/MES/components/stationtracker");
+		if (nav.getCurrentPage().getId() === "stationTrackerView") {
+			var textButtonTo = "go to Station Tracker";
 
-	    
-	    if (airbus.mes.settings != undefined) {
-	    	airbus.mes.settings.oView.destroy();
-	    	airbus.mes.settings.oView = undefined
-	    }
+		} else if (nav.getCurrentPage().getId() === "homePageView") {
+			var textButtonTo = "go to Home Page";
 
-	    if (nav.getCurrentPage().getId() ===  "stationTrackerView" ) {
-	    	var textButtonTo = "go to Station Tracker";
-	    	
-	    } else if (nav.getCurrentPage().getId() === "homePageView") { 
-	    	var textButtonTo = "go to Home Page";  	
-	    	
-	    }
-	    
-	    
-		   sap.ui.getCore().createComponent({
-				name : "airbus.mes.settings", // root component folder is resources
-				settings : {
-					textButtonTo : textButtonTo,
-					buttonAction : "back"
-				}	
-			});	    
-	    
-	    nav.addPage(airbus.mes.settings.oView);
-		nav.to(airbus.mes.settings.oView.getId());
-	    
-	    
-//	    if (nav.getCurrentPage().getId() ===  "stationTrackerView" ) {
-//	    	var sText = "go to Station Tracker";
-//	    } else if (nav.getCurrentPage().getId() === "homePageView") { 
-//	    	var sText =  "go to Home Page";  	
-//    	
-//	    }	
-//	    
-//	    if (airbus.mes.settings != undefined) {
-//	    	
-//	    	airbus.mes.settings.oView.byId("btn1").setText(sText);  	
-//	    	nav.to(airbus.mes.settings.oView.getId());
-//		}
-//	    else {
-//	    	sap.ui.getCore().createComponent({
-//			name : "airbus.mes.settings", // root component folder is resources
-//			id : "CompSettings",
-//			settings : {
-//				textButtonTo : sText,
-//				buttonAction : "back"
-//			}
-//		});
-//	    	
-//		nav.addPage(airbus.mes.settings.oView);
-//		nav.to(airbus.mes.settings.oView.getId()); }
+		};		
+		
+		airbus.mes.settings.GlobalFunction.navigateTo(textButtonTo,"back");
+		
 	},
 	
 	renderStationTracker : function() {
