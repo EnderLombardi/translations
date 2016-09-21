@@ -32,16 +32,16 @@
 	var oCompCont = new sap.ui.core.ComponentContainer({
 		component : sap.ui.getCore().createComponent({
 			name : "airbus.mes.shell", // root component folder is resources
-			propagateModel : false
+ 			propagateModel : false
 		})
 	});
 
-	airbus.mes.component = airbus.mes.component || {};
+ 	airbus.mes.component = airbus.mes.component || {};
 	
 	airbus.mes.component.settings = sap.ui.getCore().createComponent({
 		name : "airbus.mes.settings", // root component folder is resources
 	});
-	
+
 	var nav = airbus.mes.shell.oView.byId("navCont");
 	nav.afterNavigate
 

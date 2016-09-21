@@ -1,4 +1,6 @@
 jQuery.sap.require("sap.ui.core.UIComponent");
+jQuery.sap.require("airbus.mes.shell.util.Formatter");
+
 jQuery.sap.registerModulePath("airbus.mes.settings","/MES/components/settings");
 
 jQuery.sap.declare("airbus.mes.shell.Component");

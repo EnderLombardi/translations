@@ -237,7 +237,12 @@ sap.ui
                                 	  
                                       jQuery.sap.registerModulePath("airbus.mes.settings","/MES/components/settings");
                                       jQuery.sap.registerModulePath("airbus.mes.stationtracker","/MES/components/stationtracker");
-                                      
+
+//                                    Active settings button during leaving settings screen
+                                      if(airbus.mes.shell != undefined){
+                                    	  airbus.mes.shell.oView.byId("settingsButton").setEnabled(true);
+                                      };
+                              		  
                                       if (this.getOwnerComponent().mProperties.buttonAction === "stationtracker") {
                                     	  if(airbus.mes.stationtracker != undefined) {
 						            		  nav.to(airbus.mes.stationtracker.oView.getId());                                    		  
@@ -253,32 +258,7 @@ sap.ui
                                      } 
                                       else if ( this.getOwnerComponent().mProperties.buttonAction === "back" ) {
                                      	  nav.back();
-//								             nav.addPage(airbus.mes.stationtracker.oView);                                    	  
-//										     nav.to(airbus.mes.stationtracker.oView.getId());                                    	  
                                       }
-                                      
-                                      
-                                      
-                                      
-                                      
-//                                      if ( nav.getPreviousPage().getId() === "homePageView" ) {
-//                                     	  nav.back(); 
-//                                    
-//
-//						              } else {
-//
-//						            	  if (airbus.mes.stationtracker != undefined) {
-//						            		  nav.to(airbus.mes.stationtracker.oView.getId());
-//						            	  } else {
-//						            		  sap.ui.getCore().createComponent({
-//						            			  name : "airbus.mes.stationtracker", // root component folder is resources
-//						             });
-//
-//						             nav.addPage(airbus.mes.stationtracker.oView);
-//								     nav.to(airbus.mes.stationtracker.oView.getId());
-//							}
-//
-//						}
                                 	  
                                   },
 
