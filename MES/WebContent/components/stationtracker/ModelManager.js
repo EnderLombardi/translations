@@ -74,15 +74,23 @@ airbus.mes.stationtracker.ModelManager = {
 							"key": i + "_" + a,
 					}
 					aElements2[fIndex].children.push(ochild);
+					var aStartDate = [];
+					var aEndDate = [];
 					
 					for ( var e in oModel[i][a]) {
 						
-						var fIndexOperation = aElements2[fIndex].children.indexOf(ochild);
+						oModel[i][a][e].forEach( function( el ) { 
+							
+							aStartDate.push(Date.parse(el.startDate));
+							aEndDate.push(Date.parse(el.endDate));
+							
+						} )
+						
 						oOperation = {
 								
 								"section_id" : 	i + "_" + a,
-								"startDate" : oModel[i][a][e][fIndexOperation].startDate,
-								"endDate" : oModel[i][a][e][fIndexOperation].endDate,
+								"startDate" : new Date(Math.min.apply(null,aStartDate)).toISOString(),
+								"endDate" : new Date(Math.max.apply(null,aEndDate)).toISOString(),
 						}
 						
 						aBox.push(oOperation);
