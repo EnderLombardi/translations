@@ -65,7 +65,7 @@ sap.ui.core.Control.extend(
 
 							}
 
-							if (section.initial != undefined && airbus.mes.stationtracker.AssignmentManager.bInitial) {
+							if (section.initial != undefined && airbus.mes.stationtracker.GroupingBoxingManager.showInitial ) {
 
 								var html = '<span  style="float: right;margin-right: 5px;" >' + section.initial
 										+ '</span>'
@@ -84,9 +84,9 @@ sap.ui.core.Control.extend(
 
 								var html = '<div><span id= folder_' + section.key
 										+ ' class="fa fa-chevron-down custom" ></span><div title='
-										+ sap.ui.getCore().byId("stationTrackerView").getController().spaceInsecable(section.label) + ' class="ylabelfolder">' + section.label
-										+ '</div><span class="fa fa-user-plus custom" onclick="airbus.mes.stationtracker.AssignmentManager.newLine('
-										+ section.key + ')" ></span></div>';
+										+ sap.ui.getCore().byId("stationTrackerView").getController().spaceInsecable(section.key) + ' class="ylabelfolder">' + section.key
+										+ '</div><span class="fa fa-user-plus custom" onclick="airbus.mes.stationtracker.AssignmentManager.newLine(' 
+										+ sap.ui.getCore().byId("stationTrackerView").getController().spaceInsecable(section.key) + ')" ></span></div>';
 								return html;
 
 							}
@@ -161,7 +161,7 @@ sap.ui.core.Control.extend(
 								return "initial";
 
 							}
-							if (section.label != undefined) {
+							if (section.children != undefined) {
 
 								return "white";
 
