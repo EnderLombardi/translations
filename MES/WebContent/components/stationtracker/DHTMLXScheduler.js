@@ -190,11 +190,19 @@ sap.ui.core.Control.extend(
 
 						});
 
-						scheduler.attachEvent("onClick", function(id, e) {
+						scheduler.attachEvent("onClick", function(id, e) {	
+							if ( airbus.mes.stationtracker.toto === undefined ) {
+								
+								airbus.mes.stationtracker.toto = sap.ui.xmlfragment("airbus.mes.stationtracker.schedulerPopover", this);
+								airbus.mes.stationtracker.toto.addStyleClass("alignTextLeft");
+								
+								
+								
+							}
+							
+							
+							airbus.mes.stationtracker.toto.openBy(e.srcElement);		
 
-							new sap.m.Popover({
-								placement : "Bottom",
-							}).openBy(e.srcElement);
 						});
 				
 					},

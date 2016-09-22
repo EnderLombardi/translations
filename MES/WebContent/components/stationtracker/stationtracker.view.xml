@@ -5,7 +5,7 @@
 	<Page title="Station Tracker" height="100%" showHeader="false"
 		enableScrolling="false ">
 		<customHeader>
-			<Toolbar class="pageHeader">
+			<Toolbar class="pageHeader" >
 				<content>
 					<Image src="/MES/images/Airbus.png" width="10rem" height="2rem" />
 					<ToolbarSeparator />

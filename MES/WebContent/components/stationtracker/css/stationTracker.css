@@ -374,4 +374,15 @@ background-color : #CCE6EE;
 	margin: 0px;
 	height: 1.5rem;
 }
->>>>>>> refs/heads/MESv0.9.1
+
+.spTitle {
+	font-size: 20px;
+}
+
+div#SPStatusInd.progressBarOP.sapMBarChild.sapMPI{
+	border: none;
+}
+
+.sapMPanel>.sapMPanelHdr, .sapMPanelWrappingDiv, .sapMPanelWrappingDivTb{
+	border: none;
+}
