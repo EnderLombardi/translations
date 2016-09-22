@@ -28,7 +28,7 @@
 
                   "workOrderId": "FUEL ACTIVITIES",
 
-                  "operationId": "0020",
+                  "operationId": "0010",
 
                   "shopOrder": "toto",
 
@@ -74,7 +74,67 @@
 
                   "avlLine": "211545464654",
 
-                  "competency": "toto",
+                  "competency": "FUEL ACTIVITIES",
+
+                  "rescheduledStarDate": "0",
+
+                  "rescheduledEndDate": "328.284",
+
+                  "rescheduledLine": "0"
+
+               },
+               
+               {
+
+                  "workOrderId": "FUEL ACTIVITIES",
+
+                  "operationId": "0020",
+
+                  "shopOrder": "toto",
+
+                  "shopOrderDescription": "ja mange du fromage",
+
+                  "operationDescription": "@@@ééééé¨¨¨%¨££££$$$",
+
+                  "totalDuration": "26.91",
+
+                  "progress": "50",
+
+                  "certification": "---",
+
+                  "startDate": "2014-06-30 12:00",
+
+                  "endDate": "2014-06-30 15:00",
+
+                  "status": "0",
+
+                  "disruptions": "560",
+
+                  "andons": "12",
+
+                  "routingMaturityAssessment": "1",
+
+                  "ata": "1",
+
+                  "familyTarget": "A350_STRUC2",
+
+                  "cppCluster": "A350_STRUC",
+
+                  "workPackage": "350",
+
+                  "avlPath1": "toto",
+
+                  "avlPath2": "tata",
+
+                  "criticalPath": "1",
+
+                  "avlStartDate": "2014-06-30 12:00",
+
+                  "avlEndDate": "2014-06-30 15:00",
+
+                  "avlLine": "211545464654",
+
+                  "competency": "FUEL ACTIVITIES",
 
                   "rescheduledStarDate": "0",
 
@@ -86,9 +146,9 @@
                
                 {
 
-                  "workOrderId": "",
+                  "workOrderId": "MECA ACTIVITIES",
 
-                  "operationId": "0010",
+                  "operationId": "0030",
 
                   "shopOrder": "toto",
 
@@ -134,7 +194,7 @@
 
                   "avlLine": "211545464654",
 
-                  "competency": "toto",
+                  "competency": "ELECAC|||@@@ééééTIVITIES",
 
                   "rescheduledStarDate": "0",
 

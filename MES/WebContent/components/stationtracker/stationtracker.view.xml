@@ -201,14 +201,14 @@
 						class="buttonStatus" press="onTeamPress"></Button>
 					<ToolbarSeparator />
 					<Label text="Sort By : " />
-					<Select class="sapUiTinyMarginBeginEnd">
-						<core:Item text="Competence" />
-						<core:Item text="Avl" />
+					<Select id="selectGroup" class="sapUiTinyMarginBeginEnd" change="changeGroup">
+						<core:Item text="Competence" key="competency"/>
+						<core:Item text="Avl" key="avlLine" />
 					</Select>
 					<Label text="Show : " />
-					<Select class="sapUiTinyMarginBeginEnd">
-						<core:Item text="Operations" />
-						<core:Item text="Competency" />
+					<Select id="selectBox" class="sapUiTinyMarginBeginEnd" change="changeBox">
+						<core:Item text="Operations" key="operationId"/>
+						<core:Item text="WorkOrder" key="workOrderId"/>
 					</Select>
 					<ToolbarSpacer />
 					<Button text="show CP" type="Transparent" icon="sap-icon://ppt-attachment"

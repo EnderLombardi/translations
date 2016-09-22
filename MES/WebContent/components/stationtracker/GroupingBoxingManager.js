@@ -3,7 +3,11 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 	
 	operationHierarchy : {},
 	showInitial : false,
-	
+	//XXX MEHDI TODO
+	group : "" ,
+	box : "",
+		
+		
 	jsDateFromDayTimeStr : function(day) {
 		
 		// return day for IE not working. - 1 on month because 00 = january
@@ -36,7 +40,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 	
 		
 	groupingBoxing : function(sGroup,sBoxing) {
-
+		
 		airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy = {};
 		var oHierachy = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy;
 		var oModel = sap.ui.getCore().getModel("stationTrackerModel");
@@ -69,6 +73,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 			
 			var oOperation = {
 					
+					"operationId" : el.operationId,
 					"criticalPath" : el.criticalPath,
 					"progress" : el.progress,
 					"avlStartDate" : el.avlStartDate,
@@ -83,5 +88,122 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 		})
 		
 	},
+	
+	parseOperation : function(sGroup,sBox) {
+		
+		
+		
+		var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
+		
+		GroupingBoxingManager.groupingBoxing(sGroup,sBox);
+		
+		var oModel = GroupingBoxingManager.operationHierarchy;
+		aElements2 = []
+		aBox = [];
+		for( var i in oModel ) { 
+			
+			//Creation of gantt groups
+			var oRecheduleGroup = {
+					"open": true,
+					"key": airbus.mes.stationtracker.AssignmentManager.idName(i),
+					"label" : i,
+					"children":[],
+			}
+				
+			aElements2.push(oRecheduleGroup);
+			var fGroupIndex = aElements2.indexOf(oRecheduleGroup);
+			
+			//Creation of initial avl line of the current group
+			if (GroupingBoxingManager.showInitial) {
+						
+			var oInitialGroup = {
+											
+					"key": "I_" + airbus.mes.stationtracker.AssignmentManager.idName(i),
+					"initial":"Initial plan",
+			}
+							
+			aElements2[fGroupIndex].children.unshift(oInitialGroup);
+			
+			}
+			
+			for ( var a in oModel[i] ) {
+				
+				//Creation of avl line of the current group
+				var fIndex = aElements2.indexOf(oRecheduleGroup);
+				var ochild = {
+						
+						"hours" : "6.0hrs",
+						"subname" : "JJ",
+						"name" : "JAE J.",
+						"avalLine" : a,
+						"key": airbus.mes.stationtracker.AssignmentManager.idName(i) + "_" + airbus.mes.stationtracker.AssignmentManager.idName(a),
+				}
+				aElements2[fIndex].children.push(ochild);
+			
+				//Creation data wich represent boxs rescheduling and initial
+				for ( var e in oModel[i][a]) {
+
+					var aStartDateRescheduling = [];
+					var aEndDateRescheduling = [];
+					var aStartDateInitial = [];
+					var aEndDateInitial = [];
+					var sProgress = "";
+					var fCriticalPath = 0;		
+
+					oModel[i][a][e].forEach( function( el ) { 
+						
+						aStartDateRescheduling.push(Date.parse(GroupingBoxingManager.jsDateFromDayTimeStr(el.startDate)));
+						aEndDateRescheduling.push(Date.parse(GroupingBoxingManager.jsDateFromDayTimeStr(el.endDate)));
+						aStartDateInitial.push(Date.parse(GroupingBoxingManager.jsDateFromDayTimeStr(el.avlStartDate)));
+						aEndDateInitial.push(Date.parse(GroupingBoxingManager.jsDateFromDayTimeStr(el.avlEndDate)));
+						sProgress = el.progress;
+						fCriticalPath = el.criticalPath;
+						sOperationId = el.operationId;
+						
+					} )
+					
+					var oOperationRescheduling = {
+						
+							"criticalPath": fCriticalPath,
+							"type":"R",
+							"text" : sOperationId,
+							"section_id" : 	airbus.mes.stationtracker.AssignmentManager.idName(i) + "_" + airbus.mes.stationtracker.AssignmentManager.idName(a),
+							"progress" : sProgress,
+							"start_date" : GroupingBoxingManager.transformRescheduleDate(new Date(Math.min.apply(null,aStartDateRescheduling))),
+							"end_date" : GroupingBoxingManager.transformRescheduleDate(new Date(Math.max.apply(null,aEndDateRescheduling))),
+					}
+					
+					if (GroupingBoxingManager.showInitial) {
+					
+					var oOperationInitial = {
+						
+						"type":"I",
+						"text" : sOperationId,
+						"section_id" : 	"I_" + airbus.mes.stationtracker.AssignmentManager.idName(i),
+						"progress" : sProgress,
+						"start_date" : GroupingBoxingManager.transformRescheduleDate(new Date(Math.min.apply(null,aStartDateInitial))),
+						"end_date" :GroupingBoxingManager.transformRescheduleDate(new Date(Math.max.apply(null,aEndDateInitial))),
+					}
+					
+					aBox.push(oOperationInitial);
+					
+					}
+					
+					aBox.push(oOperationRescheduling);
+					
+				}
+			}
+			
+		}
+		
+		 scheduler.matrix['timeline'].y_unit_original = aElements2;
+		 scheduler.callEvent("onOptionsLoad", []);
+		 
+	     scheduler.init(sap.ui.getCore().byId("stationTrackerView").getId() + "--test" ,  new Date(2014,5,30),"timeline");
+	     scheduler.clearAll();
+	     
+	     scheduler.parse(aBox,"json");
+		
+	}
 	
 }

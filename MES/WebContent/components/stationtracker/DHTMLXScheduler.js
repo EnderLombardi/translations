@@ -56,9 +56,9 @@ sap.ui.core.Control.extend(
 						scheduler.templates.timeline_scale_label = function(key, label, section) {
 
 							if (section.name && section.subname) {
-								var html = '<div><span class="rond" title=' + sap.ui.getCore().byId("stationTrackerView").getController().spaceInsecable(section.name) + ' >'
+								var html = '<div><span class="rond" title=' + airbus.mes.stationtracker.AssignmentManager.spaceInsecable(section.name) + ' >'
 										+ section.subname + '</span><span class="ylabel" title='
-										+ sap.ui.getCore().byId("stationTrackerView").getController().spaceInsecable(section.name) + '>' + section.name
+										+ airbus.mes.stationtracker.AssignmentManager.spaceInsecable(section.name) + '>' + section.name
 										+ '</span><span  style="float: right;margin-right: 5px;" >' + section.hours
 										+ '</span></div>';
 								return html;
@@ -82,11 +82,12 @@ sap.ui.core.Control.extend(
 
 							if (section.children != undefined) {
 
-								var html = '<div><span id= folder_' + section.key
-										+ ' class="fa fa-chevron-down custom" ></span><div title='
-										+ sap.ui.getCore().byId("stationTrackerView").getController().spaceInsecable(section.key) + ' class="ylabelfolder">' + section.key
-										+ '</div><span class="fa fa-user-plus custom" onclick="airbus.mes.stationtracker.AssignmentManager.newLine(' 
-										+ sap.ui.getCore().byId("stationTrackerView").getController().spaceInsecable(section.key) + ')" ></span></div>';
+								var html = '<div><span id= folder_' +section.key
+										+ ' class="fa fa-chevron-down custom"></span><div title='
+										+ airbus.mes.stationtracker.AssignmentManager.spaceInsecable(section.label) + ' class="ylabelfolder">' + section.label
+										+ '</div><span id= add_' + section.key
+										+ ' class="fa fa-user-plus custom" onclick="airbus.mes.stationtracker.AssignmentManager.newLine(\''
+										+ section.key + '\')"></span></div>';
 								return html;
 
 							}
@@ -168,11 +169,19 @@ sap.ui.core.Control.extend(
 							}
 						};
 
-						scheduler.attachEvent("onScaleAdd", function() {
+						scheduler.attachEvent("onScaleAdd", function( unit , date ) {
 							for (i = 0; i < $("div[class='dhx_scell_expand']").length; i++) {
 								$("div[class='dhx_scell_expand']")[i].remove();
 							}
 
+//							if( $._data($($("#add_" + airbus.mes.stationtracker.AssignmentManager.idName(date) )).get(0), "events") === undefined ) {
+//							
+//						 $( "#add_" + airbus.mes.stationtracker.AssignmentManager.idName(date)).click(function() {
+//							 airbus.mes.stationtracker.AssignmentManager.newLine(date);
+//						
+//							});
+//						}
+							
 						});
 
 						scheduler.attachEvent("onAfterFolderToggle", function(section, isOpen, allSections) {

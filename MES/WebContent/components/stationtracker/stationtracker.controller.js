@@ -72,35 +72,21 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	  	  
 		 },
 	
-	 spaceInsecable : function(sText){
-		 
-	    var sTextF="";
-	    var aText=sText.split(new RegExp("[ ]+", "g"));    // Récupère tous les mots dans un tableau : texte_decoup
-	 
-	    for (var i=0; i<aText.length; i++)
-	    {
-	        sTextF += aText[i] + "&nbsp;";  // le + " " NE FONCTIONNE PAS. IDEM AVEC String.fromCharCode(32) 
-	      
-	    }
-	    
-	    return sTextF;
-	},
-	
+		
 	onInitialPlanPress : function() {
 	
 		// XX TO REDEFINE
-
+		var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
+		
 	if (airbus.mes.stationtracker.GroupingBoxingManager.showInitial) {
 		
 		airbus.mes.stationtracker.GroupingBoxingManager.showInitial = false;
-		airbus.mes.stationtracker.ModelManager.onStationTrackerLoad();
-		
+		GroupingBoxingManager.parseOperation(GroupingBoxingManager.group,GroupingBoxingManager.box);
 							
 		} else {
 			
 			airbus.mes.stationtracker.GroupingBoxingManager.showInitial = true;
-			airbus.mes.stationtracker.ModelManager.onStationTrackerLoad();
-		
+			GroupingBoxingManager.parseOperation(GroupingBoxingManager.group,GroupingBoxingManager.box);
 		}
 	},
 	
@@ -138,5 +124,26 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			
 		}
 	},
+	
+	changeGroup : function() {
+		
+		var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
+		
+		GroupingBoxingManager.group = sap.ui.getCore().byId("stationTrackerView").byId("selectGroup").getSelectedKey();
+		GroupingBoxingManager.box = sap.ui.getCore().byId("stationTrackerView").byId("selectBox").getSelectedKey();
+	
+		GroupingBoxingManager.parseOperation(GroupingBoxingManager.group,GroupingBoxingManager.box);
+	},
+	
+	changeBox : function() {
+		
+		var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
+		
+		GroupingBoxingManager.group = sap.ui.getCore().byId("stationTrackerView").byId("selectGroup").getSelectedKey();
+		GroupingBoxingManager.box = sap.ui.getCore().byId("stationTrackerView").byId("selectBox").getSelectedKey();
+	
+		GroupingBoxingManager.parseOperation(GroupingBoxingManager.group,GroupingBoxingManager.box);
+		
+	}
 	
 });
