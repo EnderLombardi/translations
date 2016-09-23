@@ -235,8 +235,8 @@ sap.ui
                                   },
                                   navigate : function(oEvent){
                                 	  
-                                      jQuery.sap.registerModulePath("airbus.mes.settings","/MES/components/settings");
-                                      jQuery.sap.registerModulePath("airbus.mes.stationtracker","/MES/components/stationtracker");
+//                                      jQuery.sap.registerModulePath("airbus.mes.settings","/MES/components/settings");
+//                                      jQuery.sap.registerModulePath("airbus.mes.stationtracker","/MES/components/stationtracker");
 
 //                                    Active settings button during leaving settings screen
                                       if(airbus.mes.shell != undefined){

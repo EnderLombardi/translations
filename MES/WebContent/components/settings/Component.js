@@ -17,7 +17,7 @@ sap.ui.core.UIComponent.extend("airbus.mes.settings.Component", {
 			textButtonTo : "string",
 			buttonAction : "string"
 		},
-		includes : [ "/MES/components/settings/css/SettingScreen.css" ]
+		includes : [ "./css/SettingScreen.css" ]
 	// array of css and/or javascript files that should be used in the component
 
 	}

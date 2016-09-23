@@ -12,8 +12,8 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 	},
 	onPress:function(oEvt){
 		
-	    jQuery.sap.registerModulePath("airbus.mes.settings","/MES/components/settings");
-		jQuery.sap.registerModulePath("airbus.mes.stationtracker", "/MES/components/stationtracker");
+//	    jQuery.sap.registerModulePath("airbus.mes.settings","/MES/components/settings");
+		jQuery.sap.registerModulePath("airbus.mes.stationtracker", "../components/stationtracker");
 	    
 //		If default user settings are not yet loaded, need to load them
 //		We display settings screen		

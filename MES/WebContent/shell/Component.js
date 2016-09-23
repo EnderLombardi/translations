@@ -1,7 +1,7 @@
 jQuery.sap.require("sap.ui.core.UIComponent");
 jQuery.sap.require("airbus.mes.shell.util.Formatter");
 
-jQuery.sap.registerModulePath("airbus.mes.settings","/MES/components/settings");
+//jQuery.sap.registerModulePath("airbus.mes.settings","/MES/components/settings");
 
 jQuery.sap.declare("airbus.mes.shell.Component");
 
@@ -32,11 +32,9 @@ airbus.mes.shell.Component.prototype.createContent = function() {
 
 		airbus.mes.shell.oView = this.oView;
 //		this
-		sap.ui.getCore()
-		.setModel(new sap.ui.model.json.JSONModel(),"userDetailModel");	
+		sap.ui.getCore().setModel(new sap.ui.model.json.JSONModel(),"userDetailModel");	
 //		this 
-		sap.ui.getCore()
-		.getModel("userDetailModel").loadData("https://dmiswde0.eu.airbus.corp/XMII/Illuminator?QueryTemplate=XX_MOD1684_MES%2FMII%2FStationTracker%2FuserDetail%2F015_Get_User_Detail_QUE&IsTesting=T&Content-Type=text%2Fjson&j_user=ng56d2a&j_password=Fonate36*",null,false);
+		sap.ui.getCore().getModel("userDetailModel").loadData("https://dmiswde0.eu.airbus.corp/XMII/Illuminator?QueryTemplate=XX_MOD1684_MES%2FMII%2FStationTracker%2FuserDetail%2F015_Get_User_Detail_QUE&IsTesting=T&Content-Type=text%2Fjson&j_user=ng56d2a&j_password=Fonate36*",null,false);
 
 		return this.oView;
 	}

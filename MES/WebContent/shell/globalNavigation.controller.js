@@ -82,10 +82,8 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 	// }
 	navigate : function() {
 
-		jQuery.sap.registerModulePath("airbus.mes.settings",
-				"/MES/components/settings");
-		jQuery.sap.registerModulePath("airbus.mes.stationtracker",
-				"/MES/components/stationtracker");
+//		jQuery.sap.registerModulePath("airbus.mes.settings", "/MES/components/settings");
+//		jQuery.sap.registerModulePath("airbus.mes.stationtracker", "/MES/components/stationtracker");
 
 		if (nav.getCurrentPage().getId() === "stationTrackerView") {
 			var textButtonTo = "go to Station Tracker";

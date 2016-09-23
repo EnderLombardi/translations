@@ -8,17 +8,32 @@
 	src="https://sapui5.netweaver.ondemand.com/1.36.11/resources/sap-ui-core.js"
 	id="sap-ui-bootstrap" data-sap-ui-libs="sap.m"
 	data-sap-ui-theme="sap_bluecrystal"
-	data-sap-ui-xx-bindingSyntax="complex">
+	data-sap-ui-xx-bindingSyntax="complex"
+	>
 	
 </script>
+<<<<<<< Upstream, based on origin/MESv0.9
 <link rel="stylesheet"	href="/MES/lib/dhtmlxscheduler/dhtmlxscheduler.css" type="text/css"	title="no title">
 <link rel='stylesheet' type='text/css'	href='/MES/lib/dhtmlxscheduler/dhtmlxscheduler_flat.css'>
 <link rel="stylesheet"	href="/MES/components/stationtracker/css/font-awesome.min.css">
+=======
+<link rel="stylesheet" href="../lib/dhtmlxscheduler/dhtmlxscheduler.css" type="text/css" title="no title">
+<link rel='stylesheet' type='text/css' href='../lib/dhtmlxscheduler/dhtmlxscheduler_flat.css'>
+<link rel="stylesheet" href="../components/stationtracker/css/font-awesome.min.css">
+>>>>>>> c6e2f5e Path finding relativ
 
 
 <script>
+<<<<<<< Upstream, based on origin/MESv0.9
 	jQuery.sap.registerModulePath("airbus.mes.shell", "/MES/shell");
 	jQuery.sap.registerModulePath("airbus.mes.homepage","/MES/components/homepage");
+=======
+/* 	jQuery.sap.registerModulePath("airbus.mes.shell", "/MES/shell"); */
+ 	jQuery.sap.registerModulePath("airbus.mes.shell", "./"); 
+ 	jQuery.sap.registerModulePath("airbus.mes.settings", "../components/settings");  	
+/* 	jQuery.sap.registerModulePath("airbus.mes.homepage", "/MES/components/homepage"); */
+	jQuery.sap.registerModulePath("airbus.mes.homepage", "../components/homepage");
+>>>>>>> c6e2f5e Path finding relativ
 
 	var oComp1 = sap.ui.getCore().createComponent({
 		name : "airbus.mes.homepage", // root component folder is resources

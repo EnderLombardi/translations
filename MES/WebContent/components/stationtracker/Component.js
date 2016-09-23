@@ -2,9 +2,13 @@ jQuery.sap.require("sap.ui.core.UIComponent");
 jQuery.sap.require("airbus.mes.stationtracker.util.Formatter");
 jQuery.sap.require("airbus.mes.stationtracker.AssignmentManager");
 jQuery.sap.require("airbus.mes.stationtracker.GroupingBoxingManager");
+<<<<<<< Upstream, based on origin/MESv0.9
 jQuery.sap.require("airbus.mes.stationtracker.ModelManager");
+=======
 
-jQuery.sap.registerModulePath("airbus.mes.dhtmlx","/MES/lib/dhtmlxscheduler");
+jQuery.sap.registerModulePath("airbus.mes.dhtmlx","../lib/dhtmlxscheduler");
+>>>>>>> c6e2f5e Path finding relativ
+
 jQuery.sap.require("airbus.mes.dhtmlx.dhtmlxscheduler");
 jQuery.sap.require("airbus.mes.dhtmlx.ext.dhtmlxscheduler_limit");
 jQuery.sap.require("airbus.mes.dhtmlx.ext.dhtmlxscheduler_timeline");
@@ -18,7 +22,7 @@ jQuery.sap.declare("airbus.mes.stationtracker.Component");
 sap.ui.core.UIComponent.extend("airbus.mes.stationtracker.Component", {
 	metadata : {
 		properties : {},
-		includes : [ "/MES/components/stationtracker/css/stationTracker.css" ] //array of css and/or javascript files that should be used in the component  
+		includes : [ "./css/stationTracker.css" ] //array of css and/or javascript files that should be used in the component  
 
 	}
 	
