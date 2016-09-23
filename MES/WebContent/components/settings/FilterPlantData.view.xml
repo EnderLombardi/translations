@@ -1,11 +1,15 @@
 <core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
 	xmlns:f="sap.ui.layout.form" xmlns="sap.m" xmlns:l="sap.ui.layout"
 	controllerName="airbus.mes.settings.FilterPlantData" xmlns:html="http://www.w3.org/1999/xhtml">
-	<Page class="GenricBgColor" title="MES" enableScrolling="false" showHeader="false">
+	<Page class="GenricBgColor" title="MES" enableScrolling="true" showHeader="false">
 		<content>
-			<Panel width="60%" height="auto" class="elementContainer">
-				<headerToolbar>
-					<Toolbar class="titleToolbar">
+		
+		<FlexBox height="100%" width="100%" alignItems="Center"
+				justifyContent="Center">
+				<items>
+					<VBox id="settingsScreenBox" width="60%">
+						<items >
+						<Toolbar class="titleToolbar">
 						<content>
 							<Text class="textSize" text="Welcome to Airbus MES" />
 							<ToolbarSpacer />
@@ -13,14 +17,12 @@
 								iconFirst="false" /> -->
 						</content>
 					</Toolbar>
-				</headerToolbar>
-				<infoToolbar>
-					<Toolbar class="subHeader">
+						<Toolbar class="subHeader">
 						<content>
 							<Text class="subHeaderText" text="Station Tracker" />
 						</content>
 					</Toolbar>
-				</infoToolbar>
+					<Panel backgroundDesign="Transparent" class="PanelbgImg2">
 				<content>
 					<f:Form id="Form1" minWidth="1024" maxContainerCols="3"
 						editable="true">
@@ -106,12 +108,18 @@
 					</f:Form>
 				</content>
 			</Panel>
-			<Toolbar class="footerToolbar" width="60%">
+			<Toolbar class="footerToolbar">
 				<ToolbarSpacer />
 				<Button class="buttonLoad" id="btn1" type="Transparent"
 					text="Load Station Tracker" icon="sap-icon://slim-arrow-right"
 					iconFirst="false" press="loadStationTracker" />
 			</Toolbar>
+						</items>
+					</VBox>
+				</items>
+			</FlexBox>
+			
+			
 
 
 		</content>

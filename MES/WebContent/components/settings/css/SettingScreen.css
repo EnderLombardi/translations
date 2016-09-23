@@ -1,15 +1,21 @@
 .elementContainer {
 	margin: 15% 0% 0% 22%;
 }
-
+.PanelbgImg2 {
+	background-color: white;
+	opacity: 3%;
+	/* background-size: contain; */
+	display: block;
+	background-size: 100% 100%;
+}
 .elementContainer-header {
 	background-color: lightgrey;
 }
 
 .footerToolbar {
 	background-color: #5E696E;
-	margin: 0% 0% 0% 22%;
-}
+/* 	margin: 0% 0% 0% 22%;
+ */}
 
 .buttonLoad>.sapMBtnText {
 	color: white !important;

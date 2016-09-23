@@ -30,7 +30,7 @@
 		</customHeader>
 		<content width="100%" height="100%">
 			<Panel expandable="true" expanded="true"
-				class="pageHeader sapUiSmallMarginTop">
+				class="pageHeader sapUiSmallMarginTop contentNoPad">
 				<headerToolbar>
 					<Toolbar>
 						<Label text="Station 10" class="pageTitle sapUiTinyMarginBeginEnd" />
@@ -40,13 +40,13 @@
 					</Toolbar>
 				</headerToolbar>
 				<content>
-					<suite:HeaderContainer showDividers="false">
+					<suite:HeaderContainer showDividers="false" backgroundDesign="Solid">
 						<suite:items>
-							<suite:HeaderCell>
-								<suite:north>
-									<suite:HeaderCellItem>
-										<suite:content>
-											<Label text="TAKT ADHERENCE" design="Bold" />
+							<suite:HeaderCell class="contentHeaderCont">
+								<suite:north class="centerItems">
+									<suite:HeaderCellItem class="centerItems">
+										<suite:content class="centerItems">
+											<Label text="TAKT ADHERENCE" design="Bold" class="whiteText centerItems"/>
 										</suite:content>
 									</suite:HeaderCellItem>
 								</suite:north>
@@ -55,30 +55,62 @@
 										<suite:content>
 											<HBox alignItems="Baseline">
 												<VBox alignItems="Stretch">
-													<Label text="Planned" class="sapUiLargeMarginEnd" />
+													<Label text="Planned" class="sapUiLargeMarginEnd whiteText" />
 													<Label text="80%" design="Bold"
-														class="sapUiSmallMarginTop kpiValue" />
+														class="sapUiSmallMarginTop kpiValue whiteText" />
 												</VBox>
 												<VBox alignItems="Stretch">
-													<Label text="Real" class="sapUiLargeMarginEnd red" />
+													<Label text="Real" class="sapUiLargeMarginEnd whiteText" />
 													<Label text="60%" design="Bold"
-														class="sapUiSmallMarginTop kpiValue red" />
+														class="sapUiSmallMarginTop kpiValue whiteText" />
 												</VBox>
 												<VBox alignItems="Stretch">
-													<Label text="Remaining time" class="sapUiLargeMarginEnd" />
+													<Label text="Remaining time" class="sapUiLargeMarginEnd whiteText" />
 													<Label text="20:30:12" design="Bold"
-														class="sapUiSmallMarginTop kpiValue" />
+														class="sapUiSmallMarginTop kpiValue whiteText" />
 												</VBox>
 											</HBox>
 										</suite:content>
 									</suite:HeaderCellItem>
 								</suite:south>
 							</suite:HeaderCell>
-							<suite:HeaderCell>
+							<suite:HeaderCell class="contentHeaderCont">
 								<suite:north>
 									<suite:HeaderCellItem>
 										<suite:content>
-											<Label text="PROGRESS STATUS" design="Bold" />
+											<Label text="PROGRESS STATUS" design="Bold" class="whiteText"/>
+										</suite:content>
+									</suite:HeaderCellItem>
+								</suite:north>
+								<suite:south>
+									<suite:HeaderCellItem>
+										<suite:content>
+											<HBox alignItems="Center">
+												<VBox alignContent="Center" alignItems="Stretch" class="greenBottom" JustifyContent="Center">
+													<Label text="OP Done" class="sapUiLargeMarginEnd whiteText" />
+													<Label text="20%" design="Bold"
+														class="sapUiSmallMarginTop kpiValue whiteText" />
+												</VBox>
+												<VBox  alignContent="Center" alignItems="Stretch" JustifyContent="Center">
+													<Label text="OP Late" class="sapUiLargeMarginEnd whiteText" />
+													<Label text="20%" design="Bold"
+														class="sapUiSmallMarginTop kpiValue whiteText" />
+												</VBox>
+												<VBox  alignContent="Center" alignItems="Stretch" JustifyContent="Center">
+													<Label text="OP Ahead" class="sapUiLargeMarginEnd whiteText" />
+													<Label text="20%" design="Bold"
+														class="sapUiSmallMarginTop kpiValue whiteText" />
+												</VBox>
+											</HBox>
+										</suite:content>
+									</suite:HeaderCellItem>
+								</suite:south>
+							</suite:HeaderCell>
+							<suite:HeaderCell class="contentHeaderCont">
+								<suite:north>
+									<suite:HeaderCellItem>
+										<suite:content>
+											<Label text="OPERATION STATUS" design="Bold" class="whiteText"/>
 										</suite:content>
 									</suite:HeaderCellItem>
 								</suite:north>
@@ -86,31 +118,26 @@
 									<suite:HeaderCellItem>
 										<suite:content>
 											<HBox alignItems="Baseline">
-												<VBox alignItems="Stretch">
-													<Label text="OP Done" class="sapUiLargeMarginEnd green" />
+												<VBox alignItems="Stretch" class="greenBottom">
+													<Label text="Confirmed" class="sapUiLargeMarginEnd  whiteText" />
 													<Label text="20%" design="Bold"
-														class="sapUiSmallMarginTop kpiValue green" />
+														class="sapUiSmallMarginTop kpiValue whiteText" />
 												</VBox>
 												<VBox alignItems="Stretch">
-													<Label text="OP Late" class="sapUiLargeMarginEnd" />
+													<Label text="Partially Conf." class="sapUiLargeMarginEnd whiteText" />
 													<Label text="20%" design="Bold"
-														class="sapUiSmallMarginTop kpiValue" />
-												</VBox>
-												<VBox alignItems="Stretch">
-													<Label text="OP Ahead" class="sapUiLargeMarginEnd" />
-													<Label text="20%" design="Bold"
-														class="sapUiSmallMarginTop kpiValue" />
+														class="sapUiSmallMarginTop kpiValue whiteText" />
 												</VBox>
 											</HBox>
 										</suite:content>
 									</suite:HeaderCellItem>
 								</suite:south>
 							</suite:HeaderCell>
-							<suite:HeaderCell>
+							<suite:HeaderCell class="contentHeaderCont">
 								<suite:north>
 									<suite:HeaderCellItem>
 										<suite:content>
-											<Label text="OPERATION STATUS" design="Bold" />
+											<Label text="DISRUPTIONS" design="Bold" class="whiteText"/>
 										</suite:content>
 									</suite:HeaderCellItem>
 								</suite:north>
@@ -118,26 +145,28 @@
 									<suite:HeaderCellItem>
 										<suite:content>
 											<HBox alignItems="Baseline">
-												<VBox alignItems="Stretch">
-													<Label text="Confirmed" class="sapUiLargeMarginEnd green" />
-													<Label text="20%" design="Bold"
-														class="sapUiSmallMarginTop kpiValue green" />
+												<VBox alignItems="Stretch" class="redBottom">
+													<Label text="Other" class="sapUiLargeMarginEnd whiteText" />
+													<Label text="5" design="Bold" class="sapUiSmallMarginTop kpiValue whiteText " />
 												</VBox>
-												<VBox alignItems="Stretch">
-													<Label text="Partially Conf." class="sapUiLargeMarginEnd" />
-													<Label text="20%" design="Bold"
-														class="sapUiSmallMarginTop kpiValue" />
+												<VBox alignItems="Stretch" class="redBottom">
+													<Label text="NC" class="sapUiLargeMarginEnd whiteText" />
+													<Label text="1" design="Bold" class="sapUiSmallMarginTop kpiValue whiteText" />
+												</VBox>
+												<VBox alignItems="Stretch" class="redBottom">
+													<Label text="Missing part" class="sapUiLargeMarginEnd whiteText" />
+													<Label text="2" design="Bold" class="sapUiSmallMarginTop kpiValue whiteText" />
 												</VBox>
 											</HBox>
 										</suite:content>
 									</suite:HeaderCellItem>
 								</suite:south>
 							</suite:HeaderCell>
-							<suite:HeaderCell>
-								<suite:north>
-									<suite:HeaderCellItem>
-										<suite:content>
-											<Label text="DISRUPTIONS" design="Bold" />
+							<suite:HeaderCell class="contentHeaderCont">
+								<suite:north >
+									<suite:HeaderCellItem  >
+										<suite:content  >
+											<Label text="DISRUPTIONS STATUS" design="Bold" class="whiteText"/>
 										</suite:content>
 									</suite:HeaderCellItem>
 								</suite:north>
@@ -145,44 +174,15 @@
 									<suite:HeaderCellItem>
 										<suite:content>
 											<HBox alignItems="Baseline">
-												<VBox alignItems="Stretch">
-													<Label text="Other" class="sapUiLargeMarginEnd" />
-													<Label text="5" design="Bold" class="sapUiSmallMarginTop kpiValue" />
-												</VBox>
-												<VBox alignItems="Stretch">
-													<Label text="NC" class="sapUiLargeMarginEnd" />
-													<Label text="1" design="Bold" class="sapUiSmallMarginTop kpiValue" />
-												</VBox>
-												<VBox alignItems="Stretch">
-													<Label text="Missing part" class="sapUiLargeMarginEnd" />
-													<Label text="2" design="Bold" class="sapUiSmallMarginTop kpiValue" />
-												</VBox>
-											</HBox>
-										</suite:content>
-									</suite:HeaderCellItem>
-								</suite:south>
-							</suite:HeaderCell>
-							<suite:HeaderCell>
-								<suite:north>
-									<suite:HeaderCellItem>
-										<suite:content>
-											<Label text="DISRUPTIONS STATUS" design="Bold" />
-										</suite:content>
-									</suite:HeaderCellItem>
-								</suite:north>
-								<suite:south>
-									<suite:HeaderCellItem>
-										<suite:content>
-											<HBox alignItems="Baseline">
-												<VBox alignItems="Stretch">
-													<Label text="Closed" class="sapUiLargeMarginEnd green" />
+												<VBox alignItems="Stretch" class="greenBottom">
+													<Label text="Closed" class="sapUiLargeMarginEnd whiteText" />
 													<Label text="3" design="Bold"
-														class="sapUiSmallMarginTop kpiValue green" />
+														class="sapUiSmallMarginTop kpiValue whiteText" />
 												</VBox>
-												<VBox alignItems="Stretch">
-													<Label text="Opened" class="sapUiLargeMarginEnd red" />
+												<VBox alignItems="Stretch" class="redBottom">
+													<Label text="Opened" class="sapUiLargeMarginEnd whiteText" />
 													<Label text="5" design="Bold"
-														class="sapUiSmallMarginTop kpiValue red" />
+														class="sapUiSmallMarginTop kpiValue whiteText" />
 												</VBox>
 											</HBox>
 										</suite:content>
