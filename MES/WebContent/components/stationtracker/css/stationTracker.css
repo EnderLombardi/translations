@@ -1,24 +1,14 @@
+.customHour {
+	
+	border-left: none !important;
+	width : 0px !important;
+	text-indent: -15px;
+	
+}
 .ylabel:hover .tooltip {
     visibility: visible;
 }
-.tooltip{
-        visibility: hidden;
-    position: absolute;
-    width: 120px;
-    background-color: #555;
-    color: #fff;
-    text-align: center;
-    padding: 5px 0;
-    border-radius: 6px;
-    z-index: 1;
-    bottom: 115%;
-    left: 50%;
-    margin-left: -60px;
-}
 
-/* .dhx_cal_event_line {
-    padding-left: 0px !important;
-} */
  .dhx_scell_expand {
 	display: inline-block;
 	font: normal normal normal 14px/1 FontAwesome;
@@ -195,10 +185,6 @@ background-color : #CCE6EE;
 	float: left !important;
 }
 
-.dhx_row_folder {
-	height: 20px ! important;
-}
-<<<<<<< HEAD
 .grey {
 	background-color: #D8D8D8;
 }
@@ -206,63 +192,30 @@ background-color : #CCE6EE;
 	background-color: #D8D8D8;
 	border: 2px solid blue;
 }
-=======
-
-.eventOrange {
-	background-color: #F9DAAB;
-	color: black;
-}
 
 .dhx_cal_container {
 	height: 100%;
 }
 
-.grey {
-	background-color: #D8D8D8;
-}
-
-.Hour {
-	background-color: grey;
-	opacity: 0.5;
-	filter: alpha(opacity = 25);
-}
 
 .buttonStatus .sapMBtnInner.sapMBtnText {
 	font-weight: bold !important;
- /* 	padding-left: 50% !important;
- */    padding-top: 15% !important; 
+ padding-top: 15% !important; 
 }
 
 .buttonNotif .sapMBtnContent{
 	
-	/* padding-top: 15% !important; 	
-	color: white;
-	display: inline-table;;
-	width: 20px !important;
-	height: 20px !important;
-	background: orange;
-	-webkit-border-radius: 100px;
-	-moz-border-radius: 100px;
-	-o-border-radius: 100px;
-	border-radius: 100px; */
-
 	color: orange;
 	font-weight : Bold;
 	padding-top: 10px !important; 
 	
-	/* width:20px;
-
-	border-radius:50%;
-	padding-top: 20%;
-	text-align:center;
-	background:orange;
-	display: inline-table; */
 }
 
 .notifDetails {
 	font-size: smaller !important;
 }
 
+<<<<<<< Upstream, based on origin/MESv0.9
 .sapMPIBarBlue {
 	background: -moz-linear-gradient(top, #008cda 0, #006ca7 100%)
 		!important;
@@ -316,6 +269,8 @@ background-color : #CCE6EE;
 	float: right;
 	margin: 6px;
 }
+=======
+>>>>>>> 2a51744 GroupingBoxing
 .operatorList .sapMListHdr{
     text-align: left;
     font-size : small;
@@ -323,18 +278,6 @@ background-color : #CCE6EE;
     border-bottom: 0px;
     
     }
-.initialCell {
-	background-color: rgba(255, 255, 204, 0.5);
-}
-
-.margin {
-	margin-left: 5px;
-	margin-right: 5px;
-}
-
-.borderCell {
-	background-color: rgba(242, 180, 87, 0.2);
-}
 
 .borderX {
 	border-left: none !important;
@@ -347,42 +290,15 @@ background-color : #CCE6EE;
 	border-bottom: none !important;
 }
 
-.boxColor {
-	background-color: #ecf0f1;
-	margin: 1px;
-	border: 1px solid #bdc3c7;
-}
-
 .boxColorInitial {
 	background-color: transparent;
 	margin: 1px;
 	border: 1px solid #bdc3c7;
 }
 
-.user {
-	margin-left: 5px;
-	margin-right: 5px;
-}
-
 .initial {
 	background-color: transparent;
 	padding-left: 0px;
-}
-
-.task {
-	height: 50px !important;
-}
-
-.padding {
-	padding: 5px;
-}
-
-.one_line {
-	white-space: nowrap;
-	overflow: hidden;
-	padding-top: 5px;
-	padding-left: 5px;
-	text-align: left !important;
 }
 
 .progressIndicator {

@@ -1,4 +1,5 @@
 jQuery.sap.require("sap.ui.core.UIComponent");
+jQuery.sap.require("airbus.mes.stationtracker.util.Formatter");
 jQuery.sap.require("airbus.mes.stationtracker.AssignmentManager");
 jQuery.sap.require("airbus.mes.stationtracker.GroupingBoxingManager");
 jQuery.sap.require("airbus.mes.stationtracker.ModelManager");

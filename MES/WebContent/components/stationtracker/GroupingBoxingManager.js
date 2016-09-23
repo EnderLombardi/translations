@@ -4,41 +4,10 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 	operationHierarchy : {},
 	showInitial : false,
 	//XXX MEHDI TODO
-	group : "" ,
-	box : "",
-		
-		
-	jsDateFromDayTimeStr : function(day) {
-		
-		// return day for IE not working. - 1 on month because 00 = january
-		
-		return new Date(day.slice(0,4),day.slice(5,7)-1,day.slice(8,10),day.slice(11,13),day.slice(14,16),day.slice(17,19));
-		
-	},
+	group : "competency" ,
+	box : "operationId",
 	
-	transformRescheduleDate : function(oDate) {
-		var today = oDate;
-		var aDate = [];
-		
-		var sYear = today.getFullYear();
-		var sMounth = today.getMonth() + 1;
-		var sDay = today.getDate();
-		var sSecond =  today.getSeconds();
-		var sMinute =  today.getMinutes();
-		var sHour =  today.getHours();
 	
-		aDate.push(sMounth,sDay,sHour,sMinute,sSecond);
-		aDate.forEach(function(el,indice){
-			if(el<10){aDate[indice] = "0" + el;}
-		})
-				
-		
-			var FullTodayDate = sYear + "-" + aDate[0] + "-" + aDate[1] + " " + aDate[2] + ":" +  aDate[3] + ":" + aDate[4];
-		
-		return FullTodayDate;
-	},
-	
-		
 	groupingBoxing : function(sGroup,sBoxing) {
 		
 		airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy = {};
@@ -56,19 +25,28 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 		
 		oModel.forEach(function(el){
 			
-			if ( !oHierachy[el[sGroup]] ) {
+			if ( sGroup === "avlLine") {				
+			// permit to create only one folder when avl Line is selected.	
+				var ssGroup = "AvlLine";
 				
-				oHierachy[el[sGroup]] = {};
+			} else {				
+			// otherwise create dynamic group.	
+				var ssGroup = el[sGroup]
 			}
 			
-			if ( !oHierachy[el[sGroup]][el.avlLine] ) {
+			if ( !oHierachy[ssGroup] ) {
 				
-				oHierachy[el[sGroup]][el.avlLine] = {};
+				oHierachy[ssGroup] = {};
 			}
 			
-			if ( !oHierachy[el[sGroup]][el.avlLine][el[sBoxing]] ) {
+			if ( !oHierachy[ssGroup][el.avlLine] ) {
 				
-				oHierachy[el[sGroup]][el.avlLine][el[sBoxing]] = [];
+				oHierachy[ssGroup][el.avlLine] = {};
+			}
+			
+			if ( !oHierachy[ssGroup][el.avlLine][el[sBoxing]] ) {
+				
+				oHierachy[ssGroup][el.avlLine][el[sBoxing]] = [];
 			}
 			
 			var oOperation = {
@@ -83,7 +61,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 					"endDate" : el.endDate,
 			}
 			
-			oHierachy[el[sGroup]][el.avlLine][el[sBoxing]].push(oOperation)
+			oHierachy[ssGroup][el.avlLine][el[sBoxing]].push(oOperation)
 			
 		})
 		
@@ -93,11 +71,12 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 		
 		
 		
-		var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
+		var oGroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
+		var oFormatter = airbus.mes.stationtracker.util.Formatter
 		
-		GroupingBoxingManager.groupingBoxing(sGroup,sBox);
+		oGroupingBoxingManager.groupingBoxing(sGroup,sBox);
 		
-		var oModel = GroupingBoxingManager.operationHierarchy;
+		var oModel = oGroupingBoxingManager.operationHierarchy;
 		aElements2 = []
 		aBox = [];
 		for( var i in oModel ) { 
@@ -114,7 +93,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 			var fGroupIndex = aElements2.indexOf(oRecheduleGroup);
 			
 			//Creation of initial avl line of the current group
-			if (GroupingBoxingManager.showInitial) {
+			if (oGroupingBoxingManager.showInitial) {
 						
 			var oInitialGroup = {
 											
@@ -152,10 +131,10 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 
 					oModel[i][a][e].forEach( function( el ) { 
 						
-						aStartDateRescheduling.push(Date.parse(GroupingBoxingManager.jsDateFromDayTimeStr(el.startDate)));
-						aEndDateRescheduling.push(Date.parse(GroupingBoxingManager.jsDateFromDayTimeStr(el.endDate)));
-						aStartDateInitial.push(Date.parse(GroupingBoxingManager.jsDateFromDayTimeStr(el.avlStartDate)));
-						aEndDateInitial.push(Date.parse(GroupingBoxingManager.jsDateFromDayTimeStr(el.avlEndDate)));
+						aStartDateRescheduling.push(Date.parse(oFormatter.jsDateFromDayTimeStr(el.startDate)));
+						aEndDateRescheduling.push(Date.parse(oFormatter.jsDateFromDayTimeStr(el.endDate)));
+						aStartDateInitial.push(Date.parse(oFormatter.jsDateFromDayTimeStr(el.avlStartDate)));
+						aEndDateInitial.push(Date.parse(oFormatter.jsDateFromDayTimeStr(el.avlEndDate)));
 						sProgress = el.progress;
 						fCriticalPath = el.criticalPath;
 						sOperationId = el.operationId;
@@ -169,11 +148,11 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 							"text" : sOperationId,
 							"section_id" : 	airbus.mes.stationtracker.AssignmentManager.idName(i) + "_" + airbus.mes.stationtracker.AssignmentManager.idName(a),
 							"progress" : sProgress,
-							"start_date" : GroupingBoxingManager.transformRescheduleDate(new Date(Math.min.apply(null,aStartDateRescheduling))),
-							"end_date" : GroupingBoxingManager.transformRescheduleDate(new Date(Math.max.apply(null,aEndDateRescheduling))),
+							"start_date" : oFormatter.transformRescheduleDate(new Date(Math.min.apply(null,aStartDateRescheduling))),
+							"end_date" : oFormatter.transformRescheduleDate(new Date(Math.max.apply(null,aEndDateRescheduling))),
 					}
 					
-					if (GroupingBoxingManager.showInitial) {
+					if (oGroupingBoxingManager.showInitial) {
 					
 					var oOperationInitial = {
 						
@@ -181,8 +160,8 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 						"text" : sOperationId,
 						"section_id" : 	"I_" + airbus.mes.stationtracker.AssignmentManager.idName(i),
 						"progress" : sProgress,
-						"start_date" : GroupingBoxingManager.transformRescheduleDate(new Date(Math.min.apply(null,aStartDateInitial))),
-						"end_date" :GroupingBoxingManager.transformRescheduleDate(new Date(Math.max.apply(null,aEndDateInitial))),
+						"start_date" : oFormatter.transformRescheduleDate(new Date(Math.min.apply(null,aStartDateInitial))),
+						"end_date" :oFormatter.transformRescheduleDate(new Date(Math.max.apply(null,aEndDateInitial))),
 					}
 					
 					aBox.push(oOperationInitial);
@@ -202,6 +181,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 	     scheduler.init(sap.ui.getCore().byId("stationTrackerView").getId() + "--test" ,  new Date(2014,5,30),"timeline");
 	     scheduler.clearAll();
 	     
+	     scheduler.xy.scroll_width=20;
 	     scheduler.parse(aBox,"json");
 		
 	}
