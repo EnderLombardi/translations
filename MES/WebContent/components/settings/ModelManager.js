@@ -54,12 +54,12 @@ airbus.mes.settings.ModelManager = {
 //        airbus.mes.settings.ModelManager.loadLangModel();
         airbus.mes.settings.ModelManager.loadUserSettingsModel();
         
-//  ***************************Define i18nModel**************************************
+/*//  ***************************Define i18nModel**************************************
 		this.i18nModel = new sap.ui.model.resource.ResourceModel({
 		bundleUrl : "i18n/messageBundle.properties",
 		bundleLocale : core.getConfiguration().getLanguage()
 	});
-	core.setModel(this.i18nModel, "messageBundle");
+	core.setModel(this.i18nModel, "messageBundle");*/
 
 	},
 	
