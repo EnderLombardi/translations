@@ -174,6 +174,42 @@ sap.ui.controller("airbus.mes.worktracker.views.operationDetails", {
 	showCommentBox : function(oEvt){
 		var path=oEvt.getSource().getBindingContext("disruptionModel").getPath();
 		this.getView().getModel("disruptionModel").setProperty(path+"/commentVisible","true");
+	},onMarkSolved : function(oEvt) {
+		var path = oEvt.getSource().getBindingContext(
+				"disruptionModel").getPath();
+		this.getView().getModel("disruptionModel").setProperty(
+				path + "/Status", "Solved");
+		this.getView().getModel("disruptionModel").setProperty(
+				path + "/commentVisible", "false");
+		this.getView().getModel("disruptionModel").setProperty(
+				path + "/message", " ");
+
+	},
+	onCreateDisrupt : function() {
+		
+
+		var oNewDisruptionData = {
+			"Gravity" : this.getView().byId("Gravity").getSelectedKey(),
+			"Object" : this.getView().byId("Object").getSelectedKey(),
+			"Nature" : this.getView().byId("Nature").getSelectedKey(),
+			"Help" : this.getView().byId("Help").getSelectedKey(),
+			"Open Date" : this.getView().byId("opendate").getValue(),
+			"Time" : this.getView().byId("time").getValue(),
+			"Expected" : this.getView().byId("Expected").getValue(),
+			"TimeEx" : this.getView().byId("time2").getValue(),
+			"Status" : "Pending",
+			"message" : this.getView().byId("addMessage").getValue(),
+			"commentVisible" : "false"
+		};
+		this.getView().getModel("disruptionModel").getProperty("/Disruption").push(oNewDisruptionData);
+		this.getView().getModel("disruptionModel").refresh();
+		this.getView().byId("disruptionsHeader").setVisible(
+				true);
+		this.getView().byId("FormToolbar").setVisible(false);
+
 	}
+	/*onLiveChangetxtArea:function(){
+		this.getView().byId("addMessage").getValue();
+	}*/
 
 });

@@ -203,7 +203,7 @@
 											</layoutData>
 										</Label>
 									</f:label>
-									<TextArea value="Add Comments.." icon="sap-icon://sort">
+									<TextArea placeholder="Add comment.."  icon="sap-icon://sort" id="addMessage" valueLiveUpdate="true">
 										<layoutData>
 											<l:GridData span="L6 M6 S12" />
 										</layoutData>
@@ -224,7 +224,7 @@
 												<l:GridData span="L2 M2 S12" />
 											</layoutData>
 										</Button>
-										<Button text="Create" class="btnColor">
+										<Button text="Create" class="btnColor" press="onCreateDisrupt">
 											<layoutData>
 												<l:GridData span="L2 M2 S12" />
 											</layoutData>

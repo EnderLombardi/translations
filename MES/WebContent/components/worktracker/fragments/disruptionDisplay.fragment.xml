@@ -139,7 +139,7 @@
 
 									<f:FormElement>
 										<f:label>
-											<Label text="Messages">
+											<Label text="">
 												<layoutData>
 													<l:GridData span="L2 M2 S12"/>
 												</layoutData>
@@ -206,7 +206,7 @@
 											</Button>
 										</f:fields>
 										<f:fields>
-											<Button text="Mark Solved" type="Emphasized">
+											<Button text="{ parts: [ 'disruptionModel>Status'], formatter : 'util.Formatter.markSolvedBtn' }" type="Emphasized" press="onMarkSolved">
 												<layoutData>
 													<l:GridData span="L2 M2 S12" />
 												</layoutData>

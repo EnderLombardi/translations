@@ -94,15 +94,17 @@ util.Formatter = {
 	},
 	
 	setVisibility : function(status) {
-		if (status === "Pending"){
+		if (status === "Pending" || status === "Acknowledge"){
 			this.getParent().getParent().getParent().addStyleClass("formBackgroundPen");
 			this.getParent().getParent().getParent().getParent().addStyleClass("formBorderPen");
+			if (status === "Acknowledge")
+				return true;
 			return false;
 		}
 		else{
 			this.getParent().getParent().getParent().addStyleClass("formBackgroundAck");
 			this.getParent().getParent().getParent().getParent().addStyleClass("formBorderAck");
-			return true;
+			return false;
 		}
 	},
 	
@@ -113,6 +115,12 @@ util.Formatter = {
 		else{
 			return true;
 		}
+	},
+	markSolvedBtn:function(status){
+		if(status == "Solved")
+		return "solved";
+		
+		return "Mark solved ";
 	}
 	
 };
