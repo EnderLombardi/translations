@@ -113,6 +113,7 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 			airbus.mes.stationtracker.ModelManager.loadStationTracker();
 			scheduler.xy.scroll_width = 20;
 			scheduler.updateView();
+				
 
 		}
 	}

@@ -6,17 +6,14 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 						oRm.writeControlData(oControl);
 						oRm.write(" class='dhx_cal_container'  style='width:100%; height:71%;'>");
 						oRm.write("	<div class='dhx_cal_navline'>");
-						oRm.write("		<div class='dhx_cal_prev_button'></div>");
-						oRm.write("	 	<div class='dhx_cal_next_button'></div>");
 						oRm.write("		<div class='dhx_cal_date' Style='font-weight:bold; text-align:left; padding-left: 1.5%'></div>");
 						oRm.write("	</div>");
 						oRm.write("	<div class='dhx_cal_header' Style='text-align:left;'>");
-						oRm.write("		<div id='toto'></div>");
 						oRm.write("	</div>");
 						oRm.write("	<div class='dhx_cal_data'></div>");
 						oRm.write("</div>");
 					
-						//$("div[class='dhx_cal_header']").append( "<p>Test</p>" );
+							
 						
 						
 						scheduler.xy.scroll_width=20;
@@ -186,23 +183,72 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 						
 						scheduler.eventId.push ( scheduler.attachEvent("onScaleAdd", function( unit , date ) {
 							for (i = 0; i < $("div[class='dhx_scell_expand']").length; i++) {
-								$("div[class='dhx_scell_expand']")[i].remove();
+								$("div[class='dhx_scell_expand']").eq(i).remove();
+							}
+
+						/* Create arrow to change shift/day */								
+							if ($("div[class='dhx_cal_next_button']").length === 0) {
+								$("div[class='dhx_cal_header']").append(("<div class='dhx_cal_next_button' Style='float:right;'></div>"));
+								$("div[class='dhx_cal_next_button']").click(function() {
+									scheduler._click.dhx_cal_next_button()
+								});
+							}
+
+							if ($("div[class='dhx_cal_prev_button']").length === 0) {
+								$("div[class='dhx_cal_header']").append(("<div class='dhx_cal_prev_button' Style='float:right;'></div>"));
+								$("div[class='dhx_cal_prev_button']").click(function() {
+									scheduler._click.dhx_cal_prev_button()
+								});
+							}
+							/* Create combobox to change early late shift */
+							if ($("div[id='selectBoxStation']").length === 0) {
+								var dDate = scheduler.getState().date;
+								
+//								for (i = 0; i < $("div[class='dhx_cal_date']").length; i++) {
+//									$("div[class='dhx_cal_date']").eq(i).remove();
+//								}
+							
+								
+								$("div[class='dhx_cal_header']").append(("<div id='selectBoxStation' Style='float:left;'></div>"));
+								new sap.m.Select("mytest",{}).placeAt("selectBoxStation");
+								
+								
 							}
 							
+							
+							
 						}));
-
+					
 						scheduler.eventId.push ( scheduler.attachEvent("onClick", function(id, e) {	
-							if ( airbus.mes.stationtracker.toto === undefined ) {
+							if ( airbus.mes.stationtracker.schedulerPopover === undefined ) {
 								
-								airbus.mes.stationtracker.toto = sap.ui.xmlfragment("airbus.mes.stationtracker.schedulerPopover", this);
-								airbus.mes.stationtracker.toto.addStyleClass("alignTextLeft");
+								airbus.mes.stationtracker.schedulerPopover = sap.ui.xmlfragment("airbus.mes.stationtracker.schedulerPopover", this);
+								airbus.mes.stationtracker.schedulerPopover.addStyleClass("alignTextLeft");
 								
 							}
 							
-							airbus.mes.stationtracker.toto.openBy(e.srcElement);		
+							airbus.mes.stationtracker.schedulerPopover.openBy(e.srcElement);		
 
 						}));
-				
+										
 					},
+					
+//					onAfterRendering : function() {
+//						
+//						if ($("div[id='selectBoxStation']").length === 0) {
+//							var dDate = scheduler.getState().date;
+//							
+////							for (i = 0; i < $("div[class='dhx_cal_date']").length; i++) {
+////								$("div[class='dhx_cal_date']").eq(i).remove();
+////							}
+//							if (sap.ui.getCore().byId("mytest") === undefined) {
+//							
+//							$("div[class='dhx_cal_header']").append(("<div id='selectBoxStation' Style='float:left;'></div>"));
+//							new sap.m.Select("mytest",{}).placeAt("selectBoxStation");
+//							
+//							}
+//						}
+//					
+//					},
 									
 				});
