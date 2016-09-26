@@ -5,7 +5,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 						oRm.write("<div ");
 						oRm.writeControlData(oControl);
 						oRm.write(" class='dhx_cal_container'  style='width:100%; height:71%;'>");
-						oRm.write("	<div class='dhx_cal_navline'>");
+						oRm.write("	<div class='dhx_cal_navline'style='display:none;'>");
 						oRm.write("		<div class='dhx_cal_date' Style='font-weight:bold; text-align:left; padding-left: 1.5%'></div>");
 						oRm.write("	</div>");
 						oRm.write("	<div class='dhx_cal_header' Style='text-align:left;'>");
@@ -148,19 +148,21 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 						
 						scheduler.templates.event_bar_text = function(start, end, event) {
 
-							var html = "";
-
-							html += '<div  style="width:inherit; height:inherit; position:absolute; z-index: 1; padding-left: 5px;line-height: 23px;left: 0px;" >'
-									+ event.text + '</div>';
-							html += '<div  style="width:inherit; height:inherit; position:absolute" ></div>';
-
-							if (event.progress != undefined && event.type === "R") {
-								html += '<div style="width:'
-										+ event.progress
-										+ '%; height:inherit; background-color:#7ED320; position:absolute; z-index: 0; left: 0px;">&nbsp;<span  style="width:3px; float:right; background:#417506; height:inherit;" ></span> </div>'
-							}
-
-							return html;
+//							var html = "";
+//
+//							html += '<div  style="width:inherit; height:inherit; position:absolute; z-index: 1; padding-left: 5px;line-height: 23px;left: 0px;" >'
+//									+ event.text + '</div>';
+//							html += '<div  style="width:inherit; height:inherit; position:absolute" ></div>';
+//
+//							if (event.progress != undefined && event.type === "R") {
+//								html += '<div style="width:'
+//										+ event.progress
+//										+ '%; height:inherit; background-color:#7ED320; position:absolute; z-index: 0; left: 0px;">&nbsp;<span  style="width:3px; float:right; background:#417506; height:inherit;" ></span> </div>'
+//							}
+//
+//							return html;
+							
+							return airbus.mes.stationtracker.util.Formatter.blocked(event.text,event.progress);
 
 						};
 
@@ -200,25 +202,50 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 									scheduler._click.dhx_cal_prev_button()
 								});
 							}
+							
+							if ($("select[class='selectBoxStation']").length === 0) {
+								$("div[class='dhx_cal_header']").append(("<select class='selectBoxStation' ><option value='volvo'>Volvo</option><option value='saab'>Saab</option>" +
+										"<option value='opel'>Opel</option><option value='audi'>Audi</option></select>"));
+								$("div[class='selectBoxStation']").click(function() {
+									scheduler._click.dhx_cal_prev_button()
+								});
+							}
+							
+//							for (i = 0; i < $("div[id='selectBoxStation']").length; i++) {
+//								$("div[id='selectBoxStation']").eq(i).remove();
+//							}
+//							
+//							//if ( $("div[id='selectBoxStation']").length === 0 ) {
+//								$("div[class='dhx_cal_header']").append(("<div id='selectBoxStation' Style='float:left;'></div>"));
+//								
+//							
+//											
+//
+//									if ($("div[id='selectBoxStation']")[0].children.length === 0) {
+//									
+//										new sap.m.Select({}).placeAt("selectBoxStation");
+//
+//									}
+//								//}
+			
 							/* Create combobox to change early late shift */
-							if ($("div[id='selectBoxStation']").length === 0) {
-								var dDate = scheduler.getState().date;
-								
+//							if ($("div[id='selectBoxStation']").length === 0) {
+//								var dDate = scheduler.getState().date;
+//								
 //								for (i = 0; i < $("div[class='dhx_cal_date']").length; i++) {
 //									$("div[class='dhx_cal_date']").eq(i).remove();
 //								}
-							
+//							
 								
-								$("div[class='dhx_cal_header']").append(("<div id='selectBoxStation' Style='float:left;'></div>"));
-								new sap.m.Select("mytest",{}).placeAt("selectBoxStation");
-								
-								
-							}
+//																
+//							}
 							
 							
 							
 						}));
-					
+						
+				
+							
 						scheduler.eventId.push ( scheduler.attachEvent("onClick", function(id, e) {	
 							if ( airbus.mes.stationtracker.schedulerPopover === undefined ) {
 								
@@ -232,23 +259,5 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 						}));
 										
 					},
-					
-//					onAfterRendering : function() {
-//						
-//						if ($("div[id='selectBoxStation']").length === 0) {
-//							var dDate = scheduler.getState().date;
-//							
-////							for (i = 0; i < $("div[class='dhx_cal_date']").length; i++) {
-////								$("div[class='dhx_cal_date']").eq(i).remove();
-////							}
-//							if (sap.ui.getCore().byId("mytest") === undefined) {
-//							
-//							$("div[class='dhx_cal_header']").append(("<div id='selectBoxStation' Style='float:left;'></div>"));
-//							new sap.m.Select("mytest",{}).placeAt("selectBoxStation");
-//							
-//							}
-//						}
-//					
-//					},
-									
+														
 				});

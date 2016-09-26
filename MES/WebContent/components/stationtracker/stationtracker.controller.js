@@ -24,7 +24,101 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 * @memberOf components.stationtracker.stationtracker
 */
 	onAfterRendering: function() {
+		
+		if ( !sap.ui.getCore().byId("selectGroup") ) {
+		var oToolBar = new sap.m.Toolbar({
+		
+			content : [new sap.m.Button({
+				text : "42",
+				type : "Transparent",
+				icon : "sap-icon://group",
+				press : this.onTeamPress,
+			}).addStyleClass("buttonStatus"),
 			
+			new sap.m.ToolbarSeparator({}), 
+			
+			new sap.m.Label({ text:"Sort By : "}),
+			
+			new sap.m.Select("selectGroup",{
+				change: this.changeGroup,
+				items : [ new sap.ui.core.Item({ text:"Competence", key:"competency"}),
+				          new sap.ui.core.Item({ text:"Avl", key:"avlLine"}),
+				         ]
+				}).addStyleClass("sapUiTinyMarginBeginEnd"),
+			
+			new sap.m.Label({ text:"Show : "}),
+			 
+			new sap.m.Select("selectBox",{
+				change: this.changeBox,
+				items : [ new sap.ui.core.Item({ text:"Operations", key:"operationId"}),
+				          new sap.ui.core.Item({ text:"WorkOrder", key:"workOrderId"}),
+				         ]
+				}).addStyleClass("sapUiTinyMarginBeginEnd"),
+			
+			new sap.m.ToolbarSeparator({}), 
+			
+			new sap.m.Button({
+				text : "show CP",
+				type : "Transparent",
+				icon : "sap-icon://ppt-attachment",
+				press : this.onCPPress,
+			}).addStyleClass("sapUiTinyMarginBeginEnd"),
+			
+			new sap.m.Button({
+				text : "show initial plan",
+				type : "Transparent",
+				icon : "sap-icon://ppt-attachment",
+				press : this.onInitialPlanPress,
+			}).addStyleClass("sapUiTinyMarginBeginEnd"),
+			           
+//			new sap.m.SegmentedButton({
+//			
+//				items: [ new sap.m.SegmentedButtonItem({ text:"Shift", press:this.onShiftPress }),
+//				         new sap.m.SegmentedButtonItem({ text:"Day", press:this.onDayPress })]				
+//			})
+			
+			
+			]
+		
+		
+			
+		}).addStyleClass("white")
+		
+		
+//		<Toolbar class="white">
+//		<content>
+//			<Button text="42" type="Transparent" icon="sap-icon://group"
+//				class="buttonStatus" press="onTeamPress"></Button>
+//			<ToolbarSeparator />
+//			<Label text="Sort By : " />
+//			<Select id="selectGroup" class="sapUiTinyMarginBeginEnd" change="changeGroup">
+//				<core:Item text="Competence" key="competency"/>
+//				<core:Item text="Avl" key="avlLine" />
+//			</Select>
+//			<Label text="Show : " />
+//			<Select id="selectBox" class="sapUiTinyMarginBeginEnd" change="changeBox">
+//				<core:Item text="Operations" key="operationId"/>
+//				<core:Item text="WorkOrder" key="workOrderId"/>
+//			</Select>
+//			<ToolbarSpacer />
+//			<Button text="show CP" type="Transparent" icon="sap-icon://ppt-attachment"
+//				class="sapUiTinyMarginBeginEnd" press="onCPPress"></Button>
+//			<Button text="show initial plan" type="Transparent"
+//				icon="sap-icon://ppt-attachment" class="sapUiTinyMarginBeginEnd"
+//				press="onInitialPlanPress"></Button>
+//			<SegmentedButton>
+//				
+//				<items>
+//					<SegmentedButtonItem text="Shift" press="onShiftPress" />
+//					<SegmentedButtonItem text="Day" press="onDayPress" />
+//				</items>
+//			</SegmentedButton>
+//		</content>
+//	</Toolbar>
+		
+		
+		oToolBar.placeAt($("div[class='dhx_cal_navline']"))
+		}
 	},
 	
 	onTeamPress :function(oEvent){

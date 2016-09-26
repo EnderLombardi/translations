@@ -110,10 +110,67 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 
 		if (nav.getCurrentPage().getId() === "stationTrackerView") {
 
+			
+			
 			airbus.mes.stationtracker.ModelManager.loadStationTracker();
 			scheduler.xy.scroll_width = 20;
+			scheduler.xy.nav_height = 0;
 			scheduler.updateView();
-				
+//			
+//			var oToolBar = 	new sap.m.Toolbar({
+//			    width: "100%",
+//				content : [ new sap.m.Button({
+//					text : "42",
+//					type : "Transparent",
+//					icon : "sap-icon://group",
+//					//press : this.onTeamPress,
+//				}),
+//				
+//				new sap.m.ToolbarSeparator({}), 
+//				
+//				new sap.m.Label({ text:"Sort By : "}),
+//				
+//				new sap.m.Select({
+//					//change: this.changeGroup,
+//					items : [ new sap.ui.core.Item({ text:"Competence", key:"competency"}),
+//					          new sap.ui.core.Item({ text:"Avl", key:"avlLine"}),
+//					         ]
+//					}),
+//				
+//				new sap.m.Label({ text:"Show : "}),
+//				 
+//				new sap.m.Select({
+//					//change: this.changeBox,
+//					items : [ new sap.ui.core.Item({ text:"Operations", key:"operationId"}),
+//					          new sap.ui.core.Item({ text:"WorkOrder", key:"workOrderId"}),
+//					         ]
+//					}),
+//				
+//				new sap.m.ToolbarSeparator({}), 
+//				
+//				new sap.m.Button({
+//					text : "show CP",
+//					type : "Transparent",
+//					icon : "sap-icon://ppt-attachment",
+//				//	press : this.onCPPress,
+//				}),
+//				
+//				new sap.m.Button({
+//					text : "show initial plan",
+//					type : "Transparent",
+//					icon : "sap-icon://ppt-attachment",
+//				//	press : this.onInitialPlanPress,
+//				}),
+//				           
+//				new sap.m.SegmentedButton({
+//				
+//					items: [ new sap.m.SegmentedButtonItem({ text:"Shift", /*press:this.onShiftPress*/ }),
+//					         new sap.m.SegmentedButtonItem({ text:"Day",/* press:this.onDayPress */})]				
+//				})
+//				
+//				
+//				]});
+//			oToolBar.placeAt($("div[class='dhx_cal_navline']"))
 
 		}
 	}

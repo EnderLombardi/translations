@@ -71,5 +71,69 @@ airbus.mes.stationtracker.util.Formatter = {
 				
 				return FullTodayDate;
 			},
+			
+
+			fullConfirm : function(sText) {
+
+				var html = "";
+
+				html += '<div  style="width:inherit; height:inherit; position:absolute; z-index: 1; padding-left: 5px;line-height: 23px;left: 0px;" >'
+				+ sText + '</div>';
+				//html += '<div  style="width:inherit; height:inherit; position:absolute" >toto</div>';
+				html += '<div style="width:100%; height:inherit; background-color:#0085AD ; position:absolute; z-index: 0; left: 0px;"></div>'
+		
+				return html;
+
+			},
 	
+			andon : function(sText,sProgress) {
+				
+				var html = "";
+
+				html += '<div  style="width:inherit; height:inherit; position:absolute; z-index: 1; padding-left: 5px;line-height: 23px;left: 0px;" >'
+				+ sText + '</div>';
+			
+				html += '<div  style="width:inherit; height:inherit; position:absolute; z-index: 1; padding-right: 5px;line-height: 23px; text-align:right; left: 0px;">' + 
+				'<span style="padding-left:4px; line-height: 23px;" >' + sProgress + '%</span>' +
+				'<i class="fa fa-exclamation-triangle" style="padding-left:4px; line-height: 23px;" ></i></div>';
+				
+				
+				html += '<div style="width:100%; height:inherit; background-color:#DB5550 ; position:absolute; z-index: 0; left: 0px;"></div>'
+		
+				return html;
+
+				
+			},
+			
+			blocked : function(sText,sProgress) {
+				
+				var html = "";
+
+				html += '<div  style="width:inherit; height:inherit; position:absolute; z-index: 1; padding-left: 5px;line-height: 23px;left: 0px;" >'
+				+ sText + '</div>';
+			
+				html += '<div  style="width:inherit; height:inherit; position:absolute; z-index: 1; padding-right: 5px;line-height: 23px; text-align:right; left: 0px;">' + 
+				'<span style="padding-left:4px; line-height: 23px;" >' + sProgress + '%</span>' +
+				'<i class="fa fa-exclamation-triangle" style="padding-left:4px; line-height: 23px;" ></i></div>';
+				
+				
+				html += '<div style="width:100%; height:inherit; background-color:#FEAF00 ; position:absolute; z-index: 0; left: 0px;"></div>'
+		
+				return html;
+		
+			},
+	
+			partialConf : function(sText,sProgress) {
+				var html = "";
+				
+				html += '<div  style="width:inherit; height:inherit; position:absolute; z-index: 1; padding-left: 5px;line-height: 23px;left: 0px;" >'
+					+ sText + '</div>';
+				html += '<div  style="width:inherit; height:inherit; position:absolute; z-index: 1; padding-right: 5px;line-height: 23px; text-align:right; left: 0px;">toto</div>';
+				
+				html += '<div style="width:'+ sProgress
+				+ '%; height:inherit; background-color:#7ED320; position:absolute; z-index: 0; left: 0px;">&nbsp;<span  style="width:3px; float:right; background:#417506; height:inherit;" ></span> </div>'
+								
+				return html;
+				
+			}
 };
