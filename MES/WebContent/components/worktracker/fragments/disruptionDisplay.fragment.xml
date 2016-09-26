@@ -180,7 +180,7 @@
 											</Label>
 										</f:label>
 										<f:fields>
-											<TextArea value="Add Comments.." icon="sap-icon://sort"
+											<TextArea placeholder="Add Comments.." icon="sap-icon://sort"
 												visible="{ parts: [ 'disruptionModel>commentVisible'], formatter : 'util.Formatter.showComment' }">
 												<layoutData>
 													<l:GridData span="L10 M10 S12" />

@@ -174,7 +174,8 @@ sap.ui.controller("airbus.mes.worktracker.views.operationDetails", {
 	showCommentBox : function(oEvt){
 		var path=oEvt.getSource().getBindingContext("disruptionModel").getPath();
 		this.getView().getModel("disruptionModel").setProperty(path+"/commentVisible","true");
-	},onMarkSolved : function(oEvt) {
+	},
+	onMarkSolved : function(oEvt) {
 		var path = oEvt.getSource().getBindingContext(
 				"disruptionModel").getPath();
 		this.getView().getModel("disruptionModel").setProperty(
@@ -183,6 +184,7 @@ sap.ui.controller("airbus.mes.worktracker.views.operationDetails", {
 				path + "/commentVisible", "false");
 		this.getView().getModel("disruptionModel").setProperty(
 				path + "/message", " ");
+		oEvt.getSource().setType("Accept");
 
 	},
 	onCreateDisrupt : function() {
