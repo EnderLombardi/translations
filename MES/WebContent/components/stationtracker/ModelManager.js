@@ -33,7 +33,7 @@ airbus.mes.stationtracker.ModelManager = {
 			}
 
 			this.urlModel = new sap.ui.model.resource.ResourceModel({
-				bundleUrl : "/MES/components/stationtracker/config/url_config.properties",
+				bundleUrl : "../components/stationtracker/config/url_config.properties",
 				bundleLocale : dest
 			});
 //			this.i18nModel = new sap.ui.model.resource.ResourceModel({
@@ -51,83 +51,9 @@ airbus.mes.stationtracker.ModelManager = {
 		
 		onStationTrackerLoad : function() {
 			
-			var oModel = sap.ui.getCore().getModel("stationTrackerModel").oData.Rowsets.Rowset[0].Row;
-			 elements = [ // original hierarhical array to display
-	                        {key:10, label:"FUEL ACTIVITIES", open: true, children: [
-	                                                                                 
-	                        {key:"F1" , name:"Jae J.", subname:"JJ", hours:'6.0hs'},
-	                        {key:"F2", name:"Mark K.", subname:"MK", hours:'4.0hs'},
-	                        {key:"F3", name:"Steve S.", subname:"SS", hours:'3.0hs'},
-	                        ]},
-	                         {key:105, label:"ELEC ACTIVITIES", open:true, children: [
-	                      
-	                         {key:"E2", name:"Jae J.", subname:"JJ", hours:'6.0hs'},
-	                         {key:"E2", name:"Mark K.", subname:"MK", hours:'4.0hs'},
-	                         {key:"E3", name:"Steve S.", subname:"SS", hours:'3.0hs'},                                                    
-	                         ]},
-	                         {key:115, label:"MEC ACTIVITIES", open:true, children: [
-	                                                                                                     
-	                         {key:"M1", name:"Jae J.", subname:"JJ", hours:'6.0hs'},
-	                         {key:"M2", name:"Mark K.", subname:"MK", hours:'4.0hs'},
-	                         {key:"M3", name:"Steve S.", subname:"SS", hours:'3.0hs'},
-	                         ]},
-	                         {key:120, label:"FLY ACTIVITIES", open:true, children: [
-	                     
-	                         {key:"A1", name:"Jae J.", subname:"JJ", hours:'6.0hs'},
-	                         {key:"A2", name:"Mark K.", subname:"MK", hours:'4.0hs'},
-	                         {key:"A3", name:"Steve S.", subname:"SS", hours:'3.0hs'},
-	                         ]},
-	           ];
-
-
-		 scheduler.matrix['timeline'].y_unit_original = elements;
-		 scheduler.callEvent("onOptionsLoad", []);
-		 
-	     scheduler.init(sap.ui.getCore().byId("stationTrackerView").getId() + "--test" ,  new Date(2014,5,30),"timeline");
-	     //scheduler.clearAll();
-	     scheduler.parse([
-	                       
-	{ start_date: "2014-06-30 09:00", end_date: "2014-06-30 12:00", text:"Task A-12458", section_id:"I1" , type:"I" , progress:50, text:"WO1 OP30",},
-	{ start_date: "2014-06-30 12:00", end_date: "2014-06-30 14:00", text:"Task A-89411", section_id:"I1" , type:"I" , available : "ok",},
-	{ start_date: "2014-06-30 10:00", end_date: "2014-06-30 14:00", text:"Task A-64168",  section_id:"I1" , type:"I" , progress:50, text:"WO1 OP30",},
-	{ start_date: "2014-06-30 16:00", end_date: "2014-06-30 17:00", text:"Task A-46598",  section_id:"I1" , type:"I" , progress:50, text:"WO1 OP30", },
-
-	                       
-	                       
-	     { start_date: "2014-06-30 09:00", end_date: "2014-06-30 12:00", text:"Task A-12458", section_id:"F1" , type:"R" , progress:50, text:"WO1 OP30",},
-	     { start_date: "2014-06-30 12:00", end_date: "2014-06-30 14:00", text:"Task A-89411", section_id:"F2" , type:"R" , available : "ok", cp:"1"},
-	     { start_date: "2014-06-30 10:00", end_date: "2014-06-30 14:00", text:"Task A-64168",  section_id:"F3" , type:"R" , progress:50, text:"WO1 OP30",cp:"1"},
-	     { start_date: "2014-06-30 16:00", end_date: "2014-06-30 17:00", text:"Task A-46598",  section_id:"F1" , type:"R" , progress:50, text:"WO1 OP40", },
-	     
-
-	     { start_date: "2014-06-30 12:00", end_date: "2014-06-30 20:00", text:"Task B-48865",  section_id:"I2" , type:"I" , progress:50, text:"WO1 OP30",},
-	     { start_date: "2014-06-30 14:00", end_date: "2014-06-30 16:00", text:"Task B-44864",  section_id:"I2" , type:"I" , progress:50, text:"WO1 OP30",},
-	     { start_date: "2014-06-30 16:30", end_date: "2014-06-30 18:00", text:"Task B-46558",  section_id:"I2" , type:"I" , progress:50, text:"WO1 OP30",},
-	     { start_date: "2014-06-30 18:30", end_date: "2014-06-30 20:00", text:"Task B-45564",  section_id:"I2" , type:"I" , progress:50, text:"WO1 OP30",},
-	     
-	     
-	     { start_date: "2014-06-30 12:00", end_date: "2014-06-30 20:00", text:"Task B-48865",  section_id:"E1" , type:"R" , progress:50, text:"WO1 OP30",},
-	     { start_date: "2014-06-30 14:00", end_date: "2014-06-30 16:00", text:"Task B-44864",  section_id:"E2" , type:"R" , progress:50, text:"WO1 OP30",cp:"1"},
-	     { start_date: "2014-06-30 16:30", end_date: "2014-06-30 18:00", text:"Task B-46558",  section_id:"E3" , type:"R" , progress:50, text:"WO1 OP30",},
-	     { start_date: "2014-06-30 18:30", end_date: "2014-06-30 20:00", text:"Task B-45564",  section_id:"E3" , type:"R" , progress:50, text:"WO1 OP30",},
-	     
-	     
-	     { start_date: "2014-06-30 08:00", end_date: "2014-06-30 12:00", text:"Task C-32421",  section_id:"I3" , type:"I" , progress:50, text:"WO1 OP30",},
-	     { start_date: "2014-06-30 14:30", end_date: "2014-06-30 16:45", text:"Task C-14244",  section_id:"I3" , type:"I" , progress:50, text:"WO1 OP30",},
-	     
-	     { start_date: "2014-06-30 08:00", end_date: "2014-06-30 12:00", text:"Task C-32421",  section_id:"M1" , type:"R" , progress:50, text:"WO1 OP30",cp:"1"},
-	     { start_date: "2014-06-30 14:30", end_date: "2014-06-30 16:45", text:"Task C-14244",  section_id:"M2" , type:"R" , progress:50, text:"WO1 OP30",},
-	     
-
-	     { start_date: "2014-06-30 09:20", end_date: "2014-06-30 12:20", text:"Task D-52688",  section_id:"I4" , type:"I" , progress:50, text:"WO1 OP30",},
-	     { start_date: "2014-06-30 11:40", end_date: "2014-06-30 16:30", text:"Task D-46588",  section_id:"I4" , type:"I" , progress:50, text:"WO1 OP30",},
-	     { start_date: "2014-06-30 12:00", end_date: "2014-06-30 18:00", text:"Task D-12458",  section_id:"I4" , type:"I" , progress:50, text:"WO1 OP30",},
-	     
-	     { start_date: "2014-06-30 09:20", end_date: "2014-06-30 12:20", text:"Task D-52688",  section_id:"A1" , type:"R" , progress:50, text:"WO1 OP30",cp:"1"},
-	     { start_date: "2014-06-30 11:40", end_date: "2014-06-30 16:30", text:"Task D-46588",  section_id:"A2" , type:"R" , progress:50, text:"WO1 OP30",},
-	     { start_date: "2014-06-30 12:00", end_date: "2014-06-30 18:00", text:"Task D-12458",  section_id:"A3" , type:"R" , progress:50, text:"WO1 OP30",}
-	                  ],"json");
-	     
+			var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
+		
+			GroupingBoxingManager.parseOperation(GroupingBoxingManager.group,GroupingBoxingManager.box);
 			
 		},
 		

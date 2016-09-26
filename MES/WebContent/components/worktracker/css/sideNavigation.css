@@ -1,0 +1,41 @@
+/* The side navigation menu */
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /*0 width - change this with JavaScript*/ 
+    position: fixed; /* Stay in place */
+     z-index: 101;/* Stay on top */
+    /* top: 0; */
+    right: 0;
+    background-color: #4a4b4b; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+   /*  padding-top: 60px; Place content 60px from the top */
+    transition: .5s; /*0.5 second transition effect to slide in the sidenav */
+    margin-top: -1rem !important;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+    transition: margin-right .5s;
+/*     padding: 20px; */
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+
+.sidebarContentMargin{
+	margin:0 1rem 1rem 1rem;
+}
+
+#blackOverlay{
+	position:fixed;
+	height:100%;
+	width:100%;
+	background-color:#000;
+	opacity:0.6;
+	z-index:100;
+    top: 0px;
+    left: 0px;
+}

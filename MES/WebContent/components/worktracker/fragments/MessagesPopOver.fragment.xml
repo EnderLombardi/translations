@@ -1,0 +1,40 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<Popover class="sapUiContentPadding" showHeader="false"
+		placement="Bottom" contentWidth="40%" contentHeight="75%">
+		<content>
+			<Button id="messages-markAllRead" type="Transparent" text="Mark all read"
+				press="messages_markAllRad"
+				class="floatRight sapUiSmallMarginBeginEnd sapUiSmallMarginTopBottom" />
+			<VBox>
+				<Text text="{i18n>messages}" class="title sapUiSmallMarginTopBottom"></Text>
+				<Text
+					text="{path:'userDetailModel>/Rowsets', formatter: 'util.Formatter.getCurrentdate' }"
+					id="MessageDate" class="title sapUiSmallMarginTopBottom" />
+			</VBox>
+
+			<List id="messagesList" items="{messagesModel>/messages}"
+				selectionChange="" includeItemInSelection="true" class="customListItem">
+				<CustomListItem>
+					<HBox>
+						<VBox class="sapUiSmallMarginBeginEnd">
+							<Text
+								text="{ parts: ['messagesModel>first_name', 'messagesModel>last_name', 'messagesModel>user_image'], formatter: 'util.Formatter.setUserInitials' }"
+								class="circleText operatorInitials2 hide"></Text>
+							<Image class="img-circle hide"
+								src="{ parts: ['messagesModel>user_image'], formatter: 'util.Formatter.setUserImage' }"
+								densityAware="false" height="75%"></Image>
+							<Label text="{messagesModel>time}" />
+						</VBox>
+
+						<VBox>
+							<Text
+								text="{ parts: [ 'messagesModel>first_name', 'messagesModel>last_name', 'messagesModel>team_name', 'messagesModel>read'], formatter: 'util.Formatter.getMessageTitle' }"></Text>
+							<Text text="{messagesModel>message}"></Text>
+						</VBox>
+					</HBox>
+				</CustomListItem>
+			</List>
+		</content>
+	</Popover>
+</core:FragmentDefinition>

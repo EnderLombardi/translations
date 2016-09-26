@@ -1,26 +1,25 @@
-sap.ui.core.Control.extend(
-				"airbus.mes.stationtracker.DHTMLXScheduler",
-				{
+sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 
 					renderer : function(oRm, oControl) {
-						if( airbus.mes.stationtracker.test != undefined ) {
-																	
+				
 						oRm.write("<div ");
 						oRm.writeControlData(oControl);
 						oRm.write(" class='dhx_cal_container'  style='width:100%; height:71%;'>");
 						oRm.write("	<div class='dhx_cal_navline'>");
-						oRm.write("		<div class='dhx_cal_prev_button'></div>");
-						oRm.write("	 	<div class='dhx_cal_next_button'></div>");
 						oRm.write("		<div class='dhx_cal_date' Style='font-weight:bold; text-align:left; padding-left: 1.5%'></div>");
 						oRm.write("	</div>");
-						oRm.write("	<div class='dhx_cal_header' Style='text-align:left;'></div>");
+						oRm.write("	<div class='dhx_cal_header' Style='text-align:left;'>");
+						oRm.write("	</div>");
 						oRm.write("	<div class='dhx_cal_data'></div>");
 						oRm.write("</div>");
-
-						scheduler.xy.scale_height = 20;
+					
+							
+						
+						
+						scheduler.xy.scroll_width=20;
+						scheduler.xy.bar_height = 30;
 						scheduler.deleteMarkedTimespan();
 						scheduler.config.drag_resize = false;
-						scheduler.xy.bar_height = 30;
 						scheduler.locale.labels.timeline_tab = "Timeline";
 						scheduler.locale.labels.section_custom="Section";
 			 		    scheduler.config.details_on_create=false;
@@ -33,6 +32,9 @@ sap.ui.core.Control.extend(
 						scheduler.config.preserve_length = true;
 						scheduler.config.dblclick_create = false;
 					
+						scheduler.eventId = scheduler.eventId || [];
+						scheduler.eventId.forEach(function(el) { scheduler.detachEvent(el) });
+						scheduler.eventId = [];
 						
 						scheduler.createTimelineView({
 								section_autoheight: false,
@@ -57,16 +59,16 @@ sap.ui.core.Control.extend(
 						scheduler.templates.timeline_scale_label = function(key, label, section) {
 
 							if (section.name && section.subname) {
-								var html = '<div><span class="rond" title=' + sap.ui.getCore().byId("stationTrackerView").getController().spaceInsecable(section.name) + ' >'
+								var html = '<div><span class="rond" title=' + airbus.mes.stationtracker.util.Formatter.spaceInsecable(section.name) + ' >'
 										+ section.subname + '</span><span class="ylabel" title='
-										+ sap.ui.getCore().byId("stationTrackerView").getController().spaceInsecable(section.name) + '>' + section.name
+										+ airbus.mes.stationtracker.util.Formatter.spaceInsecable(section.name) + '>' + section.name
 										+ '</span><span  style="float: right;margin-right: 5px;" >' + section.hours
 										+ '</span></div>';
 								return html;
 
 							}
 
-							if (section.initial != undefined && airbus.mes.stationtracker.AssignmentManager.bInitial) {
+							if (section.initial != undefined && airbus.mes.stationtracker.GroupingBoxingManager.showInitial ) {
 
 								var html = '<span  style="float: right;margin-right: 5px;" >' + section.initial
 										+ '</span>'
@@ -83,11 +85,12 @@ sap.ui.core.Control.extend(
 
 							if (section.children != undefined) {
 
-								var html = '<div><span id= folder_' + section.key
-										+ ' class="fa fa-chevron-down custom" ></span><div title='
-										+ sap.ui.getCore().byId("stationTrackerView").getController().spaceInsecable(section.label) + ' class="ylabelfolder">' + section.label
-										+ '</div><span class="fa fa-user-plus custom" onclick="airbus.mes.stationtracker.AssignmentManager.newLine('
-										+ section.key + ')" ></span></div>';
+								var html = '<div><span id= folder_' +section.key
+										+ ' class="' + airbus.mes.stationtracker.util.Formatter.openFolder(section.open) + '"></span><div title='
+										+ airbus.mes.stationtracker.util.Formatter.spaceInsecable(section.label) + ' class="ylabelfolder">' + section.label
+										+ '</div><span id= add_' + section.key
+										+ ' class="fa fa-user-plus custom" onclick="airbus.mes.stationtracker.AssignmentManager.newLine(\''
+										+ section.key + '\')"></span></div>';
 								return html;
 
 							}
@@ -110,7 +113,7 @@ sap.ui.core.Control.extend(
 
 						};
 
-						/* 	 Custom progress display  */
+						/* 	 Custom progress background display  */
 
 						scheduler.templates.event_class = function(start, end, event) {
 
@@ -136,6 +139,13 @@ sap.ui.core.Control.extend(
 
 						});
 
+						/* 	 Custom Hour display display  */
+						scheduler.templates.timeline_scalex_class = function(date){
+							
+						    return "customHour";
+						    
+						};
+						
 						scheduler.templates.event_bar_text = function(start, end, event) {
 
 							var html = "";
@@ -152,7 +162,7 @@ sap.ui.core.Control.extend(
 
 							return html;
 
-						}
+						};
 
 						/* custom initial */
 
@@ -162,45 +172,83 @@ sap.ui.core.Control.extend(
 								return "initial";
 
 							}
-							if (section.label != undefined) {
+							if (section.children != undefined) {
 
 								return "white";
 
 							}
 						};
 
-						scheduler.attachEvent("onScaleAdd", function() {
+						/* Delete initial - + to indicate the collapse or expand of folder */
+						
+						scheduler.eventId.push ( scheduler.attachEvent("onScaleAdd", function( unit , date ) {
 							for (i = 0; i < $("div[class='dhx_scell_expand']").length; i++) {
-								$("div[class='dhx_scell_expand']")[i].remove();
+								$("div[class='dhx_scell_expand']").eq(i).remove();
 							}
 
-						});
-
-						scheduler.attachEvent("onAfterFolderToggle", function(section, isOpen, allSections) {
-							if (isOpen) {
-
-								$('#folder_' + section.key).removeClass();
-								$('#folder_' + section.key).addClass("fa fa-chevron-down custom");
-
-							} else {
-
-								$('#folder_' + section.key).removeClass();
-								$('#folder_' + section.key).addClass("fa fa-chevron-right custom");
-
+						/* Create arrow to change shift/day */								
+							if ($("div[class='dhx_cal_next_button']").length === 0) {
+								$("div[class='dhx_cal_header']").append(("<div class='dhx_cal_next_button' Style='float:right;'></div>"));
+								$("div[class='dhx_cal_next_button']").click(function() {
+									scheduler._click.dhx_cal_next_button()
+								});
 							}
 
-						});
-
-						scheduler.attachEvent("onClick", function(id, e) {
-
-							new sap.m.Popover({
-								placement : "Bottom",
-							}).openBy(e.srcElement);
-						});
-						} else {
+							if ($("div[class='dhx_cal_prev_button']").length === 0) {
+								$("div[class='dhx_cal_header']").append(("<div class='dhx_cal_prev_button' Style='float:right;'></div>"));
+								$("div[class='dhx_cal_prev_button']").click(function() {
+									scheduler._click.dhx_cal_prev_button()
+								});
+							}
+							/* Create combobox to change early late shift */
+							if ($("div[id='selectBoxStation']").length === 0) {
+								var dDate = scheduler.getState().date;
+								
+//								for (i = 0; i < $("div[class='dhx_cal_date']").length; i++) {
+//									$("div[class='dhx_cal_date']").eq(i).remove();
+//								}
 							
-							airbus.mes.stationtracker.test = 1 ;
-						}
+								
+								$("div[class='dhx_cal_header']").append(("<div id='selectBoxStation' Style='float:left;'></div>"));
+								new sap.m.Select("mytest",{}).placeAt("selectBoxStation");
+								
+								
+							}
+							
+							
+							
+						}));
+					
+						scheduler.eventId.push ( scheduler.attachEvent("onClick", function(id, e) {	
+							if ( airbus.mes.stationtracker.schedulerPopover === undefined ) {
+								
+								airbus.mes.stationtracker.schedulerPopover = sap.ui.xmlfragment("airbus.mes.stationtracker.schedulerPopover", this);
+								airbus.mes.stationtracker.schedulerPopover.addStyleClass("alignTextLeft");
+								
+							}
+							
+							airbus.mes.stationtracker.schedulerPopover.openBy(e.srcElement);		
+
+						}));
+										
 					},
 					
+//					onAfterRendering : function() {
+//						
+//						if ($("div[id='selectBoxStation']").length === 0) {
+//							var dDate = scheduler.getState().date;
+//							
+////							for (i = 0; i < $("div[class='dhx_cal_date']").length; i++) {
+////								$("div[class='dhx_cal_date']").eq(i).remove();
+////							}
+//							if (sap.ui.getCore().byId("mytest") === undefined) {
+//							
+//							$("div[class='dhx_cal_header']").append(("<div id='selectBoxStation' Style='float:left;'></div>"));
+//							new sap.m.Select("mytest",{}).placeAt("selectBoxStation");
+//							
+//							}
+//						}
+//					
+//					},
+									
 				});

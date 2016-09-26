@@ -195,7 +195,7 @@ sap.ui
                                         	 this.setEnabledCombobox(true,false,false,false);
                                          }            
                                   },
-                                  loadStationTracker:function(){
+                                  loadStationTracker:function(oEvent){
                                                        var that=this;
                                                        if (!this.getView().byId("ComboBoxPlant").getValue()) {
                                                               airbus.mes.settings.ModelManager.messageShow("Please Select Plant");
@@ -220,24 +220,29 @@ sap.ui
                                                                      url: airbus.mes.settings.ModelManager.getUrlSaveUserSetting(),
                                                                      error:function(xhr,status,error){
                                                                             airbus.mes.settings.ModelManager.messageShow("Couldn't Save Changes");
-                                                                           that.navigate();
+                                                                           that.navigate(oEvent);
                                                                            //window.location.pathname = "/MES/WebContent/components/stationtracker/index.html";
                                                                      },
                                                                      success:function(result,status,xhr){
                                                                            // window.location.href = url;
                                                                             airbus.mes.settings.ModelManager.messageShow("Settings Saved Successfully");
-                                                                           that.navigate();
+                                                                           that.navigate(oEvent);
                                                                            //window.location.pathname = "/MES/WebContent/components/stationtracker/index.html";
 
                                                                      }
                                                               });
                                                        }
                                   },
-                                  navigate : function(){
+                                  navigate : function(oEvent){
                                 	  
-                                      jQuery.sap.registerModulePath("airbus.mes.settings","/MES/components/settings");
-                                      jQuery.sap.registerModulePath("airbus.mes.stationtracker","/MES/components/stationtracker");
-                                      
+//                                      jQuery.sap.registerModulePath("airbus.mes.settings","/MES/components/settings");
+//                                      jQuery.sap.registerModulePath("airbus.mes.stationtracker","/MES/components/stationtracker");
+
+//                                    Active settings button during leaving settings screen
+                                      if(airbus.mes.shell != undefined){
+                                    	  airbus.mes.shell.oView.byId("settingsButton").setEnabled(true);
+                                      };
+                              		  
                                       if (this.getOwnerComponent().mProperties.buttonAction === "stationtracker") {
                                     	  if(airbus.mes.stationtracker != undefined) {
 						            		  nav.to(airbus.mes.stationtracker.oView.getId());                                    		  
@@ -250,33 +255,13 @@ sap.ui
                                     	  }
 				  
                                     	  
-                                     } 
-                                      else if ( this.getOwnerComponent().mProperties.buttonAction === "back" ) {
-                                     	  nav.back();       	  
+                                     }
+                                      else if (this.getOwnerComponent().mProperties.buttonAction === "stationtracker") {
+                          				location.href="../components/worktracker/";
                                       }
-//                                      
-                                      
-                                      
-                                      
-                                      
-//                                      if ( nav.getPreviousPage().getId() === "homePageView" ) {
-//                                     	  nav.back(); 
-//                                    
-//
-//						              } else {
-//
-//						            	  if (airbus.mes.stationtracker != undefined) {
-//						            		  nav.to(airbus.mes.stationtracker.oView.getId());
-//						            	  } else {
-//						            		  sap.ui.getCore().createComponent({
-//						            			  name : "airbus.mes.stationtracker", // root component folder is resources
-//						             });
-//
-//						             nav.addPage(airbus.mes.stationtracker.oView);
-//								     nav.to(airbus.mes.stationtracker.oView.getId());
-//							}
-
-//						}
+                                      else if ( this.getOwnerComponent().mProperties.buttonAction === "back" ) {
+                                     	  nav.back();
+                                      }
                                 	  
                                   },
 

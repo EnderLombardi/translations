@@ -25,7 +25,7 @@ airbus.mes.settings.ModelManager = {
 		core.setModel(new sap.ui.model.json.JSONModel(), "plantModel");
 		core.setModel(new sap.ui.model.json.JSONModel(), "siteModel");
 		core.setModel(new sap.ui.model.json.JSONModel(), "langModel");
-		core.setModel(new sap.ui.model.json.JSONModel(),"userSettingModel");
+		core.setModel(new sap.ui.model.json.JSONModel(), "userSettingModel");
 
 		var dest;
 
@@ -46,7 +46,7 @@ airbus.mes.settings.ModelManager = {
 		}
 
 		this.urlModel = new sap.ui.model.resource.ResourceModel({
-			bundleUrl : "/MES/components/settings/config/url_config.properties",
+			bundleUrl : "../components/settings/config/url_config.properties",
 			bundleLocale : dest
 		});
 		
@@ -66,6 +66,7 @@ airbus.mes.settings.ModelManager = {
 	// ************************************************************************************
 	getUrlSite : function() {
 		var urlSite = this.urlModel.getProperty("urlsitemodel");
+		
 		return urlSite;
 	},
 
@@ -89,6 +90,7 @@ airbus.mes.settings.ModelManager = {
 		var langUrl = this.urlModel.getProperty("urlLanguage");
 		return langUrl;
 	},
+	
 	loadLangModel:function(){
 		var oLangModel = this.core.getModel("langModel");
 		oLangModel.loadData(airbus.mes.settings.ModelManager.getUrlLang(),null,false);
@@ -142,4 +144,4 @@ airbus.mes.settings.ModelManager = {
 		}
 
 };
-//airbus.mes.settings.ModelManager.init(sap.ui.getCore());
+airbus.mes.settings.ModelManager.init(sap.ui.getCore());

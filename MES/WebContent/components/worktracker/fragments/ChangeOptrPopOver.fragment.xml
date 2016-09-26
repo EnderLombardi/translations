@@ -1,0 +1,44 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+
+	<Popover class="sapUiContentPadding" showHeader="false"
+		placement="Bottom" id="operatorChangePopOver" contentWidth="75%"
+		contentHeight="75%">
+		<content>
+			<Text text="" id="date" class="subText" />
+			<Toolbar>
+				<Select forceSelection="false" selectedKey="S10"
+					change="onSelectionStation"
+					items="{
+ 						path: 'stationModel>/stations', 
+ 						
+						sorter: { path: 'station' }
+ 					}">
+					<core:Item key="{stationModel>key}" text="{stationModel>station}" />
+				</Select>
+
+				<SearchField liveChange="onSearch" title="search by name"
+					width="100%" />
+			</Toolbar>
+
+			<List id="operatorsList" items="{operatorsModel>/operators}"
+				selectionChange="onSelectionChange" includeItemInSelection="true"
+				class="customListItem">
+
+				<items>
+					<CustomListItem>
+
+						<Text id="operatorInitials"
+							text="{ parts: [ 'operatorsModel>first_name', 'operatorsModel>last_name', 'operatorsModel>image'], formatter: 'util.Formatter.setUserInitials' }"
+							class="circleText operatorInitials2 hide MR-1"></Text>
+						<Image id="operatorImage" class="img-circle hide MR-1"
+							src="{ parts: ['operatorsModel>image'], formatter: 'util.Formatter.setUserImage' }"
+							densityAware="false" height="75%"></Image>
+						<Text
+							text="{ parts: [ 'operatorsModel>first_name', 'operatorsModel>last_name'], formatter: 'util.Formatter.getFullName' }"></Text>
+					</CustomListItem>
+				</items>
+			</List>
+
+		</content>
+	</Popover>
+</core:FragmentDefinition>

@@ -35,12 +35,30 @@
 		component : oComp1
 	});
 	// place this Ui Container with the Component inside into UI Area 
-	oCompCont1.placeAt("content");
+/* 	oCompCont1.placeAt("app"); */
 
-
+var oPage = new sap.m.Page({
+	
+	content : new sap.m.Button({
+		
+		press: function() {
+			
+			app.to(airbus.mes.stationtracker.oView);
+		}
+		
+	})
+	
+})
+	
+	var app = new sap.m.App({
+ 		initialPage : oPage,
+ 	});
  	
- 	
- 	
+ app.addPage(airbus.mes.stationtracker.oView)
+	app.addPage(oPage);
+ 
+	app.placeAt('content');
+	
 		</script>
 
 	</head>

@@ -18,249 +18,7 @@
 
             "Columns": {
 
-               "Column": [
-
-                  {
-
-                     "Name": "groupId",
-
-                     "SourceColumn": "groupId",
-
-                     "Description": "",
-
-                     "SQLDataType": 1,
-
-                     "MinRange": 9999,
-
-                     "MaxRange": 9999
-
-                  },
-
-                  {
-
-                     "Name": "boxId",
-
-                     "SourceColumn": "boxId",
-
-                     "Description": "",
-
-                     "SQLDataType": 1,
-
-                     "MinRange": 9999,
-
-                     "MaxRange": 9999
-
-                  },
-
-                  {
-
-                     "Name": "schedType",
-
-                     "SourceColumn": "schedType",
-
-                     "Description": "",
-
-                     "SQLDataType": 1,
-
-                     "MinRange": 9999,
-
-                     "MaxRange": 9999
-
-                  },
-
-                  {
-
-                     "Name": "start",
-
-                     "SourceColumn": "start",
-
-                     "Description": "",
-
-                     "SQLDataType": 1,
-
-                     "MinRange": 9999,
-
-                     "MaxRange": 9999
-
-                  },
-
-                  {
-
-                     "Name": "end",
-
-                     "SourceColumn": "end",
-
-                     "Description": "",
-
-                     "SQLDataType": 1,
-
-                     "MinRange": 9999,
-
-                     "MaxRange": 9999
-
-                  },
-
-                  {
-
-                     "Name": "progress",
-
-                     "SourceColumn": "progress",
-
-                     "Description": "",
-
-                     "SQLDataType": 1,
-
-                     "MinRange": 9999,
-
-                     "MaxRange": 9999
-
-                  },
-
-                  {
-
-                     "Name": "ACPnG_resch.StartDate",
-
-                     "SourceColumn": "ACPnG_resch.StartDate",
-
-                     "Description": "",
-
-                     "SQLDataType": 1,
-
-                     "MinRange": 9999,
-
-                     "MaxRange": 9999
-
-                  },
-
-                  {
-
-                     "Name": "ACPnG_resch.EndDate",
-
-                     "SourceColumn": "ACPnG_resch.EndDate",
-
-                     "Description": "",
-
-                     "SQLDataType": 1,
-
-                     "MinRange": 9999,
-
-                     "MaxRange": 9999
-
-                  },
-
-                  {
-
-                     "Name": "ACPnG_Status",
-
-                     "SourceColumn": "ACPnG_Status",
-
-                     "Description": "",
-
-                     "SQLDataType": 1,
-
-                     "MinRange": 9999,
-
-                     "MaxRange": 9999
-
-                  },
-
-                  {
-
-                     "Name": "NC_Status",
-
-                     "SourceColumn": "NC_Status",
-
-                     "Description": "",
-
-                     "SQLDataType": 1,
-
-                     "MinRange": 9999,
-
-                     "MaxRange": 9999
-
-                  },
-
-                  {
-
-                     "Name": "openReservations",
-
-                     "SourceColumn": "openReservations",
-
-                     "Description": "",
-
-                     "SQLDataType": 1,
-
-                     "MinRange": 9999,
-
-                     "MaxRange": 9999
-
-                  },
-
-                  {
-
-                     "Name": "duration",
-
-                     "SourceColumn": "duration",
-
-                     "Description": "",
-
-                     "SQLDataType": 1,
-
-                     "MinRange": 9999,
-
-                     "MaxRange": 9999
-
-                  },
-
-                  {
-
-                     "Name": "manuallyInserted",
-
-                     "SourceColumn": "manuallyInserted",
-
-                     "Description": "",
-
-                     "SQLDataType": 1,
-
-                     "MinRange": 9999,
-
-                     "MaxRange": 9999
-
-                  },
-
-                  {
-
-                     "Name": "andon",
-
-                     "SourceColumn": "andon",
-
-                     "Description": "",
-
-                     "SQLDataType": 1,
-
-                     "MinRange": 9999,
-
-                     "MaxRange": 9999
-
-                  },
-
-                  {
-
-                     "Name": "certifStatus",
-
-                     "SourceColumn": "certifStatus",
-
-                     "Description": "",
-
-                     "SQLDataType": 1,
-
-                     "MinRange": 9999,
-
-                     "MaxRange": 9999
-
-                  }
-
-               ]
+               "Column": []
 
             },
 
@@ -268,1633 +26,358 @@
 
                {
 
-                  "groupId": "A350_STRUC",
+                  "workOrderId": "FUEL ACTIVITIES",
 
-                  "boxId": "0010",
+                  "operationId": "0010",
 
-                  "schedType": "I",
+                  "shopOrder": "toto",
 
-                  "start": "2016-07-01 15:31:00",
+                  "shopOrderDescription": "ja mange du fromage",
 
-                  "end": "2016-07-07 12:57:00",
+                  "operationDescription": "@@@ééééé¨¨¨%¨££££$$$",
 
-                  "progress": "26.91",
+                  "totalDuration": "26.91",
 
-                  "ACPnG_resch.StartDate": "---",
+                  "progress": "50",
 
-                  "ACPnG_resch.EndDate": "---",
+                  "certification": "---",
 
-                  "ACPnG_Status": "0",
+                  "startDate": "2014-06-30 09:00",
 
-                   "NC_Status": "0",
+                  "endDate": "2014-06-30 13:00",
 
-                  "openReservations": "0",
+                  "status": "0",
 
-                  "duration": "328.284",
+                  "disruptions": "560",
 
-                  "manuallyInserted": "0",
+                  "andons": "12",
 
-                  "andon": "0",
+                  "routingMaturityAssessment": "1",
 
-                  "certifStatus": "0"
+                  "ata": "1",
 
-               },
+                  "familyTarget": "A350_STRUC2",
 
-               {
+                  "cppCluster": "A350_STRUC",
 
-                  "groupId": "A350_STRUC",
+                  "workPackage": "350",
 
-                  "boxId": "0011",
+                  "avlPath1": "toto",
 
-                  "schedType": "I",
+                  "avlPath2": "tata",
 
-                  "start": "2016-07-01 15:31:00",
+                  "criticalPath": "1",
 
-                  "end": "2016-07-01 15:32:00",
+                  "avlStartDate": "2014-06-30 09:00",
 
-                  "progress": "0",
+                  "avlEndDate": "2014-06-30 13:00",
 
-                  "ACPnG_resch.StartDate": "---",
+                  "avlLine": "211545464654",
 
-                  "ACPnG_resch.EndDate": "---",
+                  "competency": "FUEL ACTIVITIES",
 
-                  "ACPnG_Status": "0",
+                  "rescheduledStarDate": "0",
 
-                  "NC_Status": "0",
+                  "rescheduledEndDate": "328.284",
 
-                  "openReservations": "0",
-
-                  "duration": "2",
-
-                  "manuallyInserted": "0",
-
-                  "andon": "0",
-
-                  "certifStatus": "0"
+                  "rescheduledLine": "0"
 
                },
-
+               
                {
 
-                  "groupId": "A350_STRUC",
+                  "workOrderId": "FUEL ACTIVITIES",
 
-                  "boxId": "0020",
+                  "operationId": "0020",
 
-                  "schedType": "I",
+                  "shopOrder": "toto",
 
-                  "start": "2016-07-01 16:02:00",
+                  "shopOrderDescription": "ja mange du fromage",
 
-                  "end": "2016-07-06 06:29:00",
+                  "operationDescription": "@@@ééééé¨¨¨%¨££££$$$",
 
-                  "progress": "4869.601",
+                  "totalDuration": "26.91",
 
-                  "ACPnG_resch.StartDate": "---",
+                  "progress": "50",
 
-                  "ACPnG_resch.EndDate": "---",
+                  "certification": "---",
 
-                  "ACPnG_Status": "0",
+                  "startDate": "2014-06-30 12:00",
 
-                  "NC_Status": "0",
+                  "endDate": "2014-06-30 15:00",
 
-                  "openReservations": "6",
+                  "status": "0",
 
-                  "duration": "11244.328",
+                  "disruptions": "560",
 
-                  "manuallyInserted": "0",
+                  "andons": "12",
 
-                  "andon": "0",
+                  "routingMaturityAssessment": "1",
 
-                  "certifStatus": "0"
+                  "ata": "1",
+
+                  "familyTarget": "A350_STRUC2",
+
+                  "cppCluster": "A350_STRUC",
+
+                  "workPackage": "350",
+
+                  "avlPath1": "toto",
+
+                  "avlPath2": "tata",
+
+                  "criticalPath": "1",
+
+                  "avlStartDate": "2014-06-30 12:00",
+
+                  "avlEndDate": "2014-06-30 15:00",
+
+                  "avlLine": "2115454624654",
+
+                  "competency": "FUEL ACTIVITIES",
+
+                  "rescheduledStarDate": "0",
+
+                  "rescheduledEndDate": "328.284",
+
+                  "rescheduledLine": "0"
 
                },
+               
+                {
 
-               {
+                  "workOrderId": "MECA ACTIVITIES",
 
-                  "groupId": "A350_STRUC",
+                  "operationId": "0030",
 
-                  "boxId": "0030",
+                  "shopOrder": "toto",
 
-                  "schedType": "I",
+                  "shopOrderDescription": "ja mange du fromage",
 
-                  "start": "2016-07-01 16:33:00",
+                  "operationDescription": "@@@ééééé¨¨¨%¨££££$$$",
 
-                  "end": "2016-07-04 11:31:00",
+                  "totalDuration": "26.91",
 
-                  "progress": "1129.219",
+                  "progress": "50",
 
-                  "ACPnG_resch.StartDate": "---",
+                  "certification": "---",
 
-                  "ACPnG_resch.EndDate": "---",
+                  "startDate": "2014-06-30 09:00",
 
-                  "ACPnG_Status": "0",
+                  "endDate": "2014-06-30 13:00",
 
-                  "NC_Status": "0",
+                  "status": "0",
 
-                  "openReservations": "0",
+                  "disruptions": "560",
 
-                  "duration": "1129.219",
+                  "andons": "12",
 
-                  "manuallyInserted": "0",
+                  "routingMaturityAssessment": "1",
 
-                  "andon": "0",
+                  "ata": "1",
 
-                  "certifStatus": "0"
+                  "familyTarget": "A350_STRUC2",
 
-               },
+                  "cppCluster": "A350_STRUC",
 
-               {
+                  "workPackage": "350",
 
-                  "groupId": "A350_STRUC",
+                  "avlPath1": "toto",
 
-                  "boxId": "0040",
+                  "avlPath2": "tata",
 
-                  "schedType": "I",
+                  "criticalPath": "1",
 
-                  "start": "2016-07-01 17:04:00",
+                  "avlStartDate": "2014-06-30 09:00",
 
-                  "end": "2016-07-01 17:35:00",
+                  "avlEndDate": "2014-06-30 12:00",
 
-                  "progress": "259.71",
+                  "avlLine": "211545464654",
 
-                  "ACPnG_resch.StartDate": "---",
+                  "competency": "ELEC ACTIVITIES",
 
-                  "ACPnG_resch.EndDate": "---",
+                  "rescheduledStarDate": "0",
 
-                  "ACPnG_Status": "0",
+                  "rescheduledEndDate": "328.284",
 
-                  "NC_Status": "0",
-
-                  "openReservations": "0",
-
-                  "duration": "259.71",
-
-                  "manuallyInserted": "0",
-
-                  "andon": "0",
-
-                  "certifStatus": "0"
+                  "rescheduledLine": "0"
 
                },
+                {
 
-               {
+                  "workOrderId": "FUEL ACTIVITIES",
 
-                  "groupId": "A350_STRUC",
+                  "operationId": "0040",
 
-                  "boxId": "0050",
+                  "shopOrder": "toto",
 
-                  "schedType": "I",
+                  "shopOrderDescription": "ja mange du fromage",
 
-                  "start": "2016-07-01 17:35:00",
+                  "operationDescription": "@@@ééééé¨¨¨%¨££££$$$",
 
-                  "end": "2016-07-01 17:44:00",
+                  "totalDuration": "26.91",
 
-                  "progress": "77.913",
+                  "progress": "50",
 
-                  "ACPnG_resch.StartDate": "---",
+                  "certification": "---",
 
-                  "ACPnG_resch.EndDate": "---",
+                  "startDate": "2014-06-30 06:00",
 
-                  "ACPnG_Status": "0",
+                  "endDate": "2014-06-30 10:00",
 
-                  "NC_Status": "0",
+                  "status": "0",
 
-                  "openReservations": "0",
+                  "disruptions": "560",
 
-                  "duration": "77.913",
+                  "andons": "12",
 
-                  "manuallyInserted": "0",
+                  "routingMaturityAssessment": "1",
 
-                  "andon": "0",
+                  "ata": "1",
 
-                  "certifStatus": "0"
+                  "familyTarget": "A350_STRUC2",
 
-               },
+                  "cppCluster": "A350_STRUC",
 
-               {
+                  "workPackage": "350",
 
-                  "groupId": "A350_STRUC",
+                  "avlPath1": "toto",
 
-                  "boxId": "0060",
+                  "avlPath2": "tata",
 
-                  "schedType": "I",
+                  "criticalPath": "1",
 
-                  "start": "2016-07-04 11:27:00",
+                  "avlStartDate": "2014-06-30 06:00",
 
-                  "end": "2016-07-04 11:29:00",
+                  "avlEndDate": "2014-06-30 10:00",
 
-                  "progress": "13.505",
+                  "avlLine": "211545464654",
 
-                  "ACPnG_resch.StartDate": "---",
+                  "competency": "FUEL ACTIVITIES",
 
-                  "ACPnG_resch.EndDate": "---",
+                  "rescheduledStarDate": "0",
 
-                  "ACPnG_Status": "0",
+                  "rescheduledEndDate": "328.284",
 
-                  "NC_Status": "0",
-
-                  "openReservations": "0",
-
-                  "duration": "13.505",
-
-                  "manuallyInserted": "0",
-
-                  "andon": "0",
-
-                  "certifStatus": "0"
+                  "rescheduledLine": "0"
 
                },
+                {
 
-               {
+                  "workOrderId": "MECA ACTIVITIES",
 
-                  "groupId": "A350_STRUC",
+                  "operationId": "0010",
 
-                  "boxId": "0080",
+                  "shopOrder": "toto",
 
-                  "schedType": "I",
+                  "shopOrderDescription": "ja mange du fromage",
 
-                  "start": "2016-07-04 13:08:00",
+                  "operationDescription": "@@@ééééé¨¨¨%¨££££$$$",
 
-                  "end": "2016-07-07 11:14:00",
+                  "totalDuration": "26.91",
 
-                  "progress": "1607.978",
+                  "progress": "50",
 
-                  "ACPnG_resch.StartDate": "---",
+                  "certification": "---",
 
-                  "ACPnG_resch.EndDate": "---",
+                  "startDate": "2014-06-30 15:00",
 
-                  "ACPnG_Status": "0",
+                  "endDate": "2014-06-30 16:00",
 
-                   "NC_Status": "0",
+                  "status": "0",
 
-                  "openReservations": "0",
+                  "disruptions": "560",
 
-                  "duration": "12490.41",
+                  "andons": "12",
 
-                  "manuallyInserted": "0",
+                  "routingMaturityAssessment": "1",
 
-                  "andon": "0",
+                  "ata": "1",
 
-                  "certifStatus": "0"
+                  "familyTarget": "A350_STRUC2",
 
-               },
+                  "cppCluster": "A350_STRUC",
 
-               {
+                  "workPackage": "350",
 
-                  "groupId": "A350_STRUC",
+                  "avlPath1": "toto",
 
-                  "boxId": "0088",
+                  "avlPath2": "tata",
 
-                  "schedType": "I",
+                  "criticalPath": "1",
 
-                  "start": "2016-07-04 14:51:00",
+                  "avlStartDate": "2014-06-30 15:00",
 
-                  "end": "2016-07-06 07:43:00",
+                  "avlEndDate": "2014-06-30 16:00",
 
-                  "progress": "264.072",
+                  "avlLine": "211545464654",
 
-                  "ACPnG_resch.StartDate": "---",
+                  "competency": "MECA ACTIVITIES",
 
-                  "ACPnG_resch.EndDate": "---",
+                  "rescheduledStarDate": "0",
 
-                  "ACPnG_Status": "0",
+                  "rescheduledEndDate": "328.284",
 
-                  "NC_Status": "0",
-
-                  "openReservations": "0",
-
-                  "duration": "1615.399",
-
-                  "manuallyInserted": "0",
-
-                  "andon": "0",
-
-                  "certifStatus": "0"
+                  "rescheduledLine": "0"
 
                },
+                {
 
-               {
+                  "workOrderId": "MECA ACTIVITIES",
 
-                  "groupId": "A350_STRUC",
+                  "operationId": "0010",
 
-                  "boxId": "0090",
+                  "shopOrder": "toto",
 
-                  "schedType": "I",
+                  "shopOrderDescription": "ja mange du fromage",
 
-                  "start": "2016-07-06 10:59:00",
+                  "operationDescription": "@@@ééééé¨¨¨%¨££££$$$",
 
-                  "end": "2016-07-06 15:11:00",
+                  "totalDuration": "26.91",
 
-                  "progress": "0",
+                  "progress": "50",
 
-                  "ACPnG_resch.StartDate": "---",
+                  "certification": "---",
 
-                  "ACPnG_resch.EndDate": "---",
+                  "startDate": "2014-06-30 13:00",
 
-                  "ACPnG_Status": "0",
+                  "endDate": "2014-06-30 15:00",
 
-                  "NC_Status": "0",
+                  "status": "0",
 
-                  "openReservations": "0",
+                  "disruptions": "560",
 
-                  "duration": "3536.495",
+                  "andons": "12",
 
-                  "manuallyInserted": "0",
+                  "routingMaturityAssessment": "1",
 
-                  "andon": "0",
+                  "ata": "1",
 
-                  "certifStatus": "0"
+                  "familyTarget": "A350_STRUC2",
 
-               },
+                  "cppCluster": "A350_STRUC",
 
-               {
+                  "workPackage": "350",
 
-                  "groupId": "A350_STRUC",
+                  "avlPath1": "toto",
 
-                  "boxId": "0110",
+                  "avlPath2": "tata",
 
-                  "schedType": "I",
+                  "criticalPath": "1",
 
-                  "start": "2016-07-06 15:11:00",
+                  "avlStartDate": "2014-06-30 13:00",
 
-                  "end": "2016-07-07 11:55:00",
+                  "avlEndDate": "2014-06-30 15:00",
 
-                  "progress": "0",
+                  "avlLine": "211545464654",
 
-                  "ACPnG_resch.StartDate": "---",
+                  "competency": "MECA ACTIVITIES",
 
-                  "ACPnG_resch.EndDate": "---",
+                  "rescheduledStarDate": "0",
 
-                  "ACPnG_Status": "0",
+                  "rescheduledEndDate": "328.284",
 
-                  "NC_Status": "0",
-
-                  "openReservations": "0",
-
-                  "duration": "1821.249",
-
-                  "manuallyInserted": "0",
-
-                  "andon": "0",
-
-                  "certifStatus": "0"
-
-               },
-
-               {
-
-                  "groupId": "A350_STRUC",
-
-                  "boxId": "0120",
-
-                  "schedType": "I",
-
-                  "start": "2016-07-06 15:14:00",
-
-                  "end": "2016-07-07 12:59:00",
-
-                  "progress": "0",
-
-                  "ACPnG_resch.StartDate": "---",
-
-                  "ACPnG_resch.EndDate": "---",
-
-                  "ACPnG_Status": "0",
-
-                   "NC_Status": "0",
-
-                  "openReservations": "0",
-
-                  "duration": "8203.299",
-
-                  "manuallyInserted": "0",
-
-                  "andon": "0",
-
-                  "certifStatus": "0"
-
-               },
-
-               {
-
-                  "groupId": "A350_STRUC",
-
-                  "boxId": "0128",
-
-                  "schedType": "I",
-
-                  "start": "2016-07-07 07:35:00",
-
-                  "end": "2016-07-07 08:06:00",
-
-                  "progress": "0",
-
-                  "ACPnG_resch.StartDate": "---",
-
-                  "ACPnG_resch.EndDate": "---",
-
-                  "ACPnG_Status": "0",
-
-                  "NC_Status": "0",
-
-                  "openReservations": "0",
-
-                  "duration": "51.942",
-
-                  "manuallyInserted": "0",
-
-                  "andon": "0",
-
-                  "certifStatus": "0"
-
-               },
-
-               {
-
-                  "groupId": "A350_STRUC",
-
-                  "boxId": "0200",
-
-                  "schedType": "I",
-
-                  "start": "2016-07-07 10:00:00",
-
-                  "end": "2016-07-07 10:02:00",
-
-                  "progress": "0",
-
-                  "ACPnG_resch.StartDate": "---",
-
-                  "ACPnG_resch.EndDate": "---",
-
-                  "ACPnG_Status": "0",
-
-                  "NC_Status": "0",
-
-                  "openReservations": "0",
-
-                  "duration": "6.58",
-
-                  "manuallyInserted": "0",
-
-                  "andon": "0",
-
-                  "certifStatus": "0"
-
-               },
-
-               {
-
-                  "groupId": "A350_STRUC",
-
-                  "boxId": "0500",
-
-                  "schedType": "I",
-
-                  "start": "2016-07-07 06:00:00",
-
-                  "end": "2016-07-07 13:01:00",
-
-                  "progress": "0",
-
-                  "ACPnG_resch.StartDate": "---",
-
-                  "ACPnG_resch.EndDate": "---",
-
-                  "ACPnG_Status": "0",
-
-                  "NC_Status": "0",
-
-                  "openReservations": "0",
-
-                  "duration": "81.326",
-
-                  "manuallyInserted": "0",
-
-                  "andon": "0",
-
-                  "certifStatus": "0"
-
-               },
-
-               {
-
-                  "groupId": "A350_STRUC",
-
-                  "boxId": "0550",
-
-                  "schedType": "I",
-
-                  "start": "2016-07-07 06:09:00",
-
-                  "end": "2016-07-07 13:11:00",
-
-                  "progress": "0",
-
-                  "ACPnG_resch.StartDate": "---",
-
-                  "ACPnG_resch.EndDate": "---",
-
-                  "ACPnG_Status": "0",
-
-                  "NC_Status": "0",
-
-                  "openReservations": "0",
-
-                  "duration": "179.103",
-
-                  "manuallyInserted": "0",
-
-                  "andon": "0",
-
-                  "certifStatus": "0"
-
-               },
-
-               {
-
-                  "groupId": "A350_STRUC",
-
-                  "boxId": "0010",
-
-                  "schedType": "R",
-
-                  "start": "2016-07-01 15:00:00",
-
-                  "end": "2016-07-07 12:25:36",
-
-                  "progress": "26.91",
-
-                  "ACPnG_resch.StartDate": "---",
-
-                  "ACPnG_resch.EndDate": "---",
-
-                  "ACPnG_Status": "0",
-
-                   "NC_Status": "0",
-
-                  "openReservations": "0",
-
-                  "duration": "328.284",
-
-                  "manuallyInserted": "0",
-
-                  "andon": "0",
-
-                  "certifStatus": "0"
-
-               },
-
-               {
-
-                  "groupId": "A350_STRUC",
-
-                  "boxId": "0011",
-
-                  "schedType": "R",
-
-                  "start": "2016-07-01 15:31:00",
-
-                  "end": "2016-07-01 15:32:00",
-
-                  "progress": "0",
-
-                  "ACPnG_resch.StartDate": "---",
-
-                  "ACPnG_resch.EndDate": "---",
-
-                  "ACPnG_Status": "0",
-
-                  "NC_Status": "0",
-
-                  "openReservations": "0",
-
-                  "duration": "2",
-
-                  "manuallyInserted": "0",
-
-                  "andon": "0",
-
-                  "certifStatus": "0"
-
-               },
-
-               {
-
-                  "groupId": "A350_STRUC",
-
-                  "boxId": "0020",
-
-                  "schedType": "R",
-
-                  "start": "2016-07-01 16:02:00",
-
-                  "end": "2016-07-06 06:29:00",
-
-                  "progress": "4869.601",
-
-                  "ACPnG_resch.StartDate": "---",
-
-                  "ACPnG_resch.EndDate": "---",
-
-                  "ACPnG_Status": "0",
-
-                  "NC_Status": "0",
-
-                  "openReservations": "6",
-
-                  "duration": "11244.328",
-
-                  "manuallyInserted": "0",
-
-                  "andon": "0",
-
-                  "certifStatus": "0"
-
-               },
-
-               {
-
-                  "groupId": "A350_STRUC",
-
-                  "boxId": "0030",
-
-                  "schedType": "R",
-
-                  "start": "2016-07-01 16:33:00",
-
-                  "end": "2016-07-04 11:31:00",
-
-                  "progress": "1129.219",
-
-                  "ACPnG_resch.StartDate": "---",
-
-                  "ACPnG_resch.EndDate": "---",
-
-                  "ACPnG_Status": "0",
-
-                  "NC_Status": "0",
-
-                  "openReservations": "0",
-
-                  "duration": "1129.219",
-
-                  "manuallyInserted": "0",
-
-                  "andon": "0",
-
-                  "certifStatus": "0"
-
-               },
-
-               {
-
-                  "groupId": "A350_STRUC",
-
-                  "boxId": "0040",
-
-                  "schedType": "R",
-
-                  "start": "2016-07-01 17:04:00",
-
-                  "end": "2016-07-01 17:35:00",
-
-                  "progress": "259.71",
-
-                  "ACPnG_resch.StartDate": "---",
-
-                  "ACPnG_resch.EndDate": "---",
-
-                  "ACPnG_Status": "0",
-
-                  "NC_Status": "0",
-
-                  "openReservations": "0",
-
-                  "duration": "259.71",
-
-                  "manuallyInserted": "0",
-
-                  "andon": "0",
-
-                  "certifStatus": "0"
-
-               },
-
-               {
-
-                  "groupId": "A350_STRUC",
-
-                  "boxId": "0050",
-
-                  "schedType": "R",
-
-                  "start": "2016-07-01 17:35:00",
-
-                  "end": "2016-07-01 17:44:00",
-
-                  "progress": "77.913",
-
-                  "ACPnG_resch.StartDate": "---",
-
-                  "ACPnG_resch.EndDate": "---",
-
-                  "ACPnG_Status": "0",
-
-                  "NC_Status": "0",
-
-                  "openReservations": "0",
-
-                  "duration": "77.913",
-
-                  "manuallyInserted": "0",
-
-                  "andon": "0",
-
-                  "certifStatus": "0"
-
-               },
-
-               {
-
-                  "groupId": "A350_STRUC",
-
-                  "boxId": "0060",
-
-                  "schedType": "R",
-
-                  "start": "2016-07-04 11:27:00",
-
-                  "end": "2016-07-04 11:29:00",
-
-                  "progress": "13.505",
-
-                  "ACPnG_resch.StartDate": "---",
-
-                  "ACPnG_resch.EndDate": "---",
-
-                  "ACPnG_Status": "0",
-
-                  "NC_Status": "0",
-
-                  "openReservations": "0",
-
-                  "duration": "13.505",
-
-                  "manuallyInserted": "0",
-
-                  "andon": "0",
-
-                  "certifStatus": "0"
-
-               },
-
-               {
-
-                  "groupId": "A350_STRUC",
-
-                  "boxId": "0080",
-
-                  "schedType": "R",
-
-                  "start": "2016-07-04 13:08:00",
-
-                  "end": "2016-07-07 11:14:00",
-
-                  "progress": "1607.978",
-
-                  "ACPnG_resch.StartDate": "---",
-
-                  "ACPnG_resch.EndDate": "---",
-
-                  "ACPnG_Status": "0",
-
-                   "NC_Status": "0",
-
-                  "openReservations": "0",
-
-                  "duration": "12490.41",
-
-                  "manuallyInserted": "0",
-
-                  "andon": "0",
-
-                  "certifStatus": "0"
-
-               },
-
-               {
-
-                  "groupId": "A350_STRUC",
-
-                  "boxId": "0088",
-
-                  "schedType": "R",
-
-                  "start": "2016-07-04 14:51:00",
-
-                  "end": "2016-07-06 07:43:00",
-
-                  "progress": "264.072",
-
-                  "ACPnG_resch.StartDate": "---",
-
-                  "ACPnG_resch.EndDate": "---",
-
-                  "ACPnG_Status": "0",
-
-                  "NC_Status": "0",
-
-                  "openReservations": "0",
-
-                  "duration": "1615.399",
-
-                  "manuallyInserted": "0",
-
-                  "andon": "0",
-
-                  "certifStatus": "0"
-
-               },
-
-               {
-
-                  "groupId": "A350_STRUC",
-
-                  "boxId": "0090",
-
-                  "schedType": "R",
-
-                  "start": "2016-07-06 10:59:00",
-
-                  "end": "2016-07-06 15:11:00",
-
-                  "progress": "0",
-
-                  "ACPnG_resch.StartDate": "---",
-
-                  "ACPnG_resch.EndDate": "---",
-
-                  "ACPnG_Status": "0",
-
-                  "NC_Status": "0",
-
-                  "openReservations": "0",
-
-                  "duration": "3536.495",
-
-                  "manuallyInserted": "0",
-
-                  "andon": "0",
-
-                  "certifStatus": "0"
-
-               },
-
-               {
-
-                  "groupId": "A350_STRUC",
-
-                  "boxId": "0110",
-
-                  "schedType": "R",
-
-                  "start": "2016-07-06 15:11:00",
-
-                  "end": "2016-07-07 11:55:00",
-
-                  "progress": "0",
-
-                  "ACPnG_resch.StartDate": "---",
-
-                  "ACPnG_resch.EndDate": "---",
-
-                  "ACPnG_Status": "0",
-
-                  "NC_Status": "0",
-
-                  "openReservations": "0",
-
-                  "duration": "1821.249",
-
-                  "manuallyInserted": "0",
-
-                  "andon": "0",
-
-                  "certifStatus": "0"
-
-               },
-
-               {
-
-                  "groupId": "A350_STRUC",
-
-                  "boxId": "0120",
-
-                  "schedType": "R",
-
-                  "start": "2016-07-06 15:14:00",
-
-                  "end": "2016-07-07 12:59:00",
-
-                  "progress": "0",
-
-                  "ACPnG_resch.StartDate": "---",
-
-                  "ACPnG_resch.EndDate": "---",
-
-                  "ACPnG_Status": "0",
-
-                   "NC_Status": "0",
-
-                  "openReservations": "0",
-
-                  "duration": "8203.299",
-
-                  "manuallyInserted": "0",
-
-                  "andon": "0",
-
-                  "certifStatus": "0"
-
-               },
-
-               {
-
-                  "groupId": "A350_STRUC",
-
-                  "boxId": "0128",
-
-                  "schedType": "R",
-
-                  "start": "2016-07-07 08:55:00",
-
-                  "end": "2016-07-07 10:08:08",
-
-                  "progress": "0",
-
-                  "ACPnG_resch.StartDate": "---",
-
-                  "ACPnG_resch.EndDate": "---",
-
-                  "ACPnG_Status": "0",
-
-                  "NC_Status": "0",
-
-                  "openReservations": "0",
-
-                  "duration": "51.942",
-
-                  "manuallyInserted": "0",
-
-                  "andon": "0",
-
-                  "certifStatus": "0"
-
-               },
-
-               {
-
-                  "groupId": "A350_STRUC",
-
-                  "boxId": "0200",
-
-                  "schedType": "R",
-
-                  "start": "2016-07-07 12:55:00",
-
-                  "end": "2016-07-07 12:58:58",
-
-                  "progress": "0",
-
-                  "ACPnG_resch.StartDate": "---",
-
-                  "ACPnG_resch.EndDate": "---",
-
-                  "ACPnG_Status": "0",
-
-                  "NC_Status": "0",
-
-                  "openReservations": "0",
-
-                  "duration": "6.58",
-
-                  "manuallyInserted": "0",
-
-                  "andon": "0",
-
-                  "certifStatus": "0"
-
-               },
-
-               {
-
-                  "groupId": "A350_STRUC",
-
-                  "boxId": "0500",
-
-                  "schedType": "R",
-
-                  "start": "2016-07-07 06:00:00",
-
-                  "end": "2016-07-07 13:01:00",
-
-                  "progress": "0",
-
-                  "ACPnG_resch.StartDate": "---",
-
-                  "ACPnG_resch.EndDate": "---",
-
-                  "ACPnG_Status": "0",
-
-                  "NC_Status": "0",
-
-                  "openReservations": "0",
-
-                  "duration": "81.326",
-
-                  "manuallyInserted": "0",
-
-                  "andon": "0",
-
-                  "certifStatus": "0"
-
-               },
-
-               {
-
-                  "groupId": "A350_STRUC",
-
-                  "boxId": "0550",
-
-                  "schedType": "R",
-
-                  "start": "2016-07-07 06:09:00",
-
-                  "end": "2016-07-07 13:11:00",
-
-                  "progress": "0",
-
-                  "ACPnG_resch.StartDate": "---",
-
-                  "ACPnG_resch.EndDate": "---",
-
-                  "ACPnG_Status": "0",
-
-                  "NC_Status": "0",
-
-                  "openReservations": "0",
-
-                  "duration": "179.103",
-
-                  "manuallyInserted": "0",
-
-                  "andon": "0",
-
-                  "certifStatus": "0"
-
-               },
-
-               {
-
-                  "groupId": "A350_STRUC-A350 Structure PA",
-
-                  "boxId": "9995",
-
-                  "schedType": "I",
-
-                  "start": "2016-07-01 15:31:00",
-
-                  "end": "2016-07-07 12:40:00",
-
-                  "progress": "0",
-
-                  "ACPnG_resch.StartDate": "---",
-
-                  "ACPnG_resch.EndDate": "---",
-
-                  "ACPnG_Status": "0",
-
-                  "NC_Status": "0",
-
-                  "openReservations": "0",
-
-                  "duration": "0",
-
-                  "manuallyInserted": "0",
-
-                  "andon": "0",
-
-                  "certifStatus": "0"
-
-               },
-
-               {
-
-                  "groupId": "A350_STRUC-A350 Structure PA",
-
-                  "boxId": "9995",
-
-                  "schedType": "R",
-
-                  "start": "2016-07-01 15:31:00",
-
-                  "end": "2016-07-07 12:40:00",
-
-                  "progress": "0",
-
-                  "ACPnG_resch.StartDate": "---",
-
-                  "ACPnG_resch.EndDate": "---",
-
-                  "ACPnG_Status": "0",
-
-                  "NC_Status": "0",
-
-                  "openReservations": "0",
-
-                  "duration": "0",
-
-                  "manuallyInserted": "0",
-
-                  "andon": "0",
-
-                  "certifStatus": "0"
-
-               },
-
-               {
-
-                  "groupId": "Q_A350_STR",
-
-                  "boxId": "0015",
-
-                  "schedType": "I",
-
-                  "start": "2016-07-04 05:31:00",
-
-                  "end": "2016-07-04 05:32:00",
-
-                  "progress": "0",
-
-                  "ACPnG_resch.StartDate": "---",
-
-                  "ACPnG_resch.EndDate": "---",
-
-                  "ACPnG_Status": "0",
-
-                  "NC_Status": "0",
-
-                  "openReservations": "0",
-
-                  "duration": "1",
-
-                  "manuallyInserted": "0",
-
-                  "andon": "0",
-
-                  "certifStatus": "0"
-
-               },
-
-               {
-
-                  "groupId": "Q_A350_STR",
-
-                  "boxId": "0555",
-
-                  "schedType": "I",
-
-                  "start": "2016-07-04 05:19:00",
-
-                  "end": "2016-07-04 05:30:00",
-
-                  "progress": "0",
-
-                  "ACPnG_resch.StartDate": "---",
-
-                  "ACPnG_resch.EndDate": "---",
-
-                  "ACPnG_Status": "0",
-
-                  "NC_Status": "0",
-
-                  "openReservations": "0",
-
-                  "duration": "6",
-
-                  "manuallyInserted": "0",
-
-                  "andon": "0",
-
-                  "certifStatus": "0"
-
-               },
-
-               {
-
-                  "groupId": "Q_A350_STR",
-
-                  "boxId": "0565",
-
-                  "schedType": "I",
-
-                  "start": "2016-07-01 18:57:00",
-
-                  "end": "2016-07-01 19:00:00",
-
-                  "progress": "0",
-
-                  "ACPnG_resch.StartDate": "---",
-
-                  "ACPnG_resch.EndDate": "---",
-
-                  "ACPnG_Status": "0",
-
-                  "NC_Status": "0",
-
-                  "openReservations": "0",
-
-                  "duration": "2",
-
-                  "manuallyInserted": "0",
-
-                  "andon": "0",
-
-                  "certifStatus": "0"
-
-               },
-
-               {
-
-                  "groupId": "Q_A350_STR",
-
-                  "boxId": "9994",
-
-                  "schedType": "I",
-
-                  "start": "2016-07-01 15:31:00",
-
-                  "end": "2016-07-04 05:31:00",
-
-                  "progress": "0",
-
-                  "ACPnG_resch.StartDate": "---",
-
-                  "ACPnG_resch.EndDate": "---",
-
-                  "ACPnG_Status": "0",
-
-                  "NC_Status": "0",
-
-                  "openReservations": "0",
-
-                  "duration": "351.129",
-
-                  "manuallyInserted": "0",
-
-                  "andon": "0",
-
-                  "certifStatus": "0"
-
-               },
-
-               {
-
-                  "groupId": "Q_A350_STR",
-
-                  "boxId": "0015",
-
-                  "schedType": "R",
-
-                  "start": "2016-07-04 05:31:00",
-
-                  "end": "2016-07-04 05:32:00",
-
-                  "progress": "0",
-
-                  "ACPnG_resch.StartDate": "---",
-
-                  "ACPnG_resch.EndDate": "---",
-
-                  "ACPnG_Status": "0",
-
-                  "NC_Status": "0",
-
-                  "openReservations": "0",
-
-                  "duration": "1",
-
-                  "manuallyInserted": "0",
-
-                  "andon": "0",
-
-                  "certifStatus": "0"
-
-               },
-
-               {
-
-                  "groupId": "Q_A350_STR",
-
-                  "boxId": "0555",
-
-                  "schedType": "R",
-
-                  "start": "2016-07-04 05:19:00",
-
-                  "end": "2016-07-04 05:30:00",
-
-                  "progress": "0",
-
-                  "ACPnG_resch.StartDate": "---",
-
-                  "ACPnG_resch.EndDate": "---",
-
-                  "ACPnG_Status": "0",
-
-                  "NC_Status": "0",
-
-                  "openReservations": "0",
-
-                  "duration": "6",
-
-                  "manuallyInserted": "0",
-
-                  "andon": "0",
-
-                  "certifStatus": "0"
-
-               },
-
-               {
-
-                  "groupId": "Q_A350_STR",
-
-                  "boxId": "0565",
-
-                  "schedType": "R",
-
-                  "start": "2016-07-01 18:57:00",
-
-                  "end": "2016-07-01 19:00:00",
-
-                  "progress": "0",
-
-                  "ACPnG_resch.StartDate": "---",
-
-                  "ACPnG_resch.EndDate": "---",
-
-                  "ACPnG_Status": "0",
-
-                  "NC_Status": "0",
-
-                  "openReservations": "0",
-
-                  "duration": "2",
-
-                  "manuallyInserted": "0",
-
-                  "andon": "0",
-
-                  "certifStatus": "0"
-
-               },
-
-               {
-
-                  "groupId": "Q_A350_STR",
-
-                  "boxId": "9994",
-
-                  "schedType": "R",
-
-                  "start": "2016-07-01 15:31:00",
-
-                  "end": "2016-07-04 05:31:00",
-
-                  "progress": "0",
-
-                  "ACPnG_resch.StartDate": "---",
-
-                  "ACPnG_resch.EndDate": "---",
-
-                  "ACPnG_Status": "0",
-
-                  "NC_Status": "0",
-
-                  "openReservations": "0",
-
-                  "duration": "351.129",
-
-                  "manuallyInserted": "0",
-
-                  "andon": "0",
-
-                  "certifStatus": "0"
-
-               },
-
-               {
-
-                  "groupId": "Q_A350_STR-Phases QualitÃ© A350 Structure",
-
-                  "boxId": "0012",
-
-                  "schedType": "I",
-
-                  "start": "2016-07-01 15:31:00",
-
-                  "end": "2016-07-01 15:32:00",
-
-                  "progress": "0",
-
-                  "ACPnG_resch.StartDate": "---",
-
-                  "ACPnG_resch.EndDate": "---",
-
-                  "ACPnG_Status": "0",
-
-                  "NC_Status": "0",
-
-                  "openReservations": "0",
-
-                  "duration": "0",
-
-                  "manuallyInserted": "0",
-
-                  "andon": "0",
-
-                  "certifStatus": "0"
-
-               },
-
-               {
-
-                  "groupId": "Q_A350_STR-Phases QualitÃ© A350 Structure",
-
-                  "boxId": "0095",
-
-                  "schedType": "I",
-
-                  "start": "2016-07-06 10:59:00",
-
-                  "end": "2016-07-06 15:11:00",
-
-                  "progress": "0",
-
-                  "ACPnG_resch.StartDate": "---",
-
-                  "ACPnG_resch.EndDate": "---",
-
-                  "ACPnG_Status": "0",
-
-                  "NC_Status": "0",
-
-                  "openReservations": "0",
-
-                  "duration": "0",
-
-                  "manuallyInserted": "0",
-
-                  "andon": "0",
-
-                  "certifStatus": "0"
-
-               },
-
-               {
-
-                  "groupId": "Q_A350_STR-Phases QualitÃ© A350 Structure",
-
-                  "boxId": "0125",
-
-                  "schedType": "I",
-
-                  "start": "2016-07-06 15:51:00",
-
-                  "end": "2016-07-07 12:59:00",
-
-                  "progress": "0",
-
-                  "ACPnG_resch.StartDate": "---",
-
-                  "ACPnG_resch.EndDate": "---",
-
-                  "ACPnG_Status": "0",
-
-                  "NC_Status": "0",
-
-                  "openReservations": "0",
-
-                  "duration": "0",
-
-                  "manuallyInserted": "0",
-
-                  "andon": "0",
-
-                  "certifStatus": "0"
-
-               },
-
-               {
-
-                  "groupId": "Q_A350_STR-Phases QualitÃ© A350 Structure",
-
-                  "boxId": "0012",
-
-                  "schedType": "R",
-
-                  "start": "2016-07-01 15:31:00",
-
-                  "end": "2016-07-01 15:32:00",
-
-                  "progress": "0",
-
-                  "ACPnG_resch.StartDate": "---",
-
-                  "ACPnG_resch.EndDate": "---",
-
-                  "ACPnG_Status": "0",
-
-                  "NC_Status": "0",
-
-                  "openReservations": "0",
-
-                  "duration": "0",
-
-                  "manuallyInserted": "0",
-
-                  "andon": "0",
-
-                  "certifStatus": "0"
-
-               },
-
-               {
-
-                  "groupId": "Q_A350_STR-Phases QualitÃ© A350 Structure",
-
-                  "boxId": "0095",
-
-                  "schedType": "R",
-
-                  "start": "2016-07-06 10:59:00",
-
-                  "end": "2016-07-06 15:11:00",
-
-                  "progress": "0",
-
-                  "ACPnG_resch.StartDate": "---",
-
-                  "ACPnG_resch.EndDate": "---",
-
-                  "ACPnG_Status": "0",
-
-                  "NC_Status": "0",
-
-                  "openReservations": "0",
-
-                  "duration": "0",
-
-                  "manuallyInserted": "0",
-
-                  "andon": "0",
-
-                  "certifStatus": "0"
-
-               },
-
-               {
-
-                  "groupId": "Q_A350_STR-Phases QualitÃ© A350 Structure",
-
-                  "boxId": "0125",
-
-                  "schedType": "R",
-
-                  "start": "2016-07-06 15:51:00",
-
-                  "end": "2016-07-07 12:59:00",
-
-                  "progress": "0",
-
-                  "ACPnG_resch.StartDate": "---",
-
-                  "ACPnG_resch.EndDate": "---",
-
-                  "ACPnG_Status": "0",
-
-                  "NC_Status": "0",
-
-                  "openReservations": "0",
-
-                  "duration": "0",
-
-                  "manuallyInserted": "0",
-
-                  "andon": "0",
-
-                  "certifStatus": "0"
+                  "rescheduledLine": "0"
 
                }
 

@@ -1,0 +1,14 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<Dialog title="Full Confirmation" type="Message">
+		<content>
+			<Text text="{i18n>fullConfirmation}" />
+		</content>
+		<beginButton>
+			<Button text="Cancel" press="onCancelFullConfirmation"/>
+		</beginButton>
+		<endButton>
+			<Button type="Emphasized" text="OK" press="onFullConfirmation"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

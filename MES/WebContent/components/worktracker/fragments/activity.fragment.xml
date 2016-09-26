@@ -1,0 +1,32 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<VBox width="90%" class="activityList sidebarContentMargin">
+		<Text text="{i18n>activity}" class="title sapUiSmallMarginTopBottom"></Text>
+		<Text
+			text="{path:'userDetailModel>/Rowsets', formatter: 'util.Formatter.getCurrentdate' }"
+			id="activityDate" class="title sapUiSmallMarginTopBottom" />
+
+		<List id="activityList" items="{activityModel>/activities}"
+			selectionChange="" includeItemInSelection="true" class="customListItem">
+			<CustomListItem>
+				<HBox>
+					<VBox class="sapUiSmallMarginBeginEnd">
+						<Text
+							text="{ parts: ['activityModel>first_name', 'activityModel>last_name', 'activityModel>user_image'], formatter: 'util.Formatter.setUserInitials' }"
+							class="circleText operatorInitials2 hide"></Text>
+						<Image class="img-circle hide"
+							src="{ parts: ['activityModel>user_image'], formatter: 'util.Formatter.setUserImage' }"
+							densityAware="false" height="75%"></Image>
+						<Label text="{activityModel>time}" class="whiteColorText" />
+					</VBox>
+
+					<VBox>
+						<Text class="title"
+							text="{ parts: [ 'activityModel>first_name', 'activityModel>last_name'], formatter: 'util.Formatter.getMessageTitle' }"></Text>
+						<Text text="{activityModel>message}"></Text>
+					</VBox>
+				</HBox>
+			</CustomListItem>
+		</List>
+	</VBox>
+</core:FragmentDefinition>

@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'/>
+
+		<script src="https://sapui5.netweaver.ondemand.com/1.36.11/resources/sap-ui-core.js"
+				id="sap-ui-bootstrap"
+				data-sap-ui-libs="sap.m"
+				data-sap-ui-theme="sap_bluecrystal"
+				data-sap-ui-bindingSyntax="complex"
+				data-sap-ui-compatVersion="edge"
+				data-sap-ui-preload="async"
+				data-sap-ui-resourceroots='{
+					"airbus.mes.settings": "../settings",
+					"airbus.mes.worktracker": "../worktracker"
+				}' >
+		</script>
+		<!-- only load the mobile lib "sap.m" and the "sap_bluecrystal" theme -->
+		
+		<script>
+			var oMasterPageComp = sap.ui.getCore().createComponent({
+				name : "airbus.mes.worktracker.components.masterpage", // root component folder is resources
+			});
+	
+			// Create a Ui container 
+			var oMasterPageCompCont = new sap.ui.core.ComponentContainer({
+				component : oMasterPageComp,
+				propagateModel:true,
+				height:"100%"
+			});
+			// place this Ui Container with the Component inside into UI Area 
+			oMasterPageCompCont.placeAt("content");
+			
+	
+			/*sap.ui.getCore().attachInit(function () {
+				sap.ui.require([
+					"sap/ui/core/ComponentContainer"
+				], function (ComponentContainer) {
+					new ComponentContainer({
+						name: "airbus.mes.components.subheader",
+						height: "3rem",
+						width: "100%",
+						propagateModel:true
+					}).placeAt("WT_Master--AppPageWT-cont");
+				});
+			});*/
+		
+			sap.ui.getCore().attachInit(function () {
+				sap.ui.require([
+					"sap/ui/core/ComponentContainer"
+				], function (ComponentContainer) {
+					new ComponentContainer({
+						name: "airbus.mes.worktracker.components",
+						height: "95%",
+						propagateModel:true
+					}).placeAt("WT_Master--AppPageWT-cont");
+				});
+			});
+			
+			/* $("#WT_Master--AppPageWT-cont #__container1").height(function(){
+				return ($("#WT_Master--AppPageWT-cont").height() - $("#WT_Master--AppPageWT-cont #__container1").height())+"px";
+			}); */
+			/* sap.ui.getCore().attachInit(function () {
+				sap.ui.require([
+					"sap/m/Shell",
+					"sap/ui/core/ComponentContainer"
+				], function (Shell, ComponentContainer) {
+					new Shell({
+						app: new ComponentContainer({
+							name: "airbus.mes",
+							height: "100%"
+						})
+					}).placeAt("content");
+				});
+			}); */
+		
+
+		</script>
+
+	</head>
+	<body class="sapUiBody" role="application" style="overflow: hidden;">
+		<div id="content"></div>
+	</body>
+</html>

@@ -1,0 +1,88 @@
+{"schedule":[{
+	"operation": "OP 2000",
+	"description": "924er Haller und C Brackets incl. Massen",
+	"fuel":"FUEL",
+	"activity": "100331626222",
+	"duration": "08:30 - 09:30",
+	"label": "V90Q3E31",
+	"status": "CONFIRMED"
+	
+	
+},
+{
+	"operation": "OP 2000",
+	"description": "924er Haller und C Brackets incl. Massen",
+	"fuel":"FUEL",
+	"activity": "100331626222",
+	"duration": "08:30 - 09:30",
+	"label": "V90Q3E31",
+	"status": "Blocked"
+	
+},
+{
+	"operation": "OP 2000",
+	"description": "924er Haller und C Brackets incl. Massen",
+	"fuel":"FUEL",
+	"activity": "100331626222",
+	"duration": "08:30 - 09:30",
+	"label": "V90Q3E31",
+	"status": "Not Started"
+},	
+{
+	"operation": "OP 2000",
+	"description": "924er Haller und C Brackets incl. Massen",
+	"fuel":"FUEL",
+	"activity": "100331626222",
+	"duration": "08:30 - 09:30",
+	"label": "V90Q3E31",
+	"status": "In Progress"
+	
+},
+{
+	"operation": "OP 2000",
+	"description": "924er Haller und C Brackets incl. Massen",
+	"fuel":"FUEL",
+	"activity": "100331626222",
+	"duration": "08:30 - 09:30",
+	"label": "V90Q3E31",
+	"status": "CONFIRMED"
+	
+},
+{
+	"operation": "OP 2000",
+	"description": "924er Haller und C Brackets incl. Massen",
+	"fuel":"FUEL",
+	"activity": "100331626222",
+	"duration": "08:30 - 09:30",
+	"label": "V90Q3E31",
+	"status": "Blocked"
+},
+{
+	"operation": "OP 2000",
+	"description": "924er Haller und C Brackets incl. Massen",
+	"fuel":"FUEL",
+	"activity": "100331626222",
+	"duration": "08:30 - 09:30",
+	"label": "V90Q3E31",
+	"status": "Not Started"
+},
+{
+	"operation": "OP 2000",
+	"description": "924er Haller und C Brackets incl. Massen",
+	"fuel":"FUEL",
+	"activity": "100331626222",
+	"duration": "08:30 - 09:30",
+	"label": "V90Q3E31",
+	"status": "Not Started"
+},
+{
+	"operation": "OP 2000",
+	"description": "924er Haller und C Brackets incl. Massen",
+	"fuel":"FUEL",
+	"activity": "100331626222",
+	"duration": "08:30 - 09:30",
+	"label": "V90Q3E31",
+	"status": "CONFIRMED"
+	
+}]
+}

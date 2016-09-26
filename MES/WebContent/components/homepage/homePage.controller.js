@@ -10,44 +10,32 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 //		sap.ui.getCore().setModel(oModel , "buttonUrl");
 //		oModel.loadData("/MES/components/homepage/data/url.json",null,false);
 	},
-	onPress:function(oEvt){
-//	    jQuery.sap.registerModulePath("airbus.mes.settings","/MES/components/settings");
-//	    
-	    if (airbus.mes.settings != undefined) {
-	    	airbus.mes.settings.oView.destroy();
-	    	airbus.mes.settings.oView = undefined
-	    }
-
-	       sap.ui.getCore().createComponent({
-				name : "airbus.mes.settings", // root component folder is resources
-				settings : {
-					textButtonTo : "go to Station Tracker",
-					buttonAction : "stationtracker"
-				}	
-			});	    
-	    
-	    nav.addPage(airbus.mes.settings.oView);
-		nav.to(airbus.mes.settings.oView.getId());		
+	onPress:function(oEvt)	{
 		
-//	    if (airbus.mes.settings != undefined) {
-//	    	nav.to(airbus.mes.settings.oView.getId());
-//		}
-//	    else {
-//	    	
-//	    	if( this.oView.getId() === "homePageView") {
-//	    		
-//		    	var sTextButtonTo = "go to Station Tracker";    		
-//	    	}
-//	    		    	
-//	    	sap.ui.getCore().createComponent({
-//			name : "airbus.mes.settings", // root component folder is resources
-//			settings : {
-//				textButtonTo : sTextButtonTo
-//			}	    	
-//		});
-//
-//		nav.addPage(airbus.mes.settings.oView);
-//		nav.to(airbus.mes.settings.oView.getId()); }
+//	    jQuery.sap.registerModulePath("airbus.mes.settings","/MES/components/settings");
+		jQuery.sap.registerModulePath("airbus.mes.stationtracker", "../components/stationtracker");
+	    
+//		If default user settings are not yet loaded, need to load them
+//		We display settings screen		
+		if(airbus.mes.settings.ModelManager.station === undefined ){
+			if(oEvt.getSource().getCustomData()[1].getValue()=="worktracker")
+				airbus.mes.settings.GlobalFunction.navigateTo("Go to Work Tracker","worktracker");
+			else
+				airbus.mes.settings.GlobalFunction.navigateTo("Go to Station Tracker","stationtracker");
+		} else {
+//			If default user settings are already loaded, 
+//			We display directly station tracker screen
+			
+			if(oEvt.getSource().getCustomData()[1].getValue()=="worktracker")
+				location.href="../components/worktracker/";
+			else{
+				sap.ui.getCore().createComponent({
+					name : "airbus.mes.stationtracker", // root component folder is resources
+	             	});
+				nav.addPage(airbus.mes.stationtracker.oView);
+				nav.to(airbus.mes.stationtracker.oView.getId());
+			}
+	 	};		
 	},
 /**
 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
@@ -63,9 +51,10 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 * This hook is the same one that SAPUI5 controls get after being rendered.
 * @memberOf components.globalnav.globalNavigation
 */
-//	onAfterRendering: function() {
-//
-//	},
+	onAfterRendering: function() {
+//		Retrieve default user settings after the rendering of the Home Page 
+		airbus.mes.settings.oView.getController().getUserSettings();
+	},
 
 /**
 * Called when the Controller is destroyed. Use this one to free resources and finalize activities.

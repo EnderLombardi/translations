@@ -24,15 +24,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 * @memberOf components.stationtracker.stationtracker
 */
 	onAfterRendering: function() {
-		
-		if( airbus.mes.stationtracker.test2 != undefined ) {
-	
-		airbus.mes.stationtracker.ModelManager.loadStationTracker();
-		
-		} else {
 			
-			airbus.mes.stationtracker.test2 = 1 ;
-		}
 	},
 	
 	onTeamPress :function(oEvent){
@@ -80,95 +72,21 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	  	  
 		 },
 	
-	 spaceInsecable : function(sText){
-		 
-	    var sTextF="";
-	    var aText=sText.split(new RegExp("[ ]+", "g"));    // Récupère tous les mots dans un tableau : texte_decoup
-	 
-	    for (var i=0; i<aText.length; i++)
-	    {
-	        sTextF += aText[i] + "&nbsp;";  // le + " " NE FONCTIONNE PAS. IDEM AVEC String.fromCharCode(32) 
-	      
-	    }
-	    
-	    return sTextF;
-	},
-	
+		
 	onInitialPlanPress : function() {
 	
 		// XX TO REDEFINE
-
-	if (airbus.mes.stationtracker.AssignmentManager.bInitial) {
+		var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
 		
-			airbus.mes.stationtracker.AssignmentManager.bInitial = false;
-			 elements = [ // original hierarhical array to display
-	                        {key:10, label:"FUEL ACTIVITIES", open: true, children: [
-	                                                                                 
-	                        {key:"F1" , name:"Jae J.", subname:"JJ", hours:'6.0hs'},
-	                        {key:"F2", name:"Mark K.", subname:"MK", hours:'4.0hs'},
-	                        {key:"F3", name:"Steve S.", subname:"SS", hours:'3.0hs'},
-	                        ]},
-	                         {key:105, label:"ELEC ACTIVITIES", open:true, children: [
-	                      
-	                         {key:"E2", name:"Jae J.", subname:"JJ", hours:'6.0hs'},
-	                         {key:"E2", name:"Mark K.", subname:"MK", hours:'4.0hs'},
-	                         {key:"E3", name:"Steve S.", subname:"SS", hours:'3.0hs'},                                                    
-	                         ]},
-	                         {key:115, label:"MEC ACTIVITIES", open:true, children: [
-	                                                                                                     
-	                         {key:"M1", name:"Jae J.", subname:"JJ", hours:'6.0hs'},
-	                         {key:"M2", name:"Mark K.", subname:"MK", hours:'4.0hs'},
-	                         {key:"M3", name:"Steve S.", subname:"SS", hours:'3.0hs'},
-	                         ]},
-	                         {key:120, label:"FLY ACTIVITIES", open:true, children: [
-	                     
-	                         {key:"A1", name:"Jae J.", subname:"JJ", hours:'6.0hs'},
-	                         {key:"A2", name:"Mark K.", subname:"MK", hours:'4.0hs'},
-	                         {key:"A3", name:"Steve S.", subname:"SS", hours:'3.0hs'},
-	                         ]},
-	           ];
-
-
-		 scheduler.matrix['timeline'].y_unit_original = elements;
-		 scheduler.callEvent("onOptionsLoad", []);
-			scheduler.updateView();
-			
+	if (airbus.mes.stationtracker.GroupingBoxingManager.showInitial) {
+		
+		airbus.mes.stationtracker.GroupingBoxingManager.showInitial = false;
+		GroupingBoxingManager.parseOperation(GroupingBoxingManager.group,GroupingBoxingManager.box);
+							
 		} else {
 			
-			airbus.mes.stationtracker.AssignmentManager.bInitial = true;
-			 elements = [ // original hierarhical array to display
-	                        {key:10, label:"FUEL ACTIVITIES", open: true, children: [
-	                        {"key":"I1", "initial":"Initial plan", },
-	                        {key:"F1" , name:"Jae J.", subname:"JJ", hours:'6.0hs'},
-	                        {key:"F2", name:"Mark K.", subname:"MK", hours:'4.0hs'},
-	                        {key:"F3", name:"Steve S.", subname:"SS", hours:'3.0hs'},
-	                        ]},
-	                         {key:105, label:"ELEC ACTIVITIES", open:true, children: [
-	                         {"key":"I2", "initial":"Initial plan", },
-	                         {key:"E2", name:"Jae J.", subname:"JJ", hours:'6.0hs'},
-	                         {key:"E2", name:"Mark K.", subname:"MK", hours:'4.0hs'},
-	                         {key:"E3", name:"Steve S.", subname:"SS", hours:'3.0hs'},                                                    
-	                         ]},
-	                         {key:115, label:"MEC ACTIVITIES", open:true, children: [
-	                         {"key":"I3", "initial":"Initial plan",},	                                                                                 
-	                         {key:"M1", name:"Jae J.", subname:"JJ", hours:'6.0hs'},
-	                         {key:"M2", name:"Mark K.", subname:"MK", hours:'4.0hs'},
-	                         {key:"M3", name:"Steve S.", subname:"SS", hours:'3.0hs'},
-	                         ]},
-	                         {key:120, label:"FLY ACTIVITIES", open:true, children: [
-	                         {"key":"I3", "initial":"Initial plan", },
-	                         {key:"A1", name:"Jae J.", subname:"JJ", hours:'6.0hs'},
-	                         {key:"A2", name:"Mark K.", subname:"MK", hours:'4.0hs'},
-	                         {key:"A3", name:"Steve S.", subname:"SS", hours:'3.0hs'},
-	                         ]},
-	           ];
-
-
-		 scheduler.matrix['timeline'].y_unit_original = elements;
-		 scheduler.callEvent("onOptionsLoad", []);
-			
-			scheduler.updateView();
-			
+			airbus.mes.stationtracker.GroupingBoxingManager.showInitial = true;
+			GroupingBoxingManager.parseOperation(GroupingBoxingManager.group,GroupingBoxingManager.box);
 		}
 	},
 	
@@ -179,7 +97,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			
 			scheduler.templates.event_class = function(start, end, ev) {
 				
-				if (ev.cp != undefined) {
+				if (ev.criticalPath != undefined) {
 					
 					return "operationCP";
 					
@@ -206,5 +124,26 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			
 		}
 	},
+	
+	changeGroup : function() {
+		
+		var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
+		
+		GroupingBoxingManager.group = sap.ui.getCore().byId("stationTrackerView").byId("selectGroup").getSelectedKey();
+		GroupingBoxingManager.box = sap.ui.getCore().byId("stationTrackerView").byId("selectBox").getSelectedKey();
+	
+		GroupingBoxingManager.parseOperation(GroupingBoxingManager.group,GroupingBoxingManager.box);
+	},
+	
+	changeBox : function() {
+		
+		var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
+		
+		GroupingBoxingManager.group = sap.ui.getCore().byId("stationTrackerView").byId("selectGroup").getSelectedKey();
+		GroupingBoxingManager.box = sap.ui.getCore().byId("stationTrackerView").byId("selectBox").getSelectedKey();
+	
+		GroupingBoxingManager.parseOperation(GroupingBoxingManager.group,GroupingBoxingManager.box);
+		
+	}
 	
 });
