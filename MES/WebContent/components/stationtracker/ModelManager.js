@@ -10,10 +10,13 @@ airbus.mes.stationtracker.ModelManager = {
 			
 			
 				
-			core.setModel(new sap.ui.model.json.JSONModel(),"stationTrackerModel");
-						
-			core.getModel("stationTrackerModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onStationTrackerLoad);
+			core.setModel(new sap.ui.model.json.JSONModel(),"stationTrackerModel"); // Station tracker model
+			core.setModel(new sap.ui.model.json.JSONModel(),"shiftsModel"); // Shifts model
 			
+			core.getModel("stationTrackerModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onStationTrackerLoad);
+			core.getModel("shiftsModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onShiftsLoad);
+
+
 			var dest;
 
 			switch (window.location.hostname) {
@@ -48,7 +51,6 @@ airbus.mes.stationtracker.ModelManager = {
 			var oViewModel = sap.ui.getCore().getModel("stationTrackerModel");
 			oViewModel.loadData(this.urlModel.getProperty("urlstationtracker"), null, false);
 		},	
-		
 		onStationTrackerLoad : function() {
 			
 			var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
@@ -56,6 +58,18 @@ airbus.mes.stationtracker.ModelManager = {
 			GroupingBoxingManager.parseOperation(GroupingBoxingManager.group,GroupingBoxingManager.box);
 			
 		},
+		loadShifts : function() {
+			var oViewModelshift = sap.ui.getCore().getModel("shiftsModel");
+			oViewModelshift.loadData(this.urlModel.getProperty("urlshifts"), null, false);
+		},	
+		onShiftsLoad : function() {
+			
+			var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
+			GroupingBoxingManager.parseShift();
+			
+		},
+		
+		
 		
 }
 airbus.mes.stationtracker.ModelManager.init(sap.ui.getCore());
