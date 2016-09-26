@@ -1,0 +1,12 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<Popover title="user Detail" placement="Bottom">
+		<HBox class="adjustFlex">
+			<Image class="img-circle" src="images/User.png" densityAware="false" height="100%" width="100%"></Image>
+			<VBox>
+				<Label
+					text="{parts:[{path:'userDetailModel>/Rowsets/Rowset/0/Row/0/first_name'}, {path:'userDetailModel>/Rowsets/Rowset/0/Row/0/last_name'}], formatter:'util.Formatter.getFullName'}" />
+			</VBox>
+		</HBox>
+	</Popover>
+</core:FragmentDefinition>

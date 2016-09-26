@@ -1,0 +1,83 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" controllerName="airbus.mes.worktracker.views.home"
+	xmlns:custom="airbus.mes.worktracker.custom" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page showHeader="false">
+		<subHeader>
+			<Toolbar class="pageHeader">
+				<ToolbarSpacer width="0.2rem" />
+				<Text id="operatorInitials"
+					text="{ parts: [ 'userDetailModel>/Rowsets/Rowset/0/Row/0/first_name', 'userDetailModel>/Rowsets/Rowset/0/Row/0/last_name', 'userDetailModel>/Rowsets/Rowset/0/Row/0/image'], formatter: 'util.Formatter.setUserInitials' }"
+					class="circleText operatorInitials hide"></Text>
+				<Image id="operatorImage" class="img-circle hide"
+					src="{ parts: ['userDetailModel>/Rowsets/Rowset/0/Row/0/image'], formatter: 'util.Formatter.setUserImage' }"
+					densityAware="false" height="75%"></Image>
+				<ToolbarSpacer width="0.7rem" />
+				<VBox>
+					<Text
+						text="{ parts: [ 'userDetailModel>/Rowsets/Rowset/0/Row/0/first_name', 'userDetailModel>/Rowsets/Rowset/0/Row/0/last_name'], formatter: 'util.Formatter.getFullName' }"
+						class="text" />
+					<custom:ClickText text="Change operator" id="changeOperator"
+						class="subText pointer" press="toggleChangeOptrPopOver" />
+				</VBox>
+
+				<ToolbarSpacer />
+
+				<VBox alignItems="End">
+					<Text text="Station 10" class="text" />
+					<Text text="{path:'userDetailModel>/Rowsets/Rowset/0/Row/0/first_name', formatter: 'util.Formatter.getCurrentdate' }" id="date" class="subText" />
+				</VBox>
+				<ToolbarSpacer width="20px" />
+
+				<core:Icon src="sap-icon://email" size="1.5rem"
+					class="pointer" press="toggleMessagesPopOver" />
+				<custom:ClickText id="messageCount" text="28" class="countText pointer" press="toggleMessagesPopOver" />
+				<ToolbarSpacer width="0.5rem" />
+
+			</Toolbar>
+		</subHeader>
+
+
+		<content>
+			<IconTabBar id="homeNav" expandable="false"
+				stretchContentHeight="true"
+				class="navbar headerColor sapUiResponsiveContentPadding">
+				<items>
+					<IconTabFilter icon="sap-icon://customer-order-entry"
+						text="Operations">
+						<core:Fragment type="XML"
+							fragmentName="airbus.mes.worktracker.fragments.operation" />
+					</IconTabFilter>
+					<IconTabFilter icon="sap-icon://alert" count="389"
+						text="Disruptions">
+						<content>
+							<core:Fragment type="XML"
+								fragmentName="airbus.mes.worktracker.fragments.tableFragment" />
+						</content>
+					</IconTabFilter>
+					<IconTabFilter icon="sap-icon://folder-blank" text="Documents">
+						<Text text="{i18n>documentTitle}" class="title"></Text>
+						<VBox items="{documentsNameModel>/documents}" width="100%">
+							<items>
+								<Button type="Transparent" text="{documentsNameModel>name}"
+									icon="sap-icon://slim-arrow-right" iconFirst="true" press="onPress" />
+							</items>
+						</VBox>
+					</IconTabFilter>
+					<IconTabFilter icon="sap-icon://wrench" text="Tools">
+						<content>
+							<core:Fragment type="XML"
+								fragmentName="airbus.mes.worktracker.fragments.toolsFragment" />
+						</content>
+
+					</IconTabFilter>
+					<IconTabFilter icon="sap-icon://folder-blank" text="Components">
+						<content>
+							<core:Fragment type="XML"
+								fragmentName="airbus.mes.worktracker.fragments.componentFragment" />
+						</content>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</content>
+	</Page>
+</core:View>

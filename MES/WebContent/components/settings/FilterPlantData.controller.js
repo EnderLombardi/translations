@@ -255,7 +255,10 @@ sap.ui
                                     	  }
 				  
                                     	  
-                                     } 
+                                     }
+                                      else if (this.getOwnerComponent().mProperties.buttonAction === "stationtracker") {
+                          				location.href="../components/worktracker/";
+                                      }
                                       else if ( this.getOwnerComponent().mProperties.buttonAction === "back" ) {
                                      	  nav.back();
                                       }

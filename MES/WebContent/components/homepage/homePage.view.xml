@@ -23,7 +23,7 @@
 								backgroundDesign="Transparent">
 								<Button type="Transparent" text="{buttonUrl>text}" class="langbutton"
 									icon="sap-icon://slim-arrow-right" iconFirst="false" press="onPress"
-									enabled="{buttonUrl>enable}" cData:link="{buttonUrl>url}" />
+									enabled="{buttonUrl>enable}" cData:link="{buttonUrl>url}" cData:appName="{buttonUrl>app}"/>
 							</Panel>
 						</items>
 					</VBox>

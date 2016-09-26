@@ -10,7 +10,7 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 //		sap.ui.getCore().setModel(oModel , "buttonUrl");
 //		oModel.loadData("/MES/components/homepage/data/url.json",null,false);
 	},
-	onPress:function(oEvt){
+	onPress:function(oEvt)	{
 		
 //	    jQuery.sap.registerModulePath("airbus.mes.settings","/MES/components/settings");
 		jQuery.sap.registerModulePath("airbus.mes.stationtracker", "../components/stationtracker");
@@ -18,15 +18,23 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 //		If default user settings are not yet loaded, need to load them
 //		We display settings screen		
 		if(airbus.mes.settings.ModelManager.station === undefined ){
-			airbus.mes.settings.GlobalFunction.navigateTo("go to Station Tracker","stationtracker");
+			if(oEvt.getSource().getCustomData()[1].getValue()=="worktracker")
+				airbus.mes.settings.GlobalFunction.navigateTo("Go to Work Tracker","worktracker");
+			else
+				airbus.mes.settings.GlobalFunction.navigateTo("Go to Station Tracker","stationtracker");
 		} else {
 //			If default user settings are already loaded, 
-//			We display directly station tracker screen	
-  		  sap.ui.getCore().createComponent({
-  			  name : "airbus.mes.stationtracker", // root component folder is resources
-	             });
-          nav.addPage(airbus.mes.stationtracker.oView);
-	      nav.to(airbus.mes.stationtracker.oView.getId());
+//			We display directly station tracker screen
+			
+			if(oEvt.getSource().getCustomData()[1].getValue()=="worktracker")
+				location.href="../components/worktracker/";
+			else{
+				sap.ui.getCore().createComponent({
+					name : "airbus.mes.stationtracker", // root component folder is resources
+	             	});
+				nav.addPage(airbus.mes.stationtracker.oView);
+				nav.to(airbus.mes.stationtracker.oView.getId());
+			}
 	 	};		
 	},
 /**

@@ -2,61 +2,72 @@
 	"buttonDetail": [{
 
 		"text": "Station Tracker",
+		"app":"",
 		"url": "/MES/WebContent/components/settings/index.html",
 		"enable": true
 	}, {
 
 		"text": "OSW Input Mgt",
+		"app":"",
 		"url": "/MES/WebContent/components/stationtracker/index.html",
 		"enable": false
 	}, {
 
 		"text": "Team Availability",
+		"app":"",
 		"url": "/MES/WebContent/components/stationtracker/index.html",
 		"enable": false
 	}, {
 
 		"text": "Team Competencies",
+		"app":"",
 		"url": "/MES/WebContent/components/stationtracker/index.html",
 		"enable": false
 	}, {
 
 		"text": "Team Assignment",
+		"app":"",
 		"url": "/MES/WebContent/components/stationtracker/index.html",
 		"enable": false
 	},
 	{
 
 		"text": "Means Managment",
+		"app":"",
 		"url": "/MES/WebContent/components/stationtracker/index.html",
 		"enable": false
 	},
 	{
 
 		"text": "Work Order Tracker",
-		"url": "/MES/WebContent/components/stationtracker/index.html",
-		"enable": false
+		"app":"worktracker",
+		"url": "/MES/WebContent/components/worktracker/index.html",
+		"enable": true
 	},
 	{
 
 		"text": "Disruption Andon",
+		"app":"",
 		"url": "/MES/WebContent/components/stationtracker/index.html",
 		"enable": false
 	},{
 
 		"text": "Missing Parts Tracker",
+		"app":"",
 		"url": "/MES/WebContent/components/stationtracker/index.html",
 		"enable": false
 	},
 	{
 
 		"text": "Station SQCDP Pareto",
+		"app":"",
 		"url": "/MES/WebContent/components/stationtracker/index.html",
 		"enable": false
 	},
 	{
 
 		"text": "Problem Solving Tracker",
+		"app":"",
 		"url": "/MES/WebContent/components/stationtracker/index.html",
 		"enable": false
 	}
