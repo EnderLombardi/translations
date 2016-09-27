@@ -31,6 +31,11 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 						scheduler.config.touch = "force";
 						scheduler.config.preserve_length = true;
 						scheduler.config.dblclick_create = false;
+						
+					    scheduler.eventId = scheduler.eventId || [];
+                        scheduler.eventId.forEach(function(el) { scheduler.detachEvent(el) });
+                        scheduler.eventId = [];
+
 
 						scheduler.createTimelineView({
 								section_autoheight: false,
@@ -284,38 +289,6 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 									scheduler._click.dhx_cal_prev_button()
 								});
 							}
-							
-//							for (i = 0; i < $("div[id='selectBoxStation']").length; i++) {
-//								$("div[id='selectBoxStation']").eq(i).remove();
-//							}
-//							
-//							//if ( $("div[id='selectBoxStation']").length === 0 ) {
-//								$("div[class='dhx_cal_header']").append(("<div id='selectBoxStation' Style='float:left;'></div>"));
-//								
-//							
-//											
-//
-//									if ($("div[id='selectBoxStation']")[0].children.length === 0) {
-//									
-//										new sap.m.Select({}).placeAt("selectBoxStation");
-//
-//									}
-//								//}
-			
-							/* Create combobox to change early late shift */
-//							if ($("div[id='selectBoxStation']").length === 0) {
-//								var dDate = scheduler.getState().date;
-//								
-//								for (i = 0; i < $("div[class='dhx_cal_date']").length; i++) {
-//									$("div[class='dhx_cal_date']").eq(i).remove();
-//								}
-//							
-								
-//																
-//							}
-							
-							
-							
 						}));
 						
 				

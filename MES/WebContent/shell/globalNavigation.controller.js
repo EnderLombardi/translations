@@ -131,19 +131,17 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 	
 	renderStationTracker : function() {
 
-<<<<<<< Upstream, based on origin/MESv0.9
-		if (nav.getCurrentPage().getId() === "stationTrackerView") {
-			airbus.mes.stationtracker.ModelManager.loadShifts();
-=======
+
 		if (nav.getCurrentPage().getId() === "stationTrackerView") {
 
 
 			airbus.mes.stationtracker.ModelManager.loadShifts();
->>>>>>> 47c355a Shifts display
+
 			airbus.mes.stationtracker.ModelManager.loadStationTracker();
+			airbus.mes.stationtracker.ShiftManager.init(airbus.mes.stationtracker.GroupingBoxingManager.shiftNoBreakHierarchy);
 
-//			scheduler.xy.scroll_width = 20;
-//			scheduler.xy.nav_height = 0;
+			scheduler.xy.scroll_width = 20;
+			//scheduler.xy.nav_height = 0;
 			scheduler.updateView();
 
 
