@@ -1,7 +1,7 @@
 {
 	"buttonDetail": [{
 
-		"text": "Station Tracker",
+		"text": "StationTracker",
 		"app":"",
 		"url": "/MES/WebContent/components/settings/index.html",
 		"enable": true
