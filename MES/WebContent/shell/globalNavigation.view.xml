@@ -10,14 +10,16 @@
                            <Label text="MES" class="pageTitle"/>
                            <ToolbarSpacer />
                            <core:Icon src="sap-icon://customer"/>
-                           <Label text="Welcome" class="pageWelcome"/>
+                           <Label text="{i18n>WelcomeText}" class="pageWelcome"/>
                            <Label id="user_id" text="{userDetailModel>/Rowsets/Rowset/0/Row/0/first_name}" design="Bold" class="pageUsername"/>
                            <ToolbarSeparator />
                            <Button text="Logout" type="Transparent" icon="sap-icon://log" class="whiteColor whiteButton"></Button>
                            <ToolbarSeparator />
-                           <Select class="sapUiTinyMarginBeginEnd pageHeader pageHeaderBlue"> 
-                           <core:Item text="English" />
-                           <core:Item text="Deutsch" />
+                           <Select id="SelectLanguage" class="sapUiTinyMarginBeginEnd pageHeader pageHeaderBlue" change="onChangeLanguage"> 
+	                           <core:Item text="English" />
+	                           <core:Item text="Deutsch" />
+	                           <core:Item text="French" />
+	                           <core:Item text="Spanish" />                                                      
                            </Select>
                            <ToolbarSeparator />
                            <Button id="settingsButton" 

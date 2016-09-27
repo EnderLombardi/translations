@@ -2,11 +2,79 @@ jQuery.sap.declare("airbus.mes.stationtracker.GroupingBoxingManager")
 airbus.mes.stationtracker.GroupingBoxingManager = {
 	
 	operationHierarchy : {},
+	shiftHierarchy : {},
+	shiftNoBreakHierarchy: [],
 	showInitial : false,
 	//XXX MEHDI TODO
 	group : "competency" ,
 	box : "operationId",
 	
+	parseShift : function()  {
+		
+	// Tree Shift Model	
+	var oHierachy = airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy;
+	var oModelShift = sap.ui.getCore().getModel("shiftsModel");
+	
+	if(oModelShift.getProperty("/Rowsets/Rowset/0/Row")){              
+		
+		oModelShift = sap.ui.getCore().getModel("shiftsModel").oData.Rowsets.Rowset[0].Row;
+		
+    } else  {
+    	
+    	console.log("no shift Data for station tracker");
+    };	
+	
+	oModelShift.forEach(function(el) {
+		
+		if ( !oHierachy[el.day] ) {
+			
+			oHierachy[el.day] = {};
+		}
+		if ( !oHierachy[el.day][el.shiftName] ) {
+			
+			oHierachy[el.day][el.shiftName] = [];
+		}
+		
+		
+		var oShift = {
+				
+				"beginDateTime" : el.beginDateTime,
+				"endDateTime" : el.endDateTime,
+		};
+		
+		oHierachy[el.day][el.shiftName].push(oShift);
+	});
+	// Shift Model (without breaks)
+	var oHierachy2 = airbus.mes.stationtracker.GroupingBoxingManager.shiftNoBreakHierarchy;	
+	var oFormatter = airbus.mes.stationtracker.util.Formatter;
+
+		for( var i in oHierachy ) { 
+			for ( var a in oHierachy[i] ) {
+				
+				//Creation data wich represent boxs rescheduling and initial
+					var aStartDate = [];
+					var aEndDate = [];	
+
+					oHierachy[i][a].forEach( function( el ) { 
+						
+						aStartDate.push(Date.parse(oFormatter.jsDateFromDayTimeStr(el.beginDateTime)));
+						aEndDate.push(Date.parse(oFormatter.jsDateFromDayTimeStr(el.endDateTime)));
+						
+					} )
+					
+					var oShift = {
+						
+							"day": i,
+							"shiftName":a,
+							"StartDate" : oFormatter.transformRescheduleDate(new Date(Math.min.apply(null,aStartDate))),
+							"EndDate" : oFormatter.transformRescheduleDate(new Date(Math.max.apply(null,aEndDate))),
+					
+					}
+					oHierachy2.push(oShift);
+			}
+			
+		};
+	},
 	
 	groupingBoxing : function(sGroup,sBoxing) {
 		
@@ -59,7 +127,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 					"progress" : el.progress,
 					"startDate" : el.startDate,
 					"endDate" : el.endDate,
-			}
+			};
 			
 			oHierachy[ssGroup][el.avlLine][el[sBoxing]].push(oOperation)
 			
