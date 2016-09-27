@@ -132,13 +132,7 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 	renderStationTracker : function() {
 
 		if (nav.getCurrentPage().getId() === "stationTrackerView") {
-<<<<<<< Upstream, based on origin/MESv0.9
-
-			
-			
-=======
 			airbus.mes.stationtracker.ModelManager.loadShifts();
->>>>>>> 9060282 Shifts Models defined
 			airbus.mes.stationtracker.ModelManager.loadStationTracker();
 			airbus.mes.stationtracker.ShiftManager.init(airbus.mes.stationtracker.GroupingBoxingManager.shiftNoBreakHierarchy);
 
