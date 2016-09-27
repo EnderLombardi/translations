@@ -7,6 +7,10 @@ jQuery.sap.require("airbus.mes.stationtracker.ModelManager");
 
 
 jQuery.sap.registerModulePath("airbus.mes.dhtmlx","../lib/dhtmlxscheduler");
+<<<<<<< Upstream, based on origin/MESv0.9
+=======
+
+>>>>>>> 47c355a Shifts display
 jQuery.sap.require("airbus.mes.dhtmlx.dhtmlxscheduler");
 jQuery.sap.require("airbus.mes.dhtmlx.ext.dhtmlxscheduler_limit");
 jQuery.sap.require("airbus.mes.dhtmlx.ext.dhtmlxscheduler_timeline");

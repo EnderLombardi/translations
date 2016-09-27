@@ -5,7 +5,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 						oRm.write("<div ");
 						oRm.writeControlData(oControl);
 						oRm.write(" class='dhx_cal_container'  style='width:100%; height:71%;'>");
-						oRm.write("	<div class='dhx_cal_navline'style='display:none;'>");
+						oRm.write("	<div class='dhx_cal_navline'style=''>");
 						oRm.write("		<div class='dhx_cal_date' Style='font-weight:bold; text-align:left; padding-left: 1.5%'></div>");
 						oRm.write("	</div>");
 						oRm.write("	<div class='dhx_cal_header' Style='text-align:left;'>");
@@ -31,20 +31,16 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 						scheduler.config.touch = "force";
 						scheduler.config.preserve_length = true;
 						scheduler.config.dblclick_create = false;
-					
-						scheduler.eventId = scheduler.eventId || [];
-						scheduler.eventId.forEach(function(el) { scheduler.detachEvent(el) });
-						scheduler.eventId = [];
-						
+
 						scheduler.createTimelineView({
 								section_autoheight: false,
 								name:	"timeline",
 								x_unit:	"minute",
 								x_date:	"%H:%i",
-								x_step:	120,
-								x_size: 6,
-								x_start: 3,
-								x_length:	12,
+								x_step : 30,
+								x_size : 18,
+								x_start : 0,
+								x_length : 18,
 								y_unit:	[],
 								y_property:	"section_id",
 								render:"tree",
@@ -53,16 +49,37 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 								
 							});
 						//Shift Management
+
+						airbus.mes.stationtracker.ShiftManager.init(airbus.mes.stationtracker.GroupingBoxingManager.shiftNoBreakHierarchy);
 						var ShiftManager = airbus.mes.stationtracker.ShiftManager;
-//						scheduler.ignore_timeline = ShiftManager.bounded("isDateIgnored");
-//						ShiftManager.addMarkedShifts();
+						
+						///////////////////////////////////////////////////////
+						function SchedStartChange(ev, mode, e) {
+							// any custom logic here
+							if (new Date(this.getEvent(ev).start_date.getTime()
+									+ (-scheduler.matrix.timeline.x_step * 60000)) < scheduler._min_date)
+
+							{
+								ShiftManager.timelineSwip("left");
+							} else if (new Date(this.getEvent(ev).end_date.getTime()
+									+ (scheduler.matrix.timeline.x_step * 60000)) > scheduler._max_date) {
+								ShiftManager.timelineSwip("right");
+							}
+						
+						}
+						//					if (!scheduler.checkEvent("onEventDrag")) {
+						scheduler.eventId.push (scheduler.attachEvent("onEventDrag", SchedStartChange));
+					
+						////////////////////////////////////////////////////
+						scheduler.ignore_timeline = ShiftManager.bounded("isDateIgnored");
+						ShiftManager.addMarkedShifts();
 						
 //						if(ShiftManager.current_Date !=undefined){
 //						scheduler.init(oEvt.srcControl.sId, new Date(ShiftManager.currentFullDate), "timeline");
 //						}else{scheduler.init(oEvt.srcControl.sId, new Date(), "timeline");
 //						};
 						
-//						scheduler.templates.timeline_date = ShiftManager.bounded("timelineHeaderTitle");
+						scheduler.templates.timeline_date = ShiftManager.bounded("timelineHeaderTitle");
 //						scheduler.eventId.push(scheduler.attachEvent("onBeforeTodayDisplayed", function() {
 //							
 //							ShiftManager.step = 0;
@@ -73,9 +90,9 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 //							return true;
 //
 //						}));
-//						scheduler.date.timeline_start = ShiftManager.bounded("timelineStart");
-//						scheduler.date.add_timeline_old = scheduler.date.add_timeline;
-//						scheduler.date.add_timeline = ShiftManager.bounded("timelineAddStep");
+						scheduler.date.timeline_start = ShiftManager.bounded("timelineStart");
+						scheduler.date.add_timeline_old = scheduler.date.add_timeline;
+						scheduler.date.add_timeline = ShiftManager.bounded("timelineAddStep");
 //						if (ShiftManager.currentFullDate != undefined) {
 //							
 //							ShiftManager.step = 0;
