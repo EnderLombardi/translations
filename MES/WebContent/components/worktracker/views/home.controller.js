@@ -140,6 +140,20 @@ sap.ui.controller("airbus.mes.worktracker.views.home", {
 			})
 			
 		},
+		filterOperationList: function(oEvt){
+			// add filter for search
+			var aFilters = [];
+			var sQuery = oEvt.getSource().getValue();
+			if (sQuery && sQuery.length > 0) {
+				var filter = new sap.ui.model.Filter("date", sap.ui.model.FilterOperator.EQ, sQuery);
+				aFilters.push(filter);
+			}
+			// update list binding
+			var list = this.getView().byId("operationGridLayout");
+			var binding = list.getBinding("content");
+			binding.filter(aFilters, "Application");
+			
+		},
 		
 	onSelectionStation : function (oEvt) {
 	// LoadOperators  Model Data based on Station selected

@@ -1,22 +1,12 @@
 {"schedule":[{
-	"operation": "OP 2000",
+	"operation": "OP 2000 Srikanth",
 	"description": "924er Haller und C Brackets incl. Massen",
 	"fuel":"FUEL",
 	"activity": "100331626222",
 	"duration": "08:30 - 09:30",
 	"label": "V90Q3E31",
-	"status": "CONFIRMED"
-	
-	
-},
-{
-	"operation": "OP 2000",
-	"description": "924er Haller und C Brackets incl. Massen",
-	"fuel":"FUEL",
-	"activity": "100331626222",
-	"duration": "08:30 - 09:30",
-	"label": "V90Q3E31",
-	"status": "Blocked"
+	"status": "CONFIRMED",
+	"date":"2016-09-25"
 	
 },
 {
@@ -26,16 +16,28 @@
 	"activity": "100331626222",
 	"duration": "08:30 - 09:30",
 	"label": "V90Q3E31",
-	"status": "Not Started"
+	"status": "Blocked",
+	"date":"2016-09-25"
+},
+{
+	"operation": "OP 2000",
+	"description": "924er Haller und C Brackets incl. Massen",
+	"fuel":"FUEL",
+	"activity": "100331626222",
+	"duration": "08:30 - 09:30",
+	"label": "V90Q3E31",
+	"status": "Not Started",
+	"date":"2016-09-25"
 },	
 {
-	"operation": "OP 2000",
+	"operation": "OP 2000_Piyush",
 	"description": "924er Haller und C Brackets incl. Massen",
 	"fuel":"FUEL",
 	"activity": "100331626222",
 	"duration": "08:30 - 09:30",
 	"label": "V90Q3E31",
-	"status": "In Progress"
+	"status": "In Progress",
+	"date":"2016-09-26"
 	
 },
 {
@@ -45,7 +47,8 @@
 	"activity": "100331626222",
 	"duration": "08:30 - 09:30",
 	"label": "V90Q3E31",
-	"status": "CONFIRMED"
+	"status": "CONFIRMED",
+	"date":"2016-09-26"
 	
 },
 {
@@ -55,7 +58,18 @@
 	"activity": "100331626222",
 	"duration": "08:30 - 09:30",
 	"label": "V90Q3E31",
-	"status": "Blocked"
+	"status": "Blocked",
+	"date":"2016-09-26"
+},
+{
+	"operation": "OP 2000_Siva",
+	"description": "924er Haller und C Brackets incl. Massen",
+	"fuel":"FUEL",
+	"activity": "100331626222",
+	"duration": "08:30 - 09:30",
+	"label": "V90Q3E31",
+	"status": "Not Started",
+	"date":"2016-09-27"
 },
 {
 	"operation": "OP 2000",
@@ -64,7 +78,8 @@
 	"activity": "100331626222",
 	"duration": "08:30 - 09:30",
 	"label": "V90Q3E31",
-	"status": "Not Started"
+	"status": "Not Started",
+	"date":"2016-09-27"
 },
 {
 	"operation": "OP 2000",
@@ -73,16 +88,8 @@
 	"activity": "100331626222",
 	"duration": "08:30 - 09:30",
 	"label": "V90Q3E31",
-	"status": "Not Started"
-},
-{
-	"operation": "OP 2000",
-	"description": "924er Haller und C Brackets incl. Massen",
-	"fuel":"FUEL",
-	"activity": "100331626222",
-	"duration": "08:30 - 09:30",
-	"label": "V90Q3E31",
-	"status": "CONFIRMED"
+	"status": "CONFIRMED",
+	"date":"2016-09-27"
 	
 }]
 }
