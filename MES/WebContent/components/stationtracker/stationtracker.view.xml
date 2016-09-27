@@ -21,6 +21,8 @@
 					<Select class="sapUiTinyMarginBeginEnd pageHeader pageHeaderBlue">
 						<core:Item text="English" />
 						<core:Item text="Deutsch" />
+						<core:Item text="French" />						
+						<core:Item text="Spanish" />
 					</Select>
 					<ToolbarSeparator />
 					<Button type="Transparent" icon="sap-icon://action-settings"

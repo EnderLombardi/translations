@@ -47,7 +47,30 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 			nav.to(airbus.mes.homepage.oView.getId());
 		}
 	},
+//	Change language, reload the URL with the new language
+	onChangeLanguage : function(oEvent) {
+//		Retrieve language 		
+		var sText = sap.ui.getCore().byId(oEvent.getSource().getSelectedItemId()).getText();
 
+		
+		switch (sText) {
+		case "English":
+			window.location.href = "http://localhost:59877/MES/shell/index.html?sap-language=EN";
+			break;
+		case "Deutsch":
+			window.location.href = "http://localhost:59877/MES/shell/index.html?sap-language=DE";
+			break;
+		case "French":
+			window.location.href = "http://localhost:59877/MES/shell/index.html?sap-language=FR";
+			break;
+		case "Spanish":
+			window.location.href = "http://localhost:59877/MES/shell/index.html?sap-language=SP";
+			break;
+		default:
+			window.location.href = "http://localhost:59877/MES/shell/index.html?sap-language=EN";
+			break;
+		};
+	},
 	/**
 	 * Similar to onAfterRendering, but this hook is invoked before the
 	 * controller's View is re-rendered (NOT before the first rendering!
