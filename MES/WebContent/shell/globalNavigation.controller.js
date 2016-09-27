@@ -55,19 +55,19 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 		
 		switch (sText) {
 		case "English":
-			window.location.href = "http://localhost:59877/MES/shell/index.html?sap-language=EN";
+			window.location.href = window.location.origin + window.location.pathname + "?sap-language=EN";
 			break;
 		case "Deutsch":
-			window.location.href = "http://localhost:59877/MES/shell/index.html?sap-language=DE";
+			window.location.href = window.location.href = window.location.origin + window.location.pathname + "?sap-language=DE";
 			break;
 		case "French":
-			window.location.href = "http://localhost:59877/MES/shell/index.html?sap-language=FR";
+			window.location.href = window.location.href = window.location.origin + window.location.pathname + "?sap-language=FR";
 			break;
 		case "Spanish":
-			window.location.href = "http://localhost:59877/MES/shell/index.html?sap-language=SP";
+			window.location.href = window.location.href = window.location.origin + window.location.pathname + "?sap-language=SP";
 			break;
 		default:
-			window.location.href = "http://localhost:59877/MES/shell/index.html?sap-language=EN";
+			window.location.href = window.location.href = window.location.origin + window.location.pathname + "?sap-language=EN";
 			break;
 		};
 	},

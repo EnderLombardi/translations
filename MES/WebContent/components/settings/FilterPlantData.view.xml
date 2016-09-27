@@ -37,7 +37,7 @@
 						<f:formContainers>
 							<f:FormContainer>
 								<f:formElements>
-									<f:FormElement label="Plant">
+									<f:FormElement label="{i18n>Plant}">
 										<f:fields>
 											<ComboBox id="ComboBoxPlant" items="{siteModel>/Rowsets/Rowset/0/Row}"
 												selectionChange="loadPlantModel">
