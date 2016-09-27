@@ -66,7 +66,6 @@ airbus.mes.stationtracker.ModelManager = {
 			
 			var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
 			GroupingBoxingManager.parseShift();
-			
 		},
 		
 		
