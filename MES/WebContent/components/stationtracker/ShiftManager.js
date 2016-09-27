@@ -224,19 +224,19 @@ airbus.mes.stationtracker.ShiftManager  = {
 			this.firstTimelineStart = false;
 		}
 
-		this.step += 1;
-		
-		if(this.step === 2){
-			
-					if (startDate.getMinutes() != 0 || startDate.getMinutes() != 30) {
-						startDate.setMinutes(0);
-						}
-		
-					if (shiftStart.getMinutes() != 0 || shiftStart.getMinutes() != 30) {
-						shiftStart.setMinutes(0);
-						}
-					this.step = 0;
-					}
+//		this.step += 1;
+//		
+//		if(this.step === 2){
+//			
+//					if (startDate.getMinutes() != 0 || startDate.getMinutes() != 30) {
+//						startDate.setMinutes(0);
+//						}
+//		
+//					if (shiftStart.getMinutes() != 0 || shiftStart.getMinutes() != 30) {
+//						shiftStart.setMinutes(0);
+//						}
+//					this.step = 0;
+//					}
 				
 		if (!this.fDraging) {
 			// return which one is the highest

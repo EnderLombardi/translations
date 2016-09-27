@@ -25,12 +25,17 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 			 		    scheduler.config.details_on_create=false;
 						scheduler.config.details_on_dblclick=false;
 						scheduler.config.xml_date="%Y-%m-%d %H:%i";
+						scheduler.config.markedCells = 0;
+
 						scheduler.config.mark_now = true;
 						scheduler.config.drag_create = false;
 						scheduler.config.drag_resize = false;
 						scheduler.config.touch = "force";
+					 	scheduler.config.details_on_create = false;
+						scheduler.config.details_on_dblclick = false;
 						scheduler.config.preserve_length = true;
 						scheduler.config.dblclick_create = false;
+						
 						
 					    scheduler.eventId = scheduler.eventId || [];
                         scheduler.eventId.forEach(function(el) { scheduler.detachEvent(el) });
@@ -61,20 +66,45 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 						///////////////////////////////////////////////////////
 						function SchedStartChange(ev, mode, e) {
 							// any custom logic here
-							if (new Date(this.getEvent(ev).start_date.getTime()
-									+ (-scheduler.matrix.timeline.x_step * 60000)) < scheduler._min_date)
+							if (new Date(this.getEvent(ev).start_date.getTime()	+ (-scheduler.matrix.timeline.x_step * 60000)) < scheduler._min_date)
 
 							{
 								ShiftManager.timelineSwip("left");
-							} else if (new Date(this.getEvent(ev).end_date.getTime()
-									+ (scheduler.matrix.timeline.x_step * 60000)) > scheduler._max_date) {
+							} else if (new Date(this.getEvent(ev).end_date.getTime()+ (scheduler.matrix.timeline.x_step * 60000)) > scheduler._max_date) {
 								ShiftManager.timelineSwip("right");
 							}
 						
 						}
 						//					if (!scheduler.checkEvent("onEventDrag")) {
 						scheduler.eventId.push (scheduler.attachEvent("onEventDrag", SchedStartChange));
-					
+												
+						//				if (!scheduler.checkEvent("onBeforeEventChanged")) {
+						scheduler.eventId.push(scheduler.attachEvent("onBeforeEventChanged",
+								
+								function blockSectionChange(ev, e, is_new, original) {
+
+									ShiftManager.step = 1;
+
+									if (is_new) {
+										return false;
+									}
+									// to save the old start date to send to
+									// service.
+									//ModelManager.sOldStartDate = original.start_date.toISOString().slice(0, 16);
+									// any custom logic here
+									if (original.section_id === ev.section_id && !ShiftManager.isDateIgnored(ev.start_date)
+											&& !ShiftManager.isDateIgnored(ev.end_date)) {
+										return true;
+									} else {
+
+										delete ev._move_delta
+
+										return false;
+									}
+									// false cancels the operation
+								}));
+						
+						
 						////////////////////////////////////////////////////
 						scheduler.ignore_timeline = ShiftManager.bounded("isDateIgnored");
 						ShiftManager.addMarkedShifts();
