@@ -128,12 +128,49 @@ airbus.mes.stationtracker.util.Formatter = {
 				
 				html += '<div  style="width:inherit; height:inherit; position:absolute; z-index: 1; padding-left: 5px;line-height: 23px;left: 0px;" >'
 					+ sText + '</div>';
-				html += '<div  style="width:inherit; height:inherit; position:absolute; z-index: 1; padding-right: 5px;line-height: 23px; text-align:right; left: 0px;">toto</div>';
-				
+					
 				html += '<div style="width:'+ sProgress
 				+ '%; height:inherit; background-color:#7ED320; position:absolute; z-index: 0; left: 0px;">&nbsp;<span  style="width:3px; float:right; background:#417506; height:inherit;" ></span> </div>'
 								
 				return html;
 				
-			}
+			},
+			
+			initial : function(sText,sProgress) {
+				var html = "";
+				html += '<div  style="width:inherit; height:inherit; position:absolute; z-index: 1; padding-left: 5px;line-height: 23px;left: 0px;" >'
+					+ sText + '</div>';
+				html += '<div style="width:'+ sProgress + '%; height:inherit;position:absolute; z-index: 0; left: 0px;"></div>'
+				
+				return html;
+			},
+			
+			minSizeMinutes : 30,
+
+			sizeMin : function(sEndDate, sStartDate) {
+				
+				var dEndDate = ShiftManager.dateFormatter(sEndDate);
+				var dStartDate = ShiftManager.dateFormatter(sStartDate);
+					
+
+				if (dEndDate - dStartDate < util.Formatter.minSizeMinutes * 60 * 1000) {
+					if (ShiftManager.closestShift(dStartDate) != -1 && dStartDate > ShiftManager.shifts[0].getStartDate()) {
+
+						dStartDate.setMinutes(dStartDate.getMinutes() + util.Formatter.minSizeMinutes);
+
+						while (ShiftManager.isDateIgnored(dStartDate)) {
+
+							dStartDate.setMinutes(dStartDate.getMinutes() + util.Formatter.minSizeMinutes);
+
+						}
+
+						var sDate = Math.max(dEndDate, dStartDate);
+
+						return ModelManager.transformRescheduleDate(new Date(sDate), "no");
+					}
+				}
+			
+				return sEndDate ;
+			
+			},	
 };

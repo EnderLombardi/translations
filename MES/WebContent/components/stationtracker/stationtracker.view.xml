@@ -210,7 +210,7 @@
 					<Label text="Show : " />
 					<Select id="selectBox" class="sapUiTinyMarginBeginEnd" change="changeBox">
 						<core:Item text="Operations" key="operationId"/>
-						<core:Item text="WorkOrder" key="workOrderId"/>
+						<core:Item text="WorkOrder" key="shopOrder"/>
 					</Select>
 					<ToolbarSpacer />
 					<Button text="show CP" type="Transparent" icon="sap-icon://ppt-attachment"
