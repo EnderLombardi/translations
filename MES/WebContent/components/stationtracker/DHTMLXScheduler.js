@@ -106,45 +106,25 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 						
 						
 						////////////////////////////////////////////////////
+						
+						
 						scheduler.ignore_timeline = ShiftManager.bounded("isDateIgnored");
 						ShiftManager.addMarkedShifts();
-						
-//						if(ShiftManager.current_Date !=undefined){
-//						scheduler.init(oEvt.srcControl.sId, new Date(ShiftManager.currentFullDate), "timeline");
-//						}else{scheduler.init(oEvt.srcControl.sId, new Date(), "timeline");
-//						};
-						
+					     
 						scheduler.templates.timeline_date = ShiftManager.bounded("timelineHeaderTitle");
-//						scheduler.eventId.push(scheduler.attachEvent("onBeforeTodayDisplayed", function() {
-//							
-//							ShiftManager.step = 0;
-//							ShiftManager.current_Date = new Date().toISOString().slice(0, 10);
-//							ShiftManager.adjustSchedulerXStart(new Date());
-//
-//							// ShiftManager.current_shift = "NORMAL1";
-//							return true;
-//
-//						}));
+						scheduler.eventId.push(scheduler.attachEvent("onBeforeTodayDisplayed", function() {
+							
+							ShiftManager.step = 0;
+							ShiftManager.current_Date = new Date().toISOString().slice(0, 10);
+							ShiftManager.adjustSchedulerXStart(new Date());
+
+							return true;
+
+						}));
 						scheduler.date.timeline_start = ShiftManager.bounded("timelineStart");
 						scheduler.date.add_timeline_old = scheduler.date.add_timeline;
 						scheduler.date.add_timeline = ShiftManager.bounded("timelineAddStep");
-//						if (ShiftManager.currentFullDate != undefined) {
-//							
-//							ShiftManager.step = 0;
-//							scheduler.updateView(ShiftManager.currentFullDate);	
-//							
-//							if (ShiftManager.fDraging) {
-//								scheduler.updateView(ShiftManager.currentFullDateSwipping)
-//								ShiftManager.fDraging = false;
-//
-//							}
-//							
-//						} else {
-//							
-//							ShiftManager.step = 0;
-//							scheduler.updateView();		
-//							
-//						};
+						
 						//
 						/* 	Custom Y group display */
 
