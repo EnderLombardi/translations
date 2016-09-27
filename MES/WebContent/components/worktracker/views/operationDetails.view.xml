@@ -148,30 +148,30 @@
 						</content>
 					</IconTabFilter>
 
-					<IconTabFilter icon="sap-icon://folder-blank" text="Documents">
-						<Text text="{i18n>documentTitle}" class="title"></Text>
-						<VBox items="{documentsNameModel>/documents}" width="100%">
-							<items>
-								<Button type="Transparent" text="{documentsNameModel>name}"
-									icon="sap-icon://slim-arrow-right" iconFirst="true" press="onPress" />
-							</items>
-						</VBox>
+<!-- 					<IconTabFilter icon="sap-icon://folder-blank" text="Documents"> -->
+<!-- 						<Text text="{i18n>documentTitle}" class="title"></Text> -->
+<!-- 						<VBox items="{documentsNameModel>/documents}" width="100%"> -->
+<!-- 							<items> -->
+<!-- 								<Button type="Transparent" text="{documentsNameModel>name}" -->
+<!-- 									icon="sap-icon://slim-arrow-right" iconFirst="true" press="onPress" /> -->
+<!-- 							</items> -->
+<!-- 						</VBox> -->
 
-					</IconTabFilter>
+<!-- 					</IconTabFilter> -->
 
-					<IconTabFilter icon="sap-icon://wrench" text="Tools">
-						<content>
-							<core:Fragment type="XML"
-								fragmentName="airbus.mes.worktracker.fragments.toolsFragment" />
-						</content>
-					</IconTabFilter>
+<!-- 					<IconTabFilter icon="sap-icon://wrench" text="Tools"> -->
+<!-- 						<content> -->
+<!-- 							<core:Fragment type="XML" -->
+<!-- 								fragmentName="airbus.mes.worktracker.fragments.toolsFragment" /> -->
+<!-- 						</content> -->
+<!-- 					</IconTabFilter> -->
 
-					<IconTabFilter icon="sap-icon://folder-blank" text="Components">
-						<content>
-							<core:Fragment type="XML"
-								fragmentName="airbus.mes.worktracker.fragments.componentFragment" />
-						</content>
-					</IconTabFilter>
+<!-- 					<IconTabFilter icon="sap-icon://folder-blank" text="Components"> -->
+<!-- 						<content> -->
+<!-- 							<core:Fragment type="XML" -->
+<!-- 								fragmentName="airbus.mes.worktracker.fragments.componentFragment" /> -->
+<!-- 						</content> -->
+<!-- 					</IconTabFilter> -->
 				</items>
 			</IconTabBar>
 		</content>

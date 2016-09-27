@@ -17,7 +17,8 @@
 						text="{ parts: [ 'userDetailModel>/Rowsets/Rowset/0/Row/0/first_name', 'userDetailModel>/Rowsets/Rowset/0/Row/0/last_name'], formatter: 'util.Formatter.getFullName' }"
 						class="text" />
 					<custom:ClickText text="Change operator" id="changeOperator"
-						class="subText pointer" press="toggleChangeOptrPopOver" />
+						class="subText pointer" />
+<!-- 						press="toggleChangeOptrPopOver" /> -->
 				</VBox>
 
 				<ToolbarSpacer />
@@ -28,9 +29,9 @@
 				</VBox>
 				<ToolbarSpacer width="20px" />
 
-				<core:Icon src="sap-icon://email" size="1.5rem"
-					class="pointer" press="toggleMessagesPopOver" />
-				<custom:ClickText id="messageCount" text="28" class="countText pointer" press="toggleMessagesPopOver" />
+<!-- 				<core:Icon src="sap-icon://email" size="1.5rem" -->
+<!-- 					class="pointer" press="toggleMessagesPopOver" /> -->
+<!-- 				<custom:ClickText id="messageCount" text="28" class="countText pointer" press="toggleMessagesPopOver" /> -->
 				<ToolbarSpacer width="0.5rem" />
 
 			</Toolbar>
@@ -38,46 +39,48 @@
 
 
 		<content>
-			<IconTabBar id="homeNav" expandable="false"
-				stretchContentHeight="true"
-				class="navbar headerColor sapUiResponsiveContentPadding">
-				<items>
-					<IconTabFilter icon="sap-icon://customer-order-entry"
-						text="Operations">
-						<core:Fragment type="XML"
+		<core:Fragment type="XML"
 							fragmentName="airbus.mes.worktracker.fragments.operation" />
-					</IconTabFilter>
-					<IconTabFilter icon="sap-icon://alert" count="389"
-						text="Disruptions">
-						<content>
-							<core:Fragment type="XML"
-								fragmentName="airbus.mes.worktracker.fragments.tableFragment" />
-						</content>
-					</IconTabFilter>
-					<IconTabFilter icon="sap-icon://folder-blank" text="Documents">
-						<Text text="{i18n>documentTitle}" class="title"></Text>
-						<VBox items="{documentsNameModel>/documents}" width="100%">
-							<items>
-								<Button type="Transparent" text="{documentsNameModel>name}"
-									icon="sap-icon://slim-arrow-right" iconFirst="true" press="onPress" />
-							</items>
-						</VBox>
-					</IconTabFilter>
-					<IconTabFilter icon="sap-icon://wrench" text="Tools">
-						<content>
-							<core:Fragment type="XML"
-								fragmentName="airbus.mes.worktracker.fragments.toolsFragment" />
-						</content>
+<!-- 			<IconTabBar id="homeNav" expandable="false" -->
+<!-- 				stretchContentHeight="true" -->
+<!-- 				class="navbar headerColor sapUiResponsiveContentPadding"> -->
+<!-- 				<items> -->
+<!-- 					<IconTabFilter icon="sap-icon://customer-order-entry" -->
+<!-- 						text="Operations"> -->
+<!-- 						<core:Fragment type="XML" -->
+<!-- 							fragmentName="airbus.mes.worktracker.fragments.operation" /> -->
+<!-- 					</IconTabFilter> -->
+<!-- 					<IconTabFilter icon="sap-icon://alert" count="389" -->
+<!-- 						text="Disruptions"> -->
+<!-- 						<content> -->
+<!-- 							<core:Fragment type="XML" -->
+<!-- 								fragmentName="airbus.mes.worktracker.fragments.tableFragment" /> -->
+<!-- 						</content> -->
+<!-- 					</IconTabFilter> -->
+<!-- 					<IconTabFilter icon="sap-icon://folder-blank" text="Documents"> -->
+<!-- 						<Text text="{i18n>documentTitle}" class="title"></Text> -->
+<!-- 						<VBox items="{documentsNameModel>/documents}" width="100%"> -->
+<!-- 							<items> -->
+<!-- 								<Button type="Transparent" text="{documentsNameModel>name}" -->
+<!-- 									icon="sap-icon://slim-arrow-right" iconFirst="true" press="onPress" /> -->
+<!-- 							</items> -->
+<!-- 						</VBox> -->
+<!-- 					</IconTabFilter> -->
+<!-- 					<IconTabFilter icon="sap-icon://wrench" text="Tools"> -->
+<!-- 						<content> -->
+<!-- 							<core:Fragment type="XML" -->
+<!-- 								fragmentName="airbus.mes.worktracker.fragments.toolsFragment" /> -->
+<!-- 						</content> -->
 
-					</IconTabFilter>
-					<IconTabFilter icon="sap-icon://folder-blank" text="Components">
-						<content>
-							<core:Fragment type="XML"
-								fragmentName="airbus.mes.worktracker.fragments.componentFragment" />
-						</content>
-					</IconTabFilter>
-				</items>
-			</IconTabBar>
+<!-- 					</IconTabFilter> -->
+<!-- 					<IconTabFilter icon="sap-icon://folder-blank" text="Components"> -->
+<!-- 						<content> -->
+<!-- 							<core:Fragment type="XML" -->
+<!-- 								fragmentName="airbus.mes.worktracker.fragments.componentFragment" /> -->
+<!-- 						</content> -->
+<!-- 					</IconTabFilter> -->
+<!-- 				</items> -->
+<!-- 			</IconTabBar> -->
 		</content>
 	</Page>
 </core:View>
