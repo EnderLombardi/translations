@@ -199,16 +199,16 @@
 
 			<Toolbar class="white">
 				<content>
-					<Button text="42" type="Transparent" icon="sap-icon://group"
-						class="buttonStatus" press="onTeamPress"></Button>
+					<Button text="Your Team" type="Transparent" icon="sap-icon://group" width="auto"
+						class="buttonStatus2 iconbuttonTeam sapUiSmallMarginBegin" press="onTeamPress"></Button>
 					<ToolbarSeparator />
 					<Label text="Sort By : " />
-					<Select id="selectGroup" class="sapUiTinyMarginBeginEnd" change="changeGroup">
+					<Select id="selectGroup" class="sapUiTinyMarginBeginEnd comboBoxStyle" change="changeGroup">
 						<core:Item text="Competence" key="competency"/>
 						<core:Item text="Avl" key="avlLine" />
 					</Select>
 					<Label text="Show : " />
-					<Select id="selectBox" class="sapUiTinyMarginBeginEnd" change="changeBox">
+					<Select id="selectBox" class="sapUiTinyMarginBeginEnd comboBoxStyle" change="changeBox">
 						<core:Item text="Operations" key="operationId"/>
 						<core:Item text="WorkOrder" key="shopOrder"/>
 					</Select>

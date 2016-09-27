@@ -150,7 +150,9 @@ background-color : #CCE6EE;
 .pageHeaderBlue .sapMSltLabel {
 	color: white !important;
 }
-
+.comboBoxStyle .sapMSlt>.sapMSltLabel, .sapMSlt{
+	border: 1px groove ;
+}
 .pageHeader {
 	color: white !important;
 	background: #0085AD !important;
@@ -218,7 +220,6 @@ background-color : #CCE6EE;
 .dhx_row_folder {
 	height: 20px ! important;
 }
-<<<<<<< HEAD
 .grey {
 	background-color: #D8D8D8;
 }
@@ -226,7 +227,6 @@ background-color : #CCE6EE;
 	background-color: #D8D8D8;
 	border: 2px solid blue;
 }
-=======
 
 .eventOrange {
 	background-color: #F9DAAB;
@@ -248,11 +248,18 @@ background-color : #CCE6EE;
 }
 
 .buttonStatus .sapMBtnInner.sapMBtnText {
-	font-weight: bold !important;
- /* 	padding-left: 50% !important;
- */    padding-top: 15% !important; 
+/* 	font-weight: bold !important;
+ */ /* 	padding-left: 50% !important;
+ */    /* padding-top: 15% !important;  */
 }
-
+.buttonStatus2 .sapMBtnInner.sapMBtnText {
+color : black;
+}
+.iconbuttonTeam .sapMBtnIcon{
+	color : #0085AD !important;
+	border-radius: 50%;
+	border: 1px solid #0085AD;
+}
 .buttonNotif .sapMBtnContent{
 	
 	/* padding-top: 15% !important; 	
