@@ -273,7 +273,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 						/* Delete initial - + to indicate the collapse or expand of folder */
 						
 						scheduler.eventId.push ( scheduler.attachEvent("onScaleAdd", function( unit , date ) {
-							for (i = 0; i < $("div[class='dhx_scell_expand']").length; i++) {
+							for (var i = 0; i < $("div[class='dhx_scell_expand']").length; i++) {
 								$("div[class='dhx_scell_expand']").eq(i).remove();
 							}
 
@@ -304,17 +304,25 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 				
 							
 						scheduler.eventId.push ( scheduler.attachEvent("onClick", function(id, e) {	
-							if ( airbus.mes.stationtracker.schedulerPopover === undefined ) {
+//							if ( airbus.mes.stationtracker.schedulerPopover === undefined ) {
+//								
+//								airbus.mes.stationtracker.schedulerPopover = sap.ui.xmlfragment("airbus.mes.stationtracker.schedulerPopover", airbus.mes.stationtracker.oView.getController());
+//								airbus.mes.stationtracker.schedulerPopover.addStyleClass("alignTextLeft");
+//								
+//							}
+//							
+//							airbus.mes.stationtracker.schedulerPopover.openBy(e.srcElement);		
+
+							if ( airbus.mes.stationtracker.ReschedulePopover === undefined ) {
 								
-								airbus.mes.stationtracker.schedulerPopover = sap.ui.xmlfragment("airbus.mes.stationtracker.schedulerPopover", this);
-								airbus.mes.stationtracker.schedulerPopover.addStyleClass("alignTextLeft");
+								airbus.mes.stationtracker.ReschedulePopover = sap.ui.xmlfragment("airbus.mes.stationtracker.Reschedule", this);
+								airbus.mes.stationtracker.ReschedulePopover.addStyleClass("alignTextLeft");
 								
 							}
 							
-							airbus.mes.stationtracker.schedulerPopover.openBy(e.srcElement);		
-
+							airbus.mes.stationtracker.ReschedulePopover.openBy(e.srcElement);								
+							
 						}));
-										
+						
 					},
-														
 				});

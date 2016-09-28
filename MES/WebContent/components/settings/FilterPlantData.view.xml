@@ -49,7 +49,7 @@
 											</ComboBox>
 										</f:fields>
 									</f:FormElement>
-									<f:FormElement label="Program">
+									<f:FormElement label="{i18n>Program}">
 										<f:fields>
 											<ComboBox id="ComboBoxProgram" items="{plantModel>/Rowsets/Rowset/0/Row}"
 												change="onSelectionChange">
@@ -61,7 +61,7 @@
 											</ComboBox>
 										</f:fields>
 									</f:FormElement>
-									<f:FormElement label="Line">
+									<f:FormElement label="{i18n>Line}">
 										<f:fields>
 											<ComboBox id="ComboBoxLine" items="{plantModel>/Rowsets/Rowset/0/Row}"
 												selectionChange="onSelectionChange">
@@ -73,7 +73,7 @@
 											</ComboBox>
 										</f:fields>
 									</f:FormElement>
-									<f:FormElement label="Station">
+									<f:FormElement label="{i18n>Station}">
 										<f:fields>
 											<ComboBox id="ComboBoxStation" selectionChange="onSelectionChange"
 												items="{plantModel>/Rowsets/Rowset/0/Row}">
@@ -85,13 +85,13 @@
 											</ComboBox>
 										</f:fields>
 									</f:FormElement>
-									<f:FormElement label="Optional">
+									<f:FormElement label="{i18n>Optional}">
 										<f:fields>
 										</f:fields>
 
 
 									</f:FormElement>
-									<f:FormElement label="MSN">
+									<f:FormElement label="{i18n>MSN}">
 										<f:fields>
 											<ComboBox id="ComboBoxMSN" items="{plantModel>/Rowsets/Rowset/0/Row}">
 												<items>

@@ -13,7 +13,7 @@
                            <Label text="{i18n>WelcomeText}" class="pageWelcome"/>
                            <Label id="user_id" text="{userDetailModel>/Rowsets/Rowset/0/Row/0/first_name}" design="Bold" class="pageUsername"/>
                            <ToolbarSeparator />
-                           <Button text="Logout" type="Transparent" icon="sap-icon://log" class="whiteColor whiteButton"></Button>
+                           <Button text="{i18n>Logout}" type="Transparent" icon="sap-icon://log" class="whiteColor whiteButton"></Button>
                            <ToolbarSeparator />
                            <Select id="SelectLanguage" class="sapUiTinyMarginBeginEnd pageHeader pageHeaderBlue" change="onChangeLanguage"> 
 	                           <core:Item text="English" />
@@ -27,7 +27,7 @@
                                    icon="sap-icon://action-settings" 
                                    class="whiteColor whiteButton" 
                                    press="navigate"
-                                   enabled="{ path : '', formatter : '.checkCurrentView' }"
+                                   enabled="{ path : './', formatter : '.checkCurrentView' }"
                             ></Button> 
                            </content>
                     </Toolbar>
