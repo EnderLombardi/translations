@@ -6,18 +6,18 @@
 		<content>
 			<Text text="" id="date" class="subText" />
 			<Toolbar>
-				<Select forceSelection="false" selectedKey="S10"
-					change="onSelectionStation"
-					items="{
- 						path: 'stationModel>/stations', 
+<!-- 				<Select forceSelection="false" selectedKey="S10" -->
+<!-- 					change="onSelectionStation" -->
+<!-- 					items="{ -->
+<!--  						path: 'stationModel>/stations',  -->
  						
-						sorter: { path: 'station' }
- 					}">
-					<core:Item key="{stationModel>key}" text="{stationModel>station}" />
-				</Select>
+<!-- 						sorter: { path: 'station' } -->
+<!--  					}"> -->
+<!-- 					<core:Item key="{stationModel>key}" text="{stationModel>station}" /> -->
+<!-- 				</Select> -->
 
 				<SearchField liveChange="onSearch" title="search by name"
-					width="100%" />
+					width="75%" />
 			</Toolbar>
 
 			<List id="operatorsList" items="{operatorsModel>/operators}"
@@ -29,8 +29,8 @@
 
 						<Text id="operatorInitials"
 							text="{ parts: [ 'operatorsModel>first_name', 'operatorsModel>last_name', 'operatorsModel>image'], formatter: 'util.Formatter.setUserInitials' }"
-							class="circleText operatorInitials2 hide MR-1"></Text>
-						<Image id="operatorImage" class="img-circle hide MR-1"
+							class="circleText operatorInitials2 sapUiSmallMarginEnd" visible="false"></Text>
+						<Image id="operatorImage" class="img-circle sapUiSmallMarginEnd" visible="false"
 							src="{ parts: ['operatorsModel>image'], formatter: 'util.Formatter.setUserImage' }"
 							densityAware="false" height="75%"></Image>
 						<Text

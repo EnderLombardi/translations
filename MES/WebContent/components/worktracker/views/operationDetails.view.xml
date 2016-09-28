@@ -10,8 +10,8 @@
 					class="whiteColor whiteButton" press="navigateHome"></Button>
 				<Text id="operatorInitials"
 					text="{ parts: [ 'userDetailModel>/Rowsets/Rowset/0/Row/0/first_name', 'userDetailModel>/Rowsets/Rowset/0/Row/0/last_name', 'userDetailModel>/Rowsets/Rowset/0/Row/0/image'], formatter: 'util.Formatter.setUserInitials' }"
-					class="circleText operatorInitials hide"></Text>
-				<Image id="operatorImage" class="img-circle hide"
+					class="circleText operatorInitials" visible="false"></Text>
+				<Image id="operatorImage" class="img-circle" visible="false"
 					src="{ parts: ['userDetailModel>/Rowsets/Rowset/0/Row/0/image'], formatter: 'util.Formatter.setUserImage' }"
 					densityAware="false" height="75%"></Image>
 

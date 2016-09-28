@@ -49,7 +49,7 @@ sap.ui.core.Control.extend("airbus.mes.worktracker.custom.CustomSideNavigation",
 		 */
 		r.write('>');
 		
-		r.write("<div id='blackOverlay' onClick='' class='hide'></div>")
+		r.write("<div id='blackOverlay' onClick=''></div>")
 		
 		r.write("<div");
 		r.addClass("sidenav");

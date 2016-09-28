@@ -7,6 +7,11 @@ util.Formatter = {
 			"July", "August", "September", "October", "November", "December" ],
 
 	setIcon : function(status) {
+		this.getParent().getParent().removeStyleClass("listColorBlue");
+		this.getParent().getParent().removeStyleClass("listColorRed");
+		this.getParent().getParent().removeStyleClass("listColorGreen");
+		this.getParent().getParent().removeStyleClass("listColorGrey");
+		
 		switch (status) {
 		case "CONFIRMED":
 			this.getParent().getParent().addStyleClass("listColorBlue");
@@ -61,10 +66,10 @@ util.Formatter = {
 	setUserImage : function(image) {
 
 		if (typeof image != 'undefined' && image != "") {
-			this.removeStyleClass("hide");
+			this.setVisible(true);
 			return image;
 		}
-		this.addStyleClass("hide");
+		this.setVisible(false);
 		return;
 
 	},
@@ -72,11 +77,13 @@ util.Formatter = {
 	setUserInitials : function(fName, lName, image) {
 
 		if (typeof image != 'undefined' && image != "") {
-			this.addStyleClass("hide");
+			//this.addStyleClass("hide");
+			this.setVisible(false);
 			return;
 		} else if(fName !="" && lName != "") {
 			var name = util.Functions.getInitials(fName, lName);
-			this.removeStyleClass("hide");
+			//this.removeStyleClass("hide");
+			this.setVisible(true);
 			return name;
 		}
 

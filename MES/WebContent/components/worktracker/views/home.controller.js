@@ -36,6 +36,10 @@ sap.ui.controller("airbus.mes.worktracker.views.home", {
 		this.getView().getModel("activityModel").loadData("local/activities.json",null,false);
 		
 		//this.getView().byId("customNav").render()
+		
+		// Model for station names
+		this.getView().setModel(new sap.ui.model.json.JSONModel(),"status");	 
+		this.getView().getModel("status").loadData("local/status.json",null,false);
 
 	},
 	
@@ -180,5 +184,26 @@ sap.ui.controller("airbus.mes.worktracker.views.home", {
 	toggleMessagesPopOver : function(oEvt){
 		
 		util.Functions.handleMessagePopOver(this, oEvt);
-	}
+	},
+	
+	onSelectionStatus : function (oEvt) {
+		// Data based on status selected
+//				oEvt.getSource().getSelectedItem().getKey();
+				
+				// add filter for search
+				var aFilters = [];
+//				var sQuery = oEvt.getSource().getValue();
+				var sQuery = oEvt.getSource().getSelectedItem().getKey();
+				if (sQuery && sQuery.length > 0) {
+					var filter = new sap.ui.model.Filter("status", sap.ui.model.FilterOperator.EQ, sQuery);
+					aFilters.push(filter);
+				}
+				if(sQuery === "All Status"){
+					aFilters.pop();
+				}
+				// update list binding
+				var list = this.getView().byId("operationGridLayout");
+				var binding = list.getBinding("content");
+				binding.filter(aFilters, "Application");
+			},
 });

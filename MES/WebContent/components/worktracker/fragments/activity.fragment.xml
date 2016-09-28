@@ -13,8 +13,8 @@
 					<VBox class="sapUiSmallMarginBeginEnd">
 						<Text
 							text="{ parts: ['activityModel>first_name', 'activityModel>last_name', 'activityModel>user_image'], formatter: 'util.Formatter.setUserInitials' }"
-							class="circleText operatorInitials2 hide"></Text>
-						<Image class="img-circle hide"
+							class="circleText operatorInitials2" visible="false"></Text>
+						<Image class="img-circle" visible="false"
 							src="{ parts: ['activityModel>user_image'], formatter: 'util.Formatter.setUserImage' }"
 							densityAware="false" height="75%"></Image>
 						<Label text="{activityModel>time}" class="whiteColorText" />

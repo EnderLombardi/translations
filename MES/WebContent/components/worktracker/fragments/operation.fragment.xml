@@ -11,6 +11,7 @@
 					<items>
 						<DatePicker id="operationDatePicker" valueFormat="yyyy-MM-dd"
 							displayFormat="long" change="filterOperationList" class="sapUiSmallMarginBottom" />
+						
 						<HBox alignItems="End" justifyContent="SpaceBetween">
 							<items>
 <!-- 								<ToggleButton id="buttonList" pressed="true" -->
@@ -22,6 +23,14 @@
 							</items>
 						</HBox>
 					</items>
+					<Select
+				   			forceSelection="true"
+				   			maxWidth="100%"
+				   			change= "onSelectionStatus"				   			
+							
+							items="{status>/status}"> 
+						<core:Item key="{status>col1}" text="{status>col1}" />
+					</Select>
 				</HBox>
 				<l:Grid id="operationGridLayout" content="{ScheduleModel>/schedule}"
 					defaultSpan="L12 M12 S12" class="sapUiSmallMarginTop gridPosition">
