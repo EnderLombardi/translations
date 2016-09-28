@@ -422,3 +422,14 @@ div#SPStatusInd.progressBarOP.sapMBarChild.sapMPI{
 .sapMPanel>.sapMPanelHdr, .sapMPanelWrappingDiv, .sapMPanelWrappingDivTb{
 	border: none;
 }
+.offtime {
+	/* background-color: #ffa749; */
+	/* opacity: 0.25; */
+/* 	background-image: url(../css/fat_lines.png);
+ */
+ 	background-color: grey;
+ }
+.begin_shifht {
+	background-color: #ffa749;
+	opacity: 0.25; 
+}

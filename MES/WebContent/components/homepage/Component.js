@@ -26,6 +26,13 @@ airbus.mes.homepage.Component.prototype.createContent = function() {
 		}).addStyleClass("absolutePosition");
 		airbus.mes.homepage.oView = this.oView;
 
+		var i18nModel = new sap.ui.model.resource.ResourceModel({
+	        bundleUrl : "../components/homepage/i18n/i18n.properties",
+//	        bundleLocale : "en" automatic defined by parameter sap-language
+	     });
+		
+		this.oView.setModel(i18nModel, "i18n");		
+		
 		return this.oView;
 
 	}

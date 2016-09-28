@@ -21,7 +21,7 @@
 							</Toolbar>
 							<Panel content="{buttonUrl>/buttonDetail}" class="PanelbgImg"
 								backgroundDesign="Transparent">
-								<Button type="Transparent" text="{buttonUrl>text}" class="langbutton"
+								<Button type="Transparent" text="{ path : 'buttonUrl>text' , formatter : '.getI18nValue' }" class="langbutton"
 									icon="sap-icon://slim-arrow-right" iconFirst="false" press="onPress"
 									enabled="{buttonUrl>enable}" cData:link="{buttonUrl>url}" cData:appName="{buttonUrl>app}"/>
 							</Panel>

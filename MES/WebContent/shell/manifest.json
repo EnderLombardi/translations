@@ -8,14 +8,6 @@
 	  "libs": {
 		"sap.m": {}
 	  }
-	},
-	"routing": {
-	  "config": {
-		"routerClass": "sap.m.routing.Router",
-		"viewType": "XML",
-		"viewPath": "MES.shell.globalNavigation",
-		"controlId": "navCont"
-	  }
 	},	
 	"resources": {
 	  "css": [
@@ -28,8 +20,8 @@
          "config": {
             "routerClass": "sap.m.routing.Router",
             "viewType": "XML",
-            "viewPath": "sap.ui.demo.nav.view",
-            "controlId": "app",
+            "viewPath": "airbus.mes.shell",
+            "controlId": "navcont",
             "controlAggregation": "pages",
             "transition": "slide",
             "bypassed": {
@@ -51,5 +43,5 @@
                "transition": "show"
             }
          }
-  }
+ } }
 }

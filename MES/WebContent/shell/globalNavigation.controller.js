@@ -55,19 +55,19 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 		
 		switch (sText) {
 		case "English":
-			window.location.href = "http://localhost:59877/MES/shell/index.html?sap-language=EN";
+			window.location.href = window.location.origin + window.location.pathname + "?sap-language=EN";
 			break;
 		case "Deutsch":
-			window.location.href = "http://localhost:59877/MES/shell/index.html?sap-language=DE";
+			window.location.href = window.location.href = window.location.origin + window.location.pathname + "?sap-language=DE";
 			break;
 		case "French":
-			window.location.href = "http://localhost:59877/MES/shell/index.html?sap-language=FR";
+			window.location.href = window.location.href = window.location.origin + window.location.pathname + "?sap-language=FR";
 			break;
 		case "Spanish":
-			window.location.href = "http://localhost:59877/MES/shell/index.html?sap-language=SP";
+			window.location.href = window.location.href = window.location.origin + window.location.pathname + "?sap-language=SP";
 			break;
 		default:
-			window.location.href = "http://localhost:59877/MES/shell/index.html?sap-language=EN";
+			window.location.href = window.location.href = window.location.origin + window.location.pathname + "?sap-language=EN";
 			break;
 		};
 	},
@@ -131,69 +131,19 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 	
 	renderStationTracker : function() {
 
+
 		if (nav.getCurrentPage().getId() === "stationTrackerView") {
+
+
 			airbus.mes.stationtracker.ModelManager.loadShifts();
+
 			airbus.mes.stationtracker.ModelManager.loadStationTracker();
 			airbus.mes.stationtracker.ShiftManager.init(airbus.mes.stationtracker.GroupingBoxingManager.shiftNoBreakHierarchy);
 
 			scheduler.xy.scroll_width = 20;
-			scheduler.xy.nav_height = 0;
+			//scheduler.xy.nav_height = 0;
 			scheduler.updateView();
-//			
-//			var oToolBar = 	new sap.m.Toolbar({
-//			    width: "100%",
-//				content : [ new sap.m.Button({
-//					text : "42",
-//					type : "Transparent",
-//					icon : "sap-icon://group",
-//					//press : this.onTeamPress,
-//				}),
-//				
-//				new sap.m.ToolbarSeparator({}), 
-//				
-//				new sap.m.Label({ text:"Sort By : "}),
-//				
-//				new sap.m.Select({
-//					//change: this.changeGroup,
-//					items : [ new sap.ui.core.Item({ text:"Competence", key:"competency"}),
-//					          new sap.ui.core.Item({ text:"Avl", key:"avlLine"}),
-//					         ]
-//					}),
-//				
-//				new sap.m.Label({ text:"Show : "}),
-//				 
-//				new sap.m.Select({
-//					//change: this.changeBox,
-//					items : [ new sap.ui.core.Item({ text:"Operations", key:"operationId"}),
-//					          new sap.ui.core.Item({ text:"WorkOrder", key:"workOrderId"}),
-//					         ]
-//					}),
-//				
-//				new sap.m.ToolbarSeparator({}), 
-//				
-//				new sap.m.Button({
-//					text : "show CP",
-//					type : "Transparent",
-//					icon : "sap-icon://ppt-attachment",
-//				//	press : this.onCPPress,
-//				}),
-//				
-//				new sap.m.Button({
-//					text : "show initial plan",
-//					type : "Transparent",
-//					icon : "sap-icon://ppt-attachment",
-//				//	press : this.onInitialPlanPress,
-//				}),
-//				           
-//				new sap.m.SegmentedButton({
-//				
-//					items: [ new sap.m.SegmentedButtonItem({ text:"Shift", /*press:this.onShiftPress*/ }),
-//					         new sap.m.SegmentedButtonItem({ text:"Day",/* press:this.onDayPress */})]				
-//				})
-//				
-//				
-//				]});
-//			oToolBar.placeAt($("div[class='dhx_cal_navline']"))
+
 
 		}
 	}

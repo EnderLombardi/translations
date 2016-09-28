@@ -10,8 +10,9 @@ jQuery.sap.declare("airbus.mes.shell.Component");
 
 sap.ui.core.UIComponent.extend("airbus.mes.shell.Component", {
 
-	manifestUrl: "manifest.json",
+	
 	metadata : {
+//		manifest: "json",
 		properties : {},
 		includes : [ "css/shell.css" ] //array of css and/or javascript files that should be used in the component  
 
@@ -40,9 +41,13 @@ airbus.mes.shell.Component.prototype.createContent = function() {
 //		this 
 		sap.ui.getCore().getModel("userDetailModel").loadData("https://dmiswde0.eu.airbus.corp/XMII/Illuminator?QueryTemplate=XX_MOD1684_MES%2FMII%2FStationTracker%2FuserDetail%2F015_Get_User_Detail_QUE&IsTesting=T&Content-Type=text%2Fjson&j_user=ng56d2a&j_password=Fonate36*",null,false);
 
+		
+		// create the views based on the url/hash
+//		this.getRouter().initialize();		
+		
 		var i18nModel = new sap.ui.model.resource.ResourceModel({
             bundleUrl : "./i18n/i18n.properties",
-//            bundleLocale : "en"
+//            bundleLocale : "en" automatic defined by parameter sap-language
          });
 		
 		this.oView.setModel(i18nModel, "i18n");

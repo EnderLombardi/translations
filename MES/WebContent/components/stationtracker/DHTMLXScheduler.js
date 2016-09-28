@@ -5,7 +5,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 						oRm.write("<div ");
 						oRm.writeControlData(oControl);
 						oRm.write(" class='dhx_cal_container'  style='width:100%; height:71%;'>");
-						oRm.write("	<div class='dhx_cal_navline'style='display:none;'>");
+						oRm.write("	<div class='dhx_cal_navline'style=''>");
 						oRm.write("		<div class='dhx_cal_date' Style='font-weight:bold; text-align:left; padding-left: 1.5%'></div>");
 						oRm.write("	</div>");
 						oRm.write("	<div class='dhx_cal_header' Style='text-align:left;'>");
@@ -25,26 +25,32 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 			 		    scheduler.config.details_on_create=false;
 						scheduler.config.details_on_dblclick=false;
 						scheduler.config.xml_date="%Y-%m-%d %H:%i";
+						scheduler.config.markedCells = 0;
+
 						scheduler.config.mark_now = true;
 						scheduler.config.drag_create = false;
 						scheduler.config.drag_resize = false;
 						scheduler.config.touch = "force";
+					 	scheduler.config.details_on_create = false;
+						scheduler.config.details_on_dblclick = false;
 						scheduler.config.preserve_length = true;
 						scheduler.config.dblclick_create = false;
-					
-						scheduler.eventId = scheduler.eventId || [];
-						scheduler.eventId.forEach(function(el) { scheduler.detachEvent(el) });
-						scheduler.eventId = [];
 						
+						
+					    scheduler.eventId = scheduler.eventId || [];
+                        scheduler.eventId.forEach(function(el) { scheduler.detachEvent(el) });
+                        scheduler.eventId = [];
+
+
 						scheduler.createTimelineView({
 								section_autoheight: false,
 								name:	"timeline",
 								x_unit:	"minute",
 								x_date:	"%H:%i",
-								x_step:	120,
-								x_size: 6,
-								x_start: 3,
-								x_length:	12,
+								x_step : 30,
+								x_size : 18,
+								x_start : 0,
+								x_length : 18,
 								y_unit:	[],
 								y_property:	"section_id",
 								render:"tree",
@@ -53,16 +59,62 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 								
 							});
 						//Shift Management
+
+						airbus.mes.stationtracker.ShiftManager.init(airbus.mes.stationtracker.GroupingBoxingManager.shiftNoBreakHierarchy);
 						var ShiftManager = airbus.mes.stationtracker.ShiftManager;
-//						scheduler.ignore_timeline = ShiftManager.bounded("isDateIgnored");
-//						ShiftManager.addMarkedShifts();
+						
+						///////////////////////////////////////////////////////
+						function SchedStartChange(ev, mode, e) {
+							// any custom logic here
+							if (new Date(this.getEvent(ev).start_date.getTime()	+ (-scheduler.matrix.timeline.x_step * 60000)) < scheduler._min_date)
+
+							{
+								ShiftManager.timelineSwip("left");
+							} else if (new Date(this.getEvent(ev).end_date.getTime()+ (scheduler.matrix.timeline.x_step * 60000)) > scheduler._max_date) {
+								ShiftManager.timelineSwip("right");
+							}
+						
+						}
+						//					if (!scheduler.checkEvent("onEventDrag")) {
+						scheduler.eventId.push (scheduler.attachEvent("onEventDrag", SchedStartChange));
+												
+						//				if (!scheduler.checkEvent("onBeforeEventChanged")) {
+						scheduler.eventId.push(scheduler.attachEvent("onBeforeEventChanged",
+								
+								function blockSectionChange(ev, e, is_new, original) {
+
+									ShiftManager.step = 1;
+
+									if (is_new) {
+										return false;
+									}
+									// to save the old start date to send to
+									// service.
+									//ModelManager.sOldStartDate = original.start_date.toISOString().slice(0, 16);
+									// any custom logic here
+									if (original.section_id === ev.section_id && !ShiftManager.isDateIgnored(ev.start_date)
+											&& !ShiftManager.isDateIgnored(ev.end_date)) {
+										return true;
+									} else {
+
+										delete ev._move_delta
+
+										return false;
+									}
+									// false cancels the operation
+								}));
+						
+						
+						////////////////////////////////////////////////////
+						scheduler.ignore_timeline = ShiftManager.bounded("isDateIgnored");
+						ShiftManager.addMarkedShifts();
 						
 //						if(ShiftManager.current_Date !=undefined){
 //						scheduler.init(oEvt.srcControl.sId, new Date(ShiftManager.currentFullDate), "timeline");
 //						}else{scheduler.init(oEvt.srcControl.sId, new Date(), "timeline");
 //						};
 						
-//						scheduler.templates.timeline_date = ShiftManager.bounded("timelineHeaderTitle");
+						scheduler.templates.timeline_date = ShiftManager.bounded("timelineHeaderTitle");
 //						scheduler.eventId.push(scheduler.attachEvent("onBeforeTodayDisplayed", function() {
 //							
 //							ShiftManager.step = 0;
@@ -73,9 +125,9 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 //							return true;
 //
 //						}));
-//						scheduler.date.timeline_start = ShiftManager.bounded("timelineStart");
-//						scheduler.date.add_timeline_old = scheduler.date.add_timeline;
-//						scheduler.date.add_timeline = ShiftManager.bounded("timelineAddStep");
+						scheduler.date.timeline_start = ShiftManager.bounded("timelineStart");
+						scheduler.date.add_timeline_old = scheduler.date.add_timeline;
+						scheduler.date.add_timeline = ShiftManager.bounded("timelineAddStep");
 //						if (ShiftManager.currentFullDate != undefined) {
 //							
 //							ShiftManager.step = 0;
@@ -188,22 +240,39 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 						
 						scheduler.templates.event_bar_text = function(start, end, event) {
 
-//							var html = "";
-//
-//							html += '<div  style="width:inherit; height:inherit; position:absolute; z-index: 1; padding-left: 5px;line-height: 23px;left: 0px;" >'
-//									+ event.text + '</div>';
-//							html += '<div  style="width:inherit; height:inherit; position:absolute" ></div>';
-//
-//							if (event.progress != undefined && event.type === "R") {
-//								html += '<div style="width:'
-//										+ event.progress
-//										+ '%; height:inherit; background-color:#7ED320; position:absolute; z-index: 0; left: 0px;">&nbsp;<span  style="width:3px; float:right; background:#417506; height:inherit;" ></span> </div>'
-//							}
-//
-//							return html;
-							
-							return airbus.mes.stationtracker.util.Formatter.blocked(event.text,event.progress);
+							if (event.type === "I") {
+								
+								return airbus.mes.stationtracker.util.Formatter.initial(event.text, event.progress);
 
+								
+							}
+							
+							if (event.progress === "100") {
+
+								return airbus.mes.stationtracker.util.Formatter.fullConfirm(event.text, event.progress);
+
+							}
+							
+							if (event.progress != "100") {
+								
+								if ( event.andon === 1 ) {
+									
+									return airbus.mes.stationtracker.util.Formatter.andon(event.text,event.progress);
+									
+								}
+								
+								if ( event.blocked === 1 ) {
+									
+									return airbus.mes.stationtracker.util.Formatter.blocked(event.text,event.progress);
+								}
+								
+								
+								
+								return airbus.mes.stationtracker.util.Formatter.partialConf(event.text, event.progress);
+
+							}
+							
+					
 						};
 
 						/* custom initial */
@@ -250,38 +319,6 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 									scheduler._click.dhx_cal_prev_button()
 								});
 							}
-							
-//							for (i = 0; i < $("div[id='selectBoxStation']").length; i++) {
-//								$("div[id='selectBoxStation']").eq(i).remove();
-//							}
-//							
-//							//if ( $("div[id='selectBoxStation']").length === 0 ) {
-//								$("div[class='dhx_cal_header']").append(("<div id='selectBoxStation' Style='float:left;'></div>"));
-//								
-//							
-//											
-//
-//									if ($("div[id='selectBoxStation']")[0].children.length === 0) {
-//									
-//										new sap.m.Select({}).placeAt("selectBoxStation");
-//
-//									}
-//								//}
-			
-							/* Create combobox to change early late shift */
-//							if ($("div[id='selectBoxStation']").length === 0) {
-//								var dDate = scheduler.getState().date;
-//								
-//								for (i = 0; i < $("div[class='dhx_cal_date']").length; i++) {
-//									$("div[class='dhx_cal_date']").eq(i).remove();
-//								}
-//							
-								
-//																
-//							}
-							
-							
-							
 						}));
 						
 				

@@ -35,6 +35,12 @@ airbus.mes.settings.Component.prototype.createContent = function() {
 			type : "XML",
 		})
 
+		var i18nModel = new sap.ui.model.resource.ResourceModel({
+	        bundleUrl : "../components/settings/i18n/i18n.properties",
+//	        bundleLocale : "en" automatic defined by parameter sap-language
+	     });
+		
+		this.oView.setModel(i18nModel, "i18n");		
 		airbus.mes.settings.oView = this.oView;
 		return this.oView;
 
