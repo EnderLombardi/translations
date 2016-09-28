@@ -35,10 +35,14 @@
 				class="pageHeader sapUiSmallMarginTop contentNoPad">
 				<headerToolbar>
 					<Toolbar>
-						<Label text="Station 10" class="pageTitle sapUiTinyMarginBeginEnd" />
-						<Label text="MSN 1485" class="pageWelcome sapUiTinyMarginBeginEnd" />
-						<Label text="Plant DZ" class="pageWelcome sapUiTinyMarginBeginEnd" />
-						<Label text="Line : Comet" class="pageWelcome sapUiTinyMarginBeginEnd" />
+						<Label text="Station" class="pageTitle sapUiTinyMarginBeginEnd" />
+						<Label text="{userSettingModel>/Rowsets/Rowset/0/Row/0/station}" class="pageTitle sapUiTinyMarginBeginEnd" />						
+						<Label text="MSN" class="pageWelcome sapUiTinyMarginBeginEnd" /> 
+						<Label text="{userSettingModel>/Rowsets/Rowset/0/Row/0/msn}" class="pageWelcome sapUiTinyMarginBeginEnd" />
+						<Label text="Plant" class="pageWelcome sapUiTinyMarginBeginEnd" />
+						<Label text="{userSettingModel>/Rowsets/Rowset/0/Row/0/plant}" class="pageWelcome sapUiTinyMarginBeginEnd" />						
+						<Label text="Line :" class="pageWelcome sapUiTinyMarginBeginEnd" />
+						<Label text="{userSettingModel>/Rowsets/Rowset/0/Row/0/line}" class="pageWelcome sapUiTinyMarginBeginEnd" />						
 					</Toolbar>
 				</headerToolbar>
 				<content>

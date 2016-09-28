@@ -313,14 +313,23 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 //							
 //							airbus.mes.stationtracker.schedulerPopover.openBy(e.srcElement);		
 
-							if ( airbus.mes.stationtracker.ReschedulePopover === undefined ) {
+//							if ( airbus.mes.stationtracker.ReschedulePopover === undefined ) {
+//								
+//								airbus.mes.stationtracker.ReschedulePopover = sap.ui.xmlfragment("airbus.mes.stationtracker.Reschedule", this);
+//								airbus.mes.stationtracker.ReschedulePopover.addStyleClass("alignTextLeft");
+//								
+//							}
+//							
+//							airbus.mes.stationtracker.ReschedulePopover.openBy(e.srcElement);								
+
+							if ( airbus.mes.stationtracker.operatorPopoverr === undefined ) {
 								
-								airbus.mes.stationtracker.ReschedulePopover = sap.ui.xmlfragment("airbus.mes.stationtracker.Reschedule", this);
-								airbus.mes.stationtracker.ReschedulePopover.addStyleClass("alignTextLeft");
+								airbus.mes.stationtracker.operationPopover = sap.ui.xmlfragment("airbus.mes.stationtracker.operationPopover", airbus.mes.stationtracker.oView.getController());
+								airbus.mes.stationtracker.operationPopover.addStyleClass("alignTextLeft");
 								
 							}
 							
-							airbus.mes.stationtracker.ReschedulePopover.openBy(e.srcElement);								
+							airbus.mes.stationtracker.operationPopover.openBy(e.srcElement);									
 							
 						}));
 						

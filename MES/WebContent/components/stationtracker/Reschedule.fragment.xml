@@ -1,23 +1,19 @@
 <core:FragmentDefinition xmlns="sap.m"
 	xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout"
 	xmlns:u="sap.ui.unified">
-	<Popover id="resourceDialog" title="Test" contentHeight="100%">
+	<Popover id="resourceDialog" title="RescheduleActivityTitle" horizontalScrolling="false"
+		placement="Bottom" class="sapUiSizeCompact">
+<!-- 		<buttons>
+			<Button id="removeButton" text="Remove" press="removeResourceDialog" visible="false" />
+			<Button id="rescheduleButton" text="Confirm" press="confirmResourceDialog" />
+			<Button text="Close" press="closeResourceDialog" />
+		</buttons> -->
 		<content>
-			<List>
-				<CustomListItem>
-					<VBox id="RPGeneral" class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
-					
-					</VBox>	
-				</CustomListItem>
-			</List>
-		
-		
-		
 			<VBox>
 				<Toolbar>
 					<content>
 						<ToolbarSpacer />
-						<Title id="rescheduleTitle" text="" titleStyle="H5"></Title><!-- binding/value remains -->
+						<Title id="rescheduleTitle" text="rescheduleTitle" titleStyle="H5"></Title><!-- binding/value remains -->
 						<ToolbarSpacer />
 					</content>
 				</Toolbar>
@@ -26,16 +22,16 @@
 					labelSpanS="6" emptySpanL="2" emptySpanM="2" emptySpanS="0"
 					columnsL="1" columnsM="1" columnsS="1" class="shrinkArea">
 					<f:content class="shrinkArea">
-						<Label class="topMargin" text="{messageBundle>ScheduleStartLbl}" />
+						<Label class="topMargin" text="ScheduleStartLbl" />
 						<Text id="rescheduleStart" class="topMargin" 
 							text="" />
-						<Label class="topMargin" text="{messageBundle>ScheduleEndLbl}" />
+						<Label class="topMargin" text="ScheduleEndLbl" />
 						<Text id="rescheduleEnd" class="topMargin"
 							text="" />
-						<Label class="topMargin" text="{messageBundle>AcpngStartLbl}" />
+						<Label class="topMargin" text="AcpngStartLbl" />
 						<Text id="rescheduleStartAcpng" class="topMargin"
 							text="" />
-						<Label class="topMargin" text="{messageBundle>AcpngEndLbl}" />
+						<Label class="topMargin" text="AcpngEndLbl" />
 						<Text id="rescheduleEndAcpng" class="topMargin"
 							text="" />
 					</f:content>
@@ -45,7 +41,7 @@
 					labelSpanS="12" emptySpanL="0" emptySpanM="0" emptySpanS="0"
 					columnsL="1" columnsM="1" columnsS="1" class="shrinkArea">
 					<f:content class="shrinkArea">
-						<Label class="topMargin" text="{messageBundle>SelectNewGrp}" />
+						<Label class="topMargin" text="SelectNewGrp" />
 						<Select
 							id="groupIdComboBox"
 							items="{PerformanceModel>/Rowsets/Rowset/0/Row}">
@@ -64,6 +60,11 @@
 					</f:content>
 				</f:SimpleForm>
 			</VBox>
+			<VBox>
+				<Button id="removeButton" text="Remove" press="removeResourceDialog" visible="false" />
+				<Button id="rescheduleButton" text="Confirm" press="confirmResourceDialog" />
+				<Button text="Close" press="closeResourceDialog" />
+			</VBox>			
 		</content>
 	</Popover>
 </core:FragmentDefinition>
