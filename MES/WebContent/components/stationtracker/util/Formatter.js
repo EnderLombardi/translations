@@ -173,4 +173,16 @@ airbus.mes.stationtracker.util.Formatter = {
 				return sEndDate ;
 			
 			},	
+			stationTrackerStation : function(Station) {
+				return "Station " + Station;
+			},
+			stationTrackerMsn : function(Msn) {
+				return "MSN " + Msn;
+			},
+			stationTrackerPlant : function(Plant) {
+				return "Plant " + Plant;
+			},
+			stationTrackerLine : function(Line) {
+				return "Line: " + Line;
+			},
 };
