@@ -37,7 +37,7 @@ airbus.mes.polypoly.PolypolyManager = {
 		var dest = undefined;
 		switch (window.location.hostname) {
 		case "localhost":
-			dest = "sopra";
+			dest = "imi";
 			break;
 		case "wsapbpc01.ptx.fr.sopra":
 			dest = "sopra";
@@ -75,7 +75,7 @@ airbus.mes.polypoly.PolypolyManager = {
 			var mTableModel = new sap.ui.model.json.JSONModel();
 			sap.ui.getCore().byId("polypolyView").setModel(mTableModel);
 		}
-		sap.ui.core.BusyIndicator.hide();
+//		sap.ui.core.BusyIndicator.hide();
 		/*if (sap.ui.getCore().byId("polypolyView").byId("oTablePolypoly")
 				.getBinding("rows"))*/
 			sap.ui.getCore().byId("polypolyView--polypolySearchField")
@@ -597,7 +597,7 @@ airbus.mes.polypoly.PolypolyManager = {
 //	},
 
 	getPolypolyModel : function(sFactory, sLine, sStation, site) {
-		sap.ui.core.BusyIndicator.show();
+//		sap.ui.core.BusyIndicator.show();
 		var urlgetpolypoly = this.urlModel.getProperty("urlgetpolypoly");
 
 		urlgetpolypoly = urlgetpolypoly.replace("$factory", sFactory);

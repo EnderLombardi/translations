@@ -1,6 +1,4 @@
-sap.ui.controller(
-				"airbus.mes.polypoly.polypoly",
-				{
+sap.ui.controller("airbus.mes.polypoly.polypoly",{
 
 					/**
 					 * Called when a controller is instantiated and its View
@@ -912,7 +910,7 @@ sap.ui.controller(
 					},
 					setVisible: function(){
 						return  airbus.mes.polypoly.PolypolyManager.globalContext.tabSelected == "polypoly" ? true:false;
-					}
+					},
 
 				/**
 				 * Called when the Controller is destroyed. Use this one to free
