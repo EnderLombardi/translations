@@ -99,7 +99,7 @@ airbus.mes.polypoly.ModelManager = {
 		switch (window.location.hostname) {
 		case "localhost":
 			// dest = "sopra";
-			dest = "imi";
+			dest = "local";
 			break;
 		case "wsapbpc01.ptx.fr.sopra":
 			dest = "sopra";

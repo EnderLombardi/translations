@@ -9,13 +9,13 @@
 		<table:toolbar>
 			<Toolbar design="Transparent">
 				<content>
-					<Select id="lineSelectPolyPoly" forceSelection="false" change="onValueChange" visible="{path: '/rows', formatter: '.setVisible'}">
+					<Select id="lineSelectPolyPoly" forceSelection="false" change="onValueChange">
 						<core:Item key="1" text="Line 1" />
 						<core:Item key="2" text="Line 2" />
 						<core:Item key="3" text="Line 3" />
 					</Select>
 					<Select id="stationSelectPolyPoly" forceSelection="false" items="{stationList>/}"  
-														change="onValueChange" visible="{path: '/rows', formatter: '.setVisible'}">
+														change="onValueChange" >
 						<core:Item key="{stationList>}" text="Station {stationList>}"/>
 					</Select>
 					<ToolbarSpacer />

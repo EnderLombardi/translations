@@ -9,7 +9,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 					 * @memberOf polypoly.main
 					 */
 					onInit : function() {
-						
+					
 					},
 
 					createColumn : function(sId, oContext) {
@@ -908,9 +908,9 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 								line_number, station,
 								airbus.mes.polypoly.ModelManager.site);
 					},
-					setVisible: function(){
-						return  airbus.mes.polypoly.PolypolyManager.globalContext.tabSelected == "polypoly" ? true:false;
-					},
+//					setVisible: function(){
+//						return  airbus.mes.polypoly.PolypolyManager.globalContext.tabSelected == "polypoly" ? true:false;
+//					},
 
 				/**
 				 * Called when the Controller is destroyed. Use this one to free
