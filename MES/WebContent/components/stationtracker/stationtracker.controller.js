@@ -137,32 +137,32 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	 onShiftPress : function(){
 		
   	  scheduler.matrix['timeline'].x_unit = 'minute';
-  	  scheduler.matrix['timeline'].x_step = 120;
-  	  scheduler.matrix['timeline'].x_size = 6;
-  	  scheduler.matrix['timeline'].x_length = 12;
-  	  scheduler.matrix['timeline'].x_start= 3,
+  	  scheduler.matrix['timeline'].x_step = 30;
+  	  scheduler.matrix['timeline'].x_size = 18;
+  	  scheduler.matrix['timeline'].x_length = 18;
+  	  scheduler.matrix['timeline'].x_start= 0,
   	  scheduler.matrix['timeline'].x_date = '%H:%i';
   	  scheduler.templates.timeline_scale_date = function(date){
          var func=scheduler.date.date_to_str(scheduler.matrix['timeline'].x_date );
          return func(date);
       };
-      scheduler.updateView();
+      scheduler.updateView(airbus.mes.stationtracker.ShiftManager.current_Date);
   	  
 	 },
 	 
 	 onDayPress : function(){
 			
 		  scheduler.matrix['timeline'].x_unit = 'minute';
-       	  scheduler.matrix['timeline'].x_step = 120;
-       	  scheduler.matrix['timeline'].x_start= 3,
-       	  scheduler.matrix['timeline'].x_size = 8.5;
-       	  scheduler.matrix['timeline'].x_length = 12;
+       	  scheduler.matrix['timeline'].x_step = 60;
+       	  scheduler.matrix['timeline'].x_start= 0;
+       	  scheduler.matrix['timeline'].x_size = 18;
+       	  scheduler.matrix['timeline'].x_length = 18;
        	  scheduler.matrix['timeline'].x_date = '%H:%i';
        	  scheduler.templates.timeline_scale_date = function(date){
              var func=scheduler.date.date_to_str(scheduler.matrix['timeline'].x_date );
              return func(date);
           };
-          scheduler.updateView();
+          scheduler.updateView(airbus.mes.stationtracker.ShiftManager.current_Date);
 	  	  
 		 },
 	

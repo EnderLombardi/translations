@@ -196,33 +196,33 @@ airbus.mes.stationtracker.ShiftManager  = {
 	// Date timelineStart(Date)
 	timelineStart : function(date) {
 		var oFormatter = airbus.mes.stationtracker.util.Formatter;
-	
-		var d2 = new Date(date);
-		var startDate = d2;
-		// Compute start date according to 'old' timeline_start implementation
-		// var startDate =
-		// scheduler.date.add(scheduler.date.day_start(d2),scheduler.matrix.timeline.x_step
-		// * scheduler.matrix.timeline.x_start,
-		// scheduler.matrix.timeline.x_unit);
+//	
+//		var d2 = new Date(date);
+//		var startDate = d2;
+//	 Compute start date according to 'old' timeline_start implementation
+//		 var startDate =
+//		 scheduler.date.add(scheduler.date.day_start(d2),scheduler.matrix.timeline.x_step
+//		 * scheduler.matrix.timeline.x_start,
+//		 scheduler.matrix.timeline.x_unit);
 
-		if (this.shifts.length === 0) {
-			//
-			startDate.setMinutes(0);
-			return startDate;
-		}
+//		if (this.shifts.length === 0) {
+//			//
+//			startDate.setMinutes(0);
+//			return startDate;
+//		}
 
-		// Compute closest shift
-		var c = this.closestShift(d2);
-		if (c < 0) {
-			c = this.shifts.length - 1; // take last shift
-		}
+//		// Compute closest shift
+//		var c = this.closestShift(d2);
+//		if (c < 0) {
+//			c = this.shifts.length - 1; // take last shift
+//		}
 		// send a copy in case the scheduler does some computation on it :)
-		var shiftStart = scheduler.date.copy(oFormatter.jsDateFromDayTimeStr(this.shifts[c].StartDate));
+//		var shiftStart = scheduler.date.copy(oFormatter.jsDateFromDayTimeStr(this.shifts[c].StartDate));
 
-		if ( this.firstTimelineStart ) {
-			shiftStart = this.adjustSchedulerXStart(shiftStart);
-			this.firstTimelineStart = false;
-		}
+//		if ( this.firstTimelineStart ) {
+//			shiftStart = this.adjustSchedulerXStart(shiftStart);
+//			this.firstTimelineStart = false;
+//		}
 
 //		this.step += 1;
 //		
@@ -237,16 +237,18 @@ airbus.mes.stationtracker.ShiftManager  = {
 //						}
 //					this.step = 0;
 //					}
-				
-		if (!this.fDraging) {
-			// return which one is the highest
-			return (shiftStart > startDate) ? shiftStart : startDate;
-		
-		}else {
-			
-			return startDate;
+//				
+//		if (!this.fDraging) {
+//			// return which one is the highest
+//			return (shiftStart > startDate) ? shiftStart : startDate;
+//		
+//		}else {
+//			
+//			return startDate;
 
-		}	
+//		}
+		
+		return this.adjustSchedulerXStart(date);
 	},
 
 	/**
@@ -372,9 +374,9 @@ airbus.mes.stationtracker.ShiftManager  = {
 		// XXX probably better with Math.floor, still I keep it like that
 		// because i'm afraid of the shifts ending at 11:59:59.
 		// Maybe that's unnecessary (to be evaluated)
-		if ( !this.firstTimelineStart ) {
-			scheduler.matrix.timeline.x_start = Math.round((date.getHours() * 60 + date.getMinutes()) / scheduler.matrix.timeline.x_step);
-		};
+//		if ( !this.firstTimelineStart ) {
+//			scheduler.matrix.timeline.x_start = Math.round((date.getHours() * 60 + date.getMinutes()) / scheduler.matrix.timeline.x_step);
+//		};
 		
 		// /////////////////////////////////////////////////
 		// Recalculate X_SIZE to display X Intervals
@@ -400,66 +402,78 @@ airbus.mes.stationtracker.ShiftManager  = {
 		var shift_begin = date;
 		var shift_end = oFormatter.jsDateFromDayTimeStr(this.shifts[c].EndDate);
 		
-		while ( w_int < nb_int && c <= this.shifts.length - 1 ) {
-			if (previous_shift_end
-					&&  Math.floor((shift_begin - previous_shift_end)/1000) < scheduler.matrix.timeline.x_step * 60)
-				{
-				w_int -= 1;
-				};
-			var diff = {} ;
-			var tmp = shift_end - shift_begin;
-			tmp = Math.floor(tmp/1000);             // Nombre de secondes entre
-													// les 2 dates
-		    diff.sec = tmp % 60;                    // Extraction du nombre de
-													// secondes
-		    tmp = Math.floor((tmp-diff.sec)/60);    // Nombre de minutes (partie
-													// entière)
-		    diff.min = tmp % 60;                    // Extraction du nombre de
-													// minutes
-		    tmp = Math.floor((tmp-diff.min)/60);    // Nombre d'heures
-													// (entières)
-		    diff.hour = tmp % 24;                   // Extraction du nombre
-													// d'heures
-		    tmp = Math.floor((tmp-diff.hour)/24);   // Nombre de jours restants
-		    diff.day = tmp;
-			
-		    var w_int_left = Math.round(diff.day * 24*(60/scheduler.matrix.timeline.x_step) + diff.hour * (60/scheduler.matrix.timeline.x_step) + diff.min / scheduler.matrix.timeline.x_step);
-		    if (w_int + w_int_left < nb_int) {
-		    	w_int += w_int_left;
-		    	c+= 1;
-		    	if (c <= this.shifts.length - 1) {
-		    	previous_shift_end	= shift_end;
-		    	shift_begin = oFormatter.jsDateFromDayTimeStr(this.shifts[c].StartDate);
-				shift_end = oFormatter.jsDateFromDayTimeStr(this.shifts[c].EndDate);
-		    	};
-		    } else {
-		    	var w_int_end = nb_int - w_int;
-		    	end_int_date = new Date(shift_begin.getTime() + w_int_end*scheduler.matrix.timeline.x_step*60000);
-		    	w_int += w_int_left; 
-		    };
+//		while ( w_int < nb_int && c <= this.shifts.length - 1 ) {
+//			if (previous_shift_end
+//					&&  Math.floor((shift_begin - previous_shift_end)/1000) < scheduler.matrix.timeline.x_step * 60)
+//				{
+//				w_int -= 1;
+//				};
+//			var diff = {} ;
+//			var tmp = shift_end - shift_begin;
+//			tmp = Math.floor(tmp/1000);             // Nombre de secondes entre
+//													// les 2 dates
+//		    diff.sec = tmp % 60;                    // Extraction du nombre de
+//													// secondes
+//		    tmp = Math.floor((tmp-diff.sec)/60);    // Nombre de minutes (partie
+//													// entière)
+//		    diff.min = tmp % 60;                    // Extraction du nombre de
+//													// minutes
+//		    tmp = Math.floor((tmp-diff.min)/60);    // Nombre d'heures
+//													// (entières)
+//		    diff.hour = tmp % 24;                   // Extraction du nombre
+//													// d'heures
+//		    tmp = Math.floor((tmp-diff.hour)/24);   // Nombre de jours restants
+//		    diff.day = tmp;
+//			
+//		    var w_int_left = Math.round(diff.day * 24*(60/scheduler.matrix.timeline.x_step) + diff.hour * (60/scheduler.matrix.timeline.x_step) + diff.min / scheduler.matrix.timeline.x_step);
+//		    if (w_int + w_int_left < nb_int) {
+//		    	w_int += w_int_left;
+//		    	c+= 1;
+//		    	if (c <= this.shifts.length - 1) {
+//		    	previous_shift_end	= shift_end;
+//		    	shift_begin = oFormatter.jsDateFromDayTimeStr(this.shifts[c].StartDate);
+//				shift_end = oFormatter.jsDateFromDayTimeStr(this.shifts[c].EndDate);
+//		    	};
+//		    } else {
+//		    	var w_int_end = nb_int - w_int;
+//		    	end_int_date = new Date(shift_begin.getTime() + w_int_end*scheduler.matrix.timeline.x_step*60000);
+//		    	w_int += w_int_left; 
+//		    };
+//		};
+//		
+//		if (w_int < nb_int) {
+//			date = new Date(date.getTime() - scheduler.matrix.timeline.x_step*60000);
+//			this.adjustSchedulerXStart(date);
+//			return date;
+//		} else {
+//		var tmp = end_int_date - date; 
+//	    tmp = Math.floor(tmp/1000);             // Nombre de secondes entre les
+//												// 2 dates
+//	    diff.sec = tmp % 60;                    // Extraction du nombre de
+//												// secondes
+//	    tmp = Math.floor((tmp-diff.sec)/60);    // Nombre de minutes (partie
+//												// entière)
+//	    diff.min = tmp % 60;                    // Extraction du nombre de
+//												// minutes
+//	    tmp = Math.floor((tmp-diff.min)/60);    // Nombre d'heures (entières)
+//	    diff.hour = tmp % 24;                   // Extraction du nombre d'heures
+//	    tmp = Math.floor((tmp-diff.hour)/24);   // Nombre de jours restants
+//	    diff.day = tmp;
+//	    
+//	    scheduler.matrix.timeline.x_size = Math.round(diff.day *24*(60/scheduler.matrix.timeline.x_step) + diff.hour *(60/scheduler.matrix.timeline.x_step) + diff.min / scheduler.matrix.timeline.x_step );
+//	    return date;
+//	    
+//		};
+
+		if ( this.firstTimelineStart ) {
+			date  = oFormatter.jsDateFromDayTimeStr(this.shifts[c].StartDate);
+			this.firstTimelineStart = false;
 		};
 		
-		if (w_int < nb_int) {
-			date = new Date(date.getTime() - scheduler.matrix.timeline.x_step*60000);
-			this.adjustSchedulerXStart(date);
-			return date;
-		} else {
-		var tmp = end_int_date - date; 
-	    tmp = Math.floor(tmp/1000);             // Nombre de secondes entre les
-												// 2 dates
-	    diff.sec = tmp % 60;                    // Extraction du nombre de
-												// secondes
-	    tmp = Math.floor((tmp-diff.sec)/60);    // Nombre de minutes (partie
-												// entière)
-	    diff.min = tmp % 60;                    // Extraction du nombre de
-												// minutes
-	    tmp = Math.floor((tmp-diff.min)/60);    // Nombre d'heures (entières)
-	    diff.hour = tmp % 24;                   // Extraction du nombre d'heures
-	    tmp = Math.floor((tmp-diff.hour)/24);   // Nombre de jours restants
-	    diff.day = tmp;
-	    scheduler.matrix.timeline.x_size = Math.round(diff.day *24*(60/scheduler.matrix.timeline.x_step) + diff.hour *(60/scheduler.matrix.timeline.x_step) + diff.min / scheduler.matrix.timeline.x_step );
-		return date;	
-		};
+		
+	    scheduler.matrix.timeline.x_size = Math.floor((new Date(this.shifts[c].EndDate) - new Date(this.shifts[c].StartDate))/1000/60/30);
+	   
+		return date;
 		
 		// ////////////////////////////////////////////////
 
@@ -596,63 +610,63 @@ airbus.mes.stationtracker.ShiftManager  = {
 		
 	},
 	
-	/**
-	 * Parse the WorkListModel and some the progress and duration (IM) of each operation in the same group.
-	 * at the end it divide this number by 100 to transform it in hour.
-	 * If the selected group in gantt is AVL_Line,it call the computeAvlDoublon function to know if an operation
-	 * is in several group,if it the case the duration and progress are divided by the number of different group where is
-	 * the operation.
-	 *  
-	 */
-	computeDelayedHour : function() {
-		
-		this.GroupGantt = {};
-				
-		if (ModelManager.group_type === "dynamicAVL_Line") {
-
-			var aModel = sap.ui.getCore().getModel("WorkListAVLModel").oData.Rowsets.Rowset[0].Row;
-			ShiftManager.computeAvlDoublon();
-
-		} else {
-
-			var aModel = sap.ui.getCore().getModel("WorkListModel").oData.Rowsets.Rowset[0].Row;
-		}
-	
-		aModel.reduce(function(a, b, c) {
-
-		
-		
-			if (ModelManager.group_type === "dynamicAVL_Line") {
-				var fAvlDivider = ShiftManager.OperationAvlDoublon[b.workOrder + "/" + b.operation].nb;
-			} else {
-
-				var fAvlDivider = 1;
-			}
-
-			var sGroup = ModelManager.group_type;
-
-			if (sGroup === "dynamicAVL_Line") {
-
-				sGroup = "AVL_Line2";
-
-			}
-
-			if ( b.dynamicReschedStartDate != "---" ){
-				
-				if (!ShiftManager.GroupGantt[b[sGroup]]) {
-					ShiftManager.GroupGantt[b[sGroup]] = [{"progress" : 0 , "duration" : 0}];				
-				}
-							
-				ShiftManager.GroupGantt[b[sGroup]][0].progress += parseFloat(b.progress) / 100 / fAvlDivider;
-				if ( b.AVL_EndDateTime != "---" ) {
-					if( ShiftManager.jsDateFromDayTimeStr(b.AVL_EndDateTime) < new Date() )
-					ShiftManager.GroupGantt[b[sGroup]][0].duration += parseFloat(b.duration) / 100 / fAvlDivider;
-				}
-			}
-		})
-		
-		scheduler.updateView();
-	},
+//	/**
+//	 * Parse the WorkListModel and some the progress and duration (IM) of each operation in the same group.
+//	 * at the end it divide this number by 100 to transform it in hour.
+//	 * If the selected group in gantt is AVL_Line,it call the computeAvlDoublon function to know if an operation
+//	 * is in several group,if it the case the duration and progress are divided by the number of different group where is
+//	 * the operation.
+//	 *  
+//	 */
+//	computeDelayedHour : function() {
+//		
+//		this.GroupGantt = {};
+//				
+//		if (ModelManager.group_type === "dynamicAVL_Line") {
+//
+//			var aModel = sap.ui.getCore().getModel("WorkListAVLModel").oData.Rowsets.Rowset[0].Row;
+//			ShiftManager.computeAvlDoublon();
+//
+//		} else {
+//
+//			var aModel = sap.ui.getCore().getModel("WorkListModel").oData.Rowsets.Rowset[0].Row;
+//		}
+//	
+//		aModel.reduce(function(a, b, c) {
+//
+//		
+//		
+//			if (ModelManager.group_type === "dynamicAVL_Line") {
+//				var fAvlDivider = ShiftManager.OperationAvlDoublon[b.workOrder + "/" + b.operation].nb;
+//			} else {
+//
+//				var fAvlDivider = 1;
+//			}
+//
+//			var sGroup = ModelManager.group_type;
+//
+//			if (sGroup === "dynamicAVL_Line") {
+//
+//				sGroup = "AVL_Line2";
+//
+//			}
+//
+//			if ( b.dynamicReschedStartDate != "---" ){
+//				
+//				if (!ShiftManager.GroupGantt[b[sGroup]]) {
+//					ShiftManager.GroupGantt[b[sGroup]] = [{"progress" : 0 , "duration" : 0}];				
+//				}
+//							
+//				ShiftManager.GroupGantt[b[sGroup]][0].progress += parseFloat(b.progress) / 100 / fAvlDivider;
+//				if ( b.AVL_EndDateTime != "---" ) {
+//					if( ShiftManager.jsDateFromDayTimeStr(b.AVL_EndDateTime) < new Date() )
+//					ShiftManager.GroupGantt[b[sGroup]][0].duration += parseFloat(b.duration) / 100 / fAvlDivider;
+//				}
+//			}
+//		})
+//		
+//		scheduler.updateView();
+//	},
 
 	/**
 	 * Parse the WorkListModel and some the total of different group where is present the workorder/operation in case

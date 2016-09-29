@@ -121,7 +121,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 							return true;
 
 						}));
-						scheduler.date.timeline_start = ShiftManager.bounded("timelineStart");
+						scheduler.date.timeline_start = ShiftManager.bounded("adjustSchedulerXStart");
 						scheduler.date.add_timeline_old = scheduler.date.add_timeline;
 						scheduler.date.add_timeline = ShiftManager.bounded("timelineAddStep");
 						
@@ -279,14 +279,14 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 
 						/* Create arrow to change shift/day */								
 							if ($("div[class='dhx_cal_next_button']").length === 0) {
-								$("div[class='dhx_cal_header']").append(("<div class='dhx_cal_next_button' Style='float:right;'></div>"));
+								$("div[class='dhx_cal_header']").append(("<div class='dhx_cal_next_button' Style='float:right; width:30px;'></div>"));
 								$("div[class='dhx_cal_next_button']").click(function() {
 									scheduler._click.dhx_cal_next_button()
 								});
 							}
 
 							if ($("div[class='dhx_cal_prev_button']").length === 0) {
-								$("div[class='dhx_cal_header']").append(("<div class='dhx_cal_prev_button' Style='float:right;'></div>"));
+								$("div[class='dhx_cal_header']").append(("<div class='dhx_cal_prev_button' Style='float:right; width:30px;'></div>"));
 								$("div[class='dhx_cal_prev_button']").click(function() {
 									scheduler._click.dhx_cal_prev_button()
 								});
