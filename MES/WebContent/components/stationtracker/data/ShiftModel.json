@@ -13,9 +13,8 @@
              { "shiftName" : "EARLY 1","shiftID" : "EARLY 1", "day" : "2014-06-30", "beginDateTime" : "2014-06-30 11:00:00", "endDateTime" : "2014-06-30 12:00:00" }, 
              { "shiftName" : "EARLY 1","shiftID" : "EARLY 1", "day" : "2014-06-30", "beginDateTime" : "2014-06-30 13:30:00", "endDateTime" : "2014-06-30 16:30:00" }, 
              { "shiftName" : "LATE 1","shiftID" : "LATE 1", "day" : "2014-06-30", "beginDateTime" : "2014-06-30 18:29:59", "endDateTime" : "2014-06-30 22:15:00" },
-             { "shiftName" : "EARLY 2","shiftID" : "EARLY 2", "day" : "2014-07-01", "beginDateTime" : "2014-07-01 10:30:00", "endDateTime" : "2014-07-01 16:30:00" }, 
-             { "shiftName" : "LATE 2","shiftID" : "LATE 2", "day" : "2014-07-01", "beginDateTime" : "2014-07-01 18:29:59", "endDateTime" : "2014-07-02 02:00:00" }]
-             } ]
+             { "shiftName" : "EARLY 2","shiftID" : "EARLY 2", "day" : "2014-07-01", "beginDateTime" : "2014-07-01 10:30:00", "endDateTime" : "2014-07-01 15:30:00" }, 
+             { "shiftName" : "LATE 2","shiftID" : "LATE 2", "day" : "2014-07-01", "beginDateTime" : "2014-07-01 18:30:00", "endDateTime" : "2014-07-02 02:00:00" }]             } ]
        }
 }
 

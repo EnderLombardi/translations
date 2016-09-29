@@ -10,7 +10,11 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 	 */
 
 	onInit : function() {
+<<<<<<< Upstream, based on origin/MESv0.9
 
+=======
+	
+>>>>>>> ca325a3 Shift
 	},
 	onPress : function(oEvt) {
 

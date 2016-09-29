@@ -4,7 +4,11 @@ airbus.mes.stationtracker.ShiftManager  = {
     
 	firstTimelineStart : undefined,
 	
+	dayDisplay : undefined,
+	shiftDisplay :true,
+	
 	current_shift : undefined,
+	currentShiftStart : undefined,
 	current_Date : undefined,
 	currentFullDate : undefined,
 	currentShiftEnd : undefined,
@@ -270,8 +274,13 @@ airbus.mes.stationtracker.ShiftManager  = {
 		if (this.shifts.length === 0)
 			return scheduler.date.add_timeline_old(date, step, mode);
 
-		var c = this.closestShift(date);
-				
+		var c = this.closestShift(new Date(date));
+
+		if ( this.dayDisplay ) {
+			
+			step = step*2;
+		}
+		
 		if (c < 0) {
 			c = this.shifts.length - 1; // take last shift
 		}
@@ -292,7 +301,10 @@ airbus.mes.stationtracker.ShiftManager  = {
 			return date;
 		}
 
+		
 		var d = scheduler.date.copy(oFormatter.jsDateFromDayTimeStr(this.shifts[c + step].StartDate));
+			
+				
 		this.currentFullDateSwipping = d;
 		
 		d = this.adjustSchedulerXStart(d);
@@ -381,10 +393,10 @@ airbus.mes.stationtracker.ShiftManager  = {
 		// /////////////////////////////////////////////////
 		// Recalculate X_SIZE to display X Intervals
 		// /////////////////////////////////////////////////
-		var c = this.closestShift(date);
+		var c = this.closestShift(new Date(date));
 		this.current_shift = this.shifts[c].shiftName;
 		this.current_Date = oFormatter.jsDateFromDayTimeStr(this.shifts[c].StartDate);
-		// this.currentShiftStart = ShiftManager.shifts[c].getStartDate();
+		this.currentShiftStart = this.shifts[c].StartDate;
 		// this.currentShiftEnd = ShiftManager.shifts[c].getEndDate();
 		this.currentFullDate = oFormatter.jsDateFromDayTimeStr(this.shifts[c].StartDate);
 		this.currentShiftIndex = c;
@@ -465,15 +477,75 @@ airbus.mes.stationtracker.ShiftManager  = {
 //	    
 //		};
 
-		if ( this.firstTimelineStart ) {
-			date  = oFormatter.jsDateFromDayTimeStr(this.shifts[c].StartDate);
-			this.firstTimelineStart = false;
-		};
-		
+//		if ( this.firstTimelineStart ) {
+//			date  = oFormatter.jsDateFromDayTimeStr(this.shifts[c].StartDate);
+//			this.firstTimelineStart = false;
+//		};
+//		
+		if ( this.shiftDisplay ) {
 		
 	    scheduler.matrix.timeline.x_size = Math.floor((new Date(this.shifts[c].EndDate) - new Date(this.shifts[c].StartDate))/1000/60/30);
 	   
-		return date;
+		}
+		
+		if ( this.dayDisplay ) {
+		
+						
+			scheduler.matrix.timeline.x_size = 0;
+			var a = c;
+			var b =  c;
+			
+			
+			while (!fEndDate) {
+				
+			if ( a < this.shifts.length ) {	
+				if ( this.shifts[a].day === this.current_Date ) {
+					
+					a += 1 ;
+				} else {
+					
+					var fEndDate = Date.parse(new Date(this.shifts[a-1].EndDate));
+					
+				}
+				
+			} else {
+				
+				var fEndDate = Date.parse(new Date(this.shifts[this.shifts.length - 1].EndDate));
+				
+			} }
+			
+			while (!fStartDate) {
+			
+			if ( b > 0) {
+						
+				if ( this.shifts[b].day === this.current_Date ) {
+					
+					b -= 1 ;
+					} else {
+					
+						var fStartDate =  Date.parse(new Date(this.shifts[b+1].StartDate));
+							}
+				
+					}
+			else {
+				
+				var fStartDate =  Date.parse(new Date(this.shifts[b].StartDate));
+				
+				}
+			}
+			
+			for ( var i = fStartDate; i <= fEndDate; i += 1000*60*60 ) {
+				
+				this.isDateIgnored(new Date(i));
+				
+			}
+			
+		    scheduler.matrix.timeline.x_size += Math.floor((new Date(fEndDate) - new Date(fStartDate))/1000/60/60);
+		    return new Date ( fStartDate );
+		    
+			}
+		
+		return new Date( this.shifts[c].StartDate );
 		
 		// ////////////////////////////////////////////////
 
@@ -513,6 +585,7 @@ airbus.mes.stationtracker.ShiftManager  = {
 			
 			if (d1 > date) {
 				if (iMin === iMed) {
+					 scheduler.matrix.timeline.x_size += 1; 
 					return true;
 				} else {
 					iMax = iMed - 1;
@@ -522,6 +595,7 @@ airbus.mes.stationtracker.ShiftManager  = {
 				// to not show the next 15 minutes in case a shift
 				// ends at 19:15 for example.
 				if (iMed === iMax) {
+					scheduler.matrix.timeline.x_size += 1; 
 					return true;
 				} else {
 					iMin = iMed + 1;
