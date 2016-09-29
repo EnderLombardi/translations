@@ -11,24 +11,7 @@ sap.ui.controller(
 					 * @memberOf polypoly.main
 					 */
 					onInit : function() {
-						var miiModel = new sap.ui.model.json.JSONModel();
-						sap.ui.getCore().setModel(miiModel, "mii");
-						airbus.mes.polypoly.PolypolyManager.getPolypolyModel(
-								airbus.mes.polypoly.ModelManager.factory_name,
-								airbus.mes.polypoly.ModelManager.line_number,
-								airbus.mes.polypoly.ModelManager.station_number, airbus.mes.polypoly.ModelManager.site);
-						sap.ui.getCore().getModel("mii")
-								.attachRequestCompleted(
-										airbus.mes.polypoly.PolypolyManager.onModelLoaded);
-						needLevelsmodel = new sap.ui.model.json.JSONModel(
-								"model/needlevels.json");
-						sap.ui.getCore()
-								.setModel(needLevelsmodel, "needlevels");
-						columnModel = new sap.ui.model.json.JSONModel();
-						listQAmodel = new sap.ui.model.json.JSONModel(
-								airbus.mes.polypoly.PolypolyManager.urlModel
-										.getProperty("urlgetqalist"));
-						sap.ui.getCore().setModel(listQAmodel, "listQA");
+						
 					},
 
 					createColumn : function(sId, oContext) {
@@ -907,11 +890,6 @@ sap.ui.controller(
 					 * @memberOf polypoly.main
 					 */
 					onAfterRendering : function() {
-						if (airbus.mes.polypoly.PolypolyManager.globalContext.tabSelected == "allocation") {
-							this.filterUA();
-						} else {
-							this.clearFilters();
-						}
 						sap.ui.getCore().byId(
 								"polypolyView--stationSelectPolyPoly")
 								.setSelectedKey(airbus.mes.polypoly.ModelManager.station_number);

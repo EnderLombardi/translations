@@ -32,7 +32,25 @@ airbus.mes.polypoly.Component.prototype.createContent = function() {
 			height : "100%"
 		})
 		airbus.mes.polypoly.oView = this.oView;
-
+//Model initialisation
+		var miiModel = new sap.ui.model.json.JSONModel();
+		sap.ui.getCore().setModel(miiModel, "mii");
+		airbus.mes.polypoly.PolypolyManager.getPolypolyModel("F1","1","10","CHES");
+		sap.ui.getCore().getModel("mii")
+				.attachRequestCompleted(
+						airbus.mes.polypoly.PolypolyManager.onModelLoaded);
+		needLevelsmodel = new sap.ui.model.json.JSONModel(
+				"model/needlevels.json");
+		sap.ui.getCore()
+				.setModel(needLevelsmodel, "needlevels");
+		columnModel = new sap.ui.model.json.JSONModel();
+		listQAmodel = new sap.ui.model.json.JSONModel(
+				airbus.mes.polypoly.PolypolyManager.urlModel
+						.getProperty("urlgetqalist"));
+		sap.ui.getCore().setModel(listQAmodel, "listQA");		
+		
+//		
+		
 //		var i18nModel = new sap.ui.model.resource.ResourceModel({
 //	        bundleUrl : "../components/homepage/i18n/i18n.properties",
 ////	        bundleLocale : "en" automatic defined by parameter sap-language
