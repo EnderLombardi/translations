@@ -1,5 +1,5 @@
 <core:FragmentDefinition xmlns:core="sap.ui.core"
-	xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:custom="mes_aos_gui"
+	xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:custom="airbus.mes.stationtracker"
 	xmlns:html="http://www.w3.org/1999/xhtml">
 	<Popover>
 		<List id="myList" growing="true" growingThreshold="20"

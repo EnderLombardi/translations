@@ -323,6 +323,21 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 								airbus.mes.stationtracker.operationPopover.openBy(e.srcElement);											
 							case "shopOrder" :	
 //								Boxing Work order, we display the worklist list								
+								if ( airbus.mes.stationtracker.worklistPopover === undefined ) {
+									
+									var oView = airbus.mes.stationtracker.oView;
+									airbus.mes.stationtracker.worklistPopover = sap.ui.xmlfragment("worklistPopover","airbus.mes.stationtracker.worklistPopover", airbus.mes.stationtracker.oView.getController());
+									airbus.mes.stationtracker.worklistPopover.addStyleClass("alignTextLeft");
+									oView.addDependent(airbus.mes.stationtracker.worklistPopover);
+								}
+//								var oNavCon = sap.ui.getCore().byId("operationPopover--navOperatorContainer");
+//								var oMasterPage = sap.ui.getCore().byId("operationPopover--master");
+//								oNavCon.to(oMasterPage);
+//								oNavCon.currentPageIsTopPage();
+//								var oOperationPopover = sap.ui.getCore().byId("operationPopover--operationPopoverID");
+//								oOperationPopover.setContentHeight("353px");								
+								airbus.mes.stationtracker.worklistPopover.openBy(e.srcElement);	
+							
 							}
 							
 						

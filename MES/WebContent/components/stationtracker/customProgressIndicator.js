@@ -1,5 +1,8 @@
 "use strict";
-sap.ui.core.Control.extend("mes_aos_gui.customProgressIndicator", {
+
+jQuery.sap.declare("airbus.mes.stationtracker.customProgressIndicator");
+
+sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", {
 	metadata : {
 		
 		  events: {
