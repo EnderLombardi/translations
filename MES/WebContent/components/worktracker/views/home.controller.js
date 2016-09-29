@@ -7,39 +7,41 @@ sap.ui.controller("airbus.mes.worktracker.views.home", {
 */
 	onInit: function() {
 		
+		var url="http://"+window.location.host+"/MES/components/worktracker/local/";
+		
 		// Model for station names
 		this.getView().setModel(new sap.ui.model.json.JSONModel(),"stationModel");	 
-		this.getView().getModel("stationModel").loadData("local/stations.json",null,false);
+		this.getView().getModel("stationModel").loadData(url+"stations.json",null,false);
 		
 		// Model for change operator
 		this.getView().setModel(new sap.ui.model.json.JSONModel(),"operatorsModel");	 
-		this.getView().getModel("operatorsModel").loadData("local/operators_S10.json",null,false);
+		this.getView().getModel("operatorsModel").loadData(url+"operators_S10.json",null,false);
 		
 		
 		// Model for Document List
 		sap.ui.getCore().setModel(new sap.ui.model.json.JSONModel(),"documentsNameModel");	 
 		sap.ui.getCore()
-		.getModel("documentsNameModel").loadData("local/document.json",null,false);
+		.getModel("documentsNameModel").loadData(url+"document.json",null,false);
 		
 		// Model for table in disruptions
 		var oModel = new sap.ui.model.json.JSONModel();
 		this.getView().setModel(oModel , "tableModel");
-		oModel.loadData("local/tableContent.json",null,false);
+		oModel.loadData(url+"tableContent.json",null,false);
 		
 		// Model for operation View
 		var oModel = new sap.ui.model.json.JSONModel();
 		sap.ui.getCore().setModel(oModel, "ScheduleModel");
-		oModel.loadData("local/schedule.json", null, false);
+		oModel.loadData(url+"schedule.json", null, false);
 		
 		// Model for station names
 		this.getView().setModel(new sap.ui.model.json.JSONModel(),"activityModel");	 
-		this.getView().getModel("activityModel").loadData("local/activities.json",null,false);
+		this.getView().getModel("activityModel").loadData(url+"activities.json",null,false);
 		
 		//this.getView().byId("customNav").render()
 		
 		// Model for station names
 		this.getView().setModel(new sap.ui.model.json.JSONModel(),"status");	 
-		this.getView().getModel("status").loadData("local/status.json",null,false);
+		this.getView().getModel("status").loadData(url+"status.json",null,false);
 
 	},
 	
@@ -161,7 +163,7 @@ sap.ui.controller("airbus.mes.worktracker.views.home", {
 		
 	onSelectionStation : function (oEvt) {
 	// LoadOperators  Model Data based on Station selected
-			this.getView().getModel("operatorsModel").loadData("local/operators_" + oEvt.getSource().getSelectedItem().getKey() + ".json",null,false);
+			this.getView().getModel("operatorsModel").loadData(url+"operators_" + oEvt.getSource().getSelectedItem().getKey() + ".json",null,false);
 		},
 	
 	onSearch : function (oEvt) {

@@ -6,7 +6,11 @@ sap.ui.define([
 	return UIComponent.extend("airbus.mes.worktracker.components.Component", {
 
 		metadata: {
-			manifest: "json"
+			manifest: "json",
+			includes : [ "../css/workTracker.css",
+			             "../css/sideNavigation.css",
+			             "../util/Formatter.js",
+			             "../util/Functions.js"]
 		},
 
 		init: function () {
