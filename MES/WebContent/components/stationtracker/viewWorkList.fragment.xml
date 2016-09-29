@@ -1,0 +1,33 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:custom="mes_aos_gui"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Popover>
+		<List id="myList" growing="true" growingThreshold="20"
+			growingScrollToLoad="true" items="{ path: 'WorkListModel>/Rowsets/Rowset/0/Row' }">
+			<items>
+				<InputListItem id="sorterList">
+					<content>
+						<HBox>
+							<items>
+								<custom:customProgressIndicator
+									width="auto" state="sap.ui.core.ValueState.Success" status="{WorkListModel>status}"
+									isAndon="{WorkListModel>andon}" delayed="{WorkListModel>DELAY}"
+									displayValue3="{WorkListModel>ACPnG_Status}" nc="{WorkListModel>nbOpenNC}"
+									reservation="{WorkListModel>nbOpenReservations}"
+									displayValue="{ parts: [ 'WorkListModel>workOrder','WorkListModel>workOrderDescription' ], formatter: 'util.Formatter.titleWorklist'}"
+									displayValue2="{ parts: [ 'WorkListModel>operation','WorkListModel>description','WorkListModel>progress','WorkListModel>duration' ], formatter: 'util.Formatter.displayValueIM'}"
+									percentValue="{ parts: [ 'WorkListModel>progress','WorkListModel>duration' ], formatter: 'util.Formatter.percentValue'}"
+									click=".infoPop">
+									<custom:layoutData>
+										<FlexItemData baseSize="100%" growFactor="1"></FlexItemData>
+									</custom:layoutData>
+								</custom:customProgressIndicator>
+							</items>
+						</HBox>
+					</content>
+				</InputListItem>
+			</items>
+		</List>
+	</Popover>
+</core:FragmentDefinition>
+

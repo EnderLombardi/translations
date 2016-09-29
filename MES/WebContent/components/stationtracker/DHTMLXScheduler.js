@@ -304,29 +304,28 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 				
 							
 						scheduler.eventId.push ( scheduler.attachEvent("onClick", function(id, e) {	
-//							if ( airbus.mes.stationtracker.schedulerPopover === undefined ) {
-//								
-//								airbus.mes.stationtracker.schedulerPopover = sap.ui.xmlfragment("airbus.mes.stationtracker.schedulerPopover", airbus.mes.stationtracker.oView.getController());
-//								airbus.mes.stationtracker.schedulerPopover.addStyleClass("alignTextLeft");
-//								
-//							}
-//							
-//							airbus.mes.stationtracker.schedulerPopover.openBy(e.srcElement);		
-
-							if ( airbus.mes.stationtracker.operationPopover === undefined ) {
-								
-								var oView = airbus.mes.stationtracker.oView;
-								airbus.mes.stationtracker.operationPopover = sap.ui.xmlfragment("operationPopover","airbus.mes.stationtracker.operationPopover", airbus.mes.stationtracker.oView.getController());
-								airbus.mes.stationtracker.operationPopover.addStyleClass("alignTextLeft");
-								oView.addDependent(airbus.mes.stationtracker.operationPopover);
+							switch(airbus.mes.stationtracker.GroupingBoxingManager.box){
+							case "operationId" : 
+//								Boxing operation, we display the operation list
+								if ( airbus.mes.stationtracker.operationPopover === undefined ) {
+									
+									var oView = airbus.mes.stationtracker.oView;
+									airbus.mes.stationtracker.operationPopover = sap.ui.xmlfragment("operationPopover","airbus.mes.stationtracker.operationPopover", airbus.mes.stationtracker.oView.getController());
+									airbus.mes.stationtracker.operationPopover.addStyleClass("alignTextLeft");
+									oView.addDependent(airbus.mes.stationtracker.operationPopover);
+								}
+								var oNavCon = sap.ui.getCore().byId("operationPopover--navOperatorContainer");
+								var oMasterPage = sap.ui.getCore().byId("operationPopover--master");
+								oNavCon.to(oMasterPage);
+								oNavCon.currentPageIsTopPage();
+								var oOperationPopover = sap.ui.getCore().byId("operationPopover--operationPopoverID");
+								oOperationPopover.setContentHeight("353px");								
+								airbus.mes.stationtracker.operationPopover.openBy(e.srcElement);											
+							case "shopOrder" :	
+//								Boxing Work order, we display the worklist list								
 							}
-							var oNavCon = sap.ui.getCore().byId("operationPopover--navOperatorContainer");
-							var oMasterPage = sap.ui.getCore().byId("operationPopover--master");
-							oNavCon.to(oMasterPage);
-							oNavCon.currentPageIsTopPage();
-							var oOperationPopover = sap.ui.getCore().byId("operationPopover--operationPopoverID");
-							oOperationPopover.setContentHeight("353px");								
-							airbus.mes.stationtracker.operationPopover.openBy(e.srcElement);									
+							
+						
 							
 						}));
 						
