@@ -238,6 +238,9 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	
 		GroupingBoxingManager.parseOperation(GroupingBoxingManager.group,GroupingBoxingManager.box);
 		
+	},
+	onReschedulePress : function() {
+		console.log("toto");
 	}
 	
 });

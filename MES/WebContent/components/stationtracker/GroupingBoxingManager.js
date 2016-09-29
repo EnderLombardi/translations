@@ -291,9 +291,12 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 		
 		 scheduler.matrix['timeline'].y_unit_original = aElements2;
 		 scheduler.callEvent("onOptionsLoad", []);
-		 
-	     scheduler.init(sap.ui.getCore().byId("stationTrackerView").getId() + "--test" ,  new Date(2014,5,30),"timeline");
-	     scheduler.clearAll();
+			var ShiftManager = airbus.mes.stationtracker.ShiftManager;
+			if(ShiftManager.current_Date !=undefined){
+		scheduler.init(sap.ui.getCore().byId("stationTrackerView").getId() + "--test", new Date(ShiftManager.currentFullDate), "timeline");
+		}else{scheduler.init(sap.ui.getCore().byId("stationTrackerView").getId() + "--test" ,new Date("06-30-2014"), "timeline");
+		};
+		scheduler.clearAll();
 	     
 	     scheduler.xy.scroll_width=20;
 	     scheduler.parse(aBox,"json");

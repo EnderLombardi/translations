@@ -36,6 +36,8 @@ airbus.mes.stationtracker.Component.prototype.createContent = function() {
 	  viewName : "airbus.mes.stationtracker.stationtracker",
 	  type : "XML",
   })
+  		
+  	  this.oView.setModel(sap.ui.getCore().getModel("userSettingModel"), "userSettingModel");
   	  airbus.mes.stationtracker.oView = this.oView;	
 	  return this.oView;
 	 }

@@ -106,45 +106,25 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 						
 						
 						////////////////////////////////////////////////////
+						
+						
 						scheduler.ignore_timeline = ShiftManager.bounded("isDateIgnored");
 						ShiftManager.addMarkedShifts();
-						
-//						if(ShiftManager.current_Date !=undefined){
-//						scheduler.init(oEvt.srcControl.sId, new Date(ShiftManager.currentFullDate), "timeline");
-//						}else{scheduler.init(oEvt.srcControl.sId, new Date(), "timeline");
-//						};
-						
+					     
 						scheduler.templates.timeline_date = ShiftManager.bounded("timelineHeaderTitle");
-//						scheduler.eventId.push(scheduler.attachEvent("onBeforeTodayDisplayed", function() {
-//							
-//							ShiftManager.step = 0;
-//							ShiftManager.current_Date = new Date().toISOString().slice(0, 10);
-//							ShiftManager.adjustSchedulerXStart(new Date());
-//
-//							// ShiftManager.current_shift = "NORMAL1";
-//							return true;
-//
-//						}));
+						scheduler.eventId.push(scheduler.attachEvent("onBeforeTodayDisplayed", function() {
+							
+							ShiftManager.step = 0;
+							ShiftManager.current_Date = new Date().toISOString().slice(0, 10);
+							ShiftManager.adjustSchedulerXStart(new Date());
+
+							return true;
+
+						}));
 						scheduler.date.timeline_start = ShiftManager.bounded("timelineStart");
 						scheduler.date.add_timeline_old = scheduler.date.add_timeline;
 						scheduler.date.add_timeline = ShiftManager.bounded("timelineAddStep");
-//						if (ShiftManager.currentFullDate != undefined) {
-//							
-//							ShiftManager.step = 0;
-//							scheduler.updateView(ShiftManager.currentFullDate);	
-//							
-//							if (ShiftManager.fDraging) {
-//								scheduler.updateView(ShiftManager.currentFullDateSwipping)
-//								ShiftManager.fDraging = false;
-//
-//							}
-//							
-//						} else {
-//							
-//							ShiftManager.step = 0;
-//							scheduler.updateView();		
-//							
-//						};
+						
 						//
 						/* 	Custom Y group display */
 
@@ -293,7 +273,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 						/* Delete initial - + to indicate the collapse or expand of folder */
 						
 						scheduler.eventId.push ( scheduler.attachEvent("onScaleAdd", function( unit , date ) {
-							for (i = 0; i < $("div[class='dhx_scell_expand']").length; i++) {
+							for (var i = 0; i < $("div[class='dhx_scell_expand']").length; i++) {
 								$("div[class='dhx_scell_expand']").eq(i).remove();
 							}
 
@@ -324,17 +304,34 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 				
 							
 						scheduler.eventId.push ( scheduler.attachEvent("onClick", function(id, e) {	
-							if ( airbus.mes.stationtracker.schedulerPopover === undefined ) {
+//							if ( airbus.mes.stationtracker.schedulerPopover === undefined ) {
+//								
+//								airbus.mes.stationtracker.schedulerPopover = sap.ui.xmlfragment("airbus.mes.stationtracker.schedulerPopover", airbus.mes.stationtracker.oView.getController());
+//								airbus.mes.stationtracker.schedulerPopover.addStyleClass("alignTextLeft");
+//								
+//							}
+//							
+//							airbus.mes.stationtracker.schedulerPopover.openBy(e.srcElement);		
+
+//							if ( airbus.mes.stationtracker.ReschedulePopover === undefined ) {
+//								
+//								airbus.mes.stationtracker.ReschedulePopover = sap.ui.xmlfragment("airbus.mes.stationtracker.Reschedule", this);
+//								airbus.mes.stationtracker.ReschedulePopover.addStyleClass("alignTextLeft");
+//								
+//							}
+//							
+//							airbus.mes.stationtracker.ReschedulePopover.openBy(e.srcElement);								
+
+							if ( airbus.mes.stationtracker.operatorPopoverr === undefined ) {
 								
-								airbus.mes.stationtracker.schedulerPopover = sap.ui.xmlfragment("airbus.mes.stationtracker.schedulerPopover", this);
-								airbus.mes.stationtracker.schedulerPopover.addStyleClass("alignTextLeft");
+								airbus.mes.stationtracker.operationPopover = sap.ui.xmlfragment("airbus.mes.stationtracker.operationPopover", airbus.mes.stationtracker.oView.getController());
+								airbus.mes.stationtracker.operationPopover.addStyleClass("alignTextLeft");
 								
 							}
 							
-							airbus.mes.stationtracker.schedulerPopover.openBy(e.srcElement);		
-
+							airbus.mes.stationtracker.operationPopover.openBy(e.srcElement);									
+							
 						}));
-										
+						
 					},
-														
 				});
