@@ -143,8 +143,7 @@ airbus.mes.polypoly.ModelManager = {
 	},
 
 	loadStationListModel : function() {
-		sap.ui.getCore().getModel("stationList").setData(
-				this.StationList);
+		sap.ui.getCore().getModel("stationList").setData(this.StationList);
 	},
 
 	getUrlChkUserOprCertificatePolyPoly : function(ERP_ID) {
@@ -232,3 +231,5 @@ airbus.mes.polypoly.ModelManager = {
 	},
 
 };
+airbus.mes.polypoly.ModelManager.init(sap.ui.getCore());
+

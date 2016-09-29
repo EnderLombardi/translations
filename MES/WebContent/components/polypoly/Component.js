@@ -19,12 +19,11 @@ airbus.mes.polypoly.Component.prototype.createContent = function() {
 //	var oModel = new sap.ui.model.json.JSONModel();
 //	this.setModel(oModel, "buttonUrl");
 //	oModel.loadData("../components/homepage/data/url.json", null, false);
-	airbus.mes.polypoly.ModelManager.init(this);
 
 	if (airbus.mes.polypoly.oView === undefined) {
 		//	View on XML
-		airbus.mes.polypoly.PolypolyManager.init(this);
 		airbus.mes.polypoly.ModelManager.init(this);
+		airbus.mes.polypoly.PolypolyManager.init(this);
 
 		this.oView = sap.ui.view({
 			id : "polypoly",
