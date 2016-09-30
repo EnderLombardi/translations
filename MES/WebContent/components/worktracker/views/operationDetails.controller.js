@@ -185,6 +185,15 @@ sap.ui
 								.setText("Paused");
 					},
 					confirmOperation : function() {
+						
+						/*
+						 * var iProgress =
+						 * this.getView().byId("progressSlider").getValue();
+						 * this.getView().byId("progressSlider").setMin(iProgress);
+						 */
+						
+						
+						
 						if (!this._oPartialConfirmDialog) {
 
 							this._oPartialConfirmDialog = sap.ui
@@ -195,14 +204,40 @@ sap.ui
 							this.getView().addDependent(
 									this._oPartialConfirmDialog);
 						}
-						this._oPartialConfirmDialog.open();
-						/*
-						 * var iProgress =
-						 * this.getView().byId("progressSlider").getValue();
-						 * this.getView().byId("progressSlider").setMin(iProgress);
-						 */
+						this._oPartialConfirmDialog.open();						
+						
+					},
+					
+					onPartialConfirmation:function(){
+						if (!this.oUserConfirmation) {
+
+							this.oUserConfirmation = sap.ui
+									.xmlfragment(
+											"airbus.mes.worktracker.fragments.userConfirmation",
+											this);
+
+							this.getView().addDependent(
+									this.oUserConfirmation);
+						}
+						this.oUserConfirmation.open();
+					},
+										
+					onCancel:function(){
+						this.oUserConfirmation.close();					
 					},
 					completeOperation : function() {
+						
+						if (!this.oUserConfirmation) {
+
+							this.oUserConfirmation = sap.ui
+									.xmlfragment(
+											"airbus.mes.worktracker.fragments.userConfirmation",
+											this);
+
+							this.getView().addDependent(
+									this.oUserConfirmation);
+						}
+						this.oUserConfirmation.open();
 						if (!this._oFullConfirmDialog) {
 
 							this._oFullConfirmDialog = sap.ui

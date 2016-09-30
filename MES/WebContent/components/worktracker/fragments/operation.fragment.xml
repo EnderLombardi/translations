@@ -14,12 +14,12 @@
 						
 						<HBox alignItems="End" justifyContent="SpaceBetween">
 							<items>
-<!-- 								<ToggleButton id="buttonList" pressed="true" -->
-<!-- 									icon="sap-icon://list" press="showListView" /> -->
-<!-- 								<ToggleButton id="buttonGrid" icon="sap-icon://grid" -->
-<!-- 									press="showGridView" /> -->
-<!-- 								<ToggleButton id="buttonTime" icon="sap-icon://fob-watch" -->
-<!-- 									press="showActivityLog" /> -->
+								<ToggleButton id="buttonList" pressed="true"
+									icon="sap-icon://list" press="showListView" />
+								<ToggleButton id="buttonGrid" icon="sap-icon://grid"
+									press="showGridView" />
+								<ToggleButton id="buttonTime" icon="sap-icon://fob-watch"
+									press="showActivityLog" />
 							</items>
 						</HBox>
 					</items>

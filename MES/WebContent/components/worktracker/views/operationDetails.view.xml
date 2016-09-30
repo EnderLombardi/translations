@@ -49,7 +49,7 @@
 				<headerToolbar>
 					<Toolbar height="3.5rem" class="ML-05">
 						<VBox width="100%">
-							<Text id="operationName" class="mainText" text="OP 2000 - 924er Halter and C-Brackets incl. Massen"></Text>
+							<Text id="operationName" class="mainText" text="{operationDetailModel>/schedule/0/description}"></Text>
 
 							<HBox justifyContent="SpaceBetween" width="100%">
 								<HBox justifyContent="SpaceBetween">
