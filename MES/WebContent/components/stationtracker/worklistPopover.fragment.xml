@@ -1,7 +1,7 @@
 <core:FragmentDefinition xmlns:core="sap.ui.core"
 	xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:custom="airbus.mes.stationtracker"
 	xmlns:html="http://www.w3.org/1999/xhtml">
-	<Popover contentwidth = "500px" contentHeight="500px">
+	<Popover contentwidth = "500px" contentHeight="500px" placement="Bottom" >
 		<List id="myList" growing="true" growingThreshold="20"
 			growingScrollToLoad="true" items="{ path: 'WorkListModel>/' }">		
 <!-- 			growingScrollToLoad="true" items="{ path: 'WorkListModel>/Rowsets/Rowset/0/Row' }"> -->
