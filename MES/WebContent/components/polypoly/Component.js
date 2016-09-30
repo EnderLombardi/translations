@@ -1,6 +1,5 @@
 jQuery.sap.require("sap.ui.core.UIComponent");
 jQuery.sap.require("sap.ui.base.Event");
-jQuery.sap.require("airbus.mes.polypoly.ModelManager");
 jQuery.sap.require("airbus.mes.polypoly.PolypolyManager");
 
 jQuery.sap.declare("airbus.mes.polypoly.Component");
@@ -22,35 +21,21 @@ airbus.mes.polypoly.Component.prototype.createContent = function() {
 
 	if (airbus.mes.polypoly.oView === undefined) {
 		//	View on XML
-		airbus.mes.polypoly.ModelManager.init(this);
-		airbus.mes.polypoly.PolypolyManager.init(this);
 		
-		//Model initialisation
-		var miiModel = new sap.ui.model.json.JSONModel();
-		sap.ui.getCore().setModel(miiModel, "mii");
-		airbus.mes.polypoly.PolypolyManager.getPolypolyModel("F1","1","10","CHES");
-		sap.ui.getCore().getModel("mii")
-				.attachRequestCompleted(
-						airbus.mes.polypoly.PolypolyManager.onModelLoaded);
-		needLevelsmodel = new sap.ui.model.json.JSONModel(
-				"./model/needlevels.json");
-		sap.ui.getCore()
-				.setModel(needLevelsmodel, "needlevels");
-		columnModel = new sap.ui.model.json.JSONModel();
-		listQAmodel = new sap.ui.model.json.JSONModel(
-				airbus.mes.polypoly.PolypolyManager.urlModel
-						.getProperty("urlgetqalist"));
-		sap.ui.getCore().setModel(listQAmodel, "listQA");			
-		//		
-
-		this.oView = sap.ui.view({
-			id : "polypoly",
-			viewName : "airbus.mes.polypoly.polypoly",
-			type : "XML",
-			height : "100%"
-		})
-		this.oView.setModel(sap.ui.getCore().getModel("mii"), "mii");
-		airbus.mes.polypoly.oView = this.oView;
+//		this.oView = sap.ui.view({
+//			id : "idmain1",
+//			viewName : "airbus.mes.polypoly.App",
+//			type : "XML",
+//			height : "100%"
+//		});
+		
+		var page = sap.ui.view({
+			id : "idmain1",
+			viewName : "airbus.mes.polypoly.App",
+			type : sap.ui.core.mvc.ViewType.XML
+		});
+		
+		airbus.mes.polypoly.oView = page;
 
 		
 //		var i18nModel = new sap.ui.model.resource.ResourceModel({
@@ -60,7 +45,7 @@ airbus.mes.polypoly.Component.prototype.createContent = function() {
 		
 //		this.oView.setModel(i18nModel, "i18n");		
 		
-		return this.oView;
+		return page;
 
 	}
 

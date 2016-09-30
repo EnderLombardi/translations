@@ -1,0 +1,31 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:u="sap.ui.unified">
+		<u:Menu>
+			<u:MenuItem
+				text="Shift A"
+				select="handleMenuItemPress"
+				icon="sap-icon://work-history"/>
+			<u:MenuItem
+				text="Shift B"
+				select="handleMenuItemPress"
+				icon="sap-icon://work-history" />
+ 
+			<u:MenuItem
+				text="Shift C"
+				startsSection="true"
+				select="handleMenuItemPress" 
+				icon="sap-icon://work-history"/>
+			<u:MenuItem
+				text="Shift D"
+				select="handleMenuItemPress" 
+				icon="sap-icon://work-history"/>
+			<u:MenuTextFieldItem
+				enabled="true"
+				startsSection="true"
+				icon="sap-icon://filter"
+				select="handleTextFieldItemPress" />
+		</u:Menu>
+ 
+</core:FragmentDefinition>
