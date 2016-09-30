@@ -1,9 +1,10 @@
 <core:FragmentDefinition xmlns:core="sap.ui.core"
 	xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:custom="airbus.mes.stationtracker"
 	xmlns:html="http://www.w3.org/1999/xhtml">
-	<Popover>
+	<Popover contentwidth = "500px" contentHeight="500px">
 		<List id="myList" growing="true" growingThreshold="20"
-			growingScrollToLoad="true" items="{ path: 'WorkListModel>/Rowsets/Rowset/0/Row' }">
+			growingScrollToLoad="true" items="{ path: 'WorkListModel>/' }">		
+<!-- 			growingScrollToLoad="true" items="{ path: 'WorkListModel>/Rowsets/Rowset/0/Row' }"> -->
 			<items>
 				<InputListItem id="sorterList">
 					<content>
@@ -11,13 +12,11 @@
 							<items>
 								<custom:customProgressIndicator
 									width="auto" state="sap.ui.core.ValueState.Success" status="{WorkListModel>status}"
-									isAndon="{WorkListModel>andon}" delayed="{WorkListModel>DELAY}"
-									displayValue3="{WorkListModel>ACPnG_Status}" nc="{WorkListModel>nbOpenNC}"
-									reservation="{WorkListModel>nbOpenReservations}"
-									displayValue="{ parts: [ 'WorkListModel>workOrder','WorkListModel>workOrderDescription' ], formatter: 'airbus.mes.stationtracker.util.Formatter.titleWorklist'}"
-									displayValue2="{ parts: [ 'WorkListModel>operation','WorkListModel>description','WorkListModel>progress','WorkListModel>duration' ], formatter: 'airbus.mes.stationtracker.util.Formatter.displayValueIM'}"
-									percentValue="{ parts: [ 'WorkListModel>progress','WorkListModel>duration' ], formatter: 'airbus.mes.stationtracker.util.Formatter.percentValue'}"
-									click=".infoPop">
+									isAndon="{WorkListModel>andons}"
+									displayValue="{ parts: [ 'WorkListModel>shopOrder','WorkListModel>shopOrderDescription' ], formatter: 'airbus.mes.stationtracker.util.Formatter.titleWorklist'}"
+									displayValue2="{ parts: [ 'WorkListModel>operationId','WorkListModel>operationDescription','WorkListModel>progress','WorkListModel>totalDuration' ], formatter: 'airbus.mes.stationtracker.util.Formatter.displayValueIM'}"
+									percentValue="{ parts: [ 'WorkListModel>progress','WorkListModel>totalDuration' ], formatter: 'airbus.mes.stationtracker.util.Formatter.percentValue'}"
+									>
 									<custom:layoutData>
 										<FlexItemData baseSize="100%" growFactor="1"></FlexItemData>
 									</custom:layoutData>
