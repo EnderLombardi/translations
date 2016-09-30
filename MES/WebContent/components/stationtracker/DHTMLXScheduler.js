@@ -66,6 +66,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 						///////////////////////////////////////////////////////
 						function SchedStartChange(ev, mode, e) {
 							// any custom logic here
+							console.log(new Date(this.getEvent(ev).end_date.getTime()	+ (-scheduler.matrix.timeline.x_step * 60000)));
 							if (new Date(this.getEvent(ev).start_date.getTime()	+ (-scheduler.matrix.timeline.x_step * 60000)) < scheduler._min_date)
 
 							{
@@ -320,7 +321,8 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 								oNavCon.currentPageIsTopPage();
 								var oOperationPopover = sap.ui.getCore().byId("operationPopover--operationPopoverID");
 								oOperationPopover.setContentHeight("353px");								
-								airbus.mes.stationtracker.operationPopover.openBy(e.srcElement);											
+								airbus.mes.stationtracker.operationPopover.openBy(e.srcElement);	
+								break;
 							case "shopOrder" :	
 //								Boxing Work order, we display the worklist list								
 								if ( airbus.mes.stationtracker.worklistPopover === undefined ) {
@@ -330,6 +332,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 									airbus.mes.stationtracker.worklistPopover.addStyleClass("alignTextLeft");
 									oView.addDependent(airbus.mes.stationtracker.worklistPopover);
 								}
+								sap.ui.getCore().getModel("WorkListModel").oData = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy["FUEL ACTIVITIES"]["211545464654"]["toto"]; 
 //								var oNavCon = sap.ui.getCore().byId("operationPopover--navOperatorContainer");
 //								var oMasterPage = sap.ui.getCore().byId("operationPopover--master");
 //								oNavCon.to(oMasterPage);
@@ -337,7 +340,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 //								var oOperationPopover = sap.ui.getCore().byId("operationPopover--operationPopoverID");
 //								oOperationPopover.setContentHeight("353px");								
 								airbus.mes.stationtracker.worklistPopover.openBy(e.srcElement);	
-							
+								break;							
 							}
 							
 						

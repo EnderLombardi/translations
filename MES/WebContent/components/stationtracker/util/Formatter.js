@@ -2,9 +2,6 @@
  
 jQuery.sap.declare("airbus.mes.stationtracker.util.Formatter");
 
-
-
-
 airbus.mes.stationtracker.util.Formatter = {
 		
 		openFolder :function( bOpen ){
@@ -185,4 +182,26 @@ airbus.mes.stationtracker.util.Formatter = {
 			stationTrackerLine : function(Line) {
 				return "Line: " + Line;
 			},
+			titleWorklist : function(workOrder, workOrderDescritpion) {
+				return workOrder + " - " + workOrderDescritpion
+			},
+			displayValueIM : function(operation, operationDescription,	progress, duration) {
+				return operation + " - " + operationDescription + ": " + progress + " IM (of " + duration + " IM)";
+			},
+			percentValue : function(progress, duration) {
+
+				progress = parseInt(progress);
+				duration = parseInt(duration);
+				if (!isNaN(parseInt(progress)) || !isNaN(parseInt(duration))) {
+					if (duration <= 0) {
+						return 0;
+					} else {
+						return Math.round((progress * 100) / duration);
+					}
+				} else {
+
+					return 0;
+				}
+			}			
+			
 };

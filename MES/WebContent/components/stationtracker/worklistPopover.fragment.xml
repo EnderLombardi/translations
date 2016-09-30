@@ -14,9 +14,9 @@
 									isAndon="{WorkListModel>andon}" delayed="{WorkListModel>DELAY}"
 									displayValue3="{WorkListModel>ACPnG_Status}" nc="{WorkListModel>nbOpenNC}"
 									reservation="{WorkListModel>nbOpenReservations}"
-									displayValue="{ parts: [ 'WorkListModel>workOrder','WorkListModel>workOrderDescription' ], formatter: 'util.Formatter.titleWorklist'}"
-									displayValue2="{ parts: [ 'WorkListModel>operation','WorkListModel>description','WorkListModel>progress','WorkListModel>duration' ], formatter: 'util.Formatter.displayValueIM'}"
-									percentValue="{ parts: [ 'WorkListModel>progress','WorkListModel>duration' ], formatter: 'util.Formatter.percentValue'}"
+									displayValue="{ parts: [ 'WorkListModel>workOrder','WorkListModel>workOrderDescription' ], formatter: 'airbus.mes.stationtracker.util.Formatter.titleWorklist'}"
+									displayValue2="{ parts: [ 'WorkListModel>operation','WorkListModel>description','WorkListModel>progress','WorkListModel>duration' ], formatter: 'airbus.mes.stationtracker.util.Formatter.displayValueIM'}"
+									percentValue="{ parts: [ 'WorkListModel>progress','WorkListModel>duration' ], formatter: 'airbus.mes.stationtracker.util.Formatter.percentValue'}"
 									click=".infoPop">
 									<custom:layoutData>
 										<FlexItemData baseSize="100%" growFactor="1"></FlexItemData>

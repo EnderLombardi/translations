@@ -9,9 +9,9 @@ airbus.mes.stationtracker.ModelManager = {
 		init : function(core) {
 			
 			
-				
-			core.setModel(new sap.ui.model.json.JSONModel(),"stationTrackerModel"); // Station tracker model
-			core.setModel(new sap.ui.model.json.JSONModel(),"shiftsModel"); // Shifts model
+			core.setModel(new sap.ui.model.json.JSONModel(), "WorkListModel");	
+			core.setModel(new sap.ui.model.json.JSONModel(), "stationTrackerModel"); // Station tracker model
+			core.setModel(new sap.ui.model.json.JSONModel(), "shiftsModel"); // Shifts model
 			
 			core.getModel("stationTrackerModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onStationTrackerLoad);
 			core.getModel("shiftsModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onShiftsLoad);
