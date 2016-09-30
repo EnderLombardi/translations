@@ -25,28 +25,7 @@ airbus.mes.polypoly.Component.prototype.createContent = function() {
 		airbus.mes.polypoly.ModelManager.init(this);
 		airbus.mes.polypoly.PolypolyManager.init(this);
 		
-		//Model initialisation
-//		var miiModel = new sap.ui.model.json.JSONModel();
-//		sap.ui.getCore().setModel(miiModel, "mii");
-//		airbus.mes.polypoly.PolypolyManager.getPolypolyModel("F1","1","10","CHES");
-//		sap.ui.getCore().getModel("mii")
-//				.attachRequestCompleted(
-//						airbus.mes.polypoly.PolypolyManager.onModelLoaded);
-		sap.ui.getCore().setModel(new sap.ui.model.json.JSONModel(),"mii");	
-//		this 
-		sap.ui.getCore().getModel("mii").loadData("./model/model.json",null,false);
-		
-
-		needLevelsmodel = new sap.ui.model.json.JSONModel(
-				"./model/needlevels.json");
-		sap.ui.getCore()
-				.setModel(needLevelsmodel, "needlevels");
-		columnModel = new sap.ui.model.json.JSONModel();
-//		listQAmodel = new sap.ui.model.json.JSONModel(
-//				airbus.mes.polypoly.PolypolyManager.urlModel
-//						.getProperty("urlgetqalist"));
-//		sap.ui.getCore().setModel(listQAmodel, "listQA");			
-		//		
+	
 
 		this.oView = sap.ui.view({
 			id : "polypoly",

@@ -9,7 +9,31 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 					 * @memberOf polypoly.main
 					 */
 					onInit : function() {
-					
+						//Model initialisation
+						sap.ui.getCore().setModel(new sap.ui.model.json.JSONModel(),"mii");	
+//						this 
+						sap.ui.getCore().getModel("mii").loadData("./model/model.json",null,false);
+						
+
+						needLevelsmodel = new sap.ui.model.json.JSONModel(
+								"./model/needlevels.json");
+						sap.ui.getCore()
+								.setModel(needLevelsmodel, "needlevels");
+						columnModel = new sap.ui.model.json.JSONModel();
+//						listQAmodel = new sap.ui.model.json.JSONModel(
+//								airbus.mes.polypoly.PolypolyManager.urlModel
+//										.getProperty("urlgetqalist"));
+//						sap.ui.getCore().setModel(listQAmodel, "listQA");			
+						//	
+						var oPolypoly = this.getView();
+						var oTable = sap.ui.getCore().byId("polypoly--oTablePolypoly");
+
+						oTable.setModel(sap.ui.getCore().getModel("mii"))
+						oTable.bindColumns("/columns", function(sId, oContext) {
+							this.createColumn(sId, oContext);
+						});
+						oTable.bindRows("/rows");
+						//	
 					},
 
 					createColumn : function(sId, oContext) {
@@ -888,25 +912,25 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 					 * @memberOf polypoly.main
 					 */
 					onAfterRendering : function() {
-						sap.ui.getCore().byId(
-								"polypolyView--stationSelectPolyPoly")
-								.setSelectedKey(airbus.mes.polypoly.ModelManager.station_number);
-						sap.ui.getCore().byId(
-								"polypolyView--lineSelectPolyPoly")
-								.setSelectedKey(airbus.mes.polypoly.ModelManager.line_number);
+//						sap.ui.getCore().byId(
+//								"polypolyView--stationSelectPolyPoly")
+//								.setSelectedKey(airbus.mes.polypoly.ModelManager.station_number);
+//						sap.ui.getCore().byId(
+//								"polypolyView--lineSelectPolyPoly")
+//								.setSelectedKey(airbus.mes.polypoly.ModelManager.line_number);
 					},
 
 					onValueChange : function(oEvt) {
-						var station = sap.ui.getCore().byId(
-								"polypolyView--stationSelectPolyPoly")
-								.getSelectedKey();
-						var line_number = sap.ui.getCore().byId(
-								"polypolyView--lineSelectPolyPoly")
-								.getSelectedKey();
-						airbus.mes.polypoly.PolypolyManager.getPolypolyModel(
-								airbus.mes.polypoly.ModelManager.factory_name,
-								line_number, station,
-								airbus.mes.polypoly.ModelManager.site);
+//						var station = sap.ui.getCore().byId(
+//								"polypolyView--stationSelectPolyPoly")
+//								.getSelectedKey();
+//						var line_number = sap.ui.getCore().byId(
+//								"polypolyView--lineSelectPolyPoly")
+//								.getSelectedKey();
+//						airbus.mes.polypoly.PolypolyManager.getPolypolyModel(
+//								airbus.mes.polypoly.ModelManager.factory_name,
+//								line_number, station,
+//								airbus.mes.polypoly.ModelManager.site);
 					},
 //					setVisible: function(){
 //						return  airbus.mes.polypoly.PolypolyManager.globalContext.tabSelected == "polypoly" ? true:false;
