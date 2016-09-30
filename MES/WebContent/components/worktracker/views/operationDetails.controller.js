@@ -34,17 +34,21 @@ sap.ui
 						// get route
 						this.getOwnerComponent().getRouter().getRoute(
 								"operationDetails").attachMatched(
-								this._onRouteMatched, this);
+								this.onRouteMatched, this);
 
 					},
 
-					_onRouteMatched : function(oEvent) {
+					onRouteMatched : function(oEvent) {
 						// save the current query state
 						this._oRouterArgs = oEvent.getParameter("arguments");
-						var aFilter = [];
-						aFilter.push(new sap.ui.model.Filter("ProductName",
+						/*var aFilter = [];
+						aFilter.push(new sap.ui.model.Filter("schedule",
 								sap.ui.model.FilterOperator.Contains,
-								this._oRouterArgs))
+								this._oRouterArgs))*/
+						airbus.mes.worktracker.util.ModelManager.operation = this._oRouterArgs.operation;
+						airbus.mes.worktracker.util.ModelManager.sfc = this._oRouterArgs.sfc;
+						this.getView().getModel("ScheduleModel").getProperty("/schedule/"+this._oRouterArgs.path)
+						
 
 					},
 
@@ -152,7 +156,7 @@ sap.ui
 						this.getView().byId("operationStatus").setText(
 								"In Progress");
 
-						jQuery.ajax({
+						/*jQuery.ajax({
 							url : airbus.mes.worktracker.util.ModelManager
 									.getUrlSingleOperation(),
 							error : function(xhr, status, error) {
@@ -165,7 +169,7 @@ sap.ui
 								airbus.mes.worktracker.util.ModelManager
 										.messageShow("Success");
 							}
-						})
+						})*/
 					},
 					pauseOperation : function() {
 						this.setProgressScreenBtn(false, false, true);

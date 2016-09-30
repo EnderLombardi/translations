@@ -6,7 +6,8 @@
 	"duration": "08:30 - 09:30",
 	"label": "V90Q3E31",
 	"status": "CONFIRMED",
-	"date":"2016-09-25"
+	"date":"2016-09-25",
+	"sfc":"CHES0017"
 	
 },
 {
@@ -17,7 +18,8 @@
 	"duration": "08:30 - 09:30",
 	"label": "V90Q3E31",
 	"status": "Blocked",
-	"date":"2016-09-25"
+	"date":"2016-09-25",
+	"sfc":"CHES0017"
 },
 {
 	"operation": "OP 2000",
@@ -27,7 +29,8 @@
 	"duration": "08:30 - 09:30",
 	"label": "V90Q3E31",
 	"status": "Not Started",
-	"date":"2016-09-25"
+	"date":"2016-09-25",
+	"sfc":"CHES0017"
 },	
 {
 	"operation": "OP 2000_Piyush",
@@ -37,7 +40,8 @@
 	"duration": "08:30 - 09:30",
 	"label": "V90Q3E31",
 	"status": "In Progress",
-	"date":"2016-09-26"
+	"date":"2016-09-26",
+	"sfc":"CHES0017"
 	
 },
 {
@@ -48,7 +52,8 @@
 	"duration": "08:30 - 09:30",
 	"label": "V90Q3E31",
 	"status": "CONFIRMED",
-	"date":"2016-09-26"
+	"date":"2016-09-26",
+	"sfc":"CHES0017"
 	
 },
 {
@@ -59,7 +64,8 @@
 	"duration": "08:30 - 09:30",
 	"label": "V90Q3E31",
 	"status": "Blocked",
-	"date":"2016-09-26"
+	"date":"2016-09-26",
+	"sfc":"CHES0017"
 },
 {
 	"operation": "OP 2000_Siva",
@@ -69,7 +75,8 @@
 	"duration": "08:30 - 09:30",
 	"label": "V90Q3E31",
 	"status": "Not Started",
-	"date":"2016-09-27"
+	"date":"2016-09-27",
+	"sfc":"CHES0017"
 },
 {
 	"operation": "OP 2000",
@@ -79,7 +86,8 @@
 	"duration": "08:30 - 09:30",
 	"label": "V90Q3E31",
 	"status": "Not Started",
-	"date":"2016-09-27"
+	"date":"2016-09-27",
+	"sfc":"CHES0017"
 },
 {
 	"operation": "OP 2000",
@@ -89,7 +97,8 @@
 	"duration": "08:30 - 09:30",
 	"label": "V90Q3E31",
 	"status": "CONFIRMED",
-	"date":"2016-09-27"
+	"date":"2016-09-27",
+	"sfc":"CHES0017"
 	
 }]
 }

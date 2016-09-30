@@ -6,8 +6,8 @@ airbus.mes.worktracker.util.ModelManager = {
 	
 	
 	urlModel : undefined,
-	site:"CHES",
-	operation:"50000111-1-0-0001",
+	sfc:undefined,
+	operation:undefined,
 	
 	queryParams : jQuery.sap.getUriParameters(),
 	
@@ -81,8 +81,8 @@ airbus.mes.worktracker.util.ModelManager = {
 	
 	 getUrlSingleOperation:function(){
 		  var urlSingleOperation = this.urlModel.getProperty("startSingleOperation");
-		  urlSingleOperation = airbus.mes.worktracker.util.ModelManager.replaceURI(urlSingleOperation, "$site", airbus.mes.worktracker.util.ModelManager.site);
 		  urlSingleOperation = airbus.mes.worktracker.util.ModelManager.replaceURI(urlSingleOperation, "$operation", airbus.mes.worktracker.util.ModelManager.operation);
+		  urlSingleOperation = airbus.mes.worktracker.util.ModelManager.replaceURI(urlSingleOperation, "$SFC", airbus.mes.worktracker.util.ModelManager.sfc);
 		  
 		  return urlSingleOperation;
 	  },

@@ -45,7 +45,7 @@
 				"name": "home",
 				"target": "home"
 			}, {
-				"pattern": "operation/{operation}/activity/{activity}",
+				"pattern": "sfc/{sfc}/operation/{operation}/path/{path}",
 				"name": "operationDetails",
 				"target": "operationDetails"
 			}, {

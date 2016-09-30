@@ -84,9 +84,12 @@ sap.ui.controller("airbus.mes.worktracker.views.home", {
 	
 	openOperation : function(oEvent)
 	{
-	var sOperation =	oEvent.getSource().getBindingContext("ScheduleModel").getModel().getProperty("/schedule/0/operation");
-	var sActivity =	oEvent.getSource().getBindingContext("ScheduleModel").getModel().getProperty("/schedule/0/activity");
-		window.location.href="#operation/"+sOperation+"/activity/"+sActivity;
+	var sPath = oEvent.getSource().getBindingContext("ScheduleModel").sPath;
+	var aPath = sPath.split("/");
+	var path = aPath.pop();
+	var sOperation = oEvent.getSource().getBindingContext("ScheduleModel").getModel().getProperty(sPath+"/operation");
+	var sSfc =	oEvent.getSource().getBindingContext("ScheduleModel").getModel().getProperty(sPath+"/sfc");
+	window.location.href="#sfc/"+sSfc+"/operation/"+sOperation+"/path/"+path;
 	},
 
 /**
