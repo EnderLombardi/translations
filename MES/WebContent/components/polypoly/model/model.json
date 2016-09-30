@@ -1,0 +1,38 @@
+{ "Rowsets" : { 
+	"DateCreated" : "2016-06-22T16:55:40", "Version" : "15.1 SP1 Patch 0 (Jan 21, 2016)", "StartDate" : "2016-06-22T15:55:40+0200", "EndDate" : "2016-06-22T16:55:40+0200", "CachedTime" : "", 
+	"Rowset" : [ 
+	{ "Columns" : { 
+		"Column" : [ 
+		{ "Name" : "login", "SourceColumn" : "login", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "longName", "SourceColumn" : "longName", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "personnelNumber", "SourceColumn" : "personnelNumber", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "status", "SourceColumn" : "status", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "competency", "SourceColumn" : "competency", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "level", "SourceColumn" : "level", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 } ] }, 
+	"Row" : [ 
+		{"RP_Description": "A", "login" : "S007C96", "longName" : "Marie Ange Sassus", "personnelNumber" : "---", "status" : "No_Clocked_In", "competency" : "1L_HYDRAU, 1L_MECHA, 1L_ELEC, 2L_ELEC", "level" : "4, 3, 2, 0", "ERP_ID" : "3" }, 
+		{"RP_Description": "B", "login" : "NG89R12", "longName" : "Nicolas Molotzoff", "personnelNumber" : "---", "status" : "Planned_Absence", "competency" : "1L_HYDRAU, 1L_MECHA, 1L_ELEC, 2L_ELEC", "level" : "2, 1, 3, 0", "ERP_ID" : "4" },
+		{"RP_Description": "A", "login" : "NG43F36", "longName" : "Arthur Fillinger", "personnelNumber" : "---", "status" : "Not_Available", "competency" : "1L_HYDRAU, 1L_MECHA, 1L_ELEC, 2L_ELEC", "level" : "2, 0, 0, 4", "ERP_ID" : "5" },
+		{"RP_Description": "B", "login" : "NG77F55", "longName" : "Khalil Gueye", "personnelNumber" : "---", "status" : "Clocked_In", "competency" : "1L_HYDRAU, 1L_MECHA, 1L_ELEC, 2L_ELEC", "level" : "0, 4, 1, 0", "ERP_ID" : "6" },
+		 {"RP_Description": "A", "login" : "NG21K83", "longName" : "Jeff Hardy", "personnelNumber" : "---", "status" : "Clocked_In", "competency" : "1L_HYDRAU, 1L_MECHA, 1L_ELEC, 2L_ELEC", "level" : "3, 1, 4, 0", "ERP_ID" : "7" },
+		 {"RP_Description": "A", "login" : "NG89F55", "longName" : "Kamel Nezloui", "personnelNumber" : "---", "status" : "Clocked_In", "competency" : "1L_HYDRAU, 1L_MECHA, 1L_ELEC, 2L_ELEC", "level" : "0, 0, 3, 2", "ERP_ID" : "8" },
+		 {"RP_Description": "A", "login" : "NG77G26", "longName" : "César Acéves-Lara", "personnelNumber" : "---", "status" : "Clocked_In", "competency" : "1L_HYDRAU, 1L_MECHA, 1L_ELEC, 2L_ELEC", "level" : "0, 3, 0, 1", "ERP_ID" : "9" },
+		 {"RP_Description": "A", "login" : "NG23T55", "longName" : "Antoine Desmartin", "personnelNumber" : "---", "status" : "Clocked_In", "competency" : "1L_HYDRAU, 1L_MECHA, 1L_ELEC, 2L_ELEC", "level" : "4, 2, 0, 0", "ERP_ID" : "10" },
+		 {"RP_Description": "A", "login" : "NG41F54", "longName" : "Boris Segot", "personnelNumber" : "---", "status" : "Clocked_In", "competency" : "1L_HYDRAU, 1L_MECHA, 1L_ELEC, 2L_ELEC", "level" : "3, 1, 4, 0", "ERP_ID" : "11" },
+		 {"RP_Description": "C", "login" : "NG77F55", "longName" : "Charles Vercosien", "personnelNumber" : "---", "status" : "Clocked_In", "competency" : "1L_HYDRAU, 1L_MECHA, 1L_ELEC, 2L_ELEC", "level" : "0, 0, 2, 3", "ERP_ID" : "12" }]
+		}, 	{ "Columns" : { 
+		"Column" : [ 
+		{ "Name" : "technicalName", "SourceColumn" : "technicalName", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "competencyName", "SourceColumn" : "competencyName", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "qualityApproval", "SourceColumn" : "qualityApproval", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "POLYPOLY_NEEDS_3", "SourceColumn" : "POLYPOLY_NEEDS_3", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "POLYPOLY_NEEDS_4", "SourceColumn" : "POLYPOLY_NEEDS_4", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "POLYPOLY_SEQUENCE", "SourceColumn" : "POLYPOLY_SEQUENCE", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 } ] }, 
+	"Row" : [ 
+		{ "technicalName" : "1L_HYDRAU", "competencyName" : "Hydrau", "qualityApproval" : "QACHESO08, QACHESO03, QACHESI01", "POLYPOLY_NEEDS_3" : "1", "POLYPOLY_NEEDS_4" : "3", "POLYPOLY_SEQUENCE" : "1" }, 
+		{ "technicalName" : "1L_MECHA", "competencyName" : "Meca", "qualityApproval" : "QACHESS00, QACHESO45, QACHESO40", "POLYPOLY_NEEDS_3" : "2", "POLYPOLY_NEEDS_4" : "1", "POLYPOLY_SEQUENCE" : "2" }, 
+		{ "technicalName" : "1L_ELEC", "competencyName" : "Electronique", "qualityApproval" : "QACHESH13, QACHESS41, QACHESS40, QACHESS33", "POLYPOLY_NEEDS_3" : "3", "POLYPOLY_NEEDS_4" : "4", "POLYPOLY_SEQUENCE" : "3" }, 
+		{ "technicalName" : "2L_ELEC", "competencyName" : "Electricité", "qualityApproval" : "QACHESS12, QACHESS33", "POLYPOLY_NEEDS_3" : "1", "POLYPOLY_NEEDS_4" : "1", "POLYPOLY_SEQUENCE" : "3" }]
+		 } ]
+	 }
+ }

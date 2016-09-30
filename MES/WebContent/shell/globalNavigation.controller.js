@@ -10,6 +10,7 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 	 */
 
 	onInit : function() {
+
 	},
 	onPress : function(oEvt) {
 
