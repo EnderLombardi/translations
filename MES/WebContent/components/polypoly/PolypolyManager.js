@@ -1,9 +1,9 @@
-//"use strict";
+"use strict";
 
 jQuery.sap.declare("airbus.mes.polypoly.PolypolyManager")
 
 airbus.mes.polypoly.PolypolyManager = {
-
+	
 	globalContext : {
 		tabSelected : undefined,
 	},
@@ -28,8 +28,6 @@ airbus.mes.polypoly.PolypolyManager = {
 		sTechName : undefined,
 	},
 
-	station_number : undefined,
-	line_number : undefined,
 	urlModel : undefined,
 	oViewController : undefined,
 	polypolyIndex : undefined,
@@ -39,7 +37,7 @@ airbus.mes.polypoly.PolypolyManager = {
 		var dest = undefined;
 		switch (window.location.hostname) {
 		case "localhost":
-			dest = "sopra";
+			dest = "imi";
 			break;
 		case "wsapbpc01.ptx.fr.sopra":
 			dest = "sopra";
@@ -58,29 +56,30 @@ airbus.mes.polypoly.PolypolyManager = {
 			bundleLocale : dest
 		});
 		airbus.mes.polypoly.ModelManager.loadStationListModel();
+//		airbus.mes.polypoly.PolypolyManager.loadStationListModel();
 	},
 
 	onModelLoaded : function() {
 		var oData = sap.ui.getCore().getModel("mii").getData().Rowsets;
 		if (oData.Rowset && oData.Rowset.length > 0 && oData.Rowset[0].Row) {
 			var oMiiData = sap.ui.getCore().getModel("mii").getData();
-			var oTableData = airbus.mes.polypoly.PolypolyManager.createTableData(oMiiData);
+			var oTableData = PolypolyManager.createTableData(oMiiData);
 			var mTableModel = new sap.ui.model.json.JSONModel(oTableData);
-			airbus.mes.polypoly.PolypolyManager.internalContext.oModel = mTableModel;
+			PolypolyManager.internalContext.oModel = mTableModel;
 			sap.ui.getCore().byId("polypolyView").setModel(mTableModel);
+			if (PolypolyManager.globalContext.tabSelected == "allocation") {
+				sap.ui.getCore().byId("polypolyView").getController()
+						.filterUA()
+			}
 		} else {
 			var mTableModel = new sap.ui.model.json.JSONModel();
 			sap.ui.getCore().byId("polypolyView").setModel(mTableModel);
-			if (sap.ui.getCore().getModel("rpModel")) {
-				sap.ui.getCore().getModel("rpModel").setData();
-			}
 		}
-		sap.ui.core.BusyIndicator.hide();
-		/*
-		 * if (sap.ui.getCore().byId("polypolyView").byId("oTablePolypoly")
-		 * .getBinding("rows"))
-		 */
-		sap.ui.getCore().byId("polypolyView--polypolySearchField").fireSearch();
+//		sap.ui.core.BusyIndicator.hide();
+		/*if (sap.ui.getCore().byId("polypolyView").byId("oTablePolypoly")
+				.getBinding("rows"))*/
+			sap.ui.getCore().byId("polypolyView--polypolySearchField")
+					.fireSearch();
 
 	},
 
@@ -102,7 +101,6 @@ airbus.mes.polypoly.PolypolyManager = {
 		});
 
 		var ressourcePoolsmodel = new sap.ui.model.json.JSONModel();
-		sap.ui.getCore().setModel(ressourcePoolsmodel, "rpModel");
 
 		var aRessourcePools = [];
 		Object.keys(ressourcePools).forEach(function(el) {
@@ -112,9 +110,6 @@ airbus.mes.polypoly.PolypolyManager = {
 			aRessourcePools.push(oTemp)
 		});
 
-		ressourcePoolsmodel.setData({
-			rp : aRessourcePools
-		});
 
 		var oTableRows = {
 			"rows" : [ {
@@ -159,54 +154,53 @@ airbus.mes.polypoly.PolypolyManager = {
 		var colonnes = {};
 		var need3 = 0;
 		var need4 = 0;
-		if (oMiiColumns)
-			oMiiColumns
-					.forEach(function(col) {
-						if (col != "") {
-							if (col.POLYPOLY_NEEDS_3 == '---') {
-								oTableRows.rows[0][col.technicalName] = "0";
-							} else {
-								oTableRows.rows[0][col.technicalName] = col.POLYPOLY_NEEDS_3;
-							}
-
-							if (col.POLYPOLY_NEEDS_4 == '---') {
-								oTableRows.rows[1][col.technicalName] = "0";
-							} else {
-								oTableRows.rows[1][col.technicalName] = col.POLYPOLY_NEEDS_4;
-							}
-
-							oTableRows.columns.push({});
-							oTableRows.columns[oTableRows.columns.length - 1]["name"] = col.competencyName;
-							oTableRows.columns[oTableRows.columns.length - 1]["techname"] = col.technicalName;
-							oTableRows.columns[oTableRows.columns.length - 1]["qa"] = [];
-							oTableRows.columns[oTableRows.columns.length - 1]["type"] = "column";
-							var qa = col.qualityApproval;
-							if (qa != undefined) {
-								qa = qa.split(", ")
-							}
-							;
-							qa
-									.forEach(function(c, i) {
-										if (c != "") {
-											oTableRows.columns[oTableRows.columns.length - 1]["qa"]
-													.push({});
-											oTableRows.columns[oTableRows.columns.length - 1]["qa"][oTableRows.columns[oTableRows.columns.length - 1]["qa"].length - 1]["label"] = c;
-										}
-									})
-							if (col.POLYPOLY_NEEDS_3 == '---') {
-								need3 = 0;
-							} else {
-								need3 = parseInt(col.POLYPOLY_NEEDS_3, 10);
-							}
-							if (col.POLYPOLY_NEEDS_4 == '---') {
-								need4 = 0;
-							} else {
-								need4 = parseInt(col.POLYPOLY_NEEDS_4, 10);
-							}
-							colonnes[col.technicalName] = [ 0, 0, 0, 0, need3,
-									need4 ];
+		oMiiColumns
+				.forEach(function(col) {
+					if (col != "") {
+						if (col.POLYPOLY_NEEDS_3 == '---') {
+							oTableRows.rows[0][col.technicalName] = "0";
+						} else {
+							oTableRows.rows[0][col.technicalName] = col.POLYPOLY_NEEDS_3;
 						}
-					});
+
+						if (col.POLYPOLY_NEEDS_4 == '---') {
+							oTableRows.rows[1][col.technicalName] = "0";
+						} else {
+							oTableRows.rows[1][col.technicalName] = col.POLYPOLY_NEEDS_4;
+						}
+
+						oTableRows.columns.push({});
+						oTableRows.columns[oTableRows.columns.length - 1]["name"] = col.competencyName;
+						oTableRows.columns[oTableRows.columns.length - 1]["techname"] = col.technicalName;
+						oTableRows.columns[oTableRows.columns.length - 1]["qa"] = [];
+						oTableRows.columns[oTableRows.columns.length - 1]["type"] = "column";
+						var qa = col.qualityApproval;
+						if (qa != undefined) {
+							qa = qa.split(", ")
+						}
+						;
+						qa
+								.forEach(function(c, i) {
+									if (c != "") {
+										oTableRows.columns[oTableRows.columns.length - 1]["qa"]
+												.push({});
+										oTableRows.columns[oTableRows.columns.length - 1]["qa"][oTableRows.columns[oTableRows.columns.length - 1]["qa"].length - 1]["label"] = c;
+									}
+								})
+						if (col.POLYPOLY_NEEDS_3 == '---') {
+							need3 = 0;
+						} else {
+							need3 = parseInt(col.POLYPOLY_NEEDS_3, 10);
+						}
+						if (col.POLYPOLY_NEEDS_4 == '---') {
+							need4 = 0;
+						} else {
+							need4 = parseInt(col.POLYPOLY_NEEDS_4, 10);
+						}
+						colonnes[col.technicalName] = [ 0, 0, 0, 0, need3,
+								need4 ];
+					}
+				});
 
 		var separateur = "";
 		Object
@@ -265,27 +259,12 @@ airbus.mes.polypoly.PolypolyManager = {
 											}
 											// oTableRows.rows[oTableRows.rows.length
 											// - 1]["selected"] = false;
-											if (row.status == "No_Clocked_In") {
-												oTableRows.rows[oTableRows.rows.length - 1]["type"] = "UA_NCI"
+											if (row.status != "No_Clocked_In") {
+												oTableRows.rows[oTableRows.rows.length - 1]["type"] = "UA_P"
+											} else {
+												oTableRows.rows[oTableRows.rows.length - 1]["type"] = "UA_A"
 											}
-											else if (row.status == "Clocked_In") {
-												oTableRows.rows[oTableRows.rows.length - 1]["type"] = "UA_CI"
-											}
-											else if (row.status == "Not_Available") {
-												oTableRows.rows[oTableRows.rows.length - 1]["type"] = "UA_NA"
-											}
-											else if (row.status == "Planned_Absence") {
-												oTableRows.rows[oTableRows.rows.length - 1]["type"] = "UA_PA"
-											}
-											else if (row.status == "No_Clock_Data") {
-												oTableRows.rows[oTableRows.rows.length - 1]["type"] = "UA_NCD"
-											}
-//											if (row.status != "No_Clocked_In") {
-//												oTableRows.rows[oTableRows.rows.length - 1]["type"] = "UA_P"
-//											} else {
-//												oTableRows.rows[oTableRows.rows.length - 1]["type"] = "UA_A"
-//											}
-//											;
+											;
 											var compName = row.competency;
 											var compLevel = row.level;
 											if (compLevel != undefined) {
@@ -320,16 +299,14 @@ airbus.mes.polypoly.PolypolyManager = {
 								oTableRows.rows[oTableRows.rows.length - 1]["type"] = "ASIS";
 								oTableRows.rows[oTableRows.rows.length - 1]["ressourcepool"] = ressourcePools[rp];
 								oTableRows.rows[oTableRows.rows.length - 1]["ressourcepoolId"] = rp;
-
-								if (oMiiColumns)
-									oMiiColumns
-											.forEach(function(col) {
-												if (col != "") {
-													var c = col.technicalName;
-													oTableRows.rows[oTableRows.rows.length - 1][c] = colonnes[c][i - 1]
-															.toString();
-												}
-											});
+								oMiiColumns
+										.forEach(function(col) {
+											if (col != "") {
+												var c = col.technicalName;
+												oTableRows.rows[oTableRows.rows.length - 1][c] = colonnes[c][i - 1]
+														.toString();
+											}
+										});
 							}
 							// Gap
 							for (var j = 1; j < 3; j++) {
@@ -341,323 +318,286 @@ airbus.mes.polypoly.PolypolyManager = {
 								oTableRows.rows[oTableRows.rows.length - 1]["type"] = "GAP";
 								oTableRows.rows[oTableRows.rows.length - 1]["ressourcepool"] = ressourcePools[rp];
 								oTableRows.rows[oTableRows.rows.length - 1]["ressourcepoolId"] = rp;
-
-								if (oMiiColumns)
-									oMiiColumns
-											.forEach(function(col) {
-												if (col != "") {
-													var c = col.technicalName;
-													var u = (colonnes[c][j + 1] - colonnes[c][j + 3]);
-													if (j == 1) {
-														var v = (colonnes[c][j + 2] - colonnes[c][j + 4]);
-														if (v > 0) {
-															u = u + v;
-														}
+								oMiiColumns
+										.forEach(function(col) {
+											if (col != "") {
+												var c = col.technicalName;
+												var u = (colonnes[c][j + 1] - colonnes[c][j + 3]);
+												if (j == 1) {
+													var v = (colonnes[c][j + 2] - colonnes[c][j + 4]);
+													if (v > 0) {
+														u = u + v;
 													}
-													oTableRows.rows[oTableRows.rows.length - 1][c] = u
-															.toString();
 												}
-											});
+												oTableRows.rows[oTableRows.rows.length - 1][c] = u
+														.toString();
+											}
+										});
 							}
 							// Ré-initialiser le calcul de GAP et de AS IS
-							if (oMiiColumns)
-								oMiiColumns.forEach(function(col) {
-									if (col != "") {
-										if (col.POLYPOLY_NEEDS_3 == '---') {
-											need3 = 0;
-										} else {
-											need3 = parseInt(
-													col.POLYPOLY_NEEDS_3, 10);
-										}
-										if (col.POLYPOLY_NEEDS_4 == '---') {
-											need4 = 0;
-										} else {
-											need4 = parseInt(
-													col.POLYPOLY_NEEDS_4, 10);
-										}
-										colonnes[col.technicalName] = [ 0, 0,
-												0, 0, need3, need4 ];
+							oMiiColumns.forEach(function(col) {
+								if (col != "") {
+									if (col.POLYPOLY_NEEDS_3 == '---') {
+										need3 = 0;
+									} else {
+										need3 = parseInt(col.POLYPOLY_NEEDS_3,
+												10);
 									}
-								});
+									if (col.POLYPOLY_NEEDS_4 == '---') {
+										need4 = 0;
+									} else {
+										need4 = parseInt(col.POLYPOLY_NEEDS_4,
+												10);
+									}
+									colonnes[col.technicalName] = [ 0, 0, 0, 0,
+											need3, need4 ];
+								}
+							});
 						});
 		return oTableRows;
 	},
 
-	updateLevelInit : function() {
-		var oModel = sap.ui.getCore().byId("polypolyView").getModel();
-		this.levelUpdater.sUserID = this.userComptencyContext.rowBindingContext
-				.getProperty("ERP_ID");
-		this.levelUpdater.sUserName = this.userComptencyContext.rowBindingContext
-				.getProperty("category");
-		this.levelUpdater.sTechName = oModel.getData().columns[PolypolyManager.userComptencyContext.columnIndex + 3].techname;
-		this.levelUpdater.startLevel = parseInt(PolypolyManager.userComptencyContext.rowBindingContext
-				.getProperty(this.levelUpdater.sTechName));
-		this.levelUpdater.endLevel = PolypolyManager.userComptencyContext.newLevel;
-		this.levelUpdater.currentLevel = this.levelUpdater.startLevel;
-
-		PolypolyManager.checkUpdateLevel();
-	},
-
-	checkUpdateLevel : function() {
-		var p = PolypolyManager.levelUpdater;
-		if (PolypolyManager.levelUpdater.currentLevel >= PolypolyManager.levelUpdater.endLevel) {
-			PolypolyManager.handleUpdateLevel();
-		} else {
-			PolypolyManager.levelUpdater.currentLevel += 1;
-			if (PolypolyManager.levelUpdater.currentLevel == 2) {
-				PolypolyManager.updateLevel12(p.sUserID, p.sTechName);
-			} else if (PolypolyManager.levelUpdater.currentLevel == 3) {
-				PolypolyManager.updateLevel23(p.sUserID, p.sTechName);
-			} else {
-				PolypolyManager.checkUpdateLevel();
-			}
-		}
-	},
-
-	handleUpdateLevel : function() {
-		var p = PolypolyManager.levelUpdater;
-		if (PolypolyManager.levelUpdater.endLevel == 0) {
-			PolypolyManager.updateLevelDelete(p.sUserID, p.sTechName);
-		} else if (PolypolyManager.levelUpdater.startLevel == 0) {
-			PolypolyManager.updateLevelCreate(p.sUserID, p.sTechName,
-					p.endLevel);
-		} else {
-			PolypolyManager.updateLevel(p.sUserID, p.sTechName, p.startLevel,
-					p.endLevel);
-		}
-	},
-
-	updateLevelCreate : function(sUserID, sTechName, sNewLevel) {
-		var urlqalevelcreate = this.urlModel.getProperty("urlqalevelcreate");
-
-		urlqalevelcreate = urlqalevelcreate.replace("$erpid", sUserID);
-		urlqalevelcreate = urlqalevelcreate
-				.replace("$certification", sTechName);
-		urlqalevelcreate = urlqalevelcreate.replace("$nLevel", sNewLevel);
-		urlqalevelcreate = urlqalevelcreate.replace("$site", ModelManager.site);
-
-		$.ajax({
-			url : urlqalevelcreate,
-			success : function(data, textStatus, jqXHR) {
-				/*
-				 * PolypolyManager.getPolypolyModel(ModelManager.factory_name,
-				 * ModelManager.line_number, ModelManager.station_number,
-				 * ModelManager.site);
-				 */
-				PolypolyManager.getPolypolyModel(ModelManager.factory_name,
-						PolypolyManager.line_number,
-						PolypolyManager.station_number, ModelManager.site);
-			},
-		})
-	},
-
-	updateLevelDelete : function(sUserID, sTechName) {
-		var urlqaleveldelete = this.urlModel.getProperty("urlqaleveldelete");
-
-		urlqaleveldelete = urlqaleveldelete.replace("$erpid", sUserID);
-		urlqaleveldelete = urlqaleveldelete.replace("$competency", sTechName);
-		urlqaleveldelete = urlqaleveldelete.replace("$site", ModelManager.site);
-
-		$.ajax({
-			url : urlqaleveldelete,
-			success : function(data, textStatus, jqXHR) {
-				/*
-				 * PolypolyManager.getPolypolyModel(ModelManager.factory_name,
-				 * ModelManager.line_number, ModelManager.station_number,
-				 * ModelManager.site);
-				 */
-				PolypolyManager.getPolypolyModel(ModelManager.factory_name,
-						PolypolyManager.line_number,
-						PolypolyManager.station_number, ModelManager.site);
-			},
-		})
-	},
-
-	updateLevel : function(sUserID, sTechName, sPreviousLevel, sNewLevel) {
-		var urlqalevelupdate = this.urlModel.getProperty("urlqalevelupdate");
-
-		urlqalevelupdate = urlqalevelupdate.replace("$erpid", sUserID);
-		urlqalevelupdate = urlqalevelupdate.replace("$competency", sTechName);
-		urlqalevelupdate = urlqalevelupdate.replace("$pLevel", sPreviousLevel);
-		urlqalevelupdate = urlqalevelupdate.replace("$nLevel", sNewLevel);
-		urlqalevelupdate = urlqalevelupdate.replace("$site", ModelManager.site);
-
-		$.ajax({
-			url : urlqalevelupdate,
-			success : function(data, textStatus, jqXHR) {
-				/*
-				 * PolypolyManager.getPolypolyModel(ModelManager.factory_name,
-				 * ModelManager.line_number, ModelManager.station_number,
-				 * ModelManager.site);
-				 */
-				PolypolyManager.getPolypolyModel(ModelManager.factory_name,
-						PolypolyManager.line_number,
-						PolypolyManager.station_number, ModelManager.site);
-			},
-		})
-	},
-
-	updateLevel12 : function(sUserID, sTechName) {
-		var urlqalevel12 = this.urlModel.getProperty("urlqalevel12");
-
-		urlqalevel12 = urlqalevel12.replace("$erpid", sUserID);
-		urlqalevel12 = urlqalevel12.replace("$competency", sTechName);
-		urlqalevel12 = urlqalevel12.replace("$site", ModelManager.site);
-
-		$
-				.ajax({
-					url : urlqalevel12,
-					success : function(data, textStatus, jqXHR) {
-						data.Rowsets.Rowset[0].name = PolypolyManager.levelUpdater.sUserName;
-						var infoModel = new sap.ui.model.json.JSONModel();
-						infoModel.setData(data.Rowsets.Rowset[0]);
-						if (!sap.ui.getCore().byId("infoUpdate12")) {
-							sap.ui.xmlfragment("airbus.InfoUpdate12", sap.ui
-									.getCore().byId("polypolyView")
-									.getController());
-						}
-						sap.ui.getCore().byId("infoUpdate12").open();
-						sap.ui.getCore().byId("infoUpdate12").setModel(
-								infoModel);
-					},
-				})
-	},
-
-	updateLevel23 : function(sUserID, sTechName) {
-		var urlqalevel23 = this.urlModel.getProperty("urlqalevel23");
-
-		urlqalevel23 = urlqalevel23.replace("$erpid", sUserID);
-		urlqalevel23 = urlqalevel23.replace("$competency", sTechName);
-		urlqalevel23 = urlqalevel23.replace("$site", ModelManager.site);
-
-		$
-				.ajax({
-					url : urlqalevel23,
-					success : function(data, textStatus, jqXHR) {
-						data.Rowsets.Rowset[0].name = PolypolyManager.levelUpdater.sUserName;
-						var infoModel = new sap.ui.model.json.JSONModel();
-						infoModel.setData(data.Rowsets.Rowset[0]);
-						if (infoModel.getData().Row) {
-							if (!sap.ui.getCore().byId("infoUpdate23")) {
-								sap.ui.xmlfragment("airbus.InfoUpdate23",
-										sap.ui.getCore().byId("polypolyView")
-												.getController());
-							}
-							sap.ui.getCore().byId("infoUpdate23").open();
-							sap.ui.getCore().byId("infoUpdate23").setModel(
-									infoModel);
-						} else {
-							PolypolyManager.checkUpdateLevel();
-						}
-					},
-				})
-	},
-
-	createColumn : function(sName, sQA, sNeed3, sNeed4, sTechname) {
-		var urlcreatecolumn = this.urlModel.getProperty("urlcreatecolumn");
-
-		urlcreatecolumn = urlcreatecolumn.replace("$sName", sName);
-		urlcreatecolumn = urlcreatecolumn.replace("$polypoly", sTechname);
-		urlcreatecolumn = urlcreatecolumn.replace("$site", ModelManager.site);
-		urlcreatecolumn = urlcreatecolumn.replace("$factory",
-				ModelManager.factory_name);
-		/*
-		 * urlcreatecolumn = urlcreatecolumn.replace("$line",
-		 * ModelManager.line_number);
-		 */
-		/*
-		 * urlcreatecolumn = urlcreatecolumn.replace("$station",
-		 * ModelManager.station_number);
-		 */
-		urlcreatecolumn = urlcreatecolumn.replace("$line",
-				PolypolyManager.line_number);
-		urlcreatecolumn = urlcreatecolumn.replace("$station",
-				PolypolyManager.station_number);
-
-		$.ajax({
-			url : urlcreatecolumn,
-			cache : false,
-			success : function(data, textStatus, jqXHR) {
-				var sNewTechName = data.Rowsets.Rowset[0].Row[0].Message;
-				PolypolyManager.updateColumn(sName, sQA, sNeed3, sNeed4,
-						sNewTechName);
-			},
-		});
-	},
-
-	updateColumn : function(sName, sQA, sNeed3, sNeed4, sTechname) {
-		var urlupdatecolumn = this.urlModel.getProperty("urlupdatecolumn");
-
-		urlupdatecolumn = urlupdatecolumn.replace("$New_Description", sName);
-		urlupdatecolumn = urlupdatecolumn.replace("$QA_LIST", sQA);
-		urlupdatecolumn = urlupdatecolumn.replace("$Needs_3", sNeed3);
-		urlupdatecolumn = urlupdatecolumn.replace("$Needs_4", sNeed4);
-		urlupdatecolumn = urlupdatecolumn.replace("$polypoly", sTechname);
-		urlupdatecolumn = urlupdatecolumn.replace("$site", ModelManager.site);
-
-		$.ajax({
-			url : urlupdatecolumn,
-			cache : false,
-			success : function(data, textStatus, jqXHR) {
-				if (sap.ui.getCore().byId("columnPopupDialog")) {
-					if (sap.ui.getCore().byId("columnPopupDialog").isOpen()) {
-						sap.ui.getCore().byId("columnPopupDialog").close();
-					}
-				}
-				/*
-				 * PolypolyManager.getPolypolyModel(ModelManager.factory_name,
-				 * ModelManager.line_number, ModelManager.station_number,
-				 * ModelManager.site);
-				 */
-				PolypolyManager.getPolypolyModel(ModelManager.factory_name,
-						PolypolyManager.line_number,
-						PolypolyManager.station_number, ModelManager.site);
-			},
-		});
-	},
-
-	deleteColumn : function(sName) {
-		var urldeletecolumn = this.urlModel.getProperty("urldeletecolumn");
-
-		urldeletecolumn = urldeletecolumn.replace("$site", ModelManager.site);
-		urldeletecolumn = urldeletecolumn.replace("$polypoly", sName);
-		$.ajax({
-			url : urldeletecolumn,
-			cache : false,
-			success : function(data, textStatus, jqXHR) {
-				sap.ui.getCore().byId("confirmDeleteDialog").close();
-				/*
-				 * PolypolyManager.getPolypolyModel(ModelManager.factory_name,
-				 * ModelManager.line_number, ModelManager.station_number,
-				 * ModelManager.site);
-				 */
-				PolypolyManager.getPolypolyModel(ModelManager.factory_name,
-						PolypolyManager.line_number,
-						PolypolyManager.station_number, ModelManager.site);
-			},
-		});
-	},
-
-	moveColumn : function(sName, newPos) {
-		var urlmovecolumn = this.urlModel.getProperty("urlmovecolumn");
-
-		urlmovecolumn = urlmovecolumn.replace("$site", ModelManager.site);
-		urlmovecolumn = urlmovecolumn.replace("$polypoly", sName);
-		urlmovecolumn = urlmovecolumn.replace("$order", newPos);
-		$.ajax({
-			url : urlmovecolumn,
-			cache : false,
-			success : function(data, textStatus, jqXHR) {
-				// sap.ui.getCore().byId("confirmDeleteDialog").close();
-				// PolypolyManager.getPolypolyModel(ModelManager.factory_name,
-				// ModelManager.line_number, ModelManager.station_number,
-				// ModelManager.site);
-			},
-		});
-	},
+//	updateLevelInit : function() {
+//		var oModel = sap.ui.getCore().byId("polypolyView").getModel();
+//		this.levelUpdater.sUserID = this.userComptencyContext.rowBindingContext
+//				.getProperty("ERP_ID");
+//		this.levelUpdater.sUserName = this.userComptencyContext.rowBindingContext
+//				.getProperty("category");
+//		this.levelUpdater.sTechName = oModel.getData().columns[PolypolyManager.userComptencyContext.columnIndex + 3].techname;
+//		this.levelUpdater.startLevel = parseInt(PolypolyManager.userComptencyContext.rowBindingContext
+//				.getProperty(this.levelUpdater.sTechName));
+//		this.levelUpdater.endLevel = PolypolyManager.userComptencyContext.newLevel;
+//		this.levelUpdater.currentLevel = this.levelUpdater.startLevel;
+//
+//		PolypolyManager.checkUpdateLevel();
+//	},
+//
+//	checkUpdateLevel : function() {
+//		var p = PolypolyManager.levelUpdater;
+//		if (PolypolyManager.levelUpdater.currentLevel >= PolypolyManager.levelUpdater.endLevel) {
+//			PolypolyManager.handleUpdateLevel();
+//		} else {
+//			PolypolyManager.levelUpdater.currentLevel += 1;
+//			if (PolypolyManager.levelUpdater.currentLevel == 2) {
+//				PolypolyManager.updateLevel12(p.sUserID, p.sTechName);
+//			} else if (PolypolyManager.levelUpdater.currentLevel == 3) {
+//				PolypolyManager.updateLevel23(p.sUserID, p.sTechName);
+//			} else {
+//				PolypolyManager.checkUpdateLevel();
+//			}
+//		}
+//	},
+//
+//	handleUpdateLevel : function() {
+//		var p = PolypolyManager.levelUpdater;
+//		if (PolypolyManager.levelUpdater.endLevel == 0) {
+//			PolypolyManager.updateLevelDelete(p.sUserID, p.sTechName);
+//		} else if (PolypolyManager.levelUpdater.startLevel == 0) {
+//			PolypolyManager.updateLevelCreate(p.sUserID, p.sTechName,
+//					p.endLevel);
+//		} else {
+//			PolypolyManager.updateLevel(p.sUserID, p.sTechName, p.startLevel,
+//					p.endLevel);
+//		}
+//	},
+//
+//	updateLevelCreate : function(sUserID, sTechName, sNewLevel) {
+//		var urlqalevelcreate = this.urlModel.getProperty("urlqalevelcreate");
+//
+//		urlqalevelcreate = urlqalevelcreate.replace("$erpid", sUserID);
+//		urlqalevelcreate = urlqalevelcreate
+//				.replace("$certification", sTechName);
+//		urlqalevelcreate = urlqalevelcreate.replace("$nLevel", sNewLevel);
+//		urlqalevelcreate = urlqalevelcreate.replace("$site", ModelManager.site);
+//
+//		$.ajax({
+//			url : urlqalevelcreate,
+//			success : function(data, textStatus, jqXHR) {
+//				PolypolyManager.getPolypolyModel(ModelManager.factory_name,
+//						ModelManager.line_number, ModelManager.station_number,
+//						ModelManager.site);
+//			},
+//		})
+//	},
+//
+//	updateLevelDelete : function(sUserID, sTechName) {
+//		var urlqaleveldelete = this.urlModel.getProperty("urlqaleveldelete");
+//
+//		urlqaleveldelete = urlqaleveldelete.replace("$erpid", sUserID);
+//		urlqaleveldelete = urlqaleveldelete.replace("$competency", sTechName);
+//		urlqaleveldelete = urlqaleveldelete.replace("$site", ModelManager.site);
+//
+//		$.ajax({
+//			url : urlqaleveldelete,
+//			success : function(data, textStatus, jqXHR) {
+//				PolypolyManager.getPolypolyModel(ModelManager.factory_name,
+//						ModelManager.line_number, ModelManager.station_number,
+//						ModelManager.site);
+//			},
+//		})
+//	},
+//
+//	updateLevel : function(sUserID, sTechName, sPreviousLevel, sNewLevel) {
+//		var urlqalevelupdate = this.urlModel.getProperty("urlqalevelupdate");
+//
+//		urlqalevelupdate = urlqalevelupdate.replace("$erpid", sUserID);
+//		urlqalevelupdate = urlqalevelupdate.replace("$competency", sTechName);
+//		urlqalevelupdate = urlqalevelupdate.replace("$pLevel", sPreviousLevel);
+//		urlqalevelupdate = urlqalevelupdate.replace("$nLevel", sNewLevel);
+//		urlqalevelupdate = urlqalevelupdate.replace("$site", ModelManager.site);
+//
+//		$.ajax({
+//			url : urlqalevelupdate,
+//			success : function(data, textStatus, jqXHR) {
+//				PolypolyManager.getPolypolyModel(ModelManager.factory_name,
+//						ModelManager.line_number, ModelManager.station_number,
+//						ModelManager.site);
+//			},
+//		})
+//	},
+//
+//	updateLevel12 : function(sUserID, sTechName) {
+//		var urlqalevel12 = this.urlModel.getProperty("urlqalevel12");
+//
+//		urlqalevel12 = urlqalevel12.replace("$erpid", sUserID);
+//		urlqalevel12 = urlqalevel12.replace("$competency", sTechName);
+//		urlqalevel12 = urlqalevel12.replace("$site", ModelManager.site);
+//
+//		$
+//				.ajax({
+//					url : urlqalevel12,
+//					success : function(data, textStatus, jqXHR) {
+//						data.Rowsets.Rowset[0].name = PolypolyManager.levelUpdater.sUserName;
+//						var infoModel = new sap.ui.model.json.JSONModel();
+//						if (!sap.ui.getCore().byId("infoUpdate12")) {
+//							sap.ui.xmlfragment("airbus.InfoUpdate12", sap.ui
+//									.getCore().byId("polypolyView")
+//									.getController());
+//						}
+//						sap.ui.getCore().byId("infoUpdate12").open();
+//						sap.ui.getCore().byId("infoUpdate12").setModel(
+//								infoModel);
+//					},
+//				})
+//	},
+//
+//	updateLevel23 : function(sUserID, sTechName) {
+//		var urlqalevel23 = this.urlModel.getProperty("urlqalevel23");
+//
+//		urlqalevel23 = urlqalevel23.replace("$erpid", sUserID);
+//		urlqalevel23 = urlqalevel23.replace("$competency", sTechName);
+//		urlqalevel23 = urlqalevel23.replace("$site", ModelManager.site);
+//
+//		$
+//				.ajax({
+//					url : urlqalevel23,
+//					success : function(data, textStatus, jqXHR) {
+//						data.Rowsets.Rowset[0].name = PolypolyManager.levelUpdater.sUserName;
+//						var infoModel = new sap.ui.model.json.JSONModel();
+//						infoModel.setData(data.Rowsets.Rowset[0]);
+//						if (infoModel.getData().Row) {
+//							if (!sap.ui.getCore().byId("infoUpdate23")) {
+//								sap.ui.xmlfragment("airbus.InfoUpdate23",
+//										sap.ui.getCore().byId("polypolyView")
+//												.getController());
+//							}
+//							sap.ui.getCore().byId("infoUpdate23").open();
+//							sap.ui.getCore().byId("infoUpdate23").setModel(
+//									infoModel);
+//						} else {
+//							PolypolyManager.checkUpdateLevel();
+//						}
+//					},
+//				})
+//	},
+//
+//	createColumn : function(sName, sQA, sNeed3, sNeed4, sTechname) {
+//		var urlcreatecolumn = this.urlModel.getProperty("urlcreatecolumn");
+//
+//		urlcreatecolumn = urlcreatecolumn.replace("$sName", sName);
+//		urlcreatecolumn = urlcreatecolumn.replace("$polypoly", sTechname);
+//		urlcreatecolumn = urlcreatecolumn.replace("$site", ModelManager.site);
+//		urlcreatecolumn = urlcreatecolumn.replace("$factory",
+//				ModelManager.factory_name);
+//		urlcreatecolumn = urlcreatecolumn.replace("$line",
+//				ModelManager.line_number);
+//		urlcreatecolumn = urlcreatecolumn.replace("$station",
+//				ModelManager.station_number);
+//
+//		$.ajax({
+//			url : urlcreatecolumn,
+//			cache : false,
+//			success : function(data, textStatus, jqXHR) {
+//				var sNewTechName = data.Rowsets.Rowset[0].Row[0].Message;
+//				PolypolyManager.updateColumn(sName, sQA, sNeed3, sNeed4,
+//						sNewTechName);
+//			},
+//		});
+//	},
+//
+//	updateColumn : function(sName, sQA, sNeed3, sNeed4, sTechname) {
+//		var urlupdatecolumn = this.urlModel.getProperty("urlupdatecolumn");
+//
+//		urlupdatecolumn = urlupdatecolumn.replace("$New_Description", sName);
+//		urlupdatecolumn = urlupdatecolumn.replace("$QA_LIST", sQA);
+//		urlupdatecolumn = urlupdatecolumn.replace("$Needs_3", sNeed3);
+//		urlupdatecolumn = urlupdatecolumn.replace("$Needs_4", sNeed4);
+//		urlupdatecolumn = urlupdatecolumn.replace("$polypoly", sTechname);
+//		urlupdatecolumn = urlupdatecolumn.replace("$site", ModelManager.site);
+//
+//		$.ajax({
+//			url : urlupdatecolumn,
+//			cache : false,
+//			success : function(data, textStatus, jqXHR) {
+//				if (sap.ui.getCore().byId("columnPopupDialog")) {
+//					if (sap.ui.getCore().byId("columnPopupDialog").isOpen()) {
+//						sap.ui.getCore().byId("columnPopupDialog").close();
+//					}
+//				}
+//				PolypolyManager.getPolypolyModel(ModelManager.factory_name,
+//						ModelManager.line_number, ModelManager.station_number,
+//						ModelManager.site);
+//			},
+//		});
+//	},
+//
+//	deleteColumn : function(sName) {
+//		var urldeletecolumn = this.urlModel.getProperty("urldeletecolumn");
+//
+//		urldeletecolumn = urldeletecolumn.replace("$site", ModelManager.site);
+//		urldeletecolumn = urldeletecolumn.replace("$polypoly", sName);
+//		$.ajax({
+//			url : urldeletecolumn,
+//			cache : false,
+//			success : function(data, textStatus, jqXHR) {
+//				sap.ui.getCore().byId("confirmDeleteDialog").close();
+//				PolypolyManager.getPolypolyModel(ModelManager.factory_name,
+//						ModelManager.line_number, ModelManager.station_number,
+//						ModelManager.site);
+//			},
+//		});
+//	},
+//
+//	moveColumn : function(sName, newPos) {
+//		var urlmovecolumn = this.urlModel.getProperty("urlmovecolumn");
+//
+//		urlmovecolumn = urlmovecolumn.replace("$site", ModelManager.site);
+//		urlmovecolumn = urlmovecolumn.replace("$polypoly", sName);
+//		urlmovecolumn = urlmovecolumn.replace("$order", newPos);
+//		$.ajax({
+//			url : urlmovecolumn,
+//			cache : false,
+//			success : function(data, textStatus, jqXHR) {
+//				// sap.ui.getCore().byId("confirmDeleteDialog").close();
+//				// PolypolyManager.getPolypolyModel(ModelManager.factory_name,
+//				// ModelManager.line_number, ModelManager.station_number,
+//				// ModelManager.site);
+//			},
+//		});
+//	},
 
 	getPolypolyModel : function(sFactory, sLine, sStation, site) {
-		sap.ui.core.BusyIndicator.show();
+//		sap.ui.core.BusyIndicator.show();
 		var urlgetpolypoly = this.urlModel.getProperty("urlgetpolypoly");
 
 		urlgetpolypoly = urlgetpolypoly.replace("$factory", sFactory);
@@ -672,20 +612,20 @@ airbus.mes.polypoly.PolypolyManager = {
 		}, true);
 	},
 
-	setUserAllocation : function() {
-
-		PolypolyManager.oViewController.checkBox.setSelected(true); // works
-		// auto
-		if (!ModelManager.polypoly_UserSave) {
-			ModelManager.polypoly_UserSave.push(PolypolyManager.polypolyIndex);
-		}
-		if ((ModelManager.polypoly_UserSave.some(function(element) {
-			return (element.ERP_ID == PolypolyManager.polypolyIndex.ERP_ID);
-		})) === false) {
-			ModelManager.polypoly_UserSave.push(PolypolyManager.polypolyIndex);
-		}
-	}
+//	setUserAllocation : function() {
+//
+//		PolypolyManager.oViewController.checkBox.setSelected(true); // works
+//																	// auto
+//		if (!ModelManager.polypoly_UserSave) {
+//			ModelManager.polypoly_UserSave.push(PolypolyManager.polypolyIndex);
+//		}
+//		if ((ModelManager.polypoly_UserSave.some(function(element) {
+//			return (element.ERP_ID == PolypolyManager.polypolyIndex.ERP_ID);
+//		})) === false) {
+//			ModelManager.polypoly_UserSave.push(PolypolyManager.polypolyIndex);
+//		}
+//	}
 
 };
-
 airbus.mes.polypoly.PolypolyManager.init(sap.ui.getCore());
+//PolypolyManager.init(sap.ui.getCore());
