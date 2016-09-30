@@ -10,7 +10,8 @@ sap.ui.define([
 			includes : [ "../css/workTracker.css",
 			             "../css/sideNavigation.css",
 			             "../util/Formatter.js",
-			             "../util/Functions.js"]
+			             "../util/Functions.js",
+			             "../util/ModelManager.js"]
 		},
 
 		init: function () {

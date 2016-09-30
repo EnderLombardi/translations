@@ -1,6 +1,6 @@
 "use strict";
 
-jQuery.sap.declare("airbus.mes.worktracker.ModelManager")
+jQuery.sap.declare("airbus.mes.worktracker.util.ModelManager")
 
 airbus.mes.worktracker.util.ModelManager = {
 	
@@ -17,7 +17,7 @@ airbus.mes.worktracker.util.ModelManager = {
 		
 		this.core = core;
 		
-		core.setModel(new sap.ui.model.json.JSONModel(), "singleOperation");
+	/*	core.setModel(new sap.ui.model.json.JSONModel(), "singleOperation");*/
 		
 
 		var dest;
@@ -39,13 +39,34 @@ airbus.mes.worktracker.util.ModelManager = {
 		}
 
 		this.urlModel = new sap.ui.model.resource.ResourceModel({
-			bundleUrl : "../components/worktracker/config/url_config.properties",
+			bundleUrl : "../worktracker/config/url_config.properties",
 			bundleLocale : dest
 		});
 
 	},
+	// ********************************************************************************
+	 messageShow : function(text) {
+	        sap.m.MessageToast
+	        .show(
+	        		text,
+	                      {
+	                             duration : 3000,
+	                             width : "25em",
+	                             my : "center center",
+	                             at : "center center",
+	                             of : window,
+	                             offset : "0 0",
+	                             collision : "fit fit",
+	                             onClose : null,
+	                             autoClose : true,
+	                             animationTimingFunction : "ease",
+	                             animationDuration : 1000,
+	                             closeOnBrowserNavigation : true
+	                      });
+	               
+	  },
+	  // ************************************************************************************
 	
-	// ************************************************************************************
 	/*getUrlSingleOperation : function() {
 		var urlSingleOperation = this.urlModel.getProperty("startSingleOperation");
 		
@@ -63,7 +84,7 @@ airbus.mes.worktracker.util.ModelManager = {
 		  urlSingleOperation = airbus.mes.worktracker.util.ModelManager.replaceURI(urlSingleOperation, "$site", airbus.mes.worktracker.util.ModelManager.site);
 		  urlSingleOperation = airbus.mes.worktracker.util.ModelManager.replaceURI(urlSingleOperation, "$operation", airbus.mes.worktracker.util.ModelManager.operation);
 		  
-		  return urlSaveUserSetting;
+		  return urlSingleOperation;
 	  },
 	  replaceURI : function (sURI, sFrom, sTo) {
 			return sURI.replace(sFrom, encodeURIComponent(sTo));
