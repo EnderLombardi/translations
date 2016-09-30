@@ -10,27 +10,48 @@
 	data-sap-ui-theme="sap_bluecrystal">
 		</script>
 <!-- only load the mobile lib "sap.m" and the "sap_bluecrystal" theme -->
-
-<script>
-		jQuery.sap.registerModulePath("airbus.mes.polypoly","/MES/components/polypoly");
-	 	
-	 	var oComp4 = sap.ui.getCore().createComponent({
-			name : "airbus.mes.polypoly", // root component folder is resources
+			
+		<!-- only load the mobile lib "sap.m" and the "sap_bluecrystal" theme -->
+<!-- 		<script type="text/javascript" src="polypoly/PolypolyManager.js"></script>
+ -->		<script>
+ /* 			var app = new sap.m.App({
+				initialPage : "idmain1"
 			});
+			var page = sap.ui.view({
+				id : "idmain1",
+				viewName : "polypoly.App",
+				type : sap.ui.core.mvc.ViewType.XML
+			});
+			
+			 var polypolyView = sap.ui.view({
+				id : "polypolyView",
+				viewName : "polypoly.main",
+				type : sap.ui.core.mvc.ViewType.XML
+			}); 
+			
+		 	app.addPage(page);
+			app.placeAt("content"); 
+			
+			
+			 */
+			
+			jQuery.sap.registerModulePath("airbus.mes.polypoly","/MES/components/polypoly");
+		 	
+		 	var oComp4 = sap.ui.getCore().createComponent({
+				name : "airbus.mes.polypoly", // root component folder is resources
+				});
 
-		// Create a Ui container 
-		var oCompCont4 = new sap.ui.core.ComponentContainer({
-			component : oComp4,
-			propagateModel:true,
-			height:"100%"
-		});
-		// place this Ui Container with the Component inside into UI Area 
-		oCompCont4.placeAt("content");
-				
+			// Create a Ui container 
+			var oCompCont4 = new sap.ui.core.ComponentContainer({
+				component : oComp4,
+			});
+			// place this Ui Container with the Component inside into UI Area 
+			oCompCont4.placeAt("content");
+			
+			
 		</script>
-<!-- <link rel="stylesheet" type="text/css"
-	href="/MES/components/homepage/css/margin.css"> -->
-</head>
+	
+	</head>
 <body class="sapUiBody" role="application">
 	<div id="content"></div>
 </body>

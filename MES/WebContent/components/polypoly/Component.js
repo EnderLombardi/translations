@@ -1,6 +1,5 @@
 jQuery.sap.require("sap.ui.core.UIComponent");
 jQuery.sap.require("sap.ui.base.Event");
-jQuery.sap.require("airbus.mes.polypoly.ModelManager");
 jQuery.sap.require("airbus.mes.polypoly.PolypolyManager");
 
 jQuery.sap.declare("airbus.mes.polypoly.Component");
@@ -22,14 +21,10 @@ airbus.mes.polypoly.Component.prototype.createContent = function() {
 
 	if (airbus.mes.polypoly.oView === undefined) {
 		//	View on XML
-		airbus.mes.polypoly.ModelManager.init(this);
-		airbus.mes.polypoly.PolypolyManager.init(this);
 		
-	
-
 		this.oView = sap.ui.view({
-			id : "polypoly",
-			viewName : "airbus.mes.polypoly.polypoly",
+			id : "idmain1",
+			viewName : "airbus.mes.polypoly.App",
 			type : "XML",
 			height : "100%"
 		})
