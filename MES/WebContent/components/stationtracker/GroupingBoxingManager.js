@@ -230,7 +230,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 						aEndDateInitial.push(Date.parse(oFormatter.jsDateFromDayTimeStr(el.avlEndDate)));
 						aDisruptions.push(el.disruptions);
 						aAndons.push(el.andons);
-						
+												
 						sProgress = el.progress;
 						fCriticalPath = el.criticalPath;
 						sOperationDescription = el.sBox;
@@ -254,7 +254,9 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 					
 					var oOperationRescheduling = {
 							
-						
+							"box" : e,
+							"avlLine" : a,
+							"group" : i,
 							"andon" : Math.max.apply(null,aAndons),
 							"blocked" : Math.max.apply(null,aDisruptions),
 							"criticalPath": fCriticalPath,

@@ -6,6 +6,8 @@ airbus.mes.stationtracker.ShiftManager  = {
 	
 	dayDisplay : undefined,
 	shiftDisplay :true,
+	fSwipe: false,
+	truc : 0,
 	
 	current_shift : undefined,
 	currentShiftStart : undefined,
@@ -272,15 +274,50 @@ airbus.mes.stationtracker.ShiftManager  = {
 	timelineAddStep : function(date, step, mode) {
 		var oFormatter = airbus.mes.stationtracker.util.Formatter;
 		if (this.shifts.length === 0)
-			return scheduler.date.add_timeline_old(date, step, mode);
+		return scheduler.date.add_timeline_old(date, step, mode);
 
 		var c = this.closestShift(new Date(date));
 
 		if ( this.dayDisplay ) {
-			
-			step = step*2;
-		}
 		
+					
+				var a = c; 
+				
+				while (!dNewShift) {
+				
+				if ( a >= this.shifts.length)
+					{
+					dhtmlx.message({
+						id: "lastShiftDHTMLX",
+						text: "Last Shift Reached",
+						expire: 2000
+					});
+					return date;
+					
+					}
+				if (a < 0) {
+					dhtmlx.message({
+						id: "firstShiftDHTMLX",
+						text: "First Shift Reached",
+						expire: 2000
+					});
+					return date;
+				} 
+					if ( this.shifts[c].day === this.shifts[a].day ) {
+						
+						a = a + step ;
+						
+					} else {
+						
+						var dNewShift = oFormatter.jsDateFromDayTimeStr(this.shifts[a].StartDate) 
+						this.adjustSchedulerXStart(dNewShift);
+						return dNewShift;
+					}
+				}
+				
+			
+		} else {
+					
 		if (c < 0) {
 			c = this.shifts.length - 1; // take last shift
 		}
@@ -301,6 +338,7 @@ airbus.mes.stationtracker.ShiftManager  = {
 			return date;
 		}
 
+		}
 		
 		var d = scheduler.date.copy(oFormatter.jsDateFromDayTimeStr(this.shifts[c + step].StartDate));
 			
@@ -395,6 +433,7 @@ airbus.mes.stationtracker.ShiftManager  = {
 		// /////////////////////////////////////////////////
 		var c = this.closestShift(new Date(date));
 		this.current_shift = this.shifts[c].shiftName;
+		this.current_day = this.shifts[c].day;
 		this.current_Date = oFormatter.jsDateFromDayTimeStr(this.shifts[c].StartDate);
 		this.currentShiftStart = this.shifts[c].StartDate;
 		// this.currentShiftEnd = ShiftManager.shifts[c].getEndDate();
@@ -482,12 +521,28 @@ airbus.mes.stationtracker.ShiftManager  = {
 //			this.firstTimelineStart = false;
 //		};
 //		
+		if (this.fSwipe) {
+
+			this.truc += 1;
+			
+			if (this.truc === 2) {
+				
+				this.truc = 0;
+				this.fSwipe = false;
+				return new Date(date);
+			}
+
+		}
+			
 		if ( this.shiftDisplay ) {
 		
 	    scheduler.matrix.timeline.x_size = Math.floor((new Date(this.shifts[c].EndDate) - new Date(this.shifts[c].StartDate))/1000/60/30);
 	   
+	    return new Date( this.shifts[c].StartDate );
+	    
 		}
 		
+		/** Display all the shift of current day */ 
 		if ( this.dayDisplay ) {
 		
 						
@@ -495,11 +550,11 @@ airbus.mes.stationtracker.ShiftManager  = {
 			var a = c;
 			var b =  c;
 			
-			
+			/** search EnDate of the Day of the current shift */ 
 			while (!fEndDate) {
 				
 			if ( a < this.shifts.length ) {	
-				if ( this.shifts[a].day === this.current_Date ) {
+				if ( this.shifts[a].day === this.current_day ) {
 					
 					a += 1 ;
 				} else {
@@ -509,16 +564,16 @@ airbus.mes.stationtracker.ShiftManager  = {
 				}
 				
 			} else {
-				
+			
 				var fEndDate = Date.parse(new Date(this.shifts[this.shifts.length - 1].EndDate));
 				
 			} }
-			
+			/** search StartDate of the Day of the current shift */ 
 			while (!fStartDate) {
 			
 			if ( b > 0) {
 						
-				if ( this.shifts[b].day === this.current_Date ) {
+				if ( this.shifts[b].day === this.current_day ) {
 					
 					b -= 1 ;
 					} else {
@@ -534,21 +589,20 @@ airbus.mes.stationtracker.ShiftManager  = {
 				}
 			}
 			
+			/** Permit to add + 1 on  scheduler.matrix.timeline.x_size for each hour non worker between the start and end of the
+			the current day */
 			for ( var i = fStartDate; i <= fEndDate; i += 1000*60*60 ) {
 				
 				this.isDateIgnored(new Date(i));
 				
 			}
-			
+			/**Compute the number of 1hour step needed to display all the time between start and day of the current day */ 
 		    scheduler.matrix.timeline.x_size += Math.floor((new Date(fEndDate) - new Date(fStartDate))/1000/60/60);
-		    return new Date ( fStartDate );
+		   
+			return new Date ( fStartDate );
 		    
 			}
 		
-		return new Date( this.shifts[c].StartDate );
-		
-		// ////////////////////////////////////////////////
-
 	},
 
 	/**
@@ -753,26 +807,40 @@ airbus.mes.stationtracker.ShiftManager  = {
 		
 		this.step = -1;
 		var step;
+		var dNewDate;
 
 		if (side === "right") {
 			step = scheduler.matrix.timeline.x_step;
+			dNewDate =  Date.parse(scheduler._min_date) + step*1000*60;
 		} else {
 			step = -scheduler.matrix.timeline.x_step;
 		}
 
-		var ndate = scheduler.date.add(scheduler.date.timeline_start(scheduler._min_date), step, "minute");
+//		var ndate = scheduler.date.add(scheduler.date.timeline_start(scheduler._min_date), step, "minute");
 
-		if (side === "left" && this.isDateIgnored(ndate)) {
-			ndate = this.endOfPreviousShift(ndate);
-		} else if (side === "right" && ndate > oFormatter.jsDateFromDayTimeStr(this.shifts[this.shifts.length-1].EndDate)) {
-			dhtmlx.message({ id: "lastShiftDHTMLX", text: "Last Shift Reached", expire: 2000 });
-			return 
-		}
-
-		ndate = this.adjustSchedulerXStart(ndate);
-		this.currentFullDateSwipping = ndate;
+//		if (side === "left" && this.isDateIgnored(ndate)) {
+//			ndate = this.endOfPreviousShift(ndate);
+//		} else if (side === "right" && ndate > oFormatter.jsDateFromDayTimeStr(this.shifts[this.shifts.length-1].EndDate)) {
+//			dhtmlx.message({ id: "lastShiftDHTMLX", text: "Last Shift Reached", expire: 2000 });
+//			return 
+//		}
+		this.fSwipe = true;
+//		
+//		&& this.isDateIgnored(dNewDate)
+		if ( side === "right"  ) {
+			
+			//this.adjustSchedulerXStart(new Date(dNewDate));
+			scheduler.setCurrentView(new Date(dNewDate));
+			
+		} 
 		
-		scheduler.setCurrentView(ndate);
+	
+		
+		
+		//ndate = this.adjustSchedulerXStart(ndate);
+//		this.currentFullDateSwipping = ndate;
+		
+//		scheduler.setCurrentView(ndate);
 
 	},
 	
