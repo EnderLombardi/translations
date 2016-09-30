@@ -301,6 +301,15 @@
 
 
 /********** classes for Progress Slider Screen *******/
+.WorkTrackerApp .progressSlider{
+	display:block !important;
+}
+.WorkTrackerApp .progressSlider .comfirmedProgressSlider{
+	float:left !important;
+}
+.WorkTrackerApp .progressSlider .dynProgressSlider{
+	margin-left:-2.2rem !important;
+}
 .progressSliderColorGreen .sapMSliderProgress{
 	background-color: rgb(132,196,65) !important;
 }
@@ -314,6 +323,11 @@
     color: black !important;
     border: 2px solid #0085AD !important;
 }
+.sliderJoin{
+ 	margin-left: -2.59rem !important;
+    z-index:99;	
+ }
+..
 /********** End of CSS for Progress Slider Screen *******/
 /********** CSS for icon text box *******/
 .iconTextBox{

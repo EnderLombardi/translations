@@ -128,6 +128,10 @@ util.Formatter = {
 		return "solved";
 		
 		return "Mark solved ";
+	},
+	slider:function(enable){
+		
+		return true;
 	}
 	
 };

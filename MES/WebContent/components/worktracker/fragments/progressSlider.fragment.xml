@@ -14,13 +14,18 @@
 					<l:GridData span="L1 M1 S1" />
 				</layoutData>
 			</Button>
-			<Slider id="progressSlider" max="100" width="100%"
-				class="sapUiSmallMarginBottom">
+			<HBox width="100%" class="progressSlider">
 				<layoutData>
-					<l:GridData span="L10 M10 S10" />
+					<l:GridData span="L10 M10 S12" />
 				</layoutData>
-			</Slider>
+				<Slider class="comfirmedProgressSlider" min="0" max="30" value="30" width="30%" enabled="false"
+					editable="false">
+				</Slider>
+				<Slider id="progressSlider" class="dynProgressSlider" min="30" max="100" value="30" width="70%"
+					enabled="{ parts: [ 'userDetailModel>/Rowsets/Rowset/0/Row/0/first_name'], formatter: 'util.Formatter.slider' }">
+				</Slider>
 
+			</HBox>
 			<Button id="btnAdd" press="addProgress" icon="sap-icon://sys-add">
 				<layoutData>
 					<l:GridData span="L1 M1 S1" />
