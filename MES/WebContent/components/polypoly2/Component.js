@@ -28,12 +28,11 @@ airbus.mes.polypoly.Component.prototype.createContent = function() {
 	
 
 		this.oView = sap.ui.view({
-			id : "polypolyView",
+			id : "polypoly",
 			viewName : "airbus.mes.polypoly.polypoly",
 			type : "XML",
 			height : "100%"
 		})
-		airbus.mes.polypoly.PolypolyManager.getPolypolyModel("F1","1","10","CHES");
 		airbus.mes.polypoly.oView = this.oView;
 
 		

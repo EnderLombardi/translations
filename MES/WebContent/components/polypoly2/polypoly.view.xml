@@ -1,21 +1,20 @@
 <core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
-	xmlns:table="sap.ui.table" xmlns="sap.m" controllerName="airbus.polypoly"
+	xmlns:table="sap.ui.table" xmlns="sap.m" controllerName="airbus.mes.polypoly.polypoly"
 	xmlns:html="http://www.w3.org/1999/xhtml">
-	<table:Table rows="{ path: '/rows' }"
-		columns="{ path: '/columns', factory: '.createColumn' }"
+	<table:Table
 		fixedColumnCount="6" fixedRowCount="2" enableColumnReordering="true"
 		rowHeight="60" height="auto" id="oTablePolypoly" enableSelectAll="false"
 		columnMove="onColumnMove">
 		<table:toolbar>
 			<Toolbar design="Transparent">
 				<content>
-					<Select id="lineSelectPolyPoly" forceSelection="false" change="onValueChange" visible="{path: '/rows', formatter: '.setVisible'}">
+					<Select id="lineSelectPolyPoly" forceSelection="false" change="onValueChange">
 						<core:Item key="1" text="Line 1" />
 						<core:Item key="2" text="Line 2" />
 						<core:Item key="3" text="Line 3" />
 					</Select>
 					<Select id="stationSelectPolyPoly" forceSelection="false" items="{stationList>/}"  
-														change="onValueChange" visible="{path: '/rows', formatter: '.setVisible'}">
+														change="onValueChange" >
 						<core:Item key="{stationList>}" text="Station {stationList>}"/>
 					</Select>
 					<ToolbarSpacer />
