@@ -47,8 +47,14 @@ sap.ui
 								this._oRouterArgs))*/
 						airbus.mes.worktracker.util.ModelManager.operation = this._oRouterArgs.operation;
 						airbus.mes.worktracker.util.ModelManager.sfc = this._oRouterArgs.sfc;
-						this.getView().getModel("ScheduleModel").getProperty("/schedule/"+this._oRouterArgs.path)
-						
+						//push data into array
+						var aOperationData = [];
+						aOperationData.push(this.getView().getModel("ScheduleModel").getProperty("/schedule/"+this._oRouterArgs.path));
+						// create a new model to hold detail of operation
+						this.getView().setModel(
+								new sap.ui.model.json.JSONModel(), "operationDetailModel");
+						this.getView().getModel("operationDetailModel").setProperty("/",aOperationData)
+					
 
 					},
 
