@@ -321,6 +321,8 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 								oNavCon.currentPageIsTopPage();
 								var oOperationPopover = sap.ui.getCore().byId("operationPopover--operationPopoverID");
 								oOperationPopover.setContentHeight("353px");								
+								airbus.mes.stationtracker.operationPopover.setModel(new sap.ui.model.json.JSONModel(airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy[scheduler.getEvent(id).group][scheduler.getEvent(id).avlLine][scheduler.getEvent(id).box]), "WorkListModel");
+								airbus.mes.stationtracker.operationPopover.getModel("WorkListModel").refresh();
 								airbus.mes.stationtracker.operationPopover.openBy(e.srcElement);	
 								break;
 							case "shopOrder" :	
