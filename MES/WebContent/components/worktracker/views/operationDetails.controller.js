@@ -53,7 +53,7 @@ sap.ui
 						// create a new model to hold detail of operation
 						this.getView().setModel(
 								new sap.ui.model.json.JSONModel(), "operationDetailModel");
-						this.getView().getModel("operationDetailModel").setProperty("/",aOperationData)
+						this.getView().getModel("operationDetailModel").setProperty("/schedule/",aOperationData)
 					
 
 					},
