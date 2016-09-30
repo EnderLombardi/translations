@@ -1,7 +1,7 @@
 "use strict";
 jQuery.sap.declare("airbus.mes.polypoly.PolypolyManager")
 
-airbus.mes.polypolyPolypolyManager = {
+airbus.mes.polypoly.PolypolyManager = {
 		userComptencyContext : {
 			rowBindingContext : undefined,
 			columnIndex : undefined
@@ -111,4 +111,5 @@ airbus.mes.polypolyPolypolyManager = {
 			})
 			return oTableRows;
 		},
+		
 };

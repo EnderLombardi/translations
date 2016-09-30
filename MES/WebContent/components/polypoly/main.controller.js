@@ -234,8 +234,8 @@ sap.ui.controller("airbus.mes.polypoly.main", {
 	
 	onImgClick : function(oEvt){
 //		var sId = oEvt.getId();
-		PolypolyManager.userComptencyContext.rowBindingContext = oEvt.getSource().getBindingContext();
-		PolypolyManager.userComptencyContext.columnIndex = oEvt.getSource().getParent().getParent().getCells().indexOf(oEvt.getSource());
+		airbus.mes.polypoly.PolypolyManager.userComptencyContext.rowBindingContext = oEvt.getSource().getBindingContext();
+		airbus.mes.polypoly.PolypolyManager.userComptencyContext.columnIndex = oEvt.getSource().getParent().getParent().getCells().indexOf(oEvt.getSource());
 		var oPopover = new sap.m.Popover({
 			showHeader : false,
 			content: [new sap.m.VBox({
