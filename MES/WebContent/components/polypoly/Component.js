@@ -22,13 +22,20 @@ airbus.mes.polypoly.Component.prototype.createContent = function() {
 	if (airbus.mes.polypoly.oView === undefined) {
 		//	View on XML
 		
-		this.oView = sap.ui.view({
+//		this.oView = sap.ui.view({
+//			id : "idmain1",
+//			viewName : "airbus.mes.polypoly.App",
+//			type : "XML",
+//			height : "100%"
+//		});
+		
+		var page = sap.ui.view({
 			id : "idmain1",
 			viewName : "airbus.mes.polypoly.App",
-			type : "XML",
-			height : "100%"
-		})
-		airbus.mes.polypoly.oView = this.oView;
+			type : sap.ui.core.mvc.ViewType.XML
+		});
+		
+		airbus.mes.polypoly.oView = page;
 
 		
 //		var i18nModel = new sap.ui.model.resource.ResourceModel({
@@ -38,7 +45,7 @@ airbus.mes.polypoly.Component.prototype.createContent = function() {
 		
 //		this.oView.setModel(i18nModel, "i18n");		
 		
-		return this.oView;
+		return page;
 
 	}
 

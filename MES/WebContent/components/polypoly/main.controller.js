@@ -5,9 +5,27 @@ sap.ui.controller("airbus.mes.polypoly.main", {
 * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
 * @memberOf polypoly.main
 */
-	onInit: function() {
-		model = new sap.ui.model.json.JSONModel("model/polypoly.json");
+	onAfterRendering: function() {
+		model = new sap.ui.model.json.JSONModel("./model/polypoly.json");
 		this.getView().setModel(model);
+		var oTable = sap.ui.getCore().byId("idmain1--polypolyView--oTable");
+//		oTable.bindAggregation("columns", {
+//			path : "/columns",
+//			factory : function(sId, oContext) {	sap.ui.getCore().byId("idmain1--polypolyView").getController().createColumn(sId, oContext);
+//				},
+//				
+//			
+//		});
+//				
+////				"/columns", function(sId, oContext) {
+////			sap.ui.getCore().byId("idmain1--polypolyView").getController().createColumn(sId, oContext);
+////		});
+////		
+//		
+//		oTable.bindRows("/rows");
+
+
+		
 	},
 	
 	createColumn : function (sId, oContext) {
