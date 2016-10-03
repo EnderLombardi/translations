@@ -7,7 +7,19 @@ sap.ui.controller("airbus.mes.worktracker.views.home", {
 */
 	onInit: function() {
 		
-		var url="http://"+window.location.host+"/MES/components/worktracker/local/";
+		// Set i18n Model
+	  	var i18nModel = new sap.ui.model.resource.ResourceModel({
+	    	bundleUrl : "worktracker/i18n/i18n.properties",
+	    	bundleLocale : sap.ui.getCore().getConfiguration().getLanguage()
+	  	});
+	  	this.getView().setModel(i18nModel, "i18n");
+	  	  
+	  	//Include CSS file
+	  	jQuery.sap.includeStyleSheet("worktracker/css/workTracker.css");
+	  	jQuery.sap.includeStyleSheet("worktracker/css/sideNavigation.css");
+	  	  	
+  	  
+  	  	var url="http://"+window.location.host+"/MES/components/worktracker/local/";
 		
 		// Model for station names
 		this.getView().setModel(new sap.ui.model.json.JSONModel(),"stationModel");	 
@@ -111,7 +123,7 @@ sap.ui.controller("airbus.mes.worktracker.views.home", {
 		this.getView().byId("customNav").closeNavigation();
 		
 		// Set colors for Count on Icon Bar
-		util.Functions.addCountTextClass("homeNav");
+		airbus.mes.worktracker.util.Functions.addCountTextClass("homeNav");
 		
 		// Set Operation Date Picker current date
 		var currentDate = new Date();
@@ -188,7 +200,7 @@ sap.ui.controller("airbus.mes.worktracker.views.home", {
 
 	toggleMessagesPopOver : function(oEvt){
 		
-		util.Functions.handleMessagePopOver(this, oEvt);
+		airbus.mes.worktracker.util.Functions.handleMessagePopOver(this, oEvt);
 	},
 	
 	onSelectionStatus : function (oEvt) {

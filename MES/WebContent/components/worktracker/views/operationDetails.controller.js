@@ -91,7 +91,7 @@ sap.ui
 					onAfterRendering : function() {
 
 						// Set colors for Count on Icon Bar
-						util.Functions.addCountTextClass("operationNav");
+						airbus.mes.worktracker.util.Functions.addCountTextClass("operationNav");
 
 						// Set Progress Screen according to status of operation
 						if (this.getView().byId("operationStatus").getText() === "Not Started") {
@@ -113,7 +113,7 @@ sap.ui
 
 					// Functions for Sub Header
 					navigateHome : function() {
-						window.history.go(-1);
+						this.getOwnerComponent().getRouter().navTo("");
 					},
 
 					expandOperationDetailPanel : function(oEvent) {
@@ -125,7 +125,7 @@ sap.ui
 
 					toggleMessagesPopOver : function(oEvt) {
 
-						util.Functions.handleMessagePopOver(this, oEvt);
+						airbus.mes.worktracker.util.Functions.handleMessagePopOver(this, oEvt);
 					},
 
 					/* Progress Functions */
@@ -208,13 +208,18 @@ sap.ui
 						
 					},
 					
-					onAccept:function(){
-						var user = sap.ui.getCore().byId("username").getValue();						
-						var pass = sap.ui.getCore().byId("password").getValue();
-						sap.ui.getCore().byId("username").setValue("");
-						if(user == "" || pass == ""){
-							alert("Please fill all the fields");
-						};
+					onPartialConfirmation:function(){
+						if (!this.oUserConfirmation) {
+
+							this.oUserConfirmation = sap.ui
+									.xmlfragment(
+											"airbus.mes.worktracker.fragments.userConfirmation",
+											this);
+
+							this.getView().addDependent(
+									this.oUserConfirmation);
+						}
+						this.oUserConfirmation.open();
 					},
 										
 					onCancel:function(){
@@ -222,6 +227,17 @@ sap.ui
 					},
 					completeOperation : function() {
 						
+						if (!this.oUserConfirmation) {
+
+							this.oUserConfirmation = sap.ui
+									.xmlfragment(
+											"airbus.mes.worktracker.fragments.userConfirmation",
+											this);
+
+							this.getView().addDependent(
+									this.oUserConfirmation);
+						}
+						this.oUserConfirmation.open();
 						if (!this._oFullConfirmDialog) {
 
 							this._oFullConfirmDialog = sap.ui
@@ -244,21 +260,7 @@ sap.ui
 						 * this.getView().byId("progressSlider").addStyleClass("progressSliderColorBlue");
 						 * this.getView().byId("progressSlider").removeStyleClass("progressSliderColorGreen");
 						 */
-//						Popup for user validation						
 						this._oPartialConfirmDialog.close();
-						
-						if (!this.oUserConfirmation) {
-
-							this.oUserConfirmation = sap.ui
-									.xmlfragment(
-											"airbus.mes.worktracker.fragments.userConfirmation",
-											this);
-
-							this.getView().addDependent(
-									this.oUserConfirmation);
-						}
-						this.oUserConfirmation.open();						
-						
 					},
 
 					onCancelFullConfirmation : function() {
@@ -270,25 +272,13 @@ sap.ui
 								"progressSliderColorBlue");
 						/* this.getView().byId("progressSlider").removeStyleClass("progressSliderColorGreen"); */
 						this._oFullConfirmDialog.close();
-//				Popup for user validation
-						if (!this.oUserConfirmation) {
-
-							this.oUserConfirmation = sap.ui
-									.xmlfragment(
-											"airbus.mes.worktracker.fragments.userConfirmation",
-											this);
-
-							this.getView().addDependent(
-									this.oUserConfirmation);
-						}
-						this.oUserConfirmation.open();
 
 						this.setProgressScreenBtn(false, false, false);
 						this.getView().byId("progressSlider").setValue(100);
 						this.getView().byId("progressSlider").setEnabled(false);
 						this.getView().byId("operationStatus").setText(
 								"Completed");
-						
+
 					},
 					showCommentBox : function(oEvt) {
 						var path = oEvt.getSource().getBindingContext(

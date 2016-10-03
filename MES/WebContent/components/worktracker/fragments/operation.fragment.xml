@@ -58,7 +58,7 @@
 								<HBox class="operationStatusBox bottomRight">
 									<Text text="{ScheduleModel>status}" />
 									<core:Icon class="ML-05 font90"
-										src="{path:'ScheduleModel>status' , formatter:'util.Formatter.setIcon'}" />
+										src="{path:'ScheduleModel>status' , formatter:'airbus.mes.worktracker.util.Formatter.setIcon'}" />
 								</HBox>
 
 

@@ -6,15 +6,15 @@
 			<Toolbar class="pageHeader">
 				<ToolbarSpacer width="0.2rem" />
 				<Text id="operatorInitials"
-					text="{ parts: [ 'userDetailModel>/Rowsets/Rowset/0/Row/0/first_name', 'userDetailModel>/Rowsets/Rowset/0/Row/0/last_name', 'userDetailModel>/Rowsets/Rowset/0/Row/0/image'], formatter: 'util.Formatter.setUserInitials' }"
+					text="{ parts: [ 'userDetailModel>/Rowsets/Rowset/0/Row/0/first_name', 'userDetailModel>/Rowsets/Rowset/0/Row/0/last_name', 'userDetailModel>/Rowsets/Rowset/0/Row/0/image'], formatter: 'airbus.mes.worktracker.util.Formatter.setUserInitials' }"
 					class="circleText operatorInitials"></Text>
 				<Image id="operatorImage" class="img-circle"
-					src="{ parts: ['userDetailModel>/Rowsets/Rowset/0/Row/0/image'], formatter: 'util.Formatter.setUserImage' }"
+					src="{ parts: ['userDetailModel>/Rowsets/Rowset/0/Row/0/image'], formatter: 'airbus.mes.worktracker.util.Formatter.setUserImage' }"
 					densityAware="false" height="75%"></Image>
 				<ToolbarSpacer width="0.7rem" />
 				<VBox>
 					<Text
-						text="{ parts: [ 'userDetailModel>/Rowsets/Rowset/0/Row/0/first_name', 'userDetailModel>/Rowsets/Rowset/0/Row/0/last_name'], formatter: 'util.Formatter.getFullName' }"
+						text="{ parts: [ 'userDetailModel>/Rowsets/Rowset/0/Row/0/first_name', 'userDetailModel>/Rowsets/Rowset/0/Row/0/last_name'], formatter: 'airbus.mes.worktracker.util.Formatter.getFullName' }"
 						class="text" />
 					<custom:ClickText text="Change operator" id="changeOperator"
 						class="subText pointer" press="toggleChangeOptrPopOver" />
@@ -25,7 +25,7 @@
 				<VBox alignItems="End">
 					<Text text="Station 10" class="text" />
 					<Text
-						text="{path:'userDetailModel>/Rowsets/Rowset/0/Row/0/first_name', formatter: 'util.Formatter.getCurrentdate' }"
+						text="{path:'userDetailModel>/Rowsets/Rowset/0/Row/0/first_name', formatter: 'airbus.mes.worktracker.util.Formatter.getCurrentdate' }"
 						id="date" class="subText" />
 				</VBox>
 				<ToolbarSpacer width="20px" />

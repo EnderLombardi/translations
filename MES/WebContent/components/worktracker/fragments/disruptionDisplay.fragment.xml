@@ -181,7 +181,7 @@
 										</f:label>
 										<f:fields>
 											<TextArea placeholder="Add Comments.." icon="sap-icon://sort"
-												visible="{ parts: [ 'disruptionModel>commentVisible'], formatter : 'util.Formatter.showComment' }">
+												visible="{ parts: [ 'disruptionModel>commentVisible'], formatter : 'airbus.mes.worktracker.util.Formatter.showComment' }">
 												<layoutData>
 													<l:GridData span="L10 M10 S12" />
 												</layoutData>
@@ -198,7 +198,7 @@
 										</f:label>
 										<f:fields>
 											<Button text="Add Comment"
-												visible="{ parts: [ 'disruptionModel>Status' ], formatter : 'util.Formatter.setVisibility' }"
+												visible="{ parts: [ 'disruptionModel>Status' ], formatter : 'airbus.mes.worktracker.util.Formatter.setVisibility' }"
 												press="showCommentBox">
 												<layoutData>
 													<l:GridData span="L2 M2 S12" />
@@ -206,7 +206,7 @@
 											</Button>
 										</f:fields>
 										<f:fields>
-											<Button text="{ parts: [ 'disruptionModel>Status'], formatter : 'util.Formatter.markSolvedBtn' }" type="Emphasized" press="onMarkSolved">
+											<Button text="{ parts: [ 'disruptionModel>Status'], formatter : 'airbus.mes.worktracker.util.Formatter.markSolvedBtn' }" type="Emphasized" press="onMarkSolved">
 												<layoutData>
 													<l:GridData span="L2 M2 S12" />
 												</layoutData>

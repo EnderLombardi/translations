@@ -22,7 +22,7 @@
 					editable="false">
 				</Slider>
 				<Slider id="progressSlider" class="dynProgressSlider" min="30" max="100" value="30" width="70%"
-					enabled="{ parts: [ 'userDetailModel>/Rowsets/Rowset/0/Row/0/first_name'], formatter: 'util.Formatter.slider' }">
+					enabled="{ parts: [ 'userDetailModel>/Rowsets/Rowset/0/Row/0/first_name'], formatter: 'airbus.mes.worktracker.util.Formatter.slider' }">
 				</Slider>
 
 			</HBox>

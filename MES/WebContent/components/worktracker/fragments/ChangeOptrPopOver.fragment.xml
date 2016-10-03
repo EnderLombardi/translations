@@ -28,13 +28,13 @@
 					<CustomListItem>
 
 						<Text id="operatorInitials"
-							text="{ parts: [ 'operatorsModel>first_name', 'operatorsModel>last_name', 'operatorsModel>image'], formatter: 'util.Formatter.setUserInitials' }"
+							text="{ parts: [ 'operatorsModel>first_name', 'operatorsModel>last_name', 'operatorsModel>image'], formatter: 'airbus.mes.worktracker.util.Formatter.setUserInitials' }"
 							class="circleText operatorInitials2 sapUiSmallMarginEnd" visible="false"></Text>
 						<Image id="operatorImage" class="img-circle sapUiSmallMarginEnd" visible="false"
-							src="{ parts: ['operatorsModel>image'], formatter: 'util.Formatter.setUserImage' }"
+							src="{ parts: ['operatorsModel>image'], formatter: 'airbus.mes.worktracker.util.Formatter.setUserImage' }"
 							densityAware="false" height="75%"></Image>
 						<Text
-							text="{ parts: [ 'operatorsModel>first_name', 'operatorsModel>last_name'], formatter: 'util.Formatter.getFullName' }"></Text>
+							text="{ parts: [ 'operatorsModel>first_name', 'operatorsModel>last_name'], formatter: 'airbus.mes.worktracker.util.Formatter.getFullName' }"></Text>
 					</CustomListItem>
 				</items>
 			</List>

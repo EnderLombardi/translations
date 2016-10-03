@@ -15,8 +15,7 @@
 				<f:content>
 					<Label text="Username" />
 					<Input fieldGroupIds="user" value="{userName}"
-						id="username" placeholder="Enter username"
-						class="sapUiSmallMarginBottom" type="Text"/>
+						id="username" placeholder="Enter username"/>
 					<Label text="Password" />
 					<Input fieldGroupIds="user" type="Password" value="{password}"
 						id="password" placeholder="Enter password">

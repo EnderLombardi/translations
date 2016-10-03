@@ -1,8 +1,8 @@
 "use strict";
 
-jQuery.sap.declare("util.Functions");
+jQuery.sap.declare("airbus.mes.worktracker.util.Functions");
 
-util.Functions = {
+airbus.mes.worktracker.util.Functions = {
 		
 	getInitials : function(fName, lName) {
 		var initals = "";

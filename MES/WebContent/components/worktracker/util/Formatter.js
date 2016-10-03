@@ -1,8 +1,8 @@
 "use strict";
 
-jQuery.sap.declare("util.Formatter");
+jQuery.sap.declare("airbus.mes.worktracker.util.Formatter");
 
-util.Formatter = {
+airbus.mes.worktracker.util.Formatter = {
 	monthNames : [ "January", "February", "March", "April", "May", "June",
 			"July", "August", "September", "October", "November", "December" ],
 
@@ -58,7 +58,7 @@ util.Formatter = {
 		if (dd < 10) {
 			dd = '0' + dd
 		}
-		var month = util.Formatter.monthNames[mm];
+		var month = airbus.mes.worktracker.util.Formatter.monthNames[mm];
 
 		return (dd + ' ' + month + ' ' + yyyy);
 	},
@@ -81,7 +81,7 @@ util.Formatter = {
 			this.setVisible(false);
 			return;
 		} else if(fName !="" && lName != "") {
-			var name = util.Functions.getInitials(fName, lName);
+			var name = airbus.mes.worktracker.util.Functions.getInitials(fName, lName);
 			//this.removeStyleClass("hide");
 			this.setVisible(true);
 			return name;
@@ -97,7 +97,7 @@ util.Formatter = {
 		if(typeof team_name != 'undefined' && team_name != '')
 			return "Message from "+team_name;
 			
-		return util.Formatter.getFullName(fName, lName);
+		return airbus.mes.worktracker.util.Formatter.getFullName(fName, lName);
 	},
 	
 	setVisibility : function(status) {
