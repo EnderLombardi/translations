@@ -8,7 +8,7 @@
 			<Button text="Cancel" press="onCancelFullConfirmation"/>
 		</beginButton>
 		<endButton>
-			<Button type="Emphasized" text="OK" press="onFullConfirmation"/>
+			<Button type="Accept" text="OK" press="onFullConfirmation"/>
 		</endButton>
 	</Dialog>
 </core:FragmentDefinition>
