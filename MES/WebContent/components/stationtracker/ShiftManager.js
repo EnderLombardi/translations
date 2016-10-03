@@ -145,8 +145,8 @@ airbus.mes.stationtracker.ShiftManager  = {
 			
 			iMed = Math.floor(iMin + ((iMax-iMin) / 2));
 			
-			dCurr = oFormatter.jsDateFromDayTimeStr(this.shifts[iMed].EndDate);
-			dPrev = iMed > 0 ? oFormatter.jsDateFromDayTimeStr(this.shifts[iMed-1].EndDate) : undefined;
+			dCurr = this.shifts[iMed].EndDate;
+			dPrev = iMed > 0 ? this.shifts[iMed-1].EndDate : undefined;
 			
 			if (dCurr <= date) {
 				// Very important, condition is less than *or equal*
@@ -309,7 +309,7 @@ airbus.mes.stationtracker.ShiftManager  = {
 						
 					} else {
 						
-						var dNewShift = oFormatter.jsDateFromDayTimeStr(this.shifts[a].StartDate) 
+						var dNewShift = this.shifts[a].StartDate; 
 						this.adjustSchedulerXStart(dNewShift);
 						return dNewShift;
 					}
@@ -340,7 +340,7 @@ airbus.mes.stationtracker.ShiftManager  = {
 
 		}
 		
-		var d = scheduler.date.copy(oFormatter.jsDateFromDayTimeStr(this.shifts[c + step].StartDate));
+		var d = scheduler.date.copy(this.shifts[c + step].StartDate);
 			
 				
 		this.currentFullDateSwipping = d;
@@ -366,13 +366,13 @@ airbus.mes.stationtracker.ShiftManager  = {
 
 		if (c < 0) {
 			dhtmlx.message({ id: "firstShiftDHTMLX", text: "First Shift Reached", expire: 2000 });
-			return oFormatter.jsDateFromDayTimeStr(this.shifts[0].StartDate); // take first shift
+			return (this.shifts[0].StartDate); // take first shift
 		}
 
-		var d = this.roundDate(oFormatter.jsDateFromDayTimeStr(this.shifts[c].EndDate));
+		var d = this.roundDate(this.shifts[c].EndDate);
 
 		// if the shift ends at a round date, remove x_step minutes
-		if (d.valueOf() === oFormatter.jsDateFromDayTimeStr(this.shifts[c].EndDate).valueOf()) {
+		if (d.valueOf() === (this.shifts[c].EndDate).valueOf()) {
 			d = scheduler.date.add(d, -scheduler.matrix.timeline.x_step,"minute");
 		}
 
@@ -434,10 +434,10 @@ airbus.mes.stationtracker.ShiftManager  = {
 		var c = this.closestShift(new Date(date));
 		this.current_shift = this.shifts[c].shiftName;
 		this.current_day = this.shifts[c].day;
-		this.current_Date = oFormatter.jsDateFromDayTimeStr(this.shifts[c].StartDate);
+		this.current_Date = this.shifts[c].StartDate;
 		this.currentShiftStart = this.shifts[c].StartDate;
 		// this.currentShiftEnd = ShiftManager.shifts[c].getEndDate();
-		this.currentFullDate = oFormatter.jsDateFromDayTimeStr(this.shifts[c].StartDate);
+		this.currentFullDate = this.shifts[c].StartDate;
 		this.currentShiftIndex = c;
 		
 		var currMotn = this.current_Date.getMonth() + 1;
@@ -451,7 +451,7 @@ airbus.mes.stationtracker.ShiftManager  = {
 		var w_int = 0;
 		var previous_shift_end;
 		var shift_begin = date;
-		var shift_end = oFormatter.jsDateFromDayTimeStr(this.shifts[c].EndDate);
+		var shift_end = this.shifts[c].EndDate;
 		
 //		while ( w_int < nb_int && c <= this.shifts.length - 1 ) {
 //			if (previous_shift_end
@@ -632,10 +632,10 @@ airbus.mes.stationtracker.ShiftManager  = {
 			
 			// Round date to the previous bound (based on x_step)
 			// This means, if d1 = 16:18 and step = 15 min, d1 => 16:15
-			d1 = this.roundDate(oFormatter.jsDateFromDayTimeStr(this.shifts[iMed].StartDate), 0);
+			d1 = this.roundDate(this.shifts[iMed].StartDate, 0);
 			// Round date to the next bound (based on x_step)
 			// This means, if d2 = 16:18 and step = 15 min, d2 => 16:30
-			d2 = this.roundDate(oFormatter.jsDateFromDayTimeStr(this.shifts[iMed].EndDate), 1);
+			d2 = this.roundDate(this.shifts[iMed].EndDate, 1);
 			
 			if (d1 > date) {
 				if (iMin === iMed) {
@@ -676,7 +676,7 @@ airbus.mes.stationtracker.ShiftManager  = {
 		
 		var d1, d2, d3, d4, d5;
 		
-		var d2 = oFormatter.jsDateFromDayTimeStr(this.shifts[0].StartDate);
+		var d2 = this.shifts[0].StartDate;
 		var d1 = scheduler.date.copy(d2);
 		d1.setMinutes(d1.getMinutes() - scheduler.matrix.timeline.x_size
 				* scheduler.matrix.timeline.x_step);
@@ -688,14 +688,14 @@ airbus.mes.stationtracker.ShiftManager  = {
 		});
 
 		for (var index = 0; index < this.shifts.length - 1; ++index) {
-			d1 = oFormatter.jsDateFromDayTimeStr(this.shifts[index].EndDate);
-			d2 = oFormatter.jsDateFromDayTimeStr(this.shifts[index + 1].StartDate);
+			d1 = this.shifts[index].EndDate;
+			d2 = this.shifts[index + 1].StartDate;
 			scheduler.addMarkedTimespan({
 				start_date : d1,
 				end_date : d2,
 				css : "offtime"
 			});
-			d3 = oFormatter.jsDateFromDayTimeStr(this.shifts[index].StartDate);
+			d3 = this.shifts[index].StartDate;
 			d4 = scheduler.date.copy(d3);
 			d4.setMinutes(d4.getMinutes() + 5);
 			scheduler.addMarkedTimespan({
@@ -705,7 +705,7 @@ airbus.mes.stationtracker.ShiftManager  = {
 			});
 		}
 
-		d1 = oFormatter.jsDateFromDayTimeStr(this.shifts[this.shifts.length - 1].EndDate);
+		d1 = his.shifts[this.shifts.length - 1].EndDate;
 		d2 = scheduler.date.copy(d1);
 		d2.setMinutes(d2.getMinutes() + scheduler.matrix.timeline.x_size
 				* scheduler.matrix.timeline.x_step);
@@ -714,7 +714,7 @@ airbus.mes.stationtracker.ShiftManager  = {
 			end_date : d2,
 			css : "offtime"
 		});
-		d3 = oFormatter.jsDateFromDayTimeStr(this.shifts[this.shifts.length - 1].StartDate);
+		d3 = his.shifts[this.shifts.length - 1].StartDate;
 		d4 = scheduler.date.copy(d3);
 		d4.setMinutes(d4.getMinutes() + 5);
 		scheduler.addMarkedTimespan({

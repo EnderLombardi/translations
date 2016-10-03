@@ -137,8 +137,8 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 
 
 			airbus.mes.stationtracker.ModelManager.loadShifts();
-
-			airbus.mes.stationtracker.ModelManager.loadStationTracker();
+			airbus.mes.stationtracker.ModelManager.loadAffectation();
+			airbus.mes.stationtracker.ModelManager.loadStationTracker("R");
 			airbus.mes.stationtracker.ShiftManager.init(airbus.mes.stationtracker.GroupingBoxingManager.shiftNoBreakHierarchy);
 
 			scheduler.xy.scroll_width = 20;

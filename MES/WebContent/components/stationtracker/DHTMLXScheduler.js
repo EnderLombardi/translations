@@ -141,7 +141,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 
 							}
 
-							if (section.initial != undefined && airbus.mes.stationtracker.GroupingBoxingManager.showInitial ) {
+							if (section.initial != undefined ) {
 
 								var html = '<span  style="float: right;margin-right: 5px;" >' + section.initial
 										+ '</span>'

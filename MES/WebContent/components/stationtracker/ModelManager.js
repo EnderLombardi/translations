@@ -9,11 +9,18 @@ airbus.mes.stationtracker.ModelManager = {
 		init : function(core) {
 			
 			
+
 			core.setModel(new sap.ui.model.json.JSONModel(), "WorkListModel");	
-			core.setModel(new sap.ui.model.json.JSONModel(), "stationTrackerModel"); // Station tracker model
-			core.setModel(new sap.ui.model.json.JSONModel(), "shiftsModel"); // Shifts model
+			core.setModel(new sap.ui.model.json.JSONModel(),"stationTrackerRModel"); // Station tracker model reschedule line
+			core.setModel(new sap.ui.model.json.JSONModel(),"stationTrackerIModel"); // Station tracker model initial line
+			core.setModel(new sap.ui.model.json.JSONModel(),"shiftsModel"); // Shifts model
+			core.setModel(new sap.ui.model.json.JSONModel(),"affectationModel"); // Shifts model
+
 			
-			core.getModel("stationTrackerModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onStationTrackerLoad);
+			
+			core.getModel("stationTrackerRModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onStationTrackerLoad);
+			core.getModel("stationTrackerIModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onStationTrackerLoad);
+
 			core.getModel("shiftsModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onShiftsLoad);
 
 
@@ -47,9 +54,28 @@ airbus.mes.stationtracker.ModelManager = {
 						
 		},
 				
-		loadStationTracker : function() {
-			var oViewModel = sap.ui.getCore().getModel("stationTrackerModel");
-			oViewModel.loadData(this.urlModel.getProperty("urlstationtracker"), null, false);
+		loadAffectation : function() {
+			var oViewModel = sap.ui.getCore().getModel("affectationModel");
+			oViewModel.loadData(this.urlModel.getProperty("urlaffectation"), null, false);
+		
+		},
+		
+		loadStationTracker : function(sType) {
+			if (sType === "R") {
+				
+			var oViewModel = sap.ui.getCore().getModel("stationTrackerRModel");
+			oViewModel.loadData(this.urlModel.getProperty("urlstationtrackerreschedule"), null, false);
+			
+			}
+			
+			if (sType === "I") {
+				
+				var oViewModel = sap.ui.getCore().getModel("stationTrackerIModel");
+				oViewModel.loadData(this.urlModel.getProperty("urlstationtrackerinitial"), null, false);				
+				
+			}
+			
+			
 		},	
 		onStationTrackerLoad : function() {
 			
