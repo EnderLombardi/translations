@@ -6,8 +6,8 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 	shiftNoBreakHierarchy: [],
 	showInitial : false,
 	//XXX MEHDI TODO
-	group : "competency" ,
-	box : "operationId",
+	group : "CPP_CLUSTER" ,
+	box : "OPERATION_ID",
 	
 	parseShift : function()  {
 		

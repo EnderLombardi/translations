@@ -9,14 +9,14 @@
              { "Name" : "beginDateTime", "SourceColumn" : "beginDateTime", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
              { "Name" : "endDateTime", "SourceColumn" : "endDateTime", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 } ] }, 
        "Row" : [ 
-             { "shiftName" : "EARLY 1","shiftID" : "EARLY 1", "day" : "2016-04-10", "beginDateTime" : "2016-04-10 07:30:00", "endDateTime" : "2016-04-10 10:30:00" }, 
-             { "shiftName" : "EARLY 1","shiftID" : "EARLY 1", "day" : "2016-04-10", "beginDateTime" : "2016-04-10 11:00:00", "endDateTime" : "2016-04-10 12:00:00" }, 
-             { "shiftName" : "EARLY 1","shiftID" : "EARLY 1", "day" : "2016-04-10", "beginDateTime" : "2016-04-10 13:30:00", "endDateTime" : "2016-04-10 16:30:00" }, 
-             { "shiftName" : "LATE 1","shiftID" : "LATE 1", "day" : "2016-04-10", "beginDateTime" : "2016-04-10 18:29:59", "endDateTime" : "2016-04-10 22:15:00" },
-             { "shiftName" : "EARLY 2","shiftID" : "EARLY 2", "day" : "2016-04-13", "beginDateTime" : "2016-04-11 10:30:00", "endDateTime" : "2016-04-11 15:30:00" }, 
-             { "shiftName" : "LATE 2","shiftID" : "LATE 2", "day" : "2016-04-13", "beginDateTime" : "2016-04-12 18:30:00", "endDateTime" : "2016-04-13 02:00:00" },
-             { "shiftName" : "LATE3","shiftID" : "LATE3", "day" : "2016-04-13", "beginDateTime" : "2016-04-13 10:30:00", "endDateTime" : "2016-04-13 15:30:00" }, 
-             { "shiftName" : "LATE4","shiftID" : "LATE4", "day" : "2016-04-13", "beginDateTime" : "2016-04-14 10:30:00", "endDateTime" : "2016-04-14 15:30:00" } 
+             { "shiftName" : "EARLY 1","shiftID" : "EARLY 1", "day" : "2016-10-03", "beginDateTime" : "2016-10-03 07:30:00", "endDateTime" : "2016-10-03 10:30:00" }, 
+             { "shiftName" : "EARLY 1","shiftID" : "EARLY 1", "day" : "2016-10-03", "beginDateTime" : "2016-10-03 11:00:00", "endDateTime" : "2016-10-03 12:00:00" }, 
+             { "shiftName" : "EARLY 1","shiftID" : "EARLY 1", "day" : "2016-10-03", "beginDateTime" : "2016-10-03 13:30:00", "endDateTime" : "2016-10-03 16:30:00" }, 
+             { "shiftName" : "LATE 1","shiftID" : "LATE 1", "day" : "2016-10-03", "beginDateTime" : "2016-10-03 18:29:59", "endDateTime" : "2016-10-03 22:15:00" },
+             { "shiftName" : "EARLY 2","shiftID" : "EARLY 2", "day" : "2016-10-04", "beginDateTime" : "2016-10-04 10:30:00", "endDateTime" : "2016-10-04 15:30:00" }, 
+             { "shiftName" : "LATE 2","shiftID" : "LATE 2", "day" : "2016-10-04", "beginDateTime" : "2016-10-05 18:30:00", "endDateTime" : "2016-10-06 02:00:00" },
+             { "shiftName" : "LATE3","shiftID" : "LATE3", "day" : "2016-10-04", "beginDateTime" : "2016-10-06 10:30:00", "endDateTime" : "2016-10-06 15:30:00" }, 
+             { "shiftName" : "LATE4","shiftID" : "LATE4", "day" : "2016-10-04", "beginDateTime" : "2016-10-07 10:30:00", "endDateTime" : "2016-10-07 15:30:00" } 
             ]             } ]
        }
 }
