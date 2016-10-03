@@ -134,6 +134,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	onPolypolyOpen: function(oEvent) {
 		jQuery.sap.registerModulePath("airbus.mes.polypoly","/MES/components/polypoly");
 
+<<<<<<< Upstream, based on origin/MESv0.9
 			//Open fragment
 		var bindingContext = oEvent.getSource().getBindingContext();
 		
@@ -171,6 +172,23 @@ this._oPopoverPolypoly.open();
 		this._oPopoverPolypoly.close();
 		
 	},
+=======
+//	onUnplannedPress : function() {
+//		if ( airbus.mes.stationtracker.worklistPopover === undefined ) {
+//			
+//			var oView = airbus.mes.stationtracker.oView;
+//			airbus.mes.stationtracker.worklistPopover = sap.ui.xmlfragment("worklistPopover","airbus.mes.stationtracker.worklistPopover", airbus.mes.stationtracker.oView.getController());
+//			airbus.mes.stationtracker.worklistPopover.addStyleClass("alignTextLeft");
+//			oView.addDependent(airbus.mes.stationtracker.worklistPopover);
+//		}
+//		airbus.mes.stationtracker.worklistPopover.unPlanned = true;
+//		airbus.mes.stationtracker.worklistPopover.setModel(new sap.ui.model.json.JSONModel(airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy[scheduler.getEvent(id).group][scheduler.getEvent(id).avlLine][scheduler.getEvent(id).box]), "WorkListModel");
+//		airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").refresh();
+//		airbus.mes.stationtracker.worklistPopover.openBy(e.srcElement);	
+//		
+//	},
+	
+>>>>>>> 7b5f32c Unplanned activities
 	changeGroup : function() {
 
 		var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
