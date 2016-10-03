@@ -61,22 +61,32 @@ airbus.mes.stationtracker.ModelManager = {
 		},
 		
 		loadStationTracker : function(sType) {
-			if (sType === "R") {
 				
-			var oViewModel = sap.ui.getCore().getModel("stationTrackerRModel");
-			oViewModel.loadData(this.urlModel.getProperty("urlstationtrackerreschedule"), null, false);
-			
-			}
-			
-			if (sType === "I") {
+				var oData = airbus.mes.settings.ModelManager;
 				
-				var oViewModel = sap.ui.getCore().getModel("stationTrackerIModel");
-				oViewModel.loadData(this.urlModel.getProperty("urlstationtrackerinitial"), null, false);				
+				var geturlstationtracker = this.urlModel.getProperty('urlstationtrackeroperation');			
 				
-			}
-			
+				geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$site", oData.site);
+				geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$station", oData.station);
+				geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$msn", oData.msn);
+				geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$operationType", sType);
+				geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$productionGroup", "%");
+				
+				
+				if ( sType === "R" ) {
+					
+					var oViewModel = sap.ui.getCore().getModel("stationTrackerRModel");
+				}
+				
+				if ( sType === "I" ) {
+					
+					var oViewModel = sap.ui.getCore().getModel("stationTrackerIModel");
+				}
+				
+				oViewModel.loadData(geturlstationtracker , null, false);				
 			
 		},	
+		
 		onStationTrackerLoad : function() {
 			
 			var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
@@ -94,6 +104,9 @@ airbus.mes.stationtracker.ModelManager = {
 			GroupingBoxingManager.parseShift();
 		},
 		
+		replaceURI : function (sURI, sFrom, sTo) {
+				return sURI.replace(sFrom, encodeURIComponent(sTo));
+			},
 		
 		
 }

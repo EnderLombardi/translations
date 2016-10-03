@@ -118,6 +118,8 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 	computeOperationHierarchy : function(oModel,sGroup,sBoxing,sInitial) {
 		
 		var oHierachy = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy;
+		var oFormatter = airbus.mes.stationtracker.util.Formatter;
+		var oShiftManager = airbus.mes.stationtracker.ShiftManager;
 		
 		oModel.forEach(function(el){
 			
@@ -130,6 +132,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 				var ssGroup = el[sGroup]
 			}
 			
+			// permit to create initial AVL line
 			if (sInitial) {
 				
 				var ssAvLine = "I_" +  el.avlLine;
@@ -137,6 +140,20 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 				
 				var ssAvLine = el.avlLine;
 			}
+			
+			//permit to DO THE boxing on the only corresponding shift selected in day mode
+			if ( airbus.mes.stationtracker.ShiftManager.dayDisplay &&  
+				 oFormatter.jsDateFromDayTimeStr(el.startDate) < oShiftManager.currentShiftEnd &&
+				 oFormatter.jsDateFromDayTimeStr(el.startDate) > oShiftManager.currentShiftStart 
+				 ) {
+				
+				var ssBox = airbus.mes.stationtracker.ShiftManager.current_day + el[sBoxing];
+			} else {
+			
+			var ssBox = el[sBoxing];
+		}
+			
+			
 			
 //			if (sInitial) {
 //				
@@ -156,45 +173,45 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 				oHierachy[ssGroup][ssAvLine] = {};
 			}
 			
-			if ( !oHierachy[ssGroup][ssAvLine][el[sBoxing]] ) {
+			if ( !oHierachy[ssGroup][ssAvLine][ssBox] ) {
 				
-				oHierachy[ssGroup][ssAvLine][el[sBoxing]] = [];
+				oHierachy[ssGroup][ssAvLine][ssBox] = [];
 			}
 			
 			var oOperation = {
 										
-					"shopOrder" : el.shopOrder, // workOrder
-					"shopOrderDescription": el.shopOrderDescription,
-					"operationId" : el.operationId,
-					"operationDescription" : el.operationDescription,
-					"totalDuration": el.totalDuration,
-					"progress" : el.progress,
-					"certification": el.certification,
-					"startDate" : el.startDate,
-					"endDate" : el.endDate,
-					"status": el.status,
-					"disruptions": el.disruptions,
-					"andons": el.andons,
-					"routingMaturityAssessment": el.routingMaturityAssessment,
-					"ata": el.ata,
-					"familyTarget": el.familyTarget,
-					"cppCluster" : el.cppCluster,
-					"workPackage" : el.workPackage,
-					"avlPath1": el.avlPath1,
-					"avlPath2": el.avlPath2,
-					"criticalPath" : el.criticalPath,
-					"avlStartDate" : el.avlStartDate,
-					"avlEndDate" : el.avlEndDate,
-					"avlLine": el.avlLine,
-					"competency": el.competency,
-					"rescheduledStarDate": el.rescheduledStarDate,
-					"rescheduledEndDate": el.rescheduledEndDate,
-					"rescheduledLine": el.rescheduledLine,
+					"shopOrder" : el.WORKORDER_ID, // workOrder
+					"shopOrderDescription": el.WORKORDER_DESCRIPTION,
+					"operationId" : el.OPERATION_ID,
+					"operationDescription" : el.OPERATION_DESCRIPTION,
+					"totalDuration": el.DURATION,
+					"progress" : el.PROGRESS,
+					//"certification": el.certification,
+					"startDate" : el.START_TIME,
+					"endDate" : el.END_TIME,
+					"status": el.STATE,
+					//"disruptions": el.disruptions,
+					//"andons": el.andons,
+					"routingMaturityAssessment": el.ROUTING_MATURITY_ACCESSMENT,
+					//"ata": el.ata,
+					//"familyTarget": el.familyTarget,
+					"cppCluster" : el.CPP_CLUSTER,
+					//"workPackage" : el.workPackage,
+					//"avlPath1": el.avlPath1,
+					//"avlPath2": el.avlPath2,
+					"criticalPath" : el.CRITICAL_PATH,
+					//"avlStartDate" : el.avlStartDate,
+					//"avlEndDate" : el.avlEndDate,
+					"avlLine": el.AVL_LINE,
+					//"competency": el.competency,
+					//"rescheduledStarDate": el.rescheduledStarDate,
+					//"rescheduledEndDate": el.rescheduledEndDate,
+					//"rescheduledLine": el.rescheduledLine,
 					//"initial" : sInitial,
 					
 			};
 			
-			oHierachy[ssGroup][ssAvLine][el[sBoxing]].push(oOperation)
+			oHierachy[ssGroup][ssAvLine][ssBox].push(oOperation)
 			
 		})
 		
@@ -290,8 +307,8 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 						
 						aStartDateRescheduling.push(Date.parse(oFormatter.jsDateFromDayTimeStr(el.startDate)));
 						aEndDateRescheduling.push(Date.parse(oFormatter.jsDateFromDayTimeStr(el.endDate)));
-						aStartDateInitial.push(Date.parse(oFormatter.jsDateFromDayTimeStr(el.avlStartDate)));
-						aEndDateInitial.push(Date.parse(oFormatter.jsDateFromDayTimeStr(el.avlEndDate)));
+						//aStartDateInitial.push(Date.parse(oFormatter.jsDateFromDayTimeStr(el.avlStartDate)));
+						//aEndDateInitial.push(Date.parse(oFormatter.jsDateFromDayTimeStr(el.avlEndDate)));
 						aDisruptions.push(el.disruptions);
 						aAndons.push(el.andons);
 												
@@ -323,8 +340,8 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 								"text" : sOperationDescription,
 								"section_id" : 	"I_" + airbus.mes.stationtracker.AssignmentManager.idName(i) + "_" + airbus.mes.stationtracker.AssignmentManager.idName(a),
 								"progress" : sProgress,
-								"start_date" : new Date(Math.min.apply(null,aStartDateInitial)),
-								"end_date" : new Date(Math.max.apply(null,aEndDateInitial)),
+								"start_date" : new Date(Math.min.apply(null,aStartDateRescheduling)),
+								"end_date" : new Date(Math.max.apply(null,aEndDateRescheduling)),
 							}
 						
 						aBox.push(oOperationInitial);
@@ -375,10 +392,10 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 		
 		 scheduler.matrix['timeline'].y_unit_original = aElements2;
 		 scheduler.callEvent("onOptionsLoad", []);
-			var ShiftManager = airbus.mes.stationtracker.ShiftManager;
-			if(ShiftManager.current_Date !=undefined){
+		var ShiftManager = airbus.mes.stationtracker.ShiftManager;
+		if(ShiftManager.current_Date !=undefined){
 		scheduler.init(sap.ui.getCore().byId("stationTrackerView").getId() + "--test", new Date(ShiftManager.currentFullDate), "timeline");
-		}else{scheduler.init(sap.ui.getCore().byId("stationTrackerView").getId() + "--test" ,new Date("06-30-2014"), "timeline");
+		}else{scheduler.init(sap.ui.getCore().byId("stationTrackerView").getId() + "--test" ,new Date("04/10/2016"), "timeline");
 		};
 		scheduler.clearAll();
 	     

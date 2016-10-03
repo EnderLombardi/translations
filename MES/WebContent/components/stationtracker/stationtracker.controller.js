@@ -85,7 +85,6 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		if (airbus.mes.stationtracker.GroupingBoxingManager.showInitial) {
 
 			airbus.mes.stationtracker.GroupingBoxingManager.showInitial = false;
-//			sap.ui.getCore().getModel("stationTrackerIModel").oData = [];
 			GroupingBoxingManager.parseOperation(GroupingBoxingManager.group, GroupingBoxingManager.box);
 			
 		} else {
@@ -93,7 +92,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			airbus.mes.stationtracker.GroupingBoxingManager.showInitial = true;
 			airbus.mes.stationtracker.ModelManager.loadStationTracker("I")
 			
-			//GroupingBoxingManager.parseOperation(GroupingBoxingManager.group, GroupingBoxingManager.box);
+		
 		}
 	},
 

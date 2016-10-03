@@ -436,7 +436,7 @@ airbus.mes.stationtracker.ShiftManager  = {
 		this.current_day = this.shifts[c].day;
 		this.current_Date = this.shifts[c].StartDate;
 		this.currentShiftStart = this.shifts[c].StartDate;
-		// this.currentShiftEnd = ShiftManager.shifts[c].getEndDate();
+		this.currentShiftEnd = this.shifts[c].EndDate;
 		this.currentFullDate = this.shifts[c].StartDate;
 		this.currentShiftIndex = c;
 		
