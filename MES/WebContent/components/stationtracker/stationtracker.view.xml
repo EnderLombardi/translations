@@ -204,13 +204,13 @@
 					<ToolbarSeparator />
 					<Label text="Sort By : " />
 					<Select id="selectGroup" class="sapUiTinyMarginBeginEnd comboBoxStyle" change="changeGroup">
-						<core:Item text="Competence" key="competency"/>
-						<core:Item text="Avl" key="avlLine" />
+						<core:Item text="Competence" key="CPP_CLUSTER"/>
+						<core:Item text="Avl" key="AVL_LINE" />
 					</Select>
 					<Label text="Show : " />
 					<Select id="selectBox" class="sapUiTinyMarginBeginEnd comboBoxStyle" change="changeBox">
-						<core:Item text="Operations" key="operationId"/>
-						<core:Item text="WorkOrder" key="shopOrder"/>
+						<core:Item text="Operations" key="OPERATION_ID"/>
+						<core:Item text="WorkOrder" key="WORKORDER_ID"/>
 					</Select>
 					<ToolbarSpacer />
 					<HBox id="toolbarDate" class="sapUiTinyMarginBeginEnd"></HBox>

@@ -135,10 +135,10 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 			// permit to create initial AVL line
 			if (sInitial) {
 				
-				var ssAvLine = "I_" +  el.avlLine;
+				var ssAvLine = "I_" +  el.AVL_LINE;
 			} else {
 				
-				var ssAvLine = el.avlLine;
+				var ssAvLine = el.AVL_LINE;
 			}
 			
 			//permit to DO THE boxing on the only corresponding shift selected in day mode
@@ -390,8 +390,8 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 			
 		}
 		
-		 scheduler.matrix['timeline'].y_unit_original = aElements2;
-		 scheduler.callEvent("onOptionsLoad", []);
+		scheduler.matrix['timeline'].y_unit_original = aElements2;
+		scheduler.callEvent("onOptionsLoad", []);
 		var ShiftManager = airbus.mes.stationtracker.ShiftManager;
 		if(ShiftManager.current_Date !=undefined){
 		scheduler.init(sap.ui.getCore().byId("stationTrackerView").getId() + "--test", new Date(ShiftManager.currentFullDate), "timeline");
