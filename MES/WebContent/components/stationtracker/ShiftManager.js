@@ -803,36 +803,36 @@ airbus.mes.stationtracker.ShiftManager  = {
 	 */
 	// Swipe function 
 	timelineSwip : function (side) {
-		var oFormatter = airbus.mes.stationtracker.util.Formatter;
-		
-		this.step = -1;
-		var step;
-		var dNewDate;
-
-		if (side === "right") {
-			step = scheduler.matrix.timeline.x_step;
-			dNewDate =  Date.parse(scheduler._min_date) + step*1000*60;
-		} else {
-			step = -scheduler.matrix.timeline.x_step;
-		}
-
-//		var ndate = scheduler.date.add(scheduler.date.timeline_start(scheduler._min_date), step, "minute");
-
-//		if (side === "left" && this.isDateIgnored(ndate)) {
-//			ndate = this.endOfPreviousShift(ndate);
-//		} else if (side === "right" && ndate > oFormatter.jsDateFromDayTimeStr(this.shifts[this.shifts.length-1].EndDate)) {
-//			dhtmlx.message({ id: "lastShiftDHTMLX", text: "Last Shift Reached", expire: 2000 });
-//			return 
-//		}
-		this.fSwipe = true;
+//		var oFormatter = airbus.mes.stationtracker.util.Formatter;
 //		
-//		&& this.isDateIgnored(dNewDate)
-		if ( side === "right"  ) {
-			
-			//this.adjustSchedulerXStart(new Date(dNewDate));
-			scheduler.setCurrentView(new Date(dNewDate));
-			
-		} 
+//		this.step = -1;
+//		var step;
+//		var dNewDate;
+//
+//		if (side === "right") {
+//			step = scheduler.matrix.timeline.x_step;
+//			dNewDate =  Date.parse(scheduler._min_date) + step*1000*60;
+//		} else {
+//			step = -scheduler.matrix.timeline.x_step;
+//		}
+//
+////		var ndate = scheduler.date.add(scheduler.date.timeline_start(scheduler._min_date), step, "minute");
+//
+////		if (side === "left" && this.isDateIgnored(ndate)) {
+////			ndate = this.endOfPreviousShift(ndate);
+////		} else if (side === "right" && ndate > oFormatter.jsDateFromDayTimeStr(this.shifts[this.shifts.length-1].EndDate)) {
+////			dhtmlx.message({ id: "lastShiftDHTMLX", text: "Last Shift Reached", expire: 2000 });
+////			return 
+////		}
+//		this.fSwipe = true;
+////		
+////		&& this.isDateIgnored(dNewDate)
+//		if ( side === "right"  ) {
+//			
+//			//this.adjustSchedulerXStart(new Date(dNewDate));
+//			scheduler.setCurrentView(new Date(dNewDate));
+//			
+//		} 
 		
 	
 		
