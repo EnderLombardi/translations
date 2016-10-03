@@ -46,7 +46,25 @@ airbus.mes.stationtracker.util.Formatter = {
 				return new Date(day.slice(0,4),day.slice(5,7)-1,day.slice(8,10),day.slice(11,13),day.slice(14,16),day.slice(17,19));
 				
 			},
-			
+			date2Hour : function(day) {
+				
+				var date = new Date(day)
+				return date.toTimeString().split(' ')[0];
+				
+			},
+			progress2status : function(sString) {
+				switch (sString){
+				case "0" : return "Not started";
+				case "100" : return "Finished";
+				default : return "In progress";
+				};
+			},
+			progress2percent : function(sString) {
+				return sString + "%";
+			},
+			progress2float : function(sString) {
+				return parseFloat(sString);
+			},
 			transformRescheduleDate : function(oDate) {
 				var today = oDate;
 				var aDate = [];

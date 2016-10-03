@@ -321,6 +321,8 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 								oNavCon.currentPageIsTopPage();
 								var oOperationPopover = sap.ui.getCore().byId("operationPopover--operationPopoverID");
 								oOperationPopover.setContentHeight("353px");								
+								airbus.mes.stationtracker.operationPopover.setModel(new sap.ui.model.json.JSONModel(airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy[scheduler.getEvent(id).group][scheduler.getEvent(id).avlLine][scheduler.getEvent(id).box]), "WorkListModel");
+								airbus.mes.stationtracker.operationPopover.getModel("WorkListModel").refresh();
 								airbus.mes.stationtracker.operationPopover.openBy(e.srcElement);	
 								break;
 							case "shopOrder" :	
@@ -332,8 +334,11 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 									airbus.mes.stationtracker.worklistPopover.addStyleClass("alignTextLeft");
 									oView.addDependent(airbus.mes.stationtracker.worklistPopover);
 								}
-								sap.ui.getCore().getModel("WorkListModel").oData = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy["FUEL ACTIVITIES"]["211545464654"]["toto"]; 
-//								var oNavCon = sap.ui.getCore().byId("operationPopover--navOperatorContainer");
+
+								airbus.mes.stationtracker.worklistPopover.setModel(new sap.ui.model.json.JSONModel(airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy[scheduler.getEvent(id).group][scheduler.getEvent(id).avlLine][scheduler.getEvent(id).box]), "WorkListModel");
+								airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").refresh();
+								//var oView = airbus.mes.stationtracker.oView;
+								//								var oNavCon = sap.ui.getCore().byId("operationPopover--navOperatorContainer");
 //								var oMasterPage = sap.ui.getCore().byId("operationPopover--master");
 //								oNavCon.to(oMasterPage);
 //								oNavCon.currentPageIsTopPage();
