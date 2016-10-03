@@ -6,7 +6,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 						oRm.writeControlData(oControl);
 						oRm.write(" class='dhx_cal_container'  style='width:100%; height:71%;'>");
 						oRm.write("	<div class='dhx_cal_navline'style=''>");
-						oRm.write("		<div class='dhx_cal_date' Style='font-weight:bold; text-align:left; padding-left: 1.5%'></div>");
+						oRm.write("		<div class='dhx_cal_date' Style='font-weight:bold; text-align:left; padding-left: 1.5%;'></div>");
 						oRm.write("	</div>");
 						oRm.write("	<div class='dhx_cal_header' Style='text-align:left;'>");
 						oRm.write("	</div>");
@@ -15,7 +15,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 					
 							
 						
-						
+						scheduler.xy.nav_height = 0; //Div height for date
 						scheduler.xy.scroll_width=20;
 						scheduler.xy.bar_height = 30;
 						scheduler.deleteMarkedTimespan();
@@ -270,14 +270,17 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 
 							}
 						};
-
-						/* Delete initial - + to indicate the collapse or expand of folder */
 						
 						scheduler.eventId.push ( scheduler.attachEvent("onScaleAdd", function( unit , date ) {
+					  /* Delete initial - + to indicate the collapse or expand of folder */		
 							for (var i = 0; i < $("div[class='dhx_scell_expand']").length; i++) {
 								$("div[class='dhx_scell_expand']").eq(i).remove();
 							}
 
+					 /* Replace date in Toolbar */
+							var toolbarDateId = airbus.mes.stationtracker.oView.byId("toolbarDate").sId;
+							$("div[id="+toolbarDateId+"]").append($("div[class='dhx_cal_date']"));
+							
 						/* Create arrow to change shift/day */								
 							if ($("div[class='dhx_cal_next_button']").length === 0) {
 								$("div[class='dhx_cal_header']").append(("<div class='dhx_cal_next_button' Style='float:right; width:30px;'></div>"));

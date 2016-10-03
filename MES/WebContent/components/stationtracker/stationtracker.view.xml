@@ -213,6 +213,8 @@
 						<core:Item text="WorkOrder" key="shopOrder"/>
 					</Select>
 					<ToolbarSpacer />
+					<HBox id="toolbarDate" class="sapUiTinyMarginBeginEnd"></HBox>
+					<ToolbarSpacer />
 					<Button text="show CP" type="Transparent" icon="sap-icon://ppt-attachment"
 						class="sapUiTinyMarginBeginEnd" press="onCPPress"></Button>
 					<Button text="show initial plan" type="Transparent"
