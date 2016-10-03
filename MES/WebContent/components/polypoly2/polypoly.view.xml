@@ -1,0 +1,37 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:table="sap.ui.table" xmlns="sap.m" controllerName="airbus.mes.polypoly.polypoly"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<table:Table rows="{ path: '/rows' }"
+		columns="{ path: '/columns', factory: '.createColumn' }"
+		fixedColumnCount="6" fixedRowCount="2" enableColumnReordering="true"
+		rowHeight="60" height="auto" id="oTablePolypoly" enableSelectAll="false"
+		columnMove="onColumnMove">
+		<table:toolbar>
+			<Toolbar design="Transparent">
+				<content>
+					<Select id="lineSelectPolyPoly" forceSelection="false" change="onValueChange">
+						<core:Item key="1" text="Line 1" />
+						<core:Item key="2" text="Line 2" />
+						<core:Item key="3" text="Line 3" />
+					</Select>
+					<Select id="stationSelectPolyPoly" forceSelection="false" items="{stationList>/}"  
+														change="onValueChange">
+						<core:Item key="{stationList>}" text="Station {stationList>}"/>
+					</Select>
+					<ToolbarSpacer />
+					<SearchField id="polypolySearchField" width="20%"
+						placeholder="Resource Pool" enableSuggestions="true" suggest="onRPSuggest"
+						liveChange="onRPSuggest" search="onRPSearch" suggestionItems="{rpModel>/rp}">
+						<suggestionItems>
+							<SuggestionItem text="{rpModel>rp_id}"
+								description="{rpModel>rp_desc}" />
+						</suggestionItems>
+					</SearchField>
+					<Button id="AddPolypoly" icon="sap-icon://add" text="Polypoly"
+						press="openColumnPopup" visible="{path: '/rows', formatter: '.visibleButton'}"
+						type="Emphasized" />
+				</content>
+			</Toolbar>
+		</table:toolbar>
+	</table:Table>
+</core:View>

@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv='Content-Type' content='text/html;charset=UTF-8' />
+
+<script
+	src="https://sapui5.netweaver.ondemand.com/1.36.11/resources/sap-ui-core.js"
+	id="sap-ui-bootstrap" data-sap-ui-libs="sap.m"
+	data-sap-ui-bindingSyntax="complex"
+	data-sap-ui-theme="sap_bluecrystal">
+		</script>
+<!-- only load the mobile lib "sap.m" and the "sap_bluecrystal" theme -->
+			
+		<!-- only load the mobile lib "sap.m" and the "sap_bluecrystal" theme -->
+<!-- 		<script type="text/javascript" src="polypoly/PolypolyManager.js"></script>
+ -->		<script>
+			
+			jQuery.sap.registerModulePath("airbus.mes.polypoly","/MES/components/polypoly2");
+		 	
+		 	var oComp4 = sap.ui.getCore().createComponent({
+				name : "airbus.mes.polypoly", // root component folder is resources
+				});
+
+			// Create a Ui container 
+			var oCompCont4 = new sap.ui.core.ComponentContainer({
+				component : oComp4,
+			});
+			// place this Ui Container with the Component inside into UI Area 
+			oCompCont4.placeAt("content");
+			
+			
+		</script>
+	
+	</head>
+<body class="sapUiBody" role="application">
+	<div id="content"></div>
+</body>
+</html>
