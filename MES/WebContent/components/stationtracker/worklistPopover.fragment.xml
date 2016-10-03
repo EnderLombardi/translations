@@ -10,6 +10,7 @@
 					<content>
 						<HBox>
 							<items>
+								<CheckBox visible="{  path : 'WorkListModel>andons' , formatter: 'airbus.mes.stationtracker.util.Formatter.isCheckboxVisible'}" enabled="true" ></CheckBox>
 								<custom:customProgressIndicator
 									width="auto" state="sap.ui.core.ValueState.Success" status="{WorkListModel>status}"
 									isAndon="{WorkListModel>andons}"
@@ -18,7 +19,7 @@
 									percentValue="{ parts: [ 'WorkListModel>progress','WorkListModel>totalDuration' ], formatter: 'airbus.mes.stationtracker.util.Formatter.percentValue'}"
 									>
 									<custom:layoutData>
-										<FlexItemData baseSize="100%" growFactor="1"></FlexItemData>
+										<FlexItemData baseSize="60%" growFactor="1"></FlexItemData>
 									</custom:layoutData>
 								</custom:customProgressIndicator>
 							</items>

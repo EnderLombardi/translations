@@ -360,7 +360,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 									airbus.mes.stationtracker.worklistPopover.addStyleClass("alignTextLeft");
 									oView.addDependent(airbus.mes.stationtracker.worklistPopover);
 								}
-
+								airbus.mes.stationtracker.worklistPopover.unPlanned = false;
 								airbus.mes.stationtracker.worklistPopover.setModel(new sap.ui.model.json.JSONModel(airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy[scheduler.getEvent(id).group][scheduler.getEvent(id).avlLine][scheduler.getEvent(id).box]), "WorkListModel");
 								airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").refresh();
 								//var oView = airbus.mes.stationtracker.oView;

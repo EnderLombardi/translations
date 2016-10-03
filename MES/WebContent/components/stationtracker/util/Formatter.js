@@ -65,6 +65,14 @@ airbus.mes.stationtracker.util.Formatter = {
 			progress2float : function(sString) {
 				return parseFloat(sString);
 			},
+			isCheckboxVisible : function(sString) {
+				if( airbus.mes.stationtracker.worklistPopover.unPlanned === true ){
+					return true;
+				} else {
+					return false;
+				};
+				
+			},
 			transformRescheduleDate : function(oDate) {
 				var today = oDate;
 				var aDate = [];

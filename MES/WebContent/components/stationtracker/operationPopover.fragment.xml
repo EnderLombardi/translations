@@ -36,8 +36,10 @@
 						<headerToolbar>
 							<Toolbar height="1.2rem">
 								<ProgressIndicator id="SPStatusInd"
-									percentValue="{ path : 'WorkListModel>/0/progress' , formatter : 'airbus.mes.stationtracker.util.Formatter.progress2float' }" displayValue="{ path : 'WorkListModel>/0/progress' , formatter: 'airbus.mes.stationtracker.util.Formatter.progress2percent' }" showValue="true" state="Success"
+									percentValue="{ path : 'WorkListModel>/0/progress' , formatter : 'airbus.mes.stationtracker.util.Formatter.progress2float' }"
+									displayValue="{ path : 'WorkListModel>/0/progress' , formatter : 'airbus.mes.stationtracker.util.Formatter.progress2percent' }" showValue="true" state="Success"
 									width="100%" class="progressBarOP" />
+<!-- 								<Slider value="{ path : 'WorkListModel>/0/progress' , formatter : 'airbus.mes.stationtracker.util.Formatter.progress2float' }" width="50%" class="sapUiSmallMarginBottom" /> -->
 							</Toolbar>
 						</headerToolbar>
 						<content>
