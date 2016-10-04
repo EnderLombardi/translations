@@ -295,14 +295,22 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 									scheduler._click.dhx_cal_prev_button()
 								});
 							}
+							var options = airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy[airbus.mes.stationtracker.ShiftManager.current_day];
+							var boxStation = $("select[class='selectBoxStation']");
+							if (airbus.mes.stationtracker.ShiftManager.dayDisplay === true && boxStation.length === 0 ) {		
+								$("div[class='dhx_cal_header']").append(("<select class='selectBoxStation' id='selectBoxStation' ></select>"));
 							
-							if ($("select[class='selectBoxStation']").length === 0) {
-								$("div[class='dhx_cal_header']").append(("<select class='selectBoxStation' ><option value='volvo'>Volvo</option><option value='saab'>Saab</option>" +
-										"<option value='opel'>Opel</option><option value='audi'>Audi</option></select>"));
-								$("div[class='selectBoxStation']").click(function() {
-									scheduler._click.dhx_cal_prev_button()
-								});
+								for (var prop in options) {
+							        // skip loop if the property is from prototype
+							        if(!options.hasOwnProperty(prop)) continue;
+
+							        boxStation.append("<option>"+prop+"</option>");
+							    }
 							}
+							else{
+								boxStation.length = 0;
+							}
+			
 						}));
 						
 				

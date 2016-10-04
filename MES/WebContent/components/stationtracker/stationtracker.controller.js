@@ -54,7 +54,10 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			return func(date);
 		};
 		scheduler.updateView(airbus.mes.stationtracker.ShiftManager.currentShiftStart);
-
+		/* Delete Selection box when shift */
+		for (var i = 0; i < $("select[class='selectBoxStation']").length; i++) {
+			$("select[class='selectBoxStation']").eq(i).remove();
+		}
 	},
 
 	onDayPress : function() {
@@ -74,7 +77,6 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			return func(date);
 		};
 		scheduler.updateView(airbus.mes.stationtracker.ShiftManager.currentShiftStart);
-
 	},
 
 	onInitialPlanPress : function() {
