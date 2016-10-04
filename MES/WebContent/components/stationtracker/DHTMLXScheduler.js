@@ -332,7 +332,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 							
 						scheduler.eventId.push ( scheduler.attachEvent("onClick", function(id, e) {	
 							switch(airbus.mes.stationtracker.GroupingBoxingManager.box){
-							case "operationId" : 
+							case "OPERATION_ID" : 
 //								Boxing operation, we display the operation list
 								if ( airbus.mes.stationtracker.operationPopover === undefined ) {
 									
@@ -351,7 +351,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 								airbus.mes.stationtracker.operationPopover.getModel("WorkListModel").refresh();
 								airbus.mes.stationtracker.operationPopover.openBy(e.srcElement);	
 								break;
-							case "shopOrder" :	
+							case "WORKORDER_ID" :	
 //								Boxing Work order, we display the worklist list								
 								if ( airbus.mes.stationtracker.worklistPopover === undefined ) {
 									

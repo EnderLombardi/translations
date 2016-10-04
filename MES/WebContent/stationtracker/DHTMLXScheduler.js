@@ -1,3 +1,21 @@
+jQuery.sap.registerModulePath("airbus.mes.stationtracker","./stationtracker");
+
+jQuery.sap.require("airbus.mes.stationtracker.util.Formatter");
+jQuery.sap.require("airbus.mes.stationtracker.AssignmentManager");
+jQuery.sap.require("airbus.mes.stationtracker.GroupingBoxingManager");
+jQuery.sap.require("airbus.mes.stationtracker.ShiftManager");
+jQuery.sap.require("airbus.mes.stationtracker.ModelManager");
+
+jQuery.sap.registerModulePath("airbus.mes.dhtmlx","./lib/dhtmlxscheduler");
+
+jQuery.sap.require("airbus.mes.dhtmlx.dhtmlxscheduler");
+jQuery.sap.require("airbus.mes.dhtmlx.ext.dhtmlxscheduler_limit");
+jQuery.sap.require("airbus.mes.dhtmlx.ext.dhtmlxscheduler_timeline");
+jQuery.sap.require("airbus.mes.dhtmlx.ext.dhtmlxscheduler_treetimeline");
+jQuery.sap.require("airbus.mes.dhtmlx.ext.dhtmlxscheduler_units");
+jQuery.sap.require("airbus.mes.dhtmlx.ext.dhtmlxscheduler_drag_between");
+
+
 sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 
 					renderer : function(oRm, oControl) {

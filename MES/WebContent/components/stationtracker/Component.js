@@ -30,6 +30,7 @@ sap.ui.core.UIComponent.extend("airbus.mes.stationtracker.Component", {
 });
 
 airbus.mes.stationtracker.Component.prototype.createContent = function() {
+	
 	 if (airbus.mes.stationtracker.oView === undefined) {
 	//	View on XML
 	this.oView = sap.ui.view({

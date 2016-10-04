@@ -14,8 +14,8 @@ airbus.mes.stationtracker.ModelManager = {
 			core.setModel(new sap.ui.model.json.JSONModel(),"stationTrackerRModel"); // Station tracker model reschedule line
 			core.setModel(new sap.ui.model.json.JSONModel(),"stationTrackerIModel"); // Station tracker model initial line
 			core.setModel(new sap.ui.model.json.JSONModel(),"shiftsModel"); // Shifts model
-			core.setModel(new sap.ui.model.json.JSONModel(),"affectationModel"); // Shifts model
-
+			core.setModel(new sap.ui.model.json.JSONModel(),"affectationModel"); 
+			core.setModel(new sap.ui.model.json.JSONModel(),"unPlannedModel"); // Unplanned model
 			
 			
 			core.getModel("stationTrackerRModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onStationTrackerLoad);
@@ -23,6 +23,7 @@ airbus.mes.stationtracker.ModelManager = {
 
 			core.getModel("shiftsModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onShiftsLoad);
 
+	
 
 			var dest;
 
@@ -46,6 +47,9 @@ airbus.mes.stationtracker.ModelManager = {
 				bundleUrl : "../components/stationtracker/config/url_config.properties",
 				bundleLocale : dest
 			});
+			
+			this.loadUnplanned();		
+			
 //			this.i18nModel = new sap.ui.model.resource.ResourceModel({
 //				bundleUrl : "i18n/messageBundle.properties",
 //				bundleLocale : core.getConfiguration().getLanguage()
@@ -86,6 +90,13 @@ airbus.mes.stationtracker.ModelManager = {
 				oViewModel.loadData(geturlstationtracker , null, false);				
 			
 		},	
+
+		loadUnplanned : function() {
+			
+			var oViewModel = sap.ui.getCore().getModel("unPlannedModel");
+			oViewModel.loadData(this.urlModel.getProperty("urlstationtrackerunplannedactivities") , null, false);				
+		},	
+		
 		
 		onStationTrackerLoad : function() {
 			
@@ -103,6 +114,8 @@ airbus.mes.stationtracker.ModelManager = {
 			var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
 			GroupingBoxingManager.parseShift();
 		},
+
+		
 		
 		replaceURI : function (sURI, sFrom, sTo) {
 				return sURI.replace(sFrom, encodeURIComponent(sTo));
