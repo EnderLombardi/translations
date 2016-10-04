@@ -110,7 +110,9 @@
 	float: left;
 	padding-left: 0.5rem;
 }
-
+.gray_section{
+		background-color: grey;
+}
 /* .sapMBarChild {
 	font-weight: bold;
 	vertical-align: middle;

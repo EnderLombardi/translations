@@ -311,20 +311,45 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 							        {
 							        	$("select[class='selectBoxStation']").append("<option value='"+prop+"' selected='selected'>"+prop+"</option>");
 							        	airbus.mes.stationtracker.ShiftManager.ShiftSelected = prop;
+							        	var intervals = airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy[airbus.mes.stationtracker.ShiftManager.current_day][airbus.mes.stationtracker.ShiftManager.ShiftSelected];
+										airbus.mes.stationtracker.ShiftManager.ShiftSelectedStart = intervals[0].beginDateTime;
+										airbus.mes.stationtracker.ShiftManager.ShiftSelectedEnd = intervals[intervals.length - 1].endDateTime;
+										scheduler.deleteMarkedTimespan();
+										scheduler.addMarkedTimespan({  
+											start_date: airbus.mes.stationtracker.ShiftManager.ShiftSelectedStart,
+											end_date: airbus.mes.stationtracker.ShiftManager.ShiftSelectedEnd,
+										    css:   "shiftCss",
+										});
 							        }
 							        i++;
 							    }
 								 $("select[class='selectBoxStation']").change(function(){
 								this.options[this.selectedIndex].selected = true;
-								 airbus.mes.stationtracker.ShiftManager.BoxSelected = this.selectedIndex;
-								 airbus.mes.stationtracker.ShiftManager.ShiftSelected = this.options[this.selectedIndex].value;
+								airbus.mes.stationtracker.ShiftManager.BoxSelected = this.selectedIndex;
+								airbus.mes.stationtracker.ShiftManager.ShiftSelected = this.options[this.selectedIndex].value;
+								var intervals = airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy[airbus.mes.stationtracker.ShiftManager.current_day][airbus.mes.stationtracker.ShiftManager.ShiftSelected];
+								airbus.mes.stationtracker.ShiftManager.ShiftSelectedStart = intervals[0].beginDateTime;
+								airbus.mes.stationtracker.ShiftManager.ShiftSelectedEnd = intervals[intervals.length - 1].endDateTime;
+								scheduler.deleteMarkedTimespan();
+								scheduler.updateView();
+								scheduler.addMarkedTimespan({  
+									start_date: airbus.mes.stationtracker.ShiftManager.ShiftSelectedStart,
+									end_date: airbus.mes.stationtracker.ShiftManager.ShiftSelectedEnd,
+								    css:   "shiftCss",
+								});
+
+
+								 
 							 });
 							}
 							else if (airbus.mes.stationtracker.ShiftManager.shiftDisplay === true)
 							{
+								scheduler.deleteMarkedTimespan();
 								$("select[class='selectBoxStation']").length = 0;
 								airbus.mes.stationtracker.ShiftManager.BoxSelected = 0;
 								airbus.mes.stationtracker.ShiftManager.ShiftSelected = undefined;
+								airbus.mes.stationtracker.ShiftManager.ShiftSelectedStart = undefined;
+								airbus.mes.stationtracker.ShiftManager.ShiftSelectedEnd = undefined;
 							}							
 						}));
 						

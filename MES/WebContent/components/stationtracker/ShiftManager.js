@@ -8,9 +8,12 @@ airbus.mes.stationtracker.ShiftManager  = {
 	shiftDisplay :true,
 	fSwipe: false,
 	truc : 0,
+	//Variables for shift combobox Day view
 	BoxSelected : 0,
 	ShiftSelected : undefined,
-	
+	ShiftSelectedStart : undefined,
+	ShiftSelectedEnd : undefined,
+	//
 	current_shift : undefined,
 	currentShiftStart : undefined,
 	current_Date : undefined,

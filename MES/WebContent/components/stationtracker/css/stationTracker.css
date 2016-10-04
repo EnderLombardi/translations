@@ -238,6 +238,10 @@ color : black;
 .grey {
 	background-color: #D8D8D8;
 }
+.shiftCss {
+	background-color: #EEF3F7;
+}
+
 .operationCP {
 	background-color: #D8D8D8;
 	border: 2px solid blue;
