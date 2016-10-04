@@ -807,9 +807,7 @@ airbus.mes.stationtracker.ShiftManager  = {
 	 */
 	// Swipe function 
 	timelineSwip : function (side) {
-<<<<<<< Upstream, based on origin/MESv0.9
 //		var oFormatter = airbus.mes.stationtracker.util.Formatter;
-=======
 		
 //		var oFormatter = airbus.mes.stationtracker.util.Formatter;
 //		
@@ -833,9 +831,7 @@ airbus.mes.stationtracker.ShiftManager  = {
 //			return 
 //		}
 //		this.fSwipe = true;
->>>>>>> 299dd6e listox manangement
 //		
-<<<<<<< Upstream, based on origin/MESv0.9
 //		this.step = -1;
 //		var step;
 //		var dNewDate;
@@ -861,12 +857,10 @@ airbus.mes.stationtracker.ShiftManager  = {
 //		if ( side === "right"  ) {
 //			
 //			//this.adjustSchedulerXStart(new Date(dNewDate));
-=======
 //		&& this.isDateIgnored(dNewDate)
 //		if ( side === "right"  ) {
 			
 			//this.adjustSchedulerXStart(new Date(dNewDate));
->>>>>>> 299dd6e listox manangement
 //			scheduler.setCurrentView(new Date(dNewDate));
 //			
 //		} 
