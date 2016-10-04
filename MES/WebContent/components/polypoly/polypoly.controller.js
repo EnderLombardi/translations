@@ -212,7 +212,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 																						|| level == "2"
 																						|| level == "3"
 																						|| level == "4") {
-																					sURI = "images/"
+																					sURI = "/MES/components/polypoly/images/"
 																							+ level
 																							+ ".PNG";
 																				}
@@ -363,7 +363,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 																						|| level == "2"
 																						|| level == "3"
 																						|| level == "4") {
-																					sURI = "images/"
+																					sURI = "/MES/components/polypoly/images/"
 																							+ level
 																							+ ".PNG";
 																				}
@@ -438,27 +438,27 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 								content : [ new sap.m.VBox({
 									alignItems : "Center",
 									items : [ new sap.m.Button({
-										icon : "images/0.PNG",
+										icon : "/MES/components/polypoly/images/0.PNG",
 										press : function(oEvt) {
 											that.onChangeClick(oEvt)
 										}
 									}), new sap.m.Button({
-										icon : "images/1.PNG",
+										icon : "/MES/components/polypoly/images/1.PNG",
 										press : function(oEvt) {
 											that.onChangeClick(oEvt)
 										}
 									}), new sap.m.Button({
-										icon : "images/2.PNG",
+										icon : "/MES/components/polypoly/images/2.PNG",
 										press : function(oEvt) {
 											that.onChangeClick(oEvt)
 										}
 									}), new sap.m.Button({
-										icon : "images/3.PNG",
+										icon : "/MES/components/polypoly/images/3.PNG",
 										press : function(oEvt) {
 											that.onChangeClick(oEvt)
 										}
 									}), new sap.m.Button({
-										icon : "images/4.PNG",
+										icon : "/MES/components/polypoly/images/4.PNG",
 										press : function(oEvt) {
 											that.onChangeClick(oEvt)
 										}
