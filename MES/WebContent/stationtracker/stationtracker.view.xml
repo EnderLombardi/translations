@@ -35,14 +35,10 @@
 				class="pageHeader sapUiSmallMarginTop contentNoPad">
 				<headerToolbar>
 					<Toolbar>
-						<Label text="Station" class="pageTitle sapUiTinyMarginBeginEnd" />
-						<Label text="{userSettingModel>/Rowsets/Rowset/0/Row/0/station}" class="pageTitle sapUiTinyMarginBeginEnd" />						
-						<Label text="MSN" class="pageWelcome sapUiTinyMarginBeginEnd" /> 
-						<Label text="{userSettingModel>/Rowsets/Rowset/0/Row/0/msn}" class="pageWelcome sapUiTinyMarginBeginEnd" />
-						<Label text="Plant" class="pageWelcome sapUiTinyMarginBeginEnd" />
-						<Label text="{userSettingModel>/Rowsets/Rowset/0/Row/0/plant}" class="pageWelcome sapUiTinyMarginBeginEnd" />						
-						<Label text="Line :" class="pageWelcome sapUiTinyMarginBeginEnd" />
-						<Label text="{userSettingModel>/Rowsets/Rowset/0/Row/0/line}" class="pageWelcome sapUiTinyMarginBeginEnd" />						
+						<Label text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/station', formatter : 'airbus.mes.stationtracker.util.Formatter.stationTrackerStation' }" class="pageTitle sapUiTinyMarginBeginEnd" />
+ 						<Label text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/msn', formatter : 'airbus.mes.stationtracker.util.Formatter.stationTrackerMsn' }" class="pageWelcome sapUiTinyMarginBeginEnd" /> 
+						<Label text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/plant', formatter : 'airbus.mes.stationtracker.util.Formatter.stationTrackerPlant' }" class="pageWelcome sapUiTinyMarginBeginEnd" />
+						<Label text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/line', formatter : 'airbus.mes.stationtracker.util.Formatter.stationTrackerLine' }" class="pageWelcome sapUiTinyMarginBeginEnd" />					
 					</Toolbar>
 				</headerToolbar>
 				<content>
@@ -203,20 +199,24 @@
 
 			<Toolbar class="white">
 				<content>
-					<Button text="Your Team" type="Transparent" icon="sap-icon://group" width="7%"
+					<Button text="Your Team" type="Transparent" icon="sap-icon://group"
 						class="buttonStatus2 iconbuttonTeam sapUiSmallMarginBegin" press="onTeamPress"></Button>
 					<ToolbarSeparator />
 					<Label text="Sort By : " />
 					<Select id="selectGroup" class="sapUiTinyMarginBeginEnd comboBoxStyle" change="changeGroup">
-						<core:Item text="Competence" key="competency"/>
-						<core:Item text="Avl" key="avlLine" />
+						<core:Item text="Competence" key="CPP_CLUSTER"/>
+						<core:Item text="Avl" key="AVL_LINE" />
 					</Select>
 					<Label text="Show : " />
 					<Select id="selectBox" class="sapUiTinyMarginBeginEnd comboBoxStyle" change="changeBox">
-						<core:Item text="Operations" key="operationId"/>
-						<core:Item text="WorkOrder" key="shopOrder"/>
+						<core:Item text="Operations" key="OPERATION_ID"/>
+						<core:Item text="WorkOrder" key="WORKORDER_ID"/>
 					</Select>
 					<ToolbarSpacer />
+					<HBox id="toolbarDate" class="sapUiTinyMarginBeginEnd"></HBox>
+					<ToolbarSpacer />
+ 					<Button text="Unplanned activities" type="Transparent" icon="sap-icon://inspect"
+						class="sapUiTinyMarginBeginEnd" press="onUnplannedPress"></Button>
 					<Button text="show CP" type="Transparent" icon="sap-icon://ppt-attachment"
 						class="sapUiTinyMarginBeginEnd" press="onCPPress"></Button>
 					<Button text="show initial plan" type="Transparent"

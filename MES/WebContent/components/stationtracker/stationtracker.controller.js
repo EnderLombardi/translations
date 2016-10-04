@@ -173,7 +173,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		
 	},
 
-	onUnplannedPress : function(e) {
+	onUnplannedPress : function(oEvent) {
 		if ( airbus.mes.stationtracker.worklistPopover === undefined ) {
 			
 			var oView = airbus.mes.stationtracker.oView;
@@ -184,8 +184,11 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		airbus.mes.stationtracker.worklistPopover.unPlanned = true;
 		airbus.mes.stationtracker.worklistPopover.setModel(new sap.ui.model.json.JSONModel(sap.ui.getCore().getModel("unPlannedModel").getData().Rowsets.Rowset[0].Row), "WorkListModel");
 		airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").refresh();
-		airbus.mes.stationtracker.worklistPopover.openBy(e.getSource());	
-		
+		// delay because addDependent will do a async rerendering and the popover will immediately close without it
+		var oButton = oEvent.getSource();
+		jQuery.sap.delayedCall(0, this, function () {
+			airbus.mes.stationtracker.worklistPopover.openBy(oButton);	
+		});		
 	},
 	
 	changeGroup : function() {

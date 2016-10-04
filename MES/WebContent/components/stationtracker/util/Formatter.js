@@ -71,7 +71,13 @@ airbus.mes.stationtracker.util.Formatter = {
 				} else {
 					return false;
 				};
-				
+			},
+			setmodeList : function() {
+				if( airbus.mes.stationtracker.worklistPopover.unPlanned === true ){
+					return "MultiSelect";
+				} else {
+					return "None";
+				};				
 			},
 			transformRescheduleDate : function(oDate) {
 				var today = oDate;

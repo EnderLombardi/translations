@@ -26,8 +26,7 @@
 
                {
 
-                  "workOrderId": "FUEL ACTIVITIES",
-
+               
                   "operationId": "0010",
 
                   "shopOrder": "toto",
@@ -36,7 +35,7 @@
 
                   "operationDescription": "@@@ééééé¨¨¨%¨££££$$$",
 
-                  "totalDuration": "500",
+                  "totalDuration": "26.91",
 
                   "progress": "50",
 
@@ -72,7 +71,7 @@
 
                   "avlEndDate": "2014-07-01 13:00",
 
-                  "avlLine": "211545464654",
+                  "avlLine": "I211545464654",
 
                   "competency": "FUEL ACTIVITIES",
 
@@ -96,9 +95,9 @@
 
                   "operationDescription": "operationdescription blabla 2",
 
-                  "totalDuration": "500",
+                  "totalDuration": "26.91",
 
-                  "progress": "10",
+                  "progress": "50",
 
                   "certification": "---",
 
@@ -132,7 +131,7 @@
 
                   "avlEndDate": "2014-07-01 15:00",
 
-                  "avlLine": "2115454624654",
+                  "avlLine": "I2115454624654",
 
                   "competency": "FUEL ACTIVITIES",
 
@@ -156,9 +155,9 @@
 
                   "operationDescription": "operationdescription blabla",
 
-                  "totalDuration": "500",
+                  "totalDuration": "26.91",
 
-                  "progress": "30",
+                  "progress": "50",
 
                   "certification": "---",
 
@@ -192,7 +191,7 @@
 
                   "avlEndDate": "2014-07-01 12:00",
 
-                  "avlLine": "211545464654",
+                  "avlLine": "I211545464654",
 
                   "competency": "ELEC ACTIVITIES",
 
@@ -215,15 +214,15 @@
 
                   "operationDescription": "operationdescription blabla22",
 
-                  "totalDuration": "500",
+                  "totalDuration": "26.91",
 
-                  "progress": "30",
+                  "progress": "50",
 
                   "certification": "---",
 
-                  "startDate": "2014-07-02 12:00",
+                  "startDate": "2014-07-01 10:30",
 
-                  "endDate": "2014-07-02 15:00",
+                  "endDate": "2014-07-01 11:00",
 
                   "status": "0",
 
@@ -251,7 +250,7 @@
 
                   "avlEndDate": "2014-07-01 10:00",
 
-                  "avlLine": "211545464654",
+                  "avlLine": "I211545464654",
 
                   "competency": "FUEL ACTIVITIES",
 
@@ -274,9 +273,9 @@
 
                   "operationDescription": "operationDisruption",
 
-                  "totalDuration": "500",
+                  "totalDuration": "26.91",
 
-                  "progress": "80",
+                  "progress": "50",
 
                   "certification": "---",
 
@@ -310,7 +309,7 @@
 
                   "avlEndDate": "2014-07-01 16:00",
 
-                  "avlLine": "211545464654",
+                  "avlLine": "I211545464654",
 
                   "competency": "MECA ACTIVITIES",
 
@@ -333,9 +332,9 @@
 
                   "operationDescription": "operation 125",
 
-                  "totalDuration": "500",
+                  "totalDuration": "26.91",
 
-                  "progress": "500",
+                  "progress": "50",
 
                   "certification": "---",
 

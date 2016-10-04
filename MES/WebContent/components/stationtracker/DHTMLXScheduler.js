@@ -389,6 +389,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 								airbus.mes.stationtracker.worklistPopover.unPlanned = false;
 								airbus.mes.stationtracker.worklistPopover.setModel(new sap.ui.model.json.JSONModel(airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy[scheduler.getEvent(id).group][scheduler.getEvent(id).avlLine][scheduler.getEvent(id).box]), "WorkListModel");
 								airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").refresh();
+								// delay because addDependent will do a async rerendering and the popover will immediately close without it
 								airbus.mes.stationtracker.worklistPopover.openBy(e.srcElement);	
 								break;							
 							}

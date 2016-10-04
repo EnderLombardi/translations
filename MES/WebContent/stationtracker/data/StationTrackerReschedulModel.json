@@ -26,8 +26,6 @@
 
                {
 
-                  "workOrderId": "FUEL ACTIVITIES",
-
                   "operationId": "0010",
 
                   "shopOrder": "toto",
@@ -36,7 +34,7 @@
 
                   "operationDescription": "@@@ééééé¨¨¨%¨££££$$$",
 
-                  "totalDuration": "500",
+                  "totalDuration": "26.91",
 
                   "progress": "50",
 
@@ -74,16 +72,10 @@
 
                   "avlLine": "211545464654",
 
-                  "competency": "FUEL ACTIVITIES",
-
-                  "rescheduledStarDate": "0",
-
-                  "rescheduledEndDate": "328.284",
-
-                  "rescheduledLine": "0"
+                  "competency": "FUEL ACTIVITIES"
 
                },
-               
+
                {
 
                   "workOrderId": "FUEL ACTIVITIES",
@@ -96,9 +88,9 @@
 
                   "operationDescription": "operationdescription blabla 2",
 
-                  "totalDuration": "500",
+                  "totalDuration": "26.91",
 
-                  "progress": "10",
+                  "progress": "50",
 
                   "certification": "---",
 
@@ -134,17 +126,11 @@
 
                   "avlLine": "2115454624654",
 
-                  "competency": "FUEL ACTIVITIES",
-
-                  "rescheduledStarDate": "0",
-
-                  "rescheduledEndDate": "328.284",
-
-                  "rescheduledLine": "0"
+                  "competency": "FUEL ACTIVITIES"
 
                },
-               
-                {
+
+               {
 
                   "workOrderId": "MECA ACTIVITIES",
 
@@ -156,9 +142,9 @@
 
                   "operationDescription": "operationdescription blabla",
 
-                  "totalDuration": "500",
+                  "totalDuration": "26.91",
 
-                  "progress": "30",
+                  "progress": "50",
 
                   "certification": "---",
 
@@ -194,16 +180,11 @@
 
                   "avlLine": "211545464654",
 
-                  "competency": "ELEC ACTIVITIES",
-
-                  "rescheduledStarDate": "0",
-
-                  "rescheduledEndDate": "328.284",
-
-                  "rescheduledLine": "0"
+                  "competency": "ELEC ACTIVITIES"
 
                },
-                {
+
+               {
 
                   "workOrderId": "FUEL ACTIVITIES",
 
@@ -215,15 +196,15 @@
 
                   "operationDescription": "operationdescription blabla22",
 
-                  "totalDuration": "500",
+                  "totalDuration": "26.91",
 
-                  "progress": "30",
+                  "progress": "50",
 
                   "certification": "---",
 
-                  "startDate": "2014-07-02 12:00",
+                  "startDate": "2014-07-01 10:30",
 
-                  "endDate": "2014-07-02 15:00",
+                  "endDate": "2014-07-01 11:00",
 
                   "status": "0",
 
@@ -253,16 +234,11 @@
 
                   "avlLine": "211545464654",
 
-                  "competency": "FUEL ACTIVITIES",
-
-                  "rescheduledStarDate": "0",
-
-                  "rescheduledEndDate": "328.284",
-
-                  "rescheduledLine": "0"
+                  "competency": "FUEL ACTIVITIES"
 
                },
-                {
+
+               {
 
                   "workOrderId": "MECA ACTIVITIES",
 
@@ -274,9 +250,9 @@
 
                   "operationDescription": "operationDisruption",
 
-                  "totalDuration": "500",
+                  "totalDuration": "26.91",
 
-                  "progress": "80",
+                  "progress": "50",
 
                   "certification": "---",
 
@@ -312,16 +288,11 @@
 
                   "avlLine": "211545464654",
 
-                  "competency": "MECA ACTIVITIES",
-
-                  "rescheduledStarDate": "0",
-
-                  "rescheduledEndDate": "328.284",
-
-                  "rescheduledLine": "0"
+                  "competency": "MECA ACTIVITIES"
 
                },
-                {
+
+               {
 
                   "workOrderId": "MECA ACTIVITIES",
 
@@ -333,9 +304,9 @@
 
                   "operationDescription": "operation 125",
 
-                  "totalDuration": "500",
+                  "totalDuration": "26.91",
 
-                  "progress": "500",
+                  "progress": "50",
 
                   "certification": "---",
 
@@ -371,13 +342,7 @@
 
                   "avlLine": "211545464654",
 
-                  "competency": "MECA ACTIVITIES",
-
-                  "rescheduledStarDate": "0",
-
-                  "rescheduledEndDate": "328.284",
-
-                  "rescheduledLine": "0"
+                  "competency": "MECA ACTIVITIES"
 
                }
 

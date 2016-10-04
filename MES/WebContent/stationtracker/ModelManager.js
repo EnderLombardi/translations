@@ -9,13 +9,21 @@ airbus.mes.stationtracker.ModelManager = {
 		init : function(core) {
 			
 			
-				
-			core.setModel(new sap.ui.model.json.JSONModel(),"stationTrackerModel"); // Station tracker model
+
+			core.setModel(new sap.ui.model.json.JSONModel(), "WorkListModel");	
+			core.setModel(new sap.ui.model.json.JSONModel(),"stationTrackerRModel"); // Station tracker model reschedule line
+			core.setModel(new sap.ui.model.json.JSONModel(),"stationTrackerIModel"); // Station tracker model initial line
 			core.setModel(new sap.ui.model.json.JSONModel(),"shiftsModel"); // Shifts model
+			core.setModel(new sap.ui.model.json.JSONModel(),"affectationModel"); 
+			core.setModel(new sap.ui.model.json.JSONModel(),"unPlannedModel"); // Unplanned model
 			
-			core.getModel("stationTrackerModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onStationTrackerLoad);
+			
+			core.getModel("stationTrackerRModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onStationTrackerLoad);
+			core.getModel("stationTrackerIModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onStationTrackerLoad);
+
 			core.getModel("shiftsModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onShiftsLoad);
 
+	
 
 			var dest;
 
@@ -36,9 +44,12 @@ airbus.mes.stationtracker.ModelManager = {
 			}
 
 			this.urlModel = new sap.ui.model.resource.ResourceModel({
-				bundleUrl : "../components/stationtracker/config/url_config.properties",
+				bundleUrl : "./stationtracker/config/url_config.properties",
 				bundleLocale : dest
 			});
+			
+			this.loadUnplanned();		
+			
 //			this.i18nModel = new sap.ui.model.resource.ResourceModel({
 //				bundleUrl : "i18n/messageBundle.properties",
 //				bundleLocale : core.getConfiguration().getLanguage()
@@ -47,10 +58,47 @@ airbus.mes.stationtracker.ModelManager = {
 						
 		},
 				
-		loadStationTracker : function() {
-			var oViewModel = sap.ui.getCore().getModel("stationTrackerModel");
-			oViewModel.loadData(this.urlModel.getProperty("urlstationtracker"), null, false);
+		loadAffectation : function() {
+			var oViewModel = sap.ui.getCore().getModel("affectationModel");
+			oViewModel.loadData(this.urlModel.getProperty("urlaffectation"), null, false);
+		
+		},
+		
+		loadStationTracker : function(sType) {
+				
+				var oData = airbus.mes.settings.ModelManager;
+				
+				var geturlstationtracker = this.urlModel.getProperty('urlstationtrackeroperation');			
+				
+				geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$site", oData.site);
+				geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$station", oData.station);
+				geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$msn", oData.msn);
+				geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$operationType", sType);
+				geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$productionGroup", "%");
+				
+				
+				if ( sType === "R" ) {
+					
+					var oViewModel = sap.ui.getCore().getModel("stationTrackerRModel");
+				}
+				
+				if ( sType === "I" ) {
+					
+					var oViewModel = sap.ui.getCore().getModel("stationTrackerIModel");
+				}
+				
+				oViewModel.loadData(geturlstationtracker , null, false);				
+			
 		},	
+
+		loadUnplanned : function() {
+			
+			var oViewModel = sap.ui.getCore().getModel("unPlannedModel");
+			oViewModel.loadData(this.urlModel.getProperty("urlstationtrackerunplannedactivities") , null, false);		
+			airbus.mes.stationtracker.ModelManager.Unplanned = oViewModel;
+		},	
+		
+		
 		onStationTrackerLoad : function() {
 			
 			var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
@@ -67,7 +115,12 @@ airbus.mes.stationtracker.ModelManager = {
 			var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
 			GroupingBoxingManager.parseShift();
 		},
+
 		
+		
+		replaceURI : function (sURI, sFrom, sTo) {
+				return sURI.replace(sFrom, encodeURIComponent(sTo));
+			},
 		
 		
 }

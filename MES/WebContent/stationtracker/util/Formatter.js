@@ -2,9 +2,6 @@
  
 jQuery.sap.declare("airbus.mes.stationtracker.util.Formatter");
 
-
-
-
 airbus.mes.stationtracker.util.Formatter = {
 		
 		openFolder :function( bOpen ){
@@ -49,7 +46,33 @@ airbus.mes.stationtracker.util.Formatter = {
 				return new Date(day.slice(0,4),day.slice(5,7)-1,day.slice(8,10),day.slice(11,13),day.slice(14,16),day.slice(17,19));
 				
 			},
-			
+			date2Hour : function(day) {
+				
+				var date = new Date(day)
+				return date.toTimeString().split(' ')[0];
+				
+			},
+			progress2status : function(sString) {
+				switch (sString){
+				case "0" : return "Not started";
+				case "100" : return "Finished";
+				default : return "In progress";
+				};
+			},
+			progress2percent : function(sString) {
+				return sString + "%";
+			},
+			progress2float : function(sString) {
+				return parseFloat(sString);
+			},
+			isCheckboxVisible : function(sString) {
+				if( airbus.mes.stationtracker.worklistPopover.unPlanned === true ){
+					return true;
+				} else {
+					return false;
+				};
+				
+			},
 			transformRescheduleDate : function(oDate) {
 				var today = oDate;
 				var aDate = [];
@@ -173,4 +196,38 @@ airbus.mes.stationtracker.util.Formatter = {
 				return sEndDate ;
 			
 			},	
+			stationTrackerStation : function(Station) {
+				return "Station " + Station;
+			},
+			stationTrackerMsn : function(Msn) {
+				return "MSN " + Msn;
+			},
+			stationTrackerPlant : function(Plant) {
+				return "Plant " + Plant;
+			},
+			stationTrackerLine : function(Line) {
+				return "Line: " + Line;
+			},
+			titleWorklist : function(workOrder, workOrderDescritpion) {
+				return workOrder + " - " + workOrderDescritpion
+			},
+			displayValueIM : function(operation, operationDescription,	progress, duration) {
+				return operation + " - " + operationDescription + ": " + progress + " IM (of " + duration + " IM)";
+			},
+			percentValue : function(progress, duration) {
+
+				progress = parseInt(progress);
+				duration = parseInt(duration);
+				if (!isNaN(parseInt(progress)) || !isNaN(parseInt(duration))) {
+					if (duration <= 0) {
+						return 0;
+					} else {
+						return Math.round((progress * 100) / duration);
+					}
+				} else {
+
+					return 0;
+				}
+			}			
+			
 };

@@ -1,17 +1,18 @@
 <core:FragmentDefinition xmlns:core="sap.ui.core"
 	xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:custom="airbus.mes.stationtracker"
 	xmlns:html="http://www.w3.org/1999/xhtml">
-	<Popover contentwidth = "10000px" contentHeight="500px" placement="Bottom" >
+	<Popover contentwidth = "500px" contentHeight="500px" placement="Bottom" >
 		<List id="myList" growing="true" growingThreshold="20"
 			growingScrollToLoad="true" items="{ path: 'WorkListModel>/' }"
-							   selectionChange="onSelectionChange"
-	       					   mode="{ path : 'WorkListModel>andons' , formatter: 'airbus.mes.stationtracker.util.Formatter.setmodeList'}"
-				               includeItemInSelection="{ path : 'WorkListModel>andons' , formatter: 'airbus.mes.stationtracker.util.Formatter.isCheckboxVisible'}" >
+										   selectionChange="onSelectionChange"
+						mode="MultiSelect"
+				               includeItemInSelection="{  path : 'WorkListModel>andons' , formatter: 'airbus.mes.stationtracker.util.Formatter.isCheckboxVisible'}" >
 			<items>
 				<InputListItem id="sorterList">
 					<content>
 						<HBox>
 							<items>
+<!-- 								<CheckBox visible="{  path : 'WorkListModel>andons' , formatter: 'airbus.mes.stationtracker.util.Formatter.isCheckboxVisible'}" enabled="true" ></CheckBox> -->
 								<custom:customProgressIndicator
 									width="auto" state="sap.ui.core.ValueState.Success" status="{WorkListModel>status}"
 									isAndon="{WorkListModel>andons}"
@@ -19,7 +20,7 @@
 									displayValue2="{ parts: [ 'WorkListModel>operationId','WorkListModel>operationDescription','WorkListModel>progress','WorkListModel>totalDuration' ], formatter: 'airbus.mes.stationtracker.util.Formatter.displayValueIM'}"
 									percentValue="{ parts: [ 'WorkListModel>progress','WorkListModel>totalDuration' ], formatter: 'airbus.mes.stationtracker.util.Formatter.percentValue'}"
 									>
- 									<custom:layoutData>
+									<custom:layoutData>
 										<FlexItemData baseSize="60%" growFactor="1"></FlexItemData>
 									</custom:layoutData>
 								</custom:customProgressIndicator>
@@ -31,10 +32,10 @@
 		</List>
 		<HBox>
 			<Button text="Import" type="Transparent" icon="sap-icon://company-view"
-				class="sapUiTinyMarginBeginEnd" press="onUnplannedImport" visible="{ path : 'WorkListModel>andons' , formatter: 'airbus.mes.stationtracker.util.Formatter.isCheckboxVisible'}" >
+				class="sapUiTinyMarginBeginEnd" press="onUnplannedImport">
 			</Button>
 			<Button text="Close" type="Transparent" icon="sap-icon://forward"
-				class="sapUiTinyMarginBeginEnd" press="onUnplannedClose" visible="{ path : 'WorkListModel>andons' , formatter: 'airbus.mes.stationtracker.util.Formatter.isCheckboxVisible'}">
+				class="sapUiTinyMarginBeginEnd" press="onUnplannedClose">
 			</Button>						
 		</HBox>	
 	</Popover>

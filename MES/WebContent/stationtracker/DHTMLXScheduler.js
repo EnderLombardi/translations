@@ -24,7 +24,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 						oRm.writeControlData(oControl);
 						oRm.write(" class='dhx_cal_container'  style='width:100%; height:71%;'>");
 						oRm.write("	<div class='dhx_cal_navline'style=''>");
-						oRm.write("		<div class='dhx_cal_date' Style='font-weight:bold; text-align:left; padding-left: 1.5%'></div>");
+						oRm.write("		<div class='dhx_cal_date' Style='font-weight:bold; text-align:left; padding-left: 1.5%;'></div>");
 						oRm.write("	</div>");
 						oRm.write("	<div class='dhx_cal_header' Style='text-align:left;'>");
 						oRm.write("	</div>");
@@ -33,7 +33,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 					
 							
 						
-						
+						scheduler.xy.nav_height = 0; //Div height for date
 						scheduler.xy.scroll_width=20;
 						scheduler.xy.bar_height = 30;
 						scheduler.deleteMarkedTimespan();
@@ -58,7 +58,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 					    scheduler.eventId = scheduler.eventId || [];
                         scheduler.eventId.forEach(function(el) { scheduler.detachEvent(el) });
                         scheduler.eventId = [];
-
+                        
 
 						scheduler.createTimelineView({
 								section_autoheight: false,
@@ -84,6 +84,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 						///////////////////////////////////////////////////////
 						function SchedStartChange(ev, mode, e) {
 							// any custom logic here
+							console.log(new Date(this.getEvent(ev).end_date.getTime()	+ (-scheduler.matrix.timeline.x_step * 60000)));
 							if (new Date(this.getEvent(ev).start_date.getTime()	+ (-scheduler.matrix.timeline.x_step * 60000)) < scheduler._min_date)
 
 							{
@@ -139,7 +140,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 							return true;
 
 						}));
-						scheduler.date.timeline_start = ShiftManager.bounded("timelineStart");
+						scheduler.date.timeline_start = ShiftManager.bounded("adjustSchedulerXStart");
 						scheduler.date.add_timeline_old = scheduler.date.add_timeline;
 						scheduler.date.add_timeline = ShiftManager.bounded("timelineAddStep");
 						
@@ -158,7 +159,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 
 							}
 
-							if (section.initial != undefined && airbus.mes.stationtracker.GroupingBoxingManager.showInitial ) {
+							if (section.initial != undefined ) {
 
 								var html = '<span  style="float: right;margin-right: 5px;" >' + section.initial
 										+ '</span>'
@@ -287,67 +288,130 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 
 							}
 						};
-
-						/* Delete initial - + to indicate the collapse or expand of folder */
 						
 						scheduler.eventId.push ( scheduler.attachEvent("onScaleAdd", function( unit , date ) {
+					  /* Delete initial - + to indicate the collapse or expand of folder */		
 							for (var i = 0; i < $("div[class='dhx_scell_expand']").length; i++) {
 								$("div[class='dhx_scell_expand']").eq(i).remove();
 							}
 
 						/* Create arrow to change shift/day */								
 							if ($("div[class='dhx_cal_next_button']").length === 0) {
-								$("div[class='dhx_cal_header']").append(("<div class='dhx_cal_next_button' Style='float:right;'></div>"));
+								$("div[class='dhx_cal_header']").append(("<div class='dhx_cal_next_button' Style='float:right; width:30px;'></div>"));
 								$("div[class='dhx_cal_next_button']").click(function() {
 									scheduler._click.dhx_cal_next_button()
 								});
 							}
 
 							if ($("div[class='dhx_cal_prev_button']").length === 0) {
-								$("div[class='dhx_cal_header']").append(("<div class='dhx_cal_prev_button' Style='float:right;'></div>"));
+								$("div[class='dhx_cal_header']").append(("<div class='dhx_cal_prev_button' Style='float:right; width:30px;'></div>"));
 								$("div[class='dhx_cal_prev_button']").click(function() {
 									scheduler._click.dhx_cal_prev_button()
 								});
 							}
-							
-							if ($("select[class='selectBoxStation']").length === 0) {
-								$("div[class='dhx_cal_header']").append(("<select class='selectBoxStation' ><option value='volvo'>Volvo</option><option value='saab'>Saab</option>" +
-										"<option value='opel'>Opel</option><option value='audi'>Audi</option></select>"));
-								$("div[class='selectBoxStation']").click(function() {
-									scheduler._click.dhx_cal_prev_button()
+							/* Listbox */
+							var options = airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy[airbus.mes.stationtracker.ShiftManager.current_day];
+							if (airbus.mes.stationtracker.ShiftManager.dayDisplay === true && $("select[class='selectBoxStation']").length === 0 ) {		
+								$("div[class='dhx_cal_header']").append("<select class='selectBoxStation' id='selectBoxStation' ></select>");
+								var i = 0;
+								for (var prop in options) {
+							        // skip loop if the property is from prototype
+							        if(!options.hasOwnProperty(prop)) continue;
+							        if (i != airbus.mes.stationtracker.ShiftManager.BoxSelected)
+							        {	
+							        	$("select[class='selectBoxStation']").append("<option value='"+prop+"'>"+prop+"</option>");
+							        }
+							        else
+							        {
+							        	$("select[class='selectBoxStation']").append("<option value='"+prop+"' selected='selected'>"+prop+"</option>");
+							        	airbus.mes.stationtracker.ShiftManager.ShiftSelected = prop;
+							        	var intervals = airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy[airbus.mes.stationtracker.ShiftManager.current_day][airbus.mes.stationtracker.ShiftManager.ShiftSelected];
+										airbus.mes.stationtracker.ShiftManager.ShiftSelectedStart = intervals[0].beginDateTime;
+										airbus.mes.stationtracker.ShiftManager.ShiftSelectedEnd = intervals[intervals.length - 1].endDateTime;
+										scheduler.deleteMarkedTimespan();
+										scheduler.addMarkedTimespan({  
+											start_date: airbus.mes.stationtracker.ShiftManager.ShiftSelectedStart,
+											end_date: airbus.mes.stationtracker.ShiftManager.ShiftSelectedEnd,
+										    css:   "shiftCss",
+										});
+							        }
+							        i++;
+							    }
+								 $("select[class='selectBoxStation']").change(function(){
+								this.options[this.selectedIndex].selected = true;
+								airbus.mes.stationtracker.ShiftManager.BoxSelected = this.selectedIndex;
+								airbus.mes.stationtracker.ShiftManager.ShiftSelected = this.options[this.selectedIndex].value;
+								var intervals = airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy[airbus.mes.stationtracker.ShiftManager.current_day][airbus.mes.stationtracker.ShiftManager.ShiftSelected];
+								airbus.mes.stationtracker.ShiftManager.ShiftSelectedStart = intervals[0].beginDateTime;
+								airbus.mes.stationtracker.ShiftManager.ShiftSelectedEnd = intervals[intervals.length - 1].endDateTime;
+								scheduler.deleteMarkedTimespan();
+								scheduler.updateView();
+								scheduler.addMarkedTimespan({  
+									start_date: airbus.mes.stationtracker.ShiftManager.ShiftSelectedStart,
+									end_date: airbus.mes.stationtracker.ShiftManager.ShiftSelectedEnd,
+								    css:   "shiftCss",
 								});
+
+
+								 
+							 });
 							}
+							else if (airbus.mes.stationtracker.ShiftManager.shiftDisplay === true)
+							{
+								scheduler.deleteMarkedTimespan();
+								$("select[class='selectBoxStation']").length = 0;
+								airbus.mes.stationtracker.ShiftManager.BoxSelected = 0;
+								airbus.mes.stationtracker.ShiftManager.ShiftSelected = undefined;
+								airbus.mes.stationtracker.ShiftManager.ShiftSelectedStart = undefined;
+								airbus.mes.stationtracker.ShiftManager.ShiftSelectedEnd = undefined;
+							}							
+									
+							 /* Replace date in Toolbar */
+							var toolbarDateId = airbus.mes.stationtracker.oView.byId("toolbarDate").sId;
+							$("div[id="+toolbarDateId+"]").contents().remove();
+							$("div[id="+toolbarDateId+"]").append($("div[class='dhx_cal_date']").contents().clone());
 						}));
 						
 				
 							
 						scheduler.eventId.push ( scheduler.attachEvent("onClick", function(id, e) {	
-//							if ( airbus.mes.stationtracker.schedulerPopover === undefined ) {
-//								
-//								airbus.mes.stationtracker.schedulerPopover = sap.ui.xmlfragment("airbus.mes.stationtracker.schedulerPopover", airbus.mes.stationtracker.oView.getController());
-//								airbus.mes.stationtracker.schedulerPopover.addStyleClass("alignTextLeft");
-//								
-//							}
-//							
-//							airbus.mes.stationtracker.schedulerPopover.openBy(e.srcElement);		
-
-//							if ( airbus.mes.stationtracker.ReschedulePopover === undefined ) {
-//								
-//								airbus.mes.stationtracker.ReschedulePopover = sap.ui.xmlfragment("airbus.mes.stationtracker.Reschedule", this);
-//								airbus.mes.stationtracker.ReschedulePopover.addStyleClass("alignTextLeft");
-//								
-//							}
-//							
-//							airbus.mes.stationtracker.ReschedulePopover.openBy(e.srcElement);								
-
-							if ( airbus.mes.stationtracker.operatorPopoverr === undefined ) {
-								
-								airbus.mes.stationtracker.operationPopover = sap.ui.xmlfragment("airbus.mes.stationtracker.operationPopover", airbus.mes.stationtracker.oView.getController());
-								airbus.mes.stationtracker.operationPopover.addStyleClass("alignTextLeft");
-								
+							switch(airbus.mes.stationtracker.GroupingBoxingManager.box){
+							case "OPERATION_ID" : 
+//								Boxing operation, we display the operation list
+								if ( airbus.mes.stationtracker.operationPopover === undefined ) {
+									
+									var oView = airbus.mes.stationtracker.oView;
+									airbus.mes.stationtracker.operationPopover = sap.ui.xmlfragment("operationPopover","airbus.mes.stationtracker.operationPopover", airbus.mes.stationtracker.oView.getController());
+									airbus.mes.stationtracker.operationPopover.addStyleClass("alignTextLeft");
+									oView.addDependent(airbus.mes.stationtracker.operationPopover);
+								}
+								var oNavCon = sap.ui.getCore().byId("operationPopover--navOperatorContainer");
+								var oMasterPage = sap.ui.getCore().byId("operationPopover--master");
+								oNavCon.to(oMasterPage);
+								oNavCon.currentPageIsTopPage();
+								var oOperationPopover = sap.ui.getCore().byId("operationPopover--operationPopoverID");
+								oOperationPopover.setContentHeight("353px");								
+								airbus.mes.stationtracker.operationPopover.setModel(new sap.ui.model.json.JSONModel(airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy[scheduler.getEvent(id).group][scheduler.getEvent(id).avlLine][scheduler.getEvent(id).box]), "WorkListModel");
+								airbus.mes.stationtracker.operationPopover.getModel("WorkListModel").refresh();
+								airbus.mes.stationtracker.operationPopover.openBy(e.srcElement);	
+								break;
+							case "WORKORDER_ID" :	
+//								Boxing Work order, we display the worklist list								
+								if ( airbus.mes.stationtracker.worklistPopover === undefined ) {
+									
+									var oView = airbus.mes.stationtracker.oView;
+									airbus.mes.stationtracker.worklistPopover = sap.ui.xmlfragment("worklistPopover","airbus.mes.stationtracker.worklistPopover", airbus.mes.stationtracker.oView.getController());
+									airbus.mes.stationtracker.worklistPopover.addStyleClass("alignTextLeft");
+									oView.addDependent(airbus.mes.stationtracker.worklistPopover);
+								}
+								airbus.mes.stationtracker.worklistPopover.unPlanned = false;
+								airbus.mes.stationtracker.worklistPopover.setModel(new sap.ui.model.json.JSONModel(airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy[scheduler.getEvent(id).group][scheduler.getEvent(id).avlLine][scheduler.getEvent(id).box]), "WorkListModel");
+								airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").refresh();
+								airbus.mes.stationtracker.worklistPopover.openBy(e.srcElement);	
+								break;							
 							}
 							
-							airbus.mes.stationtracker.operationPopover.openBy(e.srcElement);									
+						
 							
 						}));
 						

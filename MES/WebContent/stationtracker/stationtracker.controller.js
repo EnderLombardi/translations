@@ -1,246 +1,264 @@
+jQuery.sap.require("airbus.mes.stationtracker.util.Formatter");
+
 sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 
-/**
-* Called when a controller is instantiated and its View controls (if available) are already created.
-* Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
-* @memberOf components.stationtracker.stationtracker
-*/
-//	onInit: function() {
-//
-//	},
+	/**
+	 * Called when a controller is instantiated and its View controls (if available) are already created.
+	 * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
+	 * @memberOf components.stationtracker.stationtracker
+	 */
+	//	onInit: function() {
+	//
+	//	},
+	/**
+	 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
+	 * (NOT before the first rendering! onInit() is used for that one!).
+	 * @memberOf components.stationtracker.stationtracker
+	 */
+	//	onBeforeRendering: function() {
+	//
+	//	},
+	/**
+	 * Called when the View has been rendered (so its HTML is part of the document). Post-rendering manipulations of the HTML could be done here.
+	 * This hook is the same one that SAPUI5 controls get after being rendered.
+	 * @memberOf components.stationtracker.stationtracker
+	 */
+	onAfterRendering : function() {
 
-/**
-* Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
-* (NOT before the first rendering! onInit() is used for that one!).
-* @memberOf components.stationtracker.stationtracker
-*/
-//	onBeforeRendering: function() {
-//
-//	},
-
-/**
-* Called when the View has been rendered (so its HTML is part of the document). Post-rendering manipulations of the HTML could be done here.
-* This hook is the same one that SAPUI5 controls get after being rendered.
-* @memberOf components.stationtracker.stationtracker
-*/
-	onAfterRendering: function() {
-		
-		if ( !sap.ui.getCore().byId("selectGroup") ) {
-		var oToolBar = new sap.m.Toolbar({
-		
-			content : [new sap.m.Button({
-				text : "42",
-				type : "Transparent",
-				icon : "sap-icon://group",
-				press : this.onTeamPress,
-			}).addStyleClass("buttonStatus"),
-			
-			new sap.m.ToolbarSeparator({}), 
-			
-			new sap.m.Label({ text:"Sort By : "}),
-			
-			new sap.m.Select("selectGroup",{
-				change: this.changeGroup,
-				items : [ new sap.ui.core.Item({ text:"Competence", key:"competency"}),
-				          new sap.ui.core.Item({ text:"Avl", key:"avlLine"}),
-				         ]
-				}).addStyleClass("sapUiTinyMarginBeginEnd"),
-			
-			new sap.m.Label({ text:"Show : "}),
-			 
-			new sap.m.Select("selectBox",{
-				change: this.changeBox,
-				items : [ new sap.ui.core.Item({ text:"Operations", key:"operationId"}),
-				          new sap.ui.core.Item({ text:"WorkOrder", key:"workOrderId"}),
-				         ]
-				}).addStyleClass("sapUiTinyMarginBeginEnd"),
-			
-			new sap.m.ToolbarSeparator({}), 
-			
-			new sap.m.Button({
-				text : "show CP",
-				type : "Transparent",
-				icon : "sap-icon://ppt-attachment",
-				press : this.onCPPress,
-			}).addStyleClass("sapUiTinyMarginBeginEnd"),
-			
-			new sap.m.Button({
-				text : "show initial plan",
-				type : "Transparent",
-				icon : "sap-icon://ppt-attachment",
-				press : this.onInitialPlanPress,
-			}).addStyleClass("sapUiTinyMarginBeginEnd"),
-			           
-//			new sap.m.SegmentedButton({
-//			
-//				items: [ new sap.m.SegmentedButtonItem({ text:"Shift", press:this.onShiftPress }),
-//				         new sap.m.SegmentedButtonItem({ text:"Day", press:this.onDayPress })]				
-//			})
-			
-			
-			]
-		
-		
-			
-		}).addStyleClass("white")
-		
-		
-//		<Toolbar class="white">
-//		<content>
-//			<Button text="42" type="Transparent" icon="sap-icon://group"
-//				class="buttonStatus" press="onTeamPress"></Button>
-//			<ToolbarSeparator />
-//			<Label text="Sort By : " />
-//			<Select id="selectGroup" class="sapUiTinyMarginBeginEnd" change="changeGroup">
-//				<core:Item text="Competence" key="competency"/>
-//				<core:Item text="Avl" key="avlLine" />
-//			</Select>
-//			<Label text="Show : " />
-//			<Select id="selectBox" class="sapUiTinyMarginBeginEnd" change="changeBox">
-//				<core:Item text="Operations" key="operationId"/>
-//				<core:Item text="WorkOrder" key="workOrderId"/>
-//			</Select>
-//			<ToolbarSpacer />
-//			<Button text="show CP" type="Transparent" icon="sap-icon://ppt-attachment"
-//				class="sapUiTinyMarginBeginEnd" press="onCPPress"></Button>
-//			<Button text="show initial plan" type="Transparent"
-//				icon="sap-icon://ppt-attachment" class="sapUiTinyMarginBeginEnd"
-//				press="onInitialPlanPress"></Button>
-//			<SegmentedButton>
-//				
-//				<items>
-//					<SegmentedButtonItem text="Shift" press="onShiftPress" />
-//					<SegmentedButtonItem text="Day" press="onDayPress" />
-//				</items>
-//			</SegmentedButton>
-//		</content>
-//	</Toolbar>
-		
-		
-		oToolBar.placeAt($("div[class='dhx_cal_navline']"))
-		}
 	},
-	
-	onTeamPress :function(oEvent){
-		
-		 var bindingContext = oEvent.getSource().getBindingContext();			 
-		 // open team popover fragment		 
-		if (! this._oPopover) {
+
+	onTeamPress : function(oEvent) {
+
+		var bindingContext = oEvent.getSource().getBindingContext();
+		// open team popover fragment		 
+		if (!this._oPopover) {
 			this._oPopover = sap.ui.xmlfragment("airbus.mes.stationtracker.teamPopover", this);
 			this._oPopover.addStyleClass("alignTextLeft");
 			this.getView().addDependent(this._oPopover);
 		}
-		this._oPopover.openBy(oEvent.getSource());							
+		this._oPopover.openBy(oEvent.getSource());
 
 	},
 
-	 onShiftPress : function(){
+	onShiftPress : function() {
 		
-  	  scheduler.matrix['timeline'].x_unit = 'minute';
-  	  scheduler.matrix['timeline'].x_step = 120;
-  	  scheduler.matrix['timeline'].x_size = 6;
-  	  scheduler.matrix['timeline'].x_length = 12;
-  	  scheduler.matrix['timeline'].x_start= 3,
-  	  scheduler.matrix['timeline'].x_date = '%H:%i';
-  	  scheduler.templates.timeline_scale_date = function(date){
-         var func=scheduler.date.date_to_str(scheduler.matrix['timeline'].x_date );
-         return func(date);
-      };
-      scheduler.updateView();
-  	  
-	 },
-	 
-	 onDayPress : function(){
-			
-		  scheduler.matrix['timeline'].x_unit = 'minute';
-       	  scheduler.matrix['timeline'].x_step = 120;
-       	  scheduler.matrix['timeline'].x_start= 3,
-       	  scheduler.matrix['timeline'].x_size = 8.5;
-       	  scheduler.matrix['timeline'].x_length = 12;
-       	  scheduler.matrix['timeline'].x_date = '%H:%i';
-       	  scheduler.templates.timeline_scale_date = function(date){
-             var func=scheduler.date.date_to_str(scheduler.matrix['timeline'].x_date );
-             return func(date);
-          };
-          scheduler.updateView();
-	  	  
-		 },
-	
-		
-	onInitialPlanPress : function() {
-	
-		// XX TO REDEFINE
-		var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
-		
-	if (airbus.mes.stationtracker.GroupingBoxingManager.showInitial) {
-		
-		airbus.mes.stationtracker.GroupingBoxingManager.showInitial = false;
-		GroupingBoxingManager.parseOperation(GroupingBoxingManager.group,GroupingBoxingManager.box);
-							
-		} else {
-			
-			airbus.mes.stationtracker.GroupingBoxingManager.showInitial = true;
-			GroupingBoxingManager.parseOperation(GroupingBoxingManager.group,GroupingBoxingManager.box);
+		airbus.mes.stationtracker.ShiftManager.shiftDisplay = true;
+		airbus.mes.stationtracker.ShiftManager.dayDisplay = false;
+
+		scheduler.matrix['timeline'].x_unit = 'minute';
+		scheduler.matrix['timeline'].x_step = 30;
+		scheduler.matrix['timeline'].x_size = 18;
+		scheduler.matrix['timeline'].x_length = 18;
+		scheduler.matrix['timeline'].x_start = 0,
+		scheduler.matrix['timeline'].x_date = '%H:%i';
+		scheduler.templates.timeline_scale_date = function(date) {
+			var func = scheduler.date.date_to_str(scheduler.matrix['timeline'].x_date);
+			return func(date);
+		};
+		scheduler.updateView(airbus.mes.stationtracker.ShiftManager.currentShiftStart);
+		/* Delete Selection box when shift */
+		for (var i = 0; i < $("select[class='selectBoxStation']").length; i++) {
+			$("select[class='selectBoxStation']").eq(i).remove();
 		}
 	},
-	
 
-		onCPPress : function() {
+	onDayPress : function() {
+
+		airbus.mes.stationtracker.ShiftManager.shiftDisplay = false;
+		airbus.mes.stationtracker.ShiftManager.dayDisplay = true;
+		
+		scheduler.matrix['timeline'].x_unit = 'minute';
+		scheduler.matrix['timeline'].x_step = 60;
+		scheduler.matrix['timeline'].x_start = 0;
+		scheduler.matrix['timeline'].x_size = 18;
+		scheduler.matrix['timeline'].x_length = 18;
+		scheduler.matrix['timeline'].x_date = '%H:%i';
+		
+		scheduler.templates.timeline_scale_date = function(date) {
+			var func = scheduler.date.date_to_str(scheduler.matrix['timeline'].x_date);
+			return func(date);
+		};
+		scheduler.updateView(airbus.mes.stationtracker.ShiftManager.currentShiftStart);
+	},
+
+	onInitialPlanPress : function() {
+
+		// XX TO REDEFINE
+		var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
+
+		if (airbus.mes.stationtracker.GroupingBoxingManager.showInitial) {
+
+			airbus.mes.stationtracker.GroupingBoxingManager.showInitial = false;
+			GroupingBoxingManager.parseOperation(GroupingBoxingManager.group, GroupingBoxingManager.box);
+			
+		} else {
+
+			airbus.mes.stationtracker.GroupingBoxingManager.showInitial = true;
+			airbus.mes.stationtracker.ModelManager.loadStationTracker("I");
+			
+		
+		}
+	},
+
+	onCPPress : function() {
 
 		if (airbus.mes.stationtracker.AssignmentManager.CpPress === false) {
-			
+
 			scheduler.templates.event_class = function(start, end, ev) {
-				
+
 				if (ev.criticalPath != undefined) {
-					
+
 					return "operationCP";
-					
+
 				} else {
-					
+
 					return "grey";
 				}
 
 			};
-			
+
 			airbus.mes.stationtracker.AssignmentManager.CpPress = true;
 			scheduler.updateView();
-			
+
 		} else {
-			
+
 			scheduler.templates.event_class = function(start, end, ev) {
 
 				return "grey";
 
 			};
-			
+
 			airbus.mes.stationtracker.AssignmentManager.CpPress = false;
 			scheduler.updateView();
-			
+
 		}
+	},
+	onPolypolyOpen: function(oEvent) {
+		jQuery.sap.registerModulePath("airbus.mes.polypoly","/MES/components/polypoly");
+
+
+			//Open fragment
+		var bindingContext = oEvent.getSource().getBindingContext();
+		
+		// open team popover fragment		 
+		if (!this._oPopoverPolypoly) {
+			this._oPopoverPolypoly = sap.ui.xmlfragment("airbus.mes.stationtracker.polypolyFragment", this);
+			this.getView().addDependent(this._oPopoverPolypoly);
+		}
+		
+		
+		if (!this.oComp) { 
+        var oComp = sap.ui.getCore().createComponent({
+            name : "airbus.mes.polypoly", // root component folder is resources
+            id : "Comp10",
+     });
+
+     // Create a Ui container
+
+     
+//   oCompCont.placeAt("contentPopover");
+     this.oComp = oComp;
+     this.oCompCont = oCompCont;
+	};
+	
+	var oCompCont = new sap.ui.core.ComponentContainer({
+	    component : oComp
+	});
+	// place this Ui Container with the Component inside into UI Area
+	this._oPopoverPolypoly.addContent(oCompCont);
+	this._oPopoverPolypoly.open();
+
+		
+	},
+	handleCloseButtonPolypoly: function(oEvent) {
+		this._oPopoverPolypoly.close();
+		
+	},
+
+	onUnplannedPress : function(e) {
+		if ( airbus.mes.stationtracker.worklistPopover === undefined ) {
+			
+			var oView = airbus.mes.stationtracker.oView;
+			airbus.mes.stationtracker.worklistPopover = sap.ui.xmlfragment("worklistPopover","airbus.mes.stationtracker.worklistPopover", airbus.mes.stationtracker.oView.getController());
+			airbus.mes.stationtracker.worklistPopover.addStyleClass("alignTextLeft");
+			oView.addDependent(airbus.mes.stationtracker.worklistPopover);
+		}
+		airbus.mes.stationtracker.worklistPopover.unPlanned = true;
+		airbus.mes.stationtracker.worklistPopover.setModel(new sap.ui.model.json.JSONModel(sap.ui.getCore().getModel("unPlannedModel").getData().Rowsets.Rowset[0].Row), "WorkListModel");
+		airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").refresh();
+		airbus.mes.stationtracker.worklistPopover.openBy(e.getSource());	
+		
 	},
 	
 	changeGroup : function() {
-		
+
 		var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
-		
+
 		GroupingBoxingManager.group = sap.ui.getCore().byId("stationTrackerView").byId("selectGroup").getSelectedKey();
 		GroupingBoxingManager.box = sap.ui.getCore().byId("stationTrackerView").byId("selectBox").getSelectedKey();
-	
-		GroupingBoxingManager.parseOperation(GroupingBoxingManager.group,GroupingBoxingManager.box);
+
+		GroupingBoxingManager.parseOperation(GroupingBoxingManager.group, GroupingBoxingManager.box);
 	},
-	
+
 	changeBox : function() {
-		
+
 		var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
-		
+
 		GroupingBoxingManager.group = sap.ui.getCore().byId("stationTrackerView").byId("selectGroup").getSelectedKey();
 		GroupingBoxingManager.box = sap.ui.getCore().byId("stationTrackerView").byId("selectBox").getSelectedKey();
-	
-		GroupingBoxingManager.parseOperation(GroupingBoxingManager.group,GroupingBoxingManager.box);
+
+		GroupingBoxingManager.parseOperation(GroupingBoxingManager.group, GroupingBoxingManager.box);
+
+	},
+	onReschedulePress : function(oEvent) {
+		
+		var oNavCon = sap.ui.getCore().byId("operationPopover--navOperatorContainer");
+		var oReschedulePage = sap.ui.getCore().byId("operationPopover--Reschedule");
+		var oOperationPopover = sap.ui.getCore().byId("operationPopover--operationPopoverID");
+		oOperationPopover.setContentHeight("790px");
+		oNavCon.to(oReschedulePage);
+	},
+	onNavBack : function (oEvent) {
+		var oNavCon = sap.ui.getCore().byId("operationPopover--navOperatorContainer");
+		var oOperationPopover = sap.ui.getCore().byId("operationPopover--operationPopoverID");
+		oOperationPopover.setContentHeight("353px");		
+		oNavCon.back();
+	},
+	onSelectionChange : function(oEvent) {
+		var oList = oEvent.getSource();
+//		var oLabel = this.getView().byId("idFilterLabel");
+//		var oInfoToolbar = this.getView().byId("idInfoToolbar");
+
+		// With the 'getSelectedContexts' function you can access the context paths
+		// of all list items that have been selected, regardless of any current
+		// filter on the aggregation binding.
+		var aContexts = oList.getSelectedContexts(true);
+
+		// update UI
+		var bSelected = (aContexts && aContexts.length > 0);
+		var sText = (bSelected) ? aContexts.length + " selected" : null;
+//		oInfoToolbar.setVisible(bSelected);
+		oLabel.setText(sText);		
 		
 	},
-	onReschedulePress : function() {
+	onUnplannedImport : function(oEvent) {
+
+		var oList = sap.ui.getCore().byId("worklistPopover--myList"); //TODO : change access to list
+		var aContext = oList.getSelectedContexts(true);
+		
+		
+		
+		
 		console.log("toto");
-	}
+		
+		
+		
+		
+	},
 	
+	onUnplannedClose : function() {
+		
+		
+	}	
+
 });

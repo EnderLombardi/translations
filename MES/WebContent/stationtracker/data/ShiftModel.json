@@ -9,13 +9,15 @@
              { "Name" : "beginDateTime", "SourceColumn" : "beginDateTime", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
              { "Name" : "endDateTime", "SourceColumn" : "endDateTime", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 } ] }, 
        "Row" : [ 
-             { "shiftName" : "EARLY 1","shiftID" : "EARLY 1", "day" : "2014-06-30", "beginDateTime" : "2014-06-30 07:30:00", "endDateTime" : "2014-06-30 10:30:00" }, 
-             { "shiftName" : "EARLY 1","shiftID" : "EARLY 1", "day" : "2014-06-30", "beginDateTime" : "2014-06-30 11:00:00", "endDateTime" : "2014-06-30 12:00:00" }, 
-             { "shiftName" : "EARLY 1","shiftID" : "EARLY 1", "day" : "2014-06-30", "beginDateTime" : "2014-06-30 13:30:00", "endDateTime" : "2014-06-30 16:30:00" }, 
-             { "shiftName" : "LATE 1","shiftID" : "LATE 1", "day" : "2014-06-30", "beginDateTime" : "2014-06-30 18:29:59", "endDateTime" : "2014-06-30 22:15:00" },
-             { "shiftName" : "EARLY 2","shiftID" : "EARLY 2", "day" : "2014-07-01", "beginDateTime" : "2014-07-01 10:30:00", "endDateTime" : "2014-07-01 16:30:00" }, 
-             { "shiftName" : "LATE 2","shiftID" : "LATE 2", "day" : "2014-07-01", "beginDateTime" : "2014-07-01 18:29:59", "endDateTime" : "2014-07-02 02:00:00" }]
-             } ]
+             { "shiftName" : "EARLY 1","shiftID" : "EARLY 1", "day" : "2016-10-03", "beginDateTime" : "2016-10-03 07:30:00", "endDateTime" : "2016-10-03 10:30:00" }, 
+             { "shiftName" : "EARLY 1","shiftID" : "EARLY 1", "day" : "2016-10-03", "beginDateTime" : "2016-10-03 11:00:00", "endDateTime" : "2016-10-03 12:00:00" }, 
+             { "shiftName" : "EARLY 1","shiftID" : "EARLY 1", "day" : "2016-10-03", "beginDateTime" : "2016-10-03 13:30:00", "endDateTime" : "2016-10-03 16:30:00" }, 
+             { "shiftName" : "LATE 1","shiftID" : "LATE 1", "day" : "2016-10-03", "beginDateTime" : "2016-10-03 18:29:59", "endDateTime" : "2016-10-03 22:15:00" },
+             { "shiftName" : "EARLY 2","shiftID" : "EARLY 2", "day" : "2016-10-04", "beginDateTime" : "2016-10-04 00:30:00", "endDateTime" : "2016-10-04 05:30:00" }, 
+             { "shiftName" : "LATE 2","shiftID" : "LATE 2", "day" : "2016-10-04", "beginDateTime" : "2016-10-04 06:00:00", "endDateTime" : "2016-10-04 12:00:00" },
+             { "shiftName" : "LATE3","shiftID" : "LATE3", "day" : "2016-10-04", "beginDateTime" : "2016-10-04 12:30:00", "endDateTime" : "2016-10-04 15:30:00" }, 
+             { "shiftName" : "LATE4","shiftID" : "LATE4", "day" : "2016-10-04", "beginDateTime" : "2016-10-04 15:30:00", "endDateTime" : "2016-10-04 20:30:00" } 
+            ]             } ]
        }
 }
 
