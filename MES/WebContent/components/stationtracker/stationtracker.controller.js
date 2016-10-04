@@ -149,23 +149,18 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
      });
 
      // Create a Ui container
-     var oCompCont = new sap.ui.core.ComponentContainer("CompCont10", {
-            component : oComp
-     });
-     // place this Ui Container with the Component inside into UI Area
-     this._oPopoverPolypoly.addContent(oCompCont);
+
      
 //   oCompCont.placeAt("contentPopover");
      this.oComp = oComp;
      this.oCompCont = oCompCont;
-} else {
-     this.oComp.destroy();
-     this.oCompCont.destroy();
-     this.oComp = undefined;
-     this.oCompCont = undefined;
 };
 
-
+var oCompCont = new sap.ui.core.ComponentContainer({
+    component : oComp
+});
+// place this Ui Container with the Component inside into UI Area
+this._oPopoverPolypoly.addContent(oCompCont);
 this._oPopoverPolypoly.open();
 
 		

@@ -3,8 +3,8 @@
 	xmlns:html="http://www.w3.org/1999/xhtml">
 	<table:Table rows="{ path: '/rows' }"
 		columns="{ path: '/columns', factory: '.createColumn' }"
-		fixedColumnCount="6" fixedRowCount="2" enableColumnReordering="true"
-		rowHeight="60" height="auto" id="oTablePolypoly" enableSelectAll="false"
+		 enableColumnReordering="true"
+		rowHeight="40" id="oTablePolypoly" enableSelectAll="false"
 		columnMove="onColumnMove">
 		<table:toolbar>
 			<Toolbar design="Transparent">
