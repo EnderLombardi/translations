@@ -8,6 +8,8 @@ airbus.mes.stationtracker.ShiftManager  = {
 	shiftDisplay :true,
 	fSwipe: false,
 	truc : 0,
+	BoxSelected : 0,
+	ShiftSelected : undefined,
 	
 	current_shift : undefined,
 	currentShiftStart : undefined,
@@ -272,6 +274,8 @@ airbus.mes.stationtracker.ShiftManager  = {
 	 */
 	// Date timelineAddStep(Date, int, String)
 	timelineAddStep : function(date, step, mode) {
+		
+		airbus.mes.stationtracker.ShiftManager.BoxSelected = 0;	
 		var oFormatter = airbus.mes.stationtracker.util.Formatter;
 		if (this.shifts.length === 0)
 		return scheduler.date.add_timeline_old(date, step, mode);
@@ -803,8 +807,35 @@ airbus.mes.stationtracker.ShiftManager  = {
 	 */
 	// Swipe function 
 	timelineSwip : function (side) {
+<<<<<<< Upstream, based on origin/MESv0.9
+//		var oFormatter = airbus.mes.stationtracker.util.Formatter;
+=======
+		
 //		var oFormatter = airbus.mes.stationtracker.util.Formatter;
 //		
+//		this.step = -1;
+//		var step;
+//		var dNewDate;
+//
+//		if (side === "right") {
+//			step = scheduler.matrix.timeline.x_step;
+//			dNewDate =  Date.parse(scheduler._min_date) + step*1000*60;
+//		} else {
+//			step = -scheduler.matrix.timeline.x_step;
+//		}
+
+//		var ndate = scheduler.date.add(scheduler.date.timeline_start(scheduler._min_date), step, "minute");
+
+//		if (side === "left" && this.isDateIgnored(ndate)) {
+//			ndate = this.endOfPreviousShift(ndate);
+//		} else if (side === "right" && ndate > oFormatter.jsDateFromDayTimeStr(this.shifts[this.shifts.length-1].EndDate)) {
+//			dhtmlx.message({ id: "lastShiftDHTMLX", text: "Last Shift Reached", expire: 2000 });
+//			return 
+//		}
+//		this.fSwipe = true;
+>>>>>>> 299dd6e listox manangement
+//		
+<<<<<<< Upstream, based on origin/MESv0.9
 //		this.step = -1;
 //		var step;
 //		var dNewDate;
@@ -830,6 +861,12 @@ airbus.mes.stationtracker.ShiftManager  = {
 //		if ( side === "right"  ) {
 //			
 //			//this.adjustSchedulerXStart(new Date(dNewDate));
+=======
+//		&& this.isDateIgnored(dNewDate)
+//		if ( side === "right"  ) {
+			
+			//this.adjustSchedulerXStart(new Date(dNewDate));
+>>>>>>> 299dd6e listox manangement
 //			scheduler.setCurrentView(new Date(dNewDate));
 //			
 //		} 

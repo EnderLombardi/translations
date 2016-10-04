@@ -15,7 +15,11 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 					
 							
 						
+<<<<<<< Upstream, based on origin/MESv0.9
 						//scheduler.xy.nav_height = 0; //Div height for date
+=======
+//						scheduler.xy.nav_height = 0; //Div height for date
+>>>>>>> 299dd6e listox manangement
 						scheduler.xy.scroll_width=20;
 						scheduler.xy.bar_height = 30;
 						scheduler.deleteMarkedTimespan();
@@ -40,7 +44,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 					    scheduler.eventId = scheduler.eventId || [];
                         scheduler.eventId.forEach(function(el) { scheduler.detachEvent(el) });
                         scheduler.eventId = [];
-
+                        
 
 						scheduler.createTimelineView({
 								section_autoheight: false,
@@ -278,9 +282,18 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 							}
 
 					 /* Replace date in Toolbar */
+<<<<<<< Upstream, based on origin/MESv0.9
 //							var toolbarDateId = airbus.mes.stationtracker.oView.byId("toolbarDate").sId;
 //							$("div[id="+toolbarDateId+"]").append($("div[class='dhx_cal_date']"));
 //							
+=======
+//							if ( airbus.mes.stationtracker.oView.byId("toolbarDate").sId != undefined )
+//							{
+//								var toolbarDateId = airbus.mes.stationtracker.oView.byId("toolbarDate").sId;
+//								$("div[id="+toolbarDateId+"]").append($("div[class='dhx_cal_date']"));
+//							}
+							
+>>>>>>> 299dd6e listox manangement
 						/* Create arrow to change shift/day */								
 							if ($("div[class='dhx_cal_next_button']").length === 0) {
 								$("div[class='dhx_cal_header']").append(("<div class='dhx_cal_next_button' Style='float:right; width:30px;'></div>"));
@@ -295,22 +308,37 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 									scheduler._click.dhx_cal_prev_button()
 								});
 							}
+							/* Listbox */
 							var options = airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy[airbus.mes.stationtracker.ShiftManager.current_day];
-							var boxStation = $("select[class='selectBoxStation']");
-							if (airbus.mes.stationtracker.ShiftManager.dayDisplay === true && boxStation.length === 0 ) {		
-								$("div[class='dhx_cal_header']").append(("<select class='selectBoxStation' id='selectBoxStation' ></select>"));
-							
+							if (airbus.mes.stationtracker.ShiftManager.dayDisplay === true && $("select[class='selectBoxStation']").length === 0 ) {		
+								$("div[class='dhx_cal_header']").append("<select class='selectBoxStation' id='selectBoxStation' ></select>");
+								var i = 0;
 								for (var prop in options) {
 							        // skip loop if the property is from prototype
 							        if(!options.hasOwnProperty(prop)) continue;
-
-							        boxStation.append("<option>"+prop+"</option>");
+							        if (i != airbus.mes.stationtracker.ShiftManager.BoxSelected)
+							        {	
+							        	$("select[class='selectBoxStation']").append("<option value='"+prop+"'>"+prop+"</option>");
+							        }
+							        else
+							        {
+							        	$("select[class='selectBoxStation']").append("<option value='"+prop+"' selected='selected'>"+prop+"</option>");
+							        	airbus.mes.stationtracker.ShiftManager.ShiftSelected = prop;
+							        }
+							        i++;
 							    }
+								 $("select[class='selectBoxStation']").change(function(){
+								this.options[this.selectedIndex].selected = true;
+								 airbus.mes.stationtracker.ShiftManager.BoxSelected = this.selectedIndex;
+								 airbus.mes.stationtracker.ShiftManager.ShiftSelected = this.options[this.selectedIndex].value;
+							 });
 							}
-							else{
-								boxStation.length = 0;
-							}
-			
+							else if (airbus.mes.stationtracker.ShiftManager.shiftDisplay === true)
+							{
+								$("select[class='selectBoxStation']").length = 0;
+								airbus.mes.stationtracker.ShiftManager.BoxSelected = 0;
+								airbus.mes.stationtracker.ShiftManager.ShiftSelected = undefined;
+							}							
 						}));
 						
 				
