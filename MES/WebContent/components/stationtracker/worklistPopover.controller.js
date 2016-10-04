@@ -53,6 +53,21 @@ sap.ui.controller("mes_aos_gui.viewWorkList", {
 
 	f_id : "",
 
+	onUnplannedImport : function(oEvent) {
+		console.log("toto");
+		
+		
+		
+		
+	},
+	
+	onUnplannedClose : function() {
+		
+		
+	},	
+	
+	
+	
 	/** The dialog used when disruption button is clicked. */
 	disruptionDialog : undefined,
 	confirmationDialog : undefined,

@@ -3,14 +3,16 @@
 	xmlns:html="http://www.w3.org/1999/xhtml">
 	<Popover contentwidth = "500px" contentHeight="500px" placement="Bottom" >
 		<List id="myList" growing="true" growingThreshold="20"
-			growingScrollToLoad="true" items="{ path: 'WorkListModel>/' }">		
-<!-- 			growingScrollToLoad="true" items="{ path: 'WorkListModel>/Rowsets/Rowset/0/Row' }"> -->
+			growingScrollToLoad="true" items="{ path: 'WorkListModel>/' }"
+										   selectionChange="onSelectionChange"
+						mode="MultiSelect"
+				               includeItemInSelection="{  path : 'WorkListModel>andons' , formatter: 'airbus.mes.stationtracker.util.Formatter.isCheckboxVisible'}" >
 			<items>
 				<InputListItem id="sorterList">
 					<content>
 						<HBox>
 							<items>
-								<CheckBox visible="{  path : 'WorkListModel>andons' , formatter: 'airbus.mes.stationtracker.util.Formatter.isCheckboxVisible'}" enabled="true" ></CheckBox>
+<!-- 								<CheckBox visible="{  path : 'WorkListModel>andons' , formatter: 'airbus.mes.stationtracker.util.Formatter.isCheckboxVisible'}" enabled="true" ></CheckBox> -->
 								<custom:customProgressIndicator
 									width="auto" state="sap.ui.core.ValueState.Success" status="{WorkListModel>status}"
 									isAndon="{WorkListModel>andons}"
@@ -28,6 +30,14 @@
 				</InputListItem>
 			</items>
 		</List>
+		<HBox>
+			<Button text="Import" type="Transparent" icon="sap-icon://company-view"
+				class="sapUiTinyMarginBeginEnd" press="onUnplannedImport">
+			</Button>
+			<Button text="Close" type="Transparent" icon="sap-icon://forward"
+				class="sapUiTinyMarginBeginEnd" press="onUnplannedClose">
+			</Button>						
+		</HBox>	
 	</Popover>
 </core:FragmentDefinition>
 

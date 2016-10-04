@@ -94,7 +94,8 @@ airbus.mes.stationtracker.ModelManager = {
 		loadUnplanned : function() {
 			
 			var oViewModel = sap.ui.getCore().getModel("unPlannedModel");
-			oViewModel.loadData(this.urlModel.getProperty("urlstationtrackerunplannedactivities") , null, false);				
+			oViewModel.loadData(this.urlModel.getProperty("urlstationtrackerunplannedactivities") , null, false);		
+			airbus.mes.stationtracker.ModelManager.Unplanned = oViewModel;
 		},	
 		
 		

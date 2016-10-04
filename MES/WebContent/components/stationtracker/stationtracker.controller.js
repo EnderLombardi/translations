@@ -157,14 +157,14 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 //   oCompCont.placeAt("contentPopover");
      this.oComp = oComp;
      this.oCompCont = oCompCont;
-};
-
-var oCompCont = new sap.ui.core.ComponentContainer({
-    component : oComp
-});
-// place this Ui Container with the Component inside into UI Area
-this._oPopoverPolypoly.addContent(oCompCont);
-this._oPopoverPolypoly.open();
+	};
+	
+	var oCompCont = new sap.ui.core.ComponentContainer({
+	    component : oComp
+	});
+	// place this Ui Container with the Component inside into UI Area
+	this._oPopoverPolypoly.addContent(oCompCont);
+	this._oPopoverPolypoly.open();
 
 		
 	},
@@ -182,7 +182,7 @@ this._oPopoverPolypoly.open();
 			oView.addDependent(airbus.mes.stationtracker.worklistPopover);
 		}
 		airbus.mes.stationtracker.worklistPopover.unPlanned = true;
-		airbus.mes.stationtracker.worklistPopover.setModel(sap.ui.getCore().getModel("unPlannedModel"), "WorkListModel");
+		airbus.mes.stationtracker.worklistPopover.setModel(new sap.ui.model.json.JSONModel(sap.ui.getCore().getModel("unPlannedModel").getData().Rowsets.Rowset[0].Row), "WorkListModel");
 		airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").refresh();
 		airbus.mes.stationtracker.worklistPopover.openBy(e.getSource());	
 		
@@ -221,6 +221,42 @@ this._oPopoverPolypoly.open();
 		var oOperationPopover = sap.ui.getCore().byId("operationPopover--operationPopoverID");
 		oOperationPopover.setContentHeight("353px");		
 		oNavCon.back();
-	}
+	},
+	onSelectionChange : function(oEvent) {
+		var oList = oEvent.getSource();
+//		var oLabel = this.getView().byId("idFilterLabel");
+//		var oInfoToolbar = this.getView().byId("idInfoToolbar");
+
+		// With the 'getSelectedContexts' function you can access the context paths
+		// of all list items that have been selected, regardless of any current
+		// filter on the aggregation binding.
+		var aContexts = oList.getSelectedContexts(true);
+
+		// update UI
+		var bSelected = (aContexts && aContexts.length > 0);
+		var sText = (bSelected) ? aContexts.length + " selected" : null;
+//		oInfoToolbar.setVisible(bSelected);
+		oLabel.setText(sText);		
+		
+	},
+	onUnplannedImport : function(oEvent) {
+
+		var oList = sap.ui.getCore().byId("worklistPopover--myList"); //TODO : change access to list
+		var aContext = oList.getSelectedContexts(true);
+		
+		
+		
+		
+		console.log("toto");
+		
+		
+		
+		
+	},
+	
+	onUnplannedClose : function() {
+		
+		
+	}	
 
 });
