@@ -317,13 +317,13 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 						sOperationDescription = el.sBox;
 					
 						
-						if ( sBox === "shopOrder") {
+						if ( sBox === "WORKORDER_ID") {
 							
 							sOperationDescription = el.shopOrderDescription;
 							
 						}
 						
-						if ( sBox === "operationId") {
+						if ( sBox === "OPERATION_ID") {
 							
 							sOperationDescription = el.operationDescription;
 							
