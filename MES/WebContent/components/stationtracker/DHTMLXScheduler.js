@@ -344,17 +344,14 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 								$("select[class='selectBoxStation']").length = 0;
 								airbus.mes.stationtracker.ShiftManager.BoxSelected = 0;
 								airbus.mes.stationtracker.ShiftManager.ShiftSelected = undefined;
-<<<<<<< Upstream, based on origin/MESv0.9
 								airbus.mes.stationtracker.ShiftManager.ShiftSelectedStart = undefined;
 								airbus.mes.stationtracker.ShiftManager.ShiftSelectedEnd = undefined;
 							}							
-=======
-							}		
+									
 							 /* Replace date in Toolbar */
 							var toolbarDateId = airbus.mes.stationtracker.oView.byId("toolbarDate").sId;
 							$("div[id="+toolbarDateId+"]").contents().remove();
 							$("div[id="+toolbarDateId+"]").append($("div[class='dhx_cal_date']").contents().clone());
->>>>>>> 9666376 Date
 						}));
 						
 				
