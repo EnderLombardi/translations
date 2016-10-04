@@ -5,7 +5,7 @@
 		columns="{ path: '/columns', factory: '.createColumn' }"
 		 enableColumnReordering="true"
 		rowHeight="40" id="oTablePolypoly" enableSelectAll="false"
-		columnMove="onColumnMove">
+		columnMove="onColumnMove" class="backgroundPolypoly">
 		<table:toolbar>
 			<Toolbar design="Transparent">
 				<content>

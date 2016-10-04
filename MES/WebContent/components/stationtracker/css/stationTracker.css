@@ -111,8 +111,8 @@ padding-right: 10px;
 .whiteTextButton .sapMBtnTransparent {
 	color: white !important;
 	text-align: left;
-	font-size: 17px; 
-}
+/* 	font-size: 17px; 
+ */}
 .blackTextButton .sapMBtnTransparent {
 	color: black !important;
 	text-align: left; 
@@ -128,9 +128,9 @@ padding-right: 10px;
 	width: 3rem;
 	font-size: 1rem;
 }
-.blackTextButton2 .sapMBtnText{
+/* .blackTextButton2 .sapMBtnText{
 	font-size: 17px;
-}
+} */
 
 .blackTextButton2 .sapMBtnContent{
 	padding-left: 9px;
@@ -154,6 +154,9 @@ background-color : #CCE6EE;
 }
 .panelContentList .sapMListBGSolid .sapMLIB{
 background-color : #CCE6EE;
+}
+.textBlackPanel .sapMTB-Transparent-CTX .sapMLabel{
+color : black;
 }
 .initial {
 	background-color: #F5F6F8 !important;

@@ -9,7 +9,7 @@ jQuery.sap.declare("airbus.mes.polypoly.Component");
 sap.ui.core.UIComponent.extend("airbus.mes.polypoly.Component", {
 	metadata : {
 		properties : {},
-//		includes : [ "./css/margin.css" ] //array of css and/or javascript files that should be used in the component   
+		includes : [ "./css/polypoly.css" ] //array of css and/or javascript files that should be used in the component   
 
 	},
 	//manifestUrl : "component.json",
@@ -26,9 +26,6 @@ airbus.mes.polypoly.Component.prototype.createContent = function() {
 		airbus.mes.polypoly.ModelManager.init(this);
 		airbus.mes.polypoly.PolypolyManager.init(this);
 		airbus.mes.polypoly.PolypolyManager.getPolypolyModel("F1","1","10","CHES");
-
-	
-
 		var page = sap.ui.view({
 			id : "polypoly",
 			viewName : "airbus.mes.polypoly.polypoly",

@@ -1,0 +1,8 @@
+.backgroundPolypoly .sapUiTableCtrl {
+	background-color : #E4EFF4 !important;
+	
+}
+.noRows.sapUiTableColRowHdr, .sapUiTableColHdr .sapUiTableCol, .sapUiTableColHdr .sapUiTableTr>td{
+	border-right: 0px solid #dddddd;
+	
+}

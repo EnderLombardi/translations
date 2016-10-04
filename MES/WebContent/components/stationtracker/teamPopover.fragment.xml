@@ -13,7 +13,7 @@
 		  	<Button type="Transparent" text="Open team availability" iconFirst="true" icon="sap-icon://navigation-right-arrow" width="100%" class="blackTextButton blackTextButton2" press="onPolypolyOpen" ></Button> 
 			<Button type="Transparent" text="Open poly poly matrix" iconFirst="true" icon="sap-icon://navigation-right-arrow" width="100%" class="blackTextButton blackTextButton2" press="onPolypolyOpen" ></Button> 
 
-			<Panel expandable="true" expanded="false" class="panelContent panelContentList">
+			<Panel expandable="true" expanded="false" class="panelContent panelContentList textBlackPanel">
              <headerToolbar>
                     <Toolbar width="100%">
                     <Label text="List of team members"/>        	
