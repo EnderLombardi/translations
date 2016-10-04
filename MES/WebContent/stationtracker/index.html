@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'/>
+
+		<script src="https://sapui5.netweaver.ondemand.com/resources/sap-ui-core.js"
+				id="sap-ui-bootstrap"
+				data-sap-ui-libs="sap.m"
+				data-sap-ui-theme="sap_bluecrystal">
+		</script>
+		
+<link rel="stylesheet" href="../../lib/dhtmlxscheduler/dhtmlxscheduler.css"	type="text/css" title="no title">
+<script type="text/javascript"	src="../../lib/dhtmlxscheduler/dhtmlxscheduler.js" charset="utf-8"></script>
+<script type="text/javascript"	src='../../lib/dhtmlxscheduler/ext/dhtmlxscheduler_limit.js'	charset="utf-8"></script>
+<script type="text/javascript"	src='../../lib/dhtmlxscheduler/ext/dhtmlxscheduler_timeline.js'	charset="utf-8"></script>
+<script type="text/javascript"	src='../../lib/dhtmlxscheduler/ext/dhtmlxscheduler_treetimeline.js'charset="utf-8"></script>
+<script type="text/javascript"	src='../../lib/dhtmlxscheduler/ext/dhtmlxscheduler_units.js'charset="utf-8"></script>
+<script type="text/javascript"	src='../../lib/dhtmlxscheduler/ext/dhtmlxscheduler_drag_between.js'charset="utf-8"></script>
+<script type="text/javascript"	src='../../lib/dhtmlxscheduler/ext/dhtmlxscheduler_tooltip.js'charset="utf-8"></script>
+<link rel='stylesheet' type='text/css' href='../../lib/dhtmlxscheduler/dhtmlxscheduler_flat.css'>
+
+<link rel="stylesheet" href="/MES/components/stationtracker/css/stationTracker.css" type="text/css"> 
+<link rel="stylesheet" href="./css/font-awesome.min.css">	
+		<!-- only load the mobile lib "sap.m" and the "sap_bluecrystal" theme -->
+ 	<script>
+ 	jQuery.sap.registerModulePath("airbus.mes.stationtracker","/MES/components/stationtracker");
+ 	
+ 	var oComp1 = sap.ui.getCore().createComponent({
+		name : "airbus.mes.stationtracker", // root component folder is resources
+		});
+
+	// Create a Ui container 
+	var oCompCont1 = new sap.ui.core.ComponentContainer({
+		component : oComp1
+	});
+	// place this Ui Container with the Component inside into UI Area 
+/* 	oCompCont1.placeAt("app"); */
+
+var oPage = new sap.m.Page({
+	
+	content : new sap.m.Button({
+		
+		press: function() {
+			
+			app.to(airbus.mes.stationtracker.oView);
+		}
+		
+	})
+	
+})
+	
+	var app = new sap.m.App({
+ 		initialPage : oPage,
+ 	});
+ 	
+ app.addPage(airbus.mes.stationtracker.oView)
+	app.addPage(oPage);
+ 
+	app.placeAt('content');
+	
+		</script>
+
+	</head>
+	<body class="sapUiBody" role="application">
+		<div id="content"></div>
+	</body>
+</html>

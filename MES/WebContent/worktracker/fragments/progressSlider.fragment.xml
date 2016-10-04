@@ -1,0 +1,55 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout">
+	<VBox width="100%" justifyContent="SpaceBetween">
+		<HBox justifyContent="Center" class="sapUiSmallMarginTopBottom">
+			<items>
+				<Title id="operationStatus" text="Not Started" level="H1"
+					titleStyle="H3" />
+			</items>
+		</HBox>
+
+		<l:Grid defaultSpan="L12 M12 S12">
+			<Button id="btnReduce" press="reduceProgress" icon="sap-icon://sys-minus">
+				<layoutData>
+					<l:GridData span="L1 M1 S12" />
+				</layoutData>
+			</Button>
+			<HBox width="100%" class="progressSlider">
+				<layoutData>
+					<l:GridData span="L10 M10 S12" />
+				</layoutData>
+				<Slider class="comfirmedProgressSlider" min="0" max="30" value="30" width="30%" enabled="false"
+					editable="false">
+				</Slider>
+				<Slider id="progressSlider" class="dynProgressSlider" min="30" max="100" value="30" width="70%"
+					enabled="{ parts: [ 'userDetailModel>/Rowsets/Rowset/0/Row/0/first_name'], formatter: 'airbus.mes.worktracker.util.Formatter.slider' }">
+				</Slider>
+
+			</HBox>
+			<Button id="btnAdd" press="addProgress" icon="sap-icon://sys-add">
+				<layoutData>
+					<l:GridData span="L1 M1 S12" />
+				</layoutData>
+			</Button>
+		</l:Grid>
+
+		<Toolbar height="5rem">
+			<ToolbarSpacer />
+			<Button id="btnPause" text="Pause" width="10%" press="pauseOperation"
+				class="sapMBtnDisabled sapUiSmallMarginBegin sapUiSmallMarginEnd" />
+			<Button id="btnConfirm" width="10%" class="btnConfirm sapUiSmallMarginEnd"
+				text="Confirm" press="confirmOperation" />
+			<Button id="btnActivate" width="10%" text="Activate" press="activateOperation"
+				type="Emphasized" />
+			<Button type="Emphasized" width="10%" id="btnComplete" text="Complete"
+				press="completeOperation" class="sapUiSmallMarginEnd" />
+			<ToolbarSpacer />
+		</Toolbar>
+	</VBox>
+
+	<VBox class="sapUiMediumMarginTop">
+		<Title titleStyle="H3" level="H2" text="Activity" />
+		<Text text="- Users  have not activated this operation"
+			textAlign="Right"></Text>
+	</VBox>
+</core:FragmentDefinition>

@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'/>
+
+		<script src="resources/sap-ui-core.js"
+				id="sap-ui-bootstrap"
+				data-sap-ui-libs="sap.m"
+				data-sap-ui-theme="sap_bluecrystal"
+				data-sap-ui-bindingSyntax="complex"
+				data-sap-ui-compatVersion="edge"
+				data-sap-ui-preload="async"
+				data-sap-ui-resourceroots='{
+					"airbus.mes": "./"
+				}' >
+		</script>
+		<!-- only load the mobile lib "sap.m" and the "sap_bluecrystal" theme -->
+		
+		<script>
+			var oMasterPageComp = sap.ui.getCore().createComponent({
+				name : "airbus.mes.masterpage", // root component folder is resources
+			});
+	
+		
+			// Create a Ui container 
+			var oMasterPageCompCont = new sap.ui.core.ComponentContainer({
+				component : oMasterPageComp,
+				propagateModel:true,
+				height:"100%",
+				
+			});
+			// place this Ui Container with the Component inside into UI Area 
+			oMasterPageCompCont.placeAt("content");
+			
+		oMasterPageComp.oView.getContent()[0].addContent(new sap.ui.core.ComponentContainer({
+						id: "appsComponent",
+						name: "airbus.mes",
+						height: "100%",
+						propagateModel:true
+					}));
+		
+
+		</script>
+
+	</head>
+	<body class="sapUiBody" role="application" style="overflow: hidden;">
+		<div id="content"></div>
+	</body>
+</html>

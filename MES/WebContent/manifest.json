@@ -1,0 +1,91 @@
+{
+	"_version": "1.1.0",
+	"sap.app": {
+		"_version": "1.1.0",
+		"id": "airbus.mes",
+		"type": "application",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"ach": "CA-UI5-DOC"
+	},
+	"sap.ui": {
+		"_version": "1.1.0",
+		"technology": "UI5",
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": ["sap_bluecrystal"]
+  	},
+	"sap.ui5": {
+		"_version": "1.1.0",
+		"rootView": "airbus.mes.views.App",
+		"dependencies": {
+			"minUI5Version": "1.30",
+			"libs": {
+				"sap.m": { }
+			}
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "airbus.mes",
+				"controlId": "app",
+				"controlAggregation": "pages",
+				"transition": "slide",
+				"bypassed": {
+					"target": "notFound"
+				}
+			},
+			"routes": [{
+				"pattern": "",
+				"name": "appHome",
+				"target": "home"
+			}, {
+				"pattern": "settings:?query:",
+				"name": "settings",
+				"target": "settings"
+			}, {
+				"pattern": "stationtracker",
+				"name": "stationtracker",
+				"target": "stationtracker"
+			}, {
+				"pattern": "worktracker",
+				"name": "worktracker",
+				"target": "worktracker"
+			}, {
+				"pattern": "worktracker/operation/{path}",
+				"name": "operationDetails",
+				"target": "operationDetails"
+			} ],
+			"targets": {
+				"home": {
+					"viewName": "homepage.homePage",
+					"viewLevel" : 1
+				},"settings": {
+					"viewName": "settings.FilterPlantData",
+					"viewLevel" : 2
+				},
+				"stationtracker": {
+					"viewName": "stationtracker.stationtracker",
+					"viewLevel" : 2
+				},
+				"worktracker": {
+					"viewName": "worktracker.views.home",
+					"viewLevel" : 2
+				},
+				"operationDetails": {
+					"viewName": "worktracker.views.operationDetails",
+					"viewLevel" : 3
+				},
+				"notFound": {
+					"viewName": "NotFound",
+					"transition": "show"
+				}
+			}
+		}
+	}
+}

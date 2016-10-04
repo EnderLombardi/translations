@@ -1,0 +1,21 @@
+{ "Rowsets" : { 
+       "DateCreated" : "2016-07-13T10:26:38", "Version" : "15.1 SP1 Patch 0 (Jan 21, 2016)", "StartDate" : "2016-07-13T09:26:38+0200", "EndDate" : "2016-07-13T10:26:38+0200", "CachedTime" : "", 
+       "Rowset" : [ 
+       { "Columns" : { 
+             "Column" : [ 
+             { "Name" : "shiftName", "SourceColumn" : "shiftName", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+             { "Name" : "shiftID", "SourceColumn" : "shiftID", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 },        
+             { "Name" : "day", "SourceColumn" : "day", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+             { "Name" : "beginDateTime", "SourceColumn" : "beginDateTime", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+             { "Name" : "endDateTime", "SourceColumn" : "endDateTime", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 } ] }, 
+       "Row" : [ 
+             { "shiftName" : "EARLY 1","shiftID" : "EARLY 1", "day" : "2014-06-30", "beginDateTime" : "2014-06-30 07:30:00", "endDateTime" : "2014-06-30 10:30:00" }, 
+             { "shiftName" : "EARLY 1","shiftID" : "EARLY 1", "day" : "2014-06-30", "beginDateTime" : "2014-06-30 11:00:00", "endDateTime" : "2014-06-30 12:00:00" }, 
+             { "shiftName" : "EARLY 1","shiftID" : "EARLY 1", "day" : "2014-06-30", "beginDateTime" : "2014-06-30 13:30:00", "endDateTime" : "2014-06-30 16:30:00" }, 
+             { "shiftName" : "LATE 1","shiftID" : "LATE 1", "day" : "2014-06-30", "beginDateTime" : "2014-06-30 18:29:59", "endDateTime" : "2014-06-30 22:15:00" },
+             { "shiftName" : "EARLY 2","shiftID" : "EARLY 2", "day" : "2014-07-01", "beginDateTime" : "2014-07-01 10:30:00", "endDateTime" : "2014-07-01 16:30:00" }, 
+             { "shiftName" : "LATE 2","shiftID" : "LATE 2", "day" : "2014-07-01", "beginDateTime" : "2014-07-01 18:29:59", "endDateTime" : "2014-07-02 02:00:00" }]
+             } ]
+       }
+}
+

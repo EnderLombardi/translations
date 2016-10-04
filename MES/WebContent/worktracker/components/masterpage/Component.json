@@ -1,0 +1,15 @@
+{
+	"id": "airbus.mes.worktracker.components.components.masterpageComponent",
+    "name": "airbus.mes.worktracker.masterpageComponent",
+    "version": "0.1.0",
+    "description": "App Master Page Component",
+    "keywords": [
+        "view" 
+    ],
+    "dependencies": {
+	    "libs": {
+	        "sap.ui.core.UIComponent": {},
+	        "sap.ui.base.Event":{}
+         }
+     }
+}

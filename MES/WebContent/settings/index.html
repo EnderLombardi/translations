@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'/>
+
+		<script src="../../resources/sap-ui-core.js"
+				id="sap-ui-bootstrap"
+				data-sap-ui-libs="sap.m"
+				data-sap-ui-theme="sap_bluecrystal">
+		</script>
+		<link rel="stylesheet" href="/MES/components/settings/css/SettingScreen.css" type="text/css">
+		<!-- only load the mobile lib "sap.m" and the "sap_bluecrystal" theme -->
+		
+		<script>
+				
+			 jQuery.sap.registerModulePath("airbus.mes.settings","/MES/components/settings");
+				/* jQuery.sap.registerModulePath("airbus.mes.globalnav","/MES/components/globalnav"); */
+				
+				//Create a component
+				var oComp = sap.ui.getCore().createComponent({
+					name : "airbus.mes.settings",	// root component folder is resources
+				});
+
+				//airbus.mes.settings.ModelManager.init(oComp);
+
+				// Create a Ui container 
+				var oCompCont = new sap.ui.core.ComponentContainer({
+					component : oComp
+					/* propagateModel:true */
+				});
+								
+				// place this Ui Container with the Component inside into UI Area 
+				oCompCont.placeAt("content");				
+				
+				
+		</script>
+
+	</head>
+	<body class="sapUiBody" role="application">
+		<div id="content"></div>
+	</body>
+</html>

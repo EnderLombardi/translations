@@ -1,0 +1,80 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:u="sap.ui.unified"
+	xmlns:custom="airbus.mes.worktracker.custom">
+	<!-- <u:SplitContainer id="mySplitContainer" showSecondaryContent="true"> 
+		<u:secondaryContent> </u:secondaryContent> <u:content> -->
+	<!-- <l:Splitter id="activitySplitter"> -->
+	<custom:CustomSideNavigation id="customNav">
+		<custom:content>
+			<FlexBox direction="Column">
+				<HBox alignItems="Start" justifyContent="SpaceBetween">
+					<items>
+						<DatePicker id="operationDatePicker" valueFormat="yyyy-MM-dd"
+							displayFormat="long" change="filterOperationList" class="sapUiSmallMarginBottom" />
+						
+						<HBox alignItems="End" justifyContent="SpaceBetween">
+							<items>
+								<ToggleButton id="buttonList" pressed="true"
+									icon="sap-icon://list" press="showListView" />
+								<ToggleButton id="buttonGrid" icon="sap-icon://grid"
+									press="showGridView" />
+								<ToggleButton id="buttonTime" icon="sap-icon://fob-watch"
+									press="showActivityLog" />
+							</items>
+						</HBox>
+					</items>
+					<Select
+				   			forceSelection="true"
+				   			maxWidth="100%"
+				   			change= "onSelectionStatus"				   			
+							
+							items="{status>/status}"> 
+						<core:Item key="{status>col1}" text="{status>col1}" />
+					</Select>
+				</HBox>
+				<l:Grid id="operationGridLayout" content="{ScheduleModel>/schedule}"
+					defaultSpan="L12 M12 S12" class="sapUiSmallMarginTop gridPosition">
+					<l:content>
+						<CustomListItem type="Active" press="openOperation">
+							<content>
+
+								<VBox
+									class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom floatLeft"
+									width="35%">
+									<Text class="listBoldFont" text="{ScheduleModel>operation}" />
+									<Text text="{ScheduleModel>activity}" />
+								</VBox>
+
+								<VBox
+									class="sapUiSmallMarginBeginEnd sapUiSmallMarginTopBottom floatLeft">
+									<Text class="textWrap" text="{ScheduleModel>description}" />
+									<HBox alignItems="Start" justifyContent="SpaceBetween">
+										<Text text="{ScheduleModel>duration}" />
+										<Text text="{ScheduleModel>label}" />
+									</HBox>
+
+								</VBox>
+								<Text class="topRight listBoldFont" text="{ScheduleModel>fuel}" />
+								<HBox class="operationStatusBox bottomRight">
+									<Text text="{ScheduleModel>status}" />
+									<core:Icon class="ML-05 font90"
+										src="{path:'ScheduleModel>status' , formatter:'airbus.mes.worktracker.util.Formatter.setIcon'}" />
+								</HBox>
+
+
+							</content>
+						</CustomListItem>
+					</l:content>
+				</l:Grid>
+			</FlexBox>
+		</custom:content>
+		<custom:sideContent>
+			<core:Fragment type="XML" fragmentName="airbus.mes.worktracker.fragments.activity" />
+		</custom:sideContent>
+	</custom:CustomSideNavigation>
+	<!-- </l:Splitter> -->
+
+	<!-- </u:content> </u:SplitContainer> -->
+
+
+</core:FragmentDefinition>

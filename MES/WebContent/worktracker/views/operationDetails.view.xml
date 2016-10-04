@@ -1,0 +1,179 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:l="sap.ui.layout" xmlns="sap.m" controllerName="airbus.mes.worktracker.views.operationDetails"
+	xmlns:f="sap.ui.layout.form" xmlns:custom="airbus.mes.worktracker.custom"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page showHeader="false" class="WorkTrackerApp">
+		<subHeader>
+			<Toolbar class="pageHeader">
+				<ToolbarSpacer width="0.2rem" />
+				<Button type="Transparent" icon="sap-icon://navigation-left-arrow"
+					class="whiteColor whiteButton" press="navigateHome"></Button>
+				<Text id="operatorInitials"
+					text="{ parts: [ 'userDetailModel>/Rowsets/Rowset/0/Row/0/first_name', 'userDetailModel>/Rowsets/Rowset/0/Row/0/last_name', 'userDetailModel>/Rowsets/Rowset/0/Row/0/image'], formatter: 'airbus.mes.worktracker.util.Formatter.setUserInitials' }"
+					class="circleText operatorInitials" visible="false"></Text>
+				<Image id="operatorImage" class="img-circle" visible="false"
+					src="{ parts: ['userDetailModel>/Rowsets/Rowset/0/Row/0/image'], formatter: 'airbus.mes.worktracker.util.Formatter.setUserImage' }"
+					densityAware="false" height="75%"></Image>
+
+				<ToolbarSpacer width="0.7rem" />
+
+				<Text
+					text="{ parts: [ 'userDetailModel>/Rowsets/Rowset/0/Row/0/first_name', 'userDetailModel>/Rowsets/Rowset/0/Row/0/last_name'], formatter: 'airbus.mes.worktracker.util.Formatter.getFullName' }"
+					class="text2" />
+
+				<ToolbarSpacer />
+
+				<Text text="Station 10" class="subText2" />
+
+				<ToolbarSpacer />
+
+				<Text text="20 September 2016" id="date" class="subText2" />
+				<Button id="helpButton" type="Transparent" icon="sap-icon://calendar"
+					class="whiteColor whiteButton" press="openCalender"></Button>
+
+				<ToolbarSpacer width="20px" />
+
+				<core:Icon src="sap-icon://email" size="1.5rem"
+					class="pointer" press="toggleMessagesPopOver" />
+				<custom:ClickText id="messageCount" text="28" class="countText pointer" press="toggleMessagesPopOver" />
+				<ToolbarSpacer width="0.5rem" />
+
+			</Toolbar>
+		</subHeader>
+
+
+		<content>
+
+			<Panel expandable="true" expanded="false" width="auto"
+				id="operationDetailPanel" class="pageSubHeader sapUiResponsiveMargin">
+				<headerToolbar>
+					<Toolbar height="3.5rem" class="ML-05">
+						<VBox width="100%">
+							<Text id="operationName" class="mainText" text="{operationDetailModel>/schedule/0/description}"></Text>
+
+							<HBox justifyContent="SpaceBetween" width="100%">
+								<HBox justifyContent="SpaceBetween">
+									<Text text="{i18n>workOrder}" class="subText MR-1"></Text>
+									<Text id="workOrder" text="1354365434" class="subText"></Text>
+								</HBox>
+								<HBox justifyContent="SpaceBetween">
+									<Text id="timeRange" text="11:00 - 11:25" class="subText MR-1"></Text>
+									<Text id="taskId" text="V90Q3E31" class="subText MR-1"></Text>
+									<Button id="opDetailExpandButton" type="Transparent"
+										icon="sap-icon://navigation-down-arrow" press="expandOperationDetailPanel"
+										class="expandButton"></Button>
+								</HBox>
+							</HBox>
+						</VBox>
+					</Toolbar>
+				</headerToolbar>
+				<content>
+					<f:SimpleForm id="operationDetailForm" class="operationDetailForm"
+						labelSpanL="1" labelSpanM="2" adjustLabelSpan="false" emptySpanL="0"
+						emptySpanM="0" columnsL="4" columnsM="4">
+						<f:content>
+							<VBox>
+								<Label text="Start:" />
+								<Text text="11:00" />
+								<Label type="space"></Label>
+								<Label text="Time spent" />
+								<Text text="0min" />
+								<Label type="space"></Label>
+								<Label text="System status: " />
+								<Text text="DSEX DSPT REL" />
+								<Label type="space"></Label>
+							</VBox>
+							<VBox>
+								<Label text="End:" />
+								<Text text="11.25" />
+								<Label type="space"></Label>
+								<Label text="Original plan:" />
+								<Text text="11:00 - 11:25" />
+								<Label type="space"></Label>
+								<Label text="User status:" />
+								<Text text="   -   " />
+							</VBox>
+							<VBox>
+								<Label text="Work Center:" />
+								<Text text="V90Q3E31" />
+								<Label type="space"></Label>
+								<Label text="ACPnG" />
+								<Text text="28/08/2016" />
+								<Label type="space"></Label>
+								<Label text="Bundle" />
+								<Text text="   -   " />
+							</VBox>
+							<VBox>
+								<Label text="Activity:" />
+								<Text text="MEC" />
+								<Label type="space"></Label>
+								<Label text="N. employees" />
+								<Text text="1" />
+								<Label type="space"></Label>
+								<Label text="Work package" />
+								<Text text="   -   " />
+							</VBox>
+						</f:content>
+					</f:SimpleForm>
+					<Button id="opDetailCloseButton" type="Transparent"
+						iconFirst="false" text="Show less info" icon="sap-icon://navigation-up-arrow"
+						press="expandOperationDetailPanel" class="closeButton"></Button>
+				</content>
+			</Panel>
+
+
+			<IconTabBar id="operationNav" expandable="false"
+				class="operationNavBar sapUiResponsiveContentPadding">
+				<items>
+					<IconTabFilter icon="sap-icon://kpi-corporate-performance"
+						text="Progress"><!-- time-account -->
+						<core:Fragment type="XML"
+							fragmentName="airbus.mes.worktracker.fragments.progressSlider" />
+					</IconTabFilter>
+
+					<IconTabFilter icon="sap-icon://task" count="389"
+						text="Checklist">
+						<content>
+							 <core:Fragment type="XML" fragmentName="airbus.mes.worktracker.fragments.Tasklist" />
+						</content>
+					</IconTabFilter>
+
+					<IconTabFilter icon="sap-icon://alert" text="Disruption">
+						<content>
+							<core:Fragment type="XML"
+								fragmentName="airbus.mes.worktracker.fragments.disruptionDisplay" />
+
+							<core:Fragment type="XML"
+								fragmentName="airbus.mes.worktracker.fragments.createDisruption" />
+						</content>
+					</IconTabFilter>
+
+<!-- 					<IconTabFilter icon="sap-icon://folder-blank" text="Documents"> -->
+<!-- 						<Text text="{i18n>documentTitle}" class="title"></Text> -->
+<!-- 						<VBox items="{documentsNameModel>/documents}" width="100%"> -->
+<!-- 							<items> -->
+<!-- 								<Button type="Transparent" text="{documentsNameModel>name}" -->
+<!-- 									icon="sap-icon://slim-arrow-right" iconFirst="true" press="onPress" /> -->
+<!-- 							</items> -->
+<!-- 						</VBox> -->
+
+<!-- 					</IconTabFilter> -->
+
+<!-- 					<IconTabFilter icon="sap-icon://wrench" text="Tools"> -->
+<!-- 						<content> -->
+<!-- 							<core:Fragment type="XML" -->
+<!-- 								fragmentName="airbus.mes.worktracker.fragments.toolsFragment" /> -->
+<!-- 						</content> -->
+<!-- 					</IconTabFilter> -->
+
+<!-- 					<IconTabFilter icon="sap-icon://folder-blank" text="Components"> -->
+<!-- 						<content> -->
+<!-- 							<core:Fragment type="XML" -->
+<!-- 								fragmentName="airbus.mes.worktracker.fragments.componentFragment" /> -->
+<!-- 						</content> -->
+<!-- 					</IconTabFilter> -->
+				</items>
+			</IconTabBar>
+		</content>
+	</Page>
+</core:View>
