@@ -9,450 +9,20 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 					 * @memberOf polypoly.main
 					 */
 					onInit : function() {
-						//Model initialisation
-						sap.ui.getCore().setModel(new sap.ui.model.json.JSONModel(),"mii");	
-//						this 
-						sap.ui.getCore().getModel("mii").loadData("./model/model.json",null,false);
+	
+					},
+					onAfterRendering : function() {
+//						var oData = sap.ui.getCore().getModel("mii").getData().Rowsets;
+//						if (oData.Rowset && oData.Rowset.length > 0 && oData.Rowset[0].Row) {
+//							var oMiiData = sap.ui.getCore().getModel("mii").getData();
+//							var oTableData = airbus.mes.polypoly.PolypolyManager.createTableData(oMiiData);
+//							var mTableModel = new sap.ui.model.json.JSONModel(oTableData);
+//							airbus.mes.polypoly.PolypolyManager.internalContext.oModel = mTableModel;
+//							sap.ui.getCore().byId("polypoly").setModel(mTableModel);
+//						} 
+//							var mTableModel = new sap.ui.model.json.JSONModel();
+//							sap.ui.getCore().byId("polypoly").setModel(mTableModel);
 						
-
-				
-						
-						//
-						var oData = sap.ui.getCore().getModel("mii").getData().Rowsets;
-						if (oData.Rowset && oData.Rowset.length > 0 && oData.Rowset[0].Row) {
-							var oMiiData = sap.ui.getCore().getModel("mii").getData();
-							var oTableData = airbus.mes.polypoly.PolypolyManager.createTableData(oMiiData);
-							var mTableModel = new sap.ui.model.json.JSONModel(oTableData);
-							airbus.mes.polypoly.PolypolyManager.internalContext.oModel = mTableModel;
-							sap.ui.getCore().byId("polypoly").setModel(mTableModel);
-						} else {
-							var mTableModel = new sap.ui.model.json.JSONModel();
-							sap.ui.getCore().byId("polypoly").setModel(mTableModel);
-						}
-						/*
-						 * if (sap.ui.getCore().byId("polypolyView").byId("oTablePolypoly")
-						 * .getBinding("rows"))
-						 */
-//						sap.ui.getCore().byId("polypolyView--polypolySearchField").fireSearch();
-						//
-						needLevelsmodel = new sap.ui.model.json.JSONModel(
-						"./model/needlevels.json");
-						sap.ui.getCore()
-						.setModel(needLevelsmodel, "needlevels");
-						columnModel = new sap.ui.model.json.JSONModel();
-						columnModel = new sap.ui.model.json.JSONModel();
-
-						
-//						listQAmodel = new sap.ui.model.json.JSONModel(
-//								airbus.mes.polypoly.PolypolyManager.urlModel
-//										.getProperty("urlgetqalist"));
-//						sap.ui.getCore().setModel(listQAmodel, "listQA");			
-						//	
-						var oPolypoly = this.getView();
-						var oTable = sap.ui.getCore().byId("polypoly--oTablePolypoly");
-
-//						oTable.setModel(sap.ui.getCore().getModel("mii"))
-//						oTable.bindColumns("/columns", function(sId, oContext) {
-//							var that = this;
-//							switch (oContext.getProperty("type")) {
-//							case "rp_id":
-//								var oColumn = new sap.ui.table.Column({
-//									id : "rp_id",
-//									visible : false,
-//									filterProperty : oContext
-//											.getProperty("techname"),
-//									showFilterMenuEntry : false,
-//									width : "2rem",
-//									template : new sap.m.Text({
-//										text : {
-//											parts : [ oContext
-//													.getProperty("techname") ],
-//											formatter : function(text) {
-//												return text;
-//											}
-//										},
-//									})
-//								})
-//								break;
-//							case "type":
-//								var oColumn = new sap.ui.table.Column({
-//									id : "typeRow",
-//									visible : false,
-//									filterProperty : oContext
-//											.getProperty("techname"),
-//									showFilterMenuEntry : false,
-//									width : "2rem",
-//									template : new sap.m.Text({
-//										text : {
-//											parts : [ oContext
-//													.getProperty("techname") ],
-//											formatter : function(text) {
-//												return text;
-//											}
-//										},
-//									})
-//								})
-//								break;
-//							case "ressourcepool":
-//								var oColumn = new sap.ui.table.Column({
-//									id : oContext.getProperty("type"),
-//									filterProperty : oContext
-//											.getProperty("techname"),
-//									showFilterMenuEntry : false,
-//									width : "8rem",
-//									template : new sap.m.Text({
-//										visible : {
-//											parts : [ "type" ],
-//											formatter : function(type) {
-//												if (type == "NEED") {
-//													return false;
-//												} else {
-//													return true;
-//												}
-//											}
-//										},
-//										text : {
-//											parts : [ oContext
-//													.getProperty("techname") ],
-//											formatter : function(text) {
-//												return text;
-//											}
-//										},
-//									})
-//								})
-//								break;
-//							case "category":
-//								var oColumn = new sap.ui.table.Column({
-//									id : oContext.getProperty("type"),
-//									filterProperty : oContext
-//											.getProperty("techname"),
-//									showFilterMenuEntry : false,
-//									width : "8rem",
-//									template : new sap.m.Text({
-//										text : {
-//											parts : [ oContext
-//													.getProperty("techname") ],
-//											formatter : function(text) {
-//												return text;
-//											}
-//										},
-//									})
-//								})
-//								break;
-////							case "selected":
-////								var oColumn = new sap.ui.table.Column(
-////										{
-////											id : oContext.getProperty("type"),
-////											filterProperty : oContext
-////													.getProperty("techname"),
-////											showFilterMenuEntry : false,
-////											width : "3rem",
-////											// visible: false,
-////											visible : airbus.mes.polypoly.PolypolyManager.globalContext.tabSelected !== "polypoly",
-////											template : new sap.m.CheckBox(
-////													{
-////														selected : "{selected}",
-////														select : sap.ui
-////																.getCore()
-////																.byId(
-////																		"polypolyView")
-////																.getController().onUserAllocate
-////													})
-////										})
-////								break;
-//							case "icon":
-//								var oColumn = new sap.ui.table.Column(
-//										{
-//											hAlign : "Center",
-//											width : "3rem",
-//											template : new sap.m.VBox(
-//													{
-//														items : [
-//																new sap.ui.core.Icon(
-//																		{
-//																			size : "1.7rem",
-//																			tooltip : "{icon}",
-//																			src : {
-//																				parts : [ "icon" ],
-//																				formatter : function(
-//																						status) {
-//																					switch (status) {
-//																					case "Clocked_In":
-//																						return "sap-icon://employee-approvals";
-//																						break;
-//																					case "No_Clocked_In":
-//																						return "sap-icon://employee-rejections";
-//																						break;
-//																					case "Not_Available":
-//																						return "sap-icon://employee";
-//																						break;
-//																					case "Planned_Absence":
-//																						return "sap-icon://employee-pane";
-//																						break;
-//																					case "No_Clock_Data":
-//																						return "sap-icon://employee-lookup";
-//																						break;
-//																					}
-//
-//																				}
-//																			},
-//																			color : {
-//																				parts : [ "icon" ],
-//																				formatter : function(
-//																						status) {
-//																					switch (status) {
-//																					case "Clocked_In":
-//																						return "Green";
-//																						break;
-//																					case "No_Clocked_In":
-//																						return "Red";
-//																						break;
-//																					case "Not_Available":
-//																						return "Grey";
-//																						break;
-//																					case "Planned_Absence":
-//																						return "DarkGrey";
-//																						break;
-//																					case "No_Clock_Data":
-//																						return "Black";
-//																						break;
-//																					}
-//																				}
-//																			},
-//																			visible : {
-//																				parts : [ "type" ],
-//																				formatter : function(
-//																						type) {
-//																					return type == "UA_A"
-//																							|| type == "UA_P"
-//																				}
-//																			}
-//																		}),
-//																new sap.m.Image(
-//																		{
-//																			src : {
-//																				parts : [ "icon" ],
-//																				formatter : function(
-//																						level) {
-//																					var sURI = "";
-//																					if (level == "0"
-//																							|| level == "1"
-//																							|| level == "2"
-//																							|| level == "3"
-//																							|| level == "4") {
-//																						sURI = "images/"
-//																								+ level
-//																								+ ".PNG";
-//																					}
-//																					return sURI
-//																				},
-//																			},
-//																			height : "1.5rem",
-//																			visible : {
-//																				parts : [ "type" ],
-//																				formatter : function(
-//																						type) {
-//																					return type != "UA_A"
-//																							&& type != "UA_P"
-//																				}
-//																			}
-//																		}) ]
-//													})
-//										});
-//								break;
-//							case "column":
-//								// Only display Edit and remove buttons if Polypoly
-//								// editable
-////								if (formatter.isPolypolyEditable()) {
-////									var aMultiLabels = [ new sap.m.HBox({
-////										justifyContent : "SpaceAround",
-////										items : [ new sap.ui.core.Icon({
-////											src : "sap-icon://edit",
-////											size : "1rem",
-////											hoverColor : "DeepSkyBlue",
-////											tooltip : "Edit",
-////											press : function(oEvt) {
-////												that.openColumnPopup(oEvt)
-////											}
-////										}), new sap.ui.core.Icon({
-////											src : "sap-icon://less",
-////											size : "1rem",
-////											hoverColor : "Red",
-////											tooltip : "Remove",
-////											press : function(oEvt) {
-////												that.openConfirmDelete(oEvt)
-////											}
-////										}), ]
-////									}) ]
-////								} else {
-//									var aMultiLabels = []
-////								}
-//								aMultiLabels.push(new sap.m.Label({
-//									text : oContext.getProperty("techname"),
-//									design : "Bold",
-//									tooltip : oContext.getProperty("techname"),
-//								}));
-//								aMultiLabels.push(new sap.m.Label({
-//									text : oContext.getProperty("name"),
-//									design : "Bold",
-//									tooltip : oContext.getProperty("name"),
-//								}));
-//								// Only display QA in Tab Polypoly
-//								if (airbus.mes.polypoly.PolypolyManager.globalContext.tabSelected == "polypoly") {
-//									oContext.getProperty("qa").forEach(
-//											function(el) {
-//												var oQALabel = new sap.m.Label({
-//													text : el.label
-//												});
-//												aMultiLabels.push(oQALabel);
-//											});
-//								}
-//
-//								var oColumn = new sap.ui.table.Column(
-//										{
-//											id : sId,
-//											hAlign : "Center",
-//											width : "7rem",
-//											multiLabels : [ aMultiLabels ],
-//											template : new sap.m.VBox(
-//													{
-//														items : [
-//																new sap.m.Select(
-//																		{
-//																			change : function(
-//																					oEvt) {
-//																				that
-//																						.onSelectLevelChange(oEvt);
-//																			},
-//																			items : {
-//																				path : "needlevels>/levels",
-//																				templateShareable : true,
-//																				template : new sap.ui.core.Item(
-//																						{
-//																							key : "{needlevels>key}",
-//																							text : "{needlevels>text}",
-//																						}),
-//																			},
-//																			selectedKey : {
-//																				parts : [ oContext
-//																						.getProperty("techname") ],
-//																				formatter : function(
-//																						text) {
-//																					return text;
-//																				}
-//																			},
-//																			textAlign : "Center",
-//																			visible : {
-//																				parts : [ "type" ],
-//																				formatter : function(
-//																						type) {
-//																					return type == "NEED"
-//																				},
-//
-//																			},
-//																			enabled : {
-//																				parts : [ "type" ],
-//																				formatter : function(
-//																						type) {
-//																					return formatter
-//																							.isPolypolyEditable();
-//																				},
-//																			},
-//																		}),
-//																new sap.m.Text(
-//																		{
-//																			text : {
-//																				parts : [ oContext
-//																						.getProperty("techname") ],
-//																				formatter : function(
-//																						text) {
-//																					return text;
-//																				}
-//																			},
-//																			visible : {
-//																				parts : [ "type" ],
-//																				formatter : function(
-//																						type) {
-//																					return type == "ASIS"
-//																				}
-//																			}
-//																		}),
-//																new sap.m.Button(
-//																		{
-//																			icon : {
-//																				parts : [ oContext
-//																						.getProperty("techname") ],
-//																				formatter : function(
-//																						level) {
-//																					var sURI = "";
-//																					if (level == "0"
-//																							|| level == "1"
-//																							|| level == "2"
-//																							|| level == "3"
-//																							|| level == "4") {
-//																						sURI = "images/"
-//																								+ level
-//																								+ ".PNG";
-//																					}
-//																					return sURI
-//																				}
-//																			},
-//																			visible : {
-//																				parts : [ "type" ],
-//																				formatter : function(
-//																						type) {
-//																					return type == "UA_A"
-//																							|| type == "UA_P"
-//																				}
-//																			},
-//																			press : function(
-//																					oEvt) {
-//																				that
-//																						.onImgClick(oEvt)
-//																			},
-//																		}),
-//																new sap.m.Button(
-//																		{
-//																			text : {
-//																				parts : [ oContext
-//																						.getProperty("techname") ],
-//																				formatter : function(
-//																						text) {
-//																					return text;
-//																				}
-//																			},
-//																			type : {
-//																				parts : [ oContext
-//																						.getProperty("techname") ],
-//																				formatter : function(
-//																						value) {
-//																					if (value < 0) {
-//																						return "Reject";
-//																					} else {
-//																						return "Accept";
-//																					}
-//																					;
-//																				}
-//																			},
-//																			enabled : false,
-//																			visible : {
-//																				parts : [ "type" ],
-//																				formatter : function(
-//																						type) {
-//																					return type == "GAP"
-//																				}
-//																			},
-//																		}), ]
-//													})
-//										});
-//								break;
-//							}
-//							;
-//							return oColumn
-//							
-//						});
-//						oTable.bindRows("/rows");
-						//	
 					},
 
 					createColumn : function(sId, oContext) {
@@ -542,27 +112,26 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 								})
 							})
 							break;
-//						case "selected":
-//							var oColumn = new sap.ui.table.Column(
-//									{
-//										id : oContext.getProperty("type"),
-//										filterProperty : oContext
-//												.getProperty("techname"),
-//										showFilterMenuEntry : false,
-//										width : "3rem",
-//										// visible: false,
-//										visible : airbus.mes.polypoly.PolypolyManager.globalContext.tabSelected !== "polypoly",
+						case "selected":
+							var oColumn = new sap.ui.table.Column(
+									{
+										id : oContext.getProperty("type"),
+										filterProperty : oContext
+												.getProperty("techname"),
+										showFilterMenuEntry : false,
+										width : "3rem",
+										// visible: false,
 //										template : new sap.m.CheckBox(
 //												{
 //													selected : "{selected}",
 //													select : sap.ui
 //															.getCore()
 //															.byId(
-//																	"polypolyView")
+//																	"polypoly")
 //															.getController().onUserAllocate
 //												})
-//									})
-//							break;
+									})
+							break;
 						case "icon":
 							var oColumn = new sap.ui.table.Column(
 									{
@@ -666,30 +235,31 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 						case "column":
 							// Only display Edit and remove buttons if Polypoly
 							// editable
-							if (formatter.isPolypolyEditable()) {
-								var aMultiLabels = [ new sap.m.HBox({
-									justifyContent : "SpaceAround",
-									items : [ new sap.ui.core.Icon({
-										src : "sap-icon://edit",
-										size : "1rem",
-										hoverColor : "DeepSkyBlue",
-										tooltip : "Edit",
-										press : function(oEvt) {
-											that.openColumnPopup(oEvt)
-										}
-									}), new sap.ui.core.Icon({
-										src : "sap-icon://less",
-										size : "1rem",
-										hoverColor : "Red",
-										tooltip : "Remove",
-										press : function(oEvt) {
-											that.openConfirmDelete(oEvt)
-										}
-									}), ]
-								}) ]
-							} else {
+//							if (formatter.isPolypolyEditable()) {
+//								var aMultiLabels = [ new sap.m.HBox({
+//									justifyContent : "SpaceAround",
+//									items : [ new sap.ui.core.Icon({
+//										src : "sap-icon://edit",
+//										size : "1rem",
+//										hoverColor : "DeepSkyBlue",
+//										tooltip : "Edit",
+//										press : function(oEvt) {
+//											that.openColumnPopup(oEvt)
+//										}
+//									}), new sap.ui.core.Icon({
+//										src : "sap-icon://less",
+//										size : "1rem",
+//										hoverColor : "Red",
+//										tooltip : "Remove",
+//										press : function(oEvt) {
+//											that.openConfirmDelete(oEvt)
+//										}
+//									}), ]
+//								}) ]
+//							} 
+//							else {
 								var aMultiLabels = []
-							}
+//							}
 							aMultiLabels.push(new sap.m.Label({
 								text : oContext.getProperty("techname"),
 								design : "Bold",
@@ -753,14 +323,14 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 																			},
 
 																		},
-																		enabled : {
-																			parts : [ "type" ],
-																			formatter : function(
-																					type) {
-																				return formatter
-																						.isPolypolyEditable();
-																			},
-																		},
+//																		enabled : {
+//																			parts : [ "type" ],
+//																			formatter : function(
+//																					type) {
+//																				return formatter
+//																						.isPolypolyEditable();
+//																			},
+//																		},
 																	}),
 															new sap.m.Text(
 																	{

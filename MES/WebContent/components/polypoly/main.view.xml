@@ -1,9 +1,0 @@
-<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
-	xmlns:table="sap.ui.table" xmlns:m="sap.m" controllerName="airbus.mes.polypoly.main"
-	xmlns:html="http://www.w3.org/1999/xhtml" xmlns="airbus.mes.polypoly">
-	<table:Table rows="{ path: '/rows' }"
-		columns="{ path: '/columns', factory: '.createColumn' }"
-		fixedColumnCount="3" fixedRowCount="2" enableColumnReordering="true"
-		rowHeight="60" id="oTable"> <!--    -->
-	</table:Table>
-</core:View>

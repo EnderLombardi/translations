@@ -10,7 +10,7 @@
 		<List>
 		<CustomListItem>
 		  	<Button type="Transparent" text="Open team availability" iconFirst="false" icon="sap-icon://feeder-arrow" width="100%" class="blackTextButton blackTextButton2"></Button> 
-			<Button type="Transparent" text="Open poly poly matrix" iconFirst="false" icon="sap-icon://feeder-arrow" width="100%" class="blackTextButton blackTextButton2"></Button> 
+			<Button type="Transparent" text="Open poly poly matrix" iconFirst="false" icon="sap-icon://feeder-arrow" width="100%" class="blackTextButton blackTextButton2" press="onPolypolyOpen"></Button> 
 			<Panel expandable="true" expanded="false" class="panelContent panelContentList">
              <headerToolbar>
                     <Toolbar width="100%">

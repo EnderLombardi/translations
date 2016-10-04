@@ -129,7 +129,51 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 
 		}
 	},
+	onPolypolyOpen: function(oEvent) {
+		jQuery.sap.registerModulePath("airbus.mes.polypoly","/MES/components/polypoly");
 
+			//Open fragment
+		var bindingContext = oEvent.getSource().getBindingContext();
+		
+		// open team popover fragment		 
+		if (!this._oPopoverPolypoly) {
+			this._oPopoverPolypoly = sap.ui.xmlfragment("airbus.mes.stationtracker.polypolyFragment", this);
+			this.getView().addDependent(this._oPopoverPolypoly);
+		}
+		
+		
+		if (!this.oComp) { 
+        var oComp = sap.ui.getCore().createComponent({
+            name : "airbus.mes.polypoly", // root component folder is resources
+            id : "Comp10",
+     });
+
+     // Create a Ui container
+     var oCompCont = new sap.ui.core.ComponentContainer("CompCont10", {
+            component : oComp
+     });
+     // place this Ui Container with the Component inside into UI Area
+     this._oPopoverPolypoly.addContent(oCompCont);
+     
+//   oCompCont.placeAt("contentPopover");
+     this.oComp = oComp;
+     this.oCompCont = oCompCont;
+} else {
+     this.oComp.destroy();
+     this.oCompCont.destroy();
+     this.oComp = undefined;
+     this.oCompCont = undefined;
+};
+
+
+this._oPopoverPolypoly.open();
+
+		
+	},
+	handleCloseButtonPolypoly: function(oEvent) {
+		this._oPopoverPolypoly.close();
+		
+	},
 	changeGroup : function() {
 
 		var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;

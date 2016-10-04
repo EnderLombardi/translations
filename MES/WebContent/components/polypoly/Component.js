@@ -1,5 +1,7 @@
 jQuery.sap.require("sap.ui.core.UIComponent");
+jQuery.sap.require("sap.ui.model.resource.ResourceModel");
 jQuery.sap.require("sap.ui.base.Event");
+jQuery.sap.require("airbus.mes.polypoly.ModelManager");
 jQuery.sap.require("airbus.mes.polypoly.PolypolyManager");
 
 jQuery.sap.declare("airbus.mes.polypoly.Component");
@@ -21,23 +23,36 @@ airbus.mes.polypoly.Component.prototype.createContent = function() {
 
 	if (airbus.mes.polypoly.oView === undefined) {
 		//	View on XML
-		
-//		this.oView = sap.ui.view({
-//			id : "idmain1",
-//			viewName : "airbus.mes.polypoly.App",
-//			type : "XML",
-//			height : "100%"
-//		});
-		
+		airbus.mes.polypoly.ModelManager.init(this);
+		airbus.mes.polypoly.PolypolyManager.init(this);
+		airbus.mes.polypoly.PolypolyManager.getPolypolyModel("F1","1","10","CHES");
+
+	
+
 		var page = sap.ui.view({
-			id : "idmain1",
-			viewName : "airbus.mes.polypoly.App",
+			id : "polypoly",
+			viewName : "airbus.mes.polypoly.polypoly",
 			type : sap.ui.core.mvc.ViewType.XML
 		});
-		
-		airbus.mes.polypoly.oView = page;
+		airbus.mes.polypoly.PolypolyManager.onModelLoaded();
 
+		airbus.mes.polypoly.oView = page;
 		
+		//Bind model
+		var oData = sap.ui.getCore().getModel("mii").getData().Rowsets;
+		if (oData.Rowset && oData.Rowset.length > 0 && oData.Rowset[0].Row) {
+			var oMiiData = sap.ui.getCore().getModel("mii").getData();
+			var oTableData = airbus.mes.polypoly.PolypolyManager.createTableData(oMiiData);
+			var mTableModel = new sap.ui.model.json.JSONModel(oTableData);
+			sap.ui.getCore().setModel(mTableModel, "mTableModel");
+			airbus.mes.polypoly.PolypolyManager.internalContext.oModel = mTableModel;
+		} 
+		else {
+			var mTableModel = new sap.ui.model.json.JSONModel();
+
+			}
+		
+		sap.ui.getCore().byId("polypoly").setModel(sap.ui.getCore().getModel("mTableModel"));
 //		var i18nModel = new sap.ui.model.resource.ResourceModel({
 //	        bundleUrl : "../components/homepage/i18n/i18n.properties",
 ////	        bundleLocale : "en" automatic defined by parameter sap-language
