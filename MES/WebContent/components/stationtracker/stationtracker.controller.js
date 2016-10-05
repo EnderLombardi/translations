@@ -45,14 +45,15 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 
 		scheduler.matrix['timeline'].x_unit = 'minute';
 		scheduler.matrix['timeline'].x_step = 30;
-		scheduler.matrix['timeline'].x_size = 18;
-		scheduler.matrix['timeline'].x_length = 18;
-		scheduler.matrix['timeline'].x_start = 0,
+		//scheduler.matrix['timeline'].x_size = 18;
+		//scheduler.matrix['timeline'].x_length = 18;
+		//scheduler.matrix['timeline'].x_start = 0,
 		scheduler.matrix['timeline'].x_date = '%H:%i';
 		scheduler.templates.timeline_scale_date = function(date) {
 			var func = scheduler.date.date_to_str(scheduler.matrix['timeline'].x_date);
 			return func(date);
 		};
+		scheduler.config.preserve_length = true;
 		scheduler.updateView(airbus.mes.stationtracker.ShiftManager.currentShiftStart);
 		/* Delete Selection box when shift */
 		for (var i = 0; i < $("select[class='selectBoxStation']").length; i++) {
@@ -74,15 +75,16 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		
 		scheduler.matrix['timeline'].x_unit = 'minute';
 		scheduler.matrix['timeline'].x_step = 60;
-		scheduler.matrix['timeline'].x_start = 0;
-		scheduler.matrix['timeline'].x_size = 18;
-		scheduler.matrix['timeline'].x_length = 18;
+		//scheduler.matrix['timeline'].x_start = 0;
+		//scheduler.matrix['timeline'].x_size = 18;
+		//scheduler.matrix['timeline'].x_length = 18;
 		scheduler.matrix['timeline'].x_date = '%H:%i';
 		
 		scheduler.templates.timeline_scale_date = function(date) {
 			var func = scheduler.date.date_to_str(scheduler.matrix['timeline'].x_date);
 			return func(date);
 		};
+		scheduler.config.preserve_length = true;
 		scheduler.updateView(airbus.mes.stationtracker.ShiftManager.currentShiftStart);
 	},
 

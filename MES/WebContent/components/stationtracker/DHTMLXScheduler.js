@@ -50,7 +50,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 								x_step : 30,
 								x_size : 18,
 								x_start : 0,
-								x_length : 18,
+								//x_length : 18,
 								y_unit:	[],
 								y_property:	"section_id",
 								render:"tree",
@@ -64,46 +64,54 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 						var ShiftManager = airbus.mes.stationtracker.ShiftManager;
 						
 						///////////////////////////////////////////////////////
-						function SchedStartChange(ev, mode, e) {
-							// any custom logic here
-							console.log(new Date(this.getEvent(ev).end_date.getTime()	+ (-scheduler.matrix.timeline.x_step * 60000)));
-							if (new Date(this.getEvent(ev).start_date.getTime()	+ (-scheduler.matrix.timeline.x_step * 60000)) < scheduler._min_date)
-
-							{
-								ShiftManager.timelineSwip("left");
-							} else if (new Date(this.getEvent(ev).end_date.getTime()+ (scheduler.matrix.timeline.x_step * 60000)) > scheduler._max_date) {
-								ShiftManager.timelineSwip("right");
-							}
+						scheduler.eventId.push ( scheduler.attachEvent("onEventDrag", function SchedStartChange(ev, mode, e) {
+//							// any custom logic here
+//						//	console.log(new Date(this.getEvent(ev).end_date.getTime()));
+//							if (new Date(this.getEvent(ev).start_date.getTime()	+ (-scheduler.matrix.timeline.x_step * 60000)) < scheduler._min_date)
+//
+//							{
+//								console.log("left");
+//						//		ShiftManager.timelineSwip("left");
+//							} else if (new Date(this.getEvent(ev).end_date.getTime()+ (scheduler.matrix.timeline.x_step * 60000)) > scheduler._max_date) {
+//								console.log("right");
+//								ShiftManager.timelineSwip("right");
+//							}
 						
-						}
-						//					if (!scheduler.checkEvent("onEventDrag")) {
-						scheduler.eventId.push (scheduler.attachEvent("onEventDrag", SchedStartChange));
+							if ( this.getEvent(ev).start_date.getTime() >= scheduler._max_date  )
+								{
+								console.log("yes");
+								
+								}
+							
+							
+						}));
+					
 												
 						//				if (!scheduler.checkEvent("onBeforeEventChanged")) {
-						scheduler.eventId.push(scheduler.attachEvent("onBeforeEventChanged",
-								
-								function blockSectionChange(ev, e, is_new, original) {
-
-									ShiftManager.step = 1;
-
-									if (is_new) {
-										return false;
-									}
-									// to save the old start date to send to
-									// service.
-									//ModelManager.sOldStartDate = original.start_date.toISOString().slice(0, 16);
-									// any custom logic here
-									if (original.section_id === ev.section_id && !ShiftManager.isDateIgnored(ev.start_date)
-											&& !ShiftManager.isDateIgnored(ev.end_date)) {
-										return true;
-									} else {
-
-										delete ev._move_delta
-
-										return false;
-									}
-									// false cancels the operation
-								}));
+//						scheduler.eventId.push(scheduler.attachEvent("onBeforeEventChanged",
+//								
+//								function blockSectionChange(ev, e, is_new, original) {
+//
+//									ShiftManager.step = 1;
+//
+//									if (is_new) {
+//										return false;
+//									}
+//									// to save the old start date to send to
+//									// service.
+//									//ModelManager.sOldStartDate = original.start_date.toISOString().slice(0, 16);
+//									// any custom logic here
+//									if (original.section_id === ev.section_id && !ShiftManager.isDateIgnored(ev.start_date)
+//											&& !ShiftManager.isDateIgnored(ev.end_date)) {
+//										return true;
+//									} else {
+//
+//										delete ev._move_delta
+//
+//										return false;
+//									}
+//									// false cancels the operation
+//								}));
 						
 						
 						////////////////////////////////////////////////////
@@ -349,7 +357,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 //								airbus.mes.stationtracker.ShiftManager.ShiftSelectedEnd = undefined;
 //							}							
 //									
-//							 /* Replace date in Toolbar */
+
 							var toolbarDateId = airbus.mes.stationtracker.oView.byId("toolbarDate").sId;
 							$("div[id="+toolbarDateId+"]").contents().remove();
 							$("div[id="+toolbarDateId+"]").append($("div[class='dhx_cal_date']").contents().clone());
