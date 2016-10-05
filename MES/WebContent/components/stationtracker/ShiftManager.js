@@ -843,4 +843,3 @@ airbus.mes.stationtracker.ShiftManager  = {
 }
 
 
->>>>>>> 2c7d6f5 Translate ope ok

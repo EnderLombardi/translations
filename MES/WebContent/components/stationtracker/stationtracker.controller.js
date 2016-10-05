@@ -225,8 +225,8 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		var oNavCon = sap.ui.getCore().byId("operationPopover--navOperatorContainer");
 		var oReschedulePage = sap.ui.getCore().byId("operationPopover--Reschedule");
 		var oOperationPopover = sap.ui.getCore().byId("operationPopover--operationPopoverID");
-		oOperationPopover.setContentWidth("440px");
-		oOperationPopover.setContentHeight("790px");
+//		oOperationPopover.setContentWidth("440px");
+//		oOperationPopover.setContentHeight("790px");
 		oNavCon.to(oReschedulePage);
 	},
 	onPartialPress: function(oEvent) {
@@ -234,8 +234,8 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		var oNavCon = sap.ui.getCore().byId("operationPopover--navOperatorContainer");
 		var oConfirmOperationPage = sap.ui.getCore().byId("operationPopover--confirmOperation");
 		var oOperationPopover = sap.ui.getCore().byId("operationPopover--operationPopoverID");
-		oOperationPopover.setContentWidth("750px");
-		oOperationPopover.setContentHeight("400px");
+//		oOperationPopover.setContentWidth("750px");
+//		oOperationPopover.setContentHeight("400px");
 		oNavCon.to(oConfirmOperationPage);
 	},
 	onTotalPress: function(oEvent) {
@@ -243,16 +243,16 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		var oNavCon = sap.ui.getCore().byId("operationPopover--navOperatorContainer");
 		var oConfirmOperationTotalPage = sap.ui.getCore().byId("operationPopover--confirmOperationTotal");
 		var oOperationPopover = sap.ui.getCore().byId("operationPopover--operationPopoverID");
-		oOperationPopover.setContentWidth("455px");
-		oOperationPopover.setContentHeight("455px");
+//		oOperationPopover.setContentWidth("455px");
+//		oOperationPopover.setContentHeight("455px");
 		oNavCon.to(oConfirmOperationTotalPage);
 	
 	},
 	onNavBack : function (oEvent) {
 		var oNavCon = sap.ui.getCore().byId("operationPopover--navOperatorContainer");
 		var oOperationPopover = sap.ui.getCore().byId("operationPopover--operationPopoverID");
-		oOperationPopover.setContentHeight("395px");	
-		oOperationPopover.setContentWidth("770px");
+//		oOperationPopover.setContentHeight("395px");	
+//		oOperationPopover.setContentWidth("770px");
 		oNavCon.back();
 	},
 	onSelectionChange : function(oEvent) {
