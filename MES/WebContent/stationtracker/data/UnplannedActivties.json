@@ -2,13 +2,13 @@
 
    "Rowsets": {
 
-      "DateCreated": "2016-07-08T15:58:08",
+      "DateCreated": "2016-10-04T14:24:36",
 
-      "Version": "15.1 SP1 Patch 0 (Jan 21, 2016)",
+      "Version": "15.1 SP2 Patch 5 (Jul 20, 2016)",
 
-      "StartDate": "2016-07-08T14:58:07+0200",
+      "StartDate": "2016-10-04T13:24:36+0200",
 
-      "EndDate": "2016-07-08T15:58:07+0200",
+      "EndDate": "2016-10-04T14:24:36+0200",
 
       "CachedTime": "",
 
@@ -18,7 +18,441 @@
 
             "Columns": {
 
-               "Column": []
+               "Column": [
+
+                  {
+
+                     "Name": "SITE",
+
+                     "SourceColumn": "SITE",
+
+                     "Description": "SITE",
+
+                     "SQLDataType": -9,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "MSN",
+
+                     "SourceColumn": "MSN",
+
+                     "Description": "MSN",
+
+                     "SQLDataType": -9,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "WORKORDER_ID",
+
+                     "SourceColumn": "WORKORDER_ID",
+
+                     "Description": "WORKORDER_ID",
+
+                     "SQLDataType": -9,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "OPERATION_ID",
+
+                     "SourceColumn": "OPERATION_ID",
+
+                     "Description": "OPERATION_ID",
+
+                     "SQLDataType": -9,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "WORKORDER_DESCRIPTION",
+
+                     "SourceColumn": "WORKORDER_DESCRIPTION",
+
+                     "Description": "WORKORDER_DESCRIPTION",
+
+                     "SQLDataType": -9,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "STEP_ID",
+
+                     "SourceColumn": "STEP_ID",
+
+                     "Description": "STEP_ID",
+
+                     "SQLDataType": -9,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "STATE",
+
+                     "SourceColumn": "STATE",
+
+                     "Description": "STATE",
+
+                     "SQLDataType": -9,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "OPERATION_DESCRIPTION",
+
+                     "SourceColumn": "OPERATION_DESCRIPTION",
+
+                     "Description": "OPERATION_DESCRIPTION",
+
+                     "SQLDataType": -9,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "MANUAL",
+
+                     "SourceColumn": "MANUAL",
+
+                     "Description": "MANUAL",
+
+                     "SQLDataType": -9,
+
+                    "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "PP_STATION",
+
+                     "SourceColumn": "PP_STATION",
+
+                     "Description": "PP_STATION",
+
+                     "SQLDataType": -9,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "CRITICAL_PATH",
+
+                    "SourceColumn": "CRITICAL_PATH",
+
+                     "Description": "CRITICAL_PATH",
+
+                     "SQLDataType": -9,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "FAMILY",
+
+                     "SourceColumn": "FAMILY",
+
+                     "Description": "FAMILY",
+
+                     "SQLDataType": -9,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "CPP_CLUSTER",
+
+                     "SourceColumn": "CPP_CLUSTER",
+
+                     "Description": "CPP_CLUSTER",
+
+                     "SQLDataType": -9,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "AVL_LINE",
+
+                     "SourceColumn": "AVL_LINE",
+
+                     "Description": "AVL_LINE",
+
+                     "SQLDataType": 2,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "SKILLS",
+
+                     "SourceColumn": "SKILLS",
+
+                     "Description": "SKILLS",
+
+                     "SQLDataType": -9,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "START_TIME",
+
+                     "SourceColumn": "START_TIME",
+
+                     "Description": "START_TIME",
+
+                     "SQLDataType": 93,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "END_TIME",
+
+                     "SourceColumn": "END_TIME",
+
+                     "Description": "END_TIME",
+
+                     "SQLDataType": 93,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "MODIFIED_AT",
+
+                     "SourceColumn": "MODIFIED_AT",
+
+                     "Description": "MODIFIED_AT",
+
+                     "SQLDataType": 93,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "MODIFIED_BY",
+
+                     "SourceColumn": "MODIFIED_BY",
+
+                     "Description": "MODIFIED_BY",
+
+                     "SQLDataType": -9,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "NEW_OPERATION_STATUS",
+
+                     "SourceColumn": "NEW_OPERATION_STATUS",
+
+                     "Description": "NEW_OPERATION_STATUS",
+
+                     "SQLDataType": -9,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "REMAINING_TIME",
+
+                     "SourceColumn": "REMAINING_TIME",
+
+                     "Description": "REMAINING_TIME",
+
+                     "SQLDataType": -9,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "PROD_GROUP",
+
+                     "SourceColumn": "PROD_GROUP",
+
+                     "Description": "PROD_GROUP",
+
+                     "SQLDataType": -9,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "EXECUTION_STATION",
+
+                     "SourceColumn": "EXECUTION_STATION",
+
+                     "Description": "EXECUTION_STATION",
+
+                     "SQLDataType": -9,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "EXECUTION_STATION_SOURCE",
+
+                     "SourceColumn": "EXECUTION_STATION_SOURCE",
+
+                     "Description": "EXECUTION_STATION_SOURCE",
+
+                     "SQLDataType": -9,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "ROUTING_MATURITY_ACCESSMENT",
+
+                     "SourceColumn": "ROUTING_MATURITY_ACCESSMENT",
+
+                     "Description": "ROUTING_MATURITY_ACCESSMENT",
+
+                     "SQLDataType": -9,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "DURATION",
+
+                     "SourceColumn": "DURATION",
+
+                     "Description": "DURATION",
+
+                     "SQLDataType": 2,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "PROGRESS",
+
+                     "SourceColumn": "PROGRESS",
+
+                     "Description": "PROGRESS",
+
+                     "SQLDataType": 2,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  }
+
+               ]
 
             },
 
@@ -26,323 +460,233 @@
 
                {
 
-                  "operationId": "0010",
+                  "SITE": "CHES",
 
-                  "shopOrder": "toto",
+                  "MSN": "00001",
 
-                  "shopOrderDescription": "ja mange du fromage",
+                  "WORKORDER_ID": "100006583-0025",
 
-                  "operationDescription": "@@@ééééé¨¨¨%¨££££$$$",
+                  "OPERATION_ID": "0001",
 
-                  "totalDuration": "26.91",
+                  "WORKORDER_DESCRIPTION": "0002-SA-ASO-400-01",
 
-                  "progress": "50",
+                  "STEP_ID": "10",
 
-                  "certification": "---",
+                  "STATE": "N",
 
-                  "startDate": "2014-07-01 12:00",
+                  "OPERATION_DESCRIPTION": "0001",
 
-                  "endDate": "2014-07-01 13:00",
+                  "MANUAL": "---",
 
-                  "status": "0",
+                  "PP_STATION": "WorkCenterBO:CHES,PP_ST_3",
 
-                  "disruptions": "1",
+                  "CRITICAL_PATH": "---",
 
-                  "andons": "0",
+                  "FAMILY": "---",
 
-                  "routingMaturityAssessment": "1",
+                  "CPP_CLUSTER": "---",
 
-                  "ata": "1",
+                  "AVL_LINE": 1,
 
-                  "familyTarget": "A350_STRUC2",
+                  "SKILLS": "SKILLS",
 
-                  "cppCluster": "A350_STRUC",
+                  "START_TIME": "2016-10-03 07:11:12",
 
-                  "workPackage": "350",
+                  "END_TIME": "2016-10-03 08:02:44",
 
-                  "avlPath1": "toto",
+                  "MODIFIED_AT": "TimeUnavailable",
 
-                  "avlPath2": "tata",
+                  "MODIFIED_BY": "---",
 
-                  "criticalPath": "1",
+                  "NEW_OPERATION_STATUS": "---",
 
-                  "avlStartDate": "2014-07-01 09:00",
+                  "REMAINING_TIME": "---",
 
-                  "avlEndDate": "2014-07-01 13:00",
+                  "PROD_GROUP": "test",
 
-                  "avlLine": "211545464654",
+                  "EXECUTION_STATION": "---",
 
-                  "competency": "FUEL ACTIVITIES"
+                  "EXECUTION_STATION_SOURCE": "---",
 
-               },
+                  "ROUTING_MATURITY_ACCESSMENT": "---",
 
-               {
+                  "DURATION": 18000000,
 
-                  "workOrderId": "FUEL ACTIVITIES",
-
-                  "operationId": "0020",
-
-                  "shopOrder": "toto",
-
-                  "shopOrderDescription": "Montage blabla151",
-
-                  "operationDescription": "operationdescription blabla 2",
-
-                  "totalDuration": "26.91",
-
-                  "progress": "50",
-
-                  "certification": "---",
-
-                  "startDate": "2014-07-01 12:00",
-
-                  "endDate": "2014-07-01 15:00",
-
-                  "status": "0",
-
-                  "disruptions": "1",
-
-                  "andons": "1",
-
-                  "routingMaturityAssessment": "1",
-
-                  "ata": "1",
-
-                  "familyTarget": "A350_STRUC2",
-
-                  "cppCluster": "A350_STRUC",
-
-                  "workPackage": "350",
-
-                  "avlPath1": "toto",
-
-                  "avlPath2": "tata",
-
-                  "criticalPath": "1",
-
-                  "avlStartDate": "2014-07-01 12:00",
-
-                  "avlEndDate": "2014-07-01 15:00",
-
-                  "avlLine": "2115454624654",
-
-                  "competency": "FUEL ACTIVITIES"
+                  "PROGRESS": 3601000
 
                },
 
                {
 
-                  "workOrderId": "MECA ACTIVITIES",
+                  "SITE": "CHES",
 
-                  "operationId": "0030",
+                  "MSN": "00001",
 
-                  "shopOrder": "toto",
+                  "WORKORDER_ID": "100006583-0025",
 
-                  "shopOrderDescription": "Montage blabla",
+                  "OPERATION_ID": "0002",
 
-                  "operationDescription": "operationdescription blabla",
+                  "WORKORDER_DESCRIPTION": "0002-SA-ASO-400-01",
 
-                  "totalDuration": "26.91",
+                  "STEP_ID": "20",
 
-                  "progress": "50",
+                  "STATE": "N",
 
-                  "certification": "---",
+                  "OPERATION_DESCRIPTION": "0002",
 
-                  "startDate": "2014-07-01 09:00",
+                  "MANUAL": "---",
 
-                  "endDate": "2014-07-01 13:00",
+                  "PP_STATION": "WorkCenterBO:CHES,PP_ST_3",
 
-                  "status": "0",
+                  "CRITICAL_PATH": "---",
 
-                  "disruptions": "1",
+                  "FAMILY": "---",
 
-                  "andons": "0",
+                  "CPP_CLUSTER": "---",
 
-                  "routingMaturityAssessment": "1",
+                  "AVL_LINE": 1,
 
-                  "ata": "1",
+                  "SKILLS": "SKILLS",
 
-                  "familyTarget": "A350_STRUC2",
+                  "START_TIME": "2016-10-04 00:50:00",
 
-                  "cppCluster": "A350_STRUC",
+                  "END_TIME": "2016-10-04 04:30:00",
 
-                  "workPackage": "350",
+                  "MODIFIED_AT": "TimeUnavailable",
 
-                  "avlPath1": "toto",
+                  "MODIFIED_BY": "---",
 
-                  "avlPath2": "tata",
+                  "NEW_OPERATION_STATUS": "---",
 
-                  "criticalPath": "1",
+                  "REMAINING_TIME": "---",
 
-                  "avlStartDate": "2014-07-01 09:00",
+                  "PROD_GROUP": "test",
 
-                  "avlEndDate": "2014-07-01 12:00",
+                  "EXECUTION_STATION": "---",
 
-                  "avlLine": "211545464654",
+                  "EXECUTION_STATION_SOURCE": "---",
 
-                  "competency": "ELEC ACTIVITIES"
+                  "ROUTING_MATURITY_ACCESSMENT": "---",
 
-               },
+                  "DURATION": 18000000,
 
-               {
-
-                  "workOrderId": "FUEL ACTIVITIES",
-
-                  "operationId": "0040",
-
-                  "shopOrder": "toto",
-
-                  "shopOrderDescription": "Montage blabla555",
-
-                  "operationDescription": "operationdescription blabla22",
-
-                  "totalDuration": "26.91",
-
-                  "progress": "50",
-
-                  "certification": "---",
-
-                  "startDate": "2014-07-01 10:30",
-
-                  "endDate": "2014-07-01 11:00",
-
-                  "status": "0",
-
-                  "disruptions": "0",
-
-                  "andons": "0",
-
-                  "routingMaturityAssessment": "1",
-
-                  "ata": "1",
-
-                  "familyTarget": "A350_STRUC2",
-
-                  "cppCluster": "A350_STRUC",
-
-                  "workPackage": "350",
-
-                  "avlPath1": "toto",
-
-                  "avlPath2": "tata",
-
-                  "criticalPath": "1",
-
-                  "avlStartDate": "2014-07-01 06:00",
-
-                  "avlEndDate": "2014-07-01 10:00",
-
-                  "avlLine": "211545464654",
-
-                  "competency": "FUEL ACTIVITIES"
+                  "PROGRESS": 3610000
 
                },
 
                {
 
-                  "workOrderId": "MECA ACTIVITIES",
+                  "SITE": "CHES",
 
-                  "operationId": "0010",
+                  "MSN": "00001",
 
-                  "shopOrder": "toto",
+                  "WORKORDER_ID": "100006583-0025",
 
-                  "shopOrderDescription": "ja mange du fromage",
+                  "OPERATION_ID": "0007",
 
-                  "operationDescription": "operationDisruption",
+                  "WORKORDER_DESCRIPTION": "0002-SA-ASO-400-01",
 
-                  "totalDuration": "26.91",
+                  "STEP_ID": "30",
 
-                  "progress": "50",
+                  "STATE": "N",
 
-                  "certification": "---",
+                  "OPERATION_DESCRIPTION": "0007",
 
-                  "startDate": "2014-07-01 15:00",
+                  "MANUAL": "---",
 
-                  "endDate": "2014-07-01 16:00",
+                  "PP_STATION": "WorkCenterBO:CHES,PP_ST_3",
 
-                  "status": "0",
+                  "CRITICAL_PATH": "---",
 
-                  "disruptions": "1",
+                  "FAMILY": "---",
 
-                  "andons": "0",
+                  "CPP_CLUSTER": "---",
 
-                  "routingMaturityAssessment": "1",
+                  "AVL_LINE": 1,
 
-                  "ata": "1",
+                  "SKILLS": "SKILLS",
 
-                  "familyTarget": "A350_STRUC2",
+                  "START_TIME": "2016-10-04 16:30:00",
 
-                  "cppCluster": "A350_STRUC",
+                  "END_TIME": "2016-10-04 17:30:00",
 
-                  "workPackage": "350",
+                  "MODIFIED_AT": "TimeUnavailable",
 
-                  "avlPath1": "toto",
+                  "MODIFIED_BY": "---",
 
-                  "avlPath2": "tata",
+                  "NEW_OPERATION_STATUS": "---",
 
-                  "criticalPath": "1",
+                  "REMAINING_TIME": "---",
 
-                  "avlStartDate": "2014-07-01 15:00",
+                  "PROD_GROUP": "test",
 
-                  "avlEndDate": "2014-07-01 16:00",
+                  "EXECUTION_STATION": "---",
 
-                  "avlLine": "211545464654",
+                  "EXECUTION_STATION_SOURCE": "---",
 
-                  "competency": "MECA ACTIVITIES"
+                  "ROUTING_MATURITY_ACCESSMENT": "---",
+
+                  "DURATION": 18000000,
+
+                  "PROGRESS": 7200000
 
                },
 
                {
 
-                  "workOrderId": "MECA ACTIVITIES",
+                  "SITE": "CHES",
 
-                  "operationId": "100",
+                  "MSN": "00001",
 
-                  "shopOrder": "toto",
+                  "WORKORDER_ID": "100006583-0025",
 
-                  "shopOrderDescription": "ja mange du fromage",
+                  "OPERATION_ID": "0008",
 
-                  "operationDescription": "operation 125",
+                  "WORKORDER_DESCRIPTION": "0002-SA-ASO-400-01",
 
-                  "totalDuration": "26.91",
+                  "STEP_ID": "40",
 
-                  "progress": "50",
+                  "STATE": "N",
 
-                  "certification": "---",
+                  "OPERATION_DESCRIPTION": "0008",
 
-                  "startDate": "2014-07-01 13:00",
+                  "MANUAL": "---",
 
-                  "endDate": "2014-07-01 15:00",
+                  "PP_STATION": "WorkCenterBO:CHES,PP_ST_3",
 
-                  "status": "0",
+                  "CRITICAL_PATH": "---",
 
-                  "disruptions": "0",
+                  "FAMILY": "---",
 
-                  "andons": "1",
+                  "CPP_CLUSTER": "---",
 
-                  "routingMaturityAssessment": "1",
+                  "AVL_LINE": 1,
 
-                  "ata": "1",
+                  "SKILLS": "SKILLS",
 
-                  "familyTarget": "A350_STRUC2",
+                  "START_TIME": "2016-10-03 00:42:00",
 
-                  "cppCluster": "A350_STRUC",
+                  "END_TIME": "2016-10-03 04:30:00",
 
-                  "workPackage": "350",
+                  "MODIFIED_AT": "TimeUnavailable",
 
-                  "avlPath1": "toto",
+                  "MODIFIED_BY": "---",
 
-                  "avlPath2": "tata",
+                  "NEW_OPERATION_STATUS": "---",
 
-                  "criticalPath": "1",
+                  "REMAINING_TIME": "---",
 
-                  "avlStartDate": "2014-07-01 13:00",
+                  "PROD_GROUP": "test",
 
-                  "avlEndDate": "2014-07-01 15:00",
+                  "EXECUTION_STATION": "---",
 
-                  "avlLine": "211545464654",
+                  "EXECUTION_STATION_SOURCE": "---",
 
-                  "competency": "MECA ACTIVITIES"
+                  "ROUTING_MATURITY_ACCESSMENT": "---",
+
+                  "DURATION": 18000000,
+
+                  "PROGRESS": 4600000
 
                }
 

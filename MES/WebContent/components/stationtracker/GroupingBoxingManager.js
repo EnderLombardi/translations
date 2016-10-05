@@ -196,7 +196,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 					"endDate" : el.END_TIME,
 					"status": el.STATE,
 					//"disruptions": el.disruptions,
-					//"andons": el.andons,
+					"andons": el.ANDONS,
 					"routingMaturityAssessment": el.ROUTING_MATURITY_ACCESSMENT,
 					//"ata": el.ata,
 					//"familyTarget": el.familyTarget,

@@ -623,7 +623,9 @@ airbus.mes.stationtracker.ShiftManager  = {
 	// boolean isDateIgnored(Date)
 	isDateIgnored : function (date) {
 		var oFormatter = airbus.mes.stationtracker.util.Formatter;
-
+		
+		console.log(new Date(date));
+		
 		if (this.shifts.length === 0)
 			return false;
 		

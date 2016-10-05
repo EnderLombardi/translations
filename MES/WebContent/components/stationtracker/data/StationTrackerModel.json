@@ -498,6 +498,8 @@
 
                   "NEW_OPERATION_STATUS": "---",
 
+				  "ANDONS": 1,
+				  
                   "REMAINING_TIME": "---",
 
                   "PROD_GROUP": "test",
@@ -550,6 +552,8 @@
 
                   "NEW_OPERATION_STATUS": "---",
 
+				  "ANDONS": 1,
+				  
                   "REMAINING_TIME": "---",
 
                   "PROD_GROUP": "test",
@@ -601,6 +605,8 @@
                   "END_TIME": "2016-10-03 08:02:44",
 
                   "NEW_OPERATION_STATUS": "---",
+
+				  "ANDONS": 1,
 
                   "REMAINING_TIME": "---",
 

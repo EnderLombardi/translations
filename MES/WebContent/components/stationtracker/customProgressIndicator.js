@@ -117,8 +117,8 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
  		var andon = c.getIsAndon();
 		var delayed = parseInt(c.getDelayed()) > 0 ? true : false;
 		var status = c.getStatus();
-		if (andon === '1')
-			r.addClass('sapMPIAndon');
+//		if (andon === '1')
+//			r.addClass('sapMPIAndon');
 		
 		if (parseInt(c.getDelayed()) > 0) {
 			console.log('delayed!');
@@ -129,13 +129,17 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 		r.writeControlData(c);
 
 		r.addClass('sapMPI');
-		// r.addClass('sapMPIAndon');
+		if (andon === '1') {
+			r.addClass('sapMPIAndon');
+		} else {
+		
 		if (delayed) {
 			r.addClass('sapMPIBarDarkGrey');			
 		} 
 	
 		else {
-			r.addClass('sapMPIBarBlue');			
+			r.addClass('sapMPIBarGrey');			
+		}
 		}
 
 		// if (w > 50) {
@@ -176,13 +180,15 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 
 		r.write('<div');
 		r.addClass('sapMPIBar');
-	
+		
+		if (andon === '0') {
 		if (delayed) {
 			r.addClass('sapMPIBarYellow');			
 		} 
 	
 		else {
-			r.addClass('sapMPIBarBlue');			
+			r.addClass('sapMPIBarGrey');			
+		}
 		}
 		
 // r.addClass('sapMPIBarBlue');
