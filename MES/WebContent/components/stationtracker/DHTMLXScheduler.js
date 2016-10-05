@@ -355,6 +355,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 							$("div[id="+toolbarDateId+"]").append($("div[class='dhx_cal_date']").contents().clone());
 						
 							}));
+
 							var options = airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy[airbus.mes.stationtracker.ShiftManager.current_day];
 							if (airbus.mes.stationtracker.ShiftManager.dayDisplay === true && $("select[class='selectBoxStation']").length === 0 ) {		
 								$("div[class='dhx_cal_header']").append("<select class='selectBoxStation' id='selectBoxStation' ></select>");
@@ -416,7 +417,6 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 							var toolbarDateId = airbus.mes.stationtracker.oView.byId("toolbarDate").sId;
 							$("div[id="+toolbarDateId+"]").contents().remove();
 							$("div[id="+toolbarDateId+"]").append($("div[class='dhx_cal_date']").contents().clone());
-						}));
 						
 				
 							
