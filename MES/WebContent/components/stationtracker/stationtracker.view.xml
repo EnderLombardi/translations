@@ -212,6 +212,10 @@
 						<core:Item text="Operations" key="OPERATION_ID"/>
 						<core:Item text="WorkOrder" key="WORKORDER_ID"/>
 					</Select>
+					<Label text="Shift : "/>
+					<Select id="selectShift" class="sapUiTinyMarginBeginEnd comboBoxStyle" change="" items="{ path : 'ShiftModel>/Rowsets/Rowset/0/Row'}">
+						<core:Item key="{ShiftModel>shiftID}" text="{ShiftModel>shiftName}" />
+					</Select>
 					<ToolbarSpacer />
 					<HBox id="toolbarDate" class="sapUiTinyMarginBeginEnd"></HBox>
 					<ToolbarSpacer />

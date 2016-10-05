@@ -17,6 +17,7 @@ airbus.mes.stationtracker.ModelManager = {
 			core.setModel(new sap.ui.model.json.JSONModel(),"affectationModel"); 
 			core.setModel(new sap.ui.model.json.JSONModel(),"unPlannedModel"); // Unplanned model
 			
+			core.setModel(new sap.ui.model.json.JSONModel(),"ShiftComboModel");
 			
 			core.getModel("stationTrackerRModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onStationTrackerLoad);
 			core.getModel("stationTrackerIModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onStationTrackerLoad);

@@ -40,7 +40,9 @@ airbus.mes.stationtracker.Component.prototype.createContent = function() {
   })
   		
   	  this.oView.setModel(sap.ui.getCore().getModel("userSettingModel"), "userSettingModel");
-  	  airbus.mes.stationtracker.oView = this.oView;	
+	  this.oView.setModel(sap.ui.getCore().getModel("shiftsModel"), "ShiftModel");
+	  
+	airbus.mes.stationtracker.oView = this.oView;	
 	  return this.oView;
 	 }
 };

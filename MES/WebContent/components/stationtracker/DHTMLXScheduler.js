@@ -349,10 +349,10 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 //							}							
 //									
 //							 /* Replace date in Toolbar */
-//							var toolbarDateId = airbus.mes.stationtracker.oView.byId("toolbarDate").sId;
-//							$("div[id="+toolbarDateId+"]").contents().remove();
-//							$("div[id="+toolbarDateId+"]").append($("div[class='dhx_cal_date']").contents().clone());
-//						
+							var toolbarDateId = airbus.mes.stationtracker.oView.byId("toolbarDate").sId;
+							$("div[id="+toolbarDateId+"]").contents().remove();
+							$("div[id="+toolbarDateId+"]").append($("div[class='dhx_cal_date']").contents().clone());
+						
 							}));
 						
 				
