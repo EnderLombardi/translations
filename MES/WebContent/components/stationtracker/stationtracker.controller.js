@@ -226,6 +226,15 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		oOperationPopover.setContentHeight("790px");
 		oNavCon.to(oReschedulePage);
 	},
+	onPartialPress: function(oEvent) {
+		
+		var oNavCon = sap.ui.getCore().byId("operationPopover--navOperatorContainer");
+		var oConfirmOperationPage = sap.ui.getCore().byId("operationPopover--confirmOperation");
+		var oOperationPopover = sap.ui.getCore().byId("operationPopover--operationPopoverID");
+		oOperationPopover.setContentWidth("750px");
+		oOperationPopover.setContentHeight("400px");
+		oNavCon.to(oConfirmOperationPage);
+	},
 	onNavBack : function (oEvent) {
 		var oNavCon = sap.ui.getCore().byId("operationPopover--navOperatorContainer");
 		var oOperationPopover = sap.ui.getCore().byId("operationPopover--operationPopoverID");

@@ -1,8 +1,8 @@
 <core:FragmentDefinition xmlns="sap.m"
 	xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout"
-	xmlns:u="sap.ui.unified">
-	<Popover id="operationPopoverID" showHeader="false"
-		contentWidth="455px" contentHeight="353px" placement="Bottom">
+	xmlns:u="sap.ui.unified" xmlns:x="sap.uxap">
+	<Dialog id="operationPopoverID" showHeader="false"
+		contentWidth="455px" contentHeight="455px" placement="Bottom">
 		<NavContainer id="navOperatorContainer">
 			<Page id="master">
 				<VBox id="SPGeneral" class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
@@ -70,6 +70,12 @@
 				<Button text="Set OSW" type="Transparent" icon="sap-icon://forward"
 					class="sapUiTinyMarginBeginEnd" press="onSetOSWPress">
 				</Button>
+				<Button text="Confirm Partial" type="Transparent" icon="sap-icon://multi-select"
+					class="sapUiTinyMarginBeginEnd" press="onPartialPress">
+				</Button>
+				<Button text="Confirm Total" type="Transparent" icon="sap-icon://accept"
+					class="sapUiTinyMarginBeginEnd" press="onTotalPress">
+				</Button>			
 			</Page>
 			<Page id="Reschedule" >
 				<VBox>
@@ -129,6 +135,93 @@
 					<Button id="rescheduleButton" text="Confirm" type="Transparent"  class="sapUiTinyMarginBeginEnd" press="confirmResourceDialog" />
 				</HBox>
 			</Page>
+			
+			<Page id="confirmOperation" showHeader="false">
+			<x:ObjectPageLayout id="confirmOperationLayout"
+		enableLazyLoading="false">
+		<x:headerTitle>
+			<x:ObjectPageHeader objectTitle="Operation: 1003174424" width="100%" markLocked="true" objectSubtitle="C60 Montage Té Orbital G V533100110000">
+	<!-- 				<x:actions>
+					<x:ObjectPageHeaderActionButton hideText="false" icon="sap-icon://upload" 
+					text="{i18n>loadFile}"  type="Emphasized"/>
+					<x:ObjectPageHeaderActionButton hideText="false" icon="sap-icon://pushpin-on"
+					text="OSW" type="Emphasized"/>
+					</x:actions> -->
+			</x:ObjectPageHeader>
+		</x:headerTitle>
+
+<!-- 		<x:headerContent>
+			<Text text="{Matnr}" />
+				<Label text="MSN: {Msn}" class="sapUiSmallMarginEnd" />											
+				<ObjectStatus title="Status"
+					text="{= RegExp('CNF ', 'i').test(${Line}) ? 'Confirmed' : 'Non confirmed'}"
+					state="{= RegExp('CNF ', 'i').test(${Line}) ? 'Success' : 'Error'}"
+					icon="{= RegExp('CNF ', 'i').test(${Line}) ? 'sap-icon://sys-enter' : 'sap-icon://sys-cancel'}" />
+				
+		</x:headerContent> -->
+
+		<x:sections>
+
+			<x:ObjectPageSection title="Section 1">
+				<x:subSections>
+					<x:ObjectPageSubSection title="Partial Confirmation" titleUppercase="false" class="partialConfirmCss">
+						<x:blocks>
+						<VBox>
+						<HBox justifyContent="SpaceAround">
+						
+	  					<VBox class="sapUiSmallMarginEnd">
+						<Label text="Remaining Time:"/>
+						<Label text="17.81 IM" class="blueTitle"/>
+						<Label text="Duration:"/>
+						<Label text="18 IM" class="blueTitle"/>
+						</VBox>
+						
+						<VBox class="sapUiSmallMarginEnd">
+						<Label text="Progress:"/>
+						
+						<Slider value="0" width="100%" step="10"/>	
+						
+						<Label text="Reason"/>
+						<Select id="confirmPartialReason">
+								<core:Item key="1p" text="0000 - None" />
+								<core:Item key="2p" text="0001 - X" />								
+								<core:Item key="3p" text="0002 - X" />								
+								<core:Item key="4p" text="0003 - X" />								
+								<core:Item key="5p" text="0004 - X" />								
+						</Select>
+						</VBox >
+						
+						<VBox class="sapUiSmallMarginEnd commentConfirmCss">
+						<TextArea id="commentValueConfirm" width="100%" placeholder="Comments" rows="5"/>
+						</VBox>
+						
+						<VBox class="sapUiSmallMarginEnd">
+							<Input id="userNameFieldPartial" type="Text" placeholder="Username"  liveChange="usernameLive" />	
+							<Input id="passwordFieldPartial" type="Password" placeholder="Password"   liveChange="passwordLive" />
+							<HBox  justifyContent="SpaceBetween">
+							<Label text="Or badge" class="sapUiSmallMarginEnd sapUiSmallMarginTop"/>
+							<Button icon="sap-icon://business-card" type="Emphasized"/>
+							</HBox>				
+						</VBox>
+						
+						</HBox>
+							<HBox justifyContent="End" class="sapUiSmallMarginTop">
+							<Button iconFirst="false" text="Cancel" icon="sap-icon://decline" type="Emphasized" class="sapUiSmallMarginEnd"/>						
+							<Button iconFirst="false" text="Confirm" icon="sap-icon://accept" type="Emphasized"/>
+							</HBox>	
+							</VBox>	
+						</x:blocks>
+	
+					</x:ObjectPageSubSection>
+				</x:subSections>
+			</x:ObjectPageSection>
+
+
+		</x:sections>
+
+	</x:ObjectPageLayout>
+	</Page>
+			
 		</NavContainer>
-	</Popover>
+	</Dialog>
 </core:FragmentDefinition>

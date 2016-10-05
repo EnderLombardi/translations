@@ -221,7 +221,8 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	onNavBack : function (oEvent) {
 		var oNavCon = sap.ui.getCore().byId("operationPopover--navOperatorContainer");
 		var oOperationPopover = sap.ui.getCore().byId("operationPopover--operationPopoverID");
-		oOperationPopover.setContentHeight("353px");		
+		oOperationPopover.setContentHeight("353px");	
+
 		oNavCon.back();
 	},
 	onSelectionChange : function(oEvent) {

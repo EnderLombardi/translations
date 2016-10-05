@@ -18,6 +18,12 @@
 	text-indent: -15px;
 	
 }
+.partialConfirmCss .sapUxAPObjectPageSectionTitle {
+	color: #006CA7;
+    font-size: 0.875rem;
+    font-weight: bold;
+    border-bottom: 0px solid #999999;
+}
 .ylabel:hover .tooltip {
     visibility: visible;
 }
@@ -198,7 +204,9 @@ color : black;
 	font-family: "Arial", Sans-serif !important;
 	font-size: 24px !important;
 }
-
+.blueTitle{
+	color: font;
+}
 .stationWelcome {
 	color: #006CA7 !important;
 	font-family: "Arial", Sans-serif !important;
@@ -453,6 +461,10 @@ padding-left: 40px;
 
 .spTitle {
 	font-size: 20px;
+}
+.commentConfirmCss {
+	border-right: 1px solid black;
+    padding-right: 17px;
 }
 
 div#SPStatusInd.progressBarOP.sapMBarChild.sapMPI{
