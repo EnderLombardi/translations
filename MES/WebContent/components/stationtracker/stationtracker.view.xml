@@ -213,8 +213,8 @@
 						<core:Item text="WorkOrder" key="WORKORDER_ID"/>
 					</Select>
 					<Label text="Shift : "/>
-					<Select id="selectShift" class="sapUiTinyMarginBeginEnd comboBoxStyle" change="" items="{ path : 'ShiftModel>/Rowsets/Rowset/0/Row'}">
-						<core:Item key="{ShiftModel>shiftID}" text="{ShiftModel>shiftName}" />
+					<Select id="selectShift" class="sapUiTinyMarginBeginEnd comboBoxStyle selectShift" change="" items="{ path : 'stationTrackerShift>/' }">
+						<core:Item key="{stationTrackerShift>id}" text="{stationTrackerShift>value}" />
 					</Select>
 					<ToolbarSpacer />
 					<HBox id="toolbarDate" class="sapUiTinyMarginBeginEnd"></HBox>

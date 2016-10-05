@@ -17,7 +17,7 @@ airbus.mes.stationtracker.ModelManager = {
 			core.setModel(new sap.ui.model.json.JSONModel(),"affectationModel"); 
 			core.setModel(new sap.ui.model.json.JSONModel(),"unPlannedModel"); // Unplanned model
 			
-			core.setModel(new sap.ui.model.json.JSONModel(),"ShiftComboModel");
+			//core.setModel(new sap.ui.model.json.JSONModel(),"stationTrackerShift");	//Shifts for station tracker
 			
 			core.getModel("stationTrackerRModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onStationTrackerLoad);
 			core.getModel("stationTrackerIModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onStationTrackerLoad);
@@ -99,12 +99,35 @@ airbus.mes.stationtracker.ModelManager = {
 			airbus.mes.stationtracker.ModelManager.Unplanned = oViewModel;
 		},	
 		
+		loadStationTrackerShift : function()
+		{
+			//stationTrackerShift model
+			var oView = airbus.mes.stationtracker.oView;
+			var options = airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy[airbus.mes.stationtracker.ShiftManager.current_day];
+			var modelarray = [];
+			var i = 0;
+			for (var prop in options) {
+	        // skip loop if the property is from prototype
+		        if(!options.hasOwnProperty(prop)) continue;
+		        
+		        var element = {};
+		        element.id = i;
+		        element.value = prop;
+		        modelarray.push(element);
+		        i++;
+		    }
+			oView.setModel(new sap.ui.model.json.JSONModel(modelarray),"stationTrackerShift");
+			
+		},
+		
 		
 		onStationTrackerLoad : function() {
 			
 			var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
 		
 			GroupingBoxingManager.parseOperation(GroupingBoxingManager.group,GroupingBoxingManager.box);
+			
+			airbus.mes.stationtracker.ModelManager.loadStationTrackerShift();
 			
 		},
 		loadShifts : function() {
@@ -116,7 +139,6 @@ airbus.mes.stationtracker.ModelManager = {
 			var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
 			GroupingBoxingManager.parseShift();
 		},
-
 		
 		
 		replaceURI : function (sURI, sFrom, sTo) {
