@@ -205,7 +205,7 @@
 					<Label text="Sort By : " />
 					<Select id="selectGroup" class="sapUiTinyMarginBeginEnd comboBoxStyle" change="changeGroup">
 						<core:Item text="Competence" key="CPP_CLUSTER"/>
-						<core:Item text="Avl" key="AVL_LINE" />
+						<core:Item text="Avl" key="avlLine" />
 					</Select>
 					<Label text="Show : " />
 					<Select id="selectBox" class="sapUiTinyMarginBeginEnd comboBoxStyle" change="changeBox">
