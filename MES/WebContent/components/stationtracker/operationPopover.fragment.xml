@@ -2,31 +2,41 @@
 	xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout"
 	xmlns:u="sap.ui.unified" xmlns:x="sap.uxap">
 	<Dialog id="operationPopoverID" showHeader="false"
-		contentWidth="455px" contentHeight="455px" placement="Bottom">
+		contentWidth="770px" contentHeight="395px" verticalScrolling="false" class="noFooterDialog">
+		<content>
 		<NavContainer id="navOperatorContainer">
-			<Page id="master">
+		
+				<Page id="master" showHeader="false">
+						<content>
+				
+			<x:ObjectPageLayout id="masterLayout"
+		enableLazyLoading="false" class="partialConfHeader whitePartialConfHeader whitePartialConfHeader2 lockCss" showFooter="false" >
+		<x:headerTitle class="partialConfHeader whitePartialConfHeader whitePartialConfHeader2 lockCss">
+			<x:ObjectPageHeader class="whitePartialConfHeader whitePartialConfHeader2 lockCss" objectTitle="Operation: {WorkListModel>/0/operationId}-{WorkListModel>/0/operationDescription}" width="100%" markLocked="true" objectSubtitle="ShopOrder: {WorkListModel>/0/shopOrder}">
+			</x:ObjectPageHeader>
+		</x:headerTitle>
+		<x:sections>
+
+			<x:ObjectPageSection class="partialConfirmCss partialConfirmCss2 partialConfirmCss3">
+				<x:subSections>
+					<x:ObjectPageSubSection>
+						<x:blocks>
 				<VBox id="SPGeneral" class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
-					<HBox>
-						<Label id="SPGeneralOP" text="{WorkListModel>/0/operationID}"
-							design="Bold" class="spTitle" />
-					</HBox>
 					<HBox class="sapUiSmallMarginTop">
-						<Label id="SPGeneralDesc" text="{WorkListModel>/0/operationDescription}"
-							class="spTitle" />
-					</HBox>
-					<HBox class="sapUiSmallMarginTop">
-						<HBox width="50%">
+						<HBox justifyContent="SpaceBetween">
 							<Label text="Start: " design="Bold" />
 							<Label id="SPStart" text="{ path : 'WorkListModel>/0/startDate' , formatter: 'airbus.mes.stationtracker.util.Formatter.date2Hour' }" class="sapUiTinyMarginBeginEnd" />	<!--							<Label id="SPStart" text="{ path : 'WorkListModel>/0/startDate , formatter: 'airbus.mes.stationtracker.util.Formatter.date2Hour' } " class="sapUiTinyMarginBeginEnd" />  -->
 							<Label text="End: " design="Bold" />
-							<Label id="SPEnd" text="{ path : 'WorkListModel>/0/endDate' , formatter: 'airbus.mes.stationtracker.util.Formatter.date2Hour' }" class="sapUiTinyMarginBeginEnd" />
+							<Label id="SPEnd" text="{ path : 'WorkListModel>/0/endDate' , formatter: 'airbus.mes.stationtracker.util.Formatter.date2Hour' }" class="sapUiTinyMarginBegin sapUiLargeMarginEnd" />
+							<Label text="Work Center: " design="Bold"  class="sapUiLargeMarginBegin sapUiTinyMarginEnd" />
+							<Label id="SPWorkCenter" text="V90Q3E31" />
 						</HBox>
-						<HBox width="50%" alignContent="End">
+<!-- 						<HBox width="50%" alignContent="End">
 							<Label text="Work Center: " design="Bold" />
 							<Label id="SPWorkCenter" text="{WorkListModel>/0/shopOrder}" class="sapUiTinyMarginBeginEnd" />
-						</HBox>
+						</HBox> -->
 					</HBox>
-					<HBox class="sapUiSmallMarginTop">
+					<HBox class="sapUiSmallMarginTop" >
 						<Label text="Status : " />
 						<Label id="SPGeneralStatus" text="{ path : 'WorkListModel>/0/progress' , formatter: 'airbus.mes.stationtracker.util.Formatter.progress2status' }" class="sapUiTinyMarginBeginEnd" />
 						<Label id="SPGeneralStatusVal" text="{ path : 'WorkListModel>/0/progress' , formatter: 'airbus.mes.stationtracker.util.Formatter.progress2percent' }" />
@@ -61,33 +71,58 @@
 						</HBox>
 					</HBox>
 				</VBox>
+						
+						</x:blocks>
+	
+					</x:ObjectPageSubSection>
+				</x:subSections>
+			</x:ObjectPageSection>
+		</x:sections>
+	</x:ObjectPageLayout>
+	</content>
+	<footer>
+			<Toolbar>
 				<Button text="Reschedule" type="Transparent" icon="sap-icon://fob-watch"
 					class="sapUiTinyMarginBeginEnd" press="onReschedulePress">
 				</Button>
+									<ToolbarSeparator />
+				
 				<Button text="Add Operator" type="Transparent" icon="sap-icon://company-view"
 					class="sapUiTinyMarginBeginEnd" press="onAssignOpPress">
 				</Button>
+									<ToolbarSeparator />
+				
 				<Button text="Set OSW" type="Transparent" icon="sap-icon://forward"
 					class="sapUiTinyMarginBeginEnd" press="onSetOSWPress">
 				</Button>
+									<ToolbarSeparator />
+				
 				<Button text="Confirm Partial" type="Transparent" icon="sap-icon://multi-select"
 					class="sapUiTinyMarginBeginEnd" press="onPartialPress">
 				</Button>
+									<ToolbarSeparator />
+				
 				<Button text="Confirm Total" type="Transparent" icon="sap-icon://accept"
 					class="sapUiTinyMarginBeginEnd" press="onTotalPress">
-				</Button>			
-			</Page>
-			<Page id="Reschedule" >
+				</Button>
+			</Toolbar>
+	</footer>
+	</Page>	
+			
+				<Page id="Reschedule" showHeader="false">
+			<x:ObjectPageLayout id="rescheduleTitle"
+		enableLazyLoading="false" class="partialConfHeader whitePartialConfHeader whitePartialConfHeader2 lockCss" >
+		<x:headerTitle class="partialConfHeader whitePartialConfHeader whitePartialConfHeader2 lockCss">
+			<x:ObjectPageHeader class="whitePartialConfHeader whitePartialConfHeader2 lockCss" objectTitle="Operation: {WorkListModel>/0/operationId}-{WorkListModel>/0/operationDescription}" width="100%" markLocked="true" objectSubtitle="ShopOrder: {WorkListModel>/0/shopOrder}">
+			</x:ObjectPageHeader>
+		</x:headerTitle>
+		<x:sections>
+
+			<x:ObjectPageSection  class="partialConfirmCss partialConfirmCss2">
+				<x:subSections>
+					<x:ObjectPageSubSection title="Reschedule Operation" titleUppercase="false">
+						<x:blocks>
 				<VBox>
-					<Toolbar>
-						<content>
-							<ToolbarSpacer />
-							<Title id="rescheduleTitle" text="{WorkListModel>/0/operationDescription}"
-								titleStyle="H5"></Title><!-- 
-								binding/value remains -->
-							<ToolbarSpacer />
-						</content>
-					</Toolbar>
 					<f:SimpleForm maxContainerCols="1" editable="false"
 						layout="ResponsiveGridLayout" labelSpanL="3" labelSpanM="4"
 						labelSpanS="6" emptySpanL="2" emptySpanM="2" emptySpanS="0"
@@ -129,42 +164,35 @@
 							</u:Calendar>
 						</f:content>
 					</f:SimpleForm>
-				</VBox>
-				<HBox>
-					<Button id="Back" text="Back" type="Transparent" class="sapUiTinyMarginBeginEnd" press="onNavBack" />
-					<Button id="rescheduleButton" text="Confirm" type="Transparent"  class="sapUiTinyMarginBeginEnd" press="confirmResourceDialog" />
+				<HBox justifyContent="End">
+					<Button id="Back" text="Back" type="Emphasized" class="sapUiTinyMarginBeginEnd" press="onNavBack" />
+					<Button id="rescheduleButton" text="Confirm" type="Emphasized"  class="sapUiTinyMarginBeginEnd" press="confirmResourceDialog" />
 				</HBox>
-			</Page>
+				</VBox>
+						</x:blocks>
+	
+					</x:ObjectPageSubSection>
+				</x:subSections>
+			</x:ObjectPageSection>
+
+
+		</x:sections>
+
+	</x:ObjectPageLayout>
+	</Page>
 			
 			<Page id="confirmOperation" showHeader="false">
 			<x:ObjectPageLayout id="confirmOperationLayout"
-		enableLazyLoading="false">
-		<x:headerTitle>
-			<x:ObjectPageHeader objectTitle="Operation: 1003174424" width="100%" markLocked="true" objectSubtitle="C60 Montage Té Orbital G V533100110000">
-	<!-- 				<x:actions>
-					<x:ObjectPageHeaderActionButton hideText="false" icon="sap-icon://upload" 
-					text="{i18n>loadFile}"  type="Emphasized"/>
-					<x:ObjectPageHeaderActionButton hideText="false" icon="sap-icon://pushpin-on"
-					text="OSW" type="Emphasized"/>
-					</x:actions> -->
+		enableLazyLoading="false" class="partialConfHeader whitePartialConfHeader whitePartialConfHeader2 lockCss" >
+		<x:headerTitle class="partialConfHeader whitePartialConfHeader whitePartialConfHeader2 lockCss">
+			<x:ObjectPageHeader class="whitePartialConfHeader whitePartialConfHeader2 lockCss" objectTitle="Operation: {WorkListModel>/0/operationId}-{WorkListModel>/0/operationDescription}" width="100%" markLocked="true" objectSubtitle="ShopOrder: {WorkListModel>/0/shopOrder}">
 			</x:ObjectPageHeader>
 		</x:headerTitle>
-
-<!-- 		<x:headerContent>
-			<Text text="{Matnr}" />
-				<Label text="MSN: {Msn}" class="sapUiSmallMarginEnd" />											
-				<ObjectStatus title="Status"
-					text="{= RegExp('CNF ', 'i').test(${Line}) ? 'Confirmed' : 'Non confirmed'}"
-					state="{= RegExp('CNF ', 'i').test(${Line}) ? 'Success' : 'Error'}"
-					icon="{= RegExp('CNF ', 'i').test(${Line}) ? 'sap-icon://sys-enter' : 'sap-icon://sys-cancel'}" />
-				
-		</x:headerContent> -->
-
 		<x:sections>
 
-			<x:ObjectPageSection title="Section 1">
+			<x:ObjectPageSection title="Section 1"  class="partialConfirmCss partialConfirmCss2">
 				<x:subSections>
-					<x:ObjectPageSubSection title="Partial Confirmation" titleUppercase="false" class="partialConfirmCss">
+					<x:ObjectPageSubSection title="Partial Confirmation" titleUppercase="false">
 						<x:blocks>
 						<VBox>
 						<HBox justifyContent="SpaceAround">
@@ -173,21 +201,30 @@
 						<Label text="Remaining Time:"/>
 						<Label text="17.81 IM" class="blueTitle"/>
 						<Label text="Duration:"/>
-						<Label text="18 IM" class="blueTitle"/>
+						<Label text="{ path : 'WorkListModel>/0/totalDuration' , formatter : 'airbus.mes.stationtracker.util.Formatter.totalDurationToIM' }" class="blueTitle"/>
 						</VBox>
 						
 						<VBox class="sapUiSmallMarginEnd">
 						<Label text="Progress:"/>
 						
-						<Slider value="0" width="100%" step="10"/>	
+						<Slider value="{ path : 'WorkListModel>/0/progress' , formatter : 'airbus.mes.stationtracker.util.Formatter.progress2float' }" width="100%" step="10"/>	
 						
 						<Label text="Reason"/>
 						<Select id="confirmPartialReason">
 								<core:Item key="1p" text="0000 - None" />
-								<core:Item key="2p" text="0001 - X" />								
-								<core:Item key="3p" text="0002 - X" />								
-								<core:Item key="4p" text="0003 - X" />								
-								<core:Item key="5p" text="0004 - X" />								
+								<core:Item key="2p" text="0001 - Technical problem" />								
+								<core:Item key="3p" text="0002 - End of Shift" />								
+								<core:Item key="4p" text="0003 - All Done Excep" />								
+								<core:Item key="5p" text="0004 - All Checked Except" />	
+								<core:Item key="6p" text="0005 - NC(Non conformity)" />								
+								<core:Item key="7p" text="0006 - Serial number issue" />								
+								<core:Item key="8p" text="0007 - Missing part" />								
+								<core:Item key="9p" text="Z001 - BC to TL" />								
+								<core:Item key="10p" text="Z002 - BC to Q" />								
+								<core:Item key="11p" text="Z003 - TL to Q" />								
+								<core:Item key="12p" text="Z004 - TL to NF" />								
+								<core:Item key="13p" text="Z006 - Q to TL" />	
+								<core:Item key="14p" text="Z007 - Q to NF" />																
 						</Select>
 						</VBox >
 						
@@ -206,7 +243,50 @@
 						
 						</HBox>
 							<HBox justifyContent="End" class="sapUiSmallMarginTop">
-							<Button iconFirst="false" text="Cancel" icon="sap-icon://decline" type="Emphasized" class="sapUiSmallMarginEnd"/>						
+							<Button iconFirst="false" text="Cancel" icon="sap-icon://decline" type="Emphasized" class="sapUiSmallMarginEnd" press="onNavBack"/>						
+							<Button iconFirst="false" text="Confirm" icon="sap-icon://accept" type="Emphasized"/>
+							</HBox>	
+							</VBox>	
+						</x:blocks>
+	
+					</x:ObjectPageSubSection>
+				</x:subSections>
+			</x:ObjectPageSection>
+
+
+		</x:sections>
+
+	</x:ObjectPageLayout>
+	</Page>
+	
+	<Page id="confirmOperationTotal" showHeader="false">
+			<x:ObjectPageLayout id="confirmOperationTotalLayout"
+		enableLazyLoading="false" class="partialConfHeader whitePartialConfHeader whitePartialConfHeader2 lockCss" >
+		<x:headerTitle class="partialConfHeader whitePartialConfHeader whitePartialConfHeader2 lockCss">
+			<x:ObjectPageHeader class="whitePartialConfHeader whitePartialConfHeader2 lockCss" objectTitle="Operation: {WorkListModel>/0/operationId}-{WorkListModel>/0/operationDescription}" width="100%" markLocked="true" objectSubtitle="ShopOrder: {WorkListModel>/0/shopOrder}">
+			</x:ObjectPageHeader>
+		</x:headerTitle>
+		<x:sections>
+
+			<x:ObjectPageSection title="Section 1"  class="partialConfirmCss partialConfirmCss2">
+				<x:subSections>
+					<x:ObjectPageSubSection title="Total Confirmation" titleUppercase="false">
+						<x:blocks>
+						<VBox>
+						<HBox justifyContent="SpaceAround">
+						
+						<VBox class="sapUiSmallMarginEnd" justifyContent="Center">
+							<Input id="userNameFieldTotal" type="Text" placeholder="Username"  liveChange="usernameLive" />	
+							<Input id="passwordFieldTotal" type="Password" placeholder="Password"   liveChange="passwordLive" />
+							<HBox  justifyContent="SpaceBetween">
+							<Label text="Or badge" class="sapUiSmallMarginEnd sapUiSmallMarginTop"/>
+							<Button icon="sap-icon://business-card" type="Emphasized"/>
+							</HBox>				
+						</VBox>
+						
+						</HBox>
+							<HBox justifyContent="Center" class="sapUiSmallMarginTop">
+							<Button iconFirst="false" text="Cancel" icon="sap-icon://decline" type="Emphasized" class="sapUiSmallMarginEnd" press="onNavBack"/>						
 							<Button iconFirst="false" text="Confirm" icon="sap-icon://accept" type="Emphasized"/>
 							</HBox>	
 							</VBox>	
@@ -223,5 +303,6 @@
 	</Page>
 			
 		</NavContainer>
+		</content>
 	</Dialog>
 </core:FragmentDefinition>

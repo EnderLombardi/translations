@@ -19,10 +19,27 @@
 	
 }
 .partialConfirmCss .sapUxAPObjectPageSectionTitle {
-	color: #006CA7;
-    font-size: 0.875rem;
-    font-weight: bold;
-    border-bottom: 0px solid #999999;
+	color: #006CA7 !important;
+    border-bottom: 0px solid #999999 !important;
+}
+.partialConfirmCss2 .sapUxAPObjectPageSectionHeader{
+	border-bottom: 0px solid #f2f2f2 !important;
+}
+.partialConfirmCss3 .sapUxAPObjectPageSectionHeader{
+height: 0rem;
+}
+.partialConfHeader .sapUxAPObjectPageHeaderIdentifier{
+	background-color :#303539 !important;
+}
+
+.whitePartialConfHeader .sapUxAPObjectPageHeaderIdentifierTitle{
+	color : white !important;
+}
+.whitePartialConfHeader2 .sapUxAPObjectPageHeaderIdentifierDescription{
+	color : white !important;
+}
+.lockCss .sapUxAPObjectPageHeaderLockBtn .sapMBtnTransparent>.sapMBtnIcon{
+	color: #ED8E01;
 }
 .ylabel:hover .tooltip {
     visibility: visible;
@@ -205,7 +222,7 @@ color : black;
 	font-size: 24px !important;
 }
 .blueTitle{
-	color: font;
+	color: #006CA7;
 }
 .stationWelcome {
 	color: #006CA7 !important;
@@ -484,4 +501,8 @@ div#SPStatusInd.progressBarOP.sapMBarChild.sapMPI{
 .begin_shifht {
 	background-color: #ffa749;
 	opacity: 0.25; 
+}
+
+.noFooterDialog .sapMDialogStretchContent{
+	height: 100% !important;
 }

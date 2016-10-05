@@ -65,6 +65,12 @@ airbus.mes.stationtracker.util.Formatter = {
 			progress2float : function(sString) {
 				return parseFloat(sString);
 			},
+			progress2string : function(sString) {
+				return sString.toString();
+			},
+			totalDurationToIM : function(sDuration) {
+				return ((sDuration * 100 * 0.001)/3600).toFixed(4) + " IM";
+			},
 			isCheckboxVisible : function(sString) {
 				if( airbus.mes.stationtracker.worklistPopover.unPlanned === true ){
 					return true;
