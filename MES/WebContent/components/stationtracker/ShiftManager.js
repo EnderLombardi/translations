@@ -277,7 +277,7 @@ airbus.mes.stationtracker.ShiftManager  = {
 	 */
 	// Date timelineAddStep(Date, int, String)
 	timelineAddStep : function(date, step, mode) {
-		
+		scheduler.updateView();
 		airbus.mes.stationtracker.ShiftManager.BoxSelected = 0;	
 //		sap
 		var oFormatter = airbus.mes.stationtracker.util.Formatter;

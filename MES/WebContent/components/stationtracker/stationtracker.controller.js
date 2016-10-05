@@ -39,7 +39,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	},
 
 	onShiftPress : function() {
-		
+
 		airbus.mes.stationtracker.ShiftManager.shiftDisplay = true;
 		airbus.mes.stationtracker.ShiftManager.dayDisplay = false;
 
@@ -61,7 +61,14 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	},
 
 	onDayPress : function() {
-
+		scheduler.deleteMarkedTimespan();
+		scheduler.addMarkedTimespan({  
+			start_date: airbus.mes.stationtracker.ShiftManager.ShiftSelectedStart,
+			end_date: airbus.mes.stationtracker.ShiftManager.ShiftSelectedEnd,
+		    css:   "shiftCss",
+		});
+		scheduler.updateView();
+		
 		airbus.mes.stationtracker.ShiftManager.shiftDisplay = false;
 		airbus.mes.stationtracker.ShiftManager.dayDisplay = true;
 		
