@@ -1,8 +1,8 @@
 <core:FragmentDefinition xmlns="sap.m"
 	xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout"
 	xmlns:u="sap.ui.unified">
-	<Popover id="operationPopoverID" showHeader="false"
-		contentWidth="455px" contentHeight="353px" placement="Bottom">
+	<Dialog id="operationPopoverID" title="ok">
+	<content>
 		<NavContainer id="navOperatorContainer">
 			<Page id="master">
 				<VBox id="SPGeneral" class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
@@ -130,5 +130,6 @@
 				</HBox>
 			</Page>
 		</NavContainer>
-	</Popover>
+		</content>
+	</Dialog>
 </core:FragmentDefinition>
