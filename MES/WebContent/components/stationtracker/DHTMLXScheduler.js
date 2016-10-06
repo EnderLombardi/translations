@@ -248,7 +248,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 								
 								if ( event.andon === 1 ) {
 									
-									return airbus.mes.stationtracker.util.Formatter.andon(event.text,event.progress);
+									return airbus.mes.stationtracker.util.Formatter.andon(event.text,event.progress,event.totalDuration);
 									
 								}
 								

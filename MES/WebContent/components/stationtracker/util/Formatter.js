@@ -129,15 +129,18 @@ airbus.mes.stationtracker.util.Formatter = {
 
 			},
 	
-			andon : function(sText,sProgress) {
+			andon : function(sText,sProgress, sTotalDuration) {
 				
 				var html = "";
+				var progress = airbus.mes.stationtracker.util.Formatter.progressDisplayEvent(sProgress);
+				var duration = airbus.mes.stationtracker.util.Formatter.progressDisplayEvent(sTotalDuration);
+
 
 				html += '<div  style="width:inherit; height:inherit; position:absolute; z-index: 1; padding-left: 5px;line-height: 23px;left: 0px;" >'
 				+ sText + '</div>';
 			
 				html += '<div  style="width:inherit; height:inherit; position:absolute; z-index: 1; padding-right: 5px;line-height: 23px; text-align:right; left: 0px;">' + 
-				'<span style="padding-left:4px; line-height: 23px;" >' + sProgress + '%</span>' +
+				'<span style="padding-left:4px; line-height: 23px;" > ['+ progress +'/'+ duration +' IM]</span>' +
 				'<i class="fa fa-exclamation-triangle" style="padding-left:4px; line-height: 23px;" ></i></div>';
 				
 				
@@ -216,6 +219,11 @@ airbus.mes.stationtracker.util.Formatter = {
 				return sEndDate ;
 			
 			},	
+			
+			progressDisplayEvent : function(sDuration) {
+				return ((sDuration * 100 * 0.001)/3600).toFixed(4);
+			},
+			
 			stationTrackerStation : function(Station) {
 				return "Station " + Station;
 			},
