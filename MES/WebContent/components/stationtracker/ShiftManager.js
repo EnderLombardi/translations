@@ -716,7 +716,7 @@ airbus.mes.stationtracker.ShiftManager  = {
 			});
 		}
 
-		d1 = his.shifts[this.shifts.length - 1].EndDate;
+		d1 = this.shifts[this.shifts.length - 1].EndDate;
 		d2 = scheduler.date.copy(d1);
 		d2.setMinutes(d2.getMinutes() + scheduler.matrix.timeline.x_size
 				* scheduler.matrix.timeline.x_step);
@@ -725,7 +725,7 @@ airbus.mes.stationtracker.ShiftManager  = {
 			end_date : d2,
 			css : "offtime"
 		});
-		d3 = his.shifts[this.shifts.length - 1].StartDate;
+		d3 = this.shifts[this.shifts.length - 1].StartDate;
 		d4 = scheduler.date.copy(d3);
 		d4.setMinutes(d4.getMinutes() + 5);
 		scheduler.addMarkedTimespan({

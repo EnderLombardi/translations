@@ -67,16 +67,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	},
 
 	onDayPress : function() {
-
-		
-		scheduler.deleteMarkedTimespan();
-		scheduler.addMarkedTimespan({  
-			start_date: airbus.mes.stationtracker.ShiftManager.ShiftSelectedStart,
-			end_date: airbus.mes.stationtracker.ShiftManager.ShiftSelectedEnd,
-		    css:   "shiftCss",
-		});
-		scheduler.updateView();
-
+	
 //		scheduler.addMarkedTimespan({  
 //			start_date: airbus.mes.stationtracker.ShiftManager.ShiftSelectedStart,
 //			end_date: airbus.mes.stationtracker.ShiftManager.ShiftSelectedEnd,
