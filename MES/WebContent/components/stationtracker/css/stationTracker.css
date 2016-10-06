@@ -29,8 +29,9 @@
 height: 0rem;
 }
 .partialConfHeader .sapUxAPObjectPageHeaderIdentifier{
-	background-color :#303539 !important;
-}
+	background-color: #0085AD !important;
+/* 	background-color :#303539 !important;
+ */}
 
 .whitePartialConfHeader .sapUxAPObjectPageHeaderIdentifierTitle{
 	color : white !important;
@@ -499,4 +500,11 @@ div#SPStatusInd.progressBarOP.sapMBarChild.sapMPI{
 
 .noFooterDialog .sapMDialogStretchContent{
 	height: 100% !important;
+}
+.closeWorklistCss .sapUxAPObjectPageHeaderActionButtonHideText .sapMBtnInner.sapMBtnIconFirst{
+	 color : white;
+	 padding-left: 0rem;
+}
+.toolbarSeparatorWhite {
+	 background: white !important;
 }
