@@ -298,7 +298,7 @@ div#iconTabBar--header {
 .offtime {
 	/* background-color: #ffa749; */
 	/* opacity: 0.25; */
-	background-image: url(../mes_aos_gui/model/img/fat_lines.png);
+	background-image:  url('./img/fat_lines.png');
 }
 
 .begin_shifht {

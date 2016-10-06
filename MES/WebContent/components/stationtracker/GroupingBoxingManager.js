@@ -402,11 +402,16 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 		scheduler.init(sap.ui.getCore().byId("stationTrackerView").getId() + "--test", new Date(ShiftManager.currentFullDate), "timeline");
 		}else{scheduler.init(sap.ui.getCore().byId("stationTrackerView").getId() + "--test" ,new Date("04/10/2016"), "timeline");
 		};
-		scheduler.clearAll();
-	     
-	     scheduler.xy.scroll_width=20;
-	     scheduler.parse(aBox,"json");
 		
+		scheduler.clearAll();
+		scheduler.deleteMarkedTimespan();
+		
+	    scheduler.xy.scroll_width=20;
+	    scheduler.parse(aBox,"json");
+		
+	    airbus.mes.stationtracker.ShiftManager.addMarkedShifts();
+	    
+	    
 	}
 	
 }

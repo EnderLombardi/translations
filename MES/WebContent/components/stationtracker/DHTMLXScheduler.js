@@ -41,29 +41,37 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
                         scheduler.eventId.forEach(function(el) { scheduler.detachEvent(el) });
                         scheduler.eventId = [];
                         
-
-						scheduler.createTimelineView({
-								section_autoheight: false,
-								name:	"timeline",
-								x_unit:	"minute",
-								x_date:	"%H:%i",
-								x_step : 30,
-								x_size : 18,
-								x_start : 0,
-								//x_length : 18,
-								y_unit:	[],
-								y_property:	"section_id",
-								render:"tree",
-								folder_dy: 50,
-								dy: 30,
-								
-							});
-						//Shift Management
-
-						airbus.mes.stationtracker.ShiftManager.init(airbus.mes.stationtracker.GroupingBoxingManager.shiftNoBreakHierarchy);
-						var ShiftManager = airbus.mes.stationtracker.ShiftManager;
-						
-						///////////////////////////////////////////////////////
+                       
+                        scheduler.createTimelineView({
+							section_autoheight: false,
+							name:	"timeline",
+							x_unit:	"minute",
+							x_date:	"%H:%i",
+							x_step : 30,
+							x_size : 18,
+							x_start : 0,
+							//x_length : 18,
+							y_unit:	[],
+							y_property:	"section_id",
+							render:"tree",
+							folder_dy: 50,
+							dy: 30,
+														
+						});
+                        
+                        //Shift Management
+                        airbus.mes.stationtracker.ShiftManager.init(airbus.mes.stationtracker.GroupingBoxingManager.shiftNoBreakHierarchy);
+                    	var ShiftManager = airbus.mes.stationtracker.ShiftManager;
+                       
+                    	scheduler.ignore_timeline = ShiftManager.bounded("isDateIgnored");
+						scheduler.templates.timeline_date = ShiftManager.bounded("timelineHeaderTitle");
+						scheduler.date.timeline_start = ShiftManager.bounded("adjustSchedulerXStart");
+						scheduler.date.add_timeline_old = scheduler.date.add_timeline;
+						scheduler.date.add_timeline = ShiftManager.bounded("timelineAddStep");
+						//////////////////////////////////////////////////////
+                                                
+                        
+                       
 						scheduler.eventId.push ( scheduler.attachEvent("onEventDrag", function SchedStartChange(ev, mode, e) {
 //							// any custom logic here
 //						//	console.log(new Date(this.getEvent(ev).end_date.getTime()));
@@ -114,13 +122,10 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 //								}));
 						
 						
-						////////////////////////////////////////////////////
+					
 						
 						
-						scheduler.ignore_timeline = ShiftManager.bounded("isDateIgnored");
-						ShiftManager.addMarkedShifts();
-					     
-						scheduler.templates.timeline_date = ShiftManager.bounded("timelineHeaderTitle");
+			
 						scheduler.eventId.push(scheduler.attachEvent("onBeforeTodayDisplayed", function() {
 							
 							ShiftManager.step = 0;
@@ -130,10 +135,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 							return true;
 
 						}));
-						scheduler.date.timeline_start = ShiftManager.bounded("adjustSchedulerXStart");
-						scheduler.date.add_timeline_old = scheduler.date.add_timeline;
-						scheduler.date.add_timeline = ShiftManager.bounded("timelineAddStep");
-						
+					
 						//
 						/* 	Custom Y group display */
 
