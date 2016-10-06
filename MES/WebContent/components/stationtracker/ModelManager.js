@@ -16,8 +16,7 @@ airbus.mes.stationtracker.ModelManager = {
 			core.setModel(new sap.ui.model.json.JSONModel(),"shiftsModel"); // Shifts model
 			core.setModel(new sap.ui.model.json.JSONModel(),"affectationModel"); 
 			core.setModel(new sap.ui.model.json.JSONModel(),"unPlannedModel"); // Unplanned model
-			
-			//core.setModel(new sap.ui.model.json.JSONModel(),"stationTrackerShift");	//Shifts for station tracker
+			core.setModel(new sap.ui.model.json.JSONModel(),"stationTrackerShift");	//Shifts for station tracker
 			
 			core.getModel("stationTrackerRModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onStationTrackerLoad);
 			core.getModel("stationTrackerIModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onStationTrackerLoad);
@@ -113,10 +112,18 @@ airbus.mes.stationtracker.ModelManager = {
 		        var element = {};
 		        element.id = i;
 		        element.value = prop;
+		        element.visible = airbus.mes.stationtracker.ShiftManager.dayDisplay;
 		        modelarray.push(element);
 		        i++;
 		    }
-			oView.setModel(new sap.ui.model.json.JSONModel(modelarray),"stationTrackerShift");
+			oView.getModel("stationTrackerShift").setData( modelarray );
+			oView.getModel("stationTrackerShift").refresh();
+			airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(0);
+			//oView.setMoairbus.mes.stationtracker.oViewdel(new sap.ui.model.json.JSONModel(modelarray),"stationTrackerShift");
+			
+			var toolbarDateId = airbus.mes.stationtracker.oView.byId("toolbarDate").sId;
+			$("div[id="+toolbarDateId+"]").contents().remove();
+			$("div[id="+toolbarDateId+"]").append($("div[class='dhx_cal_date']").contents().clone());
 			
 		},
 		

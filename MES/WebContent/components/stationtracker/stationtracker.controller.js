@@ -1,3 +1,5 @@
+jQuery.sap.require("airbus.mes.stationtracker.util.Formatter");
+
 sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 
 	/**
@@ -39,10 +41,11 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	},
 
 	onShiftPress : function() {
-
+		
+	
 		airbus.mes.stationtracker.ShiftManager.shiftDisplay = true;
 		airbus.mes.stationtracker.ShiftManager.dayDisplay = false;
-
+		
 		scheduler.matrix['timeline'].x_unit = 'minute';
 		scheduler.matrix['timeline'].x_step = 30;
 		//scheduler.matrix['timeline'].x_size = 18;
@@ -59,10 +62,21 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		for (var i = 0; i < $("select[class='selectBoxStation']").length; i++) {
 			$("select[class='selectBoxStation']").eq(i).remove();
 		}
+		
+		airbus.mes.stationtracker.ModelManager.loadStationTrackerShift();
 	},
 
 	onDayPress : function() {
+
 		
+		scheduler.deleteMarkedTimespan();
+		scheduler.addMarkedTimespan({  
+			start_date: airbus.mes.stationtracker.ShiftManager.ShiftSelectedStart,
+			end_date: airbus.mes.stationtracker.ShiftManager.ShiftSelectedEnd,
+		    css:   "shiftCss",
+		});
+		scheduler.updateView();
+
 //		scheduler.addMarkedTimespan({  
 //			start_date: airbus.mes.stationtracker.ShiftManager.ShiftSelectedStart,
 //			end_date: airbus.mes.stationtracker.ShiftManager.ShiftSelectedEnd,
@@ -85,6 +99,8 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		};
 		scheduler.config.preserve_length = true;
 		scheduler.updateView(airbus.mes.stationtracker.ShiftManager.currentShiftStart);
+		
+		airbus.mes.stationtracker.ModelManager.loadStationTrackerShift();
 	},
 
 	onInitialPlanPress : function() {

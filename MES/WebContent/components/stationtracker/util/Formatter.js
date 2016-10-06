@@ -85,6 +85,14 @@ airbus.mes.stationtracker.util.Formatter = {
 					return "None";
 				};				
 			},
+			isDayTimeline : function() {
+				if(airbus.mes.stationtracker.ShiftManager.dayDisplay === undefined) {
+					return false;
+				} else {
+					return airbus.mes.stationtracker.ShiftManager.dayDisplay;
+				}
+		
+			},
 			transformRescheduleDate : function(oDate) {
 				var today = oDate;
 				var aDate = [];

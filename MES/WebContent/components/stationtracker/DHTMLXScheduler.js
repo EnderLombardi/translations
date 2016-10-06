@@ -291,20 +291,19 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 							if ($("div[class='dhx_cal_next_button']").length === 0) {
 								$("div[class='dhx_cal_header']").append(("<div class='dhx_cal_next_button' Style='float:right; width:30px;'></div>"));
 								$("div[class='dhx_cal_next_button']").click(function() {
-									scheduler._click.dhx_cal_next_button()
+									scheduler._click.dhx_cal_next_button();
+									airbus.mes.stationtracker.ModelManager.loadStationTrackerShift();
 								});
 							}
 
 							if ($("div[class='dhx_cal_prev_button']").length === 0) {
 								$("div[class='dhx_cal_header']").append(("<div class='dhx_cal_prev_button' Style='float:right; width:30px;'></div>"));
 								$("div[class='dhx_cal_prev_button']").click(function() {
-									scheduler._click.dhx_cal_prev_button()
+									scheduler._click.dhx_cal_prev_button();
+									airbus.mes.stationtracker.ModelManager.loadStationTrackerShift();
 								});
 							}
 							/* Listbox */
-
-
-
 //							$("select[class='selectShift']").setVisible(airbus.mes.stationtracker.ShiftManager.dayDisplay); // bad
 //							var options = airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy[airbus.mes.stationtracker.ShiftManager.current_day];
 //							if (airbus.mes.stationtracker.ShiftManager.dayDisplay === true && $("select[class='selectBoxStation']").length === 0 ) {		
@@ -362,10 +361,6 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 //								airbus.mes.stationtracker.ShiftManager.ShiftSelectedEnd = undefined;
 //							}							
 //									
-
-							var toolbarDateId = airbus.mes.stationtracker.oView.byId("toolbarDate").sId;
-							$("div[id="+toolbarDateId+"]").contents().remove();
-							$("div[id="+toolbarDateId+"]").append($("div[class='dhx_cal_date']").contents().clone());
 						
 							}));
 
