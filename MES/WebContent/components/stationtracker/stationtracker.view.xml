@@ -218,7 +218,7 @@
 						<core:Item text="WorkOrder" key="WORKORDER_ID"/>
 					</Select>
 					<Label text="Shift : "  visible= "{ path : 'stationTrackerShift>/0/visible', formatter : 'airbus.mes.stationtracker.util.Formatter.isDayTimeline' }" />
-					<Select id="selectShift" class="sapUiTinyMarginBeginEnd comboBoxStyle selectShift" change="" items="{ path : 'stationTrackerShift>/' }" visible= "{ path : 'stationTrackerShift>/0/visible', formatter : 'airbus.mes.stationtracker.util.Formatter.isDayTimeline' }" >
+					<Select id="selectShift" class="sapUiTinyMarginBeginEnd comboBoxStyle selectShift" change="changeShift" items="{ path : 'stationTrackerShift>/' }" visible= "{ path : 'stationTrackerShift>/0/visible', formatter : 'airbus.mes.stationtracker.util.Formatter.isDayTimeline' }" >
 						<core:Item key="{stationTrackerShift>id}" text="{stationTrackerShift>value}" />
 					</Select>
 					<ToolbarSpacer />

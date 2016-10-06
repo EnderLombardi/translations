@@ -215,6 +215,8 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		GroupingBoxingManager.box = sap.ui.getCore().byId("stationTrackerView").byId("selectBox").getSelectedKey();
 
 		GroupingBoxingManager.parseOperation(GroupingBoxingManager.group, GroupingBoxingManager.box);
+		// Need render for display marked shift 
+		scheduler.updateView();
 	},
 
 	changeBox : function() {
@@ -225,6 +227,8 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		GroupingBoxingManager.box = sap.ui.getCore().byId("stationTrackerView").byId("selectBox").getSelectedKey();
 
 		GroupingBoxingManager.parseOperation(GroupingBoxingManager.group, GroupingBoxingManager.box);
+		// Need render for display marked shift 
+		scheduler.updateView();
 
 	},
 	onReschedulePress : function(oEvent) {
@@ -287,20 +291,35 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 
 		var oList = sap.ui.getCore().byId("worklistPopover--myList"); //TODO : change access to list
 		var aContext = oList.getSelectedContexts(true);
-		
-		
-		
-		
-		console.log("toto");
-		
-		
-		
-		
+	console.log("toto");
+			
 	},
 	
 	onUnplannedClose : function() {
 		
 		
-	}	
+	},	
+	
+	changeShift : function() {
+		
+		airbus.mes.stationtracker.ShiftManager.ShiftSelected = airbus.mes.stationtracker.oView.byId("selectShift").getSelectedItem().getText();
+		
+		var intervals = airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy[airbus.mes.stationtracker.ShiftManager.current_day][airbus.mes.stationtracker.ShiftManager.ShiftSelected];
+				
+		airbus.mes.stationtracker.ShiftManager.ShiftSelectedStart = intervals[0].beginDateTime;
+		airbus.mes.stationtracker.ShiftManager.ShiftSelectedEnd = intervals[intervals.length - 1].endDateTime;
+		// remove previous marker
+		scheduler.deleteMarkedTimespan( airbus.mes.stationtracker.ShiftManager.ShiftMarkerID );
+		
+		airbus.mes.stationtracker.ShiftManager.ShiftMarkerID = scheduler.addMarkedTimespan({  
+			start_date: airbus.mes.stationtracker.ShiftManager.ShiftSelectedStart,
+			end_date: airbus.mes.stationtracker.ShiftManager.ShiftSelectedEnd,
+		    css:   "shiftCss",
+		});
+		
+		
+		scheduler.updateView();
+		
+	},
 
 });

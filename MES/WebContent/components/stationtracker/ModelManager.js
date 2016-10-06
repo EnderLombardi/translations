@@ -116,6 +116,7 @@ airbus.mes.stationtracker.ModelManager = {
 		        modelarray.push(element);
 		        i++;
 		    }
+			
 			oView.getModel("stationTrackerShift").setData( modelarray );
 			oView.getModel("stationTrackerShift").refresh();
 			airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(0);

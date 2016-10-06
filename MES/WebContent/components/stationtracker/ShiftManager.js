@@ -7,7 +7,6 @@ airbus.mes.stationtracker.ShiftManager  = {
 	dayDisplay : undefined,
 	shiftDisplay :true,
 	fSwipe: false,
-	truc : 0,
 	//Variables for shift combobox Day view
 	BoxSelected : 0,
 	ShiftSelected : undefined,
@@ -283,7 +282,7 @@ airbus.mes.stationtracker.ShiftManager  = {
 		if (this.shifts.length === 0)
 		return scheduler.date.add_timeline_old(date, step, mode);
 
-		var c = this.closestShift(new Date(date));
+		var c = this.closestShift(airbus.mes.stationtracker.ShiftManager.currentShiftStart);
 
 		if ( this.dayDisplay ) {
 		
@@ -317,7 +316,7 @@ airbus.mes.stationtracker.ShiftManager  = {
 					} else {
 						
 						var dNewShift = this.shifts[a].StartDate; 
-						this.adjustSchedulerXStart(dNewShift);
+						//this.adjustSchedulerXStart(dNewShift);
 						return dNewShift;
 					}
 				}
@@ -352,7 +351,7 @@ airbus.mes.stationtracker.ShiftManager  = {
 				
 		this.currentFullDateSwipping = d;
 		
-		d = this.adjustSchedulerXStart(d);
+		//d = this.adjustSchedulerXStart(d);
 		this.step = 0;
 		return d;
 
@@ -527,25 +526,22 @@ airbus.mes.stationtracker.ShiftManager  = {
 //			date  = oFormatter.jsDateFromDayTimeStr(this.shifts[c].StartDate);
 //			this.firstTimelineStart = false;
 //		};
-//		
-		if (this.fSwipe) {
 
-			this.truc += 1;
 			
-			if (this.truc === 2) {
+		if ( this.fSwipe ) {	
 				
 				this.truc = 0;
-				this.fSwipe = false;
 				return new Date(date);
-			}
-
 		}
-			
+
 		if ( this.shiftDisplay ) {
 		
 	    scheduler.matrix.timeline.x_size = Math.floor((new Date(this.shifts[c].EndDate) - new Date(this.shifts[c].StartDate))/1000/60/30);
-	   
-	    return new Date( this.shifts[c].StartDate );
+	  	  
+	    date = new Date(this.shifts[c].StartDate)
+	    //.setMinutes(00)
+	    
+	    return new Date( date.setMinutes(00) );
 	    
 		}
 		
@@ -610,7 +606,7 @@ airbus.mes.stationtracker.ShiftManager  = {
 			/**Compute the number of 1hour step needed to display all the time between start and day of the current day */ 
 		    scheduler.matrix.timeline.x_size += Math.floor((new Date(fEndDate) - new Date(fStartDate))/1000/60/60);
 		   
-			return new Date ( fStartDate );
+			return new Date (new Date ( fStartDate ).setMinutes(00));
 		    
 			}
 		

@@ -12,7 +12,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 	parseShift : function()  {
 		
 	// Tree Shift Model	
-	var oHierachy = airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy;
+	var oHierachy = airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy = {};
 	var oModelShift = sap.ui.getCore().getModel("shiftsModel");
 	var oFormatter = airbus.mes.stationtracker.util.Formatter;
 	
@@ -31,9 +31,9 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 			
 			oHierachy[el.day] = {};
 		}
-		if ( !oHierachy[el.day][el.shiftName] ) {
+		if ( !oHierachy[el.day][el.shiftID] ) {
 			
-			oHierachy[el.day][el.shiftName] = [];
+			oHierachy[el.day][el.shiftID] = [];
 		}
 		
 		
@@ -43,10 +43,10 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 				"endDateTime" : oFormatter.jsDateFromDayTimeStr(el.endDateTime),
 		};
 		
-		oHierachy[el.day][el.shiftName].push(oShift);
+		oHierachy[el.day][el.shiftID].push(oShift);
 	});
 	// Shift Model (without breaks)
-	var oHierachy2 = airbus.mes.stationtracker.GroupingBoxingManager.shiftNoBreakHierarchy;	
+	var oHierachy2 = airbus.mes.stationtracker.GroupingBoxingManager.shiftNoBreakHierarchy = [];
 	var oFormatter = airbus.mes.stationtracker.util.Formatter;
 
 		for( var i in oHierachy ) { 
@@ -413,7 +413,6 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 	    scheduler.parse(aBox,"json");
 		
 	    airbus.mes.stationtracker.ShiftManager.addMarkedShifts();
-	    
 	    
 	}
 	

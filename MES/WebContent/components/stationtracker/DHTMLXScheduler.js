@@ -363,71 +363,8 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 //									
 						
 							}));
-
-							var options = airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy[airbus.mes.stationtracker.ShiftManager.current_day];
-							if (airbus.mes.stationtracker.ShiftManager.dayDisplay === true && $("select[class='selectBoxStation']").length === 0 ) {		
-								$("div[class='dhx_cal_header']").append("<select class='selectBoxStation' id='selectBoxStation' ></select>");
-								var i = 0;
-								for (var prop in options) {
-							        // skip loop if the property is from prototype
-							        if(!options.hasOwnProperty(prop)) continue;
-							        if (i != airbus.mes.stationtracker.ShiftManager.BoxSelected)
-							        {	
-							        	$("select[class='selectBoxStation']").append("<option value='"+prop+"'>"+prop+"</option>");
-							        }
-							        else
-							        {
-							        	$("select[class='selectBoxStation']").append("<option value='"+prop+"' selected='selected'>"+prop+"</option>");
-							        	airbus.mes.stationtracker.ShiftManager.ShiftSelected = prop;
-							        	var intervals = airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy[airbus.mes.stationtracker.ShiftManager.current_day][airbus.mes.stationtracker.ShiftManager.ShiftSelected];
-										airbus.mes.stationtracker.ShiftManager.ShiftSelectedStart = intervals[0].beginDateTime;
-										airbus.mes.stationtracker.ShiftManager.ShiftSelectedEnd = intervals[intervals.length - 1].endDateTime;
-										scheduler.deleteMarkedTimespan();
-										scheduler.addMarkedTimespan({  
-											start_date: airbus.mes.stationtracker.ShiftManager.ShiftSelectedStart,
-											end_date: airbus.mes.stationtracker.ShiftManager.ShiftSelectedEnd,
-										    css:   "shiftCss",
-										});
-							        }
-							        i++;
-							    }
-								 $("select[class='selectBoxStation']").change(function(){
-								this.options[this.selectedIndex].selected = true;
-								airbus.mes.stationtracker.ShiftManager.BoxSelected = this.selectedIndex;
-								airbus.mes.stationtracker.ShiftManager.ShiftSelected = this.options[this.selectedIndex].value;
-								var intervals = airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy[airbus.mes.stationtracker.ShiftManager.current_day][airbus.mes.stationtracker.ShiftManager.ShiftSelected];
-								airbus.mes.stationtracker.ShiftManager.ShiftSelectedStart = intervals[0].beginDateTime;
-								airbus.mes.stationtracker.ShiftManager.ShiftSelectedEnd = intervals[intervals.length - 1].endDateTime;
-								scheduler.deleteMarkedTimespan();
-								scheduler.addMarkedTimespan({  
-									start_date: airbus.mes.stationtracker.ShiftManager.ShiftSelectedStart,
-									end_date: airbus.mes.stationtracker.ShiftManager.ShiftSelectedEnd,
-								    css:   "shiftCss",
-								});
-								scheduler.updateView();
-
-
-
-								 
-							 });
-							}
-							else if (airbus.mes.stationtracker.ShiftManager.shiftDisplay === true)
-							{
-								scheduler.deleteMarkedTimespan();
-								$("select[class='selectBoxStation']").length = 0;
-								airbus.mes.stationtracker.ShiftManager.BoxSelected = 0;
-								airbus.mes.stationtracker.ShiftManager.ShiftSelected = undefined;
-								airbus.mes.stationtracker.ShiftManager.ShiftSelectedStart = undefined;
-								airbus.mes.stationtracker.ShiftManager.ShiftSelectedEnd = undefined;
-							}							
-									
-							 /* Replace date in Toolbar */
-							var toolbarDateId = airbus.mes.stationtracker.oView.byId("toolbarDate").sId;
-							$("div[id="+toolbarDateId+"]").contents().remove();
-							$("div[id="+toolbarDateId+"]").append($("div[class='dhx_cal_date']").contents().clone());
 						
-				
-							
+											
 						scheduler.eventId.push ( scheduler.attachEvent("onClick", function(id, e) {	
 							switch(airbus.mes.stationtracker.GroupingBoxingManager.box){
 							case "OPERATION_ID" : 
