@@ -880,6 +880,3 @@ airbus.mes.stationtracker.ShiftManager  = {
 	
 
 }
-
-
->>>>>>> 1a18d3d Dynamic listbox
