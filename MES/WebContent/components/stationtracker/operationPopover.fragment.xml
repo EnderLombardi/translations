@@ -1,6 +1,6 @@
 <core:FragmentDefinition xmlns="sap.m"
 	xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout"
-	xmlns:u="sap.ui.unified" xmlns:x="sap.uxap">
+	xmlns:u="sap.ui.unified" xmlns:x="sap.uxap" xmlns:custom="airbus.mes.stationtracker">
 	<Dialog id="operationPopoverID" showHeader="false"
 		contentWidth="770px" contentHeight="395px" verticalScrolling="false" class="noFooterDialog">
 		<content>
@@ -40,19 +40,31 @@
 						</HBox> -->
 					</HBox>
 					<HBox class="sapUiSmallMarginTop" >
-						<Label text="Status : " />
-						<Label id="SPGeneralStatus" text="{ path : 'WorkListModel>/0/progress' , formatter: 'airbus.mes.stationtracker.util.Formatter.progress2status' }" class="sapUiTinyMarginBeginEnd" />
-						<Label id="SPGeneralStatusVal" text="{ path : 'WorkListModel>/0/progress' , formatter: 'airbus.mes.stationtracker.util.Formatter.progress2percent' }" />
+						<Label text="Status : " class="italicText"/>
+						<Label id="SPGeneralStatus" text="{ path : 'WorkListModel>/0/progress' , formatter: 'airbus.mes.stationtracker.util.Formatter.progress2status' }" class="sapUiTinyMarginBeginEnd italicText"  />
+						<Label id="SPGeneralStatusVal" text="{ path : 'WorkListModel>/0/progress' , formatter: 'airbus.mes.stationtracker.util.Formatter.progress2percent' }" class="italicText" />
 					</HBox>
 					<Panel expandable="true" expanded="false" width="100%"
 						backgroundDesign="Transparent" class="sapUiSmallMarginTopBottom">
 						<headerToolbar>
-							<Toolbar height="1.2rem">
-								<ProgressIndicator id="SPStatusInd"
+							<Toolbar>
+							<!-- 	<ProgressIndicator id="SPStatusInd"
 									percentValue="{ path : 'WorkListModel>/0/progress' , formatter : 'airbus.mes.stationtracker.util.Formatter.progress2float' }"
 									displayValue="{ path : 'WorkListModel>/0/progress' , formatter : 'airbus.mes.stationtracker.util.Formatter.progress2percent' }" showValue="true" state="Success"
-									width="100%" class="progressBarOP" />
+									width="100%" class="progressBarOP" /> -->
 <!-- 								<Slider value="{ path : 'WorkListModel>/0/progress' , formatter : 'airbus.mes.stationtracker.util.Formatter.progress2float' }" width="50%" class="sapUiSmallMarginBottom" /> -->
+							
+									<custom:customProgressIndicator
+									width="100%" state="sap.ui.core.ValueState.Success" status="{WorkListModel>/0/status}"
+									isAndon="{WorkListModel>/0/andons}"
+									displayValue="{ parts: [ 'WorkListModel>/0/operationId','WorkListModel>/0/operationDescription','WorkListModel>/0/progress','WorkListModel>/0/totalDuration' ], formatter: 'airbus.mes.stationtracker.util.Formatter.displayValueIM'}"
+									percentValue="{ parts: [ 'WorkListModel>/0/progress','WorkListModel>/0/totalDuration' ], formatter: 'airbus.mes.stationtracker.util.Formatter.percentValue'}"
+									>
+ 									<custom:layoutData>
+										<FlexItemData baseSize="60%" growFactor="1"></FlexItemData>
+									</custom:layoutData>
+								</custom:customProgressIndicator>
+								
 							</Toolbar>
 						</headerToolbar>
 						<content>
@@ -67,10 +79,10 @@
 							<Label id="SPOperatorName" text="Luisa T." />
 						</HBox>
 						<HBox width="50%" justifyContent="End" id="SPIcons">
-							<Button id="SPIcon1" icon="sap-icon://wrench" type="Transparent"
-								enabled="false"></Button>
-							<Button id="SPIcon2" icon="sap-icon://wrench" type="Transparent"
-								enabled="false"></Button>
+							<Button id="SPIcon1" icon="../components/stationtracker/css/img/3.png" type="Transparent" 
+								enabled="true"></Button>
+							<Button id="SPIcon2" icon="sap-icon://work-history" type="Transparent"
+								enabled="true"></Button>
 						</HBox>
 					</HBox>
 				</VBox>
@@ -133,21 +145,21 @@
 		<HBox justifyContent="SpaceAround">
 
 			<VBox class="commentConfirmCss">
-				<HBox>
+				<HBox class="sapUiSmallMarginBottom">
 					<Label text="ScheduleStart:" class="sapUiTinyMarginEnd" />
 					<Text id="rescheduleStart" text="18/01/2016 06:00:00" />
 				</HBox>
-				<HBox>
+				<HBox class="sapUiSmallMarginBottom">
 
 					<Label text="ScheduleEnd:" class="sapUiTinyMarginEnd" />
 					<Text id="rescheduleEnd" text="18/01/2016 11:20:00" />
 				</HBox>
-				<HBox>
+				<HBox class="sapUiSmallMarginBottom">
 
 					<Label text="AcpngStart:" class="sapUiTinyMarginEnd" />
 					<Text id="rescheduleStartAcpng" text="22/01/2016 00:00:00" />
 				</HBox>
-				<HBox>
+				<HBox class="sapUiSmallMarginBottom">
 
 					<Label text="AcpngEnd: " class="sapUiTinyMarginEnd" />
 					<Text id="rescheduleEndAcpng" text="19/02/2016 00:00:00" />

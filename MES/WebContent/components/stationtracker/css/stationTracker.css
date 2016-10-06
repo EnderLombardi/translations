@@ -508,3 +508,9 @@ div#SPStatusInd.progressBarOP.sapMBarChild.sapMPI{
 .toolbarSeparatorWhite {
 	 background: white !important;
 }
+.italicText {
+	    font-style: italic;
+}
+.smallIconButton .sapMBtnIcon{
+	width: 10%;
+}
