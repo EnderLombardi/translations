@@ -847,4 +847,3 @@ airbus.mes.stationtracker.ShiftManager  = {
 }
 
 
->>>>>>> 960181e marked shift
