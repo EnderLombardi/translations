@@ -7,9 +7,20 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	 * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
 	 * @memberOf components.stationtracker.stationtracker
 	 */
-	//	onInit: function() {
-	//
-	//	},
+		onInit: function() {
+			
+//		Retrieve all value of Production Group
+		var oModel = airbus.mes.stationtracker.ModelManager.ProductionGroup;
+		var aProdGroup = oModel.getData().Rowsets.Rowset[0].Row;
+		var aItems = [];
+		
+		for (var i = 0; i < aProdGroup.length; i++) {
+			aItems.push(aProdGroup[i].PROD_GROUP);
+		}
+		
+		this.getView().byId("selectProductionGroup").setSelectedKeys(aItems);	
+			
+		},
 	/**
 	 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
 	 * (NOT before the first rendering! onInit() is used for that one!).
@@ -225,9 +236,13 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	},
 	
 	onProdGroupSelFinish : function(oEvent) {
+//		retrieve selected keys
 		var sSelectKeys = oEvent.getSource().getSelectedKeys();
 		
+//		Filter the stationtracker model with current production group
+		var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
 		
+		GroupingBoxingManager.parseOperation(GroupingBoxingManager.group,GroupingBoxingManager.box);		
 	},
 	
 	changeGroup : function() {

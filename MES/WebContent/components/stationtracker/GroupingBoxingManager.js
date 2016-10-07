@@ -80,10 +80,9 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 	groupingBoxing : function(sGroup,sBoxing) {
 		
 		airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy = {};
-		var oHierachy = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy;
+//		var oHierachy = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy;
 		var oModel = sap.ui.getCore().getModel("stationTrackerRModel");
 		var oModelI = sap.ui.getCore().getModel("stationTrackerIModel");
-		var oFormatter = airbus.mes.stationtracker.util.Formatter;
 		
 		// check if model full or not
 		if(oModel.getProperty("/Rowsets/Rowset/0/Row")){              
@@ -120,6 +119,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 		var oHierachy = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy;
 		var oFormatter = airbus.mes.stationtracker.util.Formatter;
 		var oShiftManager = airbus.mes.stationtracker.ShiftManager;
+		var aItems = airbus.mes.stationtracker.oView.byId("selectProductionGroup").getSelectedKeys();
 		
 		oModel.forEach(function(el){
 			
@@ -183,6 +183,12 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 				oHierachy[ssGroup][ssAvLine][ssBox] = [];
 			}
 			
+//			Check curren production group corresponds to production group filter 			
+			if(!aItems.includes(el.PROD_GROUP)){
+				return;
+			}
+			
+			
 			var oOperation = {
 										
 					"shopOrder" : el.WORKORDER_ID, // workOrder
@@ -208,6 +214,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 					//"avlStartDate" : el.avlStartDate,
 					//"avlEndDate" : el.avlEndDate,
 					"avlLine": el.AVL_LINE,
+					"productionGroup":el.PROD_GROUP,
 					//"competency": el.competency,
 					//"rescheduledStarDate": el.rescheduledStarDate,
 					//"rescheduledEndDate": el.rescheduledEndDate,

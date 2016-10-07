@@ -448,7 +448,7 @@
 
                   "REMAINING_TIME": "---",
 
-                  "PROD_GROUP": "test",
+                  "PROD_GROUP": "PG_2",
 
                   "EXECUTION_STATION": "---",
 
@@ -498,11 +498,11 @@
 
                   "NEW_OPERATION_STATUS": "---",
 
-				 													 "ANDONS": 1,
+				  "ANDONS": 1,
 				  
                   "REMAINING_TIME": "---",
 
-                  "PROD_GROUP": "test",
+                  "PROD_GROUP": "PG_2",
 
                   "EXECUTION_STATION": "---",
 
@@ -556,7 +556,7 @@
 				  
                   "REMAINING_TIME": "---",
 
-                  "PROD_GROUP": "test",
+                  "PROD_GROUP": "PG_1",
 
                   "EXECUTION_STATION": "---",
 
@@ -610,7 +610,7 @@
 
                   "REMAINING_TIME": "---",
 
-                  "PROD_GROUP": "test",
+                  "PROD_GROUP": "PG_1",
 
                   "EXECUTION_STATION": "---",
 

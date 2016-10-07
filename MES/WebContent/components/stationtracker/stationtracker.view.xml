@@ -42,7 +42,7 @@
 					<ToolbarSeparator/>
 					<Label text="Production Group" class="sapUiTinyMarginBeginEnd pageHeader pageHeaderBlue" />
  					<MultiComboBox id="selectProductionGroup" class="sapUiTinyMarginBeginEnd comboBoxStyle pageHeader pageHeaderBlue" selectionFinish="onProdGroupSelFinish" items="{ path : 'productionGroupModel>/Rowsets/Rowset/0/Row' }" width="10%">
-						<core:Item text="{productionGroupModel>PROD_GROUP}" />
+						<core:Item key="{productionGroupModel>PROD_GROUP}" text="{productionGroupModel>PROD_GROUP}" />
 					</MultiComboBox> 	
 					</Toolbar>
 				</headerToolbar>
