@@ -224,6 +224,12 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		});		
 	},
 	
+	onProdGroupSelFinish : function(oEvent) {
+		var sSelectKeys = oEvent.getSource().getSelectedKeys();
+		
+		
+	},
+	
 	changeGroup : function() {
 
 		var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
