@@ -217,6 +217,13 @@ color : black;
 	font-family: "Arial", Sans-serif !important;
 	font-size: 14px !important;
 }
+.pageWelcome2 {
+	font-weight : bold;
+	 text-align: center !important;
+	color: white !important;
+	font-family: "Arial", Sans-serif !important;
+	font-size: 14px !important;
+}
 .stationTitle {
 	color: #006CA7 !important;
 	font-family: "Arial", Sans-serif !important;
@@ -488,9 +495,8 @@ padding-left: 40px;
 div#SPStatusInd.progressBarOP.sapMBarChild.sapMPI{
 	border: none;
 }
-
-.sapMPanel>.sapMPanelHdr, .sapMPanelWrappingDiv, .sapMPanelWrappingDivTb{
-	border: none;
+.pageHeaderDialog.sapMDialog>footer{
+	background-color: #0085AD !important;
 }
 
 .begin_shifht {
@@ -514,3 +520,6 @@ div#SPStatusInd.progressBarOP.sapMBarChild.sapMPI{
 .smallIconButton .sapMBtnIcon{
 	width: 10%;
 }
+/* .pageHeaderDialog.sap-desktop .sapMIBar.sapMFooter-CTX {
+background-color: #0085AD !important;
+} */
