@@ -23,6 +23,7 @@ airbus.mes.stationtracker.ModelManager = {
 
 			core.getModel("shiftsModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onShiftsLoad);
 
+			core.setModel(new sap.ui.model.json.JSONModel(),"productionGroupModel"); // production Group model
 	
 
 			var dest;
@@ -49,6 +50,7 @@ airbus.mes.stationtracker.ModelManager = {
 			});
 			
 			this.loadUnplanned();		
+			this.loadProductionGroup();		
 			
 //			this.i18nModel = new sap.ui.model.resource.ResourceModel({
 //				bundleUrl : "i18n/messageBundle.properties",
@@ -97,7 +99,19 @@ airbus.mes.stationtracker.ModelManager = {
 			oViewModel.loadData(this.urlModel.getProperty("urlstationtrackerunplannedactivities") , null, false);		
 			airbus.mes.stationtracker.ModelManager.Unplanned = oViewModel;
 		},	
-		
+		loadProductionGroup : function() {
+			
+			var oData = airbus.mes.settings.ModelManager;
+			var geturlstationtracker = this.urlModel.getProperty('urlproductiongroup');			
+			
+			geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$station", oData.station);
+			geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$plant", oData.plant);
+
+			var oViewModel = sap.ui.getCore().getModel("productionGroupModel");
+			oViewModel.loadData(geturlstationtracker , null, false);		
+			airbus.mes.stationtracker.ModelManager.ProductionGroup = oViewModel;
+			
+		},			
 		loadStationTrackerShift : function()
 		{
 			//stationTrackerShift model

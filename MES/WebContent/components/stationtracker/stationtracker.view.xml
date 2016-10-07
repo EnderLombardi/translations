@@ -39,11 +39,10 @@
  						<Label text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/msn', formatter : 'airbus.mes.stationtracker.util.Formatter.stationTrackerMsn' }" class="pageWelcome sapUiTinyMarginBeginEnd" /> 
 						<Label text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/plant', formatter : 'airbus.mes.stationtracker.util.Formatter.stationTrackerPlant' }" class="pageWelcome sapUiTinyMarginBeginEnd" />
 						<Label text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/line', formatter : 'airbus.mes.stationtracker.util.Formatter.stationTrackerLine' }" class="pageWelcome sapUiTinyMarginBeginEnd" />					
-						<ToolbarSeparator/>
-						<Select id="selectProductionGroup" class="sapUiTinyMarginBeginEnd comboBoxStyle pageHeader pageHeaderBlue" change="changeGroup">
-						<core:Item text="PG 1" key="a"/>
-						<core:Item text="PG 2" key="b" />
-						</Select>
+					<ToolbarSeparator/>
+ 					<Select id="selectProductionGroup" class="sapUiTinyMarginBeginEnd comboBoxStyle pageHeader pageHeaderBlue" change="changeGroup" items="{ path : 'productionGroupModel>/Rowsets/Rowset/0/Row' }">
+						<core:Item text="{productionGroupModel>PROD_GROUP}" />
+					</Select> 	
 					</Toolbar>
 				</headerToolbar>
 				<content>

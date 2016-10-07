@@ -15,9 +15,24 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	 * (NOT before the first rendering! onInit() is used for that one!).
 	 * @memberOf components.stationtracker.stationtracker
 	 */
-	//	onBeforeRendering: function() {
-	//
-	//	},
+		onBeforeRendering: function() {
+			
+			var temp = [];
+			var binding = this.getView().byId("selectProductionGroup").getBinding("items");
+//			path correspond to relatif path after binding, here absolute path is /Rowsets/Rowset/0/Row			
+			var Filter = new sap.ui.model.Filter({ path : "PROD_GROUP",
+										           test : function(value) {
+										                     if (temp.indexOf(value) == -1) {
+										                            temp.push(value)
+										                            return true;
+										                     } else {
+										                            return false;
+										                     }
+										              }
+													});	
+			
+			binding.filter(Filter);		
+		},
 	/**
 	 * Called when the View has been rendered (so its HTML is part of the document). Post-rendering manipulations of the HTML could be done here.
 	 * This hook is the same one that SAPUI5 controls get after being rendered.
