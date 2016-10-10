@@ -89,7 +89,9 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			$("select[class='selectBoxStation']").eq(i).remove();
 		}
 		
+		scheduler.deleteMarkedTimespan( airbus.mes.stationtracker.ShiftManager.ShiftMarkerID );
 		airbus.mes.stationtracker.ModelManager.loadStationTrackerShift();
+		scheduler.updateView();
 	},
 
 	onDayPress : function() {

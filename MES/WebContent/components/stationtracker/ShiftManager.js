@@ -538,10 +538,10 @@ airbus.mes.stationtracker.ShiftManager  = {
 		
 	    scheduler.matrix.timeline.x_size = Math.floor((new Date(this.shifts[c].EndDate) - new Date(this.shifts[c].StartDate))/1000/60/30);
 	  	  
-	    date = new Date(this.shifts[c].StartDate)
+	    //date = new Date(this.shifts[c].StartDate)
 	    //.setMinutes(00)
 	    
-	    return new Date( date.setMinutes(00) );
+	    return new Date( date );
 	    
 		}
 		
