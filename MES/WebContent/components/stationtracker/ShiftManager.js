@@ -345,7 +345,7 @@ airbus.mes.stationtracker.ShiftManager  = {
 		}
 
 		}
-		
+			
 		var d = scheduler.date.copy(this.shifts[c + step].StartDate);
 			
 				

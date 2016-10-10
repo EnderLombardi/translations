@@ -112,7 +112,7 @@ airbus.mes.stationtracker.ModelManager = {
 			airbus.mes.stationtracker.ModelManager.ProductionGroup = oViewModel;
 			
 		},			
-		loadStationTrackerShift : function()
+		selectMyShift : function()
 		{
 			//stationTrackerShift model
 			var oView = airbus.mes.stationtracker.oView;
@@ -134,6 +134,8 @@ airbus.mes.stationtracker.ModelManager = {
 			oView.getModel("stationTrackerShift").setData( modelarray );
 			oView.getModel("stationTrackerShift").refresh();
 			airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(0);
+			airbus.mes.stationtracker.oView.byId("selectShift").fireChange(0)
+			
 			//oView.setMoairbus.mes.stationtracker.oViewdel(new sap.ui.model.json.JSONModel(modelarray),"stationTrackerShift");
 			
 			var toolbarDateId = airbus.mes.stationtracker.oView.byId("toolbarDate").sId;
@@ -149,7 +151,7 @@ airbus.mes.stationtracker.ModelManager = {
 		
 			GroupingBoxingManager.parseOperation(GroupingBoxingManager.group,GroupingBoxingManager.box);
 			
-			airbus.mes.stationtracker.ModelManager.loadStationTrackerShift();
+			airbus.mes.stationtracker.ModelManager.selectMyShift();
 			
 		},
 		loadShifts : function() {

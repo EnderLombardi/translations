@@ -90,7 +90,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		}
 		
 		scheduler.deleteMarkedTimespan( airbus.mes.stationtracker.ShiftManager.ShiftMarkerID );
-		airbus.mes.stationtracker.ModelManager.loadStationTrackerShift();
+		airbus.mes.stationtracker.ModelManager.selectMyShift();
 		scheduler.updateView();
 	},
 
@@ -119,7 +119,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		scheduler.config.preserve_length = true;
 		scheduler.updateView(airbus.mes.stationtracker.ShiftManager.currentShiftStart);
 		
-		airbus.mes.stationtracker.ModelManager.loadStationTrackerShift();
+		airbus.mes.stationtracker.ModelManager.selectMyShift();
 	},
 
 	onInitialPlanPress : function() {
@@ -341,6 +341,8 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	},	
 	
 	changeShift : function() {
+	
+		if ( airbus.mes.stationtracker.ShiftManager.dayDisplay ) {
 		
 		airbus.mes.stationtracker.ShiftManager.ShiftSelected = airbus.mes.stationtracker.oView.byId("selectShift").getSelectedItem().getText();
 		
@@ -349,8 +351,11 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		airbus.mes.stationtracker.ShiftManager.ShiftSelectedStart = intervals[0].beginDateTime;
 		airbus.mes.stationtracker.ShiftManager.ShiftSelectedEnd = intervals[intervals.length - 1].endDateTime;
 		// remove previous marker
-		scheduler.deleteMarkedTimespan( airbus.mes.stationtracker.ShiftManager.ShiftMarkerID );
 		
+		airbus.mes.stationtracker.GroupingBoxingManager.parseOperation(airbus.mes.stationtracker.GroupingBoxingManager.group,airbus.mes.stationtracker.GroupingBoxingManager.box);
+				
+		scheduler.deleteMarkedTimespan( airbus.mes.stationtracker.ShiftManager.ShiftMarkerID );
+			
 		airbus.mes.stationtracker.ShiftManager.ShiftMarkerID = scheduler.addMarkedTimespan({  
 			start_date: airbus.mes.stationtracker.ShiftManager.ShiftSelectedStart,
 			end_date: airbus.mes.stationtracker.ShiftManager.ShiftSelectedEnd,
@@ -360,6 +365,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		
 		scheduler.updateView();
 		
+		}
 	},
 
 });

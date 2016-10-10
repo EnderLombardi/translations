@@ -122,6 +122,7 @@
 					<footer>
 						<Toolbar class="pageHeader">
 
+								<ToolbarSpacer />
 							<Button text="Reschedule" type="Transparent" icon="sap-icon://pending"
 								class="sapUiTinyMarginBeginEnd" press="onReschedulePress">
 							</Button>
@@ -130,12 +131,12 @@
 							<Button text="Add Operator" type="Transparent" icon="sap-icon://company-view"
 								class="sapUiTinyMarginBeginEnd" press="onAssignOpPress">
 							</Button>
-							<ToolbarSeparator class="toolbarSeparatorWhite" />
-
+					<!--  		<ToolbarSeparator class="toolbarSeparatorWhite" />
+ -->
 							<Button text="Set OSW" type="Transparent" icon="sap-icon://forward"
 								class="sapUiTinyMarginBeginEnd" press="onSetOSWPress">
 							</Button>
-							<ToolbarSeparator class="toolbarSeparatorWhite" />
+<!-- 							<ToolbarSeparator class="toolbarSeparatorWhite" />
 
 							<Button text="Confirm Partial" type="Transparent"
 								icon="sap-icon://multi-select" class="sapUiTinyMarginBeginEnd"
@@ -145,7 +146,7 @@
 
 							<Button text="Confirm Total" type="Transparent" icon="sap-icon://accept"
 								class="sapUiTinyMarginBeginEnd" press="onTotalPress">
-							</Button>
+							</Button>  -->
 						</Toolbar>
 					</footer>
 				</Page>

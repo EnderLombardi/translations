@@ -143,8 +143,8 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 		//XXX TODO 	finish PBA
 			if ( airbus.mes.stationtracker.ShiftManager.dayDisplay ) {
 			//permit to DO THE boxing on the only corresponding shift selected in day mode
-			if ( oFormatter.jsDateFromDayTimeStr(el.START_TIME) < oShiftManager.currentShiftEnd &&
-				 oFormatter.jsDateFromDayTimeStr(el.START_TIME) > oShiftManager.currentShiftStart 
+			if ( oFormatter.jsDateFromDayTimeStr(el.START_TIME) < 	airbus.mes.stationtracker.ShiftManager.ShiftSelectedEnd &&
+				 oFormatter.jsDateFromDayTimeStr(el.START_TIME) > airbus.mes.stationtracker.ShiftManager.ShiftSelectedStart 
 				 ) {
 				
 				var ssBox = airbus.mes.stationtracker.ShiftManager.current_day + el[sBoxing];
