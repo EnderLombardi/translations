@@ -140,24 +140,20 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 				
 				var ssAvLine = el.AVL_LINE;
 			}
-		//XXX TODO 	finish PBA
-			if ( airbus.mes.stationtracker.ShiftManager.dayDisplay ) {
+		
+			//if ( airbus.mes.stationtracker.ShiftManager.dayDisplay ) {
 			//permit to DO THE boxing on the only corresponding shift selected in day mode
-			if ( oFormatter.jsDateFromDayTimeStr(el.START_TIME) < 	airbus.mes.stationtracker.ShiftManager.ShiftSelectedEnd &&
-				 oFormatter.jsDateFromDayTimeStr(el.START_TIME) > airbus.mes.stationtracker.ShiftManager.ShiftSelectedStart 
-				 ) {
-				
-				var ssBox = airbus.mes.stationtracker.ShiftManager.current_day + el[sBoxing];
-			} else {
-				
-				var ssBox = el[sBoxing] + "_" + el.OPERATION_ID;
+			var oShift = airbus.mes.stationtracker.ShiftManager.shifts[airbus.mes.stationtracker.ShiftManager.closestShift(oFormatter.jsDateFromDayTimeStr(el.START_TIME))]; 
+			//console.log(oShift);
+						
+			var ssBox = el[sBoxing] + "_" + oShift.day + "-" + oShift.shiftName;
 			
-		}
-			} else {
-				
-				var ssBox = el[sBoxing];
-				
-			}
+		
+//			} else {
+//				
+//				var ssBox = el[sBoxing];
+//				
+//			}
 			
 			
 //			if (sInitial) {
@@ -408,9 +404,13 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 		scheduler.matrix['timeline'].y_unit_original = aElements2;
 		scheduler.callEvent("onOptionsLoad", []);
 		var ShiftManager = airbus.mes.stationtracker.ShiftManager;
-		if(ShiftManager.current_Date !=undefined){
-		scheduler.init(sap.ui.getCore().byId("stationTrackerView").getId() + "--test", new Date(ShiftManager.currentFullDate), "timeline");
-		}else{scheduler.init(sap.ui.getCore().byId("stationTrackerView").getId() + "--test" ,new Date("04/10/2016"), "timeline");
+		
+		if (ShiftManager.current_Date != undefined) {
+			scheduler.init(sap.ui.getCore().byId("stationTrackerView").getId() + "--test", new Date(
+					ShiftManager.currentFullDate), "timeline");
+		} else {
+			scheduler.init(sap.ui.getCore().byId("stationTrackerView").getId() + "--test", new Date("04/10/2016"),
+					"timeline");
 		};
 		
 		scheduler.clearAll();
@@ -419,7 +419,18 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 	    scheduler.xy.scroll_width=20;
 	    scheduler.parse(aBox,"json");
 		
+	    // Display all marker
 	    airbus.mes.stationtracker.ShiftManager.addMarkedShifts();
+	    
+	    if ( airbus.mes.stationtracker.ShiftManager.dayDisplay ) {
+	    
+	    airbus.mes.stationtracker.ShiftManager.ShiftMarkerID = scheduler.addMarkedTimespan({  
+			start_date: airbus.mes.stationtracker.ShiftManager.ShiftSelectedStart,
+			end_date: airbus.mes.stationtracker.ShiftManager.ShiftSelectedEnd,
+		    css:   "shiftCss",
+		});
+	    
+	    }
 	    
 	}
 	
