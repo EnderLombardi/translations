@@ -4,6 +4,36 @@ jQuery.sap.declare("airbus.mes.stationtracker.util.Formatter");
 
 airbus.mes.stationtracker.util.Formatter = {
 		
+		minSizeMinutes : 30,
+
+		sizeMin : function(sEndDate, sStartDate) {
+		
+			var oUtil = airbus.mes.stationtracker.util.Formatter;
+			var oShiftManager = airbus.mes.stationtracker.ShiftManager;
+			var dEndDate = sEndDate;
+			var dStartDate = sStartDate;
+		
+			if (dEndDate - dStartDate < oUtil.minSizeMinutes * 60 * 1000) {
+				if (oShiftManager.closestShift(dStartDate) != -1 && dStartDate > oShiftManager.shifts[0].StartDate) {
+
+					dStartDate.setMinutes(dStartDate.getMinutes() + oUtil.minSizeMinutes);
+
+					while (oShiftManager.isDateIgnored(dStartDate)) {
+
+						dStartDate.setMinutes(dStartDate.getMinutes() + oUtil.minSizeMinutes);
+
+					}
+
+					var sDate = Math.max(dEndDate, dStartDate);
+
+					return new Date(sDate);
+				}
+			}
+		
+			return sEndDate ;
+		
+		},	
+		
 		openFolder :function( bOpen ){
 			
 			if ( bOpen ) {
@@ -190,36 +220,7 @@ airbus.mes.stationtracker.util.Formatter = {
 				
 				return html;
 			},
-			
-			minSizeMinutes : 30,
-
-			sizeMin : function(sEndDate, sStartDate) {
-				
-				var dEndDate = ShiftManager.dateFormatter(sEndDate);
-				var dStartDate = ShiftManager.dateFormatter(sStartDate);
-					
-
-				if (dEndDate - dStartDate < util.Formatter.minSizeMinutes * 60 * 1000) {
-					if (ShiftManager.closestShift(dStartDate) != -1 && dStartDate > ShiftManager.shifts[0].getStartDate()) {
-
-						dStartDate.setMinutes(dStartDate.getMinutes() + util.Formatter.minSizeMinutes);
-
-						while (ShiftManager.isDateIgnored(dStartDate)) {
-
-							dStartDate.setMinutes(dStartDate.getMinutes() + util.Formatter.minSizeMinutes);
-
-						}
-
-						var sDate = Math.max(dEndDate, dStartDate);
-
-						return ModelManager.transformRescheduleDate(new Date(sDate), "no");
-					}
-				}
-			
-				return sEndDate ;
-			
-			},	
-			
+						
 			progressDisplayEvent : function(sDuration) {
 				return ((sDuration * 100 * 0.001)/3600).toFixed(4);
 			},

@@ -8,6 +8,8 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 	//XXX MEHDI TODO
 	group : "CPP_CLUSTER" ,
 	box : "OPERATION_ID",
+	// Group use for special case compute
+	specialGroup : "WORKORDER_ID",
 	
 	parseShift : function()  {
 		
@@ -327,7 +329,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 						sOperationDescription = el.sBox;
 					
 						
-						if ( sBox === "WORKORDER_ID") {
+						if ( sBox === oGroupingBoxingManager.specialGroup) {
 							
 							sOperationDescription = el.shopOrderDescription;
 							
@@ -346,6 +348,9 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 					if (  a.slice(0,2) === "I_" ) {
 						var oOperationInitial = {
 								
+								"box" : e,
+								"group" : i,
+								"avlLine" : a,
 								"type":"I",
 								"text" : sOperationDescription,
 								"section_id" : 	"I_" + airbus.mes.stationtracker.AssignmentManager.idName(i) + "_" + airbus.mes.stationtracker.AssignmentManager.idName(a),
@@ -372,7 +377,8 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 							"section_id" : 	airbus.mes.stationtracker.AssignmentManager.idName(i) + "_" + airbus.mes.stationtracker.AssignmentManager.idName(a),
 							"progress" : sProgress,
 							"start_date" : new Date(Math.min.apply(null,aStartDateRescheduling)),
-							"end_date" : new Date(Math.max.apply(null,aEndDateRescheduling)),
+							"end_date" :  new Date(Math.min.apply(null,aEndDateRescheduling)),
+								//oFormatter.sizeMin(new Date(Math.max.apply(null,aEndDateRescheduling)),new Date(Math.min.apply(null,aStartDateRescheduling))),
 					}
 					
 					aBox.push(oOperationRescheduling);

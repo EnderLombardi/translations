@@ -136,9 +136,18 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		} else {
 
 			airbus.mes.stationtracker.GroupingBoxingManager.showInitial = true;
-			airbus.mes.stationtracker.ModelManager.loadStationTracker("I");
+			//If model is allready load I dont call back the service
+			if ( !sap.ui.getCore().getModel("stationTrackerIModel").getProperty("/Rowsets/Rowset/0/Row") ) {
+				
+				airbus.mes.stationtracker.ModelManager.loadStationTracker("I");
+				
+			} else {
+			
+			GroupingBoxingManager.parseOperation(GroupingBoxingManager.group, GroupingBoxingManager.box);
 			scheduler.updateView();
 		
+			}
+			
 		}
 	},
 

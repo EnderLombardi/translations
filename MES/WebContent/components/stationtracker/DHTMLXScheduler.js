@@ -121,8 +121,24 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 //									// false cancels the operation
 //								}));
 						
+						scheduler.eventId.push(scheduler.attachEvent("onBeforeDrag",function blockReadonly(id) {
+												
+							if (this.getEvent(id).type === "I" ) {
+								
+								return false;
+								
+							} else if ( airbus.mes.stationtracker.GroupingBoxingManager.box === "OPERATION_ID") {
+								
+								return true;
+							} else {
+								
+								return false;
+							}
+			
+						}));
 						
-					
+						//				if (!scheduler.checkEvent("onBeforeDrag")) {
+						
 						
 						
 			
