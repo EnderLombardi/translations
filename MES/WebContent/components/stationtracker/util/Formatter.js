@@ -273,7 +273,7 @@ airbus.mes.stationtracker.util.Formatter = {
 					
 				}
 				
-			}
+			},
 
 			
 			YdisplayRules : function( oSection ) {
@@ -350,6 +350,5 @@ airbus.mes.stationtracker.util.Formatter = {
 				
 				
 			}
-			
->>>>>>> dc1ef96 User affectation
+
 };

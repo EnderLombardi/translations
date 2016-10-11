@@ -362,7 +362,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 								"section_id" : 	"I_" + airbus.mes.stationtracker.AssignmentManager.idName(key) + "_" + airbus.mes.stationtracker.AssignmentManager.idName(key1),
 								"progress" : sProgress,
 								"start_date" : new Date(Math.min.apply(null,aStartDateRescheduling)),
-								"end_date" : new Date(Math.max.apply(null,aEndDateRescheduling)),
+								"end_date" : oFormatter.sizeMin(new Date(Math.max.apply(null,aEndDateRescheduling)),new Date(Math.min.apply(null,aStartDateRescheduling))),
 							}
 						
 						aBox.push(oOperationInitial);
@@ -383,9 +383,8 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 							"section_id" : 	airbus.mes.stationtracker.AssignmentManager.idName(key) + "_" + airbus.mes.stationtracker.AssignmentManager.idName(key1),
 							"progress" : sProgress,
 							"start_date" : new Date(Math.min.apply(null,aStartDateRescheduling)),
-							"end_date" :  new Date(Math.min.apply(null,aEndDateRescheduling)),
-								//oFormatter.sizeMin(new Date(Math.max.apply(null,aEndDateRescheduling)),new Date(Math.min.apply(null,aStartDateRescheduling))),
-					}
+							"end_date" :  oFormatter.sizeMin(new Date(Math.max.apply(null,aEndDateRescheduling)),new Date(Math.min.apply(null,aStartDateRescheduling))),
+						}
 					
 					aBox.push(oOperationRescheduling);
 					
