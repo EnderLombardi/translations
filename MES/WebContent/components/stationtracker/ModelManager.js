@@ -24,7 +24,9 @@ airbus.mes.stationtracker.ModelManager = {
 			core.getModel("stationTrackerRModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onStationTrackerLoad);
 			core.getModel("stationTrackerIModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onStationTrackerLoad);
 			core.getModel("shiftsModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onShiftsLoad);
-
+			core.getModel("affectationModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onAffectationLoad);
+			
+			
 			core.setModel(new sap.ui.model.json.JSONModel(),"productionGroupModel"); // production Group model
 	
 
@@ -69,6 +71,12 @@ airbus.mes.stationtracker.ModelManager = {
 			var oViewModel = sap.ui.getCore().getModel("affectationModel");
 			oViewModel.loadData(this.urlModel.getProperty("urlaffectation"), null, false);
 		
+		},
+		
+		onAffectationLoad : function() {
+			
+			airbus.mes.stationtracker.AssignmentManager.computeAffectationHierarchy();
+				
 		},
 		
 		loadStationTracker : function(sType) {
@@ -121,8 +129,8 @@ airbus.mes.stationtracker.ModelManager = {
 			var oData = airbus.mes.settings.ModelManager;
 			var geturlstationtracker = this.urlModel.getProperty('urlproductiongroup');			
 			
-			geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$station", oData.station);
-			geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$plant", oData.plant);
+			geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$station", "PHYS_ST_IP4"/*oData.station*/);
+			geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$plant", "FNZ1"/*oData.plant*/);
 
 			var oViewModel = sap.ui.getCore().getModel("productionGroupModel");
 			oViewModel.loadData(geturlstationtracker , null, false);		

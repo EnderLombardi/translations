@@ -26,37 +26,41 @@
 
                {
 
-                  "operator": "pierre",
+                  "user": "pierre",
 
-                  "avlLine": "211545464654",
+                  "firstName": "pierre",
 
-                  "msn": "",
+                  "lastName": "barillon",
 
-                  "station": "",
+                  "picture": "toto",
 
-                  "shiftName": "EARLY 1",
+                  "avlLine": "1",
 
-                  "shiftID": "EARLY 1",
+                  "shiftName": "NORMAL 1",
 
-                  "day": "2014-06-30"
+                  "shiftID": "NORMAL 1",
+
+                  "day": "2016-10-03"
 
                },
 
-               {
+              {
 
-                  "operator": "",
+                  "user": "pierre",
 
-                  "avlLine": "",
+                  "firstName": "pierre",
 
-                  "msn": "",
+                  "lastName": "barillon",
 
-                  "station": "",
+                  "picture": "toto",
 
-                  "shiftName": "EARLY 1",
+                  "avlLine": "1",
 
-                  "shiftID": "EARLY 1",
+                  "shiftName": "NORMAL 1",
 
-                  "day": "2014-06-30"
+                  "shiftID": "NORMAL 1",
+
+                  "day": "2016-10-03"
 
                }
 

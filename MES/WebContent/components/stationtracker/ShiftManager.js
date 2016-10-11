@@ -1,6 +1,6 @@
 //"use strict";
 jQuery.sap.declare("airbus.mes.stationtracker.ShiftManager")
-airbus.mes.stationtracker.ShiftManager  = {
+airbus.mes.stationtracker.ShiftManager = {
     
 	firstTimelineStart : undefined,
 	
@@ -13,6 +13,7 @@ airbus.mes.stationtracker.ShiftManager  = {
 	ShiftSelectedStart : undefined,
 	ShiftSelectedEnd : undefined,
 	//
+	
 	current_shift : undefined,
 	currentShiftStart : undefined,
 	current_Date : undefined,
@@ -72,39 +73,39 @@ airbus.mes.stationtracker.ShiftManager  = {
 		
 	},
 
-	/**
-	 * Compute the index in the shifts collection of the closest shift, which
-	 * * ends after the given date. If nothing is found, return -1.
-	 * 
-	 * @param {Object}
-	 *            ev - box selected
-	 * @param {string}
-	 *            ev.group_id - group id of selected box
-	 * @param {string}
-	 *            ev.box_id - box id of selected box
-	 * @param {date}
-	 *            ev.start_date - start date id of selected box
-	 * @returns {MessageToast}
-	 */
-	saveReschedule : function(ev,bComputeShift) {
-		
-		if(ModelManager.sNewGroup==="Manually_Inserted")
-			ModelManager.sManuallyInserted="yes";
-		else
-			ModelManager.sManuallyInserted="";
-		
-		if(bComputeShift){
-		var sNewStartDate = this.shifts[this.closestShift(ev.start_date)].getStartDate();
-		this.currentFullDate = sNewStartDate;
-		}else{
-		var sNewStartDate = ev.start_date;
-		}
-		
-		sNewStartDate = ModelManager.transformRescheduleDate(sNewStartDate);
-		
-		ModelManager.setRescheduling(ev.group_id,ev.boxid,sNewStartDate,ev.init_groupId);
-					
-	},
+//	/**
+//	 * Compute the index in the shifts collection of the closest shift, which
+//	 * * ends after the given date. If nothing is found, return -1.
+//	 * 
+//	 * @param {Object}
+//	 *            ev - box selected
+//	 * @param {string}
+//	 *            ev.group_id - group id of selected box
+//	 * @param {string}
+//	 *            ev.box_id - box id of selected box
+//	 * @param {date}
+//	 *            ev.start_date - start date id of selected box
+//	 * @returns {MessageToast}
+//	 */
+//	saveReschedule : function(ev,bComputeShift) {
+//		
+//		if(ModelManager.sNewGroup==="Manually_Inserted")
+//			ModelManager.sManuallyInserted="yes";
+//		else
+//			ModelManager.sManuallyInserted="";
+//		
+//		if(bComputeShift){
+//		var sNewStartDate = this.shifts[this.closestShift(ev.start_date)].getStartDate();
+//		this.currentFullDate = sNewStartDate;
+//		}else{
+//		var sNewStartDate = ev.start_date;
+//		}
+//		
+//		sNewStartDate = ModelManager.transformRescheduleDate(sNewStartDate);
+//		
+//		ModelManager.setRescheduling(ev.group_id,ev.boxid,sNewStartDate,ev.init_groupId);
+//					
+//	},
 	
 	
 	/**
@@ -438,7 +439,7 @@ airbus.mes.stationtracker.ShiftManager  = {
 		// Recalculate X_SIZE to display X Intervals
 		// /////////////////////////////////////////////////
 		var c = this.closestShift(new Date(date));
-		this.current_shift = this.shifts[c].shiftName;
+		this.current_shift = this.shifts[c];
 		this.current_day = this.shifts[c].day;
 		this.current_Date = this.shifts[c].StartDate;
 		this.currentShiftStart = this.shifts[c].StartDate;
@@ -582,19 +583,21 @@ airbus.mes.stationtracker.ShiftManager  = {
 					} else {
 					
 						var fStartDate =  Date.parse(new Date(this.shifts[b+1].StartDate));
+						this.current_shift = this.shifts[b+1];
 							}
 				
 					}
 			else {
 				
 				var fStartDate =  Date.parse(new Date(this.shifts[b].StartDate));
-				
+				this.current_shift = this.shifts[b];
 				}
 			}
 			
 			/** Permit to know how many time is hidden by the ignore timeline and add timeline.x_size necessary to display real axis 
 			    lenght of a day */
 			var fTotalMS = 0;
+			
 			for ( var i = b; i < a -2; i += 1) {
 					
 				fTotalMS += this.shifts[i+2].StartDate - this.shifts[i + 1].EndDate;

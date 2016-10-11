@@ -123,28 +123,28 @@ airbus.mes.stationtracker.util.Formatter = {
 				}
 		
 			},
-			transformRescheduleDate : function(oDate) {
-				var today = oDate;
-				var aDate = [];
-				
-				var sYear = today.getFullYear();
-				var sMounth = today.getMonth() + 1;
-				var sDay = today.getDate();
-				var sSecond =  today.getSeconds();
-				var sMinute =  today.getMinutes();
-				var sHour =  today.getHours();
-			
-				aDate.push(sMounth,sDay,sHour,sMinute,sSecond);
-				aDate.forEach(function(el,indice){
-					if(el<10){aDate[indice] = "0" + el;}
-				})
-						
-				
-					var FullTodayDate = sYear + "-" + aDate[0] + "-" + aDate[1] + " " + aDate[2] + ":" +  aDate[3] + ":" + aDate[4];
-				
-				return FullTodayDate;
-			},
-			
+//			transformRescheduleDate : function(oDate) {
+//				var today = oDate;
+//				var aDate = [];
+//				
+//				var sYear = today.getFullYear();
+//				var sMounth = today.getMonth() + 1;
+//				var sDay = today.getDate();
+//				var sSecond =  today.getSeconds();
+//				var sMinute =  today.getMinutes();
+//				var sHour =  today.getHours();
+//			
+//				aDate.push(sMounth,sDay,sHour,sMinute,sSecond);
+//				aDate.forEach(function(el,indice){
+//					if(el<10){aDate[indice] = "0" + el;}
+//				})
+//						
+//				
+//					var FullTodayDate = sYear + "-" + aDate[0] + "-" + aDate[1] + " " + aDate[2] + ":" +  aDate[3] + ":" + aDate[4];
+//				
+//				return FullTodayDate;
+//			},
+//			
 
 			fullConfirm : function(sText) {
 
@@ -260,6 +260,7 @@ airbus.mes.stationtracker.util.Formatter = {
 					return 0;
 				}
 			},
+
 			isGroupingVisible : function() { 
 //				Check if Grouping model is binding
 				return !airbus.mes.stationtracker.worklistPopover.OSW;
@@ -273,4 +274,82 @@ airbus.mes.stationtracker.util.Formatter = {
 				}
 				
 			}
+
+			
+			YdisplayRules : function( oSection ) {
+			
+				if (oSection.initial != undefined ) {
+
+					var html = '<span  style="float: right;margin-right: 5px;" >' + oSection.initial
+							+ '</span>'
+					return html;
+
+				}
+
+				
+
+				if (oSection.children != undefined) {
+
+					var html = '<div><span id= folder_' +oSection.key
+							+ ' class="' + airbus.mes.stationtracker.util.Formatter.openFolder(oSection.open) + '"></span><div title='
+							+ airbus.mes.stationtracker.util.Formatter.spaceInsecable(oSection.label) + ' class="ylabelfolder">' + oSection.label
+							+ '</div><span id= add_' + oSection.key
+							+ ' class="fa fa-user-plus custom" onclick="airbus.mes.stationtracker.AssignmentManager.newLine(\''
+							+ oSection.key + '\')"></span></div>';
+					return html;
+
+				}
+				
+				// TODO maybe replace date + name by the Id of the shift?
+				var sShiftDate = airbus.mes.stationtracker.ShiftManager.current_shift.day;
+				var sShiftName = airbus.mes.stationtracker.ShiftManager.current_shift.shiftName;
+				
+				if ( airbus.mes.stationtracker.ShiftManager.dayDisplay ) {
+						
+				var sShiftName = airbus.mes.stationtracker.ShiftManager.ShiftSelected 
+									
+				}
+				
+				if (airbus.mes.stationtracker.AssignmentManager.affectationHierarchy[oSection.avlLine]) {
+
+				if (airbus.mes.stationtracker.AssignmentManager.affectationHierarchy[oSection.avlLine][sShiftDate]) {
+	
+					if (airbus.mes.stationtracker.AssignmentManager.affectationHierarchy[oSection.avlLine][sShiftDate][sShiftName]) {
+						// See SD there is only one user affected for the couple of shift id + avlLine
+						var oCurrentAffectedUser = airbus.mes.stationtracker.AssignmentManager.affectationHierarchy[oSection.avlLine][sShiftDate][sShiftName][0];
+						
+						if (oSection.name && oSection.subname) {
+							var html = '<div><span class="rond" title='	+ airbus.mes.stationtracker.util.Formatter.spaceInsecable(oCurrentAffectedUser.firstName)
+									+ ' >'	+ oCurrentAffectedUser.firstName + '</span><span class="ylabel" title='
+									+ airbus.mes.stationtracker.util.Formatter.spaceInsecable(oCurrentAffectedUser.firstName) + '>'
+									+ oCurrentAffectedUser.lastName	+ '</span><span  style="float: right;margin-right: 5px;" >' + "hrs"
+									+ '</span></div>';
+							return html;
+	
+						}
+	
+					} else {
+
+						var html = '<div><i class="fa fa-plus-circle"  style="float:left; padding-left:4px;" ></i><span class="ylabel">Select operator</span></div>';
+						return html;
+				
+						}
+				} else {
+
+					var html = '<div><i class="fa fa-plus-circle"  style="float:left; padding-left:4px;" ></i><span class="ylabel">Select operator</span></div>';
+					return html;
+			
+					}
+	
+			} else {
+
+				var html = '<div><i class="fa fa-plus-circle"  style="float:left; padding-left:4px;" ></i><span class="ylabel">Select operator</span></div>';
+				return html;
+		
+				}
+				
+				
+			}
+			
+>>>>>>> dc1ef96 User affectation
 };

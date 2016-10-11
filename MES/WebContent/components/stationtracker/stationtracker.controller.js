@@ -9,16 +9,26 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	 */
 		onInit: function() {
 			
-//		Retrieve all value of Production Group
-		var oModel = airbus.mes.stationtracker.ModelManager.ProductionGroup;
-		var aProdGroup = oModel.getData().Rowsets.Rowset[0].Row;
-		var aItems = [];
-		
-		for (var i = 0; i < aProdGroup.length; i++) {
-			aItems.push(aProdGroup[i].PROD_GROUP);
-		}
-		
-		this.getView().byId("selectProductionGroup").setSelectedKeys(aItems);	
+//			Retrieve all value of Production Group
+			var oModel = airbus.mes.stationtracker.ModelManager.ProductionGroup;
+			var aProdGroup = oModel.getData().Rowsets.Rowset[0].Row;
+			var aItems = [];
+
+			// Check if model is load ,create empty model if no data
+			if(!oModel.getProperty("/Rowsets/Rowset/0/Row")){              
+				
+		    	console.log("No production group available");
+		    	oModel.oData.Rowsets.Rowset[0].Row = [];
+		    	aProdGroup = [];
+			}
+			
+			
+			for (var i = 0; i < aProdGroup.length; i++) {
+				aItems.push(aProdGroup[i].PROD_GROUP);
+			}
+			
+			this.getView().byId("selectProductionGroup").setSelectedKeys(aItems);	
+				
 			
 		},
 	/**
@@ -274,8 +284,6 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		
 	},
 	onProdGroupSelFinish : function(oEvent) {
-//		retrieve selected keys
-		var sSelectKeys = oEvent.getSource().getSelectedKeys();
 		
 //		Filter the stationtracker model with current production group
 		var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
@@ -387,11 +395,11 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		
 		var intervals = airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy[airbus.mes.stationtracker.ShiftManager.current_day][airbus.mes.stationtracker.ShiftManager.ShiftSelected];
 				
+		
 		airbus.mes.stationtracker.ShiftManager.ShiftSelectedStart = intervals[0].beginDateTime;
 		airbus.mes.stationtracker.ShiftManager.ShiftSelectedEnd = intervals[intervals.length - 1].endDateTime;
 		// remove previous marker
 		
-		airbus.mes.stationtracker.GroupingBoxingManager.parseOperation(airbus.mes.stationtracker.GroupingBoxingManager.group,airbus.mes.stationtracker.GroupingBoxingManager.box);
 				
 		scheduler.deleteMarkedTimespan( airbus.mes.stationtracker.ShiftManager.ShiftMarkerID );
 			

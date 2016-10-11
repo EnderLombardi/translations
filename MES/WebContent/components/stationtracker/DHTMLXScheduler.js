@@ -157,43 +157,8 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 
 						scheduler.templates.timeline_scale_label = function(key, label, section) {
 
-							if (section.name && section.subname) {
-								var html = '<div><span class="rond" title=' + airbus.mes.stationtracker.util.Formatter.spaceInsecable(section.name) + ' >'
-										+ section.subname + '</span><span class="ylabel" title='
-										+ airbus.mes.stationtracker.util.Formatter.spaceInsecable(section.name) + '>' + section.name
-										+ '</span><span  style="float: right;margin-right: 5px;" >' + section.hours
-										+ '</span></div>';
-								return html;
-
-							}
-
-							if (section.initial != undefined ) {
-
-								var html = '<span  style="float: right;margin-right: 5px;" >' + section.initial
-										+ '</span>'
-								return html;
-
-							}
-
-							if (section.newop != undefined) {
-
-								var html = '<div><i class="fa fa-plus-circle"  style="float:left; padding-left:4px;" ></i><span class="ylabel">Select operator</span></div>';
-								return html;
-
-							}
-
-							if (section.children != undefined) {
-
-								var html = '<div><span id= folder_' +section.key
-										+ ' class="' + airbus.mes.stationtracker.util.Formatter.openFolder(section.open) + '"></span><div title='
-										+ airbus.mes.stationtracker.util.Formatter.spaceInsecable(section.label) + ' class="ylabelfolder">' + section.label
-										+ '</div><span id= add_' + section.key
-										+ ' class="fa fa-user-plus custom" onclick="airbus.mes.stationtracker.AssignmentManager.newLine(\''
-										+ section.key + '\')"></span></div>';
-								return html;
-
-							}
-
+							return airbus.mes.stationtracker.util.Formatter.YdisplayRules(section);
+							
 						};
 
 						scheduler.templates.timeline_scaley_class = function(key, label, section) {

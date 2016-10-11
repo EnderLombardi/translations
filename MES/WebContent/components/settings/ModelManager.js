@@ -9,6 +9,7 @@ airbus.mes.settings.ModelManager = {
 	program : undefined,
 	line : undefined,
 	station : undefined,
+	ppStation : undefined,
 	msn : undefined,
 	core : undefined,
 	urlModel : undefined,

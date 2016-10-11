@@ -39,14 +39,14 @@ airbus.mes.stationtracker.Component.prototype.createContent = function() {
 	  type : "XML",
   })
 
-  			airbus.mes.stationtracker.ModelManager.loadShifts();
-			airbus.mes.stationtracker.ModelManager.loadAffectation();
-			airbus.mes.stationtracker.ModelManager.loadStationTracker("R");
-			airbus.mes.stationtracker.ShiftManager.init(airbus.mes.stationtracker.GroupingBoxingManager.shiftNoBreakHierarchy);
+//  		airbus.mes.stationtracker.ModelManager.loadShifts();
+//			airbus.mes.stationtracker.ModelManager.loadAffectation();
+//			airbus.mes.stationtracker.ModelManager.loadStationTracker("R");
+//			airbus.mes.stationtracker.ShiftManager.init(airbus.mes.stationtracker.GroupingBoxingManager.shiftNoBreakHierarchy);
 
-			scheduler.xy.scroll_width = 20;
+//			scheduler.xy.scroll_width = 20;
 			//scheduler.xy.nav_height = 0;
-			scheduler.updateView();
+//			scheduler.updateView();
   
   
   	  this.oView.setModel(sap.ui.getCore().getModel("userSettingModel"), "userSettingModel");
