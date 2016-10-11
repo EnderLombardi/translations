@@ -17,6 +17,7 @@ airbus.mes.stationtracker.ModelManager = {
 			core.setModel(new sap.ui.model.json.JSONModel(),"affectationModel"); 
 			core.setModel(new sap.ui.model.json.JSONModel(),"unPlannedModel"); // Unplanned model
 			core.setModel(new sap.ui.model.json.JSONModel(),"stationTrackerShift");	//Shifts for station tracker
+			core.setModel(new sap.ui.model.json.JSONModel(),"KPI");	//KPI
 			
 			core.getModel("stationTrackerRModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onStationTrackerLoad);
 			core.getModel("stationTrackerIModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onStationTrackerLoad);
@@ -50,6 +51,7 @@ airbus.mes.stationtracker.ModelManager = {
 			
 			this.loadUnplanned();		
 			this.loadProductionGroup();		
+			this.loadKPI();
 			
 //			this.i18nModel = new sap.ui.model.resource.ResourceModel({
 //				bundleUrl : "i18n/messageBundle.properties",
@@ -111,6 +113,12 @@ airbus.mes.stationtracker.ModelManager = {
 			airbus.mes.stationtracker.ModelManager.ProductionGroup = oViewModel;
 			
 		},			
+		loadKPI : function() {
+			var oViewModel = sap.ui.getCore().getModel("KPI");
+			oViewModel.loadData(this.urlModel.getProperty("urlKPI") , null, false);		
+			airbus.mes.stationtracker.ModelManager.KPI = oViewModel;
+			
+		},		
 		selectMyShift : function()
 		{
 			//stationTrackerShift model

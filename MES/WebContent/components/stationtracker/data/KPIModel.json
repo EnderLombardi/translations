@@ -1,0 +1,45 @@
+{  
+   "Rowsets":{  
+      "DateCreated":"2016-07-13T10:26:38",
+      "Version":"15.1 SP1 Patch 0 (Jan 21, 2016)",
+      "StartDate":"2016-07-13T09:26:38+0200",
+      "EndDate":"2016-07-13T10:26:38+0200",
+      "CachedTime":"",
+      "Rowset":[  
+         {  
+            "Columns":{  
+               "Column":[  
+
+               ]
+            },
+            "Row":  
+               {  
+                  "TaktAdherence":{  
+                     "Planned":"80%",
+                     "Real":"60%",
+                     "RemainingTime":"20:30:12"
+                  },
+                  "ProgressStatus":{  
+                     "OPDone":"20%",
+                     "OPLate":"20%",
+                     "OPAhead":"20%"
+                  },
+                  "OperationStatus":{  
+                     "Confirmed":"20%",
+                     "PartialConf":"20%"
+                  },
+                  "Disruption":{  
+                     "Other":"5",
+                     "NC":"1",
+                     "MissingPart":"2"
+                  },
+                  "DisruptionStatus":{  
+                     "Closed":"3",
+                     "Opened":"5"
+                  }
+               }
+            
+         }
+      ]
+   }
+}
