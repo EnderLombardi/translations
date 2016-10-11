@@ -5,12 +5,28 @@
 		<customHeader>
 			<Toolbar class="pageHeader">
 				<ToolbarSpacer />
-				<Label text="Unplanned activities" class="pageWelcome2" />
+				<Label id="LabelTitle" text="{ path: 'WorkListModel>andons' , formatter: 'airbus.mes.stationtracker.util.Formatter.setWorkListText' }" class="pageWelcome2" />
 				<ToolbarSpacer />
 			</Toolbar>
 		</customHeader>
 		<content>
 			<VBox>
+				<HBox>
+					<Select class="sapUiTinyMarginBeginEnd comboBoxStyle"
+						    items="{filterUnplannedModel>/Rowsets/Rowset/0/Row/Grouping}"
+						    change="changeBox"
+						    visible="{ path: 'WorkListModel>andons' , formatter: 'airbus.mes.stationtracker.util.Formatter.isGroupingVisible' }">
+						<core:ListItem text="{filterUnplannedModel>Value}" />					
+					</Select>
+				
+				
+					<Select class="sapUiTinyMarginBeginEnd comboBoxStyle"
+						    items="{filterUnplannedModel>/Rowsets/Rowset/0/Row/Status}"
+						    change="changeBox"
+					        visible="{ path: 'WorkListModel>andons' , formatter: 'airbus.mes.stationtracker.util.Formatter.isGroupingVisible' }">						
+						<core:ListItem text="{filterUnplannedModel>Value}" />					
+					</Select>
+				</HBox>
 				<List id="myList" growing="true" growingThreshold="20"
 					growingScrollToLoad="true" items="{ path: 'WorkListModel>/' }"
 					selectionChange="onSelectionChange"

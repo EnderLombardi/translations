@@ -224,6 +224,8 @@
 					<ToolbarSpacer />
 					<HBox id="toolbarDate" class="sapUiTinyMarginBeginEnd"></HBox>
 					<ToolbarSpacer />
+					<Button text="OutStanding Work" type="Transparent" icon="sap-icon://inspect"
+						class="sapUiTinyMarginBeginEnd" press="onOSWPress"></Button>
  					<Button text="Unplanned activities" type="Transparent" icon="sap-icon://inspect"
 						class="sapUiTinyMarginBeginEnd" press="onUnplannedPress"></Button>
 					<Button text="show CP" type="Transparent" icon="sap-icon://ppt-attachment"

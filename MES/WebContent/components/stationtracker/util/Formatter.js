@@ -259,6 +259,18 @@ airbus.mes.stationtracker.util.Formatter = {
 
 					return 0;
 				}
-			}			
-			
+			},
+			isGroupingVisible : function() { 
+//				Check if Grouping model is binding
+				return !airbus.mes.stationtracker.worklistPopover.OSW;
+			},
+			setWorkListText : function() {
+				if(airbus.mes.stationtracker.worklistPopover.OSW) {
+					return "OutStanding Work";
+				} else {
+					return "Unplanned Activities";
+					
+				}
+				
+			}
 };

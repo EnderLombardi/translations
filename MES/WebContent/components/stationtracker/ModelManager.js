@@ -10,12 +10,14 @@ airbus.mes.stationtracker.ModelManager = {
 			
 			
 
-			core.setModel(new sap.ui.model.json.JSONModel(), "WorkListModel");	
+			core.setModel(new sap.ui.model.json.JSONModel(),"WorkListModel");	
 			core.setModel(new sap.ui.model.json.JSONModel(),"stationTrackerRModel"); // Station tracker model reschedule line
 			core.setModel(new sap.ui.model.json.JSONModel(),"stationTrackerIModel"); // Station tracker model initial line
 			core.setModel(new sap.ui.model.json.JSONModel(),"shiftsModel"); // Shifts model
 			core.setModel(new sap.ui.model.json.JSONModel(),"affectationModel"); 
 			core.setModel(new sap.ui.model.json.JSONModel(),"unPlannedModel"); // Unplanned model
+			core.setModel(new sap.ui.model.json.JSONModel(),"filterUnplannedModel");	// Unplanned Filter Model			
+			core.setModel(new sap.ui.model.json.JSONModel(),"OSWModel"); // OutStanding Work model
 			core.setModel(new sap.ui.model.json.JSONModel(),"stationTrackerShift");	//Shifts for station tracker
 			core.setModel(new sap.ui.model.json.JSONModel(),"KPI");	//KPI
 			
@@ -50,6 +52,8 @@ airbus.mes.stationtracker.ModelManager = {
 			});
 			
 			this.loadUnplanned();		
+			this.loadFilterUnplanned();		
+			this.loadOSW();
 			this.loadProductionGroup();		
 			this.loadKPI();
 			
@@ -100,6 +104,18 @@ airbus.mes.stationtracker.ModelManager = {
 			oViewModel.loadData(this.urlModel.getProperty("urlstationtrackerunplannedactivities") , null, false);		
 			airbus.mes.stationtracker.ModelManager.Unplanned = oViewModel;
 		},	
+		loadFilterUnplanned : function() {
+			var oViewModel = sap.ui.getCore().getModel("filterUnplannedModel");
+			oViewModel.loadData(this.urlModel.getProperty("urlfilterunplanned") , null, false);		
+			airbus.mes.stationtracker.ModelManager.filterUnplanned = oViewModel;
+
+		},		
+		loadOSW : function(){
+			var oViewModel = sap.ui.getCore().getModel("OSWModel");
+			oViewModel.loadData(this.urlModel.getProperty("urlOSW") , null, false);		
+			airbus.mes.stationtracker.ModelManager.OSW = oViewModel;			
+			
+		},
 		loadProductionGroup : function() {
 			
 			var oData = airbus.mes.settings.ModelManager;

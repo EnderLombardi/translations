@@ -235,8 +235,13 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			oView.addDependent(airbus.mes.stationtracker.worklistPopover);
 		}
 		airbus.mes.stationtracker.worklistPopover.unPlanned = true;
+		airbus.mes.stationtracker.worklistPopover.OSW = false;		
 		airbus.mes.stationtracker.worklistPopover.setModel(new sap.ui.model.json.JSONModel(sap.ui.getCore().getModel("unPlannedModel").getData().Rowsets.Rowset[0].Row), "WorkListModel");
 		airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").refresh();
+		
+		airbus.mes.stationtracker.worklistPopover.setModel(new sap.ui.model.json.JSONModel(sap.ui.getCore().getModel("filterUnplannedModel").getData()), "filterUnplannedModel");
+		airbus.mes.stationtracker.worklistPopover.getModel("filterUnplannedModel").refresh();
+		
 		// delay because addDependent will do a async rerendering and the popover will immediately close without it
 		var oButton = oEvent.getSource();
 		jQuery.sap.delayedCall(0, this, function () {
@@ -245,7 +250,29 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 
 		});		
 	},
-	
+	onOSWPress : function(oEvent) {
+		if ( airbus.mes.stationtracker.worklistPopover === undefined ) {
+			
+			var oView = airbus.mes.stationtracker.oView;
+			airbus.mes.stationtracker.worklistPopover = sap.ui.xmlfragment("worklistPopover","airbus.mes.stationtracker.worklistPopover", airbus.mes.stationtracker.oView.getController());
+			airbus.mes.stationtracker.worklistPopover.addStyleClass("alignTextLeft");
+			oView.addDependent(airbus.mes.stationtracker.worklistPopover);
+		}
+		
+		airbus.mes.stationtracker.worklistPopover.unPlanned = true;
+		airbus.mes.stationtracker.worklistPopover.OSW = true;			
+		airbus.mes.stationtracker.worklistPopover.setModel(new sap.ui.model.json.JSONModel(sap.ui.getCore().getModel("OSWModel").getData().Rowsets.Rowset[0].Row), "WorkListModel");
+		airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").refresh();
+		
+		// delay because addDependent will do a async rerendering and the popover will immediately close without it
+		var oButton = oEvent.getSource();
+		jQuery.sap.delayedCall(0, this, function () {
+//			airbus.mes.stationtracker.worklistPopover.openBy(oButton);	
+			airbus.mes.stationtracker.worklistPopover.open();	
+
+		});				
+		
+	},
 	onProdGroupSelFinish : function(oEvent) {
 //		retrieve selected keys
 		var sSelectKeys = oEvent.getSource().getSelectedKeys();
@@ -345,6 +372,9 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	},
 	
 	onUnplannedClose : function() {
+		
+		airbus.mes.stationtracker.worklistPopover.unPlanned = false;
+		airbus.mes.stationtracker.worklistPopover.OSW = false;			
 		airbus.mes.stationtracker.worklistPopover.close();
 		
 	},	
