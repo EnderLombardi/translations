@@ -196,39 +196,23 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	},
 	onPolypolyOpen: function(oEvent) {
 		jQuery.sap.registerModulePath("airbus.mes.polypoly","/MES/components/polypoly");
-
-
-			//Open fragment
-		var bindingContext = oEvent.getSource().getBindingContext();
-		
-		// open team popover fragment		 
-		if (!this._oPopoverPolypoly) {
-			this._oPopoverPolypoly = sap.ui.xmlfragment("airbus.mes.stationtracker.polypolyFragment", this);
-			this.getView().addDependent(this._oPopoverPolypoly);
+		airbus.mes.stationtracker.AssignmentManager.polypolyAffectation = false;
+		if (!airbus.mes.stationtracker.oPopoverPolypoly) {
+			airbus.mes.stationtracker.oPopoverPolypoly = sap.ui.xmlfragment("airbus.mes.stationtracker.polypolyFragment", this);
+			
+			var oComp = sap.ui.getCore().createComponent({
+	            name : "airbus.mes.polypoly", // root component folder is resources
+	            id : "Comp10",
+	     });	
+			
 		}
+		// Permit to display or not polypoly affectation or polypoly simple
+		airbus.mes.polypoly.oView.getController().filterUA();
 		
-		
-		if (!this.oComp) { 
-        var oComp = sap.ui.getCore().createComponent({
-            name : "airbus.mes.polypoly", // root component folder is resources
-            id : "Comp10",
-     });
-
-     // Create a Ui container
-
-     
-//   oCompCont.placeAt("contentPopover");
-     this.oComp = oComp;
-     this.oCompCont = oCompCont;
-	};
-	
-	var oCompCont = new sap.ui.core.ComponentContainer({
-	    component : oComp
-	});
-	// place this Ui Container with the Component inside into UI Area
-	this._oPopoverPolypoly.addContent(oCompCont);
-	this._oPopoverPolypoly.open();
-
+		// place this Ui Container with the Component inside into UI Area
+		airbus.mes.stationtracker.oPopoverPolypoly.addContent(airbus.mes.polypoly.oView);
+		airbus.mes.stationtracker.oPopoverPolypoly.open();	
+			
 		
 	},
 	handleCloseButtonPolypoly: function(oEvent) {
