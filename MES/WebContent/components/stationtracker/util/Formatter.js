@@ -358,6 +358,114 @@ airbus.mes.stationtracker.util.Formatter = {
 				}
 				
 				
-			}
+			},
+			/**
+		     * Sort worklist according to business rule.
+		     * 
+		      * Rule in detail: the operations shall be grouped by WO. These WO groups
+		     * shall be sorted using the start date/time of their box in the Gantt, then
+		     * using the schedule start date/time and then numerical order, ascending
+		     * order. Within one group of operations belonging to the same WO,
+		     * operations shall be sorted by ascending operation number.
+		     * 
+		      * @param oWorkList
+		     */
+		     sortWorkList : function(oWorkList) {
+		           var oWL2 = [];
+		           var oWOList = [];
+		           var i;
 
+		           // Sort by WO number (to group operations with same WO)
+		           // Also group by operation, because the sort order is kept for
+		           // operations
+		           oWorkList.sort(this.fieldComparator([ 'shopOrder',
+		                         'operationID' ]));
+
+		           // Constitute a table of WO groups with operations associated
+		           // The group object has template bellow.
+		           var currentWO = {
+		        		  shopOrder : undefined,
+		                  dynamicStartDate : undefined,
+		                  scheduledStartDate : undefined,
+		                  operationsID : [],
+		           };
+
+		           for (i = 0; i < oWorkList.length; i++) {
+		                  if (currentWO.shopOrder !== oWorkList[i].shopOrder) {
+
+		                         if (currentWO.operationsID.length > 0) {
+		                                oWOList.push(currentWO);
+		                         }
+
+		                         currentWO = {
+		                        		shopkOrder : oWorkList[i].shopOrder,
+		                                startDate : oWorkList[i].startDate,
+//		                                scheduledStartDate : oWorkList[i].start,
+		                                operationsID : [ oWorkList[i] ],
+		                         };
+
+		                  } else {
+
+		                         if (oWorkList[i].startDate < currentWO.startDate) {
+		                                currentWO.startDate = oWorkList[i].startDate;
+		                         }
+
+//		                         if (oWorkList[i].start < currentWO.scheduledStartDate) {
+//		                                currentWO.scheduledStartDate = oWorkList[i].start;
+//		                         }
+
+		                         currentWO.operationsID.push(oWorkList[i]);
+
+		                  }
+		           }
+
+		           oWOList.push(currentWO);
+
+		           // Sort each groups (Work Orders)
+		           // The operations inside each groups should still be in the same order
+		           // (ascending order preserved)
+		           oWOList.sort(this.fieldComparator([ 'startDate', 'workOrder' ]));
+
+		           // Flatten worklist (take operations of each groups)
+		           oWL2 = oWOList.reduce(function(prev, curr) {
+		                  return prev.concat(curr.operationsID);
+		           }, []);
+
+		           // Keep the index, for stable sorting on WorkList screen (as sorter is
+		           // also used for grouping)
+		           oWL2.forEach(function(el, i) {
+		                  el.index = i;
+		           });
+
+		           return oWL2;
+		     },
+
+		//////////////////////////////////////
+
+		/**
+		     * Returns a comparator function on the provided fields, in the provided
+		     * order of priority, to be used for example by an Array.sort() function.
+		     * 
+		      * @param {Array}
+		     *            fields, Array of object
+		     * @returns {Function} comparator
+		     */
+		     fieldComparator : function(fields) {
+		           return function(a, b) {
+		                  return fields.map(function(o) {
+		                         var dir = 1;
+		                         if (o[0] === '-') {
+		                                dir = -1;
+		                                o = o.substring(1);
+		                         }
+		                         if (a[o] > b[o])
+		                                return dir;
+		                         if (a[o] < b[o])
+		                                return -(dir);
+		                         return 0;
+		                  }).reduce(function firstNonZeroValue(p, n) {
+		                         return p ? p : n;
+		                  }, 0);
+		           };
+		     }
 };

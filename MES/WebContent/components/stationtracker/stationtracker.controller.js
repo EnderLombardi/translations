@@ -247,7 +247,15 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		airbus.mes.stationtracker.worklistPopover.unPlanned = true;
 		airbus.mes.stationtracker.worklistPopover.OSW = false;		
 		airbus.mes.stationtracker.worklistPopover.setModel(new sap.ui.model.json.JSONModel(sap.ui.getCore().getModel("unPlannedModel").getData().Rowsets.Rowset[0].Row), "WorkListModel");
-		airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").refresh();
+		
+
+		var oData = airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").getData();
+		if (oData && oData.length > 0 && oData) {
+			oData = this.sortWorkList(oData);
+		}		
+		airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").setData(oData);
+		airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").refresh(true);
+
 		
 		airbus.mes.stationtracker.worklistPopover.setModel(new sap.ui.model.json.JSONModel(sap.ui.getCore().getModel("filterUnplannedModel").getData()), "filterUnplannedModel");
 		airbus.mes.stationtracker.worklistPopover.getModel("filterUnplannedModel").refresh();
@@ -415,7 +423,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		}
 	},
 	
-	changeGroupWorkList : function() {
+	changeGroupWorkList : function(oEvent) {
 		// TOSEE if we can get ID by better way
 		sap.ui.getCore().byId("worklistPopover--myList").bindAggregation('items', {
 			path : "WorkListModel>/",
@@ -431,7 +439,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			}) ]
 		});
 		
-	}
+	},
 	
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -496,43 +504,43 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
            // Sort by WO number (to group operations with same WO)
            // Also group by operation, because the sort order is kept for
            // operations
-           oWorkList.sort(util.Formatter.fieldComparator([ 'shopOrder',
+           oWorkList.sort(this.fieldComparator([ 'shopOrder',
                          'operationID' ]));
 
            // Constitute a table of WO groups with operations associated
            // The group object has template bellow.
            var currentWO = {
-                  workOrder : undefined,
+        		  shopOrder : undefined,
                   dynamicStartDate : undefined,
                   scheduledStartDate : undefined,
-                  operations : [],
+                  operationsID : [],
            };
 
            for (i = 0; i < oWorkList.length; i++) {
-                  if (currentWO.workOrder !== oWorkList[i].workOrder) {
+                  if (currentWO.shopOrder !== oWorkList[i].shopOrder) {
 
-                         if (currentWO.operations.length > 0) {
+                         if (currentWO.operationsID.length > 0) {
                                 oWOList.push(currentWO);
                          }
 
                          currentWO = {
-                                workOrder : oWorkList[i].workOrder,
-                                dynamicStartDate : oWorkList[i].dynamicReschedStartDate,
-                                scheduledStartDate : oWorkList[i].start,
-                                operations : [ oWorkList[i] ],
+                        		shopkOrder : oWorkList[i].shopOrder,
+                                startDate : oWorkList[i].startDate,
+//                                scheduledStartDate : oWorkList[i].start,
+                                operationsID : [ oWorkList[i] ],
                          };
 
                   } else {
 
-                         if (oWorkList[i].dynamicReschedStartDate < currentWO.dynamicStartDate) {
-                                currentWO.dynamicStartDate = oWorkList[i].dynamicReschedStartDate;
+                         if (oWorkList[i].startDate < currentWO.startDate) {
+                                currentWO.startDate = oWorkList[i].startDate;
                          }
 
-                         if (oWorkList[i].start < currentWO.scheduledStartDate) {
-                                currentWO.scheduledStartDate = oWorkList[i].start;
-                         }
+//                         if (oWorkList[i].start < currentWO.scheduledStartDate) {
+//                                currentWO.scheduledStartDate = oWorkList[i].start;
+//                         }
 
-                         currentWO.operations.push(oWorkList[i]);
+                         currentWO.operationsID.push(oWorkList[i]);
 
                   }
            }
@@ -542,12 +550,11 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
            // Sort each groups (Work Orders)
            // The operations inside each groups should still be in the same order
            // (ascending order preserved)
-           oWOList.sort(util.Formatter.fieldComparator([ 'dynamicStartDate',
-                         'scheduledStartDate', 'workOrder' ]));
+           oWOList.sort(this.fieldComparator([ 'startDate', 'workOrder' ]));
 
            // Flatten worklist (take operations of each groups)
            oWL2 = oWOList.reduce(function(prev, curr) {
-                  return prev.concat(curr.operations);
+                  return prev.concat(curr.operationsID);
            }, []);
 
            // Keep the index, for stable sorting on WorkList screen (as sorter is

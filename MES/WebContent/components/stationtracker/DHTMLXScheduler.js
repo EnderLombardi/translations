@@ -398,6 +398,14 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 								airbus.mes.stationtracker.worklistPopover.setModel(new sap.ui.model.json.JSONModel(airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy[scheduler.getEvent(id).group][scheduler.getEvent(id).avlLine][scheduler.getEvent(id).box]), "WorkListModel");
 								airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").refresh();
 
+								var oData = airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").getData();
+								if (oData && oData.length > 0 && oData) {
+									oData = airbus.mes.stationtracker.util.Formatter.sortWorkList(oData);
+								}		
+								airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").setData(oData);
+								airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").refresh(true);
+								
+								
 								airbus.mes.stationtracker.worklistPopover.setModel(new sap.ui.model.json.JSONModel(sap.ui.getCore().getModel("filterUnplannedModel").getData()), "filterUnplannedModel");
 								airbus.mes.stationtracker.worklistPopover.getModel("filterUnplannedModel").refresh();
 
