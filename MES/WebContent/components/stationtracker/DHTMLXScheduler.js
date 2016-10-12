@@ -140,7 +140,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 						}));
 						
 						scheduler.eventId.push(scheduler.attachEvent("onDragEnd", function rescheduling(id, mode, e){
-////							Filled on event onBeforeDrag
+////						Filled on event onBeforeDrag
 							var event_obj_before = dragged_event;
 
 							var event_obj_now = scheduler.getEvent(id); 
@@ -255,8 +255,6 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 									
 									return airbus.mes.stationtracker.util.Formatter.blocked(event.text,event.progress);
 								}
-								
-								
 								
 								return airbus.mes.stationtracker.util.Formatter.partialConf(event.text, event.progress);
 
@@ -399,6 +397,10 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 								airbus.mes.stationtracker.worklistPopover.unPlanned = false;
 								airbus.mes.stationtracker.worklistPopover.setModel(new sap.ui.model.json.JSONModel(airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy[scheduler.getEvent(id).group][scheduler.getEvent(id).avlLine][scheduler.getEvent(id).box]), "WorkListModel");
 								airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").refresh();
+
+								airbus.mes.stationtracker.worklistPopover.setModel(new sap.ui.model.json.JSONModel(sap.ui.getCore().getModel("filterUnplannedModel").getData()), "filterUnplannedModel");
+								airbus.mes.stationtracker.worklistPopover.getModel("filterUnplannedModel").refresh();
+
 								// delay because addDependent will do a async rerendering and the popover will immediately close without it
 								airbus.mes.stationtracker.worklistPopover.open();	
 								break;							

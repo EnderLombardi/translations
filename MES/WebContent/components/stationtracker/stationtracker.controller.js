@@ -434,4 +434,160 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	}
 	
 
+/////////////////////////////////////////////////////////////////////////////////////////////////
+	/**
+     * Fire the sorter when picking a value in the combobox worklist 
+      * 
+      * @returns {sap.ui.model.Sorter}
+     */
+     changeGrouping : function(oEvt) {
+           
+           var aModelToTest = airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").oData;
+           
+//           if (aModelToTest.some(function(el) {
+//
+//                  return el.groupingInternal === ModelManager.group_type;
+//
+//           })) {
+//
+//                  ModelManager.group_parameter = ModelManager.group_type;
+//
+//           } else {
+//                  ModelManager.group_parameter = sap.ui.getCore().getModel("WorkListModel").oData.Group[0].groupingInternal;
+//
+//           }
+//           
+//           if(oEvt){
+//           ModelManager.group_parameter = oEvt.getSource().getSelectedKey();
+//           }
+                  
+           sap.ui.getCore().byId("myList").bindAggregation('items', {
+                  path : "/Rowsets/Rowset/0/Row",
+                  template : sap.ui.getCore().byId("sorterList"),
+                  sorter : [ new sap.ui.model.Sorter({
+                         path :  "/", //ModelManager.group_parameter,
+                         descending : false,
+                         group : true,
+                  }), new sap.ui.model.Sorter({
+                         path : 'index',
+                         descending : false
+                  }) ]
+           });
+     },
+
+////////////////////////////
+
+/**
+     * Sort worklist according to business rule.
+     * 
+      * Rule in detail: the operations shall be grouped by WO. These WO groups
+     * shall be sorted using the start date/time of their box in the Gantt, then
+     * using the schedule start date/time and then numerical order, ascending
+     * order. Within one group of operations belonging to the same WO,
+     * operations shall be sorted by ascending operation number.
+     * 
+      * @param oWorkList
+     */
+     sortWorkList : function(oWorkList) {
+           var oWL2 = [];
+           var oWOList = [];
+           var i;
+
+           // Sort by WO number (to group operations with same WO)
+           // Also group by operation, because the sort order is kept for
+           // operations
+           oWorkList.sort(util.Formatter.fieldComparator([ 'shopOrder',
+                         'operationID' ]));
+
+           // Constitute a table of WO groups with operations associated
+           // The group object has template bellow.
+           var currentWO = {
+                  workOrder : undefined,
+                  dynamicStartDate : undefined,
+                  scheduledStartDate : undefined,
+                  operations : [],
+           };
+
+           for (i = 0; i < oWorkList.length; i++) {
+                  if (currentWO.workOrder !== oWorkList[i].workOrder) {
+
+                         if (currentWO.operations.length > 0) {
+                                oWOList.push(currentWO);
+                         }
+
+                         currentWO = {
+                                workOrder : oWorkList[i].workOrder,
+                                dynamicStartDate : oWorkList[i].dynamicReschedStartDate,
+                                scheduledStartDate : oWorkList[i].start,
+                                operations : [ oWorkList[i] ],
+                         };
+
+                  } else {
+
+                         if (oWorkList[i].dynamicReschedStartDate < currentWO.dynamicStartDate) {
+                                currentWO.dynamicStartDate = oWorkList[i].dynamicReschedStartDate;
+                         }
+
+                         if (oWorkList[i].start < currentWO.scheduledStartDate) {
+                                currentWO.scheduledStartDate = oWorkList[i].start;
+                         }
+
+                         currentWO.operations.push(oWorkList[i]);
+
+                  }
+           }
+
+           oWOList.push(currentWO);
+
+           // Sort each groups (Work Orders)
+           // The operations inside each groups should still be in the same order
+           // (ascending order preserved)
+           oWOList.sort(util.Formatter.fieldComparator([ 'dynamicStartDate',
+                         'scheduledStartDate', 'workOrder' ]));
+
+           // Flatten worklist (take operations of each groups)
+           oWL2 = oWOList.reduce(function(prev, curr) {
+                  return prev.concat(curr.operations);
+           }, []);
+
+           // Keep the index, for stable sorting on WorkList screen (as sorter is
+           // also used for grouping)
+           oWL2.forEach(function(el, i) {
+                  el.index = i;
+           });
+
+           return oWL2;
+     },
+
+//////////////////////////////////////
+
+/**
+     * Returns a comparator function on the provided fields, in the provided
+     * order of priority, to be used for example by an Array.sort() function.
+     * 
+      * @param {Array}
+     *            fields, Array of object
+     * @returns {Function} comparator
+     */
+     fieldComparator : function(fields) {
+           return function(a, b) {
+                  return fields.map(function(o) {
+                         var dir = 1;
+                         if (o[0] === '-') {
+                                dir = -1;
+                                o = o.substring(1);
+                         }
+                         if (a[o] > b[o])
+                                return dir;
+                         if (a[o] < b[o])
+                                return -(dir);
+                         return 0;
+                  }).reduce(function firstNonZeroValue(p, n) {
+                         return p ? p : n;
+                  }, 0);
+           };
+     },
+	
+	
+	
 });

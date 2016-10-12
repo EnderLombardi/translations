@@ -269,7 +269,7 @@ airbus.mes.stationtracker.util.Formatter = {
 					return true;
 					
 				} else {
-					return false;
+					return true;
 				}				
 			},
 			setWorkListText : function() {

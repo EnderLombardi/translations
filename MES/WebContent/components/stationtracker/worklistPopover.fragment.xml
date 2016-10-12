@@ -14,7 +14,11 @@
 				<HBox>
 					<Select class="sapUiTinyMarginBeginEnd comboBoxStyle"
 						    items="{filterUnplannedModel>/Rowsets/Rowset/0/Row/Grouping}"
+<<<<<<< Upstream, based on origin/MESv0.9
 						    change="changeGroupWorkList"
+=======
+						    change="changeGrouping"
+>>>>>>> 9182685 Worklist sorter
 						    visible="{ path: 'WorkListModel>andons' , formatter: 'airbus.mes.stationtracker.util.Formatter.isGroupingVisible' }">
 						<core:ListItem text="{filterUnplannedModel>Value}" />					
 					</Select>
@@ -22,7 +26,7 @@
 				
 					<Select class="sapUiTinyMarginBeginEnd comboBoxStyle"
 						    items="{filterUnplannedModel>/Rowsets/Rowset/0/Row/Status}"
-						    change="changeBox"
+						    change="changeGrouping"
 					        visible="{ path: 'WorkListModel>andons' , formatter: 'airbus.mes.stationtracker.util.Formatter.isGroupingVisible' }">						
 						<core:ListItem text="{filterUnplannedModel>Value}" />					
 					</Select>
