@@ -414,5 +414,24 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		
 		}
 	},
+	
+	changeGroupWorkList : function() {
+		// TOSEE if we can get ID by better way
+		sap.ui.getCore().byId("worklistPopover--myList").bindAggregation('items', {
+			path : "WorkListModel>/",
+			template : sap.ui.getCore().byId("worklistPopover--sorterList"),
+			sorter : [ new sap.ui.model.Sorter({
+				// Change this value dynamic
+				path : 'shopOrder',
+				descending : false,
+				group : true,
+			}), new sap.ui.model.Sorter({
+				path : 'index',
+				descending : false
+			}) ]
+		});
+		
+	}
+	
 
 });

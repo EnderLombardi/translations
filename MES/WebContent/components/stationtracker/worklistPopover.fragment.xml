@@ -14,7 +14,7 @@
 				<HBox>
 					<Select class="sapUiTinyMarginBeginEnd comboBoxStyle"
 						    items="{filterUnplannedModel>/Rowsets/Rowset/0/Row/Grouping}"
-						    change="changeBox"
+						    change="changeGroupWorkList"
 						    visible="{ path: 'WorkListModel>andons' , formatter: 'airbus.mes.stationtracker.util.Formatter.isGroupingVisible' }">
 						<core:ListItem text="{filterUnplannedModel>Value}" />					
 					</Select>
