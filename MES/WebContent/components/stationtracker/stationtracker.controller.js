@@ -430,7 +430,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			template : sap.ui.getCore().byId("worklistPopover--sorterList"),
 			sorter : [ new sap.ui.model.Sorter({
 				// Change this value dynamic
-				path : 'shopOrder',
+				path : 'shopOrder', //oEvt.getSource().getSelectedKey();
 				descending : false,
 				group : true,
 			}), new sap.ui.model.Sorter({
