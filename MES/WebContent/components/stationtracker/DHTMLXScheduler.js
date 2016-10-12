@@ -122,7 +122,9 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 //								}));
 						
 						scheduler.eventId.push(scheduler.attachEvent("onBeforeDrag",function blockReadonly(id) {
-												
+
+						    dragged_event=scheduler.getEvent(id); //use it to get the object of the dragged event
+							
 							if (this.getEvent(id).type === "I" ) {
 								
 								return false;
@@ -137,11 +139,27 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 			
 						}));
 						
-						//				if (!scheduler.checkEvent("onBeforeDrag")) {
+						scheduler.eventId.push(scheduler.attachEvent("onDragEnd", function rescheduling(id, mode, e){
+////							Filled on event onBeforeDrag
+							var event_obj_before = dragged_event;
+
+							var event_obj_now = scheduler.getEvent(id); 
+
+//							We check only the first start date because the duration of the operation cannot changed							
+							if(event_obj_before.start_date === event_obj_now.start_date) {
+//								date aren't change , nothing to do
+								return true;
+							} else {
+								airbus.mes.stationtracker.ModelManager.sendRescheduleRequest(event_obj_now);
+							}
+							
+							
+//							airbus.mes.stationtracker.ModelManager.reschedulingEvent(event_obj);
+							
+							console.log("end of drag");
+							
+						}));
 						
-						
-						
-			
 						scheduler.eventId.push(scheduler.attachEvent("onBeforeTodayDisplayed", function() {
 							
 							ShiftManager.step = 0;

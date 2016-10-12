@@ -62,7 +62,7 @@
 			</Button>
 			<Button text="Close" type="Transparent" icon="sap-icon://decline"
 				class="sapUiTinyMarginBeginEnd" press="onUnplannedClose"
-				visible="{ path : 'WorkListModel>andons' , formatter: 'airbus.mes.stationtracker.util.Formatter.isCheckboxVisible'}">
+			>
 			</Button>
 		</buttons>
 	</Dialog>

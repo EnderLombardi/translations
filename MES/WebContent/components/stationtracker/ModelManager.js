@@ -199,7 +199,32 @@ airbus.mes.stationtracker.ModelManager = {
 		replaceURI : function (sURI, sFrom, sTo) {
 				return sURI.replace(sFrom, encodeURIComponent(sTo));
 			},
-		
-		
+		getUrlReschedulingService : function() {
+//			  get Url of the service
+			  var urlReschedulingService = this.urlModel.getProperty("urlReschedulingService");
+//			  Set input parameter for the service
+//			  TODO : the service is not yet defined
+			  urlReschedulingService = airbus.mes.settings.ModelManager.replaceURI(urlSaveUserSetting, "$user", airbus.mes.settings.ModelManager.user);
+			  return urlReschedulingService;
+		},
+		sendRescheduleRequest : function(oEvent) {
+            jQuery.ajax({
+                url: airbus.mes.stationtracker.ModelManager.getUrlReschedulingService(),
+                error:function(xhr,status,error){
+                      airbus.mes.settings.ModelManager.messageShow("Couldn't Save Changes");
+                      that.navigate(oEvent);
+                      //window.location.pathname = "/MES/WebContent/components/stationtracker/index.html";
+                },
+                success:function(result,status,xhr){
+                      // window.location.href = url;
+                      airbus.mes.settings.ModelManager.messageShow("Settings Saved Successfully");
+                      that.navigate(oEvent);
+                      //window.location.pathname = "/MES/WebContent/components/stationtracker/index.html";
+
+                }
+         });
+			
+			
+			
+		}		
 }
-airbus.mes.stationtracker.ModelManager.init(sap.ui.getCore());
