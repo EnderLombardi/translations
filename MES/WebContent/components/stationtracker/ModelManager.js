@@ -96,7 +96,7 @@ airbus.mes.stationtracker.ModelManager = {
 				case "R":
 					var oViewModel = sap.ui.getCore().getModel("stationTrackerRModel");
 					break;
-				case "R":
+				case "I":
 					var oViewModel = sap.ui.getCore().getModel("stationTrackerIModel");
 		
 					break;

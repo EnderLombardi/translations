@@ -65,7 +65,7 @@ airbus.mes.polypoly.PolypolyManager = {
 			var oTableData = airbus.mes.polypoly.PolypolyManager.createTableData(oMiiData);
 			var mTableModel = new sap.ui.model.json.JSONModel(oTableData);
 			airbus.mes.polypoly.PolypolyManager.internalContext.oModel = mTableModel;
-			var oPolypoly =  sap.ui.getCore().byId("polypoly");
+			sap.ui.getCore().byId("polypoly").setModel(sap.ui.getCore().getModel("mTableModel"));
 			
 		} 
 		else {

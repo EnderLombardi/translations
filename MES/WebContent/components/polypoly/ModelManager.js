@@ -93,7 +93,8 @@ airbus.mes.polypoly.ModelManager = {
 		// Initialization of all models
 		/* Station Selection on PolyPolyscreen */
 		core.setModel(new sap.ui.model.json.JSONModel(), "stationList");
-
+		core.setModel(new sap.ui.model.json.JSONModel(),"mTableModel");
+		
 		var dest;
 
 		switch (window.location.hostname) {
