@@ -52,12 +52,12 @@ airbus.mes.stationtracker.ModelManager = {
 				bundleUrl : "../components/stationtracker/config/url_config.properties",
 				bundleLocale : dest
 			});
-			
+						
+			// TODO DEPLACE this in shell controller and when service is ok remove all of this function
 			this.loadUnplanned();		
 			this.loadFilterUnplanned();		
 			this.loadOSW();
-			this.loadProductionGroup();		
-			this.loadKPI();
+			this.loadProductionGroup();
 			
 //			this.i18nModel = new sap.ui.model.resource.ResourceModel({
 //				bundleUrl : "i18n/messageBundle.properties",
@@ -91,17 +91,26 @@ airbus.mes.stationtracker.ModelManager = {
 				geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$operationType", sType);
 				geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$productionGroup", "%");
 				
-				
-				if ( sType === "R" ) {
-					
+
+				switch (sType) {
+				case "R":
 					var oViewModel = sap.ui.getCore().getModel("stationTrackerRModel");
-				}
-				
-				if ( sType === "I" ) {
-					
+					break;
+				case "R":
 					var oViewModel = sap.ui.getCore().getModel("stationTrackerIModel");
+		
+					break;
+				case "U":
+					var oViewModel = sap.ui.getCore().getModel("unPlannedModel");
+		
+					break;
+				case "O":
+					var oViewModel = sap.ui.getCore().getModel("OSWModel");
+		
+					break;
+		
 				}
-				
+						
 				oViewModel.loadData(geturlstationtracker , null, false);				
 			
 		},	
