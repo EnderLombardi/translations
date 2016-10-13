@@ -207,7 +207,7 @@ sap.ui
                                                               airbus.mes.settings.ModelManager.messageShow("Please Select Line");
                                                               return;
                                                        } else if (!this.getView().byId("ComboBoxStation").getValue()) {
-                                                              airbus.mes.settings.ModelManager.messageShow("Please Select Station");
+                                                              airbus.mes.settings.ModelManager.messageShow("Please Select Staton");
                                                               return;
                                                        }
                                                        else{

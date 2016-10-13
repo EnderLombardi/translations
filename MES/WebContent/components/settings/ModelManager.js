@@ -9,11 +9,10 @@ airbus.mes.settings.ModelManager = {
 	program : undefined,
 	line : undefined,
 	station : undefined,
-	ppStation : undefined,
 	msn : undefined,
 	core : undefined,
 	urlModel : undefined,
-	user:"ng123",
+	//user:"ng123",
 	current_flag:"X",
 	queryParams : jQuery.sap.getUriParameters(),
 	
@@ -99,7 +98,7 @@ airbus.mes.settings.ModelManager = {
 	// ********************************************************************************
 	getUrlUserSetting:function(){
 		var urlUserSetting = this.urlModel.getProperty("urlUserSettings");
-		urlUserSetting = airbus.mes.settings.ModelManager.replaceURI(urlUserSetting, "$user", airbus.mes.settings.ModelManager.user);
+		//urlUserSetting = airbus.mes.settings.ModelManager.replaceURI(urlUserSetting, "$user", airbus.mes.settings.ModelManager.user);
 		return urlUserSetting;
 		
 	},
@@ -131,7 +130,7 @@ airbus.mes.settings.ModelManager = {
 	  // ************************************************************************************
 	  getUrlSaveUserSetting:function(){
 		  var urlSaveUserSetting = this.urlModel.getProperty("urlSaveUserSetting");
-		  urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(urlSaveUserSetting, "$user", airbus.mes.settings.ModelManager.user);
+		 // urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(urlSaveUserSetting, "$user", airbus.mes.settings.ModelManager.user);
 		  urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(urlSaveUserSetting, "$plant", airbus.mes.settings.ModelManager.plant);
 		  urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(urlSaveUserSetting, "$program", airbus.mes.settings.ModelManager.program);
 		  urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(urlSaveUserSetting, "$line", airbus.mes.settings.ModelManager.line);
