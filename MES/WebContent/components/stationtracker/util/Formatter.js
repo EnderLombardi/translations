@@ -145,7 +145,43 @@ airbus.mes.stationtracker.util.Formatter = {
 //				return FullTodayDate;
 //			},
 //			
-
+			BoxDisplay : function( oBox ) {
+				
+				var html = "";
+				
+				var sText = '<div  style="width:inherit; height:inherit; position:absolute; z-index: 1; padding-left: 5px;line-height: 23px;left: 0px;" >'+
+					
+					 + '</div>';
+				
+				// need one more condition to add OSW
+				if ( oBox.routingMaturityAssessment != "---" ) {
+					
+					var sLeftIcon = '<i class="fa fa-exclamation-triangle" style="padding-left:4px; line-height: 23px;" ></i>'
+				
+				}
+				
+				switch (  oBox.statu ) {
+				case "N":
+					var sColorProgress = ""
+					break;
+				case "C":
+					var sColorProgress = '<div style="width:100%; height:inherit; background-color:#0085ad ; position:absolute; z-index: 0; left: 0px;"></div>'
+					break;
+				default:
+					
+					break;
+				}
+					
+				var sColorProgress = '<div style="width:100%; height:inherit; background-color:#0085AD ; position:absolute; z-index: 0; left: 0px;"></div>'
+					
+				var sRightIcon = '<div  style="width:inherit; height:inherit; position:absolute; z-index: 1; padding-right: 5px;line-height: 23px; text-align:right; left: 0px;">' + 
+				'<span style="padding-left:4px; line-height: 23px;" > ['+ progress +'/'+ duration +' IM]</span>' +
+				'<i class="fa fa-exclamation-triangle" style="padding-left:4px; line-height: 23px;" ></i></div>';
+				
+				
+				
+			},
+			
 			fullConfirm : function(sText) {
 
 				var html = "";
@@ -159,6 +195,9 @@ airbus.mes.stationtracker.util.Formatter = {
 
 			},
 	
+			
+			
+			
 			andon : function(sText,sProgress, sTotalDuration) {
 				
 				var html = "";
@@ -166,8 +205,7 @@ airbus.mes.stationtracker.util.Formatter = {
 				var duration = airbus.mes.stationtracker.util.Formatter.progressDisplayEvent(sTotalDuration);
 
 
-				html += '<div  style="width:inherit; height:inherit; position:absolute; z-index: 1; padding-left: 5px;line-height: 23px;left: 0px;" >'
-				+ sText + '</div>';
+				html += '<div  style="width:inherit; height:inherit; position:absolute; z-index: 1; padding-left: 5px;line-height: 23px;left: 0px;" ><i class="fa fa-exclamation-triangle" style="padding-right:4px; line-height: 23px;" ></i>' + sText + '</div>';
 			
 				html += '<div  style="width:inherit; height:inherit; position:absolute; z-index: 1; padding-right: 5px;line-height: 23px; text-align:right; left: 0px;">' + 
 				'<span style="padding-left:4px; line-height: 23px;" > ['+ progress +'/'+ duration +' IM]</span>' +

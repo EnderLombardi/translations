@@ -94,6 +94,14 @@ airbus.mes.polypoly.ModelManager = {
 		/* Station Selection on PolyPolyscreen */
 		core.setModel(new sap.ui.model.json.JSONModel(), "stationList");
 		core.setModel(new sap.ui.model.json.JSONModel(),"mTableModel");
+		// this model seems to be the maine model to create polypoly
+		core.setModel(new sap.ui.model.json.JSONModel(),"mii");
+		
+		// attach event on end of loading model
+		core.getModel("mii").attachRequestCompleted(airbus.mes.polypoly.ModelManager.onPolyPolyModelLoaded);
+				
+		
+		
 		
 		var dest;
 
@@ -143,15 +151,49 @@ airbus.mes.polypoly.ModelManager = {
 
 	},
 
+	// PBA ADD LOADING MODEL FOR POLYPOLY replace the getPolypolyModel place in polypolymanager
+	
+	loadPolyPolyModel : function (sFactory, sLine, sStation, site) {
+		
+		var urlgetpolypoly = this.urlModel.getProperty("urlgetpolypoly");
+
+		urlgetpolypoly = urlgetpolypoly.replace("$factory", sFactory);
+		urlgetpolypoly = urlgetpolypoly.replace("$line", sLine);
+		urlgetpolypoly = urlgetpolypoly.replace("$station", sStation);
+		urlgetpolypoly = urlgetpolypoly.replace("$site", site);
+
+		// Rename this model
+		sap.ui.getCore().getModel("mii").loadData(urlgetpolypoly,null,false);
+		
+	
+	},
+	
+	onPolyPolyModelLoaded : function() {
+		var oData = sap.ui.getCore().getModel("mii").getData().Rowsets;
+		if (oData.Rowset && oData.Rowset.length > 0 && oData.Rowset[0].Row) {
+			var oMiiData = sap.ui.getCore().getModel("mii").getData();
+			var oTableData = airbus.mes.polypoly.PolypolyManager.createTableData(oMiiData);
+			var mTableModel = new sap.ui.model.json.JSONModel(oTableData);
+			airbus.mes.polypoly.PolypolyManager.internalContext.oModel = mTableModel;
+			
+			// ????? 
+			sap.ui.getCore().byId("polypoly").setModel(mTableModel);
+			//sap.ui.getCore().getModel("mTableModel").loadData(mTableModel);
+			
+		} 
+		else {
+			var mTableModel = new sap.ui.model.json.JSONModel();
+			}
+	},
+	
+	
 	loadStationListModel : function() {
 		sap.ui.getCore().getModel("stationList").setData(this.StationList);
 	},
 
 	getUrlChkUserOprCertificatePolyPoly : function(ERP_ID) {
-		var urlChkUserOprCertificatePolyPoly = this.urlModel
-				.getProperty('urlchkuseroprcertificatepolypoly');
-		urlChkUserOprCertificatePolyPoly = urlChkUserOprCertificatePolyPoly
-				.replace("$Order", this.worder);
+		var urlChkUserOprCertificatePolyPoly = this.urlModel.getProperty('urlchkuseroprcertificatepolypoly');
+		urlChkUserOprCertificatePolyPoly = urlChkUserOprCertificatePolyPoly.replace("$Order", this.worder);
 		urlChkUserOprCertificatePolyPoly = urlChkUserOprCertificatePolyPoly
 				.replace("$Site", this.site);
 		urlChkUserOprCertificatePolyPoly = urlChkUserOprCertificatePolyPoly

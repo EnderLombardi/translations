@@ -58,6 +58,9 @@ airbus.mes.polypoly.PolypolyManager = {
 		airbus.mes.polypoly.ModelManager.loadStationListModel();
 	},
 
+	// Crazy function call not present in the model manager or polypolymanager even in the code get from stepchange
+	// onModelLoaded of what ??????
+	
 	onModelLoaded : function() {
 		var oData = sap.ui.getCore().getModel("mii").getData().Rowsets;
 		if (oData.Rowset && oData.Rowset.length > 0 && oData.Rowset[0].Row) {
@@ -65,7 +68,10 @@ airbus.mes.polypoly.PolypolyManager = {
 			var oTableData = airbus.mes.polypoly.PolypolyManager.createTableData(oMiiData);
 			var mTableModel = new sap.ui.model.json.JSONModel(oTableData);
 			airbus.mes.polypoly.PolypolyManager.internalContext.oModel = mTableModel;
-			sap.ui.getCore().byId("polypoly").setModel(sap.ui.getCore().getModel("mTableModel"));
+			
+			// ????? 
+			sap.ui.getCore().byId("polypoly").setModel(mTableModel);
+			//sap.ui.getCore().getModel("mTableModel").loadData(mTableModel);
 			
 		} 
 		else {
@@ -586,6 +592,8 @@ airbus.mes.polypoly.PolypolyManager = {
 //		});
 //	},
 
+	// Crazy why declare model here???? .................-_-_-_--__-_-_ what mean MII model???
+	
 	getPolypolyModel : function(sFactory, sLine, sStation, site) {
 		var miiModel = new sap.ui.model.json.JSONModel();
 		sap.ui.getCore().setModel(miiModel, "mii");

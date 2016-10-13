@@ -215,32 +215,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 
 								jQuery.sap.registerModulePath("airbus.mes.polypoly","/MES/components/polypoly");
 								airbus.mes.stationtracker.AssignmentManager.polypolyAffectation = true;
-
-								//Open fragment
-							//var bindingContext = oEvent.getSource().getBindingContext();
-							
-														
-//							if (!this.oComp) { 
-//					        var oComp = sap.ui.getCore().createComponent({
-//					            name : "airbus.mes.polypoly", // root component folder is resources
-//					            id : "Comp10",
-//					     });
-
-					     // Create a Ui container
-
-					     
-					//   oCompCont.placeAt("contentPopover");
-//					     this.oComp = oComp;
-//					     this.oCompCont = oCompCont;
-//						};
-						
-//						var oCompCont = new sap.ui.core.ComponentContainer({
-//						    component : oComp
-//						});
-						// place this Ui Container with the Component inside into UI Area
-//						this._oPopoverPolypoly.addContent(oCompCont);
-//						this._oPopoverPolypoly.open();
-								
+		
 							if (!airbus.mes.stationtracker.oPopoverPolypoly) {
 								airbus.mes.stationtracker.oPopoverPolypoly = sap.ui.xmlfragment("airbus.mes.stationtracker.polypolyFragment", this);
 								
@@ -248,6 +223,9 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 						            name : "airbus.mes.polypoly", // root component folder is resources
 						            id : "Comp10",
 						     });	
+								
+								//load model of polypoly
+								airbus.mes.polypoly.ModelManager.loadPolyPolyModel("F1","1","10","CHES");	
 								
 							}
 							// Permit to display or not polypoly affectation or polypoly simple
@@ -274,6 +252,8 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 						
 						scheduler.templates.event_bar_text = function(start, end, event) {
 
+						//	return airbus.mes.stationtracker.util.Formatter.BoxDisplay(event);
+							
 							if (event.type === "I") {
 								
 								return airbus.mes.stationtracker.util.Formatter.initial(event.text, event.progress);

@@ -25,14 +25,13 @@ airbus.mes.polypoly.Component.prototype.createContent = function() {
 		//	View on XML
 		airbus.mes.polypoly.ModelManager.init(this);
 		airbus.mes.polypoly.PolypolyManager.init(this);
-		airbus.mes.polypoly.PolypolyManager.getPolypolyModel("F1","1","10","CHES");
+
 		var page = sap.ui.view({
 			id : "polypoly",
 			viewName : "airbus.mes.polypoly.polypoly",
 			type : sap.ui.core.mvc.ViewType.XML
 		});
-		airbus.mes.polypoly.PolypolyManager.onModelLoaded();
-
+		
 		airbus.mes.polypoly.oView = page;
 		
 		//Bind model

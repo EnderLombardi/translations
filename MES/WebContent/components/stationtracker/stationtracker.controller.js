@@ -204,11 +204,11 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	            name : "airbus.mes.polypoly", // root component folder is resources
 	            id : "Comp10",
 	     });	
-			
+			//load model of polypoly
+			airbus.mes.polypoly.ModelManager.loadPolyPolyModel("F1","1","10","CHES");	
 		}
-		// Permit to display or not polypoly affectation or polypoly simple
-		airbus.mes.polypoly.oView.getController().filterUA();
 		
+		airbus.mes.polypoly.oView.getController().filterUA();
 		// place this Ui Container with the Component inside into UI Area
 		airbus.mes.stationtracker.oPopoverPolypoly.addContent(airbus.mes.polypoly.oView);
 		airbus.mes.stationtracker.oPopoverPolypoly.open();	
