@@ -227,6 +227,21 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			airbus.mes.stationtracker.worklistPopover = sap.ui.xmlfragment("worklistPopover","airbus.mes.stationtracker.worklistPopover", airbus.mes.stationtracker.oView.getController());
 			airbus.mes.stationtracker.worklistPopover.addStyleClass("alignTextLeft");
 			oView.addDependent(airbus.mes.stationtracker.worklistPopover);
+			
+			sap.ui.getCore().byId("worklistPopover--myList").bindAggregation('items', {
+				path : "WorkListModel>/",
+				template : sap.ui.getCore().byId("worklistPopover--sorterList"),
+				sorter : [ new sap.ui.model.Sorter({
+					// Change this value dynamic
+					path : 'shopOrder',
+					descending : false,
+					group : true,
+				}), new sap.ui.model.Sorter({
+					path : 'index',
+					descending : false
+				}) ]
+			});
+			
 		}
 		airbus.mes.stationtracker.worklistPopover.unPlanned = true;
 		airbus.mes.stationtracker.worklistPopover.OSW = false;		
@@ -235,7 +250,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 
 		var oData = airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").getData();
 		if (oData && oData.length > 0 && oData) {
-			oData = this.sortWorkList(oData);
+			oData = airbus.mes.stationtracker.util.Formatter.sortWorkList(oData);
 		}		
 		airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").setData(oData);
 		airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").refresh(true);
@@ -578,7 +593,22 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
                   }, 0);
            };
      },
-	
+     onChangeFilter : function(oEvent){
+         var aMyFilter = [];    	 
+//    	 Check the current value of the filter status
+    	 if(oEvent.getSource().getSelectedKey() === "A") {
+//			if status ALL, we have to remove all filter
+    		 sap.ui.getCore().byId("worklistPopover--myList").getBinding("items").filter();    	
+    		 
+    	 } else {
+//    		 we apply the a filter
+
+    		 var oFilterStatus = new sap.ui.model.Filter("status","EQ",oEvent.getSource().getSelectedKey());        
+             aMyFilter.push(oFilterStatus);
+             sap.ui.getCore().byId("worklistPopover--myList").getBinding("items").filter(new sap.ui.model.Filter(aMyFilter, true));    		 
+    	 }
+    	 
+     }
 	
 	
 });

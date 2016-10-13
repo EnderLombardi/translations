@@ -44,7 +44,7 @@
 
                   "endDate": "2014-07-01 13:00",
 
-                  "status": "0",
+                  "status": "N",
 
                   "disruptions": "1",
 
@@ -98,7 +98,7 @@
 
                   "endDate": "2014-07-01 15:00",
 
-                  "status": "0",
+                  "status": "N",
 
                   "disruptions": "1",
 
@@ -152,7 +152,7 @@
 
                   "endDate": "2014-07-01 13:00",
 
-                  "status": "0",
+                  "status": "S",
 
                   "disruptions": "1",
 
@@ -206,7 +206,7 @@
 
                   "endDate": "2014-07-01 11:00",
 
-                  "status": "0",
+                  "status": "S",
 
                   "disruptions": "0",
 
@@ -260,7 +260,7 @@
 
                   "endDate": "2014-07-01 16:00",
 
-                  "status": "0",
+                  "status": "C",
 
                   "disruptions": "1",
 
@@ -314,7 +314,7 @@
 
                   "endDate": "2014-07-01 15:00",
 
-                  "status": "0",
+                  "status": "C",
 
                   "disruptions": "0",
 

@@ -29,22 +29,20 @@
                ],
                "Status":[  
                   {  
+                     "Key":"A",
                      "Value":"All"
                   },
                   {  
-                     "Value":"Created"
+                     "Key":"S",
+                     "Value":"Started"
                   },
                   {  
-                     "Value":"Open"
+                     "Key":"N",                  
+                     "Value":"No Started"
                   },
                   {  
-                     "Value":"PCNF"
-                  },
-                  {  
-                     "Value":"CNF"
-                  },
-                  {  
-                     "Value":"SFFI"
+                  	 "Key":"C",
+                     "Value":"Confirmed"
                   }
                ]
             }

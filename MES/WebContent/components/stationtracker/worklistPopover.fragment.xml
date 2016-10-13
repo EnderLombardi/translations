@@ -22,9 +22,9 @@
 				
 					<Select class="sapUiTinyMarginBeginEnd comboBoxStyle"
 						    items="{filterUnplannedModel>/Rowsets/Rowset/0/Row/Status}"
-						    change="changeGrouping"
+						    change="onChangeFilter"
 					        visible="{ path: 'WorkListModel>andons' , formatter: 'airbus.mes.stationtracker.util.Formatter.isGroupingVisible' }">						
-						<core:ListItem text="{filterUnplannedModel>Value}" />					
+						<core:ListItem key="{filterUnplannedModel>Key}" text="{filterUnplannedModel>Value}" />					
 					</Select>
 				</HBox>
 				<List id="myList" growing="true" growingThreshold="20"
