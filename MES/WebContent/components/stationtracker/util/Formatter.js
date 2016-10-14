@@ -149,12 +149,14 @@ airbus.mes.stationtracker.util.Formatter = {
 				
 				var html = "";
 				
-				var sDivForLeftDisplay = '<div  style="width:inherit; height:inherit; position:absolute; z-index: 1; line-height: 23px;left: 0px; text-align:left;  overflow: hidden; text-overflow: ellipsis; " >'
-				var sDivForRightDisplay = '<div  style="width:inherit; height:inherit; position:absolute; z-index: 1; line-height: 23px;left: 0px; text-align:right; " >'
+				var sDivForLeftDisplay = '<div  style="width:inherit; height:inherit; position:absolute; z-index: 1; line-height: 23px;left: 0px; overflow: hidden; text-overflow: ellipsis; " >'
+				//var sDivForRightDisplay = '<div  style="width:inherit; height:inherit; position:absolute; z-index: 1; line-height: 23px;left: 0px; text-align:right; " >'
 					
 					
-				var sText = '<span>' + 'TEXXT DE TEST' + '</span>';	
-					
+				var sText = '<span style="position: relative; z-index: 1; float: left; overflow: hidden; text-overflow: ellipsis; max-width:40%; white-space: nowrap;">' + 'TEXXT DE TEST' + '</span>';	
+				
+				var sProgress = '<span style="position: relative;  z-index: 1; float: right; overflow: hidden; text-overflow: ellipsis; max-width:40%; white-space: nowrap; padding-left:10px; padding-right:10px;"> ['+ oBox.progress +'/'+ oBox.totalDuration +' IM]</span>';	
+				
 				// need one more condition to add OSW
 				if ( oBox.routingMaturityAssessment != "---" ) {
 					
@@ -184,13 +186,13 @@ airbus.mes.stationtracker.util.Formatter = {
 				
 				switch (  oBox.status ) {
 				case "P":
-					var sRightIcon = '<i class="fa fa-exclamation-triangle" style="padding-left:4px; line-height: 23px;" ></i>';
+					var sRightIcon = '<i class="fa fa-exclamation-triangle" style="position: relative; z-index: 1; padding-left:4px; line-height: 23px; float: right;" ></i>';
 					break;
 				case "A":
-					var sRightIcon = '<i class="fa fa-exclamation-triangle" style="padding-left:4px; line-height: 23px;" ></i>';
+					var sRightIcon = '<i class="fa fa-exclamation-triangle" style="position: relative; z-index: 1; padding-left:4px; line-height: 23px; float: right;" ></i>';
 					break;
 				case "C":
-					var sRightIcon = '<i class="fa fa-check-square-o" style="padding-left:4px; line-height: 23px; color:white;" ></i>';
+					var sRightIcon = '<i class="fa fa-check-square-o" style="position: relative; z-index: 1; padding-left:4px; line-height: 23px; color:white; float: right;" ></i>';
 					break;
 				
 				default:
@@ -201,13 +203,11 @@ airbus.mes.stationtracker.util.Formatter = {
 				
 				var sRightText = '<span style="padding-left:4px; line-height: 23px;" > ['+ oBox.progress +'/'+ oBox.totalDuration +' IM]</span>';				
 				
+				html = sDivForLeftDisplay + sRightIcon + sText + sProgress + sColorProgress + '</div>' 
 				
-				html = sDivForLeftDisplay + sText + '</div>' + sColorProgress +  sDivForRightDisplay + sRightText + sRightIcon  + '</div>'; 
+				//html = sDivForLeftDisplay + sText + '</div>' + sColorProgress +  sDivForRightDisplay + sRightText + sRightIcon  + '</div>'; 
 				
 				return html;
-//				var sRightIcon = '<div  style="width:inherit; height:inherit; position:absolute; z-index: 1; padding-right: 5px;line-height: 23px; text-align:right; left: 0px;">' + 
-//				'<span style="padding-left:4px; line-height: 23px;" > ['+ progress +'/'+ duration +' IM]</span>' +
-//				'<i class="fa fa-exclamation-triangle" style="padding-left:4px; line-height: 23px;" ></i></div>';
 				
 				
 				

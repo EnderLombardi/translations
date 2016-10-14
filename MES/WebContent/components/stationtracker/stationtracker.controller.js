@@ -195,7 +195,8 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		}
 	},
 	onPolypolyOpen: function(oEvent) {
-		jQuery.sap.registerModulePath("airbus.mes.polypoly","/MES/components/polypoly");
+		
+		jQuery.sap.registerModulePath("airbus.mes.polypoly","../components/polypoly");
 		airbus.mes.stationtracker.AssignmentManager.polypolyAffectation = false;
 		if (!airbus.mes.stationtracker.oPopoverPolypoly) {
 			airbus.mes.stationtracker.oPopoverPolypoly = sap.ui.xmlfragment("airbus.mes.stationtracker.polypolyFragment", this);

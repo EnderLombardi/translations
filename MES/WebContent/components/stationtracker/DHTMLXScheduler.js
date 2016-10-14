@@ -212,7 +212,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 
 							if (section.subname && !section.children) {
 
-								jQuery.sap.registerModulePath("airbus.mes.polypoly","/MES/components/polypoly");
+								jQuery.sap.registerModulePath("airbus.mes.polypoly","../components/polypoly");
 								airbus.mes.stationtracker.AssignmentManager.polypolyAffectation = true;
 		
 							if (!airbus.mes.stationtracker.oPopoverPolypoly) {

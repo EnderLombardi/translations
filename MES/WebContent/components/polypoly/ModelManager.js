@@ -127,7 +127,7 @@ airbus.mes.polypoly.ModelManager = {
 		}
 
 		this.urlModel = new sap.ui.model.resource.ResourceModel({
-			bundleUrl : "/MES/components/polypoly/config/url_config.properties",
+			bundleUrl : "../components/polypoly/config/url_config.properties",
 			bundleLocale : dest
 		});
 
