@@ -11,7 +11,7 @@ airbus.mes.settings.ModelManager = {
 	station : undefined,
 	msn : undefined,
 	core : undefined,
-	urlModel : undefined,
+	urlModel : undefined, 
 	//user:"ng123",
 	current_flag:"X",
 	queryParams : jQuery.sap.getUriParameters(),
