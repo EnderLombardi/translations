@@ -318,6 +318,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 					var sProgress = "";
 					var fCriticalPath = 0;		
 					var sOperationDescription = "";
+					var sStatus = "";
 				;
 					
 					oModel[key][key1][key2].forEach( function( el ) { 
@@ -333,7 +334,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 						sProgress = el.progress;
 						fCriticalPath = el.criticalPath;
 						sOperationDescription = el.sBox;
-					
+						sStatus = el.status;
 						
 						if ( sBox === oGroupingBoxingManager.specialGroup) {
 							
@@ -371,6 +372,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 					
 					var oOperationRescheduling = {
 							
+							"status" : sStatus,
 							"totalDuration" : (aTotalDuration.reduce(function(pv, cv) { return pv + cv; }, 0))/aTotalDuration.length, 
 							"box" : key2,
 							"avlLine" : key1,

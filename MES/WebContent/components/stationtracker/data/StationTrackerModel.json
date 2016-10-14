@@ -424,7 +424,7 @@
 
                   "STEP_ID": "10",
 
-                  "STATE": "N",
+                  "STATE": "P",
 
                   "OPERATION_DESCRIPTION": "FLY SIMULATOR",
 
@@ -476,7 +476,7 @@
 
                   "STEP_ID": "10",
 
-                  "STATE": "N",
+                  "STATE": "S",
 
                   "OPERATION_DESCRIPTION": "FLY SIMALTOR2",
 
@@ -530,7 +530,7 @@
 
                   "STEP_ID": "20",
 
-                  "STATE": "N",
+                  "STATE": "C",
 
                   "OPERATION_DESCRIPTION": "SABOTAGE",
 
@@ -584,7 +584,7 @@
 
                   "STEP_ID": "30",
 
-                  "STATE": "N",
+                  "STATE": "S",
 
                   "OPERATION_DESCRIPTION": "EVALUATION",
 

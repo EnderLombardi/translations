@@ -252,37 +252,37 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 						
 						scheduler.templates.event_bar_text = function(start, end, event) {
 
-						//	return airbus.mes.stationtracker.util.Formatter.BoxDisplay(event);
+							return airbus.mes.stationtracker.util.Formatter.BoxDisplay(event);
 							
-							if (event.type === "I") {
-								
-								return airbus.mes.stationtracker.util.Formatter.initial(event.text, event.progress);
-
-								
-							}
-							
-							if (event.progress === "100") {
-
-								return airbus.mes.stationtracker.util.Formatter.fullConfirm(event.text, event.progress);
-
-							}
-							
-							if (event.progress != "100") {
-								
-								if ( event.andon === 1 ) {
-									
-									return airbus.mes.stationtracker.util.Formatter.andon(event.text,event.progress,event.totalDuration);
-									
-								}
-								
-								if ( event.blocked === 1 ) {
-									
-									return airbus.mes.stationtracker.util.Formatter.blocked(event.text,event.progress);
-								}
-								
-								return airbus.mes.stationtracker.util.Formatter.partialConf(event.text, event.progress);
-
-							}
+//							if (event.type === "I") {
+//								
+//								return airbus.mes.stationtracker.util.Formatter.initial(event.text, event.progress);
+//
+//								
+//							}
+//							
+//							if (event.progress === "100") {
+//
+//								return airbus.mes.stationtracker.util.Formatter.fullConfirm(event.text, event.progress);
+//
+//							}
+//							
+//							if (event.progress != "100") {
+//								
+//								if ( event.andon === 1 ) {
+//									
+//									return airbus.mes.stationtracker.util.Formatter.andon(event.text,event.progress,event.totalDuration);
+//									
+//								}
+//								
+//								if ( event.blocked === 1 ) {
+//									
+//									return airbus.mes.stationtracker.util.Formatter.blocked(event.text,event.progress);
+//								}
+//								
+//								return airbus.mes.stationtracker.util.Formatter.partialConf(event.text, event.progress);
+//
+//							}
 							
 					
 						};

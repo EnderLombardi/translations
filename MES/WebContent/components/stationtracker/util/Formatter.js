@@ -149,34 +149,57 @@ airbus.mes.stationtracker.util.Formatter = {
 				
 				var html = "";
 				
-				var sText = '<div  style="width:inherit; height:inherit; position:absolute; z-index: 1; padding-left: 5px;line-height: 23px;left: 0px;" >'+
-					
-					 + '</div>';
+				var sText = '<div  style="width:inherit; height:inherit; position:absolute; z-index: 1; padding-left: 5px;line-height: 23px;left: 0px;" >'
 				
 				// need one more condition to add OSW
 				if ( oBox.routingMaturityAssessment != "---" ) {
 					
 					var sLeftIcon = '<i class="fa fa-exclamation-triangle" style="padding-left:4px; line-height: 23px;" ></i>'
 				
-				}
+				}  
 				
-				switch (  oBox.statu ) {
+					var sLeftIcon = "";
+				
+				switch (  oBox.status ) {
 				case "N":
-					var sColorProgress = ""
+					var sColorProgress = "";
 					break;
 				case "C":
-					var sColorProgress = '<div style="width:100%; height:inherit; background-color:#0085ad ; position:absolute; z-index: 0; left: 0px;"></div>'
+					var sColorProgress = '<div style="width:100%; height:inherit; background-color:#0085ad ; position:absolute; z-index: 0; text-align:right; left: 0px;">';
+					break;
+				case "S":
+					var sColorProgress = '<div style="width:'+ oBox.progress + '%; height:inherit; background-color:#84bd00; position:absolute; z-index: 0; text-align:right; left: 0px;">';
+					break;
+				case "P":
+					var sColorProgress = '<div style="width:'+ oBox.progress + '%; height:inherit; background-color:#84bd00; position:absolute; z-index: 0; text-align:right; left: 0px;">';
 					break;
 				default:
-					
+					var sColorProgress = '<div  style="width:inherit; height:inherit; position:absolute; z-index: 1; padding-right: 5px;line-height: 23px; text-align:right; left: 0px;">';
+					break;;
+				}
+				
+				switch (  oBox.status ) {
+				case "P":
+					var sRightIcon = '<i class="fa fa-exclamation-triangle" style="padding-left:4px; line-height: 23px;" ></i>';
+					break;
+				case "A":
+					var sRightIcon = '<i class="fa fa-exclamation-triangle" style="padding-left:4px; line-height: 23px;" ></i>';
+					break;
+				default:
+					var sRightIcon = "";
 					break;
 				}
-					
-				var sColorProgress = '<div style="width:100%; height:inherit; background-color:#0085AD ; position:absolute; z-index: 0; left: 0px;"></div>'
-					
-				var sRightIcon = '<div  style="width:inherit; height:inherit; position:absolute; z-index: 1; padding-right: 5px;line-height: 23px; text-align:right; left: 0px;">' + 
-				'<span style="padding-left:4px; line-height: 23px;" > ['+ progress +'/'+ duration +' IM]</span>' +
-				'<i class="fa fa-exclamation-triangle" style="padding-left:4px; line-height: 23px;" ></i></div>';
+				
+				
+				var sRightText = '<span style="padding-left:4px; line-height: 23px;" > ['+ oBox.progress +'/'+ oBox.totalDuration +' IM]</span>';				
+				
+				
+				html = sText + sLeftIcon +  'toto' + '</div>' + sColorProgress + sRightIcon + sRightText + '</div>'; 
+				
+				return html;
+//				var sRightIcon = '<div  style="width:inherit; height:inherit; position:absolute; z-index: 1; padding-right: 5px;line-height: 23px; text-align:right; left: 0px;">' + 
+//				'<span style="padding-left:4px; line-height: 23px;" > ['+ progress +'/'+ duration +' IM]</span>' +
+//				'<i class="fa fa-exclamation-triangle" style="padding-left:4px; line-height: 23px;" ></i></div>';
 				
 				
 				
@@ -243,8 +266,7 @@ airbus.mes.stationtracker.util.Formatter = {
 				html += '<div  style="width:inherit; height:inherit; position:absolute; z-index: 1; padding-left: 5px;line-height: 23px;left: 0px;" >'
 					+ sText + '</div>';
 					
-				html += '<div style="width:'+ sProgress
-				+ '%; height:inherit; background-color:#7ED320; position:absolute; z-index: 0; left: 0px;">&nbsp;<span  style="width:3px; float:right; background:#417506; height:inherit;" ></span> </div>'
+				html += '<div style="width:'+ sProgress+ '%; height:inherit; background-color:#84bd00; position:absolute; z-index: 0; left: 0px;">&nbsp;<span  style="width:3px; float:right; background:#417506; height:inherit;" ></span> </div>'
 								
 				return html;
 				
