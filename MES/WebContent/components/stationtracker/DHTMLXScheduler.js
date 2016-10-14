@@ -19,7 +19,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 						scheduler.xy.scroll_width=20;
 						scheduler.xy.bar_height = 30;
 						scheduler.deleteMarkedTimespan();
-						scheduler.config.drag_resize = false;
+						scheduler.config.drag_resize = true;
 						scheduler.locale.labels.timeline_tab = "Timeline";
 						scheduler.locale.labels.section_custom="Section";
 			 		    scheduler.config.details_on_create=false;
@@ -29,7 +29,6 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 
 						scheduler.config.mark_now = true;
 						scheduler.config.drag_create = false;
-						scheduler.config.drag_resize = false;
 						scheduler.config.touch = "force";
 					 	scheduler.config.details_on_create = false;
 						scheduler.config.details_on_dblclick = false;
@@ -253,37 +252,6 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 						scheduler.templates.event_bar_text = function(start, end, event) {
 
 							return airbus.mes.stationtracker.util.Formatter.BoxDisplay(event);
-							
-//							if (event.type === "I") {
-//								
-//								return airbus.mes.stationtracker.util.Formatter.initial(event.text, event.progress);
-//
-//								
-//							}
-//							
-//							if (event.progress === "100") {
-//
-//								return airbus.mes.stationtracker.util.Formatter.fullConfirm(event.text, event.progress);
-//
-//							}
-//							
-//							if (event.progress != "100") {
-//								
-//								if ( event.andon === 1 ) {
-//									
-//									return airbus.mes.stationtracker.util.Formatter.andon(event.text,event.progress,event.totalDuration);
-//									
-//								}
-//								
-//								if ( event.blocked === 1 ) {
-//									
-//									return airbus.mes.stationtracker.util.Formatter.blocked(event.text,event.progress);
-//								}
-//								
-//								return airbus.mes.stationtracker.util.Formatter.partialConf(event.text, event.progress);
-//
-//							}
-							
 					
 						};
 
@@ -324,65 +292,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 									airbus.mes.stationtracker.ModelManager.selectMyShift();
 								});
 							}
-							/* Listbox */
-//							$("select[class='selectShift']").setVisible(airbus.mes.stationtracker.ShiftManager.dayDisplay); // bad
-//							var options = airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy[airbus.mes.stationtracker.ShiftManager.current_day];
-//							if (airbus.mes.stationtracker.ShiftManager.dayDisplay === true && $("select[class='selectBoxStation']").length === 0 ) {		
-//								$("div[class='dhx_cal_header']").append("<select class='selectBoxStation' id='selectBoxStation' ></select>");
-//								var i = 0;
-//								for (var prop in options) {
-//							        // skip loop if the property is from prototype
-//							        if(!options.hasOwnProperty(prop)) continue;
-//							        if (i != airbus.mes.stationtracker.ShiftManager.BoxSelected)
-//							        {	
-//							        	$("select[class='selectBoxStation']").append("<option value='"+prop+"'>"+prop+"</option>");
-//							        }
-//							        else
-//							        {
-//							        	$("select[class='selectBoxStation']").append("<option value='"+prop+"' selected='selected'>"+prop+"</option>");
-//							        	airbus.mes.stationtracker.ShiftManager.ShiftSelected = prop;
-//							        	var intervals = airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy[airbus.mes.stationtracker.ShiftManager.current_day][airbus.mes.stationtracker.ShiftManager.ShiftSelected];
-//										airbus.mes.stationtracker.ShiftManager.ShiftSelectedStart = intervals[0].beginDateTime;
-//										airbus.mes.stationtracker.ShiftManager.ShiftSelectedEnd = intervals[intervals.length - 1].endDateTime;
-//										scheduler.deleteMarkedTimespan();
-//										scheduler.addMarkedTimespan({  
-//											start_date: airbus.mes.stationtracker.ShiftManager.ShiftSelectedStart,
-//											end_date: airbus.mes.stationtracker.ShiftManager.ShiftSelectedEnd,
-//										    css:   "shiftCss",
-//										});
-//							        }
-//							        i++;
-//							    }
-//								 $("select[class='selectBoxStation']").change(function(){
-//								this.options[this.selectedIndex].selected = true;
-//								airbus.mes.stationtracker.ShiftManager.BoxSelected = this.selectedIndex;
-//								airbus.mes.stationtracker.ShiftManager.ShiftSelected = this.options[this.selectedIndex].value;
-//								var intervals = airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy[airbus.mes.stationtracker.ShiftManager.current_day][airbus.mes.stationtracker.ShiftManager.ShiftSelected];
-//								airbus.mes.stationtracker.ShiftManager.ShiftSelectedStart = intervals[0].beginDateTime;
-//								airbus.mes.stationtracker.ShiftManager.ShiftSelectedEnd = intervals[intervals.length - 1].endDateTime;
-//								scheduler.deleteMarkedTimespan();
-//								scheduler.updateView();
-//								scheduler.addMarkedTimespan({  
-//									start_date: airbus.mes.stationtracker.ShiftManager.ShiftSelectedStart,
-//									end_date: airbus.mes.stationtracker.ShiftManager.ShiftSelectedEnd,
-//								    css:   "shiftCss",
-//								});
-//
-//
-//								 
-//							 });
-//							}
-//							else if (airbus.mes.stationtracker.ShiftManager.shiftDisplay === true)
-//							{
-//								scheduler.deleteMarkedTimespan();
-//								$("select[class='selectBoxStation']").length = 0;
-//								airbus.mes.stationtracker.ShiftManager.BoxSelected = 0;
-//								airbus.mes.stationtracker.ShiftManager.ShiftSelected = undefined;
-//								airbus.mes.stationtracker.ShiftManager.ShiftSelectedStart = undefined;
-//								airbus.mes.stationtracker.ShiftManager.ShiftSelectedEnd = undefined;
-//							}							
-//									
-						
+												
 							}));
 						
 											

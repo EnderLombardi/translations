@@ -42,10 +42,10 @@ airbus.mes.stationtracker.Component.prototype.createContent = function() {
 			type : "XML",
 		})
 
-		//this.oView.setModel(sap.ui.getCore().getModel("userSettingModel"),	"userSettingModel");
-		//this.oView.setModel(sap.ui.getCore().getModel("stationTrackerShift"),"stationTrackerShift");
+		this.oView.setModel(sap.ui.getCore().getModel("userSettingModel"),	"userSettingModel");
+		this.oView.setModel(sap.ui.getCore().getModel("stationTrackerShift"),"stationTrackerShift");
 		this.oView.setModel(sap.ui.getCore().getModel("productionGroupModel"), "productionGroupModel");
-		//this.oView.setModel(sap.ui.getCore().getModel("KPI"), "KPI");
+		this.oView.setModel(sap.ui.getCore().getModel("KPI"), "KPI");
 		
 		airbus.mes.stationtracker.oView = this.oView;
 		return this.oView;

@@ -274,7 +274,7 @@ color : black;
 	height: 20px ! important;
 }
 .grey {
-	background-color: #D8D8D8;
+	background-color: #97999b;
 }
 .shiftCss {
 	background-color: #EEF3F7;
@@ -292,10 +292,6 @@ color : black;
 
 .dhx_cal_container {
 	height: 100%;
-}
-
-.grey {
-	background-color: #D8D8D8;
 }
 
 .Hour {

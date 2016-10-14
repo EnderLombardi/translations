@@ -1,18 +1,20 @@
 
 .titleToolbar {
-	background-color: lightgrey !important;
+	background-color: lightgrey;
 }
 
-.pageHeader .sapMSlt{
-	border:none !important;
+.sapMSlt>.sapMSltLabel, .sapMSlt, .sapMSltArrow {
+	line-height: 1.9rem;
+	border:none;
+	height:1.9rem;
+	background-color:transparent;
+	color:#fff;
 }
 
 .GenricBgColor {
 	background-color: #EBEEF2;
 }
-.whiteBG{
-	background-color:#fff !important;
-}
+
 .langbutton {
 	float: left;
 	width: 33.3%;
@@ -147,10 +149,10 @@ padding-right: 10px;
 .hachure {
 	background-image: url(../img/fat_lines.png);
 }
-.panelContent .sapMPanelContent{
+/*.panelContent .sapMPanelContent{
 padding : 0rem;
 background-color : #CCE6EE;
-}
+}*/
 .panelContentList .sapMListBGSolid .sapMLIB{
 background-color : #CCE6EE;
 }
@@ -166,16 +168,14 @@ background-color : #CCE6EE;
 	color: white !important;
 	background: #0085AD !important;
 }
+.pageHeader .sapMSlt{
+	border:0px !important;
+}
 .pageHeader .sapMSltArrow{
 	background:transparent !important;
 	color:#fff;
 	
 }
-
-
-
-
-
 
 .pageStation {
 	background: #006CA7 !important;
@@ -414,7 +414,7 @@ background-color : #CCE6EE;
 	margin: 0px;
 	height: 1.5rem;
 }
-.absolutePosition{
+.absoultePosition{
 	position: absolute !important;
 	display:block !important;
 } 

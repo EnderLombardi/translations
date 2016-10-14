@@ -20,16 +20,15 @@ airbus.mes.stationtracker.ModelManager = {
 			core.setModel(new sap.ui.model.json.JSONModel(),"OSWModel"); // OutStanding Work model
 			core.setModel(new sap.ui.model.json.JSONModel(),"stationTrackerShift");	//Shifts for station tracker
 			core.setModel(new sap.ui.model.json.JSONModel(),"KPI");	//KPI
+			core.setModel(new sap.ui.model.json.JSONModel(),"productionGroupModel"); // production Group model
+			
 			
 			core.getModel("stationTrackerRModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onStationTrackerLoad);
 			core.getModel("stationTrackerIModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onStationTrackerLoad);
 			core.getModel("shiftsModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onShiftsLoad);
 			core.getModel("affectationModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onAffectationLoad);
 			
-			
-			core.setModel(new sap.ui.model.json.JSONModel(),"productionGroupModel"); // production Group model
-	
-
+		
 			var dest;
 
 			switch (window.location.hostname) {

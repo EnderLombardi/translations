@@ -28,7 +28,7 @@ sap.ui.core.UIComponent.extend("airbus.mes.settings.Component", {
 airbus.mes.settings.Component.prototype.createContent = function() {
 
 	if (airbus.mes.settings.oView === undefined) {
-		airbus.mes.settings.ModelManager.init(this);
+		airbus.mes.settings.ModelManager.init(sap.ui.getCore());
 		this.oView = sap.ui.view({
 			id : "View1",
 			viewName : "airbus.mes.settings.FilterPlantData",
@@ -41,6 +41,8 @@ airbus.mes.settings.Component.prototype.createContent = function() {
 	     });
 		
 		this.oView.setModel(i18nModel, "i18n");		
+		this.oView.setModel(sap.ui.getCore().getModel("siteModel"),	"siteModel");
+		this.oView.setModel(sap.ui.getCore().getModel("plantModel"),	"plantModel");
 		airbus.mes.settings.oView = this.oView;
 		return this.oView;
 

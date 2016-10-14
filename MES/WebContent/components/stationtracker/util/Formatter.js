@@ -149,8 +149,12 @@ airbus.mes.stationtracker.util.Formatter = {
 				
 				var html = "";
 				
-				var sText = '<div  style="width:inherit; height:inherit; position:absolute; z-index: 1; padding-left: 5px;line-height: 23px;left: 0px;" >'
-				
+				var sDivForLeftDisplay = '<div  style="width:inherit; height:inherit; position:absolute; z-index: 1; line-height: 23px;left: 0px; text-align:left;  overflow: hidden; text-overflow: ellipsis; " >'
+				var sDivForRightDisplay = '<div  style="width:inherit; height:inherit; position:absolute; z-index: 1; line-height: 23px;left: 0px; text-align:right; " >'
+					
+					
+				var sText = '<span>' + 'TEXXT DE TEST' + '</span>';	
+					
 				// need one more condition to add OSW
 				if ( oBox.routingMaturityAssessment != "---" ) {
 					
@@ -165,16 +169,16 @@ airbus.mes.stationtracker.util.Formatter = {
 					var sColorProgress = "";
 					break;
 				case "C":
-					var sColorProgress = '<div style="width:100%; height:inherit; background-color:#0085ad ; position:absolute; z-index: 0; text-align:right; left: 0px;">';
+					var sColorProgress = '<div style="width:100%; height:inherit; background-color:#0085ad ; position:absolute; z-index: 0;left: 0px;"></div>';
 					break;
 				case "S":
-					var sColorProgress = '<div style="width:'+ oBox.progress + '%; height:inherit; background-color:#84bd00; position:absolute; z-index: 0; text-align:right; left: 0px;">';
+					var sColorProgress = '<div style="width:'+ oBox.progress + '%; height:inherit; background-color:#84bd00; position:absolute; z-index: 0; left: 0px;"></div>';
 					break;
 				case "P":
-					var sColorProgress = '<div style="width:'+ oBox.progress + '%; height:inherit; background-color:#84bd00; position:absolute; z-index: 0; text-align:right; left: 0px;">';
+					var sColorProgress = '<div style="width:'+ oBox.progress + '%; height:inherit; background-color:#84bd00; position:absolute; z-index: 0; left: 0px;"></div>';
 					break;
 				default:
-					var sColorProgress = '<div  style="width:inherit; height:inherit; position:absolute; z-index: 1; padding-right: 5px;line-height: 23px; text-align:right; left: 0px;">';
+					var sColorProgress = '<div  style="width:inherit; height:inherit; position:absolute; z-index: 1; padding-right: 5px;line-height: 23px; left: 0px;"></div>';
 					break;;
 				}
 				
@@ -185,6 +189,10 @@ airbus.mes.stationtracker.util.Formatter = {
 				case "A":
 					var sRightIcon = '<i class="fa fa-exclamation-triangle" style="padding-left:4px; line-height: 23px;" ></i>';
 					break;
+				case "C":
+					var sRightIcon = '<i class="fa fa-check-square-o" style="padding-left:4px; line-height: 23px; color:white;" ></i>';
+					break;
+				
 				default:
 					var sRightIcon = "";
 					break;
@@ -194,7 +202,7 @@ airbus.mes.stationtracker.util.Formatter = {
 				var sRightText = '<span style="padding-left:4px; line-height: 23px;" > ['+ oBox.progress +'/'+ oBox.totalDuration +' IM]</span>';				
 				
 				
-				html = sText + sLeftIcon +  'toto' + '</div>' + sColorProgress + sRightIcon + sRightText + '</div>'; 
+				html = sDivForLeftDisplay + sText + '</div>' + sColorProgress +  sDivForRightDisplay + sRightText + sRightIcon  + '</div>'; 
 				
 				return html;
 //				var sRightIcon = '<div  style="width:inherit; height:inherit; position:absolute; z-index: 1; padding-right: 5px;line-height: 23px; text-align:right; left: 0px;">' + 
