@@ -29,12 +29,6 @@
 	background-color: #D8D8D8;
 }
 
-.sapMSlt>.sapMSltLabel, .sapMSlt, .sapMSltArrow {
-	line-height: 1.9rem;
-	border: none;
-	height: 1.9rem
-}
-
 .subHeader {
 	background-color: white !important;
 }

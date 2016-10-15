@@ -31,7 +31,7 @@ airbus.mes.settings.ModelManager = {
 
 		switch (window.location.hostname) {
 		case "localhost":
-			dest = "sopra";
+			dest = "local";
 			break;
 		case "wsapbpc01.ptx.fr.sopra":
 			dest = "sopra";
@@ -53,13 +53,6 @@ airbus.mes.settings.ModelManager = {
 		airbus.mes.settings.ModelManager.loadSiteModel();
 //        airbus.mes.settings.ModelManager.loadLangModel();
         airbus.mes.settings.ModelManager.loadUserSettingsModel();
-        
-/*//  ***************************Define i18nModel**************************************
-		this.i18nModel = new sap.ui.model.resource.ResourceModel({
-		bundleUrl : "i18n/messageBundle.properties",
-		bundleLocale : core.getConfiguration().getLanguage()
-	});
-	core.setModel(this.i18nModel, "messageBundle");*/
 
 	},
 	
@@ -105,6 +98,11 @@ airbus.mes.settings.ModelManager = {
 	loadUserSettingsModel:function(){
 		var oUserSettingModel = this.core.getModel("userSettingModel");
 		oUserSettingModel.loadData(airbus.mes.settings.ModelManager.getUrlUserSetting(),null,false);
+		
+		//Set Data
+		oUserSettingModel = this.core.getModel("userSettingModel").getData();  
+		this.site = oUserSettingModel.Rowsets.Rowset[0].Row[0].plant;
+		this.station = oUserSettingModel.Rowsets.Rowset[0].Row[0].station;
 	},
 	// ********************************************************************************
 	 messageShow : function(text) {

@@ -3,7 +3,7 @@
 	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:custom="airbus.mes.stationtracker"
 	xmlns:layout="sap.ui.layout">
 	<Page title="Station Tracker" height="100%" showHeader="false"
-		enableScrolling="false ">
+		enableScrolling="false "  class="GenricBgColor">
 		<customHeader>
 			<Toolbar class="pageHeader" >
 				<content>

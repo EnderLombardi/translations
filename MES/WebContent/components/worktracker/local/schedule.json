@@ -3,11 +3,13 @@
 	"description": "924er Haller und C Brackets incl. Massen",
 	"fuel":"FUEL",
 	"activity": "100331626222",
-	"duration": "08:30 - 09:30",
+	"duration": "08:30",
+	"duration1": "09:00",
 	"label": "V90Q3E31",
 	"status": "CONFIRMED",
 	"date":"2016-09-25",
-	"sfc":"CHES0017"
+	"sfc":"CHES0017",
+	"percentConf":"100"
 	
 },
 {
@@ -15,33 +17,39 @@
 	"description": "924er Haller und C Brackets incl. Massen",
 	"fuel":"FUEL",
 	"activity": "100331626222",
-	"duration": "08:30 - 09:30",
+	"duration": "08:30",
+	"duration1": "09:30",
 	"label": "V90Q3E31",
 	"status": "Blocked",
 	"date":"2016-09-25",
-	"sfc":"CHES0017"
+	"sfc":"CHES0017",
+	"percentConf":"60"
 },
 {
 	"operation": "OP 2000",
 	"description": "924er Haller und C Brackets incl. Massen",
 	"fuel":"FUEL",
 	"activity": "100331626222",
-	"duration": "08:30 - 09:30",
+	"duration": "08:30",
+	"duration1": "11:30",
 	"label": "V90Q3E31",
 	"status": "Not Started",
 	"date":"2016-09-25",
-	"sfc":"CHES0017"
+	"sfc":"CHES0017",
+	"percentConf":"0"
 },	
 {
 	"operation": "OP 2000_Piyush",
 	"description": "924er Haller und C Brackets incl. Massen",
 	"fuel":"FUEL",
 	"activity": "100331626222",
-	"duration": "08:30 - 09:30",
+	"duration": "08:30",
+	"duration1": "13:30",
 	"label": "V90Q3E31",
 	"status": "In Progress",
 	"date":"2016-09-26",
-	"sfc":"CHES0017"
+	"sfc":"CHES0017",
+	"percentConf":"30"
 	
 },
 {
@@ -49,11 +57,13 @@
 	"description": "924er Haller und C Brackets incl. Massen",
 	"fuel":"FUEL",
 	"activity": "100331626222",
-	"duration": "08:30 - 09:30",
+	"duration": "08:30",
+	"duration1": "12:30",
 	"label": "V90Q3E31",
 	"status": "CONFIRMED",
 	"date":"2016-09-26",
-	"sfc":"CHES0017"
+	"sfc":"CHES0017",
+	"percentConf":"100"
 	
 },
 {
@@ -61,44 +71,52 @@
 	"description": "924er Haller und C Brackets incl. Massen",
 	"fuel":"FUEL",
 	"activity": "100331626222",
-	"duration": "08:30 - 09:30",
+	"duration": "08:30",
+	"duration1": "13:30",
 	"label": "V90Q3E31",
 	"status": "Blocked",
 	"date":"2016-09-26",
-	"sfc":"CHES0017"
+	"sfc":"CHES0017",
+	"percentConf":"70"
 },
 {
 	"operation": "OP 2000_Siva",
 	"description": "924er Haller und C Brackets incl. Massen",
 	"fuel":"FUEL",
 	"activity": "100331626222",
-	"duration": "08:30 - 09:30",
+	"duration": "08:30",
+	"duration1": "14:30",
 	"label": "V90Q3E31",
 	"status": "Not Started",
 	"date":"2016-09-27",
-	"sfc":"CHES0017"
+	"sfc":"CHES0017",
+	"percentConf":"0"
 },
 {
 	"operation": "OP 2000",
 	"description": "924er Haller und C Brackets incl. Massen",
 	"fuel":"FUEL",
 	"activity": "100331626222",
-	"duration": "08:30 - 09:30",
+	"duration": "08:30",
+	"duration1": "09:30",
 	"label": "V90Q3E31",
-	"status": "Not Started",
+	"status": "Paused",
 	"date":"2016-09-27",
-	"sfc":"CHES0017"
+	"sfc":"CHES0017",
+	"percentConf":"35"
 },
 {
 	"operation": "OP 2000",
 	"description": "924er Haller und C Brackets incl. Massen",
 	"fuel":"FUEL",
 	"activity": "100331626222",
-	"duration": "08:30 - 09:30",
+	"duration": "08:30",
+	"duration1": "09:30",
 	"label": "V90Q3E31",
 	"status": "CONFIRMED",
 	"date":"2016-09-27",
-	"sfc":"CHES0017"
+	"sfc":"CHES0017",
+	"percentConf":"100"
 	
 }]
 }

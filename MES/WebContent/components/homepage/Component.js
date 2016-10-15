@@ -3,7 +3,7 @@ jQuery.sap.require("sap.ui.core.UIComponent");
 sap.ui.core.UIComponent.extend("airbus.mes.homepage.Component", {
 	metadata : {
 		properties : {},
-		includes : [ "./css/margin.css" ] //array of css and/or javascript files that should be used in the component   
+		includes : [ ]   
 
 	},
 	//manifestUrl : "component.json",

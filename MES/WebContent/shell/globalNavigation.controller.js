@@ -15,21 +15,8 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 	onPress : function(oEvt) {
 
 	},
-	// onBack : function(){
-	// jQuery.sap.registerModulePath("airbus.mes.settings","/MES/components/settings");
-	//		    
-	// if (airbus.mes.settings != undefined) {
-	// nav.to(airbus.mes.settings.oView.getId());
-	// }
-	// else {
-	// sap.ui.getCore().createComponent({
-	// name : "airbus.mes.settings", // root component folder is resources
-	// });
-	//		    	
-	// nav.addPage(airbus.mes.settings.oView);
-	// nav.to(airbus.mes.settings.oView.getId()); }
-	//		
-	// },
+
+
 	goToHome : function() {
 
 		// Active settings button during leaving settings screen
@@ -106,20 +93,20 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 	// }
 	navigate : function() {
 
-//		jQuery.sap.registerModulePath("airbus.mes.settings", "/MES/components/settings");
-//		jQuery.sap.registerModulePath("airbus.mes.stationtracker", "/MES/components/stationtracker");
-
+		// Deactivate button on settings screen
+		airbus.mes.shell.oView.byId("settingsButton").setEnabled(false);
+		
 		if (nav.getCurrentPage().getId() === "stationTrackerView") {
-			var textButtonTo = "go to Station Tracker";
+			var textButtonTo = "Go to Station Tracker";
+
+		}if (nav.getCurrentPage().getId() === "workTrackerView" || nav.getCurrentPage().getId() === "workTrackerOpDetailView") {
+			var textButtonTo = "Go to Work Tracker";
+			airbus.mes.settings.GlobalFunction.navigateTo(textButtonTo, "worktracker");
 
 		} else if (nav.getCurrentPage().getId() === "homePageView") {
-			var textButtonTo = "go to Home Page";
+			var textButtonTo = "Go to Home Page";
 
 		}
-		;
-
-		// Deactive button on settings screen
-		airbus.mes.shell.oView.byId("settingsButton").setEnabled(false);
 
 		airbus.mes.settings.GlobalFunction.navigateTo(textButtonTo, "back");
 
@@ -128,29 +115,5 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 	checkCurrentView : function(){
 		console.log("toto");
 		return false;
-	},
-	
-	renderStationTracker : function() {
-
-
-		if (nav.getCurrentPage().getId() === "stationTrackerView") {
-
-
-			airbus.mes.stationtracker.ModelManager.loadShifts();
-			airbus.mes.stationtracker.ModelManager.loadAffectation();
-			airbus.mes.stationtracker.ShiftManager.init(airbus.mes.stationtracker.GroupingBoxingManager.shiftNoBreakHierarchy);
-			airbus.mes.stationtracker.ModelManager.loadStationTracker("R");
-			//TODO DEPLACE when the user change settings
-			airbus.mes.stationtracker.ModelManager.loadProductionGroup();		
-			airbus.mes.stationtracker.ModelManager.loadKPI();
-			
-			
-			
-			scheduler.xy.scroll_width = 20;
-			//scheduler.xy.nav_height = 0;
-			scheduler.updateView();
-
-
-		}
 	}
 });

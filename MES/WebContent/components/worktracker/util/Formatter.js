@@ -5,31 +5,91 @@ jQuery.sap.declare("airbus.mes.worktracker.util.Formatter");
 airbus.mes.worktracker.util.Formatter = {
 	monthNames : [ "January", "February", "March", "April", "May", "June",
 			"July", "August", "September", "October", "November", "December" ],
+			
+	status:{'completed': 'COMPLETED', 
+			'paused': 'IN_QUEUE',
+			'active': 'IN_WORK',
+			'notStarted': 'NOT_STARTED'},
 
-	setIcon : function(status) {
+	
+	setOprtnStatus: function(status, progress){
+		progress=parseInt(progress);
+		switch (status) {
+			case airbus.mes.worktracker.util.Formatter.status.completed:
+				return "Confirmed";
+	
+			case airbus.mes.worktracker.util.Formatter.status.active:
+				return "In Progress "+String(progress).split(".")[0]+"%";
+				
+			case airbus.mes.worktracker.util.Formatter.status.paused:
+				this.getParent().getParent().addStyleClass("listColorGreen");
+				return "Paused "+String(progress).split(".")[0]+"%";
+				/*if(parseInt(progress) == 0){
+					this.getParent().getParent().addStyleClass("listColorGrey");
+					return "Not Started ";
+				}
+				else{
+					this.getParent().getParent().addStyleClass("listColorGreen");
+					return "Paused "+String(progress).split(".")[0]+"%";
+				}*/
+			default:
+				this.getParent().getParent().addStyleClass("listColorGrey");
+				return "Not Started "
+		}
+	},
+	setSliderStatus: function(status, progress){
+		switch (status) {
+			case airbus.mes.worktracker.util.Formatter.status.completed:
+				return "Confirmed";
+	
+			case airbus.mes.worktracker.util.Formatter.status.active:
+				return "In Progress";
+				
+			case airbus.mes.worktracker.util.Formatter.status.paused:
+				if(progress == "0.0" || progress == "0" || progress == 0)
+					return "Not Started";
+				else
+					return "Paused "+String(progress).split(".")[0]+"%";
+			default:
+				return "Not Started";
+		}
+	},
+	setOprtnIcon : function(status, progress) {
 		this.getParent().getParent().removeStyleClass("listColorBlue");
 		this.getParent().getParent().removeStyleClass("listColorRed");
 		this.getParent().getParent().removeStyleClass("listColorGreen");
 		this.getParent().getParent().removeStyleClass("listColorGrey");
 		
 		switch (status) {
-		case "CONFIRMED":
-			this.getParent().getParent().addStyleClass("listColorBlue");
-			this.addStyleClass("colorGreen");
-			return "sap-icon://sys-enter-2";
-
-		case "Blocked":
-			this.getParent().getParent().addStyleClass("listColorRed");
-			this.addStyleClass("whiteColorText");
-			return "sap-icon://alert";
-
-		case "In Progress":
-			this.getParent().getParent().addStyleClass("listColorGreen");
-			return "";
-
-		case "Not Started":
-			this.getParent().getParent().addStyleClass("listColorGrey");
-			return "";
+			case airbus.mes.worktracker.util.Formatter.status.completed:
+				this.getParent().getParent().addStyleClass("listColorBlue");
+				this.addStyleClass("colorGreen");
+				return "sap-icon://sys-enter-2";
+	
+			case "Blocked":
+				this.getParent().getParent().addStyleClass("listColorRed");
+				this.addStyleClass("whiteColorText");
+				return "sap-icon://alert";
+	
+			case airbus.mes.worktracker.util.Formatter.status.active:
+				this.getParent().getParent().addStyleClass("listColorGreen");
+				return "";
+	
+			case airbus.mes.worktracker.util.Formatter.status.paused:
+				this.getParent().getParent().addStyleClass("listColorGreen");
+				return "";
+				/*switch(parseInt(progress)){
+					case 0:
+						this.getParent().getParent().addStyleClass("listColorGrey");
+						return "";
+					default:
+						this.getParent().getParent().addStyleClass("listColorGreen");
+						return "";
+				}*/
+			default:
+				this.getParent().getParent().addStyleClass("listColorGrey");
+				return "";
+			
 		}
 
 	},
@@ -77,12 +137,10 @@ airbus.mes.worktracker.util.Formatter = {
 	setUserInitials : function(fName, lName, image) {
 
 		if (typeof image != 'undefined' && image != "") {
-			//this.addStyleClass("hide");
 			this.setVisible(false);
 			return;
 		} else if(fName !="" && lName != "") {
 			var name = airbus.mes.worktracker.util.Functions.getInitials(fName, lName);
-			//this.removeStyleClass("hide");
 			this.setVisible(true);
 			return name;
 		}
@@ -129,9 +187,74 @@ airbus.mes.worktracker.util.Formatter = {
 		
 		return "Mark solved ";
 	},
-	slider:function(enable){
+	/*slider:function(enable){
 		
 		return true;
-	}
+	},*/
+	sliderStatusFirst:function(status, progress){
+		if(typeof progress == "undefined") return;
+		
+		this.removeStyleClass("dynProgressSlider");
+		this.setVisible(true);
+		this.removeStyleClass("sliderBlockedColor");
+		this.addStyleClass("sliderCompletedColor");
+		
+		//to manage blocked status for next version
+		if(status == "B"){
+			this.removeStyleClass("sliderCompletedColor");
+			this.addStyleClass("sliderBlockedColor");
+		}
+		
+		
+		if(progress == "0.0" || progress == "0" || progress == 0){
+			//this.addStyleClass("displaySliderNone");
+			this.setVisible(false);
+			this.setProperty("max",0);
+			this.setProperty("value",0);
+			return "0%";
+		}
+		else if (String(progress) == "100") {
+			this.setProperty("max",100);
+			this.setProperty("value",100);
+			return progress+"%";
+		    
+		}
+		else{
+			this.setProperty("max",parseInt(progress));
+			this.setProperty("value",parseInt(progress));
+			return progress+"%";
+			
+		}
+	},
+	
+
+	sliderStatus : function(status, progress) {
+		
+		if(typeof progress == "undefined") return;
+		
+		this.removeStyleClass("dynProgressSlider");
+		this.setVisible(true);
+		
+
+		if (progress == "0.0" || progress == "0" || progress == 0 || progress==NaN) {
+			this.removeStyleClass("dynProgressSlider");
+			this.setProperty("min", 0);
+			this.setProperty("value", 0);
+			return "100%";
+		}
+		else if (String(progress) == "100") {
+			this.setVisible(false);
+			return "0%";
+		}
+		else{
+			this.addStyleClass("dynProgressSlider");
+			this.setProperty("min", parseInt(progress));
+			this.setProperty("value", parseInt(progress));
+			return (100 - parseInt(progress)) + "%";
+			
+		}
+	
+		
+	},
 	
 };

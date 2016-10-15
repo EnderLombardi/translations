@@ -1,31 +1,63 @@
-<core:FragmentDefinition 
-	xmlns:core="sap.ui.core"
-	xmlns="sap.m"
-	xmlns:f="sap.ui.layout.form">
-     <Dialog draggable="true"
-        contentHeight="20%"
-        contentWidth="50%"
-		title="User Details Confirmation ">
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form">
+	<Dialog title="{i18n>userConfirmation}" type="Message" id="partial">
 		<content>
-		<f:SimpleForm id="FieldGroupView" minWidth="1024"
-				maxContainerCols="2" editable="true" layout="ResponsiveGridLayout"
-				labelSpanL="1" labelSpanM="2"
-				emptySpanL="0" emptySpanM="0" columnsL="1" columnsM="1"
-				validateFieldGroup="onValidateFieldGroup">
+			<!-- <f:SimpleForm id="partialConfirm" minWidth="1024" maxContainerCols="2" 
+				editable="true" layout="ResponsiveGridLayout" labelSpanL="1" labelSpanM="2" 
+				emptySpanL="0" emptySpanM="0" columnsL="1" columnsM="1" validateFieldGroup="onValidateFieldGroup"> 
+				<f:content> <Text text="{i18n>partialConfirmation}" /> <Label text="Username" 
+				required="true" /> <Input value="{userName}" id="usernameConfirm" placeholder="Enter 
+				username" /> <Button icon="sap-icon://business-card"></Button> <Label text="Password" 
+				required="true" /> <Input type="Password" value="{password}" id="passwordConfirm" 
+				placeholder="Enter password"> </Input> </f:content> </f:SimpleForm> <HBox 
+				height="35px" width="100%"> <MessageStrip id="msgstrpConfirm" visible="false" 
+				width="100%" class="sapUiSmallMarginBeginEnd" showIcon="true" showCloseButton="true"> 
+				</MessageStrip> </HBox> </content> -->
+
+			<HBox justifyContent="SpaceAround">
+
+				<VBox class="sapUiSmallMarginEnd" width="100%" justifyContent="Center">
+				 <f:SimpleForm id="partialConfirm" minWidth="1024" maxContainerCols="3" 
+				editable="true" layout="ResponsiveGridLayout" labelSpanL="1" labelSpanM="1" 
+				emptySpanL="0" emptySpanM="0" columnsL="3" columnsM="3"> 
 				<f:content>
-					<Label text="Username" />
-					<Input fieldGroupIds="user" value="{userName}"
-						id="username" placeholder="Enter username"/>
-					<Label text="Password" />
-					<Input fieldGroupIds="user" type="Password" value="{password}"
-						id="password" placeholder="Enter password">
-					</Input>					     
-			</f:content>
-			</f:SimpleForm>
-		</content>		
-		<buttons>
-		<Button id="submit" text="Submit" press="onAccept" type="Accept"/>
-		<Button id="cancel" text="Cancel" press="onCancel" />
-		</buttons>
+					<!-- <HBox class="sapUiSmallMarginEnd" justifyContent="SpaceAround"> -->
+						<Label text="Username" required="true" />
+						<Input id="userNameForConfirmation" type="Text" placeholder="Username"
+							liveChange="usernameLive" />
+				<!-- 	</HBox> -->
+	<!-- <HBox class="sapUiSmallMarginEnd" justifyContent="SpaceAround"> -->
+						<Label text="Password" required="true" />
+						<Input id="passwordForConfirmation" type="Password" placeholder="Password"
+							liveChange="passwordLive" />
+					<!-- </HBox> -->
+<!-- 					<HBox justifyContent="SpaceBetween">
+						<Label text="Or badge" class="sapUiSmallMarginEnd sapUiSmallMarginTop" />
+						<Button icon="sap-icon://business-card" type="Emphasized" />
+					</HBox> -->
+					</f:content>
+					</f:SimpleForm>
+				</VBox>
+				<!-- <VBox>
+					<HBox justifyContent="SpaceBetween">
+						<Label text="Or" class="sapUiSmallMarginEnd sapUiSmallMarginTop" />
+						<Button class="badgeButton" text="Badge" icon="sap-icon://business-card" type="Emphasized" />
+					</HBox>
+				</VBox> -->
+
+			</HBox>
+			<HBox 
+				height="35px" width="100%"> <MessageStrip id="msgstrpConfirm" visible="false" 
+				width="100%" class="sapUiSmallMarginBeginEnd" showIcon="true" showCloseButton="true"> 
+				</MessageStrip> </HBox>
+			
+		</content>
+
+		<beginButton>
+			<Button text="Cancel" press="onCancelConfirmation" />
+		</beginButton>
+		<endButton>
+			<Button type="Emphasized" text="OK" press="onOKConfirmation" />
+		</endButton>
 	</Dialog>
 </core:FragmentDefinition>

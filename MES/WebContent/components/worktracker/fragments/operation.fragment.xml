@@ -7,69 +7,74 @@
 	<custom:CustomSideNavigation id="customNav">
 		<custom:content>
 			<FlexBox direction="Column">
-				<HBox alignItems="Start" justifyContent="SpaceBetween">
+				<HBox alignItems="Start" justifyContent="SpaceBetween"
+					class="sapUiSmallMarginBeginEnd">
 					<items>
-						<DatePicker id="operationDatePicker" valueFormat="yyyy-MM-dd"
-							displayFormat="long" change="filterOperationList" class="sapUiSmallMarginBottom" />
-						
+						<!-- <DatePicker id="operationDatePicker" valueFormat="yyyy-MM-dd" -->
+						<!-- displayFormat="long" change="filterOperationList" class="sapUiSmallMarginBottom" 
+							/> -->
+						<Select forceSelection="true" maxWidth="100%" change="filterOperStatus">
+							<core:Item key="All Status" text="All Status" />
+							<core:Item key="NOT_STARTED" text="Not Started" />
+							<core:Item key="IN_WORK" text="In Progress" />
+							<core:Item key="IN_QUEUE" text="Paused" />
+						</Select>
 						<HBox alignItems="End" justifyContent="SpaceBetween">
 							<items>
-								<ToggleButton id="buttonList" pressed="true"
-									icon="sap-icon://list" press="showListView" />
-								<ToggleButton id="buttonGrid" icon="sap-icon://grid"
-									press="showGridView" />
-								<ToggleButton id="buttonTime" icon="sap-icon://fob-watch"
-									press="showActivityLog" />
+								<!-- <ToggleButton id="buttonList" pressed="true" -->
+								<!-- icon="sap-icon://list" press="showListView" /> -->
+								<!-- <ToggleButton id="buttonGrid" icon="sap-icon://grid" -->
+								<!-- press="showGridView" /> -->
+								<!-- <ToggleButton id="buttonTime" icon="sap-icon://fob-watch" -->
+								<!-- press="showActivityLog" /> -->
 							</items>
 						</HBox>
 					</items>
-					<Select
-				   			forceSelection="true"
-				   			maxWidth="100%"
-				   			change= "onSelectionStatus"				   			
-							
-							items="{status>/status}"> 
-						<core:Item key="{status>col1}" text="{status>col1}" />
-					</Select>
+
 				</HBox>
-				<l:Grid id="operationGridLayout" content="{ScheduleModel>/schedule}"
-					defaultSpan="L12 M12 S12" class="sapUiSmallMarginTop gridPosition">
-					<l:content>
-						<CustomListItem type="Active" press="openOperation">
-							<content>
+				<HBox width="100%" class="optnListHbox">
 
-								<VBox
-									class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom floatLeft"
-									width="35%">
-									<Text class="listBoldFont" text="{ScheduleModel>operation}" />
-									<Text text="{ScheduleModel>activity}" />
-								</VBox>
+					<l:Grid id="operationGridLayout" content="{userOperationsModel>/Rowsets/Rowset/0/Row}"
+						defaultSpan="XL12 L12 M12 S12" class="sapUiSmallMarginTop gridPosition">
 
-								<VBox
-									class="sapUiSmallMarginBeginEnd sapUiSmallMarginTopBottom floatLeft">
-									<Text class="textWrap" text="{ScheduleModel>description}" />
-									<HBox alignItems="Start" justifyContent="SpaceBetween">
-										<Text text="{ScheduleModel>duration}" />
-										<Text text="{ScheduleModel>label}" />
+						<l:content>
+							<CustomListItem type="Active" press="openOperation">
+
+								<content>
+									<VBox width="35%"
+										class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom floatLeft">
+										<Text class="listBoldFont" text="OP {userOperationsModel>operation_no}" />
+										<Text text="{userOperationsModel>wo_no}" />
+									</VBox>
+
+									<VBox 
+										class="sapUiSmallMarginBeginEnd sapUiSmallMarginTopBottom floatLeft">
+										<Text class="textWrap" text="{userOperationsModel>operation_desc}" />
+										<HBox alignItems="Start" justifyContent="SpaceBetween">
+											<Text
+												text="{userOperationsModel>planned_start_time} - {userOperationsModel>planned_end_time}"
+												class="sapUiSmallMarginEnd" />
+											<Text text="{userOperationsModel>workcenter}" />
+										</HBox>
+
+									</VBox>
+									<!-- <Text class="topRight listBoldFont" text="ACTIVITY" /> -->
+									<HBox class="operationStatusBox bottomRight">
+										<Text
+											text="{parts: [ 'userOperationsModel>status', 'userOperationsModel>progress'], formatter:'airbus.mes.worktracker.util.Formatter.setOprtnStatus'}" />
+										<core:Icon class="ML-05 font90"
+											src="{parts: [ 'userOperationsModel>status', 'userOperationsModel>progress'], formatter:'airbus.mes.worktracker.util.Formatter.setOprtnIcon'}" />
 									</HBox>
-
-								</VBox>
-								<Text class="topRight listBoldFont" text="{ScheduleModel>fuel}" />
-								<HBox class="operationStatusBox bottomRight">
-									<Text text="{ScheduleModel>status}" />
-									<core:Icon class="ML-05 font90"
-										src="{path:'ScheduleModel>status' , formatter:'airbus.mes.worktracker.util.Formatter.setIcon'}" />
-								</HBox>
-
-
-							</content>
-						</CustomListItem>
-					</l:content>
-				</l:Grid>
+								</content>
+							</CustomListItem>
+						</l:content>
+					</l:Grid>
+				</HBox>
 			</FlexBox>
 		</custom:content>
 		<custom:sideContent>
-			<core:Fragment type="XML" fragmentName="airbus.mes.worktracker.fragments.activity" />
+			<core:Fragment type="XML"
+				fragmentName="airbus.mes.worktracker.fragments.activity" />
 		</custom:sideContent>
 	</custom:CustomSideNavigation>
 	<!-- </l:Splitter> -->

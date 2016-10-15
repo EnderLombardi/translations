@@ -6,9 +6,10 @@
 			<Button text="Create new Disruption" icon="sap-icon://sort"
 				press="onCreateDisruption" />
 		</Toolbar>
-		<List noDataText="No Disruptions Found" items="{disruptionModel>/Disruption}">
+		<List id="disrptlist" noDataText="No Disruptions Found" items="{disruptionModel>/Disruption}">
 			<CustomListItem>
-				<Panel expandable="true" expanded="false" class="barColor">
+				<Panel expandable="true" expanded="false" class="barColor"
+					expand="handleDisruptionPanelExpand">
 					<headerToolbar class="">
 						<Toolbar>
 							<Title text="Luca A. has created a Disruption" class="panelTitleText" />
@@ -17,17 +18,7 @@
 							<Button class="decoratePanelBtn" text="Edit" icon="sap-icon://edit" />
 						</Toolbar>
 					</headerToolbar>
-					<!-- <f:SimpleForm id="formDisruptionDetail" editable="true" class="formBackground"> 
-						labelSpanL="1" labelSpanM="2" adjustLabelSpan="false" emptySpanL="0" emptySpanM="0" 
-						columnsL="4" columnsM="4" <f:content> <VBox> <HBox> <Label text="Gravity" 
-						/> <Text text="{disruptionModel>Gravity}" /> <Label text="Date" /> <Text 
-						text="{disruptionModel>Open Date} {disruptionModel>Time}" /> </HBox> <HBox> 
-						<Label text="Problem" /> <Text text="{disruptionModel>Object}" /> <Label 
-						text="Expected" /> <Text text="{disruptionModel>Expected} {disruptionModel>TimeEx}" 
-						/> </HBox> <HBox> <Label text="" /> <Text text="{disruptionModel>Nature}" 
-						/> <Label text="Help" /> <Text text="{disruptionModel>Help}" /> </HBox> <HBox> 
-						<Label text="" /> <Text text="" /> <Label text="status" /> <Label text="{disruptionModel>Status}" 
-						/> </HBox> </VBox> </f:content> </f:SimpleForm> -->
+
 					<f:Form id="formDisruptionDetail" editable="true">
 						<f:layout>
 							<f:ResponsiveGridLayout span="L12 M12 S12" />
@@ -141,7 +132,7 @@
 										<f:label>
 											<Label text="">
 												<layoutData>
-													<l:GridData span="L2 M2 S12"/>
+													<l:GridData span="L2 M2 S12" />
 												</layoutData>
 											</Label>
 										</f:label>
@@ -206,7 +197,9 @@
 											</Button>
 										</f:fields>
 										<f:fields>
-											<Button text="{ parts: [ 'disruptionModel>Status'], formatter : 'airbus.mes.worktracker.util.Formatter.markSolvedBtn' }" type="Emphasized" press="onMarkSolved">
+											<Button
+												text="{ parts: [ 'disruptionModel>Status'], formatter : 'airbus.mes.worktracker.util.Formatter.markSolvedBtn' }"
+												type="Emphasized" press="onMarkSolved">
 												<layoutData>
 													<l:GridData span="L2 M2 S12" />
 												</layoutData>

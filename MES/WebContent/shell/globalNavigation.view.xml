@@ -1,6 +1,6 @@
 <core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:cData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
 		controllerName="airbus.mes.shell.globalNavigation" xmlns:html="http://www.w3.org/1999/xhtml">
-	<Page title="MES" enableScrolling="false" class="GenricBgColor">
+	<Page title="MES" enableScrolling="false">
 		<customHeader>
 			<Toolbar class="pageHeader">
                            <content>	

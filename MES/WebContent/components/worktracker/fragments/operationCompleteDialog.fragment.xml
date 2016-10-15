@@ -1,9 +1,33 @@
 <core:FragmentDefinition xmlns="sap.m"
-	xmlns:core="sap.ui.core">
-	<Dialog title="Full Confirmation" type="Message">
+	xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form">
+	<Dialog title="Full Confirmation" type="Message" id="complete">
 		<content>
-			<Text text="{i18n>fullConfirmation}" />
-		</content>
+			
+			<f:SimpleForm id="completeConfirm" minWidth="1024"
+				maxContainerCols="2" editable="true" layout="ResponsiveGridLayout"
+				labelSpanL="1" labelSpanM="2"
+				emptySpanL="0" emptySpanM="0" columnsL="1" columnsM="1"
+				validateFieldGroup="onValidateFieldGroup">
+				<f:content>
+				<Text text="{i18n>fullConfirmation}" />
+					<Label text="Username" required="true" />
+					<Input  value="{userName}"
+						id="usernameComplete" placeholder="Enter username"/>
+					<Label text="Password" required="true"/>
+					<Input  type="Password" value="{password}"
+						id="passwordComplete" placeholder="Enter password">
+					</Input>					     
+			</f:content>
+		</f:SimpleForm>
+			<MessageStrip
+			    id = "msgstrp"
+			    visible="false"
+			    class="sapUiSmallMarginBeginEnd"
+				showIcon="true"
+			    showCloseButton="true">
+				
+			</MessageStrip>
+		</content>		
 		<beginButton>
 			<Button text="Cancel" press="onCancelFullConfirmation"/>
 		</beginButton>

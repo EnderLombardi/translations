@@ -1,20 +1,20 @@
 <core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m" controllerName="airbus.mes.worktracker.views.home"
 	xmlns:custom="airbus.mes.worktracker.custom" xmlns:html="http://www.w3.org/1999/xhtml">
-	<Page showHeader="false">
+	<Page showHeader="false" class="WorkTrackerApp whiteBG">
 		<subHeader>
 			<Toolbar class="pageHeader">
 				<ToolbarSpacer width="0.2rem" />
 				<Text id="operatorInitials"
-					text="{ parts: [ 'userDetailModel>/Rowsets/Rowset/0/Row/0/first_name', 'userDetailModel>/Rowsets/Rowset/0/Row/0/last_name', 'userDetailModel>/Rowsets/Rowset/0/Row/0/image'], formatter: 'airbus.mes.worktracker.util.Formatter.setUserInitials' }"
+					text="{ parts: [ 'currentOperatorModel>/fname', 'currentOperatorModel>/lname', 'currentOperatorModel>/image'], formatter: 'airbus.mes.worktracker.util.Formatter.setUserInitials' }"
 					class="circleText operatorInitials"></Text>
 				<Image id="operatorImage" class="img-circle"
-					src="{ parts: ['userDetailModel>/Rowsets/Rowset/0/Row/0/image'], formatter: 'airbus.mes.worktracker.util.Formatter.setUserImage' }"
+					src="{ parts: ['currentOperatorModel>/image'], formatter: 'airbus.mes.worktracker.util.Formatter.setUserImage' }"
 					densityAware="false" height="75%"></Image>
 				<ToolbarSpacer width="0.7rem" />
 				<VBox>
-					<Text
-						text="{ parts: [ 'userDetailModel>/Rowsets/Rowset/0/Row/0/first_name', 'userDetailModel>/Rowsets/Rowset/0/Row/0/last_name'], formatter: 'airbus.mes.worktracker.util.Formatter.getFullName' }"
+					<Text id="operatorFullName"
+						text="{ parts: [ 'currentOperatorModel>/fname', 'currentOperatorModel>/lname'], formatter: 'airbus.mes.worktracker.util.Formatter.getFullName' }"
 						class="text" />
 					<custom:ClickText text="Change operator" id="changeOperator"
 						class="subText pointer" press="toggleChangeOptrPopOver" />
@@ -23,9 +23,10 @@
 				<ToolbarSpacer />
 
 				<VBox alignItems="End">
-					<Text text="Station 10" class="text" />
+					<Text id="stationName" text=""
+					          class="text" />
 					<Text
-						text="{path:'userDetailModel>/Rowsets/Rowset/0/Row/0/first_name', formatter: 'airbus.mes.worktracker.util.Formatter.getCurrentdate' }"
+						text="{path:'currentOperatorModel>/fname', formatter: 'airbus.mes.worktracker.util.Formatter.getCurrentdate' }"
 						id="date" class="subText" />
 				</VBox>
 				<ToolbarSpacer width="20px" />

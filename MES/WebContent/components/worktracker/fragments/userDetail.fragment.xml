@@ -5,7 +5,7 @@
 			<Image class="img-circle" src="images/User.png" densityAware="false" height="100%" width="100%"></Image>
 			<VBox>
 				<Label
-					text="{parts:[{path:'userDetailModel>/Rowsets/Rowset/0/Row/0/first_name'}, {path:'userDetailModel>/Rowsets/Rowset/0/Row/0/last_name'}], formatter:'airbus.mes.worktracker.util.Formatter.getFullName'}" />
+					text="{parts:[{path:'currentOperatorModel>fname'}, {path:'currentOperatorModel>lname'}], formatter:'airbus.mes.worktracker.util.Formatter.getFullName'}" />
 			</VBox>
 		</HBox>
 	</Popover>

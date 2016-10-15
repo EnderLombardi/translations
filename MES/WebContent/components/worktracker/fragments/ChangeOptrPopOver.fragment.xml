@@ -20,25 +20,21 @@
 					width="75%" />
 			</Toolbar>
 
-			<List id="operatorsList" items="{operatorsModel>/operators}"
-				selectionChange="onSelectionChange" includeItemInSelection="true"
+			<List id="operatorsList" items="{UserListModel>/Rowsets/Rowset/0/Row}" includeItemInSelection="true"
 				class="customListItem">
-
 				<items>
-					<CustomListItem>
-
-						<Text id="operatorInitials"
-							text="{ parts: [ 'operatorsModel>first_name', 'operatorsModel>last_name', 'operatorsModel>image'], formatter: 'airbus.mes.worktracker.util.Formatter.setUserInitials' }"
+					<CustomListItem type="Active" press="onOperatorChange">
+						<Text
+							text="{ parts: [ 'UserListModel>FirstName', 'UserListModel>LastName', 'UserListModel>image'], formatter: 'airbus.mes.worktracker.util.Formatter.setUserInitials' }"
 							class="circleText operatorInitials2 sapUiSmallMarginEnd" visible="false"></Text>
-						<Image id="operatorImage" class="img-circle sapUiSmallMarginEnd" visible="false"
-							src="{ parts: ['operatorsModel>image'], formatter: 'airbus.mes.worktracker.util.Formatter.setUserImage' }"
+						<Image class="img-circle sapUiSmallMarginEnd" visible="false"
+							src="{ parts: ['UserListModel>image'], formatter: 'airbus.mes.worktracker.util.Formatter.setUserImage' }"
 							densityAware="false" height="75%"></Image>
 						<Text
-							text="{ parts: [ 'operatorsModel>first_name', 'operatorsModel>last_name'], formatter: 'airbus.mes.worktracker.util.Formatter.getFullName' }"></Text>
+							text="{ parts: [ 'UserListModel>FirstName', 'UserListModel>LastName'], formatter: 'airbus.mes.worktracker.util.Formatter.getFullName' }"></Text>
 					</CustomListItem>
 				</items>
 			</List>
-
 		</content>
 	</Popover>
 </core:FragmentDefinition>

@@ -1,6 +1,7 @@
 jQuery.sap.require("sap.ui.core.UIComponent");
 jQuery.sap.require("sap.ui.model.resource.ResourceModel");
 jQuery.sap.require("airbus.mes.shell.util.Formatter");
+jQuery.sap.require("airbus.mes.shell.util.navFunctions");
 
 
 
