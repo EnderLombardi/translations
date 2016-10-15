@@ -1,0 +1,64 @@
+{
+	"Rowsets": {
+		"DateCreated": "2016-10-05T15:06:57",
+		"Version": "15.1 SP2 Patch 5 (Jul 20, 2016)",
+		"StartDate": "2016-10-05T14:06:57+0200",
+		"EndDate": "2016-10-05T15:06:57+0200",
+		"CachedTime": "",
+		"Rowset": [{
+			"Columns": {
+				"Column": [{
+					"Name": "standardSetupTimeMillis",
+					"SourceColumn": "standardSetupTimeMillis",
+					"Description": "",
+					"SQLDataType": 1,
+					"MinRange": 1.0,
+					"MaxRange": 1.0
+				}, {
+					"Name": "standardRunTimeMillis",
+					"SourceColumn": "standardRunTimeMillis",
+					"Description": "",
+					"SQLDataType": 1,
+					"MinRange": 1.0,
+					"MaxRange": 1.0
+				}, {
+					"Name": "earnedSetupTimeMillis",
+					"SourceColumn": "earnedSetupTimeMillis",
+					"Description": "",
+					"SQLDataType": 1,
+					"MinRange": 1.0,
+					"MaxRange": 1.0
+				}, {
+					"Name": "earnedRunTimeMillis",
+					"SourceColumn": "earnedRunTimeMillis",
+					"Description": "",
+					"SQLDataType": 1,
+					"MinRange": 1.0,
+					"MaxRange": 1.0
+				}, {
+					"Name": "setupTimeUnits",
+					"SourceColumn": "setupTimeUnits",
+					"Description": "",
+					"SQLDataType": 1,
+					"MinRange": 1.0,
+					"MaxRange": 1.0
+				}, {
+					"Name": "runTimeUnits",
+					"SourceColumn": "runTimeUnits",
+					"Description": "",
+					"SQLDataType": 1,
+					"MinRange": 1.0,
+					"MaxRange": 1.0
+				}]
+			},
+			"Row": [{
+				"standardSetupTimeMillis": "3600000",
+				"standardRunTimeMillis": "14400000",
+				"earnedSetupTimeMillis": "3600000",
+				"earnedRunTimeMillis": "1000",
+				"setupTimeUnits": "HOUR",
+				"runTimeUnits": "HOUR"
+			}]
+		}]
+	}
+}
