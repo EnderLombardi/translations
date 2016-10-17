@@ -1,0 +1,34 @@
+{
+	"buttonDetail": [{
+
+		"text": "OSW inputs Mgt",
+			"icon": "cause",
+			"app":"",
+		"url": "/MES/WebContent/components/stationtracker/index.html",
+		"enable": false
+	}, {
+
+		"text": "Team availability",
+		"icon": "calendar",
+		"app":"",
+		"url": "/MES/WebContent/components/stationtracker/index.html",
+		"enable": false
+	}, {
+
+		"text": "Team competencies & qualification",
+		"icon": "task",
+		"app":"",
+		"url": "/MES/WebContent/components/stationtracker/index.html",
+		"enable": false
+	},	{
+
+		"text": "Team assignment",
+		"icon": "customer-history",
+		"app":"",
+		"url": "/MES/WebContent/components/stationtracker/index.html",
+		"enable": false
+	}	
+	]
+}
+
+

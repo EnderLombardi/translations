@@ -103,10 +103,6 @@ airbus.mes.settings.ModelManager = {
 		oUserSettingModel = this.core.getModel("userSettingModel").getData();  
 		this.site = oUserSettingModel.Rowsets.Rowset[0].Row[0].plant;
 		this.station = oUserSettingModel.Rowsets.Rowset[0].Row[0].station;
-<<<<<<< Upstream, based on origin/MESv0.9
-=======
-
->>>>>>> db50582 Setting screen working + box display on going.
 	},
 	// ********************************************************************************
 	 messageShow : function(text) {

@@ -1,0 +1,46 @@
+{
+	"buttonDetail": [
+	{
+
+		"text": "Means Management",
+		"icon": "travel-itinerary",
+		"app":"worktracker",
+		"url": "/MES/WebContent/components/worktracker/index.html",
+		"enable": true
+	},
+	{
+
+		"text": "Missing parts Tracker",
+		"icon": "wrench",
+		"app":"",
+		"url": "/MES/WebContent/components/stationtracker/index.html",
+		"enable": false
+	},{
+
+		"text": "Worker Order Tracker",
+		"icon": "horizontal-bar-chart",
+		"app":"",
+		"url": "/MES/WebContent/components/stationtracker/index.html",
+		"enable": false
+	},
+	{
+
+		"text": "Disruption Andon & OSW Decision Tracker",
+		"icon": "alert",
+		"app":"",
+		"url": "/MES/WebContent/components/stationtracker/index.html",
+		"enable": false
+	},
+	{
+
+		"text": "Problem Solving Tracker",
+		"icon": "bbyd-active-sales",
+		"app":"",
+		"url": "/MES/WebContent/components/stationtracker/index.html",
+		"enable": false
+	}
+	
+	]
+}
+
+

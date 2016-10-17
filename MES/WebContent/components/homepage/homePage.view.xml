@@ -2,12 +2,103 @@
 	xmlns="sap.m"
 	xmlns:cData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
 	controllerName="airbus.mes.homepage.homePage" xmlns:html="http://www.w3.org/1999/xhtml">
-	<Page title="MES" enableScrolling="false" class="GenricBgColor"
-		showHeader="false">
+	<Page title="MES" enableScrolling="t" class="PanelbgImg"
+		showHeader="false" >
 		<content>
+	
+	<TileContainer tileDelete="handleTileDelete" tiles="{1TileLineHome>/buttonDetail}"  height="33%">
 
-			<FlexBox height="100%" width="100%" alignItems="Center"
-				justifyContent="Center">
+		<CustomTile press="onPress" class="customTiles">
+			<content>
+				<VBox width="12rem" height="13rem" alignItems="Center" class="margin">
+					<items>
+						<HBox width="100%" height="20%" alignItems="Center">
+							<items>
+								<Text text="{1TileLineHome>text}" class="headerTileText" />
+							</items>
+						</HBox>
+					<HBox width="100%" height="20%" alignItems="Center">
+							<items>
+								<Text text="Custom Text" class="CustomTileText" />
+							</items>
+						</HBox>
+					<HBox width="100%" height="80%" alignItems="Center">
+							<items>
+								<core:Icon src="{1TileLineHome>icon}" class="IconTile"></core:Icon>
+							</items>
+						</HBox>
+					</items>
+				</VBox>
+			</content>
+		</CustomTile>
+	</TileContainer>
+
+<TileContainer tileDelete="handleTileDelete"	tiles="{2TileLineHome>/buttonDetail}" height="33%"> 
+		<CustomTile press="onPress" class="customTiles">
+			<content>
+				<VBox width="12rem" height="13rem" alignItems="Center"
+					class="margin">
+					<items>
+						<HBox width="100%" height="20%" alignItems="Center">
+							<items>
+								<Text text="{2TileLineHome>text}" class="headerTileText" />
+							</items>
+						</HBox>
+
+						<HBox width="100%" height="20%" alignItems="Center">
+							<items>
+								<Text text="Custom Text" class="CustomTileText" />
+							</items>
+						</HBox>
+
+						<HBox width="100%" height="80%" alignItems="Center">
+							<items>
+								<core:Icon src="{2TileLineHome>icon}" class="IconTile"></core:Icon>
+							</items>
+						</HBox>
+
+
+
+					</items>
+				</VBox>
+			</content>
+		</CustomTile>
+	</TileContainer>
+	
+	<TileContainer tileDelete="handleTileDelete"		tiles="{3TileLineHome>/buttonDetail}" height="33%">
+
+		<CustomTile press="onPress" class="customTiles">
+			<content>
+				<VBox width="12rem" height="13rem" alignItems="Center"
+					class="margin">
+					<items>
+						<HBox width="100%" height="20%" alignItems="Center">
+							<items>
+								<Text text="{3TileLineHome>text}" class="headerTileText" />
+							</items>
+						</HBox>
+
+						<HBox width="100%" height="20%" alignItems="Center">
+							<items>
+								<Text text="Custom Text" class="CustomTileText" />
+							</items>
+						</HBox>
+
+						<HBox width="100%" height="80%" alignItems="Center">
+							<items>
+								<core:Icon src="{3TileLineHome>icon}" class="IconTile"></core:Icon>
+							</items>
+						</HBox>
+
+
+
+					</items>
+				</VBox>
+			</content>
+		</CustomTile>
+	</TileContainer>
+<!-- 
+			<FlexBox height="100%" width="100%" alignItems="Center"  class="PanelbgImg"		justifyContent="Center">
 				<items>
 					<VBox id="appNameBox" width="60%">
 						<items>
@@ -15,8 +106,8 @@
 								<content>
 									<Text class="textSize" text="Welcome to Airbus MES" />
 									<ToolbarSpacer />
-									<!-- <Button type="Transparent" text="English" icon="sap-icon://slim-arrow-down" 
-										iconFirst="false" /> -->
+									<Button type="Transparent" text="English" icon="sap-icon://slim-arrow-down" 
+										iconFirst="false" />
 								</content>
 							</Toolbar>
 							<Panel content="{buttonUrl>/buttonDetail}" class="PanelbgImg"
@@ -28,9 +119,8 @@
 						</items>
 					</VBox>
 				</items>
-			</FlexBox>
-			<HBox>
-			</HBox>
+			</FlexBox> -->
+		
 		</content>
-	</Page>
+		</Page>
 </core:View>

@@ -1,0 +1,19 @@
+{
+	"buttonDetail": [{
+	"text": "Station Tracker",
+		"icon": "customer-view",
+		"app":"",
+		"url": "/MES/WebContent/components/settings/index.html",
+		"enable": true
+	}, {
+
+		"text": "Line Tracker",
+		"icon": "flight",
+		"app":"",
+		"url": "/MES/WebContent/components/stationtracker/index.html",
+		"enable": false
+	}	
+	]
+}
+
+

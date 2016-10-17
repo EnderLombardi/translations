@@ -155,22 +155,10 @@ sap.ui
 						this.getView().byId("ComboBoxStation").setValue("");
 						this.getView().byId("ComboBoxMSN").setValue("");
 
-<<<<<<< Upstream, based on origin/MESv0.9
+
 						this.setEnabledCombobox(true, false, false, false);
-=======
-                                                                     }
-                                                              });
-                                                       }
-                                                       airbus.mes.settings.ModelManager.loadUserSettingsModel();
-                                  },
-                                  navigate : function(oEvent){
-                                	  
-//                                      jQuery.sap.registerModulePath("airbus.mes.settings","/MES/components/settings");
-//                                      jQuery.sap.registerModulePath("airbus.mes.stationtracker","/MES/components/stationtracker");
->>>>>>> db50582 Setting screen working + box display on going.
-
-					},
-
+				},
+				
 					getUserSettings : function() {
 						var oModel = this.ModelManager.core.getModel(
 								"userSettingModel").getData();
