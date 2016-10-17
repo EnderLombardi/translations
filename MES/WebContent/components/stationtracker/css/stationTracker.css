@@ -97,23 +97,27 @@ background-color: #515456;
 }
 
 .fa-chevron-right.custom{
+		line-height : 20px;
 float: left;
 padding-left: 10px;
 }
 
 .fa-chevron-down.custom{
+		line-height : 20px;
 float: left;
 padding-left: 10px;
 }
 
 .fa-plus.custom{
-font-size: 1.5em;
+line-height : 20px;
+font-size: 1 em;
 float: right;
 padding-right: 10px;
 }
 .fa-plus:hover {
+	line-height : 20px;
 	color: blue;
-	font-size: 1.7em
+	font-size: 1.5em
 }
 
 .Blue {
