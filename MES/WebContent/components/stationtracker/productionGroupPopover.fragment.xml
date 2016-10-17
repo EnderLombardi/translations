@@ -1,0 +1,16 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core" >
+	<Popover showHeader="false" contentWidth="10%" contentHeight="100%">
+		<List id="myList"
+			items="{ path : 'productionGroupModel>/' }"
+			selectionChange="onSelectionChange2"
+			mode="MultiSelect"
+			includeItemInSelection="true">
+			<items>
+				<InputListItem key="{productionGroupModel>PROD_GROUP}" 
+				              label="{productionGroupModel>PROD_GROUP}" >
+				</InputListItem>
+			</items>
+		</List>
+	</Popover>
+</core:FragmentDefinition>
