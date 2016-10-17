@@ -126,7 +126,12 @@ padding-right: 10px;
 }
 
 .white {
-	background-color: white !important;
+	background-color:  white ! important;
+	}
+	
+	.folderAxisColor {
+	background-color: #BBBCBC ! important;
+	opacity : 0.15;
 	
 }
 
@@ -282,9 +287,15 @@ color : black;
 }
 .shiftCss {
 	background-color: #EEF3F7;
-	opacity: 0.5;
+	opacity: 0.8;
 }
+.dhx_row_folder .dhx_matrix_scell.folder {
+	background-color:#d5f1f8;
+}
+.lineYaxis {
+	background-color: rgba(49, 220, 240, 0.1);
 
+}
 .operationCP {
 	background-color: #D8D8D8;
 	border: 2px solid blue;

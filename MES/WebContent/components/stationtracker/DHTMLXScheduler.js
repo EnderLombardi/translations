@@ -186,11 +186,12 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 
 							}
 
-							if (section.label != undefined) {
+							if (section.name != undefined) {
 
-								return "white";
+								return "lineYaxis";
 
 							}
+							
 							
 						};
 
@@ -265,7 +266,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 							}
 							if (section.children != undefined) {
 
-								return "white";
+								return "folderAxisColor";
 
 							}
 						};
