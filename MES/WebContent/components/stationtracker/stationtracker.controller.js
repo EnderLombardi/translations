@@ -69,11 +69,15 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			airbus.mes.stationtracker.productionGroupPopover = sap.ui.xmlfragment("productionGroupPopover","airbus.mes.stationtracker.productionGroupPopover", airbus.mes.stationtracker.oView.getController());
 			airbus.mes.stationtracker.productionGroupPopover.addStyleClass("alignTextLeft");
 			oView.addDependent(airbus.mes.stationtracker.productionGroupPopover);
+			//var oModel = new sap.ui.model.json.JSONModel(sap.ui.getCore().getModel("productionGroupModel").getData().Rowsets.Rowset[0].Row) ;
+			
+			airbus.mes.stationtracker.productionGroupPopover.setModel(sap.ui.getCore().getModel("productionGroupModel"), "productionGroupModel");
+		
 		}
 
 	
-		airbus.mes.stationtracker.productionGroupPopover.setModel(new sap.ui.model.json.JSONModel(sap.ui.getCore().getModel("productionGroupModel").getData().Rowsets.Rowset[0].Row), "productionGroupModel");
-		airbus.mes.stationtracker.productionGroupPopover.getModel("productionGroupModel").refresh(true);
+
+//		airbus.mes.stationtracker.productionGroupPopover.getModel("productionGroupModel").refresh(true);
 
 		var temp = [];
 		var binding = sap.ui.getCore().byId("productionGroupPopover--myList").getBinding("items");
