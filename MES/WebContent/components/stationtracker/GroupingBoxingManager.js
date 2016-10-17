@@ -149,23 +149,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 			//console.log(oShift);
 						
 			var ssBox = el[sBoxing] + "_" + oShift.day + "-" + oShift.shiftName;
-			
-		
-//			} else {
-//				
-//				var ssBox = el[sBoxing];
-//				
-//			}
-			
-			
-//			if (sInitial) {
-//				
-//				var sInitial = "initial";
-//			} else {
-//				
-//				var sInitial  = "reschedule";
-//			}
-//			
+						
 			if ( !oHierachy[ssGroup] ) {
 				
 				oHierachy[ssGroup] = {};
@@ -186,7 +170,32 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 				return;
 			}
 			
+			var sPaused = "0";
+			// Operation is active	
+			if (  el.PAUSED === "FALSE") {
+				
+				var sPaused = "2";
+			}
+					
+			// Operation is not started
+			if ( el.PAUSED === "---" ) {
+				
+				var sPaused = "1";
+				
+				// Operation is pause	
+				if ( el.PAUSED === "---" && el.PROGRESS != "0" ) {
+					
+					var sPaused = "3";
+				}	
 			
+			}
+									
+			// Operation Completed
+			if ( el.STATE === "C" ) {
+				
+				var sPaused = "0";
+			}	
+	
 			var oOperation = {
 										
 					"shopOrder" : el.WORKORDER_ID, // workOrder
@@ -202,6 +211,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 					//"disruptions": el.disruptions,
 					"andons": el.ANDONS,
 					"routingMaturityAssessment": el.ROUTING_MATURITY_ACCESSMENT,
+					"paused" : sPaused,
 					//"ata": el.ata,
 					//"familyTarget": el.familyTarget,
 					"cppCluster" : el.CPP_CLUSTER,
@@ -314,27 +324,33 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 					var aDisruptions = [];
 					var aAndons = [];
 					var aTotalDuration = [];
+					var sPaused = [];
 					
+					var sRoutingMaturityAssessment = "";
 					var sProgress = "";
 					var fCriticalPath = 0;		
 					var sOperationDescription = "";
 					var sStatus = "";
+					
 				;
 					
 					oModel[key][key1][key2].forEach( function( el ) { 
 						
+						//Store in array value needed to be compare in case of boxing
 						aStartDateRescheduling.push(Date.parse(oFormatter.jsDateFromDayTimeStr(el.startDate)));
 						aEndDateRescheduling.push(Date.parse(oFormatter.jsDateFromDayTimeStr(el.endDate)));
-						//aStartDateInitial.push(Date.parse(oFormatter.jsDateFromDayTimeStr(el.avlStartDate)));
-						//aEndDateInitial.push(Date.parse(oFormatter.jsDateFromDayTimeStr(el.avlEndDate)));
 						aDisruptions.push(el.disruptions);
 						aAndons.push(el.andons);
 						aTotalDuration.push( el.totalDuration );
+						sPaused.push(el.paused);
 						
 						sProgress = el.progress;
 						fCriticalPath = el.criticalPath;
 						sOperationDescription = el.sBox;
 						sStatus = el.status;
+						sRoutingMaturityAssessment = el.routingMaturityAssessment
+					
+
 						
 						if ( sBox === oGroupingBoxingManager.specialGroup) {
 							
@@ -372,6 +388,8 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 					
 					var oOperationRescheduling = {
 							
+							"routingMaturityAssessment" : sRoutingMaturityAssessment,
+							"paused" : Math.max.apply(null,sPaused),
 							"status" : sStatus,
 							"totalDuration" : (aTotalDuration.reduce(function(pv, cv) { return pv + cv; }, 0))/aTotalDuration.length, 
 							"box" : key2,

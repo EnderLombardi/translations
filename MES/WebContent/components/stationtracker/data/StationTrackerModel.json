@@ -424,7 +424,7 @@
 
                   "STEP_ID": "10",
 
-                  "STATE": "C",
+                  "STATE": "",
 
                   "OPERATION_DESCRIPTION": "FLY SIMULATOR",
 
@@ -457,6 +457,8 @@
                   "ROUTING_MATURITY_ACCESSMENT": "---",
 
                   "DURATION": 100,
+                  
+                  "PAUSED": "FALSE",
 
                   "PROGRESS": 50
 
@@ -476,7 +478,7 @@
 
                   "STEP_ID": "10",
 
-                  "STATE": "S",
+                  "STATE": "C",
 
                   "OPERATION_DESCRIPTION": "FLY SIMALTOR2",
 
@@ -498,7 +500,7 @@
 
                   "NEW_OPERATION_STATUS": "---",
 
-				  "ANDONS": 1,
+				 											 "ANDONS": 1,
 				  
                   "REMAINING_TIME": "---",
 
@@ -508,11 +510,13 @@
 
                   "EXECUTION_STATION_SOURCE": "---",
 
-                  "ROUTING_MATURITY_ACCESSMENT": "---",
+                  "ROUTING_MATURITY_ACCESSMENT": "ok",
 
                   "DURATION": 100,
 
-                  "PROGRESS": 0
+                  "PROGRESS": 50,
+                  
+                  "PAUSED": "FALSE"
 
                },
 
@@ -562,7 +566,7 @@
 
                   "EXECUTION_STATION_SOURCE": "---",
 
-                  "ROUTING_MATURITY_ACCESSMENT": "---",
+                  "ROUTING_MATURITY_ACCESSMENT": "ok",
 
                   "DURATION": 100,
 
@@ -584,7 +588,7 @@
 
                   "STEP_ID": "30",
 
-                  "STATE": "S",
+                  "STATE": "",
 
                   "OPERATION_DESCRIPTION": "EVALUATION",
 
@@ -606,7 +610,7 @@
 
                   "NEW_OPERATION_STATUS": "---",
 
-				  "ANDONS": 1,
+				  												"ANDONS": 1,
 
                   "REMAINING_TIME": "---",
 
@@ -620,7 +624,10 @@
 
                   "DURATION": 100,
 
-                  "PROGRESS": 50
+                  "PROGRESS": 50,
+                                    
+                  "PAUSED": "FALSE"
+                  
 
                },
                {
@@ -673,7 +680,9 @@
 
                   "DURATION": 100,
 
-                  "PROGRESS": 50
+                  "PROGRESS": 50,
+                  
+                  "PAUSED" : "---"
 
                },
                 {

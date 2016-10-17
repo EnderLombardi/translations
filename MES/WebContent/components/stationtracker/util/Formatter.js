@@ -150,60 +150,54 @@ airbus.mes.stationtracker.util.Formatter = {
 				var html = "";
 				
 				var sDivForLeftDisplay = '<div  style="width:inherit; height:inherit; position:absolute; z-index: 1; line-height: 23px;left: 0px; overflow: hidden; text-overflow: ellipsis; " >'
-				//var sDivForRightDisplay = '<div  style="width:inherit; height:inherit; position:absolute; z-index: 1; line-height: 23px;left: 0px; text-align:right; " >'
-					
-					
+				var sRightIcon = "";	
+				var sLeftIcon = "";
+				var sColorProgress = "";
 				var sText = '<span style="position: relative; z-index: 1; float: left; overflow: hidden; text-overflow: ellipsis; max-width:40%; white-space: nowrap;">' + 'TEXXT DE TEST' + '</span>';	
-				
-				var sProgress = '<span style="position: relative;  z-index: 1; float: right; overflow: hidden; text-overflow: ellipsis; max-width:40%; white-space: nowrap; padding-left:10px; padding-right:10px;"> ['+ oBox.progress +'/'+ oBox.totalDuration +' IM]</span>';	
-				
+				var sProgressText = '<span style="position: relative;  z-index: 1; float: right; overflow: hidden; text-overflow: ellipsis; max-width:40%; white-space: nowrap; padding-left:10px; padding-right:10px;"> ['+ oBox.progress +'/'+ oBox.totalDuration +' IM]</span>';	
+								
 				// need one more condition to add OSW
 				if ( oBox.routingMaturityAssessment != "---" ) {
 					
-					var sLeftIcon = '<i class="fa fa-exclamation-triangle" style="padding-left:4px; line-height: 23px;" ></i>'
-				
+					var sLeftIcon = '<i class="fa fa-exclamation-triangle" style="position: relative; z-index: 1; padding-left:10px; padding-right:10px; line-height: 23px; color:white; float: left;" ></i>';
 				}  
 				
-					var sLeftIcon = "";
+				// box completed
 				
-				switch (  oBox.status ) {
-				case "N":
-					var sColorProgress = "";
-					break;
-				case "C":
-					var sColorProgress = '<div style="width:100%; height:inherit; background-color:#0085ad ; position:absolute; z-index: 0;left: 0px;"></div>';
-					break;
-				case "S":
-					var sColorProgress = '<div style="width:'+ oBox.progress + '%; height:inherit; background-color:#84bd00; position:absolute; z-index: 0; left: 0px;"></div>';
-					break;
-				case "P":
-					var sColorProgress = '<div style="width:'+ oBox.progress + '%; height:inherit; background-color:#84bd00; position:absolute; z-index: 0; left: 0px;"></div>';
-					break;
-				default:
-					var sColorProgress = '<div  style="width:inherit; height:inherit; position:absolute; z-index: 1; padding-right: 5px;line-height: 23px; left: 0px;"></div>';
-					break;;
+				if ( oBox.status === "C" ) {
+					
+					var sColorProgress ='<div style="width:100%; height:inherit; background-color:#0085ad ; position:absolute; z-index: 0;left: 0px;"></div>';
+				
 				}
 				
-				switch (  oBox.status ) {
-				case "P":
-					var sRightIcon = '<i class="fa fa-exclamation-triangle" style="position: relative; z-index: 1; padding-left:4px; line-height: 23px; float: right;" ></i>';
-					break;
-				case "A":
-					var sRightIcon = '<i class="fa fa-exclamation-triangle" style="position: relative; z-index: 1; padding-left:4px; line-height: 23px; float: right;" ></i>';
-					break;
-				case "C":
-					var sRightIcon = '<i class="fa fa-check-square-o" style="position: relative; z-index: 1; padding-left:4px; line-height: 23px; color:white; float: right;" ></i>';
-					break;
+				// add disruption andon display
 				
-				default:
-					var sRightIcon = "";
+				switch ( oBox.paused ) {
+				// box is active
+					case 2 :
+						var sColorProgress = '<div style="width:' + oBox.progress + '%; height:inherit; background-color:#84bd00; position:absolute; z-index: 0; left: 0px;"></div>';
+						var sRightIcon = '<i class="fa fa-play" style="position: relative; z-index: 1; padding-right:10px; line-height: 23px; color:white; float: right;" ></i>';
+						
 					break;
+				// box is paused
+					case 3 :
+						var sColorProgress = '<div style="width:' + oBox.progress + '%; height:inherit; background-color:#84bd00; position:absolute; z-index: 0; left: 0px;"></div>';
+						var sRightIcon = '<i class="fa fa-pause" style="position: relative; z-index: 1; padding-right:10px; line-height: 23px; color:white; float: right;" ></i>';
+						break;
+				// box not started
+					case 1 :
+						var sRightIcon = "";
+						break
+				// box Completed
+					case 0 :
+						var sColorProgress ='<div style="width:100%; height:inherit; background-color:#0085ad ; position:absolute; z-index: 0;left: 0px;"></div>';
+						var sRightIcon = '<i class="fa fa-check" style="position: relative; z-index: 1; padding-right:10px; line-height: 23px; color:white; float: right;" ></i>';
+					
+					break	
+	
 				}
-				
-				
-				var sRightText = '<span style="padding-left:4px; line-height: 23px;" > ['+ oBox.progress +'/'+ oBox.totalDuration +' IM]</span>';				
-				
-				html = sDivForLeftDisplay + sRightIcon + sText + sProgress + sColorProgress + '</div>' 
+		
+				html = sDivForLeftDisplay + sRightIcon + sLeftIcon + sText + sProgressText + sColorProgress + '</div>' 
 				
 				//html = sDivForLeftDisplay + sText + '</div>' + sColorProgress +  sDivForRightDisplay + sRightText + sRightIcon  + '</div>'; 
 				
@@ -213,72 +207,6 @@ airbus.mes.stationtracker.util.Formatter = {
 				
 			},
 			
-			fullConfirm : function(sText) {
-
-				var html = "";
-
-				html += '<div  style="width:inherit; height:inherit; position:absolute; z-index: 1; padding-left: 5px;line-height: 23px;left: 0px;" >'
-				+ sText + '</div>';
-				//html += '<div  style="width:inherit; height:inherit; position:absolute" >toto</div>';
-				html += '<div style="width:100%; height:inherit; background-color:#0085AD ; position:absolute; z-index: 0; left: 0px;"></div>'
-		
-				return html;
-
-			},
-	
-			
-			
-			
-			andon : function(sText,sProgress, sTotalDuration) {
-				
-				var html = "";
-				var progress = airbus.mes.stationtracker.util.Formatter.progressDisplayEvent(sProgress);
-				var duration = airbus.mes.stationtracker.util.Formatter.progressDisplayEvent(sTotalDuration);
-
-
-				html += '<div  style="width:inherit; height:inherit; position:absolute; z-index: 1; padding-left: 5px;line-height: 23px;left: 0px;" ><i class="fa fa-exclamation-triangle" style="padding-right:4px; line-height: 23px;" ></i>' + sText + '</div>';
-			
-				html += '<div  style="width:inherit; height:inherit; position:absolute; z-index: 1; padding-right: 5px;line-height: 23px; text-align:right; left: 0px;">' + 
-				'<span style="padding-left:4px; line-height: 23px;" > ['+ progress +'/'+ duration +' IM]</span>' +
-				'<i class="fa fa-exclamation-triangle" style="padding-left:4px; line-height: 23px;" ></i></div>';
-				
-				
-				html += '<div style="width:100%; height:inherit; background-color:#DB5550 ; position:absolute; z-index: 0; left: 0px;"></div>'
-		
-				return html;
-
-				
-			},
-			
-			blocked : function(sText,sProgress) {
-				
-				var html = "";
-
-				html += '<div  style="width:inherit; height:inherit; position:absolute; z-index: 1; padding-left: 5px;line-height: 23px;left: 0px;" >'
-				+ sText + '</div>';
-			
-				html += '<div  style="width:inherit; height:inherit; position:absolute; z-index: 1; padding-right: 5px;line-height: 23px; text-align:right; left: 0px;">' + 
-				'<span style="padding-left:4px; line-height: 23px;" >' + sProgress + '%</span>' +
-				'<i class="fa fa-exclamation-triangle" style="padding-left:4px; line-height: 23px;" ></i></div>';
-				
-				
-				html += '<div style="width:100%; height:inherit; background-color:#FEAF00 ; position:absolute; z-index: 0; left: 0px;"></div>'
-		
-				return html;
-		
-			},
-	
-			partialConf : function(sText,sProgress) {
-				var html = "";
-				
-				html += '<div  style="width:inherit; height:inherit; position:absolute; z-index: 1; padding-left: 5px;line-height: 23px;left: 0px;" >'
-					+ sText + '</div>';
-					
-				html += '<div style="width:'+ sProgress+ '%; height:inherit; background-color:#84bd00; position:absolute; z-index: 0; left: 0px;">&nbsp;<span  style="width:3px; float:right; background:#417506; height:inherit;" ></span> </div>'
-								
-				return html;
-				
-			},
 			
 			initial : function(sText,sProgress) {
 				var html = "";
@@ -371,7 +299,7 @@ airbus.mes.stationtracker.util.Formatter = {
 							+ ' class="' + airbus.mes.stationtracker.util.Formatter.openFolder(oSection.open) + '"></span><div title='
 							+ airbus.mes.stationtracker.util.Formatter.spaceInsecable(oSection.label) + ' class="ylabelfolder">' + oSection.label
 							+ '</div><span id= add_' + oSection.key
-							+ ' class="fa fa-user-plus custom" onclick="airbus.mes.stationtracker.AssignmentManager.newLine(\''
+							+ ' class="fa fa-plus custom" onclick="airbus.mes.stationtracker.AssignmentManager.newLine(\''
 							+ oSection.key + '\')"></span></div>';
 					return html;
 

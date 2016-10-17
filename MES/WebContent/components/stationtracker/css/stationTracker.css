@@ -106,12 +106,12 @@ float: left;
 padding-left: 10px;
 }
 
-.fa-user-plus.custom{
+.fa-plus.custom{
 font-size: 1.5em;
 float: right;
 padding-right: 10px;
 }
-.fa-user-plus:hover {
+.fa-plus:hover {
 	color: blue;
 	font-size: 1.7em
 }
@@ -278,6 +278,7 @@ color : black;
 }
 .shiftCss {
 	background-color: #EEF3F7;
+	opacity: 0.5;
 }
 
 .operationCP {
