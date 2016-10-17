@@ -53,9 +53,9 @@ airbus.mes.stationtracker.ModelManager = {
 			});
 						
 			// TODO DEPLACE this in shell controller and when service is ok remove all of this function
-			this.loadUnplanned();		
+			this.loadStationTracker("U");		
 			this.loadFilterUnplanned();		
-			this.loadOSW();
+			this.loadStationTracker("O");		
 			this.loadProductionGroup();
 			
 //			this.i18nModel = new sap.ui.model.resource.ResourceModel({
@@ -84,31 +84,40 @@ airbus.mes.stationtracker.ModelManager = {
 				
 				var geturlstationtracker = this.urlModel.getProperty('urlstationtrackeroperation');			
 				
+				switch (sType) {
+				case "R":
+					oData.site = "FNZ1";
+					oData.station = "PHYS_ST_IP4";
+					oData.msn = "00571";					
+					var oViewModel = sap.ui.getCore().getModel("stationTrackerRModel");
+					break;
+				case "I":
+					var oViewModel = sap.ui.getCore().getModel("stationTrackerIModel");
+					break;
+				case "U":
+					//TODO : remove hardcode
+					oData.site = "FNZ1";
+					oData.station = "PHYS_ST_IP4";
+					oData.msn = "00571";
+					var oViewModel = sap.ui.getCore().getModel("unPlannedModel");
+				    geturlstationtracker = this.urlModel.getProperty('urlstationtrackerunplannedactivities');			
+					break;
+				case "O":
+					//TODO : remove hardcode
+					oData.site = "FNZ1";
+					oData.station = "PHYS_ST_IP5";
+					oData.msn = "00571";
+					var oViewModel = sap.ui.getCore().getModel("OSWModel");
+				    geturlstationtracker = this.urlModel.getProperty('urlstationtrackerunplannedactivities');			
+					break;
+				}
+				
 				geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$site", oData.site);
 				geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$station", oData.station);
 				geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$msn", oData.msn);
 				geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$operationType", sType);
 				geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$productionGroup", "%");
-				
-
-				switch (sType) {
-				case "R":
-					var oViewModel = sap.ui.getCore().getModel("stationTrackerRModel");
-					break;
-				case "I":
-					var oViewModel = sap.ui.getCore().getModel("stationTrackerIModel");
-		
-					break;
-				case "U":
-					var oViewModel = sap.ui.getCore().getModel("unPlannedModel");
-		
-					break;
-				case "O":
-					var oViewModel = sap.ui.getCore().getModel("OSWModel");
-		
-					break;
-		
-				}
+			
 						
 				oViewModel.loadData(geturlstationtracker , null, false);				
 			

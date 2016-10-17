@@ -5,8 +5,9 @@
 		"Column" : [ 
 		{ "Name" : "PP_STATION", "SourceColumn" : "PP_STATION", "Description" : "WorkCenter PP Station", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
 		{ "Name" : "PROD_GROUP", "SourceColumn" : "PROD_GROUP", "Description" : "Production Group", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 } ] }, 
+		{ "Name" : "Selected", "SourceColumn" : "Selected", "Description" : "Selected", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 } ] },		
 	"Row" : [ 
-		{ "PP_STATION" : "PP_ST_2", "PROD_GROUP" : "PG_2" }, 
+		{ "PP_STATION" : "PP_ST_2", "PROD_GROUP" : "PG_2",}, 
 		{ "PP_STATION" : "PP_ST_1", "PROD_GROUP" : "PG_1" }, 
 		{ "PP_STATION" : "PP_ST_3", "PROD_GROUP" : "PG_2" } ]
 		 } ]

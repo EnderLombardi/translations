@@ -38,11 +38,11 @@
 								<HBox>
 									<items>
 										<custom:customProgressIndicator
-											width="auto" state="sap.ui.core.ValueState.Success" status="{WorkListModel>status}"
+											width="auto" state="sap.ui.core.ValueState.Success" status="{WorkListModel>STATE}"
 											isAndon="{WorkListModel>andons}"
-											displayValue="{ parts: [ 'WorkListModel>shopOrder','WorkListModel>shopOrderDescription' ], formatter: 'airbus.mes.stationtracker.util.Formatter.titleWorklist'}"
-											displayValue2="{ parts: [ 'WorkListModel>operationId','WorkListModel>operationDescription','WorkListModel>progress','WorkListModel>totalDuration' ], formatter: 'airbus.mes.stationtracker.util.Formatter.displayValueIM'}"
-											percentValue="{ parts: [ 'WorkListModel>progress','WorkListModel>totalDuration' ], formatter: 'airbus.mes.stationtracker.util.Formatter.percentValue'}">
+											displayValue="{ parts: [ 'WorkListModel>WORKORDER_ID','WorkListModel>WORKORDER_DESCRIPTION' ], formatter: 'airbus.mes.stationtracker.util.Formatter.titleWorklist'}"
+											displayValue2="{ parts: [ 'WorkListModel>OPERATION_ID','WorkListModel>OPERATION_DESCRIPTION','WorkListModel>PROGRESS','WorkListModel>DURATION' ], formatter: 'airbus.mes.stationtracker.util.Formatter.displayValueIM'}"
+											percentValue="{ parts: [ 'WorkListModel>PROGRESS','WorkListModel>DURATION' ], formatter: 'airbus.mes.stationtracker.util.Formatter.percentValue'}">
 											<custom:layoutData>
 												<FlexItemData baseSize="60%" growFactor="1"></FlexItemData>
 											</custom:layoutData>
