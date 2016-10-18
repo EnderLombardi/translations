@@ -11,7 +11,7 @@
 						<items >
 						<Toolbar class="titleToolbar">
 						<content>
-							<Text class="textSize" text="Welcome to Airbus MES" />
+							<Text class="textSize" text="{i18n>Welcome}" />
 							<ToolbarSpacer />
 							<!-- <Button type="Transparent" text="English" icon="sap-icon://slim-arrow-down" 
 								iconFirst="false" /> -->
@@ -19,7 +19,7 @@
 					</Toolbar>
 						<Toolbar class="subHeader">
 						<content>
-							<Text class="subHeaderText" text="Station Tracker" />
+							<Text class="subHeaderText" text="{i18n>StationTracker}" />
 						</content>
 					</Toolbar>
 					<Panel backgroundDesign="Transparent" class="PanelbgImg2">

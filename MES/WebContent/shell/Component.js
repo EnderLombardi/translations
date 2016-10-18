@@ -28,7 +28,7 @@ airbus.mes.shell.Component.prototype.createContent = function() {
 
 		// initialize ModelManager and load needed file
 		airbus.mes.shell.ModelManager.init(sap.ui.getCore());
-			
+				
 		this.oView = sap.ui.view({
 			id : "globalNavView",
 			viewName : "airbus.mes.shell.globalNavigation",

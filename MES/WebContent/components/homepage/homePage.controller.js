@@ -20,7 +20,7 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 		
 		if(airbus.mes.settings.ModelManager.station === undefined ){
 		
-			if( airbus.mes.homepage.oView.getModel("1TileLineHome").getProperty(sPath).text === "Station Tracker")
+			if( airbus.mes.homepage.oView.getModel("1TileLineHome").getProperty(sPath).text === "StationTracker")
 				airbus.mes.settings.GlobalFunction.navigateTo("Go to Station Tracker","stationtracker");
 			else
 				airbus.mes.settings.GlobalFunction.navigateTo("Go to Work Tracker","worktracker");
@@ -29,7 +29,7 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 //			If default user settings are already loaded, 
 //			We display directly station tracker screen
 			
-			if(airbus.mes.homepage.oView.getModel("1TileLineHome").getProperty(sPath).text === "Station Tracker")
+			if(airbus.mes.homepage.oView.getModel("1TileLineHome").getProperty(sPath).text === "StationTracker")
 				{
 				sap.ui.getCore().createComponent({
 					name : "airbus.mes.stationtracker", // root component folder is resources
@@ -38,7 +38,7 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 				nav.to(airbus.mes.stationtracker.oView.getId());
 				}
 			// to be remove 
-				if(airbus.mes.homepage.oView.getModel("1TileLineHome").getProperty(sPath).text === "Line Tracker"){
+				if(airbus.mes.homepage.oView.getModel("1TileLineHome").getProperty(sPath).text === "LineTracker"){
 					airbus.mes.shell.util.navFunctions.worktracker();
 				}
 				

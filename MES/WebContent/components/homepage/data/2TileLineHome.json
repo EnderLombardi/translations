@@ -1,28 +1,28 @@
 {
 	"buttonDetail": [{
 
-		"text": "OSW inputs Mgt",
+		"text": "OSWinputsMgt",
 			"icon": "cause",
 			"app":"",
 		"url": "/MES/WebContent/components/stationtracker/index.html",
 		"enable": false
 	}, {
 
-		"text": "Team availability",
+		"text": "TeamAvailability",
 		"icon": "calendar",
 		"app":"",
 		"url": "/MES/WebContent/components/stationtracker/index.html",
 		"enable": false
 	}, {
 
-		"text": "Team competencies & qualification",
+		"text": "TeamCompetencies",
 		"icon": "task",
 		"app":"",
 		"url": "/MES/WebContent/components/stationtracker/index.html",
 		"enable": false
 	},	{
 
-		"text": "Team assignment",
+		"text": "TeamAssignment",
 		"icon": "customer-history",
 		"app":"",
 		"url": "/MES/WebContent/components/stationtracker/index.html",

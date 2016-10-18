@@ -40,7 +40,7 @@
 						<Label text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/plant', formatter : 'airbus.mes.stationtracker.util.Formatter.stationTrackerPlant' }" class="pageWelcome sapUiTinyMarginBeginEnd" />
 						<Label text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/line', formatter : 'airbus.mes.stationtracker.util.Formatter.stationTrackerLine' }" class="pageWelcome sapUiTinyMarginBeginEnd" />					
 					<ToolbarSeparator/>
-					<Button text="Production Group" type="Transparent" class="whiteColor whiteButton" press="onProductionGroupPress"/>
+					<Button text="{i18n>ProductionGroup}" type="Transparent" class="whiteColor whiteButton" press="onProductionGroupPress"/>
 					</Toolbar>
 				</headerToolbar>
 				<content>

@@ -38,10 +38,11 @@ airbus.mes.homepage.Component.prototype.createContent = function() {
 	     });
 		
 		// Local Model
+		this.oView.setModel(i18nModel, "i18n");				
 		this.oView.setModel(oModel1, "1TileLineHome");
 		this.oView.setModel(oModel2, "2TileLineHome");
 		this.oView.setModel(oModel3, "3TileLineHome");
-		this.oView.setModel(i18nModel, "i18n");		
+
 		
 		
 		return this.oView;

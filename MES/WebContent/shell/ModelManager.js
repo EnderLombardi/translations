@@ -42,15 +42,9 @@ airbus.mes.shell.ModelManager = {
 			
 			var i18nModel = new sap.ui.model.resource.ResourceModel({
 	            bundleUrl : "./i18n/i18n.properties",
-//	            bundleLocale : "en" automatic defined by parameter sap-language
 	         });
-			
-			
-//			this.i18nModel = new sap.ui.model.resource.ResourceModel({
-//				bundleUrl : "i18n/messageBundle.properties",
-//				bundleLocale : core.getConfiguration().getLanguage()
-//			});
-			core.setModel(this.i18nModel, "ShellI18n");
+
+			core.setModel(i18nModel, "ShellI18n");
 						
 		},
 				
@@ -60,14 +54,5 @@ airbus.mes.shell.ModelManager = {
 			oViewModel.loadData(this.urlModel.getProperty("urluserdetail"), null, false);
 		
 		},
-		
-//		loadUserSettings : function() {
-//			
-//			var oViewModel = sap.ui.getCore().getModel("userSettingModel");
-//			oViewModel.loadData(this.urlModel.getProperty("urlusersetting"), null, false);
-//		
-//		},
-		
-		
 		
 }
