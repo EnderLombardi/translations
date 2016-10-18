@@ -54,7 +54,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 							y_property:	"section_id",
 							render:"tree",
 							folder_dy: 25,
-							dy: 40,
+							dy: 36,
 														
 						});
                         
@@ -158,7 +158,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 							console.log("end of drag");
 							
 						}));
-						
+												
 						scheduler.eventId.push(scheduler.attachEvent("onBeforeTodayDisplayed", function() {
 							
 							ShiftManager.step = 0;
