@@ -50,7 +50,7 @@ airbus.mes.shell.ModelManager = {
 //				bundleUrl : "i18n/messageBundle.properties",
 //				bundleLocale : core.getConfiguration().getLanguage()
 //			});
-			core.setModel(this.i18nModel, "ShellI18n");
+			core.setModel(i18nModel, "ShellI18n");
 						
 		},
 				

@@ -13,18 +13,18 @@
 			<VBox>
 				<HBox>
 					<Select class="sapUiTinyMarginBeginEnd comboBoxStyle"
-						    items="{filterUnplannedModel>/Rowsets/Rowset/0/Row/Grouping}"
+						    items="{groupModel>/Rowsets/Rowset/0/Row/Grouping}"
 						    change="changeGroupWorkList"
 						    visible="{ path: 'WorkListModel>andons' , formatter: 'airbus.mes.stationtracker.util.Formatter.isGroupingVisible' }">
-						<core:ListItem text="{filterUnplannedModel>Value}" />					
+						<core:ListItem text="{groupModel>Value}" />					
 					</Select>
 				
 				
 					<Select class="sapUiTinyMarginBeginEnd comboBoxStyle"
-						    items="{filterUnplannedModel>/Rowsets/Rowset/0/Row/Status}"
+						    items="{groupModel>/Rowsets/Rowset/0/Row/Status}"
 						    change="onChangeFilter"
 					        visible="{ path: 'WorkListModel>andons' , formatter: 'airbus.mes.stationtracker.util.Formatter.isGroupingVisible' }">						
-						<core:ListItem key="{filterUnplannedModel>Key}" text="{filterUnplannedModel>Value}" />					
+						<core:ListItem key="{groupModel>Key}" text="{groupModel>Value}" />					
 					</Select>
 				</HBox>
 				<List id="myList" growing="true" growingThreshold="20"

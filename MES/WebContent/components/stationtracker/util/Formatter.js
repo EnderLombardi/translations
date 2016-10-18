@@ -153,7 +153,20 @@ airbus.mes.stationtracker.util.Formatter = {
 				var sRightIcon = "";	
 				var sLeftIcon = "";
 				var sColorProgress = "";
-				var sText = '<span style="position: relative; z-index: 1; float: left; overflow: hidden; text-overflow: ellipsis; max-width:40%; white-space: nowrap;">' + 'TEXXT DE TEST' + '</span>';	
+				var sText = "";
+				// Text to display different case regarding box selected
+				switch ( airbus.mes.stationtracker.GroupingBoxingManager.box ) {
+					
+				case "OPERATION_ID" :
+						var sText = oBox.operationId + " - " +  oBox.shopOrder + " - " + oBox.operationId ;
+						break;
+						
+				case "WORKORDER_ID" :
+						var sText = oBox.shopOrderDescription + " - "  + oBox.shopOrder ;
+						break;
+				}
+		
+				var sSpanText = '<span style="position: relative; z-index: 1; float: left; overflow: hidden; text-overflow: ellipsis; max-width:40%; white-space: nowrap;">' + sText + '</span>';	
 				var sProgressText = '<span style="position: relative;  z-index: 1; float: right; overflow: hidden; text-overflow: ellipsis; max-width:40%; white-space: nowrap; padding-left:10px; padding-right:10px;"> ['+ oBox.progress +'/'+ oBox.totalDuration +' IM]</span>';	
 								
 				// need one more condition to add OSW
@@ -197,10 +210,8 @@ airbus.mes.stationtracker.util.Formatter = {
 	
 				}
 		
-				html = sDivForLeftDisplay + sRightIcon + sLeftIcon + sText + sProgressText + sColorProgress + '</div>' 
-				
-				//html = sDivForLeftDisplay + sText + '</div>' + sColorProgress +  sDivForRightDisplay + sRightText + sRightIcon  + '</div>'; 
-				
+				html = sDivForLeftDisplay + sRightIcon + sLeftIcon + sSpanText + sProgressText + sColorProgress + '</div>' 
+							
 				return html;
 				
 				

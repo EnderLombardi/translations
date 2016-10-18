@@ -117,7 +117,8 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 
 		if (nav.getCurrentPage().getId() === "stationTrackerView") {
 
-
+			airbus.mes.stationtracker.oView.byId("stationtracker").setBusy(true);
+			
 			airbus.mes.stationtracker.ModelManager.loadShifts();
 			airbus.mes.stationtracker.ModelManager.loadAffectation();
 			airbus.mes.stationtracker.ShiftManager.init(airbus.mes.stationtracker.GroupingBoxingManager.shiftNoBreakHierarchy);

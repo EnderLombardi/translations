@@ -148,7 +148,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 			var oShift = airbus.mes.stationtracker.ShiftManager.shifts[airbus.mes.stationtracker.ShiftManager.closestShift(oFormatter.jsDateFromDayTimeStr(el.START_TIME))]; 
 			//console.log(oShift);
 						
-			var ssBox = el[sBoxing] + "_" + oShift.day + "-" + oShift.shiftName;
+			var ssBox = el[sBoxing] + "_"  + el["WORKORDER_ID"] + "_" + oShift.day + "-" + oShift.shiftName;
 						
 			if ( !oHierachy[ssGroup] ) {
 				
@@ -440,10 +440,9 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 		var ShiftManager = airbus.mes.stationtracker.ShiftManager;
 		
 		if (ShiftManager.current_Date != undefined) {
-			scheduler.init(sap.ui.getCore().byId("stationTrackerView").getId() + "--test", new Date(
-					ShiftManager.currentFullDate), "timeline");
+			scheduler.init( airbus.mes.stationtracker.oView.byId("stationtracker").getId() , new Date( ShiftManager.currentFullDate), "timeline");
 		} else {
-			scheduler.init(sap.ui.getCore().byId("stationTrackerView").getId() + "--test", new Date("04/10/2016"),
+			scheduler.init( airbus.mes.stationtracker.oView.byId("stationtracker").getId() , new Date("04/10/2016"),
 					"timeline");
 		};
 		
@@ -463,7 +462,10 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 	    }
 	    
 	    scheduler.xy.scroll_width=20;
+	    airbus.mes.stationtracker.oView.byId("stationtracker").setBusy(false);
 	    scheduler.parse(aBox,"json");
+	    
+	
 	    
 	}
 	
