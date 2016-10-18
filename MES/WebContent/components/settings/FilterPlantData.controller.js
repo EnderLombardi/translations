@@ -45,8 +45,7 @@ sap.ui
 						this.addParent(this.selectTree, undefined);
 						this.ModelManager = airbus.mes.settings.ModelManager;
 						
-						airbus.mes.settings.ModelManager
-								.loadUserSettingsModel();
+					//	airbus.mes.settings.ModelManager.loadUserSettingsModel();
 					},
 
 					addParent : function(oTree, oParent) {

@@ -49,10 +49,11 @@ airbus.mes.settings.ModelManager = {
 			bundleUrl : "../components/settings/config/url_config.properties",
 			bundleLocale : dest
 		});
+
+		//Loading of model
 		
-		airbus.mes.settings.ModelManager.loadSiteModel();
-//        airbus.mes.settings.ModelManager.loadLangModel();
-        airbus.mes.settings.ModelManager.loadUserSettingsModel();
+		this.loadSiteModel();
+        this.loadUserSettingsModel();
 
 	},
 	

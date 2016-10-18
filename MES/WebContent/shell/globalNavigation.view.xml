@@ -27,7 +27,7 @@
                                    icon="sap-icon://action-settings" 
                                    class="whiteColor whiteButton" 
                                    press="navigate"
-                                   enabled="{ path : './', formatter : '.checkCurrentView' }"
+                                   enabled="{ path : './', formatter : 'airbus.mes.shell.util.Formatter.checkCurrentView' }"
                             ></Button> 
                            </content>
                     </Toolbar>
