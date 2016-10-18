@@ -351,6 +351,10 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 					var aTotalDuration = [];
 					var sPaused = [];
 					
+					var sShopOrderDescription = "";
+					var sShopOrder = "";
+					var sOperationDescription = "";
+					var sOperationId = "";
 					var sRoutingMaturityAssessment = "";
 					var sProgress = "";
 					var fCriticalPath = 0;		
@@ -369,6 +373,11 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 						aTotalDuration.push( el.totalDuration );
 						sPaused.push(el.paused);
 						
+						
+						sShopOrderDescription = el.shopOrderDescriptio;
+						sShopOrder = el.shopOrder;
+						sOperationDescription = el.operationDescription;
+						sOperationId = el.operationId;
 						sProgress = el.progress;
 						fCriticalPath = el.criticalPath;
 						sOperationDescription = el.sBox;
@@ -413,6 +422,10 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 					
 					var oOperationRescheduling = {
 							
+							"operationId" : sOperationId,
+							"operationDescription" : sOperationDescription,
+							"shopOrder" : sShopOrder,
+							"shopOrderDescription" : sShopOrderDescription,
 							"routingMaturityAssessment" : sRoutingMaturityAssessment,
 							"paused" : Math.max.apply(null,sPaused),
 							"status" : sStatus,

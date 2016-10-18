@@ -2,13 +2,13 @@
 
    "Rowsets": {
 
-      "DateCreated": "2016-10-05T10:12:37",
+      "DateCreated": "2016-10-18T15:30:18",
 
-      "Version": "15.1 SP2 Patch 5 (Jul 20, 2016)",
+      "Version": "15.1 SP2 Patch 13 (Oct 6, 2016)",
 
-      "StartDate": "2016-10-05T09:12:37+0200",
+      "StartDate": "2016-10-18T14:30:18+0200",
 
-      "EndDate": "2016-10-05T10:12:37+0200",
+      "EndDate": "2016-10-18T15:30:18+0200",
 
       "CachedTime": "",
 
@@ -150,6 +150,22 @@
 
                   {
 
+                     "Name": "MANUAL",
+
+                     "SourceColumn": "MANUAL",
+
+                     "Description": "MANUAL",
+
+                     "SQLDataType": -9,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
                      "Name": "PP_STATION",
 
                      "SourceColumn": "PP_STATION",
@@ -278,11 +294,27 @@
 
                   {
 
-                     "Name": "NEW_OPERATION_STATUS",
+                     "Name": "MODIFIED_AT",
 
-                     "SourceColumn": "NEW_OPERATION_STATUS",
+                     "SourceColumn": "MODIFIED_AT",
 
-                     "Description": "NEW_OPERATION_STATUS",
+                     "Description": "MODIFIED_AT",
+
+                     "SQLDataType": 93,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "MODIFIED_BY",
+
+                     "SourceColumn": "MODIFIED_BY",
+
+                     "Description": "MODIFIED_BY",
 
                      "SQLDataType": -9,
 
@@ -294,11 +326,11 @@
 
                   {
 
-                     "Name": "REMAINING_TIME",
+                     "Name": "RMA_STATUS_COLOR",
 
-                     "SourceColumn": "REMAINING_TIME",
+                     "SourceColumn": "RMA_STATUS_COLOR",
 
-                     "Description": "REMAINING_TIME",
+                     "Description": "RMA_STATUS_COLOR",
 
                      "SQLDataType": -9,
 
@@ -315,6 +347,70 @@
                      "SourceColumn": "PROD_GROUP",
 
                      "Description": "PROD_GROUP",
+
+                     "SQLDataType": -9,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "COMPETENCY",
+
+                     "SourceColumn": "COMPETENCY",
+
+                     "Description": "COMPETENCY",
+
+                     "SQLDataType": -9,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "WORK_PACKAGE",
+
+                     "SourceColumn": "WORK_PACKAGE",
+
+                     "Description": "WORK_PACKAGE",
+
+                     "SQLDataType": -9,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "ATA",
+
+                     "SourceColumn": "ATA",
+
+                     "Description": "ATA",
+
+                     "SQLDataType": -9,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "FAMILY_TARGET",
+
+                     "SourceColumn": "FAMILY_TARGET",
+
+                     "Description": "FAMILY_TARGET",
 
                      "SQLDataType": -9,
 
@@ -358,11 +454,11 @@
 
                   {
 
-                     "Name": "ROUTING_MATURITY_ACCESSMENT",
+                     "Name": "PAUSED",
 
-                     "SourceColumn": "ROUTING_MATURITY_ACCESSMENT",
+                     "SourceColumn": "PAUSED",
 
-                     "Description": "ROUTING_MATURITY_ACCESSMENT",
+                     "Description": "PAUSED",
 
                      "SQLDataType": -9,
 
@@ -412,387 +508,1219 @@
 
                {
 
-                  "SITE": "CHES",
+                  "SITE": "FNZ1",
 
-                  "MSN": "00001",
+                  "MSN": "00571",
 
-                  "WORKORDER_ID": "100006583-0025",
-
-                  "OPERATION_ID": "0001",
-
-                  "WORKORDER_DESCRIPTION": "0002-SA-ASO-400-01",
-
-                  "STEP_ID": "10",
-
-                  "STATE": "",
-
-                  "OPERATION_DESCRIPTION": "FLY SIMULATOR",
-
-                  "PP_STATION": "WorkCenterBO:CHES,PP_ST_3",
-
-                  "CRITICAL_PATH": "---",
-
-                  "FAMILY": "---",
-
-                  "CPP_CLUSTER": "FUEL ACTIVITIES",
-
-                  "AVL_LINE": 1,
-
-                  "SKILLS": "skills",
-
-                  "START_TIME": "2016-10-03 10:11:12",
-
-                  "END_TIME": "2016-10-03 13:02:44",
-
-                  "NEW_OPERATION_STATUS": "---",
-
-                  "REMAINING_TIME": "---",
-
-                  "PROD_GROUP": "PG_2",
-
-                  "EXECUTION_STATION": "---",
-
-                  "EXECUTION_STATION_SOURCE": "---",
-
-                  "ROUTING_MATURITY_ACCESSMENT": "---",
-
-                  "DURATION": 100,
-                  
-                  "PAUSED": "FALSE",
-
-                  "PROGRESS": 50
-
-               },
-
-               {
-
-                  "SITE": "CHES",
-
-                  "MSN": "00001",
-
-                  "WORKORDER_ID": "100006583-0026",
+                  "WORKORDER_ID": "FNZ131",
 
                   "OPERATION_ID": "0010",
 
-                  "WORKORDER_DESCRIPTION": "0002-SA-ASO-400-01",
-
-                  "STEP_ID": "10",
-
-                  "STATE": "C",
-
-                  "OPERATION_DESCRIPTION": "FLY SIMALTOR2",
-
-                  "PP_STATION": "WorkCenterBO:CHES,PP_ST_3",
-
-                  "CRITICAL_PATH": "---",
-
-                  "FAMILY": "---",
-
-                  "CPP_CLUSTER": "MECA",
-
-                  "AVL_LINE": 1,
-
-                  "SKILLS": "skills",
-
-                  "START_TIME": "2016-10-03 17:11:12",
-
-                  "END_TIME": "2016-10-03 20:02:44",
-
-                  "NEW_OPERATION_STATUS": "---",
-
-				 											 "ANDONS": 1,
-				  
-                  "REMAINING_TIME": "---",
-
-                  "PROD_GROUP": "PG_2",
-
-                  "EXECUTION_STATION": "---",
-
-                  "EXECUTION_STATION_SOURCE": "---",
-
-                  "ROUTING_MATURITY_ACCESSMENT": "ok",
-
-                  "DURATION": 100,
-
-                  "PROGRESS": 50,
-                  
-                  "PAUSED": "FALSE"
-
-               },
-
-               {
-
-                  "SITE": "CHES",
-
-                  "MSN": "00001",
-
-                  "WORKORDER_ID": "100006583-0027",
-
-                  "OPERATION_ID": "0002",
-
-                  "WORKORDER_DESCRIPTION": "0002-SA-ASO-400-01",
+                  "WORKORDER_DESCRIPTION": "NP-1 test material",
 
                   "STEP_ID": "20",
 
-                  "STATE": "C",
+                  "STATE": "S",
 
-                  "OPERATION_DESCRIPTION": "SABOTAGE",
+                  "OPERATION_DESCRIPTION": "0010",
 
-                  "PP_STATION": "WorkCenterBO:CHES,PP_ST_3",
+                  "MANUAL": "---",
+
+                  "PP_STATION": "WorkCenterBO:FNZ1,PP_ST_1",
 
                   "CRITICAL_PATH": "---",
 
                   "FAMILY": "---",
 
-                  "CPP_CLUSTER": "MECA",
+                  "CPP_CLUSTER": "Montage des shu",
 
-                  "AVL_LINE": 1,
+                  "AVL_LINE": 2,
 
-                  "SKILLS": "skills",
+                  "SKILLS": "TEST",
 
-                  "START_TIME": "2016-10-04 14:11:12",
+                  "START_TIME": "2016-10-17 05:18:00",
 
-                  "END_TIME": "2016-10-04 16:02:44",
+                  "END_TIME": "2016-10-17 06:03:23",
 
-                  "NEW_OPERATION_STATUS": "---",
+                  "MODIFIED_AT": "TimeUnavailable",
 
-				 												 "ANDONS": 1,
-				  
-                  "REMAINING_TIME": "---",
+                  "MODIFIED_BY": "---",
+
+                  "RMA_STATUS_COLOR": "---",
 
                   "PROD_GROUP": "PG_1",
 
-                  "EXECUTION_STATION": "---",
+                  "COMPETENCY": "---",
 
-                  "EXECUTION_STATION_SOURCE": "---",
+                  "WORK_PACKAGE": "---",
 
-                  "ROUTING_MATURITY_ACCESSMENT": "ok",
+                  "ATA": "---",
 
-                  "DURATION": 100,
+                  "FAMILY_TARGET": "---",
 
-                  "PROGRESS": 20
+                  "EXECUTION_STATION": "PP_ST_1",
+
+                  "EXECUTION_STATION_SOURCE": "2_AVL",
+
+                  "PAUSED": "---",
+
+                  "DURATION": "NA",
+
+                  "PROGRESS": "NA"
 
                },
 
                {
 
-                  "SITE": "CHES",
+                  "SITE": "FNZ1",
 
-                  "MSN": "00001",
+                  "MSN": "00571",
 
-                  "WORKORDER_ID": "100006583-0028",
+                  "WORKORDER_ID": "FNZ132",
 
-                  "OPERATION_ID": "0007",
+                  "OPERATION_ID": "0010",
 
-                  "WORKORDER_DESCRIPTION": "0002-SA-ASO-400-01",
+                  "WORKORDER_DESCRIPTION": "NP-1 test material",
 
-                  "STEP_ID": "30",
+                  "STEP_ID": "20",
 
-                  "STATE": "",
+                  "STATE": "S",
 
-                  "OPERATION_DESCRIPTION": "EVALUATION",
+                  "OPERATION_DESCRIPTION": "0010",
 
-                  "PP_STATION": "WorkCenterBO:CHES,PP_ST_3",
+                  "MANUAL": "---",
+
+                  "PP_STATION": "WorkCenterBO:FNZ1,PP_ST_1",
 
                   "CRITICAL_PATH": "---",
 
                   "FAMILY": "---",
 
-                  "CPP_CLUSTER": "ELEC",
+                  "CPP_CLUSTER": "Montage des shu",
 
-                  "AVL_LINE": 1,
+                  "AVL_LINE": 2,
 
-                  "SKILLS": "skills",
+                  "SKILLS": "TEST",
 
-                  "START_TIME": "2016-10-03 07:40:00",
+                  "START_TIME": "2016-10-17 06:03:23",
 
-                  "END_TIME": "2016-10-03 09:20:00",
+                  "END_TIME": "2016-10-17 06:30:59",
 
-                  "NEW_OPERATION_STATUS": "---",
+                  "MODIFIED_AT": "TimeUnavailable",
 
-				  												"ANDONS": 1,
+                  "MODIFIED_BY": "---",
 
-                  "REMAINING_TIME": "---",
+                  "RMA_STATUS_COLOR": "---",
 
                   "PROD_GROUP": "PG_1",
 
-                  "EXECUTION_STATION": "---",
+                  "COMPETENCY": "---",
 
-                  "EXECUTION_STATION_SOURCE": "---",
+                  "WORK_PACKAGE": "---",
 
-                  "ROUTING_MATURITY_ACCESSMENT": "---",
+                  "ATA": "---",
 
-                  "DURATION": 100,
+                  "FAMILY_TARGET": "---",
 
-                  "PROGRESS": 50,
-                                    
-                  "PAUSED": "FALSE"
-                  
+                  "EXECUTION_STATION": "PP_ST_1",
+
+                  "EXECUTION_STATION_SOURCE": "2_AVL",
+
+                  "PAUSED": "---",
+
+                  "DURATION": "NA",
+
+                  "PROGRESS": "NA"
 
                },
+
                {
 
-                  "SITE": "CHES",
+                  "SITE": "FNZ1",
 
-                  "MSN": "00001",
+                  "MSN": "00571",
 
-                  "WORKORDER_ID": "100006583-0028",
+                  "WORKORDER_ID": "FNZ133",
 
-                  "OPERATION_ID": "0008",
+                  "OPERATION_ID": "0010",
 
-                  "WORKORDER_DESCRIPTION": "0002-SA-ASO-400-01",
+                  "WORKORDER_DESCRIPTION": "NP-1 test material",
 
-                  "STEP_ID": "30",
+                  "STEP_ID": "20",
 
-                  "STATE": "N",
+                  "STATE": "S",
 
-                  "OPERATION_DESCRIPTION": "EVALUATION",
+                  "OPERATION_DESCRIPTION": "0010",
 
-                  "PP_STATION": "WorkCenterBO:CHES,PP_ST_3",
+                  "MANUAL": "---",
 
-                  "CRITICAL_PATH": "---",
-
-                  "FAMILY": "---",
-
-                  "CPP_CLUSTER": "ELEC",
-
-                  "AVL_LINE": 1,
-
-                  "SKILLS": "skills",
-
-                  "START_TIME": "2016-10-03 10:40:00",
-
-                  "END_TIME": "2016-10-03 11:20:00",
-
-                  "NEW_OPERATION_STATUS": "---",
-
-																  "ANDONS": 1,
-
-                  "REMAINING_TIME": "---",
-
-                  "PROD_GROUP": "PG_1",
-
-                  "EXECUTION_STATION": "---",
-
-                  "EXECUTION_STATION_SOURCE": "---",
-
-                  "ROUTING_MATURITY_ACCESSMENT": "---",
-
-                  "DURATION": 100,
-
-                  "PROGRESS": 50,
-                  
-                  "PAUSED" : "---"
-
-               },
-                {
-
-                  "SITE": "CHES",
-
-                  "MSN": "00001",
-
-                  "WORKORDER_ID": "100006583-0028",
-
-                  "OPERATION_ID": "0060",
-
-                  "WORKORDER_DESCRIPTION": "0002-SA-ASO-400-01",
-
-                  "STEP_ID": "30",
-
-                  "STATE": "N",
-
-                  "OPERATION_DESCRIPTION": "EVALUATION",
-
-                  "PP_STATION": "WorkCenterBO:CHES,PP_ST_3",
+                  "PP_STATION": "WorkCenterBO:FNZ1,PP_ST_1",
 
                   "CRITICAL_PATH": "---",
 
                   "FAMILY": "---",
 
-                  "CPP_CLUSTER": "ELEC",
+                  "CPP_CLUSTER": "Montage des shu",
 
-                  "AVL_LINE": 1,
+                  "AVL_LINE": 2,
 
-                  "SKILLS": "skills",
+                  "SKILLS": "TEST",
 
-                  "START_TIME": "2016-10-03 17:00:00",
+                  "START_TIME": "2016-10-17 06:30:59",
 
-                  "END_TIME": "2016-10-03 17:01:00",
+                  "END_TIME": "2016-10-17 07:19:19",
 
-                  "NEW_OPERATION_STATUS": "---",
+                  "MODIFIED_AT": "TimeUnavailable",
 
-				  												"ANDONS": 1,
+                  "MODIFIED_BY": "---",
 
-                  "REMAINING_TIME": "---",
+                  "RMA_STATUS_COLOR": "---",
 
                   "PROD_GROUP": "PG_1",
 
-                  "EXECUTION_STATION": "---",
+                  "COMPETENCY": "---",
 
-                  "EXECUTION_STATION_SOURCE": "---",
+                  "WORK_PACKAGE": "---",
 
-                  "ROUTING_MATURITY_ACCESSMENT": "---",
+                  "ATA": "---",
 
-                  "DURATION": 100,
+                  "FAMILY_TARGET": "---",
 
-                  "PROGRESS": 50
+                  "EXECUTION_STATION": "PP_ST_1",
+
+                  "EXECUTION_STATION_SOURCE": "2_AVL",
+
+                  "PAUSED": "---",
+
+                  "DURATION": "NA",
+
+                  "PROGRESS": "NA"
 
                },
-                {
 
-                  "SITE": "CHES",
+               {
 
-                  "MSN": "00001",
+                  "SITE": "FNZ1",
 
-                  "WORKORDER_ID": "100006583-0028",
+                  "MSN": "00571",
 
-                  "OPERATION_ID": "015",
+                  "WORKORDER_ID": "FNZ134",
 
-                  "WORKORDER_DESCRIPTION": "0002-SA-ASO-400-01",
+                  "OPERATION_ID": "0010",
 
-                  "STEP_ID": "30",
+                  "WORKORDER_DESCRIPTION": "NP-1 test material",
 
-                  "STATE": "N",
+                  "STEP_ID": "20",
 
-                  "OPERATION_DESCRIPTION": "EVALUATION",
+                  "STATE": "S",
 
-                  "PP_STATION": "WorkCenterBO:CHES,PP_ST_3",
+                  "OPERATION_DESCRIPTION": "0010",
+
+                  "MANUAL": "---",
+
+                  "PP_STATION": "WorkCenterBO:FNZ1,PP_ST_1",
 
                   "CRITICAL_PATH": "---",
 
                   "FAMILY": "---",
 
-                  "CPP_CLUSTER": "ELEC",
+                  "CPP_CLUSTER": "Montage des shu",
 
-                  "AVL_LINE": 1,
+                  "AVL_LINE": 3,
 
-                  "SKILLS": "skills",
-                  
- 																	"START_TIME": "2016-10-03 18:00:00",
+                  "SKILLS": "TEST",
 
-                  "END_TIME": "2016-10-03 19:00:00",
+                  "START_TIME": "2016-10-17 05:18:00",
 
-                  "NEW_OPERATION_STATUS": "---",
+                  "END_TIME": "2016-10-17 06:23:08",
 
-				 												 "ANDONS": 1,
+                  "MODIFIED_AT": "TimeUnavailable",
 
-                  "REMAINING_TIME": "---",
+                  "MODIFIED_BY": "---",
+
+                  "RMA_STATUS_COLOR": "---",
 
                   "PROD_GROUP": "PG_1",
 
-                  "EXECUTION_STATION": "---",
+                  "COMPETENCY": "---",
 
-                  "EXECUTION_STATION_SOURCE": "---",
+                  "WORK_PACKAGE": "---",
 
-                  "ROUTING_MATURITY_ACCESSMENT": "---",
+                  "ATA": "---",
 
-                  "DURATION": 100,
+                  "FAMILY_TARGET": "---",
 
-                  "PROGRESS": 50
+                  "EXECUTION_STATION": "PP_ST_1",
+
+                  "EXECUTION_STATION_SOURCE": "2_AVL",
+
+                  "PAUSED": "---",
+
+                  "DURATION": "NA",
+
+                  "PROGRESS": "NA"
 
                },
-               
-               {"SITE":"CHES","MSN":"00001","WORKORDER_ID":"100006583-0028","OPERATION_ID":"015","WORKORDER_DESCRIPTION":"0002-SA-ASO-400-01","STEP_ID":"30","STATE":"N","OPERATION_DESCRIPTION":"EVALUATION","PP_STATION":"WorkCenterBO:CHES,PP_ST_3","CRITICAL_PATH":"---","FAMILY":"---","CPP_CLUSTER":"ELEC","AVL_LINE":0.6812314016055623,"SKILLS":"skills","START_TIME":"2016-10-03 10:00:00","END_TIME":"2016-10-03 20:00:00","NEW_OPERATION_STATUS":"---","ANDONS":1,"REMAINING_TIME":"---","PROD_GROUP":"PG_1","EXECUTION_STATION":"---","EXECUTION_STATION_SOURCE":"---","ROUTING_MATURITY_ACCESSMENT":"---","DURATION":100,"PROGRESS":50},{"SITE":"CHES","MSN":"00001","WORKORDER_ID":"100006583-0028","OPERATION_ID":"015","WORKORDER_DESCRIPTION":"0002-SA-ASO-400-01","STEP_ID":"30","STATE":"N","OPERATION_DESCRIPTION":"EVALUATION","PP_STATION":"WorkCenterBO:CHES,PP_ST_3","CRITICAL_PATH":"---","FAMILY":"---","CPP_CLUSTER":"ELEC","AVL_LINE":0.46793963881641054,"SKILLS":"skills","START_TIME":"2016-10-03 10:00:00","END_TIME":"2016-10-03 20:00:00","NEW_OPERATION_STATUS":"---","ANDONS":1,"REMAINING_TIME":"---","PROD_GROUP":"PG_1","EXECUTION_STATION":"---","EXECUTION_STATION_SOURCE":"---","ROUTING_MATURITY_ACCESSMENT":"---","DURATION":100,"PROGRESS":50},{"SITE":"CHES","MSN":"00001","WORKORDER_ID":"100006583-0028","OPERATION_ID":"015","WORKORDER_DESCRIPTION":"0002-SA-ASO-400-01","STEP_ID":"30","STATE":"N","OPERATION_DESCRIPTION":"EVALUATION","PP_STATION":"WorkCenterBO:CHES,PP_ST_3","CRITICAL_PATH":"---","FAMILY":"---","CPP_CLUSTER":"ELEC","AVL_LINE":0.5534147056290748,"SKILLS":"skills","START_TIME":"2016-10-03 10:00:00","END_TIME":"2016-10-03 20:00:00","NEW_OPERATION_STATUS":"---","ANDONS":1,"REMAINING_TIME":"---","PROD_GROUP":"PG_1","EXECUTION_STATION":"---","EXECUTION_STATION_SOURCE":"---","ROUTING_MATURITY_ACCESSMENT":"---","DURATION":100,"PROGRESS":50},{"SITE":"CHES","MSN":"00001","WORKORDER_ID":"100006583-0028","OPERATION_ID":"015","WORKORDER_DESCRIPTION":"0002-SA-ASO-400-01","STEP_ID":"30","STATE":"N","OPERATION_DESCRIPTION":"EVALUATION","PP_STATION":"WorkCenterBO:CHES,PP_ST_3","CRITICAL_PATH":"---","FAMILY":"---","CPP_CLUSTER":"ELEC","AVL_LINE":0.5773842944707088,"SKILLS":"skills","START_TIME":"2016-10-03 10:00:00","END_TIME":"2016-10-03 20:00:00","NEW_OPERATION_STATUS":"---","ANDONS":1,"REMAINING_TIME":"---","PROD_GROUP":"PG_1","EXECUTION_STATION":"---","EXECUTION_STATION_SOURCE":"---","ROUTING_MATURITY_ACCESSMENT":"---","DURATION":100,"PROGRESS":50},{"SITE":"CHES","MSN":"00001","WORKORDER_ID":"100006583-0028","OPERATION_ID":"015","WORKORDER_DESCRIPTION":"0002-SA-ASO-400-01","STEP_ID":"30","STATE":"N","OPERATION_DESCRIPTION":"EVALUATION","PP_STATION":"WorkCenterBO:CHES,PP_ST_3","CRITICAL_PATH":"---","FAMILY":"---","CPP_CLUSTER":"ELEC","AVL_LINE":0.6397664113505133,"SKILLS":"skills","START_TIME":"2016-10-03 10:00:00","END_TIME":"2016-10-03 20:00:00","NEW_OPERATION_STATUS":"---","ANDONS":1,"REMAINING_TIME":"---","PROD_GROUP":"PG_1","EXECUTION_STATION":"---","EXECUTION_STATION_SOURCE":"---","ROUTING_MATURITY_ACCESSMENT":"---","DURATION":100,"PROGRESS":50},{"SITE":"CHES","MSN":"00001","WORKORDER_ID":"100006583-0028","OPERATION_ID":"015","WORKORDER_DESCRIPTION":"0002-SA-ASO-400-01","STEP_ID":"30","STATE":"N","OPERATION_DESCRIPTION":"EVALUATION","PP_STATION":"WorkCenterBO:CHES,PP_ST_3","CRITICAL_PATH":"---","FAMILY":"---","CPP_CLUSTER":"ELEC","AVL_LINE":0.14618541121682127,"SKILLS":"skills","START_TIME":"2016-10-03 10:00:00","END_TIME":"2016-10-03 20:00:00","NEW_OPERATION_STATUS":"---","ANDONS":1,"REMAINING_TIME":"---","PROD_GROUP":"PG_1","EXECUTION_STATION":"---","EXECUTION_STATION_SOURCE":"---","ROUTING_MATURITY_ACCESSMENT":"---","DURATION":100,"PROGRESS":50},{"SITE":"CHES","MSN":"00001","WORKORDER_ID":"100006583-0028","OPERATION_ID":"015","WORKORDER_DESCRIPTION":"0002-SA-ASO-400-01","STEP_ID":"30","STATE":"N","OPERATION_DESCRIPTION":"EVALUATION","PP_STATION":"WorkCenterBO:CHES,PP_ST_3","CRITICAL_PATH":"---","FAMILY":"---","CPP_CLUSTER":"ELEC","AVL_LINE":0.467507360605131,"SKILLS":"skills","START_TIME":"2016-10-03 10:00:00","END_TIME":"2016-10-03 20:00:00","NEW_OPERATION_STATUS":"---","ANDONS":1,"REMAINING_TIME":"---","PROD_GROUP":"PG_1","EXECUTION_STATION":"---","EXECUTION_STATION_SOURCE":"---","ROUTING_MATURITY_ACCESSMENT":"---","DURATION":100,"PROGRESS":50},{"SITE":"CHES","MSN":"00001","WORKORDER_ID":"100006583-0028","OPERATION_ID":"015","WORKORDER_DESCRIPTION":"0002-SA-ASO-400-01","STEP_ID":"30","STATE":"N","OPERATION_DESCRIPTION":"EVALUATION","PP_STATION":"WorkCenterBO:CHES,PP_ST_3","CRITICAL_PATH":"---","FAMILY":"---","CPP_CLUSTER":"ELEC","AVL_LINE":0.16108585428360445,"SKILLS":"skills","START_TIME":"2016-10-03 10:00:00","END_TIME":"2016-10-03 20:00:00","NEW_OPERATION_STATUS":"---","ANDONS":1,"REMAINING_TIME":"---","PROD_GROUP":"PG_1","EXECUTION_STATION":"---","EXECUTION_STATION_SOURCE":"---","ROUTING_MATURITY_ACCESSMENT":"---","DURATION":100,"PROGRESS":50},{"SITE":"CHES","MSN":"00001","WORKORDER_ID":"100006583-0028","OPERATION_ID":"015","WORKORDER_DESCRIPTION":"0002-SA-ASO-400-01","STEP_ID":"30","STATE":"N","OPERATION_DESCRIPTION":"EVALUATION","PP_STATION":"WorkCenterBO:CHES,PP_ST_3","CRITICAL_PATH":"---","FAMILY":"---","CPP_CLUSTER":"ELEC","AVL_LINE":0.9411795436837287,"SKILLS":"skills","START_TIME":"2016-10-03 10:00:00","END_TIME":"2016-10-03 20:00:00","NEW_OPERATION_STATUS":"---","ANDONS":1,"REMAINING_TIME":"---","PROD_GROUP":"PG_1","EXECUTION_STATION":"---","EXECUTION_STATION_SOURCE":"---","ROUTING_MATURITY_ACCESSMENT":"---","DURATION":100,"PROGRESS":50},{"SITE":"CHES","MSN":"00001","WORKORDER_ID":"100006583-0028","OPERATION_ID":"015","WORKORDER_DESCRIPTION":"0002-SA-ASO-400-01","STEP_ID":"30","STATE":"N","OPERATION_DESCRIPTION":"EVALUATION","PP_STATION":"WorkCenterBO:CHES,PP_ST_3","CRITICAL_PATH":"---","FAMILY":"---","CPP_CLUSTER":"ELEC","AVL_LINE":0.23654871500379548,"SKILLS":"skills","START_TIME":"2016-10-03 10:00:00","END_TIME":"2016-10-03 20:00:00","NEW_OPERATION_STATUS":"---","ANDONS":1,"REMAINING_TIME":"---","PROD_GROUP":"PG_1","EXECUTION_STATION":"---","EXECUTION_STATION_SOURCE":"---","ROUTING_MATURITY_ACCESSMENT":"---","DURATION":100,"PROGRESS":50},{"SITE":"CHES","MSN":"00001","WORKORDER_ID":"100006583-0028","OPERATION_ID":"015","WORKORDER_DESCRIPTION":"0002-SA-ASO-400-01","STEP_ID":"30","STATE":"N","OPERATION_DESCRIPTION":"EVALUATION","PP_STATION":"WorkCenterBO:CHES,PP_ST_3","CRITICAL_PATH":"---","FAMILY":"---","CPP_CLUSTER":"ELEC","AVL_LINE":0.837462277854131,"SKILLS":"skills","START_TIME":"2016-10-03 10:00:00","END_TIME":"2016-10-03 20:00:00","NEW_OPERATION_STATUS":"---","ANDONS":1,"REMAINING_TIME":"---","PROD_GROUP":"PG_1","EXECUTION_STATION":"---","EXECUTION_STATION_SOURCE":"---","ROUTING_MATURITY_ACCESSMENT":"---","DURATION":100,"PROGRESS":50},{"SITE":"CHES","MSN":"00001","WORKORDER_ID":"100006583-0028","OPERATION_ID":"015","WORKORDER_DESCRIPTION":"0002-SA-ASO-400-01","STEP_ID":"30","STATE":"N","OPERATION_DESCRIPTION":"EVALUATION","PP_STATION":"WorkCenterBO:CHES,PP_ST_3","CRITICAL_PATH":"---","FAMILY":"---","CPP_CLUSTER":"ELEC","AVL_LINE":0.26624936869092064,"SKILLS":"skills","START_TIME":"2016-10-03 10:00:00","END_TIME":"2016-10-03 20:00:00","NEW_OPERATION_STATUS":"---","ANDONS":1,"REMAINING_TIME":"---","PROD_GROUP":"PG_1","EXECUTION_STATION":"---","EXECUTION_STATION_SOURCE":"---","ROUTING_MATURITY_ACCESSMENT":"---","DURATION":100,"PROGRESS":50},{"SITE":"CHES","MSN":"00001","WORKORDER_ID":"100006583-0028","OPERATION_ID":"015","WORKORDER_DESCRIPTION":"0002-SA-ASO-400-01","STEP_ID":"30","STATE":"N","OPERATION_DESCRIPTION":"EVALUATION","PP_STATION":"WorkCenterBO:CHES,PP_ST_3","CRITICAL_PATH":"---","FAMILY":"---","CPP_CLUSTER":"ELEC","AVL_LINE":0.2960615338166457,"SKILLS":"skills","START_TIME":"2016-10-03 10:00:00","END_TIME":"2016-10-03 20:00:00","NEW_OPERATION_STATUS":"---","ANDONS":1,"REMAINING_TIME":"---","PROD_GROUP":"PG_1","EXECUTION_STATION":"---","EXECUTION_STATION_SOURCE":"---","ROUTING_MATURITY_ACCESSMENT":"---","DURATION":100,"PROGRESS":50},{"SITE":"CHES","MSN":"00001","WORKORDER_ID":"100006583-0028","OPERATION_ID":"015","WORKORDER_DESCRIPTION":"0002-SA-ASO-400-01","STEP_ID":"30","STATE":"N","OPERATION_DESCRIPTION":"EVALUATION","PP_STATION":"WorkCenterBO:CHES,PP_ST_3","CRITICAL_PATH":"---","FAMILY":"---","CPP_CLUSTER":"ELEC","AVL_LINE":0.36895318962350965,"SKILLS":"skills","START_TIME":"2016-10-03 10:00:00","END_TIME":"2016-10-03 20:00:00","NEW_OPERATION_STATUS":"---","ANDONS":1,"REMAINING_TIME":"---","PROD_GROUP":"PG_1","EXECUTION_STATION":"---","EXECUTION_STATION_SOURCE":"---","ROUTING_MATURITY_ACCESSMENT":"---","DURATION":100,"PROGRESS":50},{"SITE":"CHES","MSN":"00001","WORKORDER_ID":"100006583-0028","OPERATION_ID":"015","WORKORDER_DESCRIPTION":"0002-SA-ASO-400-01","STEP_ID":"30","STATE":"N","OPERATION_DESCRIPTION":"EVALUATION","PP_STATION":"WorkCenterBO:CHES,PP_ST_3","CRITICAL_PATH":"---","FAMILY":"---","CPP_CLUSTER":"ELEC","AVL_LINE":0.1440159167317745,"SKILLS":"skills","START_TIME":"2016-10-03 10:00:00","END_TIME":"2016-10-03 20:00:00","NEW_OPERATION_STATUS":"---","ANDONS":1,"REMAINING_TIME":"---","PROD_GROUP":"PG_1","EXECUTION_STATION":"---","EXECUTION_STATION_SOURCE":"---","ROUTING_MATURITY_ACCESSMENT":"---","DURATION":100,"PROGRESS":50},{"SITE":"CHES","MSN":"00001","WORKORDER_ID":"100006583-0028","OPERATION_ID":"015","WORKORDER_DESCRIPTION":"0002-SA-ASO-400-01","STEP_ID":"30","STATE":"N","OPERATION_DESCRIPTION":"EVALUATION","PP_STATION":"WorkCenterBO:CHES,PP_ST_3","CRITICAL_PATH":"---","FAMILY":"---","CPP_CLUSTER":"ELEC","AVL_LINE":0.701393349766769,"SKILLS":"skills","START_TIME":"2016-10-03 10:00:00","END_TIME":"2016-10-03 20:00:00","NEW_OPERATION_STATUS":"---","ANDONS":1,"REMAINING_TIME":"---","PROD_GROUP":"PG_1","EXECUTION_STATION":"---","EXECUTION_STATION_SOURCE":"---","ROUTING_MATURITY_ACCESSMENT":"---","DURATION":100,"PROGRESS":50},{"SITE":"CHES","MSN":"00001","WORKORDER_ID":"100006583-0028","OPERATION_ID":"015","WORKORDER_DESCRIPTION":"0002-SA-ASO-400-01","STEP_ID":"30","STATE":"N","OPERATION_DESCRIPTION":"EVALUATION","PP_STATION":"WorkCenterBO:CHES,PP_ST_3","CRITICAL_PATH":"---","FAMILY":"---","CPP_CLUSTER":"ELEC","AVL_LINE":0.45187793819620126,"SKILLS":"skills","START_TIME":"2016-10-03 10:00:00","END_TIME":"2016-10-03 20:00:00","NEW_OPERATION_STATUS":"---","ANDONS":1,"REMAINING_TIME":"---","PROD_GROUP":"PG_1","EXECUTION_STATION":"---","EXECUTION_STATION_SOURCE":"---","ROUTING_MATURITY_ACCESSMENT":"---","DURATION":100,"PROGRESS":50},{"SITE":"CHES","MSN":"00001","WORKORDER_ID":"100006583-0028","OPERATION_ID":"015","WORKORDER_DESCRIPTION":"0002-SA-ASO-400-01","STEP_ID":"30","STATE":"N","OPERATION_DESCRIPTION":"EVALUATION","PP_STATION":"WorkCenterBO:CHES,PP_ST_3","CRITICAL_PATH":"---","FAMILY":"---","CPP_CLUSTER":"ELEC","AVL_LINE":0.749677658062671,"SKILLS":"skills","START_TIME":"2016-10-03 10:00:00","END_TIME":"2016-10-03 20:00:00","NEW_OPERATION_STATUS":"---","ANDONS":1,"REMAINING_TIME":"---","PROD_GROUP":"PG_1","EXECUTION_STATION":"---","EXECUTION_STATION_SOURCE":"---","ROUTING_MATURITY_ACCESSMENT":"---","DURATION":100,"PROGRESS":50},{"SITE":"CHES","MSN":"00001","WORKORDER_ID":"100006583-0028","OPERATION_ID":"015","WORKORDER_DESCRIPTION":"0002-SA-ASO-400-01","STEP_ID":"30","STATE":"N","OPERATION_DESCRIPTION":"EVALUATION","PP_STATION":"WorkCenterBO:CHES,PP_ST_3","CRITICAL_PATH":"---","FAMILY":"---","CPP_CLUSTER":"ELEC","AVL_LINE":0.3694267185288602,"SKILLS":"skills","START_TIME":"2016-10-03 10:00:00","END_TIME":"2016-10-03 20:00:00","NEW_OPERATION_STATUS":"---","ANDONS":1,"REMAINING_TIME":"---","PROD_GROUP":"PG_1","EXECUTION_STATION":"---","EXECUTION_STATION_SOURCE":"---","ROUTING_MATURITY_ACCESSMENT":"---","DURATION":100,"PROGRESS":50},{"SITE":"CHES","MSN":"00001","WORKORDER_ID":"100006583-0028","OPERATION_ID":"015","WORKORDER_DESCRIPTION":"0002-SA-ASO-400-01","STEP_ID":"30","STATE":"N","OPERATION_DESCRIPTION":"EVALUATION","PP_STATION":"WorkCenterBO:CHES,PP_ST_3","CRITICAL_PATH":"---","FAMILY":"---","CPP_CLUSTER":"ELEC","AVL_LINE":0.11497598936086195,"SKILLS":"skills","START_TIME":"2016-10-03 10:00:00","END_TIME":"2016-10-03 20:00:00","NEW_OPERATION_STATUS":"---","ANDONS":1,"REMAINING_TIME":"---","PROD_GROUP":"PG_1","EXECUTION_STATION":"---","EXECUTION_STATION_SOURCE":"---","ROUTING_MATURITY_ACCESSMENT":"---","DURATION":100,"PROGRESS":50},{"SITE":"CHES","MSN":"00001","WORKORDER_ID":"100006583-0028","OPERATION_ID":"015","WORKORDER_DESCRIPTION":"0002-SA-ASO-400-01","STEP_ID":"30","STATE":"N","OPERATION_DESCRIPTION":"EVALUATION","PP_STATION":"WorkCenterBO:CHES,PP_ST_3","CRITICAL_PATH":"---","FAMILY":"---","CPP_CLUSTER":"ELEC","AVL_LINE":0.09214757836951293,"SKILLS":"skills","START_TIME":"2016-10-03 10:00:00","END_TIME":"2016-10-03 20:00:00","NEW_OPERATION_STATUS":"---","ANDONS":1,"REMAINING_TIME":"---","PROD_GROUP":"PG_1","EXECUTION_STATION":"---","EXECUTION_STATION_SOURCE":"---","ROUTING_MATURITY_ACCESSMENT":"---","DURATION":100,"PROGRESS":50},{"SITE":"CHES","MSN":"00001","WORKORDER_ID":"100006583-0028","OPERATION_ID":"015","WORKORDER_DESCRIPTION":"0002-SA-ASO-400-01","STEP_ID":"30","STATE":"N","OPERATION_DESCRIPTION":"EVALUATION","PP_STATION":"WorkCenterBO:CHES,PP_ST_3","CRITICAL_PATH":"---","FAMILY":"---","CPP_CLUSTER":"ELEC","AVL_LINE":0.6659687393015952,"SKILLS":"skills","START_TIME":"2016-10-03 10:00:00","END_TIME":"2016-10-03 20:00:00","NEW_OPERATION_STATUS":"---","ANDONS":1,"REMAINING_TIME":"---","PROD_GROUP":"PG_1","EXECUTION_STATION":"---","EXECUTION_STATION_SOURCE":"---","ROUTING_MATURITY_ACCESSMENT":"---","DURATION":100,"PROGRESS":50},{"SITE":"CHES","MSN":"00001","WORKORDER_ID":"100006583-0028","OPERATION_ID":"015","WORKORDER_DESCRIPTION":"0002-SA-ASO-400-01","STEP_ID":"30","STATE":"N","OPERATION_DESCRIPTION":"EVALUATION","PP_STATION":"WorkCenterBO:CHES,PP_ST_3","CRITICAL_PATH":"---","FAMILY":"---","CPP_CLUSTER":"ELEC","AVL_LINE":0.506972322521182,"SKILLS":"skills","START_TIME":"2016-10-03 10:00:00","END_TIME":"2016-10-03 20:00:00","NEW_OPERATION_STATUS":"---","ANDONS":1,"REMAINING_TIME":"---","PROD_GROUP":"PG_1","EXECUTION_STATION":"---","EXECUTION_STATION_SOURCE":"---","ROUTING_MATURITY_ACCESSMENT":"---","DURATION":100,"PROGRESS":50},{"SITE":"CHES","MSN":"00001","WORKORDER_ID":"100006583-0028","OPERATION_ID":"015","WORKORDER_DESCRIPTION":"0002-SA-ASO-400-01","STEP_ID":"30","STATE":"N","OPERATION_DESCRIPTION":"EVALUATION","PP_STATION":"WorkCenterBO:CHES,PP_ST_3","CRITICAL_PATH":"---","FAMILY":"---","CPP_CLUSTER":"ELEC","AVL_LINE":0.9086710127666606,"SKILLS":"skills","START_TIME":"2016-10-03 10:00:00","END_TIME":"2016-10-03 20:00:00","NEW_OPERATION_STATUS":"---","ANDONS":1,"REMAINING_TIME":"---","PROD_GROUP":"PG_1","EXECUTION_STATION":"---","EXECUTION_STATION_SOURCE":"---","ROUTING_MATURITY_ACCESSMENT":"---","DURATION":100,"PROGRESS":50},{"SITE":"CHES","MSN":"00001","WORKORDER_ID":"100006583-0028","OPERATION_ID":"015","WORKORDER_DESCRIPTION":"0002-SA-ASO-400-01","STEP_ID":"30","STATE":"N","OPERATION_DESCRIPTION":"EVALUATION","PP_STATION":"WorkCenterBO:CHES,PP_ST_3","CRITICAL_PATH":"---","FAMILY":"---","CPP_CLUSTER":"ELEC","AVL_LINE":0.06440644224108527,"SKILLS":"skills","START_TIME":"2016-10-03 10:00:00","END_TIME":"2016-10-03 20:00:00","NEW_OPERATION_STATUS":"---","ANDONS":1,"REMAINING_TIME":"---","PROD_GROUP":"PG_1","EXECUTION_STATION":"---","EXECUTION_STATION_SOURCE":"---","ROUTING_MATURITY_ACCESSMENT":"---","DURATION":100,"PROGRESS":50},{"SITE":"CHES","MSN":"00001","WORKORDER_ID":"100006583-0028","OPERATION_ID":"015","WORKORDER_DESCRIPTION":"0002-SA-ASO-400-01","STEP_ID":"30","STATE":"N","OPERATION_DESCRIPTION":"EVALUATION","PP_STATION":"WorkCenterBO:CHES,PP_ST_3","CRITICAL_PATH":"---","FAMILY":"---","CPP_CLUSTER":"ELEC","AVL_LINE":0.3900117615424892,"SKILLS":"skills","START_TIME":"2016-10-03 10:00:00","END_TIME":"2016-10-03 20:00:00","NEW_OPERATION_STATUS":"---","ANDONS":1,"REMAINING_TIME":"---","PROD_GROUP":"PG_1","EXECUTION_STATION":"---","EXECUTION_STATION_SOURCE":"---","ROUTING_MATURITY_ACCESSMENT":"---","DURATION":100,"PROGRESS":50},{"SITE":"CHES","MSN":"00001","WORKORDER_ID":"100006583-0028","OPERATION_ID":"015","WORKORDER_DESCRIPTION":"0002-SA-ASO-400-01","STEP_ID":"30","STATE":"N","OPERATION_DESCRIPTION":"EVALUATION","PP_STATION":"WorkCenterBO:CHES,PP_ST_3","CRITICAL_PATH":"---","FAMILY":"---","CPP_CLUSTER":"ELEC","AVL_LINE":0.03358409227625314,"SKILLS":"skills","START_TIME":"2016-10-03 10:00:00","END_TIME":"2016-10-03 20:00:00","NEW_OPERATION_STATUS":"---","ANDONS":1,"REMAINING_TIME":"---","PROD_GROUP":"PG_1","EXECUTION_STATION":"---","EXECUTION_STATION_SOURCE":"---","ROUTING_MATURITY_ACCESSMENT":"---","DURATION":100,"PROGRESS":50},{"SITE":"CHES","MSN":"00001","WORKORDER_ID":"100006583-0028","OPERATION_ID":"015","WORKORDER_DESCRIPTION":"0002-SA-ASO-400-01","STEP_ID":"30","STATE":"N","OPERATION_DESCRIPTION":"EVALUATION","PP_STATION":"WorkCenterBO:CHES,PP_ST_3","CRITICAL_PATH":"---","FAMILY":"---","CPP_CLUSTER":"ELEC","AVL_LINE":0.38657048367007607,"SKILLS":"skills","START_TIME":"2016-10-03 10:00:00","END_TIME":"2016-10-03 20:00:00","NEW_OPERATION_STATUS":"---","ANDONS":1,"REMAINING_TIME":"---","PROD_GROUP":"PG_1","EXECUTION_STATION":"---","EXECUTION_STATION_SOURCE":"---","ROUTING_MATURITY_ACCESSMENT":"---","DURATION":100,"PROGRESS":50},{"SITE":"CHES","MSN":"00001","WORKORDER_ID":"100006583-0028","OPERATION_ID":"015","WORKORDER_DESCRIPTION":"0002-SA-ASO-400-01","STEP_ID":"30","STATE":"N","OPERATION_DESCRIPTION":"EVALUATION","PP_STATION":"WorkCenterBO:CHES,PP_ST_3","CRITICAL_PATH":"---","FAMILY":"---","CPP_CLUSTER":"ELEC","AVL_LINE":0.6707472569682973,"SKILLS":"skills","START_TIME":"2016-10-03 10:00:00","END_TIME":"2016-10-03 20:00:00","NEW_OPERATION_STATUS":"---","ANDONS":1,"REMAINING_TIME":"---","PROD_GROUP":"PG_1","EXECUTION_STATION":"---","EXECUTION_STATION_SOURCE":"---","ROUTING_MATURITY_ACCESSMENT":"---","DURATION":100,"PROGRESS":50},{"SITE":"CHES","MSN":"00001","WORKORDER_ID":"100006583-0028","OPERATION_ID":"015","WORKORDER_DESCRIPTION":"0002-SA-ASO-400-01","STEP_ID":"30","STATE":"N","OPERATION_DESCRIPTION":"EVALUATION","PP_STATION":"WorkCenterBO:CHES,PP_ST_3","CRITICAL_PATH":"---","FAMILY":"---","CPP_CLUSTER":"ELEC","AVL_LINE":0.3562419611512144,"SKILLS":"skills","START_TIME":"2016-10-03 10:00:00","END_TIME":"2016-10-03 20:00:00","NEW_OPERATION_STATUS":"---","ANDONS":1,"REMAINING_TIME":"---","PROD_GROUP":"PG_1","EXECUTION_STATION":"---","EXECUTION_STATION_SOURCE":"---","ROUTING_MATURITY_ACCESSMENT":"---","DURATION":100,"PROGRESS":50},{"SITE":"CHES","MSN":"00001","WORKORDER_ID":"100006583-0028","OPERATION_ID":"015","WORKORDER_DESCRIPTION":"0002-SA-ASO-400-01","STEP_ID":"30","STATE":"N","OPERATION_DESCRIPTION":"EVALUATION","PP_STATION":"WorkCenterBO:CHES,PP_ST_3","CRITICAL_PATH":"---","FAMILY":"---","CPP_CLUSTER":"ELEC","AVL_LINE":0.27850224447110516,"SKILLS":"skills","START_TIME":"2016-10-03 10:00:00","END_TIME":"2016-10-03 20:00:00","NEW_OPERATION_STATUS":"---","ANDONS":1,"REMAINING_TIME":"---","PROD_GROUP":"PG_1","EXECUTION_STATION":"---","EXECUTION_STATION_SOURCE":"---","ROUTING_MATURITY_ACCESSMENT":"---","DURATION":100,"PROGRESS":50},{"SITE":"CHES","MSN":"00001","WORKORDER_ID":"100006583-0028","OPERATION_ID":"015","WORKORDER_DESCRIPTION":"0002-SA-ASO-400-01","STEP_ID":"30","STATE":"N","OPERATION_DESCRIPTION":"EVALUATION","PP_STATION":"WorkCenterBO:CHES,PP_ST_3","CRITICAL_PATH":"---","FAMILY":"---","CPP_CLUSTER":"ELEC","AVL_LINE":0.885680312901787,"SKILLS":"skills","START_TIME":"2016-10-03 10:00:00","END_TIME":"2016-10-03 20:00:00","NEW_OPERATION_STATUS":"---","ANDONS":1,"REMAINING_TIME":"---","PROD_GROUP":"PG_1","EXECUTION_STATION":"---","EXECUTION_STATION_SOURCE":"---","ROUTING_MATURITY_ACCESSMENT":"---","DURATION":100,"PROGRESS":50},{"SITE":"CHES","MSN":"00001","WORKORDER_ID":"100006583-0028","OPERATION_ID":"015","WORKORDER_DESCRIPTION":"0002-SA-ASO-400-01","STEP_ID":"30","STATE":"N","OPERATION_DESCRIPTION":"EVALUATION","PP_STATION":"WorkCenterBO:CHES,PP_ST_3","CRITICAL_PATH":"---","FAMILY":"---","CPP_CLUSTER":"ELEC","AVL_LINE":0.6788901890581589,"SKILLS":"skills","START_TIME":"2016-10-03 10:00:00","END_TIME":"2016-10-03 20:00:00","NEW_OPERATION_STATUS":"---","ANDONS":1,"REMAINING_TIME":"---","PROD_GROUP":"PG_1","EXECUTION_STATION":"---","EXECUTION_STATION_SOURCE":"---","ROUTING_MATURITY_ACCESSMENT":"---","DURATION":100,"PROGRESS":50},{"SITE":"CHES","MSN":"00001","WORKORDER_ID":"100006583-0028","OPERATION_ID":"015","WORKORDER_DESCRIPTION":"0002-SA-ASO-400-01","STEP_ID":"30","STATE":"N","OPERATION_DESCRIPTION":"EVALUATION","PP_STATION":"WorkCenterBO:CHES,PP_ST_3","CRITICAL_PATH":"---","FAMILY":"---","CPP_CLUSTER":"ELEC","AVL_LINE":0.3080512899417913,"SKILLS":"skills","START_TIME":"2016-10-03 10:00:00","END_TIME":"2016-10-03 20:00:00","NEW_OPERATION_STATUS":"---","ANDONS":1,"REMAINING_TIME":"---","PROD_GROUP":"PG_1","EXECUTION_STATION":"---","EXECUTION_STATION_SOURCE":"---","ROUTING_MATURITY_ACCESSMENT":"---","DURATION":100,"PROGRESS":50},{"SITE":"CHES","MSN":"00001","WORKORDER_ID":"100006583-0028","OPERATION_ID":"015","WORKORDER_DESCRIPTION":"0002-SA-ASO-400-01","STEP_ID":"30","STATE":"N","OPERATION_DESCRIPTION":"EVALUATION","PP_STATION":"WorkCenterBO:CHES,PP_ST_3","CRITICAL_PATH":"---","FAMILY":"---","CPP_CLUSTER":"ELEC","AVL_LINE":0.5681157352419683,"SKILLS":"skills","START_TIME":"2016-10-03 10:00:00","END_TIME":"2016-10-03 20:00:00","NEW_OPERATION_STATUS":"---","ANDONS":1,"REMAINING_TIME":"---","PROD_GROUP":"PG_1","EXECUTION_STATION":"---","EXECUTION_STATION_SOURCE":"---","ROUTING_MATURITY_ACCESSMENT":"---","DURATION":100,"PROGRESS":50},{"SITE":"CHES","MSN":"00001","WORKORDER_ID":"100006583-0028","OPERATION_ID":"015","WORKORDER_DESCRIPTION":"0002-SA-ASO-400-01","STEP_ID":"30","STATE":"N","OPERATION_DESCRIPTION":"EVALUATION","PP_STATION":"WorkCenterBO:CHES,PP_ST_3","CRITICAL_PATH":"---","FAMILY":"---","CPP_CLUSTER":"ELEC","AVL_LINE":0.728394572379542,"SKILLS":"skills","START_TIME":"2016-10-03 10:00:00","END_TIME":"2016-10-03 20:00:00","NEW_OPERATION_STATUS":"---","ANDONS":1,"REMAINING_TIME":"---","PROD_GROUP":"PG_1","EXECUTION_STATION":"---","EXECUTION_STATION_SOURCE":"---","ROUTING_MATURITY_ACCESSMENT":"---","DURATION":100,"PROGRESS":50},{"SITE":"CHES","MSN":"00001","WORKORDER_ID":"100006583-0028","OPERATION_ID":"015","WORKORDER_DESCRIPTION":"0002-SA-ASO-400-01","STEP_ID":"30","STATE":"N","OPERATION_DESCRIPTION":"EVALUATION","PP_STATION":"WorkCenterBO:CHES,PP_ST_3","CRITICAL_PATH":"---","FAMILY":"---","CPP_CLUSTER":"ELEC","AVL_LINE":0.05283839994077577,"SKILLS":"skills","START_TIME":"2016-10-03 10:00:00","END_TIME":"2016-10-03 20:00:00","NEW_OPERATION_STATUS":"---","ANDONS":1,"REMAINING_TIME":"---","PROD_GROUP":"PG_1","EXECUTION_STATION":"---","EXECUTION_STATION_SOURCE":"---","ROUTING_MATURITY_ACCESSMENT":"---","DURATION":100,"PROGRESS":50},{"SITE":"CHES","MSN":"00001","WORKORDER_ID":"100006583-0028","OPERATION_ID":"015","WORKORDER_DESCRIPTION":"0002-SA-ASO-400-01","STEP_ID":"30","STATE":"N","OPERATION_DESCRIPTION":"EVALUATION","PP_STATION":"WorkCenterBO:CHES,PP_ST_3","CRITICAL_PATH":"---","FAMILY":"---","CPP_CLUSTER":"ELEC","AVL_LINE":0.5871444655796481,"SKILLS":"skills","START_TIME":"2016-10-03 10:00:00","END_TIME":"2016-10-03 20:00:00","NEW_OPERATION_STATUS":"---","ANDONS":1,"REMAINING_TIME":"---","PROD_GROUP":"PG_1","EXECUTION_STATION":"---","EXECUTION_STATION_SOURCE":"---","ROUTING_MATURITY_ACCESSMENT":"---","DURATION":100,"PROGRESS":50},{"SITE":"CHES","MSN":"00001","WORKORDER_ID":"100006583-0028","OPERATION_ID":"015","WORKORDER_DESCRIPTION":"0002-SA-ASO-400-01","STEP_ID":"30","STATE":"N","OPERATION_DESCRIPTION":"EVALUATION","PP_STATION":"WorkCenterBO:CHES,PP_ST_3","CRITICAL_PATH":"---","FAMILY":"---","CPP_CLUSTER":"ELEC","AVL_LINE":0.7809736422318356,"SKILLS":"skills","START_TIME":"2016-10-03 10:00:00","END_TIME":"2016-10-03 20:00:00","NEW_OPERATION_STATUS":"---","ANDONS":1,"REMAINING_TIME":"---","PROD_GROUP":"PG_1","EXECUTION_STATION":"---","EXECUTION_STATION_SOURCE":"---","ROUTING_MATURITY_ACCESSMENT":"---","DURATION":100,"PROGRESS":50},{"SITE":"CHES","MSN":"00001","WORKORDER_ID":"100006583-0028","OPERATION_ID":"015","WORKORDER_DESCRIPTION":"0002-SA-ASO-400-01","STEP_ID":"30","STATE":"N","OPERATION_DESCRIPTION":"EVALUATION","PP_STATION":"WorkCenterBO:CHES,PP_ST_3","CRITICAL_PATH":"---","FAMILY":"---","CPP_CLUSTER":"ELEC","AVL_LINE":0.8748994780805266,"SKILLS":"skills","START_TIME":"2016-10-03 10:00:00","END_TIME":"2016-10-03 20:00:00","NEW_OPERATION_STATUS":"---","ANDONS":1,"REMAINING_TIME":"---","PROD_GROUP":"PG_1","EXECUTION_STATION":"---","EXECUTION_STATION_SOURCE":"---","ROUTING_MATURITY_ACCESSMENT":"---","DURATION":100,"PROGRESS":50},{"SITE":"CHES","MSN":"00001","WORKORDER_ID":"100006583-0028","OPERATION_ID":"015","WORKORDER_DESCRIPTION":"0002-SA-ASO-400-01","STEP_ID":"30","STATE":"N","OPERATION_DESCRIPTION":"EVALUATION","PP_STATION":"WorkCenterBO:CHES,PP_ST_3","CRITICAL_PATH":"---","FAMILY":"---","CPP_CLUSTER":"ELEC","AVL_LINE":0.109897375295678,"SKILLS":"skills","START_TIME":"2016-10-03 10:00:00","END_TIME":"2016-10-03 20:00:00","NEW_OPERATION_STATUS":"---","ANDONS":1,"REMAINING_TIME":"---","PROD_GROUP":"PG_1","EXECUTION_STATION":"---","EXECUTION_STATION_SOURCE":"---","ROUTING_MATURITY_ACCESSMENT":"---","DURATION":100,"PROGRESS":50},{"SITE":"CHES","MSN":"00001","WORKORDER_ID":"100006583-0028","OPERATION_ID":"015","WORKORDER_DESCRIPTION":"0002-SA-ASO-400-01","STEP_ID":"30","STATE":"N","OPERATION_DESCRIPTION":"EVALUATION","PP_STATION":"WorkCenterBO:CHES,PP_ST_3","CRITICAL_PATH":"---","FAMILY":"---","CPP_CLUSTER":"ELEC","AVL_LINE":0.03750272936002852,"SKILLS":"skills","START_TIME":"2016-10-03 10:00:00","END_TIME":"2016-10-03 20:00:00","NEW_OPERATION_STATUS":"---","ANDONS":1,"REMAINING_TIME":"---","PROD_GROUP":"PG_1","EXECUTION_STATION":"---","EXECUTION_STATION_SOURCE":"---","ROUTING_MATURITY_ACCESSMENT":"---","DURATION":100,"PROGRESS":50},{"SITE":"CHES","MSN":"00001","WORKORDER_ID":"100006583-0028","OPERATION_ID":"015","WORKORDER_DESCRIPTION":"0002-SA-ASO-400-01","STEP_ID":"30","STATE":"N","OPERATION_DESCRIPTION":"EVALUATION","PP_STATION":"WorkCenterBO:CHES,PP_ST_3","CRITICAL_PATH":"---","FAMILY":"---","CPP_CLUSTER":"ELEC","AVL_LINE":0.9902246976905655,"SKILLS":"skills","START_TIME":"2016-10-03 10:00:00","END_TIME":"2016-10-03 20:00:00","NEW_OPERATION_STATUS":"---","ANDONS":1,"REMAINING_TIME":"---","PROD_GROUP":"PG_1","EXECUTION_STATION":"---","EXECUTION_STATION_SOURCE":"---","ROUTING_MATURITY_ACCESSMENT":"---","DURATION":100,"PROGRESS":50},{"SITE":"CHES","MSN":"00001","WORKORDER_ID":"100006583-0028","OPERATION_ID":"015","WORKORDER_DESCRIPTION":"0002-SA-ASO-400-01","STEP_ID":"30","STATE":"N","OPERATION_DESCRIPTION":"EVALUATION","PP_STATION":"WorkCenterBO:CHES,PP_ST_3","CRITICAL_PATH":"---","FAMILY":"---","CPP_CLUSTER":"ELEC","AVL_LINE":0.7538242629013006,"SKILLS":"skills","START_TIME":"2016-10-03 10:00:00","END_TIME":"2016-10-03 20:00:00","NEW_OPERATION_STATUS":"---","ANDONS":1,"REMAINING_TIME":"---","PROD_GROUP":"PG_1","EXECUTION_STATION":"---","EXECUTION_STATION_SOURCE":"---","ROUTING_MATURITY_ACCESSMENT":"---","DURATION":100,"PROGRESS":50},{"SITE":"CHES","MSN":"00001","WORKORDER_ID":"100006583-0028","OPERATION_ID":"015","WORKORDER_DESCRIPTION":"0002-SA-ASO-400-01","STEP_ID":"30","STATE":"N","OPERATION_DESCRIPTION":"EVALUATION","PP_STATION":"WorkCenterBO:CHES,PP_ST_3","CRITICAL_PATH":"---","FAMILY":"---","CPP_CLUSTER":"ELEC","AVL_LINE":0.45522610335857205,"SKILLS":"skills","START_TIME":"2016-10-03 10:00:00","END_TIME":"2016-10-03 20:00:00","NEW_OPERATION_STATUS":"---","ANDONS":1,"REMAINING_TIME":"---","PROD_GROUP":"PG_1","EXECUTION_STATION":"---","EXECUTION_STATION_SOURCE":"---","ROUTING_MATURITY_ACCESSMENT":"---","DURATION":100,"PROGRESS":50},{"SITE":"CHES","MSN":"00001","WORKORDER_ID":"100006583-0028","OPERATION_ID":"015","WORKORDER_DESCRIPTION":"0002-SA-ASO-400-01","STEP_ID":"30","STATE":"N","OPERATION_DESCRIPTION":"EVALUATION","PP_STATION":"WorkCenterBO:CHES,PP_ST_3","CRITICAL_PATH":"---","FAMILY":"---","CPP_CLUSTER":"ELEC","AVL_LINE":0.8738899461086909,"SKILLS":"skills","START_TIME":"2016-10-03 10:00:00","END_TIME":"2016-10-03 20:00:00","NEW_OPERATION_STATUS":"---","ANDONS":1,"REMAINING_TIME":"---","PROD_GROUP":"PG_1","EXECUTION_STATION":"---","EXECUTION_STATION_SOURCE":"---","ROUTING_MATURITY_ACCESSMENT":"---","DURATION":100,"PROGRESS":50},{"SITE":"CHES","MSN":"00001","WORKORDER_ID":"100006583-0028","OPERATION_ID":"015","WORKORDER_DESCRIPTION":"0002-SA-ASO-400-01","STEP_ID":"30","STATE":"N","OPERATION_DESCRIPTION":"EVALUATION","PP_STATION":"WorkCenterBO:CHES,PP_ST_3","CRITICAL_PATH":"---","FAMILY":"---","CPP_CLUSTER":"ELEC","AVL_LINE":0.8485228215728864,"SKILLS":"skills","START_TIME":"2016-10-03 10:00:00","END_TIME":"2016-10-03 20:00:00","NEW_OPERATION_STATUS":"---","ANDONS":1,"REMAINING_TIME":"---","PROD_GROUP":"PG_1","EXECUTION_STATION":"---","EXECUTION_STATION_SOURCE":"---","ROUTING_MATURITY_ACCESSMENT":"---","DURATION":100,"PROGRESS":50},{"SITE":"CHES","MSN":"00001","WORKORDER_ID":"100006583-0028","OPERATION_ID":"015","WORKORDER_DESCRIPTION":"0002-SA-ASO-400-01","STEP_ID":"30","STATE":"N","OPERATION_DESCRIPTION":"EVALUATION","PP_STATION":"WorkCenterBO:CHES,PP_ST_3","CRITICAL_PATH":"---","FAMILY":"---","CPP_CLUSTER":"ELEC","AVL_LINE":0.5985444309159427,"SKILLS":"skills","START_TIME":"2016-10-03 10:00:00","END_TIME":"2016-10-03 20:00:00","NEW_OPERATION_STATUS":"---","ANDONS":1,"REMAINING_TIME":"---","PROD_GROUP":"PG_1","EXECUTION_STATION":"---","EXECUTION_STATION_SOURCE":"---","ROUTING_MATURITY_ACCESSMENT":"---","DURATION":100,"PROGRESS":50},{"SITE":"CHES","MSN":"00001","WORKORDER_ID":"100006583-0028","OPERATION_ID":"015","WORKORDER_DESCRIPTION":"0002-SA-ASO-400-01","STEP_ID":"30","STATE":"N","OPERATION_DESCRIPTION":"EVALUATION","PP_STATION":"WorkCenterBO:CHES,PP_ST_3","CRITICAL_PATH":"---","FAMILY":"---","CPP_CLUSTER":"ELEC","AVL_LINE":0.30030771225070474,"SKILLS":"skills","START_TIME":"2016-10-03 10:00:00","END_TIME":"2016-10-03 20:00:00","NEW_OPERATION_STATUS":"---","ANDONS":1,"REMAINING_TIME":"---","PROD_GROUP":"PG_1","EXECUTION_STATION":"---","EXECUTION_STATION_SOURCE":"---","ROUTING_MATURITY_ACCESSMENT":"---","DURATION":100,"PROGRESS":50},{"SITE":"CHES","MSN":"00001","WORKORDER_ID":"100006583-0028","OPERATION_ID":"015","WORKORDER_DESCRIPTION":"0002-SA-ASO-400-01","STEP_ID":"30","STATE":"N","OPERATION_DESCRIPTION":"EVALUATION","PP_STATION":"WorkCenterBO:CHES,PP_ST_3","CRITICAL_PATH":"---","FAMILY":"---","CPP_CLUSTER":"ELEC","AVL_LINE":0.8599895485757214,"SKILLS":"skills","START_TIME":"2016-10-03 10:00:00","END_TIME":"2016-10-03 20:00:00","NEW_OPERATION_STATUS":"---","ANDONS":1,"REMAINING_TIME":"---","PROD_GROUP":"PG_1","EXECUTION_STATION":"---","EXECUTION_STATION_SOURCE":"---","ROUTING_MATURITY_ACCESSMENT":"---","DURATION":100,"PROGRESS":50}
+
+               {
+
+                  "SITE": "FNZ1",
+
+                  "MSN": "00571",
+
+                  "WORKORDER_ID": "FNZ135",
+
+                  "OPERATION_ID": "0010",
+
+                  "WORKORDER_DESCRIPTION": "NP-1 test material",
+
+                  "STEP_ID": "20",
+
+                  "STATE": "S",
+
+                  "OPERATION_DESCRIPTION": "0010",
+
+                  "MANUAL": "---",
+
+                  "PP_STATION": "WorkCenterBO:FNZ1,PP_ST_1",
+
+                  "CRITICAL_PATH": "---",
+
+                  "FAMILY": "---",
+
+                  "CPP_CLUSTER": "Montage des shu",
+
+                  "AVL_LINE": 3,
+
+                  "SKILLS": "TEST",
+
+                  "START_TIME": "2016-10-17 06:23:08",
+
+                  "END_TIME": "2016-10-17 06:26:57",
+
+                  "MODIFIED_AT": "TimeUnavailable",
+
+                  "MODIFIED_BY": "---",
+
+                  "RMA_STATUS_COLOR": "---",
+
+                  "PROD_GROUP": "PG_1",
+
+                  "COMPETENCY": "---",
+
+                  "WORK_PACKAGE": "---",
+
+                  "ATA": "---",
+
+                  "FAMILY_TARGET": "---",
+
+                  "EXECUTION_STATION": "PP_ST_1",
+
+                  "EXECUTION_STATION_SOURCE": "2_AVL",
+
+                  "PAUSED": "---",
+
+                  "DURATION": "NA",
+
+                  "PROGRESS": "NA"
+
+               },
+
+               {
+
+                  "SITE": "FNZ1",
+
+                  "MSN": "00571",
+
+                  "WORKORDER_ID": "FNZ136",
+
+                  "OPERATION_ID": "0010",
+
+                  "WORKORDER_DESCRIPTION": "NP-1 test material",
+
+                  "STEP_ID": "20",
+
+                  "STATE": "S",
+
+                  "OPERATION_DESCRIPTION": "0010",
+
+                  "MANUAL": "---",
+
+                  "PP_STATION": "WorkCenterBO:FNZ1,PP_ST_1",
+
+                  "CRITICAL_PATH": "---",
+
+                  "FAMILY": "---",
+
+                  "CPP_CLUSTER": "Montage des shu",
+
+                  "AVL_LINE": 4,
+
+                  "SKILLS": "TEST",
+
+                  "START_TIME": "2016-10-17 07:48:19",
+
+                  "END_TIME": "2016-10-17 07:50:46",
+
+                  "MODIFIED_AT": "TimeUnavailable",
+
+                  "MODIFIED_BY": "---",
+
+                  "RMA_STATUS_COLOR": "---",
+
+                  "PROD_GROUP": "PG_1",
+
+                  "COMPETENCY": "---",
+
+                  "WORK_PACKAGE": "---",
+
+                  "ATA": "---",
+
+                  "FAMILY_TARGET": "---",
+
+                  "EXECUTION_STATION": "PP_ST_1",
+
+                  "EXECUTION_STATION_SOURCE": "2_AVL",
+
+                  "PAUSED": "---",
+
+                  "DURATION": "NA",
+
+                  "PROGRESS": "NA"
+
+               },
+
+               {
+
+                  "SITE": "FNZ1",
+
+                  "MSN": "00571",
+
+                  "WORKORDER_ID": "FNZ137",
+
+                  "OPERATION_ID": "0010",
+
+                  "WORKORDER_DESCRIPTION": "MTG.TUY.SS PL.CAB2",
+
+                  "STEP_ID": "20",
+
+                  "STATE": "S",
+
+                  "OPERATION_DESCRIPTION": "0010",
+
+                  "MANUAL": "---",
+
+                  "PP_STATION": "WorkCenterBO:FNZ1,PP_ST_1",
+
+                  "CRITICAL_PATH": "---",
+
+                  "FAMILY": "---",
+
+                  "CPP_CLUSTER": "Montage des shu",
+
+                  "AVL_LINE": 1,
+
+                  "SKILLS": "TEST",
+
+                  "START_TIME": "2016-10-17 05:18:00",
+
+                  "END_TIME": "2016-10-17 05:22:08",
+
+                  "MODIFIED_AT": "TimeUnavailable",
+
+                  "MODIFIED_BY": "---",
+
+                  "RMA_STATUS_COLOR": "---",
+
+                  "PROD_GROUP": "PG_1",
+
+                  "COMPETENCY": "---",
+
+                  "WORK_PACKAGE": "---",
+
+                  "ATA": "---",
+
+                  "FAMILY_TARGET": "---",
+
+                  "EXECUTION_STATION": "PP_ST_1",
+
+                  "EXECUTION_STATION_SOURCE": "2_AVL",
+
+                  "PAUSED": "false",
+
+                  "DURATION": "NA",
+
+                  "PROGRESS": "NA"
+
+               },
+
+               {
+
+                  "SITE": "FNZ1",
+
+                  "MSN": "00571",
+
+                  "WORKORDER_ID": "FNZ138",
+
+                  "OPERATION_ID": "0010",
+
+                  "WORKORDER_DESCRIPTION": "MTG.TUY.SS PL.CAB2",
+
+                  "STEP_ID": "20",
+
+                  "STATE": "S",
+
+                  "OPERATION_DESCRIPTION": "0010",
+
+                  "MANUAL": "---",
+
+                  "PP_STATION": "WorkCenterBO:FNZ1,PP_ST_1",
+
+                  "CRITICAL_PATH": "---",
+
+                  "FAMILY": "---",
+
+                  "CPP_CLUSTER": "Montage des shu",
+
+                  "AVL_LINE": 1,
+
+                  "SKILLS": "TEST",
+
+                  "START_TIME": "2016-10-17 05:22:08",
+
+                  "END_TIME": "2016-10-17 05:25:16",
+
+                  "MODIFIED_AT": "TimeUnavailable",
+
+                  "MODIFIED_BY": "---",
+
+                  "RMA_STATUS_COLOR": "---",
+
+                  "PROD_GROUP": "PG_1",
+
+                  "COMPETENCY": "---",
+
+                  "WORK_PACKAGE": "---",
+
+                  "ATA": "---",
+
+                  "FAMILY_TARGET": "---",
+
+                  "EXECUTION_STATION": "PP_ST_1",
+
+                  "EXECUTION_STATION_SOURCE": "2_AVL",
+
+                  "PAUSED": "---",
+
+                  "DURATION": "NA",
+
+                  "PROGRESS": "NA"
+
+               },
+
+               {
+
+                  "SITE": "FNZ1",
+
+                  "MSN": "00571",
+
+                  "WORKORDER_ID": "FNZ139",
+
+                  "OPERATION_ID": "0010",
+
+                  "WORKORDER_DESCRIPTION": "NP-1 test material",
+
+                  "STEP_ID": "20",
+
+                  "STATE": "S",
+
+                  "OPERATION_DESCRIPTION": "0010",
+
+                  "MANUAL": "---",
+
+                  "PP_STATION": "WorkCenterBO:FNZ1,PP_ST_1",
+
+                  "CRITICAL_PATH": "---",
+
+                  "FAMILY": "---",
+
+                  "CPP_CLUSTER": "Montage des shu",
+
+                  "AVL_LINE": 2,
+
+                  "SKILLS": "TEST",
+
+                  "START_TIME": "2016-10-17 08:24:00",
+
+                  "END_TIME": "2016-10-17 09:32:40",
+
+                  "MODIFIED_AT": "TimeUnavailable",
+
+                  "MODIFIED_BY": "---",
+
+                  "RMA_STATUS_COLOR": "---",
+
+                  "PROD_GROUP": "PG_1",
+
+                  "COMPETENCY": "---",
+
+                  "WORK_PACKAGE": "---",
+
+                  "ATA": "---",
+
+                  "FAMILY_TARGET": "---",
+
+                  "EXECUTION_STATION": "PP_ST_1",
+
+                  "EXECUTION_STATION_SOURCE": "2_AVL",
+
+                  "PAUSED": "false",
+
+                  "DURATION": "NA",
+
+                  "PROGRESS": "NA"
+
+               },
+
+               {
+
+                  "SITE": "FNZ1",
+
+                  "MSN": "00571",
+
+                  "WORKORDER_ID": "FNZ140",
+
+                  "OPERATION_ID": "0010",
+
+                  "WORKORDER_DESCRIPTION": "NP-1 test material",
+
+                  "STEP_ID": "20",
+
+                  "STATE": "S",
+
+                  "OPERATION_DESCRIPTION": "0010",
+
+                  "MANUAL": "---",
+
+                  "PP_STATION": "WorkCenterBO:FNZ1,PP_ST_1",
+
+                  "CRITICAL_PATH": "---",
+
+                  "FAMILY": "---",
+
+                  "CPP_CLUSTER": "Montage des shu",
+
+                  "AVL_LINE": 4,
+
+                  "SKILLS": "TEST",
+
+                  "START_TIME": "2016-10-17 05:18:00",
+
+                  "END_TIME": "2016-10-17 06:31:01",
+
+                  "MODIFIED_AT": "TimeUnavailable",
+
+                  "MODIFIED_BY": "---",
+
+                  "RMA_STATUS_COLOR": "---",
+
+                  "PROD_GROUP": "PG_1",
+
+                  "COMPETENCY": "---",
+
+                  "WORK_PACKAGE": "---",
+
+                  "ATA": "---",
+
+                  "FAMILY_TARGET": "---",
+
+                  "EXECUTION_STATION": "PP_ST_1",
+
+                  "EXECUTION_STATION_SOURCE": "2_AVL",
+
+                  "PAUSED": "---",
+
+                  "DURATION": "NA",
+
+                  "PROGRESS": "NA"
+
+               },
+
+               {
+
+                  "SITE": "FNZ1",
+
+                  "MSN": "00571",
+
+                  "WORKORDER_ID": "FNZ141",
+
+                  "OPERATION_ID": "0010",
+
+                  "WORKORDER_DESCRIPTION": "NP-1 test material",
+
+                  "STEP_ID": "20",
+
+                  "STATE": "S",
+
+                  "OPERATION_DESCRIPTION": "0010",
+
+                  "MANUAL": "---",
+
+                  "PP_STATION": "WorkCenterBO:FNZ1,PP_ST_1",
+
+                  "CRITICAL_PATH": "---",
+
+                  "FAMILY": "---",
+
+                  "CPP_CLUSTER": "Montage des shu",
+
+                  "AVL_LINE": 4,
+
+                  "SKILLS": "TEST",
+
+                  "START_TIME": "2016-10-17 06:31:01",
+
+                  "END_TIME": "2016-10-17 07:48:19",
+
+                  "MODIFIED_AT": "TimeUnavailable",
+
+                  "MODIFIED_BY": "---",
+
+                  "RMA_STATUS_COLOR": "---",
+
+                  "PROD_GROUP": "PG_1",
+
+                  "COMPETENCY": "---",
+
+                  "WORK_PACKAGE": "---",
+
+                  "ATA": "---",
+
+                  "FAMILY_TARGET": "---",
+
+                  "EXECUTION_STATION": "PP_ST_1",
+
+                  "EXECUTION_STATION_SOURCE": "2_AVL",
+
+                  "PAUSED": "---",
+
+                  "DURATION": "NA",
+
+                  "PROGRESS": "NA"
+
+               },
+
+               {
+
+                  "SITE": "FNZ1",
+
+                  "MSN": "00571",
+
+                  "WORKORDER_ID": "FNZ142",
+
+                  "OPERATION_ID": "0010",
+
+                  "WORKORDER_DESCRIPTION": "NP-1 test material",
+
+                  "STEP_ID": "20",
+
+                  "STATE": "S",
+
+                  "OPERATION_DESCRIPTION": "0010",
+
+                  "MANUAL": "---",
+
+                  "PP_STATION": "WorkCenterBO:FNZ1,PP_ST_1",
+
+                  "CRITICAL_PATH": "---",
+
+                  "FAMILY": "---",
+
+                  "CPP_CLUSTER": "Montage des shu",
+
+                  "AVL_LINE": 4,
+
+                  "SKILLS": "TEST",
+
+                  "START_TIME": "2016-10-17 07:50:46",
+
+                  "END_TIME": "2016-10-17 08:07:34",
+
+                  "MODIFIED_AT": "TimeUnavailable",
+
+                  "MODIFIED_BY": "---",
+
+                  "RMA_STATUS_COLOR": "---",
+
+                  "PROD_GROUP": "PG_1",
+
+                  "COMPETENCY": "---",
+
+                  "WORK_PACKAGE": "---",
+
+                  "ATA": "---",
+
+                  "FAMILY_TARGET": "---",
+
+                  "EXECUTION_STATION": "PP_ST_1",
+
+                  "EXECUTION_STATION_SOURCE": "2_AVL",
+
+                  "PAUSED": "---",
+
+                  "DURATION": "NA",
+
+                  "PROGRESS": "NA"
+
+               },
+
+               {
+
+                  "SITE": "FNZ1",
+
+                  "MSN": "00571",
+
+                  "WORKORDER_ID": "FNZ143",
+
+                  "OPERATION_ID": "0010",
+
+                  "WORKORDER_DESCRIPTION": "NP-1 test material",
+
+                  "STEP_ID": "20",
+
+                  "STATE": "S",
+
+                  "OPERATION_DESCRIPTION": "0010",
+
+                  "MANUAL": "---",
+
+                  "PP_STATION": "WorkCenterBO:FNZ1,PP_ST_1",
+
+                  "CRITICAL_PATH": "---",
+
+                  "FAMILY": "---",
+
+                  "CPP_CLUSTER": "Montage des shu",
+
+                  "AVL_LINE": 5,
+
+                  "SKILLS": "TEST",
+
+                  "START_TIME": "2016-10-17 05:06:01",
+
+                  "END_TIME": "2016-10-17 05:28:04",
+
+                  "MODIFIED_AT": "TimeUnavailable",
+
+                  "MODIFIED_BY": "---",
+
+                  "RMA_STATUS_COLOR": "---",
+
+                  "PROD_GROUP": "PG_1",
+
+                  "COMPETENCY": "---",
+
+                  "WORK_PACKAGE": "---",
+
+                  "ATA": "P-",
+
+                  "FAMILY_TARGET": "---",
+
+                  "EXECUTION_STATION": "PP_ST_1",
+
+                  "EXECUTION_STATION_SOURCE": "2_AVL",
+
+                  "PAUSED": "---",
+
+                  "DURATION": "NA",
+
+                  "PROGRESS": "NA"
+
+               },
+
+               {
+
+                  "SITE": "FNZ1",
+
+                  "MSN": "00571",
+
+                  "WORKORDER_ID": "FNZ144",
+
+                  "OPERATION_ID": "0010",
+
+                  "WORKORDER_DESCRIPTION": "NP-1 test material",
+
+                  "STEP_ID": "20",
+
+                  "STATE": "S",
+
+                  "OPERATION_DESCRIPTION": "0010",
+
+                  "MANUAL": "---",
+
+                  "PP_STATION": "WorkCenterBO:FNZ1,PP_ST_1",
+
+                  "CRITICAL_PATH": "---",
+
+                  "FAMILY": "---",
+
+                  "CPP_CLUSTER": "Montage des shu",
+
+                  "AVL_LINE": 6,
+
+                  "SKILLS": "TEST",
+
+                  "START_TIME": "2016-10-17 05:28:04",
+
+                  "END_TIME": "2016-10-17 06:21:57",
+
+                  "MODIFIED_AT": "TimeUnavailable",
+
+                  "MODIFIED_BY": "---",
+
+                  "RMA_STATUS_COLOR": "---",
+
+                  "PROD_GROUP": "PG_1",
+
+                  "COMPETENCY": "---",
+
+                  "WORK_PACKAGE": "---",
+
+                  "ATA": "---",
+
+                  "FAMILY_TARGET": "---",
+
+                  "EXECUTION_STATION": "PP_ST_1",
+
+                  "EXECUTION_STATION_SOURCE": "2_AVL",
+
+                  "PAUSED": "---",
+
+                  "DURATION": "NA",
+
+                  "PROGRESS": "NA"
+
+               },
+
+               {
+
+                  "SITE": "FNZ1",
+
+                  "MSN": "00571",
+
+                  "WORKORDER_ID": "FNZ145",
+
+                  "OPERATION_ID": "0010",
+
+                  "WORKORDER_DESCRIPTION": "NP-1 test material",
+
+                  "STEP_ID": "20",
+
+                  "STATE": "S",
+
+                  "OPERATION_DESCRIPTION": "0010",
+
+                  "MANUAL": "---",
+
+                  "PP_STATION": "WorkCenterBO:FNZ1,PP_ST_1",
+
+                  "CRITICAL_PATH": "---",
+
+                  "FAMILY": "---",
+
+                  "CPP_CLUSTER": "Montage des shu",
+
+                  "AVL_LINE": 6,
+
+                  "SKILLS": "TEST",
+
+                  "START_TIME": "2016-10-17 06:21:57",
+
+                  "END_TIME": "2016-10-17 07:04:38",
+
+                  "MODIFIED_AT": "TimeUnavailable",
+
+                  "MODIFIED_BY": "---",
+
+                  "RMA_STATUS_COLOR": "---",
+
+                  "PROD_GROUP": "PG_1",
+
+                  "COMPETENCY": "---",
+
+                  "WORK_PACKAGE": "---",
+
+                  "ATA": "---",
+
+                  "FAMILY_TARGET": "---",
+
+                  "EXECUTION_STATION": "PP_ST_1",
+
+                  "EXECUTION_STATION_SOURCE": "2_AVL",
+
+                  "PAUSED": "---",
+
+                  "DURATION": "NA",
+
+                  "PROGRESS": "NA"
+
+               },
+
+               {
+
+                  "SITE": "FNZ1",
+
+                  "MSN": "00571",
+
+                  "WORKORDER_ID": "FNZ146",
+
+                  "OPERATION_ID": "0010",
+
+                  "WORKORDER_DESCRIPTION": "NP-1 test material",
+
+                  "STEP_ID": "20",
+
+                  "STATE": "S",
+
+                  "OPERATION_DESCRIPTION": "0010",
+
+                  "MANUAL": "---",
+
+                  "PP_STATION": "WorkCenterBO:FNZ1,PP_ST_1",
+
+                  "CRITICAL_PATH": "---",
+
+                  "FAMILY": "---",
+
+                  "CPP_CLUSTER": "Montage des shu",
+
+                  "AVL_LINE": 6,
+
+                  "SKILLS": "TEST",
+
+                  "START_TIME": "2016-10-17 07:04:38",
+
+                  "END_TIME": "2016-10-17 07:04:45",
+
+                  "MODIFIED_AT": "TimeUnavailable",
+
+                  "MODIFIED_BY": "---",
+
+                  "RMA_STATUS_COLOR": "---",
+
+                  "PROD_GROUP": "PG_1",
+
+                  "COMPETENCY": "---",
+
+                  "WORK_PACKAGE": "---",
+
+                  "ATA": "---",
+
+                  "FAMILY_TARGET": "---",
+
+                  "EXECUTION_STATION": "PP_ST_1",
+
+                  "EXECUTION_STATION_SOURCE": "2_AVL",
+
+                  "PAUSED": "---",
+
+                  "DURATION": "NA",
+
+                  "PROGRESS": "NA"
+
+               },
+
+               {
+
+                  "SITE": "FNZ1",
+
+                  "MSN": "00571",
+
+                  "WORKORDER_ID": "FNZ147",
+
+                  "OPERATION_ID": "0010",
+
+                  "WORKORDER_DESCRIPTION": "MTG.TUY.SS PL.CAB2",
+
+                  "STEP_ID": "20",
+
+                  "STATE": "S",
+
+                  "OPERATION_DESCRIPTION": "0010",
+
+                  "MANUAL": "---",
+
+                  "PP_STATION": "WorkCenterBO:FNZ1,PP_ST_1",
+
+                  "CRITICAL_PATH": "---",
+
+                  "FAMILY": "---",
+
+                  "CPP_CLUSTER": "Montage des shu",
+
+                  "AVL_LINE": 6,
+
+                  "SKILLS": "TEST",
+
+                  "START_TIME": "2016-10-17 07:04:45",
+
+                  "END_TIME": "2016-10-17 07:09:26",
+
+                  "MODIFIED_AT": "TimeUnavailable",
+
+                  "MODIFIED_BY": "---",
+
+                  "RMA_STATUS_COLOR": "---",
+
+                  "PROD_GROUP": "PG_1",
+
+                  "COMPETENCY": "---",
+
+                  "WORK_PACKAGE": "---",
+
+                  "ATA": "---",
+
+                  "FAMILY_TARGET": "---",
+
+                  "EXECUTION_STATION": "PP_ST_1",
+
+                  "EXECUTION_STATION_SOURCE": "2_AVL",
+
+                  "PAUSED": "---",
+
+                  "DURATION": "NA",
+
+                  "PROGRESS": "NA"
+
+               },
+
+               {
+
+                  "SITE": "FNZ1",
+
+                  "MSN": "00571",
+
+                  "WORKORDER_ID": "FNZ148",
+
+                  "OPERATION_ID": "0010",
+
+                  "WORKORDER_DESCRIPTION": "NP-1 test material",
+
+                  "STEP_ID": "20",
+
+                  "STATE": "S",
+
+                  "OPERATION_DESCRIPTION": "0010",
+
+                  "MANUAL": "---",
+
+                  "PP_STATION": "WorkCenterBO:FNZ1,PP_ST_1",
+
+                  "CRITICAL_PATH": "---",
+
+                  "FAMILY": "---",
+
+                  "CPP_CLUSTER": "Montage des shu",
+
+                  "AVL_LINE": 2,
+
+                  "SKILLS": "TEST",
+
+                  "START_TIME": "2016-10-17 07:19:19",
+
+                  "END_TIME": "2016-10-17 08:24:00",
+
+                  "MODIFIED_AT": "TimeUnavailable",
+
+                  "MODIFIED_BY": "---",
+
+                  "RMA_STATUS_COLOR": "---",
+
+                  "PROD_GROUP": "PG_1",
+
+                  "COMPETENCY": "---",
+
+                  "WORK_PACKAGE": "---",
+
+                  "ATA": "---",
+
+                  "FAMILY_TARGET": "---",
+
+                  "EXECUTION_STATION": "PP_ST_1",
+
+                  "EXECUTION_STATION_SOURCE": "2_AVL",
+
+                  "PAUSED": "---",
+
+                  "DURATION": "NA",
+
+                  "PROGRESS": "NA"
+
+               },
+
+               {
+
+                  "SITE": "FNZ1",
+
+                  "MSN": "00571",
+
+                  "WORKORDER_ID": "FNZ143",
+
+                  "OPERATION_ID": "0020",
+
+                  "WORKORDER_DESCRIPTION": "NP-1 test material",
+
+                  "STEP_ID": "30",
+
+                  "STATE": "S",
+
+                  "OPERATION_DESCRIPTION": "0020",
+
+                  "MANUAL": "---",
+
+                  "PP_STATION": "WorkCenterBO:FNZ1,PP_ST_1",
+
+                  "CRITICAL_PATH": "---",
+
+                  "FAMILY": "---",
+
+                  "CPP_CLUSTER": "Montage des shu",
+
+                  "AVL_LINE": 6,
+
+                  "SKILLS": "TEST",
+
+                  "START_TIME": "2016-10-17 17:19:21",
+
+                  "END_TIME": "2016-10-17 18:29:46",
+
+                  "MODIFIED_AT": "TimeUnavailable",
+
+                  "MODIFIED_BY": "---",
+
+                  "RMA_STATUS_COLOR": "YELLOW",
+
+                  "PROD_GROUP": "PG_1",
+
+                  "COMPETENCY": "---",
+
+                  "WORK_PACKAGE": "---",
+
+                  "ATA": "P-",
+
+                  "FAMILY_TARGET": "---",
+
+                  "EXECUTION_STATION": "PP_ST_1",
+
+                  "EXECUTION_STATION_SOURCE": "2_AVL",
+
+                  "PAUSED": "---",
+
+                  "DURATION": "NA",
+
+                  "PROGRESS": "NA"
+
+               }
 
             ]
 
