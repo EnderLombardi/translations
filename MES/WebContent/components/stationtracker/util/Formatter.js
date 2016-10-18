@@ -233,7 +233,7 @@ airbus.mes.stationtracker.util.Formatter = {
 			},
 			
 			stationTrackerStation : function(Station) {
-				sap.ui.getCore().getModel("StationTrackerI18n").getProperty("Station");
+//				sap.ui.getCore().getModel("StationTrackerI18n").getProperty("Station");
 				return "Station " + Station;
 			},
 			stationTrackerMsn : function(Msn) {
