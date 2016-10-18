@@ -22,24 +22,11 @@ airbus.mes.stationtracker.ModelManager = {
 			core.setModel(new sap.ui.model.json.JSONModel(),"KPI");	//KPI
 			core.setModel(new sap.ui.model.json.JSONModel(),"productionGroupModel"); // production Group model
 			
-<<<<<<< Upstream, based on origin/MESv0.9
-=======
-			
->>>>>>> 368b375 Production Group- fix model
-			
 			core.getModel("stationTrackerRModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onStationTrackerLoad);
 			core.getModel("stationTrackerIModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onStationTrackerLoad);
 			core.getModel("shiftsModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onShiftsLoad);
 			core.getModel("affectationModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onAffectationLoad);
 			
-<<<<<<< Upstream, based on origin/MESv0.9
-		
-=======
-			
-
-	
-
->>>>>>> 368b375 Production Group- fix model
 			var dest;
 
 			switch (window.location.hostname) {

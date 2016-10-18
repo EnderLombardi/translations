@@ -134,7 +134,6 @@ airbus.mes.stationtracker.ShiftManager = {
 	 */
 	// int closestShift(Date)
 	closestShift : function(date) {
-		var oFormatter = airbus.mes.stationtracker.util.Formatter;
 
 		if (this.shifts.length === 0)
 			return -1;

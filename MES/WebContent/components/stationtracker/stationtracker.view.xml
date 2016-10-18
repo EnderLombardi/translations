@@ -41,9 +41,6 @@
 						<Label text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/line', formatter : 'airbus.mes.stationtracker.util.Formatter.stationTrackerLine' }" class="pageWelcome sapUiTinyMarginBeginEnd" />					
 					<ToolbarSeparator/>
 					<Button text="Production Group" type="Transparent" class="whiteColor whiteButton" press="onProductionGroupPress"/>
- 					<MultiComboBox id="selectProductionGroup" class="sapUiTinyMarginBeginEnd comboBoxStyle pageHeader pageHeaderBlue" selectionFinish="onProdGroupSelFinish" items="{ path : 'productionGroupModel>/Rowsets/Rowset/0/Row' }" width="10%">
-						<core:Item key="{productionGroupModel>PROD_GROUP}" text="{productionGroupModel>PROD_GROUP}" />
-					</MultiComboBox> 	
 					</Toolbar>
 				</headerToolbar>
 				<content>

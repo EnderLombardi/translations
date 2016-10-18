@@ -8,28 +8,6 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	 * @memberOf components.stationtracker.stationtracker
 	 */
 		onInit: function() {
-			
-//			Retrieve all value of Production Group
-			var oModel = airbus.mes.stationtracker.ModelManager.ProductionGroup;
-			var aProdGroup = oModel.getData().Rowsets.Rowset[0].Row;
-			var aItems = [];
-
-			// Check if model is load ,create empty model if no data
-			if(!oModel.getProperty("/Rowsets/Rowset/0/Row")){              
-				
-		    	console.log("No production group available");
-		    	oModel.oData.Rowsets.Rowset[0].Row = [];
-		    	aProdGroup = [];
-			}
-			
-			
-			for (var i = 0; i < aProdGroup.length; i++) {
-				aItems.push(aProdGroup[i].PROD_GROUP);
-			}
-			
-			this.getView().byId("selectProductionGroup").setSelectedKeys(aItems);	
-				
-			
 		},
 	/**
 	 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
@@ -38,21 +16,21 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	 */
 		onBeforeRendering: function() {
 			
-			var temp = [];
-			var binding = this.getView().byId("selectProductionGroup").getBinding("items");
-//			path correspond to relatif path after binding, here absolute path is /Rowsets/Rowset/0/Row			
-			var Filter = new sap.ui.model.Filter({ path : "PROD_GROUP",
-										           test : function(value) {
-										                     if (temp.indexOf(value) == -1) {
-										                            temp.push(value)
-										                            return true;
-										                     } else {
-										                            return false;
-										                     }
-										              }
-													});	
-			
-			binding.filter(Filter);		
+//			var temp = [];
+//			var binding = this.getView().byId("selectProductionGroup").getBinding("items");
+////			path correspond to relatif path after binding, here absolute path is /Rowsets/Rowset/0/Row			
+//			var Filter = new sap.ui.model.Filter({ path : "PROD_GROUP",
+//										           test : function(value) {
+//										                     if (temp.indexOf(value) == -1) {
+//										                            temp.push(value)
+//										                            return true;
+//										                     } else {
+//										                            return false;
+//										                     }
+//										              }
+//													});	
+//			
+//			binding.filter(Filter);		
 		},
 	/**
 	 * Called when the View has been rendered (so its HTML is part of the document). Post-rendering manipulations of the HTML could be done here.

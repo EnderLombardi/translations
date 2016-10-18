@@ -1,9 +1,8 @@
 <core:FragmentDefinition xmlns="sap.m"
 	xmlns:core="sap.ui.core" >
-	<Popover showHeader="false" contentWidth="10%" contentHeight="100%">
+	<Popover showHeader="false" contentWidth="10%" contentHeight="100%" afterClose="onProdGroupSelFinish" >
 		<List id="myList"
 			items="{ path : 'productionGroupModel>/Rowsets/Rowset/0/Row' }"
-			selectionChange="onSelectionChange2"
 			mode="MultiSelect"
 			includeItemInSelection="true">
 			<items>

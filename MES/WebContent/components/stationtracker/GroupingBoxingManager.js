@@ -120,9 +120,34 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 		
 		var oHierachy = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy;
 		var oFormatter = airbus.mes.stationtracker.util.Formatter;
-		var oShiftManager = airbus.mes.stationtracker.ShiftManager;
-		var aItems = airbus.mes.stationtracker.oView.byId("selectProductionGroup").getSelectedKeys();
+
+		var aItems = [];
 		
+		if(sap.ui.getCore().byId("productionGroupPopover--myList")){
+		sap.ui.getCore().byId("productionGroupPopover--myList").getSelectedContexts(true).forEach(function(el){
+			aItems.push(el.getProperty(el.sPath));
+		}) 
+		} else {
+//			If popover has not yet opened, select all production group
+//			Retrieve all value of Production Group
+			var oModelProdGroup = airbus.mes.stationtracker.ModelManager.ProductionGroup;
+			var aProdGroup = oModelProdGroup.getData().Rowsets.Rowset[0].Row;
+			var aItems = [];
+
+			// Check if model is load ,create empty model if no data
+			if(!oModelProdGroup.getProperty("/Rowsets/Rowset/0/Row")){              
+				
+		    	console.log("No production group available");
+		    	oModelProdGroup.oData.Rowsets.Rowset[0].Row = [];
+		    	aProdGroup = [];
+			}
+			
+			
+			for (var i = 0; i < aProdGroup.length; i++) {
+				aItems.push(aProdGroup[i].PROD_GROUP);
+			}
+			
+		}
 		oModel.forEach(function(el){
 			
 			if ( sGroup === "avlLine") {				
