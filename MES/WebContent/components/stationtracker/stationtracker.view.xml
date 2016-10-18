@@ -241,7 +241,7 @@
 			</Toolbar>
 
 
-			<custom:DHTMLXScheduler id="test"></custom:DHTMLXScheduler>
+			<custom:DHTMLXScheduler id="stationtracker"></custom:DHTMLXScheduler>
 
 		</content>
 	</Page>

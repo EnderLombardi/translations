@@ -298,58 +298,8 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 						
 											
 						scheduler.eventId.push ( scheduler.attachEvent("onClick", function(id, e) {	
-							switch(airbus.mes.stationtracker.GroupingBoxingManager.box){
-							case "OPERATION_ID" : 
-//								Boxing operation, we display the operation list
-								if ( airbus.mes.stationtracker.operationPopover === undefined ) {
-									
-									var oView = airbus.mes.stationtracker.oView;
-									airbus.mes.stationtracker.operationPopover = sap.ui.xmlfragment("operationPopover","airbus.mes.stationtracker.operationPopover", airbus.mes.stationtracker.oView.getController());
-									airbus.mes.stationtracker.operationPopover.addStyleClass("alignTextLeft");
-									oView.addDependent(airbus.mes.stationtracker.operationPopover);
-								}
-								var oNavCon = sap.ui.getCore().byId("operationPopover--navOperatorContainer");
-								var oMasterPage = sap.ui.getCore().byId("operationPopover--master");
-								oNavCon.to(oMasterPage);
-								oNavCon.currentPageIsTopPage();
-								var oOperationPopover = sap.ui.getCore().byId("operationPopover--operationPopoverID");
-//								oOperationPopover.setContentHeight("353px");								
-								airbus.mes.stationtracker.operationPopover.setModel(new sap.ui.model.json.JSONModel(airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy[scheduler.getEvent(id).group][scheduler.getEvent(id).avlLine][scheduler.getEvent(id).box]), "WorkListModel");
-								airbus.mes.stationtracker.operationPopover.getModel("WorkListModel").refresh();
-//								airbus.mes.stationtracker.operationPopover.openBy(e.srcElement);	
-								airbus.mes.stationtracker.operationPopover.open();	
-
-								break;
-							case "WORKORDER_ID" :	
-//								Boxing Work order, we display the worklist list								
-								if ( airbus.mes.stationtracker.worklistPopover === undefined ) {
-									
-									var oView = airbus.mes.stationtracker.oView;
-									airbus.mes.stationtracker.worklistPopover = sap.ui.xmlfragment("worklistPopover","airbus.mes.stationtracker.worklistPopover", airbus.mes.stationtracker.oView.getController());
-									airbus.mes.stationtracker.worklistPopover.addStyleClass("alignTextLeft");
-									oView.addDependent(airbus.mes.stationtracker.worklistPopover);
-								}
-								airbus.mes.stationtracker.worklistPopover.unPlanned = false;
-								airbus.mes.stationtracker.worklistPopover.setModel(new sap.ui.model.json.JSONModel(airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy[scheduler.getEvent(id).group][scheduler.getEvent(id).avlLine][scheduler.getEvent(id).box]), "WorkListModel");
-								airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").refresh();
-
-								var oData = airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").getData();
-								if (oData && oData.length > 0 && oData) {
-									oData = airbus.mes.stationtracker.util.Formatter.sortWorkList(oData);
-								}		
-								airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").setData(oData);
-								airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").refresh(true);
-								
-								
-								airbus.mes.stationtracker.worklistPopover.setModel(new sap.ui.model.json.JSONModel(sap.ui.getCore().getModel("filterUnplannedModel").getData()), "filterUnplannedModel");
-								airbus.mes.stationtracker.worklistPopover.getModel("filterUnplannedModel").refresh();
-
-								// delay because addDependent will do a async rerendering and the popover will immediately close without it
-								airbus.mes.stationtracker.worklistPopover.open();	
-								break;							
-							}
 							
-						
+							airbus.mes.stationtracker.ModelManager.OpenWorkList(id);
 							
 						}));
 						

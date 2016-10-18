@@ -10,6 +10,7 @@
              { "Name" : "endDateTime", "SourceColumn" : "endDateTime", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 } ] }, 
        "Row" : [ 
              { "shiftName" : "NORMAL 1","shiftID" : "NORMAL 1", "day" : "2016-10-17", "beginDateTime" : "2016-10-17 07:30:00", "endDateTime" : "2016-10-17 11:30:00" }, 
+             { "shiftName" : "NORMAL 1","shiftID" : "NORMAL 1", "day" : "2016-10-17", "beginDateTime" : "2016-10-17 01:30:00", "endDateTime" : "2016-10-17 11:30:00" }, 
              { "shiftName" : "NORMAL 1","shiftID" : "NORMAL 1", "day" : "2016-10-17", "beginDateTime" : "2016-10-17 12:29:59", "endDateTime" : "2016-10-17 16:15:00" }, 
              { "shiftName" : "NIGHT 1","shiftID" : "NIGHT 1", "day" : "2016-10-17", "beginDateTime" : "2016-10-17 16:15:00", "endDateTime" : "2016-10-17 19:30:00" },
              { "shiftName" : "NIGHT 1 ","shiftID" : "NIGHT 2", "day" : "2016-10-17", "beginDateTime" : "2016-10-17 20:18:00", "endDateTime" : "2016-10-17 23:59:59" }, 

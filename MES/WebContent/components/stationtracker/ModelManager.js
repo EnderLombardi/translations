@@ -16,17 +16,19 @@ airbus.mes.stationtracker.ModelManager = {
 			core.setModel(new sap.ui.model.json.JSONModel(),"shiftsModel"); // Shifts model
 			core.setModel(new sap.ui.model.json.JSONModel(),"affectationModel"); 
 			core.setModel(new sap.ui.model.json.JSONModel(),"unPlannedModel"); // Unplanned model
-			core.setModel(new sap.ui.model.json.JSONModel(),"filterUnplannedModel");	// Unplanned Filter Model			
+			core.setModel(new sap.ui.model.json.JSONModel(),"groupModel");	// Unplanned Filter Model			
 			core.setModel(new sap.ui.model.json.JSONModel(),"OSWModel"); // OutStanding Work model
 			core.setModel(new sap.ui.model.json.JSONModel(),"stationTrackerShift");	//Shifts for station tracker
 			core.setModel(new sap.ui.model.json.JSONModel(),"KPI");	//KPI
 			core.setModel(new sap.ui.model.json.JSONModel(),"productionGroupModel"); // production Group model
+			
 			
 			core.getModel("stationTrackerRModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onStationTrackerLoad);
 			core.getModel("stationTrackerIModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onStationTrackerLoad);
 			core.getModel("shiftsModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onShiftsLoad);
 			core.getModel("affectationModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onAffectationLoad);
 			
+		
 			var dest;
 
 			switch (window.location.hostname) {
@@ -51,22 +53,28 @@ airbus.mes.stationtracker.ModelManager = {
 			});
 						
 			// TODO DEPLACE this in shell controller and when service is ok remove all of this function
-			this.loadStationTracker("U");		
 			this.loadFilterUnplanned();		
-			this.loadStationTracker("O");		
 			this.loadProductionGroup();
 			
-			var i18nModel = new sap.ui.model.resource.ResourceModel({
-	            bundleUrl : "./i18n/i18n.properties",
-	         });
-						
-			core.setModel(i18nModel, "StationTrackerI18n");
+//			this.i18nModel = new sap.ui.model.resource.ResourceModel({
+//				bundleUrl : "i18n/messageBundle.properties",
+//				bundleLocale : core.getConfiguration().getLanguage()
+//			});
+//			core.setModel(this.i18nModel, "messageBundle");
 						
 		},
 				
 		loadAffectation : function() {
+			
+			var oData = airbus.mes.settings.ModelManager;
+			var geturlAffectation = this.urlModel.getProperty('urlaffectation');			
+			
+			geturlAffectation = airbus.mes.stationtracker.ModelManager.replaceURI(geturlAffectation, "$site", oData.site);
+			geturlAffectation = airbus.mes.stationtracker.ModelManager.replaceURI(geturlAffectation, "$station", oData.station);
+			geturlAffectation = airbus.mes.stationtracker.ModelManager.replaceURI(geturlAffectation, "$msn", oData.msn);
+			
 			var oViewModel = sap.ui.getCore().getModel("affectationModel");
-			oViewModel.loadData(this.urlModel.getProperty("urlaffectation"), null, false);
+			oViewModel.loadData(geturlAffectation, null, false);
 		
 		},
 		
@@ -82,54 +90,55 @@ airbus.mes.stationtracker.ModelManager = {
 				
 				var geturlstationtracker = this.urlModel.getProperty('urlstationtrackeroperation');			
 				
-				switch (sType) {
-				case "R":
-					oData.site = "FNZ1";
-					oData.station = "PHYS_ST_IP4";
-					oData.msn = "00571";					
-					var oViewModel = sap.ui.getCore().getModel("stationTrackerRModel");
-					break;
-				case "I":
-					var oViewModel = sap.ui.getCore().getModel("stationTrackerIModel");
-					break;
-				case "U":
-					//TODO : remove hardcode
-					oData.site = "FNZ1";
-					oData.station = "PHYS_ST_IP4";
-					oData.msn = "00571";
-					var oViewModel = sap.ui.getCore().getModel("unPlannedModel");
-				    geturlstationtracker = this.urlModel.getProperty('urlstationtrackerunplannedactivities');			
-					break;
-				case "O":
-					//TODO : remove hardcode
-					oData.site = "FNZ1";
-					oData.station = "PHYS_ST_IP5";
-					oData.msn = "00571";
-					var oViewModel = sap.ui.getCore().getModel("OSWModel");
-				    geturlstationtracker = this.urlModel.getProperty('urlstationtrackerunplannedactivities');			
-					break;
-				}
-				
 				geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$site", oData.site);
 				geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$station", oData.station);
 				geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$msn", oData.msn);
 				geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$operationType", sType);
 				geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$productionGroup", "%");
-			
+				
+
+				switch (sType) {
+				case "R":
+					var oViewModel = sap.ui.getCore().getModel("stationTrackerRModel");
+					break;
+				case "I":
+					var oViewModel = sap.ui.getCore().getModel("stationTrackerIModel");
+		
+					break;
+				case "U":
+					var oViewModel = sap.ui.getCore().getModel("unPlannedModel");
+		
+					break;
+				case "O":
+					var oViewModel = sap.ui.getCore().getModel("OSWModel");
+		
+					break;
+		
+				}
 						
 				oViewModel.loadData(geturlstationtracker , null, false);				
 			
 		},	
-
-		loadUnplanned : function() {
+		
+		onStationTrackerLoad : function() {
 			
-			var oViewModel = sap.ui.getCore().getModel("unPlannedModel");
-			oViewModel.loadData(this.urlModel.getProperty("urlstationtrackerunplannedactivities") , null, false);		
-			airbus.mes.stationtracker.ModelManager.Unplanned = oViewModel;
-		},	
+			var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
+		
+			GroupingBoxingManager.parseOperation(GroupingBoxingManager.group,GroupingBoxingManager.box);
+			
+			airbus.mes.stationtracker.ModelManager.selectMyShift();
+			
+		},
+
+//		loadUnplanned : function() {
+//			
+//			var oViewModel = sap.ui.getCore().getModel("unPlannedModel");
+//			oViewModel.loadData(this.urlModel.getProperty("urlstationtrackerunplannedactivities") , null, false);		
+//			airbus.mes.stationtracker.ModelManager.Unplanned = oViewModel;
+//		},	
 		loadFilterUnplanned : function() {
-			var oViewModel = sap.ui.getCore().getModel("filterUnplannedModel");
-			oViewModel.loadData(this.urlModel.getProperty("urlfilterunplanned") , null, false);		
+			var oViewModel = sap.ui.getCore().getModel("groupModel");
+			oViewModel.loadData(this.urlModel.getProperty("urlgroupmodel") , null, false);		
 			airbus.mes.stationtracker.ModelManager.filterUnplanned = oViewModel;
 
 		},		
@@ -189,8 +198,6 @@ airbus.mes.stationtracker.ModelManager = {
 			$("div[id="+toolbarDateId+"]").append($("div[class='dhx_cal_date']").contents().clone());
 			
 		},
-		
-		
 		onStationTrackerLoad : function() {
 			
 			var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
@@ -199,7 +206,7 @@ airbus.mes.stationtracker.ModelManager = {
 			
 			airbus.mes.stationtracker.ModelManager.selectMyShift();
 			
-		},
+		},				
 		loadShifts : function() {
 			var oViewModelshift = sap.ui.getCore().getModel("shiftsModel");
 			oViewModelshift.loadData(this.urlModel.getProperty("urlshifts"), null, false);
@@ -238,8 +245,90 @@ airbus.mes.stationtracker.ModelManager = {
 
                 }
          });
+       },
+ 
+       
+       openOperationPopOver : function( id ) {
+
+			if ( airbus.mes.stationtracker.operationPopover === undefined ) {
+				
+				var oView = airbus.mes.stationtracker.oView;
+				airbus.mes.stationtracker.operationPopover = sap.ui.xmlfragment("operationPopover","airbus.mes.stationtracker.operationPopover", airbus.mes.stationtracker.oView.getController());
+				airbus.mes.stationtracker.operationPopover.addStyleClass("alignTextLeft");
+				airbus.mes.stationtracker.operationPopover.setModel(sap.ui.getCore().getModel("WorkListModel"), "WorkListModel");
+			
+			}
+			
+			var oNavCon = sap.ui.getCore().byId("operationPopover--navOperatorContainer");
+			var oMasterPage = sap.ui.getCore().byId("operationPopover--master");
+			oNavCon.to(oMasterPage);
+			oNavCon.currentPageIsTopPage();
+			var oOperationPopover = sap.ui.getCore().byId("operationPopover--operationPopoverID");
+			var oModel = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy[scheduler.getEvent(id).group][scheduler.getEvent(id).avlLine][scheduler.getEvent(id).box];
+			
+			// Set data in Model WorkList 
+			airbus.mes.stationtracker.operationPopover.getModel("WorkListModel").setData(oModel);
+			airbus.mes.stationtracker.operationPopover.getModel("WorkListModel").refresh();
+
+			airbus.mes.stationtracker.operationPopover.open();	
+
+    	   
+    	   
+       },
+       
+       openWorkListPopover : function( id ) {
+    	 
+    	   if ( airbus.mes.stationtracker.worklistPopover === undefined ) {
+				
+				var oView = airbus.mes.stationtracker.oView;
+				airbus.mes.stationtracker.worklistPopover = sap.ui.xmlfragment("worklistPopover","airbus.mes.stationtracker.worklistPopover", airbus.mes.stationtracker.oView.getController());
+				airbus.mes.stationtracker.worklistPopover.addStyleClass("alignTextLeft");
+				airbus.mes.stationtracker.worklistPopover.setModel(sap.ui.getCore().getModel("WorkListModel"), "WorkListModel");
+				airbus.mes.stationtracker.worklistPopover.setModel(new sap.ui.model.json.JSONModel(sap.ui.getCore().getModel("groupModel").getData()), "groupModel");
+				
+			}
+			
+			airbus.mes.stationtracker.worklistPopover.OSW = false;
+			airbus.mes.stationtracker.worklistPopover.unPlanned = false;
 			
 			
 			
-		}		
+			var oModel = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy[scheduler.getEvent(id).group][scheduler.getEvent(id).avlLine][scheduler.getEvent(id).box];
+			
+			if ( oModel.length === 1 ) {
+				
+				airbus.mes.stationtracker.ModelManager.openOperationPopOver(id);
+				return;
+			}
+			
+			if (oModel && oModel.length > 0 && oModel) {
+				oModel = airbus.mes.stationtracker.util.Formatter.sortWorkList(oModel);
+			}		
+					
+			airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").setData(oModel);
+			airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").refresh(true);
+			// delay because addDependent will do a async rerendering and the popover will immediately close without it
+			airbus.mes.stationtracker.worklistPopover.open();	
+    	   
+       },
+       
+       OpenWorkList : function( id ) {
+    	
+    	  switch(airbus.mes.stationtracker.GroupingBoxingManager.box){
+			case "OPERATION_ID" : 
+//				//Boxing operation, we display the operation list
+				airbus.mes.stationtracker.ModelManager.openOperationPopOver(id);
+				break;
+				
+			case "WORKORDER_ID" :	
+				//Boxing Work order, we display the worklist list								
+				
+				airbus.mes.stationtracker.ModelManager.openWorkListPopover(id);
+				
+				break;		
+														
+			}
+       	
+       	
+       }
 }
