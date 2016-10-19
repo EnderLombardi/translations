@@ -12,6 +12,8 @@ airbus.mes.stationtracker.ShiftManager = {
 	ShiftSelected : undefined,
 	ShiftSelectedStart : undefined,
 	ShiftSelectedEnd : undefined,
+	//Array where is stock Id of marker display on the gantt
+	ShiftMarkerID :[],
 	//
 	
 	current_shift : undefined,

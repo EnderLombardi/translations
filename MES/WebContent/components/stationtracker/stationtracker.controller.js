@@ -137,7 +137,11 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			$("select[class='selectBoxStation']").eq(i).remove();
 		}
 		
-		scheduler.deleteMarkedTimespan( airbus.mes.stationtracker.ShiftManager.ShiftMarkerID );
+		airbus.mes.stationtracker.ShiftManager.ShiftMarkerID.forEach(function(el){
+			
+			scheduler.deleteMarkedTimespan(el);
+		
+		})
 		airbus.mes.stationtracker.ModelManager.selectMyShift();
 		scheduler.updateView();
 	},
@@ -480,16 +484,29 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		airbus.mes.stationtracker.ShiftManager.ShiftSelectedEnd = intervals[intervals.length - 1].endDateTime;
 		// remove previous marker
 		
+		airbus.mes.stationtracker.ShiftManager.ShiftMarkerID.forEach(function(el){
 				
-		scheduler.deleteMarkedTimespan( airbus.mes.stationtracker.ShiftManager.ShiftMarkerID );
+			scheduler.deleteMarkedTimespan(el);
+		
+		})
+		
+		airbus.mes.stationtracker.ShiftManager.ShiftMarkerID.push(scheduler.addMarkedTimespan({  
+			//get startdate of first shift maybe need to get only the shift day before the current to avoid issue perf?
+			start_date: airbus.mes.stationtracker.ShiftManager.shifts[0].StartDate,
+			end_date: airbus.mes.stationtracker.ShiftManager.ShiftSelectedStart,
+			css:   "shiftCss",
 			
-		airbus.mes.stationtracker.ShiftManager.ShiftMarkerID = scheduler.addMarkedTimespan({  
-			start_date: airbus.mes.stationtracker.ShiftManager.ShiftSelectedStart,
-			end_date: airbus.mes.stationtracker.ShiftManager.ShiftSelectedEnd,
-		    css:   "shiftCss",
-		});
+		}));
 		
-		
+		airbus.mes.stationtracker.ShiftManager.ShiftMarkerID.push(scheduler.addMarkedTimespan({  
+
+			start_date: airbus.mes.stationtracker.ShiftManager.ShiftSelectedEnd,
+			//get enddate of last shift maybe need to get only the shift day before the current to avoid issue perf?
+			end_date: airbus.mes.stationtracker.ShiftManager.shifts[airbus.mes.stationtracker.ShiftManager.shifts.length-1].EndDate,
+			css:   "shiftCss",
+			
+		}));
+				
 		scheduler.updateView();
 		
 		}
