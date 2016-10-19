@@ -167,6 +167,10 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		scheduler.config.preserve_length = true;
 		scheduler.updateView(airbus.mes.stationtracker.ShiftManager.currentShiftStart);
 		
+		// Need this to update selected view and dont brake the behaviour of overflowtoolbar not needed if use Toolbar
+		airbus.mes.stationtracker.oView.byId("buttonViewMode").rerender();
+		airbus.mes.stationtracker.oView.byId("buttonViewMode").setSelectedKey("day");
+		
 		airbus.mes.stationtracker.ModelManager.selectMyShift();
 	},
 

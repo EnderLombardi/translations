@@ -32,62 +32,66 @@
 								<suite:south>
 									<suite:HeaderCellItem height="100%">
 										<suite:content>
-												<HBox width="80%" >
-															<micro:AreaMicroChart width="11rem" height="5rem" minXValue="0" maxXValue="100" minYValue="0" maxYValue="100" class="sapUiSmallMargin" press="press">
-															<micro:firstXLabel>
-																<micro:AreaMicroChartLabel label="June 1" color="Good"/>
-															</micro:firstXLabel>
-															<micro:lastXLabel>
-																<micro:AreaMicroChartLabel label="June 30" color="Critical"/>
-															</micro:lastXLabel>
-															<micro:firstYLabel>
-																<micro:AreaMicroChartLabel label="0M" color="Good"/>
-															</micro:firstYLabel>
-															<micro:lastYLabel>
-																<micro:AreaMicroChartLabel label="80M" color="Critical"/>
-															</micro:lastYLabel>
-															<micro:chart>
-																<micro:AreaMicroChartItem>
-																	<micro:points>
-																		<micro:AreaMicroChartPoint x="80" y="0" />
-																		<micro:AreaMicroChartPoint x="80" y="100" />
-																	</micro:points>
-																</micro:AreaMicroChartItem>
-															</micro:chart>
-													
-															<micro:maxThreshold>
-																<micro:AreaMicroChartItem>
-																	<micro:points>
-																		<micro:AreaMicroChartPoint x="0" y="0" />
-																		<micro:AreaMicroChartPoint x="30" y="30" />
-																		<micro:AreaMicroChartPoint x="60" y="40" />
-																		<micro:AreaMicroChartPoint x="100" y="90" />
-																	</micro:points>
-																</micro:AreaMicroChartItem>
-															</micro:maxThreshold>
-								
-															<micro:minThreshold>
-																<micro:AreaMicroChartItem color="Error">
-																	<micro:points>
-																		<micro:AreaMicroChartPoint x="0" y="0" />
-																		<micro:AreaMicroChartPoint x="30" y="50" />
-																		<micro:AreaMicroChartPoint x="60" y="30" />
-																		<micro:AreaMicroChartPoint x="100" y="70" />
-																	</micro:points>
-																</micro:AreaMicroChartItem>
-															</micro:minThreshold>
-														
-														</micro:AreaMicroChart>
-				
-														<VBox  height="100%" width="30%" >
-																	<Label text="{StationTrackerI18n>TaktAdherence}" class=" whiteText" />
-																	<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/Labour}" design="Bold" class=" kpiValue whiteText " />
-																	<Label text="{StationTrackerI18n>TaktRemaining}" class="sapUiLargeMarginEnd whiteText" />
-																	<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/SLB}" design="Bold" class=" kpiValue whiteText" />
-														</VBox>
-				
-												</HBox>
-											</suite:content>
+											<HBox>
+												<micro:AreaMicroChart id="kpichart" colorPalette='#ffffff , #84caec,'
+													width="11rem" height="5rem" minXValue="0" maxXValue="100" minYValue="0"
+													maxYValue="100" class="sapUiSmallMargin" press="press">
+													<micro:firstXLabel>
+														<micro:AreaMicroChartLabel label="June 1"												color="Good" />
+													</micro:firstXLabel>
+													<micro:lastXLabel>
+														<micro:AreaMicroChartLabel label="June 30"												color="Critical" />
+													</micro:lastXLabel>
+													<micro:firstYLabel>
+														<micro:AreaMicroChartLabel label="0M"											color="Good" />
+													</micro:firstYLabel>
+													<micro:lastYLabel>
+														<micro:AreaMicroChartLabel label="80M"								color="Critical" />
+													</micro:lastYLabel>
+													<micro:lines>
+														<micro:AreaMicroChartItem>
+															<micro:points>
+																<micro:AreaMicroChartPoint x="80" y="0" />
+																<micro:AreaMicroChartPoint x="80" y="100" />
+															</micro:points>
+														</micro:AreaMicroChartItem>
+										
+														<micro:AreaMicroChartItem >
+															<micro:points>
+																<micro:AreaMicroChartPoint x="0" y="0" />
+																<micro:AreaMicroChartPoint x="10" y="30" />
+																<micro:AreaMicroChartPoint x="60" y="40" />
+																<micro:AreaMicroChartPoint x="100" y="90" />
+															</micro:points>
+														</micro:AreaMicroChartItem>
+										
+													</micro:lines>
+										
+										
+													<micro:minThreshold colorPalette='#ffffff , #84caec,' >
+														<micro:AreaMicroChartItem color="Good">
+															<micro:points>
+																<micro:AreaMicroChartPoint x="0" y="0" />
+																<micro:AreaMicroChartPoint x="30" y="50" />
+																<micro:AreaMicroChartPoint x="60" y="80" />
+																<micro:AreaMicroChartPoint x="100" y="70" />
+															</micro:points>
+														</micro:AreaMicroChartItem>
+													</micro:minThreshold>
+										
+												</micro:AreaMicroChart>
+										
+												<VBox height="100%" width="30%">
+													<Label text="{StationTrackerI18n>TaktAdherence}" class=" whiteText" />
+													<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/Labour}"
+														design="Bold" class=" kpiValue whiteText " />
+													<Label text="{StationTrackerI18n>TaktRemaining}" class="sapUiLargeMarginEnd whiteText" />
+													<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/SLB}"
+														design="Bold" class=" kpiValue whiteText" />
+												</VBox>
+										
+											</HBox>
+										</suite:content>
 									</suite:HeaderCellItem>
 								</suite:south>
 							</suite:HeaderCell>
@@ -241,7 +245,7 @@
 			</Panel>
 
 
-			<Toolbar class="white">
+			<OverflowToolbar id="toolbarstationtracker" class="white" width="100%">
 				<content>
 					<Button text="{StationTrackerI18n>ButtonTeam}" type="Transparent" icon="sap-icon://group"
 						class="buttonStatus2 iconbuttonTeam sapUiSmallMarginBegin" press="onTeamPress"></Button>
@@ -272,15 +276,17 @@
 					<Button text="{StationTrackerI18n>ButtonInitial}" type="Transparent"
 						icon="sap-icon://ppt-attachment" class="sapUiTinyMarginBeginEnd"
 						press="onInitialPlanPress"></Button>
-					<SegmentedButton>
-						<!-- <layout:layoutData> <ObjectPageHeaderLayoutData/> </layout:layoutData> -->
+					<SegmentedButton id="buttonViewMode" >
+							 <layoutData>
+								<OverflowToolbarLayoutData priority="NeverOverflow" />
+												</layoutData> 
 						<items>
-							<SegmentedButtonItem text="{StationTrackerI18n>ButtonShift}" press="onShiftPress" />
-							<SegmentedButtonItem text="{StationTrackerI18n>ButtonDay}" press="onDayPress" />
+							<SegmentedButtonItem text="{StationTrackerI18n>ButtonShift}" press="onShiftPress" key="shift"/>
+							<SegmentedButtonItem text="{StationTrackerI18n>ButtonDay}" press="onDayPress" key="day"/>
 						</items>
 					</SegmentedButton>
 				</content>
-			</Toolbar>
+			</OverflowToolbar>
 
 
 			<custom:DHTMLXScheduler id="stationtracker"></custom:DHTMLXScheduler>
