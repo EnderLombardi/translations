@@ -4,32 +4,6 @@
 	xmlns:layout="sap.ui.layout">
 	<Page title="Station Tracker" height="100%" showHeader="false"
 		enableScrolling="false "  class="GenricBgColor">
-		<customHeader>
-			<Toolbar class="pageHeader" >
-				<content>
-					<Image src="../images/Airbus.png" width="10rem" height="2rem" />
-					<ToolbarSeparator />
-					<Label text="MES" class="pageTitle" />
-					<ToolbarSpacer />
-					<core:Icon src="sap-icon://customer" />
-					<Label text="Welcome" class="pageWelcome" />
-					<Label text="Username" design="Bold" class="pageUsername" />
-					<ToolbarSeparator />
-					<Button text="Logout" type="Transparent" icon="sap-icon://log"
-						class="whiteColor whiteButton"></Button>
-					<ToolbarSeparator />
-					<Select class="sapUiTinyMarginBeginEnd pageHeader pageHeaderBlue">
-						<core:Item text="English" />
-						<core:Item text="Deutsch" />
-						<core:Item text="French" />						
-						<core:Item text="Spanish" />
-					</Select>
-					<ToolbarSeparator />
-					<Button type="Transparent" icon="sap-icon://action-settings"
-						class="whiteColor whiteButton"></Button>
-				</content>
-			</Toolbar>
-		</customHeader>
 		<content width="100%" height="100%">
 			<Panel expandable="true" expanded="true"
 				class="pageHeader sapUiSmallMarginTop contentNoPad">
@@ -40,7 +14,7 @@
 						<Label text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/plant', formatter : 'airbus.mes.stationtracker.util.Formatter.stationTrackerPlant' }" class="pageWelcome sapUiTinyMarginBeginEnd" />
 						<Label text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/line', formatter : 'airbus.mes.stationtracker.util.Formatter.stationTrackerLine' }" class="pageWelcome sapUiTinyMarginBeginEnd" />					
 					<ToolbarSeparator/>
-					<Button text="{i18n>ProductionGroup}" type="Transparent" class="whiteColor whiteButton" press="onProductionGroupPress"/>
+					<Button text="{StationTrackerI18n>ProductionGroup}" type="Transparent" class="whiteColor whiteButton" press="onProductionGroupPress"/>
 					</Toolbar>
 				</headerToolbar>
 				<content>
@@ -50,7 +24,7 @@
 								<suite:north class="centerItems">
 									<suite:HeaderCellItem class="centerItems">
 										<suite:content class="centerItems">
-											<Label text="TAKT ADHERENCE" design="Bold" class="whiteText centerItems"/>
+											<Label text="{StationTrackerI18n>TaktAdherence}" design="Bold" class="whiteText centerItems"/>
 										</suite:content>
 									</suite:HeaderCellItem>
 								</suite:north>
@@ -59,17 +33,17 @@
 										<suite:content>
 											<HBox alignItems="Baseline">
 												<VBox alignItems="Stretch">
-													<Label text="Planned" class="sapUiLargeMarginEnd whiteText" />
+													<Label text="{StationTrackerI18n>TaktPlanned}" class="sapUiLargeMarginEnd whiteText" />
 													<Label text="{KPI>/Rowsets/Rowset/0/Row/TaktAdherence/Planned}" design="Bold"
 														class="sapUiSmallMarginTop kpiValue whiteText" />
 												</VBox>
 												<VBox alignItems="Stretch">
-													<Label text="Real" class="sapUiLargeMarginEnd whiteText" />
+													<Label text="{StationTrackerI18n>TakktReal}" class="sapUiLargeMarginEnd whiteText" />
 													<Label text="{KPI>/Rowsets/Rowset/0/Row/TaktAdherence/Real}" design="Bold"
 														class="sapUiSmallMarginTop kpiValue whiteText" />
 												</VBox>
 												<VBox alignItems="Stretch">
-													<Label text="Remaining time" class="sapUiLargeMarginEnd whiteText" />
+													<Label text="{StationTrackerI18n>TaktRemaining}" class="sapUiLargeMarginEnd whiteText" />
 													<Label text="{KPI>/Rowsets/Rowset/0/Row/TaktAdherence/RemainingTime}" design="Bold"
 														class="sapUiSmallMarginTop kpiValue whiteText" />
 												</VBox>
@@ -82,7 +56,7 @@
 								<suite:north>
 									<suite:HeaderCellItem>
 										<suite:content>
-											<Label text="PROGRESS STATUS" design="Bold" class="whiteText"/>
+											<Label text="{StationTrackerI18n>ProgressStatus}" design="Bold" class="whiteText"/>
 										</suite:content>
 									</suite:HeaderCellItem>
 								</suite:north>
@@ -91,17 +65,17 @@
 										<suite:content>
 											<HBox alignItems="Center">
 												<VBox alignContent="Center" alignItems="Stretch" class="greenBottom" JustifyContent="Center">
-													<Label text="OP Done" class="sapUiLargeMarginEnd whiteText" />
+													<Label text="{StationTrackerI18n>ProgressDone}" class="sapUiLargeMarginEnd whiteText" />
 													<Label text="{KPI>/Rowsets/Rowset/0/Row/ProgressStatus/OPDone}" design="Bold"
 														class="sapUiSmallMarginTop kpiValue whiteText" />
 												</VBox>
 												<VBox  alignContent="Center" alignItems="Stretch" JustifyContent="Center">
-													<Label text="OP Late" class="sapUiLargeMarginEnd whiteText" />
+													<Label text="{StationTrackerI18n>ProgressLate}" class="sapUiLargeMarginEnd whiteText" />
 													<Label text="{KPI>/Rowsets/Rowset/0/Row/ProgressStatus/OPLate}" design="Bold"
 														class="sapUiSmallMarginTop kpiValue whiteText" />
 												</VBox>
 												<VBox  alignContent="Center" alignItems="Stretch" JustifyContent="Center">
-													<Label text="OP Ahead" class="sapUiLargeMarginEnd whiteText" />
+													<Label text="{StationTrackerI18n>ProgressAhead}" class="sapUiLargeMarginEnd whiteText" />
 													<Label text="{KPI>/Rowsets/Rowset/0/Row/ProgressStatus/OPAhead}" design="Bold"
 														class="sapUiSmallMarginTop kpiValue whiteText" />
 												</VBox>
@@ -114,7 +88,7 @@
 								<suite:north>
 									<suite:HeaderCellItem>
 										<suite:content>
-											<Label text="OPERATION STATUS" design="Bold" class="whiteText"/>
+											<Label text="{StationTrackerI18n>OperationStatus}" design="Bold" class="whiteText"/>
 										</suite:content>
 									</suite:HeaderCellItem>
 								</suite:north>
@@ -123,12 +97,12 @@
 										<suite:content>
 											<HBox alignItems="Baseline">
 												<VBox alignItems="Stretch" class="greenBottom">
-													<Label text="Confirmed" class="sapUiLargeMarginEnd  whiteText" />
+													<Label text="{StationTrackerI18n>OperationConfirmed}" class="sapUiLargeMarginEnd  whiteText" />
 													<Label text="{KPI>/Rowsets/Rowset/0/Row/OperationStatus/Confirmed}" design="Bold"
 														class="sapUiSmallMarginTop kpiValue whiteText" />
 												</VBox>
 												<VBox alignItems="Stretch">
-													<Label text="Partially Conf." class="sapUiLargeMarginEnd whiteText" />
+													<Label text="{StationTrackerI18n>OperationPartialy}" class="sapUiLargeMarginEnd whiteText" />
 													<Label text="{KPI>/Rowsets/Rowset/0/Row/OperationStatus/PartialConf}" design="Bold"
 														class="sapUiSmallMarginTop kpiValue whiteText" />
 												</VBox>
@@ -141,7 +115,7 @@
 								<suite:north>
 									<suite:HeaderCellItem>
 										<suite:content>
-											<Label text="DISRUPTIONS" design="Bold" class="whiteText"/>
+											<Label text="{StationTrackerI18n>Disruptions}" design="Bold" class="whiteText"/>
 										</suite:content>
 									</suite:HeaderCellItem>
 								</suite:north>
@@ -150,15 +124,15 @@
 										<suite:content>
 											<HBox alignItems="Baseline">
 												<VBox alignItems="Stretch" class="redBottom">
-													<Label text="Other" class="sapUiLargeMarginEnd whiteText" />
+													<Label text="{StationTrackerI18n>DisruptionsOther}" class="sapUiLargeMarginEnd whiteText" />
 													<Label text="{KPI>/Rowsets/Rowset/0/Row/Disruption/Other}" design="Bold" class="sapUiSmallMarginTop kpiValue whiteText " />
 												</VBox>
 												<VBox alignItems="Stretch" class="redBottom">
-													<Label text="NC" class="sapUiLargeMarginEnd whiteText" />
+													<Label text="{StationTrackerI18n>DisruptionsNC}" class="sapUiLargeMarginEnd whiteText" />
 													<Label text="{KPI>/Rowsets/Rowset/0/Row/Disruption/NC}" design="Bold" class="sapUiSmallMarginTop kpiValue whiteText" />
 												</VBox>
 												<VBox alignItems="Stretch" class="redBottom">
-													<Label text="Missing part" class="sapUiLargeMarginEnd whiteText" />
+													<Label text="{StationTrackerI18n>DisruptionsMissing}" class="sapUiLargeMarginEnd whiteText" />
 													<Label text="{KPI>/Rowsets/Rowset/0/Row/Disruption/MissingPart}" design="Bold" class="sapUiSmallMarginTop kpiValue whiteText" />
 											</VBox>
 											</HBox>
@@ -170,7 +144,7 @@
 								<suite:north >
 									<suite:HeaderCellItem  >
 										<suite:content  >
-											<Label text="DISRUPTIONS STATUS" design="Bold" class="whiteText"/>
+											<Label text="{StationTrackerI18n>DisruptionsStatus}" design="Bold" class="whiteText"/>
 										</suite:content>
 									</suite:HeaderCellItem>
 								</suite:north>
@@ -179,12 +153,12 @@
 										<suite:content>
 											<HBox alignItems="Baseline">
 												<VBox alignItems="Stretch" class="greenBottom">
-													<Label text="Closed" class="sapUiLargeMarginEnd whiteText" />
+													<Label text="{StationTrackerI18n>DisruptionsClosed}" class="sapUiLargeMarginEnd whiteText" />
 													<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/Closed}" design="Bold"
 														class="sapUiSmallMarginTop kpiValue whiteText" />
 												</VBox>
 												<VBox alignItems="Stretch" class="redBottom">
-													<Label text="Opened" class="sapUiLargeMarginEnd whiteText" />
+													<Label text="{StationTrackerI18n>DisruptionsOpened}" class="sapUiLargeMarginEnd whiteText" />
 													<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/Opened}" design="Bold"
 														class="sapUiSmallMarginTop kpiValue whiteText" />
 												</VBox>
@@ -201,40 +175,40 @@
 
 			<Toolbar class="white">
 				<content>
-					<Button text="Your Team" type="Transparent" icon="sap-icon://group"
+					<Button text="{StationTrackerI18n>ButtonTeam}" type="Transparent" icon="sap-icon://group"
 						class="buttonStatus2 iconbuttonTeam sapUiSmallMarginBegin" press="onTeamPress"></Button>
 					<ToolbarSeparator />
-					<Label text="Sort By : " />
+					<Label text="{StationTrackerI18n>GroupingSortBy}" />
 					<Select id="selectGroup" class="sapUiTinyMarginBeginEnd comboBoxStyle" change="changeGroup">
 						<core:Item text="Competence" key="CPP_CLUSTER"/>
 						<core:Item text="Avl" key="avlLine" />
 					</Select>
-					<Label text="Show : " />
+					<Label text="{StationTrackerI18n>BoxingShow}" />
 					<Select id="selectBox" class="sapUiTinyMarginBeginEnd comboBoxStyle" change="changeBox">
 						<core:Item text="Operations" key="OPERATION_ID"/>
 						<core:Item text="WorkOrder" key="WORKORDER_ID"/>
 					</Select>
-					<Label text="Shift : "  visible= "{ path : 'stationTrackerShift>/0/visible', formatter : 'airbus.mes.stationtracker.util.Formatter.isDayTimeline' }" />
+					<Label text="{StationTrackerI18n>Shift}"  visible= "{ path : 'stationTrackerShift>/0/visible', formatter : 'airbus.mes.stationtracker.util.Formatter.isDayTimeline' }" />
 					<Select id="selectShift" class="sapUiTinyMarginBeginEnd comboBoxStyle selectShift" change="changeShift" items="{ path : 'stationTrackerShift>/' }" visible= "{ path : 'stationTrackerShift>/0/visible', formatter : 'airbus.mes.stationtracker.util.Formatter.isDayTimeline' }" >
 						<core:Item key="{stationTrackerShift>id}" text="{stationTrackerShift>value}" />
 					</Select>
 					<ToolbarSpacer />
 					<HBox id="toolbarDate" class="sapUiTinyMarginBeginEnd"></HBox>
 					<ToolbarSpacer />
-					<Button text="OutStanding Work" type="Transparent" icon="sap-icon://inspect"
+					<Button text="{StationTrackerI18n>ButtonOutstandingWork}" type="Transparent" icon="sap-icon://inspect"
 						class="sapUiTinyMarginBeginEnd" press="onOSWPress"></Button>
- 					<Button text="Unplanned activities" type="Transparent" icon="sap-icon://inspect"
+ 					<Button text="{StationTrackerI18n>ButtonUnplanned}" type="Transparent" icon="sap-icon://inspect"
 						class="sapUiTinyMarginBeginEnd" press="onUnplannedPress"></Button>
-					<Button text="show CP" type="Transparent" icon="sap-icon://ppt-attachment"
+					<Button text="{StationTrackerI18n>ButtonShowCP}" type="Transparent" icon="sap-icon://ppt-attachment"
 						class="sapUiTinyMarginBeginEnd" press="onCPPress"></Button>
-					<Button text="show initial plan" type="Transparent"
+					<Button text="{StationTrackerI18n>ButtonInitial}" type="Transparent"
 						icon="sap-icon://ppt-attachment" class="sapUiTinyMarginBeginEnd"
 						press="onInitialPlanPress"></Button>
 					<SegmentedButton>
 						<!-- <layout:layoutData> <ObjectPageHeaderLayoutData/> </layout:layoutData> -->
 						<items>
-							<SegmentedButtonItem text="Shift" press="onShiftPress" />
-							<SegmentedButtonItem text="Day" press="onDayPress" />
+							<SegmentedButtonItem text="{StationTrackerI18n>ButtonShift}" press="onShiftPress" />
+							<SegmentedButtonItem text="{StationTrackerI18n>ButtonDay}" press="onDayPress" />
 						</items>
 					</SegmentedButton>
 				</content>

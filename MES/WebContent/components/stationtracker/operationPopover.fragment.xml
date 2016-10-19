@@ -68,14 +68,6 @@
 														backgroundDesign="Transparent" class="sapUiSmallMarginTopBottom">
 														<headerToolbar>
 															<Toolbar>
-																<!-- <ProgressIndicator id="SPStatusInd" percentValue="{ 
-																	path : 'WorkListModel>/0/progress' , formatter : 'airbus.mes.stationtracker.util.Formatter.progress2float' 
-																	}" displayValue="{ path : 'WorkListModel>/0/progress' , formatter : 'airbus.mes.stationtracker.util.Formatter.progress2percent' 
-																	}" showValue="true" state="Success" width="100%" class="progressBarOP" /> -->
-																<!-- <Slider value="{ path : 'WorkListModel>/0/progress' 
-																	, formatter : 'airbus.mes.stationtracker.util.Formatter.progress2float' }" 
-																	width="50%" class="sapUiSmallMarginBottom" /> -->
-
 																<custom:customProgressIndicator
 																	width="100%" state="sap.ui.core.ValueState.Success"
 																	status="{WorkListModel>/0/status}" isAndon="{WorkListModel>/0/andons}"
@@ -85,7 +77,6 @@
 																		<FlexItemData baseSize="60%" growFactor="1"></FlexItemData>
 																	</custom:layoutData>
 																</custom:customProgressIndicator>
-
 															</Toolbar>
 														</headerToolbar>
 														<content>

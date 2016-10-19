@@ -56,11 +56,11 @@
 			</VBox>
 		</content>
 		<buttons>
-			<Button text="Import" type="Transparent" icon="sap-icon://forward"
+			<Button text="{StationTrackerI18n>WorklistButtonImport}" type="Transparent" icon="sap-icon://forward"
 				class="sapUiTinyMarginBeginEnd pageHeaderDialog" press="onUnplannedImport"
 				visible="{ path : 'WorkListModel>andons' , formatter: 'airbus.mes.stationtracker.util.Formatter.isCheckboxVisible'}">
 			</Button>
-			<Button text="Close" type="Transparent" icon="sap-icon://decline"
+			<Button text="{StationTrackerI18n>Close}" type="Transparent" icon="sap-icon://decline"
 				class="sapUiTinyMarginBeginEnd" press="onUnplannedClose"
 			>
 			</Button>

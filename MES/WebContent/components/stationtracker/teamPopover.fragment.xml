@@ -3,24 +3,23 @@
 	xmlns:core="sap.ui.core">
 	<Popover
 		id="teamPopoverID"
-		title="Team"
+		title="{StationTrackerI18n>HeaderTeam}"
 		horizontalScrolling="false"
 		placement="Bottom">
 		<content>
 		<List>
 		<CustomListItem>
-
-		  	<Button type="Transparent" text="Open team availability" iconFirst="true" icon="sap-icon://navigation-right-arrow" width="100%" class="blackTextButton blackTextButton2" press="onPolypolyOpen" ></Button> 
-			<Button type="Transparent" text="Open poly poly matrix" iconFirst="true" icon="sap-icon://navigation-right-arrow" width="100%" class="blackTextButton blackTextButton2" press="onPolypolyOpen" ></Button> 
+		  	<Button type="Transparent" text="{StationTrackerI18n>ButtonOpenTeam}" iconFirst="true" icon="sap-icon://navigation-right-arrow" width="100%" class="blackTextButton blackTextButton2" press="onPolypolyOpen" ></Button> 
+			<Button type="Transparent" text="{StationTrackerI18n>ButtonPolypoly}" iconFirst="true" icon="sap-icon://navigation-right-arrow" width="100%" class="blackTextButton blackTextButton2" press="onPolypolyOpen" ></Button> 
 
 			<Panel expandable="true" expanded="false" class="panelContent panelContentList textBlackPanel">
              <headerToolbar>
                     <Toolbar width="100%">
-                    <Label text="List of team members"/>        	
+                    <Label text="{StationTrackerI18n>ButtonListTeam}"/>        	
                     </Toolbar>
              </headerToolbar>
              <content>
-             				<List showSeparators="None" headerText="List of 42 operators" class="operatorList">
+             				<List showSeparators="None" headerText="List of 42 operators TODO" class="operatorList">
              				<CustomListItem>
              				<HBox>
                     		     	<Label text="MK" class="rond sapUiSmallMarginBeginEnd"/>
@@ -50,7 +49,7 @@
                     		</List>
            	</content>
            	</Panel>
-           	<Button type="Transparent" text="Load operators from other stations" icon="sap-icon://sort" width="100%" class="otherStations whiteTextButton whiteButton"></Button> 
+           	<Button type="Transparent" text="{StationTrackerI18n>FooterTeam}" icon="sap-icon://sort" width="100%" class="otherStations whiteTextButton whiteButton"></Button> 
 		</CustomListItem>
 		</List> 
 		

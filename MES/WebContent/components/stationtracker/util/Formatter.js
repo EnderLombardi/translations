@@ -234,16 +234,16 @@ airbus.mes.stationtracker.util.Formatter = {
 			
 			stationTrackerStation : function(Station) {
 //				sap.ui.getCore().getModel("StationTrackerI18n").getProperty("Station");
-				return "Station " + Station;
+				return airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("Station") + " " + Station;
 			},
 			stationTrackerMsn : function(Msn) {
-				return "MSN " + Msn;
+				return airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("MSN") + " " + + Msn;
 			},
 			stationTrackerPlant : function(Plant) {
-				return "Plant " + Plant;
+				return airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("Plant") + " " + Plant;
 			},
 			stationTrackerLine : function(Line) {
-				return "Line: " + Line;
+				return airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("Line") + " " + Line;
 			},
 			titleWorklist : function(workOrder, workOrderDescritpion) {
 				return workOrder + " - " + workOrderDescritpion
@@ -282,12 +282,11 @@ airbus.mes.stationtracker.util.Formatter = {
 			},
 			setWorkListText : function() {
 				if (airbus.mes.stationtracker.worklistPopover.OSW) {
-					return "OutStanding Work";
+					return airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("WorklistHeaderOSW");
 				} else if(airbus.mes.stationtracker.worklistPopover.unPlanned) {
-					return "Unplanned Activities";
-					
+					return airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("WorklistHeaderUnplanned");
 				} else {
-					return "Work List";
+					return airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("WorklistHeaderWorklist");
 				}
 				
 			},

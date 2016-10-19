@@ -262,10 +262,9 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	onUnplannedPress : function(oEvent) {
 		if ( airbus.mes.stationtracker.worklistPopover === undefined ) {
 			
-			var oView = airbus.mes.stationtracker.oView;
 			airbus.mes.stationtracker.worklistPopover = sap.ui.xmlfragment("worklistPopover","airbus.mes.stationtracker.worklistPopover", airbus.mes.stationtracker.oView.getController());
 			airbus.mes.stationtracker.worklistPopover.addStyleClass("alignTextLeft");
-			//oView.addDependent(airbus.mes.stationtracker.worklistPopover);
+			airbus.mes.stationtracker.oView.addDependent(airbus.mes.stationtracker.worklistPopover);
 			airbus.mes.stationtracker.worklistPopover.setModel(new sap.ui.model.json.JSONModel(sap.ui.getCore().getModel("groupModel").getData()), "groupModel");
 			airbus.mes.stationtracker.ModelManager.loadStationTracker("U");
 			airbus.mes.stationtracker.worklistPopover.setModel(sap.ui.getCore().getModel("unPlannedModel"), "WorkListModel");
@@ -287,6 +286,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			});
 			
 		}
+//		global variable to manage display on worklist
 		airbus.mes.stationtracker.worklistPopover.unPlanned = true;
 		airbus.mes.stationtracker.worklistPopover.OSW = false;		
 		
@@ -326,7 +326,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			var oView = airbus.mes.stationtracker.oView;
 			airbus.mes.stationtracker.worklistPopover = sap.ui.xmlfragment("worklistPopover","airbus.mes.stationtracker.worklistPopover", airbus.mes.stationtracker.oView.getController());
 			airbus.mes.stationtracker.worklistPopover.addStyleClass("alignTextLeft");
-			//oView.addDependent(airbus.mes.stationtracker.worklistPopover);
+			oView.addDependent(airbus.mes.stationtracker.worklistPopover);
 			airbus.mes.stationtracker.ModelManager.loadStationTracker("O");
 			airbus.mes.stationtracker.worklistPopover.setModel(sap.ui.getCore().getModel("OSWModel"), "WorkListModel");
 			airbus.mes.stationtracker.worklistPopover.setBusyIndicatorDelay(0);

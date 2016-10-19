@@ -56,11 +56,10 @@ airbus.mes.stationtracker.ModelManager = {
 			this.loadFilterUnplanned();		
 			this.loadProductionGroup();
 			
-//			this.i18nModel = new sap.ui.model.resource.ResourceModel({
-//				bundleUrl : "i18n/messageBundle.properties",
-//				bundleLocale : core.getConfiguration().getLanguage()
-//			});
-//			core.setModel(this.i18nModel, "messageBundle");
+//			var i18nModel = new sap.ui.model.resource.ResourceModel({
+//	            bundleUrl : "./i18n/i18n.properties",
+//	         });
+//			core.setModel(i18nModel, "StationTrackerI18n");
 						
 		},
 				
