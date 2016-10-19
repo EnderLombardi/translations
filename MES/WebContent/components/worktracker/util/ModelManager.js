@@ -144,8 +144,9 @@ airbus.mes.worktracker.util.ModelManager = {
 				.replaceURI(UsersInWorkcenterUrl, "$Site",
 						airbus.mes.settings.ModelManager.site);
 		UsersInWorkcenterUrl = airbus.mes.worktracker.util.ModelManager
-				.replaceURI(UsersInWorkcenterUrl, "$WorkCenter", "1TL1H13");
-		// airbus.mes.settings.ModelManager.station);
+				.replaceURI(UsersInWorkcenterUrl, "$WorkCenter",
+						//"1TL1H13");
+						airbus.mes.settings.ModelManager.station);
 		return UsersInWorkcenterUrl;
 	},
 	loadUserListModel : function() {
