@@ -24,16 +24,20 @@
                      "OPLate":"20%",
                      "OPAhead":"20%"
                   },
-                  "OperationStatus":{  
-                     "Confirmed":"20%",
-                     "PartialConf":"20%"
+                  "ExtraWork":{  
+                     "Ops":"10",
+                     "Hrs":"35"
                   },
-                  "Disruption":{  
-                     "Other":"5",
-                     "NC":"1",
-                     "MissingPart":"2"
+                  "EfficiencyFactors":{  
+                     "Labour":"85%",
+                     "SLB":"5%"
+                    
                   },
-                  "DisruptionStatus":{  
+                  "DisruptionStatus":{
+                  
+                  			"NCWhite" : "3",
+                  			"NCRed":"3", 
+                  			"Total":"13", 
                      "Closed":"3",
                      "Opened":"5"
                   }
