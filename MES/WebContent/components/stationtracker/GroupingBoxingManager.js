@@ -120,9 +120,34 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 		
 		var oHierachy = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy;
 		var oFormatter = airbus.mes.stationtracker.util.Formatter;
-		var oShiftManager = airbus.mes.stationtracker.ShiftManager;
-		var aItems = airbus.mes.stationtracker.oView.byId("selectProductionGroup").getSelectedKeys();
+
+		var aItems = [];
 		
+		if(sap.ui.getCore().byId("productionGroupPopover--myList")){
+		sap.ui.getCore().byId("productionGroupPopover--myList").getSelectedContexts(true).forEach(function(el){
+			aItems.push(el.getProperty(el.sPath));
+		}) 
+		} else {
+//			If popover has not yet opened, select all production group
+//			Retrieve all value of Production Group
+			var oModelProdGroup = airbus.mes.stationtracker.ModelManager.ProductionGroup;
+			var aProdGroup = oModelProdGroup.getData().Rowsets.Rowset[0].Row;
+			var aItems = [];
+
+			// Check if model is load ,create empty model if no data
+			if(!oModelProdGroup.getProperty("/Rowsets/Rowset/0/Row")){              
+				
+		    	console.log("No production group available");
+		    	oModelProdGroup.oData.Rowsets.Rowset[0].Row = [];
+		    	aProdGroup = [];
+			}
+			
+			
+			for (var i = 0; i < aProdGroup.length; i++) {
+				aItems.push(aProdGroup[i].PROD_GROUP);
+			}
+			
+		}
 		oModel.forEach(function(el){
 			
 			if ( sGroup === "avlLine") {				
@@ -148,24 +173,8 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 			var oShift = airbus.mes.stationtracker.ShiftManager.shifts[airbus.mes.stationtracker.ShiftManager.closestShift(oFormatter.jsDateFromDayTimeStr(el.START_TIME))]; 
 			//console.log(oShift);
 						
-			var ssBox = el[sBoxing] + "_" + oShift.day + "-" + oShift.shiftName;
-			
-		
-//			} else {
-//				
-//				var ssBox = el[sBoxing];
-//				
-//			}
-			
-			
-//			if (sInitial) {
-//				
-//				var sInitial = "initial";
-//			} else {
-//				
-//				var sInitial  = "reschedule";
-//			}
-//			
+			var ssBox = el[sBoxing] + "_"  + el["WORKORDER_ID"] + "_" + oShift.day + "-" + oShift.shiftName;
+						
 			if ( !oHierachy[ssGroup] ) {
 				
 				oHierachy[ssGroup] = {};
@@ -186,7 +195,32 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 				return;
 			}
 			
+			var sPaused = "0";
+			// Operation is active	
+			if (  el.PAUSED === "FALSE") {
+				
+				var sPaused = "2";
+			}
+					
+			// Operation is not started
+			if ( el.PAUSED === "---" ) {
+				
+				var sPaused = "1";
+				
+				// Operation is pause	
+				if ( el.PAUSED === "---" && el.PROGRESS != "0" ) {
+					
+					var sPaused = "3";
+				}	
 			
+			}
+									
+			// Operation Completed
+			if ( el.STATE === "C" ) {
+				
+				var sPaused = "0";
+			}	
+	
 			var oOperation = {
 										
 					"shopOrder" : el.WORKORDER_ID, // workOrder
@@ -202,6 +236,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 					//"disruptions": el.disruptions,
 					"andons": el.ANDONS,
 					"routingMaturityAssessment": el.ROUTING_MATURITY_ACCESSMENT,
+					"paused" : sPaused,
 					//"ata": el.ata,
 					//"familyTarget": el.familyTarget,
 					"cppCluster" : el.CPP_CLUSTER,
@@ -314,26 +349,42 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 					var aDisruptions = [];
 					var aAndons = [];
 					var aTotalDuration = [];
+					var sPaused = [];
 					
+					var sShopOrderDescription = "";
+					var sShopOrder = "";
+					var sOperationDescription = "";
+					var sOperationId = "";
+					var sRoutingMaturityAssessment = "";
 					var sProgress = "";
 					var fCriticalPath = 0;		
 					var sOperationDescription = "";
+					var sStatus = "";
+					
 				;
 					
 					oModel[key][key1][key2].forEach( function( el ) { 
 						
+						//Store in array value needed to be compare in case of boxing
 						aStartDateRescheduling.push(Date.parse(oFormatter.jsDateFromDayTimeStr(el.startDate)));
 						aEndDateRescheduling.push(Date.parse(oFormatter.jsDateFromDayTimeStr(el.endDate)));
-						//aStartDateInitial.push(Date.parse(oFormatter.jsDateFromDayTimeStr(el.avlStartDate)));
-						//aEndDateInitial.push(Date.parse(oFormatter.jsDateFromDayTimeStr(el.avlEndDate)));
 						aDisruptions.push(el.disruptions);
 						aAndons.push(el.andons);
 						aTotalDuration.push( el.totalDuration );
+						sPaused.push(el.paused);
 						
+						
+						sShopOrderDescription = el.shopOrderDescriptio;
+						sShopOrder = el.shopOrder;
+						sOperationDescription = el.operationDescription;
+						sOperationId = el.operationId;
 						sProgress = el.progress;
 						fCriticalPath = el.criticalPath;
 						sOperationDescription = el.sBox;
+						sStatus = el.status;
+						sRoutingMaturityAssessment = el.routingMaturityAssessment
 					
+
 						
 						if ( sBox === oGroupingBoxingManager.specialGroup) {
 							
@@ -371,6 +422,13 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 					
 					var oOperationRescheduling = {
 							
+							"operationId" : sOperationId,
+							"operationDescription" : sOperationDescription,
+							"shopOrder" : sShopOrder,
+							"shopOrderDescription" : sShopOrderDescription,
+							"routingMaturityAssessment" : sRoutingMaturityAssessment,
+							"paused" : Math.max.apply(null,sPaused),
+							"status" : sStatus,
 							"totalDuration" : (aTotalDuration.reduce(function(pv, cv) { return pv + cv; }, 0))/aTotalDuration.length, 
 							"box" : key2,
 							"avlLine" : key1,
@@ -420,10 +478,9 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 		var ShiftManager = airbus.mes.stationtracker.ShiftManager;
 		
 		if (ShiftManager.current_Date != undefined) {
-			scheduler.init(sap.ui.getCore().byId("stationTrackerView").getId() + "--test", new Date(
-					ShiftManager.currentFullDate), "timeline");
+			scheduler.init( airbus.mes.stationtracker.oView.byId("stationtracker").getId() , new Date( ShiftManager.currentFullDate), "timeline");
 		} else {
-			scheduler.init(sap.ui.getCore().byId("stationTrackerView").getId() + "--test", new Date("04/10/2016"),
+			scheduler.init( airbus.mes.stationtracker.oView.byId("stationtracker").getId() , new Date("04/10/2016"),
 					"timeline");
 		};
 		
@@ -443,7 +500,10 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 	    }
 	    
 	    scheduler.xy.scroll_width=20;
+	    airbus.mes.stationtracker.oView.byId("stationtracker").setBusy(false);
 	    scheduler.parse(aBox,"json");
+	    
+	
 	    
 	}
 	

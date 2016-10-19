@@ -8,7 +8,6 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	 * @memberOf components.stationtracker.stationtracker
 	 */
 		onInit: function() {
-			
 //			Retrieve all value of Production Group
 			var oModel = airbus.mes.stationtracker.ModelManager.ProductionGroup;
 			var aProdGroup = oModel.getData().Rowsets.Rowset[0].Row;
@@ -26,10 +25,6 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			for (var i = 0; i < aProdGroup.length; i++) {
 				aItems.push(aProdGroup[i].PROD_GROUP);
 			}
-			
-			this.getView().byId("selectProductionGroup").setSelectedKeys(aItems);	
-				
-			
 		},
 	/**
 	 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
@@ -38,21 +33,21 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	 */
 		onBeforeRendering: function() {
 			
-			var temp = [];
-			var binding = this.getView().byId("selectProductionGroup").getBinding("items");
-//			path correspond to relatif path after binding, here absolute path is /Rowsets/Rowset/0/Row			
-			var Filter = new sap.ui.model.Filter({ path : "PROD_GROUP",
-										           test : function(value) {
-										                     if (temp.indexOf(value) == -1) {
-										                            temp.push(value)
-										                            return true;
-										                     } else {
-										                            return false;
-										                     }
-										              }
-													});	
-			
-			binding.filter(Filter);		
+//			var temp = [];
+//			var binding = this.getView().byId("selectProductionGroup").getBinding("items");
+////			path correspond to relatif path after binding, here absolute path is /Rowsets/Rowset/0/Row			
+//			var Filter = new sap.ui.model.Filter({ path : "PROD_GROUP",
+//										           test : function(value) {
+//										                     if (temp.indexOf(value) == -1) {
+//										                            temp.push(value)
+//										                            return true;
+//										                     } else {
+//										                            return false;
+//										                     }
+//										              }
+//													});	
+//			
+//			binding.filter(Filter);		
 		},
 	/**
 	 * Called when the View has been rendered (so its HTML is part of the document). Post-rendering manipulations of the HTML could be done here.
@@ -62,7 +57,50 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	onAfterRendering : function() {
 
 	},
+	onProductionGroupPress : function(oEvent){
+		if ( airbus.mes.stationtracker.productionGroupPopover === undefined ) {
+			
+			var oView = airbus.mes.stationtracker.oView;
+			airbus.mes.stationtracker.productionGroupPopover = sap.ui.xmlfragment("productionGroupPopover","airbus.mes.stationtracker.productionGroupPopover", airbus.mes.stationtracker.oView.getController());
+			airbus.mes.stationtracker.productionGroupPopover.addStyleClass("alignTextLeft");
+			oView.addDependent(airbus.mes.stationtracker.productionGroupPopover);
+			//var oModel = new sap.ui.model.json.JSONModel(sap.ui.getCore().getModel("productionGroupModel").getData().Rowsets.Rowset[0].Row) ;
+			
+			airbus.mes.stationtracker.productionGroupPopover.setModel(sap.ui.getCore().getModel("productionGroupModel"), "productionGroupModel");
+		
+		}
 
+	
+
+//		airbus.mes.stationtracker.productionGroupPopover.getModel("productionGroupModel").refresh(true);
+
+		var temp = [];
+		var binding = sap.ui.getCore().byId("productionGroupPopover--myList").getBinding("items");
+//		path correspond to relatif path after binding, here absolute path is /Rowsets/Rowset/0/Row			
+		var Filter = new sap.ui.model.Filter({ path : "PROD_GROUP",
+									           test : function(value) {
+									                     if (temp.indexOf(value) == -1) {
+									                            temp.push(value)
+									                            return true;
+									                     } else {
+									                            return false;
+									                     }
+									              }
+												});	
+		
+		binding.filter(Filter);				
+		
+		
+		
+//		airbus.mes.stationtracker.productionGroupPopover.getModel("productionGroupModel").setData(oData);
+//		airbus.mes.stationtracker.productionGroupPopover.getModel("productionGroupModel").refresh(true);
+
+		// delay because addDependent will do a async rerendering and the popover will immediately close without it
+		var oButton = oEvent.getSource();
+		jQuery.sap.delayedCall(0, this, function () {
+			airbus.mes.stationtracker.productionGroupPopover.openBy(oButton);	
+		});		
+	},
 	onTeamPress : function(oEvent) {
 
 		var bindingContext = oEvent.getSource().getBindingContext();
@@ -195,7 +233,8 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		}
 	},
 	onPolypolyOpen: function(oEvent) {
-		jQuery.sap.registerModulePath("airbus.mes.polypoly","/MES/components/polypoly");
+		
+		jQuery.sap.registerModulePath("airbus.mes.polypoly","../components/polypoly");
 		airbus.mes.stationtracker.AssignmentManager.polypolyAffectation = false;
 		if (!airbus.mes.stationtracker.oPopoverPolypoly) {
 			airbus.mes.stationtracker.oPopoverPolypoly = sap.ui.xmlfragment("airbus.mes.stationtracker.polypolyFragment", this);
@@ -204,11 +243,11 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	            name : "airbus.mes.polypoly", // root component folder is resources
 	            id : "Comp10",
 	     });	
-			
+			//load model of polypoly
+			airbus.mes.polypoly.ModelManager.loadPolyPolyModel("F1","1","10","CHES");	
 		}
-		// Permit to display or not polypoly affectation or polypoly simple
-		airbus.mes.polypoly.oView.getController().filterUA();
 		
+		airbus.mes.polypoly.oView.getController().filterUA();
 		// place this Ui Container with the Component inside into UI Area
 		airbus.mes.stationtracker.oPopoverPolypoly.addContent(airbus.mes.polypoly.oView);
 		airbus.mes.stationtracker.oPopoverPolypoly.open();	
@@ -226,14 +265,19 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			var oView = airbus.mes.stationtracker.oView;
 			airbus.mes.stationtracker.worklistPopover = sap.ui.xmlfragment("worklistPopover","airbus.mes.stationtracker.worklistPopover", airbus.mes.stationtracker.oView.getController());
 			airbus.mes.stationtracker.worklistPopover.addStyleClass("alignTextLeft");
-			oView.addDependent(airbus.mes.stationtracker.worklistPopover);
+			//oView.addDependent(airbus.mes.stationtracker.worklistPopover);
+			airbus.mes.stationtracker.worklistPopover.setModel(new sap.ui.model.json.JSONModel(sap.ui.getCore().getModel("groupModel").getData()), "groupModel");
+			airbus.mes.stationtracker.ModelManager.loadStationTracker("U");
+			airbus.mes.stationtracker.worklistPopover.setModel(sap.ui.getCore().getModel("unPlannedModel"), "WorkListModel");
+			
+			airbus.mes.stationtracker.worklistPopover.setBusyIndicatorDelay(0);
 			
 			sap.ui.getCore().byId("worklistPopover--myList").bindAggregation('items', {
 				path : "WorkListModel>/",
 				template : sap.ui.getCore().byId("worklistPopover--sorterList"),
 				sorter : [ new sap.ui.model.Sorter({
 					// Change this value dynamic
-					path : 'shopOrder',
+					path : 'WORKORDER_ID',
 					descending : false,
 					group : true,
 				}), new sap.ui.model.Sorter({
@@ -245,19 +289,28 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		}
 		airbus.mes.stationtracker.worklistPopover.unPlanned = true;
 		airbus.mes.stationtracker.worklistPopover.OSW = false;		
-		airbus.mes.stationtracker.worklistPopover.setModel(new sap.ui.model.json.JSONModel(sap.ui.getCore().getModel("unPlannedModel").getData().Rowsets.Rowset[0].Row), "WorkListModel");
 		
-
-		var oData = airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").getData();
-		if (oData && oData.length > 0 && oData) {
-			oData = airbus.mes.stationtracker.util.Formatter.sortWorkList(oData);
+		// Control if the model load has data overwise set not data
+		var oModel = sap.ui.getCore().getModel("unPlannedModel")
+	
+		if(oModel.getProperty("/Rowsets/Rowset/0/Row")){              
+			
+			oModel = sap.ui.getCore().getModel("unPlannedModel").oData.Rowsets.Rowset[0].Row;
+			
+        } else  {
+        	oModel = [];
+        	console.log("no unplanned operation load");
+        }
+		
+	
+		if (oModel && oModel.length > 0 && oModel) {
+			oModel = airbus.mes.stationtracker.util.Formatter.sortWorkList(oModel);
 		}		
-		airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").setData(oData);
+		//Changed the data of the worklist by unplannned model
+		airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").setData(oModel);
 		airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").refresh(true);
 
 		
-		airbus.mes.stationtracker.worklistPopover.setModel(new sap.ui.model.json.JSONModel(sap.ui.getCore().getModel("filterUnplannedModel").getData()), "filterUnplannedModel");
-		airbus.mes.stationtracker.worklistPopover.getModel("filterUnplannedModel").refresh();
 		
 		// delay because addDependent will do a async rerendering and the popover will immediately close without it
 		var oButton = oEvent.getSource();
@@ -273,13 +326,29 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			var oView = airbus.mes.stationtracker.oView;
 			airbus.mes.stationtracker.worklistPopover = sap.ui.xmlfragment("worklistPopover","airbus.mes.stationtracker.worklistPopover", airbus.mes.stationtracker.oView.getController());
 			airbus.mes.stationtracker.worklistPopover.addStyleClass("alignTextLeft");
-			oView.addDependent(airbus.mes.stationtracker.worklistPopover);
+			//oView.addDependent(airbus.mes.stationtracker.worklistPopover);
+			airbus.mes.stationtracker.ModelManager.loadStationTracker("O");
+			airbus.mes.stationtracker.worklistPopover.setModel(sap.ui.getCore().getModel("OSWModel"), "WorkListModel");
+			airbus.mes.stationtracker.worklistPopover.setBusyIndicatorDelay(0);
 		}
 		
 		airbus.mes.stationtracker.worklistPopover.unPlanned = true;
-		airbus.mes.stationtracker.worklistPopover.OSW = true;			
-		airbus.mes.stationtracker.worklistPopover.setModel(new sap.ui.model.json.JSONModel(sap.ui.getCore().getModel("OSWModel").getData().Rowsets.Rowset[0].Row), "WorkListModel");
-		airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").refresh();
+		airbus.mes.stationtracker.worklistPopover.OSW = true;	
+		
+		var oModel = sap.ui.getCore().getModel("OSWModel")
+		
+		if(oModel.getProperty("/Rowsets/Rowset/0/Row")){              
+			
+			oModel = sap.ui.getCore().getModel("OSWModel").oData.Rowsets.Rowset[0].Row;
+			
+        } else  {
+        	oModel = [];
+        	console.log("no OSWModel operation load");
+        }
+		
+		//Changed the data of the worklist by OSW model
+		airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").setData(oModel);
+		airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").refresh(true);
 		
 		// delay because addDependent will do a async rerendering and the popover will immediately close without it
 		var oButton = oEvent.getSource();
@@ -429,7 +498,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			template : sap.ui.getCore().byId("worklistPopover--sorterList"),
 			sorter : [ new sap.ui.model.Sorter({
 				// Change this value dynamic
-				path : 'shopOrder', //oEvt.getSource().getSelectedKey();
+				path : 'WORKORDER_ID', //oEvt.getSource().getSelectedKey();
 				descending : false,
 				group : true,
 			}), new sap.ui.model.Sorter({
@@ -451,23 +520,6 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
            
            var aModelToTest = airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").oData;
            
-//           if (aModelToTest.some(function(el) {
-//
-//                  return el.groupingInternal === ModelManager.group_type;
-//
-//           })) {
-//
-//                  ModelManager.group_parameter = ModelManager.group_type;
-//
-//           } else {
-//                  ModelManager.group_parameter = sap.ui.getCore().getModel("WorkListModel").oData.Group[0].groupingInternal;
-//
-//           }
-//           
-//           if(oEvt){
-//           ModelManager.group_parameter = oEvt.getSource().getSelectedKey();
-//           }
-                  
            sap.ui.getCore().byId("myList").bindAggregation('items', {
                   path : "/Rowsets/Rowset/0/Row",
                   template : sap.ui.getCore().byId("sorterList"),
@@ -503,8 +555,8 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
            // Sort by WO number (to group operations with same WO)
            // Also group by operation, because the sort order is kept for
            // operations
-           oWorkList.sort(this.fieldComparator([ 'shopOrder',
-                         'operationID' ]));
+           oWorkList.sort(this.fieldComparator([ 'WORKORDER_ID',
+                         'OPERATION_ID' ]));
 
            // Constitute a table of WO groups with operations associated
            // The group object has template bellow.
@@ -549,7 +601,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
            // Sort each groups (Work Orders)
            // The operations inside each groups should still be in the same order
            // (ascending order preserved)
-           oWOList.sort(this.fieldComparator([ 'startDate', 'workOrder' ]));
+           oWOList.sort(this.fieldComparator([ 'startDate', 'WORKORDER_ID' ]));
 
            // Flatten worklist (take operations of each groups)
            oWL2 = oWOList.reduce(function(prev, curr) {
@@ -603,7 +655,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
     	 } else {
 //    		 we apply the a filter
 
-    		 var oFilterStatus = new sap.ui.model.Filter("status","EQ",oEvent.getSource().getSelectedKey());        
+    		 var oFilterStatus = new sap.ui.model.Filter("STATE","EQ",oEvent.getSource().getSelectedKey());        
              aMyFilter.push(oFilterStatus);
              sap.ui.getCore().byId("worklistPopover--myList").getBinding("items").filter(new sap.ui.model.Filter(aMyFilter, true));    		 
     	 }

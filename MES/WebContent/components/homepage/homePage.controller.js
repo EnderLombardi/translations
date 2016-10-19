@@ -6,40 +6,42 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 * @memberOf components.globalnav.globalNavigation
 */
 	onInit: function() {
+//		var oModel = new sap.ui.model.json.JSONModel();
+//		sap.ui.getCore().setModel(oModel , "buttonUrl");
+//		oModel.loadData("/MES/components/homepage/data/url.json",null,false);
 	},
-	
-	
 	onPress:function(oEvt)	{
-
 		
 		jQuery.sap.registerModulePath("airbus.mes.stationtracker", "../components/stationtracker");
-		jQuery.sap.registerModulePath("airbus.mes.worktracker", "../components/worktracker");
-	    
+		jQuery.sap.registerModulePath("airbus.mes.worktracker", "../components/worktracker");    
 //		If default user settings are not yet loaded, need to load them
 //		We display settings screen		
+		var sPath = oEvt.getSource().oBindingContexts["1TileLineHome"].sPath;
+		
 		if(airbus.mes.settings.ModelManager.station === undefined ){
-			
-			if(oEvt.getSource().getCustomData()[1].getValue()=="worktracker")
-				airbus.mes.settings.GlobalFunction.navigateTo("Go to Work Tracker","worktracker");
-			
-			else
+		
+			if( airbus.mes.homepage.oView.getModel("1TileLineHome").getProperty(sPath).text === "StationTracker")
 				airbus.mes.settings.GlobalFunction.navigateTo("Go to Station Tracker","stationtracker");
-			
-			
+			else
+				airbus.mes.settings.GlobalFunction.navigateTo("Go to Work Tracker","worktracker");
+
 		} else {
 //			If default user settings are already loaded, 
 //			We display directly station tracker screen
 			
-			if(oEvt.getSource().getCustomData()[1].getValue()=="worktracker"){
-				airbus.mes.shell.util.navFunctions.worktracker();
-			}
-			else{
+			if(airbus.mes.homepage.oView.getModel("1TileLineHome").getProperty(sPath).text === "StationTracker")
+				{
 				sap.ui.getCore().createComponent({
 					name : "airbus.mes.stationtracker", // root component folder is resources
 	             	});
 				nav.addPage(airbus.mes.stationtracker.oView);
 				nav.to(airbus.mes.stationtracker.oView.getId());
-			}
+				}
+			// to be remove 
+				if(airbus.mes.homepage.oView.getModel("1TileLineHome").getProperty(sPath).text === "LineTracker"){
+					airbus.mes.shell.util.navFunctions.worktracker();
+				}
+				
 	 	};		
 	},
 	getI18nValue : function(sKey) {

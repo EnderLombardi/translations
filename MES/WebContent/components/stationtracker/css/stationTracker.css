@@ -97,23 +97,27 @@ background-color: #515456;
 }
 
 .fa-chevron-right.custom{
+		line-height : 20px;
 float: left;
 padding-left: 10px;
 }
 
 .fa-chevron-down.custom{
+		line-height : 20px;
 float: left;
 padding-left: 10px;
 }
 
-.fa-user-plus.custom{
-font-size: 1.5em;
+.fa-plus.custom{
+line-height : 20px;
+font-size: 1 em;
 float: right;
 padding-right: 10px;
 }
-.fa-user-plus:hover {
+.fa-plus:hover {
+	line-height : 20px;
 	color: blue;
-	font-size: 1.7em
+	font-size: 1.5em
 }
 
 .Blue {
@@ -122,7 +126,12 @@ padding-right: 10px;
 }
 
 .white {
-	background-color: white !important;
+	background-color:  white ! important;
+	}
+	
+	.folderAxisColor {
+	background-color: #BBBCBC ! important;
+	opacity : 0.15;
 	
 }
 
@@ -274,14 +283,21 @@ color : black;
 	height: 20px ! important;
 }
 .grey {
-	background-color: #D8D8D8;
+	background-color: #97999b;
 }
 .shiftCss {
 	background-color: #EEF3F7;
+	opacity: 0.8;
 }
+.dhx_row_folder .dhx_matrix_scell.folder {
+	background-color:#d5f1f8;
+}
+.lineYaxis {
+	background-color: rgba(49, 220, 240, 0.1);
 
+}
 .operationCP {
-	background-color: #D8D8D8;
+		background-color: #97999b;
 	border: 2px solid blue;
 }
 
@@ -292,10 +308,6 @@ color : black;
 
 .dhx_cal_container {
 	height: 100%;
-}
-
-.grey {
-	background-color: #D8D8D8;
 }
 
 .Hour {

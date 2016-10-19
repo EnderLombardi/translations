@@ -282,9 +282,9 @@
 												<VBox class="sapUiSmallMarginEnd">
 													<Label text="Progress:" />
 
-													<Slider
+									<!-- 				<Slider
 														value="{ path : 'WorkListModel>/0/progress' , formatter : 'airbus.mes.stationtracker.util.Formatter.progress2float' }"
-														width="100%" step="10" />
+														width="100%" step="10" /> -->
 
 													<Label text="Reason" />
 													<Select id="confirmPartialReason">

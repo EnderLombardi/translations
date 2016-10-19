@@ -2,8 +2,7 @@ jQuery.sap.require("sap.ui.core.UIComponent");
 jQuery.sap.require("sap.ui.model.resource.ResourceModel");
 jQuery.sap.require("airbus.mes.shell.util.Formatter");
 jQuery.sap.require("airbus.mes.shell.util.navFunctions");
-
-
+jQuery.sap.require("airbus.mes.shell.ModelManager");
 
 //jQuery.sap.registerModulePath("airbus.mes.settings","/MES/components/settings");
 
@@ -26,8 +25,10 @@ airbus.mes.shell.Component.prototype.createContent = function() {
 	
 	//	View on XML
 	if (airbus.mes.shell.oView === undefined) {
-//		var oUserSettingModel = new sap.ui.model.json.JSONModel();
-		
+
+		// initialize ModelManager and load needed file
+		airbus.mes.shell.ModelManager.init(sap.ui.getCore());
+				
 		this.oView = sap.ui.view({
 			id : "globalNavView",
 			viewName : "airbus.mes.shell.globalNavigation",
@@ -37,25 +38,11 @@ airbus.mes.shell.Component.prototype.createContent = function() {
 		}).addStyleClass("absolutePosition");
 
 		airbus.mes.shell.oView = this.oView;
-//		this
-		sap.ui.getCore().setModel(new sap.ui.model.json.JSONModel(),"userDetailModel");	
-//		this 
-		sap.ui.getCore().getModel("userDetailModel").loadData("https://dmiswde0.eu.airbus.corp/XMII/Illuminator?QueryTemplate=XX_MOD1684_MES%2FMII%2FStationTracker%2FuserDetail%2F015_Get_User_Detail_QUE&IsTesting=T&Content-Type=text%2Fjson&j_user=ng560db&j_password=pierre247",null,false);
-		sap.ui.getCore().setModel(new sap.ui.model.json.JSONModel(),"userSettingModel");	
-//		this 
-		sap.ui.getCore().getModel("userSettingModel").loadData("https://dmiswde0.eu.airbus.corp/XMII/Illuminator?QueryTemplate=XX_MOD1684_MES%2FMII%2FStationTracker%2FuserDetail%2F015_Get_User_Detail_QUE&IsTesting=T&Content-Type=text%2Fjson&j_user=ng560db&j_password=pierre247",null,false);
 
-	
 		
-		// create the views based on the url/hash
-//		this.getRouter().initialize();		
-		
-		var i18nModel = new sap.ui.model.resource.ResourceModel({
-            bundleUrl : "./i18n/i18n.properties",
-//            bundleLocale : "en" automatic defined by parameter sap-language
-         });
-		
-		this.oView.setModel(i18nModel, "i18n");
+		this.oView.setModel(sap.ui.getCore().getModel("userDetailModel"),	"userDetailModel");
+		this.oView.setModel(sap.ui.getCore().getModel("userSettingModel"),"userSettingModel");
+		this.oView.setModel(sap.ui.getCore().getModel("ShellI18n"), "ShellI18n");
 		
 //		Retrieve the language selector to define default language corresponding to sap-language parameter
 		var aItems = this.oView.byId("SelectLanguage").getItems();

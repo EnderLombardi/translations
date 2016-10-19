@@ -1,14 +1,47 @@
-{ "Rowsets" : { 
-	"DateCreated" : "2016-10-06T09:55:46", "Version" : "15.1 SP2 Patch 5 (Jul 20, 2016)", "StartDate" : "2016-10-06T08:55:46+0200", "EndDate" : "2016-10-06T09:55:46+0200", "CachedTime" : "", 
-	"Rowset" : [ 
-	{ "Columns" : { 
-		"Column" : [ 
-		{ "Name" : "PP_STATION", "SourceColumn" : "PP_STATION", "Description" : "WorkCenter PP Station", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
-		{ "Name" : "PROD_GROUP", "SourceColumn" : "PROD_GROUP", "Description" : "Production Group", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 } ] }, 
-	"Row" : [ 
-		{ "PP_STATION" : "PP_ST_2", "PROD_GROUP" : "PG_2" }, 
-		{ "PP_STATION" : "PP_ST_1", "PROD_GROUP" : "PG_1" }, 
-		{ "PP_STATION" : "PP_ST_3", "PROD_GROUP" : "PG_2" } ]
-		 } ]
-	 }
- }
+{  
+   "Rowsets":{  
+      "DateCreated":"2016-10-06T09:55:46",
+      "Version":"15.1 SP2 Patch 5 (Jul 20, 2016)",
+      "StartDate":"2016-10-06T08:55:46+0200",
+      "EndDate":"2016-10-06T09:55:46+0200",
+      "CachedTime":"",
+      "Rowset":[  
+         {  
+            "Columns":{  
+               "Column":[  
+                  {  
+                     "Name":"PP_STATION",
+                     "SourceColumn":"PP_STATION",
+                     "Description":"WorkCenter PP Station",
+                     "SQLDataType":1,
+                     "MinRange":1.0,
+                     "MaxRange":1.0
+                  },
+                  {  
+                     "Name":"PROD_GROUP",
+                     "SourceColumn":"PROD_GROUP",
+                     "Description":"Production Group",
+                     "SQLDataType":1,
+                     "MinRange":1.0,
+                     "MaxRange":1.0
+                  }
+               ]
+            },
+            "Row":[  
+               {  
+                  "PP_STATION":"PP_ST_2",
+                  "PROD_GROUP":"PG_2"
+               },
+               {  
+                  "PP_STATION":"PP_ST_1",
+                  "PROD_GROUP":"PG_1"
+               },
+               {  
+                  "PP_STATION":"PP_ST_3",
+                  "PROD_GROUP":"PG_2"
+               }
+            ]
+         }
+      ]
+   }
+}

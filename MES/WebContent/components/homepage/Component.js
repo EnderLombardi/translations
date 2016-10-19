@@ -3,7 +3,7 @@ jQuery.sap.require("sap.ui.core.UIComponent");
 sap.ui.core.UIComponent.extend("airbus.mes.homepage.Component", {
 	metadata : {
 		properties : {},
-		includes : [ ]   
+		includes : [ "./css/margin.css" ]
 
 	},
 	//manifestUrl : "component.json",
@@ -11,10 +11,16 @@ sap.ui.core.UIComponent.extend("airbus.mes.homepage.Component", {
 
 airbus.mes.homepage.Component.prototype.createContent = function() {
 
-	var oModel = new sap.ui.model.json.JSONModel();
-	this.setModel(oModel, "buttonUrl");
-	oModel.loadData("../components/homepage/data/url.json", null, false);
+	var oModel1 = new sap.ui.model.json.JSONModel();
+	var oModel2 = new sap.ui.model.json.JSONModel();
+	var oModel3 = new sap.ui.model.json.JSONModel();
+	
 
+	
+	oModel1.loadData("../components/homepage/data/1TileLineHome.json", null, false);
+	oModel2.loadData("../components/homepage/data/2TileLineHome.json", null, false);
+	oModel3.loadData("../components/homepage/data/3TileLineHome.json", null, false);
+	
 	if (airbus.mes.homepage.oView === undefined) {
 		//	View on XML
 		this.oView = sap.ui.view({
@@ -31,7 +37,13 @@ airbus.mes.homepage.Component.prototype.createContent = function() {
 //	        bundleLocale : "en" automatic defined by parameter sap-language
 	     });
 		
-		this.oView.setModel(i18nModel, "i18n");		
+		// Local Model
+		this.oView.setModel(i18nModel, "i18n");				
+		this.oView.setModel(oModel1, "1TileLineHome");
+		this.oView.setModel(oModel2, "2TileLineHome");
+		this.oView.setModel(oModel3, "3TileLineHome");
+
+		
 		
 		return this.oView;
 
