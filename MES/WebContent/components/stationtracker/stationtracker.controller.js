@@ -321,7 +321,6 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		
 		
 		// delay because addDependent will do a async rerendering and the popover will immediately close without it
-		var oButton = oEvent.getSource();
 		jQuery.sap.delayedCall(0, this, function () {
 //			airbus.mes.stationtracker.worklistPopover.openBy(oButton);	
 			airbus.mes.stationtracker.worklistPopover.open();	

@@ -8,13 +8,15 @@
 			<Panel expandable="true" expanded="true"
 				class="pageHeader sapUiSmallMarginTop contentNoPad">
 				<headerToolbar>
-					<Toolbar>
+ 					<Toolbar>
 						<Label text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/station', formatter : 'airbus.mes.stationtracker.util.Formatter.stationTrackerStation' }" class="pageTitle sapUiTinyMarginBeginEnd" />
  						<Label text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/msn', formatter : 'airbus.mes.stationtracker.util.Formatter.stationTrackerMsn' }" class="pageWelcome sapUiTinyMarginBeginEnd" /> 
 						<Label text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/plant', formatter : 'airbus.mes.stationtracker.util.Formatter.stationTrackerPlant' }" class="pageWelcome sapUiTinyMarginBeginEnd" />
 						<Label text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/line', formatter : 'airbus.mes.stationtracker.util.Formatter.stationTrackerLine' }" class="pageWelcome sapUiTinyMarginBeginEnd" />					
 					<ToolbarSeparator/>
 					<Button text="{StationTrackerI18n>ProductionGroup}" type="Transparent" class="whiteColor whiteButton" press="onProductionGroupPress"/>
+					<ToolbarSpacer/>
+					<Button text="{StationTrackerI18n>ButtonTeam}" type="Transparent" class="tiffanyColor whiteButton buttonStatus2 iconbuttonTeam sapUiSmallMarginBegin" icon="sap-icon://group" press="onTeamPress"/>
 					</Toolbar>
 				</headerToolbar>
 				<content>
@@ -247,9 +249,6 @@
 
 			<OverflowToolbar id="toolbarstationtracker" class="white" width="100%">
 				<content>
-					<Button text="{StationTrackerI18n>ButtonTeam}" type="Transparent" icon="sap-icon://group"
-						class="buttonStatus2 iconbuttonTeam sapUiSmallMarginBegin" press="onTeamPress"></Button>
-					<ToolbarSeparator />
 					<Label text="{StationTrackerI18n>GroupingSortBy}" />
 					<Select id="selectGroup" class="sapUiTinyMarginBeginEnd comboBoxStyle" change="changeGroup">
 						<core:Item text="Competence" key="CPP_CLUSTER"/>
