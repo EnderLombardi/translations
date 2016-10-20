@@ -670,7 +670,9 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
              sap.ui.getCore().byId("worklistPopover--myList").getBinding("items").filter(new sap.ui.model.Filter(aMyFilter, true));    		 
     	 }
     	 
-     }
-	
+     },
+ 	getI18nValue : function(sKey) {
+	    return this.getView().getModel("StationTrackerI18n").getProperty(sKey);
+	},
 	
 });

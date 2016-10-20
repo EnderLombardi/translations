@@ -253,13 +253,11 @@
 					</Select>
 					<Label text="{StationTrackerI18n>GroupingSortBy}" />
 					<Select id="selectGroup" class="sapUiTinyMarginBeginEnd comboBoxStyle" items="{groupModel>/Rowsets/Rowset/0/Row/Grouping}" change="changeGroup">
-						<core:ListItem key="{groupModel>Value}" text="{groupModel>Value}" />	
-<!-- 						<core:Item text="Competence" key="CPP_CLUSTER"/>
-						<core:Item text="Avl" key="avlLine" />
- -->					</Select>
+						<core:ListItem key="{groupModel>Value}" text="{ path : 'groupModel>Value' , formatter : '.getI18nValue' }"/>	
+					</Select>
 					<Label text="{StationTrackerI18n>BoxingShow}" />
 					<Select id="selectBox" class="sapUiTinyMarginBeginEnd comboBoxStyle" items="{groupModel>/Rowsets/Rowset/0/Row/Boxing}" change="changeBox" >
-						<core:ListItem key="{groupModel>Value}" text="{groupModel>Value}" />	
+						<core:ListItem key="{groupModel>Value}" text="{ path : 'groupModel>Value' , formatter : '.getI18nValue' }" />	
 <!-- 						<core:Item text="Operations" key="OPERATION_ID"/>
 						<core:Item text="WorkOrder" key="WORKORDER_ID"/> -->
 					</Select>

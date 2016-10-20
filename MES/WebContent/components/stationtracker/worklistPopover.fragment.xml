@@ -16,15 +16,13 @@
 						    items="{groupModel>/Rowsets/Rowset/0/Row/Grouping}"
 						    change="changeGroupWorkList"
 						    visible="{ path: 'WorkListModel>andons' , formatter: 'airbus.mes.stationtracker.util.Formatter.isGroupingVisible' }">
-						<core:ListItem text="{groupModel>Value}" />					
+						<core:ListItem key="{groupModel>Value}" text="{ path : 'groupModel>Value' , formatter : '.getI18nValue' }" />				
 					</Select>
-				
-				
 					<Select class="sapUiTinyMarginBeginEnd comboBoxStyle"
 						    items="{groupModel>/Rowsets/Rowset/0/Row/Status}"
 						    change="onChangeFilter"
 					        visible="{ path: 'WorkListModel>andons' , formatter: 'airbus.mes.stationtracker.util.Formatter.isGroupingVisible' }">						
-						<core:ListItem key="{groupModel>Key}" text="{groupModel>Value}" />					
+						<core:ListItem key="{groupModel>Value}" text="{ path : 'groupModel>Value' , formatter : '.getI18nValue' }" />					
 					</Select>
 				</HBox>
 				<List id="myList" growing="true" growingThreshold="20"
