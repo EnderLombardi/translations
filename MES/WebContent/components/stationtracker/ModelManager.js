@@ -248,8 +248,21 @@ airbus.mes.stationtracker.ModelManager = {
  
        
        openOperationPopOver : function( id ) {
+    	   
+    	   /*jQuery.sap.require("sap.m.MessageBox");
+    	   
+    	   sap.m.MessageBox.alert("Hello");*/
+    	   
+    	   if ( airbus.mes.stationtracker.operationDetailPopover === undefined ) {
+				
+				airbus.mes.stationtracker.operationDetailPopover = sap.ui.xmlfragment("operationDetailPopover","airbus.mes.stationtracker.operationDetailPopover", airbus.mes.stationtracker.oView.getController());
+				airbus.mes.stationtracker.operationDetailPopover.addStyleClass("alignTextLeft");
+				airbus.mes.stationtracker.oView.addDependent(airbus.mes.stationtracker.operationDetailPopover);		
+			}
+			
+    	   airbus.mes.stationtracker.operationDetailPopover.open();
 
-			if ( airbus.mes.stationtracker.operationPopover === undefined ) {
+			/*if ( airbus.mes.stationtracker.operationPopover === undefined ) {
 				
 				airbus.mes.stationtracker.operationPopover = sap.ui.xmlfragment("operationPopover","airbus.mes.stationtracker.operationPopover", airbus.mes.stationtracker.oView.getController());
 				airbus.mes.stationtracker.operationPopover.addStyleClass("alignTextLeft");
@@ -268,7 +281,7 @@ airbus.mes.stationtracker.ModelManager = {
 			airbus.mes.stationtracker.operationPopover.getModel("WorkListModel").setData(oModel);
 			airbus.mes.stationtracker.operationPopover.getModel("WorkListModel").refresh();
 
-			airbus.mes.stationtracker.operationPopover.open();	
+			airbus.mes.stationtracker.operationPopover.open();	*/
 
     	   
        },
@@ -322,10 +335,8 @@ airbus.mes.stationtracker.ModelManager = {
 				
 				airbus.mes.stationtracker.ModelManager.openWorkListPopover(id);
 				
-				break;		
-														
-			}
+				break;
        	
-       	
+    	  }
        }
 }
