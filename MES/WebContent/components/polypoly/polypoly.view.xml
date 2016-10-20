@@ -3,7 +3,7 @@
 	xmlns:html="http://www.w3.org/1999/xhtml">
 	<table:Table rows="{ path: '/rows' }"
 		columns="{ path: '/columns', factory: '.createColumn' }"
-		 enableColumnReordering="true"
+		 enableColumnReordering="true" fixedColumnCount="6" fixedRowCount="3"
 		rowHeight="40" id="oTablePolypoly" enableSelectAll="false"
 		columnMove="onColumnMove" class="backgroundPolypoly">
 		<table:toolbar>

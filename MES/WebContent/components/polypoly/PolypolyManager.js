@@ -385,50 +385,50 @@ airbus.mes.polypoly.PolypolyManager = {
 		return oTableRows;
 	},
 
-//	updateLevelInit : function() {
-//		var oModel = sap.ui.getCore().byId("polypolyView").getModel();
-//		this.levelUpdater.sUserID = this.userComptencyContext.rowBindingContext
-//				.getProperty("ERP_ID");
-//		this.levelUpdater.sUserName = this.userComptencyContext.rowBindingContext
-//				.getProperty("category");
-//		this.levelUpdater.sTechName = oModel.getData().columns[PolypolyManager.userComptencyContext.columnIndex + 3].techname;
-//		this.levelUpdater.startLevel = parseInt(PolypolyManager.userComptencyContext.rowBindingContext
-//				.getProperty(this.levelUpdater.sTechName));
-//		this.levelUpdater.endLevel = PolypolyManager.userComptencyContext.newLevel;
-//		this.levelUpdater.currentLevel = this.levelUpdater.startLevel;
-//
-//		PolypolyManager.checkUpdateLevel();
-//	},
-//
-//	checkUpdateLevel : function() {
-//		var p = PolypolyManager.levelUpdater;
-//		if (PolypolyManager.levelUpdater.currentLevel >= PolypolyManager.levelUpdater.endLevel) {
-//			PolypolyManager.handleUpdateLevel();
-//		} else {
-//			PolypolyManager.levelUpdater.currentLevel += 1;
-//			if (PolypolyManager.levelUpdater.currentLevel == 2) {
-//				PolypolyManager.updateLevel12(p.sUserID, p.sTechName);
-//			} else if (PolypolyManager.levelUpdater.currentLevel == 3) {
-//				PolypolyManager.updateLevel23(p.sUserID, p.sTechName);
-//			} else {
-//				PolypolyManager.checkUpdateLevel();
-//			}
-//		}
-//	},
-//
-//	handleUpdateLevel : function() {
-//		var p = PolypolyManager.levelUpdater;
-//		if (PolypolyManager.levelUpdater.endLevel == 0) {
-//			PolypolyManager.updateLevelDelete(p.sUserID, p.sTechName);
-//		} else if (PolypolyManager.levelUpdater.startLevel == 0) {
-//			PolypolyManager.updateLevelCreate(p.sUserID, p.sTechName,
-//					p.endLevel);
-//		} else {
-//			PolypolyManager.updateLevel(p.sUserID, p.sTechName, p.startLevel,
-//					p.endLevel);
-//		}
-//	},
-//
+	updateLevelInit : function() {
+		var oModel = sap.ui.getCore().byId("polypoly").getModel();
+		this.levelUpdater.sUserID = this.userComptencyContext.rowBindingContext
+				.getProperty("ERP_ID");
+		this.levelUpdater.sUserName = this.userComptencyContext.rowBindingContext
+				.getProperty("category");
+		this.levelUpdater.sTechName = oModel.getData().columns[airbus.mes.polypoly.PolypolyManager.userComptencyContext.columnIndex + 4].techname;
+		this.levelUpdater.startLevel = parseInt(airbus.mes.polypoly.PolypolyManager.userComptencyContext.rowBindingContext
+				.getProperty(this.levelUpdater.sTechName));
+		this.levelUpdater.endLevel = airbus.mes.polypoly.PolypolyManager.userComptencyContext.newLevel;
+		this.levelUpdater.currentLevel = this.levelUpdater.startLevel;
+
+		airbus.mes.polypoly.PolypolyManager.checkUpdateLevel();
+	},
+
+	checkUpdateLevel : function() {
+		var p = airbus.mes.polypoly.PolypolyManager.levelUpdater;
+		if (airbus.mes.polypoly.PolypolyManager.levelUpdater.currentLevel >= airbus.mes.polypoly.PolypolyManager.levelUpdater.endLevel) {
+			airbus.mes.polypoly.PolypolyManager.handleUpdateLevel();
+		} else {
+			airbus.mes.polypoly.PolypolyManager.levelUpdater.currentLevel += 1;
+			if (airbus.mes.polypoly.PolypolyManager.levelUpdater.currentLevel == 2) {
+				airbus.mes.polypoly.PolypolyManager.updateLevel12(p.sUserID, p.sTechName);
+			} else if (airbus.mes.polypoly.PolypolyManager.levelUpdater.currentLevel == 3) {
+				airbus.mes.polypoly.PolypolyManager.updateLevel23(p.sUserID, p.sTechName);
+			} else {
+				airbus.mes.polypoly.PolypolyManager.checkUpdateLevel();
+			}
+		}
+	},
+
+	handleUpdateLevel : function() {
+		var p = airbus.mes.polypoly.PolypolyManager.levelUpdater;
+		if (airbus.mes.polypoly.PolypolyManager.levelUpdater.endLevel == 0) {
+			airbus.mes.polypoly.PolypolyManager.updateLevelDelete(p.sUserID, p.sTechName);
+		} else if (airbus.mes.polypoly.PolypolyManager.levelUpdater.startLevel == 0) {
+			airbus.mes.polypoly.PolypolyManager.updateLevelCreate(p.sUserID, p.sTechName,
+					p.endLevel);
+		} else {
+			airbus.mes.polypoly.PolypolyManager.updateLevel(p.sUserID, p.sTechName, p.startLevel,
+					p.endLevel);
+		}
+	},
+
 //	updateLevelCreate : function(sUserID, sTechName, sNewLevel) {
 //		var urlqalevelcreate = this.urlModel.getProperty("urlqalevelcreate");
 //

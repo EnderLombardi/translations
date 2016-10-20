@@ -103,7 +103,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 								showFilterMenuEntry : false,
 								width : "8rem",
 								template : new sap.m.Text({
-									text : {
+										text : {
 										parts : [ oContext
 												.getProperty("techname") ],
 										formatter : function(text) {
@@ -473,12 +473,12 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 						}
 					},
 
-//					onChangeClick : function(oEvt) {
-//						airbus.mes.polypoly.PolypolyManager.userComptencyContext.newLevel = oEvt
-//								.getSource().getParent().getItems().indexOf(
-//										oEvt.getSource());
-//						airbus.mes.polypoly.PolypolyManager.updateLevelInit();
-//					},
+					onChangeClick : function(oEvt) {
+						airbus.mes.polypoly.PolypolyManager.userComptencyContext.newLevel = oEvt
+								.getSource().getParent().getItems().indexOf(
+										oEvt.getSource());
+						airbus.mes.polypoly.PolypolyManager.updateLevelInit();
+					},
 
 					onSelectLevelChange : function(oEvt) {
 						var oModel = sap.ui.getCore().byId("polypoly")
@@ -727,30 +727,30 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 						sap.ui.getCore().byId("columnPopupDialog").close();
 					},
 
-//					openConfirmDelete : function(oEvt) {
-//						columnModel.setData();
-//						var oBindingInfo = oEvt.getSource().getParent()
-//								.getParent().getBindingContext();
-//						columnModel.setData({
-//							techname : oBindingInfo.getProperty("techname"),
-//						});
-//
-//						var that = this;
-//						if (!that.delDialog) {
-//							that.delDialog = sap.ui.xmlfragment(
-//									"airbus.confirmDelete", that);
-//						}
-//						that.delDialog.open();
-//					},
+					openConfirmDelete : function(oEvt) {
+						columnModel.setData();
+						var oBindingInfo = oEvt.getSource().getParent()
+								.getParent().getBindingContext();
+						columnModel.setData({
+							techname : oBindingInfo.getProperty("techname"),
+						});
 
-//					onConfirmDelete : function() {
-//						airbus.mes.polypoly.PolypolyManager
-//								.deleteColumn(columnModel.getData().techname);
-//					},
-//
-//					onCancelDelete : function() {
-//						sap.ui.getCore().byId("confirmDeleteDialog").close();
-//					},
+						var that = this;
+						if (!that.delDialog) {
+							that.delDialog = sap.ui.xmlfragment(
+									"airbus.mes.polypoly.confirmDelete", that);
+						}
+						that.delDialog.open();
+					},
+
+					onConfirmDelete : function() {
+						airbus.mes.polypoly.PolypolyManager
+								.deleteColumn(columnModel.getData().techname);
+					},
+
+					onCancelDelete : function() {
+						sap.ui.getCore().byId("confirmDeleteDialog").close();
+					},
 //
 //					onClickInfoUpdate12 : function(oEvt) {
 //						sap.ui.getCore().byId("infoUpdate12").close();
