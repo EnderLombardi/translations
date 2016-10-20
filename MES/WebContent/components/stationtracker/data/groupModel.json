@@ -14,19 +14,61 @@
             },
             "Row":{  
                "Grouping":[  
-                  {  
-                     "Value":"Competency"
-                  },
-                  {  
-                     "Value":"Work Order"
-                  },
-                  {  
-                     "Value":"AVL Path1"
-                  },
-                  {  
-                     "Value":"AVL Path2"
-                  }
+               {
+
+                  "Value": "Competency"
+
+                 },
+
+               {
+
+                  "Value": "AVLLine"
+
+                 },
+               {
+
+                  "Value": "FamilyTarget"
+
+                 },
+                {
+
+                  "Value": "CPPCluster"
+
+                 },
+                {
+
+                  "Value": "AVLFamily"
+
+                 }
                ],
+               "Boxing":[  
+               {
+
+                  "Value": "Operation"
+
+                 },
+
+               {
+
+                  "Value": "WorkOrder"
+
+                 },
+               {
+
+                  "Value": "CPPCluster"
+
+                 },
+                {
+
+                  "Value": "WorkPackage"
+
+                 },
+                {
+
+                  "Value": "AVLFamily"
+
+                 }
+               ],               
                "Status":[  
                   {  
                      "Key":"A",
