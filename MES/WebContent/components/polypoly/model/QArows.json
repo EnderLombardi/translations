@@ -1,22 +1,53 @@
-{ "Rowsets" : { 
-	"DateCreated" : "2016-05-10T13:58:10", "Version" : "15.1 SP1 Patch 0 (Jan 21, 2016)", "StartDate" : "2016-05-10T12:58:10+0200", "EndDate" : "2016-05-10T13:58:10+0200", "CachedTime" : "", 
-	"Rowset" : [ 
-		{ "Columns" : { 
-			"Column" : [ 
-				{ "Name" : "login"}
-			] }, 
-		"Row" : [ 
-			{ "qa" : "QACHESO08"}, 
-			{ "qa" : "QACHESO03"}, 
-			{ "qa" : "QACHESI01"},
-			{ "qa" : "QACHESS00"},
-			{ "qa" : "QACHESO45"},
-			{ "qa" : "QACHESO40"},
-			{ "qa" : "QACHESH13"},
-			{ "qa" : "QACHESS41"},
-			{ "qa" : "QACHESS40"},
-			{ "qa" : "QACHESS33"},
-			{ "qa" : "QACHESS12"}
-		] }
-	] }
- }
+{
+	"Rowsets" : {
+		"DateCreated" : "2016-10-20T17:40:23",
+		"Version" : "15.1 SP2 Patch 13 (Oct 6, 2016)",
+		"StartDate" : "2016-10-20T16:40:23+0200",
+		"EndDate" : "2016-10-20T17:40:23+0200",
+		"CachedTime" : "",
+		"Rowset" : [{
+				"Columns" : {
+					"Column" : [{
+							"Name" : "CERTIFICATION",
+							"SourceColumn" : "CERTIFICATION",
+							"Description" : "CERTIFICATION",
+							"SQLDataType" : -9,
+							"MinRange" : 1,
+							"MaxRange" : 1
+						}
+					]
+				},
+				"Row" : [{
+						"CERTIFICATION": "QACHESTES"
+					}, {
+						"CERTIFICATION": "QACHESBR1"
+					}, {
+						"CERTIFICATION": "QACHESI01"
+					}, {
+						"CERTIFICATION": "QACHESO03"
+					}, {
+						"CERTIFICATION": "QACHESO08"
+					}, {
+						"CERTIFICATION": "QACHESO40"
+					}, {
+						"CERTIFICATION": "QACHESO45"
+					}, {
+						"CERTIFICATION": "QACHESS00"
+					}, {
+						"CERTIFICATION": "QACHESS20"
+					}, {
+						"CERTIFICATION": "QACHESS23"
+					}, {
+						"CERTIFICATION": "QACHESS33"
+					}, {
+						"CERTIFICATION": "QACHESS40"
+					}, {
+						"CERTIFICATION": "QACHESS41"
+					}, {
+						"CERTIFICATION": "QACHESS50"
+					}
+				]
+			}
+		]
+	}
+}

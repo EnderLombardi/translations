@@ -10,10 +10,6 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 					 */
 					onInit : function() {
 						columnModel = new sap.ui.model.json.JSONModel();
-						listQAmodel = new sap.ui.model.json.JSONModel(
-								airbus.mes.polypoly.PolypolyManager.urlModel
-										.getProperty("urlgetqalist"));
-						sap.ui.getCore().setModel(listQAmodel, "listQA");
 					},
 					onAfterRendering : function() {
 //						var oData = sap.ui.getCore().getModel("mii").getData().Rowsets;
@@ -77,6 +73,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 										.getProperty("techname"),
 								showFilterMenuEntry : false,
 								width : "8rem",
+								visible : false,
 								template : new sap.m.Text({
 									visible : {
 										parts : [ "type" ],
@@ -229,7 +226,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 																			formatter : function(
 																					type) {
 																				return type != "UA_A"
-																						&& type != "UA_P"
+																						&& type != "UA_P" && type != "LABEL"
 																			}
 																		}
 																	}) ]
@@ -613,8 +610,9 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 										"listQA").oData.Rowsets.Rowset[0].Row);
 						if (!that.colDialog) {
 							that.colDialog = sap.ui.xmlfragment(
-									"airbus.ColumnPopup", that);
+									"airbus.mes.polypoly.ColumnPopup", that);
 						}
+										
 						var oBindingInfo = oEvt.getSource().getParent()
 								.getParent().getBindingContext();
 						if (oBindingInfo != undefined) {
@@ -672,63 +670,63 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 
 					},
 
-//					onSearch : function(oEvt) {
-//						// add filter for search
-//						var aFilters = [];
-//						var sQuery = oEvt.getSource().getValue();
-//						if (sQuery && sQuery.length > 0) {
-//							var filter = new sap.ui.model.Filter(
-//									"CERTIFICATION",
-//									sap.ui.model.FilterOperator.Contains,
-//									sQuery);
-//							aFilters.push(filter);
-//						}
-//
-//						// update list binding
-//						var table = sap.ui.getCore().byId("oQATable");
-//						var binding = table.getBinding("rows");
-//						binding.filter(aFilters);
-//					},
-//
-//					onSaveColumnPopup : function() {
-//						var sTechname = columnModel.oData.techname
-//								.toUpperCase();
-//						var sName = columnModel.oData.competency;
-//						var sNeed3 = columnModel.oData.need3;
-//						var sNeed4 = columnModel.oData.need4;
-//						var aQAfiltered = columnModel.oData.qa.filter(
-//								function(el) {
-//									return el.selected;
-//								}).map(function(el) {
-//							return el.CERTIFICATION;
-//						});
-//						var sQA = aQAfiltered.toString();
-//
-//						if (aQAfiltered.length <= 5 && sTechname != ""
-//								&& sName != "") {
-//							if (airbus.mes.polypoly.PolypolyManager.internalContext.saveContext == "CREATE") {
-//								airbus.mes.polypoly.PolypolyManager.createColumn(sName, sQA,
-//										sNeed3, sNeed4, sTechname);
-//							} else {
-//								airbus.mes.polypoly.PolypolyManager.updateColumn(sName, sQA,
-//										sNeed3, sNeed4, sTechname);
-//							}
-//						} else if (sTechname == "") {
-//							sap.m.MessageToast
-//									.show("Please enter a Technical Name");
-//						} else if (sName == "") {
-//							sap.m.MessageToast
-//									.show("Please enter a Competency description");
-//						} else if (aQAfiltered.length > 5) {
-//							sap.m.MessageToast
-//									.show("Please select no more than 5 Quality Authorisations");
-//						}
-//					},
-//
-//					onCancelColumnPopup : function() {
-//						sap.ui.getCore().byId("columnPopupDialog").close();
-//					},
-//
+					onSearch : function(oEvt) {
+						// add filter for search
+						var aFilters = [];
+						var sQuery = oEvt.getSource().getValue();
+						if (sQuery && sQuery.length > 0) {
+							var filter = new sap.ui.model.Filter(
+									"CERTIFICATION",
+									sap.ui.model.FilterOperator.Contains,
+									sQuery);
+							aFilters.push(filter);
+						}
+
+						// update list binding
+						var table = sap.ui.getCore().byId("oQATable");
+						var binding = table.getBinding("rows");
+						binding.filter(aFilters);
+					},
+
+					onSaveColumnPopup : function() {
+						var sTechname = columnModel.oData.techname
+								.toUpperCase();
+						var sName = columnModel.oData.competency;
+						var sNeed3 = columnModel.oData.need3;
+						var sNeed4 = columnModel.oData.need4;
+						var aQAfiltered = columnModel.oData.qa.filter(
+								function(el) {
+									return el.selected;
+								}).map(function(el) {
+							return el.CERTIFICATION;
+						});
+						var sQA = aQAfiltered.toString();
+
+						if (aQAfiltered.length <= 5 && sTechname != ""
+								&& sName != "") {
+							if (airbus.mes.polypoly.PolypolyManager.internalContext.saveContext == "CREATE") {
+								airbus.mes.polypoly.PolypolyManager.createColumn(sName, sQA,
+										sNeed3, sNeed4, sTechname);
+							} else {
+								airbus.mes.polypoly.PolypolyManager.updateColumn(sName, sQA,
+										sNeed3, sNeed4, sTechname);
+							}
+						} else if (sTechname == "") {
+							sap.m.MessageToast
+									.show("Please enter a Technical Name");
+						} else if (sName == "") {
+							sap.m.MessageToast
+									.show("Please enter a Competency description");
+						} else if (aQAfiltered.length > 5) {
+							sap.m.MessageToast
+									.show("Please select no more than 5 Quality Authorisations");
+						}
+					},
+
+					onCancelColumnPopup : function() {
+						sap.ui.getCore().byId("columnPopupDialog").close();
+					},
+
 //					openConfirmDelete : function(oEvt) {
 //						columnModel.setData();
 //						var oBindingInfo = oEvt.getSource().getParent()
