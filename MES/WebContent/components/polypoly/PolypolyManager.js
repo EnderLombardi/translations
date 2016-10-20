@@ -6,6 +6,7 @@ airbus.mes.polypoly.PolypolyManager = {
 	
 	globalContext : {
 		tabSelected : undefined,
+		bEditable : undefined,
 	},
 
 	userComptencyContext : {

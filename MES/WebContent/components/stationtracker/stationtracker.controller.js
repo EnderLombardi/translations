@@ -236,21 +236,29 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		
 		jQuery.sap.registerModulePath("airbus.mes.polypoly","../components/polypoly");
 		airbus.mes.stationtracker.AssignmentManager.polypolyAffectation = false;
-		if (!airbus.mes.stationtracker.oPopoverPolypoly) {
-			airbus.mes.stationtracker.oPopoverPolypoly = sap.ui.xmlfragment("airbus.mes.stationtracker.polypolyFragment", this);
-			
-			var oComp = sap.ui.getCore().createComponent({
-	            name : "airbus.mes.polypoly", // root component folder is resources
-	            id : "Comp10",
-	     });	
-			//load model of polypoly
-			airbus.mes.polypoly.ModelManager.loadPolyPolyModel("F1","1","10","CHES");	
-		}
+//		if (!airbus.mes.stationtracker.oPopoverPolypoly) {
+//			airbus.mes.stationtracker.oPopoverPolypoly = sap.ui.xmlfragment("airbus.mes.stationtracker.polypolyFragment", this);
+//			
+//			var oComp = sap.ui.getCore().createComponent({
+//	            name : "airbus.mes.polypoly", // root component folder is resources
+//	            id : "Comp10",
+//	     });	
+//			//load model of polypoly
+//			airbus.mes.polypoly.ModelManager.loadPolyPolyModel("F1","1","10","CHES");	
+//		}
+		sap.ui.getCore().createComponent({
+			name : "airbus.mes.polypoly", // root component folder is resources
+         	});
+		nav.addPage(airbus.mes.polypoly.oView);
+		nav.to(airbus.mes.polypoly.oView.getId());
+		airbus.mes.polypoly.PolypolyManager.globalContext.bEditable = true;
+		airbus.mes.polypoly.ModelManager.loadPolyPolyModel("F1","1","10","CHES");
+		
 		
 		airbus.mes.polypoly.oView.getController().filterUA();
 		// place this Ui Container with the Component inside into UI Area
-		airbus.mes.stationtracker.oPopoverPolypoly.addContent(airbus.mes.polypoly.oView);
-		airbus.mes.stationtracker.oPopoverPolypoly.open();	
+//		airbus.mes.stationtracker.oPopoverPolypoly.addContent(airbus.mes.polypoly.oView);
+//		airbus.mes.stationtracker.oPopoverPolypoly.open();	
 			
 		
 	},

@@ -224,6 +224,8 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 						            id : "Comp10",
 						     });	
 								
+								// set polypoly in non-editable mode
+								airbus.mes.polypoly.PolypolyManager.globalContext.bEditable = false;
 								//load model of polypoly
 								airbus.mes.polypoly.ModelManager.loadPolyPolyModel("F1","1","10","CHES");	
 								
