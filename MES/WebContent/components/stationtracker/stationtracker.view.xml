@@ -247,6 +247,11 @@
 
 			<OverflowToolbar id="toolbarstationtracker" class="white" width="100%">
 				<content>
+ 					<DatePicker	id="DatePicker" width="auto" class="sapUiTinyMarginBeginEnd"  />
+<!-- 					<Label text="{StationTrackerI18n>Shift}"  visible= "{ path : 'stationTrackerShift>/0/visible', formatter : 'airbus.mes.stationtracker.util.Formatter.isDayTimeline' }" /> -->
+					<Select id="selectShift" class="sapUiTinyMarginBeginEnd comboBoxStyle selectShift" change="changeShift" items="{ path : 'stationTrackerShift>/' }" visible= "{ path : 'stationTrackerShift>/0/visible', formatter : 'airbus.mes.stationtracker.util.Formatter.isDayTimeline' }" >
+						<core:Item key="{stationTrackerShift>id}" text="{stationTrackerShift>value}" />
+					</Select>
 					<Label text="{StationTrackerI18n>GroupingSortBy}" />
 					<Select id="selectGroup" class="sapUiTinyMarginBeginEnd comboBoxStyle" change="changeGroup">
 						<core:Item text="Competence" key="CPP_CLUSTER"/>
@@ -256,10 +261,6 @@
 					<Select id="selectBox" class="sapUiTinyMarginBeginEnd comboBoxStyle" change="changeBox">
 						<core:Item text="Operations" key="OPERATION_ID"/>
 						<core:Item text="WorkOrder" key="WORKORDER_ID"/>
-					</Select>
-					<Label text="{StationTrackerI18n>Shift}"  visible= "{ path : 'stationTrackerShift>/0/visible', formatter : 'airbus.mes.stationtracker.util.Formatter.isDayTimeline' }" />
-					<Select id="selectShift" class="sapUiTinyMarginBeginEnd comboBoxStyle selectShift" change="changeShift" items="{ path : 'stationTrackerShift>/' }" visible= "{ path : 'stationTrackerShift>/0/visible', formatter : 'airbus.mes.stationtracker.util.Formatter.isDayTimeline' }" >
-						<core:Item key="{stationTrackerShift>id}" text="{stationTrackerShift>value}" />
 					</Select>
 					<ToolbarSpacer />
 					<HBox id="toolbarDate" class="sapUiTinyMarginBeginEnd"></HBox>

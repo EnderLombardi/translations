@@ -479,5 +479,10 @@ airbus.mes.stationtracker.util.Formatter = {
 		                         return p ? p : n;
 		                  }, 0);
 		           };
+		     },
+		     datepicker : function(sString){
+		    	 console.log("toto");
+		    	 return "toto";
+//		    	 $("div[id="+toolbarDateId+"]").append($("div[class='dhx_cal_date']").contents().clone()); 
 		     }
 };

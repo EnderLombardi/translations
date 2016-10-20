@@ -222,12 +222,14 @@ airbus.mes.stationtracker.ModelManager = {
 			airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(0);
 			airbus.mes.stationtracker.oView.byId("selectShift").fireChange(0)
 			
-			//oView.setMoairbus.mes.stationtracker.oViewdel(new sap.ui.model.json.JSONModel(modelarray),"stationTrackerShift");
-			
-			var toolbarDateId = airbus.mes.stationtracker.oView.byId("toolbarDate").sId;
-			$("div[id="+toolbarDateId+"]").contents().remove();
-			$("div[id="+toolbarDateId+"]").append($("div[class='dhx_cal_date']").contents().clone());
-			
+//			Manage date of date picker
+//			Retrieve text on div dhx_cal_date and split to keep only the date			
+			var oDate = new Date($("div[class='dhx_cal_date']").contents()[0].data.split("-")[0]);
+			var oDatePicker = airbus.mes.stationtracker.oView.byId("DatePicker");
+			oDatePicker.setDateValue(oDate);
+//			TODO : date formatter
+			oDatePicker.setValueFormat("dd-MM-yyyy");
+
 		},
 		onStationTrackerLoad : function() {
 			
