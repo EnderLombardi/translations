@@ -98,6 +98,7 @@ airbus.mes.polypoly.PolypolyManager = {
 		});
 
 		var ressourcePoolsmodel = new sap.ui.model.json.JSONModel();
+		sap.ui.getCore().setModel(ressourcePoolsmodel, "rpModel");
 
 		var aRessourcePools = [];
 		Object.keys(ressourcePools).forEach(function(el) {
@@ -105,6 +106,10 @@ airbus.mes.polypoly.PolypolyManager = {
 			oTemp["rp_id"] = el;
 			oTemp["rp_desc"] = ressourcePools[el];
 			aRessourcePools.push(oTemp)
+		});
+
+		ressourcePoolsmodel.setData({
+			rp : aRessourcePools
 		});
 
 
