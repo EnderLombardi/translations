@@ -281,49 +281,33 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			airbus.mes.stationtracker.worklistPopover = sap.ui.xmlfragment("worklistPopover","airbus.mes.stationtracker.worklistPopover", airbus.mes.stationtracker.oView.getController());
 			airbus.mes.stationtracker.worklistPopover.addStyleClass("alignTextLeft");
 			airbus.mes.stationtracker.oView.addDependent(airbus.mes.stationtracker.worklistPopover);
-			airbus.mes.stationtracker.worklistPopover.setModel(new sap.ui.model.json.JSONModel(sap.ui.getCore().getModel("groupModel").getData()), "groupModel");
-			airbus.mes.stationtracker.ModelManager.loadStationTracker("U");
-			airbus.mes.stationtracker.worklistPopover.setModel(sap.ui.getCore().getModel("unPlannedModel"), "WorkListModel");
-			
+			airbus.mes.stationtracker.worklistPopover.setModel(sap.ui.getCore().getModel("groupModel"),"groupModel");
+				
 			airbus.mes.stationtracker.worklistPopover.setBusyIndicatorDelay(0);
-			
-			sap.ui.getCore().byId("worklistPopover--myList").bindAggregation('items', {
-				path : "WorkListModel>/",
-				template : sap.ui.getCore().byId("worklistPopover--sorterList"),
-				sorter : [ new sap.ui.model.Sorter({
-					// Change this value dynamic
-					path : 'WORKORDER_ID',
-					descending : false,
-					group : true,
-				}), new sap.ui.model.Sorter({
-					path : 'index',
-					descending : false
-				}) ]
-			});
-			
+					
 		}
+		sap.ui.getCore().byId("worklistPopover--myList").bindAggregation('items', {
+			path : "WorkListModel>/",
+			template : sap.ui.getCore().byId("worklistPopover--sorterList"),
+			sorter : [ new sap.ui.model.Sorter({
+				// Change this value dynamic
+				path : 'WORKORDER_ID',
+				descending : false,
+				group : true,
+			}), new sap.ui.model.Sorter({
+				path : 'index',
+				descending : false
+			}) ]
+		});
+		
 //		global variable to manage display on worklist
 		airbus.mes.stationtracker.worklistPopover.unPlanned = true;
 		airbus.mes.stationtracker.worklistPopover.OSW = false;		
-		
-		// Control if the model load has data overwise set not data
-		var oModel = sap.ui.getCore().getModel("unPlannedModel")
 	
-		if(oModel.getProperty("/Rowsets/Rowset/0/Row")){              
-			
-			oModel = sap.ui.getCore().getModel("unPlannedModel").oData.Rowsets.Rowset[0].Row;
-			
-        } else  {
-        	oModel = [];
-        	console.log("no unplanned operation load");
-        }
-		
+		var oModel = sap.ui.getCore().getModel("unPlannedModel");
 	
-		if (oModel && oModel.length > 0 && oModel) {
-			oModel = airbus.mes.stationtracker.util.Formatter.sortWorkList(oModel);
-		}		
 		//Changed the data of the worklist by unplannned model
-		airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").setData(oModel);
+		airbus.mes.stationtracker.worklistPopover.setModel(new sap.ui.model.json.JSONModel(oModel.oData.Rowsets.Rowset[0].Row),"WorkListModel");
 		airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").refresh(true);
 
 		
@@ -336,33 +320,31 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		});		
 	},
 	onOSWPress : function(oEvent) {
+		
 		if ( airbus.mes.stationtracker.worklistPopover === undefined ) {
 			
 			var oView = airbus.mes.stationtracker.oView;
 			airbus.mes.stationtracker.worklistPopover = sap.ui.xmlfragment("worklistPopover","airbus.mes.stationtracker.worklistPopover", airbus.mes.stationtracker.oView.getController());
 			airbus.mes.stationtracker.worklistPopover.addStyleClass("alignTextLeft");
-			oView.addDependent(airbus.mes.stationtracker.worklistPopover);
-			airbus.mes.stationtracker.ModelManager.loadStationTracker("O");
-			airbus.mes.stationtracker.worklistPopover.setModel(sap.ui.getCore().getModel("OSWModel"), "WorkListModel");
+			airbus.mes.stationtracker.oView.addDependent(airbus.mes.stationtracker.worklistPopover);
+			airbus.mes.stationtracker.worklistPopover.setModel(sap.ui.getCore().getModel("groupModel"),"groupModel");
+					
 			airbus.mes.stationtracker.worklistPopover.setBusyIndicatorDelay(0);
 		}
+		sap.ui.getCore().byId("worklistPopover--myList").bindAggregation('items', {
+			path : "WorkListModel>/",
+			template : sap.ui.getCore().byId("worklistPopover--sorterList"),
+			sorter : []
+		});
+		
 		
 		airbus.mes.stationtracker.worklistPopover.unPlanned = true;
 		airbus.mes.stationtracker.worklistPopover.OSW = true;	
 		
-		var oModel = sap.ui.getCore().getModel("OSWModel")
-		
-		if(oModel.getProperty("/Rowsets/Rowset/0/Row")){              
-			
-			oModel = sap.ui.getCore().getModel("OSWModel").oData.Rowsets.Rowset[0].Row;
-			
-        } else  {
-        	oModel = [];
-        	console.log("no OSWModel operation load");
-        }
-		
+		var oModel = sap.ui.getCore().getModel("OSWModel");
+
 		//Changed the data of the worklist by OSW model
-		airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").setData(oModel);
+		airbus.mes.stationtracker.worklistPopover.setModel(new sap.ui.model.json.JSONModel(oModel.oData.Rowsets.Rowset[0].Row),"WorkListModel");
 		airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").refresh(true);
 		
 		// delay because addDependent will do a async rerendering and the popover will immediately close without it

@@ -137,7 +137,11 @@ padding-right: 10px;
 
 .whiteText{
 	color :white;
-	text-align: center !important;
+	width:100%;
+}
+.redText{
+	color:#fe5000;
+	width:100%;
 }
 .centerItems.NS.sapSuiteHdrCellNorth{
 	text-align: center !important;
@@ -213,7 +217,7 @@ color : black;
 }
 .pageHeader {
 	color: white !important;
-	background: #00205B !important;
+	background: #0F2D65 ! important;
 }
 
 .pageStation {
@@ -391,11 +395,12 @@ padding-left: 40px;
 }
 .contentNoPad .sapMPanelContent{
 	padding : 0rem;
-	background-color:#00205B;
+	background-color:#0F2D65;
 /* 	background-color: #178FB3;
  */}
  .contentHeaderCont{
-  	background-color: #00205B;
+  	background-color: #0F2D65;
+  	 border: solid 1px #74d2e7;
  }
 
 .sapMPIText2 {
@@ -512,7 +517,7 @@ div#SPStatusInd.progressBarOP.sapMBarChild.sapMPI{
 	border: none;
 }
 .pageHeaderDialog.sapMDialog>footer{
-	background-color: #0085AD !important;
+	background-color: rgba(0, 32, 91, 0.94) !important;
 }
 
 .begin_shifht {

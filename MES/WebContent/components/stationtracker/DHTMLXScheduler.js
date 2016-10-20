@@ -186,7 +186,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 
 							}
 
-							if (section.name != undefined) {
+							if (section.rescheduled != undefined) {
 
 								return "lineYaxis";
 
