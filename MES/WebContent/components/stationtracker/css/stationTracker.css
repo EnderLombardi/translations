@@ -178,6 +178,11 @@ padding-right: 10px;
 	font-family: "Arial", Sans-serif !important;
 	font-size: 14px !important;
 }
+.tiffanyColor .sapMBtnInner.sapMBtnText {
+	color: #74d2e7 !important;
+	font-family: "Arial", Sans-serif !important;
+	font-size: 14px !important;
+}
  .alignTextLeft .sapMIBar-CTX .sapMTitle{
  	font-family: "Verdana";
     font-weight: bold !important;
@@ -208,7 +213,7 @@ color : black;
 }
 .pageHeader {
 	color: white !important;
-	background: #0085AD !important;
+	background: #00205B !important;
 }
 
 .pageStation {
@@ -326,9 +331,8 @@ color : black;
 padding-left: 40px;
 }
 .iconbuttonTeam .sapMBtnIcon{
-	color : #0085AD !important;
+	color : #74d2e7 !important;
 	border-radius: 50%;
-	border: 2px solid #0085AD;
 	width: 33px;
 	height: 33px;
 }
@@ -387,11 +391,11 @@ padding-left: 40px;
 }
 .contentNoPad .sapMPanelContent{
 	padding : 0rem;
-	background-color:#0085AD;
+	background-color:#00205B;
 /* 	background-color: #178FB3;
  */}
  .contentHeaderCont{
-  	background-color: #178FB3;
+  	background-color: #00205B;
  }
 
 .sapMPIText2 {
