@@ -116,10 +116,12 @@ airbus.mes.stationtracker.util.Formatter = {
 				};				
 			},
 			isDayTimeline : function() {
-				if(airbus.mes.stationtracker.ShiftManager.dayDisplay === undefined) {
-					return false;
-				} else {
+				if(airbus.mes.stationtracker.ShiftManager.dayDisplay) {
 					return airbus.mes.stationtracker.ShiftManager.dayDisplay;
+
+				} else {
+				
+					return false;
 				}
 		
 			},

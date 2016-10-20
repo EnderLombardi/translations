@@ -220,7 +220,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 				
 				var sPaused = "0";
 			}	
-	
+				
 			var oOperation = {
 										
 					"WORKORDER_ID" : el.WORKORDER_ID, // workOrder
@@ -486,9 +486,15 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 		
 		if (ShiftManager.current_Date != undefined) {
 			scheduler.init( airbus.mes.stationtracker.oView.byId("stationtracker").getId() , new Date( ShiftManager.currentFullDate), "timeline");
-		} else {
-			scheduler.init( airbus.mes.stationtracker.oView.byId("stationtracker").getId() , new Date("04/10/2016"),
-					"timeline");
+		} else if ( airbus.mes.stationtracker.ShiftManager.closestShift(new Date()) != -1 ){
+			
+			var fShiftIndex = airbus.mes.stationtracker.ShiftManager.closestShift(new Date());
+			scheduler.init( airbus.mes.stationtracker.oView.byId("stationtracker").getId() ,airbus.mes.stationtracker.ShiftManager.shifts[fShiftIndex].StartDate , "timeline");		
+		
+		} else{
+			
+			scheduler.init(airbus.mes.stationtracker.oView.byId("stationtracker").getId(), airbus.mes.stationtracker.ShiftManager.shifts[airbus.mes.stationtracker.ShiftManager.shifts.length -1 ].StartDate , "timeline");
+			
 		};
 		
 		scheduler.clearAll();

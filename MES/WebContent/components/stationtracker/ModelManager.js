@@ -209,7 +209,7 @@ airbus.mes.stationtracker.ModelManager = {
 		        if(!options.hasOwnProperty(prop)) continue;
 		        
 		        var element = {};
-		        element.id = i;
+		        element.id = prop;
 		        element.value = prop;
 		        element.visible = airbus.mes.stationtracker.ShiftManager.dayDisplay;
 		        modelarray.push(element);
@@ -218,8 +218,19 @@ airbus.mes.stationtracker.ModelManager = {
 			
 			oView.getModel("stationTrackerShift").setData( modelarray );
 			oView.getModel("stationTrackerShift").refresh();
-			airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(0);
-			airbus.mes.stationtracker.oView.byId("selectShift").fireChange(0)
+			
+			if ( airbus.mes.stationtracker.ShiftManager.dayDisplay ){
+				
+			airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(airbus.mes.stationtracker.ShiftManager.current_shift.shiftName);
+			airbus.mes.stationtracker.oView.byId("selectShift").fireChange(0);
+			
+			}
+			
+			if ( airbus.mes.stationtracker.ShiftManager.shiftDisplay ){
+				
+				airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(airbus.mes.stationtracker.ShiftManager.current_shift.shiftName);
+				
+			}
 			
 //			Manage date of date picker
 //			Retrieve text on div dhx_cal_date and split to keep only the date			
