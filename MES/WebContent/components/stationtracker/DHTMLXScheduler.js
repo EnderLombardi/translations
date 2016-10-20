@@ -259,8 +259,9 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 						/* custom initial */
 
 						scheduler.templates.timeline_cell_class = function(evs, date, section) {
+														
 							if (section.initial != undefined) {
-
+								
 								return "initial";
 
 							}
@@ -269,6 +270,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 								return "folderAxisColor";
 
 							}
+							
 						};
 						
 						scheduler.eventId.push ( scheduler.attachEvent("onScaleAdd", function( unit , date ) {

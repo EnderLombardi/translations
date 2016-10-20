@@ -137,7 +137,11 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			$("select[class='selectBoxStation']").eq(i).remove();
 		}
 		
-		scheduler.deleteMarkedTimespan( airbus.mes.stationtracker.ShiftManager.ShiftMarkerID );
+		airbus.mes.stationtracker.ShiftManager.ShiftMarkerID.forEach(function(el){
+			
+			scheduler.deleteMarkedTimespan(el);
+		
+		})
 		airbus.mes.stationtracker.ModelManager.selectMyShift();
 		scheduler.updateView();
 	},
@@ -166,6 +170,10 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		};
 		scheduler.config.preserve_length = true;
 		scheduler.updateView(airbus.mes.stationtracker.ShiftManager.currentShiftStart);
+		
+		// Need this to update selected view and dont brake the behaviour of overflowtoolbar not needed if use Toolbar
+		airbus.mes.stationtracker.oView.byId("buttonViewMode").rerender();
+		airbus.mes.stationtracker.oView.byId("buttonViewMode").setSelectedKey("day");
 		
 		airbus.mes.stationtracker.ModelManager.selectMyShift();
 	},
@@ -313,7 +321,6 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		
 		
 		// delay because addDependent will do a async rerendering and the popover will immediately close without it
-		var oButton = oEvent.getSource();
 		jQuery.sap.delayedCall(0, this, function () {
 //			airbus.mes.stationtracker.worklistPopover.openBy(oButton);	
 			airbus.mes.stationtracker.worklistPopover.open();	
@@ -476,16 +483,29 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		airbus.mes.stationtracker.ShiftManager.ShiftSelectedEnd = intervals[intervals.length - 1].endDateTime;
 		// remove previous marker
 		
+		airbus.mes.stationtracker.ShiftManager.ShiftMarkerID.forEach(function(el){
 				
-		scheduler.deleteMarkedTimespan( airbus.mes.stationtracker.ShiftManager.ShiftMarkerID );
+			scheduler.deleteMarkedTimespan(el);
+		
+		})
+		
+		airbus.mes.stationtracker.ShiftManager.ShiftMarkerID.push(scheduler.addMarkedTimespan({  
+			//get startdate of first shift maybe need to get only the shift day before the current to avoid issue perf?
+			start_date: airbus.mes.stationtracker.ShiftManager.shifts[0].StartDate,
+			end_date: airbus.mes.stationtracker.ShiftManager.ShiftSelectedStart,
+			css:   "shiftCss",
 			
-		airbus.mes.stationtracker.ShiftManager.ShiftMarkerID = scheduler.addMarkedTimespan({  
-			start_date: airbus.mes.stationtracker.ShiftManager.ShiftSelectedStart,
-			end_date: airbus.mes.stationtracker.ShiftManager.ShiftSelectedEnd,
-		    css:   "shiftCss",
-		});
+		}));
 		
-		
+		airbus.mes.stationtracker.ShiftManager.ShiftMarkerID.push(scheduler.addMarkedTimespan({  
+
+			start_date: airbus.mes.stationtracker.ShiftManager.ShiftSelectedEnd,
+			//get enddate of last shift maybe need to get only the shift day before the current to avoid issue perf?
+			end_date: airbus.mes.stationtracker.ShiftManager.shifts[airbus.mes.stationtracker.ShiftManager.shifts.length-1].EndDate,
+			css:   "shiftCss",
+			
+		}));
+				
 		scheduler.updateView();
 		
 		}

@@ -490,13 +490,9 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 	    airbus.mes.stationtracker.ShiftManager.addMarkedShifts();
 	    
 	    if ( airbus.mes.stationtracker.ShiftManager.dayDisplay ) {
-	    
-	    airbus.mes.stationtracker.ShiftManager.ShiftMarkerID = scheduler.addMarkedTimespan({  
-			start_date: airbus.mes.stationtracker.ShiftManager.ShiftSelectedStart,
-			end_date: airbus.mes.stationtracker.ShiftManager.ShiftSelectedEnd,
-		    css:   "shiftCss",
-		});
-	    
+	    	
+	    	airbus.mes.stationtracker.oView.getController().changeShift();
+	    	    
 	    }
 	    
 	    scheduler.xy.scroll_width=20;

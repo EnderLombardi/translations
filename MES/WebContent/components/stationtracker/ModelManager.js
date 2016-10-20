@@ -251,11 +251,10 @@ airbus.mes.stationtracker.ModelManager = {
 
 			if ( airbus.mes.stationtracker.operationPopover === undefined ) {
 				
-				var oView = airbus.mes.stationtracker.oView;
 				airbus.mes.stationtracker.operationPopover = sap.ui.xmlfragment("operationPopover","airbus.mes.stationtracker.operationPopover", airbus.mes.stationtracker.oView.getController());
 				airbus.mes.stationtracker.operationPopover.addStyleClass("alignTextLeft");
 				airbus.mes.stationtracker.operationPopover.setModel(sap.ui.getCore().getModel("WorkListModel"), "WorkListModel");
-			
+				airbus.mes.stationtracker.oView.addDependent(airbus.mes.stationtracker.operationPopover);		
 			}
 			
 			var oNavCon = sap.ui.getCore().byId("operationPopover--navOperatorContainer");
@@ -272,19 +271,17 @@ airbus.mes.stationtracker.ModelManager = {
 			airbus.mes.stationtracker.operationPopover.open();	
 
     	   
-    	   
        },
        
        openWorkListPopover : function( id ) {
     	 
     	   if ( airbus.mes.stationtracker.worklistPopover === undefined ) {
 				
-				var oView = airbus.mes.stationtracker.oView;
 				airbus.mes.stationtracker.worklistPopover = sap.ui.xmlfragment("worklistPopover","airbus.mes.stationtracker.worklistPopover", airbus.mes.stationtracker.oView.getController());
 				airbus.mes.stationtracker.worklistPopover.addStyleClass("alignTextLeft");
 				airbus.mes.stationtracker.worklistPopover.setModel(sap.ui.getCore().getModel("WorkListModel"), "WorkListModel");
 				airbus.mes.stationtracker.worklistPopover.setModel(new sap.ui.model.json.JSONModel(sap.ui.getCore().getModel("groupModel").getData()), "groupModel");
-				
+
 			}
 			
 			airbus.mes.stationtracker.worklistPopover.OSW = false;
@@ -306,6 +303,7 @@ airbus.mes.stationtracker.ModelManager = {
 					
 			airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").setData(oModel);
 			airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").refresh(true);
+			airbus.mes.stationtracker.oView.addDependent(airbus.mes.stationtracker.worklistPopover);			
 			// delay because addDependent will do a async rerendering and the popover will immediately close without it
 			airbus.mes.stationtracker.worklistPopover.open();	
     	   
