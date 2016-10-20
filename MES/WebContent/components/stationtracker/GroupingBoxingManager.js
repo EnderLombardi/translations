@@ -223,31 +223,31 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 	
 			var oOperation = {
 										
-					"shopOrder" : el.WORKORDER_ID, // workOrder
-					"shopOrderDescription": el.WORKORDER_DESCRIPTION,
-					"operationId" : el.OPERATION_ID,
-					"operationDescription" : el.OPERATION_DESCRIPTION,
-					"totalDuration": el.DURATION,
-					"progress" : el.PROGRESS,
+					"WORKORDER_ID" : el.WORKORDER_ID, // workOrder
+					"WORKORDER_DESCRIPTION": el.WORKORDER_DESCRIPTION,
+					"OPERATION_ID" : el.OPERATION_ID,
+					"OPERATION_DESCRIPTION" : el.OPERATION_DESCRIPTION,
+					"DURATION": el.DURATION,
+					"PROGRESS" : el.PROGRESS,
 					//"certification": el.certification,
-					"startDate" : el.START_TIME,
-					"endDate" : el.END_TIME,
-					"status": el.STATE,
+					"START_TIME" : el.START_TIME,
+					"END_TIME" : el.END_TIME,
+					"STATE": el.STATE,
 					//"disruptions": el.disruptions,
-					"andons": el.ANDONS,
-					"routingMaturityAssessment": el.ROUTING_MATURITY_ACCESSMENT,
+					"ANDONS": el.ANDONS,
+					"ROUTING_MATURITY_ACCESSMENT": el.ROUTING_MATURITY_ACCESSMENT,
 					"paused" : sPaused,
 					//"ata": el.ata,
 					//"familyTarget": el.familyTarget,
-					"cppCluster" : el.CPP_CLUSTER,
+					"CPP_CLUSTER" : el.CPP_CLUSTER,
 					//"workPackage" : el.workPackage,
 					//"avlPath1": el.avlPath1,
 					//"avlPath2": el.avlPath2,
-					"criticalPath" : el.CRITICAL_PATH,
+					"CRITICAL_PATH" : el.CRITICAL_PATH,
 					//"avlStartDate" : el.avlStartDate,
 					//"avlEndDate" : el.avlEndDate,
-					"avlLine": el.AVL_LINE,
-					"productionGroup":el.PROD_GROUP,
+					"AVL_LINE": el.AVL_LINE,
+					"PROD_GROUP":el.PROD_GROUP,
 					//"competency": el.competency,
 					//"rescheduledStarDate": el.rescheduledStarDate,
 					//"rescheduledEndDate": el.rescheduledEndDate,
@@ -318,21 +318,28 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 				if ( key1.slice(0,2) === "I_" ) {
 					
 					var oInitialGroup = {
-								
+							
+							"avlLine" : key1,
 							"key": "I_" + airbus.mes.stationtracker.AssignmentManager.idName(key) + "_" + airbus.mes.stationtracker.AssignmentManager.idName(key1),
 							"initial":"Initial plan",
 						}
 				
-					aElements2[fGroupIndex].children.unshift(oInitialGroup);
-						
+				// find index of initial avl line in the current group corresponding to the reschedule avlLine	
+					var fIndex = aElements2[fGroupIndex].children.map(function(x) {return x.avlLine; }).indexOf(key1.slice(2)); 
+					if (fIndex >= 0 )	 {
+				
+				// Add in aElements2 the initial avlLine just before the rescheduled corresponding avl to have the correct display order
+					aElements2[fGroupIndex].children.splice(fIndex, 0, oInitialGroup );
 					} else {
+					
+						console.log( "no avlLine initial corresponding to RESCHEDULED AVLlINE,avline inserted first");
+						aElements2[fGroupIndex].children.splice(0, 0, oInitialGroup );
+					}
+				} else {
 				
 				
 				var ochild = {
-						
-						"hours" : "6.0hrs",
-						"subname" : "JJ",
-						"name" : "JAE J.",
+						"rescheduled" : "R",			
 						"avlLine" : key1,
 						"key": airbus.mes.stationtracker.AssignmentManager.idName(key) + "_" + airbus.mes.stationtracker.AssignmentManager.idName(key1),
 				}
@@ -352,7 +359,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 					var sPaused = [];
 					
 					var sShopOrderDescription = "";
-					var sShopOrder = "";
+					var sWORKORDER_ID = "";
 					var sOperationDescription = "";
 					var sOperationId = "";
 					var sRoutingMaturityAssessment = "";
@@ -366,39 +373,39 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 					oModel[key][key1][key2].forEach( function( el ) { 
 						
 						//Store in array value needed to be compare in case of boxing
-						aStartDateRescheduling.push(Date.parse(oFormatter.jsDateFromDayTimeStr(el.startDate)));
-						aEndDateRescheduling.push(Date.parse(oFormatter.jsDateFromDayTimeStr(el.endDate)));
+						aStartDateRescheduling.push(Date.parse(oFormatter.jsDateFromDayTimeStr(el.START_TIME)));
+						aEndDateRescheduling.push(Date.parse(oFormatter.jsDateFromDayTimeStr(el.END_TIME)));
 						aDisruptions.push(el.disruptions);
-						aAndons.push(el.andons);
-						aTotalDuration.push( el.totalDuration );
+						aAndons.push(el.ANDONS);
+						aTotalDuration.push( el.DURATION );
 						sPaused.push(el.paused);
 						
 						
-						sShopOrderDescription = el.shopOrderDescriptio;
-						sShopOrder = el.shopOrder;
-						sOperationDescription = el.operationDescription;
-						sOperationId = el.operationId;
-						sProgress = el.progress;
-						fCriticalPath = el.criticalPath;
+						sShopOrderDescription = el.WORKORDER_DESCRIPTION;
+						sShopOrder = el.WORKORDER_ID;
+						sOperationDescription = el.OPERATION_DESCRIPTION;
+						sOperationId = el.OPERATION_ID;
+						sProgress = el.PROGRESS;
+						fCriticalPath = el.CRITICAL_PATH;
 						sOperationDescription = el.sBox;
-						sStatus = el.status;
-						sRoutingMaturityAssessment = el.routingMaturityAssessment
+						sStatus = el.STATE;
+						sRoutingMaturityAssessment = el.ROUTING_MATURITY_ACCESSMENT
 					
 
 						
 						if ( sBox === oGroupingBoxingManager.specialGroup) {
 							
-							sOperationDescription = el.shopOrderDescription;
+							sOperationDescription = el.WORKORDER_DESCRIPTION;
 							
 						}
 						
 						if ( sBox === "OPERATION_ID") {
 							
-							sOperationDescription = el.operationDescription;
+							sOperationDescription = el.OPERATION_DESCRIPTION;
 							
 						}
 						
-						sOperationId = el.operationId;
+						sOperationId = el.OPERATION_ID;
 						
 					} )
 					
@@ -454,7 +461,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 //						"type":"I",
 //						"text" : sOperationDescription,
 //						"section_id" : 	"I_" + airbus.mes.stationtracker.AssignmentManager.idName(i),
-//						"progress" : sProgress,
+//						"START_TIME" : sProgress,
 //						"start_date" : new Date(Math.min.apply(null,aStartDateInitial)),
 //						"end_date" : new Date(Math.max.apply(null,aEndDateInitial)),
 //					}

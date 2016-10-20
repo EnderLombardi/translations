@@ -346,21 +346,26 @@ airbus.mes.stationtracker.util.Formatter = {
 	
 					} else {
 
-						var html = '<div><i class="fa fa-plus-circle"  style="float:left; padding-left:4px;" ></i><span class="ylabel">Select operator</span></div>';
+						var html = '<div><i class="fa  fa-pencil"  style="float:left; padding-left:4px;" ></i><span class="ylabel">'
+							+ airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("SelectOperator") + '</span></div>';
 						return html;
 				
 						}
 				} else {
 
-					var html = '<div><i class="fa fa-plus-circle"  style="float:left; padding-left:4px;" ></i><span class="ylabel">Select operator</span></div>';
+					var html = '<div><i class="fa  fa-pencil"  style="float:left; padding-left:4px;" ></i><span class="ylabel">'
+						+ airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("SelectOperator") + '</span></div>';
 					return html;
+			
 			
 					}
 	
 			} else {
 
-				var html = '<div><i class="fa fa-plus-circle"  style="float:left; padding-left:4px;" ></i><span class="ylabel">Select operator</span></div>';
+				var html = '<div><i class="fa  fa-pencil"  style="float:left; padding-left:4px;" ></i><span class="ylabel">'
+					+ airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("SelectOperator") + '</span></div>';
 				return html;
+		
 		
 				}
 				
@@ -474,5 +479,10 @@ airbus.mes.stationtracker.util.Formatter = {
 		                         return p ? p : n;
 		                  }, 0);
 		           };
+		     },
+		     datepicker : function(sString){
+		    	 console.log("toto");
+		    	 return "toto";
+//		    	 $("div[id="+toolbarDateId+"]").append($("div[class='dhx_cal_date']").contents().clone()); 
 		     }
 };

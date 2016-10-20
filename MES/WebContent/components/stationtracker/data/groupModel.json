@@ -14,35 +14,73 @@
             },
             "Row":{  
                "Grouping":[  
-                  {  
-                     "Value":"Competency"
-                  },
-                  {  
-                     "Value":"Work Order"
-                  },
-                  {  
-                     "Value":"AVL Path1"
-                  },
-                  {  
-                     "Value":"AVL Path2"
-                  }
+               {
+
+                  "Value": "GroupingCompetency"
+
+                 },
+
+               {
+
+                  "Value": "GroupingAVLLine"
+
+                 },
+               {
+
+                  "Value": "GroupingFamiltyTarget"
+
+                 },
+                {
+
+                  "Value": "GroupingCPPCluster"
+
+                 },
+                {
+
+                  "Value": "GroupingAVLFamily"
+
+                 }
                ],
+               "Boxing":[  
+               {
+
+                  "Value": "BoxingOperation"
+
+                 },
+
+               {
+
+                  "Value": "BoxingWorkOrder"
+
+                 },
+               {
+
+                  "Value": "BoxingCPPCluster"
+
+                 },
+                {
+
+                  "Value": "BoxingWorkPackage"
+
+                 },
+                {
+
+                  "Value": "BoxingAVLFamily"
+
+                 }
+               ],               
                "Status":[  
                   {  
-                     "Key":"A",
-                     "Value":"All"
+                     "Value":"StatusAll"
                   },
                   {  
-                     "Key":"S",
-                     "Value":"Started"
+                     "Value":"StatusStarted"
                   },
                   {  
-                     "Key":"N",                  
-                     "Value":"No Started"
+                     "Value":"StatusNotStarted"
                   },
                   {  
-                  	 "Key":"C",
-                     "Value":"Confirmed"
+                     "Value":"StatusConfirmed"
                   }
                ]
             }
