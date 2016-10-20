@@ -1,3 +1,6 @@
+.div.Left.sapSuiteDmcBarInternal{
+	background:#006CA7;
+}
 .selectBoxStation {
 	height: 30px;
 	padding-left: 10px;
@@ -136,10 +139,12 @@ padding-right: 10px;
 }
 
 .whiteText{
+	text-align : center ! important;
 	color :white;
 	width:100%;
 }
 .redText{
+	text-align : center ! important;
 	color:#fe5000;
 	width:100%;
 }
@@ -399,8 +404,11 @@ padding-left: 40px;
 /* 	background-color: #178FB3;
  */}
  .contentHeaderCont{
-  	background-color: #0F2D65;
-  	 border: solid 1px #74d2e7;
+  	 background-color: #0F2D65;
+    border-right: solid 1px #74d2e7;
+    margin: 0px ! important;
+    border-bottom: none;
+    border-top: solid 1px #74d2e7;
  }
 
 .sapMPIText2 {

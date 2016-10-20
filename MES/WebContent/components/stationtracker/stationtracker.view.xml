@@ -8,7 +8,7 @@
 			<Panel expandable="true" expanded="true"
 				class="pageHeader sapUiSmallMarginTop contentNoPad">
 				<headerToolbar>
- 					<Toolbar>
+ 					<Toolbar >
 						<Label text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/station', formatter : 'airbus.mes.stationtracker.util.Formatter.stationTrackerStation' }" class="pageTitle sapUiTinyMarginBeginEnd" />
  						<Label text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/msn', formatter : 'airbus.mes.stationtracker.util.Formatter.stationTrackerMsn' }" class="pageWelcome sapUiTinyMarginBeginEnd" /> 
 						<Label text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/plant', formatter : 'airbus.mes.stationtracker.util.Formatter.stationTrackerPlant' }" class="pageWelcome sapUiTinyMarginBeginEnd" />
@@ -20,7 +20,7 @@
 					</Toolbar>
 				</headerToolbar>
 				<content>
-					<suite:HeaderContainer showDividers="false" backgroundDesign="Solid">
+						<suite:HeaderContainer showDividers="false" backgroundDesign="Solid">
 						<suite:items>
 	
 						<suite:HeaderCell  height="10rem" class="contentHeaderCont">
@@ -108,7 +108,7 @@
 									<suite:HeaderCellItem height="100%">
 										<suite:content>
 											<HBox  height="100%">
-												<VBox  height="100%" >
+												<VBox  height="100%">
 													<Label text="{StationTrackerI18n>LabourEfficiency}" class="sapUiLargeMarginEnd whiteText" />
 													<Label height="80%" text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/Labour}" design="Bold" class="sapUiSmallMarginTop kpiValue whiteText " />
 												</VBox>
