@@ -48,12 +48,15 @@ airbus.mes.stationtracker.Component.prototype.createContent = function() {
 	     });
 		this.oView.setModel(i18nModel, "StationTrackerI18n");		
 		airbus.mes.stationtracker.oView = this.oView		
-		this.oView.setModel(sap.ui.getCore().getModel("userSettingModel"),	"userSettingModel");
+		//this.oView.setModel(sap.ui.getCore().getModel("userSettingModel"),	"userSettingModel");
 		this.oView.setModel(sap.ui.getCore().getModel("stationTrackerShift"),"stationTrackerShift");
 		this.oView.setModel(sap.ui.getCore().getModel("productionGroupModel"), "productionGroupModel");
 		this.oView.setModel(sap.ui.getCore().getModel("KPI"), "KPI");
 		this.oView.setModel(sap.ui.getCore().getModel("groupModel"), "groupModel");
-
+		this.oView.setModel(sap.ui.getCore().getModel("affectationModel"), "affectationModel");
+		this.oView.setModel(sap.ui.getCore().getModel("ressourcePoolModel"), "ressourcePoolModel");
+		
+		
 		return this.oView;
 	}
 };

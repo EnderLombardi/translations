@@ -265,17 +265,6 @@ color : black;
 	background: #006CA7 !important;
 }
 
-.pageTitle {
-	color: white !important;
-	font-family: "Arial", Sans-serif !important;
-	font-size: 24px !important;
-}
-
-.pageWelcome {
-	color: white !important;
-	font-family: "Arial", Sans-serif !important;
-	font-size: 14px !important;
-}
 .pageWelcome2 {
 	font-weight : bold;
 	 text-align: center !important;

@@ -25,7 +25,7 @@ airbus.mes.settings.ModelManager = {
 		core.setModel(new sap.ui.model.json.JSONModel(), "plantModel");
 		core.setModel(new sap.ui.model.json.JSONModel(), "siteModel");
 		core.setModel(new sap.ui.model.json.JSONModel(), "langModel");
-		core.setModel(new sap.ui.model.json.JSONModel(), "userSettingModel");
+		//core.setModel(new sap.ui.model.json.JSONModel(), "userSettingModel");
 
 		var dest;
 
@@ -97,7 +97,7 @@ airbus.mes.settings.ModelManager = {
 		
 	},
 	loadUserSettingsModel:function(){
-		var oUserSettingModel = this.core.getModel("userSettingModel");
+		var oUserSettingModel = sap.ui.getCore().getModel("userSettingModel");
 		oUserSettingModel.loadData(airbus.mes.settings.ModelManager.getUrlUserSetting(),null,false);
 		
 		//Set Data

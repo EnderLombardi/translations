@@ -234,19 +234,7 @@ airbus.mes.stationtracker.util.Formatter = {
 				return ((sDuration * 100 * 0.001)/3600).toFixed(4);
 			},
 			
-			stationTrackerStation : function(Station) {
-//				sap.ui.getCore().getModel("StationTrackerI18n").getProperty("Station");
-				return airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("Station") + " " + Station;
-			},
-			stationTrackerMsn : function(Msn) {
-				return airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("MSN") + " " + + Msn;
-			},
-			stationTrackerPlant : function(Plant) {
-				return airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("Plant") + " " + Plant;
-			},
-			stationTrackerLine : function(Line) {
-				return airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("Line") + " " + Line;
-			},
+			
 			titleWorklist : function(workOrder, workOrderDescritpion) {
 				return workOrder + " - " + workOrderDescritpion
 			},
