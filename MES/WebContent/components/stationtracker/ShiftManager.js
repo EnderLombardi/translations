@@ -529,19 +529,11 @@ airbus.mes.stationtracker.ShiftManager = {
 //			this.firstTimelineStart = false;
 //		};
 
-			
-		if ( this.fSwipe ) {	
-				
-				this.truc = 0;
-				return new Date(date);
-		}
-
 		if ( this.shiftDisplay ) {
 		
-	    scheduler.matrix.timeline.x_size = Math.floor((new Date(this.shifts[c].EndDate) - new Date(this.shifts[c].StartDate))/1000/60/30);
+	    scheduler.matrix.timeline.x_size = Math.ceil((new Date(this.shifts[c].EndDate) - new Date(this.shifts[c].StartDate))/1000/60/30);
 	  	  
-	    //date = new Date(this.shifts[c].StartDate)
-	    //.setMinutes(00)
+	    var date = new Date(this.shifts[c].StartDate).setMinutes(00);
 	    
 	    return new Date( date );
 	    
@@ -605,7 +597,7 @@ airbus.mes.stationtracker.ShiftManager = {
 				
 			}
 			/**Compute the number of 1hour step needed to display all the time between start and day of the current day */ 
-		    scheduler.matrix.timeline.x_size += Math.floor((new Date(fEndDate) - new Date(fStartDate))/1000/60/60);
+		    scheduler.matrix.timeline.x_size += Math.ceil((new Date(fEndDate) - new Date(fStartDate))/1000/60/60);
 		    scheduler.matrix.timeline.x_size += Math.ceil(fTotalMS/1000/60/60);
 		    	
 			return new Date (new Date ( fStartDate ).setMinutes(00));

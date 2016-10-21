@@ -46,21 +46,21 @@
 
               {
 
-                  "user": "pierre",
+                  "user": "John A.",
 
-                  "firstName": "pierre",
+                  "firstName": "John A.",
 
-                  "lastName": "barillon",
+                  "lastName": "John A.",
 
                   "picture": "toto",
 
                   "avlLine": "1",
 
-                  "shiftName": "NORMAL 1",
+                  "shiftName": "NIGHT 2",
 
-                  "shiftID": "NORMAL 1",
+                  "shiftID": "NIGHT 2",
 
-                  "day": "2016-10-03"
+                  "day": "2016-10-18"
 
                }
 

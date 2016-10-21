@@ -318,6 +318,7 @@ airbus.mes.stationtracker.util.Formatter = {
 
 				}
 				
+				// User affectation
 				// TODO maybe replace date + name by the Id of the shift?
 				var sShiftDate = airbus.mes.stationtracker.ShiftManager.current_shift.day;
 				var sShiftName = airbus.mes.stationtracker.ShiftManager.current_shift.shiftName;
@@ -336,9 +337,14 @@ airbus.mes.stationtracker.util.Formatter = {
 						// See SD there is only one user affected for the couple of shift id + avlLine
 						var oCurrentAffectedUser = airbus.mes.stationtracker.AssignmentManager.affectationHierarchy[oSection.avlLine][sShiftDate][sShiftName][0];
 						
-						if (oSection.name && oSection.subname) {
-							var html = '<div><span class="rond" title='	+ airbus.mes.stationtracker.util.Formatter.spaceInsecable(oCurrentAffectedUser.firstName)
-									+ ' >'	+ oCurrentAffectedUser.firstName + '</span><span class="ylabel" title='
+						if ( oSection.rescheduled ) {
+							
+							var html = '<div><IMG src="../images/user.png" style="float:left;height:25px; padding-right:10px;"/>'
+									
+//								span class="rond" title='	+ airbus.mes.stationtracker.util.Formatter.spaceInsecable(oCurrentAffectedUser.firstName)
+//									+ ' >'+ oCurrentAffectedUser.firstName + '</span>
+									
+								+ '<span class="ylabelUser" title='
 									+ airbus.mes.stationtracker.util.Formatter.spaceInsecable(oCurrentAffectedUser.firstName) + '>'
 									+ oCurrentAffectedUser.lastName	+ '</span><span  style="float: right;margin-right: 5px;" >' + "hrs"
 									+ '</span></div>';

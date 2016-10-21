@@ -4,7 +4,7 @@
 		<HBox justifyContent="Center" class="sapUiSmallMarginTopBottom">
 			<items>
 				<Title id="operationStatus"
-					text="{parts: ['operationDetailModel>/schedule/status', 'operationDetailModel>/schedule/progress'], formatter:'airbus.mes.worktracker.util.Formatter.setSliderStatus'}" level="H1"
+					text="{parts: ['operationDetailModel>/schedule/status', 'operationDetailModel>/schedule/progress'], formatter:'airbus.mes.operationdetail.Formatter.setSliderStatus'}" level="H1"
 					titleStyle="H3" />
 			</items>
 		</HBox>
@@ -21,11 +21,11 @@
 				</layoutData>
 				<Slider id="progressSliderfirst" class="comfirmedProgressSlider" 
 					min="0"
-					width="{parts:['operationDetailModel>/schedule/status', 'operationDetailModel>/schedule/progress'], formatter:'airbus.mes.worktracker.util.Formatter.sliderStatusFirst' }"
+					width="{parts:['operationDetailModel>/schedule/status', 'operationDetailModel>/schedule/progress'], formatter:'airbus.mes.operationdetaill.Formatter.sliderStatusFirst' }"
 					editable="false" enabled="false">
 				</Slider>
 				<Slider id="progressSlider" class="dynProgressSlider sliderInprogressColor" max="100" showHandleTooltip="true"
-					width="{parts: ['operationDetailModel>/schedule/status', 'operationDetailModel>/schedule/progress'], formatter: 'airbus.mes.worktracker.util.Formatter.sliderStatus' }"
+					width="{parts: ['operationDetailModel>/schedule/status', 'operationDetailModel>/schedule/progress'], formatter: 'airbus.mes.operationdetail.Formatter.sliderStatus' }"
 					enabled="true">
 				</Slider>
 

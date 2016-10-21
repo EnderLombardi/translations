@@ -1,3 +1,17 @@
+.ylabelUser {
+	position: relative;
+	width: 120px;
+	display: inline-block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+ line-height: 25px;
+ font-size: 18px;
+   font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  color: rgba(0, 86, 112, 0.94);
+ }
+
 .div.Left.sapSuiteDmcBarInternal{
 	background:#006CA7;
 }
@@ -48,7 +62,14 @@ height: 0rem;
 .ylabel:hover .tooltip {
     visibility: visible;
 }
-.tooltip{
+.ylabel {
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	color: rgba(0, 86, 112, 0.94);
+}
+
+.tooltip {
         visibility: hidden;
     position: absolute;
     width: 120px;
