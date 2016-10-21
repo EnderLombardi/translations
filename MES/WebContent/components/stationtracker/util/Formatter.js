@@ -346,7 +346,7 @@ airbus.mes.stationtracker.util.Formatter = {
 									
 								+ '<span class="ylabelUser" title='
 									+ airbus.mes.stationtracker.util.Formatter.spaceInsecable(oCurrentAffectedUser.firstName) + '>'
-									+ oCurrentAffectedUser.lastName	+ '</span><span  style="float: right;margin-right: 5px;" >' + "hrs"
+									+ oCurrentAffectedUser.lastName	+ '</span><span  class="yHrLabel" >' + "hrs"
 									+ '</span></div>';
 							return html;
 	
