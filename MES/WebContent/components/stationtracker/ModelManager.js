@@ -327,6 +327,12 @@ airbus.mes.stationtracker.ModelManager = {
     		   airbus.mes.stationtracker.operationDetailPopup.addStyleClass("alignTextLeft");
     		   airbus.mes.stationtracker.oView.addDependent(airbus.mes.stationtracker.operationDetailPopup);		
 			}
+    	   if (airbus.mes.operationdetails === undefined) {
+    		   var oOperationDetailComp = sap.ui.getCore().createComponent({
+                   name: "airbus.mes.operationdetail",
+                   id: "operationDetailComp"
+          });
+    	    }
     	   airbus.mes.stationtracker.operationDetailPopup.open();
     	   
        },
