@@ -137,7 +137,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 							var oColumn = new sap.ui.table.Column(
 									{
 										hAlign : "Center",
-										width : "3rem",
+										width : "2rem",
 										template : new sap.m.VBox(
 												{
 													items : [
@@ -485,7 +485,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 								.getModel();
 						var columnData = oModel.getData().columns[oEvt
 								.getSource().getParent().getParent().getCells()
-								.indexOf(oEvt.getSource().getParent()) + 3];
+								.indexOf(oEvt.getSource().getParent()) + 4];
 						var sPath = oEvt.getSource().getBindingContext()
 								.getPath();
 						var sNeed = oEvt.getSource().getBindingContext()
@@ -751,11 +751,11 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 					onCancelDelete : function() {
 						sap.ui.getCore().byId("confirmDeleteDialog").close();
 					},
-//
-//					onClickInfoUpdate12 : function(oEvt) {
-//						sap.ui.getCore().byId("infoUpdate12").close();
-//						airbus.mes.polypoly.PolypolyManager.checkUpdateLevel();
-//					},
+
+					onClickInfoUpdate12 : function(oEvt) {
+						sap.ui.getCore().byId("infoUpdate12").close();
+						airbus.mes.polypoly.PolypolyManager.checkUpdateLevel();
+					},
 
 					statusFormatter : function(status) {
 						if (status == "OK") {
@@ -773,14 +773,14 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 						}
 					},
 
-//					onContinueInfoUpdate23 : function() {
-//						sap.ui.getCore().byId("infoUpdate23").close();
-//						airbus.mes.polypoly.PolypolyManager.checkUpdateLevel();
-//					},
-//
-//					onCancelInfoUpdate23 : function() {
-//						sap.ui.getCore().byId("infoUpdate23").close();
-//					},
+					onContinueInfoUpdate23 : function() {
+						sap.ui.getCore().byId("infoUpdate23").close();
+						airbus.mes.polypoly.PolypolyManager.checkUpdateLevel();
+					},
+
+					onCancelInfoUpdate23 : function() {
+						sap.ui.getCore().byId("infoUpdate23").close();
+					},
 
 					onColumnMove : function(oEvt) {
 						var newPos = oEvt.getParameters().newPos;
