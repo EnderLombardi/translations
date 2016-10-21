@@ -1,5 +1,8 @@
-<core:FragmentDefinition xmlns="sap.m"
-	xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout">
+<core:View xmlns="sap.m"
+	xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml"
+	controllerName="airbus.mes.operationdetail.progressSlider">
+	<Page enableScrolling="false" >
+		<content >
 	<VBox width="100%" justifyContent="SpaceBetween">
 		<HBox justifyContent="Center" class="sapUiSmallMarginTopBottom">
 			<items>
@@ -63,10 +66,7 @@
 		</Toolbar>
 		</l:Grid>
 	</VBox>
+	</content>
+	</Page>
+	</core:View>
 
-<!-- 	<VBox class="sapUiMediumMarginTop"> -->
-<!-- 		<Title titleStyle="H3" level="H2" text="Activity" /> -->
-<!-- 		<Text text="- Users  have not activated this operation" -->
-<!-- 			textAlign="Right"></Text> -->
-<!-- 	</VBox> -->
-</core:FragmentDefinition>

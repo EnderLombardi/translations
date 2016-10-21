@@ -1,0 +1,36 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout"
+	xmlns:u="sap.ui.unified" xmlns:x="sap.uxap" xmlns:custom="airbus.mes.stationtracker">
+	<Dialog id="operationPopoverID" showHeader="false" contentWidth="770px"
+		contentHeight="395px" verticalScrolling="false" class="noFooterDialog">
+		<content>
+		
+				<Page id="master" showHeader="false">
+					<content>
+						<!-- <core:Fragment type="XML"
+							fragmentName="airbus.mes.operationdetail.progressSlider" /> -->
+					</content>
+					<footer>
+						<Toolbar class="pageHeader">
+
+								<ToolbarSpacer />
+							<Button text="{StationTrackerI18n>OperationPopupButtonReschedule}" type="Transparent" icon="sap-icon://pending"
+								class="sapUiTinyMarginBeginEnd" press="onReschedulePress">
+							</Button>
+							<ToolbarSeparator class="toolbarSeparatorWhite" />
+
+							<Button text="{StationTrackerI18n>OperationPopupButtonAddOperator}" type="Transparent" icon="sap-icon://company-view"
+								class="sapUiTinyMarginBeginEnd" press="onAssignOpPress">
+							</Button>
+							<Button text="{StationTrackerI18n>OperationPopupButtonOSW}" type="Transparent" icon="sap-icon://forward"
+								class="sapUiTinyMarginBeginEnd" press="onSetOSWPress">
+							</Button>
+						</Toolbar>
+					</footer>
+				</Page>
+				
+				</content>
+				</Dialog>
+				</core:FragmentDefinition> 
+
+				

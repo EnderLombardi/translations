@@ -7,6 +7,9 @@ jQuery.sap.require("airbus.mes.stationtracker.ModelManager");
 jQuery.sap.require("airbus.mes.stationtracker.customProgressIndicator");
 
 jQuery.sap.registerModulePath("airbus.mes.dhtmlx", "../lib/dhtmlxscheduler");
+//operation detail popover
+jQuery.sap.registerModulePath("airbus.mes.operationdetail", "../components/operationdetail");
+jQuery.sap.require("airbus.mes.operationdetail.Formatter");
 
 jQuery.sap.require("airbus.mes.dhtmlx.dhtmlxscheduler");
 jQuery.sap.require("airbus.mes.dhtmlx.ext.dhtmlxscheduler_limit");

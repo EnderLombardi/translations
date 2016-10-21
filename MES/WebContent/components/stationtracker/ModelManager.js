@@ -316,6 +316,18 @@ airbus.mes.stationtracker.ModelManager = {
 
     	   
        },
+       // open operation detail popup containing progress slider
+       openOperationDetailPopup:function( id){
+    	   if ( airbus.mes.stationtracker.operationDetailPopup === undefined ) {
+				
+    		   airbus.mes.stationtracker.operationDetailPopup= sap.ui.xmlfragment("operationDetailPopup","airbus.mes.stationtracker.fragments.operationDetailPopup", airbus.mes.stationtracker.oView.getController());
+    		   airbus.mes.stationtracker.operationDetailPopup.addStyleClass("alignTextLeft");
+				//airbus.mes.stationtracker.operationDetailPopup.setModel(sap.ui.getCore().getModel("WorkListModel"), "WorkListModel");
+				airbus.mes.stationtracker.oView.addDependent(airbus.mes.stationtracker.operationDetailPopup);		
+			}
+    	   airbus.mes.stationtracker.operationDetailPopup.open();
+    	   
+       },
        
        openWorkListPopover : function( id ) {
     	 
@@ -370,7 +382,8 @@ airbus.mes.stationtracker.ModelManager = {
     	  switch(airbus.mes.stationtracker.GroupingBoxingManager.box){
 			case "OPERATION_ID" : 
 //				//Boxing operation, we display the operation list
-				airbus.mes.stationtracker.ModelManager.openOperationPopOver(id);
+				//airbus.mes.stationtracker.ModelManager.openOperationPopOver(id);
+				airbus.mes.stationtracker.ModelManager.openOperationDetailPopup(id);
 				break;
 				
 			case "WORKORDER_ID" :	

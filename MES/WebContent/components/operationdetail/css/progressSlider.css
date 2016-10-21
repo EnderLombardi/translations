@@ -1,0 +1,51 @@
+/**************************************
+*classes for Progress Slider Screen
+****************************************/
+.progressSlider{
+	display:block !important;
+}
+.progressSlider .comfirmedProgressSlider{
+	float:left !important;
+}
+.progressSlider .dynProgressSlider{
+	margin-left:-2.09rem !important;
+}
+.sliderInprogressColor .sapMSliderProgress{
+	background-color: lime !important;
+	//background: #007cc0;
+}
+
+.sliderBlockedColor .sapMSliderProgress{
+	background-color: darkorange !important;
+}
+ .comfirmedProgressSlider{
+	opacity:1 !important;
+}
+.sliderCompletedColor .sapMSliderProgress{
+	background-color: #007cc0 !important;
+}
+.progressSlider .dynProgressSlider{
+	margin-left:-2.09rem !important;
+}
+.sliderInprogressColor .sapMSliderProgress{
+	background-color: lime !important;
+	//background: #007cc0;
+}
+.progressSliderColorGreen .sapMSliderProgress{
+	background-color: rgb(132,196,65) !important;
+}
+
+.progressSliderColorBlue .sapMSliderProgress{
+	background-color: #0085AD !important;
+}
+
+.btnConfirm .sapMBtnInner{
+    background-color: white !important;
+    color: black !important;
+    border: 2px solid #0085AD !important;
+}
+.sliderJoin{
+ 	margin-left: -2.59rem !important;
+    z-index:99;	
+ }
+ /********** End of CSS for Progress Slider Screen *******/
