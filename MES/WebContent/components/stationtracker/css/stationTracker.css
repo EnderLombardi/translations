@@ -46,6 +46,9 @@
 	text-indent: -15px;
 	
 }
+.marginLeft0 {
+	margin-left: 0 !important;
+}
 .partialConfirmCss .sapUxAPObjectPageSectionTitle {
 	color: #006CA7 !important;
     border-bottom: 0px solid #999999 !important;
@@ -323,6 +326,9 @@ color : black;
 }
 .grey {
 	background-color: #97999b;
+}
+.grey2 {
+	background-color: #dddddd;
 }
 .shiftCss {
 	background-color: #EEF3F7;

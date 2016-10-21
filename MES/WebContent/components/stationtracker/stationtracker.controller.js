@@ -459,7 +459,12 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		airbus.mes.stationtracker.worklistPopover.close();
 		
 	},	
-	
+	onPressExpdandable : function(oEvent) {
+		var oPanel = oEvent.getSource().getParent().getParent();
+		var bIsExpanded = oPanel.getExpanded();
+		
+		oEvent.getSource().getParent().getParent().setExpanded(!bIsExpanded);
+	},
 	changeShift : function() {
 	
 		if ( airbus.mes.stationtracker.ShiftManager.dayDisplay ) {

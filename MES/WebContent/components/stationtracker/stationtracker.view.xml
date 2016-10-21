@@ -24,6 +24,18 @@
 				
 			
 					
+
+<!--  					<Toolbar class="marginLeft0"> -->
+ 					<Toolbar> 					
+						<Label text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/station', formatter : 'airbus.mes.stationtracker.util.Formatter.stationTrackerStation' }" class="pageTitle sapUiTinyMarginBeginEnd" />
+ 						<Label text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/msn', formatter : 'airbus.mes.stationtracker.util.Formatter.stationTrackerMsn' }" class="pageWelcome sapUiTinyMarginBeginEnd" /> 
+						<Label text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/plant', formatter : 'airbus.mes.stationtracker.util.Formatter.stationTrackerPlant' }" class="pageWelcome sapUiTinyMarginBeginEnd" />
+						<Label text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/line', formatter : 'airbus.mes.stationtracker.util.Formatter.stationTrackerLine' }" class="pageWelcome sapUiTinyMarginBeginEnd" />					
+					<ToolbarSeparator/>
+					<Button text="{StationTrackerI18n>ProductionGroup}" type="Transparent" class="whiteColor whiteButton" press="onProductionGroupPress"/>
+					<ToolbarSpacer/>
+					<Button text="{StationTrackerI18n>ButtonTeam}" type="Transparent" class="tiffanyColor whiteButton buttonStatus2 iconbuttonTeam sapUiSmallMarginBegin" icon="sap-icon://group" press="onTeamPress"/>
+<!-- 					<Button text="Test" type="Transparent" class="tiffanyColor whiteButton buttonStatus2 iconbuttonTeam sapUiSmallMarginBegin" icon="sap-icon://group" press="onPressExpdandable"/> -->
 					</Toolbar>
 				</headerToolbar>
 				<content>
@@ -254,22 +266,15 @@
 
 			<OverflowToolbar id="toolbarstationtracker" class="white" width="100%">
 				<content>
- 						<SegmentedButton id="buttonViewMode">
-						<layoutData>
-							<OverflowToolbarLayoutData priority="NeverOverflow" />
-						</layoutData>
-						<items>
-							<SegmentedButtonItem text="{StationTrackerI18n>ButtonShift}"
-								press="onShiftPress" key="shift" />
-							<SegmentedButtonItem text="{StationTrackerI18n>ButtonDay}"
-								press="onDayPress" key="day" />
-						</items>
-					</SegmentedButton>
-			<!-- 		<Label text="{StationTrackerI18n>GroupingSortBy}" /> -->
+ 					<DatePicker	id="DatePicker" width="auto" class="sapUiTinyMarginBeginEnd"  />
+					<Select id="selectShift" class="sapUiTinyMarginBeginEnd comboBoxStyle selectShift" change="changeShift" items="{ path : 'stationTrackerShift>/' }" visible= "{ path : 'stationTrackerShift>/0/visible', formatter : 'airbus.mes.stationtracker.util.Formatter.isDayTimeline' }" >
+						<core:Item key="{stationTrackerShift>id}" text="{stationTrackerShift>value}" />
+					</Select>
+					<Label text="{StationTrackerI18n>GroupingSortBy}" />
 					<Select id="selectGroup" class="sapUiTinyMarginBeginEnd comboBoxStyle" items="{groupModel>/Rowsets/Rowset/0/Row/Grouping}" change="changeGroup">
 						<core:ListItem key="{groupModel>Value}" text="{ path : 'groupModel>Value' , formatter : '.getI18nValue' }"/>	
 					</Select>
-			<!-- 		<Label text="{StationTrackerI18n>BoxingShow}" /> -->
+					<Label text="{StationTrackerI18n>BoxingShow}" />
 					<Select id="selectBox" class="sapUiTinyMarginBeginEnd comboBoxStyle" items="{groupModel>/Rowsets/Rowset/0/Row/Boxing}" change="changeBox" >
 						<core:ListItem key="{groupModel>Value}" text="{ path : 'groupModel>Value' , formatter : '.getI18nValue' }" />	
 <!-- 						<core:Item text="Operations" key="OPERATION_ID"/>
@@ -278,6 +283,7 @@
 					<ToolbarSpacer />
 					<HBox id="toolbarDate" class="sapUiTinyMarginBeginEnd"></HBox>
 					<ToolbarSpacer />
+<<<<<<< Upstream, based on origin/MESv0.9
 					<Button text="{StationTrackerI18n>ButtonOutstandingWork}" type="Transparent" icon="sap-icon://inspect"
 						class="sapUiTinyMarginBeginEnd" press="onOSWPress"></Button>
  					<Button text="{StationTrackerI18n>ButtonUnplanned}" type="Transparent" icon="sap-icon://inspect"
@@ -287,7 +293,15 @@
 					<Button text="{StationTrackerI18n>ButtonInitial}" type="Transparent"
 						icon="sap-icon://ppt-attachment" class="sapUiTinyMarginBeginEnd"
 						press="onInitialPlanPress"></Button>
-				
+					<SegmentedButton id="buttonViewMode" >
+							 <layoutData>
+								<OverflowToolbarLayoutData priority="NeverOverflow" />
+												</layoutData> 
+						<items>
+							<SegmentedButtonItem text="{StationTrackerI18n>ButtonShift}" press="onShiftPress" key="shift"/>
+							<SegmentedButtonItem text="{StationTrackerI18n>ButtonDay}" press="onDayPress" key="day"/>
+						</items>
+					</SegmentedButton>
 				</content>
 			</OverflowToolbar>
 
