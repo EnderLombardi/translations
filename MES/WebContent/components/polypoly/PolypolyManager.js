@@ -625,41 +625,36 @@ airbus.mes.polypoly.PolypolyManager = {
 //	},
 
 	// Crazy why declare model here???? .................-_-_-_--__-_-_ what mean MII model???
-	
-	getPolypolyModel : function(sFactory, sLine, sStation, site) {
-		var miiModel = new sap.ui.model.json.JSONModel();
-		sap.ui.getCore().setModel(miiModel, "mii");
-//		airbus.mes.polypoly.PolypolyManager.PolypolyManager.getPolypolyModel("F1","1","10","CHES");
-//		sap.ui.core.BusyIndicator.show();
-		var urlgetpolypoly = this.urlModel.getProperty("urlgetpolypoly");
-
-		urlgetpolypoly = urlgetpolypoly.replace("$factory", sFactory);
-		urlgetpolypoly = urlgetpolypoly.replace("$line", sLine);
-		urlgetpolypoly = urlgetpolypoly.replace("$station", sStation);
-		urlgetpolypoly = urlgetpolypoly.replace("$site", site);
-
-//		var oViewModel = sap.ui.getCore().getModel("mii");
-		sap.ui.getCore().getModel("mii").loadData("/MES/components/polypoly/model/model.json",null,false);
-
-//		miiModel.loadData(urlgetpolypoly, {
-//			cache : false
-//		}, true);
+//	
+//	getPolypolyModel : function(sFactory, sLine, sStation, site) {
+//		var miiModel = new sap.ui.model.json.JSONModel();
+//		sap.ui.getCore().setModel(miiModel, "mii");
+////		airbus.mes.polypoly.PolypolyManager.PolypolyManager.getPolypolyModel("F1","1","10","CHES");
+////		sap.ui.core.BusyIndicator.show();
+//		var urlgetpolypoly = this.urlModel.getProperty("urlgetpolypoly");
 //
-//		var needLevelsmodel = new sap.ui.model.json.JSONModel(
-//				"/MES/components/polypoly/model/needlevels.json");
-//		sap.ui.getCore()
-//				.setModel(needLevelsmodel, "needlevels");
-//		var columnModel = new sap.ui.model.json.JSONModel();
-//		var listQAmodel = new sap.ui.model.json.JSONModel(
-//				this.urlModel
-//						.getProperty("urlgetqalist"));
-//		sap.ui.getCore().setModel(listQAmodel, "listQA");
-		
-		
-		
-		
-
-	},
+//		urlgetpolypoly = urlgetpolypoly.replace("$factory", sFactory);
+//		urlgetpolypoly = urlgetpolypoly.replace("$line", sLine);
+//		urlgetpolypoly = urlgetpolypoly.replace("$station", sStation);
+//		urlgetpolypoly = urlgetpolypoly.replace("$site", site);
+//
+////		var oViewModel = sap.ui.getCore().getModel("mii");
+//		sap.ui.getCore().getModel("mii").loadData("/MES/components/polypoly/model/model.json",null,false);
+//
+////		miiModel.loadData(urlgetpolypoly, {
+////			cache : false
+////		}, true);
+////
+////		var needLevelsmodel = new sap.ui.model.json.JSONModel(
+////				"/MES/components/polypoly/model/needlevels.json");
+////		sap.ui.getCore()
+////				.setModel(needLevelsmodel, "needlevels");
+////		var columnModel = new sap.ui.model.json.JSONModel();
+////		var listQAmodel = new sap.ui.model.json.JSONModel(
+////				this.urlModel
+////						.getProperty("urlgetqalist"));
+////		sap.ui.getCore().setModel(listQAmodel, "listQA");
+//	},
 
 //	setUserAllocation : function() {
 //

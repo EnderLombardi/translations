@@ -100,7 +100,7 @@ airbus.mes.polypoly.ModelManager = {
 		// attach event on end of loading model
 		core.getModel("mii").attachRequestCompleted(airbus.mes.polypoly.ModelManager.onPolyPolyModelLoaded);
 				
-		core.setModel(new sap.ui.model.json.JSONModel("../components/polypoly/model/QArows.json"), "listQA");
+		core.setModel(new sap.ui.model.json.JSONModel(), "listQA");
 //		core.setModel(new sap.ui.model.json.JSONModel(), "columnModel");
 		core.setModel(new sap.ui.model.json.JSONModel(), "rpModel");
 		core.setModel(new sap.ui.model.json.JSONModel("../components/polypoly/model/needlevels.json"), "needlevels");
@@ -155,7 +155,7 @@ airbus.mes.polypoly.ModelManager = {
 
 	// PBA ADD LOADING MODEL FOR POLYPOLY replace the getPolypolyModel place in polypolymanager
 	
-	loadPolyPolyModel : function (sFactory, sLine, sStation, site) {
+	getPolyPolyModel : function (sFactory, sLine, sStation, site) {
 		
 		var urlgetpolypoly = this.urlModel.getProperty("urlgetpolypoly");
 
@@ -167,7 +167,10 @@ airbus.mes.polypoly.ModelManager = {
 		// Rename this model
 		sap.ui.getCore().getModel("mii").loadData(urlgetpolypoly,null,false);
 		
-	
+		var urlgetqalist = this.urlModel.getProperty("urlgetqalist");
+		urlgetqalist = urlgetqalist.replace("$site", site);
+		sap.ui.getCore().getModel("listQA").loadData(urlgetqalist,null,false);
+		
 	},
 	
 	onPolyPolyModelLoaded : function() {

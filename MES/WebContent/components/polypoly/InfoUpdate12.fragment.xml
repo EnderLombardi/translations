@@ -1,0 +1,39 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout"
+	xmlns:u="sap.ui.unified" xmlns:table="sap.ui.table">
+	<Dialog id="infoUpdate12" stretchOnPhone="true" showHeader="false">
+		<buttons>
+			<Button text="OK" press="onClickInfoUpdate12" />
+		</buttons>
+		<content>
+			<VBox alignItems="Center">
+				<items>
+					<Label text="{/name}" textAlign="Center" design="Bold" />
+					<Table items="{path: '/Row'}">
+						<columns>
+							<Column hAlign="Center" width="7rem">
+								<Text text="AVL Line" />
+							</Column>
+							<Column hAlign="Center" width="7rem">
+								<Text text="Expiry Date" />
+							</Column>
+							<Column hAlign="Center" width="7rem">
+								<Text text="Status" />
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem>
+								<cells>
+									<Text text="{QA}" />
+									<Text text="{path:'Date', formatter: 'formatter.dateFormat'}" />
+									<core:Icon src="{parts: [{path:'Status'}], formatter: '.statusFormatter'}"
+												color= "{parts: [{path:'Status'}], formatter: '.colorFormatter'}"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</items>
+			</VBox>
+		</content>
+	</Dialog>
+</core:FragmentDefinition>

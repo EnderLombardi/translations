@@ -260,7 +260,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		nav.addPage(airbus.mes.polypoly.oView);
 		nav.to(airbus.mes.polypoly.oView.getId());
 		airbus.mes.polypoly.PolypolyManager.globalContext.bEditable = true;
-		airbus.mes.polypoly.ModelManager.loadPolyPolyModel("F1","1","10","CHES");
+		airbus.mes.polypoly.ModelManager.getPolyPolyModel("F1","1","10","CHES");
 		
 		
 		airbus.mes.polypoly.oView.getController().filterUA();
