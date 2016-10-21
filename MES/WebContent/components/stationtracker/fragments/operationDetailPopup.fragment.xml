@@ -5,10 +5,10 @@
 		contentHeight="395px" verticalScrolling="false" class="noFooterDialog">
 		<content>
 		
-				<Page id="master" showHeader="false">
+				<!-- <Page id="master" showHeader="false">
 					<content>
-						<!-- <core:Fragment type="XML"
-							fragmentName="airbus.mes.operationdetail.progressSlider" /> -->
+						<core:Fragment type="XML"
+							fragmentName="airbus.mes.operationdetail.progressSlider" />
 					</content>
 					<footer>
 						<Toolbar class="pageHeader">
@@ -27,7 +27,7 @@
 							</Button>
 						</Toolbar>
 					</footer>
-				</Page>
+				</Page> -->
 				
 				</content>
 				</Dialog>
