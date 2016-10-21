@@ -152,6 +152,7 @@ airbus.mes.stationtracker.util.Formatter = {
 				var html = "";
 				
 				var sDivForLeftDisplay = '<div  style="width:100%; height:inherit; position:absolute; z-index: 1; line-height: 23px;left: 0px; overflow: hidden; text-overflow: ellipsis; " >'
+				var sDivForLeftDisplayInitial = '<div  style="color:black; border: solid 2px #979797; background-color:#f5f5f5; width:100%; height:inherit; position:absolute; z-index: 1; line-height: 23px;left: 0px; overflow: hidden; text-overflow: ellipsis; " >'
 				var sRightIcon = "";	
 				var sLeftIcon = "";
 				var sColorProgress = "";
@@ -214,7 +215,17 @@ airbus.mes.stationtracker.util.Formatter = {
 		
 				html = sDivForLeftDisplay + sRightIcon + sLeftIcon + sSpanText + sProgressText + sColorProgress + '</div>' 
 							
-				return html;
+				if ( oBox.type === "I" ) {
+					
+					html = sDivForLeftDisplayInitial + sRightIcon + sLeftIcon + sSpanText + sProgressText + sColorProgress + '</div>' 
+					return html;
+					
+				} else {
+					
+					html = sDivForLeftDisplay + sRightIcon + sLeftIcon + sSpanText + sProgressText + sColorProgress + '</div>' 
+					return html;
+					
+				}
 				
 				
 				
@@ -223,7 +234,7 @@ airbus.mes.stationtracker.util.Formatter = {
 			
 			initial : function(sText,sProgress) {
 				var html = "";
-				html += '<div  style="width:inherit; height:inherit; position:absolute; z-index: 1; padding-left: 5px;line-height: 23px;left: 0px;" >'
+				html += '<div  style=" border: solid 2px #979797; background-color:#f5f5f5; width:100%; height:inherit; position:absolute; z-index: 1; padding-left: 5px;line-height: 23px;left: 0px;" >'
 					+ sText + '</div>';
 				html += '<div style="width:'+ sProgress + '%; height:inherit;position:absolute; z-index: 0; left: 0px;"></div>'
 				

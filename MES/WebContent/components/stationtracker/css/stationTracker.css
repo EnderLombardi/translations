@@ -10,6 +10,8 @@
 }
 
 .ylabelUser {
+ max-width: 60%;
+	white-space: nowrap;
 	position: relative;
 	width: 120px;
 	display: inline-block;
@@ -77,6 +79,7 @@ height: 0rem;
     visibility: visible;
 }
 .ylabel {
+	white-space: nowrap;
 	font-weight: normal;
 	font-style: normal;
 	font-stretch: normal;
@@ -115,6 +118,8 @@ height: 0rem;
 }
 
 .ylabelfolder{
+	    max-width: 60%;
+				white-space: nowrap;
 				position:relative;
 				width: 120px;
     display: inline-block;

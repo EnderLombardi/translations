@@ -16,13 +16,15 @@
                "Grouping":[  
                {
 
-                  "Value": "GroupingCompetency"
+                  "Value": "GroupingCompetency",
+                   "key": "COMPETENCY"
 
                  },
 
                {
 
-                  "Value": "GroupingAVLLine"
+                  "Value": "GroupingAVLLine",
+                  "key": "AVL_LINE"
 
                  },
                {
@@ -44,14 +46,15 @@
                "Boxing":[  
                {
 
-                  "Value": "BoxingOperation"
+                  "Value": "BoxingOperation",
+                  "key": "OPERATION_ID"
 
                  },
 
                {
 
-                  "Value": "BoxingWorkOrder"
-
+                  "Value": "BoxingWorkOrder",
+ 																	"key": "WORKORDER"
                  },
                {
 
