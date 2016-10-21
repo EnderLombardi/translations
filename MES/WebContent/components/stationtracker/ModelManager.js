@@ -153,7 +153,7 @@ airbus.mes.stationtracker.ModelManager = {
 			if(!oModel.getProperty("/Rowsets/Rowset/0/Row")){              
 
 	        	oModel = []
-	        	console.log("no Unplanned operation load");
+	        	console.log("no OWS operation load");
 	        	
 	        }
 			
