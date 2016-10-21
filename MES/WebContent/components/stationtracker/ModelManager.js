@@ -316,14 +316,16 @@ airbus.mes.stationtracker.ModelManager = {
 
     	   
        },
-       // open operation detail popup containing progress slider
+       
+       /*********************************************
+        *  open operation detail popup containing progress slider
+        ****************************************************/
        openOperationDetailPopup:function( id){
     	   if ( airbus.mes.stationtracker.operationDetailPopup === undefined ) {
 				
     		   airbus.mes.stationtracker.operationDetailPopup= sap.ui.xmlfragment("operationDetailPopup","airbus.mes.stationtracker.fragments.operationDetailPopup", airbus.mes.stationtracker.oView.getController());
     		   airbus.mes.stationtracker.operationDetailPopup.addStyleClass("alignTextLeft");
-				//airbus.mes.stationtracker.operationDetailPopup.setModel(sap.ui.getCore().getModel("WorkListModel"), "WorkListModel");
-				airbus.mes.stationtracker.oView.addDependent(airbus.mes.stationtracker.operationDetailPopup);		
+    		   airbus.mes.stationtracker.oView.addDependent(airbus.mes.stationtracker.operationDetailPopup);		
 			}
     	   airbus.mes.stationtracker.operationDetailPopup.open();
     	   
