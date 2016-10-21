@@ -4,11 +4,11 @@
 	<Dialog id="operationPopoverID" showHeader="false" contentWidth="770px"
 		contentHeight="395px" verticalScrolling="false" class="noFooterDialog">
 		<content>
-			<NavContainer id="navOperatorContainer">
+		
 				<Page id="master" showHeader="false">
 					<content>
 						<core:Fragment type="XML"
-							fragmentName="airbus.mes.stationtracker.fragments.progressSlider" />
+							fragmentName="airbus.mes.operationdetail.progressSlider" />
 					</content>
 					<footer>
 						<Toolbar class="pageHeader">
@@ -28,8 +28,12 @@
 						</Toolbar>
 					</footer>
 				</Page>
+				
+				</content>
+				</Dialog>
+				</core:FragmentDefinition> 
 
-				<Page id="Reschedule" showHeader="false">
+				<!-- <Page id="Reschedule" showHeader="false">
 					<x:ObjectPageLayout id="rescheduleTitle"
 						enableLazyLoading="false"
 						class="partialConfHeader whitePartialConfHeader whitePartialConfHeader2 lockCss">
@@ -82,8 +86,8 @@
 													<Label class="sapUiLargeMarginTop" text="Select New Grp" />
 													<Select id="groupIdComboBox"
 														items="{PerformanceModel>/Rowsets/Rowset/0/Row}" width="100%">
-														<!-- <core:Item key="{PerformanceModel>groupId}" text="{PerformanceModel>groupId}" 
-															/> -->
+														<core:Item key="{PerformanceModel>groupId}" text="{PerformanceModel>groupId}" 
+															/>
 														<core:Item key="1" text="Manually_inserted" />
 														<core:Item key="2" text="E16-LB-V84" />
 														<core:Item key="3" text="E16-LD-V90" />
@@ -159,9 +163,9 @@
 												<VBox class="sapUiSmallMarginEnd">
 													<Label text="Progress:" />
 
-									<!-- 				<Slider
+													<Slider
 														value="{ path : 'WorkListModel>/0/progress' , formatter : 'airbus.mes.stationtracker.util.Formatter.progress2float' }"
-														width="100%" step="10" /> -->
+														width="100%" step="10" />
 
 													<Label text="Reason" />
 													<Select id="confirmPartialReason">
@@ -290,5 +294,4 @@
 
 			</NavContainer>
 		</content>
-	</Dialog>
-</core:FragmentDefinition>
+	</Dialog> -->
