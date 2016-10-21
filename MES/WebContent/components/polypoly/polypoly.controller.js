@@ -9,7 +9,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 					 * @memberOf polypoly.main
 					 */
 					onInit : function() {
-	
+						columnModel = new sap.ui.model.json.JSONModel();
 					},
 					onAfterRendering : function() {
 //						var oData = sap.ui.getCore().getModel("mii").getData().Rowsets;
@@ -73,6 +73,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 										.getProperty("techname"),
 								showFilterMenuEntry : false,
 								width : "8rem",
+								visible : false,
 								template : new sap.m.Text({
 									visible : {
 										parts : [ "type" ],
@@ -102,7 +103,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 								showFilterMenuEntry : false,
 								width : "8rem",
 								template : new sap.m.Text({
-									text : {
+										text : {
 										parts : [ oContext
 												.getProperty("techname") ],
 										formatter : function(text) {
@@ -225,7 +226,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 																			formatter : function(
 																					type) {
 																				return type != "UA_A"
-																						&& type != "UA_P"
+																						&& type != "UA_P" && type != "LABEL"
 																			}
 																		}
 																	}) ]
@@ -472,12 +473,12 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 						}
 					},
 
-//					onChangeClick : function(oEvt) {
-//						airbus.mes.polypoly.PolypolyManager.userComptencyContext.newLevel = oEvt
-//								.getSource().getParent().getItems().indexOf(
-//										oEvt.getSource());
-//						airbus.mes.polypoly.PolypolyManager.updateLevelInit();
-//					},
+					onChangeClick : function(oEvt) {
+						airbus.mes.polypoly.PolypolyManager.userComptencyContext.newLevel = oEvt
+								.getSource().getParent().getItems().indexOf(
+										oEvt.getSource());
+						airbus.mes.polypoly.PolypolyManager.updateLevelInit();
+					},
 
 					onSelectLevelChange : function(oEvt) {
 						var oModel = sap.ui.getCore().byId("polypoly")
@@ -577,9 +578,6 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 						}
 					},
 
-					 filterRessourcePool : function(str){
-					 sap.ui.getCore().byId("rp_id").filter(str);
-					 },
 
 					clearFilters : function() {
 						if (sap.ui.getCore().byId("typeRow")) {
@@ -603,155 +601,156 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 					},
 
 					colDialog : undefined,
-//					openColumnPopup : function(oEvt) {
-//						columnModel.setData();
-//						var that = this;
-//
-//						var aQAList = jQuery
-//								.extend(true, [], sap.ui.getCore().getModel(
-//										"listQA").oData.Rowsets.Rowset[0].Row);
-//						if (!that.colDialog) {
-//							that.colDialog = sap.ui.xmlfragment(
-//									"airbus.ColumnPopup", that);
-//						}
-//						var oBindingInfo = oEvt.getSource().getParent()
-//								.getParent().getBindingContext();
-//						if (oBindingInfo != undefined) {
-//							airbus.mes.polypoly.PolypolyManager.internalContext.saveContext = "UPDATE";
-//							that.colDialog.setTitle("Edit Polypoly");
-//
-//							var aQASelList = oBindingInfo.getProperty("qa");
-//							columnModel
-//									.setData({
-//										competency : oBindingInfo
-//												.getProperty("name"),
-//										techname : oBindingInfo
-//												.getProperty("techname"),
-//										qa : aQAList,
-//										need3 : airbus.mes.polypoly.PolypolyManager.internalContext.oModel.oData.rows[0][oBindingInfo
-//												.getProperty("techname")],
-//										need4 : airbus.mes.polypoly.PolypolyManager.internalContext.oModel.oData.rows[1][oBindingInfo
-//												.getProperty("techname")]
-//									});
-//							aQASelList
-//									.forEach(function(el) {
-//										for (var i = 0; i < columnModel.oData.qa.length; i++) {
-//											if (columnModel.oData.qa[i].CERTIFICATION == el.label) {
-//												columnModel.oData.qa[i].selected = true;
-//											} else if (columnModel.oData.qa[i].selected == undefined) {
-//												columnModel.oData.qa[i].selected = false;
-//											}
-//										}
-//									});
-//						} else {
-//							airbus.mes.polypoly.PolypolyManager.internalContext.saveContext = "CREATE";
-//							that.colDialog.setTitle("Create Polypoly");
-//							columnModel.setData({
-//								competency : "",
-//								techname : "",
-//								qa : aQAList,
-//								need3 : "0",
-//								need4 : "0"
-//							});
-//							columnModel.oData.qa.forEach(function(el) {
-//								el.selected = false;
-//							})
-//						}
-//						that.colDialog.setModel(columnModel, "columnModel");
-//						that.colDialog.open();
-//
-//						sap.ui
-//								.getCore()
-//								.byId("colTechname")
-//								.setEditable(
-//										(airbus.mes.polypoly.PolypolyManager.internalContext.saveContext == "CREATE"));
-//
-//						// Sort QA Column on selected Checkboxes
-//						sap.ui.getCore().byId("colQA").sort("Descending")
-//
-//					},
+					openColumnPopup : function(oEvt) {
+						columnModel.setData();
+						var that = this;
 
-//					onSearch : function(oEvt) {
-//						// add filter for search
-//						var aFilters = [];
-//						var sQuery = oEvt.getSource().getValue();
-//						if (sQuery && sQuery.length > 0) {
-//							var filter = new sap.ui.model.Filter(
-//									"CERTIFICATION",
-//									sap.ui.model.FilterOperator.Contains,
-//									sQuery);
-//							aFilters.push(filter);
-//						}
-//
-//						// update list binding
-//						var table = sap.ui.getCore().byId("oQATable");
-//						var binding = table.getBinding("rows");
-//						binding.filter(aFilters);
-//					},
-//
-//					onSaveColumnPopup : function() {
-//						var sTechname = columnModel.oData.techname
-//								.toUpperCase();
-//						var sName = columnModel.oData.competency;
-//						var sNeed3 = columnModel.oData.need3;
-//						var sNeed4 = columnModel.oData.need4;
-//						var aQAfiltered = columnModel.oData.qa.filter(
-//								function(el) {
-//									return el.selected;
-//								}).map(function(el) {
-//							return el.CERTIFICATION;
-//						});
-//						var sQA = aQAfiltered.toString();
-//
-//						if (aQAfiltered.length <= 5 && sTechname != ""
-//								&& sName != "") {
-//							if (airbus.mes.polypoly.PolypolyManager.internalContext.saveContext == "CREATE") {
-//								airbus.mes.polypoly.PolypolyManager.createColumn(sName, sQA,
-//										sNeed3, sNeed4, sTechname);
-//							} else {
-//								airbus.mes.polypoly.PolypolyManager.updateColumn(sName, sQA,
-//										sNeed3, sNeed4, sTechname);
-//							}
-//						} else if (sTechname == "") {
-//							sap.m.MessageToast
-//									.show("Please enter a Technical Name");
-//						} else if (sName == "") {
-//							sap.m.MessageToast
-//									.show("Please enter a Competency description");
-//						} else if (aQAfiltered.length > 5) {
-//							sap.m.MessageToast
-//									.show("Please select no more than 5 Quality Authorisations");
-//						}
-//					},
-//
-//					onCancelColumnPopup : function() {
-//						sap.ui.getCore().byId("columnPopupDialog").close();
-//					},
-//
-//					openConfirmDelete : function(oEvt) {
-//						columnModel.setData();
-//						var oBindingInfo = oEvt.getSource().getParent()
-//								.getParent().getBindingContext();
-//						columnModel.setData({
-//							techname : oBindingInfo.getProperty("techname"),
-//						});
-//
-//						var that = this;
-//						if (!that.delDialog) {
-//							that.delDialog = sap.ui.xmlfragment(
-//									"airbus.confirmDelete", that);
-//						}
-//						that.delDialog.open();
-//					},
+						var aQAList = jQuery
+								.extend(true, [], sap.ui.getCore().getModel(
+										"listQA").oData.Rowsets.Rowset[0].Row);
+						if (!that.colDialog) {
+							that.colDialog = sap.ui.xmlfragment(
+									"airbus.mes.polypoly.ColumnPopup", that);
+						}
+										
+						var oBindingInfo = oEvt.getSource().getParent()
+								.getParent().getBindingContext();
+						if (oBindingInfo != undefined) {
+							airbus.mes.polypoly.PolypolyManager.internalContext.saveContext = "UPDATE";
+							that.colDialog.setTitle("Edit Polypoly");
 
-//					onConfirmDelete : function() {
-//						airbus.mes.polypoly.PolypolyManager
-//								.deleteColumn(columnModel.getData().techname);
-//					},
-//
-//					onCancelDelete : function() {
-//						sap.ui.getCore().byId("confirmDeleteDialog").close();
-//					},
+							var aQASelList = oBindingInfo.getProperty("qa");
+							columnModel
+									.setData({
+										competency : oBindingInfo
+												.getProperty("name"),
+										techname : oBindingInfo
+												.getProperty("techname"),
+										qa : aQAList,
+										need3 : airbus.mes.polypoly.PolypolyManager.internalContext.oModel.oData.rows[0][oBindingInfo
+												.getProperty("techname")],
+										need4 : airbus.mes.polypoly.PolypolyManager.internalContext.oModel.oData.rows[1][oBindingInfo
+												.getProperty("techname")]
+									});
+							aQASelList
+									.forEach(function(el) {
+										for (var i = 0; i < columnModel.oData.qa.length; i++) {
+											if (columnModel.oData.qa[i].CERTIFICATION == el.label) {
+												columnModel.oData.qa[i].selected = true;
+											} else if (columnModel.oData.qa[i].selected == undefined) {
+												columnModel.oData.qa[i].selected = false;
+											}
+										}
+									});
+						} else {
+							airbus.mes.polypoly.PolypolyManager.internalContext.saveContext = "CREATE";
+							that.colDialog.setTitle("Create Polypoly");
+							columnModel.setData({
+								competency : "",
+								techname : "",
+								qa : aQAList,
+								need3 : "0",
+								need4 : "0"
+							});
+							columnModel.oData.qa.forEach(function(el) {
+								el.selected = false;
+							})
+						}
+						that.colDialog.setModel(columnModel, "columnModel");
+						that.colDialog.open();
+
+						sap.ui
+								.getCore()
+								.byId("colTechname")
+								.setEditable(
+										(airbus.mes.polypoly.PolypolyManager.internalContext.saveContext == "CREATE"));
+
+						// Sort QA Column on selected Checkboxes
+						sap.ui.getCore().byId("colQA").sort("Descending")
+
+					},
+
+					onSearch : function(oEvt) {
+						// add filter for search
+						var aFilters = [];
+						var sQuery = oEvt.getSource().getValue();
+						if (sQuery && sQuery.length > 0) {
+							var filter = new sap.ui.model.Filter(
+									"CERTIFICATION",
+									sap.ui.model.FilterOperator.Contains,
+									sQuery);
+							aFilters.push(filter);
+						}
+
+						// update list binding
+						var table = sap.ui.getCore().byId("oQATable");
+						var binding = table.getBinding("rows");
+						binding.filter(aFilters);
+					},
+
+					onSaveColumnPopup : function() {
+						var sTechname = columnModel.oData.techname
+								.toUpperCase();
+						var sName = columnModel.oData.competency;
+						var sNeed3 = columnModel.oData.need3;
+						var sNeed4 = columnModel.oData.need4;
+						var aQAfiltered = columnModel.oData.qa.filter(
+								function(el) {
+									return el.selected;
+								}).map(function(el) {
+							return el.CERTIFICATION;
+						});
+						var sQA = aQAfiltered.toString();
+
+						if (aQAfiltered.length <= 5 && sTechname != ""
+								&& sName != "") {
+							if (airbus.mes.polypoly.PolypolyManager.internalContext.saveContext == "CREATE") {
+								airbus.mes.polypoly.PolypolyManager.createColumn(sName, sQA,
+										sNeed3, sNeed4, sTechname);
+							} else {
+								airbus.mes.polypoly.PolypolyManager.updateColumn(sName, sQA,
+										sNeed3, sNeed4, sTechname);
+							}
+						} else if (sTechname == "") {
+							sap.m.MessageToast
+									.show("Please enter a Technical Name");
+						} else if (sName == "") {
+							sap.m.MessageToast
+									.show("Please enter a Competency description");
+						} else if (aQAfiltered.length > 5) {
+							sap.m.MessageToast
+									.show("Please select no more than 5 Quality Authorisations");
+						}
+					},
+
+					onCancelColumnPopup : function() {
+						sap.ui.getCore().byId("columnPopupDialog").close();
+					},
+
+					openConfirmDelete : function(oEvt) {
+						columnModel.setData();
+						var oBindingInfo = oEvt.getSource().getParent()
+								.getParent().getBindingContext();
+						columnModel.setData({
+							techname : oBindingInfo.getProperty("techname"),
+						});
+
+						var that = this;
+						if (!that.delDialog) {
+							that.delDialog = sap.ui.xmlfragment(
+									"airbus.mes.polypoly.confirmDelete", that);
+						}
+						that.delDialog.open();
+					},
+
+					onConfirmDelete : function() {
+						airbus.mes.polypoly.PolypolyManager
+								.deleteColumn(columnModel.getData().techname);
+					},
+
+					onCancelDelete : function() {
+						sap.ui.getCore().byId("confirmDeleteDialog").close();
+					},
 //
 //					onClickInfoUpdate12 : function(oEvt) {
 //						sap.ui.getCore().byId("infoUpdate12").close();

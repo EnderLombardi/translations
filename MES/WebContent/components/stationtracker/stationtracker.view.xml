@@ -8,7 +8,7 @@
 			<Panel expandable="true" expanded="true"
 				class="pageHeader sapUiSmallMarginTop contentNoPad">
 				<headerToolbar>
- 					<Toolbar>
+ 					<Toolbar >
 						<Label text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/station', formatter : 'airbus.mes.stationtracker.util.Formatter.stationTrackerStation' }" class="pageTitle sapUiTinyMarginBeginEnd" />
  						<Label text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/msn', formatter : 'airbus.mes.stationtracker.util.Formatter.stationTrackerMsn' }" class="pageWelcome sapUiTinyMarginBeginEnd" /> 
 						<Label text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/plant', formatter : 'airbus.mes.stationtracker.util.Formatter.stationTrackerPlant' }" class="pageWelcome sapUiTinyMarginBeginEnd" />
@@ -20,7 +20,7 @@
 					</Toolbar>
 				</headerToolbar>
 				<content>
-					<suite:HeaderContainer showDividers="false" backgroundDesign="Solid">
+						<suite:HeaderContainer showDividers="false" backgroundDesign="Solid">
 						<suite:items>
 	
 						<suite:HeaderCell  height="10rem" class="contentHeaderCont">
@@ -70,7 +70,7 @@
 													</micro:lines>
 										
 										
-													<micro:minThreshold colorPalette='#ffffff , #84caec,' >
+													<micro:minThreshold >
 														<micro:AreaMicroChartItem color="Good">
 															<micro:points>
 																<micro:AreaMicroChartPoint x="0" y="0" />
@@ -85,11 +85,9 @@
 										
 												<VBox height="100%" width="30%">
 													<Label text="{StationTrackerI18n>TaktAdherence}" class=" whiteText" />
-													<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/Labour}"
-														design="Bold" class=" kpiValue whiteText " />
+													<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/Labour}" design="Bold" class=" kpiValue redText " />
 													<Label text="{StationTrackerI18n>TaktRemaining}" class="sapUiLargeMarginEnd whiteText" />
-													<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/SLB}"
-														design="Bold" class=" kpiValue whiteText" />
+													<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/SLB}" design="Bold" class=" kpiValue whiteText" />
 												</VBox>
 										
 											</HBox>
@@ -110,7 +108,7 @@
 									<suite:HeaderCellItem height="100%">
 										<suite:content>
 											<HBox  height="100%">
-												<VBox  height="100%" >
+												<VBox  height="100%">
 													<Label text="{StationTrackerI18n>LabourEfficiency}" class="sapUiLargeMarginEnd whiteText" />
 													<Label height="80%" text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/Labour}" design="Bold" class="sapUiSmallMarginTop kpiValue whiteText " />
 												</VBox>
@@ -137,16 +135,16 @@
 										<suite:content>
 											<HBox alignItems="Baseline">
 												<VBox alignItems="Stretch">
-													<Label text="{StationTrackerI18n>DisruptionTotal}" class="sapUiLargeMarginEnd whiteText" />
+													<Label  text="{StationTrackerI18n>DisruptionTotal}" class="sapUiLargeMarginEnd whiteText" />
 													<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/Total}"
-														design="Bold" class="sapUiSmallMarginTop kpiValue whiteText" />
+														design="Bold" class="sapUiSmallMarginTop kpiValue redText" />
 												</VBox>
 												<VBox alignItems="Stretch">
 													<Label text="{StationTrackerI18n>DisruptionsNC}" class="sapUiLargeMarginEnd whiteText" />
 													<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/NCWhite}"
 														design="Bold" class="sapUiSmallMarginTop kpiValue whiteText" />
 													<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/NCRed}"
-														design="Bold" class="sapUiSmallMarginTop kpiValue whiteText" />
+														design="Bold" class="sapUiSmallMarginTop kpiValue redText" />
 												</VBox>
 												<VBox alignItems="Stretch">
 													<Label text="{StationTrackerI18n>DisruptionsMissing}"
@@ -154,38 +152,38 @@
 													<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/NCWhite}"
 														design="Bold" class="sapUiSmallMarginTop kpiValue whiteText" />
 													<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/NCRed}"
-														design="Bold" class="sapUiSmallMarginTop kpiValue whiteText" />
+														design="Bold" class="sapUiSmallMarginTop kpiValue redText" />
 												</VBox>
 												<VBox alignItems="Stretch">
 													<Label text="{StationTrackerI18n>DisruptionsTools}" class="sapUiLargeMarginEnd whiteText" />
 													<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/NCWhite}"
 														design="Bold" class="sapUiSmallMarginTop kpiValue whiteText" />
 													<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/NCRed}"
-														design="Bold" class="sapUiSmallMarginTop kpiValue whiteText" />
+														design="Bold" class="sapUiSmallMarginTop kpiValue redText" />
 												</VBox>
 												<VBox alignItems="Stretch">
 													<Label text="{StationTrackerI18n>DisruptionPeople}" class="sapUiLargeMarginEnd whiteText" />
 													<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/NCWhite}"
 														design="Bold" class="sapUiSmallMarginTop kpiValue whiteText" />
 													<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/NCRed}"
-														design="Bold" class="sapUiSmallMarginTop kpiValue whiteText" />
+														design="Bold" class="sapUiSmallMarginTop kpiValue redText" />
 												</VBox>
 												<VBox alignItems="Stretch">
 													<Label text="{StationTrackerI18n>DisruptionOther}" class="sapUiLargeMarginEnd whiteText" />
 													<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/NCWhite}"
 														design="Bold" class="sapUiSmallMarginTop kpiValue whiteText" />
 													<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/NCRed}"
-														design="Bold" class="sapUiSmallMarginTop kpiValue whiteText" />
+														design="Bold" class="sapUiSmallMarginTop kpiValue redText" />
 												</VBox>
 												<VBox>
-													<micro:ComparisonMicroChart size="L" press="press">
+													<micro:ComparisonMicroChart size="L" colorPalette="#74d2e7, #fe5000, #fe5000">
 														<micro:data>
 															<micro:ComparisonMicroChartData
-																title="{StationTrackerI18n>DisruptionInTakt}" color="Good" />
+																title="{StationTrackerI18n>DisruptionInTakt}" value="8" />
 															<micro:ComparisonMicroChartData
-																title="{StationTrackerI18n>DisruptionOutTakt}" color="Error" />
+																title="{StationTrackerI18n>DisruptionOutTakt}" value="3" />
 															<micro:ComparisonMicroChartData
-																title="{StationTrackerI18n>DisruptionAcknowledged}" color="Error" />
+																title="{StationTrackerI18n>DisruptionAcknowledged}" value="10" />
 														</micro:data>
 													</micro:ComparisonMicroChart>
 												</VBox>
@@ -232,9 +230,9 @@
 								<suite:south>
 									<suite:HeaderCellItem height="100%">
 										<suite:content>
-												<micro:DeltaMicroChart press="press"
+												<micro:DeltaMicroChart press="press" id="deltaMicroChart"
 													isResponsive="true" value1="10" value2="9" title1="{StationTrackerI18n>RTO}" title2="{StationTrackerI18n>Allocated}"
-														displayValue1="10" displayValue2="9" deltaDisplayValue="1"
+														displayValue1="100 IM" displayValue2="900 IM" deltaDisplayValue="1"
 														/>
 											</suite:content>
 									</suite:HeaderCellItem>
@@ -249,19 +247,19 @@
 
 			<OverflowToolbar id="toolbarstationtracker" class="white" width="100%">
 				<content>
+ 					<DatePicker	id="DatePicker" width="auto" class="sapUiTinyMarginBeginEnd"  />
+					<Select id="selectShift" class="sapUiTinyMarginBeginEnd comboBoxStyle selectShift" change="changeShift" items="{ path : 'stationTrackerShift>/' }" enabled="{ path : 'stationTrackerShift>/0/visible', formatter : 'airbus.mes.stationtracker.util.Formatter.isDayTimeline' }" >
+						<core:Item key="{stationTrackerShift>id}" text="{stationTrackerShift>value}" />
+					</Select>
 					<Label text="{StationTrackerI18n>GroupingSortBy}" />
-					<Select id="selectGroup" class="sapUiTinyMarginBeginEnd comboBoxStyle" change="changeGroup">
-						<core:Item text="Competence" key="CPP_CLUSTER"/>
-						<core:Item text="Avl" key="avlLine" />
+					<Select id="selectGroup" class="sapUiTinyMarginBeginEnd comboBoxStyle" items="{groupModel>/Rowsets/Rowset/0/Row/Grouping}" change="changeGroup">
+						<core:ListItem key="{groupModel>Value}" text="{ path : 'groupModel>Value' , formatter : '.getI18nValue' }"/>	
 					</Select>
 					<Label text="{StationTrackerI18n>BoxingShow}" />
-					<Select id="selectBox" class="sapUiTinyMarginBeginEnd comboBoxStyle" change="changeBox">
-						<core:Item text="Operations" key="OPERATION_ID"/>
-						<core:Item text="WorkOrder" key="WORKORDER_ID"/>
-					</Select>
-					<Label text="{StationTrackerI18n>Shift}"  visible= "{ path : 'stationTrackerShift>/0/visible', formatter : 'airbus.mes.stationtracker.util.Formatter.isDayTimeline' }" />
-					<Select id="selectShift" class="sapUiTinyMarginBeginEnd comboBoxStyle selectShift" change="changeShift" items="{ path : 'stationTrackerShift>/' }" visible= "{ path : 'stationTrackerShift>/0/visible', formatter : 'airbus.mes.stationtracker.util.Formatter.isDayTimeline' }" >
-						<core:Item key="{stationTrackerShift>id}" text="{stationTrackerShift>value}" />
+					<Select id="selectBox" class="sapUiTinyMarginBeginEnd comboBoxStyle" items="{groupModel>/Rowsets/Rowset/0/Row/Boxing}" change="changeBox" >
+						<core:ListItem key="{groupModel>Value}" text="{ path : 'groupModel>Value' , formatter : '.getI18nValue' }" />	
+<!-- 						<core:Item text="Operations" key="OPERATION_ID"/>
+						<core:Item text="WorkOrder" key="WORKORDER_ID"/> -->
 					</Select>
 					<ToolbarSpacer />
 					<HBox id="toolbarDate" class="sapUiTinyMarginBeginEnd"></HBox>

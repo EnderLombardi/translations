@@ -62,23 +62,23 @@ airbus.mes.polypoly.PolypolyManager = {
 	// Crazy function call not present in the model manager or polypolymanager even in the code get from stepchange
 	// onModelLoaded of what ??????
 	
-	onModelLoaded : function() {
-		var oData = sap.ui.getCore().getModel("mii").getData().Rowsets;
-		if (oData.Rowset && oData.Rowset.length > 0 && oData.Rowset[0].Row) {
-			var oMiiData = sap.ui.getCore().getModel("mii").getData();
-			var oTableData = airbus.mes.polypoly.PolypolyManager.createTableData(oMiiData);
-			var mTableModel = new sap.ui.model.json.JSONModel(oTableData);
-			airbus.mes.polypoly.PolypolyManager.internalContext.oModel = mTableModel;
-			
-			// ????? 
-			sap.ui.getCore().byId("polypoly").setModel(mTableModel);
-			//sap.ui.getCore().getModel("mTableModel").loadData(mTableModel);
-			
-		} 
-		else {
-			var mTableModel = new sap.ui.model.json.JSONModel();
-			}
-	},
+//	onModelLoaded : function() {
+//		var oData = sap.ui.getCore().getModel("mii").getData().Rowsets;
+//		if (oData.Rowset && oData.Rowset.length > 0 && oData.Rowset[0].Row) {
+//			var oMiiData = sap.ui.getCore().getModel("mii").getData();
+//			var oTableData = airbus.mes.polypoly.PolypolyManager.createTableData(oMiiData);
+//			var mTableModel = new sap.ui.model.json.JSONModel(oTableData);
+//			airbus.mes.polypoly.PolypolyManager.internalContext.oModel = mTableModel;
+//			
+//			// ????? 
+//			sap.ui.getCore().byId("polypoly").setModel(mTableModel);
+//			//sap.ui.getCore().getModel("mTableModel").loadData(mTableModel);
+//			
+//		} 
+//		else {
+//			var mTableModel = new sap.ui.model.json.JSONModel();
+//			}
+//	},
 
 	createTableData : function(oMiiData) {
 
@@ -97,7 +97,8 @@ airbus.mes.polypoly.PolypolyManager = {
 			}
 		});
 
-		var ressourcePoolsmodel = new sap.ui.model.json.JSONModel();
+//		var ressourcePoolsmodel = new sap.ui.model.json.JSONModel();
+//		sap.ui.getCore().setModel(ressourcePoolsmodel, "rpModel");
 
 		var aRessourcePools = [];
 		Object.keys(ressourcePools).forEach(function(el) {
@@ -106,19 +107,29 @@ airbus.mes.polypoly.PolypolyManager = {
 			oTemp["rp_desc"] = ressourcePools[el];
 			aRessourcePools.push(oTemp)
 		});
+		
+		sap.ui.getCore().getModel("rpModel").setData({
+//		ressourcePoolsmodel.setData({
+			rp : aRessourcePools
+		});
 
 
 		var oTableRows = {
 			"rows" : [ {
 				"ressourcepool" : "",
 				"ressourcepoolId" : "",
-				"category" : "NEED",
+				"category" : "Need",	
+				"type" : "LABEL"
+			},{
+				"ressourcepool" : "",
+				"ressourcepoolId" : "",
+				"category" : "QA 3",
 				"icon" : "3",
 				"type" : "NEED"
 			}, {
 				"ressourcepool" : "",
 				"ressourcepoolId" : "",
-				"category" : "NEED",
+				"category" : "QA 4",
 				"icon" : "4",
 				"type" : "NEED"
 			}, ],
@@ -204,13 +215,21 @@ airbus.mes.polypoly.PolypolyManager = {
 				.keys(ressourcePools)
 				.forEach(
 						function(rp) {
-							oTableRows.rows[0]["ressourcepool"] = oTableRows.rows[0]["ressourcepool"]
-									+ separateur + ressourcePools[rp];
+//							oTableRows.rows[0]["ressourcepool"] = oTableRows.rows[0]["ressourcepool"]
+//									+ separateur + ressourcePools[rp];
 							oTableRows.rows[0]["ressourcepoolId"] = oTableRows.rows[0]["ressourcepoolId"]
 									+ separateur + rp;
 							separateur = ","
-							oTableRows.rows[1]["ressourcepool"] = oTableRows.rows[0]["ressourcepool"];
+//							oTableRows.rows[1]["ressourcepool"] = oTableRows.rows[0]["ressourcepool"];
 							oTableRows.rows[1]["ressourcepoolId"] = oTableRows.rows[0]["ressourcepoolId"];
+//							oTableRows.rows[2]["ressourcepool"] = oTableRows.rows[0]["ressourcepool"];
+							oTableRows.rows[2]["ressourcepoolId"] = oTableRows.rows[0]["ressourcepoolId"];
+							
+							oTableRows.rows.push({
+								"type" : "LABEL",
+								"ressourcepoolId" : rp,
+								"category" : ressourcePools[rp]
+							});
 							// Creation des lignes de type UA
 							oMiiRows
 									.forEach(function(row) {
@@ -288,9 +307,15 @@ airbus.mes.polypoly.PolypolyManager = {
 										}
 									});
 							// AS IS
+							oTableRows.rows.push({
+								"type" : "LABEL",
+								"ressourcepoolId" : rp,
+								"category" : "AS IS"
+							});
+							var aASISName = ["WA 1", "WA 2", "QA 3", "QA 4"];
 							for (var i = 1; i < 5; i++) {
 								oTableRows.rows.push({});
-								oTableRows.rows[oTableRows.rows.length - 1]["category"] = "AS IS";
+								oTableRows.rows[oTableRows.rows.length - 1]["category"] = aASISName[i-1];
 								oTableRows.rows[oTableRows.rows.length - 1]["icon"] = i
 										.toString();
 								oTableRows.rows[oTableRows.rows.length - 1]["type"] = "ASIS";
@@ -306,10 +331,16 @@ airbus.mes.polypoly.PolypolyManager = {
 										});
 							}
 							// Gap
+							oTableRows.rows.push({
+								"type" : "LABEL",
+								"ressourcepoolId" : rp,
+								"category" : "GAP"
+							});
+							var aGAPName = ["QA 3", "QA 4"];
 							for (var j = 1; j < 3; j++) {
 								var k = j + 2;
 								oTableRows.rows.push({});
-								oTableRows.rows[oTableRows.rows.length - 1]["category"] = "GAP";
+								oTableRows.rows[oTableRows.rows.length - 1]["category"] = aGAPName[j-1];
 								oTableRows.rows[oTableRows.rows.length - 1]["icon"] = k
 										.toString();
 								oTableRows.rows[oTableRows.rows.length - 1]["type"] = "GAP";
@@ -354,50 +385,50 @@ airbus.mes.polypoly.PolypolyManager = {
 		return oTableRows;
 	},
 
-//	updateLevelInit : function() {
-//		var oModel = sap.ui.getCore().byId("polypolyView").getModel();
-//		this.levelUpdater.sUserID = this.userComptencyContext.rowBindingContext
-//				.getProperty("ERP_ID");
-//		this.levelUpdater.sUserName = this.userComptencyContext.rowBindingContext
-//				.getProperty("category");
-//		this.levelUpdater.sTechName = oModel.getData().columns[PolypolyManager.userComptencyContext.columnIndex + 3].techname;
-//		this.levelUpdater.startLevel = parseInt(PolypolyManager.userComptencyContext.rowBindingContext
-//				.getProperty(this.levelUpdater.sTechName));
-//		this.levelUpdater.endLevel = PolypolyManager.userComptencyContext.newLevel;
-//		this.levelUpdater.currentLevel = this.levelUpdater.startLevel;
-//
-//		PolypolyManager.checkUpdateLevel();
-//	},
-//
-//	checkUpdateLevel : function() {
-//		var p = PolypolyManager.levelUpdater;
-//		if (PolypolyManager.levelUpdater.currentLevel >= PolypolyManager.levelUpdater.endLevel) {
-//			PolypolyManager.handleUpdateLevel();
-//		} else {
-//			PolypolyManager.levelUpdater.currentLevel += 1;
-//			if (PolypolyManager.levelUpdater.currentLevel == 2) {
-//				PolypolyManager.updateLevel12(p.sUserID, p.sTechName);
-//			} else if (PolypolyManager.levelUpdater.currentLevel == 3) {
-//				PolypolyManager.updateLevel23(p.sUserID, p.sTechName);
-//			} else {
-//				PolypolyManager.checkUpdateLevel();
-//			}
-//		}
-//	},
-//
-//	handleUpdateLevel : function() {
-//		var p = PolypolyManager.levelUpdater;
-//		if (PolypolyManager.levelUpdater.endLevel == 0) {
-//			PolypolyManager.updateLevelDelete(p.sUserID, p.sTechName);
-//		} else if (PolypolyManager.levelUpdater.startLevel == 0) {
-//			PolypolyManager.updateLevelCreate(p.sUserID, p.sTechName,
-//					p.endLevel);
-//		} else {
-//			PolypolyManager.updateLevel(p.sUserID, p.sTechName, p.startLevel,
-//					p.endLevel);
-//		}
-//	},
-//
+	updateLevelInit : function() {
+		var oModel = sap.ui.getCore().byId("polypoly").getModel();
+		this.levelUpdater.sUserID = this.userComptencyContext.rowBindingContext
+				.getProperty("ERP_ID");
+		this.levelUpdater.sUserName = this.userComptencyContext.rowBindingContext
+				.getProperty("category");
+		this.levelUpdater.sTechName = oModel.getData().columns[airbus.mes.polypoly.PolypolyManager.userComptencyContext.columnIndex + 4].techname;
+		this.levelUpdater.startLevel = parseInt(airbus.mes.polypoly.PolypolyManager.userComptencyContext.rowBindingContext
+				.getProperty(this.levelUpdater.sTechName));
+		this.levelUpdater.endLevel = airbus.mes.polypoly.PolypolyManager.userComptencyContext.newLevel;
+		this.levelUpdater.currentLevel = this.levelUpdater.startLevel;
+
+		airbus.mes.polypoly.PolypolyManager.checkUpdateLevel();
+	},
+
+	checkUpdateLevel : function() {
+		var p = airbus.mes.polypoly.PolypolyManager.levelUpdater;
+		if (airbus.mes.polypoly.PolypolyManager.levelUpdater.currentLevel >= airbus.mes.polypoly.PolypolyManager.levelUpdater.endLevel) {
+			airbus.mes.polypoly.PolypolyManager.handleUpdateLevel();
+		} else {
+			airbus.mes.polypoly.PolypolyManager.levelUpdater.currentLevel += 1;
+			if (airbus.mes.polypoly.PolypolyManager.levelUpdater.currentLevel == 2) {
+				airbus.mes.polypoly.PolypolyManager.updateLevel12(p.sUserID, p.sTechName);
+			} else if (airbus.mes.polypoly.PolypolyManager.levelUpdater.currentLevel == 3) {
+				airbus.mes.polypoly.PolypolyManager.updateLevel23(p.sUserID, p.sTechName);
+			} else {
+				airbus.mes.polypoly.PolypolyManager.checkUpdateLevel();
+			}
+		}
+	},
+
+	handleUpdateLevel : function() {
+		var p = airbus.mes.polypoly.PolypolyManager.levelUpdater;
+		if (airbus.mes.polypoly.PolypolyManager.levelUpdater.endLevel == 0) {
+			airbus.mes.polypoly.PolypolyManager.updateLevelDelete(p.sUserID, p.sTechName);
+		} else if (airbus.mes.polypoly.PolypolyManager.levelUpdater.startLevel == 0) {
+			airbus.mes.polypoly.PolypolyManager.updateLevelCreate(p.sUserID, p.sTechName,
+					p.endLevel);
+		} else {
+			airbus.mes.polypoly.PolypolyManager.updateLevel(p.sUserID, p.sTechName, p.startLevel,
+					p.endLevel);
+		}
+	},
+
 //	updateLevelCreate : function(sUserID, sTechName, sNewLevel) {
 //		var urlqalevelcreate = this.urlModel.getProperty("urlqalevelcreate");
 //
@@ -614,11 +645,11 @@ airbus.mes.polypoly.PolypolyManager = {
 //			cache : false
 //		}, true);
 //
-		var needLevelsmodel = new sap.ui.model.json.JSONModel(
-				"/MES/components/polypoly/model/needlevels.json");
-		sap.ui.getCore()
-				.setModel(needLevelsmodel, "needlevels");
-		var columnModel = new sap.ui.model.json.JSONModel();
+//		var needLevelsmodel = new sap.ui.model.json.JSONModel(
+//				"/MES/components/polypoly/model/needlevels.json");
+//		sap.ui.getCore()
+//				.setModel(needLevelsmodel, "needlevels");
+//		var columnModel = new sap.ui.model.json.JSONModel();
 //		var listQAmodel = new sap.ui.model.json.JSONModel(
 //				this.urlModel
 //						.getProperty("urlgetqalist"));

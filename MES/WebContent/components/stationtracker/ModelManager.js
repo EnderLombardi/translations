@@ -22,11 +22,13 @@ airbus.mes.stationtracker.ModelManager = {
 			core.setModel(new sap.ui.model.json.JSONModel(),"KPI");	//KPI
 			core.setModel(new sap.ui.model.json.JSONModel(),"productionGroupModel"); // production Group model
 			
-			
 			core.getModel("stationTrackerRModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onStationTrackerLoad);
 			core.getModel("stationTrackerIModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onStationTrackerLoad);
 			core.getModel("shiftsModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onShiftsLoad);
 			core.getModel("affectationModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onAffectationLoad);
+			
+			core.getModel("unPlannedModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onUnPlannedLoad);
+			core.getModel("OSWModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onOWSLoad);
 			
 		
 			var dest;
@@ -129,6 +131,35 @@ airbus.mes.stationtracker.ModelManager = {
 			
 		},
 
+		onUnPlannedLoad : function() {
+			
+			//var oData = sap.ui.getCore().getModel("unPlannedModel").getData();
+			var oModel = sap.ui.getCore().getModel("unPlannedModel");
+			
+			if(!oModel.getProperty("/Rowsets/Rowset/0/Row")){              
+
+	        	oModel = []
+	        	console.log("no Unplanned operation load");
+	        	
+	        }
+			
+		},
+		
+		
+		onOWSLoad : function() {
+			
+			var oModel = sap.ui.getCore().getModel("OSWModel");
+			
+			if(!oModel.getProperty("/Rowsets/Rowset/0/Row")){              
+
+	        	oModel = []
+	        	console.log("no Unplanned operation load");
+	        	
+	        }
+			
+				
+		},
+		
 //		loadUnplanned : function() {
 //			
 //			var oViewModel = sap.ui.getCore().getModel("unPlannedModel");
@@ -178,7 +209,7 @@ airbus.mes.stationtracker.ModelManager = {
 		        if(!options.hasOwnProperty(prop)) continue;
 		        
 		        var element = {};
-		        element.id = i;
+		        element.id = prop;
 		        element.value = prop;
 		        element.visible = airbus.mes.stationtracker.ShiftManager.dayDisplay;
 		        modelarray.push(element);
@@ -187,15 +218,28 @@ airbus.mes.stationtracker.ModelManager = {
 			
 			oView.getModel("stationTrackerShift").setData( modelarray );
 			oView.getModel("stationTrackerShift").refresh();
-			airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(0);
-			airbus.mes.stationtracker.oView.byId("selectShift").fireChange(0)
 			
-			//oView.setMoairbus.mes.stationtracker.oViewdel(new sap.ui.model.json.JSONModel(modelarray),"stationTrackerShift");
+			if ( airbus.mes.stationtracker.ShiftManager.dayDisplay ){
+				
+			airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(airbus.mes.stationtracker.ShiftManager.current_shift.shiftName);
+			airbus.mes.stationtracker.oView.byId("selectShift").fireChange(0);
 			
-			var toolbarDateId = airbus.mes.stationtracker.oView.byId("toolbarDate").sId;
-			$("div[id="+toolbarDateId+"]").contents().remove();
-			$("div[id="+toolbarDateId+"]").append($("div[class='dhx_cal_date']").contents().clone());
+			}
 			
+			if ( airbus.mes.stationtracker.ShiftManager.shiftDisplay ){
+				
+				airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(airbus.mes.stationtracker.ShiftManager.current_shift.shiftName);
+				
+			}
+			
+//			Manage date of date picker
+//			Retrieve text on div dhx_cal_date and split to keep only the date			
+			var oDate = new Date($("div[class='dhx_cal_date']").contents()[0].data.split("-")[0]);
+			var oDatePicker = airbus.mes.stationtracker.oView.byId("DatePicker");
+			oDatePicker.setDateValue(oDate);
+//			TODO : date formatter
+			oDatePicker.setValueFormat("dd-MM-yyyy");
+
 		},
 		onStationTrackerLoad : function() {
 			
@@ -281,29 +325,41 @@ airbus.mes.stationtracker.ModelManager = {
 				airbus.mes.stationtracker.worklistPopover.addStyleClass("alignTextLeft");
 				airbus.mes.stationtracker.worklistPopover.setModel(sap.ui.getCore().getModel("WorkListModel"), "WorkListModel");
 				airbus.mes.stationtracker.worklistPopover.setModel(new sap.ui.model.json.JSONModel(sap.ui.getCore().getModel("groupModel").getData()), "groupModel");
-
+				airbus.mes.stationtracker.oView.addDependent(airbus.mes.stationtracker.worklistPopover);
+					
 			}
 			
 			airbus.mes.stationtracker.worklistPopover.OSW = false;
 			airbus.mes.stationtracker.worklistPopover.unPlanned = false;
 			
-			
+			sap.ui.getCore().byId("worklistPopover--myList").bindAggregation('items', {
+				path : "WorkListModel>/",
+				template : sap.ui.getCore().byId("worklistPopover--sorterList"),
+				sorter : [ new sap.ui.model.Sorter({
+					// Change this value dynamic
+					path : 'WORKORDER_ID',
+					descending : false,
+					group : true,
+				}), new sap.ui.model.Sorter({
+					path : 'index',
+					descending : false
+				}) ]
+			});	
 			
 			var oModel = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy[scheduler.getEvent(id).group][scheduler.getEvent(id).avlLine][scheduler.getEvent(id).box];
 			
-			if ( oModel.length === 1 ) {
-				
-				airbus.mes.stationtracker.ModelManager.openOperationPopOver(id);
-				return;
-			}
+//			if ( oModel.length === 1 ) {
+//				
+//				airbus.mes.stationtracker.ModelManager.openOperationPopOver(id);
+//				return;
+//			}
 			
 			if (oModel && oModel.length > 0 && oModel) {
 				oModel = airbus.mes.stationtracker.util.Formatter.sortWorkList(oModel);
 			}		
 					
-			airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").setData(oModel);
+			airbus.mes.stationtracker.worklistPopover.setModel(new sap.ui.model.json.JSONModel(oModel),"WorkListModel");
 			airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").refresh(true);
-			airbus.mes.stationtracker.oView.addDependent(airbus.mes.stationtracker.worklistPopover);			
 			// delay because addDependent will do a async rerendering and the popover will immediately close without it
 			airbus.mes.stationtracker.worklistPopover.open();	
     	   

@@ -100,8 +100,10 @@ airbus.mes.polypoly.ModelManager = {
 		// attach event on end of loading model
 		core.getModel("mii").attachRequestCompleted(airbus.mes.polypoly.ModelManager.onPolyPolyModelLoaded);
 				
-		
-		
+		core.setModel(new sap.ui.model.json.JSONModel("../components/polypoly/model/QArows.json"), "listQA");
+//		core.setModel(new sap.ui.model.json.JSONModel(), "columnModel");
+		core.setModel(new sap.ui.model.json.JSONModel(), "rpModel");
+		core.setModel(new sap.ui.model.json.JSONModel("../components/polypoly/model/needlevels.json"), "needlevels");
 		
 		var dest;
 

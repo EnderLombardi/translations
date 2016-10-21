@@ -122,6 +122,8 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 			airbus.mes.stationtracker.ModelManager.loadShifts();
 			airbus.mes.stationtracker.ModelManager.loadAffectation();
 			airbus.mes.stationtracker.ShiftManager.init(airbus.mes.stationtracker.GroupingBoxingManager.shiftNoBreakHierarchy);
+			airbus.mes.stationtracker.ModelManager.loadStationTracker("U");
+			airbus.mes.stationtracker.ModelManager.loadStationTracker("O");
 			airbus.mes.stationtracker.ModelManager.loadStationTracker("R");
 			//TODO DEPLACE when the user change settings
 			airbus.mes.stationtracker.ModelManager.loadProductionGroup();		

@@ -52,8 +52,8 @@ airbus.mes.stationtracker.Component.prototype.createContent = function() {
 		this.oView.setModel(sap.ui.getCore().getModel("stationTrackerShift"),"stationTrackerShift");
 		this.oView.setModel(sap.ui.getCore().getModel("productionGroupModel"), "productionGroupModel");
 		this.oView.setModel(sap.ui.getCore().getModel("KPI"), "KPI");
-		
-		;
+		this.oView.setModel(sap.ui.getCore().getModel("groupModel"), "groupModel");
+
 		return this.oView;
 	}
 };
