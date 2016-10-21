@@ -24,7 +24,65 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 //							sap.ui.getCore().byId("polypoly").setModel(mTableModel);
 						
 					},
-
+					
+//					openQAPopup : function() {
+//						var that = this;
+//						if (!that.QADialog) {
+//							that.QADialog = sap.ui.xmlfragment(	"airbus.mes.polypoly.QAPopup", that);
+//						}
+//						that.QADialog.setModel(airbus.mes.polypoly.PolypolyManager.internalContext.oModel);
+//						that.QADialog.open();
+//					},
+					
+					createColumnQA : function(sId, oContext) {
+						var that = this;
+						var aMultiLabels = [];
+						if (oContext.getProperty("type") == "column") {
+							aMultiLabels.push(new sap.m.Label({
+								text : oContext.getProperty("techname"),
+								design : "Bold",
+								tooltip : oContext.getProperty("techname"),
+							}));
+							aMultiLabels.push(new sap.m.Label({
+								text : oContext.getProperty("name"),
+								design : "Bold",
+								tooltip : oContext.getProperty("name"),
+							}));
+//							// Only display QA in Tab Polypoly
+//							if (airbus.mes.polypoly.PolypolyManager.globalContext.tabSelected == "polypoly") {
+////							if (true){
+//								oContext.getProperty("qa").forEach(
+//										function(el) {
+//											var oQALabel = new sap.m.Label({
+//												text : el.label
+//											});
+//											aMultiLabels.push(oQALabel);
+//										});
+//							}
+							var oColumn = new sap.ui.table.Column(
+									{
+										id : sId,
+										hAlign : "Center",
+										width : "7rem",
+										multiLabels : [ aMultiLabels ],
+										template : new sap.m.Text({
+											text : {
+												parts : [ oContext
+														.getProperty("qa") ],
+												formatter : function(text) {
+													return text;
+												}
+											},
+										})
+									});
+						} else {
+							var oColumn = new sap.ui.table.Column({visible : false})
+						}
+						;
+						return oColumn
+					},
+					
+					
 					createColumn : function(sId, oContext) {
 						var that = this;
 						switch (oContext.getProperty("type")) {
@@ -130,6 +188,13 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 //															.byId(
 //																	"polypoly")
 //															.getController().onUserAllocate
+													visible : {
+														parts : [ "type" ],
+														formatter : function(
+																type) {
+															return type == "UA_A" || type == "UA_P"
+														}
+													}
 												})
 									})
 							break;
@@ -226,7 +291,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 																			formatter : function(
 																					type) {
 																				return type != "UA_A"
-																						&& type != "UA_P" && type != "LABEL"
+																						&& type != "UA_P" && type != "LABEL" && type != "LABEL_RP"
 																			}
 																		}
 																	}) ]
@@ -274,6 +339,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 							}));
 							// Only display QA in Tab Polypoly
 							if (airbus.mes.polypoly.PolypolyManager.globalContext.tabSelected == "polypoly") {
+//							if (true){
 								oContext.getProperty("qa").forEach(
 										function(el) {
 											var oQALabel = new sap.m.Label({
@@ -514,6 +580,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 					filterUA : function() {
 						
 						if (sap.ui.getCore().byId("typeRow") /*&& sap.ui.getCore().byId("FilterClockedUsers")*/){
+							var filterLabels = new sap.ui.model.Filter("type", "EQ", "LABEL_RP");
 							var filterUA;
 //							if(sap.ui.getCore().byId("FilterClockedUsers").getSelected())
 //								filterUA = new sap.ui.model.Filter("type", "EQ", "UA_CI","UA_NCD");
@@ -522,7 +589,8 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 							if ( airbus.mes.stationtracker.AssignmentManager.polypolyAffectation ) {
 								
 							filterUA = new sap.ui.model.Filter("type", "Contains", "UA_");
-							airbus.mes.polypoly.oView.byId("oTablePolypoly").getBinding("rows").filter(filterUA);
+							var aFilters = [filterLabels, filterUA];
+							airbus.mes.polypoly.oView.byId("oTablePolypoly").getBinding("rows").filter(aFilters);
 							airbus.mes.polypoly.oView.byId("oTablePolypoly").setFixedRowCount(0);
 							airbus.mes.polypoly.oView.byId("oTablePolypoly").setVisibleRowCount(8);
 							
@@ -530,6 +598,8 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 							} else {
 								
 								airbus.mes.polypoly.oView.byId("oTablePolypoly").getBinding("rows").filter();
+								airbus.mes.polypoly.oView.byId("oTablePolypoly").setFixedRowCount(3);
+								airbus.mes.polypoly.oView.byId("oTablePolypoly").setVisibleRowCount(15);
 							}
 							}
 						

@@ -3,7 +3,7 @@
 	xmlns:html="http://www.w3.org/1999/xhtml">
 	<table:Table rows="{ path: '/rows' }"
 		columns="{ path: '/columns', factory: '.createColumn' }"
-		 enableColumnReordering="true" fixedRowCount="3" visibleRowCount="15"
+		 enableColumnReordering="true"
 		rowHeight="40" id="oTablePolypoly" enableSelectAll="false"
 		columnMove="onColumnMove" class="backgroundPolypoly">
 		<table:toolbar>
@@ -37,6 +37,8 @@
 					<Button id="AddPolypoly" icon="sap-icon://add" text="Polypoly"
 						press="openColumnPopup" 
 						type="Emphasized" />
+					<Button id="SeeQA" icon="sap-icon://show" text="Show QA"
+						press="openQAPopup"/>
 				</content>
 			</Toolbar>
 		</table:toolbar>
