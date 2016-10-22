@@ -433,6 +433,7 @@ airbus.mes.stationtracker.ModelManager = {
 		}
 		else
 			airbus.mes.stationtracker.operationDetailPopup.open();
+		this.oOperationDetailComp.oView.placeAt(airbus.mes.stationtracker.operationDetailPopup.sId+"-scrollCont");
 
 	},
 	/***************************************************************************

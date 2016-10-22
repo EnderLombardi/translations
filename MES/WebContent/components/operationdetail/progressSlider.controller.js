@@ -1,6 +1,8 @@
 //jQuery.sap.require("airbus.mes.stationtracker.util.Formatter");
 
 sap.ui.controller("airbus.mes.operationdetail.progressSlider", {
+	reasonCodeText : undefined,
+	operationStatus : undefined,
 
 	/**
 	 * Called when a controller is instantiated and its View controls (if available) are already created.
@@ -8,7 +10,9 @@ sap.ui.controller("airbus.mes.operationdetail.progressSlider", {
 	 * @memberOf components.stationtracker.stationtracker
 	 */
 	onInit : function() {
-		//			
+		var status = this.getView().byId("operationStatus").getText();
+		
+					
 	},
 	expandOperationDetailPanel : function(oEvent) {
 		this.getView().byId("opDetailExpandButton")
@@ -35,8 +39,7 @@ sap.ui.controller("airbus.mes.operationdetail.progressSlider", {
 	 *****************************************************************************************/
 	activateOperation : function() {
 
-		var data = this.getView().getModel(
-				"operationDetailModel").oData.schedule;
+		var data = this.getView().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0];
 		var sMessage = this.getView().getModel("i18n")
 				.getProperty("SuccessfulActivation");
 		var flag_success;
@@ -83,8 +86,7 @@ sap.ui.controller("airbus.mes.operationdetail.progressSlider", {
 		}
 	},
 	pauseOperation : function() {
-		var data = this.getView().getModel(
-				"operationDetailModel").oData.schedule;
+		var data = this.getView().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0];
 		var sMessage = this.getView().getModel("i18n")
 				.getProperty("SuccessfulPause");
 
@@ -227,7 +229,7 @@ sap.ui.controller("airbus.mes.operationdetail.progressSlider", {
 												.getModel(
 														"operationDetailModel")
 												.getProperty(
-														"/schedule/sfc_step_ref"),
+														"/Rowsets/Rowset/0/Row/0/sfc_step_ref"),
 										this.reasonCodeText),
 						async : false,
 						error : function(xhr, status, error) {
@@ -313,9 +315,26 @@ sap.ui.controller("airbus.mes.operationdetail.progressSlider", {
 		this._reasonCodeDialog.close();
 	},
 	/***************************************************************************
-	 * 
+	 * set Buttons on the screen according to status
 	 * 
 	 **************************************************************************/
+	
+	setProgressScreenBtn : function(progressBtnStatus,
+			actionBtnStatus, activateBtnStatus) {
+		this.getView().byId("btnAdd").setEnabled(
+				progressBtnStatus);
+		this.getView().byId("btnReduce").setEnabled(
+				progressBtnStatus);
+		this.getView().byId("btnPause").setVisible(
+				actionBtnStatus);
+		this.getView().byId("btnConfirm").setVisible(
+				actionBtnStatus);
+		this.getView().byId("btnComplete").setVisible(
+				actionBtnStatus);
+		this.getView().byId("btnActivate").setVisible(
+				activateBtnStatus);
+	},
+	
 	/**
 	 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
 	 * (NOT before the first rendering! onInit() is used for that one!).
