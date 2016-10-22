@@ -1,0 +1,23 @@
+{ "Rowsets" : { 
+	"DateCreated" : "2016-06-17T11:15:45", "Version" : "15.1 SP1 Patch 0 (Jan 21, 2016)", "StartDate" : "2016-06-17T10:15:45+0200", "EndDate" : "2016-06-17T11:15:45+0200", "CachedTime" : "", 
+	"Rowset" : [ 
+	{ "Columns" : { 
+		"Column" : [ 
+		{ "Name" : "HANDLE", "SourceColumn" : "HANDLE", "Description" : "HANDLE", "SQLDataType" : -9, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "USER_SHIFT_BO", "SourceColumn" : "USER_SHIFT_BO", "Description" : "USER_SHIFT_BO", "SQLDataType" : -9, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "SITE", "SourceColumn" : "SITE", "Description" : "SITE", "SQLDataType" : -9, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "NAME", "SourceColumn" : "NAME", "Description" : "NAME", "SQLDataType" : -9, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "SHIFT_BEGIN", "SourceColumn" : "SHIFT_BEGIN", "Description" : "SHIFT_BEGIN", "SQLDataType" : 2, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "SHIFT_END", "SourceColumn" : "SHIFT_END", "Description" : "SHIFT_END", "SQLDataType" : 2, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "VALID_FROM", "SourceColumn" : "VALID_FROM", "Description" : "VALID_FROM", "SQLDataType" : -9, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "VALID_TO", "SourceColumn" : "VALID_TO", "Description" : "VALID_TO", "SQLDataType" : -9, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "DESCRIPTION", "SourceColumn" : "DESCRIPTION", "Description" : "DESCRIPTION", "SQLDataType" : -9, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "CREATED_DATE_TIME", "SourceColumn" : "CREATED_DATE_TIME", "Description" : "CREATED_DATE_TIME", "SQLDataType" : 93, "MinRange" : 1.0, "MaxRange" : 1.0 } ] }, 
+	"Row" : [ 
+		{ "HANDLE" : "UserShiftBO:CHES,S1", "USER_SHIFT_BO" : "UserShiftBO:CHES,S1", "SITE" : "CHES", "NAME" : "S1", "SHIFT_BEGIN" : 43200.00, "SHIFT_END" : 72000.00, "VALID_FROM" : "20160429", "VALID_TO" : "20160531", "DESCRIPTION" : "S1", "CREATED_DATE_TIME" : "04/28/2016 08:17:17" }, 
+		{ "HANDLE" : "UserShiftBO:CHES,TEST", "USER_SHIFT_BO" : "UserShiftBO:CHES,TEST", "SITE" : "CHES", "NAME" : "TEST", "SHIFT_BEGIN" : 43200.00, "SHIFT_END" : 72000.00, "VALID_FROM" : "20160427", "VALID_TO" : "20160531", "DESCRIPTION" : "TEST", "CREATED_DATE_TIME" : "04/27/2016 15:21:01" }, 
+		{ "HANDLE" : "UserShiftBO:CHES,TEST", "USER_SHIFT_BO" : "UserShiftBO:CHES,TEST", "SITE" : "CHES", "NAME" : "TEST", "SHIFT_BEGIN" : 43200.00, "SHIFT_END" : 72000.00, "VALID_FROM" : "20160429", "VALID_TO" : "20160531", "DESCRIPTION" : "TEST", "CREATED_DATE_TIME" : "04/27/2016 15:21:01" }, 
+		{ "HANDLE" : "UserShiftBO:CHES,S1", "USER_SHIFT_BO" : "UserShiftBO:CHES,S1", "SITE" : "CHES", "NAME" : "S1", "SHIFT_BEGIN" : 45000.00, "SHIFT_END" : 72000.00, "VALID_FROM" : "20160501", "VALID_TO" : "20160930", "DESCRIPTION" : "S1", "CREATED_DATE_TIME" : "04/28/2016 08:17:17" } ]
+		 } ]
+	 }
+ }

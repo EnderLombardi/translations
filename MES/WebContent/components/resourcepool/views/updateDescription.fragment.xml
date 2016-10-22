@@ -1,0 +1,14 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<Dialog title="{i18nModel>UpdateDescriptionTitle}" type="Message">
+		<content>
+			<Text text="{i18nModel>UpdateDescription}" />
+		</content>
+		<buttons>
+			<Button text="{i18nModel>Yes}" press="updateDescriptionUsingDialog" />
+			<Button text="{i18nModel>No}" press="afterUpdateDialogClose" />
+			<Button text="{i18nModel>Cancel}" press="afterUpdateDialogCancel" />
+		</buttons>
+
+	</Dialog>
+</core:FragmentDefinition>

@@ -4,6 +4,38 @@ jQuery.sap.declare("airbus.mes.shell.util.Functions");
 
 airbus.mes.shell.util.navFunctions = {
 		
+		stationTracker: function(){
+
+			if (airbus.mes.stationtracker === undefined){
+				
+				jQuery.sap.registerModulePath("airbus.mes.stationtracker", "../components/stationtracker");
+
+				sap.ui.getCore().createComponent({
+					name : "airbus.mes.stationtracker",
+				});
+				nav.addPage(airbus.mes.stationtracker.oView);
+			}
+			
+			nav.to(airbus.mes.stationtracker.oView.getId());
+		},
+		
+		
+		resourcePool: function(){
+			if (airbus.mes.resourcepool === undefined) {
+				
+				jQuery.sap.registerModulePath("airbus.mes.resourcepool", "../components/resourcepool");
+	
+				sap.ui.getCore().createComponent({
+					name : "airbus.mes.resourcepool",
+	         	});
+				nav.addPage(airbus.mes.resourcepool.oView);
+			}
+			
+			nav.to(airbus.mes.resourcepool.oView.getId());
+			
+		},
+				
+		
 		worktracker: function(){
 		
 			if (airbus.mes.worktracker === undefined) {

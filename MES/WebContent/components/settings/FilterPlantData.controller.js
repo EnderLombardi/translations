@@ -262,23 +262,16 @@ sap.ui
 									.setEnabled(true);
 						}
 
-						if (this.getOwnerComponent().mProperties.buttonAction === "stationtracker") {
-							if (airbus.mes.stationtracker != undefined) {
-								nav.to(airbus.mes.stationtracker.oView.getId());
-							} 
-							else{
-								sap.ui.getCore().createComponent({
-									name : "airbus.mes.stationtracker",
-								});
-								nav.addPage(airbus.mes.stationtracker.oView);
-								nav.to(airbus.mes.stationtracker.oView.getId());
-							}
-
-						}
-						else if (this.getOwnerComponent().mProperties.buttonAction === "worktracker") {
-							airbus.mes.shell.util.navFunctions.worktracker();
-						}
-						else if (this.getOwnerComponent().mProperties.buttonAction === "back") {
+						switch(this.getOwnerComponent().mProperties.buttonAction){
+						case "stationtracker":
+							airbus.mes.shell.util.navFunctions.stationTracker();
+							break;
+						
+						case "teamassignment":
+							airbus.mes.shell.util.navFunctions.resourcePool();
+							break;
+						
+						case "back":
 							nav.back();
 						}
 

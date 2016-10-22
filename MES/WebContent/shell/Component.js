@@ -3,6 +3,7 @@ jQuery.sap.require("sap.ui.model.resource.ResourceModel");
 jQuery.sap.require("airbus.mes.shell.util.Formatter");
 jQuery.sap.require("airbus.mes.shell.util.navFunctions");
 jQuery.sap.require("airbus.mes.shell.ModelManager");
+jQuery.sap.require("airbus.mes.shell.RoleManager");
 
 //jQuery.sap.registerModulePath("airbus.mes.settings","/MES/components/settings");
 
@@ -26,8 +27,12 @@ airbus.mes.shell.Component.prototype.createContent = function() {
 	//	View on XML
 	if (airbus.mes.shell.oView === undefined) {
 
-		// initialize ModelManager and load needed file
+		// Initialize ModelManager and load needed file
 		airbus.mes.shell.ModelManager.init(sap.ui.getCore());
+		
+		// Initialize Role Manager
+		airbus.mes.shell.RoleManager.init(sap.ui.getCore());
+		
 				
 		this.oView = sap.ui.view({
 			id : "globalNavView",

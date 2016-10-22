@@ -1,0 +1,91 @@
+.myForm
+{
+	width: 40em !important;
+}
+
+ @media screen and (max-width: 500px){
+	.myForm
+{
+	width: 15em !important;
+}
+}
+.fixHboxItemDisplay .sapMFlexItem{
+	width:100%;
+	word-break: break-all;
+	word-break: break-word;
+	
+}
+.fixHboxItemDisplay .sapMFlexItem span{
+	display: inline-block;
+}
+.colorSelect{
+	background-color: green;
+}
+.panelBorder{
+	border-style: groove;
+	*border-style: 1px solid #c0c0c0 !important;
+}
+.shiftButtons{
+	width:auto !important;
+	margin:2%;
+}
+.messageStrip span{
+	display:inline !important;
+	line-height: normal !important;
+	padding:0px !important;
+}
+.headerText{
+	font-size: x-large !important;
+}
+
+.panelHeaderCustomStyle{
+	font-size: 1.125rem !important; 
+    line-height: inherit !important;
+}
+.iconMiddle .sapMBtnIcon {
+	width: 100% !important;
+}
+
+.yellowColor{
+	background-color:antiquewhite !important;
+}
+
+.loanColor{
+	background-color: #dcd9d9 !important;
+}
+
+.Error{
+	color: red;
+}
+.fontWeight700{
+	font-weight:700;
+}
+.padding8{
+	padding:8px;
+}
+.helpDialogue{ height:100%; }
+
+.floatRight{
+	margin: .5rem 1rem 0 0;
+	float:right !important;
+	color: #666666;
+}
+.customlistTitle{
+	font-size: 1rem;
+	margin-top:.5rem;
+	margin-botton:.5rem;
+}
+.listItemDescrption{
+	margin-top: .5rem;
+	margin-bottom: .5rem;
+	color: #666666;
+}
+.blueBorderChange{
+	border-color: #009DE0;
+    border-style: solid;
+    border-bottom-width: 1px;
+    border-top-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+	
+}
