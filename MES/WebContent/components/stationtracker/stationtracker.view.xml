@@ -571,16 +571,17 @@
                                   <ToolbarSpacer />
                                   <HBox id="toolbarDate" class="sapUiTinyMarginBeginEnd"></HBox>
                                   <ToolbarSpacer />
+                                  <Button text="{StationTrackerI18n>ButtonShowCP}" type="Transparent"
+                                        icon="sap-icon://kpi-corporate-performance" class="sapUiTinyMarginBeginEnd"
+                                        press="onCPPress"></Button>                                  
                                   <Button text="{StationTrackerI18n>ButtonOutstandingWork}"
-                                        type="Transparent" icon="sap-icon://inspect" class="sapUiTinyMarginBeginEnd"
+                                        type="Transparent" icon="sap-icon://cause" class="sapUiTinyMarginBeginEnd"
                                         press="onOSWPress"></Button>
                                   <Button text="{StationTrackerI18n>ButtonUnplanned}" type="Transparent"
                                         icon="sap-icon://inspect" class="sapUiTinyMarginBeginEnd" press="onUnplannedPress"></Button>
-                                  <Button text="{StationTrackerI18n>ButtonShowCP}" type="Transparent"
-                                        icon="sap-icon://ppt-attachment" class="sapUiTinyMarginBeginEnd"
-                                        press="onCPPress"></Button>
+
                                   <Button text="{StationTrackerI18n>ButtonInitial}" type="Transparent"
-                                        icon="sap-icon://ppt-attachment" class="sapUiTinyMarginBeginEnd"
+                                        icon="sap-icon://past" class="sapUiTinyMarginBeginEnd"
                                         press="onInitialPlanPress"></Button>
 
                            </content>
