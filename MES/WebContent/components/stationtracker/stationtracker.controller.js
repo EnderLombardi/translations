@@ -688,4 +688,8 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	    return this.getView().getModel("StationTrackerI18n").getProperty(sKey);
 	},
 	
+	_close : function() {
+		airbus.mes.stationtracker.operationDetailPopup.close();
+	},
+	
 });
