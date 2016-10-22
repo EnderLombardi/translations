@@ -2,20 +2,36 @@
 	background: rgba(0, 32, 91, 0.94);
 }
 
-.blueColor {
-  background-color :blue !important;
+.completedColor {
+  background-color :#0085ad !important;
 }
-.redColor {
-  background-color :green !important;
+.activeColor {
+  background-color :#84bd00 !important;
 }
-.greenColor {
-  background-color :red
+.andonColor {
+  background-color :#e4002b
 }
-.yellowColor {
-  background-color :yellow
+.blockedColor {
+  background-color :#fbec00
 }
-.greyColor {
-  background-color :grey
+.notStatedColor {
+  background-color :#969696
 }
 
+.informationColor {
+	background-color:#d5f1f8;
+}
 
+.rightPlace {
+	right:0px !important;
+}
+
+.iconbuttonTeam .sapMBtnIcon{
+	width: 33px;
+	height: 33px;
+}
+
+.iconButtonEnable{
+	opacity:1;
+	
+}

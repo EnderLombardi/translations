@@ -1,31 +1,30 @@
 <core:FragmentDefinition xmlns="sap.m"
 	xmlns:core="sap.ui.core">
-	<Popover showHeader="false" placement="Left" showArrow="false"
-		contentWidth="10%" contentHeight="100%" afterClose="onProdGroupSelFinish">
-		<VBox class="sapUiSmallMarginTopBottom sapUiSmallMarginBegin">
-			<items class="sapUiSmallMarginTopBottom sapUiSmallMarginBegin">
-				<Label text="{ShellI18n>Legend}" design="Bold" class="sapUiSmallMarginTopBottom sapUiSmallMarginBegin"/>
-				<HBox  class="sapUiSmallMarginTopBottom sapUiSmallMarginBegin">
-					<Button enabled="false"  type="Transparent" textAlign="Center" class="blueColor sapUiSmallMarginTopBottom sapUiSmallMarginBegin"/>
-					<Label text="{ShellI18n>OperationCompleted}" class="sapUiSmallMarginTopBottom sapUiSmallMarginBegin" />
+	<Popover showHeader="false" placement="Left" showArrow="false" class="informationColor rightPlace">
+		<VBox>
+			<items>
+				<Label text="{ShellI18n>Legend}" class="sapUiTinyMarginTopBottom sapUiTinyMarginBeginEnd" design="Bold"/>
+				<HBox  alignItems="Center"  class="sapUiTinyMarginTopBottom">
+					<FlexBox width="2rem" height="2rem" class="completedColor sapUiTinyMarginBeginEnd" />
+					<Label text="{ShellI18n>OperationCompleted}" />
 				</HBox>
-				<HBox>
-					<Button enabled="false"  type="Transparent" class="redColor sapUiSmallMarginTopBottom sapUiSmallMarginBegin"/>
-					<Label text="{ShellI18n>OperationInProgress}" class="sapUiSmallMarginTopBottom sapUiSmallMarginBegin"/>
+				<HBox alignItems="Center" class="sapUiTinyMarginTopBottom">
+					<FlexBox width="2rem" height="2rem" class="activeColor sapUiTinyMarginBeginEnd" />
+					<Label text="{ShellI18n>OperationInProgress}"/>
 				</HBox>
-				<HBox>
-					<Button enabled="false"  type="Transparent" class="greenColor sapUiSmallMarginTopBottom sapUiSmallMarginBegin"/>
-					<Label text="{ShellI18n>OperationAndon}" class="sapUiSmallMarginTopBottom sapUiSmallMarginBegin"/>
+				<HBox alignItems="Center" class="sapUiTinyMarginTopBottom">
+					<FlexBox width="2rem" height="2rem" class="andonColor sapUiTinyMarginBeginEnd" />
+					<Label text="{ShellI18n>OperationAndon}"/>
 				</HBox>
-				<HBox>
-					<Button enabled="false"  type="Transparent" class="yellowColor sapUiSmallMarginTopBottom sapUiSmallMarginBegin"/>
-					<Label text="{ShellI18n>OperationBlocked}" class="sapUiSmallMarginTopBottom sapUiSmallMarginBegin"/>
+				<HBox alignItems="Center" class="sapUiTinyMarginTopBottom">
+					<FlexBox width="2rem" height="2rem" class="blockedColor sapUiTinyMarginBeginEnd" />
+					<Label text="{ShellI18n>OperationBlocked}"/>
 				</HBox>
-				<HBox>
-					<Button enabled="false"  type="Transparent" class="greyColor sapUiSmallMarginTopBottom sapUiSmallMarginBegin"/>
-					<Label text="{ShellI18n>OperationNotStarted}" class="sapUiSmallMarginTopBottom sapUiSmallMarginBegin"/>
+				<HBox alignItems="Center" class="sapUiTinyMarginTopBottom">
+					<FlexBox width="2rem" height="2rem" class="notStatedColor sapUiTinyMarginBeginEnd" />
+					<Label text="{ShellI18n>OperationNotStarted}"/>
 				</HBox>																
-				<Label text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo hey nonny no duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."/>
+				<Label text="Lorem "/>
 			</items>
 		</VBox>
 	</Popover>
