@@ -112,7 +112,7 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 
 	},
 
-	/*renderStationTracker : function() {
+	renderStationTracker : function() {
 
 
 		if (nav.getCurrentPage().getId() === "stationTrackerView") {
@@ -137,5 +137,5 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 
 
 		}
-	}*/
+	}
 });
