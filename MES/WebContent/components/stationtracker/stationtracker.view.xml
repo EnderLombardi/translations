@@ -23,6 +23,7 @@
                                                <core:Item key="{ressourcePoolModel>user}" text="{ressourcePoolModel>user}" />
                                         </Select>
 
+
                                         <ToolbarSpacer />
                                         <Button text="{StationTrackerI18n>ButtonTeam}" type="Transparent"
                                                class="tiffanyColor whiteButton buttonStatus2 iconbuttonTeam sapUiSmallMarginBegin"
@@ -345,6 +346,136 @@
                                                                                                      </micro:points>
                                                                                               </micro:AreaMicroChartItem>
                                                                                         </micro:minThreshold>
+=======
+						<ToolbarSpacer />
+						<Button text="{StationTrackerI18n>ButtonTeam}" type="Transparent"
+							class="tiffanyColor whiteButton buttonStatus2 iconbuttonTeam sapUiSmallMarginBegin"
+							icon="sap-icon://group" press="onTeamPress" />
+					</Toolbar>
+					
+				</headerToolbar>
+				<content>
+				<HBox width="100%">
+						<VBox width="30%" class="contentHeaderCont">
+							<Label text="{StationTrackerI18n>TaktAdherence}" design="Bold" width="100%" class="whiteTextHeader sapUiSmallMarginTopBottom" />
+							<HBox>
+								<VBox width="60%">
+								<micro:AreaMicroChart colorPalette='#ffffff , #84caec,'
+									width="90%"  height="5rem" minXValue="0" maxXValue="100" minYValue="0"
+									maxYValue="100" class="sapUiSmallMargin" press="press">
+									<micro:firstXLabel>
+										<micro:AreaMicroChartLabel label="June 1"
+											color="Good" />
+									</micro:firstXLabel>
+									<micro:lastXLabel>
+										<micro:AreaMicroChartLabel label="June 30"
+											color="Critical" />
+									</micro:lastXLabel>
+									<micro:firstYLabel>
+										<micro:AreaMicroChartLabel label="0M"
+											color="Good" />
+									</micro:firstYLabel>
+									<micro:lastYLabel>
+										<micro:AreaMicroChartLabel label="80M"
+											color="Critical" />
+									</micro:lastYLabel>
+									<micro:lines>
+										<micro:AreaMicroChartItem>
+											<micro:points>
+												<micro:AreaMicroChartPoint x="80" y="0" />
+												<micro:AreaMicroChartPoint x="80" y="100" />
+											</micro:points>
+										</micro:AreaMicroChartItem>
+						
+										<micro:AreaMicroChartItem>
+											<micro:points>
+												<micro:AreaMicroChartPoint x="0" y="0" />
+												<micro:AreaMicroChartPoint x="10" y="30" />
+												<micro:AreaMicroChartPoint x="60" y="40" />
+												<micro:AreaMicroChartPoint x="100" y="90" />
+											</micro:points>
+										</micro:AreaMicroChartItem>
+						
+									</micro:lines>
+						
+						<micro:maxThreshold>
+										<micro:AreaMicroChartItem color="Good">
+											<micro:points>
+												<micro:AreaMicroChartPoint x="0" y="0" />
+												<micro:AreaMicroChartPoint x="30" y="50" />
+												<micro:AreaMicroChartPoint x="60" y="80" />
+												<micro:AreaMicroChartPoint x="100" y="100" />
+											</micro:points>
+										</micro:AreaMicroChartItem>
+									</micro:maxThreshold>
+						
+									<micro:minThreshold>
+										<micro:AreaMicroChartItem color="Error">
+											<micro:points>
+												<micro:AreaMicroChartPoint x="0" y="0" />
+												<micro:AreaMicroChartPoint x="30" y="50" />
+												<micro:AreaMicroChartPoint x="60" y="80" />
+												<micro:AreaMicroChartPoint x="100" y="100" />
+											</micro:points>
+										</micro:AreaMicroChartItem>
+									</micro:minThreshold>
+						
+								</micro:AreaMicroChart>
+							</VBox>
+
+							<VBox width="30%">
+								<Label text="{StationTrackerI18n>Adherence}" class=" whiteText" />
+								<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/Labour}"	design="Bold" class=" kpiValue redText " height="100% " />
+							</VBox>
+						
+							<VBox width="30%">
+								<HBox justifyContent ="Center" width="30%">
+									<Label text="{StationTrackerI18n>Trend}" class=" whiteText" />
+									<core:Icon src="sap-icon://up"  />
+								</HBox>
+									
+								<HBox width="30%">
+									<Label text="{StationTrackerI18n>DeltaVsSLB}" class=" whiteText" />
+									<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/SLB}" class="whiteText" />
+								</HBox>
+								
+								<HBox width="30%">
+									<Label text="{StationTrackerI18n>DeltaVsSLB}" class=" whiteText" />
+									<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/SLB}" class="whiteText" />
+								</HBox>
+								<HBox width="30%">
+									<Label text="{StationTrackerI18n>DeltaVsSoA}" class=" whiteText" />
+									<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/SLB}" class="whiteText" />
+								</HBox>
+								<HBox width="30%">
+									<Label text="{StationTrackerI18n>CycleTime}" class=" whiteText" />
+									<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/SLB}" class="whiteText" />
+								</HBox>
+								<HBox width="30%">
+									<Label text="{StationTrackerI18n>WorkCintent}" class=" whiteText" />
+									<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/SLB}" class="whiteText" />
+								</HBox>
+							</VBox>
+											
+					
+						</HBox>
+
+</VBox>
+					
+					<VBox width="10%"  class="contentHeaderCont">
+									<Label text="{StationTrackerI18n>LabourEfficiency}" design="Bold" width="100%" class="whiteTextHeader sapUiSmallMarginTopBottom" />
+										<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/SLB}" class="whiteText" />
+				
+					</VBox>
+					
+					<VBox width="20%">
+					</VBox>
+					
+				</HBox>
+					<suite:HeaderContainer showDividers="false"
+						backgroundDesign="Solid">
+						<suite:items>
+>>>>>>> 0450fc5 Kpi working on
 
                                                                                  </micro:AreaMicroChart>
 

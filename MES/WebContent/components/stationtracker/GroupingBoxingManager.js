@@ -150,7 +150,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 		}
 		oModel.forEach(function(el){
 			
-			if ( sGroup === "avlLine") {				
+			if ( sGroup === "AVL_LINE") {				
 			// permit to create only one folder when avl Line is selected.	
 				var ssGroup = "AvlLine";
 				
