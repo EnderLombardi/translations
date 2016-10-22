@@ -10,7 +10,8 @@ sap.ui.controller("airbus.mes.operationdetail.progressSlider", {
 	 * @memberOf components.stationtracker.stationtracker
 	 */
 	onInit : function() {
-		var status = this.getView().byId("operationStatus").getText();
+		
+		
 		
 					
 	},
@@ -350,6 +351,33 @@ sap.ui.controller("airbus.mes.operationdetail.progressSlider", {
 	 * @memberOf components.stationtracker.stationtracker
 	 */
 	onAfterRendering : function() {
+		if (this.getView().byId("operationStatus").getText() === "Not Started"
+			|| this.getView().byId("operationStatus")
+					.getText() === "Paused") {
+
+		this.setProgressScreenBtn(false, false, true);
+		this.getView().byId("progressSlider").setEnabled(
+				false);
+
+	} else if (this.getView().byId("operationStatus")
+			.getText() === "In Progress") {
+
+		this.setProgressScreenBtn(true, true, false);
+		this.getView().byId("progressSlider").setEnabled(
+				true);
+
+	} else if (this.getView().byId("operationStatus")
+			.getText() === "Blocked"
+			|| this.getView().byId("operationStatus")
+					.getText() === "Confirmed") {
+
+		this.setProgressScreenBtn(false, false, false);
+		this.getView().byId("progressSlider").setEnabled(
+				false);
+		this.getView().byId("progressSliderfirst")
+				.setEnabled(false);
+
+	}
 
 	}
 
