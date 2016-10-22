@@ -22,7 +22,13 @@ airbus.mes.shell.util.Formatter = {
 		stationTrackerLine : function(Line) {
 			return airbus.mes.shell.oView.getModel("ShellI18n").getProperty("Line") + " " + Line;
 		},
-		
+		setInformationVisibility : function() {
+			if(!airbus.mes.stationtracker.isVisible) {
+				return airbus.mes.stationtracker.isVisible;		
+			} else {
+				return false;
+			}
+		}		
 		
 	
 };

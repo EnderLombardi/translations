@@ -22,6 +22,7 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 		// Active settings button during leaving settings screen
 		if (airbus.mes.shell != undefined) {
 			airbus.mes.shell.oView.byId("settingsButton").setEnabled(true);
+			this.setInformationVisibility(false);
 		};
 
 		if (airbus.mes.homepage != undefined) {
@@ -93,6 +94,7 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 	// }
 	navigate : function() {
 
+		this.setInformationVisibility(false);
 		// Deactivate button on settings screen
 		airbus.mes.shell.oView.byId("settingsButton").setEnabled(false);
 		
@@ -116,7 +118,7 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 
 
 		if (nav.getCurrentPage().getId() === "stationTrackerView") {
-
+			this.setInformationVisibility(true);
 			airbus.mes.stationtracker.oView.byId("stationtracker").setBusy(true);
 			
 			airbus.mes.stationtracker.ModelManager.loadShifts();
@@ -137,5 +139,22 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 
 
 		}
+	},
+	setInformationVisibility : function(bSet) {
+		this.getView().byId("informationButton").setVisible(bSet);
+	},
+	onInformation : function(oEvent){
+		if ( airbus.mes.stationtracker.informationPopover === undefined ) {
+			var oView = airbus.mes.stationtracker.oView;
+			airbus.mes.stationtracker.informationPopover = sap.ui.xmlfragment("informationPopover","airbus.mes.shell.informationPopover", airbus.mes.stationtracker.oView.getController());
+			airbus.mes.stationtracker.informationPopover.addStyleClass("alignTextLeft");
+			oView.addDependent(airbus.mes.stationtracker.informationPopover);
+		}
+
+		// delay because addDependent will do a async rerendering and the popover will immediately close without it
+		var oButton = oEvent.getSource();
+		jQuery.sap.delayedCall(0, this, function () {
+			airbus.mes.stationtracker.informationPopover.openBy(oButton);	
+		});			
 	}
 });

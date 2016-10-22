@@ -39,10 +39,11 @@ airbus.mes.shell.Component.prototype.createContent = function() {
 		}).addStyleClass("absolutePosition");
 
 		airbus.mes.shell.oView = this.oView;
-
+		airbus.mes.stationtracker = {};
+		airbus.mes.stationtracker.isVisible = false;
 		
-		this.oView.setModel(sap.ui.getCore().getModel("ShellI18n"), "ShellI18n");
 		this.oView.setModel(sap.ui.getCore().getModel("userDetailModel"),	"userDetailModel");
+		this.oView.setModel(sap.ui.getCore().getModel("ShellI18n"), "ShellI18n");
 		this.oView.setModel(sap.ui.getCore().getModel("userSettingModel"),	"userSettingModel");
 		
 //		Retrieve the language selector to define default language corresponding to sap-language parameter

@@ -2,3 +2,20 @@
 	background: rgba(0, 32, 91, 0.94);
 }
 
+.blueColor {
+  background-color :blue !important;
+}
+.redColor {
+  background-color :green !important;
+}
+.greenColor {
+  background-color :red
+}
+.yellowColor {
+  background-color :yellow
+}
+.greyColor {
+  background-color :grey
+}
+
+

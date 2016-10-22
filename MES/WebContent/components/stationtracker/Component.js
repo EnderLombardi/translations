@@ -31,6 +31,8 @@ sap.ui.core.UIComponent.extend("airbus.mes.stationtracker.Component", {
 
 airbus.mes.stationtracker.Component.prototype.createContent = function() {
 
+	airbus.mes.stationtracker.isDisplay = true;
+	
 	if (airbus.mes.stationtracker.oView === undefined) {
 //		Initialization
 		airbus.mes.stationtracker.ModelManager.init(sap.ui.getCore());

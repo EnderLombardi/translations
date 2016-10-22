@@ -11,11 +11,10 @@
                            <ToolbarSpacer />
                            
                            <Label text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/station', formatter : 'airbus.mes.shell.util.Formatter.stationTrackerStation' }" class="pageTitle sapUiTinyMarginBeginEnd" />
- 																										<Label text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/msn', formatter : 'airbus.mes.shell.util.Formatter.stationTrackerMsn' }" class="pageWelcome sapUiTinyMarginBeginEnd" /> 
-																											<Label text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/plant', formatter : 'airbus.mes.shell.util.Formatter.stationTrackerPlant' }" class="pageWelcome sapUiTinyMarginBeginEnd" />
-																											<Label text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/line', formatter : 'airbus.mes.shell.util.Formatter.stationTrackerLine' }" class="pageWelcome sapUiTinyMarginBeginEnd" />					
-					
-                          		<ToolbarSpacer />
+							<Label text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/msn', formatter : 'airbus.mes.shell.util.Formatter.stationTrackerMsn' }" class="pageWelcome sapUiTinyMarginBeginEnd" /> 
+							<Label text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/plant', formatter : 'airbus.mes.shell.util.Formatter.stationTrackerPlant' }" class="pageWelcome sapUiTinyMarginBeginEnd" />
+							<Label text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/line', formatter : 'airbus.mes.shell.util.Formatter.stationTrackerLine' }" class="pageWelcome sapUiTinyMarginBeginEnd" />					
+					       <ToolbarSpacer />
                            
                            
                            <core:Icon src="sap-icon://customer"/>
@@ -31,6 +30,7 @@
 	                           <core:Item text="Spanish" />                                                      
                            </Select>
                            <ToolbarSeparator />
+                           <Button id="informationButton" icon="sap-icon://message-information" type="Transparent" press="onInformation" visible="false"  class="whiteColor whiteButton" />
                            <Button id="settingsButton" 
                                    type="Transparent" 
                                    icon="sap-icon://action-settings" 

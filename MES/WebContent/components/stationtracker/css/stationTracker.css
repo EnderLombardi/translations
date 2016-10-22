@@ -337,6 +337,9 @@ color : black;
 .dhx_row_folder .dhx_matrix_scell.folder {
 	background-color:#d5f1f8;
 }
+.duck-egg-blue {
+	background-color:#d5f1f8 !important;
+}
 .lineYaxis {
 	background-color: rgba(49, 220, 240, 0.1);
 
