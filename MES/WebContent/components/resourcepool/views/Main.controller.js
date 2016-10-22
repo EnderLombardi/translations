@@ -42,7 +42,7 @@ sap.ui
 					 * Shifts Table
 					 **********************************************************/
 					changeAssignedShift : function(oEvent) {
-						airbus.mes.util.ModelManager.anyChangesFlag = true;
+						airbus.mes.resourcepool.util.ModelManager.anyChangesFlag = true;
 						/* row of table on which event is triggered */
 						var oItemAssign = oEvent.getSource().getParent();
 						/* all list of shifts in table */
@@ -59,7 +59,7 @@ sap.ui
 								var oJsonShifts = {
 
 									"USER_SHIFT_BO" : "",
-									"SITE" : airbus.mes.util.ModelManager.site,
+									"SITE" : airbus.mes.resourcepool.util.ModelManager.site,
 									"NAME" : oItemAssign.getCells()[0]
 											.getText(),
 									"SHIFT_BEGIN" : util.Formatter
@@ -101,7 +101,7 @@ sap.ui
 								var oJsonShifts = {
 
 									"USER_SHIFT_BO" : "",
-									"SITE" : airbus.mes.util.ModelManager.site,
+									"SITE" : airbus.mes.resourcepool.util.ModelManager.site,
 									"NAME" : oListOfItems.getItems()[i]
 											.getCells()[0].getText(),
 									"SHIFT_BEGIN" : util.Formatter
@@ -159,12 +159,12 @@ sap.ui
 
 						/* If no selections are made when assigning show error */
 						if (!aUsersToAssign || aUsersToAssign.length == 0) {
-							airbus.mes.util.ModelManager.showMessage("Toast", "",
-									airbus.mes.util.ModelManager.i18nModel
+							airbus.mes.resourcepool.util.ModelManager.showMessage("Toast", "",
+									airbus.mes.resourcepool.util.ModelManager.i18nModel
 											.getProperty("NoSelections"), "")
 							return;
 						}
-						airbus.mes.util.ModelManager.anyChangesFlag = true;
+						airbus.mes.resourcepool.util.ModelManager.anyChangesFlag = true;
 						/*
 						 * if no data was present in AssignedUsersModel then set
 						 * an empty Row
@@ -181,7 +181,7 @@ sap.ui
 									 * then prepare error messages
 									 */
 									if (item.getCustomData()[2].getValue() != "---"
-											&& item.getCustomData()[3].getValue() != airbus.mes.util.ModelManager.resourceName)
+											&& item.getCustomData()[3].getValue() != airbus.mes.resourcepool.util.ModelManager.resourceName)
 										aError.push(item);
 									else {
 										/*
@@ -194,7 +194,7 @@ sap.ui
 
 										var oJsonAssignedUsers = {
 											"USER_ID" : item.getCustomData()[7].getValue(),
-											"SITE" : airbus.mes.util.ModelManager.site,
+											"SITE" : airbus.mes.resourcepool.util.ModelManager.site,
 											"NAME" : item.getCustomData()[3].getValue(),
 											"PERSONAL_NO" : item.getCustomData()[0].getValue(),
 											"ERP_USER_ID" : item.getCustomData()[1].getValue(),
@@ -228,7 +228,7 @@ sap.ui
 								"AvailableUsersModel").oData.Rowsets.Rowset[0].Row;
 
 						for (var i = 0; i < aUsersToAssign.length; i++) {
-							if (aUsersToAssign[i].getCustomData()[2].getValue() != "---" && aUsersToAssign[i].getCustomData()[3].getValue() != airbus.mes.util.ModelManager.resourceName)
+							if (aUsersToAssign[i].getCustomData()[2].getValue() != "---" && aUsersToAssign[i].getCustomData()[3].getValue() != airbus.mes.resourcepool.util.ModelManager.resourceName)
 								continue;
 							for (var j = 0; j < oModelAvailableUsers.length; j++) {
 								if (oModelAvailableUsers[j].USER_ID == aUsersToAssign[i].getCustomData()[7].getValue())
@@ -251,23 +251,23 @@ sap.ui
 					showMessageDialog : function(aError) {
 						if (!this.oMessageDialog) {
 							this.oMessageDialog = sap.ui.xmlfragment(
-									"resource_pool.messageDialog", this);
+									"airbus.mes.resourcepool.views.messageDialog", this);
 						}
 						this.oMessageDialog.open();
 						for (var i = 0; i < aError.length; i++) {
 							this.oMessageDialog.getContent()[0]
 									.addItem(new sap.m.Text(
 											{
-												text : airbus.mes.util.ModelManager.i18nModel
+												text : airbus.mes.resourcepool.util.ModelManager.i18nModel
 														.getProperty("User")
 														+ " "
 														+ this.titleCase(aError[i].getCustomData()[5].getValue() +" "+ aError[i].getCustomData()[6].getValue())
 														+ " "
-														+ airbus.mes.util.ModelManager.i18nModel.getProperty("AssignedToResourcePool")
+														+ airbus.mes.resourcepool.util.ModelManager.i18nModel.getProperty("AssignedToResourcePool")
 														+ " "
 														+ aError[i].getCustomData()[3].getValue()
 														+ " "
-														+ airbus.mes.util.ModelManager.i18nModel.getProperty("LoanedToResourcePool")
+														+ airbus.mes.resourcepool.util.ModelManager.i18nModel.getProperty("LoanedToResourcePool")
 														+ aError[i].getCustomData()[4].getValue()
 
 											}));
@@ -296,10 +296,10 @@ sap.ui
 						 * unassigning
 						 */
 						if (!aUsersToUnassign || aUsersToUnassign.length == 0) {
-							airbus.mes.util.ModelManager.showMessage("Toast", "",airbus.mes.util.ModelManager.i18nModel.getProperty("NoSelections"), "")
+							airbus.mes.resourcepool.util.ModelManager.showMessage("Toast", "",airbus.mes.resourcepool.util.ModelManager.i18nModel.getProperty("NoSelections"), "")
 							return;
 						}
-						airbus.mes.util.ModelManager.anyChangesFlag = true;
+						airbus.mes.resourcepool.util.ModelManager.anyChangesFlag = true;
 
 						/*
 						 * if no data is present in AvailableUsersModel then
@@ -314,11 +314,11 @@ sap.ui
 									/* create JSON Object */
 									var loaned_RP_Name = item.getCustomData()[4].getValue()?item.getCustomData()[4].getValue():"";
 
-									if (item.getCustomData()[3].getValue() != airbus.mes.util.ModelManager.resourceName)
+									if (item.getCustomData()[3].getValue() != airbus.mes.resourcepool.util.ModelManager.resourceName)
 										// If Loaned to current resource
 										var oJsonAvailableUsers = {
 											"USER_ID" : item.getCustomData()[7].getValue(),
-											"SITE" : airbus.mes.util.ModelManager.site,
+											"SITE" : airbus.mes.resourcepool.util.ModelManager.site,
 											"NAME" : item.getCustomData()[3].getValue(),
 											"PERSONAL_NO" : item.getCustomData()[0].getValue(),
 											"ERP_USER_ID" : item.getCustomData()[1].getValue(),
@@ -333,7 +333,7 @@ sap.ui
 										// resource
 										var oJsonAvailableUsers = {
 											"USER_ID" : item.getCustomData()[7].getValue(),
-											"SITE" : airbus.mes.util.ModelManager.site,
+											"SITE" : airbus.mes.resourcepool.util.ModelManager.site,
 											"NAME" : item.getCustomData()[3].getValue(),
 											"PERSONAL_NO" : item.getCustomData()[0].getValue(),
 											"ERP_USER_ID" : item.getCustomData()[1].getValue(),
@@ -388,12 +388,12 @@ sap.ui
 						/* If no selections are made when assigning show error */
 						if (!aWorkCenterToAssign
 								|| aWorkCenterToAssign.length == 0) {
-							airbus.mes.util.ModelManager.showMessage("Toast", "",
-									airbus.mes.util.ModelManager.i18nModel
+							airbus.mes.resourcepool.util.ModelManager.showMessage("Toast", "",
+									airbus.mes.resourcepool.util.ModelManager.i18nModel
 											.getProperty("NoSelections"), "")
 							return;
 						}
-						airbus.mes.util.ModelManager.anyChangesFlag = true;
+						airbus.mes.resourcepool.util.ModelManager.anyChangesFlag = true;
 						/*
 						 * if no data was present in AssignedWCModel then set an
 						 * empty Row
@@ -458,12 +458,12 @@ sap.ui
 								.getSelectedItems();
 						if (!aWorkCenterToUnassign
 								|| aWorkCenterToUnassign.length == 0) {
-							airbus.mes.util.ModelManager.showMessage("Toast", "",
-									airbus.mes.util.ModelManager.i18nModel
+							airbus.mes.resourcepool.util.ModelManager.showMessage("Toast", "",
+									airbus.mes.resourcepool.util.ModelManager.i18nModel
 											.getProperty("NoSelections"), "")
 							return;
 						}
-						airbus.mes.util.ModelManager.anyChangesFlag = true;
+						airbus.mes.resourcepool.util.ModelManager.anyChangesFlag = true;
 
 						if (!sap.ui.getCore().getModel("AvailableWCModel").oData.Rowsets.Rowset[0].Row)
 							sap.ui.getCore().getModel("AvailableWCModel").oData.Rowsets.Rowset[0].Row = [];
@@ -584,10 +584,10 @@ sap.ui
 						aModelData.push.apply(aModelData, aModelWCData);
 						aModelData.push.apply(aModelData, aModelShifts);
 
-						airbus.mes.util.ModelManager.updateResourcePool(aModelData);
-						airbus.mes.util.ModelManager.anyChangesFlag = false;
+						airbus.mes.resourcepool.util.ModelManager.updateResourcePool(aModelData);
+						airbus.mes.resourcepool.util.ModelManager.anyChangesFlag = false;
 
-						/* airbus.mes.util.ModelManager.loadMainViewModels(); */
+						/* airbus.mes.resourcepool.util.ModelManager.loadMainViewModels(); */
 
 					},
 
@@ -684,10 +684,10 @@ sap.ui
 					 * ********************************
 					 */
 					onBackPress : function() {
-						if (airbus.mes.util.ModelManager.anyChangesFlag == true) {
+						if (airbus.mes.resourcepool.util.ModelManager.anyChangesFlag == true) {
 							if (!this.oDialog) {
 								this.oDialog = sap.ui.xmlfragment(
-										"resource_pool.SaveChanges", this);
+										"airbus.mes.resourcepool.views.SaveChanges", this);
 							}
 
 							this.oDialog.open();
@@ -696,9 +696,9 @@ sap.ui
 							app.removePage(main);
 							app.to(page);
 							sap.ui.getCore().byId("idSearchView--resourcePool")
-									.setValue(airbus.mes.util.ModelManager.resourceName);
+									.setValue(airbus.mes.resourcepool.util.ModelManager.resourceName);
 							sap.ui.getCore().byId("idSearchView--description")
-									.setValue(airbus.mes.util.ModelManager.resourceDescription);
+									.setValue(airbus.mes.resourcepool.util.ModelManager.resourceDescription);
 							// app.removePage("idMainView");
 							// sap.ui.getCore().byId("idMainView").destroy();
 						}
@@ -714,7 +714,7 @@ sap.ui
 					},
 
 					afterDialogClose : function() {
-						airbus.mes.util.ModelManager.anyChangesFlag = false;
+						airbus.mes.resourcepool.util.ModelManager.anyChangesFlag = false;
 						this.oDialog.close();
 						this.clearFilters();
 						app.removePage(main);
@@ -842,29 +842,29 @@ sap.ui
 
 						if (!this.oHelpDialog) {
 							this.oHelpDialog = sap.ui.xmlfragment(
-									"resource_pool.Help", this);
+									"airbus.mes.resourcepool.views.Help", this);
 						}
 						this.oHelpDialog.open();
 						switch (oEvent.getSource().getId()) {
 						case "idMainView--helpAvailableUsers":
 							sap.ui.getCore().byId("helpText").setText(
-									airbus.mes.util.ModelManager.i18nModel
+									airbus.mes.resourcepool.util.ModelManager.i18nModel
 											.getProperty("helpUsers"));
 							break;
 
 						case "idMainView--helpAssignedUsers":
 							sap.ui.getCore().byId("helpText").setText(
-									airbus.mes.util.ModelManager.i18nModel
+									airbus.mes.resourcepool.util.ModelManager.i18nModel
 											.getProperty("helpUsers"));
 							break;
 						case "idMainView--helpAvailableWC":
 							sap.ui.getCore().byId("helpText").setText(
-									airbus.mes.util.ModelManager.i18nModel
+									airbus.mes.resourcepool.util.ModelManager.i18nModel
 											.getProperty("helpWC"));
 							break;
 						case "idMainView--helpAssignedWC":
 							sap.ui.getCore().byId("helpText").setText(
-									airbus.mes.util.ModelManager.i18nModel
+									airbus.mes.resourcepool.util.ModelManager.i18nModel
 											.getProperty("helpWC"));
 							break;
 						}
@@ -887,11 +887,7 @@ sap.ui
 						// Directly return the joined string
 						return splitStr.join(' ');
 					},
-
-					onLogout : function() {
-						airbus.mes.util.ModelManager.logOut();
-					},
-
+					
 					clearFilters : function() {
 						sap.ui.getCore().byId(
 								"idMainView--searchAvailableUsers").clear();

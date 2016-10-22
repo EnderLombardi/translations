@@ -7,12 +7,20 @@
 		<subHeader>
 			<Bar class="pageHeader">
 				<contentRight>
+					<Button text="{i18nModel>ButtonTeam}" type="Transparent"
+						class="tiffanyColor buttonStatus2 iconbuttonTeam sapUiSmallMarginBegin"
+						icon="sap-icon://group" press="onTeamPress" />
+						
+					<Button text="{i18nModel>EditTeamButton}" type="Transparent"
+						class="tiffanyColor buttonStatus2 iconbuttonTeam sapUiSmallMarginBegin"
+						icon="sap-icon://edit" press="onTeamPress" />
+
 					<Button text="Save" icon="sap-icon://save" press="saveChangesToResourcePool"
 						type="Transparent"
-						class="tiffanyColor whiteButton buttonStatus2 iconbuttonTeam sapUiSmallMarginBegin"
+						class="tiffanyColor buttonStatus2 iconbuttonTeam sapUiSmallMarginBegin"
 						enabled="{path:'i18nModel>AvailableUsers',formatter:'airbus.mes.resourcepool.util.Formatter.saveAllowed'}" />
-					<Button icon="sap-icon://sys-help" press="showHelp" />
-					<Button id="logout" icon="sap-icon://log" press="onLogout" />
+					<Button icon="sap-icon://sys-help" press="showHelp"
+						class="tiffanyColor buttonStatus2 iconbuttonTeam sapUiSmallMarginBegin" />
 				</contentRight>
 			</Bar>
 		</subHeader>

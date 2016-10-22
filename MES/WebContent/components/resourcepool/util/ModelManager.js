@@ -48,6 +48,12 @@ airbus.mes.resourcepool.util.ModelManager = {
 
 		});
 		
+		this.i18nModel = new sap.ui.model.resource.ResourceModel({
+			bundleUrl : "i18n/i18n.properties",
+			bundleLocale : core.getConfiguration().getLanguage()
+		});
+		core.setModel(this.i18nModel, "i18n");
+		
 		this.loadModelValueHelp();
 	},
 
