@@ -129,16 +129,6 @@ airbus.mes.stationtracker.ModelManager = {
 
 	},
 
-	onStationTrackerLoad : function() {
-
-		var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
-
-		GroupingBoxingManager.parseOperation(GroupingBoxingManager.group, GroupingBoxingManager.box);
-
-		airbus.mes.stationtracker.ModelManager.selectMyShift();
-
-	},
-
 	onUnPlannedLoad : function() {
 
 		//var oData = sap.ui.getCore().getModel("unPlannedModel").getData();
