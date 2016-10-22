@@ -28,7 +28,7 @@ airbus.mes.shell.util.Formatter = {
 			} else {
 				return false;
 			}
-		}		
+		},		
 		
 	
 	checkCurrentView : function() {
