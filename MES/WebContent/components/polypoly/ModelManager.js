@@ -94,6 +94,7 @@ airbus.mes.polypoly.ModelManager = {
 		/* Station Selection on PolyPolyscreen */
 		core.setModel(new sap.ui.model.json.JSONModel(), "stationList");
 		core.setModel(new sap.ui.model.json.JSONModel(),"mTableModel");
+		core.setModel(new sap.ui.model.json.JSONModel(),"mQATableModel");
 		// this model seems to be the maine model to create polypoly
 		core.setModel(new sap.ui.model.json.JSONModel(),"mii");
 		
@@ -181,6 +182,9 @@ airbus.mes.polypoly.ModelManager = {
 			var mTableModel = new sap.ui.model.json.JSONModel(oTableData);
 			airbus.mes.polypoly.PolypolyManager.internalContext.oModel = mTableModel;
 			
+			var oQATableData = airbus.mes.polypoly.PolypolyManager.createQATableData(oMiiData);
+			var mQATableModel = new sap.ui.model.json.JSONModel(oQATableData);
+			airbus.mes.polypoly.PolypolyManager.internalContext.oModelQA = mQATableModel;
 			// ????? 
 			sap.ui.getCore().byId("polypoly").setModel(mTableModel);
 			//sap.ui.getCore().getModel("mTableModel").loadData(mTableModel);

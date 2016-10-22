@@ -1,0 +1,28 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core"
+	xmlns="sap.m" xmlns:f="sap.ui.layout.form">
+	<Dialog draggable="true" contentHeight="20%" contentWidth="50%"
+		title="Reason Code ">
+		<content>
+ 			<f:SimpleForm id="reasonCode" minWidth="1024"
+				maxContainerCols="2" editable="true" layout="ResponsiveGridLayout"
+				labelSpanL="1" labelSpanM="2" emptySpanL="0" emptySpanM="0"
+				columnsL="1" columnsM="1" validateFieldGroup="onValidatereason">
+				<f:content> 
+							<Label text="Reason Code" />
+							<Select forceSelection="true" change="onSelectionReason" id="reasonCodeSelectBox"
+								items="{reasonCodeModel>/Rowsets/Rowset/0/Row}">
+								<core:Item key="{reasonCodeModel>REASON_CODE}" text="{reasonCodeModel>DESCRIPTION}" />
+							</Select>
+
+						<Label text="Comment"/>
+						<TextArea id="reasonCodeComments"/>
+				</f:content>
+			</f:SimpleForm>
+		</content>
+		<buttons>
+			<Button id="submit" text="Submit" press="onSubmitReasonCode"
+				type="Accept" />
+			<Button id="cancel" text="Cancel" press="onCancelReasonCode" />
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

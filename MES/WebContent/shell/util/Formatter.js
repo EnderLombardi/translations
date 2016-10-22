@@ -47,6 +47,25 @@ airbus.mes.shell.util.Formatter = {
 		for ( var m in o)
 			xml += toXml(o[m], m, "");
 		return tab ? xml.replace(/\t/g, tab) : xml.replace(/\t|\n/g, "");
-	}
+	},
 
+	stationTrackerStation : function(Station) {
+		// sap.ui.getCore().getModel("StationTrackerI18n").getProperty("Station");
+		return airbus.mes.shell.oView.getModel("ShellI18n").getProperty(
+				"Station")
+				+ " " + Station;
+	},
+	stationTrackerMsn : function(Msn) {
+		return airbus.mes.shell.oView.getModel("ShellI18n").getProperty("MSN")
+				+ " " + +Msn;
+	},
+	stationTrackerPlant : function(Plant) {
+		return airbus.mes.shell.oView.getModel("ShellI18n")
+				.getProperty("Plant")
+				+ " " + Plant;
+	},
+	stationTrackerLine : function(Line) {
+		return airbus.mes.shell.oView.getModel("ShellI18n").getProperty("Line")
+				+ " " + Line;
+	},
 };

@@ -54,7 +54,7 @@ airbus.mes.stationtracker.AssignmentManager = {
 	newLine : function(sKey) {
 			
 			airbus.mes.stationtracker.AssignmentManager.bOpen = true;
-			scheduler.addSection({ key: (Math.random()).toString() , newop:"" , name:"Select Operator"}, sKey );   
+			scheduler.addSection({ key: (Math.random()).toString() , rescheduled:"R" , name:"Select Operator"}, sKey );   
 		
 	},
 	

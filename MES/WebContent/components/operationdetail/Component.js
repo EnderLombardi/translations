@@ -1,5 +1,7 @@
 jQuery.sap.registerModulePath("airbus.mes.operationdetail", "../components/operationdetail");
 jQuery.sap.require("airbus.mes.operationdetail.Formatter");
+jQuery.sap.require("airbus.mes.operationdetail.ModelManager");
+
 
 jQuery.sap.declare("airbus.mes.operationdetail.Component");
 
@@ -17,8 +19,8 @@ airbus.mes.operationdetail.Component.prototype.createContent = function() {
 
 
 	if (airbus.mes.operationdetail.oView === undefined) {
-		/**		Initialization
-		airbus.mes.stationtracker.ModelManager.init(sap.ui.getCore()); */
+		//		Initialization
+		airbus.mes.operationdetail.ModelManager.init(sap.ui.getCore()); 
 		
 		// View on XML
 		this.oView = sap.ui.view({
@@ -32,8 +34,8 @@ airbus.mes.operationdetail.Component.prototype.createContent = function() {
 	        //bundleLocale : "en" automatic defined by parameter sap-language
 	     });
 		
-		/**this.oView.setModel(i18nModel, "StationTrackerI18n");		
-		airbus.mes.stationtracker.oView = this.oView		
+		this.oView.setModel(i18nModel, "i18n");		
+		/**airbus.mes.stationtracker.oView = this.oView		
 		this.oView.setModel(sap.ui.getCore().getModel("userSettingModel"),	"userSettingModel");
 		this.oView.setModel(sap.ui.getCore().getModel("stationTrackerShift"),"stationTrackerShift");
 		this.oView.setModel(sap.ui.getCore().getModel("productionGroupModel"), "productionGroupModel");

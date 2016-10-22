@@ -258,6 +258,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			name : "airbus.mes.polypoly", // root component folder is resources
          	});
 		nav.addPage(airbus.mes.polypoly.oView);
+		
 		nav.to(airbus.mes.polypoly.oView.getId());
 		airbus.mes.polypoly.PolypolyManager.globalContext.bEditable = true;
 		airbus.mes.polypoly.ModelManager.getPolyPolyModel("F1","1","10","CHES");
@@ -459,7 +460,12 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		airbus.mes.stationtracker.worklistPopover.close();
 		
 	},	
-	
+	onPressExpdandable : function(oEvent) {
+		var oPanel = oEvent.getSource().getParent().getParent();
+		var bIsExpanded = oPanel.getExpanded();
+		
+		oEvent.getSource().getParent().getParent().setExpanded(!bIsExpanded);
+	},
 	changeShift : function() {
 	
 		if ( airbus.mes.stationtracker.ShiftManager.dayDisplay ) {
@@ -671,6 +677,13 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
     	 }
     	 
      },
+     
+     ClosePolyPoly : function(oEvent){
+    	 
+ 		oEvent.getSource().getParent().close();
+ 		
+     },
+     
  	getI18nValue : function(sKey) {
 	    return this.getView().getModel("StationTrackerI18n").getProperty(sKey);
 	},

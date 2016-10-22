@@ -1,6 +1,8 @@
 /**************************************
 *classes for Progress Slider Screen
 ****************************************/
+.ML-05{margin-left:0.5rem !important;}
+.MR-1{margin-right:1rem !important;}
 .progressSlider{
 	display:block !important;
 }
@@ -49,3 +51,43 @@
     z-index:99;	
  }
  /********** End of CSS for Progress Slider Screen *******/
+ /*** CSS for Sub header - Operation Details Sub Header and Menu Bar)  ******/
+.pageSubHeader{
+	border-bottom: 1px solid #cccccc !important;
+}
+.pageSubHeader .sapMPanelExpandableIcon {
+	display:none;
+}
+.pageSubHeader .mainText{
+	font-size:1.2rem !important;
+	color:#0085AD !important;
+	font-weight:700 !important;
+}
+.pageSubHeader .subText{
+	font-size:75% !important;
+	color:#0085AD !important;
+	font-weight:700 !important;
+}
+.pageSubHeader .expandButton{
+	margin-top: -0.6rem;
+}
+.pageSubHeader .closeButton{
+	float:right;
+	margin-top: -2rem;
+}
+.pageSubHeader .expandButton .sapMBtnIcon, .pageSubHeader .closeButton .sapMBtnIcon{
+	font-size:1rem !important;
+}
+.pageSubHeader .sapMPanelWrappingDivTb{
+	border-bottom:0px !important
+}
+.pageSubHeader .sapMPanelBGTranslucent, .pageSubHeader .operationDetailForm .sapUiRLContainer{
+	background:transparent !important;
+	border-bottom:0px !important;
+}
+/*** End of CSS for Operation Details Sub Header and Menu Bar  ******/
+/**** CSS for Operation Icon Nav Bar *****/
+.operationNavBar .countText{
+	background:#009de0 !important;
+	color:#fff !important;
+}

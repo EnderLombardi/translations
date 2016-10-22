@@ -217,7 +217,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 								airbus.mes.stationtracker.AssignmentManager.polypolyAffectation = true;
 		
 							if (!airbus.mes.stationtracker.oPopoverPolypoly) {
-								airbus.mes.stationtracker.oPopoverPolypoly = sap.ui.xmlfragment("airbus.mes.stationtracker.polypolyFragment", this);
+								airbus.mes.stationtracker.oPopoverPolypoly = sap.ui.xmlfragment("airbus.mes.stationtracker.polypolyFragment", airbus.mes.stationtracker.oView.getController());
 								
 								var oComp = sap.ui.getCore().createComponent({
 						            name : "airbus.mes.polypoly", // root component folder is resources

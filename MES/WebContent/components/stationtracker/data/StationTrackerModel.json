@@ -2,13 +2,13 @@
 
    "Rowsets": {
 
-      "DateCreated": "2016-10-18T15:30:18",
+      "DateCreated": "2016-10-21T15:39:33",
 
       "Version": "15.1 SP2 Patch 13 (Oct 6, 2016)",
 
-      "StartDate": "2016-10-18T14:30:18+0200",
+      "StartDate": "2016-10-21T14:39:33+0200",
 
-      "EndDate": "2016-10-18T15:30:18+0200",
+      "EndDate": "2016-10-21T15:39:33+0200",
 
       "CachedTime": "",
 
@@ -564,9 +564,9 @@
 
                   "PAUSED": "---",
 
-                  "DURATION": "NA",
+                  "DURATION": 1200000,
 
-                  "PROGRESS": "NA"
+                  "PROGRESS": 0
 
                },
 
@@ -628,9 +628,9 @@
 
                   "PAUSED": "---",
 
-                  "DURATION": "NA",
+                  "DURATION": 1200000,
 
-                  "PROGRESS": "NA"
+                  "PROGRESS": 0
 
                },
 
@@ -692,9 +692,9 @@
 
                   "PAUSED": "---",
 
-                  "DURATION": "NA",
+                  "DURATION": 1200000,
 
-                  "PROGRESS": "NA"
+                  "PROGRESS": 0
 
                },
 
@@ -756,9 +756,9 @@
 
                   "PAUSED": "---",
 
-                  "DURATION": "NA",
+                  "DURATION": 1200000,
 
-                  "PROGRESS": "NA"
+                  "PROGRESS": 0
 
                },
 
@@ -820,9 +820,9 @@
 
                   "PAUSED": "---",
 
-                  "DURATION": "NA",
+                  "DURATION": 1200000,
 
-                  "PROGRESS": "NA"
+                  "PROGRESS": 0
 
                },
 
@@ -884,9 +884,9 @@
 
                   "PAUSED": "---",
 
-                  "DURATION": "NA",
+                  "DURATION": 1200000,
 
-                  "PROGRESS": "NA"
+                  "PROGRESS": 0
 
                },
 
@@ -948,9 +948,9 @@
 
                   "PAUSED": "false",
 
-                  "DURATION": "NA",
+                  "DURATION": 1200000,
 
-                  "PROGRESS": "NA"
+                  "PROGRESS": 0
 
                },
 
@@ -1012,9 +1012,9 @@
 
                   "PAUSED": "---",
 
-                  "DURATION": "NA",
+                  "DURATION": 1200000,
 
-                  "PROGRESS": "NA"
+                  "PROGRESS": 0
 
                },
 
@@ -1076,9 +1076,9 @@
 
                   "PAUSED": "false",
 
-                  "DURATION": "NA",
+                  "DURATION": 1200000,
 
-                  "PROGRESS": "NA"
+                  "PROGRESS": 0
 
                },
 
@@ -1140,9 +1140,9 @@
 
                   "PAUSED": "---",
 
-                  "DURATION": "NA",
+                  "DURATION": 1200000,
 
-                  "PROGRESS": "NA"
+                  "PROGRESS": 0
 
                },
 
@@ -1204,9 +1204,9 @@
 
                   "PAUSED": "---",
 
-                  "DURATION": "NA",
+                  "DURATION": 1200000,
 
-                  "PROGRESS": "NA"
+                  "PROGRESS": 0
 
                },
 
@@ -1268,9 +1268,9 @@
 
                   "PAUSED": "---",
 
-                  "DURATION": "NA",
+                  "DURATION": 1200000,
 
-                  "PROGRESS": "NA"
+                  "PROGRESS": 0
 
                },
 
@@ -1332,9 +1332,9 @@
 
                   "PAUSED": "---",
 
-                  "DURATION": "NA",
+                  "DURATION": 1200000,
 
-                  "PROGRESS": "NA"
+                  "PROGRESS": 0
 
                },
 
@@ -1396,9 +1396,9 @@
 
                   "PAUSED": "---",
 
-                  "DURATION": "NA",
+                  "DURATION": 1200000,
 
-                  "PROGRESS": "NA"
+                  "PROGRESS": 0
 
                },
 
@@ -1460,9 +1460,9 @@
 
                   "PAUSED": "---",
 
-                  "DURATION": "NA",
+                  "DURATION": 1200000,
 
-                  "PROGRESS": "NA"
+                  "PROGRESS": 0
 
                },
 
@@ -1524,9 +1524,9 @@
 
                   "PAUSED": "---",
 
-                  "DURATION": "NA",
+                  "DURATION": 1200000,
 
-                  "PROGRESS": "NA"
+                  "PROGRESS": 0
 
                },
 
@@ -1544,7 +1544,7 @@
 
                   "STEP_ID": "20",
 
-                  "STATE": "S",
+                  "STATE": "C",
 
                   "OPERATION_DESCRIPTION": "0010",
 
@@ -1588,9 +1588,9 @@
 
                   "PAUSED": "---",
 
-                  "DURATION": "NA",
+                  "DURATION": 1200000,
 
-                  "PROGRESS": "NA"
+                  "PROGRESS": 0
 
                },
 
@@ -1652,9 +1652,9 @@
 
                   "PAUSED": "---",
 
-                  "DURATION": "NA",
+                  "DURATION": 1200000,
 
-                  "PROGRESS": "NA"
+                  "PROGRESS": 0
 
                },
 
@@ -1684,7 +1684,7 @@
 
                   "FAMILY": "---",
 
-                  "CPP_CLUSTER": "Montage des shu",
+                  "CPP_CLUSTER": "Montage des sh",
 
                   "AVL_LINE": 6,
 
@@ -1716,9 +1716,9 @@
 
                   "PAUSED": "---",
 
-                  "DURATION": "NA",
+                  "DURATION": 0,
 
-                  "PROGRESS": "NA"
+                  "PROGRESS": 0
 
                }
 

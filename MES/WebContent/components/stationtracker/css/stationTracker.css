@@ -10,6 +10,8 @@
 }
 
 .ylabelUser {
+ max-width: 60%;
+	white-space: nowrap;
 	position: relative;
 	width: 120px;
 	display: inline-block;
@@ -46,6 +48,9 @@
 	text-indent: -15px;
 	
 }
+.marginLeft0 {
+	margin-left: 0 !important;
+}
 .partialConfirmCss .sapUxAPObjectPageSectionTitle {
 	color: #006CA7 !important;
     border-bottom: 0px solid #999999 !important;
@@ -74,6 +79,7 @@ height: 0rem;
     visibility: visible;
 }
 .ylabel {
+	white-space: nowrap;
 	font-weight: normal;
 	font-style: normal;
 	font-stretch: normal;
@@ -112,6 +118,8 @@ height: 0rem;
 }
 
 .ylabelfolder{
+	    max-width: 60%;
+				white-space: nowrap;
 				position:relative;
 				width: 120px;
     display: inline-block;
@@ -265,17 +273,6 @@ color : black;
 	background: #006CA7 !important;
 }
 
-.pageTitle {
-	color: white !important;
-	font-family: "Arial", Sans-serif !important;
-	font-size: 24px !important;
-}
-
-.pageWelcome {
-	color: white !important;
-	font-family: "Arial", Sans-serif !important;
-	font-size: 14px !important;
-}
 .pageWelcome2 {
 	font-weight : bold;
 	 text-align: center !important;
@@ -334,6 +331,9 @@ color : black;
 }
 .grey {
 	background-color: #97999b;
+}
+.grey2 {
+	background-color: #dddddd;
 }
 .shiftCss {
 	background-color: #EEF3F7;

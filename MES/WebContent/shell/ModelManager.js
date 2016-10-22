@@ -11,7 +11,7 @@ airbus.mes.shell.ModelManager = {
 			
 
 			core.setModel(new sap.ui.model.json.JSONModel(),"userDetailModel");	
-			//core.setModel(new sap.ui.model.json.JSONModel(),"userSettingModel");	
+			core.setModel(new sap.ui.model.json.JSONModel(),"userSettingModel");	
 		
 			var dest;
 
