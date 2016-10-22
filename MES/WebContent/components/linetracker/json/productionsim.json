@@ -1,0 +1,20 @@
+{ "Rowsets" : { 
+	"DateCreated" : "2015-12-09T13:03:18", "Version" : "15.0 SP4 Patch 0 (Apr 21, 2015)", "StartDate" : "2015-12-09T12:03:18+0100", "EndDate" : "2015-12-09T13:03:18+0100", "CachedTime" : "", 
+	"Rowset" : [ 
+	{ "Columns" : { 
+		"Column" : [ 
+		{ "Name" : "Line", "SourceColumn" : "Line", "Description" : "Line", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "Station", "SourceColumn" : "Station", "Description" : "Station", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "Conveyor_Status", "SourceColumn" : "Conveyor_Status", "Description" : "Conveyor Status", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "Takt_Resource_Status", "SourceColumn" : "Takt_Resource_Status", "Description" : "Takt/Resource Status", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "MSN", "SourceColumn" : "MSN", "Description" : "MSN id", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 } ] }, 
+	"Row" : [ 
+		{ "Line" : "03", "Station" : "70","Progress" : "50", "STV" : "05", "Takt" : "61", "TaktTime" : "05", "TaktStatus" : "Average", "AndonRaised" : "00", "AndonRaisedStatus" : "Green", "AndonEscalated": "0", "AndonEscalatedStatus" : "Green", "Allocated_Resource": "3" , "RTO" : "10.0" },
+    { "Line" : "03", "Station" : "80","Progress" : "50", "STV" : "05", "Takt" : "150", "TaktTime" : "05", "TaktStatus" : "Average", "AndonRaised" : "00", "AndonRaisedStatus" : "Green", "AndonEscalated": "0", "AndonEscalatedStatus" : "Green"  }
+    
+    ]
+		 } ]
+	 }
+ }
+
+

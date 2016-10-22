@@ -1,0 +1,123 @@
+.structureStationDetail {
+	/* 	width		: 15%;
+	height		: 35%; */
+	float: left;
+	width: 100%;
+	height: 100%;
+	/*	width		: auto;
+	height		: auto; 
+ 	border-color: red;
+	border-style: solid; 
+	border-width: thin; */
+}
+
+.stationDetailMiddle {
+	height: 40%;
+	width: 50%;
+	float: left;
+}
+
+.stationDetailMiddleLabel {
+	height: 30%;
+	    font-size: 2vh;
+	color: #a5acaa;
+}
+
+.stationDetailLowerValue {
+	height: 60%;
+	/* font-size	: 1.6rem;  */
+	    font-size: 3.5vh;
+	color: white;
+}
+
+.stationDetailLowerLabel {
+	height: 40%;
+	    font-size: 2vh;
+	color: white;
+}
+
+.stationDetailLower {
+	height: 100%;
+	width: 50%;
+	float: left;
+}
+
+.stationDetailLowerMain {
+	height: 30%;
+	color: white;
+}
+
+.stationDetailFontsize {
+	font-size: 3vh;
+}
+
+.andonLabel {
+	height: 20%;
+	width: 100%;
+	float: center;
+	font-size: 2vh;
+	color: #a5acaa;
+}
+/* .redBackground{
+	background-color: red;
+}
+.greenBackground{
+	background-color: green;
+}
+.whiteBackground{
+	background-color: white;
+}*/
+.greenColor {
+	color: #2ca02c;
+}
+/* .magentaBackground{
+	background-color: darkmagenta; 
+} */
+.magentacolor {
+	color: #5882aa;
+}
+
+.stationDetailheight {
+	height: 70%;
+}
+
+.stationDetailMain {
+	height: 30%;
+}
+
+.sizeSmall {
+	font-size: 2vh;
+}
+
+.imageSize {
+	height: 100%;
+	padding: 4%;
+}
+
+/*  */
+.hboxselect {
+	border-style: solid;
+	border-color: #bec6c6;
+	/* margin: 20px 20px 20px 20px; */
+	padding: 0;
+}
+
+.marginLeft {
+	margin-left: 1%
+}
+
+.marginTop {
+	margin-top: 1%
+}
+
+.stationDetailImgStation {
+	    margin-top: 5%;
+    width: 25%;
+  //  height: 80%;
+}
+
+.stationStationBox {
+	/* width:8rem !important ;
+	height:11rem !important;	 */
+	max-width: 90%;
+}

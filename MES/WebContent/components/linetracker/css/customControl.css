@@ -1,0 +1,175 @@
+/* Production Box CSS */
+.structureProductionBox {
+	/* 	width		: 15%;
+	height		: 35%; */
+	float: left;
+	width: 7.9rem;
+	height: 16rem;
+	border-color: #BA000B;
+	border-style: solid;
+	border-width: thin;
+}
+
+.productionBoxMiddle {
+	height: 40%;
+	width: 50%;
+	float: left;
+}
+
+.productionBoxMiddleLabel {
+	height: 30%;
+	    font-size: 1.5vh;
+	color: #a5acaa;
+}
+
+.productionBoxLowerValue {
+	height: 60%;
+	font-size: 3vh;
+}
+
+.productionBoxLowerLabel {
+	height: 40%;
+	font-size: 1.9vh;
+}
+
+.productionBoxLower {
+	height: 100%;
+	width: 50%;
+	float: left;
+}
+
+.productionBoxLowerMain {
+	height: 20%;
+	color: white;
+}
+
+.productionBoxFontsize {
+	font-size: 2.5vh;
+}
+
+.productionBoxHeight {
+	height: 40%;
+}
+
+.andonLabel {
+	height: 20%;
+	width: 100%;
+	float: center;
+	font-size: .9rem;
+	color: #a5acaa;
+}
+
+.redBackground {
+	background-color: #BA000B;
+}
+
+.greenBackground {
+	background-color: green;
+}
+
+.whiteBackground {
+	background-color: white;
+}
+
+.greenColor {
+	color: #2ca02c;
+}
+
+.magentaBackground {
+	background-color: darkmagenta;
+}
+
+.magentacolor {
+	color: #5882aa;
+}
+
+.productionBoxheight {
+	height: 40%
+}
+
+.sizeSmall {
+	font-size: 2vh;
+}
+
+.imageSize {
+	height: 100%;
+	padding: 4%;
+}
+.productionImgStation{
+	margin-top: 7%;
+    width: 33%;
+   /*  height: 55%; */
+}
+
+/* Station Box CSS */
+.structureStationBox {
+	/* width: 9rem;
+	height: 9rem; */
+/* 	min-width: 8rem;
+	min-height: 9rem;
+	max-width: 16rem;
+	max-height: 18rem; */
+	height: 98%;
+    width: inherit;
+	padding-top: 1%;
+	padding-bottom: 1%;
+	font-weight: bold;
+	float: left;
+	/* margin : 2px; */
+	cursor: pointer;
+/* 	margin-top: 5%; */
+}
+.stationBoxLower {
+	height: 82%;
+	border-style: groove;
+	border-color: mintcream;
+	background-color: white;
+}
+
+.stationBoxBodyTop {
+	height: 5%;
+	margin: -2px
+}
+
+.stationBoxErrorBdr {
+	background-color: #BA000B;
+}
+
+.stationBoxSuccessBdr {
+	background-color: green;
+}
+
+.stationBoxNoneBdr {
+	background-color: lightgrey;
+}
+
+.stationBoxHeader {
+	height: 15%;
+	/* padding-top: 2%; */
+	font-size: 2vh;
+}
+
+.stationBoxBody {
+	padding-top: 3%;
+	height: 51%;
+}
+
+.stationBoxImg {
+	padding-top: 5%;
+	height: 75%;
+}
+
+.stationBoxFooter {
+	font-weight: normal;
+	font-size: 12px;
+	height: 40%;
+	padding-top: 3%;
+}
+
+.boldFont {
+	font-size: 2vh;
+}
+
+.redHeading {
+	color: #BA000B;
+}

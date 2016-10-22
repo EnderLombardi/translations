@@ -1,0 +1,15 @@
+{ "Rowsets" : { 
+	"DateCreated" : "2016-07-12T15:56:40", "Version" : "15.1 SP1 Patch 0 (Jan 21, 2016)", "StartDate" : "2016-07-12T14:56:40+0200", "EndDate" : "2016-07-12T15:56:40+0200", "CachedTime" : "", 
+	"Rowset" : [ 
+	{ "Columns" : { 
+		"Column" : [ 
+		{ "Name" : "DATE", "SourceColumn" : "DATE", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "TIMEPERIOD", "SourceColumn" : "TIMEPERIOD", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 } ] }, 
+	"Row" : [ 
+		{ "DATE" : "2016-07-11", "TIMEPERIOD" : "[7.00,10.00,10.15,13.00,13.30,16.00,16.15]" }, 
+		{ "DATE" : "2016-07-12", "TIMEPERIOD" : "[7.00,10.00,10.15,13.00,13.30]" }, 
+		{ "DATE" : "2016-07-13", "TIMEPERIOD" : "[7.00,10.00,10.15,13.00,13.30,16.00,16.15]" }, 
+		{ "DATE" : "2016-07-14", "TIMEPERIOD" : "[7.00,10.00,10.15,13.00,13.30,16.00]" } ]
+		 } ]
+	 }
+ }

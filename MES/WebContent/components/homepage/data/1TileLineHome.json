@@ -10,7 +10,7 @@
 		"text": "LineTracker",
 		"icon": "flight",
 		"app":"",
-		"url": "/MES/WebContent/components/stationtracker/index.html",
+		"url": "/MES/WebContent/components/linetracker/index.html",
 		"enable": false
 	}	
 	]

@@ -22,6 +22,9 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 			case "TeamAssignment":
 				airbus.mes.settings.GlobalFunction.navigateTo("Go to Team Assignment","teamassignment");
 				break;
+			case "LineTracker":
+				airbus.mes.settings.GlobalFunction.navigateTo("Go to Line Tracker","linetracker");
+				break;
 			};
 			
 		}
@@ -37,7 +40,11 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 			case "TeamAssignment":
 				airbus.mes.shell.util.navFunctions.resourcePool();
 				break;
-			}
+				
+			case "LineTracker":
+				airbus.mes.shell.util.navFunctions.lineTracker();
+				break;
+		}
 				
 	 	};
 	},
