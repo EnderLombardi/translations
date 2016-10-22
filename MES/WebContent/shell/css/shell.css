@@ -35,3 +35,7 @@
 	opacity:1;
 	
 }
+
+.viewOpacity{
+	opacity:0.5 !important;
+}

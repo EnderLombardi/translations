@@ -144,9 +144,11 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 		this.getView().byId("informationButton").setVisible(bSet);
 	},
 	onInformation : function(oEvent){
+		airbus.mes.shell.oView.addStyleClass("viewOpacity");
+		
 		if ( airbus.mes.stationtracker.informationPopover === undefined ) {
 			var oView = airbus.mes.stationtracker.oView;
-			airbus.mes.stationtracker.informationPopover = sap.ui.xmlfragment("informationPopover","airbus.mes.shell.informationPopover", airbus.mes.stationtracker.oView.getController());
+			airbus.mes.stationtracker.informationPopover = sap.ui.xmlfragment("informationPopover","airbus.mes.shell.informationPopover", airbus.mes.shell.oView.getController());
 			airbus.mes.stationtracker.informationPopover.addStyleClass("alignTextLeft");
 			oView.addDependent(airbus.mes.stationtracker.informationPopover);
 		}
@@ -156,5 +158,9 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 		jQuery.sap.delayedCall(0, this, function () {
 			airbus.mes.stationtracker.informationPopover.openBy(oButton);	
 		});			
+	},
+	onCloseInformation : function(){
+		airbus.mes.shell.oView.removeStyleClass("viewOpacity");		
 	}
+	
 });

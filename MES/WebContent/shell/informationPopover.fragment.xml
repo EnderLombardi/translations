@@ -1,6 +1,6 @@
 <core:FragmentDefinition xmlns="sap.m"
 	xmlns:core="sap.ui.core">
-	<Popover showHeader="false" placement="Left" showArrow="false" class="informationColor rightPlace">
+	<Popover showHeader="false" placement="Left" showArrow="false" class="informationColor rightPlace" afterClose="onCloseInformation">
 		<VBox>
 			<items>
 				<Label text="{ShellI18n>Legend}" class="sapUiTinyMarginTopBottom sapUiTinyMarginBeginEnd" design="Bold"/>
