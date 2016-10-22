@@ -256,6 +256,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 					//"avlEndDate" : el.avlEndDate,
 					"AVL_LINE": el.AVL_LINE,
 					"PROD_GROUP":el.PROD_GROUP,
+					"SFC_STEP_REF":el.SFC_STEP_REF,
 					//"competency": el.competency,
 					//"rescheduledStarDate": el.rescheduledStarDate,
 					//"rescheduledEndDate": el.rescheduledEndDate,

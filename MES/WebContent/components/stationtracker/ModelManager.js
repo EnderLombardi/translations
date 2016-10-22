@@ -8,7 +8,7 @@ airbus.mes.stationtracker.ModelManager = {
 
 	init : function(core) {
 		
-		core.setModel(new sap.ui.model.json.JSONModel(), "operationDetail");//Model having operation detail
+		core.setModel(new sap.ui.model.json.JSONModel(), "operationDetailModel");//Model having operation detail
 		core.setModel(new sap.ui.model.json.JSONModel(), "WorkListModel");
 		core.setModel(new sap.ui.model.json.JSONModel(), "stationTrackerRModel"); // Station tracker model reschedule line
 		core.setModel(new sap.ui.model.json.JSONModel(), "stationTrackerIModel"); // Station tracker model initial line
@@ -424,8 +424,8 @@ airbus.mes.stationtracker.ModelManager = {
 		// Set data in Model WorkList
 		airbus.mes.stationtracker.operationDetailPopup.getModel("WorkListModel").setData(oModel);
 		airbus.mes.stationtracker.operationDetailPopup.getModel("WorkListModel").refresh();
-		var operationSfc = airbus.mes.stationtracker.operationDetailPopup.getModel("WorkListModel").getProperty("/0/sfc")
-		this.loadOperationDetailModel(operationSfc)
+		//var operationSfc = airbus.mes.stationtracker.operationDetailPopup.getModel("WorkListModel").getProperty("/0/sfc")
+		//this.loadOperationDetailModel(operationSfc)
 		if (airbus.mes.operationdetail === undefined) {
 			jQuery.sap.registerModulePath("airbus.mes.operationdetail", "../components/operationdetail");    
 			this.oOperationDetailComp = sap.ui.getCore().createComponent({
@@ -453,7 +453,7 @@ airbus.mes.stationtracker.ModelManager = {
 		return urlOperationDetail;
 	},
 	loadOperationDetailModel : function(operationSfc) {
-		var oOperationDetailModel = sap.ui.getCore().getModel("operationDetail");
+		var oOperationDetailModel = sap.ui.getCore().getModel("operationDetailModel");
 		oOperationDetailModel.loadData(this.getUrlOperationDetail(operationSfc), null, false);
 
 	}
