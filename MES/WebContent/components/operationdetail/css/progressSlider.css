@@ -10,7 +10,7 @@
 	float:left !important;
 }
 .progressSlider .dynProgressSlider{
-	margin-left:-2.09rem !important;
+	margin-left:-0.09rem !important;
 }
 .sliderInprogressColor .sapMSliderProgress{
 	background-color: lime !important;
@@ -26,9 +26,7 @@
 .sliderCompletedColor .sapMSliderProgress{
 	background-color: #007cc0 !important;
 }
-.progressSlider .dynProgressSlider{
-	margin-left:-2.09rem !important;
-}
+
 .sliderInprogressColor .sapMSliderProgress{
 	background-color: lime !important;
 	//background: #007cc0;

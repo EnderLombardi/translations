@@ -407,6 +407,7 @@ airbus.mes.stationtracker.ModelManager = {
 							"airbus.mes.stationtracker.fragments.operationDetailPopup",
 							airbus.mes.stationtracker.oView.getController());
 			airbus.mes.stationtracker.operationDetailPopup.addStyleClass("alignTextLeft");
+			airbus.mes.stationtracker.operationDetailPopup.setModel(sap.ui.getCore().getModel("operationDetailModel"),"operationDetailModel");
 			airbus.mes.stationtracker.operationDetailPopup.setModel(sap.ui.getCore().getModel("WorkListModel"),"WorkListModel");
 			airbus.mes.stationtracker.oView.addDependent(airbus.mes.stationtracker.operationDetailPopup);
 		}
@@ -414,8 +415,11 @@ airbus.mes.stationtracker.ModelManager = {
 		// Set data in Model WorkList
 		airbus.mes.stationtracker.operationDetailPopup.getModel("WorkListModel").setData(oModel);
 		airbus.mes.stationtracker.operationDetailPopup.getModel("WorkListModel").refresh();
-		//var operationSfc = airbus.mes.stationtracker.operationDetailPopup.getModel("WorkListModel").getProperty("/0/sfc")
-		//this.loadOperationDetailModel(operationSfc)
+		var operationSfc = airbus.mes.stationtracker.operationDetailPopup.getModel("WorkListModel").getProperty("/0/SFC_STEP_REF")
+				
+		airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").loadData(this.getUrlOperationDetail(operationSfc), null, false);
+		airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").refresh();
+		
 		if (airbus.mes.operationdetail === undefined) {
 			jQuery.sap.registerModulePath("airbus.mes.operationdetail", "../components/operationdetail");    
 			this.oOperationDetailComp = sap.ui.getCore().createComponent({
@@ -439,13 +443,8 @@ airbus.mes.stationtracker.ModelManager = {
 		var urlOperationDetail = this.urlModel.getProperty("getOperationDetail");
 		// Set input parameter for the service
 		urlOperationDetail = airbus.mes.settings.ModelManager.replaceURI(urlOperationDetail, "$site",airbus.mes.settings.ModelManager.site);
-		urlOperationDetail = airbus.mes.settings.ModelManager.replaceURI(urlOperationDetail, "$sfc",airbus.mes.settings.ModelManager.site);
+		urlOperationDetail = airbus.mes.settings.ModelManager.replaceURI(urlOperationDetail, "$sfc",operationSfc);
 		return urlOperationDetail;
-	},
-	loadOperationDetailModel : function(operationSfc) {
-		var oOperationDetailModel = sap.ui.getCore().getModel("operationDetailModel");
-		oOperationDetailModel.loadData(this.getUrlOperationDetail(operationSfc), null, false);
-
 	}
 	
 }
