@@ -18,6 +18,7 @@ airbus.mes.polypoly.PolypolyManager = {
 	internalContext : {
 		oModel : undefined,
 		saveContext : undefined,
+		oModelQA : undefined,
 	},
 
 	levelUpdater : {
@@ -79,7 +80,38 @@ airbus.mes.polypoly.PolypolyManager = {
 //			var mTableModel = new sap.ui.model.json.JSONModel();
 //			}
 //	},
-
+	createQATableData : function(oMiiData) {
+//		var oMiiRows = oMiiData.Rowsets.Rowset[0].Row;
+		var oMiiColumns = oMiiData.Rowsets.Rowset[1].Row;
+		var lines = 0;
+		var oTableRows = {
+				"rows" : [],
+				"columns" : []
+			};
+		oMiiColumns.forEach(function(col) {
+			oTableRows.columns.push({});
+			oTableRows.columns[oTableRows.columns.length - 1]["name"] = col.competencyName;
+			oTableRows.columns[oTableRows.columns.length - 1]["techname"] = col.technicalName;
+			var qa = col.qualityApproval;
+			if (qa != undefined) {
+				qa = qa.split(", ")
+				lines = Math.max(lines, qa.length);
+			};
+//			qa.forEach(function(c, i) {
+//				if (c != "") {
+//					oTableRows.rows.push({});
+////					oTableRows.rows[oTableRows.rows.length - 1]["qa"].push({});
+//					oTableRows.rows[oTableRows.rows.length - 1]["qa"][oTableRows.columns[oTableRows.columns.length - 1]["qa"].length - 1]["label"] = c;
+//				}
+//			});
+		});
+		
+		
+		
+		
+	},
+	
+	
 	createTableData : function(oMiiData) {
 
 		var oMiiRows = oMiiData.Rowsets.Rowset[0].Row;
@@ -226,7 +258,7 @@ airbus.mes.polypoly.PolypolyManager = {
 							oTableRows.rows[2]["ressourcepoolId"] = oTableRows.rows[0]["ressourcepoolId"];
 							
 							oTableRows.rows.push({
-								"type" : "LABEL",
+								"type" : "LABEL_RP",
 								"ressourcepoolId" : rp,
 								"category" : ressourcePools[rp]
 							});

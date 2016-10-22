@@ -6,44 +6,70 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 * @memberOf components.globalnav.globalNavigation
 */
 	onInit: function() {
-//		var oModel = new sap.ui.model.json.JSONModel();
-//		sap.ui.getCore().setModel(oModel , "buttonUrl");
-//		oModel.loadData("/MES/components/homepage/data/url.json",null,false);
+
 	},
-	onPress:function(oEvt)	{
+	onPress:function(text)	{
 		
-		jQuery.sap.registerModulePath("airbus.mes.stationtracker", "../components/stationtracker");
-		jQuery.sap.registerModulePath("airbus.mes.worktracker", "../components/worktracker");    
 //		If default user settings are not yet loaded, need to load them
-//		We display settings screen		
-		var sPath = oEvt.getSource().oBindingContexts["1TileLineHome"].sPath;
+//		We display settings screen
 		
 		if(airbus.mes.settings.ModelManager.station === undefined ){
 		
-			if( airbus.mes.homepage.oView.getModel("1TileLineHome").getProperty(sPath).text === "StationTracker")
+			switch(text){
+			case "StationTracker":
 				airbus.mes.settings.GlobalFunction.navigateTo("Go to Station Tracker","stationtracker");
-			else
-				airbus.mes.settings.GlobalFunction.navigateTo("Go to Work Tracker","worktracker");
-
-		} else {
+				break;
+			case "TeamAssignment":
+				airbus.mes.settings.GlobalFunction.navigateTo("Go to Team Assignment","teamassignment");
+				break;
+			};
+			
+		}
+		else{
 //			If default user settings are already loaded, 
 //			We display directly station tracker screen
 			
-			if(airbus.mes.homepage.oView.getModel("1TileLineHome").getProperty(sPath).text === "StationTracker")
-				{
-				sap.ui.getCore().createComponent({
-					name : "airbus.mes.stationtracker", // root component folder is resources
-	             	});
-				nav.addPage(airbus.mes.stationtracker.oView);
-				nav.to(airbus.mes.stationtracker.oView.getId());
-				}
-			// to be remove 
-				if(airbus.mes.homepage.oView.getModel("1TileLineHome").getProperty(sPath).text === "LineTracker"){
-					airbus.mes.shell.util.navFunctions.worktracker();
-				}
+			switch(text){
+			case "StationTracker":
+				airbus.mes.shell.util.navFunctions.stationTracker();
+				break;
+			
+			case "TeamAssignment":
+				airbus.mes.shell.util.navFunctions.resourcePool();
+				break;
+			}
 				
-	 	};		
+	 	};
 	},
+	
+	
+	onPressLine1: function(oEvt){
+		
+		var sPath = oEvt.getSource().oBindingContexts["1TileLineHome"].sPath;
+		var text  = airbus.mes.homepage.oView.getModel("1TileLineHome").getProperty(sPath).text;
+		
+		this.onPress(text);
+	},
+	
+	
+	onPressLine2: function(oEvt){
+		
+		var sPath = oEvt.getSource().oBindingContexts["2TileLineHome"].sPath;
+		var text  = airbus.mes.homepage.oView.getModel("2TileLineHome").getProperty(sPath).text;
+		
+		this.onPress(text);
+	},
+	
+	
+	onPressLine3: function(oEvt){
+		
+		var sPath = oEvt.getSource().oBindingContexts["3TileLineHome"].sPath;
+		var text  = airbus.mes.homepage.oView.getModel("3TileLineHome").getProperty(sPath).text;
+		
+		this.onPress(text);
+	},
+	
+		
 	getI18nValue : function(sKey) {
 	    return this.getView().getModel("i18n").getProperty(sKey);
 	},

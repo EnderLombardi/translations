@@ -1,0 +1,38 @@
+{ "Rowsets" : { 
+	"DateCreated" : "2016-06-17T07:16:10", "Version" : "15.1 SP1 Patch 0 (Jan 21, 2016)", "StartDate" : "2016-06-17T06:16:10+0200", "EndDate" : "2016-06-17T07:16:10+0200", "CachedTime" : "", 
+	"Rowset" : [ 
+	{ "Columns" : { 
+		"Column" : [ 
+		{ "Name" : "USER_ID", "SourceColumn" : "USER_ID", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "PERSONAL_NO", "SourceColumn" : "PERSONAL_NO", "Description" : "", "SQLDataType" : 4, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "ERP_USER_ID", "SourceColumn" : "ERP_USER_ID", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "FNAME", "SourceColumn" : "FNAME", "Description" : "", "SQLDataType" : 4, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "LNAME", "SourceColumn" : "LNAME", "Description" : "", "SQLDataType" : 4, "MinRange" : 1.0, "MaxRange" : 1.0 } 
+		] },
+		"Rows" :[
+		{
+		"USER_ID"		: "1",
+		"PERSONAL_NO"	: "1",
+		"ERP_USER_ID"	: "001",
+		"FNAME"	: "Masoom",
+		"LNAME" : "Jajoo"
+		},
+		{
+		"USER_ID"		: "2",
+		"PERSONAL_NO"	: "2",
+		"ERP_USER_ID"	: "002",
+		"FNAME"	: "Vaibhav",
+		"LNAME" : "Mishra"
+		},
+		{
+		"USER_ID"		: "3",
+		"PERSONAL_NO"	: "3",
+		"ERP_USER_ID"	: "003",
+		"FNAME"	: "Piyush",
+		"LNAME" : "Aggrawal"
+		}
+		
+		]
+				 } ]
+	 }
+ }

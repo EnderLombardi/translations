@@ -1,13 +1,12 @@
 <core:FragmentDefinition
-	xmlns="sap.m"
-	xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc">
+	xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc">
 		<Dialog
-		title="PolyPoly Matrix"
+		title="PolyPoly Matrixxxxxxxxx"
 		class="sapUiPopupWithPadding"
 		verticalScrolling="false"
 		horizontalScrolling="false">
 		<buttons>
-				<Button text="Close" press="handleCloseButtonPolypoly" />
+				<Button text="ClosePolyPoly" press="ClosePolyPoly" />
 		</buttons>
 		<content>
 		</content>

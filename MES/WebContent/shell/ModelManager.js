@@ -59,5 +59,15 @@ airbus.mes.shell.ModelManager = {
 			oViewModel.loadData(this.urlModel.getProperty("urluserdetail"), null, false);
 		
 		},
-		
+
+
+		getRoles : function() {
+			var rep = jQuery.ajax({
+				async : false,
+				url : this.urlModel.getProperty('urlgetroles'),
+				type : 'POST',
+			});
+
+			return rep.responseJSON;
+		},
 }

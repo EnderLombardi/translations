@@ -2,13 +2,13 @@
 
    "Rowsets": {
 
-      "DateCreated": "2016-10-18T15:30:18",
+      "DateCreated": "2016-10-21T15:39:33",
 
       "Version": "15.1 SP2 Patch 13 (Oct 6, 2016)",
 
-      "StartDate": "2016-10-18T14:30:18+0200",
+      "StartDate": "2016-10-21T14:39:33+0200",
 
-      "EndDate": "2016-10-18T15:30:18+0200",
+      "EndDate": "2016-10-21T15:39:33+0200",
 
       "CachedTime": "",
 
@@ -513,6 +513,7 @@
                   "MSN": "00571",
 
                   "WORKORDER_ID": "FNZ131",
+                  "SFC_STEP_REF": "SFCStepBO:SFCRouterBO:SFCRoutingBO:SFCBO:CHES,CHES0017,RouterBO:CHES,100006592-1208SAFT73G281,U,A,1,50",
 
                   "OPERATION_ID": "0010",
 
@@ -564,9 +565,9 @@
 
                   "PAUSED": "---",
 
-                  "DURATION": "NA",
+                  "DURATION": 1200000,
 
-                  "PROGRESS": "NA"
+                  "PROGRESS": 0
 
                },
 
@@ -577,6 +578,7 @@
                   "MSN": "00571",
 
                   "WORKORDER_ID": "FNZ132",
+                  "SFC_STEP_REF": "SFCStepBO:SFCRouterBO:SFCRoutingBO:SFCBO:CHES,CHES0017,RouterBO:CHES,100006592-1208SAFT73G281,U,A,1,50",
 
                   "OPERATION_ID": "0010",
 
@@ -628,9 +630,9 @@
 
                   "PAUSED": "---",
 
-                  "DURATION": "NA",
+                  "DURATION": 1200000,
 
-                  "PROGRESS": "NA"
+                  "PROGRESS": 0
 
                },
 
@@ -641,6 +643,7 @@
                   "MSN": "00571",
 
                   "WORKORDER_ID": "FNZ133",
+                  "SFC_STEP_REF": "SFCStepBO:SFCRouterBO:SFCRoutingBO:SFCBO:CHES,CHES0017,RouterBO:CHES,100006592-1208SAFT73G281,U,A,1,50",
 
                   "OPERATION_ID": "0010",
 
@@ -692,9 +695,9 @@
 
                   "PAUSED": "---",
 
-                  "DURATION": "NA",
+                  "DURATION": 1200000,
 
-                  "PROGRESS": "NA"
+                  "PROGRESS": 0
 
                },
 
@@ -705,6 +708,7 @@
                   "MSN": "00571",
 
                   "WORKORDER_ID": "FNZ134",
+                  "SFC_STEP_REF": "SFCStepBO:SFCRouterBO:SFCRoutingBO:SFCBO:CHES,CHES0017,RouterBO:CHES,100006592-1208SAFT73G281,U,A,1,50",
 
                   "OPERATION_ID": "0010",
 
@@ -756,9 +760,9 @@
 
                   "PAUSED": "---",
 
-                  "DURATION": "NA",
+                  "DURATION": 1200000,
 
-                  "PROGRESS": "NA"
+                  "PROGRESS": 0
 
                },
 
@@ -769,6 +773,7 @@
                   "MSN": "00571",
 
                   "WORKORDER_ID": "FNZ135",
+                  "SFC_STEP_REF": "SFCStepBO:SFCRouterBO:SFCRoutingBO:SFCBO:CHES,CHES0017,RouterBO:CHES,100006592-1208SAFT73G281,U,A,1,50",
 
                   "OPERATION_ID": "0010",
 
@@ -820,9 +825,9 @@
 
                   "PAUSED": "---",
 
-                  "DURATION": "NA",
+                  "DURATION": 1200000,
 
-                  "PROGRESS": "NA"
+                  "PROGRESS": 0
 
                },
 
@@ -833,6 +838,7 @@
                   "MSN": "00571",
 
                   "WORKORDER_ID": "FNZ136",
+                  "SFC_STEP_REF": "SFCStepBO:SFCRouterBO:SFCRoutingBO:SFCBO:CHES,CHES0017,RouterBO:CHES,100006592-1208SAFT73G281,U,A,1,50",
 
                   "OPERATION_ID": "0010",
 
@@ -884,9 +890,9 @@
 
                   "PAUSED": "---",
 
-                  "DURATION": "NA",
+                  "DURATION": 1200000,
 
-                  "PROGRESS": "NA"
+                  "PROGRESS": 0
 
                },
 
@@ -897,6 +903,7 @@
                   "MSN": "00571",
 
                   "WORKORDER_ID": "FNZ137",
+                  "SFC_STEP_REF": "SFCStepBO:SFCRouterBO:SFCRoutingBO:SFCBO:CHES,CHES0017,RouterBO:CHES,100006592-1208SAFT73G281,U,A,1,50",
 
                   "OPERATION_ID": "0010",
 
@@ -948,9 +955,9 @@
 
                   "PAUSED": "false",
 
-                  "DURATION": "NA",
+                  "DURATION": 1200000,
 
-                  "PROGRESS": "NA"
+                  "PROGRESS": 0
 
                },
 
@@ -961,6 +968,7 @@
                   "MSN": "00571",
 
                   "WORKORDER_ID": "FNZ138",
+                  "SFC_STEP_REF": "SFCStepBO:SFCRouterBO:SFCRoutingBO:SFCBO:CHES,CHES0017,RouterBO:CHES,100006592-1208SAFT73G281,U,A,1,50",
 
                   "OPERATION_ID": "0010",
 
@@ -1012,9 +1020,9 @@
 
                   "PAUSED": "---",
 
-                  "DURATION": "NA",
+                  "DURATION": 1200000,
 
-                  "PROGRESS": "NA"
+                  "PROGRESS": 0
 
                },
 
@@ -1025,6 +1033,7 @@
                   "MSN": "00571",
 
                   "WORKORDER_ID": "FNZ139",
+                  "SFC_STEP_REF": "SFCStepBO:SFCRouterBO:SFCRoutingBO:SFCBO:CHES,CHES0017,RouterBO:CHES,100006592-1208SAFT73G281,U,A,1,50",
 
                   "OPERATION_ID": "0010",
 
@@ -1076,9 +1085,9 @@
 
                   "PAUSED": "false",
 
-                  "DURATION": "NA",
+                  "DURATION": 1200000,
 
-                  "PROGRESS": "NA"
+                  "PROGRESS": 0
 
                },
 
@@ -1089,6 +1098,7 @@
                   "MSN": "00571",
 
                   "WORKORDER_ID": "FNZ140",
+                  "SFC_STEP_REF": "SFCStepBO:SFCRouterBO:SFCRoutingBO:SFCBO:CHES,CHES0017,RouterBO:CHES,100006592-1208SAFT73G281,U,A,1,50",
 
                   "OPERATION_ID": "0010",
 
@@ -1140,9 +1150,9 @@
 
                   "PAUSED": "---",
 
-                  "DURATION": "NA",
+                  "DURATION": 1200000,
 
-                  "PROGRESS": "NA"
+                  "PROGRESS": 0
 
                },
 
@@ -1153,6 +1163,7 @@
                   "MSN": "00571",
 
                   "WORKORDER_ID": "FNZ141",
+                  "SFC_STEP_REF": "SFCStepBO:SFCRouterBO:SFCRoutingBO:SFCBO:CHES,CHES0017,RouterBO:CHES,100006592-1208SAFT73G281,U,A,1,50",
 
                   "OPERATION_ID": "0010",
 
@@ -1204,9 +1215,9 @@
 
                   "PAUSED": "---",
 
-                  "DURATION": "NA",
+                  "DURATION": 1200000,
 
-                  "PROGRESS": "NA"
+                  "PROGRESS": 0
 
                },
 
@@ -1217,6 +1228,7 @@
                   "MSN": "00571",
 
                   "WORKORDER_ID": "FNZ142",
+                  "SFC_STEP_REF": "SFCStepBO:SFCRouterBO:SFCRoutingBO:SFCBO:CHES,CHES0017,RouterBO:CHES,100006592-1208SAFT73G281,U,A,1,50",
 
                   "OPERATION_ID": "0010",
 
@@ -1268,9 +1280,9 @@
 
                   "PAUSED": "---",
 
-                  "DURATION": "NA",
+                  "DURATION": 1200000,
 
-                  "PROGRESS": "NA"
+                  "PROGRESS": 0
 
                },
 
@@ -1281,6 +1293,7 @@
                   "MSN": "00571",
 
                   "WORKORDER_ID": "FNZ143",
+                  "SFC_STEP_REF": "SFCStepBO:SFCRouterBO:SFCRoutingBO:SFCBO:CHES,CHES0017,RouterBO:CHES,100006592-1208SAFT73G281,U,A,1,50",
 
                   "OPERATION_ID": "0010",
 
@@ -1332,9 +1345,9 @@
 
                   "PAUSED": "---",
 
-                  "DURATION": "NA",
+                  "DURATION": 1200000,
 
-                  "PROGRESS": "NA"
+                  "PROGRESS": 0
 
                },
 
@@ -1345,6 +1358,7 @@
                   "MSN": "00571",
 
                   "WORKORDER_ID": "FNZ144",
+                  "SFC_STEP_REF": "SFCStepBO:SFCRouterBO:SFCRoutingBO:SFCBO:CHES,CHES0017,RouterBO:CHES,100006592-1208SAFT73G281,U,A,1,50",
 
                   "OPERATION_ID": "0010",
 
@@ -1396,9 +1410,9 @@
 
                   "PAUSED": "---",
 
-                  "DURATION": "NA",
+                  "DURATION": 1200000,
 
-                  "PROGRESS": "NA"
+                  "PROGRESS": 0
 
                },
 
@@ -1409,6 +1423,7 @@
                   "MSN": "00571",
 
                   "WORKORDER_ID": "FNZ145",
+                  "SFC_STEP_REF": "SFCStepBO:SFCRouterBO:SFCRoutingBO:SFCBO:CHES,CHES0017,RouterBO:CHES,100006592-1208SAFT73G281,U,A,1,50",
 
                   "OPERATION_ID": "0010",
 
@@ -1460,9 +1475,9 @@
 
                   "PAUSED": "---",
 
-                  "DURATION": "NA",
+                  "DURATION": 1200000,
 
-                  "PROGRESS": "NA"
+                  "PROGRESS": 0
 
                },
 
@@ -1473,6 +1488,7 @@
                   "MSN": "00571",
 
                   "WORKORDER_ID": "FNZ146",
+                  "SFC_STEP_REF": "SFCStepBO:SFCRouterBO:SFCRoutingBO:SFCBO:CHES,CHES0017,RouterBO:CHES,100006592-1208SAFT73G281,U,A,1,50",
 
                   "OPERATION_ID": "0010",
 
@@ -1524,9 +1540,9 @@
 
                   "PAUSED": "---",
 
-                  "DURATION": "NA",
+                  "DURATION": 1200000,
 
-                  "PROGRESS": "NA"
+                  "PROGRESS": 0
 
                },
 
@@ -1537,6 +1553,7 @@
                   "MSN": "00571",
 
                   "WORKORDER_ID": "FNZ147",
+                  "SFC_STEP_REF": "SFCStepBO:SFCRouterBO:SFCRoutingBO:SFCBO:CHES,CHES0017,RouterBO:CHES,100006592-1208SAFT73G281,U,A,1,50",
 
                   "OPERATION_ID": "0010",
 
@@ -1544,7 +1561,7 @@
 
                   "STEP_ID": "20",
 
-                  "STATE": "S",
+                  "STATE": "C",
 
                   "OPERATION_DESCRIPTION": "0010",
 
@@ -1588,9 +1605,9 @@
 
                   "PAUSED": "---",
 
-                  "DURATION": "NA",
+                  "DURATION": 1200000,
 
-                  "PROGRESS": "NA"
+                  "PROGRESS": 0
 
                },
 
@@ -1601,6 +1618,7 @@
                   "MSN": "00571",
 
                   "WORKORDER_ID": "FNZ148",
+                  "SFC_STEP_REF": "SFCStepBO:SFCRouterBO:SFCRoutingBO:SFCBO:CHES,CHES0017,RouterBO:CHES,100006592-1208SAFT73G281,U,A,1,50",
 
                   "OPERATION_ID": "0010",
 
@@ -1652,9 +1670,9 @@
 
                   "PAUSED": "---",
 
-                  "DURATION": "NA",
+                  "DURATION": 1200000,
 
-                  "PROGRESS": "NA"
+                  "PROGRESS": 0
 
                },
 
@@ -1665,6 +1683,7 @@
                   "MSN": "00571",
 
                   "WORKORDER_ID": "FNZ143",
+                  "SFC_STEP_REF": "SFCStepBO:SFCRouterBO:SFCRoutingBO:SFCBO:CHES,CHES0017,RouterBO:CHES,100006592-1208SAFT73G281,U,A,1,50",
 
                   "OPERATION_ID": "0020",
 
@@ -1684,7 +1703,7 @@
 
                   "FAMILY": "---",
 
-                  "CPP_CLUSTER": "Montage des shu",
+                  "CPP_CLUSTER": "Montage des sh",
 
                   "AVL_LINE": 6,
 
@@ -1716,9 +1735,9 @@
 
                   "PAUSED": "---",
 
-                  "DURATION": "NA",
+                  "DURATION": 0,
 
-                  "PROGRESS": "NA"
+                  "PROGRESS": 0
 
                }
 

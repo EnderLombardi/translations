@@ -7,7 +7,7 @@
 		<content>
 			<TileContainer tileDelete="handleTileDelete"
 				tiles="{1TileLineHome>/buttonDetail}" height="33%">
-				<CustomTile press="onPress" class="customTiles">
+				<CustomTile press="onPressLine1" class="customTiles">
 					<content>
 						<VBox width="12rem" height="13rem" alAignItems="Center"
 							class="margin">
@@ -34,7 +34,7 @@
 			</TileContainer>
 			<TileContainer tileDelete="handleTileDelete"
 				tiles="{2TileLineHome>/buttonDetail}" height="33%">
-				<CustomTile press="onPress" class="customTiles">
+				<CustomTile press="onPressLine2" class="customTiles">
 					<content>
 						<VBox width="12rem" height="13rem" alignItems="Center" class="margin">
 							<items>
@@ -62,7 +62,7 @@
 			</TileContainer>
 			<TileContainer tileDelete="handleTileDelete"
 				tiles="{3TileLineHome>/buttonDetail}" height="33%">
-				<CustomTile press="onPress" class="customTiles">
+				<CustomTile press="onPressLine3" class="customTiles">
 					<content>
 						<VBox width="12rem" height="13rem" alignItems="Center" class="margin">
 							<items>

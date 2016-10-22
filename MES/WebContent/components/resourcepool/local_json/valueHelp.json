@@ -1,0 +1,44 @@
+{  
+   "Rowsets":{  
+      "DateCreated":"2016-06-16T12:49:01",
+      "Version":"15.1 SP1 Patch 0 (Jan 21, 2016)",
+      "StartDate":"2016-06-16T11:49:01+0200",
+      "EndDate":"2016-06-16T12:49:01+0200",
+      "CachedTime":"",
+      "Rowset":[  
+         {  
+            "Columns":{  
+               "Column":[  
+                  {  
+                     "Name":"NAME",
+                     "SourceColumn":"NAME",
+                     "Description":"",
+                     "SQLDataType":12,
+                     "MinRange":100.0,
+                     "MaxRange":100.0
+                  },
+                  {  
+                     "Name":"DESCRIPTION",
+                     "SourceColumn":"DESCRIPTION",
+                     "Description":"",
+                     "SQLDataType":12,
+                     "MinRange":100.0,
+                     "MaxRange":100.0
+                  }
+               ]
+            },
+            "Row":[  
+               {  
+                  "NAME":"Resource Pool 1",
+                  "DESCRIPTION":"green"
+               },
+               {  
+                  "NAME":"Resource Pool 2",
+                  "DESCRIPTION":"red"
+               }
+            ]
+         }
+         ]
+      }
+      }
+      

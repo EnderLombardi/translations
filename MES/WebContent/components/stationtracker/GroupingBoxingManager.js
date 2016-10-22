@@ -170,8 +170,16 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 		
 			//if ( airbus.mes.stationtracker.ShiftManager.dayDisplay ) {
 			//permit to DO THE boxing on the only corresponding shift selected in day mode
-			var oShift = airbus.mes.stationtracker.ShiftManager.shifts[airbus.mes.stationtracker.ShiftManager.closestShift(oFormatter.jsDateFromDayTimeStr(el.START_TIME))]; 
-			//console.log(oShift);
+			if ( airbus.mes.stationtracker.ShiftManager.closestShift(oFormatter.jsDateFromDayTimeStr(el.START_TIME)) != -1 ) {
+			
+				var oShift = airbus.mes.stationtracker.ShiftManager.shifts[airbus.mes.stationtracker.ShiftManager.closestShift(oFormatter.jsDateFromDayTimeStr(el.START_TIME))]; 
+			
+			} else {
+				
+				console.log("operation is not in the shift");
+				var oShift = "";
+				
+			}// console.log(oShift);
 						
 			var ssBox = el[sBoxing] + "_"  + el["WORKORDER_ID"] + "_" + oShift.day + "-" + oShift.shiftName;
 						
@@ -248,6 +256,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 					//"avlEndDate" : el.avlEndDate,
 					"AVL_LINE": el.AVL_LINE,
 					"PROD_GROUP":el.PROD_GROUP,
+					"SFC_STEP_REF":el.SFC_STEP_REF,
 					//"competency": el.competency,
 					//"rescheduledStarDate": el.rescheduledStarDate,
 					//"rescheduledEndDate": el.rescheduledEndDate,

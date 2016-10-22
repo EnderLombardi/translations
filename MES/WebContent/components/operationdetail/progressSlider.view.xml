@@ -1,6 +1,6 @@
 <core:View xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
 	xmlns:html="http://www.w3.org/1999/xhtml" controllerName="airbus.mes.operationdetail.progressSlider">
-	<Page enableScrolling="false">
+	<Page enableScrolling="false" showHeader="false">
 		<content>
 
 
@@ -10,19 +10,19 @@
 					<Toolbar height="3.5rem" class="ML-05">
 						<VBox width="100%">
 							<Text id="operationName" class="mainText"
-								text="OP {operationDetailModel>/schedule/operation_no} - {operationDetailModel>/schedule/operation_desc}"></Text>
+								text="OP {operationDetailModel>/Rowsets/Rowset/0/Row/0/operation_no}-{operationDetailModel>/Rowsets/Rowset/0/Row/0/operation_desc}"></Text>
 
 							<HBox justifyContent="SpaceBetween" width="100%">
 								<HBox justifyContent="SpaceBetween">
 									<Text text="{i18n>workOrder}" class="subText MR-1"></Text>
-									<Text id="workOrder" text="{operationDetailModel>/schedule/wo_no}"
+									<Text id="workOrder" text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/wo_no}"
 										class="subText"></Text>
 								</HBox>
 								<HBox justifyContent="SpaceBetween">
 									<Text id="timeRange"
-										text="{operationDetailModel>/schedule/planned_start_time} - {operationDetailModel>/schedule/planned_end_time}"
+										text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/original_start_time} - {operationDetailModel>/Rowsets/Rowset/0/Row/0/original_end_time}"
 										class="subText MR-1"></Text>
-									<Text id="taskId" text="{operationDetailModel>/schedule/workcenter}"
+									<Text id="taskId" text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/CPP_CLUSTER}"
 										class="subText MR-1"></Text>
 									<Button id="opDetailExpandButton" type="Transparent"
 										icon="sap-icon://navigation-down-arrow" press="expandOperationDetailPanel"
@@ -39,27 +39,27 @@
 						<f:content>
 							<VBox>
 								<Label text="Start:" />
-								<Text text="{operationDetailModel>/schedule/planned_start_time}" />
+								<Text text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/planned_start_time}" />
 								<Label type="space"></Label>
 								<Label text="Time spent" />
-								<Text text="{operationDetailModel>/schedule/time_spent}" />
+								<Text text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/time_spent}" />
 								<Label type="space"></Label>
 								<!-- <Label text="System status: " /> <Text text="DSEX DSPT REL" 
 									/> <Label type="space"></Label> -->
 							</VBox>
 							<VBox>
 								<Label text="End:" />
-								<Text text="{operationDetailModel>/schedule/planned_end_time}" />
+								<Text text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/planned_end_time}" />
 								<Label type="space"></Label>
 								<Label text="Original plan:" />
 								<Text
-									text="{operationDetailModel>/schedule/original_start_time} - {operationDetailModel>/schedule/original_end_time}" />
+									text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/original_start_time} - {operationDetailModel>/Rowsets/Rowset/0/Row/0/original_end_time}" />
 								<Label type="space"></Label>
 								<!-- <Label text="User status:" /> <Text text=" - " /> -->
 							</VBox>
 							<VBox>
 								<Label text="Work Center:" />
-								<Text text="{operationDetailModel>/schedule/wo_no}" />
+								<Text text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/workcenter}" />
 								<Label type="space"></Label>
 								<!-- <Label text="ACPnG" /> <Text text="28/08/2016" /> <Label type="space"></Label> 
 									<Label text="Bundle" /> <Text text=" - " /> -->
@@ -77,14 +77,14 @@
 			<IconTabBar id="operationNav" expandable="false"
 				class="operationNavBar sapUiResponsiveContentPadding">
 				<items>
-					<IconTabFilter icon="sap-icon://kpi-corporate-performance"
+					<IconTabFilter 
 						text="Progress">
 						
 						<VBox width="100%" justifyContent="SpaceBetween">
 							<HBox justifyContent="Center" class="sapUiSmallMarginTopBottom">
 								<items>
 									<Title id="operationStatus"
-										text="{parts: ['operationDetailModel>/schedule/status', 'operationDetailModel>/schedule/progress'], formatter:'airbus.mes.operationdetail.Formatter.setSliderStatus'}"
+										text="{parts: ['operationDetailModel>/Rowsets/Rowset/0/Row/0/status', 'operationDetailModel>/Rowsets/Rowset/0/Row/0/progress'], formatter:'airbus.mes.operationdetail.Formatter.setSliderStatus'}"
 										level="H1" titleStyle="H3" />
 								</items>
 							</HBox>
@@ -101,12 +101,12 @@
 									</layoutData>
 									<Slider id="progressSliderfirst" class="comfirmedProgressSlider"
 										min="0"
-										width="{parts:['operationDetailModel>/schedule/status', 'operationDetailModel>/schedule/progress'], formatter:'airbus.mes.operationdetaill.Formatter.sliderStatusFirst' }"
+										width="{parts:['operationDetailModel>/Rowsets/Rowset/0/Row/0/status', 'operationDetailModel>/Rowsets/Rowset/0/Row/0/progress'], formatter:'airbus.mes.operationdetail.Formatter.sliderStatusFirst' }"
 										editable="false" enabled="false">
 									</Slider>
 									<Slider id="progressSlider" class="dynProgressSlider sliderInprogressColor"
 										max="100" showHandleTooltip="true"
-										width="{parts: ['operationDetailModel>/schedule/status', 'operationDetailModel>/schedule/progress'], formatter: 'airbus.mes.operationdetail.Formatter.sliderStatus' }"
+										width="{parts: ['operationDetailModel>/Rowsets/Rowset/0/Row/0/status', 'operationDetailModel>/Rowsets/Rowset/0/Row/0/progress'], formatter: 'airbus.mes.operationdetail.Formatter.sliderStatus' }"
 										enabled="true">
 									</Slider>
 
