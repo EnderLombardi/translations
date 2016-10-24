@@ -45,11 +45,6 @@
 	font-weight: bold;
 }
  */
-.customHour {
-	border-left: none !important;
-	width: 0px !important;
-	text-indent: -15px;
-}
 
 .marginLeft0 {
 	margin-left: 0 !important;
@@ -351,7 +346,7 @@
 }
 
 .redBottom {
-	color:;
+	color: red;
 	box-shadow: 0 5px 0 red;
 }
 
@@ -388,13 +383,11 @@
 .dhx_row_folder .dhx_matrix_scell.folder {
 	background-color: #d5f1f8;
 }
-<<<<<<< Upstream, based on origin/MESv0.9
+
 .duck-egg-blue {
 	background-color:#d5f1f8 !important;
 }
-=======
 
->>>>>>> 6f568d1 Kpi display stationtracker
 .lineYaxis {
 	background-color: rgba(49, 220, 240, 0.1);
 }
@@ -407,10 +400,6 @@
 .eventOrange {
 	background-color: #F9DAAB;
 	color: black;
-}
-
-.dhx_cal_container {
-	height: 100%;
 }
 
 .Hour {
@@ -661,4 +650,37 @@ background-color: #0085AD !important;
 
 
 
-/* End of Css for Operation Detail Popup*/
+/******* REMY *******/
+
+.customHour {
+	text-align: left;
+	text-indent: -15px;
+	border-left: none !important;
+	background-color: transparent !important;
+}
+
+.customHour:before{
+	content: '';
+	display: block;
+	position: absolute;
+	bottom: 0;
+	width: 1px;
+	height: 10px;
+	background-color: #DDD;
+}
+
+#stationTrackerView--stationtracker{
+	width: auto;
+	height: auto !important;
+	position: absolute;
+	top:0;
+	bottom:0;
+	left: 0;
+	right: 0;
+}
+
+#stationTrackerView--stationtracker .dhx_cal_data{
+	overflow-y: scroll;
+	bottom: 0;
+	height: auto !important;
+}
