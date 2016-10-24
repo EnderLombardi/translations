@@ -16,8 +16,9 @@ sap.ui.controller("airbus.mes.operationdetail.progressSlider", {
 					
 	},
 	expandOperationDetailPanel : function(oEvent) {
-		this.getView().byId("opDetailExpandButton")
-				.toggleStyleClass("invisible");
+		var toggleButton = this.getView().byId("opDetailExpandButton");
+		toggleButton.setVisible(!toggleButton.getVisible());
+		
 		this.getView().byId("operationDetailPanel")
 				.setExpanded();
 	},

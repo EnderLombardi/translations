@@ -1,0 +1,103 @@
+{
+   "Rowsets": {
+      "DateCreated": "2016-10-24T13:50:16",
+      "Version": "15.1 SP2 Patch 13 (Oct 6, 2016)",
+      "StartDate": "2016-10-24T12:50:16+0200",
+      "EndDate": "2016-10-24T13:50:16+0200",
+      "CachedTime": "",
+      "Rowset": [
+         {
+            "Columns": {
+               "Column": [
+                  {
+                     "Name": "Name",
+                     "SourceColumn": "Name",
+                     "Description": "Name",
+                     "SQLDataType": 1,
+                     "MinRange": 1,
+                     "MaxRange": 1
+                  },
+                  {
+                     "Name": "Value",
+                     "SourceColumn": "Value",
+                     "Description": "Value",
+                     "SQLDataType": 1,
+                     "MinRange": 1,
+                     "MaxRange": 1
+                  }
+               ]
+            },
+            "Row": [
+               {
+                  "Name": "CREATED_BY",
+                  "Value": "RFCPSMD360"
+               },
+               {
+                  "Name": "Locale",
+                  "Value": "en_US"
+               },
+               {
+                  "Name": "uniquename",
+                  "Value": "ZMII1684L201"
+               },
+               {
+                  "Name": "Company",
+                  "Value": "TESTALLSYS"
+               },
+               {
+                  "Name": "firstname",
+                  "Value": "User de test"
+               },
+               {
+                  "Name": "com.sap.security.original_url",
+                  "Value": "https://dmiswde0.eu.airbus.corp:443/XMII/PropertyAccessServlet?Mode=List&Content-Type=text/json&j_user=ZMII1684L201&j_password=DMIDMI03"
+               },
+               {
+                  "Name": "Accessibility",
+                  "Value": "false"
+               },
+               {
+                  "Name": "LAST_MODIFIED_BY",
+                  "Value": "NG62879"
+               },
+               {
+                  "Name": "IllumLoginName",
+                  "Value": "ZMII1684L201"
+               },
+               {
+                  "Name": "identityuuid",
+                  "Value": "f0921c00-db59-1ee6-a1c8-a48c003b9a31"
+               },
+               {
+                  "Name": "Machine",
+                  "Value": "44.55.119.183"
+               },
+               {
+                  "Name": "lastname",
+                  "Value": "ZMII1684L201"
+               },
+               {
+                  "Name": "IllumLoginRoles",
+                  "Value": "'MII_MOD1684_PULSE','Everyone','SAP_XMII_User','MII_MOD1684_PARTIAL_PULSE','MII_MOD1684_MANUFMNG','MII_1N97_ENDUSER'"
+               },
+               {
+                  "Name": "Language",
+                  "Value": "en"
+               },
+               {
+                  "Name": "FullName",
+                  "Value": "ZMII1684L201, User de test"
+               },
+               {
+                  "Name": "Country",
+                  "Value": "US"
+               },
+               {
+                  "Name": "company",
+                  "Value": "TESTALLSYS"
+               }
+            ]
+         }
+      ]
+   }
+}

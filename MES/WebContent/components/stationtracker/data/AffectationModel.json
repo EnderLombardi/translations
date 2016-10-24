@@ -1,75 +1,58 @@
 {
-
    "Rowsets": {
-
       "DateCreated": "2016-07-13T10:26:38",
-
       "Version": "15.1 SP1 Patch 0 (Jan 21, 2016)",
-
       "StartDate": "2016-07-13T09:26:38+0200",
-
       "EndDate": "2016-07-13T10:26:38+0200",
-
       "CachedTime": "",
-
       "Rowset": [
-
          {
-
             "Columns": {
-
                "Column": []
-
             },
-
             "Row": [
-
                {
-
                   "user": "pierre",
-
                   "firstName": "pierre",
-
                   "lastName": "barillon",
-
                   "picture": "toto",
-
                   "avlLine": "1",
-
                   "shiftName": "NORMAL 1",
-
                   "shiftID": "NORMAL 1",
-
                   "day": "2016-10-03"
-
                },
-
-              {
-
+               {
                   "user": "John A.",
-
                   "firstName": "John A.",
-
                   "lastName": "John A.",
-
                   "picture": "toto",
-
                   "avlLine": "1",
-
-                  "shiftName": "NIGHT 2",
-
-                  "shiftID": "NIGHT 2",
-
-                  "day": "2016-10-18"
-
+                  "shiftName": "NORMAL 1",
+                  "shiftID": "NIGHT 1",
+                  "day": "2016-10-17"
+               },
+               {
+                  "user": "Pierre B.",
+                  "firstName": "Pierre B.",
+                  "lastName": "Pierre B.",
+                  "picture": "toto",
+                  "avlLine": "2",
+                  "shiftName": "NORMAL 1",
+                  "shiftID": "NIGHT 1",
+                  "day": "2016-10-17"
+               },
+               {
+                  "user": "John A.",
+                  "firstName": "John A.",
+                  "lastName": "John A.",
+                  "picture": "toto",
+                  "avlLine": "2",
+                  "shiftName": "NORMAL 1",
+                  "shiftID": "NIGHT 1",
+                  "day": "2016-10-17"
                }
-
             ]
-
          }
-
       ]
-
    }
-
 }

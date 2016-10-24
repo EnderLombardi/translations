@@ -86,38 +86,38 @@ airbus.mes.linetracker.util.ModelManager = {
 
 		// Initialization of all models
 		this.core = core;
-		core.setModel(new sap.ui.model.json.JSONModel(), "FactoryModel");
-		core.setModel(new sap.ui.model.json.JSONModel(), "PulseModel");
-		core.setModel(new sap.ui.model.json.JSONModel(), "StationModel");
-		core.setModel(new sap.ui.model.json.JSONModel(), "newFactoryModel");
-		core.setModel(new sap.ui.model.json.JSONModel(), "ProductionModel");
-		core.setModel(new sap.ui.model.json.JSONModel(), "newStationModel");
-		core.setModel(new sap.ui.model.json.JSONModel(), "newProductionModel");
-		core.setModel(new sap.ui.model.json.JSONModel(), "lModel"); // Station 5
+		sap.ui.getCore().setModel(new sap.ui.model.json.JSONModel(), "FactoryModel");
+		sap.ui.getCore().setModel(new sap.ui.model.json.JSONModel(), "PulseModel");
+		sap.ui.getCore().setModel(new sap.ui.model.json.JSONModel(), "StationModel");
+		sap.ui.getCore().setModel(new sap.ui.model.json.JSONModel(), "newFactoryModel");
+		sap.ui.getCore().setModel(new sap.ui.model.json.JSONModel(), "ProductionModel");
+		sap.ui.getCore().setModel(new sap.ui.model.json.JSONModel(), "newStationModel");
+		sap.ui.getCore().setModel(new sap.ui.model.json.JSONModel(), "newProductionModel");
+		sap.ui.getCore().setModel(new sap.ui.model.json.JSONModel(), "lModel"); // Station 5
 
-		core.setModel(new sap.ui.model.json.JSONModel(), "colorPaletteModel");
+		sap.ui.getCore().setModel(new sap.ui.model.json.JSONModel(), "colorPaletteModel");
 		/* Station Selection on PolyPolyscreen */
-		core.setModel(new sap.ui.model.json.JSONModel(), "stationList");
+		sap.ui.getCore().setModel(new sap.ui.model.json.JSONModel(), "stationList");
 
 		// attach event on end of loading model
 		
-		core.getModel("FactoryModel").attachRequestCompleted(
+		sap.ui.getCore().getModel("FactoryModel").attachRequestCompleted(
 				airbus.mes.linetracker.util.ModelManager.onFactoryModelLoaded);
-		core.getModel("ProductionModel").attachRequestCompleted(
+		sap.ui.getCore().getModel("ProductionModel").attachRequestCompleted(
 				airbus.mes.linetracker.util.ModelManager.onProductionModelLoaded);
-		core.getModel("StationModel").attachRequestCompleted(
+		sap.ui.getCore().getModel("StationModel").attachRequestCompleted(
 				airbus.mes.linetracker.util.ModelManager.onStationModelLoaded);
 		// Set Max setSizeLimit(this.maxModelSize)
 
-		core.getModel("FactoryModel").setSizeLimit(this.maxModelSize);
-		core.getModel("PulseModel").setSizeLimit(this.maxModelSize);
-		core.getModel("StationModel").setSizeLimit(this.maxModelSize);
-		core.getModel("newFactoryModel").setSizeLimit(this.maxModelSize);
-		core.getModel("ProductionModel").setSizeLimit(this.maxModelSize);
-		core.getModel("newStationModel").setSizeLimit(this.maxModelSize);
-		core.getModel("newProductionModel").setSizeLimit(this.maxModelSize);
-		core.getModel("lModel").setSizeLimit(this.maxModelSize); // Station 5
-		core.getModel("colorPaletteModel").setSizeLimit(this.maxModelSize);
+		sap.ui.getCore().getModel("FactoryModel").setSizeLimit(this.maxModelSize);
+		sap.ui.getCore().getModel("PulseModel").setSizeLimit(this.maxModelSize);
+		sap.ui.getCore().getModel("StationModel").setSizeLimit(this.maxModelSize);
+		sap.ui.getCore().getModel("newFactoryModel").setSizeLimit(this.maxModelSize);
+		sap.ui.getCore().getModel("ProductionModel").setSizeLimit(this.maxModelSize);
+		sap.ui.getCore().getModel("newStationModel").setSizeLimit(this.maxModelSize);
+		sap.ui.getCore().getModel("newProductionModel").setSizeLimit(this.maxModelSize);
+		sap.ui.getCore().getModel("lModel").setSizeLimit(this.maxModelSize); // Station 5
+		sap.ui.getCore().getModel("colorPaletteModel").setSizeLimit(this.maxModelSize);
 		// core.getModel("stationList").setSizeLimit(this.maxModelSize);
 
 		var dest;
@@ -231,7 +231,7 @@ airbus.mes.linetracker.util.ModelManager = {
 		var line = this.line_number;
 		var screen;
 		var aStation = [];
-		var oViewModel = airbus.mes.linetracker.util.ModelManager.core.getModel("FactoryModel").oData.Rowsets.Rowset[0].Row;
+		var oViewModel = sap.ui.getCore().getModel("FactoryModel").oData.Rowsets.Rowset[0].Row;
 
 		oViewModel.some(function(el) {
 			if (el.MSN != "---") {
@@ -434,7 +434,7 @@ airbus.mes.linetracker.util.ModelManager = {
 		// geturlload = geturlload.replace("$Load_Unload", this.Load_Unload);
 		// geturlload = geturlload.replace("$Loaded_Hand", this.hand);
 		// geturlload = geturlload.replace("$Loaded_MSN", this.msn);
-		var oViewModel = airbus.mes.linetracker.util.ModelManager.core.getModel("lModel");
+		var oViewModel = sap.ui.getCore().getModel("lModel");
 		oViewModel.loadData(geturlload, null, false);
 	},
 
@@ -608,17 +608,17 @@ airbus.mes.linetracker.util.ModelManager = {
 	loadModelFactoryModel : function() {
 
 		var geturlfact = airbus.mes.linetracker.util.ModelManager.getUrlFactoryModel();
-		var oViewModel = airbus.mes.linetracker.util.ModelManager.core.getModel("FactoryModel");
+		var oViewModel = sap.ui.getCore().getModel("FactoryModel");
 		oViewModel.loadData(geturlfact, null, false);
 	},
 	onFactoryModelLoaded : function() {
 		var oProperty;
 		var oLength = 0;
-		if (airbus.mes.linetracker.util.ModelManager.core.getModel("FactoryModel").getProperty(
+		if (sap.ui.getCore().getModel("FactoryModel").getProperty(
 				"/Rowsets/Rowset/0/Row")) {
-			oProperty = airbus.mes.linetracker.util.ModelManager.core.getModel("FactoryModel").getProperty(
+			oProperty = sap.ui.getCore().getModel("FactoryModel").getProperty(
 					"/Rowsets/Rowset/0/Row")
-			oLength = airbus.mes.linetracker.util.ModelManager.core.getModel("FactoryModel").oData.Rowsets.Rowset[0].Row.length;
+			oLength = sap.ui.getCore().getModel("FactoryModel").oData.Rowsets.Rowset[0].Row.length;
 		}
 		var line = [ 1, 2, 3 ];
 		var ModelDataFactory = [];
@@ -658,8 +658,8 @@ airbus.mes.linetracker.util.ModelManager = {
 			count++;
 
 		}
-		airbus.mes.linetracker.util.ModelManager.core.getModel("newFactoryModel").setData(cModelDataLine);
-		airbus.mes.linetracker.util.ModelManager.core.getModel("newFactoryModel").refresh();
+		sap.ui.getCore().getModel("newFactoryModel").setData(cModelDataLine);
+		sap.ui.getCore().getModel("newFactoryModel").refresh();
 		/* necessary to rerender view as we are filtering in onAfterRendering */
 		if (sap.ui.getCore().byId("idFactoryView"))/*
 													 * no need to rerender on
@@ -680,17 +680,17 @@ airbus.mes.linetracker.util.ModelManager = {
 	loadModelProductionModel : function() {
 		// var geturlprodline = this.urlModel.getProperty('urllinemodel');
 		// var geturlproduction = ModelManager.();
-		var oViewModel = airbus.mes.linetracker.util.ModelManager.core.getModel("ProductionModel");
+		var oViewModel = sap.ui.getCore().getModel("ProductionModel");
 		oViewModel.loadData(this.getUrlProductionModel(), null, false);
 	},
 	onProductionModelLoaded : function() {
 		var oProperty;
 		var oLength = 0;
-		if (airbus.mes.linetracker.util.ModelManager.core.getModel("ProductionModel").getProperty(
+		if (sap.ui.getCore().getModel("ProductionModel").getProperty(
 				"/Rowsets/Rowset/0/Row")) {
-			oProperty = airbus.mes.linetracker.util.ModelManager.core.getModel("ProductionModel")
+			oProperty = sap.ui.getCore().getModel("ProductionModel")
 					.getProperty("/Rowsets/Rowset/0/Row")
-			oLength = airbus.mes.linetracker.util.ModelManager.core.getModel("ProductionModel").oData.Rowsets.Rowset[0].Row.length;
+			oLength = sap.ui.getCore().getModel("ProductionModel").oData.Rowsets.Rowset[0].Row.length;
 		}
 		var ModelData = [];
 		for (var j = 0; j < oLength; j++) {
@@ -804,8 +804,8 @@ airbus.mes.linetracker.util.ModelManager = {
 			}
 		}
 
-		airbus.mes.linetracker.util.ModelManager.core.getModel("newProductionModel").setData(ProdModelData);
-		airbus.mes.linetracker.util.ModelManager.core.getModel("newProductionModel").refresh();
+		sap.ui.getCore().getModel("newProductionModel").setData(ProdModelData);
+		sap.ui.getCore().getModel("newProductionModel").refresh();
 	},
 	// *************************************StationModel*********************************
 	getUrlStationModel : function() {
@@ -816,8 +816,8 @@ airbus.mes.linetracker.util.ModelManager = {
 
 	loadModelStationModel : function() {
 
-		var oViewModel = airbus.mes.linetracker.util.ModelManager.core.getModel("StationModel");
-		// var newStationModel = airbus.mes.linetracker.util.ModelManager.core.getModel("newStationModel");
+		var oViewModel = sap.ui.getCore().getModel("StationModel");
+		// var newStationModel = sap.ui.getCore().getModel("newStationModel");
 
 		oViewModel.loadData(airbus.mes.linetracker.util.ModelManager.getUrlStationModel(), null, false);
 	},
@@ -825,11 +825,11 @@ airbus.mes.linetracker.util.ModelManager = {
 
 		var oProperty;
 		var oLength = 0;
-		if (airbus.mes.linetracker.util.ModelManager.core.getModel("StationModel").getProperty(
+		if (sap.ui.getCore().getModel("StationModel").getProperty(
 				"/Rowsets/Rowset/0/Row")) {
-			oProperty = airbus.mes.linetracker.util.ModelManager.core.getModel("StationModel").getProperty(
+			oProperty = sap.ui.getCore().getModel("StationModel").getProperty(
 					"/Rowsets/Rowset/0/Row")
-			oLength = airbus.mes.linetracker.util.ModelManager.core.getModel("StationModel").oData.Rowsets.Rowset[0].Row.length;
+			oLength = sap.ui.getCore().getModel("StationModel").oData.Rowsets.Rowset[0].Row.length;
 		}
 		var ModelData = [];
 
@@ -978,21 +978,21 @@ airbus.mes.linetracker.util.ModelManager = {
 			}
 		}
 
-		airbus.mes.linetracker.util.ModelManager.core.getModel("newStationModel").setData(StationModelData);
-		airbus.mes.linetracker.util.ModelManager.core.getModel("newStationModel").refresh();
+		sap.ui.getCore().getModel("newStationModel").setData(StationModelData);
+		sap.ui.getCore().getModel("newStationModel").refresh();
 		sap.ui.getCore().byId("idStationView").getController().lockStation()
 
 	},
 	// *************************************PulseModel*********************************
 	loadPulseModel : function() {
-		airbus.mes.linetracker.util.ModelManager.core.getModel("PulseModel").setData(airbus.mes.linetracker.util.ModelManager.PulseList);
+		sap.ui.getCore().getModel("PulseModel").setData(airbus.mes.linetracker.util.ModelManager.PulseList);
 		// sap.ui.getCore().setModel(newPulseModel, "PulseModel");
 	},
 	/*
 	 * Loading Station List
 	 */
 	loadStationListModel : function() {
-		airbus.mes.linetracker.util.ModelManager.core.getModel("stationList").setData(
+		sap.ui.getCore().getModel("stationList").setData(
 				airbus.mes.linetracker.util.ModelManager.StationList);
 	},
 	// ***********************************SwapStations******************************************
@@ -1078,14 +1078,14 @@ airbus.mes.linetracker.util.ModelManager = {
 
 	loadModelColorPaletteModel : function() {
 
-		var oViewModel = airbus.mes.linetracker.util.ModelManager.core.getModel("colorPaletteModel");
+		var oViewModel = sap.ui.getCore().getModel("colorPaletteModel");
 		oViewModel
 				.loadData(airbus.mes.linetracker.util.ModelManager.getUrlColorPaletteModel(), null, false);
 	},
 
 	getColorPalette : function(Type) {
 		// Set Color Palettes
-		var colorPaletteModel = airbus.mes.linetracker.util.ModelManager.core.getModel("colorPaletteModel").oData.Rowsets.Rowset[0].Row;
+		var colorPaletteModel = sap.ui.getCore().getModel("colorPaletteModel").oData.Rowsets.Rowset[0].Row;
 
 		var colorPalette = {};
 		for (var i = 0; i < colorPaletteModel.length; i++) {

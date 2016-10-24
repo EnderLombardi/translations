@@ -1561,7 +1561,7 @@
 
                   "STEP_ID": "20",
 
-                  "STATE": "C",
+                  "STATE": "",
 
                   "OPERATION_DESCRIPTION": "0010",
 
@@ -1603,11 +1603,11 @@
 
                   "EXECUTION_STATION_SOURCE": "2_AVL",
 
-                  "PAUSED": "---",
+                  "PAUSED": "FALSE",
 
                   "DURATION": 1200000,
 
-                  "PROGRESS": 0
+                  "PROGRESS": 20
 
                },
 

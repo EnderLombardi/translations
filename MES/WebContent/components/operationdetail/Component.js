@@ -24,9 +24,10 @@ airbus.mes.operationdetail.Component.prototype.createContent = function() {
 		
 		// View on XML
 		this.oView = sap.ui.view({
-			id : "progressSliderView",
+			id : "operationDetailsView",
 			viewName : "airbus.mes.operationdetail.progressSlider",
 			type : "XML",
+			height:"100%"
 		})
 
 		var i18nModel = new sap.ui.model.resource.ResourceModel({

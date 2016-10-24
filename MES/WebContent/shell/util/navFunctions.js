@@ -17,6 +17,8 @@ airbus.mes.shell.util.navFunctions = {
 			}
 			
 			nav.to(airbus.mes.stationtracker.oView.getId());
+			
+			airbus.mes.stationtracker.ModelManager.openOperationDetailPopup();
 		},
 		
 		
@@ -32,6 +34,12 @@ airbus.mes.shell.util.navFunctions = {
 			}
 			
 			nav.to(airbus.mes.resourcepool.oView.getId());
+			
+			// Ask to select Resource Pool if launched initially or Plant is changed
+			if(airbus.mes.resourcepool.util.ModelManager.site != airbus.mes.settings.plant || airbus.mes.resourcepool.util.ModelManager.resourceName === undefined){
+				var controller = airbus.mes.resourcepool.oView.getController();
+				controller.openSelectResourcePool();
+			}
 			
 		},
 				

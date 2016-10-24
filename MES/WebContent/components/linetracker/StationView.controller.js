@@ -29,46 +29,11 @@ sap.ui.controller("airbus.mes.linetracker.StationView", {
 		else{
 			sap.ui.getCore().byId("idStationView--staionVbox2").getItems()[airbus.mes.linetracker.util.ModelManager.line_number-1].addStyleClass("hboxselect");
 		}
-//		clearing Gantt data for reloading and refreshing gantt data
-		//if a gannt screen is not loaded previously, its instance should not be cleared
-		//moved to individual load functions
-
-//		try{
-//			WLOrd_Gantt.clearAll();
-//		}
-//		catch(e){
-//			console.log(e);
-//		}
-//		try{
-//			WkLOpr_Gantt.clearAll();
-//		}
-//		catch(e){
-//			console.log(e);
-//		}
-//		try{
-//			UserAffect_Gantt.clearAll();
-//		}
-//		catch(e){
-//			console.log(e);
-//		}
-//		load data for screen 2-4-5-5.5
-		//airbus.mes.linetracker.util.ModelManager.getBreakData();
-		//airbus.mes.linetracker.util.ModelManager.loadOperationWorklistModel();
-		//airbus.mes.linetracker.util.ModelManager.loadOrderWorklistModel();
-		//airbus.mes.linetracker.util.ModelManager.loadAllocationWorklistModel();
-		
-	//	ModelManager.refreshStationDetail();
-		//if ( ModelManager.station_number != "05") // access to screen 2 is prohibited for station 5 
-		//{
-		//ModelManager.refreshProdLine();
-		///sap.ui.getCore().byId("PRDLINE").setText("Production Line " + selectedHBox.sId[3] );
-		//}
-//		sap.ui.getCore().byId("STATSUM").setText("Station " + ModelManager.station_number +  " Detail");
 	},
 	onProductionSelect:function(oEvt){
 		var oEventBus = sap.ui.getCore().getEventBus();
 		if(oEvt.getSource().getText().substring(8,10).trim()!="5"){
-		airbus.mes.linetracker.util.ModelManager.line_number = airbus.mes.linetracker.util.ModelManager.core.getModel("newStationModel").getProperty(oEvt.getSource().getBindingContext("newStationModel").getPath()).Line
+		airbus.mes.linetracker.util.ModelManager.line_number = sap.ui.getCore().getModel("newStationModel").getProperty(oEvt.getSource().getBindingContext("newStationModel").getPath()).Line
 		oEventBus.publish("MainView", "onClickLine",null);
 		}
 	},
@@ -76,13 +41,7 @@ sap.ui.controller("airbus.mes.linetracker.StationView", {
 		airbus.mes.linetracker.util.ModelManager.loadModelStationModel();
 		airbus.mes.linetracker.util.ModelManager.refreshFactoryModel();
 		airbus.mes.linetracker.util.ModelManager.loadModelProductionModel();
-//		/*why was conveyer status set in  airbus Dashboard controller for this function*/
-//		if(ok === true){ 
-//			ModelManager.getBreakData();
-//			ModelManager.loadOperationWorklistModel();
-//			ModelManager.loadOrderWorklistModel();
-//			ModelManager.loadAllocationWorklistModel();
-//		}
+
 	},
 	/*onAfterRendering: function(){
 	}*/

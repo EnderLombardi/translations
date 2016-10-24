@@ -28,8 +28,7 @@ airbus.mes.stationtracker.ModelManager = {
 		core.getModel("stationTrackerIModel").attachRequestCompleted(
 				airbus.mes.stationtracker.ModelManager.onStationTrackerLoad);
 		core.getModel("shiftsModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onShiftsLoad);
-		core.getModel("affectationModel").attachRequestCompleted(
-				airbus.mes.stationtracker.ModelManager.onAffectationLoad);
+		core.getModel("affectationModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onAffectationLoad);
 
 		core.getModel("unPlannedModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onUnPlannedLoad);
 		core.getModel("OSWModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onOWSLoad);
@@ -85,7 +84,18 @@ airbus.mes.stationtracker.ModelManager = {
 
 	onAffectationLoad : function() {
 
-		airbus.mes.stationtracker.AssignmentManager.computeAffectationHierarchy();
+	var oModel =  sap.ui.getCore().getModel("affectationModel");
+		
+		if( oModel.getProperty("/Rowsets/Rowset/0/Row") ){              
+			
+			oModel = sap.ui.getCore().getModel("affectationModel").oData.Rowsets.Rowset[0].Row;
+			
+        } else  {
+        	//oModel.oData.Rowsets.Rowset[0].Row = [];
+        	console.log("no affectationModel load");
+        }
+			airbus.mes.stationtracker.AssignmentManager.computeAffectationHierarchy();
+
 
 	},
 
@@ -358,11 +368,11 @@ airbus.mes.stationtracker.ModelManager = {
 		var oModel = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy[scheduler.getEvent(id).group][scheduler
 				.getEvent(id).avlLine][scheduler.getEvent(id).box];
 
-		//			if ( oModel.length === 1 ) {
-		//				
-		//				airbus.mes.stationtracker.ModelManager.openOperationPopOver(id);
-		//				return;
-		//			}
+					if ( oModel.length === 1 ) {
+						
+						airbus.mes.stationtracker.ModelManager.openOperationPopOver(id);
+						return;
+					}
 
 		if (oModel && oModel.length > 0 && oModel) {
 			oModel = airbus.mes.stationtracker.util.Formatter.sortWorkList(oModel);
@@ -385,7 +395,7 @@ airbus.mes.stationtracker.ModelManager = {
 			
 			break;
 
-		case "WORKORDER_ID":
+		case "WORKORDER":
 			//Boxing Work order, we display the worklist list								
 
 			airbus.mes.stationtracker.ModelManager.openWorkListPopover(id);
@@ -428,8 +438,7 @@ airbus.mes.stationtracker.ModelManager = {
 			});
 			
 			airbus.mes.stationtracker.operationDetailPopup.open();
-			this.oOperationDetailComp.oView
-					.placeAt(airbus.mes.stationtracker.operationDetailPopup.sId+"-scrollCont");
+			this.oOperationDetailComp.oView.placeAt(airbus.mes.stationtracker.operationDetailPopup.sId+"-scrollCont");
 		}
 		else
 			airbus.mes.stationtracker.operationDetailPopup.open();

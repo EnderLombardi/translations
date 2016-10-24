@@ -1,6 +1,3 @@
-.invisible{
-	visibility:hidden;
-}
 /**************************************
 *classes for Progress Slider Screen
 ****************************************/
@@ -90,4 +87,8 @@
 .operationNavBar .countText{
 	background:#009de0 !important;
 	color:#fff !important;
+}
+
+.progressBtnColor .sapMBtnIcon {
+	color:#0085AD !important;
 }
