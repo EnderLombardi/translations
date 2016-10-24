@@ -223,10 +223,6 @@
 	text-align: center !important;
 }
 
-.whiteButton .sapMBtnIcon {
-	color: white !important;
-}
-
 .whiteTextButton .sapMBtnTransparent {
 	color: white !important;
 	text-align: left;
@@ -257,12 +253,6 @@
 	padding-left: 9px;
 }
 
-.whiteColor .sapMBtnInner.sapMBtnText {
-	color: white !important;
-	font-family: "Arial", Sans-serif !important;
-	font-size: 14px !important;
-}
-
 .alignTextLeft .sapMIBar-CTX .sapMTitle {
 	font-family: "Verdana";
 	font-weight: bold !important;
@@ -288,19 +278,6 @@
 
 .initial {
 	background-color: #F5F6F8 !important;
-}
-
-.pageHeaderBlue .sapMSltLabel {
-	color: white !important;
-}
-
-.comboBoxStyle .sapMSlt>.sapMSltLabel, .sapMSlt {
-	border: 1px groove;
-}
-
-.pageHeader {
-	color: white !important;
-	background: #0F2D65 ! important;
 }
 
 .pageStation {
@@ -408,40 +385,10 @@
 	filter: alpha(opacity = 25);
 }
 
-.buttonStatus .sapMBtnInner.sapMBtnText {
-	/* 	font-weight: bold !important;
- */ /* 	padding-left: 50% !important;
- */ /* padding-top: 15% !important;  */
-	
-}
-
-.buttonStatus2 .sapMBtnInner.sapMBtnText {
-	color: black;
-	padding-left: 40px;
-}
-
 .buttonNotif .sapMBtnContent {
-	/* padding-top: 15% !important; 	
-	color: white;
-	display: inline-table;;
-	width: 20px !important;
-	height: 20px !important;
-	background: orange;
-	-webkit-border-radius: 100px;
-	-moz-border-radius: 100px;
-	-o-border-radius: 100px;
-	border-radius: 100px; */
 	color: orange;
 	font-weight: Bold;
 	padding-top: 10px !important;
-
-	/* width:20px;
-
-	border-radius:50%;
-	padding-top: 20%;
-	text-align:center;
-	background:orange;
-	display: inline-table; */
 }
 
 .notifDetails {
@@ -650,8 +597,111 @@ background-color: #0085AD !important;
 
 
 
-/******* REMY *******/
+/******* REFINED CSS *******/
 
+/***** KPI Header *****/
+
+#stationTrackerView--kpi_header .sapMPanelWrappingDivTb{
+	border-bottom: none;
+}
+
+#stationTrackerView--kpiHeaderToolbar{
+	margin-left: 0;
+	margin-right: 3rem;
+}
+
+#stationTrackerView--kpiHeaderToolbar .sapMBtnContent,
+#stationTrackerView--kpiHeaderToolbar .sapMSltLabel,
+#stationTrackerView--kpiHeaderToolbar .sapMInputBaseInner,
+#stationTrackerView--kpiHeaderToolbar .sapMSltArrow{
+	color: #F5F5F5;
+	font-size: 12px;
+}
+
+#stationTrackerView--kpi_header-CollapsedImg{
+	right: 0;
+	color: #74d2e7;
+}
+
+#stationTrackerView--kpi_header .sapMPanelExpandableIcon{
+    -webkit-transform: translateY(-50%) rotate(180deg);
+    -ms-transform: translateY(-50%) rotate(180deg);
+    transform: translateY(-50%) rotate(180deg);
+}
+#stationTrackerView--kpi_header .sapMPanelExpandableIconExpanded {
+    -webkit-transform: translateY(-50%) rotate(90deg);
+    -ms-transform: translateY(-50%) rotate(90deg);
+    transform: translateY(-50%) rotate(90deg);
+}
+
+#stationTrackerView--DatePicker,
+#stationTrackerView--ProductionButton{
+	border-right: solid 1px #74d2e7;
+	margin-right: 0;
+}
+
+#stationTrackerView--DatePicker-inner{
+	border: none;
+	background-color: transparent;
+	color: #F5F5F5;
+	font-size: 16px;
+	text-transform: uppercase;
+	padding-left: 2.375rem;
+	padding-right: 0;
+}
+
+#stationTrackerView--DatePicker .sapMInputValHelp{
+	right: auto;
+	left: 0;
+}
+
+#stationTrackerView--DatePicker .sapMInputValHelpInner{
+	color: #F5F5F5;
+	font-size: 24px;
+}
+
+#stationTrackerView--selectShift,
+#stationTrackerView--selectUser{
+	color: #F5F5F5;
+	font-size: 16px;
+	width: auto;
+	height: 3rem;
+	margin: 0;
+	max-width: 100%;
+	line-height: 3rem;
+	text-transform: capitalize;
+	margin-right: 0px !important;
+	border-right: solid 1px #74d2e7;
+}
+
+#stationTrackerView--selectShift-label,
+#stationTrackerView--selectShift-arrow,
+#stationTrackerView--selectUser-label,
+#stationTrackerView--selectUser-arrow{
+	top: 0;
+	bottom: 0;
+	line-height: 3rem;
+}
+
+#stationTrackerView--ProductionButton{
+	margin-left: 0;
+}
+
+#stationTrackerView--ProductionButton-inner:hover,
+#stationTrackerView--ProductionButton:hover #stationTrackerView--ProductionButton-inner,
+#stationTrackerView--TeamButton-inner:hover,
+#stationTrackerView--TeamButton:hover #stationTrackerView--TeamButton-inner{
+	background-color: transparent;
+}
+
+#stationTrackerView--TeamButton-img,
+#stationTrackerView--TeamButton-content{
+	color: #74d2e7 !important;
+}
+
+/***** Gantt Chart *****/
+
+/** Ticks **/
 .customHour {
 	text-align: left;
 	text-indent: -15px;
@@ -669,6 +719,7 @@ background-color: #0085AD !important;
 	background-color: #DDD;
 }
 
+/** Height + Scroll **/
 #stationTrackerView--stationtracker{
 	width: auto;
 	height: auto !important;
