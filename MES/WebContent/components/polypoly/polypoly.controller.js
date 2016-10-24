@@ -23,22 +23,33 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 //							var mTableModel = new sap.ui.model.json.JSONModel();
 //							sap.ui.getCore().byId("polypoly").setModel(mTableModel);
 						
+						if(airbus.mes.stationtracker.AssignmentManager.polypolyAffectation){
+							
+						}else{
+							
+						}
+						
 					},
 					
-//					openQAPopup : function() {
-//						var that = this;
-//						if (!that.QADialog) {
-//							that.QADialog = sap.ui.xmlfragment(	"airbus.mes.polypoly.QAPopup", that);
-//						}
-//						that.QADialog.setModel(airbus.mes.polypoly.PolypolyManager.internalContext.oModel);
-//						that.QADialog.open();
-//					},
+					openQAPopup : function() {
+						var that = this;
+						if (!airbus.mes.polypoly.QADialog) {
+							airbus.mes.polypoly.QADialog = sap.ui.xmlfragment(	"airbus.mes.polypoly.QAPopup", that);
+						}
+						airbus.mes.polypoly.QADialog.setModel(airbus.mes.polypoly.PolypolyManager.internalContext.oModelQA);
+						sap.ui.getCore().byId("oTableQA").setVisibleRowCount(airbus.mes.polypoly.PolypolyManager.internalContext.iLinesQA);
+						airbus.mes.polypoly.QADialog.open();
+					},
+					
+					onClickQAPopup : function(){
+						airbus.mes.polypoly.QADialog.close();
+					},
 					
 					createColumnQA : function(sId, oContext) {
 						var that = this;
 						var aMultiLabels = [];
-						if (oContext.getProperty("type") == "column") {
-							aMultiLabels.push(new sap.m.Label({
+
+						aMultiLabels.push(new sap.m.Label({
 								text : oContext.getProperty("techname"),
 								design : "Bold",
 								tooltip : oContext.getProperty("techname"),
@@ -48,17 +59,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 								design : "Bold",
 								tooltip : oContext.getProperty("name"),
 							}));
-//							// Only display QA in Tab Polypoly
-//							if (airbus.mes.polypoly.PolypolyManager.globalContext.tabSelected == "polypoly") {
-////							if (true){
-//								oContext.getProperty("qa").forEach(
-//										function(el) {
-//											var oQALabel = new sap.m.Label({
-//												text : el.label
-//											});
-//											aMultiLabels.push(oQALabel);
-//										});
-//							}
+
 							var oColumn = new sap.ui.table.Column(
 									{
 										id : sId,
@@ -68,16 +69,14 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 										template : new sap.m.Text({
 											text : {
 												parts : [ oContext
-														.getProperty("qa") ],
+														.getProperty("techname") ],
 												formatter : function(text) {
 													return text;
 												}
 											},
 										})
 									});
-						} else {
-							var oColumn = new sap.ui.table.Column({visible : false})
-						}
+
 						;
 						return oColumn
 					},
@@ -338,16 +337,16 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 								tooltip : oContext.getProperty("name"),
 							}));
 							// Only display QA in Tab Polypoly
-							if (airbus.mes.polypoly.PolypolyManager.globalContext.tabSelected == "polypoly") {
-//							if (true){
-								oContext.getProperty("qa").forEach(
-										function(el) {
-											var oQALabel = new sap.m.Label({
-												text : el.label
-											});
-											aMultiLabels.push(oQALabel);
-										});
-							}
+//							if (airbus.mes.polypoly.PolypolyManager.globalContext.tabSelected == "polypoly") {
+////							if (true){
+//								oContext.getProperty("qa").forEach(
+//										function(el) {
+//											var oQALabel = new sap.m.Label({
+//												text : el.label
+//											});
+//											aMultiLabels.push(oQALabel);
+//										});
+//							}
 
 							var oColumn = new sap.ui.table.Column(
 									{
@@ -578,7 +577,6 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 					},
 
 					filterUA : function() {
-						
 						if (sap.ui.getCore().byId("typeRow") /*&& sap.ui.getCore().byId("FilterClockedUsers")*/){
 							var filterLabels = new sap.ui.model.Filter("type", "EQ", "LABEL_RP");
 							var filterUA;
@@ -886,6 +884,10 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 						}
 
 					},
+					
+					onBackPress : function(){
+						nav.back();
+					},
 //					onUserAllocate : function(oEvt) {
 //
 //						if (!airbus.mes.polypoly.PolypolyManager.oViewController)
@@ -994,6 +996,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 //						sap.ui.getCore().byId(
 //								"polypolyView--lineSelectPolyPoly")
 //								.setSelectedKey(airbus.mes.polypoly.ModelManager.line_number);
+//						airbus.mes.polypoly.oView.byId("AddPolypoly").setVisible(!airbus.mes.stationtracker.AssignmentManager.polypolyAffectation);
 					},
 
 					onValueChange : function(oEvt) {

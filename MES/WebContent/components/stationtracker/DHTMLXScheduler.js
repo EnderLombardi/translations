@@ -203,7 +203,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 
 						};
 
-						scheduler.attachEvent("onYScaleClick", function(index, section, e) {
+						scheduler.eventId.push (scheduler.attachEvent("onYScaleClick", function(index, section, e) {
 
 							if (airbus.mes.stationtracker.AssignmentManager.bOpen && section.children != undefined) {
 
@@ -212,7 +212,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 							}
 
 							if (section.rescheduled && !section.children) {
-
+								
 								jQuery.sap.registerModulePath("airbus.mes.polypoly","../components/polypoly");
 								airbus.mes.stationtracker.AssignmentManager.polypolyAffectation = true;
 		
@@ -225,25 +225,28 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 						     });	
 								
 								// set polypoly in non-editable mode
-								airbus.mes.polypoly.PolypolyManager.globalContext.bEditable = false;
+//								airbus.mes.polypoly.PolypolyManager.globalContext.bEditable = false;
 								//load model of polypoly
 								airbus.mes.polypoly.ModelManager.getPolyPolyModel("F1","1","10","CHES");	
 								
 							}
-							// Permit to display or not polypoly affectation or polypoly simple
-							airbus.mes.polypoly.oView.getController().filterUA();
+							
+							
 							
 							// place this Ui Container with the Component inside into UI Area
 							airbus.mes.stationtracker.oPopoverPolypoly.addContent(airbus.mes.polypoly.oView);
-							airbus.mes.stationtracker.oPopoverPolypoly.open();	
-								
-								
-								
-								
-								
+
+
+							
+							airbus.mes.polypoly.oView.getModel("mToggleVisibility").setData({"bVisible":false});
+//							airbus.mes.polypoly.oView.getModel("mToggleVisibility").refresh(true);
+							
+							// Permit to display or not polypoly affectation or polypoly simple
+							airbus.mes.polypoly.oView.getController().filterUA();
+							airbus.mes.stationtracker.oPopoverPolypoly.open();
 							}
 
-						});
+						}));
 
 						/* 	 Custom Hour display display  */
 						scheduler.templates.timeline_scalex_class = function(date){

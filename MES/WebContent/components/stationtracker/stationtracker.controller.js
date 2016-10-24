@@ -244,6 +244,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		
 		jQuery.sap.registerModulePath("airbus.mes.polypoly","../components/polypoly");
 		airbus.mes.stationtracker.AssignmentManager.polypolyAffectation = false;
+		
 //		if (!airbus.mes.stationtracker.oPopoverPolypoly) {
 //			airbus.mes.stationtracker.oPopoverPolypoly = sap.ui.xmlfragment("airbus.mes.stationtracker.polypolyFragment", this);
 //			
@@ -259,8 +260,12 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
          	});
 		nav.addPage(airbus.mes.polypoly.oView);
 		
+		
 		nav.to(airbus.mes.polypoly.oView.getId());
-		airbus.mes.polypoly.PolypolyManager.globalContext.bEditable = true;
+//		airbus.mes.polypoly.PolypolyManager.globalContext.bEditable = true;
+		airbus.mes.polypoly.oView.getModel("mToggleVisibility").setData({"bVisible":true});
+		airbus.mes.polypoly.oView.getModel("mToggleVisibility").refresh(true);
+		
 		airbus.mes.polypoly.ModelManager.getPolyPolyModel("F1","1","10","CHES");
 		
 		

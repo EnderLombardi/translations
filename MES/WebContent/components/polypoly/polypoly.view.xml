@@ -1,30 +1,40 @@
 <core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
 	xmlns:table="sap.ui.table" xmlns="sap.m" controllerName="airbus.mes.polypoly.polypoly"
 	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Toolbar id="hedaerPolypoly" class="pageHeader sapUiSmallMarginTop contentNoPad"
+			 visible="{ path : 'mToggleVisibility>bVisible', formatter : 'airbus.mes.polypoly.util.Formatter.isVisible' }">
+		<Button type="Transparent" icon="sap-icon://arrow-left"
+			tooltip="{PolypolyI18n>Back}" class="whiteColor whiteButton" press="onBackPress" />
+		<ToolbarSpacer />
+		<Label
+			text="PolyPoly Matrix"
+			class="pageWelcome sapUiTinyMarginBeginEnd" />
+		<ToolbarSpacer />
+	</Toolbar>
 	<table:Table rows="{ path: '/rows' }"
 		columns="{ path: '/columns', factory: '.createColumn' }"
-		 enableColumnReordering="true"
-		rowHeight="40" id="oTablePolypoly" enableSelectAll="false"
-		columnMove="onColumnMove" class="backgroundPolypoly">
+		enableColumnReordering="true" rowHeight="40" id="oTablePolypoly"
+		enableSelectAll="false" columnMove="onColumnMove" class="backgroundPolypoly">
 		<table:toolbar>
 			<Toolbar design="Transparent">
 				<content>
-					<Select id="lineSelectPolyPoly" forceSelection="false" change="onValueChange">
+					<!-- <Select id="lineSelectPolyPoly" forceSelection="false"
+						change="onValueChange">
 						<core:Item key="1" text="Line 1" />
 						<core:Item key="2" text="Line 2" />
 						<core:Item key="3" text="Line 3" />
 					</Select>
-					<Select id="stationSelectPolyPoly" forceSelection="false"  
-														change="onValueChange">
+					<Select id="stationSelectPolyPoly" forceSelection="false"
+						change="onValueChange">
 						<core:Item key="1s" text="10" />
 						<core:Item key="2s" text="20" />
-						<core:Item key="3s" text="30" />					
+						<core:Item key="3s" text="30" />
 						<core:Item key="4s" text="40" />
 						<core:Item key="5s" text="50" />
-						<core:Item key="6s" text="60" />	
+						<core:Item key="6s" text="60" />
 						<core:Item key="7s" text="70" />
 						<core:Item key="8s" text="80" />
-					</Select>
+					</Select> -->
 					<ToolbarSpacer />
 					<SearchField id="polypolySearchField" width="20%"
 						placeholder="Resource Pool" enableSuggestions="true" suggest="onRPSuggest"
@@ -35,10 +45,9 @@
 						</suggestionItems>
 					</SearchField>
 					<Button id="AddPolypoly" icon="sap-icon://add" text="Polypoly"
-						press="openColumnPopup" 
-						type="Emphasized" />
+						press="openColumnPopup" type="Emphasized" visible="{ path : 'mToggleVisibility>bVisible', formatter : 'airbus.mes.polypoly.util.Formatter.isVisible' }" />
 					<Button id="SeeQA" icon="sap-icon://show" text="Show QA"
-						press="openQAPopup"/>
+						press="openQAPopup" />
 				</content>
 			</Toolbar>
 		</table:toolbar>

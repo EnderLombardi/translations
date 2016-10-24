@@ -5,8 +5,8 @@ jQuery.sap.declare("airbus.mes.polypoly.PolypolyManager")
 airbus.mes.polypoly.PolypolyManager = {
 	
 	globalContext : {
-		tabSelected : undefined,
-		bEditable : undefined,
+//		tabSelected : undefined,
+		bEditable : !airbus.mes.stationtracker.AssignmentManager.polypolyAffectation,
 	},
 
 	userComptencyContext : {
@@ -19,6 +19,7 @@ airbus.mes.polypoly.PolypolyManager = {
 		oModel : undefined,
 		saveContext : undefined,
 		oModelQA : undefined,
+		iLinesQA : undefined,
 	},
 
 	levelUpdater : {
@@ -80,10 +81,11 @@ airbus.mes.polypoly.PolypolyManager = {
 //			var mTableModel = new sap.ui.model.json.JSONModel();
 //			}
 //	},
+	
 	createQATableData : function(oMiiData) {
-//		var oMiiRows = oMiiData.Rowsets.Rowset[0].Row;
 		var oMiiColumns = oMiiData.Rowsets.Rowset[1].Row;
 		var lines = 0;
+		var qaList = {};
 		var oTableRows = {
 				"rows" : [],
 				"columns" : []
@@ -96,19 +98,23 @@ airbus.mes.polypoly.PolypolyManager = {
 			if (qa != undefined) {
 				qa = qa.split(", ")
 				lines = Math.max(lines, qa.length);
+				qaList[col.technicalName] = qa;
 			};
-//			qa.forEach(function(c, i) {
-//				if (c != "") {
-//					oTableRows.rows.push({});
-////					oTableRows.rows[oTableRows.rows.length - 1]["qa"].push({});
-//					oTableRows.rows[oTableRows.rows.length - 1]["qa"][oTableRows.columns[oTableRows.columns.length - 1]["qa"].length - 1]["label"] = c;
-//				}
-//			});
 		});
-		
-		
-		
-		
+		oMiiColumns.forEach(function(col) {
+			for(var i = 0; i<lines; i++){
+				if(oTableRows.rows[i] == undefined){
+					oTableRows.rows.push({});
+				}
+				if(qaList[col.technicalName][i] != undefined){
+					oTableRows.rows[i][col.technicalName] = qaList[col.technicalName][i];
+				}else{
+					oTableRows.rows[i][col.technicalName] = "";
+				}
+			}
+		});
+		this.internalContext.iLinesQA = lines;
+		return oTableRows;			
 	},
 	
 	
