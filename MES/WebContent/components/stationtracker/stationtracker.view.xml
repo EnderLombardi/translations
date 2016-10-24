@@ -5,10 +5,10 @@
 	<Page title="Station Tracker" height="100%" showHeader="false"
 		enableScrolling="false " class="GenricBgColor">
 		<content width="100%" height="100%">
-			<Panel expandable="true" expanded="true"
+			<Panel id="kpi_header" expandable="true" expanded="true" expandAnimation="false"
 				class="pageHeader sapUiSmallMarginTop contentNoPad">
 				<headerToolbar>
-					<Toolbar>
+					<Toolbar id="kpiHeaderToolbar">
 						<DatePicker id="DatePicker" width="auto" class="pageHeaderBlue" />
 						<Select id="selectShift"
 							class="sapUiTinyMarginBeginEnd pageHeader pageHeaderBlue" change="changeShift"
@@ -16,7 +16,7 @@
 							enabled="{ path : 'stationTrackerShift>/0/visible', formatter : 'airbus.mes.stationtracker.util.Formatter.isDayTimeline' }">
 							<core:Item key="{stationTrackerShift>id}" text="{stationTrackerShift>value}" />
 						</Select>
-						<Button text="{StationTrackerI18n>ProductionGroup}" type="Transparent"
+						<Button id="ProductionButton" text="{StationTrackerI18n>ProductionGroup}" type="Transparent"
 							class="whiteColor whiteButton" press="onProductionGroupPress" />
 						<Select id="selectUser" change="selectUser"
 							class="sapUiTinyMarginBeginEnd pageHeader pageHeaderBlue" items="{ path : 'ressourcePoolModel>/Rowsets/Rowset/0/Row' }">
@@ -24,7 +24,7 @@
 						</Select>
 
 						<ToolbarSpacer />
-						<Button text="{StationTrackerI18n>ButtonTeam}" type="Transparent"
+						<Button id="TeamButton" text="{StationTrackerI18n>ButtonTeam}" type="Transparent"
 							class="tiffanyColor whiteButton buttonStatus2 iconbuttonTeam sapUiSmallMarginBegin"
 							icon="sap-icon://group" press="onTeamPress" />
 					</Toolbar>
