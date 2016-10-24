@@ -42,17 +42,6 @@ font-style: normal !important;
 	color: white !important;
 }
 
-
-.whiteColor .sapMBtnInner.sapMBtnText {
-	color: white !important;
-	font-family: "Arial", Sans-serif !important;
-	font-size: 14px !important;
-}
-
-.pageHeaderBlue .sapMSltLabel {
-	color: white !important;
-}
-
 .pageHeader {
 	color: white !important;
 	background: #0F2D65 ! important;

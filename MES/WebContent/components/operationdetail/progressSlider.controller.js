@@ -16,8 +16,9 @@ sap.ui.controller("airbus.mes.operationdetail.progressSlider", {
 					
 	},
 	expandOperationDetailPanel : function(oEvent) {
-		this.getView().byId("opDetailExpandButton")
-				.toggleStyleClass("invisible");
+		var toggleButton = this.getView().byId("opDetailExpandButton");
+		toggleButton.setVisible(!toggleButton.getVisible());
+		
 		this.getView().byId("operationDetailPanel")
 				.setExpanded();
 	},
@@ -139,7 +140,10 @@ sap.ui.controller("airbus.mes.operationdetail.progressSlider", {
 	},
 
 	confirmOperation : function(oEvent) {
-
+		
+		// Model for Reason Code Comments
+		airbus.mes.operationdetail.ModelManager.loadReasonCodeModel();
+		
 		if (oEvent.getSource().getText() == this.getView()
 				.getModel("i18n").getProperty("confirm")) {
 			if (!this._reasonCodeDialog) {
@@ -302,7 +306,7 @@ sap.ui.controller("airbus.mes.operationdetail.progressSlider", {
 
 			this._oUserConfirmationDialog = sap.ui
 					.xmlfragment(
-							"airbus.mes.worktracker.fragments.userConfirmation",
+							"airbus.mes.operationdetail.fragments.userConfirmation",
 							this);
 
 			this.getView().addDependent(
@@ -355,29 +359,34 @@ sap.ui.controller("airbus.mes.operationdetail.progressSlider", {
 			|| this.getView().byId("operationStatus")
 					.getText() === "Paused") {
 
-		this.setProgressScreenBtn(false, false, true);
-		this.getView().byId("progressSlider").setEnabled(
-				false);
+			this.setProgressScreenBtn(false, false, true);
+			this.getView().byId("progressSlider").setEnabled(
+					false);
+	
+		} else if (this.getView().byId("operationStatus")
+				.getText() === "In Progress") {
+	
+			this.setProgressScreenBtn(true, true, false);
+			this.getView().byId("progressSlider").setEnabled(
+					true);
+	
+		} else if (this.getView().byId("operationStatus")
+				.getText() === "Blocked"
+				|| this.getView().byId("operationStatus")
+						.getText() === "Confirmed") {
+	
+			this.setProgressScreenBtn(false, false, false);
+			this.getView().byId("progressSlider").setEnabled(
+					false);
+			this.getView().byId("progressSliderfirst")
+					.setEnabled(false);
+	
+		}
+		
 
-	} else if (this.getView().byId("operationStatus")
-			.getText() === "In Progress") {
-
-		this.setProgressScreenBtn(true, true, false);
-		this.getView().byId("progressSlider").setEnabled(
-				true);
-
-	} else if (this.getView().byId("operationStatus")
-			.getText() === "Blocked"
-			|| this.getView().byId("operationStatus")
-					.getText() === "Confirmed") {
-
-		this.setProgressScreenBtn(false, false, false);
-		this.getView().byId("progressSlider").setEnabled(
-				false);
-		this.getView().byId("progressSliderfirst")
-				.setEnabled(false);
-
-	}
+		$("#operationDetailsView--operationNav").height(($("#"+airbus.mes.operationdetail.parentId).height()
+				- $("#operationDetailsView--operationDetailPanel").height() 
+				- 48 ));
 
 	}
 

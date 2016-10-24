@@ -453,31 +453,6 @@ sap.ui
 					},
 
 					/***********************************************************
-					 * triggers when search is clicked on search field in value
-					 * help
-					 * 
-					 * @param oEvt :
-					 *            search on the search field of value help
-					 **********************************************************/
-					onSearch : function(oEvt) {
-
-						// add filter for search
-						var aFilters = [];
-						var sQuery = oEvt.getParameter("value");
-						if (sQuery && sQuery.length > 0) {
-							var filter = new sap.ui.model.Filter("NAME",
-									sap.ui.model.FilterOperator.Contains,
-									sQuery);
-							aFilters.push(filter);
-						}
-
-						// update list binding
-						var oDialog = sap.ui.getCore().byId("selectDialog");
-						var binding = oDialog.getBinding("items");
-						binding.filter(aFilters, "Application");
-					},
-
-					/***********************************************************
 					 * update description using dialog box
 					 **********************************************************/
 					updateDescriptionUsingDialog : function() {

@@ -1,0 +1,44 @@
+{
+	"SiteCollection": [
+		{
+			"Site": "AL Toulouse",
+			"LineCollection": [
+				{
+					"Line": "Line 1",
+					"StationCollection": [
+						{
+							"Station": "Station 1"
+						},
+						{
+							"Station": "Station 2"
+						}
+					]
+				},
+				{
+					"Line": "Line 2"
+				}
+			]
+		},
+		{
+			"Site": "AL Broughton"
+		},
+		{
+			"Site": "AL Getafe"
+		},
+		{
+			"Site": "AL Hamburg"
+		},
+		{
+			"Site": "AL Illescas"
+		},
+		{
+			"Site": "AL Saint-Nazaire"
+		},
+		{
+			"Site": "AL Nantes"
+		},
+		{
+			"Site": "AL Puerto Real"
+		}
+	]
+}

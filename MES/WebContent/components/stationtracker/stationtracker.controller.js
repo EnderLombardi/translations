@@ -55,6 +55,20 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	 * @memberOf components.stationtracker.stationtracker
 	 */
 	onAfterRendering : function() {
+		// Capture the open/close panel event
+		airbus.mes.stationtracker.oView.byId('kpi_header').attachExpand(resizeGantt);
+		
+		// First run on init
+		resizeGantt(true);
+		
+		// Place the Gantt under the Toolbar
+		function resizeGantt(param){
+			setTimeout(function(){
+				var jqToolbar = $(airbus.mes.stationtracker.oView.byId('toolbarstationtracker').getDomRef());
+				var jqStationTracker = $(airbus.mes.stationtracker.oView.byId('stationtracker').getDomRef());
+				jqStationTracker.css('top', jqToolbar.offset().top);
+			}, 0);
+		}
 
 	},
 	onProductionGroupPress : function(oEvent){
@@ -492,6 +506,9 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		var bIsExpanded = oPanel.getExpanded();
 		
 		oEvent.getSource().getParent().getParent().setExpanded(!bIsExpanded);
+
+		/***** REMY *****/
+		oPanel.getHeight();
 	},
 	changeShift : function() {
 	
@@ -717,6 +734,15 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	
 	_close : function() {
 		airbus.mes.stationtracker.operationDetailPopup.close();
+	},
+	
+	selectUser : function(oEvt) {
+		
+		var aModel = sap.ui.getCore().getModel("affectationModel").oData.Rowsets.Rowset[0].Row;
+		
+		airbus.mes.userSelected = oEvt.getSource().getSelectedItem().mProperties.key;
+		avlLineSelected = aModel.map(function(x) {return x.key; }).indexOf(oEvt.getSource().getSelectedItem().mProperties.key); 
+		
 	},
 	
 });

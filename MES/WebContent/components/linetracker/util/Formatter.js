@@ -41,11 +41,11 @@ airbus.mes.linetracker.util.Formatter = {
 
 	imageFormatter : function(taktStatus) {
 		if (taktStatus === "GOOD")
-			return "images/green.png"
+			return "../components/linetracker/images/green.png"
 		else if (taktStatus === "BAD")
-			return "images/red_new.png"
+			return "../components/linetracker/images/red_new.png"
 		else
-			return "images/grey.png"
+			return "../components/linetracker/images/grey.png"
 	},
 
 	stationColor : function(convNumber) {
@@ -81,11 +81,11 @@ airbus.mes.linetracker.util.Formatter = {
 	},
 	factoryImageFormatter : function(taktStatus) {
 		if (taktStatus === "OK")
-			return "images/green.png"
+			return "../components/linetracker/images/green.png"
 		else if (taktStatus === "KO")
-			return "images/red_new.png"
+			return "../components/linetracker/images/red_new.png"
 		else
-			return "images/grey.png"
+			return "../components/linetracker/images/grey.png"
 	},
 	stationName : function(lineNo, station_number) {
 		if (parseInt(station_number) === 5) {
