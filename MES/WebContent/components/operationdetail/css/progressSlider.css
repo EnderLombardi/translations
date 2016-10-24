@@ -1,8 +1,10 @@
+.invisible{
+	visibility:hidden;
+}
 /**************************************
 *classes for Progress Slider Screen
 ****************************************/
 .ML-05{margin-left:0.5rem !important;}
-.MR-1{margin-right:1rem !important;}
 .progressSlider{
 	display:block !important;
 }

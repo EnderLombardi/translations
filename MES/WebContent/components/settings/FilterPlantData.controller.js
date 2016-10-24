@@ -248,6 +248,9 @@ sap.ui
 											// window.location.href = url;
 											airbus.mes.settings.ModelManager
 													.messageShow("Settings Saved Successfully");
+//											Save new settings on shell Model
+											that.updateUserSettingModel(that);
+											
 											that.navigate(oEvent);
 
 										}
@@ -276,7 +279,19 @@ sap.ui
 						}
 
 					},
-
+					updateUserSettingModel : function(oSettings) {
+//						Retrieve data from Model
+						var oModel = airbus.mes.shell.oView.getModel("userSettingModel"); 
+						var oParam = oModel.getData().Rowsets.Rowset[0].Row[0];
+//						Update data of Model from screen
+						oParam.line    = oSettings.getView().byId("ComboBoxLine").getValue();
+						oParam.msn     = oSettings.getView().byId("ComboBoxMSN").getValue();
+						oParam.plant   = oSettings.getView().byId("ComboBoxPlant").getValue();
+						oParam.program = oSettings.getView().byId("ComboBoxProgram").getValue();
+						oParam.station = oSettings.getView().byId("ComboBoxStation").getValue();
+//						Refresh model to update display
+						oModel.refresh(true);
+			     	},
 					/**
 					 * Similar to onAfterRendering, but this hook is invoked
 					 * before the controller's View is re-rendered (NOT before

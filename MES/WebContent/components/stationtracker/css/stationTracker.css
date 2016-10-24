@@ -268,12 +268,6 @@
 	font-size: 14px !important;
 }
 
-.tiffanyColor .sapMBtnInner.sapMBtnText {
-	color: #74d2e7 !important;
-	font-family: "Arial", Sans-serif !important;
-	font-size: 14px !important;
-}
-
 .alignTextLeft .sapMIBar-CTX .sapMTitle {
 	font-family: "Verdana";
 	font-weight: bold !important;
@@ -435,13 +429,6 @@
 .buttonStatus2 .sapMBtnInner.sapMBtnText {
 	color: black;
 	padding-left: 40px;
-}
-
-.iconbuttonTeam .sapMBtnIcon {
-	color: #74d2e7 !important;
-	border-radius: 50%;
-	width: 33px;
-	height: 33px;
 }
 
 .buttonNotif .sapMBtnContent {
