@@ -3,6 +3,7 @@ jQuery.sap.require("sap.ui.model.resource.ResourceModel");
 jQuery.sap.require("sap.ui.base.Event");
 jQuery.sap.require("airbus.mes.polypoly.ModelManager");
 jQuery.sap.require("airbus.mes.polypoly.PolypolyManager");
+jQuery.sap.require("airbus.mes.polypoly.util.Formatter");
 
 jQuery.sap.declare("airbus.mes.polypoly.Component");
 
