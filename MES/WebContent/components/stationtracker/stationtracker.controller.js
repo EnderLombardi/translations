@@ -203,7 +203,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 
 			airbus.mes.stationtracker.GroupingBoxingManager.showInitial = false;
 			GroupingBoxingManager.parseOperation(GroupingBoxingManager.group, GroupingBoxingManager.box);
-			scheduler.updateView();
+		
 			
 		} else {
 
@@ -216,7 +216,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			} else {
 			
 			GroupingBoxingManager.parseOperation(GroupingBoxingManager.group, GroupingBoxingManager.box);
-			scheduler.updateView();
+			
 		
 			}
 			
@@ -745,11 +745,27 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	
 	selectUser : function(oEvt) {
 		
+		var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
+		var oSelected = oEvt.getSource().getSelectedItem().mProperties;
 		var aModel = sap.ui.getCore().getModel("affectationModel").oData.Rowsets.Rowset[0].Row;
 		
-		airbus.mes.userSelected = oEvt.getSource().getSelectedItem().mProperties.key;
-		avlLineSelected = aModel.map(function(x) {return x.key; }).indexOf(oEvt.getSource().getSelectedItem().mProperties.key); 
+		if (oSelected.key != "All User") {
 		
+			airbus.mes.stationtracker.AssignmentManager.userSelected = oSelected.key;
+			airbus.mes.stationtracker.ModelManager.loadStationTracker("I");		
+			airbus.mes.stationtracker.ModelManager.loadStationTracker("R");		
+			
+		} else {
+			
+			airbus.mes.stationtracker.AssignmentManager.userSelected = "%";
+			airbus.mes.stationtracker.ModelManager.loadStationTracker("I");		
+			airbus.mes.stationtracker.ModelManager.loadStationTracker("R");		
+			
+		}
+			
+		
+			
+			
 	},
 	showDisruption : function(oEvent)
 	{

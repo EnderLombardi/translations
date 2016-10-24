@@ -6,8 +6,8 @@ airbus.mes.stationtracker.AssignmentManager = {
 	CpPress : false,
 	affectationHierarchy : {},
 	polypolyAffectation : undefined,
-	userSelected : undefined,
-	avlLineSelected : undefined,
+	userSelected : "%",
+	avlLineSelected : "%",
 	
 	computeAffectationHierarchy : function() {
 		

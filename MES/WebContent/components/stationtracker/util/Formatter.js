@@ -99,7 +99,7 @@ airbus.mes.stationtracker.util.Formatter = {
 				return sString.toString();
 			},
 			totalDurationToIM : function(sDuration) {
-				return ((sDuration * 100 * 0.001)/3600).toFixed(0) + " IM";
+				return ((sDuration * 100 * 0.001)/3600).toFixed(0);
 			},
 			isCheckboxVisible : function(sString) {
 				if( airbus.mes.stationtracker.worklistPopover.unPlanned === true ){

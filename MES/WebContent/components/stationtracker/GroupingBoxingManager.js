@@ -149,7 +149,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 			
 		}
 		oModel.forEach(function(el){
-			
+	
 			if ( sGroup === "AVL_LINE") {				
 			// permit to create only one folder when avl Line is selected.	
 				var ssGroup = "AvlLine";
@@ -202,10 +202,14 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 				return;
 			}
 			
-			var sPaused = "0";
+			var sPaused = "1";
 			// Operation is active	
+<<<<<<< Upstream, based on origin/MESv0.9
 			if (  el.PAUSED === "FALSE") {
 			/*if(el.PAUSED === "false"){*/
+=======
+			if (  el.PAUSED === "false") {
+>>>>>>> 727b769 Filter user implemented
 				
 				var sPaused = "2";
 			}
@@ -308,21 +312,6 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 			aElements2.push(oRecheduleGroup);
 			var fGroupIndex = aElements2.indexOf(oRecheduleGroup);
 			
-			
-			//Creation of initial avl line of the current group
-//			if (oGroupingBoxingManager.showInitial) {
-						
-//			var oInitialGroup = {
-//											
-//					"key": "I_" + airbus.mes.stationtracker.AssignmentManager.idName(i),
-//					"initial":"Initial plan",
-//			}
-							
-//			aElements2[fGroupIndex].children.unshift(oInitialGroup);
-			
-		//	}
-			
-			//for ( var a in oModel[key] ) 
 			Object.keys(oModel[key]).forEach(function(key1,index) {
 				
 				//Creation of avl line of the current group
@@ -371,12 +360,14 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 					var aTotalDuration = [];
 					var sPaused = [];
 					
+					var fProgress = 0;
+					var fDuration = 0;
+									
 					var sShopOrderDescription = "";
 					var sWORKORDER_ID = "";
 					var sOperationDescription = "";
 					var sOperationId = "";
 					var sRoutingMaturityAssessment = "";
-					var sProgress = "";
 					var fCriticalPath = 0;		
 					var sOperationDescription = "";
 					var sStatus = "";
@@ -393,12 +384,13 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 						aTotalDuration.push( el.DURATION );
 						sPaused.push(el.paused);
 						
-						
+						fProgress += parseFloat(el.PROGRESS);
+						fDuration += parseFloat(el.DURATION);
+									
 						sShopOrderDescription = el.WORKORDER_DESCRIPTION;
 						sShopOrder = el.WORKORDER_ID;
 						sOperationDescription = el.OPERATION_DESCRIPTION;
 						sOperationId = el.OPERATION_ID;
-						sProgress = el.PROGRESS;
 						fCriticalPath = el.CRITICAL_PATH;
 						sOperationDescription = el.sBox;
 						sStatus = el.STATE;
@@ -431,7 +423,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 								"type":"I",
 								"text" : sOperationDescription,
 								"section_id" : 	"I_" + airbus.mes.stationtracker.AssignmentManager.idName(key) + "_" + airbus.mes.stationtracker.AssignmentManager.idName(key1),
-								"progress" : sProgress,
+								"progress" : fProgress.toString(),
 								"start_date" : new Date(Math.min.apply(null,aStartDateRescheduling)),
 								"end_date" : oFormatter.sizeMin(new Date(Math.max.apply(null,aEndDateRescheduling)),new Date(Math.min.apply(null,aStartDateRescheduling))),
 							}
@@ -440,7 +432,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 						
 					} else {
 					
-					var oOperationRescheduling = {
+						var oOperationRescheduling = {
 							
 							"operationId" : sOperationId,
 							"operationDescription" : sOperationDescription,
@@ -449,7 +441,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 							"routingMaturityAssessment" : sRoutingMaturityAssessment,
 							"paused" : Math.max.apply(null,sPaused),
 							"status" : sStatus,
-							"totalDuration" : (aTotalDuration.reduce(function(pv, cv) { return pv + cv; }, 0))/aTotalDuration.length, 
+							"totalDuration" : fDuration.toString(), 
 							"box" : key2,
 							"avlLine" : key1,
 							"group" : key,
@@ -459,7 +451,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 							"type":"R",
 							"text" : sOperationDescription,
 							"section_id" : 	airbus.mes.stationtracker.AssignmentManager.idName(key) + "_" + airbus.mes.stationtracker.AssignmentManager.idName(key1),
-							"progress" : sProgress,
+							"progress" : fProgress.toString(),
 							"start_date" : new Date(Math.min.apply(null,aStartDateRescheduling)),
 							"end_date" :  oFormatter.sizeMin(new Date(Math.max.apply(null,aEndDateRescheduling)),new Date(Math.min.apply(null,aStartDateRescheduling))),
 						}

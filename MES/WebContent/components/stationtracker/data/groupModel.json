@@ -29,18 +29,19 @@
                  },
                {
 
-                  "Value": "GroupingFamiltyTarget"
+                  "Value": "GroupingFamiltyTarget",
+                   "key": "FAMILY_TARGET"  
 
                  },
                 {
 
-                  "Value": "GroupingCPPCluster"
-
+                  "Value": "GroupingCPPCluster",
+																		"key": "CPP_CLUSTER"
                  },
                 {
 
-                  "Value": "GroupingAVLFamily"
-
+                  "Value": "GroupingAVLFamily",
+																		"key": "FAMILY"
                  }
                ],
                "Boxing":[  
@@ -58,18 +59,19 @@
                  },
                {
 
-                  "Value": "BoxingCPPCluster"
-
+                  "Value": "BoxingCPPCluster",
+																		"key": "CPP_CLUSTER"
                  },
                 {
 
-                  "Value": "BoxingWorkPackage"
-
+                  "Value": "BoxingWorkPackage",
+																		"key": "WORK_PACKAGE"
+																		
                  },
                 {
 
-                  "Value": "BoxingAVLFamily"
-
+                  "Value": "BoxingAVLFamily",
+																		"key": "FAMILY"
                  }
                ],               
                "Status":[  
