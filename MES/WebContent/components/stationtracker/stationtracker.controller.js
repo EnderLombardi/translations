@@ -258,28 +258,50 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		sap.ui.getCore().createComponent({
 			name : "airbus.mes.polypoly", // root component folder is resources
          	});
-		nav.addPage(airbus.mes.polypoly.oView);
 		
+		airbus.mes.polypoly.PolypolyManager.globalContext.bEditable = !airbus.mes.stationtracker.AssignmentManager.polypolyAffectation;
+		var oPolypolyPage = new sap.m.Page({
+			content: airbus.mes.polypoly.oView,
+			title : "POLYPOLY",
+			customHeader : new sap.m.Toolbar({
+				content: [
+				          new sap.m.Button({
+				        	  icon:"sap-icon://arrow-left",
+				        	  type:"Transparent",
+				        	  press: function(){nav.back()}
+				          }),
+				          new sap.m.ToolbarSpacer({}),
+				          new sap.m.Label({
+				        	  text: "PolyPoly Matrix"
+				          }).addStyleClass("pageWelcome sapUiTinyMarginBeginEnd"),
+				          new sap.m.ToolbarSpacer({}),
+				          ]
+			}).addStyleClass("pageHeader contentNoPad"),
+		});
 		
-		nav.to(airbus.mes.polypoly.oView.getId());
-//		airbus.mes.polypoly.PolypolyManager.globalContext.bEditable = true;
-		airbus.mes.polypoly.oView.getModel("mToggleVisibility").setData({"bVisible":true});
-		airbus.mes.polypoly.oView.getModel("mToggleVisibility").refresh(true);
+		nav.addPage(oPolypolyPage);
+		nav.to(oPolypolyPage);
+		
+//		nav.addPage(airbus.mes.polypoly.oView);
+//		nav.to(airbus.mes.polypoly.oView.getId());
+		
 		
 		airbus.mes.polypoly.ModelManager.getPolyPolyModel("F1","1","10","CHES");
 		
-		
-		airbus.mes.polypoly.oView.getController().filterUA();
+		airbus.mes.polypoly.oView.getController().initiatePolypoly();
 		// place this Ui Container with the Component inside into UI Area
 //		airbus.mes.stationtracker.oPopoverPolypoly.addContent(airbus.mes.polypoly.oView);
 //		airbus.mes.stationtracker.oPopoverPolypoly.open();	
 			
 		
 	},
-	handleCloseButtonPolypoly: function(oEvent) {
-		this._oPopoverPolypoly.close();
-		
-	},
+//	handleCloseButtonPolypoly: function(oEvent) {
+//		this._oPopoverPolypoly.close();
+//	},
+	
+//	onAfterOpenPolypoly : function(){
+//		airbus.mes.polypoly.oView.getController().filterUA();
+//	},
 
 	onUnplannedPress : function(oEvent) {
 		if ( airbus.mes.stationtracker.worklistPopover === undefined ) {

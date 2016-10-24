@@ -60,7 +60,6 @@ airbus.mes.polypoly.Component.prototype.createContent = function() {
 //		this.oView.setModel(sap.ui.getCore().getModel("columnModel"), "columnModel");
 		this.oView.setModel(sap.ui.getCore().getModel("listQA"), "listQA");
 		this.oView.setModel(sap.ui.getCore().getModel("needlevels"), "needlevels");
-		this.oView.setModel(sap.ui.getCore().getModel("mToggleVisibility"), "mToggleVisibility");
 
 		return this.oView;
 

@@ -106,7 +106,6 @@ airbus.mes.polypoly.ModelManager = {
 		core.setModel(new sap.ui.model.json.JSONModel(), "rpModel");
 		core.setModel(new sap.ui.model.json.JSONModel("../components/polypoly/model/needlevels.json"), "needlevels");
 		
-		core.setModel(new sap.ui.model.json.JSONModel(), "mToggleVisibility");
 		
 		var dest;
 

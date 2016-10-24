@@ -219,31 +219,24 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 							if (!airbus.mes.stationtracker.oPopoverPolypoly) {
 								airbus.mes.stationtracker.oPopoverPolypoly = sap.ui.xmlfragment("airbus.mes.stationtracker.polypolyFragment", airbus.mes.stationtracker.oView.getController());
 								
-								var oComp = sap.ui.getCore().createComponent({
-						            name : "airbus.mes.polypoly", // root component folder is resources
-						            id : "Comp10",
-						     });	
-								
-								// set polypoly in non-editable mode
-//								airbus.mes.polypoly.PolypolyManager.globalContext.bEditable = false;
-								//load model of polypoly
-								airbus.mes.polypoly.ModelManager.getPolyPolyModel("F1","1","10","CHES");	
+								sap.ui.getCore().createComponent({
+									name : "airbus.mes.polypoly", // root component folder is resources
+						         	});	
 								
 							}
-							
+							//load model of polypoly
+							airbus.mes.polypoly.ModelManager.getPolyPolyModel("F1","1","10","CHES");
+							// set polypoly in non-editable mode
+							airbus.mes.polypoly.PolypolyManager.globalContext.bEditable = !airbus.mes.stationtracker.AssignmentManager.polypolyAffectation;
 							
 							
 							// place this Ui Container with the Component inside into UI Area
 							airbus.mes.stationtracker.oPopoverPolypoly.addContent(airbus.mes.polypoly.oView);
+						
 
-
-							
-							airbus.mes.polypoly.oView.getModel("mToggleVisibility").setData({"bVisible":false});
-//							airbus.mes.polypoly.oView.getModel("mToggleVisibility").refresh(true);
-							
-							// Permit to display or not polypoly affectation or polypoly simple
-							airbus.mes.polypoly.oView.getController().filterUA();
 							airbus.mes.stationtracker.oPopoverPolypoly.open();
+							// Permit to display or not polypoly affectation or polypoly simple
+							airbus.mes.polypoly.oView.getController().initiatePolypoly();
 							}
 
 						}));

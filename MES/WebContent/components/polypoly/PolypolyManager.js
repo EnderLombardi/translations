@@ -6,7 +6,7 @@ airbus.mes.polypoly.PolypolyManager = {
 	
 	globalContext : {
 //		tabSelected : undefined,
-		bEditable : !airbus.mes.stationtracker.AssignmentManager.polypolyAffectation,
+		bEditable : undefined,
 	},
 
 	userComptencyContext : {
@@ -81,6 +81,10 @@ airbus.mes.polypoly.PolypolyManager = {
 //			var mTableModel = new sap.ui.model.json.JSONModel();
 //			}
 //	},
+	
+	isPolypolyEditable : function(){
+		return this.globalContext.bEditable;
+	},
 	
 	createQATableData : function(oMiiData) {
 		var oMiiColumns = oMiiData.Rowsets.Rowset[1].Row;
