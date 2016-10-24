@@ -17,7 +17,7 @@
 
 					<Button text="Save" icon="sap-icon://save" press="saveChangesToResourcePool"
 						type="Transparent"
-						class="tiffanyColor buttonStatus2 iconbuttonTeam sapUiSmallMarginBegin"
+						class="tiffanyColor iconbuttonTeam sapUiSmallMarginBegin"
 						enabled="{path:'i18nModel>AvailableUsers',formatter:'airbus.mes.resourcepool.util.Formatter.saveAllowed'}" />
 					<Button icon="sap-icon://sys-help" press="showHelp"
 						class="tiffanyColor buttonStatus2 iconbuttonTeam sapUiSmallMarginBegin" />
