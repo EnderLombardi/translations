@@ -17,6 +17,8 @@ airbus.mes.shell.util.navFunctions = {
 			}
 			
 			nav.to(airbus.mes.stationtracker.oView.getId());
+			
+			airbus.mes.stationtracker.ModelManager.openOperationDetailPopup();
 		},
 		
 		
