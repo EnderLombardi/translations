@@ -286,7 +286,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 				          }),
 				          new sap.m.ToolbarSpacer({}),
 				          new sap.m.Label({
-				        	  text: "PolyPoly Matrix"
+				        	  text: "PolyValence/PolyCompetence Matrix"
 				          }).addStyleClass("pageWelcome sapUiTinyMarginBeginEnd"),
 				          new sap.m.ToolbarSpacer({}),
 				          ]
@@ -309,13 +309,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			
 		
 	},
-//	handleCloseButtonPolypoly: function(oEvent) {
-//		this._oPopoverPolypoly.close();
-//	},
-	
-//	onAfterOpenPolypoly : function(){
-//		airbus.mes.polypoly.oView.getController().filterUA();
-//	},
+
 
 	onUnplannedPress : function(oEvent) {
 		if ( airbus.mes.stationtracker.worklistPopover === undefined ) {

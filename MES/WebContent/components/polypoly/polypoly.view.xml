@@ -1,20 +1,29 @@
 <core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
 	xmlns:table="sap.ui.table" xmlns="sap.m" controllerName="airbus.mes.polypoly.polypoly"
 	xmlns:html="http://www.w3.org/1999/xhtml">
-	<table:Table rows="{ path: '/rows' }"
+<!-- 	<table:Table rows="{ path: '/rows' }"
 		columns="{ path: '/columns', factory: '.createColumn' }"
 		enableColumnReordering="true" rowHeight="40" id="oTablePolypoly"
-		enableSelectAll="false" columnMove="onColumnMove" class="backgroundPolypoly">
+		enableSelectAll="false" columnMove="onColumnMove" 
+		class="backgroundPolypoly"> -->
+		<table:Table rows="{ path: '/rows' }"
+		columns="{ path: '/columns', factory: '.createColumn' }"
+		enableColumnReordering="true" rowHeight="40" id="oTablePolypoly"
+		enableSelectAll="false" columnMove="onColumnMove" >
 		<table:toolbar>
 			<Toolbar design="Transparent" id="toolbarPolypoly">
 				<content>
-					<!-- <Select id="lineSelectPolyPoly" forceSelection="false" change="onValueChange"> 
-						<core:Item key="1" text="Line 1" /> <core:Item key="2" text="Line 2" /> <core:Item 
-						key="3" text="Line 3" /> </Select> <Select id="stationSelectPolyPoly" forceSelection="false" 
-						change="onValueChange"> <core:Item key="1s" text="10" /> <core:Item key="2s" 
-						text="20" /> <core:Item key="3s" text="30" /> <core:Item key="4s" text="40" 
-						/> <core:Item key="5s" text="50" /> <core:Item key="6s" text="60" /> <core:Item 
-						key="7s" text="70" /> <core:Item key="8s" text="80" /> </Select> -->
+					<Image src="/MES/components/polypoly/images/1.PNG" height="1.5rem"/>
+					<Label text = "WA 1"/>
+					<ToolbarSpacer width="1rem"/>
+					<Image src="/MES/components/polypoly/images/2.PNG" height="1.5rem"/>
+					<Label text = "WA 2"/>
+					<ToolbarSpacer width="1rem"/>
+					<Image src="/MES/components/polypoly/images/3.PNG" height="1.5rem"/>
+					<Label text = "QA 3"/>
+					<ToolbarSpacer width="1rem"/>
+					<Image src="/MES/components/polypoly/images/4.PNG" height="1.5rem"/>
+					<Label text = "QA 4"/>
 					<ToolbarSpacer />
 					<SearchField id="polypolySearchField" width="20%"
 						placeholder="Resource Pool" enableSuggestions="true" suggest="onRPSuggest"
