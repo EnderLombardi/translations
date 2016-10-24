@@ -6,13 +6,20 @@
 		showHeader="false" class="GenricBgColor">
 		<subHeader>
 			<Bar class="pageHeader">
+				<contentMiddle>
+					 <Label id="resourcePoolName" text="" class="resourcePoolName" />
+				</contentMiddle>
 				<contentRight>
 					<Button text="{i18nModel>ButtonTeam}" type="Transparent"
-						class="tiffanyColor buttonStatus2 iconbuttonTeam sapUiSmallMarginBegin"
-						icon="sap-icon://group" press="onTeamPress" />
+						class="tiffanyColor iconbuttonTeam sapUiSmallMarginBegin"
+						icon="sap-icon://group" press="openSelectResourcePool" />
+						
+					<Button text="{i18nModel>CreateTeamButton}" type="Transparent"
+						class="tiffanyColor iconbuttonTeam sapUiSmallMarginBegin"
+						icon="sap-icon://create" press="onTeamPress" />
 						
 					<Button text="{i18nModel>EditTeamButton}" type="Transparent"
-						class="tiffanyColor buttonStatus2 iconbuttonTeam sapUiSmallMarginBegin"
+						class="tiffanyColor iconbuttonTeam sapUiSmallMarginBegin"
 						icon="sap-icon://edit" press="onTeamPress" />
 
 					<Button text="Save" icon="sap-icon://save" press="saveChangesToResourcePool"

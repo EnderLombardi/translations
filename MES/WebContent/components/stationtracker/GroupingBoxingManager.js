@@ -167,8 +167,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 				
 				var ssAvLine = el.AVL_LINE;
 			}
-		
-			//if ( airbus.mes.stationtracker.ShiftManager.dayDisplay ) {
+					
 			//permit to DO THE boxing on the only corresponding shift selected in day mode
 			if ( airbus.mes.stationtracker.ShiftManager.closestShift(oFormatter.jsDateFromDayTimeStr(el.START_TIME)) != -1 ) {
 			

@@ -98,19 +98,29 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 		// Deactivate button on settings screen
 		airbus.mes.shell.oView.byId("settingsButton").setEnabled(false);
 		
-		if (nav.getCurrentPage().getId() === "stationTrackerView") {
-			var textButtonTo = "Go to Station Tracker";
+		var textButtonTo = undefined;
+		
+		switch(nav.getCurrentPage().getId()){
+		case "stationTrackerView":
+			textButtonTo = "Go to Station Tracker";
+			airbus.mes.settings.GlobalFunction.navigateTo(textButtonTo, "back");
+			break;
 
-		}if (nav.getCurrentPage().getId() === "workTrackerView" || nav.getCurrentPage().getId() === "workTrackerOpDetailView") {
-			var textButtonTo = "Go to Work Tracker";
-			airbus.mes.settings.GlobalFunction.navigateTo(textButtonTo, "worktracker");
-
-		} else if (nav.getCurrentPage().getId() === "homePageView") {
-			var textButtonTo = "Go to Home Page";
-
+		case "homePageView":
+			textButtonTo = "Go to Home Page";
+			airbus.mes.settings.GlobalFunction.navigateTo(textButtonTo, "back");
+			break;
+			
+		case "resourcePool":
+			textButtonTo = "Go to Team Assignment";
+			airbus.mes.settings.GlobalFunction.navigateTo(textButtonTo, "teamassignment");
+			break;
+			
+		case "disruptiontrackerView":
+			textButtonTo = "Go to Disruption Tracker";
+			airbus.mes.settings.GlobalFunction.navigateTo(textButtonTo, "disruptiontracker");
+			break;
 		}
-
-		airbus.mes.settings.GlobalFunction.navigateTo(textButtonTo, "back");
 
 	},
 

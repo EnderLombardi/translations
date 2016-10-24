@@ -34,6 +34,13 @@ airbus.mes.shell.util.navFunctions = {
 			
 			nav.to(airbus.mes.resourcepool.oView.getId());
 			
+			// Ask to select Resource Pool if launched initially or Plant is changed
+			if(airbus.mes.resourcepool.util.ModelManager.site != airbus.mes.settings.plant || airbus.mes.resourcepool.util.ModelManager.resourceName === undefined){
+				airbus.mes.resourcepool.util.ModelManager.site = airbus.mes.settings.plant;
+				var controller = airbus.mes.resourcepool.oView.getController();
+				controller.openSelectResourcePool();
+			}
+			
 		},
 				
 		lineTracker: function(){
@@ -50,6 +57,22 @@ airbus.mes.shell.util.navFunctions = {
 			
 			nav.to(airbus.mes.linetracker.oView.getId());
 		},
+		
+		disruptionTracker: function(){
+
+			if (airbus.mes.disruptiontracker === undefined){
+				
+				jQuery.sap.registerModulePath("airbus.mes.disruptiontracker", "../components/disruptiontracker");
+
+				sap.ui.getCore().createComponent({
+					name : "airbus.mes.disruptiontracker",
+				});
+				nav.addPage(airbus.mes.disruptiontracker.oView);
+			}
+			
+			nav.to(airbus.mes.disruptiontracker.oView.getId());
+		},
+		
 		worktracker: function(){
 		
 			if (airbus.mes.worktracker === undefined) {
