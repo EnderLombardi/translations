@@ -1,0 +1,51 @@
+sap.ui.controller("airbus.mes.disruptiontracker.list.disruptions", {
+
+/**
+* Called when a controller is instantiated and its View controls (if available) are already created.
+* Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
+* @memberOf table.table
+*/
+	onInit: function() {
+		var oViewModel_1=  new sap.ui.model.json.JSONModel();
+		sap.ui.getCore().setModel(oViewModel_1,"tableData");
+		sap.ui.getCore().getModel("tableData").loadData("../components/disruptiontracker/data/table.json",null,false);
+		
+		var oViewModel_2=  new sap.ui.model.json.JSONModel();
+		sap.ui.getCore().setModel(oViewModel_2,"filterData");
+		sap.ui.getCore().getModel("filterData").loadData("../components/disruptiontracker/data/filter.json",null,false);
+		
+		var oViewModel_3=  new sap.ui.model.json.JSONModel();
+		sap.ui.getCore().setModel(oViewModel_3,"orderData");
+		sap.ui.getCore().getModel("orderData").loadData("../components/disruptiontracker/data/order.json",null,false);
+		
+		var oModel = new sap.ui.model.resource.ResourceModel({bundleName:"airbus.mes.disruptiontracker.i18n.i18n",bundleLocale:"en"});
+		sap.ui.getCore().setModel(oModel, "disruptiontrackerI18n");
+	},
+
+/**
+* Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
+* (NOT before the first rendering! onInit() is used for that one!).
+* @memberOf table.table
+*/
+//	onBeforeRendering: function() {
+//
+//	},
+
+/**
+* Called when the View has been rendered (so its HTML is part of the document). Post-rendering manipulations of the HTML could be done here.
+* This hook is the same one that SAPUI5 controls get after being rendered.
+* @memberOf table.table
+*/
+//	onAfterRendering: function() {
+//
+//	},
+
+/**
+* Called when the Controller is destroyed. Use this one to free resources and finalize activities.
+* @memberOf table.table
+*/
+//	onExit: function() {
+//
+//	}
+
+});
