@@ -653,7 +653,7 @@ background-color: #0085AD !important;
 /* CSS for operation detail popup */
 /***********************************/
 #operationDetailPopup--operationDetailPopUp-cont{
-	overflow-y: scroll !important;
+	//overflow-y: scroll !important;
 }
 #operationDetailPopup--operationDetailPopUp-scrollCont{
 	padding:0rem !important;

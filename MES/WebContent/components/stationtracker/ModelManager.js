@@ -436,13 +436,15 @@ airbus.mes.stationtracker.ModelManager = {
 				name : "airbus.mes.operationdetail",
 				id : "operationDetailComponent"
 			});
-			
-			airbus.mes.stationtracker.operationDetailPopup.open();
-			this.oOperationDetailComp.oView.placeAt(airbus.mes.stationtracker.operationDetailPopup.sId+"-scrollCont");
+			airbus.mes.operationdetail.oView = this.oOperationDetailComp.oView;
+			airbus.mes.operationdetail.parentId = airbus.mes.stationtracker.operationDetailPopup.sId;
 		}
-		else
-			airbus.mes.stationtracker.operationDetailPopup.open();
-		this.oOperationDetailComp.oView.placeAt(airbus.mes.stationtracker.operationDetailPopup.sId+"-scrollCont");
+		airbus.mes.stationtracker.operationDetailPopup.open();
+		airbus.mes.operationdetail.oView.placeAt(airbus.mes.stationtracker.operationDetailPopup.sId+"-scrollCont");
+
+		/*$("#operationDetailsView--operationNav").height(($("#operationDetailPopup--operationDetailPopUp").height()
+				- $("#operationDetailsView--operationDetailPanel").height() 
+				- 48 ));*/
 
 	},
 	/***************************************************************************
