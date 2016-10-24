@@ -1,18 +1,16 @@
-<core:FragmentDefinition xmlns="sap.m"
-	xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout"
-	xmlns:u="sap.ui.unified" xmlns:x="sap.uxap" xmlns:custom="airbus.mes.stationtracker">
-	
-	<Dialog id="operationPopoverID" showHeader="false" contentWidth="60%"
-		contentHeight="70%" verticalScrolling="false" class="noFooterDialog">
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+
+	<Dialog id="operationDetailPopUp" contentWidth="60%"
+		contentHeight="70%" verticalScrolling="false" showHeader="false">
 		<content>
 
 		</content>
-		
+
 		<buttons>
-		<Button text="Close" press="_close" />
+			<Button text="Close" press="onCloseProgressSlider" />
 		</buttons>
 	</Dialog>
-	
+
 </core:FragmentDefinition>
 
 <!-- <Page id="master" showHeader="false"> <content> <core:Fragment type="XML" 

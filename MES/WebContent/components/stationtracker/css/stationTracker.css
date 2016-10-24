@@ -661,3 +661,14 @@ div#SPStatusInd.progressBarOP.sapMBarChild.sapMPI {
 /* .pageHeaderDialog.sap-desktop .sapMIBar.sapMFooter-CTX {
 background-color: #0085AD !important;
 } */
+
+/**********************************/
+/* CSS for operation detail popup */
+/***********************************/
+#operationDetailPopup--operationDetailPopUp-scrollCont{
+	padding:0rem !important;
+}
+
+
+
+/* End of Css for Operation Detail Popup*/
