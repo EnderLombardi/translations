@@ -62,7 +62,45 @@
 
                   "day": "2016-10-17"
 
-               }
+               },
+                {
+
+                  "user": "Pierre B.",
+
+                  "firstName": "Pierre B.",
+
+                  "lastName": "Pierre B.",
+
+                  "picture": "toto",
+
+                  "avlLine": "2",
+
+                  "shiftName": "NORMAL 1",
+
+                  "shiftID": "NIGHT 1",
+
+                  "day": "2016-10-17"
+
+               },
+                {
+
+                  "user": "John A.",
+
+                  "firstName": "John A.",
+
+                  "lastName": "John A.",
+
+                  "picture": "toto",
+
+                  "avlLine": "2",
+
+                  "shiftName": "NORMAL 1",
+
+                  "shiftID": "NIGHT 1",
+
+                  "day": "2016-10-17"
+
+               },
 
             ]
 

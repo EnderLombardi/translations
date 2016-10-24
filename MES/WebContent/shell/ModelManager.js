@@ -8,8 +8,6 @@ airbus.mes.shell.ModelManager = {
 				
 		init : function(core) {
 			
-			
-
 			core.setModel(new sap.ui.model.json.JSONModel(),"userDetailModel");	
 			core.setModel(new sap.ui.model.json.JSONModel(),"userSettingModel");	
 		

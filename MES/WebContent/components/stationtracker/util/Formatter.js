@@ -99,7 +99,7 @@ airbus.mes.stationtracker.util.Formatter = {
 				return sString.toString();
 			},
 			totalDurationToIM : function(sDuration) {
-				return ((sDuration * 100 * 0.001)/3600).toFixed(4) + " IM";
+				return ((sDuration * 100 * 0.001)/3600).toFixed(0) + " IM";
 			},
 			isCheckboxVisible : function(sString) {
 				if( airbus.mes.stationtracker.worklistPopover.unPlanned === true ){
@@ -170,7 +170,9 @@ airbus.mes.stationtracker.util.Formatter = {
 				}
 		
 				var sSpanText = '<span style="position: relative; z-index: 1; float: left; overflow: hidden; text-overflow: ellipsis; max-width:40%; white-space: nowrap;">' + sText + '</span>';	
-				var sProgressText = '<span style="position: relative;  z-index: 1; float: right; overflow: hidden; text-overflow: ellipsis; max-width:40%; white-space: nowrap; padding-left:10px; padding-right:10px;"> ['+ oBox.progress +'/'+ oBox.totalDuration +' IM]</span>';	
+				var sProgressText = '<span style="position: relative;  z-index: 1; float: right; overflow: hidden; text-overflow: ellipsis; max-width:40%; white-space: nowrap; padding-left:10px; padding-right:10px;"> ['+
+				airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.progress) +'/'+ 
+				airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.totalDuration) +' IM]</span>';	
 								
 				// need one more condition to add OSW
 				if ( oBox.routingMaturityAssessment != "---" ) {
