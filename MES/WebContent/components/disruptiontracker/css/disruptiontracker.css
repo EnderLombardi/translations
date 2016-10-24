@@ -44,3 +44,13 @@
 	border-bottom: none !important;
 }
 
+.disruptions .sapMIBar.sapMSubHeader-CTX {
+	color: white !important;
+	background: #0F2D65 ! important;
+	color: #FFFFFF !important;
+}
+
+.disruptions .sapMIBar.sapMSubHeader-CTX .headerText {
+	font-size: 120% !important;
+}
+
