@@ -37,6 +37,7 @@ airbus.mes.shell.util.navFunctions = {
 			
 			// Ask to select Resource Pool if launched initially or Plant is changed
 			if(airbus.mes.resourcepool.util.ModelManager.site != airbus.mes.settings.plant || airbus.mes.resourcepool.util.ModelManager.resourceName === undefined){
+				airbus.mes.resourcepool.util.ModelManager.site = airbus.mes.settings.plant;
 				var controller = airbus.mes.resourcepool.oView.getController();
 				controller.openSelectResourcePool();
 			}
