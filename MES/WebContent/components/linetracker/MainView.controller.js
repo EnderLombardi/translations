@@ -47,11 +47,11 @@ sap.ui.controller("airbus.mes.linetracker.MainView", {
 	worksetItemSelected : function(oEvent) {
 
 		var itemKey = oEvent.mParameters.key;
-		PolypolyManager.globalContext.tabSelected = itemKey;
+		//PolypolyManager.globalContext.tabSelected = itemKey;
 		var oShell = oEvent.oSource;
 
 		if (itemKey === "factory") {
-			oShell.setContent(factoryView);
+			oShell.setContent(sap.ui.getCore().byId("idFactoryView"));
 			airbus.mes.linetracker.util.ModelManager.lockshellselected = false;
 			oShell.setSelectedWorksetItem("idMainView--idFactory");
 			airbus.mes.linetracker.util.ModelManager.loadModelFactoryModel();
@@ -71,7 +71,7 @@ sap.ui.controller("airbus.mes.linetracker.MainView", {
 					if (!airbus.mes.linetracker.util.ModelManager.ProductionView) {
 						airbus.mes.linetracker.util.ModelManager.ProductionView = sap.ui.view({
 							id : "idProductionView",
-							viewName : "airbus.ProductionLineView",
+							viewName : "airbus.mes.linetracker.ProductionLineView",
 							type : sap.ui.core.mvc.ViewType.XML,
 							height : "98%",
 							width: "99%"
@@ -104,11 +104,11 @@ sap.ui.controller("airbus.mes.linetracker.MainView", {
 	lineSelected : function(oChannel, oEvent, line_number) {
 
 		var oShell = this.getView().byId("myShell");
-		oShell.removeContent(factoryView);
+		oShell.removeContent(sap.ui.getCore().byId("idFactoryView"));
 		if (!airbus.mes.linetracker.util.ModelManager.ProductionView) {
 			airbus.mes.linetracker.util.ModelManager.ProductionView = sap.ui.view({
 				id : "idProductionView",
-				viewName : "airbus.ProductionLineView",
+				viewName : "airbus.mes.linetracker.ProductionLineView",
 				type : sap.ui.core.mvc.ViewType.XML,
 				height : "95%",
 				width:"99%"
@@ -126,11 +126,11 @@ sap.ui.controller("airbus.mes.linetracker.MainView", {
 	// Event Bus methods
 	stationSelected : function(oChannel, oEvent, oData) {
 		var oShell = this.getView().byId("myShell");
-		oShell.removeContent(factoryView);
+		oShell.removeContent(sap.ui.getCore().byId("idFactoryView"));
 		if (!airbus.mes.linetracker.util.ModelManager.StationView) {
 			airbus.mes.linetracker.util.ModelManager.StationView = sap.ui.view({
 				id : "idStationView",
-				viewName : "airbus.StationView",
+				viewName : "airbus.mes.linetracker.StationView",
 				type : sap.ui.core.mvc.ViewType.XML,
 				height:"97%"
 			});
