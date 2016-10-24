@@ -63,9 +63,9 @@ airbus.mes.shell.ModelManager = {
 			var rep = jQuery.ajax({
 				async : false,
 				url : this.urlModel.getProperty('urlgetroles'),
-				type : 'POST',
+				type : 'GET',
 			});
 
-			return rep.responseJSON;
+			return JSON.parse(rep.responseText);
 		},
 }

@@ -84,18 +84,18 @@ airbus.mes.stationtracker.ModelManager = {
 
 	onAffectationLoad : function() {
 
-		var oModel sap.ui.getCore().getModel("affectationModel");
+	var oModel =  sap.ui.getCore().getModel("affectationModel");
 		
-		if(oModel.getProperty("/Rowsets/Rowset/0/Row")){              
+		if( oModel.getProperty("/Rowsets/Rowset/0/Row") ){              
 			
 			oModel = sap.ui.getCore().getModel("affectationModel").oData.Rowsets.Rowset[0].Row;
 			
         } else  {
-        	oModel.oData.Rowsets.Rowset[0].Row = [];
+        	//oModel.oData.Rowsets.Rowset[0].Row = [];
         	console.log("no affectationModel load");
         }
-	
-		airbus.mes.stationtracker.AssignmentManager.computeAffectationHierarchy();
+			airbus.mes.stationtracker.AssignmentManager.computeAffectationHierarchy();
+
 
 	},
 
