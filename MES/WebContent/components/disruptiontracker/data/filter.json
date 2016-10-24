@@ -1,0 +1,19 @@
+{
+	"filters": [{
+			"name": "ABC",
+			"key": "X1"
+			},
+
+		{
+			"name": "DEF",
+			"key": "X2"
+
+		},
+
+		{
+			"name": "GEH",
+			"key": "X3"
+
+		}
+	]
+}

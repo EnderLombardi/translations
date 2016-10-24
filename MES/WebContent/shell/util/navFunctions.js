@@ -58,6 +58,22 @@ airbus.mes.shell.util.navFunctions = {
 			
 			nav.to(airbus.mes.linetracker.oView.getId());
 		},
+		
+		disruptionTracker: function(){
+
+			if (airbus.mes.disruptiontracker === undefined){
+				
+				jQuery.sap.registerModulePath("airbus.mes.disruptiontracker", "../components/disruptiontracker");
+
+				sap.ui.getCore().createComponent({
+					name : "airbus.mes.disruptiontracker",
+				});
+				nav.addPage(airbus.mes.disruptiontracker.oView);
+			}
+			
+			nav.to(airbus.mes.disruptiontracker.oView.getId());
+		},
+		
 		worktracker: function(){
 		
 			if (airbus.mes.worktracker === undefined) {

@@ -692,4 +692,13 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		airbus.mes.stationtracker.operationDetailPopup.close();
 	},
 	
+	selectUser : function(oEvt) {
+		
+		var aModel = sap.ui.getCore().getModel("affectationModel").oData.Rowsets.Rowset[0].Row;
+		
+		airbus.mes.userSelected = oEvt.getSource().getSelectedItem().mProperties.key;
+		avlLineSelected = aModel.map(function(x) {return x.key; }).indexOf(oEvt.getSource().getSelectedItem().mProperties.key); 
+		
+	},
+	
 });
