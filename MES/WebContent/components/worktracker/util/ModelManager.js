@@ -99,7 +99,7 @@ airbus.mes.worktracker.util.ModelManager = {
 		urlStartOperation = airbus.mes.worktracker.util.ModelManager
 				.replaceURI(urlStartOperation, "$operation", data.operation_no);
 		urlStartOperation = airbus.mes.worktracker.util.ModelManager
-				.replaceURI(urlStartOperation, "$sfc", data.wo_no);
+				.replaceURI(urlStartOperation, "$sfc", data.sfc);
 		urlStartOperation = airbus.mes.worktracker.util.ModelManager
 				.replaceURI(urlStartOperation, "$site",
 						airbus.mes.settings.ModelManager.site);
@@ -121,7 +121,7 @@ airbus.mes.worktracker.util.ModelManager = {
 				.replaceURI(urlPauseOperation, "$Operation", data.operation_no);
 
 		urlPauseOperation = airbus.mes.worktracker.util.ModelManager
-				.replaceURI(urlPauseOperation, "$Sfc", data.wo_no);
+				.replaceURI(urlPauseOperation, "$Sfc", data.sfc);
 		urlPauseOperation = airbus.mes.worktracker.util.ModelManager
 				.replaceURI(urlPauseOperation, "$Site",
 						airbus.mes.settings.ModelManager.site);

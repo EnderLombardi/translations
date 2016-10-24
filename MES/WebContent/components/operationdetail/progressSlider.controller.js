@@ -140,7 +140,10 @@ sap.ui.controller("airbus.mes.operationdetail.progressSlider", {
 	},
 
 	confirmOperation : function(oEvent) {
-
+		
+		// Model for Reason Code Comments
+		airbus.mes.operationdetail.ModelManager.loadReasonCodeModel();
+		
 		if (oEvent.getSource().getText() == this.getView()
 				.getModel("i18n").getProperty("confirm")) {
 			if (!this._reasonCodeDialog) {
@@ -303,7 +306,7 @@ sap.ui.controller("airbus.mes.operationdetail.progressSlider", {
 
 			this._oUserConfirmationDialog = sap.ui
 					.xmlfragment(
-							"airbus.mes.worktracker.fragments.userConfirmation",
+							"airbus.mes.operationdetail.fragments.userConfirmation",
 							this);
 
 			this.getView().addDependent(

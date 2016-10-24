@@ -274,6 +274,10 @@ sap.ui
 							airbus.mes.shell.util.navFunctions.resourcePool();
 							break;
 						
+						case "disruptiontracker":
+							airbus.mes.shell.util.navFunctions.disruptionTracker();
+							break;
+						
 						case "back":
 							nav.back();
 						}

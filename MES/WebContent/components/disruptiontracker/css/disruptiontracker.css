@@ -1,0 +1,56 @@
+.disruptions table th, td {
+	text-align: center !important;
+}
+
+.disruptions table td {
+	border-left: 2px solid #E9EEF3 !important;
+}
+
+.disruptions .sapMListTblHasNav .sapMListTblRow>:nth-last-child(2) {
+	border-right: 2px solid #E9EEF3 !important;
+}
+
+.disruptions .sapMObjStatusWarning>.sapMObjStatusIcon {
+	color: rgb(244, 189, 108) !important;
+}
+
+.disruptions .sapMObjStatusText {
+	color: black !important;
+}
+
+.disruptions .sapMListTbl th {
+	background-color: rgb(230,236,242) !important;
+}
+
+.disruptions .sapMListTblNavCol {
+	display:none !important;
+}
+
+.disruptions .sapMPanel, .sapMPage>.sapMPageHeader + section {
+    background-color: #F5F5F5 !important;
+}
+
+.disruptions .sapMPanelContent:not(.sapMPanelBGTransparent) {
+    border-bottom: 1px solid #dddddd !important;
+    margin: 20px 15px 20px 15px !important;
+}
+
+.disruptions .disruptionsTable {
+	width: 98% !important;
+    margin: 1% !important;
+}
+
+.disruptions .sapMTB{
+	border-bottom: none !important;
+}
+
+.disruptions .sapMIBar.sapMSubHeader-CTX {
+	color: white !important;
+	background: #0F2D65 ! important;
+	color: #FFFFFF !important;
+}
+
+.disruptions .sapMIBar.sapMSubHeader-CTX .headerText {
+	font-size: 120% !important;
+}
+

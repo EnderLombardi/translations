@@ -5,9 +5,9 @@
 
 		<content>
 			<Panel expandable="true" expanded="false" width="auto"
-				id="operationDetailPanel" class="pageSubHeader">
+				id="operationDetailPanel" class="pageSubHeader sapUiSmallMarginTop sapUiSmallMarginBeginEnd">
 				<headerToolbar>
-					<Toolbar height="3.5rem" class="ML-05">
+					<Toolbar height="3.7rem" class="ML-05">
 						<VBox width="100%">
 							<Text id="operationName" class="mainText"
 								text="OP {operationDetailModel>/Rowsets/Rowset/0/Row/0/operation_no}-{operationDetailModel>/Rowsets/Rowset/0/Row/0/operation_desc}"></Text>
@@ -155,7 +155,7 @@
 				</items>
 			</IconTabBar>
 
-			<Bar>
+			<Bar class="operationDetailFooter">
 				<contentRight>
 					<Button id="btnPause" text="{i18n>pause}" icon="sap-icon://media-pause"
 						press="pauseOperation" />

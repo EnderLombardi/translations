@@ -1,0 +1,101 @@
+<mvc:View controllerName="airbus.mes.disruptiontracker.list.disruptions"
+	xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m">
+	<Page class="disruptions" showHeader="false">
+	
+		<subHeader>
+			<Toolbar>
+				<ToolbarSpacer />
+				<Text text="{disruptiontrackerI18n>disruptionsTitle}" class="headerText" />
+				<ToolbarSpacer />
+			</Toolbar>
+		</subHeader>
+
+		<Panel width="100%">
+			<content>
+
+				<Toolbar>
+					<ComboBox class="sapUiMediumMarginEnd" placeholder="{disruptiontrackerI18n>selectFilter}"
+						items="{ path: 'filterData>/filters' }">
+						<core:Item key="{filterData>key}" text="{filterData>name}" />
+					</ComboBox>
+
+					<ComboBox class="sapUiMediumMarginEnd" placeholder="{disruptiontrackerI18n>selectOrder}"
+						items="{ path: 'orderData>/orders' }">
+						<core:Item key="{orderData>key}" text="{orderData>name}" />
+					</ComboBox>
+
+					<SearchField width="10rem" />
+					<ToolbarSpacer />
+					<Button text="{disruptiontrackerI18n>disruptionKPI}" />
+				</Toolbar>
+
+			</content>
+
+		</Panel>
+
+		<Table class="disruptionsTable" items="{ path: 'tableData>/list' }">
+
+			<columns>
+				<Column>
+					<Text text="{disruptiontrackerI18n>operation}" />
+				</Column>
+				<Column>
+					<Text text="{disruptiontrackerI18n>gravity}" />
+				</Column>
+				<Column>
+					<Text text="{disruptiontrackerI18n>status}" />
+				</Column>
+				<Column>
+					<Text text="{disruptiontrackerI18n>problem}" />
+				</Column>
+				<Column>
+					<Text text="{disruptiontrackerI18n>help}" />
+				</Column>
+				<Column>
+					<Text text="{disruptiontrackerI18n>esclv}" />
+				</Column>
+				<Column>
+					<Text text="{disruptiontrackerI18n>openingTime}" />
+				</Column>
+				<Column>
+					<Text text="{disruptiontrackerI18n>expected}" />
+				</Column>
+				<Column>
+					<Text text="{disruptiontrackerI18n>timeToEscl}" />
+				</Column>
+				<Column>
+					<Text text="{disruptiontrackerI18n>solution}" />
+				</Column>
+				<Column>
+					<Text text="{disruptiontrackerI18n>closureDate}" />
+				</Column>
+				<Column>
+					<Text text="{disruptiontrackerI18n>osw}" />
+				</Column>
+			</columns>
+			
+			<items>
+				<ColumnListItem type="Navigation">
+					<cells>
+						<Text text="{tableData>operation}" />
+						<ObjectStatus class="sapUiSmallMarginBottom" text="{tableData>gravity}"
+							state="{parts: [ {path: 'tableData>gravity'}, {path: 'tableData>escalation'} ], formatter: 'airbus.mes.disruptiontracker.Formatter.setState'}"
+							icon="{path: 'tableData>gravity', formatter: 'airbus.mes.disruptiontracker.Formatter.setIcon'}" />
+						<Text text="{tableData>status}" />
+						<Text text="{tableData>problem}" />
+						<Text text="{tableData>help}" />
+						<Text text="{tableData>esclv}" />
+						<Text text="{tableData>opentime}" />
+						<Text text="{tableData>expected}" />
+						<Text text="{tableData>time2esc}" />
+						<Text text="{tableData>solution}" />
+						<Text text="{tableData>closure}" />
+						<Text text="{tableData>osw}" />
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+	</Page>
+
+</mvc:View>

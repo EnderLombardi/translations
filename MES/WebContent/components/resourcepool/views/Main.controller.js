@@ -896,24 +896,32 @@ sap.ui
 					selectResourcePool : function(oEvt) {
 						/*
 						 * fill resource pool field and description field with
-						 * selected item
+						 * selected item and
+						 * load tow global variables with resource pool
+						 * name and its description
 						 */
 						var oSelectedItem = oEvt.getParameter("selectedItem");
 						
 						var oResourcePool = this.getView().byId("resourcePoolName");
-						airbus.mes.resourcepool.util.ModelManager.resourceName = oResourcePool;
+						oResourcePool.setValue(oSelectedItem.getTitle());
+						airbus.mes.resourcepool.util.ModelManager.resourceName = oSelectedItem.getTitle();
 						
+
+						airbus.mes.resourcepool.util.ModelManager.resourceDescription = oSelectedItem.getDescription();
+						
+
+						/* clear search filter for each case */
+						oEvt.getSource().getBinding("items").filter([]);
+					
 						
 						/*var oDescription = sap.ui.getCore().byId(
 								'idSearchView--description');*/
-						var oButton = this.getView().byId(
-								"createOrDeleteButton");
-						oResourcePool.setValue(oSelectedItem.getTitle());
+						/*var oButton = this.getView().byId(
+								"createOrDeleteButton");*/
 						/*oDescription.setValue(oSelectedItem.getDescription());
 
 						/*
-						 * load three global variables with site, resource pool
-						 * name and its description
+						 * 
 						 */
 						/*airbus.mes.resourcepool.util.ModelManager.site = sap.ui.getCore().byId(
 								"idSearchView--site").getText();
@@ -929,8 +937,6 @@ sap.ui
 							oButton.setIcon("sap-icon://delete");
 							oButton.setTooltip("delete");
 						}*/
-						/* clear search filter for each case */
-						oEvt.getSource().getBinding("items").filter([]);
 
 					},
 
