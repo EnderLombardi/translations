@@ -12,7 +12,7 @@
 	float:left !important;
 }
 .progressSlider .dynProgressSlider{
-	margin-left:-0.09rem !important;
+	margin-left:-2.1rem !important;
 }
 .sliderInprogressColor .sapMSliderProgress{
 	background-color: lime !important;
@@ -95,3 +95,19 @@
 .progressBtnColor .sapMBtnIcon {
 	color:#0085AD !important;
 }
+/*** CSS for Icon Tab Bar ***/
+#operationDetailsView--operationNav-containerContent{
+    border-bottom: 0px !important;
+}
+#operationDetailsView--operationNav-content{
+    background: transparent !important;
+}
+/*** End for Icon Tab Bar **/
+
+/*** CSS for Footers ***********/
+.operationDetailFooter{
+    position: fixed;
+    bottom: 0px;
+}
+
+/*** end of CSS for Footer *********/
