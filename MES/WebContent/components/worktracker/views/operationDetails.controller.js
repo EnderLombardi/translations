@@ -389,6 +389,11 @@ sap.ui
 
 							// Refresh User Operation Model and Operation Detail
 							airbus.mes.worktracker.util.ModelManager.loadUserOperationsModel();
+							//Refresh StationTracker Models
+							airbus.mes.stationtracker.ModelManager.loadStationTracker("R");
+							airbus.mes.stationtracker.ModelManager.loadStationTracker("I");
+							airbus.mes.stationtracker.ModelManager.loadStationTracker("U");
+							airbus.mes.stationtracker.ModelManager.loadStationTracker("O");
 							
 							this.refreshOperationData(percent);
 
