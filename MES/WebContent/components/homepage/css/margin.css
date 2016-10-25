@@ -9,9 +9,7 @@
 	font-size: 18px;
 	color: #ffffff;
 }
-.pageHeader .sapMSlt{
-	border:none !important;
-}
+
 .pageHeader .sapMSltArrow{
 	background:transparent !important;
 	color:#fff;
@@ -83,17 +81,10 @@
 
 
 .tiffanyColor .sapMBtnInner.sapMBtnText {
-	color: #74d2e7 !important;
 	font-family: "Arial", Sans-serif !important;
 	font-size: 14px !important;
 }
 
-.iconbuttonTeam .sapMBtnIcon {
-	color: #74d2e7 !important;
-	border-radius: 50%;
-	width: 33px;
-	height: 33px;
-}
 .absolutePosition {
 	position: absolute !important;
 }

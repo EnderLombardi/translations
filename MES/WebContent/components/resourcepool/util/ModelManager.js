@@ -56,11 +56,13 @@ airbus.mes.resourcepool.util.ModelManager = {
 	},
 
 	loadMainViewModels : function() {
+		this.currentView.setBusy(true);
 		this.loadModelAvailableShift();
 		this.loadModelAssignedUsers();
 		this.loadModelAvailableUsers();
 		this.loadModelAssignedWC();
 		this.loadModelAvailableWC();
+		this.currentView.setBusy(false);
 	},
 	
 	//************************************LogOut****************************************

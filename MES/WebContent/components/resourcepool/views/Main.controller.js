@@ -897,21 +897,21 @@ sap.ui
 						/*
 						 * fill resource pool field and description field with
 						 * selected item and
-						 * load tow global variables with resource pool
+						 * Load tow global variables with resource pool
 						 * name and its description
 						 */
 						var oSelectedItem = oEvt.getParameter("selectedItem");
 						
-						var oResourcePool = this.getView().byId("resourcePoolName");
-						oResourcePool.setValue(oSelectedItem.getTitle());
-						airbus.mes.resourcepool.util.ModelManager.resourceName = oSelectedItem.getTitle();
 						
-
+						airbus.mes.resourcepool.util.ModelManager.resourceName = oSelectedItem.getTitle();
 						airbus.mes.resourcepool.util.ModelManager.resourceDescription = oSelectedItem.getDescription();
 						
 
 						/* clear search filter for each case */
 						oEvt.getSource().getBinding("items").filter([]);
+						
+						// Load Main Page
+						this.loadMainPage();
 					
 						
 						/*var oDescription = sap.ui.getCore().byId(
@@ -938,6 +938,28 @@ sap.ui
 							oButton.setTooltip("delete");
 						}*/
 
+					},
+					
+					/***********************************************************
+					 * Load the Main page of RPM to maintain the resource pool
+					 **********************************************************/
+					loadMainPage : function() {
+
+						/* take the current view in a variable */
+						airbus.mes.resourcepool.util.ModelManager.currentView = this.getView();
+						
+						
+						/* load all models and move to main page */
+						airbus.mes.resourcepool.util.ModelManager.loadMainViewModels();
+
+						/* Set the title header of the main page */
+						this.getView().byId("resourcePoolName").setText(
+										airbus.mes.resourcepool.util.ModelManager.site
+												+ " / "
+												+ airbus.mes.resourcepool.util.ModelManager.resourceName
+												+ " / "
+												+ airbus.mes.resourcepool.util.ModelManager.resourceDescription);
+						
 					},
 
 

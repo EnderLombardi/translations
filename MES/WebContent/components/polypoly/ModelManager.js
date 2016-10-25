@@ -95,7 +95,7 @@ airbus.mes.polypoly.ModelManager = {
 		core.setModel(new sap.ui.model.json.JSONModel(), "stationList");
 		core.setModel(new sap.ui.model.json.JSONModel(),"mTableModel");
 		core.setModel(new sap.ui.model.json.JSONModel(),"mQATableModel");
-		// this model seems to be the maine model to create polypoly
+		// this model seems to be the main model to create polypoly
 		core.setModel(new sap.ui.model.json.JSONModel(),"mii");
 		
 		// attach event on end of loading model
@@ -105,6 +105,7 @@ airbus.mes.polypoly.ModelManager = {
 //		core.setModel(new sap.ui.model.json.JSONModel(), "columnModel");
 		core.setModel(new sap.ui.model.json.JSONModel(), "rpModel");
 		core.setModel(new sap.ui.model.json.JSONModel("../components/polypoly/model/needlevels.json"), "needlevels");
+		
 		
 		var dest;
 
