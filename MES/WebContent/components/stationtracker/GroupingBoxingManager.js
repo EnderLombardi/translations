@@ -208,14 +208,10 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 //				return;
 //			}
 			
-			var sPaused = "1";
+			var sPaused = "0";
 			// Operation is active	
-<<<<<<< Upstream, based on origin/MESv0.9
-			if (  el.PAUSED === "FALSE") {
-			/*if(el.PAUSED === "false"){*/
-=======
+
 			if (  el.PAUSED === "false") {
->>>>>>> 727b769 Filter user implemented
 				
 				var sPaused = "2";
 			}
