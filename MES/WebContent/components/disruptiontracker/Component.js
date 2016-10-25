@@ -2,16 +2,6 @@ jQuery.sap.require("sap.ui.core.UIComponent");
 jQuery.sap.require("airbus.mes.disruptiontracker.util.Formatter");
 jQuery.sap.require("airbus.mes.disruptiontracker.ModelManager");
 
-jQuery.sap.registerModulePath("airbus.mes.dhtmlx", "../lib/dhtmlxscheduler");
-
-jQuery.sap.require("airbus.mes.dhtmlx.dhtmlxscheduler");
-jQuery.sap.require("airbus.mes.dhtmlx.ext.dhtmlxscheduler_limit");
-jQuery.sap.require("airbus.mes.dhtmlx.ext.dhtmlxscheduler_timeline");
-jQuery.sap.require("airbus.mes.dhtmlx.ext.dhtmlxscheduler_treetimeline");
-jQuery.sap.require("airbus.mes.dhtmlx.ext.dhtmlxscheduler_units");
-jQuery.sap.require("airbus.mes.dhtmlx.ext.dhtmlxscheduler_drag_between");
-// jQuery.sap.require("airbus.mes.dhtmlx.ext.dhtmlxscheduler_tooltip");
-
 jQuery.sap.declare("airbus.mes.disruptiontracker.Component");
 
 sap.ui.core.UIComponent.extend("airbus.mes.disruptiontracker.Component", {
@@ -22,7 +12,6 @@ sap.ui.core.UIComponent.extend("airbus.mes.disruptiontracker.Component", {
 
 	}
 
-// manifestUrl : "component.json",
 });
 
 airbus.mes.disruptiontracker.Component.prototype.createContent = function() {
@@ -42,13 +31,18 @@ airbus.mes.disruptiontracker.Component.prototype.createContent = function() {
 
 		var i18nModel = new sap.ui.model.resource.ResourceModel({
 	        bundleUrl : "../components/disruptiontracker/i18n/i18n.properties"
-//	        bundleLocale : "en" automatic defined by parameter sap-language
 	     });
 		this.oView.setModel(i18nModel, "disruptiontrackerI18n");		
 		airbus.mes.disruptiontracker.oView = this.oView		
-		//this.oView.setModel(sap.ui.getCore().getModel("userSettingModel"),	"userSettingModel");
+		
+		
+		//Model for disruptions list data in table
 		this.oView.setModel(sap.ui.getCore().getModel("tableData"),"tableData");
+		
+		//Model for disruptions filter data in ComboBox
 		this.oView.setModel(sap.ui.getCore().getModel("filterData"), "filterData");
+		
+		//Model for disruptions order data in ComboBox
 		this.oView.setModel(sap.ui.getCore().getModel("orderData"), "orderData");
 		
 		
