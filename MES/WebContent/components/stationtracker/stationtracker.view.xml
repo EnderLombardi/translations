@@ -4,10 +4,9 @@
 	xmlns:layout="sap.ui.layout" xmlns:micro="sap.suite.ui.microchart">
 	<Page title="Station Tracker" height="100%" showHeader="false"
 		enableScrolling="false " class="GenricBgColor">
-		<control:disruptionNotifications id="disruptNotifications">
-		<control:content width="100%" height="100%">
+		
 			
-		<!-- <content width="100%" height="100%"> -->
+		<content width="100%" height="100%"> 
 			<Panel id="kpi_header" expandable="true" expanded="true" expandAnimation="false"
 				class="pageHeader sapUiSmallMarginTop contentNoPad">
 				<headerToolbar>
@@ -430,13 +429,9 @@
 
 			<custom:DHTMLXScheduler id="stationtracker"></custom:DHTMLXScheduler>
 			
-			</control:content>
-			<control:disruptionContent>
-				
-			</control:disruptionContent>
-			</control:disruptionNotifications>
+			
 
-		<!-- </content>	 -->	
+		</content>	
 	</Page>
 </core:View>
 

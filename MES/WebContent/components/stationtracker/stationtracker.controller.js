@@ -69,8 +69,8 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 				jqStationTracker.css('top', jqToolbar.offset().top);
 			}, 0);
 		}
-		this.getView().byId("disruptNotifications").openNavigation();
-		this.getView().byId("disruptNotifications").closeNavigation();
+		//this.getView().byId("disruptNotifications").openNavigation();
+		//this.getView().byId("disruptNotifications").closeNavigation();
 
 	},
 	onProductionGroupPress : function(oEvent){
