@@ -31,9 +31,9 @@
 
 				</headerToolbar>
 				<content>
-					<HBox width="100%">
+					<HBox id="kpiHeaderContent" width="100%">
 
-						<VBox width="35%" class="contentHeaderCont">
+						<VBox id="boxTaktAdherence" width="35%" class="contentHeaderCont">
 							<Label text="{StationTrackerI18n>TaktAdherence}" design="Bold"
 								width="100%" class="whiteTextHeader sapUiSmallMarginTopBottom" />
 							<HBox>
@@ -118,43 +118,34 @@
 								<VBox width="30%">
 									<Label text="{StationTrackerI18n>Adherence}" class=" whiteText" />
 									<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/Labour}"
-										design="Bold" class="sapUiSmallMarginTop kpiValue  whiteText"
-										height="100% " />
+										class="sapUiSmallMarginTop kpiValue  whiteText"
+										height="100%" />
 
 								</VBox>
 
 								<VBox width="30%">
-									<HBox justifyContent="Center" width="100%">
-										<Label text="{StationTrackerI18n>Trend}" class=" whiteText" />
-										<core:Icon src="sap-icon://up" class="sapUiSmallMarginBeginEnd TrendGreen" />
-									</HBox>
+									
+									<layout:Grid
+										class="sapUiSmallMarginTop"
+										defaultSpan="L6 M6 S6">
+										<layout:content>
+											<Label text="{StationTrackerI18n>Trend}" class=" whiteText" />
+											<core:Icon src="sap-icon://up" class="sapUiSmallMarginBeginEnd TrendGreen" />
 
-									<HBox>
-										<Label text="{StationTrackerI18n>DeltaVsSLB}" class=" whiteText" />
-										<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/SLB}"
-											class="whiteText" />
-									</HBox>
+											<Label text="{StationTrackerI18n>DeltaVsSLB}" class=" whiteText" />
+											<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/SLB}" class="whiteText" />
 
-									<HBox>
-										<Label text="{StationTrackerI18n>DeltaVsSLB}" class=" whiteText" />
-										<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/SLB}"
-											class="whiteText" />
-									</HBox>
-									<HBox>
-										<Label text="{StationTrackerI18n>DeltaVsSoA}" class=" whiteText" />
-										<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/SLB}"
-											class="whiteText" />
-									</HBox>
-									<HBox>
-										<Label text="{StationTrackerI18n>CycleTime}" class=" whiteText" />
-										<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/SLB}"
-											class="whiteText" />
-									</HBox>
-									<HBox>
-										<Label text="{StationTrackerI18n>WorkCintent}" class=" whiteText" />
-										<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/SLB}"
-											class="whiteText" />
-									</HBox>
+											<Label text="{StationTrackerI18n>DeltaVsSoA}" class=" whiteText" />
+											<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/SLB}" class="whiteText" />
+
+											<Label text="{StationTrackerI18n>CycleTime}" class=" whiteText" />
+											<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/SLB}" class="whiteText" />
+
+											<Label text="{StationTrackerI18n>WorkCintent}" class=" whiteText" />
+											<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/SLB}" class="whiteText" />
+										</layout:content>
+									</layout:Grid>
+
 								</VBox>
 
 
@@ -162,14 +153,14 @@
 
 						</VBox>
 
-						<VBox wrap="Wrap" width="5%" class="contentHeaderCont">
+						<VBox  id="boxLabourEfficiency" wrap="Wrap" width="5%" class="contentHeaderCont">
 							<Label text="{StationTrackerI18n>LabourEfficiency}" design="Bold"
 								width="100%" class="whiteTextHeader sapUiSmallMarginTopBottom" />
 							<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/SLB}"
 								class="sapUiSmallMarginTop whiteText kpiValue" />
 						</VBox>
 
-						<VBox width="10%" alignItems="Center" class="contentHeaderCont">
+						<VBox id="boxSLBEfficiecy" width="10%" alignItems="Center" class="contentHeaderCont">
 							<Label text="{StationTrackerI18n>SLBEFFICIENCY}" design="Bold"
 								class="whiteTextHeader sapUiSmallMarginTopBottom" />
 							<VBox width="90%">
@@ -187,8 +178,8 @@
 							</VBox>
 						</VBox>
 
-						<VBox width="25%" class="contentHeaderCont">
-							<Label text="{StationTrackerI18n>DisruptionOpen/Andon}"
+						<VBox id="boxOpenDisruptions" width="25%" class="contentHeaderCont">
+							<Label text="{StationTrackerI18n>DisruptionOpen/Andon}" design="Bold"
 								width="100%" class="whiteTextHeader sapUiSmallMarginTopBottom" />
 							<HBox>
 								<VBox width="20%">
@@ -238,7 +229,7 @@
 							</HBox>
 						</VBox>
 
-						<VBox width="10%" alignItems="Center" class="contentHeaderCont">
+						<VBox id="boxResolutionEfficiency" width="10%" alignItems="Center" class="contentHeaderCont">
 							<Label text="{StationTrackerI18n>ResolutionEfficiency}"
 								design="Bold" class="whiteTextHeader sapUiSmallMarginTopBottom" />
 							<VBox width="90%">
@@ -256,19 +247,19 @@
 							</VBox>
 						</VBox>
 
-						<VBox wrap="Wrap" width="5%" class="contentHeaderCont">
+						<VBox id="boxExtraWork" wrap="Wrap" width="5%" class="contentHeaderCont">
 							<Label text="{StationTrackerI18n>ExtraWork}" design="Bold"
 								width="100%" class="whiteTextHeader sapUiSmallMarginTopBottom" />
 							<Label text="{StationTrackerI18n>Operations}" width="100%"
 								class="whiteText " />
 							<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/Total}"
-								class="whiteText kpiValue" />
+								class="whiteText kpiValue" design="Bold" />
 							<Label text="{StationTrackerI18n>Hrs}" width="100%" class="whiteText " />
 							<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/Total}"
-								class="whiteText kpiValue" />
+								class="whiteText kpiValue" design="Bold"/>
 						</VBox>
 
-						<VBox wrap="Wrap" width="10%" alignItems="Center" class="contentHeaderCont">
+						<VBox id="boxShiftStaffing" wrap="Wrap" width="10%" alignItems="Center" class="contentHeaderCont">
 							<Label text="{StationTrackerI18n>ShiftSTAFFING}" size="L"
 								design="Bold" width="100%" class="whiteTextHeader sapUiSmallMarginTopBottom" />
 							<VBox width="90%">
