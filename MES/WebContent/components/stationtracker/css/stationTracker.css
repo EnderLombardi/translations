@@ -744,3 +744,15 @@ background-color: #0085AD !important;
 	bottom: 0;
 	height: auto !important;
 }  
+
+#stationTrackerView--stationtracker .dhx_cal_next_button{
+	position: absolute;
+	right: 0;
+	width: auto;
+}
+
+#stationTrackerView--stationtracker .dhx_cal_prev_button{
+	position: absolute;
+	right: 25px;
+	width: auto;
+}
