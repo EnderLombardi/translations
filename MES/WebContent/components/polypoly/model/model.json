@@ -83,6 +83,22 @@
                      "MaxRange": 1
 
                   },
+				  
+				                    {
+
+                     "Name": "picture",
+
+                     "SourceColumn": "picture",
+
+                     "Description": "",
+
+                     "SQLDataType": 1,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
 
                   {
 
@@ -179,6 +195,8 @@
                   "login": "NG5E054",
 
                   "longName": "ANDREW HOPWOOD",
+				  
+				  "picture": "/MES/components/polypoly/images/man01.png",
 
                   "ERP_ID": "NG5E054",
 
@@ -201,6 +219,8 @@
                   "login": "S007C96",
 
                   "longName": "CEDRIC DANEL",
+				  
+				  "picture": "/MES/components/polypoly/images/man01.png",
 
                   "ERP_ID": "CCLAYTON",
 
@@ -223,6 +243,8 @@
                   "login": "NG55033",
 
                   "longName": "DAVID MARTINS",
+				  
+				  "picture": "/MES/components/polypoly/images/man01.png",
 
                   "ERP_ID": "DANILAND0E01",
 
@@ -245,6 +267,8 @@
                   "login": "NG00431E",
 
                   "longName": "FREDERIC BETEILLE",
+				  
+				  "picture": "/MES/components/polypoly/images/man01.png",
 
                   "ERP_ID": "---",
 
@@ -267,6 +291,8 @@
                   "login": "NG55E48",
 
                   "longName": "GUILLAUME FONTENEAU",
+				  
+				  "picture": "/MES/components/polypoly/images/man01.png",
 
                   "ERP_ID": "---",
 
@@ -289,6 +315,8 @@
                   "login": "TO95871",
 
                   "longName": "JEROME POUILLE",
+				  
+				  "picture": "/MES/components/polypoly/images/man01.png",
 
                   "ERP_ID": "---",
 
@@ -311,6 +339,8 @@
                   "login": "NG5E821",
 
                   "longName": "MEHDI MAHHOU",
+				  
+				  "picture": "/MES/components/polypoly/images/man01.png",
 
                   "ERP_ID": "---",
 
@@ -333,6 +363,8 @@
                   "login": "TO105976",
 
                   "longName": "MORITZ KAISER",
+				  
+				  "picture": "/MES/components/polypoly/images/man01.png",
 
                   "ERP_ID": "---",
 
@@ -355,6 +387,8 @@
                   "login": "GRANGER_P",
 
                   "longName": "PATRICE GRANGER",
+				  
+				  "picture": "/MES/components/polypoly/images/man01.png",
 
                   "ERP_ID": "---",
 
@@ -377,6 +411,8 @@
                   "login": "NG56D2A",
 
                   "longName": "VAIBHAV MISHRA",
+				  
+				  "picture": "/MES/components/polypoly/images/man01.png",
 
                   "ERP_ID": "---",
 
@@ -399,6 +435,8 @@
                   "login": "NG55033",
 
                   "longName": "DAVID MARTINS",
+				  
+				  "picture": "/MES/components/polypoly/images/man01.png",
 
                   "ERP_ID": "DANILAND0E01",
 
@@ -421,6 +459,8 @@
                   "login": "NG004BDE",
 
                   "longName": "DHIRENDRA NATH MISHRA",
+				  
+				  "picture": "/MES/components/polypoly/images/man01.png",
 
                   "ERP_ID": "NG004BDE",
 
@@ -443,6 +483,8 @@
                   "login": "NG001D16",
 
                   "longName": "FABRICE NOGUE",
+				  
+				  "picture": "/MES/components/polypoly/images/man01.png",
 
                   "ERP_ID": "---",
 

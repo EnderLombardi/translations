@@ -202,86 +202,65 @@ airbus.mes.polypoly.ModelManager = {
 		sap.ui.getCore().getModel("stationList").setData(this.StationList);
 	},
 
-	getUrlChkUserOprCertificatePolyPoly : function(ERP_ID) {
-		var urlChkUserOprCertificatePolyPoly = this.urlModel.getProperty('urlchkuseroprcertificatepolypoly');
-		urlChkUserOprCertificatePolyPoly = urlChkUserOprCertificatePolyPoly.replace("$Order", this.worder);
-		urlChkUserOprCertificatePolyPoly = urlChkUserOprCertificatePolyPoly
-				.replace("$Site", this.site);
-		urlChkUserOprCertificatePolyPoly = urlChkUserOprCertificatePolyPoly
-				.replace("$Revision", this.revision);
-		urlChkUserOprCertificatePolyPoly = urlChkUserOprCertificatePolyPoly
-				.replace("$Operation", this.operation);
-		urlChkUserOprCertificatePolyPoly = urlChkUserOprCertificatePolyPoly
-				.replace("$ERP_ID", ERP_ID);
-		return urlChkUserOprCertificatePolyPoly;
-	},
-	chkUserOprCertificatePolyPoly : function(ERP_ID) {
-		sap.ui.core.BusyIndicator.show(0);
-
-		jQuery
-				.ajax({
-					url : this
-							.getUrlChkUserOprCertificatePolyPoly(ERP_ID),
-					type : 'GET',
-					async : false,
-					success : function(data, textStatus, jqXHR) {
-
-						if (data.Rowsets.FatalError != undefined) {
-							this.messageShow(data.Rowsets.FatalError);
-						} else if (data.Rowsets.Messages != undefined) {
-							this
-									.messageShow(data.Rowsets.Messages[0].Message);
-							// return true;//check the box
-						} else if (data.Rowsets.Rowset) {
-							if (data.Rowsets.Rowset[0].Row[0].Message_Type != undefined) {
-								if (data.Rowsets.Rowset[0].Row[0].Message_Type == "S") {
-									this
-											.messageShow(data.Rowsets.Rowset[0].Row[0].Message);
-									// return true;//check the box
-								} else if (data.Rowsets.Rowset[0].Row[0].Message_Type == "W") {
-									sap.ui
-											.getCore()
-											.byId(
-													"oDialogAffectatonConfirmationPolyPoly")
-											.setState("Warning");
-									sap.ui
-											.getCore()
-											.byId(
-													"oDialogAffectatonConfirmationPolyPoly")
-											.setTitle("Warning");
-									sap.ui
-											.getCore()
-											.byId(
-													"messageAffectConfirmPolyPoly")
-											.setText(
-													data.Rowsets.Rowset[0].Row[0].Message);
-									sap.ui
-											.getCore()
-											.byId(
-													"oDialogAffectatonConfirmationPolyPoly")
-											.open();
-								} else {
-									this
-											.messageShow(data.Rowsets.Rowset[0].Row[0].Message);
-									// return true;//check the box
-								}
-							} else {
-								this
-										.messageShow("Couldn't perform QA check. Please try again.");
-								// return true;//check the box
-							}
-						} else {
-							this
-									.messageShow("Couldn't perform QA check. Please try again.");
-							// return true;//check the box
-						}
-						PolypolyManager.setUserAllocation();
-						sap.ui.core.BusyIndicator.hide();
-					},
-					error : this.messageShow("Error")
-				});
-
-	},
+//	getUrlChkUserOprCertificatePolyPoly : function(ERP_ID) {
+//		var urlChkUserOprCertificatePolyPoly = this.urlModel.getProperty('urlchkuseroprcertificatepolypoly');
+//		urlChkUserOprCertificatePolyPoly = urlChkUserOprCertificatePolyPoly.replace("$Order", this.worder);
+//		urlChkUserOprCertificatePolyPoly = urlChkUserOprCertificatePolyPoly
+//				.replace("$Site", this.site);
+//		urlChkUserOprCertificatePolyPoly = urlChkUserOprCertificatePolyPoly
+//				.replace("$Revision", this.revision);
+//		urlChkUserOprCertificatePolyPoly = urlChkUserOprCertificatePolyPoly
+//				.replace("$Operation", this.operation);
+//		urlChkUserOprCertificatePolyPoly = urlChkUserOprCertificatePolyPoly
+//				.replace("$ERP_ID", ERP_ID);
+//		return urlChkUserOprCertificatePolyPoly;
+//	},
+//	chkUserOprCertificatePolyPoly : function(ERP_ID) {
+//		sap.ui.core.BusyIndicator.show(0);
+//
+//		jQuery.ajax({
+//			url : this.getUrlChkUserOprCertificatePolyPoly(ERP_ID),
+//			type : 'GET',
+//			async : false,
+//			success : function(data, textStatus, jqXHR) {
+//
+//				if (data.Rowsets.FatalError != undefined) {
+//					this.messageShow(data.Rowsets.FatalError);
+//				} else if (data.Rowsets.Messages != undefined) {
+//					this.messageShow(data.Rowsets.Messages[0].Message);
+//					// return true;//check the box
+//				} else if (data.Rowsets.Rowset) {
+//					if (data.Rowsets.Rowset[0].Row[0].Message_Type != undefined) {
+//						if (data.Rowsets.Rowset[0].Row[0].Message_Type == "S") {
+//							this.messageShow(data.Rowsets.Rowset[0].Row[0].Message);
+//							// return true;//check the box
+//						} else if (data.Rowsets.Rowset[0].Row[0].Message_Type == "W") {
+//							airbus.mes.polypoly.oView.byId("oDialogAffectatonConfirmationPolyPoly").setState("Warning");
+//							airbus.mes.polypoly.oView.byId("oDialogAffectatonConfirmationPolyPoly").setTitle("Warning");
+//							airbus.mes.polypoly.oView.byId("messageAffectConfirmPolyPoly").setText(data.Rowsets.Rowset[0].Row[0].Message);
+//							airbus.mes.polypoly.oView.byId("oDialogAffectatonConfirmationPolyPoly").open();
+//						} else {
+//							this.messageShow(data.Rowsets.Rowset[0].Row[0].Message);
+//							// return true;//check the box
+//						}
+//					} else {
+//						this.messageShow("Couldn't perform QA check. Please try again.");
+//						// return true;//check the box
+//					}
+//				} else {
+//					this.messageShow("Couldn't perform QA check. Please try again.");
+//					// return true;//check the box
+//				}
+////				PolypolyManager.setUserAllocation();
+//				sap.ui.core.BusyIndicator.hide();
+//			},
+//			error : function(){
+//				this.messageShow("Error");
+//				sap.ui.core.BusyIndicator.hide();
+//			}
+//		});
+//
+//	},
 
 };
 airbus.mes.polypoly.ModelManager.init(sap.ui.getCore());
