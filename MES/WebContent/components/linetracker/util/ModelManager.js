@@ -758,7 +758,7 @@ airbus.mes.linetracker.util.ModelManager = {
 						"value" : total
 					} ];
 				}
-				ModelData[k].Image = "images/Station" + ModelData[k].Station
+				ModelData[k].Image = "../components/linetracker/images/Station" + ModelData[k].Station
 						+ ".png";
 				ModelData[k].ImageName = airbus.mes.linetracker.util.ModelManager.ProductionImage[i],
 						ProdModelData.push(ModelData[k]);
@@ -783,7 +783,7 @@ airbus.mes.linetracker.util.ModelManager = {
 					"MSN" : null,
 					"HAND" : "",
 					"RTO" : 0,
-					"Image" : "images/Station" + airbus.mes.linetracker.util.ModelManager.StationList[i]
+					"Image" : "../components/linetracker/images/Station" + airbus.mes.linetracker.util.ModelManager.StationList[i]
 							+ ".png",
 					"ImageName" : airbus.mes.linetracker.util.ModelManager.ProductionImage[i],
 					"Donut" : [ {
