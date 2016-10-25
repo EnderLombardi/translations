@@ -2,7 +2,7 @@
 	xmlns="sap.m"
 	xmlns:cData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
 	controllerName="airbus.mes.homepage.homePage" xmlns:html="http://www.w3.org/1999/xhtml">
-	<Page title="MES" enableScrolling="t" class="PanelbgImg"
+	<Page title="MES" enableScrolling="false" class="PanelbgImg"
 		showHeader="false">
 		<content>
 			<TileContainer tileDelete="handleTileDelete"

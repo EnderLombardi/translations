@@ -1,0 +1,4 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core">
+	<Button icon="sap-icon://edit" press="onPress" />
+</core:FragmentDefinition>

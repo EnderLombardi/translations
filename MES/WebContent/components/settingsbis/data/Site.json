@@ -88,7 +88,7 @@
 
                   "site": "TEST",
 
-                  "site_desc": "AL Nantes",
+                  "site_desc": "Test Site",
 
                   "time_zone": "Europe/Paris"
 
@@ -98,7 +98,7 @@
 
                   "site": "FNZ1",
 
-                  "site_desc": "AL Saint-Nazaire",
+                  "site_desc": "Saint Nazaire",
 
                   "time_zone": "Europe/Paris"
 
@@ -108,7 +108,7 @@
 
                   "site": "UBN1",
 
-                  "site_desc": "AL Broughton",
+                  "site_desc": "Broughton",
 
                   "time_zone": "Europe/London"
 
