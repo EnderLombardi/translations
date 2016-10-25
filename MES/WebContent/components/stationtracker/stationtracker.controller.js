@@ -69,6 +69,8 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 				jqStationTracker.css('top', jqToolbar.offset().top);
 			}, 0);
 		}
+		this.getView().byId("disruptNotifications").openNavigation();
+		this.getView().byId("disruptNotifications").closeNavigation();
 
 	},
 	onProductionGroupPress : function(oEvent){
@@ -738,5 +740,11 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		avlLineSelected = aModel.map(function(x) {return x.key; }).indexOf(oEvt.getSource().getSelectedItem().mProperties.key); 
 		
 	},
-	
+	showDisruption : function(oEvent)
+	{
+		if(this.getView().byId("disruptNotifications").getState() == false)
+			this.getView().byId("disruptNotifications").openNavigation();
+		else
+			this.getView().byId("disruptNotifications").closeNavigation();
+	},
 });

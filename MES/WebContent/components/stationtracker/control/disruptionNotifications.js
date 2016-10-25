@@ -13,13 +13,13 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.control.disruptionNotifica
 			}
 
 		},
-		defaultAggregation : 'sideContent',
+		defaultAggregation : 'disruptionContent',
 
 		aggregations : {
-			sideContent : {
+			disruptionContent : {
 				type : 'sap.ui.core.Control',
 				multiple : false,
-				singularName : 'sideContent'
+				singularName : 'disruptionContent'
 			},
 			content : {
 				type : 'sap.ui.core.Control',
@@ -40,7 +40,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.control.disruptionNotifica
 	renderer : function(r, t) {
 
 		var ns = t.getNavSize();
-		var sc = t.getSideContent();
+		var sc = t.getDisruptionContent();
 
 		r.write("<div");
 		r.writeControlData(t);
@@ -55,7 +55,8 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.control.disruptionNotifica
 		r.addClass("sidenav");
 		r.writeClasses();
 		if (ns!= '' || ns.toLowerCase() === 'auto') {
-			r.addStyle('width', ns);
+			r.addStyle('height', ns);
+			r.addStyle('transition', '2s');
 			r.writeStyles();
 		}
 		;
@@ -65,7 +66,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.control.disruptionNotifica
 
 		r.write("<div id='main'");
 		if (ns!= '' || ns.toLowerCase() === 'auto') {
-			r.addStyle('margin-right', ns);
+			r.addStyle('margin-bottom', ns);
 			r.writeStyles();
 		}
 		r.write(">");
