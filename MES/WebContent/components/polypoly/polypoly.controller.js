@@ -179,6 +179,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 							   	width : "2rem",
 							   	src : "sap-icon://employee",
 							   	color : "Green",
+							   	useIconTooltip : false,
 							   	visible : {
 			        				 parts : [ "type" ],
 			        				 formatter : function(
@@ -208,7 +209,8 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 						.getProperty("techname"),
 						showFilterMenuEntry : false,
 						width : "3rem",
-						visible: airbus.mes.stationtracker.AssignmentManager.polypolyAffectation,
+//						visible: airbus.mes.stationtracker.AssignmentManager.polypolyAffectation,
+						visible : false, // This column may no longer be used
 						template : new sap.m.CheckBox(
 								{
 //									selected : "{selected}",
@@ -238,7 +240,16 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 									         new sap.ui.core.Icon(
 									        		 {
 									        			 size : "1.7rem",
-									        			 tooltip : "{icon}",
+									        			 tooltip : {
+									        				 parts : [ "icon" ],
+									        				 formatter : function(icon) {
+									        					 if(airbus.mes.polypoly.util.Formatter.isVisible()){
+									        						 return icon;
+									        					 }else{
+									        						 return "Affect";
+									        					 }
+									        				 },
+									        			 },
 									        			 src : {
 									        				 parts : [ "icon" ],
 									        				 formatter : function(
@@ -258,6 +269,12 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 									        						 break;
 									        					 case "No_Clock_Data":
 									        						 return "sap-icon://employee-lookup";
+									        						 break;
+									        					 case "IN":
+									        						 return "sap-icon://employee-approvals";
+									        						 break;
+									        					 case "OUT":
+									        						 return "sap-icon://employee-rejections";
 									        						 break;
 									        					 }
 
@@ -283,8 +300,30 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 									        					 case "No_Clock_Data":
 									        						 return "Black";
 									        						 break;
+									        					 case "IN":
+									        						 return "Green";
+									        						 break;
+									        					 case "OUT":
+									        						 return "Red";
+									        						 break;
 									        					 }
 									        				 }
+									        			 },
+									        			 hoverColor : {
+									        				 parts : [ "type" ],
+									        				 formatter : function(type) {
+									        					 if(!airbus.mes.polypoly.util.Formatter.isVisible()){
+									        						 return "DeepSkyBlue";
+									        					 }
+									        				 },
+									        			 },
+									        			 activeColor : {
+									        				 parts : [ "type" ],
+									        				 formatter : function(type) {
+									        					 if(!airbus.mes.polypoly.util.Formatter.isVisible()){
+									        						 return "DeepSkyBlue";
+									        					 }
+									        				 },
 									        			 },
 									        			 visible : {
 									        				 parts : [ "type" ],
@@ -293,7 +332,10 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 									        					 return type == "UA_A"
 									        						 || type == "UA_P"
 									        				 }
-									        			 }
+									        			 },
+									        			 press : function(oEvt) {
+					        								 that.onIconAffectClick(oEvt)
+					        							 },
 									        		 }),
 									        		 new sap.m.Image(
 									        				 {
@@ -941,65 +983,53 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 	onBackPress : function(){
 		nav.back();
 	},
-//	onUserAllocate : function(oEvt) {
-
-//	if (!airbus.mes.polypoly.PolypolyManager.oViewController)
-//	airbus.mes.polypoly.PolypolyManager.oViewController = sap.ui.getCore()
-//	.byId("polypoly").getController();
-
-//	airbus.mes.polypoly.PolypolyManager.oViewController.checkBox = oEvt
-//	.getSource();
-//	airbus.mes.polypoly.PolypolyManager.polypolyIndex = airbus.mes.polypoly.PolypolyManager.oViewController.checkBox
-//	.getModel()
-//	.getProperty(
-//	airbus.mes.polypoly.PolypolyManager.oViewController.checkBox
-//	.getBindingContext().getPath());
-//	if (airbus.mes.polypoly.PolypolyManager.polypolyIndex.ERP_ID == "---"
-//	|| airbus.mes.polypoly.PolypolyManager.polypolyIndex.ERP_ID == " ") {
-//	ModelManager.messageShow("Invalid ERP ID"
-//	+ airbus.mes.polypoly.PolypolyManager.polypolyIndex.ERP_ID);
-
-//	airbus.mes.polypoly.PolypolyManager.oViewController.checkBox
-//	.setSelected(false);
-//	return false;
-//	}
-
-//	if (airbus.mes.polypoly.PolypolyManager.oViewController.checkBox
-//	.getSelected()) {
-//	if (sap.ui.getCore().byId("toogleAffectConfirm")
-//	.getState() === true) {
-//	if (!airbus.mes.polypoly.PolypolyManager.oViewController.oDialogConfirmationPoyPoly) {
-//	airbus.mes.polypoly.PolypolyManager.oViewController.oDialogConfirmationPoyPoly = sap.ui
-//	.xmlfragment(
-//	"airbus.userAffectatonConfirmationPolyPoly",
-//	airbus.mes.polypoly.PolypolyManager.oViewController);
-//	}
-//	var erp_id = airbus.mes.polypoly.PolypolyManager.polypolyIndex.ERP_ID
-//	ModelManager
-//	.chkUserOprCertificatePolyPoly(
-//	erp_id,
-//	airbus.mes.polypoly.PolypolyManager.oViewController.checkBox);
-//	return;
-//	}
-//	// if no QA check assign automatically
-//	}
-//	// to deselect --auto
-
-//	// Poly Poly User Save
-
-//	if (!ModelManager.polypoly_UserSave) {
-//	ModelManager.polypoly_UserSave
-//	.push(airbus.mes.polypoly.PolypolyManager.polypolyIndex);
-//	}
-//	if ((ModelManager.polypoly_UserSave
-//	.some(function(element) {
-//	return (element.ERP_ID == airbus.mes.polypoly.PolypolyManager.polypolyIndex.ERP_ID);
-//	})) === false) {
-//	ModelManager.polypoly_UserSave
-//	.push(airbus.mes.polypoly.PolypolyManager.polypolyIndex);
-//	}
-
-//	},
+	onIconAffectClick : function(oEvt){
+		if (!airbus.mes.stationtracker.AssignmentManager.polypolyAffectation){
+			return false;
+		}
+		if (!airbus.mes.polypoly.PolypolyManager.oViewController){
+			airbus.mes.polypoly.PolypolyManager.oViewController = airbus.mes.polypoly.oView.getController();
+		}
+		airbus.mes.polypoly.PolypolyManager.oViewController.oUserIcon = oEvt.getSource();
+		airbus.mes.polypoly.PolypolyManager.polypolyIndex = airbus.mes.polypoly.PolypolyManager.oViewController.oUserIcon.getModel().getProperty(airbus.mes.polypoly.PolypolyManager.oViewController.oUserIcon.getBindingContext().getPath());
+		
+		if (airbus.mes.polypoly.PolypolyManager.polypolyIndex.ERP_ID == "---" || airbus.mes.polypoly.PolypolyManager.polypolyIndex.ERP_ID == " ") {
+			ModelManager.messageShow("Invalid ERP ID" + airbus.mes.polypoly.PolypolyManager.polypolyIndex.ERP_ID);
+			return false;
+		}
+	},
+	
+	onUserAllocate : function(oEvt) {
+		if (!airbus.mes.polypoly.PolypolyManager.oViewController)
+			airbus.mes.polypoly.PolypolyManager.oViewController = airbus.mes.polypoly.oView.getController();
+		airbus.mes.polypoly.PolypolyManager.oViewController.checkBox = oEvt.getSource();
+		airbus.mes.polypoly.PolypolyManager.polypolyIndex = airbus.mes.polypoly.PolypolyManager.oViewController.checkBox.getModel().getProperty(airbus.mes.polypoly.PolypolyManager.oViewController.checkBox.getBindingContext().getPath());
+		if (airbus.mes.polypoly.PolypolyManager.polypolyIndex.ERP_ID == "---" || airbus.mes.polypoly.PolypolyManager.polypolyIndex.ERP_ID == " ") {
+			ModelManager.messageShow("Invalid ERP ID" + airbus.mes.polypoly.PolypolyManager.polypolyIndex.ERP_ID);
+			airbus.mes.polypoly.PolypolyManager.oViewController.checkBox.setSelected(false);
+			return false;
+		}
+		if (airbus.mes.polypoly.PolypolyManager.oViewController.checkBox.getSelected()) {
+			if (sap.ui.getCore().byId("toogleAffectConfirm").getState() === true) {
+				if (!airbus.mes.polypoly.PolypolyManager.oViewController.oDialogConfirmationPoyPoly) {
+					airbus.mes.polypoly.PolypolyManager.oViewController.oDialogConfirmationPoyPoly = sap.ui.xmlfragment("airbus.userAffectatonConfirmationPolyPoly",airbus.mes.polypoly.PolypolyManager.oViewController);
+				}
+				var erp_id = airbus.mes.polypoly.PolypolyManager.polypolyIndex.ERP_IDModelManager.chkUserOprCertificatePolyPoly(erp_id,airbus.mes.polypoly.PolypolyManager.oViewController.checkBox);
+				return;
+			}
+			// if no QA check assign automatically
+		}
+		// to deselect --auto
+		// Poly Poly User Save
+		if (!ModelManager.polypoly_UserSave) {
+			ModelManager.polypoly_UserSave.push(airbus.mes.polypoly.PolypolyManager.polypolyIndex);
+		}
+		if ((ModelManager.polypoly_UserSave.some(function(element) {
+					return (element.ERP_ID == airbus.mes.polypoly.PolypolyManager.polypolyIndex.ERP_ID);
+				})) === false) {
+			ModelManager.polypoly_UserSave.push(airbus.mes.polypoly.PolypolyManager.polypolyIndex);
+		}
+	},
 
 //	afterConfirmPress : function(oEvt) {
 //	oEvt.getSource().getParent().close();
