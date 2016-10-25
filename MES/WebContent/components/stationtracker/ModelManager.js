@@ -511,7 +511,7 @@ airbus.mes.stationtracker.ModelManager = {
 					"Row" : [ {
 						"sfc" : oModel[0].WORKORDER_ID,
 						"sfc_step_ref" : oModel[0].SFC_STEP_REF,
-						"operation_no" : oModel[0].OPERATION_ID,
+						"operation_no" : oModel[0].OPERATION_ID.split(",")[1],
 						"operation_desc" : oModel[0].OPERATION_DESCRIPTION,
 						"operation_revision" : oModel[0].SFC_STEP_REF
 								.split(",")[5],
