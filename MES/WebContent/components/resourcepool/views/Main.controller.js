@@ -151,9 +151,7 @@ sap.ui
 					 * Triggers when Assign Button is clicked on Users Tab
 					 **********************************************************/
 					assignUsers : function(evt) {
-						var aUsersToAssign = sap.ui.getCore().byId(
-								"idMainView--listAvailableUsers")
-								.getSelectedItems();
+						var aUsersToAssign = this.getView().byId("listAvailableUsers").getSelectedItems();
 
 						var aError = [];
 
@@ -213,15 +211,12 @@ sap.ui
 									}
 								});
 
-						sap.ui.getCore().getModel("AssignedUsersModel")
-								.refresh();
+						sap.ui.getCore().getModel("AssignedUsersModel").refresh();
+						
 						/* remove all selections on screen */
-						sap.ui.getCore().byId("idMainView--listAvailableUsers")
-								.removeSelections();
-						sap.ui.getCore().byId("idMainView--allAvailableUsers")
-								.setSelected(false);
-						sap.ui.getCore().byId("idMainView--allAssignedUsers")
-								.setSelected(false);
+						this.getView().byId("listAvailableUsers").removeSelections();
+						this.getView().byId("allAvailableUsers").setSelected(false);
+						this.getView().byId("allAssignedUsers").setSelected(false);
 
 						/* remove assigned users from AvailableUsersModel */
 						var oModelAvailableUsers = sap.ui.getCore().getModel(
@@ -288,8 +283,7 @@ sap.ui
 					 * Triggers when unAssign button is clicked on the Users tab
 					 **********************************************************/
 					unassignUsers : function(evt) {
-						var aUsersToUnassign = sap.ui.getCore().byId(
-								"idMainView--listAllocatedUsers")
+						var aUsersToUnassign = this.getView().byId("listAllocatedUsers")
 								.getSelectedItems();
 						/*
 						 * show error message when no users are selected when
@@ -352,15 +346,12 @@ sap.ui
 											.push(oJsonAvailableUsers);
 								});
 
-						sap.ui.getCore().getModel("AvailableUsersModel")
-								.refresh();
+						sap.ui.getCore().getModel("AvailableUsersModel").refresh();
+						
 						/* remove all selection */
-						sap.ui.getCore().byId("idMainView--listAllocatedUsers")
-								.removeSelections();
-						sap.ui.getCore().byId("idMainView--allAvailableUsers")
-								.setSelected(false);
-						sap.ui.getCore().byId("idMainView--allAssignedUsers")
-								.setSelected(false);
+						this.getView().byId("listAllocatedUsers").removeSelections();
+						this.getView().byId("allAvailableUsers").setSelected(false);
+						this.getView().byId("allAssignedUsers").setSelected(false);
 
 						/* remove Users from AssignedUsersModel */
 						var oModelAssignedUsers = sap.ui.getCore().getModel(
@@ -382,8 +373,7 @@ sap.ui
 					 **********************************************************/
 					assignWorkCenter : function(evt) {
 
-						var aWorkCenterToAssign = sap.ui.getCore().byId(
-								"idMainView--listAvailableWorkCenter")
+						var aWorkCenterToAssign = this.getView().byId("listAvailableWorkCenter")
 								.getSelectedItems();
 						/* If no selections are made when assigning show error */
 						if (!aWorkCenterToAssign
@@ -421,14 +411,11 @@ sap.ui
 								});
 
 						sap.ui.getCore().getModel("AssignedWCModel").refresh();
+						
 						/* remove all selections on screen */
-						sap.ui.getCore().byId(
-								"idMainView--listAvailableWorkCenter")
-								.removeSelections();
-						sap.ui.getCore().byId("idMainView--allAvailableWC")
-								.setSelected(false);
-						sap.ui.getCore().byId("idMainView--allAssignedWC")
-								.setSelected(false);
+						this.getView().byId("listAvailableWorkCenter").removeSelections();
+						this.getView().byId("allAvailableWC").setSelected(false);
+						this.getView().byId("allAssignedWC").setSelected(false);
 
 						/* remove assigned WC from AvailableWCModel */
 						var oModelAvailableWC = sap.ui.getCore().getModel(
@@ -453,9 +440,9 @@ sap.ui
 					 **********************************************************/
 					unassignWorkCenter : function(evt) {
 
-						var aWorkCenterToUnassign = sap.ui.getCore().byId(
-								"idMainView--listAllocatedWorkCenter")
+						var aWorkCenterToUnassign = this.getView().byId("listAllocatedWorkCenter")
 								.getSelectedItems();
+						
 						if (!aWorkCenterToUnassign
 								|| aWorkCenterToUnassign.length == 0) {
 							airbus.mes.resourcepool.util.ModelManager.showMessage("Toast", "",
@@ -481,13 +468,10 @@ sap.ui
 								});
 
 						sap.ui.getCore().getModel("AvailableWCModel").refresh();
-						sap.ui.getCore().byId(
-								"idMainView--listAllocatedWorkCenter")
-								.removeSelections();
-						sap.ui.getCore().byId("idMainView--allAssignedWC")
-								.setSelected(false);
-						sap.ui.getCore().byId("idMainView--allAvailableWC")
-								.setSelected(false);
+						
+						this.getView().byId("listAllocatedWorkCenter").removeSelections();
+						this.getView().byId("allAssignedWC").setSelected(false);
+						this.getView().byId("allAvailableWC").setSelected(false);
 
 						var oModelAssignedWC = sap.ui.getCore().getModel(
 								"AssignedWCModel").oData.Rowsets.Rowset[0].Row;
@@ -518,48 +502,35 @@ sap.ui
 
 						switch (oEvent.getSource().getId()) {
 						/* for Available Users List */
-						case "idMainView--allAvailableUsers":
+						case this.getView().byId("allAvailableUsers").sId:
 							if (flag)
-								sap.ui.getCore().byId(
-										"idMainView--listAvailableUsers")
-										.selectAll();
+								this.getView().byId("listAvailableUsers").selectAll();
 							else
-								sap.ui.getCore().byId(
-										"idMainView--listAvailableUsers")
-										.removeSelections();
+								this.getView().byId("listAvailableUsers").removeSelections();
 							break;
+							
 						/* for Assigned Users List */
-						case "idMainView--allAssignedUsers":
+						case this.getView().byId("allAssignedUsers").sId:
 							if (flag)
-								sap.ui.getCore().byId(
-										"idMainView--listAllocatedUsers")
-										.selectAll();
+								this.getView().byId("listAllocatedUsers").selectAll();
 							else
-								sap.ui.getCore().byId(
-										"idMainView--listAllocatedUsers")
-										.removeSelections();
+								this.getView().byId("listAllocatedUsers").removeSelections();
 							break;
+							
 						/* for available WC List */
-						case "idMainView--allAvailableWC":
+						case this.getView().byId("allAvailableWC").sId:
 							if (flag)
-								sap.ui.getCore().byId(
-										"idMainView--listAvailableWorkCenter")
-										.selectAll();
+								this.getView().byId("listAvailableWorkCenter").selectAll();
 							else
-								sap.ui.getCore().byId(
-										"idMainView--listAvailableWorkCenter")
-										.removeSelections();
+								this.getView().byId("listAvailableWorkCenter").removeSelections();
 							break;
+							
 						/* for Assigned WC List */
-						case "idMainView--allAssignedWC":
+						case this.getView().byId("allAssignedWC").sId:
 							if (flag)
-								sap.ui.getCore().byId(
-										"idMainView--listAllocatedWorkCenter")
-										.selectAll();
+								this.getView().byId("listAllocatedWorkCenter").selectAll();
 							else
-								sap.ui.getCore().byId(
-										"idMainView--listAllocatedWorkCenter")
-										.removeSelections();
+								this.getView().byId("listAllocatedWorkCenter").removeSelections();
 							break;
 						}
 
@@ -593,8 +564,7 @@ sap.ui
 
 					saveAssignedUsers : function() {
 
-						var aAssignedItems = sap.ui.getCore().byId(
-								"idMainView--listAllocatedUsers").getItems();
+						var aAssignedItems = this.getView().byId("listAllocatedUsers").getItems();
 
 						var aModelData = []
 						for (var i = 0; i < aAssignedItems.length; i++) {
@@ -619,9 +589,7 @@ sap.ui
 					},
 
 					saveAssignedWC : function() {
-						var aAssignedItems = sap.ui.getCore().byId(
-								"idMainView--listAllocatedWorkCenter")
-								.getItems();
+						var aAssignedItems = this.getView().byId("listAllocatedWorkCenter").getItems();
 
 						var aModelData = [];
 						for (var i = 0; i < aAssignedItems.length; i++) {
@@ -646,8 +614,7 @@ sap.ui
 					},
 
 					saveAssignedShifts : function() {
-						var aRows = sap.ui.getCore().byId(
-								"idMainView--shiftTable").getItems();
+						var aRows = this.getView().byId("shiftTable").getItems();
 
 						var aModelData = [];
 						for (var i = 0; i < aRows.length; i++) {
@@ -683,7 +650,7 @@ sap.ui
 					 * *************************** Back Button Press
 					 * ********************************
 					 */
-					onBackPress : function() {
+					/*onBackPress : function() {
 						if (airbus.mes.resourcepool.util.ModelManager.anyChangesFlag == true) {
 							if (!this.oDialog) {
 								this.oDialog = sap.ui.xmlfragment(
@@ -725,7 +692,7 @@ sap.ui
 
 					afterDialogCancel : function() {
 						this.oDialog.close();
-					},
+					},*/
 
 					/**
 					 * *************Search Functions for Users and Work
@@ -781,8 +748,7 @@ sap.ui
 						// add filter for search
 						var aFilters = [];
 						var sQuery = oEvt.getSource().getValue();
-						var oList = sap.ui.getCore().byId(
-								"idMainView--listAvailableWorkCenter");
+						var oList = this.getView().byId("listAvailableWorkCenter");
 						var binding = oList.getBinding("items");
 
 						if (sQuery && sQuery.length > 0) {
@@ -811,9 +777,8 @@ sap.ui
 						// add filter for search
 						var aFilters = [];
 						var sQuery = oEvt.getSource().getValue();
-						var oList = sap.ui.getCore().byId(
-								"idMainView--listAllocatedWorkCenter");
-						;
+						var oList = this.getView().byId("listAllocatedWorkCenter");
+						
 						var binding = oList.getBinding("items");
 
 						if (sQuery && sQuery.length > 0) {
@@ -985,15 +950,27 @@ sap.ui
 					},
 					
 					clearFilters : function() {
-						sap.ui.getCore().byId(
-								"idMainView--searchAvailableUsers").clear();
-						sap.ui.getCore()
-								.byId("idMainView--searchAssignedUsers")
-								.clear();
-						sap.ui.getCore().byId("idMainView--searchAvailableWC")
-								.clear();
-						sap.ui.getCore().byId("idMainView--searchAssignedWC")
-								.clear();
+						this.getView().byId("searchAvailableUsers").clear();
+						this.getView().byId("searchAssignedUsers").clear();
+						this.getView().byId("searchAvailableWC").clear();
+						this.getView().byId("searchAssignedWC").clear();
+					},
+					
+					
+					
+					
+					editTeamOpen: function(){
+						if (airbus.mes.resourcepool.editTeam === undefined) {
+
+							airbus.mes.resourcepool.editTeam = sap.ui.xmlfragment("editTeam",
+									"airbus.mes.resourcepool.views.editTeam", airbus.mes.resourcepool.oView.getController());
+							airbus.mes.resourcepool.oView.addDependent(airbus.mes.resourcepool.editTeam);
+						}
+						airbus.mes.resourcepool.editTeam.open();
 					}
+					
+					
+					
+					
 
 				});

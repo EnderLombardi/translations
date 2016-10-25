@@ -46,11 +46,11 @@ airbus.mes.resourcepool.util.ModelManager = {
 
 		});
 		
-		/*this.i18nModel = new sap.ui.model.resource.ResourceModel({
+		/*airbus.mes.resourcepool.oView.getModel("i18nModel"). = new sap.ui.model.resource.ResourceModel({
 			bundleUrl : "i18n/i18n.properties",
 			bundleLocale : core.getConfiguration().getLanguage()
 		});
-		core.setModel(this.i18nModel, "i18n");*/
+		core.setModel(airbus.mes.resourcepool.oView.getModel("i18nModel")., "i18n");*/
 		
 		this.loadModelValueHelp();
 	},
@@ -63,22 +63,6 @@ airbus.mes.resourcepool.util.ModelManager = {
 		this.loadModelAssignedWC();
 		this.loadModelAvailableWC();
 		this.currentView.setBusy(false);
-	},
-	
-	//************************************LogOut****************************************
-
-	logOut : function() {
-		jQuery
-		.ajax({
-			url : this.urlModel.getProperty("urllogout"),
-			type : 'POST',
-			async : false,
-			complete : function() {
-				
-				location.reload();
-			}
-		
-	})
 	},
 
 	getUrlValueHelpModel : function() {
@@ -199,14 +183,14 @@ airbus.mes.resourcepool.util.ModelManager = {
 			cache : false,
 			type : 'GET',
 			success : function(data, textStatus, jqXHR) {
-				var message = this.i18nModel.getProperty("Created");
+				var message = airbus.mes.resourcepool.oView.getModel("i18nModel").getProperty("Created");
 				value = this.handleMessages(data, textStatus, jqXHR,
 						message, "Strip");
-				this.loadModelValueHelp();
+				airbus.mes.resourcepool.util.ModelManager.loadModelValueHelp();
 
 			},
 			error : function() {
-				this.handleServerError("Strip")
+				airbus.mes.resourcepool.util.ModelManager.handleServerError("Strip")
 			}
 		});
 		return value;
@@ -233,14 +217,14 @@ airbus.mes.resourcepool.util.ModelManager = {
 			cache : false,
 			type : 'GET',
 			success : function(data, textStatus, jqXHR) {
-				var message = this.i18nModel.getProperty("Updated");
+				var message = airbus.mes.resourcepool.oView.getModel("i18nModel").getProperty("Updated");
 				value = this.handleMessages(data, textStatus, jqXHR,
 						message, "Strip");
-				this.loadModelValueHelp();
+				airbus.mes.resourcepool.util.ModelManager.loadModelValueHelp();
 
 			},
 			error : function() {
-				this.handleServerError("Strip")
+				airbus.mes.resourcepool.util.ModelManager.handleServerError("Strip")
 			}
 		});
 		return value;
@@ -258,7 +242,7 @@ airbus.mes.resourcepool.util.ModelManager = {
 				ModelManager.resourceDescription);
 
 		urlUpdateResourcePool = urlUpdateResourcePool.replace("$Assignments",
-				airbus.mes.shell.util.Formatter.json2xml({
+				airbus.mes.shell.ModelManager.json2xml({
 					CT_WORKLIST : {
 						item : oModelData
 					}
@@ -276,24 +260,23 @@ airbus.mes.resourcepool.util.ModelManager = {
 				"Param.1": airbus.mes.settings.ModelManager.plant,
 				"Param.2": this.resourceName,
 				"Param.3": this.resourceDescription,
-				"Param.4":airbus.mes.shell.util.Formatter.json2xml({
+				"Param.4":airbus.mes.shell.ModelManager.json2xml({
 					CT_WORKLIST : {
 						item : oModelData
 					}
 				})
 			},
 			success : function(data, textStatus, jqXHR) {
-				this.loadMainViewModels();
+				airbus.mes.resourcepool.util.ModelManager.loadMainViewModels();
 				sap.ui.core.BusyIndicator.hide(); 
-				var message = this.i18nModel
-						.getProperty("SavedResourcePool");
-				this.handleMessages(data, textStatus, jqXHR, message,
+				var message = airbus.mes.resourcepool.oView.getModel("i18nModel").getProperty("SavedResourcePool");
+				airbus.mes.resourcepool.util.ModelManager.handleMessages(data, textStatus, jqXHR, message,
 						"Toast");
 
 			},
 			error : function() {
 				sap.ui.core.BusyIndicator.hide(); 
-				this.handleServerError("Toast")
+				airbus.mes.resourcepool.util.ModelManager.handleServerError("Toast")
 			}
 
 		});
@@ -320,10 +303,10 @@ airbus.mes.resourcepool.util.ModelManager = {
 				var message = airbus.mes.resourcepool.oView.getModel("i18nModel").getProperty("Deleted");
 				value = this.handleMessages(data, textStatus, jqXHR,
 						message, "Strip");
-				this.loadModelValueHelp();
+				airbus.mes.resourcepool.util.ModelManager.loadModelValueHelp();
 			},
 			error : function() {
-				this.handleServerError("Strip")
+				airbus.mes.resourcepool.util.ModelManager.handleServerError("Strip")
 
 			}
 		});
@@ -332,8 +315,7 @@ airbus.mes.resourcepool.util.ModelManager = {
 	},
 
 	handleServerError : function(display) {
-		this.showMessage(display, "Error", airbus.mes.resourcepool.oView.getModel("i18nModel").i18nModel
-				.getProperty("TryAgain"), true);
+		this.showMessage(display, "Error", airbus.mes.resourcepool.oView.getModel("i18nModel").getProperty("TryAgain"), true);
 		this.currentView.setBusy(false);
 	},
 

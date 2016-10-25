@@ -113,12 +113,12 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 			
 		case "resourcePool":
 			textButtonTo = "Go to Team Assignment";
-			airbus.mes.settings.GlobalFunction.navigateTo(textButtonTo, "teamassignment");
+			airbus.mes.settings.GlobalFunction.navigateTo(textButtonTo, "teamassignmentBack");
 			break;
 			
 		case "disruptiontrackerView":
 			textButtonTo = "Go to Disruption Tracker";
-			airbus.mes.settings.GlobalFunction.navigateTo(textButtonTo, "disruptiontracker");
+			airbus.mes.settings.GlobalFunction.navigateTo(textButtonTo, "disruptiontrackerBack");
 			break;
 		}
 
