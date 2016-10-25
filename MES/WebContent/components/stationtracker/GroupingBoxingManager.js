@@ -35,19 +35,19 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 			
 			oHierachy[el.day] = {};
 		}
-		if ( !oHierachy[el.day][el.shiftName] ) {
+		if ( !oHierachy[el.day][el.shiftID] ) {
 			
-			oHierachy[el.day][el.shiftName] = [];
+			oHierachy[el.day][el.shiftID] = [];
 		}
 		
 		
 		var oShift = {
-				"shiftID" : el.shiftID,
+				"shiftName" : el.shiftName,
 				"StartDate" : oFormatter.jsDateFromDayTimeStr(el.beginDateTime),
 				"EndDate" : oFormatter.jsDateFromDayTimeStr(el.endDateTime),
 		};
 		
-		oHierachy[el.day][el.shiftName].push(oShift);
+		oHierachy[el.day][el.shiftID].push(oShift);
 		aShiftBreak.push(oShift);
 		
 	});
@@ -61,19 +61,19 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 				//Creation data wich represent boxs rescheduling and initial
 					var aStartDate = [];
 					var aEndDate = [];
-					var sShiftID = "";
+					var shiftName = "";
 
 					oHierachy[i][a].forEach( function( el ) { 
 						
 						aStartDate.push(Date.parse(el.StartDate));
 						aEndDate.push(Date.parse(el.EndDate));
-						sShiftID = el.shiftID;
+						shiftName = el.shiftName;
 					} )
 					
 					var oShift = {
-							"shiftID" : sShiftID,
+							"shiftName" : shiftName,
 							"day": i,
-							"shiftName":a,
+							"shiftID":a,
 							"StartDate" : new Date(Math.min.apply(null,aStartDate)),
 							"EndDate" : new Date(Math.max.apply(null,aEndDate)),
 					

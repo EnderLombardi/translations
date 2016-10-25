@@ -15,7 +15,7 @@
 							class="sapUiTinyMarginBeginEnd pageHeader pageHeaderBlue" change="changeShift"
 							items="{ path : 'stationTrackerShift>/' }"
 							enabled="{ path : 'stationTrackerShift>/0/visible', formatter : 'airbus.mes.stationtracker.util.Formatter.isDayTimeline' }">
-							<core:Item key="{stationTrackerShift>id}" text="{stationTrackerShift>value}" name="stationTrackerShift>name"/>
+							<core:Item key="{stationTrackerShift>shiftID}" text="{stationTrackerShift>shiftName}"/>
 						</Select>
 						<Button id="ProductionButton" text="{StationTrackerI18n>ProductionGroup}" type="Transparent"
 							class="whiteColor whiteButton" press="onProductionGroupPress" />

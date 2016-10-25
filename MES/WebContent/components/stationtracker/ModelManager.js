@@ -255,20 +255,28 @@ airbus.mes.stationtracker.ModelManager = {
 		var oView = airbus.mes.stationtracker.oView;
 		var options = airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy[airbus.mes.stationtracker.ShiftManager.current_day];
 		var modelarray = [];
+		var sShiftName ="";
 		var i = 0;
 		for ( var prop in options) {
 			// skip loop if the property is from prototype
 			if (!options.hasOwnProperty(prop))
 				continue;
-
+			
+			airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy[airbus.mes.stationtracker.ShiftManager.current_day][prop].forEach(function(key1,index){
+				
+				sShiftName = airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy[airbus.mes.stationtracker.ShiftManager.current_day][prop][index].shiftName;
+				
+			});
+			
 			var element = {};
 			element.value = prop;
 			element.visible = airbus.mes.stationtracker.ShiftManager.dayDisplay;
-			element.shiftName = prop;
+			element.shiftName = sShiftName;
 			element.day = airbus.mes.stationtracker.ShiftManager.current_shift.day;
-			element.shiftID = airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy[airbus.mes.stationtracker.ShiftManager.current_day][prop][0].shiftID ;
-			modelarray.push(element);
-			i++;
+			element.shiftID = prop
+			modelarray.push(element);	
+			
+			
 		}
 
 		oView.getModel("stationTrackerShift").setData(modelarray);
@@ -276,20 +284,22 @@ airbus.mes.stationtracker.ModelManager = {
 
 		if (airbus.mes.stationtracker.ShiftManager.dayDisplay) {
 
-			airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(airbus.mes.stationtracker.ShiftManager.current_shift.shiftName);
 			
-			airbus.mes.stationtracker.ShiftManager.ShiftSelected.EndDate = airbus.mes.stationtracker.ShiftManager.current_shift.EndDate;
-			airbus.mes.stationtracker.ShiftManager.ShiftSelected.StartDate = airbus.mes.stationtracker.ShiftManager.current_shift.StartDate;
 			airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftName = airbus.mes.stationtracker.ShiftManager.current_shift.shiftName;
-			airbus.mes.stationtracker.ShiftManager.ShiftSelected.ID = airbus.mes.stationtracker.ShiftManager.current_shift.shiftID;
+			airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftID = airbus.mes.stationtracker.ShiftManager.current_shift.shiftID;
 			airbus.mes.stationtracker.ShiftManager.ShiftSelected.day = airbus.mes.stationtracker.ShiftManager.current_shift.day;
 		
+			airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(airbus.mes.stationtracker.ShiftManager.current_shift.shiftName);
 			airbus.mes.stationtracker.oView.byId("selectShift").fireChange(0);
 
 		}
 
 		if (airbus.mes.stationtracker.ShiftManager.shiftDisplay) {
 
+			airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftName = airbus.mes.stationtracker.ShiftManager.current_shift.shiftName;
+			airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftID = airbus.mes.stationtracker.ShiftManager.current_shift.shiftID;
+			airbus.mes.stationtracker.ShiftManager.ShiftSelected.day = airbus.mes.stationtracker.ShiftManager.current_shift.day;
+			
 			airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(airbus.mes.stationtracker.ShiftManager.current_shift.shiftName);
 
 		}

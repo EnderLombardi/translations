@@ -319,7 +319,7 @@ airbus.mes.stationtracker.util.Formatter = {
 				
 				// User affectation
 				// TODO maybe replace date + name by the Id of the shift?
-				var sshiftID = airbus.mes.stationtracker.ShiftManager.current_shift.shiftID;
+				var sshiftID = airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftID;
 					
 				if ( airbus.mes.stationtracker.ShiftManager.dayDisplay ) {
 						

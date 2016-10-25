@@ -542,11 +542,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		oPanel.getHeight();
 	},
 	changeShift : function(Oevt) {
-	
-//		airbus.mes.stationtracker.ShiftManager.ShiftSelected = airbus.mes.stationtracker.oView.byId("selectShift").getSelectedItem().getText();
-//		
-		console.log(airbus.mes.stationtracker.oView.byId("selectShift").getSelectedItem().getText());
-		
+			
 		var sPath = Oevt.getSource().getSelectedIndex();
 		var oModel = airbus.mes.stationtracker.oView.getModel("stationTrackerShift").getProperty("/" + sPath);
 	
@@ -556,7 +552,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	
 		if ( airbus.mes.stationtracker.ShiftManager.dayDisplay ) {
 				
-		var intervals = airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy[airbus.mes.stationtracker.ShiftManager.current_day][airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftName];
+		var intervals = airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy[airbus.mes.stationtracker.ShiftManager.current_day][airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftID];
 				
 		
 		airbus.mes.stationtracker.ShiftManager.ShiftSelected.StartDate = intervals[0].StartDate;
