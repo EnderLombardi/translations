@@ -4,6 +4,11 @@
 /**************************************
 *classes for Progress Slider Screen
 ****************************************/
+.proressSliderGrid  .sapUiRespGridSpanL8:nth-child(2){
+	overflow:visible !important;
+}
+
+
 .ML-05{margin-left:0.5rem !important;}
 .progressSlider{
 	display:block !important;

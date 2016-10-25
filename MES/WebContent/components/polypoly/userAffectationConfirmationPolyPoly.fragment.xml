@@ -1,0 +1,12 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<Dialog id="oDialogAffectatonConfirmationPolyPoly">
+		<content>
+			<Text id="messageAffectConfirmPolyPoly" text=""></Text>
+		</content>
+		<buttons>
+			<Button text="Confirm" press="afterConfirmPress" />
+			<Button text="Cancel" press="onCancel" />
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

@@ -97,7 +97,7 @@
 								</items>
 							</HBox>
 
-							<l:Grid defaultSpan="L12 M12 S12">
+							<l:Grid defaultSpan="L12 M12 S12" class="proressSliderGrid">
 								<Button id="btnReduce" type="Transparent" press="reduceProgress"
 									icon="sap-icon://sys-minus" class="progressBtnColor">
 									<layoutData>

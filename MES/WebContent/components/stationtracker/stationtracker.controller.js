@@ -271,14 +271,19 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 //			//load model of polypoly
 //			airbus.mes.polypoly.ModelManager.loadPolyPolyModel("F1","1","10","CHES");	
 //		}
-		sap.ui.getCore().createComponent({
-			name : "airbus.mes.polypoly", // root component folder is resources
+		if(airbus.mes.polypoly == undefined){
+			sap.ui.getCore().createComponent({
+				name : "airbus.mes.polypoly", // root component folder is resources
          	});
+		}
 		
 		airbus.mes.polypoly.PolypolyManager.globalContext.bEditable = !airbus.mes.stationtracker.AssignmentManager.polypolyAffectation;
+		
+		if(!nav.getPage("polypolyPage")){
 		var oPolypolyPage = new sap.m.Page({
 			content: airbus.mes.polypoly.oView,
 			title : "POLYPOLY",
+			id:"polypolyPage",
 			customHeader : new sap.m.Toolbar({
 				content: [
 				          new sap.m.Button({
@@ -296,6 +301,12 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		});
 		
 		nav.addPage(oPolypolyPage);
+		}else{
+			var oPolypolyPage = nav.getPage("polypolyPage");
+			if(oPolypolyPage.getContent().length == 0){
+				oPolypolyPage.addContent(airbus.mes.polypoly.oView);
+			}
+		}
 		nav.to(oPolypolyPage);
 		
 //		nav.addPage(airbus.mes.polypoly.oView);

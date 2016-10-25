@@ -219,10 +219,11 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 							if (!airbus.mes.stationtracker.oPopoverPolypoly) {
 								airbus.mes.stationtracker.oPopoverPolypoly = sap.ui.xmlfragment("airbus.mes.stationtracker.polypolyFragment", airbus.mes.stationtracker.oView.getController());
 								
-								sap.ui.getCore().createComponent({
-									name : "airbus.mes.polypoly", // root component folder is resources
-						         	});	
-								
+								if(airbus.mes.polypoly == undefined){
+									sap.ui.getCore().createComponent({
+										name : "airbus.mes.polypoly", // root component folder is resources
+									});	
+								}
 							}
 							//load model of polypoly
 							airbus.mes.polypoly.ModelManager.getPolyPolyModel("F1","1","10","CHES");
