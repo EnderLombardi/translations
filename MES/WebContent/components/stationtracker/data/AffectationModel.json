@@ -17,8 +17,8 @@
                   "lastName": "Pierre B.",
                   "picture": "toto",
                   "avlLine": "3",
-                  "shiftName": "NIGHT 1",
-                  "shiftID": "NIGHT 1",
+                  "shiftName": "NORMAL 1",
+                  "shiftID": "NORMAL 1",
                   "day": "2016-10-17"
                },
                {
@@ -28,7 +28,7 @@
                   "picture": "toto",
                   "avlLine": "3",
                   "shiftName": "NORMAL 1",
-                  "shiftID": "NIGHT 1",
+                  "shiftID": "NORMAL 1",
                   "day": "2016-10-17"
                },
                {
@@ -38,7 +38,7 @@
                   "picture": "toto",
                   "avlLine": "4",
                   "shiftName": "NORMAL 1",
-                  "shiftID": "NIGHT 1",
+                  "shiftID": "NORMAL 1",
                   "day": "2016-10-17"
                },
                {
@@ -48,7 +48,7 @@
                   "picture": "toto",
                   "avlLine": "2",
                   "shiftName": "NORMAL 1",
-                  "shiftID": "NIGHT 1",
+                  "shiftID": "NORMAL 1",
                   "day": "2016-10-17"
                }
             ]

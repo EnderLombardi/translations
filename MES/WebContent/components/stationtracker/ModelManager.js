@@ -167,6 +167,12 @@ airbus.mes.stationtracker.ModelManager = {
 		oViewModel.loadData(geturlstationtracker, null, false);
 
 	},
+	
+	setOSW : function( aItem ) {
+		
+		console.log(airbus.mes.stationtracker.util.Formatter.json2xml( { SFC_Step : { item : aItem } }));
+		
+	},
 
 	onUnPlannedLoad : function() {
 

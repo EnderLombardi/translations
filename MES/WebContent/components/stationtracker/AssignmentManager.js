@@ -30,13 +30,9 @@ airbus.mes.stationtracker.AssignmentManager = {
 
 				oHierarchy[el.avlLine] = {};
 			}
-			if (!oHierarchy[el.avlLine][el.day]) {
+			if (!oHierarchy[el.avlLine][el.shiftID]) {
 
-				oHierarchy[el.avlLine][el.day] = {};
-			}
-			if (!oHierarchy[el.avlLine][el.day][el.shiftName]) {
-
-				oHierarchy[el.avlLine][el.day][el.shiftName] = [];
+				oHierarchy[el.avlLine][el.shiftID] = [];
 			}
 			
 			var userAffectation = {
@@ -48,7 +44,7 @@ airbus.mes.stationtracker.AssignmentManager = {
 				"picture" : el.picture,
 			};
 
-			oHierarchy[el.avlLine][el.day][el.shiftName].push(userAffectation);
+			oHierarchy[el.avlLine][el.shiftID].push(userAffectation);
 		});
 		
 	},

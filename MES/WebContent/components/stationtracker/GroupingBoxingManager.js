@@ -4,6 +4,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 	operationHierarchy : {},
 	shiftHierarchy : {},
 	shiftNoBreakHierarchy: [],
+	shiftBreakHierarchy: [],
 	showInitial : false,
 	//XXX MEHDI TODO
 	group : "CPP_CLUSTER" ,
@@ -15,6 +16,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 		
 	// Tree Shift Model	
 	var oHierachy = airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy = {};
+	var aShiftBreak = airbus.mes.stationtracker.GroupingBoxingManager.shiftBreakHierarchy = [];
 	var oModelShift = sap.ui.getCore().getModel("shiftsModel");
 	var oFormatter = airbus.mes.stationtracker.util.Formatter;
 	
@@ -40,12 +42,14 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 		
 		
 		var oShift = {
-				
-				"beginDateTime" : oFormatter.jsDateFromDayTimeStr(el.beginDateTime),
-				"endDateTime" : oFormatter.jsDateFromDayTimeStr(el.endDateTime),
+				"shiftID" : el.shiftID,
+				"StartDate" : oFormatter.jsDateFromDayTimeStr(el.beginDateTime),
+				"EndDate" : oFormatter.jsDateFromDayTimeStr(el.endDateTime),
 		};
 		
 		oHierachy[el.day][el.shiftID].push(oShift);
+		aShiftBreak.push(oShift);
+		
 	});
 	// Shift Model (without breaks)
 	var oHierachy2 = airbus.mes.stationtracker.GroupingBoxingManager.shiftNoBreakHierarchy = [];
@@ -56,17 +60,18 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 				
 				//Creation data wich represent boxs rescheduling and initial
 					var aStartDate = [];
-					var aEndDate = [];	
+					var aEndDate = [];
+					var sShiftID = "";
 
 					oHierachy[i][a].forEach( function( el ) { 
 						
-						aStartDate.push(Date.parse(el.beginDateTime));
-						aEndDate.push(Date.parse(el.endDateTime));
-						
+						aStartDate.push(Date.parse(el.StartDate));
+						aEndDate.push(Date.parse(el.EndDate));
+						sShiftID = el.shiftID;
 					} )
 					
 					var oShift = {
-						
+							"shiftID" : sShiftID,
 							"day": i,
 							"shiftName":a,
 							"StartDate" : new Date(Math.min.apply(null,aStartDate)),
@@ -74,6 +79,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 					
 					}
 					oHierachy2.push(oShift);
+					
 			}
 			
 		};

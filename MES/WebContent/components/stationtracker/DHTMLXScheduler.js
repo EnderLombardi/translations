@@ -198,7 +198,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 						/* 	 Custom progress background display  */
 
 						scheduler.templates.event_class = function(start, end, event) {
-
+							console.log("lol");
 							return "grey";
 
 						};

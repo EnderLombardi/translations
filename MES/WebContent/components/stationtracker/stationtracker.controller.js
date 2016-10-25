@@ -354,7 +354,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		airbus.mes.stationtracker.worklistPopover.OSW = false;		
 	
 		var oModel = sap.ui.getCore().getModel("unPlannedModel");
-	
+
 		//Changed the data of the worklist by unplannned model
 		airbus.mes.stationtracker.worklistPopover.setModel(new sap.ui.model.json.JSONModel(oModel.oData.Rowsets.Rowset[0].Row),"WorkListModel");
 		airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").refresh(true);
@@ -503,29 +503,26 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		var oOperationPopover = sap.ui.getCore().byId("operationPopover--operationPopoverID");
 		oOperationPopover.close();
 	},
-	onSelectionChange : function(oEvent) {
-		var oList = oEvent.getSource();
-		var oLabel = this.getView().byId("idFilterLabel");
-		var oInfoToolbar = this.getView().byId("idInfoToolbar");
-
-		// With the 'getSelectedContexts' function you can access the context paths
-		// of all list items that have been selected, regardless of any current
-		// filter on the aggregation binding.
-		var aContexts = oList.getSelectedContexts(true);
-
-		// update UI
-		var bSelected = (aContexts && aContexts.length > 0);
-		var sText = (bSelected) ? aContexts.length + " selected" : null;
-//		oInfoToolbar.setVisible(bSelected);
-		oLabel.setText(sText);		
 		
-	},
-	onUnplannedImport : function(oEvent) {
+	/**
+	 * Fire when the user click on Import of unplanned pop-up or OSW pop-up  
+	 *
+	 *  @return{STRING} Myvalue, current value of box/group Id
+	 */
+	onUnplannedImport : function() {
 
 		var oList = sap.ui.getCore().byId("worklistPopover--myList"); //TODO : change access to list
-		var aContext = oList.getSelectedContexts(true);
-	console.log("toto");
+		var aPath = oList.getSelectedContextPaths();
+		var aSFC_Step = [];
+		
+		aPath.forEach(function(el) {
+		
+			aSFC_Step.push(airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").getProperty(el).SFC_STEP_REF);
 			
+		})
+		
+		airbus.mes.stationtracker.ModelManager.setOSW(aSFC_Step);
+		
 	},
 	
 	onUnplannedClose : function() {
@@ -553,10 +550,9 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		var intervals = airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy[airbus.mes.stationtracker.ShiftManager.current_day][airbus.mes.stationtracker.ShiftManager.ShiftSelected];
 				
 		
-		airbus.mes.stationtracker.ShiftManager.ShiftSelectedStart = intervals[0].beginDateTime;
-		airbus.mes.stationtracker.ShiftManager.ShiftSelectedEnd = intervals[intervals.length - 1].endDateTime;
+		airbus.mes.stationtracker.ShiftManager.ShiftSelectedStart = intervals[0].StartDate;
+		airbus.mes.stationtracker.ShiftManager.ShiftSelectedEnd = intervals[intervals.length - 1].EndDate;
 		// remove previous marker
-		
 		airbus.mes.stationtracker.ShiftManager.ShiftMarkerID.forEach(function(el){
 				
 			scheduler.deleteMarkedTimespan(el);
