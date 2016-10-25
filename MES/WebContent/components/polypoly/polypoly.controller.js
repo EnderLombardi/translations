@@ -97,6 +97,11 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 				showFilterMenuEntry : false,
 				width : "2rem",
 				template : new sap.m.Text({
+					customData: {
+						key: "category",
+						value: "{type}",
+						writeToDom: true
+					},
 					text : {
 						parts : [ oContext
 						          .getProperty("techname") ],
@@ -116,6 +121,11 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 				showFilterMenuEntry : false,
 				width : "2rem",
 				template : new sap.m.Text({
+					customData: {
+						key: "category",
+						value: "{type}",
+						writeToDom: true
+					},
 					text : {
 						parts : [ oContext
 						          .getProperty("techname") ],
@@ -135,6 +145,11 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 				width : "8rem",
 				visible : false,
 				template : new sap.m.Text({
+					customData: {
+						key: "category",
+						value: "{type}",
+						writeToDom: true
+					},
 					visible : {
 						parts : [ "type" ],
 						formatter : function(type) {
@@ -172,6 +187,11 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 //						},
 //					})
 					new sap.m.HBox({
+						customData: {
+							key: "category",
+							value: "{type}",
+							writeToDom: true
+						},
 						alignItems : "Center",
 						items: [
 						   new sap.m.Image({ 
@@ -215,6 +235,11 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 						visible : false, // This column may no longer be used
 						template : new sap.m.CheckBox(
 								{
+									customData: {
+										key: "category",
+										value: "{type}",
+										writeToDom: true
+									},
 //									selected : "{selected}",
 //									select : sap.ui
 //									.getCore()
@@ -238,6 +263,11 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 						width : "2.5rem",
 						template : new sap.m.VBox(
 								{
+									customData: {
+										key: "category",
+										value: "{type}",
+										writeToDom: true
+									},
 									items : [
 									         new sap.ui.core.Icon(
 									        		 {
@@ -430,6 +460,11 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 						multiLabels : [ aMultiLabels ],
 						template : new sap.m.VBox(
 								{
+									customData: {
+										key: "category",
+										value: "{type}",
+										writeToDom: true
+									},
 									items : [
 									         new sap.m.Select(
 									        		 {
