@@ -564,17 +564,17 @@ div#SPStatusInd.progressBarOP.sapMBarChild.sapMPI {
 background-color: #0085AD !important;
 } */
 
-/**********************************/
-/* CSS for operation detail popup */
-/***********************************/
+/********************************************************/
+/*		 CSS for operation detail Pop-Up 			 	*/
+/*******************************************************/
 #operationDetailPopup--operationDetailPopUp-cont{
-	overflow-y: scroll !important;
+	//overflow-y: scroll !important;
 }
 #operationDetailPopup--operationDetailPopUp-scrollCont{
 	padding:0rem !important;
 }
 
-
+/*********** End of CSS for Operation Detail Pop-Up
 
 /******* REFINED CSS *******/
 
@@ -728,12 +728,12 @@ background-color: #0085AD !important;
 	background-color: #DDD;
 }
 
-/** Height + Scroll **/
-#stationTrackerView--stationtracker{
+ /** Height + Scroll **/
+  #stationTrackerView--stationtracker{
 	width: auto;
-	height: auto !important;
-	position: absolute;
-	top:0;
+	/*height: auto !important;
+	position: absolute;*/
+	top:0 !important;
 	bottom:0;
 	left: 0;
 	right: 0;
@@ -743,4 +743,4 @@ background-color: #0085AD !important;
 	overflow-y: scroll;
 	bottom: 0;
 	height: auto !important;
-}
+}  

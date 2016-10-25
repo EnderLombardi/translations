@@ -270,12 +270,23 @@ sap.ui
 							airbus.mes.shell.util.navFunctions.stationTracker();
 							break;
 						
+						
+							/** Resource Pool **/
 						case "teamassignment":
 							airbus.mes.shell.util.navFunctions.resourcePool();
 							break;
+						case "teamassignmentBack":
+							airbus.mes.shell.util.navFunctions.resourcePoolParams();
+							nav.back();
+							break;
 						
+							
+							/** Disruption Tracker **/
 						case "disruptiontracker":
 							airbus.mes.shell.util.navFunctions.disruptionTracker();
+							break;							
+						case "disruptiontrackerBack":
+							nav.back();
 							break;
 						
 						case "back":

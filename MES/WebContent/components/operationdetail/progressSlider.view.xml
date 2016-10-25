@@ -1,7 +1,7 @@
 <core:View xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout"
 	xmlns:f="sap.ui.layout.form" xmlns:html="http://www.w3.org/1999/xhtml"
 	controllerName="airbus.mes.operationdetail.progressSlider">
-	<Page showHeader="false" height="100%" enableScrolling="false">
+	<Page showHeader="false" height="100%" enableScrolling="false" class="WhiteBG">
 
 		<content>
 			<Panel expandable="true" expanded="false" width="auto"
@@ -16,14 +16,16 @@
 								<HBox justifyContent="SpaceBetween">
 
 									<Text text="{i18n>workOrder}" class="subText sapUiSmallMarginEnd"></Text>
-									<Text id="workOrder" text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/wo_no}"
+									<Text id="workOrder"
+										text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/wo_no}"
 										class="subText"></Text>
 								</HBox>
 								<HBox justifyContent="SpaceBetween">
 									<Text id="timeRange"
 										text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/original_start_time} - {operationDetailModel>/Rowsets/Rowset/0/Row/0/original_end_time}"
 										class="subText sapUiSmallMarginEnd"></Text>
-									<Text id="taskId" text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/CPP_CLUSTER}"
+									<Text id="taskId"
+										text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/CPP_CLUSTER}"
 										class="subText sapUiSmallMarginEnd"></Text>
 									<Button id="opDetailExpandButton" type="Transparent"
 										icon="sap-icon://navigation-down-arrow" press="expandOperationDetailPanel"
@@ -81,7 +83,7 @@
 						press="expandOperationDetailPanel" class="closeButton"></Button>
 				</content>
 			</Panel>
-			<IconTabBar id="operationNav" expandable="false"
+			<IconTabBar id="operationNav" expandable="false" backgroundDesign="Transparent" height="100%"
 				class="operationNavBar sapUiResponsiveContentPadding">
 				<items>
 					<IconTabFilter text="Progress">
@@ -125,15 +127,15 @@
 									</layoutData>
 								</Button>
 							</l:Grid>
-	<!-- <l:Grid defaultSpan="L12 M12 S12"> <Toolbar height="5rem"> <layoutData> 
-		<l:GridData span="L12 M12 S12" /> </layoutData> <ToolbarSpacer /> <Button 
-		id="btnPause" text="Pause" press="pauseOperation" class="sapMBtnDisabled 
-		sapUiSmallMarginBegin sapUiSmallMarginEnd"> </Button> <Button id="btnConfirm" 
-		class="btnConfirm sapUiSmallMarginEnd" text="Confirm" press="confirmOperation"> 
-		</Button> <Button id="btnActivate" text="Activate" press="activateOperation" 
-		type="Emphasized"> </Button> <Button type="Emphasized" id="btnComplete" text="Complete" 
-		press="confirmOperation" class="sapUiSmallMarginEnd"> </Button> <ToolbarSpacer 
-		/> </Toolbar> </l:Grid> -->
+							<!-- <l:Grid defaultSpan="L12 M12 S12"> <Toolbar height="5rem"> <layoutData> 
+								<l:GridData span="L12 M12 S12" /> </layoutData> <ToolbarSpacer /> <Button 
+								id="btnPause" text="Pause" press="pauseOperation" class="sapMBtnDisabled 
+								sapUiSmallMarginBegin sapUiSmallMarginEnd"> </Button> <Button id="btnConfirm" 
+								class="btnConfirm sapUiSmallMarginEnd" text="Confirm" press="confirmOperation"> 
+								</Button> <Button id="btnActivate" text="Activate" press="activateOperation" 
+								type="Emphasized"> </Button> <Button type="Emphasized" id="btnComplete" text="Complete" 
+								press="confirmOperation" class="sapUiSmallMarginEnd"> </Button> <ToolbarSpacer 
+								/> </Toolbar> </l:Grid> -->
 						</VBox>
 					</IconTabFilter>
 
@@ -164,6 +166,8 @@
 					<Button id="btnActivate" text="{i18n>activate}" press="activateOperation" />
 					<Button id="btnComplete" text="{i18n>complete}" icon="sap-icon://accept"
 						press="confirmOperation" />
+					<Button id="btnClose" text="{i18n>close}" icon="sap-icon://sys-cancel"
+						press="onCloseOperationDetailPopup" />
 				</contentRight>
 			</Bar>
 		</content>

@@ -11,14 +11,13 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 	onInit : function() {
 
 	},
-	onPress : function(text) {
-
-		// If default user settings are not yet loaded, need to load them
-		// We display settings screen
-
-		if (airbus.mes.settings.ModelManager.station === undefined) {
-
-			switch (text) {
+	onPress:function(text)	{
+		
+//		If default user settings are not yet loaded, need to load them
+//		We display settings screen
+		if(airbus.mes.settings.ModelManager.station === "" ){
+		
+			switch(text){
 			case "StationTracker":
 				airbus.mes.settings.GlobalFunction.navigateTo(
 						"Go to Station Tracker", "stationtracker");

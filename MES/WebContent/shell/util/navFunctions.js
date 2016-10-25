@@ -34,14 +34,21 @@ airbus.mes.shell.util.navFunctions = {
 			
 			nav.to(airbus.mes.resourcepool.oView.getId());
 			
+			this.resourcePoolParams();
+			
+		},
+		
+		
+		resourcePoolParams: function(){			
 			// Ask to select Resource Pool if launched initially or Plant is changed
-			if(airbus.mes.resourcepool.util.ModelManager.site != airbus.mes.settings.plant || airbus.mes.resourcepool.util.ModelManager.resourceName === undefined){
-				airbus.mes.resourcepool.util.ModelManager.site = airbus.mes.settings.plant;
+			if(airbus.mes.resourcepool.util.ModelManager.site != airbus.mes.settings.ModelManager.plant || airbus.mes.resourcepool.util.ModelManager.resourceName === undefined){
+				airbus.mes.resourcepool.util.ModelManager.site = airbus.mes.settings.ModelManager.plant;
 				var controller = airbus.mes.resourcepool.oView.getController();
 				controller.openSelectResourcePool();
 			}
 			
 		},
+		
 				
 		lineTracker: function(){
 
@@ -72,6 +79,8 @@ airbus.mes.shell.util.navFunctions = {
 			
 			nav.to(airbus.mes.disruptiontracker.oView.getId());
 		},
+		
+		
 		
 		worktracker: function(){
 		

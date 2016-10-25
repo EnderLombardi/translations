@@ -33,7 +33,10 @@ sap.ui.controller("airbus.mes.operationdetail.progressSlider", {
 		oProgressSlider = this.getView().byId("progressSlider");
 		oProgressSlider.stepDown(1);
 	},
-	
+	onCloseOperationDetailPopup : function()
+	{
+		airbus.mes.stationtracker.operationDetailPopup.close();
+	},
 	/*****************************************************************************************
 	 * 
 	 * activate pause or confirm operation
@@ -359,29 +362,34 @@ sap.ui.controller("airbus.mes.operationdetail.progressSlider", {
 			|| this.getView().byId("operationStatus")
 					.getText() === "Paused") {
 
-		this.setProgressScreenBtn(false, false, true);
-		this.getView().byId("progressSlider").setEnabled(
-				false);
+			this.setProgressScreenBtn(false, false, true);
+			this.getView().byId("progressSlider").setEnabled(
+					false);
+	
+		} else if (this.getView().byId("operationStatus")
+				.getText() === "In Progress") {
+	
+			this.setProgressScreenBtn(true, true, false);
+			this.getView().byId("progressSlider").setEnabled(
+					true);
+	
+		} else if (this.getView().byId("operationStatus")
+				.getText() === "Blocked"
+				|| this.getView().byId("operationStatus")
+						.getText() === "Confirmed") {
+	
+			this.setProgressScreenBtn(false, false, false);
+			this.getView().byId("progressSlider").setEnabled(
+					false);
+			this.getView().byId("progressSliderfirst")
+					.setEnabled(false);
+	
+		}
+		
 
-	} else if (this.getView().byId("operationStatus")
-			.getText() === "In Progress") {
-
-		this.setProgressScreenBtn(true, true, false);
-		this.getView().byId("progressSlider").setEnabled(
-				true);
-
-	} else if (this.getView().byId("operationStatus")
-			.getText() === "Blocked"
-			|| this.getView().byId("operationStatus")
-					.getText() === "Confirmed") {
-
-		this.setProgressScreenBtn(false, false, false);
-		this.getView().byId("progressSlider").setEnabled(
-				false);
-		this.getView().byId("progressSliderfirst")
-				.setEnabled(false);
-
-	}
+		$("#operationDetailsView--operationNav").height(($("#"+airbus.mes.operationdetail.parentId).height()
+				- $("#operationDetailsView--operationDetailPanel").height() 
+				- 48 ));
 
 	}
 

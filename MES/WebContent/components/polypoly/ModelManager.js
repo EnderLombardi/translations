@@ -95,7 +95,7 @@ airbus.mes.polypoly.ModelManager = {
 		core.setModel(new sap.ui.model.json.JSONModel(), "stationList");
 		core.setModel(new sap.ui.model.json.JSONModel(),"mTableModel");
 		core.setModel(new sap.ui.model.json.JSONModel(),"mQATableModel");
-		// this model seems to be the maine model to create polypoly
+		// this model seems to be the main model to create polypoly
 		core.setModel(new sap.ui.model.json.JSONModel(),"mii");
 		
 		// attach event on end of loading model
@@ -105,6 +105,8 @@ airbus.mes.polypoly.ModelManager = {
 //		core.setModel(new sap.ui.model.json.JSONModel(), "columnModel");
 		core.setModel(new sap.ui.model.json.JSONModel(), "rpModel");
 		core.setModel(new sap.ui.model.json.JSONModel("../components/polypoly/model/needlevels.json"), "needlevels");
+		core.setModel(new sap.ui.model.json.JSONModel(), "affectationModel");
+		
 		
 		var dest;
 
@@ -213,7 +215,7 @@ airbus.mes.polypoly.ModelManager = {
 				.replace("$ERP_ID", ERP_ID);
 		return urlChkUserOprCertificatePolyPoly;
 	},
-	chkUserOprCertificatePolyPoly : function(ERP_ID, checkBox) {
+	chkUserOprCertificatePolyPoly : function(ERP_ID) {
 		sap.ui.core.BusyIndicator.show(0);
 
 		jQuery
@@ -226,7 +228,6 @@ airbus.mes.polypoly.ModelManager = {
 
 						if (data.Rowsets.FatalError != undefined) {
 							this.messageShow(data.Rowsets.FatalError);
-							checkBox.setSelected(false);// dont check the box
 						} else if (data.Rowsets.Messages != undefined) {
 							this
 									.messageShow(data.Rowsets.Messages[0].Message);
