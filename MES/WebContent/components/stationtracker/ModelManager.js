@@ -16,32 +16,32 @@ airbus.mes.stationtracker.ModelManager = {
 		core
 				.setModel(new sap.ui.model.json.JSONModel(),
 						"stationTrackerRModel"); // Station tracker model
-													// reschedule line
+		// reschedule line
 		core
 				.setModel(new sap.ui.model.json.JSONModel(),
 						"stationTrackerIModel"); // Station tracker model
-													// initial line
+		// initial line
 		core.setModel(new sap.ui.model.json.JSONModel(), "shiftsModel"); // Shifts
-																			// model
+		// model
 		core.setModel(new sap.ui.model.json.JSONModel(), "affectationModel");
 		core.setModel(new sap.ui.model.json.JSONModel(), "unPlannedModel"); // Unplanned
-																			// model
+		// model
 		core.setModel(new sap.ui.model.json.JSONModel(), "groupModel"); // Unplanned
-																		// Filter
-																		// Model
+		// Filter
+		// Model
 		core.setModel(new sap.ui.model.json.JSONModel(), "OSWModel"); // OutStanding
-																		// Work
-																		// model
+		// Work
+		// model
 		core.setModel(new sap.ui.model.json.JSONModel(), "stationTrackerShift"); // Shifts
-																					// for
-																					// station
-																					// tracker
+		// for
+		// station
+		// tracker
 		core.setModel(new sap.ui.model.json.JSONModel(), "KPI"); // KPI
 		core
 				.setModel(new sap.ui.model.json.JSONModel(),
 						"productionGroupModel"); // production Group model
 		core.setModel(new sap.ui.model.json.JSONModel(), "ressourcePoolModel"); // Ressource
-																				// poolModel
+		// poolModel
 
 		core.getModel("stationTrackerRModel").attachRequestCompleted(
 				airbus.mes.stationtracker.ModelManager.onStationTrackerLoad);
@@ -352,42 +352,38 @@ airbus.mes.stationtracker.ModelManager = {
 		});
 	},
 
-	openOperationPopOver : function(id) {
-
-		if (airbus.mes.stationtracker.operationPopover === undefined) {
-
-			airbus.mes.stationtracker.operationPopover = sap.ui.xmlfragment(
-					"operationPopover",
-					"airbus.mes.stationtracker.operationPopover",
-					airbus.mes.stationtracker.oView.getController());
-			airbus.mes.stationtracker.operationPopover
-					.addStyleClass("alignTextLeft");
-			airbus.mes.stationtracker.operationPopover.setModel(sap.ui
-					.getCore().getModel("WorkListModel"), "WorkListModel");
-			airbus.mes.stationtracker.oView
-					.addDependent(airbus.mes.stationtracker.operationPopover);
-		}
-
-		var oNavCon = sap.ui.getCore().byId(
-				"operationPopover--navOperatorContainer");
-		var oMasterPage = sap.ui.getCore().byId("operationPopover--master");
-		oNavCon.to(oMasterPage);
-		oNavCon.currentPageIsTopPage();
-		var oOperationPopover = sap.ui.getCore().byId(
-				"operationPopover--operationPopoverID");
-		var oModel = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy[scheduler
-				.getEvent(id).group][scheduler.getEvent(id).avlLine][scheduler
-				.getEvent(id).box];
-
-		// Set data in Model WorkList
-		airbus.mes.stationtracker.operationPopover.getModel("WorkListModel")
-				.setData(oModel);
-		airbus.mes.stationtracker.operationPopover.getModel("WorkListModel")
-				.refresh();
-
-		airbus.mes.stationtracker.operationPopover.open();
-
-	},
+	// replaced by OperationDetailPopup
+	/*
+	 * openOperationPopOver : function(id) {
+	 * 
+	 * if (airbus.mes.stationtracker.operationPopover === undefined) {
+	 * 
+	 * airbus.mes.stationtracker.operationPopover = sap.ui.xmlfragment(
+	 * "operationPopover", "airbus.mes.stationtracker.operationPopover",
+	 * airbus.mes.stationtracker.oView.getController());
+	 * airbus.mes.stationtracker.operationPopover
+	 * .addStyleClass("alignTextLeft");
+	 * airbus.mes.stationtracker.operationPopover.setModel(sap.ui
+	 * .getCore().getModel("WorkListModel"), "WorkListModel");
+	 * airbus.mes.stationtracker.oView
+	 * .addDependent(airbus.mes.stationtracker.operationPopover); }
+	 * 
+	 * var oNavCon = sap.ui.getCore().byId(
+	 * "operationPopover--navOperatorContainer"); var oMasterPage =
+	 * sap.ui.getCore().byId("operationPopover--master");
+	 * oNavCon.to(oMasterPage); oNavCon.currentPageIsTopPage(); var
+	 * oOperationPopover = sap.ui.getCore().byId(
+	 * "operationPopover--operationPopoverID"); var oModel =
+	 * airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy[scheduler
+	 * .getEvent(id).group][scheduler.getEvent(id).avlLine][scheduler
+	 * .getEvent(id).box]; // Set data in Model WorkList
+	 * airbus.mes.stationtracker.operationPopover.getModel("WorkListModel")
+	 * .setData(oModel);
+	 * airbus.mes.stationtracker.operationPopover.getModel("WorkListModel")
+	 * .refresh();
+	 * 
+	 * airbus.mes.stationtracker.operationPopover.open(); },
+	 */
 
 	openWorkListPopover : function(id) {
 
@@ -490,27 +486,62 @@ airbus.mes.stationtracker.ModelManager = {
 			airbus.mes.stationtracker.operationDetailPopup.setModel(sap.ui
 					.getCore().getModel("operationDetailModel"),
 					"operationDetailModel");
-			airbus.mes.stationtracker.operationDetailPopup.setModel(sap.ui
-					.getCore().getModel("WorkListModel"), "WorkListModel");
+
 			airbus.mes.stationtracker.oView
 					.addDependent(airbus.mes.stationtracker.operationDetailPopup);
 		}
 		var oModel = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy[scheduler
 				.getEvent(id).group][scheduler.getEvent(id).avlLine][scheduler
 				.getEvent(id).box];
-		// Set data in Model WorkList
-		airbus.mes.stationtracker.operationDetailPopup
-				.getModel("WorkListModel").setData(oModel);
-		airbus.mes.stationtracker.operationDetailPopup
-				.getModel("WorkListModel").refresh();
-		var operationSfc = airbus.mes.stationtracker.operationDetailPopup
-				.getModel("WorkListModel").getProperty("/0/SFC_STEP_REF")
+
+		// calculate status of operation
+		var sStatus;
+		if (oModel[0].paused == "0")
+			sStatus = "COMPLETED";
+		else if (oModel[0].paused == "2")
+			sStatus = "IN_WORK";
+		else if (oModel[0].paused === "3")
+			sStatus = "IN_QUEUE";
+		else if (oModel[0].paused === "1")
+			sStatus = "NOT_STARTED";
+
+		var oOperModel = {
+			"Rowsets" : {
+				"Rowset" : [ {
+					"Row" : [ {
+						"sfc" : oModel[0].WORKORDER_ID,
+						"sfc_step_ref" : oModel[0].SFC_STEP_REF,
+						"operation_no" : oModel[0].OPERATION_ID,
+						"operation_desc" : oModel[0].OPERATION_DESCRIPTION,
+						"operation_revision" : oModel[0].SFC_STEP_REF
+								.split(",")[5],
+						"wo_no" : oModel[0].SHOP_ORDER_BO.split(",")[1],
+						"workcenter" : oModel[0].PP_STATION.split(",")[1],
+						"status" : sStatus,
+						"progress" : oModel[0].PROGRESS,
+						"time_spent" : airbus.mes.stationtracker.util.Formatter
+								.msToTime(oModel[0].DURATION),
+						"planned_start_time" : "TimeUnavailable",
+						"planned_end_time" : "TimeUnavailable",
+						"original_start_time" : oModel[0].START_TIME,
+						"original_end_time" : oModel[0].END_TIME
+					} ]
+				} ]
+			}
+		}
+
+		/*
+		 * airbus.mes.stationtracker.operationDetailPopup.getModel(
+		 * "operationDetailModel").loadData(
+		 * this.getUrlOperationDetail(operationSfc, prodGroup), null, false);
+		 */
 
 		airbus.mes.stationtracker.operationDetailPopup.getModel(
-				"operationDetailModel").loadData(
-				this.getUrlOperationDetail(operationSfc), null, false);
+				"operationDetailModel").setData(oOperModel);
 		airbus.mes.stationtracker.operationDetailPopup.getModel(
 				"operationDetailModel").refresh();
+		sap.ui.getCore().getModel("operationDetailModel").setData(oOperModel);
+		sap.ui.getCore().getModel("operationDetailModel").refresh();
 
 		if (airbus.mes.operationdetail === undefined) {
 			jQuery.sap.registerModulePath("airbus.mes.operationdetail",
@@ -533,38 +564,33 @@ airbus.mes.stationtracker.ModelManager = {
 		 */
 
 	},
-	/***************************************************************************
-	 * get url operation detail and load data in operation detail Model
-	 **************************************************************************/
-	getUrlOperationDetail : function(operationSfc, prodGroup, operationType) {
-		// get Url of the service
-		var urlOperationDetail = this.urlModel
-				.getProperty("getOperationDetail");
-		// Set input parameter for the service
-		urlOperationDetail = airbus.mes.settings.ModelManager.replaceURI(
-				urlOperationDetail, "$Site",
-				airbus.mes.settings.ModelManager.site);
-		urlOperationDetail = airbus.mes.settings.ModelManager.replaceURI(
-				urlOperationDetail, "$Station",
-				airbus.mes.settings.ModelManager.station);
-		urlOperationDetail = airbus.mes.settings.ModelManager.replaceURI(
-				urlOperationDetail, "$MSN",
-				airbus.mes.settings.ModelManager.msn);
-		urlOperationDetail = airbus.mes.settings.ModelManager.replaceURI(
-				urlOperationDetail, "$ProductionGroup", prodGroup);
-		urlOperationDetail = airbus.mes.settings.ModelManager.replaceURI(
-				urlOperationDetail, "$OperationType", this.operationType);
-		urlOperationDetail = airbus.mes.settings.ModelManager.replaceURI(
-				urlOperationDetail, "$UserId",
-				sap.ui.getCore().getModel("userDetailModel").getProperty(
-						"/Rowsets/Rowset/0/Row")[0].user_id);
-
-		/*
-		 * urlOperationDetail =
-		 * airbus.mes.settings.ModelManager.replaceURI(urlOperationDetail,
-		 * "$sfc",operationSfc);
-		 */
-		return urlOperationDetail;
-	}
+/*******************************************************************************
+ * get url operation detail and load data in operation detail Model
+ ******************************************************************************/
+/*
+ * getUrlOperationDetail : function(operationSfc, prodGroup) { // get Url of the
+ * service var urlOperationDetail = this.urlModel
+ * .getProperty("getOperationDetail"); // Set input parameter for the service
+ * urlOperationDetail = airbus.mes.settings.ModelManager.replaceURI(
+ * urlOperationDetail, "$Site", airbus.mes.settings.ModelManager.site);
+ * urlOperationDetail = airbus.mes.settings.ModelManager.replaceURI(
+ * urlOperationDetail, "$Station", airbus.mes.settings.ModelManager.station);
+ * urlOperationDetail = airbus.mes.settings.ModelManager.replaceURI(
+ * urlOperationDetail, "$MSN", airbus.mes.settings.ModelManager.msn);
+ * urlOperationDetail = airbus.mes.settings.ModelManager.replaceURI(
+ * urlOperationDetail, "$ProductionGroup", prodGroup); urlOperationDetail =
+ * airbus.mes.settings.ModelManager.replaceURI( urlOperationDetail,
+ * "$OperationType", this.operationType); urlOperationDetail =
+ * airbus.mes.settings.ModelManager.replaceURI( urlOperationDetail,
+ * "$UserId","%"); sap.ui.getCore().getModel("userDetailModel").getProperty(
+ * "/Rowsets/Rowset/0/Row")[0].user_id);
+ * 
+ * 
+ * urlOperationDetail =
+ * airbus.mes.settings.ModelManager.replaceURI(urlOperationDetail,
+ * "$sfc",operationSfc);
+ * 
+ * return urlOperationDetail; }
+ */
 
 }

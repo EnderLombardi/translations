@@ -205,6 +205,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 			var sPaused = "0";
 			// Operation is active	
 			if (  el.PAUSED === "FALSE") {
+			/*if(el.PAUSED === "false"){*/
 				
 				var sPaused = "2";
 			}
@@ -256,11 +257,15 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 					"AVL_LINE": el.AVL_LINE,
 					"PROD_GROUP":el.PROD_GROUP,
 					"SFC_STEP_REF":el.SFC_STEP_REF,
+					"SHOP_ORDER_BO":el.SHOP_ORDER_BO,
+					"PP_STATION":el.PP_STATION
 					//"competency": el.competency,
 					//"rescheduledStarDate": el.rescheduledStarDate,
 					//"rescheduledEndDate": el.rescheduledEndDate,
 					//"rescheduledLine": el.rescheduledLine,
 					//"initial" : sInitial,
+					
+		
 					
 			};
 			
