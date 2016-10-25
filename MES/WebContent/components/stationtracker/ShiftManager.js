@@ -7,11 +7,12 @@ airbus.mes.stationtracker.ShiftManager = {
 	dayDisplay : undefined,
 	shiftDisplay :true,
 	fSwipe: false,
-	//Variables for shift combobox Day view
+	//Variables for shift combobox Day/Shit view
 	BoxSelected : 0,
-	ShiftSelected : undefined,
-	ShiftSelectedStart : undefined,
-	ShiftSelectedEnd : undefined,
+//	ShiftSelected : undefined,
+//	ShiftSelectedStart : undefined,
+//	ShiftSelectedEnd : undefined,
+	ShiftSelected : {},
 	//Array where is stock Id of marker display on the gantt
 	ShiftMarkerID :[],
 	//

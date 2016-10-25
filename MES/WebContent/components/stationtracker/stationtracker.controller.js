@@ -541,17 +541,26 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		/***** REMY *****/
 		oPanel.getHeight();
 	},
-	changeShift : function() {
+	changeShift : function(Oevt) {
+	
+//		airbus.mes.stationtracker.ShiftManager.ShiftSelected = airbus.mes.stationtracker.oView.byId("selectShift").getSelectedItem().getText();
+//		
+		console.log(airbus.mes.stationtracker.oView.byId("selectShift").getSelectedItem().getText());
+		
+		var sPath = Oevt.getSource().getSelectedIndex();
+		var oModel = airbus.mes.stationtracker.oView.getModel("stationTrackerShift").getProperty("/" + sPath);
+	
+		airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftName = oModel.shiftName;
+		airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftID = oModel.shiftID;
+		airbus.mes.stationtracker.ShiftManager.ShiftSelected.day = oModel.day;
 	
 		if ( airbus.mes.stationtracker.ShiftManager.dayDisplay ) {
-		
-		airbus.mes.stationtracker.ShiftManager.ShiftSelected = airbus.mes.stationtracker.oView.byId("selectShift").getSelectedItem().getText();
-		
-		var intervals = airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy[airbus.mes.stationtracker.ShiftManager.current_day][airbus.mes.stationtracker.ShiftManager.ShiftSelected];
+				
+		var intervals = airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy[airbus.mes.stationtracker.ShiftManager.current_day][airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftName];
 				
 		
-		airbus.mes.stationtracker.ShiftManager.ShiftSelectedStart = intervals[0].StartDate;
-		airbus.mes.stationtracker.ShiftManager.ShiftSelectedEnd = intervals[intervals.length - 1].EndDate;
+		airbus.mes.stationtracker.ShiftManager.ShiftSelected.StartDate = intervals[0].StartDate;
+		airbus.mes.stationtracker.ShiftManager.ShiftSelected.EndDate = intervals[intervals.length - 1].EndDate;
 		// remove previous marker
 		airbus.mes.stationtracker.ShiftManager.ShiftMarkerID.forEach(function(el){
 				
@@ -562,14 +571,14 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		airbus.mes.stationtracker.ShiftManager.ShiftMarkerID.push(scheduler.addMarkedTimespan({  
 			//get startdate of first shift maybe need to get only the shift day before the current to avoid issue perf?
 			start_date: airbus.mes.stationtracker.ShiftManager.shifts[0].StartDate,
-			end_date: airbus.mes.stationtracker.ShiftManager.ShiftSelectedStart,
+			end_date: airbus.mes.stationtracker.ShiftManager.ShiftSelected.StartDate,
 			css:   "shiftCss",
 			
 		}));
 		
 		airbus.mes.stationtracker.ShiftManager.ShiftMarkerID.push(scheduler.addMarkedTimespan({  
 
-			start_date: airbus.mes.stationtracker.ShiftManager.ShiftSelectedEnd,
+			start_date: airbus.mes.stationtracker.ShiftManager.ShiftSelected.EndDate,
 			//get enddate of last shift maybe need to get only the shift day before the current to avoid issue perf?
 			end_date: airbus.mes.stationtracker.ShiftManager.shifts[airbus.mes.stationtracker.ShiftManager.shifts.length-1].EndDate,
 			css:   "shiftCss",

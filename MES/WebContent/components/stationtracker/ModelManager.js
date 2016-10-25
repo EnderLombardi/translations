@@ -245,6 +245,11 @@ airbus.mes.stationtracker.ModelManager = {
 		airbus.mes.stationtracker.ModelManager.KPI = oViewModel;
 
 	},
+	
+	/**
+	 * Used to update data of shift combobox regarding the day of the gantt
+	 *
+	 */
 	selectMyShift : function() {
 		//stationTrackerShift model
 		var oView = airbus.mes.stationtracker.oView;
@@ -257,9 +262,11 @@ airbus.mes.stationtracker.ModelManager = {
 				continue;
 
 			var element = {};
-			element.id = prop;
 			element.value = prop;
 			element.visible = airbus.mes.stationtracker.ShiftManager.dayDisplay;
+			element.shiftName = prop;
+			element.day = airbus.mes.stationtracker.ShiftManager.current_shift.day;
+			element.shiftID = airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy[airbus.mes.stationtracker.ShiftManager.current_day][prop][0].shiftID ;
 			modelarray.push(element);
 			i++;
 		}
@@ -269,16 +276,21 @@ airbus.mes.stationtracker.ModelManager = {
 
 		if (airbus.mes.stationtracker.ShiftManager.dayDisplay) {
 
-			airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(
-					airbus.mes.stationtracker.ShiftManager.current_shift.shiftName);
+			airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(airbus.mes.stationtracker.ShiftManager.current_shift.shiftName);
+			
+			airbus.mes.stationtracker.ShiftManager.ShiftSelected.EndDate = airbus.mes.stationtracker.ShiftManager.current_shift.EndDate;
+			airbus.mes.stationtracker.ShiftManager.ShiftSelected.StartDate = airbus.mes.stationtracker.ShiftManager.current_shift.StartDate;
+			airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftName = airbus.mes.stationtracker.ShiftManager.current_shift.shiftName;
+			airbus.mes.stationtracker.ShiftManager.ShiftSelected.ID = airbus.mes.stationtracker.ShiftManager.current_shift.shiftID;
+			airbus.mes.stationtracker.ShiftManager.ShiftSelected.day = airbus.mes.stationtracker.ShiftManager.current_shift.day;
+		
 			airbus.mes.stationtracker.oView.byId("selectShift").fireChange(0);
 
 		}
 
 		if (airbus.mes.stationtracker.ShiftManager.shiftDisplay) {
 
-			airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(
-					airbus.mes.stationtracker.ShiftManager.current_shift.shiftName);
+			airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(airbus.mes.stationtracker.ShiftManager.current_shift.shiftName);
 
 		}
 

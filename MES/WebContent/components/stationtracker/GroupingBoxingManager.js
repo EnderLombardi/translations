@@ -35,9 +35,9 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 			
 			oHierachy[el.day] = {};
 		}
-		if ( !oHierachy[el.day][el.shiftID] ) {
+		if ( !oHierachy[el.day][el.shiftName] ) {
 			
-			oHierachy[el.day][el.shiftID] = [];
+			oHierachy[el.day][el.shiftName] = [];
 		}
 		
 		
@@ -47,7 +47,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 				"EndDate" : oFormatter.jsDateFromDayTimeStr(el.endDateTime),
 		};
 		
-		oHierachy[el.day][el.shiftID].push(oShift);
+		oHierachy[el.day][el.shiftName].push(oShift);
 		aShiftBreak.push(oShift);
 		
 	});
@@ -513,12 +513,10 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 		// Display all marker
 	    airbus.mes.stationtracker.ShiftManager.addMarkedShifts();
 	    
-	    if ( airbus.mes.stationtracker.ShiftManager.dayDisplay ) {
-	    	
-	    	airbus.mes.stationtracker.oView.getController().changeShift();
-	    	    
-	    }
-	    
+
+	    if (airbus.mes.stationtracker.ShiftManager.dayDisplay) {
+			airbus.mes.stationtracker.oView.getController().changeShift();
+		}
 	    scheduler.xy.scroll_width=20;
 	    airbus.mes.stationtracker.oView.byId("stationtracker").setBusy(false);
 	    scheduler.parse(aBox,"json");
