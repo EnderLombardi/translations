@@ -38,13 +38,7 @@
 	width: 100px;
 	position: relative;
 }
-/* .customTitleDate {
-	font-family: "Segoe UI", Arial;
-	font-size: 20px;
-	padding-left: 10px;
-	font-weight: bold;
-}
- */
+
 
 .marginLeft0 {
 	margin-left: 0 !important;
@@ -126,59 +120,8 @@
 	z-index: -1;
 }
 
-.ylabelfolder {
-	max-width: 60%;
-	white-space: nowrap;
-	position: relative;
-	width: 120px;
-	display: inline-block;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	font-weight: normal;
-	font-style: normal;
-	font-stretch: normal;
-	color: rgba(0, 86, 112, 0.94);
-}
-
-.dhx_scell_name {
-	padding-left: 0px !important;
-}
-
-.dhx_matrix_scell.folder {
-	background-color: white;
-}
-
-.dhx_matrix_scell.folder .dhx_scell_name {
-	width: 100%;
-}
-
 .otherStations {
 	background-color: #515456;
-}
-
-.fa-chevron-right.custom {
-	line-height: 20px;
-	float: left;
-	padding-left: 10px;
-}
-
-.fa-chevron-down.custom {
-	line-height: 20px;
-	float: left;
-	padding-left: 10px;
-}
-
-.fa-plus.custom {
-	line-height: 20px;
-	font-size: 1 em;
-	float: right;
-	padding-right: 10px;
-}
-
-.fa-plus:hover {
-	line-height: 20px;
-	color: blue;
-	font-size: 1.5em
 }
 
 .Blue {
@@ -188,11 +131,6 @@
 
 .white {
 	background-color: white ! important;
-}
-
-.folderAxisColor {
-	background-color: #BBBCBC ! important;
-	opacity: 0.15;
 }
 
 .whiteText {
@@ -328,9 +266,6 @@
 	float: left !important;
 }
 
-.dhx_row_folder {
-	height: 20px ! important;
-}
 
 .grey {
 	background-color: #97999b;
@@ -345,9 +280,7 @@
 	opacity: 0.8;
 }
 
-.dhx_row_folder .dhx_matrix_scell.folder {
-	background-color: #d5f1f8;
-}
+
 
 .duck-egg-blue {
 	background-color:#d5f1f8 !important;
@@ -568,7 +501,7 @@ background-color: #0085AD !important;
 /*		 CSS for operation detail Pop-Up 			 	*/
 /*******************************************************/
 #operationDetailPopup--operationDetailPopUp-cont{
-	//overflow-y: scroll !important;
+	/*overflow-y: scroll !important;*/
 }
 #operationDetailPopup--operationDetailPopUp-scrollCont{
 	padding:0rem !important;
@@ -711,25 +644,28 @@ background-color: #0085AD !important;
 /***** Gantt Chart *****/
 
 /** Ticks **/
-.customHour {
+#stationTrackerView--stationtracker .customHour {
 	text-align: left;
 	text-indent: -15px;
 	border-left: none !important;
 	background-color: transparent !important;
+	color: #5e696e;
+	font-size: 14px;
+	line-height: 25px;
 }
 
-.customHour:before{
+#stationTrackerView--stationtracker .customHour:before{
 	content: '';
 	display: block;
 	position: absolute;
 	bottom: 0;
 	width: 1px;
-	height: 10px;
-	background-color: #DDD;
+	height: 7px;
+	background-color: #5e696e;
 }
 
  /** Height + Scroll **/
-  #stationTrackerView--stationtracker{
+#stationTrackerView--stationtracker{
 	width: auto;
 	height: auto !important;
 	position: absolute;
@@ -743,16 +679,119 @@ background-color: #0085AD !important;
 	overflow-y: scroll;
 	bottom: 0;
 	height: auto !important;
-}  
+}
+
+/** Prev / Next buttons **/
+
+#stationTrackerView--stationtracker .dhx_cal_header{
+	border: none;
+}
 
 #stationTrackerView--stationtracker .dhx_cal_next_button{
 	position: absolute;
-	right: 0;
+	right: -10px;
 	width: auto;
+	color: #52aec8;
+
+	display: inline-block;
+	font: normal normal normal 30px/1 FontAwesome;
+	font-size: inherit;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	background: transparent;
+
+	font-size: 30px;
+	float: none !important;
+}
+#stationTrackerView--stationtracker .dhx_cal_next_button:before{
+	content:"\f105";
 }
 
 #stationTrackerView--stationtracker .dhx_cal_prev_button{
 	position: absolute;
-	right: 25px;
+	right: 15px;
 	width: auto;
+	color: #52aec8;
+
+	display:inline-block;
+	font:normal normal normal 30px/1 FontAwesome;
+	font-size:inherit;
+	text-rendering:auto;
+	-webkit-font-smoothing:antialiased;
+	-moz-osx-font-smoothing:grayscale;
+	background: transparent;
+
+	font-size: 30px;
+	float: none !important;
+}
+#stationTrackerView--stationtracker .dhx_cal_prev_button:before{
+	content:"\f104";
+}
+
+/** First column cells **/
+
+#stationTrackerView--stationtracker .dhx_row_folder .dhx_matrix_scell.folder {
+	background-color: #d5f1f8;
+}
+
+#stationTrackerView--stationtracker .dhx_row_folder .dhx_scell_name{
+	float: none;
+	text-align: left;
+	position: relative;
+}
+
+#stationTrackerView--stationtracker .dhx_matrix_cell div,
+#stationTrackerView--stationtracker .dhx_matrix_scell div{
+	text-align: left;
+}
+
+#stationTrackerView--stationtracker .dhx_row_folder .ylabelfolder{
+	display: inline;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	margin: 0 30px;
+	font-size: 12px;
+	color: #0F5F78;
+	font-weight: normal;
+}
+
+#stationTrackerView--stationtracker .dhx_row_folder .dhx_scell_name .fa-chevron-down,
+#stationTrackerView--stationtracker .dhx_row_folder .dhx_scell_name .fa-chevron-right{
+    position: absolute;
+	left: 0;
+    line-height: 20px;
+    margin-left: 10px;
+	margin-right: 10px;
+	color: #0F5F78;
+}
+
+#stationTrackerView--stationtracker .dhx_row_folder .dhx_scell_name .fa-plus{
+    position: absolute;
+	right: 0;
+    line-height: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+	color: #0F5F78;
+}
+
+#stationTrackerView--stationtracker .dhx_row_folder .dhx_matrix_cell{
+	border-bottom-width: 2px;
+}
+
+#stationTrackerView--stationtracker .folderAxisColor {
+	background-color: #ECEEEF ! important;
+}
+
+#stationTrackerView--stationtracker .dhx_matrix_scell.item,
+#stationTrackerView--stationtracker .dhx_matrix_scell.folder {
+	border-right: solid 3px white;
+}
+
+/** Content **/
+
+#stationTrackerView--stationtracker .dhx_matrix_cell{
+	background-color: #F3F5F6;
+	border-bottom: 1px solid #dddddd;
+	border-right: 1px solid #dddddd;
 }
