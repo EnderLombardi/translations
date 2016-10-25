@@ -28,20 +28,20 @@ airbus.mes.disruptiontracker.ModelManager = {
 
 	loadDisruptionTracker : function(sType) {
 		
+		//Model for disruptions list data in table
 		var oViewModel_1=  new sap.ui.model.json.JSONModel();
 		sap.ui.getCore().setModel(oViewModel_1,"tableData");
 		sap.ui.getCore().getModel("tableData").loadData("data/table.json",null,false);
 		
+		//Model for disruptions filter data in ComboBox
 		var oViewModel_2=  new sap.ui.model.json.JSONModel();
 		sap.ui.getCore().setModel(oViewModel_2,"filterData");
 		sap.ui.getCore().getModel("filterData").loadData("data/filter.json",null,false);
 		
+		//Model for disruptions order data in ComboBox
 		var oViewModel_3=  new sap.ui.model.json.JSONModel();
 		sap.ui.getCore().setModel(oViewModel_3,"orderData");
 		sap.ui.getCore().getModel("orderData").loadData("data/order.json",null,false);
-		
-		var oModel = new sap.ui.model.resource.ResourceModel({bundleName:"airbus.mes.disruptiontracker.i18n.i18n",bundleLocale:"en"});
-		sap.ui.getCore().setModel(oModel, "disruptiontrackerI18n");
 
 	}
 	

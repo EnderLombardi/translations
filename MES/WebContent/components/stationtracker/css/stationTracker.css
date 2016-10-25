@@ -585,9 +585,9 @@ div#SPStatusInd.progressBarOP.sapMBarChild.sapMPI {
 background-color: #0085AD !important;
 } */
 
-/**********************************/
-/* CSS for operation detail popup */
-/***********************************/
+/********************************************************/
+/*		 CSS for operation detail Pop-Up 			 	*/
+/*******************************************************/
 #operationDetailPopup--operationDetailPopUp-cont{
 	//overflow-y: scroll !important;
 }
@@ -595,7 +595,7 @@ background-color: #0085AD !important;
 	padding:0rem !important;
 }
 
-
+/*********** End of CSS for Operation Detail Pop-Up
 
 /******* REFINED CSS *******/
 
