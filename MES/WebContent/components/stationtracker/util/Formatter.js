@@ -494,6 +494,11 @@ airbus.mes.stationtracker.util.Formatter = {
 		    	 return "toto";
 //		    	 $("div[id="+toolbarDateId+"]").append($("div[class='dhx_cal_date']").contents().clone()); 
 		     },
+		     productionGroup : function(sProductionG) {
+		    	 
+		    	 return sProductionG;
+		    	 
+		     },
 		     
 		     msToTime : function(s) {
 		    	  var ms = s % 1000;

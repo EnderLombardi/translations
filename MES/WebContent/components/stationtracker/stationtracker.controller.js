@@ -409,8 +409,35 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		
 //		Filter the stationtracker model with current production group
 		var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
+	    var sProdGroup = "";
+	    var sProdGroupMii = "";
+	     
+		if(sap.ui.getCore().byId("productionGroupPopover--myList").getSelectedItems().length != 0 ){
+			
+			sap.ui.getCore().byId("productionGroupPopover--myList").getSelectedItems().forEach(function(el){
+				
+				sProdGroup += el.mProperties.label + ",";
+				sProdGroupMii += el.mProperties.label + "','";
+			}) 
+		sProdGroup = sProdGroup.slice(0,-1);
+		airbus.mes.settings.ModelManager.prodGroup = sProdGroupMii.slice(0,-3);
+		} else {
+				
+				sProdGroup += airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("ProductionGroup");
+				airbus.mes.settings.ModelManager.prodGroup ="%";
+			}
+
+		
+		airbus.mes.stationtracker.oView.byId("ProductionButton").setText(sProdGroup);
+
+		airbus.mes.stationtracker.ModelManager.loadStationTracker("I");		
+		airbus.mes.stationtracker.ModelManager.loadStationTracker("R");
+		airbus.mes.stationtracker.ModelManager.loadStationTracker("U");		
+		airbus.mes.stationtracker.ModelManager.loadStationTracker("O");		
 		
 		GroupingBoxingManager.parseOperation(GroupingBoxingManager.group,GroupingBoxingManager.box);		
+
+		
 	},
 	
 	changeGroup : function() {
