@@ -180,9 +180,10 @@ sap.ui
 								});
 
 						// Refresh User Operation Model and Operation Detail
-						airbus.mes.worktracker.util.ModelManager.loadUserOperationsModel();
-						
-						//this.refreshOperationData();
+						airbus.mes.worktracker.util.ModelManager
+								.loadUserOperationsModel();
+
+						// this.refreshOperationData();
 
 						if (flag_success == true) {
 							this.setProgressScreenBtn(true, true, false);
@@ -191,6 +192,7 @@ sap.ui
 							this.getView().byId("operationStatus").setText(
 									this.getView().getModel("i18n")
 											.getProperty("in_progress"));
+							this.refreshModelsForOperation();
 						}
 					},
 					pauseOperation : function() {
@@ -231,7 +233,7 @@ sap.ui
 						// Refresh User Operation Model and Operation Detail
 						airbus.mes.worktracker.util.ModelManager
 								.loadUserOperationsModel();
-						//this.refreshOperationData();
+						// this.refreshOperationData();
 
 						if (flag_success == true) {
 							this.setProgressScreenBtn(false, false, true);
@@ -241,7 +243,9 @@ sap.ui
 									.setType("Accept");
 							this.getView().byId("operationStatus").setText(
 									this.getView().getModel("i18n")
-											.getProperty("paused"));
+											.getProperty("pause"));
+
+							this.refreshModelsForOperation();
 						}
 
 					},
@@ -330,10 +334,11 @@ sap.ui
 								"userNameForConfirmation").getValue();
 						var pass = sap.ui.getCore().byId(
 								"passwordForConfirmation").getValue();
-						
-						var sMessageSuccess = this.getView().getModel("i18n").getProperty("SuccessfulConfirmation");
-						var sMessageError = this.getView().getModel("i18n").getProperty("ErrorDuringConfirmation");
-						
+
+						var sMessageSuccess = this.getView().getModel("i18n")
+								.getProperty("SuccessfulConfirmation");
+						var sMessageError = this.getView().getModel("i18n")
+								.getProperty("ErrorDuringConfirmation");
 
 						if (user == "" || pass == "") {
 							sap.ui.getCore().byId("msgstrpConfirm").setVisible(
@@ -387,45 +392,66 @@ sap.ui
 
 							this._oUserConfirmationDialog.close();
 
-							// Refresh User Operation Model and Operation Detail
-							airbus.mes.worktracker.util.ModelManager.loadUserOperationsModel();
-							//Refresh StationTracker Models
-							airbus.mes.stationtracker.ModelManager.loadStationTracker("R");
-							airbus.mes.stationtracker.ModelManager.loadStationTracker("I");
-							airbus.mes.stationtracker.ModelManager.loadStationTracker("U");
-							airbus.mes.stationtracker.ModelManager.loadStationTracker("O");
-							
+							this.refreshModelsForOperation();
 							this.refreshOperationData(percent);
 
 						}
 					},
-					
-					refreshOperationData: function(percentage){
-						this.getView().byId("progressSliderfirst").setWidth(percentage+"%");
-						this.getView().byId("progressSlider").setWidth((100- parseInt(percentage))+"%");
-						
-						this.getView().byId("progressSliderfirst").setMax(parseInt(percentage));
-						this.getView().byId("progressSlider").setMin(parseInt(percentage));
-						
-						this.getView().byId("progressSliderfirst").setValue(parseInt(percentage));
-						this.getView().byId("progressSlider").setValue(parseInt(percentage));
-						
 
-						switch(parseInt(percentage)){
-							case 100:
-								this.getView().byId("progressSliderfirst").setVisible(true);
-								this.getView().byId("progressSlider").setVisible(false);
-								break;
-							case 0:
-								this.getView().byId("progressSliderfirst").setVisible(false);
-								this.getView().byId("progressSlider").setVisible(true);
-								this.getView().byId("progressSlider").removeStyleClass("dynProgressSlider");
-								break;
-							default:
-								this.getView().byId("progressSliderfirst").setVisible(true);
-								this.getView().byId("progressSlider").setVisible(true);
-								this.getView().byId("progressSlider").addStyleClass("dynProgressSlider");
-								break;
+					refreshModelsForOperation : function() {
+						// Refresh User Operation Model and Operation Detail
+						airbus.mes.worktracker.util.ModelManager
+								.loadUserOperationsModel();
+						// Refresh StationTracker Models
+						airbus.mes.stationtracker.ModelManager
+								.loadStationTracker("R");
+						airbus.mes.stationtracker.ModelManager
+								.loadStationTracker("I");
+						airbus.mes.stationtracker.ModelManager
+								.loadStationTracker("U");
+						airbus.mes.stationtracker.ModelManager
+								.loadStationTracker("O");
+					},
+
+					refreshOperationData : function(percentage) {
+						this.getView().byId("progressSliderfirst").setWidth(
+								percentage + "%");
+						this.getView().byId("progressSlider").setWidth(
+								(100 - parseInt(percentage)) + "%");
+
+						this.getView().byId("progressSliderfirst").setMax(
+								parseInt(percentage));
+						this.getView().byId("progressSlider").setMin(
+								parseInt(percentage));
+
+						this.getView().byId("progressSliderfirst").setValue(
+								parseInt(percentage));
+						this.getView().byId("progressSlider").setValue(
+								parseInt(percentage));
+
+						switch (parseInt(percentage)) {
+						case 100:
+							this.getView().byId("progressSliderfirst")
+									.setVisible(true);
+							this.getView().byId("progressSlider").setVisible(
+									false);
+							break;
+						case 0:
+							this.getView().byId("progressSliderfirst")
+									.setVisible(false);
+							this.getView().byId("progressSlider").setVisible(
+									true);
+							this.getView().byId("progressSlider")
+									.removeStyleClass("dynProgressSlider");
+							break;
+						default:
+							this.getView().byId("progressSliderfirst")
+									.setVisible(true);
+							this.getView().byId("progressSlider").setVisible(
+									true);
+							this.getView().byId("progressSlider")
+									.addStyleClass("dynProgressSlider");
+							break;
 						}
 					},
 
