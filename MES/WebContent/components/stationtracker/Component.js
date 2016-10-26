@@ -16,6 +16,9 @@ jQuery.sap.require("airbus.mes.dhtmlx.ext.dhtmlxscheduler_units");
 jQuery.sap.require("airbus.mes.dhtmlx.ext.dhtmlxscheduler_drag_between");
 // jQuery.sap.require("airbus.mes.dhtmlx.ext.dhtmlxscheduler_tooltip");
 
+jQuery.sap.registerModulePath("airbus.mes.d3", "../lib/d3");
+jQuery.sap.require("airbus.mes.d3.d3_3_5_17_min");
+
 jQuery.sap.declare("airbus.mes.stationtracker.Component");
 
 sap.ui.core.UIComponent.extend("airbus.mes.stationtracker.Component", {

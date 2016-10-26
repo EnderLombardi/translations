@@ -34,89 +34,15 @@
 				<content>
 					<HBox id="kpiHeaderContent" width="100%">
 
-						<VBox id="boxTaktAdherence" width="35%" class="contentHeaderCont">
+						<VBox id="boxTaktAdherence" width="33%" class="contentHeaderCont">
 							<Label text="{StationTrackerI18n>TaktAdherence}" design="Bold"
 								width="100%" class="whiteTextHeader sapUiSmallMarginTopBottom" />
 							<HBox>
-								<VBox width="60%">
-									<micro:AreaMicroChart colorPalette='#ffffff , #84caec,'
-										width="90%" height="5rem" minXValue="0" maxXValue="100"
-										minYValue="0" maxYValue="100" class="sapUiSmallMargin" press="press">
-										<micro:firstXLabel>
-											<micro:AreaMicroChartLabel label="June 1"
-												color="Good" />
-										</micro:firstXLabel>
-										<micro:lastXLabel>
-											<micro:AreaMicroChartLabel label="June 30"
-												color="Critical" />
-										</micro:lastXLabel>
-										<micro:firstYLabel>
-											<micro:AreaMicroChartLabel label="0M"
-												color="Good" />
-										</micro:firstYLabel>
-										<micro:lastYLabel>
-											<micro:AreaMicroChartLabel label="80M"
-												color="Critical" />
-										</micro:lastYLabel>
-										<micro:lines>
-											<micro:AreaMicroChartItem>
-												<micro:points>
-													<micro:AreaMicroChartPoint x="80"
-														y="0" />
-													<micro:AreaMicroChartPoint x="80"
-														y="100" />
-												</micro:points>
-											</micro:AreaMicroChartItem>
-
-											<micro:AreaMicroChartItem>
-												<micro:points>
-													<micro:AreaMicroChartPoint x="0"
-														y="0" />
-													<micro:AreaMicroChartPoint x="10"
-														y="30" />
-													<micro:AreaMicroChartPoint x="60"
-														y="40" />
-													<micro:AreaMicroChartPoint x="100"
-														y="90" />
-												</micro:points>
-											</micro:AreaMicroChartItem>
-
-										</micro:lines>
-
-										<micro:maxThreshold>
-											<micro:AreaMicroChartItem color="Good">
-												<micro:points>
-													<micro:AreaMicroChartPoint x="0"
-														y="0" />
-													<micro:AreaMicroChartPoint x="30"
-														y="50" />
-													<micro:AreaMicroChartPoint x="60"
-														y="80" />
-													<micro:AreaMicroChartPoint x="100"
-														y="100" />
-												</micro:points>
-											</micro:AreaMicroChartItem>
-										</micro:maxThreshold>
-
-										<micro:minThreshold>
-											<micro:AreaMicroChartItem color="Error">
-												<micro:points>
-													<micro:AreaMicroChartPoint x="0"
-														y="0" />
-													<micro:AreaMicroChartPoint x="30"
-														y="50" />
-													<micro:AreaMicroChartPoint x="60"
-														y="80" />
-													<micro:AreaMicroChartPoint x="100"
-														y="100" />
-												</micro:points>
-											</micro:AreaMicroChartItem>
-										</micro:minThreshold>
-
-									</micro:AreaMicroChart>
+								<VBox width="50%" id="chartId">
+									<custom:TaktAdherenceAreaChart id="takt_adherence_area_chart"></custom:TaktAdherenceAreaChart>	
 								</VBox>
 
-								<VBox width="30%">
+								<VBox width="15%">
 									<Label text="{StationTrackerI18n>Adherence}" class=" whiteText" />
 									<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/Labour}"
 										class="sapUiSmallMarginTop kpiValue  whiteText"
@@ -124,10 +50,10 @@
 
 								</VBox>
 
-								<VBox width="30%">
+								<VBox width="35%">
 									
 									<layout:Grid
-										class="sapUiSmallMarginTop"
+										class=""
 										defaultSpan="L6 M6 S6">
 										<layout:content>
 											<Label text="{StationTrackerI18n>Trend}" class=" whiteText" />
@@ -154,10 +80,10 @@
 
 						</VBox>
 
-						<VBox  id="boxLabourEfficiency" wrap="Wrap" width="5%" class="contentHeaderCont">
+						<VBox  id="boxLabourEfficiency" wrap="Wrap" width="7%" class="contentHeaderCont">
 							<Label text="{StationTrackerI18n>LabourEfficiency}" design="Bold"
 								width="100%" class="whiteTextHeader sapUiSmallMarginTopBottom" />
-							<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/SLB}"
+							<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/SLB}" id="LabourEfficiencyValue"
 								class="sapUiSmallMarginTop whiteText kpiValue" />
 						</VBox>
 
@@ -166,7 +92,7 @@
 								class="whiteTextHeader sapUiSmallMarginTopBottom" />
 							<VBox width="90%">
 								<micro:ComparisonMicroChart width="100%"
-									size="L" colorPalette="#74d2e7, #fe5000, #fe5000">
+									size="L" colorPalette="#84bd00, #f5f5f5, #fe5000">
 									<micro:data>
 										<micro:ComparisonMicroChartData
 											title="{StationTrackerI18n>TaktSLB}" value="8" />
@@ -183,16 +109,16 @@
 							<Label text="{StationTrackerI18n>DisruptionOpen/Andon}" design="Bold"
 								width="100%" class="whiteTextHeader sapUiSmallMarginTopBottom" />
 							<HBox>
-								<VBox width="20%">
-									<Label text="{StationTrackerI18n>DisruptionTotal}" class=" whiteText"
+								<VBox width="30%">
+									<Label text="{StationTrackerI18n>DisruptionTotal}" class=" whiteText kpiName"
 										design="Bold" />
-									<Label text="{StationTrackerI18n>Disruption}" class=" whiteText" />
+									<Label text="{StationTrackerI18n>Disruption}" class=" whiteText kpiName" />
 									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/Total}"
 										class=" whiteText kpiValue" design="Bold" />
-									<Label text="{StationTrackerI18n>Andon}" class=" redText"
+									<Label text="{StationTrackerI18n>Andon}" class=" redText kpiErrorValue"
 										design="Bold" />
 									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/Total}"
-										class="redText kpiValue" design="Bold" />
+										class="redText kpiValue kpiErrorValue" design="Bold" />
 								</VBox>
 								<VBox width="30%">
 									<Label text="{StationTrackerI18n>DisruptionDetails}"
@@ -205,7 +131,7 @@
 									<Label text="{StationTrackerI18n>DisruptionFTE}" class="disruptionText" />
 									<Label text="{StationTrackerI18n>DisruptionOther}" class="disruptionText" />
 								</VBox>
-								<VBox alignItems="Center" width="26%">
+								<VBox alignItems="Center" width="20%">
 									<Label text="{StationTrackerI18n>Disruption}" class="whiteText" />
 									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/Total}"
 										class=" whiteText" />
@@ -216,16 +142,16 @@
 									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/Total}"
 										class=" whiteText" />
 								</VBox>
-								<VBox alignItems="Center" width="26%">
-									<Label text="{StationTrackerI18n>Andon}" class="redText" />
+								<VBox alignItems="Center" width="20%">
+									<Label text="{StationTrackerI18n>Andon}" class="redText kpiErrorValue" />
 									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/Total}"
-										class=" redText" />
+										class=" redText kpiErrorValue" />
 									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/Total}"
-										class=" redText" />
+										class=" redText kpiErrorValue" />
 									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/Total}"
-										class=" redText" />
+										class=" redText kpiErrorValue" />
 									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/Total}"
-										class=" redText" />
+										class=" redText kpiErrorValue" />
 								</VBox>
 							</HBox>
 						</VBox>
@@ -235,7 +161,7 @@
 								design="Bold" class="whiteTextHeader sapUiSmallMarginTopBottom" />
 							<VBox width="90%">
 								<micro:ComparisonMicroChart size="L"
-									width="100%" colorPalette="#74d2e7, #fe5000, #fe5000">
+									width="100%" colorPalette="#84bd00, #fe5000, #fe5000">
 									<micro:data>
 										<micro:ComparisonMicroChartData
 											title="{StationTrackerI18n>PromisedInTakt}" value="8" />
@@ -250,12 +176,12 @@
 
 						<VBox id="boxExtraWork" wrap="Wrap" width="5%" class="contentHeaderCont">
 							<Label text="{StationTrackerI18n>ExtraWork}" design="Bold"
-								width="100%" class="whiteTextHeader sapUiSmallMarginTopBottom" />
+								width="100%" class="whiteTextHeader sapUiSmallMarginTopBottom " />
 							<Label text="{StationTrackerI18n>Operations}" width="100%"
-								class="whiteText " />
+								class="whiteText kpiName" />
 							<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/Total}"
 								class="whiteText kpiValue" design="Bold" />
-							<Label text="{StationTrackerI18n>Hrs}" width="100%" class="whiteText " />
+							<Label text="{StationTrackerI18n>Hrs}" width="100%" class="whiteText kpiName" />
 							<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/Total}"
 								class="whiteText kpiValue" design="Bold"/>
 						</VBox>
@@ -264,7 +190,7 @@
 							<Label text="{StationTrackerI18n>ShiftSTAFFING}" size="L"
 								design="Bold" width="100%" class="whiteTextHeader sapUiSmallMarginTopBottom" />
 							<VBox width="90%">
-								<micro:DeltaMicroChart width="100%"
+								<micro:DeltaMicroChart width="100%" id="shifStaffingHeader"
 									isResponsive="true" value1="10" value2="9"
 									title1="{StationTrackerI18n>NeedFTE}" title2="{StationTrackerI18n>AllocatedFTE}"
 									displayValue1="100 IM" displayValue2="900 IM"

@@ -133,12 +133,6 @@
 	background-color: white ! important;
 }
 
-.whiteText {
-	text-align: center ! important;
-	color: white;
-	width: 100%;
-}
-
 .disruptionText {
 	color: white;
 }
@@ -623,13 +617,29 @@ background-color: #0085AD !important;
 }
 
 #stationTrackerView--kpiHeaderContent .sapSuiteCmpChartItemTitle,
+#stationTrackerView--kpiHeaderContent .sapSuiteCmpChartItemValue,
 #stationTrackerView--kpiHeaderContent label{
 	color: #F5F5F5;
-	font-size: 11px;
+	font-size: 9px;
+}
+
+#stationTrackerView--kpiHeaderContent .sapSuiteCmpChartBarNoValue {
+	background-color: rgba(187, 188, 188, 0.15);
 }
 
 #stationTrackerView--kpiHeaderContent .kpiValue{
-	font-size: 35px;
+	font-size: 30px;
+	width: 100%;
+	text-align: center ! important;
+}
+
+#stationTrackerView--kpiHeaderContent .kpiName{
+	text-align: center ! important;
+	width: 100%;
+}
+
+#stationTrackerView--kpiHeaderContent .kpiErrorValue{
+	color: #fe5000;
 }
 
 #stationTrackerView--kpiHeaderContent .whiteTextHeader {
@@ -794,4 +804,119 @@ background-color: #0085AD !important;
 	background-color: #F3F5F6;
 	border-bottom: 1px solid #dddddd;
 	border-right: 1px solid #dddddd;
+}
+
+/** Takt Adherence **/
+#stationTrackerView--takt_adherence_adherence_value {
+	font-size: 15px;
+}
+
+#stationTrackerView--kpiHeaderContent .takt_kpi_name {
+	text-align: right;
+}
+
+#stationTrackerView--kpiHeaderContent .takt_kpi_value {
+	text-align: left;
+}
+
+#stationTrackerView--LabourEfficiencyValue {
+	text-align: center ! important;
+}
+
+/** Area Chart **/
+svg#stationTrackerView--takt_adherence_area_chart {
+	border: none;
+}
+
+.takt_adherence_area_chart_svg-container {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%; /* aspect ratio */
+    vertical-align: top;
+    overflow: hidden;
+}
+.takt_adherence_area_chart_svg-content-responsive {
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    left: 0;
+}
+
+#stationTrackerView--takt_adherence_area_chart .yaxis {
+	fill: white;
+	font-size: 7px;
+}
+
+#stationTrackerView--takt_adherence_area_chart .yaxelabel {
+	fill: white;
+	font-size: 7px;
+	margin-bottom: 2px;
+}
+
+#stationTrackerView--takt_adherence_area_chart .axis path, .axis line {
+	fill: none;
+	stroke: grey;
+	shape-rendering: crispEdges;
+}
+
+#stationTrackerView--takt_adherence_area_chart .area { 
+	fill: #E5002B;
+}
+
+#stationTrackerView--takt_adherence_area_chart .line {
+	stroke-width: 1;
+	stroke: #0D2C63;
+	fill: none;
+}
+
+#stationTrackerView--takt_adherence_area_chart .realLine {
+	stroke-width: 1;
+	stroke: white;
+	fill: none;
+}
+#stationTrackerView--takt_adherence_area_chart .estimateLine {
+	stroke-width: 1;
+	stroke: white;
+	stroke-dasharray:10;
+	fill: none;
+}
+
+#stationTrackerView--takt_adherence_area_chart .ygrid .tick {
+	stroke: rgba(109, 147, 194, 0.39);
+	opacity: 0.7;
+}
+#stationTrackerView--takt_adherence_area_chart .ygrid path {
+	stroke-width: 0;
+}
+
+/** Box resolution efficiency **/
+#stationTrackerView--boxResolutionEfficiency .boxResolutionEfficiencyGoodValue{
+	color: #84bd00;
+}
+
+#stationTrackerView--boxResolutionEfficiency .boxResolutionEfficiencyBadValue{
+	color: #fe5000;
+}
+
+/** Shift Staffing **/
+#stationTrackerView--shifStaffingHeader-dmc-chart .Left{
+	background-color: #84bd00;
+}
+
+#stationTrackerView--shifStaffingHeader .sapSuiteDmcTitle,
+#stationTrackerView--shifStaffingHeader .sapSuiteDmcLbls{
+	font-size: 9px;
+}
+
+#stationTrackerView--shifStaffingHeader .sapSuiteDmcCnt{
+	right: 2rem;
+}
+
+#stationTrackerView--shifStaffingHeader .sapSuiteDmcDelta{
+	color: white;
+}
+
+#stationTrackerView--shifStaffingHeader .sapSuiteDmcBarDeltaInt{
+	background: #fe5000;
 }
