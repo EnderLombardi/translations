@@ -1,8 +1,7 @@
 <core:FragmentDefinition xmlns="sap.m"
 	xmlns:form="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core"
 	xmlns:html="http://www.w3.org/1999/xhtml">
-	<Dialog title="{i18nModel>EditTeamButton}" icon="sap-icon://edit" type="Default Message"
-		afterClose="afterHelpOK">
+	<Dialog title="{i18nModel>EditTeamButton}" icon="sap-icon://edit" type="Default Message">
 		<content>
 			<FlexBox width="100%" height="100%" justifyContent="Center"
 				alignItems="Center" direction="Column">
@@ -11,83 +10,71 @@
 					<form:SimpleForm maxContainerCols="1" class="myForm"
 						editable="true" id="searchForm" height="inherit">
 						<form:content>
-							<Label text="{i18nModel>Site}" required="true">
-								<layoutData>
-									<l:ResponsiveFlowLayoutData weight="1" />
-								</layoutData>
-							</Label>
-							<Text id="site" text="CHES">
-								<layoutData>
-									<l:ResponsiveFlowLayoutData weight="3" />
-								</layoutData>
-							</Text>
-							<Label text="{i18nModel>ResourcePool}" required="true">
-								<layoutData>
-									<l:ResponsiveFlowLayoutData weight="5" />
-								</layoutData>
-							</Label>
-							<Input id="resourcePool" showValueHelp="true"
-								liveChange="upperCaseConversion" valueHelpRequest="showValueHelp"
-								submit="onFocusOutOfResourcePool">
-								<layoutData>
-									<l:ResponsiveFlowLayoutData weight="11" />
-								</layoutData>
-							</Input>
-							<Button id="createOrDeleteButton" icon="sap-icon://create"
-								enabled="{path:'i18nModel>ResourcePool',formatter:'airbus.mes.resourcepool.util.Formatter.isEnabled'}"
-								press="createOrDeleteResource" class="iconMiddle">
+							<Label text="{i18nModel>Site}">
 								<layoutData>
 									<l:ResponsiveFlowLayoutData weight="4" />
 								</layoutData>
-							</Button>
+							</Label>
+							<Text id="site" text="">
+								<layoutData>
+									<l:ResponsiveFlowLayoutData weight="8" />
+								</layoutData>
+							</Text>
+							
+							<Label text="{i18nModel>ResourcePool}">
+								<layoutData>
+									<l:ResponsiveFlowLayoutData weight="4" />
+								</layoutData>
+							</Label>
+							<Text id="resourcePoolName" text="">
+								<layoutData>
+									<l:ResponsiveFlowLayoutData weight="8" />
+								</layoutData>
+							</Text>
+							
 							<Label text="{i18nModel>Description}" required="true">
 								<layoutData>
-									<l:ResponsiveFlowLayoutData weight="5" />
+									<l:ResponsiveFlowLayoutData weight="4" />
 								</layoutData>
 							</Label>
 							<Input id="description" value=""
 								editable="{path:'i18nModel>ResourcePool',formatter:'airbus.mes.resourcepool.util.Formatter.isEditable'}">
 								<layoutData>
-									<l:ResponsiveFlowLayoutData weight="11" />
+									<l:ResponsiveFlowLayoutData weight="8" />
 								</layoutData>
 							</Input>
-							<Button icon="sap-icon://save"
-								enabled="{path:'i18nModel>ResourcePool',formatter:'airbus.mes.resourcepool.util.Formatter.isEnabled'}"
-								press="updateResource" class="iconMiddle">
-								<layoutData>
-									<l:ResponsiveFlowLayoutData weight="4" />
-								</layoutData>
-							</Button>
+
+							
 							<Label text="">
 								<layoutData>
 									<l:ResponsiveFlowLayoutData weight="1" />
 								</layoutData>
 							</Label>
-							<Button text="{i18nModel>Submit}" type="Accept" enabled="true"
-								tap="submitForm">
+							
+							<HBox  width="100%" height="40px" class="messageHBox">
 								<layoutData>
-									<l:ResponsiveFlowLayoutData weight="25" />
+									<l:ResponsiveFlowLayoutData weight="12" />
 								</layoutData>
-							</Button>
-
-							<MessageStrip id="messageBox" class="messageStrip"
-								showIcon="true" showCloseButton="true" visible="false" width="100%">
-								<layoutData>
-									<l:ResponsiveFlowLayoutData weight="4" />
-								</layoutData>
-							</MessageStrip>
+								<items>
+									<MessageStrip id="messageBox" class="messageStrip"
+										showIcon="true" showCloseButton="true" visible="false" width="100%">
+										
+									</MessageStrip>
+								</items>
+							</HBox>
+							
 						</form:content>
 					</form:SimpleForm>
 
-					<!-- </content> </Panel> -->
 				</items>
 			</FlexBox>
 
 		</content>
+		
 		<buttons>
-			<Button text="Save" tyep="Accept" press="editTeamSave" />
-			<Button text="Delete" press="afterHelpOK" />
-			<Button text="{i18nModel>OK}" press="afterHelpOK" />
+			<Button text="{i18nModel>SaveButton}"  press="saveResourcePool" />
+			<Button text="{i18nModel>DeleteButton}" press="confirmDeleteResourcePool" />
+			<Button text="{i18nModel>CloseButton}" press="editTeamClose" />
 		</buttons>
 	</Dialog>
 </core:FragmentDefinition>

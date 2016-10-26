@@ -184,7 +184,7 @@ airbus.mes.resourcepool.util.ModelManager = {
 			type : 'GET',
 			success : function(data, textStatus, jqXHR) {
 				var message = airbus.mes.resourcepool.oView.getModel("i18nModel").getProperty("Created");
-				value = this.handleMessages(data, textStatus, jqXHR,
+				value = airbus.mes.resourcepool.util.ModelManager.handleMessages(data, textStatus, jqXHR,
 						message, "Strip");
 				airbus.mes.resourcepool.util.ModelManager.loadModelValueHelp();
 
@@ -218,7 +218,7 @@ airbus.mes.resourcepool.util.ModelManager = {
 			type : 'GET',
 			success : function(data, textStatus, jqXHR) {
 				var message = airbus.mes.resourcepool.oView.getModel("i18nModel").getProperty("Updated");
-				value = this.handleMessages(data, textStatus, jqXHR,
+				value = airbus.mes.resourcepool.util.ModelManager.handleMessages(data, textStatus, jqXHR,
 						message, "Strip");
 				airbus.mes.resourcepool.util.ModelManager.loadModelValueHelp();
 
@@ -301,7 +301,7 @@ airbus.mes.resourcepool.util.ModelManager = {
 			type : 'GET',
 			success : function(data, textStatus, jqXHR) {
 				var message = airbus.mes.resourcepool.oView.getModel("i18nModel").getProperty("Deleted");
-				value = this.handleMessages(data, textStatus, jqXHR,
+				value = airbus.mes.resourcepool.util.ModelManager.handleMessages(data, textStatus, jqXHR,
 						message, "Strip");
 				airbus.mes.resourcepool.util.ModelManager.loadModelValueHelp();
 			},
@@ -346,25 +346,30 @@ airbus.mes.resourcepool.util.ModelManager = {
 		this.currentView.setBusy(false);
 	},
 
-	showMessage : function(display, msgType, msgText, visible) {
+	showMessage : function(display, msgType, msgText, visible, duration) {
 
+
+		if(duration === undefined)
+			duration = 3000;
+		
 		switch (display) {
-
+		
 		case "Toast":
-			sap.m.MessageToast.show(msgText);
+			sap.m.MessageToast.show(msgText, {
+				duration : duration,
+				closeOnBrowserNavigation : false
+			});
 			break;
 		default:
 
-			var oMessageStrip = sap.ui.getCore().byId("idSearchView").byId(
-					"messageBox");
+			var oMessageStrip = sap.ui.getCore().byId("editTeam--messageBox");
 			oMessageStrip.setType(msgType);
 			oMessageStrip.setText(msgText);
 			oMessageStrip.setVisible(visible);
 
 			setTimeout(function() {
 
-				var oMessageStrip = sap.ui.getCore().byId("idSearchView").byId(
-						"messageBox");
+				var oMessageStrip = sap.ui.getCore().byId("editTeam--messageBox");
 				oMessageStrip.setVisible(false);
 				oMessageStrip.setText("");
 			}, 10000);

@@ -113,6 +113,7 @@ airbus.mes.resourcepool.util.Formatter = {
 
 	},
 
+
 	isEditable : function() {
 		// return true;
 		return airbus.mes.shell.RoleManager.isAllowed('MII_MOD1684_PRODMNG')

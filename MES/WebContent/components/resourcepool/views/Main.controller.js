@@ -158,7 +158,7 @@ sap.ui
 						/* If no selections are made when assigning show error */
 						if (!aUsersToAssign || aUsersToAssign.length == 0) {
 							airbus.mes.resourcepool.util.ModelManager.showMessage("Toast", "",
-									airbus.mes.resourcepool.util.ModelManager.i18nModel
+									airbus.mes.resourcepool.oView.getModel("i18nModel")
 											.getProperty("NoSelections"), "")
 							return;
 						}
@@ -253,16 +253,16 @@ sap.ui
 							this.oMessageDialog.getContent()[0]
 									.addItem(new sap.m.Text(
 											{
-												text : airbus.mes.resourcepool.util.ModelManager.i18nModel
+												text : airbus.mes.resourcepool.oView.getModel("i18nModel")
 														.getProperty("User")
 														+ " "
 														+ this.titleCase(aError[i].getCustomData()[5].getValue() +" "+ aError[i].getCustomData()[6].getValue())
 														+ " "
-														+ airbus.mes.resourcepool.util.ModelManager.i18nModel.getProperty("AssignedToResourcePool")
+														+ airbus.mes.resourcepool.oView.getModel("i18nModel").getProperty("AssignedToResourcePool")
 														+ " "
 														+ aError[i].getCustomData()[3].getValue()
 														+ " "
-														+ airbus.mes.resourcepool.util.ModelManager.i18nModel.getProperty("LoanedToResourcePool")
+														+ airbus.mes.resourcepool.oView.getModel("i18nModel").getProperty("LoanedToResourcePool")
 														+ aError[i].getCustomData()[4].getValue()
 
 											}));
@@ -290,7 +290,7 @@ sap.ui
 						 * unassigning
 						 */
 						if (!aUsersToUnassign || aUsersToUnassign.length == 0) {
-							airbus.mes.resourcepool.util.ModelManager.showMessage("Toast", "",airbus.mes.resourcepool.util.ModelManager.i18nModel.getProperty("NoSelections"), "")
+							airbus.mes.resourcepool.util.ModelManager.showMessage("Toast", "",airbus.mes.resourcepool.oView.getModel("i18nModel").getProperty("NoSelections"), "")
 							return;
 						}
 						airbus.mes.resourcepool.util.ModelManager.anyChangesFlag = true;
@@ -379,7 +379,7 @@ sap.ui
 						if (!aWorkCenterToAssign
 								|| aWorkCenterToAssign.length == 0) {
 							airbus.mes.resourcepool.util.ModelManager.showMessage("Toast", "",
-									airbus.mes.resourcepool.util.ModelManager.i18nModel
+									airbus.mes.resourcepool.oView.getModel("i18nModel")
 											.getProperty("NoSelections"), "")
 							return;
 						}
@@ -446,7 +446,7 @@ sap.ui
 						if (!aWorkCenterToUnassign
 								|| aWorkCenterToUnassign.length == 0) {
 							airbus.mes.resourcepool.util.ModelManager.showMessage("Toast", "",
-									airbus.mes.resourcepool.util.ModelManager.i18nModel
+									airbus.mes.resourcepool.oView.getModel("i18nModel")
 											.getProperty("NoSelections"), "")
 							return;
 						}
@@ -819,7 +819,7 @@ sap.ui
 						if (airbus.mes.resourcepool.selectResourcePool === undefined) {
 
 							airbus.mes.resourcepool.selectResourcePool = sap.ui.xmlfragment("selectResourcePool",
-									"airbus.mes.resourcepool.views.valueHelp", airbus.mes.resourcepool.oView.getController());
+									"airbus.mes.resourcepool.views.selectRP", airbus.mes.resourcepool.oView.getController());
 							airbus.mes.resourcepool.oView.addDependent(airbus.mes.resourcepool.selectResourcePool);
 						}
 						airbus.mes.resourcepool.selectResourcePool.open();
@@ -877,31 +877,6 @@ sap.ui
 						
 						// Load Main Page
 						this.loadMainPage();
-					
-						
-						/*var oDescription = sap.ui.getCore().byId(
-								'idSearchView--description');*/
-						/*var oButton = this.getView().byId(
-								"createOrDeleteButton");*/
-						/*oDescription.setValue(oSelectedItem.getDescription());
-
-						/*
-						 * 
-						 */
-						/*airbus.mes.resourcepool.util.ModelManager.site = sap.ui.getCore().byId(
-								"idSearchView--site").getText();
-						airbus.mes.resourcepool.util.ModelManager.resourceName = oResourcePool.getValue();
-						airbus.mes.resourcepool.util.ModelManager.resourceDescription = oDescription
-								.getValue();
-
-						/* set create or delete buton based on some conditions */
-						/*if (!oResourcePool) {
-							oButton.setIcon("sap-icon://create");
-							oButton.setTooltip("create");
-						} else {
-							oButton.setIcon("sap-icon://delete");
-							oButton.setTooltip("delete");
-						}*/
 
 					},
 					
@@ -932,8 +907,15 @@ sap.ui
 					 * 
 					 * Close Value Help on clicking close button
 					 **********************************************************/
-					handleCloseValueHelp : function(oEvt) {
-						oEvt.getSource().getBinding("items").filter([]);
+					handleCloseSelectRP : function(oEvt) {
+						if(airbus.mes.resourcepool.util.ModelManager.resourceName === undefined || airbus.mes.resourcepool.util.ModelManager.resourceName == ""){
+							this.openSelectResourcePool();
+							airbus.mes.resourcepool.util.ModelManager.showMessage("Toast", "", airbus.mes.resourcepool.oView.getModel("i18nModel")
+									.getProperty("RPMandatory"), "", 5000);
+						}
+						
+						else					
+							oEvt.getSource().getBinding("items").filter([]);
 					},
 
 					titleCase : function(str) {
@@ -966,11 +948,118 @@ sap.ui
 									"airbus.mes.resourcepool.views.editTeam", airbus.mes.resourcepool.oView.getController());
 							airbus.mes.resourcepool.oView.addDependent(airbus.mes.resourcepool.editTeam);
 						}
+						
+						// Open
 						airbus.mes.resourcepool.editTeam.open();
+
+						
+						// Set Site, Resource Pool name and Description
+						sap.ui.getCore().byId("editTeam--site").setText(airbus.mes.resourcepool.util.ModelManager.site);
+						sap.ui.getCore().byId("editTeam--resourcePoolName").setText(airbus.mes.resourcepool.util.ModelManager.resourceName);
+						sap.ui.getCore().byId("editTeam--description").setValue(airbus.mes.resourcepool.util.ModelManager.resourceDescription);
+					},
+					
+					editTeamClose: function(){
+						airbus.mes.resourcepool.editTeam.close();
+					},
+
+					
+					/***********************************************************
+					 * Triggers when Save button is clicked on the Pop-Up
+					 * 
+					 * @returns {Number} 0: if not error in updating else 1.
+					 **********************************************************/
+					saveResourcePool: function(){
+
+						var resourcePool = sap.ui.getCore().byId("editTeam--resourcePoolName")
+								.getText();
+						var description = sap.ui.getCore().byId("editTeam--description")
+								.getValue();
+
+						/*
+						 * check mandatory paramater's are filled before
+						 * proceeding to update
+						 */
+						if (this.checkMandatoryParam(resourcePool, description))
+							return;
+						airbus.mes.resourcepool.util.ModelManager.resourceName = resourcePool;
+						airbus.mes.resourcepool.util.ModelManager.resourceDescription = description;
+						
+						/* call updateResource() method from airbus.mes.resourcepool.util.ModelManager. */
+						var anyError = airbus.mes.resourcepool.util.ModelManager.updateResource();
+		
+					},
+					
+					confirmDeleteResourcePool: function(){
+						if (airbus.mes.resourcepool.deleteTeam === undefined) {
+
+							airbus.mes.resourcepool.deleteTeam = sap.ui.xmlfragment("deleteTeam",
+									"airbus.mes.resourcepool.views.DeleteConfirmation", airbus.mes.resourcepool.oView.getController());
+							airbus.mes.resourcepool.oView.addDependent(airbus.mes.resourcepool.deleteTeam);
+						}
+						
+						// Open
+						airbus.mes.resourcepool.deleteTeam.open();
+					},
+					
+					/***********************************************************
+					 * Triggers when "Yes" is pressed on delete dialog
+					 **********************************************************/
+					deleteResourcePool: function(){
+						/* call deleteResource() from ModelManager */
+						var anyError = airbus.mes.resourcepool.util.ModelManager.deleteResource();
+						airbus.mes.resourcepool.deleteTeam.close();
+						airbus.mes.resourcepool.util.ModelManager.resourceName = undefined;
+						airbus.mes.resourcepool.util.ModelManager.resourceDescription = undefined;
+						this.getView().byId("resourcePoolName").setText("");
+						this.editTeamClose();
+						this.openSelectResourcePool();
+						
+					},
+					
+					/***********************************************************
+					 * Triggers on "No" of Update Dialog
+					 **********************************************************/
+					deleteDialogueClose: function(){
+						airbus.mes.resourcepool.deleteTeam.close();
+					},
+
+					/***********************************************************
+					 * Check mandatory parameters before taking any actions
+					 **********************************************************/
+					checkMandatoryParam : function(resourcePool, description) {
+						/* if resource pool is empty display error and return */
+						if(!resourcePool){
+
+							airbus.mes.resourcepool.util.ModelManager
+									.showMessage(
+											"Strip",
+											"Error",
+											airbus.mes.resourcepool.oView.getModel("i18nModel")
+													.getProperty("EmptyResource"),
+											true);
+
+							return true;
+						}
+						
+						/* if description is empty display error and return */
+						if(!description){
+
+							airbus.mes.resourcepool.util.ModelManager.showMessage("Strip", "Error",
+									airbus.mes.resourcepool.oView.getModel("i18nModel")
+											.getProperty("EmptyDescription"),
+									true);
+
+							return true;
+						}
+					},
+
+					/***********************************************************
+					 * Converts the resource pool name to upper case
+					 **********************************************************/
+					upperCaseConversion : function(oEvt) {
+						oEvt.getSource().setValue(
+								oEvt.getSource().getValue().toUpperCase())
 					}
-					
-					
-					
-					
 
 				});
