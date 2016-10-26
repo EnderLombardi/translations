@@ -63,6 +63,7 @@ sap.ui
 									error : function(xhr, status, error) {
 										airbus.mes.operationdetail.ModelManager
 												.messageShow(sMessageError);
+										flag_success = false
 									},
 									success : function(result, status, xhr) {
 
@@ -84,8 +85,7 @@ sap.ui
 								});
 
 						// Refresh User Operation Model and Operation Detail
-						airbus.mes.stationtracker.ModelManager
-								.loadStationTracker(airbus.mes.stationtracker.ModelManager.operationType);
+						airbus.mes.shell.oView.getController().renderStationTracker();
 
 						// this.refreshOperationData();
 
@@ -97,6 +97,9 @@ sap.ui
 									this.getView().getModel("i18n")
 											.getProperty("in_progress"));
 
+							// Re-Render Station Tracker
+							airbus.mes.shell.oView.getController().renderStationTracker();
+							
 							// update operationDetailsModel
 
 							sap.ui.getCore().getModel("operationDetailModel")
@@ -116,7 +119,7 @@ sap.ui
 						var sMessageError = this.getView()
 								.getModel("i18n").getProperty(
 										"UnsuccessfulPause");
-
+						var flag_success;
 						jQuery
 								.ajax({
 									url : airbus.mes.operationdetail.ModelManager
@@ -125,6 +128,7 @@ sap.ui
 									error : function(xhr, status, error) {
 										airbus.mes.operationdetail.ModelManager
 												.messageShow(sMessageError);
+										flag_success = false
 
 									},
 									success : function(result, status, xhr) {
@@ -156,6 +160,9 @@ sap.ui
 									this.getView().getModel("i18n")
 											.getProperty("paused"));
 
+							// Re-Render Station Tracker
+							airbus.mes.shell.oView.getController().renderStationTracker();
+							
 							// update operationDetailsModel
 
 							sap.ui.getCore().getModel("operationDetailModel")
@@ -287,6 +294,7 @@ sap.ui
 										error : function(xhr, status, error) {
 											airbus.mes.operationdetail.ModelManager
 													.messageShow(sMessageError);
+											flag_success = false
 
 										},
 										success : function(result, status, xhr) {
@@ -312,8 +320,7 @@ sap.ui
 							if (flag === true) {
 								// Refresh User Operation Model and Operation
 								// Detail
-								airbus.mes.stationtracker.ModelManager
-										.loadStationTracker(airbus.mes.stationtracker.ModelManager.operationType);
+								airbus.mes.shell.oView.getController().renderStationTracker();
 
 								this.refreshOperationData(percent);
 

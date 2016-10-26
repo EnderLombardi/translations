@@ -670,6 +670,5 @@ airbus.mes.stationtracker.ModelManager = {
 		 * $("#operationDetailsView--operationDetailPanel").height() - 48 ));
 		 */
 
-	},
-
+	}
 }
