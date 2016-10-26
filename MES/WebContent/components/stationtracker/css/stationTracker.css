@@ -127,6 +127,12 @@
 	background-color: white ! important;
 }
 
+.whiteText {
+	text-align: center ! important;
+	color: white;
+	width: 100%;
+}
+
 .disruptionText {
 	color: white;
 }
@@ -1053,4 +1059,32 @@ svg#stationTrackerView--takt_adherence_area_chart {
 
 .sapMPopoverScroll .sapMSelectListItemBaseSelected{
 	background-color: #D5F1F8 !important;
+}
+
+/* Pop-up Polypoly */
+#pop-up-polypoly {
+	background: #ffffff;
+    border: none;
+    border-radius: 0;
+    box-shadow: 0 0 5px #333;
+}
+
+#pop-up-polypoly-header-BarPH {
+	background:#d4f1f7;
+
+}
+#pop-up-polypoly-title {
+	color:#434343;
+}
+#pop-up-polypoly-scrollCont {
+	padding:0;
+}
+#pop-up-polypoly-cont {
+	border-top:3px solid #ffffff;
+}
+#pop-up-polypoly-footer {
+	background-color:#0F2D65;
+}
+#pop-up-polypoly .sapUiTableColHdrScr .sapUiTableColHdr:nth-child(2) .sapMLabel {
+	border:none;
 }
