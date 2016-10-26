@@ -368,8 +368,7 @@
 			</Panel>
 
 
-			<OverflowToolbar id="toolbarstationtracker" class="white"
-				width="100%">
+			<OverflowToolbar id="toolbarstationtracker" width="100%">
 				<content>
 					<SegmentedButton id="buttonViewMode">
 						<layoutData>
