@@ -320,9 +320,7 @@ airbus.mes.stationtracker.util.Formatter = {
 				// User affectation
 				// TODO maybe replace date + name by the Id of the shift?
 				var sshiftID = airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftID;
-				var oHierarchyDelay =airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchyDelay;
-				var fProgress = oHierarchyDelay[oSection.group][oSection.avlLine].progress;
-				var fDuration =	oHierarchyDelay[oSection.group][oSection.avlLine].duration;
+			
 						
 				if ( airbus.mes.stationtracker.ShiftManager.dayDisplay ) {
 						
@@ -336,6 +334,9 @@ airbus.mes.stationtracker.util.Formatter = {
 	
 						// See SD there is only one user affected for the couple of shift id + avlLine
 						var oCurrentAffectedUser = airbus.mes.stationtracker.AssignmentManager.affectationHierarchy[oSection.avlLine][sshiftID][0];
+						var oHierarchyDelay =airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchyDelay;
+						var fProgress = oHierarchyDelay[oSection.group][oSection.avlLine].progress;
+						var fDuration =	oHierarchyDelay[oSection.group][oSection.avlLine].duration;
 						
 						if ( oSection.rescheduled ) {
 							

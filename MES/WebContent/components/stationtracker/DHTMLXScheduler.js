@@ -94,6 +94,17 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 							
 							
 						}));
+						
+						
+						scheduler.eventId.push (scheduler.attachEvent("onBeforeEventChanged", function(ev, e, is_new, original){
+						  
+							if ( ev.section_id.slice(0,2) === "I_" ) {
+						    return false;
+						  } 
+							
+						  return true;
+						  
+						}));
 					
 												
 						//				if (!scheduler.checkEvent("onBeforeEventChanged")) {
