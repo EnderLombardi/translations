@@ -76,7 +76,7 @@ sap.ui
 											flag_success = false;
 										} else {
 											airbus.mes.operationdetail.ModelManager
-													.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
+													.messageShow(sMessageSuccess);
 											flag_success = true;
 										}
 
@@ -139,7 +139,7 @@ sap.ui
 											flag_success = false;
 										} else {
 											airbus.mes.operationdetail.ModelManager
-													.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
+													.messageShow(sMessageSuccess);
 											flag_success = true;
 										}
 
