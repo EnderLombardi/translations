@@ -1,33 +1,18 @@
 {
-	"buttonDetail": [{
+	"buttonDetail": [ {
+	"text": "StationTracker",
+		"icon": "customer-view",
+		"app":"",
+		"url": "/MES/WebContent/components/settings/index.html",
+		"enable": true
+	},{
 
-		"text": "OSWinputsMgt",
-			"icon": "cause",
-			"app":"",
-		"url": "/MES/WebContent/components/stationtracker/index.html",
-		"enable": false
-	}, {
-
-		"text": "TeamAvailability",
-		"icon": "calendar",
+		"text": "WorkerOrderTracker",
+		"icon": "horizontal-bar-chart",
 		"app":"",
 		"url": "/MES/WebContent/components/stationtracker/index.html",
 		"enable": false
-	}, {
-
-		"text": "TeamCompetencies",
-		"icon": "task",
-		"app":"",
-		"url": "/MES/WebContent/components/stationtracker/index.html",
-		"enable": false
-	},	{
-
-		"text": "TeamAssignment",
-		"icon": "customer-history",
-		"app":"",
-		"url": "/MES/WebContent/components/stationtracker/index.html",
-		"enable": false
-	}	
+	}
 	]
 }
 

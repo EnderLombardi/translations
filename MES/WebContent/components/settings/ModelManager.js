@@ -11,9 +11,7 @@ airbus.mes.settings.ModelManager = {
 	station : undefined,
 	msn : undefined,
 	core : undefined,
-	prodGroup: "%",
 	urlModel : undefined,
-	//user:"ng123",
 	current_flag:"X",
 	queryParams : jQuery.sap.getUriParameters(),
 	
@@ -25,7 +23,7 @@ airbus.mes.settings.ModelManager = {
 		
 		core.setModel(new sap.ui.model.json.JSONModel(), "plantModel");
 		core.setModel(new sap.ui.model.json.JSONModel(), "siteModel");
-		core.setModel(new sap.ui.model.json.JSONModel(), "langModel");
+//		core.setModel(new sap.ui.model.json.JSONModel(), "langModel");
 		//core.setModel(new sap.ui.model.json.JSONModel(), "userSettingModel");
 
 		var dest;
@@ -54,6 +52,7 @@ airbus.mes.settings.ModelManager = {
 		//Loading of model
 		
 		this.loadSiteModel();
+		this.loadPlantModel();
         this.loadUserSettingsModel();
 
 	},
@@ -77,7 +76,7 @@ airbus.mes.settings.ModelManager = {
 	},
 
 	loadPlantModel : function() {
-		var oViewModel = airbus.mes.settings.oView.getModel("plantModel");
+		var oViewModel = sap.ui.getCore().getModel("plantModel") 
 		oViewModel.loadData(airbus.mes.settings.ModelManager.getUrlPlant(), null, false);
 	},
 	// ********************************************************************************

@@ -1,18 +1,27 @@
 {
-	"buttonDetail": [{
-	"text": "StationTracker",
-		"icon": "customer-view",
+	"buttonDetail": [ {
+
+		"text": "TeamCompetencies",
+		"icon": "task",
 		"app":"",
-		"url": "/MES/WebContent/components/settings/index.html",
-		"enable": true
-	}, {
+		"url": "/MES/WebContent/components/stationtracker/index.html",
+		"enable": false
+	},{
+
+		"text": "DisruptionAndon",
+		"icon": "customer-history",
+		"app":"",
+		"url": "/MES/WebContent/components/stationtracker/index.html",
+		"enable": false
+	},	
+	{
 
 		"text": "LineTracker",
 		"icon": "flight",
 		"app":"",
 		"url": "/MES/WebContent/components/linetracker/index.html",
 		"enable": false
-	}	
+	}
 	]
 }
 

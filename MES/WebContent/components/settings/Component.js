@@ -1,28 +1,70 @@
 "use strict";
 
 jQuery.sap.require("sap.ui.core.UIComponent");
-jQuery.sap.require("sap.ui.base.Event");
-jQuery.sap.require("airbus.mes.settings.ModelManager");
 jQuery.sap.require("airbus.mes.settings.GlobalFunction");
+jQuery.sap.require("airbus.mes.settings.ModelManager");
 
-// Declare the current Component
 jQuery.sap.declare("airbus.mes.settings.Component");
 
-// Extend current Component
-sap.ui.core.UIComponent.extend("airbus.mes.settings.Component", {
-	manifestUrl : "Component.json",
-	metadata : {
+// Pointing out metadata manifest to the application
+sap.ui.core.UIComponent
+		.extend(
+				"airbus.mes.settings.Component",
+				{
 
-		properties : {
-			textButtonTo : "string",
-			buttonAction : "string"
-		},
-		includes : [ "./css/SettingScreen.css" ]
-	// array of css and/or javascript files that should be used in the component
+					metadata : {
+						manifest : "json",
+						properties : {
+							textButtonTo : "string",
+							buttonAction : "string"
+						}
+					},
 
-	}
+					init : function() {
 
-});
+						// call the init function of the parent
+						sap.ui.core.UIComponent.prototype.init.apply(this,
+								arguments);
+
+						var oModel1 = new sap.ui.model.json.JSONModel();
+
+						oModel1.loadData(this.getMetadata().getManifestEntry("sap.app").dataSources["dataMock_program"].uri,null, false);
+						this.setModel(oModel1, "program");
+
+						var oModel2 = new sap.ui.model.json.JSONModel();
+
+						oModel2.loadData(this.getMetadata().getManifestEntry(
+								"sap.app").dataSources["dataMock_site"].uri,
+								null, false);
+
+						this.setModel(oModel2, "site");
+
+						var oModel3 = new sap.ui.model.json.JSONModel();
+
+						oModel3.loadData(this.getMetadata().getManifestEntry(
+								"sap.app").dataSources["dataMock_region"].uri,
+								null, false);
+
+						this.setModel(oModel3, "region");
+						this.oView.setModel(oModel3, "region");
+
+						airbus.mes.settings.ModelManager.init(sap.ui.getCore());
+						
+						var i18nModel = new sap.ui.model.resource.ResourceModel(
+								{
+									bundleUrl : "../components/settings/i18n/i18n.properties",
+								// bundleLocale : "en" automatic defined by
+								// parameter sap-language
+								});
+
+						this.oView.setModel(i18nModel, "i18n");
+						this.oView.setModel(sap.ui.getCore().getModel("siteModel"), "siteModel");
+						this.oView.setModel(sap.ui.getCore().getModel("plantModel"), "plantModel");
+						airbus.mes.settings.oView = this.oView;
+
+					},
+
+				});
 
 // override the createContent function to return user interface
 airbus.mes.settings.Component.prototype.createContent = function() {
@@ -31,31 +73,18 @@ airbus.mes.settings.Component.prototype.createContent = function() {
 		airbus.mes.settings.ModelManager.init(sap.ui.getCore());
 		this.oView = sap.ui.view({
 			id : "View1",
-			viewName : "airbus.mes.settings.FilterPlantData",
+			viewName : "airbus.mes.settings.Settings",
 			type : "XML",
 		})
 
-		var i18nModel = new sap.ui.model.resource.ResourceModel({
-	        bundleUrl : "../components/settings/i18n/i18n.properties",
-//	        bundleLocale : "en" automatic defined by parameter sap-language
-	     });
-		
-		this.oView.setModel(i18nModel, "i18n");		
-		this.oView.setModel(sap.ui.getCore().getModel("siteModel"),	"siteModel");
-		this.oView.setModel(sap.ui.getCore().getModel("plantModel"),	"plantModel");
-		airbus.mes.settings.oView = this.oView;
 		return this.oView;
 
 	}
 };
 
-
-
-
-
 // override the setTextButtonTo function to return user interface
 airbus.mes.settings.Component.prototype.setTextButtonTo = function(sText) {
-	this.oView.byId("btn1").setText(sText);
+	this.oView.byId("Back").setText(sText);
 	this.setProperty("textButtonTo", sText);
 	airbus.mes.settings.textButtonTo = sText;
 	return this;
