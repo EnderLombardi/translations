@@ -1,32 +1,6 @@
 .TrendGreen{
 	color: #84bd00;
 }
-.yHrLabel {
-	float: right;
-	margin-right: 5px;
-	font-weight: normal;
-	font-style: normal;
-	font-stretch: normal;
-	text-align: right;
-	color: #8db9ca;
-	line-height: 25px;
-}
-
-.ylabelUser {
-	max-width: 60%;
-	white-space: nowrap;
-	position: relative;
-	width: 120px;
-	display: inline-block;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	line-height: 25px;
-	font-size: 18px;
-	font-weight: bold;
-	font-style: normal;
-	font-stretch: normal;
-	color: rgba(0, 86, 112, 0.94);
-}
 
 .div.Left.sapSuiteDmcBarInternal {
 	background: #006CA7;
@@ -80,14 +54,6 @@
 	visibility: visible;
 }
 
-.ylabel {
-	white-space: nowrap;
-	font-weight: normal;
-	font-style: normal;
-	font-stretch: normal;
-	color: rgba(0, 86, 112, 0.94);
-}
-
 .tooltip {
 	visibility: hidden;
 	position: absolute;
@@ -103,9 +69,6 @@
 	margin-left: -60px;
 }
 
-/* .dhx_cal_event_line {
-    padding-left: 0px !important;
-} */
 .dhx_scell_expand {
 	display: inline-block;
 	font: normal normal normal 14px/1 FontAwesome;
@@ -176,9 +139,7 @@
 	width: 3rem;
 	font-size: 1rem;
 }
-/* .blackTextButton2 .sapMBtnText{
-	font-size: 17px;
-} */
+
 .blackTextButton2 .sapMBtnContent {
 	padding-left: 9px;
 }
@@ -613,6 +574,10 @@ background-color: #0085AD !important;
 
 /***** KPI Header Cotent *****/
 
+#stationTrackerView--kpiHeaderContent{
+	height: 195px;
+}
+
 #stationTrackerView--kpiHeaderContent .contentHeaderCont {
 	white-space: normal;
 	background-color: #0F2D65;
@@ -679,6 +644,7 @@ background-color: #0085AD !important;
 	overflow-y: scroll;
 	bottom: 0;
 	height: auto !important;
+	border-top: solid 1px #979797;
 }
 
 /** Prev / Next buttons **/
@@ -692,6 +658,7 @@ background-color: #0085AD !important;
 	right: -10px;
 	width: auto;
 	color: #52aec8;
+	text-align: center;	
 
 	display: inline-block;
 	font: normal normal normal 30px/1 FontAwesome;
@@ -710,9 +677,10 @@ background-color: #0085AD !important;
 
 #stationTrackerView--stationtracker .dhx_cal_prev_button{
 	position: absolute;
-	right: 15px;
+	right: 20px;
 	width: auto;
 	color: #52aec8;
+	text-align: center;
 
 	display:inline-block;
 	font:normal normal normal 30px/1 FontAwesome;
@@ -733,9 +701,20 @@ background-color: #0085AD !important;
 
 #stationTrackerView--stationtracker .dhx_row_folder .dhx_matrix_scell.folder {
 	background-color: #d5f1f8;
+	border-bottom: solid 1px #EAFCFE;
 }
 
-#stationTrackerView--stationtracker .dhx_row_folder .dhx_scell_name{
+#stationTrackerView--stationtracker .dhx_matrix_scell.item {
+	border-bottom: solid 1px #d5f1f8;
+}
+
+#stationTrackerView--stationtracker .dhx_matrix_scell.item,
+#stationTrackerView--stationtracker .dhx_matrix_scell.folder {
+	border-right: solid 3px white;
+	cursor: pointer;
+}
+
+#stationTrackerView--stationtracker .dhx_scell_name{
 	float: none;
 	text-align: left;
 	position: relative;
@@ -775,17 +754,73 @@ background-color: #0085AD !important;
 	color: #0F5F78;
 }
 
-#stationTrackerView--stationtracker .dhx_row_folder .dhx_matrix_cell{
-	border-bottom-width: 2px;
+#stationTrackerView--stationtracker .dhx_row_folder .dhx_marked_timespan.begin_shifht,
+#stationTrackerView--stationtracker .dhx_row_folder .dhx_marked_timespan.shiftCss,
+#stationTrackerView--stationtracker .dhx_row_folder .dhx_marked_timespan.offtime {
+	display: none;
 }
 
-#stationTrackerView--stationtracker .folderAxisColor {
+#stationTrackerView--stationtracker .dhx_data_table.folder td {
+	border-bottom: 2px solid #dddddd;
+	background-color: #ECEEEF;
+}
+#stationTrackerView--stationtracker .dhx_row_folder .dhx_matrix_cell,
+#stationTrackerView--stationtracker .dhx_row_folder .dhx_marked_timespan.shiftCss {
+	border-right: none;
+	border-bottom: none;
+}
+
+#stationTrackerView--stationtracker .folderAxisColor,
+#stationTrackerView--stationtracker .dhx_row_folder .dhx_marked_timespan.shiftCss {
 	background-color: #ECEEEF ! important;
 }
 
-#stationTrackerView--stationtracker .dhx_matrix_scell.item,
-#stationTrackerView--stationtracker .dhx_matrix_scell.folder {
-	border-right: solid 3px white;
+
+#stationTrackerView--stationtracker .dhx_row_item .dhx_scell_name{
+	padding: 0 25px 0 0;
+	white-space: nowrap;
+}
+
+#stationTrackerView--stationtracker .ylabelEditIcon,
+#stationTrackerView--stationtracker .ylabelUserImage {
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
+	vertical-align: middle;
+	font-size: 16px;
+    text-align: center;
+    color: #0D5D76;
+}
+
+#stationTrackerView--stationtracker .ylabelUserImage {
+	background-color: #D5F1F8;
+    border-radius: 999px;
+}
+
+#stationTrackerView--stationtracker .yMoreLabel .fa-pencil{
+    width: 30px;
+    text-align: center;
+}
+
+#stationTrackerView--stationtracker .ylabelUser {
+	vertical-align: middle;
+	margin-left: 10px;
+	color: #0D5D76;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+#stationTrackerView--stationtracker .ylabel {
+	white-space: nowrap;
+	color: #0D5D76;
+	vertical-align: middle;
+}
+
+#stationTrackerView--stationtracker .yMoreLabel {
+	position: absolute;
+	line-height: 30px;
+	right: 5px;
+	color: #8db9ca;
 }
 
 /** Content **/

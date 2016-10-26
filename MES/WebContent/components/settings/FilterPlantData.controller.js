@@ -306,6 +306,10 @@ sap.ui
 						oParam.station = oSettings.getView().byId("ComboBoxStation").getValue();
 //						Refresh model to update display
 						oModel.refresh(true);
+						
+						// Set Data
+						airbus.mes.settings.ModelManager.site = oParam.plant;
+						airbus.mes.settings.ModelManager.station = oParam.station;
 			     	},
 					/**
 					 * Similar to onAfterRendering, but this hook is invoked

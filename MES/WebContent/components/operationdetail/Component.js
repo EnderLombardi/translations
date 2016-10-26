@@ -11,8 +11,6 @@ sap.ui.core.UIComponent.extend("airbus.mes.operationdetail.Component", {
 		includes : [ "./css/progressSlider.css" ]
 
 	}
-
-	/** manifestUrl : "component.json",*/
 });
 
 airbus.mes.operationdetail.Component.prototype.createContent = function() {
@@ -32,16 +30,9 @@ airbus.mes.operationdetail.Component.prototype.createContent = function() {
 
 		var i18nModel = new sap.ui.model.resource.ResourceModel({
 	        bundleUrl : "../components/operationdetail/i18n/i18n.properties",
-	        //bundleLocale : "en" automatic defined by parameter sap-language
 	     });
 		
 		this.oView.setModel(i18nModel, "i18n");		
-		/**airbus.mes.stationtracker.oView = this.oView		
-		this.oView.setModel(sap.ui.getCore().getModel("userSettingModel"),	"userSettingModel");
-		this.oView.setModel(sap.ui.getCore().getModel("stationTrackerShift"),"stationTrackerShift");
-		this.oView.setModel(sap.ui.getCore().getModel("productionGroupModel"), "productionGroupModel");
-		this.oView.setModel(sap.ui.getCore().getModel("KPI"), "KPI");
-		this.oView.setModel(sap.ui.getCore().getModel("groupModel"), "groupModel"); */
 
 		return this.oView;
 	}

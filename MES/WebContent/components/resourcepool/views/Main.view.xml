@@ -14,13 +14,13 @@
 						class="tiffanyColor subHeaderButtonColor sapUiSmallMarginBegin"
 						icon="sap-icon://group" press="openSelectResourcePool" />
 						
-					<Button text="{i18nModel>EditTeamButton}" type="Transparent"
+					<!-- <Button text="{i18nModel>EditTeamButton}" type="Transparent"
 						class="tiffanyColor subHeaderButtonColor sapUiSmallMarginBegin"
 						icon="sap-icon://edit" press="editTeamOpen" />
 						
 					<Button text="{i18nModel>CreateTeamButton}" type="Transparent"
 						class="tiffanyColor subHeaderButtonColor sapUiSmallMarginBegin"
-						icon="sap-icon://create" press="onTeamPress" />
+						icon="sap-icon://create" press="onTeamPress" /> -->
 
 					<Button text="Save" icon="sap-icon://save" press="saveChangesToResourcePool"
 						type="Transparent"
