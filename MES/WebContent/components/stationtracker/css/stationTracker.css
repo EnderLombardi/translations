@@ -2,6 +2,37 @@
 	color: #84bd00;
 }
 
+.yHrLabel {
+	float: right;
+	margin-right: 5px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	text-align: right;
+	color: #8db9ca;
+	line-height: 25px;
+	max-width: 25%;
+ white-space: nowrap;
+ text-overflow: ellipsis;
+ overflow: hidden;
+}
+
+.ylabelUser {
+	max-width: 50%;
+	white-space: nowrap;
+	position: relative;
+	display: inline-block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	line-height: 25px;
+	font-size: 18px;
+	font-weight: bold;
+	font-style: normal;
+	font-stretch: normal;
+	color: rgba(0, 86, 112, 0.94);
+}
+
+
 .div.Left.sapSuiteDmcBarInternal {
 	background: #006CA7;
 }

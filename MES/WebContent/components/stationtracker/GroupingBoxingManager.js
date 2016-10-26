@@ -1,6 +1,7 @@
 jQuery.sap.declare("airbus.mes.stationtracker.GroupingBoxingManager")
 airbus.mes.stationtracker.GroupingBoxingManager = {
 	
+	operationHierarchyDelay : {},
 	operationHierarchy : {},
 	shiftHierarchy : {},
 	shiftNoBreakHierarchy: [],
@@ -39,7 +40,6 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 			
 			oHierachy[el.day][el.shiftID] = [];
 		}
-		
 		
 		var oShift = {
 				"shiftName" : el.shiftName,
@@ -125,35 +125,9 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 	computeOperationHierarchy : function(oModel,sGroup,sBoxing,sInitial) {
 		
 		var oHierachy = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy;
+		var oHierarchyDelay = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchyDelay;
 		var oFormatter = airbus.mes.stationtracker.util.Formatter;
 
-//		var aItems = [];
-//		
-//		if(sap.ui.getCore().byId("productionGroupPopover--myList")){
-//		sap.ui.getCore().byId("productionGroupPopover--myList").getSelectedContexts(true).forEach(function(el){
-//			aItems.push(el.getProperty(el.sPath));
-//		}) 
-//		} else {
-////			If popover has not yet opened, select all production group
-////			Retrieve all value of Production Group
-//			var oModelProdGroup = airbus.mes.stationtracker.ModelManager.ProductionGroup;
-//			var aProdGroup = oModelProdGroup.getData().Rowsets.Rowset[0].Row;
-//			var aItems = [];
-//
-//			// Check if model is load ,create empty model if no data
-//			if(!oModelProdGroup.getProperty("/Rowsets/Rowset/0/Row")){              
-//				
-//		    	console.log("No production group available");
-//		    	oModelProdGroup.oData.Rowsets.Rowset[0].Row = [];
-//		    	aProdGroup = [];
-//			}
-//			
-//			
-//			for (var i = 0; i < aProdGroup.length; i++) {
-//				aItems.push(aProdGroup[i].PROD_GROUP);
-//			}
-//			
-//		}
 		oModel.forEach(function(el){
 	
 			if ( sGroup === "AVL_LINE") {				
@@ -191,16 +165,19 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 			if ( !oHierachy[ssGroup] ) {
 				
 				oHierachy[ssGroup] = {};
+				oHierarchyDelay[ssGroup]= {};
 			}
 			
 			if ( !oHierachy[ssGroup][ssAvLine] ) {
 				
 				oHierachy[ssGroup][ssAvLine] = {};
+				oHierarchyDelay[ssGroup][ssAvLine] = { "progress" : 0 ,"duration" : 0 };
 			}
 			
 			if ( !oHierachy[ssGroup][ssAvLine][ssBox] ) {
 				
 				oHierachy[ssGroup][ssAvLine][ssBox] = [];
+				
 			}
 			
 ////			Check curren production group corresponds to production group filter 			
@@ -278,6 +255,14 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 			
 			oHierachy[ssGroup][ssAvLine][ssBox].push(oOperation)
 			
+			if ( oFormatter.jsDateFromDayTimeStr(el.END_TIME) < new Date() ) {
+						
+				oHierarchyDelay[ssGroup][ssAvLine].duration += el.DURATION;
+				
+			}
+			
+			oHierarchyDelay[ssGroup][ssAvLine].progress += el.PROGRESS;	
+			
 		})
 		
 	},
@@ -323,7 +308,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 				if ( key1.slice(0,2) === "I_" ) {
 					
 					var oInitialGroup = {
-							
+							"group" : key,
 							"avlLine" : key1,
 							"key": "I_" + airbus.mes.stationtracker.AssignmentManager.idName(key) + "_" + airbus.mes.stationtracker.AssignmentManager.idName(key1),
 							"initial":"Initial plan",
@@ -344,6 +329,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 				
 				
 				var ochild = {
+						"group" : key,
 						"rescheduled" : "R",			
 						"avlLine" : key1,
 						"key": airbus.mes.stationtracker.AssignmentManager.idName(key) + "_" + airbus.mes.stationtracker.AssignmentManager.idName(key1),
