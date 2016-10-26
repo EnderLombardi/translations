@@ -1,94 +1,105 @@
-/* Font size in the planning table for texts (TF, date, activity) */
-.sapMListTbl .sapMText {
-	font-size: 0.8rem;
+.elementContainer {
+	margin: 15% 0% 0% 22%;
+}
+.PanelbgImg2 {
+	background-color: white;
+	opacity: 3%;
+	/* background-size: contain; */
+	display: block;
+	background-size: 100% 100%;
+}
+.elementContainer-header {
+	background-color: lightgrey;
+}
+
+.footerToolbar {
+	background-color: #5E696E;
+/* 	margin: 0% 0% 0% 22%;
+ */}
+
+.buttonLoad>.sapMBtnText {
+	color: white !important;
+}
+
+.GenricBgColor {
+	background-color: #EBEEF2;
+}
+
+.titleToolbar {
+	background-color: #D8D8D8;
+}
+
+.subHeader {
+	background-color: white !important;
+}
+
+.subHeaderText {
+color: black !important;
+font-style: normal !important;
+	
+}
+.whiteButton .sapMBtnIcon {
+	color: white !important;
+}
+
+.pageHeader {
+	color: white !important;
+	background: #0F2D65 ! important;
+}
+
+.pageTitle {
+	color: white !important;
+	font-family: "Arial", Sans-serif !important;
+ font-size: 30px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  color: #ffffff;
+}
+
+.pageWelcome {
+	color: white !important;
+	font-family: "Arial", Sans-serif !important;
+ font-size: 24px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  color: #ffffff;
+}
+
+.pageUsername {
+	color: white !important;
+	font-family: "Arial", Sans-serif !important;
+	font-size: 14px !important;
+}
+
+.sapMListHdr {
+    background-color: #d5f1f8;
+}
+
+.sap-desktop .sapMIBar.sapMHeader-CTX {
+    background: rgba(0, 32, 91, 0.94);
+    
 }
 .sapMIBar-CTX .sapMTitle {
-    color: #f0f0f0 !important;
+	color: white;
 }
-.sapUiLoSplitterH>.sapUiLoSplitterBar, .sapUiLoSplitterH>.sapUiLoSplitterContent, .sapUiLoSplitterH>.sapUiLoSplitterOverlay>.sapUiLoSplitterOverlayBar {
-    background-color: white;
+
+.sapUiFormTitle  {
+	 background-color: #d5f1f8;
+	 
 }
-.sapMListHdr {
-    background-image: linear-gradient(to bottom,#92C0E4 0,#6593B5 25%,#1E3C78 100%);
+.sapUiFormTitle .sapUiFormTitle {
+	color: white;
 }
-/* Table header with gradient */
-.sapMListTbl th {
-    background: #92c0e4;
-    border-bottom: 1px solid #dddddd;
-    background-image: linear-gradient(to bottom,#92C0E4 0,#6593B5 25%,#1E3C78 100%);
-}
-/* Blank and bold text in the table header */
-.sapMListTbl th .sapMText {
-	color: #f0f0f0;
-	font-weight: bold;
-}
-/* Font size in the planning table for links (MSN, positions) */
-.sapMListTbl .sapMObjectIdentifierTitle .sapMLnk {
-	font-size: 0.8rem;
-	overflow: hidden;
-}
-/* Font size in the planning table for highlighted texts (Confirmed date and time) */
-.sapMListTbl .sapMObjStatus {
-	font-size: 0.8rem;
-}
-/* Reduce the paddings in the planning table */
-.sapMListTblCell {
-	padding: .5rem .1rem;
-}
-/* Header text */
-.sapMTitleStyleAuto {
-    font-size: 1.5rem !important;
-    font-family: Verdana !important;
-}
-/* No bar upside the Header */
+
 .sapMPageHeader::before {
     border-top: 0rem solid #92C0E4;
 }
-/* Header bar with gradient color */
-.sap-desktop .sapMIBar.sapMHeader-CTX {
-    background-image: linear-gradient(to bottom,#92C0E4 0,#6593B5 25%,#1E3C78 100%);
-}
-/* Sub Header bar without color */
 .sapMIBar.sapMSubHeader-CTX {
-    background-color: #dddddd;
-}
-.sapUiFormResGrid > .sapUiFormTitle {
-    background-image: linear-gradient(to bottom,#92C0E4 0,#6593B5 25%,#1E3C78 100%);
-}
-.sapUiForm .sapUiFormTitle {
-    color: transparent;
-}
-.sapMListHdr {
-    color: transparent;
-}
-.sapMLIB {
-    border: 1px solid #e5e5e5;
-/* Text color in the MSN view */
-}
-.sapMObjStatusNone > .sapMObjStatusText, .sapMObjStatusNone > .sapMObjStatusIcon {
-    color: #333367;
-}
-.sapMLabel {
-    color: #000000;
-    font-size: 0.875rem;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: normal;
-}
-div.sapMBtnInner.sapMBtnAccept {
-    background-image: none;
-    background-color: #007833;
-    border-color: #005f28;
-    color: #ffffff;
-    border-radius: 0.9rem;
-    text-shadow: none;
-}
-div.sapMBtnInner.sapMBtnEmphasized {
-    background-image: linear-gradient(to bottom,#cccccc 0,#bfbfbf 25%,#666666 100%);
-    border-radius: 0.9rem;
-    background-color: #666666;
-    border-color: #666666;
-    color: #ffffff;
-    text-shadow: 0 1px 0 rgba(0,0,0,0.5);
+    background-color: #d5f1f8;
 }
 
-
+.sapMPage>.sapMPageHeader + .sapMPageSubHeader + section {
+	background-color: white;
+}
