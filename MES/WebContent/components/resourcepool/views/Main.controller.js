@@ -1558,13 +1558,14 @@ sap.ui
 						/* call deleteResource() from ModelManager */
 						var anyError = airbus.mes.resourcepool.util.ModelManager
 								.deleteResource(sap.ui.getCore().byId(
-										"searchResourcePool--resourcePool")
-										.getValue(), sap.ui.getCore().byId(
-										"searchResourcePool--description"));
+										"searchResourcePool--resourcePool").getValue());
 						airbus.mes.resourcepool.deleteTeam.close();
-						airbus.mes.resourcepool.util.ModelManager.resourceName = undefined;
-						airbus.mes.resourcepool.util.ModelManager.resourceDescription = undefined;
-						this.getView().byId("resourcePoolName").setText("");
+						
+						if(airbus.mes.resourcepool.util.ModelManager.resourceName == sap.ui.getCore().byId("searchResourcePool--resourcePool").getValue()){
+							airbus.mes.resourcepool.util.ModelManager.resourceName = undefined;
+							airbus.mes.resourcepool.util.ModelManager.resourceDescription = undefined;
+							this.getView().byId("resourcePoolName").setText("");
+						}
 
 					},
 
