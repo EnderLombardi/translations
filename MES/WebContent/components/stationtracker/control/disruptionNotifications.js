@@ -49,9 +49,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.control.disruptionNotifica
 		 */
 		r.write('>');
 		
-		r.write("<div id='blackOverlay' onClick=''></div>")
-		
-		r.write("<div");
+		r.write("<div id='stationTracker--disruptions'");
 		r.addClass("sidenav");
 		r.writeClasses();
 		if (ns!= '' || ns.toLowerCase() === 'auto') {

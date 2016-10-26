@@ -12,8 +12,8 @@
 			</VBox>
 		</content>
 		<buttons>
-			<Button text="{i18nModel>OK}" press="deleteResourceUsingDialog" />
-			<Button text="{i18nModel>Cancel}" press="afterDeleteDialogCancel" />
+			<Button text="{i18nModel>OK}" press="deleteResourcePool" />
+			<Button text="{i18nModel>Cancel}" press="deleteDialogueClose" />
 		</buttons>
 
 	</Dialog>

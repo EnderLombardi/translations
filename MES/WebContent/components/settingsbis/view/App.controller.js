@@ -1,4 +1,4 @@
-sap.ui.controller("sopra.ui.xxxx.view.App", {
+sap.ui.controller("airbus.mes.settings.view.App", {
 	
 	/**
 	 * Navigates to another page
@@ -14,7 +14,7 @@ sap.ui.controller("sopra.ui.xxxx.view.App", {
 		if (app.getPage(pageId, master) === null) {
 			var page = sap.ui.view({
 				id : pageId,
-				viewName : "sopra.ui.xxxx.view." + pageId,
+				viewName : "airbus.mes.settings.view." + pageId,
 				type : "JS"
 			});
 			page.getController().nav = this;

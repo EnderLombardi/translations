@@ -414,7 +414,13 @@
 				</content>
 			</OverflowToolbar>
 			<custom:DHTMLXScheduler id="stationtracker"></custom:DHTMLXScheduler>
+			
+			
+			<!-- For Disruption table in Station Tracker -->
 			<control:disruptionNotifications id="disruptNotifications">
+			
+			<control:disruptionContent id="disruptContent">
+			</control:disruptionContent>
 		
 			</control:disruptionNotifications>
 			
