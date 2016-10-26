@@ -809,6 +809,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	changeDay : function(oEvt) {
 		
 		scheduler.updateView(oEvt.getSource().getDateValue())
+		airbus.mes.stationtracker.ModelManager.selectMyShift();
 	}
 	
 });

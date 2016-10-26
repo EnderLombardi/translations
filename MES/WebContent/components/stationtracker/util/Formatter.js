@@ -346,10 +346,10 @@ airbus.mes.stationtracker.util.Formatter = {
 									
 								+ '<span class="ylabelUser" title='
 									+ airbus.mes.stationtracker.util.Formatter.spaceInsecable(oCurrentAffectedUser.firstName) + '>'
-									+ oCurrentAffectedUser.lastName	+ '</span><span  class="yMoreLabel" >' + "hrs"
-									+ oCurrentAffectedUser.lastName	+ '</span><span title=' +  airbus.mes.stationtracker.util.Formatter.computeDelay( fProgress,fDuration ) +
-									' class="yHrLabel" >' + airbus.mes.stationtracker.util.Formatter.computeDelay( fProgress,fDuration )
-									+ '</span></div>';
+									+ oCurrentAffectedUser.lastName	+ '</span><span  class="yMoreLabel" ><span title=' +  airbus.mes.stationtracker.util.Formatter.computeDelay( fProgress,fDuration ) +
+									'>' + airbus.mes.stationtracker.util.Formatter.computeDelay( fProgress,fDuration )
+									+ '</span>' +
+									 '</span></div>';
 							return html;
 	
 						}

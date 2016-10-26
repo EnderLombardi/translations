@@ -235,50 +235,6 @@ sap.ui.controller("airbus.mes.settings.FilterPlantData", {
 			airbus.mes.shell.util.navFunctions.resourcePoolParams();
 			nav.back();
 			break;
-
-<<<<<<< Upstream, based on origin/MESv0.9
-					},
-					updateUserSettingModel : function(oSettings) {
-//						Retrieve data from Model
-						var oModel = airbus.mes.shell.oView.getModel("userSettingModel"); 
-						var oParam = oModel.getData().Rowsets.Rowset[0].Row[0];
-//						Update data of Model from screen
-						oParam.line    = oSettings.getView().byId("ComboBoxLine").getValue();
-						oParam.msn     = oSettings.getView().byId("ComboBoxMSN").getValue();
-						oParam.plant   = oSettings.getView().byId("ComboBoxPlant").getValue();
-						oParam.program = oSettings.getView().byId("ComboBoxProgram").getValue();
-						oParam.station = oSettings.getView().byId("ComboBoxStation").getValue();
-//						Refresh model to update display
-						oModel.refresh(true);
-						
-						// Set Data
-						airbus.mes.settings.ModelManager.site = oParam.plant;
-						airbus.mes.settings.ModelManager.station = oParam.station;
-			     	},
-					/**
-					 * Similar to onAfterRendering, but this hook is invoked
-					 * before the controller's View is re-rendered (NOT before
-					 * the first rendering! onInit() is used for that one!).
-					 * 
-					 * @memberOf application2.initialview
-					 */
-					// onBeforeRendering: function() {
-					//
-					// },
-					/**
-					 * Called when the View has been rendered (so its HTML is
-					 * part of the document). Post-rendering manipulations of
-					 * the HTML could be done here. This hook is the same one
-					 * that SAPUI5 controls get after being rendered.
-					 * 
-					 * @memberOf application2.initialview
-					 */
-					onAfterRendering : function() {
-						this.getUserSettings();
-						this.filterField(this.selectTree);
-					},
-					fromHomepage : true,
-=======
 		/** Disruption Tracker **/
 		case "disruptiontracker":
 			airbus.mes.shell.util.navFunctions.disruptionTracker();
@@ -286,7 +242,7 @@ sap.ui.controller("airbus.mes.settings.FilterPlantData", {
 		case "disruptiontrackerBack":
 			nav.back();
 			break;
->>>>>>> 7bb1148 Compute delay hours
+
 
 		case "back":
 			nav.back();
@@ -306,6 +262,8 @@ sap.ui.controller("airbus.mes.settings.FilterPlantData", {
 		//						Refresh model to update display
 		oModel.refresh(true);
 	},
+	
+	
 	/**
 	 * Similar to onAfterRendering, but this hook is invoked
 	 * before the controller's View is re-rendered (NOT before
