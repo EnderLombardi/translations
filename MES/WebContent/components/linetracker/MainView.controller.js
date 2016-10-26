@@ -36,6 +36,9 @@ sap.ui.controller("airbus.mes.linetracker.MainView", {
 	 */
 	 onAfterRendering: function() {
 		 //sap.ui.getCore().byId("idMainView--myShell").setContent(sap.ui.getCore().byId("idFactoryView"));
+			$("#idMainView--MainViewNavContainer").height(
+					(($("#idMainView").height()
+					- $("#idMainView--IconTabsPages").height())/$("#idMainView").height())*100+"%");
 	 },
 	/**
 	 * Called when the Controller is destroyed. Use this one to free resources
@@ -64,6 +67,9 @@ sap.ui.controller("airbus.mes.linetracker.MainView", {
 					"STATION DETAIL");
 			//direct nav container to factory view
 			sap.ui.getCore().byId("idMainView--MainViewNavContainer").to("idFactoryView");
+			//to get the first button(Factory View) on list of 3 buttons and then forcefully select it
+			sap.ui.getCore().byId("idMainView--IconTabsPages").setSelectedButton(sap.ui.getCore().byId("idMainView--IconTabsPages").getButtons()[0]);
+		
 		}
 		else if(itemKey === "prod_line"){
 			//disable options for station
@@ -90,6 +96,8 @@ sap.ui.controller("airbus.mes.linetracker.MainView", {
 				airbus.mes.linetracker.util.ModelManager.loadProdLineColorPalette();
 				//direct nav container to prodLine view
 				sap.ui.getCore().byId("idMainView--MainViewNavContainer").to("idProductionView");
+				//to get the second button(Production DETAIL) on list of 3 buttons and then forcefully select it
+				sap.ui.getCore().byId("idMainView--IconTabsPages").setSelectedButton(sap.ui.getCore().byId("idMainView--IconTabsPages").getButtons()[1]);
 		}
 		else if(itemKey === "station"){
 			//to prevent opening line View if station 5 is selected
@@ -122,6 +130,8 @@ sap.ui.controller("airbus.mes.linetracker.MainView", {
 			airbus.mes.linetracker.util.ModelManager.loadStationColorPalette();
 			//direct nav container to Station view
 			sap.ui.getCore().byId("idMainView--MainViewNavContainer").to("idStationView");
+			//to get the third button(station DETAIL) on list of 3 buttons and then forcefully select it
+			sap.ui.getCore().byId("idMainView--IconTabsPages").setSelectedButton(sap.ui.getCore().byId("idMainView--IconTabsPages").getButtons()[2]);
 		}
 		else{
 			//do nothing or probably select factory view again
@@ -136,8 +146,7 @@ sap.ui.controller("airbus.mes.linetracker.MainView", {
 		sap.ui.getCore().byId("idMainView--idStation").setEnabled(false);
 		//unlock selected station box
 		airbus.mes.linetracker.util.ModelManager.lockshellselected = false;
-		//to get the second button on list of 3 buttons abd then forcefully select it
-		sap.ui.getCore().byId("idMainView--IconTabsPages").setSelectedButton(sap.ui.getCore().byId("idMainView--IconTabsPages").getButtons()[1]);
+		
 		//create view if not exists
 		if (!airbus.mes.linetracker.util.ModelManager.ProductionView) {
 			airbus.mes.linetracker.util.ModelManager.ProductionView = sap.ui.view({
@@ -159,13 +168,14 @@ sap.ui.controller("airbus.mes.linetracker.MainView", {
 		airbus.mes.linetracker.util.ModelManager.loadProdLineColorPalette();
 		//direct nav container to prodLine view
 		sap.ui.getCore().byId("idMainView--MainViewNavContainer").to("idProductionView");
+		//to get the second button on list of 3 buttons and then forcefully select it
+		sap.ui.getCore().byId("idMainView--IconTabsPages").setSelectedButton(sap.ui.getCore().byId("idMainView--IconTabsPages").getButtons()[1]);
 	},
 
 	// Event Bus methods
 	stationSelected : function(oChannel, oEvent, oData) {
 		
-		//to get the third button(station DETAIL) on list of 3 buttons abd then forcefully select it
-		sap.ui.getCore().byId("idMainView--IconTabsPages").setSelectedButton(sap.ui.getCore().byId("idMainView--IconTabsPages").getButtons()[2]);
+		
 		//lock selected station box
 		airbus.mes.linetracker.util.ModelManager.lockshellselected = true;
 		//enable navigation buttons
@@ -199,6 +209,8 @@ sap.ui.controller("airbus.mes.linetracker.MainView", {
 		airbus.mes.linetracker.util.ModelManager.loadStationColorPalette();
 		//direct nav container to Station view
 		sap.ui.getCore().byId("idMainView--MainViewNavContainer").to("idStationView");
+		//to get the third button(station DETAIL) on list of 3 buttons and then forcefully select it
+		sap.ui.getCore().byId("idMainView--IconTabsPages").setSelectedButton(sap.ui.getCore().byId("idMainView--IconTabsPages").getButtons()[2]);
 	},
 
 	
