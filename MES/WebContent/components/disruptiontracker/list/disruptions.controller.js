@@ -6,20 +6,6 @@ sap.ui.controller("airbus.mes.disruptiontracker.list.disruptions", {
 * @memberOf table.table
 */
 	onInit: function() {
-		var oViewModel_1=  new sap.ui.model.json.JSONModel();
-		sap.ui.getCore().setModel(oViewModel_1,"tableData");
-		sap.ui.getCore().getModel("tableData").loadData("../components/disruptiontracker/data/table.json",null,false);
-		
-		var oViewModel_2=  new sap.ui.model.json.JSONModel();
-		sap.ui.getCore().setModel(oViewModel_2,"filterData");
-		sap.ui.getCore().getModel("filterData").loadData("../components/disruptiontracker/data/filter.json",null,false);
-		
-		var oViewModel_3=  new sap.ui.model.json.JSONModel();
-		sap.ui.getCore().setModel(oViewModel_3,"orderData");
-		sap.ui.getCore().getModel("orderData").loadData("../components/disruptiontracker/data/order.json",null,false);
-		
-		var oModel = new sap.ui.model.resource.ResourceModel({bundleName:"airbus.mes.disruptiontracker.i18n.i18n",bundleLocale:"en"});
-		sap.ui.getCore().setModel(oModel, "disruptiontrackerI18n");
 	},
 
 /**

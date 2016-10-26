@@ -5,61 +5,51 @@ airbus.mes.stationtracker.ModelManager = {
 	queryParams : jQuery.sap.getUriParameters(),
 
 	i18nModel : undefined,
-	operationType :undefined,
+	operationType : undefined,
 
 	init : function(core) {
 
-		core
-				.setModel(new sap.ui.model.json.JSONModel(),
-						"operationDetailModel");// Model having operation detail
+		core.setModel(new sap.ui.model.json.JSONModel(), "operationDetailModel");// Model having operation detail
 		core.setModel(new sap.ui.model.json.JSONModel(), "WorkListModel");
-		core
-				.setModel(new sap.ui.model.json.JSONModel(),
-						"stationTrackerRModel"); // Station tracker model
-													// reschedule line
-		core
-				.setModel(new sap.ui.model.json.JSONModel(),
-						"stationTrackerIModel"); // Station tracker model
-													// initial line
+		core.setModel(new sap.ui.model.json.JSONModel(), "stationTrackerRModel"); // Station tracker model
+		// reschedule line
+		core.setModel(new sap.ui.model.json.JSONModel(), "stationTrackerIModel"); // Station tracker model
+		// initial line
 		core.setModel(new sap.ui.model.json.JSONModel(), "shiftsModel"); // Shifts
-																			// model
+		// model
 		core.setModel(new sap.ui.model.json.JSONModel(), "affectationModel");
 		core.setModel(new sap.ui.model.json.JSONModel(), "unPlannedModel"); // Unplanned//
-																			// model
+		// model
 		core.setModel(new sap.ui.model.json.JSONModel(), "groupModel"); // Unplanned
-																		// Filter
-																		// Model
+		// Filter
+		// Model
 		core.setModel(new sap.ui.model.json.JSONModel(), "OSWModel"); // OutStanding
-																		// Work
-																		// model
+		// Work
+		// model
 		core.setModel(new sap.ui.model.json.JSONModel(), "stationTrackerShift"); // Shifts
-																					// for
-																					// station
-																					// tracker
+		// for
+		// station
+		// tracker
 		core.setModel(new sap.ui.model.json.JSONModel(), "KPI"); // KPI
-		core
-				.setModel(new sap.ui.model.json.JSONModel(),
-						"productionGroupModel"); // production Group model
+		core.setModel(new sap.ui.model.json.JSONModel(), "productionGroupModel"); // production Group model
 		core.setModel(new sap.ui.model.json.JSONModel(), "ressourcePoolModel"); // Ressource
-																				// poolModel
+		// poolModel
 		core.setModel(new sap.ui.model.json.JSONModel(), "unPlannedModel"); // Unplanned
-																			// model
+		// model
 		core.setModel(new sap.ui.model.json.JSONModel(), "groupModel"); // Unplanned
-																		// Filter
-																		// Model
+		// Filter
+		// Model
 		core.setModel(new sap.ui.model.json.JSONModel(), "OSWModel"); // OutStanding
-																		// Work
-																		// model
+		// Work
+		// model
 		core.setModel(new sap.ui.model.json.JSONModel(), "stationTrackerShift"); // Shifts
-																					// for
-																					// station
-																					// tracker
+		// for
+		// station
+		// tracker
 		core.setModel(new sap.ui.model.json.JSONModel(), "KPI"); // KPI
-		core
-				.setModel(new sap.ui.model.json.JSONModel(),
-						"productionGroupModel"); // production Group model
+		core.setModel(new sap.ui.model.json.JSONModel(), "productionGroupModel"); // production Group model
 		core.setModel(new sap.ui.model.json.JSONModel(), "ressourcePoolModel"); // Ressource
-																				// poolModel
+		// poolModel
 
 		core.getModel("stationTrackerRModel").attachRequestCompleted(
 				airbus.mes.stationtracker.ModelManager.onStationTrackerLoad);
@@ -625,7 +615,8 @@ airbus.mes.stationtracker.ModelManager = {
 						"wo_no" : oModel[0].SHOP_ORDER_BO.split(",")[1],
 						"workcenter" : oModel[0].PP_STATION.split(",")[1],
 						"status" : sStatus,
-						"progress" : oModel[0].PROGRESS/oModel[0].DURATION * 100,
+						"progress" : oModel[0].PROGRESS / oModel[0].DURATION
+								* 100,
 						"time_spent" : airbus.mes.stationtracker.util.Formatter
 								.msToTime(oModel[0].PROGRESS),
 						"planned_start_time" : "TimeUnavailable",
