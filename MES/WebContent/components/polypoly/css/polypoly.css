@@ -7,6 +7,94 @@
 	
 }
 
+}
+.sapUiTableCCnt .sapUiTableRowHdrScr, div#polypoly--oTablePolypoly-selall {
+	display:none;
+}
+.sapUiTableCCnt .sapUiTableCtrlScr, .sapUiTableColHdrCnt .sapUiTableColHdrScr, [id^="polypoly"] .sapUiTableCtrlScrFixed {
+	margin:0;
+}
+[id^="polypoly--oTablePolypoly-table"] .sapUiTableCol, .sapUiTableTr>td, [id^="polypoly--oTablePolypoly-table"] .sapUiTableTr>td, #polypoly--oTablePolypoly.sapUiTable>div.sapUiTableCnt, #polypoly--oTablePolypoly.sapUiTable>div.sapUiTableCnt .sapUiTableColHdrCnt {
+    border: none;
+}
+[id^="polypoly--oTablePolypoly-table"] tr, .sapUiTableCnt .sapUiTableColHdrCnt {
+	background-color: #ffffff;
+	    -webkit-transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out;
+        -moz-transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out;
+        -o-transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out;
+        -ms-transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out;
+        transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out;
+}
+[id^="polypoly--oTablePolypoly-table-fixed"] tr:nth-child(1) {
+	background-color: #f5f5f5;
+}
+[id^="polypoly--oTablePolypoly-table-fixed"] td:nth-child(2), [id^="polypoly--oTablePolypoly-table-fixed"] td:nth-child(3) {
+    background-color: #e9fbfd;
+}
+.sapUiTableCtrlFixed [id^="polypoly--oTablePolypoly-table-fixed"] .sapUiTableTr:not(.sapUiTableGroupHeader)>td:last-child,
+.sapUiTableCtrlFixed [id^="polypoly--oTablePolypoly-table-fixed"] [id^="polypoly--oTablePolypoly-rows"] td:nth-child(3) {
+	border-right: 2px solid #ffffff;
+}
+[id^="polypoly--oTablePolypoly-table-fixed"] tr:nth-child(1) td:nth-child(2), [id^="polypoly--oTablePolypoly-table-fixed"] tr:nth-child(1) td:nth-child(3) {
+    background-color: #d4f1f7;
+}
+.sapUiTable .sapUiTableCtrl [id^="polypoly--oTablePolypoly-rows"].sapUiTableRowHvr>td {
+		background:transparent;
+}
+.sapMFlexItem > [id^="__select"] {
+    border: 2px solid #ebeff4;
+}
+.sapUiTableColHdrScr .sapUiTableColHdr:nth-child(2) .sapMLabel {
+    color: #468497;
+    font-size: 0.975rem;
+    padding-top:4px;
+}
+.sapUiTableColHdrScr .sapUiTableColHdr:nth-child(3) .sapMLabel {
+    color: #468497;
+    font-size: 0.7rem;
+}
+.sapUiTableColHdrScr .sapUiTableColHdr .sapUiTableCol:hover, .sapUiTableColHdrScr .sapUiTableColHdr .sapUiTableColRowHdr:hover {
+    background-color: transparent;
+}
+.sapUiTableColHdr:nth-child(1) div[id^="polypoly--oTablePolypoly"] {
+
+}
+div[id^="polypoly--oTablePolypoly"] {
+	padding:0;
+}
+div[id^="polypoly--oTablePolypoly"] span[id^="__icon"] {
+
+}
+#polypoly--toolbarPolypoly.sapMTB {
+border:none;
+}
+/*header*/
+header#__toolbar5 {
+	box-shadow: 0px 2px 15px -5px #0F2D65;
+    border: none;
+}
+#__page4 header#__toolbar5 {
+	border-top: 5px solid #ffffff;
+	position:relative;
+	z-index:10;
+}
+section#__page4-cont {
+	position:relative;
+	z-index:1;	
+}
+header.sapMPageHeader::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    top: 0;
+    border-top: none;
+    z-index: 7;
+}
+/*BODY*/
+.sapUiBody#content {
+	background-color:#fff;
+	background-image:none;
+}
 
 div[data-category^="LABEL"] {
 	border: 3px solid red !important;
