@@ -1,7 +1,7 @@
-sap.ui.jsview("sopra.ui.xxxx.view.App", {
+sap.ui.jsview("airbus.mes.settings.view.App", {
 
 	getControllerName: function () {
-		return "sopra.ui.xxxx.view.App";
+		return "airbus.mes.settings.view.App";
 	},
 	
 	createContent: function (oController) {
@@ -13,14 +13,14 @@ sap.ui.jsview("sopra.ui.xxxx.view.App", {
 		this.app = new sap.m.App();
 		
 		// load the master page
-		var master = sap.ui.xmlview("Master", "sopra.ui.xxxx.view.Master");
+		var master = sap.ui.xmlview("Master", "airbus.mes.settings.view.Master");
 		master.getController().nav = this.getController();
 		this.app.addPage(master, false);
 	
 		// load the detail page
-		var detail = sap.ui.xmlview("Detail", "sopra.ui.xxxx.view.Detail");
-		detail.getController().nav = this.getController();
-		this.app.addPage(detail, false);
+//		var detail = sap.ui.xmlview("Detail", "sopra.ui.xxxx.view.Detail");
+//		detail.getController().nav = this.getController();
+//		this.app.addPage(detail, false);
 		
 		
 		// done

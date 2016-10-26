@@ -49,8 +49,11 @@ sap.ui
 
 						var data = this.getView().getModel(
 								"operationDetailModel").oData.Rowsets.Rowset[0].Row[0];
-						var sMessage = this.getView().getModel("i18n")
-								.getProperty("SuccessfulActivation");
+						var sMessageSuccess = this.getView().getModel(
+								"i18n").getProperty("SuccessfulActivation");
+						var sMessageError = this.getView()
+								.getModel("i18n").getProperty(
+										"UnsuccessfulActivation");
 						var flag_success;
 						jQuery
 								.ajax({
@@ -59,13 +62,14 @@ sap.ui
 									async : false,
 									error : function(xhr, status, error) {
 										airbus.mes.operationdetail.ModelManager
-												.messageShow("Error");
+												.messageShow(sMessageError);
+										flag_success = false
 									},
 									success : function(result, status, xhr) {
 
 										if (result.Rowsets.Rowset[0].Row[0].Message_Type === undefined) {
 											airbus.mes.operationdetail.ModelManager
-													.messageShow(sMessage);
+													.messageShow(sMessageSuccess);
 											flag_success = true;
 										} else if (result.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
 											airbus.mes.operationdetail.ModelManager
@@ -73,7 +77,7 @@ sap.ui
 											flag_success = false;
 										} else {
 											airbus.mes.operationdetail.ModelManager
-													.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
+													.messageShow(sMessageSuccess);
 											flag_success = true;
 										}
 
@@ -81,8 +85,7 @@ sap.ui
 								});
 
 						// Refresh User Operation Model and Operation Detail
-						airbus.mes.operationdetail.ModelManager
-								.loadUserOperationsModel();
+						airbus.mes.shell.oView.getController().renderStationTracker();
 
 						// this.refreshOperationData();
 
@@ -93,14 +96,30 @@ sap.ui
 							this.getView().byId("operationStatus").setText(
 									this.getView().getModel("i18n")
 											.getProperty("in_progress"));
+
+							// Re-Render Station Tracker
+							airbus.mes.shell.oView.getController().renderStationTracker();
+							
+							// update operationDetailsModel
+
+							sap.ui.getCore().getModel("operationDetailModel")
+									.setProperty(
+											"/Rowsets/Rowset/0/Row/0/status",
+											"IN_WORK")
+							sap.ui.getCore().getModel("operationDetailModel")
+									.refresh();
+
 						}
 					},
 					pauseOperation : function() {
 						var data = this.getView().getModel(
 								"operationDetailModel").oData.Rowsets.Rowset[0].Row[0];
-						var sMessage = this.getView().getModel("i18n")
-								.getProperty("SuccessfulPause");
-
+						var sMessageSuccess = this.getView().getModel(
+								"i18n").getProperty("SuccessfulPause");
+						var sMessageError = this.getView()
+								.getModel("i18n").getProperty(
+										"UnsuccessfulPause");
+						var flag_success;
 						jQuery
 								.ajax({
 									url : airbus.mes.operationdetail.ModelManager
@@ -108,14 +127,15 @@ sap.ui
 									async : false,
 									error : function(xhr, status, error) {
 										airbus.mes.operationdetail.ModelManager
-												.messageShow("Error");
+												.messageShow(sMessageError);
+										flag_success = false
 
 									},
 									success : function(result, status, xhr) {
 
 										if (result.Rowsets.Rowset[0].Row[0].Message_Type === undefined) {
 											airbus.mes.operationdetail.ModelManager
-													.messageShow(sMessage);
+													.messageShow(sMessageSuccess);
 											flag_success = true;
 										} else if (result.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
 											airbus.mes.operationdetail.ModelManager
@@ -123,17 +143,12 @@ sap.ui
 											flag_success = false;
 										} else {
 											airbus.mes.operationdetail.ModelManager
-													.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
+													.messageShow(sMessageSuccess);
 											flag_success = true;
 										}
 
 									}
 								});
-
-						// Refresh User Operation Model and Operation Detail
-						airbus.mes.operationdetail.ModelManager
-								.loadUserOperationsModel();
-						// this.refreshOperationData();
 
 						if (flag_success == true) {
 							this.setProgressScreenBtn(false, false, true);
@@ -144,6 +159,27 @@ sap.ui
 							this.getView().byId("operationStatus").setText(
 									this.getView().getModel("i18n")
 											.getProperty("paused"));
+
+							// Re-Render Station Tracker
+							airbus.mes.shell.oView.getController().renderStationTracker();
+							
+							// update operationDetailsModel
+
+							sap.ui.getCore().getModel("operationDetailModel")
+									.setProperty(
+											"/Rowsets/Rowset/0/Row/0/status",
+											"IN_QUEUE")
+							sap.ui.getCore().getModel("operationDetailModel")
+									.refresh();
+
+							// reset the progress slider to original position
+							this
+									.refreshOperationData(sap.ui
+											.getCore()
+											.getModel("operationDetailModel")
+											.getProperty(
+													"/Rowsets/Rowset/0/Row/0/progress"));
+
 						}
 
 					},
@@ -211,10 +247,12 @@ sap.ui
 						var pass = sap.ui.getCore().byId(
 								"passwordForConfirmation").getValue();
 
-						var sMessageSuccess = this.getView().getModel("i18n")
-								.getProperty("SuccessfulConfirmation");
-						var sMessageError = this.getView().getModel("i18n")
-								.getProperty("ErrorDuringConfirmation");
+						var sMessageSuccess = this.getView().getModel(
+								"i18n").getProperty(
+								"SuccessfulConfirmation");
+						var sMessageError = this.getView()
+								.getModel("i18n").getProperty(
+										"ErrorDuringConfirmation");
 
 						if (user == "" || pass == "") {
 							sap.ui.getCore().byId("msgstrpConfirm").setVisible(
@@ -256,6 +294,7 @@ sap.ui
 										error : function(xhr, status, error) {
 											airbus.mes.operationdetail.ModelManager
 													.messageShow(sMessageError);
+											flag_success = false
 
 										},
 										success : function(result, status, xhr) {
@@ -271,19 +310,29 @@ sap.ui
 												airbus.mes.operationdetail.ModelManager
 														.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
 												flag_success = true;
-											}	
-
+											}
 
 										}
 									});
 
 							this._oUserConfirmationDialog.close();
 
-							// Refresh User Operation Model and Operation Detail
-							airbus.mes.operationdetail.ModelManager
-									.loadUserOperationsModel();
+							if (flag === true) {
+								// Refresh User Operation Model and Operation
+								// Detail
+								airbus.mes.shell.oView.getController().renderStationTracker();
 
-							this.refreshOperationData(percent);
+								this.refreshOperationData(percent);
+
+								// update operationDetailsModel
+								sap.ui.getCore().getModel(
+										"operationDetailModel").setProperty(
+										"/Rowsets/Rowset/0/Row/0/progress",
+										percent)
+								sap.ui.getCore().getModel(
+										"operationDetailModel").refresh();
+
+							}
 
 						}
 					},
@@ -405,6 +454,9 @@ sap.ui
 					 * @memberOf components.stationtracker.stationtracker
 					 */
 					onAfterRendering : function() {
+						sap.ui.getCore().getModel("operationDetailModel")
+								.refresh();
+
 						if (this.getView().byId("operationStatus").getText() === "Not Started"
 								|| this.getView().byId("operationStatus")
 										.getText() === "Paused") {

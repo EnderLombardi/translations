@@ -2,7 +2,7 @@
 
 jQuery.sap.require("sap.ui.core.UIComponent");
 jQuery.sap.require("airbus.mes.settings.GlobalFunction");
- jQuery.sap.require("airbus.mes.settings.ModelManager");
+jQuery.sap.require("airbus.mes.settings.ModelManager");
 
 jQuery.sap.declare("airbus.mes.settings.Component");
 

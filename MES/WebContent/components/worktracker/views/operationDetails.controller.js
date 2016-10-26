@@ -192,7 +192,6 @@ sap.ui
 							this.getView().byId("operationStatus").setText(
 									this.getView().getModel("i18n")
 											.getProperty("in_progress"));
-							this.refreshModelsForOperation();
 						}
 					},
 					pauseOperation : function() {
@@ -245,7 +244,6 @@ sap.ui
 									this.getView().getModel("i18n")
 											.getProperty("pause"));
 
-							this.refreshModelsForOperation();
 						}
 
 					},
@@ -392,26 +390,11 @@ sap.ui
 
 							this._oUserConfirmationDialog.close();
 
-							this.refreshModelsForOperation();
 							this.refreshOperationData(percent);
 
 						}
 					},
 
-					refreshModelsForOperation : function() {
-						// Refresh User Operation Model and Operation Detail
-						airbus.mes.worktracker.util.ModelManager
-								.loadUserOperationsModel();
-						// Refresh StationTracker Models
-						airbus.mes.stationtracker.ModelManager
-								.loadStationTracker("R");
-						airbus.mes.stationtracker.ModelManager
-								.loadStationTracker("I");
-						airbus.mes.stationtracker.ModelManager
-								.loadStationTracker("U");
-						airbus.mes.stationtracker.ModelManager
-								.loadStationTracker("O");
-					},
 
 					refreshOperationData : function(percentage) {
 						this.getView().byId("progressSliderfirst").setWidth(

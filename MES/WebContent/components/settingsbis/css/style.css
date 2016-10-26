@@ -40,7 +40,7 @@
     font-size: 1.5rem !important;
     font-family: Verdana !important;
 }
-/* No bar upside the Header*/
+/* No bar upside the Header */
 .sapMPageHeader::before {
     border-top: 0rem solid #92C0E4;
 }
@@ -87,7 +87,7 @@ div.sapMBtnInner.sapMBtnEmphasized {
     border-radius: 0.9rem;
     background-color: #666666;
     border-color: #666666;
-    /* color: #ffffff; */
+    color: #ffffff;
     text-shadow: 0 1px 0 rgba(0,0,0,0.5);
 }
 

@@ -1,7 +1,7 @@
 jQuery.sap.require("sap.ui.vbm.AnalyticMap");
 sap.ui.vbm.AnalyticMap.GeoJSONURL = "model/europe.json";
 
-sap.ui.controller("sopra.ui.xxxx.view.Master", {
+sap.ui.controller("airbus.mes.settings.view.Master", {
 
     onAfterRendering : function() {
 	this.byId("vbi").zoomToRegions([ "FR", "GB", "ES", "DE" ]);
@@ -40,8 +40,8 @@ sap.ui.controller("sopra.ui.xxxx.view.Master", {
     },
 
     // User clicks on a button 
-    onPress : function(evt) {
-	var context = evt.getSource().getBindingContext();
-	this.nav.to("Detail", context);
-    }
+//    onPress : function(evt) {
+//	var context = evt.getSource().getBindingContext();
+//	this.nav.to("Detail", context);
+//    }
 });
