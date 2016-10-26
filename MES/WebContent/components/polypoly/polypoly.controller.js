@@ -330,7 +330,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 									        						 return "DarkGrey";
 									        						 break;
 									        					 case "No_Clock_Data":
-									        						 return "Black";
+									        						 return "#8fd4e2";
 									        						 break;
 									        					 case "IN":
 									        						 return "Green";
@@ -383,7 +383,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 									        											 || level == "4") {
 									        								 sURI = "/MES/components/polypoly/images/"
 									        									 + level
-									        									 + ".PNG";
+									        									 + ".svg";
 									        							 }
 									        							 return sURI
 									        						 },
@@ -528,6 +528,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 									        				 }),
 									        				 new sap.m.Button(
 									        						 {
+									        							 type: sap.m.ButtonType.Transparent,
 									        							 icon : {
 									        								 parts : [ oContext
 									        								           .getProperty("techname") ],
@@ -541,7 +542,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 									        								        					   || level == "4") {
 									        								        		   sURI = "/MES/components/polypoly/images/"
 									        								        			   + level
-									        								        			   + ".PNG";
+									        								        			   + ".svg";
 									        								        	   }
 									        								        	   return sURI
 									        								           }
@@ -616,27 +617,27 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 				content : [ new sap.m.VBox({
 					alignItems : "Center",
 					items : [ new sap.m.Button({
-						icon : "/MES/components/polypoly/images/0.PNG",
+						icon : "/MES/components/polypoly/images/0.svg",
 						press : function(oEvt) {
 							that.onChangeClick(oEvt)
 						}
 					}), new sap.m.Button({
-						icon : "/MES/components/polypoly/images/1.PNG",
+						icon : "/MES/components/polypoly/images/1.svg",
 						press : function(oEvt) {
 							that.onChangeClick(oEvt)
 						}
 					}), new sap.m.Button({
-						icon : "/MES/components/polypoly/images/2.PNG",
+						icon : "/MES/components/polypoly/images/2.svg",
 						press : function(oEvt) {
 							that.onChangeClick(oEvt)
 						}
 					}), new sap.m.Button({
-						icon : "/MES/components/polypoly/images/3.PNG",
+						icon : "/MES/components/polypoly/images/3.svg",
 						press : function(oEvt) {
 							that.onChangeClick(oEvt)
 						}
 					}), new sap.m.Button({
-						icon : "/MES/components/polypoly/images/4.PNG",
+						icon : "/MES/components/polypoly/images/4.svg",
 						press : function(oEvt) {
 							that.onChangeClick(oEvt)
 						}
