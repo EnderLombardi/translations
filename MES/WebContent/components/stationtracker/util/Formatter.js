@@ -336,14 +336,14 @@ airbus.mes.stationtracker.util.Formatter = {
 						
 						if ( oSection.rescheduled ) {
 							
-							var html = '<div><IMG src="../images/user.png" style="float:left;height:25px; padding-right:10px;"/>'
+							var html = '<div><i class="fa fa-user ylabelUserImage"></i>'
 									
 //								span class="rond" title='	+ airbus.mes.stationtracker.util.Formatter.spaceInsecable(oCurrentAffectedUser.firstName)
 //									+ ' >'+ oCurrentAffectedUser.firstName + '</span>
 									
 								+ '<span class="ylabelUser" title='
 									+ airbus.mes.stationtracker.util.Formatter.spaceInsecable(oCurrentAffectedUser.firstName) + '>'
-									+ oCurrentAffectedUser.lastName	+ '</span><span  class="yHrLabel" >' + "hrs"
+									+ oCurrentAffectedUser.lastName	+ '</span><span  class="yMoreLabel" >' + "hrs"
 									+ '</span></div>';
 							return html;
 	
@@ -352,7 +352,7 @@ airbus.mes.stationtracker.util.Formatter = {
 					
 				} else {
 
-					var html = '<div><i class="fa  fa-pencil"  style="float:left; padding-left:4px;" ></i><span class="ylabel">'
+					var html = '<div><i class="fa fa-pencil ylabelEditIcon"></i><span class="ylabel">'
 						+ airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("SelectOperator") + '</span></div>';
 					return html;
 			
@@ -361,7 +361,7 @@ airbus.mes.stationtracker.util.Formatter = {
 	
 			} else {
 
-				var html = '<div><i class="fa  fa-pencil"  style="float:left; padding-left:4px;" ></i><span class="ylabel">'
+				var html = '<div><i class="fa  fa-pencil ylabelEditIcon"></i><span class="ylabel">'
 					+ airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("SelectOperator") + '</span></div>';
 				return html;
 		
