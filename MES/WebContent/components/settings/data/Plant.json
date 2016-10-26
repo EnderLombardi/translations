@@ -124,17 +124,116 @@
 
                {
 
-                  "program": "CHES_BUILDING_1",
+                  "program": "A330",
 
-                  "line_group": "CHES_LG_1",
+               	  "line": "PA",
 
-                  "line": "CHES_LG_1_L1",
+                  "station": "PA_IP1-2",
 
-                  "station": "PHYS_ST_IP4",
+                  "msn": "1000",
 
-                  "msn": "00571",
+                  "Current_MSN": "FALSE",
+                  
+                  "duration" : "11",
+                  
+                  "begin" : "2016-10-17 04:00:00",
+                  
+                  "end" : "2016-10-17 22:00:00"
 
-                  "Current_MSN": "TRUE"
+               },
+                {
+
+                  "program": "A330",
+
+               	  "line": "TC",
+
+                  "station": "TC_IP1",
+
+                  "msn": "1000",
+
+                  "Current_MSN": "FALSE",
+                  
+                  "duration" : "11",
+                  
+                  "begin" : "2016-10-17 04:00:00",
+                  
+                  "end" : "2016-10-17 22:00:00"
+
+               },
+                {
+
+                  "program": "A330",
+
+               	  "line": "TC",
+
+                  "station": "TC_IP2",
+
+                  "msn": "---",
+
+                  "Current_MSN": "---",
+                  
+                  "duration" : "11",
+                  
+                  "begin" : "2016-10-17 04:00:00",
+                  
+                  "end" : "2016-10-17 22:00:00"
+
+               },
+               {
+
+                  "program": "A330",
+
+               	  "line": "TC",
+
+                  "station": "TC_IP3",
+
+                  "msn": "---",
+
+                  "Current_MSN": "---",
+                  
+                  "duration" : "11",
+                  
+                  "begin" : "2016-10-17 04:00:00",
+                  
+                  "end" : "2016-10-17 22:00:00"
+
+               },
+                {
+
+                  "program": "A330",
+
+               	  "line": "TC",
+
+                  "station": "TC_IP4",
+
+                  "msn": "---",
+
+                  "Current_MSN": "---",
+                  
+                  "duration" : "11",
+                  
+                  "begin" : "2016-10-17 04:00:00",
+                  
+                  "end" : "2016-10-17 22:00:00"
+
+               },
+                {
+
+                  "program": "A330",
+
+               	  "line": "TC",
+
+                  "station": "TC_IP5",
+
+                  "msn": "---",
+
+                  "Current_MSN": "---",
+                  
+                  "duration" : "11",
+                  
+                  "begin" : "2016-10-17 04:00:00",
+                  
+                  "end" : "2016-10-17 22:00:00"
 
                }
 

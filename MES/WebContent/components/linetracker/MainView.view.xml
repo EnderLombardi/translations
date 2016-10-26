@@ -40,7 +40,7 @@
 						text="STATION DETAIL" key="station" press="worksetItemSelected" />
 				</items>
 			</SegmentedButton>
-			<NavContainer id="MainViewNavContainer" height="100%">
+			<NavContainer id="MainViewNavContainer" height="95%">
 				<pages>
 					
 				</pages>

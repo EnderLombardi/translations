@@ -12,8 +12,10 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 						oRm.write("	</div>");
 						oRm.write("	<div class='dhx_cal_data'></div>");
 						oRm.write("</div>");
+					},
+
+					onAfterRendering: function onAfterRendering(){
 					
-							
 						
 						scheduler.xy.nav_height = 0; //Div height for date
 						scheduler.xy.scroll_width=20;
@@ -198,7 +200,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 						/* 	 Custom progress background display  */
 
 						scheduler.templates.event_class = function(start, end, event) {
-							console.log("lol");
+						
 							return "grey";
 
 						};

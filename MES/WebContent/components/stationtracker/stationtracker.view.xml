@@ -10,7 +10,7 @@
 				class="pageHeader sapUiSmallMarginTop contentNoPad">
 				<headerToolbar>
 					<Toolbar id="kpiHeaderToolbar">
-						<DatePicker id="DatePicker" width="auto" class="pageHeaderBlue" />
+						<DatePicker id="DatePicker" width="auto" change="changeDay" class="pageHeaderBlue" />
 						<Select id="selectShift"
 							class="sapUiTinyMarginBeginEnd pageHeader pageHeaderBlue" change="changeShift"
 							items="{ path : 'stationTrackerShift>/' }"
@@ -294,8 +294,7 @@
 			</Panel>
 
 
-			<OverflowToolbar id="toolbarstationtracker" class="white"
-				width="100%">
+			<OverflowToolbar id="toolbarstationtracker" width="100%">
 				<content>
 					<SegmentedButton id="buttonViewMode">
 						<layoutData>

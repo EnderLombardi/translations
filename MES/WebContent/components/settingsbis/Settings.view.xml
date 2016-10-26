@@ -139,7 +139,7 @@
 						</ComboBox>
 					</f:content>
 				</f:SimpleForm>
-								<layoutData>
+				<layoutData>
 				<l:SplitterLayoutData size="20%" resizable="true" />
 				</layoutData>
 			</VBox>

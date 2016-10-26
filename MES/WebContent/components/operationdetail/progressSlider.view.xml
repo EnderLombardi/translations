@@ -1,7 +1,8 @@
 <core:View xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout"
 	xmlns:f="sap.ui.layout.form" xmlns:html="http://www.w3.org/1999/xhtml"
 	controllerName="airbus.mes.operationdetail.progressSlider">
-	<Page showHeader="false" height="100%" enableScrolling="false" class="WhiteBG">
+	<Page showHeader="false" height="100%" enableScrolling="false"
+		class="WhiteBG">
 
 		<content>
 			<Panel expandable="true" expanded="false" width="auto"
@@ -67,8 +68,7 @@
 							<VBox>
 								<Label text="Work Center:" />
 								<Text
-									text="{operationDetailModel>
-									/Rowsets/Rowset/0/Row/0/workcenter}" />
+									text="{operationDetailModel>	/Rowsets/Rowset/0/Row/0/workcenter}" />
 								<Label type="space"></Label>
 								<!-- <Label text="ACPnG" /> <Text text="28/08/2016" /> <Label type="space"></Label> 
 									<Label text="Bundle" /> <Text text=" - " /> -->
@@ -83,7 +83,8 @@
 						press="expandOperationDetailPanel" class="closeButton"></Button>
 				</content>
 			</Panel>
-			<IconTabBar id="operationNav" expandable="false" backgroundDesign="Transparent" height="100%"
+			<IconTabBar id="operationNav" expandable="false"
+				backgroundDesign="Transparent" height="100%"
 				class="operationNavBar sapUiResponsiveContentPadding">
 				<items>
 					<IconTabFilter text="Progress">
