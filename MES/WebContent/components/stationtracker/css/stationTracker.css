@@ -882,3 +882,19 @@ background-color: #0085AD !important;
 #stationTrackerView--toolbarstationtracker .sapMBtnContent{
 	color: #0D5D76;
 }
+
+#stationTrackerView--toolbarstationtracker .sapMBtn:hover>.sapMBtnTransparent.sapMBtnHoverable {
+	background-color: transparent;
+}
+
+#stationTrackerView--toolbarstationtracker .sapMBtn:hover {
+	background-color: rgba(0, 86, 112, 0.20);
+}
+
+#stationTrackerView--toolbarstationtracker .comboBoxStyle.sapMSltPressed .sapMSltArrow {
+	background-color: #74D2E7;
+}
+
+.sapMPopoverScroll .sapMSelectListItemBaseSelected{
+	background-color: #D5F1F8 !important;
+}
