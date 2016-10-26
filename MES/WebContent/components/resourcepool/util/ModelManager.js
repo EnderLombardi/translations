@@ -40,12 +40,11 @@ airbus.mes.resourcepool.util.ModelManager = {
 			dest = this.queryParams.get("url_config");
 		}
 
-		this.urlModel = new sap.ui.model.resource.ResourceModel(
-				{
-					bundleUrl : "../components/resourcepool/config/url_config.properties",
-					bundleLocale : dest
+		this.urlModel = new sap.ui.model.resource.ResourceModel({
+			bundleUrl : "../components/resourcepool/config/url_config.properties",
+			bundleLocale : dest
 
-				});
+		});
 
 		/*
 		 * airbus.mes.resourcepool.oView.getModel("i18nModel"). = new
@@ -297,18 +296,18 @@ airbus.mes.resourcepool.util.ModelManager = {
 
 	},
 
-	getUrlDeleteResource : function(name, description) {
+	getUrlDeleteResource : function(name) {
 		var urlDeleteResource = this.urlModel.getProperty('urldeleteresource');
-		urlDeleteResource = urlDeleteResource.replace("$Site", name);
-		urlDeleteResource = urlDeleteResource.replace("$ResourcePoolName", description);
+		urlDeleteResource = urlDeleteResource.replace("$Site", airbus.mes.settings.ModelManager.site);
+		urlDeleteResource = urlDeleteResource.replace("$ResourcePoolName", name);
 		return urlDeleteResource;
 	},
 
-	deleteResource : function(name, description) {
+	deleteResource : function(name) {
 		var value;
 		jQuery.ajax({
 			async : false,
-			url : this.getUrlDeleteResource(name, description),
+			url : this.getUrlDeleteResource(name),
 			cache : false,
 			type : 'GET',
 			success : function(data, textStatus, jqXHR) {
