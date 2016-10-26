@@ -37,6 +37,7 @@ airbus.mes.stationtracker.ModelManager = {
 																					// station
 																					// tracker
 		core.setModel(new sap.ui.model.json.JSONModel(), "KPI"); // KPI
+<<<<<<< Upstream, based on origin/MESv0.9
 		core
 				.setModel(new sap.ui.model.json.JSONModel(),
 						"productionGroupModel"); // production Group model
@@ -60,6 +61,16 @@ airbus.mes.stationtracker.ModelManager = {
 						"productionGroupModel"); // production Group model
 		core.setModel(new sap.ui.model.json.JSONModel(), "ressourcePoolModel"); // Ressource
 																				// poolModel
+=======
+		core.setModel(new sap.ui.model.json.JSONModel(), "ressourcePoolModel"); // Ressource poolModel
+		core.setModel(new sap.ui.model.json.JSONModel(), "unPlannedModel"); // Unplanned model
+		core.setModel(new sap.ui.model.json.JSONModel(), "groupModel"); // Unplanned Filter Model			
+		core.setModel(new sap.ui.model.json.JSONModel(), "OSWModel"); // OutStanding Work model
+		core.setModel(new sap.ui.model.json.JSONModel(), "stationTrackerShift"); //Shifts for station tracker
+		core.setModel(new sap.ui.model.json.JSONModel(), "KPI"); //KPI
+		core.setModel(new sap.ui.model.json.JSONModel(), "productionGroupModel"); // production Group model
+	
+>>>>>>> 7bb1148 Compute delay hours
 
 		core.getModel("stationTrackerRModel").attachRequestCompleted(
 				airbus.mes.stationtracker.ModelManager.onStationTrackerLoad);
@@ -321,10 +332,14 @@ airbus.mes.stationtracker.ModelManager = {
 			airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftID = airbus.mes.stationtracker.ShiftManager.current_shift.shiftID;
 			airbus.mes.stationtracker.ShiftManager.ShiftSelected.day = airbus.mes.stationtracker.ShiftManager.current_shift.day;
 
+<<<<<<< Upstream, based on origin/MESv0.9
 			airbus.mes.stationtracker.oView
 					.byId("selectShift")
 					.setSelectedKey(
 							airbus.mes.stationtracker.ShiftManager.current_shift.shiftName);
+=======
+			airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(airbus.mes.stationtracker.ShiftManager.current_shift.shiftName);
+>>>>>>> 7bb1148 Compute delay hours
 			airbus.mes.stationtracker.oView.byId("selectShift").fireChange(0);
 
 		}
@@ -335,11 +350,16 @@ airbus.mes.stationtracker.ModelManager = {
 			airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftID = airbus.mes.stationtracker.ShiftManager.current_shift.shiftID;
 			airbus.mes.stationtracker.ShiftManager.ShiftSelected.day = airbus.mes.stationtracker.ShiftManager.current_shift.day;
 
+<<<<<<< Upstream, based on origin/MESv0.9
 			airbus.mes.stationtracker.oView
 					.byId("selectShift")
 					.setSelectedKey(
 							airbus.mes.stationtracker.ShiftManager.current_shift.shiftName);
 
+=======
+			airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(airbus.mes.stationtracker.ShiftManager.current_shift.shiftID);
+			scheduler.updateView(airbus.mes.stationtracker.ShiftManager.ShiftSelected.StartDate);
+>>>>>>> 7bb1148 Compute delay hours
 		}
 
 		// Manage date of date picker
