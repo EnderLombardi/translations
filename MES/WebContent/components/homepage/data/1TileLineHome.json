@@ -8,7 +8,7 @@
 		"enable": false
 	},{
 
-		"text": "DisruptionAndon",
+		"text": "ResourcePool",
 		"icon": "customer-history",
 		"app":"",
 		"url": "/MES/WebContent/components/stationtracker/index.html",

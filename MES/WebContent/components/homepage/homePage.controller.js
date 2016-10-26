@@ -30,7 +30,7 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 				airbus.mes.settings.GlobalFunction.navigateTo(
 						"Go to Line Tracker", "linetracker");
 				break;
-			case "DisruptionAndon":
+			case "ResourcePool":
 				airbus.mes.settings.GlobalFunction.navigateTo(
 						"Go to Disruption Tracker", "disruptiontracker");
 				break;
@@ -53,7 +53,7 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 			case "LineTracker":
 				airbus.mes.shell.util.navFunctions.lineTracker();
 				break;
-			case "DisruptionAndon":
+			case "ResourcePool":
 				airbus.mes.shell.util.navFunctions.disruptionTracker();
 				break;
 			}
