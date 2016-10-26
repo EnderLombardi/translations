@@ -51,6 +51,7 @@ airbus.mes.stationtracker.Component.prototype.createContent = function() {
 		this.oView.setModel(i18nModel, "StationTrackerI18n");		
 		airbus.mes.stationtracker.oView = this.oView		
 		//this.oView.setModel(sap.ui.getCore().getModel("userSettingModel"),	"userSettingModel");
+		this.oView.setModel(new sap.ui.model.json.JSONModel(),"productionGroupDisplay");
 		this.oView.setModel(sap.ui.getCore().getModel("stationTrackerShift"),"stationTrackerShift");
 		this.oView.setModel(sap.ui.getCore().getModel("productionGroupModel"), "productionGroupModel");
 		this.oView.setModel(sap.ui.getCore().getModel("KPI"), "KPI");

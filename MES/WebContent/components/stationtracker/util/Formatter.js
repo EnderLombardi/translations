@@ -99,7 +99,7 @@ airbus.mes.stationtracker.util.Formatter = {
 				return sString.toString();
 			},
 			totalDurationToIM : function(sDuration) {
-				return ((sDuration * 100 * 0.001)/3600).toFixed(0) + " IM";
+				return ((sDuration * 100 * 0.001)/3600).toFixed(0);
 			},
 			isCheckboxVisible : function(sString) {
 				if( airbus.mes.stationtracker.worklistPopover.unPlanned === true ){
@@ -152,7 +152,7 @@ airbus.mes.stationtracker.util.Formatter = {
 				var html = "";
 				
 				var sDivForLeftDisplay = '<div  style="width:100%; height:inherit; position:absolute; z-index: 1; line-height: 23px;left: 0px; overflow: hidden; text-overflow: ellipsis; " >'
-				var sDivForLeftDisplayInitial = '<div  style="color:black ; background-color:#f5f5f5; width:100%; height:inherit; position:absolute; z-index: 1; line-height: 23px;left: 0px; overflow: hidden; text-overflow: ellipsis; " >'
+				var sDivForLeftDisplayInitial = '<div  style="color:black ; width:100%; height:inherit; position:absolute; z-index: 1; line-height: 23px;left: 0px; overflow: hidden; text-overflow: ellipsis; " >'
 				var sRightIcon = "";	
 				var sLeftIcon = "";
 				var sColorProgress = "";
@@ -305,8 +305,6 @@ airbus.mes.stationtracker.util.Formatter = {
 
 				}
 
-				
-
 				if (oSection.children != undefined) {
 
 					var html = '<div><span id= folder_' +oSection.key
@@ -321,9 +319,8 @@ airbus.mes.stationtracker.util.Formatter = {
 				
 				// User affectation
 				// TODO maybe replace date + name by the Id of the shift?
-				var sShiftDate = airbus.mes.stationtracker.ShiftManager.current_shift.day;
-				var sShiftName = airbus.mes.stationtracker.ShiftManager.current_shift.shiftName;
-				
+				var sshiftID = airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftID;
+					
 				if ( airbus.mes.stationtracker.ShiftManager.dayDisplay ) {
 						
 				var sShiftName = airbus.mes.stationtracker.ShiftManager.ShiftSelected 
@@ -332,11 +329,10 @@ airbus.mes.stationtracker.util.Formatter = {
 				
 				if (airbus.mes.stationtracker.AssignmentManager.affectationHierarchy[oSection.avlLine]) {
 
-				if (airbus.mes.stationtracker.AssignmentManager.affectationHierarchy[oSection.avlLine][sShiftDate]) {
+				if (airbus.mes.stationtracker.AssignmentManager.affectationHierarchy[oSection.avlLine][sshiftID]) {
 	
-					if (airbus.mes.stationtracker.AssignmentManager.affectationHierarchy[oSection.avlLine][sShiftDate][sShiftName]) {
 						// See SD there is only one user affected for the couple of shift id + avlLine
-						var oCurrentAffectedUser = airbus.mes.stationtracker.AssignmentManager.affectationHierarchy[oSection.avlLine][sShiftDate][sShiftName][0];
+						var oCurrentAffectedUser = airbus.mes.stationtracker.AssignmentManager.affectationHierarchy[oSection.avlLine][sshiftID][0];
 						
 						if ( oSection.rescheduled ) {
 							
@@ -353,13 +349,7 @@ airbus.mes.stationtracker.util.Formatter = {
 	
 						}
 	
-					} else {
-
-						var html = '<div><i class="fa  fa-pencil"  style="float:left; padding-left:4px;" ></i><span class="ylabel">'
-							+ airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("SelectOperator") + '</span></div>';
-						return html;
-				
-						}
+					
 				} else {
 
 					var html = '<div><i class="fa  fa-pencil"  style="float:left; padding-left:4px;" ></i><span class="ylabel">'
@@ -489,9 +479,73 @@ airbus.mes.stationtracker.util.Formatter = {
 		                  }, 0);
 		           };
 		     },
+		     
+		     /*
+		 	 * This work is licensed under Creative Commons GNU LGPL License.
+		 	 * 
+		 	 * License: http://creativecommons.org/licenses/LGPL/2.1/ Version: 0.9
+		 	 * Author: Stefan Goessner/2006 Web:
+		 	 * http://goessner.net/download/prj/jsonxml/json2xml.js
+		 	 */
+		 	json2xml : function(o, tab) {
+		 		var toXml = function(v, name, ind) {
+		 			var xml = "";
+		 			if (v instanceof Array) {
+		 				for (var i = 0, n = v.length; i < n; i++)
+		 					xml += ind + toXml(v[i], name, ind + "\t") + "\n";
+		 			} else if (typeof (v) == "object") {
+		 				var hasChild = false;
+		 				xml += ind + "<" + name;
+		 				for ( var m in v) {
+		 					if (m.charAt(0) == "@")
+		 						xml += " " + m.substr(1) + "=\"" + v[m].toString()
+		 								+ "\"";
+		 					else
+		 						hasChild = true;
+		 				}
+		 				xml += hasChild ? ">" : "/>";
+		 				if (hasChild) {
+		 					for ( var m in v) {
+		 						if (m == "#text")
+		 							xml += v[m];
+		 						else if (m == "#cdata")
+		 							xml += "<![CDATA[" + v[m] + "]]>";
+		 						else if (m.charAt(0) != "@")
+		 							xml += toXml(v[m], m, ind + "\t");
+		 					}
+		 					xml += (xml.charAt(xml.length - 1) == "\n" ? ind : "")
+		 							+ "</" + name + ">";
+		 				}
+		 			} else {
+		 				xml += ind + "<" + name + ">" + v.toString() + "</" + name
+		 						+ ">";
+		 			}
+		 			return xml;
+		 		}, xml = "";
+		 		for ( var m in o)
+		 			xml += toXml(o[m], m, "");
+		 		return tab ? xml.replace(/\t/g, tab) : xml.replace(/\t|\n/g, "");
+		 	},
+	     
 		     datepicker : function(sString){
 		    	 console.log("toto");
 		    	 return "toto";
 //		    	 $("div[id="+toolbarDateId+"]").append($("div[class='dhx_cal_date']").contents().clone()); 
-		     }
+		     },
+		     productionGroup : function(sProductionG) {
+		    	 
+		    	 return sProductionG;
+		    	 
+		     },
+		     
+		     msToTime : function(s) {
+		    	  var ms = s % 1000;
+		    	  s = (s - ms) / 1000;
+		    	  var secs = s % 60;
+		    	  s = (s - secs) / 60;
+		    	  var mins = s % 60;
+		    	  var hrs = (s - mins) / 60;
+
+		    	  return hrs + ':' + mins + ':' + secs;
+		    	}
 };

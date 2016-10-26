@@ -279,6 +279,7 @@ airbus.mes.polypoly.PolypolyManager = {
 											// if(!ressourcePools.has(row.RP_ID)){ressourcePools.push()}
 											oTableRows.rows.push({});
 											oTableRows.rows[oTableRows.rows.length - 1]["category"] = row.longName;
+											oTableRows.rows[oTableRows.rows.length - 1]["picture"] = row.picture;
 											oTableRows.rows[oTableRows.rows.length - 1]["ressourcepool"] = row.RP_Description;
 											oTableRows.rows[oTableRows.rows.length - 1]["ressourcepoolId"] = row.RP_ID;
 											oTableRows.rows[oTableRows.rows.length - 1]["ERP_ID"] = row.ERP_ID;
@@ -471,6 +472,7 @@ airbus.mes.polypoly.PolypolyManager = {
 		}
 	},
 
+//--------------------------------------------UNCOMMENT-DOWN-THERE----------------------------------------------------	
 //	updateLevelCreate : function(sUserID, sTechName, sNewLevel) {
 //		var urlqalevelcreate = this.urlModel.getProperty("urlqalevelcreate");
 //
@@ -665,7 +667,8 @@ airbus.mes.polypoly.PolypolyManager = {
 //			},
 //		});
 //	},
-
+//--------------------------------------------OK-UP-THERE----------------------------------------------------	
+	// NOT USED
 	// Crazy why declare model here???? .................-_-_-_--__-_-_ what mean MII model???
 //	
 //	getPolypolyModel : function(sFactory, sLine, sStation, site) {
@@ -697,17 +700,13 @@ airbus.mes.polypoly.PolypolyManager = {
 ////						.getProperty("urlgetqalist"));
 ////		sap.ui.getCore().setModel(listQAmodel, "listQA");
 //	},
-
+// NOT USED
 //	setUserAllocation : function() {
-//
-//		PolypolyManager.oViewController.checkBox.setSelected(true); // works
-//																	// auto
+////		PolypolyManager.oViewController.checkBox.setSelected(true); // works auto
 //		if (!ModelManager.polypoly_UserSave) {
 //			ModelManager.polypoly_UserSave.push(PolypolyManager.polypolyIndex);
 //		}
-//		if ((ModelManager.polypoly_UserSave.some(function(element) {
-//			return (element.ERP_ID == PolypolyManager.polypolyIndex.ERP_ID);
-//		})) === false) {
+//		if ((ModelManager.polypoly_UserSave.some(function(element) {return (element.ERP_ID == PolypolyManager.polypolyIndex.ERP_ID);})) === false) {
 //			ModelManager.polypoly_UserSave.push(PolypolyManager.polypolyIndex);
 //		}
 //	}

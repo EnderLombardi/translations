@@ -1,0 +1,40 @@
+{
+	"ProgramCollection": [
+		{
+			"prog": "A350",
+			"selected": false,
+			"picture": "/MES/components/settings/icon/A350.jpg"
+		},
+		{
+			"prog": "A380",
+			"selected": false,
+			"picture": "/MES/components/settings/icon/A380.jpg"
+		},
+		{
+			"prog": "A320",
+			"selected": true,
+			"picture": "/MES/components/settings/icon/A320.jpg"
+		},
+		{
+			"prog": "A330",
+			"selected": false,
+			"picture": "/MES/components/settings/icon/A330.jpg"
+		},	
+
+		{
+			"prog": "A340",
+			"selected": false,
+			"picture": "/MES/components/settings/icon/A350.jpg"
+		},
+		{
+			"prog": "A360",
+			"selected": false,
+			"picture": "/MES/components/settings/icon/A350.jpg"
+		},		
+		{
+			"prog": "A333",
+			"selected": false,
+			"picture": "/MES/components/settings/icon/A350.jpg"
+		}
+	]
+}

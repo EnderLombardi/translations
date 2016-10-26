@@ -7,11 +7,12 @@ airbus.mes.stationtracker.ShiftManager = {
 	dayDisplay : undefined,
 	shiftDisplay :true,
 	fSwipe: false,
-	//Variables for shift combobox Day view
+	//Variables for shift combobox Day/Shit view
 	BoxSelected : 0,
-	ShiftSelected : undefined,
-	ShiftSelectedStart : undefined,
-	ShiftSelectedEnd : undefined,
+//	ShiftSelected : undefined,
+//	ShiftSelectedStart : undefined,
+//	ShiftSelectedEnd : undefined,
+	ShiftSelected : {},
 	//Array where is stock Id of marker display on the gantt
 	ShiftMarkerID :[],
 	//
@@ -662,7 +663,7 @@ airbus.mes.stationtracker.ShiftManager = {
 		}
 		
 	},
-		
+	
 	/**
 	 * Mark dates between shifts so that we have a visual indicator of the
 	 * non-worked periods. This method directly register non-worked period in
@@ -671,13 +672,14 @@ airbus.mes.stationtracker.ShiftManager = {
 	// void addMarkedShifts( )
 	addMarkedShifts : function() {
 		var oFormatter = airbus.mes.stationtracker.util.Formatter;
-
+		var aShiftBreak = airbus.mes.stationtracker.GroupingBoxingManager.shiftBreakHierarchy;
+		
 		if (this.shifts.length === 0)
 			return; // do nothing
 		
 		var d1, d2, d3, d4, d5;
 		
-		var d2 = this.shifts[0].StartDate;
+		var d2 = aShiftBreak[0].StartDate;
 		var d1 = scheduler.date.copy(d2);
 		d1.setMinutes(d1.getMinutes() - scheduler.matrix.timeline.x_size
 				* scheduler.matrix.timeline.x_step);
@@ -688,14 +690,19 @@ airbus.mes.stationtracker.ShiftManager = {
 			css : "offtime"
 		});
 
-		for (var index = 0; index < this.shifts.length - 1; ++index) {
-			d1 = this.shifts[index].EndDate;
-			d2 = this.shifts[index + 1].StartDate;
+		for (var index = 0; index < aShiftBreak.length - 1; ++index) {
+			d1 = aShiftBreak[index].EndDate;
+			d2 = aShiftBreak[index + 1].StartDate;
 			scheduler.addMarkedTimespan({
 				start_date : d1,
 				end_date : d2,
 				css : "offtime"
 			});
+			
+		}
+	
+		for (var index = 0; index < this.shifts.length - 1; ++index) {
+			
 			d3 = this.shifts[index].StartDate;
 			d4 = scheduler.date.copy(d3);
 			d4.setMinutes(d4.getMinutes() + 5);
@@ -706,7 +713,7 @@ airbus.mes.stationtracker.ShiftManager = {
 			});
 		}
 
-		d1 = this.shifts[this.shifts.length - 1].EndDate;
+		d1 = aShiftBreak[aShiftBreak.length - 1].EndDate;
 		d2 = scheduler.date.copy(d1);
 		d2.setMinutes(d2.getMinutes() + scheduler.matrix.timeline.x_size
 				* scheduler.matrix.timeline.x_step);
