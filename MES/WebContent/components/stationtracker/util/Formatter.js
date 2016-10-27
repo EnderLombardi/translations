@@ -169,7 +169,7 @@ airbus.mes.stationtracker.util.Formatter = {
 					var sText = oBox.shopOrderDescription + " - " + oBox.shopOrder;
 					break;
 				default:
-					var sText = oBox.box;
+					var sText = oBox.realValueBox;
 					break;
 		
 				}
