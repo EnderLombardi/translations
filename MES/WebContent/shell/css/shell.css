@@ -44,10 +44,15 @@
 
 
 /* globalNavView */
-#globalNavView header.pageHeader label[id^="__label"] {
-	font-size: 1rem;
+#globalNavView header.pageHeader label[id^="__label"].pageWelcome {
+	font-size: 0.9rem;
 }
-#globalNavView--SelectLanguage span, #globalNavView--SelectLanguage label, #globalNavView #globalNavView--informationButton-inner #globalNavView--informationButton-img {
+#globalNavView header.pageHeader label[id^="__label"].pageTitle {
+	font-size: 1.3rem;
+    text-transform: uppercase;
+}
+#globalNavView--SelectLanguage span, #globalNavView--SelectLanguage label, #globalNavView #globalNavView--informationButton-inner #globalNavView--informationButton-img,
+#globalNavView #globalNavView--homeButton-inner #globalNavView--homeButton-img {
 	color: #73d2e6;
 }
 #globalNavView--settingsButton {

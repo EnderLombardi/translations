@@ -355,7 +355,7 @@ airbus.mes.polypoly.PolypolyManager = {
 								"ressourcepoolId" : rp,
 								"category" : "AS IS"
 							});
-							var aASISName = ["WA 1", "WA 2", "QA 3", "QA 4"];
+							var aASISName = ["SIDE 1", "SIDE 2", "SIDE 3", "SIDE 4"];
 							for (var i = 1; i < 5; i++) {
 								oTableRows.rows.push({});
 								oTableRows.rows[oTableRows.rows.length - 1]["category"] = aASISName[i-1];

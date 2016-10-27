@@ -125,7 +125,16 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 	},
 
 	renderStationTracker : function() {
-		 
+
+        if ( nav.getCurrentPage().getId() != "homePageView" ) {
+            
+            airbus.mes.shell.oView.byId("homeButton").setVisible(true);
+           
+     } else  {
+           
+            airbus.mes.shell.oView.byId("homeButton").setVisible(false);
+    }
+
 		if (nav.getCurrentPage().getId() === "stationTrackerView") {
 			this.setInformationVisibility(true);
 			airbus.mes.stationtracker.oView.byId("stationtracker").setBusy(true);
@@ -151,6 +160,7 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 	},
 	setInformationVisibility : function(bSet) {
 		this.getView().byId("informationButton").setVisible(bSet);
+		this.getView().byId("homeButton").setVisible(bSet);
 	},
 	onInformation : function(oEvent){
 		airbus.mes.shell.oView.addStyleClass("viewOpacity");
