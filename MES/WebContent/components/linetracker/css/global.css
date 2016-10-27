@@ -1,9 +1,11 @@
-/* #idMainView--swapStationButton {
+ #idMainView--swapStationButton {
 	transform: rotate(90deg);
 	-ms-transform: rotate(90deg); IE 9
 	-webkit-transform: rotate(90deg); Opera, Chrome, and Safari
-} */
-
+} 
+.lineTrackerSubheader{
+	background-color: #d5f1f8 
+}
  .noContentPadding .sapMDialogScrollCont{
 	padding: 0rem !important;
  }
