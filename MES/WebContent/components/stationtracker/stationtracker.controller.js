@@ -71,6 +71,24 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		}
 		this.getView().byId("disruptNotifications").openNavigation();
 		this.getView().byId("disruptNotifications").closeNavigation();
+		
+		// Place the table in the custom control 
+		if (airbus.mes.disruptiontracker === undefined) {
+			jQuery.sap.registerModulePath("airbus.mes.disruptiontracker", "../components/disruptiontracker");
+			this.odisruptiontrackerComp = sap.ui.getCore().createComponent({
+				name : "airbus.mes.disruptiontracker",
+				id : "customDisruptionComponent"         
+			});
+			airbus.mes.disruptiontracker.oView = this.odisruptiontrackerComp.oView;
+			
+		}
+	
+		airbus.mes.disruptiontracker.oView
+				.placeAt("stationTracker--disruptions");
+
+		
+		
+		
 
 	},
 	onProductionGroupPress : function(oEvent){

@@ -1,13 +1,14 @@
 <core:View xmlns:core="sap.ui.core" xmlns="sap.m"
 	xmlns:suite="sap.suite.ui.commons" controllerName="airbus.mes.stationtracker.stationtracker"
-	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:custom="airbus.mes.stationtracker" xmlns:control="airbus.mes.stationtracker.control"
-	xmlns:layout="sap.ui.layout" xmlns:micro="sap.suite.ui.microchart">
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:custom="airbus.mes.stationtracker"
+	xmlns:control="airbus.mes.stationtracker.control" xmlns:layout="sap.ui.layout"
+	xmlns:micro="sap.suite.ui.microchart">
 	<Page title="Station Tracker" height="100%" showHeader="false"
 		enableScrolling="false " class="GenricBgColor">
-		
-		<content width="100%" height="100%">  
-			<Panel id="kpi_header" expandable="true" expanded="true" expandAnimation="false"
-				class="pageHeader sapUiSmallMarginTop contentNoPad">
+
+		<content width="100%" height="100%">
+			<Panel id="kpi_header" expandable="true" expanded="true"
+				expandAnimation="false" class="pageHeader sapUiSmallMarginTop contentNoPad">
 				<headerToolbar>
 					<Toolbar id="kpiHeaderToolbar">
 						<DatePicker id="DatePicker" width="auto" class="pageHeaderBlue" />
@@ -15,17 +16,19 @@
 							class="sapUiTinyMarginBeginEnd pageHeader pageHeaderBlue" change="changeShift"
 							items="{ path : 'stationTrackerShift>/' }"
 							enabled="{ path : 'stationTrackerShift>/0/visible', formatter : 'airbus.mes.stationtracker.util.Formatter.isDayTimeline' }">
-							<core:Item key="{stationTrackerShift>shiftID}" text="{stationTrackerShift>shiftName}"/>
+							<core:Item key="{stationTrackerShift>shiftID}" text="{stationTrackerShift>shiftName}" />
 						</Select>
-						<Button id="ProductionButton" text="{StationTrackerI18n>ProductionGroup}" type="Transparent"
-							class="whiteColor whiteButton" press="onProductionGroupPress" />
+						<Button id="ProductionButton" text="{StationTrackerI18n>ProductionGroup}"
+							type="Transparent" class="whiteColor whiteButton" press="onProductionGroupPress" />
 						<Select id="selectUser" change="selectUser"
 							class="sapUiTinyMarginBeginEnd pageHeader pageHeaderBlue" items="{ path : 'ressourcePoolModel>/Rowsets/Rowset/0/Row' }">
 							<core:Item key="{ressourcePoolModel>user}" text="{ressourcePoolModel>user}" />
 						</Select>
-
+						<Button text="Disruptions" type="Transparent" class="whiteColor whiteButton"
+							press="showDisruption"></Button>
 						<ToolbarSpacer />
-						<Button id="TeamButton" text="{StationTrackerI18n>ButtonTeam}" type="Transparent"
+						<Button id="TeamButton" text="{StationTrackerI18n>ButtonTeam}"
+							type="Transparent"
 							class="tiffanyColor whiteButton buttonStatus2 iconbuttonTeam sapUiSmallMarginBegin"
 							icon="sap-icon://group" press="onTeamPress" />
 					</Toolbar>
@@ -119,31 +122,34 @@
 								<VBox width="30%">
 									<Label text="{StationTrackerI18n>Adherence}" class=" whiteText" />
 									<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/Labour}"
-										class="sapUiSmallMarginTop kpiValue  whiteText"
-										height="100%" />
+										class="sapUiSmallMarginTop kpiValue  whiteText" height="100%" />
 
 								</VBox>
 
 								<VBox width="30%">
-									
-									<layout:Grid
-										class="sapUiSmallMarginTop"
+
+									<layout:Grid class="sapUiSmallMarginTop"
 										defaultSpan="L6 M6 S6">
 										<layout:content>
 											<Label text="{StationTrackerI18n>Trend}" class=" whiteText" />
-											<core:Icon src="sap-icon://up" class="sapUiSmallMarginBeginEnd TrendGreen" />
+											<core:Icon src="sap-icon://up"
+												class="sapUiSmallMarginBeginEnd TrendGreen" />
 
 											<Label text="{StationTrackerI18n>DeltaVsSLB}" class=" whiteText" />
-											<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/SLB}" class="whiteText" />
+											<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/SLB}"
+												class="whiteText" />
 
 											<Label text="{StationTrackerI18n>DeltaVsSoA}" class=" whiteText" />
-											<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/SLB}" class="whiteText" />
+											<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/SLB}"
+												class="whiteText" />
 
 											<Label text="{StationTrackerI18n>CycleTime}" class=" whiteText" />
-											<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/SLB}" class="whiteText" />
+											<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/SLB}"
+												class="whiteText" />
 
 											<Label text="{StationTrackerI18n>WorkCintent}" class=" whiteText" />
-											<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/SLB}" class="whiteText" />
+											<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/SLB}"
+												class="whiteText" />
 										</layout:content>
 									</layout:Grid>
 
@@ -154,14 +160,16 @@
 
 						</VBox>
 
-						<VBox  id="boxLabourEfficiency" wrap="Wrap" width="5%" class="contentHeaderCont">
+						<VBox id="boxLabourEfficiency" wrap="Wrap" width="5%"
+							class="contentHeaderCont">
 							<Label text="{StationTrackerI18n>LabourEfficiency}" design="Bold"
 								width="100%" class="whiteTextHeader sapUiSmallMarginTopBottom" />
 							<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/SLB}"
 								class="sapUiSmallMarginTop whiteText kpiValue" />
 						</VBox>
 
-						<VBox id="boxSLBEfficiecy" width="10%" alignItems="Center" class="contentHeaderCont">
+						<VBox id="boxSLBEfficiecy" width="10%" alignItems="Center"
+							class="contentHeaderCont">
 							<Label text="{StationTrackerI18n>SLBEFFICIENCY}" design="Bold"
 								class="whiteTextHeader sapUiSmallMarginTopBottom" />
 							<VBox width="90%">
@@ -180,8 +188,8 @@
 						</VBox>
 
 						<VBox id="boxOpenDisruptions" width="25%" class="contentHeaderCont">
-							<Label text="{StationTrackerI18n>DisruptionOpen/Andon}" design="Bold"
-								width="100%" class="whiteTextHeader sapUiSmallMarginTopBottom" />
+							<Label text="{StationTrackerI18n>DisruptionOpen/Andon}"
+								design="Bold" width="100%" class="whiteTextHeader sapUiSmallMarginTopBottom" />
 							<HBox>
 								<VBox width="20%">
 									<Label text="{StationTrackerI18n>DisruptionTotal}" class=" whiteText"
@@ -230,7 +238,8 @@
 							</HBox>
 						</VBox>
 
-						<VBox id="boxResolutionEfficiency" width="10%" alignItems="Center" class="contentHeaderCont">
+						<VBox id="boxResolutionEfficiency" width="10%" alignItems="Center"
+							class="contentHeaderCont">
 							<Label text="{StationTrackerI18n>ResolutionEfficiency}"
 								design="Bold" class="whiteTextHeader sapUiSmallMarginTopBottom" />
 							<VBox width="90%">
@@ -257,10 +266,11 @@
 								class="whiteText kpiValue" design="Bold" />
 							<Label text="{StationTrackerI18n>Hrs}" width="100%" class="whiteText " />
 							<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/Total}"
-								class="whiteText kpiValue" design="Bold"/>
+								class="whiteText kpiValue" design="Bold" />
 						</VBox>
 
-						<VBox id="boxShiftStaffing" wrap="Wrap" width="10%" alignItems="Center" class="contentHeaderCont">
+						<VBox id="boxShiftStaffing" wrap="Wrap" width="10%"
+							alignItems="Center" class="contentHeaderCont">
 							<Label text="{StationTrackerI18n>ShiftSTAFFING}" size="L"
 								design="Bold" width="100%" class="whiteTextHeader sapUiSmallMarginTopBottom" />
 							<VBox width="90%">
@@ -414,17 +424,19 @@
 				</content>
 			</OverflowToolbar>
 			<custom:DHTMLXScheduler id="stationtracker"></custom:DHTMLXScheduler>
-			
-			
+
+
 			<!-- For Disruption table in Station Tracker -->
 			<control:disruptionNotifications id="disruptNotifications">
-			
-			<control:disruptionContent id="disruptContent">
-			</control:disruptionContent>
-		
+
+				<control:disruptionContent id="disruptContent">
+
+
+				</control:disruptionContent>
+
 			</control:disruptionNotifications>
-			
-		 </content>	
+
+		</content>
 	</Page>
 </core:View>
 
