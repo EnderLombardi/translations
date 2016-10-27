@@ -1,0 +1,35 @@
+{ "Rowsets" : { 
+	"DateCreated" : "2016-10-27T07:05:18", "Version" : "15.1 SP2 Patch 13 (Oct 6, 2016)", "StartDate" : "2016-10-27T06:05:17+0200", "EndDate" : "2016-10-27T07:05:17+0200", "CachedTime" : "", 
+	"Rowset" : [ 
+	{ "Columns" : { 
+		"Column" : [ 
+		{ "Name" : "NAME", "SourceColumn" : "NAME", "Description" : "", "SQLDataType" : 12, "MinRange" : 100.0, "MaxRange" : 100.0 }, 
+		{ "Name" : "DESCRIPTION", "SourceColumn" : "DESCRIPTION", "Description" : "", "SQLDataType" : 12, "MinRange" : 100.0, "MaxRange" : 100.0 }, 
+		{ "Name" : "ID", "SourceColumn" : "ID", "Description" : "", "SQLDataType" : -5, "MinRange" : 100.0, "MaxRange" : 100.0 } ] }, 
+	"Row" : [ 
+		{ "NAME" : "RPTEST2", "DESCRIPTION" : "Demo Resource Pool", "ID" : 13 }, 
+		{ "NAME" : "RP1", "DESCRIPTION" : "Test5", "ID" : 18 }, 
+		{ "NAME" : "RES_1", "DESCRIPTION" : "Resource Pool 1", "ID" : 19 }, 
+		{ "NAME" : "RES", "DESCRIPTION" : "res1", "ID" : 21 }, 
+		{ "NAME" : "RPDEF29", "DESCRIPTION" : "Defect 29TEST", "ID" : 22 }, 
+		{ "NAME" : "EXAMPLE1", "DESCRIPTION" : "EXAMPLE1", "ID" : 23 }, 
+		{ "NAME" : "EXAMPLE2", "DESCRIPTION" : "EXAMPLE21", "ID" : 24 }, 
+		{ "NAME" : "TEST1", "DESCRIPTION" : "Test RP", "ID" : 25 }, 
+		{ "NAME" : "TEST2", "DESCRIPTION" : "Test RP1", "ID" : 26 }, 
+		{ "NAME" : "TEST6", "DESCRIPTION" : "testpool", "ID" : 27 }, 
+		{ "NAME" : "RPG", "DESCRIPTION" : "Desc", "ID" : 28 }, 
+		{ "NAME" : "RPG2", "DESCRIPTION" : "Desct", "ID" : 29 }, 
+		{ "NAME" : "TEST-GS", "DESCRIPTION" : "GS", "ID" : 30 }, 
+		{ "NAME" : "GSH", "DESCRIPTION" : "GSH", "ID" : 31 }, 
+		{ "NAME" : "GSHA", "DESCRIPTION" : "GSHA", "ID" : 33 }, 
+		{ "NAME" : "GSHA1", "DESCRIPTION" : "GSHA1", "ID" : 34 }, 
+		{ "NAME" : "GSHA2", "DESCRIPTION" : "GSHA2", "ID" : 35 }, 
+		{ "NAME" : "JHG", "DESCRIPTION" : "JHG", "ID" : 37 }, 
+		{ "NAME" : "GG", "DESCRIPTION" : "GG", "ID" : 38 }, 
+		{ "NAME" : "TEST67", "DESCRIPTION" : "5", "ID" : 40 }, 
+		{ "NAME" : "RPG23", "DESCRIPTION" : "RPG234", "ID" : 41 }, 
+		{ "NAME" : "RPDEF29DF DFDFDFD FDFDFDFD  FDFDFDFDFD FDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDF", "DESCRIPTION" : "gfgfgh sjssjjsjs sjsjsjss", "ID" : 42 }, 
+		{ "NAME" : "NEW GREEN", "DESCRIPTION" : "Resource Pool", "ID" : 43 } ]
+		 } ]
+	 }
+ }

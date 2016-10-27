@@ -1,0 +1,20 @@
+{ "Rowsets" : { 
+	"DateCreated" : "2016-10-27T07:13:43", "Version" : "15.1 SP2 Patch 13 (Oct 6, 2016)", "StartDate" : "2016-10-27T06:13:43+0200", "EndDate" : "2016-10-27T07:13:43+0200", "CachedTime" : "", 
+	"Rowset" : [ 
+	{ "Columns" : { 
+		"Column" : [ 
+		{ "Name" : "USER_ID", "SourceColumn" : "USER_ID", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "SITE", "SourceColumn" : "SITE", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "NAME", "SourceColumn" : "NAME", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "PERSONAL_NO", "SourceColumn" : "PERSONAL_NO", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "ERP_USER_ID", "SourceColumn" : "ERP_USER_ID", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "FNAME", "SourceColumn" : "FNAME", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "LNAME", "SourceColumn" : "LNAME", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "LOANED_TO_POOL", "SourceColumn" : "LOANED_TO_POOL", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "LOANED_RP_NAME", "SourceColumn" : "LOANED_RP_NAME", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 } ] }, 
+	"Row" : [ 
+		{ "USER_ID" : "NG43F36", "SITE" : "CHES", "NAME" : "RPTEST2", "PERSONAL_NO" : "---", "ERP_USER_ID" : "NG43F36", "FNAME" : "ALEXIS", "LNAME" : "FERRAND", "LOANED_TO_POOL" : "---", "LOANED_RP_NAME" : "" }, 
+		{ "USER_ID" : "NG1FCF2", "SITE" : "CHES", "NAME" : "RPTEST2", "PERSONAL_NO" : "91109992", "ERP_USER_ID" : "---", "FNAME" : "ARNAUD", "LNAME" : "CABANDE", "LOANED_TO_POOL" : "---", "LOANED_RP_NAME" : "" } ]
+		 } ]
+	 }
+ }
