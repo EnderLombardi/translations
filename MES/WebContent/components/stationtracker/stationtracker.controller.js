@@ -482,7 +482,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 
 		GroupingBoxingManager.parseOperation(GroupingBoxingManager.group, GroupingBoxingManager.box);
 		// Need render for display marked shift 
-		scheduler.updateView();
+		//scheduler.updateView();
 
 	},
 	onReschedulePress : function(oEvent) {
