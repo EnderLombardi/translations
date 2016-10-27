@@ -158,17 +158,21 @@ airbus.mes.stationtracker.util.Formatter = {
 				var sColorProgress = "";
 				var sText = "";
 				// Text to display different case regarding box selected
-				switch ( airbus.mes.stationtracker.GroupingBoxingManager.box ) {
-					
-				case "OPERATION_ID" :
-						var sText = oBox.operationId + " - " +  oBox.shopOrder + " - " + oBox.operationId ;
-						break;
-						
-				case "WORKORDER_ID" :
-						var sText = oBox.shopOrderDescription + " - "  + oBox.shopOrder ;
-						break;
-				}
+				switch (airbus.mes.stationtracker.GroupingBoxingManager.box) {
 		
+				case "OPERATION_ID":
+					var sText = oBox.operationId + " - " + oBox.shopOrder + " - " + oBox.operationDescription;
+					break;
+		
+				case "WORKORDER":
+					var sText = oBox.shopOrderDescription + " - " + oBox.shopOrder;
+					break;
+				default:
+					var sText = oBox.box;
+					break;
+		
+				}
+			
 				var sSpanText = '<span style="position: relative; z-index: 1; float: left; overflow: hidden; text-overflow: ellipsis; max-width:40%; white-space: nowrap;">' + sText + '</span>';	
 				var sProgressText = '<span style="position: relative;  z-index: 1; float: right; overflow: hidden; text-overflow: ellipsis; max-width:40%; white-space: nowrap; padding-left:10px; padding-right:10px;"> ['+
 				airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.progress) +'/'+ 

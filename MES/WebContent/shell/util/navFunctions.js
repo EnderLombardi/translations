@@ -20,6 +20,22 @@ airbus.mes.shell.util.navFunctions = {
 			
 		},
 		
+		polypoly: function(){
+
+			if (airbus.mes.polypoly === undefined){
+				
+				jQuery.sap.registerModulePath("airbus.mes.polypoly", "../components/polypoly");
+
+				sap.ui.getCore().createComponent({
+					name : "airbus.mes.polypoly",
+				});
+				nav.addPage(airbus.mes.polypoly.oView);
+			}
+			
+			nav.to(airbus.mes.polypoly.oView.getId());
+			
+		},
+		
 		
 		resourcePool: function(){
 			if (airbus.mes.resourcepool === undefined) {

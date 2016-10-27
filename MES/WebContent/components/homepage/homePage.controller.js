@@ -11,29 +11,27 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 	onInit : function() {
 
 	},
-	onPress:function(text)	{
-		
-//		If default user settings are not yet loaded, need to load them
-//		We display settings screen
-		if(airbus.mes.settings.ModelManager.station === "" ){
-		
-			switch(text){
+	onPress : function(text) {
+
+		//		If default user settings are not yet loaded, need to load them
+		//		We display settings screen
+		if (airbus.mes.settings.ModelManager.station === "") {
+
+			switch (text) {
 			case "StationTracker":
-				airbus.mes.settings.GlobalFunction.navigateTo(
-						"Go to Station Tracker", "stationtracker");
+				airbus.mes.settings.GlobalFunction.navigateTo("Go to Station Tracker", "stationtracker");
 				break;
 			case "ResourcePool":
-				airbus.mes.settings.GlobalFunction.navigateTo(
-						"Go to Team Assignment", "teamassignment");
+				airbus.mes.settings.GlobalFunction.navigateTo("Go to Team Assignment", "teamassignment");
 				break;
 			case "LineTracker":
-				airbus.mes.settings.GlobalFunction.navigateTo(
-						"Go to Line Tracker", "linetracker");
+				airbus.mes.settings.GlobalFunction.navigateTo("Go to Line Tracker", "linetracker");
 				break;
 			case "DisruptionAndon":
-				airbus.mes.settings.GlobalFunction.navigateTo(
-						"Go to Disruption Tracker", "disruptiontracker");
+				airbus.mes.settings.GlobalFunction.navigateTo("Go to Disruption Tracker", "disruptiontracker");
 				break;
+			case "TeamCompetencies" :
+				airbus.mes.settings.GlobalFunction.navigateTo("Go to Team competencies & qualification", "disruptiontracker");
 			}
 			;
 
@@ -56,6 +54,8 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 			case "DisruptionAndon":
 				airbus.mes.shell.util.navFunctions.disruptionTracker();
 				break;
+			case "TeamCompetencies" :
+			airbus.mes.shell.util.navFunctions.polypoly();
 			}
 
 		}
@@ -65,8 +65,7 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 	onPressLine1 : function(oEvt) {
 
 		var sPath = oEvt.getSource().oBindingContexts["1TileLineHome"].sPath;
-		var text = airbus.mes.homepage.oView.getModel("1TileLineHome")
-				.getProperty(sPath).text;
+		var text = airbus.mes.homepage.oView.getModel("1TileLineHome").getProperty(sPath).text;
 
 		this.onPress(text);
 	},
@@ -74,8 +73,7 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 	onPressLine2 : function(oEvt) {
 
 		var sPath = oEvt.getSource().oBindingContexts["2TileLineHome"].sPath;
-		var text = airbus.mes.homepage.oView.getModel("2TileLineHome")
-				.getProperty(sPath).text;
+		var text = airbus.mes.homepage.oView.getModel("2TileLineHome").getProperty(sPath).text;
 
 		this.onPress(text);
 	},
@@ -83,8 +81,7 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 	onPressLine3 : function(oEvt) {
 
 		var sPath = oEvt.getSource().oBindingContexts["3TileLineHome"].sPath;
-		var text = airbus.mes.homepage.oView.getModel("3TileLineHome")
-				.getProperty(sPath).text;
+		var text = airbus.mes.homepage.oView.getModel("3TileLineHome").getProperty(sPath).text;
 
 		this.onPress(text);
 	},
@@ -112,8 +109,8 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 	 */
 	onAfterRendering : function() {
 		// Retrieve default user settings after the rendering of the Home Page
-//		TODO
-//		airbus.mes.settings.oView.getController().getUserSettings();
+		//		TODO
+		//		airbus.mes.settings.oView.getController().getUserSettings();
 	},
 
 /**
