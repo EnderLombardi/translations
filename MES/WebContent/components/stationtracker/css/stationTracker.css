@@ -198,10 +198,6 @@
 	color: black;
 }
 
-.initial {
-	background-color: #F5F6F8 !important;
-}
-
 .pageStation {
 	background: #006CA7 !important;
 }
@@ -276,10 +272,6 @@
 
 .duck-egg-blue {
 	background-color:#d5f1f8 !important;
-}
-
-.lineYaxis {
-	background-color: rgba(49, 220, 240, 0.1);
 }
 
 .operationCP {
@@ -413,11 +405,6 @@
 .user {
 	margin-left: 5px;
 	margin-right: 5px;
-}
-
-.initial {
-	background-color: transparent;
-	padding-left: 0px;
 }
 
 .task {
@@ -753,6 +740,7 @@ background-color: #0085AD !important;
 
 #stationTrackerView--stationtracker .dhx_matrix_scell.item {
 	border-bottom: solid 1px #d5f1f8;
+	color: #0D5D76;
 }
 
 #stationTrackerView--stationtracker .dhx_matrix_scell.item,
@@ -761,10 +749,22 @@ background-color: #0085AD !important;
 	cursor: pointer;
 }
 
+#stationTrackerView--stationtracker .dhx_matrix_scell.item.initial{
+	cursor: default;
+}
+
 #stationTrackerView--stationtracker .dhx_scell_name{
 	float: none;
 	text-align: left;
 	position: relative;
+}
+
+#stationTrackerView--stationtracker .dhx_cal_event,
+#stationTrackerView--stationtracker .dhx_cal_event_line {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+	border: none;
 }
 
 #stationTrackerView--stationtracker .dhx_matrix_cell div,
@@ -876,6 +876,26 @@ background-color: #0085AD !important;
 	background-color: #F3F5F6;
 	border-bottom: 1px solid #dddddd;
 	border-right: 1px solid #dddddd;
+}
+
+#stationTrackerView--stationtracker .tracker-item-initial{
+	color: #BBBCBC;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+    left: 0px;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    box-sizing: border-box;
+    text-overflow: ellipsis;
+    border: solid 2px #BBBCBC;
+    background-color: #F5F5F5;
+}
+
+#stationTrackerView--stationtracker .tracker-item-initial .fa-exclamation-triangle{
+	color: #BBBCBC !important;
 }
 
 /** Takt Adherence **/
@@ -1088,3 +1108,4 @@ svg#stationTrackerView--takt_adherence_area_chart {
 #pop-up-polypoly .sapUiTableColHdrScr .sapUiTableColHdr:nth-child(2) .sapMLabel {
 	border:none;
 }
+

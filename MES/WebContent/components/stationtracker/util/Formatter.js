@@ -152,7 +152,7 @@ airbus.mes.stationtracker.util.Formatter = {
 				var html = "";
 				
 				var sDivForLeftDisplay = '<div  style="width:100%; height:inherit; position:absolute; z-index: 1; line-height: 23px;left: 0px; overflow: hidden; text-overflow: ellipsis; " >'
-				var sDivForLeftDisplayInitial = '<div  style="color:black ; width:100%; height:inherit; position:absolute; z-index: 1; line-height: 23px;left: 0px; overflow: hidden; text-overflow: ellipsis; " >'
+				var sDivForLeftDisplayInitial = '<div class="tracker-item-initial" >'
 				var sRightIcon = "";	
 				var sLeftIcon = "";
 				var sColorProgress = "";
