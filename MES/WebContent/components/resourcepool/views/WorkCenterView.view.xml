@@ -1,0 +1,91 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" controllerName="airbus.mes.resourcepool.views.Main"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page showHeader="false" enableScrolling="false" height="100%">
+		<content>
+			<HBox height="100%" class="fixHboxItemDisplay">
+				<items>
+					<Panel class="panelBorder" expanded="true" expandable="false"
+						width="100%" height="100%">
+						<headerToolbar>
+
+							<Toolbar>
+								<Bar design="Header">
+									<contentMiddle>
+										<Text class="sapMPanelHdr panelHeaderCustomStyle" text="{i18nModel>AvailableWC}" />
+									</contentMiddle>
+									<!-- <contentRight> <CheckBox select="onSelectAll" text="{i18nModel>SelectAll}" 
+										/> </contentRight> -->
+								</Bar>
+							</Toolbar>
+						</headerToolbar>
+						<infoToolbar>
+							<Toolbar>
+								<content>
+									<CheckBox id="allAvailableWC" select="onSelectAllWC"
+										enabled="{path:'i18nModel>ResourcePool',formatter:'airbus.mes.resourcepool.util.Formatter.isEnabled'}" />
+									<SearchField id="searchAvailableWC" liveChange="onSearchAvailableWC"
+										width="100%" />
+								</content>
+							</Toolbar>
+						</infoToolbar>
+						<content>
+							<HBox height="100%" class="fixHboxItemDisplay">
+								<List id="listAvailableWorkCenter" items="{AvailableWCModel>/Rowsets/Rowset/0/Row}"
+									mode="{path:'AvailableWCModel>',formatter:'airbus.mes.resourcepool.util.Formatter.selectionMode'}"
+									includeItemInSelection="true" rememberSelections="false"
+									noDataText="{i18nModel>NoWCAvailable}" growingScrollToLoad="true"
+									growing="true" growingThreshold="1000">
+									<StandardListItem id="availableListItem"
+										title="{AvailableWCModel>WorkCenter}" description="{AvailableWCModel>Description}" />
+								</List>
+							</HBox>
+						</content>
+					</Panel>
+					<VBox class="shiftButtons" justifyContent="Center" alignItems="Center">
+						<items>
+							<Button icon="sap-icon://navigation-right-arrow" press="assignWorkCenter" />
+							<Button icon="sap-icon://navigation-left-arrow" press="unassignWorkCenter" />
+
+						</items>
+					</VBox>
+					<Panel class="panelBorder" expanded="true" expandable="false"
+						width="100%" height="100%">
+						<headerToolbar>
+
+							<Toolbar>
+								<Bar design="Header">
+									<contentMiddle>
+										<Text class="sapMPanelHdr panelHeaderCustomStyle" text="{i18nModel>AssignedWC}" />
+									</contentMiddle>
+								</Bar>
+							</Toolbar>
+						</headerToolbar>
+						<infoToolbar>
+							<Toolbar>
+								<content>
+									<CheckBox id="allAssignedWC" select="onSelectAllWC"
+										enabled="{path:'AssignedWCModel>',formatter:'airbus.mes.resourcepool.util.Formatter.isEnabled'}" />
+									<SearchField id="searchAssignedWC" liveChange="onSearchAssignedWC"
+										width="100%" />
+								</content>
+							</Toolbar>
+						</infoToolbar>
+						<content>
+							<HBox height="100%" class="fixHboxItemDisplay">
+								<List id="listAllocatedWorkCenter" items="{AssignedWCModel>/Rowsets/Rowset/0/Row}"
+									includeItemInSelection="true"
+									mode="{path:'AssignedWCModel>',formatter:'airbus.mes.resourcepool.util.Formatter.selectionMode'}"
+									noDataText="{i18nModel>NoWCAssigned}" rememberSelections="false"
+									growingScrollToLoad="true" growing="true" growingThreshold="1000">
+									<StandardListItem title="{AssignedWCModel>ASSIGNMENT_NAME}"
+										description="{AssignedWCModel>DESCRIPTION}" />
+								</List>
+							</HBox>
+						</content>
+					</Panel>
+				</items>
+			</HBox>
+		</content>
+	</Page>
+</core:View>
