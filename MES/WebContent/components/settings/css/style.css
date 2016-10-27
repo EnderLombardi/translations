@@ -39,7 +39,7 @@ font-style: normal !important;
 	
 }
 .whiteButton .sapMBtnIcon {
-	color: white !important;
+	color: white;
 }
 
 .pageHeader {
@@ -102,4 +102,7 @@ font-style: normal !important;
 
 .sapMPage>.sapMPageHeader + .sapMPageSubHeader + section {
 	background-color: white;
+}
+#globalNavView .sapMIBar-CTX .sapMBtnTransparent {
+	color:#ffffff;
 }

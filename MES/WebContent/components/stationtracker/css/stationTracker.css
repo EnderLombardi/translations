@@ -1088,3 +1088,12 @@ svg#stationTrackerView--takt_adherence_area_chart {
 #pop-up-polypoly .sapUiTableColHdrScr .sapUiTableColHdr:nth-child(2) .sapMLabel {
 	border:none;
 }
+#pop-up-polypoly .sapUiTableColHdrScr .sapUiTableColHdr:nth-child(1) .sapMLabel {
+    color: #468497;
+    font-size: 0.975rem;
+    padding-top: 4px;
+}
+#pop-up-polypoly .sapUiTableColHdrScr .sapUiTableColHdr:nth-child(2) .sapMLabel {
+    color: #468497;
+    font-size: 0.7rem;
+}

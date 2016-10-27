@@ -13,13 +13,13 @@
 				labelSpanS="6" emptySpanL="2" emptySpanM="2" emptySpanS="0"
 				columnsL="1" columnsM="1" columnsS="1" class="shrinkArea">
 				<f:content>
-					<Label class="topMargin" text="Technical Name" />
-					<Input id="colTechname" class="topMargin" type="Text"
+					<Label class="" text="Technical Name" />
+					<Input id="colTechname" class="" type="Text"
 						value="{columnModel>/techname}" />
-					<Label class="topMargin" text="Competency Description" />
-					<Input id="colCompetency" class="topMargin" type="Text"
+					<Label class="" text="Competency Description" />
+					<Input id="colCompetency" class="" type="Text"
 						value="{columnModel>/competency}" />
-					<Label class="topMargin" text="Quality Authorisation" />
+					<Label class="" text="Quality Authorisation" />
 					<VBox>
 						<items>
 							<SearchField id="searchField" liveChange="onSearch" width="100%" />
@@ -35,12 +35,12 @@
 							</table:Table>
 						</items>
 					</VBox>
-					<Label class="topMargin" text="Need 3" />
+					<Label class="" text="Need 3" />
 					<Select id="colNeed3" items="{path: 'needlevels>/levels'}"
 						selectedKey="{columnModel>/need3}">
 						<core:Item key="{needlevels>key}" text="{needlevels>text}" />
 					</Select>
-					<Label class="topMargin" text="Need 4" />
+					<Label class="" text="Need 4" />
 					<Select id="colNeed4" items="{path: 'needlevels>/levels'}"
 						selectedKey="{columnModel>/need4}">
 						<core:Item key="{needlevels>key}" text="{needlevels>text}" />

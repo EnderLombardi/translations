@@ -5,7 +5,7 @@
 			<Toolbar class="pageHeader">
                            <content>	
 
-                           <Image src="../images/Airbus.png" width="10rem" height="2rem" press="goToHome" />
+                           <Image src="../images/Airbus.png" width="auto" height="2rem" press="goToHome" />
                            <ToolbarSeparator />
                            <Label text="MES" class="pageTitle"/>
                            <ToolbarSpacer />
@@ -29,7 +29,6 @@
 	                           <core:Item text="French" />
 	                           <core:Item text="Spanish" />                                                      
                            </Select>
-                           <ToolbarSeparator />
                            <Button id="informationButton" icon="sap-icon://message-information" type="Transparent" press="onInformation" visible="false"  class="whiteColor whiteButton" />
                            <Button id="settingsButton" 
                                    type="Transparent" 
