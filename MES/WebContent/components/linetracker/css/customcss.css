@@ -168,7 +168,7 @@ html[data-sap-ui-browser*="ie"] .sapUiBody {
 	padding-left: 0.5rem;
 }
 
-.sapMBarChild {
+.factHBox .sapMBarChild {
 	font-weight: bold;
 	vertical-align: middle;
 	font-size: 17px;
@@ -648,3 +648,42 @@ white-space: nowrap !important;
 /* 	background-color : #B0E0E6;
  */
  background-color : #e5e5e5 !important;}
+
+ 
+ 
+.factHBox .stationBoxLower {
+    border: none;
+}
+
+.factHBox .sapMHBox > .sapMFlexItem {
+	border-left:1px solid #ccc;
+}
+.factHBox .sapMHBox>.sapMFlexItem:last-child {
+	border:none;
+}
+.factHBox .factStationBoxImg {
+    height: auto;
+    width: auto;
+    max-height: 100%;
+    max-width: 100%;
+    margin: 0px;
+    box-sizing: border-box;
+}
+.factHBox .factStationBoxText {
+	font-size:2vh;
+	color:#e0e0e0;
+}
+.factHBox .stationBoxBody {
+	padding: 7px 5px 5px 5px;
+    width: 50%;
+}
+.factHBox .stationBoxBodyTop {
+    height: 5px;
+    margin: 0;
+}
+.factHBox .structureStationBox {
+    min-height: auto;
+}
+#idFactoryView {
+	background-color:#fff;
+}
