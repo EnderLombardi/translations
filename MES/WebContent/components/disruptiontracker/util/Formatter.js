@@ -4,12 +4,17 @@ jQuery.sap.declare("airbus.mes.disruptiontracker.Formatter");
 
 airbus.mes.disruptiontracker.Formatter = {
 		
-		setText : function(status) {
+		setText : function(status, gravity, escalation) {
 			
 			if(status == "CLOSED") {
 				return "Solved";
 			}
-			return "Blocked";
+			else if(gravity == 3 || escalation == 2 || escalation == 3)
+				return "Blocked";
+			else if(gravity == 1)
+				return "Not Blocked";
+			else if(gravity == 2)
+				return "Disturbed";
 		},
 
 	setState : function(status, gravity, escalation) {
@@ -52,19 +57,6 @@ airbus.mes.disruptiontracker.Formatter = {
 		else
 			return "sap-icon://status-critical";
 		
-		
-		
-		
-		
-		
-		if(status == "CLOSED")
-			return "sap-icon://sys-enter-2";
-		
-		else if(status == "SOLVED")
-			return "sap-icon://alert";
-		
-		else
-			return "sap-icon://status-critical";
 
 	}
 };

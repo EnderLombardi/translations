@@ -15,8 +15,6 @@ sap.ui.core.UIComponent.extend("airbus.mes.disruptiontracker.Component", {
 });
 
 airbus.mes.disruptiontracker.Component.prototype.createContent = function() {
-
-	airbus.mes.disruptiontracker.isDisplay = true;
 	
 	if (airbus.mes.disruptiontracker.oView === undefined) {
 //		Initialization
@@ -25,7 +23,7 @@ airbus.mes.disruptiontracker.Component.prototype.createContent = function() {
 		// View on XML
 		this.oView = sap.ui.view({
 			id : "disruptiontrackerView",
-			viewName : "airbus.mes.disruptiontracker.list.disruptions",
+			viewName : "airbus.mes.disruptiontracker.disruptions",
 			type : "XML",
 		})
 
