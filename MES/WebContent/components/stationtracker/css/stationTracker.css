@@ -912,6 +912,16 @@ background-color: #0085AD !important;
 	text-align: left;
 }
 
+#stationTrackerView--kpiHeaderContent .KPITaktChartBlueText {
+	color: #74d2e7;
+	margin-left: 10px;
+}
+
+#stationTrackerView--kpiHeaderContent .KPITaktChartRightText {
+	text-align: right ! important;
+	width: 100%;
+}
+
 #stationTrackerView--LabourEfficiencyValue {
 	text-align: center ! important;
 }

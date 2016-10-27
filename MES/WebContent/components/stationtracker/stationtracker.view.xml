@@ -42,8 +42,22 @@
 								width="100%" class="whiteTextHeader sapUiSmallMarginTopBottom" />
 							<HBox>
 								<VBox width="50%" id="chartId">
+									<layout:Grid class="" defaultSpan="L6 M6 S6">
+										<layout:content>
+											<Label text="Plan:650" class=" KPITaktChartBlueText" />
+											<Label text="Actual:550" class=" whiteText KPITaktChartRightText" />
+										</layout:content>
+									</layout:Grid>
 									<custom:TaktAdherenceAreaChart
 										id="takt_adherence_area_chart"></custom:TaktAdherenceAreaChart>
+									<Label text="Planned Start/End of Assembly" class=" whiteText" />
+
+									<layout:Grid class="" defaultSpan="L6 M6 S6">
+										<layout:content>
+											<Label text="25 JUN - 7:00" class=" whiteText" />
+											<Label text="02 JUL - 16:00" class=" whiteText KPITaktChartRightText" />
+										</layout:content>
+									</layout:Grid>
 								</VBox>
 
 								<VBox width="15%">
