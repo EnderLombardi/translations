@@ -254,7 +254,6 @@
 	float: left !important;
 }
 
-
 .grey {
 	background-color: #97999b;
 }
@@ -262,13 +261,6 @@
 .grey2 {
 	background-color: #dddddd;
 }
-
-.shiftCss {
-	background-color: #EEF3F7;
-	opacity: 0.8;
-}
-
-
 
 .duck-egg-blue {
 	background-color:#d5f1f8 !important;
@@ -685,11 +677,12 @@ background-color: #0085AD !important;
 
 #stationTrackerView--stationtracker .dhx_cal_header{
 	border: none;
+	width: 100% !important;
 }
 
 #stationTrackerView--stationtracker .dhx_cal_next_button{
 	position: absolute;
-	right: -10px;
+	right: 0px;
 	width: auto;
 	color: #52aec8;
 	text-align: center;	
@@ -711,7 +704,7 @@ background-color: #0085AD !important;
 
 #stationTrackerView--stationtracker .dhx_cal_prev_button{
 	position: absolute;
-	right: 20px;
+	right: 30px;
 	width: auto;
 	color: #52aec8;
 	text-align: center;
@@ -823,6 +816,10 @@ background-color: #0085AD !important;
 	background-color: #ECEEEF ! important;
 }
 
+#stationTrackerView--stationtracker .dhx_marked_timespan.dhx_matrix_now_time{
+	border-left-color: #0f2d65;
+	opacity: 1;
+}
 
 #stationTrackerView--stationtracker .dhx_row_item .dhx_scell_name{
 	padding: 0 25px 0 0;
@@ -897,6 +894,11 @@ background-color: #0085AD !important;
 
 #stationTrackerView--stationtracker .tracker-item-initial .fa-exclamation-triangle{
 	color: #BBBCBC !important;
+}
+
+#stationTrackerView--stationtracker .shiftCss {
+	background-color: #DDDDDD;
+	opacity: 0.8;
 }
 
 /** Takt Adherence **/
