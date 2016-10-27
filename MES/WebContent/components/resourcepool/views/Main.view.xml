@@ -145,28 +145,29 @@
 				,formatter:'airbus.mes.resourcepool.util.Formatter.AssignShiftEnabled'}" 
 				change="changeAssignedShift" /> </cells> </ColumnListItem> </items> </Table> 
 				</items> </HBox> </IconTabFilter> </items> </IconTabBar> -->
-			<Bar design="SubHeader">
-				<contentLeft>
+			<Toolbar class="resourcePoolSubheader">
+				<content>
 					<SegmentedButton id="IconTabsPages">
 						<items>
 							<SegmentedButtonItem id="idUsers" icon="sap-icon://group"
-								text="Users" key="users" press="openPage" />
+								text="Users" key="users" press="openPage" width="" />
 							<SegmentedButtonItem id="idWorkCenters" icon="sap-icon://factory"
 								text="Work Centers" key="workcenters"  press="openPage" />
 							<SegmentedButtonItem id="idShifts" icon="sap-icon://future"
 								text="Shifts" key="shifts" press="openPage" />
 						</items>
 					</SegmentedButton>
-				</contentLeft>
-				<contentRight>
+					
+					<ToolbarSpacer />
+				
 					<Button icon="sap-icon://save" press="saveChangesToResourcePool"
 						type="Transparent" class="sapUiSmallMarginBegin"
 						enabled="{path:'i18nModel>AvailableUsers',formatter:'airbus.mes.resourcepool.util.Formatter.saveAllowed'}" />
 					<Button icon="sap-icon://sys-help" press="showHelp" type="Transparent"
 						class="sapUiSmallMarginBegin" />
-				</contentRight>
-			</Bar>
-			<NavContainer id="MainViewNavContainer" height="95%">
+				</content>
+			</Toolbar>
+			<NavContainer id="MainViewNavContainer" height="95%" class="WhiteBG">
 				<pages>
 
 				</pages>
