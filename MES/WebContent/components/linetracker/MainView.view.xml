@@ -42,7 +42,7 @@
 		</contentRight>
 	</Bar>
 
-	<Toolbar id="lineTrackerToolbar" class="lineTrackerSubheader">
+	<Toolbar id="lineTrackerToolbar"  class="lineTrackerSubheader">
 		<content>
 			<SegmentedButton id="IconTabsPages">
 				<items>

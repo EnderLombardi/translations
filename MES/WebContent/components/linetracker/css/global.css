@@ -297,3 +297,38 @@
 .displayUsersAffectationBox .sapMFlexItem:nth-child(2){
 	width:10%;
 }
+
+/* subheader and segmented buttons */
+#idMainView--lineTrackerToolbar {
+	background-color: #D5F1F8 !important;
+	-webkit-box-shadow: inset 0px 7px 14px -5px rgba(3,3,3,0.25);
+	-moz-box-shadow: inset 0px 7px 14px -5px rgba(3,3,3,0.25);
+	box-shadow: inset 0px 7px 14px -5px rgba(3,3,3,0.25);
+}
+
+#idMainView--IconTabsPages {
+	height: 3rem;
+	margin: 0;
+}
+
+#idMainView--IconTabsPages .sapMSegBBtnFocusable {
+    height: 3rem;
+    border: none;
+    border-right: 1px solid #8db9ca;
+    background-color: transparent;
+    color: #0D5D76;
+    text-transform: uppercase;
+    line-height: 3rem;
+}
+
+#idMainView--IconTabsPages .sapMSegBBtnDis {
+	height: 3rem;
+	border-right: 1px solid #8db9ca;
+	line-height: 3rem;
+}
+
+#idMainView--IconTabsPages .sapMSegBBtnFocusable.sapMSegBBtnSel {
+    background-color: #74D2E7;
+    color: white;
+    font-weight: bold;
+}
