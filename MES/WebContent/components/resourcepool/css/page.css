@@ -16,13 +16,22 @@
 	width: 15em !important;
 }
 }
-.fixHboxItemDisplay .sapMFlexItem{
+#idUsersView .fixHboxItemDisplay .sapMFlexItem{
 	width:100%;
 	word-break: break-all;
 	word-break: break-word;
 	
+} 
+#idUsersView .fixHboxItemDisplay .sapMFlexItem span{
+	display: inline-block;
 }
-.fixHboxItemDisplay .sapMFlexItem span{
+#idWorkCenterView .fixHboxItemDisplay .sapMFlexItem{
+	width:100%;
+	word-break: break-all;
+	word-break: break-word;
+	
+} 
+#idWorkCenterView .fixHboxItemDisplay .sapMFlexItem span{
 	display: inline-block;
 }
 .colorSelect{
@@ -99,3 +108,12 @@
 .messageHBox .sapMFlexItem{
 	width:100%;
 }
+ 
+ #idUsersView .sapMPanelContent{
+ height : 100% !important;
+ }
+ #idWorkCenterView .sapMPanelContent{
+ height : 100% !important;
+ }
+ #idShiftView{
+ }
