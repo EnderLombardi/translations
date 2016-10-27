@@ -10,6 +10,8 @@ sap.ui.controller("airbus.mes.linetracker.MainView", {
 	 */
 	onInit : function() {
 		sap.ui.getCore().byId("idMainView--MainViewNavContainer").addPage(sap.ui.getCore().byId("idFactoryView"));
+		/*sap.ui.getCore().byId("idMainView--MainViewNavContainer").addPage(sap.ui.getCore().byId("idProductionView"));
+		sap.ui.getCore().byId("idMainView--MainViewNavContainer").addPage(sap.ui.getCore().byId("idStationView"));*/
 		sap.ui.getCore().byId("idMainView--MainViewNavContainer").to("idFactoryView");
 		var oEventBus = sap.ui.getCore().getEventBus();
 		oEventBus.subscribe("MainView", "onClickLine",
@@ -38,7 +40,7 @@ sap.ui.controller("airbus.mes.linetracker.MainView", {
 		 //sap.ui.getCore().byId("idMainView--myShell").setContent(sap.ui.getCore().byId("idFactoryView"));
 			$("#idMainView--MainViewNavContainer").height(
 					(($("#idMainView").height()
-					- $("#idMainView--IconTabsPages").height())/$("#idMainView").height())*100+"%");
+					- $("#idMainView--lineTrackerToolbar").height() - $("#idMainView--lineTrackerSubheader").height() )/$("#idMainView").height())*100+"%");
 	 },
 	/**
 	 * Called when the Controller is destroyed. Use this one to free resources

@@ -158,7 +158,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 				console.log("operation is not in the shift");
 				var oShift = "";
 				
-			}// console.log(oShift);
+			}
 						
 			var ssBox = el[sBoxing] + "_"  + el["WORKORDER_ID"] + "_" + oShift.day + "-" + oShift.shiftName;
 						
@@ -406,6 +406,10 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 					if (  key1.slice(0,2) === "I_" ) {
 						var oOperationInitial = {
 								
+								"operationId" : sOperationId,
+								"operationDescription" : sOperationDescription,
+								"shopOrder" : sShopOrder,
+								"shopOrderDescription" : sShopOrderDescription,
 								"box" : key2,
 								"group" : key,
 								"avlLine" : key1,
@@ -431,7 +435,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 							"paused" : Math.max.apply(null,sPaused),
 							"status" : sStatus,
 							"totalDuration" : fDuration.toString(), 
-							"box" : key2,
+							"box" : key2.split("_")[0],
 							"avlLine" : key1,
 							"group" : key,
 							"andon" : Math.max.apply(null,aAndons),
