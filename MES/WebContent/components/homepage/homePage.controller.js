@@ -70,6 +70,7 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 		this.onPress(text);
 	},
 
+<<<<<<< Upstream, based on origin/MESv0.9
 	onPressLine2 : function(oEvt) {
 
 		var sPath = oEvt.getSource().oBindingContexts["2TileLineHome"].sPath;
@@ -86,6 +87,8 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 		this.onPress(text);
 	},
 
+=======
+>>>>>>> 29a1b66 Home responsive tiles and translation
 	getI18nValue : function(sKey) {
 		return this.getView().getModel("i18n").getProperty(sKey);
 	},

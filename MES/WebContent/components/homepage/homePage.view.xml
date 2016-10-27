@@ -6,10 +6,10 @@
 		showHeader="false">
 		<content>
 			<TileContainer tileDelete="handleTileDelete"
-				tiles="{1TileLineHome>/buttonDetail}" height="33%">
+				tiles="{1TileLineHome>/buttonDetail}" height="100%">
 				<CustomTile press="onPressLine1" class="customTiles">
 					<content>
-						<VBox width="12rem" height="13rem" alAignItems="Center"
+ 						<VBox width="12rem" height="13rem" alignItems="Center"
 							class="margin">
 							<items>
 								<HBox width="100%" height="20%" alignItems="Center">
@@ -19,7 +19,7 @@
 								</HBox>
 								<HBox width="100%" height="20%" alignItems="Center">
 									<items>
-										<Text text="Custom Text" class="CustomTileText" />
+										<Text text="{ path : '1TileLineHome>sub' , formatter : '.getI18nValue' }" class="CustomTileText" />
 									</items>
 								</HBox>
 								<HBox width="100%" height="80%" alignItems="Center">
@@ -32,71 +32,6 @@
 					</content>
 				</CustomTile>
 			</TileContainer>
-			<TileContainer tileDelete="handleTileDelete"
-				tiles="{2TileLineHome>/buttonDetail}" height="33%">
-				<CustomTile press="onPressLine2" class="customTiles">
-					<content>
-						<VBox width="12rem" height="13rem" alignItems="Center" class="margin">
-							<items>
-								<HBox width="100%" height="20%" alignItems="Center">
-									<items>
-										<Text text="{ path : '2TileLineHome>text' , formatter : '.getI18nValue' }" class="headerTileText" />
-									</items>
-								</HBox>
-
-								<HBox width="100%" height="20%" alignItems="Center">
-									<items>
-										<Text text="Custom Text" class="CustomTileText" />
-									</items>
-								</HBox>
-
-								<HBox width="100%" height="80%" alignItems="Center">
-									<items>
-										<core:Icon src="{2TileLineHome>icon}" class="IconTile"></core:Icon>
-									</items>
-								</HBox>
-							</items>
-						</VBox>
-					</content>
-				</CustomTile>
-			</TileContainer>
-			<!-- <TileContainer tileDelete="handleTileDelete"
-				tiles="{3TileLineHome>/buttonDetail}" height="33%">
-				<CustomTile press="onPressLine3" class="customTiles">
-					<content>
-						<VBox width="12rem" height="13rem" alignItems="Center" class="margin">
-							<items>
-								<HBox width="100%" height="20%" alignItems="Center">
-									<items>
-										<Text text="{ path : '3TileLineHome>text' , formatter : '.getI18nValue' }" class="headerTileText" />
-									</items>
-								</HBox>
-								<HBox width="100%" height="20%" alignItems="Center">
-									<items>
-										<Text text="Custom Text" class="CustomTileText" />
-									</items>
-								</HBox>
-								<HBox width="100%" height="80%" alignItems="Center">
-									<items>
-										<core:Icon src="{3TileLineHome>icon}" class="IconTile"></core:Icon>
-									</items>
-								</HBox>
-							</items>
-						</VBox>
-					</content>
-				</CustomTile>
-			</TileContainer> -->
-			<!-- <FlexBox height="100%" width="100%" alignItems="Center" class="PanelbgImg" 
-				justifyContent="Center"> <items> <VBox id="appNameBox" width="60%"> <items> 
-				<Toolbar class="titleToolbar"> <content> <Text class="textSize" text="Welcome 
-				to Airbus MES" /> <ToolbarSpacer /> <Button type="Transparent" text="English" 
-				icon="sap-icon://slim-arrow-down" iconFirst="false" /> </content> </Toolbar> 
-				<Panel content="{buttonUrl>/buttonDetail}" class="PanelbgImg" backgroundDesign="Transparent"> 
-				<Button type="Transparent" text="{ path : 'buttonUrl>text' , formatter : 
-				'.getI18nValue' }" class="langbutton" icon="sap-icon://slim-arrow-right" 
-				iconFirst="false" press="onPress" enabled="{buttonUrl>enable}" cData:link="{buttonUrl>url}" 
-				cData:appName="{buttonUrl>app}"/> </Panel> </items> </VBox> </items> </FlexBox> -->
-
 		</content>
 	</Page>
 </core:View>
