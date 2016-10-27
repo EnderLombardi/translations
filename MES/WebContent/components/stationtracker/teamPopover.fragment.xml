@@ -1,58 +1,24 @@
-<core:FragmentDefinition
-	xmlns="sap.m"
+<core:FragmentDefinition xmlns="sap.m"
 	xmlns:core="sap.ui.core">
-	<Popover
-		id="teamPopoverID"
-		title="{StationTrackerI18n>HeaderTeam}"
-		horizontalScrolling="false"
-		placement="Bottom">
+	<Popover id="teamPopoverID" title="{StationTrackerI18n>HeaderTeam}"
+		horizontalScrolling="false" placement="Bottom">
 		<content>
-		<List>
-		<CustomListItem>
-		  	<Button type="Transparent" text="{StationTrackerI18n>ButtonOpenTeam}" iconFirst="true" icon="sap-icon://navigation-right-arrow" width="100%" class="blackTextButton blackTextButton2" press="onPolypolyOpen" ></Button> 
-			<Button type="Transparent" text="{StationTrackerI18n>ButtonPolypoly}" iconFirst="true" icon="sap-icon://navigation-right-arrow" width="100%" class="blackTextButton blackTextButton2" press="onPolypolyOpen" ></Button> 
+			<List>
+				<CustomListItem>
+					<Button type="Transparent" text="{StationTrackerI18n>ButtonOpenTeam}"
+						iconFirst="true" icon="sap-icon://navigation-right-arrow" width="100%"
+						class="blackTextButton blackTextButton2" press="onPolypolyOpen"></Button>
+					
+					<Button type="Transparent" text="{StationTrackerI18n>ButtonPolypoly}"
+						iconFirst="true" icon="sap-icon://navigation-right-arrow" width="100%"
+						class="blackTextButton blackTextButton2" press="onPolypolyOpen"></Button>
+					
+					<Button type="Transparent" text="{StationTrackerI18n>FooterTeam}"
+				iconFirst="true" icon="sap-icon://navigation-right-arrow" width="100%"
+						class="blackTextButton blackTextButton2"></Button>
+				</CustomListItem>
+			</List>
 
-			<Panel expandable="true" expanded="false" class="panelContent panelContentList textBlackPanel">
-             <headerToolbar>
-                    <Toolbar width="100%">
-                    <Label text="{StationTrackerI18n>ButtonListTeam}"/>        	
-                    </Toolbar>
-             </headerToolbar>
-             <content>
-             				<List showSeparators="None" headerText="List of 42 operators TODO" class="operatorList">
-             				<CustomListItem>
-             				<HBox>
-                    		     	<Label text="MK" class="rond sapUiSmallMarginBeginEnd"/>
-                    		    	<Label text="Mark K." class="sapUiSmallMarginBottom"/>
-                    		</HBox>
-                    		<HBox>
-                    		     	<Label text="LA" class="rond sapUiSmallMarginBeginEnd"/>
-                    		    	<Label text="Luca" class="sapUiSmallMarginBottom"/>
-                    		</HBox>
-                    		<HBox>
-                    		     	<Label text="PC" class="rond sapUiSmallMarginBeginEnd"/>
-                    		    	<Label text="Paola C." class="sapUiSmallMarginBottom"/>
-                    		</HBox>
-                    		<HBox>
-                    		     	<Label text="JJ" class="rond sapUiSmallMarginBeginEnd"/>
-                    		    	<Label text="Jae J." class="sapUiSmallMarginBottom"/>
-                    		</HBox>
-                    		<HBox>
-                    		     	<Label text="MK" class="rond sapUiSmallMarginBeginEnd"/>
-                    		    	<Label text="Mark K." class="sapUiSmallMarginBottom"/>
-                    		</HBox>
-                    		<HBox>
-                    		     	<Label text="SS" class="rond sapUiSmallMarginBeginEnd"/>
-                    		    	<Label text="Steve S." class="sapUiSmallMarginBottom"/>
-                    		</HBox>
-                    		</CustomListItem>
-                    		</List>
-           	</content>
-           	</Panel>
-           	<Button type="Transparent" text="{StationTrackerI18n>FooterTeam}" icon="sap-icon://sort" width="100%" class="otherStations whiteTextButton whiteButton"></Button> 
-		</CustomListItem>
-		</List> 
-		
 		</content>
 	</Popover>
 </core:FragmentDefinition>

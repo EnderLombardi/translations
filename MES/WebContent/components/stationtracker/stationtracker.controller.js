@@ -430,7 +430,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		
 //		Filter the stationtracker model with current production group
 		var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
-	    var sProdGroup = "";
+	    var sProdGroup = airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("ProductionGroup") + " : ";
 	    var sProdGroupMii = "";
 	     
 		if(sap.ui.getCore().byId("productionGroupPopover--myList").getSelectedItems().length != 0 ){
@@ -444,7 +444,8 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		airbus.mes.settings.ModelManager.prodGroup = sProdGroupMii.slice(0,-3);
 		} else {
 				
-				sProdGroup += airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("ProductionGroup");
+				sProdGroup += airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("StatusAll");
+				
 				airbus.mes.settings.ModelManager.prodGroup ="%";
 			}
 
@@ -553,15 +554,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		airbus.mes.stationtracker.worklistPopover.close();
 		
 	},	
-	onPressExpdandable : function(oEvent) {
-		var oPanel = oEvent.getSource().getParent().getParent();
-		var bIsExpanded = oPanel.getExpanded();
-		
-		oEvent.getSource().getParent().getParent().setExpanded(!bIsExpanded);
 
-		/***** REMY *****/
-		oPanel.getHeight();
-	},
 	changeShift : function(Oevt) {
 			
 		var sPath = airbus.mes.stationtracker.oView.byId("selectShift").getSelectedIndex();
@@ -838,6 +831,28 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		
 		scheduler.updateView(oEvt.getSource().getDateValue())
 		airbus.mes.stationtracker.ModelManager.selectMyShift();
+	},
+	
+	/**
+     * Collapse or display KPI
+     */
+	hideKPI : function() {
+	
+		var oPanel = airbus.mes.stationtracker.oView.byId("kpi_header");
+		var bIsExpanded = oPanel.getExpanded();
+		
+		if ( bIsExpanded ) {
+			
+			airbus.mes.stationtracker.oView.byId("hideKPI").setIcon("sap-icon://hide");
+		} else {
+			airbus.mes.stationtracker.oView.byId("hideKPI").setIcon("sap-icon://show");
+			
+		}
+		
+		oPanel.setExpanded(!bIsExpanded);
+		
+		/***** REMY *****/
+		oPanel.getHeight();
 	}
 	
 });

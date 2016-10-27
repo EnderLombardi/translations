@@ -435,7 +435,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 							"paused" : Math.max.apply(null,sPaused),
 							"status" : sStatus,
 							"totalDuration" : fDuration.toString(), 
-							"box" : key2.split("_")[0],
+							"box" : key2,				/*key2.split("_")[0],*/
 							"avlLine" : key1,
 							"group" : key,
 							"andon" : Math.max.apply(null,aAndons),

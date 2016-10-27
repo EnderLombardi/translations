@@ -210,10 +210,8 @@ airbus.mes.stationtracker.ModelManager = {
               var oData = airbus.mes.settings.ModelManager;
               var geturlstationtracker = this.urlModel.getProperty('urlproductiongroup');
 
-              geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$station",
-                           "PHYS_ST_IP4"/* oData.station */);
-              geturlstationtracker = airbus.mes.stationtracker.ModelManager
-                           .replaceURI(geturlstationtracker, "$plant", "FNZ1"/* oData.plant */);
+              geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$station", oData.station );
+              geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$plant", oData.plant );
 
               var oViewModel = sap.ui.getCore().getModel("productionGroupModel");
               oViewModel.loadData(geturlstationtracker, null, false);

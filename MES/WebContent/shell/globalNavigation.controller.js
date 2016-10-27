@@ -125,8 +125,7 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 	},
 
 	renderStationTracker : function() {
-
-
+		 
 		if (nav.getCurrentPage().getId() === "stationTrackerView") {
 			this.setInformationVisibility(true);
 			airbus.mes.stationtracker.oView.byId("stationtracker").setBusy(true);
