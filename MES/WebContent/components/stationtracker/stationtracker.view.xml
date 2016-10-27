@@ -18,7 +18,7 @@
 							items="{ path : 'stationTrackerShift>/' }" enabled="false"	>
 							<core:Item key="{stationTrackerShift>shiftID}" text="{stationTrackerShift>shiftName}" />
 						</Select>
-						<Button id="ProductionButton" text="{StationTrackerI18n>ProductionGroup}"
+						<Button id="ProductionButton" text="{StationTrackerI18n>ProductionGroupAll}"
 							type="Transparent" class="whiteColor whiteButton" press="onProductionGroupPress" />
 						<Select id="selectUser" change="selectUser"
 							class="sapUiTinyMarginBeginEnd pageHeader pageHeaderBlue" items="{ path : 'ressourcePoolModel>/Rowsets/Rowset/0/Row' }">
@@ -31,6 +31,8 @@
 							type="Transparent"
 							class="tiffanyColor whiteButton buttonStatus2 iconbuttonTeam sapUiSmallMarginBegin"
 							icon="sap-icon://group" press="onTeamPress" />
+						<Button id="hideKPI" type="Transparent" icon="sap-icon://show" text="{StationTrackerI18n>HideKPIS}"
+						press="hideKPI" />
 					</Toolbar>
 
 				</headerToolbar>
@@ -123,7 +125,10 @@
 											title="{StationTrackerI18n>WhiteSpaces}" value="3" />
 										<micro:ComparisonMicroChartData
 											title="{StationTrackerI18n>RedSpaces}" value="10" />
-									</micro:data>
+										<micro:ComparisonMicroChartData
+											class="hiddenRefBar" title="{StationTrackerI18n>RedSpaces}" value="20" visible="false"/>
+										</micro:data>
+											
 								</micro:ComparisonMicroChart>
 							</VBox>
 						</VBox>
@@ -164,6 +169,8 @@
 										class=" whiteText" />
 									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/Total}"
 										class=" whiteText" />
+											<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/-}"
+										class=" whiteText" />
 								</VBox>
 								<VBox alignItems="Center" width="20%">
 									<Label text="{StationTrackerI18n>Andon}" class="redText kpiErrorValue" />
@@ -174,7 +181,9 @@
 									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/Total}"
 										class=" redText kpiErrorValue" />
 									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/Total}"
-										class=" redText kpiErrorValue" />
+										class="redText kpiErrorValue" />
+											<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/-}"
+										class="redText kpiErrorValu" />
 								</VBox>
 							</HBox>
 						</VBox>
@@ -185,7 +194,7 @@
 								design="Bold" class="whiteTextHeader sapUiSmallMarginTopBottom" />
 							<VBox width="90%">
 								<micro:ComparisonMicroChart size="L"
-									width="100%" colorPalette="#84bd00, #fe5000, #fe5000">
+									width="100%" colorPalette="#84bd00, #fe5000, #fe5000" >
 									<micro:data>
 										<micro:ComparisonMicroChartData
 											title="{StationTrackerI18n>PromisedInTakt}" value="8" />
@@ -193,6 +202,8 @@
 											title="{StationTrackerI18n>PromisedOutTakt}" value="3" />
 										<micro:ComparisonMicroChartData
 											title="{StationTrackerI18n>NotAcknowledged}" value="10" />
+										<micro:ComparisonMicroChartData
+											class="hiddenRefBar" title="{StationTrackerI18n>RedSpaces}" value="20" visible="false"/>
 									</micro:data>
 								</micro:ComparisonMicroChart>
 							</VBox>
@@ -334,12 +345,13 @@
 						</items>
 					</SegmentedButton>
 					<!-- <Label text="{StationTrackerI18n>GroupingSortBy}" /> -->
+					<Label text="{StationTrackerI18n>Grouping}"/>
 					<Select id="selectGroup" class="sapUiTinyMarginBeginEnd comboBoxStyle"
 						items="{groupModel>/Rowsets/Rowset/0/Row/Grouping}" change="changeGroup">
 						<core:ListItem key="{groupModel>key}"
 							text="{ path : 'groupModel>Value' , formatter : '.getI18nValue' }" />
 					</Select>
-					<!-- <Label text="{StationTrackerI18n>BoxingShow}" /> -->
+						<Label id="selectBoxLabel" text="{StationTrackerI18n>Granularity}"/>
 					<Select id="selectBox" class="sapUiTinyMarginBeginEnd comboBoxStyle"
 						items="{groupModel>/Rowsets/Rowset/0/Row/Boxing}" change="changeBox">
 						<core:ListItem key="{groupModel>key}"
@@ -350,9 +362,13 @@
 					<ToolbarSpacer />
 					<HBox id="toolbarDate" class="sapUiTinyMarginBeginEnd"></HBox>
 					<ToolbarSpacer />
+						<Button text="{StationTrackerI18n>missingParts}"
+						type="Transparent" icon="sap-icon://task" class="sapUiTinyMarginBeginEnd"></Button>
 					<Button text="{StationTrackerI18n>ButtonShowCP}" type="Transparent"
 						icon="sap-icon://kpi-corporate-performance" class="sapUiTinyMarginBeginEnd"
 						press="onCPPress"></Button>
+						<Button text="{StationTrackerI18n>disruptions/andon}"
+						type="Transparent" icon="sap-icon://alert" class="sapUiTinyMarginBeginEnd"></Button>
 					<Button text="{StationTrackerI18n>ButtonOutstandingWork}"
 						type="Transparent" icon="sap-icon://cause" class="sapUiTinyMarginBeginEnd"
 						press="onOSWPress"></Button>

@@ -410,6 +410,8 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 								"operationDescription" : sOperationDescription,
 								"shopOrder" : sShopOrder,
 								"shopOrderDescription" : sShopOrderDescription,
+								// This is the real value of boxing 
+								"realValueBox" : key2.split("_")[0],
 								"box" : key2,
 								"group" : key,
 								"avlLine" : key1,
@@ -435,7 +437,9 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 							"paused" : Math.max.apply(null,sPaused),
 							"status" : sStatus,
 							"totalDuration" : fDuration.toString(), 
-							"box" : key2.split("_")[0],
+							// This is the real value of boxing 
+							"realValueBox" : key2.split("_")[0],
+							"box" : key2,
 							"avlLine" : key1,
 							"group" : key,
 							"andon" : Math.max.apply(null,aAndons),

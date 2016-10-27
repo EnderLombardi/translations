@@ -484,13 +484,16 @@ background-color: #0085AD !important;
 
 /***** KPI Header Header *****/
 
+#stationTrackerView--kpi_header .hiddenRefBar {
+	display : none;	
+}
+
 #stationTrackerView--kpi_header .sapMPanelWrappingDivTb{
 	border-bottom: none;
 }
 
 #stationTrackerView--kpiHeaderToolbar{
 	margin-left: 0;
-	margin-right: 3rem;
 }
 
 #stationTrackerView--kpiHeaderToolbar .sapMBtnContent,
@@ -504,6 +507,7 @@ background-color: #0085AD !important;
 #stationTrackerView--kpi_header-CollapsedImg{
 	right: 0;
 	color: #74d2e7;
+	display: none;
 }
 
 #stationTrackerView--kpi_header .sapMPanelExpandableIcon{
@@ -581,6 +585,13 @@ background-color: #0085AD !important;
 #stationTrackerView--TeamButton-content{
 	color: #74d2e7 !important;
 }
+
+#stationTrackerView--hideKPI-img,
+#stationTrackerView--hideKPI-content{
+	color: #74d2e7 !important;
+}
+
+
 
 /***** KPI Header Cotent *****/
 
@@ -1055,7 +1066,10 @@ svg#stationTrackerView--takt_adherence_area_chart {
     color: white;
     font-weight: bold;
 }
-
+#stationTrackerView--toolbarstationtracker label {
+	    color: #0D5D76;
+	     padding: 0 0 0 0.625rem;
+}
 #stationTrackerView--toolbarstationtracker .comboBoxStyle {
     width: auto;
     max-width: 100%;
