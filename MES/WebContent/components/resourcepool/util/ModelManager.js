@@ -28,9 +28,6 @@ airbus.mes.resourcepool.util.ModelManager = {
 		case "localhost":
 			dest = "local";
 			break;
-		case "wsapbpc01.ptx.fr.sopra":
-			dest = "sopra";
-			break;
 		default:
 			dest = "airbus";
 			break;

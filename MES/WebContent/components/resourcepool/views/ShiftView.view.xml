@@ -1,0 +1,60 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" controllerName="airbus.mes.resourcepool.views.Main"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page showHeader="false" enableScrolling="false" height="100%">
+		<content>
+			<HBox height="100%" class="fixHboxItemDisplay">
+				<items>
+					<Table id="shiftTable" inset="false"
+						items="{AvailableShiftModel>/Rowsets/Rowset/0/Row}" mode="None"
+						selectionChange="onSelectionChange">
+						<columns>
+							<Column minScreenWidth="Tablet" demandPopin="true" vAlign="Middle">
+								<Text text="Shift Name" />
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Right"
+								vAlign="Middle">
+								<Text text="Shift Begin" />
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Right"
+								vAlign="Middle">
+								<Text text="Shift End" />
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Right"
+								vAlign="Middle">
+								<Text text="Valid From" />
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Right"
+								vAlign="Middle">
+								<Text text="Valid To" />
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center"
+								vAlign="Middle">
+								<Text text="Assign" />
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem>
+								<cells>
+									<ObjectIdentifier text="{AvailableShiftModel>NAME}" />
+									<Text
+										text="{path:'AvailableShiftModel>SHIFT_BEGIN' ,formatter:'airbus.mes.resourcepool.util.Formatter.shiftTimeToHours'}" />
+									<Text
+										text="{path:'AvailableShiftModel>SHIFT_END' ,formatter:'airbus.mes.resourcepool.util.Formatter.shiftTimeToHours'}" />
+									<Text
+										text="{path:'AvailableShiftModel>VALID_FROM', formatter:'airbus.mes.resourcepool.util.Formatter.shiftStringToDate'}" />
+									<Text
+										text="{path:'AvailableShiftModel>VALID_TO', formatter:'airbus.mes.resourcepool.util.Formatter.shiftStringToDate'}" />
+									<Switch type="AcceptReject"
+										state="{path:'AvailableShiftModel>ASSIGNED' ,formatter:'airbus.mes.resourcepool.util.Formatter.state'}"
+										enabled="{path:'AvailableShiftModel>' ,formatter:'airbus.mes.resourcepool.util.Formatter.AssignShiftEnabled'}"
+										change="changeAssignedShift" />
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</items>
+			</HBox>
+		</content>
+	</Page>
+</core:View>

@@ -3,13 +3,26 @@
 	xmlns:html="http://www.w3.org/1999/xhtml">
 	<Dialog title="{i18nModel>ResourcePool}" type="Default Message">
 		<content>
-			<FlexBox width="100%" height="100%" justifyContent="Center"
+			<!-- <FlexBox width="100%" height="100%" justifyContent="Center"
 				alignItems="Center" direction="Column">
-				<items>
+				<items> -->
 					<!-- <Panel expanded="true" expandable="false" width="60em" > <content> -->
 					<form:SimpleForm maxContainerCols="1" class="myForm"
 						editable="true" id="searchForm" height="inherit">
 						<form:content>
+							
+							<HBox  width="100%" height="40px" class="messageHBox">
+								<layoutData>
+									<l:ResponsiveFlowLayoutData weight="25" />
+								</layoutData>
+								<items>
+									<MessageStrip id="messageBox" class="messageStrip"
+										showIcon="true" showCloseButton="true" visible="false" width="100%">
+										
+									</MessageStrip>
+								</items>
+							</HBox>
+							
 							<Label text="{i18nModel>Site}" required="true">
 								<layoutData>
 									<l:ResponsiveFlowLayoutData weight="1" />
@@ -78,23 +91,11 @@
 									<l:ResponsiveFlowLayoutData weight="1" />
 								</layoutData>
 							</Label>
-
-							<HBox  width="100%" height="40px" class="messageHBox">
-								<layoutData>
-									<l:ResponsiveFlowLayoutData weight="25" />
-								</layoutData>
-								<items>
-									<MessageStrip id="messageBox" class="messageStrip"
-										showIcon="true" showCloseButton="true" visible="false" width="100%">
-										
-									</MessageStrip>
-								</items>
-							</HBox>
 						</form:content>
 					</form:SimpleForm>
 
-				</items>
-			</FlexBox>
+				<!-- </items>
+			</FlexBox> -->
 		</content>
 	</Dialog>
 </core:FragmentDefinition>

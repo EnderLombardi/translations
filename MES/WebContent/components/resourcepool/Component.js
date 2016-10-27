@@ -21,7 +21,26 @@ airbus.mes.resourcepool.Component.prototype.createContent = function() {
 			id : "idUsersView",
 			viewName : "airbus.mes.resourcepool.views.UsersView",
 			type : sap.ui.core.mvc.ViewType.XML,
-			height : "100%",
+			height : "97%",
+			width: "100%"
+		});
+
+		
+		//load WorkCenter View
+		this.WorkCenterView = sap.ui.view({
+			id : "idWorkCenterView",
+			viewName : "airbus.mes.resourcepool.views.WorkCenterView",
+			type : sap.ui.core.mvc.ViewType.XML,
+			height : "97%",
+			width: "100%"
+		});
+		
+		//load Shift View
+		this.ShiftView = sap.ui.view({
+			id : "idShiftView",
+			viewName : "airbus.mes.resourcepool.views.ShiftView",
+			type : sap.ui.core.mvc.ViewType.XML,
+			height : "97%",
 			width: "100%"
 		});
 		
@@ -35,25 +54,6 @@ airbus.mes.resourcepool.Component.prototype.createContent = function() {
 		}).addStyleClass("absolutePosition");
 		airbus.mes.resourcepool.oView = this.oView;
 		
-		
-		
-		//load WorkCenter View
-		this.WorkCenterView = sap.ui.view({
-			id : "idWorkCenterView",
-			viewName : "airbus.mes.resourcepool.views.WorkCenterView",
-			type : sap.ui.core.mvc.ViewType.XML,
-			height : "100%",
-			width: "100%"
-		});
-		
-		//load Shift View
-		this.ShiftView = sap.ui.view({
-			id : "idShiftView",
-			viewName : "airbus.mes.resourcepool.views.ShiftView",
-			type : sap.ui.core.mvc.ViewType.XML,
-			height : "100%",
-			width: "100%"
-		});
 		
 		var i18nModel = new sap.ui.model.resource.ResourceModel({
 	        bundleUrl : "../components/resourcepool/i18n/i18n.properties",

@@ -558,7 +558,7 @@ airbus.mes.stationtracker.util.Formatter = {
 		    	computeDelay : function( fProgress,fDuration ) {
 		    		
 		    		//sec Gap
-		    		var sGap = Math.round((fProgress - fDuration))/1000/60;
+		    		var sGap = Math.round((fProgress - fDuration))/1000/60/60;
 					var sGapHour = parseInt(sGap);
 					//Transfomr in hour
 					var sGapMin = Math.abs(Math.round((sGap - sGapHour)*60));

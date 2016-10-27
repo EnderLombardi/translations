@@ -15,8 +15,7 @@
 							class="pageHeaderBlue" />
 						<Select id="selectShift"
 							class="sapUiTinyMarginBeginEnd pageHeader pageHeaderBlue" change="changeShift"
-							items="{ path : 'stationTrackerShift>/' }"
-							enabled="{ path : 'stationTrackerShift>/0/visible', formatter : 'airbus.mes.stationtracker.util.Formatter.isDayTimeline' }">
+							items="{ path : 'stationTrackerShift>/' }" enabled="false"	>
 							<core:Item key="{stationTrackerShift>shiftID}" text="{stationTrackerShift>shiftName}" />
 						</Select>
 						<Button id="ProductionButton" text="{StationTrackerI18n>ProductionGroup}"
@@ -25,8 +24,8 @@
 							class="sapUiTinyMarginBeginEnd pageHeader pageHeaderBlue" items="{ path : 'ressourcePoolModel>/Rowsets/Rowset/0/Row' }">
 							<core:Item key="{ressourcePoolModel>user}" text="{ressourcePoolModel>user}" />
 						</Select>
-						<Button text="Disruptions" type="Transparent" class="whiteColor whiteButton"
-							press="showDisruption"></Button>
+						<!-- <Button text="Disruptions" type="Transparent" class="whiteColor whiteButton"
+							press="showDisruption"></Button> -->
 						<ToolbarSpacer />
 						<Button id="TeamButton" text="{StationTrackerI18n>ButtonTeam}"
 							type="Transparent"

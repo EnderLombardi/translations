@@ -42,6 +42,7 @@
 	opacity:0.5 !important;
 }
 
+
 /* globalNavView */
 #globalNavView label[id^="__label"] {
 	font-size: 1rem;
@@ -63,3 +64,10 @@
     border-color:transparent;
     outline:1px dotted transparent;
 }
+.sap-desktop .sapMBtnTransparent>#globalNavView--settingsButton-img.sapMBtnIcon {
+    color:#ffffff;	
+}
+.WhiteBG{
+	background-color:#fff !important;
+}
+

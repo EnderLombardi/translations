@@ -15,17 +15,17 @@
 			<content>
 
 				<Toolbar>
-					<ComboBox class="sapUiMediumMarginEnd" placeholder="{disruptiontrackerI18n>selectFilter}"
+					<ComboBox class="sapUiMediumMarginEnd" placeholder="{disruptiontrackerI18n>selectStation}"
 						items="{ path: 'disruptionsFilterData>/filters' }">
 						<core:Item key="{disruptionsFilterData>key}" text="{disruptionsFilterData>name}" />
 					</ComboBox>
 
-					<ComboBox class="sapUiMediumMarginEnd" placeholder="{disruptiontrackerI18n>selectOrder}"
+					<ComboBox class="sapUiMediumMarginEnd" placeholder="{disruptiontrackerI18n>selectStatus}"
 						items="{ path: 'disruptionsOrderData>/orders' }">
 						<core:Item key="{disruptionsOrderData>key}" text="{disruptionsOrderData>name}" />
 					</ComboBox>
 
-					<SearchField width="10rem" />
+					<SearchField width="13rem" placeholder="Search disruption" />
 					<ToolbarSpacer />
 					<Button text="{disruptiontrackerI18n>disruptionKPI}" />
 				</Toolbar>

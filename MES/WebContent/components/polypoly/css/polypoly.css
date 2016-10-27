@@ -298,9 +298,9 @@ form#polypoly--polypolySearchField-F {
     box-shadow: 0 0 5px #333;
 }
 
-#columnPopupDialog-header-BarPH {
+#columnPopupDialog-header {
 	background:#d4f1f7;
-
+    box-shadow: 0 0 5px #333;
 }
 #columnPopupDialog-title {
 	color:#434343;
@@ -314,7 +314,7 @@ form#polypoly--polypolySearchField-F {
 	width:100%;
 }
 #columnPopupDialog-cont {
-	border-top:3px solid #ffffff;
+	border-top:3px solid rgba(255, 255, 255, 0);
 }
 #columnPopupDialog-footer {
 	background-color:#0F2D65;

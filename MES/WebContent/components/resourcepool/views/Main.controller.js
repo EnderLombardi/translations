@@ -14,12 +14,32 @@ sap.ui
 					 * 
 					 * @memberOf resource_pool.Main
 					 */
-					
-					 onInit: function() { 
-						 sap.ui.getCore().byId("resourcePool--MainViewNavContainer").addPage(sap.ui.getCore().byId("idUsersView"));
-							sap.ui.getCore().byId("resourcePool--MainViewNavContainer").to("idUsersView");
-					 },
-					 
+
+					onInit : function() {
+						if (this.getView().getId() == "resourcePool") {
+
+							// add all three pages userView,ShiftView, and
+							// WorkCenterView in NavContainer
+							this.getView().byId("MainViewNavContainer")
+									.addPage(
+											sap.ui.getCore()
+													.byId("idUsersView"));
+							this.getView().byId("MainViewNavContainer")
+									.addPage(
+											sap.ui.getCore()
+													.byId("idShiftView"));
+
+							this.getView().byId("MainViewNavContainer")
+									.addPage(
+											sap.ui.getCore().byId(
+													"idWorkCenterView"));
+
+							this.nav = this.getView().byId(
+									"MainViewNavContainer");
+							this.nav.to("idUsersView");
+						}
+
+					},
 
 					/**
 					 * Similar to onAfterRendering, but this hook is invoked
@@ -49,21 +69,16 @@ sap.ui
 
 						var itemKey = oEvent.getSource().getKey();
 						if (itemKey === "users") {
-
-							sap.ui.getCore().byId(
-									"resourcePool--MainViewNavContainer").to(
-									"idUsersView");
+							// direct nav container to users view
+							this.nav.to("idUsersView");
 
 						} else if (itemKey === "workcenters") {
-							// direct nav container to workcenter view
-							sap.ui.getCore().byId(
-									"resourcePool--MainViewNavContainer").to(
-									"idWorkCenterView");
-						} else if (itemKey === "station") {
 
-							sap.ui.getCore().byId(
-									"resourcePool--MainViewNavContainer").to(
-									"idShiftView");
+							// direct nav container to workcenter view
+							this.nav.to("idWorkCenterView");
+						} else if (itemKey === "shifts") {
+
+							this.nav.to("idShiftView");
 						} else {
 							// do nothing or probably select factory view again
 						}
@@ -630,7 +645,38 @@ sap.ui
 					/***********************************************************
 					 * Select All the items when SelectAll CheckBox Clicked
 					 **********************************************************/
-					onSelectAll : function(oEvent) {
+					onSelectAllWC : function(oEvent) {
+
+						var flag = oEvent.getSource().getSelected();
+						var oList = oEvent.getSource().getParent().getParent()
+								.getContent()[0];
+
+						switch (oEvent.getSource().getId()) {
+
+						/* for available WC List */
+						case this.getView().byId("allAvailableWC").sId:
+							if (flag)
+								this.getView().byId("listAvailableWorkCenter")
+										.selectAll();
+							else
+								this.getView().byId("listAvailableWorkCenter")
+										.removeSelections();
+							break;
+
+						/* for Assigned WC List */
+						case this.getView().byId("allAssignedWC").sId:
+							if (flag)
+								this.getView().byId("listAllocatedWorkCenter")
+										.selectAll();
+							else
+								this.getView().byId("listAllocatedWorkCenter")
+										.removeSelections();
+							break;
+						}
+
+					},
+					
+					onSelectAllUsers : function(oEvent) {
 
 						var flag = oEvent.getSource().getSelected();
 						var oList = oEvent.getSource().getParent().getParent()
@@ -656,28 +702,7 @@ sap.ui
 								this.getView().byId("listAllocatedUsers")
 										.removeSelections();
 							break;
-
-						/* for available WC List */
-						case this.getView().byId("allAvailableWC").sId:
-							if (flag)
-								this.getView().byId("listAvailableWorkCenter")
-										.selectAll();
-							else
-								this.getView().byId("listAvailableWorkCenter")
-										.removeSelections();
-							break;
-
-						/* for Assigned WC List */
-						case this.getView().byId("allAssignedWC").sId:
-							if (flag)
-								this.getView().byId("listAllocatedWorkCenter")
-										.selectAll();
-							else
-								this.getView().byId("listAllocatedWorkCenter")
-										.removeSelections();
-							break;
 						}
-
 					},
 					/***********************************************************
 					 * Save Changes to Resource Pool

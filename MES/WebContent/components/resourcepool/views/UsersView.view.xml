@@ -1,0 +1,158 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" controllerName="airbus.mes.resourcepool.views.Main"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page showHeader="false" height="100%" enableScrolling="false">
+		<content>
+			<HBox height="100%" class="fixHboxItemDisplay">
+				<Panel class="panelBorder" expanded="true" expandable="false"
+					width="100%" height="100%" headerText="{i18nModel>AvailableUsers}">
+					<headerToolbar>
+						<Toolbar>
+							<Bar design="Header">
+								<contentMiddle>
+									<Text class="sapMPanelHdr panelHeaderCustomStyle" text="{i18nModel>AvailableUsers}" />
+								</contentMiddle>
+								<!-- <contentRight> <CheckBox select="onSelectAll" text="{i18nModel>SelectAll}" 
+									/> </contentRight> -->
+							</Bar>
+						</Toolbar>
+					</headerToolbar>
+					<infoToolbar>
+						<Toolbar>
+							<content>
+								<CheckBox id="allAvailableUsers" select="onSelectAllUsers"
+									enabled="{path:'i18nModel>ResourcePool',formatter:'airbus.mes.resourcepool.util.Formatter.isEnabled'}" />
+								<SearchField id="searchAvailableUsers" liveChange="onSearchUsers"
+									width="100%" />
+							</content>
+						</Toolbar>
+					</infoToolbar>
+					<content height="inherit">
+						<HBox height="100%" class="fixHboxItemDisplay">
+
+							<List id="listAvailableUsers" height="100%"
+								items="{AvailableUsersModel>/Rowsets/Rowset/0/Row}"
+								mode="{path:'AvailableUsersModel>',formatter:'airbus.mes.resourcepool.util.Formatter.selectionMode'}"
+								includeItemInSelection="true" noDataText="{i18nModel>NoUserAvailable}"
+								rememberSelections="false" growingScrollToLoad="true" growing="true"
+								growingThreshold="1000">
+								<CustomListItem>
+									<content>
+										<VBox>
+											<HBox>
+												<Text class="customlistTitle"
+													text="{parts: ['AvailableUsersModel>FNAME', 'AvailableUsersModel>LNAME'], formatter:'airbus.mes.resourcepool.util.Formatter.nameFormatter'}"></Text>
+												<Text text="{AvailableUsersModel>USER_ID}" class="floatRight"></Text>
+											</HBox>
+											<Text class="listItemDescrption"
+												text="{parts: ['AvailableUsersModel>LOANED_RP_NAME', 'AvailableUsersModel>NAME'], formatter:'airbus.mes.resourcepool.util.Formatter.userAlreadyAssigned'}"></Text>
+										</VBox>
+									</content>
+									<customData>
+										<core:CustomData key="personal_no"
+											value="{AvailableUsersModel>PERSONAL_NO}" />
+										<core:CustomData key="erp_user_id"
+											value="{AvailableUsersModel>ERP_USER_ID}" />
+										<core:CustomData key="loan"
+											value="{AvailableUsersModel>LOANED_TO_POOL}" />
+										<core:CustomData key="assignedToPool"
+											value="{AvailableUsersModel>NAME}" />
+										<core:CustomData key="loanedToPool"
+											value="{AvailableUsersModel>LOANED_RP_NAME}" />
+										<core:CustomData key="fName"
+											value="{AvailableUsersModel>FNAME}" />
+										<core:CustomData key="lName"
+											value="{AvailableUsersModel>LNAME}" />
+										<core:CustomData key="user_id"
+											value="{AvailableUsersModel>USER_ID}" />
+									</customData>
+								</CustomListItem>
+							</List>
+						</HBox>
+					</content>
+
+				</Panel>
+				<VBox class="shiftButtons" justifyContent="Center" alignItems="Center">
+					<items>
+						<Button icon="sap-icon://navigation-right-arrow" press="assignUsers" />
+						<Button icon="sap-icon://navigation-left-arrow" press="unassignUsers" />
+					</items>
+				</VBox>
+				<Panel class="panelBorder" expanded="true" expandable="false"
+					width="100%" height="100%" headerText="Assigned Users">
+					<headerToolbar>
+
+						<Toolbar>
+							<Bar design="Header">
+								<contentMiddle>
+									<Text class="sapMPanelHdr panelHeaderCustomStyle" text="{i18nModel>AssignedUsers}" />
+								</contentMiddle>
+								<!-- <contentRight> <CheckBox select="onSelectAll" text="{i18nModel>SelectAll}" 
+									/> </contentRight> -->
+							</Bar>
+						</Toolbar>
+					</headerToolbar>
+					<infoToolbar>
+						<Toolbar>
+							<content>
+								<CheckBox id="allAssignedUsers" select="onSelectAllUsers"
+									enabled="{path:'i18nModel>ResourcePool',formatter:'airbus.mes.resourcepool.util.Formatter.isEnabled'}" />
+								<SearchField id="searchAssignedUsers" liveChange="onSearchUsers"
+									width="100%" />
+
+							</content>
+						</Toolbar>
+					</infoToolbar>
+					<content>
+						<HBox height="100%" class="fixHboxItemDisplay">
+							<List id="listAllocatedUsers" items="{AssignedUsersModel>/Rowsets/Rowset/0/Row}"
+								mode="{path:'AvailableUsersModel>',formatter:'airbus.mes.resourcepool.util.Formatter.selectionMode'}"
+								includeItemInSelection="true" rememberSelections="false"
+								growingScrollToLoad="true" growing="true" growingThreshold="1000"
+								noDataText="{i18nModel>NoUserAssigned}">
+
+
+								<!-- <StandardListItem title="{parts: ['AssignedUsersModel>FNAME', 
+									'AssignedUsersModel>LNAME'], formatter:'airbus.mes.resourcepool.util.Formatter.nameFormatter'}" 
+									description="{AssignedUsersModel>USER_ID}" info="{parts: ['AssignedUsersModel>LOANED_RP_NAME', 
+									'AssignedUsersModel>NAME'], formatter:'airbus.mes.resourcepool.util.Formatter.assignedToSelf'}"> -->
+								<CustomListItem>
+									<content>
+										<VBox>
+											<HBox>
+												<Text class="customlistTitle"
+													text="{parts: ['AssignedUsersModel>FNAME', 'AssignedUsersModel>LNAME'], formatter:'airbus.mes.resourcepool.util.Formatter.nameFormatter'}"></Text>
+												<Text text="{AssignedUsersModel>USER_ID}" class="floatRight"></Text>
+											</HBox>
+											<Text class="listItemDescrption"
+												text="{parts: ['AssignedUsersModel>LOANED_RP_NAME', 'AssignedUsersModel>NAME'], formatter:'airbus.mes.resourcepool.util.Formatter.assignedToSelf'}"></Text>
+										</VBox>
+									</content>
+									<customData>
+										<core:CustomData key="personal_no"
+											value="{AssignedUsersModel>PERSONAL_NO}" />
+										<core:CustomData key="erp_user_id"
+											value="{AssignedUsersModel>ERP_USER_ID}" />
+										<core:CustomData key="loan"
+											value="{AssignedUsersModel>LOANED_TO_POOL}" />
+										<core:CustomData key="assignedToPool"
+											value="{AssignedUsersModel>NAME}" />
+										<core:CustomData key="loanedToPool"
+											value="{AssignedUsersModel>LOANED_RP_NAME}" />
+										<core:CustomData key="fName"
+											value="{AssignedUsersModel>FNAME}" />
+										<core:CustomData key="lName"
+											value="{AssignedUsersModel>LNAME}" />
+										<core:CustomData key="user_id"
+											value="{AssignedUsersModel>USER_ID}" />
+									</customData>
+								</CustomListItem>
+
+							</List>
+						</HBox>
+					</content>
+				</Panel>
+			</HBox>
+		</content>
+	</Page>
+</core:View>

@@ -1073,6 +1073,9 @@ svg#stationTrackerView--takt_adherence_area_chart {
 	background:#d4f1f7;
 
 }
+#pop-up-polypoly-header {
+box-shadow: 0 0 5px #333;
+}
 #pop-up-polypoly-title {
 	color:#434343;
 }

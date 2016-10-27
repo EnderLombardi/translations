@@ -270,9 +270,7 @@ airbus.mes.stationtracker.ModelManager = {
                      airbus.mes.stationtracker.ShiftManager.ShiftSelected.day = airbus.mes.stationtracker.ShiftManager.current_shift.day;
                      airbus.mes.stationtracker.ShiftManager.ShiftSelected.StartDate =        airbus.mes.stationtracker.ShiftManager.current_shift.StartDate; 
               
-                     airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(airbus.mes.stationtracker.ShiftManager.current_shift.shiftName);
-                     airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(airbus.mes.stationtracker.ShiftManager.current_shift.shiftName);
-
+              
                      airbus.mes.stationtracker.oView.byId("selectShift").fireChange(0);
 
               }
@@ -284,10 +282,7 @@ airbus.mes.stationtracker.ModelManager = {
                      airbus.mes.stationtracker.ShiftManager.ShiftSelected.day = airbus.mes.stationtracker.ShiftManager.current_shift.day;
                      airbus.mes.stationtracker.ShiftManager.ShiftSelected.StartDate =        airbus.mes.stationtracker.ShiftManager.current_shift.StartDate; 
                      
-                     
-                     airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(airbus.mes.stationtracker.ShiftManager.current_shift.shiftName);
-                     airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(airbus.mes.stationtracker.ShiftManager.current_shift.shiftID);
-              
+                 
                      scheduler.updateView(airbus.mes.stationtracker.ShiftManager.ShiftSelected.StartDate);
               }
 
