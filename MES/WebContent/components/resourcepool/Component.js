@@ -11,11 +11,19 @@ sap.ui.core.UIComponent.extend("airbus.mes.resourcepool.Component", {
 });
 
 airbus.mes.resourcepool.Component.prototype.createContent = function() {
-	
+
 	if (airbus.mes.resourcepool.oView === undefined) {
 		// Initialization
 		airbus.mes.resourcepool.util.ModelManager.init(sap.ui.getCore());
 		
+		//load User View
+		this.UserView = sap.ui.view({
+			id : "idUsersView",
+			viewName : "airbus.mes.resourcepool.views.UsersView",
+			type : sap.ui.core.mvc.ViewType.XML,
+			height : "100%",
+			width: "100%"
+		});
 		
 		// View on XML
 		this.oView = sap.ui.view({
@@ -26,7 +34,27 @@ airbus.mes.resourcepool.Component.prototype.createContent = function() {
 
 		}).addStyleClass("absolutePosition");
 		airbus.mes.resourcepool.oView = this.oView;
-
+		
+		
+		
+		//load WorkCenter View
+		this.WorkCenterView = sap.ui.view({
+			id : "idWorkCenterView",
+			viewName : "airbus.mes.resourcepool.views.WorkCenterView",
+			type : sap.ui.core.mvc.ViewType.XML,
+			height : "100%",
+			width: "100%"
+		});
+		
+		//load Shift View
+		this.ShiftView = sap.ui.view({
+			id : "idShiftView",
+			viewName : "airbus.mes.resourcepool.views.ShiftView",
+			type : sap.ui.core.mvc.ViewType.XML,
+			height : "100%",
+			width: "100%"
+		});
+		
 		var i18nModel = new sap.ui.model.resource.ResourceModel({
 	        bundleUrl : "../components/resourcepool/i18n/i18n.properties",
 	     });

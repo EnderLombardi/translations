@@ -14,9 +14,12 @@ sap.ui
 					 * 
 					 * @memberOf resource_pool.Main
 					 */
-					/*
-					 * onInit: function() { },
-					 */
+					
+					 onInit: function() { 
+						 sap.ui.getCore().byId("resourcePool--MainViewNavContainer").addPage(sap.ui.getCore().byId("idUsersView"));
+							sap.ui.getCore().byId("resourcePool--MainViewNavContainer").to("idUsersView");
+					 },
+					 
 
 					/**
 					 * Similar to onAfterRendering, but this hook is invoked
@@ -39,7 +42,32 @@ sap.ui
 					/*
 					 * onAfterRendering : function() { },
 					 */
+					/***********************************************************
+					 * Load Views according to segmented button selected
+					 **********************************************************/
+					openPage : function(oEvent) {
 
+						var itemKey = oEvent.getSource().getKey();
+						if (itemKey === "users") {
+
+							sap.ui.getCore().byId(
+									"resourcePool--MainViewNavContainer").to(
+									"idUsersView");
+
+						} else if (itemKey === "workcenters") {
+							// direct nav container to workcenter view
+							sap.ui.getCore().byId(
+									"resourcePool--MainViewNavContainer").to(
+									"idWorkCenterView");
+						} else if (itemKey === "station") {
+
+							sap.ui.getCore().byId(
+									"resourcePool--MainViewNavContainer").to(
+									"idShiftView");
+						} else {
+							// do nothing or probably select factory view again
+						}
+					},
 					/***********************************************************
 					 * Triggers when any change is done using switch button in
 					 * Shifts Table
@@ -1558,10 +1586,14 @@ sap.ui
 						/* call deleteResource() from ModelManager */
 						var anyError = airbus.mes.resourcepool.util.ModelManager
 								.deleteResource(sap.ui.getCore().byId(
-										"searchResourcePool--resourcePool").getValue());
+										"searchResourcePool--resourcePool")
+										.getValue());
 						airbus.mes.resourcepool.deleteTeam.close();
-						
-						if(airbus.mes.resourcepool.util.ModelManager.resourceName == sap.ui.getCore().byId("searchResourcePool--resourcePool").getValue()){
+
+						if (airbus.mes.resourcepool.util.ModelManager.resourceName == sap.ui
+								.getCore().byId(
+										"searchResourcePool--resourcePool")
+								.getValue()) {
 							airbus.mes.resourcepool.util.ModelManager.resourceName = undefined;
 							airbus.mes.resourcepool.util.ModelManager.resourceDescription = undefined;
 							this.getView().byId("resourcePoolName").setText("");

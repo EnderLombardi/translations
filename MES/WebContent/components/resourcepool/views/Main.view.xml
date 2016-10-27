@@ -7,334 +7,170 @@
 		<subHeader>
 			<Bar class="pageHeader">
 				<contentMiddle>
-					 <Label id="resourcePoolName" text="" class="resourcePoolName" />
+					<Label id="resourcePoolName" text="" class="resourcePoolName" />
 				</contentMiddle>
 				<contentRight>
 					<Button text="{i18nModel>ButtonTeam}" type="Transparent"
 						class="tiffanyColor subHeaderButtonColor sapUiSmallMarginBegin"
 						icon="sap-icon://group" press="openSelectResourcePool" />
-						
-					<!-- <Button text="{i18nModel>EditTeamButton}" type="Transparent"
-						class="tiffanyColor subHeaderButtonColor sapUiSmallMarginBegin"
-						icon="sap-icon://edit" press="editTeamOpen" />
-						
-					<Button text="{i18nModel>CreateTeamButton}" type="Transparent"
-						class="tiffanyColor subHeaderButtonColor sapUiSmallMarginBegin"
-						icon="sap-icon://create" press="onTeamPress" /> -->
 
-					<Button text="Save" icon="sap-icon://save" press="saveChangesToResourcePool"
-						type="Transparent"
-						class="tiffanyColor subHeaderButtonColor sapUiSmallMarginBegin"
+					<!-- <Button text="{i18nModel>EditTeamButton}" type="Transparent" class="tiffanyColor 
+						subHeaderButtonColor sapUiSmallMarginBegin" icon="sap-icon://edit" press="editTeamOpen" 
+						/> <Button text="{i18nModel>CreateTeamButton}" type="Transparent" class="tiffanyColor 
+						subHeaderButtonColor sapUiSmallMarginBegin" icon="sap-icon://create" press="onTeamPress" 
+						/> -->
+
+					<!-- <Button text="Save" icon="sap-icon://save" press="saveChangesToResourcePool"
+						type="Transparent" class="tiffanyColor subHeaderButtonColor sapUiSmallMarginBegin"
 						enabled="{path:'i18nModel>AvailableUsers',formatter:'airbus.mes.resourcepool.util.Formatter.saveAllowed'}" />
 					<Button icon="sap-icon://sys-help" press="showHelp"
-						class="tiffanyColor buttonStatus2 subHeaderButtonColor sapUiSmallMarginBegin" />
+						class="tiffanyColor buttonStatus2 subHeaderButtonColor sapUiSmallMarginBegin" /> -->
 				</contentRight>
 			</Bar>
 		</subHeader>
 		<content class="sapUiSmallMarginTop contentNoPad">
-			<IconTabBar id="iconTabBar" class="sapUiResponsiveContentPadding"
-				stretchContentHeight="true" expandable="false">
-				<items>
-					<IconTabFilter id="userIconTab" text="Users"
-						icon="sap-icon://group">
-						<HBox height="100%" class="fixHboxItemDisplay">
-							<Panel class="panelBorder" expanded="true" expandable="false"
-								width="100%" height="100%" headerText="{i18nModel>AvailableUsers}">
-								<headerToolbar>
+			<!-- <IconTabBar id="iconTabBar" class="sapUiResponsiveContentPadding" 
+				stretchContentHeight="true" expandable="false"> <items> <IconTabFilter id="userIconTab" 
+				text="Users" icon="sap-icon://group"> <HBox height="100%" class="fixHboxItemDisplay"> 
+				<Panel class="panelBorder" expanded="true" expandable="false" width="100%" 
+				height="100%" headerText="{i18nModel>AvailableUsers}"> <headerToolbar> <Toolbar> 
+				<Bar design="Header"> <contentMiddle> <Text class="sapMPanelHdr panelHeaderCustomStyle" 
+				text="{i18nModel>AvailableUsers}" /> </contentMiddle> <contentRight> <CheckBox 
+				select="onSelectAll" text="{i18nModel>SelectAll}" /> </contentRight> </Bar> 
+				</Toolbar> </headerToolbar> <infoToolbar> <Toolbar> <content> <CheckBox id="allAvailableUsers" 
+				select="onSelectAll" enabled="{path:'i18nModel>ResourcePool',formatter:'airbus.mes.resourcepool.util.Formatter.isEnabled'}" 
+				/> <SearchField id="searchAvailableUsers" liveChange="onSearchUsers" width="100%" 
+				/> </content> </Toolbar> </infoToolbar> <content height="inherit"> <HBox 
+				height="100%" class="fixHboxItemDisplay"> <List id="listAvailableUsers" height="100%" 
+				items="{AvailableUsersModel>/Rowsets/Rowset/0/Row}" mode="{path:'AvailableUsersModel>',formatter:'airbus.mes.resourcepool.util.Formatter.selectionMode'}" 
+				includeItemInSelection="true" noDataText="{i18nModel>NoUserAvailable}" rememberSelections="false" 
+				growingScrollToLoad="true" growing="true" growingThreshold="1000"> <CustomListItem> 
+				<content> <VBox> <HBox> <Text class="customlistTitle" text="{parts: ['AvailableUsersModel>FNAME', 
+				'AvailableUsersModel>LNAME'], formatter:'airbus.mes.resourcepool.util.Formatter.nameFormatter'}"></Text> 
+				<Text text="{AvailableUsersModel>USER_ID}" class="floatRight"></Text> </HBox> 
+				<Text class="listItemDescrption" text="{parts: ['AvailableUsersModel>LOANED_RP_NAME', 
+				'AvailableUsersModel>NAME'], formatter:'airbus.mes.resourcepool.util.Formatter.userAlreadyAssigned'}"></Text> 
+				</VBox> </content> <customData> <core:CustomData key="personal_no" value="{AvailableUsersModel>PERSONAL_NO}" 
+				/> <core:CustomData key="erp_user_id" value="{AvailableUsersModel>ERP_USER_ID}" 
+				/> <core:CustomData key="loan" value="{AvailableUsersModel>LOANED_TO_POOL}" 
+				/> <core:CustomData key="assignedToPool" value="{AvailableUsersModel>NAME}" 
+				/> <core:CustomData key="loanedToPool" value="{AvailableUsersModel>LOANED_RP_NAME}" 
+				/> <core:CustomData key="fName" value="{AvailableUsersModel>FNAME}" /> <core:CustomData 
+				key="lName" value="{AvailableUsersModel>LNAME}" /> <core:CustomData key="user_id" 
+				value="{AvailableUsersModel>USER_ID}" /> </customData> </CustomListItem> 
+				</List> </HBox> </content> </Panel> <VBox class="shiftButtons" justifyContent="Center" 
+				alignItems="Center"> <items> <Button icon="sap-icon://navigation-right-arrow" 
+				press="assignUsers" /> <Button icon="sap-icon://navigation-left-arrow" press="unassignUsers" 
+				/> </items> </VBox> <Panel class="panelBorder" expanded="true" expandable="false" 
+				width="100%" height="100%" headerText="Assigned Users"> <headerToolbar> <Toolbar> 
+				<Bar design="Header"> <contentMiddle> <Text class="sapMPanelHdr panelHeaderCustomStyle" 
+				text="{i18nModel>AssignedUsers}" /> </contentMiddle> <contentRight> <CheckBox 
+				select="onSelectAll" text="{i18nModel>SelectAll}" /> </contentRight> </Bar> 
+				</Toolbar> </headerToolbar> <infoToolbar> <Toolbar> <content> <CheckBox id="allAssignedUsers" 
+				select="onSelectAll" enabled="{path:'i18nModel>ResourcePool',formatter:'airbus.mes.resourcepool.util.Formatter.isEnabled'}" 
+				/> <SearchField id="searchAssignedUsers" liveChange="onSearchUsers" width="100%" 
+				/> </content> </Toolbar> </infoToolbar> <content> <HBox height="100%" class="fixHboxItemDisplay"> 
+				<List id="listAllocatedUsers" items="{AssignedUsersModel>/Rowsets/Rowset/0/Row}" 
+				mode="{path:'AvailableUsersModel>',formatter:'airbus.mes.resourcepool.util.Formatter.selectionMode'}" 
+				includeItemInSelection="true" rememberSelections="false" growingScrollToLoad="true" 
+				growing="true" growingThreshold="1000" noDataText="{i18nModel>NoUserAssigned}"> 
+				<StandardListItem title="{parts: ['AssignedUsersModel>FNAME', 'AssignedUsersModel>LNAME'], 
+				formatter:'airbus.mes.resourcepool.util.Formatter.nameFormatter'}" description="{AssignedUsersModel>USER_ID}" 
+				info="{parts: ['AssignedUsersModel>LOANED_RP_NAME', 'AssignedUsersModel>NAME'], 
+				formatter:'airbus.mes.resourcepool.util.Formatter.assignedToSelf'}"> <CustomListItem> 
+				<content> <VBox> <HBox> <Text class="customlistTitle" text="{parts: ['AssignedUsersModel>FNAME', 
+				'AssignedUsersModel>LNAME'], formatter:'airbus.mes.resourcepool.util.Formatter.nameFormatter'}"></Text> 
+				<Text text="{AssignedUsersModel>USER_ID}" class="floatRight"></Text> </HBox> 
+				<Text class="listItemDescrption" text="{parts: ['AssignedUsersModel>LOANED_RP_NAME', 
+				'AssignedUsersModel>NAME'], formatter:'airbus.mes.resourcepool.util.Formatter.assignedToSelf'}"></Text> 
+				</VBox> </content> <customData> <core:CustomData key="personal_no" value="{AssignedUsersModel>PERSONAL_NO}" 
+				/> <core:CustomData key="erp_user_id" value="{AssignedUsersModel>ERP_USER_ID}" 
+				/> <core:CustomData key="loan" value="{AssignedUsersModel>LOANED_TO_POOL}" 
+				/> <core:CustomData key="assignedToPool" value="{AssignedUsersModel>NAME}" 
+				/> <core:CustomData key="loanedToPool" value="{AssignedUsersModel>LOANED_RP_NAME}" 
+				/> <core:CustomData key="fName" value="{AssignedUsersModel>FNAME}" /> <core:CustomData 
+				key="lName" value="{AssignedUsersModel>LNAME}" /> <core:CustomData key="user_id" 
+				value="{AssignedUsersModel>USER_ID}" /> </customData> </CustomListItem> </List> 
+				</HBox> </content> </Panel> </HBox> </IconTabFilter> <IconTabFilter text="Work 
+				Centers" icon="sap-icon://factory"> <HBox height="100%" class="fixHboxItemDisplay"> 
+				<items> <Panel class="panelBorder" expanded="true" expandable="false" width="100%" 
+				height="100%"> <headerToolbar> <Toolbar> <Bar design="Header"> <contentMiddle> 
+				<Text class="sapMPanelHdr panelHeaderCustomStyle" text="{i18nModel>AvailableWC}" 
+				/> </contentMiddle> <contentRight> <CheckBox select="onSelectAll" text="{i18nModel>SelectAll}" 
+				/> </contentRight> </Bar> </Toolbar> </headerToolbar> <infoToolbar> <Toolbar> 
+				<content> <CheckBox id="allAvailableWC" select="onSelectAll" enabled="{path:'i18nModel>ResourcePool',formatter:'airbus.mes.resourcepool.util.Formatter.isEnabled'}" 
+				/> <SearchField id="searchAvailableWC" liveChange="onSearchAvailableWC" width="100%" 
+				/> </content> </Toolbar> </infoToolbar> <content> <HBox height="100%" class="fixHboxItemDisplay"> 
+				<List id="listAvailableWorkCenter" items="{AvailableWCModel>/Rowsets/Rowset/0/Row}" 
+				mode="{path:'AvailableWCModel>',formatter:'airbus.mes.resourcepool.util.Formatter.selectionMode'}" 
+				includeItemInSelection="true" rememberSelections="false" noDataText="{i18nModel>NoWCAvailable}" 
+				growingScrollToLoad="true" growing="true" growingThreshold="1000"> <StandardListItem 
+				id="availableListItem" title="{AvailableWCModel>WorkCenter}" description="{AvailableWCModel>Description}" 
+				/> </List> </HBox> </content> </Panel> <VBox class="shiftButtons" justifyContent="Center" 
+				alignItems="Center"> <items> <Button icon="sap-icon://navigation-right-arrow" 
+				press="assignWorkCenter" /> <Button icon="sap-icon://navigation-left-arrow" 
+				press="unassignWorkCenter" /> </items> </VBox> <Panel class="panelBorder" 
+				expanded="true" expandable="false" width="100%" height="100%"> <headerToolbar> 
+				<Toolbar> <Bar design="Header"> <contentMiddle> <Text class="sapMPanelHdr 
+				panelHeaderCustomStyle" text="{i18nModel>AssignedWC}" /> </contentMiddle> 
+				</Bar> </Toolbar> </headerToolbar> <infoToolbar> <Toolbar> <content> <CheckBox 
+				id="allAssignedWC" select="onSelectAll" enabled="{path:'AssignedWCModel>',formatter:'airbus.mes.resourcepool.util.Formatter.isEnabled'}" 
+				/> <SearchField id="searchAssignedWC" liveChange="onSearchAssignedWC" width="100%" 
+				/> </content> </Toolbar> </infoToolbar> <content> <HBox height="100%" class="fixHboxItemDisplay"> 
+				<List id="listAllocatedWorkCenter" items="{AssignedWCModel>/Rowsets/Rowset/0/Row}" 
+				includeItemInSelection="true" mode="{path:'AssignedWCModel>',formatter:'airbus.mes.resourcepool.util.Formatter.selectionMode'}" 
+				noDataText="{i18nModel>NoWCAssigned}" rememberSelections="false" growingScrollToLoad="true" 
+				growing="true" growingThreshold="1000"> <StandardListItem title="{AssignedWCModel>ASSIGNMENT_NAME}" 
+				description="{AssignedWCModel>DESCRIPTION}" /> </List> </HBox> </content> 
+				</Panel> </items> </HBox> </IconTabFilter> <IconTabFilter text="Shift" icon="sap-icon://future"> 
+				<HBox height="100%" class="fixHboxItemDisplay"> <items> <Table id="shiftTable" 
+				inset="false" items="{AvailableShiftModel>/Rowsets/Rowset/0/Row}" mode="None" 
+				selectionChange="onSelectionChange"> <columns> <Column minScreenWidth="Tablet" 
+				demandPopin="true" vAlign="Middle"> <Text text="Shift Name" /> </Column> 
+				<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Right" vAlign="Middle"> 
+				<Text text="Shift Begin" /> </Column> <Column minScreenWidth="Tablet" demandPopin="true" 
+				hAlign="Right" vAlign="Middle"> <Text text="Shift End" /> </Column> <Column 
+				minScreenWidth="Tablet" demandPopin="true" hAlign="Right" vAlign="Middle"> 
+				<Text text="Valid From" /> </Column> <Column minScreenWidth="Tablet" demandPopin="true" 
+				hAlign="Right" vAlign="Middle"> <Text text="Valid To" /> </Column> <Column 
+				minScreenWidth="Tablet" demandPopin="true" hAlign="Center" vAlign="Middle"> 
+				<Text text="Assign" /> </Column> </columns> <items> <ColumnListItem> <cells> 
+				<ObjectIdentifier text="{AvailableShiftModel>NAME}" /> <Text text="{path:'AvailableShiftModel>SHIFT_BEGIN' 
+				,formatter:'airbus.mes.resourcepool.util.Formatter.shiftTimeToHours'}" /> 
+				<Text text="{path:'AvailableShiftModel>SHIFT_END' ,formatter:'airbus.mes.resourcepool.util.Formatter.shiftTimeToHours'}" 
+				/> <Text text="{path:'AvailableShiftModel>VALID_FROM', formatter:'airbus.mes.resourcepool.util.Formatter.shiftStringToDate'}" 
+				/> <Text text="{path:'AvailableShiftModel>VALID_TO', formatter:'airbus.mes.resourcepool.util.Formatter.shiftStringToDate'}" 
+				/> <Switch type="AcceptReject" state="{path:'AvailableShiftModel>ASSIGNED' 
+				,formatter:'airbus.mes.resourcepool.util.Formatter.state'}" enabled="{path:'AvailableShiftModel>' 
+				,formatter:'airbus.mes.resourcepool.util.Formatter.AssignShiftEnabled'}" 
+				change="changeAssignedShift" /> </cells> </ColumnListItem> </items> </Table> 
+				</items> </HBox> </IconTabFilter> </items> </IconTabBar> -->
+			<Bar design="SubHeader">
+				<contentLeft>
+					<SegmentedButton id="IconTabsPages">
+						<items>
+							<SegmentedButtonItem id="idUsers" icon="sap-icon://group"
+								text="Users" key="users" press="openPage" />
+							<SegmentedButtonItem id="idWorkCenters" icon="sap-icon://factory"
+								text="Work Centers" key="workcenters"  press="openPage" />
+							<SegmentedButtonItem id="idShifts" icon="sap-icon://future"
+								text="Shifts" key="shifts" press="openPage" />
+						</items>
+					</SegmentedButton>
+				</contentLeft>
+				<contentRight>
+					<Button icon="sap-icon://save" press="saveChangesToResourcePool"
+						type="Transparent" class="sapUiSmallMarginBegin"
+						enabled="{path:'i18nModel>AvailableUsers',formatter:'airbus.mes.resourcepool.util.Formatter.saveAllowed'}" />
+					<Button icon="sap-icon://sys-help" press="showHelp" type="Transparent"
+						class="sapUiSmallMarginBegin" />
+				</contentRight>
+			</Bar>
+			<NavContainer id="MainViewNavContainer" height="95%">
+				<pages>
 
-									<Toolbar>
-										<Bar design="Header">
-											<contentMiddle>
-												<Text class="sapMPanelHdr panelHeaderCustomStyle" text="{i18nModel>AvailableUsers}" />
-											</contentMiddle>
-											<!-- <contentRight> <CheckBox select="onSelectAll" text="{i18nModel>SelectAll}" 
-												/> </contentRight> -->
-										</Bar>
-									</Toolbar>
-								</headerToolbar>
-								<infoToolbar>
-									<Toolbar>
-										<content>
-											<CheckBox id="allAvailableUsers" select="onSelectAll"
-												enabled="{path:'i18nModel>ResourcePool',formatter:'airbus.mes.resourcepool.util.Formatter.isEnabled'}" />
-											<SearchField id="searchAvailableUsers"
-												liveChange="onSearchUsers" width="100%" />
-										</content>
-									</Toolbar>
-								</infoToolbar>
-								<content height="inherit">
-									<HBox height="100%" class="fixHboxItemDisplay">
-
-										<List id="listAvailableUsers" height="100%"
-											items="{AvailableUsersModel>/Rowsets/Rowset/0/Row}"
-											mode="{path:'AvailableUsersModel>',formatter:'airbus.mes.resourcepool.util.Formatter.selectionMode'}"
-											includeItemInSelection="true" noDataText="{i18nModel>NoUserAvailable}"
-											rememberSelections="false" growingScrollToLoad="true"
-											growing="true" growingThreshold="1000">
-											<CustomListItem>
-												<content>
-													<VBox>
-														<HBox>
-															<Text class="customlistTitle"
-																text="{parts: ['AvailableUsersModel>FNAME', 'AvailableUsersModel>LNAME'], formatter:'airbus.mes.resourcepool.util.Formatter.nameFormatter'}"></Text>
-															<Text text="{AvailableUsersModel>USER_ID}" class="floatRight"></Text>
-														</HBox>
-														<Text class="listItemDescrption"
-															text="{parts: ['AvailableUsersModel>LOANED_RP_NAME', 'AvailableUsersModel>NAME'], formatter:'airbus.mes.resourcepool.util.Formatter.userAlreadyAssigned'}"></Text>
-													</VBox>
-												</content>
-												<customData>
-													<core:CustomData key="personal_no"
-														value="{AvailableUsersModel>PERSONAL_NO}" />
-													<core:CustomData key="erp_user_id"
-														value="{AvailableUsersModel>ERP_USER_ID}" />
-													<core:CustomData key="loan"
-														value="{AvailableUsersModel>LOANED_TO_POOL}" />
-													<core:CustomData key="assignedToPool"
-														value="{AvailableUsersModel>NAME}" />
-													<core:CustomData key="loanedToPool"
-														value="{AvailableUsersModel>LOANED_RP_NAME}" />
-													<core:CustomData key="fName"
-														value="{AvailableUsersModel>FNAME}" />
-													<core:CustomData key="lName"
-														value="{AvailableUsersModel>LNAME}" />
-													<core:CustomData key="user_id"
-														value="{AvailableUsersModel>USER_ID}" />
-												</customData>
-											</CustomListItem>
-										</List>
-									</HBox>
-								</content>
-
-							</Panel>
-							<VBox class="shiftButtons" justifyContent="Center"
-								alignItems="Center">
-								<items>
-									<Button icon="sap-icon://navigation-right-arrow" press="assignUsers" />
-									<Button icon="sap-icon://navigation-left-arrow" press="unassignUsers" />
-								</items>
-							</VBox>
-							<Panel class="panelBorder" expanded="true" expandable="false"
-								width="100%" height="100%" headerText="Assigned Users">
-								<headerToolbar>
-
-									<Toolbar>
-										<Bar design="Header">
-											<contentMiddle>
-												<Text class="sapMPanelHdr panelHeaderCustomStyle" text="{i18nModel>AssignedUsers}" />
-											</contentMiddle>
-											<!-- <contentRight> <CheckBox select="onSelectAll" text="{i18nModel>SelectAll}" 
-												/> </contentRight> -->
-										</Bar>
-									</Toolbar>
-								</headerToolbar>
-								<infoToolbar>
-									<Toolbar>
-										<content>
-											<CheckBox id="allAssignedUsers" select="onSelectAll"
-												enabled="{path:'i18nModel>ResourcePool',formatter:'airbus.mes.resourcepool.util.Formatter.isEnabled'}" />
-											<SearchField id="searchAssignedUsers" liveChange="onSearchUsers"
-												width="100%" />
-
-										</content>
-									</Toolbar>
-								</infoToolbar>
-								<content>
-									<HBox height="100%" class="fixHboxItemDisplay">
-										<List id="listAllocatedUsers" items="{AssignedUsersModel>/Rowsets/Rowset/0/Row}"
-											mode="{path:'AvailableUsersModel>',formatter:'airbus.mes.resourcepool.util.Formatter.selectionMode'}"
-											includeItemInSelection="true" rememberSelections="false"
-											growingScrollToLoad="true" growing="true" growingThreshold="1000"
-											noDataText="{i18nModel>NoUserAssigned}">
-
-
-											<!-- <StandardListItem title="{parts: ['AssignedUsersModel>FNAME', 
-												'AssignedUsersModel>LNAME'], formatter:'airbus.mes.resourcepool.util.Formatter.nameFormatter'}" 
-												description="{AssignedUsersModel>USER_ID}" info="{parts: ['AssignedUsersModel>LOANED_RP_NAME', 
-												'AssignedUsersModel>NAME'], formatter:'airbus.mes.resourcepool.util.Formatter.assignedToSelf'}"> -->
-											<CustomListItem>
-												<content>
-													<VBox>
-														<HBox>
-															<Text class="customlistTitle"
-																text="{parts: ['AssignedUsersModel>FNAME', 'AssignedUsersModel>LNAME'], formatter:'airbus.mes.resourcepool.util.Formatter.nameFormatter'}"></Text>
-															<Text text="{AssignedUsersModel>USER_ID}" class="floatRight"></Text>
-														</HBox>
-														<Text class="listItemDescrption"
-															text="{parts: ['AssignedUsersModel>LOANED_RP_NAME', 'AssignedUsersModel>NAME'], formatter:'airbus.mes.resourcepool.util.Formatter.assignedToSelf'}"></Text>
-													</VBox>
-												</content>
-												<customData>
-													<core:CustomData key="personal_no"
-														value="{AssignedUsersModel>PERSONAL_NO}" />
-													<core:CustomData key="erp_user_id"
-														value="{AssignedUsersModel>ERP_USER_ID}" />
-													<core:CustomData key="loan"
-														value="{AssignedUsersModel>LOANED_TO_POOL}" />
-													<core:CustomData key="assignedToPool"
-														value="{AssignedUsersModel>NAME}" />
-													<core:CustomData key="loanedToPool"
-														value="{AssignedUsersModel>LOANED_RP_NAME}" />
-													<core:CustomData key="fName"
-														value="{AssignedUsersModel>FNAME}" />
-													<core:CustomData key="lName"
-														value="{AssignedUsersModel>LNAME}" />
-													<core:CustomData key="user_id"
-														value="{AssignedUsersModel>USER_ID}" />
-												</customData>
-											</CustomListItem>
-
-										</List>
-									</HBox>
-								</content>
-							</Panel>
-						</HBox>
-					</IconTabFilter>
-					<IconTabFilter text="Work Centers" icon="sap-icon://factory">
-						<HBox height="100%" class="fixHboxItemDisplay">
-							<items>
-								<Panel class="panelBorder" expanded="true" expandable="false"
-									width="100%" height="100%">
-									<headerToolbar>
-
-										<Toolbar>
-											<Bar design="Header">
-												<contentMiddle>
-													<Text class="sapMPanelHdr panelHeaderCustomStyle"
-														text="{i18nModel>AvailableWC}" />
-												</contentMiddle>
-												<!-- <contentRight> <CheckBox select="onSelectAll" text="{i18nModel>SelectAll}" 
-													/> </contentRight> -->
-											</Bar>
-										</Toolbar>
-									</headerToolbar>
-									<infoToolbar>
-										<Toolbar>
-											<content>
-												<CheckBox id="allAvailableWC" select="onSelectAll"
-													enabled="{path:'i18nModel>ResourcePool',formatter:'airbus.mes.resourcepool.util.Formatter.isEnabled'}" />
-												<SearchField id="searchAvailableWC" liveChange="onSearchAvailableWC"
-													width="100%" />
-											</content>
-										</Toolbar>
-									</infoToolbar>
-									<content>
-										<HBox height="100%" class="fixHboxItemDisplay">
-											<List id="listAvailableWorkCenter" items="{AvailableWCModel>/Rowsets/Rowset/0/Row}"
-												mode="{path:'AvailableWCModel>',formatter:'airbus.mes.resourcepool.util.Formatter.selectionMode'}"
-												includeItemInSelection="true" rememberSelections="false"
-												noDataText="{i18nModel>NoWCAvailable}" growingScrollToLoad="true"
-												growing="true" growingThreshold="1000">
-												<StandardListItem id="availableListItem"
-													title="{AvailableWCModel>WorkCenter}" description="{AvailableWCModel>Description}" />
-											</List>
-										</HBox>
-									</content>
-								</Panel>
-								<VBox class="shiftButtons" justifyContent="Center"
-									alignItems="Center">
-									<items>
-										<Button icon="sap-icon://navigation-right-arrow" press="assignWorkCenter" />
-										<Button icon="sap-icon://navigation-left-arrow" press="unassignWorkCenter" />
-
-									</items>
-								</VBox>
-								<Panel class="panelBorder" expanded="true" expandable="false"
-									width="100%" height="100%">
-									<headerToolbar>
-
-										<Toolbar>
-											<Bar design="Header">
-												<contentMiddle>
-													<Text class="sapMPanelHdr panelHeaderCustomStyle"
-														text="{i18nModel>AssignedWC}" />
-												</contentMiddle>
-											</Bar>
-										</Toolbar>
-									</headerToolbar>
-									<infoToolbar>
-										<Toolbar>
-											<content>
-												<CheckBox id="allAssignedWC" select="onSelectAll"
-													enabled="{path:'AssignedWCModel>',formatter:'airbus.mes.resourcepool.util.Formatter.isEnabled'}" />
-												<SearchField id="searchAssignedWC" liveChange="onSearchAssignedWC"
-													width="100%" />
-											</content>
-										</Toolbar>
-									</infoToolbar>
-									<content>
-										<HBox height="100%" class="fixHboxItemDisplay">
-											<List id="listAllocatedWorkCenter" items="{AssignedWCModel>/Rowsets/Rowset/0/Row}"
-												includeItemInSelection="true"
-												mode="{path:'AssignedWCModel>',formatter:'airbus.mes.resourcepool.util.Formatter.selectionMode'}"
-												noDataText="{i18nModel>NoWCAssigned}" rememberSelections="false"
-												growingScrollToLoad="true" growing="true" growingThreshold="1000">
-												<StandardListItem title="{AssignedWCModel>ASSIGNMENT_NAME}"
-													description="{AssignedWCModel>DESCRIPTION}" />
-											</List>
-										</HBox>
-									</content>
-								</Panel>
-							</items>
-						</HBox>
-					</IconTabFilter>
-					<IconTabFilter text="Shift" icon="sap-icon://future">
-						<HBox height="100%" class="fixHboxItemDisplay">
-							<items>
-								<Table id="shiftTable" inset="false"
-									items="{AvailableShiftModel>/Rowsets/Rowset/0/Row}" mode="None"
-									selectionChange="onSelectionChange">
-									<columns>
-										<Column minScreenWidth="Tablet" demandPopin="true"
-											vAlign="Middle">
-											<Text text="Shift Name" />
-										</Column>
-										<Column minScreenWidth="Tablet" demandPopin="true"
-											hAlign="Right" vAlign="Middle">
-											<Text text="Shift Begin" />
-										</Column>
-										<Column minScreenWidth="Tablet" demandPopin="true"
-											hAlign="Right" vAlign="Middle">
-											<Text text="Shift End" />
-										</Column>
-										<Column minScreenWidth="Tablet" demandPopin="true"
-											hAlign="Right" vAlign="Middle">
-											<Text text="Valid From" />
-										</Column>
-										<Column minScreenWidth="Tablet" demandPopin="true"
-											hAlign="Right" vAlign="Middle">
-											<Text text="Valid To" />
-										</Column>
-										<Column minScreenWidth="Tablet" demandPopin="true"
-											hAlign="Center" vAlign="Middle">
-											<Text text="Assign" />
-										</Column>
-									</columns>
-									<items>
-										<ColumnListItem>
-											<cells>
-												<ObjectIdentifier text="{AvailableShiftModel>NAME}" />
-												<Text
-													text="{path:'AvailableShiftModel>SHIFT_BEGIN' ,formatter:'airbus.mes.resourcepool.util.Formatter.shiftTimeToHours'}" />
-												<Text
-													text="{path:'AvailableShiftModel>SHIFT_END' ,formatter:'airbus.mes.resourcepool.util.Formatter.shiftTimeToHours'}" />
-												<Text
-													text="{path:'AvailableShiftModel>VALID_FROM', formatter:'airbus.mes.resourcepool.util.Formatter.shiftStringToDate'}" />
-												<Text
-													text="{path:'AvailableShiftModel>VALID_TO', formatter:'airbus.mes.resourcepool.util.Formatter.shiftStringToDate'}" />
-												<Switch type="AcceptReject"
-													state="{path:'AvailableShiftModel>ASSIGNED' ,formatter:'airbus.mes.resourcepool.util.Formatter.state'}"
-													enabled="{path:'AvailableShiftModel>' ,formatter:'airbus.mes.resourcepool.util.Formatter.AssignShiftEnabled'}"
-													change="changeAssignedShift" />
-											</cells>
-										</ColumnListItem>
-									</items>
-								</Table>
-							</items>
-						</HBox>
-					</IconTabFilter>
-				</items>
-			</IconTabBar>
+				</pages>
+			</NavContainer>
 		</content>
 	</Page>
 </core:View>
