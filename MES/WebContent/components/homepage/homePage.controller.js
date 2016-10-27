@@ -70,22 +70,6 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 		this.onPress(text);
 	},
 
-	onPressLine2 : function(oEvt) {
-
-		var sPath = oEvt.getSource().oBindingContexts["2TileLineHome"].sPath;
-		var text = airbus.mes.homepage.oView.getModel("2TileLineHome").getProperty(sPath).text;
-
-		this.onPress(text);
-	},
-
-	onPressLine3 : function(oEvt) {
-
-		var sPath = oEvt.getSource().oBindingContexts["3TileLineHome"].sPath;
-		var text = airbus.mes.homepage.oView.getModel("3TileLineHome").getProperty(sPath).text;
-
-		this.onPress(text);
-	},
-
 	getI18nValue : function(sKey) {
 		return this.getView().getModel("i18n").getProperty(sKey);
 	},

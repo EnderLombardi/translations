@@ -5,9 +5,9 @@
 			<Toolbar class="pageHeader">
                            <content>	
 
-                           <Image src="../images/Airbus.png" width="auto" height="2rem" press="goToHome" />
+                           <Image src="../images/Airbus.png" width="auto" height="1.75rem" press="goToHome" />
                            <ToolbarSeparator />
-                           <Label text="MES" class="pageTitle"/>
+                           <Label text="MES - AOS" class="pageTitle"/>
                            <ToolbarSpacer />
                            
                             <Label text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/station', formatter : 'airbus.mes.shell.util.Formatter.stationTrackerStation' }" class="pageTitle sapUiTinyMarginBeginEnd" />
@@ -17,12 +17,7 @@
 					       <ToolbarSpacer />
                            
                            
-                           <core:Icon src="sap-icon://customer"/>
-                           <Label text="{ShellI18n>Welcome}" class="pageWelcome"/>
-                           <Label id="user_id" text="{userDetailModel>/Rowsets/Rowset/0/Row/0/first_name}" design="Bold" class="pageUsername"/>
-                           <ToolbarSeparator />
-                           <Button text="{ShellI18n>Logout}" type="Transparent" icon="sap-icon://log" class="whiteColor whiteButton"></Button>
-                           <ToolbarSeparator />
+ 
                            <Select id="SelectLanguage" class="sapUiTinyMarginBeginEnd pageHeader pageHeaderBlue" change="onChangeLanguage"> 
 	                           <core:Item text="English" />
 	                           <core:Item text="Deutsch" />
