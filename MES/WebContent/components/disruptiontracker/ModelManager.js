@@ -6,9 +6,9 @@ airbus.mes.disruptiontracker.ModelManager = {
 
 	init : function(core) {
 		
-		core.setModel(new sap.ui.model.json.JSONModel(), "tableData");//Model having disruptions detail
-		core.setModel(new sap.ui.model.json.JSONModel(), "filterData");
-		core.setModel(new sap.ui.model.json.JSONModel(), "orderData");
+		core.setModel(new sap.ui.model.json.JSONModel(), "disruptionsListData");//Model having disruptions detail
+		core.setModel(new sap.ui.model.json.JSONModel(), "disruptionsFilterData");
+		core.setModel(new sap.ui.model.json.JSONModel(), "disruptionsOrderData");
 		core.setModel(new sap.ui.model.resource.ResourceModel({bundleName:"airbus.mes.disruptiontracker.i18n.i18n",bundleLocale:"en"}), 
 														 "disruptiontrackerI18n");
 
@@ -40,19 +40,19 @@ airbus.mes.disruptiontracker.ModelManager = {
 	},
 	
 	loadDisruptionFilterModel : function() {
-		var oViewModel = sap.ui.getCore().getModel("filterData");
+		var oViewModel = sap.ui.getCore().getModel("disruptionsFilterData");
 		oViewModel.loadData(this.urlModel.getProperty("urlfiltermodel"), null, false);
 
 	},
 	
 	loadDisruptionOrderModel : function() {
-		var oViewModel = sap.ui.getCore().getModel("orderData");
+		var oViewModel = sap.ui.getCore().getModel("disruptionsOrderData");
 		oViewModel.loadData(this.urlModel.getProperty("urlordermodel"), null, false);
 
 	},
 	
 	loadDisruptionListModel : function() {
-		var oViewModel = sap.ui.getCore().getModel("tableData");
+		var oViewModel = sap.ui.getCore().getModel("disruptionsListData");
 		oViewModel.loadData(this.urlModel.getProperty("urllistmodel"), null, false);
 
 	}

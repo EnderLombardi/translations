@@ -8,22 +8,22 @@
 		class="backgroundPolypoly"> -->
 		<table:Table rows="{ path: '/rows' }"
 		columns="{ path: '/columns', factory: '.createColumn' }"
-		enableColumnReordering="true" rowHeight="52" id="oTablePolypoly"
+		enableColumnReordering="true" rowHeight="30" id="oTablePolypoly"
 		enableSelectAll="false" columnMove="onColumnMove" fixedColumnCount="6" >
 		<table:toolbar>
 			<Toolbar design="Transparent" id="toolbarPolypoly">
 				<content>
-					<Image src="/MES/components/polypoly/images/1.PNG" height="1.5rem"/>
-					<Label text = "WA 1"/>
+					<Image src="/MES/components/polypoly/images/1.svg" height="1.5rem"/>
+					<Label class="QA-text-style" text = "WA 1"/>
 					<ToolbarSpacer width="1rem"/>
-					<Image src="/MES/components/polypoly/images/2.PNG" height="1.5rem"/>
-					<Label text = "WA 2"/>
+					<Image src="/MES/components/polypoly/images/2.svg" height="1.5rem"/>
+					<Label class="QA-text-style" text = "WA 2"/>
 					<ToolbarSpacer width="1rem"/>
-					<Image src="/MES/components/polypoly/images/3.PNG" height="1.5rem"/>
-					<Label text = "QA 3"/>
+					<Image src="/MES/components/polypoly/images/3.svg" height="1.5rem"/>
+					<Label class="QA-text-style" text = "QA 3"/>
 					<ToolbarSpacer width="1rem"/>
-					<Image src="/MES/components/polypoly/images/4.PNG" height="1.5rem"/>
-					<Label text = "QA 4"/>
+					<Image src="/MES/components/polypoly/images/4.svg" height="1.5rem"/>
+					<Label class="QA-text-style" text = "QA 4"/>
 					<ToolbarSpacer />
 					<SearchField id="polypolySearchField" width="20%"
 						placeholder="Resource Pool" enableSuggestions="true" suggest="onRPSuggest"
@@ -34,7 +34,7 @@
 						</suggestionItems>
 					</SearchField>
 					<Button id="AddPolypoly" icon="sap-icon://add" text="Polypoly"
-						press="openColumnPopup" type="Emphasized" />
+						press="openColumnPopup"/>
 					<Button id="SeeQA" icon="sap-icon://show" text="Show QA"
 						press="openQAPopup" />
 				</content>

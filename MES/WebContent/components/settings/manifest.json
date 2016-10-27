@@ -46,7 +46,7 @@
 		"resources": {
 			"css": [
 				{
-					"uri": "css/SettingScreen.css"
+					"uri": "css/style.css"
 
 				}
 			]

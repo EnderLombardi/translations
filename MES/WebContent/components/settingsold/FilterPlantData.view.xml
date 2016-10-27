@@ -93,7 +93,7 @@
 									</f:FormElement>
 									<f:FormElement label="{i18n>MSN}">
 										<f:fields>
-											<ComboBox id="ComboBoxMSN" items="{plantModel>/Rowsets/Rowset/0/Row}" selectionChange="msnSelected">
+											<ComboBox id="ComboBoxMSN" items="{plantModel>/Rowsets/Rowset/0/Row}">
 												<items>
 													<core:Item key="{plantModel>msn}" text="{plantModel>msn}">
 													</core:Item>

@@ -37,13 +37,13 @@ airbus.mes.disruptiontracker.Component.prototype.createContent = function() {
 		
 		
 		//Model for disruptions list data in table
-		this.oView.setModel(sap.ui.getCore().getModel("tableData"),"tableData");
+		this.oView.setModel(sap.ui.getCore().getModel("disruptionsListData"),"disruptionsListData");
 		
 		//Model for disruptions filter data in ComboBox
-		this.oView.setModel(sap.ui.getCore().getModel("filterData"), "filterData");
+		this.oView.setModel(sap.ui.getCore().getModel("disruptionsFilterData"), "disruptionsFilterData");
 		
 		//Model for disruptions order data in ComboBox
-		this.oView.setModel(sap.ui.getCore().getModel("orderData"), "orderData");
+		this.oView.setModel(sap.ui.getCore().getModel("disruptionsOrderData"), "disruptionsOrderData");
 		
 		
 		

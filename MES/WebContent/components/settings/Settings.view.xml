@@ -1,0 +1,121 @@
+<core:View controllerName="airbus.mes.settings.Settings"
+	xmlns="sap.m" xmlns:vbm="sap.ui.vbm" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core">
+	<Page>
+		<customHeader>
+			<Bar>
+				<contentMiddle>
+					<Title text="Setting Station Tracker" />
+				</contentMiddle>
+			</Bar>
+		</customHeader>
+		<subHeader>
+			<Bar>
+				<contentLeft>
+					<Button id="Back" type="Transparent" text="Back" press="onPress"
+						icon="sap-icon://arrow-left" height="100%" />
+				</contentLeft>
+				<contentRight>
+					<Button id="Confirm" type="Transparent" text="Confirm"
+						press="onPress" iconFirst="false" icon="sap-icon://arrow-right"
+						height="100%" />
+				</contentRight>
+			</Bar>
+		</subHeader>
+		<l:Splitter width="100%" height="100%">
+		<List headerText="Program" items="{path: 'program>/ProgramCollection'}"
+				width="95%" class="sapUiTinyMargin">
+				<CustomListItem icon="{program>picture}">
+					<HBox>
+						<RadioButton selected="{program>selected}" groupName="GroupInputListItem"
+							text="{program>prog}" />
+						<Image src="{program>picture}" width="50%" />
+					</HBox>
+				</CustomListItem>
+				<layoutData>
+					<l:SplitterLayoutData size="20%" resizable="true" />
+				</layoutData>
+			</List>
+
+			<List headerText="Plant" items="{path: 'site>/SiteCollection'}"
+				width="95%" class="sapUiTinyMargin">
+				<StandardListItem title="{site>Site}" type="Navigation" press="onPressSite" />
+				<layoutData>
+					<l:SplitterLayoutData size="25%" resizable="true" />
+				</layoutData>
+			</List>
+			<!-- <List headerText="Program" items="{path: 'plantModel>/Rowsets/Rowset/0/Row'}"
+				width="95%" class=" selectProgram sapUiTinyMargin">
+				<CustomListItem>
+					<HBox>
+						<Text text="{plantModel>program}" />
+						<Image src="{program>picture}" press="onImagePress" width="70%" />
+					</HBox>
+				</CustomListItem>
+				<layoutData>
+					<l:SplitterLayoutData size="20%" resizable="true" />
+				</layoutData>
+			</List>
+			<List headerText="Plant" items="{path: 'siteModel>/Rowsets/Rowset/0/Row'}"
+				width="95%" class="selectSite sapUiTinyMargin">
+				<StandardListItem title="{siteModel>site}" type="Navigation"
+					press="onPressSite" />
+				<layoutData>
+					<l:SplitterLayoutData size="25%" resizable="true" />
+				</layoutData>
+			</List> -->
+			<vbm:AnalyticMap id="vbi" width="100%" height="100%"
+				regions="{region>/Regions}" regionClick="onRegionClick">
+				<vbm:regions>
+					<vbm:Region code="{region>code}" color="{region>color}"
+						tooltip="{region>country}" />
+				</vbm:regions>
+				<vbm:Spots items="{region>/Spots}" click="onClickItem"
+					contextMenu="onContextMenuItem">
+					<vbm:Spot position="{region>pos}" tooltip="{region>tooltip}"
+						type="{region>type}" text="{region>text}" click="onClickSpot"
+						contextMenu="onContextMenuSpot" />
+				</vbm:Spots>
+			</vbm:AnalyticMap>
+
+			<VBox class="sapUiTinyMargin">
+				<f:SimpleForm id="SimpleFormChange" minWidth="1024"
+					visible="true" maxContainerCols="2" editable="true" layout="ResponsiveGridLayout"
+					labelSpanL="3" labelSpanM="3" emptySpanL="4" emptySpanM="4"
+					columnsL="1" columnsM="1" class="editableForm" title="Other settings">
+					<f:content>
+						<Label id="lblLine" text="Line" design="Bold" />
+						<ComboBox id="selectLine" items="{site>/SiteCollection/0/LineCollection}"
+							visible="true" change="onSelectionChange">
+							<items>
+								<core:Item key="{site>Line}" text="{site>Line}" />
+							</items>
+						</ComboBox>
+						<Label id="lblStation" text="Station" design="Bold" />
+						<ComboBox id="selectStation"
+							items="{site>/SiteCollection/0/LineCollection/0/StationCollection}"
+							visible="true" change="onSelectionChange">
+							<items>
+								<core:Item key="{site>Station}" text="{site>Station}" />
+							</items>
+						</ComboBox>
+						<Label id="lblMSN" text="MSN" design="Bold" />
+						<ComboBox id="selectMSN" items="{site>/SiteCollection}"
+							visible="true" change="onSelectionChange">
+							<items>
+								<core:Item key="{site>MSN}" text="{site>MSN}" />
+							</items>
+						</ComboBox>
+					</f:content>
+				</f:SimpleForm>
+				<layoutData>
+					<l:SplitterLayoutData size="20%" resizable="true" />
+				</layoutData>
+			</VBox>
+
+		</l:Splitter>
+
+	</Page>
+
+
+</core:View>

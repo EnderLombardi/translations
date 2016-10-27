@@ -74,3 +74,7 @@ font-style: normal !important;
 	font-family: "Arial", Sans-serif !important;
 	font-size: 14px !important;
 }
+
+.sapMBar sapMBar-CTX sapMContent-CTX sapMIBar sapMIBar-CTX sapMPageSubHeader sapMSubHeader-CTX{
+	background-color: #d5f1f8 !important;
+}

@@ -16,13 +16,13 @@
 
 				<Toolbar>
 					<ComboBox class="sapUiMediumMarginEnd" placeholder="{disruptiontrackerI18n>selectFilter}"
-						items="{ path: 'filterData>/filters' }">
-						<core:Item key="{filterData>key}" text="{filterData>name}" />
+						items="{ path: 'disruptionsFilterData>/filters' }">
+						<core:Item key="{disruptionsFilterData>key}" text="{disruptionsFilterData>name}" />
 					</ComboBox>
 
 					<ComboBox class="sapUiMediumMarginEnd" placeholder="{disruptiontrackerI18n>selectOrder}"
-						items="{ path: 'orderData>/orders' }">
-						<core:Item key="{orderData>key}" text="{orderData>name}" />
+						items="{ path: 'disruptionsOrderData>/orders' }">
+						<core:Item key="{disruptionsOrderData>key}" text="{disruptionsOrderData>name}" />
 					</ComboBox>
 
 					<SearchField width="10rem" />
@@ -35,7 +35,7 @@
 		</Panel>
 		
 		
-		<Table class="disruptionsTable" items="{ path: 'tableData>/list' }">
+		<Table class="disruptionsTable" items="{ path: 'disruptionsListData>/Rowsets/Rowset/Row' }">
 
 			<columns>
 				<Column>
@@ -51,19 +51,19 @@
 					<Text text="{disruptiontrackerI18n>problem}" />
 				</Column>
 				<Column>
-					<Text text="{disruptiontrackerI18n>help}" />
+					<Text text="{disruptiontrackerI18n>responsibleGroup}" />
 				</Column>
 				<Column>
-					<Text text="{disruptiontrackerI18n>esclv}" />
+					<Text text="{disruptiontrackerI18n>severity}" />
 				</Column>
 				<Column>
 					<Text text="{disruptiontrackerI18n>openingTime}" />
 				</Column>
 				<Column>
-					<Text text="{disruptiontrackerI18n>expected}" />
+					<Text text="{disruptiontrackerI18n>fixedByTime}" />
 				</Column>
 				<Column>
-					<Text text="{disruptiontrackerI18n>timeToEscl}" />
+					<Text text="{disruptiontrackerI18n>timeBofreNextEsc}" />
 				</Column>
 				<Column>
 					<Text text="{disruptiontrackerI18n>solution}" />
@@ -71,28 +71,24 @@
 				<Column>
 					<Text text="{disruptiontrackerI18n>closureDate}" />
 				</Column>
-				<Column>
-					<Text text="{disruptiontrackerI18n>osw}" />
-				</Column>
 			</columns>
 			
 			<items>
 				<ColumnListItem type="Navigation">
 					<cells>
-						<Text text="{tableData>operation}" />
-						<ObjectStatus class="sapUiSmallMarginBottom" text="{tableData>gravity}"
-							state="{parts: [ {path: 'tableData>gravity'}, {path: 'tableData>escalation'} ], formatter: 'airbus.mes.disruptiontracker.Formatter.setState'}"
-							icon="{path: 'tableData>gravity', formatter: 'airbus.mes.disruptiontracker.Formatter.setIcon'}" />
-						<Text text="{tableData>status}" />
-						<Text text="{tableData>problem}" />
-						<Text text="{tableData>help}" />
-						<Text text="{tableData>esclv}" />
-						<Text text="{tableData>opentime}" />
-						<Text text="{tableData>expected}" />
-						<Text text="{tableData>time2esc}" />
-						<Text text="{tableData>solution}" />
-						<Text text="{tableData>closure}" />
-						<Text text="{tableData>osw}" />
+						<Text text="{disruptionsListData>Operation}" />
+						<ObjectStatus class="sapUiSmallMarginBottom" text="{path: 'disruptionsListData>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setText'}"
+							state="{parts: [ {path: 'disruptionsListData>Status'}, {path: 'disruptionsListData>Gravity'}, {path: 'disruptionsListData>Severity'} ], formatter: 'airbus.mes.disruptiontracker.Formatter.setState'}"
+							icon="{path: 'disruptionsListData>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setIcon'}" />
+						<Text text="{disruptionsListData>Status}" />
+						<Text text="{disruptionsListData>Problem}" />
+						<Text text="{disruptionsListData>ResponsibleGroup}" />
+						<Text text="{disruptionsListData>Severity}" />
+						<Text text="{disruptionsListData>OpeningTime}" />
+						<Text text="{disruptionsListData>FixedByTime}" />
+						<Text text="{disruptionsListData>TimeBeforeNextEscalation}" />
+						<Text text="{disruptionsListData>Solution}" />
+						<Text text="{disruptionsListData>Closure}" />
 					</cells>
 				</ColumnListItem>
 			</items>

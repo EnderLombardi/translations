@@ -71,6 +71,24 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		}
 		this.getView().byId("disruptNotifications").openNavigation();
 		this.getView().byId("disruptNotifications").closeNavigation();
+		
+		// Place the table in the custom control 
+		if (airbus.mes.disruptiontracker === undefined) {
+			jQuery.sap.registerModulePath("airbus.mes.disruptiontracker", "../components/disruptiontracker");
+			this.odisruptiontrackerComp = sap.ui.getCore().createComponent({
+				name : "airbus.mes.disruptiontracker",
+				id : "customDisruptionComponent"         
+			});
+			airbus.mes.disruptiontracker.oView = this.odisruptiontrackerComp.oView;
+			
+		}
+	
+		airbus.mes.disruptiontracker.oView
+				.placeAt("stationTracker--disruptions");
+
+		
+		
+		
 
 	},
 	onProductionGroupPress : function(oEvent){
@@ -543,7 +561,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	},
 	changeShift : function(Oevt) {
 			
-		var sPath = Oevt.getSource().getSelectedIndex();
+		var sPath = airbus.mes.stationtracker.oView.byId("selectShift").getSelectedIndex();
 		var oModel = airbus.mes.stationtracker.oView.getModel("stationTrackerShift").getProperty("/" + sPath);
 	
 		airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftName = oModel.shiftName;
@@ -802,4 +820,14 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		else
 			this.getView().byId("disruptNotifications").closeNavigation();
 	},
+	
+	/**
+     * Change the date of scheduler
+     */
+	changeDay : function(oEvt) {
+		
+		scheduler.updateView(oEvt.getSource().getDateValue())
+		airbus.mes.stationtracker.ModelManager.selectMyShift();
+	}
+	
 });
