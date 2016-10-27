@@ -12,11 +12,11 @@
 		<subHeader>
 			<Bar>
 				<contentLeft>
-					<Button id="Back" type="Transparent" text="{i18n>Back}" press="onPress"
+					<Button id="navBack" type="Transparent" text="{i18n>Back}" press="onPress"
 						icon="sap-icon://arrow-left" height="100%" />
 				</contentLeft>
 				<contentRight>
-					<Button id="Confirm" type="Transparent" text="{i18n>Confirm}"
+					<Button  id="navConfirm" type="Transparent" text="{i18n>Confirm}"
 						press="onPress" iconFirst="false" icon="sap-icon://arrow-right"
 						height="100%" />
 				</contentRight>
@@ -106,6 +106,7 @@
 								<core:Item key="{site>MSN}" text="{site>MSN}" />
 							</items>
 						</ComboBox>
+						<CheckBox id="currMSN"  selected="true"  text="{i18n>CurrentMSN}" style="font-weight: bold;" />
 					</f:content>
 				</f:SimpleForm>
 				<layoutData>

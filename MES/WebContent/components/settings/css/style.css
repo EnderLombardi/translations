@@ -14,7 +14,6 @@
 
 .footerToolbar {
 	background-color: #5E696E;
-/* 	margin: 0% 0% 0% 22%;
  */}
 
 .buttonLoad>.sapMBtnText {
@@ -105,4 +104,10 @@ font-style: normal !important;
 }
 #globalNavView .sapMIBar-CTX .sapMBtnTransparent {
 	color:#ffffff;
+}
+[id^="View1--nav"] {
+	color: #333333;
+}
+[id^="View1--currMSN"] {
+	font-weight: bold;
 }
