@@ -25,7 +25,7 @@
 						<core:Item key="{disruptionsOrderData>key}" text="{disruptionsOrderData>name}" />
 					</ComboBox>
 
-					<SearchField width="10rem" />
+					<SearchField width="13rem" placeholder="Search disruption" />
 					<ToolbarSpacer />
 					<Button text="{disruptiontrackerI18n>disruptionKPI}" />
 				</Toolbar>

@@ -1,17 +1,17 @@
 {
 	"orders": [{
-			"name": "Order 1",
+			"name": "Solved",
 			"key": "Z1"
 			},
 
 		{
-			"name": "Order 2",
+			"name": "Pending",
 			"key": "Z2"
 
 		},
 
 		{
-			"name": "Order 3",
+			"name": "Closed",
 			"key": "Z3"
 
 		}
