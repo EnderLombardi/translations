@@ -174,13 +174,13 @@ airbus.mes.stationtracker.util.Formatter = {
 		
 				}
 			
-				var sSpanText = '<span style="position: relative; z-index: 1; float: left; overflow: hidden; text-overflow: ellipsis; max-width:40%; white-space: nowrap;">' + sText + '</span>';	
+				var sSpanText = '<span style="padding-left: 10px; position: relative; z-index: 1; float: left; overflow: hidden; text-overflow: ellipsis; max-width:40%; white-space: nowrap;">' + sText + '</span>';	
 				var sProgressText = '<span style="position: relative;  z-index: 1; float: right; overflow: hidden; text-overflow: ellipsis; max-width:40%; white-space: nowrap; padding-left:10px; padding-right:10px;"> ['+
 				airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.progress) +'/'+ 
 				airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.totalDuration) +' IM]</span>';	
 								
 				// need one more condition to add OSW
-				if ( oBox.routingMaturityAssessment != "---" ) {
+				if ( oBox.rmaStatus != "---" ) {
 					
 					var sLeftIcon = '<i class="fa fa-exclamation-triangle" style="position: relative; z-index: 1; padding-left:10px; padding-right:10px; line-height: 23px; color:white; float: left;" ></i>';
 				}  
