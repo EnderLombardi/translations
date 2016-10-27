@@ -77,9 +77,11 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 	 * 
 	 * @memberOf components.globalnav.globalNavigation
 	 */
+
 //	onAfterRendering : function() {
 //		
 //	},
+
 
 	/**
 	 * Called when the Controller is destroyed. Use this one to free resources

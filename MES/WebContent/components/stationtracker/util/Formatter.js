@@ -157,6 +157,7 @@ airbus.mes.stationtracker.util.Formatter = {
 				var sLeftIcon = "";
 				var sColorProgress = "";
 				var sText = "";
+				var sProgress = airbus.mes.stationtracker.util.Formatter.percentValue(oBox.progress,oBox.totalDuration)
 				// Text to display different case regarding box selected
 				switch (airbus.mes.stationtracker.GroupingBoxingManager.box) {
 		
@@ -197,13 +198,13 @@ airbus.mes.stationtracker.util.Formatter = {
 				switch ( oBox.paused ) {
 				// box is active
 					case 2 :
-						var sColorProgress = '<div style="width:' + oBox.progress + '%; height:inherit; background-color:#84bd00; position:absolute; z-index: 0; left: 0px;"></div>';
+						var sColorProgress = '<div style="width:' + sProgress + '%; height:inherit; background-color:#84bd00; position:absolute; z-index: 0; left: 0px;"></div>';
 						var sRightIcon = '<i class="fa fa-play" style="position: relative; z-index: 1; padding-right:10px; line-height: 23px; color:white; float: right;" ></i>';
 						
 					break;
 				// box is paused
 					case 3 :
-						var sColorProgress = '<div style="width:' + oBox.progress + '%; height:inherit; background-color:#84bd00; position:absolute; z-index: 0; left: 0px;"></div>';
+						var sColorProgress = '<div style="width:' + sProgress + '%; height:inherit; background-color:#84bd00; position:absolute; z-index: 0; left: 0px;"></div>';
 						var sRightIcon = '<i class="fa fa-pause" style="position: relative; z-index: 1; padding-right:10px; line-height: 23px; color:white; float: right;" ></i>';
 						break;
 				// box not started
