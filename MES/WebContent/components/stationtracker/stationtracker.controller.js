@@ -165,7 +165,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			return func(date);
 		};
 		scheduler.config.preserve_length = true;
-		scheduler.updateView(airbus.mes.stationtracker.ShiftManager.currentShiftStart);
+		//scheduler.updateView(airbus.mes.stationtracker.ShiftManager.currentShiftStart);
 		/* Delete Selection box when shift */
 		for (var i = 0; i < $("select[class='selectBoxStation']").length; i++) {
 			$("select[class='selectBoxStation']").eq(i).remove();
@@ -176,8 +176,10 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			scheduler.deleteMarkedTimespan(el);
 		
 		})
-		airbus.mes.stationtracker.ModelManager.selectMyShift();
-		scheduler.updateView();
+		
+		airbus.mes.stationtracker.oView.byId("selectShift").setEnabled(false);
+		airbus.mes.stationtracker.oView.byId("selectShift").fireChange(0);
+		//scheduler.updateView();
 	},
 
 	onDayPress : function() {
@@ -203,12 +205,13 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			return func(date);
 		};
 		scheduler.config.preserve_length = true;
-		scheduler.updateView(airbus.mes.stationtracker.ShiftManager.currentShiftStart);
+		//scheduler.updateView(airbus.mes.stationtracker.ShiftManager.currentShiftStart);
 		
 		// Need this to update selected view and dont brake the behaviour of overflowtoolbar not needed if use Toolbar
 		airbus.mes.stationtracker.oView.byId("buttonViewMode").rerender();
 		airbus.mes.stationtracker.oView.byId("buttonViewMode").setSelectedKey("day");
 		
+		airbus.mes.stationtracker.oView.byId("selectShift").setEnabled(true);
 		airbus.mes.stationtracker.ModelManager.selectMyShift();
 	},
 
@@ -598,10 +601,17 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			css:   "shiftCss",
 			
 		}));
-				
-		scheduler.updateView();
 		
+			scheduler.updateView();
 		}
+		
+		// this is permit to display same shift when clicking from day to shift display.
+		if ( airbus.mes.stationtracker.ShiftManager.shiftDisplay ) {
+			
+			scheduler.updateView(airbus.mes.stationtracker.ShiftManager.ShiftSelected.StartDate);
+		}	
+		
+		
 	},
 	
 	changeGroupWorkList : function(oEvent) {
