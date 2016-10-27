@@ -6,26 +6,55 @@ sap.ui.controller("airbus.mes.settings.Settings",
 		{
 	
 //			Tree to define the hierarchy between select box Line, Station and MSN	
+//			selectTree : {
+//				id : "selectLine",
+//				type : "select",
+//				path : "line",
+//				attr : "line",
+//				childs : [ {
+//					id : "selectStation",
+//					type : "select",
+//					path : "station",
+//					attr : "station",
+//					childs : []
+//				}, {
+//					id : "selectMSN",
+//					type : "select",
+//					path : "msn",
+//					childs : []
+//				}, {
+//					id : "Return",
+//					type : "Return",
+//					childs : []
+//				} ]
+//			},
+//			
 			selectTree : {
-				id : "selectLine",
+				id : "selectProgram",
 				type : "select",
-				path : "line",
-				attr : "line",
+				path : "program",
+				attr : "program",
 				childs : [ {
-					id : "selectStation",
+					id : "selectLine",
 					type : "select",
-					path : "station",
-					attr : "station",
-					childs : []
-				}, {
-					id : "selectMSN",
-					type : "select",
-					path : "msn",
-					childs : []
-				}, {
-					id : "Return",
-					type : "Return",
-					childs : []
+					path : "line",
+					attr : "line",
+					childs : [ {
+						id : "selectStation",
+						type : "select",
+						path : "station",
+						attr : "station",
+						childs : []
+					}, {
+						id : "selectMSN",
+						type : "select",
+						path : "msn",
+						childs : []
+					}, {
+						id : "Return",
+						type : "Return",
+						childs : []
+					} ]
 				} ]
 			},
 
@@ -98,11 +127,9 @@ sap.ui.controller("airbus.mes.settings.Settings",
 				var aFilters = [];
 				var oElement = oTree.parent;
 				while (oElement) {
-					var val = this.getView().byId(oElement.id)
-							.getValue();
+					var val = this.getView().byId(oElement.id).getValue();
 					if (val) {
-						var oFilter = new sap.ui.model.Filter(
-								oElement.path, "EQ", val);
+						var oFilter = new sap.ui.model.Filter( oElement.path, "EQ", val);
 						aFilters.push(oFilter);
 					}
 					;

@@ -22,7 +22,7 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 				airbus.mes.settings.GlobalFunction.navigateTo(
 						"Go to Station Tracker", "stationtracker");
 				break;
-			case "TeamAssignment":
+			case "ResourcePool":
 				airbus.mes.settings.GlobalFunction.navigateTo(
 						"Go to Team Assignment", "teamassignment");
 				break;
@@ -46,7 +46,7 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 				airbus.mes.shell.util.navFunctions.stationTracker();
 				break;
 
-			case "TeamAssignment":
+			case "ResourcePool":
 				airbus.mes.shell.util.navFunctions.resourcePool();
 				break;
 

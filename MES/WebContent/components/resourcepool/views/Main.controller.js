@@ -3,6 +3,9 @@ sap.ui
 				"airbus.mes.resourcepool.views.Main",
 				{
 
+					resourcePoolName : undefined,
+					resourcePoolDescription : undefined,
+
 					/**
 					 * Called when a controller is instantiated and its View
 					 * controls (if available) are already created. Can be used
@@ -151,15 +154,21 @@ sap.ui
 					 * Triggers when Assign Button is clicked on Users Tab
 					 **********************************************************/
 					assignUsers : function(evt) {
-						var aUsersToAssign = this.getView().byId("listAvailableUsers").getSelectedItems();
+						var aUsersToAssign = this.getView().byId(
+								"listAvailableUsers").getSelectedItems();
 
 						var aError = [];
 
 						/* If no selections are made when assigning show error */
 						if (!aUsersToAssign || aUsersToAssign.length == 0) {
-							airbus.mes.resourcepool.util.ModelManager.showMessage("Toast", "",
-									airbus.mes.resourcepool.oView.getModel("i18nModel")
-											.getProperty("NoSelections"), "")
+							airbus.mes.resourcepool.util.ModelManager
+									.showMessage(
+											"Toast",
+											"",
+											airbus.mes.resourcepool.oView
+													.getModel("i18nModel")
+													.getProperty("NoSelections"),
+											"");
 							return;
 						}
 						airbus.mes.resourcepool.util.ModelManager.anyChangesFlag = true;
@@ -179,26 +188,42 @@ sap.ui
 									 * then prepare error messages
 									 */
 									if (item.getCustomData()[2].getValue() != "---"
-											&& item.getCustomData()[3].getValue() != airbus.mes.resourcepool.util.ModelManager.resourceName)
+											&& item.getCustomData()[3]
+													.getValue() != airbus.mes.resourcepool.util.ModelManager.resourceName)
 										aError.push(item);
 									else {
 										/*
 										 * prepare a JSON object with all
 										 * details of Assigned User
 										 */
-										//var info = item.getInfo().split("/ ");
-										//var name = item.getCustomData()[3].getValue();
-										var loaned_RP_Name = item.getCustomData()[4].getValue()?item.getCustomData()[4].getValue():"";
+										// var info = item.getInfo().split("/
+										// ");
+										// var name =
+										// item.getCustomData()[3].getValue();
+										var loaned_RP_Name = item
+												.getCustomData()[4].getValue() ? item
+												.getCustomData()[4].getValue()
+												: "";
 
 										var oJsonAssignedUsers = {
-											"USER_ID" : item.getCustomData()[7].getValue(),
+											"USER_ID" : item.getCustomData()[7]
+													.getValue(),
 											"SITE" : airbus.mes.resourcepool.util.ModelManager.site,
-											"NAME" : item.getCustomData()[3].getValue(),
-											"PERSONAL_NO" : item.getCustomData()[0].getValue(),
-											"ERP_USER_ID" : item.getCustomData()[1].getValue(),
-											"FNAME" : item.getCustomData()[5].getValue(),
-											"LNAME" : item.getCustomData()[6].getValue(),
-											"LOANED_TO_POOL" : item.getCustomData()[2].getValue(),
+											"NAME" : item.getCustomData()[3]
+													.getValue(),
+											"PERSONAL_NO" : item
+													.getCustomData()[0]
+													.getValue(),
+											"ERP_USER_ID" : item
+													.getCustomData()[1]
+													.getValue(),
+											"FNAME" : item.getCustomData()[5]
+													.getValue(),
+											"LNAME" : item.getCustomData()[6]
+													.getValue(),
+											"LOANED_TO_POOL" : item
+													.getCustomData()[2]
+													.getValue(),
 											"LOANED_RP_NAME" : loaned_RP_Name
 										}
 										/*
@@ -211,22 +236,29 @@ sap.ui
 									}
 								});
 
-						sap.ui.getCore().getModel("AssignedUsersModel").refresh();
-						
+						sap.ui.getCore().getModel("AssignedUsersModel")
+								.refresh();
+
 						/* remove all selections on screen */
-						this.getView().byId("listAvailableUsers").removeSelections();
-						this.getView().byId("allAvailableUsers").setSelected(false);
-						this.getView().byId("allAssignedUsers").setSelected(false);
+						this.getView().byId("listAvailableUsers")
+								.removeSelections();
+						this.getView().byId("allAvailableUsers").setSelected(
+								false);
+						this.getView().byId("allAssignedUsers").setSelected(
+								false);
 
 						/* remove assigned users from AvailableUsersModel */
 						var oModelAvailableUsers = sap.ui.getCore().getModel(
 								"AvailableUsersModel").oData.Rowsets.Rowset[0].Row;
 
 						for (var i = 0; i < aUsersToAssign.length; i++) {
-							if (aUsersToAssign[i].getCustomData()[2].getValue() != "---" && aUsersToAssign[i].getCustomData()[3].getValue() != airbus.mes.resourcepool.util.ModelManager.resourceName)
+							if (aUsersToAssign[i].getCustomData()[2].getValue() != "---"
+									&& aUsersToAssign[i].getCustomData()[3]
+											.getValue() != airbus.mes.resourcepool.util.ModelManager.resourceName)
 								continue;
 							for (var j = 0; j < oModelAvailableUsers.length; j++) {
-								if (oModelAvailableUsers[j].USER_ID == aUsersToAssign[i].getCustomData()[7].getValue())
+								if (oModelAvailableUsers[j].USER_ID == aUsersToAssign[i]
+										.getCustomData()[7].getValue())
 									oModelAvailableUsers.splice(j, 1);
 							}
 						}
@@ -244,26 +276,54 @@ sap.ui
 					 * users which cannot be assigned any longer
 					 **********************************************************/
 					showMessageDialog : function(aError) {
-						if (!this.oMessageDialog) {
-							this.oMessageDialog = sap.ui.xmlfragment(
-									"airbus.mes.resourcepool.views.messageDialog", this);
+						if (airbus.mes.resourcepool.messageDialog === undefined) {
+
+							airbus.mes.resourcepool.messageDialog = sap.ui
+									.xmlfragment(
+											"messageDialog",
+											"airbus.mes.resourcepool.views.messageDialog",
+											airbus.mes.resourcepool.oView
+													.getController());
+							airbus.mes.resourcepool.oView
+									.addDependent(airbus.mes.resourcepool.messageDialog);
 						}
-						this.oMessageDialog.open();
+						airbus.mes.resourcepool.messageDialog.open();
+
 						for (var i = 0; i < aError.length; i++) {
-							this.oMessageDialog.getContent()[0]
+							airbus.mes.resourcepool.messageDialog.getContent()[0]
 									.addItem(new sap.m.Text(
 											{
-												text : airbus.mes.resourcepool.oView.getModel("i18nModel")
+												text : airbus.mes.resourcepool.oView
+														.getModel("i18nModel")
 														.getProperty("User")
 														+ " "
-														+ this.titleCase(aError[i].getCustomData()[5].getValue() +" "+ aError[i].getCustomData()[6].getValue())
+														+ this
+																.titleCase(aError[i]
+																		.getCustomData()[5]
+																		.getValue()
+																		+ " "
+																		+ aError[i]
+																				.getCustomData()[6]
+																				.getValue())
 														+ " "
-														+ airbus.mes.resourcepool.oView.getModel("i18nModel").getProperty("AssignedToResourcePool")
+														+ airbus.mes.resourcepool.oView
+																.getModel(
+																		"i18nModel")
+																.getProperty(
+																		"AssignedToResourcePool")
 														+ " "
-														+ aError[i].getCustomData()[3].getValue()
+														+ aError[i]
+																.getCustomData()[3]
+																.getValue()
 														+ " "
-														+ airbus.mes.resourcepool.oView.getModel("i18nModel").getProperty("LoanedToResourcePool")
-														+ aError[i].getCustomData()[4].getValue()
+														+ airbus.mes.resourcepool.oView
+																.getModel(
+																		"i18nModel")
+																.getProperty(
+																		"LoanedToResourcePool")
+														+ aError[i]
+																.getCustomData()[4]
+																.getValue()
 
 											}));
 						}
@@ -275,22 +335,30 @@ sap.ui
 					 * appeared while assigning users
 					 **********************************************************/
 					afterMessageDialogClose : function() {
-						this.oMessageDialog.getContent()[0].removeAllItems();
-						this.oMessageDialog.close();
+						airbus.mes.resourcepool.messageDialog.getContent()[0]
+								.removeAllItems();
+						airbus.mes.resourcepool.messageDialog.close();
 					},
 
 					/***********************************************************
 					 * Triggers when unAssign button is clicked on the Users tab
 					 **********************************************************/
 					unassignUsers : function(evt) {
-						var aUsersToUnassign = this.getView().byId("listAllocatedUsers")
-								.getSelectedItems();
+						var aUsersToUnassign = this.getView().byId(
+								"listAllocatedUsers").getSelectedItems();
 						/*
 						 * show error message when no users are selected when
 						 * unassigning
 						 */
 						if (!aUsersToUnassign || aUsersToUnassign.length == 0) {
-							airbus.mes.resourcepool.util.ModelManager.showMessage("Toast", "",airbus.mes.resourcepool.oView.getModel("i18nModel").getProperty("NoSelections"), "")
+							airbus.mes.resourcepool.util.ModelManager
+									.showMessage(
+											"Toast",
+											"",
+											airbus.mes.resourcepool.oView
+													.getModel("i18nModel")
+													.getProperty("NoSelections"),
+											"")
 							return;
 						}
 						airbus.mes.resourcepool.util.ModelManager.anyChangesFlag = true;
@@ -306,18 +374,29 @@ sap.ui
 						aUsersToUnassign
 								.forEach(function(item) {
 									/* create JSON Object */
-									var loaned_RP_Name = item.getCustomData()[4].getValue()?item.getCustomData()[4].getValue():"";
+									var loaned_RP_Name = item.getCustomData()[4]
+											.getValue() ? item.getCustomData()[4]
+											.getValue()
+											: "";
 
 									if (item.getCustomData()[3].getValue() != airbus.mes.resourcepool.util.ModelManager.resourceName)
 										// If Loaned to current resource
 										var oJsonAvailableUsers = {
-											"USER_ID" : item.getCustomData()[7].getValue(),
+											"USER_ID" : item.getCustomData()[7]
+													.getValue(),
 											"SITE" : airbus.mes.resourcepool.util.ModelManager.site,
-											"NAME" : item.getCustomData()[3].getValue(),
-											"PERSONAL_NO" : item.getCustomData()[0].getValue(),
-											"ERP_USER_ID" : item.getCustomData()[1].getValue(),
-											"FNAME" : item.getCustomData()[5].getValue(),
-											"LNAME" : item.getCustomData()[6].getValue(),
+											"NAME" : item.getCustomData()[3]
+													.getValue(),
+											"PERSONAL_NO" : item
+													.getCustomData()[0]
+													.getValue(),
+											"ERP_USER_ID" : item
+													.getCustomData()[1]
+													.getValue(),
+											"FNAME" : item.getCustomData()[5]
+													.getValue(),
+											"LNAME" : item.getCustomData()[6]
+													.getValue(),
 											"LOANED_TO_POOL" : "---",
 											"LOANED_RP_NAME" : loaned_RP_Name
 										}
@@ -326,14 +405,24 @@ sap.ui
 										// and may be loaned to other
 										// resource
 										var oJsonAvailableUsers = {
-											"USER_ID" : item.getCustomData()[7].getValue(),
+											"USER_ID" : item.getCustomData()[7]
+													.getValue(),
 											"SITE" : airbus.mes.resourcepool.util.ModelManager.site,
-											"NAME" : item.getCustomData()[3].getValue(),
-											"PERSONAL_NO" : item.getCustomData()[0].getValue(),
-											"ERP_USER_ID" : item.getCustomData()[1].getValue(),
-											"FNAME" : item.getCustomData()[5].getValue(),
-											"LNAME" : item.getCustomData()[6].getValue(),
-											"LOANED_TO_POOL" : item.getCustomData()[2].getValue(),
+											"NAME" : item.getCustomData()[3]
+													.getValue(),
+											"PERSONAL_NO" : item
+													.getCustomData()[0]
+													.getValue(),
+											"ERP_USER_ID" : item
+													.getCustomData()[1]
+													.getValue(),
+											"FNAME" : item.getCustomData()[5]
+													.getValue(),
+											"LNAME" : item.getCustomData()[6]
+													.getValue(),
+											"LOANED_TO_POOL" : item
+													.getCustomData()[2]
+													.getValue(),
 											"LOANED_RP_NAME" : loaned_RP_Name
 										}
 
@@ -346,12 +435,16 @@ sap.ui
 											.push(oJsonAvailableUsers);
 								});
 
-						sap.ui.getCore().getModel("AvailableUsersModel").refresh();
-						
+						sap.ui.getCore().getModel("AvailableUsersModel")
+								.refresh();
+
 						/* remove all selection */
-						this.getView().byId("listAllocatedUsers").removeSelections();
-						this.getView().byId("allAvailableUsers").setSelected(false);
-						this.getView().byId("allAssignedUsers").setSelected(false);
+						this.getView().byId("listAllocatedUsers")
+								.removeSelections();
+						this.getView().byId("allAvailableUsers").setSelected(
+								false);
+						this.getView().byId("allAssignedUsers").setSelected(
+								false);
 
 						/* remove Users from AssignedUsersModel */
 						var oModelAssignedUsers = sap.ui.getCore().getModel(
@@ -359,7 +452,8 @@ sap.ui
 
 						for (var i = 0; i < aUsersToUnassign.length; i++) {
 							for (var j = 0; j < oModelAssignedUsers.length; j++) {
-								if (oModelAssignedUsers[j].USER_ID === aUsersToUnassign[i].getCustomData()[7].getValue())
+								if (oModelAssignedUsers[j].USER_ID === aUsersToUnassign[i]
+										.getCustomData()[7].getValue())
 									oModelAssignedUsers.splice(j, 1);
 							}
 						}
@@ -373,14 +467,19 @@ sap.ui
 					 **********************************************************/
 					assignWorkCenter : function(evt) {
 
-						var aWorkCenterToAssign = this.getView().byId("listAvailableWorkCenter")
-								.getSelectedItems();
+						var aWorkCenterToAssign = this.getView().byId(
+								"listAvailableWorkCenter").getSelectedItems();
 						/* If no selections are made when assigning show error */
 						if (!aWorkCenterToAssign
 								|| aWorkCenterToAssign.length == 0) {
-							airbus.mes.resourcepool.util.ModelManager.showMessage("Toast", "",
-									airbus.mes.resourcepool.oView.getModel("i18nModel")
-											.getProperty("NoSelections"), "")
+							airbus.mes.resourcepool.util.ModelManager
+									.showMessage(
+											"Toast",
+											"",
+											airbus.mes.resourcepool.oView
+													.getModel("i18nModel")
+													.getProperty("NoSelections"),
+											"")
 							return;
 						}
 						airbus.mes.resourcepool.util.ModelManager.anyChangesFlag = true;
@@ -411,10 +510,12 @@ sap.ui
 								});
 
 						sap.ui.getCore().getModel("AssignedWCModel").refresh();
-						
+
 						/* remove all selections on screen */
-						this.getView().byId("listAvailableWorkCenter").removeSelections();
-						this.getView().byId("allAvailableWC").setSelected(false);
+						this.getView().byId("listAvailableWorkCenter")
+								.removeSelections();
+						this.getView().byId("allAvailableWC")
+								.setSelected(false);
 						this.getView().byId("allAssignedWC").setSelected(false);
 
 						/* remove assigned WC from AvailableWCModel */
@@ -440,14 +541,19 @@ sap.ui
 					 **********************************************************/
 					unassignWorkCenter : function(evt) {
 
-						var aWorkCenterToUnassign = this.getView().byId("listAllocatedWorkCenter")
-								.getSelectedItems();
-						
+						var aWorkCenterToUnassign = this.getView().byId(
+								"listAllocatedWorkCenter").getSelectedItems();
+
 						if (!aWorkCenterToUnassign
 								|| aWorkCenterToUnassign.length == 0) {
-							airbus.mes.resourcepool.util.ModelManager.showMessage("Toast", "",
-									airbus.mes.resourcepool.oView.getModel("i18nModel")
-											.getProperty("NoSelections"), "")
+							airbus.mes.resourcepool.util.ModelManager
+									.showMessage(
+											"Toast",
+											"",
+											airbus.mes.resourcepool.oView
+													.getModel("i18nModel")
+													.getProperty("NoSelections"),
+											"")
 							return;
 						}
 						airbus.mes.resourcepool.util.ModelManager.anyChangesFlag = true;
@@ -468,10 +574,12 @@ sap.ui
 								});
 
 						sap.ui.getCore().getModel("AvailableWCModel").refresh();
-						
-						this.getView().byId("listAllocatedWorkCenter").removeSelections();
+
+						this.getView().byId("listAllocatedWorkCenter")
+								.removeSelections();
 						this.getView().byId("allAssignedWC").setSelected(false);
-						this.getView().byId("allAvailableWC").setSelected(false);
+						this.getView().byId("allAvailableWC")
+								.setSelected(false);
 
 						var oModelAssignedWC = sap.ui.getCore().getModel(
 								"AssignedWCModel").oData.Rowsets.Rowset[0].Row;
@@ -504,33 +612,41 @@ sap.ui
 						/* for Available Users List */
 						case this.getView().byId("allAvailableUsers").sId:
 							if (flag)
-								this.getView().byId("listAvailableUsers").selectAll();
+								this.getView().byId("listAvailableUsers")
+										.selectAll();
 							else
-								this.getView().byId("listAvailableUsers").removeSelections();
+								this.getView().byId("listAvailableUsers")
+										.removeSelections();
 							break;
-							
+
 						/* for Assigned Users List */
 						case this.getView().byId("allAssignedUsers").sId:
 							if (flag)
-								this.getView().byId("listAllocatedUsers").selectAll();
+								this.getView().byId("listAllocatedUsers")
+										.selectAll();
 							else
-								this.getView().byId("listAllocatedUsers").removeSelections();
+								this.getView().byId("listAllocatedUsers")
+										.removeSelections();
 							break;
-							
+
 						/* for available WC List */
 						case this.getView().byId("allAvailableWC").sId:
 							if (flag)
-								this.getView().byId("listAvailableWorkCenter").selectAll();
+								this.getView().byId("listAvailableWorkCenter")
+										.selectAll();
 							else
-								this.getView().byId("listAvailableWorkCenter").removeSelections();
+								this.getView().byId("listAvailableWorkCenter")
+										.removeSelections();
 							break;
-							
+
 						/* for Assigned WC List */
 						case this.getView().byId("allAssignedWC").sId:
 							if (flag)
-								this.getView().byId("listAllocatedWorkCenter").selectAll();
+								this.getView().byId("listAllocatedWorkCenter")
+										.selectAll();
 							else
-								this.getView().byId("listAllocatedWorkCenter").removeSelections();
+								this.getView().byId("listAllocatedWorkCenter")
+										.removeSelections();
 							break;
 						}
 
@@ -555,7 +671,8 @@ sap.ui
 						aModelData.push.apply(aModelData, aModelWCData);
 						aModelData.push.apply(aModelData, aModelShifts);
 
-						airbus.mes.resourcepool.util.ModelManager.updateResourcePool(aModelData);
+						airbus.mes.resourcepool.util.ModelManager
+								.updateResourcePool(aModelData);
 						airbus.mes.resourcepool.util.ModelManager.anyChangesFlag = false;
 
 						/* airbus.mes.resourcepool.util.ModelManager.loadMainViewModels(); */
@@ -564,22 +681,27 @@ sap.ui
 
 					saveAssignedUsers : function() {
 
-						var aAssignedItems = this.getView().byId("listAllocatedUsers").getItems();
+						var aAssignedItems = this.getView().byId(
+								"listAllocatedUsers").getItems();
 
 						var aModelData = []
 						for (var i = 0; i < aAssignedItems.length; i++) {
 
 							var oJson = {
 								"Type" : "U",
-								"Name" : aAssignedItems[i].getCustomData()[7].getValue(),
-								"PersonalNo" : aAssignedItems[i].getCustomData()[0].getValue(),
-								"ERP_USER_ID" : aAssignedItems[i].getCustomData()[1].getValue(),
+								"Name" : aAssignedItems[i].getCustomData()[7]
+										.getValue(),
+								"PersonalNo" : aAssignedItems[i]
+										.getCustomData()[0].getValue(),
+								"ERP_USER_ID" : aAssignedItems[i]
+										.getCustomData()[1].getValue(),
 								"ShiftStartDateTime" : "",
 								"ShiftEndDateTime" : "",
 								"ShiftValidFrom" : "",
 								"ShiftValidTo" : "",
 								"Description" : "",
-								"LOANED_TO_POOL" : aAssignedItems[i].getCustomData()[2].getValue()
+								"LOANED_TO_POOL" : aAssignedItems[i]
+										.getCustomData()[2].getValue()
 
 							}
 							aModelData.push(oJson);
@@ -589,7 +711,8 @@ sap.ui
 					},
 
 					saveAssignedWC : function() {
-						var aAssignedItems = this.getView().byId("listAllocatedWorkCenter").getItems();
+						var aAssignedItems = this.getView().byId(
+								"listAllocatedWorkCenter").getItems();
 
 						var aModelData = [];
 						for (var i = 0; i < aAssignedItems.length; i++) {
@@ -614,7 +737,8 @@ sap.ui
 					},
 
 					saveAssignedShifts : function() {
-						var aRows = this.getView().byId("shiftTable").getItems();
+						var aRows = this.getView().byId("shiftTable")
+								.getItems();
 
 						var aModelData = [];
 						for (var i = 0; i < aRows.length; i++) {
@@ -650,49 +774,35 @@ sap.ui
 					 * *************************** Back Button Press
 					 * ********************************
 					 */
-					/*onBackPress : function() {
-						if (airbus.mes.resourcepool.util.ModelManager.anyChangesFlag == true) {
-							if (!this.oDialog) {
-								this.oDialog = sap.ui.xmlfragment(
-										"airbus.mes.resourcepool.views.SaveChanges", this);
-							}
-
-							this.oDialog.open();
-						} else {
-							this.clearFilters();
-							app.removePage(main);
-							app.to(page);
-							sap.ui.getCore().byId("idSearchView--resourcePool")
-									.setValue(airbus.mes.resourcepool.util.ModelManager.resourceName);
-							sap.ui.getCore().byId("idSearchView--description")
-									.setValue(airbus.mes.resourcepool.util.ModelManager.resourceDescription);
-							// app.removePage("idMainView");
-							// sap.ui.getCore().byId("idMainView").destroy();
-						}
-					},
-
-					saveChangesUsingDialog : function() {
-						this.saveChangesToResourcePool();
-						this.oDialog.close();
-						this.clearFilters();
-						app.removePage(main);
-						app.to(page);
-
-					},
-
-					afterDialogClose : function() {
-						airbus.mes.resourcepool.util.ModelManager.anyChangesFlag = false;
-						this.oDialog.close();
-						this.clearFilters();
-						app.removePage(main);
-						app.to(page);
-						// app.removePage("idMainView");
-						// sap.ui.getCore().byId("idMainView").destroy();
-					},
-
-					afterDialogCancel : function() {
-						this.oDialog.close();
-					},*/
+					/*
+					 * onBackPress : function() { if
+					 * (airbus.mes.resourcepool.util.ModelManager.anyChangesFlag ==
+					 * true) { if (!this.oDialog) { this.oDialog =
+					 * sap.ui.xmlfragment(
+					 * "airbus.mes.resourcepool.views.SaveChanges", this); }
+					 * 
+					 * this.oDialog.open(); } else { this.clearFilters();
+					 * app.removePage(main); app.to(page);
+					 * sap.ui.getCore().byId("idSearchView--resourcePool")
+					 * .setValue(airbus.mes.resourcepool.util.ModelManager.resourceName);
+					 * sap.ui.getCore().byId("idSearchView--description")
+					 * .setValue(airbus.mes.resourcepool.util.ModelManager.resourceDescription); //
+					 * app.removePage("idMainView"); //
+					 * sap.ui.getCore().byId("idMainView").destroy(); } },
+					 * 
+					 * saveChangesUsingDialog : function() {
+					 * this.saveChangesToResourcePool(); this.oDialog.close();
+					 * this.clearFilters(); app.removePage(main); app.to(page); },
+					 * 
+					 * afterDialogClose : function() {
+					 * airbus.mes.resourcepool.util.ModelManager.anyChangesFlag =
+					 * false; this.oDialog.close(); this.clearFilters();
+					 * app.removePage(main); app.to(page); //
+					 * app.removePage("idMainView"); //
+					 * sap.ui.getCore().byId("idMainView").destroy(); },
+					 * 
+					 * afterDialogCancel : function() { this.oDialog.close(); },
+					 */
 
 					/**
 					 * *************Search Functions for Users and Work
@@ -748,7 +858,8 @@ sap.ui
 						// add filter for search
 						var aFilters = [];
 						var sQuery = oEvt.getSource().getValue();
-						var oList = this.getView().byId("listAvailableWorkCenter");
+						var oList = this.getView().byId(
+								"listAvailableWorkCenter");
 						var binding = oList.getBinding("items");
 
 						if (sQuery && sQuery.length > 0) {
@@ -777,8 +888,9 @@ sap.ui
 						// add filter for search
 						var aFilters = [];
 						var sQuery = oEvt.getSource().getValue();
-						var oList = this.getView().byId("listAllocatedWorkCenter");
-						
+						var oList = this.getView().byId(
+								"listAllocatedWorkCenter");
+
 						var binding = oList.getBinding("items");
 
 						if (sQuery && sQuery.length > 0) {
@@ -804,29 +916,206 @@ sap.ui
 					},
 
 					showHelp : function(oEvent) {
-						
+
 						if (airbus.mes.resourcepool.help === undefined) {
 
-							airbus.mes.resourcepool.help = sap.ui.xmlfragment("resourcePoolHelp",
-									"airbus.mes.resourcepool.views.Help", airbus.mes.resourcepool.oView.getController());
-							airbus.mes.resourcepool.oView.addDependent(airbus.mes.resourcepool.help);
+							airbus.mes.resourcepool.help = sap.ui.xmlfragment(
+									"resourcePoolHelp",
+									"airbus.mes.resourcepool.views.Help",
+									airbus.mes.resourcepool.oView
+											.getController());
+							airbus.mes.resourcepool.oView
+									.addDependent(airbus.mes.resourcepool.help);
 						}
 						airbus.mes.resourcepool.help.open();
 
 					},
-					
-					openSelectResourcePool: function(oEvent){
-						if (airbus.mes.resourcepool.selectResourcePool === undefined) {
-
-							airbus.mes.resourcepool.selectResourcePool = sap.ui.xmlfragment("selectResourcePool",
-									"airbus.mes.resourcepool.views.selectRP", airbus.mes.resourcepool.oView.getController());
-							airbus.mes.resourcepool.oView.addDependent(airbus.mes.resourcepool.selectResourcePool);
-						}
-						airbus.mes.resourcepool.selectResourcePool.open();
-					},
 
 					afterHelpOK : function() {
 						airbus.mes.resourcepool.help.close();
+					},
+
+					/***********************************************************
+					 * Open Search Resource Pool Dialogue
+					 **********************************************************/
+					openSelectResourcePool : function(oEvent) {
+						if (airbus.mes.resourcepool.searchResourcePool === undefined) {
+
+							airbus.mes.resourcepool.searchResourcePool = sap.ui
+									.xmlfragment(
+											"searchResourcePool",
+											"airbus.mes.resourcepool.views.Search",
+											airbus.mes.resourcepool.oView
+													.getController());
+							airbus.mes.resourcepool.oView
+									.addDependent(airbus.mes.resourcepool.searchResourcePool);
+						}
+						airbus.mes.resourcepool.searchResourcePool.open();
+						sap.ui
+								.getCore()
+								.byId("searchResourcePool--site")
+								.setText(
+										airbus.mes.resourcepool.util.ModelManager.site);
+						sap.ui
+								.getCore()
+								.byId("searchResourcePool--resourcePool")
+								.setValue(
+										airbus.mes.resourcepool.util.ModelManager.resourceName);
+						sap.ui
+								.getCore()
+								.byId("searchResourcePool--description")
+								.setValue(
+										airbus.mes.resourcepool.util.ModelManager.resourceDescription);
+
+						/* Attach focus out event to resource pool field */
+						airbus.mes.resourcepool.util.ModelManager.currentView = this
+								.getView();
+						var oInputResource = sap.ui.getCore().byId(
+								"searchResourcePool--resourcePool");
+						oInputResource.attachBrowserEvent("focusout",
+								this.onFocusOutOfResourcePool, this);
+					},
+
+					cancelForm : function(oEvt) {
+						airbus.mes.resourcepool.searchResourcePool.close();
+						if (airbus.mes.resourcepool.util.ModelManager.resourceName === undefined
+								|| airbus.mes.resourcepool.util.ModelManager.resourceName == "") {
+							// if(nav.getPreviousPage().sId != "homePageView")
+							// nav.back();
+							nav.back();
+						}
+					},
+
+					/***********************************************************
+					 * Triggers when user focus out from resource pool field
+					 * 
+					 * @returns {Boolean} : false: resource pool does not
+					 *          exists, true: resource pool exists
+					 **********************************************************/
+					onFocusOutOfResourcePool : function() {
+						var resource = sap.ui.getCore().byId(
+								"searchResourcePool--resourcePool").getValue();
+
+						var oButton = sap.ui.getCore().byId(
+								"searchResourcePool--createOrDeleteButton");
+						/*
+						 * if resource pool is empty , create button will be
+						 * shown
+						 */
+						if (resource === "") {
+
+							sap.ui.getCore().byId(
+									"searchResourcePool--description")
+									.setValue("");
+							oButton.setIcon("sap-icon://create");
+							oButton.setTooltip("create");
+							return;
+
+						}
+						/* search resource pool description in existing list */
+						var value = this.searchValueHelp(resource);
+
+						/*
+						 * if description not exists - means resource pool does
+						 * not exists
+						 */
+						if (!value) {
+							/* message displayed according to roles */
+							if (airbus.mes.shell.RoleManager
+									.isAllowed('MII_MOD1684_PRODMNG')
+									|| airbus.mes.shell.RoleManager
+											.isAllowed('MII_MOD1684_MANUFMNG')
+									|| airbus.mes.shell.RoleManager
+											.isAllowed('MII_MOD1684_HOOPE')
+									|| airbus.mes.shell.RoleManager
+											.isAllowed('MII_MOD1684_MFTEAM')) {
+								airbus.mes.resourcepool.util.ModelManager
+										.showMessage(
+												"Strip",
+												"Error",
+												airbus.mes.resourcepool.oView
+														.getModel("i18nModel")
+														.getProperty(
+																"ResourceNotExists")
+														+ airbus.mes.resourcepool.oView
+																.getModel(
+																		"i18nModel")
+																.getProperty(
+																		"CreateNewOne"),
+												true);
+							} else {
+								airbus.mes.resourcepool.util.ModelManager
+										.showMessage(
+												"Strip",
+												"Error",
+												airbus.mes.resourcepool.oView
+														.getModel("i18nModel")
+														.getProperty(
+																"ResourceNotExists"));
+							}
+							/*
+							 * resource pool not exists- clear description and
+							 * set create icon
+							 */
+							sap.ui.getCore().byId(
+									"searchResourcePool--description").focus();
+							sap.ui.getCore().byId(
+									"searchResourcePool--description")
+									.setValue("");
+							oButton.setIcon("sap-icon://create");
+							oButton.setTooltip("create");
+							return false;
+						} else {
+							/*
+							 * resource pool exists- show description and set
+							 * delete button
+							 */
+							sap.ui.getCore().byId(
+									"searchResourcePool--description")
+									.setValue(value);
+							oButton.setIcon("sap-icon://delete");
+							oButton.setTooltip("delete");
+							return true;
+						}
+					},
+
+					/***********************************************************
+					 * Show Value help on resource pool field
+					 **********************************************************/
+					showValueHelp : function(oEvent) {
+						if (airbus.mes.resourcepool.valueHelp === undefined) {
+
+							airbus.mes.resourcepool.valueHelp = sap.ui
+									.xmlfragment(
+											"valueHelp",
+											"airbus.mes.resourcepool.views.valueHelp",
+											airbus.mes.resourcepool.oView
+													.getController());
+							airbus.mes.resourcepool.oView
+									.addDependent(airbus.mes.resourcepool.valueHelp);
+						}
+						airbus.mes.resourcepool.valueHelp.open();
+					},
+
+					/***********************************************************
+					 * 
+					 * Close Value Help on clicking close button
+					 **********************************************************/
+					handleCloseValueHelp : function(oEvt) {
+						/*
+						 * if
+						 * (airbus.mes.resourcepool.util.ModelManager.resourceName
+						 * === undefined ||
+						 * airbus.mes.resourcepool.util.ModelManager.resourceName ==
+						 * "") { this.openSelectResourcePool();
+						 * airbus.mes.resourcepool.util.ModelManager
+						 * .showMessage( "Toast", "",
+						 * airbus.mes.resourcepool.oView .getModel("i18nModel")
+						 * .getProperty("RPMandatory"), "", 5000); }
+						 * 
+						 * else
+						 */
+						oEvt.getSource().getBinding("items").filter([]);
 					},
 
 					/***********************************************************
@@ -853,69 +1142,311 @@ sap.ui
 						var binding = oDialog.getBinding("items");
 						binding.filter(aFilters, "Application");
 					},
-					
+
 					/***********************************************************
 					 * handle selected value in the value help
 					 * 
 					 **********************************************************/
-					selectResourcePool : function(oEvt) {
+					handleSelectedValue : function(oEvt) {
 						/*
 						 * fill resource pool field and description field with
-						 * selected item and
-						 * Load tow global variables with resource pool
-						 * name and its description
+						 * selected item
 						 */
 						var oSelectedItem = oEvt.getParameter("selectedItem");
-						
-						
-						airbus.mes.resourcepool.util.ModelManager.resourceName = oSelectedItem.getTitle();
-						airbus.mes.resourcepool.util.ModelManager.resourceDescription = oSelectedItem.getDescription();
-						
+						var oResourcePool = sap.ui.getCore().byId(
+								"searchResourcePool--resourcePool");
+						var oDescription = sap.ui.getCore().byId(
+								"searchResourcePool--description");
+						var oButton = sap.ui.getCore().byId(
+								"searchResourcePool--createOrDeleteButton");
 
+						oResourcePool.setValue(oSelectedItem.getTitle());
+						oDescription.setValue(oSelectedItem.getDescription());
+
+						this.resourcePoolName = oResourcePool.getValue();
+						this.resourcePoolDescription = oDescription.getValue();
+
+						/* set create or delete buton based on some conditions */
+						if (!oResourcePool) {
+							oButton.setIcon("sap-icon://create");
+							oButton.setTooltip("create");
+						} else {
+							oButton.setIcon("sap-icon://delete");
+							oButton.setTooltip("delete");
+						}
 						/* clear search filter for each case */
 						oEvt.getSource().getBinding("items").filter([]);
-						
-						// Load Main Page
-						this.loadMainPage();
 
 					},
-					
+
+					/***********************************************************
+					 * triggers when create or delete button is clicked
+					 * 
+					 * @param oEvent :
+					 *            button event
+					 **********************************************************/
+					createOrDeleteResource : function(oEvent) {
+
+						/* get the value on the screen in variables */
+						var resourcePool = sap.ui.getCore().byId(
+								"searchResourcePool--resourcePool").getValue();
+						var description = sap.ui.getCore().byId(
+								"searchResourcePool--description").getValue();
+						var oButton = sap.ui.getCore().byId(
+								"searchResourcePool--createOrDeleteButton");
+
+						/* check mandatory parameters are filled */
+						if (this.checkMandatoryParam(resourcePool, description))
+							return;
+						/*
+						 * Special Characters are not allowed in resource pool
+						 * name
+						 */
+						if (/^[a-zA-Z0-9-_ ]*$/.test(resourcePool) == false) {
+							airbus.mes.resourcepool.util.ModelManager
+									.showMessage(
+											"Strip",
+											"Error",
+											airbus.mes.resourcepool.oView
+													.getModel("i18nModel")
+													.getProperty(
+															"NoSpecialCharacter"),
+											true);
+							return;
+						}
+
+						/* if create button is clicked */
+						if (oEvent.getSource().getIcon() === "sap-icon://create") {
+
+							/* call createResource() */
+							var anyError = airbus.mes.resourcepool.util.ModelManager
+									.createResource(sap.ui.getCore().byId(
+											"searchResourcePool--resourcePool")
+											.getValue(), sap.ui.getCore().byId(
+											"searchResourcePool--description")
+											.getValue());
+
+							/* if no error is returned, set button to delete */
+							if (anyError == 0) {
+								oButton.setIcon("sap-icon://delete");
+								oButton.setTooltip("delete");
+							}
+							/* if delete button is clicked */
+						} else if (oEvent.getSource().getIcon() === "sap-icon://delete") {
+
+							/* open DeleteConfirmation dialog before deleting */
+							this.oDeleteDialogue();
+
+						}
+					},
+
+					/***********************************************************
+					 * triggers when Save button is clicked on the screen
+					 * 
+					 * @returns {Number} 0: if not error in updating else 1.
+					 **********************************************************/
+					updateResource : function() {
+
+						var resourcePool = sap.ui.getCore().byId(
+								"searchResourcePool--resourcePool").getValue();
+						var description = sap.ui.getCore().byId(
+								"searchResourcePool--description").getValue();
+
+						/*
+						 * check mandatory paramaters are filled before
+						 * proceeding to update
+						 */
+						if (this.checkMandatoryParam(resourcePool, description))
+							return;
+
+						/*
+						 * call updateResource() method from
+						 * airbus.mes.resourcepool.util.ModelManager.
+						 */
+						var anyError = airbus.mes.resourcepool.util.ModelManager
+								.updateResource(resourcePool, description);
+						airbus.mes.resourcepool.util.ModelManager
+								.loadModelValueHelp();
+						/* if no error is returned return 0 */
+						if (anyError == 0) {
+
+							/* Set the title header of the main page */
+							if (resourcePool == airbus.mes.resourcepool.util.ModelManager.resourceName) {
+								airbus.mes.resourcepool.util.ModelManager.resourceDescription = description;
+								this
+										.getView()
+										.byId("resourcePoolName")
+										.setText(
+												airbus.mes.resourcepool.util.ModelManager.site
+														+ " / "
+														+ airbus.mes.resourcepool.util.ModelManager.resourceName
+														+ " / "
+														+ airbus.mes.resourcepool.util.ModelManager.resourceDescription);
+							}
+
+							return 0;
+						}
+
+						/*
+						 * if 1 is returned, means resource pool does not
+						 * exists, create new one by calling createResource()
+						 */
+						else if (anyError == 1)
+							var error = airbus.mes.resourcepool.util.ModelManager
+									.createResource(resourcePool, description);
+						/* if creation is successful return 0 */
+						if (error == 0)
+							return 0;
+						/* if creation is not successful return 1 */
+						else
+							return 1;
+
+					},
+
+					/***********************************************************
+					 * function triggers when form is submitted
+					 **********************************************************/
+					submitForm : function(oEvt) {
+
+						airbus.mes.resourcepool.util.ModelManager
+								.loadModelValueHelp();
+
+						var resourcePool = sap.ui.getCore().byId(
+								"searchResourcePool--resourcePool").getValue();
+						var description = sap.ui.getCore().byId(
+								"searchResourcePool--description").getValue();
+						/* Check Mandatory parameters are filled */
+						if (this.checkMandatoryParam(resourcePool, description))
+							return;
+
+						/* decide action on submitting form */
+						var action = this.checkResourcePool(resourcePool,
+								description);
+
+						switch (action) {
+
+						/* 0: everything is perfect to move to next screen */
+						case 0:
+							this.resourcePoolName = sap.ui.getCore().byId(
+									"searchResourcePool--resourcePool")
+									.getValue();
+							this.resourcePoolDescription = sap.ui.getCore()
+									.byId("searchResourcePool--description")
+									.getValue();
+							this.loadMainPage();
+							break;
+
+						/* 1: the entered resource pool does not exists */
+						case 1:
+							airbus.mes.resourcepool.util.ModelManager
+									.showMessage(
+											"Strip",
+											"Error",
+											airbus.mes.resourcepool.oView
+													.getModel("i18nModel")
+													.getProperty(
+															"ResourceNotExists"),
+											true);
+							break;
+
+						/*
+						 * 2: description is changed on the screen for the
+						 * resource pool
+						 */
+						case 2:
+
+							if (airbus.mes.resourcepool.oUpdateDialog === undefined) {
+
+								airbus.mes.resourcepool.oUpdateDialog = sap.ui
+										.xmlfragment(
+												"updateDialogue",
+												"airbus.mes.resourcepool.views.updateDescription",
+												airbus.mes.resourcepool.oView
+														.getController());
+								airbus.mes.resourcepool.oView
+										.addDependent(airbus.mes.resourcepool.oUpdateDialog);
+							}
+
+							// Open
+							airbus.mes.resourcepool.oUpdateDialog.open();
+
+						}
+					},
+
+					/***********************************************************
+					 * update description using dialog box
+					 **********************************************************/
+					updateDescriptionUsingDialog : function() {
+
+						airbus.mes.resourcepool.oUpdateDialog.close();
+						/*
+						 * call updateResource() from
+						 * airbus.mes.resourcepool.util.ModelManager
+						 */
+						var anyError = this.updateResource();
+						/* if no error is returned then load main page */
+						if (anyError == 0) {
+							this.resourcePoolName = sap.ui.getCore().byId(
+									"searchResourcePool--resourcePool")
+									.getValue();
+							this.resourcePoolDescription = sap.ui.getCore()
+									.byId("searchResourcePool--description")
+									.getValue();
+							this.loadMainPage();
+						}
+
+					},
+
+					/***********************************************************
+					 * Triggers on "No" of Update Dialog
+					 **********************************************************/
+					afterUpdateDialogClose : function() {
+						/*
+						 * load main page if user dont want to save the
+						 * description
+						 */
+						airbus.mes.resourcepool.oUpdateDialog.close();
+						this.loadMainPage();
+					},
+
+					/***********************************************************
+					 * Triggers when user clicks "Cancel" on update dialog
+					 **********************************************************/
+					afterUpdateDialogCancel : function() {
+						airbus.mes.resourcepool.oUpdateDialog.close();
+					},
+
 					/***********************************************************
 					 * Load the Main page of RPM to maintain the resource pool
 					 **********************************************************/
 					loadMainPage : function() {
-
-						/* take the current view in a variable */
-						airbus.mes.resourcepool.util.ModelManager.currentView = this.getView();
-						
-						
-						/* load all models and move to main page */
-						airbus.mes.resourcepool.util.ModelManager.loadMainViewModels();
+						/* Set Model Manager Global Variables */
+						airbus.mes.resourcepool.util.ModelManager.resourceName = this.resourcePoolName;
+						airbus.mes.resourcepool.util.ModelManager.resourceDescription = this.resourcePoolDescription;
 
 						/* Set the title header of the main page */
-						this.getView().byId("resourcePoolName").setText(
+						this
+								.getView()
+								.byId("resourcePoolName")
+								.setText(
 										airbus.mes.resourcepool.util.ModelManager.site
 												+ " / "
 												+ airbus.mes.resourcepool.util.ModelManager.resourceName
 												+ " / "
 												+ airbus.mes.resourcepool.util.ModelManager.resourceDescription);
-						
-					},
 
+						/* take the current view in a variable */
+						airbus.mes.resourcepool.util.ModelManager.currentView = this
+								.getView();
 
-					/***********************************************************
-					 * 
-					 * Close Value Help on clicking close button
-					 **********************************************************/
-					handleCloseSelectRP : function(oEvt) {
-						if(airbus.mes.resourcepool.util.ModelManager.resourceName === undefined || airbus.mes.resourcepool.util.ModelManager.resourceName == ""){
-							this.openSelectResourcePool();
-							airbus.mes.resourcepool.util.ModelManager.showMessage("Toast", "", airbus.mes.resourcepool.oView.getModel("i18nModel")
-									.getProperty("RPMandatory"), "", 5000);
-						}
-						
-						else					
-							oEvt.getSource().getBinding("items").filter([]);
+						/* load all models and move to main page */
+						airbus.mes.resourcepool.util.ModelManager
+								.loadMainViewModels();
+
+						// Close Search Resource Pool Pop-Up
+						if (airbus.mes.resourcepool.searchResourcePool)
+							airbus.mes.resourcepool.searchResourcePool.close();
+
 					},
 
 					titleCase : function(str) {
@@ -930,51 +1461,60 @@ sap.ui
 						// Directly return the joined string
 						return splitStr.join(' ');
 					},
-					
+
 					clearFilters : function() {
 						this.getView().byId("searchAvailableUsers").clear();
 						this.getView().byId("searchAssignedUsers").clear();
 						this.getView().byId("searchAvailableWC").clear();
 						this.getView().byId("searchAssignedWC").clear();
 					},
-					
-					
-					
-					
-					editTeamOpen: function(){
+
+					editTeamOpen : function() {
 						if (airbus.mes.resourcepool.editTeam === undefined) {
 
-							airbus.mes.resourcepool.editTeam = sap.ui.xmlfragment("editTeam",
-									"airbus.mes.resourcepool.views.editTeam", airbus.mes.resourcepool.oView.getController());
-							airbus.mes.resourcepool.oView.addDependent(airbus.mes.resourcepool.editTeam);
+							airbus.mes.resourcepool.editTeam = sap.ui
+									.xmlfragment(
+											"editTeam",
+											"airbus.mes.resourcepool.views.editTeam",
+											airbus.mes.resourcepool.oView
+													.getController());
+							airbus.mes.resourcepool.oView
+									.addDependent(airbus.mes.resourcepool.editTeam);
 						}
-						
+
 						// Open
 						airbus.mes.resourcepool.editTeam.open();
 
-						
 						// Set Site, Resource Pool name and Description
-						sap.ui.getCore().byId("editTeam--site").setText(airbus.mes.resourcepool.util.ModelManager.site);
-						sap.ui.getCore().byId("editTeam--resourcePoolName").setText(airbus.mes.resourcepool.util.ModelManager.resourceName);
-						sap.ui.getCore().byId("editTeam--description").setValue(airbus.mes.resourcepool.util.ModelManager.resourceDescription);
+						sap.ui.getCore().byId("editTeam--site").setText(
+								airbus.mes.resourcepool.util.ModelManager.site);
+						sap.ui
+								.getCore()
+								.byId("editTeam--resourcePoolName")
+								.setText(
+										airbus.mes.resourcepool.util.ModelManager.resourceName);
+						sap.ui
+								.getCore()
+								.byId("editTeam--description")
+								.setValue(
+										airbus.mes.resourcepool.util.ModelManager.resourceDescription);
 					},
-					
-					editTeamClose: function(){
+
+					editTeamClose : function() {
 						airbus.mes.resourcepool.editTeam.close();
 					},
 
-					
 					/***********************************************************
 					 * Triggers when Save button is clicked on the Pop-Up
 					 * 
 					 * @returns {Number} 0: if not error in updating else 1.
 					 **********************************************************/
-					saveResourcePool: function(){
+					saveResourcePool : function() {
 
-						var resourcePool = sap.ui.getCore().byId("editTeam--resourcePoolName")
-								.getText();
-						var description = sap.ui.getCore().byId("editTeam--description")
-								.getValue();
+						var resourcePool = sap.ui.getCore().byId(
+								"editTeam--resourcePoolName").getText();
+						var description = sap.ui.getCore().byId(
+								"editTeam--description").getValue();
 
 						/*
 						 * check mandatory paramater's are filled before
@@ -984,43 +1524,55 @@ sap.ui
 							return;
 						airbus.mes.resourcepool.util.ModelManager.resourceName = resourcePool;
 						airbus.mes.resourcepool.util.ModelManager.resourceDescription = description;
-						
-						/* call updateResource() method from airbus.mes.resourcepool.util.ModelManager. */
-						var anyError = airbus.mes.resourcepool.util.ModelManager.updateResource();
-		
+
+						/*
+						 * call updateResource() method from
+						 * airbus.mes.resourcepool.util.ModelManager.
+						 */
+						var anyError = airbus.mes.resourcepool.util.ModelManager
+								.updateResource();
+
 					},
-					
-					confirmDeleteResourcePool: function(){
+
+					oDeleteDialogue : function() {
 						if (airbus.mes.resourcepool.deleteTeam === undefined) {
 
-							airbus.mes.resourcepool.deleteTeam = sap.ui.xmlfragment("deleteTeam",
-									"airbus.mes.resourcepool.views.DeleteConfirmation", airbus.mes.resourcepool.oView.getController());
-							airbus.mes.resourcepool.oView.addDependent(airbus.mes.resourcepool.deleteTeam);
+							airbus.mes.resourcepool.deleteTeam = sap.ui
+									.xmlfragment(
+											"deleteTeam",
+											"airbus.mes.resourcepool.views.DeleteConfirmation",
+											airbus.mes.resourcepool.oView
+													.getController());
+							airbus.mes.resourcepool.oView
+									.addDependent(airbus.mes.resourcepool.deleteTeam);
 						}
-						
+
 						// Open
 						airbus.mes.resourcepool.deleteTeam.open();
 					},
-					
+
 					/***********************************************************
 					 * Triggers when "Yes" is pressed on delete dialog
 					 **********************************************************/
-					deleteResourcePool: function(){
+					deleteResourcePool : function() {
 						/* call deleteResource() from ModelManager */
-						var anyError = airbus.mes.resourcepool.util.ModelManager.deleteResource();
+						var anyError = airbus.mes.resourcepool.util.ModelManager
+								.deleteResource(sap.ui.getCore().byId(
+										"searchResourcePool--resourcePool").getValue());
 						airbus.mes.resourcepool.deleteTeam.close();
-						airbus.mes.resourcepool.util.ModelManager.resourceName = undefined;
-						airbus.mes.resourcepool.util.ModelManager.resourceDescription = undefined;
-						this.getView().byId("resourcePoolName").setText("");
-						this.editTeamClose();
-						this.openSelectResourcePool();
 						
+						if(airbus.mes.resourcepool.util.ModelManager.resourceName == sap.ui.getCore().byId("searchResourcePool--resourcePool").getValue()){
+							airbus.mes.resourcepool.util.ModelManager.resourceName = undefined;
+							airbus.mes.resourcepool.util.ModelManager.resourceDescription = undefined;
+							this.getView().byId("resourcePoolName").setText("");
+						}
+
 					},
-					
+
 					/***********************************************************
 					 * Triggers on "No" of Update Dialog
 					 **********************************************************/
-					deleteDialogueClose: function(){
+					deleteDialogueClose : function() {
 						airbus.mes.resourcepool.deleteTeam.close();
 					},
 
@@ -1029,26 +1581,31 @@ sap.ui
 					 **********************************************************/
 					checkMandatoryParam : function(resourcePool, description) {
 						/* if resource pool is empty display error and return */
-						if(!resourcePool){
+						if (!resourcePool) {
+
+							airbus.mes.resourcepool.util.ModelManager
+									.showMessage("Strip", "Error",
+											airbus.mes.resourcepool.oView
+													.getModel("i18nModel")
+													.getProperty(
+															"EmptyResource"),
+											true);
+
+							return true;
+						}
+
+						/* if description is empty display error and return */
+						if (!description) {
 
 							airbus.mes.resourcepool.util.ModelManager
 									.showMessage(
 											"Strip",
 											"Error",
-											airbus.mes.resourcepool.oView.getModel("i18nModel")
-													.getProperty("EmptyResource"),
+											airbus.mes.resourcepool.oView
+													.getModel("i18nModel")
+													.getProperty(
+															"EmptyDescription"),
 											true);
-
-							return true;
-						}
-						
-						/* if description is empty display error and return */
-						if(!description){
-
-							airbus.mes.resourcepool.util.ModelManager.showMessage("Strip", "Error",
-									airbus.mes.resourcepool.oView.getModel("i18nModel")
-											.getProperty("EmptyDescription"),
-									true);
 
 							return true;
 						}
@@ -1060,6 +1617,48 @@ sap.ui
 					upperCaseConversion : function(oEvt) {
 						oEvt.getSource().setValue(
 								oEvt.getSource().getValue().toUpperCase())
+					},
+
+					/***********************************************************
+					 * Check resource pool exists
+					 * 
+					 * @param ResourcePool
+					 * @param Description
+					 * @returns {Number} 0: if exists 1: if does not exists 2:
+					 *          if description is changed
+					 **********************************************************/
+					checkResourcePool : function(ResourcePool, Description) {
+
+						var actualDescription = this
+								.searchValueHelp(ResourcePool);
+
+						if (!actualDescription) {
+							return 1;
+						}
+						if (actualDescription != Description) {
+							return 2;
+						}
+
+						return 0;
+					},
+
+					/***********************************************************
+					 * function used to search resource pool in existing
+					 * resource pools
+					 **********************************************************/
+					searchValueHelp : function(oValue) {
+
+						var oModelData = sap.ui.getCore().getModel(
+								"ValueHelpModel").getProperty(
+								"/Rowsets/Rowset/0/Row");
+						if (oModelData) {
+							for (var i = 0; i < oModelData.length; i++) {
+								if (oModelData[i].NAME === oValue) {
+									return oModelData[i].DESCRIPTION;
+								}
+							}
+						}
+
 					}
 
 				});

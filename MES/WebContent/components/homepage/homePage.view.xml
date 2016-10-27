@@ -60,7 +60,7 @@
 					</content>
 				</CustomTile>
 			</TileContainer>
-			<TileContainer tileDelete="handleTileDelete"
+			<!-- <TileContainer tileDelete="handleTileDelete"
 				tiles="{3TileLineHome>/buttonDetail}" height="33%">
 				<CustomTile press="onPressLine3" class="customTiles">
 					<content>
@@ -85,7 +85,7 @@
 						</VBox>
 					</content>
 				</CustomTile>
-			</TileContainer>
+			</TileContainer> -->
 			<!-- <FlexBox height="100%" width="100%" alignItems="Center" class="PanelbgImg" 
 				justifyContent="Center"> <items> <VBox id="appNameBox" width="60%"> <items> 
 				<Toolbar class="titleToolbar"> <content> <Text class="textSize" text="Welcome 

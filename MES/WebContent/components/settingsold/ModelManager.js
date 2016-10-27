@@ -11,6 +11,7 @@ airbus.mes.settings.ModelManager = {
 	station : undefined,
 	msn : undefined,
 	core : undefined,
+	prodGroup: "%",
 	urlModel : undefined,
 	//user:"ng123",
 	current_flag:"X",

@@ -561,7 +561,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	},
 	changeShift : function(Oevt) {
 			
-		var sPath = Oevt.getSource().getSelectedIndex();
+		var sPath = airbus.mes.stationtracker.oView.byId("selectShift").getSelectedIndex();
 		var oModel = airbus.mes.stationtracker.oView.getModel("stationTrackerShift").getProperty("/" + sPath);
 	
 		airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftName = oModel.shiftName;
@@ -820,4 +820,14 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		else
 			this.getView().byId("disruptNotifications").closeNavigation();
 	},
+	
+	/**
+     * Change the date of scheduler
+     */
+	changeDay : function(oEvt) {
+		
+		scheduler.updateView(oEvt.getSource().getDateValue())
+		airbus.mes.stationtracker.ModelManager.selectMyShift();
+	}
+	
 });

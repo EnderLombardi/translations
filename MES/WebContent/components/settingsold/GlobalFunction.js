@@ -17,7 +17,7 @@ airbus.mes.settings.GlobalFunction = {
 				});	  
 			
 		} else {	
-//			airbus.mes.component.settings.setTextButtonTo(sButtonText);
+			airbus.mes.component.settings.setTextButtonTo(sButtonText);
 			airbus.mes.component.settings.setButtonAction(sButtonAction);
 		};
 		

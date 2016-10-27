@@ -320,31 +320,37 @@ airbus.mes.stationtracker.util.Formatter = {
 				// User affectation
 				// TODO maybe replace date + name by the Id of the shift?
 				var sshiftID = airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftID;
-					
+			
+						
 				if ( airbus.mes.stationtracker.ShiftManager.dayDisplay ) {
 						
 				var sShiftName = airbus.mes.stationtracker.ShiftManager.ShiftSelected 
 									
 				}
-				
+								
 				if (airbus.mes.stationtracker.AssignmentManager.affectationHierarchy[oSection.avlLine]) {
 
 				if (airbus.mes.stationtracker.AssignmentManager.affectationHierarchy[oSection.avlLine][sshiftID]) {
 	
 						// See SD there is only one user affected for the couple of shift id + avlLine
 						var oCurrentAffectedUser = airbus.mes.stationtracker.AssignmentManager.affectationHierarchy[oSection.avlLine][sshiftID][0];
+						var oHierarchyDelay =airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchyDelay;
+						var fProgress = oHierarchyDelay[oSection.group][oSection.avlLine].progress;
+						var fDuration =	oHierarchyDelay[oSection.group][oSection.avlLine].duration;
 						
 						if ( oSection.rescheduled ) {
 							
-							var html = '<div><IMG src="../images/user.png" style="float:left;height:25px; padding-right:10px;"/>'
+							var html = '<div><i class="fa fa-user ylabelUserImage"></i>'
 									
 //								span class="rond" title='	+ airbus.mes.stationtracker.util.Formatter.spaceInsecable(oCurrentAffectedUser.firstName)
 //									+ ' >'+ oCurrentAffectedUser.firstName + '</span>
 									
 								+ '<span class="ylabelUser" title='
 									+ airbus.mes.stationtracker.util.Formatter.spaceInsecable(oCurrentAffectedUser.firstName) + '>'
-									+ oCurrentAffectedUser.lastName	+ '</span><span  class="yHrLabel" >' + "hrs"
-									+ '</span></div>';
+									+ oCurrentAffectedUser.lastName	+ '</span><span  class="yMoreLabel" ><span title=' +  airbus.mes.stationtracker.util.Formatter.computeDelay( fProgress,fDuration ) +
+									'>' + airbus.mes.stationtracker.util.Formatter.computeDelay( fProgress,fDuration )
+									+ '</span>' +
+									 '</span></div>';
 							return html;
 	
 						}
@@ -352,7 +358,7 @@ airbus.mes.stationtracker.util.Formatter = {
 					
 				} else {
 
-					var html = '<div><i class="fa  fa-pencil"  style="float:left; padding-left:4px;" ></i><span class="ylabel">'
+					var html = '<div><i class="fa fa-pencil ylabelEditIcon"></i><span class="ylabel">'
 						+ airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("SelectOperator") + '</span></div>';
 					return html;
 			
@@ -361,7 +367,7 @@ airbus.mes.stationtracker.util.Formatter = {
 	
 			} else {
 
-				var html = '<div><i class="fa  fa-pencil"  style="float:left; padding-left:4px;" ></i><span class="ylabel">'
+				var html = '<div><i class="fa  fa-pencil ylabelEditIcon"></i><span class="ylabel">'
 					+ airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("SelectOperator") + '</span></div>';
 				return html;
 		
@@ -547,5 +553,26 @@ airbus.mes.stationtracker.util.Formatter = {
 		    	  var hrs = (s - mins) / 60;
 
 		    	  return hrs + ':' + mins + ':' + secs;
+		    	},
+		    	
+		    	computeDelay : function( fProgress,fDuration ) {
+		    		
+		    		//sec Gap
+		    		var sGap = Math.round((fProgress - fDuration))/1000/60;
+					var sGapHour = parseInt(sGap);
+					//Transfomr in hour
+					var sGapMin = Math.abs(Math.round((sGap - sGapHour)*60));
+					
+					if ( sGapMin < 10 ){
+						sGapMin = "0" + sGapMin;
+					}
+					
+					if ( sGapHour === 0 &&  sGap < 0) {
+						
+						sGapHour = "-" + sGapHour;										
+					}
+					
+					return sGapHour + "," + sGapMin + "h";
+		    		
 		    	}
 };
