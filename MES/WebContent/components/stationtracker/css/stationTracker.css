@@ -741,6 +741,7 @@ background-color: #0085AD !important;
 #stationTrackerView--stationtracker .dhx_matrix_scell.item {
 	border-bottom: solid 1px #d5f1f8;
 	color: #0D5D76;
+	background-color: #EAFBFD;
 }
 
 #stationTrackerView--stationtracker .dhx_matrix_scell.item,
