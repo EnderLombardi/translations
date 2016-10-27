@@ -106,8 +106,21 @@ font-style: normal !important;
 	color:#ffffff;
 }
 [id^="View1--nav"] {
-	color: #333333;
+	color: rgba(0, 86, 112, 0.94);
+	font-weight: bold;
 }
 [id^="View1--currMSN"] {
 	font-weight: bold;
+}
+[id^="View1--headText"]>.sapUiForm .sapUiFormTitle{
+	color: rgba(0, 86, 112, 0.94);
+}
+
+[id^="View1--headText"]{
+	color: rgba(0, 86, 112, 0.94);
+}
+
+[id^="View1--nav"]>.sapMBtnIcon
+{
+	color: rgba(0, 86, 112, 0.94) !important;
 }

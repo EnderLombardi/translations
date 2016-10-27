@@ -24,7 +24,7 @@
 		</subHeader>
 		<l:Splitter width="100%" height="100%">
 		<List headerText="{i18n>Program}" items="{path: 'program>/ProgramCollection'}"
-				width="95%" class="sapUiTinyMargin">
+				width="95%" class="sapUiTinyMargin" id="headTextProgram">
 				<CustomListItem icon="{program>picture}">
 					<HBox>
 						<RadioButton selected="{program>selected}" groupName="GroupInputListItem"
@@ -38,7 +38,7 @@
 			</List>
 
 			<List headerText="{i18n>Plant}" items="{path: 'site>/SiteCollection'}"
-				width="95%" class="sapUiTinyMargin">
+				width="95%" class="sapUiTinyMargin" id="headTextPlant">
 				<StandardListItem title="{site>Site}" type="Navigation" press="onPressSite" />
 				<layoutData>
 					<l:SplitterLayoutData size="25%" resizable="true" />
@@ -79,7 +79,7 @@
 			</vbm:AnalyticMap>
 
 			<VBox class="sapUiTinyMargin">
-				<f:SimpleForm id="SimpleFormChange" minWidth="1024"
+				<f:SimpleForm id="headTextForm" minWidth="1024"
 					visible="true" maxContainerCols="2" editable="true" layout="ResponsiveGridLayout"
 					labelSpanL="3" labelSpanM="3" emptySpanL="4" emptySpanM="4"
 					columnsL="1" columnsM="1" class="editableForm" title="{i18n>OtherSettings}">
