@@ -44,7 +44,7 @@
 
 
 /* globalNavView */
-#globalNavView label[id^="__label"] {
+#globalNavView header.pageHeader label[id^="__label"] {
 	font-size: 1rem;
 }
 #globalNavView--SelectLanguage span, #globalNavView--SelectLanguage label, #globalNavView #globalNavView--informationButton-inner #globalNavView--informationButton-img {
