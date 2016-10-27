@@ -50,12 +50,10 @@ airbus.mes.disruptiontracker.Formatter = {
 		if(status == "CLOSED")
 			return "sap-icon://sys-enter-2";
 		
-		else if(status == "SOLVED") {
+		else {
 			
 			return "sap-icon://alert";
 		}
-		else
-			return "sap-icon://status-critical";
 		
 
 	}
