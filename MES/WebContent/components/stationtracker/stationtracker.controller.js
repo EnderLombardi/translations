@@ -27,7 +27,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			}
 		},
 	/**
-	 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
+	 * Similar to onBeforeRendering, but this hook is invoked before the controller's View is re-rendered
 	 * (NOT before the first rendering! onInit() is used for that one!).
 	 * @memberOf components.stationtracker.stationtracker
 	 */
@@ -71,24 +71,6 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		}
 		this.getView().byId("disruptNotifications").openNavigation();
 		this.getView().byId("disruptNotifications").closeNavigation();
-		
-		// Place the table in the custom control 
-		if (airbus.mes.disruptiontracker === undefined) {
-			jQuery.sap.registerModulePath("airbus.mes.disruptiontracker", "../components/disruptiontracker");
-			this.odisruptiontrackerComp = sap.ui.getCore().createComponent({
-				name : "airbus.mes.disruptiontracker",
-				id : "customDisruptionComponent"         
-			});
-			airbus.mes.disruptiontracker.oView = this.odisruptiontrackerComp.oView;
-			
-		}
-	
-		airbus.mes.disruptiontracker.oView
-				.placeAt("stationTracker--disruptions");
-
-		
-		
-		
 
 	},
 	onProductionGroupPress : function(oEvent){
@@ -825,8 +807,13 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	},
 	showDisruption : function(oEvent)
 	{
-		if(this.getView().byId("disruptNotifications").getState() == false)
+		if(this.getView().byId("disruptNotifications").getState() == false){
 			this.getView().byId("disruptNotifications").openNavigation();
+			
+
+			// Add Disruptions Component in Station Tracker
+			this.gtView().byId("disruptNotifications").setDisruptionContent(airbus.mes.stationtracker.disruptions.oView);
+		}
 		else
 			this.getView().byId("disruptNotifications").closeNavigation();
 	},

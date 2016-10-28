@@ -21,6 +21,7 @@ jQuery.sap.require("airbus.mes.d3.d3_3_5_17_min");
 
 jQuery.sap.declare("airbus.mes.stationtracker.Component");
 
+
 sap.ui.core.UIComponent.extend("airbus.mes.stationtracker.Component", {
 	metadata : {
 		properties : {},
@@ -62,7 +63,7 @@ airbus.mes.stationtracker.Component.prototype.createContent = function() {
 		this.oView.setModel(sap.ui.getCore().getModel("affectationModel"), "affectationModel");
 		this.oView.setModel(sap.ui.getCore().getModel("ressourcePoolModel"), "ressourcePoolModel");
 		
-		
+	/*	airbus.mes.disruptiontracker.oView = this.odisruptiontrackerComp.oView;*/
 		return this.oView;
 	}
 };

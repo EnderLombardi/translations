@@ -16,13 +16,23 @@ airbus.mes.shell.util.navFunctions = {
 				nav.addPage(airbus.mes.stationtracker.oView);
 			}
 			
+			// Place the disruption tracker in the custom control 
+			if (airbus.mes.stationtracker.disruptions === undefined){
+				jQuery.sap.registerModulePath("airbus.mes.stationtracker.disruptionTrackerPanel", "../components/stationtracker/disruptionTrackerPanel");
+				airbus.mes.stationtracker.disruptions = sap.ui.getCore().createComponent({
+					name : "airbus.mes.stationtracker.disruptionTrackerPanel",
+					id : "stationTrackerDisruptions"         
+				});
+				airbus.mes.stationtracker.disruptions.oView.sId="stationTrackerDisruptions"
+			}
+			
 			nav.to(airbus.mes.stationtracker.oView.getId());
 			
 		},
 		
 		
 		resourcePool: function(){
-			if (airbus.mes.resourcepool === undefined) {
+			if (airbus.mes.resourcepool === undefined){
 				
 				jQuery.sap.registerModulePath("airbus.mes.resourcepool", "../components/resourcepool");
 	
