@@ -1,21 +1,21 @@
-﻿{
+{
 	"SiteCollection": [
 		{
-			"Site": "AL Saint-Nazaire",
+			"Site": "AL Toulouse",
 			"LineCollection": [
 				{
-					"Line": "PA-SYST",
+					"Line": "Line 1",
 					"StationCollection": [
 						{
-							"Station": "FG2210"
+							"Station": "Station 1"
 						},
 						{
-							"Station": "FG2220"
+							"Station": "Station 2"
 						}
 					]
 				},
 				{
-					"Line": "TC-SYST"
+					"Line": "Line 2"
 				}
 			]
 		},
@@ -32,7 +32,7 @@
 			"Site": "AL Illescas"
 		},
 		{
-			"Site": "AL Toulouse"
+			"Site": "AL Saint-Nazaire"
 		},
 		{
 			"Site": "AL Nantes"
