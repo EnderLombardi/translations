@@ -624,7 +624,7 @@ background-color: #0085AD !important;
 }
 
 #stationTrackerView--kpiHeaderContent .kpiValue{
-	font-size: 30px;
+	font-size: 28px;
 	width: 100%;
 	text-align: center ! important;
 }
@@ -837,7 +837,7 @@ background-color: #0085AD !important;
 }
 
 #stationTrackerView--stationtracker .dhx_row_item .dhx_scell_name{
-	padding: 0 25px 0 0;
+	padding: 0 40px 0 0;
 	white-space: nowrap;
 }
 
@@ -922,11 +922,12 @@ background-color: #0085AD !important;
 }
 
 #stationTrackerView--kpiHeaderContent .takt_kpi_name {
-	text-align: right;
+	text-align: right !important;
 }
 
 #stationTrackerView--kpiHeaderContent .takt_kpi_value {
-	text-align: left;
+	text-align: left !important;
+	margin-left: 0 !important;
 }
 
 #stationTrackerView--kpiHeaderContent .KPITaktChartBlueText {
@@ -1019,6 +1020,11 @@ svg#stationTrackerView--takt_adherence_area_chart {
 	color: #fe5000;
 }
 
+#stationTrackerView--boxSLBEfficiecy_chart-chart-item-3,
+#stationTrackerView--boxResolutionEfficiecy_chart-chart-item-3 {
+	opacity: 0;
+}
+
 /** Shift Staffing **/
 #stationTrackerView--shifStaffingHeader-dmc-chart .Left{
 	background-color: #84bd00;
@@ -1039,6 +1045,10 @@ svg#stationTrackerView--takt_adherence_area_chart {
 
 #stationTrackerView--shifStaffingHeader .sapSuiteDmcBarDeltaInt{
 	background: #fe5000;
+}
+
+#stationTrackerView--shifStaffingHeader .sapSuiteDmcBarDeltaStripe {
+	background-color: #74D2E7;
 }
 
 /** Station tracker Toolbar **/
