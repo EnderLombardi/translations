@@ -500,15 +500,10 @@ sap.ui
 
 						$("#operationDetailsView--operationNav-content")
 								.height(
-										($(
-												"#"
-														+ airbus.mes.operationdetail.parentId)
-												.height()
-												- $(
-														"#operationDetailsView--operationDetailPanel")
-														.height() - ($(
-												"#operationDetailsView--operationNav--header")
-												.height() * 2)));
+										($("#"+ airbus.mes.operationdetail.parentId).height()
+												- $("#operationDetailsView--operationDetailPanel").height()
+												- $("#operationDetailsView--operationNav--header").height()
+												- $("#operationDetailsView--operationStatusFooter").height() ));
 
 					},
 
