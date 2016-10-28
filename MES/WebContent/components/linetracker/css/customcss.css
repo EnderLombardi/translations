@@ -673,12 +673,22 @@ white-space: nowrap !important;
     box-sizing: border-box;
 }
 .factHBox .factStationBoxText {
-	font-size:2vh;
+	font-size:1.5vh;
 	color:#e0e0e0;
+}
+.factHBox .boldFont {
+    font-size: 1.5vh;
 }
 .factHBox .stationBoxBody {
 	padding: 7px 5px 5px 5px;
     width: 50%;
+}
+#idMainView--lineTrackerSubheader {
+	box-shadow: 0px 2px 15px -5px #0F2D65;
+    border: none;
+    border-top: 5px solid #ffffff;
+    position: relative;
+    z-index: 10;
 }
 .factHBox .stationBoxBodyTop {
     height: 5px;
@@ -687,6 +697,65 @@ white-space: nowrap !important;
 .factHBox .structureStationBox {
     min-height: auto;
 }
+/* idFactoryView */
+#idFactoryView--VboxLeft {
+    background-color: #e9fbfd;	
+}
+
 #idFactoryView {
 	background-color:#fff;
+	height:100%!important;
+}
+#idFactoryView button {
+	padding: 0;
+}
+#idFactoryView button .sapMBtnDefault {
+	background: #d5f1f8;
+	color: #0D5D76;
+    font-weight: bold;
+    border: 0;
+}
+#idFactoryView  .transferIsle {
+    width: 100%;
+    background-color: #f5f5f5;
+    color:#c0c0c0;
+    height: 6%;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 2vh;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.spaceTransferIsle {
+    /*background-color: #f5f5f5;*/
+}
+#idFactoryView--VboxLeft .sapMVBox {
+	    -ms-flex-flow: row wrap;
+        flex-flow: row wrap;
+    -ms-flex-line-pack: start;
+        align-content: flex-start;
+}
+#idFactoryView--factoryHBox {
+    margin: 0;
+    height: 100%!important;
+}
+#idFactoryView--VboxLeft .sapMVBox > .sapMFlexItem {
+	width:100%;
+}
+#idMainView--lineTrackerToolbar {
+	border:0;
+}
+#idFactoryView--factoryHBox .stationBoxHeader {
+    height: 35px;
+    font-size: 1.5vh;
+    background: #eaeaea;
+    line-height: 2.5rem;
+    font-weight: normal;
+}
+#idFactoryView--factoryHBox .structureStationBox {
+    padding:0;
+}
+
+.stationBoxBody>[src$="red_new.png"] + div  {
+	background:#000!important;
 }

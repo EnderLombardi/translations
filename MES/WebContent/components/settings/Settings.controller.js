@@ -60,12 +60,15 @@ sap.ui.controller("airbus.mes.settings.Settings",
 
 			onAfterRendering : function() {
 				this.byId("vbi").zoomToRegions([ "FR", "GB", "ES", "DE" ]);
+				this.getUserSettings();
 			},
 
 			onInit : function() {
 //				TODO comment ?????????
 				this.addParent(this.selectTree, undefined);
+				
 			},
+			
 //			For hierachy of combobox
 			addParent : function(oTree, oParent) {
 				var that = this;
@@ -230,5 +233,39 @@ sap.ui.controller("airbus.mes.settings.Settings",
 						"items")[0];
 				// Set the selected attribute
 				oButton.setSelected(true);
+			},			
+			/**
+		     * Get data from usersetting and reuse previous settings input.
+		     */
+			getUserSettings : function() {
+				var oModel = airbus.mes.settings.ModelManager.core.getModel("userSettingModel").getData();
+				airbus.mes.settings.ModelManager.plant = oModel.Rowsets.Rowset[0].Row[0].plant;
+				airbus.mes.settings.ModelManager.program = oModel.Rowsets.Rowset[0].Row[0].program;
+				airbus.mes.settings.ModelManager.line = oModel.Rowsets.Rowset[0].Row[0].line;
+				airbus.mes.settings.ModelManager.station = oModel.Rowsets.Rowset[0].Row[0].station;
+				airbus.mes.settings.ModelManager.msn = oModel.Rowsets.Rowset[0].Row[0].msn;
+				// Maybe change regarding model get from mii
+				airbus.mes.settings.ModelManager.taktStart = oModel.Rowsets.Rowset[0].Row[0].begin;
+				airbus.mes.settings.ModelManager.taktEnd = oModel.Rowsets.Rowset[0].Row[0].end;
+				airbus.mes.settings.ModelManager.taktDuration = oModel.Rowsets.Rowset[0].Row[0].duration;
+				
+				// Replace with current new element in UI
+//				this.getView().byId("ComboBoxPlant").setValue(airbus.mes.settings.ModelManager.plant);
+//				if (airbus.mes.settings.ModelManager.plant) {
+//					this.loadPlantModel();
+//					if (airbus.mes.settings.ModelManager.program)
+//						this.getView().byId("ComboBoxProgram").setSelectedKey(airbus.mes.settings.ModelManager.program);
+//					if (airbus.mes.settings.ModelManager.line)
+//						this.getView().byId("ComboBoxLine").setSelectedKey(airbus.mes.settings.ModelManager.line);
+//					if (airbus.mes.settings.ModelManager.station)
+//						this.getView().byId("ComboBoxStation").setSelectedKey(airbus.mes.settings.ModelManager.station);
+//					if (airbus.mes.settings.ModelManager.msn)
+//						this.getView().byId("ComboBoxMSN").setSelectedKey(airbus.mes.settings.ModelManager.msn);
+//
+//					this.setEnabledCombobox(true, true, true, true);
+//				} else {
+//					this.setEnabledCombobox(true, false, false, false);
+//				}
 			}
+			
 		});

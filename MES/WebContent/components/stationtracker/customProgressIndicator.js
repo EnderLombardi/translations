@@ -8,7 +8,11 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 		  events: {
               "click" : {}  // this Button has also a "hover" event, in addition to "press" of the normal Button
           },
-                          
+          
+      onclick : function(evt) {   
+			     this.fireClick();
+			  },
+			  
 		properties : {
 			visible : {
 				type : 'boolean',

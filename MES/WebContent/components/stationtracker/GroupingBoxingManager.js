@@ -8,7 +8,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 	shiftBreakHierarchy: [],
 	showInitial : false,
 	//XXX MEHDI TODO
-	group : "CPP_CLUSTER" ,
+	group : "COMPETENCY" ,
 	box : "OPERATION_ID",
 	// Group use for special case compute
 	specialGroup : "WORKORDER_ID",

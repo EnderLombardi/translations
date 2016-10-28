@@ -142,15 +142,15 @@
 
                   "user": "NG560DB",
 
-                  "plant": "CHES",
+                  "plant": "FNZ1",
 
-                  "program": "CHES_BUILDING_1",
+                  "program": "A330",
 
-                  "line": "CHES_LG_1_L1",
+                  "line": "PA",
 
-                  "station": "PHYS_ST_IP4",
+                  "station": "PA_IP1-2",
 
-                  "msn": "00001",
+                  "msn": "01736",
 
                   "current_flag": "X"
 

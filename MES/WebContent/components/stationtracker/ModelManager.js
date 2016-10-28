@@ -107,17 +107,11 @@ airbus.mes.stationtracker.ModelManager = {
               this.operationType = sType;
 
               var geturlstationtracker = this.urlModel.getProperty('urlstationtrackeroperation');
-
-              geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$site",
-                           oData.site);
-              geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$station",
-                           oData.station);
-              geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$msn",
-                           oData.msn);
-              geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker,
-                           "$operationType", sType);
-              geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker,
-                           "$productionGroup", airbus.mes.settings.ModelManager.prodGroup);
+              geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$site",oData.site);
+              geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$station", oData.station);
+              geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$msn", oData.msn);
+              geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker,"$operationType", sType);
+              geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker,"$productionGroup", airbus.mes.settings.ModelManager.prodGroup);
               geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$user",
                            airbus.mes.stationtracker.AssignmentManager.userSelected);
 
@@ -441,7 +435,7 @@ airbus.mes.stationtracker.ModelManager = {
 
               if (oModel.length === 1) {
 
-                     airbus.mes.stationtracker.ModelManager.openOperationPopOver(id);
+            	  	airbus.mes.stationtracker.ModelManager.openOperationDetailPopup(id);
                      return;
               }
 

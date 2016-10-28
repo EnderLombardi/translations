@@ -602,7 +602,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			template : sap.ui.getCore().byId("worklistPopover--sorterList"),
 			sorter : [ new sap.ui.model.Sorter({
 				// Change this value dynamic
-				path : 'WORKORDER_ID', //oEvt.getSource().getSelectedKey();
+				path : oEvent.getSource().getSelectedKey(), //oEvt.getSource().getSelectedKey();
 				descending : false,
 				group : true,
 			}), new sap.ui.model.Sorter({
@@ -842,6 +842,12 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		
 		oPanel.setExpanded(!bIsExpanded);
 
+	},
+	operationWorkListClick : function() {
+		
+		console.log("e");
+		
 	}
+	
 	
 });
