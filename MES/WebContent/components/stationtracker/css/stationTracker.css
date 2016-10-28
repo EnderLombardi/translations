@@ -770,10 +770,12 @@ background-color: #0085AD !important;
 
 #stationTrackerView--stationtracker .dhx_cal_event,
 #stationTrackerView--stationtracker .dhx_cal_event_line {
+	/*
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
 	border: none;
+	*/
 }
 
 #stationTrackerView--stationtracker .dhx_matrix_cell div,
