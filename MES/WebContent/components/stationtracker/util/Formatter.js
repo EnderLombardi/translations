@@ -556,7 +556,13 @@ airbus.mes.stationtracker.util.Formatter = {
 		    	  s = (s - secs) / 60;
 		    	  var mins = s % 60;
 		    	  var hrs = (s - mins) / 60;
-
+		    	  
+		    	  if(hrs == 0)
+		    		  hrs = "00";
+		    	  if(mins == 0)
+		    		  mins = "00";
+		    	  if(secs == 0)
+		    		  secs = "00";
 		    	  return hrs + ':' + mins + ':' + secs;
 		    	},
 		    	
