@@ -45,9 +45,11 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.TaktAdherenceAreaChart", {
 			height = Math.min(80, Math.round(container.width() / aspect)) - margin.top - margin.bottom;
 
 		$(window).on("resize", function() {
-			var targetWidth = container.width();
-			chart.attr("width", targetWidth - 15);
-			chart.attr("height", Math.min(80, Math.round(targetWidth / aspect)));
+			if (container.width() > 0){
+				var targetWidth = container.width() - 15;
+				chart.attr("width", targetWidth);
+				chart.attr("height", Math.min(80, Math.round(targetWidth / aspect)));
+			}
 		}).trigger("resize");
 
 
