@@ -1,4 +1,4 @@
-﻿{
+{
 
    "Rowsets": {
 
@@ -36,11 +36,11 @@
 
                {
 
-                  "user": "CADOU MICHEL",
+                  "user": "pierre",
 
-                  "firstName": "MICHEL",
+                  "firstName": "pierre",
 
-                  "lastName": "CADOU",
+                  "lastName": "barillon",
 
                   "picture": "toto",
 
@@ -56,11 +56,11 @@
 
               {
 
-                  "user": "CHEVALIER LAURA",
+                  "user": "John A.",
 
-                  "firstName": "LAURA",
+                  "firstName": "John A.",
 
-                  "lastName": "CHEVALIER",
+                  "lastName": "John A.",
 
                   "picture": "toto",
 
