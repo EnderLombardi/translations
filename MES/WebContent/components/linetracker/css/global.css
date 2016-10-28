@@ -41,7 +41,9 @@
 }
 /*standard class. temporary fix */
 /*to allow font scaling according to screen. No bad implications*/
-.sapMBtnContent {
+#idMainView--lineTrackerSubheader .sapMBtnContent,
+#idMainView--lineTrackerSubheader-BarLeft .sapMBtnContent,
+#idMainView--lineTrackerToolbar .sapMBtnContent {
 	font-size: 1.6vh;
 }
 

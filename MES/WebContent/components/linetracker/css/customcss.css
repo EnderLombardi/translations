@@ -524,7 +524,10 @@ z-index :0 !important;
 .fa-pencil:before {
 	content:"\f040"
 } */
-.fa {
+
+#idMainView--lineTrackerSubheader .fa,
+#idMainView--lineTrackerSubheader-BarLeft .fa,
+#idMainView--lineTrackerToolbar .fa {
 	cursor: pointer;
 	font-size: 14px;
 	text-align: center;
