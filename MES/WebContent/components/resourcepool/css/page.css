@@ -311,6 +311,7 @@
 	border-radius: 3em;
     border: 2px solid #74D2E7;
     color: #74D2E7;
+    overflow: hidden;
 }
 #resourcePool .sapMSFF input, #resourcePool .sapMSFF .sapMSFB.sapMSFS {
     color: #74D2E7;
