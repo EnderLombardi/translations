@@ -10,6 +10,7 @@ airbus.mes.settings.ModelManager = {
 	line : undefined,
 	station : undefined,
 	msn : undefined,
+	prodGroup : "%",
 	taktStart : undefined,
 	taktEnd : undefined,
 	taktDuration : undefined,
@@ -27,7 +28,7 @@ airbus.mes.settings.ModelManager = {
 		core.setModel(new sap.ui.model.json.JSONModel(), "plantModel");
 		core.setModel(new sap.ui.model.json.JSONModel(), "siteModel");
 //		core.setModel(new sap.ui.model.json.JSONModel(), "langModel");
-		//core.setModel(new sap.ui.model.json.JSONModel(), "userSettingModel");
+//		core.setModel(new sap.ui.model.json.JSONModel(), "userSettingModel");
 
 		var dest;
 

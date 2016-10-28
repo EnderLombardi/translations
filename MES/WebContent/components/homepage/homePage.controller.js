@@ -102,7 +102,7 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 	onAfterRendering : function() {
 		// Retrieve default user settings after the rendering of the Home Page
 		//		TODO
-		//		airbus.mes.settings.oView.getController().getUserSettings();
+		airbus.mes.settings.oView.getController().getUserSettings();
 	},
 
 /**
