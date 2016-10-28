@@ -1,7 +1,7 @@
 {
 	"buttonDetail": [ {
 
-		"text": "Team availability",
+		"text": "TeamAvailability",
 		"sub" : "",
 		"icon": "calendar",
 		"app":"",
