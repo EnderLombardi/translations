@@ -522,7 +522,8 @@ background-color: #0085AD !important;
 }
 
 #stationTrackerView--DatePicker,
-#stationTrackerView--ProductionButton{
+#stationTrackerView--ProductionButton,
+#stationTrackerView--DisruptionButton{
 	border-right: solid 1px #74d2e7;
 	margin-right: 0;
 }
@@ -570,12 +571,15 @@ background-color: #0085AD !important;
 	line-height: 3rem;
 }
 
-#stationTrackerView--ProductionButton{
+#stationTrackerView--ProductionButton,
+#stationTrackerView--DisruptionButton{
 	margin-left: 0;
 }
 
 #stationTrackerView--ProductionButton-inner:hover,
 #stationTrackerView--ProductionButton:hover #stationTrackerView--ProductionButton-inner,
+#stationTrackerView--DisruptionButton-inner:hover,
+#stationTrackerView--DisruptionButton:hover #stationTrackerView--DisruptionButton-inner,
 #stationTrackerView--TeamButton-inner:hover,
 #stationTrackerView--TeamButton:hover #stationTrackerView--TeamButton-inner{
 	background-color: transparent;

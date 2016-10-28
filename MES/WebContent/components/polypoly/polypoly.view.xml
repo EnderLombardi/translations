@@ -14,16 +14,16 @@
 			<Toolbar design="Transparent" id="toolbarPolypoly">
 				<content>
 					<Image src="/MES/components/polypoly/images/1.svg" height="1.5rem"/>
-					<Label class="QA-text-style" text = "SIDE 1"/>
+					<Label class="QA-text-style" text = "Side 1"/>
 					<ToolbarSpacer width="1rem"/>
 					<Image src="/MES/components/polypoly/images/2.svg" height="1.5rem"/>
-					<Label class="QA-text-style" text = "SIDE 2"/>
+					<Label class="QA-text-style" text = "Side 2"/>
 					<ToolbarSpacer width="1rem"/>
 					<Image src="/MES/components/polypoly/images/3.svg" height="1.5rem"/>
-					<Label class="QA-text-style" text = "SIDE 3"/>
+					<Label class="QA-text-style" text = "Side 3"/>
 					<ToolbarSpacer width="1rem"/>
 					<Image src="/MES/components/polypoly/images/4.svg" height="1.5rem"/>
-					<Label class="QA-text-style" text = "SIDE 4"/>
+					<Label class="QA-text-style" text = "Side 4"/>
 					<ToolbarSpacer />
 					<SearchField id="polypolySearchField" width="20%"
 						placeholder="Resource Pool" enableSuggestions="true" suggest="onRPSuggest"

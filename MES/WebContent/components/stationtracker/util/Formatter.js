@@ -345,13 +345,14 @@ airbus.mes.stationtracker.util.Formatter = {
 						
 						if ( oSection.rescheduled ) {
 							
-							var html = '<div><i class="fa fa-user ylabelUserImage"></i>'
+							var html = '<div><img src=' + oCurrentAffectedUser.picture + ' class="ylabelUserImage"></i>'
+								//<i class="fa fa-user ylabelUserImage"></i>'
 									
 //								span class="rond" title='	+ airbus.mes.stationtracker.util.Formatter.spaceInsecable(oCurrentAffectedUser.firstName)
 //									+ ' >'+ oCurrentAffectedUser.firstName + '</span>
 									
 								+ '<span class="ylabelUser" title='
-									+ airbus.mes.stationtracker.util.Formatter.spaceInsecable(oCurrentAffectedUser.firstName) + '>'
+									+ airbus.mes.stationtracker.util.Formatter.spaceInsecable(oCurrentAffectedUser.lastName) + '>'
 									+ oCurrentAffectedUser.lastName	+ '</span><span  class="yMoreLabel" ><span title=' +  airbus.mes.stationtracker.util.Formatter.computeDelay( fProgress,fDuration ) +
 									'>' + airbus.mes.stationtracker.util.Formatter.computeDelay( fProgress,fDuration )
 									+ '</span>' +
@@ -556,7 +557,13 @@ airbus.mes.stationtracker.util.Formatter = {
 		    	  s = (s - secs) / 60;
 		    	  var mins = s % 60;
 		    	  var hrs = (s - mins) / 60;
-
+		    	  
+		    	  if(hrs == 0)
+		    		  hrs = "00";
+		    	  if(mins == 0)
+		    		  mins = "00";
+		    	  if(secs == 0)
+		    		  secs = "00";
 		    	  return hrs + ':' + mins + ':' + secs;
 		    	},
 		    	

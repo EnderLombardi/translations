@@ -126,3 +126,18 @@
 	color:#fff !important;
 }
 /*** end of CSS for Footer *********/
+
+/*** CSS for Execution Switch Button****/
+.switchExecutionButton .sapMSwt{
+	height:1.2rem !important;
+}
+.switchExecutionButton .sapMSwtHandle{
+	width: 1rem;
+    height: 1rem;
+    left: 2.9rem;
+}
+.switchExecutionButton .sapMSwtOff>.sapMSwtInner{
+	left: -2.8rem;
+}
+/***End of CSS for Execution Switch Button****/
+

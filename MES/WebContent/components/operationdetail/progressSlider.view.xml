@@ -8,11 +8,13 @@
 			<Panel expandable="true" expanded="false" width="auto"
 				id="operationDetailPanel" class="pageSubHeader sapUiSmallMarginTop sapUiSmallMarginBeginEnd">
 				<headerToolbar>
-					<Toolbar height="3.7rem" class="ML-05">
+					<Toolbar height="7rem" class="ML-05">
 						<VBox width="100%">
+						<HBox height="30%" justifyContent="SpaceBetween">
 							<Text id="operationName" class="mainText"
-								text="OP {operationDetailModel>/Rowsets/Rowset/0/Row/0/operation_no}-{operationDetailModel>/Rowsets/Rowset/0/Row/0/operation_desc}"></Text>
-
+								text="OP {operationDetailModel>/Rowsets/Rowset/0/Row/0/operation_no} - {operationDetailModel>/Rowsets/Rowset/0/Row/0/operation_desc}"/>
+								<Switch customTextOn=" " customTextOff=" " state="true" class="switchExecutionButton"/>
+						</HBox>
 							<HBox justifyContent="SpaceBetween" width="100%">
 								<HBox justifyContent="SpaceBetween">
 
@@ -48,8 +50,7 @@
 								<Label type="space"></Label>
 								<Label text="Time spent" />
 								<Text
-									text="{operationDetailModel>
-									/Rowsets/Rowset/0/Row/0/time_spent}" />
+									text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/time_spent}" />
 								<Label type="space"></Label>
 								<!-- <Label text="System status: " /> <Text text="DSEX DSPT REL" 
 									/> <Label type="space"></Label> -->
@@ -68,7 +69,7 @@
 							<VBox>
 								<Label text="Work Center:" />
 								<Text
-									text="{operationDetailModel>	/Rowsets/Rowset/0/Row/0/workcenter}" />
+									text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/workcenter}" />
 								<Label type="space"></Label>
 								<!-- <Label text="ACPnG" /> <Text text="28/08/2016" /> <Label type="space"></Label> 
 									<Label text="Bundle" /> <Text text=" - " /> -->
@@ -139,6 +140,10 @@
 								/> </Toolbar> </l:Grid> -->
 						</VBox>
 					</IconTabFilter>
+					<IconTabFilter text="Disruption"/>
+					<IconTabFilter text="Reschedule"/>
+					<IconTabFilter text="TouchNGo"/>
+
 
 					<!-- <IconTabFilter icon="sap-icon://task" count="389" text="Checklist"> 
 						<content> <core:Fragment type="XML" fragmentName="airbus.mes.worktracker.fragments.Tasklist" 
