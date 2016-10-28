@@ -10,9 +10,9 @@
 					<Label id="resourcePoolName" text="" class="resourcePoolName" />
 				</contentMiddle>
 				<contentRight>
-					<Button text="{i18nModel>ButtonTeam}" type="Transparent"
+					<!-- <Button text="{i18nModel>ButtonTeam}" type="Transparent"
 						class="tiffanyColor subHeaderButtonColor sapUiSmallMarginBegin"
-						icon="sap-icon://group" press="openSelectResourcePool" />
+						icon="sap-icon://group" press="openSelectResourcePool" /> -->
 
 					<!-- <Button text="{i18nModel>EditTeamButton}" type="Transparent" class="tiffanyColor 
 						subHeaderButtonColor sapUiSmallMarginBegin" icon="sap-icon://edit" press="editTeamOpen" 

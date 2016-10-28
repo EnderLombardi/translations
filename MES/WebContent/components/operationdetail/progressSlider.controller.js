@@ -38,7 +38,10 @@ sap.ui
 						oProgressSlider.stepDown(1);
 					},
 					onCloseOperationDetailPopup : function() {
+						
 						airbus.mes.stationtracker.operationDetailPopup.close();
+						airbus.mes.shell.oView.getController()
+						.renderStationTracker();
 					},
 					/***********************************************************
 					 * 
@@ -49,11 +52,10 @@ sap.ui
 
 						var data = this.getView().getModel(
 								"operationDetailModel").oData.Rowsets.Rowset[0].Row[0];
-						var sMessageSuccess = this.getView().getModel(
-								"i18n").getProperty("SuccessfulActivation");
-						var sMessageError = this.getView()
-								.getModel("i18n").getProperty(
-										"UnsuccessfulActivation");
+						var sMessageSuccess = this.getView().getModel("i18n")
+								.getProperty("SuccessfulActivation");
+						var sMessageError = this.getView().getModel("i18n")
+								.getProperty("UnsuccessfulActivation");
 						var flag_success;
 						jQuery
 								.ajax({
@@ -85,7 +87,8 @@ sap.ui
 								});
 
 						// Refresh User Operation Model and Operation Detail
-						airbus.mes.shell.oView.getController().renderStationTracker();
+						airbus.mes.shell.oView.getController()
+								.renderStationTracker();
 
 						// this.refreshOperationData();
 
@@ -98,8 +101,9 @@ sap.ui
 											.getProperty("in_progress"));
 
 							// Re-Render Station Tracker
-							airbus.mes.shell.oView.getController().renderStationTracker();
-							
+							airbus.mes.shell.oView.getController()
+									.renderStationTracker();
+
 							// update operationDetailsModel
 
 							sap.ui.getCore().getModel("operationDetailModel")
@@ -114,11 +118,10 @@ sap.ui
 					pauseOperation : function() {
 						var data = this.getView().getModel(
 								"operationDetailModel").oData.Rowsets.Rowset[0].Row[0];
-						var sMessageSuccess = this.getView().getModel(
-								"i18n").getProperty("SuccessfulPause");
-						var sMessageError = this.getView()
-								.getModel("i18n").getProperty(
-										"UnsuccessfulPause");
+						var sMessageSuccess = this.getView().getModel("i18n")
+								.getProperty("SuccessfulPause");
+						var sMessageError = this.getView().getModel("i18n")
+								.getProperty("UnsuccessfulPause");
 						var flag_success;
 						jQuery
 								.ajax({
@@ -161,8 +164,9 @@ sap.ui
 											.getProperty("paused"));
 
 							// Re-Render Station Tracker
-							airbus.mes.shell.oView.getController().renderStationTracker();
-							
+							airbus.mes.shell.oView.getController()
+									.renderStationTracker();
+
 							// update operationDetailsModel
 
 							sap.ui.getCore().getModel("operationDetailModel")
@@ -185,10 +189,6 @@ sap.ui
 					},
 
 					confirmOperation : function(oEvent) {
-
-						// Model for Reason Code Comments
-						airbus.mes.operationdetail.ModelManager
-								.loadReasonCodeModel();
 
 						if (oEvent.getSource().getText() == this.getView()
 								.getModel("i18n").getProperty("confirm")) {
@@ -229,7 +229,7 @@ sap.ui
 
 						}
 					},
-					
+
 					/***********************************************************
 					 * 
 					 * User Confirmation Dialog Methods
@@ -248,12 +248,10 @@ sap.ui
 						var pass = sap.ui.getCore().byId(
 								"passwordForConfirmation").getValue();
 
-						var sMessageSuccess = this.getView().getModel(
-								"i18n").getProperty(
-								"SuccessfulConfirmation");
-						var sMessageError = this.getView()
-								.getModel("i18n").getProperty(
-										"ErrorDuringConfirmation");
+						var sMessageSuccess = this.getView().getModel("i18n")
+								.getProperty("SuccessfulConfirmation");
+						var sMessageError = this.getView().getModel("i18n")
+								.getProperty("ErrorDuringConfirmation");
 
 						if (user == "" || pass == "") {
 							sap.ui.getCore().byId("msgstrpConfirm").setVisible(
@@ -321,7 +319,8 @@ sap.ui
 							if (flag === true) {
 								// Refresh User Operation Model and Operation
 								// Detail
-								airbus.mes.shell.oView.getController().renderStationTracker();
+								airbus.mes.shell.oView.getController()
+										.renderStationTracker();
 
 								this.refreshOperationData(percent);
 
@@ -379,7 +378,7 @@ sap.ui
 							break;
 						}
 					},
-					
+
 					/***********************************************************
 					 * ReasonCode Fragment Methods
 					 **********************************************************/
@@ -460,8 +459,12 @@ sap.ui
 						this.getView().byId("operationDetailPanel").setExpanded(false);
 						
 						
-						
-						// Set Slider enabled or dis-abeled based on Status						
+						// Load Reason Code Model
+						// Model for Reason Code Comments
+						airbus.mes.operationdetail.ModelManager.loadReasonCodeModel();
+
+
+						// Set Slider enabled or dis-abeled based on Status
 						sap.ui.getCore().getModel("operationDetailModel")
 								.refresh();
 
@@ -500,6 +503,25 @@ sap.ui
 												- $("#operationDetailsView--operationNav--header").height()
 												- $("#operationDetailsView--operationStatusFooter").height() ));
 
+					},
+
+					/***********************************************************
+					 * 
+					 * Switch Execution Mode for Operation Detail
+					 * 
+					 * @param oEvent
+					 */
+					switchMode : function(oEvent) {
+						var oSwitchButton = oEvent.getSource();
+
+						if (oSwitchButton.getState() == true)
+							this.getView().byId("switchStatusLabel").setText(
+									this.getView().getModel("i18n")
+											.getProperty("Execution"));
+						else
+							this.getView().byId("switchStatusLabel").setText(
+									this.getView().getModel("i18n")
+											.getProperty("ReadOnly"));
 					}
 
 				});

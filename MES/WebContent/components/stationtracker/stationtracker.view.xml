@@ -71,27 +71,36 @@
 
 								<VBox width="35%">
 
-									<layout:Grid class="" defaultSpan="L6 M6 S6">
+									<layout:Grid id="TaktAdherenceTrend" defaultSpan="L4 M4 S4">
 										<layout:content>
-											<Label text="{StationTrackerI18n>Trend}" class=" whiteText" />
-											<core:Icon src="sap-icon://up"
-												class="sapUiSmallMarginBeginEnd TrendGreen" />
+											<Label text="{StationTrackerI18n>Trend}" class=" whiteText takt_kpi_name">
+												<layoutData><layout:GridData span="L8 M8 S8" /></layoutData>
+											</Label>
+											<core:Icon src="sap-icon://up" class="sapUiSmallMarginBeginEnd TrendGreen takt_kpi_value" />
 
-											<Label text="{StationTrackerI18n>DeltaVsSLB}" class=" whiteText" />
+											<Label text="{StationTrackerI18n>DeltaVsSLB}" class="whiteText takt_kpi_name">
+												<layoutData><layout:GridData span="L8 M8 S8" /></layoutData>
+											</Label>
 											<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/SLB}"
-												class="whiteText" />
+												class="whiteText takt_kpi_value" />
 
-											<Label text="{StationTrackerI18n>DeltaVsSoA}" class=" whiteText" />
+											<Label text="{StationTrackerI18n>DeltaVsSoA}" class="whiteText takt_kpi_name">
+												<layoutData><layout:GridData span="L8 M8 S8" /></layoutData>
+											</Label>
 											<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/SLB}"
-												class="whiteText" />
+												class="whiteText takt_kpi_value" />
 
-											<Label text="{StationTrackerI18n>CycleTime}" class=" whiteText" />
+											<Label text="{StationTrackerI18n>CycleTime}" class="whiteText takt_kpi_name">
+												<layoutData><layout:GridData span="L8 M8 S8" /></layoutData>
+											</Label>
 											<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/SLB}"
-												class="whiteText" />
+												class="whiteText takt_kpi_value" />
 
-											<Label text="{StationTrackerI18n>WorkCintent}" class=" whiteText" />
+											<Label text="{StationTrackerI18n>WorkCintent}" class="whiteText takt_kpi_name">
+												<layoutData><layout:GridData span="L8 M8 S8" /></layoutData>
+											</Label>
 											<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/SLB}"
-												class="whiteText" />
+												class="whiteText takt_kpi_value" />
 										</layout:content>
 									</layout:Grid>
 
@@ -117,6 +126,7 @@
 								class="whiteTextHeader sapUiSmallMarginTopBottom" />
 							<VBox width="90%">
 								<micro:ComparisonMicroChart width="100%"
+									id="boxSLBEfficiecy_chart"
 									size="L" colorPalette="#84bd00, #f5f5f5, #fe5000">
 									<micro:data>
 										<micro:ComparisonMicroChartData
@@ -126,7 +136,7 @@
 										<micro:ComparisonMicroChartData
 											title="{StationTrackerI18n>RedSpaces}" value="10" />
 										<micro:ComparisonMicroChartData
-											class="hiddenRefBar" title="{StationTrackerI18n>RedSpaces}" value="20" visible="false"/>
+											id="hiddenRefBarSBL" title="{StationTrackerI18n>RedSpaces}" value="20" visible="false"/>
 										</micro:data>
 											
 								</micro:ComparisonMicroChart>
@@ -194,7 +204,8 @@
 								design="Bold" class="whiteTextHeader sapUiSmallMarginTopBottom" />
 							<VBox width="90%">
 								<micro:ComparisonMicroChart size="L"
-									width="100%" colorPalette="#84bd00, #fe5000, #fe5000" >
+									id="boxResolutionEfficiecy_chart"
+									width="100%" colorPalette="#84bd00,#fe5000,#fe5000,#0F2D65" >
 									<micro:data>
 										<micro:ComparisonMicroChartData
 											title="{StationTrackerI18n>PromisedInTakt}" value="8" />
@@ -203,7 +214,7 @@
 										<micro:ComparisonMicroChartData
 											title="{StationTrackerI18n>NotAcknowledged}" value="10" />
 										<micro:ComparisonMicroChartData
-											class="hiddenRefBar" title="{StationTrackerI18n>RedSpaces}" value="20" visible="false"/>
+											id="hiddenRefBarResolution" title="{StationTrackerI18n>RedSpaces}" value="20" visible="false"/>
 									</micro:data>
 								</micro:ComparisonMicroChart>
 							</VBox>
