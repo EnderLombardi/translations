@@ -186,10 +186,6 @@ sap.ui
 
 					confirmOperation : function(oEvent) {
 
-						// Model for Reason Code Comments
-						airbus.mes.operationdetail.ModelManager
-								.loadReasonCodeModel();
-
 						if (oEvent.getSource().getText() == this.getView()
 								.getModel("i18n").getProperty("confirm")) {
 							if (!this._reasonCodeDialog) {
@@ -460,8 +456,13 @@ sap.ui
 						this.getView().byId("operationDetailPanel").setExpanded(false);
 						
 						
+						// Load Reason Code Model
+						// Model for Reason Code Comments
+						airbus.mes.operationdetail.ModelManager.loadReasonCodeModel();
 						
-						// Set Slider enabled or dis-abeled based on Status						
+						
+						
+						// Set Slider enabled or disabled based on Status						
 						sap.ui.getCore().getModel("operationDetailModel")
 								.refresh();
 

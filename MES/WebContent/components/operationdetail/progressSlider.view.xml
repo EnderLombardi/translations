@@ -10,11 +10,12 @@
 				<headerToolbar>
 					<Toolbar height="7rem" class="ML-05">
 						<VBox width="100%">
-						<HBox height="30%" justifyContent="SpaceBetween">
-							<Text id="operationName" class="mainText"
-								text="OP {operationDetailModel>/Rowsets/Rowset/0/Row/0/operation_no} - {operationDetailModel>/Rowsets/Rowset/0/Row/0/operation_desc}"/>
-								<Switch customTextOn=" " customTextOff=" " state="true" class="switchExecutionButton"/>
-						</HBox>
+							<HBox height="30%" justifyContent="SpaceBetween">
+								<Text id="operationName" class="mainText"
+									text="OP {operationDetailModel>/Rowsets/Rowset/0/Row/0/operation_no} - {operationDetailModel>/Rowsets/Rowset/0/Row/0/operation_desc}" />
+								<Switch customTextOn=" " customTextOff=" " state="true"
+									class="switchExecutionButton" />
+							</HBox>
 							<HBox justifyContent="SpaceBetween" width="100%">
 								<HBox justifyContent="SpaceBetween">
 
@@ -129,20 +130,28 @@
 									</layoutData>
 								</Button>
 							</l:Grid>
-							<!-- <l:Grid defaultSpan="L12 M12 S12"> <Toolbar height="5rem"> <layoutData> 
-								<l:GridData span="L12 M12 S12" /> </layoutData> <ToolbarSpacer /> <Button 
-								id="btnPause" text="Pause" press="pauseOperation" class="sapMBtnDisabled 
-								sapUiSmallMarginBegin sapUiSmallMarginEnd"> </Button> <Button id="btnConfirm" 
-								class="btnConfirm sapUiSmallMarginEnd" text="Confirm" press="confirmOperation"> 
-								</Button> <Button id="btnActivate" text="Activate" press="activateOperation" 
-								type="Emphasized"> </Button> <Button type="Emphasized" id="btnComplete" text="Complete" 
-								press="confirmOperation" class="sapUiSmallMarginEnd"> </Button> <ToolbarSpacer 
-								/> </Toolbar> </l:Grid> -->
+							
+							
+							<f:SimpleForm id="reasonCode" minWidth="1024"
+								maxContainerCols="2" editable="true" layout="ResponsiveGridLayout"
+								labelSpanL="1" labelSpanM="2" emptySpanL="0" emptySpanM="0"
+								columnsL="1" columnsM="1" validateFieldGroup="onValidatereason">
+								<f:content>
+									<Label text="Reason Code" />
+									<Select forceSelection="true" change="onSelectionReason"
+										id="reasonCodeSelectBox" items="{reasonCodeModel>/Rowsets/Rowset/0/Row}">
+										<core:Item key="{reasonCodeModel>REASON_CODE}" text="{reasonCodeModel>DESCRIPTION}" />
+									</Select>
+
+									<Label text="Comment" />
+									<TextArea id="reasonCodeComments" />
+								</f:content>
+							</f:SimpleForm>
 						</VBox>
 					</IconTabFilter>
-					<IconTabFilter text="Disruption"/>
-					<IconTabFilter text="Reschedule"/>
-					<IconTabFilter text="TouchNGo"/>
+					<IconTabFilter text="Disruption" />
+					<IconTabFilter text="Reschedule" />
+					<IconTabFilter text="TouchNGo" />
 
 
 					<!-- <IconTabFilter icon="sap-icon://task" count="389" text="Checklist"> 
