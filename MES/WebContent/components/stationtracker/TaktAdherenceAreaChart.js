@@ -36,16 +36,17 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.TaktAdherenceAreaChart", {
 		];
 
 		var parent = $("#stationTrackerView--chartId");
-		var margin = { top: 10, right: 0, bottom: 10, left: 30 },
-			width = 180,
-			height = 60;
-
 		var chart = $("#stationTrackerView--takt_adherence_area_chart"),
 			aspect = 0.3,
 			container = chart.parent();
+
+		var margin = { top: 10, right: 0, bottom: 10, left: 30 },
+			width = container.width() - margin.left - margin.right - 15,
+			height = Math.min(80, Math.round(container.width() / aspect)) - margin.top - margin.bottom;
+
 		$(window).on("resize", function() {
 			var targetWidth = container.width();
-			chart.attr("width", targetWidth);
+			chart.attr("width", targetWidth - 15);
 			chart.attr("height", Math.min(80, Math.round(targetWidth / aspect)));
 		}).trigger("resize");
 
@@ -134,7 +135,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.TaktAdherenceAreaChart", {
 			.attr("y1", function () { return y(0); })
 			.attr("x2", function () { return x(data[data.length - 2].x); })
 			.attr("y2", function () { return y(d3.max(data, function (d) { return d.y; })); })
-			.style("stroke-width", 2)
+			.style("stroke-width", 1)
 			.style("stroke", "white");
 		//Draw the blue Circle
 		var circle = svg.append("circle")
