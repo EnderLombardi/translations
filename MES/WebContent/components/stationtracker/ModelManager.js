@@ -530,6 +530,7 @@ airbus.mes.stationtracker.ModelManager = {
                                          "sfc_step_ref" : oModel[0].SFC_STEP_REF,
                                          "operation_no" : oModel[0].OPERATION_BO.split(",")[1],
                                          "operation_desc" : oModel[0].OPERATION_DESCRIPTION,
+                                         "material_description": oModel[0].WORKORDER_DESCRIPTION,
                                          "operation_revision" : oModel[0].SFC_STEP_REF.split(",")[5],
                                          "wo_no" : oModel[0].SHOP_ORDER_BO.split(",")[1],
                                          "workcenter" : oModel[0].PP_STATION.split(",")[1],
@@ -539,7 +540,9 @@ airbus.mes.stationtracker.ModelManager = {
                                          "planned_start_time" : "TimeUnavailable",
                                          "planned_end_time" : "TimeUnavailable",
                                          "original_start_time" : oModel[0].START_TIME,
-                                         "original_end_time" : oModel[0].END_TIME
+                                         "original_end_time" : oModel[0].END_TIME,
+                                         "cpp_cluster": oModel[0].CPP_CLUSTER,
+                                         "work_package": oModel[0].WORK_PACKAGE
                                   } ]
                            } ]
                      }

@@ -59,7 +59,8 @@
 									text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/time_spent}" />
 								<Label type="space"></Label>
 								<Label type="space"></Label>
-								 <Label text="System status: " /> <Text text=" - " />
+								 <Label text="Material description : " /> 
+								 <Text text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/material_description}" />
 								 <Label type="space" />
 								 <Label text="Number of employees : " /> <Text text=" - " />
 								 <Label type="space"></Label>								 
@@ -75,7 +76,8 @@
 								<Label type="space"></Label>
 								<Label text="User status:" /> <Text text=" - " />
 								<Label type="space"/>
-								<Label text="CPP Cluster:" /> <Text text=" - " />
+								<Label text="CPP Cluster:" /> 
+								<Text text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/cpp_cluster}" />
 							</VBox>
 							<VBox>
 								<Label text="Work Center:" />
@@ -83,11 +85,14 @@
 									text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/workcenter}" />
 								<Label type="space"></Label>
 								<Label text="Work Package:" />
-								<Text text= " - "/>
+								<Text text= "{operationDetailModel>/Rowsets/Rowset/0/Row/0/work_package}"/>
 								<Label type="space"></Label>
 								<Label type="space"/>								
 								<!-- <Label text="ACPnG" /> <Text text="28/08/2016" /> <Label type="space"></Label>--> 
 							    <Label text="Bundle" /> <Text text=" - " /> 
+							    <Label type="space" />
+							    <Label text=" System status:" />
+							    <Text text=" - " />  	
 							</VBox>
 							<!-- <VBox> <Label text="Activity:" /> <Text text="MEC" /> <Label 
 								type="space"></Label> <Label text="N. employees" /> <Text text="1" /> <Label 

@@ -231,7 +231,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 					//"ata": el.ata,
 					//"familyTarget": el.familyTarget,
 					"CPP_CLUSTER" : el.CPP_CLUSTER,
-					//"workPackage" : el.workPackage,
+					"WORK_PACKAGE" : el.WORK_PACKAGE,
 					//"avlPath1": el.avlPath1,
 					//"avlPath2": el.avlPath2,
 					"CRITICAL_PATH" : el.CRITICAL_PATH,
