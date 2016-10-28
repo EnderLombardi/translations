@@ -829,17 +829,13 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		var bIsExpanded = oPanel.getExpanded();
 		
 		if ( bIsExpanded ) {
-			
 			airbus.mes.stationtracker.oView.byId("hideKPI").setIcon("sap-icon://hide");
 		} else {
 			airbus.mes.stationtracker.oView.byId("hideKPI").setIcon("sap-icon://show");
-			
 		}
 		
 		oPanel.setExpanded(!bIsExpanded);
-		
-		/***** REMY *****/
-		oPanel.getHeight();
+
 	}
 	
 });
