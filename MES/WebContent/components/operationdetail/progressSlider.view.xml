@@ -94,7 +94,7 @@
 				backgroundDesign="Transparent" height="100%"
 				class="operationNavBar sapUiResponsiveContentPadding">
 				<items>
-					<IconTabFilter text="Progress">
+					<IconTabFilter text="{i18n>Status}">
 
 						<VBox width="100%" justifyContent="SpaceBetween">
 							<HBox justifyContent="Center" class="sapUiSmallMarginTopBottom">
@@ -137,26 +137,26 @@
 							</l:Grid>
 							
 							
-							<f:SimpleForm id="reasonCode" minWidth="1024"
+							<f:SimpleForm width="auto" backgroundDesign="Transparent" id="reasonCode" minWidth="800" maxWidth="800" class="sapUiLargeMarginTopBottom sapUiLargeMarginBeginEnd"
 								maxContainerCols="2" editable="true" layout="ResponsiveGridLayout"
 								labelSpanL="1" labelSpanM="2" emptySpanL="0" emptySpanM="0"
 								columnsL="1" columnsM="1" validateFieldGroup="onValidatereason">
 								<f:content>
 									<Label text="Reason Code" />
-									<Select forceSelection="true" change="onSelectionReason"
+									<Select enabled="{path: 'operationDetailModel>/Rowsets/Rowset/0/Row/0/status', formatter: 'airbus.mes.operationdetail.Formatter.setReasonCodeEnabled'}" forceSelection="true" change="onSelectionReason"
 										id="reasonCodeSelectBox" items="{reasonCodeModel>/Rowsets/Rowset/0/Row}">
 										<core:Item key="{reasonCodeModel>REASON_CODE}" text="{reasonCodeModel>DESCRIPTION}" />
 									</Select>
 
 									<Label text="Comment" />
-									<TextArea id="reasonCodeComments" />
+									<TextArea enabled="{path: 'operationDetailModel>/Rowsets/Rowset/0/Row/0/status', formatter: 'airbus.mes.operationdetail.Formatter.setReasonCodeEnabled'}" id="reasonCodeComments" />
 								</f:content>
 							</f:SimpleForm>
 						</VBox>
 					</IconTabFilter>
-					<IconTabFilter text="Disruption" />
-					<IconTabFilter text="Reschedule" />
-					<IconTabFilter text="TouchNGo" />
+					<IconTabFilter text="{i18n>Disruption}" />
+					<IconTabFilter text="{i18n>Reschedule}" />
+					<IconTabFilter text="{i18n>Touchngo}" />
 
 
 					<!-- <IconTabFilter icon="sap-icon://task" count="389" text="Checklist"> 
