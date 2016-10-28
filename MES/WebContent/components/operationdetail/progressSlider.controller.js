@@ -229,6 +229,7 @@ sap.ui
 
 						}
 					},
+					
 					/***********************************************************
 					 * 
 					 * User Confirmation Dialog Methods
@@ -378,10 +379,10 @@ sap.ui
 							break;
 						}
 					},
+					
 					/***********************************************************
 					 * ReasonCode Fragment Methods
 					 **********************************************************/
-
 					onSubmitReasonCode : function(oEvent) {
 						// store reason Code text
 						this.reasonCodeText = sap.ui.getCore().byId(
@@ -454,6 +455,13 @@ sap.ui
 					 * @memberOf components.stationtracker.stationtracker
 					 */
 					onAfterRendering : function() {
+						//Collapse Operation Detail panel and show Expand button
+						this.getView().byId("opDetailExpandButton").setVisible(true);
+						this.getView().byId("operationDetailPanel").setExpanded(false);
+						
+						
+						
+						// Set Slider enabled or dis-abeled based on Status						
 						sap.ui.getCore().getModel("operationDetailModel")
 								.refresh();
 

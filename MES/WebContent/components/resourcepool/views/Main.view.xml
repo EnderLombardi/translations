@@ -167,7 +167,7 @@
 						class="sapUiSmallMarginBegin" />
 				</content>
 			</Toolbar>
-			<NavContainer id="MainViewNavContainer" height="95%" class="WhiteBG">
+			<NavContainer id="MainViewNavContainer" height="95%" class="WhiteBG" afterNavigate="afterNavigate">
 				<pages>
 
 				</pages>
