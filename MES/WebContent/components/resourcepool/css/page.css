@@ -3,7 +3,8 @@
 	font-size:120% !important;
 }
 .resourcePoolSubheader{
-	background-color: #d5f1f8
+	background-color: #d5f1f8;
+	border: none;
 }
 .myForm
 {
@@ -117,3 +118,217 @@
  }
  #idShiftView{
  }
+ 
+ /* Pop-up/Dialog searchRessourcePoolDialog */
+#searchResourcePool--searchRessourcePoolDialog {
+	background: #ffffff;
+    border: none;
+    border-radius: 0;
+    box-shadow: 0 0 5px #333;
+}
+
+#searchResourcePool--searchRessourcePoolDialog-header-BarPH {
+	background:#d4f1f7;
+
+}
+#searchResourcePool--searchRessourcePoolDialog-title {
+	color:#434343;
+}
+#searchResourcePool--searchRessourcePoolDialog-cont {
+	border-top:3px solid  rgba(255, 255, 255, 0);
+}
+#searchResourcePool--searchRessourcePoolDialog-header {
+	box-shadow: 0 0 5px #333;
+    overflow: visible;
+}
+#searchResourcePool--searchRessourcePoolDialog-footer {
+	background-color:#0F2D65;
+}
+[id^="searchResourcePool--searchRessourcePoolDialog"] .sapMFlexItem {
+    padding: 0 5px;
+}
+[id^="searchResourcePool--searchRessourcePoolDialog"] .sapMBtnDisabled {
+    opacity: 1;
+}
+[id^="searchResourcePool--searchRessourcePoolDialog"] div.sapMBtnInner.sapMBtnAccept {
+    background-image: none;
+    background-color: #84bd00;
+    color: #ffffff;
+    text-shadow: none;
+    border-radius:0;
+    border:none;
+}
+[id^="searchResourcePool--searchRessourcePoolDialog"] div.sapMBtnInner.sapMBtnReject {
+    background-image: none;
+    background-color: #e5002b;
+    color: #ffffff;
+    text-shadow: none;
+    border-radius:0;
+    border:none;
+}
+[id^="searchResourcePool--searchRessourcePoolDialog"] .sapUiRFL.sapUiRLContainer>div:first-child {
+	display:none;
+}
+/* Pop-up/Dialog valueHelp--selectDialog-dialog */
+#valueHelp--selectDialog-dialog {
+	background: #ffffff;
+    border: none;
+    border-radius: 0;
+    box-shadow: 0 0 5px #333;
+}
+
+#valueHelp--selectDialog-dialog-header-BarPH {
+	background:#d4f1f7;
+
+}
+#valueHelp--selectDialog-dialog-title {
+	color:#434343;
+}
+
+#valueHelp--selectDialog-dialog-header {
+	box-shadow: 0 0 5px #333;
+    overflow: visible;
+}
+#valueHelp--selectDialog-dialog-footer {
+	background-color:#0F2D65;
+}
+[id^="valueHelp--selectDialog-dialog"] .sapMFlexItem {
+    padding: 0 5px;
+}
+[id^="valueHelp--selectDialog-dialog"] .sapMBtnDisabled {
+    opacity: 1;
+}
+
+#resourcePool header.sapMSubHeader-CTX {
+	box-shadow: 0px 2px 15px -5px #0F2D65;
+    border: none;
+    border-top: 5px solid #ffffff;
+    position: relative;
+    z-index: 10;
+}
+
+#resourcePool .sapMPageWithSubHeader>section {
+	top: calc(3rem + 5px);
+}
+#resourcePool .sapMPageWithSubHeader>section .resourcePoolSubheader li>span {
+	display: inline-block;
+    vertical-align: top;
+    padding: 0.250rem 0.25rem 0.250rem 0;
+        color:#0D5D76;
+}
+#resourcePool .sapMPageWithSubHeader>section .resourcePoolSubheader li.sapMSegBBtn.sapMSegBBtnFocusable.sapMSegBBtnMixed.sapMSegBBtnSel>span {
+    color:#ffffff;
+}
+#resourcePool .sapMPageWithSubHeader>section .resourcePoolSubheader li {
+    height: 3rem;
+    line-height: 3rem;
+    display: inline-block;
+    font-size: 1.075rem;
+    vertical-align: top;
+    border:none;
+    color:#0D5D76;
+    background-color:transparent;
+}
+#resourcePool .sapMPageWithSubHeader>section .resourcePoolSubheader li:hover {
+	background-color: rgba(0, 86, 112, 0.20);
+}
+#resourcePool .sapMPageWithSubHeader>section .resourcePoolSubheader li.sapMSegBBtn.sapMSegBBtnFocusable.sapMSegBBtnSel {
+    background-color: #74D2E7;
+    color: white;
+    /*font-weight: bold;*/
+
+}
+#resourcePool .sapMPageWithSubHeader>section .resourcePoolSubheader ul {
+    height: 3rem;
+    margin: 0;
+}
+#resourcePool .sapMIBar.sapMHeader-CTX {
+	margin:0;
+	background-color:#d5f1f8;
+	text-align:left;
+}
+#resourcePool .sapMIBar.sapMHeader-CTX span {
+	float: left;
+	color:#0D5D76;
+}
+
+#resourcePool section[role^="form"] {
+	border: 1px solid #e5e5e5;	
+}
+#resourcePool .sapMNavItem {
+	left: 15px;
+    Top: 15px;
+    right: 15px;
+}
+#resourcePool .sapMPanelContent {
+	padding:0;
+}
+#resourcePool .sapMFlexItem .sapMBtnInner {
+	border-radius: 50%;
+    border: none;
+    background: #bfbfbf;
+    text-shadow: 0 0;
+}
+
+#resourcePool .sapMFlexItem button[title^="navigation-right-arrow"] .sapMBtnInner span {
+	left: 3px;
+    position: absolute;
+    top: 1px;
+    right: 0;
+    bottom: 0;
+}
+#resourcePool .sapMFlexItem button[title^="navigation-left-arrow"] .sapMBtnInner span {
+	left: 0;
+    position: absolute;
+    top: 1px;
+    right: 3px;
+    bottom: 0;
+}
+
+#resourcePool .sapMTB-Transparent-CTX.sapMTB {
+	padding:0;
+	border:0;
+	position: relative;
+    z-index: 1;
+}
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:   #74D2E7;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #74D2E7;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #74D2E7;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    #74D2E7;
+}
+
+/* Search form */
+#resourcePool .sapMSFF {
+	border-radius: 3em;
+    border: 2px solid #74D2E7;
+    color: #74D2E7;
+}
+#resourcePool .sapMSFF input, #resourcePool .sapMSFF .sapMSFB.sapMSFS {
+    color: #74D2E7;
+}
+#resourcePool .sapMBarChild.sapMCb .sapMCbBg {
+	border: solid 0.125rem #74D2E7;
+}
+#resourcePool .sapMIBar.sapMTB.sapMTB-Info-CTX.sapMTB>*, #resourcePool .sapMIBar.sapMTB.sapMTB-Info-CTX.sapMTB>:first-child, #resourcePool .sapMIBar.sapMTB.sapMTB-Info-CTX.sapMTB>:last-child {
+	margin: 0 0 0 1px;
+    border: 0;
+}
+
+#resourcePool .sapMTB-Info-CTX.sapMTB {
+	border: none!important;
+    padding: 0;
+    margin-top: -1px;
+    position: relative;
+    z-index: 2;
+    background: #ffffff;
+    height:auto;
+}

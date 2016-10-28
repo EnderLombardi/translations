@@ -44,6 +44,7 @@ font-style: normal !important;
 .pageHeader {
 	color: white !important;
 	background: #0F2D65 ! important;
+	border: 0;
 }
 
 .pageTitle {
