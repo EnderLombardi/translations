@@ -10,11 +10,15 @@
 				<headerToolbar>
 					<Toolbar height="7rem" class="ML-05">
 						<VBox width="100%">
-						<HBox height="30%" justifyContent="SpaceBetween">
-							<Text id="operationName" class="mainText"
-								text="OP {operationDetailModel>/Rowsets/Rowset/0/Row/0/operation_no} - {operationDetailModel>/Rowsets/Rowset/0/Row/0/operation_desc}"/>
-								<Switch customTextOn=" " customTextOff=" " state="true" class="switchExecutionButton"/>
-						</HBox>
+							<HBox height="30%" justifyContent="SpaceBetween">
+								<Text id="operationName" class="mainText"
+									text="OP {operationDetailModel>/Rowsets/Rowset/0/Row/0/operation_no} - {operationDetailModel>/Rowsets/Rowset/0/Row/0/operation_desc}" />
+								<HBox justifyContent="SpaceBetween" width="30%">
+									<Text id="switchStatusLabel" text="Execution Mode" class="ExecutionModeText"/>
+									<Switch customTextOn=" " customTextOff=" " state="true"
+										class="switchExecutionButton" change="switchMode" />
+								</HBox>
+							</HBox>
 							<HBox justifyContent="SpaceBetween" width="100%">
 								<HBox justifyContent="SpaceBetween">
 
@@ -140,9 +144,9 @@
 								/> </Toolbar> </l:Grid> -->
 						</VBox>
 					</IconTabFilter>
-					<IconTabFilter text="Disruption"/>
-					<IconTabFilter text="Reschedule"/>
-					<IconTabFilter text="TouchNGo"/>
+					<IconTabFilter text="Disruption" />
+					<IconTabFilter text="Reschedule" />
+					<IconTabFilter text="TouchNGo" />
 
 
 					<!-- <IconTabFilter icon="sap-icon://task" count="389" text="Checklist"> 
