@@ -39,10 +39,14 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.TaktAdherenceAreaChart", {
 		var chart = $("#stationTrackerView--takt_adherence_area_chart"),
 			aspect = 0.3,
 			container = chart.parent();
-
+		
+		var contWidth = container.width();
+		if (contWidth === 0){
+			contWidth = 200;
+		}
 		var margin = { top: 10, right: 0, bottom: 10, left: 30 },
-			width = container.width() - margin.left - margin.right - 15,
-			height = Math.min(80, Math.round(container.width() / aspect)) - margin.top - margin.bottom;
+			width = contWidth - margin.left - margin.right - 15,
+			height = Math.min(80, Math.round(contWidth / aspect)) - margin.top - margin.bottom;
 
 		$(window).on("resize", function() {
 			if (container.width() > 0){

@@ -59,13 +59,19 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		airbus.mes.stationtracker.oView.byId('kpi_header').attachExpand(resizeGantt);
 		
 		// First run on init
-		resizeGantt(true);
+		if (typeof airbus.mes.stationtracker.cachedGanttTop === 'undefined'){
+			resizeGantt();
+		}else{
+			$(airbus.mes.stationtracker.oView.byId('stationtracker').getDomRef())
+				.css('top', airbus.mes.stationtracker.cachedGanttTop);
+		}
 		
 		// Place the Gantt under the Toolbar
-		function resizeGantt(param){
+		function resizeGantt(){
 			setTimeout(function(){
 				var jqToolbar = $(airbus.mes.stationtracker.oView.byId('toolbarstationtracker').getDomRef());
 				var jqStationTracker = $(airbus.mes.stationtracker.oView.byId('stationtracker').getDomRef());
+				airbus.mes.stationtracker.cachedGanttTop = jqToolbar.offset().top;
 				jqStationTracker.css('top', jqToolbar.offset().top);
 			}, 0);
 		}
