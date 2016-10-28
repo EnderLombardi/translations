@@ -76,6 +76,7 @@ sap.ui
 
 							// direct nav container to workcenter view
 							this.nav.to("idWorkCenterView");
+							
 						} else if (itemKey === "shifts") {
 
 							this.nav.to("idShiftView");
@@ -1522,7 +1523,7 @@ sap.ui
 						this.getView().byId("searchAssignedWC").clear();
 					},
 
-					editTeamOpen : function() {
+				/*	editTeamOpen : function() {
 						if (airbus.mes.resourcepool.editTeam === undefined) {
 
 							airbus.mes.resourcepool.editTeam = sap.ui
@@ -1555,7 +1556,7 @@ sap.ui
 
 					editTeamClose : function() {
 						airbus.mes.resourcepool.editTeam.close();
-					},
+					},*/
 
 					/***********************************************************
 					 * Triggers when Save button is clicked on the Pop-Up
@@ -1716,6 +1717,18 @@ sap.ui
 							}
 						}
 
-					}
+					},
 
+					afterNavigate: function(oEvt){
+						
+						if(oEvt.getParameters().toId == "idUsersView"){
+							this.getView().byId("availableUsersPanel").rerender();
+							this.getView().byId("assignedUsersPanel").rerender();
+						}
+
+						else if (oEvt.getParameters().toId == "idWorkCenterView"){
+							this.getView().byId("availableWCPanel").rerender();
+							this.getView().byId("assignedWCPanel").rerender();
+						}
+					}
 				});
