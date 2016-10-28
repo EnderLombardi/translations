@@ -38,10 +38,10 @@ sap.ui
 						oProgressSlider.stepDown(1);
 					},
 					onCloseOperationDetailPopup : function() {
-						
+
 						airbus.mes.stationtracker.operationDetailPopup.close();
 						airbus.mes.shell.oView.getController()
-						.renderStationTracker();
+								.renderStationTracker();
 					},
 					/***********************************************************
 					 * 
@@ -454,15 +454,17 @@ sap.ui
 					 * @memberOf components.stationtracker.stationtracker
 					 */
 					onAfterRendering : function() {
-						//Collapse Operation Detail panel and show Expand button
-						this.getView().byId("opDetailExpandButton").setVisible(true);
-						this.getView().byId("operationDetailPanel").setExpanded(false);
-						
-						
+						// Collapse Operation Detail panel and show Expand
+						// button
+						this.getView().byId("opDetailExpandButton").setVisible(
+								true);
+						this.getView().byId("operationDetailPanel")
+								.setExpanded(false);
+
 						// Load Reason Code Model
 						// Model for Reason Code Comments
-						airbus.mes.operationdetail.ModelManager.loadReasonCodeModel();
-
+						airbus.mes.operationdetail.ModelManager
+								.loadReasonCodeModel();
 
 						// Set Slider enabled or dis-abeled based on Status
 						sap.ui.getCore().getModel("operationDetailModel")
@@ -519,14 +521,30 @@ sap.ui
 					switchMode : function(oEvent) {
 						var oSwitchButton = oEvent.getSource();
 
-						if (oSwitchButton.getState() == true)
+						if (oSwitchButton.getState() == true) {
 							this.getView().byId("switchStatusLabel").setText(
 									this.getView().getModel("i18n")
 											.getProperty("Execution"));
-						else
+							//this.setScreenforSwitchMode(true);
+
+						} else {
 							this.getView().byId("switchStatusLabel").setText(
 									this.getView().getModel("i18n")
 											.getProperty("ReadOnly"));
-					}
+							//this.setScreenforSwitchMode(false);
+						}
+					},
 
+					/*setScreenforSwitchMode : function(mode) {
+						this.getView().byId("btnPause").setVisible(mode);
+						this.getView().byId("btnConfirm").setVisible(mode);
+						this.getView().byId("btnComplete").setVisible(mode);
+						this.getView().byId("reasonCodeSelectBox").setEnabled(mode);
+						this.getView().byId("reasonCodeComments").setEnabled(mode);
+						
+						this.getView().byId("btnReduce").setEnbaled(mode);
+						this.getView().byId("btnAdd").setEnbaled(mode);
+						this.getView().byId("progressSlider").setEnabled(mode);
+					}
+*/
 				});

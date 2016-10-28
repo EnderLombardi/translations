@@ -177,7 +177,7 @@
 				</items>
 			</IconTabBar>
 
-			<Bar class="operationDetailFooter">
+			<Bar id="OperationDetailFooter" class="operationDetailFooter">
 				<contentRight>
 					<Button id="btnPause" text="{i18n>pause}" icon="sap-icon://media-pause"
 						press="pauseOperation" />
