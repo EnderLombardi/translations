@@ -12,7 +12,7 @@
 							<HBox width="100%" class="adjustPulseSelect" 
 								visible="{path:'PulseModel>ProductId' , formatter:'airbus.mes.linetracker.util.Formatter.setVisible'}">
 								<items>
-									<Select width="100%" forceSelection="false" items="{PulseModel>/}"
+									<Select width="100%"  forceSelection="false" items="{PulseModel>/}"
 										change="onPluseDropDownSelect">
 										<core:Item key="{ProductId}" text="{PulseModel>}" />
 									</Select>
