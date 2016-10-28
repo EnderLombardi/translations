@@ -497,7 +497,8 @@ sap.ui
 								.height(
 										($("#"+ airbus.mes.operationdetail.parentId).height()
 												- $("#operationDetailsView--operationDetailPanel").height()
-												- ( $("#operationDetailsView--operationNav--header").height()	*2)));
+												- $("#operationDetailsView--operationNav--header").height()
+												- $("#operationDetailsView--operationStatusFooter").height() ));
 
 					}
 

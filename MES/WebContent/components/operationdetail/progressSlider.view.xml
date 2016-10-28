@@ -1,11 +1,11 @@
 <core:View xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout"
 	xmlns:f="sap.ui.layout.form" xmlns:html="http://www.w3.org/1999/xhtml"
 	controllerName="airbus.mes.operationdetail.progressSlider">
-	<Page showHeader="false" height="100%" enableScrolling="false"
+	<Page showHeader="false" height="100%" enableScrolling="true"
 		class="WhiteBG">
 
 		<content>
-			<Panel expandable="true" expanded="false" width="auto"
+			<Panel expandable="true" expanded="false" width="auto" stretchContentHeight="true"
 				id="operationDetailPanel" class="pageSubHeader sapUiSmallMarginTop sapUiSmallMarginBeginEnd">
 				<headerToolbar>
 					<Toolbar height="7rem" class="ML-05">
@@ -52,8 +52,11 @@
 								<Text
 									text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/time_spent}" />
 								<Label type="space"></Label>
-								<!-- <Label text="System status: " /> <Text text="DSEX DSPT REL" 
-									/> <Label type="space"></Label> -->
+								<Label type="space"></Label>
+								 <Label text="System status: " /> <Text text=" - " />
+								 <Label type="space" />
+								 <Label text="Number of employees : " /> <Text text=" - " />
+								 <Label type="space"></Label>								 
 							</VBox>
 							<VBox>
 								<Label text="End:" />
@@ -64,15 +67,21 @@
 								<Text
 									text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/original_start_time} - {operationDetailModel>/Rowsets/Rowset/0/Row/0/original_end_time}" />
 								<Label type="space"></Label>
-								<!-- <Label text="User status:" /> <Text text=" - " /> -->
+								<Label text="User status:" /> <Text text=" - " />
+								<Label type="space"/>
+								<Label text="CPP Cluster:" /> <Text text=" - " />
 							</VBox>
 							<VBox>
 								<Label text="Work Center:" />
 								<Text
 									text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/workcenter}" />
 								<Label type="space"></Label>
-								<!-- <Label text="ACPnG" /> <Text text="28/08/2016" /> <Label type="space"></Label> 
-									<Label text="Bundle" /> <Text text=" - " /> -->
+								<Label text="Work Package:" />
+								<Text text= " - "/>
+								<Label type="space"></Label>
+								<Label type="space"/>								
+								<!-- <Label text="ACPnG" /> <Text text="28/08/2016" /> <Label type="space"></Label>--> 
+							    <Label text="Bundle" /> <Text text=" - " /> 
 							</VBox>
 							<!-- <VBox> <Label text="Activity:" /> <Text text="MEC" /> <Label 
 								type="space"></Label> <Label text="N. employees" /> <Text text="1" /> <Label 
@@ -163,7 +172,7 @@
 				</items>
 			</IconTabBar>
 
-			<Bar class="operationDetailFooter">
+			<Bar id="operationStatusFooter" class="operationDetailFooter">
 				<contentRight>
 					<Button id="btnPause" text="{i18n>pause}" icon="sap-icon://media-pause"
 						press="pauseOperation" />
