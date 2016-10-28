@@ -8,12 +8,12 @@
 			<Panel expandable="true" expanded="false" width="auto"
 				id="operationDetailPanel" class="pageSubHeader sapUiSmallMarginTop sapUiSmallMarginBeginEnd">
 				<headerToolbar>
-					<Toolbar height="5rem" class="ML-05">
+					<Toolbar height="7rem" class="ML-05">
 						<VBox width="100%">
 						<HBox height="30%" justifyContent="SpaceBetween">
 							<Text id="operationName" class="mainText"
 								text="OP {operationDetailModel>/Rowsets/Rowset/0/Row/0/operation_no} - {operationDetailModel>/Rowsets/Rowset/0/Row/0/operation_desc}"/>
-								<Switch state="true"/>
+								<Switch customTextOn=" " customTextOff=" " state="true" class="switchExecutionButton"/>
 						</HBox>
 							<HBox justifyContent="SpaceBetween" width="100%">
 								<HBox justifyContent="SpaceBetween">
@@ -140,6 +140,10 @@
 								/> </Toolbar> </l:Grid> -->
 						</VBox>
 					</IconTabFilter>
+					<IconTabFilter text="Disruption"/>
+					<IconTabFilter text="Reschedule"/>
+					<IconTabFilter text="TouchNGo"/>
+
 
 					<!-- <IconTabFilter icon="sap-icon://task" count="389" text="Checklist"> 
 						<content> <core:Fragment type="XML" fragmentName="airbus.mes.worktracker.fragments.Tasklist" 
