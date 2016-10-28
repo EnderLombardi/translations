@@ -331,7 +331,7 @@ sap.ui
 							airbus.mes.resourcepool.oView
 									.addDependent(airbus.mes.resourcepool.messageDialog);
 						}
-						airbus.mes.resourcepool.messageDialog.open();
+						
 
 						for (var i = 0; i < aError.length; i++) {
 							airbus.mes.resourcepool.messageDialog.getContent()[0]
@@ -371,6 +371,7 @@ sap.ui
 
 											}));
 						}
+						airbus.mes.resourcepool.messageDialog.open();
 
 					},
 
