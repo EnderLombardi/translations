@@ -11,15 +11,9 @@ sap.ui.core.UIComponent.extend("airbus.mes.homepage.Component", {
 
 airbus.mes.homepage.Component.prototype.createContent = function() {
 
-	var oModel1 = new sap.ui.model.json.JSONModel();
-	var oModel2 = new sap.ui.model.json.JSONModel();
-	var oModel3 = new sap.ui.model.json.JSONModel();
-	
-
+	var oModel1 = new sap.ui.model.json.JSONModel();	
 	
 	oModel1.loadData("../components/homepage/data/1TileLineHome.json", null, false);
-	oModel2.loadData("../components/homepage/data/2TileLineHome.json", null, false);
-//	oModel3.loadData("../components/homepage/data/3TileLineHome.json", null, false);
 	
 	if (airbus.mes.homepage.oView === undefined) {
 		//	View on XML
@@ -40,9 +34,6 @@ airbus.mes.homepage.Component.prototype.createContent = function() {
 		// Local Model
 		this.oView.setModel(i18nModel, "i18n");				
 		this.oView.setModel(oModel1, "1TileLineHome");
-		this.oView.setModel(oModel2, "2TileLineHome");
-//		this.oView.setModel(oModel3, "3TileLineHome");
-
 		
 		
 		return this.oView;

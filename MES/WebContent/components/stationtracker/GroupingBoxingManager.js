@@ -158,7 +158,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 				console.log("operation is not in the shift");
 				var oShift = "";
 				
-			}// console.log(oShift);
+			}
 						
 			var ssBox = el[sBoxing] + "_"  + el["WORKORDER_ID"] + "_" + oShift.day + "-" + oShift.shiftName;
 						
@@ -226,7 +226,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 					"STATE": el.STATE,
 					//"disruptions": el.disruptions,
 					"ANDONS": el.ANDONS,
-					"ROUTING_MATURITY_ACCESSMENT": el.ROUTING_MATURITY_ACCESSMENT,
+					"RMA_STATUS_COLOR": el.RMA_STATUS_COLOR,
 					"paused" : sPaused,
 					//"ata": el.ata,
 					//"familyTarget": el.familyTarget,
@@ -360,6 +360,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 					var fCriticalPath = 0;		
 					var sOperationDescription = "";
 					var sStatus = "";
+					var sRmaStatus = "";
 					
 				;
 					
@@ -383,7 +384,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 						fCriticalPath = el.CRITICAL_PATH;
 						sOperationDescription = el.sBox;
 						sStatus = el.STATE;
-						sRoutingMaturityAssessment = el.ROUTING_MATURITY_ACCESSMENT
+						sRmaStatus = el.RMA_STATUS_COLOR
 					
 
 						
@@ -406,6 +407,13 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 					if (  key1.slice(0,2) === "I_" ) {
 						var oOperationInitial = {
 								
+								"operationId" : sOperationId,
+								"operationDescription" : sOperationDescription,
+								"shopOrder" : sShopOrder,
+								"rmaStatus" : sRmaStatus,
+								"shopOrderDescription" : sShopOrderDescription,
+								// This is the real value of boxing 
+								"realValueBox" : key2.split("_")[0],
 								"box" : key2,
 								"group" : key,
 								"avlLine" : key1,
@@ -427,10 +435,12 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 							"operationDescription" : sOperationDescription,
 							"shopOrder" : sShopOrder,
 							"shopOrderDescription" : sShopOrderDescription,
-							"routingMaturityAssessment" : sRoutingMaturityAssessment,
+							"rmaStatus" : sRmaStatus,
 							"paused" : Math.max.apply(null,sPaused),
 							"status" : sStatus,
 							"totalDuration" : fDuration.toString(), 
+							// This is the real value of boxing 
+							"realValueBox" : key2.split("_")[0],
 							"box" : key2,
 							"avlLine" : key1,
 							"group" : key,

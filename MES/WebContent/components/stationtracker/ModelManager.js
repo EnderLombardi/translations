@@ -210,10 +210,8 @@ airbus.mes.stationtracker.ModelManager = {
               var oData = airbus.mes.settings.ModelManager;
               var geturlstationtracker = this.urlModel.getProperty('urlproductiongroup');
 
-              geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$station",
-                           "PHYS_ST_IP4"/* oData.station */);
-              geturlstationtracker = airbus.mes.stationtracker.ModelManager
-                           .replaceURI(geturlstationtracker, "$plant", "FNZ1"/* oData.plant */);
+              geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$station", oData.station );
+              geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$plant", oData.plant );
 
               var oViewModel = sap.ui.getCore().getModel("productionGroupModel");
               oViewModel.loadData(geturlstationtracker, null, false);
@@ -517,7 +515,13 @@ airbus.mes.stationtracker.ModelManager = {
                      sStatus = "IN_QUEUE";
               else if (oModel[0].paused === "1")
                      sStatus = "NOT_STARTED";
-
+              
+              // progress calculation
+              var progress;
+              if(oModel[0].DURATION == 0)
+            	  progress = 0;
+              else
+            	 progress = oModel[0].PROGRESS / oModel[0].DURATION * 100; 
               var oOperModel = {
                      "Rowsets" : {
                            "Rowset" : [ {
@@ -530,7 +534,7 @@ airbus.mes.stationtracker.ModelManager = {
                                          "wo_no" : oModel[0].SHOP_ORDER_BO.split(",")[1],
                                          "workcenter" : oModel[0].PP_STATION.split(",")[1],
                                          "status" : sStatus,
-                                         "progress" : oModel[0].PROGRESS / oModel[0].DURATION * 100,
+                                         "progress" : progress,
                                          "time_spent" : airbus.mes.stationtracker.util.Formatter.msToTime(oModel[0].PROGRESS),
                                          "planned_start_time" : "TimeUnavailable",
                                          "planned_end_time" : "TimeUnavailable",

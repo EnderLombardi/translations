@@ -198,10 +198,6 @@
 	color: black;
 }
 
-.initial {
-	background-color: #F5F6F8 !important;
-}
-
 .pageStation {
 	background: #006CA7 !important;
 }
@@ -258,7 +254,6 @@
 	float: left !important;
 }
 
-
 .grey {
 	background-color: #97999b;
 }
@@ -267,19 +262,8 @@
 	background-color: #dddddd;
 }
 
-.shiftCss {
-	background-color: #EEF3F7;
-	opacity: 0.8;
-}
-
-
-
 .duck-egg-blue {
 	background-color:#d5f1f8 !important;
-}
-
-.lineYaxis {
-	background-color: rgba(49, 220, 240, 0.1);
 }
 
 .operationCP {
@@ -415,11 +399,6 @@
 	margin-right: 5px;
 }
 
-.initial {
-	background-color: transparent;
-	padding-left: 0px;
-}
-
 .task {
 	height: 50px !important;
 }
@@ -505,13 +484,16 @@ background-color: #0085AD !important;
 
 /***** KPI Header Header *****/
 
+#stationTrackerView--kpi_header .hiddenRefBar {
+	display : none;	
+}
+
 #stationTrackerView--kpi_header .sapMPanelWrappingDivTb{
 	border-bottom: none;
 }
 
 #stationTrackerView--kpiHeaderToolbar{
 	margin-left: 0;
-	margin-right: 3rem;
 }
 
 #stationTrackerView--kpiHeaderToolbar .sapMBtnContent,
@@ -525,6 +507,7 @@ background-color: #0085AD !important;
 #stationTrackerView--kpi_header-CollapsedImg{
 	right: 0;
 	color: #74d2e7;
+	display: none;
 }
 
 #stationTrackerView--kpi_header .sapMPanelExpandableIcon{
@@ -606,6 +589,13 @@ background-color: #0085AD !important;
 #stationTrackerView--TeamButton-content{
 	color: #74d2e7 !important;
 }
+
+#stationTrackerView--hideKPI-img,
+#stationTrackerView--hideKPI-content{
+	color: #74d2e7 !important;
+}
+
+
 
 /***** KPI Header Cotent *****/
 
@@ -702,11 +692,12 @@ background-color: #0085AD !important;
 
 #stationTrackerView--stationtracker .dhx_cal_header{
 	border: none;
+	width: 100% !important;
 }
 
 #stationTrackerView--stationtracker .dhx_cal_next_button{
 	position: absolute;
-	right: -10px;
+	right: 0px;
 	width: auto;
 	color: #52aec8;
 	text-align: center;	
@@ -728,7 +719,7 @@ background-color: #0085AD !important;
 
 #stationTrackerView--stationtracker .dhx_cal_prev_button{
 	position: absolute;
-	right: 20px;
+	right: 30px;
 	width: auto;
 	color: #52aec8;
 	text-align: center;
@@ -757,6 +748,8 @@ background-color: #0085AD !important;
 
 #stationTrackerView--stationtracker .dhx_matrix_scell.item {
 	border-bottom: solid 1px #d5f1f8;
+	color: #0D5D76;
+	background-color: #EAFBFD;
 }
 
 #stationTrackerView--stationtracker .dhx_matrix_scell.item,
@@ -765,10 +758,22 @@ background-color: #0085AD !important;
 	cursor: pointer;
 }
 
+#stationTrackerView--stationtracker .dhx_matrix_scell.item.initial{
+	cursor: default;
+}
+
 #stationTrackerView--stationtracker .dhx_scell_name{
 	float: none;
 	text-align: left;
 	position: relative;
+}
+
+#stationTrackerView--stationtracker .dhx_cal_event,
+#stationTrackerView--stationtracker .dhx_cal_event_line {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+	border: none;
 }
 
 #stationTrackerView--stationtracker .dhx_matrix_cell div,
@@ -826,6 +831,10 @@ background-color: #0085AD !important;
 	background-color: #ECEEEF ! important;
 }
 
+#stationTrackerView--stationtracker .dhx_marked_timespan.dhx_matrix_now_time{
+	border-left-color: #0f2d65;
+	opacity: 1;
+}
 
 #stationTrackerView--stationtracker .dhx_row_item .dhx_scell_name{
 	padding: 0 25px 0 0;
@@ -882,6 +891,31 @@ background-color: #0085AD !important;
 	border-right: 1px solid #dddddd;
 }
 
+#stationTrackerView--stationtracker .tracker-item-initial{
+	color: #BBBCBC;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+    left: 0px;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    box-sizing: border-box;
+    text-overflow: ellipsis;
+    border: solid 2px #BBBCBC;
+    background-color: #F5F5F5;
+}
+
+#stationTrackerView--stationtracker .tracker-item-initial .fa-exclamation-triangle{
+	color: #BBBCBC !important;
+}
+
+#stationTrackerView--stationtracker .shiftCss {
+	background-color: #DDDDDD;
+	opacity: 0.8;
+}
+
 /** Takt Adherence **/
 #stationTrackerView--takt_adherence_adherence_value {
 	font-size: 15px;
@@ -893,6 +927,16 @@ background-color: #0085AD !important;
 
 #stationTrackerView--kpiHeaderContent .takt_kpi_value {
 	text-align: left;
+}
+
+#stationTrackerView--kpiHeaderContent .KPITaktChartBlueText {
+	color: #74d2e7;
+	margin-left: 10px;
+}
+
+#stationTrackerView--kpiHeaderContent .KPITaktChartRightText {
+	text-align: right ! important;
+	width: 100%;
 }
 
 #stationTrackerView--LabourEfficiencyValue {
@@ -1026,7 +1070,10 @@ svg#stationTrackerView--takt_adherence_area_chart {
     color: white;
     font-weight: bold;
 }
-
+#stationTrackerView--toolbarstationtracker label {
+	    color: #0D5D76;
+	     padding: 0 0 0 0.625rem;
+}
 #stationTrackerView--toolbarstationtracker .comboBoxStyle {
     width: auto;
     max-width: 100%;
@@ -1077,6 +1124,9 @@ svg#stationTrackerView--takt_adherence_area_chart {
 	background:#d4f1f7;
 
 }
+#pop-up-polypoly-header {
+box-shadow: 0 0 5px #333;
+}
 #pop-up-polypoly-title {
 	color:#434343;
 }
@@ -1091,4 +1141,14 @@ svg#stationTrackerView--takt_adherence_area_chart {
 }
 #pop-up-polypoly .sapUiTableColHdrScr .sapUiTableColHdr:nth-child(2) .sapMLabel {
 	border:none;
+}
+
+#pop-up-polypoly .sapUiTableColHdrScr .sapUiTableColHdr:nth-child(1) .sapMLabel {
+    color: #468497;
+    font-size: 0.975rem;
+    padding-top: 4px;
+}
+#pop-up-polypoly .sapUiTableColHdrScr .sapUiTableColHdr:nth-child(2) .sapMLabel {
+    color: #468497;
+    font-size: 0.7rem;
 }

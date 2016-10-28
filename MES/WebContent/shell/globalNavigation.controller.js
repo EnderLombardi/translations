@@ -77,11 +77,11 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 	 * 
 	 * @memberOf components.globalnav.globalNavigation
 	 */
-	onAfterRendering : function() {
-		this.getView().byId("user_id")
-				.setModel(sap.ui.getCore().getModel("userDetailModel"),
-						"userDetailModel");
-	},
+
+//	onAfterRendering : function() {
+//		
+//	},
+
 
 	/**
 	 * Called when the Controller is destroyed. Use this one to free resources
@@ -126,6 +126,14 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 
 	renderStationTracker : function() {
 
+        if ( nav.getCurrentPage().getId() != "homePageView" ) {
+            
+            airbus.mes.shell.oView.byId("homeButton").setVisible(true);
+           
+     } else  {
+           
+            airbus.mes.shell.oView.byId("homeButton").setVisible(false);
+    }
 
 		if (nav.getCurrentPage().getId() === "stationTrackerView") {
 			this.setInformationVisibility(true);
@@ -152,6 +160,7 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 	},
 	setInformationVisibility : function(bSet) {
 		this.getView().byId("informationButton").setVisible(bSet);
+		this.getView().byId("homeButton").setVisible(bSet);
 	},
 	onInformation : function(oEvent){
 		airbus.mes.shell.oView.addStyleClass("viewOpacity");
