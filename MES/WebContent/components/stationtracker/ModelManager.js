@@ -435,7 +435,7 @@ airbus.mes.stationtracker.ModelManager = {
 
               if (oModel.length === 1) {
 
-                     airbus.mes.stationtracker.ModelManager.openOperationPopOver(id);
+            	  	airbus.mes.stationtracker.ModelManager.openOperationDetailPopup(id);
                      return;
               }
 

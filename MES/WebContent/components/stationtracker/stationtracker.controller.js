@@ -836,6 +836,12 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		
 		oPanel.setExpanded(!bIsExpanded);
 
+	},
+	operationWorkListClick : function() {
+		
+		console.log("e");
+		
 	}
+	
 	
 });

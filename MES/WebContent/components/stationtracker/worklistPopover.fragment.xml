@@ -37,6 +37,7 @@
 									<items>
 										<custom:customProgressIndicator
 											width="auto" state="sap.ui.core.ValueState.Success" status="{WorkListModel>STATE}"
+											click="operationWorkListClick"
 											isAndon="{WorkListModel>andons}"
 											displayValue="{ parts: [ 'WorkListModel>WORKORDER_ID','WorkListModel>WORKORDER_DESCRIPTION' ], formatter: 'airbus.mes.stationtracker.util.Formatter.titleWorklist'}"
 											displayValue2="{ parts: [ 'WorkListModel>OPERATION_ID','WorkListModel>OPERATION_DESCRIPTION','WorkListModel>PROGRESS','WorkListModel>DURATION' ], formatter: 'airbus.mes.stationtracker.util.Formatter.displayValueIM'}"
