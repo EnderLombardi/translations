@@ -109,16 +109,16 @@ sap.ui
 									"SITE" : airbus.mes.resourcepool.util.ModelManager.site,
 									"NAME" : oItemAssign.getCells()[0]
 											.getText(),
-									"SHIFT_BEGIN" : util.Formatter
+									"SHIFT_BEGIN" : airbus.mes.resourcepool.util.Formatter
 											.shiftHoursToTime(oItemAssign
 													.getCells()[1].getText()),
-									"SHIFT_END" : util.Formatter
+									"SHIFT_END" : airbus.mes.resourcepool.util.Formatter
 											.shiftHoursToTime(oItemAssign
 													.getCells()[2].getText()),
-									"VALID_FROM" : util.Formatter
+									"VALID_FROM" : airbus.mes.resourcepool.util.Formatter
 											.shiftDateToString(oItemAssign
 													.getCells()[3].getText()),
-									"VALID_TO" : util.Formatter
+									"VALID_TO" : airbus.mes.resourcepool.util.Formatter
 											.shiftDateToString(oItemAssign
 													.getCells()[4].getText()),
 									"DESCRIPTION" : "",
@@ -151,19 +151,19 @@ sap.ui
 									"SITE" : airbus.mes.resourcepool.util.ModelManager.site,
 									"NAME" : oListOfItems.getItems()[i]
 											.getCells()[0].getText(),
-									"SHIFT_BEGIN" : util.Formatter
+									"SHIFT_BEGIN" : airbus.mes.resourcepool.util.Formatter
 											.shiftHoursToTime(oListOfItems
 													.getItems()[i].getCells()[1]
 													.getText()),
-									"SHIFT_END" : util.Formatter
+									"SHIFT_END" : airbus.mes.resourcepool.util.Formatter
 											.shiftHoursToTime(oListOfItems
 													.getItems()[i].getCells()[2]
 													.getText()),
-									"VALID_FROM" : util.Formatter
+									"VALID_FROM" : airbus.mes.resourcepool.util.Formatter
 											.shiftDateToString(oListOfItems
 													.getItems()[i].getCells()[3]
 													.getText()),
-									"VALID_TO" : util.Formatter
+									"VALID_TO" : airbus.mes.resourcepool.util.Formatter
 											.shiftDateToString(oListOfItems
 													.getItems()[i].getCells()[4]
 													.getText()),
@@ -802,16 +802,16 @@ sap.ui
 									"Name" : aRows[i].getCells()[0].getText(),
 									"PersonalNo" : "",
 									"ERP_USER_ID" : "",
-									"ShiftStartDateTime" : util.Formatter
+									"ShiftStartDateTime" : airbus.mes.resourcepool.util.Formatter
 											.shiftHoursToTime(aRows[i]
 													.getCells()[1].getText()),
-									"ShiftEndDateTime" : util.Formatter
+									"ShiftEndDateTime" : airbus.mes.resourcepool.util.Formatter
 											.shiftHoursToTime(aRows[i]
 													.getCells()[2].getText()),
-									"ShiftValidFrom" : util.Formatter
+									"ShiftValidFrom" : airbus.mes.resourcepool.util.Formatter
 											.shiftDateToString(aRows[i]
 													.getCells()[3].getText()),
-									"ShiftValidTo" : util.Formatter
+									"ShiftValidTo" : airbus.mes.resourcepool.util.Formatter
 											.shiftDateToString(aRows[i]
 													.getCells()[4].getText()),
 									"Description" : "",
