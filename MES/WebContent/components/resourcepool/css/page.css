@@ -374,7 +374,7 @@
 .sap-desktop .helpDialogue .sapMIBar.sapMFooter-CTX {
     	background-color:#0F2D65;
 }
-.sap-desktop #resourcePool button>.sapMBtnTransparent>.sapMBtnIcon {
+.sap-desktop #resourcePool .resourcePoolSubheader button>.sapMBtnTransparent>.sapMBtnIcon {
     color: #0D5D76;
     line-height: 3rem;
     max-height: 3rem;
@@ -384,7 +384,7 @@
     padding: 0;
     margin: 0 0.25rem!important;
 }
-.sap-desktop #resourcePool button>.sapMBtnTransparent {
+.sap-desktop #resourcePool .resourcePoolSubheader button>.sapMBtnTransparent {
     border-radius: 0;
     border: 0;
     height: 3rem;
