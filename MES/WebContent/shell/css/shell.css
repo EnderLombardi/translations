@@ -47,6 +47,10 @@
 #globalNavView header.pageHeader #polypolytitle {
 	font-size: 1.2rem;
 }
+
+#globalNavView header.pageHeader label[id^="__label"].pageWelcome {
+	font-size: 1rem;
+}
 #globalNavView header.pageHeader label[id^="__label"].pageTitle {
 	font-size: 1.3rem;
     text-transform: uppercase;
