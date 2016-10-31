@@ -1,13 +1,21 @@
 ﻿{
 	"SiteCollection": [
 		{
-			"Site": "AL Saint-Nazaire",
+			"Site": "Saint-Nazaire",
 			"LineCollection": [
 				{
 					"Line": "PA-SYST",
 					"StationCollection": [
 						{
-							"Station": "FG2210"
+							"Station": "FG2210",
+							"MSNCollection": [
+								{
+									"MSN": "7452"
+								},
+								{
+									"MSN": "5412"
+								}
+							]
 						},
 						{
 							"Station": "FG2220"
@@ -20,25 +28,31 @@
 			]
 		},
 		{
-			"Site": "AL Broughton"
+			"Site": "Broughton"
 		},
 		{
-			"Site": "AL Getafe"
+			"Site": "Getafe"
 		},
 		{
-			"Site": "AL Hamburg"
+			"Site": "Hamburg"
 		},
 		{
-			"Site": "AL Illescas"
+			"Site": "Illescas"
 		},
 		{
-			"Site": "AL Toulouse"
+			"Site": "Toulouse"
 		},
 		{
-			"Site": "AL Nantes"
+			"Site": "Nantes"
 		},
 		{
-			"Site": "AL Puerto Real"
+			"Site": "Puerto Real"
+		},
+		{
+			"Site": "Saint-Eloi"
+		},
+		{
+			"Site": "FAL"
 		}
 	]
 }
