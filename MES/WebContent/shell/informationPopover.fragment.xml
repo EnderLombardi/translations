@@ -6,7 +6,7 @@
 				<Label text="{ShellI18n>Legend}" class="sapUiTinyMarginTopBottom sapUiTinyMarginBeginEnd" design="Bold"/>
 				<HBox  alignItems="Center"  class="sapUiTinyMarginTopBottom">
 					<FlexBox width="2rem" height="2rem" class="completedColor sapUiTinyMarginBeginEnd" />
-					<Label text="{ShellI18n>OperationCompleted}" />
+					<Label text="{ShellI18n>OperationCertified}" />
 				</HBox>
 				<HBox alignItems="Center" class="sapUiTinyMarginTopBottom">
 					<FlexBox width="2rem" height="2rem" class="activeColor sapUiTinyMarginBeginEnd" />
