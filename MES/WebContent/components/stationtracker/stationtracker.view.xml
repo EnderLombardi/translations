@@ -12,7 +12,7 @@
 				<headerToolbar>
 					<Toolbar id="kpiHeaderToolbar">
 						<DatePicker id="DatePicker" width="auto" change="changeDay"
-							class="pageHeaderBlue" />
+							class="pageHeaderBlue"/>
 						<Select id="selectShift"
 							class="sapUiTinyMarginBeginEnd pageHeader pageHeaderBlue" change="changeShift"
 							items="{ path : 'stationTrackerShift>/' }" enabled="false"	>
@@ -241,7 +241,7 @@
 								<micro:DeltaMicroChart width="100%"
 									id="shifStaffingHeader" isResponsive="true" value1="10" value2="9"
 									title1="{StationTrackerI18n>NeedFTE}" title2="{StationTrackerI18n>AllocatedFTE}"
-									displayValue1="100 IM" displayValue2="900 IM"
+									displayValue1="10" displayValue2="9"
 									deltaDisplayValue="1" />
 							</VBox>
 						</VBox>
