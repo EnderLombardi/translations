@@ -334,3 +334,62 @@
     background: #ffffff;
     height:auto;
 }
+/* Pop-up/Dialog deleteConfirmation */
+.deleteConfirmation {
+	background: #ffffff;
+    border: none;
+    border-radius: 0;
+    box-shadow: 0 0 5px #333;
+}
+
+.deleteConfirmation.sapMMessageDialog.sapMPopup-CTX>header.sapMDialogTitle  {
+	background:#d4f1f7;	
+	box-shadow: 0 0 5px #333;
+    overflow: visible;
+}
+.deleteConfirmation .sapMDialogTitle {
+	color:#434343;
+
+}
+.sap-desktop .deleteConfirmation .sapMIBar.sapMFooter-CTX {
+    	background-color:#0F2D65;
+}
+/* Pop-up/Dialog helpDialogue */
+.helpDialogue {
+	background: #ffffff;
+    border: none;
+    border-radius: 0;
+    box-shadow: 0 0 5px #333;
+}
+
+.sap-desktop .helpDialogue .sapMIBar.sapMHeader-CTX  {
+	background:#d4f1f7;	
+	box-shadow: 0 0 5px #333;
+    overflow: visible;
+}
+.helpDialogue .sapMDialogTitle {
+	color:#434343;
+
+}
+.sap-desktop .helpDialogue .sapMIBar.sapMFooter-CTX {
+    	background-color:#0F2D65;
+}
+.sap-desktop #resourcePool button>.sapMBtnTransparent>.sapMBtnIcon {
+    color: #0D5D76;
+    line-height: 3rem;
+    max-height: 3rem;
+    display: block;
+}
+.sap-desktop #resourcePool button {
+    padding: 0;
+    margin: 0 0.25rem!important;
+}
+.sap-desktop #resourcePool button>.sapMBtnTransparent {
+    border-radius: 0;
+    border: 0;
+    height: 3rem;
+    padding: 0 0.25rem;
+}
+#resourcePool .sapMBtn:hover>.sapMBtnTransparent.sapMBtnHoverable {
+    background-color: rgba(0, 86, 112, 0.20);
+}
