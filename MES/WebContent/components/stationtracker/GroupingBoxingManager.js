@@ -311,7 +311,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 							"group" : key,
 							"avlLine" : key1,
 							"key": "I_" + airbus.mes.stationtracker.AssignmentManager.idName(key) + "_" + airbus.mes.stationtracker.AssignmentManager.idName(key1),
-							"initial":"Initial plan",
+							"initial": "<i>As Planned</i>",
 						}
 				
 				// find index of initial avl line in the current group corresponding to the reschedule avlLine	
