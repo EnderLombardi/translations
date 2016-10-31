@@ -1164,3 +1164,68 @@ box-shadow: 0 0 5px #333;
     color: #468497;
     font-size: 0.7rem;
 }
+/* Pop-up Confirm Delete confirmDeleteDialog */
+.ClassOperationDetailPopUp {
+	background: #ffffff;
+    border: none;
+    border-radius: 0;
+    box-shadow: 0 0 5px #333;
+}
+
+.ClassOperationDetailPopUp .sapMPageBusyCoversAll>section {
+	overflow-y: scroll!important;
+}
+.ClassOperationDetailPopUp .sapMPageBusyCoversAll>section .sapMIBar.sapMTB {
+	margin:0!important;
+	height: auto!important;
+}
+.ClassOperationDetailPopUp .switchExecutionButton .sapMSwtHandle {
+    width: 0.8rem;
+    height: 0.8rem;
+    left: 3rem;
+}
+.ClassOperationDetailPopUp .switchExecutionButton .sapMSwt {
+    height: 1rem !important;
+    
+}
+.ClassOperationDetailPopUp .ExecutionModeText, .ClassOperationDetailPopUp .switchExecutionButton  {
+	padding:0;
+}
+.ClassOperationDetailPopUp .operationNavBar>.sapMITBContainerContent>.sapMITBContent {
+	height:auto!important;
+}
+.ClassOperationDetailPopUp .pageSubHeader .expandButton {
+    margin-top: 0;
+}
+.ClassOperationDetailPopUp .sapMPanel .sapMPanelWrappingDivTb .sapMIBar.sapMTB>:first-child {
+	    margin-right: 0;
+}
+.ClassOperationDetailPopUp .sapMPanel .sapMPanelWrappingDivTb .sapMIBar.sapMTB>:first-child div:nth-child(2), .ClassOperationDetailPopUp .sapMPanel .sapMPanelWrappingDivTb .sapMIBar.sapMTB>:first-child div:nth-child(2) div:nth-child(2) {
+	    align-items: center;
+}
+.ClassOperationDetailPopUp .sapMPanel.pageSubHeader .sapMPanelWrappingDivTb .sapMIBar.sapMTB>:first-child div:nth-child(2) .subText {
+	color: #434343!important;
+    font-weight: normal!important;
+    font-size: 1rem!important;
+}
+.ClassOperationDetailPopUp .pageSubHeader {
+    border-bottom: 0px solid #cccccc !important;
+    overflow: visible;
+}
+.ClassOperationDetailPopUp .operationNavBar.sapUiResponsiveContentPadding .sapMITBHead {
+	margin-top:0;
+}
+.ClassOperationDetailPopUp .sapMPanelWrappingDivTb {
+	margin: -1rem -1rem 0 -1rem;
+    padding: 1rem 1rem 0 1rem;
+    background: #fff;
+}
+.ClassOperationDetailPopUp .sapMPageBusyCoversAll {
+	background: #f5f5f5 !important;
+}
+.ClassOperationDetailPopUp #operationDetailsView--operationNav-content {
+    overflow-y: auto !important;
+}
+.ClassOperationDetailPopUp #operationDetailsView--operationNav--header {
+    box-shadow: 0px 5px 15px -5px #0F2D65;
+}
