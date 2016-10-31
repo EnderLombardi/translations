@@ -353,6 +353,8 @@
 								press="onShiftPress" key="shift" />
 							<SegmentedButtonItem text="{StationTrackerI18n>ButtonDay}"
 								press="onDayPress" key="day" />
+							<SegmentedButtonItem text="{StationTrackerI18n>ButtonTakt}"
+								press="" key="takt" enabled="false" />
 						</items>
 					</SegmentedButton>
 					<!-- <Label text="{StationTrackerI18n>GroupingSortBy}" /> -->
