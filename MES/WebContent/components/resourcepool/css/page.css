@@ -1,6 +1,7 @@
-.resourcePoolName{
-	color:#fff !important;
-	font-size:120% !important;
+#resourcePool--resourcePoolName.resourcePoolName {
+	color: #fff;
+	font-size: 120%;
+	text-shadow: none;
 }
 .resourcePoolSubheader{
 	background-color: #d5f1f8;
