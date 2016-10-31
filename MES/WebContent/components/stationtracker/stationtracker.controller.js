@@ -850,7 +850,30 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		
 		console.log("e");
 		
-	}
+	},
+	
+	datePick : function(oBtn) {
+		if(airbus.mes.stationtracker.oView.oCalendar == undefined){
+			airbus.mes.stationtracker.oView.oCalendar = new sap.ui.unified.Calendar({
+				select : function(oEvt){
+					airbus.mes.stationtracker.oView.getController().dateSelected(oEvt)
+				}
+			})
+		}
+		if(airbus.mes.stationtracker.oView.datePickerPop == undefined){
+			airbus.mes.stationtracker.oView.datePickerPop = new sap.m.Popover({
+//				showHeader: false,
+				placement : "Bottom",
+				content : [airbus.mes.stationtracker.oView.oCalendar]
+			})
+		}
+		airbus.mes.stationtracker.oView.datePickerPop.openBy(airbus.mes.stationtracker.oView.byId("dateButton"));
+	},
+	
+	dateSelected : function(oEvt){
+		airbus.mes.stationtracker.oView.oCalendar.removeAllSelectedDates();
+		airbus.mes.stationtracker.oView.oCalendar.addSelectedDate(new DateRange({startDate: new Date()}));
+	},
 	
 	
 });

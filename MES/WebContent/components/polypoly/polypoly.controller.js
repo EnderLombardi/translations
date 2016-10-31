@@ -644,8 +644,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 					}) ]
 				}) ],
 			});
-			oPopover.openBy(sap.ui.getCore().byId(
-					oEvt.getSource().getId()));
+			oPopover.openBy(sap.ui.getCore().byId(oEvt.getSource().getId()));
 		}
 	},
 

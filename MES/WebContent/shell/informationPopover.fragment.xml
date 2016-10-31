@@ -24,7 +24,6 @@
 					<FlexBox width="2rem" height="2rem" class="notStatedColor sapUiTinyMarginBeginEnd" />
 					<Label text="{ShellI18n>OperationNotStarted}"/>
 				</HBox>																
-				<Label text="Lorem "/>
 			</items>
 		</VBox>
 	</Popover>

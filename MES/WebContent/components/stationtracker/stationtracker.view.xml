@@ -2,7 +2,7 @@
 	xmlns:suite="sap.suite.ui.commons" controllerName="airbus.mes.stationtracker.stationtracker"
 	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:custom="airbus.mes.stationtracker"
 	xmlns:control="airbus.mes.stationtracker.control" xmlns:layout="sap.ui.layout"
-	xmlns:micro="sap.suite.ui.microchart">
+	xmlns:micro="sap.suite.ui.microchart" xmlns:uni="sap.ui.unified">
 	<Page title="Station Tracker" height="100%" showHeader="false"
 		enableScrolling="false " class="GenricBgColor">
 
@@ -11,8 +11,9 @@
 				expandAnimation="false" class="pageHeader sapUiSmallMarginTop contentNoPad">
 				<headerToolbar>
 					<Toolbar id="kpiHeaderToolbar">
-						<DatePicker id="DatePicker" width="auto" change="changeDay"
-							class="pageHeaderBlue"/>
+						<DatePicker id="DatePicker" width="auto" change="changeDay" class="pageHeaderBlue"/>
+						<!-- <Button id="dateButton" icon="sap-icon://appointment" type="Transparent" press="datePick"/>
+						<Label id="dateLabel" text="BLABLA"/> -->
 						<Select id="selectShift"
 							class="sapUiTinyMarginBeginEnd pageHeader pageHeaderBlue" change="changeShift"
 							items="{ path : 'stationTrackerShift>/' }" enabled="false"	>
