@@ -131,13 +131,13 @@
 									size="L" colorPalette="#84bd00, #f5f5f5, #fe5000">
 									<micro:data>
 										<micro:ComparisonMicroChartData
-											title="{StationTrackerI18n>TaktSLB}" value="8" />
+											title="{StationTrackerI18n>TaktSLB}" value="85" />
 										<micro:ComparisonMicroChartData
-											title="{StationTrackerI18n>WhiteSpaces}" value="3" />
+											title="{StationTrackerI18n>WhiteSpaces}" value="10" />
 										<micro:ComparisonMicroChartData
-											title="{StationTrackerI18n>RedSpaces}" value="10" />
+											title="{StationTrackerI18n>RedSpaces}" value="5" />
 										<micro:ComparisonMicroChartData
-											id="hiddenRefBarSBL" title="{StationTrackerI18n>RedSpaces}" value="20" visible="false"/>
+											id="hiddenRefBarSBL" title="{StationTrackerI18n>RedSpaces}" value="100" visible="false"/>
 										</micro:data>
 											
 								</micro:ComparisonMicroChart>
@@ -215,7 +215,7 @@
 										<micro:ComparisonMicroChartData
 											title="{StationTrackerI18n>NotAcknowledged}" value="2" />
 										<micro:ComparisonMicroChartData
-											id="hiddenRefBarResolution" title="{StationTrackerI18n>RedSpaces}" value="20" visible="false"/>
+											id="hiddenRefBarResolution" title="{StationTrackerI18n>RedSpaces}" value="13" visible="false"/>
 									</micro:data>
 								</micro:ComparisonMicroChart>
 							</VBox>
