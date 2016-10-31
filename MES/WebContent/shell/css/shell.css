@@ -44,8 +44,8 @@
 
 
 /* globalNavView */
-#globalNavView header.pageHeader label[id^="__label"].pageWelcome {
-	font-size: 0.9rem;
+#globalNavView header.pageHeader #polypolytitle {
+	font-size: 1.2rem;
 }
 #globalNavView header.pageHeader label[id^="__label"].pageTitle {
 	font-size: 1.3rem;
