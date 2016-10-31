@@ -799,8 +799,15 @@ white-space: nowrap !important;
     border-radius:0;
     border:0;
     height: 3rem;
-    padding: 0 0.25rem;
+    /*padding: 0 0.25rem;*/
 }
+
+.sap-desktop .lineTrackerSubheader button>.sapMBtnTransparent.sapMToggleBtnPressed span, .sap-desktop .lineTrackerSubheader button>.sapMBtnTransparent span#idMainView--diaporama-img.sapUiIconMirrorInRTL {
+	color:#ffffff;
+	background-color:#74D2E7;
+
+}
+
 .sap-desktop .lineTrackerSubheader button[class^="#"]>.sapMBtnTransparent {
 	padding:0;
 }
@@ -810,6 +817,7 @@ white-space: nowrap !important;
 .sap-desktop .lineTrackerSubheader button[class^="#"].sapMBarChild {
 	margin : 0.25rem 0;
 	width: 3rem;
+	height: 46px;
 
 }
 .sap-desktop .lineTrackerSubheader button {
@@ -817,18 +825,47 @@ white-space: nowrap !important;
 }
 .sap-desktop .lineTrackerSubheader button[class^="#"]>.sapMBtnTransparent>.sapMBtnIcon {
 	width: 3rem;
+	padding: 0;
+	height: 46px;
+}
+.sap-desktop .lineTrackerSubheader button[class^="#"]>.sapMBtnTransparent {
+	height: 46px;
 }
 .sap-desktop .lineTrackerSubheader button>.sapMBtnTransparent>.sapMBtnIcon {	 
 	color: #0D5D76;
 	line-height: 3rem;
     max-height: 3rem;
     display: block;
+    background-color:transparent;
+    	    padding: 0 0.25rem;
 }
-.lineTrackerSubheader .sapMBtn:hover>.sapMBtnTransparent.sapMBtnHoverable {
+.lineTrackerSubheader .sapMBtn:hover>.sapMBtnTransparent.sapMBtnHoverable.sapMBtnActive {
+	color:#ffffff;
+	background-color:#74D2E7;	
+}
+.lineTrackerSubheader .sapMBtn:hover>.sapMBtnTransparent.sapMBtnHoverable span,
+ .lineTrackerSubheade .sapMToggleBtnPressed.sapMBtnHoverable .sapMBtnIcon:hover,
+.sap-desktop .lineTrackerSubheader button>.sapMBtnTransparent.sapMToggleBtnPressed {
     background-color: rgba(0, 86, 112, 0.20);
 }
     
 #idFactoryView--factoryHBox fieldset {
     border-color: #0D5D76;
     color: #0D5D76;
+}
+
+.lineTrackerSubheader .sapMBarChild:nth-child(5) {
+	margin: 0 0 0 0.25rem!important;
+}
+.lineTrackerSubheader .sapMBarChild:nth-child(6) {
+	margin: 0 0.25rem!important;
+}
+.lineTrackerSubheader .sapMBarChild:nth-child(7) {
+	margin: 0 0 0 0!important;
+}
+.lineTrackerSubheader .sapMBarChild:nth-child(9) {
+	margin: 0 0.25rem!important;
+}
+.lineTrackerSubheader .sapMBarChild:nth-child(10) {
+	margin: 0!important;
 }
