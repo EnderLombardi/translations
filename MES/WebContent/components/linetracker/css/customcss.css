@@ -706,9 +706,7 @@ white-space: nowrap !important;
 	background-color:#fff;
 	height:100%!important;
 }
-#idFactoryView button {
-	padding: 0;
-}
+
 #idFactoryView button .sapMBtnDefault {
 	background: #d5f1f8;
 	color: #0D5D76;
@@ -763,11 +761,73 @@ white-space: nowrap !important;
 	height:auto;
 	border:0:
 }
+.factHBox .factory_lineButton {
+	padding:0;
+}
+
+.adjustPulseSelect button.myPulseButton {
+	padding: 0;
+	height: 1.9rem;
+}
 .adjustPulseSelect button > div.sapMBtnReject  {
 	background:transparent;
 	border:0;
-	    color: #0D5D76;
+	color: #0D5D76;
+	height: 1.9rem;
 }
+.adjustPulseSelect button > div.sapMBtnReject > span  {
+	height: 1.9rem;
+	line-height: 1.9rem;
+}
+
+.adjustPulseSelect button.myPulseButton.sapMBtnDisabled {
+    text-shadow: none;
+    cursor: default;
+    opacity: 0.5;
+    background:#f1f1f1;
+}
+.adjustPulseSelect button.myPulseButton.sapMBtnInverted {
+    background:#84bd00;
+}
+.adjustPulseSelect button.myPulseButton.sapMBtnInverted > div.sapMBtnReject {
+    color: #ffffff;
+}
+.adjustPulseSelect>.sapMFlexItem>.sapMSlt.sapMSltDefault {
+	margin:0;
+}
+.sap-desktop .lineTrackerSubheader button>.sapMBtnTransparent {
+    border-radius:0;
+    border:0;
+    height: 3rem;
+    padding: 0 0.25rem;
+}
+.sap-desktop .lineTrackerSubheader button[class^="#"]>.sapMBtnTransparent {
+	padding:0;
+}
+.sap-desktop .lineTrackerSubheader button {
+	padding:0;
+}
+.sap-desktop .lineTrackerSubheader button[class^="#"].sapMBarChild {
+	margin : 0.25rem 0;
+	width: 3rem;
+
+}
+.sap-desktop .lineTrackerSubheader button {
+
+}
+.sap-desktop .lineTrackerSubheader button[class^="#"]>.sapMBtnTransparent>.sapMBtnIcon {
+	width: 3rem;
+}
+.sap-desktop .lineTrackerSubheader button>.sapMBtnTransparent>.sapMBtnIcon {	 
+	color: #0D5D76;
+	line-height: 3rem;
+    max-height: 3rem;
+    display: block;
+}
+.lineTrackerSubheader .sapMBtn:hover>.sapMBtnTransparent.sapMBtnHoverable {
+    background-color: rgba(0, 86, 112, 0.20);
+}
+    
 #idFactoryView--factoryHBox fieldset {
     border-color: #0D5D76;
     color: #0D5D76;
