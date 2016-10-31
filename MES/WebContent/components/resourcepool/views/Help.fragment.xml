@@ -57,7 +57,7 @@
 
 		</content>
 		<buttons>
-			<Button text="{i18nModel>OK}" press="afterHelpOK" />
+			<Button icon="sap-icon://decline" text="{i18nModel>CloseButton}" press="afterHelpOK" />
 		</buttons>
 	</Dialog>
 </core:FragmentDefinition>
