@@ -1244,3 +1244,46 @@ box-shadow: 0 0 5px #333;
 .ClassOperationDetailPopUp #operationDetailsView--operationNav--header {
     box-shadow: 0px 5px 15px -5px #0F2D65;
 }
+
+.sap-desktop .sapMBtnTransparent>.sapMBtnIcon {
+    color: #666666;
+}
+
+/*DATE PICKER*/
+.sap-desktop .classDateButton .sapMBtnTransparent>.sapMBtnIcon {
+    color: #ffffff;
+}
+.sap-desktop .classDateButton .sapMBtnTransparent {
+	border:none;
+}
+ .sapMTB-Transparent-CTX .classDateButton + .sapMLabel {
+    text-shadow: none;
+    color: #ffffff;
+}
+.sap-desktop .classDatePickerPop  .sapMIBar.sapMHeader-CTX {
+	background: #d4f1f7;
+    border: none;
+    z-index: 9;
+    position: relative;
+}
+.classDatePickerPop  .sapMPopoverArrUp:after {
+	border-bottom-color: #d4f1f7;
+}
+.classDatePickerPop .sapMBtn {
+    background-color: #73d2e6;
+}
+.classDatePickerPop .sapMBtn:hover>.sapMBtnHoverable, .classDatePickerPop .sapMBtn>.sapMBtnHoverable {
+    background-color: transparent;
+    background: transparent;
+    border: none;
+}
+.classDatePickerPop .sapMBtn:hover {
+    background-color: rgba(0, 86, 112, 0.20);
+}
+.classDatePickerButton.sapMBarChild.sapMBtn.sapMBtnBase {
+	margin: 0 auto;
+}
+.classDatePickerButton span {
+	color:#ffffff;
+	text-shadow:none;
+}
