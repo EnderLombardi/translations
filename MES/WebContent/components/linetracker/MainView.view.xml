@@ -33,12 +33,9 @@
 
 	<Bar id="lineTrackerSubheader" class="pageHeader">
 		<contentMiddle>
-			<Label id="resourcePoolName" text="" class="resourcePoolName" />
+			<Label id="lineTrackerName" text="{messageBundle>lineTrackerTitle}" class="lineTrackerName" />
 		</contentMiddle>
 		<contentRight>
-			<Button text="{messageBundle>team}" type="Transparent"
-				class="tiffanyColor subHeaderButtonColor sapUiSmallMarginBegin"
-				icon="sap-icon://group" press="" />
 		</contentRight>
 	</Bar>
 
