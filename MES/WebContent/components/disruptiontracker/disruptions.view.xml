@@ -27,7 +27,7 @@
 
 					<SearchField width="13rem" placeholder="Search disruption" />
 					<ToolbarSpacer />
-					<Button text="{disruptiontrackerI18n>disruptionKPI}" />
+					<Button icon="sap-icon://area-chart" text="{disruptiontrackerI18n>disruptionKPI}" />
 				</Toolbar>
 
 			</content>
