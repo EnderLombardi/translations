@@ -375,12 +375,12 @@
 					<ToolbarSpacer />
 					<HBox id="toolbarDate" class="sapUiTinyMarginBeginEnd"></HBox>
 					<ToolbarSpacer />
-						<Button text="{StationTrackerI18n>missingParts}"
+						<Button text="{StationTrackerI18n>missingParts}" enabled="false"
 						type="Transparent" icon="sap-icon://task" class="sapUiTinyMarginBeginEnd"></Button>
 					<Button text="{StationTrackerI18n>ButtonShowCP}" type="Transparent"
 						icon="sap-icon://kpi-corporate-performance" class="sapUiTinyMarginBeginEnd"
 						press="onCPPress"></Button>
-						<Button text="{StationTrackerI18n>disruptions/andon}"
+						<Button text="{StationTrackerI18n>disruptions/andon}" enabled="false"
 						type="Transparent" icon="sap-icon://alert" class="sapUiTinyMarginBeginEnd"></Button>
 					<Button text="{StationTrackerI18n>ButtonOutstandingWork}"
 						type="Transparent" icon="sap-icon://cause" class="sapUiTinyMarginBeginEnd"
