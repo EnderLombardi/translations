@@ -51,7 +51,7 @@
 					<Text text="{disruptiontrackerI18n>problem}" />
 				</Column>
 				<Column>
-					<Text text="{disruptiontrackerI18n>responsibleGroup}" />
+					<Text text="{disruptiontrackerI18n>resolutionGroup}" />
 				</Column>
 				<Column>
 					<Text text="{disruptiontrackerI18n>severity}" />
@@ -61,6 +61,9 @@
 				</Column>
 				<Column>
 					<Text text="{disruptiontrackerI18n>fixedByTime}" />
+				</Column>
+				<Column>
+					<Text text="{disruptiontrackerI18n>TTGF}" />
 				</Column>
 				<Column>
 					<Text text="{disruptiontrackerI18n>timeBofreNextEsc}" />
@@ -86,6 +89,7 @@
 						<Text text="{disruptionsListData>Severity}" />
 						<Text text="{disruptionsListData>OpeningTime}" />
 						<Text text="{disruptionsListData>FixedByTime}" />
+						<Text text="{disruptionsListData>TTGF}" />
 						<Text text="{disruptionsListData>TimeBeforeNextEscalation}" />
 						<Text text="{disruptionsListData>Solution}" />
 						<Text text="{disruptionsListData>ClosureDate}" />
