@@ -6,7 +6,7 @@
 		"icon": "calendar",
 		"app":"",
 		"url": "/MES/WebContent/components/stationtracker/index.html",
-		"enable": false
+		"enable": "false"
 	},{
 
 		"text": "TeamCompetencies",
@@ -14,7 +14,7 @@
 		"icon": "task",
 		"app":"",
 		"url": "/MES/WebContent/components/stationtracker/index.html",
-		"enable": false
+		"enable": "true"
 	},{
 
 		"text": "ResourcePool",
@@ -22,7 +22,7 @@
 		"icon": "customer-history",
 		"app":"",
 		"url": "/MES/WebContent/components/stationtracker/index.html",
-		"enable": false
+		"enable": "true"
 	},	
 	{
 
@@ -31,14 +31,14 @@
 		"icon": "flight",
 		"app":"",
 		"url": "/MES/WebContent/components/linetracker/index.html",
-		"enable": false
+		"enable": "true"
 	},{
 		"text": "StationTracker",
 		"sub" : "",
 		"icon": "customer-view",
 		"app":"",
 		"url": "/MES/WebContent/components/settings/index.html",
-		"enable": true
+		"enable": "true"
 	},{
 
 		"text": "WorkerOrderTracker",
@@ -46,14 +46,14 @@
 		"icon": "employee",
 		"app":"",
 		"url": "/MES/WebContent/components/stationtracker/index.html",
-		"enable": true
+		"enable": "true"
 	}, {
 		"text": "DisruptionAndon",
 		"sub" : "",
 		"icon": "alert",
 		"app":"",
 		"url": "/MES/WebContent/components/stationtracker/index.html",
-		"enable": false
+		"enable": "true"
 	}, {
 
 		"text": "DashboardPPS",
@@ -61,7 +61,7 @@
 		"icon": "horizontal-bar-chart",
 		"app":"",
 		"url": "/MES/WebContent/components/stationtracker/index.html",
-		"enable": false
+		"enable": "false"
 	}
 	]
 }

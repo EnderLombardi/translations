@@ -8,6 +8,9 @@
 			<TileContainer tileDelete="handleTileDelete"
 				tiles="{1TileLineHome>/buttonDetail}" height="100%">
 				<CustomTile press="onPressLine1" class="customTiles">
+					<customData>
+						<core:CustomData key="enabled" value="{1TileLineHome>enable}" writeToDom="true" />
+					</customData>
 					<content>
  						<VBox width="12rem" height="13rem" alignItems="Center"
 							class="margin">
