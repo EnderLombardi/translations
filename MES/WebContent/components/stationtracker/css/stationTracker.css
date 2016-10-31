@@ -2,6 +2,11 @@
 	color: #84bd00;
 }
 
+#team-popover button {
+	display: block;
+	width: 100%;
+}
+
 .yHrLabel {
 	float: right;
 	margin-right: 5px;

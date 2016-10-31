@@ -3,18 +3,19 @@
 	<Popover id="teamPopoverID" title="{StationTrackerI18n>HeaderTeam}"
 		horizontalScrolling="false" placement="Bottom">
 		<content>
-			<List>
+			<List id="team-popover">
 				<CustomListItem>
 					<Button type="Transparent" text="{StationTrackerI18n>ButtonOpenTeam}"
-						iconFirst="true" icon="sap-icon://navigation-right-arrow" width="100%"
+						enabled="false"
+						iconFirst="true" icon="sap-icon://navigation-right-arrow"
 						class="blackTextButton blackTextButton2" press="onPolypolyOpen"></Button>
 					
 					<Button type="Transparent" text="{StationTrackerI18n>ButtonPolypoly}"
-						iconFirst="true" icon="sap-icon://navigation-right-arrow" width="100%"
+						iconFirst="true" icon="sap-icon://navigation-right-arrow"
 						class="blackTextButton blackTextButton2" press="onPolypolyOpen"></Button>
 					
 					<Button type="Transparent" text="{StationTrackerI18n>FooterTeam}"
-				iconFirst="true" icon="sap-icon://navigation-right-arrow" width="100%"
+				iconFirst="true" icon="sap-icon://navigation-right-arrow"
 						class="blackTextButton blackTextButton2"></Button>
 				</CustomListItem>
 			</List>
