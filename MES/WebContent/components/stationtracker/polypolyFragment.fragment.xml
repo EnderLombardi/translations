@@ -8,7 +8,7 @@
 		horizontalScrolling="false"
 		afterOpen="onAfterOpenPolypoly">
 		<buttons>
-				<Button icon="sap-icon://decline" press="ClosePolyPoly" />
+				<Button text="Close" icon="sap-icon://decline" press="ClosePolyPoly" />
 		</buttons>
 		<content>
 		</content>

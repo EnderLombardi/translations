@@ -14,7 +14,7 @@
 								<Text id="operationName" class="mainText"
 									text="OP {operationDetailModel>/Rowsets/Rowset/0/Row/0/operation_no} - {operationDetailModel>/Rowsets/Rowset/0/Row/0/operation_desc}" />
 
-								<HBox justifyContent="SpaceBetween" width="30%">
+								<HBox justifyContent="SpaceBetween" width="180px">
 									<Text id="switchStatusLabel" text="Execution Mode" class="ExecutionModeText"/>
 									<Switch customTextOn=" " customTextOff=" " state="true"
 										class="switchExecutionButton" change="switchMode" />
@@ -200,7 +200,7 @@
 					<Button id="btnActivate" text="{i18n>activate}" press="activateOperation" />
 					<Button id="btnComplete" text="{i18n>complete}" icon="sap-icon://accept"
 						press="confirmOperation" />
-					<Button id="btnClose" text="{i18n>close}" icon="sap-icon://sys-cancel"
+					<Button id="btnClose" text="{i18n>close}" icon="sap-icon://decline"
 						press="onCloseOperationDetailPopup" />
 				</contentRight>
 			</Bar>

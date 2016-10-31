@@ -3,7 +3,7 @@
 	<Dialog id="errorMessageDialog" title="{i18nModel>ErrorMessage}" icon="sap-icon://error" type="Message"
 		afterClose="afterMessageDialogClose">
 		<buttons>
-			<Button icon="sap-icon://decline" press="afterMessageDialogClose" />
+			<Button text="Close" icon="sap-icon://decline" press="afterMessageDialogClose" />
 		</buttons>
 		<content>
 			<VBox id="messageBox" renderType="List">
