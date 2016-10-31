@@ -852,40 +852,26 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		
 	},
 	
-	datePick : function(oBtn) {
-		if(airbus.mes.stationtracker.oView.oCalendar == undefined){
-			airbus.mes.stationtracker.oView.oCalendar = new sap.ui.unified.Calendar({
-				select : function(){
-					airbus.mes.stationtracker.oView.getController().dateSelected()
-				}
-			})
+	//Fired when Calendar Button is clicked
+	//Open datePicker XML fragment
+	datePick : function() {
+		if(airbus.mes.stationtracker.datePicker == undefined){
+			airbus.mes.stationtracker.datePicker = sap.ui.xmlfragment("datePickerFragment","airbus.mes.stationtracker.datePickerFragment", airbus.mes.stationtracker.oView.getController());
+			airbus.mes.stationtracker.oView.oCalendar = airbus.mes.stationtracker.datePicker.getContent()[0];
 		}
-		if(airbus.mes.stationtracker.oView.datePickerPop == undefined){
-			airbus.mes.stationtracker.oView.datePickerPop = new sap.m.Popover({
-				showHeader: true,
-				placement : "Bottom",
-				content : [airbus.mes.stationtracker.oView.oCalendar],
-				customHeader : new sap.m.Toolbar({
-					content : [
-					           new sap.m.Button({
-					        	   text:"Select Today",
-					        	   press: function(){
-					        		   airbus.mes.stationtracker.oView.oCalendar.removeAllSelectedDates();
-					        		   airbus.mes.stationtracker.oView.oCalendar.displayDate(new Date());
-					        		   airbus.mes.stationtracker.oView.oCalendar.addSelectedDate(new sap.ui.unified.DateRange({startDate: new Date()}));
-					        		   airbus.mes.stationtracker.oView.getController().dateSelected();
-					        	   }
-					           }).addStyleClass("classDatePickerButton")
-					           ]
-				})
-			}).addStyleClass("classDatePickerPop");
-		}
-		airbus.mes.stationtracker.oView.datePickerPop.openBy(airbus.mes.stationtracker.oView.byId("dateButton"));
+		airbus.mes.stationtracker.datePicker.openBy(airbus.mes.stationtracker.oView.byId("dateButton"));
+	},
+	
+	onSelectToday : function(){
+		airbus.mes.stationtracker.oView.oCalendar.removeAllSelectedDates();
+		airbus.mes.stationtracker.oView.oCalendar.displayDate(new Date());
+		airbus.mes.stationtracker.oView.oCalendar.addSelectedDate(new sap.ui.unified.DateRange({startDate: new Date()}));
+		airbus.mes.stationtracker.oView.getController().dateSelected();
 	},
 	
 	dateSelected : function(){
 		airbus.mes.stationtracker.oView.getController().updateDateLabel(airbus.mes.stationtracker.oView.oCalendar);
-		airbus.mes.stationtracker.oView.datePickerPop.close();
+		airbus.mes.stationtracker.datePicker.close();
 		scheduler.updateView(airbus.mes.stationtracker.oView.oCalendar.getSelectedDates()[0].getStartDate());
 		airbus.mes.stationtracker.ModelManager.selectMyShift();
 	},
