@@ -120,15 +120,15 @@
 							</HBox>
 
 							<l:Grid defaultSpan="L12 M12 S12" class="proressSliderGrid">
-								<Button id="btnReduce" type="Transparent" press="reduceProgress"
+								<!--  <Button id="btnReduce" type="Transparent" press="reduceProgress"
 									icon="sap-icon://sys-minus" class="progressBtnColor">
 									<layoutData>
 										<l:GridData span="L2 M12 S12" />
 									</layoutData>
-								</Button>
+								</Button>  -->
 								<HBox width="100%" class="progressSlider">
 									<layoutData>
-										<l:GridData span="L8 M12 S12" />
+										<l:GridData span="L12 M12 S12" />
 									</layoutData>
 									<Slider id="progressSliderfirst" class="comfirmedProgressSlider"
 										min="0"
@@ -138,20 +138,20 @@
 									<Slider id="progressSlider" class="dynProgressSlider sliderInprogressColor"
 										max="100" showHandleTooltip="true"
 										width="{parts: ['operationDetailModel>/Rowsets/Rowset/0/Row/0/status', 'operationDetailModel>/Rowsets/Rowset/0/Row/0/progress'], formatter: 'airbus.mes.operationdetail.Formatter.sliderStatus' }"
-										enabled="true">
+										enabled="false">
 									</Slider>
 
 								</HBox>
-								<Button id="btnAdd" type="Transparent" press="addProgress"
+								<!--  <Button id="btnAdd" type="Transparent" press="addProgress"
 									icon="sap-icon://sys-add" class="progressBtnColor">
 									<layoutData>
 										<l:GridData span="L2 M12 S12" />
 									</layoutData>
-								</Button>
+								</Button>  --> 
 							</l:Grid>
 							
 							
-							<f:SimpleForm width="auto" backgroundDesign="Transparent" id="reasonCode" minWidth="800" maxWidth="800" class="sapUiLargeMarginTopBottom sapUiLargeMarginBeginEnd"
+						<!-- 	<f:SimpleForm width="auto" backgroundDesign="Transparent" id="reasonCode" minWidth="800" maxWidth="800" class="sapUiLargeMarginTopBottom sapUiLargeMarginBeginEnd"
 								maxContainerCols="2" editable="true" layout="ResponsiveGridLayout"
 								labelSpanL="1" labelSpanM="2" emptySpanL="0" emptySpanM="0"
 								columnsL="1" columnsM="1" validateFieldGroup="onValidatereason">
@@ -165,7 +165,7 @@
 									<Label text="Comment" />
 									<TextArea enabled="{path: 'operationDetailModel>/Rowsets/Rowset/0/Row/0/status', formatter: 'airbus.mes.operationdetail.Formatter.setReasonCodeEnabled'}" id="reasonCodeComments" />
 								</f:content>
-							</f:SimpleForm>
+							</f:SimpleForm>  -->
 						</VBox>
 					</IconTabFilter>
 					<IconTabFilter text="{i18n>Disruption}" />
