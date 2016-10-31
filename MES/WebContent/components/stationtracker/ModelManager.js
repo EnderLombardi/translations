@@ -1,4 +1,5 @@
 //"use strict";
+jQuery.sap.require("sap.ui.core.format.DateFormat");
 jQuery.sap.declare("airbus.mes.stationtracker.ModelManager")
 airbus.mes.stationtracker.ModelManager = {
        urlModel : undefined,
@@ -278,13 +279,18 @@ airbus.mes.stationtracker.ModelManager = {
                      scheduler.updateView(airbus.mes.stationtracker.ShiftManager.ShiftSelected.StartDate);
               }
 
-              // Manage date of date picker
-              // Retrieve text on div dhx_cal_date and split to keep only the date
+//              // Manage date of date picker
+//              // Retrieve text on div dhx_cal_date and split to keep only the date
+//              var oDate = new Date($("div[class='dhx_cal_date']").contents()[0].data.split("-")[0]);
+//              var oDatePicker = airbus.mes.stationtracker.oView.byId("DatePicker");
+//              oDatePicker.setDateValue(oDate);
+//              // TODO : date formatter
+//              oDatePicker.setValueFormat("dd-MM-yyyy");
+              
               var oDate = new Date($("div[class='dhx_cal_date']").contents()[0].data.split("-")[0]);
-              var oDatePicker = airbus.mes.stationtracker.oView.byId("DatePicker");
-              oDatePicker.setDateValue(oDate);
-              // TODO : date formatter
-              oDatePicker.setValueFormat("dd-MM-yyyy");
+              var oFormatddMMyyy = sap.ui.core.format.DateFormat.getInstance({pattern: "dd MMM yyyy", calendarType: sap.ui.core.CalendarType.Gregorian});
+              var oText = airbus.mes.stationtracker.oView.byId("dateLabel");
+              oText.setText(oFormatddMMyyy.format(oDate));
 
        },
        onStationTrackerLoad : function() {

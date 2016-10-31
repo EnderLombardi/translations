@@ -11,9 +11,9 @@
 				expandAnimation="false" class="pageHeader sapUiSmallMarginTop contentNoPad">
 				<headerToolbar>
 					<Toolbar id="kpiHeaderToolbar">
-						<DatePicker id="DatePicker" width="auto" change="changeDay" class="pageHeaderBlue"/>
-						<!-- <Button id="dateButton" icon="sap-icon://appointment" type="Transparent" press="datePick"/>
-						<Label id="dateLabel" text="BLABLA"/> -->
+						<!-- <DatePicker id="DatePicker" width="auto" change="changeDay" class="pageHeaderBlue"/> -->
+						<Button id="dateButton" icon="sap-icon://appointment" type="Transparent" press="datePick" class="classDateButton"/>
+						<Label id="dateLabel" text="" class="classDateLabel"/>
 						<Select id="selectShift"
 							class="sapUiTinyMarginBeginEnd pageHeader pageHeaderBlue" change="changeShift"
 							items="{ path : 'stationTrackerShift>/' }" enabled="false"	>
