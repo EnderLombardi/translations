@@ -39,6 +39,12 @@
 	height: 15%;
 	width: 100%;
 }
+
+#idMainView--lineTrackerName {
+	font-size: 120%;
+	color: white;
+	text-shadow: none;
+}
 /*standard class. temporary fix */
 /*to allow font scaling according to screen. No bad implications*/
 #idMainView--lineTrackerSubheader .sapMBtnContent,
