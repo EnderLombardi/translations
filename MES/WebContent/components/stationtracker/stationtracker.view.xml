@@ -82,25 +82,25 @@
 											<Label text="{StationTrackerI18n>DeltaVsSLB}" class="whiteText takt_kpi_name">
 												<layoutData><layout:GridData span="L8 M8 S8" /></layoutData>
 											</Label>
-											<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/SLB}"
+											<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/DeltaVsSLB}"
 												class="whiteText takt_kpi_value" />
 
 											<Label text="{StationTrackerI18n>DeltaVsSoA}" class="whiteText takt_kpi_name">
 												<layoutData><layout:GridData span="L8 M8 S8" /></layoutData>
 											</Label>
-											<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/SLB}"
+											<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/DeltaVsSoA}"
 												class="whiteText takt_kpi_value" />
 
 											<Label text="{StationTrackerI18n>CycleTime}" class="whiteText takt_kpi_name">
 												<layoutData><layout:GridData span="L8 M8 S8" /></layoutData>
 											</Label>
-											<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/SLB}"
+											<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/CycleTime}"
 												class="whiteText takt_kpi_value" />
 
 											<Label text="{StationTrackerI18n>WorkCintent}" class="whiteText takt_kpi_name">
 												<layoutData><layout:GridData span="L8 M8 S8" /></layoutData>
 											</Label>
-											<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/SLB}"
+											<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/WorkContent}"
 												class="whiteText takt_kpi_value" />
 										</layout:content>
 									</layout:Grid>
@@ -117,7 +117,7 @@
 
 							<Label text="{StationTrackerI18n>LabourEfficiency}" design="Bold"
 								width="100%" class="whiteTextHeader sapUiSmallMarginTopBottom" />
-							<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/SLB}"
+							<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/Labour}"
 								id="LabourEfficiencyValue" class="sapUiSmallMarginTop whiteText kpiValue" />
 						</VBox>
 
@@ -152,11 +152,11 @@
 									<Label text="{StationTrackerI18n>DisruptionTotal}" class=" whiteText kpiName"
 										design="Bold" />
 									<Label text="{StationTrackerI18n>Disruption}" class=" whiteText kpiName" />
-									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/Total}"
+									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/TotalDisruption}"
 										class=" whiteText kpiValue" design="Bold" />
 									<Label text="{StationTrackerI18n>Andon}" class=" redText kpiErrorValue"
 										design="Bold" />
-									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/Total}"
+									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/TotalAndon}"
 										class="redText kpiValue kpiErrorValue" design="Bold" />
 								</VBox>
 								<VBox width="30%">
@@ -172,28 +172,28 @@
 								</VBox>
 								<VBox alignItems="Center" width="20%">
 									<Label text="{StationTrackerI18n>Disruption}" class="whiteText" />
-									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/Total}"
+									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/NCDisruption}"
 										class=" whiteText" />
-									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/Total}"
+									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/MissingDisruption}"
 										class=" whiteText" />
-									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/Total}"
+									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/JTDisruption}"
 										class=" whiteText" />
-									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/Total}"
+									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/FTEDisruption}"
 										class=" whiteText" />
-											<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/-}"
+											<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/OtherDisruption}"
 										class=" whiteText" />
 								</VBox>
 								<VBox alignItems="Center" width="20%">
 									<Label text="{StationTrackerI18n>Andon}" class="redText kpiErrorValue" />
-									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/Total}"
+									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/NCAndon}"
 										class=" redText kpiErrorValue" />
-									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/Total}"
+									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/MissingAndon}"
 										class=" redText kpiErrorValue" />
-									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/Total}"
+									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/JTAndon}"
 										class=" redText kpiErrorValue" />
-									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/Total}"
+									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/FTEAndon}"
 										class="redText kpiErrorValue" />
-											<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/-}"
+											<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/OtherAndon}"
 										class="redText kpiErrorValu" />
 								</VBox>
 							</HBox>
@@ -213,7 +213,7 @@
 										<micro:ComparisonMicroChartData
 											title="{StationTrackerI18n>PromisedOutTakt}" value="3" />
 										<micro:ComparisonMicroChartData
-											title="{StationTrackerI18n>NotAcknowledged}" value="10" />
+											title="{StationTrackerI18n>NotAcknowledged}" value="2" />
 										<micro:ComparisonMicroChartData
 											id="hiddenRefBarResolution" title="{StationTrackerI18n>RedSpaces}" value="20" visible="false"/>
 									</micro:data>
@@ -226,11 +226,11 @@
 								width="100%" class="whiteTextHeader sapUiSmallMarginTopBottom " />
 							<Label text="{StationTrackerI18n>Operations}" width="100%"
 								class="whiteText kpiName" />
-							<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/Total}"
+							<Label text="{KPI>/Rowsets/Rowset/0/Row/ExtraWork/Ops}"
 								class="whiteText kpiValue" design="Bold" />
 							<Label text="{StationTrackerI18n>Hrs}" width="100%"
 								class="whiteText kpiName" />
-							<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/Total}"
+							<Label text="{KPI>/Rowsets/Rowset/0/Row/ExtraWork/Hrs}"
 								class="whiteText kpiValue" design="Bold" />
 						</VBox>
 
