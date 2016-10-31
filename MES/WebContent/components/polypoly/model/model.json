@@ -94,267 +94,267 @@
             "Row": [
                {
                   "RP_ID": "RES_1",
-                  "RP_Description": "Resource Pool 1",
+                  "RP_Description": "Early Shift",
                   "login": "NZ12170",
                   "longName": "MICHEL CADOU",
                   "picture": "/MES/components/polypoly/images/NZ12170.jpg",
                   "ERP_ID": "12170",
                   "personnelNumber": "---",
-                  "status": "No_Clock_Data",
-                  "competency": "PDEFNZSYST46, PSIFNZSYSS00, PSIFNZSYSS01, PSIFNZSYSS06, PSIFNZSYSS08, PSIFNZSYSS36, AWAMANUFPS00, AWAMANUFPS01",
-                  "level": "4, 1, 2, 1, 3, 1, 4, 1, 2, 5"
+                  "status": "IN",
+                  "competency": "PSIFNZSYSS01, PSIFNZSYSS07, PSIFNZSYSS10, AWAMANUFPS00, AWAMANUFPS10, 1L_TANSP, 1L_CVXVXVXCV",
+                  "level": "4, 3, 0, 2, 1, 0, 1"
                },
                {
                   "RP_ID": "RES_1",
-                  "RP_Description": "Resource Pool 1",
+                  "RP_Description": "Early Shift",
                   "login": "NZ113918",
                   "longName": "LAURA CHEVALIER",
                   "picture": "/MES/components/polypoly/images/NZ113918.jpg",
                   "ERP_ID": "113918",
                   "personnelNumber": "---",
-                  "status": "No_Clock_Data",
-                  "competency": "PDEFNZSYST46, PSIFNZSYSS00, PSIFNZSYSS01, PSIFNZSYSS06, PSIFNZSYSS08, PSIFNZSYSS36, AWAMANUFPS00, AWAMANUFPS01",
-                  "level": "0, 0, 0, 0, 0, 0, 0, 0, 0, 0"
+                  "status": "IN",
+                  "competency": "PSIFNZSYSS01, PSIFNZSYSS07, PSIFNZSYSS10, AWAMANUFPS00, AWAMANUFPS10, 1L_TANSP, 1L_CVXVXVXCV",
+                  "level": "2, 1, 3, 0, 0, 2, 1"
                },
                {
                   "RP_ID": "RES_1",
-                  "RP_Description": "Resource Pool 1",
+                  "RP_Description": "Early Shift",
                   "login": "NZ20065",
                   "longName": "PASCAL DAVID",
                   "picture": "/MES/components/polypoly/images/NZ20065.jpg",
                   "ERP_ID": "20065",
                   "personnelNumber": "---",
-                  "status": "No_Clock_Data",
-                  "competency": "PDEFNZSYST46, PSIFNZSYSS00, PSIFNZSYSS01, PSIFNZSYSS06, PSIFNZSYSS08, PSIFNZSYSS36, AWAMANUFPS00, AWAMANUFPS01",
-                  "level": "0, 1, 2, 2, 0, 0, 0, 0, 4, 0"
+                  "status": "OUT",
+                  "competency": "PSIFNZSYSS01, PSIFNZSYSS07, PSIFNZSYSS10, AWAMANUFPS00, AWAMANUFPS10, 1L_TANSP, 1L_CVXVXVXCV",
+                  "level": "1, 0, 4, 4, 2, 0, 1"
                },
                {
                   "RP_ID": "RES_1",
-                  "RP_Description": "Resource Pool 1",
+                  "RP_Description": "Early Shift",
                   "login": "NZ73043",
                   "longName": "STEPHANE DESCOUTS",
                   "picture": "/MES/components/polypoly/images/NZ73043.jpg",
                   "ERP_ID": "73043",
                   "personnelNumber": "---",
-                  "status": "No_Clock_Data",
-                  "competency": "PDEFNZSYST46, PSIFNZSYSS00, PSIFNZSYSS01, PSIFNZSYSS06, PSIFNZSYSS08, PSIFNZSYSS36, AWAMANUFPS00, AWAMANUFPS01",
-                  "level": "2, 4, 3, 1, 2, 1, 2, 2, 3, 1"
+                  "status": "OUT",
+                  "competency": "PSIFNZSYSS01, PSIFNZSYSS07, PSIFNZSYSS10, AWAMANUFPS00, AWAMANUFPS10, 1L_TANSP, 1L_CVXVXVXCV",
+                  "level": "2, 3, 0, 0, 1, 0, 4"
                },
                {
                   "RP_ID": "RES_1",
-                  "RP_Description": "Resource Pool 1",
+                  "RP_Description": "Early Shift",
                   "login": "NZ119832",
                   "longName": "ANTHONY GARCIA",
                   "picture": "/MES/components/polypoly/images/NZ119832.jpg",
                   "ERP_ID": "119832",
                   "personnelNumber": "---",
-                  "status": "No_Clock_Data",
-                  "competency": "PDEFNZSYST46, PSIFNZSYSS00, PSIFNZSYSS01, PSIFNZSYSS06, PSIFNZSYSS08, PSIFNZSYSS36, AWAMANUFPS00, AWAMANUFPS01",
-                  "level": "0, 0, 0, 0, 0, 0, 0, 0, 0, 0"
+                  "status": "IN",
+                  "competency": "PSIFNZSYSS01, PSIFNZSYSS07, PSIFNZSYSS10, AWAMANUFPS00, AWAMANUFPS10, 1L_TANSP, 1L_CVXVXVXCV",
+                  "level": "0, 2, 0, 0, 1, 4, 0"
                },
                {
                   "RP_ID": "RES_1",
-                  "RP_Description": "Resource Pool 1",
+                  "RP_Description": "Early Shift",
                   "login": "NZ92973",
                   "longName": "ROMAIN GUGLIELMETTI",
                   "picture": "/MES/components/polypoly/images/NZ92973.jpg",
                   "ERP_ID": "92973",
                   "personnelNumber": "---",
-                  "status": "No_Clock_Data",
-                  "competency": "PDEFNZSYST46, PSIFNZSYSS00, PSIFNZSYSS01, PSIFNZSYSS06, PSIFNZSYSS08, PSIFNZSYSS36, AWAMANUFPS00, AWAMANUFPS01",
-                  "level": "0, 0, 0, 0, 0, 0, 0, 0, 0, 0"
+                  "status": "IN",
+                  "competency": "PSIFNZSYSS01, PSIFNZSYSS07, PSIFNZSYSS10, AWAMANUFPS00, AWAMANUFPS10, 1L_TANSP, 1L_CVXVXVXCV",
+                  "level": "1, 2, 4, 0, 3, 2, 0"
                },
                {
                   "RP_ID": "RES_1",
-                  "RP_Description": "Resource Pool 1",
+                  "RP_Description": "Early Shift",
                   "login": "NZ106357",
                   "longName": "DONOVAN HERVY",
                   "picture": "/MES/components/polypoly/images/NZ106357.jpg",
                   "ERP_ID": "NZ106357",
                   "personnelNumber": "---",
-                  "status": "No_Clock_Data",
-                  "competency": "PDEFNZSYST46, PSIFNZSYSS00, PSIFNZSYSS01, PSIFNZSYSS06, PSIFNZSYSS08, PSIFNZSYSS36, AWAMANUFPS00, AWAMANUFPS01",
-                  "level": "0, 2, 1, 3, 0, 4, 0, 2, 1, 0"
+                  "status": "OUT",
+                  "competency": "PSIFNZSYSS01, PSIFNZSYSS07, PSIFNZSYSS10, AWAMANUFPS00, AWAMANUFPS10, 1L_TANSP, 1L_CVXVXVXCV",
+                  "level": "1, 4, 2, 2, 0, 3, 1"
                },
                {
                   "RP_ID": "RES_1",
-                  "RP_Description": "Resource Pool 1",
+                  "RP_Description": "Early Shift",
                   "login": "NZ92995",
                   "longName": "CYRIL LE PEVEDIC",
                   "picture": "/MES/components/polypoly/images/NZ92995.jpg",
                   "ERP_ID": "92995",
                   "personnelNumber": "---",
-                  "status": "No_Clock_Data",
-                  "competency": "PDEFNZSYST46, PSIFNZSYSS00, PSIFNZSYSS01, PSIFNZSYSS06, PSIFNZSYSS08, PSIFNZSYSS36, AWAMANUFPS00, AWAMANUFPS01",
-                  "level": "3, 4, 3, 4, 2, 1, 3, 4, 3, 2"
+                  "status": "OUT",
+                  "competency": "PSIFNZSYSS01, PSIFNZSYSS07, PSIFNZSYSS10, AWAMANUFPS00, AWAMANUFPS10, 1L_TANSP, 1L_CVXVXVXCV",
+                  "level": "0, 2, 0, 0, 4, 1, 3"
                },
                {
                   "RP_ID": "RES_1",
-                  "RP_Description": "Resource Pool 1",
+                  "RP_Description": "Early Shift",
                   "login": "NZ110926",
                   "longName": "NICOLAS LEGOFF",
                   "picture": "/MES/components/polypoly/images/NZ110926.jpg",
                   "ERP_ID": "110926",
                   "personnelNumber": "---",
-                  "status": "No_Clock_Data",
-                  "competency": "PDEFNZSYST46, PSIFNZSYSS00, PSIFNZSYSS01, PSIFNZSYSS06, PSIFNZSYSS08, PSIFNZSYSS36, AWAMANUFPS00, AWAMANUFPS01",
-                  "level": "0, 2, 1, 0, 0, 0, 0, 0, 0, 0"
+                  "status": "OUT",
+                  "competency": "PSIFNZSYSS01, PSIFNZSYSS07, PSIFNZSYSS10, AWAMANUFPS00, AWAMANUFPS10, 1L_TANSP, 1L_CVXVXVXCV",
+                  "level": "0, 0, 2, 1, 0, 0, 1"
                },
                {
                   "RP_ID": "RES_1",
-                  "RP_Description": "Resource Pool 1",
+                  "RP_Description": "Early Shift",
                   "login": "NZ107126",
                   "longName": "LOUIS MARIE LIMOUZIN",
                   "picture": "/MES/components/polypoly/images/NZ107126.jpg",
                   "ERP_ID": "107126",
                   "personnelNumber": "---",
-                  "status": "No_Clock_Data",
-                  "competency": "PDEFNZSYST46, PSIFNZSYSS00, PSIFNZSYSS01, PSIFNZSYSS06, PSIFNZSYSS08, PSIFNZSYSS36, AWAMANUFPS00, AWAMANUFPS01",
-                  "level": "0, 0, 0, 0, 0, 0, 0, 0, 0, 0"
+                  "status": "IN",
+                  "competency": "PSIFNZSYSS01, PSIFNZSYSS07, PSIFNZSYSS10, AWAMANUFPS00, AWAMANUFPS10, 1L_TANSP, 1L_CVXVXVXCV",
+                  "level": "0, 0, 2, 4, 3, 0, 0"
                },
                {
-                  "RP_ID": "RP1",
-                  "RP_Description": "Resource Pool 1",
+                  "RP_ID": "RES_2",
+                  "RP_Description": "Late Shift",
                   "login": "NG55033",
                   "longName": "FREDERIC MARTIENNE",
-                  "picture": "/MES/components/polypoly/images/NG55033.jpg",
+                  "picture": "/MES/components/polypoly/images/NZ107126.jpg",
                   "ERP_ID": "55033",
                   "personnelNumber": "---",
-                  "status": "No_Clock_Data",
-                  "competency": "PDEFNZSYST46, PSIFNZSYSS00, PSIFNZSYSS01, PSIFNZSYSS06, PSIFNZSYSS08, PSIFNZSYSS36, AWAMANUFPS00, AWAMANUFPS01",
-                  "level": "0, 0, 0, 0, 0, 0, 0, 0, 0, 0"
+                  "status": "IN",
+                  "competency": "PSIFNZSYSS01, PSIFNZSYSS07, PSIFNZSYSS10, AWAMANUFPS00, AWAMANUFPS10, 1L_TANSP, 1L_CVXVXVXCV",
+                  "level": "0, 0, 2, 1, 1, 3, 0"
                },
                {
-                  "RP_ID": "RP1",
-                  "RP_Description": "Resource Pool 1",
+                  "RP_ID": "RES_2",
+                  "RP_Description": "Late Shift",
                   "login": "NZ108099",
                   "longName": "DAVID MENORET",
                   "picture": "/MES/components/polypoly/images/NZ108099.jpg",
                   "ERP_ID": "108099",
                   "personnelNumber": "---",
-                  "status": "No_Clock_Data",
-                  "competency": "PDEFNZSYST46, PSIFNZSYSS00, PSIFNZSYSS01, PSIFNZSYSS06, PSIFNZSYSS08, PSIFNZSYSS36, AWAMANUFPS00, AWAMANUFPS01",
-                  "level": "2, 3, 1, 4, 2, 1, 4, 2, 0, 0"
+                  "status": "IN",
+                  "competency": "PSIFNZSYSS01, PSIFNZSYSS07, PSIFNZSYSS10, AWAMANUFPS00, AWAMANUFPS10, 1L_TANSP, 1L_CVXVXVXCV",
+                  "level": "2, 1, 0, 0, 3, 4, 1"
                },
                {
-                  "RP_ID": "RP1",
-                  "RP_Description": "Resource Pool 1",
+                  "RP_ID": "RES_2",
+                  "RP_Description": "Late Shift",
                   "login": "NZ29368",
                   "longName": "MARTHE PEYRE",
                   "picture": "/MES/components/polypoly/images/NZ29368.jpg",
                   "ERP_ID": "29368",
                   "personnelNumber": "---",
-                  "status": "No_Clock_Data",
-                  "competency": "PDEFNZSYST46, PSIFNZSYSS00, PSIFNZSYSS01, PSIFNZSYSS06, PSIFNZSYSS08, PSIFNZSYSS36, AWAMANUFPS00, AWAMANUFPS01",
-                  "level": "0, 2, 1, 0, 0, 1, 0, 2, 3, 0"
+                  "status": "IN",
+                  "competency": "PSIFNZSYSS01, PSIFNZSYSS07, PSIFNZSYSS10, AWAMANUFPS00, AWAMANUFPS10, 1L_TANSP, 1L_CVXVXVXCV",
+                  "level": "1, 2, 4, 0, 0, 0, 0"
                },
                {
-                  "RP_ID": "RP1",
-                  "RP_Description": "Resource Pool 1",
+                  "RP_ID": "RES_2",
+                  "RP_Description": "Late Shift",
                   "login": "NZ29368",
                   "longName": "PASCAL RIVALAND",
                   "picture": "/MES/components/polypoly/images/NZ29368.jpg",
                   "ERP_ID": "29368",
                   "personnelNumber": "---",
-                  "status": "No_Clock_Data",
-                  "competency": "PDEFNZSYST46, PSIFNZSYSS00, PSIFNZSYSS01, PSIFNZSYSS06, PSIFNZSYSS08, PSIFNZSYSS36, AWAMANUFPS00, AWAMANUFPS01",
-                  "level": "1, 2, 0, 3, 4, 0, 0, 0, 0, 0"
+                  "status": "IN",
+                  "competency": "PSIFNZSYSS01, PSIFNZSYSS07, PSIFNZSYSS10, AWAMANUFPS00, AWAMANUFPS10, 1L_TANSP, 1L_CVXVXVXCV",
+                  "level": "0, 1, 0, 0, 2, 0, 3"
                },
                {
-                  "RP_ID": "RP1",
-                  "RP_Description": "Resource Pool 1",
+                  "RP_ID": "RES_2",
+                  "RP_Description": "Late Shift",
                   "login": "NZ31062",
                   "longName": "JULIEN SCIARLI",
                   "picture": "/MES/components/polypoly/images/NZ31062.jpg",
                   "ERP_ID": "31062",
                   "personnelNumber": "---",
-                  "status": "No_Clock_Data",
-                  "competency": "PDEFNZSYST46, PSIFNZSYSS00, PSIFNZSYSS01, PSIFNZSYSS06, PSIFNZSYSS08, PSIFNZSYSS36, AWAMANUFPS00, AWAMANUFPS01",
-                  "level": "0, 2, 3, 1, 2, 4, 1, 0, 0, 0"
+                  "status": "IN",
+                  "competency": "PSIFNZSYSS01, PSIFNZSYSS07, PSIFNZSYSS10, AWAMANUFPS00, AWAMANUFPS10, 1L_TANSP, 1L_CVXVXVXCV",
+                  "level": "2, 0, 0, 1, 4, 3, 0"
                },
                {
-                  "RP_ID": "RP1",
-                  "RP_Description": "Resource Pool 1",
+                  "RP_ID": "RES_2",
+                  "RP_Description": "Late Shift",
                   "login": "NZ120318",
                   "longName": "KEVIN THOBY",
                   "picture": "/MES/components/polypoly/images/NZ120318.jpg",
                   "ERP_ID": "120318",
                   "personnelNumber": "---",
-                  "status": "No_Clock_Data",
-                  "competency": "PDEFNZSYST46, PSIFNZSYSS00, PSIFNZSYSS01, PSIFNZSYSS06, PSIFNZSYSS08, PSIFNZSYSS36, AWAMANUFPS00, AWAMANUFPS01",
-                  "level": "0, 0, 0, 0, 0, 0, 0, 0, 0, 0"
+                  "status": "IN",
+                  "competency": "PSIFNZSYSS01, PSIFNZSYSS07, PSIFNZSYSS10, AWAMANUFPS00, AWAMANUFPS10, 1L_TANSP, 1L_CVXVXVXCV",
+                  "level": "2, 3, 4, 0, 0, 1, 0"
                },
                {
-                  "RP_ID": "RP1",
-                  "RP_Description": "Resource Pool 1",
+                  "RP_ID": "RES_2",
+                  "RP_Description": "Late Shift",
                   "login": "NZ11896",
                   "longName": "MICHEL TREMEDET",
                   "picture": "/MES/components/polypoly/images/NZ11896.jpg",
                   "ERP_ID": "11896",
                   "personnelNumber": "---",
-                  "status": "No_Clock_Data",
-                  "competency": "PDEFNZSYST46, PSIFNZSYSS00, PSIFNZSYSS01, PSIFNZSYSS06, PSIFNZSYSS08, PSIFNZSYSS36, AWAMANUFPS00, AWAMANUFPS01",
-                  "level": "0, 2, 1, 0, 4, 0, 1, 0, 3, 0"
+                  "status": "OUT",
+                  "competency": "PSIFNZSYSS01, PSIFNZSYSS07, PSIFNZSYSS10, AWAMANUFPS00, AWAMANUFPS10, 1L_TANSP, 1L_CVXVXVXCV",
+                  "level": "0, 0, 2, 0, 1, 0, 1"
                },
                {
-                  "RP_ID": "RP1",
-                  "RP_Description": "Resource Pool 1",
+                  "RP_ID": "RES_2",
+                  "RP_Description": "Late Shift",
                   "login": "NZ108094",
                   "longName": "DAVID MOINET",
                   "picture": "/MES/components/polypoly/images/NZ108094.jpg",
                   "ERP_ID": "108094",
                   "personnelNumber": "---",
-                  "status": "No_Clock_Data",
-                  "competency": "PDEFNZSYST46, PSIFNZSYSS00, PSIFNZSYSS01, PSIFNZSYSS06, PSIFNZSYSS08, PSIFNZSYSS36, AWAMANUFPS00, AWAMANUFPS01",
-                  "level": "0, 0, 0, 0, 0, 0, 0, 0, 0, 0"
+                  "status": "OUT",
+                  "competency": "PSIFNZSYSS01, PSIFNZSYSS07, PSIFNZSYSS10, AWAMANUFPS00, AWAMANUFPS10, 1L_TANSP, 1L_CVXVXVXCV",
+                  "level": "0, 0, 2, 3, 4, 1, 0"
                },
                {
-                  "RP_ID": "RP1",
-                  "RP_Description": "Resource Pool 1",
+                  "RP_ID": "RES_2",
+                  "RP_Description": "Late Shift",
                   "login": "NZ42619",
                   "longName": "VALERIE LORCY",
                   "picture": "/MES/components/polypoly/images/NZ42619.jpg",
                   "ERP_ID": "42619",
                   "personnelNumber": "---",
-                  "status": "No_Clock_Data",
-                  "competency": "PDEFNZSYST46, PSIFNZSYSS00, PSIFNZSYSS01, PSIFNZSYSS06, PSIFNZSYSS08, PSIFNZSYSS36, AWAMANUFPS00, AWAMANUFPS01",
-                  "level": "0, 0, 0, 0, 0, 0, 0, 0, 0, 0"
+                  "status": "OUT",
+                  "competency": "PSIFNZSYSS01, PSIFNZSYSS07, PSIFNZSYSS10, AWAMANUFPS00, AWAMANUFPS10, 1L_TANSP, 1L_CVXVXVXCV",
+                  "level": "0, 2, 1, 3, 0, 4, 2"
                },
                {
-                  "RP_ID": "RP1",
-                  "RP_Description": "Resource Pool 1",
+                  "RP_ID": "RES_2",
+                  "RP_Description": "Late Shift",
                   "login": "NZ82434",
                   "longName": "STEPHANIE BOCHET",
                   "picture": "/MES/components/polypoly/images/NZ82434.jpg",
                   "ERP_ID": "82434",
                   "personnelNumber": "---",
-                  "status": "No_Clock_Data",
-                  "competency": "PDEFNZSYST46, PSIFNZSYSS00, PSIFNZSYSS01, PSIFNZSYSS06, PSIFNZSYSS08, PSIFNZSYSS36, AWAMANUFPS00, AWAMANUFPS01",
-                  "level": "0, 0, 0, 0, 0, 0, 0, 0, 0, 0"
+                  "status": "OUT",
+                  "competency": "PSIFNZSYSS01, PSIFNZSYSS07, PSIFNZSYSS10, AWAMANUFPS00, AWAMANUFPS10, 1L_TANSP, 1L_CVXVXVXCV",
+                  "level": "2, 1, 0, 3, 4, 2, 0"
                },
                {
-                  "RP_ID": "RP1",
-                  "RP_Description": "Resource Pool 1",
+                  "RP_ID": "RES_2",
+                  "RP_Description": "Late Shift",
                   "login": "ST98296",
                   "longName": "NADEGE CORMIER",
                   "picture": "/MES/components/polypoly/images/ST98296.jpg",
                   "ERP_ID": "98296",
                   "personnelNumber": "---",
-                  "status": "No_Clock_Data",
-                  "competency": "PDEFNZSYST46, PSIFNZSYSS00, PSIFNZSYSS01, PSIFNZSYSS06, PSIFNZSYSS08, PSIFNZSYSS36, AWAMANUFPS00, AWAMANUFPS01",
-                  "level": "0, 0, 0, 0, 0, 0, 0, 0, 0, 0"
+                  "status": "IN",
+                  "competency": "PSIFNZSYSS01, PSIFNZSYSS07, PSIFNZSYSS10, AWAMANUFPS00, AWAMANUFPS10, 1L_TANSP, 1L_CVXVXVXCV",
+                  "level": "0, 0, 2, 4, 1, 3, 0"
                },
                {
-                  "RP_ID": "RP1",
-                  "RP_Description": "Resource Pool 1",
+                  "RP_ID": "RES_2",
+                  "RP_Description": "Late Shift",
                   "login": "NG1EC44",
                   "longName": "CHRISTOPHE OILLIC",
                   "picture": "/MES/components/polypoly/images/NG1EC44.jpg",
                   "ERP_ID": "NG1EC44",
                   "personnelNumber": "---",
-                  "status": "No_Clock_Data",
-                  "competency": "PDEFNZSYST46, PSIFNZSYSS00, PSIFNZSYSS01, PSIFNZSYSS06, PSIFNZSYSS08, PSIFNZSYSS36, AWAMANUFPS00, AWAMANUFPS01",
-                  "level": "0, 2, 1, 0, 4, 0, 3, 0, 0, 0"
+                  "status": "IN",
+                  "competency": "PSIFNZSYSS01, PSIFNZSYSS07, PSIFNZSYSS10, AWAMANUFPS00, AWAMANUFPS10, 1L_TANSP, 1L_CVXVXVXCV",
+                  "level": "0, 2, 1, 0, 4, 0, 1"
                }
             ]
          },
@@ -413,30 +413,6 @@
             },
             "Row": [
                {
-                  "technicalName": "PDEFNZA05SYS",
-                  "competencyName": "PDEFNZA05SYS-DEL r�al essai syst Air",
-                  "qualityApproval": "S02",
-                  "POLYPOLY_NEEDS_3": "0",
-                  "POLYPOLY_NEEDS_4": "0",
-                  "POLYPOLY_SEQUENCE": "001"
-               },
-               {
-                  "technicalName": "PSIFNZSYSE36",
-                  "competencyName": "PSIFNZSYSS00-Basique M�tier Assemblage",
-                  "qualityApproval": "",
-                  "POLYPOLY_NEEDS_3": "---",
-                  "POLYPOLY_NEEDS_4": "---",
-                  "POLYPOLY_SEQUENCE": "002"
-               },
-               {
-                  "technicalName": "PSIFNZSYSS00",
-                  "competencyName": "Station 10 Final Operations 4 TEST",
-                  "qualityApproval": "S05",
-                  "POLYPOLY_NEEDS_3": "1",
-                  "POLYPOLY_NEEDS_4": "1",
-                  "POLYPOLY_SEQUENCE": "003"
-               },
-               {
                   "technicalName": "PSIFNZSYSS01",
                   "competencyName": "PSIFNZSYSS01-Montage M�ca avec R�glage",
                   "qualityApproval": "S05",
@@ -486,7 +462,7 @@
                },
                {
                   "technicalName": "1L_CVXVXVXCV",
-                  "competencyName": "cvbcvbcvbcvb",
+                  "competencyName": "Station 10 right Transport",
                   "qualityApproval": "PAPITESTQA03, PAPITESTQA02, QACHESTEST1",
                   "POLYPOLY_NEEDS_3": "7",
                   "POLYPOLY_NEEDS_4": "0",
