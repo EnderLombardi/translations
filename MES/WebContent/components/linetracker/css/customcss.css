@@ -680,7 +680,7 @@ white-space: nowrap !important;
     font-size: 1.5vh;
 }
 .factHBox .stationBoxBody {
-	padding: 7px 5px 5px 5px;
+	padding: 0.5rem 0.5rem 0 0.5rem;
     width: 50%;
 }
 #idMainView--lineTrackerSubheader {
