@@ -1077,6 +1077,16 @@ svg#stationTrackerView--takt_adherence_area_chart {
     line-height: 3rem;
 }
 
+#stationTrackerView--buttonViewMode .sapMSegBBtnDis {
+    height: 3rem;
+    border: none;
+    border-right: 1px solid #8db9ca;
+    background-color: transparent;
+    color: #0D5D76;
+    text-transform: uppercase;
+    line-height: 3rem;
+}
+
 #stationTrackerView--buttonViewMode .sapMSegBBtnFocusable.sapMSegBBtnSel {
     background-color: #74D2E7;
     color: white;

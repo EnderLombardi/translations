@@ -267,67 +267,68 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	},
 	onPolypolyOpen: function(oEvent) {
 		
-		jQuery.sap.registerModulePath("airbus.mes.polypoly","../components/polypoly");
-		airbus.mes.stationtracker.AssignmentManager.polypolyAffectation = false;
-		
-//		if (!airbus.mes.stationtracker.oPopoverPolypoly) {
-//			airbus.mes.stationtracker.oPopoverPolypoly = sap.ui.xmlfragment("airbus.mes.stationtracker.polypolyFragment", this);
-//			
-//			var oComp = sap.ui.getCore().createComponent({
-//	            name : "airbus.mes.polypoly", // root component folder is resources
-//	            id : "Comp10",
-//	     });	
-//			//load model of polypoly
-//			airbus.mes.polypoly.ModelManager.loadPolyPolyModel("F1","1","10","CHES");	
+//		jQuery.sap.registerModulePath("airbus.mes.polypoly","../components/polypoly");
+//		airbus.mes.stationtracker.AssignmentManager.polypolyAffectation = false;
+//		
+////		if (!airbus.mes.stationtracker.oPopoverPolypoly) {
+////			airbus.mes.stationtracker.oPopoverPolypoly = sap.ui.xmlfragment("airbus.mes.stationtracker.polypolyFragment", this);
+////			
+////			var oComp = sap.ui.getCore().createComponent({
+////	            name : "airbus.mes.polypoly", // root component folder is resources
+////	            id : "Comp10",
+////	     });	
+////			//load model of polypoly
+////			airbus.mes.polypoly.ModelManager.loadPolyPolyModel("F1","1","10","CHES");	
+////		}
+//		if(airbus.mes.polypoly == undefined){
+//			sap.ui.getCore().createComponent({
+//				name : "airbus.mes.polypoly", // root component folder is resources
+//         	});
 //		}
-		if(airbus.mes.polypoly == undefined){
-			sap.ui.getCore().createComponent({
-				name : "airbus.mes.polypoly", // root component folder is resources
-         	});
-		}
-		
-		airbus.mes.polypoly.PolypolyManager.globalContext.bEditable = !airbus.mes.stationtracker.AssignmentManager.polypolyAffectation;
-		
-		if(!nav.getPage("polypolyPage")){
-		var oPolypolyPage = new sap.m.Page({
-			content: airbus.mes.polypoly.oView,
-			title : "POLYPOLY",
-			id:"polypolyPage",
-			customHeader : new sap.m.Toolbar({
-				content: [
-				          new sap.m.Button({
-				        	  icon:"sap-icon://arrow-left",
-				        	  type:"Transparent",
-				        	  press: function(){nav.back()}
-				          }),
-				          new sap.m.ToolbarSpacer({}),
-				          new sap.m.Label({
-				        	  text: "PolyValence/PolyCompetence Matrix"
-				          }).addStyleClass("pageWelcome sapUiTinyMarginBeginEnd"),
-				          new sap.m.ToolbarSpacer({}),
-				          ]
-			}).addStyleClass("pageHeader contentNoPad"),
-		});
-		
-		nav.addPage(oPolypolyPage);
-		}else{
-			var oPolypolyPage = nav.getPage("polypolyPage");
-			if(oPolypolyPage.getContent().length == 0){
-				oPolypolyPage.addContent(airbus.mes.polypoly.oView);
-			}
-		}
-		nav.to(oPolypolyPage);
-		
-//		nav.addPage(airbus.mes.polypoly.oView);
-//		nav.to(airbus.mes.polypoly.oView.getId());
-		
-		
-		airbus.mes.polypoly.ModelManager.getPolyPolyModel("F1","1","10","CHES");
-		
-		airbus.mes.polypoly.oView.getController().initiatePolypoly();
-		// place this Ui Container with the Component inside into UI Area
-//		airbus.mes.stationtracker.oPopoverPolypoly.addContent(airbus.mes.polypoly.oView);
-//		airbus.mes.stationtracker.oPopoverPolypoly.open();	
+//		
+//		airbus.mes.polypoly.PolypolyManager.globalContext.bEditable = !airbus.mes.stationtracker.AssignmentManager.polypolyAffectation;
+//		
+//		if(!nav.getPage("polypolyPage")){
+//		var oPolypolyPage = new sap.m.Page({
+//			content: airbus.mes.polypoly.oView,
+//			title : "POLYPOLY",
+//			id:"polypolyPage",
+//			customHeader : new sap.m.Toolbar({
+//				content: [
+//				          new sap.m.Button({
+//				        	  icon:"sap-icon://arrow-left",
+//				        	  type:"Transparent",
+//				        	  press: function(){nav.back()}
+//				          }),
+//				          new sap.m.ToolbarSpacer({}),
+//				          new sap.m.Label({
+//				        	  text: "PolyValence/PolyCompetence Matrix"
+//				          }).addStyleClass("pageWelcome sapUiTinyMarginBeginEnd"),
+//				          new sap.m.ToolbarSpacer({}),
+//				          ]
+//			}).addStyleClass("pageHeader contentNoPad"),
+//		});
+//		
+//		nav.addPage(oPolypolyPage);
+//		}else{
+//			var oPolypolyPage = nav.getPage("polypolyPage");
+//			if(oPolypolyPage.getContent().length == 0){
+//				oPolypolyPage.addContent(airbus.mes.polypoly.oView);
+//			}
+//		}
+//		nav.to(oPolypolyPage);
+//		
+////		nav.addPage(airbus.mes.polypoly.oView);
+////		nav.to(airbus.mes.polypoly.oView.getId());
+//		
+//		
+//		airbus.mes.polypoly.ModelManager.getPolyPolyModel("F1","1","10","CHES");
+//		
+//		airbus.mes.polypoly.oView.getController().initiatePolypoly();
+//		// place this Ui Container with the Component inside into UI Area
+////		airbus.mes.stationtracker.oPopoverPolypoly.addContent(airbus.mes.polypoly.oView);
+////		airbus.mes.stationtracker.oPopoverPolypoly.open();	
+		airbus.mes.shell.util.navFunctions.polypoly();
 			
 		
 	},
@@ -835,9 +836,11 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		var bIsExpanded = oPanel.getExpanded();
 		
 		if ( bIsExpanded ) {
-			airbus.mes.stationtracker.oView.byId("hideKPI").setIcon("sap-icon://hide");
-		} else {
 			airbus.mes.stationtracker.oView.byId("hideKPI").setIcon("sap-icon://show");
+			airbus.mes.stationtracker.oView.byId("hideKPI").setText(airbus.mes.stationtracker.oView.getController().getI18nValue("ShowKPIS"));
+		} else {
+			airbus.mes.stationtracker.oView.byId("hideKPI").setIcon("sap-icon://hide");
+			airbus.mes.stationtracker.oView.byId("hideKPI").setText(airbus.mes.stationtracker.oView.getController().getI18nValue("HideKPIS"));
 		}
 		
 		oPanel.setExpanded(!bIsExpanded);

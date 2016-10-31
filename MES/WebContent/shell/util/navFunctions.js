@@ -73,11 +73,12 @@ airbus.mes.shell.util.navFunctions = {
 					          new sap.m.Button({
 					        	  icon:"sap-icon://arrow-left",
 					        	  type:"Transparent",
-					        	  press: function(){nav.back()}
+					        	  press: function(){nav.back()},
+					        	  text: "Back",
 					          }),
 					          new sap.m.ToolbarSpacer({}),
-					          new sap.m.Label({
-					        	  text: "PolyValence/PolyCompetence Matrix"
+					          new sap.m.Label("polypolytitle", {
+					        	  text: "Polyvalence-Polycompetence Matrix"
 					          }).addStyleClass("pageWelcome sapUiTinyMarginBeginEnd"),
 					          new sap.m.ToolbarSpacer({}),
 					          ]
