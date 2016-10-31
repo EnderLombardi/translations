@@ -836,9 +836,11 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		var bIsExpanded = oPanel.getExpanded();
 		
 		if ( bIsExpanded ) {
-			airbus.mes.stationtracker.oView.byId("hideKPI").setIcon("sap-icon://hide");
-		} else {
 			airbus.mes.stationtracker.oView.byId("hideKPI").setIcon("sap-icon://show");
+			airbus.mes.stationtracker.oView.byId("hideKPI").setText(airbus.mes.stationtracker.oView.getController().getI18nValue("ShowKPIS"));
+		} else {
+			airbus.mes.stationtracker.oView.byId("hideKPI").setIcon("sap-icon://hide");
+			airbus.mes.stationtracker.oView.byId("hideKPI").setText(airbus.mes.stationtracker.oView.getController().getI18nValue("HideKPIS"));
 		}
 		
 		oPanel.setExpanded(!bIsExpanded);
