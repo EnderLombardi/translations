@@ -358,13 +358,13 @@
 						</items>
 					</SegmentedButton>
 					<!-- <Label text="{StationTrackerI18n>GroupingSortBy}" /> -->
-					<Label text="{StationTrackerI18n>Grouping}"/>
+					<!-- <Label text="{StationTrackerI18n>Grouping}"/> -->
 					<Select id="selectGroup" class="sapUiTinyMarginBeginEnd comboBoxStyle"
 						items="{groupModel>/Rowsets/Rowset/0/Row/Grouping}" change="changeGroup">
 						<core:ListItem key="{groupModel>key}"
 							text="{ path : 'groupModel>Value' , formatter : '.getI18nValue' }" />
 					</Select>
-						<Label id="selectBoxLabel" text="{StationTrackerI18n>Granularity}"/>
+					<!-- <Label id="selectBoxLabel" text="{StationTrackerI18n>Granularity}"/> -->
 					<Select id="selectBox" class="sapUiTinyMarginBeginEnd comboBoxStyle"
 						items="{groupModel>/Rowsets/Rowset/0/Row/Boxing}" change="changeBox">
 						<core:ListItem key="{groupModel>key}"
