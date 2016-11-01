@@ -89,7 +89,7 @@
 .absolutePosition {
 	position: absolute !important;
 }
-.sapMTCAnim div[data-enabled^="false"] {
+.sapMTCCnt div[data-enabled^="false"] {
 	opacity: 0.6;
 }
 /*.sapMTCAnim div[data-enabled^="false"] .IconTile {

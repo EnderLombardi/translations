@@ -415,7 +415,7 @@
                {
                   "technicalName": "PSIFNZSYSS01",
                   "competencyName": "PSIFNZSYSS01-Montage Méca avec Réglage",
-                  "qualityApproval": "S05",
+                  "qualityApproval": "QACHESBR1",
                   "POLYPOLY_NEEDS_3": "1",
                   "POLYPOLY_NEEDS_4": "3",
                   "POLYPOLY_SEQUENCE": "004"
@@ -423,7 +423,7 @@
                {
                   "technicalName": "PSIFNZSYSS07",
                   "competencyName": "PSIFNZSYSS07-Monter Condit. Air",
-                  "qualityApproval": "S07",
+                  "qualityApproval": "QACHESO08",
                   "POLYPOLY_NEEDS_3": "---",
                   "POLYPOLY_NEEDS_4": "---",
                   "POLYPOLY_SEQUENCE": "005"
@@ -431,7 +431,7 @@
                {
                   "technicalName": "PSIFNZSYSS10",
                   "competencyName": "PSIFNZSYSS10-Monter commande de vol",
-                  "qualityApproval": "",
+                  "qualityApproval": "QACHESO45, QACHESS40",
                   "POLYPOLY_NEEDS_3": "---",
                   "POLYPOLY_NEEDS_4": "---",
                   "POLYPOLY_SEQUENCE": "006"
@@ -447,7 +447,7 @@
                {
                   "technicalName": "AWAMANUFPS10",
                   "competencyName": "WA-S10-Commande de Vol",
-                  "qualityApproval": "G35",
+                  "qualityApproval": "QACHESS50, QACHESO40, QACHESTES",
                   "POLYPOLY_NEEDS_3": "1",
                   "POLYPOLY_NEEDS_4": "4",
                   "POLYPOLY_SEQUENCE": "008"
@@ -455,7 +455,7 @@
                {
                   "technicalName": "1L_TANSP",
                   "competencyName": "Station 10 left Transport",
-                  "qualityApproval": "",
+                  "qualityApproval": "QACHESO08, QACHESS20",
                   "POLYPOLY_NEEDS_3": "2",
                   "POLYPOLY_NEEDS_4": "0",
                   "POLYPOLY_SEQUENCE": "009"
@@ -463,7 +463,7 @@
                {
                   "technicalName": "1L_CVXVXVXCV",
                   "competencyName": "Station 10 right Transport",
-                  "qualityApproval": "PAPITESTQA03, PAPITESTQA02, QACHESTEST1",
+                  "qualityApproval": "QACHESS00, QACHESS23, QACHESS40, QACHESS41",
                   "POLYPOLY_NEEDS_3": "7",
                   "POLYPOLY_NEEDS_4": "0",
                   "POLYPOLY_SEQUENCE": "010"
