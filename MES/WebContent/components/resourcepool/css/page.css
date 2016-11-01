@@ -18,6 +18,11 @@
 	width: 15em !important;
 }
 }
+
+#resourcePool--navBack .sapMBtnIcon, #resourcePool--navBack .sapMBtnContent {
+	color: white;
+}
+
 #idUsersView .fixHboxItemDisplay .sapMFlexItem{
 	width:100%;
 	word-break: break-all;

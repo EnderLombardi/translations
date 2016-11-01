@@ -35,20 +35,25 @@
     margin: 0.7rem 0.7rem 0 0.7rem!important;
     background-color:#e9fbfd;
 }
-.disruptions .sapMBtn {
-  /*  background-color: #d4f1f7; */
+#disruptiontrackerView--gotoDisruptionKpi.sapMBtn {
+    background-color: #d4f1f7; 
 
 }
-.disruptions .sapMBtn:hover {
-    background-color: rgba(0, 86, 112, 0.20);
+
+#disruptiontrackerView--navBack .sapMBtnIcon, #disruptiontrackerView--navBack .sapMBtnContent {
+	color: white;
 }
-.disruptions .sapMBtn:hover>.sapMBtnHoverable, .disruptions .sapMBtn>.sapMBtnHoverable {
+
+#disruptiontrackerView--gotoDisruptionKpi.sapMBtn:hover {
+    background-color: rgba(0, 86, 112, 0.20); 
+}
+#disruptiontrackerView--gotoDisruptionKpi.sapMBtn:hover>.sapMBtnHoverable, #disruptiontrackerView--gotoDisruptionKpi.sapMBtn>.sapMBtnHoverable {
     background-color: transparent;
     background: transparent;
-    border:none;
+    border:none; 
 }
-.disruptions .sapMBtn span  {
-    color: #0D5D76;
+#disruptiontrackerView--gotoDisruptionKpi.sapMBtn span  {
+    color: #0D5D76; 
 }
 .disruptions table tr:nth-child(even) {
 	background:#f7f9fb
