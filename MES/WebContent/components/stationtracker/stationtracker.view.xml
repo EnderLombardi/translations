@@ -25,8 +25,8 @@
 							class="sapUiTinyMarginBeginEnd pageHeader pageHeaderBlue" items="{ path : 'ressourcePoolModel>/Rowsets/Rowset/0/Row' }">
 							<core:Item key="{ressourcePoolModel>user}" text="{ressourcePoolModel>user}" />
 						</Select>
-						<!-- <Button text="Disruptions" type="Transparent" class="whiteColor whiteButton"
-							press="showDisruption"></Button> -->
+						 <Button text="Disruptions" type="Transparent" class="whiteColor whiteButton"
+							press="showDisruption"></Button>
 						<ToolbarSpacer />
 						<Button id="TeamButton" text="{StationTrackerI18n>ButtonTeam}"
 							type="Transparent"
@@ -398,14 +398,18 @@
 
 
 			<!-- For Disruption table in Station Tracker -->
-			<control:disruptionNotifications id="disruptNotifications">
+			<!-- <control:disruptionNotifications id="disruptNotifications">
 
 				<control:disruptionContent id="disruptContent">
 
 
 				</control:disruptionContent>
 
-			</control:disruptionNotifications>
+			</control:disruptionNotifications> -->
+			<HBox class="slidingUpDownPanel GenricBgColor" id="disruptNotifications">
+				<items>
+				</items>
+			</HBox>
 
 		</content>
 	</Page>

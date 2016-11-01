@@ -30,6 +30,15 @@
 	margin:0 1rem 1rem 1rem;
 }
 
-#stationTrackerView--disruptNotifications #disruptiontrackerView{
+.slidingUpDownPanel{
+	height: 100%; /* height - change this with JavaScript*/ 
+    width: 100%; /*100% Full-width */
+    position: fixed; /* Stay in place */
+    z-index: 101;/* Stay on top */
+    overflow-y: hidden; /* Disable horizontal scroll */
+    display:none;
+}
+#stationTrackerView--disruptNotifications > .sapMFlexItem{
+	width:100% !important;
 	height:100% !important;
 }

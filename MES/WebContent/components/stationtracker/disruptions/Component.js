@@ -3,9 +3,9 @@ jQuery.sap.registerModulePath("airbus.mes.disruptiontracker", "../components/dis
 jQuery.sap.require("airbus.mes.disruptiontracker.util.Formatter");
 jQuery.sap.require("airbus.mes.disruptiontracker.ModelManager");
 
-jQuery.sap.declare("airbus.mes.stationtracker.disruptionTrackerPanel.Component");
+jQuery.sap.declare("airbus.mes.stationtracker.disruptions.Component");
 
-sap.ui.core.UIComponent.extend("airbus.mes.stationtracker.disruptionTrackerPanel.Component", {
+sap.ui.core.UIComponent.extend("airbus.mes.stationtracker.disruptions.Component", {
 	metadata : {
 		properties : {},
 		includes : [ "../../disruptiontracker/css/disruptiontracker.css" ]
@@ -15,24 +15,25 @@ sap.ui.core.UIComponent.extend("airbus.mes.stationtracker.disruptionTrackerPanel
 
 });
 
-airbus.mes.stationtracker.disruptionTrackerPanel.Component.prototype.createContent = function() {
+airbus.mes.stationtracker.disruptions.Component.prototype.createContent = function() {
 	
-	if (airbus.mes.disruptiontracker.oView === undefined) {
+	if (airbus.mes.stationtracker.disruptions.oView === undefined) {
 //		Initialization
 		airbus.mes.disruptiontracker.ModelManager.init(sap.ui.getCore());
 		
 		// View on XML
 		this.oView = sap.ui.view({
-			id : "disruptiontrackerView2",
+			id : "stationTackerDisruptions",
 			viewName : "airbus.mes.disruptiontracker.disruptions",
 			type : "XML",
+			height:"100%"
 		})
 
 		var i18nModel = new sap.ui.model.resource.ResourceModel({
 	        bundleUrl : "../components/disruptiontracker/i18n/i18n.properties"
 	     });
 		this.oView.setModel(i18nModel, "disruptiontrackerI18n");		
-		airbus.mes.disruptiontracker.oView = this.oView		
+		airbus.mes.stationtracker.disruptions.oView = this.oView		
 		
 		
 		//Model for disruptions list data in table
@@ -48,5 +49,4 @@ airbus.mes.stationtracker.disruptionTrackerPanel.Component.prototype.createConte
 		return this.oView;
 		
 	}
-	return airbus.mes.disruptiontracker.oView;
 };
