@@ -155,12 +155,15 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 			scheduler.xy.scroll_width = 20;
 			//scheduler.xy.nav_height = 0;
 			scheduler.updateView();
+			break;
 			
 		case "disruptiontrackerView":
 			airbus.mes.disruptiontracker.ModelManager.loadData();
+			break;
 			
 		case "resourcePool":
 			airbus.mes.resourcepool.util.ModelManager.askResourcePool();
+			break;
 
 		}
 	},

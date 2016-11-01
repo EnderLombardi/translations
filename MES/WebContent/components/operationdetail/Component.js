@@ -23,7 +23,7 @@ airbus.mes.operationdetail.Component.prototype.createContent = function() {
 		// View on XML
 		this.oView = sap.ui.view({
 			id : "operationDetailsView",
-			viewName : "airbus.mes.operationdetail.progressSlider",
+			viewName : "airbus.mes.operationdetail.operationDetail",
 			type : "XML",
 			height:"100%"
 		})
@@ -33,7 +33,8 @@ airbus.mes.operationdetail.Component.prototype.createContent = function() {
 	     });
 		
 		this.oView.setModel(i18nModel, "i18n");		
-
+		
+	//	this.oView.setModel(sap.ui.getCore().getModel("reasonCodeModel"), "reasonCodeModel");)
 		return this.oView;
 	}
 

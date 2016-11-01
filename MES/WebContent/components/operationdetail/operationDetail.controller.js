@@ -2,7 +2,7 @@
 
 sap.ui
 		.controller(
-				"airbus.mes.operationdetail.progressSlider",
+				"airbus.mes.operationdetail.operationDetail",
 				{
 					reasonCodeText : undefined,
 					operationStatus : undefined,
@@ -16,7 +16,6 @@ sap.ui
 					 * @memberOf components.stationtracker.stationtracker
 					 */
 					onInit : function() {
-
 					},
 					expandOperationDetailPanel : function(oEvent) {
 						var toggleButton = this.getView().byId(
@@ -454,6 +453,18 @@ sap.ui
 					 * @memberOf components.stationtracker.stationtracker
 					 */
 					onAfterRendering : function() {
+
+						this.nav = this.getView().byId("operDetailNavContainer");
+						if (airbus.mes.operationdetail.status === undefined || airbus.mes.operationdetail.status.oView === undefined){
+							sap.ui.getCore().createComponent({
+								name : "airbus.mes.operationdetail.status",
+							});
+							this.nav.addPage(airbus.mes.operationdetail.status.oView);
+						}
+						
+						this.nav.to(airbus.mes.operationdetail.status.oView.getId());
+						
+						
 						// Collapse Operation Detail panel and show Expand
 						// button
 						this.getView().byId("opDetailExpandButton").setVisible(
@@ -461,7 +472,7 @@ sap.ui
 						this.getView().byId("operationDetailPanel")
 								.setExpanded(false);
 
-						// Load Reason Code Model
+						/*// Load Reason Code Model
 						// Model for Reason Code Comments
 						airbus.mes.operationdetail.ModelManager
 								.loadReasonCodeModel();
@@ -503,7 +514,7 @@ sap.ui
 										($("#"+ airbus.mes.operationdetail.parentId).height()
 												- $("#operationDetailsView--operationDetailPanel").height()
 												- $("#operationDetailsView--operationNav--header").height()
-												- $("#operationDetailsView--operationStatusFooter").height() ));
+												- $("#operationDetailsView--operationStatusFooter").height() ));*/
 
 					},
 
