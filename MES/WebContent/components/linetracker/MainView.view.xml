@@ -77,7 +77,7 @@
 				visible="{path:'messageBundle>OK',formatter:'airbus.mes.linetracker.util.Formatter.showCusto'}" />
 		</content>
 	</Toolbar>
-	<NavContainer id="MainViewNavContainer" height="95%">
+	<NavContainer id="MainViewNavContainer">
 		<pages>
 
 		</pages>

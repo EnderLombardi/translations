@@ -1,7 +1,7 @@
 jQuery.sap.require("sap.ui.core.UIComponent");
-jQuery.sap.registerModulePath("airbus.mes.createDisruption", "../components/disruptions");
-jQuery.sap.require("airbus.mes.createDisruption.util.Formatter");
-jQuery.sap.require("airbus.mes.createDisruption.ModelManager");
+jQuery.sap.registerModulePath("airbus.mes.disruptions", "../components/disruptions");
+//jQuery.sap.require("airbus.mes.disruptions.util.Formatter");
+//jQuery.sap.require("airbus.mes.disruptions.ModelManager");
 
 jQuery.sap.declare("airbus.mes.stationtracker.createDisruption.Component");
 
@@ -19,7 +19,7 @@ airbus.mes.stationtracker.createDisruption.Component.prototype.createContent = f
 	
 	if (airbus.mes.stationtracker.createDisruption.oView === undefined) {
 //		Initialization
-		airbus.mes.disruptions.ModelManager.init(sap.ui.getCore());
+		//airbus.mes.disruptions.ModelManager.init(sap.ui.getCore());
 		
 		// View on XML
 		this.oView = sap.ui.view({
@@ -31,7 +31,7 @@ airbus.mes.stationtracker.createDisruption.Component.prototype.createContent = f
 
 		var i18nModel = new sap.ui.model.resource.ResourceModel({
 	        bundleUrl : "../components/disruptions/i18n/i18n.properties"
-	     });
+	    });
 		this.oView.setModel(i18nModel, "disruptionsI18n");		
 		airbus.mes.stationtracker.createDisruption.oView = this.oView		
 		
