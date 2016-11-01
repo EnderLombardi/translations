@@ -1,0 +1,42 @@
+/****** classes for Disruption screen **********/
+.disruptionPanel .sapMPanelContent .formBackgroundPen  {
+	background-color:#F2AA00 !important;
+	opacity:1;
+}
+.disruptionPanel .sapMPanelContent .formBackgroundAck {
+	background-color:lightgreen !important;
+	opacity:1;
+}
+.disruptionPanel .formBorderPen .sapMPanelContent{
+	background-color:#FCEECC !important;
+	opacity:1;
+}
+.disruptionPanel .formBorderAck .sapMPanelContent {
+	background-color:#E9FBE9 !important;
+	opacity:1;
+}
+.disruptionPanel .barColor{
+    background-color: #4E4E4E !important;
+    }
+    
+.disruptionPanel .panelTitleText span {
+    text-shadow: none !important;
+    color:white !important;
+    font-size: initial !important;
+}
+.decoratePanelBtn span{
+	color:white !important;
+	text-shadow: none !important;
+}
+/****** End of CSS for Disruption screen **********/
+
+/*** CSS for Footers ***********/
+.viewDisruptionFooter{
+    position: fixed;
+    bottom: 0px;
+    background:#607381 !important;
+}
+.viewDisruptionFooter .sapMBtnContent, .operationDetailFooter .sapMBtnIcon{
+	color:#fff !important;
+}
+/*** end of CSS for Footer *********/
