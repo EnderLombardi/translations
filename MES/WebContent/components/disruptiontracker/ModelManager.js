@@ -34,6 +34,11 @@ airbus.mes.disruptiontracker.ModelManager = {
 					bundleLocale : dest
 				});
 		
+		this.loadData();
+		
+	},
+	
+	loadData: function() {
 		this.loadDisruptionFilterModel();
 		this.loadDisruptionOrderModel();
 		this.loadDisruptionListModel();
@@ -52,28 +57,26 @@ airbus.mes.disruptiontracker.ModelManager = {
 	},
 	
 	loadDisruptionListModel : function() {
+		
 		var oViewModel = sap.ui.getCore().getModel("disruptionsListData");
-		oViewModel.loadData(this.urlModel.getProperty("urllistmodel"), null, false);
+		
+		var urlListModel = this.urlModel.getProperty("urllistmodel");
+		
+		urlListModel = urlListModel.replace('$Site', airbus.mes.settings.ModelManager.site);
+		urlListModel = urlListModel.replace('$Status', "ALL");
+/*		urlListModel = urlListModel.replace('$Resource', "");
+		urlListModel = urlListModel.replace('$Operation', "");
+		urlListModel = urlListModel.replace('$SFC', "");
+		urlListModel = urlListModel.replace('$OperationRevision', "");
+		urlListModel = urlListModel.replace('$SignalFlag', "");
+		urlListModel = urlListModel.replace('$FromDate', "");
+		urlListModel = urlListModel.replace('$ToDate', "");
+		urlListModel = urlListModel.replace('$WorkCenter', "");
+		urlListModel = urlListModel.replace('$userGroup', "");
+		urlListModel = urlListModel.replace('$MessageType', "");*/
+		
+		oViewModel.loadData(urlListModel, null, false);
 
 	}
-
-	/*loadDisruptionTracker : function(sType) {
-		
-		//Model for disruptions list data in table
-		var oViewModel_1=  new sap.ui.model.json.JSONModel();
-		sap.ui.getCore().setModel(oViewModel_1,"tableData");
-		sap.ui.getCore().getModel("tableData").loadData("data/table.json",null,false);
-		
-		//Model for disruptions filter data in ComboBox
-		var oViewModel_2=  new sap.ui.model.json.JSONModel();
-		sap.ui.getCore().setModel(oViewModel_2,"filterData");
-		sap.ui.getCore().getModel("filterData").loadData("data/filter.json",null,false);
-		
-		//Model for disruptions order data in ComboBox
-		var oViewModel_3=  new sap.ui.model.json.JSONModel();
-		sap.ui.getCore().setModel(oViewModel_3,"orderData");
-		sap.ui.getCore().getModel("orderData").loadData("data/order.json",null,false);
-
-	}*/
 	
 }

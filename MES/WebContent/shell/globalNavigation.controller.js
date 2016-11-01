@@ -124,20 +124,22 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 
 	},
 
-	renderStationTracker : function() {
+	renderViews : function() {
 
         if ( nav.getCurrentPage().getId() != "homePageView" ) {
             
             airbus.mes.shell.oView.byId("homeButton").setVisible(true);
             airbus.mes.shell.oView.byId("SelectLanguage").setVisible(false);
-           
-     } else  {
-           
-            airbus.mes.shell.oView.byId("homeButton").setVisible(false);
-            airbus.mes.shell.oView.byId("SelectLanguage").setVisible(true);
-    }
+	           
+	     } else  {
+	           
+	            airbus.mes.shell.oView.byId("homeButton").setVisible(false);
+	            airbus.mes.shell.oView.byId("SelectLanguage").setVisible(true);
+	    }
 
-		if (nav.getCurrentPage().getId() === "stationTrackerView") {
+		switch(nav.getCurrentPage().getId()){
+		
+		case "stationTrackerView":
 			this.setInformationVisibility(true);
 			airbus.mes.stationtracker.oView.byId("stationtracker").setBusy(true);
 			
@@ -156,7 +158,9 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 			scheduler.xy.scroll_width = 20;
 			//scheduler.xy.nav_height = 0;
 			scheduler.updateView();
-
+			
+		case "disruptiontrackerView":
+			airbus.mes.disruptiontracker.ModelManager.loadData();
 
 		}
 	},
