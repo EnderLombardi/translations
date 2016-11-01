@@ -124,7 +124,7 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 
 	},
 
-	renderStationTracker : function() {
+	renderViews : function() {
 
         if ( nav.getCurrentPage().getId() != "homePageView" ) {
             
@@ -135,7 +135,9 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
             airbus.mes.shell.oView.byId("homeButton").setVisible(false);
     }
 
-		if (nav.getCurrentPage().getId() === "stationTrackerView") {
+		switch(nav.getCurrentPage().getId()){
+		
+		case "stationTrackerView":
 			this.setInformationVisibility(true);
 			airbus.mes.stationtracker.oView.byId("stationtracker").setBusy(true);
 			
@@ -154,7 +156,9 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 			scheduler.xy.scroll_width = 20;
 			//scheduler.xy.nav_height = 0;
 			scheduler.updateView();
-
+			
+		case "disruptiontrackerView":
+			airbus.mes.disruptiontracker.ModelManager.loadData();
 
 		}
 	},

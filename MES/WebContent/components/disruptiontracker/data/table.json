@@ -1,6 +1,11 @@
 {
    "Rowsets": {
-      "Rowset": {
+   	  "DateCreated":"2016-10-28T10:54:24",
+      "Version":"15.1 SP2 Patch 13 (Oct 6, 2016)",
+      "StartDate":"2016-10-28T09:54:22+0200",
+      "EndDate":"2016-10-28T10:54:22+0200",
+      "CachedTime":"",
+      "Rowset": [{
          "Columns": {
             "Column": [
                {
@@ -314,10 +319,6 @@
                "ResponsibleGroup": "Logistic"
             }
          ]
-      },
-      "_DateCreated": "2016-10-26T11:27:14",
-      "_EndDate": "2016-10-20T10:53:56",
-      "_StartDate": "2016-10-20T10:53:56",
-      "_Version": "15.1 SP2 Patch 13 (Oct 6, 2016)"
+      }]
    }
 }

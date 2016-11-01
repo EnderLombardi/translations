@@ -35,7 +35,7 @@
 		</Panel>
 		
 		
-		<Table class="disruptionsTable" items="{ path: 'disruptionsListData>/Rowsets/Rowset/Row' }">
+		<Table class="disruptionsTable" items="{ path: 'disruptionsListData>/Rowsets/Rowset/0/Row' }">
 
 			<columns>
 				<Column>
