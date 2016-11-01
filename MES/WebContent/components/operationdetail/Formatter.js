@@ -85,6 +85,24 @@ airbus.mes.operationdetail.Formatter = {
 
 		}
 
+	},
+	
+	//Reasoncode is disabled when operation is not started or paused
+	
+	setReasonCodeEnabled : function(status)
+	{
+		switch (status) {
+		case airbus.mes.operationdetail.Formatter.status.completed:
+			return false;
+
+		case airbus.mes.operationdetail.Formatter.status.active:
+			return true;
+
+		case airbus.mes.operationdetail.Formatter.status.paused:
+			return false;
+		default:
+			return false;
+		}
 	}
 
 };

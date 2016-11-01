@@ -1,4 +1,5 @@
 //"use strict";
+jQuery.sap.require("sap.ui.core.format.DateFormat");
 jQuery.sap.declare("airbus.mes.stationtracker.ModelManager")
 airbus.mes.stationtracker.ModelManager = {
        urlModel : undefined,
@@ -45,7 +46,7 @@ airbus.mes.stationtracker.ModelManager = {
                      dest = "sopra";
                      break;
               default:
-                     dest = "airbus";
+                     dest = "local";
                      break;
               }
 
@@ -107,17 +108,11 @@ airbus.mes.stationtracker.ModelManager = {
               this.operationType = sType;
 
               var geturlstationtracker = this.urlModel.getProperty('urlstationtrackeroperation');
-
-              geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$site",
-                           oData.site);
-              geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$station",
-                           oData.station);
-              geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$msn",
-                           oData.msn);
-              geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker,
-                           "$operationType", sType);
-              geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker,
-                           "$productionGroup", airbus.mes.settings.ModelManager.prodGroup);
+              geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$site",oData.site);
+              geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$station", oData.station);
+              geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$msn", oData.msn);
+              geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker,"$operationType", sType);
+              geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker,"$productionGroup", airbus.mes.settings.ModelManager.prodGroup);
               geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$user",
                            airbus.mes.stationtracker.AssignmentManager.userSelected);
 
@@ -210,10 +205,8 @@ airbus.mes.stationtracker.ModelManager = {
               var oData = airbus.mes.settings.ModelManager;
               var geturlstationtracker = this.urlModel.getProperty('urlproductiongroup');
 
-              geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$station",
-                           "PHYS_ST_IP4"/* oData.station */);
-              geturlstationtracker = airbus.mes.stationtracker.ModelManager
-                           .replaceURI(geturlstationtracker, "$plant", "FNZ1"/* oData.plant */);
+              geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$station", oData.station );
+              geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$plant", oData.plant );
 
               var oViewModel = sap.ui.getCore().getModel("productionGroupModel");
               oViewModel.loadData(geturlstationtracker, null, false);
@@ -270,9 +263,7 @@ airbus.mes.stationtracker.ModelManager = {
                      airbus.mes.stationtracker.ShiftManager.ShiftSelected.day = airbus.mes.stationtracker.ShiftManager.current_shift.day;
                      airbus.mes.stationtracker.ShiftManager.ShiftSelected.StartDate =        airbus.mes.stationtracker.ShiftManager.current_shift.StartDate; 
               
-                     airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(airbus.mes.stationtracker.ShiftManager.current_shift.shiftName);
-                     airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(airbus.mes.stationtracker.ShiftManager.current_shift.shiftName);
-
+              
                      airbus.mes.stationtracker.oView.byId("selectShift").fireChange(0);
 
               }
@@ -284,20 +275,22 @@ airbus.mes.stationtracker.ModelManager = {
                      airbus.mes.stationtracker.ShiftManager.ShiftSelected.day = airbus.mes.stationtracker.ShiftManager.current_shift.day;
                      airbus.mes.stationtracker.ShiftManager.ShiftSelected.StartDate =        airbus.mes.stationtracker.ShiftManager.current_shift.StartDate; 
                      
-                     
-                     airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(airbus.mes.stationtracker.ShiftManager.current_shift.shiftName);
-                     airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(airbus.mes.stationtracker.ShiftManager.current_shift.shiftID);
-              
+                 
                      scheduler.updateView(airbus.mes.stationtracker.ShiftManager.ShiftSelected.StartDate);
               }
 
-              // Manage date of date picker
-              // Retrieve text on div dhx_cal_date and split to keep only the date
+//              // Manage date of date picker
+//              // Retrieve text on div dhx_cal_date and split to keep only the date
+//              var oDate = new Date($("div[class='dhx_cal_date']").contents()[0].data.split("-")[0]);
+//              var oDatePicker = airbus.mes.stationtracker.oView.byId("DatePicker");
+//              oDatePicker.setDateValue(oDate);
+//              // TODO : date formatter
+//              oDatePicker.setValueFormat("dd-MM-yyyy");
+              
               var oDate = new Date($("div[class='dhx_cal_date']").contents()[0].data.split("-")[0]);
-              var oDatePicker = airbus.mes.stationtracker.oView.byId("DatePicker");
-              oDatePicker.setDateValue(oDate);
-              // TODO : date formatter
-              oDatePicker.setValueFormat("dd-MM-yyyy");
+              var oFormatddMMyyy = sap.ui.core.format.DateFormat.getInstance({pattern: "dd MMM yyyy", calendarType: sap.ui.core.CalendarType.Gregorian});
+              var oText = airbus.mes.stationtracker.oView.byId("dateLabel");
+              oText.setText(oFormatddMMyyy.format(oDate));
 
        },
        onStationTrackerLoad : function() {
@@ -448,7 +441,7 @@ airbus.mes.stationtracker.ModelManager = {
 
               if (oModel.length === 1) {
 
-                     airbus.mes.stationtracker.ModelManager.openOperationPopOver(id);
+            	  	airbus.mes.stationtracker.ModelManager.openOperationDetailPopup(id);
                      return;
               }
 
@@ -522,7 +515,13 @@ airbus.mes.stationtracker.ModelManager = {
                      sStatus = "IN_QUEUE";
               else if (oModel[0].paused === "1")
                      sStatus = "NOT_STARTED";
-
+              
+              // progress calculation
+              var progress;
+              if(oModel[0].DURATION == 0)
+            	  progress = 0;
+              else
+            	 progress = oModel[0].PROGRESS / oModel[0].DURATION * 100; 
               var oOperModel = {
                      "Rowsets" : {
                            "Rowset" : [ {
@@ -531,16 +530,19 @@ airbus.mes.stationtracker.ModelManager = {
                                          "sfc_step_ref" : oModel[0].SFC_STEP_REF,
                                          "operation_no" : oModel[0].OPERATION_BO.split(",")[1],
                                          "operation_desc" : oModel[0].OPERATION_DESCRIPTION,
+                                         "material_description": oModel[0].WORKORDER_DESCRIPTION,
                                          "operation_revision" : oModel[0].SFC_STEP_REF.split(",")[5],
                                          "wo_no" : oModel[0].SHOP_ORDER_BO.split(",")[1],
                                          "workcenter" : oModel[0].PP_STATION.split(",")[1],
                                          "status" : sStatus,
-                                         "progress" : oModel[0].PROGRESS / oModel[0].DURATION * 100,
+                                         "progress" : progress,
                                          "time_spent" : airbus.mes.stationtracker.util.Formatter.msToTime(oModel[0].PROGRESS),
                                          "planned_start_time" : "TimeUnavailable",
                                          "planned_end_time" : "TimeUnavailable",
                                          "original_start_time" : oModel[0].START_TIME,
-                                         "original_end_time" : oModel[0].END_TIME
+                                         "original_end_time" : oModel[0].END_TIME,
+                                         "cpp_cluster": oModel[0].CPP_CLUSTER,
+                                         "work_package": oModel[0].WORK_PACKAGE
                                   } ]
                            } ]
                      }

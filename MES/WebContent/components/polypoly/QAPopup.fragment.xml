@@ -3,7 +3,7 @@
 	xmlns:html="http://www.w3.org/1999/xhtml">
 	<Dialog id="oQADialog" stretchOnPhone="true" showHeader="true" title="QA">
 		<buttons>
-			<Button text="OK" press="onClickQAPopup" />
+			<Button text="Close" icon="sap-icon://decline" press="onClickQAPopup" />
 		</buttons>
 		<content>
 			<table:Table rows="{ path: '/rows' }" columns="{ path: '/columns', factory: '.createColumnQA' }"

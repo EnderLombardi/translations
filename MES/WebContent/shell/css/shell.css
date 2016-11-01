@@ -24,6 +24,7 @@
 
 .rightPlace {
 	right:0px !important;
+	padding-right: 5px;
 }
 
 .iconbuttonTeam .sapMBtnIcon{
@@ -41,6 +42,42 @@
 .viewOpacity{
 	opacity:0.5 !important;
 }
+
+
+/* globalNavView */
+#globalNavView header.pageHeader #polypolytitle {
+	font-size: 1.2rem;
+}
+
+#globalNavView header.pageHeader label[id^="__label"].pageWelcome {
+	font-size: 1rem;
+}
+#globalNavView header.pageHeader label[id^="__label"].pageTitle {
+	font-size: 1.3rem;
+    text-transform: uppercase;
+}
+#globalNavView--SelectLanguage span, #globalNavView--SelectLanguage label, #globalNavView #globalNavView--informationButton-inner #globalNavView--informationButton-img,
+#globalNavView #globalNavView--homeButton-inner #globalNavView--homeButton-img {
+	color: #73d2e6;
+}
+#globalNavView--settingsButton {
+	background-color: #73d2e6;
+	margin-right: 0;
+    padding: 0.250rem;
+    color:#ffffff;
+}
+#globalNavView--settingsButton.sapMBtn:hover {
+    background-color: rgba(255, 255, 255, 0.20);
+}
+#globalNavView--settingsButton.sapMBtn:hover>.sapMBtnHoverable {
+    background-color: transparent;
+    border-color:transparent;
+    outline:1px dotted transparent;
+}
+.sap-desktop .sapMBtnTransparent>#globalNavView--settingsButton-img.sapMBtnIcon {
+    color:#ffffff;	
+}
 .WhiteBG{
 	background-color:#fff !important;
 }
+

@@ -1,7 +1,7 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
 
-	<Dialog id="operationDetailPopUp" contentWidth="60%"
-		contentHeight="70%" verticalScrolling="false" showHeader="false">
+	<Dialog id="operationDetailPopUp" class="ClassOperationDetailPopUp" contentWidth="90%"
+		contentHeight="90%" verticalScrolling="false" showHeader="false">
 		<content>
 
 		</content>

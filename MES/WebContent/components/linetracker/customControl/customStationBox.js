@@ -15,12 +15,12 @@ sap.ui.core.Control.extend("airbus.mes.linetracker.customControl.customStationBo
 			msnLabel : {
 				type : 'string',
 				group : 'Misc',
-				defaultValue : "MSN"
+				defaultValue : "MSN:"
 			},
 			handLabel : {
 				type : 'string',
 				group : 'Misc',
-				defaultValue : "HAND"
+				defaultValue : "HAND:"
 			},
 			hand : {
 				type : 'string',
@@ -148,23 +148,23 @@ sap.ui.core.Control.extend("airbus.mes.linetracker.customControl.customStationBo
 		r.addClass("stationBoxFooter");
 		r.writeClasses();
 		r.write(">");
-		r.write("<div style='width:50%; float:left; font-size:2vh'>");
+		r.write("<div class='factStationBoxText'>");
 		r.writeEscaped(ml);
-		r.write("<div");
+		r.write("<span");
 		r.addClass("boldFont");
 		r.writeClasses();
 		r.write(">");
 		r.writeEscaped(n);
+		r.write("</span>");
 		r.write("</div>");
-		r.write("</div>");
-		r.write("<div style='width:50%; float:left; font-size:2vh'>");
+		r.write("<div class='factStationBoxText'>");
 		r.writeEscaped(hl);
-		r.write("<div");
+		r.write("<span");
 		r.addClass("boldFont");
 		r.writeClasses();
 		r.write(">");
 		r.writeEscaped(hd);
-		r.write("</div>");
+		r.write("</span>");
 		r.write("</div>");
 		r.write("</div>");
 		r.write("</div>");

@@ -1,6 +1,6 @@
 <core:FragmentDefinition xmlns="sap.m"
 	xmlns:core="sap.ui.core" xmlns:html="http://www.w3.org/1999/xhtml">
-	<Dialog title="{i18nModel>Help}" icon="sap-icon://sys-help" type="Default Message"
+	<Dialog title="{i18nModel>Help}" icon="sap-icon://sys-help" type="Default Message"  
 		afterClose="afterHelpOK" class="helpDialogue">
 		<content>
 			<VBox>
@@ -57,7 +57,7 @@
 
 		</content>
 		<buttons>
-			<Button text="{i18nModel>OK}" press="afterHelpOK" />
+			<Button icon="sap-icon://decline" press="afterHelpOK" />
 		</buttons>
 	</Dialog>
 </core:FragmentDefinition>

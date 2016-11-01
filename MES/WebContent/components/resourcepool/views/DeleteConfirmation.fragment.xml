@@ -1,6 +1,6 @@
 <core:FragmentDefinition xmlns="sap.m"
 	xmlns:core="sap.ui.core">
-	<Dialog title="{i18nModel>DeleteResourcePoolTitle}" type="Message" icon="sap-icon://warning2">
+	<Dialog title="{i18nModel>DeleteResourcePoolTitle}" type="Message" class="deleteConfirmation" icon="sap-icon://warning2">
 		<content>
 			<VBox>
 				<Text text="{i18nModel>ConfirmDelete}" />

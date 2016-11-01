@@ -16,7 +16,7 @@
 						    items="{groupModel>/Rowsets/Rowset/0/Row/Grouping}"
 						    change="changeGroupWorkList"
 						    visible="{ path: 'WorkListModel>andons' , formatter: 'airbus.mes.stationtracker.util.Formatter.isGroupingVisible' }">
-						<core:ListItem key="{groupModel>Value}" text="{ path : 'groupModel>Value' , formatter : '.getI18nValue' }" />				
+						<core:ListItem key="{groupModel>key}" text="{ path : 'groupModel>Value' , formatter : '.getI18nValue' }" />				
 					</Select>
 					<Select class="sapUiTinyMarginBeginEnd comboBoxStyle"
 						    items="{groupModel>/Rowsets/Rowset/0/Row/Status}"
@@ -37,6 +37,7 @@
 									<items>
 										<custom:customProgressIndicator
 											width="auto" state="sap.ui.core.ValueState.Success" status="{WorkListModel>STATE}"
+											click="operationWorkListClick"
 											isAndon="{WorkListModel>andons}"
 											displayValue="{ parts: [ 'WorkListModel>WORKORDER_ID','WorkListModel>WORKORDER_DESCRIPTION' ], formatter: 'airbus.mes.stationtracker.util.Formatter.titleWorklist'}"
 											displayValue2="{ parts: [ 'WorkListModel>OPERATION_ID','WorkListModel>OPERATION_DESCRIPTION','WorkListModel>PROGRESS','WorkListModel>DURATION' ], formatter: 'airbus.mes.stationtracker.util.Formatter.displayValueIM'}"

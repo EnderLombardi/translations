@@ -152,30 +152,37 @@ airbus.mes.stationtracker.util.Formatter = {
 				var html = "";
 				
 				var sDivForLeftDisplay = '<div  style="width:100%; height:inherit; position:absolute; z-index: 1; line-height: 23px;left: 0px; overflow: hidden; text-overflow: ellipsis; " >'
-				var sDivForLeftDisplayInitial = '<div  style="color:black ; width:100%; height:inherit; position:absolute; z-index: 1; line-height: 23px;left: 0px; overflow: hidden; text-overflow: ellipsis; " >'
+				var sDivForLeftDisplayInitial = '<div class="tracker-item-initial" >'
 				var sRightIcon = "";	
 				var sLeftIcon = "";
 				var sColorProgress = "";
 				var sText = "";
+				var sProgress = airbus.mes.stationtracker.util.Formatter.percentValue(oBox.progress,oBox.totalDuration)
 				// Text to display different case regarding box selected
-				switch ( airbus.mes.stationtracker.GroupingBoxingManager.box ) {
-					
-				case "OPERATION_ID" :
-						var sText = oBox.operationId + " - " +  oBox.shopOrder + " - " + oBox.operationId ;
-						break;
-						
-				case "WORKORDER_ID" :
-						var sText = oBox.shopOrderDescription + " - "  + oBox.shopOrder ;
-						break;
-				}
+				switch (airbus.mes.stationtracker.GroupingBoxingManager.box) {
 		
-				var sSpanText = '<span style="position: relative; z-index: 1; float: left; overflow: hidden; text-overflow: ellipsis; max-width:40%; white-space: nowrap;">' + sText + '</span>';	
-				var sProgressText = '<span style="position: relative;  z-index: 1; float: right; overflow: hidden; text-overflow: ellipsis; max-width:40%; white-space: nowrap; padding-left:10px; padding-right:10px;"> ['+
-				airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.progress) +'/'+ 
-				airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.totalDuration) +' IM]</span>';	
+				case "OPERATION_ID":
+					var sText = oBox.operationId + " - " + oBox.shopOrder + " - " + oBox.operationDescription;
+					break;
+		
+				case "WORKORDER":
+					var sText = oBox.shopOrderDescription + " - " + oBox.shopOrder;
+					break;
+				default:
+					var sText = oBox.realValueBox;
+					break;
+		
+				}
+			
+				var sSpanText = '<span style="padding-left: 10px; position: relative; z-index: 1; float: left; overflow: hidden; text-overflow: ellipsis; max-width:40%; white-space: nowrap;">' + sText + '</span>';	
+//				var sProgressText = '<span style="position: relative;  z-index: 1; float: right; overflow: hidden; text-overflow: ellipsis; max-width:40%; white-space: nowrap; padding-left:10px; padding-right:10px;"> ['+
+//				airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.progress) +'/'+ 
+//				airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.totalDuration) +' IM]</span>';
+//				airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.totalDuration) +'</span>';	
+
 								
 				// need one more condition to add OSW
-				if ( oBox.routingMaturityAssessment != "---" ) {
+				if ( oBox.rmaStatus != "---" ) {
 					
 					var sLeftIcon = '<i class="fa fa-exclamation-triangle" style="position: relative; z-index: 1; padding-left:10px; padding-right:10px; line-height: 23px; color:white; float: left;" ></i>';
 				}  
@@ -193,13 +200,13 @@ airbus.mes.stationtracker.util.Formatter = {
 				switch ( oBox.paused ) {
 				// box is active
 					case 2 :
-						var sColorProgress = '<div style="width:' + oBox.progress + '%; height:inherit; background-color:#84bd00; position:absolute; z-index: 0; left: 0px;"></div>';
+						var sColorProgress = '<div style="width:' + sProgress + '%; height:inherit; background-color:#84bd00; position:absolute; z-index: 0; left: 0px;"></div>';
 						var sRightIcon = '<i class="fa fa-play" style="position: relative; z-index: 1; padding-right:10px; line-height: 23px; color:white; float: right;" ></i>';
 						
 					break;
 				// box is paused
 					case 3 :
-						var sColorProgress = '<div style="width:' + oBox.progress + '%; height:inherit; background-color:#84bd00; position:absolute; z-index: 0; left: 0px;"></div>';
+						var sColorProgress = '<div style="width:' + sProgress + '%; height:inherit; background-color:#84bd00; position:absolute; z-index: 0; left: 0px;"></div>';
 						var sRightIcon = '<i class="fa fa-pause" style="position: relative; z-index: 1; padding-right:10px; line-height: 23px; color:white; float: right;" ></i>';
 						break;
 				// box not started
@@ -215,16 +222,21 @@ airbus.mes.stationtracker.util.Formatter = {
 	
 				}
 		
-				html = sDivForLeftDisplay + sRightIcon + sLeftIcon + sSpanText + sProgressText + sColorProgress + '</div>' 
+//				html = sDivForLeftDisplay + sRightIcon + sLeftIcon + sSpanText + sProgressText + sColorProgress + '</div>'
+				html = sDivForLeftDisplay + sRightIcon + sLeftIcon + sSpanText + sColorProgress + '</div>' 
 							
 				if ( oBox.type === "I" ) {
 					
-					html = sDivForLeftDisplayInitial + sRightIcon + sLeftIcon + sSpanText + sProgressText + sColorProgress + '</div>' 
+//					html = sDivForLeftDisplayInitial + sRightIcon + sLeftIcon + sSpanText + sProgressText + sColorProgress + '</div>'
+					html = sDivForLeftDisplayInitial + sRightIcon + sLeftIcon + sSpanText + sColorProgress + '</div>' 
+
 					return html;
 					
 				} else {
 					
-					html = sDivForLeftDisplay + sRightIcon + sLeftIcon + sSpanText + sProgressText + sColorProgress + '</div>' 
+//					html = sDivForLeftDisplay + sRightIcon + sLeftIcon + sSpanText + sProgressText + sColorProgress + '</div>' 
+					html = sDivForLeftDisplay + sRightIcon + sLeftIcon + sSpanText + sColorProgress + '</div>' 
+
 					return html;
 					
 				}
@@ -340,13 +352,14 @@ airbus.mes.stationtracker.util.Formatter = {
 						
 						if ( oSection.rescheduled ) {
 							
-							var html = '<div><i class="fa fa-user ylabelUserImage"></i>'
+							var html = '<div><img src=' + oCurrentAffectedUser.picture + ' class="ylabelUserImage"></i>'
+								//<i class="fa fa-user ylabelUserImage"></i>'
 									
 //								span class="rond" title='	+ airbus.mes.stationtracker.util.Formatter.spaceInsecable(oCurrentAffectedUser.firstName)
 //									+ ' >'+ oCurrentAffectedUser.firstName + '</span>
 									
 								+ '<span class="ylabelUser" title='
-									+ airbus.mes.stationtracker.util.Formatter.spaceInsecable(oCurrentAffectedUser.firstName) + '>'
+									+ airbus.mes.stationtracker.util.Formatter.spaceInsecable(oCurrentAffectedUser.lastName) + '>'
 									+ oCurrentAffectedUser.lastName	+ '</span><span  class="yMoreLabel" ><span title=' +  airbus.mes.stationtracker.util.Formatter.computeDelay( fProgress,fDuration ) +
 									'>' + airbus.mes.stationtracker.util.Formatter.computeDelay( fProgress,fDuration )
 									+ '</span>' +
@@ -551,14 +564,20 @@ airbus.mes.stationtracker.util.Formatter = {
 		    	  s = (s - secs) / 60;
 		    	  var mins = s % 60;
 		    	  var hrs = (s - mins) / 60;
-
+		    	  
+		    	  if(hrs == 0)
+		    		  hrs = "00";
+		    	  if(mins == 0)
+		    		  mins = "00";
+		    	  if(secs == 0)
+		    		  secs = "00";
 		    	  return hrs + ':' + mins + ':' + secs;
 		    	},
 		    	
 		    	computeDelay : function( fProgress,fDuration ) {
 		    		
 		    		//sec Gap
-		    		var sGap = Math.round((fProgress - fDuration))/1000/60;
+		    		var sGap = Math.round((fProgress - fDuration))/1000/60/60;
 					var sGapHour = parseInt(sGap);
 					//Transfomr in hour
 					var sGapMin = Math.abs(Math.round((sGap - sGapHour)*60));

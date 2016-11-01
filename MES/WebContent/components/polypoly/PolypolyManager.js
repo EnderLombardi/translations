@@ -46,7 +46,7 @@ airbus.mes.polypoly.PolypolyManager = {
 			dest = "sopra";
 			break;
 		default:
-			dest = "airbus";
+			dest = "local";
 			break;
 		}
 
@@ -165,13 +165,13 @@ airbus.mes.polypoly.PolypolyManager = {
 			},{
 				"ressourcepool" : "",
 				"ressourcepoolId" : "",
-				"category" : "QA 3",
+				"category" : "Side 3",
 				"icon" : "3",
 				"type" : "NEED"
 			}, {
 				"ressourcepool" : "",
 				"ressourcepoolId" : "",
-				"category" : "QA 4",
+				"category" : "Side 4",
 				"icon" : "4",
 				"type" : "NEED"
 			}, ],
@@ -355,7 +355,7 @@ airbus.mes.polypoly.PolypolyManager = {
 								"ressourcepoolId" : rp,
 								"category" : "AS IS"
 							});
-							var aASISName = ["WA 1", "WA 2", "QA 3", "QA 4"];
+							var aASISName = ["Side 1", "Side 2", "Side 3", "Side 4"];
 							for (var i = 1; i < 5; i++) {
 								oTableRows.rows.push({});
 								oTableRows.rows[oTableRows.rows.length - 1]["category"] = aASISName[i-1];
@@ -379,7 +379,7 @@ airbus.mes.polypoly.PolypolyManager = {
 								"ressourcepoolId" : rp,
 								"category" : "GAP"
 							});
-							var aGAPName = ["QA 3", "QA 4"];
+							var aGAPName = ["Side 3", "Side 4"];
 							for (var j = 1; j < 3; j++) {
 								var k = j + 2;
 								oTableRows.rows.push({});

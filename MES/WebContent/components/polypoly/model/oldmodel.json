@@ -1,0 +1,781 @@
+{
+
+   "Rowsets": {
+
+      "DateCreated": "2016-09-29T16:18:36",
+
+      "Version": "15.1 SP2 Patch 5 (Jul 20, 2016)",
+
+      "StartDate": "2016-09-29T15:18:35+0200",
+
+      "EndDate": "2016-09-29T16:18:35+0200",
+
+      "CachedTime": "",
+
+      "Rowset": [
+
+         {
+
+            "Columns": {
+
+               "Column": [
+
+                  {
+
+                     "Name": "RP_ID",
+
+                     "SourceColumn": "RP_ID",
+
+                     "Description": "",
+
+                     "SQLDataType": 1,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "RP_Description",
+
+                     "SourceColumn": "RP_Description",
+
+                     "Description": "",
+
+                     "SQLDataType": 1,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "login",
+
+                     "SourceColumn": "login",
+
+                     "Description": "",
+
+                     "SQLDataType": 1,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "longName",
+
+                     "SourceColumn": "longName",
+
+                     "Description": "",
+
+                     "SQLDataType": 1,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+				  
+				                    {
+
+                     "Name": "picture",
+
+                     "SourceColumn": "picture",
+
+                     "Description": "",
+
+                     "SQLDataType": 1,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "ERP_ID",
+
+                     "SourceColumn": "ERP_ID",
+
+                     "Description": "",
+
+                     "SQLDataType": 1,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "personnelNumber",
+
+                     "SourceColumn": "personnelNumber",
+
+                     "Description": "",
+
+                     "SQLDataType": 1,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "status",
+
+                     "SourceColumn": "status",
+
+                     "Description": "",
+
+                     "SQLDataType": 1,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "competency",
+
+                     "SourceColumn": "competency",
+
+                     "Description": "",
+
+                     "SQLDataType": 1,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "level",
+
+                     "SourceColumn": "level",
+
+                     "Description": "",
+
+                     "SQLDataType": 1,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  }
+
+               ]
+
+            },
+
+            "Row": [
+
+               {
+
+                  "RP_ID": "RES_1",
+
+                  "RP_Description": "Resource Pool 1",
+
+                  "login": "NG5E054",
+
+                  "longName": "ANDREW HOPWOOD",
+				  
+				  "picture": "/MES/components/polypoly/images/man01.png",
+
+                  "ERP_ID": "NG5E054",
+
+                  "personnelNumber": "---",
+
+                  "status": "No_Clock_Data",
+
+                  "competency": "1L_MMATEST014, 1L_MMATEST011, 1L_FINAL4, 1L_MMATEST0, 1L_MMATEST02, 1L_MMATEST01, 1L_MMATEST0131, 1L_MultiB, 1L_TANSP, 1L_CVXVXVXCV",
+
+                  "level": "0, 0, 0, 0, 0, 0, 0, 0, 0, 0"
+
+               },
+
+               {
+
+                  "RP_ID": "RES_1",
+
+                  "RP_Description": "Resource Pool 1",
+
+                  "login": "S007C96",
+
+                  "longName": "CEDRIC DANEL",
+				  
+				  "picture": "/MES/components/polypoly/images/man01.png",
+
+                  "ERP_ID": "CCLAYTON",
+
+                  "personnelNumber": "---",
+
+                  "status": "No_Clock_Data",
+
+                  "competency": "1L_MMATEST014, 1L_MMATEST011, 1L_FINAL4, 1L_MMATEST0, 1L_MMATEST02, 1L_MMATEST01, 1L_MMATEST0131, 1L_MultiB, 1L_TANSP, 1L_CVXVXVXCV",
+
+                  "level": "0, 0, 0, 0, 0, 0, 0, 0, 0, 0"
+
+               },
+
+               {
+
+                  "RP_ID": "RES_1",
+
+                  "RP_Description": "Resource Pool 1",
+
+                  "login": "NG55033",
+
+                  "longName": "DAVID MARTINS",
+				  
+				  "picture": "/MES/components/polypoly/images/man01.png",
+
+                  "ERP_ID": "DANILAND0E01",
+
+                  "personnelNumber": "---",
+
+                  "status": "No_Clock_Data",
+
+                  "competency": "1L_MMATEST014, 1L_MMATEST011, 1L_FINAL4, 1L_MMATEST0, 1L_MMATEST02, 1L_MMATEST01, 1L_MMATEST0131, 1L_MultiB, 1L_TANSP, 1L_CVXVXVXCV",
+
+                  "level": "0, 0, 0, 0, 0, 0, 0, 0, 0, 0"
+
+               },
+
+               {
+
+                  "RP_ID": "RES_1",
+
+                  "RP_Description": "Resource Pool 1",
+
+                  "login": "NG00431E",
+
+                  "longName": "FREDERIC BETEILLE",
+				  
+				  "picture": "/MES/components/polypoly/images/man01.png",
+
+                  "ERP_ID": "---",
+
+                  "personnelNumber": "---",
+
+                  "status": "No_Clock_Data",
+
+                  "competency": "1L_MMATEST014, 1L_MMATEST011, 1L_FINAL4, 1L_MMATEST0, 1L_MMATEST02, 1L_MMATEST01, 1L_MMATEST0131, 1L_MultiB, 1L_TANSP, 1L_CVXVXVXCV",
+
+                  "level": "0, 0, 0, 0, 0, 0, 0, 0, 0, 0"
+
+               },
+
+               {
+
+                  "RP_ID": "RES_1",
+
+                  "RP_Description": "Resource Pool 1",
+
+                  "login": "NG55E48",
+
+                  "longName": "GUILLAUME FONTENEAU",
+				  
+				  "picture": "/MES/components/polypoly/images/man01.png",
+
+                  "ERP_ID": "---",
+
+                  "personnelNumber": "---",
+
+                  "status": "No_Clock_Data",
+
+                  "competency": "1L_MMATEST014, 1L_MMATEST011, 1L_FINAL4, 1L_MMATEST0, 1L_MMATEST02, 1L_MMATEST01, 1L_MMATEST0131, 1L_MultiB, 1L_TANSP, 1L_CVXVXVXCV",
+
+                  "level": "0, 0, 0, 0, 0, 0, 0, 0, 0, 0"
+
+               },
+
+               {
+
+                  "RP_ID": "RES_1",
+
+                  "RP_Description": "Resource Pool 1",
+
+                  "login": "TO95871",
+
+                  "longName": "JEROME POUILLE",
+				  
+				  "picture": "/MES/components/polypoly/images/man01.png",
+
+                  "ERP_ID": "---",
+
+                  "personnelNumber": "---",
+
+                  "status": "No_Clock_Data",
+
+                  "competency": "1L_MMATEST014, 1L_MMATEST011, 1L_FINAL4, 1L_MMATEST0, 1L_MMATEST02, 1L_MMATEST01, 1L_MMATEST0131, 1L_MultiB, 1L_TANSP, 1L_CVXVXVXCV",
+
+                  "level": "0, 0, 0, 0, 0, 0, 0, 0, 0, 0"
+
+               },
+
+               {
+
+                  "RP_ID": "RES_1",
+
+                  "RP_Description": "Resource Pool 1",
+
+                  "login": "NG5E821",
+
+                  "longName": "MEHDI MAHHOU",
+				  
+				  "picture": "/MES/components/polypoly/images/man01.png",
+
+                  "ERP_ID": "---",
+
+                  "personnelNumber": "---",
+
+                  "status": "No_Clock_Data",
+
+                  "competency": "1L_MMATEST014, 1L_MMATEST011, 1L_FINAL4, 1L_MMATEST0, 1L_MMATEST02, 1L_MMATEST01, 1L_MMATEST0131, 1L_MultiB, 1L_TANSP, 1L_CVXVXVXCV",
+
+                  "level": "0, 0, 0, 0, 0, 0, 0, 0, 0, 0"
+
+               },
+
+               {
+
+                  "RP_ID": "RES_1",
+
+                  "RP_Description": "Resource Pool 1",
+
+                  "login": "TO105976",
+
+                  "longName": "MORITZ KAISER",
+				  
+				  "picture": "/MES/components/polypoly/images/man01.png",
+
+                  "ERP_ID": "---",
+
+                  "personnelNumber": "---",
+
+                  "status": "No_Clock_Data",
+
+                  "competency": "1L_MMATEST014, 1L_MMATEST011, 1L_FINAL4, 1L_MMATEST0, 1L_MMATEST02, 1L_MMATEST01, 1L_MMATEST0131, 1L_MultiB, 1L_TANSP, 1L_CVXVXVXCV",
+
+                  "level": "0, 0, 0, 0, 0, 0, 0, 0, 0, 0"
+
+               },
+
+               {
+
+                  "RP_ID": "RES_1",
+
+                  "RP_Description": "Resource Pool 1",
+
+                  "login": "GRANGER_P",
+
+                  "longName": "PATRICE GRANGER",
+				  
+				  "picture": "/MES/components/polypoly/images/man01.png",
+
+                  "ERP_ID": "---",
+
+                  "personnelNumber": "---",
+
+                  "status": "No_Clock_Data",
+
+                  "competency": "1L_MMATEST014, 1L_MMATEST011, 1L_FINAL4, 1L_MMATEST0, 1L_MMATEST02, 1L_MMATEST01, 1L_MMATEST0131, 1L_MultiB, 1L_TANSP, 1L_CVXVXVXCV",
+
+                  "level": "0, 0, 0, 0, 0, 0, 0, 0, 0, 0"
+
+               },
+
+               {
+
+                  "RP_ID": "RES_1",
+
+                  "RP_Description": "Resource Pool 1",
+
+                  "login": "NG56D2A",
+
+                  "longName": "VAIBHAV MISHRA",
+				  
+				  "picture": "/MES/components/polypoly/images/man01.png",
+
+                  "ERP_ID": "---",
+
+                  "personnelNumber": "---",
+
+                  "status": "No_Clock_Data",
+
+                  "competency": "1L_MMATEST014, 1L_MMATEST011, 1L_FINAL4, 1L_MMATEST0, 1L_MMATEST02, 1L_MMATEST01, 1L_MMATEST0131, 1L_MultiB, 1L_TANSP, 1L_CVXVXVXCV",
+
+                  "level": "0, 0, 0, 0, 0, 0, 0, 0, 0, 0"
+
+               },
+
+               {
+
+                  "RP_ID": "RP1",
+
+                  "RP_Description": "Test5",
+
+                  "login": "NG55033",
+
+                  "longName": "DAVID MARTINS",
+				  
+				  "picture": "/MES/components/polypoly/images/man01.png",
+
+                  "ERP_ID": "DANILAND0E01",
+
+                  "personnelNumber": "---",
+
+                  "status": "No_Clock_Data",
+
+                  "competency": "1L_MMATEST014, 1L_MMATEST011, 1L_FINAL4, 1L_MMATEST0, 1L_MMATEST02, 1L_MMATEST01, 1L_MMATEST0131, 1L_MultiB, 1L_TANSP, 1L_CVXVXVXCV",
+
+                  "level": "0, 0, 0, 0, 0, 0, 0, 0, 0, 0"
+
+               },
+
+               {
+
+                  "RP_ID": "RP1",
+
+                  "RP_Description": "Test5",
+
+                  "login": "NG004BDE",
+
+                  "longName": "DHIRENDRA NATH MISHRA",
+				  
+				  "picture": "/MES/components/polypoly/images/man01.png",
+
+                  "ERP_ID": "NG004BDE",
+
+                  "personnelNumber": "---",
+
+                  "status": "No_Clock_Data",
+
+                  "competency": "1L_MMATEST014, 1L_MMATEST011, 1L_FINAL4, 1L_MMATEST0, 1L_MMATEST02, 1L_MMATEST01, 1L_MMATEST0131, 1L_MultiB, 1L_TANSP, 1L_CVXVXVXCV",
+
+                  "level": "0, 0, 0, 0, 0, 0, 0, 0, 0, 0"
+
+               },
+
+               {
+
+                  "RP_ID": "RP1",
+
+                  "RP_Description": "Test5",
+
+                  "login": "NG001D16",
+
+                  "longName": "FABRICE NOGUE",
+				  
+				  "picture": "/MES/components/polypoly/images/man01.png",
+
+                  "ERP_ID": "---",
+
+                  "personnelNumber": "---",
+
+                  "status": "No_Clock_Data",
+
+                  "competency": "1L_MMATEST014, 1L_MMATEST011, 1L_FINAL4, 1L_MMATEST0, 1L_MMATEST02, 1L_MMATEST01, 1L_MMATEST0131, 1L_MultiB, 1L_TANSP, 1L_CVXVXVXCV",
+
+                  "level": "0, 0, 0, 0, 0, 0, 0, 0, 0, 0"
+
+               }
+
+            ]
+
+         },
+
+         {
+
+            "Columns": {
+
+               "Column": [
+
+                  {
+
+                     "Name": "technicalName",
+
+                     "SourceColumn": "technicalName",
+
+                     "Description": "",
+
+                     "SQLDataType": 1,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "competencyName",
+
+                     "SourceColumn": "competencyName",
+
+                     "Description": "",
+
+                     "SQLDataType": 1,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "qualityApproval",
+
+                     "SourceColumn": "qualityApproval",
+
+                     "Description": "",
+
+                     "SQLDataType": 1,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "POLYPOLY_NEEDS_3",
+
+                     "SourceColumn": "POLYPOLY_NEEDS_3",
+
+                     "Description": "",
+
+                     "SQLDataType": 1,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "POLYPOLY_NEEDS_4",
+
+                     "SourceColumn": "POLYPOLY_NEEDS_4",
+
+                     "Description": "",
+
+                     "SQLDataType": 1,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  },
+
+                  {
+
+                     "Name": "POLYPOLY_SEQUENCE",
+
+                     "SourceColumn": "POLYPOLY_SEQUENCE",
+
+                     "Description": "",
+
+                     "SQLDataType": 1,
+
+                     "MinRange": 1,
+
+                     "MaxRange": 1
+
+                  }
+
+               ]
+
+            },
+
+            "Row": [
+
+               {
+
+                  "technicalName": "1L_MMATEST014",
+
+                  "competencyName": "Station 10 left MMATEST1",
+
+                  "qualityApproval": "",
+
+                  "POLYPOLY_NEEDS_3": "0",
+
+                  "POLYPOLY_NEEDS_4": "0",
+
+                  "POLYPOLY_SEQUENCE": "001"
+
+               },
+
+               {
+
+                  "technicalName": "1L_MMATEST011",
+
+                  "competencyName": "Station 10 left MMATEST1",
+
+                  "qualityApproval": "",
+
+                  "POLYPOLY_NEEDS_3": "---",
+
+                  "POLYPOLY_NEEDS_4": "---",
+
+                  "POLYPOLY_SEQUENCE": "002"
+
+               },
+
+               {
+
+                  "technicalName": "1L_FINAL4",
+
+                  "competencyName": "Station 10 Final Operations 4 TEST",
+
+                  "qualityApproval": "QACHESS40",
+
+                  "POLYPOLY_NEEDS_3": "1",
+
+                  "POLYPOLY_NEEDS_4": "1",
+
+                  "POLYPOLY_SEQUENCE": "003"
+
+               },
+
+               {
+
+                  "technicalName": "1L_MMATEST0",
+
+                  "competencyName": "Station 10 left MMATEST1",
+
+                  "qualityApproval": "QACHESO03",
+
+                  "POLYPOLY_NEEDS_3": "1",
+
+                  "POLYPOLY_NEEDS_4": "3",
+
+                  "POLYPOLY_SEQUENCE": "004"
+
+               },
+
+               {
+
+                  "technicalName": "1L_MMATEST02",
+
+                  "competencyName": "Station 10 left MMATEST1",
+
+                  "qualityApproval": "",
+
+                  "POLYPOLY_NEEDS_3": "---",
+
+                  "POLYPOLY_NEEDS_4": "---",
+
+                  "POLYPOLY_SEQUENCE": "005"
+
+               },
+
+               {
+
+                  "technicalName": "1L_MMATEST01",
+
+                  "competencyName": "Station 10 left MMATEST1",
+
+                  "qualityApproval": "",
+
+                  "POLYPOLY_NEEDS_3": "---",
+
+                  "POLYPOLY_NEEDS_4": "---",
+
+                  "POLYPOLY_SEQUENCE": "006"
+
+               },
+
+               {
+
+                  "technicalName": "1L_MMATEST0131",
+
+                  "competencyName": "Station 10 left MMATEST1",
+
+                  "qualityApproval": "",
+
+                  "POLYPOLY_NEEDS_3": "---",
+
+                  "POLYPOLY_NEEDS_4": "---",
+
+                  "POLYPOLY_SEQUENCE": "007"
+
+               },
+
+               {
+
+                  "technicalName": "1L_MultiB",
+
+                  "competencyName": "Station 10 Multi Operations B",
+
+                  "qualityApproval": "QACHESS40",
+
+                  "POLYPOLY_NEEDS_3": "1",
+
+                  "POLYPOLY_NEEDS_4": "4",
+
+                  "POLYPOLY_SEQUENCE": "008"
+
+               },
+
+               {
+
+                  "technicalName": "1L_TANSP",
+
+                  "competencyName": "Station 10 left Transport",
+
+                  "qualityApproval": "",
+
+                  "POLYPOLY_NEEDS_3": "2",
+
+                  "POLYPOLY_NEEDS_4": "0",
+
+                  "POLYPOLY_SEQUENCE": "009"
+
+               },
+
+               {
+
+                  "technicalName": "1L_CVXVXVXCV",
+
+                  "competencyName": "cvbcvbcvbcvb",
+
+                  "qualityApproval": "PAPITESTQA03, PAPITESTQA02, QACHESTEST1",
+
+                  "POLYPOLY_NEEDS_3": "7",
+
+                  "POLYPOLY_NEEDS_4": "0",
+
+                  "POLYPOLY_SEQUENCE": "010"
+
+               }
+
+            ]
+
+         }
+
+      ]
+
+   }
+
+}

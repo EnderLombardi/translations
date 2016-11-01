@@ -30,16 +30,30 @@
                   },
                   "EfficiencyFactors":{  
                      "Labour":"85%",
-                     "SLB":"5%"
-                    
+                     "DeltaVsSLB":"-32 Hrs",
+                     "DeltaVsSoA":"-4 Hrs",
+                     "CycleTime":"26 Hrs",
+                     "WorkContent":"130 Hrs"                    
                   },
                   "DisruptionStatus":{
                   
-                  			"NCWhite" : "3",
-                  			"NCRed":"3", 
-                  			"Total":"13", 
-                     "Closed":"3",
-                     "Opened":"5"
+                  	"NCWhite" : "3",
+                  	"NCRed":"3", 
+                  	"TotalDisruption":"13",
+                  	"TotalAndon":"5",
+                  	"NCDisruption":"3",
+                  	"NCAndon":"1",
+                  	"MissingDisruption":"6",
+                  	"MissingAndon":"2",
+                  	"JTDisruption":"6",
+                  	"JTAndon":"-",
+                  	"FTEDisruption":"1",
+                  	"FTEAndon":"1",
+                  	"OtherDisruption":"-",
+                  	"OtherAndon":"-",
+                    "Closed":"3",
+                    "Opened":"5",
+                    "-":"-"
                   }
                }
             

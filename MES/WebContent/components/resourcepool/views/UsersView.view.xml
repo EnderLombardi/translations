@@ -4,7 +4,7 @@
 	<Page showHeader="false" height="100%" enableScrolling="false">
 		<content>
 			<HBox height="100%" class="fixHboxItemDisplay">
-				<Panel class="panelBorder" expanded="true" expandable="false"
+				<Panel class="panelBorder" expanded="true" expandable="false" id="availableUsersPanel"
 					width="100%" height="100%" headerText="{i18nModel>AvailableUsers}">
 					<headerToolbar>
 						<Toolbar>
@@ -78,7 +78,7 @@
 						<Button icon="sap-icon://navigation-left-arrow" press="unassignUsers" />
 					</items>
 				</VBox>
-				<Panel class="panelBorder" expanded="true" expandable="false"
+				<Panel class="panelBorder" expanded="true" expandable="false" id="assignedUsersPanel"
 					width="100%" height="100%" headerText="Assigned Users">
 					<headerToolbar>
 

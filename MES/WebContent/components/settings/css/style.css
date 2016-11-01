@@ -14,7 +14,6 @@
 
 .footerToolbar {
 	background-color: #5E696E;
-/* 	margin: 0% 0% 0% 22%;
  */}
 
 .buttonLoad>.sapMBtnText {
@@ -39,12 +38,13 @@ font-style: normal !important;
 	
 }
 .whiteButton .sapMBtnIcon {
-	color: white !important;
+	color: white;
 }
 
 .pageHeader {
 	color: white !important;
 	background: #0F2D65 ! important;
+	border: 0;
 }
 
 .pageTitle {
@@ -102,4 +102,54 @@ font-style: normal !important;
 
 .sapMPage>.sapMPageHeader + .sapMPageSubHeader + section {
 	background-color: white;
+}
+#globalNavView .sapMIBar-CTX .sapMBtnTransparent {
+	color:#ffffff;
+}
+[id^="View1--nav"] {
+	color: rgba(0, 86, 112, 0.94);
+	font-weight: bold;
+}
+[id^="View1--currMSN"] {
+	font-weight: bold;
+}
+[id^="View1--headText"]>.sapUiForm .sapUiFormTitle{
+	color: rgba(0, 86, 112, 0.94);
+}
+
+[id^="View1--headText"]{
+	color: rgba(0, 86, 112, 0.94);
+}
+
+[id^="View1--nav"]>.sapMBtnIcon
+{
+	color: rgba(0, 86, 112, 0.94) !important;
+}
+
+/* errorMessageDialog */
+
+/* Pop-up Confirm Delete confirmDeleteDialog */
+#messageDialog--errorMessageDialog {
+	background: #ffffff;
+    border: none;
+    border-radius: 0;
+    box-shadow: 0 0 5px #333;
+}
+
+#messageDialog--errorMessageDialog-header-BarPH {
+	background:#d4f1f7;
+
+}
+#messageDialog--errorMessageDialog-title {
+	color:#434343;
+}
+#messageDialog--errorMessageDialog-cont {
+	border-top:3px solid  rgba(255, 255, 255, 0);
+}
+#messageDialog--errorMessageDialog-header {
+	box-shadow: 0 0 5px #333;
+    overflow: visible;
+}
+#messageDialog--errorMessageDialog-footer {
+	background-color:#0F2D65;
 }

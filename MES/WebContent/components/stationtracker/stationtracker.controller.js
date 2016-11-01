@@ -27,7 +27,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			}
 		},
 	/**
-	 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
+	 * Similar to onBeforeRendering, but this hook is invoked before the controller's View is re-rendered
 	 * (NOT before the first rendering! onInit() is used for that one!).
 	 * @memberOf components.stationtracker.stationtracker
 	 */
@@ -59,36 +59,24 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		airbus.mes.stationtracker.oView.byId('kpi_header').attachExpand(resizeGantt);
 		
 		// First run on init
-		resizeGantt(true);
+		if (typeof airbus.mes.stationtracker.cachedGanttTop === 'undefined'){
+			resizeGantt();
+		}else{
+			$(airbus.mes.stationtracker.oView.byId('stationtracker').getDomRef())
+				.css('top', airbus.mes.stationtracker.cachedGanttTop);
+		}
 		
 		// Place the Gantt under the Toolbar
-		function resizeGantt(param){
+		function resizeGantt(){
 			setTimeout(function(){
 				var jqToolbar = $(airbus.mes.stationtracker.oView.byId('toolbarstationtracker').getDomRef());
 				var jqStationTracker = $(airbus.mes.stationtracker.oView.byId('stationtracker').getDomRef());
+				airbus.mes.stationtracker.cachedGanttTop = jqToolbar.offset().top;
 				jqStationTracker.css('top', jqToolbar.offset().top);
 			}, 0);
 		}
 		this.getView().byId("disruptNotifications").openNavigation();
 		this.getView().byId("disruptNotifications").closeNavigation();
-		
-		// Place the table in the custom control 
-		if (airbus.mes.disruptiontracker === undefined) {
-			jQuery.sap.registerModulePath("airbus.mes.disruptiontracker", "../components/disruptiontracker");
-			this.odisruptiontrackerComp = sap.ui.getCore().createComponent({
-				name : "airbus.mes.disruptiontracker",
-				id : "customDisruptionComponent"         
-			});
-			airbus.mes.disruptiontracker.oView = this.odisruptiontrackerComp.oView;
-			
-		}
-	
-		airbus.mes.disruptiontracker.oView
-				.placeAt("stationTracker--disruptions");
-
-		
-		
-		
 
 	},
 	onProductionGroupPress : function(oEvent){
@@ -165,7 +153,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			return func(date);
 		};
 		scheduler.config.preserve_length = true;
-		scheduler.updateView(airbus.mes.stationtracker.ShiftManager.currentShiftStart);
+		//scheduler.updateView(airbus.mes.stationtracker.ShiftManager.currentShiftStart);
 		/* Delete Selection box when shift */
 		for (var i = 0; i < $("select[class='selectBoxStation']").length; i++) {
 			$("select[class='selectBoxStation']").eq(i).remove();
@@ -176,8 +164,10 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			scheduler.deleteMarkedTimespan(el);
 		
 		})
-		airbus.mes.stationtracker.ModelManager.selectMyShift();
-		scheduler.updateView();
+		
+		airbus.mes.stationtracker.oView.byId("selectShift").setEnabled(false);
+		airbus.mes.stationtracker.oView.byId("selectShift").fireChange(0);
+		//scheduler.updateView();
 	},
 
 	onDayPress : function() {
@@ -203,12 +193,13 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			return func(date);
 		};
 		scheduler.config.preserve_length = true;
-		scheduler.updateView(airbus.mes.stationtracker.ShiftManager.currentShiftStart);
+		//scheduler.updateView(airbus.mes.stationtracker.ShiftManager.currentShiftStart);
 		
 		// Need this to update selected view and dont brake the behaviour of overflowtoolbar not needed if use Toolbar
 		airbus.mes.stationtracker.oView.byId("buttonViewMode").rerender();
 		airbus.mes.stationtracker.oView.byId("buttonViewMode").setSelectedKey("day");
 		
+		airbus.mes.stationtracker.oView.byId("selectShift").setEnabled(true);
 		airbus.mes.stationtracker.ModelManager.selectMyShift();
 	},
 
@@ -276,67 +267,68 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	},
 	onPolypolyOpen: function(oEvent) {
 		
-		jQuery.sap.registerModulePath("airbus.mes.polypoly","../components/polypoly");
-		airbus.mes.stationtracker.AssignmentManager.polypolyAffectation = false;
-		
-//		if (!airbus.mes.stationtracker.oPopoverPolypoly) {
-//			airbus.mes.stationtracker.oPopoverPolypoly = sap.ui.xmlfragment("airbus.mes.stationtracker.polypolyFragment", this);
-//			
-//			var oComp = sap.ui.getCore().createComponent({
-//	            name : "airbus.mes.polypoly", // root component folder is resources
-//	            id : "Comp10",
-//	     });	
-//			//load model of polypoly
-//			airbus.mes.polypoly.ModelManager.loadPolyPolyModel("F1","1","10","CHES");	
+//		jQuery.sap.registerModulePath("airbus.mes.polypoly","../components/polypoly");
+//		airbus.mes.stationtracker.AssignmentManager.polypolyAffectation = false;
+//		
+////		if (!airbus.mes.stationtracker.oPopoverPolypoly) {
+////			airbus.mes.stationtracker.oPopoverPolypoly = sap.ui.xmlfragment("airbus.mes.stationtracker.polypolyFragment", this);
+////			
+////			var oComp = sap.ui.getCore().createComponent({
+////	            name : "airbus.mes.polypoly", // root component folder is resources
+////	            id : "Comp10",
+////	     });	
+////			//load model of polypoly
+////			airbus.mes.polypoly.ModelManager.loadPolyPolyModel("F1","1","10","CHES");	
+////		}
+//		if(airbus.mes.polypoly == undefined){
+//			sap.ui.getCore().createComponent({
+//				name : "airbus.mes.polypoly", // root component folder is resources
+//         	});
 //		}
-		if(airbus.mes.polypoly == undefined){
-			sap.ui.getCore().createComponent({
-				name : "airbus.mes.polypoly", // root component folder is resources
-         	});
-		}
-		
-		airbus.mes.polypoly.PolypolyManager.globalContext.bEditable = !airbus.mes.stationtracker.AssignmentManager.polypolyAffectation;
-		
-		if(!nav.getPage("polypolyPage")){
-		var oPolypolyPage = new sap.m.Page({
-			content: airbus.mes.polypoly.oView,
-			title : "POLYPOLY",
-			id:"polypolyPage",
-			customHeader : new sap.m.Toolbar({
-				content: [
-				          new sap.m.Button({
-				        	  icon:"sap-icon://arrow-left",
-				        	  type:"Transparent",
-				        	  press: function(){nav.back()}
-				          }),
-				          new sap.m.ToolbarSpacer({}),
-				          new sap.m.Label({
-				        	  text: "PolyValence/PolyCompetence Matrix"
-				          }).addStyleClass("pageWelcome sapUiTinyMarginBeginEnd"),
-				          new sap.m.ToolbarSpacer({}),
-				          ]
-			}).addStyleClass("pageHeader contentNoPad"),
-		});
-		
-		nav.addPage(oPolypolyPage);
-		}else{
-			var oPolypolyPage = nav.getPage("polypolyPage");
-			if(oPolypolyPage.getContent().length == 0){
-				oPolypolyPage.addContent(airbus.mes.polypoly.oView);
-			}
-		}
-		nav.to(oPolypolyPage);
-		
-//		nav.addPage(airbus.mes.polypoly.oView);
-//		nav.to(airbus.mes.polypoly.oView.getId());
-		
-		
-		airbus.mes.polypoly.ModelManager.getPolyPolyModel("F1","1","10","CHES");
-		
-		airbus.mes.polypoly.oView.getController().initiatePolypoly();
-		// place this Ui Container with the Component inside into UI Area
-//		airbus.mes.stationtracker.oPopoverPolypoly.addContent(airbus.mes.polypoly.oView);
-//		airbus.mes.stationtracker.oPopoverPolypoly.open();	
+//		
+//		airbus.mes.polypoly.PolypolyManager.globalContext.bEditable = !airbus.mes.stationtracker.AssignmentManager.polypolyAffectation;
+//		
+//		if(!nav.getPage("polypolyPage")){
+//		var oPolypolyPage = new sap.m.Page({
+//			content: airbus.mes.polypoly.oView,
+//			title : "POLYPOLY",
+//			id:"polypolyPage",
+//			customHeader : new sap.m.Toolbar({
+//				content: [
+//				          new sap.m.Button({
+//				        	  icon:"sap-icon://arrow-left",
+//				        	  type:"Transparent",
+//				        	  press: function(){nav.back()}
+//				          }),
+//				          new sap.m.ToolbarSpacer({}),
+//				          new sap.m.Label({
+//				        	  text: "PolyValence/PolyCompetence Matrix"
+//				          }).addStyleClass("pageWelcome sapUiTinyMarginBeginEnd"),
+//				          new sap.m.ToolbarSpacer({}),
+//				          ]
+//			}).addStyleClass("pageHeader contentNoPad"),
+//		});
+//		
+//		nav.addPage(oPolypolyPage);
+//		}else{
+//			var oPolypolyPage = nav.getPage("polypolyPage");
+//			if(oPolypolyPage.getContent().length == 0){
+//				oPolypolyPage.addContent(airbus.mes.polypoly.oView);
+//			}
+//		}
+//		nav.to(oPolypolyPage);
+//		
+////		nav.addPage(airbus.mes.polypoly.oView);
+////		nav.to(airbus.mes.polypoly.oView.getId());
+//		
+//		
+//		airbus.mes.polypoly.ModelManager.getPolyPolyModel("F1","1","10","CHES");
+//		
+//		airbus.mes.polypoly.oView.getController().initiatePolypoly();
+//		// place this Ui Container with the Component inside into UI Area
+////		airbus.mes.stationtracker.oPopoverPolypoly.addContent(airbus.mes.polypoly.oView);
+////		airbus.mes.stationtracker.oPopoverPolypoly.open();	
+		airbus.mes.shell.util.navFunctions.polypoly();
 			
 		
 	},
@@ -427,7 +419,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		
 //		Filter the stationtracker model with current production group
 		var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
-	    var sProdGroup = "";
+	    var sProdGroup = airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("ProductionGroup") + " : ";
 	    var sProdGroupMii = "";
 	     
 		if(sap.ui.getCore().byId("productionGroupPopover--myList").getSelectedItems().length != 0 ){
@@ -441,7 +433,8 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		airbus.mes.settings.ModelManager.prodGroup = sProdGroupMii.slice(0,-3);
 		} else {
 				
-				sProdGroup += airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("ProductionGroup");
+				sProdGroup += airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("StatusAll");
+				
 				airbus.mes.settings.ModelManager.prodGroup ="%";
 			}
 
@@ -479,7 +472,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 
 		GroupingBoxingManager.parseOperation(GroupingBoxingManager.group, GroupingBoxingManager.box);
 		// Need render for display marked shift 
-		scheduler.updateView();
+		//scheduler.updateView();
 
 	},
 	onReschedulePress : function(oEvent) {
@@ -550,15 +543,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		airbus.mes.stationtracker.worklistPopover.close();
 		
 	},	
-	onPressExpdandable : function(oEvent) {
-		var oPanel = oEvent.getSource().getParent().getParent();
-		var bIsExpanded = oPanel.getExpanded();
-		
-		oEvent.getSource().getParent().getParent().setExpanded(!bIsExpanded);
 
-		/***** REMY *****/
-		oPanel.getHeight();
-	},
 	changeShift : function(Oevt) {
 			
 		var sPath = airbus.mes.stationtracker.oView.byId("selectShift").getSelectedIndex();
@@ -598,10 +583,17 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			css:   "shiftCss",
 			
 		}));
-				
-		scheduler.updateView();
 		
+			scheduler.updateView();
 		}
+		
+		// this is permit to display same shift when clicking from day to shift display.
+		if ( airbus.mes.stationtracker.ShiftManager.shiftDisplay ) {
+			
+			scheduler.updateView(airbus.mes.stationtracker.ShiftManager.ShiftSelected.StartDate);
+		}	
+		
+		
 	},
 	
 	changeGroupWorkList : function(oEvent) {
@@ -611,7 +603,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			template : sap.ui.getCore().byId("worklistPopover--sorterList"),
 			sorter : [ new sap.ui.model.Sorter({
 				// Change this value dynamic
-				path : 'WORKORDER_ID', //oEvt.getSource().getSelectedKey();
+				path : oEvent.getSource().getSelectedKey(), //oEvt.getSource().getSelectedKey();
 				descending : false,
 				group : true,
 			}), new sap.ui.model.Sorter({
@@ -815,8 +807,13 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	},
 	showDisruption : function(oEvent)
 	{
-		if(this.getView().byId("disruptNotifications").getState() == false)
+		if(this.getView().byId("disruptNotifications").getState() == false){
 			this.getView().byId("disruptNotifications").openNavigation();
+			
+
+			// Add Disruptions Component in Station Tracker
+			this.gtView().byId("disruptNotifications").setDisruptionContent(airbus.mes.stationtracker.disruptions.oView);
+		}
 		else
 			this.getView().byId("disruptNotifications").closeNavigation();
 	},
@@ -828,6 +825,69 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		
 		scheduler.updateView(oEvt.getSource().getDateValue())
 		airbus.mes.stationtracker.ModelManager.selectMyShift();
-	}
+	},
+	
+	/**
+     * Collapse or display KPI
+     */
+	hideKPI : function() {
+	
+		var oPanel = airbus.mes.stationtracker.oView.byId("kpi_header");
+		var bIsExpanded = oPanel.getExpanded();
+		
+		if ( bIsExpanded ) {
+			airbus.mes.stationtracker.oView.byId("hideKPI").setIcon("sap-icon://show");
+			airbus.mes.stationtracker.oView.byId("hideKPI").setText(airbus.mes.stationtracker.oView.getController().getI18nValue("ShowKPIS"));
+		} else {
+			airbus.mes.stationtracker.oView.byId("hideKPI").setIcon("sap-icon://hide");
+			airbus.mes.stationtracker.oView.byId("hideKPI").setText(airbus.mes.stationtracker.oView.getController().getI18nValue("HideKPIS"));
+		}
+		
+		oPanel.setExpanded(!bIsExpanded);
+
+	},
+	operationWorkListClick : function() {
+		
+		console.log("e");
+		
+	},
+	
+	//Fired when Calendar Button is clicked
+	//Open datePicker XML fragment
+	datePick : function() {
+		if(airbus.mes.stationtracker.datePicker == undefined){
+			airbus.mes.stationtracker.datePicker = sap.ui.xmlfragment("datePickerFragment","airbus.mes.stationtracker.datePickerFragment", airbus.mes.stationtracker.oView.getController());
+			airbus.mes.stationtracker.oView.oCalendar = airbus.mes.stationtracker.datePicker.getContent()[0];
+		}
+		airbus.mes.stationtracker.datePicker.openBy(airbus.mes.stationtracker.oView.byId("dateButton"));
+	},
+	
+	onSelectToday : function(){
+		airbus.mes.stationtracker.oView.oCalendar.removeAllSelectedDates();
+		airbus.mes.stationtracker.oView.oCalendar.displayDate(new Date());
+		airbus.mes.stationtracker.oView.oCalendar.addSelectedDate(new sap.ui.unified.DateRange({startDate: new Date()}));
+		airbus.mes.stationtracker.oView.getController().dateSelected();
+	},
+	
+	dateSelected : function(){
+		airbus.mes.stationtracker.oView.getController().updateDateLabel(airbus.mes.stationtracker.oView.oCalendar);
+		airbus.mes.stationtracker.datePicker.close();
+		scheduler.updateView(airbus.mes.stationtracker.oView.oCalendar.getSelectedDates()[0].getStartDate());
+		airbus.mes.stationtracker.ModelManager.selectMyShift();
+	},
+	
+	updateDateLabel : function(oCalendar){
+		var oFormatddMMyyy = sap.ui.core.format.DateFormat.getInstance({pattern: "dd MMM yyyy", calendarType: sap.ui.core.CalendarType.Gregorian});
+		var oText = airbus.mes.stationtracker.oView.byId("dateLabel");
+		var aSelectedDates = oCalendar.getSelectedDates();
+		var oDate;
+		if (aSelectedDates.length > 0 ) {
+			oDate = aSelectedDates[0].getStartDate();
+			oText.setText(oFormatddMMyyy.format(oDate));
+		} else {
+			oText.setValue("No Date Selected");
+		}
+	},
+	
 	
 });

@@ -1,26 +1,67 @@
 {
 	"buttonDetail": [ {
 
+		"text": "TeamAvailability",
+		"sub" : "",
+		"icon": "calendar",
+		"app":"",
+		"url": "/MES/WebContent/components/stationtracker/index.html",
+		"enable": "false"
+	},{
+
 		"text": "TeamCompetencies",
+		"sub" : "PolyPoly",
 		"icon": "task",
 		"app":"",
 		"url": "/MES/WebContent/components/stationtracker/index.html",
-		"enable": false
+		"enable": "true"
 	},{
 
 		"text": "ResourcePool",
+		"sub" : "",
 		"icon": "customer-history",
 		"app":"",
 		"url": "/MES/WebContent/components/stationtracker/index.html",
-		"enable": false
+		"enable": "true"
 	},	
 	{
 
 		"text": "LineTracker",
+		"sub" : "",
 		"icon": "flight",
 		"app":"",
 		"url": "/MES/WebContent/components/linetracker/index.html",
-		"enable": false
+		"enable": "true"
+	},{
+		"text": "StationTracker",
+		"sub" : "",
+		"icon": "customer-view",
+		"app":"",
+		"url": "/MES/WebContent/components/settings/index.html",
+		"enable": "true"
+	},{
+
+		"text": "WorkerOrderTracker",
+		"sub" : "",
+		"icon": "employee",
+		"app":"",
+		"url": "/MES/WebContent/components/stationtracker/index.html",
+		"enable": "true"
+	}, {
+		"text": "DisruptionAndon",
+		"sub" : "",
+		"icon": "alert",
+		"app":"",
+		"url": "/MES/WebContent/components/stationtracker/index.html",
+		"enable": "true"
+	}, {
+
+		"text": "DashboardPPS",
+		"sub": "",
+		"icon": "horizontal-bar-chart",
+		"app":"",
+		"url": "/MES/WebContent/components/stationtracker/index.html",
+		"enable": "false"
 	}
 	]
 }

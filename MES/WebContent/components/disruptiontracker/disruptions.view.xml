@@ -2,7 +2,7 @@
 	xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m">
 	<Page class="disruptions" showHeader="false">
-	
+
 		<subHeader>
 			<Toolbar>
 				<ToolbarSpacer />
@@ -27,15 +27,18 @@
 
 					<SearchField width="13rem" placeholder="Search disruption" />
 					<ToolbarSpacer />
-					<Button text="{disruptiontrackerI18n>disruptionKPI}" press="onPressDisruptionKPI"/>
+
+					<Button icon="sap-icon://area-chart" text="{disruptiontrackerI18n>disruptionKPI}"
+						press="onPressDisruptionKPI" />
 				</Toolbar>
 
 			</content>
 
 		</Panel>
-		
-		
-		<Table class="disruptionsTable" items="{ path: 'disruptionsListData>/Rowsets/Rowset/Row' }">
+
+
+		<Table class="disruptionsTable"
+			items="{ path: 'disruptionsListData>/Rowsets/Rowset/Row' }">
 
 			<columns>
 				<Column>
@@ -51,7 +54,7 @@
 					<Text text="{disruptiontrackerI18n>problem}" />
 				</Column>
 				<Column>
-					<Text text="{disruptiontrackerI18n>responsibleGroup}" />
+					<Text text="{disruptiontrackerI18n>resolutionGroup}" />
 				</Column>
 				<Column>
 					<Text text="{disruptiontrackerI18n>severity}" />
@@ -63,6 +66,9 @@
 					<Text text="{disruptiontrackerI18n>fixedByTime}" />
 				</Column>
 				<Column>
+					<Text text="{disruptiontrackerI18n>TTGF}" />
+				</Column>
+				<Column>
 					<Text text="{disruptiontrackerI18n>timeBofreNextEsc}" />
 				</Column>
 				<Column>
@@ -72,12 +78,13 @@
 					<Text text="{disruptiontrackerI18n>closureDate}" />
 				</Column>
 			</columns>
-			
+
 			<items>
 				<ColumnListItem type="Navigation">
 					<cells>
 						<Text text="{disruptionsListData>Operation}" />
-						<ObjectStatus class="sapUiSmallMarginBottom" text="{parts: [ {path: 'disruptionsListData>Status'}, {path: 'disruptionsListData>Gravity'}, {path: 'disruptionsListData>Severity'} ], formatter: 'airbus.mes.disruptiontracker.Formatter.setText'}"
+						<ObjectStatus class="sapUiSmallMarginBottom"
+							text="{parts: [ {path: 'disruptionsListData>Status'}, {path: 'disruptionsListData>Gravity'}, {path: 'disruptionsListData>Severity'} ], formatter: 'airbus.mes.disruptiontracker.Formatter.setText'}"
 							state="{parts: [ {path: 'disruptionsListData>Status'}, {path: 'disruptionsListData>Gravity'}, {path: 'disruptionsListData>Severity'} ], formatter: 'airbus.mes.disruptiontracker.Formatter.setState'}"
 							icon="{path: 'disruptionsListData>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setIcon'}" />
 						<Text text="{disruptionsListData>Status}" />
@@ -86,13 +93,14 @@
 						<Text text="{disruptionsListData>Severity}" />
 						<Text text="{disruptionsListData>OpeningTime}" />
 						<Text text="{disruptionsListData>FixedByTime}" />
+						<Text text="{disruptionsListData>TTGF}" />
 						<Text text="{disruptionsListData>TimeBeforeNextEscalation}" />
 						<Text text="{disruptionsListData>Solution}" />
 						<Text text="{disruptionsListData>ClosureDate}" />
 					</cells>
 				</ColumnListItem>
 			</items>
-			
+
 		</Table>
 	</Page>
 

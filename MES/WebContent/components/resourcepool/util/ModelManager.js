@@ -29,7 +29,7 @@ airbus.mes.resourcepool.util.ModelManager = {
 			dest = "local";
 			break;
 		default:
-			dest = "airbus";
+			dest = "local";
 			break;
 		}
 

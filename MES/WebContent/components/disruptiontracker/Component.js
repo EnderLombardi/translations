@@ -44,7 +44,8 @@ airbus.mes.disruptiontracker.Component.prototype.createContent = function() {
 		this.oView.setModel(sap.ui.getCore().getModel("disruptionsOrderData"), "disruptionsOrderData");
 		
 		
-		
 		return this.oView;
+		
 	}
+	return airbus.mes.disruptiontracker.oView;
 };
