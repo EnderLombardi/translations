@@ -6,8 +6,6 @@ jQuery.sap.require("airbus.mes.shell.util.navFunctions");
 jQuery.sap.require("airbus.mes.shell.ModelManager");
 jQuery.sap.require("airbus.mes.shell.RoleManager");
 
-//jQuery.sap.registerModulePath("airbus.mes.settings","/MES/components/settings");
-
 jQuery.sap.declare("airbus.mes.shell.Component");
 
 sap.ui.core.UIComponent.extend("airbus.mes.shell.Component", {

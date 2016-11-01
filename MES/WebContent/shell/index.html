@@ -34,16 +34,10 @@
 
 	sap.ui.getCore().attachInit( function () { 
 
-	/* 	jQuery.sap.registerModulePath("airbus.mes.shell", "/MES/shell");
-		jQuery.sap.registerModulePath("airbus.mes.homepage","/MES/components/homepage"); */
-	
-	/* 	jQuery.sap.registerModulePath("airbus.mes.shell", "/MES/shell"); */
 	 	jQuery.sap.registerModulePath("airbus.mes.shell", "./"); 
-	 	jQuery.sap.registerModulePath("airbus.mes.settings", "../components/settings");  	
-	/* 	jQuery.sap.registerModulePath("airbus.mes.homepage", "/MES/components/homepage"); */
+	 	jQuery.sap.registerModulePath("airbus.mes.settings", "../components/settings");
 		jQuery.sap.registerModulePath("airbus.mes.homepage", "../components/homepage");
-	
-	
+		
 		oComp1 = sap.ui.getCore().createComponent({
 			name : "airbus.mes.homepage", // root component folder is resources
 		});

@@ -381,7 +381,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 									        									 || level == "2"
 									        										 || level == "3"
 									        											 || level == "4") {
-									        								 sURI = "/MES/components/polypoly/images/"
+									        								 sURI = "../components/polypoly/images/"
 									        									 + level
 									        									 + ".png";
 									        							 }
@@ -540,7 +540,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 									        								        			   || level == "2"
 									        								        				   || level == "3"
 									        								        					   || level == "4") {
-									        								        		   sURI = "/MES/components/polypoly/images/"
+									        								        		   sURI = "../components/polypoly/images/"
 									        								        			   + level
 									        								        			   + ".png";
 									        								        	   }
@@ -617,27 +617,27 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 				content : [ new sap.m.VBox({
 					alignItems : "Center",
 					items : [ new sap.m.Button({
-						icon : "/MES/components/polypoly/images/0.png",
+						icon : "../components/polypoly/images/0.png",
 						press : function(oEvt) {
 							that.onChangeClick(oEvt)
 						}
 					}), new sap.m.Button({
-						icon : "/MES/components/polypoly/images/1.png",
+						icon : "../components/polypoly/images/1.png",
 						press : function(oEvt) {
 							that.onChangeClick(oEvt)
 						}
 					}), new sap.m.Button({
-						icon : "/MES/components/polypoly/images/2.png",
+						icon : "../components/polypoly/images/2.png",
 						press : function(oEvt) {
 							that.onChangeClick(oEvt)
 						}
 					}), new sap.m.Button({
-						icon : "/MES/components/polypoly/images/3.png",
+						icon : "../components/polypoly/images/3.png",
 						press : function(oEvt) {
 							that.onChangeClick(oEvt)
 						}
 					}), new sap.m.Button({
-						icon : "/MES/components/polypoly/images/4.png",
+						icon : "../components/polypoly/images/4.png",
 						press : function(oEvt) {
 							that.onChangeClick(oEvt)
 						}
