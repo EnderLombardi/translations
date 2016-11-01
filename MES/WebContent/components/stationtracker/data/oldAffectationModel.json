@@ -1,0 +1,58 @@
+{
+   "Rowsets": {
+      "DateCreated": "2016-07-13T10:26:38",
+      "Version": "15.1 SP1 Patch 0 (Jan 21, 2016)",
+      "StartDate": "2016-07-13T09:26:38+0200",
+      "EndDate": "2016-07-13T10:26:38+0200",
+      "CachedTime": "",
+      "Rowset": [
+         {
+            "Columns": {
+               "Column": []
+            },
+            "Row": [
+               {
+                  "user": "pierre",
+                  "firstName": "Pierre B.",
+                  "lastName": "Pierre B.",
+                  "picture": "../components/stationtracker/css/img/user.png",
+                  "avlLine": "3",
+                  "shiftName": "NORMAL 1",
+                  "shiftID": "NORMAL 1",
+                  "day": "2016-10-17"
+               },
+               {
+                  "user": "John A.",
+                  "firstName": "John A.",
+                  "lastName": "John A.",
+                  "picture": "../components/stationtracker/css/img/user.png",
+                  "avlLine": "3",
+                  "shiftName": "NORMAL 1",
+                  "shiftID": "NORMAL 1",
+                  "day": "2016-10-17"
+               },
+               {
+                  "user": "pierre",
+                  "firstName": "Pierre B.",
+                  "lastName": "Pierre B.",
+                  "picture": "../components/stationtracker/css/img/user.png",
+                  "avlLine": "4",
+                  "shiftName": "NORMAL 1",
+                  "shiftID": "NORMAL 1",
+                  "day": "2016-10-17"
+               },
+               {
+                  "user": "John A.",
+                  "firstName": "John A.",
+                  "lastName": "John A.",
+                  "picture": "../components/stationtracker/css/img/user.png",
+                  "avlLine": "2",
+                  "shiftName": "NORMAL 1",
+                  "shiftID": "NORMAL 1",
+                  "day": "2016-10-17"
+               }
+            ]
+         }
+      ]
+   }
+}

@@ -1,0 +1,37 @@
+﻿{ "Rowsets" : { 
+	"DateCreated" : "2016-06-16T14:43:16", "Version" : "15.1 SP1 Patch 0 (Jan 21, 2016)", "StartDate" : "2016-06-16T13:43:16+0200", "EndDate" : "2016-06-16T14:43:16+0200", "CachedTime" : "", 
+	"Rowset" : [ 
+	{ "Columns" : { 
+		"Column" : [ 
+		{ "Name" : "Line", "SourceColumn" : "Line", "Description" : "Line", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "Station", "SourceColumn" : "Station", "Description" : "Station", "SQLDataType" : 4, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "Conveyor_Status", "SourceColumn" : "Conveyor_Status", "Description" : "Conveyor Status OK/KO", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "Takt_Resource_Status", "SourceColumn" : "Takt_Resource_Status", "Description" : "Takt_Status ok/ko", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "MSN", "SourceColumn" : "MSN", "Description" : "MSN", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "TF", "SourceColumn" : "TF", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "HAND", "SourceColumn" : "HAND", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 } ] }, 
+	"Row" : [ 
+		{ "Line" : "TC-SYST", "Station" : "FG1MA1", "Conveyor_Status" : "1", "Takt_Resource_Status" : "---", "MSN" : "---", "TF" : "---", "HAND" : "---" }, 
+		{ "Line" : "TC-SYST", "Station" : "FG1MA2", "Conveyor_Status" : "0", "Takt_Resource_Status" : "KO", "MSN" : "7121", "TF" : "SA", "HAND" : "LH" }, 
+		{ "Line" : "TC-SYST", "Station" : "FG1EA1", "Conveyor_Status" : "1", "Takt_Resource_Status" : "---", "MSN" : "---", "TF" : "---", "HAND" : "---" }, 
+		{ "Line" : "TC-SYST", "Station" : "FG1EA2", "Conveyor_Status" : "0", "Takt_Resource_Status" : "---", "MSN" : "---", "TF" : "---", "HAND" : "---" }, 
+		{ "Line" : "TC-SYST", "Station" : "FG1MB1", "Conveyor_Status" : "0", "Takt_Resource_Status" : "---", "MSN" : "---", "TF" : "---", "HAND" : "---" }, 
+		{ "Line" : "TC-SYST", "Station" : "FG1MB2", "Conveyor_Status" : "0", "Takt_Resource_Status" : "---", "MSN" : "---", "TF" : "---", "HAND" : "---" }, 
+		{ "Line" : "TC-SYST", "Station" : "FG1EB1", "Conveyor_Status" : "0", "Takt_Resource_Status" : "---", "MSN" : "---", "TF" : "---", "HAND" : "---" }, 
+		{ "Line" : "TC-SYST", "Station" : "FG1EB2", "Conveyor_Status" : "0", "Takt_Resource_Status" : "---", "MSN" : "---", "TF" : "---", "HAND" : "---" }, 
+		{ "Line" : "TC-SYST", "Station" : "FG1MC1", "Conveyor_Status" : "", "Takt_Resource_Status" : "---", "MSN" : "---", "TF" : "---", "HAND" : "---" }, 
+		{ "Line" : "PA-SYST", "Station" : "FG2210", "Conveyor_Status" : "0", "Takt_Resource_Status" : "---", "MSN" : "---", "TF" : "---", "HAND" : "---" }, 
+		{ "Line" : "PA-SYST", "Station" : "FG2220", "Conveyor_Status" : "1", "Takt_Resource_Status" : "---", "MSN" : "---", "TF" : "---", "HAND" : "---" }, 
+		{ "Line" : "PA-SYST", "Station" : "FG2250", "Conveyor_Status" : "0", "Takt_Resource_Status" : "---", "MSN" : "---", "TF" : "---", "HAND" : "---" },
+		{ "Line" : "TC-SYST", "Station" : "FG1MC2", "Conveyor_Status" : "0", "Takt_Resource_Status" : "---", "MSN" : "---", "TF" : "---", "HAND" : "---" }, 
+		{ "Line" : "TC-SYST", "Station" : "FG1EC1", "Conveyor_Status" : "1", "Takt_Resource_Status" : "---", "MSN" : "---", "TF" : "---", "HAND" : "---" }, 
+		{ "Line" : "TC-SYST", "Station" : "FG1EC2", "Conveyor_Status" : "0", "Takt_Resource_Status" : "---", "MSN" : "---", "TF" : "---", "HAND" : "---" }, 
+		{ "Line" : "TC-SYST", "Station" : "FG1MD1", "Conveyor_Status" : "0", "Takt_Resource_Status" : "---", "MSN" : "---", "TF" : "---", "HAND" : "---" }, 
+		{ "Line" : "TC-SYST", "Station" : "FG1MD2", "Conveyor_Status" : "0", "Takt_Resource_Status" : "---", "MSN" : "---", "TF" : "---", "HAND" : "---" }, 
+		{ "Line" : "TC-SYST", "Station" : "FG1ED1", "Conveyor_Status" : "0", "Takt_Resource_Status" : "---", "MSN" : "---", "TF" : "---", "HAND" : "---" }, 
+		{ "Line" : "TC-SYST", "Station" : "FG1ED2", "Conveyor_Status" : "0", "Takt_Resource_Status" : "---", "MSN" : "---", "TF" : "---", "HAND" : "---" }, 
+		{ "Line" : "TC-SYST", "Station" : "FG1ME1", "Conveyor_Status" : "0", "Takt_Resource_Status" : "---", "MSN" : "---", "TF" : "---", "HAND" : "---" }, 
+		{ "Line" : "TC-SYST", "Station" : "FG1ME2", "Conveyor_Status" : "1", "Takt_Resource_Status" : "---", "MSN" : "---", "TF" : "---", "HAND" : "---" } ]
+		 } ]
+	 }
+ }

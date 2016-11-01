@@ -1,0 +1,40 @@
+{ "Rowsets" : { 
+	"DateCreated" : "2016-10-27T07:20:35", "Version" : "15.1 SP2 Patch 13 (Oct 6, 2016)", "StartDate" : "2016-10-27T06:20:35+0200", "EndDate" : "2016-10-27T07:20:35+0200", "CachedTime" : "", 
+	"Rowset" : [ 
+	{ "Columns" : { 
+		"Column" : [ 
+		{ "Name" : "USER_ID", "SourceColumn" : "USER_ID", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "SITE", "SourceColumn" : "SITE", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "NAME", "SourceColumn" : "NAME", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "PERSONAL_NO", "SourceColumn" : "PERSONAL_NO", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "ERP_USER_ID", "SourceColumn" : "ERP_USER_ID", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "FNAME", "SourceColumn" : "FNAME", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "LNAME", "SourceColumn" : "LNAME", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "LOANED_TO_POOL", "SourceColumn" : "LOANED_TO_POOL", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "LOANED_RP_NAME", "SourceColumn" : "LOANED_RP_NAME", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 } ] }, 
+	"Row" : [ 
+		{ "USER_ID" : "NZ12170", "SITE" : "FNZ1", "NAME" : "RES_1", "PERSONAL_NO" : "---", "ERP_USER_ID" : "NZ12170", "FNAME" : "MICHEL", "LNAME" : "CADOU", "LOANED_TO_POOL" : "41", "LOANED_RP_NAME" : "RPG23" }, 
+		{ "USER_ID" : "NZ113918", "SITE" : "FNZ1", "NAME" : "RES", "PERSONAL_NO" : "---", "ERP_USER_ID" : "NZ113918", "FNAME" : "LAURA", "LNAME" : "CHEVALIER", "LOANED_TO_POOL" : "37", "LOANED_RP_NAME" : "JHG" }, 
+		{ "USER_ID" : "NZ20065", "SITE" : "FNZ1", "NAME" : "---", "PERSONAL_NO" : "---", "ERP_USER_ID" : "NZ20065", "FNAME" : "PASCAL", "LNAME" : "DAVID", "LOANED_TO_POOL" : "---", "LOANED_RP_NAME" : "---" }, 
+		{ "USER_ID" : "NZ73043", "SITE" : "FNZ1", "NAME" : "RES", "PERSONAL_NO" : "---", "ERP_USER_ID" : "NZ73043", "FNAME" : "STEPHANIE", "LNAME" : "DESCOUTS", "LOANED_TO_POOL" : "---", "LOANED_RP_NAME" : "" }, 
+		{ "USER_ID" : "NZ119832", "SITE" : "FNZ1", "NAME" : "RP1", "PERSONAL_NO" : "---", "ERP_USER_ID" : "NZ119832", "FNAME" : "ANTONY", "LNAME" : "GARCIA", "LOANED_TO_POOL" : "19", "LOANED_RP_NAME" : "RES_1" }, 
+		{ "USER_ID" : "NZ92973", "SITE" : "FNZ1", "NAME" : "---", "PERSONAL_NO" : "---", "ERP_USER_ID" : NZ92973", "FNAME" : "ROMAIN", "LNAME" : "GUGLIELMETTI", "LOANED_TO_POOL" : "---", "LOANED_RP_NAME" : "---" }, 
+		{ "USER_ID" : "NZ106357", "SITE" : "FNZ1", "NAME" : "RP1", "PERSONAL_NO" : "---", "ERP_USER_ID" : "NZ106357", "FNAME" : "DONOVAN", "LNAME" : "HERVY", "LOANED_TO_POOL" : "33", "LOANED_RP_NAME" : "GSHA" }, 
+		{ "USER_ID" : "NZ92995", "SITE" : "FNZ1", "NAME" : "RES_1", "PERSONAL_NO" : "---", "ERP_USER_ID" : "NZ92995", "FNAME" : "CYRIL", "LNAME" : "LE PEVEDIC", "LOANED_TO_POOL" : "25", "LOANED_RP_NAME" : "TEST1" }, 
+		{ "USER_ID" : "NZ110926", "SITE" : "FNZ1", "NAME" : "RES_1", "PERSONAL_NO" : "---", "ERP_USER_ID" : "NZ110926", "FNAME" : "NICOLAS", "LNAME" : "LEGOFF", "LOANED_TO_POOL" : "---", "LOANED_RP_NAME" : "" }, 
+		{ "USER_ID" : "NZ107126", "SITE" : "FNZ1", "NAME" : "RES", "PERSONAL_NO" : "---", "ERP_USER_ID" : "NZ107126", "FNAME" : "LOUIS MARIE", "LNAME" : "LIMOUSIN", "LOANED_TO_POOL" : "---", "LOANED_RP_NAME" : "" }, 
+		{ "USER_ID" : "NZ100706", "SITE" : "FNZ1", "NAME" : "RES_1", "PERSONAL_NO" : "---", "ERP_USER_ID" : "NZ100706", "FNAME" : "FREDERIC", "LNAME" : "MARTIENNE", "LOANED_TO_POOL" : "---", "LOANED_RP_NAME" : "" }, 
+		{ "USER_ID" : "NZ108099", "SITE" : "FNZ1", "NAME" : "---", "PERSONAL_NO" : "---", "ERP_USER_ID" : "NZ108099", "FNAME" : "DAVID", "LNAME" : "MENORET", "LOANED_TO_POOL" : "---", "LOANED_RP_NAME" : "---" }, 
+		{ "USER_ID" : "NZ29368", "SITE" : "FNZ1", "NAME" : "---", "PERSONAL_NO" : "---", "ERP_USER_ID" : "NZ29368", "FNAME" : "MARTHE", "LNAME" : "PEYRE", "LOANED_TO_POOL" : "---", "LOANED_RP_NAME" : "---" }, 
+		{ "USER_ID" : "NZ12175", "SITE" : "FNZ1", "NAME" : "RPG", "PERSONAL_NO" : "4400022", "ERP_USER_ID" : "NZ12175", "FNAME" : "PASCAL", "LNAME" : "RIVALLAND", "LOANED_TO_POOL" : "30", "LOANED_RP_NAME" : "TEST-GS" }, 
+		{ "USER_ID" : "NZ31062", "SITE" : "FNZ1", "NAME" : "RES_1", "PERSONAL_NO" : "---", "ERP_USER_ID" : "NZ31062", "FNAME" : "JULIEN", "LNAME" : "SCIARLI", "LOANED_TO_POOL" : "---", "LOANED_RP_NAME" : "" }, 
+		{ "USER_ID" : "NZ120318", "SITE" : "FNZ1", "NAME" : "RES_1", "PERSONAL_NO" : "---", "ERP_USER_ID" : "NZ120318", "FNAME" : "KEVIN", "LNAME" : "THOBY", "LOANED_TO_POOL" : "---", "LOANED_RP_NAME" : "" }, 
+		{ "USER_ID" : "NZ11896", "SITE" : "FNZ1", "NAME" : "---", "PERSONAL_NO" : "---", "ERP_USER_ID" : "NZ11896", "FNAME" : "MICHEL", "LNAME" : "TREMEDET", "LOANED_TO_POOL" : "---", "LOANED_RP_NAME" : "---" }, 
+		{ "USER_ID" : "NZ108094", "SITE" : "FNZ1", "NAME" : "RES", "PERSONAL_NO" : "---", "ERP_USER_ID" : "NZ108094", "FNAME" : "DAVID", "LNAME" : "MOINET", "LOANED_TO_POOL" : "---", "LOANED_RP_NAME" : "" }, 
+		{ "USER_ID" : "NZ42619", "SITE" : "FNZ1", "NAME" : "RES_1", "PERSONAL_NO" : "---", "ERP_USER_ID" : "NZ42619", "FNAME" : "VALERIE", "LNAME" : "LORCY", "LOANED_TO_POOL" : "---", "LOANED_RP_NAME" : "" }, 
+		{ "USER_ID" : "NZ82434", "SITE" : "FNZ1", "NAME" : "---", "PERSONAL_NO" : "---", "ERP_USER_ID" : "NZ82434", "FNAME" : "STEPHANIE", "LNAME" : "BOCHET", "LOANED_TO_POOL" : "---", "LOANED_RP_NAME" : "---" }, 
+		{ "USER_ID" : "SITE_ADMIN", "SITE" : "FNZ1", "NAME" : "---", "PERSONAL_NO" : "---", "ERP_USER_ID" : "---", "FNAME" : "---", "LNAME" : "site admin", "LOANED_TO_POOL" : "---", "LOANED_RP_NAME" : "---" }, 
+		{ "USER_ID" : "MESYS", "SITE" : "FNZ1", "NAME" : "---", "PERSONAL_NO" : "---", "ERP_USER_ID" : "---", "FNAME" : "---", "LNAME" : "site admin", "LOANED_TO_POOL" : "---", "LOANED_RP_NAME" : "---" } ]
+		 } ]
+	 }
+ }
