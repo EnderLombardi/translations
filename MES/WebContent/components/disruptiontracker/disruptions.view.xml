@@ -27,7 +27,7 @@
 
 					<SearchField width="13rem" placeholder="Search disruption" />
 					<ToolbarSpacer />
-					<Button text="{disruptiontrackerI18n>disruptionKPI}" />
+					<Button text="{disruptiontrackerI18n>disruptionKPI}" press="onPressDisruptionKPI"/>
 				</Toolbar>
 
 			</content>

@@ -1,0 +1,12 @@
+{
+	"businessData" : [ 
+		{"Category": "MY-RCDCS", "revenue": 10, "Time Lost": 1},
+		{"Category": "MY-RCDCS2", "revenue": 33, "Time Lost": 10},
+		{"Category": "MY-RCDCS3", "revenue": 48, "Time Lost": 1},
+		{"Category": "MY-RCDCS4", "revenue": 47, "Time Lost": 2},
+		{"Category": "MY-RCDCS5", "revenue": 13, "Time Lost": 1},
+		{"Category": "MY-RCDCS6", "revenue": 9, "Time Lost": 5},
+		{"Category": "MY-RCDCS7", "revenue": 4, "Time Lost": 5},
+		{"Category": "MY-RCDCS8", "revenue": 3, "Time Lost": 2}
+	 ]
+}

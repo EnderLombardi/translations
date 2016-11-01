@@ -79,7 +79,7 @@ airbus.mes.shell.util.navFunctions = {
 			
 			nav.to(airbus.mes.disruptiontracker.oView.getId());
 		},
-		
+
 		
 		
 		worktracker: function(){

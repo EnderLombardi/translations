@@ -1,0 +1,19 @@
+{
+	"LostTimeperOperation" : [ 
+		{"Operation": "Operation", "revenue": 10, "Time Lost": 1},
+		{"Operation": "Operation1", "revenue": 33, "Time Lost": 10},
+		{"Operation": "Operation2", "revenue": 48, "Time Lost": 1},
+		{"Operation": "Operation3", "revenue": 47, "Time Lost": 2},
+		{"Operation": "Operation4", "revenue": 13, "Time Lost": 1},
+		{"Operation": "Operation5", "revenue": 9, "Time Lost": 5},
+		{"Operation": "Operation6", "revenue": 4, "Time Lost": 7},
+		{"Operation": "Operation7", "revenue": 3, "Time Lost": 2},
+		{"Operation": "Operation8", "revenue": 9, "Time Lost": 5},
+		{"Operation": "Operation9", "revenue": 4, "Time Lost": 7},
+		{"Operation": "Operation10", "revenue": 3, "Time Lost": 2},
+		{"Operation": "Operation11", "revenue": 3, "Time Lost": 2},
+		{"Operation": "Operation12", "revenue": 9, "Time Lost": 5},
+		{"Operation": "Operation13", "revenue": 4, "Time Lost": 7},
+		{"Operation": "Operation14", "revenue": 3, "Time Lost": 2}
+	 ]
+}
