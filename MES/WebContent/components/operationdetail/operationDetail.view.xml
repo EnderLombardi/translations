@@ -127,7 +127,7 @@
 				</SegmentedButton>
 			</Toolbar>
 
-			<NavContainer id="operDetailNavContainer" height="95%">
+			<NavContainer id="operDetailNavContainer" class="navContAutoHeight" height="auto">
 				<pages>
 
 				</pages>

@@ -26,7 +26,7 @@ airbus.mes.operationdetail.createDisruption.Component.prototype.createContent = 
 			id : "createDisruptionView",
 			viewName : "airbus.mes.disruptions.CreateDisruption",
 			type : "XML",
-			height:"100%"
+			height:"auto"
 		})
 
 		/*var i18nModel = new sap.ui.model.resource.ResourceModel({
