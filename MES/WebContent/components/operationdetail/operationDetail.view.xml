@@ -111,78 +111,21 @@
 						press="expandOperationDetailPanel" class="closeButton"></Button>
 				</content>
 			</Panel>
-			<!-- <IconTabBar id="operationNav" expandable="false" backgroundDesign="Transparent" 
-				height="100%" class="operationNavBar sapUiResponsiveContentPadding"> <items> 
-				<IconTabFilter text="{i18n>Status}"> <VBox width="100%" justifyContent="SpaceBetween"> 
-				<HBox justifyContent="Center" class="sapUiSmallMarginTopBottom"> <items> 
-				<Title id="operationStatus" text="{parts: ['operationDetailModel>/Rowsets/Rowset/0/Row/0/status', 
-				'operationDetailModel>/Rowsets/Rowset/0/Row/0/progress'], formatter:'airbus.mes.operationdetail.Formatter.setSliderStatus'}" 
-				level="H1" titleStyle="H3" /> </items> </HBox> <l:Grid defaultSpan="L12 M12 
-				S12" class="proressSliderGrid"> <Button id="btnReduce" type="Transparent" 
-				press="reduceProgress" icon="sap-icon://sys-minus" class="progressBtnColor"> 
-				<layoutData> <l:GridData span="L2 M12 S12" /> </layoutData> </Button> <HBox 
-				width="100%" class="progressSlider"> <layoutData> <l:GridData span="L12 M12 
-				S12" /> </layoutData> <Slider id="progressSliderfirst" class="comfirmedProgressSlider" 
-				min="0" width="{parts:['operationDetailModel>/Rowsets/Rowset/0/Row/0/status', 
-				'operationDetailModel>/Rowsets/Rowset/0/Row/0/progress'], formatter:'airbus.mes.operationdetail.Formatter.sliderStatusFirst' 
-				}" editable="false" enabled="false"> </Slider> <Slider id="progressSlider" 
-				class="dynProgressSlider sliderInprogressColor" max="100" showHandleTooltip="true" 
-				width="{parts: ['operationDetailModel>/Rowsets/Rowset/0/Row/0/status', 'operationDetailModel>/Rowsets/Rowset/0/Row/0/progress'], 
-				formatter: 'airbus.mes.operationdetail.Formatter.sliderStatus' }" enabled="false"> 
-				</Slider> </HBox> <Button id="btnAdd" type="Transparent" press="addProgress" 
-				icon="sap-icon://sys-add" class="progressBtnColor"> <layoutData> <l:GridData 
-				span="L2 M12 S12" /> </layoutData> </Button> </l:Grid> <f:SimpleForm width="auto" 
-				backgroundDesign="Transparent" id="reasonCode" minWidth="800" maxWidth="800" 
-				class="sapUiLargeMarginTopBottom sapUiLargeMarginBeginEnd" maxContainerCols="2" 
-				editable="true" layout="ResponsiveGridLayout" labelSpanL="1" labelSpanM="2" 
-				emptySpanL="0" emptySpanM="0" columnsL="1" columnsM="1" validateFieldGroup="onValidatereason"> 
-				<f:content> <Label text="Reason Code" /> <Select enabled="{path: 'operationDetailModel>/Rowsets/Rowset/0/Row/0/status', 
-				formatter: 'airbus.mes.operationdetail.Formatter.setReasonCodeEnabled'}" 
-				forceSelection="true" change="onSelectionReason" id="reasonCodeSelectBox" 
-				items="{reasonCodeModel>/Rowsets/Rowset/0/Row}"> <core:Item key="{reasonCodeModel>REASON_CODE}" 
-				text="{reasonCodeModel>DESCRIPTION}" /> </Select> <Label text="Comment" /> 
-				<TextArea enabled="{path: 'operationDetailModel>/Rowsets/Rowset/0/Row/0/status', 
-				formatter: 'airbus.mes.operationdetail.Formatter.setReasonCodeEnabled'}" 
-				id="reasonCodeComments" /> </f:content> </f:SimpleForm> </VBox> </IconTabFilter> 
-				<IconTabFilter id="disruptionId" text="{i18n>Disruption}" > <Bar design="Footer"> 
-				<contentLeft> <Button id="btnReportDisruption" text="{i18n>reportDisruption}" 
-				icon="sap-icon://add" press="createDisruption" /> </contentLeft> </Bar> </IconTabFilter> 
-				<IconTabFilter text="{i18n>Reschedule}" /> <IconTabFilter text="{i18n>Touchngo}" 
-				/> <IconTabFilter icon="sap-icon://task" count="389" text="Checklist"> <content> 
-				<core:Fragment type="XML" fragmentName="airbus.mes.worktracker.fragments.Tasklist" 
-				/> </content> </IconTabFilter> <IconTabFilter icon="sap-icon://alert" text="Disruption"> 
-				<content> <core:Fragment type="XML" fragmentName="airbus.mes.worktracker.fragments.disruptionDisplay" 
-				/> <core:Fragment type="XML" fragmentName="airbus.mes.worktracker.fragments.createDisruption" 
-				/> </content> </IconTabFilter> <IconTabFilter icon="sap-icon://folder-blank" 
-				text="Documents"> <Text text="{i18n>documentTitle}" class="title"></Text> 
-				<VBox items="{documentsNameModel>/documents}" width="100%"> <items> <Button 
-				type="Transparent" text="{documentsNameModel>name}" icon="sap-icon://slim-arrow-right" 
-				iconFirst="true" press="onPress" /> </items> </VBox> </IconTabFilter> <IconTabFilter 
-				icon="sap-icon://wrench" text="Tools"> <content> <core:Fragment type="XML" 
-				fragmentName="airbus.mes.worktracker.fragments.toolsFragment" /> </content> 
-				</IconTabFilter> <IconTabFilter icon="sap-icon://folder-blank" text="Components"> 
-				<content> <core:Fragment type="XML" fragmentName="airbus.mes.worktracker.fragments.componentFragment" 
-				/> </content> </IconTabFilter> </items> </IconTabBar> <Bar id="operationStatusFooter" 
-				class="operationDetailFooter"> <contentRight> <Button id="btnPause" text="{i18n>pause}" 
-				icon="sap-icon://media-pause" press="pauseOperation" /> <Button id="btnConfirm" 
-				text="{i18n>confirm}" icon="sap-icon://history" press="confirmOperation" 
-				/> <Button id="btnActivate" text="{i18n>activate}" press="activateOperation" 
-				/> <Button id="btnComplete" text="{i18n>complete}" icon="sap-icon://accept" 
-				press="confirmOperation" /> <Button id="btnClose" text="{i18n>close}" icon="sap-icon://decline" 
-				press="onCloseOperationDetailPopup" /> </contentRight> </Bar> -->
 
-			<SegmentedButton>
-				<items>
-					<SegmentedButtonItem id="idStatus"
-						text="Status" key="status" press="openPage"/>
-					<SegmentedButtonItem id="idDisruption"
-						text="Disruption" key="disruption" press="openPage" />
-					<SegmentedButtonItem id="idReschedule"
-						text="Reschedule" key="reschedule" press="openPage" />
-					<SegmentedButtonItem id="idtouchngo"
-						text="TouchNGo" key="touchngo" press="openPage" />
-				</items>
-			</SegmentedButton>
+			<Toolbar class="opDetailNavToolbar">
+				<SegmentedButton class="opDetailNav">
+					<items>
+						<SegmentedButtonItem id="idStatus"
+							text="Status" key="status" press="openPage"/>
+						<SegmentedButtonItem id="idDisruption"
+							text="Disruption" key="disruption" press="openPage" />
+						<SegmentedButtonItem id="idReschedule"
+							text="Reschedule" key="reschedule" press="openPage" />
+						<SegmentedButtonItem id="idtouchngo"
+							text="TouchNGo" key="touchngo" press="openPage" />
+					</items>
+				</SegmentedButton>
+			</Toolbar>
 
 			<NavContainer id="operDetailNavContainer" height="95%">
 				<pages>
