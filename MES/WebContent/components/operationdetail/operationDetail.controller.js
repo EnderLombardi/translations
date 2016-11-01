@@ -562,20 +562,20 @@ sap.ui
 
 							break;
 						case "disruption":
-							if (airbus.mes.operationdetail.createDisruption === undefined
-									|| airbus.mes.operationdetail.createDisruption.oView === undefined) {
+							if (airbus.mes.operationdetail.viewDisruption === undefined
+									|| airbus.mes.operationdetail.viewDisruption.oView === undefined) {
 								sap.ui
 										.getCore()
 										.createComponent(
 												{
-													name : "airbus.mes.operationdetail.createDisruption",
+													name : "airbus.mes.operationdetail.viewDisruption",
 												});
 								this.nav
-										.addPage(airbus.mes.operationdetail.createDisruption.oView);
+										.addPage(airbus.mes.operationdetail.viewDisruption.oView);
 							}
 
 							this.nav
-									.to(airbus.mes.operationdetail.createDisruption.oView
+									.to(airbus.mes.operationdetail.viewDisruption.oView
 											.getId());
 							break;
 						}
