@@ -25,7 +25,7 @@ airbus.mes.operationdetail.status.Component.prototype.createContent = function()
 			id : "idStatusView",
 			viewName : "airbus.mes.operationdetail.status.status",
 			type : "XML",
-			height:"100%"
+			height:"95%"
 		})
 		airbus.mes.operationdetail.status.oView = this.oView;
 
