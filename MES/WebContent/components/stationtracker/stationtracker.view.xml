@@ -25,7 +25,7 @@
 							class="sapUiTinyMarginBeginEnd pageHeader pageHeaderBlue" items="{ path : 'ressourcePoolModel>/Rowsets/Rowset/0/Row' }">
 							<core:Item key="{ressourcePoolModel>user}" text="{ressourcePoolModel>user}" />
 						</Select>
-						 <Button text="Disruptions" type="Transparent" class="whiteColor whiteButton"
+						<Button text="Disruptions" type="Transparent" class="whiteColor whiteButton"
 							press="showDisruption"></Button>
 						<ToolbarSpacer />
 						<Button id="TeamButton" text="{StationTrackerI18n>ButtonTeam}"

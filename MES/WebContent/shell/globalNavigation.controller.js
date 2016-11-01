@@ -103,24 +103,21 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 		switch(nav.getCurrentPage().getId()){
 		case "stationTrackerView":
 			textButtonTo = "Go to Station Tracker";
-			airbus.mes.settings.GlobalFunction.navigateTo(textButtonTo, "back");
 			break;
 
 		case "homePageView":
 			textButtonTo = "Go to Home Page";
-			airbus.mes.settings.GlobalFunction.navigateTo(textButtonTo, "back");
 			break;
 			
 		case "resourcePool":
 			textButtonTo = "Go to Team Assignment";
-			airbus.mes.settings.GlobalFunction.navigateTo(textButtonTo, "teamassignmentBack");
 			break;
 			
 		case "disruptiontrackerView":
 			textButtonTo = "Go to Disruption Tracker";
-			airbus.mes.settings.GlobalFunction.navigateTo(textButtonTo, "disruptiontrackerBack");
 			break;
 		}
+		airbus.mes.settings.GlobalFunction.navigateTo(textButtonTo, "back");
 
 	},
 
@@ -162,6 +159,10 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 			
 		case "disruptiontrackerView":
 			airbus.mes.disruptiontracker.ModelManager.loadData();
+			break;
+			
+		case "resourcePool":
+			airbus.mes.resourcepool.util.ModelManager.askResourcePool();
 			break;
 
 		}
