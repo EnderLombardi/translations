@@ -89,3 +89,34 @@
 .absolutePosition {
 	position: absolute !important;
 }
+.sapMTCAnim div[data-enabled^="false"] {
+	opacity: 0.6;
+}
+/*.sapMTCAnim div[data-enabled^="false"] .IconTile {
+	color: rgb(181, 181, 181);
+}*/
+@media (min-width: 952px) and (max-width: 1229px) {
+	#homePageView .sapMTC {
+	    width: 80%!important;
+	    margin: 0 auto;
+	}	
+}
+@media (min-width: 1230px) and (max-width: 1589px) {
+	#homePageView .sapMTC {
+	    width: 62%!important;
+	    margin: 0 auto;
+	}	
+}
+@media (min-width: 1590px) and (max-width: 1895px) {
+	#homePageView .sapMTC {
+	    width: 52%!important;
+	    margin: 0 auto;
+	}	
+}
+@media (min-width: 1895px) {
+	#homePageView .sapMTC {
+	    width: 42%!important;
+	    margin: 0 auto;
+	}	
+}
+

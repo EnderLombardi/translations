@@ -8,7 +8,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 	shiftBreakHierarchy: [],
 	showInitial : false,
 	//XXX MEHDI TODO
-	group : "CPP_CLUSTER" ,
+	group : "COMPETENCY" ,
 	box : "OPERATION_ID",
 	// Group use for special case compute
 	specialGroup : "WORKORDER_ID",
@@ -231,7 +231,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 					//"ata": el.ata,
 					//"familyTarget": el.familyTarget,
 					"CPP_CLUSTER" : el.CPP_CLUSTER,
-					//"workPackage" : el.workPackage,
+					"WORK_PACKAGE" : el.WORK_PACKAGE,
 					//"avlPath1": el.avlPath1,
 					//"avlPath2": el.avlPath2,
 					"CRITICAL_PATH" : el.CRITICAL_PATH,
@@ -311,7 +311,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 							"group" : key,
 							"avlLine" : key1,
 							"key": "I_" + airbus.mes.stationtracker.AssignmentManager.idName(key) + "_" + airbus.mes.stationtracker.AssignmentManager.idName(key1),
-							"initial":"Initial plan",
+							"initial": "<i>As Planned</i>",
 						}
 				
 				// find index of initial avl line in the current group corresponding to the reschedule avlLine	

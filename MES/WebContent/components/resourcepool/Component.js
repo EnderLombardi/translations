@@ -22,7 +22,7 @@ airbus.mes.resourcepool.Component.prototype.createContent = function() {
 			viewName : "airbus.mes.resourcepool.views.UsersView",
 			type : sap.ui.core.mvc.ViewType.XML,
 			height : "97%",
-			width: "100%"
+			width: "auto"
 		});
 
 		
@@ -32,7 +32,7 @@ airbus.mes.resourcepool.Component.prototype.createContent = function() {
 			viewName : "airbus.mes.resourcepool.views.WorkCenterView",
 			type : sap.ui.core.mvc.ViewType.XML,
 			height : "97%",
-			width: "100%"
+			width: "auto"
 		});
 		
 		//load Shift View
@@ -41,7 +41,7 @@ airbus.mes.resourcepool.Component.prototype.createContent = function() {
 			viewName : "airbus.mes.resourcepool.views.ShiftView",
 			type : sap.ui.core.mvc.ViewType.XML,
 			height : "97%",
-			width: "100%"
+			width: "auto"
 		});
 		
 		// View on XML

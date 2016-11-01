@@ -39,9 +39,17 @@
 	height: 15%;
 	width: 100%;
 }
+
+#idMainView--lineTrackerName {
+	font-size: 1.2rem;
+	color: white;
+	text-shadow: none;
+}
 /*standard class. temporary fix */
 /*to allow font scaling according to screen. No bad implications*/
-.sapMBtnContent {
+#idMainView--lineTrackerSubheader .sapMBtnContent,
+#idMainView--lineTrackerSubheader-BarLeft .sapMBtnContent,
+#idMainView--lineTrackerToolbar .sapMBtnContent {
 	font-size: 1.6vh;
 }
 
@@ -311,24 +319,37 @@
 	margin: 0;
 }
 
-#idMainView--IconTabsPages .sapMSegBBtnFocusable {
-    height: 3rem;
-    border: none;
-    border-right: 1px solid #8db9ca;
-    background-color: transparent;
-    color: #0D5D76;
-    text-transform: uppercase;
-    line-height: 3rem;
-}
 
 #idMainView--IconTabsPages .sapMSegBBtnDis {
 	height: 3rem;
-	border-right: 1px solid #8db9ca;
+	border:0;
 	line-height: 3rem;
 }
 
+
+#idMainView .sapMSegBBtn.sapMSegBBtnMixed .sapUiIcon {
+    display: inline-block;
+    vertical-align: top;
+    padding: 0.250rem 0.25rem 0.250rem 0;
+    color: #0D5D76;
+}
+#idMainView .sapMSegBBtnFocusable.sapMSegBBtnSel .sapUiIcon {
+    color: #ffffff;
+}
 #idMainView--IconTabsPages .sapMSegBBtnFocusable.sapMSegBBtnSel {
     background-color: #74D2E7;
     color: white;
     font-weight: bold;
+}
+
+#idMainView--IconTabsPages .sapMSegBBtnFocusable {
+    border: none;
+    height: 3rem;
+    line-height: 3rem;
+    display: inline-block;
+
+    vertical-align: top;
+    border: none;
+    color: #0D5D76;
+    background-color: transparent;
 }

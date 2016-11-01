@@ -2,6 +2,11 @@
 	color: #84bd00;
 }
 
+#team-popover button {
+	display: block;
+	width: 100%;
+}
+
 .yHrLabel {
 	float: right;
 	margin-right: 5px;
@@ -264,11 +269,6 @@
 
 .duck-egg-blue {
 	background-color:#d5f1f8 !important;
-}
-
-.operationCP {
-	background-color: #97999b;
-	border: 2px solid blue;
 }
 
 .eventOrange {
@@ -624,7 +624,7 @@ background-color: #0085AD !important;
 }
 
 #stationTrackerView--kpiHeaderContent .kpiValue{
-	font-size: 30px;
+	font-size: 28px;
 	width: 100%;
 	text-align: center ! important;
 }
@@ -770,10 +770,12 @@ background-color: #0085AD !important;
 
 #stationTrackerView--stationtracker .dhx_cal_event,
 #stationTrackerView--stationtracker .dhx_cal_event_line {
+	/*
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
 	border: none;
+	*/
 }
 
 #stationTrackerView--stationtracker .dhx_matrix_cell div,
@@ -837,7 +839,7 @@ background-color: #0085AD !important;
 }
 
 #stationTrackerView--stationtracker .dhx_row_item .dhx_scell_name{
-	padding: 0 25px 0 0;
+	padding: 0 40px 0 0;
 	white-space: nowrap;
 }
 
@@ -916,17 +918,23 @@ background-color: #0085AD !important;
 	opacity: 0.8;
 }
 
+#stationTrackerView--stationtracker .operationCP {
+	background-color: #97999b;
+	border: 2px solid #0D2C63;
+}
+
 /** Takt Adherence **/
 #stationTrackerView--takt_adherence_adherence_value {
 	font-size: 15px;
 }
 
 #stationTrackerView--kpiHeaderContent .takt_kpi_name {
-	text-align: right;
+	text-align: right !important;
 }
 
 #stationTrackerView--kpiHeaderContent .takt_kpi_value {
-	text-align: left;
+	text-align: left !important;
+	margin-left: 0 !important;
 }
 
 #stationTrackerView--kpiHeaderContent .KPITaktChartBlueText {
@@ -1019,6 +1027,11 @@ svg#stationTrackerView--takt_adherence_area_chart {
 	color: #fe5000;
 }
 
+#stationTrackerView--boxSLBEfficiecy_chart-chart-item-3,
+#stationTrackerView--boxResolutionEfficiecy_chart-chart-item-3 {
+	opacity: 0;
+}
+
 /** Shift Staffing **/
 #stationTrackerView--shifStaffingHeader-dmc-chart .Left{
 	background-color: #84bd00;
@@ -1041,6 +1054,10 @@ svg#stationTrackerView--takt_adherence_area_chart {
 	background: #fe5000;
 }
 
+#stationTrackerView--shifStaffingHeader .sapSuiteDmcBarDeltaStripe {
+	background-color: #74D2E7;
+}
+
 /** Station tracker Toolbar **/
 
 #stationTrackerView--toolbarstationtracker {
@@ -1056,6 +1073,16 @@ svg#stationTrackerView--takt_adherence_area_chart {
 }
 
 #stationTrackerView--buttonViewMode .sapMSegBBtnFocusable {
+    height: 3rem;
+    border: none;
+    border-right: 1px solid #8db9ca;
+    background-color: transparent;
+    color: #0D5D76;
+    text-transform: uppercase;
+    line-height: 3rem;
+}
+
+#stationTrackerView--buttonViewMode .sapMSegBBtnDis {
     height: 3rem;
     border: none;
     border-right: 1px solid #8db9ca;
@@ -1151,4 +1178,108 @@ box-shadow: 0 0 5px #333;
 #pop-up-polypoly .sapUiTableColHdrScr .sapUiTableColHdr:nth-child(2) .sapMLabel {
     color: #468497;
     font-size: 0.7rem;
+}
+/* Pop-up Confirm Delete confirmDeleteDialog */
+.ClassOperationDetailPopUp {
+	background: #ffffff;
+    border: none;
+    border-radius: 0;
+    box-shadow: 0 0 5px #333;
+}
+
+.ClassOperationDetailPopUp .sapMPageBusyCoversAll>section {
+	overflow-y: scroll!important;
+}
+.ClassOperationDetailPopUp .sapMPageBusyCoversAll>section .sapMIBar.sapMTB {
+	margin:0!important;
+	height: auto!important;
+}
+.ClassOperationDetailPopUp .switchExecutionButton .sapMSwtHandle {
+    width: 0.8rem;
+    height: 0.8rem;
+    left: 3rem;
+}
+.ClassOperationDetailPopUp .switchExecutionButton .sapMSwt {
+    height: 1rem !important;
+    
+}
+.ClassOperationDetailPopUp .ExecutionModeText, .ClassOperationDetailPopUp .switchExecutionButton  {
+	padding:0;
+}
+.ClassOperationDetailPopUp .operationNavBar>.sapMITBContainerContent>.sapMITBContent {
+	height:auto!important;
+}
+.ClassOperationDetailPopUp .pageSubHeader .expandButton {
+    margin-top: 0;
+}
+.ClassOperationDetailPopUp .sapMPanel .sapMPanelWrappingDivTb .sapMIBar.sapMTB>:first-child {
+	    margin-right: 0;
+}
+.ClassOperationDetailPopUp .sapMPanel .sapMPanelWrappingDivTb .sapMIBar.sapMTB>:first-child div:nth-child(2), .ClassOperationDetailPopUp .sapMPanel .sapMPanelWrappingDivTb .sapMIBar.sapMTB>:first-child div:nth-child(2) div:nth-child(2) {
+	    align-items: center;
+}
+.ClassOperationDetailPopUp .sapMPanel.pageSubHeader .sapMPanelWrappingDivTb .sapMIBar.sapMTB>:first-child div:nth-child(2) .subText {
+	color: #434343!important;
+    font-weight: normal!important;
+    font-size: 1rem!important;
+}
+.ClassOperationDetailPopUp .pageSubHeader {
+    border-bottom: 0px solid #cccccc !important;
+    overflow: visible;
+}
+.ClassOperationDetailPopUp .operationNavBar.sapUiResponsiveContentPadding .sapMITBHead {
+	margin-top:0;
+}
+.ClassOperationDetailPopUp .sapMPanelWrappingDivTb {
+	margin: -1rem -1rem 0 -1rem;
+    padding: 1rem 1rem 0 1rem;
+    background: #fff;
+}
+.ClassOperationDetailPopUp .sapMPageBusyCoversAll {
+	background: #f5f5f5 !important;
+}
+.ClassOperationDetailPopUp #operationDetailsView--operationNav-content {
+    overflow-y: auto !important;
+}
+.ClassOperationDetailPopUp #operationDetailsView--operationNav--header {
+    box-shadow: 0px 5px 15px -5px #0F2D65;
+}
+
+/*DATE PICKER*/
+.sap-desktop .classDateButton .sapMBtnTransparent>.sapMBtnIcon {
+    color: #ffffff;
+}
+.sap-desktop .classDateButton .sapMBtnTransparent {
+	border:none;
+}
+ .sapMTB-Transparent-CTX .classDateButton + .sapMLabel {
+    text-shadow: none;
+    color: #ffffff;
+}
+.sap-desktop .classDatePickerPop  .sapMIBar.sapMHeader-CTX {
+	background: #d4f1f7;
+    border: none;
+    z-index: 9;
+    position: relative;
+}
+.classDatePickerPop  .sapMPopoverArrUp:after {
+	border-bottom-color: #d4f1f7;
+}
+.classDatePickerPop .sapMBtn {
+    background-color: #73d2e6;
+}
+.classDatePickerPop .sapMBtn:hover>.sapMBtnHoverable, .classDatePickerPop .sapMBtn>.sapMBtnHoverable {
+    background-color: transparent;
+    background: transparent;
+    border: none;
+}
+.classDatePickerPop .sapMBtn:hover {
+    background-color: rgba(0, 86, 112, 0.20);
+}
+.classDatePickerButton.sapMBarChild.sapMBtn.sapMBtnBase {
+	margin: 0 auto;
+}
+.classDatePickerButton span {
+	color:#ffffff;
+	text-shadow:none;
 }

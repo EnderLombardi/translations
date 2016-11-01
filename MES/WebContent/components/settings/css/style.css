@@ -44,6 +44,7 @@ font-style: normal !important;
 .pageHeader {
 	color: white !important;
 	background: #0F2D65 ! important;
+	border: 0;
 }
 
 .pageTitle {
@@ -123,4 +124,32 @@ font-style: normal !important;
 [id^="View1--nav"]>.sapMBtnIcon
 {
 	color: rgba(0, 86, 112, 0.94) !important;
+}
+
+/* errorMessageDialog */
+
+/* Pop-up Confirm Delete confirmDeleteDialog */
+#messageDialog--errorMessageDialog {
+	background: #ffffff;
+    border: none;
+    border-radius: 0;
+    box-shadow: 0 0 5px #333;
+}
+
+#messageDialog--errorMessageDialog-header-BarPH {
+	background:#d4f1f7;
+
+}
+#messageDialog--errorMessageDialog-title {
+	color:#434343;
+}
+#messageDialog--errorMessageDialog-cont {
+	border-top:3px solid  rgba(255, 255, 255, 0);
+}
+#messageDialog--errorMessageDialog-header {
+	box-shadow: 0 0 5px #333;
+    overflow: visible;
+}
+#messageDialog--errorMessageDialog-footer {
+	background-color:#0F2D65;
 }

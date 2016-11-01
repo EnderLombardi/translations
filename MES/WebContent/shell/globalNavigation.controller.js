@@ -129,10 +129,12 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
         if ( nav.getCurrentPage().getId() != "homePageView" ) {
             
             airbus.mes.shell.oView.byId("homeButton").setVisible(true);
+            airbus.mes.shell.oView.byId("SelectLanguage").setVisible(false);
            
      } else  {
            
             airbus.mes.shell.oView.byId("homeButton").setVisible(false);
+            airbus.mes.shell.oView.byId("SelectLanguage").setVisible(true);
     }
 
 		switch(nav.getCurrentPage().getId()){
@@ -165,6 +167,7 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 	setInformationVisibility : function(bSet) {
 		this.getView().byId("informationButton").setVisible(bSet);
 		this.getView().byId("homeButton").setVisible(bSet);
+		this.getView().byId("SelectLanguage").setVisible(!bSet);
 	},
 	onInformation : function(oEvent){
 		airbus.mes.shell.oView.addStyleClass("viewOpacity");

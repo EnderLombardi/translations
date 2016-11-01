@@ -524,7 +524,10 @@ z-index :0 !important;
 .fa-pencil:before {
 	content:"\f040"
 } */
-.fa {
+
+#idMainView--lineTrackerSubheader .fa,
+#idMainView--lineTrackerSubheader-BarLeft .fa,
+#idMainView--lineTrackerToolbar .fa {
 	cursor: pointer;
 	font-size: 14px;
 	text-align: center;
@@ -670,12 +673,22 @@ white-space: nowrap !important;
     box-sizing: border-box;
 }
 .factHBox .factStationBoxText {
-	font-size:2vh;
+	font-size:1.5vh;
 	color:#e0e0e0;
 }
+.factHBox .boldFont {
+    font-size: 1.5vh;
+}
 .factHBox .stationBoxBody {
-	padding: 7px 5px 5px 5px;
+	padding: 0.5rem 0.5rem 0 0.5rem;
     width: 50%;
+}
+#idMainView--lineTrackerSubheader {
+	box-shadow: 0px 2px 15px -5px #0F2D65;
+    border: none;
+    border-top: 5px solid #ffffff;
+    position: relative;
+    z-index: 10;
 }
 .factHBox .stationBoxBodyTop {
     height: 5px;
@@ -684,6 +697,175 @@ white-space: nowrap !important;
 .factHBox .structureStationBox {
     min-height: auto;
 }
+/* idFactoryView */
+#idFactoryView--VboxLeft {
+    background-color: #e9fbfd;	
+}
+
 #idFactoryView {
 	background-color:#fff;
+	height:100%!important;
+}
+
+#idFactoryView button .sapMBtnDefault {
+	background: #d5f1f8;
+	color: #0D5D76;
+    font-weight: bold;
+    border: 0;
+}
+#idFactoryView  .transferIsle {
+    width: 100%;
+    background-color: #f5f5f5;
+    color:#c0c0c0;
+    height: 6%;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 2vh;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.spaceTransferIsle {
+    /*background-color: #f5f5f5;*/
+}
+#idFactoryView--VboxLeft .sapMVBox {
+	    -ms-flex-flow: row wrap;
+        flex-flow: row wrap;
+    -ms-flex-line-pack: start;
+        align-content: flex-start;
+}
+#idFactoryView--factoryHBox {
+    margin: 0;
+    height: 100%!important;
+}
+#idFactoryView--VboxLeft .sapMVBox > .sapMFlexItem {
+	width:100%;
+}
+#idMainView--lineTrackerToolbar {
+	border:0;
+}
+#idFactoryView--factoryHBox .stationBoxHeader {
+    height: 35px;
+    font-size: 1.5vh;
+    background: #eaeaea;
+    line-height: 2.5rem;
+    font-weight: normal;
+}
+#idFactoryView--factoryHBox .structureStationBox {
+    padding:0;
+}
+
+.stationBoxBody>[src$="red_new.png"] + div  {
+	background:#000!important;
+}
+.adjustPulseSelect button {
+	height:auto;
+	border:0:
+}
+.factHBox .factory_lineButton {
+	padding:0;
+}
+
+.adjustPulseSelect button.myPulseButton {
+	padding: 0;
+	height: 1.9rem;
+}
+.adjustPulseSelect button > div.sapMBtnReject  {
+	background:transparent;
+	border:0;
+	color: #0D5D76;
+	height: 1.9rem;
+}
+.adjustPulseSelect button > div.sapMBtnReject > span  {
+	height: 1.9rem;
+	line-height: 1.9rem;
+}
+
+.adjustPulseSelect button.myPulseButton.sapMBtnDisabled {
+    text-shadow: none;
+    cursor: default;
+    opacity: 0.5;
+    background:#f1f1f1;
+}
+.adjustPulseSelect button.myPulseButton.sapMBtnInverted {
+    background:#84bd00;
+}
+.adjustPulseSelect button.myPulseButton.sapMBtnInverted > div.sapMBtnReject {
+    color: #ffffff;
+}
+.adjustPulseSelect>.sapMFlexItem>.sapMSlt.sapMSltDefault {
+	margin:0;
+}
+.sap-desktop .lineTrackerSubheader button>.sapMBtnTransparent {
+    border-radius:0;
+    border:0;
+    height: 3rem;
+    /*padding: 0 0.25rem;*/
+}
+
+.sap-desktop .lineTrackerSubheader button>.sapMBtnTransparent.sapMToggleBtnPressed span, .sap-desktop .lineTrackerSubheader button>.sapMBtnTransparent span#idMainView--diaporama-img.sapUiIconMirrorInRTL {
+	color:#ffffff;
+	background-color:#74D2E7;
+
+}
+
+.sap-desktop .lineTrackerSubheader button[class^="#"]>.sapMBtnTransparent {
+	padding:0;
+}
+.sap-desktop .lineTrackerSubheader button {
+	padding:0;
+}
+.sap-desktop .lineTrackerSubheader button[class^="#"].sapMBarChild {
+	margin : 0.25rem 0;
+	width: 3rem;
+	height: 46px;
+
+}
+.sap-desktop .lineTrackerSubheader button {
+
+}
+.sap-desktop .lineTrackerSubheader button[class^="#"]>.sapMBtnTransparent>.sapMBtnIcon {
+	width: 3rem;
+	padding: 0;
+	height: 46px;
+}
+.sap-desktop .lineTrackerSubheader button[class^="#"]>.sapMBtnTransparent {
+	height: 46px;
+}
+.sap-desktop .lineTrackerSubheader button>.sapMBtnTransparent>.sapMBtnIcon {	 
+	color: #0D5D76;
+	line-height: 3rem;
+    max-height: 3rem;
+    display: block;
+    background-color:transparent;
+    	    padding: 0 0.25rem;
+}
+.lineTrackerSubheader .sapMBtn:hover>.sapMBtnTransparent.sapMBtnHoverable.sapMBtnActive {
+	color:#ffffff;
+	background-color:#74D2E7;	
+}
+.lineTrackerSubheader .sapMBtn:hover>.sapMBtnTransparent.sapMBtnHoverable span,
+ .lineTrackerSubheade .sapMToggleBtnPressed.sapMBtnHoverable .sapMBtnIcon:hover,
+.sap-desktop .lineTrackerSubheader button>.sapMBtnTransparent.sapMToggleBtnPressed {
+    background-color: rgba(0, 86, 112, 0.20);
+}
+    
+#idFactoryView--factoryHBox fieldset {
+    border-color: #0D5D76;
+    color: #0D5D76;
+}
+
+.lineTrackerSubheader .sapMBarChild:nth-child(5) {
+	margin: 0 0 0 0.25rem!important;
+}
+.lineTrackerSubheader .sapMBarChild:nth-child(6) {
+	margin: 0 0.25rem!important;
+}
+.lineTrackerSubheader .sapMBarChild:nth-child(7) {
+	margin: 0 0 0 0!important;
+}
+.lineTrackerSubheader .sapMBarChild:nth-child(9) {
+	margin: 0 0.25rem!important;
+}
+.lineTrackerSubheader .sapMBarChild:nth-child(10) {
+	margin: 0!important;
 }

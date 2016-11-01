@@ -33,15 +33,15 @@
 					</HBox>
 				</CustomListItem>
 				<layoutData>
-					<l:SplitterLayoutData size="20%" resizable="true" />
+					<l:SplitterLayoutData size="25%" resizable="true" />
 				</layoutData>
 			</List>
 
-			<List headerText="{i18n>Plant}" items="{path: 'site>/SiteCollection'}"
+			<List headerText="{i18n>Site}" items="{path: 'site>/SiteCollection'}"
 				width="95%" class="sapUiTinyMargin" id="headTextPlant">
 				<StandardListItem title="{site>Site}" type="Navigation" press="onPressSite" />
 				<layoutData>
-					<l:SplitterLayoutData size="25%" resizable="true" />
+					<l:SplitterLayoutData size="20%" resizable="true" />
 				</layoutData>
 			</List>
 			<!-- <List headerText="Program" items="{path: 'plantModel>/Rowsets/Rowset/0/Row'}"
@@ -100,7 +100,7 @@
 							</items>
 						</ComboBox>
 						<Label id="lblMSN" text="{i18n>MSN}" design="Bold" />
-						<ComboBox id="selectMSN" items="{site>/SiteCollection}"
+						<ComboBox id="selectMSN" items="{site>/SiteCollection/0/LineCollection/0/StationCollection/0/MSNCollection}"
 							visible="true" change="onSelectionChange">
 							<items>
 								<core:Item key="{site>MSN}" text="{site>MSN}" />
@@ -110,7 +110,7 @@
 					</f:content>
 				</f:SimpleForm>
 				<layoutData>
-					<l:SplitterLayoutData size="20%" resizable="true" />
+					<l:SplitterLayoutData size="30%" resizable="true" />
 				</layoutData>
 			</VBox>
 

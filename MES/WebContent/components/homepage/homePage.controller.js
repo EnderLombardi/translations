@@ -21,6 +21,9 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 			case "StationTracker":
 				airbus.mes.settings.GlobalFunction.navigateTo("Go to Station Tracker", "stationtracker");
 				break;
+			case "WorkerOrderTracker":
+				airbus.mes.settings.GlobalFunction.navigateTo("Go to Work Tracker", "stationtracker");
+				break;
 			case "ResourcePool":
 				airbus.mes.settings.GlobalFunction.navigateTo("Go to Team Assignment", "teamassignment");
 				break;
@@ -43,7 +46,11 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 			case "StationTracker":
 				airbus.mes.shell.util.navFunctions.stationTracker();
 				break;
-
+				
+			case "WorkerOrderTracker":
+				airbus.mes.shell.util.navFunctions.stationTracker();
+				break;
+				
 			case "ResourcePool":
 				airbus.mes.shell.util.navFunctions.resourcePool();
 				break;
@@ -57,6 +64,7 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 			case "TeamCompetencies" :
 			airbus.mes.shell.util.navFunctions.polypoly();
 			}
+			
 
 		}
 		;
@@ -94,7 +102,7 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 	onAfterRendering : function() {
 		// Retrieve default user settings after the rendering of the Home Page
 		//		TODO
-		//		airbus.mes.settings.oView.getController().getUserSettings();
+		airbus.mes.settings.oView.getController().getUserSettings();
 	},
 
 /**

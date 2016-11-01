@@ -1,20 +1,26 @@
 <core:View xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout"
 	xmlns:f="sap.ui.layout.form" xmlns:html="http://www.w3.org/1999/xhtml"
 	controllerName="airbus.mes.operationdetail.progressSlider">
-	<Page showHeader="false" height="100%" enableScrolling="false"
+	<Page showHeader="false" height="100%" enableScrolling="true"
 		class="WhiteBG">
 
 		<content>
-			<Panel expandable="true" expanded="false" width="auto"
+			<Panel expandable="true" expanded="false" width="auto" stretchContentHeight="true"
 				id="operationDetailPanel" class="pageSubHeader sapUiSmallMarginTop sapUiSmallMarginBeginEnd">
 				<headerToolbar>
 					<Toolbar height="7rem" class="ML-05">
 						<VBox width="100%">
-						<HBox height="30%" justifyContent="SpaceBetween">
-							<Text id="operationName" class="mainText"
-								text="OP {operationDetailModel>/Rowsets/Rowset/0/Row/0/operation_no} - {operationDetailModel>/Rowsets/Rowset/0/Row/0/operation_desc}"/>
-								<Switch customTextOn=" " customTextOff=" " state="true" class="switchExecutionButton"/>
-						</HBox>
+							<HBox height="30%" justifyContent="SpaceBetween">
+								<Text id="operationName" class="mainText"
+									text="OP {operationDetailModel>/Rowsets/Rowset/0/Row/0/operation_no} - {operationDetailModel>/Rowsets/Rowset/0/Row/0/operation_desc}" />
+
+								<HBox justifyContent="SpaceBetween" width="180px">
+									<Text id="switchStatusLabel" text="Execution Mode" class="ExecutionModeText"/>
+									<Switch customTextOn=" " customTextOff=" " state="true"
+										class="switchExecutionButton" change="switchMode" />
+								</HBox>
+
+							</HBox>
 							<HBox justifyContent="SpaceBetween" width="100%">
 								<HBox justifyContent="SpaceBetween">
 
@@ -52,8 +58,12 @@
 								<Text
 									text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/time_spent}" />
 								<Label type="space"></Label>
-								<!-- <Label text="System status: " /> <Text text="DSEX DSPT REL" 
-									/> <Label type="space"></Label> -->
+								<Label type="space"></Label>
+								 <Label text="Material description : " /> 
+								 <Text text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/material_description}" />
+								 <Label type="space" />
+								 <Label text="Number of employees : " /> <Text text=" - " />
+								 <Label type="space"></Label>								 
 							</VBox>
 							<VBox>
 								<Label text="End:" />
@@ -64,15 +74,25 @@
 								<Text
 									text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/original_start_time} - {operationDetailModel>/Rowsets/Rowset/0/Row/0/original_end_time}" />
 								<Label type="space"></Label>
-								<!-- <Label text="User status:" /> <Text text=" - " /> -->
+								<Label text="User status:" /> <Text text=" - " />
+								<Label type="space"/>
+								<Label text="CPP Cluster:" /> 
+								<Text text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/cpp_cluster}" />
 							</VBox>
 							<VBox>
 								<Label text="Work Center:" />
 								<Text
 									text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/workcenter}" />
 								<Label type="space"></Label>
-								<!-- <Label text="ACPnG" /> <Text text="28/08/2016" /> <Label type="space"></Label> 
-									<Label text="Bundle" /> <Text text=" - " /> -->
+								<Label text="Work Package:" />
+								<Text text= "{operationDetailModel>/Rowsets/Rowset/0/Row/0/work_package}"/>
+								<Label type="space"></Label>
+								<Label type="space"/>								
+								<!-- <Label text="ACPnG" /> <Text text="28/08/2016" /> <Label type="space"></Label>--> 
+							    <Label text="Bundle" /> <Text text=" - " /> 
+							    <Label type="space" />
+							    <Label text=" System status:" />
+							    <Text text=" - " />  	
 							</VBox>
 							<!-- <VBox> <Label text="Activity:" /> <Text text="MEC" /> <Label 
 								type="space"></Label> <Label text="N. employees" /> <Text text="1" /> <Label 
@@ -88,7 +108,7 @@
 				backgroundDesign="Transparent" height="100%"
 				class="operationNavBar sapUiResponsiveContentPadding">
 				<items>
-					<IconTabFilter text="Progress">
+					<IconTabFilter text="{i18n>Status}">
 
 						<VBox width="100%" justifyContent="SpaceBetween">
 							<HBox justifyContent="Center" class="sapUiSmallMarginTopBottom">
@@ -100,15 +120,15 @@
 							</HBox>
 
 							<l:Grid defaultSpan="L12 M12 S12" class="proressSliderGrid">
-								<Button id="btnReduce" type="Transparent" press="reduceProgress"
+								<!--  <Button id="btnReduce" type="Transparent" press="reduceProgress"
 									icon="sap-icon://sys-minus" class="progressBtnColor">
 									<layoutData>
 										<l:GridData span="L2 M12 S12" />
 									</layoutData>
-								</Button>
+								</Button>  -->
 								<HBox width="100%" class="progressSlider">
 									<layoutData>
-										<l:GridData span="L8 M12 S12" />
+										<l:GridData span="L12 M12 S12" />
 									</layoutData>
 									<Slider id="progressSliderfirst" class="comfirmedProgressSlider"
 										min="0"
@@ -118,31 +138,39 @@
 									<Slider id="progressSlider" class="dynProgressSlider sliderInprogressColor"
 										max="100" showHandleTooltip="true"
 										width="{parts: ['operationDetailModel>/Rowsets/Rowset/0/Row/0/status', 'operationDetailModel>/Rowsets/Rowset/0/Row/0/progress'], formatter: 'airbus.mes.operationdetail.Formatter.sliderStatus' }"
-										enabled="true">
+										enabled="false">
 									</Slider>
 
 								</HBox>
-								<Button id="btnAdd" type="Transparent" press="addProgress"
+								<!--  <Button id="btnAdd" type="Transparent" press="addProgress"
 									icon="sap-icon://sys-add" class="progressBtnColor">
 									<layoutData>
 										<l:GridData span="L2 M12 S12" />
 									</layoutData>
-								</Button>
+								</Button>  --> 
 							</l:Grid>
-							<!-- <l:Grid defaultSpan="L12 M12 S12"> <Toolbar height="5rem"> <layoutData> 
-								<l:GridData span="L12 M12 S12" /> </layoutData> <ToolbarSpacer /> <Button 
-								id="btnPause" text="Pause" press="pauseOperation" class="sapMBtnDisabled 
-								sapUiSmallMarginBegin sapUiSmallMarginEnd"> </Button> <Button id="btnConfirm" 
-								class="btnConfirm sapUiSmallMarginEnd" text="Confirm" press="confirmOperation"> 
-								</Button> <Button id="btnActivate" text="Activate" press="activateOperation" 
-								type="Emphasized"> </Button> <Button type="Emphasized" id="btnComplete" text="Complete" 
-								press="confirmOperation" class="sapUiSmallMarginEnd"> </Button> <ToolbarSpacer 
-								/> </Toolbar> </l:Grid> -->
+							
+							
+						<!-- 	<f:SimpleForm width="auto" backgroundDesign="Transparent" id="reasonCode" minWidth="800" maxWidth="800" class="sapUiLargeMarginTopBottom sapUiLargeMarginBeginEnd"
+								maxContainerCols="2" editable="true" layout="ResponsiveGridLayout"
+								labelSpanL="1" labelSpanM="2" emptySpanL="0" emptySpanM="0"
+								columnsL="1" columnsM="1" validateFieldGroup="onValidatereason">
+								<f:content>
+									<Label text="Reason Code" />
+									<Select enabled="{path: 'operationDetailModel>/Rowsets/Rowset/0/Row/0/status', formatter: 'airbus.mes.operationdetail.Formatter.setReasonCodeEnabled'}" forceSelection="true" change="onSelectionReason"
+										id="reasonCodeSelectBox" items="{reasonCodeModel>/Rowsets/Rowset/0/Row}">
+										<core:Item key="{reasonCodeModel>REASON_CODE}" text="{reasonCodeModel>DESCRIPTION}" />
+									</Select>
+
+									<Label text="Comment" />
+									<TextArea enabled="{path: 'operationDetailModel>/Rowsets/Rowset/0/Row/0/status', formatter: 'airbus.mes.operationdetail.Formatter.setReasonCodeEnabled'}" id="reasonCodeComments" />
+								</f:content>
+							</f:SimpleForm>  -->
 						</VBox>
 					</IconTabFilter>
-					<IconTabFilter text="Disruption"/>
-					<IconTabFilter text="Reschedule"/>
-					<IconTabFilter text="TouchNGo"/>
+					<IconTabFilter text="{i18n>Disruption}" />
+					<IconTabFilter text="{i18n>Reschedule}" />
+					<IconTabFilter text="{i18n>Touchngo}" />
 
 
 					<!-- <IconTabFilter icon="sap-icon://task" count="389" text="Checklist"> 
@@ -163,7 +191,7 @@
 				</items>
 			</IconTabBar>
 
-			<Bar class="operationDetailFooter">
+			<Bar id="operationStatusFooter" class="operationDetailFooter">
 				<contentRight>
 					<Button id="btnPause" text="{i18n>pause}" icon="sap-icon://media-pause"
 						press="pauseOperation" />
@@ -172,7 +200,7 @@
 					<Button id="btnActivate" text="{i18n>activate}" press="activateOperation" />
 					<Button id="btnComplete" text="{i18n>complete}" icon="sap-icon://accept"
 						press="confirmOperation" />
-					<Button id="btnClose" text="{i18n>close}" icon="sap-icon://sys-cancel"
+					<Button id="btnClose" text="{i18n>close}" icon="sap-icon://decline"
 						press="onCloseOperationDetailPopup" />
 				</contentRight>
 			</Bar>

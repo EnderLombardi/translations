@@ -131,7 +131,7 @@ airbus.mes.linetracker.util.ModelManager = {
 			dest = "sopra";
 			break;
 		default:
-			dest = "airbus";
+			dest = "local";
 
 			break;
 		}

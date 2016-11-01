@@ -4,62 +4,78 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta http-equiv='Content-Type' content='text/html;charset=UTF-8' />
 
-<script
-	src="https://sapui5.netweaver.ondemand.com/1.36.11/resources/sap-ui-core.js"
-	id="sap-ui-bootstrap" data-sap-ui-libs="sap.m, sap.ui.table"
-	data-sap-ui-theme="sap_bluecrystal"
-	data-sap-ui-xx-bindingSyntax="complex"
-	>
-	
-</script>
-
 <link rel="stylesheet" href="../lib/dhtmlxscheduler/dhtmlxscheduler.css" type="text/css" title="no title">
 <link rel='stylesheet' type='text/css' href='../lib/dhtmlxscheduler/dhtmlxscheduler_flat.css'>
 <link rel="stylesheet" href="../components/stationtracker/css/font-awesome.min.css">
 <link rel="stylesheet" href="../components/stationtracker/css/customcss.css" type="text/css" media="screen">
 
 
-<script>
-/* 	jQuery.sap.registerModulePath("airbus.mes.shell", "/MES/shell");
-	jQuery.sap.registerModulePath("airbus.mes.homepage","/MES/components/homepage"); */
-
-/* 	jQuery.sap.registerModulePath("airbus.mes.shell", "/MES/shell"); */
- 	jQuery.sap.registerModulePath("airbus.mes.shell", "./"); 
- 	jQuery.sap.registerModulePath("airbus.mes.settings", "../components/settings");  	
-/* 	jQuery.sap.registerModulePath("airbus.mes.homepage", "/MES/components/homepage"); */
-	jQuery.sap.registerModulePath("airbus.mes.homepage", "../components/homepage");
-
-
-	var oComp1 = sap.ui.getCore().createComponent({
-		name : "airbus.mes.homepage", // root component folder is resources
-	});
-	// Create a Ui container 
-	var oCompCont = new sap.ui.core.ComponentContainer({
-		component : sap.ui.getCore().createComponent({
-			name : "airbus.mes.shell", // root component folder is resources
- 			propagateModel : true,
-		})
-	});
-
- 	airbus.mes.component = airbus.mes.component || {};
-	
-	airbus.mes.component.settings = sap.ui.getCore().createComponent({
-		name : "airbus.mes.settings", // root component folder is resources
-	});
-
-	var nav = airbus.mes.shell.oView.byId("navCont");
-	nav.afterNavigate;
-
-	nav.addPage(airbus.mes.homepage.oView);
-	airbus.mes.homepage.oView.placeAt(nav);
-
-	// place this Ui Container with the Component inside into UI Area 
-	oCompCont.placeAt("content");
-</script>
-
 </head>
 <!-- <body class="sapUiBody" role="application">
 	<div id="content"></div>
 </body> -->
-	<body class="sapUiBody" id="content">
+	<body class="sapUiBody" id="content" style="background-color: #002C63; margin: 0;">
+		<div id="welcome_airbus" style="height: 100vh; display: flex;">
+			<div style="margin: auto;">
+				<img src="../images/Airbus.png" style="display: block; width: 40vw; height: auto; margin: auto; transform: translateY(2vh);" />
+				<img src="../images/ajax_loader_metal_512.gif" style="display: block; width: auto; height: 8vh; margin: 0 auto; transform: translateY(12vh);" />
+			</div>
+		</div>
+		
+
+<script
+	src="https://sapui5.netweaver.ondemand.com/1.36.11/resources/sap-ui-core.js"
+	id="sap-ui-bootstrap" data-sap-ui-libs="sap.m, sap.ui.table"
+	data-sap-ui-theme="sap_bluecrystal"
+	data-sap-ui-xx-bindingSyntax="complex">
+</script>
+
+<script>
+
+	sap.ui.getCore().attachInit( function () { 
+
+	/* 	jQuery.sap.registerModulePath("airbus.mes.shell", "/MES/shell");
+		jQuery.sap.registerModulePath("airbus.mes.homepage","/MES/components/homepage"); */
+	
+	/* 	jQuery.sap.registerModulePath("airbus.mes.shell", "/MES/shell"); */
+	 	jQuery.sap.registerModulePath("airbus.mes.shell", "./"); 
+	 	jQuery.sap.registerModulePath("airbus.mes.settings", "../components/settings");  	
+	/* 	jQuery.sap.registerModulePath("airbus.mes.homepage", "/MES/components/homepage"); */
+		jQuery.sap.registerModulePath("airbus.mes.homepage", "../components/homepage");
+	
+	
+		oComp1 = sap.ui.getCore().createComponent({
+			name : "airbus.mes.homepage", // root component folder is resources
+		});
+		// Create a Ui container 
+		oCompCont = new sap.ui.core.ComponentContainer({
+			component : sap.ui.getCore().createComponent({
+				name : "airbus.mes.shell", // root component folder is resources
+	 			propagateModel : true,
+			})
+		});
+	
+	 	airbus.mes.component = airbus.mes.component || {};
+		
+		airbus.mes.component.settings = sap.ui.getCore().createComponent({
+			name : "airbus.mes.settings", // root component folder is resources
+		});
+	
+		nav = airbus.mes.shell.oView.byId("navCont");
+		nav.afterNavigate;
+	
+		nav.addPage(airbus.mes.homepage.oView);
+		airbus.mes.homepage.oView.placeAt(nav);
+	
+		// place this Ui Container with the Component inside into UI Area 
+		oCompCont.placeAt("content");
+		// remove splash color & style
+		document.body.style = {};
+		
+	} );
+	
+</script>
+
+		
+	</body>
 </html>

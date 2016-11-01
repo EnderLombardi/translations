@@ -24,49 +24,49 @@
 	"Spots": [
 		{
 			"pos": "1.367682;43.629386;0",
-			"tooltip": "AL Toulouse",
+			"tooltip": "Toulouse",
 			"type": "Success",
 			"text": "TOU"
 		},
 		{
 			"pos": "-2.168241;47.315853;0",
-			"tooltip": "AL Saint-Nazaire",
+			"tooltip": "Saint-Nazaire",
 			"type": "Success",
 			"text": "SNZ"
 		},
 		{
 			"pos": "-1.588520;47.161646;0",
-			"tooltip": "AL Nantes",
+			"tooltip": "Nantes",
 			"type": "Success",
 			"text": "NAN"
 		},
 		{
 			"pos": "9.846767;53.536830;0",
-			"tooltip": "AL Hamburg",
+			"tooltip": "Hamburg",
 			"type": "Success",
 			"text": "HBG"
 		},
 		{
 			"pos": "-2.982056;53.170039;0",
-			"tooltip": "AL Broughton",
+			"tooltip": "Broughton",
 			"type": "Success",
 			"text": "BGT"
 		},
 		{
 			"pos": "-3.825973;40.160493;0",
-			"tooltip": "AL Illescas",
+			"tooltip": "Illescas",
 			"type": "Success",
 			"text": "ILL"
 		},
 		{
 			"pos": "-3.708972;40.295893;0",
-			"tooltip": "AL Getafe",
+			"tooltip": "Getafe",
 			"type": "Success",
 			"text": "GTF"
 		},
 		{
 			"pos": "-6.207377;36.525165;0",
-			"tooltip": "AL Puerto Real",
+			"tooltip": "Puerto Real",
 			"type": "Success",
 			"text": "PTR"
 		}

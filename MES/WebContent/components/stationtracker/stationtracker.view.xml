@@ -2,7 +2,7 @@
 	xmlns:suite="sap.suite.ui.commons" controllerName="airbus.mes.stationtracker.stationtracker"
 	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:custom="airbus.mes.stationtracker"
 	xmlns:control="airbus.mes.stationtracker.control" xmlns:layout="sap.ui.layout"
-	xmlns:micro="sap.suite.ui.microchart">
+	xmlns:micro="sap.suite.ui.microchart" xmlns:uni="sap.ui.unified">
 	<Page title="Station Tracker" height="100%" showHeader="false"
 		enableScrolling="false " class="GenricBgColor">
 
@@ -11,8 +11,9 @@
 				expandAnimation="false" class="pageHeader sapUiSmallMarginTop contentNoPad">
 				<headerToolbar>
 					<Toolbar id="kpiHeaderToolbar">
-						<DatePicker id="DatePicker" width="auto" change="changeDay"
-							class="pageHeaderBlue" />
+						<!-- <DatePicker id="DatePicker" width="auto" change="changeDay" class="pageHeaderBlue"/> -->
+						<Button id="dateButton" icon="sap-icon://appointment" type="Transparent" press="datePick" class="classDateButton"/>
+						<Label id="dateLabel" text="" class="classDateLabel"/>
 						<Select id="selectShift"
 							class="sapUiTinyMarginBeginEnd pageHeader pageHeaderBlue" change="changeShift"
 							items="{ path : 'stationTrackerShift>/' }" enabled="false"	>
@@ -71,27 +72,36 @@
 
 								<VBox width="35%">
 
-									<layout:Grid class="" defaultSpan="L6 M6 S6">
+									<layout:Grid id="TaktAdherenceTrend" defaultSpan="L4 M4 S4">
 										<layout:content>
-											<Label text="{StationTrackerI18n>Trend}" class=" whiteText" />
-											<core:Icon src="sap-icon://up"
-												class="sapUiSmallMarginBeginEnd TrendGreen" />
+											<Label text="{StationTrackerI18n>Trend}" class=" whiteText takt_kpi_name">
+												<layoutData><layout:GridData span="L8 M8 S8" /></layoutData>
+											</Label>
+											<core:Icon src="sap-icon://up" class="sapUiSmallMarginBeginEnd TrendGreen takt_kpi_value" />
 
-											<Label text="{StationTrackerI18n>DeltaVsSLB}" class=" whiteText" />
-											<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/SLB}"
-												class="whiteText" />
+											<Label text="{StationTrackerI18n>DeltaVsSLB}" class="whiteText takt_kpi_name">
+												<layoutData><layout:GridData span="L8 M8 S8" /></layoutData>
+											</Label>
+											<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/DeltaVsSLB}"
+												class="whiteText takt_kpi_value" />
 
-											<Label text="{StationTrackerI18n>DeltaVsSoA}" class=" whiteText" />
-											<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/SLB}"
-												class="whiteText" />
+											<Label text="{StationTrackerI18n>DeltaVsSoA}" class="whiteText takt_kpi_name">
+												<layoutData><layout:GridData span="L8 M8 S8" /></layoutData>
+											</Label>
+											<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/DeltaVsSoA}"
+												class="whiteText takt_kpi_value" />
 
-											<Label text="{StationTrackerI18n>CycleTime}" class=" whiteText" />
-											<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/SLB}"
-												class="whiteText" />
+											<Label text="{StationTrackerI18n>CycleTime}" class="whiteText takt_kpi_name">
+												<layoutData><layout:GridData span="L8 M8 S8" /></layoutData>
+											</Label>
+											<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/CycleTime}"
+												class="whiteText takt_kpi_value" />
 
-											<Label text="{StationTrackerI18n>WorkCintent}" class=" whiteText" />
-											<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/SLB}"
-												class="whiteText" />
+											<Label text="{StationTrackerI18n>WorkCintent}" class="whiteText takt_kpi_name">
+												<layoutData><layout:GridData span="L8 M8 S8" /></layoutData>
+											</Label>
+											<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/WorkContent}"
+												class="whiteText takt_kpi_value" />
 										</layout:content>
 									</layout:Grid>
 
@@ -107,7 +117,7 @@
 
 							<Label text="{StationTrackerI18n>LabourEfficiency}" design="Bold"
 								width="100%" class="whiteTextHeader sapUiSmallMarginTopBottom" />
-							<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/SLB}"
+							<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/Labour}"
 								id="LabourEfficiencyValue" class="sapUiSmallMarginTop whiteText kpiValue" />
 						</VBox>
 
@@ -117,16 +127,17 @@
 								class="whiteTextHeader sapUiSmallMarginTopBottom" />
 							<VBox width="90%">
 								<micro:ComparisonMicroChart width="100%"
+									id="boxSLBEfficiecy_chart"
 									size="L" colorPalette="#84bd00, #f5f5f5, #fe5000">
 									<micro:data>
 										<micro:ComparisonMicroChartData
-											title="{StationTrackerI18n>TaktSLB}" value="8" />
+											title="{StationTrackerI18n>TaktSLB}" value="85" />
 										<micro:ComparisonMicroChartData
-											title="{StationTrackerI18n>WhiteSpaces}" value="3" />
+											title="{StationTrackerI18n>WhiteSpaces}" value="10" />
 										<micro:ComparisonMicroChartData
-											title="{StationTrackerI18n>RedSpaces}" value="10" />
+											title="{StationTrackerI18n>RedSpaces}" value="5" />
 										<micro:ComparisonMicroChartData
-											class="hiddenRefBar" title="{StationTrackerI18n>RedSpaces}" value="20" visible="false"/>
+											id="hiddenRefBarSBL" title="{StationTrackerI18n>RedSpaces}" value="100" visible="false"/>
 										</micro:data>
 											
 								</micro:ComparisonMicroChart>
@@ -141,11 +152,11 @@
 									<Label text="{StationTrackerI18n>DisruptionTotal}" class=" whiteText kpiName"
 										design="Bold" />
 									<Label text="{StationTrackerI18n>Disruption}" class=" whiteText kpiName" />
-									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/Total}"
+									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/TotalDisruption}"
 										class=" whiteText kpiValue" design="Bold" />
 									<Label text="{StationTrackerI18n>Andon}" class=" redText kpiErrorValue"
 										design="Bold" />
-									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/Total}"
+									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/TotalAndon}"
 										class="redText kpiValue kpiErrorValue" design="Bold" />
 								</VBox>
 								<VBox width="30%">
@@ -161,28 +172,28 @@
 								</VBox>
 								<VBox alignItems="Center" width="20%">
 									<Label text="{StationTrackerI18n>Disruption}" class="whiteText" />
-									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/Total}"
+									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/NCDisruption}"
 										class=" whiteText" />
-									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/Total}"
+									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/MissingDisruption}"
 										class=" whiteText" />
-									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/Total}"
+									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/JTDisruption}"
 										class=" whiteText" />
-									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/Total}"
+									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/FTEDisruption}"
 										class=" whiteText" />
-											<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/-}"
+											<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/OtherDisruption}"
 										class=" whiteText" />
 								</VBox>
 								<VBox alignItems="Center" width="20%">
 									<Label text="{StationTrackerI18n>Andon}" class="redText kpiErrorValue" />
-									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/Total}"
+									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/NCAndon}"
 										class=" redText kpiErrorValue" />
-									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/Total}"
+									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/MissingAndon}"
 										class=" redText kpiErrorValue" />
-									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/Total}"
+									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/JTAndon}"
 										class=" redText kpiErrorValue" />
-									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/Total}"
+									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/FTEAndon}"
 										class="redText kpiErrorValue" />
-											<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/-}"
+											<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/OtherAndon}"
 										class="redText kpiErrorValu" />
 								</VBox>
 							</HBox>
@@ -194,16 +205,17 @@
 								design="Bold" class="whiteTextHeader sapUiSmallMarginTopBottom" />
 							<VBox width="90%">
 								<micro:ComparisonMicroChart size="L"
-									width="100%" colorPalette="#84bd00, #fe5000, #fe5000" >
+									id="boxResolutionEfficiecy_chart"
+									width="100%" colorPalette="#84bd00,#fe5000,#fe5000,#0F2D65" >
 									<micro:data>
 										<micro:ComparisonMicroChartData
 											title="{StationTrackerI18n>PromisedInTakt}" value="8" />
 										<micro:ComparisonMicroChartData
 											title="{StationTrackerI18n>PromisedOutTakt}" value="3" />
 										<micro:ComparisonMicroChartData
-											title="{StationTrackerI18n>NotAcknowledged}" value="10" />
+											title="{StationTrackerI18n>NotAcknowledged}" value="2" />
 										<micro:ComparisonMicroChartData
-											class="hiddenRefBar" title="{StationTrackerI18n>RedSpaces}" value="20" visible="false"/>
+											id="hiddenRefBarResolution" title="{StationTrackerI18n>RedSpaces}" value="13" visible="false"/>
 									</micro:data>
 								</micro:ComparisonMicroChart>
 							</VBox>
@@ -214,11 +226,11 @@
 								width="100%" class="whiteTextHeader sapUiSmallMarginTopBottom " />
 							<Label text="{StationTrackerI18n>Operations}" width="100%"
 								class="whiteText kpiName" />
-							<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/Total}"
+							<Label text="{KPI>/Rowsets/Rowset/0/Row/ExtraWork/Ops}"
 								class="whiteText kpiValue" design="Bold" />
 							<Label text="{StationTrackerI18n>Hrs}" width="100%"
 								class="whiteText kpiName" />
-							<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/Total}"
+							<Label text="{KPI>/Rowsets/Rowset/0/Row/ExtraWork/Hrs}"
 								class="whiteText kpiValue" design="Bold" />
 						</VBox>
 
@@ -230,7 +242,7 @@
 								<micro:DeltaMicroChart width="100%"
 									id="shifStaffingHeader" isResponsive="true" value1="10" value2="9"
 									title1="{StationTrackerI18n>NeedFTE}" title2="{StationTrackerI18n>AllocatedFTE}"
-									displayValue1="100 IM" displayValue2="900 IM"
+									displayValue1="10" displayValue2="9"
 									deltaDisplayValue="1" />
 							</VBox>
 						</VBox>
@@ -342,16 +354,18 @@
 								press="onShiftPress" key="shift" />
 							<SegmentedButtonItem text="{StationTrackerI18n>ButtonDay}"
 								press="onDayPress" key="day" />
+							<SegmentedButtonItem text="{StationTrackerI18n>ButtonTakt}"
+								press="" key="takt" enabled="false" />
 						</items>
 					</SegmentedButton>
 					<!-- <Label text="{StationTrackerI18n>GroupingSortBy}" /> -->
-					<Label text="{StationTrackerI18n>Grouping}"/>
+					<!-- <Label text="{StationTrackerI18n>Grouping}"/> -->
 					<Select id="selectGroup" class="sapUiTinyMarginBeginEnd comboBoxStyle"
 						items="{groupModel>/Rowsets/Rowset/0/Row/Grouping}" change="changeGroup">
 						<core:ListItem key="{groupModel>key}"
 							text="{ path : 'groupModel>Value' , formatter : '.getI18nValue' }" />
 					</Select>
-						<Label id="selectBoxLabel" text="{StationTrackerI18n>Granularity}"/>
+					<!-- <Label id="selectBoxLabel" text="{StationTrackerI18n>Granularity}"/> -->
 					<Select id="selectBox" class="sapUiTinyMarginBeginEnd comboBoxStyle"
 						items="{groupModel>/Rowsets/Rowset/0/Row/Boxing}" change="changeBox">
 						<core:ListItem key="{groupModel>key}"
@@ -362,12 +376,12 @@
 					<ToolbarSpacer />
 					<HBox id="toolbarDate" class="sapUiTinyMarginBeginEnd"></HBox>
 					<ToolbarSpacer />
-						<Button text="{StationTrackerI18n>missingParts}"
+						<Button text="{StationTrackerI18n>missingParts}" enabled="false"
 						type="Transparent" icon="sap-icon://task" class="sapUiTinyMarginBeginEnd"></Button>
 					<Button text="{StationTrackerI18n>ButtonShowCP}" type="Transparent"
 						icon="sap-icon://kpi-corporate-performance" class="sapUiTinyMarginBeginEnd"
 						press="onCPPress"></Button>
-						<Button text="{StationTrackerI18n>disruptions/andon}"
+						<Button text="{StationTrackerI18n>disruptions/andon}" enabled="false"
 						type="Transparent" icon="sap-icon://alert" class="sapUiTinyMarginBeginEnd"></Button>
 					<Button text="{StationTrackerI18n>ButtonOutstandingWork}"
 						type="Transparent" icon="sap-icon://cause" class="sapUiTinyMarginBeginEnd"
