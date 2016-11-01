@@ -54,6 +54,15 @@ airbus.mes.resourcepool.util.ModelManager = {
 
 		this.loadModelValueHelp();
 	},
+	
+	askResourcePool: function(){
+		// Ask to select Resource Pool if launched initially or Site is changed
+		if(airbus.mes.resourcepool.util.ModelManager.site != airbus.mes.settings.ModelManager.site || airbus.mes.resourcepool.util.ModelManager.resourceName === undefined){
+			airbus.mes.resourcepool.util.ModelManager.site = airbus.mes.settings.ModelManager.site;
+			var controller = airbus.mes.resourcepool.oView.getController();
+			controller.openSelectResourcePool();
+		}
+	},
 
 	loadMainViewModels : function() {
 		this.currentView.setBusy(true);

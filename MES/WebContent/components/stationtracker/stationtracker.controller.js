@@ -330,6 +330,10 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			
 		
 	},
+	
+	onResourcePoolOpen: function(oEvt){
+		airbus.mes.shell.util.navFunctions.resourcePool();
+	},
 
 
 	onUnplannedPress : function(oEvent) {
@@ -804,7 +808,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			
 	},
 	showDisruption : function(oEvent){
-		// Place the disruption tracker in the custom control 
+	/*	// Place the disruption tracker in the custom control 
 		if (airbus.mes.stationtracker.disruptions === undefined || airbus.mes.stationtracker.disruptions.oView === undefined){
 			jQuery.sap.registerModulePath("airbus.mes.stationtracker.disruptions", "../components/stationtracker/disruptions");
 			airbus.mes.stationtracker.disruptions = sap.ui.getCore().createComponent({
@@ -834,10 +838,9 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	    });
 
 			// Add Disruptions Component in Station Tracker
-			this.getView().byId("disruptNotifications").addItem(airbus.mes.stationtracker.disruptions.oView);
-		//	}
-		//else
-		//	this.getView().byId("disruptNotifications").closeNavigation();
+			this.getView().byId("disruptNotifications").addItem(airbus.mes.stationtracker.disruptions.oView); */
+		
+		airbus.mes.shell.util.navFunctions.disruptionTracker();
 	},
 	
 	/**

@@ -5,6 +5,7 @@
 
 		<subHeader>
 			<Toolbar>
+				<Button icon="sap-icon://arrow-left" text="Back" press="onNavBack" type="Transparent"/>
 				<ToolbarSpacer />
 				<Text text="{disruptiontrackerI18n>disruptionsTitle}" class="headerText" />
 				<ToolbarSpacer />

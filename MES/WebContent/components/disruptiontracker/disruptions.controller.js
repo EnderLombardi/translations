@@ -46,6 +46,10 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 			nav.addPage(airbus.mes.disruptionKPI.oView);
 		}
 		nav.to(airbus.mes.disruptionKPI.oView.getId());	
+	},
+	
+	onNavBack: function(oEvent){
+		nav.back();
 	}
 
 });

@@ -1731,5 +1731,9 @@ sap.ui
 							this.getView().byId("availableWCPanel").rerender();
 							this.getView().byId("assignedWCPanel").rerender();
 						}
+					},
+					
+					onNavBack: function(oEvent){
+						nav.back();
 					}
 				});
