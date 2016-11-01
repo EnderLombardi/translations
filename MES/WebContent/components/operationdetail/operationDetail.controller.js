@@ -16,6 +16,19 @@ sap.ui
 					 * @memberOf components.stationtracker.stationtracker
 					 */
 					onInit : function() {
+						this.nav = this.getView()
+								.byId("operDetailNavContainer");
+						if (airbus.mes.operationdetail.status === undefined
+								|| airbus.mes.operationdetail.status.oView === undefined) {
+							sap.ui.getCore().createComponent({
+								name : "airbus.mes.operationdetail.status",
+							});
+							this.nav
+									.addPage(airbus.mes.operationdetail.status.oView);
+						}
+
+						this.nav.to(airbus.mes.operationdetail.status.oView
+								.getId());
 					},
 					expandOperationDetailPanel : function(oEvent) {
 						var toggleButton = this.getView().byId(
@@ -454,17 +467,6 @@ sap.ui
 					 */
 					onAfterRendering : function() {
 
-						this.nav = this.getView().byId("operDetailNavContainer");
-						if (airbus.mes.operationdetail.status === undefined || airbus.mes.operationdetail.status.oView === undefined){
-							sap.ui.getCore().createComponent({
-								name : "airbus.mes.operationdetail.status",
-							});
-							this.nav.addPage(airbus.mes.operationdetail.status.oView);
-						}
-						
-						this.nav.to(airbus.mes.operationdetail.status.oView.getId());
-						
-						
 						// Collapse Operation Detail panel and show Expand
 						// button
 						this.getView().byId("opDetailExpandButton").setVisible(
@@ -472,49 +474,46 @@ sap.ui
 						this.getView().byId("operationDetailPanel")
 								.setExpanded(false);
 
-						/*// Load Reason Code Model
-						// Model for Reason Code Comments
-						airbus.mes.operationdetail.ModelManager
-								.loadReasonCodeModel();
-
-						// Set Slider enabled or dis-abeled based on Status
-						sap.ui.getCore().getModel("operationDetailModel")
-								.refresh();
-
-						if (this.getView().byId("operationStatus").getText() === "Not Started"
-								|| this.getView().byId("operationStatus")
-										.getText() === "Paused") {
-
-							this.setProgressScreenBtn(false, false, true);
-							this.getView().byId("progressSlider").setEnabled(
-									false);
-
-						} else if (this.getView().byId("operationStatus")
-								.getText() === "In Progress") {
-
-							this.setProgressScreenBtn(true, true, false);
-							this.getView().byId("progressSlider").setEnabled(
-									true);
-
-						} else if (this.getView().byId("operationStatus")
-								.getText() === "Blocked"
-								|| this.getView().byId("operationStatus")
-										.getText() === "Confirmed") {
-
-							this.setProgressScreenBtn(false, false, false);
-							this.getView().byId("progressSlider").setEnabled(
-									false);
-							this.getView().byId("progressSliderfirst")
-									.setEnabled(false);
-
-						}
-
-						$("#operationDetailsView--operationNav-content")
-								.height(
-										($("#"+ airbus.mes.operationdetail.parentId).height()
-												- $("#operationDetailsView--operationDetailPanel").height()
-												- $("#operationDetailsView--operationNav--header").height()
-												- $("#operationDetailsView--operationStatusFooter").height() ));*/
+						/*
+						 * // Load Reason Code Model // Model for Reason Code
+						 * Comments airbus.mes.operationdetail.ModelManager
+						 * .loadReasonCodeModel(); // Set Slider enabled or
+						 * dis-abeled based on Status
+						 * sap.ui.getCore().getModel("operationDetailModel")
+						 * .refresh();
+						 * 
+						 * if (this.getView().byId("operationStatus").getText()
+						 * === "Not Started" ||
+						 * this.getView().byId("operationStatus") .getText() ===
+						 * "Paused") {
+						 * 
+						 * this.setProgressScreenBtn(false, false, true);
+						 * this.getView().byId("progressSlider").setEnabled(
+						 * false); } else if
+						 * (this.getView().byId("operationStatus") .getText()
+						 * === "In Progress") {
+						 * 
+						 * this.setProgressScreenBtn(true, true, false);
+						 * this.getView().byId("progressSlider").setEnabled(
+						 * true); } else if
+						 * (this.getView().byId("operationStatus") .getText()
+						 * === "Blocked" ||
+						 * this.getView().byId("operationStatus") .getText() ===
+						 * "Confirmed") {
+						 * 
+						 * this.setProgressScreenBtn(false, false, false);
+						 * this.getView().byId("progressSlider").setEnabled(
+						 * false); this.getView().byId("progressSliderfirst")
+						 * .setEnabled(false); }
+						 * 
+						 * $("#operationDetailsView--operationNav-content")
+						 * .height( ($("#"+
+						 * airbus.mes.operationdetail.parentId).height() -
+						 * $("#operationDetailsView--operationDetailPanel").height() -
+						 * $("#operationDetailsView--operationNav--header").height() -
+						 * $("#operationDetailsView--operationStatusFooter").height()
+						 * ));
+						 */
 
 					},
 
@@ -531,26 +530,67 @@ sap.ui
 							this.getView().byId("switchStatusLabel").setText(
 									this.getView().getModel("i18n")
 											.getProperty("Execution"));
-							//this.setScreenforSwitchMode(true);
+							// this.setScreenforSwitchMode(true);
 
 						} else {
 							this.getView().byId("switchStatusLabel").setText(
 									this.getView().getModel("i18n")
 											.getProperty("ReadOnly"));
-							//this.setScreenforSwitchMode(false);
+							// this.setScreenforSwitchMode(false);
+						}
+					},
+					/***********************************************************
+					 * Click on segmented button to respective page
+					 */
+					openPage : function(oEvent) {
+						var sItemKey = oEvent.getSource().getKey();
+
+						switch (sItemKey) {
+
+						case "status":
+							if (airbus.mes.operationdetail.status === undefined
+									|| airbus.mes.operationdetail.status.oView === undefined) {
+								sap.ui.getCore().createComponent({
+									name : "airbus.mes.operationdetail.status",
+								});
+								this.nav
+										.addPage(airbus.mes.operationdetail.status.oView);
+							}
+
+							this.nav.to(airbus.mes.operationdetail.status.oView
+									.getId());
+
+							break;
+						case "disruption":
+							if (airbus.mes.operationdetail.createDisruption === undefined
+									|| airbus.mes.operationdetail.createDisruption.oView === undefined) {
+								sap.ui
+										.getCore()
+										.createComponent(
+												{
+													name : "airbus.mes.operationdetail.createDisruption",
+												});
+								this.nav
+										.addPage(airbus.mes.operationdetail.createDisruption.oView);
+							}
+
+							this.nav
+									.to(airbus.mes.operationdetail.createDisruption.oView
+											.getId());
+							break;
 						}
 					},
 
-					/*setScreenforSwitchMode : function(mode) {
-						this.getView().byId("btnPause").setVisible(mode);
-						this.getView().byId("btnConfirm").setVisible(mode);
-						this.getView().byId("btnComplete").setVisible(mode);
-						this.getView().byId("reasonCodeSelectBox").setEnabled(mode);
-						this.getView().byId("reasonCodeComments").setEnabled(mode);
-						
-						this.getView().byId("btnReduce").setEnbaled(mode);
-						this.getView().byId("btnAdd").setEnbaled(mode);
-						this.getView().byId("progressSlider").setEnabled(mode);
-					}
-*/
+				/*
+				 * setScreenforSwitchMode : function(mode) {
+				 * this.getView().byId("btnPause").setVisible(mode);
+				 * this.getView().byId("btnConfirm").setVisible(mode);
+				 * this.getView().byId("btnComplete").setVisible(mode);
+				 * this.getView().byId("reasonCodeSelectBox").setEnabled(mode);
+				 * this.getView().byId("reasonCodeComments").setEnabled(mode);
+				 * 
+				 * this.getView().byId("btnReduce").setEnbaled(mode);
+				 * this.getView().byId("btnAdd").setEnbaled(mode);
+				 * this.getView().byId("progressSlider").setEnabled(mode); }
+				 */
 				});

@@ -1,7 +1,7 @@
 <core:View xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout"
 	xmlns:f="sap.ui.layout.form" xmlns:html="http://www.w3.org/1999/xhtml"
 	controllerName="airbus.mes.operationdetail.operationDetail">
-	<Page showHeader="false" height="100%" enableScrolling="true"
+	<Page showHeader="false" height="100%" enableScrolling="false"
 		class="WhiteBG">
 
 		<content>
@@ -132,6 +132,7 @@
 
 				</pages>
 			</NavContainer>
+			
 		</content>
 	</Page>
 </core:View>
