@@ -14,7 +14,7 @@
 	float:left !important;
 }
 .progressSlider .dynProgressSlider{
-	margin-left:-2.1rem !important;
+	    margin-left: -2.1rem !important;
 }
 .sliderInprogressColor .sapMSliderProgress{
 	background-color: lime !important;
@@ -57,6 +57,10 @@
  
 .operationDetailHeadPanel {
     overflow: visible;
+}
+.operationDetailHeadPanel .sapMPageBusyCoversAll>section .sapMIBar.sapMTB {
+	margin:0!important;
+	height: auto!important;
 }
 .operationDetailHeadPanel .sapMPanelExpandableIcon {
 	display:none;
@@ -115,8 +119,26 @@
     padding: 1rem 1rem 0 1rem;
     background: #fff;
 }
+<<<<<<< HEAD
 
 /*** End of CSS for Operation Details Sub Header and Menu Bar  ******/
+=======
+/*** End of CSS for Operation Details Sub Header  ******/
+
+/**** CSS for Navigation Bar ****/
+
+.ClassOperationDetailPopUp .opDetailNavToolbar{
+	background:#fff;
+    box-shadow: 0px 5px 15px -5px #0F2D65;
+}
+.ClassOperationDetailPopUp .opDetailNavToolbar ul.opDetailNav {
+	margin-left: 0px;
+}
+.ClassOperationDetailPopUp .opDetailNavToolbar ul.opDetailNav li {
+    border: 0px !important;
+}
+/*** End of CSS for NAvigation Bar *****/
+>>>>>>> branch 'MESv0.9' of https://bundleerp.git.ptx.fr.sopra/g/mes
 
 /**** CSS for Operation Icon Nav Bar *****/
 .operationNavBar .countText{

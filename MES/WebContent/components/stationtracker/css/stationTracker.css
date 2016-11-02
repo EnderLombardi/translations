@@ -1190,22 +1190,8 @@ box-shadow: 0 0 5px #333;
 .ClassOperationDetailPopUp .sapMPageBusyCoversAll>section {
 	overflow-y: scroll!important;
 }
-.ClassOperationDetailPopUp .sapMPageBusyCoversAll>section .sapMIBar.sapMTB {
-	margin:0!important;
-	height: auto!important;
-}
 .ClassOperationDetailPopUp .sapMPageBusyCoversAll {
 	background: #f5f5f5 !important;
-}
-.ClassOperationDetailPopUp .opDetailNavToolbar{
-	background:#fff;
-    box-shadow: 0px 5px 15px -5px #0F2D65;
-}
-.ClassOperationDetailPopUp .opDetailNavToolbar ul.opDetailNav {
-	margin-left: 0px;
-}
-.ClassOperationDetailPopUp .opDetailNavToolbar ul.opDetailNav li {
-    border: 0px !important;
 }
 
 /*DATE PICKER*/
