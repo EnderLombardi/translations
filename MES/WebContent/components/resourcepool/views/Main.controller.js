@@ -1032,12 +1032,15 @@ sap.ui
 					},
 
 					cancelForm : function(oEvt) {
-						airbus.mes.resourcepool.searchResourcePool.close();
+						if(airbus.mes.resourcepool.searchResourcePool.isOpen() == true)
+							{
+								airbus.mes.resourcepool.searchResourcePool.close();
+							}
 						if (airbus.mes.resourcepool.util.ModelManager.resourceName === undefined
 								|| airbus.mes.resourcepool.util.ModelManager.resourceName == "") {
 							// if(nav.getPreviousPage().sId != "homePageView")
-							// nav.back();
-							nav.backToPage("homePageView")
+							 nav.back();
+							//nav.backToPage("homePageView")
 						}
 					},
 
@@ -1426,6 +1429,11 @@ sap.ui
 							airbus.mes.resourcepool.oUpdateDialog.open();
 
 						}
+					},
+					
+					closeForm: function(){
+						airbus.mes.resourcepool.searchResourcePool.close();
+						
 					},
 
 					/***********************************************************

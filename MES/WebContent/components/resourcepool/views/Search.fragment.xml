@@ -81,7 +81,7 @@
 								</layoutData>
 							</Button>
 							<Button text="{i18nModel>Cancel}" type="Reject"
-								enabled="true" tap="cancelForm">
+								enabled="true" tap="closeForm">
 								<layoutData>
 									<l:ResponsiveFlowLayoutData weight="12" />
 								</layoutData>
