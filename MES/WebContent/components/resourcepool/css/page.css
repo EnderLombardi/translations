@@ -208,7 +208,7 @@
 #resourcePool header.sapMSubHeader-CTX {
 	box-shadow: 0px 2px 15px -5px #0F2D65;
     border: none;
-    border-top: 5px solid #ffffff;
+    border-top: 0.6rem solid #ffffff;
     position: relative;
     z-index: 10;
 }
