@@ -11,9 +11,10 @@ sap.ui
 					 * 
 					 * @memberOf airbus.mes.components.disruptions.CreateDisruption
 					 */
-					onInit : function() {
-					//	 this.loadDisruptionCustomData();
-					},
+	/*				onInit : function() {
+						// this.loadDisruptionCustomData();
+						this.addParent(this.selectTree, undefined);
+					},*/
 
 					/**
 					 * Similar to onAfterRendering, but this hook is invoked
@@ -28,32 +29,30 @@ sap.ui
 					selectTree : {
 						id : "selectCategory",
 						type : "select",
-						path : "category",
-						attr : "category",
+						path : "MessageType",
+						attr : "MessageType",
 						childs : [ {
 							id : "selectReasonTree",
 							type : "select",
-							path : "line",
-							attr : "line",
+							path : "Reason",
+							attr : "Reason",
 							childs : [ {
-								id : "selectRootCause",
+								id : "selectResponsible",
 								type : "select",
-								path : "rootCause",
-								attr : "rootCause",
-								childs : []
-							},
-							{
-								id : "Return",
-								type : "Return",
-								childs : []
-							}]
-						}, {
-							id : "selectResponsible",
-							type : "select",
-							path : "responsible",
-							attr : "responsible",
-							childs : []
-						} ]
+								path : "ResponsibleGroup",
+								attr : "ResponsibleGroup",
+								childs : [ {
+									id : "selectRootCause",
+									type : "select",
+									path : "rootCause",
+									attr : "rootCause",
+									childs: []}, {
+									id : "Return",
+									type : "Return",
+									childs : []
+								} ]
+							} ]
+						}, ]
 					},
 					ModelManager : undefined,
 					onInit : function() {
@@ -98,13 +97,13 @@ sap.ui
 									that.filterField(oElement);
 								});
 
-						if (id === "selectCatogory") {
+					/*	if (id === "selectCatogory") {
 							this.setEnabledSelectBox(true, true, false, false);
 						} else if (id === "selectReasonTree") {
 							this.setEnabledSelectBox(true, true, true, false);
 						} else {
 							this.setEnabledSelectBox(true, true, true, true);
-						}
+						}*/
 
 					},
 
@@ -127,7 +126,7 @@ sap.ui
 						var oElement = oTree.parent;
 						while (oElement) {
 							var val = this.getView().byId(oElement.id)
-									.getValue();
+									.getSelectedKey();
 							if (val) {
 								var oFilter = new sap.ui.model.Filter(
 										oElement.path, "EQ", val);
@@ -194,10 +193,11 @@ sap.ui
 					 */
 					onCreateDisrupution : function() {
 
-						var sObject = this.getView().byId("object").getKey();
-						var sGravity = this.getView().byId("gravity").getKey();
-						var sNature = this.getView().byId("nature").getKey();
-						var sHelp = this.getView().byId("help").getKey();
+						var sCategory = this.getView().byId("selectCategory").getSelectedKey();
+						var sGravity = this.getView().byId("gravity").getSelectedKey();
+						var sReason = this.getView().byId("selectReason").getSelectedKey();
+						var sResponsible = this.getView().byId("selectResponsibe").getSelectedKey();
+						var sRootCause = this.getView().byId("selectRootCause").getSelectedKey();
 						var dOpenDate = this.getView().byId("openDate")
 								.getDateValue();
 						var dExpectedDate = this.getView().byId("expectedDate")
@@ -206,8 +206,69 @@ sap.ui
 								.getDateValue();
 						var dExpectedTime = this.getView().byId("expectedTime")
 								.getDateValue();
+						var iTimeLost = this.getView().byId("timeLost").getValue();
+						
+						var sComment = this.getView().byId("comment").getText();
 
 						// Convert input to XML format
+						
+						var aModelData = []
+						
+
+							var oJson = {
+								"payload":[{
+									"attribute" : "OPERATION_BO",
+									"value": sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/operation_bo"),
+								},
+								{
+									"attribute" : "SFC_BO",
+									"value": sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/sfc"),	
+								},
+								{
+									"attribute" : "SFC_STEP_BO",
+									"value": sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/sfc_step_ref"),	
+								},
+								{
+									"attribute" : "DESCRIPTION",
+									"value": this.getView().byId("comment").getText()
+								},
+								{
+									"attribute" : "REASON",
+									"value": this.getView().byId("selectReason").getSelectedKey()
+								},
+								{
+									"attribute" : "TIME_LOST",
+									"value": this.getView().byId("timeLost").getValue()
+								},
+								{
+									"attribute" : "REQD_FIX_BY",
+									"value": this.getView().byId("expectedDate")
+									.getDateValue()+this.getView().byId("expectedTime")
+									.getDateValue()
+								},
+								{
+									"attribute" : "GRAVITY",
+									"value": this.getView().byId("gravity").getSelectedKey()
+								},
+								{
+									"attribute" : "STATUS",
+									"value": this.getView().getModel("i18nModel").getProperty("Pending")
+								},
+								{
+									"attribute" : "ROOT_CAUSE",
+									"value": this.getView().byId("selectRootCause").getSelectedKey()
+								},
+								{
+									"attribute" : "MSN",
+									"value": airbus.mes.settings.ModelManager.msn
+								}
+								]
+								
+							}
+							aModelData.push(oJson);
+
+						
+							
 						airbus.mes.disruptions.ModelManager.createDisruption(
 								sObject, sGravity, sNature, sHelp, dOpenDate,
 								dExpectedDate, dOpenTime, dExpectedTime);
@@ -221,9 +282,9 @@ sap.ui
 				 * 
 				 * @memberOf airbus.mes.components.disruptions.CreateDisruption
 				 */
-				// onAfterRendering: function() {
-				//
-				// },
+				 onAfterRendering: function() {
+					// this.filterField(this.selectTree);
+				 },
 				/**
 				 * Called when the Controller is destroyed. Use this one to free
 				 * resources and finalize activities.

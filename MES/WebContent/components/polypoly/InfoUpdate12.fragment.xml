@@ -8,8 +8,8 @@
 		<content>
 			<VBox alignItems="Center">
 				<items>
-					<Label text="{/name}" textAlign="Center" design="Bold" />
-					<Table items="{path: '/Row'}">
+					<Label text="{infoModel>/name}" textAlign="Center" design="Bold" />
+					<Table items="{path: 'infoModel>/Row'}">
 						<columns>
 							<Column hAlign="Center" width="7rem">
 								<Text text="{PolypolyI18n>AVLLine}" />
@@ -24,10 +24,10 @@
 						<items>
 							<ColumnListItem>
 								<cells>
-									<Text text="{QA}" />
-									<Text text="{path:'Date', formatter: 'formatter.dateFormat'}" />
-									<core:Icon src="{parts: [{path:'Status'}], formatter: '.statusFormatter'}"
-												color= "{parts: [{path:'Status'}], formatter: '.colorFormatter'}"/>
+									<Text text="{infoModel>QA}" />
+									<Text text="{path:'infoModel>Date', formatter: 'formatter.dateFormat'}" />
+									<core:Icon src="{parts: [{path:'infoModel>Status'}], formatter: '.statusFormatter'}"
+												color= "{parts: [{path:'infoModel>Status'}], formatter: '.colorFormatter'}"/>
 								</cells>
 							</ColumnListItem>
 						</items>

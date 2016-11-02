@@ -487,8 +487,15 @@ airbus.mes.polypoly.PolypolyManager = {
 		$.ajax({
 			url : urlqalevelcreate,
 			success : function(data, textStatus, jqXHR) {
-				airbus.mes.polypoly.ModelManager.getPolyPolyModel("CHES", "1L"); //FIXME When Settings ready
-//				airbus.mes.polypoly.ModelManager.getPolyPolyModel(airbus.mes.settings.ModelManager.site, airbus.mes.settings.ModelManager.station);
+				switch(data.Rowsets.Rowset[0].Row[0].Message_Type){
+				case "S":
+					airbus.mes.polypoly.ModelManager.getPolyPolyModel("CHES", "1L"); //FIXME When Settings ready
+//					airbus.mes.polypoly.ModelManager.getPolyPolyModel(airbus.mes.settings.ModelManager.site, airbus.mes.settings.ModelManager.station);
+					break;
+				case "E":
+					sap.m.MessageToast.show("Error : " + data.Rowsets.Rowset[0].Row[0].Message );
+					break;
+				}	
 			},
 		})
 	},
@@ -507,8 +514,15 @@ airbus.mes.polypoly.PolypolyManager = {
 		$.ajax({
 			url : urlqaleveldelete,
 			success : function(data, textStatus, jqXHR) {
-				airbus.mes.polypoly.ModelManager.getPolyPolyModel("CHES", "1L"); //FIXME When Settings ready
-//				airbus.mes.polypoly.ModelManager.getPolyPolyModel(airbus.mes.settings.ModelManager.site, airbus.mes.settings.ModelManager.station);
+				switch(data.Rowsets.Rowset[0].Row[0].Message_Type){
+				case "S":
+					airbus.mes.polypoly.ModelManager.getPolyPolyModel("CHES", "1L"); //FIXME When Settings ready
+//					airbus.mes.polypoly.ModelManager.getPolyPolyModel(airbus.mes.settings.ModelManager.site, airbus.mes.settings.ModelManager.station);
+					break;
+				case "E":
+					sap.m.MessageToast.show("Error : " + data.Rowsets.Rowset[0].Row[0].Message );
+					break;
+				}	
 			},
 		})
 	},
@@ -529,8 +543,16 @@ airbus.mes.polypoly.PolypolyManager = {
 		$.ajax({
 			url : urlqalevelupdate,
 			success : function(data, textStatus, jqXHR) {
-				airbus.mes.polypoly.ModelManager.getPolyPolyModel("CHES", "1L"); //FIXME When Settings ready
-//				airbus.mes.polypoly.ModelManager.getPolyPolyModel(airbus.mes.settings.ModelManager.site, airbus.mes.settings.ModelManager.station);
+				switch(data.Rowsets.Rowset[0].Row[0].Message_Type){
+				case "S":
+					airbus.mes.polypoly.ModelManager.getPolyPolyModel("CHES", "1L"); //FIXME When Settings ready
+//					airbus.mes.polypoly.ModelManager.getPolyPolyModel(airbus.mes.settings.ModelManager.site, airbus.mes.settings.ModelManager.station);
+					break;
+				case "E":
+					sap.m.MessageToast.show("Error : " + data.Rowsets.Rowset[0].Row[0].Message );
+					break;
+				}				
+				
 			},
 		})
 	},
@@ -552,45 +574,49 @@ airbus.mes.polypoly.PolypolyManager = {
 					success : function(data, textStatus, jqXHR) {
 						data.Rowsets.Rowset[0].name = airbus.mes.polypoly.PolypolyManager.levelUpdater.sUserName;
 						var infoModel = new sap.ui.model.json.JSONModel();
+						infoModel.setData(data.Rowsets.Rowset[0]);
 						if (!airbus.mes.polypoly.infoUpdate12) {
 							airbus.mes.polypoly.infoUpdate12 = sap.ui.xmlfragment("airbus.mes.polypoly.InfoUpdate12", airbus.mes.polypoly.oView.getController());
 						}
 						airbus.mes.polypoly.infoUpdate12.open();
-						airbus.mes.polypoly.infoUpdate12.setModel(infoModel);
+						airbus.mes.polypoly.infoUpdate12.setModel(infoModel, "infoModel");
+						airbus.mes.polypoly.infoUpdate12.setModel(airbus.mes.polypoly.oView.getModel("PolypolyI18n"),"PolypolyI18n");
 					},
 				})
 	},
 
-//	updateLevel23 : function(sUserID, sTechName) {
-//		var urlqalevel23 = this.urlModel.getProperty("urlqalevel23");
-//
-//		urlqalevel23 = urlqalevel23.replace("$erpid", sUserID);
-//		urlqalevel23 = urlqalevel23.replace("$competency", sTechName);
-//		urlqalevel23 = urlqalevel23.replace("$site", ModelManager.site);
-//
-//		$
-//				.ajax({
-//					url : urlqalevel23,
-//					success : function(data, textStatus, jqXHR) {
-//						data.Rowsets.Rowset[0].name = PolypolyManager.levelUpdater.sUserName;
-//						var infoModel = new sap.ui.model.json.JSONModel();
-//						infoModel.setData(data.Rowsets.Rowset[0]);
-//						if (infoModel.getData().Row) {
-//							if (!sap.ui.getCore().byId("infoUpdate23")) {
-//								sap.ui.xmlfragment("airbus.InfoUpdate23",
-//										sap.ui.getCore().byId("polypolyView")
-//												.getController());
-//							}
-//							sap.ui.getCore().byId("infoUpdate23").open();
-//							sap.ui.getCore().byId("infoUpdate23").setModel(
-//									infoModel);
-//						} else {
-//							PolypolyManager.checkUpdateLevel();
-//						}
-//					},
-//				})
-//	},
-//
+	updateLevel23 : function(sUserID, sTechName) {
+		var urlqalevel23 = this.urlModel.getProperty("urlqalevel23");
+
+		urlqalevel23 = urlqalevel23.replace("$erpid", sUserID);
+		urlqalevel23 = urlqalevel23.replace("$competency", sTechName);
+//		urlqalevel23 = urlqalevel23.replace("$site", airbus.mes.settings.ModelManager.site); //FIXME: Uncomment when ready
+		urlqalevel23 = urlqalevel23.replace("$site", "CHES");
+		
+		//Handle User & Password																	 //FIXME Temp
+		urlqalevel23 = airbus.mes.polypoly.ModelManager.handleUserConnection(urlqalevel23);			 //FIXME Temp
+
+		$
+				.ajax({
+					url : urlqalevel23,
+					success : function(data, textStatus, jqXHR) {
+						data.Rowsets.Rowset[0].name = airbus.mes.polypoly.PolypolyManager.levelUpdater.sUserName;
+						var infoModel = new sap.ui.model.json.JSONModel();
+						infoModel.setData(data.Rowsets.Rowset[0]);
+						if (infoModel.getData().Row) {
+							if (!airbus.mes.polypoly.infoUpdate23) {
+								airbus.mes.polypoly.infoUpdate23 = sap.ui.xmlfragment("airbus.mes.polypoly.InfoUpdate23", airbus.mes.polypoly.oView.getController());
+							}
+							airbus.mes.polypoly.infoUpdate23.open();
+							airbus.mes.polypoly.infoUpdate23.setModel(infoModel, "infoModel");
+							airbus.mes.polypoly.infoUpdate23.setModel(airbus.mes.polypoly.oView.getModel("PolypolyI18n"),"PolypolyI18n");
+						} else {
+							airbus.mes.polypoly.PolypolyManager.checkUpdateLevel();
+						}
+					},
+				})
+	},
+
 //	createColumn : function(sName, sQA, sNeed3, sNeed4, sTechname) {
 //		var urlcreatecolumn = this.urlModel.getProperty("urlcreatecolumn");
 //
