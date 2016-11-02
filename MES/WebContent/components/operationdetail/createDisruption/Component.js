@@ -29,10 +29,10 @@ airbus.mes.operationdetail.createDisruption.Component.prototype.createContent = 
 			height:"auto"
 		})
 
-		var i18n = new sap.ui.model.resource.ResourceModel({
+		var i18nModel = new sap.ui.model.resource.ResourceModel({
 	        bundleUrl : "../components/disruptions/i18n/i18n.properties"
 	    });
-		this.oView.setModel(i18n, "i18n");	
+		this.oView.setModel(i18nModel, "i18nModel");	
 		airbus.mes.operationdetail.createDisruption.oView = this.oView		
 		
 		

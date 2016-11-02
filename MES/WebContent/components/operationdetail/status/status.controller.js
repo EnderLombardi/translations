@@ -35,6 +35,12 @@ sap.ui
 						oProgressSlider = this.getView().byId("progressSlider");
 						oProgressSlider.stepDown(1);
 					},
+					onCloseOperationDetailPopup : function() {
+
+						airbus.mes.stationtracker.operationDetailPopup.close();
+						airbus.mes.shell.oView.getController()
+								.renderStationTracker();
+					},					
 					/***********************************************************
 					 * 
 					 * activate pause or confirm operation

@@ -32,6 +32,7 @@ airbus.mes.disruptions.ModelManager = {
 		});
 
 		this.core.setModel(new sap.ui.model.json.JSONModel(), "disruptionCustomData");
+		this.core.setModel(new sap.ui.model.json.JSONModel(), "DisruptionDetail");
 		
 		this.loadDisruptionCustomData();
 
@@ -60,5 +61,17 @@ airbus.mes.disruptions.ModelManager = {
 		return urlCustomData;
 
 	},
-
+	loadDisruptionsByOperation: function(operation) {
+		var oViewModel = sap.ui.getCore().getModel("DisruptionDetail");
+		
+		var getDiruptionsURL = this.urlModel.getProperty("getDiruptionsURL");
+		
+		getDiruptionsURL = getDiruptionsURL.replace('$Site', airbus.mes.settings.ModelManager.site);
+		getDiruptionsURL = getDiruptionsURL.replace('$Operation', operation);
+		
+		oViewModel.loadData(this.urlModel.getProperty("getDiruptionsURL"), null, false);
+	}
 };
+
+
+	
