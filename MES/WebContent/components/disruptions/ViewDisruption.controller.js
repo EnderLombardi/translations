@@ -11,9 +11,8 @@ sap.ui
 					 * 
 					 * @memberOf components.disruptions.ViewDisruption
 					 */
-					// onInit: function() {
-					//
-					// },
+					 onInit: function() {
+					 },
 					/**
 					 * Similar to onAfterRendering, but this hook is invoked
 					 * before the controller's View is re-rendered (NOT before

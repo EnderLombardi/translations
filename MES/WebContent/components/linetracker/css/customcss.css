@@ -784,7 +784,7 @@ white-space: nowrap !important;
     text-shadow: none;
     cursor: default;
     opacity: 0.5;
-    background:#f1f1f1;
+    background:#ebeff4;
 }
 .adjustPulseSelect button.myPulseButton.sapMBtnInverted {
     background:#84bd00;
@@ -794,6 +794,7 @@ white-space: nowrap !important;
 }
 .adjustPulseSelect>.sapMFlexItem>.sapMSlt.sapMSltDefault {
 	margin:0;
+	border:0;
 }
 .sap-desktop .lineTrackerSubheader button>.sapMBtnTransparent {
     border-radius:0;

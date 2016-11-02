@@ -84,7 +84,7 @@ airbus.mes.shell.util.navFunctions = {
 				}
 			}
 			nav.to(oPolypolyPage);						
-			airbus.mes.polypoly.ModelManager.getPolyPolyModel("F1","1","10","CHES");		
+			airbus.mes.polypoly.ModelManager.getPolyPolyModel("CHES", "1L");		//TODO Get Parameters
 			airbus.mes.polypoly.oView.getController().initiatePolypoly();	
 			
 		},

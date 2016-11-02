@@ -38,9 +38,8 @@
 		</Panel>
 
 
-		<Table class="disruptionsTable sapUiSmallMargin"
+		<Table class="disruptionsTable sapUiSmallMarginBottom"
 			items="{ path: 'disruptionsTrackerModel>/Rowsets/Rowset/0/Row' }">
-
 
 			<columns>
 				<Column>

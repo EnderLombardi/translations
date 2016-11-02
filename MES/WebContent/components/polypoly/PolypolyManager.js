@@ -477,10 +477,9 @@ airbus.mes.polypoly.PolypolyManager = {
 //		var urlqalevelcreate = this.urlModel.getProperty("urlqalevelcreate");
 //
 //		urlqalevelcreate = urlqalevelcreate.replace("$erpid", sUserID);
-//		urlqalevelcreate = urlqalevelcreate
-//				.replace("$certification", sTechName);
+//		urlqalevelcreate = urlqalevelcreate.replace("$certification", sTechName);
 //		urlqalevelcreate = urlqalevelcreate.replace("$nLevel", sNewLevel);
-//		urlqalevelcreate = urlqalevelcreate.replace("$site", ModelManager.site);
+//		urlqalevelcreate = urlqalevelcreate.replace("$site", airbus.mes.polypoly.ModelManager.site);
 //
 //		$.ajax({
 //			url : urlqalevelcreate,
@@ -491,7 +490,7 @@ airbus.mes.polypoly.PolypolyManager = {
 //			},
 //		})
 //	},
-//
+
 //	updateLevelDelete : function(sUserID, sTechName) {
 //		var urlqaleveldelete = this.urlModel.getProperty("urlqaleveldelete");
 //

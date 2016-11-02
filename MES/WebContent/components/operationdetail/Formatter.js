@@ -86,6 +86,24 @@ airbus.mes.operationdetail.Formatter = {
 		}
 
 	},
+	sliderStatusValue:function(status, progress){
+		if (typeof progress == "undefined")
+			return;
+		this.removeStyleClass("sliderCompletedColor");
+		this.removeStyleClass("sliderInprogressColor");
+		if (progress == "0.0" || progress == "0" || progress == 0
+				|| progress == NaN) {
+			return 0;
+		} else if (String(progress) == "100") {
+			this.addStyleClass("sliderCompletedColor")
+			return 100;
+		} else {
+			this.addStyleClass("sliderInprogressColor")
+			return progress ;
+
+		}
+
+	},
 	
 	//Reasoncode is disabled when operation is not started or paused
 	

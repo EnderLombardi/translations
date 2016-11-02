@@ -155,23 +155,36 @@ airbus.mes.polypoly.ModelManager = {
 		});
 
 	},
-
+	
+	handleUserConnection : function(sUrl) {
+		var sUser = "NG5E7C1";
+		var sPassword = "SS8ir3002";
+		var sAddUrl = "&j_user="+ sUser + "&j_password=" + sPassword;
+		
+		return sUrl + sAddUrl
+	},
+	
 	// PBA ADD LOADING MODEL FOR POLYPOLY replace the getPolypolyModel place in polypolymanager
 	
-	getPolyPolyModel : function (sFactory, sLine, sStation, site) {
+	getPolyPolyModel : function (sSite, sStation) {
 		
 		var urlgetpolypoly = this.urlModel.getProperty("urlgetpolypoly");
 
-		urlgetpolypoly = urlgetpolypoly.replace("$factory", sFactory);
-		urlgetpolypoly = urlgetpolypoly.replace("$line", sLine);
 		urlgetpolypoly = urlgetpolypoly.replace("$station", sStation);
-		urlgetpolypoly = urlgetpolypoly.replace("$site", site);
-
+		urlgetpolypoly = urlgetpolypoly.replace("$site", sSite);
+		
+		//Handle User & Password
+		urlgetpolypoly = this.handleUserConnection(urlgetpolypoly);
+		
 		// Rename this model
 		sap.ui.getCore().getModel("mii").loadData(urlgetpolypoly,null,false);
 		
 		var urlgetqalist = this.urlModel.getProperty("urlgetqalist");
-		urlgetqalist = urlgetqalist.replace("$site", site);
+		urlgetqalist = urlgetqalist.replace("$site", sSite);
+		
+		//Handle User & Password
+		urlgetqalist = this.handleUserConnection(urlgetqalist);
+		
 		sap.ui.getCore().getModel("listQA").loadData(urlgetqalist,null,false);
 		
 	},

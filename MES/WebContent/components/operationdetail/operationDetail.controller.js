@@ -6,6 +6,7 @@ sap.ui
 				{
 					reasonCodeText : undefined,
 					operationStatus : undefined,
+					disruptionsFlag: false,
 
 					/**
 					 * Called when a controller is instantiated and its View
@@ -34,7 +35,13 @@ sap.ui
 						var toggleButton = this.getView().byId(
 								"opDetailExpandButton");
 						toggleButton.setVisible(!toggleButton.getVisible());
-
+						
+						var toggleButton2 = this.getView().byId(
+						"opDetailCloseButton");
+						
+						toggleButton2.setVisible(!toggleButton2.getVisible());						
+						
+						
 						this.getView().byId("operationDetailPanel")
 								.setExpanded();
 					},
@@ -67,11 +74,14 @@ sap.ui
 					 * @memberOf components.stationtracker.stationtracker
 					 */
 					onAfterRendering : function() {
+						this.disruptionsFlag = false;
 
 						// Collapse Operation Detail panel and show Expand
 						// button
 						this.getView().byId("opDetailExpandButton").setVisible(
 								true);
+						this.getView().byId("opDetailCloseButton").setVisible(
+								false);
 						this.getView().byId("operationDetailPanel")
 								.setExpanded(false);
 
@@ -140,6 +150,7 @@ sap.ui
 							// this.setScreenforSwitchMode(false);
 						}
 					},
+					
 					/***********************************************************
 					 * Click on segmented button to respective page
 					 */
@@ -177,9 +188,27 @@ sap.ui
 
 							this.nav
 									.to(airbus.mes.operationdetail.viewDisruption.oView
-											.getId());
+											.getId());							
 							break;
 						}
 					},
+					
+					renderViews: function(oEvent){
+						
+						switch(this.nav.getPreviousPage().sId){
+						
+						case "ViewDisruptionView":
+							/**************************
+							 * Load Disruption Data
+							 *************************/
+							if(!this.disruptionsFlag){
+								var operationBO = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_bo;
+								airbus.mes.disruptions.ModelManager.loadDisruptionsByOperation(operationBO);
+								this.disruptionsFlag = true;
+							}
+						
+						};
+						
+					}
 
 				});

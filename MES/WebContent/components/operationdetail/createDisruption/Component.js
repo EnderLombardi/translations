@@ -1,7 +1,7 @@
 jQuery.sap.require("sap.ui.core.UIComponent");
 jQuery.sap.registerModulePath("airbus.mes.disruptions", "../components/disruptions");
 //jQuery.sap.require("airbus.mes.disruptions.util.Formatter");
-//jQuery.sap.require("airbus.mes.disruptions.ModelManager");
+jQuery.sap.require("airbus.mes.disruptions.ModelManager");
 
 jQuery.sap.declare("airbus.mes.operationdetail.createDisruption.Component");
 
@@ -19,7 +19,7 @@ airbus.mes.operationdetail.createDisruption.Component.prototype.createContent = 
 	
 	if (airbus.mes.operationdetail.createDisruption.oView === undefined) {
 //		Initialization
-		//airbus.mes.disruptions.ModelManager.init(sap.ui.getCore());
+		airbus.mes.disruptions.ModelManager.init(sap.ui.getCore());
 		
 		// View on XML
 		this.oView = sap.ui.view({
@@ -29,22 +29,15 @@ airbus.mes.operationdetail.createDisruption.Component.prototype.createContent = 
 			height:"auto"
 		})
 
-		var i18n = new sap.ui.model.resource.ResourceModel({
+		var i18nModel = new sap.ui.model.resource.ResourceModel({
 	        bundleUrl : "../components/disruptions/i18n/i18n.properties"
 	    });
-		this.oView.setModel(i18n, "i18n");	
+		this.oView.setModel(i18nModel, "i18nModel");	
 		airbus.mes.operationdetail.createDisruption.oView = this.oView		
 		
 		
-		/*//Model for disruptions list data in table
-		this.oView.setModel(sap.ui.getCore().getModel("disruptionsTrackerModel"),"disruptionsTrackerModel");
-		
-		//Model for disruptions filter data in ComboBox
-		this.oView.setModel(sap.ui.getCore().getModel("disruptionsFilterData"), "disruptionsFilterData");
-		
-		//Model for disruptions order data in ComboBox
-		this.oView.setModel(sap.ui.getCore().getModel("disruptionsOrderData"), "disruptionsOrderData");*/
-		
+		//Model for custom data of create disruption
+		this.oView.setModel(sap.ui.getCore().getModel("disruptionCustomData"),"disruptionCustomData");
 		
 		return this.oView;
 		
