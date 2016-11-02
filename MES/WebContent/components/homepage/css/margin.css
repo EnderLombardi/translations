@@ -92,6 +92,44 @@
 .sapMTCCnt div[data-enabled^="false"] {
 	opacity: 0.6;
 }
+.sapMTC div[data-enabled^="true"]:hover, div[data-enabled^="true"]:focus {
+    background-color: rgba(12, 75, 131, 1);
+}
+.tileBox {
+	position:absolute;
+	top: 1rem;
+    bottom: 1rem;
+    right: 1rem;
+    left: 1rem;
+}
+.tileBox .sapMPanelBGTranslucent.sapMPanelContent {
+    position: relative;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    border: none;
+    background: transparent;
+    overflow: hidden;
+}
+div[data-enabled^="true"] .sapMPanelBGTranslucent.sapMPanelContent:after {
+	content:"";
+	position:absolute;
+	top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+	cursor: pointer;
+}
+
+.sapMCustomTile:focus {
+	outline:none;
+}
+
+.tileBox .sapMPanelBGTranslucent.sapMPanelContent span.IconTile{
+    display: block;
+    position: absolute;
+    bottom: 0.1rem;
+    left: 0;}
 /*.sapMTCAnim div[data-enabled^="false"] .IconTile {
 	color: rgb(181, 181, 181);
 }*/
