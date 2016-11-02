@@ -27,7 +27,7 @@
 						width="{parts:['operationDetailModel>/Rowsets/Rowset/0/Row/0/status', 'operationDetailModel>/Rowsets/Rowset/0/Row/0/progress'], formatter:'airbus.mes.operationdetail.Formatter.sliderStatusFirst'}"
 						editable="false" enabled="false">
 					</Slider>
-					<Slider id="progressSlider" class=" sliderInprogressColor"
+					<Slider id="progressSlider" class="sliderInprogressColor"
 						max="100" showHandleTooltip="true"
 						width="{parts: ['operationDetailModel>/Rowsets/Rowset/0/Row/0/status', 'operationDetailModel>/Rowsets/Rowset/0/Row/0/progress'], 
 				formatter: 'airbus.mes.operationdetail.Formatter.sliderStatus' }"
