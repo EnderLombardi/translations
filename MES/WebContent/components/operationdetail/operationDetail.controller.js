@@ -34,7 +34,13 @@ sap.ui
 						var toggleButton = this.getView().byId(
 								"opDetailExpandButton");
 						toggleButton.setVisible(!toggleButton.getVisible());
-
+						
+						var toggleButton2 = this.getView().byId(
+						"opDetailCloseButton");
+						
+						toggleButton2.setVisible(!toggleButton2.getVisible());						
+						
+						
 						this.getView().byId("operationDetailPanel")
 								.setExpanded();
 					},
@@ -72,6 +78,8 @@ sap.ui
 						// button
 						this.getView().byId("opDetailExpandButton").setVisible(
 								true);
+						this.getView().byId("opDetailCloseButton").setVisible(
+								false);
 						this.getView().byId("operationDetailPanel")
 								.setExpanded(false);
 

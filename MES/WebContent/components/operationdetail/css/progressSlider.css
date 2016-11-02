@@ -54,6 +54,7 @@
  }
  /********** End of CSS for Progress Slider Screen *******/
  /*** CSS for Sub header - Operation Details Sub Header and Menu Bar)  ******/
+ 
 .operationDetailHeadPanel {
     overflow: visible;
 }
@@ -70,13 +71,8 @@
 	color:#0085AD !important;
 	font-weight:700 !important;
 }
-.operationDetailHeadPanel .closeButton{
-	float:right;
-	margin-top: -2rem;
-}
-.operationDetailHeadPanel .expandButton .sapMBtnIcon, .operationDetailHeadPanel .closeButton .sapMBtnIcon{
-	font-size:1rem !important;
-}
+
+
 .operationDetailHeadPanel .sapMPanelWrappingDivTb{
 	border-bottom:0px !important
 }
@@ -91,21 +87,27 @@
 }
 .operationDetailHeadPanel .switchExecutionButton .sapMSwt {
     height: 1rem !important;
-    
+    background: #0D5D76;
+    border-color: #0D5D76;    
+}
+.operationDetailHeadPanel .switchExecutionButton .sapMSwtOff:not(.sapMSwtAcceptReject) {
+    background: #ffffff;
+    border-color: #bfbfbf;
 }
 .operationDetailHeadPanel .ExecutionModeText, .operationDetailHeadPanel .switchExecutionButton  {
 	padding:0;
 }
-.operationDetailHeadPanel .sapMPanel .sapMPanelWrappingDivTb .sapMIBar.sapMTB>:first-child {
-	    margin-right: 0;
+.operationDetailHeadPanel.sapMPanel .sapMPanelWrappingDivTb .sapMIBar.sapMTB>:first-child {
+	margin-right: 0;
 }
-.operationDetailHeadPanel .sapMPanel .sapMPanelWrappingDivTb .sapMIBar.sapMTB>:first-child div:nth-child(2), .operationDetailHeadPanel .sapMPanel .sapMPanelWrappingDivTb .sapMIBar.sapMTB>:first-child div:nth-child(2) div:nth-child(2) {
-	    align-items: center;
+.operationDetailHeadPanel.sapMPanel .sapMPanelWrappingDivTb .sapMIBar.sapMTB>:first-child div:nth-child(2), .operationDetailHeadPanel.sapMPanel .sapMPanelWrappingDivTb .sapMIBar.sapMTB>:first-child div:nth-child(2) div:nth-child(2) {
+	align-items: center;
 }
-.operationDetailHeadPanel .sapMPanel.operationDetailHeadPanel .sapMPanelWrappingDivTb .sapMIBar.sapMTB>:first-child div:nth-child(2) .subText {
+.operationDetailHeadPanel.sapMPanel .sapMPanelWrappingDivTb .sapMIBar.sapMTB>:first-child div:nth-child(2) .subText {
 	color: #434343!important;
     font-weight: normal!important;
     font-size: 1rem!important;
+    line-height: 3rem;
 }
 
 .operationDetailHeadPanel .sapMPanelWrappingDivTb {
@@ -113,7 +115,9 @@
     padding: 1rem 1rem 0 1rem;
     background: #fff;
 }
+
 /*** End of CSS for Operation Details Sub Header and Menu Bar  ******/
+
 /**** CSS for Operation Icon Nav Bar *****/
 .operationNavBar .countText{
 	background:#009de0 !important;
@@ -149,11 +153,59 @@
 	left: -2.8rem;
 }
 
-.ExecutionModeText {
-	padding-top: 10%;
+.operationDetailHeadPanel  .ExecutionModeText {
     font-style: italic;
-    color: #0085AD !important;
+    color: #0085AD;
+    margin-right: 10px;
 }
+.operationDetailHeadPanel .ExecutionModeText.sapMTextBreakWord {
+	color:#73d2e6;
 }
 /***End of CSS for Execution Switch Button and text****/
 
+/*** CSS Button show / hide ***/
+
+.operationDetailHeadPanel .sapMBtn.closeButton span  {
+    color: #0D5D76;
+}
+.operationDetailHeadPanel .sapMBtn.expandButton span {
+	color:#ccc;
+}
+/*** End CSS Button show / hide ***/
+
+/*** CSS toolbar ***/
+.operationDetailHeadPanel + .opDetailNavToolbar {
+
+}
+.operationDetailHeadPanel + .opDetailNavToolbar .sapMSegBBtn {
+	position:relative;
+}
+.operationDetailHeadPanel + .opDetailNavToolbar .sapMSegBBtn:not(.sapMSegBBtnSel) {
+    color: #ccc;
+}
+
+.operationDetailHeadPanel + .opDetailNavToolbar .sapMSegBBtn.sapMSegBBtnSel {
+    color: #0D5D76;
+    background: transparent;
+    font-weight:bold;
+}
+.operationDetailHeadPanel + .opDetailNavToolbar .sapMSegBBtn.sapMSegBBtnSel:after {
+	content: "";
+	height: 4px;
+	position:absolute;
+	bottom:0;
+	left:0;
+	right:0;
+	background:#FF5000;
+}
+
+.ClassOperationDetailPopUp .opDetailNavToolbar{
+	background:#fff;
+    box-shadow: 0px 5px 15px -5px #0F2D65;
+}
+.ClassOperationDetailPopUp .opDetailNavToolbar ul.opDetailNav {
+	margin-left: 0px;
+}
+.ClassOperationDetailPopUp .opDetailNavToolbar ul.opDetailNav li {
+    border: 0px !important;
+}
