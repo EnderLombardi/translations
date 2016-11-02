@@ -256,6 +256,7 @@
 #resourcePool .sapMIBar.sapMHeader-CTX span {
 	float: left;
 	color:#0D5D76;
+	text-shadow: none;
 }
 
 #resourcePool section[role^="form"] {
