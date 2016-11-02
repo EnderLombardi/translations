@@ -1037,7 +1037,7 @@ sap.ui
 								|| airbus.mes.resourcepool.util.ModelManager.resourceName == "") {
 							// if(nav.getPreviousPage().sId != "homePageView")
 							// nav.back();
-							nav.back();
+							nav.backToPage("homePageView")
 						}
 					},
 
