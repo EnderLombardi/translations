@@ -105,16 +105,8 @@
     right: 1rem;
     left: 1rem;
 }
-.tileBox .sapMPanelBGTranslucent.sapMPanelContent {
-    position: relative;
-    padding: 0;
-    height: 100%;
-    width: 100%;
-    border: none;
-    background: transparent;
-    overflow: hidden;
-}
-div[data-enabled^="true"] .sapMPanelBGTranslucent.sapMPanelContent:after {
+
+div[data-enabled^="true"] .sapMCustomTileContent:after {
 	content:"";
 	position:absolute;
 	top: 0;
@@ -128,11 +120,6 @@ div[data-enabled^="true"] .sapMPanelBGTranslucent.sapMPanelContent:after {
 	outline:none;
 }
 
-.tileBox .sapMPanelBGTranslucent.sapMPanelContent span.IconTile{
-    display: block;
-    position: absolute;
-    bottom: 0.1rem;
-    left: 0;}
 /*.sapMTCAnim div[data-enabled^="false"] .IconTile {
 	color: rgb(181, 181, 181);
 }*/

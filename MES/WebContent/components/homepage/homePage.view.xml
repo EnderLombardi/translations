@@ -12,17 +12,17 @@
 						<core:CustomData key="enabled" value="{1TileLineHome>enable}" writeToDom="true" />
 					</customData>
 					<content>
-						<Panel width="auto" 
-						class="tileBox">
-							<content class="tileBoxContent">
+						<VBox width="auto" 
+						justifyContent="SpaceBetween" class="tileBox" >
+
+										<VBox>
 										<Text text="{ path : '1TileLineHome>text' , formatter : '.getI18nValue' }" class="headerTileText" />
 
 										<Text text="{ path : '1TileLineHome>sub' , formatter : '.getI18nValue' }" class="CustomTileText" />
-
-	
+										</VBox>
 										<core:Icon src="{1TileLineHome>icon}" class="IconTile"></core:Icon>
-							</content>
-						</Panel>
+
+						</VBox>
 					</content>
 				</CustomTile>
 			</TileContainer>
