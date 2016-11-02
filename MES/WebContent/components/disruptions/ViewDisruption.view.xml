@@ -2,8 +2,212 @@
 	xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout"
 	controllerName="airbus.mes.disruptions.ViewDisruption" xmlns:html="http://www.w3.org/1999/xhtml">
 	<Page enableScrolling="false" showHeader="false">
+		<content>
+			<ScrollContainer class="disruptionDetailCont"
+				vertical="true" height="43rem">
+				<List noDataText="No Disruptions Found" class="disruptionDetail"
+					items="{path: 'DisruptionDetail>/Disruption'}">
+
+					<CustomListItem>
+
+						<Panel expandable="true" expanded="false" class="expandableIcon"
+							expand="handleDisruptionPanelExpand">
+							<headerToolbar>
+								<Toolbar>
+									<Title text="{DisruptionDetail>Title}" class="panelTitleText" />
+									<ToolbarSpacer />
+									<Button class="decoratePanelBtn" text="Edit" design="Transparent"
+										icon="sap-icon://edit" />
+									<Button class="decoratePanelBtn" text="Delete" design="Transparent"
+										icon="sap-icon://delete" />
+
+								</Toolbar>
+							</headerToolbar>
+
+									<f:Form class="formDisruptionDetail" editable="true">
+										<f:layout>
+											<f:ResponsiveGridLayout span="L12 M12 S12" />
+										</f:layout>
+										<f:formContainers>
+											<f:FormContainer ariaLabelledBy="Title2">
+												<f:formElements>
+
+													<f:FormElement>
+														<f:label>
+															<Label class="detailLabels" text="Gravity">
+																<layoutData>
+																	<l:GridData span="L3 M3 S12" />
+																</layoutData>
+															</Label>
+														</f:label>
+														<f:fields>
+
+															<Text text="{DisruptionDetail>Gravity}">
+																<layoutData>
+																	<l:GridData span="L3 M3 S12" />
+																</layoutData>
+															</Text>
+														</f:fields>
+													</f:FormElement>
+
+
+													<f:FormElement>
+														<f:label>
+															<Label class="detailLabels" text="Problem">
+																<layoutData>
+																	<l:GridData span="L2 M2 S12" />
+																</layoutData>
+															</Label>
+														</f:label>
+														<f:fields>
+
+															<Text text="{DisruptionDetail>Object}">
+																<layoutData>
+																	<l:GridData span="L4 M4 S12" />
+																</layoutData>
+															</Text>
+														</f:fields>
+													</f:FormElement>
+
+													<f:FormElement>
+														<f:label>
+															<Label class="detailLabels" text="Resolution group">
+																<layoutData>
+																	<l:GridData span="L3 M3 S12" />
+																</layoutData>
+															</Label>
+														</f:label>
+														<f:fields>
+
+															<Text text="{DisruptionDetail>Help}">
+																<layoutData>
+																	<l:GridData span="L3 M3 S12" />
+																</layoutData>
+															</Text>
+														</f:fields>
+													</f:FormElement>
+
+
+													<f:FormElement>
+														<f:label>
+															<Label class="detailLabels" text="Nature">
+																<layoutData>
+																	<l:GridData span="L2 M2 S12" />
+																</layoutData>
+															</Label>
+														</f:label>
+														<f:fields>
+
+															<Text text="{DisruptionDetail>Nature}">
+																<layoutData>
+																	<l:GridData span="L4 M4 S12" />
+																</layoutData>
+															</Text>
+														</f:fields>
+													</f:FormElement>
+
+													<f:FormElement>
+														<f:label>
+															<Label class="detailLabels" text="Date">
+																<layoutData>
+																	<l:GridData span="L3 M3 S12" />
+																</layoutData>
+															</Label>
+														</f:label>
+														<f:fields>
+
+															<Text text="{DisruptionDetail>Open Date} - {DisruptionDetail>Time}">
+																<layoutData>
+																	<l:GridData span="L3 M3 S12" />
+																</layoutData>
+															</Text>
+														</f:fields>
+													</f:FormElement>
+
+
+
+													<f:FormElement>
+														<f:label>
+															<Label class="detailLabels" text="Expected">
+																<layoutData>
+																	<l:GridData span="L2 M2 S12" />
+																</layoutData>
+															</Label>
+														</f:label>
+														<f:fields>
+															<Text text="{DisruptionDetail>Expected} - {DisruptionDetail>TimeEx}">
+																<layoutData>
+																	<l:GridData span="L4 M4 S12" />
+																</layoutData>
+															</Text>
+														</f:fields>
+													</f:FormElement>
+
+
+													<f:FormElement>
+														<f:label>
+															<Label class="detailLabels" text="Status">
+																<layoutData>
+																	<l:GridData span="L3 M3 S12" />
+																</layoutData>
+															</Label>
+														</f:label>
+														<f:fields>
+															<Text text="{DisruptionDetail>Status}">
+																<layoutData>
+																	<l:GridData span="L3 M3 S12" />
+																</layoutData>
+															</Text>
+														</f:fields>
+													</f:FormElement>
+
+												</f:formElements>
+											</f:FormContainer>
+										</f:formContainers>
+									</f:Form>
+
+									<Panel id="showCommentBox">
+
+										<VBox width="79%">
+											<TextArea placeholder="Add Comments..." width="100%" />
+
+											<HBox class="submitComment">
+												<Button text="Submit Comment" press="showCommentBox"
+													class="sapUiSmallMarginEnd" width="12rem" />
+												<Button text="Status" type="Emphasized" press="onMarkSolved"
+													width="12rem" />
+											</HBox>
+										</VBox>
+
+									</Panel>
+
+									<Toolbar class="barcolor">
+										<ToolbarSpacer />
+										<Button class="decoratePanelBtn" text="Add Comment"
+											design="Transparent" icon="sap-icon://comment" />
+										<Button class="decoratePanelBtn" text="Acknowledge"
+											design="Transparent" icon="sap-icon://to-be-reviewed" />
+										<Button class="decoratePanelBtn" text="Escalate"
+											design="Transparent" icon="sap-icon://message-warning" />
+										<Button class="decoratePanelBtn" text="Mark Solved"
+											design="Transparent" icon="sap-icon://sys-add" />
+									</Toolbar>
+						</Panel>
+
+					</CustomListItem>
+
+				</List>
+			</ScrollContainer>
+		</content>
+		<footer>
+		<Bar design="Footer" class="viewDisruptionFooter">
+			<contentLeft>
+				<Button text="{i18n>reportDisruption}" press="onReportDisruption" icon="sap-icon://add"/>
+			</contentLeft>
+		</Bar>
+	</footer>
 	<!-- <Panel class="disruptionPanel sapUiSmallMargin" id="disruptionsHeader"> -->
-		<List id="disrptlist" noDataText="No Disruptions Found" items="{disruptionModel>/Disruption}">
+		<!-- <List id="disrptlist" noDataText="No Disruptions Found" items="{disruptionModel>/Disruption}">
 			<CustomListItem>
 				<Panel expandable="true" expanded="false" class="barColor"
 					expand="handleDisruptionPanelExpand">
@@ -208,13 +412,13 @@
 				</Panel>
 			</CustomListItem>
 		</List>
-	<!-- </Panel> -->
+	</Panel>
 	<footer>
 		<Bar design="Footer" class="viewDisruptionFooter">
 			<contentLeft>
 				<Button text="{i18n>reportDisruption}" press="onReportDisruption" icon="sap-icon://add"/>
 			</contentLeft>
 		</Bar>
-	</footer>
+	</footer> -->
 	</Page>
 </core:View>

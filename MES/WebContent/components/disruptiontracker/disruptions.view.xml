@@ -16,9 +16,9 @@
 			<content>
 
 				<Toolbar>
-					<ComboBox class="sapUiMediumMarginEnd" placeholder="{disruptiontrackerI18n>selectStation}"
-						items="{ path: 'disruptionsFilterData>/filters' }">
-						<core:Item key="{disruptionsFilterData>key}" text="{disruptionsFilterData>name}" />
+					<ComboBox id="stationComboBox" class="sapUiMediumMarginEnd" placeholder="{disruptiontrackerI18n>selectStation}"
+						items="{ path:'plantModel>/Rowsets/Rowset/0/Row' }" selectedKey="">
+						<core:Item key="{plantModel>station}" text="{plantModel>station}" />
 					</ComboBox>
 
 					<ComboBox class="sapUiMediumMarginEnd" placeholder="{disruptiontrackerI18n>selectStatus}"
@@ -38,9 +38,8 @@
 		</Panel>
 
 
-		<Table class="disruptionsTable"
+		<Table class="disruptionsTable sapUiSmallMarginBottom"
 			items="{ path: 'disruptionsListData>/Rowsets/Rowset/0/Row' }">
-
 
 			<columns>
 				<Column>
@@ -53,7 +52,13 @@
 					<Text text="{disruptiontrackerI18n>status}" />
 				</Column>
 				<Column>
-					<Text text="{disruptiontrackerI18n>problem}" />
+					<Text text="{disruptiontrackerI18n>category}" />
+				</Column>
+				<Column>
+					<Text text="{disruptiontrackerI18n>reason}" />
+				</Column>
+				<Column>
+					<Text text="{disruptiontrackerI18n>originatorGroup}" />
 				</Column>
 				<Column>
 					<Text text="{disruptiontrackerI18n>resolutionGroup}" />
@@ -84,21 +89,23 @@
 			<items>
 				<ColumnListItem type="Navigation">
 					<cells>
-						<Text text="{disruptionsListData>Operation}" />
+						<Text text="{disruptionsTrackerModel>Operation}" />
 						<ObjectStatus class="sapUiSmallMarginBottom"
-							text="{parts: [ {path: 'disruptionsListData>Status'}, {path: 'disruptionsListData>Gravity'}, {path: 'disruptionsListData>Severity'} ], formatter: 'airbus.mes.disruptiontracker.Formatter.setText'}"
-							state="{parts: [ {path: 'disruptionsListData>Status'}, {path: 'disruptionsListData>Gravity'}, {path: 'disruptionsListData>Severity'} ], formatter: 'airbus.mes.disruptiontracker.Formatter.setState'}"
-							icon="{path: 'disruptionsListData>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setIcon'}" />
-						<Text text="{disruptionsListData>Status}" />
-						<Text text="{disruptionsListData>Reason}" />
-						<Text text="{disruptionsListData>ResponsibleGroup}" />
-						<Text text="{disruptionsListData>Severity}" />
-						<Text text="{disruptionsListData>OpeningTime}" />
-						<Text text="{disruptionsListData>FixedByTime}" />
-						<Text text="{disruptionsListData>TTGF}" />
-						<Text text="{disruptionsListData>TimeBeforeNextEscalation}" />
-						<Text text="{disruptionsListData>Solution}" />
-						<Text text="{disruptionsListData>ClosureDate}" />
+							text="{parts: [ {path: 'disruptionsTrackerModel>Status'}, {path: 'disruptionsTrackerModel>Gravity'}, {path: 'disruptionsTrackerModel>Severity'} ], formatter: 'airbus.mes.disruptiontracker.Formatter.setText'}"
+							state="{parts: [ {path: 'disruptionsTrackerModel>Status'}, {path: 'disruptionsTrackerModel>Gravity'}, {path: 'disruptionsTrackerModel>Severity'} ], formatter: 'airbus.mes.disruptiontracker.Formatter.setState'}"
+							icon="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setIcon'}" />
+						<Text text="{disruptionsTrackerModel>Status}" />
+						<Text text="{path: 'disruptionsTrackerModel>MessageType', formatter: 'airbus.mes.disruptiontracker.Formatter.formatCategory'}" />
+						<Text text="{disruptionsTrackerModel>Reason}" />
+						<Text text="{disruptionsTrackerModel>OriginatorGroup}" />
+						<Text text="{disruptionsTrackerModel>ResponsibleGroup}" />
+						<Text text="{disruptionsTrackerModel>Severity}" />
+						<Text text="{disruptionsTrackerModel>OpeningTime}" />
+						<Text text="{disruptionsTrackerModel>FixedByTime}" />
+						<Text text="{disruptionsTrackerModel>TTGF}" />
+						<Text text="{disruptionsTrackerModel>TimeBeforeNextEscalation}" />
+						<Text text="{disruptionsTrackerModel>Solution}" />
+						<Text text="{disruptionsTrackerModel>ClosureDate}" />
 					</cells>
 				</ColumnListItem>
 			</items>

@@ -158,7 +158,14 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 			break;
 			
 		case "disruptiontrackerView":
-			airbus.mes.disruptiontracker.ModelManager.loadData();
+			if(nav.getPreviousPage().sId == "stationTrackerView"){
+				airbus.mes.disruptiontracker.ModelManager.loadDisruptionTrackerModel({
+					'station': airbus.mes.settings.ModelManager.station
+				});
+			}
+			else{
+				airbus.mes.disruptiontracker.ModelManager.loadDisruptionTrackerModel({});
+			}
 			break;
 			
 		case "resourcePool":

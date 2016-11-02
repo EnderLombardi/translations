@@ -37,7 +37,7 @@ airbus.mes.operationdetail.viewDisruption.Component.prototype.createContent = fu
 		
 		
 		/*//Model for disruptions list data in table
-		this.oView.setModel(sap.ui.getCore().getModel("disruptionsListData"),"disruptionsListData");
+		this.oView.setModel(sap.ui.getCore().getModel("disruptionsTrackerModel"),"disruptionsTrackerModel");
 		
 		//Model for disruptions filter data in ComboBox
 		this.oView.setModel(sap.ui.getCore().getModel("disruptionsFilterData"), "disruptionsFilterData");

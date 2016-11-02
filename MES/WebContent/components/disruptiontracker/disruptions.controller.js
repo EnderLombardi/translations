@@ -33,7 +33,11 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 //	onExit: function() {
 //
 //	},
-//	Call Disruption KPI charts
+	
+	
+	/**********************************
+	 * Call Disruption KPI charts 
+	 */	
 	onPressDisruptionKPI: function(oEvent){
 		
 		if (airbus.mes.disruptionKPI === undefined){
