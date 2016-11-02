@@ -282,7 +282,7 @@ airbus.mes.polypoly.PolypolyManager = {
 											oTableRows.rows[oTableRows.rows.length - 1]["picture"] = row.picture;
 											oTableRows.rows[oTableRows.rows.length - 1]["ressourcepool"] = row.RP_Description;
 											oTableRows.rows[oTableRows.rows.length - 1]["ressourcepoolId"] = row.RP_ID;
-											oTableRows.rows[oTableRows.rows.length - 1]["ERP_ID"] = row.ERP_ID;
+											oTableRows.rows[oTableRows.rows.length - 1]["login"] = row.login;
 											oTableRows.rows[oTableRows.rows.length - 1]["icon"] = row.status;
 											try {
 												if (sap.ui.getCore().getModel(
@@ -296,7 +296,7 @@ airbus.mes.polypoly.PolypolyManager = {
 													affectModelRow
 															.forEach(function(
 																	a_row) {
-																if (a_row.ERP_ID === row.ERP_ID) {
+																if (a_row.login === row.login) {
 																	// a_row.Name.toUpperCase()
 																	// ==
 																	// row.longName.replace("
@@ -430,10 +430,9 @@ airbus.mes.polypoly.PolypolyManager = {
 
 	updateLevelInit : function() {
 		var oModel = sap.ui.getCore().byId("polypoly").getModel();
-		this.levelUpdater.sUserID = this.userComptencyContext.rowBindingContext
-				.getProperty("ERP_ID");
-		this.levelUpdater.sUserName = this.userComptencyContext.rowBindingContext
-				.getProperty("category");
+//		this.levelUpdater.sUserID = this.userComptencyContext.rowBindingContext.getProperty("ERP_ID");
+		this.levelUpdater.sUserID = this.userComptencyContext.rowBindingContext.getProperty("login");
+		this.levelUpdater.sUserName = this.userComptencyContext.rowBindingContext.getProperty("category");
 		this.levelUpdater.sTechName = oModel.getData().columns[airbus.mes.polypoly.PolypolyManager.userComptencyContext.columnIndex + 4].techname;
 		this.levelUpdater.startLevel = parseInt(airbus.mes.polypoly.PolypolyManager.userComptencyContext.rowBindingContext
 				.getProperty(this.levelUpdater.sTechName));
@@ -473,85 +472,95 @@ airbus.mes.polypoly.PolypolyManager = {
 	},
 
 //--------------------------------------------UNCOMMENT-DOWN-THERE----------------------------------------------------	
-//	updateLevelCreate : function(sUserID, sTechName, sNewLevel) {
-//		var urlqalevelcreate = this.urlModel.getProperty("urlqalevelcreate");
-//
-//		urlqalevelcreate = urlqalevelcreate.replace("$erpid", sUserID);
-//		urlqalevelcreate = urlqalevelcreate.replace("$certification", sTechName);
-//		urlqalevelcreate = urlqalevelcreate.replace("$nLevel", sNewLevel);
-//		urlqalevelcreate = urlqalevelcreate.replace("$site", airbus.mes.polypoly.ModelManager.site);
-//
-//		$.ajax({
-//			url : urlqalevelcreate,
-//			success : function(data, textStatus, jqXHR) {
-//				PolypolyManager.getPolypolyModel(ModelManager.factory_name,
-//						ModelManager.line_number, ModelManager.station_number,
-//						ModelManager.site);
-//			},
-//		})
-//	},
+	updateLevelCreate : function(sUserID, sTechName, sNewLevel) {
+		var urlqalevelcreate = this.urlModel.getProperty("urlqalevelcreate");
 
-//	updateLevelDelete : function(sUserID, sTechName) {
-//		var urlqaleveldelete = this.urlModel.getProperty("urlqaleveldelete");
-//
-//		urlqaleveldelete = urlqaleveldelete.replace("$erpid", sUserID);
-//		urlqaleveldelete = urlqaleveldelete.replace("$competency", sTechName);
-//		urlqaleveldelete = urlqaleveldelete.replace("$site", ModelManager.site);
-//
-//		$.ajax({
-//			url : urlqaleveldelete,
-//			success : function(data, textStatus, jqXHR) {
-//				PolypolyManager.getPolypolyModel(ModelManager.factory_name,
-//						ModelManager.line_number, ModelManager.station_number,
-//						ModelManager.site);
-//			},
-//		})
-//	},
-//
-//	updateLevel : function(sUserID, sTechName, sPreviousLevel, sNewLevel) {
-//		var urlqalevelupdate = this.urlModel.getProperty("urlqalevelupdate");
-//
-//		urlqalevelupdate = urlqalevelupdate.replace("$erpid", sUserID);
-//		urlqalevelupdate = urlqalevelupdate.replace("$competency", sTechName);
-//		urlqalevelupdate = urlqalevelupdate.replace("$pLevel", sPreviousLevel);
-//		urlqalevelupdate = urlqalevelupdate.replace("$nLevel", sNewLevel);
-//		urlqalevelupdate = urlqalevelupdate.replace("$site", ModelManager.site);
-//
-//		$.ajax({
-//			url : urlqalevelupdate,
-//			success : function(data, textStatus, jqXHR) {
-//				PolypolyManager.getPolypolyModel(ModelManager.factory_name,
-//						ModelManager.line_number, ModelManager.station_number,
-//						ModelManager.site);
-//			},
-//		})
-//	},
-//
-//	updateLevel12 : function(sUserID, sTechName) {
-//		var urlqalevel12 = this.urlModel.getProperty("urlqalevel12");
-//
-//		urlqalevel12 = urlqalevel12.replace("$erpid", sUserID);
-//		urlqalevel12 = urlqalevel12.replace("$competency", sTechName);
-//		urlqalevel12 = urlqalevel12.replace("$site", ModelManager.site);
-//
-//		$
-//				.ajax({
-//					url : urlqalevel12,
-//					success : function(data, textStatus, jqXHR) {
-//						data.Rowsets.Rowset[0].name = PolypolyManager.levelUpdater.sUserName;
-//						var infoModel = new sap.ui.model.json.JSONModel();
-//						if (!sap.ui.getCore().byId("infoUpdate12")) {
-//							sap.ui.xmlfragment("airbus.InfoUpdate12", sap.ui
-//									.getCore().byId("polypolyView")
-//									.getController());
-//						}
-//						sap.ui.getCore().byId("infoUpdate12").open();
-//						sap.ui.getCore().byId("infoUpdate12").setModel(
-//								infoModel);
-//					},
-//				})
-//	},
-//
+		urlqalevelcreate = urlqalevelcreate.replace("$erpid", sUserID);
+		urlqalevelcreate = urlqalevelcreate.replace("$certification", sTechName);
+		urlqalevelcreate = urlqalevelcreate.replace("$nLevel", sNewLevel);
+//		urlqalevelcreate = urlqalevelcreate.replace("$site", airbus.mes.settings.ModelManager.site); //FIXME: Uncomment when ready
+		urlqalevelcreate = urlqalevelcreate.replace("$site", "CHES"); 								 //FIXME
+		
+		//Handle User & Password																	 //FIXME Temp
+		urlqalevelcreate = airbus.mes.polypoly.ModelManager.handleUserConnection(urlqalevelcreate);  //FIXME Temp
+
+		$.ajax({
+			url : urlqalevelcreate,
+			success : function(data, textStatus, jqXHR) {
+				airbus.mes.polypoly.ModelManager.getPolyPolyModel("CHES", "1L"); //FIXME When Settings ready
+//				airbus.mes.polypoly.ModelManager.getPolyPolyModel(airbus.mes.settings.ModelManager.site, airbus.mes.settings.ModelManager.station);
+			},
+		})
+	},
+
+	updateLevelDelete : function(sUserID, sTechName) {
+		var urlqaleveldelete = this.urlModel.getProperty("urlqaleveldelete");
+
+		urlqaleveldelete = urlqaleveldelete.replace("$erpid", sUserID);
+		urlqaleveldelete = urlqaleveldelete.replace("$competency", sTechName);
+//		urlqaleveldelete = urlqaleveldelete.replace("$site", airbus.mes.settings.ModelManager.site); //FIXME: Uncomment when ready
+		urlqaleveldelete = urlqaleveldelete.replace("$site", "CHES"); 								 //FIXME
+		
+		//Handle User & Password																	 //FIXME Temp
+		urlqaleveldelete = airbus.mes.polypoly.ModelManager.handleUserConnection(urlqaleveldelete);  //FIXME Temp
+
+		$.ajax({
+			url : urlqaleveldelete,
+			success : function(data, textStatus, jqXHR) {
+				airbus.mes.polypoly.ModelManager.getPolyPolyModel("CHES", "1L"); //FIXME When Settings ready
+//				airbus.mes.polypoly.ModelManager.getPolyPolyModel(airbus.mes.settings.ModelManager.site, airbus.mes.settings.ModelManager.station);
+			},
+		})
+	},
+
+	updateLevel : function(sUserID, sTechName, sPreviousLevel, sNewLevel) {
+		var urlqalevelupdate = this.urlModel.getProperty("urlqalevelupdate");
+
+		urlqalevelupdate = urlqalevelupdate.replace("$erpid", sUserID);
+		urlqalevelupdate = urlqalevelupdate.replace("$competency", sTechName);
+		urlqalevelupdate = urlqalevelupdate.replace("$pLevel", sPreviousLevel);
+		urlqalevelupdate = urlqalevelupdate.replace("$nLevel", sNewLevel);
+//		urlqalevelupdate = urlqalevelupdate.replace("$site", airbus.mes.settings.ModelManager.site); //FIXME: Uncomment when ready
+		urlqalevelupdate = urlqalevelupdate.replace("$site", "CHES"); 								 //FIXME
+		
+		//Handle User & Password																	 //FIXME Temp
+		urlqalevelupdate = airbus.mes.polypoly.ModelManager.handleUserConnection(urlqalevelupdate);  //FIXME Temp
+
+		$.ajax({
+			url : urlqalevelupdate,
+			success : function(data, textStatus, jqXHR) {
+				airbus.mes.polypoly.ModelManager.getPolyPolyModel("CHES", "1L"); //FIXME When Settings ready
+//				airbus.mes.polypoly.ModelManager.getPolyPolyModel(airbus.mes.settings.ModelManager.site, airbus.mes.settings.ModelManager.station);
+			},
+		})
+	},
+
+	updateLevel12 : function(sUserID, sTechName) {
+		var urlqalevel12 = this.urlModel.getProperty("urlqalevel12");
+
+		urlqalevel12 = urlqalevel12.replace("$erpid", sUserID);
+		urlqalevel12 = urlqalevel12.replace("$competency", sTechName);
+//		urlqalevel12 = urlqalevel12.replace("$site", airbus.mes.settings.ModelManager.site); //FIXME: Uncomment when ready
+		urlqalevel12 = urlqalevel12.replace("$site", "CHES");
+		
+		//Handle User & Password																	 //FIXME Temp
+		urlqalevel12 = airbus.mes.polypoly.ModelManager.handleUserConnection(urlqalevel12);			 //FIXME Temp
+
+		$
+				.ajax({
+					url : urlqalevel12,
+					success : function(data, textStatus, jqXHR) {
+						data.Rowsets.Rowset[0].name = airbus.mes.polypoly.PolypolyManager.levelUpdater.sUserName;
+						var infoModel = new sap.ui.model.json.JSONModel();
+						if (!airbus.mes.polypoly.infoUpdate12) {
+							airbus.mes.polypoly.infoUpdate12 = sap.ui.xmlfragment("airbus.mes.polypoly.InfoUpdate12", airbus.mes.polypoly.oView.getController());
+						}
+						airbus.mes.polypoly.infoUpdate12.open();
+						airbus.mes.polypoly.infoUpdate12.setModel(infoModel);
+					},
+				})
+	},
+
 //	updateLevel23 : function(sUserID, sTechName) {
 //		var urlqalevel23 = this.urlModel.getProperty("urlqalevel23");
 //
