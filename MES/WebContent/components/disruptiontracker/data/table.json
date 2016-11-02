@@ -151,6 +151,14 @@
                   "_Name": "ResponsibleGroup",
                   "_SQLDataType": "1",
                   "_SourceColumn": "ResponsibleGroup"
+               },
+               {
+                  "_Description": "",
+                  "_MaxRange": "1",
+                  "_MinRange": "0",
+                  "_Name": "TIME_LOST",
+                  "_SQLDataType": "1",
+                  "_SourceColumn": "TIME_LOST"
                }
             ]
          },
@@ -173,7 +181,8 @@
                "Solution": "Part Delivered",
                "ClosureDate": "11/12/2016 - 11:00",
                "OriginatorGroup": "",
-               "ResponsibleGroup": "Logistic"
+               "ResponsibleGroup": "Logistic",
+               "TIME_LOST": "6"
             },
             {
                "MessageRef": "MessageDO:CHES,3477-344fa0cc:156f162fd1c:-4d2",
@@ -193,7 +202,8 @@
                "Solution": "",
                "ClosureDate": "",
                "OriginatorGroup": "",
-               "ResponsibleGroup": "Support"
+               "ResponsibleGroup": "Support",
+               "TIME_LOST": "5"
             },
             {
                "MessageRef": "MessageDO:CHES,3477-344fa0cc:156f162fd1c:-4d2",
@@ -213,7 +223,8 @@
                "Solution": "",
                "ClosureDate": "",
                "OriginatorGroup": "",
-               "ResponsibleGroup": "Logistic"
+               "ResponsibleGroup": "Logistic",
+               "TIME_LOST": "7"
             },
             {
                "MessageRef": "MessageDO:CHES,3477-344fa0cc:156f162fd1c:-4d2",
@@ -233,7 +244,8 @@
                "Solution": "",
                "ClosureDate": "",
                "OriginatorGroup": "",
-               "ResponsibleGroup": "Logistic"
+               "ResponsibleGroup": "Logistic",
+               "TIME_LOST": "5"
             },
             {
                "MessageRef": "MessageDO:CHES,3477-344fa0cc:156f162fd1c:-4d2",
@@ -253,7 +265,8 @@
                "Solution": "",
                "ClosureDate": "",
                "OriginatorGroup": "",
-               "ResponsibleGroup": "Support"
+               "ResponsibleGroup": "Support",
+               "TIME_LOST": "15"
             },
             {
                "MessageRef": "MessageDO:CHES,3477-344fa0cc:156f162fd1c:-4d2",
@@ -273,7 +286,8 @@
                "Solution": "",
                "ClosureDate": "",
                "OriginatorGroup": "",
-               "ResponsibleGroup": "Support"
+               "ResponsibleGroup": "Support",
+               "TIME_LOST": "20"
             },
             {
                "MessageRef": "MessageDO:CHES,3477-344fa0cc:156f162fd1c:-4d2",
@@ -293,7 +307,8 @@
                "Solution": "",
                "ClosureDate": "",
                "OriginatorGroup": "",
-               "ResponsibleGroup": "Logistic"
+               "ResponsibleGroup": "Logistic",
+               "TIME_LOST": "30"
             },
             {
                "MessageRef": "MessageDO:CHES,3477-344fa0cc:156f162fd1c:-4d2",
@@ -313,7 +328,8 @@
                "Solution": "",
                "ClosureDate": "",
                "OriginatorGroup": "",
-               "ResponsibleGroup": "Support"
+               "ResponsibleGroup": "Support",
+               "TIME_LOST": ""
             },
             {
                "MessageRef": "MessageDO:CHES,3477-344fa0cc:156f162fd1c:-4d2",
@@ -333,7 +349,8 @@
                "Solution": "",
                "ClosureDate": "",
                "OriginatorGroup": "",
-               "ResponsibleGroup": "Logistic"
+               "ResponsibleGroup": "Logistic",
+               "TIME_LOST": ""
             }
          ]
       }]
