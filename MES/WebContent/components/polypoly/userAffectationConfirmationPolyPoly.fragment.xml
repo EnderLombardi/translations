@@ -5,8 +5,8 @@
 			<Text id="messageAffectConfirmPolyPoly" text=""></Text>
 		</content>
 		<buttons>
-			<Button text="Confirm" press="afterConfirmPress" />
-			<Button text="Cancel" press="onCancel" />
+			<Button text="{PolypolyI18n>Confirm}" press="afterConfirmPress" />
+			<Button text="{PolypolyI18n>Cancel}" press="onCancel" />
 		</buttons>
 	</Dialog>
 </core:FragmentDefinition>

@@ -1,9 +1,9 @@
 <core:FragmentDefinition xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
 	xmlns:table="sap.ui.table" xmlns="sap.m" controllerName="airbus.mes.polypoly.polypoly"
 	xmlns:html="http://www.w3.org/1999/xhtml">
-	<Dialog id="oQADialog" stretchOnPhone="true" showHeader="true" title="QA">
+	<Dialog id="oQADialog" stretchOnPhone="true" showHeader="true" title="{PolypolyI18n>QA}">
 		<buttons>
-			<Button text="Close" icon="sap-icon://decline" press="onClickQAPopup" />
+			<Button text="{PolypolyI18n>Close}" icon="sap-icon://decline" press="onClickQAPopup" />
 		</buttons>
 		<content>
 			<table:Table rows="{ path: '/rows' }" columns="{ path: '/columns', factory: '.createColumnQA' }"

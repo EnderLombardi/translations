@@ -35,6 +35,11 @@ airbus.mes.polypoly.Component.prototype.createContent = function() {
 		
 		airbus.mes.polypoly.oView = this.oView;
 		
+		var i18nModel = new sap.ui.model.resource.ResourceModel({
+	        bundleUrl : "../components/polypoly/i18n/i18n.properties",
+//	        bundleLocale : "en" automatic defined by parameter sap-language
+	     });
+		
 		//Bind model
 //		var oData = sap.ui.getCore().getModel("mii").getData().Rowsets;
 //		if (oData.Rowset && oData.Rowset.length > 0 && oData.Rowset[0].Row) {
@@ -61,6 +66,7 @@ airbus.mes.polypoly.Component.prototype.createContent = function() {
 		this.oView.setModel(sap.ui.getCore().getModel("listQA"), "listQA");
 		this.oView.setModel(sap.ui.getCore().getModel("needlevels"), "needlevels");
 		this.oView.setModel(sap.ui.getCore().getModel("affectationModel"), "affectationModel");
+		this.oView.setModel(i18nModel, "PolypolyI18n");	
 
 		return this.oView;
 

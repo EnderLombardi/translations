@@ -3,9 +3,9 @@
 	xmlns:u="sap.ui.unified" xmlns:table="sap.ui.table">
 	<Dialog id="columnPopupDialog" title="" stretchOnPhone="true">
 		<buttons>
-			<Button text="Save" press="onSaveColumnPopup" type="Emphasized"
+			<Button text="{PolypolyI18n>Save}" press="onSaveColumnPopup" type="Emphasized"
 				icon="sap-icon://save" />
-			<Button text="Cancel" press="onCancelColumnPopup" />
+			<Button text="{PolypolyI18n>Cancel}" press="onCancelColumnPopup" />
 		</buttons>
 		<content>
 			<f:SimpleForm maxContainerCols="1" editable="true"
@@ -13,13 +13,13 @@
 				labelSpanS="6" emptySpanL="2" emptySpanM="2" emptySpanS="0"
 				columnsL="1" columnsM="1" columnsS="1" class="shrinkArea">
 				<f:content>
-					<Label class="" text="Technical Name" />
+					<Label class="" text="{PolypolyI18n>TechnicalName}" />
 					<Input id="colTechname" class="" type="Text"
 						value="{columnModel>/techname}" />
-					<Label class="" text="Competency Description" />
+					<Label class="" text="{PolypolyI18n>CompetencyDescription}" />
 					<Input id="colCompetency" class="" type="Text"
 						value="{columnModel>/competency}" />
-					<Label class="" text="Quality Authorisation" />
+					<Label class="" text="{PolypolyI18n>QualityAuthorisation}" />
 					<VBox>
 						<items>
 							<SearchField id="searchField" liveChange="onSearch" width="100%" />
@@ -35,12 +35,12 @@
 							</table:Table>
 						</items>
 					</VBox>
-					<Label class="" text="Need 3" />
+					<Label class="" text="{PolypolyI18n>Need3}" />
 					<Select id="colNeed3" items="{path: 'needlevels>/levels'}"
 						selectedKey="{columnModel>/need3}">
 						<core:Item key="{needlevels>key}" text="{needlevels>text}" />
 					</Select>
-					<Label class="" text="Need 4" />
+					<Label class="" text="{PolypolyI18n>Need4}" />
 					<Select id="colNeed4" items="{path: 'needlevels>/levels'}"
 						selectedKey="{columnModel>/need4}">
 						<core:Item key="{needlevels>key}" text="{needlevels>text}" />
