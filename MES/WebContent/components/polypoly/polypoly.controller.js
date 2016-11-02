@@ -859,11 +859,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 		that.colDialog.setModel(columnModel, "columnModel");
 		that.colDialog.open();
 
-		sap.ui
-		.getCore()
-		.byId("colTechname")
-		.setEditable(
-				(airbus.mes.polypoly.PolypolyManager.internalContext.saveContext == "CREATE"));
+		sap.ui.getCore().byId("colTechname").setEditable((airbus.mes.polypoly.PolypolyManager.internalContext.saveContext == "CREATE"));
 
 		// Sort QA Column on selected Checkboxes
 		sap.ui.getCore().byId("colQA").sort("Descending")
@@ -918,8 +914,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 			sap.m.MessageToast
 			.show("Please enter a Competency description");
 		} else if (aQAfiltered.length > 5) {
-			sap.m.MessageToast
-			.show("Please select no more than 5 Quality Authorisations");
+			sap.m.MessageToast.show("Please select no more than 5 Quality Authorisations");
 		}
 	},
 
