@@ -195,7 +195,7 @@ sap.ui
 					
 					renderViews: function(oEvent){
 						
-						switch(this.nav.getPreviousPage().sId){
+						switch(this.nav.getCurrentPage().sId){
 						
 						case "ViewDisruptionView":
 							/**************************

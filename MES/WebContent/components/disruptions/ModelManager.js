@@ -69,7 +69,7 @@ airbus.mes.disruptions.ModelManager = {
 		getDiruptionsURL = getDiruptionsURL.replace('$Site', airbus.mes.settings.ModelManager.site);
 		getDiruptionsURL = getDiruptionsURL.replace('$Operation', operation);
 		
-		oViewModel.loadData(this.urlModel.getProperty("getDiruptionsURL"), null, false);
+		oViewModel.loadData(getDiruptionsURL, null, false);
 	}
 };
 
