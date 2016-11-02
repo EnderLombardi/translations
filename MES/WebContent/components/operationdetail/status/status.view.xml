@@ -11,58 +11,16 @@
 						level="H1" titleStyle="H3" />
 				</items>
 			</HBox>
-			<l:Grid defaultSpan="L12 M12 S12" class="proressSliderGrid">
-				<Button id="btnReduce" type="Transparent" press="reduceProgress"
-					icon="sap-icon://sys-minus" class="progressBtnColor">
-					<layoutData>
-						<l:GridData span="L2 M12 S12" />
-					</layoutData>
-				</Button>
-				<HBox width="100%" class="progressSlider">
-					<layoutData>
-						<l:GridData span="L12 M12 S12" />
-					</layoutData>
-					<Slider id="progressSliderfirst" class="comfirmedProgressSlider"
-						min="0"
-						width="{parts:['operationDetailModel>/Rowsets/Rowset/0/Row/0/status', 'operationDetailModel>/Rowsets/Rowset/0/Row/0/progress'], formatter:'airbus.mes.operationdetail.Formatter.sliderStatusFirst'}"
-						editable="false" enabled="false">
-					</Slider>
-					<Slider id="progressSlider" class="dynProgressSlider sliderInprogressColor"
-						max="100" showHandleTooltip="true"
-						width="{parts: ['operationDetailModel>/Rowsets/Rowset/0/Row/0/status', 'operationDetailModel>/Rowsets/Rowset/0/Row/0/progress'], 
-				formatter: 'airbus.mes.operationdetail.Formatter.sliderStatus' }"
-						enabled="false">
-					</Slider>
-				</HBox>
-				<Button id="btnAdd" type="Transparent" press="addProgress"
-					icon="sap-icon://sys-add" class="progressBtnColor">
-					<layoutData>
-						<l:GridData span="L2 M12 S12" />
-					</layoutData>
-				</Button>
+			<l:Grid defaultSpan="L12 M12 S12" class="proressSliderGrid sapUiLargeMarginTop">
+
+				<Slider id="progressSliderDisplay" max="100" min="0"
+					showHandleTooltip="true" width="100%"
+					value="{parts: ['operationDetailModel>/Rowsets/Rowset/0/Row/0/status', 'operationDetailModel>/Rowsets/Rowset/0/Row/0/progress'],formatter: 'airbus.mes.operationdetail.Formatter.sliderStatusValue' }"
+					enabled="false">
+				</Slider>
+
 			</l:Grid>
-			<f:SimpleForm width="auto" backgroundDesign="Transparent"
-				id="reasonCode" minWidth="800" maxWidth="800"
-				class="sapUiLargeMarginTopBottom sapUiLargeMarginBeginEnd"
-				maxContainerCols="2" editable="true" layout="ResponsiveGridLayout"
-				labelSpanL="1" labelSpanM="2" emptySpanL="0" emptySpanM="0"
-				columnsL="1" columnsM="1" validateFieldGroup="onValidatereason">
-				<f:content>
-					<Label text="Reason Code" />
-					<Select
-						enabled="{path: 'operationDetailModel>/Rowsets/Rowset/0/Row/0/status', 
-				formatter: 'airbus.mes.operationdetail.Formatter.setReasonCodeEnabled'}"
-						forceSelection="true" change="onSelectionReason" id="reasonCodeSelectBox"
-						items="{reasonCodeModel>/Rowsets/Rowset/0/Row}">
-						<core:Item key="{reasonCodeModel>REASON_CODE}" text="{reasonCodeModel>DESCRIPTION}" />
-					</Select>
-					<Label text="Comment" />
-					<TextArea
-						enabled="{path: 'operationDetailModel>/Rowsets/Rowset/0/Row/0/status', 
-				formatter: 'airbus.mes.operationdetail.Formatter.setReasonCodeEnabled'}"
-						id="reasonCodeComments" />
-				</f:content>
-			</f:SimpleForm>
+
 		</VBox>
 		<footer>
 			<Bar id="operationStatusFooter" class="operationDetailFooter">

@@ -9,8 +9,8 @@ airbus.mes.disruptiontracker.ModelManager = {
 		core.setModel(new sap.ui.model.json.JSONModel(), "disruptionsTrackerModel");//Model having disruptions detail
 		core.setModel(new sap.ui.model.json.JSONModel(), "disruptionsFilterData");
 		core.setModel(new sap.ui.model.json.JSONModel(), "disruptionsOrderData");
-		core.setModel(new sap.ui.model.resource.ResourceModel({bundleName:"airbus.mes.disruptiontracker.i18n.i18n",bundleLocale:"en"}), 
-														 "disruptiontrackerI18n");
+		/*core.setModel(new sap.ui.model.resource.ResourceModel({bundleName:"airbus.mes.disruptiontracker.i18n.i18n",bundleLocale:"en"}), 
+														 "disruptiontrackerI18n");*/
 
 
 		var dest;
@@ -64,7 +64,14 @@ airbus.mes.disruptiontracker.ModelManager = {
 		getDiruptionsURL = getDiruptionsURL.replace('$Site', airbus.mes.settings.ModelManager.site);
 		getDiruptionsURL = getDiruptionsURL.replace('$Status', "ALL");
 		getDiruptionsURL = getDiruptionsURL.replace('$Resource', "");
-		getDiruptionsURL = getDiruptionsURL.replace('$Operation', "");
+		
+		if(oFilters.operation != undefined && oFilters.operation != ""){
+			getDiruptionsURL = getDiruptionsURL.replace('$Operation', oFilters.operation);
+		}
+		else{
+			getDiruptionsURL = getDiruptionsURL.replace('$Operation', "");
+		}
+		
 		getDiruptionsURL = getDiruptionsURL.replace('$SFC', "");
 		getDiruptionsURL = getDiruptionsURL.replace('$OperationRevision', "");
 		getDiruptionsURL = getDiruptionsURL.replace('$SignalFlag', "");
@@ -75,8 +82,10 @@ airbus.mes.disruptiontracker.ModelManager = {
 			getDiruptionsURL = getDiruptionsURL.replace('$WorkCenter', oFilters.station);
 			airbus.mes.disruptiontracker.oView.byId("stationComboBox").setSelectedKey(oFilters.station);
 		}
-		else
+		else{
 			getDiruptionsURL = getDiruptionsURL.replace('$WorkCenter', "");
+			airbus.mes.disruptiontracker.oView.byId("stationComboBox").setSelectedKey("");
+		}
 		
 	  getDiruptionsURL = getDiruptionsURL.replace('$userGroup', "");
 		getDiruptionsURL = getDiruptionsURL.replace('$MessageType', "");

@@ -3,422 +3,209 @@
 	controllerName="airbus.mes.disruptions.ViewDisruption" xmlns:html="http://www.w3.org/1999/xhtml">
 	<Page enableScrolling="false" showHeader="false">
 		<content>
-			<ScrollContainer class="disruptionDetailCont"
-				vertical="true" height="43rem">
-				<List noDataText="No Disruptions Found" class="disruptionDetail"
-					items="{path: 'DisruptionDetail>/Disruption'}">
+			<List id="disrptlist" noDataText="{i18nModel>noDisruptions}"
+				class="disruptionDetail sapUiSmallMarginBottom" items="{path: 'DisruptionDetail>/Disruption'}">
 
-					<CustomListItem>
+				<CustomListItem>
 
-						<Panel expandable="true" expanded="false" class="expandableIcon"
-							expand="handleDisruptionPanelExpand">
-							<headerToolbar>
-								<Toolbar>
-									<Title text="{DisruptionDetail>Title}" class="panelTitleText" />
-									<ToolbarSpacer />
-									<Button class="decoratePanelBtn" text="Edit" design="Transparent"
-										icon="sap-icon://edit" />
-									<Button class="decoratePanelBtn" text="Delete" design="Transparent"
-										icon="sap-icon://delete" />
+					<Panel expandable="true" expanded="false" class="expandableIcon"
+						expand="handleDisruptionPanelExpand">
+						<headerToolbar>
+							<Toolbar>
+								<Title text="{DisruptionDetail>Title}" class="panelTitleText" />
+								<ToolbarSpacer />
+								<Button class="decoratePanelBtn" text="Edit" design="Transparent"
+									icon="sap-icon://edit" />
+								<Button class="decoratePanelBtn" text="Delete" design="Transparent"
+									icon="sap-icon://delete" />
 
-								</Toolbar>
-							</headerToolbar>
+							</Toolbar>
+						</headerToolbar>
 
-									<f:Form class="formDisruptionDetail" editable="true">
-										<f:layout>
-											<f:ResponsiveGridLayout span="L12 M12 S12" />
-										</f:layout>
-										<f:formContainers>
-											<f:FormContainer ariaLabelledBy="Title2">
-												<f:formElements>
+						<f:Form class="formDisruptionDetail" editable="true">
+							<f:layout>
+								<f:ResponsiveGridLayout span="L12 M12 S12" />
+							</f:layout>
+							<f:formContainers>
+								<f:FormContainer ariaLabelledBy="Title2">
+									<f:formElements>
 
-													<f:FormElement>
-														<f:label>
-															<Label class="detailLabels" text="Gravity">
-																<layoutData>
-																	<l:GridData span="L3 M3 S12" />
-																</layoutData>
-															</Label>
-														</f:label>
-														<f:fields>
+										<f:FormElement>
+											<f:label>
+												<Label class="detailLabels" text="{i18nModel>gravity}">
+													<layoutData>
+														<l:GridData span="L3 M3 S12" />
+													</layoutData>
+												</Label>
+											</f:label>
+											<f:fields>
 
-															<Text text="{DisruptionDetail>Gravity}">
-																<layoutData>
-																	<l:GridData span="L3 M3 S12" />
-																</layoutData>
-															</Text>
-														</f:fields>
-													</f:FormElement>
+												<Text text="{DisruptionDetail>Gravity}">
+													<layoutData>
+														<l:GridData span="L3 M3 S12" />
+													</layoutData>
+												</Text>
+											</f:fields>
+										</f:FormElement>
 
 
-													<f:FormElement>
-														<f:label>
-															<Label class="detailLabels" text="Problem">
-																<layoutData>
-																	<l:GridData span="L2 M2 S12" />
-																</layoutData>
-															</Label>
-														</f:label>
-														<f:fields>
+										<f:FormElement>
+											<f:label>
+												<Label class="detailLabels" text="{i18nModel>problem}">
+													<layoutData>
+														<l:GridData span="L2 M2 S12" />
+													</layoutData>
+												</Label>
+											</f:label>
+											<f:fields>
 
-															<Text text="{DisruptionDetail>Object}">
-																<layoutData>
-																	<l:GridData span="L4 M4 S12" />
-																</layoutData>
-															</Text>
-														</f:fields>
-													</f:FormElement>
+												<Text text="{DisruptionDetail>Object}">
+													<layoutData>
+														<l:GridData span="L4 M4 S12" />
+													</layoutData>
+												</Text>
+											</f:fields>
+										</f:FormElement>
 
-													<f:FormElement>
-														<f:label>
-															<Label class="detailLabels" text="Resolution group">
-																<layoutData>
-																	<l:GridData span="L3 M3 S12" />
-																</layoutData>
-															</Label>
-														</f:label>
-														<f:fields>
+										<f:FormElement>
+											<f:label>
+												<Label class="detailLabels" text="{i18nModel>resGroup}">
+													<layoutData>
+														<l:GridData span="L3 M3 S12" />
+													</layoutData>
+												</Label>
+											</f:label>
+											<f:fields>
 
-															<Text text="{DisruptionDetail>Help}">
-																<layoutData>
-																	<l:GridData span="L3 M3 S12" />
-																</layoutData>
-															</Text>
-														</f:fields>
-													</f:FormElement>
-
-
-													<f:FormElement>
-														<f:label>
-															<Label class="detailLabels" text="Nature">
-																<layoutData>
-																	<l:GridData span="L2 M2 S12" />
-																</layoutData>
-															</Label>
-														</f:label>
-														<f:fields>
-
-															<Text text="{DisruptionDetail>Nature}">
-																<layoutData>
-																	<l:GridData span="L4 M4 S12" />
-																</layoutData>
-															</Text>
-														</f:fields>
-													</f:FormElement>
-
-													<f:FormElement>
-														<f:label>
-															<Label class="detailLabels" text="Date">
-																<layoutData>
-																	<l:GridData span="L3 M3 S12" />
-																</layoutData>
-															</Label>
-														</f:label>
-														<f:fields>
-
-															<Text text="{DisruptionDetail>Open Date} - {DisruptionDetail>Time}">
-																<layoutData>
-																	<l:GridData span="L3 M3 S12" />
-																</layoutData>
-															</Text>
-														</f:fields>
-													</f:FormElement>
+												<Text text="{DisruptionDetail>Help}">
+													<layoutData>
+														<l:GridData span="L3 M3 S12" />
+													</layoutData>
+												</Text>
+											</f:fields>
+										</f:FormElement>
 
 
+										<f:FormElement>
+											<f:label>
+												<Label class="detailLabels" text="{i18nModel>nature}">
+													<layoutData>
+														<l:GridData span="L2 M2 S12" />
+													</layoutData>
+												</Label>
+											</f:label>
+											<f:fields>
 
-													<f:FormElement>
-														<f:label>
-															<Label class="detailLabels" text="Expected">
-																<layoutData>
-																	<l:GridData span="L2 M2 S12" />
-																</layoutData>
-															</Label>
-														</f:label>
-														<f:fields>
-															<Text text="{DisruptionDetail>Expected} - {DisruptionDetail>TimeEx}">
-																<layoutData>
-																	<l:GridData span="L4 M4 S12" />
-																</layoutData>
-															</Text>
-														</f:fields>
-													</f:FormElement>
+												<Text text="{DisruptionDetail>Nature}">
+													<layoutData>
+														<l:GridData span="L4 M4 S12" />
+													</layoutData>
+												</Text>
+											</f:fields>
+										</f:FormElement>
+
+										<f:FormElement>
+											<f:label>
+												<Label class="detailLabels" text="{i18nModel>date}">
+													<layoutData>
+														<l:GridData span="L3 M3 S12" />
+													</layoutData>
+												</Label>
+											</f:label>
+											<f:fields>
+
+												<Text
+													text="{DisruptionDetail>Open Date} - {DisruptionDetail>Time}">
+													<layoutData>
+														<l:GridData span="L3 M3 S12" />
+													</layoutData>
+												</Text>
+											</f:fields>
+										</f:FormElement>
 
 
-													<f:FormElement>
-														<f:label>
-															<Label class="detailLabels" text="Status">
-																<layoutData>
-																	<l:GridData span="L3 M3 S12" />
-																</layoutData>
-															</Label>
-														</f:label>
-														<f:fields>
-															<Text text="{DisruptionDetail>Status}">
-																<layoutData>
-																	<l:GridData span="L3 M3 S12" />
-																</layoutData>
-															</Text>
-														</f:fields>
-													</f:FormElement>
 
-												</f:formElements>
-											</f:FormContainer>
-										</f:formContainers>
-									</f:Form>
+										<f:FormElement>
+											<f:label>
+												<Label class="detailLabels" text="{i18nModel>expected}">
+													<layoutData>
+														<l:GridData span="L2 M2 S12" />
+													</layoutData>
+												</Label>
+											</f:label>
+											<f:fields>
+												<Text
+													text="{DisruptionDetail>Expected} - {DisruptionDetail>TimeEx}">
+													<layoutData>
+														<l:GridData span="L4 M4 S12" />
+													</layoutData>
+												</Text>
+											</f:fields>
+										</f:FormElement>
 
-									<Panel id="showCommentBox">
 
-										<VBox width="79%">
-											<TextArea placeholder="Add Comments..." width="100%" />
+										<f:FormElement>
+											<f:label>
+												<Label class="detailLabels" text="{i18nModel>status}">
+													<layoutData>
+														<l:GridData span="L3 M3 S12" />
+													</layoutData>
+												</Label>
+											</f:label>
+											<f:fields>
+												<Text text="{DisruptionDetail>Status}">
+													<layoutData>
+														<l:GridData span="L3 M3 S12" />
+													</layoutData>
+												</Text>
+											</f:fields>
+										</f:FormElement>
 
-											<HBox class="submitComment">
-												<Button text="Submit Comment" press="showCommentBox"
-													class="sapUiSmallMarginEnd" width="12rem" />
-												<Button text="Status" type="Emphasized" press="onMarkSolved"
-													width="12rem" />
-											</HBox>
-										</VBox>
+									</f:formElements>
+								</f:FormContainer>
+							</f:formContainers>
+						</f:Form>
 
-									</Panel>
+						<Panel id="commentBox" visible="false">
 
-									<Toolbar class="barcolor">
-										<ToolbarSpacer />
-										<Button class="decoratePanelBtn" text="Add Comment"
-											design="Transparent" icon="sap-icon://comment" />
-										<Button class="decoratePanelBtn" text="Acknowledge"
-											design="Transparent" icon="sap-icon://to-be-reviewed" />
-										<Button class="decoratePanelBtn" text="Escalate"
-											design="Transparent" icon="sap-icon://message-warning" />
-										<Button class="decoratePanelBtn" text="Mark Solved"
-											design="Transparent" icon="sap-icon://sys-add" />
-									</Toolbar>
+							<VBox width="79%">
+								<TextArea placeholder="Add Comments..." width="100%" />
+
+									<Button text="{i18nModel>submitComment}" press="showCommentBox"
+										class="sapUiSmallMarginEnd" width="12rem" />
+							</VBox>
+
 						</Panel>
 
-					</CustomListItem>
+						<Toolbar class="barcolor">
+							<ToolbarSpacer />
+							<Button class="decoratePanelBtn" text="{i18nModel>addComment}"
+								press="showCommentBox" design="Transparent" icon="sap-icon://comment" />
+							<Button class="decoratePanelBtn" text="{i18nModel>acknowledge}"
+								design="Transparent" icon="sap-icon://to-be-reviewed" />
+							<Button class="decoratePanelBtn" text="{i18nModel>escalate}"
+								design="Transparent" icon="sap-icon://message-warning" />
+							<Button class="decoratePanelBtn" text="{i18nModel>markSolved}"
+								press="onMarkSolved" design="Transparent" icon="sap-icon://sys-add" />
+						</Toolbar>
+					</Panel>
 
-				</List>
-			</ScrollContainer>
+				</CustomListItem>
+
+			</List>
 		</content>
 		<footer>
-		<Bar design="Footer" class="viewDisruptionFooter">
-			<contentLeft>
-				<Button text="{i18n>reportDisruption}" press="onReportDisruption" icon="sap-icon://add"/>
-			</contentLeft>
-		</Bar>
-	</footer>
-	<!-- <Panel class="disruptionPanel sapUiSmallMargin" id="disruptionsHeader"> -->
-		<!-- <List id="disrptlist" noDataText="No Disruptions Found" items="{disruptionModel>/Disruption}">
-			<CustomListItem>
-				<Panel expandable="true" expanded="false" class="barColor"
-					expand="handleDisruptionPanelExpand">
-					<headerToolbar class="">
-						<Toolbar>
-							<Title text="Luca A. has created a Disruption" class="panelTitleText" />
-							<ToolbarSpacer />
-							<Button class="decoratePanelBtn" text="Delete" icon="sap-icon://delete" />
-							<Button class="decoratePanelBtn" text="Edit" icon="sap-icon://edit" />
-						</Toolbar>
-					</headerToolbar>
+			<Bar design="Footer" class="viewDisruptionFooter">
+				<contentLeft>
+					<Button text="{i18n>reportDisruption}" press="onReportDisruption"
+						icon="sap-icon://add" />
+				</contentLeft>
+				<contentRight>
+					<Button id="btnClose" text="{i18n>close}" icon="sap-icon://decline"
+						press="onCloseOperationDetailPopup" />
+				</contentRight>
+			</Bar>
+		</footer>
 
-					<f:Form id="formDisruptionDetail" editable="true">
-						<f:layout>
-							<f:ResponsiveGridLayout span="L12 M12 S12" />
-						</f:layout>
-						<f:formContainers>
-							<f:FormContainer ariaLabelledBy="Title2">
-								<f:formElements>
-									<f:FormElement>
-										<f:label>
-											<Label text="Gravity">
-												<layoutData>
-													<l:GridData span="L2 M2 S12" />
-												</layoutData>
-											</Label>
-										</f:label>
-										<f:fields>
-											<Text text="{disruptionModel>Gravity}">
-												<layoutData>
-													<l:GridData span="L2 M2 S12" />
-												</layoutData>
-											</Text>
-										</f:fields>
-									</f:FormElement>
-									<f:FormElement>
-										<f:label>
-											<Label text="Date">
-												<layoutData>
-													<l:GridData span="L2 M2 S12" />
-												</layoutData>
-											</Label>
-										</f:label>
-										<f:fields>
-											<Text text="{disruptionModel>Open Date} {disruptionModel>Time}">
-												<layoutData>
-													<l:GridData span="L6 M6 S12" />
-												</layoutData>
-											</Text>
-										</f:fields>
-									</f:FormElement>
-
-
-									<f:FormElement>
-										<f:label>
-											<Label text="Problem">
-												<layoutData>
-													<l:GridData span="L2 M2 S12" linebreak="true" />
-												</layoutData>
-											</Label>
-										</f:label>
-										<f:fields>
-											<Text text="{disruptionModel>Object}">
-												<layoutData>
-													<l:GridData span="L2 M2 S12" />
-												</layoutData>
-											</Text>
-										</f:fields>
-									</f:FormElement>
-									<f:FormElement>
-										<f:label>
-											<Label text="Expected">
-												<layoutData>
-													<l:GridData span="L2 M2 S12" />
-												</layoutData>
-											</Label>
-										</f:label>
-										<f:fields>
-											<Text text="{disruptionModel>Expected} {disruptionModel>TimeEx}">
-												<layoutData>
-													<l:GridData span="L6 M6 S12" />
-												</layoutData>
-											</Text>
-										</f:fields>
-									</f:FormElement>
-
-									<f:FormElement>
-										<f:label>
-											<Label text="Nature">
-												<layoutData>
-													<l:GridData span="L2 M2 S12" linebreak="true" />
-												</layoutData>
-											</Label>
-										</f:label>
-										<f:fields>
-											<Text text="{disruptionModel>Nature}">
-												<layoutData>
-													<l:GridData span="L2 M2 S12" />
-												</layoutData>
-											</Text>
-										</f:fields>
-									</f:FormElement>
-									<f:FormElement>
-										<f:label>
-											<Label text="Help">
-												<layoutData>
-													<l:GridData span="L2 M2 S12" />
-												</layoutData>
-											</Label>
-										</f:label>
-										<f:fields>
-											<Text text="{disruptionModel>Help}">
-												<layoutData>
-													<l:GridData span="L6 M6 S12" />
-												</layoutData>
-											</Text>
-										</f:fields>
-									</f:FormElement>
-
-									<f:FormElement>
-										<f:label>
-											<Label text="">
-												<layoutData>
-													<l:GridData span="L2 M2 S12" />
-												</layoutData>
-											</Label>
-										</f:label>
-										<f:fields>
-											<VBox>
-												<Text text="{disruptionModel>message}" />
-												<layoutData>
-													<l:GridData span="L10 M10 S12" />
-												</layoutData>
-											</VBox>
-										</f:fields>
-									</f:FormElement>
-
-									<f:FormElement>
-										<f:label>
-											<Label text="Status">
-												<layoutData>
-													<l:GridData span="L2 M2 S12" />
-												</layoutData>
-											</Label>
-										</f:label>
-										<f:fields>
-											<Text text="{disruptionModel>Status}">
-												<layoutData>
-													<l:GridData span="L10 M10 S12" />
-												</layoutData>
-											</Text>
-										</f:fields>
-									</f:FormElement>
-									<f:FormElement>
-										<f:label>
-											<Label>
-												<layoutData>
-													<l:GridData span="L2 M2 S12" />
-												</layoutData>
-											</Label>
-										</f:label>
-										<f:fields>
-											<TextArea placeholder="Add Comments.." icon="sap-icon://sort"
-												visible="{ parts: [ 'disruptionModel>commentVisible'], formatter : 'airbus.mes.worktracker.util.Formatter.showComment' }">
-												<layoutData>
-													<l:GridData span="L10 M10 S12" />
-												</layoutData>
-											</TextArea>
-										</f:fields>
-									</f:FormElement>
-									<f:FormElement>
-										<f:label>
-											<Label text="">
-												<layoutData>
-													<l:GridData span="L8 M8 S12" linebreak="true" />
-												</layoutData>
-											</Label>
-										</f:label>
-										<f:fields>
-											<Button text="Add Comment"
-												visible="{ parts: [ 'disruptionModel>Status' ], formatter : 'airbus.mes.worktracker.util.Formatter.setVisibility' }"
-												press="showCommentBox">
-												<layoutData>
-													<l:GridData span="L2 M2 S12" />
-												</layoutData>
-											</Button>
-										</f:fields>
-										<f:fields>
-											<Button
-												text="{ parts: [ 'disruptionModel>Status'], formatter : 'airbus.mes.worktracker.util.Formatter.markSolvedBtn' }"
-												type="Emphasized" press="onMarkSolved">
-												<layoutData>
-													<l:GridData span="L2 M2 S12" />
-												</layoutData>
-											</Button>
-										</f:fields>
-									</f:FormElement>
-								</f:formElements>
-							</f:FormContainer>
-						</f:formContainers>
-					</f:Form>
-				</Panel>
-			</CustomListItem>
-		</List>
-	</Panel>
-	<footer>
-		<Bar design="Footer" class="viewDisruptionFooter">
-			<contentLeft>
-				<Button text="{i18n>reportDisruption}" press="onReportDisruption" icon="sap-icon://add"/>
-			</contentLeft>
-		</Bar>
-	</footer> -->
 	</Page>
 </core:View>

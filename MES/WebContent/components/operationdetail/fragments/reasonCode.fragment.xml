@@ -1,14 +1,41 @@
 <core:FragmentDefinition xmlns:core="sap.ui.core"
-	xmlns="sap.m" xmlns:f="sap.ui.layout.form">
-	<Dialog draggable="true" contentHeight="30%" contentWidth="50%"
+	xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout">
+	<Dialog draggable="true" contentHeight="40%" contentWidth="60%"
 		title="Reason Code ">
 		<content>
+		<HBox class="sapUiSmallMarginTop">
+				<Button id="btnReduce" type="Transparent" press="reduceProgress"
+					icon="sap-icon://sys-minus" class="progressBtnColor" >
+					
+				</Button>
+				<HBox width="100%" class="progressSlider">
+					<layoutData>
+						<l:GridData span="L12 M12 S12" />
+					</layoutData>
+					<Slider id="progressSliderfirst" class="comfirmedProgressSlider"
+						min="0"
+						width="{parts:['operationDetailModel>/Rowsets/Rowset/0/Row/0/status', 'operationDetailModel>/Rowsets/Rowset/0/Row/0/progress'], formatter:'airbus.mes.operationdetail.Formatter.sliderStatusFirst'}"
+						editable="false" enabled="false">
+					</Slider>
+					<Slider id="progressSlider" class="sliderInprogressColor"
+						max="100" showHandleTooltip="true"
+						width="{parts: ['operationDetailModel>/Rowsets/Rowset/0/Row/0/status', 'operationDetailModel>/Rowsets/Rowset/0/Row/0/progress'], 
+				formatter: 'airbus.mes.operationdetail.Formatter.sliderStatus' }"
+						enabled="false">
+					</Slider>
+				</HBox>
+				<Button id="btnAdd" type="Transparent" press="addProgress"
+					icon="sap-icon://sys-add" class="progressBtnColor" >
+					
+				</Button>
+				</HBox>
+			
  			<f:SimpleForm id="reasonCode" minWidth="1024"
 				maxContainerCols="2" editable="true" layout="ResponsiveGridLayout"
 				labelSpanL="1" labelSpanM="2" emptySpanL="0" emptySpanM="0"
-				columnsL="1" columnsM="1" validateFieldGroup="onValidatereason">
+				columnsL="1" columnsM="1" validateFieldGroup="onValidatereason" class="sapUiLargeMarginTop">
 				<f:content>
-						<Slider id="progressSliderSecond" min="0" max="100" editable="true" enabled="true"></Slider>
+						<!-- <Slider id="progressSliderSecond" min="0" max="100" editable="true" enabled="true"></Slider> -->
 						<Label text="Reason Code" />
 						<Select forceSelection="true" change="onSelectionReason" id="reasonCodeSelectBox"
 							items="{reasonCodeModel>/Rowsets/Rowset/0/Row}">
