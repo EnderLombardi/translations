@@ -27,6 +27,10 @@ airbus.mes.settings.ModelManager = {
 		
 		core.setModel(new sap.ui.model.json.JSONModel(), "plantModel");
 		core.setModel(new sap.ui.model.json.JSONModel(), "siteModel");
+		core.setModel(new sap.ui.model.json.JSONModel(), "program");
+		core.setModel(new sap.ui.model.json.JSONModel(), "site");
+		
+		core.getModel("plantModel").attachRequestCompleted( airbus.mes.settings.ModelManager.onPlantLoad );
 //		core.setModel(new sap.ui.model.json.JSONModel(), "langModel");
 //		core.setModel(new sap.ui.model.json.JSONModel(), "userSettingModel");
 
@@ -56,11 +60,25 @@ airbus.mes.settings.ModelManager = {
 		//Loading of model
 		
 		this.loadSiteModel();
-		this.loadPlantModel();
+		//this.loadPlantModel();
         this.loadUserSettingsModel();
-
+        this.getProgram();
+        
 	},
 	
+	
+	getProgram : function() {
+		var urlSite = this.urlModel.getProperty("urlprogram");
+		var oViewModel = this.core.getModel("program");
+		oViewModel.loadData(urlSite, null, false);
+		
+	},
+	
+	onPlantLoad : function() {
+		
+		airbus.mes.settings.oView.getModel("program").refresh(true);
+		
+	},
 	// ************************************************************************************
 	getUrlSite : function() {
 		var urlSite = this.urlModel.getProperty("urlsitemodel");
