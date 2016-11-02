@@ -6,7 +6,7 @@
 			<FlexBox width="100%" height="100%" justifyContent="Center"
 				direction="Column">
 				<items>
-		<f:Form id="FormToolbar" editable="true" class="sapUiMediumMargin"
+		<f:Form id="createDisruptionForm" editable="true" class="sapUiMediumMargin"
 			visible="true">
 			<f:layout>
 				<f:ResponsiveGridLayout span="L12 M12 S12" />
@@ -26,20 +26,40 @@
 
 						</f:FormElement>
 
-						<f:FormElement label="Object">
+						<f:FormElement>
 							<f:label>
-								<Label text="Object">
+								<Label text="Category">
 									<layoutData>
 										<l:GridData span="L3 M6 S12" />
 									</layoutData>
 								</Label>
 							</f:label>
 							<f:fields>
-								<Select id="Object" selectedKey="Assembly">
+								<Select id="category" selectedKey="Assembly">
 									<items>
 										<core:Item text="Assembly" key="Assembly" />
-										<core:Item text="Assembly" key="Assembly" />
-										<core:Item text="Assembly" key="Assembly" />
+										<core:Item text="Part" key="Part" />
+										<core:Item text="Jig-Tool" key="JigTool" />
+									</items>
+									<layoutData>
+										<l:GridData span="L3 M6 S12" />
+									</layoutData>
+								</Select>
+							</f:fields>
+						</f:FormElement>
+						
+						<f:FormElement>
+							<f:label>
+								<Label text="Category Class">
+									<layoutData>
+										<l:GridData span="L3 M6 S12" />
+									</layoutData>
+								</Label>
+							</f:label>
+							<f:fields>
+								<Select id="categoryClass" selectedKey="">
+									<items>
+										
 									</items>
 									<layoutData>
 										<l:GridData span="L3 M6 S12" />
@@ -52,16 +72,16 @@
 							<f:label>
 								<Label text="Gravity">
 									<layoutData>
-										<l:GridData span="L3 M6 S12" />
+										<l:GridData span="L3 M6 S12" linebreak="true" />
 									</layoutData>
 								</Label>
 							</f:label>
 							<f:fields>
-								<Select id="Gravity" selectedKey="Blocked">
+								<Select id="gravity" selectedKey="Blocked">
 									<items>
-										<core:Item text="Blocked" key="blocked" />
-										<core:Item text="Blocked" key="blocked" />
-										<core:Item text="Blocked" key="blocked" />
+										<core:Item text="Blocked" key="1" />
+										<core:Item text="Blocked" key="2" />
+										<core:Item text="Blocked" key="3" />
 									</items>
 									<layoutData>
 										<l:GridData span="L3 M6 S6" />
@@ -73,18 +93,18 @@
 
 						<f:FormElement>
 							<f:label>
-								<Label text="Nature">
+								<Label text="Reason Tree">
 									<layoutData>
-										<l:GridData span="L3 M6 S12" linebreak="true" />
+										<l:GridData span="L3 M6 S12"/>
 									</layoutData>
 								</Label>
 							</f:label>
 							<f:fields>
-								<Select id="Nature" selectedKey="Non Confirm">
+								<Select id="reasonTree" selectedKey="Non Confirm">
 									<items>
-										<core:Item text="Non Confirm" key="Confirm" />
-										<core:Item text="Confirm" key="Confirm" />
-										<core:Item text="Confirm" key="Confirm" />
+										<core:Item text="Non Confirm" key="NonConfirm" />
+										<core:Item text="Missing" key="Missing" />
+										<core:Item text="Failure" key="Failure" />
 									</items>
 									<layoutData>
 										<l:GridData span="L3 M6 S12" />
@@ -96,21 +116,60 @@
 
 						<f:FormElement>
 							<f:label>
-								<Label text="ResoLution Group">
+								<Label text="Responsible Support">
+									<layoutData>
+										<l:GridData span="L3 M6 S12" linebreak="true"/>
+									</layoutData>
+								</Label>
+							</f:label>
+							<f:fields>
+								<Select id="responsibleSupport" selectedKey="Logistic Support">
+									<items>
+										<core:Item text="Team Leader" key="TeamLeader" />
+										<core:Item text="Logistic Support" key="LogisticSupport" />
+										<core:Item text="Quality Support" key="QualitySupport" />
+									</items>
+									<layoutData>
+										<l:GridData span="L3 M6 S12" />
+									</layoutData>
+								</Select>
+							</f:fields>
+						</f:FormElement>
+						
+							<f:FormElement>
+							<f:label>
+								<Label text="SQCDP KPI">
 									<layoutData>
 										<l:GridData span="L3 M6 S12" />
 									</layoutData>
 								</Label>
 							</f:label>
 							<f:fields>
-								<Select id="ResolveGroup" selectedKey="Logistic Support">
+								<Select id="kpi" selectedKey="Safety">
 									<items>
-										<core:Item text="Logistic Support" key="Logistic Support" />
-										<core:Item text="Support" key="Support" />
-										<core:Item text="Support" key="Support" />
+										<core:Item text="Safety" key="Safety" />
+										<core:Item text="Quality" key="Quality" />
+										<core:Item text="Cost" key="Cost" />
 									</items>
 									<layoutData>
 										<l:GridData span="L3 M6 S12" />
+									</layoutData>
+								</Select>
+							</f:fields>
+						</f:FormElement>
+						
+							<f:FormElement>
+							<f:label>
+								<Label text="Root Cause">
+									<layoutData>
+										<l:GridData span="L3 M3 S12" linebreak="true" />
+									</layoutData>
+								</Label>
+							</f:label>
+							<f:fields>
+								<Select id="rootCause" selectedKey="">
+									<layoutData>
+										<l:GridData span="L9 M9 S12" />
 									</layoutData>
 								</Select>
 							</f:fields>
@@ -125,7 +184,7 @@
 								</Label>
 							</f:label>
 							<f:fields>
-								<DatePicker id="opendate" 
+								<DatePicker id="openDate" 
 									displayFormat="long" change="handleChange">
 									<layoutData>
 										<l:GridData span="L3 M6 S12" />
@@ -143,7 +202,7 @@
 								</Label>
 							</f:label>
 							<f:fields>
-								<DatePicker id="expected" valueFormat="yy/MM/dd"
+								<DatePicker id="expectedDate" valueFormat="yy/MM/dd"
 									displayFormat="long" change="handleChange">
 									<layoutData>
 										<l:GridData span="L3 M6 S12" />
@@ -161,7 +220,7 @@
 								</Label>
 							</f:label>
 							<f:fields>
-								<TimePicker id="timeOpen">
+								<TimePicker id="openTime">
 									<layoutData>
 										<l:GridData span="L3 M6 S12" />
 									</layoutData>
@@ -178,11 +237,27 @@
 								</Label>
 							</f:label>
 							<f:fields>
-								<TimePicker id="timeExpected">
+								<TimePicker id="expectedTime">
 									<layoutData>
 										<l:GridData span="L3 M6 S12" />
 									</layoutData>
 								</TimePicker>
+							</f:fields>
+						</f:FormElement>
+						
+						<f:FormElement>
+						<f:label>
+								<Label text="Time Lost">
+									<layoutData>
+										<l:GridData span="L3 M6 S12" linebreak="true"/>
+									</layoutData>
+								</Label>
+							</f:label>
+							<f:fields>
+								<Input placeholder="minutes" id="timeLost" type="Number"/>
+								<layoutData>
+										<l:GridData span="L3 M6 S12"/>
+									</layoutData>
 							</f:fields>
 						</f:FormElement>
 
@@ -194,7 +269,7 @@
 									</layoutData>
 								</Label>
 							</f:label>
-							<TextArea placeholder="Add comment.." id="addMessage"
+							<TextArea placeholder="Add comment.." id="comment"
 								valueLiveUpdate="true">
 								<layoutData>
 									<l:GridData span="L10 M10 S12" />
@@ -212,7 +287,7 @@
 			<Bar design="" class="createDisruptionFooter">
 				<contentRight>
 					<Button text="Cancel" press="onCancelCreateDisruption" />
-					<Button text="Create" class="btnColor" press="onCreateDisrupt" />
+					<Button text="Create" class="btnColor" press="onCreateDisrupution" />
 				</contentRight>
 			</Bar>
 		</footer>

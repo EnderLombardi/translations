@@ -17,7 +17,24 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
 //	onBeforeRendering: function() {
 //
 //	},
-
+	/*******
+	 * Create Disruption
+	 */
+	onCreateDisrupution : function(){
+		
+		
+		var sObject = this.getView().byId("object").getKey();
+		var sGravity = this.getView().byId("gravity").getKey();
+		var sNature = this.getView().byId("nature").getKey();
+		var sHelp = this.getView().byId("help").getKey();
+		var dOpenDate = this.getView().byId("openDate").getDateValue();
+		var dExpectedDate = this.getView().byId("expectedDate").getDateValue();
+		var dOpenTime = this.getView().byId("openTime").getDateValue();
+		var dExpectedTime = this.getView().byId("expectedTime").getDateValue();
+		
+		//Convert input to XML format
+		airbus.mes.disruptions.ModelManager.createDisruption(sObject,sGravity,sNature,sHelp,dOpenDate,dExpectedDate,dOpenTime,dExpectedTime);
+	}
 /**
 * Called when the View has been rendered (so its HTML is part of the document). Post-rendering manipulations of the HTML could be done here.
 * This hook is the same one that SAPUI5 controls get after being rendered.
