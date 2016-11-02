@@ -114,6 +114,21 @@
     background: #fff;
 }
 /*** End of CSS for Operation Details Sub Header and Menu Bar  ******/
+
+/**** CSS for Navigation Bar ****/
+
+.ClassOperationDetailPopUp .opDetailNavToolbar{
+	background:#fff;
+    box-shadow: 0px 5px 15px -5px #0F2D65;
+}
+.ClassOperationDetailPopUp .opDetailNavToolbar ul.opDetailNav {
+	margin-left: 0px;
+}
+.ClassOperationDetailPopUp .opDetailNavToolbar ul.opDetailNav li {
+    border: 0px !important;
+}
+/*** End of CSS for NAvigation Bar *****/
+
 /**** CSS for Operation Icon Nav Bar *****/
 .operationNavBar .countText{
 	background:#009de0 !important;
