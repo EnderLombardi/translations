@@ -127,7 +127,7 @@
 				</SegmentedButton>
 			</Toolbar>
 
-			<NavContainer id="operDetailNavContainer" class="navContAutoHeight" height="auto">
+			<NavContainer id="operDetailNavContainer" class="navContAutoHeight" height="auto" afterNavigate="renderViews">
 				<pages>
 
 				</pages>

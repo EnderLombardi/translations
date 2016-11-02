@@ -7,8 +7,8 @@ airbus.mes.disruptions.ModelManager = {
 	init : function(core) {
 		
 		core.setModel(new sap.ui.model.json.JSONModel(), "DisruptionDetail");//Model having disruptions detail
-		core.setModel(new sap.ui.model.resource.ResourceModel({bundleName:"airbus.mes.disruptions.i18n.i18n",bundleLocale:"en"}), 
-														 "disruptionsI18n");
+		/*core.setModel(new sap.ui.model.resource.ResourceModel({bundleName:"airbus.mes.disruptions.i18n.i18n",bundleLocale:"en"}), 
+														 "disruptionsI18n");*/
 
 
 		var dest;
@@ -30,14 +30,17 @@ airbus.mes.disruptions.ModelManager = {
 			bundleUrl : "../components/disruptions/config/url_config.properties",
 			bundleLocale : dest
 		});
-		
-		this.loadData();
-		
 	},
 	
-	loadData: function() {
+	loadDisruptionsByOperation: function(operation) {
 		var oViewModel = sap.ui.getCore().getModel("DisruptionDetail");
-		oViewModel.loadData(this.urlModel.getProperty("urldisruptionmodel"), null, false);
+		
+		var getDiruptionsURL = this.urlModel.getProperty("getDiruptionsURL");
+		
+		getDiruptionsURL = getDiruptionsURL.replace('$Site', airbus.mes.settings.ModelManager.site);
+		getDiruptionsURL = getDiruptionsURL.replace('$Operation', operation);
+		
+		oViewModel.loadData(this.urlModel.getProperty("getDiruptionsURL"), null, false);
 	}
 	
 }

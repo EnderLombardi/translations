@@ -9,8 +9,8 @@ airbus.mes.disruptiontracker.ModelManager = {
 		core.setModel(new sap.ui.model.json.JSONModel(), "disruptionsTrackerModel");//Model having disruptions detail
 		core.setModel(new sap.ui.model.json.JSONModel(), "disruptionsFilterData");
 		core.setModel(new sap.ui.model.json.JSONModel(), "disruptionsOrderData");
-		core.setModel(new sap.ui.model.resource.ResourceModel({bundleName:"airbus.mes.disruptiontracker.i18n.i18n",bundleLocale:"en"}), 
-														 "disruptiontrackerI18n");
+		/*core.setModel(new sap.ui.model.resource.ResourceModel({bundleName:"airbus.mes.disruptiontracker.i18n.i18n",bundleLocale:"en"}), 
+														 "disruptiontrackerI18n");*/
 
 
 		var dest;

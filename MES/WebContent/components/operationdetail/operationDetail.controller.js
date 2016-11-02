@@ -6,6 +6,7 @@ sap.ui
 				{
 					reasonCodeText : undefined,
 					operationStatus : undefined,
+					disruptionsFlag: false,
 
 					/**
 					 * Called when a controller is instantiated and its View
@@ -67,6 +68,7 @@ sap.ui
 					 * @memberOf components.stationtracker.stationtracker
 					 */
 					onAfterRendering : function() {
+						this.disruptionsFlag = false;
 
 						// Collapse Operation Detail panel and show Expand
 						// button
@@ -140,6 +142,7 @@ sap.ui
 							// this.setScreenforSwitchMode(false);
 						}
 					},
+					
 					/***********************************************************
 					 * Click on segmented button to respective page
 					 */
@@ -177,9 +180,27 @@ sap.ui
 
 							this.nav
 									.to(airbus.mes.operationdetail.viewDisruption.oView
-											.getId());
+											.getId());							
 							break;
 						}
 					},
+					
+					renderViews: function(oEvent){
+						
+						switch(this.nav.getPreviousPage().sId){
+						
+						case "ViewDisruptionView":
+							/**************************
+							 * Load Disruption Data
+							 *************************/
+							if(!this.disruptionsFlag){
+								var operationBO = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_bo;
+								airbus.mes.disruptions.ModelManager.loadDisruptionsByOperation(operationBO);
+								this.disruptionsFlag = true;
+							}
+						
+						};
+						
+					}
 
 				});
