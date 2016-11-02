@@ -55,9 +55,9 @@ airbus.mes.disruptions.ModelManager = {
 	getDisruptionCustomData : function() {
 		var urlCustomData = this.urlModel.getProperty("urlCustomData");
 		urlCustomData = airbus.mes.operationdetail.ModelManager.replaceURI(
-				urlCustomData, "$site", "CHES");
+				urlCustomData, "$site", airbus.mes.settings.ModelManager.site);
 		urlCustomData = airbus.mes.operationdetail.ModelManager.replaceURI(
-				urlCustomData, "$station", "STATION40");
+				urlCustomData, "$station", airbus.mes.settings.ModelManager.station);
 		return urlCustomData;
 
 	},
