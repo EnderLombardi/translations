@@ -38,7 +38,7 @@ airbus.mes.settings.ModelManager = {
 			dest = "sopra";
 			break;
 		default:
-			dest = "local";
+			dest = "airbus";
 			break;
 		}
 

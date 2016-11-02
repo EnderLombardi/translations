@@ -20,7 +20,7 @@ airbus.mes.disruptiontracker.ModelManager = {
 			dest = "local";
 			break;
 		default:
-			dest = "local";
+			dest = "airbus";
 			break;
 		}
 		

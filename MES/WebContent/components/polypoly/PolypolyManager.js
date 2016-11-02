@@ -46,7 +46,7 @@ airbus.mes.polypoly.PolypolyManager = {
 			dest = "sopra";
 			break;
 		default:
-			dest = "local";
+			dest = "airbus";
 			break;
 		}
 
