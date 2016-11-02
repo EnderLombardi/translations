@@ -40,6 +40,9 @@
 	background-color: rgba(12, 75, 131, 0.9);
 	margin: 0.5rem;
 	width: 13rem;
+    -webkit-transition: background-color 0.2s ease-in-out;
+    -moz-transition: background-color 0.2s ease-in-out;
+    transition: background-color 0.2s ease-in-out;
 }
 
 .titleToolbar {
