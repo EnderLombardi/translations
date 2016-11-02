@@ -1,7 +1,7 @@
 jQuery.sap.require("sap.ui.core.UIComponent");
 jQuery.sap.registerModulePath("airbus.mes.disruptions", "../components/disruptions");
 //jQuery.sap.require("airbus.mes.disruptions.util.Formatter");
-//jQuery.sap.require("airbus.mes.disruptions.ModelManager");
+jQuery.sap.require("airbus.mes.disruptions.ModelManager");
 
 jQuery.sap.declare("airbus.mes.operationdetail.viewDisruption.Component");
 
@@ -19,7 +19,7 @@ airbus.mes.operationdetail.viewDisruption.Component.prototype.createContent = fu
 	
 	if (airbus.mes.operationdetail.viewDisruption.oView === undefined) {
 //		Initialization
-		//airbus.mes.disruptions.ModelManager.init(sap.ui.getCore());
+		airbus.mes.disruptions.ModelManager.init(sap.ui.getCore());
 		
 		// View on XML
 		this.oView = sap.ui.view({
