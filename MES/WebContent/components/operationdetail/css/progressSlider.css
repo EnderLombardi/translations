@@ -6,7 +6,7 @@
 }
 
 
-.ML-05{margin-left:0.5rem !important;}
+.ML-05{margin-left:0.5rem !important;height: auto!important;}
 .progressSlider{
 	display:block !important;
 }
@@ -57,6 +57,7 @@
  
 .operationDetailHeadPanel {
     overflow: visible;
+    z-index: 1001;
 }
 .operationDetailHeadPanel .sapMPageBusyCoversAll>section .sapMIBar.sapMTB {
 	margin:0!important;
@@ -196,9 +197,7 @@
 /*** End CSS Button show / hide ***/
 
 /*** CSS toolbar ***/
-.operationDetailHeadPanel + .opDetailNavToolbar {
 
-}
 .operationDetailHeadPanel + .opDetailNavToolbar .sapMSegBBtn {
 	position:relative;
 }
@@ -221,13 +220,15 @@
 	background:#FF5000;
 }
 
-.ClassOperationDetailPopUp .opDetailNavToolbar{
+.operationDetailHeadPanel + .opDetailNavToolbar {
 	background:#fff;
     box-shadow: 0px 5px 15px -5px #0F2D65;
+    z-index: 1000;
+    position: relative;
+    border:0;
+    height:auto;
 }
-.ClassOperationDetailPopUp .opDetailNavToolbar ul.opDetailNav {
-	margin-left: 0px;
-}
-.ClassOperationDetailPopUp .opDetailNavToolbar ul.opDetailNav li {
-    border: 0px !important;
+html.sap-desktop .operationDetailHeadPanel + .opDetailNavToolbar .sapMSegBBtnFocusable:hover {
+    background: rgba(0, 86, 112, 0.20);
+    color:#0D5D76;
 }
