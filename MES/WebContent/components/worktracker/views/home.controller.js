@@ -14,23 +14,6 @@ sap.ui.controller("airbus.mes.worktracker.views.home", {
 	  	});
 	  	this.getView().setModel(i18nModel, "i18n");
 	  	  	
-  	  
-	  	/* var url="http://"+window.location.host+"/MES/components/worktracker/local/";
-		
-		// Model for Document List
-		sap.ui.getCore().setModel(new sap.ui.model.json.JSONModel(),"documentsNameModel");	 
-		sap.ui.getCore()
-		.getModel("documentsNameModel").loadData(url+"document.json",null,false);
-		
-		// Model for table in disruptions
-		var oModel = new sap.ui.model.json.JSONModel();
-		this.getView().setModel(oModel , "tableModel");
-		oModel.loadData(url+"tableContent.json",null,false);
-		
-		// Model for station names
-		this.getView().setModel(new sap.ui.model.json.JSONModel(),"activityModel");	 
-		this.getView().getModel("activityModel").loadData(url+"activities.json",null,false);*/
-		
 	},
 	
 	showGridView: function(oEvent){

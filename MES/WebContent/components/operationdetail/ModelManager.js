@@ -38,9 +38,6 @@ airbus.mes.operationdetail.ModelManager = {
 			bundleLocale : dest
 		});
 
-		this.core.setModel(new sap.ui.model.json.JSONModel(), "currentOperatorModel");
-		this.core.setModel(new sap.ui.model.json.JSONModel(), "userOperationsModel");
-		this.core.setModel(new sap.ui.model.json.JSONModel(), "UserListModel");
 		this.core.setModel(new sap.ui.model.json.JSONModel(), "reasonCodeModel");
 
 	},
@@ -132,72 +129,6 @@ airbus.mes.operationdetail.ModelManager = {
 						data.operation_revision);
 
 		return urlPauseOperation;
-	},
-
-	/***************************************************************************
-	 * Load list of operators assigned to current Work Center
-	 **************************************************************************/
-	getUsersInWorkcenterUrl : function() {
-		var UsersInWorkcenterUrl = this.urlModel
-				.getProperty("getUsersInWorkcenter");
-		UsersInWorkcenterUrl = airbus.mes.operationdetail.ModelManager
-				.replaceURI(UsersInWorkcenterUrl, "$Site",
-						airbus.mes.settings.ModelManager.site);
-		UsersInWorkcenterUrl = airbus.mes.operationdetail.ModelManager
-				.replaceURI(UsersInWorkcenterUrl, "$WorkCenter",
-						//"1TL1H13");
-						airbus.mes.settings.ModelManager.station);
-		return UsersInWorkcenterUrl;
-	},
-	loadUserListModel : function() {
-		this.core.getModel("UserListModel").loadData(
-				this.getUsersInWorkcenterUrl(), null, false);
-	},
-
-	/***************************************************************************
-	 * Made a Global model for User List and User Detail
-	 **************************************************************************/
-	setCurrentOperator : function(oprtr) {
-
-		if (oprtr === undefined || oprtr == "") {
-			var userDetailModel = sap.ui.getCore().getModel("userDetailModel")
-					.getData().Rowsets.Rowset[0].Row[0];
-			this.currentOperator = {
-				'fname' : userDetailModel.first_name,
-				'lname' : userDetailModel.last_name,
-				'user_id' : userDetailModel.user_id,
-				'image' : undefined
-			};
-
-		}
-
-		else
-			this.currentOperator = {
-				'fname' : oprtr.first_name,
-				'lname' : oprtr.last_name,
-				'user_id' : oprtr.user_id,
-				'image' : undefined
-			};
-
-		var currentOperatorModel = sap.ui.getCore().getModel(
-				"currentOperatorModel");
-		currentOperatorModel.setData(this.currentOperator);
-		currentOperatorModel.refresh();
-	},
-
-	/***************************************************************************
-	 * Load operations assigned to a user
-	 **************************************************************************/
-	loadUserOperationsModel : function() {
-		var OperationUrl = this.urlModel.getProperty("getOperationsForUser");
-		OperationUrl = airbus.mes.operationdetail.ModelManager.replaceURI(
-				OperationUrl, "$Site", airbus.mes.settings.ModelManager.site);
-		OperationUrl = airbus.mes.operationdetail.ModelManager.replaceURI(
-		// OperationUrl, "$User", "S007C96");
-		OperationUrl, "$User", this.currentOperator.user_id);
-
-		sap.ui.getCore().getModel("userOperationsModel").loadData(OperationUrl,
-				null, false);
 	},
 
 	/***************************************************************************

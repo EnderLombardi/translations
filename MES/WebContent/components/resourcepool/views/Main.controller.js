@@ -1032,13 +1032,14 @@ sap.ui
 					},
 
 					cancelForm : function(oEvt) {
-						airbus.mes.resourcepool.searchResourcePool.close();
 						if (airbus.mes.resourcepool.util.ModelManager.resourceName === undefined
 								|| airbus.mes.resourcepool.util.ModelManager.resourceName == "") {
-							// if(nav.getPreviousPage().sId != "homePageView")
-							// nav.back();
-							nav.back();
+							 nav.back();
 						}
+					},	
+					
+					closeForm: function(){
+						airbus.mes.resourcepool.searchResourcePool.close();
 					},
 
 					/***********************************************************
@@ -1427,7 +1428,7 @@ sap.ui
 
 						}
 					},
-
+					
 					/***********************************************************
 					 * update description using dialog box
 					 **********************************************************/
@@ -1731,5 +1732,9 @@ sap.ui
 							this.getView().byId("availableWCPanel").rerender();
 							this.getView().byId("assignedWCPanel").rerender();
 						}
+					},
+					
+					onNavBack: function(oEvent){
+						nav.back();
 					}
 				});

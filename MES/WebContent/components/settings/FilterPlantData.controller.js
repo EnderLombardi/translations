@@ -231,16 +231,10 @@ sap.ui.controller("airbus.mes.settings.FilterPlantData", {
 		case "teamassignment":
 			airbus.mes.shell.util.navFunctions.resourcePool();
 			break;
-		case "teamassignmentBack":
-			airbus.mes.shell.util.navFunctions.resourcePoolParams();
-			nav.back();
-			break;
+			
 		/** Disruption Tracker **/
 		case "disruptiontracker":
 			airbus.mes.shell.util.navFunctions.disruptionTracker();
-			break;
-		case "disruptiontrackerBack":
-			nav.back();
 			break;
 
 

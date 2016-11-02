@@ -16,16 +16,6 @@ airbus.mes.shell.util.navFunctions = {
 				nav.addPage(airbus.mes.stationtracker.oView);
 			}
 			
-			// Place the disruption tracker in the custom control 
-			if (airbus.mes.stationtracker.disruptions === undefined){
-				jQuery.sap.registerModulePath("airbus.mes.stationtracker.disruptionTrackerPanel", "../components/stationtracker/disruptionTrackerPanel");
-				airbus.mes.stationtracker.disruptions = sap.ui.getCore().createComponent({
-					name : "airbus.mes.stationtracker.disruptionTrackerPanel",
-					id : "stationTrackerDisruptions"         
-				});
-				airbus.mes.stationtracker.disruptions.oView.sId="stationTrackerDisruptions"
-			}
-			
 			nav.to(airbus.mes.stationtracker.oView.getId());
 			
 		},
@@ -113,19 +103,6 @@ airbus.mes.shell.util.navFunctions = {
 			
 			nav.to(airbus.mes.resourcepool.oView.getId());
 			
-			this.resourcePoolParams();
-			
-		},
-		
-		
-		resourcePoolParams: function(){			
-			// Ask to select Resource Pool if launched initially or Site is changed
-			if(airbus.mes.resourcepool.util.ModelManager.site != airbus.mes.settings.ModelManager.site || airbus.mes.resourcepool.util.ModelManager.resourceName === undefined){
-				airbus.mes.resourcepool.util.ModelManager.site = airbus.mes.settings.ModelManager.site;
-				var controller = airbus.mes.resourcepool.oView.getController();
-				controller.openSelectResourcePool();
-			}
-			
 		},
 		
 				
@@ -146,7 +123,7 @@ airbus.mes.shell.util.navFunctions = {
 		
 		disruptionTracker: function(){
 
-			if (airbus.mes.disruptiontracker === undefined){
+			if (airbus.mes.disruptiontracker === undefined || airbus.mes.disruptiontracker.oView === undefined){
 				
 				jQuery.sap.registerModulePath("airbus.mes.disruptiontracker", "../components/disruptiontracker");
 
@@ -158,7 +135,7 @@ airbus.mes.shell.util.navFunctions = {
 			
 			nav.to(airbus.mes.disruptiontracker.oView.getId());
 		},
-		
+
 		
 		
 		worktracker: function(){

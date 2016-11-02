@@ -1,3 +1,11 @@
+/* CSS for Hight:Auto for Content inside Nav Container */
+.sapMNav.navContAutoHeight .sapMNavItem,
+.sapMNav.navContAutoHeight .sapMPage > section{
+	position:relative;
+}
+/** End **/
+
+
 .headerColorShell {
 	background: rgba(0, 32, 91, 0.94);
 }
@@ -24,6 +32,7 @@
 
 .rightPlace {
 	right:0px !important;
+	padding-right: 5px;
 }
 
 .iconbuttonTeam .sapMBtnIcon{

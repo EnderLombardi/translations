@@ -75,8 +75,6 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 				jqStationTracker.css('top', jqToolbar.offset().top);
 			}, 0);
 		}
-		this.getView().byId("disruptNotifications").openNavigation();
-		this.getView().byId("disruptNotifications").closeNavigation();
 
 	},
 	onProductionGroupPress : function(oEvent){
@@ -331,6 +329,10 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		airbus.mes.shell.util.navFunctions.polypoly();
 			
 		
+	},
+	
+	onResourcePoolOpen: function(oEvt){
+		airbus.mes.shell.util.navFunctions.resourcePool();
 	},
 
 
@@ -805,17 +807,40 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			
 			
 	},
-	showDisruption : function(oEvent)
-	{
-		if(this.getView().byId("disruptNotifications").getState() == false){
-			this.getView().byId("disruptNotifications").openNavigation();
-			
+	showDisruption : function(oEvent){
+	/*	// Place the disruption tracker in the custom control 
+		if (airbus.mes.stationtracker.disruptions === undefined || airbus.mes.stationtracker.disruptions.oView === undefined){
+			jQuery.sap.registerModulePath("airbus.mes.stationtracker.disruptions", "../components/stationtracker/disruptions");
+			airbus.mes.stationtracker.disruptions = sap.ui.getCore().createComponent({
+				name : "airbus.mes.stationtracker.disruptions"         
+			});
+		}
+		
+		//if(this.getView().byId("disruptNotifications").getState() == false){
+		var div = $( "#stationTrackerView--disruptNotifications" );
+	    
+	    var height = div.height();
+	    
+	    div.css({
+	        overflow: "hidden",
+	        marginTop: height,
+	        height: 0
+	    }).animate({
+	        marginTop: 0,
+	        height: height
+	    }, 500, function () {
+	        $(this).css({
+	            display: "block",
+	            overflow: "",
+	            height: "",
+	            marginTop: ""
+	        });
+	    });
 
 			// Add Disruptions Component in Station Tracker
-			this.gtView().byId("disruptNotifications").setDisruptionContent(airbus.mes.stationtracker.disruptions.oView);
-		}
-		else
-			this.getView().byId("disruptNotifications").closeNavigation();
+			this.getView().byId("disruptNotifications").addItem(airbus.mes.stationtracker.disruptions.oView); */
+		
+		airbus.mes.shell.util.navFunctions.disruptionTracker();
 	},
 	
 	/**

@@ -1,6 +1,6 @@
 jQuery.sap.require("sap.ui.vbm.AnalyticMap");
 // sap.ui.vbm.AnalyticMap.GeoJSONURL = "model/europe.json";
-sap.ui.vbm.AnalyticMap.GeoJSONURL = "/MES/components/settings/model/europe.json";
+sap.ui.vbm.AnalyticMap.GeoJSONURL = "../components/settings/model/europe.json";
 
 sap.ui.controller("airbus.mes.settings.Settings",
 		{

@@ -39,7 +39,7 @@
 
 		<content width="100%" height="100%">
 	
-				<NavContainer id="navCont" height="100%" afterNavigate="renderStationTracker"></NavContainer>							
+				<NavContainer id="navCont" height="100%" afterNavigate="renderViews"></NavContainer>							
 				
 		</content>
 	</Page>

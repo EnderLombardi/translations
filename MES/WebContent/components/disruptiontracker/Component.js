@@ -47,5 +47,4 @@ airbus.mes.disruptiontracker.Component.prototype.createContent = function() {
 		return this.oView;
 		
 	}
-	return airbus.mes.disruptiontracker.oView;
 };

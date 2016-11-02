@@ -2,9 +2,10 @@
 	xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m">
 	<Page class="disruptions" showHeader="false">
-	
+
 		<subHeader>
 			<Toolbar>
+				<Button id="navBack" icon="sap-icon://arrow-left" text="Back" press="onNavBack" type="Transparent"/>
 				<ToolbarSpacer />
 				<Text text="{disruptiontrackerI18n>disruptionsTitle}" class="headerText" />
 				<ToolbarSpacer />
@@ -27,15 +28,19 @@
 
 					<SearchField width="13rem" placeholder="Search disruption" />
 					<ToolbarSpacer />
-					<Button icon="sap-icon://area-chart" text="{disruptiontrackerI18n>disruptionKPI}" />
+
+					<Button id="gotoDisruptionKpi" icon="sap-icon://area-chart" text="{disruptiontrackerI18n>disruptionKPI}"
+						press="onPressDisruptionKPI" />
 				</Toolbar>
 
 			</content>
 
 		</Panel>
-		
-		
-		<Table class="disruptionsTable" items="{ path: 'disruptionsListData>/Rowsets/Rowset/Row' }">
+
+
+		<Table class="disruptionsTable"
+			items="{ path: 'disruptionsListData>/Rowsets/Rowset/0/Row' }">
+
 
 			<columns>
 				<Column>
@@ -75,12 +80,13 @@
 					<Text text="{disruptiontrackerI18n>closureDate}" />
 				</Column>
 			</columns>
-			
+
 			<items>
 				<ColumnListItem type="Navigation">
 					<cells>
 						<Text text="{disruptionsListData>Operation}" />
-						<ObjectStatus class="sapUiSmallMarginBottom" text="{parts: [ {path: 'disruptionsListData>Status'}, {path: 'disruptionsListData>Gravity'}, {path: 'disruptionsListData>Severity'} ], formatter: 'airbus.mes.disruptiontracker.Formatter.setText'}"
+						<ObjectStatus class="sapUiSmallMarginBottom"
+							text="{parts: [ {path: 'disruptionsListData>Status'}, {path: 'disruptionsListData>Gravity'}, {path: 'disruptionsListData>Severity'} ], formatter: 'airbus.mes.disruptiontracker.Formatter.setText'}"
 							state="{parts: [ {path: 'disruptionsListData>Status'}, {path: 'disruptionsListData>Gravity'}, {path: 'disruptionsListData>Severity'} ], formatter: 'airbus.mes.disruptiontracker.Formatter.setState'}"
 							icon="{path: 'disruptionsListData>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setIcon'}" />
 						<Text text="{disruptionsListData>Status}" />
@@ -96,7 +102,7 @@
 					</cells>
 				</ColumnListItem>
 			</items>
-			
+
 		</Table>
 	</Page>
 

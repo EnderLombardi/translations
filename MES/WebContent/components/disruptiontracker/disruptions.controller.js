@@ -32,6 +32,24 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 */
 //	onExit: function() {
 //
-//	}
+//	},
+//	Call Disruption KPI charts
+	onPressDisruptionKPI: function(oEvent){
+		
+		if (airbus.mes.disruptionKPI === undefined){
+			
+			jQuery.sap.registerModulePath("airbus.mes.disruptionKPI", "../components/disruptionKPI");
+
+			sap.ui.getCore().createComponent({
+				name : "airbus.mes.disruptionKPI",
+			});
+			nav.addPage(airbus.mes.disruptionKPI.oView);
+		}
+		nav.to(airbus.mes.disruptionKPI.oView.getId());	
+	},
+	
+	onNavBack: function(oEvent){
+		nav.back();
+	}
 
 });

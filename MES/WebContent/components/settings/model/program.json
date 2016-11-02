@@ -3,22 +3,22 @@
 		{
 			"prog": "A320",
 			"selected": true,
-			"picture": "/MES/components/settings/icon/A320.jpg"
+			"picture": "../components/settings/icon/A320.jpg"
 		},
 		{
 			"prog": "A330",
 			"selected": false,
-			"picture": "/MES/components/settings/icon/A330.jpg"
+			"picture": "../components/settings/icon/A330.jpg"
 		},
 		{
 			"prog": "A350",
 			"selected": false,
-			"picture": "/MES/components/settings/icon/A350.jpg"
+			"picture": "../components/settings/icon/A350.jpg"
 		},
 		{
 			"prog": "A380",
 			"selected": false,
-			"picture": "/MES/components/settings/icon/A380.jpg"
+			"picture": "../components/settings/icon/A380.jpg"
 		}
 	]
 }

@@ -103,41 +103,40 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 		switch(nav.getCurrentPage().getId()){
 		case "stationTrackerView":
 			textButtonTo = "Go to Station Tracker";
-			airbus.mes.settings.GlobalFunction.navigateTo(textButtonTo, "back");
 			break;
 
 		case "homePageView":
 			textButtonTo = "Go to Home Page";
-			airbus.mes.settings.GlobalFunction.navigateTo(textButtonTo, "back");
 			break;
 			
 		case "resourcePool":
 			textButtonTo = "Go to Team Assignment";
-			airbus.mes.settings.GlobalFunction.navigateTo(textButtonTo, "teamassignmentBack");
 			break;
 			
 		case "disruptiontrackerView":
 			textButtonTo = "Go to Disruption Tracker";
-			airbus.mes.settings.GlobalFunction.navigateTo(textButtonTo, "disruptiontrackerBack");
 			break;
 		}
+		airbus.mes.settings.GlobalFunction.navigateTo(textButtonTo, "back");
 
 	},
 
-	renderStationTracker : function() {
+	renderViews : function() {
 
         if ( nav.getCurrentPage().getId() != "homePageView" ) {
             
             airbus.mes.shell.oView.byId("homeButton").setVisible(true);
             airbus.mes.shell.oView.byId("SelectLanguage").setVisible(false);
-           
-     } else  {
-           
-            airbus.mes.shell.oView.byId("homeButton").setVisible(false);
-            airbus.mes.shell.oView.byId("SelectLanguage").setVisible(true);
-    }
+	           
+	     } else  {
+	           
+	            airbus.mes.shell.oView.byId("homeButton").setVisible(false);
+	            airbus.mes.shell.oView.byId("SelectLanguage").setVisible(true);
+	    }
 
-		if (nav.getCurrentPage().getId() === "stationTrackerView") {
+		switch(nav.getCurrentPage().getId()){
+		
+		case "stationTrackerView":
 			this.setInformationVisibility(true);
 			airbus.mes.stationtracker.oView.byId("stationtracker").setBusy(true);
 			
@@ -156,7 +155,15 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 			scheduler.xy.scroll_width = 20;
 			//scheduler.xy.nav_height = 0;
 			scheduler.updateView();
-
+			break;
+			
+		case "disruptiontrackerView":
+			airbus.mes.disruptiontracker.ModelManager.loadData();
+			break;
+			
+		case "resourcePool":
+			airbus.mes.resourcepool.util.ModelManager.askResourcePool();
+			break;
 
 		}
 	},

@@ -6,6 +6,9 @@
 		showHeader="false" class="GenricBgColor">
 		<subHeader>
 			<Bar class="pageHeader">
+				<contentLeft>
+					<Button id="navBack" icon="sap-icon://arrow-left" text="Back" press="onNavBack" type="Transparent"/>
+				</contentLeft>
 				<contentMiddle>
 					<Label id="resourcePoolName" text="" class="resourcePoolName" />
 				</contentMiddle>
