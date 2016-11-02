@@ -54,32 +54,64 @@
  }
  /********** End of CSS for Progress Slider Screen *******/
  /*** CSS for Sub header - Operation Details Sub Header and Menu Bar)  ******/
-.pageSubHeader .sapMPanelExpandableIcon {
+.operationDetailHeadPanel {
+    overflow: visible;
+}
+.operationDetailHeadPanel .sapMPanelExpandableIcon {
 	display:none;
 }
-.pageSubHeader .mainText{
+.operationDetailHeadPanel .mainText{
 	font-size:1.2rem !important;
 	color:#0085AD !important;
 	font-weight:700 !important;
 }
-.pageSubHeader .subText{
+.operationDetailHeadPanel .subText{
 	font-size:75% !important;
 	color:#0085AD !important;
 	font-weight:700 !important;
 }
-.pageSubHeader .closeButton{
+.operationDetailHeadPanel .closeButton{
 	float:right;
 	margin-top: -2rem;
 }
-.pageSubHeader .expandButton .sapMBtnIcon, .pageSubHeader .closeButton .sapMBtnIcon{
+.operationDetailHeadPanel .expandButton .sapMBtnIcon, .operationDetailHeadPanel .closeButton .sapMBtnIcon{
 	font-size:1rem !important;
 }
-.pageSubHeader .sapMPanelWrappingDivTb{
+.operationDetailHeadPanel .sapMPanelWrappingDivTb{
 	border-bottom:0px !important
 }
-.pageSubHeader .sapMPanelBGTranslucent, .pageSubHeader .operationDetailForm .sapUiRLContainer{
+.operationDetailHeadPanel .sapMPanelBGTranslucent, .operationDetailHeadPanel .operationDetailForm .sapUiRLContainer{
 	background:transparent !important;
 	border-bottom:0px !important;
+}
+.operationDetailHeadPanel .switchExecutionButton .sapMSwtHandle {
+    width: 0.8rem;
+    height: 0.8rem;
+    left: 3rem;
+}
+.operationDetailHeadPanel .switchExecutionButton .sapMSwt {
+    height: 1rem !important;
+    
+}
+.operationDetailHeadPanel .ExecutionModeText, .operationDetailHeadPanel .switchExecutionButton  {
+	padding:0;
+}
+.operationDetailHeadPanel .sapMPanel .sapMPanelWrappingDivTb .sapMIBar.sapMTB>:first-child {
+	    margin-right: 0;
+}
+.operationDetailHeadPanel .sapMPanel .sapMPanelWrappingDivTb .sapMIBar.sapMTB>:first-child div:nth-child(2), .operationDetailHeadPanel .sapMPanel .sapMPanelWrappingDivTb .sapMIBar.sapMTB>:first-child div:nth-child(2) div:nth-child(2) {
+	    align-items: center;
+}
+.operationDetailHeadPanel .sapMPanel.operationDetailHeadPanel .sapMPanelWrappingDivTb .sapMIBar.sapMTB>:first-child div:nth-child(2) .subText {
+	color: #434343!important;
+    font-weight: normal!important;
+    font-size: 1rem!important;
+}
+
+.operationDetailHeadPanel .sapMPanelWrappingDivTb {
+	margin: -1rem -1rem 0 -1rem;
+    padding: 1rem 1rem 0 1rem;
+    background: #fff;
 }
 /*** End of CSS for Operation Details Sub Header and Menu Bar  ******/
 /**** CSS for Operation Icon Nav Bar *****/

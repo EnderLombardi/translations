@@ -1,5 +1,5 @@
 /****** classes for Disruption screen **********/
-.disruptionPanel .sapMPanelContent .formBackgroundPen  {
+/* .disruptionPanel .sapMPanelContent .formBackgroundPen  {
 	background-color:#F2AA00 !important;
 	opacity:1;
 }
@@ -27,7 +27,7 @@
 .decoratePanelBtn span{
 	color:white !important;
 	text-shadow: none !important;
-}
+} */
 /****** End of CSS for Disruption screen **********/
 
 /*** CSS for Footers ***********/
@@ -42,3 +42,18 @@
 /*** end of CSS for Footer *********/
 
 
+.disruptionDetail .formDisruptionDetail {
+	background-color: rgba(0,0,0,0.2) !important;
+}
+
+.disruptionDetail .barcolor {
+	background-color: #607381 !important;
+}
+
+.disruptionDetail .expandableIcon {
+	background-color: #F5F5F5 !important;
+}
+
+.disruptionDetail .expandableIcon .sapMPanelBGTranslucent {
+	background-color: #F5F5F5 !important;
+}

@@ -1,11 +1,11 @@
 <core:FragmentDefinition xmlns:core="sap.ui.core"
 	xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:custom="airbus.mes.stationtracker"
 	xmlns:html="http://www.w3.org/1999/xhtml">
-	<Dialog title="Unplanned activities" class="pageHeaderDialog">
+	<Dialog title="Unplanned activities" class="pageHeaderDialog classWorklistPopover">
 		<customHeader>
-			<Toolbar class="pageHeader">
+			<Toolbar>
 				<ToolbarSpacer />
-				<Label id="LabelTitle" text="{ path: 'WorkListModel>andons' , formatter: 'airbus.mes.stationtracker.util.Formatter.setWorkListText' }" class="pageWelcome2" />
+				<Label id="LabelTitle" text="{ path: 'WorkListModel>andons' , formatter: 'airbus.mes.stationtracker.util.Formatter.setWorkListText' }" />
 				<ToolbarSpacer />
 			</Toolbar>
 		</customHeader>

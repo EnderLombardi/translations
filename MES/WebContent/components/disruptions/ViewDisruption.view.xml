@@ -10,7 +10,7 @@
 
 					<CustomListItem>
 
-						<Panel expandable="true" expanded="false" class="expandableIcon disruptionPanel sapUiSmallMargin" id="disruptionsHeader"
+						<Panel expandable="true" expanded="false" class="expandableIcon"
 							expand="handleDisruptionPanelExpand">
 							<headerToolbar>
 								<Toolbar>

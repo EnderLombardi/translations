@@ -6,7 +6,7 @@ airbus.mes.disruptiontracker.ModelManager = {
 
 	init : function(core) {
 		
-		core.setModel(new sap.ui.model.json.JSONModel(), "disruptionsListData");//Model having disruptions detail
+		core.setModel(new sap.ui.model.json.JSONModel(), "disruptionsTrackerModel");//Model having disruptions detail
 		core.setModel(new sap.ui.model.json.JSONModel(), "disruptionsFilterData");
 		core.setModel(new sap.ui.model.json.JSONModel(), "disruptionsOrderData");
 		core.setModel(new sap.ui.model.resource.ResourceModel({bundleName:"airbus.mes.disruptiontracker.i18n.i18n",bundleLocale:"en"}), 
@@ -28,11 +28,10 @@ airbus.mes.disruptiontracker.ModelManager = {
 			dest = this.queryParams.get("url_config");
 		}
 
-		this.urlModel = new sap.ui.model.resource.ResourceModel(
-				{
-					bundleUrl : "../components/disruptiontracker/config/url_config.properties",
-					bundleLocale : dest
-				});
+		this.urlModel = new sap.ui.model.resource.ResourceModel({
+			bundleUrl : "../components/disruptiontracker/config/url_config.properties",
+			bundleLocale : dest
+		});
 		
 		this.loadData();
 		
@@ -41,7 +40,7 @@ airbus.mes.disruptiontracker.ModelManager = {
 	loadData: function() {
 		this.loadDisruptionFilterModel();
 		this.loadDisruptionOrderModel();
-		this.loadDisruptionListModel();
+		//this.loadDisruptionListModel();
 	},
 	
 	loadDisruptionFilterModel : function() {
@@ -56,26 +55,33 @@ airbus.mes.disruptiontracker.ModelManager = {
 
 	},
 	
-	loadDisruptionListModel : function() {
+	loadDisruptionTrackerModel : function(oFilters) {
 		
-		var oViewModel = sap.ui.getCore().getModel("disruptionsListData");
+		var oViewModel = sap.ui.getCore().getModel("disruptionsTrackerModel");
 		
-		var urlListModel = this.urlModel.getProperty("urllistmodel");
+		var getDiruptionsURL = this.urlModel.getProperty("getDiruptionsURL");
 		
-		urlListModel = urlListModel.replace('$Site', airbus.mes.settings.ModelManager.site);
-		urlListModel = urlListModel.replace('$Status', "ALL");
-/*		urlListModel = urlListModel.replace('$Resource', "");
-		urlListModel = urlListModel.replace('$Operation', "");
-		urlListModel = urlListModel.replace('$SFC', "");
-		urlListModel = urlListModel.replace('$OperationRevision', "");
-		urlListModel = urlListModel.replace('$SignalFlag', "");
-		urlListModel = urlListModel.replace('$FromDate', "");
-		urlListModel = urlListModel.replace('$ToDate', "");
-		urlListModel = urlListModel.replace('$WorkCenter', "");
-		urlListModel = urlListModel.replace('$userGroup', "");
-		urlListModel = urlListModel.replace('$MessageType', "");*/
+		getDiruptionsURL = getDiruptionsURL.replace('$Site', airbus.mes.settings.ModelManager.site);
+		getDiruptionsURL = getDiruptionsURL.replace('$Status', "ALL");
+		getDiruptionsURL = getDiruptionsURL.replace('$Resource', "");
+		getDiruptionsURL = getDiruptionsURL.replace('$Operation', "");
+		getDiruptionsURL = getDiruptionsURL.replace('$SFC', "");
+		getDiruptionsURL = getDiruptionsURL.replace('$OperationRevision', "");
+		getDiruptionsURL = getDiruptionsURL.replace('$SignalFlag', "");
+		getDiruptionsURL = getDiruptionsURL.replace('$FromDate', "");
+		getDiruptionsURL = getDiruptionsURL.replace('$ToDate', ""); 
 		
-		oViewModel.loadData(urlListModel, null, false);
+		if(oFilters.station != undefined && oFilters.station != ""){
+			getDiruptionsURL = getDiruptionsURL.replace('$WorkCenter', oFilters.station);
+			airbus.mes.disruptiontracker.oView.byId("stationComboBox").setSelectedKey(oFilters.station);
+		}
+		else
+			getDiruptionsURL = getDiruptionsURL.replace('$WorkCenter', "");
+		
+	  getDiruptionsURL = getDiruptionsURL.replace('$userGroup', "");
+		getDiruptionsURL = getDiruptionsURL.replace('$MessageType', "");
+		
+		oViewModel.loadData(getDiruptionsURL, null, false);
 
 	}
 	
