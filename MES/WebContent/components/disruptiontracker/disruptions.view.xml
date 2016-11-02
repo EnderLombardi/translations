@@ -39,7 +39,7 @@
 
 
 		<Table class="disruptionsTable sapUiSmallMarginBottom"
-			items="{ path: 'disruptionsListData>/Rowsets/Rowset/0/Row' }">
+			items="{ path: 'disruptionsTrackerModel>/Rowsets/Rowset/0/Row' }">
 
 			<columns>
 				<Column>

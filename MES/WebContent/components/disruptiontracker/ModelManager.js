@@ -64,7 +64,14 @@ airbus.mes.disruptiontracker.ModelManager = {
 		getDiruptionsURL = getDiruptionsURL.replace('$Site', airbus.mes.settings.ModelManager.site);
 		getDiruptionsURL = getDiruptionsURL.replace('$Status', "ALL");
 		getDiruptionsURL = getDiruptionsURL.replace('$Resource', "");
-		getDiruptionsURL = getDiruptionsURL.replace('$Operation', "");
+		
+		if(oFilters.operation != undefined && oFilters.operation != ""){
+			getDiruptionsURL = getDiruptionsURL.replace('$Operation', oFilters.operation);
+		}
+		else{
+			getDiruptionsURL = getDiruptionsURL.replace('$Operation', "");
+		}
+		
 		getDiruptionsURL = getDiruptionsURL.replace('$SFC', "");
 		getDiruptionsURL = getDiruptionsURL.replace('$OperationRevision', "");
 		getDiruptionsURL = getDiruptionsURL.replace('$SignalFlag', "");
@@ -75,8 +82,10 @@ airbus.mes.disruptiontracker.ModelManager = {
 			getDiruptionsURL = getDiruptionsURL.replace('$WorkCenter', oFilters.station);
 			airbus.mes.disruptiontracker.oView.byId("stationComboBox").setSelectedKey(oFilters.station);
 		}
-		else
+		else{
 			getDiruptionsURL = getDiruptionsURL.replace('$WorkCenter', "");
+			airbus.mes.disruptiontracker.oView.byId("stationComboBox").setSelectedKey("");
+		}
 		
 	  getDiruptionsURL = getDiruptionsURL.replace('$userGroup', "");
 		getDiruptionsURL = getDiruptionsURL.replace('$MessageType', "");

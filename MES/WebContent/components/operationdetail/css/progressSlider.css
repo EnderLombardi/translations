@@ -120,10 +120,6 @@
     padding: 1rem 1rem 0 1rem;
     background: #fff;
 }
-<<<<<<< HEAD
-
-/*** End of CSS for Operation Details Sub Header and Menu Bar  ******/
-=======
 /*** End of CSS for Operation Details Sub Header  ******/
 
 /**** CSS for Navigation Bar ****/
@@ -138,8 +134,7 @@
 .ClassOperationDetailPopUp .opDetailNavToolbar ul.opDetailNav li {
     border: 0px !important;
 }
-/*** End of CSS for NAvigation Bar *****/
->>>>>>> branch 'MESv0.9' of https://bundleerp.git.ptx.fr.sopra/g/mes
+/*** End of CSS for Navigation Bar *****/
 
 /**** CSS for Operation Icon Nav Bar *****/
 .operationNavBar .countText{
@@ -196,8 +191,8 @@
 }
 /*** End CSS Button show / hide ***/
 
-/*** CSS toolbar ***/
 
+/*** CSS To Style Font and Border colors for Navigation Toolbar ***/
 .operationDetailHeadPanel + .opDetailNavToolbar .sapMSegBBtn {
 	position:relative;
 }
@@ -236,3 +231,4 @@ html.sap-desktop .operationDetailHeadPanel + .opDetailNavToolbar .sapMSegBBtnFoc
 .operationDetailHeadPanel + .opDetailNavToolbar + .navContAutoHeight {
 	border-top: 5px solid #ccc;	
 }
+/*** End of Styling of Navigation Toolbar ***/
