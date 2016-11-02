@@ -11,9 +11,11 @@ sap.ui
 					 * 
 					 * @memberOf components.disruptions.ViewDisruption
 					 */
-					// onInit: function() {
-					//
-					// },
+					 onInit: function() {
+						 var oViewModel_1=  new sap.ui.model.json.JSONModel();
+							sap.ui.getCore().setModel(oViewModel_1,"DisruptionDetail");
+							sap.ui.getCore().getModel("DisruptionDetail").loadData("../components/disruptions/local/data.json",null,false);
+					 },
 					/**
 					 * Similar to onAfterRendering, but this hook is invoked
 					 * before the controller's View is re-rendered (NOT before

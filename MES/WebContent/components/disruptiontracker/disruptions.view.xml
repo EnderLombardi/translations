@@ -38,7 +38,7 @@
 		</Panel>
 
 
-		<Table class="disruptionsTable"
+		<Table class="disruptionsTable sapUiSmallMarginBottom"
 			items="{ path: 'disruptionsListData>/Rowsets/Rowset/0/Row' }">
 
 
