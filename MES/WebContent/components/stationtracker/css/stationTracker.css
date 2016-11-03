@@ -643,7 +643,7 @@ background-color: #0085AD !important;
 	text-align: center ! important;
 	color: white;
 	width: 100%;
-	font-size: 14px
+	font-size: 1.2vw;
 }
 
 
@@ -924,6 +924,20 @@ background-color: #0085AD !important;
 }
 
 /** Takt Adherence **/
+.classTaktAdherenceTrend.sapUiRespGrid.sapUiRespGridHSpace1>div {
+    margin: 0 0.5rem 0 0;
+}
+.classTaktAdherenceTrend.sapUiRespGrid.sapUiRespGridHSpace1>.sapUiRespGridSpanL4 {
+    margin: 0;
+    width: auto;
+}
+#stationTrackerView--kpiHeaderContent .classTaktAdherenceTrend .TrendGreen {
+    margin-bottom: 0.5rem;	
+}
+#stationTrackerView--kpiHeaderContent .classTaktAdherenceTrend .takt_kpi_name.takt_kpi_trend {
+    font-size: 1vw;	
+}
+
 #stationTrackerView--takt_adherence_adherence_value {
 	font-size: 15px;
 }
@@ -936,8 +950,7 @@ background-color: #0085AD !important;
 }
 
 #stationTrackerView--kpiHeaderContent .takt_kpi_value {
-	text-align: left !important;
-	margin-left: 0 !important;
+
 }
 
 #stationTrackerView--kpiHeaderContent .KPITaktChartBlueText {
@@ -958,7 +971,16 @@ background-color: #0085AD !important;
 svg#stationTrackerView--takt_adherence_area_chart {
 	border: none;
 }
-
+.classTaktAdherenceAreaChart div:nth-child(2) {
+    position: absolute;
+    top: 0;
+    left: 20px;	
+}
+.classTaktAdherenceAreaChart div:nth-child(3) {
+    position: absolute;
+    top: 0;
+    right: 15px;	
+}
 .takt_adherence_area_chart_svg-container {
     display: inline-block;
     position: relative;
