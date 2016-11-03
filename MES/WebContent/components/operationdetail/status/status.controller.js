@@ -91,7 +91,7 @@ sap.ui
 						// this.refreshOperationData();
 
 						if (flag_success == true) {
-							this.setProgressScreenBtn(true, true, false);
+							this.setProgressScreenBtn( true, false);
 							this.getView().byId("progressSlider").setEnabled(
 									true);
 							this.getView().byId("operationStatus").setText(
@@ -152,7 +152,7 @@ sap.ui
 								});
 
 						if (flag_success == true) {
-							this.setProgressScreenBtn(false, false, true);
+							this.setProgressScreenBtn( false, true);
 							this.getView().byId("progressSlider").setEnabled(
 									false);
 							this.getView().byId("btnActivate")
@@ -417,12 +417,10 @@ sap.ui
 					 * 
 					 **********************************************************/
 
-					setProgressScreenBtn : function(progressBtnStatus,
+					setProgressScreenBtn : function(
 							actionBtnStatus, activateBtnStatus) {
-						this.getView().byId("btnAdd").setEnabled(
-								progressBtnStatus);
-						this.getView().byId("btnReduce").setEnabled(
-								progressBtnStatus);
+						
+					
 						this.getView().byId("btnPause").setVisible(
 								actionBtnStatus);
 						this.getView().byId("btnConfirm").setVisible(
@@ -441,9 +439,32 @@ sap.ui
 				 * 
 				 * @memberOf components.operationdetail.status.status
 				 */
-				// onAfterRendering: function() {
-				//
-				// },
+				 onAfterRendering: function() {
+					 if (this.getView().byId("operationStatus").getText()
+							  === "Not Started" ||
+							  this.getView().byId("operationStatus") .getText() ===
+							  "Paused") {
+							  
+							  this.setProgressScreenBtn( false, true);
+							  this.getView().byId("progressSlider").setEnabled(
+							  false); } else if
+							  (this.getView().byId("operationStatus") .getText()
+							  === "In Progress") {
+							  
+							  this.setProgressScreenBtn( true, false);
+							  this.getView().byId("progressSlider").setEnabled(
+							  true); } else if
+							  (this.getView().byId("operationStatus") .getText()
+							  === "Blocked" ||
+							  this.getView().byId("operationStatus") .getText() ===
+							  "Confirmed") {
+							  
+							  this.setProgressScreenBtn( false, false);
+							  this.getView().byId("progressSlider").setEnabled(
+							  false); this.getView().byId("progressSliderfirst")
+							  .setEnabled(false); }
+				
+				},
 				/**
 				 * Called when the Controller is destroyed. Use this one to free
 				 * resources and finalize activities.
