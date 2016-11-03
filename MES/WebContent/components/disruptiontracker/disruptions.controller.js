@@ -34,6 +34,27 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 //
 //	},
 	
+	/************************************
+	 * Filter disruptions
+	 */
+	filterByStation: function(oEvent){
+		airbus.mes.disruptiontracker.ModelManager.loadDisruptionTrackerModel({
+			"station": this.getView().byId("stationComboBox").getSelectedItem()
+		});
+	},
+	
+	filterByStatus: function(oEvent){
+		var sValue = this.getView().byId("statusComboBox").getSelectedKey();
+
+        var oBinding = this.byId("disruptionsTable").getBinding("items");
+        
+        if(sValue != "")
+        	oBinding.filter([new sap.ui.model.Filter("Status", "EQ", sValue)]);
+        else
+        	oBinding.filter([]);
+	},
+	
+	
 	
 	/**********************************
 	 * Call Disruption KPI charts 
