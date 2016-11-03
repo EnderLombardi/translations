@@ -46,13 +46,14 @@
 							
 								<VBox justifyContent="SpaceAround" width="50%" id="chartId">
 									<VBox>
-										<VBox class="classTaktAdherenceAreaChart">
+										<layout:Grid class="" defaultSpan="L6 M6 S12">
+											<layout:content>
+												<Label text="Plan:650" class="KpiMediumText KPITaktChartBlueText" />
+												<Label text="Actual:550" class="KpiMediumText whiteText KPITaktChartRightText" />
+											</layout:content>
+										</layout:Grid>
 										<custom:TaktAdherenceAreaChart
-											id="takt_adherence_area_chart">
-										</custom:TaktAdherenceAreaChart>
-										<Label text="Plan:650" class="KpiMediumText KPITaktChartBlueText" />
-										<Label text="Actual:550" class="KpiMediumText whiteText KPITaktChartRightText" />
-										</VBox>
+											id="takt_adherence_area_chart"></custom:TaktAdherenceAreaChart>
 										<Label text="Planned Start/End of Assembly" class=" whiteText" />
 	
 										<layout:Grid class="" defaultSpan="L6 M6 S6">
