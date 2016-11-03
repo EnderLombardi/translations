@@ -122,9 +122,10 @@ airbus.mes.disruptions.ModelManager = {
 			type : 'GET',
 			data : {
 				"Param.1" : airbus.mes.settings.ModelManager.site,
-				"Param.2" : "NG000524",
+				/*"Param.2" : "NG000524",*/
+				"Param.2": sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"),
 				"Param.3" : messageType,
-				"Param.4" : "HMI",
+				"Param.4" : messageSubject,
 				"Param.5" : messageBody,
 				"Param.6" : airbus.mes.disruptions.Formatter.json2xml({
 					payloadAttributelist : payloadData
