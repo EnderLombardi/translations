@@ -9,7 +9,7 @@
 		<content>
 			<VBox alignItems="Center">
 				<items>
-					<Label text="Operator {infoModel>/name} doesn't have following QA:" textAlign="Center" />
+					<Label text="{PolypolyI18n>Operator} {infoModel>/name} {PolypolyI18n>doesnthaveQA}" textAlign="Center" />
 					<Table items="{path: 'infoModel>/Row'}">
 						<columns>
 							<Column hAlign="Center" width="10rem"/>
