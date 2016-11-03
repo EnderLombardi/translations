@@ -41,7 +41,9 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 //		Retrieve language 		
 		var sText = sap.ui.getCore().byId(oEvent.getSource().getSelectedItemId()).getText();
 
-		
+		this.updateUrlForLanguage(sText);
+	},
+	updateUrlForLanguage : function(sText){
 		switch (sText) {
 		case "English":
 			window.location.href = window.location.origin + window.location.pathname + "?sap-language=EN";
@@ -58,7 +60,7 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 		default:
 			window.location.href = window.location.href = window.location.origin + window.location.pathname + "?sap-language=EN";
 			break;
-		};
+		};		
 	},
 	/**
 	 * Similar to onAfterRendering, but this hook is invoked before the

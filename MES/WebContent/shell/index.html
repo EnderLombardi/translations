@@ -22,7 +22,7 @@
 			</div>
 		</div>
 		
-
+	<!-- src="https://sapui5.netweaver.ondemand.com/1.36.11/resources/sap-ui-core.js" -->
 <script
 	src="../resources/sap-ui-core.js"
 	id="sap-ui-bootstrap" data-sap-ui-libs="sap.m, sap.ui.table"
@@ -38,9 +38,6 @@
 	 	jQuery.sap.registerModulePath("airbus.mes.settings", "../components/settings");
 		jQuery.sap.registerModulePath("airbus.mes.homepage", "../components/homepage");
 		
-		oComp1 = sap.ui.getCore().createComponent({
-			name : "airbus.mes.homepage", // root component folder is resources
-		});
 		// Create a Ui container 
 		oCompCont = new sap.ui.core.ComponentContainer({
 			component : sap.ui.getCore().createComponent({
@@ -48,7 +45,11 @@
 	 			propagateModel : true,
 			})
 		});
-	
+
+		oComp1 = sap.ui.getCore().createComponent({
+			name : "airbus.mes.homepage", // root component folder is resources
+		});
+		
 	 	airbus.mes.component = airbus.mes.component || {};
 		
 		airbus.mes.component.settings = sap.ui.getCore().createComponent({

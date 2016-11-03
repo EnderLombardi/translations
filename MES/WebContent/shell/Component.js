@@ -42,8 +42,6 @@ airbus.mes.shell.Component.prototype.createContent = function() {
 		}).addStyleClass("absolutePosition");
 
 		airbus.mes.shell.oView = this.oView;
-//		airbus.mes.stationtracker = {};
-//		airbus.mes.stationtracker.isVisible = false;
 		
 		this.oView.setModel(sap.ui.getCore().getModel("userDetailModel"),	"userDetailModel");
 		this.oView.setModel(sap.ui.getCore().getModel("ShellI18n"), "ShellI18n");
@@ -70,9 +68,9 @@ airbus.mes.shell.Component.prototype.createContent = function() {
 			break;
 		default :
 			var sLanguageText = "English";
+			this.oView.getController().updateUrlForLanguage(sLanguageText);
 			break;
 		};
-		
 	    for(var i=0; i<aItems.length; i++) {
 	        if (aItems[i].getText() === sLanguageText) {
 	        	this.oView.byId("SelectLanguage").setSelectedItemId(aItems[i].getId());

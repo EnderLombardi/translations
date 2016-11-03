@@ -11,8 +11,8 @@ sap.ui
 					 * 
 					 * @memberOf components.disruptions.ViewDisruption
 					 */
-					 onInit: function() {
-					 },
+					onInit : function() {
+					},
 					/**
 					 * Similar to onAfterRendering, but this hook is invoked
 					 * before the controller's View is re-rendered (NOT before
@@ -43,79 +43,80 @@ sap.ui
 					// onExit: function() {
 					//
 					// },
-					 
-					 showCommentBox : function(oEvt) {
-							var path = oEvt.getSource().sId;
-							var listnum = path.split("-");
-							listnum = listnum[listnum.length-1];
-							var a=this.getView().byId("ViewDisruptionView--commentBox-ViewDisruptionView--disrptlist-" + listnum);
-							a.setVisible(true);
-							
-						},
+					showCommentBox : function(oEvt) {
+						var path = oEvt.getSource().sId;
+						var listnum = path.split("-");
+						listnum = listnum[listnum.length - 1];
+						var a = this.getView().byId(
+								"ViewDisruptionView--commentBox-ViewDisruptionView--disrptlist-"
+										+ listnum);
+						a.setVisible(true);
 						
-						onMarkSolved : function(oEvt) {
-							var path = oEvt.getSource().getBindingContext(
-									"disruptionModel").getPath();
-							this.getView().getModel("disruptionModel").setProperty(
-									path + "/Status", "Solved");
-							this.getView().getModel("disruptionModel").setProperty(
-									path + "/commentVisible", "false");
-							this.getView().getModel("disruptionModel").setProperty(
-									path + "/message", " ");
-							oEvt.getSource().setType("Accept");
-
-						},
 						
-						handleDisruptionPanelExpand : function(oevent) {
+						var b = sap.ui.getCore().byId(path);
+						b.setVisible(false);
 
-							if (!oevent.oSource.getExpanded())
-								return;
-							var disruptions = this.getView().byId("disrptlist");
-							$(disruptions.getItems())
-									.each(
-											function() {
-												var currentPanel = this
-														.getContent()[0];
-												if (oevent.getSource().getId() != currentPanel
-														.getId())
-													currentPanel.setExpanded(false)
-											});
-
-						},
+					},
+					
+					hideCommentBox : function(oEvt) {
+						var path = oEvt.getSource().sId;
+						var listnum = path.split("-");
+						listnum = listnum[listnum.length - 1];
+						var a = this.getView().byId(
+								"ViewDisruptionView--commentBox-ViewDisruptionView--disrptlist-"
+										+ listnum);
+						a.setVisible(false);
 						
-						onEscalate : function(oEvent) {
-							
-							var msgRef = oEvent.getSource().getBindingContext("DisruptionDetail").getObject("MessageRef");
-							
-							/*jQuery.ajax({
-								url : airbus.mes.worktracker.util.ModelManager
-										.getUrlStartOperation(data),
-								async : false,
-								error : function(xhr, status, error) {
-									airbus.mes.worktracker.util.ModelManager
-											.messageShow("Error");
-								},
-								success : function(result, status, xhr) {
+						var b = sap.ui.getCore().byId("ViewDisruptionView--addComment-ViewDisruptionView--disrptlist-" + listnum);
+						b.setVisible(true);
 
-									if (result.Rowsets.Rowset[0].Row[0].Message_Type == undefined) {
-										airbus.mes.worktracker.util.ModelManager
-												.messageShow(sMessage);
-										flag_success = true;
-									} else if (result.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
-										airbus.mes.worktracker.util.ModelManager
-												.messageShow(result.Rowsets.Rowset[0].Row[0].Message)
-										flag_success = false;
-									} else {
-										airbus.mes.worktracker.util.ModelManager
-												.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
-										flag_success = true;
-									}
+					},
+					
+					submitComment : function(oEvt) {
+						var path = oEvt.getSource().sId;
+					},
 
-								}
-							});*/
-						},
-						
-						onReportDisruption : function(oEvent) {
+					onMarkSolved : function(oEvt) {
+						/*
+						 * var path = oEvt.getSource().getBindingContext(
+						 * "disruptionModel").getPath();
+						 * this.getView().getModel("disruptionModel").setProperty(
+						 * path + "/Status", "Solved");
+						 * this.getView().getModel("disruptionModel").setProperty(
+						 * path + "/commentVisible", "false");
+						 * this.getView().getModel("disruptionModel").setProperty(
+						 * path + "/message", " ");
+						 * oEvt.getSource().setType("Accept");
+						 */
+
+					},
+
+					handleDisruptionPanelExpand : function(oevent) {
+
+						if (!oevent.oSource.getExpanded())
+							return;
+						var disruptions = this.getView().byId("disrptlist");
+						$(disruptions.getItems())
+								.each(
+										function() {
+											var currentPanel = this
+													.getContent()[0];
+											if (oevent.getSource().getId() != currentPanel
+													.getId())
+												currentPanel.setExpanded(false)
+										});
+
+					},
+
+					onEscalate : function(oEvent) {
+
+						var msgRef = oEvent.getSource().getBindingContext(
+								"operationDisruptionsModel").getObject("MessageRef");
+
+						airbus.mes.disruptions.ModelManager.escalateDisruption(msgRef);
+					},
+
+					onReportDisruption : function(oEvent) {
 
 						var oOperDetailNavContainer = sap.ui.getCore().byId(
 								"operationDetailsView--operDetailNavContainer");
@@ -137,7 +138,7 @@ sap.ui
 								.to(airbus.mes.operationdetail.createDisruption.oView
 										.getId());
 					},
-					
+
 					onCloseOperationDetailPopup : function() {
 
 						airbus.mes.stationtracker.operationDetailPopup.close();
