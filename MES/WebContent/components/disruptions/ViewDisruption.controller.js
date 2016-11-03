@@ -43,6 +43,46 @@ sap.ui
 					// onExit: function() {
 					//
 					// },
+					 
+					 showCommentBox : function(oEvt) {
+							var path = oEvt.getSource().sId;
+							var listnum = path.split("-");
+							listnum = listnum[listnum.length-1];
+							var a=this.getView().byId("ViewDisruptionView--commentBox-ViewDisruptionView--disrptlist-" + listnum);
+							a.setVisible(true);
+							
+						},
+						
+						onMarkSolved : function(oEvt) {
+							var path = oEvt.getSource().getBindingContext(
+									"disruptionModel").getPath();
+							this.getView().getModel("disruptionModel").setProperty(
+									path + "/Status", "Solved");
+							this.getView().getModel("disruptionModel").setProperty(
+									path + "/commentVisible", "false");
+							this.getView().getModel("disruptionModel").setProperty(
+									path + "/message", " ");
+							oEvt.getSource().setType("Accept");
+
+						},
+						
+						handleDisruptionPanelExpand : function(oevent) {
+
+							if (!oevent.oSource.getExpanded())
+								return;
+							var disruptions = this.getView().byId("disrptlist");
+							$(disruptions.getItems())
+									.each(
+											function() {
+												var currentPanel = this
+														.getContent()[0];
+												if (oevent.getSource().getId() != currentPanel
+														.getId())
+													currentPanel.setExpanded(false)
+											});
+
+						},
+						
 					onReportDisruption : function(oEvent) {
 
 						var oOperDetailNavContainer = sap.ui.getCore().byId(
@@ -64,6 +104,13 @@ sap.ui
 						oOperDetailNavContainer
 								.to(airbus.mes.operationdetail.createDisruption.oView
 										.getId());
+					},
+					
+					onCloseOperationDetailPopup : function() {
+
+						airbus.mes.stationtracker.operationDetailPopup.close();
+						airbus.mes.shell.oView.getController()
+								.renderStationTracker();
 					}
 
 				});

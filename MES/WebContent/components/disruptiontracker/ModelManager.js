@@ -20,7 +20,7 @@ airbus.mes.disruptiontracker.ModelManager = {
 			dest = "local";
 			break;
 		default:
-			dest = "local";
+			dest = "airbus";
 			break;
 		}
 		
@@ -91,6 +91,9 @@ airbus.mes.disruptiontracker.ModelManager = {
 		getDiruptionsURL = getDiruptionsURL.replace('$MessageType', "");
 		
 		oViewModel.loadData(getDiruptionsURL, null, false);
+		
+		//TODO: Attach on load model event
+		document.getElementById("disruptiontrackerView--disruptionsTable-nodata-text").colSpan = "1";
 
 	}
 	

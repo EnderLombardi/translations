@@ -27,12 +27,12 @@ sap.ui
 					/* increase or decrease Progress Functions */
 
 					addProgress : function() {
-						oProgressSlider = this.getView().byId("progressSlider");
+						oProgressSlider = sap.ui.getCore().byId("progressSlider")
 						oProgressSlider.stepUp(1);
 					},
 
 					reduceProgress : function() {
-						oProgressSlider = this.getView().byId("progressSlider");
+						oProgressSlider = sap.ui.getCore().byId("progressSlider")
 						oProgressSlider.stepDown(1);
 					},
 					onCloseOperationDetailPopup : function() {

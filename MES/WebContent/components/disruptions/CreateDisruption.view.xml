@@ -40,7 +40,7 @@
 											 change="onSelectionChange">
 											<items>
 												<core:Item text="{disruptionCustomData>Category}"
-													key="{disruptionCustomData>Category}" />
+													key="{disruptionCustomData>MessageType}" />
 											</items>
 											<layoutData>
 												<l:GridData span="L3 M6 S12" />

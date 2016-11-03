@@ -38,11 +38,11 @@
 										text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/CPP_CLUSTER}"
 										class="subText sapUiSmallMarginEnd"></Text>
 									<Button id="opDetailExpandButton" type="Transparent"
-										 iconFirst="false" text="Show more" icon="sap-icon://navigation-down-arrow" press="expandOperationDetailPanel"
+										 iconFirst="false" text="{i18n>showMore}" icon="sap-icon://navigation-down-arrow" press="expandOperationDetailPanel"
 										class="expandButton"></Button>
 									<Button id="opDetailCloseButton" type="Transparent"
-										iconFirst="false" text="Show less info" icon="sap-icon://navigation-up-arrow"
-										press="expandOperationDetailPanel" class="closeButton"></Button>
+										iconFirst="false" text="{i18n>showLess}" icon="sap-icon://navigation-up-arrow"
+										visible="false" press="expandOperationDetailPanel" class="closeButton"></Button>
 								</HBox>
 							</HBox>
 						</VBox>

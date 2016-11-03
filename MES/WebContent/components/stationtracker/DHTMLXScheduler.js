@@ -239,7 +239,9 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 								}
 							}
 							//load model of polypoly
-							airbus.mes.polypoly.ModelManager.getPolyPolyModel("CHES", "1L"); //TODO Get Parameters
+							airbus.mes.polypoly.ModelManager.getPolyPolyModel("CHES", "1L"); //FIXME When Settings ready
+//							airbus.mes.polypoly.ModelManager.getPolyPolyModel(airbus.mes.settings.ModelManager.site, airbus.mes.settings.ModelManager.station);
+							
 							// set polypoly in non-editable mode
 							airbus.mes.polypoly.PolypolyManager.globalContext.bEditable = !airbus.mes.stationtracker.AssignmentManager.polypolyAffectation;
 							

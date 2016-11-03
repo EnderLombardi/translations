@@ -11,7 +11,7 @@
 						level="H1" titleStyle="H3" />
 				</items>
 			</HBox>
-			<l:Grid defaultSpan="L12 M12 S12" class="proressSliderGrid">
+			<l:Grid defaultSpan="L12 M12 S12" class="proressSliderGrid sapUiLargeMarginTop">
 
 				<Slider id="progressSliderDisplay" max="100" min="0"
 					showHandleTooltip="true" width="100%"

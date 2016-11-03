@@ -17,12 +17,12 @@
 
 				<Toolbar>
 					<ComboBox id="stationComboBox" class="sapUiMediumMarginEnd" placeholder="{disruptiontrackerI18n>selectStation}"
-						items="{ path:'plantModel>/Rowsets/Rowset/0/Row' }" selectedKey="">
+						items="{ path:'plantModel>/Rowsets/Rowset/0/Row' }" selectedKey="" selectionChange="filterByStation" >
 						<core:Item key="{plantModel>station}" text="{plantModel>station}" />
 					</ComboBox>
 
-					<ComboBox class="sapUiMediumMarginEnd" placeholder="{disruptiontrackerI18n>selectStatus}"
-						items="{ path: 'disruptionsOrderData>/orders' }">
+					<ComboBox id="statusComboBox" class="sapUiMediumMarginEnd" placeholder="{disruptiontrackerI18n>selectStatus}"
+						items="{ path: 'disruptionsOrderData>/orders' }" selectionChange="filterByStatus" >
 						<core:Item key="{disruptionsOrderData>key}" text="{disruptionsOrderData>name}" />
 					</ComboBox>
 
@@ -38,7 +38,7 @@
 		</Panel>
 
 
-		<Table class="disruptionsTable sapUiSmallMarginBottom"
+		<Table id="disruptionsTable" class="disruptionsTable sapUiSmallMarginBottom"
 			items="{ path: 'disruptionsTrackerModel>/Rowsets/Rowset/0/Row' }">
 
 			<columns>
