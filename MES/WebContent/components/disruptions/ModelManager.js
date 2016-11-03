@@ -141,16 +141,15 @@ airbus.mes.disruptions.ModelManager = {
 						var rowExists = data.Rowsets.Rowset;
 						if (rowExists != undefined) {
 							if (data.Rowsets.Rowset[0].Row[0].Message_Type == "S") {
-								this
-										.messageShow(data.Rowsets.Rowset[0].Row[0].Message);
+								airbus.mes.shell.ModelManager.messageShow(data.Rowsets.Rowset[0].Row[0].Message);
 							} else {
-								this.messageShow("Error in Success");
+								airbus.mes.shell.ModelManager.messageShow("Error in Success");
 							}
 						} else {
 							if (data.Rowsets.FatalError) {
-								this.messageShow(data.Rowsets.FatalError);
+								airbus.mes.shell.ModelManager.messageShow(data.Rowsets.FatalError);
 							} else {
-								this.messageShow("Success");
+								airbus.mes.shell.ModelManager.messageShow("Success");
 							}
 						}
 
@@ -209,22 +208,5 @@ airbus.mes.disruptions.ModelManager = {
 		var urlOnEscalate = this.urlModel.getProperty("urlOnEscalate");
 
 		return urlOnEscalate;
-	},
-
-	messageShow : function(text) {
-		sap.m.MessageToast.show(text, {
-			duration : 3000,
-			width : "25em",
-			my : "center center",
-			at : "center center",
-			of : window,
-			offset : "0 0",
-			collision : "fit fit",
-			onClose : null,
-			autoClose : true,
-			animationTimingFunction : "ease",
-			animationDuration : 1000,
-			closeOnBrowserNavigation : true
-		});
 	}
 };
