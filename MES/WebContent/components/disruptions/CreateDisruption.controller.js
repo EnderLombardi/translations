@@ -229,7 +229,7 @@ sap.ui
 								},
 								{
 									"attribute" : "REQD_FIX_BY",
-									"value": airbus.mes.disruptions.Formatter.defaultDateConversion(this.getView().byId("expectedDate"),this.getView().byId("expectedTime"))
+									"value": this.getView().byId("expectedTime").getValue()	
 								},
 								{
 									"attribute" : "GRAVITY",

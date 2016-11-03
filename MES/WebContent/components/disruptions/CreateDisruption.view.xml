@@ -165,7 +165,7 @@
 										</Label>
 									</f:label>
 									<f:fields>
-										<DatePicker id="expectedDate" valueFormat="dd.MM.yyyy"
+										<DatePicker id="expectedDate" valueFormat="yyyy-MM-dd"
 											displayFormat="long" change="handleChange">
 											<layoutData>
 												<l:GridData span="L3 M6 S12" />
