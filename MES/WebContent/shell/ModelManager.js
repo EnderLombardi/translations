@@ -107,5 +107,12 @@ airbus.mes.shell.ModelManager = {
 			for ( var m in o)
 				xml += toXml(o[m], m, "");
 			return tab ? xml.replace(/\t/g, tab) : xml.replace(/\t|\n/g, "");
+		},
+
+		/***************************************************************************
+		 * Replace URL Parameters
+		 **************************************************************************/
+		replaceURI : function(sURI, sFrom, sTo) {
+			return sURI.replace(sFrom, encodeURIComponent(sTo));
 		}
 }

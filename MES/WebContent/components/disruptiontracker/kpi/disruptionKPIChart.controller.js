@@ -1,6 +1,4 @@
-sap.ui.controller("airbus.mes.disruptionKPI.disruptionKPIChart", {
-
-
+sap.ui.controller("airbus.mes.disruptiontracker.kpi.disruptionKPIChart", {
 
 	/* ============================================================ */
 	/* Life-cycle Handling                                          */
@@ -12,20 +10,19 @@ sap.ui.controller("airbus.mes.disruptionKPI.disruptionKPIChart", {
 	 */
 	onInit : function() {
 		
-//		comment the first and run the second ok
 //		For Category
-		var oViewModel_1=  new sap.ui.model.json.JSONModel();
-		sap.ui.getCore().setModel(oViewModel_1,"TimeLostperCategory");
-		sap.ui.getCore().getModel("TimeLostperCategory").loadData("../components/disruptionKPI/data/timelostperCategory.json",null,false);
+//		var oViewModel_1=  new sap.ui.model.json.JSONModel();
+//		sap.ui.getCore().setModel(oViewModel_1,"TimeLostperCategory");
+//		sap.ui.getCore().getModel("TimeLostperCategory").loadData("../components/disruptionKPI/data/timelostperCategory.json",null,false);
+		var oViewModel = sap.ui.getCore().getModel("disruptionsTrackerModel");
 		
-		this.getView().setModel(oViewModel_1);
-		var oPage = this.getView().byId("page");
+		this.getView().setModel(oViewModel);
 		
 		var oVizFrame = this.getView().byId("vizFrame");
 		oVizFrame.setVizProperties({
-
 				title : {
 				visible :"true",
+//				text : "{i18n>disruptionKPITitle}"
 				text : "Lost Time (minutes) per Category"
 				
 			},			
@@ -34,49 +31,46 @@ sap.ui.controller("airbus.mes.disruptionKPI.disruptionKPIChart", {
 		
 		var oDataset = new sap.viz.ui5.data.FlattenedDataset({
 		 	dimensions: [{
-		 		name: 'Category',
+		 		name: 'Message Type',
 				axis : 1,
-		 		value: "{Category}"
+		 		value: "{MessageType}"
 		 	}
 		 		],
 		 	measures: [
 		 		{
-		 			name: 'Time Lost', 
-						 axis : 1,
-		 			value: '{Time Lost}' 
+		 			name: 'TIME LOST', 
+					axis : 1,
+		 			value: '{TIME_LOST}' 
 		 		}
 		 	],
 		 	data: {
-		 		path: "/businessData"
+		 		path: "/Rowsets/Rowset/0/Row/"
 		 	}
 		 });
+//		.bindData("disruptionsTrackerModel>/Rowsets/Rowset/0/Row",null,null,[]);
 		
 		oVizFrame.setDataset(oDataset);
-		oVizFrame.setModel(oViewModel_1);
+		oVizFrame.setModel(oViewModel);
 
 		var feedPrimaryValues = new sap.viz.ui5.controls.common.feeds.FeedItem({
 			'uid' : "primaryValues",
 			'type' : "Measure",
-			'values' : ["Time Lost"]
+			'values' : ["TIME LOST"]
 		});
 
 		var feedAxisLabels = new sap.viz.ui5.controls.common.feeds.FeedItem({
 			'uid' : "axisLabels",
 			'type' : "Dimension",
-			'values' : ["Category"]
-		
+			'values' : ["Message Type"]		
 		});
 
 		oVizFrame.addFeed(feedPrimaryValues);
 		oVizFrame.addFeed(feedAxisLabels);
-		oPage.addContent(oVizFrame);
-		
 		
 //		For Reason
 		var oViewModel_2=  new sap.ui.model.json.JSONModel();
 		sap.ui.getCore().setModel(oViewModel_2,"TimeLostperReason");
-		sap.ui.getCore().getModel("TimeLostperReason").loadData("../components/disruptionKPI/data/timelostperReason.json",null,false);
-		
+		sap.ui.getCore().getModel("TimeLostperReason").loadData("../components/disruptiontracker/kpi/data/timelostperReason.json",null,false);
 		this.getView().setModel(oViewModel_2);
 				
 		var oVizFrame2 = this.getView().byId("vizFrame2");
@@ -99,12 +93,12 @@ sap.ui.controller("airbus.mes.disruptionKPI.disruptionKPIChart", {
 		 	measures: [
 		 		{
 		 			name: 'Time Lost', 
-						 axis : 1,
+					axis : 1,
 		 			value: '{Time Lost}' 
 		 		}
 		 	],
 		 	data: {
-		 		path: "/businessData1"
+		 		path: "/TimeLostperReasonData"
 		 	}
 		 });
 		
@@ -126,13 +120,12 @@ sap.ui.controller("airbus.mes.disruptionKPI.disruptionKPIChart", {
 
 		oVizFrame2.addFeed(feedPrimaryValues1);
 		oVizFrame2.addFeed(feedAxisLabels1);
-		oPage.addContent(oVizFrame2);
 		
 		
 //		For Operation
 		var oViewModel_3=  new sap.ui.model.json.JSONModel();
 		sap.ui.getCore().setModel(oViewModel_3,"TimeLostperOperation");
-		sap.ui.getCore().getModel("TimeLostperOperation").loadData("../components/disruptionKPI/data/timelostperOperation.json",null,false);
+		sap.ui.getCore().getModel("TimeLostperOperation").loadData("../components/disruptiontracker/kpi/data/timelostperOperation.json",null,false);
 		
 		this.getView().setModel(oViewModel_3);
 				
@@ -157,12 +150,12 @@ sap.ui.controller("airbus.mes.disruptionKPI.disruptionKPIChart", {
 		 	measures: [
 		 		{
 		 			name: 'Time Lost', 
-						 axis : 1,
+					axis : 1,
 		 			value: '{Time Lost}' 
 		 		}
 		 	],
 		 	data: {
-		 		path: "/LostTimeperOperation"
+		 		path: "/LostTimeperOperationData"
 		 	}
 		 });
 		
@@ -184,12 +177,11 @@ sap.ui.controller("airbus.mes.disruptionKPI.disruptionKPIChart", {
 
 		oVizFrame3.addFeed(feedPrimaryValues3);
 		oVizFrame3.addFeed(feedAxisLabels3);
-		oPage.addContent(oVizFrame3);
 		
 //		For MSN
 		var oViewModel_4=  new sap.ui.model.json.JSONModel();
 		sap.ui.getCore().setModel(oViewModel_4,"TimeLostperMSN");
-		sap.ui.getCore().getModel("TimeLostperMSN").loadData("../components/disruptionKPI/data/timelostperMSN.json",null,false);
+		sap.ui.getCore().getModel("TimeLostperMSN").loadData("../components/disruptiontracker/kpi/data/timelostperMSN.json",null,false);
 		
 		this.getView().setModel(oViewModel_4);
 				
@@ -212,12 +204,12 @@ sap.ui.controller("airbus.mes.disruptionKPI.disruptionKPIChart", {
 		 	measures: [
 		 		{
 		 			name: 'Time Lost', 
-						 axis : 1,
+		 			axis : 1,
 		 			value: '{Time Lost}' 
 		 		}
 		 	],
 		 	data: {
-		 		path: "/LostTimeperMSN"
+		 		path: "/LostTimeperMSNData"
 		 	}
 		 });
 		
@@ -239,10 +231,12 @@ sap.ui.controller("airbus.mes.disruptionKPI.disruptionKPIChart", {
 
 		oVizFrame4.addFeed(feedPrimaryValues4);
 		oVizFrame4.addFeed(feedAxisLabels4);
-		oPage.addContent(oVizFrame4);
 		
-
 	},
+	
+	onNavBack: function(oEvent){
+		nav.back();
+	}
 
 
 });

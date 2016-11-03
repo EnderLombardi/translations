@@ -67,13 +67,6 @@ airbus.mes.operationdetail.ModelManager = {
 	},
 
 	/***************************************************************************
-	 * Replace URL Parameters
-	 **************************************************************************/
-	replaceURI : function(sURI, sFrom, sTo) {
-		return sURI.replace(sFrom, encodeURIComponent(sTo));
-	},
-
-	/***************************************************************************
 	 * Set the Models for Reason Codes
 	 **************************************************************************/
 	loadReasonCodeModel : function() {
@@ -82,7 +75,7 @@ airbus.mes.operationdetail.ModelManager = {
 	},
 	getReasonCodesURL : function() {
 		var urlReasonCodes = this.urlModel.getProperty("getReasonCodes");
-		urlReasonCodes = airbus.mes.operationdetail.ModelManager.replaceURI(
+		urlReasonCodes = airbus.mes.shell.ModelManager.replaceURI(
 				urlReasonCodes, "$site", airbus.mes.settings.ModelManager.site);
 		return urlReasonCodes;
 
