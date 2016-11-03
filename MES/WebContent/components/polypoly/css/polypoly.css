@@ -182,15 +182,15 @@ div[id^="polypoly--oTablePolypoly"].sapUiTableColRowHdr {
 }
 
 /* BTN ADD POLY POLY */
-#polypoly--AddPolypoly::after  {
+/*#polypoly--AddPolypoly::after  {
 content: "";
     width: 1px;
-    background: #ccc;
+    background: #0D5D76;
     position: absolute;
     top: 0;
     bottom: 0;
     right: -0.3125rem;
-}
+}*/
 #polypoly--AddPolypoly {
     margin-right: 0.3125rem;
 }
