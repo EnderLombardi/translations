@@ -267,7 +267,7 @@ sap.ui
 							}
 							aModelData.push(oJson);
 
-						
+							
 							
 						airbus.mes.disruptions.ModelManager.createDisruption(
 								sObject, sGravity, sNature, sHelp, dOpenDate,
