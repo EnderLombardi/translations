@@ -142,6 +142,13 @@
 	color: white;
 }
 
+.classOpenDisruptionAndon div:first-child label , .classOpenDisruptionDisruption div:first-child label, .classOpenDisruptionDetail div:first-child label {
+	padding-bottom: 5px;
+}
+.classOpenDisruptionTotal div:first-child label {
+	padding-bottom: 0.2vw;	
+}
+
 .redText {
 	text-align: center ! important;
 	color: #fe5000;
@@ -926,6 +933,7 @@ background-color: #0085AD !important;
 /** Takt Adherence **/
 .classTaktAdherenceTrend.sapUiRespGrid.sapUiRespGridHSpace1>div {
     margin: 0 0.5rem 0 0;
+    line-height: 1rem;
 }
 .classTaktAdherenceTrend.sapUiRespGrid.sapUiRespGridHSpace1>.sapUiRespGridSpanL4 {
     margin: 0;
@@ -1065,7 +1073,7 @@ svg#stationTrackerView--takt_adherence_area_chart {
 
 #stationTrackerView--shifStaffingHeader .sapSuiteDmcTitle,
 #stationTrackerView--shifStaffingHeader .sapSuiteDmcLbls{
-	font-size: 9px;
+	font-size: 1vw;
 }
 
 #stationTrackerView--shifStaffingHeader .sapSuiteDmcCnt{
