@@ -485,19 +485,12 @@ airbus.mes.stationtracker.ModelManager = {
                      airbus.mes.stationtracker.operationDetailPopup = sap.ui.xmlfragment("operationDetailPopup",
                                   "airbus.mes.stationtracker.fragments.operationDetailPopup", airbus.mes.stationtracker.oView
                                                 .getController());
-
-                     airbus.mes.stationtracker.operationDetailPopup.addStyleClass("alignTextLeft");
                      airbus.mes.stationtracker.operationDetailPopup.setModel(sap.ui.getCore().getModel("operationDetailModel"),
                                   "operationDetailModel");
 
                      airbus.mes.stationtracker.oView.addDependent(airbus.mes.stationtracker.operationDetailPopup);
 
-                     airbus.mes.stationtracker.operationDetailPopup.addStyleClass("alignTextLeft");
-                     airbus.mes.stationtracker.operationDetailPopup.setModel(sap.ui.getCore().getModel("operationDetailModel"),
-                                  "operationDetailModel");
-                     airbus.mes.stationtracker.operationDetailPopup.setModel(sap.ui.getCore().getModel("WorkListModel"),
-                                  "WorkListModel");
-                     airbus.mes.stationtracker.oView.addDependent(airbus.mes.stationtracker.operationDetailPopup);
+                     //airbus.mes.stationtracker.operationDetailPopup.addStyleClass("alignTextLeft");
 
               }
 

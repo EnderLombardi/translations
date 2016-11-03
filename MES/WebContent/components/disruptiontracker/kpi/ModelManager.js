@@ -1,5 +1,5 @@
 //"use strict";
-jQuery.sap.declare("airbus.mes.disruptionKPI.ModelManager")
+jQuery.sap.declare("airbus.mes.disruptiontracker.kpi.ModelManager")
 airbus.mes.disruptionKPI.ModelManager = {
 	urlModel : undefined,
 	queryParams : jQuery.sap.getUriParameters(),
@@ -10,8 +10,8 @@ airbus.mes.disruptionKPI.ModelManager = {
 		core.setModel(new sap.ui.model.json.JSONModel(), "TimeLostperReason");
 		core.setModel(new sap.ui.model.json.JSONModel(), "TimeLostperOperation");
 		core.setModel(new sap.ui.model.json.JSONModel(), "TimeLostperMSN");
-//		core.setModel(new sap.ui.model.resource.ResourceModel({bundleName:"airbus.mes.disruptiontracker.i18n.i18n",bundleLocale:"en"}), 
-//														 "disruptiontrackerI18n");
+		core.setModel(new sap.ui.model.resource.ResourceModel({bundleName:"airbus.mes.disruptiontracker.kpi.i18n.i18n",bundleLocale:"en"}), 
+														 "i18n");
 
 
 		var dest;
@@ -31,7 +31,7 @@ airbus.mes.disruptionKPI.ModelManager = {
 
 		this.urlModel = new sap.ui.model.resource.ResourceModel(
 				{
-					bundleUrl : "../components/disruptionKPI/config/url_config.properties",
+					bundleUrl : "../components/disruptiontracker/kpi/config/url_config.properties",
 					bundleLocale : dest
 				});
 		

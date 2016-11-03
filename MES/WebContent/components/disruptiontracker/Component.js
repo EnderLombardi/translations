@@ -2,6 +2,10 @@ jQuery.sap.require("sap.ui.core.UIComponent");
 jQuery.sap.require("airbus.mes.disruptiontracker.util.Formatter");
 jQuery.sap.require("airbus.mes.disruptiontracker.ModelManager");
 
+jQuery.sap.registerModulePath("airbus.mes.disruptions", "../components/disruptions");
+jQuery.sap.require("airbus.mes.disruptions.ModelManager");
+
+
 jQuery.sap.declare("airbus.mes.disruptiontracker.Component");
 
 sap.ui.core.UIComponent.extend("airbus.mes.disruptiontracker.Component", {
@@ -17,8 +21,9 @@ sap.ui.core.UIComponent.extend("airbus.mes.disruptiontracker.Component", {
 airbus.mes.disruptiontracker.Component.prototype.createContent = function() {
 	
 	if (airbus.mes.disruptiontracker.oView === undefined) {
-//		Initialization
+		//	Initialization
 		airbus.mes.disruptiontracker.ModelManager.init(sap.ui.getCore());
+		airbus.mes.disruptions.ModelManager.init(sap.ui.getCore());
 		
 		// View on XML
 		this.oView = sap.ui.view({
@@ -39,9 +44,6 @@ airbus.mes.disruptiontracker.Component.prototype.createContent = function() {
 		
 		//Model Station Names
 		this.oView.setModel(sap.ui.getCore().getModel("plantModel"), "plantModel");
-		
-		//Model for disruptions order data in ComboBox
-		this.oView.setModel(sap.ui.getCore().getModel("disruptionsOrderData"), "disruptionsOrderData");
 		
 		
 		return this.oView;

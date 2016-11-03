@@ -5,7 +5,8 @@
 
 		<subHeader>
 			<Toolbar>
-				<Button id="navBack" icon="sap-icon://arrow-left" text="Back" press="onNavBack" type="Transparent"/>
+				<Button id="navBack" icon="sap-icon://arrow-left" text="Back"
+					press="onNavBack" type="Transparent" />
 				<ToolbarSpacer />
 				<Text text="{disruptiontrackerI18n>disruptionsTitle}" class="headerText" />
 				<ToolbarSpacer />
@@ -16,21 +17,27 @@
 			<content>
 
 				<Toolbar>
-					<ComboBox id="stationComboBox" class="sapUiMediumMarginEnd" placeholder="{disruptiontrackerI18n>selectStation}"
-						items="{ path:'plantModel>/Rowsets/Rowset/0/Row' }" selectedKey="" selectionChange="filterByStation" >
+					<ComboBox id="stationComboBox" class="sapUiMediumMarginEnd"
+						placeholder="{disruptiontrackerI18n>selectStation}" items="{ path:'plantModel>/Rowsets/Rowset/0/Row' }"
+						selectedKey="" selectionChange="filterByStation">
 						<core:Item key="{plantModel>station}" text="{plantModel>station}" />
 					</ComboBox>
 
-					<ComboBox id="statusComboBox" class="sapUiMediumMarginEnd" placeholder="{disruptiontrackerI18n>selectStatus}"
-						items="{ path: 'disruptionsOrderData>/orders' }" selectionChange="filterByStatus" >
-						<core:Item key="{disruptionsOrderData>key}" text="{disruptionsOrderData>name}" />
+					<ComboBox id="statusComboBox" class="sapUiMediumMarginEnd"
+						placeholder="{disruptiontrackerI18n>selectStatus}"
+						selectionChange="filterByStatus">
+						<core:Item key="PENDING" text="{disruptionsOrderData>status.pending}" />
+						<core:Item key="ACKNOWLEDGED" text="{disruptionsOrderData>status.acknowledge}" />
+						<core:Item key="SOLVED" text="{disruptionsOrderData>status.solved}" />
+						<core:Item key="CLOSED" text="{disruptionsOrderData>status.closed}" />
+						<core:Item key="REJECTED" text="{disruptionsOrderData>status.rejected}" />
 					</ComboBox>
 
-					<SearchField width="13rem" placeholder="Search disruption" />
+					<SearchField width="13rem" placeholder="{disruptionsOrderData>search}" />
 					<ToolbarSpacer />
 
-					<Button id="gotoDisruptionKpi" icon="sap-icon://area-chart" text="{disruptiontrackerI18n>disruptionKPI}"
-						press="onPressDisruptionKPI" />
+					<Button id="gotoDisruptionKpi" icon="sap-icon://area-chart"
+						text="{disruptiontrackerI18n>disruptionKPI}" press="onPressDisruptionKPI" />
 				</Toolbar>
 
 			</content>
@@ -40,7 +47,6 @@
 
 		<Table id="disruptionsTable" class="disruptionsTable sapUiSmallMarginBottom"
 			items="{ path: 'disruptionsTrackerModel>/Rowsets/Rowset/0/Row' }">
-
 			<columns>
 				<Column>
 					<Text text="{disruptiontrackerI18n>operation}" />
@@ -95,7 +101,8 @@
 							state="{parts: [ {path: 'disruptionsTrackerModel>Status'}, {path: 'disruptionsTrackerModel>Gravity'}, {path: 'disruptionsTrackerModel>Severity'} ], formatter: 'airbus.mes.disruptiontracker.Formatter.setState'}"
 							icon="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setIcon'}" />
 						<Text text="{disruptionsTrackerModel>Status}" />
-						<Text text="{path: 'disruptionsTrackerModel>MessageType', formatter: 'airbus.mes.disruptiontracker.Formatter.formatCategory'}" />
+						<Text
+							text="{path: 'disruptionsTrackerModel>MessageType', formatter: 'airbus.mes.disruptiontracker.Formatter.formatCategory'}" />
 						<Text text="{disruptionsTrackerModel>Reason}" />
 						<Text text="{disruptionsTrackerModel>OriginatorGroup}" />
 						<Text text="{disruptionsTrackerModel>ResponsibleGroup}" />

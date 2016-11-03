@@ -613,6 +613,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 			.getCells().indexOf(
 					oEvt.getSource().getParent());
 			var oPopover = new sap.m.Popover({
+				placement : "HorizontalPreferredRight",
 				showHeader : false,
 				content : [ new sap.m.VBox({
 					alignItems : "Center",
@@ -857,6 +858,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 			})
 		}
 		that.colDialog.setModel(columnModel, "columnModel");
+		that.colDialog.setModel(airbus.mes.polypoly.oView.getModel("PolypolyI18n"),"PolypolyI18n");
 		that.colDialog.open();
 
 		sap.ui.getCore().byId("colTechname").setEditable((airbus.mes.polypoly.PolypolyManager.internalContext.saveContext == "CREATE"));

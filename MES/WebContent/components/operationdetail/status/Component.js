@@ -8,7 +8,7 @@ jQuery.sap.declare("airbus.mes.operationdetail.status.Component");
 sap.ui.core.UIComponent.extend("airbus.mes.operationdetail.status.Component", {
 	metadata : {
 		properties : {},
-		includes : [ "" ]
+		includes : [ "../css/progressSlider.css" ]
 
 	}
 });

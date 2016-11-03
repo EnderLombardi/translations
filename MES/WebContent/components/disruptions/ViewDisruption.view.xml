@@ -4,7 +4,7 @@
 	<Page enableScrolling="false" showHeader="false">
 		<content>
 			<List id="disrptlist" noDataText="{i18nModel>noDisruptions}"
-				class="disruptionDetail sapUiSmallMarginBottom" items="{path: 'DisruptionDetail>/Disruption'}">
+				class="disruptionDetail sapUiSmallMarginBottom" items="{path: 'DisruptionDetail>/Rowsets/Rowset/0/Row'}">
 
 				<CustomListItem>
 
@@ -12,7 +12,7 @@
 						expand="handleDisruptionPanelExpand">
 						<headerToolbar>
 							<Toolbar>
-								<Title text="{DisruptionDetail>Title}" class="panelTitleText" />
+								<Title text="{DisruptionDetail>Operation}" class="panelTitleText" />
 								<ToolbarSpacer />
 								<Button class="decoratePanelBtn" text="Edit" design="Transparent"
 									icon="sap-icon://edit" />
@@ -59,7 +59,7 @@
 											</f:label>
 											<f:fields>
 
-												<Text text="{DisruptionDetail>Object}">
+												<Text text="{DisruptionDetail>Category}">
 													<layoutData>
 														<l:GridData span="L4 M4 S12" />
 													</layoutData>
@@ -77,7 +77,7 @@
 											</f:label>
 											<f:fields>
 
-												<Text text="{DisruptionDetail>Help}">
+												<Text text="{DisruptionDetail>ResponsibleGroup}">
 													<layoutData>
 														<l:GridData span="L3 M3 S12" />
 													</layoutData>
@@ -96,7 +96,7 @@
 											</f:label>
 											<f:fields>
 
-												<Text text="{DisruptionDetail>Nature}">
+												<Text text="{DisruptionDetail>Reason}">
 													<layoutData>
 														<l:GridData span="L4 M4 S12" />
 													</layoutData>
@@ -115,7 +115,7 @@
 											<f:fields>
 
 												<Text
-													text="{DisruptionDetail>Open Date} - {DisruptionDetail>Time}">
+													text="{DisruptionDetail>OpeningTime}">
 													<layoutData>
 														<l:GridData span="L3 M3 S12" />
 													</layoutData>
@@ -135,7 +135,7 @@
 											</f:label>
 											<f:fields>
 												<Text
-													text="{DisruptionDetail>Expected} - {DisruptionDetail>TimeEx}">
+													text="{DisruptionDetail>FixedByTime}">
 													<layoutData>
 														<l:GridData span="L4 M4 S12" />
 													</layoutData>
@@ -184,7 +184,7 @@
 							<Button class="decoratePanelBtn" text="{i18nModel>acknowledge}"
 								design="Transparent" icon="sap-icon://to-be-reviewed" />
 							<Button class="decoratePanelBtn" text="{i18nModel>escalate}"
-								design="Transparent" icon="sap-icon://message-warning" />
+								press="onEscalate" design="Transparent" icon="sap-icon://message-warning" />
 							<Button class="decoratePanelBtn" text="{i18nModel>markSolved}"
 								press="onMarkSolved" design="Transparent" icon="sap-icon://sys-add" />
 						</Toolbar>

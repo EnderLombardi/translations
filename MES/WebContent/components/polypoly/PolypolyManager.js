@@ -466,8 +466,7 @@ airbus.mes.polypoly.PolypolyManager = {
 			airbus.mes.polypoly.PolypolyManager.updateLevelCreate(p.sUserID, p.sTechName,
 					p.endLevel);
 		} else {
-			airbus.mes.polypoly.PolypolyManager.updateLevel(p.sUserID, p.sTechName, p.startLevel,
-					p.endLevel);
+			airbus.mes.polypoly.PolypolyManager.updateLevel(p.sUserID, p.sTechName, p.endLevel);
 		}
 	},
 
@@ -527,12 +526,11 @@ airbus.mes.polypoly.PolypolyManager = {
 		})
 	},
 
-	updateLevel : function(sUserID, sTechName, sPreviousLevel, sNewLevel) {
+	updateLevel : function(sUserID, sTechName, sNewLevel) {
 		var urlqalevelupdate = this.urlModel.getProperty("urlqalevelupdate");
 
 		urlqalevelupdate = urlqalevelupdate.replace("$erpid", sUserID);
 		urlqalevelupdate = urlqalevelupdate.replace("$competency", sTechName);
-		urlqalevelupdate = urlqalevelupdate.replace("$pLevel", sPreviousLevel);
 		urlqalevelupdate = urlqalevelupdate.replace("$nLevel", sNewLevel);
 //		urlqalevelupdate = urlqalevelupdate.replace("$site", airbus.mes.settings.ModelManager.site); //FIXME: Uncomment when ready
 		urlqalevelupdate = urlqalevelupdate.replace("$site", "CHES"); 								 //FIXME
@@ -640,33 +638,36 @@ airbus.mes.polypoly.PolypolyManager = {
 //			},
 //		});
 //	},
-//
-//	updateColumn : function(sName, sQA, sNeed3, sNeed4, sTechname) {
-//		var urlupdatecolumn = this.urlModel.getProperty("urlupdatecolumn");
-//
-//		urlupdatecolumn = urlupdatecolumn.replace("$New_Description", sName);
-//		urlupdatecolumn = urlupdatecolumn.replace("$QA_LIST", sQA);
-//		urlupdatecolumn = urlupdatecolumn.replace("$Needs_3", sNeed3);
-//		urlupdatecolumn = urlupdatecolumn.replace("$Needs_4", sNeed4);
-//		urlupdatecolumn = urlupdatecolumn.replace("$polypoly", sTechname);
-//		urlupdatecolumn = urlupdatecolumn.replace("$site", ModelManager.site);
-//
-//		$.ajax({
-//			url : urlupdatecolumn,
-//			cache : false,
-//			success : function(data, textStatus, jqXHR) {
-//				if (sap.ui.getCore().byId("columnPopupDialog")) {
-//					if (sap.ui.getCore().byId("columnPopupDialog").isOpen()) {
-//						sap.ui.getCore().byId("columnPopupDialog").close();
-//					}
-//				}
-//				PolypolyManager.getPolypolyModel(ModelManager.factory_name,
-//						ModelManager.line_number, ModelManager.station_number,
-//						ModelManager.site);
-//			},
-//		});
-//	},
-//
+
+	updateColumn : function(sName, sQA, sNeed3, sNeed4, sTechname) {
+		var urlupdatecolumn = this.urlModel.getProperty("urlupdatecolumn");
+
+		urlupdatecolumn = urlupdatecolumn.replace("$New_Description", sName);
+		urlupdatecolumn = urlupdatecolumn.replace("$QA_LIST", sQA);
+		urlupdatecolumn = urlupdatecolumn.replace("$Needs_3", sNeed3);
+		urlupdatecolumn = urlupdatecolumn.replace("$Needs_4", sNeed4);
+		urlupdatecolumn = urlupdatecolumn.replace("$polypoly", sTechname);
+//		urlupdatecolumn = urlupdatecolumn.replace("$site", airbus.mes.settings.ModelManager.site); //FIXME: Uncomment when ready
+		urlupdatecolumn = urlupdatecolumn.replace("$site", "CHES");
+		
+		//Handle User & Password																	 		 //FIXME Temp
+		urlupdatecolumn = airbus.mes.polypoly.ModelManager.handleUserConnection(urlupdatecolumn);			 //FIXME Temp
+
+		$.ajax({
+			url : urlupdatecolumn,
+			cache : false,
+			success : function(data, textStatus, jqXHR) {
+				if (sap.ui.getCore().byId("columnPopupDialog")) {
+					if (sap.ui.getCore().byId("columnPopupDialog").isOpen()) {
+						sap.ui.getCore().byId("columnPopupDialog").close();
+					}
+				}
+				airbus.mes.polypoly.ModelManager.getPolyPolyModel("CHES", "1L"); //FIXME When Settings ready
+//				airbus.mes.polypoly.ModelManager.getPolyPolyModel(airbus.mes.settings.ModelManager.site, airbus.mes.settings.ModelManager.station);
+			},
+		});
+	},
+
 //	deleteColumn : function(sName) {
 //		var urldeletecolumn = this.urlModel.getProperty("urldeletecolumn");
 //
