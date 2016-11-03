@@ -135,21 +135,21 @@ airbus.mes.disruptions.ModelManager = {
 				if (rowExists != undefined) {
 					if (data.Rowsets.Rowset[0].Row[0].Message_Type == "S") {
 
-						this.messageShow(data.Rowsets.Rowset[0].Row[0].Message);
+						airbus.mes.shell.ModelManager.messageShow(data.Rowsets.Rowset[0].Row[0].Message);
 					} else {
-						this.messageShow("Error in Success");
+						airbus.mes.shell.ModelManager.messageShow("Error in Success");
 					}
 				} else {
 					if (data.Rowsets.FatalError) {
-						this.messageShow(data.Rowsets.FatalError);
+						airbus.mes.shell.ModelManager.messageShow(data.Rowsets.FatalError);
 					} else {
-						this.messageShow("Success");
+						airbus.mes.shell.ModelManager.messageShow("Success");
 					}
 				}
 
 			},
 			error : function() {
-				this.messageShow("Error in Error")
+				airbus.mes.shell.ModelManager.messageShow("Error in Error")
 				
 			}
 
