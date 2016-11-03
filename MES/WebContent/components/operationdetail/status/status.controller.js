@@ -92,8 +92,7 @@ sap.ui
 
 						if (flag_success == true) {
 							this.setProgressScreenBtn( true, false);
-							this.getView().byId("progressSlider").setEnabled(
-									true);
+							
 							this.getView().byId("operationStatus").setText(
 									this.getView().getModel("i18n")
 											.getProperty("in_progress"));
@@ -153,8 +152,7 @@ sap.ui
 
 						if (flag_success == true) {
 							this.setProgressScreenBtn( false, true);
-							this.getView().byId("progressSlider").setEnabled(
-									false);
+							
 							this.getView().byId("btnActivate")
 									.setType("Accept");
 							this.getView().byId("operationStatus").setText(
@@ -190,6 +188,7 @@ sap.ui
 
 						if (oEvent.getSource().getText() == this.getView()
 								.getModel("i18n").getProperty("confirm")) {
+							airbus.mes.operationdetail.ModelManager.loadReasonCodeModel();
 							if (!this._reasonCodeDialog) {
 
 								this._reasonCodeDialog = sap.ui
@@ -206,6 +205,7 @@ sap.ui
 						} else if (oEvent.getSource().getText() == this
 								.getView().getModel("i18n").getProperty(
 										"complete")) {
+							this.operationStatus = "X";
 							if (!this._oUserConfirmationDialog) {
 
 								this._oUserConfirmationDialog = sap.ui
@@ -216,8 +216,9 @@ sap.ui
 								this.getView().addDependent(
 										this._oUserConfirmationDialog);
 								// click on complete
-								this.operationStatus = "X";
+								
 							}
+							
 							this._oUserConfirmationDialog.open();
 
 							sap.ui.getCore().byId("userNameForConfirmation")
@@ -226,7 +227,7 @@ sap.ui
 									.setValue("");
 
 						}
-						airbus.mes.operationdetail.ModelManager.loadReasonCodeModel();
+						
 					},
 
 					/***********************************************************
@@ -266,14 +267,20 @@ sap.ui
 									false);
 							var sfc = airbus.mes.operationdetail.ModelManager.sfc;
 							if (this.operationStatus == "X")
+								{
 								var percent = "100"
+									this.getView().byId("operationStatus").setText(
+											this.getView().getModel("i18n")
+													.getProperty("confirm"));
+								this.setProgressScreenBtn(false,false);
+								}
 							else {
-								var percent = this.getView().byId(
+								var percent = sap.ui.getCore().byId(
 										"progressSlider").getValue();
 							}
 
 							// Call service for Operation Confirmation
-							jQuery
+							/*jQuery
 									.ajax({
 										url : airbus.mes.operationdetail.ModelManager
 												.getConfirmationUrl(
@@ -311,17 +318,19 @@ sap.ui
 											}
 
 										}
-									});
+									});*/
 
 							this._oUserConfirmationDialog.close();
 
-							if (flag === true) {
+							if (flag_success === true) {
 								// Refresh User Operation Model and Operation
 								// Detail
 								airbus.mes.shell.oView.getController()
 										.renderStationTracker();
+								if(this.operationStatus == "C"){
 
-								this.refreshOperationData(percent);
+									this.refreshOperationData(percent);
+									}
 
 								// update operationDetailsModel
 								sap.ui.getCore().getModel(
@@ -337,42 +346,42 @@ sap.ui
 					},
 
 					refreshOperationData : function(percentage) {
-						this.getView().byId("progressSliderfirst").setWidth(
+						sap.ui.getCore().byId("progressSliderfirst").setWidth(
 								percentage + "%");
-						this.getView().byId("progressSlider").setWidth(
+						sap.ui.getCore().byId("progressSlider").setWidth(
 								(100 - parseInt(percentage)) + "%");
 
-						this.getView().byId("progressSliderfirst").setMax(
+						sap.ui.getCore().byId("progressSliderfirst").setMax(
 								parseInt(percentage));
-						this.getView().byId("progressSlider").setMin(
+						sap.ui.getCore().byId("progressSlider").setMin(
 								parseInt(percentage));
 
-						this.getView().byId("progressSliderfirst").setValue(
+						sap.ui.getCore().byId("progressSliderfirst").setValue(
 								parseInt(percentage));
-						this.getView().byId("progressSlider").setValue(
+						sap.ui.getCore().byId("progressSlider").setValue(
 								parseInt(percentage));
 
 						switch (parseInt(percentage)) {
 						case 100:
-							this.getView().byId("progressSliderfirst")
+							sap.ui.getCore().byId("progressSliderfirst")
 									.setVisible(true);
-							this.getView().byId("progressSlider").setVisible(
+							sap.ui.getCore().byId("progressSlider").setVisible(
 									false);
 							break;
 						case 0:
-							this.getView().byId("progressSliderfirst")
+							sap.ui.getCore().byId("progressSliderfirst")
 									.setVisible(false);
-							this.getView().byId("progressSlider").setVisible(
+							sap.ui.getCore().byId("progressSlider").setVisible(
 									true);
-							this.getView().byId("progressSlider")
+							sap.ui.getCore().byId("progressSlider")
 									.removeStyleClass("dynProgressSlider");
 							break;
 						default:
-							this.getView().byId("progressSliderfirst")
+							sap.ui.getCore().byId("progressSliderfirst")
 									.setVisible(true);
-							this.getView().byId("progressSlider").setVisible(
+							sap.ui.getCore().byId("progressSlider").setVisible(
 									true);
-							this.getView().byId("progressSlider")
+							sap.ui.getCore().byId("progressSlider")
 									.addStyleClass("dynProgressSlider");
 							break;
 						}
