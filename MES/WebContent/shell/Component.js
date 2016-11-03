@@ -68,9 +68,9 @@ airbus.mes.shell.Component.prototype.createContent = function() {
 			break;
 		default :
 			var sLanguageText = "English";
+			this.oView.getController().updateUrlForLanguage(sLanguageText);
 			break;
 		};
-		
 	    for(var i=0; i<aItems.length; i++) {
 	        if (aItems[i].getText() === sLanguageText) {
 	        	this.oView.byId("SelectLanguage").setSelectedItemId(aItems[i].getId());

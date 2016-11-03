@@ -19,7 +19,7 @@
 							items="{ path : 'stationTrackerShift>/' }" enabled="false"	>
 							<core:Item key="{stationTrackerShift>shiftID}" text="{stationTrackerShift>shiftName}" />
 						</Select>
-						<Button id="ProductionButton" text="{StationTrackerI18n>ProductionGroupAll}"
+						<Button id="ProductionButton" text="{StationTrackerI18n>ProductionGroup} : {StationTrackerI18n>StatusAll}"
 							type="Transparent" class="whiteColor whiteButton" press="onProductionGroupPress" />
 						<Select id="selectUser" change="selectUser"
 							class="sapUiTinyMarginBeginEnd pageHeader pageHeaderBlue" items="{ path : 'ressourcePoolModel>/Rowsets/Rowset/0/Row' }">

@@ -369,7 +369,7 @@ airbus.mes.stationtracker.ShiftManager = {
 	},
 	setCalendarDate : function (oDate){
 		var oCalendar = sap.ui.getCore().byId("datePickerFragment--oCalendar");
-		if(oCalendar.getAggregation("selectedDates")[0]) {
+		if(oCalendar && oCalendar.getAggregation("selectedDates")[0]) {
 			oCalendar.getAggregation("selectedDates")[0].setStartDate(oDate);			
 		}
 	},

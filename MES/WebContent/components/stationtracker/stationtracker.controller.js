@@ -836,6 +836,11 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		
 	},
 	
+	
+	/**
+     * function about date picker fragment
+     */	
+	
 	//Fired when Calendar Button is clicked
 	//Open datePicker XML fragment
 	datePick : function() {
@@ -843,10 +848,6 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			airbus.mes.stationtracker.datePicker = sap.ui.xmlfragment("datePickerFragment","airbus.mes.stationtracker.datePickerFragment", airbus.mes.stationtracker.oView.getController());
 			airbus.mes.stationtracker.oView.oCalendar = airbus.mes.stationtracker.datePicker.getContent()[0];
 		}
-//		Set minDate and maxDate depending the shift data on scheduler
-		var oCalendar = sap.ui.getCore().byId("datePickerFragment--oCalendar");
-//		oCalendar.setMinDate(airbus.mes.stationtracker.GroupingBoxingManager.minDate);
-//		oCalendar.setMaxDate(airbus.mes.stationtracker.GroupingBoxingManager.maxDate);		
 		airbus.mes.stationtracker.datePicker.openBy(airbus.mes.stationtracker.oView.byId("dateButton"));
 	},
 	
@@ -862,8 +863,10 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		var dSeletectedDate = airbus.mes.stationtracker.oView.oCalendar.getSelectedDates()[0].getStartDate();
 		if(dSeletectedDate < airbus.mes.stationtracker.GroupingBoxingManager.minDate
 		  || dSeletectedDate > airbus.mes.stationtracker.GroupingBoxingManager.maxDate ) {
+//			If we are out of range, we display a message and don't close the date picker
 			sap.m.MessageToast.show("Selected date out of range");
 		} else {
+//			We feed the scheduler with the new selected date
 			airbus.mes.stationtracker.oView.getController().updateDateLabel(airbus.mes.stationtracker.oView.oCalendar);
 			airbus.mes.stationtracker.datePicker.close();
 			scheduler.updateView(airbus.mes.stationtracker.oView.oCalendar.getSelectedDates()[0].getStartDate());
