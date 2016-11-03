@@ -35,6 +35,9 @@ airbus.mes.operationdetail.viewDisruption.Component.prototype.createContent = fu
 		this.oView.setModel(i18nModel, "i18nModel");	
 		airbus.mes.operationdetail.viewDisruption.oView = this.oView
 		
+
+		this.oView.setModel(sap.ui.getCore().getModel("operationDisruptionsModel"),"operationDisruptionsModel");
+		
 		
 		return this.oView;
 		
