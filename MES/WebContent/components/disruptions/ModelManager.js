@@ -155,28 +155,7 @@ airbus.mes.disruptions.ModelManager = {
 
 		});
 
-	},
-	
-	messageShow : function(text) {
-        sap.m.MessageToast
-        .show(
-        		text,
-                      {
-                             duration : 3000,
-                             width : "25em",
-                             my : "center center",
-                             at : "center center",
-                             of : window,
-                             offset : "0 0",
-                             collision : "fit fit",
-                             onClose : null,
-                             autoClose : true,
-                             animationTimingFunction : "ease",
-                             animationDuration : 1000,
-                             closeOnBrowserNavigation : true
-                      });
-               
-  }
+	}
 
 };
 

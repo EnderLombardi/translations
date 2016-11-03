@@ -52,6 +52,8 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
         	oBinding.filter([new sap.ui.model.Filter("Status", "EQ", sValue)]);
         else
         	oBinding.filter([]);
+        
+        airbus.mes.disruptiontracker.ModelManager.fixNoDataRow();// Remove last column
 	},
 	
 	

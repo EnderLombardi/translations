@@ -84,15 +84,10 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			airbus.mes.stationtracker.productionGroupPopover = sap.ui.xmlfragment("productionGroupPopover","airbus.mes.stationtracker.productionGroupPopover", airbus.mes.stationtracker.oView.getController());
 			airbus.mes.stationtracker.productionGroupPopover.addStyleClass("alignTextLeft");
 			oView.addDependent(airbus.mes.stationtracker.productionGroupPopover);
-			//var oModel = new sap.ui.model.json.JSONModel(sap.ui.getCore().getModel("productionGroupModel").getData().Rowsets.Rowset[0].Row) ;
 			
 			airbus.mes.stationtracker.productionGroupPopover.setModel(sap.ui.getCore().getModel("productionGroupModel"), "productionGroupModel");
 		
 		}
-
-	
-
-//		airbus.mes.stationtracker.productionGroupPopover.getModel("productionGroupModel").refresh(true);
 
 		var temp = [];
 		var binding = sap.ui.getCore().byId("productionGroupPopover--myList").getBinding("items");
@@ -110,11 +105,6 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		
 		binding.filter(Filter);				
 		
-		
-		
-//		airbus.mes.stationtracker.productionGroupPopover.getModel("productionGroupModel").setData(oData);
-//		airbus.mes.stationtracker.productionGroupPopover.getModel("productionGroupModel").refresh(true);
-
 		// delay because addDependent will do a async rerendering and the popover will immediately close without it
 		var oButton = oEvent.getSource();
 		jQuery.sap.delayedCall(0, this, function () {
@@ -431,14 +421,14 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 				sProdGroup += el.mProperties.label + ",";
 				sProdGroupMii += el.mProperties.label + "','";
 			}) 
-		sProdGroup = sProdGroup.slice(0,-1);
-		airbus.mes.settings.ModelManager.prodGroup = sProdGroupMii.slice(0,-3);
+			sProdGroup = sProdGroup.slice(0,-1);
+			airbus.mes.settings.ModelManager.prodGroup = sProdGroupMii.slice(0,-3);
 		} else {
 				
-				sProdGroup += airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("StatusAll");
+			sProdGroup += airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("StatusAll");
 				
-				airbus.mes.settings.ModelManager.prodGroup ="%";
-			}
+			airbus.mes.settings.ModelManager.prodGroup ="%";
+		}
 
 		
 		airbus.mes.stationtracker.oView.byId("ProductionButton").setText(sProdGroup);
@@ -808,37 +798,6 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			
 	},
 	showDisruption : function(oEvent){
-	/*	// Place the disruption tracker in the custom control 
-		if (airbus.mes.stationtracker.disruptions === undefined || airbus.mes.stationtracker.disruptions.oView === undefined){
-			jQuery.sap.registerModulePath("airbus.mes.stationtracker.disruptions", "../components/stationtracker/disruptions");
-			airbus.mes.stationtracker.disruptions = sap.ui.getCore().createComponent({
-				name : "airbus.mes.stationtracker.disruptions"         
-			});
-		}
-		
-		//if(this.getView().byId("disruptNotifications").getState() == false){
-		var div = $( "#stationTrackerView--disruptNotifications" );
-	    
-	    var height = div.height();
-	    
-	    div.css({
-	        overflow: "hidden",
-	        marginTop: height,
-	        height: 0
-	    }).animate({
-	        marginTop: 0,
-	        height: height
-	    }, 500, function () {
-	        $(this).css({
-	            display: "block",
-	            overflow: "",
-	            height: "",
-	            marginTop: ""
-	        });
-	    });
-
-			// Add Disruptions Component in Station Tracker
-			this.getView().byId("disruptNotifications").addItem(airbus.mes.stationtracker.disruptions.oView); */
 		
 		airbus.mes.shell.util.navFunctions.disruptionTracker();
 	},
@@ -884,6 +843,10 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			airbus.mes.stationtracker.datePicker = sap.ui.xmlfragment("datePickerFragment","airbus.mes.stationtracker.datePickerFragment", airbus.mes.stationtracker.oView.getController());
 			airbus.mes.stationtracker.oView.oCalendar = airbus.mes.stationtracker.datePicker.getContent()[0];
 		}
+//		Set minDate and maxDate depending the shift data on scheduler
+		var oCalendar = sap.ui.getCore().byId("datePickerFragment--oCalendar");
+//		oCalendar.setMinDate(airbus.mes.stationtracker.GroupingBoxingManager.minDate);
+//		oCalendar.setMaxDate(airbus.mes.stationtracker.GroupingBoxingManager.maxDate);		
 		airbus.mes.stationtracker.datePicker.openBy(airbus.mes.stationtracker.oView.byId("dateButton"));
 	},
 	
@@ -895,10 +858,17 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	},
 	
 	dateSelected : function(){
-		airbus.mes.stationtracker.oView.getController().updateDateLabel(airbus.mes.stationtracker.oView.oCalendar);
-		airbus.mes.stationtracker.datePicker.close();
-		scheduler.updateView(airbus.mes.stationtracker.oView.oCalendar.getSelectedDates()[0].getStartDate());
-		airbus.mes.stationtracker.ModelManager.selectMyShift();
+//		Check if current selected date corresponds to range of shift date
+		var dSeletectedDate = airbus.mes.stationtracker.oView.oCalendar.getSelectedDates()[0].getStartDate();
+		if(dSeletectedDate < airbus.mes.stationtracker.GroupingBoxingManager.minDate
+		  || dSeletectedDate > airbus.mes.stationtracker.GroupingBoxingManager.maxDate ) {
+			sap.m.MessageToast.show("Selected date out of range");
+		} else {
+			airbus.mes.stationtracker.oView.getController().updateDateLabel(airbus.mes.stationtracker.oView.oCalendar);
+			airbus.mes.stationtracker.datePicker.close();
+			scheduler.updateView(airbus.mes.stationtracker.oView.oCalendar.getSelectedDates()[0].getStartDate());
+			airbus.mes.stationtracker.ModelManager.selectMyShift();
+		}
 	},
 	
 	updateDateLabel : function(oCalendar){
