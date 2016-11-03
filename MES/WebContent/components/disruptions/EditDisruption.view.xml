@@ -1,0 +1,259 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" controllerName="airbus.mes.disruptions.EditDisruption"
+	xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml">
+
+	<Page enableScrolling="false" showHeader="false" height="100%">
+		<FlexBox width="100%" height="100%" justifyContent="Center"
+			direction="Column">
+			<items>
+				<f:Form id="editDisruptionForm" editable="true"
+					class="sapUiMediumMargin" visible="true">
+					<f:layout>
+						<f:ResponsiveGridLayout span="L12 M12 S12" />
+					</f:layout>
+					<f:formContainers>
+						<f:FormContainer>
+							<f:formElements>
+
+								<f:FormElement>
+
+									<Title text=" " titleStyle="H3">
+										<layoutData>
+											<l:GridData span="L12 M12 S12" />
+										</layoutData>
+									</Title>
+
+
+								</f:FormElement>
+
+								<f:FormElement>
+									<f:label>
+										<Label text="Category">
+											<layoutData>
+												<l:GridData span="L3 M6 S12" />
+											</layoutData>
+										</Label>
+									</f:label>
+									<f:fields>
+										<Select id="selectCategory"
+											items="{disruptionCustomData>/Rowsets/Rowset/0/Row}"
+											 change="onSelectionChange">
+											<items>
+												<core:Item text="{disruptionCustomData>Category}"
+													key="{disruptionCustomData>MessageType}" />
+											</items>
+											<layoutData>
+												<l:GridData span="L3 M6 S12" />
+											</layoutData>
+										</Select>
+									</f:fields>
+								</f:FormElement>
+
+
+								<f:FormElement>
+									<f:label>
+										<Label text="Gravity">
+											<layoutData>
+												<l:GridData span="L3 M6 S12" />
+											</layoutData>
+										</Label>
+									</f:label>
+									<f:fields>
+										<Select id="gravity" selectedKey="Blocked">
+											<items>
+												<core:Item text="Blocked" key="1" />
+												<core:Item text="Blocked" key="2" />
+												<core:Item text="Blocked" key="3" />
+											</items>
+											<layoutData>
+												<l:GridData span="L3 M6 S6" />
+											</layoutData>
+
+										</Select>
+									</f:fields>
+								</f:FormElement>
+
+								<f:FormElement>
+									<f:label>
+										<Label text="Reason Tree">
+											<layoutData>
+												<l:GridData span="L3 M6 S12" linebreak="true" />
+											</layoutData>
+										</Label>
+									</f:label>
+									<f:fields>
+										<Select id="selectReasonTree"
+											items="{disruptionCustomData>/Rowsets/Rowset/0/Row}" change="onSelectionChange">
+											<items>
+												<core:Item text="{disruptionCustomData>Reason}" key="{disruptionCustomData>Reason}" />
+											</items>
+											<layoutData>
+												<l:GridData span="L3 M6 S12" />
+											</layoutData>
+
+										</Select>
+									</f:fields>
+								</f:FormElement>
+
+								<f:FormElement>
+									<f:label>
+										<Label text="Responsible Support">
+											<layoutData>
+												<l:GridData span="L3 M6 S12" />
+											</layoutData>
+										</Label>
+									</f:label>
+									<f:fields>
+										<Select id="selectResponsible"
+											items="{disruptionCustomData>/Rowsets/Rowset/0/Row}" change="onSelectionChange">
+											<items>
+												<core:Item text="{disruptionCustomData>ResponsibleGroup}" key="{disruptionCustomData>ResponsibleGroup}" />
+											</items>
+											<layoutData>
+												<l:GridData span="L3 M6 S12" />
+											</layoutData>
+										</Select>
+									</f:fields>
+								</f:FormElement>
+
+
+								<f:FormElement>
+									<f:label>
+										<Label text="Root Cause">
+											<layoutData>
+												<l:GridData span="L3 M3 S12" linebreak="true" />
+											</layoutData>
+										</Label>
+									</f:label>
+									<f:fields>
+										<Select id="selectRootCause" selectedKey=""
+											items="{disruptionCustomData>/Rowsets/Rowset/0/Row}" change="onSelectionChange">
+											<items>
+												<core:Item text="Team Leader" key="TeamLeader" />
+											</items>
+											<layoutData>
+												<l:GridData span="L9 M9 S12" />
+											</layoutData>
+										</Select>
+									</f:fields>
+								</f:FormElement>
+
+								<f:FormElement>
+									<f:label>
+										<Label text="Open Date">
+											<layoutData>
+												<l:GridData span="L3 M6 S12" linebreak="true" />
+											</layoutData>
+										</Label>
+									</f:label>
+									<f:fields>
+										<DatePicker id="openDate" displayFormat="long"
+											change="handleChange">
+											<layoutData>
+												<l:GridData span="L3 M6 S12" />
+											</layoutData>
+										</DatePicker>
+									</f:fields>
+								</f:FormElement>
+
+								<f:FormElement>
+									<f:label>
+										<Label text="Expected">
+											<layoutData>
+												<l:GridData span="L3 M6 S12" />
+											</layoutData>
+										</Label>
+									</f:label>
+									<f:fields>
+										<DatePicker id="expectedDate" valueFormat="yyyy-MM-dd"
+											displayFormat="long" change="handleChange">
+											<layoutData>
+												<l:GridData span="L3 M6 S12" />
+											</layoutData>
+										</DatePicker>
+									</f:fields>
+								</f:FormElement>
+
+								<f:FormElement label="Time">
+									<f:label>
+										<Label text="Time">
+											<layoutData>
+												<l:GridData span="L3 M6 S12" linebreak="true" />
+											</layoutData>
+										</Label>
+									</f:label>
+									<f:fields>
+										<TimePicker id="openTime">
+											<layoutData>
+												<l:GridData span="L3 M6 S12" />
+											</layoutData>
+										</TimePicker>
+									</f:fields>
+								</f:FormElement>
+
+								<f:FormElement>
+									<f:label>
+										<Label text="Time">
+											<layoutData>
+												<l:GridData span="L3 M6 S12" />
+											</layoutData>
+										</Label>
+									</f:label>
+									<f:fields>
+										<TimePicker id="expectedTime">
+											<layoutData>
+												<l:GridData span="L3 M6 S12" />
+											</layoutData>
+										</TimePicker>
+									</f:fields>
+								</f:FormElement>
+
+								<f:FormElement>
+									<f:label>
+										<Label text="Time Lost">
+											<layoutData>
+												<l:GridData span="L3 M6 S12" linebreak="true" />
+											</layoutData>
+										</Label>
+									</f:label>
+									<f:fields>
+										<Input placeholder="minutes" id="timeLost" type="Number">
+											<layoutData>
+												<l:GridData span="L3 M6 S12" />
+											</layoutData>
+										</Input>
+									</f:fields>
+								</f:FormElement>
+
+								<f:FormElement>
+									<f:label>
+										<Label text=" ">
+											<layoutData>
+												<l:GridData span="L2 M2 S12" linebreak="true" />
+											</layoutData>
+										</Label>
+									</f:label>
+									<TextArea placeholder="Add comment.." id="comment"
+										valueLiveUpdate="true" rows="10">
+										<layoutData>
+											<l:GridData span="L10 M10 S12" />
+										</layoutData>
+									</TextArea>
+								</f:FormElement>
+
+							</f:formElements>
+						</f:FormContainer>
+					</f:formContainers>
+				</f:Form>
+			</items>
+		</FlexBox>
+		<footer>
+			<Bar design="" class="createDisruptionFooter">
+				<contentRight>
+					<Button text="Cancel" press="onCancelEditDisruption" />
+					<Button text="Edit" class="btnColor" press="onEditDisrupution" />
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</core:View>
