@@ -36,11 +36,11 @@ sap.ui.controller("airbus.mes.settings.Settings",
 //	},
 //			
 			selectTree : {
-//				id : "headTextProgram",
-//				type : "select",
-//				path : "program",
-//				attr : "program",
-//				childs : [ {
+				id : "headTextProgram",
+				type : "select",
+				path : "prog",
+				attr : "program",
+				childs : [ {
 					id : "selectLine",
 					type : "select",
 					path : "line",
@@ -50,18 +50,22 @@ sap.ui.controller("airbus.mes.settings.Settings",
 						type : "select",
 						path : "station",
 						attr : "station",
-						childs : []
-					}, {
-						id : "selectMSN",
-						type : "select",
-						path : "msn",
-						childs : []
-					}, {
-						id : "Return",
-						type : "Return",
-						childs : []
-					} ]
-			//	} ]
+						childs : [ {
+							id : "selectMSN",
+							type : "select",
+							path : "msn",
+							currentmsn : "Current_MSN",
+							
+							childs : []
+						},
+						{
+							id : "Return",
+							type : "Return",
+							childs : []
+						}]
+					}
+						]
+				} ]
 			},
 
 			onAfterRendering : function() {
@@ -170,10 +174,33 @@ sap.ui.controller("airbus.mes.settings.Settings",
 					}
 					
 					if (val) {
+											
 						var oFilter = new sap.ui.model.Filter( oElement.path, "EQ", val);
 						aFilters.push(oFilter);
+						
+						
+						if ( airbus.mes.settings.ModelManager.currentMsnSelected && oElement.id === "selectStation") {
+							
+							var sCurrentMsn = "";
+							var oModel = sap.ui.getCore().getModel("plantModel").getProperty("/Rowsets/Rowset/0/Row");
+							
+							oModel.filter(function (el) {
+								  return el.program ===  "toto" &&
+								         el.site === airbus.mes.settings.ModelManager.site &&
+								  		 el.line >= 500 &&
+								         el.station >=2 &&
+								         el.Current_MSN != "---"
+								});
+							if ( oModel.length > 0 ) {
+																
+								aFilters.push( new sap.ui.model.Filter( oElement.currentmsn, "EQ", oModel[0].Current_MSN));
+							
+							}
+													
+						}
+						
 					}
-					;
+				
 					oElement = oElement.parent;
 				}
 				;
@@ -191,10 +218,7 @@ sap.ui.controller("airbus.mes.settings.Settings",
 				});
 				aFilters.push(duplicatesFilter);
 				if (this.getView().byId(oTree.id).getBinding("items"))
-					this.getView().byId(oTree.id).getBinding("items")
-							.filter(
-									new sap.ui.model.Filter(aFilters,
-											true));
+					this.getView().byId(oTree.id).getBinding("items").filter(new sap.ui.model.Filter(aFilters,true));
 
 				oTree.childs.forEach(function(oElement) {
 					that.filterField(oElement);
@@ -203,7 +227,11 @@ sap.ui.controller("airbus.mes.settings.Settings",
 			setEnabledCombobox : function(fProgram, fLine, fStation, fMsn) {
 				this.getView().byId("selectLine").setEnabled(fLine);
 				this.getView().byId("selectStation").setEnabled(fStation);
+				if ( !airbus.mes.settings.ModelManager.currentMsnSelected ) {
+			
 				this.getView().byId("selectMSN").setEnabled(fMsn);
+			
+			}
 //				View1--selectLine
 			},
 			/**
@@ -215,7 +243,7 @@ sap.ui.controller("airbus.mes.settings.Settings",
 							
 				var site = e.getParameters().item.getText();
 				var fIndex = oModel.map(function(x) {return x.site_desc; }).indexOf( site );
-				
+				// get real value of site making the link betwen the siteModel and from mii and local site
 				airbus.mes.settings.ModelManager.site = sap.ui.getCore().getModel("siteModel").getProperty("/Rowsets/Rowset/0/Row/" + fIndex + "/site");
 				var oData = this.getView().getModel("region").oData;
 
@@ -319,6 +347,17 @@ sap.ui.controller("airbus.mes.settings.Settings",
 //				} else {
 //					this.setEnabledCombobox(true, false, false, false);
 //				}
+			},
+			/**
+		     * Select automatically msn with the flag 
+		     */
+			selectCurrentMsn : function(oEvt) {
+				
+				var fSelected = oEvt.getSource().getSelected();
+				airbus.mes.settings.ModelManager.currentMsnSelected = fSelected;
+				
+				this.getView().byId("selectMSN").setEnabled(!fSelected);
+				
 			}
 			
 		});
