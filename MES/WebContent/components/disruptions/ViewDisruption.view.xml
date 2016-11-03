@@ -40,7 +40,7 @@
 											</f:label>
 											<f:fields>
 
-												<Text text="{operationDisruptionsModel>Gravity}">
+												<Text text="{parts: [ {path: 'operationDisruptionsModel>Status'}, {path: 'operationDisruptionsModel>Gravity'}, {path: 'operationDisruptionsModel>Severity'} ], formatter: 'airbus.mes.disruptions.Formatter.setText'}">
 													<layoutData>
 														<l:GridData span="L3 M3 S12" />
 													</layoutData>
