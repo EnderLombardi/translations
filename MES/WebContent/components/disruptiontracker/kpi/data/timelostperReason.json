@@ -1,5 +1,5 @@
 {
-	"businessData1" : [ 
+	"TimeLostperReasonData" : [ 
 		{"Reason": "Duereason", "revenue": 10, "Time Lost": 1},
 		{"Reason": "Duereason1", "revenue": 33, "Time Lost": 10},
 		{"Reason": "Duereason2", "revenue": 48, "Time Lost": 1},

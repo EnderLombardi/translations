@@ -1,5 +1,5 @@
 {
-	"businessData" : [ 
+	"TimeLostperCategoryData" : [ 
 		{"Category": "MY-RCDCS", "revenue": 10, "Time Lost": 1},
 		{"Category": "MY-RCDCS2", "revenue": 33, "Time Lost": 10},
 		{"Category": "MY-RCDCS3", "revenue": 48, "Time Lost": 1},

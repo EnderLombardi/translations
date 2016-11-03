@@ -107,5 +107,36 @@ airbus.mes.shell.ModelManager = {
 			for ( var m in o)
 				xml += toXml(o[m], m, "");
 			return tab ? xml.replace(/\t/g, tab) : xml.replace(/\t|\n/g, "");
-		}
+		},
+
+		/***************************************************************************
+		 * Replace URL Parameters
+		 **************************************************************************/
+		replaceURI : function(sURI, sFrom, sTo) {
+			return sURI.replace(sFrom, encodeURIComponent(sTo));
+		},
+		
+		/********************************
+		 * Show message Toast
+		 */
+		messageShow : function(text) {
+	        sap.m.MessageToast
+	        .show(
+	        		text,
+	                      {
+	                             duration : 3000,
+	                             width : "25em",
+	                             my : "center center",
+	                             at : "center center",
+	                             of : window,
+	                             offset : "0 0",
+	                             collision : "fit fit",
+	                             onClose : null,
+	                             autoClose : true,
+	                             animationTimingFunction : "ease",
+	                             animationDuration : 1000,
+	                             closeOnBrowserNavigation : true
+	                      });
+	               
+	  }
 }
