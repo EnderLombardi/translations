@@ -273,6 +273,12 @@ sap.ui
 											this.getView().getModel("i18n")
 													.getProperty("confirm"));
 								this.setProgressScreenBtn(false,false);
+								sap.ui.getCore().getModel("operationDetailModel")
+								.setProperty(
+										"/Rowsets/Rowset/0/Row/0/status",
+										"COMPLETED")
+										sap.ui.getCore().getModel("operationDetailModel")
+								.refresh();
 								}
 							else {
 								var percent = sap.ui.getCore().byId(
