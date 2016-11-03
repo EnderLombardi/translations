@@ -13,7 +13,7 @@
 			</HBox>
 			<l:Grid defaultSpan="L12 M12 S12" class="proressSliderGrid sapUiLargeMarginTop">
 
-				<Slider id="progressSliderDisplay" max="100" min="0"
+				<Slider id="progressSliderDisplay" max="100" min="0" class="sliderDisplayStatus"
 					showHandleTooltip="true" width="100%"
 					value="{parts: ['operationDetailModel>/Rowsets/Rowset/0/Row/0/status', 'operationDetailModel>/Rowsets/Rowset/0/Row/0/progress'],formatter: 'airbus.mes.operationdetail.Formatter.sliderStatusValue' }"
 					enabled="false">
