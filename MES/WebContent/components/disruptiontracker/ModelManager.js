@@ -31,7 +31,7 @@ airbus.mes.disruptiontracker.ModelManager = {
 	
 	onDisruptionsLoad: function(){
 
-		this.fixNoDataRow();
+		airbus.mes.disruptiontracker.ModelManager.fixNoDataRow();
 		
 		airbus.mes.disruptiontracker.oView.setBusy(false); //Remove Busy Indicator
 	},
