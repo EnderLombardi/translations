@@ -946,11 +946,12 @@ background-color: #0085AD !important;
 	text-align: right !important;
     font-size: 0.8vw;
     vertical-align: middle;
-    display: inline-block;
+    display: baseline;
 }
 
 #stationTrackerView--kpiHeaderContent .takt_kpi_value {
-
+    display: inline-block;
+    vertical-align: baseline;
 }
 
 #stationTrackerView--kpiHeaderContent .KPITaktChartBlueText {
