@@ -22,7 +22,7 @@ airbus.mes.disruptiontracker.detail.Component.prototype.createContent = function
 	
 	if (airbus.mes.disruptiontracker.detail.oView === undefined) {
 //		Initialization
-	//	airbus.mes.disruptions.ModelManager.init(sap.ui.getCore());
+		airbus.mes.disruptions.ModelManager.init(sap.ui.getCore());
 		
 		// View on XML
 		this.oView = sap.ui.view({

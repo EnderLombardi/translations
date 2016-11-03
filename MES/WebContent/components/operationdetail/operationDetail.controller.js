@@ -186,8 +186,7 @@ sap.ui
 							}
 
 							this.nav
-									.to(airbus.mes.operationdetail.viewDisruption.oView
-											.getId());							
+									.to(airbus.mes.operationdetail.viewDisruption.oView.getId());							
 							break;
 						}
 					},
