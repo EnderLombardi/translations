@@ -4,7 +4,7 @@
 	<Page enableScrolling="false" showHeader="false">
 		<content>
 			<List id="disrptlist" noDataText="{i18nModel>noDisruptions}"
-				class="disruptionDetail sapUiSmallMarginBottom" items="{path: 'DisruptionDetail>/Rowsets/Rowset/0/Row'}">
+				class="disruptionDetail sapUiSmallMarginBottom" items="{path: 'operationDisruptionsModel>/Rowsets/Rowset/0/Row'}">
 
 				<CustomListItem>
 
@@ -12,7 +12,7 @@
 						expand="handleDisruptionPanelExpand">
 						<headerToolbar>
 							<Toolbar>
-								<Title text="{DisruptionDetail>Operation}" class="panelTitleText" />
+								<Title text="{operationDisruptionsModel>Subject}" class="panelTitleText" />
 								<ToolbarSpacer />
 								<Button class="decoratePanelBtn" text="Edit" design="Transparent"
 									icon="sap-icon://edit" />
@@ -22,7 +22,7 @@
 							</Toolbar>
 						</headerToolbar>
 
-						<f:Form class="formDisruptionDetail" editable="true">
+						<f:Form class="formoperationDisruptionsModel" editable="true">
 							<f:layout>
 								<f:ResponsiveGridLayout span="L12 M12 S12" />
 							</f:layout>
@@ -40,7 +40,7 @@
 											</f:label>
 											<f:fields>
 
-												<Text text="{DisruptionDetail>Gravity}">
+												<Text text="{operationDisruptionsModel>Gravity}">
 													<layoutData>
 														<l:GridData span="L3 M3 S12" />
 													</layoutData>
@@ -59,7 +59,7 @@
 											</f:label>
 											<f:fields>
 
-												<Text text="{DisruptionDetail>Category}">
+												<Text text="{operationDisruptionsModel>Category}">
 													<layoutData>
 														<l:GridData span="L4 M4 S12" />
 													</layoutData>
@@ -77,7 +77,7 @@
 											</f:label>
 											<f:fields>
 
-												<Text text="{DisruptionDetail>ResponsibleGroup}">
+												<Text text="{operationDisruptionsModel>ResponsibleGroup}">
 													<layoutData>
 														<l:GridData span="L3 M3 S12" />
 													</layoutData>
@@ -96,7 +96,7 @@
 											</f:label>
 											<f:fields>
 
-												<Text text="{DisruptionDetail>Reason}">
+												<Text text="{operationDisruptionsModel>Reason}">
 													<layoutData>
 														<l:GridData span="L4 M4 S12" />
 													</layoutData>
@@ -115,7 +115,7 @@
 											<f:fields>
 
 												<Text
-													text="{DisruptionDetail>OpeningTime}">
+													text="{operationDisruptionsModel>OpeningTime}">
 													<layoutData>
 														<l:GridData span="L3 M3 S12" />
 													</layoutData>
@@ -135,7 +135,7 @@
 											</f:label>
 											<f:fields>
 												<Text
-													text="{DisruptionDetail>FixedByTime}">
+													text="{operationDisruptionsModel>FixedByTime}">
 													<layoutData>
 														<l:GridData span="L4 M4 S12" />
 													</layoutData>
@@ -153,7 +153,7 @@
 												</Label>
 											</f:label>
 											<f:fields>
-												<Text text="{DisruptionDetail>Status}">
+												<Text text="{operationDisruptionsModel>Status}">
 													<layoutData>
 														<l:GridData span="L3 M3 S12" />
 													</layoutData>

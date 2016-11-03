@@ -4,7 +4,7 @@ jQuery.sap.declare("airbus.mes.disruptions.ModelManager")
 
 airbus.mes.disruptions.ModelManager = {
 
-
+	urlModel : undefined,
 	queryParams : jQuery.sap.getUriParameters(),
 
 	init : function(core) {
@@ -35,7 +35,6 @@ airbus.mes.disruptions.ModelManager = {
 		});
 
 		this.core.setModel(new sap.ui.model.json.JSONModel(), "disruptionCustomData");
-		this.core.setModel(new sap.ui.model.json.JSONModel(), "DisruptionDetail");
 		
 		this.loadDisruptionCustomData();
 
