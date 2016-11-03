@@ -206,7 +206,6 @@ airbus.mes.disruptions.ModelManager = {
 	getUrlOnEscalate : function(msgRef) {
 
 		var urlOnEscalate = this.urlModel.getProperty("urlOnEscalate");
-
 		return urlOnEscalate;
 	}
 };

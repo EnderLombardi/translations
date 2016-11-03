@@ -183,7 +183,7 @@
 										</Label>
 									</f:label>
 									<f:fields>
-										<TimePicker id="openTime">
+										<TimePicker id="openTime" displayFormat="HH:mm:ss" valueFormat="HH:mm:ss">
 											<layoutData>
 												<l:GridData span="L3 M6 S12" />
 											</layoutData>
@@ -200,7 +200,7 @@
 										</Label>
 									</f:label>
 									<f:fields>
-										<TimePicker id="expectedTime">
+										<TimePicker id="expectedTime" displayFormat="HH:mm:ss" valueFormat="HH:mm:ss">
 											<layoutData>
 												<l:GridData span="L3 M6 S12" />
 											</layoutData>
