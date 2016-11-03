@@ -42,7 +42,6 @@ airbus.mes.operationdetail.Formatter = {
 		}
 
 		if (progress == "0.0" || progress == "0" || progress == 0) {
-			//this.addStyleClass("displaySliderNone");
 			this.setVisible(false);
 			this.setProperty("max", 0);
 			this.setProperty("value", 0);
@@ -86,7 +85,7 @@ airbus.mes.operationdetail.Formatter = {
 		}
 
 	},
-	sliderStatusValue:function(status, progress){
+	/*sliderStatusValue:function(status, progress){
 		if (typeof progress == "undefined")
 			return;
 		this.removeStyleClass("sliderCompletedColor");
@@ -103,7 +102,7 @@ airbus.mes.operationdetail.Formatter = {
 
 		}
 
-	},
+	},*/
 	
 	//Reasoncode is disabled when operation is not started or paused
 	

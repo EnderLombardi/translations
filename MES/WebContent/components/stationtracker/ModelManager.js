@@ -528,7 +528,7 @@ airbus.mes.stationtracker.ModelManager = {
                                          "wo_no" : oModel[0].SHOP_ORDER_BO.split(",")[1],
                                          "workcenter" : oModel[0].PP_STATION.split(",")[1],
                                          "status" : sStatus,
-                                         "progress" : progress,
+                                         "progress" : parseInt(progress),
                                          "time_spent" : airbus.mes.stationtracker.util.Formatter.msToTime(oModel[0].PROGRESS),
                                          "planned_start_time" : "TimeUnavailable",
                                          "planned_end_time" : "TimeUnavailable",
