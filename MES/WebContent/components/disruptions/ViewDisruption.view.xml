@@ -40,7 +40,7 @@
 											</f:label>
 											<f:fields>
 
-												<Text text="{operationDisruptionsModel>Gravity}">
+												<Text text="{parts: [ {path: 'operationDisruptionsModel>Status'}, {path: 'operationDisruptionsModel>Gravity'}, {path: 'operationDisruptionsModel>Severity'} ], formatter: 'airbus.mes.disruptions.Formatter.setText'}">
 													<layoutData>
 														<l:GridData span="L3 M3 S12" />
 													</layoutData>
@@ -114,8 +114,7 @@
 											</f:label>
 											<f:fields>
 
-												<Text
-													text="{operationDisruptionsModel>OpeningTime}">
+												<Text text="{operationDisruptionsModel>OpeningTime}">
 													<layoutData>
 														<l:GridData span="L3 M3 S12" />
 													</layoutData>
@@ -134,8 +133,7 @@
 												</Label>
 											</f:label>
 											<f:fields>
-												<Text
-													text="{operationDisruptionsModel>FixedByTime}">
+												<Text text="{operationDisruptionsModel>FixedByTime}">
 													<layoutData>
 														<l:GridData span="L4 M4 S12" />
 													</layoutData>
@@ -144,7 +142,7 @@
 										</f:FormElement>
 
 
-										<f:FormElement>
+										<!-- <f:FormElement>
 											<f:label>
 												<Label class="detailLabels" text="{i18nModel>status}">
 													<layoutData>
@@ -159,27 +157,36 @@
 													</layoutData>
 												</Text>
 											</f:fields>
-										</f:FormElement>
+										</f:FormElement> -->
 
 									</f:formElements>
 								</f:FormContainer>
 							</f:formContainers>
 						</f:Form>
 
+						<Text text="{i18nModel>status} : {operationDisruptionsModel>Status}" />
+
 						<Panel id="commentBox" visible="false">
 
 							<VBox width="79%">
-								<TextArea placeholder="Add Comments..." width="100%" />
+								<TextArea id="commentArea" placeholder="{i18nModel>addCommentPlaceholder}"
+									width="100%" />
 
-									<Button text="{i18nModel>submitComment}" press="showCommentBox"
+								<HBox>
+									<Button text="{i18nModel>submitComment}" press="submitComment"
 										class="sapUiSmallMarginEnd" width="12rem" />
+
+									<Button text="{i18nModel>cancelComment}" press="hideCommentBox"
+										class="sapUiSmallMarginEnd" width="12rem" />
+								</HBox>
+								
 							</VBox>
 
 						</Panel>
 
 						<Toolbar class="barcolor">
 							<ToolbarSpacer />
-							<Button class="decoratePanelBtn" text="{i18nModel>addComment}"
+							<Button id="addComment" class="decoratePanelBtn" text="{i18nModel>addComment}"
 								press="showCommentBox" design="Transparent" icon="sap-icon://comment" />
 							<Button class="decoratePanelBtn" text="{i18nModel>acknowledge}"
 								design="Transparent" icon="sap-icon://to-be-reviewed" />

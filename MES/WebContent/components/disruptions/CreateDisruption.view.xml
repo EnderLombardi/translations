@@ -28,7 +28,7 @@
 
 								<f:FormElement>
 									<f:label>
-										<Label text="Category">
+										<Label text="{i18nModel>Category}">
 											<layoutData>
 												<l:GridData span="L3 M6 S12" />
 											</layoutData>
@@ -37,7 +37,7 @@
 									<f:fields>
 										<Select id="selectCategory"
 											items="{disruptionCustomData>/Rowsets/Rowset/0/Row}"
-											 change="onSelectionChange">
+											 change="onSelectionChange" selectedKey="" forceSelection="false">
 											<items>
 												<core:Item text="{disruptionCustomData>Category}"
 													key="{disruptionCustomData>MessageType}" />
@@ -52,18 +52,18 @@
 
 								<f:FormElement>
 									<f:label>
-										<Label text="Gravity">
+										<Label text="{i18nModel>gravity}">
 											<layoutData>
 												<l:GridData span="L3 M6 S12" />
 											</layoutData>
 										</Label>
 									</f:label>
 									<f:fields>
-										<Select id="gravity" selectedKey="Blocked">
+										<Select id="gravity" selectedKey="1">
 											<items>
-												<core:Item text="Blocked" key="1" />
-												<core:Item text="Blocked" key="2" />
-												<core:Item text="Blocked" key="3" />
+												<core:Item text="{i18nModel>NotBlocked}" key="1" />
+												<core:Item text="{i18nModel>Disturbed}" key="2" />
+												<core:Item text="{i18nModel>Blocked}" key="3" />
 											</items>
 											<layoutData>
 												<l:GridData span="L3 M6 S6" />
@@ -75,7 +75,7 @@
 
 								<f:FormElement>
 									<f:label>
-										<Label text="Reason Tree">
+										<Label text="{i18nModel>ReasonTree}">
 											<layoutData>
 												<l:GridData span="L3 M6 S12" linebreak="true" />
 											</layoutData>
@@ -83,7 +83,7 @@
 									</f:label>
 									<f:fields>
 										<Select id="selectReasonTree"
-											items="{disruptionCustomData>/Rowsets/Rowset/0/Row}" change="onSelectionChange">
+											items="{disruptionCustomData>/Rowsets/Rowset/0/Row}" change="onSelectionChange" selectedKey="" forceSelection="false" >
 											<items>
 												<core:Item text="{disruptionCustomData>Reason}" key="{disruptionCustomData>Reason}" />
 											</items>
@@ -97,7 +97,7 @@
 
 								<f:FormElement>
 									<f:label>
-										<Label text="Responsible Support">
+										<Label text="{i18nModel>ResponsibleSupport}">
 											<layoutData>
 												<l:GridData span="L3 M6 S12" />
 											</layoutData>
@@ -105,7 +105,7 @@
 									</f:label>
 									<f:fields>
 										<Select id="selectResponsible"
-											items="{disruptionCustomData>/Rowsets/Rowset/0/Row}" change="onSelectionChange">
+											items="{disruptionCustomData>/Rowsets/Rowset/0/Row}" change="onSelectionChange" selectedKey="" forceSelection="false">
 											<items>
 												<core:Item text="{disruptionCustomData>ResponsibleGroup}" key="{disruptionCustomData>ResponsibleGroup}" />
 											</items>
@@ -119,14 +119,14 @@
 
 								<f:FormElement>
 									<f:label>
-										<Label text="Root Cause">
+										<Label text="{i18nModel>RootCause}">
 											<layoutData>
 												<l:GridData span="L3 M3 S12" linebreak="true" />
 											</layoutData>
 										</Label>
 									</f:label>
 									<f:fields>
-										<Select id="selectRootCause" selectedKey=""
+										<Select id="selectRootCause" selectedKey="" forceSelection="false"
 											items="{disruptionCustomData>/Rowsets/Rowset/0/Row}" change="onSelectionChange">
 											<items>
 												<core:Item text="Team Leader" key="TeamLeader" />
@@ -140,7 +140,7 @@
 
 								<f:FormElement>
 									<f:label>
-										<Label text="Open Date">
+										<Label text="{i18nModel>OpenDate}">
 											<layoutData>
 												<l:GridData span="L3 M6 S12" linebreak="true" />
 											</layoutData>
@@ -158,7 +158,7 @@
 
 								<f:FormElement>
 									<f:label>
-										<Label text="Expected">
+										<Label text="{i18nModel>expected}">
 											<layoutData>
 												<l:GridData span="L3 M6 S12" />
 											</layoutData>
@@ -174,7 +174,7 @@
 									</f:fields>
 								</f:FormElement>
 
-								<f:FormElement label="Time">
+								<f:FormElement label="{i18nModel>Time}">
 									<f:label>
 										<Label text="Time">
 											<layoutData>
@@ -183,7 +183,7 @@
 										</Label>
 									</f:label>
 									<f:fields>
-										<TimePicker id="openTime">
+										<TimePicker id="openTime" displayFormat="HH:mm:ss" valueFormat="HH:mm:ss">
 											<layoutData>
 												<l:GridData span="L3 M6 S12" />
 											</layoutData>
@@ -193,14 +193,14 @@
 
 								<f:FormElement>
 									<f:label>
-										<Label text="Time">
+										<Label text="{i18nModel>Time}">
 											<layoutData>
 												<l:GridData span="L3 M6 S12" />
 											</layoutData>
 										</Label>
 									</f:label>
 									<f:fields>
-										<TimePicker id="expectedTime">
+										<TimePicker id="expectedTime" displayFormat="HH:mm:ss" valueFormat="HH:mm:ss">
 											<layoutData>
 												<l:GridData span="L3 M6 S12" />
 											</layoutData>
@@ -210,7 +210,7 @@
 
 								<f:FormElement>
 									<f:label>
-										<Label text="Time Lost">
+										<Label text="{i18nModel>TimeLost}">
 											<layoutData>
 												<l:GridData span="L3 M6 S12" linebreak="true" />
 											</layoutData>
@@ -233,7 +233,7 @@
 											</layoutData>
 										</Label>
 									</f:label>
-									<TextArea placeholder="Add comment.." id="comment"
+									<TextArea placeholder="{i18nModel>AddCommentBox}" id="comment"
 										valueLiveUpdate="true" rows="10">
 										<layoutData>
 											<l:GridData span="L10 M10 S12" />

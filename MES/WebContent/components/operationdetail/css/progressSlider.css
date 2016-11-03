@@ -5,13 +5,27 @@
 	overflow:visible !important;
 }
 
-/*progress slider height*/
+/*****************
+*progress slider height on reson code fragment
+****************/
 .progressSlider .sapMSliderInner, .sapMSliderProgress {
     height: 1.1875rem !important;
 }
 
 .progressSlider .sapMSliderHandle {
     height: 2.75rem !important;
+}
+/************
+*progress slider displaying only status
+*************/
+.sliderDisplayStatus {
+     height: 4rem !important;
+}
+.sliderDisplayStatus .sapMSliderHandle {
+     height: 2.8rem !important;
+}
+.sliderDisplayStatus .sapMSliderInner{
+	    height: 1.1875rem !important;
 }
 
 

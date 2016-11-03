@@ -362,14 +362,14 @@ airbus.mes.stationtracker.ShiftManager = {
 		
 		
 //		Feedback the date to the date picker 
-		this.setCalendarDate(d);
+	//	this.setCalendarDate(d);
 		
 		return d;
 
 	},
 	setCalendarDate : function (oDate){
 		var oCalendar = sap.ui.getCore().byId("datePickerFragment--oCalendar");
-		if(oCalendar.getAggregation("selectedDates")[0]) {
+		if(oCalendar && oCalendar.getAggregation("selectedDates")[0]) {
 			oCalendar.getAggregation("selectedDates")[0].setStartDate(oDate);			
 		}
 	},

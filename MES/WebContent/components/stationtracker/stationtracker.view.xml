@@ -19,7 +19,7 @@
 							items="{ path : 'stationTrackerShift>/' }" enabled="false"	>
 							<core:Item key="{stationTrackerShift>shiftID}" text="{stationTrackerShift>shiftName}" />
 						</Select>
-						<Button id="ProductionButton" text="{StationTrackerI18n>ProductionGroupAll}"
+						<Button id="ProductionButton" text="{StationTrackerI18n>ProductionGroup} : {StationTrackerI18n>StatusAll}"
 							type="Transparent" class="whiteColor whiteButton" press="onProductionGroupPress" />
 						<Select id="selectUser" change="selectUser"
 							class="sapUiTinyMarginBeginEnd pageHeader pageHeaderBlue" items="{ path : 'ressourcePoolModel>/Rowsets/Rowset/0/Row' }">
@@ -46,13 +46,14 @@
 							
 								<VBox justifyContent="SpaceAround" width="50%" id="chartId">
 									<VBox>
-										<VBox class="classTaktAdherenceAreaChart">
+										<layout:Grid class="" defaultSpan="L6 M6 S12">
+											<layout:content>
+												<Label text="Plan:650" class="KpiMediumText KPITaktChartBlueText" />
+												<Label text="Actual:550" class="KpiMediumText whiteText KPITaktChartRightText" />
+											</layout:content>
+										</layout:Grid>
 										<custom:TaktAdherenceAreaChart
-											id="takt_adherence_area_chart">
-										</custom:TaktAdherenceAreaChart>
-										<Label text="Plan:650" class="KpiMediumText KPITaktChartBlueText" />
-										<Label text="Actual:550" class="KpiMediumText whiteText KPITaktChartRightText" />
-										</VBox>
+											id="takt_adherence_area_chart"></custom:TaktAdherenceAreaChart>
 										<Label text="Planned Start/End of Assembly" class=" whiteText" />
 	
 										<layout:Grid class="" defaultSpan="L6 M6 S6">
@@ -129,7 +130,7 @@
 							class="contentHeaderCont">
 							<Label text="{StationTrackerI18n>SLBEFFICIENCY}" design="Bold"
 								class="whiteTextHeader sapUiSmallMarginTopBottom" />
-							<VBox width="90%">
+							<VBox width="90%" justifyContent="SpaceAround" height="64%">
 								<micro:ComparisonMicroChart width="100%"
 									id="boxSLBEfficiecy_chart"
 									size="L" colorPalette="#84bd00, #f5f5f5, #fe5000">
@@ -151,8 +152,8 @@
 						<VBox id="boxOpenDisruptions" width="25%" class="contentHeaderCont">
 							<Label text="{StationTrackerI18n>DisruptionOpen/Andon}"
 								design="Bold" width="100%" class="whiteTextHeader sapUiSmallMarginTopBottom" />
-							<HBox>
-								<VBox width="30%">
+							<HBox height="65%">
+								<VBox width="30%" justifyContent="SpaceAround" class="classOpenDisruptionTotal">
 									<Label text="{StationTrackerI18n>DisruptionTotal}" class=" whiteText kpiName"
 										design="Bold" />
 									<Label text="{StationTrackerI18n>Disruption}" class=" whiteText kpiName" />
@@ -163,7 +164,7 @@
 									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/TotalAndon}"
 										class="redText kpiValue kpiErrorValue" design="Bold" />
 								</VBox>
-								<VBox width="30%">
+								<VBox width="35%" class="classOpenDisruptionDetail" justifyContent="SpaceAround">
 									<Label text="{StationTrackerI18n>DisruptionDetails}"
 										class="disruptionText" design="Bold" />
 									<Label text="{StationTrackerI18n>DisruptionsNC}" class="disruptionText" />
@@ -174,7 +175,7 @@
 									<Label text="{StationTrackerI18n>DisruptionFTE}" class="disruptionText" />
 									<Label text="{StationTrackerI18n>DisruptionOther}" class="disruptionText" />
 								</VBox>
-								<VBox alignItems="Center" width="20%">
+								<VBox alignItems="Center" width="20%" justifyContent="SpaceAround" class="classOpenDisruptionDisruption">
 									<Label text="{StationTrackerI18n>Disruption}" class="whiteText" />
 									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/NCDisruption}"
 										class=" whiteText" />
@@ -187,7 +188,7 @@
 											<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/OtherDisruption}"
 										class=" whiteText" />
 								</VBox>
-								<VBox alignItems="Center" width="20%">
+								<VBox alignItems="Center" width="15%" justifyContent="SpaceAround" class="classOpenDisruptionAndon">
 									<Label text="{StationTrackerI18n>Andon}" class="redText kpiErrorValue" />
 									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/NCAndon}"
 										class=" redText kpiErrorValue" />
@@ -242,7 +243,7 @@
 							alignItems="Center" class="contentHeaderCont">
 							<Label text="{StationTrackerI18n>ShiftSTAFFING}" size="L"
 								design="Bold" width="100%" class="whiteTextHeader sapUiSmallMarginTopBottom" />
-							<VBox width="90%">
+							<VBox width="90%" justifyContent="SpaceAround" height="55%">
 								<micro:DeltaMicroChart width="100%"
 									id="shifStaffingHeader" isResponsive="true" value1="10" value2="9"
 									title1="{StationTrackerI18n>NeedFTE}" title2="{StationTrackerI18n>AllocatedFTE}"

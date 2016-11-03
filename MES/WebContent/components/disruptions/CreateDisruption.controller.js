@@ -59,6 +59,10 @@ sap.ui
 
 						this.addParent(this.selectTree, undefined);
 						this.ModelManager = airbus.mes.disruptions.ModelManager;
+						this.getView().byId("selectReasonTree").setSelectedKey();
+						this.getView().byId("selectRootCause").setSelectedKey();
+						this.getView().byId("selectResponsible").setSelectedKey();
+						this.setEnabledSelectBox(true,false,false,false);
 
 						// airbus.mes.settings.ModelManager.loadUserSettingsModel();
 					},
@@ -97,13 +101,13 @@ sap.ui
 									that.filterField(oElement);
 								});
 
-					/*	if (id === "selectCatogory") {
+						if (id === "selectCategory") {
 							this.setEnabledSelectBox(true, true, false, false);
 						} else if (id === "selectReasonTree") {
 							this.setEnabledSelectBox(true, true, true, false);
-						} else {
+						} else if (id === "selectResponsible") {
 							this.setEnabledSelectBox(true, true, true, true);
-						}*/
+						}
 
 					},
 
@@ -183,9 +187,9 @@ sap.ui
 						this.getView().byId("selectReasonTree").setEnabled(
 								fReason);
 						this.getView().byId("selectRootCause").setEnabled(
-								fResponsible);
-						this.getView().byId("selectResponsible").setEnabled(
 								fRootCause);
+						this.getView().byId("selectResponsible").setEnabled(
+								fResponsible);
 
 					},
 					/***********************************************************
@@ -229,7 +233,7 @@ sap.ui
 								},
 								{
 									"attribute" : "REQD_FIX_BY",
-									"value": this.getView().byId("expectedTime").getValue()	
+									"value": this.getView().byId("expectedDate").getValue()+" "+this.getView().byId("expectedTime").getValue()
 								},
 								{
 									"attribute" : "GRAVITY",

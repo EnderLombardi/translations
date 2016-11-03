@@ -33,7 +33,7 @@
 						<core:Item key="REJECTED" text="{disruptiontrackerI18n>status.rejected}" />
 					</ComboBox>
 
-					<SearchField width="13rem" placeholder="{disruptiontrackerI18n>search}" />
+					<!-- <SearchField width="13rem" placeholder="{disruptiontrackerI18n>search}" /> -->
 					<ToolbarSpacer />
 
 					<Button id="gotoDisruptionKpi" icon="sap-icon://area-chart"
@@ -95,7 +95,7 @@
 			<items>
 				<ColumnListItem type="Navigation" press="onTableClick">
 					<cells>
-						<Text text="{disruptionsTrackerModel>Operation}" />
+						<Text text="{path: 'disruptionsTrackerModel>Operation', formatter: 'airbus.mes.disruptiontracker.Formatter.formatOperation'}" />
 						<ObjectStatus class="sapUiSmallMarginBottom"
 							text="{parts: [ {path: 'disruptionsTrackerModel>Status'}, {path: 'disruptionsTrackerModel>Gravity'}, {path: 'disruptionsTrackerModel>Severity'} ], formatter: 'airbus.mes.disruptiontracker.Formatter.setText'}"
 							state="{parts: [ {path: 'disruptionsTrackerModel>Status'}, {path: 'disruptionsTrackerModel>Gravity'}, {path: 'disruptionsTrackerModel>Severity'} ], formatter: 'airbus.mes.disruptiontracker.Formatter.setState'}"
@@ -109,7 +109,7 @@
 						<Text text="{disruptionsTrackerModel>Severity}" />
 						<Text text="{disruptionsTrackerModel>OpeningTime}" />
 						<Text text="{disruptionsTrackerModel>FixedByTime}" />
-						<Text text="{disruptionsTrackerModel>TTGF}" />
+						<Text text="{path: 'disruptionsTrackerModel>FixedByTime', formatter: 'airbus.mes.disruptiontracker.Formatter.formatTTGF'}" />
 						<Text text="{disruptionsTrackerModel>TimeBeforeNextEscalation}" />
 						<Text text="{disruptionsTrackerModel>Solution}" />
 						<Text text="{disruptionsTrackerModel>ClosureDate}" />
