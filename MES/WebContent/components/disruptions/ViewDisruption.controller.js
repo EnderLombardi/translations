@@ -51,7 +51,29 @@ sap.ui
 								"ViewDisruptionView--commentBox-ViewDisruptionView--disrptlist-"
 										+ listnum);
 						a.setVisible(true);
+						
+						
+						var b = sap.ui.getCore().byId(path);
+						b.setVisible(false);
 
+					},
+					
+					hideCommentBox : function(oEvt) {
+						var path = oEvt.getSource().sId;
+						var listnum = path.split("-");
+						listnum = listnum[listnum.length - 1];
+						var a = this.getView().byId(
+								"ViewDisruptionView--commentBox-ViewDisruptionView--disrptlist-"
+										+ listnum);
+						a.setVisible(false);
+						
+						var b = sap.ui.getCore().byId("ViewDisruptionView--addComment-ViewDisruptionView--disrptlist-" + listnum);
+						b.setVisible(true);
+
+					},
+					
+					submitComment : function(oEvt) {
+						var path = oEvt.getSource().sId;
 					},
 
 					onMarkSolved : function(oEvt) {
@@ -89,76 +111,9 @@ sap.ui
 					onEscalate : function(oEvent) {
 
 						var msgRef = oEvent.getSource().getBindingContext(
-								"DisruptionDetail").getObject("MessageRef");
+								"operationDisruptionsModel").getObject("MessageRef");
 
-						jQuery
-								.ajax({
-									url : getUrlOnEscalate(),
-									data : {
-										"Param.1" : msgRef
-									},
-									async : false,
-									error : function(xhr, status, error) {
-										messageShow("Error");
-									},
-									success : function(data, textStatus, jqXHR) {
-										var rowExists = data.Rowsets.Rowset;
-										if (rowExists != undefined) {
-											if (data.Rowsets.Rowset[0].Row[0].Message_Type == "S") {
-
-												this
-														.messageShow(data.Rowsets.Rowset[0].Row[0].Message);
-											} else {
-												this
-														.messageShow("Error in Success");
-											}
-										} else {
-											if (data.Rowsets.FatalError) {
-												this
-														.messageShow(data.Rowsets.FatalError);
-											} else {
-												this.messageShow("Success");
-											}
-										}
-
-									},
-									error : function() {
-										this.messageShow("Error in Error")
-
-									}
-								});
-					},
-
-					/***********************************************************
-					 * Get URL on Escalate Button
-					 **********************************************************/
-					getUrlOnEscalate : function(msgRef) {
-
-						var urlOnEscalate = this.urlModel
-								.getProperty("urlOnEscalate");
-
-						return urlOnEscalate;
-					},
-
-					/***********************************************************
-					 * Show Message Toast
-					 **********************************************************/
-					messageShow : function(text) {
-						sap.m.MessageToast.show(text, {
-							duration : 3000,
-							width : "25em",
-							my : "center center",
-							at : "center center",
-							of : window,
-							offset : "0 0",
-							collision : "fit fit",
-							onClose : null,
-							autoClose : true,
-							animationTimingFunction : "ease",
-							animationDuration : 1000,
-							closeOnBrowserNavigation : true
-						});
-
+						airbus.mes.disruptions.ModelManager.escalateDisruption(msgRef);
 					},
 
 					onReportDisruption : function(oEvent) {
