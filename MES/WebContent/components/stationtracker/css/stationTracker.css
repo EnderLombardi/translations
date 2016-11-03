@@ -619,7 +619,9 @@ background-color: #0085AD !important;
 	border-bottom: none;
 	border-top: solid 1px #74d2e7;
 }
-
+#stationTrackerView--kpiHeaderContent .contentHeaderCont:last-child {
+	border-right:none;
+}
 #stationTrackerView--kpiHeaderContent .sapSuiteCmpChartItemTitle,
 #stationTrackerView--kpiHeaderContent .sapSuiteCmpChartItemValue,
 #stationTrackerView--kpiHeaderContent label{
