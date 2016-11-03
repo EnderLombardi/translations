@@ -122,7 +122,7 @@ airbus.mes.disruptions.ModelManager = {
 			type : 'GET',
 			data : {
 				"Param.1" : airbus.mes.settings.ModelManager.site,
-				"Param.2" : "NG00524",
+				"Param.2" : "NG000524",
 				"Param.3" : messageType,
 				"Param.4" : "HMI",
 				"Param.5" : messageBody,
@@ -133,9 +133,9 @@ airbus.mes.disruptions.ModelManager = {
 			success : function(data, textStatus, jqXHR) {
 				var rowExists = data.Rowsets.Rowset;
 				if (rowExists != undefined) {
-					if (data.Rowsets.Rowset[0].Row[0].Message_Type == "S") {
+					if (data.Rowsets.Rowset[0].Row[0].MessageRef != "") {
 
-						airbus.mes.shell.ModelManager.messageShow(data.Rowsets.Rowset[0].Row[0].Message);
+						airbus.mes.shell.ModelManager.messageShow("Disruption Created Successfully");
 					} else {
 						airbus.mes.shell.ModelManager.messageShow("Error in Success");
 					}
