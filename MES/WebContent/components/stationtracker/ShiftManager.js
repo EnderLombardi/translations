@@ -362,7 +362,7 @@ airbus.mes.stationtracker.ShiftManager = {
 		
 		
 //		Feedback the date to the date picker 
-		this.setCalendarDate(d);
+	//	this.setCalendarDate(d);
 		
 		return d;
 
