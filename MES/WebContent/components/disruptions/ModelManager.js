@@ -118,6 +118,7 @@ airbus.mes.disruptions.ModelManager = {
 				.getProperty("urlCreateDisruption");
 		return urlCreateDisruption;
 	},
+
 	createDisruption : function(messageType, messageSubject, messageBody,
 			payloadData) {
 		jQuery
@@ -140,7 +141,6 @@ airbus.mes.disruptions.ModelManager = {
 						var rowExists = data.Rowsets.Rowset;
 						if (rowExists != undefined) {
 							if (data.Rowsets.Rowset[0].Row[0].Message_Type == "S") {
-
 								this
 										.messageShow(data.Rowsets.Rowset[0].Row[0].Message);
 							} else {
@@ -155,12 +155,13 @@ airbus.mes.disruptions.ModelManager = {
 						}
 
 					},
-					error : function() {
-						this.messageShow("Error in Error")
 
-					}
+			error : function() {
+				airbus.mes.shell.ModelManager.messageShow("Error in Error")
+				
+			}
 
-				});
+		});
 
 	},
 
@@ -225,7 +226,5 @@ airbus.mes.disruptions.ModelManager = {
 			animationDuration : 1000,
 			closeOnBrowserNavigation : true
 		});
-
 	}
-
 };

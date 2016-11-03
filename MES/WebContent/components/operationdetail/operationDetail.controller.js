@@ -79,6 +79,8 @@ sap.ui
 						// button
 						this.getView().byId("opDetailExpandButton").setVisible(
 								true);
+						this.getView().byId("opDetailCloseButton").setVisible(
+								false);
 						this.getView().byId("operationDetailPanel")
 								.setExpanded(false);
 
@@ -184,8 +186,7 @@ sap.ui
 							}
 
 							this.nav
-									.to(airbus.mes.operationdetail.viewDisruption.oView
-											.getId());							
+									.to(airbus.mes.operationdetail.viewDisruption.oView.getId());							
 							break;
 						}
 					},

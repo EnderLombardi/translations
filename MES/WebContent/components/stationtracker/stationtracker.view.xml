@@ -19,7 +19,7 @@
 							items="{ path : 'stationTrackerShift>/' }" enabled="false"	>
 							<core:Item key="{stationTrackerShift>shiftID}" text="{stationTrackerShift>shiftName}" />
 						</Select>
-						<Button id="ProductionButton" text="{StationTrackerI18n>ProductionGroupAll}"
+						<Button id="ProductionButton" text="{StationTrackerI18n>ProductionGroup} : {StationTrackerI18n>StatusAll}"
 							type="Transparent" class="whiteColor whiteButton" press="onProductionGroupPress" />
 						<Select id="selectUser" change="selectUser"
 							class="sapUiTinyMarginBeginEnd pageHeader pageHeaderBlue" items="{ path : 'ressourcePoolModel>/Rowsets/Rowset/0/Row' }">
@@ -32,7 +32,7 @@
 							type="Transparent"
 							class="tiffanyColor whiteButton buttonStatus2 iconbuttonTeam sapUiSmallMarginBegin"
 							icon="sap-icon://group" press="onTeamPress" />
-						<Button id="hideKPI" type="Transparent" icon="sap-icon://show" text="{StationTrackerI18n>HideKPIS}"
+						<Button id="hideKPI" type="Transparent" icon="sap-icon://hide" text="{StationTrackerI18n>HideKPIS}"
 						press="hideKPI" />
 					</Toolbar>
 
@@ -40,77 +40,82 @@
 				<content>
 					<HBox id="kpiHeaderContent" width="100%">
 
-						<VBox id="boxTaktAdherence" width="33%" class="contentHeaderCont">
-							<Label text="{StationTrackerI18n>TaktAdherence}" design="Bold"
-								width="100%" class="whiteTextHeader sapUiSmallMarginTopBottom" />
+						<HBox justifyContent="SpaceAround" id="boxTaktAdherence" width="33%" class="contentHeaderCont">
+						
 							<HBox>
-								<VBox width="50%" id="chartId">
-									<layout:Grid class="" defaultSpan="L6 M6 S6">
-										<layout:content>
-											<Label text="Plan:650" class=" KPITaktChartBlueText" />
-											<Label text="Actual:550" class=" whiteText KPITaktChartRightText" />
-										</layout:content>
-									</layout:Grid>
-									<custom:TaktAdherenceAreaChart
-										id="takt_adherence_area_chart"></custom:TaktAdherenceAreaChart>
-									<Label text="Planned Start/End of Assembly" class=" whiteText" />
-
-									<layout:Grid class="" defaultSpan="L6 M6 S6">
-										<layout:content>
-											<Label text="25 JUN - 7:00" class=" whiteText" />
-											<Label text="02 JUL - 16:00" class=" whiteText KPITaktChartRightText" />
-										</layout:content>
-									</layout:Grid>
+							
+								<VBox justifyContent="SpaceAround" width="50%" id="chartId">
+									<VBox>
+										<layout:Grid class="" defaultSpan="L6 M6 S12">
+											<layout:content>
+												<Label text="Plan:650" class="KpiMediumText KPITaktChartBlueText" />
+												<Label text="Actual:550" class="KpiMediumText whiteText KPITaktChartRightText" />
+											</layout:content>
+										</layout:Grid>
+										<custom:TaktAdherenceAreaChart
+											id="takt_adherence_area_chart"></custom:TaktAdherenceAreaChart>
+										<Label text="Planned Start/End of Assembly" class=" whiteText" />
+	
+										<layout:Grid class="" defaultSpan="L6 M6 S6">
+											<layout:content>
+												<Label text="25 JUN - 7:00" class=" whiteText" />
+												<Label text="02 JUL - 16:00" class=" whiteText KPITaktChartRightText" />
+											</layout:content>
+										</layout:Grid>
+									</VBox>
 								</VBox>
-
-								<VBox width="15%">
-									<Label text="{StationTrackerI18n>Adherence}" class=" whiteText" />
-									<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/Labour}"
-										class="sapUiSmallMarginTop kpiValue  whiteText" height="100%" />
-
+								<VBox width="50%">
+									<Label text="{StationTrackerI18n>TaktAdherence}" design="Bold"
+									width="100%" class="whiteTextHeader sapUiSmallMarginTop" />
+									<VBox justifyContent="SpaceAround" height="100%">
+										<HBox class="sapUiSmallMarginBottom">
+											<VBox width="30%">
+												<Label text="{StationTrackerI18n>Adherence}" class=" whiteText" />
+												<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/Labour}"
+													class="sapUiSmallMarginTop kpiValue  whiteText" height="100%" />
+			
+											</VBox>
+											<VBox width="70%">
+												<layout:Grid id="TaktAdherenceTrend" class="classTaktAdherenceTrend" defaultSpan="L4 M4 S4">
+													<layout:content>
+														<Label text="{StationTrackerI18n>Trend}" class=" whiteText takt_kpi_name takt_kpi_trend ">
+															<layoutData><layout:GridData span="L8 M8 S8"/></layoutData>
+														</Label>
+														<core:Icon src="sap-icon://up" class=" TrendGreen takt_kpi_value takt_kpi_trend_value" />
+			
+														<Label text="{StationTrackerI18n>DeltaVsSLB}" class="whiteText takt_kpi_name">
+															<layoutData><layout:GridData span="L8 M8 S8" /></layoutData>
+														</Label>
+														<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/DeltaVsSLB}"
+															class="whiteText takt_kpi_value" />
+			
+														<Label text="{StationTrackerI18n>DeltaVsSoA}" class="whiteText takt_kpi_name">
+															<layoutData><layout:GridData span="L8 M8 S8" /></layoutData>
+														</Label>
+														<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/DeltaVsSoA}"
+															class="whiteText takt_kpi_value" />
+			
+														<Label text="{StationTrackerI18n>CycleTime}" class="whiteText takt_kpi_name">
+															<layoutData><layout:GridData span="L8 M8 S8" /></layoutData>
+														</Label>
+														<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/CycleTime}"
+															class="whiteText takt_kpi_value" />
+			
+														<Label text="{StationTrackerI18n>WorkCintent}" class="whiteText takt_kpi_name">
+															<layoutData><layout:GridData span="L8 M8 S8" /></layoutData>
+														</Label>
+														<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/WorkContent}"
+															class="whiteText takt_kpi_value" />
+													</layout:content>
+												</layout:Grid>
+											</VBox>
+										</HBox>
+									</VBox>
 								</VBox>
-
-								<VBox width="35%">
-
-									<layout:Grid id="TaktAdherenceTrend" defaultSpan="L4 M4 S4">
-										<layout:content>
-											<Label text="{StationTrackerI18n>Trend}" class=" whiteText takt_kpi_name">
-												<layoutData><layout:GridData span="L8 M8 S8" /></layoutData>
-											</Label>
-											<core:Icon src="sap-icon://up" class="sapUiSmallMarginBeginEnd TrendGreen takt_kpi_value" />
-
-											<Label text="{StationTrackerI18n>DeltaVsSLB}" class="whiteText takt_kpi_name">
-												<layoutData><layout:GridData span="L8 M8 S8" /></layoutData>
-											</Label>
-											<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/DeltaVsSLB}"
-												class="whiteText takt_kpi_value" />
-
-											<Label text="{StationTrackerI18n>DeltaVsSoA}" class="whiteText takt_kpi_name">
-												<layoutData><layout:GridData span="L8 M8 S8" /></layoutData>
-											</Label>
-											<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/DeltaVsSoA}"
-												class="whiteText takt_kpi_value" />
-
-											<Label text="{StationTrackerI18n>CycleTime}" class="whiteText takt_kpi_name">
-												<layoutData><layout:GridData span="L8 M8 S8" /></layoutData>
-											</Label>
-											<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/CycleTime}"
-												class="whiteText takt_kpi_value" />
-
-											<Label text="{StationTrackerI18n>WorkCintent}" class="whiteText takt_kpi_name">
-												<layoutData><layout:GridData span="L8 M8 S8" /></layoutData>
-											</Label>
-											<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/WorkContent}"
-												class="whiteText takt_kpi_value" />
-										</layout:content>
-									</layout:Grid>
-
-								</VBox>
-
 
 							</HBox>
-
-						</VBox>
+							
+						</HBox>
 
 						<VBox id="boxLabourEfficiency" wrap="Wrap" width="7%"
 							class="contentHeaderCont">

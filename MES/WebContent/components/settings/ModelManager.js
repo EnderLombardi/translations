@@ -30,7 +30,7 @@ airbus.mes.settings.ModelManager = {
 		core.setModel(new sap.ui.model.json.JSONModel(), "program");
 		core.setModel(new sap.ui.model.json.JSONModel(), "site");
 		
-		core.getModel("plantModel").attachRequestCompleted( airbus.mes.settings.ModelManager.onPlantLoad );
+		//core.getModel("plantModel").attachRequestCompleted( airbus.mes.settings.ModelManager.onPlantLoad );
 //		core.setModel(new sap.ui.model.json.JSONModel(), "langModel");
 //		core.setModel(new sap.ui.model.json.JSONModel(), "userSettingModel");
 
@@ -60,7 +60,7 @@ airbus.mes.settings.ModelManager = {
 		//Loading of model
 		
 		this.loadSiteModel();
-		//this.loadPlantModel();
+		this.loadPlantModel();
         this.loadUserSettingsModel();
         this.getProgram();
         
@@ -74,11 +74,12 @@ airbus.mes.settings.ModelManager = {
 		
 	},
 	
-	onPlantLoad : function() {
+	/*onPlantLoad : function() {
 		
 		airbus.mes.settings.oView.getModel("program").refresh(true);
 		
-	},
+	},*/
+	
 	// ************************************************************************************
 	getUrlSite : function() {
 		var urlSite = this.urlModel.getProperty("urlsitemodel");
@@ -98,7 +99,7 @@ airbus.mes.settings.ModelManager = {
 	},
 
 	loadPlantModel : function() {
-		var oViewModel = sap.ui.getCore().getModel("plantModel") 
+		var oViewModel = sap.ui.getCore().getModel("plantModel") ;
 		oViewModel.loadData(airbus.mes.settings.ModelManager.getUrlPlant(), null, false);
 	},
 	// ********************************************************************************
@@ -165,4 +166,3 @@ airbus.mes.settings.ModelManager = {
 		}
 
 };
-airbus.mes.settings.ModelManager.init(sap.ui.getCore());

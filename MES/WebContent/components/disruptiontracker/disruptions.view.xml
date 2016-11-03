@@ -26,14 +26,14 @@
 					<ComboBox id="statusComboBox" class="sapUiMediumMarginEnd"
 						placeholder="{disruptiontrackerI18n>selectStatus}"
 						selectionChange="filterByStatus">
-						<core:Item key="PENDING" text="{disruptionsOrderData>status.pending}" />
-						<core:Item key="ACKNOWLEDGED" text="{disruptionsOrderData>status.acknowledge}" />
-						<core:Item key="SOLVED" text="{disruptionsOrderData>status.solved}" />
-						<core:Item key="CLOSED" text="{disruptionsOrderData>status.closed}" />
-						<core:Item key="REJECTED" text="{disruptionsOrderData>status.rejected}" />
+						<core:Item key="PENDING" text="{disruptiontrackerI18n>status.pending}" />
+						<core:Item key="ACKNOWLEDGED" text="{disruptiontrackerI18n>status.acknowledge}" />
+						<core:Item key="SOLVED" text="{disruptiontrackerI18n>status.solved}" />
+						<core:Item key="CLOSED" text="{disruptiontrackerI18n>status.closed}" />
+						<core:Item key="REJECTED" text="{disruptiontrackerI18n>status.rejected}" />
 					</ComboBox>
 
-					<SearchField width="13rem" placeholder="{disruptionsOrderData>search}" />
+					<!-- <SearchField width="13rem" placeholder="{disruptiontrackerI18n>search}" /> -->
 					<ToolbarSpacer />
 
 					<Button id="gotoDisruptionKpi" icon="sap-icon://area-chart"
@@ -93,7 +93,7 @@
 			</columns>
 
 			<items>
-				<ColumnListItem type="Navigation">
+				<ColumnListItem type="Navigation" press="onTableClick">
 					<cells>
 						<Text text="{disruptionsTrackerModel>Operation}" />
 						<ObjectStatus class="sapUiSmallMarginBottom"
