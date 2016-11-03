@@ -13,6 +13,8 @@ airbus.mes.disruptiontracker.ModelManager = {
 	
 	loadDisruptionTrackerModel : function(oFilters) {
 		
+		airbus.mes.disruptiontracker.oView.setBusy(true); //Set Busy Indicator
+		
 		var oViewModel = sap.ui.getCore().getModel("disruptionsTrackerModel");
 		
 		var getDisruptionsURL = airbus.mes.disruptions.ModelManager.getDisruptionsURL(oFilters);
@@ -29,13 +31,19 @@ airbus.mes.disruptiontracker.ModelManager = {
 	
 	onDisruptionsLoad: function(){
 
+		this.fixNoDataRow();
+		
+		airbus.mes.disruptiontracker.oView.setBusy(false); //Remove Busy Indicator
+	},
+	
+	fixNoDataRow: function(){
 		var noDataRow = document.getElementById("disruptiontrackerView--disruptionsTable-nodata-text");
 		if(noDataRow != undefined){
 			var colCount = airbus.mes.disruptiontracker.oView.byId("disruptionsTable").getColCount();
 
 			// Set Col Span
-			noDataRow.colSpan = colCount - 2;
-		}			
+			noDataRow.colSpan = colCount - 1;
+		}
 	}
 	
 }
