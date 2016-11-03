@@ -286,7 +286,7 @@ sap.ui
 							}
 
 							// Call service for Operation Confirmation
-							/*jQuery
+							jQuery
 									.ajax({
 										url : airbus.mes.operationdetail.ModelManager
 												.getConfirmationUrl(
@@ -324,7 +324,7 @@ sap.ui
 											}
 
 										}
-									});*/
+									});
 
 							this._oUserConfirmationDialog.close();
 
