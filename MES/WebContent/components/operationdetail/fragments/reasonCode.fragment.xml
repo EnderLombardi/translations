@@ -21,7 +21,7 @@
 						max="100" showHandleTooltip="true"
 						width="{parts: ['operationDetailModel>/Rowsets/Rowset/0/Row/0/status', 'operationDetailModel>/Rowsets/Rowset/0/Row/0/progress'], 
 				formatter: 'airbus.mes.operationdetail.Formatter.sliderStatus' }"
-						enabled="false">
+						enabled="true">
 					</Slider>
 				</HBox>
 				<Button id="btnAdd" type="Transparent" press="addProgress"
@@ -32,16 +32,14 @@
 			
  			<f:SimpleForm id="reasonCode" minWidth="1024"
 				maxContainerCols="2" editable="true" layout="ResponsiveGridLayout"
-				labelSpanL="1" labelSpanM="2" emptySpanL="0" emptySpanM="0"
+				labelSpanL="1" labelSpanM="2" 
 				columnsL="1" columnsM="1" validateFieldGroup="onValidatereason" class="sapUiLargeMarginTop">
 				<f:content>
-						<!-- <Slider id="progressSliderSecond" min="0" max="100" editable="true" enabled="true"></Slider> -->
 						<Label text="Reason Code" />
 						<Select forceSelection="true" change="onSelectionReason" id="reasonCodeSelectBox"
 							items="{reasonCodeModel>/Rowsets/Rowset/0/Row}">
 							<core:Item key="{reasonCodeModel>REASON_CODE}" text="{reasonCodeModel>DESCRIPTION}" />
 						</Select>
-
 						<Label text="Comment"/>
 						<TextArea id="reasonCodeComments"/>
 				</f:content>
