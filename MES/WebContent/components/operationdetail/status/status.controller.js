@@ -440,31 +440,26 @@ sap.ui
 				 * @memberOf components.operationdetail.status.status
 				 */
 				 onAfterRendering: function() {
-					 if (this.getView().byId("operationStatus").getText()
-							  === "Not Started" ||
-							  this.getView().byId("operationStatus") .getText() ===
-							  "Paused") {
-							  
-							  this.setProgressScreenBtn( false, true);
-							  this.getView().byId("progressSlider").setEnabled(
-							  false); } else if
-							  (this.getView().byId("operationStatus") .getText()
-							  === "In Progress") {
-							  
-							  this.setProgressScreenBtn( true, false);
-							  this.getView().byId("progressSlider").setEnabled(
-							  true); } else if
-							  (this.getView().byId("operationStatus") .getText()
-							  === "Blocked" ||
-							  this.getView().byId("operationStatus") .getText() ===
-							  "Confirmed") {
-							  
-							  this.setProgressScreenBtn( false, false);
-							  this.getView().byId("progressSlider").setEnabled(
-							  false); this.getView().byId("progressSliderfirst")
-							  .setEnabled(false); }
-				
-				},
+					 if (this.getView().byId("operationStatus").getText() === "Not Started"
+								|| this.getView().byId("operationStatus")
+										.getText() === "Paused") {
+
+							this.setProgressScreenBtn(false, true);
+							
+						} else if (this.getView().byId("operationStatus")
+								.getText() === "In Progress") {
+
+							this.setProgressScreenBtn(true, false);
+							
+						} else if (this.getView().byId("operationStatus")
+								.getText() === "Blocked"
+								|| this.getView().byId("operationStatus")
+										.getText() === "Confirmed") {
+
+							this.setProgressScreenBtn(false, false);
+													}
+
+					},
 				/**
 				 * Called when the Controller is destroyed. Use this one to free
 				 * resources and finalize activities.
