@@ -2,7 +2,7 @@
 	"ProgramCollection": [
 		{
 			"prog": "A320",
-			"selected": true,
+			"selected": false,
 			"picture": "../components/settings/icon/A320.jpg"
 		},
 		{

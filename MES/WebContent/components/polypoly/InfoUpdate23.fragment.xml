@@ -9,15 +9,15 @@
 		<content>
 			<VBox alignItems="Center">
 				<items>
-					<Label text="Operator {/name} doesn't have following QA:" textAlign="Center" />
-					<Table items="{path: '/Row'}">
+					<Label text="Operator {infoModel>/name} doesn't have following QA:" textAlign="Center" />
+					<Table items="{path: 'infoModel>/Row'}">
 						<columns>
 							<Column hAlign="Center" width="10rem"/>
 						</columns>
 						<items>
 							<ColumnListItem>
 								<cells>
-									<Text text="{QA}" />
+									<Text text="{infoModel>QA}" />
 								</cells>
 							</ColumnListItem>
 						</items>

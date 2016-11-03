@@ -12,25 +12,16 @@
 						<core:CustomData key="enabled" value="{1TileLineHome>enable}" writeToDom="true" />
 					</customData>
 					<content>
- 						<VBox width="12rem" height="13rem" alignItems="Center"
-							class="margin">
-							<items>
-								<HBox width="100%" height="20%" alignItems="Center">
-									<items>
+						<VBox width="auto" 
+						justifyContent="SpaceBetween" class="tileBox" >
+
+										<VBox>
 										<Text text="{ path : '1TileLineHome>text' , formatter : '.getI18nValue' }" class="headerTileText" />
-									</items>
-								</HBox>
-								<HBox width="100%" height="20%" alignItems="Center">
-									<items>
+
 										<Text text="{ path : '1TileLineHome>sub' , formatter : '.getI18nValue' }" class="CustomTileText" />
-									</items>
-								</HBox>
-								<HBox width="100%" height="80%" alignItems="Center">
-									<items>
+										</VBox>
 										<core:Icon src="{1TileLineHome>icon}" class="IconTile"></core:Icon>
-									</items>
-								</HBox>
-							</items>
+
 						</VBox>
 					</content>
 				</CustomTile>

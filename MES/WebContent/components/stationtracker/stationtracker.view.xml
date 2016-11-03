@@ -8,7 +8,7 @@
 
 		<content width="100%" height="100%">
 			<Panel id="kpi_header" expandable="true" expanded="true"
-				expandAnimation="false" class="pageHeader sapUiSmallMarginTop contentNoPad">
+				expandAnimation="false" class="pageHeader kpiPageHeader contentNoPad">
 				<headerToolbar>
 					<Toolbar id="kpiHeaderToolbar">
 						<!-- <DatePicker id="DatePicker" width="auto" change="changeDay" class="pageHeaderBlue"/> -->

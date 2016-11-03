@@ -3,206 +3,209 @@
 	controllerName="airbus.mes.disruptions.ViewDisruption" xmlns:html="http://www.w3.org/1999/xhtml">
 	<Page enableScrolling="false" showHeader="false">
 		<content>
-				<List noDataText="{i18nModel>noDisruptions}" class="disruptionDetail sapUiSmallMarginBottom"
-					items="{path: 'DisruptionDetail>/Disruption'}">
+			<List id="disrptlist" noDataText="{i18nModel>noDisruptions}"
+				class="disruptionDetail sapUiSmallMarginBottom" items="{path: 'DisruptionDetail>/Disruption'}">
 
-					<CustomListItem>
+				<CustomListItem>
 
-						<Panel expandable="true" expanded="false" class="expandableIcon"
-							expand="handleDisruptionPanelExpand">
-							<headerToolbar>
-								<Toolbar>
-									<Title text="{DisruptionDetail>Title}" class="panelTitleText" />
-									<ToolbarSpacer />
-									<Button class="decoratePanelBtn" text="Edit" design="Transparent"
-										icon="sap-icon://edit" />
-									<Button class="decoratePanelBtn" text="Delete" design="Transparent"
-										icon="sap-icon://delete" />
+					<Panel expandable="true" expanded="false" class="expandableIcon"
+						expand="handleDisruptionPanelExpand">
+						<headerToolbar>
+							<Toolbar>
+								<Title text="{DisruptionDetail>Title}" class="panelTitleText" />
+								<ToolbarSpacer />
+								<Button class="decoratePanelBtn" text="Edit" design="Transparent"
+									icon="sap-icon://edit" />
+								<Button class="decoratePanelBtn" text="Delete" design="Transparent"
+									icon="sap-icon://delete" />
 
-								</Toolbar>
-							</headerToolbar>
+							</Toolbar>
+						</headerToolbar>
 
-									<f:Form class="formDisruptionDetail" editable="true">
-										<f:layout>
-											<f:ResponsiveGridLayout span="L12 M12 S12" />
-										</f:layout>
-										<f:formContainers>
-											<f:FormContainer ariaLabelledBy="Title2">
-												<f:formElements>
+						<f:Form class="formDisruptionDetail" editable="true">
+							<f:layout>
+								<f:ResponsiveGridLayout span="L12 M12 S12" />
+							</f:layout>
+							<f:formContainers>
+								<f:FormContainer ariaLabelledBy="Title2">
+									<f:formElements>
 
-													<f:FormElement>
-														<f:label>
-															<Label class="detailLabels" text="{i18nModel>gravity}">
-																<layoutData>
-																	<l:GridData span="L3 M3 S12" />
-																</layoutData>
-															</Label>
-														</f:label>
-														<f:fields>
+										<f:FormElement>
+											<f:label>
+												<Label class="detailLabels" text="{i18nModel>gravity}">
+													<layoutData>
+														<l:GridData span="L3 M3 S12" />
+													</layoutData>
+												</Label>
+											</f:label>
+											<f:fields>
 
-															<Text text="{DisruptionDetail>Gravity}">
-																<layoutData>
-																	<l:GridData span="L3 M3 S12" />
-																</layoutData>
-															</Text>
-														</f:fields>
-													</f:FormElement>
-
-
-													<f:FormElement>
-														<f:label>
-															<Label class="detailLabels" text="{i18nModel>problem}">
-																<layoutData>
-																	<l:GridData span="L2 M2 S12" />
-																</layoutData>
-															</Label>
-														</f:label>
-														<f:fields>
-
-															<Text text="{DisruptionDetail>Object}">
-																<layoutData>
-																	<l:GridData span="L4 M4 S12" />
-																</layoutData>
-															</Text>
-														</f:fields>
-													</f:FormElement>
-
-													<f:FormElement>
-														<f:label>
-															<Label class="detailLabels" text="{i18nModel>resGroup}">
-																<layoutData>
-																	<l:GridData span="L3 M3 S12" />
-																</layoutData>
-															</Label>
-														</f:label>
-														<f:fields>
-
-															<Text text="{DisruptionDetail>Help}">
-																<layoutData>
-																	<l:GridData span="L3 M3 S12" />
-																</layoutData>
-															</Text>
-														</f:fields>
-													</f:FormElement>
+												<Text text="{DisruptionDetail>Gravity}">
+													<layoutData>
+														<l:GridData span="L3 M3 S12" />
+													</layoutData>
+												</Text>
+											</f:fields>
+										</f:FormElement>
 
 
-													<f:FormElement>
-														<f:label>
-															<Label class="detailLabels" text="{i18nModel>nature}">
-																<layoutData>
-																	<l:GridData span="L2 M2 S12" />
-																</layoutData>
-															</Label>
-														</f:label>
-														<f:fields>
+										<f:FormElement>
+											<f:label>
+												<Label class="detailLabels" text="{i18nModel>problem}">
+													<layoutData>
+														<l:GridData span="L2 M2 S12" />
+													</layoutData>
+												</Label>
+											</f:label>
+											<f:fields>
 
-															<Text text="{DisruptionDetail>Nature}">
-																<layoutData>
-																	<l:GridData span="L4 M4 S12" />
-																</layoutData>
-															</Text>
-														</f:fields>
-													</f:FormElement>
+												<Text text="{DisruptionDetail>Object}">
+													<layoutData>
+														<l:GridData span="L4 M4 S12" />
+													</layoutData>
+												</Text>
+											</f:fields>
+										</f:FormElement>
 
-													<f:FormElement>
-														<f:label>
-															<Label class="detailLabels" text="{i18nModel>date}">
-																<layoutData>
-																	<l:GridData span="L3 M3 S12" />
-																</layoutData>
-															</Label>
-														</f:label>
-														<f:fields>
+										<f:FormElement>
+											<f:label>
+												<Label class="detailLabels" text="{i18nModel>resGroup}">
+													<layoutData>
+														<l:GridData span="L3 M3 S12" />
+													</layoutData>
+												</Label>
+											</f:label>
+											<f:fields>
 
-															<Text text="{DisruptionDetail>Open Date} - {DisruptionDetail>Time}">
-																<layoutData>
-																	<l:GridData span="L3 M3 S12" />
-																</layoutData>
-															</Text>
-														</f:fields>
-													</f:FormElement>
-
-
-
-													<f:FormElement>
-														<f:label>
-															<Label class="detailLabels" text="{i18nModel>expected}">
-																<layoutData>
-																	<l:GridData span="L2 M2 S12" />
-																</layoutData>
-															</Label>
-														</f:label>
-														<f:fields>
-															<Text text="{DisruptionDetail>Expected} - {DisruptionDetail>TimeEx}">
-																<layoutData>
-																	<l:GridData span="L4 M4 S12" />
-																</layoutData>
-															</Text>
-														</f:fields>
-													</f:FormElement>
+												<Text text="{DisruptionDetail>Help}">
+													<layoutData>
+														<l:GridData span="L3 M3 S12" />
+													</layoutData>
+												</Text>
+											</f:fields>
+										</f:FormElement>
 
 
-													<f:FormElement>
-														<f:label>
-															<Label class="detailLabels" text="{i18nModel>status}">
-																<layoutData>
-																	<l:GridData span="L3 M3 S12" />
-																</layoutData>
-															</Label>
-														</f:label>
-														<f:fields>
-															<Text text="{DisruptionDetail>Status}">
-																<layoutData>
-																	<l:GridData span="L3 M3 S12" />
-																</layoutData>
-															</Text>
-														</f:fields>
-													</f:FormElement>
+										<f:FormElement>
+											<f:label>
+												<Label class="detailLabels" text="{i18nModel>nature}">
+													<layoutData>
+														<l:GridData span="L2 M2 S12" />
+													</layoutData>
+												</Label>
+											</f:label>
+											<f:fields>
 
-												</f:formElements>
-											</f:FormContainer>
-										</f:formContainers>
-									</f:Form>
+												<Text text="{DisruptionDetail>Nature}">
+													<layoutData>
+														<l:GridData span="L4 M4 S12" />
+													</layoutData>
+												</Text>
+											</f:fields>
+										</f:FormElement>
 
-									<Panel id="showCommentBox">
+										<f:FormElement>
+											<f:label>
+												<Label class="detailLabels" text="{i18nModel>date}">
+													<layoutData>
+														<l:GridData span="L3 M3 S12" />
+													</layoutData>
+												</Label>
+											</f:label>
+											<f:fields>
 
-										<VBox width="79%">
-											<TextArea placeholder="Add Comments..." width="100%" />
+												<Text
+													text="{DisruptionDetail>Open Date} - {DisruptionDetail>Time}">
+													<layoutData>
+														<l:GridData span="L3 M3 S12" />
+													</layoutData>
+												</Text>
+											</f:fields>
+										</f:FormElement>
 
-											<HBox class="submitComment">
-												<Button text="{i18nModel>submitComment}" press="showCommentBox"
-													class="sapUiSmallMarginEnd" width="12rem" />
-												<Button text="{i18nModel>statusButton}" type="Emphasized" press="onMarkSolved"
-													width="12rem" />
-											</HBox>
-										</VBox>
 
-									</Panel>
 
-									<Toolbar class="barcolor">
-										<ToolbarSpacer />
-										<Button class="decoratePanelBtn" text="{i18nModel>addComment}"
-											design="Transparent" icon="sap-icon://comment" />
-										<Button class="decoratePanelBtn" text="{i18nModel>acknowledge}"
-											design="Transparent" icon="sap-icon://to-be-reviewed" />
-										<Button class="decoratePanelBtn" text="{i18nModel>escalate}"
-											design="Transparent" icon="sap-icon://message-warning" />
-										<Button class="decoratePanelBtn" text="{i18nModel>markSolved}"
-											design="Transparent" icon="sap-icon://sys-add" />
-									</Toolbar>
+										<f:FormElement>
+											<f:label>
+												<Label class="detailLabels" text="{i18nModel>expected}">
+													<layoutData>
+														<l:GridData span="L2 M2 S12" />
+													</layoutData>
+												</Label>
+											</f:label>
+											<f:fields>
+												<Text
+													text="{DisruptionDetail>Expected} - {DisruptionDetail>TimeEx}">
+													<layoutData>
+														<l:GridData span="L4 M4 S12" />
+													</layoutData>
+												</Text>
+											</f:fields>
+										</f:FormElement>
+
+
+										<f:FormElement>
+											<f:label>
+												<Label class="detailLabels" text="{i18nModel>status}">
+													<layoutData>
+														<l:GridData span="L3 M3 S12" />
+													</layoutData>
+												</Label>
+											</f:label>
+											<f:fields>
+												<Text text="{DisruptionDetail>Status}">
+													<layoutData>
+														<l:GridData span="L3 M3 S12" />
+													</layoutData>
+												</Text>
+											</f:fields>
+										</f:FormElement>
+
+									</f:formElements>
+								</f:FormContainer>
+							</f:formContainers>
+						</f:Form>
+
+						<Panel id="commentBox" visible="false">
+
+							<VBox width="79%">
+								<TextArea placeholder="Add Comments..." width="100%" />
+
+									<Button text="{i18nModel>submitComment}" press="showCommentBox"
+										class="sapUiSmallMarginEnd" width="12rem" />
+							</VBox>
+
 						</Panel>
 
-					</CustomListItem>
+						<Toolbar class="barcolor">
+							<ToolbarSpacer />
+							<Button class="decoratePanelBtn" text="{i18nModel>addComment}"
+								press="showCommentBox" design="Transparent" icon="sap-icon://comment" />
+							<Button class="decoratePanelBtn" text="{i18nModel>acknowledge}"
+								design="Transparent" icon="sap-icon://to-be-reviewed" />
+							<Button class="decoratePanelBtn" text="{i18nModel>escalate}"
+								design="Transparent" icon="sap-icon://message-warning" />
+							<Button class="decoratePanelBtn" text="{i18nModel>markSolved}"
+								press="onMarkSolved" design="Transparent" icon="sap-icon://sys-add" />
+						</Toolbar>
+					</Panel>
 
-				</List>
+				</CustomListItem>
+
+			</List>
 		</content>
 		<footer>
-		<Bar design="Footer" class="viewDisruptionFooter">
-			<contentLeft>
-				<Button text="{i18n>reportDisruption}" press="onReportDisruption" icon="sap-icon://add"/>
-			</contentLeft>
-		</Bar>
-	</footer>
-	
+			<Bar design="Footer" class="viewDisruptionFooter">
+				<contentLeft>
+					<Button text="{i18n>reportDisruption}" press="onReportDisruption"
+						icon="sap-icon://add" />
+				</contentLeft>
+				<contentRight>
+					<Button id="btnClose" text="{i18n>close}" icon="sap-icon://decline"
+						press="onCloseOperationDetailPopup" />
+				</contentRight>
+			</Bar>
+		</footer>
+
 	</Page>
 </core:View>

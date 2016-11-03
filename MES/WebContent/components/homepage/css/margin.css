@@ -40,6 +40,9 @@
 	background-color: rgba(12, 75, 131, 0.9);
 	margin: 0.5rem;
 	width: 13rem;
+    -webkit-transition: background-color 0.2s ease-in-out;
+    -moz-transition: background-color 0.2s ease-in-out;
+    transition: background-color 0.2s ease-in-out;
 }
 
 .titleToolbar {
@@ -92,6 +95,31 @@
 .sapMTCCnt div[data-enabled^="false"] {
 	opacity: 0.6;
 }
+.sapMTC div[data-enabled^="true"]:hover, div[data-enabled^="true"]:focus {
+    background-color: rgba(12, 75, 131, 1);
+}
+.tileBox {
+	position:absolute;
+	top: 1rem;
+    bottom: 1rem;
+    right: 1rem;
+    left: 1rem;
+}
+
+div[data-enabled^="true"] .sapMCustomTileContent:after {
+	content:"";
+	position:absolute;
+	top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+	cursor: pointer;
+}
+
+.sapMCustomTile:focus {
+	outline:none;
+}
+
 /*.sapMTCAnim div[data-enabled^="false"] .IconTile {
 	color: rgb(181, 181, 181);
 }*/

@@ -3,9 +3,6 @@
 	
 }*/
 /*Default Focus*/
-* {
-	outline: 0;
-}
 
 .noRows.sapUiTableColRowHdr, .sapUiTableColHdr .sapUiTableCol, .sapUiTableColHdr .sapUiTableTr>td{
 	border-right: 0px solid #dddddd;
@@ -250,7 +247,7 @@ html.sap-desktop button[id^="__button"].sapMBtn:focus>div[id^="__button"].sapMBt
 section header[id^="__toolbar"] {
 	box-shadow: 0px 2px 15px -5px #0F2D65;
     border: none;
-    border-top: 5px solid #ffffff;
+    border-top:  0.6rem solid #ffffff;
     position:relative;
 	z-index:10;
 }

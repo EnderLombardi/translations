@@ -3,12 +3,10 @@
 	<Dialog draggable="true" contentHeight="40%" contentWidth="60%"
 		title="Reason Code ">
 		<content>
-		<l:Grid defaultSpan="L12 M12 S12" class="proressSliderGrid">
+		<HBox class="sapUiSmallMarginTop">
 				<Button id="btnReduce" type="Transparent" press="reduceProgress"
 					icon="sap-icon://sys-minus" class="progressBtnColor" >
-					<layoutData>
-						<l:GridData span="L1 M12 S12" />
-					</layoutData>
+					
 				</Button>
 				<HBox width="100%" class="progressSlider">
 					<layoutData>
@@ -28,15 +26,14 @@
 				</HBox>
 				<Button id="btnAdd" type="Transparent" press="addProgress"
 					icon="sap-icon://sys-add" class="progressBtnColor" >
-					<layoutData>
-						<l:GridData span="L1 M12 S12" />
-					</layoutData>
+					
 				</Button>
-			</l:Grid>
+				</HBox>
+			
  			<f:SimpleForm id="reasonCode" minWidth="1024"
 				maxContainerCols="2" editable="true" layout="ResponsiveGridLayout"
 				labelSpanL="1" labelSpanM="2" emptySpanL="0" emptySpanM="0"
-				columnsL="1" columnsM="1" validateFieldGroup="onValidatereason">
+				columnsL="1" columnsM="1" validateFieldGroup="onValidatereason" class="sapUiLargeMarginTop">
 				<f:content>
 						<!-- <Slider id="progressSliderSecond" min="0" max="100" editable="true" enabled="true"></Slider> -->
 						<Label text="Reason Code" />

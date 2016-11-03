@@ -157,11 +157,15 @@ airbus.mes.polypoly.ModelManager = {
 	},
 	
 	handleUserConnection : function(sUrl) {
-		var sUser = "NG5E7C1";
-		var sPassword = "SS8ir3002";
-		var sAddUrl = "&j_user="+ sUser + "&j_password=" + sPassword;
-		
-		return sUrl + sAddUrl
+		if(this.queryParams.get("url_config") != "local"){
+			var sUser = "NG43F36";
+			var sPassword = "tretre654";
+			var sAddUrl = "&j_user="+ sUser + "&j_password=" + sPassword;
+
+			return sUrl + sAddUrl
+		}else{
+			return sUrl
+		}
 	},
 	
 	// PBA ADD LOADING MODEL FOR POLYPOLY replace the getPolypolyModel place in polypolymanager
