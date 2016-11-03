@@ -616,7 +616,7 @@ background-color: #0085AD !important;
 #stationTrackerView--kpiHeaderContent .sapSuiteCmpChartItemValue,
 #stationTrackerView--kpiHeaderContent label{
 	color: #F5F5F5;
-	font-size: 9px;
+	font-size: 1vw;
 }
 
 #stationTrackerView--kpiHeaderContent .sapSuiteCmpChartBarNoValue {
@@ -930,6 +930,9 @@ background-color: #0085AD !important;
 
 #stationTrackerView--kpiHeaderContent .takt_kpi_name {
 	text-align: right !important;
+    font-size: 0.8vw;
+    vertical-align: middle;
+    display: inline-block;
 }
 
 #stationTrackerView--kpiHeaderContent .takt_kpi_value {

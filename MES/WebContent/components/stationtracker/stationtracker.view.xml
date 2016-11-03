@@ -40,15 +40,16 @@
 				<content>
 					<HBox id="kpiHeaderContent" width="100%">
 
-						<VBox id="boxTaktAdherence" width="33%" class="contentHeaderCont">
-							<Label text="{StationTrackerI18n>TaktAdherence}" design="Bold"
-								width="100%" class="whiteTextHeader sapUiSmallMarginTopBottom" />
+						<HBox justifyContent="SpaceAround" id="boxTaktAdherence" width="33%" class="contentHeaderCont">
+						
 							<HBox>
-								<VBox width="50%" id="chartId">
-									<layout:Grid class="" defaultSpan="L6 M6 S6">
+							
+								<VBox justifyContent="SpaceAround" width="50%" id="chartId">
+								<VBox>
+									<layout:Grid class="" defaultSpan="L6 M6 S12">
 										<layout:content>
-											<Label text="Plan:650" class=" KPITaktChartBlueText" />
-											<Label text="Actual:550" class=" whiteText KPITaktChartRightText" />
+											<Label text="Plan:650" class="KpiMediumText KPITaktChartBlueText" />
+											<Label text="Actual:550" class="KpiMediumText whiteText KPITaktChartRightText" />
 										</layout:content>
 									</layout:Grid>
 									<custom:TaktAdherenceAreaChart
@@ -62,12 +63,6 @@
 										</layout:content>
 									</layout:Grid>
 								</VBox>
-
-								<VBox width="15%">
-									<Label text="{StationTrackerI18n>Adherence}" class=" whiteText" />
-									<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/Labour}"
-										class="sapUiSmallMarginTop kpiValue  whiteText" height="100%" />
-
 								</VBox>
 
 								<VBox width="35%">
@@ -107,10 +102,9 @@
 
 								</VBox>
 
-
 							</HBox>
-
-						</VBox>
+							
+						</HBox>
 
 						<VBox id="boxLabourEfficiency" wrap="Wrap" width="7%"
 							class="contentHeaderCont">
