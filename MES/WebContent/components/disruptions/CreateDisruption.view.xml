@@ -37,7 +37,7 @@
 									<f:fields>
 										<Select id="selectCategory"
 											items="{disruptionCustomData>/Rowsets/Rowset/0/Row}"
-											 change="onSelectionChange">
+											 change="onSelectionChange" selectedKey="" forceSelection="false">
 											<items>
 												<core:Item text="{disruptionCustomData>Category}"
 													key="{disruptionCustomData>MessageType}" />
@@ -83,7 +83,7 @@
 									</f:label>
 									<f:fields>
 										<Select id="selectReasonTree"
-											items="{disruptionCustomData>/Rowsets/Rowset/0/Row}" change="onSelectionChange">
+											items="{disruptionCustomData>/Rowsets/Rowset/0/Row}" change="onSelectionChange" selectedKey="" forceSelection="false" >
 											<items>
 												<core:Item text="{disruptionCustomData>Reason}" key="{disruptionCustomData>Reason}" />
 											</items>
@@ -105,7 +105,7 @@
 									</f:label>
 									<f:fields>
 										<Select id="selectResponsible"
-											items="{disruptionCustomData>/Rowsets/Rowset/0/Row}" change="onSelectionChange">
+											items="{disruptionCustomData>/Rowsets/Rowset/0/Row}" change="onSelectionChange" selectedKey="" forceSelection="false">
 											<items>
 												<core:Item text="{disruptionCustomData>ResponsibleGroup}" key="{disruptionCustomData>ResponsibleGroup}" />
 											</items>
@@ -126,7 +126,7 @@
 										</Label>
 									</f:label>
 									<f:fields>
-										<Select id="selectRootCause" selectedKey=""
+										<Select id="selectRootCause" selectedKey="" forceSelection="false"
 											items="{disruptionCustomData>/Rowsets/Rowset/0/Row}" change="onSelectionChange">
 											<items>
 												<core:Item text="Team Leader" key="TeamLeader" />
