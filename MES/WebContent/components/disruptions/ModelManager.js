@@ -40,13 +40,6 @@ airbus.mes.disruptions.ModelManager = {
 		this.loadDisruptionCustomData();
 
 	},
-	
-	/***************************************************************************
-	 * Replace URL Parameters
-	 **************************************************************************/
-	replaceURI : function(sURI, sFrom, sTo) {
-		return sURI.replace(sFrom, encodeURIComponent(sTo));
-	},
 
 	/***************************************************************************
 	 * Set the Models for Custom Data of create Disruption
