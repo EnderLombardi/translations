@@ -33,8 +33,8 @@
 						<core:Item key="REJECTED" text="{disruptiontrackerI18n>status.rejected}" />
 					</ComboBox>
 
-					<SearchField width="13rem" placeholder="{disruptiontrackerI18n>search}" />
-					<ToolbarSpacer />
+					<!-- <SearchField width="13rem" placeholder="{disruptiontrackerI18n>search}" />
+					<ToolbarSpacer /> -->
 
 					<Button id="gotoDisruptionKpi" icon="sap-icon://area-chart"
 						text="{disruptiontrackerI18n>disruptionKPI}" press="onPressDisruptionKPI" />
