@@ -17,7 +17,7 @@
 				</contentLeft>
 				<contentRight>
 					<Button  id="navConfirm" type="Transparent" text="{i18n>Confirm}"
-						press="onPress" iconFirst="false" icon="sap-icon://arrow-right"
+						press="loadStationTracker" iconFirst="false" icon="sap-icon://arrow-right"
 						height="100%" />
 				</contentRight>
 			</Bar>
@@ -44,7 +44,7 @@
 		</Bar>
 			<SelectList headerText="{i18n>Site}" items="{path: 'site>/SiteCollection'}"
 				width="95%" class="sapUiTinyMargin" id="headTextPlant" itemPress="onPressSite" >
-				<core:Item text="{site>Site}" enabled="{ path : 'site>Site', formatter : 'airbus.mes.settings.util.Formatter.enabledSite' }" />
+				<core:Item text="{site>Site}" key="{site>Site}" enabled="{ path : 'site>Site', formatter : 'airbus.mes.settings.util.Formatter.enabledSite' }" />
 				<layoutData>
 					<l:SplitterLayoutData size="20%" resizable="true" />
 				</layoutData>
