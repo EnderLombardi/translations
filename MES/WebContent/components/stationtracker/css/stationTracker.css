@@ -326,8 +326,8 @@
 .contentNoPad .sapMPanelContent {
 	padding: 0rem;
 	background-color: #0F2D65;
-	/* 	background-color: #178FB3;
- */
+	/*background-color: #178FB3;*/
+	border-bottom: 1px solid #ffffff;
 }
 
 .sapMPIText2 {

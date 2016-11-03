@@ -69,13 +69,13 @@
 									width="100%" class="whiteTextHeader sapUiSmallMarginTop" />
 									<VBox justifyContent="SpaceAround" height="100%">
 										<HBox class="sapUiSmallMarginBottom">
-											<VBox width="30%">
+											<VBox width="31%">
 												<Label text="{StationTrackerI18n>Adherence}" class=" whiteText" />
 												<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/Labour}"
 													class="sapUiSmallMarginTop kpiValue  whiteText" height="100%" />
 			
 											</VBox>
-											<VBox width="70%">
+											<VBox width="69%">
 												<layout:Grid id="TaktAdherenceTrend" class="classTaktAdherenceTrend" defaultSpan="L4 M4 S4">
 													<layout:content>
 														<Label text="{StationTrackerI18n>Trend}" class=" whiteText takt_kpi_name takt_kpi_trend ">
