@@ -87,7 +87,7 @@
 			</columns>
 
 			<items>
-				<ColumnListItem type="Navigation">
+				<ColumnListItem type="Navigation" press="onTableClick">
 					<cells>
 						<Text text="{disruptionsTrackerModel>Operation}" />
 						<ObjectStatus class="sapUiSmallMarginBottom"
