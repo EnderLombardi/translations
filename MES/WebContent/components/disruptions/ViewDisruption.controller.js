@@ -83,7 +83,39 @@ sap.ui
 
 						},
 						
-					onReportDisruption : function(oEvent) {
+						onEscalate : function(oEvent) {
+							
+							var msgRef = oEvent.getSource().getBindingContext("DisruptionDetail").getObject("MessageRef");
+							
+							/*jQuery.ajax({
+								url : airbus.mes.worktracker.util.ModelManager
+										.getUrlStartOperation(data),
+								async : false,
+								error : function(xhr, status, error) {
+									airbus.mes.worktracker.util.ModelManager
+											.messageShow("Error");
+								},
+								success : function(result, status, xhr) {
+
+									if (result.Rowsets.Rowset[0].Row[0].Message_Type == undefined) {
+										airbus.mes.worktracker.util.ModelManager
+												.messageShow(sMessage);
+										flag_success = true;
+									} else if (result.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
+										airbus.mes.worktracker.util.ModelManager
+												.messageShow(result.Rowsets.Rowset[0].Row[0].Message)
+										flag_success = false;
+									} else {
+										airbus.mes.worktracker.util.ModelManager
+												.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
+										flag_success = true;
+									}
+
+								}
+							});*/
+						},
+						
+						onReportDisruption : function(oEvent) {
 
 						var oOperDetailNavContainer = sap.ui.getCore().byId(
 								"operationDetailsView--operDetailNavContainer");
