@@ -608,6 +608,7 @@ background-color: #0085AD !important;
 
 #stationTrackerView--kpiHeaderContent{
 	height: 195px;
+	overflow-y: hidden;
 }
 
 #stationTrackerView--kpiHeaderContent .contentHeaderCont {
@@ -952,7 +953,7 @@ background-color: #0085AD !important;
 
 #stationTrackerView--kpiHeaderContent .takt_kpi_name {
 	text-align: right !important;
-    font-size: 0.8vw;
+    font-size: 0.85vw;
     vertical-align: middle;
     display: baseline;
 }

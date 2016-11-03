@@ -40,7 +40,7 @@
 				<content>
 					<HBox id="kpiHeaderContent" width="100%">
 
-						<HBox justifyContent="SpaceAround" id="boxTaktAdherence" width="33%" class="contentHeaderCont">
+						<HBox justifyContent="SpaceAround" id="boxTaktAdherence" width="32%" class="contentHeaderCont">
 						
 							<HBox>
 							
@@ -149,7 +149,7 @@
 							</VBox>
 						</VBox>
 
-						<VBox id="boxOpenDisruptions" width="25%" class="contentHeaderCont">
+						<VBox id="boxOpenDisruptions" width="24%" class="contentHeaderCont">
 							<Label text="{StationTrackerI18n>DisruptionOpen/Andon}"
 								design="Bold" width="100%" class="whiteTextHeader sapUiSmallMarginTopBottom" />
 							<HBox height="65%">
@@ -204,7 +204,7 @@
 							</HBox>
 						</VBox>
 
-						<VBox id="boxResolutionEfficiency" width="10%" alignItems="Center"
+						<VBox id="boxResolutionEfficiency" width="11%" alignItems="Center"
 							class="contentHeaderCont">
 							<Label text="{StationTrackerI18n>ResolutionEfficiency}"
 								design="Bold" class="whiteTextHeader sapUiSmallMarginTopBottom" />
@@ -226,7 +226,7 @@
 							</VBox>
 						</VBox>
 
-						<VBox id="boxExtraWork" wrap="Wrap" width="5%" class="contentHeaderCont">
+						<VBox id="boxExtraWork" wrap="Wrap" width="6%" class="contentHeaderCont">
 							<Label text="{StationTrackerI18n>ExtraWork}" design="Bold"
 								width="100%" class="whiteTextHeader sapUiSmallMarginTopBottom " />
 							<Label text="{StationTrackerI18n>Operations}" width="100%"
