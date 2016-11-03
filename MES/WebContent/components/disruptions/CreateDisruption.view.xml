@@ -61,9 +61,9 @@
 									<f:fields>
 										<Select id="gravity" selectedKey="Blocked">
 											<items>
-												<core:Item text="Blocked" key="1" />
-												<core:Item text="Blocked" key="2" />
-												<core:Item text="Blocked" key="3" />
+												<core:Item text="{i18n>NotBlocked}" key="1" />
+												<core:Item text="{i18n>Disturbed}" key="2" />
+												<core:Item text="{i18n>Blocked}" key="3" />
 											</items>
 											<layoutData>
 												<l:GridData span="L3 M6 S6" />

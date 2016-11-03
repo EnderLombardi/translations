@@ -229,7 +229,7 @@ sap.ui
 								},
 								{
 									"attribute" : "REQD_FIX_BY",
-									"value": this.getView().byId("expectedTime").getValue()	
+									"value": this.getView().byId("expectedDate").getValue()	
 								},
 								{
 									"attribute" : "GRAVITY",
