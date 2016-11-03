@@ -25,8 +25,7 @@ airbus.mes.stationtracker.ModelManager = {
               core.setModel(new sap.ui.model.json.JSONModel(), "ressourcePoolModel"); // Ressource// poolModel
               core.setModel(new sap.ui.model.json.JSONModel(), "groupModel"); // Unplanned// Filter// Model
 
-              core.getModel("stationTrackerRModel").attachRequestCompleted(
-                           airbus.mes.stationtracker.ModelManager.onStationTrackerLoad);
+              core.getModel("stationTrackerRModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onStationTrackerLoad);
               core.getModel("stationTrackerIModel").attachRequestCompleted(
                            airbus.mes.stationtracker.ModelManager.onStationTrackerLoad);
               core.getModel("shiftsModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onShiftsLoad);
@@ -46,7 +45,7 @@ airbus.mes.stationtracker.ModelManager = {
                      dest = "sopra";
                      break;
               default:
-                     dest = "local";
+                     dest = "airbus";
                      break;
               }
 
@@ -486,19 +485,12 @@ airbus.mes.stationtracker.ModelManager = {
                      airbus.mes.stationtracker.operationDetailPopup = sap.ui.xmlfragment("operationDetailPopup",
                                   "airbus.mes.stationtracker.fragments.operationDetailPopup", airbus.mes.stationtracker.oView
                                                 .getController());
-
-                     airbus.mes.stationtracker.operationDetailPopup.addStyleClass("alignTextLeft");
                      airbus.mes.stationtracker.operationDetailPopup.setModel(sap.ui.getCore().getModel("operationDetailModel"),
                                   "operationDetailModel");
 
                      airbus.mes.stationtracker.oView.addDependent(airbus.mes.stationtracker.operationDetailPopup);
 
-                     airbus.mes.stationtracker.operationDetailPopup.addStyleClass("alignTextLeft");
-                     airbus.mes.stationtracker.operationDetailPopup.setModel(sap.ui.getCore().getModel("operationDetailModel"),
-                                  "operationDetailModel");
-                     airbus.mes.stationtracker.operationDetailPopup.setModel(sap.ui.getCore().getModel("WorkListModel"),
-                                  "WorkListModel");
-                     airbus.mes.stationtracker.oView.addDependent(airbus.mes.stationtracker.operationDetailPopup);
+                     //airbus.mes.stationtracker.operationDetailPopup.addStyleClass("alignTextLeft");
 
               }
 

@@ -3,9 +3,6 @@
 	
 }*/
 /*Default Focus*/
-* {
-	outline: 0;
-}
 
 .noRows.sapUiTableColRowHdr, .sapUiTableColHdr .sapUiTableCol, .sapUiTableColHdr .sapUiTableTr>td{
 	border-right: 0px solid #dddddd;

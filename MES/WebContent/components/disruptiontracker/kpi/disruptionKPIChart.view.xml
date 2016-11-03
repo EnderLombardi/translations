@@ -1,0 +1,99 @@
+<core:View controllerName="airbus.mes.disruptiontracker.kpi.disruptionKPIChart"
+	xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:viz="sap.viz.ui5.controls"
+	xmlns:core="sap.ui.core" xmlns:viz.data="sap.viz.ui5.data" 
+	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds">
+	
+	<Page showHeader="false" class="disruptionKPI">
+		<subHeader>
+			<Toolbar>
+				<Button id="navBack" icon="sap-icon://arrow-left" text="Back"
+					press="onNavBack" type="Transparent" />
+				<ToolbarSpacer />
+				<Text text="{i18n>disruptionKPITitle}" />
+				<ToolbarSpacer />
+			</Toolbar>
+		</subHeader>
+		<content>
+			<viz:VizFrame id="vizFrame" height="400px" width="50%"
+				class="chart" uiConfig="{applicationSet:'fiori'}" legendVisible="false">
+				<!-- <viz:dataset>
+					<viz.data:FlattenedDataset
+						data="{/disruptionsTrackerModel>//Rowsets/Rowset/0/Row}">
+						<viz.data:dimensions>
+							<viz.data:DimensionDefinition axis="1"
+								name="MessageType" value="{/MessageType}" />
+						</viz.data:dimensions>
+						<viz.data:measures>
+							<viz.data:MeasureDefinition name="TIME_LOST"
+								value="{/TIME_LOST}" />
+						</viz.data:measures>
+					</viz.data:FlattenedDataset>
+				</viz:dataset> -->
+				<!-- <viz:feeds>
+
+			   <viz.feeds:FeedItem uid="axisLabels"
+			   type="Dimension"
+			   values="MessageType" />
+			
+			   <viz.feeds:FeedItem id='valueAxisFeed'
+			   uid="primaryValues"
+			   type="Measure"
+			   values="TIME_LOST" />
+			
+			   </viz:feeds> -->
+			</viz:VizFrame>
+
+			<viz:VizFrame id="vizFrame2" height="400px" width="50%"
+				class="chart" uiConfig="{applicationSet:'fiori'}" legendVisible="false">
+				<viz:dataset width="50%">
+					<viz.data:FlattenedDataset
+						data="{/TimeLostperReason/TimeLostperReasonData}">
+<!-- 						<viz.data:dimensions> -->
+<!-- 							<viz.data:DimensionDefinition axis="1" -->
+<!-- 								name="Reason" value="{Reason}" /> -->
+<!-- 						</viz.data:dimensions> -->
+<!-- 						<viz.data:measures> -->
+<!-- 							<viz.data:MeasureDefinition name="Time Lost" -->
+<!-- 								value="{Time Lost}" /> -->
+<!-- 						</viz.data:measures> -->
+					</viz.data:FlattenedDataset>
+				</viz:dataset>
+			</viz:VizFrame>
+
+			<viz:VizFrame id="vizFrame3" height="400px" width="50%"
+				class="chart" vizType="bar" uiConfig="{applicationSet:'fiori'}"
+				legendVisible="false">
+				<viz:dataset width="50%">
+					<viz.data:FlattenedDataset
+						data="{/TimeLostperOperation/LostTimeperOperationData}">
+<!-- 						<viz.data:dimensions> -->
+<!-- 							<viz.data:DimensionDefinition axis="1" -->
+<!-- 								name="Operation" value="{Operation}" /> -->
+<!-- 						</viz.data:dimensions> -->
+<!-- 						<viz.data:measures> -->
+<!-- 							<viz.data:MeasureDefinition name="Time Lost" -->
+<!-- 								value="{Time Lost}" /> -->
+<!-- 						</viz.data:measures> -->
+					</viz.data:FlattenedDataset>
+				</viz:dataset>
+			</viz:VizFrame>
+
+			<viz:VizFrame id="vizFrame4" height="400px" width="50%"
+				class="chart" vizType="bar" uiConfig="{applicationSet:'fiori'}"
+				legendVisible="false">
+				<viz:dataset width="50%">
+					<viz.data:FlattenedDataset data="{/TimeLostperMSN/LostTimeperMSNData}">
+<!-- 						<viz.data:dimensions> -->
+<!-- 							<viz.data:DimensionDefinition axis="1" -->
+<!-- 								name="MSN" value="{MSN}" /> -->
+<!-- 						</viz.data:dimensions> -->
+<!-- 						<viz.data:measures> -->
+<!-- 							<viz.data:MeasureDefinition name="Time Lost" -->
+<!-- 								value="{Time Lost}" /> -->
+<!-- 						</viz.data:measures> -->
+					</viz.data:FlattenedDataset>
+				</viz:dataset>
+			</viz:VizFrame>
+		</content>
+	</Page>
+</core:View>

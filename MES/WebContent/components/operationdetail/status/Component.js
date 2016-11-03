@@ -1,6 +1,6 @@
 jQuery.sap.registerModulePath("airbus.mes.operationdetail.status", "../components/operationdetail/status");
 //jQuery.sap.require("airbus.mes.operationdetail.status.Formatter");
-//jQuery.sap.require("airbus.mes.operationdetail.status.ModelManager");
+jQuery.sap.require("airbus.mes.operationdetail.ModelManager");
 
 
 jQuery.sap.declare("airbus.mes.operationdetail.status.Component");
@@ -8,7 +8,7 @@ jQuery.sap.declare("airbus.mes.operationdetail.status.Component");
 sap.ui.core.UIComponent.extend("airbus.mes.operationdetail.status.Component", {
 	metadata : {
 		properties : {},
-		includes : [ "" ]
+		includes : [ "../css/progressSlider.css" ]
 
 	}
 });
