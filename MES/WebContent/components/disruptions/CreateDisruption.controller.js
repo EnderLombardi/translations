@@ -194,24 +194,11 @@ sap.ui
 					onCreateDisrupution : function() {
 
 						var sCategory = this.getView().byId("selectCategory").getSelectedKey();
-						var sGravity = this.getView().byId("gravity").getSelectedKey();
-						var sReason = this.getView().byId("selectReason").getSelectedKey();
-						var sResponsible = this.getView().byId("selectResponsibe").getSelectedKey();
-						var sRootCause = this.getView().byId("selectRootCause").getSelectedKey();
-						var dOpenDate = this.getView().byId("openDate")
-								.getDateValue();
-						var dExpectedDate = this.getView().byId("expectedDate")
-								.getDateValue();
-						var dOpenTime = this.getView().byId("openTime")
-								.getDateValue();
-						var dExpectedTime = this.getView().byId("expectedTime")
-								.getDateValue();
-						var iTimeLost = this.getView().byId("timeLost").getValue();
-						
-						var sComment = this.getView().byId("comment").getText();
+						var sRootCause = this.getView().byId("selectRootCause").getSelectedKey();			
+						var sComment = this.getView().byId("comment").getValue();
 
-						// Convert input to XML format
 						
+						// Create a JSON for payload attributes
 						var aModelData = []
 						
 
@@ -230,11 +217,11 @@ sap.ui
 								},
 								{
 									"attribute" : "DESCRIPTION",
-									"value": this.getView().byId("comment").getText()
+									"value": this.getView().byId("comment").getValue()
 								},
 								{
 									"attribute" : "REASON",
-									"value": this.getView().byId("selectReason").getSelectedKey()
+									"value": this.getView().byId("selectReasonTree").getSelectedKey()
 								},
 								{
 									"attribute" : "TIME_LOST",
@@ -242,9 +229,7 @@ sap.ui
 								},
 								{
 									"attribute" : "REQD_FIX_BY",
-									"value": this.getView().byId("expectedDate")
-									.getDateValue()+this.getView().byId("expectedTime")
-									.getDateValue()
+									"value": airbus.mes.disruptions.Formatter.defaultDateConversion(this.getView().byId("expectedDate"),this.getView().byId("expectedTime"))
 								},
 								{
 									"attribute" : "GRAVITY",
@@ -268,10 +253,7 @@ sap.ui
 							aModelData.push(oJson);
 
 							
-							
-						airbus.mes.disruptions.ModelManager.createDisruption(
-								sObject, sGravity, sNature, sHelp, dOpenDate,
-								dExpectedDate, dOpenTime, dExpectedTime);
+						airbus.mes.disruptions.ModelManager.createDisruption(sCategory,sRootCause,sComment,aModelData);
 					},
 
 				/**

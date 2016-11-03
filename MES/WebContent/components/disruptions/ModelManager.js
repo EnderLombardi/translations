@@ -70,7 +70,80 @@ airbus.mes.disruptions.ModelManager = {
 		getDiruptionsURL = getDiruptionsURL.replace('$Operation', operation);
 		
 		oViewModel.loadData(getDiruptionsURL, null, false);
-	}
+	},
+	
+	/********************************
+	 * Create Disruption service
+	 */
+	
+	getURLCreateDisruption : function(){
+		var urlCreateDisruption = this.urlModel.getProperty("urlCreateDisruption");
+		return urlCreateDisruption;
+	},
+	createDisruption : function(messageType,messageSubject,messageBody,payloadData) {
+		jQuery.ajax({
+			async : true,
+			cache : false,
+			url : this.getURLCreateDisruption(),
+			type : 'POST',
+			data : {
+				"Param.1" : airbus.mes.settings.ModelManager.site,
+				"Param.2" : sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"),
+				"Param.3" : messageType,
+				"Param.4" : messageSubject,
+				"Param.5" : messageBody,
+				"Param.6" : airbus.mes.disruptions.Formatter.json2xml({
+					payloadAttributelist : payloadData
+					})
+			},
+			success : function(data, textStatus, jqXHR) {
+				var rowExists = data.Rowsets.Rowset;
+				if (rowExists != undefined) {
+					if (data.Rowsets.Rowset[0].Row[0].Message_Type == "S") {
+
+						this.messageShow(data.Rowsets.Rowset[0].Row[0].Message);
+					} else {
+						this.messageShow("Error in Success");
+					}
+				} else {
+					if (data.Rowsets.FatalError) {
+						this.messageShow(data.Rowsets.FatalError);
+					} else {
+						this.messageShow("Success");
+					}
+				}
+
+			},
+			error : function() {
+				this.messageShow("Error in Error")
+				
+			}
+
+		});
+
+	},
+	
+	messageShow : function(text) {
+        sap.m.MessageToast
+        .show(
+        		text,
+                      {
+                             duration : 3000,
+                             width : "25em",
+                             my : "center center",
+                             at : "center center",
+                             of : window,
+                             offset : "0 0",
+                             collision : "fit fit",
+                             onClose : null,
+                             autoClose : true,
+                             animationTimingFunction : "ease",
+                             animationDuration : 1000,
+                             closeOnBrowserNavigation : true
+                      });
+               
+  },
+	
 };
 
 
