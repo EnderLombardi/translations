@@ -73,7 +73,7 @@ airbus.mes.shell.util.navFunctions = {
 					          new sap.m.ToolbarSpacer({}),
 					          ]
 				}).addStyleClass("pageHeader contentNoPad"),
-			});
+			}).addStyleClass("classPolypolyPage");
 			
 			nav.addPage(oPolypolyPage);
 			}
