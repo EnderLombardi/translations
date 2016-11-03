@@ -58,20 +58,22 @@ airbus.mes.shell.util.navFunctions = {
 				content: airbus.mes.polypoly.oView,
 				title : "POLYPOLY",
 				id:"polypolyPage",
-				customHeader : new sap.m.Toolbar({
-					content: [
+				customHeader : new sap.m.Bar({
+					height: "3rem",
+					design: 'SubHeader',
+					contentLeft: [
 					          new sap.m.Button({
 					        	  icon:"sap-icon://arrow-left",
 					        	  type:"Transparent",
 					        	  press: function(){nav.back()},
 					        	  text: "Back",
-					          }),
-					          new sap.m.ToolbarSpacer({}),
-					          new sap.m.Label("polypolytitle", {
-					        	  text: "Polyvalence-Polycompetence Matrix"
-					          }).addStyleClass("pageWelcome sapUiTinyMarginBeginEnd"),
-					          new sap.m.ToolbarSpacer({}),
-					          ]
+					          })
+					          ],
+					contentMiddle: [
+						          new sap.m.Label("polypolytitle", {
+						        	  text: "Polyvalence-Polycompetence Matrix"
+						          }).addStyleClass("pageWelcome sapUiTinyMarginBeginEnd")
+						          ]
 				}).addStyleClass("pageHeader contentNoPad"),
 			}).addStyleClass("classPolypolyPage");
 			

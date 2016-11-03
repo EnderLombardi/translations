@@ -18,7 +18,7 @@
 }
 [id^="polypoly--oTablePolypoly-table"] .sapUiTableCol, .sapUiTableTr>td, [id^="polypoly--oTablePolypoly-table"] .sapUiTableTr>td, #polypoly--oTablePolypoly.sapUiTable>div.sapUiTableCnt, #polypoly--oTablePolypoly.sapUiTable>div.sapUiTableCnt .sapUiTableColHdrCnt {
     border: none;
-    	outline:1px dotted transparent;
+    outline:1px dotted transparent;
 }
 [id^="polypoly--oTablePolypoly-table"] tr, .sapUiTableCnt .sapUiTableColHdrCnt {
 	background-color: #ffffff;
@@ -211,13 +211,16 @@ button[id^="polypoly"].sapMBtn:hover> div[id^="polypoly"].sapMBtnHoverable, html
     border-color:transparent;
     outline:1px dotted transparent;
 }
-[id^="polypoly--oTablePolypoly-table"] div[id^="__button"].sapMBtnTransparent.sapMBtnActive,
-html.sap-desktop button[id^="__button"].sapMBtn:focus>div[id^="__button"].sapMBtnHoverable.sapMFocusable  {
+[id^="polypoly--oTablePolypoly-table"] div[id^="__button"].sapMBtnTransparent.sapMBtnActive  {
 	background-color: transparent;
 	outline:1px dotted transparent;
 	border-color:transparent;
 }
-
+.classPolypolyPage .sapMBtn:focus>.sapMBtnTransparent.sapMFocusable {
+    background-color: rgba(222,222,222,0.5);
+	outline:1px dotted transparent;
+	border-color:transparent;
+}
 /* BTN accept reject */
 
 [id^="polypoly--oTablePolypoly-table"] .sapMFlexItem {
@@ -244,45 +247,41 @@ html.sap-desktop button[id^="__button"].sapMBtn:focus>div[id^="__button"].sapMBt
 }
 
 /*header*/
-section header[id^="__toolbar"] {
+.classPolypolyPage label.pageWelcome {
+    text-shadow: none;	
+}
+
+.classPolypolyPage header {
 	box-shadow: 0px 2px 15px -5px #0F2D65;
     border: none;
     border-top:  0.6rem solid #ffffff;
     position:relative;
 	z-index:10;
 }
-header.sapMPageHeader::before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    top: 0;
-    border-top: none;
-    z-index: 7;
-}
-.sapUiTableMTbr .sapMTB {
+.classPolypolyPage .sapUiTableMTbr .sapMTB {
     background: #d4f1f7;
+    margin-top:0.55rem;
 }
-span[id^="img"]{
-	color: #d4f1f7;
-}
-#polypoly .sapUiTable>.sapUiTableTbr.sapUiTableMTbr {
-	diplay:block;
+
+.classPolypolyPage .sapUiTable>.sapUiTableTbr.sapUiTableMTbr {
 	margin-bottom:10px;
 }
-#polypoly span[id^="__icon"] {
+.classPolypolyPage .sapUiIcon {
 	color: #8fd4e2;
-	    	outline:1px dotted transparent;
+	outline:1px dotted transparent;
 }
-.sap-desktop header[id^="__toolbar"] .sapMBtnTransparent>.sapMBtnIcon {
+.sap-desktop .classPolypolyPage .sapMBtnTransparent>.sapMBtnIcon {
     color: #ffffff;
 }
-form#polypoly--polypolySearchField-F {
+
+.classPolypolyPage form {
     border: 1px solid transparent;
 }
-/*BODY*/
-.sapUiBody#content {
-	background-color:#fff;
-	background-image:none;
+.classPolypolyPage form.sapMSFF:hover, .classPolypolyPage form.sapMSFF:focus {
+    border-color: #0D5D76;
+}
+.classPolypolyPage .sapMTB-Transparent-CTX .sapMLabel, .classPolypolyPage .sapMBtnInner {
+    text-shadow: none;	
 }
 
 /* Pop-up Create Polypoly */
