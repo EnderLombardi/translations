@@ -33,17 +33,7 @@ airbus.mes.operationdetail.viewDisruption.Component.prototype.createContent = fu
 	        bundleUrl : "../components/disruptions/i18n/i18n.properties"
 	    });
 		this.oView.setModel(i18nModel, "i18nModel");	
-		airbus.mes.operationdetail.viewDisruption.oView = this.oView		
-		
-		
-		/*//Model for disruptions list data in table
-		this.oView.setModel(sap.ui.getCore().getModel("disruptionsTrackerModel"),"disruptionsTrackerModel");
-		
-		//Model for disruptions filter data in ComboBox
-		this.oView.setModel(sap.ui.getCore().getModel("disruptionsFilterData"), "disruptionsFilterData");
-		
-		//Model for disruptions order data in ComboBox
-		this.oView.setModel(sap.ui.getCore().getModel("disruptionsOrderData"), "disruptionsOrderData");*/
+		airbus.mes.operationdetail.viewDisruption.oView = this.oView
 		
 		
 		return this.oView;

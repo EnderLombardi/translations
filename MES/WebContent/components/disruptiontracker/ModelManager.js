@@ -7,10 +7,6 @@ airbus.mes.disruptiontracker.ModelManager = {
 	init : function(core) {
 		
 		core.setModel(new sap.ui.model.json.JSONModel(), "disruptionsTrackerModel");//Model having disruptions detail
-		core.setModel(new sap.ui.model.json.JSONModel(), "disruptionsFilterData");
-		core.setModel(new sap.ui.model.json.JSONModel(), "disruptionsOrderData");
-		/*core.setModel(new sap.ui.model.resource.ResourceModel({bundleName:"airbus.mes.disruptiontracker.i18n.i18n",bundleLocale:"en"}), 
-														 "disruptiontrackerI18n");*/
 
 
 		var dest;
@@ -29,18 +25,10 @@ airbus.mes.disruptiontracker.ModelManager = {
 		}
 
 		this.urlModel = new sap.ui.model.resource.ResourceModel({
-			bundleUrl : "../components/disruptiontracker/config/url_config.properties",
+			bundleUrl : "../components/disruptions/config/url_config.properties",
 			bundleLocale : dest
 		});
 		
-		this.loadData();
-		
-	},
-	
-	loadData: function() {
-		this.loadDisruptionFilterModel();
-		this.loadDisruptionOrderModel();
-		//this.loadDisruptionListModel();
 	},
 	
 	loadDisruptionFilterModel : function() {
