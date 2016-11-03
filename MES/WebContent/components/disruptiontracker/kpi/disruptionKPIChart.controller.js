@@ -31,22 +31,23 @@ sap.ui.controller("airbus.mes.disruptiontracker.kpi.disruptionKPIChart", {
 		
 		var oDataset = new sap.viz.ui5.data.FlattenedDataset({
 		 	dimensions: [{
-		 		name: 'MessageType',
+		 		name: 'Message Type',
 				axis : 1,
 		 		value: "{MessageType}"
 		 	}
 		 		],
 		 	measures: [
 		 		{
-		 			name: 'TIME_LOST', 
+		 			name: 'TIME LOST', 
 					axis : 1,
 		 			value: '{TIME_LOST}' 
 		 		}
 		 	],
 		 	data: {
-		 		path: "/"
+		 		path: "/Rowsets/Rowset/0/Row/"
 		 	}
 		 });
+//		.bindData("disruptionsTrackerModel>/Rowsets/Rowset/0/Row",null,null,[]);
 		
 		oVizFrame.setDataset(oDataset);
 		oVizFrame.setModel(oViewModel);
@@ -54,13 +55,13 @@ sap.ui.controller("airbus.mes.disruptiontracker.kpi.disruptionKPIChart", {
 		var feedPrimaryValues = new sap.viz.ui5.controls.common.feeds.FeedItem({
 			'uid' : "primaryValues",
 			'type' : "Measure",
-			'values' : ["TIME_LOST"]
+			'values' : ["TIME LOST"]
 		});
 
 		var feedAxisLabels = new sap.viz.ui5.controls.common.feeds.FeedItem({
 			'uid' : "axisLabels",
 			'type' : "Dimension",
-			'values' : ["MessageType"]		
+			'values' : ["Message Type"]		
 		});
 
 		oVizFrame.addFeed(feedPrimaryValues);

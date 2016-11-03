@@ -182,7 +182,7 @@
                "ClosureDate": "11/12/2016 - 11:00",
                "OriginatorGroup": "",
                "ResponsibleGroup": "Logistic",
-               "TIME_LOST": "6"
+               "TIME_LOST": "50"
             },
             {
                "MessageRef": "MessageDO:CHES,3477-344fa0cc:156f162fd1c:-4d2",
@@ -203,7 +203,7 @@
                "ClosureDate": "",
                "OriginatorGroup": "",
                "ResponsibleGroup": "Support",
-               "TIME_LOST": "5"
+               "TIME_LOST": "15"
             },
             {
                "MessageRef": "MessageDO:CHES,3477-344fa0cc:156f162fd1c:-4d2",
@@ -224,7 +224,7 @@
                "ClosureDate": "",
                "OriginatorGroup": "",
                "ResponsibleGroup": "Logistic",
-               "TIME_LOST": "7"
+               "TIME_LOST": "70"
             },
             {
                "MessageRef": "MessageDO:CHES,3477-344fa0cc:156f162fd1c:-4d2",
@@ -333,7 +333,7 @@
             },
             {
                "MessageRef": "MessageDO:CHES,3477-344fa0cc:156f162fd1c:-4d2",
-               "MessageType": "MessageTypeBO:CHES,CERT_CHECK_FAIL",
+               "MessageType": "MessageTypeBO:CHES,CERT_CHECK_FAIL1",
                "Status": "SOLVED",
                "Severity": "1",
                "Subject": "User Certificate Check Fail certification check failed; user does not have required certification",
@@ -350,7 +350,7 @@
                "ClosureDate": "",
                "OriginatorGroup": "",
                "ResponsibleGroup": "Logistic",
-               "TIME_LOST": ""
+               "TIME_LOST": "100"
             }
          ]
       }]
