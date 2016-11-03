@@ -10,6 +10,9 @@ airbus.mes.disruptions.ModelManager = {
 	init : function(core) {
 
 		this.core = core;
+		
+		core.setModel(new sap.ui.model.json.JSONModel(), "operationDisruptionsModel");
+			
 
 		var dest;
 
@@ -37,13 +40,6 @@ airbus.mes.disruptions.ModelManager = {
 		this.loadDisruptionCustomData();
 
 	},
-	
-	/***************************************************************************
-	 * Replace URL Parameters
-	 **************************************************************************/
-	replaceURI : function(sURI, sFrom, sTo) {
-		return sURI.replace(sFrom, encodeURIComponent(sTo));
-	},
 
 	/***************************************************************************
 	 * Set the Models for Custom Data of create Disruption
@@ -54,23 +50,135 @@ airbus.mes.disruptions.ModelManager = {
 	},
 	getDisruptionCustomData : function() {
 		var urlCustomData = this.urlModel.getProperty("urlCustomData");
-		urlCustomData = airbus.mes.operationdetail.ModelManager.replaceURI(
+		urlCustomData = airbus.mes.shell.ModelManager.replaceURI(
 				urlCustomData, "$site", airbus.mes.settings.ModelManager.site);
-		urlCustomData = airbus.mes.operationdetail.ModelManager.replaceURI(
+		urlCustomData = airbus.mes.shell.ModelManager.replaceURI(
 				urlCustomData, "$station", airbus.mes.settings.ModelManager.station);
 		return urlCustomData;
 
 	},
-	loadDisruptionsByOperation: function(operation) {
-		var oViewModel = sap.ui.getCore().getModel("DisruptionDetail");
-		
+	
+	
+	/******************************************
+	 * Generic Function to get URL for to get Disruptions 
+	 * with filters or no filters
+	 */
+	getDisruptionsURL: function(oFilters) {
 		var getDiruptionsURL = this.urlModel.getProperty("getDiruptionsURL");
 		
 		getDiruptionsURL = getDiruptionsURL.replace('$Site', airbus.mes.settings.ModelManager.site);
-		getDiruptionsURL = getDiruptionsURL.replace('$Operation', operation);
+		getDiruptionsURL = getDiruptionsURL.replace('$Status', "ALL");
+		getDiruptionsURL = getDiruptionsURL.replace('$Resource', "");
 		
-		oViewModel.loadData(getDiruptionsURL, null, false);
-	}
+
+		if(oFilters.operation != undefined && oFilters.operation != "")
+			getDiruptionsURL = getDiruptionsURL.replace('$Operation', oFilters.operation);
+		else
+			getDiruptionsURL = getDiruptionsURL.replace('$Operation', "");
+		
+		getDiruptionsURL = getDiruptionsURL.replace('$SFC', "");
+		getDiruptionsURL = getDiruptionsURL.replace('$OperationRevision', "");
+		getDiruptionsURL = getDiruptionsURL.replace('$SignalFlag', "");
+		getDiruptionsURL = getDiruptionsURL.replace('$FromDate', "");
+		getDiruptionsURL = getDiruptionsURL.replace('$ToDate', ""); 
+		
+		if(oFilters.station != undefined && oFilters.station != "")
+			getDiruptionsURL = getDiruptionsURL.replace('$WorkCenter', oFilters.station);
+		else
+			getDiruptionsURL = getDiruptionsURL.replace('$WorkCenter', "");
+		
+		getDiruptionsURL = getDiruptionsURL.replace('$userGroup', "");
+		getDiruptionsURL = getDiruptionsURL.replace('$MessageType', "");
+		
+		return getDiruptionsURL;
+	},
+	
+	
+	/********************************************
+	 * Load Disruptions for a single operation
+	 */
+	loadDisruptionsByOperation: function(operation){
+		var oViewModel = sap.ui.getCore().getModel("operationDisruptionsModel");
+		
+		var getDisruptionsURL = airbus.mes.disruptions.ModelManager.getDisruptionsURL({
+			"operation": operation
+		});
+		
+		oViewModel.loadData(getDisruptionsURL, null, false);
+	},
+	
+	/********************************
+	 * Create Disruption service
+	 */
+	
+	getURLCreateDisruption : function(){
+		var urlCreateDisruption = this.urlModel.getProperty("urlCreateDisruption");
+		return urlCreateDisruption;
+	},
+	createDisruption : function(messageType,messageSubject,messageBody,payloadData) {
+		jQuery.ajax({
+			async : true,
+			cache : false,
+			url : this.getURLCreateDisruption(),
+			type : 'POST',
+			data : {
+				"Param.1" : airbus.mes.settings.ModelManager.site,
+				"Param.2" : sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"),
+				"Param.3" : messageType,
+				"Param.4" : messageSubject,
+				"Param.5" : messageBody,
+				"Param.6" : airbus.mes.disruptions.Formatter.json2xml({
+					payloadAttributelist : payloadData
+					})
+			},
+			success : function(data, textStatus, jqXHR) {
+				var rowExists = data.Rowsets.Rowset;
+				if (rowExists != undefined) {
+					if (data.Rowsets.Rowset[0].Row[0].Message_Type == "S") {
+
+						this.messageShow(data.Rowsets.Rowset[0].Row[0].Message);
+					} else {
+						this.messageShow("Error in Success");
+					}
+				} else {
+					if (data.Rowsets.FatalError) {
+						this.messageShow(data.Rowsets.FatalError);
+					} else {
+						this.messageShow("Success");
+					}
+				}
+
+			},
+			error : function() {
+				this.messageShow("Error in Error")
+				
+			}
+
+		});
+
+	},
+	
+	messageShow : function(text) {
+        sap.m.MessageToast
+        .show(
+        		text,
+                      {
+                             duration : 3000,
+                             width : "25em",
+                             my : "center center",
+                             at : "center center",
+                             of : window,
+                             offset : "0 0",
+                             collision : "fit fit",
+                             onClose : null,
+                             autoClose : true,
+                             animationTimingFunction : "ease",
+                             animationDuration : 1000,
+                             closeOnBrowserNavigation : true
+                      });
+               
+  }
+
 };
 
 

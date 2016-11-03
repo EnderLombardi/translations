@@ -1,6 +1,6 @@
 jQuery.sap.require("sap.ui.core.UIComponent");
 jQuery.sap.registerModulePath("airbus.mes.disruptions", "../components/disruptions");
-//jQuery.sap.require("airbus.mes.disruptions.util.Formatter");
+jQuery.sap.require("airbus.mes.disruptions.Formatter");
 jQuery.sap.require("airbus.mes.disruptions.ModelManager");
 
 jQuery.sap.declare("airbus.mes.operationdetail.createDisruption.Component");

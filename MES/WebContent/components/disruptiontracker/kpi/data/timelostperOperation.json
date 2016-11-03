@@ -1,5 +1,5 @@
 {
-	"LostTimeperOperation" : [ 
+	"LostTimeperOperationData" : [ 
 		{"Operation": "Operation", "revenue": 10, "Time Lost": 1},
 		{"Operation": "Operation1", "revenue": 33, "Time Lost": 10},
 		{"Operation": "Operation2", "revenue": 48, "Time Lost": 1},

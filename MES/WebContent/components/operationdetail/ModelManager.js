@@ -25,7 +25,7 @@ airbus.mes.operationdetail.ModelManager = {
 			dest = "local";
 			break;
 		default:
-			dest = "local";
+			dest = "airbus";
 			break;
 		}
 
@@ -67,13 +67,6 @@ airbus.mes.operationdetail.ModelManager = {
 	},
 
 	/***************************************************************************
-	 * Replace URL Parameters
-	 **************************************************************************/
-	replaceURI : function(sURI, sFrom, sTo) {
-		return sURI.replace(sFrom, encodeURIComponent(sTo));
-	},
-
-	/***************************************************************************
 	 * Set the Models for Reason Codes
 	 **************************************************************************/
 	loadReasonCodeModel : function() {
@@ -82,7 +75,7 @@ airbus.mes.operationdetail.ModelManager = {
 	},
 	getReasonCodesURL : function() {
 		var urlReasonCodes = this.urlModel.getProperty("getReasonCodes");
-		urlReasonCodes = airbus.mes.operationdetail.ModelManager.replaceURI(
+		urlReasonCodes = airbus.mes.shell.ModelManager.replaceURI(
 				urlReasonCodes, "$site", airbus.mes.settings.ModelManager.site);
 		return urlReasonCodes;
 
@@ -93,16 +86,16 @@ airbus.mes.operationdetail.ModelManager = {
 	 **************************************************************************/
 	getUrlStartOperation : function(data) {
 		var urlStartOperation = this.urlModel.getProperty("startOperation");
-		urlStartOperation = airbus.mes.operationdetail.ModelManager
+		urlStartOperation = airbus.mes.shell.ModelManager
 				.replaceURI(urlStartOperation, "$operation", data.operation_no);
-		urlStartOperation = airbus.mes.operationdetail.ModelManager
+		urlStartOperation = airbus.mes.shell.ModelManager
 				.replaceURI(urlStartOperation, "$sfc", data.sfc);
-		urlStartOperation = airbus.mes.operationdetail.ModelManager
+		urlStartOperation = airbus.mes.shell.ModelManager
 				.replaceURI(urlStartOperation, "$site",
 						airbus.mes.settings.ModelManager.site);
-		urlStartOperation = airbus.mes.operationdetail.ModelManager
+		urlStartOperation = airbus.mes.shell.ModelManager
 				.replaceURI(urlStartOperation, "$resource", "DEFAULT");
-		urlStartOperation = airbus.mes.operationdetail.ModelManager
+		urlStartOperation = airbus.mes.shell.ModelManager
 				.replaceURI(urlStartOperation, "$OperationRevision",
 						data.operation_revision);
 
@@ -114,17 +107,17 @@ airbus.mes.operationdetail.ModelManager = {
 	 **************************************************************************/
 	getUrlPauseOperation : function(data) {
 		var urlPauseOperation = this.urlModel.getProperty("pauseOperation");
-		urlPauseOperation = airbus.mes.operationdetail.ModelManager
+		urlPauseOperation = airbus.mes.shell.ModelManager
 				.replaceURI(urlPauseOperation, "$Operation", data.operation_no);
 
-		urlPauseOperation = airbus.mes.operationdetail.ModelManager
+		urlPauseOperation = airbus.mes.shell.ModelManager
 				.replaceURI(urlPauseOperation, "$Sfc", data.sfc);
-		urlPauseOperation = airbus.mes.operationdetail.ModelManager
+		urlPauseOperation = airbus.mes.shell.ModelManager
 				.replaceURI(urlPauseOperation, "$Site",
 						airbus.mes.settings.ModelManager.site);
-		urlPauseOperation = airbus.mes.operationdetail.ModelManager
+		urlPauseOperation = airbus.mes.shell.ModelManager
 				.replaceURI(urlPauseOperation, "$Resource", "DEFAULT");
-		urlPauseOperation = airbus.mes.operationdetail.ModelManager
+		urlPauseOperation = airbus.mes.shell.ModelManager
 				.replaceURI(urlPauseOperation, "$OperationRevision",
 						data.operation_revision);
 
@@ -138,20 +131,20 @@ airbus.mes.operationdetail.ModelManager = {
 			percentConfirm, sfcStepRef, reasonCodeText) {
 		var totalPartialConfirmationUrl = this.urlModel
 				.getProperty("operationConfirmatonUrl");
-		totalPartialConfirmationUrl = airbus.mes.operationdetail.ModelManager
+		totalPartialConfirmationUrl = airbus.mes.shell.ModelManager
 				.replaceURI(totalPartialConfirmationUrl, "$userId", userId);
-		totalPartialConfirmationUrl = airbus.mes.operationdetail.ModelManager
+		totalPartialConfirmationUrl = airbus.mes.shell.ModelManager
 				.replaceURI(totalPartialConfirmationUrl, "$password", password);
-		totalPartialConfirmationUrl = airbus.mes.operationdetail.ModelManager
+		totalPartialConfirmationUrl = airbus.mes.shell.ModelManager
 				.replaceURI(totalPartialConfirmationUrl, "$confirmationType",
 						confirmationType);
-		totalPartialConfirmationUrl = airbus.mes.operationdetail.ModelManager
+		totalPartialConfirmationUrl = airbus.mes.shell.ModelManager
 				.replaceURI(totalPartialConfirmationUrl, "$percentConfirm",
 						percentConfirm);
-		totalPartialConfirmationUrl = airbus.mes.operationdetail.ModelManager
+		totalPartialConfirmationUrl = airbus.mes.shell.ModelManager
 				.replaceURI(totalPartialConfirmationUrl, "$sfcStepRef",
 						sfcStepRef);
-		totalPartialConfirmationUrl = airbus.mes.operationdetail.ModelManager
+		totalPartialConfirmationUrl = airbus.mes.shell.ModelManager
 				.replaceURI(totalPartialConfirmationUrl, "$resonCodeText",
 						reasonCodeText);
 		return totalPartialConfirmationUrl;

@@ -25,7 +25,7 @@ airbus.mes.worktracker.util.ModelManager = {
 			dest = "local";
 			break;
 		default:
-			dest = "local";
+			dest = "airbus";
 			break;
 		}
 

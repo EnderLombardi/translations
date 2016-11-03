@@ -6,35 +6,41 @@ sap.ui.controller("airbus.mes.settings.Settings",
 		{
 	
 //			Tree to define the hierarchy between select box Line, Station and MSN	
-//			selectTree : {
-//				id : "selectLine",
+//	selectTree : {
+//		id : "ComboBoxProgram",
+//		type : "select",
+//		path : "program",
+//		attr : "program",
+//		childs : [ {
+//			id : "ComboBoxLine",
+//			type : "select",
+//			path : "line",
+//			attr : "line",
+//			childs : [ {
+//				id : "ComboBoxStation",
 //				type : "select",
-//				path : "line",
-//				attr : "line",
-//				childs : [ {
-//					id : "selectStation",
-//					type : "select",
-//					path : "station",
-//					attr : "station",
-//					childs : []
-//				}, {
-//					id : "selectMSN",
-//					type : "select",
-//					path : "msn",
-//					childs : []
-//				}, {
-//					id : "Return",
-//					type : "Return",
-//					childs : []
-//				} ]
-//			},
+//				path : "station",
+//				attr : "station",
+//				childs : []
+//			}, {
+//				id : "ComboBoxMSN",
+//				type : "select",
+//				path : "msn",
+//				childs : []
+//			}, {
+//				id : "Return",
+//				type : "Return",
+//				childs : []
+//			} ]
+//		} ]
+//	},
 //			
 			selectTree : {
-				id : "selectProgram",
-				type : "select",
-				path : "program",
-				attr : "program",
-				childs : [ {
+//				id : "headTextProgram",
+//				type : "select",
+//				path : "program",
+//				attr : "program",
+//				childs : [ {
 					id : "selectLine",
 					type : "select",
 					path : "line",
@@ -55,7 +61,7 @@ sap.ui.controller("airbus.mes.settings.Settings",
 						type : "Return",
 						childs : []
 					} ]
-				} ]
+			//	} ]
 			},
 
 			onAfterRendering : function() {
@@ -97,19 +103,32 @@ sap.ui.controller("airbus.mes.settings.Settings",
 			onSelectionChange : function(oEvt) {
 				var that = this;
 				var id = oEvt.getSource().getId().split("--")[1];
-				this.findElement(this.selectTree, oEvt.getSource()
-						.getId().split("--")[1]).childs
+				this.findElement(this.selectTree, oEvt.getSource().getId().split("--")[1]).childs
 						.forEach(function(oElement) {
 							that.clearField(oElement);
 							that.filterField(oElement);
 						});
 
 				if (id === "selectLine") {
-					this.setEnabledCombobox(true, true, false);
+					this.setEnabledCombobox(true, true, true, false);
 				} else {
-					this.setEnabledCombobox(true, true, true);
+					this.setEnabledCombobox(true, true, true, true);
 				}
 
+			},
+			
+			onProgramSelect : function() {
+				var that = this;
+				var sProgram = "selectLine";
+				this.findElement(this.selectTree, sProgram).childs
+						.forEach(function(oElement) {
+							that.clearField(oElement);
+							that.filterField(oElement);
+						});
+
+				
+				this.setEnabledCombobox(true, true, false, false);			
+				
 			},
 
 			// ****************** clear other ComboBoxes after changing
@@ -130,7 +149,26 @@ sap.ui.controller("airbus.mes.settings.Settings",
 				var aFilters = [];
 				var oElement = oTree.parent;
 				while (oElement) {
-					var val = this.getView().byId(oElement.id).getValue();
+					//special selection because program and site are not combobox
+					if ( oElement.id === "headTextProgram" ) {
+						
+						this.getView().byId(oElement.id).getItems().forEach(function(el){
+							
+							if ( el.getContent()[0].getItems()[0].getSelected() ) {
+								
+								var sPath = el.getBindingContextPath()
+								
+								
+							}
+						
+						})
+						
+						
+					} else  {
+						
+						var val = this.getView().byId(oElement.id).getValue();
+					}
+					
 					if (val) {
 						var oFilter = new sap.ui.model.Filter( oElement.path, "EQ", val);
 						aFilters.push(oFilter);
@@ -162,29 +200,44 @@ sap.ui.controller("airbus.mes.settings.Settings",
 					that.filterField(oElement);
 				});
 			},		
-			setEnabledCombobox : function(fLine, fStation, fMsn) {
+			setEnabledCombobox : function(fProgram, fLine, fStation, fMsn) {
 				this.getView().byId("selectLine").setEnabled(fLine);
 				this.getView().byId("selectStation").setEnabled(fStation);
 				this.getView().byId("selectMSN").setEnabled(fMsn);
 //				View1--selectLine
 			},
-			// User select a site on the table and the map is zoomed
+			/**
+		     * Load plant model when selected a Site and User select a site on the table and the map is zoomed
+		     */
 			onPressSite : function(e) {
-
-				site = e.getSource().getTitle();
-
-				oData = this.getView().getModel("region").oData;
+				
+				var oModel = sap.ui.getCore().getModel("siteModel").getProperty("/Rowsets/Rowset/0/Row");
+							
+				var site = e.getParameters().item.getText();
+				var fIndex = oModel.map(function(x) {return x.site_desc; }).indexOf( site );
+				
+				airbus.mes.settings.ModelManager.site = sap.ui.getCore().getModel("siteModel").getProperty("/Rowsets/Rowset/0/Row/" + fIndex + "/site");
+				var oData = this.getView().getModel("region").oData;
 
 				for (var i = 0; i < oData.Spots.length; i++) {
 					var spot = oData.Spots[i].tooltip;
 					if (spot == site) {
 
 						var splitter = oData.Spots[i].pos.split(";");
-						sap.m.MessageToast.show(e.getSource().getTitle());
+						sap.m.MessageToast.show(site);
 						this.byId("vbi").zoomToGeoPosition(splitter[0],
 								splitter[1], 6);
 					}
 				}
+								
+				//airbus.mes.settings.ModelManager.site = this.getView().byId("ComboBoxPlant").getValue();
+				airbus.mes.settings.ModelManager.loadPlantModel();
+				this.filterField(this.selectTree);
+				this.getView().byId("selectLine").setValue("");
+				this.getView().byId("selectStation").setValue("");
+				this.getView().byId("selectMSN").setValue("");
+								
+				this.setEnabledCombobox(true, false, false, false);
 
 			},
 
@@ -233,7 +286,7 @@ sap.ui.controller("airbus.mes.settings.Settings",
 						"items")[0];
 				// Set the selected attribute
 				oButton.setSelected(true);
-			},			
+			},
 			/**
 		     * Get data from usersetting and reuse previous settings input.
 		     */
