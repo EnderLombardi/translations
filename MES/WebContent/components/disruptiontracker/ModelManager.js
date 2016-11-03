@@ -18,6 +18,14 @@ airbus.mes.disruptiontracker.ModelManager = {
 		
 		oViewModel.loadData(getDisruptionsURL, null, false);
 		
+		if(oFilters.station != undefined && oFilters.station != ""){
+			airbus.mes.disruptiontracker.oView.byId("stationComboBox").setSelectedKey(oFilters.station);
+		}
+		else{
+			airbus.mes.disruptiontracker.oView.byId("stationComboBox").setSelectedKey("");
+		}
+		
+		
 		//TODO: Attach on load model event
 		document.getElementById("disruptiontrackerView--disruptionsTable-nodata-text").colSpan = "1";
 

@@ -77,12 +77,10 @@ airbus.mes.disruptions.ModelManager = {
 		getDiruptionsURL = getDiruptionsURL.replace('$Status', "ALL");
 		getDiruptionsURL = getDiruptionsURL.replace('$Resource', "");
 		
-		if(oFilters.operation != undefined && oFilters.operation != ""){
+		if(oFilters.operation != undefined && oFilters.operation != "")
 			getDiruptionsURL = getDiruptionsURL.replace('$Operation', oFilters.operation);
-		}
-		else{
+		else
 			getDiruptionsURL = getDiruptionsURL.replace('$Operation', "");
-		}
 		
 		getDiruptionsURL = getDiruptionsURL.replace('$SFC', "");
 		getDiruptionsURL = getDiruptionsURL.replace('$OperationRevision', "");
@@ -90,14 +88,10 @@ airbus.mes.disruptions.ModelManager = {
 		getDiruptionsURL = getDiruptionsURL.replace('$FromDate', "");
 		getDiruptionsURL = getDiruptionsURL.replace('$ToDate', ""); 
 		
-		if(oFilters.station != undefined && oFilters.station != ""){
+		if(oFilters.station != undefined && oFilters.station != "")
 			getDiruptionsURL = getDiruptionsURL.replace('$WorkCenter', oFilters.station);
-			airbus.mes.disruptiontracker.oView.byId("stationComboBox").setSelectedKey(oFilters.station);
-		}
-		else{
+		else
 			getDiruptionsURL = getDiruptionsURL.replace('$WorkCenter', "");
-			airbus.mes.disruptiontracker.oView.byId("stationComboBox").setSelectedKey("");
-		}
 		
 		getDiruptionsURL = getDiruptionsURL.replace('$userGroup', "");
 		getDiruptionsURL = getDiruptionsURL.replace('$MessageType', "");
