@@ -32,7 +32,7 @@
 							type="Transparent"
 							class="tiffanyColor whiteButton buttonStatus2 iconbuttonTeam sapUiSmallMarginBegin"
 							icon="sap-icon://group" press="onTeamPress" />
-						<Button id="hideKPI" type="Transparent" icon="sap-icon://show" text="{StationTrackerI18n>HideKPIS}"
+						<Button id="hideKPI" type="Transparent" icon="sap-icon://hide" text="{StationTrackerI18n>HideKPIS}"
 						press="hideKPI" />
 					</Toolbar>
 
