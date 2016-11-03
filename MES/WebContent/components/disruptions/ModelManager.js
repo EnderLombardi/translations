@@ -123,7 +123,7 @@ airbus.mes.disruptions.ModelManager = {
 			type : 'GET',
 			data : {
 				"Param.1" : airbus.mes.settings.ModelManager.site,
-				"Param.2" : "NG42E7A",
+				"Param.2" : "NG00524",
 				"Param.3" : messageType,
 				"Param.4" : "HMI",
 				"Param.5" : messageBody,
