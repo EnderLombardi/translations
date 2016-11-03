@@ -4,7 +4,7 @@ jQuery.sap.declare("airbus.mes.disruptions.ModelManager")
 
 airbus.mes.disruptions.ModelManager = {
 
-
+	urlModel : undefined,
 	queryParams : jQuery.sap.getUriParameters(),
 
 	init : function(core) {
@@ -35,7 +35,6 @@ airbus.mes.disruptions.ModelManager = {
 		});
 
 		this.core.setModel(new sap.ui.model.json.JSONModel(), "disruptionCustomData");
-		this.core.setModel(new sap.ui.model.json.JSONModel(), "DisruptionDetail");
 		
 		this.loadDisruptionCustomData();
 
@@ -120,12 +119,12 @@ airbus.mes.disruptions.ModelManager = {
 			async : true,
 			cache : false,
 			url : this.getURLCreateDisruption(),
-			type : 'POST',
+			type : 'GET',
 			data : {
 				"Param.1" : airbus.mes.settings.ModelManager.site,
-				"Param.2" : sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"),
+				"Param.2" : "NG00524",
 				"Param.3" : messageType,
-				"Param.4" : messageSubject,
+				"Param.4" : "HMI",
 				"Param.5" : messageBody,
 				"Param.6" : airbus.mes.disruptions.Formatter.json2xml({
 					payloadAttributelist : payloadData
@@ -136,48 +135,27 @@ airbus.mes.disruptions.ModelManager = {
 				if (rowExists != undefined) {
 					if (data.Rowsets.Rowset[0].Row[0].Message_Type == "S") {
 
-						this.messageShow(data.Rowsets.Rowset[0].Row[0].Message);
+						airbus.mes.shell.ModelManager.messageShow(data.Rowsets.Rowset[0].Row[0].Message);
 					} else {
-						this.messageShow("Error in Success");
+						airbus.mes.shell.ModelManager.messageShow("Error in Success");
 					}
 				} else {
 					if (data.Rowsets.FatalError) {
-						this.messageShow(data.Rowsets.FatalError);
+						airbus.mes.shell.ModelManager.messageShow(data.Rowsets.FatalError);
 					} else {
-						this.messageShow("Success");
+						airbus.mes.shell.ModelManager.messageShow("Success");
 					}
 				}
 
 			},
 			error : function() {
-				this.messageShow("Error in Error")
+				airbus.mes.shell.ModelManager.messageShow("Error in Error")
 				
 			}
 
 		});
 
-	},
-	
-	messageShow : function(text) {
-        sap.m.MessageToast
-        .show(
-        		text,
-                      {
-                             duration : 3000,
-                             width : "25em",
-                             my : "center center",
-                             at : "center center",
-                             of : window,
-                             offset : "0 0",
-                             collision : "fit fit",
-                             onClose : null,
-                             autoClose : true,
-                             animationTimingFunction : "ease",
-                             animationDuration : 1000,
-                             closeOnBrowserNavigation : true
-                      });
-               
-  }
+	}
 
 };
 

@@ -320,6 +320,9 @@ airbus.mes.stationtracker.ShiftManager = {
 						
 						var dNewShift = this.shifts[a].StartDate; 
 						//this.adjustSchedulerXStart(dNewShift);
+//						Feedback the date to the date picker 
+						this.setCalendarDate(dNewShift);
+						
 						return dNewShift;
 					}
 				}
@@ -356,10 +359,20 @@ airbus.mes.stationtracker.ShiftManager = {
 		
 		//d = this.adjustSchedulerXStart(d);
 		this.step = 0;
+		
+		
+//		Feedback the date to the date picker 
+		this.setCalendarDate(d);
+		
 		return d;
 
 	},
-	
+	setCalendarDate : function (oDate){
+		var oCalendar = sap.ui.getCore().byId("datePickerFragment--oCalendar");
+		if(oCalendar.getAggregation("selectedDates")[0]) {
+			oCalendar.getAggregation("selectedDates")[0].setStartDate(oDate);			
+		}
+	},
 	/**
 	 * Provide the end date of the previous shift rounded to the nearest
 	 * timeline cell.

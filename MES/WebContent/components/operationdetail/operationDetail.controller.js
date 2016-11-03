@@ -79,6 +79,8 @@ sap.ui
 						// button
 						this.getView().byId("opDetailExpandButton").setVisible(
 								true);
+						this.getView().byId("opDetailCloseButton").setVisible(
+								false);
 						this.getView().byId("operationDetailPanel")
 								.setExpanded(false);
 
