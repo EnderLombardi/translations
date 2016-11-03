@@ -979,10 +979,10 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 		var newPos = oEvt.getParameters().newPos;
 		var oldPos = oEvt.getParameters().column.getIndex();
 		if (newPos != oldPos) {
-			if ((oEvt.getParameters().newPos - 5) < 0
+			if ((oEvt.getParameters().newPos - 6) < 0
 //					|| formatter.isPolypolyEditable() == false) {
 					|| airbus.mes.polypoly.util.Formatter.isVisible() == false) {
-				sap.m.MessageToast.show("Unauthorized action");
+				sap.m.MessageToast.show(airbus.mes.polypoly.oView.getController().getI18n("Unauthorized"));
 				var oTable = oEvt.getSource();
 				var oColumn = oEvt.getParameters().column;
 				setTimeout(function() {
@@ -990,10 +990,13 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 					oTable.insertColumn(oColumn, oldPos);
 				}, 0);
 			} else {
-				var newPos = newPos - 4;
-				var sTechname = oEvt.getParameters().column
-				.getBindingContext().getProperty(
-						"techname");
+				var newPos = newPos - 5;
+				var sTechname = oEvt.getParameters().column.getBindingContext().getProperty("techname");
+				if(newPos < 10){
+					newPos = "00" + newPos;
+				}else{
+					newPos = "0" + newPos;
+				}
 				airbus.mes.polypoly.PolypolyManager.moveColumn(sTechname, newPos);
 			}
 		}
@@ -1030,7 +1033,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 		
 		var sERP_ID = airbus.mes.polypoly.PolypolyManager.polypolyIndex.ERP_ID;
 		if (sERP_ID == "---" || sERP_ID == " ") {
-			ModelManager.messageShow("Invalid ERP ID" + sERP_ID);
+			ModelManager.messageShow(airbus.mes.polypoly.oView.getController().getI18n("InvalidID") + sERP_ID);
 			return false;
 		}
 		if (!airbus.mes.polypoly.PolypolyManager.oViewController.oDialogConfirmationPoyPoly) {

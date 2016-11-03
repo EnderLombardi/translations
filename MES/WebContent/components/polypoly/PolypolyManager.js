@@ -686,23 +686,28 @@ airbus.mes.polypoly.PolypolyManager = {
 		});
 	},
 
-//	moveColumn : function(sName, newPos) {
-//		var urlmovecolumn = this.urlModel.getProperty("urlmovecolumn");
-//
-//		urlmovecolumn = urlmovecolumn.replace("$site", ModelManager.site);
-//		urlmovecolumn = urlmovecolumn.replace("$polypoly", sName);
-//		urlmovecolumn = urlmovecolumn.replace("$order", newPos);
-//		$.ajax({
-//			url : urlmovecolumn,
-//			cache : false,
-//			success : function(data, textStatus, jqXHR) {
-//				// sap.ui.getCore().byId("confirmDeleteDialog").close();
-//				// PolypolyManager.getPolypolyModel(ModelManager.factory_name,
-//				// ModelManager.line_number, ModelManager.station_number,
-//				// ModelManager.site);
-//			},
-//		});
-//	},
+	moveColumn : function(sName, newPos) {
+		var urlmovecolumn = this.urlModel.getProperty("urlmovecolumn");
+
+		urlmovecolumn = urlmovecolumn.replace("$polypoly", sName);
+		urlmovecolumn = urlmovecolumn.replace("$order", newPos);
+//		urlmovecolumn = urlmovecolumn.replace("$site", airbus.mes.settings.ModelManager.site); //FIXME: Uncomment when ready
+		urlmovecolumn = urlmovecolumn.replace("$site", "CHES");
+		
+		//Handle User & Password																	 		 //FIXME Temp
+		urlmovecolumn = airbus.mes.polypoly.ModelManager.handleUserConnection(urlmovecolumn);			     //FIXME Temp
+
+		$.ajax({
+			url : urlmovecolumn,
+			cache : false,
+			success : function(data, textStatus, jqXHR) {
+				// sap.ui.getCore().byId("confirmDeleteDialog").close();
+				// PolypolyManager.getPolypolyModel(ModelManager.factory_name,
+				// ModelManager.line_number, ModelManager.station_number,
+				// ModelManager.site);
+			},
+		});
+	},
 //--------------------------------------------OK-UP-THERE----------------------------------------------------	
 	// NOT USED
 	// Crazy why declare model here???? .................-_-_-_--__-_-_ what mean MII model???
