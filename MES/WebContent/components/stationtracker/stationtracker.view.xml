@@ -38,7 +38,7 @@
 
 				</headerToolbar>
 				<content>
-					<HBox id="kpiHeaderContent" width="100%">
+					<HBox id="kpiHeaderContent" class="classKpiHeaderContent" width="100%">
 
 						<HBox justifyContent="SpaceAround" id="boxTaktAdherence" width="32%" class="contentHeaderCont">
 						
