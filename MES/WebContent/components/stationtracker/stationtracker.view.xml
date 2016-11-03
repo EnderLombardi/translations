@@ -10,7 +10,7 @@
 			<Panel id="kpi_header" expandable="true" expanded="true"
 				expandAnimation="false" class="pageHeader kpiPageHeader contentNoPad">
 				<headerToolbar>
-					<Toolbar id="kpiHeaderToolbar">
+					<Toolbar id="kpiHeaderToolbar" class="classKpiheaderToolbar">
 						<!-- <DatePicker id="DatePicker" width="auto" change="changeDay" class="pageHeaderBlue"/> -->
 						<Button id="dateButton" icon="sap-icon://appointment" type="Transparent" press="datePick" class="classDateButton"/>
 						<Label id="dateLabel" text="" class="classDateLabel"/>
