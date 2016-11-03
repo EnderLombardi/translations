@@ -42,8 +42,6 @@ airbus.mes.shell.Component.prototype.createContent = function() {
 		}).addStyleClass("absolutePosition");
 
 		airbus.mes.shell.oView = this.oView;
-//		airbus.mes.stationtracker = {};
-//		airbus.mes.stationtracker.isVisible = false;
 		
 		this.oView.setModel(sap.ui.getCore().getModel("userDetailModel"),	"userDetailModel");
 		this.oView.setModel(sap.ui.getCore().getModel("ShellI18n"), "ShellI18n");

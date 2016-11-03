@@ -7,7 +7,10 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 	shiftNoBreakHierarchy: [],
 	shiftBreakHierarchy: [],
 	showInitial : false,
-	//XXX MEHDI TODO
+//	Define start and end date of the scheduler
+	minDate: undefined,
+	maxDate: undefined,
+	
 	group : "COMPETENCY" ,
 	box : "OPERATION_ID",
 	// Group use for special case compute
@@ -55,10 +58,11 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 	var oHierachy2 = airbus.mes.stationtracker.GroupingBoxingManager.shiftNoBreakHierarchy = [];
 	var oFormatter = airbus.mes.stationtracker.util.Formatter;
 
+	
 		for( var i in oHierachy ) { 
 			for ( var a in oHierachy[i] ) {
 				
-				//Creation data wich represent boxs rescheduling and initial
+				//Creation data which represent boxes rescheduling and initial
 					var aStartDate = [];
 					var aEndDate = [];
 					var shiftName = "";
@@ -70,6 +74,9 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 						shiftName = el.shiftName;
 					} )
 					
+					var startDate = new Date(Math.min.apply(null,aStartDate));
+					var endDate = new Date(Math.max.apply(null,aEndDate));
+					
 					var oShift = {
 							"shiftName" : shiftName,
 							"day": i,
@@ -80,9 +87,31 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 					}
 					oHierachy2.push(oShift);
 					
+					this.fillStartDate(startDate);
+					this.fillEndDate(endDate);
 			}
 			
 		};
+	},
+	
+	fillStartDate : function(oStartDate){
+		if(this.minDate === undefined) {
+			this.minDate = oStartDate;
+			
+		} else if (this.minDate > oStartDate) {
+			this.minDate = oStartDate;
+			
+		}
+	},
+
+	fillEndDate : function(oEndDate){
+		if(this.maxDate === undefined) {
+			this.maxDate = oEndDate;
+			
+		} else if (this.maxDate < oEndDate) {
+			this.maxDate = oEndDate;
+			
+		}
 	},
 	
 	groupingBoxing : function(sGroup,sBoxing) {
