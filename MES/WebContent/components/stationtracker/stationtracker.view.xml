@@ -130,7 +130,7 @@
 							class="contentHeaderCont">
 							<Label text="{StationTrackerI18n>SLBEFFICIENCY}" design="Bold"
 								class="whiteTextHeader sapUiSmallMarginTopBottom" />
-							<VBox width="90%">
+							<VBox width="90%" justifyContent="SpaceAround" height="64%">
 								<micro:ComparisonMicroChart width="100%"
 									id="boxSLBEfficiecy_chart"
 									size="L" colorPalette="#84bd00, #f5f5f5, #fe5000">
@@ -243,7 +243,7 @@
 							alignItems="Center" class="contentHeaderCont">
 							<Label text="{StationTrackerI18n>ShiftSTAFFING}" size="L"
 								design="Bold" width="100%" class="whiteTextHeader sapUiSmallMarginTopBottom" />
-							<VBox width="90%">
+							<VBox width="90%" justifyContent="SpaceAround" height="55%">
 								<micro:DeltaMicroChart width="100%"
 									id="shifStaffingHeader" isResponsive="true" value1="10" value2="9"
 									title1="{StationTrackerI18n>NeedFTE}" title2="{StationTrackerI18n>AllocatedFTE}"
