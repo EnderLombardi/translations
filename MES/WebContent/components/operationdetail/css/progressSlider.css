@@ -5,6 +5,19 @@
 	overflow:visible !important;
 }
 
+/*progress slider height*/
+.progressSlider .sapMSliderInner, .sapMSliderProgress {
+    height: 1.1875rem !important;
+}
+
+.progressSlider .sapMSliderHandle {
+    height: 2.75rem !important;
+}
+
+
+
+
+
 
 .ML-05{margin-left:0.5rem !important;height: auto!important;}
 .progressSlider{
@@ -148,6 +161,7 @@
 
 .progressBtnColor .sapMBtnIcon {
 	color:#0085AD !important;
+	line-height: 3.375rem !important;
 }
 
 /*** CSS for Footers ***********/

@@ -226,6 +226,7 @@ sap.ui
 									.setValue("");
 
 						}
+						airbus.mes.operationdetail.ModelManager.loadReasonCodeModel();
 					},
 
 					/***********************************************************
