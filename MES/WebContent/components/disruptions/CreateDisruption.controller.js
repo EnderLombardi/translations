@@ -64,9 +64,14 @@ sap.ui
 						this.getView().byId("selectResponsible").setSelectedKey();
 						this.setEnabledSelectBox(true,false,false,false);
 						
+						//this.filterField(this.selectTree);
 						
-						this.getView().core.setModel(new sap.ui.model.json.JSONModel(),
-						"disruptionCustomData");
+
+						this.addParent(this.selectTree, undefined);
+						this.ModelManager = airbus.mes.settings.ModelManager;
+						
+						/*this.getView().core.setModel(new sap.ui.model.json.JSONModel(),
+						"disruptionCustomData");*/
 						
 
 					},

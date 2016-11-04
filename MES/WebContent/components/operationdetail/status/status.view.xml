@@ -1,8 +1,9 @@
 <core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m" controllerName="airbus.mes.operationdetail.status.status"
 	xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:html="http://www.w3.org/1999/xhtml">
-	<Page showHeader="false" enableScrolling="false">
-		<VBox width="100%" justifyContent="SpaceBetween">
+	<Page showHeader="false" enableScrolling="false" class="sapUiSmallMarginBeginEnd">
+		
+		<VBox justifyContent="SpaceBetween" class="sapUiSmallMarginBeginEnd">
 			<HBox justifyContent="Center" class="sapUiSmallMarginTopBottom">
 				<items>
 					<Title id="operationStatus" clas="sapUiSmallMarginTop"
@@ -11,15 +12,14 @@
 						level="H1" titleStyle="H1" />
 				</items>
 			</HBox>
-			<l:Grid defaultSpan="L12 M12 S12" class="proressSliderGrid">
+			<Text text="Progress {operationDetailModel>/Rowsets/Rowset/0/Row/0/progress} %">
+			</Text>
 
-				<Slider id="progressSliderDisplay" max="100" min="0"
-					class="sliderDisplayStatus sliderCompletedColor" showHandleTooltip="true" width="100%"
-					value="{operationDetailModel>/Rowsets/Rowset/0/Row/0/progress}"
-					enabled="false">
-				</Slider>
-
-			</l:Grid>
+			<Slider id="progressSliderDisplay" max="100" min="0"
+				class="sliderDisplayStyle sliderCompletedColor" showHandleTooltip="true" width="100%"
+				value="{operationDetailModel>/Rowsets/Rowset/0/Row/0/progress}"
+				enabled="false">
+			</Slider>
 
 		</VBox>
 		<footer>

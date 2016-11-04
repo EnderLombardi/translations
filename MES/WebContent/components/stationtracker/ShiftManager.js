@@ -94,7 +94,6 @@ airbus.mes.stationtracker.ShiftManager = {
 	 * @param date
 	 * @returns {Number}
 	 */
-	// int closestShift(Date)
 	closestShift : function(date) {
 
 		if (this.shifts.length === 0)
@@ -197,6 +196,7 @@ airbus.mes.stationtracker.ShiftManager = {
 		
 					
 				var a = c; 
+				var dNewShift;
 				
 				while (!dNewShift) {
 				
@@ -224,7 +224,7 @@ airbus.mes.stationtracker.ShiftManager = {
 						
 					} else {
 						
-						var dNewShift = this.shifts[a].StartDate; 
+						dNewShift = this.shifts[a].StartDate; 
 
 //						Feedback the date to the date picker 
 						this.setCalendarDate(dNewShift);
@@ -287,8 +287,6 @@ airbus.mes.stationtracker.ShiftManager = {
 	 */
 	// Date endOfPreviousShift( Date )
 	endOfPreviousShift : function(date) {
-		var oFormatter = airbus.mes.stationtracker.util.Formatter;
-
 		var c = this.closestShift(date) - 1;
 
 		if (c < 0) {
@@ -344,7 +342,6 @@ airbus.mes.stationtracker.ShiftManager = {
 	 * @param date
 	 */
 	adjustSchedulerXStart : function(date) {
-		var oFormatter = airbus.mes.stationtracker.util.Formatter;
 
 		// XXX probably better with Math.floor, still I keep it like that
 		// because i'm afraid of the shifts ending at 11:59:59.
@@ -369,7 +366,7 @@ airbus.mes.stationtracker.ShiftManager = {
 		if (currMotn<10) {currMotn = "0"+currMotn;}
 		var curDay = this.current_Date.getDate();
 		if (curDay<10) {curDay = "0"+curDay;}
-		this.current_Date = this.current_Date.getFullYear()+"-"	+currMotn+"-"+curDay	
+		this.current_Date = this.current_Date.getFullYear()+"-"	+currMotn+"-"+curDay;	
 		
 		var nb_int = scheduler.matrix.timeline.x_length;
 		var end_int_date;
@@ -468,7 +465,6 @@ airbus.mes.stationtracker.ShiftManager = {
 	 * @returns {Boolean}
 	 */
 	isDateIgnored : function (date) {
-		var oFormatter = airbus.mes.stationtracker.util.Formatter;
 
 		if (this.shifts.length === 0)
 			return false;
@@ -530,8 +526,8 @@ airbus.mes.stationtracker.ShiftManager = {
 		
 		var d1, d2, d3, d4, d5;
 		
-		var d2 = aShiftBreak[0].StartDate;
-		var d1 = scheduler.date.copy(d2);
+		d2 = aShiftBreak[0].StartDate;
+		d1 = scheduler.date.copy(d2);
 		d1.setMinutes(d1.getMinutes() - scheduler.matrix.timeline.x_size
 				* scheduler.matrix.timeline.x_step);
 

@@ -9,13 +9,13 @@
 /************
 *progress slider styling
 *************/
-.sliderDisplayStatus {
+.sliderDisplayStyle {
      height: 4rem !important;
 }
-.sliderDisplayStatus .sapMSliderHandle {
+.sliderDisplayStyle .sapMSliderHandle {
      height: 2.8rem !important;
 }
-.sliderDisplayStatus .sapMSliderInner,  .sliderDisplayStatus .sapMSliderProgress{
+.sliderDisplayStyle .sapMSliderInner,  .sliderDisplayStyle .sapMSliderProgress{
 	    height: 1.1875rem !important;
 }
 /**** End of Styling Progress Slider***********/
@@ -35,20 +35,14 @@
 }
 .sliderInprogressColor .sapMSliderProgress{
 	background-color: lime !important;
-	//background: #007cc0;
 }
-
-.sliderBlockedColor .sapMSliderProgress{
-	background-color: darkorange !important;
-}
- .comfirmedProgressSlider{
+.sliderCompletedColor{
 	opacity:1 !important;
 }
 .sliderCompletedColor .sapMSliderProgress{
 	background-color: #007cc0 !important;
 }
-
-.sliderInprogressColor .sapMSliderProgress{
-	background-color: lime !important;
+.sliderBlockedColor .sapMSliderProgress{
+	background-color: darkorange !important;
 }
  /********** End of CSS for Progress Slider Screen *******/

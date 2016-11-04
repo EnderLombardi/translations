@@ -1,8 +1,8 @@
 <core:View controllerName="airbus.mes.disruptiontracker.kpi.disruptionKPIChart"
 	xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:viz="sap.viz.ui5.controls"
-	xmlns:core="sap.ui.core" xmlns:viz.data="sap.viz.ui5.data" 
+	xmlns:core="sap.ui.core" xmlns:viz.data="sap.viz.ui5.data"
 	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds">
-	
+
 	<Page showHeader="false" class="disruptionKPI">
 		<subHeader>
 			<Toolbar>
@@ -16,83 +16,114 @@
 		<content>
 			<viz:VizFrame id="vizFrame" height="400px" width="50%"
 				class="chart" uiConfig="{applicationSet:'fiori'}" legendVisible="false">
-				<!-- <viz:dataset>
+				<viz:dataset>
 					<viz.data:FlattenedDataset
-						data="{/disruptionsTrackerModel>//Rowsets/Rowset/0/Row}">
+						data="{TimeLostperCategory>/Rowsets/Rowset/0/Row}">
 						<viz.data:dimensions>
 							<viz.data:DimensionDefinition axis="1"
-								name="MessageType" value="{/MessageType}" />
+								name="Category"
+								value="{ path: 'TimeLostperCategory>Category' , formatter: 'airbus.mes.disruptiontracker.Formatter.formatCategory' }" />
 						</viz.data:dimensions>
 						<viz.data:measures>
-							<viz.data:MeasureDefinition name="TIME_LOST"
-								value="{/TIME_LOST}" />
+							<viz.data:MeasureDefinition name="Time Lost"
+								value="{TimeLostperCategory>Time_Lost}" />
 						</viz.data:measures>
 					</viz.data:FlattenedDataset>
-				</viz:dataset> -->
-				<!-- <viz:feeds>
-
-			   <viz.feeds:FeedItem uid="axisLabels"
-			   type="Dimension"
-			   values="MessageType" />
-			
-			   <viz.feeds:FeedItem id='valueAxisFeed'
-			   uid="primaryValues"
-			   type="Measure"
-			   values="TIME_LOST" />
-			
-			   </viz:feeds> -->
+				</viz:dataset>
+				<viz:feeds>
+					<viz.feeds:FeedItem uid="axisLabels" type="Dimension"
+						values="Category" />
+					<viz.feeds:FeedItem id='valueAxisFeed1' uid="primaryValues"
+						type="Measure" values="Time Lost" />
+				</viz:feeds>
 			</viz:VizFrame>
 
 			<viz:VizFrame id="vizFrame2" height="400px" width="50%"
-				class="chart" uiConfig="{applicationSet:'fiori'}" legendVisible="false">
+				class="chart" uiConfig="{applicationSet:'fiori'}" legendVisible="false"
+				vizProperties="{
+                       title : { 
+ 							visible : true, 
+ 							text : 'Time Lost per Reason'
+ 							} 
+ 			            }">
 				<viz:dataset width="50%">
 					<viz.data:FlattenedDataset
-						data="{/TimeLostperReason/TimeLostperReasonData}">
-<!-- 						<viz.data:dimensions> -->
-<!-- 							<viz.data:DimensionDefinition axis="1" -->
-<!-- 								name="Reason" value="{Reason}" /> -->
-<!-- 						</viz.data:dimensions> -->
-<!-- 						<viz.data:measures> -->
-<!-- 							<viz.data:MeasureDefinition name="Time Lost" -->
-<!-- 								value="{Time Lost}" /> -->
-<!-- 						</viz.data:measures> -->
+						data="{TimeLostperReason>/TimeLostperReasonData}">
+						<viz.data:dimensions>
+							<viz.data:DimensionDefinition axis="1"
+								name="Reason" value="{TimeLostperReason>Reason}" />
+						</viz.data:dimensions>
+						<viz.data:measures>
+							<viz.data:MeasureDefinition name="Time Lost"
+								value="{TimeLostperReason>Time Lost}" />
+						</viz.data:measures>
 					</viz.data:FlattenedDataset>
 				</viz:dataset>
+				<viz:feeds>
+					<viz.feeds:FeedItem uid="axisLabels" type="Dimension"
+						values="Reason" />
+					<viz.feeds:FeedItem id='valueAxisFeed2' uid="primaryValues"
+						type="Measure" values="Time Lost" />
+				</viz:feeds>
 			</viz:VizFrame>
 
 			<viz:VizFrame id="vizFrame3" height="400px" width="50%"
 				class="chart" vizType="bar" uiConfig="{applicationSet:'fiori'}"
-				legendVisible="false">
+				legendVisible="false"
+				vizProperties="{
+                       title : { 
+ 							visible : true, 
+ 							text : '{i18n>frame3Title}' 
+ 							} 
+ 			            }">
 				<viz:dataset width="50%">
 					<viz.data:FlattenedDataset
-						data="{/TimeLostperOperation/LostTimeperOperationData}">
-<!-- 						<viz.data:dimensions> -->
-<!-- 							<viz.data:DimensionDefinition axis="1" -->
-<!-- 								name="Operation" value="{Operation}" /> -->
-<!-- 						</viz.data:dimensions> -->
-<!-- 						<viz.data:measures> -->
-<!-- 							<viz.data:MeasureDefinition name="Time Lost" -->
-<!-- 								value="{Time Lost}" /> -->
-<!-- 						</viz.data:measures> -->
+						data="{TimeLostperOperation>/LostTimeperOperationData}">
+						<viz.data:dimensions>
+							<viz.data:DimensionDefinition axis="1"
+								name="Operation" value="{TimeLostperOperation>Operation}" />
+						</viz.data:dimensions>
+						<viz.data:measures>
+							<viz.data:MeasureDefinition name="Time Lost"
+								value="{TimeLostperOperation>Time Lost}" />
+						</viz.data:measures>
 					</viz.data:FlattenedDataset>
 				</viz:dataset>
+				<viz:feeds>
+					<viz.feeds:FeedItem uid="axisLabels" type="Dimension"
+						values="Operation" />
+					<viz.feeds:FeedItem id='valueAxisFeed3' uid="primaryValues"
+						type="Measure" values="Time Lost" />
+				</viz:feeds>
 			</viz:VizFrame>
 
 			<viz:VizFrame id="vizFrame4" height="400px" width="50%"
 				class="chart" vizType="bar" uiConfig="{applicationSet:'fiori'}"
-				legendVisible="false">
+				legendVisible="false"
+				vizProperties="{
+                       title : { 
+ 							visible : true, 
+ 							text : '{i18n>frame4Title}' 
+ 							} 
+ 			            }">
 				<viz:dataset width="50%">
-					<viz.data:FlattenedDataset data="{/TimeLostperMSN/LostTimeperMSNData}">
-<!-- 						<viz.data:dimensions> -->
-<!-- 							<viz.data:DimensionDefinition axis="1" -->
-<!-- 								name="MSN" value="{MSN}" /> -->
-<!-- 						</viz.data:dimensions> -->
-<!-- 						<viz.data:measures> -->
-<!-- 							<viz.data:MeasureDefinition name="Time Lost" -->
-<!-- 								value="{Time Lost}" /> -->
-<!-- 						</viz.data:measures> -->
+					<viz.data:FlattenedDataset data="{TimeLostperMSN>/LostTimeperMSNData}">
+						<viz.data:dimensions>
+							<viz.data:DimensionDefinition axis="1"
+								name="MSN" value="{TimeLostperMSN>MSN}" />
+						</viz.data:dimensions>
+						<viz.data:measures>
+							<viz.data:MeasureDefinition name="Time Lost"
+								value="{TimeLostperMSN>Time Lost}" />
+						</viz.data:measures>
 					</viz.data:FlattenedDataset>
 				</viz:dataset>
+				<viz:feeds>
+					<viz.feeds:FeedItem uid="axisLabels" type="Dimension"
+						values="MSN" />
+					<viz.feeds:FeedItem id='valueAxisFeed4' uid="primaryValues"
+						type="Measure" values="Time Lost" />
+				</viz:feeds>
 			</viz:VizFrame>
 		</content>
 	</Page>

@@ -1,6 +1,6 @@
 //"use strict";
 jQuery.sap.declare("airbus.mes.disruptiontracker.kpi.ModelManager")
-airbus.mes.disruptionKPI.ModelManager = {
+airbus.mes.disruptiontracker.kpi.ModelManager = {
 	urlModel : undefined,
 	queryParams : jQuery.sap.getUriParameters(),
 
@@ -35,16 +35,23 @@ airbus.mes.disruptionKPI.ModelManager = {
 					bundleLocale : dest
 				});
 		
+//		this.loadDisruptionCustomData();
 		this.loadDisruptionCategoryModel();
 		this.loadDisruptionReasonModel();
 		this.loadDisruptionOperationModel();
 		this.loadDisruptionmsnModel();
 	},
 	
+	getKPICategoryData : function() {
+		var urlCategoryData = this.urlModel.getProperty("getDiruptionKPIcategoryURL");
+		urlCategoryData = airbus.mes.shell.ModelManager.replaceURI(urlCategoryData,
+				"$site", airbus.mes.settings.ModelManager.site);
+		return urlCategoryData;
+	},
+	
 	loadDisruptionCategoryModel : function() {
 		var oViewModel = sap.ui.getCore().getModel("TimeLostperCategory");
-		oViewModel.loadData(this.urlModel.getProperty("urlcategorymodel"), null, false);
-
+		oViewModel.loadData(this.getKPICategoryData(), null, false);
 	},
 	
 	loadDisruptionReasonModel : function() {
@@ -65,23 +72,5 @@ airbus.mes.disruptionKPI.ModelManager = {
 
 	}
 
-	/*loadDisruptionTracker : function(sType) {
 		
-		//Model for disruptions list data in table
-		var oViewModel_1=  new sap.ui.model.json.JSONModel();
-		sap.ui.getCore().setModel(oViewModel_1,"tableData");
-		sap.ui.getCore().getModel("tableData").loadData("data/table.json",null,false);
-		
-		//Model for disruptions filter data in ComboBox
-		var oViewModel_2=  new sap.ui.model.json.JSONModel();
-		sap.ui.getCore().setModel(oViewModel_2,"filterData");
-		sap.ui.getCore().getModel("filterData").loadData("data/filter.json",null,false);
-		
-		//Model for disruptions order data in ComboBox
-		var oViewModel_3=  new sap.ui.model.json.JSONModel();
-		sap.ui.getCore().setModel(oViewModel_3,"orderData");
-		sap.ui.getCore().getModel("orderData").loadData("data/order.json",null,false);
-
-	}*/
-	
 }

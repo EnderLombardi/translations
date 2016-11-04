@@ -88,8 +88,6 @@ sap.ui
 						airbus.mes.shell.oView.getController()
 								.renderStationTracker();
 
-						// this.refreshOperationData();
-
 						if (flag_success == true) {
 							this.setProgressScreenBtn( true, false);
 							
@@ -172,22 +170,19 @@ sap.ui
 							sap.ui.getCore().getModel("operationDetailModel")
 									.refresh();
 
-							// reset the progress slider to original position
-							this
-									.refreshOperationData(sap.ui
-											.getCore()
-											.getModel("operationDetailModel")
-											.getProperty(
-													"/Rowsets/Rowset/0/Row/0/progress"));
-
 						}
 
 					},
 
 					confirmOperation : function(oEvent) {
 
-						if (oEvent.getSource().getText() == this.getView()
-								.getModel("i18n").getProperty("confirm")) {
+						switch(oEvent.getSource().getText()){
+						
+						case this.getView().getModel("i18n").getProperty("confirm"):
+
+							// click on confirm
+							this.operationStatus = "C";
+							
 							airbus.mes.operationdetail.ModelManager.loadReasonCodeModel();
 							if (!this._reasonCodeDialog) {
 
@@ -198,13 +193,14 @@ sap.ui
 
 								this.getView().addDependent(
 										this._reasonCodeDialog);
-								// click on confirm
-								this.operationStatus = "C";
 							}
 							this._reasonCodeDialog.open();
-						} else if (oEvent.getSource().getText() == this
-								.getView().getModel("i18n").getProperty(
-										"complete")) {
+							
+							break;
+							
+						case this.getView().getModel("i18n").getProperty("complete"):
+							
+							// Click on Complete
 							this.operationStatus = "X";
 							if (!this._oUserConfirmationDialog) {
 
@@ -214,9 +210,7 @@ sap.ui
 												this);
 
 								this.getView().addDependent(
-										this._oUserConfirmationDialog);
-								// click on complete
-								
+										this._oUserConfirmationDialog);								
 							}
 							
 							this._oUserConfirmationDialog.open();
@@ -225,6 +219,8 @@ sap.ui
 									.setValue("");
 							sap.ui.getCore().byId("passwordForConfirmation")
 									.setValue("");
+							
+							break;
 
 						}
 						
@@ -237,8 +233,7 @@ sap.ui
 					 **********************************************************/
 					onCancelConfirmation : function() {
 						this._oUserConfirmationDialog.close();
-						sap.ui.getCore().byId("msgstrpConfirm").setVisible(
-								false);
+						
 					},
 
 					onOKConfirmation : function(oEvent) {
@@ -268,7 +263,7 @@ sap.ui
 							var sfc = airbus.mes.operationdetail.ModelManager.sfc;
 							if (this.operationStatus == "X")
 								{
-								var percent = "100"
+								var percent = 100;
 									this.getView().byId("operationStatus").setText(
 											this.getView().getModel("i18n")
 													.getProperty("confirm"));
@@ -277,6 +272,10 @@ sap.ui
 								.setProperty(
 										"/Rowsets/Rowset/0/Row/0/status",
 										"COMPLETED")
+										sap.ui.getCore().getModel("operationDetailModel")
+								.setProperty(
+										"/Rowsets/Rowset/0/Row/0/progress",
+										100);
 										sap.ui.getCore().getModel("operationDetailModel")
 								.refresh();
 								}
@@ -325,7 +324,8 @@ sap.ui
 
 										}
 									});
-
+							// Close reason code dialog
+							this._reasonCodeDialog.close();
 							this._oUserConfirmationDialog.close();
 
 							if (flag_success === true) {
@@ -333,10 +333,6 @@ sap.ui
 								// Detail
 								airbus.mes.shell.oView.getController()
 										.renderStationTracker();
-								if(this.operationStatus == "C"){
-
-									this.refreshOperationData(percent);
-									}
 
 								// update operationDetailsModel
 								sap.ui.getCore().getModel(
@@ -351,48 +347,6 @@ sap.ui
 						}
 					},
 
-					refreshOperationData : function(percentage) {
-						sap.ui.getCore().byId("progressSliderfirst").setWidth(
-								percentage + "%");
-						sap.ui.getCore().byId("progressSlider").setWidth(
-								(100 - parseInt(percentage)) + "%");
-
-						sap.ui.getCore().byId("progressSliderfirst").setMax(
-								parseInt(percentage));
-						sap.ui.getCore().byId("progressSlider").setMin(
-								parseInt(percentage));
-
-						sap.ui.getCore().byId("progressSliderfirst").setValue(
-								parseInt(percentage));
-						sap.ui.getCore().byId("progressSlider").setValue(
-								parseInt(percentage));
-
-						switch (parseInt(percentage)) {
-						case 100:
-							sap.ui.getCore().byId("progressSliderfirst")
-									.setVisible(true);
-							sap.ui.getCore().byId("progressSlider").setVisible(
-									false);
-							break;
-						case 0:
-							sap.ui.getCore().byId("progressSliderfirst")
-									.setVisible(false);
-							sap.ui.getCore().byId("progressSlider").setVisible(
-									true);
-							sap.ui.getCore().byId("progressSlider")
-									.removeStyleClass("dynProgressSlider");
-							break;
-						default:
-							sap.ui.getCore().byId("progressSliderfirst")
-									.setVisible(true);
-							sap.ui.getCore().byId("progressSlider").setVisible(
-									true);
-							sap.ui.getCore().byId("progressSlider")
-									.addStyleClass("dynProgressSlider");
-							break;
-						}
-					},
-
 					/***********************************************************
 					 * ReasonCode Fragment Methods
 					 **********************************************************/
@@ -404,7 +358,7 @@ sap.ui
 								+ sap.ui.getCore().byId("reasonCodeComments")
 										.getValue()
 						// Close reason code dialog
-						this._reasonCodeDialog.close();
+						//this._reasonCodeDialog.close();
 
 						if (!this._oUserConfirmationDialog) {
 
@@ -425,6 +379,11 @@ sap.ui
 					},
 
 					onCancelReasonCode : function() {
+						sap.ui.getCore().byId("msgstrpConfirm").setVisible(
+								false);
+						sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].progress_new = sap.ui
+								.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].progress;
+						sap.ui.getCore().getModel("operationDetailModel").refresh();
 						this._reasonCodeDialog.close();
 					},
 					/***********************************************************

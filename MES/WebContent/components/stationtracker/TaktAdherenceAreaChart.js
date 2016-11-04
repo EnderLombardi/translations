@@ -14,7 +14,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.TaktAdherenceAreaChart", {
 			return d3.svg.axis()
 				.scale(y)
 				.orient("left")
-				.ticks(8)
+				.ticks(8);
 		}
 
 		var data = [
