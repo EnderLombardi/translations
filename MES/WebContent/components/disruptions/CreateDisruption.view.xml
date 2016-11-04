@@ -250,8 +250,10 @@
 		<footer>
 			<Bar design="" class="createDisruptionFooter">
 				<contentRight>
-					<Button text="Cancel" press="onCancelCreateDisruption" />
 					<Button text="Create" class="btnColor" press="onCreateDisrupution" />
+					<Button text="Update" visible="false" class="btnColor" press="onUpdateDisrupution" />
+					<Button text="Cancel" press="onCancelCreateDisruption" />
+					<Button text="Close" press="onCloseCreateDisruption" />
 				</contentRight>
 			</Bar>
 		</footer>
