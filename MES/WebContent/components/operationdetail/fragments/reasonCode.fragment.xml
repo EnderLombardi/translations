@@ -3,23 +3,34 @@
 	<Dialog draggable="true" contentHeight="40%" contentWidth="60%"
 		title="Reason Code ">
 		<content>
+		<Bar translucent="true">
+					<contentLeft>
+						<Text text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/progress}"></Text>
+					</contentLeft>
+					<contentRight>
+						<Text text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/progress_new}"></Text>
+					</contentRight>
+				</Bar>
 			<HBox class="sapUiSmallMarginTop">
 				<Button id="btnReduce" type="Transparent" press="reduceProgress"
 					icon="sap-icon://sys-minus" class="progressBtnColor">
 
 				</Button>
+				
 				<HBox width="100%" class="progressSlider">
 					<layoutData>
 						<l:GridData span="L12 M12 S12" />
 					</layoutData>
-					<Slider id="progressSliderfirst" class="sliderDisplayStatus comfirmedProgressSlider"
+					<Slider id="progressSliderfirst"
+						class="sliderDisplayStyle comfirmedProgressSlider sliderCompletedColor"
 						min="0" max="{operationDetailModel>/Rowsets/Rowset/0/Row/0/progress}"
 						width="{parts:['operationDetailModel>/Rowsets/Rowset/0/Row/0/status', 'operationDetailModel>/Rowsets/Rowset/0/Row/0/progress'], formatter:'airbus.mes.operationdetail.Formatter.sliderStatusFirst'}"
 						value="{operationDetailModel>/Rowsets/Rowset/0/Row/0/progress}"
 						editable="false" enabled="false">
 					</Slider>
-					<Slider id="progressSlider" class="sliderDisplayStatus sliderInprogressColor"
-						min="{operationDetailModel>/Rowsets/Rowset/0/Row/0/progress}" max="100" showHandleTooltip="true"
+					<Slider id="progressSlider" class="sliderDisplayStyle sliderInprogressColor"
+						min="{operationDetailModel>/Rowsets/Rowset/0/Row/0/progress}" max="100"
+						showHandleTooltip="true"
 						width="{parts: ['operationDetailModel>/Rowsets/Rowset/0/Row/0/status', 'operationDetailModel>/Rowsets/Rowset/0/Row/0/progress'], 
 				formatter: 'airbus.mes.operationdetail.Formatter.sliderStatus' }"
 						value="{operationDetailModel>/Rowsets/Rowset/0/Row/0/progress_new}"
@@ -33,9 +44,10 @@
 			</HBox>
 
 			<f:SimpleForm id="reasonCode" minWidth="1024"
-				maxContainerCols="2" editable="true" layout="ResponsiveGridLayout"
-				labelSpanL="1" labelSpanM="2" columnsL="1" columnsM="1"
-				validateFieldGroup="onValidatereason" class="sapUiLargeMarginTop">
+				backgroundDesign="Transparent" maxContainerCols="2" editable="true"
+				layout="ResponsiveGridLayout" labelSpanL="1" labelSpanM="2"
+				columnsL="1" columnsM="1" validateFieldGroup="onValidatereason"
+				class="sapUiLargeMarginTop">
 				<f:content>
 					<Label text="Reason Code" />
 					<Select forceSelection="true" change="onSelectionReason" id="reasonCodeSelectBox"
