@@ -188,7 +188,7 @@ airbus.mes.polypoly.ModelManager = {
 		urlgetqalist = urlgetqalist.replace("$site", sSite);
 		
 		//Handle User & Password
-		urlgetqalist = this.handleUserConnection(urlgetqalist);
+		urlgetqalist = this.handleUserConnection(urlgetqalist); //FIXME
 		
 		sap.ui.getCore().getModel("listQA").loadData(urlgetqalist,null,false);
 		
@@ -203,7 +203,7 @@ airbus.mes.polypoly.ModelManager = {
 		urlgetpolystation = urlgetpolystation.replace("$site", sSite);
 		
 		//Handle User & Password
-		urlgetpolystation = this.handleUserConnection(urlgetpolystation);
+		urlgetpolystation = this.handleUserConnection(urlgetpolystation);	//FIXME
 
 		$.ajax({
 			url : urlgetpolystation,
