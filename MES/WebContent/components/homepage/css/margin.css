@@ -40,12 +40,13 @@
 	background-color: rgba(12, 75, 131, 0.9);
 	margin: 0.5rem;
 	width: 13rem;
-	box-shadow: 0 0 10px rgba(9, 56, 99, 0.5);
     -webkit-transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
     -moz-transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
     transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
-
+.customTiles:not([data-enabled^="false"]){
+	box-shadow: 0 0 10px rgba(9, 56, 99, 0.5);
+	}
 .titleToolbar {
 	background-color: lightgrey;
 }
