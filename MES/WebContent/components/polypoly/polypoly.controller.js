@@ -40,6 +40,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 			airbus.mes.polypoly.QADialog = sap.ui.xmlfragment(	"airbus.mes.polypoly.QAPopup", that);
 		}
 		airbus.mes.polypoly.QADialog.setModel(airbus.mes.polypoly.PolypolyManager.internalContext.oModelQA);
+		airbus.mes.polypoly.QADialog.setModel(airbus.mes.polypoly.oView.getModel("PolypolyI18n"),"PolypolyI18n");
 		sap.ui.getCore().byId("oTableQA").setVisibleRowCount(airbus.mes.polypoly.PolypolyManager.internalContext.iLinesQA);
 		airbus.mes.polypoly.QADialog.open();
 	},
