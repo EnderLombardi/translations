@@ -19,7 +19,7 @@ airbus.mes.operationdetail.editDisruption.Component.prototype.createContent = fu
 	
 	if (airbus.mes.operationdetail.editDisruption.oView === undefined) {
 //		Initialization
-		airbus.mes.disruptions.ModelManager.init(sap.ui.getCore());
+	//	airbus.mes.disruptions.ModelManager.init(sap.ui.getCore());
 		
 		// View on XML
 		this.oView = sap.ui.view({
@@ -37,7 +37,7 @@ airbus.mes.operationdetail.editDisruption.Component.prototype.createContent = fu
 		
 		
 		//Model for custom data of edit disruption
-		this.oView.setModel(sap.ui.getCore().getModel("disruptionCustomData"),"disruptionCustomData");
+		this.oView.setModel(sap.ui.getCore().getModel("DisruptionModel"),"DisruptionModel");
 		
 		return this.oView;
 		
