@@ -14,10 +14,12 @@
 							<Toolbar>
 								<Title text="{operationDisruptionsModel>Subject}" class="panelTitleText" />
 								<ToolbarSpacer />
-								<Button class="decoratePanelBtn" text="Edit" press="onEditDisruption" design="Transparent"
+								<Button text="Edit" press="onEditDisruption" design="Transparent"
 									icon="sap-icon://edit" />
-								<Button class="decoratePanelBtn" text="Delete" design="Transparent"
-									icon="sap-icon://delete" press="onCloseDisruption" />
+								<Button text="Delete" design="Transparent"
+									icon="sap-icon://delete" press="onDeleteDisruption" />
+								<Button text="{i18nModel>close}" design="Transparent"
+									icon="sap-icon://collapse" press="onCloseDisruption" />
 
 							</Toolbar>
 						</headerToolbar>
@@ -155,11 +157,11 @@
 
 						<Text text="{i18nModel>status} : {operationDisruptionsModel>Status}" />
 						
-						<List noDataText="No Comments"
-							items="{path: 'commentsData>/Rowsets/Rowset/0/Row'}">
+						<List showNoData="false" class="sapUiSmallMargin"
+							items="{path: 'commentsModel>/Rowsets/Rowset/0/Row'}">
 
 							<CustomListItem>
-								<Text text="{commentsData>Comment}"></Text>
+								<Text text="Comment : {commentsModel>Comment}"></Text>
 							</CustomListItem>
 						</List>
 
@@ -184,13 +186,13 @@
 
 						<Toolbar class="barcolor">
 							<ToolbarSpacer />
-							<Button id="addComment" class="decoratePanelBtn" text="{i18nModel>addComment}"
+							<Button id="addComment" text="{i18nModel>addComment}"
 								press="showCommentBox" design="Transparent" icon="sap-icon://comment" />
-							<Button class="decoratePanelBtn" text="{i18nModel>acknowledge}"
+							<Button text="{i18nModel>acknowledge}"
 								design="Transparent" icon="sap-icon://to-be-reviewed" />
-							<Button class="decoratePanelBtn" text="{i18nModel>escalate}"
+							<Button text="{i18nModel>escalate}"
 								press="onEscalate" design="Transparent" icon="sap-icon://message-warning" />
-							<Button class="decoratePanelBtn" text="{i18nModel>markSolved}"
+							<Button text="{i18nModel>markSolved}"
 								press="onMarkSolved" design="Transparent" icon="sap-icon://sys-add" />
 						</Toolbar>
 					</Panel>

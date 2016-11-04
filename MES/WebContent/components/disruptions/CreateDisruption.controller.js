@@ -190,6 +190,7 @@ sap.ui
 					 * Create Disruption
 					 */
 					onCreateDisrupution : function() {
+						
 
 						var sCategory = this.getView().byId("selectCategory").getSelectedKey();
 						var sRootCause = this.getView().byId("selectRootCause").getSelectedKey();			
@@ -272,6 +273,29 @@ sap.ui
 								.renderStationTracker();
 					 
 				 },
+				 
+				 onCancelCreateDisruption: function(){
+					 
+					 var oOperDetailNavContainer = sap.ui.getCore().byId(
+						"operationDetailsView--operDetailNavContainer");
+
+				if (airbus.mes.operationdetail.viewDisruption === undefined
+						|| airbus.mes.operationdetail.viewDisruption.oView === undefined) {
+					sap.ui
+							.getCore()
+							.createComponent(
+									{
+										name : "airbus.mes.operationdetail.viewDisruption",
+									});
+
+					oOperDetailNavContainer
+							.addPage(airbus.mes.operationdetail.viewDisruption.oView);
+				}
+
+				oOperDetailNavContainer
+						.to(airbus.mes.operationdetail.viewDisruption.oView
+								.getId());
+				 }
 				 
 				/**
 				 * Called when the Controller is destroyed. Use this one to free

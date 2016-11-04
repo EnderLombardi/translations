@@ -251,7 +251,7 @@
 			<Bar design="" class="createDisruptionFooter">
 				<contentRight>
 					<Button text="{i18nModel>create}" type="Accept" press="onCreateDisrupution" />
-					<Button text="{i18nModel>update}" type="Accept" press="onUpdateDisrupution" />
+					<Button text="{i18nModel>update}" type="Accept" visible="false" press="onUpdateDisrupution" />
 					<Button text="{i18nModel>cancel}" type="Reject" press="onCancelCreateDisruption" />
 					<Button text="{i18nModel>close}" icon="sap-icon://decline" press="onCloseCreateDisruption" />
 				</contentRight>

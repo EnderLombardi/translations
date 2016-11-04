@@ -105,8 +105,8 @@ airbus.mes.stationtracker.ModelManager = {
               geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$site",oData.site);
               geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$station", oData.station);
               geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$msn", oData.msn);
-              geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker,"$operationType", sType);
-              geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker,"$productionGroup", airbus.mes.settings.ModelManager.prodGroup);
+              geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$operationType", sType);
+              geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker," $productionGroup", airbus.mes.settings.ModelManager.prodGroup);
               geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$user",
                            airbus.mes.stationtracker.AssignmentManager.userSelected);
               
@@ -190,7 +190,7 @@ airbus.mes.stationtracker.ModelManager = {
               var geturlstationtracker = this.urlModel.getProperty('urlproductiongroup');
 
               geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$station", oData.station );
-              geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$plant", oData.plant );
+              geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$plant", oData.site );
 
               var oViewModel = sap.ui.getCore().getModel("productionGroupModel");
               oViewModel.loadData(geturlstationtracker, null, false);
@@ -409,7 +409,7 @@ airbus.mes.stationtracker.ModelManager = {
                       airbus.mes.stationtracker.ModelManager.openOperationDetailPopup(id);
                      break;
 
-              case "WORKORDER":
+              case "WORKORDER_ID":
                      // Boxing Work order, we display the worklist list
                      airbus.mes.stationtracker.ModelManager.openWorkListPopover(id);
                      break;
