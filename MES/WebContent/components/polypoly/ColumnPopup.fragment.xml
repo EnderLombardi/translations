@@ -3,8 +3,8 @@
 	xmlns:u="sap.ui.unified" xmlns:table="sap.ui.table">
 	<Dialog id="columnPopupDialog" title="" stretchOnPhone="true">
 		<buttons>
-			<Button text="{PolypolyI18n>Save}" press="onSaveColumnPopup" type="Emphasized"
-				icon="sap-icon://save" />
+			<Button text="{PolypolyI18n>Save}" press="onSaveColumnPopup"
+				type="Emphasized" icon="sap-icon://save" />
 			<Button text="{PolypolyI18n>Cancel}" press="onCancelColumnPopup" />
 		</buttons>
 		<content>
@@ -14,22 +14,30 @@
 				columnsL="1" columnsM="1" columnsS="1" class="shrinkArea">
 				<f:content>
 					<Label class="" text="{PolypolyI18n>TechnicalName}" />
-					<Input id="colTechname" class="" type="Text"
-						value="{columnModel>/techname}" />
+					<!--<Input id="colTechname" class="" type="Text" value="{columnModel>/techname}" /> -->
+					<MaskInput id="colTechname"
+						mask="{ path : 'columnModel>/techname', formatter : 'airbus.mes.polypoly.util.Formatter.techNameFormat' }"
+						placeholderSymbol="-" value="{columnModel>/techname}">
+						<rules>
+							<MaskInputRule maskFormatSymbol = "C" regex = "^[A-Z0-9\_]"/>
+						</rules>
+					</MaskInput>
 					<Label class="" text="{PolypolyI18n>CompetencyDescription}" />
 					<Input id="colCompetency" class="" type="Text"
 						value="{columnModel>/competency}" />
 					<Label class="" text="{PolypolyI18n>QualityAuthorisation}" />
 					<VBox>
 						<items>
-							<SearchField id="searchField" liveChange="onSearch" width="100%" />
+							<SearchField id="searchField" liveChange="onSearch"
+								width="100%" />
 							<table:Table rows="{ path: 'columnModel>/qa' }" id="oQATable"
 								selectionMode="None" selectionBehavior="RowSelector"
 								visibleRowCount="5" columnHeaderVisible="false">
 								<table:Column id="colQA" sortOrder="Descending"
 									sortProperty="selected">
 									<table:template>
-										<CheckBox text="{columnModel>CERTIFICATION}" selected="{columnModel>selected}" />
+										<CheckBox text="{columnModel>CERTIFICATION}"
+											selected="{columnModel>selected}" />
 									</table:template>
 								</table:Column>
 							</table:Table>
