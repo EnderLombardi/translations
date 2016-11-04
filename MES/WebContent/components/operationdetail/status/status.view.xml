@@ -12,9 +12,11 @@
 						level="H1" titleStyle="H1" />
 				</items>
 			</HBox>
+			<Text text="Progress {operationDetailModel>/Rowsets/Rowset/0/Row/0/progress} %">
+			</Text>
 
 			<Slider id="progressSliderDisplay" max="100" min="0"
-				class="sliderDisplayStatus sliderCompletedColor" showHandleTooltip="true" width="100%"
+				class="sliderDisplayStyle sliderCompletedColor" showHandleTooltip="true" width="100%"
 				value="{operationDetailModel>/Rowsets/Rowset/0/Row/0/progress}"
 				enabled="false">
 			</Slider>
