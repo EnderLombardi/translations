@@ -43,6 +43,17 @@ sap.ui
 					// onExit: function() {
 					//
 					// },
+					
+					
+					/********************************************
+					 * Closing the Disruption
+					 */
+					onCloseDisruption: function(oEvt){
+						var sPath = oEvt.getSource().getParent().getParent().getParent().getBindingContext("operationDisruptionsModel").sPath;
+						var messageRef = this.getView().getModel("operationDisruptionsModel").getProperty(sPath+"/MessageRef");
+					},
+					
+					
 					showCommentBox : function(oEvt) {
 						var path = oEvt.getSource().sId;
 						var listnum = path.split("-");
@@ -112,6 +123,9 @@ sap.ui
 
 					},
 
+					/*************************************************
+					 * Close other panels when one panel is expanded
+					 */
 					handleDisruptionPanelExpand : function(oevent) {
 
 						if (!oevent.oSource.getExpanded())

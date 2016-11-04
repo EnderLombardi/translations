@@ -235,6 +235,13 @@ sap.ui
 						this._oUserConfirmationDialog.close();
 						
 					},
+					
+					/*********************************************************
+					 * Close - Close Disruption Pop-Up
+					 */
+					closeCancelDisruptFragment: function(oEvnt){
+						
+					},
 
 					onOKConfirmation : function(oEvent) {
 
