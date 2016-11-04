@@ -388,8 +388,7 @@ sap.ui
 					},
 
 					onCancelReasonCode : function() {
-						sap.ui.getCore().byId("msgstrpConfirm").setVisible(
-								false);
+						
 						sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].progress_new = sap.ui
 								.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].progress;
 						sap.ui.getCore().getModel("operationDetailModel").refresh();
