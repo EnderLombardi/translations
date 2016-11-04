@@ -164,4 +164,7 @@ html.sap-desktop .sapMBtn:focus>.sapMBtnInner.sapMFocusable {
 html.sap-desktop .sapMBar-CTX :not(.sapMBtnDisabled)>.sapMBtnInner.sapMBtnActive {
     background-color: #73d2e6;	
 }
+html.sap-desktop .sapMBtnTransparent>.sapMBtnIcon {
+	color:#ffffff;
+}
 /** END Subheader back button style **/

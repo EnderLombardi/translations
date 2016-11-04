@@ -18,6 +18,9 @@ sap.ui.controller("airbus.mes.linetracker.MainView", {
 				this.lineSelected, this);
 		oEventBus.subscribe("MainView", "onClickStation", this.stationSelected, this);
 	},
+	onNavBack: function(oEvent){
+		nav.back();
+	},
 
 	/**
 	 * Similar to onAfterRendering, but this hook is invoked before the
