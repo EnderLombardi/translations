@@ -40,7 +40,7 @@ airbus.mes.disruptions.ModelManager = {
 		this.core.setModel(new sap.ui.model.json.JSONModel(),
 				"disruptionCustomData");
 
-		this.loadDisruptionCustomData();
+		
 
 	},
 
