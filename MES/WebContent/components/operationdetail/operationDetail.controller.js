@@ -1,5 +1,3 @@
-//jQuery.sap.require("airbus.mes.stationtracker.util.Formatter");
-
 sap.ui
 		.controller(
 				"airbus.mes.operationdetail.operationDetail",
@@ -7,6 +5,7 @@ sap.ui
 					reasonCodeText : undefined,
 					operationStatus : undefined,
 					disruptionsFlag: false,
+					disruptionCustomDataflag : false,
 
 					/**
 					 * Called when a controller is instantiated and its View
@@ -14,7 +13,7 @@ sap.ui
 					 * to modify the View before it is displayed, to bind event
 					 * handlers and do other one-time initialization.
 					 * 
-					 * @memberOf components.stationtracker.stationtracker
+					 * @memberOf components.operationdetail.operationDetail
 					 */
 					onInit : function() {
 						this.nav = this.getView()
@@ -55,7 +54,7 @@ sap.ui
 					 * before the controller's View is re-rendered (NOT before
 					 * the first rendering! onInit() is used for that one!).
 					 * 
-					 * @memberOf components.stationtracker.stationtracker
+					 * @memberOf components.operationdetail.operationDetail
 					 */
 					onBeforeRendering : function() {
 
@@ -67,14 +66,13 @@ sap.ui
 					 * the HTML could be done here. This hook is the same one
 					 * that SAPUI5 controls get after being rendered.
 					 * 
-					 * @memberOf components.stationtracker.stationtracker
+					 * @memberOf components.operationdetail.operationDetail
 					 */
 					onAfterRendering : function() {
 						this.disruptionsFlag = false;
 						
 						// Navigation to Status every time pop-up is opened
-						this.nav.to(airbus.mes.operationdetail.status.oView
-								.getId());
+						//this.nav.to(airbus.mes.operationdetail.status.oView.getId());
 
 						// Collapse Operation Detail panel and show Expand
 						// button
@@ -205,6 +203,20 @@ sap.ui
 								airbus.mes.disruptions.ModelManager.loadDisruptionsByOperation(operationBO);
 								this.disruptionsFlag = true;
 							}
+							break;
+							
+						case "createDisruptionView":
+							/**************************
+							 * Load Disruption Custom Data
+							 *************************/
+							if(!this.disruptionsCustomDataFlag){
+								airbus.mes.disruptions.ModelManager.loadDisruptionCustomData();
+								airbus.mes.disruptions.ModelManager.loadDisruptionCategory();
+								this.disruptionsCustomDataFlag = true;
+							}
+							break;
+							
+							
 						
 						};
 						

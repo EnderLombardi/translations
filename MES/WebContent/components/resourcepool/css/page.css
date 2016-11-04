@@ -1,7 +1,6 @@
 #resourcePool--resourcePoolName.resourcePoolName {
 	color: white;
 	font-size: 1.2rem;
-	text-shadow: none;
 }
 .resourcePoolSubheader{
 	background-color: #d5f1f8;
@@ -395,7 +394,4 @@
     border: 0;
     height: 3rem;
     padding: 0 0.25rem;
-}
-#resourcePool .sapMBtn:hover>.sapMBtnTransparent.sapMBtnHoverable {
-    background-color: rgba(0, 86, 112, 0.20);
 }

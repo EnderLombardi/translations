@@ -63,8 +63,17 @@ sap.ui
 						this.getView().byId("selectRootCause").setSelectedKey();
 						this.getView().byId("selectResponsible").setSelectedKey();
 						this.setEnabledSelectBox(true,false,false,false);
+						
+						//this.filterField(this.selectTree);
+						
 
-						// airbus.mes.settings.ModelManager.loadUserSettingsModel();
+						this.addParent(this.selectTree, undefined);
+						this.ModelManager = airbus.mes.settings.ModelManager;
+						
+						/*this.getView().core.setModel(new sap.ui.model.json.JSONModel(),
+						"disruptionCustomData");*/
+						
+
 					},
 
 					addParent : function(oTree, oParent) {
@@ -163,22 +172,7 @@ sap.ui
 							that.filterField(oElement);
 						});
 					},
-					loadDisruptionCustomData : function(oEvt) {
-						/*
-						 * airbus.mes.settings.ModelManager.site =
-						 * this.getView() .byId("ComboBoxPlant").getValue();
-						 * airbus.mes.settings.ModelManager.loadPlantModel();
-						 */
-						airbus.mes.disruption.ModelManager
-								.loadDisruptionCustomData();
-						this.filterField(this.selectTree);
-						this.getView().byId("selectCategory").setValue("");
-						this.getView().byId("selectReasonTree").setValue("");
-						this.getView().byId("selectRootCause").setValue("");
-						this.getView().byId("selectResponsible").setValue("");
-
-						this.setEnabledSelectBox(true, false, false, false);
-					},
+					
 
 					setEnabledSelectBox : function(fCategory, fReason,
 							fResponsible, fRootCause) {

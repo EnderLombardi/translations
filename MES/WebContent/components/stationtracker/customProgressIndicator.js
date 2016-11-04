@@ -103,7 +103,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 	
 	renderer : function(r, c) {
 		if (!c.getVisible()) {
-			return
+			return;
 		}
 		
 		var w = c.getPercentValue();
@@ -151,13 +151,13 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 		// }
 		r.addStyle('width', W);
 		if (h) {
-			r.addStyle('height', h)
+			r.addStyle('height', h);
 		}
 		r.writeStyles();
 		if (c.getEnabled()) {
-			r.writeAttribute('tabIndex', '-1')
+			r.writeAttribute('tabIndex', '-1');
 		} else {
-			r.addClass('sapMPIBarDisabled')
+			r.addClass('sapMPIBarDisabled');
 		}
 
 		r.writeClasses();
@@ -216,7 +216,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 				//r.addStyle('max-height', '1.5rem');
 				r.writeStyles();
 				r.write(">");
-				r.writeEscaped(t)
+				r.writeEscaped(t);
 				r.write("</span>");
 
 		}
@@ -226,7 +226,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 		r.addStyle('width', W);
 		r.writeStyles();
 		r.write(">");
-			r.writeEscaped(t)
+			r.writeEscaped(t);
 			r.write("</span>");
 			r.write("<span class='sapMPIText2'");
 			// r.writeControlData(c);

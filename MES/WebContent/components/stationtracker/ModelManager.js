@@ -1,6 +1,6 @@
 "use strict";
 jQuery.sap.require("sap.ui.core.format.DateFormat");
-jQuery.sap.declare("airbus.mes.stationtracker.ModelManager")
+jQuery.sap.declare("airbus.mes.stationtracker.ModelManager");
 airbus.mes.stationtracker.ModelManager = {
        urlModel : undefined,
        queryParams : jQuery.sap.getUriParameters(),
@@ -63,11 +63,6 @@ airbus.mes.stationtracker.ModelManager = {
               this.loadFilterUnplanned();
               this.loadProductionGroup();
               this.loadRessourcePool();
-              // var i18nModel = new sap.ui.model.resource.ResourceModel({
-              // bundleUrl : "./i18n/i18n.properties",
-              // });
-              // core.setModel(i18nModel, "StationTrackerI18n");
-
        },
 
        loadAffectation : function() {
@@ -114,22 +109,20 @@ airbus.mes.stationtracker.ModelManager = {
               geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker,"$productionGroup", airbus.mes.settings.ModelManager.prodGroup);
               geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$user",
                            airbus.mes.stationtracker.AssignmentManager.userSelected);
-
+              
+              var oViewModel;
               switch (sType) {
               case "R":
-                     var oViewModel = sap.ui.getCore().getModel("stationTrackerRModel");
+                     oViewModel = sap.ui.getCore().getModel("stationTrackerRModel");
                      break;
               case "I":
-                     var oViewModel = sap.ui.getCore().getModel("stationTrackerIModel");
-
+                     oViewModel = sap.ui.getCore().getModel("stationTrackerIModel");
                      break;
               case "U":
-                     var oViewModel = sap.ui.getCore().getModel("unPlannedModel");
-
+                     oViewModel = sap.ui.getCore().getModel("unPlannedModel");
                      break;
               case "O":
-                     var oViewModel = sap.ui.getCore().getModel("OSWModel");
-
+                     oViewModel = sap.ui.getCore().getModel("OSWModel");
                      break;
 
               }
@@ -150,12 +143,11 @@ airbus.mes.stationtracker.ModelManager = {
 
        onUnPlannedLoad : function() {
 
-              // var oData = sap.ui.getCore().getModel("unPlannedModel").getData();
               var oModel = sap.ui.getCore().getModel("unPlannedModel");
 
               if (!oModel.getProperty("/Rowsets/Rowset/0/Row")) {
 
-                     oModel = []
+                     oModel = [];
                      console.log("no Unplanned operation load");
 
               }
@@ -168,20 +160,13 @@ airbus.mes.stationtracker.ModelManager = {
 
               if (!oModel.getProperty("/Rowsets/Rowset/0/Row")) {
 
-                     oModel = []
+                     oModel = [];
                      console.log("no OWS operation load");
 
               }
 
        },
 
-       // loadUnplanned : function() {
-       //                   
-       // var oViewModel = sap.ui.getCore().getModel("unPlannedModel");
-       // oViewModel.loadData(this.urlModel.getProperty("urlstationtrackerunplannedactivities")
-       // , null, false);
-       // airbus.mes.stationtracker.ModelManager.Unplanned = oViewModel;
-       // },
        loadFilterUnplanned : function() {
               var oViewModel = sap.ui.getCore().getModel("groupModel");
               oViewModel.loadData(this.urlModel.getProperty("urlgroupmodel"), null, false);
@@ -247,7 +232,7 @@ airbus.mes.stationtracker.ModelManager = {
                      element.visible = airbus.mes.stationtracker.ShiftManager.dayDisplay;
                      element.shiftName = sShiftName;
                      element.day = airbus.mes.stationtracker.ShiftManager.current_shift.day;
-                     element.shiftID = prop
+                     element.shiftID = prop;
                      modelarray.push(element);
 
               }
@@ -278,14 +263,6 @@ airbus.mes.stationtracker.ModelManager = {
                      scheduler.updateView(airbus.mes.stationtracker.ShiftManager.ShiftSelected.StartDate);
               }
 
-//              // Manage date of date picker
-//              // Retrieve text on div dhx_cal_date and split to keep only the date
-//              var oDate = new Date($("div[class='dhx_cal_date']").contents()[0].data.split("-")[0]);
-//              var oDatePicker = airbus.mes.stationtracker.oView.byId("DatePicker");
-//              oDatePicker.setDateValue(oDate);
-//              // TODO : date formatter
-//              oDatePicker.setValueFormat("dd-MM-yyyy");
-              
               var oDate = new Date($("div[class='dhx_cal_date']").contents()[0].data.split("-")[0]);
               var oFormatddMMyyy = sap.ui.core.format.DateFormat.getInstance({pattern: "dd MMM yyyy", calendarType: sap.ui.core.CalendarType.Gregorian});
               var oText = airbus.mes.stationtracker.oView.byId("dateLabel");
@@ -342,38 +319,6 @@ airbus.mes.stationtracker.ModelManager = {
                      }
               });
        },
-
-       /*
-       * openOperationPopOver : function(id) {
-       * 
-        * if (airbus.mes.stationtracker.operationPopover === undefined) {
-       * 
-        * airbus.mes.stationtracker.operationPopover = sap.ui.xmlfragment(
-       * "operationPopover", "airbus.mes.stationtracker.operationPopover",
-       * airbus.mes.stationtracker.oView.getController());
-       * airbus.mes.stationtracker.operationPopover
-       * .addStyleClass("alignTextLeft");
-       * airbus.mes.stationtracker.operationPopover.setModel(sap.ui
-       * .getCore().getModel("WorkListModel"), "WorkListModel");
-       * airbus.mes.stationtracker.oView
-       * .addDependent(airbus.mes.stationtracker.operationPopover); }
-       * 
-        * var oNavCon = sap.ui.getCore().byId(
-       * "operationPopover--navOperatorContainer"); var oMasterPage =
-       * sap.ui.getCore().byId("operationPopover--master");
-       * oNavCon.to(oMasterPage); oNavCon.currentPageIsTopPage(); var
-       * oOperationPopover = sap.ui.getCore().byId(
-       * "operationPopover--operationPopoverID"); var oModel =
-       * airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy[scheduler
-       * .getEvent(id).group][scheduler.getEvent(id).avlLine][scheduler
-       * .getEvent(id).box]; // Set data in Model WorkList
-       * airbus.mes.stationtracker.operationPopover.getModel("WorkListModel")
-       * .setData(oModel);
-       * airbus.mes.stationtracker.operationPopover.getModel("WorkListModel")
-       * .refresh();
-       * 
-        * airbus.mes.stationtracker.operationPopover.open(); },
-       */
 
        openOperationPopOver : function(id) {
 
@@ -461,16 +406,12 @@ airbus.mes.stationtracker.ModelManager = {
               switch (airbus.mes.stationtracker.GroupingBoxingManager.box) {
               case "OPERATION_ID":
                      // Boxing operation, we display the operation list
-                     // airbus.mes.stationtracker.ModelManager.openOperationPopOver(id);
-                     airbus.mes.stationtracker.ModelManager.openOperationDetailPopup(id);
-
+                      airbus.mes.stationtracker.ModelManager.openOperationDetailPopup(id);
                      break;
 
               case "WORKORDER":
                      // Boxing Work order, we display the worklist list
-
                      airbus.mes.stationtracker.ModelManager.openWorkListPopover(id);
-
                      break;
 
               }
@@ -489,9 +430,7 @@ airbus.mes.stationtracker.ModelManager = {
                                   "operationDetailModel");
 
                      airbus.mes.stationtracker.oView.addDependent(airbus.mes.stationtracker.operationDetailPopup);
-
-                     //airbus.mes.stationtracker.operationDetailPopup.addStyleClass("alignTextLeft");
-
+ 
               }
 
               var oModel = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy[scheduler.getEvent(id).group][scheduler
@@ -510,7 +449,7 @@ airbus.mes.stationtracker.ModelManager = {
               
               // progress calculation
               var progress;
-              if(oModel[0].DURATION == 0)
+              if(oModel[0].DURATION === 0)
             	  progress = 0;
               else
             	 progress = oModel[0].PROGRESS / oModel[0].DURATION * 100; 
@@ -540,13 +479,8 @@ airbus.mes.stationtracker.ModelManager = {
                                   } ]
                            } ]
                      }
-              }
+              };
 
-              /*
-              * airbus.mes.stationtracker.operationDetailPopup.getModel(
-              * "operationDetailModel").loadData(
-              * this.getUrlOperationDetail(operationSfc, prodGroup), null, false);
-              */
 
               if (airbus.mes.operationdetail === undefined) {
                      jQuery.sap.registerModulePath("airbus.mes.operationdetail", "../components/operationdetail");
@@ -565,11 +499,6 @@ airbus.mes.stationtracker.ModelManager = {
               sap.ui.getCore().getModel("operationDetailModel").setData(oOperModel);
               sap.ui.getCore().getModel("operationDetailModel").refresh();
 
-              /*
-              * $("#operationDetailsView--operationNav").height(($("#operationDetailPopup--operationDetailPopUp").height() -
-              * $("#operationDetailsView--operationDetailPanel").height() - 48 ));
-              */
-
        }
-}
+};
 

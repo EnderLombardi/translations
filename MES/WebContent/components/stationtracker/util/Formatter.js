@@ -125,51 +125,30 @@ airbus.mes.stationtracker.util.Formatter = {
 				}
 		
 			},
-//			transformRescheduleDate : function(oDate) {
-//				var today = oDate;
-//				var aDate = [];
-//				
-//				var sYear = today.getFullYear();
-//				var sMounth = today.getMonth() + 1;
-//				var sDay = today.getDate();
-//				var sSecond =  today.getSeconds();
-//				var sMinute =  today.getMinutes();
-//				var sHour =  today.getHours();
-//			
-//				aDate.push(sMounth,sDay,sHour,sMinute,sSecond);
-//				aDate.forEach(function(el,indice){
-//					if(el<10){aDate[indice] = "0" + el;}
-//				})
-//						
-//				
-//					var FullTodayDate = sYear + "-" + aDate[0] + "-" + aDate[1] + " " + aDate[2] + ":" +  aDate[3] + ":" + aDate[4];
-//				
-//				return FullTodayDate;
-//			},
-//			
+
 			BoxDisplay : function( oBox ) {
 				
 				var html = "";
 				
-				var sDivForLeftDisplay = '<div  style="width:100%; height:inherit; position:absolute; z-index: 1; line-height: 23px;left: 0px; overflow: hidden; text-overflow: ellipsis; " >'
-				var sDivForLeftDisplayInitial = '<div class="tracker-item-initial" >'
+				var sDivForLeftDisplay = '<div  style="width:100%; height:inherit; position:absolute; z-index: 1; line-height: 23px;left: 0px; overflow: hidden; text-overflow: ellipsis; " >';
+				var sDivForLeftDisplayInitial = '<div class="tracker-item-initial" >';
 				var sRightIcon = "";	
 				var sLeftIcon = "";
 				var sColorProgress = "";
 				var sText = "";
-				var sProgress = airbus.mes.stationtracker.util.Formatter.percentValue(oBox.progress,oBox.totalDuration)
+				var sProgress = airbus.mes.stationtracker.util.Formatter.percentValue(oBox.progress,oBox.totalDuration);
 				// Text to display different case regarding box selected
 				switch (airbus.mes.stationtracker.GroupingBoxingManager.box) {
 		
 				case "OPERATION_ID":
-					var sText = oBox.operationId + " - " + oBox.shopOrder + " - " + oBox.operationDescription;
+					sText = oBox.operationId + " - " + oBox.shopOrder + " - " + oBox.operationDescription;
 					break;
 		
 				case "WORKORDER":
-					var sText = oBox.shopOrderDescription + " - " + oBox.shopOrder;
+					sText = oBox.shopOrderDescription + " - " + oBox.shopOrder;
 					break;
 				default:
-					var sText = oBox.realValueBox;
+					sText = oBox.realValueBox;
 					break;
 		
 				}
@@ -184,14 +163,14 @@ airbus.mes.stationtracker.util.Formatter = {
 				// need one more condition to add OSW
 				if ( oBox.rmaStatus != "---" ) {
 					
-					var sLeftIcon = '<i class="fa fa-exclamation-triangle" style="position: relative; z-index: 1; padding-left:10px; padding-right:10px; line-height: 23px; color:white; float: left;" ></i>';
+					sLeftIcon = '<i class="fa fa-exclamation-triangle" style="position: relative; z-index: 1; padding-left:10px; padding-right:10px; line-height: 23px; color:white; float: left;" ></i>';
 				}  
 				
 				// box completed
 				
 				if ( oBox.status === "C" ) {
 					
-					var sColorProgress ='<div style="width:100%; height:inherit; background-color:#0085ad ; position:absolute; z-index: 0;left: 0px;"></div>';
+					sColorProgress ='<div style="width:100%; height:inherit; background-color:#0085ad ; position:absolute; z-index: 0;left: 0px;"></div>';
 				
 				}
 				
@@ -200,42 +179,42 @@ airbus.mes.stationtracker.util.Formatter = {
 				switch ( oBox.paused ) {
 				// box is active
 					case 2 :
-						var sColorProgress = '<div style="width:' + sProgress + '%; height:inherit; background-color:#84bd00; position:absolute; z-index: 0; left: 0px;"></div>';
-						var sRightIcon = '<i class="fa fa-play" style="position: relative; z-index: 1; padding-right:10px; line-height: 23px; color:white; float: right;" ></i>';
+						sColorProgress = '<div style="width:' + sProgress + '%; height:inherit; background-color:#84bd00; position:absolute; z-index: 0; left: 0px;"></div>';
+						sRightIcon = '<i class="fa fa-play" style="position: relative; z-index: 1; padding-right:10px; line-height: 23px; color:white; float: right;" ></i>';
 						
 					break;
 				// box is paused
 					case 3 :
-						var sColorProgress = '<div style="width:' + sProgress + '%; height:inherit; background-color:#84bd00; position:absolute; z-index: 0; left: 0px;"></div>';
-						var sRightIcon = '<i class="fa fa-pause" style="position: relative; z-index: 1; padding-right:10px; line-height: 23px; color:white; float: right;" ></i>';
+						sColorProgress = '<div style="width:' + sProgress + '%; height:inherit; background-color:#84bd00; position:absolute; z-index: 0; left: 0px;"></div>';
+						sRightIcon = '<i class="fa fa-pause" style="position: relative; z-index: 1; padding-right:10px; line-height: 23px; color:white; float: right;" ></i>';
 						break;
 				// box not started
 					case 1 :
-						var sRightIcon = "";
-						break
+						sRightIcon = "";
+						break;
 				// box Completed
 					case 0 :
-						var sColorProgress ='<div style="width:100%; height:inherit; background-color:#0085ad ; position:absolute; z-index: 0;left: 0px;"></div>';
-						var sRightIcon = '<i class="fa fa-check" style="position: relative; z-index: 1; padding-right:10px; line-height: 23px; color:white; float: right;" ></i>';
+						sColorProgress ='<div style="width:100%; height:inherit; background-color:#0085ad ; position:absolute; z-index: 0;left: 0px;"></div>';
+						sRightIcon = '<i class="fa fa-check" style="position: relative; z-index: 1; padding-right:10px; line-height: 23px; color:white; float: right;" ></i>';
 					
-					break	
+					break;	
 	
 				}
 		
 //				html = sDivForLeftDisplay + sRightIcon + sLeftIcon + sSpanText + sProgressText + sColorProgress + '</div>'
-				html = sDivForLeftDisplay + sRightIcon + sLeftIcon + sSpanText + sColorProgress + '</div>' 
+				html = sDivForLeftDisplay + sRightIcon + sLeftIcon + sSpanText + sColorProgress + '</div>'; 
 							
 				if ( oBox.type === "I" ) {
 					
 //					html = sDivForLeftDisplayInitial + sRightIcon + sLeftIcon + sSpanText + sProgressText + sColorProgress + '</div>'
-					html = sDivForLeftDisplayInitial + sRightIcon + sLeftIcon + sSpanText + sColorProgress + '</div>' 
+					html = sDivForLeftDisplayInitial + sRightIcon + sLeftIcon + sSpanText + sColorProgress + '</div>' ;
 
 					return html;
 					
 				} else {
 					
 //					html = sDivForLeftDisplay + sRightIcon + sLeftIcon + sSpanText + sProgressText + sColorProgress + '</div>' 
-					html = sDivForLeftDisplay + sRightIcon + sLeftIcon + sSpanText + sColorProgress + '</div>' 
+					html = sDivForLeftDisplay + sRightIcon + sLeftIcon + sSpanText + sColorProgress + '</div>' ;
 
 					return html;
 					
@@ -261,7 +240,7 @@ airbus.mes.stationtracker.util.Formatter = {
 			
 			
 			titleWorklist : function(workOrder, workOrderDescritpion) {
-				return workOrder + " - " + workOrderDescritpion
+				return workOrder + " - " + workOrderDescritpion;
 			},
 			displayValueIM : function(operation, operationDescription,	progress, duration) {
 				progress = ((progress * 100 * 0.001)/3600).toFixed(4);
@@ -312,7 +291,7 @@ airbus.mes.stationtracker.util.Formatter = {
 				if (oSection.initial != undefined ) {
 
 					var html = '<span  style="float: right;margin-right: 5px;" >' + oSection.initial
-							+ '</span>'
+							+ '</span>';
 					return html;
 
 				}

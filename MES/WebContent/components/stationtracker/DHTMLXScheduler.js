@@ -39,7 +39,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 						
 						
 					    scheduler.eventId = scheduler.eventId || [];
-                        scheduler.eventId.forEach(function(el) { scheduler.detachEvent(el) });
+                        scheduler.eventId.forEach(function(el) { scheduler.detachEvent(el); });
                         scheduler.eventId = [];
                         
                        
@@ -74,18 +74,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
                         
                        
 						scheduler.eventId.push ( scheduler.attachEvent("onEventDrag", function SchedStartChange(ev, mode, e) {
-//							// any custom logic here
-//						//	console.log(new Date(this.getEvent(ev).end_date.getTime()));
-//							if (new Date(this.getEvent(ev).start_date.getTime()	+ (-scheduler.matrix.timeline.x_step * 60000)) < scheduler._min_date)
-//
-//							{
-//								console.log("left");
-//						//		ShiftManager.timelineSwip("left");
-//							} else if (new Date(this.getEvent(ev).end_date.getTime()+ (scheduler.matrix.timeline.x_step * 60000)) > scheduler._max_date) {
-//								console.log("right");
-//								ShiftManager.timelineSwip("right");
-//							}
-						
+					
 							if ( this.getEvent(ev).start_date.getTime() >= scheduler._max_date  )
 								{
 								console.log("yes");
@@ -107,7 +96,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 						}));
 					
 												
-						//				if (!scheduler.checkEvent("onBeforeEventChanged")) {
+//				if (!scheduler.checkEvent("onBeforeEventChanged")) {
 //						scheduler.eventId.push(scheduler.attachEvent("onBeforeEventChanged",
 //								
 //								function blockSectionChange(ev, e, is_new, original) {
