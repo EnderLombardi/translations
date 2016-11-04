@@ -61,7 +61,7 @@ airbus.mes.settings.ModelManager =  {
 		//Loading of model
 		
 		this.loadSiteModel();
-		this.loadPlantModel();
+		//this.loadPlantModel();
         this.loadUserSettingsModel();
         this.getProgram();
         

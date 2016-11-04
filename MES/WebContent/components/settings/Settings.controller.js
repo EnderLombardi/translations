@@ -6,35 +6,6 @@ sap.ui.controller("airbus.mes.settings.Settings",
 		{
 	
 //			Tree to define the hierarchy between select box Line, Station and MSN	
-//	selectTree : {
-//		id : "ComboBoxProgram",
-//		type : "select",
-//		path : "program",
-//		attr : "program",
-//		childs : [ {
-//			id : "ComboBoxLine",
-//			type : "select",
-//			path : "line",
-//			attr : "line",
-//			childs : [ {
-//				id : "ComboBoxStation",
-//				type : "select",
-//				path : "station",
-//				attr : "station",
-//				childs : []
-//			}, {
-//				id : "ComboBoxMSN",
-//				type : "select",
-//				path : "msn",
-//				childs : []
-//			}, {
-//				id : "Return",
-//				type : "Return",
-//				childs : []
-//			} ]
-//		} ]
-//	},
-//			
 			selectTree : {
 				id : "headTextProgram",
 				type : "select",
@@ -70,7 +41,7 @@ sap.ui.controller("airbus.mes.settings.Settings",
 
 			onAfterRendering : function() {
 				this.byId("vbi").zoomToRegions([ "FR", "GB", "ES", "DE" ]);
-				this.getUserSettings();
+				//this.getUserSettings();
 			},
 
 			onInit : function() {
@@ -106,8 +77,17 @@ sap.ui.controller("airbus.mes.settings.Settings",
 			// *******************
 			onSelectionChange : function(oEvt) {
 				var that = this;
-				var id = oEvt.getSource().getId().split("--")[1];
-				this.findElement(this.selectTree, oEvt.getSource().getId().split("--")[1]).childs
+				
+				if (oEvt.getSource != undefined ) {
+					
+					var id = oEvt.getSource().getId().split("--")[1];
+						
+				} else {
+					// Used when this function is call to set usersetting data.	
+					var id = oEvt;
+				}
+				
+				this.findElement(this.selectTree, id).childs
 						.forEach(function(oElement) {
 							that.clearField(oElement);
 							that.filterField(oElement);
@@ -123,8 +103,8 @@ sap.ui.controller("airbus.mes.settings.Settings",
 						
 						var sCurrentMsn = "";
 						var oModel = sap.ui.getCore().getModel("plantModel").getProperty("/Rowsets/Rowset/0/Row");
-						
-						oModel.filter(function (el) {
+						// Find automatically the msn with the flag Current MSN different of "---"
+						oModel = oModel.filter(function (el) {
 							  return el.program ===  airbus.mes.settings.ModelManager.program &&
 							       	 el.line === airbus.mes.settings.oView.byId("selectLine").getValue() &&
 							         el.station === airbus.mes.settings.oView.byId("selectStation").getValue() &&
@@ -136,6 +116,7 @@ sap.ui.controller("airbus.mes.settings.Settings",
 						}
 												
 					}
+					this.setEnabledCombobox(true, true, true, true);
 			        break;
 			    default: 
 			    	this.setEnabledCombobox(true, true, true, true);
@@ -251,23 +232,28 @@ sap.ui.controller("airbus.mes.settings.Settings",
 			onPressSite : function(e) {
 				
 				var oModel = sap.ui.getCore().getModel("siteModel").getProperty("/Rowsets/Rowset/0/Row");
-							
-				var site = e.getParameters().item.getText();
+				// take 			
+				if ( e.getParameters().item != undefined ) {
+					var site =  e.getParameters().item.getText();
+				} else {
+					var site = airbus.mes.settings.oView.byId("headTextPlant").getSelectedItem().getText();
+				}
+			
 				var fIndex = oModel.map(function(x) {return x.site_desc; }).indexOf( site );
 				// get real value of site making the link betwen the siteModel and from mii and local site
 				airbus.mes.settings.ModelManager.site = sap.ui.getCore().getModel("siteModel").getProperty("/Rowsets/Rowset/0/Row/" + fIndex + "/site");
 				var oData = this.getView().getModel("region").oData;
 
-				for (var i = 0; i < oData.Spots.length; i++) {
-					var spot = oData.Spots[i].tooltip;
-					if (spot == site) {
-
-						var splitter = oData.Spots[i].pos.split(";");
-						sap.m.MessageToast.show(site);
-						this.byId("vbi").zoomToGeoPosition(splitter[0],
-								splitter[1], 6);
-					}
-				}
+//				for (var i = 0; i < oData.Spots.length; i++) {
+//					var spot = oData.Spots[i].tooltip;
+//					if (spot == site) {
+//
+//						var splitter = oData.Spots[i].pos.split(";");
+//						sap.m.MessageToast.show(site);
+//						this.byId("vbi").zoomToGeoPosition(splitter[0],
+//								splitter[1], 6);
+//					}
+//				}
 								
 				//airbus.mes.settings.ModelManager.site = this.getView().byId("ComboBoxPlant").getValue();
 				airbus.mes.settings.ModelManager.loadPlantModel();
@@ -346,27 +332,36 @@ sap.ui.controller("airbus.mes.settings.Settings",
 				airbus.mes.settings.ModelManager.taktDuration = oModel.Rowsets.Rowset[0].Row[0].duration;
 				
 				// Replace with current new element in UI
-				//this.getView().byId("headTextPlant").setValue(airbus.mes.settings.ModelManager.site);
 				if (airbus.mes.settings.ModelManager.site) {
-					this.loadPlantModel();
+					airbus.mes.settings.ModelManager.loadPlantModel();
 					
 					//Select site
 					var oModel = sap.ui.getCore().getModel("siteModel").getProperty("/Rowsets/Rowset/0/Row");
 					var fIndex = oModel.map(function(x) {return x.site; }).indexOf( airbus.mes.settings.ModelManager.site );
 					//Get Value of site_desc of Model
 					var sSite = sap.ui.getCore().getModel("siteModel").getProperty("/Rowsets/Rowset/0/Row/" + fIndex + "/site_desc");
-					this.getView().byId("headTextPlant").setSelectedKey(sSite)
-						
+					this.getView().byId("headTextPlant").setSelectedKey(sSite);
+					// Fire event to refilter plant
+					this.getView().byId("headTextPlant").fireItemPress();	
+				
 					//Select program
 					this.getView().byId("headTextProgram").getItems().forEach(function(el){
 							
 							if ( el.getContent()[0].getItems()[0].getText() === airbus.mes.settings.ModelManager.program ) {
 								
-								el.getContent()[0].getItems()[0].setSelected(true);	
+								el.getContent()[0].getItems()[0].setSelected(true);
+								
 					}});
+						// Fire event to refilter plant
+						airbus.mes.settings.oView.getController().onProgramSelect();		
+			
 		
 						this.getView().byId("selectLine").setSelectedKey(airbus.mes.settings.ModelManager.line);
+						this.getView().getController().onSelectionChange("selectLine");
+						
 						this.getView().byId("selectStation").setSelectedKey(airbus.mes.settings.ModelManager.station);
+						this.getView().getController().onSelectionChange("selectStation");
+		
 						this.getView().byId("selectMSN").setSelectedKey(airbus.mes.settings.ModelManager.msn);
 
 					this.setEnabledCombobox(true, true, true, true);
@@ -382,13 +377,15 @@ sap.ui.controller("airbus.mes.settings.Settings",
 				var fSelected = oEvt.getSource().getSelected();
 				airbus.mes.settings.ModelManager.currentMsnSelected = fSelected;
 				
+				if ( airbus.mes.settings.oView.byId("selectStation").getValue() != "" )
+				
 				this.getView().byId("selectMSN").setEnabled(!fSelected);
 				
 			},
 			/**
 		     * Fire when the user press confirm it save data.
 		     */
-			loadStationTracker : function(oEvent) {
+			saveUserSettings : function(oEvent) {
 				var that = this;
 				if (this.getView().byId("headTextPlant").getSelectedItem() === null ) {
 					airbus.mes.settings.ModelManager.messageShow(this.getView().getModel("i18n").getProperty("SelectSite"));
@@ -411,10 +408,16 @@ sap.ui.controller("airbus.mes.settings.Settings",
 					airbus.mes.settings.ModelManager.messageShow(this.getView().getModel("i18n").getProperty("SelectMSN"));
 					return;
 				}else {
-					// Save value selected.
-					var sPath = airbus.mes.settings.oView.byId("selectMSN").getSelectedItem().getBindingContext("plantModel").sPath;
-					var oModel = airbus.mes.settings.oView.getModel("plantModel").getProperty(sPath);
 					
+					// Save value selected.
+					var oModel = sap.ui.getCore().getModel("plantModel").getProperty("/Rowsets/Rowset/0/Row");
+					oModel = oModel.filter(function (el) {
+						  return el.program ===  airbus.mes.settings.ModelManager.program &&
+						       	 el.line === airbus.mes.settings.oView.byId("selectLine").getValue() &&
+						         el.station === airbus.mes.settings.oView.byId("selectStation").getValue() &&
+						         el.Current_MSN != airbus.mes.settings.oView.byId("selectMSN").getValue();
+						});
+	
 					airbus.mes.settings.ModelManager.line = this.getView().byId("selectLine").getValue();
 					airbus.mes.settings.ModelManager.station = this.getView().byId("selectStation").getValue();
 					airbus.mes.settings.ModelManager.msn = this.getView().byId("selectMSN").getValue();
@@ -422,6 +425,7 @@ sap.ui.controller("airbus.mes.settings.Settings",
 					airbus.mes.settings.ModelManager.taktEnd = oModel.end;
 					airbus.mes.settings.ModelManager.taktDuration = oModel.duration;
 					
+					airbus.mes.settings.ModelManager.getUrlSaveUserSetting();
 					// Navigate to correct view
 					that.navigate(oEvent);
 				}

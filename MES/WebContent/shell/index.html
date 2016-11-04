@@ -56,7 +56,9 @@
 		airbus.mes.component.settings = sap.ui.getCore().createComponent({
 			name : "airbus.mes.settings", // root component folder is resources
 		});
-	
+		
+		airbus.mes.settings.oView.getController().getUserSettings();
+		
 		nav = airbus.mes.shell.oView.byId("navCont");
 		nav.afterNavigate;
 	
