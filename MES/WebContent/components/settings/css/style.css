@@ -153,6 +153,11 @@ font-style: normal !important;
 #messageDialog--errorMessageDialog-footer {
 	background-color:#0F2D65;
 }
+/** Subheader style title **/
+html.sap-desktop .pageHeader .sapMBarMiddle .sapMBarChild {
+	text-shadow: none;
+}
+/** END Subheader style title **/
 
 /** Subheader back button style **/
 
