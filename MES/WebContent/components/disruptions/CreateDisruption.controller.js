@@ -265,6 +265,14 @@ sap.ui
 				 onAfterRendering: function() {
 					// this.filterField(this.selectTree);
 				 },
+				 
+				 onCloseCreateDisruption :function() {
+					 airbus.mes.stationtracker.operationDetailPopup.close();
+						airbus.mes.shell.oView.getController()
+								.renderStationTracker();
+					 
+				 },
+				 
 				/**
 				 * Called when the Controller is destroyed. Use this one to free
 				 * resources and finalize activities.
