@@ -28,7 +28,7 @@
 		{ "USER_ID" : "TO95871", "SITE" : "CHES", "NAME" : "RES_1", "PERSONAL_NO" : "---", "ERP_USER_ID" : "---", "FNAME" : "JEROME", "LNAME" : "POUILLE", "LOANED_TO_POOL" : "---", "LOANED_RP_NAME" : "" }, 
 		{ "USER_ID" : "NG61ECC", "SITE" : "CHES", "NAME" : "---", "PERSONAL_NO" : "---", "ERP_USER_ID" : "---", "FNAME" : "KONSTANTIN", "LNAME" : "CHERNEGA", "LOANED_TO_POOL" : "---", "LOANED_RP_NAME" : "---" }, 
 		{ "USER_ID" : "NG118FC", "SITE" : "CHES", "NAME" : "---", "PERSONAL_NO" : "---", "ERP_USER_ID" : "---", "FNAME" : "LAURE", "LNAME" : "JBARI", "LOANED_TO_POOL" : "---", "LOANED_RP_NAME" : "---" }, 
-		{ "USER_ID" : "NG42E7A", "SITE" : "CHES", "NAME" : "RPG", "PERSONAL_NO" : "4400022", "ERP_USER_ID" : "---", "FNAME" : "MASOOM", "LNAME" : "JAJOO", "LOANED_TO_POOL" : "30", "LOANED_RP_NAME" : "TEST-GS" }, 
+		{ "USER_ID" : "ZMII1684L201", "SITE" : "CHES", "NAME" : "RPG", "PERSONAL_NO" : "4400022", "ERP_USER_ID" : "---", "FNAME" : "MASOOM", "LNAME" : "JAJOO", "LOANED_TO_POOL" : "30", "LOANED_RP_NAME" : "TEST-GS" }, 
 		{ "USER_ID" : "NG5E821", "SITE" : "CHES", "NAME" : "RES_1", "PERSONAL_NO" : "---", "ERP_USER_ID" : "---", "FNAME" : "MEHDI", "LNAME" : "MAHHOU", "LOANED_TO_POOL" : "---", "LOANED_RP_NAME" : "" }, 
 		{ "USER_ID" : "TO105976", "SITE" : "CHES", "NAME" : "RES_1", "PERSONAL_NO" : "---", "ERP_USER_ID" : "---", "FNAME" : "MORITZ", "LNAME" : "KAISER", "LOANED_TO_POOL" : "---", "LOANED_RP_NAME" : "" }, 
 		{ "USER_ID" : "NG5E7C1", "SITE" : "CHES", "NAME" : "---", "PERSONAL_NO" : "---", "ERP_USER_ID" : "---", "FNAME" : "NICOLAS", "LNAME" : "JANVIER", "LOANED_TO_POOL" : "---", "LOANED_RP_NAME" : "---" }, 
