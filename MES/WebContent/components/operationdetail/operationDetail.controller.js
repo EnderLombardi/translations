@@ -205,12 +205,13 @@ sap.ui
 							}
 							break;
 							
-						case "CreateDisruptionView":
+						case "createDisruptionView":
 							/**************************
 							 * Load Disruption Custom Data
 							 *************************/
 							if(!this.disruptionsCustomDataFlag){
 								airbus.mes.disruptions.ModelManager.loadDisruptionCustomData();
+								airbus.mes.disruptions.ModelManager.loadDisruptionCategory();
 								this.disruptionsCustomDataFlag = true;
 							}
 							break;
