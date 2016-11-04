@@ -81,7 +81,7 @@
 }
 
 .productionTile>div {
-	height: 32%;
+	height: 33.3333333%;
 }
 
 .factoryButton>span {
@@ -144,7 +144,7 @@
 }
 
 .factStationBoxImg {
-	width: 31%; //
+	width: 31%;
 	height: 65%;
 	margin-top: 5%;
 }
@@ -154,9 +154,14 @@
 	height: 100%;
 	display: flex;
 	justify-content: space-around;
-	margin-top: 2%;
-}
 
+}
+.prductionMainBox > div .sapMFlexItem {
+	border-right:1px solid #ccc;
+}
+.prductionMainBox > div:first-child .sapMFlexItem {
+	border-right:none;
+}
 .prductionMainBox>div {
 	width: 100%;
 	height: 100%;
@@ -169,7 +174,7 @@
 }
 
 .productionProductionBox {
-	width: 100%;
+	width: auto;
 	height: 100%;
 }
 

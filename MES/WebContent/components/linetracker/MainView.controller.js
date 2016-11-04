@@ -159,7 +159,7 @@ sap.ui.controller("airbus.mes.linetracker.MainView", {
 				viewName : "airbus.mes.linetracker.ProductionLineView",
 				type : sap.ui.core.mvc.ViewType.XML,
 				height : "95%",
-				width:"99%"
+				width:"100%"
 			});
 			sap.ui.getCore().byId("idMainView--MainViewNavContainer").addPage(airbus.mes.linetracker.util.ModelManager.ProductionView);
 		}
