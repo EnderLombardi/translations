@@ -64,9 +64,22 @@ sap.ui
 						this.getView().byId("selectResponsible").setSelectedKey();
 						this.setEnabledSelectBox(true,false,false,false);
 						
+						//this.filterField(this.selectTree);
 						
-						this.getView().core.setModel(new sap.ui.model.json.JSONModel(),
-						"disruptionCustomData");
+
+						this.addParent(this.selectTree, undefined);
+						this.ModelManager = airbus.mes.settings.ModelManager;
+						
+						var aTemp[];
+						var oJson = sap.ui.getCore().getModel("disruptionCustomData").oData.Rowsets.Rowset[0].Row;
+						oJson.forEach(function(oElement){
+							 var current = oElement.MessageType
+						        if ( aTemp.indexOf(current) < 0)  aTemp.push(current);
+						});
+						
+						
+						/*this.getView().core.setModel(new sap.ui.model.json.JSONModel(),
+						"disruptionCustomData");*/
 						
 
 					},
