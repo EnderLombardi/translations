@@ -4,13 +4,14 @@
 	<Page class="disruptions" showHeader="false">
 
 		<subHeader>
-			<Toolbar>
-				<Button id="navBack" icon="sap-icon://arrow-left" text="Back"
-					press="onNavBack" type="Transparent" />
-				<ToolbarSpacer />
-				<Text text="{disruptiontrackerI18n>disruptionsTitle}" class="headerText" />
-				<ToolbarSpacer />
-			</Toolbar>
+			<Bar class="pageHeader">
+				<contentLeft>
+					<Button id="navBack" icon="sap-icon://arrow-left" text="Back" press="onNavBack" type="Transparent"/>
+				</contentLeft>
+				<contentMiddle>
+					<Text text="{disruptiontrackerI18n>disruptionsTitle}" class="headerText" />
+				</contentMiddle>
+			</Bar>
 		</subHeader>
 
 		<Panel width="100%">
