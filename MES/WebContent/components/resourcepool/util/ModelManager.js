@@ -21,7 +21,7 @@ airbus.mes.resourcepool.util.ModelManager = {
 		core.setModel(new sap.ui.model.json.JSONModel(), "AvailableWCModel");
 		core.setModel(new sap.ui.model.json.JSONModel(), "AssignedWCModel");
 		core.setModel(new sap.ui.model.json.JSONModel(), "AvailableShiftModel");
-
+		core.setModel(new sap.ui.model.json.JSONModel(), "ResourcePoolDetailModel");
 		var dest;
 
 		switch (window.location.hostname) {
@@ -65,6 +65,7 @@ airbus.mes.resourcepool.util.ModelManager = {
 	},
 
 	loadMainViewModels : function() {
+		this.loadModelResourcePoolModel();
 		this.currentView.setBusy(true);
 		this.loadModelAvailableShift();
 		this.loadModelAssignedUsers();
@@ -81,7 +82,7 @@ airbus.mes.resourcepool.util.ModelManager = {
 				airbus.mes.settings.ModelManager.site);
 		return urlValueHelpModel;
 	},
-
+	
 	loadModelValueHelp : function() {
 
 		var geturlvaluehelp = this.getUrlValueHelpModel();
@@ -176,6 +177,23 @@ airbus.mes.resourcepool.util.ModelManager = {
 		oAvailableShiftModel.loadData(geturlavailableShift, null, false);
 	},
 
+	getUrlResourceDetailPool : function(){
+		var urlResourceDetailPool = this.urlModel.getProperty('resourcepooldetails');
+		urlResourceDetailPool = urlResourceDetailPool.replace("$Site",
+				airbus.mes.settings.ModelManager.site);
+		urlResourceDetailPool = urlResourceDetailPool.replace("$ResourcePoolName",
+				this.resourceName);
+		return urlResourceDetailPool;
+	},
+	loadModelResourcePoolModel : function(){
+		var oResourcePoolDetailModel = sap.ui.getCore().getModel("ResourcePoolDetailModel");
+		//oResourcePoolDetailModel.loadData(getUrlResourcePoolDetailModel, null, false); 
+		//TODO: extract string from, json data
+		var data = JSON.parse('{"ns2:resourcePool" : {"ns2:id" : "2", "ns2:name" : "RP MII TEST 1", "ns2:description" : "RP MII TEST 1 DESC", "ns2:modifyDate" : "2016-11-03T22:36:19.000Z", "ns2:usersAvailable" : [{"ns2:handle" : "UserBO:FNZ1,COURRENT", "ns2:userId" : "COURRENT", "ns2:erpUserId" : "", "ns2:personalNo" : "", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,LEONARD_PI", "ns2:userId" : "LEONARD_PI", "ns2:erpUserId" : "", "ns2:personalNo" : "", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,MESYS", "ns2:userId" : "MESYS", "ns2:erpUserId" : "", "ns2:personalNo" : "", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,NG000524", "ns2:userId" : "NG000524", "ns2:erpUserId" : "", "ns2:personalNo" : "", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,NG004BDE", "ns2:userId" : "NG004BDE", "ns2:erpUserId" : "", "ns2:personalNo" : "", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,NG33A7F", "ns2:userId" : "NG33A7F", "ns2:erpUserId" : "", "ns2:personalNo" : "", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,NG34ED3", "ns2:userId" : "NG34ED3", "ns2:erpUserId" : "", "ns2:personalNo" : "", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,NG3B45E", "ns2:userId" : "NG3B45E", "ns2:erpUserId" : "", "ns2:personalNo" : "", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,NG42E7A", "ns2:userId" : "NG42E7A", "ns2:erpUserId" : "", "ns2:personalNo" : "4400022", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,NG43F36", "ns2:userId" : "NG43F36", "ns2:erpUserId" : "", "ns2:personalNo" : "", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,NG4B21D", "ns2:userId" : "NG4B21D", "ns2:erpUserId" : "", "ns2:personalNo" : "", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,NG55033", "ns2:userId" : "NG55033", "ns2:erpUserId" : "", "ns2:personalNo" : "", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,NG55E48", "ns2:userId" : "NG55E48", "ns2:erpUserId" : "", "ns2:personalNo" : "", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,NG56D2A", "ns2:userId" : "NG56D2A", "ns2:erpUserId" : "", "ns2:personalNo" : "", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,NG5B8F3", "ns2:userId" : "NG5B8F3", "ns2:erpUserId" : "", "ns2:personalNo" : "", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,NG5E052", "ns2:userId" : "NG5E052", "ns2:erpUserId" : "", "ns2:personalNo" : "", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,NG5E054", "ns2:userId" : "NG5E054", "ns2:erpUserId" : "", "ns2:personalNo" : "", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,NG5E059", "ns2:userId" : "NG5E059", "ns2:erpUserId" : "", "ns2:personalNo" : "", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,NG5E7C1", "ns2:userId" : "NG5E7C1", "ns2:erpUserId" : "", "ns2:personalNo" : "", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,NG65FF5", "ns2:userId" : "NG65FF5", "ns2:erpUserId" : "", "ns2:personalNo" : "", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,S007C96", "ns2:userId" : "S007C96", "ns2:erpUserId" : "", "ns2:personalNo" : "", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,S00DB44", "ns2:userId" : "S00DB44", "ns2:erpUserId" : "", "ns2:personalNo" : "", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,S0137BF", "ns2:userId" : "S0137BF", "ns2:erpUserId" : "S0137BF", "ns2:personalNo" : "S0137BF", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,SITE_ADMIN", "ns2:userId" : "SITE_ADMIN", "ns2:erpUserId" : "", "ns2:personalNo" : "", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,ST27164", "ns2:userId" : "ST27164", "ns2:erpUserId" : "", "ns2:personalNo" : "", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,TH32PK", "ns2:userId" : "TH32PK", "ns2:erpUserId" : "", "ns2:personalNo" : "", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,TO105976", "ns2:userId" : "TO105976", "ns2:erpUserId" : "", "ns2:personalNo" : "", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,TO31681", "ns2:userId" : "TO31681", "ns2:erpUserId" : "", "ns2:personalNo" : "", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,TO80924", "ns2:userId" : "TO80924", "ns2:erpUserId" : "", "ns2:personalNo" : "", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,TO95871", "ns2:userId" : "TO95871", "ns2:erpUserId" : "", "ns2:personalNo" : "", "ns2:type" : "U"}], "ns2:workCentersAvailable" : [{"ns2:handle" : "WorkCenterBO:FNZ1,1L", "ns2:name" : "1L", "ns2:type" : "WC", "ns2:description" : "ASO labour work centre"}, {"ns2:handle" : "WorkCenterBO:FNZ1,2L", "ns2:name" : "2L", "ns2:type" : "WC", "ns2:description" : "SASC-1-20"}, {"ns2:handle" : "WorkCenterBO:FNZ1,3L", "ns2:name" : "3L", "ns2:type" : "WC", "ns2:description" : "SASC-1-30"}, {"ns2:handle" : "WorkCenterBO:FNZ1,4L", "ns2:name" : "4L", "ns2:type" : "WC", "ns2:description" : "SASC-1-40"}, {"ns2:handle" : "WorkCenterBO:FNZ1,5L", "ns2:name" : "5L", "ns2:type" : "WC", "ns2:description" : "SASC-1-50"}, {"ns2:handle" : "WorkCenterBO:FNZ1,6L", "ns2:name" : "6L", "ns2:type" : "WC", "ns2:description" : "SASC-1-60"}, {"ns2:handle" : "WorkCenterBO:FNZ1,7L", "ns2:name" : "7L", "ns2:type" : "WC", "ns2:description" : "SASC-1-70"}, {"ns2:handle" : "WorkCenterBO:FNZ1,8L", "ns2:name" : "8L", "ns2:type" : "WC", "ns2:description" : "SASC-1-80"}, {"ns2:handle" : "WorkCenterBO:FNZ1,CHES_LG_1_L1_CG", "ns2:name" : "CHES_LG_1_L1_CG", "ns2:type" : "WC", "ns2:description" : "CHES_LG_1_L1_CG"}, {"ns2:handle" : "WorkCenterBO:FNZ1,CHES_LG_1_L2_CG", "ns2:name" : "CHES_LG_1_L2_CG", "ns2:type" : "WC", "ns2:description" : "CHES_LG_1_L1_CG"}, {"ns2:handle" : "WorkCenterBO:FNZ1,CHES_LG_1_L3_CG", "ns2:name" : "CHES_LG_1_L3_CG", "ns2:type" : "WC", "ns2:description" : "CHES_LG_1_L1_CG"}, {"ns2:handle" : "WorkCenterBO:FNZ1,CHES_LG_2_L1_CG", "ns2:name" : "CHES_LG_2_L1_CG", "ns2:type" : "WC", "ns2:description" : "CHES_LG_1_L1_CG"}, {"ns2:handle" : "WorkCenterBO:FNZ1,CHES_LG_2_L2_CG", "ns2:name" : "CHES_LG_2_L2_CG", "ns2:type" : "WC", "ns2:description" : "CHES_LG_1_L1_CG"}, {"ns2:handle" : "WorkCenterBO:FNZ1,CHES_LG_2_L3_CG", "ns2:name" : "CHES_LG_2_L3_CG", "ns2:type" : "WC", "ns2:description" : "CHES_LG_1_L1_CG"}, {"ns2:handle" : "WorkCenterBO:FNZ1,CHES_LG_3_L1_CG", "ns2:name" : "CHES_LG_3_L1_CG", "ns2:type" : "WC", "ns2:description" : "CHES_LG_1_L1_CG"}, {"ns2:handle" : "WorkCenterBO:FNZ1,CHES_LG_3_L2_CG", "ns2:name" : "CHES_LG_3_L2_CG", "ns2:type" : "WC", "ns2:description" : "CHES_LG_1_L1_CG"}, {"ns2:handle" : "WorkCenterBO:FNZ1,CHES_LG_3_L3_CG", "ns2:name" : "CHES_LG_3_L3_CG", "ns2:type" : "WC", "ns2:description" : "CHES_LG_1_L1_CG"}, {"ns2:handle" : "WorkCenterBO:FNZ1,IP1 PA", "ns2:name" : "IP1 PA", "ns2:type" : "WC", "ns2:description" : "Assemblage Structure 11/12 4"}, {"ns2:handle" : "WorkCenterBO:FNZ1,IP1 TC", "ns2:name" : "IP1 TC", "ns2:type" : "WC", "ns2:description" : "Assemblage Systeme 15/21 1"}, {"ns2:handle" : "WorkCenterBO:FNZ1,IP2 PA", "ns2:name" : "IP2 PA", "ns2:type" : "WC", "ns2:description" : "Assemblage Structure 11/12 5"}, {"ns2:handle" : "WorkCenterBO:FNZ1,IP2 TC", "ns2:name" : "IP2 TC", "ns2:type" : "WC", "ns2:description" : "Assemblage Systeme 15/21 2"}, {"ns2:handle" : "WorkCenterBO:FNZ1,IP3 PA", "ns2:name" : "IP3 PA", "ns2:type" : "WC", "ns2:description" : "Assemblage Structure 11/12 6"}, {"ns2:handle" : "WorkCenterBO:FNZ1,IP3 TC", "ns2:name" : "IP3 TC", "ns2:type" : "WC", "ns2:description" : "Assemblage Systeme 15/21 3"}, {"ns2:handle" : "WorkCenterBO:FNZ1,IP4 TC", "ns2:name" : "IP4 TC", "ns2:type" : "WC", "ns2:description" : "Assemblage Systeme 15/21 4"}, {"ns2:handle" : "WorkCenterBO:FNZ1,IP5 TC", "ns2:name" : "IP5 TC", "ns2:type" : "WC", "ns2:description" : "Assemblage Systeme 15/21 5"}, {"ns2:handle" : "WorkCenterBO:FNZ1,PHYS_ST_IP3", "ns2:name" : "PHYS_ST_IP3", "ns2:type" : "WC", "ns2:description" : "IP3 Physical Station"}, {"ns2:handle" : "WorkCenterBO:FNZ1,PHYS_ST_IP4", "ns2:name" : "PHYS_ST_IP4", "ns2:type" : "WC", "ns2:description" : "IP4 Physical Station"}, {"ns2:handle" : "WorkCenterBO:FNZ1,STATION_N", "ns2:name" : "STATION_N", "ns2:type" : "WC", "ns2:description" : "STATION_N"}]}}');
+		oResourcePoolDetailModel.setData(data);
+		oResourcePoolDetailModel.refresh();
+	},
+	
 	getUrlCreateResource : function(name, description) {
 		var urlCreateResource = this.urlModel.getProperty('urlcreateresource');
 		urlCreateResource = urlCreateResource.replace("$Site",

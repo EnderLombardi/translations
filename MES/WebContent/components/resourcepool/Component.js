@@ -67,6 +67,7 @@ airbus.mes.resourcepool.Component.prototype.createContent = function() {
 		this.oView.setModel(sap.ui.getCore().getModel("AvailableWCModel"), "AvailableWCModel");
 		this.oView.setModel(sap.ui.getCore().getModel("AssignedWCModel"), "AssignedWCModel");
 		this.oView.setModel(sap.ui.getCore().getModel("AvailableShiftModel"), "AvailableShiftModel");
+		this.oView.setModel(sap.ui.getCore().getModel("ResourcePoolDetailModel"), "ResourcePoolDetailModel");
 		
 		return this.oView;
 

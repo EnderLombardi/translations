@@ -31,13 +31,13 @@
 						</infoToolbar>
 						<content>
 							<HBox height="100%" class="fixHboxItemDisplay">
-								<List id="listAvailableWorkCenter" items="{AvailableWCModel>/Rowsets/Rowset/0/Row}"
-									mode="{path:'AvailableWCModel>',formatter:'airbus.mes.resourcepool.util.Formatter.selectionMode'}"
+								<List id="listAvailableWorkCenter" items="{ResourcePoolDetailModel>/ns2:resourcePool/ns2:workCentersAvailable}"
+									mode="{path:'ResourcePoolDetailModel>',formatter:'airbus.mes.resourcepool.util.Formatter.selectionMode'}"
 									includeItemInSelection="true" rememberSelections="false"
 									noDataText="{i18nModel>NoWCAvailable}" growingScrollToLoad="true"
 									growing="true" growingThreshold="1000">
 									<StandardListItem id="availableListItem"
-										title="{AvailableWCModel>WorkCenter}" description="{AvailableWCModel>Description}" />
+										title="{ResourcePoolDetailModel>ns2:name}" description="{ResourcePoolDetailModel>ns2:description}" />
 								</List>
 							</HBox>
 						</content>
