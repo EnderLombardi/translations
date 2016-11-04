@@ -529,6 +529,7 @@ airbus.mes.stationtracker.ModelManager = {
                                          "workcenter" : oModel[0].PP_STATION.split(",")[1],
                                          "status" : sStatus,
                                          "progress" : parseInt(progress),
+                                         "progress_new" : parseInt(progress),
                                          "time_spent" : airbus.mes.stationtracker.util.Formatter.msToTime(oModel[0].PROGRESS),
                                          "planned_start_time" : "TimeUnavailable",
                                          "planned_end_time" : "TimeUnavailable",
