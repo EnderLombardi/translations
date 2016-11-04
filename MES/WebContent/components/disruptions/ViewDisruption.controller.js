@@ -148,7 +148,7 @@ sap.ui
 						if (airbus.mes.operationdetail.editDisruption === undefined
 								|| airbus.mes.operationdetail.editDisruption.oView === undefined) {
 							sap.ui
-									.getCore()
+							        .getCore()
 									.createComponent(
 											{
 												name : "airbus.mes.operationdetail.editDisruption",

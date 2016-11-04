@@ -5,7 +5,7 @@ jQuery.sap.require("airbus.mes.disruptions.ModelManager");
 
 jQuery.sap.declare("airbus.mes.operationdetail.editDisruption.Component");
 
-sap.ui.core.UIComponent.extend("airbus.mes.operationdetail.findDisruption.Component", {
+sap.ui.core.UIComponent.extend("airbus.mes.operationdetail.editDisruption.Component", {
 	metadata : {
 		properties : {},
 		includes : [ "../../disruptions/css/createDisruption.css" ]
