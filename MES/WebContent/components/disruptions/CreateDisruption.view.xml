@@ -6,7 +6,7 @@
 		<FlexBox width="100%" height="100%" justifyContent="Center"
 			direction="Column">
 			<items>
-				<f:Form id="createDisruptionForm" editable="true"
+				<f:Form id="createDisruptionForm" editable="true"  backgroundDesign="Transparent"
 					class="sapUiMediumMargin" visible="true">
 					<f:layout>
 						<f:ResponsiveGridLayout span="L12 M12 S12" />
@@ -250,10 +250,10 @@
 		<footer>
 			<Bar design="" class="createDisruptionFooter">
 				<contentRight>
-					<Button text="Create" class="btnColor" press="onCreateDisrupution" />
-					<Button text="Update" visible="false" class="btnColor" press="onUpdateDisrupution" />
-					<Button text="Cancel" press="onCancelCreateDisruption" />
-					<Button text="Close" press="onCloseCreateDisruption" />
+					<Button text="{i18nModel>create}" type="Accept" press="onCreateDisrupution" />
+					<Button text="{i18nModel>update}" type="Accept" press="onUpdateDisrupution" />
+					<Button text="{i18nModel>cancel}" type="Reject" press="onCancelCreateDisruption" />
+					<Button text="{i18nModel>close}" icon="sap-icon://decline" press="onCloseCreateDisruption" />
 				</contentRight>
 			</Bar>
 		</footer>
