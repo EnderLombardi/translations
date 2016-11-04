@@ -129,7 +129,7 @@
 										<Select id="selectRootCause" selectedKey="" forceSelection="false"
 											items="{disruptionCustomData>/Rowsets/Rowset/0/Row}" change="onSelectionChange">
 											<items>
-												<core:Item text="Team Leader" key="TeamLeader" />
+												<core:Item text="{disruptionCustomData>RootCause}" key="{disruptionCustomData>RootCause}" />
 											</items>
 											<layoutData>
 												<l:GridData span="L9 M9 S12" />
