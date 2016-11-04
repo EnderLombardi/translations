@@ -3,14 +3,14 @@
 	<Dialog draggable="true" contentHeight="40%" contentWidth="60%"
 		title="Reason Code ">
 		<content>
-		<Bar translucent="true">
-					<contentLeft>
-						<Text text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/progress}"></Text>
-					</contentLeft>
-					<contentRight>
-						<Text text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/progress_new}"></Text>
-					</contentRight>
-				</Bar>
+		<HBox justifyContent="SpaceBetween">
+				
+						<Text text="{i18n>confirmed}: {operationDetailModel>/Rowsets/Rowset/0/Row/0/progress}%"></Text>
+					
+					
+						<Text text="{i18n>progress}: {operationDetailModel>/Rowsets/Rowset/0/Row/0/progress_new}%"></Text>
+					
+				</HBox>
 			<HBox class="sapUiSmallMarginTop">
 				<Button id="btnReduce" type="Transparent" press="reduceProgress"
 					icon="sap-icon://sys-minus" class="progressBtnColor">
