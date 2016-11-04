@@ -5,10 +5,12 @@
 		<items>
 			<VBox id="VboxLeft" height="100%" width="15%" justifyContent="Start">
 				<items>
-					<VBox height="22%" width="100%" justifyContent="Center">
+					<VBox height="22%" width="100%" justifyContent="Start">
 						<items>
 							<Button class="factory_lineButton" text="Line 3 R/H"
 								press="onLinePress" width="100%" />
+							<VBox height="100%" justifyContent="SpaceAround">
+							<items>
 							<HBox width="100%" class="adjustPulseSelect" 
 								visible="{path:'PulseModel>ProductId' , formatter:'airbus.mes.linetracker.util.Formatter.setVisible'}">
 								<items>
@@ -20,12 +22,16 @@
 										class="myPulseButton" press="pulse" />
 								</items>
 							</HBox>
+							</items>
+							</VBox>
 						</items>
 					</VBox>
-					<VBox height="22%" width="100%" justifyContent="Center">
+					<VBox height="22%" width="100%" justifyContent="Star">
 						<items>
 							<Button class="factory_lineButton" text="Line 2 L/H"
 								press="onLinePress" width="100%" />
+							<VBox height="100%" justifyContent="SpaceAround">
+							<items>
 							<HBox  width="100%" class="adjustPulseSelect"
 								visible="{path:'PulseModel>ProductId' , formatter:'airbus.mes.linetracker.util.Formatter.setVisible'}">
 								<!-- visible="airbus.mes.linetracker.util.RoleManager.isAllowed('MII_MOD1684_PULSE')" -->
@@ -38,13 +44,17 @@
 										class="myPulseButton" press="pulse" />
 								</items>
 							</HBox>
+							</items>
+							</VBox>
 						</items>
 					</VBox>
 					<VBox height="5%" width="100%" justifyContent="Center" class="spaceTransferIsle"></VBox>
-					<VBox height="22%" width="100%" justifyContent="Center">
+					<VBox height="22%" width="100%" justifyContent="Star">
 						<items>
 							<Button class="factory_lineButton" text="Line 1 Mix"
 								press="onLinePress" width="100%" />
+							<VBox height="100%" justifyContent="SpaceAround">
+							<items>
 							<HBox  width="100%" class="adjustPulseSelect"
 								visible="{path:'PulseModel>ProductId' , formatter:'airbus.mes.linetracker.util.Formatter.setVisible'}">
 								<!-- visible="airbus.mes.linetracker.util.RoleManager.isAllowed('MII_MOD1684_PULSE')" -->
@@ -57,6 +67,8 @@
 										class="myPulseButton" press="pulse" />
 								</items>
 							</HBox>
+							</items>
+							</VBox>
 						</items>
 					</VBox>
 					<!-- "{ path: 'newFactoryModel>/', filters: [{ path: 'Line', operator: 
