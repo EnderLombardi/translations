@@ -11,10 +11,11 @@ airbus.mes.disruptions.ModelManager = {
 
 		this.core = core;
 
-		core.setModel(new sap.ui.model.json.JSONModel(),
-				"operationDisruptionsModel");
-		
+		core.setModel(new sap.ui.model.json.JSONModel(), "operationDisruptionsModel");
 		core.setModel(new sap.ui.model.json.JSONModel(), "commentsModel");
+		
+		sap.ui.getCore().getModel("operationDisruptionsModel").attachRequestCompleted(airbus.mes.disruptions.ModelManager.onOperationDisruptionsLoad);
+		sap.ui.getCore().getModel("commentsModel").attachRequestCompleted(airbus.mes.disruptions.ModelManager.onCommentsLoad);
 
 		var dest;
 
@@ -101,6 +102,9 @@ airbus.mes.disruptions.ModelManager = {
 	 * Load Disruptions for a single operation
 	 */
 	loadDisruptionsByOperation : function(operation) {
+		
+		airbus.mes.operationdetail.viewDisruption.oView.setBusy(true); //Set Busy Indicator 
+		
 		var oViewModel = sap.ui.getCore().getModel("operationDisruptionsModel");
 
 		var getDisruptionsURL = airbus.mes.disruptions.ModelManager
@@ -109,7 +113,40 @@ airbus.mes.disruptions.ModelManager = {
 				});
 
 		oViewModel.loadData(getDisruptionsURL, null, false);
+		
+		
 	},
+	
+	/**************************************************************************
+	 * After Disruptions related to a operation is loaded
+	 */
+	onOperationDisruptionsLoad: function(){
+		airbus.mes.disruptions.ModelManager.loadComments();
+	},
+	
+	/*************************************************************************
+	 * Load Comments for all the disruptions of an operation
+	 */
+	loadComments: function(){
+		var oModel = sap.ui.getCore().getModel("commentsModel");
+		oModel.loadData("../components/disruptions/local/commentsModel.json", null, false);
+	},
+	
+	/**************************************************************************
+	 * After Comments is loaded
+	 */
+	onCommentsLoad: function(){
+		
+		/* Set filter for Comments on all the disruptions */
+		//airbus.mes.disruptions.viewDisruption.oView.getController().applyFiltersOnComments();
+	
+		airbus.mes.operationdetail.viewDisruption.oView.setBusy(false); //Set Busy Indicator
+	},
+	
+	applyFiltersOnComments: function() {
+		var oBinding = this.byId("ViewDisruptionView--disrptlist").getBinding("items");
+	},
+	
 
 	/***************************************************************************
 	 * Create Disruption service

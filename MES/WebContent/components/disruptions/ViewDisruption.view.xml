@@ -155,11 +155,11 @@
 
 						<Text text="{i18nModel>status} : {operationDisruptionsModel>Status}" />
 						
-						<List noDataText="No Comments"
-							items="{path: 'commentsData>/Rowsets/Rowset/0/Row'}">
+						<List noDataText="No Comments" class="sapUiSmallMargin"
+							items="{path: 'commentsModel>/Rowsets/Rowset/0/Row'}">
 
 							<CustomListItem>
-								<Text text="{commentsData>Comment}"></Text>
+								<Text text="Comment : {commentsModel>Comment}"></Text>
 							</CustomListItem>
 						</List>
 

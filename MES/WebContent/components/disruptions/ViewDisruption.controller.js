@@ -11,8 +11,9 @@ sap.ui
 					 * 
 					 * @memberOf components.disruptions.ViewDisruption
 					 */
-					onInit : function() {
-					},
+					//onInit : function() {
+					//	
+					//},
 					/**
 					 * Similar to onAfterRendering, but this hook is invoked
 					 * before the controller's View is re-rendered (NOT before
@@ -43,6 +44,12 @@ sap.ui
 					// onExit: function() {
 					//
 					// },
+
+					
+					applyFiltersOnComment: function() {
+						var oBinding = this.byId("ViewDisruptionView--disrptlist").getBinding("items");
+					},
+					
 					showCommentBox : function(oEvt) {
 						var path = oEvt.getSource().sId;
 						var listnum = path.split("-");
@@ -76,7 +83,6 @@ sap.ui
 						var path = oEvt.getSource().sId;
 						
 						var oModel = sap.ui.getCore().getModel("commentsModel");
-						oModel.loadData("../components/disruptions/local/commentsModel.json", null, false);
 						
 						var commentsData = oModel.getData();
 						
@@ -94,7 +100,7 @@ sap.ui
 										"Comment": listNum};
 						commentsData.Rowsets.Rowset[0].Row.push(comment);
 						oModel.setData(commentsData);
-						oModel.refresh();
+						//oModel.refresh();
 					},
 
 					onMarkSolved : function(oEvt) {
