@@ -35,7 +35,8 @@ airbus.mes.operationdetail.editDisruption.Component.prototype.createContent = fu
 		this.oView.setModel(i18nModel, "i18nModel");	
 		airbus.mes.operationdetail.editDisruption.oView = this.oView		
 		
-		
+		//Model for custom data of create disruption
+		this.oView.setModel(sap.ui.getCore().getModel("disruptionCustomData"),"disruptionCustomData");
 		//Model for custom data of edit disruption
 		this.oView.setModel(sap.ui.getCore().getModel("DisruptionModel"),"DisruptionModel");
 		
