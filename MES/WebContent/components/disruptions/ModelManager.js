@@ -16,8 +16,8 @@ airbus.mes.disruptions.ModelManager = {
 		
 		core.setModel(new sap.ui.model.json.JSONModel(), "commentsModel");
 		
-		core.setModel(new sap.ui.model.json.JSONModel(),
-		"DisruptionModel");
+		/*core.setModel(new sap.ui.model.json.JSONModel(),
+		"DisruptionModel");*/
 
 		var dest;
 

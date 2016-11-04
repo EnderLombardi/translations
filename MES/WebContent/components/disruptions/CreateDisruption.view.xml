@@ -37,7 +37,7 @@
 									<f:fields>
 										<Select id="selectCategory"
 											items="{disruptionCategoryModel>/Rowsets/Rowset/0/Row}"
-											 change="onSelectionChange" selectedKey="" forceSelection="false">
+											 change="onSelectionChange" selectedKey="{DisruptionModel>/Category}" forceSelection="false">
 											<items>
 												<core:Item text="{disruptionCategoryModel>Category}"
 													key="{disruptionCategoryModel>MessageType}" />
@@ -59,7 +59,7 @@
 										</Label>
 									</f:label>
 									<f:fields>
-										<Select id="gravity" selectedKey="1">
+										<Select id="gravity" selectedKey="{DisruptionModel>Gravity}">
 											<items>
 												<core:Item text="{i18nModel>NotBlocked}" key="1" />
 												<core:Item text="{i18nModel>Disturbed}" key="2" />
@@ -83,7 +83,7 @@
 									</f:label>
 									<f:fields>
 										<Select id="selectReasonTree"
-											items="{disruptionCustomData>/Rowsets/Rowset/0/Row}" change="onSelectionChange" selectedKey="" forceSelection="false" >
+											items="{disruptionCustomData>/Rowsets/Rowset/0/Row}" change="onSelectionChange" selectedKey="{DisruptionModel>/Reason}" forceSelection="false" >
 											<items>
 												<core:Item text="{disruptionCustomData>Reason}" key="{disruptionCustomData>Reason}" />
 											</items>
@@ -105,7 +105,7 @@
 									</f:label>
 									<f:fields>
 										<Select id="selectResponsible"
-											items="{disruptionCustomData>/Rowsets/Rowset/0/Row}" change="onSelectionChange" selectedKey="" forceSelection="false">
+											items="{disruptionCustomData>/Rowsets/Rowset/0/Row}" change="onSelectionChange" selectedKey="{DisruptionModel>ResponsibleGroup}" forceSelection="false">
 											<items>
 												<core:Item text="{disruptionCustomData>ResponsibleGroup}" key="{disruptionCustomData>ResponsibleGroup}" />
 											</items>
@@ -126,7 +126,7 @@
 										</Label>
 									</f:label>
 									<f:fields>
-										<Select id="selectRootCause" selectedKey="" forceSelection="false"
+										<Select id="selectRootCause" selectedKey="{DisruptionModel>RootCause}" forceSelection="false"
 											items="{disruptionCustomData>/Rowsets/Rowset/0/Row}" change="onSelectionChange">
 											<items>
 												<core:Item text="{disruptionCustomData>RootCause}" key="{disruptionCustomData>RootCause}" />

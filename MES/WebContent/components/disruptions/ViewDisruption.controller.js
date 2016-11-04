@@ -183,14 +183,21 @@ sap.ui
 					
 					onEditDisruption : function(oEvent) {
                           
+					   	
+					
 						
 						//to auto fill fields on edit screen
 						
+
+						sap.ui.getCore().setModel(new sap.ui.model.json.JSONModel(),
+						"DisruptionModel");
 						var oTranModel = sap.ui.getCore().getModel("DisruptionModel");
 						
 						// set the data for the model
-						oTranModel.setData(oEvent.getSource().getBindingContext(
-						"operationDisruptionsModel"));
+						var oBind = oEvent.getSource().getBindingContext(
+						"operationDisruptionsModel");
+						oTranModel.setData(oBind.getProperty(oBind.sPath));
+						sap.ui.getCore().getModel("DisruptionModel").refresh();
 						
 						
 						var oOperDetailNavContainer = sap.ui.getCore().byId(
@@ -200,23 +207,23 @@ sap.ui
 						
 					
 						
-						if (airbus.mes.operationdetail.editDisruption === undefined
-								|| airbus.mes.operationdetail.editDisruption.oView === undefined) {
+						if (airbus.mes.operationdetail.createDisruption === undefined
+								|| airbus.mes.operationdetail.createDisruption.oView === undefined) {
 							sap.ui
 							        .getCore()
 									.createComponent(
 											{
-												name : "airbus.mes.operationdetail.editDisruption",
+												name : "airbus.mes.operationdetail.createDisruption",
 											});
 
 							oOperDetailNavContainer
-									.addPage(airbus.mes.operationdetail.editDisruption.oView);
+									.addPage(airbus.mes.operationdetail.createDisruption.oView);
 						}
 
                         
 						
 						oOperDetailNavContainer
-								.to(airbus.mes.operationdetail.editDisruption.oView
+								.to(airbus.mes.operationdetail.createDisruption.oView
 										.getId());
 						
 					
