@@ -1,4 +1,4 @@
-//"use strict";
+"use strict";
 jQuery.sap.declare("airbus.mes.shell.RoleManager")
 airbus.mes.shell.RoleManager = {
 

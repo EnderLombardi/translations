@@ -5,17 +5,17 @@
 		<VBox width="100%" justifyContent="SpaceBetween">
 			<HBox justifyContent="Center" class="sapUiSmallMarginTopBottom">
 				<items>
-					<Title id="operationStatus"
+					<Title id="operationStatus" clas="sapUiSmallMarginTop"
 						text="{parts: ['operationDetailModel>/Rowsets/Rowset/0/Row/0/status', 
 				'operationDetailModel>/Rowsets/Rowset/0/Row/0/progress'], formatter:'airbus.mes.operationdetail.Formatter.setSliderStatus'}"
-						level="H1" titleStyle="H3" />
+						level="H1" titleStyle="H1" />
 				</items>
 			</HBox>
-			<l:Grid defaultSpan="L12 M12 S12" class="proressSliderGrid sapUiLargeMarginTop">
+			<l:Grid defaultSpan="L12 M12 S12" class="proressSliderGrid">
 
-				<Slider id="progressSliderDisplay" max="100" min="0" class="sliderDisplayStatus"
-					showHandleTooltip="true" width="100%"
-					value="{parts: ['operationDetailModel>/Rowsets/Rowset/0/Row/0/status', 'operationDetailModel>/Rowsets/Rowset/0/Row/0/progress'],formatter: 'airbus.mes.operationdetail.Formatter.sliderStatusValue' }"
+				<Slider id="progressSliderDisplay" max="100" min="0"
+					class="sliderDisplayStatus sliderCompletedColor" showHandleTooltip="true" width="100%"
+					value="{operationDetailModel>/Rowsets/Rowset/0/Row/0/progress}"
 					enabled="false">
 				</Slider>
 

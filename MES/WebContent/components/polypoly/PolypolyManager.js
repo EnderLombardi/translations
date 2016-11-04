@@ -615,29 +615,26 @@ airbus.mes.polypoly.PolypolyManager = {
 				})
 	},
 
-//	createColumn : function(sName, sQA, sNeed3, sNeed4, sTechname) {
-//		var urlcreatecolumn = this.urlModel.getProperty("urlcreatecolumn");
-//
-//		urlcreatecolumn = urlcreatecolumn.replace("$sName", sName);
-//		urlcreatecolumn = urlcreatecolumn.replace("$polypoly", sTechname);
-//		urlcreatecolumn = urlcreatecolumn.replace("$site", ModelManager.site);
-//		urlcreatecolumn = urlcreatecolumn.replace("$factory",
-//				ModelManager.factory_name);
-//		urlcreatecolumn = urlcreatecolumn.replace("$line",
-//				ModelManager.line_number);
-//		urlcreatecolumn = urlcreatecolumn.replace("$station",
-//				ModelManager.station_number);
-//
-//		$.ajax({
-//			url : urlcreatecolumn,
-//			cache : false,
-//			success : function(data, textStatus, jqXHR) {
+	createColumn : function(sName, sQA, sNeed3, sNeed4, sTechname) {
+		var urlcreatecolumn = this.urlModel.getProperty("urlcreatecolumn");
+
+		urlcreatecolumn = urlcreatecolumn.replace("$polypoly", sTechname);
+		urlcreatecolumn = urlcreatecolumn.replace("$sName", sName);
+//		urlcreatecolumn = urlcreatecolumn.replace("$site", airbus.mes.settings.ModelManager.site); //FIXME: Uncomment when ready
+		urlcreatecolumn = urlcreatecolumn.replace("$site", "CHES");
+		
+		//Handle User & Password																	 		 //FIXME Temp
+		urlcreatecolumn = airbus.mes.polypoly.ModelManager.handleUserConnection(urlcreatecolumn);			 //FIXME Temp
+		
+		$.ajax({
+			url : urlcreatecolumn,
+			cache : false,
+			success : function(data, textStatus, jqXHR) {
 //				var sNewTechName = data.Rowsets.Rowset[0].Row[0].Message;
-//				PolypolyManager.updateColumn(sName, sQA, sNeed3, sNeed4,
-//						sNewTechName);
-//			},
-//		});
-//	},
+				airbus.mes.polypoly.PolypolyManager.updateColumn(sName, sQA, sNeed3, sNeed4, sTechname);
+			},
+		});
+	},
 
 	updateColumn : function(sName, sQA, sNeed3, sNeed4, sTechname) {
 		var urlupdatecolumn = this.urlModel.getProperty("urlupdatecolumn");
@@ -668,40 +665,49 @@ airbus.mes.polypoly.PolypolyManager = {
 		});
 	},
 
-//	deleteColumn : function(sName) {
-//		var urldeletecolumn = this.urlModel.getProperty("urldeletecolumn");
-//
-//		urldeletecolumn = urldeletecolumn.replace("$site", ModelManager.site);
-//		urldeletecolumn = urldeletecolumn.replace("$polypoly", sName);
-//		$.ajax({
-//			url : urldeletecolumn,
-//			cache : false,
-//			success : function(data, textStatus, jqXHR) {
-//				sap.ui.getCore().byId("confirmDeleteDialog").close();
-//				PolypolyManager.getPolypolyModel(ModelManager.factory_name,
-//						ModelManager.line_number, ModelManager.station_number,
-//						ModelManager.site);
-//			},
-//		});
-//	},
-//
-//	moveColumn : function(sName, newPos) {
-//		var urlmovecolumn = this.urlModel.getProperty("urlmovecolumn");
-//
-//		urlmovecolumn = urlmovecolumn.replace("$site", ModelManager.site);
-//		urlmovecolumn = urlmovecolumn.replace("$polypoly", sName);
-//		urlmovecolumn = urlmovecolumn.replace("$order", newPos);
-//		$.ajax({
-//			url : urlmovecolumn,
-//			cache : false,
-//			success : function(data, textStatus, jqXHR) {
-//				// sap.ui.getCore().byId("confirmDeleteDialog").close();
-//				// PolypolyManager.getPolypolyModel(ModelManager.factory_name,
-//				// ModelManager.line_number, ModelManager.station_number,
-//				// ModelManager.site);
-//			},
-//		});
-//	},
+	deleteColumn : function(sName) {
+		var urldeletecolumn = this.urlModel.getProperty("urldeletecolumn");
+
+		urldeletecolumn = urldeletecolumn.replace("$polypoly", sName);
+//		urldeletecolumn = urldeletecolumn.replace("$site", airbus.mes.settings.ModelManager.site); //FIXME: Uncomment when ready
+		urldeletecolumn = urldeletecolumn.replace("$site", "CHES");
+		
+		//Handle User & Password																	 		 //FIXME Temp
+		urldeletecolumn = airbus.mes.polypoly.ModelManager.handleUserConnection(urldeletecolumn);			 //FIXME Temp
+		
+		$.ajax({
+			url : urldeletecolumn,
+			cache : false,
+			success : function(data, textStatus, jqXHR) {
+				airbus.mes.polypoly.delDialog.close();
+				airbus.mes.polypoly.ModelManager.getPolyPolyModel("CHES", "1L"); //FIXME When Settings ready
+//				airbus.mes.polypoly.ModelManager.getPolyPolyModel(airbus.mes.settings.ModelManager.site, airbus.mes.settings.ModelManager.station);
+			},
+		});
+	},
+
+	moveColumn : function(sName, newPos) {
+		var urlmovecolumn = this.urlModel.getProperty("urlmovecolumn");
+
+		urlmovecolumn = urlmovecolumn.replace("$polypoly", sName);
+		urlmovecolumn = urlmovecolumn.replace("$order", newPos);
+//		urlmovecolumn = urlmovecolumn.replace("$site", airbus.mes.settings.ModelManager.site); //FIXME: Uncomment when ready
+		urlmovecolumn = urlmovecolumn.replace("$site", "CHES");
+		
+		//Handle User & Password																	 		 //FIXME Temp
+		urlmovecolumn = airbus.mes.polypoly.ModelManager.handleUserConnection(urlmovecolumn);			     //FIXME Temp
+
+		$.ajax({
+			url : urlmovecolumn,
+			cache : false,
+			success : function(data, textStatus, jqXHR) {
+				// sap.ui.getCore().byId("confirmDeleteDialog").close();
+				// PolypolyManager.getPolypolyModel(ModelManager.factory_name,
+				// ModelManager.line_number, ModelManager.station_number,
+				// ModelManager.site);
+			},
+		});
+	},
 //--------------------------------------------OK-UP-THERE----------------------------------------------------	
 	// NOT USED
 	// Crazy why declare model here???? .................-_-_-_--__-_-_ what mean MII model???

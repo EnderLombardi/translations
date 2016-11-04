@@ -166,6 +166,31 @@ sap.ui
 										.getId());
 					},
 
+					
+					onEditDisruption : function(oEvent) {
+
+						var oOperDetailNavContainer = sap.ui.getCore().byId(
+								"operationDetailsView--operDetailNavContainer");
+
+						if (airbus.mes.operationdetail.editDisruption === undefined
+								|| airbus.mes.operationdetail.editDisruption.oView === undefined) {
+							sap.ui
+							        .getCore()
+									.createComponent(
+											{
+												name : "airbus.mes.operationdetail.editDisruption",
+											});
+
+							oOperDetailNavContainer
+									.addPage(airbus.mes.operationdetail.editDisruption.oView);
+						}
+
+						oOperDetailNavContainer
+								.to(airbus.mes.operationdetail.editDisruption.oView
+										.getId());
+					},
+					
+					
 					onCloseOperationDetailPopup : function() {
 
 						airbus.mes.stationtracker.operationDetailPopup.close();

@@ -27,9 +27,6 @@ sap.ui
 							this.nav
 									.addPage(airbus.mes.operationdetail.status.oView);
 						}
-
-						this.nav.to(airbus.mes.operationdetail.status.oView
-								.getId());
 					},
 					expandOperationDetailPanel : function(oEvent) {
 						var toggleButton = this.getView().byId(
@@ -74,6 +71,10 @@ sap.ui
 					 */
 					onAfterRendering : function() {
 						this.disruptionsFlag = false;
+						
+						// Navigation to Status every time pop-up is opened
+						this.nav.to(airbus.mes.operationdetail.status.oView
+								.getId());
 
 						// Collapse Operation Detail panel and show Expand
 						// button

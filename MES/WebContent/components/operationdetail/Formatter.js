@@ -42,19 +42,15 @@ airbus.mes.operationdetail.Formatter = {
 		}
 
 		if (progress == "0.0" || progress == "0" || progress == 0) {
-			//this.addStyleClass("displaySliderNone");
 			this.setVisible(false);
-			this.setProperty("max", 0);
-			this.setProperty("value", 0);
+			//this.setProperty("max", 0);
 			return "0%";
 		} else if (String(progress) == "100") {
-			this.setProperty("max", 100);
-			this.setProperty("value", 100);
+			//this.setProperty("max", 100);
 			return progress + "%";
 
 		} else {
-			this.setProperty("max", parseInt(progress));
-			this.setProperty("value", parseInt(progress));
+			//this.setProperty("max", parseInt(progress));
 			return progress + "%";
 
 		}
@@ -71,22 +67,20 @@ airbus.mes.operationdetail.Formatter = {
 		if (progress == "0.0" || progress == "0" || progress == 0
 				|| progress == NaN) {
 			this.removeStyleClass("dynProgressSlider");
-			this.setProperty("min", 0);
-			this.setProperty("value", 0);
+			//this.setProperty("min", 0);
 			return "100%";
 		} else if (String(progress) == "100") {
 			this.setVisible(false);
 			return "0%";
 		} else {
 			this.addStyleClass("dynProgressSlider");
-			this.setProperty("min", parseInt(progress));
-			this.setProperty("value", parseInt(progress));
+			//this.setProperty("min", parseInt(progress));
 			return (100 - parseInt(progress)) + "%";
 
 		}
 
 	},
-	sliderStatusValue:function(status, progress){
+	/*sliderStatusValue:function(status, progress){
 		if (typeof progress == "undefined")
 			return;
 		this.removeStyleClass("sliderCompletedColor");
@@ -103,7 +97,7 @@ airbus.mes.operationdetail.Formatter = {
 
 		}
 
-	},
+	},*/
 	
 	//Reasoncode is disabled when operation is not started or paused
 	

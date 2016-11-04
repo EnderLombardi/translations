@@ -818,20 +818,15 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 		.getParent().getBindingContext();
 		if (oBindingInfo != undefined) {
 			airbus.mes.polypoly.PolypolyManager.internalContext.saveContext = "UPDATE";
-			that.colDialog.setTitle("Edit Polypoly");
+			that.colDialog.setTitle(airbus.mes.polypoly.oView.getController().getI18n("EditPolypoly"));
 
 			var aQASelList = oBindingInfo.getProperty("qa");
-			columnModel
-			.setData({
-				competency : oBindingInfo
-				.getProperty("name"),
-				techname : oBindingInfo
-				.getProperty("techname"),
+			columnModel.setData({
+				competency : oBindingInfo.getProperty("name"),
+				techname : oBindingInfo.getProperty("techname"),
 				qa : aQAList,
-				need3 : airbus.mes.polypoly.PolypolyManager.internalContext.oModel.oData.rows[0][oBindingInfo
-				                                                                                 .getProperty("techname")],
-				                                                                                 need4 : airbus.mes.polypoly.PolypolyManager.internalContext.oModel.oData.rows[1][oBindingInfo
-				                                                                                                                                                                  .getProperty("techname")]
+				need3 : airbus.mes.polypoly.PolypolyManager.internalContext.oModel.oData.rows[0][oBindingInfo.getProperty("techname")],
+				need4 : airbus.mes.polypoly.PolypolyManager.internalContext.oModel.oData.rows[1][oBindingInfo.getProperty("techname")]
 			});
 			aQASelList
 			.forEach(function(el) {
@@ -845,7 +840,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 			});
 		} else {
 			airbus.mes.polypoly.PolypolyManager.internalContext.saveContext = "CREATE";
-			that.colDialog.setTitle("Create Polypoly");
+			that.colDialog.setTitle(airbus.mes.polypoly.oView.getController().getI18n("CreatePolypoly"));
 			columnModel.setData({
 				competency : "",
 				techname : "",
@@ -887,8 +882,16 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 	},
 
 	onSaveColumnPopup : function() {
-		var sTechname = columnModel.oData.techname
-		.toUpperCase();
+		var sTechname = columnModel.oData.techname.toUpperCase();
+		var aSpecialChar = [":", ",", "'", "%", "\\?", "\\*", '"', " "];
+		var bCheckStr = true;
+		
+		aSpecialChar.forEach(function(char){
+			if(sTechname.search(char) != -1){
+				bCheckStr = false;
+			}
+		});
+		
 		var sName = columnModel.oData.competency;
 		var sNeed3 = columnModel.oData.need3;
 		var sNeed4 = columnModel.oData.need4;
@@ -900,23 +903,20 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 				});
 		var sQA = aQAfiltered.toString();
 
-		if (aQAfiltered.length <= 5 && sTechname != ""
-				&& sName != "") {
+		if (aQAfiltered.length <= 5 && sTechname != "" && sName != "" && bCheckStr) {
 			if (airbus.mes.polypoly.PolypolyManager.internalContext.saveContext == "CREATE") {
-				airbus.mes.polypoly.PolypolyManager.createColumn(sName, sQA,
-						sNeed3, sNeed4, sTechname);
+				airbus.mes.polypoly.PolypolyManager.createColumn(sName, sQA, sNeed3, sNeed4, sTechname);
 			} else {
-				airbus.mes.polypoly.PolypolyManager.updateColumn(sName, sQA,
-						sNeed3, sNeed4, sTechname);
+				airbus.mes.polypoly.PolypolyManager.updateColumn(sName, sQA,sNeed3, sNeed4, sTechname);
 			}
 		} else if (sTechname == "") {
-			sap.m.MessageToast
-			.show("Please enter a Technical Name");
-		} else if (sName == "") {
-			sap.m.MessageToast
-			.show("Please enter a Competency description");
+			sap.m.MessageToast.show(airbus.mes.polypoly.oView.getController().getI18n("TechNameEmpty"));
+		}else if (!bCheckStr) {
+			sap.m.MessageToast.show(airbus.mes.polypoly.oView.getController().getI18n("TechNameSpecial"));
+		}else if (sName == "") {
+			sap.m.MessageToast.show(airbus.mes.polypoly.oView.getController().getI18n("DescEmpty"));
 		} else if (aQAfiltered.length > 5) {
-			sap.m.MessageToast.show("Please select no more than 5 Quality Authorisations");
+			sap.m.MessageToast.show(airbus.mes.polypoly.oView.getController().getI18n("TooManyQA"));
 		}
 	},
 
@@ -926,27 +926,23 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 
 	openConfirmDelete : function(oEvt) {
 		columnModel.setData();
-		var oBindingInfo = oEvt.getSource().getParent()
-		.getParent().getBindingContext();
-		columnModel.setData({
-			techname : oBindingInfo.getProperty("techname"),
-		});
+		var oBindingInfo = oEvt.getSource().getParent().getParent().getBindingContext();
+		columnModel.setData({techname : oBindingInfo.getProperty("techname")});
+		
 
-		var that = this;
-		if (!that.delDialog) {
-			that.delDialog = sap.ui.xmlfragment(
-					"airbus.mes.polypoly.confirmDelete", that);
+		if (!airbus.mes.polypoly.delDialog) {
+			airbus.mes.polypoly.delDialog = sap.ui.xmlfragment("airbus.mes.polypoly.confirmDelete", airbus.mes.polypoly.oView.getController());
 		}
-		that.delDialog.open();
+		airbus.mes.polypoly.delDialog.setModel(airbus.mes.polypoly.oView.getModel("PolypolyI18n"),"PolypolyI18n");
+		airbus.mes.polypoly.delDialog.open();
 	},
 
 	onConfirmDelete : function() {
-		airbus.mes.polypoly.PolypolyManager
-		.deleteColumn(columnModel.getData().techname);
+		airbus.mes.polypoly.PolypolyManager.deleteColumn(columnModel.getData().techname);
 	},
 
 	onCancelDelete : function() {
-		sap.ui.getCore().byId("confirmDeleteDialog").close();
+		airbus.mes.polypoly.delDialog.close();
 	},
 
 	onClickInfoUpdate12 : function(oEvt) {
@@ -983,10 +979,10 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 		var newPos = oEvt.getParameters().newPos;
 		var oldPos = oEvt.getParameters().column.getIndex();
 		if (newPos != oldPos) {
-			if ((oEvt.getParameters().newPos - 5) < 0
+			if ((oEvt.getParameters().newPos - 6) < 0
 //					|| formatter.isPolypolyEditable() == false) {
 					|| airbus.mes.polypoly.util.Formatter.isVisible() == false) {
-				sap.m.MessageToast.show("Unauthorized action");
+				sap.m.MessageToast.show(airbus.mes.polypoly.oView.getController().getI18n("Unauthorized"));
 				var oTable = oEvt.getSource();
 				var oColumn = oEvt.getParameters().column;
 				setTimeout(function() {
@@ -994,10 +990,13 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 					oTable.insertColumn(oColumn, oldPos);
 				}, 0);
 			} else {
-				var newPos = newPos - 4;
-				var sTechname = oEvt.getParameters().column
-				.getBindingContext().getProperty(
-						"techname");
+				var newPos = newPos - 5;
+				var sTechname = oEvt.getParameters().column.getBindingContext().getProperty("techname");
+				if(newPos < 10){
+					newPos = "00" + newPos;
+				}else{
+					newPos = "0" + newPos;
+				}
 				airbus.mes.polypoly.PolypolyManager.moveColumn(sTechname, newPos);
 			}
 		}
@@ -1017,6 +1016,11 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 	onBackPress : function(){
 		nav.back();
 	},
+	
+	getI18n : function(str){
+		return airbus.mes.polypoly.oView.getModel("PolypolyI18n").getProperty(str)
+	},
+	
 	onIconAffectClick : function(oEvt){
 		if (!airbus.mes.stationtracker.AssignmentManager.polypolyAffectation){
 			return false;
@@ -1029,7 +1033,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 		
 		var sERP_ID = airbus.mes.polypoly.PolypolyManager.polypolyIndex.ERP_ID;
 		if (sERP_ID == "---" || sERP_ID == " ") {
-			ModelManager.messageShow("Invalid ERP ID" + sERP_ID);
+			ModelManager.messageShow(airbus.mes.polypoly.oView.getController().getI18n("InvalidID") + sERP_ID);
 			return false;
 		}
 		if (!airbus.mes.polypoly.PolypolyManager.oViewController.oDialogConfirmationPoyPoly) {

@@ -10,7 +10,7 @@
 			<Panel id="kpi_header" expandable="true" expanded="true"
 				expandAnimation="false" class="pageHeader kpiPageHeader contentNoPad">
 				<headerToolbar>
-					<Toolbar id="kpiHeaderToolbar">
+					<Toolbar id="kpiHeaderToolbar" class="classKpiheaderToolbar">
 						<!-- <DatePicker id="DatePicker" width="auto" change="changeDay" class="pageHeaderBlue"/> -->
 						<Button id="dateButton" icon="sap-icon://appointment" type="Transparent" press="datePick" class="classDateButton"/>
 						<Label id="dateLabel" text="" class="classDateLabel"/>
@@ -38,9 +38,9 @@
 
 				</headerToolbar>
 				<content>
-					<HBox id="kpiHeaderContent" width="100%">
+					<HBox id="kpiHeaderContent" class="classKpiHeaderContent" width="100%">
 
-						<HBox justifyContent="SpaceAround" id="boxTaktAdherence" width="33%" class="contentHeaderCont">
+						<HBox justifyContent="SpaceAround" id="boxTaktAdherence" width="32%" class="contentHeaderCont">
 						
 							<HBox>
 							
@@ -69,13 +69,13 @@
 									width="100%" class="whiteTextHeader sapUiSmallMarginTop" />
 									<VBox justifyContent="SpaceAround" height="100%">
 										<HBox class="sapUiSmallMarginBottom">
-											<VBox width="30%">
+											<VBox width="31%">
 												<Label text="{StationTrackerI18n>Adherence}" class=" whiteText" />
 												<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/Labour}"
 													class="sapUiSmallMarginTop kpiValue  whiteText" height="100%" />
 			
 											</VBox>
-											<VBox width="70%">
+											<VBox width="69%">
 												<layout:Grid id="TaktAdherenceTrend" class="classTaktAdherenceTrend" defaultSpan="L4 M4 S4">
 													<layout:content>
 														<Label text="{StationTrackerI18n>Trend}" class=" whiteText takt_kpi_name takt_kpi_trend ">
@@ -130,7 +130,7 @@
 							class="contentHeaderCont">
 							<Label text="{StationTrackerI18n>SLBEFFICIENCY}" design="Bold"
 								class="whiteTextHeader sapUiSmallMarginTopBottom" />
-							<VBox width="90%">
+							<VBox width="90%" justifyContent="SpaceAround" height="64%">
 								<micro:ComparisonMicroChart width="100%"
 									id="boxSLBEfficiecy_chart"
 									size="L" colorPalette="#84bd00, #f5f5f5, #fe5000">
@@ -149,11 +149,11 @@
 							</VBox>
 						</VBox>
 
-						<VBox id="boxOpenDisruptions" width="25%" class="contentHeaderCont">
+						<VBox id="boxOpenDisruptions" width="24%" class="contentHeaderCont">
 							<Label text="{StationTrackerI18n>DisruptionOpen/Andon}"
 								design="Bold" width="100%" class="whiteTextHeader sapUiSmallMarginTopBottom" />
-							<HBox>
-								<VBox width="30%">
+							<HBox height="65%">
+								<VBox width="30%" justifyContent="SpaceAround" class="classOpenDisruptionTotal">
 									<Label text="{StationTrackerI18n>DisruptionTotal}" class=" whiteText kpiName"
 										design="Bold" />
 									<Label text="{StationTrackerI18n>Disruption}" class=" whiteText kpiName" />
@@ -164,7 +164,7 @@
 									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/TotalAndon}"
 										class="redText kpiValue kpiErrorValue" design="Bold" />
 								</VBox>
-								<VBox width="30%">
+								<VBox width="35%" class="classOpenDisruptionDetail" justifyContent="SpaceAround">
 									<Label text="{StationTrackerI18n>DisruptionDetails}"
 										class="disruptionText" design="Bold" />
 									<Label text="{StationTrackerI18n>DisruptionsNC}" class="disruptionText" />
@@ -175,7 +175,7 @@
 									<Label text="{StationTrackerI18n>DisruptionFTE}" class="disruptionText" />
 									<Label text="{StationTrackerI18n>DisruptionOther}" class="disruptionText" />
 								</VBox>
-								<VBox alignItems="Center" width="20%">
+								<VBox alignItems="Center" width="20%" justifyContent="SpaceAround" class="classOpenDisruptionDisruption">
 									<Label text="{StationTrackerI18n>Disruption}" class="whiteText" />
 									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/NCDisruption}"
 										class=" whiteText" />
@@ -188,7 +188,7 @@
 											<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/OtherDisruption}"
 										class=" whiteText" />
 								</VBox>
-								<VBox alignItems="Center" width="20%">
+								<VBox alignItems="Center" width="15%" justifyContent="SpaceAround" class="classOpenDisruptionAndon">
 									<Label text="{StationTrackerI18n>Andon}" class="redText kpiErrorValue" />
 									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/NCAndon}"
 										class=" redText kpiErrorValue" />
@@ -204,7 +204,7 @@
 							</HBox>
 						</VBox>
 
-						<VBox id="boxResolutionEfficiency" width="10%" alignItems="Center"
+						<VBox id="boxResolutionEfficiency" width="11%" alignItems="Center"
 							class="contentHeaderCont">
 							<Label text="{StationTrackerI18n>ResolutionEfficiency}"
 								design="Bold" class="whiteTextHeader sapUiSmallMarginTopBottom" />
@@ -226,7 +226,7 @@
 							</VBox>
 						</VBox>
 
-						<VBox id="boxExtraWork" wrap="Wrap" width="5%" class="contentHeaderCont">
+						<VBox id="boxExtraWork" wrap="Wrap" width="6%" class="contentHeaderCont">
 							<Label text="{StationTrackerI18n>ExtraWork}" design="Bold"
 								width="100%" class="whiteTextHeader sapUiSmallMarginTopBottom " />
 							<Label text="{StationTrackerI18n>Operations}" width="100%"
@@ -243,7 +243,7 @@
 							alignItems="Center" class="contentHeaderCont">
 							<Label text="{StationTrackerI18n>ShiftSTAFFING}" size="L"
 								design="Bold" width="100%" class="whiteTextHeader sapUiSmallMarginTopBottom" />
-							<VBox width="90%">
+							<VBox width="90%" justifyContent="SpaceAround" height="55%">
 								<micro:DeltaMicroChart width="100%"
 									id="shifStaffingHeader" isResponsive="true" value1="10" value2="9"
 									title1="{StationTrackerI18n>NeedFTE}" title2="{StationTrackerI18n>AllocatedFTE}"

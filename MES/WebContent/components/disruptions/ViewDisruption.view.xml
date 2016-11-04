@@ -14,7 +14,7 @@
 							<Toolbar>
 								<Title text="{operationDisruptionsModel>Subject}" class="panelTitleText" />
 								<ToolbarSpacer />
-								<Button class="decoratePanelBtn" text="Edit" design="Transparent"
+								<Button class="decoratePanelBtn" text="Edit" press="onEditDisruption" design="Transparent"
 									icon="sap-icon://edit" />
 								<Button class="decoratePanelBtn" text="Delete" design="Transparent"
 									icon="sap-icon://delete" />
