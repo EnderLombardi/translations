@@ -826,8 +826,8 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 				competency : oBindingInfo.getProperty("name"),
 				techname : oBindingInfo.getProperty("techname"),
 				qa : aQAList,
-				need3 : airbus.mes.polypoly.PolypolyManager.internalContext.oModel.oData.rows[0][oBindingInfo.getProperty("techname")],
-				need4 : airbus.mes.polypoly.PolypolyManager.internalContext.oModel.oData.rows[1][oBindingInfo.getProperty("techname")]
+				need3 : airbus.mes.polypoly.PolypolyManager.internalContext.oModel.oData.rows[1][oBindingInfo.getProperty("techname")],
+				need4 : airbus.mes.polypoly.PolypolyManager.internalContext.oModel.oData.rows[2][oBindingInfo.getProperty("techname")]
 			});
 			aQASelList
 			.forEach(function(el) {
@@ -994,9 +994,9 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 				var newPos = newPos - 5;
 				var sTechname = oEvt.getParameters().column.getBindingContext().getProperty("techname");
 				if(newPos < 10){
-					newPos = "00" + newPos;
+					newPos = "00" + newPos + "0";
 				}else{
-					newPos = "0" + newPos;
+					newPos = "0" + newPos + "0";
 				}
 				airbus.mes.polypoly.PolypolyManager.moveColumn(sTechname, newPos);
 			}
