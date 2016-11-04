@@ -216,11 +216,7 @@ button[id^="polypoly"].sapMBtn:hover> div[id^="polypoly"].sapMBtnHoverable, html
 	outline:1px dotted transparent;
 	border-color:transparent;
 }
-.classPolypolyPage .sapMBtn:focus>.sapMBtnTransparent.sapMFocusable {
-    background-color: rgba(222,222,222,0.5);
-	outline:1px dotted transparent;
-	border-color:transparent;
-}
+
 /* BTN accept reject */
 
 [id^="polypoly--oTablePolypoly-table"] .sapMFlexItem {
