@@ -177,7 +177,8 @@ airbus.mes.settings.ModelManager =  {
 				},
 				success : function(result, status, xhr) {
 					
-					//airbus.mes.settings.ModelManager.loadUserSettingsModel()
+				//	airbus.mes.settings.ModelManager.loadUserSettingsModel()
+					airbus.mes.shell.oView.byId("labelMSN").setText(airbus.mes.settings.ModelManager.msn);
 					
 				}
 			});

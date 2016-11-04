@@ -371,7 +371,7 @@ sap.ui.controller("airbus.mes.settings.Settings",
 							this.getView().byId("selectMSN").setSelectedKey(airbus.mes.settings.ModelManager.msn);
 							this.getView().byId("currMSN").setSelected(false);
 							airbus.mes.settings.ModelManager.currentMsnSelected = false;
-							
+																			
 						} else {
 							
 							this.getView().getController().onSelectionChange("selectStation");
