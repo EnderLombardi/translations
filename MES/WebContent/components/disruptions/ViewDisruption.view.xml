@@ -40,7 +40,8 @@
 											</f:label>
 											<f:fields>
 
-												<Text text="{parts: [ {path: 'operationDisruptionsModel>Status'}, {path: 'operationDisruptionsModel>Gravity'}, {path: 'operationDisruptionsModel>Severity'} ], formatter: 'airbus.mes.disruptions.Formatter.setText'}">
+												<Text
+													text="{parts: [ {path: 'operationDisruptionsModel>Status'}, {path: 'operationDisruptionsModel>Gravity'}, {path: 'operationDisruptionsModel>Severity'} ], formatter: 'airbus.mes.disruptions.Formatter.setText'}">
 													<layoutData>
 														<l:GridData span="L3 M3 S12" />
 													</layoutData>
@@ -142,22 +143,10 @@
 										</f:FormElement>
 
 
-										<!-- <f:FormElement>
-											<f:label>
-												<Label class="detailLabels" text="{i18nModel>status}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
-												</Label>
-											</f:label>
-											<f:fields>
-												<Text text="{operationDisruptionsModel>Status}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
-												</Text>
-											</f:fields>
-										</f:FormElement> -->
+										<!-- <f:FormElement> <f:label> <Label class="detailLabels" text="{i18nModel>status}"> 
+											<layoutData> <l:GridData span="L3 M3 S12" /> </layoutData> </Label> </f:label> 
+											<f:fields> <Text text="{operationDisruptionsModel>Status}"> <layoutData> 
+											<l:GridData span="L3 M3 S12" /> </layoutData> </Text> </f:fields> </f:FormElement> -->
 
 									</f:formElements>
 								</f:FormContainer>
@@ -165,6 +154,15 @@
 						</f:Form>
 
 						<Text text="{i18nModel>status} : {operationDisruptionsModel>Status}" />
+						
+						<List noDataText="No Comments"
+							items="{path: 'commentsData>/Rowsets/Rowset/0/Row'}">
+
+							<CustomListItem>
+								<Text text="{commentsData>Comment}"></Text>
+							</CustomListItem>
+						</List>
+
 
 						<Panel id="commentBox" visible="false">
 
@@ -179,7 +177,7 @@
 									<Button text="{i18nModel>cancelComment}" press="hideCommentBox"
 										class="sapUiSmallMarginEnd" width="12rem" />
 								</HBox>
-								
+
 							</VBox>
 
 						</Panel>

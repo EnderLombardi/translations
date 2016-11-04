@@ -74,6 +74,27 @@ sap.ui
 					
 					submitComment : function(oEvt) {
 						var path = oEvt.getSource().sId;
+						
+						var oModel = sap.ui.getCore().getModel("commentsModel");
+						oModel.loadData("../components/disruptions/local/commentsModel.json", null, false);
+						
+						var commentsData = oModel.getData();
+						
+						var msgRef = oEvt.getSource().getBindingContext(
+						"operationDisruptionsModel").getObject("MessageRef");
+						
+						var listnum = path.split("-");
+						listnum = listnum[listnum.length - 1];
+						var a = this.getView().byId(
+								"ViewDisruptionView--commentArea-ViewDisruptionView--disrptlist-"
+										+ listnum);
+						listNum = a.getValue();
+						
+						var comment = {"MessageRef": msgRef,
+										"Comment": listNum};
+						commentsData.Rowsets.Rowset[0].Row.push(comment);
+						oModel.setData(commentsData);
+						oModel.refresh();
 					},
 
 					onMarkSolved : function(oEvt) {
@@ -107,6 +128,9 @@ sap.ui
 										});
 
 					},
+					
+					
+					
 
 					onEscalate : function(oEvent) {
 
@@ -115,6 +139,9 @@ sap.ui
 
 						airbus.mes.disruptions.ModelManager.escalateDisruption(msgRef);
 					},
+					
+					
+					
 
 					onReportDisruption : function(oEvent) {
 
