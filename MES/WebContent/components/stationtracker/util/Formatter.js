@@ -143,14 +143,8 @@ airbus.mes.stationtracker.util.Formatter = {
 				case "OPERATION_ID":
 					sText = oBox.operationId + " - " + oBox.shopOrder + " - " + oBox.operationDescription;
 					break;
-		
-<<<<<<< Upstream, based on origin/MESv0.9
-				case "WORKORDER":
-					sText = oBox.shopOrderDescription + " - " + oBox.shopOrder;
-=======
 				case "WORKORDER_ID":
 					var sText = oBox.shopOrderDescription + " - " + oBox.shopOrder;
->>>>>>> 70f67e6 Settings screen
 					break;
 				default:
 					sText = oBox.realValueBox;
