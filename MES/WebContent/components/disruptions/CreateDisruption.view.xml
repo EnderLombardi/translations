@@ -36,11 +36,11 @@
 									</f:label>
 									<f:fields>
 										<Select id="selectCategory"
-											items="{disruptionCustomData>/Rowsets/Rowset/0/Row}"
+											items="{disruptionCategoryModel>/Rowsets/Rowset/0/Row}"
 											 change="onSelectionChange" selectedKey="" forceSelection="false">
 											<items>
-												<core:Item text="{disruptionCustomData>Category}"
-													key="{disruptionCustomData>MessageType}" />
+												<core:Item text="{disruptionCategoryModel>Category}"
+													key="{disruptionCategoryModel>MessageType}" />
 											</items>
 											<layoutData>
 												<l:GridData span="L3 M6 S12" />

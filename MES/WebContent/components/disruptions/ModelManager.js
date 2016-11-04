@@ -39,8 +39,8 @@ airbus.mes.disruptions.ModelManager = {
 
 		this.core.setModel(new sap.ui.model.json.JSONModel(),
 				"disruptionCustomData");
-
-		//this.core.getModel("disruptionCustomData").attachRequestCompleted(airbus.mes.disruptiontracker.ModelManager.filterInitialCustomData); 
+		
+		this.core.setModel(new sap.ui.model.json.JSONModel(), "disruptionCategoryModel")
 
 	},
 
@@ -62,8 +62,21 @@ airbus.mes.disruptions.ModelManager = {
 	},
 	
 	
-	filterInitialCustomData : function(){
-		
+	/***************************************************************************
+	 * Set the Models for Category of Disruption Creation
+	 **************************************************************************/
+	loadDisruptionCategory : function() {
+		var oModel = sap.ui.getCore().getModel("disruptionCategoryModel");
+		oModel.loadData(this.getDisruptionCategory(), null, false);
+	},
+	getDisruptionCategory : function() {
+		var urlCustomCategory = this.urlModel.getProperty("urlCustomCategory");
+		urlCustomCategory = airbus.mes.shell.ModelManager.replaceURI(urlCustomCategory,
+				"$site", airbus.mes.settings.ModelManager.site);
+		urlCustomCategory = airbus.mes.shell.ModelManager.replaceURI(urlCustomCategory,
+				"$station", airbus.mes.settings.ModelManager.station);
+		return urlCustomCategory;
+
 	},
 
 	/***************************************************************************
