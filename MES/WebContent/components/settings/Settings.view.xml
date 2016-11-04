@@ -24,7 +24,7 @@
 		</subHeader>
 		<l:Splitter width="100%" height="100%">
 		<List headerText="{i18n>Program}" items="{path: 'program>/ProgramCollection'}"
-				width="95%" class="sapUiTinyMargin classListProgram" id="headTextProgram">
+				width="auto" class="sapUiTinyMargin classListProgram" id="headTextProgram">
 				<CustomListItem icon="{program>picture}">
 					<HBox>
 						<RadioButton enabled="{ path : 'program>prog', formatter : 'airbus.mes.settings.util.Formatter.enabledProgram' }"

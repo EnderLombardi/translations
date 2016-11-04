@@ -53,6 +53,10 @@ font-style: normal !important;
     position: relative;
     z-index: 10;
 }
+.classSettingPage .pageHeader span {
+    font-size: 1.2rem;
+    color: white;
+}
 .sapMPage .classSettingPage >.sapMPageHeader + .sapMPageSubHeader + section {
 	margin-top:0.55rem;
 }
@@ -94,6 +98,8 @@ font-style: normal !important;
 .classListProgram {
 	border: 1px solid #e5e5e5;
     border-bottom: 0;
+    margin-top: 0.8rem!important;
+    margin-left: 0.8rem!important;
 }
 .classOtherSetting .sapUiFormTitle, .classListProgram .sapMListHdr, .classSelectListBox .sapMListHdr {
 	text-shadow:none;
@@ -102,7 +108,8 @@ font-style: normal !important;
 	border-bottom: 1px solid #e5e5e5;	
 }
 .classOtherSetting {
-	border: 1px solid #e5e5e5;	
+	border: 1px solid #e5e5e5;
+	margin-top: 0.8rem!important;
 }
 .classOtherSetting label {
 	color:rgba(0, 86, 112, 0.94);
@@ -127,7 +134,7 @@ font-style: normal !important;
     border: none;
 }
 .classSelectListBox {
-	margin-top: 0.5rem;
+	margin-top: 0.8rem;
     border: 1px solid #e5e5e5;
     border-right:none;
 }
