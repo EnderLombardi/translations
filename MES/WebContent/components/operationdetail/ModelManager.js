@@ -128,27 +128,26 @@ airbus.mes.operationdetail.ModelManager = {
 	 * Get URL for Operation Confirmation
 	 **************************************************************************/
 	getConfirmationUrl : function(userId, password, confirmationType,
-			percentConfirm, sfcStepRef, reasonCodeText) {
+			percentConfirm, sfcStepRef, reasonCodeText, Mode) {
 		var totalPartialConfirmationUrl = this.urlModel
 				.getProperty("operationConfirmatonUrl");
-		totalPartialConfirmationUrl = airbus.mes.shell.ModelManager
-				.replaceURI(totalPartialConfirmationUrl, "$userId", userId);
-		totalPartialConfirmationUrl = airbus.mes.shell.ModelManager
-				.replaceURI(totalPartialConfirmationUrl, "$password", password);
-		totalPartialConfirmationUrl = airbus.mes.shell.ModelManager
-				.replaceURI(totalPartialConfirmationUrl, "$confirmationType",
-						confirmationType);
-		totalPartialConfirmationUrl = airbus.mes.shell.ModelManager
-				.replaceURI(totalPartialConfirmationUrl, "$percentConfirm",
-						percentConfirm);
-		totalPartialConfirmationUrl = airbus.mes.shell.ModelManager
-				.replaceURI(totalPartialConfirmationUrl, "$sfcStepRef",
-						sfcStepRef);
-		totalPartialConfirmationUrl = airbus.mes.shell.ModelManager
-				.replaceURI(totalPartialConfirmationUrl, "$resonCodeText",
-						reasonCodeText);
+		totalPartialConfirmationUrl = airbus.mes.shell.ModelManager.replaceURI(
+				totalPartialConfirmationUrl, "$userId", userId);
+		totalPartialConfirmationUrl = airbus.mes.shell.ModelManager.replaceURI(
+				totalPartialConfirmationUrl, "$password", password);
+		totalPartialConfirmationUrl = airbus.mes.shell.ModelManager.replaceURI(
+				totalPartialConfirmationUrl, "$confirmationType",
+				confirmationType);
+		totalPartialConfirmationUrl = airbus.mes.shell.ModelManager.replaceURI(
+				totalPartialConfirmationUrl, "$percentConfirm", percentConfirm);
+		totalPartialConfirmationUrl = airbus.mes.shell.ModelManager.replaceURI(
+				totalPartialConfirmationUrl, "$sfcStepRef", sfcStepRef);
+		totalPartialConfirmationUrl = airbus.mes.shell.ModelManager.replaceURI(
+				totalPartialConfirmationUrl, "$resonCodeText", reasonCodeText);
+		totalPartialConfirmationUrl = airbus.mes.shell.ModelManager.replaceURI(
+				totalPartialConfirmationUrl, "$Mode", Mode);
 		return totalPartialConfirmationUrl;
 
 	}
 };
-//airbus.mes.operationdetail.ModelManager.init(sap.ui.getCore());
+// airbus.mes.operationdetail.ModelManager.init(sap.ui.getCore());
