@@ -76,7 +76,7 @@ sap.ui
 
 							// direct nav container to workcenter view
 							this.nav.to("idWorkCenterView");
-							
+
 						} else if (itemKey === "shifts") {
 
 							this.nav.to("idShiftView");
@@ -250,25 +250,29 @@ sap.ui
 												: "";
 
 										var oJsonAssignedUsers = {
-											"USER_ID" : item.getCustomData()[7]
+											"userId" : item.getCustomData()[7]
 													.getValue(),
-											"SITE" : airbus.mes.resourcepool.util.ModelManager.site,
-											"NAME" : item.getCustomData()[3]
+											"site" : airbus.mes.resourcepool.util.ModelManager.site,
+											"name" : item.getCustomData()[5]
 													.getValue(),
-											"PERSONAL_NO" : item
-													.getCustomData()[0]
+											"personalNo" : item.getCustomData()[0]
 													.getValue(),
-											"ERP_USER_ID" : item
-													.getCustomData()[1]
+											"erpUserId" : item.getCustomData()[1]
 													.getValue(),
-											"FNAME" : item.getCustomData()[5]
+											"assignedToRPName" : item
+													.getCustomData()[3]
 													.getValue(),
-											"LNAME" : item.getCustomData()[6]
+											"handle" : item.getCustomData()[9]
 													.getValue(),
-											"LOANED_TO_POOL" : item
+											"loanedToPool" : item
 													.getCustomData()[2]
 													.getValue(),
-											"LOANED_RP_NAME" : loaned_RP_Name
+											"loanedToRPName" : item
+													.getCustomData()[4]
+													.getValue(),
+											"type" : item.getCustomData()[8]
+													.getValue(),
+
 										}
 										/*
 										 * push JSON Object to
@@ -331,7 +335,6 @@ sap.ui
 							airbus.mes.resourcepool.oView
 									.addDependent(airbus.mes.resourcepool.messageDialog);
 						}
-						
 
 						for (var i = 0; i < aError.length; i++) {
 							airbus.mes.resourcepool.messageDialog.getContent()[0]
@@ -427,48 +430,50 @@ sap.ui
 									if (item.getCustomData()[3].getValue() != airbus.mes.resourcepool.util.ModelManager.resourceName)
 										// If Loaned to current resource
 										var oJsonAvailableUsers = {
-											"USER_ID" : item.getCustomData()[7]
+											"userId" : item.getCustomData()[7]
 													.getValue(),
-											"SITE" : airbus.mes.resourcepool.util.ModelManager.site,
-											"NAME" : item.getCustomData()[3]
+											"site" : airbus.mes.resourcepool.util.ModelManager.site,
+											"name" : item.getCustomData()[5]
 													.getValue(),
-											"PERSONAL_NO" : item
-													.getCustomData()[0]
+											"personalNo" : item.getCustomData()[0]
 													.getValue(),
-											"ERP_USER_ID" : item
-													.getCustomData()[1]
+											"erpUserId" : item.getCustomData()[1]
 													.getValue(),
-											"FNAME" : item.getCustomData()[5]
+											"assignedToRPName" : item
+													.getCustomData()[3]
 													.getValue(),
-											"LNAME" : item.getCustomData()[6]
+											"handle" : item.getCustomData()[9]
 													.getValue(),
-											"LOANED_TO_POOL" : "---",
-											"LOANED_RP_NAME" : loaned_RP_Name
+											"loanedToPool" : "",
+											"loanedToRPName" : loaned_RP_Name,
+											"type" : item.getCustomData()[8]
+													.getValue()
 										}
 									else
 										// If assigned to current resource
 										// and may be loaned to other
 										// resource
 										var oJsonAvailableUsers = {
-											"USER_ID" : item.getCustomData()[7]
+											"userId" : item.getCustomData()[7]
 													.getValue(),
-											"SITE" : airbus.mes.resourcepool.util.ModelManager.site,
-											"NAME" : item.getCustomData()[3]
+											"site" : airbus.mes.resourcepool.util.ModelManager.site,
+											"name" : item.getCustomData()[5]
 													.getValue(),
-											"PERSONAL_NO" : item
-													.getCustomData()[0]
+											"personalNo" : item.getCustomData()[0]
 													.getValue(),
-											"ERP_USER_ID" : item
-													.getCustomData()[1]
+											"erpUserId" : item.getCustomData()[1]
 													.getValue(),
-											"FNAME" : item.getCustomData()[5]
+											"assignedToRPName" : item
+													.getCustomData()[3]
 													.getValue(),
-											"LNAME" : item.getCustomData()[6]
+											"handle" : item.getCustomData()[9]
 													.getValue(),
-											"LOANED_TO_POOL" : item
+											"loanedToPool" : item
 													.getCustomData()[2]
 													.getValue(),
-											"LOANED_RP_NAME" : loaned_RP_Name
+											"loanedToRPName" : loaned_RP_Name,
+											"type" : item.getCustomData()[8]
+													.getValue()
 										}
 
 										/*
@@ -677,7 +682,7 @@ sap.ui
 						}
 
 					},
-					
+
 					onSelectAllUsers : function(oEvent) {
 
 						var flag = oEvent.getSource().getSelected();
@@ -1034,11 +1039,11 @@ sap.ui
 					cancelForm : function(oEvt) {
 						if (airbus.mes.resourcepool.util.ModelManager.resourceName === undefined
 								|| airbus.mes.resourcepool.util.ModelManager.resourceName == "") {
-							 nav.back();
+							nav.back();
 						}
-					},	
-					
-					closeForm: function(){
+					},
+
+					closeForm : function() {
 						airbus.mes.resourcepool.searchResourcePool.close();
 					},
 
@@ -1428,7 +1433,7 @@ sap.ui
 
 						}
 					},
-					
+
 					/***********************************************************
 					 * update description using dialog box
 					 **********************************************************/
@@ -1525,40 +1530,28 @@ sap.ui
 						this.getView().byId("searchAssignedWC").clear();
 					},
 
-				/*	editTeamOpen : function() {
-						if (airbus.mes.resourcepool.editTeam === undefined) {
-
-							airbus.mes.resourcepool.editTeam = sap.ui
-									.xmlfragment(
-											"editTeam",
-											"airbus.mes.resourcepool.views.editTeam",
-											airbus.mes.resourcepool.oView
-													.getController());
-							airbus.mes.resourcepool.oView
-									.addDependent(airbus.mes.resourcepool.editTeam);
-						}
-
-						// Open
-						airbus.mes.resourcepool.editTeam.open();
-
-						// Set Site, Resource Pool name and Description
-						sap.ui.getCore().byId("editTeam--site").setText(
-								airbus.mes.resourcepool.util.ModelManager.site);
-						sap.ui
-								.getCore()
-								.byId("editTeam--resourcePoolName")
-								.setText(
-										airbus.mes.resourcepool.util.ModelManager.resourceName);
-						sap.ui
-								.getCore()
-								.byId("editTeam--description")
-								.setValue(
-										airbus.mes.resourcepool.util.ModelManager.resourceDescription);
-					},
-
-					editTeamClose : function() {
-						airbus.mes.resourcepool.editTeam.close();
-					},*/
+					/*
+					 * editTeamOpen : function() { if
+					 * (airbus.mes.resourcepool.editTeam === undefined) {
+					 * 
+					 * airbus.mes.resourcepool.editTeam = sap.ui .xmlfragment(
+					 * "editTeam", "airbus.mes.resourcepool.views.editTeam",
+					 * airbus.mes.resourcepool.oView .getController());
+					 * airbus.mes.resourcepool.oView
+					 * .addDependent(airbus.mes.resourcepool.editTeam); }
+					 *  // Open airbus.mes.resourcepool.editTeam.open();
+					 *  // Set Site, Resource Pool name and Description
+					 * sap.ui.getCore().byId("editTeam--site").setText(
+					 * airbus.mes.resourcepool.util.ModelManager.site); sap.ui
+					 * .getCore() .byId("editTeam--resourcePoolName") .setText(
+					 * airbus.mes.resourcepool.util.ModelManager.resourceName);
+					 * sap.ui .getCore() .byId("editTeam--description")
+					 * .setValue(
+					 * airbus.mes.resourcepool.util.ModelManager.resourceDescription); },
+					 * 
+					 * editTeamClose : function() {
+					 * airbus.mes.resourcepool.editTeam.close(); },
+					 */
 
 					/***********************************************************
 					 * Triggers when Save button is clicked on the Pop-Up
@@ -1721,20 +1714,21 @@ sap.ui
 
 					},
 
-					afterNavigate: function(oEvt){
-						
-						if(oEvt.getParameters().toId == "idUsersView"){
-							this.getView().byId("availableUsersPanel").rerender();
-							this.getView().byId("assignedUsersPanel").rerender();
-						}
+					afterNavigate : function(oEvt) {
 
-						else if (oEvt.getParameters().toId == "idWorkCenterView"){
-							this.getView().byId("availableWCPanel").rerender();
-							this.getView().byId("assignedWCPanel").rerender();
-						}
+						// if(oEvt.getParameters().toId == "idUsersView"){
+						// this.getView().byId("availableUsersPanel").rerender();
+						// this.getView().byId("assignedUsersPanel").rerender();
+						// }
+						//
+						// else if (oEvt.getParameters().toId ==
+						// "idWorkCenterView"){
+						// this.getView().byId("availableWCPanel").rerender();
+						// this.getView().byId("assignedWCPanel").rerender();
+						// }
 					},
-					
-					onNavBack: function(oEvent){
+
+					onNavBack : function(oEvent) {
 						nav.back();
 					}
 				});

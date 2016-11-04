@@ -15,9 +15,9 @@ sap.ui
 					 * @memberOf resource_pool.Main
 					 */
 
-					/*onInit : function() {
-
-					},*/
+					/*
+					 * onInit : function() { },
+					 */
 
 					/**
 					 * Similar to onAfterRendering, but this hook is invoked
@@ -86,7 +86,7 @@ sap.ui
 									 * If any user is already loaned or assigned
 									 * then prepare error messages
 									 */
-									if (item.getCustomData()[2].getValue() != "---"
+									if (item.getCustomData()[2].getValue() != ""
 											&& item.getCustomData()[3]
 													.getValue() != airbus.mes.resourcepool.util.ModelManager.resourceName)
 										aError.push(item);
@@ -105,25 +105,29 @@ sap.ui
 												: "";
 
 										var oJsonAssignedUsers = {
-											"USER_ID" : item.getCustomData()[7]
+											"userId" : item.getCustomData()[7]
 													.getValue(),
-											"SITE" : airbus.mes.resourcepool.util.ModelManager.site,
-											"NAME" : item.getCustomData()[3]
+											"site" : airbus.mes.resourcepool.util.ModelManager.site,
+											"name" : item.getCustomData()[5]
 													.getValue(),
-											"PERSONAL_NO" : item
-													.getCustomData()[0]
+											"personalNo" : item.getCustomData()[0]
 													.getValue(),
-											"ERP_USER_ID" : item
-													.getCustomData()[1]
+											"erpUserId" : item.getCustomData()[1]
 													.getValue(),
-											"FNAME" : item.getCustomData()[5]
+											"assignedToRPName" : item
+													.getCustomData()[3]
 													.getValue(),
-											"LNAME" : item.getCustomData()[6]
+											"handle" : item.getCustomData()[9]
 													.getValue(),
-											"LOANED_TO_POOL" : item
+											"loanedToPool" : item
 													.getCustomData()[2]
 													.getValue(),
-											"LOANED_RP_NAME" : loaned_RP_Name
+											"loanedToRPName" : item
+													.getCustomData()[4]
+													.getValue(),
+											"type" : item.getCustomData()[8]
+													.getValue(),
+
 										}
 										/*
 										 * push JSON Object to
@@ -186,7 +190,6 @@ sap.ui
 							airbus.mes.resourcepool.oView
 									.addDependent(airbus.mes.resourcepool.messageDialog);
 						}
-						
 
 						for (var i = 0; i < aError.length; i++) {
 							airbus.mes.resourcepool.messageDialog.getContent()[0]
@@ -282,48 +285,50 @@ sap.ui
 									if (item.getCustomData()[3].getValue() != airbus.mes.resourcepool.util.ModelManager.resourceName)
 										// If Loaned to current resource
 										var oJsonAvailableUsers = {
-											"USER_ID" : item.getCustomData()[7]
+											"userId" : item.getCustomData()[7]
 													.getValue(),
-											"SITE" : airbus.mes.resourcepool.util.ModelManager.site,
-											"NAME" : item.getCustomData()[3]
+											"site" : airbus.mes.resourcepool.util.ModelManager.site,
+											"name" : item.getCustomData()[5]
 													.getValue(),
-											"PERSONAL_NO" : item
-													.getCustomData()[0]
+											"personalNo" : item.getCustomData()[0]
 													.getValue(),
-											"ERP_USER_ID" : item
-													.getCustomData()[1]
+											"erpUserId" : item.getCustomData()[1]
 													.getValue(),
-											"FNAME" : item.getCustomData()[5]
+											"assignedToRPName" : item
+													.getCustomData()[3]
 													.getValue(),
-											"LNAME" : item.getCustomData()[6]
+											"handle" : item.getCustomData()[9]
 													.getValue(),
-											"LOANED_TO_POOL" : "---",
-											"LOANED_RP_NAME" : loaned_RP_Name
+											"loanedToPool" : "",
+											"loanedToRPName" : loaned_RP_Name,
+											"type" : item.getCustomData()[8]
+													.getValue()
 										}
 									else
 										// If assigned to current resource
 										// and may be loaned to other
 										// resource
 										var oJsonAvailableUsers = {
-											"USER_ID" : item.getCustomData()[7]
+											"userId" : item.getCustomData()[7]
 													.getValue(),
-											"SITE" : airbus.mes.resourcepool.util.ModelManager.site,
-											"NAME" : item.getCustomData()[3]
+											"site" : airbus.mes.resourcepool.util.ModelManager.site,
+											"name" : item.getCustomData()[5]
 													.getValue(),
-											"PERSONAL_NO" : item
-													.getCustomData()[0]
+											"personalNo" : item.getCustomData()[0]
 													.getValue(),
-											"ERP_USER_ID" : item
-													.getCustomData()[1]
+											"erpUserId" : item.getCustomData()[1]
 													.getValue(),
-											"FNAME" : item.getCustomData()[5]
+											"assignedToRPName" : item
+													.getCustomData()[3]
 													.getValue(),
-											"LNAME" : item.getCustomData()[6]
+											"handle" : item.getCustomData()[9]
 													.getValue(),
-											"LOANED_TO_POOL" : item
+											"loanedToPool" : item
 													.getCustomData()[2]
 													.getValue(),
-											"LOANED_RP_NAME" : loaned_RP_Name
+											"loanedToRPName" : loaned_RP_Name,
+											"type" : item.getCustomData()[8]
+													.getValue()
 										}
 
 										/*
@@ -360,7 +365,7 @@ sap.ui
 
 						sap.ui.getCore().getModel("AssignedUsersModel")
 								.refresh();
-					},					
+					},
 					onSelectAllUsers : function(oEvent) {
 
 						var flag = oEvent.getSource().getSelected();
