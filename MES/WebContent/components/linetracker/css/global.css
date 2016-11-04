@@ -306,12 +306,6 @@
 }
 
 /* subheader and segmented buttons */
-#idMainView--lineTrackerToolbar {
-	background-color: #D5F1F8 !important;
-	-webkit-box-shadow: inset 0px 7px 14px -5px rgba(3,3,3,0.25);
-	-moz-box-shadow: inset 0px 7px 14px -5px rgba(3,3,3,0.25);
-	box-shadow: inset 0px 7px 14px -5px rgba(3,3,3,0.25);
-}
 
 #idMainView--IconTabsPages {
 	height: 3rem;
