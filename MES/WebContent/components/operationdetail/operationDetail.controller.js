@@ -7,6 +7,7 @@ sap.ui
 					reasonCodeText : undefined,
 					operationStatus : undefined,
 					disruptionsFlag: false,
+					disruptionCustomDataflag : false,
 
 					/**
 					 * Called when a controller is instantiated and its View
@@ -205,6 +206,19 @@ sap.ui
 								airbus.mes.disruptions.ModelManager.loadDisruptionsByOperation(operationBO);
 								this.disruptionsFlag = true;
 							}
+							break;
+							
+						case "CreateDisruptionView":
+							/**************************
+							 * Load Disruption Custom Data
+							 *************************/
+							if(!this.disruptionsCustomDataFlag){
+								airbus.mes.disruptions.ModelManager.loadDisruptionCustomData();
+								this.disruptionsCustomDataFlag = true;
+							}
+							break;
+							
+							
 						
 						};
 						
