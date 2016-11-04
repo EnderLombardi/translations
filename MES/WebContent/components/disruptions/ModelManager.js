@@ -40,7 +40,7 @@ airbus.mes.disruptions.ModelManager = {
 		this.core.setModel(new sap.ui.model.json.JSONModel(),
 				"disruptionCustomData");
 
-		
+		//this.core.getModel("disruptionCustomData").attachRequestCompleted(airbus.mes.disruptiontracker.ModelManager.filterInitialCustomData); 
 
 	},
 
@@ -59,6 +59,11 @@ airbus.mes.disruptions.ModelManager = {
 				"$station", airbus.mes.settings.ModelManager.station);
 		return urlCustomData;
 
+	},
+	
+	
+	filterInitialCustomData : function(){
+		
 	},
 
 	/***************************************************************************
