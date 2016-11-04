@@ -182,10 +182,24 @@ sap.ui
 
 					
 					onEditDisruption : function(oEvent) {
-
+                          
+						
+						//to auto fill fields on edit screen
+						
+						var oTranModel = sap.ui.getCore().getModel("DisruptionModel");
+						
+						// set the data for the model
+						oTranModel.setData(oEvent.getSource().getBindingContext(
+						"operationDisruptionsModel"));
+						
+						
 						var oOperDetailNavContainer = sap.ui.getCore().byId(
 								"operationDetailsView--operDetailNavContainer");
-
+                        
+						
+						
+					
+						
 						if (airbus.mes.operationdetail.editDisruption === undefined
 								|| airbus.mes.operationdetail.editDisruption.oView === undefined) {
 							sap.ui
@@ -199,9 +213,16 @@ sap.ui
 									.addPage(airbus.mes.operationdetail.editDisruption.oView);
 						}
 
+                        
+						
 						oOperDetailNavContainer
 								.to(airbus.mes.operationdetail.editDisruption.oView
 										.getId());
+						
+					
+						
+						
+						
 					},
 					
 					
