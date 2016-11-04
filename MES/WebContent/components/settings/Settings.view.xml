@@ -40,10 +40,10 @@
 			<VBox class="classSelectListBox">
 		<Bar class="sapMListHdr">
 		<contentLeft>
-			<Label text="test"></Label>
+			<Label text="{i18n>Site}"></Label>
 		</contentLeft>
 		</Bar>
-			<SelectList headerText="{i18n>Site}" items="{path: 'site>/SiteCollection'}"
+			<SelectList items="{path: 'site>/SiteCollection'}"
 				width="100%" class="sapUiTinyMargin classSelectList" id="headTextPlant" itemPress="onPressSite" >
 				<core:Item text="{site>Site}" key="{site>Site}" enabled="{ path : 'site>Site', formatter : 'airbus.mes.settings.util.Formatter.enabledSite' }" />
 

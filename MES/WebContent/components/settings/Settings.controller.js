@@ -102,6 +102,7 @@ sap.ui.controller("airbus.mes.settings.Settings",
 					if ( airbus.mes.settings.ModelManager.currentMsnSelected ) {
 						
 						var sCurrentMsn = "";
+						if ( sap.ui.getCore().getModel("plantModel").getProperty("/Rowsets/Rowset/0/Row") != undefined ) {
 						var oModel = sap.ui.getCore().getModel("plantModel").getProperty("/Rowsets/Rowset/0/Row");
 						// Find automatically the msn with the flag Current MSN different of "---"
 						oModel = oModel.filter(function (el) {
@@ -111,10 +112,12 @@ sap.ui.controller("airbus.mes.settings.Settings",
 							         el.Current_MSN != "---"
 							});
 						if ( oModel.length > 0 ) {
-																			
+							
+							airbus.mes.settings.ModelManager.currentMsnValue = oModel[0].msn;
 							airbus.mes.settings.oView.byId("selectMSN").setValue( oModel[0].msn );
+							
 						}
-												
+						}							
 					}
 					this.setEnabledCombobox(true, true, true, true);
 			        break;
@@ -236,7 +239,9 @@ sap.ui.controller("airbus.mes.settings.Settings",
 				if ( e.getParameters().item != undefined ) {
 					var site =  e.getParameters().item.getText();
 				} else {
+					if ( airbus.mes.settings.oView.byId("headTextPlant").getSelectedItem() != undefined ) {
 					var site = airbus.mes.settings.oView.byId("headTextPlant").getSelectedItem().getText();
+					}
 				}
 			
 				var fIndex = oModel.map(function(x) {return x.site_desc; }).indexOf( site );
@@ -371,6 +376,7 @@ sap.ui.controller("airbus.mes.settings.Settings",
 							
 							this.getView().getController().onSelectionChange("selectStation");
 							airbus.mes.settings.ModelManager.msn = this.getView().byId("selectMSN").getValue();
+							airbus.mes.shell.oView.byId("labelMSN").setText(airbus.mes.settings.ModelManager.currentMsnValue);
 						}
 						this.setEnabledCombobox(true, true, true, true);
 				} else {

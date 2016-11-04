@@ -15,6 +15,7 @@ airbus.mes.settings.ModelManager =  {
 	taktEnd : undefined,
 	taktDuration : undefined,
 	currentMsnSelected : true,
+	currentMsnValue : "",
 	core : undefined,
 	urlModel : undefined,
 	current_flag:"X",
@@ -175,7 +176,9 @@ airbus.mes.settings.ModelManager =  {
 					
 				},
 				success : function(result, status, xhr) {
-			
+					
+					//airbus.mes.settings.ModelManager.loadUserSettingsModel()
+					
 				}
 			});
 		  
