@@ -13,6 +13,7 @@ var bClearData = false;// var to prevent clearing on gantt data for first time.
 
 airbus.mes.polypoly.ModelManager = {
 
+	stationMII : undefined,
 	operation_User : [],
 	role : undefined,
 	user : "", // constant
@@ -23,7 +24,7 @@ airbus.mes.polypoly.ModelManager = {
 	// (order/operation worklist) used in both the screens
 	Load_Unload : "", // set from loading or unloading MSNs on stations 5
 	MessageBar : undefined,
-
+	
 	// USER affectation Part
 	cdate : undefined,// set from DHTMLXGanttuser.js when open fragment for
 	// user affectation
@@ -191,6 +192,25 @@ airbus.mes.polypoly.ModelManager = {
 		
 		sap.ui.getCore().getModel("listQA").loadData(urlgetqalist,null,false);
 		
+		airbus.mes.polypoly.ModelManager.getPolyStation(sSite, sStation);
+		
+	},
+	
+	getPolyStation : function(sSite, sStation) {
+		var urlgetpolystation = this.urlModel.getProperty("urlgetpolystation");
+
+		urlgetpolystation = urlgetpolystation.replace("$station", sStation);
+		urlgetpolystation = urlgetpolystation.replace("$site", sSite);
+		
+		//Handle User & Password
+		urlgetpolystation = this.handleUserConnection(urlgetpolystation);
+
+		$.ajax({
+			url : urlgetpolystation,
+			success : function(data, textStatus, jqXHR) {
+				airbus.mes.polypoly.ModelManager.stationMII = data.Rowsets.Rowset[0].Row[0].PPM_Station;
+			},
+		})
 	},
 	
 	onPolyPolyModelLoaded : function() {
