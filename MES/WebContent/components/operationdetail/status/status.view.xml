@@ -1,9 +1,9 @@
 <core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m" controllerName="airbus.mes.operationdetail.status.status"
 	xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:html="http://www.w3.org/1999/xhtml">
-	<Page showHeader="false" enableScrolling="false">
+	<Page showHeader="false" enableScrolling="false" class="sapUiSmallMarginBeginEnd">
 		
-		<VBox width="100%" justifyContent="SpaceBetween" class="sapUiSmallMarginBeginEnd">
+		<VBox justifyContent="SpaceBetween" class="sapUiSmallMarginBeginEnd">
 			<HBox justifyContent="Center" class="sapUiSmallMarginTopBottom">
 				<items>
 					<Title id="operationStatus" clas="sapUiSmallMarginTop"

@@ -237,8 +237,7 @@ sap.ui
 					 **********************************************************/
 					onCancelConfirmation : function() {
 						this._oUserConfirmationDialog.close();
-						sap.ui.getCore().byId("msgstrpConfirm").setVisible(
-								false);
+						
 					},
 
 					onOKConfirmation : function(oEvent) {
@@ -277,6 +276,10 @@ sap.ui
 								.setProperty(
 										"/Rowsets/Rowset/0/Row/0/status",
 										"COMPLETED")
+										sap.ui.getCore().getModel("operationDetailModel")
+								.setProperty(
+										"/Rowsets/Rowset/0/Row/0/progress",
+										100);
 										sap.ui.getCore().getModel("operationDetailModel")
 								.refresh();
 								}
@@ -325,7 +328,8 @@ sap.ui
 
 										}
 									});
-
+							// Close reason code dialog
+							this._reasonCodeDialog.close();
 							this._oUserConfirmationDialog.close();
 
 							if (flag_success === true) {
@@ -352,7 +356,7 @@ sap.ui
 					},
 
 					refreshOperationData : function(percentage) {
-						sap.ui.getCore().byId("progressSliderfirst").setWidth(
+						/*sap.ui.getCore().byId("progressSliderfirst").setWidth(
 								percentage + "%");
 						sap.ui.getCore().byId("progressSlider").setWidth(
 								(100 - parseInt(percentage)) + "%");
@@ -390,7 +394,7 @@ sap.ui
 							sap.ui.getCore().byId("progressSlider")
 									.addStyleClass("dynProgressSlider");
 							break;
-						}
+						}*/
 					},
 
 					/***********************************************************
@@ -404,7 +408,7 @@ sap.ui
 								+ sap.ui.getCore().byId("reasonCodeComments")
 										.getValue()
 						// Close reason code dialog
-						this._reasonCodeDialog.close();
+						//this._reasonCodeDialog.close();
 
 						if (!this._oUserConfirmationDialog) {
 
@@ -425,6 +429,11 @@ sap.ui
 					},
 
 					onCancelReasonCode : function() {
+						sap.ui.getCore().byId("msgstrpConfirm").setVisible(
+								false);
+						sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].progress_new = sap.ui
+								.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].progress;
+						sap.ui.getCore().getModel("operationDetailModel").refresh();
 						this._reasonCodeDialog.close();
 					},
 					/***********************************************************
