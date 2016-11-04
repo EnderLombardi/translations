@@ -137,6 +137,7 @@ airbus.mes.disruptions.ModelManager = {
 	 */
 
 	getURLCreateDisruption : function() {
+		airbus.mes.operationdetail.oView.setBusy(true); //Set Busy Indicator
 		var urlCreateDisruption = this.urlModel
 				.getProperty("urlCreateDisruption");
 		return urlCreateDisruption;
@@ -149,7 +150,7 @@ airbus.mes.disruptions.ModelManager = {
 					async : true,
 					cache : false,
 					url : this.getURLCreateDisruption(),
-					type : 'GET',
+					type : 'POST',
 					data : {
 						"Param.1" : airbus.mes.settings.ModelManager.site,
 						/*"Param.2" : sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"),*/
@@ -162,6 +163,7 @@ airbus.mes.disruptions.ModelManager = {
 						})
 					},
 					success : function(data, textStatus, jqXHR) {
+						airbus.mes.operationdetail.oView.setBusy(false); //Remove Busy Indicator
 						var rowExists = data.Rowsets.Rowset;
 						if (rowExists != undefined) {
 							if (data.Rowsets.Rowset[0].Row[0].Message_Type == "S") {
@@ -181,6 +183,7 @@ airbus.mes.disruptions.ModelManager = {
 					},
 
 			error : function() {
+				airbus.mes.operationdetail.oView.setBusy(false); //Remove Busy Indicator
 				airbus.mes.shell.ModelManager.messageShow(airbus.mes.operationdetail.createDisruption.oView.getModel("i18nModel").getProperty("DisruptionNotSaved"));
 				
 			}
