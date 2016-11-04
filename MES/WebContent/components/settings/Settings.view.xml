@@ -37,14 +37,14 @@
 				</layoutData>
 			</List>
 
-			<VBox>
+			<VBox class="classSelectListBox">
 		<Bar class="sapMListHdr">
 		<contentLeft>
 			<Label text="test"></Label>
 		</contentLeft>
 		</Bar>
 			<SelectList headerText="{i18n>Site}" items="{path: 'site>/SiteCollection'}"
-				width="95%" class="sapUiTinyMargin" id="headTextPlant" itemPress="onPressSite" >
+				width="100%" class="sapUiTinyMargin classSelectList" id="headTextPlant" itemPress="onPressSite" >
 				<core:Item text="{site>Site}" key="{site>Site}" enabled="{ path : 'site>Site', formatter : 'airbus.mes.settings.util.Formatter.enabledSite' }" />
 
 				<layoutData>
