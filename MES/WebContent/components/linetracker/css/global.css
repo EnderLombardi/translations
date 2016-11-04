@@ -43,7 +43,6 @@
 #idMainView--lineTrackerName {
 	font-size: 1.2rem;
 	color: white;
-	text-shadow: none;
 }
 /*standard class. temporary fix */
 /*to allow font scaling according to screen. No bad implications*/

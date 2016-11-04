@@ -243,9 +243,6 @@ button[id^="polypoly"].sapMBtn:hover> div[id^="polypoly"].sapMBtnHoverable, html
 }
 
 /*header*/
-.classPolypolyPage label.pageWelcome {
-    text-shadow: none;	
-}
 
 .classPolypolyPage header {
 	box-shadow: 0px 2px 15px -5px #0F2D65;
