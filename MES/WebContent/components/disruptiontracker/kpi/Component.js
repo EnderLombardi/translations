@@ -1,6 +1,6 @@
 jQuery.sap.require("sap.ui.core.UIComponent");
 //jQuery.sap.require("airbus.mes.disruptiontracker.kpi.util.Formatter");
-//jQuery.sap.require("airbus.mes.disruptiontracker.kpi.ModelManager");
+jQuery.sap.require("airbus.mes.disruptiontracker.kpi.ModelManager");
 
 jQuery.sap.declare("airbus.mes.disruptiontracker.kpi.Component");
 
@@ -18,7 +18,7 @@ airbus.mes.disruptiontracker.kpi.Component.prototype.createContent = function() 
 	
 	if (airbus.mes.disruptiontracker.kpi.oView === undefined) {
 //		Initialization
-//		airbus.mes.disruptionKPI.ModelManager.init(sap.ui.getCore());
+		airbus.mes.disruptiontracker.kpi.ModelManager.init(sap.ui.getCore());
 		
 		// View on XML
 		this.oView = sap.ui.view({
