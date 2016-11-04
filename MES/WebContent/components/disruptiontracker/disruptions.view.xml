@@ -37,8 +37,8 @@
 					<!-- <SearchField width="13rem" placeholder="{disruptiontrackerI18n>search}" /> -->
 					<ToolbarSpacer />
 
-					<Button id="gotoDisruptionKpi" icon="sap-icon://area-chart"
-						text="{disruptiontrackerI18n>disruptionKPI}" press="onPressDisruptionKPI" />
+					<!-- <Button id="gotoDisruptionKpi" icon="sap-icon://area-chart"
+						text="{disruptiontrackerI18n>disruptionKPI}" press="onPressDisruptionKPI" /> -->
 				</Toolbar>
 
 			</content>

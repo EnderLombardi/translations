@@ -45,7 +45,7 @@
 
 			<f:SimpleForm id="reasonCode" minWidth="1024"
 				backgroundDesign="Transparent" maxContainerCols="2" editable="true"
-				layout="ResponsiveGridLayout" labelSpanL="1" labelSpanM="2"
+				layout="ResponsiveGridLayout" labelSpanL="1" labelSpanM="1"
 				columnsL="1" columnsM="1" validateFieldGroup="onValidatereason"
 				class="sapUiLargeMarginTop">
 				<f:content>

@@ -207,11 +207,21 @@
 }
 
 .factory_lineButton {
-	height: 100% !important;
-	color: #007cc0 !important;
-	background-color: #ddeff1 !important;
-}
+	height: 100%;
+	color: #007cc0;
+	background-color: #ddeff1;
 
+}
+.factory_lineButton .sapMFocusable {
+    background: #d5f1f8;
+    color: #0D5D76;
+    font-weight: bold;
+    border: 0;
+	text-shadow:none;
+    }
+.factory_lineButton:hover .sapMFocusable, .factory_lineButton:focus .sapMFocusable {
+	background-color: rgba(222,222,222,0.5);
+}
 .factory_lineButton>span {
 	font-size: 120%;
 }
