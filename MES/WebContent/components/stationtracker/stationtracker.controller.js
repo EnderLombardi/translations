@@ -342,7 +342,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 				
 				sProdGroup += el.mProperties.label + ",";
 				sProdGroupMii += el.mProperties.label + "','";
-			}) 
+			}); 
 			sProdGroup = sProdGroup.slice(0,-1);
 			airbus.mes.settings.ModelManager.prodGroup = sProdGroupMii.slice(0,-3);
 		} else {
@@ -444,7 +444,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		
 			aSFC_Step.push(airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").getProperty(el).SFC_STEP_REF);
 			
-		})
+		});
 		
 		airbus.mes.stationtracker.ModelManager.setOSW(aSFC_Step);
 		
@@ -479,7 +479,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 				
 			scheduler.deleteMarkedTimespan(el);
 		
-		})
+		});
 		
 		airbus.mes.stationtracker.ShiftManager.ShiftMarkerID.push(scheduler.addMarkedTimespan({  
 			//get startdate of first shift maybe need to get only the shift day before the current to avoid issue perf?
@@ -766,7 +766,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	//Fired when Calendar Button is clicked
 	//Open datePicker XML fragment
 	datePick : function() {
-		if(airbus.mes.stationtracker.datePicker == undefined){
+		if(airbus.mes.stationtracker.datePicker === undefined){
 			airbus.mes.stationtracker.datePicker = sap.ui.xmlfragment("datePickerFragment","airbus.mes.stationtracker.datePickerFragment", airbus.mes.stationtracker.oView.getController());
 			airbus.mes.stationtracker.oView.oCalendar = airbus.mes.stationtracker.datePicker.getContent()[0];
 		}
