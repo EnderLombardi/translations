@@ -3,20 +3,22 @@
 	<Dialog draggable="true" contentHeight="40%" contentWidth="60%"
 		title="Reason Code ">
 		<content>
-		<Bar translucent="true">
-					<contentLeft>
-						<Text text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/progress}"></Text>
-					</contentLeft>
-					<contentRight>
-						<Text text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/progress_new}"></Text>
-					</contentRight>
-				</Bar>
+			<HBox justifyContent="SpaceBetween">
+
+				<Text
+					text="{i18n>confirmed}: {operationDetailModel>/Rowsets/Rowset/0/Row/0/progress}%"></Text>
+
+
+				<Text
+					text="{i18n>progress}: {operationDetailModel>/Rowsets/Rowset/0/Row/0/progress_new}%"></Text>
+
+			</HBox>
 			<HBox class="sapUiSmallMarginTop">
 				<Button id="btnReduce" type="Transparent" press="reduceProgress"
 					icon="sap-icon://sys-minus" class="progressBtnColor">
 
 				</Button>
-				
+
 				<HBox width="100%" class="progressSlider">
 					<layoutData>
 						<l:GridData span="L12 M12 S12" />
@@ -45,12 +47,11 @@
 
 			<f:SimpleForm id="reasonCode" minWidth="1024"
 				backgroundDesign="Transparent" maxContainerCols="2" editable="true"
-				layout="ResponsiveGridLayout" labelSpanL="1" labelSpanM="1"
-				columnsL="1" columnsM="1" validateFieldGroup="onValidatereason"
-				class="sapUiLargeMarginTop">
+				layout="ResponsiveGridLayout" labelSpanL="2" labelSpanM="2"
+				labelSpanS="2" columnsL="1" columnsM="1" class="sapUiLargeMarginTop">
 				<f:content>
 					<Label text="Reason Code" />
-					<Select forceSelection="true" change="onSelectionReason" id="reasonCodeSelectBox"
+					<Select change="onSelectionReason" id="reasonCodeSelectBox" forceSelection="false"
 						items="{reasonCodeModel>/Rowsets/Rowset/0/Row}">
 						<core:Item key="{reasonCodeModel>REASON_CODE}" text="{reasonCodeModel>DESCRIPTION}" />
 					</Select>

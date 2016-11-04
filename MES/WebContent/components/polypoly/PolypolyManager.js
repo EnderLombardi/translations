@@ -208,15 +208,15 @@ airbus.mes.polypoly.PolypolyManager = {
 				.forEach(function(col) {
 					if (col != "") {
 						if (col.POLYPOLY_NEEDS_3 == '---') {
-							oTableRows.rows[0][col.technicalName] = "0";
+							oTableRows.rows[1][col.technicalName] = "0";
 						} else {
-							oTableRows.rows[0][col.technicalName] = col.POLYPOLY_NEEDS_3;
+							oTableRows.rows[1][col.technicalName] = col.POLYPOLY_NEEDS_3;
 						}
 
 						if (col.POLYPOLY_NEEDS_4 == '---') {
-							oTableRows.rows[1][col.technicalName] = "0";
+							oTableRows.rows[2][col.technicalName] = "0";
 						} else {
-							oTableRows.rows[1][col.technicalName] = col.POLYPOLY_NEEDS_4;
+							oTableRows.rows[2][col.technicalName] = col.POLYPOLY_NEEDS_4;
 						}
 
 						oTableRows.columns.push({});

@@ -31,13 +31,13 @@
 						</infoToolbar>
 						<content>
 							<HBox height="100%" class="fixHboxItemDisplay">
-								<List id="listAvailableWorkCenter" items="{AvailableWCModel>/Rowsets/Rowset/0/Row}"
-									mode="{path:'AvailableWCModel>',formatter:'airbus.mes.resourcepool.util.Formatter.selectionMode'}"
+								<List id="listAvailableWorkCenter" items="{ResourcePoolDetailModel>/Rowsets/Rowset/4/Row}"
+									mode="{path:'ResourcePoolDetailModel>',formatter:'airbus.mes.resourcepool.util.Formatter.selectionMode'}"
 									includeItemInSelection="true" rememberSelections="false"
 									noDataText="{i18nModel>NoWCAvailable}" growingScrollToLoad="true"
 									growing="true" growingThreshold="1000">
 									<StandardListItem id="availableListItem"
-										title="{AvailableWCModel>WorkCenter}" description="{AvailableWCModel>Description}" />
+										title="{ResourcePoolDetailModel>name}" description="{ResourcePoolDetailModel>description}" />
 								</List>
 							</HBox>
 						</content>
@@ -65,7 +65,7 @@
 							<Toolbar>
 								<content>
 									<CheckBox id="allAssignedWC" select="onSelectAllWC"
-										enabled="{path:'AssignedWCModel>',formatter:'airbus.mes.resourcepool.util.Formatter.isEnabled'}" />
+										enabled="{path:'ResourcePoolDetailModel>',formatter:'airbus.mes.resourcepool.util.Formatter.isEnabled'}" />
 									<SearchField id="searchAssignedWC" liveChange="onSearchAssignedWC"
 										width="100%" />
 								</content>
@@ -73,13 +73,13 @@
 						</infoToolbar>
 						<content>
 							<HBox height="100%" class="fixHboxItemDisplay">
-								<List id="listAllocatedWorkCenter" items="{AssignedWCModel>/Rowsets/Rowset/0/Row}"
+								<List id="listAllocatedWorkCenter" items="{ResourcePoolDetailModel>/Rowsets/Rowset/2/Row}"
 									includeItemInSelection="true"
-									mode="{path:'AssignedWCModel>',formatter:'airbus.mes.resourcepool.util.Formatter.selectionMode'}"
+									mode="{path:'ResourcePoolDetailModel>',formatter:'airbus.mes.resourcepool.util.Formatter.selectionMode'}"
 									noDataText="{i18nModel>NoWCAssigned}" rememberSelections="false"
 									growingScrollToLoad="true" growing="true" growingThreshold="1000">
-									<StandardListItem title="{AssignedWCModel>ASSIGNMENT_NAME}"
-										description="{AssignedWCModel>DESCRIPTION}" />
+									<StandardListItem title="{ResourcePoolDetailModel>name}"
+										description="{ResourcePoolDetailModel>description}" />
 								</List>
 							</HBox>
 						</content>

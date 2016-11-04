@@ -118,6 +118,13 @@
 
 .stationStationBox {
 	/* width:8rem !important ;
-	height:11rem !important;	 */
-	max-width: 90%;
+	height:11rem !important;	 
+	max-width: 90%;*/
+}
+
+.stationTilesHbox > div {
+	border-right:1px solid #ccc;
+}
+.stationTilesHbox > div:last-child {
+	border-right:none;
 }

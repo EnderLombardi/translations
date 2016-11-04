@@ -6,7 +6,7 @@
 			<HBox height="100%" class="fixHboxItemDisplay">
 				<items>
 					<Table id="shiftTable" inset="false"
-						items="{AvailableShiftModel>/Rowsets/Rowset/0/Row}" mode="None"
+						items="{ResourcePoolDetailModel>/Rowsets/Rowset/5/Row}" mode="None"
 						selectionChange="onSelectionChange">
 						<columns>
 							<Column minScreenWidth="Tablet" demandPopin="true" vAlign="Middle">
@@ -36,18 +36,18 @@
 						<items>
 							<ColumnListItem>
 								<cells>
-									<ObjectIdentifier text="{AvailableShiftModel>NAME}" />
+									<ObjectIdentifier text="{ResourcePoolDetailModel>name}" />
 									<Text
-										text="{path:'AvailableShiftModel>SHIFT_BEGIN' ,formatter:'airbus.mes.resourcepool.util.Formatter.shiftTimeToHours'}" />
+										text="{path:'ResourcePoolDetailModel>shiftStartDateTime' ,formatter:'airbus.mes.resourcepool.util.Formatter.shiftTimeToHours'}" />
 									<Text
-										text="{path:'AvailableShiftModel>SHIFT_END' ,formatter:'airbus.mes.resourcepool.util.Formatter.shiftTimeToHours'}" />
+										text="{path:'ResourcePoolDetailModel>shiftEndDateTime' ,formatter:'airbus.mes.resourcepool.util.Formatter.shiftTimeToHours'}" />
 									<Text
-										text="{path:'AvailableShiftModel>VALID_FROM', formatter:'airbus.mes.resourcepool.util.Formatter.shiftStringToDate'}" />
+										text="{path:'ResourcePoolDetailModel>shiftValidFrom', formatter:'airbus.mes.resourcepool.util.Formatter.shiftStringToDate'}" />
 									<Text
-										text="{path:'AvailableShiftModel>VALID_TO', formatter:'airbus.mes.resourcepool.util.Formatter.shiftStringToDate'}" />
+										text="{path:'ResourcePoolDetailModel>shiftValidTo', formatter:'airbus.mes.resourcepool.util.Formatter.shiftStringToDate'}" />
 									<Switch type="AcceptReject"
-										state="{path:'AvailableShiftModel>ASSIGNED' ,formatter:'airbus.mes.resourcepool.util.Formatter.state'}"
-										enabled="{path:'AvailableShiftModel>' ,formatter:'airbus.mes.resourcepool.util.Formatter.AssignShiftEnabled'}"
+										state="{path:'ResourcePoolDetailModel>shiftAssigned' ,formatter:'airbus.mes.resourcepool.util.Formatter.state'}"
+										enabled="{path:'ResourcePoolDetailModel>' ,formatter:'airbus.mes.resourcepool.util.Formatter.AssignShiftEnabled'}"
 										change="changeAssignedShift" />
 								</cells>
 							</ColumnListItem>

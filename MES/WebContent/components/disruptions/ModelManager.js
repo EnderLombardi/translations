@@ -170,6 +170,7 @@ airbus.mes.disruptions.ModelManager = {
 	 */
 
 	getURLCreateDisruption : function() {
+		airbus.mes.operationdetail.oView.setBusy(true); //Set Busy Indicator
 		var urlCreateDisruption = this.urlModel
 				.getProperty("urlCreateDisruption");
 		return urlCreateDisruption;
@@ -182,10 +183,10 @@ airbus.mes.disruptions.ModelManager = {
 					async : true,
 					cache : false,
 					url : this.getURLCreateDisruption(),
-					type : 'GET',
+					type : 'POST',
 					data : {
 						"Param.1" : airbus.mes.settings.ModelManager.site,
-						"Param.2" : sap.ui.getCore().getModel("userSettingModel").oData.Rowsets.Rowset[0].Row[0].user,
+						"Param.2" : sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"),
 						"Param.3" : messageType,
 						"Param.4" : messageSubject,
 						"Param.5" : messageBody,
@@ -194,25 +195,28 @@ airbus.mes.disruptions.ModelManager = {
 						})
 					},
 					success : function(data, textStatus, jqXHR) {
+						airbus.mes.operationdetail.oView.setBusy(false); //Remove Busy Indicator
 						var rowExists = data.Rowsets.Rowset;
 						if (rowExists != undefined) {
 							if (data.Rowsets.Rowset[0].Row[0].Message_Type == "S") {
 								airbus.mes.shell.ModelManager.messageShow(data.Rowsets.Rowset[0].Row[0].Message);
-							} else {
-								airbus.mes.shell.ModelManager.messageShow("Error in Success");
+							} else if (data.Rowsets.Rowset[0].Row[0].Message_Type == "E"){
+								if(data.Rowsets.Rowset[0].Row[0].Message === undefined)
+									airbus.mes.shell.ModelManager.messageShow(airbus.mes.operationdetail.createDisruption.oView.getModel("i18nModel").getProperty("DisruptionNotSaved"));
+								else
+									airbus.mes.shell.ModelManager.messageShow(data.Rowsets.Rowset[0].Row[0].Message)	
 							}
 						} else {
 							if (data.Rowsets.FatalError) {
 								airbus.mes.shell.ModelManager.messageShow(data.Rowsets.FatalError);
-							} else {
-								airbus.mes.shell.ModelManager.messageShow("Success");
 							}
 						}
 
 					},
 
 			error : function() {
-				airbus.mes.shell.ModelManager.messageShow("Error in Error")
+				airbus.mes.operationdetail.oView.setBusy(false); //Remove Busy Indicator
+				airbus.mes.shell.ModelManager.messageShow(airbus.mes.operationdetail.createDisruption.oView.getModel("i18nModel").getProperty("DisruptionNotSaved"));
 				
 			}
 
@@ -279,7 +283,7 @@ airbus.mes.disruptions.ModelManager = {
 					url : this.getUrlOnAddComment(),
 					data : {
 						"Param.1" : airbus.mes.settings.ModelManager.site,
-						"Param.2" : sap.ui.getCore().getModel("userSettingModel").oData.Rowsets.Rowset[0].Row[0].user,
+						"Param.2" : sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"),
 						"Param.3" : oComment.MessageRef,
 						"Param.4" : oComment.Comment
 					},

@@ -841,8 +841,9 @@ white-space: nowrap !important;
 }
     
 #idFactoryView--factoryHBox fieldset {
-    border-color: #0D5D76;
+    border: 1px solid #0D5D76;
     color: #0D5D76;
+    
 }
 
 .lineTrackerSubheader .sapMBarChild:nth-child(5) {

@@ -2,10 +2,10 @@
 
 jQuery.sap.declare("airbus.mes.settings.ModelManager")
 
-airbus.mes.settings.ModelManager = {
+airbus.mes.settings.ModelManager =  {
 	
 	site : undefined,
-	plant : undefined,
+	//plant : undefined,
 	program : undefined,
 	line : undefined,
 	station : undefined,
@@ -14,6 +14,7 @@ airbus.mes.settings.ModelManager = {
 	taktStart : undefined,
 	taktEnd : undefined,
 	taktDuration : undefined,
+	currentMsnSelected : true,
 	core : undefined,
 	urlModel : undefined,
 	current_flag:"X",
@@ -60,7 +61,7 @@ airbus.mes.settings.ModelManager = {
 		//Loading of model
 		
 		this.loadSiteModel();
-		this.loadPlantModel();
+		//this.loadPlantModel();
         this.loadUserSettingsModel();
         this.getProgram();
         
@@ -74,11 +75,11 @@ airbus.mes.settings.ModelManager = {
 		
 	},
 	
-	/*onPlantLoad : function() {
+	onPlantLoad : function() {
 		
 		airbus.mes.settings.oView.getModel("program").refresh(true);
 		
-	},*/
+	},
 	
 	// ************************************************************************************
 	getUrlSite : function() {
@@ -153,13 +154,23 @@ airbus.mes.settings.ModelManager = {
 	  getUrlSaveUserSetting:function(){
 		  var urlSaveUserSetting = this.urlModel.getProperty("urlSaveUserSetting");
 		 // urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(urlSaveUserSetting, "$user", airbus.mes.settings.ModelManager.user);
-		  urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(urlSaveUserSetting, "$plant", airbus.mes.settings.ModelManager.plant);
+		  urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(urlSaveUserSetting, "$plant", airbus.mes.settings.ModelManager.site);
 		  urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(urlSaveUserSetting, "$program", airbus.mes.settings.ModelManager.program);
 		  urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(urlSaveUserSetting, "$line", airbus.mes.settings.ModelManager.line);
 		  urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(urlSaveUserSetting, "$station", airbus.mes.settings.ModelManager.station);
 		  urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(urlSaveUserSetting, "$msn", airbus.mes.settings.ModelManager.msn);
 		  urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(urlSaveUserSetting, "$current_flag", airbus.mes.settings.ModelManager.current_flag);
-		  return urlSaveUserSetting;
+		  	  
+		  jQuery.ajax({
+				url : urlSaveUserSetting,
+				error : function(xhr, status, error) {
+					
+				},
+				success : function(result, status, xhr) {
+			
+				}
+			});
+		  
 	  },
 	  replaceURI : function (sURI, sFrom, sTo) {
 			return sURI.replace(sFrom, encodeURIComponent(sTo));
