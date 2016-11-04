@@ -15,6 +15,9 @@ airbus.mes.disruptions.ModelManager = {
 				"operationDisruptionsModel");
 		
 		core.setModel(new sap.ui.model.json.JSONModel(), "commentsModel");
+		
+		core.setModel(new sap.ui.model.json.JSONModel(),
+		"DisruptionModel");
 
 		var dest;
 
@@ -149,9 +152,9 @@ airbus.mes.disruptions.ModelManager = {
 					type : 'GET',
 					data : {
 						"Param.1" : airbus.mes.settings.ModelManager.site,
-						"Param.2" : "NG42E7A",
+						"Param.2" : "NG000524",
 						"Param.3" : messageType,
-						"Param.4" : "HMI",
+						"Param.4" : messageSubject,
 						"Param.5" : messageBody,
 						"Param.6" : airbus.mes.disruptions.Formatter.json2xml({
 							payloadAttributelist : payloadData

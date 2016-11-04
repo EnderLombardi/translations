@@ -78,7 +78,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 	onTableClick: function(){
 		//create popup as a fragment 
 
-		if (airbus.mes.disruptiontracker.operationDetailPopup === undefined) {
+		/*if (airbus.mes.disruptiontracker.operationDetailPopup === undefined) {
 
 		    airbus.mes.disruptiontracker.operationDetailPopup = sap.ui.xmlfragment("disruptionDetailPopUp",
 		                 "airbus.mes.disruptiontracker.detail.operationDetailPopup", airbus.mes.disruptiontracker.oView
@@ -101,7 +101,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 			this.nav.addPage(airbus.mes.disruptiontracker.detail.oView);
 		}
 		
-		this.nav.to(airbus.mes.disruptiontracker.detail.oView.getId()); 
+		this.nav.to(airbus.mes.disruptiontracker.detail.oView.getId()); */
 
 		
 	}

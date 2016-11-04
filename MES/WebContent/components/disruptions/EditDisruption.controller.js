@@ -11,9 +11,20 @@ sap.ui
 					 * 
 					 * @memberOf airbus.mes.components.disruptions.EditDisruption
 					 */
-	/*				onInit : function() {
-						// this.loadDisruptionCustomData();
-						this.addParent(this.selectTree, undefined);
+			/*onInit : function() {
+						 //this.loadDisruptionCustomData();
+						//this.addParent(this.selectTree, undefined);
+				var category = oEvt.getSource().getBindingContext(
+				"operationDisruptionsModel").getObject("Category");
+				
+				this.getView().byId("selectCategory").setValue("hello");
+				
+				
+				
+				var oModel = sap.ui.getCore().getModel("DisruptionModel");
+				oModel.loadData("../components/disruptions/local/disruptions.json", null, false);
+				
+				
 					},*/
 
 					/**
@@ -23,9 +34,10 @@ sap.ui
 					 * 
 					 * @memberOf airbus.mes.components.disruptions.EditDisruption
 					 */
-					// onBeforeRendering: function() {
-					//
-					// },
+					/* onBeforeRendering: function() {
+						//	var oModel = sap.ui.getCore().getModel("DisruptionModel");
+							
+					 },*/
 					selectTree : {
 						id : "selectCategory",
 						type : "select",
@@ -59,7 +71,10 @@ sap.ui
 
 						this.addParent(this.selectTree, undefined);
 						this.ModelManager = airbus.mes.disruptions.ModelManager;
-
+    
+						
+					
+					//	oModel.loadData("../components/disruptions/local/disruptions.json", null, false);
 						// airbus.mes.settings.ModelManager.loadUserSettingsModel();
 					},
 

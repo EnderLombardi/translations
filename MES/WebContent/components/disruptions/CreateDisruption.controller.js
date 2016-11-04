@@ -44,8 +44,8 @@ sap.ui
 								childs : [ {
 									id : "selectRootCause",
 									type : "select",
-									path : "rootCause",
-									attr : "rootCause",
+									path : "RootCause",
+									attr : "RootCause",
 									childs: []}, {
 									id : "Return",
 									type : "Return",

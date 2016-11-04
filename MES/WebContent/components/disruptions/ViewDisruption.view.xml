@@ -17,7 +17,7 @@
 								<Button class="decoratePanelBtn" text="Edit" press="onEditDisruption" design="Transparent"
 									icon="sap-icon://edit" />
 								<Button class="decoratePanelBtn" text="Delete" design="Transparent"
-									icon="sap-icon://delete" />
+									icon="sap-icon://delete" press="onCloseDisruption" />
 
 							</Toolbar>
 						</headerToolbar>
@@ -202,11 +202,11 @@
 		<footer>
 			<Bar design="Footer" class="viewDisruptionFooter">
 				<contentLeft>
-					<Button text="{i18n>reportDisruption}" press="onReportDisruption"
+					<Button text="{i18nModel>reportDisruption}" press="onReportDisruption"
 						icon="sap-icon://add" />
 				</contentLeft>
 				<contentRight>
-					<Button id="btnClose" text="{i18n>close}" icon="sap-icon://decline"
+					<Button id="btnClose" text="{i18nModel>close}" icon="sap-icon://decline"
 						press="onCloseOperationDetailPopup" />
 				</contentRight>
 			</Bar>
