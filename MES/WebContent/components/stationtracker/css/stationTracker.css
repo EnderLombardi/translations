@@ -142,6 +142,13 @@
 	color: white;
 }
 
+.classOpenDisruptionAndon div:first-child label , .classOpenDisruptionDisruption div:first-child label, .classOpenDisruptionDetail div:first-child label {
+	padding-bottom: 5px;
+}
+.classOpenDisruptionTotal div:first-child label {
+	padding-bottom: 0.2vw;	
+}
+
 .redText {
 	text-align: center ! important;
 	color: #fe5000;
@@ -319,8 +326,8 @@
 .contentNoPad .sapMPanelContent {
 	padding: 0rem;
 	background-color: #0F2D65;
-	/* 	background-color: #178FB3;
- */
+	/*background-color: #178FB3;*/
+	border-bottom: 1px solid #ffffff;
 }
 
 .sapMPIText2 {
@@ -597,13 +604,14 @@ background-color: #0085AD !important;
 
 
 
-/***** KPI Header Cotent *****/
+/***** KPI Header Content *****/
 
-#stationTrackerView--kpiHeaderContent{
+.classKpiHeaderContent {
 	height: 195px;
+	overflow-y: hidden;
 }
 
-#stationTrackerView--kpiHeaderContent .contentHeaderCont {
+.classKpiHeaderContent .contentHeaderCont {
 	white-space: normal;
 	background-color: #0F2D65;
 	border-right: solid 1px #74d2e7;
@@ -611,39 +619,41 @@ background-color: #0085AD !important;
 	border-bottom: none;
 	border-top: solid 1px #74d2e7;
 }
-
-#stationTrackerView--kpiHeaderContent .sapSuiteCmpChartItemTitle,
-#stationTrackerView--kpiHeaderContent .sapSuiteCmpChartItemValue,
-#stationTrackerView--kpiHeaderContent label{
+.classKpiHeaderContent .contentHeaderCont:last-child {
+	border-right:none;
+}
+.classKpiHeaderContent .sapSuiteCmpChartItemTitle,
+.classKpiHeaderContent .sapSuiteCmpChartItemValue,
+.classKpiHeaderContent label{
 	color: #F5F5F5;
 	font-size: 1vw;
 }
 
-#stationTrackerView--kpiHeaderContent .sapSuiteCmpChartBarNoValue {
+.classKpiHeaderContent .sapSuiteCmpChartBarNoValue {
 	background-color: rgba(187, 188, 188, 0.15);
 }
 
-#stationTrackerView--kpiHeaderContent .kpiValue{
+.classKpiHeaderContent .kpiValue{
 	font-size: 28px;
 	width: 100%;
 	text-align: center ! important;
 }
 
-#stationTrackerView--kpiHeaderContent .kpiName{
+.classKpiHeaderContent .kpiName{
 	text-align: center ! important;
 	width: 100%;
 }
 
-#stationTrackerView--kpiHeaderContent .kpiErrorValue{
+.classKpiHeaderContent .kpiErrorValue{
 	color: #fe5000;
 }
 
-#stationTrackerView--kpiHeaderContent .whiteTextHeader {
+.classKpiHeaderContent .whiteTextHeader {
 	white-space: normal;
 	text-align: center ! important;
 	color: white;
 	width: 100%;
-	font-size: 1.2vw;
+	font-size: 1.1vw;
 }
 
 
@@ -926,15 +936,16 @@ background-color: #0085AD !important;
 /** Takt Adherence **/
 .classTaktAdherenceTrend.sapUiRespGrid.sapUiRespGridHSpace1>div {
     margin: 0 0.5rem 0 0;
+    line-height: 1rem;
 }
 .classTaktAdherenceTrend.sapUiRespGrid.sapUiRespGridHSpace1>.sapUiRespGridSpanL4 {
     margin: 0;
     width: auto;
 }
-#stationTrackerView--kpiHeaderContent .classTaktAdherenceTrend .TrendGreen {
+.classKpiHeaderContent .classTaktAdherenceTrend .TrendGreen {
     margin-bottom: 0.5rem;	
 }
-#stationTrackerView--kpiHeaderContent .classTaktAdherenceTrend .takt_kpi_name.takt_kpi_trend {
+.classKpiHeaderContent .classTaktAdherenceTrend .takt_kpi_name.takt_kpi_trend {
     font-size: 1vw;	
 }
 
@@ -942,24 +953,24 @@ background-color: #0085AD !important;
 	font-size: 15px;
 }
 
-#stationTrackerView--kpiHeaderContent .takt_kpi_name {
+.classKpiHeaderContent .takt_kpi_name {
 	text-align: right !important;
-    font-size: 0.8vw;
+    font-size: 0.85vw;
     vertical-align: middle;
     display: baseline;
 }
 
-#stationTrackerView--kpiHeaderContent .takt_kpi_value {
+.classKpiHeaderContent .takt_kpi_value {
     display: inline-block;
     vertical-align: baseline;
 }
 
-#stationTrackerView--kpiHeaderContent .KPITaktChartBlueText {
+.classKpiHeaderContent .KPITaktChartBlueText {
 	color: #74d2e7;
 	margin-left: 10px;
 }
 
-#stationTrackerView--kpiHeaderContent .KPITaktChartRightText {
+.classKpiHeaderContent .KPITaktChartRightText {
 	text-align: right ! important;
 	width: 100%;
 }
@@ -1065,7 +1076,7 @@ svg#stationTrackerView--takt_adherence_area_chart {
 
 #stationTrackerView--shifStaffingHeader .sapSuiteDmcTitle,
 #stationTrackerView--shifStaffingHeader .sapSuiteDmcLbls{
-	font-size: 9px;
+	font-size: 1vw;
 }
 
 #stationTrackerView--shifStaffingHeader .sapSuiteDmcCnt{

@@ -1,6 +1,6 @@
 sap.ui
 		.controller(
-				"airbus.mes.disruptions.CreateDisruption",
+				"airbus.mes.disruptions.EditDisruption",
 				{
 
 					/**
@@ -9,7 +9,7 @@ sap.ui
 					 * to modify the View before it is displayed, to bind event
 					 * handlers and do other one-time initialization.
 					 * 
-					 * @memberOf airbus.mes.components.disruptions.CreateDisruption
+					 * @memberOf airbus.mes.components.disruptions.EditDisruption
 					 */
 	/*				onInit : function() {
 						// this.loadDisruptionCustomData();
@@ -21,7 +21,7 @@ sap.ui
 					 * before the controller's View is re-rendered (NOT before
 					 * the first rendering! onInit() is used for that one!).
 					 * 
-					 * @memberOf airbus.mes.components.disruptions.CreateDisruption
+					 * @memberOf airbus.mes.components.disruptions.EditDisruption
 					 */
 					// onBeforeRendering: function() {
 					//
@@ -59,10 +59,6 @@ sap.ui
 
 						this.addParent(this.selectTree, undefined);
 						this.ModelManager = airbus.mes.disruptions.ModelManager;
-						this.getView().byId("selectReasonTree").setSelectedKey();
-						this.getView().byId("selectRootCause").setSelectedKey();
-						this.getView().byId("selectResponsible").setSelectedKey();
-						this.setEnabledSelectBox(true,false,false,false);
 
 						// airbus.mes.settings.ModelManager.loadUserSettingsModel();
 					},
@@ -101,13 +97,13 @@ sap.ui
 									that.filterField(oElement);
 								});
 
-						if (id === "selectCategory") {
+					/*	if (id === "selectCatogory") {
 							this.setEnabledSelectBox(true, true, false, false);
 						} else if (id === "selectReasonTree") {
 							this.setEnabledSelectBox(true, true, true, false);
-						} else if (id === "selectResponsible") {
+						} else {
 							this.setEnabledSelectBox(true, true, true, true);
-						}
+						}*/
 
 					},
 
@@ -187,15 +183,15 @@ sap.ui
 						this.getView().byId("selectReasonTree").setEnabled(
 								fReason);
 						this.getView().byId("selectRootCause").setEnabled(
-								fRootCause);
-						this.getView().byId("selectResponsible").setEnabled(
 								fResponsible);
+						this.getView().byId("selectResponsible").setEnabled(
+								fRootCause);
 
 					},
 					/***********************************************************
-					 * Create Disruption
+					 * Edit Disruption
 					 */
-					onCreateDisrupution : function() {
+					onEditDisrupution : function() {
 
 						var sCategory = this.getView().byId("selectCategory").getSelectedKey();
 						var sRootCause = this.getView().byId("selectRootCause").getSelectedKey();			
@@ -233,7 +229,7 @@ sap.ui
 								},
 								{
 									"attribute" : "REQD_FIX_BY",
-									"value": this.getView().byId("expectedDate").getValue()+" "+this.getView().byId("expectedTime").getValue()
+									"value": this.getView().byId("expectedTime").getValue()	
 								},
 								{
 									"attribute" : "GRAVITY",
@@ -266,7 +262,7 @@ sap.ui
 				 * could be done here. This hook is the same one that SAPUI5
 				 * controls get after being rendered.
 				 * 
-				 * @memberOf airbus.mes.components.disruptions.CreateDisruption
+				 * @memberOf airbus.mes.components.disruptions.EditDisruption
 				 */
 				 onAfterRendering: function() {
 					// this.filterField(this.selectTree);
@@ -275,7 +271,7 @@ sap.ui
 				 * Called when the Controller is destroyed. Use this one to free
 				 * resources and finalize activities.
 				 * 
-				 * @memberOf airbus.mes.components.disruptions.CreateDisruption
+				 * @memberOf airbus.mes.components.disruptions.EditDisruption
 				 */
 				// onExit: function() {
 				//
