@@ -75,17 +75,40 @@ sap.ui
 					},
 
 					/***********************************************************
-					 * Closing the Disruption
+					 * Open Pop-Up to ask Time Lost while Closing the Disruption
 					 */
-					onCloseDisruption : function(oEvt) {
-						var sPath = oEvt.getSource().getParent().getParent()
-								.getParent().getBindingContext(
-										"operationDisruptionsModel").sPath;
-						var messageRef = this.getView().getModel(
-								"operationDisruptionsModel").getProperty(
-								sPath + "/MessageRef");
+					onCloseDisruption: function(oEvt){
+						var sPath = oEvt.getSource().getParent().getParent().getParent().getBindingContext("operationDisruptionsModel").sPath;
+						var messageRef = this.getView().getModel("operationDisruptionsModel").getProperty(sPath+"/MessageRef");
+						
+						// Call Close Disruption fragment
+						if (!this._closeDialog) {
+
+							this._closeDialog = sap.ui.xmlfragment("airbus.mes.disruptions.fragment.closeDisruption",this);
+
+							this.getView().addDependent(this._closeDialog);
+
+						}
+						this._closeDialog.open();
 					},
 
+					/***********************************************************
+					 * Close selected disruption
+					 */
+					onAcceptCloseDisruption: function(oEvent){
+						this._closeDialog.close();
+						//	Initialize the inputs							
+						sap.ui.getCore().byId("input1").setValue("");
+						sap.ui.getCore().byId("closeDisruptionComments").setValue(""); 
+					},
+					
+					/***********************************************************
+					 * Close Pop-Up
+					 */
+					cancelClosingDisruption: function(oEvent){
+						this._closeDialog.close();
+					},
+					
 					showCommentBox : function(oEvt) {
 						var path = oEvt.getSource().sId;
 						var listnum = path.split("-");
@@ -256,7 +279,7 @@ sap.ui
 
 						airbus.mes.stationtracker.operationDetailPopup.close();
 						airbus.mes.shell.oView.getController()
-								.renderStationTracker();
+								.renderStationTracker();						
 					}
 
 				});
