@@ -124,7 +124,7 @@ airbus.mes.disruptions.ModelManager = {
 	 */
 	loadDisruptionsByOperation : function(operation) {
 		
-		airbus.mes.operationdetail.viewDisruption.oView.setBusy(true); //Set Busy Indicator 
+		airbus.mes.operationdetail.oView.setBusy(true); //Set Busy Indicator 
 		
 		var oViewModel = sap.ui.getCore().getModel("operationDisruptionsModel");
 
@@ -159,13 +159,9 @@ airbus.mes.disruptions.ModelManager = {
 	onCommentsLoad: function(){
 		
 		/* Set filter for Comments on all the disruptions */
-		//airbus.mes.disruptions.viewDisruption.oView.getController().applyFiltersOnComments();
+		airbus.mes.operationdetail.viewDisruption.oView.getController().applyFiltersOnComments();
 	
-		airbus.mes.operationdetail.viewDisruption.oView.setBusy(false); //Set Busy Indicator
-	},
-	
-	applyFiltersOnComments: function() {
-		var oBinding = this.byId("ViewDisruptionView--disrptlist").getBinding("items");
+		airbus.mes.operationdetail.oView.setBusy(false); //Set Busy Indicator false
 	},
 	
 
@@ -189,7 +185,7 @@ airbus.mes.disruptions.ModelManager = {
 					type : 'GET',
 					data : {
 						"Param.1" : airbus.mes.settings.ModelManager.site,
-						"Param.2" : "NG000524",
+						"Param.2" : sap.ui.getCore().getModel("userSettingModel").oData.Rowsets.Rowset[0].Row[0].user,
 						"Param.3" : messageType,
 						"Param.4" : messageSubject,
 						"Param.5" : messageBody,
@@ -263,9 +259,69 @@ airbus.mes.disruptions.ModelManager = {
 	/***************************************************************************
 	 * Get URL on Escalate Button
 	 **************************************************************************/
-	getUrlOnEscalate : function(msgRef) {
+	getUrlOnEscalate : function() {
 
 		var urlOnEscalate = this.urlModel.getProperty("urlOnEscalate");
 		return urlOnEscalate;
-	}
+	},
+	
+	
+	
+	/***************************************************************************
+	 * Add Comment
+	 **************************************************************************/
+	addComment : function(oComment) {
+		var sMessageSuccess = "Comment Added Successfully";
+		var flag_success;
+
+		jQuery
+				.ajax({
+					url : this.getUrlOnAddComment(),
+					data : {
+						"Param.1" : airbus.mes.settings.ModelManager.site,
+						"Param.2" : sap.ui.getCore().getModel("userSettingModel").oData.Rowsets.Rowset[0].Row[0].user,
+						"Param.3" : oComment.MessageRef,
+						"Param.4" : oComment.Comment
+					},
+					error : function(xhr, status, error) {
+						airbus.mes.shell.ModelManager
+								.messageShow(sMessageError);
+						flag_success = false
+
+					},
+					success : function(result, status, xhr) {
+						if (result.Rowsets.Rowset[0].Row[0].Message_Type === undefined) {
+							airbus.mes.shell.ModelManager
+									.messageShow(sMessageSuccess);
+							flag_success = true;
+						} else if (result.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
+							airbus.mes.shell.ModelManager
+									.messageShow(result.Rowsets.Rowset[0].Row[0].Message)
+							flag_success = false;
+						} else {
+							airbus.mes.shell.ModelManager
+									.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
+							flag_success = true;
+						}
+						
+						// Add Comment to Model
+						if(flag_success){
+							var oModel = sap.ui.getCore().getModel("commentsModel");
+							oModel.getProperty("/Rowsets/Rowset/0/Row").push(oComment);
+							oModel.refresh();
+						}
+
+					}
+				});		
+		
+	},
+	
+	/***************************************************************************
+	 * Get URL on Add Comment
+	 **************************************************************************/
+	getUrlOnAddComment : function() {
+
+		var urlOnAddComment = this.urlModel.getProperty("urlOnAddComment");
+		return urlOnAddComment;
+	},
 };

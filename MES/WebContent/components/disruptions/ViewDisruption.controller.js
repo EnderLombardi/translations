@@ -11,9 +11,9 @@ sap.ui
 					 * 
 					 * @memberOf components.disruptions.ViewDisruption
 					 */
-					//onInit : function() {
+					// onInit : function() {
 					//	
-					//},
+					// },
 					/**
 					 * Similar to onAfterRendering, but this hook is invoked
 					 * before the controller's View is re-rendered (NOT before
@@ -44,68 +44,110 @@ sap.ui
 					// onExit: function() {
 					//
 					// },
-					
-					
-					/********************************************
+					applyFiltersOnComments : function() {
+						var listItems = this.getView().byId("disrptlist")
+								.getItems();
+						$
+								.each(
+										listItems,
+										function(key, value) {
+											// Apply filters on Message Comments
+											var oBinding = value.getContent()[0]
+													.getContent()[2]
+													.getBinding("items");
+
+											var sPath = value
+													.getBindingContext("operationDisruptionsModel");
+											var messageRef = sap.ui
+													.getCore()
+													.getModel(
+															"operationDisruptionsModel")
+													.getProperty(
+															sPath
+																	+ "/MessageRef")
+
+											oBinding
+													.filter([ new sap.ui.model.Filter(
+															"MessageRef", "EQ",
+															messageRef) ]);
+										});
+
+					},
+
+					/***********************************************************
 					 * Closing the Disruption
 					 */
-					onCloseDisruption: function(oEvt){
-						var sPath = oEvt.getSource().getParent().getParent().getParent().getBindingContext("operationDisruptionsModel").sPath;
-						var messageRef = this.getView().getModel("operationDisruptionsModel").getProperty(sPath+"/MessageRef");
+					onCloseDisruption : function(oEvt) {
+						var sPath = oEvt.getSource().getParent().getParent()
+								.getParent().getBindingContext(
+										"operationDisruptionsModel").sPath;
+						var messageRef = this.getView().getModel(
+								"operationDisruptionsModel").getProperty(
+								sPath + "/MessageRef");
 					},
-					
-					
+
 					showCommentBox : function(oEvt) {
 						var path = oEvt.getSource().sId;
 						var listnum = path.split("-");
 						listnum = listnum[listnum.length - 1];
 						var a = this.getView().byId(
-								"ViewDisruptionView--commentBox-ViewDisruptionView--disrptlist-"
+								this.getView().sId + "--commentBox-" +
+								this.getView().sId + "--disrptlist-"
 										+ listnum);
 						a.setVisible(true);
-						
-						
+
 						var b = sap.ui.getCore().byId(path);
 						b.setVisible(false);
 
 					},
-					
+
 					hideCommentBox : function(oEvt) {
 						var path = oEvt.getSource().sId;
 						var listnum = path.split("-");
 						listnum = listnum[listnum.length - 1];
 						var a = this.getView().byId(
-								"ViewDisruptionView--commentBox-ViewDisruptionView--disrptlist-"
+								this.getView().sId + "--commentBox-" +
+								this.getView().sId + "--disrptlist-"
 										+ listnum);
 						a.setVisible(false);
-						
-						var b = sap.ui.getCore().byId("ViewDisruptionView--addComment-ViewDisruptionView--disrptlist-" + listnum);
+
+						var b = sap.ui.getCore().byId(
+								this.getView().sId + "--addComment-" +
+								this.getView().sId + "--disrptlist-"
+										+ listnum);
 						b.setVisible(true);
 
 					},
-					
+
 					submitComment : function(oEvt) {
+
+						// Get Comment Text and Message Reference
 						var path = oEvt.getSource().sId;
-						
-						var oModel = sap.ui.getCore().getModel("commentsModel");
-						
-						var commentsData = oModel.getData();
-						
+
 						var msgRef = oEvt.getSource().getBindingContext(
-						"operationDisruptionsModel").getObject("MessageRef");
-						
+								"operationDisruptionsModel").getObject(
+								"MessageRef");
+
 						var listnum = path.split("-");
 						listnum = listnum[listnum.length - 1];
-						var a = this.getView().byId(
-								"ViewDisruptionView--commentArea-ViewDisruptionView--disrptlist-"
-										+ listnum);
-						listNum = a.getValue();
+						var sComment = this.getView().byId(
+								this.getView().sId + "--commentArea-" +
+								this.getView().sId + "--disrptlist-" + listnum).getValue();
+
+						var oComment = {
+							"MessageRef" : msgRef,
+							"Comment" : sComment
+						};
+
+						// Call Add comment Service
+						airbus.mes.disruptions.ModelManager
+								.addComment(oComment);
 						
-						var comment = {"MessageRef": msgRef,
-										"Comment": listNum};
-						commentsData.Rowsets.Rowset[0].Row.push(comment);
-						oModel.setData(commentsData);
-						//oModel.refresh();
+						this.getView().byId(
+									this.getView().sId + "--commentArea-" +
+									this.getView().sId + "--disrptlist-" + listnum).setValue("");
+						
+
 					},
 
 					onMarkSolved : function(oEvt) {
@@ -123,7 +165,7 @@ sap.ui
 
 					},
 
-					/*************************************************
+					/***********************************************************
 					 * Close other panels when one panel is expanded
 					 */
 					handleDisruptionPanelExpand : function(oevent) {
@@ -142,20 +184,16 @@ sap.ui
 										});
 
 					},
-					
-					
-					
 
 					onEscalate : function(oEvent) {
 
 						var msgRef = oEvent.getSource().getBindingContext(
-								"operationDisruptionsModel").getObject("MessageRef");
+								"operationDisruptionsModel").getObject(
+								"MessageRef");
 
-						airbus.mes.disruptions.ModelManager.escalateDisruption(msgRef);
+						airbus.mes.disruptions.ModelManager
+								.escalateDisruption(msgRef);
 					},
-					
-					
-					
 
 					onReportDisruption : function(oEvent) {
 
@@ -180,30 +218,25 @@ sap.ui
 										.getId());
 					},
 
-					
 					onEditDisruption : function(oEvent) {
-                          
-						
-						//to auto fill fields on edit screen
-						
-						var oTranModel = sap.ui.getCore().getModel("DisruptionModel");
-						
+
+						// to auto fill fields on edit screen
+
+						var oTranModel = sap.ui.getCore().getModel(
+								"DisruptionModel");
+
 						// set the data for the model
-						oTranModel.setData(oEvent.getSource().getBindingContext(
-						"operationDisruptionsModel"));
-						
-						
+						oTranModel
+								.setData(oEvent.getSource().getBindingContext(
+										"operationDisruptionsModel"));
+
 						var oOperDetailNavContainer = sap.ui.getCore().byId(
 								"operationDetailsView--operDetailNavContainer");
-                        
-						
-						
-					
-						
+
 						if (airbus.mes.operationdetail.editDisruption === undefined
 								|| airbus.mes.operationdetail.editDisruption.oView === undefined) {
 							sap.ui
-							        .getCore()
+									.getCore()
 									.createComponent(
 											{
 												name : "airbus.mes.operationdetail.editDisruption",
@@ -213,19 +246,12 @@ sap.ui
 									.addPage(airbus.mes.operationdetail.editDisruption.oView);
 						}
 
-                        
-						
 						oOperDetailNavContainer
 								.to(airbus.mes.operationdetail.editDisruption.oView
 										.getId());
-						
-					
-						
-						
-						
+
 					},
-					
-					
+
 					onCloseOperationDetailPopup : function() {
 
 						airbus.mes.stationtracker.operationDetailPopup.close();
