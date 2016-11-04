@@ -152,7 +152,8 @@ airbus.mes.disruptions.ModelManager = {
 					type : 'GET',
 					data : {
 						"Param.1" : airbus.mes.settings.ModelManager.site,
-						"Param.2" : sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"),
+						/*"Param.2" : sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"),*/
+						"Param.2": "NG000524",   // For testing we are using this ID
 						"Param.3" : messageType,
 						"Param.4" : messageSubject,
 						"Param.5" : messageBody,
@@ -166,10 +167,10 @@ airbus.mes.disruptions.ModelManager = {
 							if (data.Rowsets.Rowset[0].Row[0].Message_Type == "S") {
 								airbus.mes.shell.ModelManager.messageShow(data.Rowsets.Rowset[0].Row[0].Message);
 							} else if (data.Rowsets.Rowset[0].Row[0].Message_Type == "E"){
-								if(data.Rowsets.Rowset[0].Row[0].Message_Text === undefined)
-									airbus.mes.shell.ModelManager.messageShow(airbus.mes.disruptions.CreateDisruption.oView.getModel("i18nModel").getProperty("DisruptionNotSaved"));
+								if(data.Rowsets.Rowset[0].Row[0].Message === undefined)
+									airbus.mes.shell.ModelManager.messageShow(airbus.mes.operationdetail.createDisruption.oView.getModel("i18nModel").getProperty("DisruptionNotSaved"));
 								else
-									airbus.mes.shell.ModelManager.messageShow(data.Rowsets.Rowset[0].Row[0].Message_Text)	
+									airbus.mes.shell.ModelManager.messageShow(data.Rowsets.Rowset[0].Row[0].Message)	
 							}
 						} else {
 							if (data.Rowsets.FatalError) {
@@ -180,7 +181,7 @@ airbus.mes.disruptions.ModelManager = {
 					},
 
 			error : function() {
-				airbus.mes.shell.ModelManager.messageShow(airbus.mes.disruptions.CreateDisruption.oView.getModel("i18nModel").getProperty("DisruptionNotSaved"))
+				airbus.mes.shell.ModelManager.messageShow(airbus.mes.operationdetail.createDisruption.oView.getModel("i18nModel").getProperty("DisruptionNotSaved"));
 				
 			}
 

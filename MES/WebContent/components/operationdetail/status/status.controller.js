@@ -182,6 +182,7 @@ sap.ui
 
 							// click on confirm
 							this.operationStatus = "C";
+							this.Mode = this.getView().getModel("i18n").getProperty("EarnedStandards")
 							
 							airbus.mes.operationdetail.ModelManager.loadReasonCodeModel();
 							if (!this._reasonCodeDialog) {
@@ -202,6 +203,7 @@ sap.ui
 							
 							// Click on Complete
 							this.operationStatus = "X";
+							this.Mode = this.getView().getModel("i18n").getProperty("complete")
 							if (!this._oUserConfirmationDialog) {
 
 								this._oUserConfirmationDialog = sap.ui
@@ -306,7 +308,7 @@ sap.ui
 																		"operationDetailModel")
 																.getProperty(
 																		"/Rowsets/Rowset/0/Row/0/sfc_step_ref"),
-														this.reasonCodeText),
+														this.reasonCodeText,this.Mode),
 										async : false,
 										error : function(xhr, status, error) {
 											airbus.mes.operationdetail.ModelManager

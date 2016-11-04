@@ -60,5 +60,10 @@ airbus.mes.disruptions.Formatter = {
 			return "Not Blocked";
 		else if (gravity == 2)
 			return "Disturbed";
+	},
+	
+	formatUserGroup : function(userGroup){
+		
+		return userGroup.split(",")[1];
 	}
 };
