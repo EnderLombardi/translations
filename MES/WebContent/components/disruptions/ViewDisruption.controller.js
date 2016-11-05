@@ -139,9 +139,6 @@ sap.ui
 					 * Reject the Disruption
 					 */
 					onRejectDisruption: function(oEvt){
-//						var sPath = oEvt.getSource().getParent().getParent().getParent().getBindingContext("operationDisruptionsModel").sPath;
-//						var messageRef = this.getView().getModel("operationDisruptionsModel").getProperty(sPath+"/MessageRef");
-						
 						// Call Reject Disruption fragment
 						if (!this._rejectDialog) {
 
@@ -150,7 +147,7 @@ sap.ui
 							var title = this.getView().getModel("i18nModel").getProperty("rejectDisruption");
 							
 							sap.ui.getCore().byId("disruptionCommentDialogue").setTitle(title);
-							sap.ui.getCore().byId("disruptionCommentOK").attachPress(this.onAcceptDisruptionComment);
+							sap.ui.getCore().byId("disruptionCommentOK").attachPress(this.onConfirmRejection);
 
 							this.getView().addDependent(this._rejectDialog);
 
@@ -158,12 +155,14 @@ sap.ui
 						this._rejectDialog.open();
 					},
 					/********************************************
-					 * Confirming Reject Disruption pop-up
+					 * Confirming Reject Disruption
 					 */
-					onAcceptDisruptionComment: function(oEvent){
-						var rejComment = this.getView().byId("rejectDisruptionComment").getValue();
-						
-						sap.ui.getCore().byId("rejectDisruptionComment").setValue("");
+					onConfirmRejection: function(oEvent){
+						var comment = sap.ui.getCore().byId("disruptionCommentBox").getValue();
+						var msgref = sap.ui.getCore().byId("disruptionComment-msgRef").getText();
+//						Call Disruption Service
+						airbus.mes.disruptions.ModelManager.rejectDisruption(comment,msgref);
+						sap.ui.getCore().byId("disruptionCommentBox").setValue("");
 						this._rejectDialog.close();
 
 					},

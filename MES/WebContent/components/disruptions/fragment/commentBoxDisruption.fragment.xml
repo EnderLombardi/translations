@@ -1,22 +1,27 @@
 <core:FragmentDefinition xmlns:core="sap.ui.core"
 	xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.ui.layout.form"
 	xmlns:l="sap.ui.layout">
-	<Dialog contentHeight="30%" contentWidth="60%" id="disruptionCommentDialogue">
+	<Dialog contentHeight="30%" contentWidth="60%"
+		id="disruptionCommentDialogue">
 		<content>
-			<f:SimpleForm id="rejectDisruption" backgroundDesign="Transparent"
-				maxContainerCols="2" editable="true" layout="ResponsiveGridLayout"
-				labelSpanL="1" labelSpanM="2" labelSpanS="2" columnsL="1" columnsM="1"
-				class="sapUiMediumMarginTop">
-				<f:content>
-					<Label text="{i18nModel>comment}" />
-					<TextArea id="disruptionCommentBox" placeholder="{i18nModel>AddCommentBox}" />
-				</f:content>
-			</f:SimpleForm>
+			<!-- <f:SimpleForm id="rejectDisruption" backgroundDesign="Transparent" 
+				maxContainerCols="2" editable="true" layout="ResponsiveGridLayout" labelSpanL="1" 
+				labelSpanM="2" labelSpanS="2" columnsL="1" columnsM="1" class="sapUiMediumMarginTop"> 
+				<f:content> <Label text="{i18nModel>comment}" /> -->
+			<HBox justifyContent="Center" width="100%">
+					<TextArea id="disruptionCommentBox" placeholder="{i18nModel>AddCommentBox}"
+						rows="10" cols="50" />
+			</HBox>
+			<core:InvisibleText id="disruptionComment-msgRef"
+				text="" />
+			<!-- </f:content> </f:SimpleForm> -->
 		</content>
 
 		<buttons>
-			<Button text="{i18nModel>ok}" id="disruptionCommentOK" press="" type="Accept" />
-			<Button text="{i18nModel>cancel}" id="asd" press="onCancelDisruptionComment" />
+			<Button text="{i18nModel>ok}" id="disruptionCommentOK" press=""
+				type="Accept" />
+			<Button text="{i18nModel>cancel}" id="asd"
+				press="onCancelDisruptionComment" />
 		</buttons>
 
 	</Dialog>

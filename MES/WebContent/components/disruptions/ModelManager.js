@@ -237,6 +237,17 @@ airbus.mes.disruptions.ModelManager = {
 
 	},
 
+	/***************************************************************************
+	 * Get URL to Escalate Disruption
+	 **************************************************************************/
+	getUrlOnEscalate : function() {
+
+		var urlOnEscalate = this.urlModel.getProperty("urlOnEscalate");
+		return urlOnEscalate;
+	},
+	/***************************************************************************
+	 * Escalate Disruption Service
+	 **************************************************************************/
 	escalateDisruption : function(msgRef) {
 		var sMessageSuccess = "Escalation Successful";
 		var flag_success;
@@ -274,18 +285,15 @@ airbus.mes.disruptions.ModelManager = {
 	},
 
 	/***************************************************************************
-	 * Get URL on Escalate Button
+	 * Get URL to Add Comment
 	 **************************************************************************/
-	getUrlOnEscalate : function() {
+	getUrlOnAddComment : function() {
 
-		var urlOnEscalate = this.urlModel.getProperty("urlOnEscalate");
-		return urlOnEscalate;
+		var urlOnAddComment = this.urlModel.getProperty("urlOnAddComment");
+		return urlOnAddComment;
 	},
-	
-	
-	
 	/***************************************************************************
-	 * Add Comment
+	 * Add Comment service
 	 **************************************************************************/
 	addComment : function(oComment) {
 		var sMessageSuccess = "Comment Added Successfully";
@@ -332,18 +340,18 @@ airbus.mes.disruptions.ModelManager = {
 				});		
 		
 	},
-	
-	/***************************************************************************
-	 * Get URL on Add Comment
-	 **************************************************************************/
-	getUrlOnAddComment : function() {
 
-		var urlOnAddComment = this.urlModel.getProperty("urlOnAddComment");
-		return urlOnAddComment;
+	/***************************************************************************
+	 * Get URL to Close Disruption
+	 **************************************************************************/
+	getUrlToCloseDisruption : function() {
+
+		var urlToCloseDisruption = this.urlModel.getProperty("urlToCloseDisruption");
+		return urlToCloseDisruption;
 	},
 
 	/***************************************************************************
-	 * Close Disruption
+	 * Close Disruption Service
 	 **************************************************************************/
 	closeDisruption : function(msgRef, comment, timeLost) {
 		
@@ -383,14 +391,55 @@ airbus.mes.disruptions.ModelManager = {
 						
 					}
 				});		
-	},
+	},	
 	
 	/***************************************************************************
-	 * Get URL to Close Disruption
+	 * Get URL to Reject Disruption
 	 **************************************************************************/
-	getUrlToCloseDisruption : function() {
+	getUrlToRejectDisruption : function() {
+		var urlToDisruptionComment = this.urlModel.getProperty("urlToRejectDisruption");
+		return urlToDisruptionComment;
+	},
+	/***************************************************************************
+	 * Reject Disruption Service
+	 **************************************************************************/
+	rejectDisruption : function(comment, msgref) {
+		
+		var sMessageSuccess = "Disruption Rejected Successfully";
+		var sMessageError = sap.ui.getCore().getModel("i18nModel").getProperty("DisruptionNotReject");
+		var flag_success;
 
-		var urlToCloseDisruption = this.urlModel.getProperty("urlToCloseDisruption");
-		return urlToCloseDisruption;
-	}
+		jQuery
+				.ajax({
+					url : this.getUrlToRejectDisruption(),
+					data : {
+						"Param.1" : airbus.mes.settings.ModelManager.site,
+						"Param.2" : sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"),
+						"Param.3" : msgref,
+						"Param.4" : comment
+					},
+					error : function(xhr, status, error) {
+						airbus.mes.shell.ModelManager
+								.messageShow(sMessageError);
+						flag_success = false
+
+					},
+					success : function(result, status, xhr) {
+						if (result.Rowsets.Rowset[0].Row[0].Message_Type === undefined) {
+							airbus.mes.shell.ModelManager
+									.messageShow(sMessageSuccess);
+							flag_success = true;
+						} else if (result.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
+							airbus.mes.shell.ModelManager
+									.messageShow(result.Rowsets.Rowset[0].Row[0].Message)
+							flag_success = false;
+						} else {
+							airbus.mes.shell.ModelManager
+									.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
+							flag_success = true;
+						}
+												
+					}
+				});		
+	},
 };
