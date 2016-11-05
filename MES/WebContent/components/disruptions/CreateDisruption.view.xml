@@ -52,29 +52,6 @@
 
 								<f:FormElement>
 									<f:label>
-										<Label text="{i18nModel>gravity}">
-											<layoutData>
-												<l:GridData span="L3 M6 S12" />
-											</layoutData>
-										</Label>
-									</f:label>
-									<f:fields>
-										<Select id="gravity" selectedKey="1">
-											<items>
-												<core:Item text="{i18nModel>NotBlocked}" key="1" />
-												<core:Item text="{i18nModel>Disturbed}" key="2" />
-												<core:Item text="{i18nModel>Blocked}" key="3" />
-											</items>
-											<layoutData>
-												<l:GridData span="L3 M6 S6" />
-											</layoutData>
-
-										</Select>
-									</f:fields>
-								</f:FormElement>
-
-								<f:FormElement>
-									<f:label>
 										<Label text="{i18nModel>ReasonTree}">
 											<layoutData>
 												<l:GridData span="L3 M6 S12" linebreak="true" />
@@ -116,12 +93,32 @@
 									</f:fields>
 								</f:FormElement>
 
-
+								<f:FormElement>
+									<f:label>
+										<Label text="{i18nModel>OriginatorGroup}">
+											<layoutData>
+												<l:GridData span="L3 M6 S12" linebreak="true" />
+											</layoutData>
+										</Label>
+									</f:label>
+									<f:fields>
+										<Select id="selectOriginator" selectedKey="" forceSelection="false"
+											items="{userSettingModel>/Rowsets/Rowset/1/Row}">
+											<items>
+												<core:Item text="{userDetailModel>RootCause}" key="{disruptionCustomData>RootCause}" />
+											</items>
+											<layoutData>
+												<l:GridData span="L3 M6 S12" />
+											</layoutData>
+										</Select>
+									</f:fields>
+								</f:FormElement>
+								
 								<f:FormElement>
 									<f:label>
 										<Label text="{i18nModel>RootCause}">
 											<layoutData>
-												<l:GridData span="L3 M3 S12" linebreak="true" />
+												<l:GridData span="L3 M6 S12" linebreak="true" />
 											</layoutData>
 										</Label>
 									</f:label>
@@ -132,9 +129,54 @@
 												<core:Item text="{disruptionCustomData>RootCause}" key="{disruptionCustomData>RootCause}" />
 											</items>
 											<layoutData>
-												<l:GridData span="L9 M9 S12" />
+												<l:GridData span="L3 M6 S12" />
 											</layoutData>
 										</Select>
+									</f:fields>
+								</f:FormElement>
+								
+								<f:FormElement>
+									<f:label>
+										<Label text="{i18nModel>gravity}">
+											<layoutData>
+												<l:GridData span="L3 M6 S12" />
+											</layoutData>
+										</Label>
+									</f:label>
+									<f:fields>
+										<Select id="gravity" selectedKey="1">
+											<items>
+												<core:Item text="{i18nModel>NotBlocked}" key="1" />
+												<core:Item text="{i18nModel>Disturbed}" key="2" />
+												<core:Item text="{i18nModel>Blocked}" key="3" />
+											</items>
+											<layoutData>
+												<l:GridData span="L3 M6 S6" />
+											</layoutData>
+
+										</Select>
+									</f:fields>
+								</f:FormElement>
+								<!-- this handle will be hiddin in the UI -->
+								<f:FormElement visible="false">
+									<f:label>
+										<Label text="">
+											<layoutData>
+												<l:GridData span="L3 M3 S12" linebreak="true" />
+											</layoutData>
+										</Label>
+									</f:label>
+									<f:fields>
+									
+										 <Select id="handle" selectedKey="" forceSelection="false"
+											items="{disruptionCustomData>/Rowsets/Rowset/0/Row}" change="onSelectionChange">
+											<items>
+												<core:Item text="{disruptionCustomData>Handle}" key="{disruptionCustomData>Handle}" />
+											</items>
+											<layoutData>
+												<l:GridData span="L9 M9 S12" />
+											</layoutData>
+										</Select> 
 									</f:fields>
 								</f:FormElement>
 
@@ -147,8 +189,8 @@
 										</Label>
 									</f:label>
 									<f:fields>
-										<DatePicker id="openDate" displayFormat="long"
-											change="handleChange">
+										<DatePicker enabled="false" id="openDate" displayFormat="long"
+											value="{path: 'i18nModel>OpenDate', formatter: 'airbus.mes.disruptions.Formatter.getCurrentdate'}">
 											<layoutData>
 												<l:GridData span="L3 M6 S12" />
 											</layoutData>
@@ -183,7 +225,7 @@
 										</Label>
 									</f:label>
 									<f:fields>
-										<TimePicker id="openTime" displayFormat="HH:mm:ss" valueFormat="HH:mm:ss">
+										<TimePicker enabled="false" id="openTime" displayFormat="HH:mm:ss" valueFormat="HH:mm:ss" value="{path: 'i18nModel>OpenTime', formatter: 'airbus.mes.disruptions.Formatter.getCurrentTime'}">
 											<layoutData>
 												<l:GridData span="L3 M6 S12" />
 											</layoutData>
@@ -217,7 +259,7 @@
 										</Label>
 									</f:label>
 									<f:fields>
-										<Input placeholder="minutes" id="timeLost" type="Number">
+										<Input placeholder="{i18nModel>IM}" id="timeLost" type="Number">
 											<layoutData>
 												<l:GridData span="L3 M6 S12" />
 											</layoutData>
