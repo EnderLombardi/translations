@@ -1,10 +1,118 @@
 { "Rowsets" : { 
-	"DateCreated" : "2016-10-27T07:20:35", "Version" : "15.1 SP2 Patch 13 (Oct 6, 2016)", "StartDate" : "2016-10-27T06:20:35+0200", "EndDate" : "2016-10-27T07:20:35+0200", "CachedTime" : "", 
+	"DateCreated" : "2016-11-05T15:31:07", "Version" : "15.1 SP2 Patch 13 (Oct 6, 2016)", "StartDate" : "2016-11-05T14:31:06+0100", "EndDate" : "2016-11-05T15:31:06+0100", "CachedTime" : "", 
 	"Rowset" : [ 
 	{ "Columns" : { 
 		"Column" : [ 
-		{ "Name" : "USER_ID", "SourceColumn" : "USER_ID", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
-		] }, 
+		{ "Name" : "id", "SourceColumn" : "id", "Description" : "id", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "name", "SourceColumn" : "name", "Description" : "name", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "description", "SourceColumn" : "description", "Description" : "description", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 } ] }, 
 	"Row" : [ 
-	{"ns2:resourcePool" : {"ns2:id" : "2", "ns2:name" : "RP MII TEST 1", "ns2:description" : "RP MII TEST 1 DESC", "ns2:modifyDate" : "2016-11-03T22:36:19.000Z", "ns2:usersAvailable" : [{"ns2:handle" : "UserBO:FNZ1,COURRENT", "ns2:userId" : "COURRENT", "ns2:erpUserId" : "", "ns2:personalNo" : "", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,LEONARD_PI", "ns2:userId" : "LEONARD_PI", "ns2:erpUserId" : "", "ns2:personalNo" : "", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,MESYS", "ns2:userId" : "MESYS", "ns2:erpUserId" : "", "ns2:personalNo" : "", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,NG000524", "ns2:userId" : "NG000524", "ns2:erpUserId" : "", "ns2:personalNo" : "", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,NG004BDE", "ns2:userId" : "NG004BDE", "ns2:erpUserId" : "", "ns2:personalNo" : "", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,NG33A7F", "ns2:userId" : "NG33A7F", "ns2:erpUserId" : "", "ns2:personalNo" : "", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,NG34ED3", "ns2:userId" : "NG34ED3", "ns2:erpUserId" : "", "ns2:personalNo" : "", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,NG3B45E", "ns2:userId" : "NG3B45E", "ns2:erpUserId" : "", "ns2:personalNo" : "", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,ZMII1684L201", "ns2:userId" : "ZMII1684L201", "ns2:erpUserId" : "", "ns2:personalNo" : "4400022", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,NG43F36", "ns2:userId" : "NG43F36", "ns2:erpUserId" : "", "ns2:personalNo" : "", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,NG4B21D", "ns2:userId" : "NG4B21D", "ns2:erpUserId" : "", "ns2:personalNo" : "", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,NG55033", "ns2:userId" : "NG55033", "ns2:erpUserId" : "", "ns2:personalNo" : "", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,NG55E48", "ns2:userId" : "NG55E48", "ns2:erpUserId" : "", "ns2:personalNo" : "", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,NG56D2A", "ns2:userId" : "NG56D2A", "ns2:erpUserId" : "", "ns2:personalNo" : "", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,NG5B8F3", "ns2:userId" : "NG5B8F3", "ns2:erpUserId" : "", "ns2:personalNo" : "", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,NG5E052", "ns2:userId" : "NG5E052", "ns2:erpUserId" : "", "ns2:personalNo" : "", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,NG5E054", "ns2:userId" : "NG5E054", "ns2:erpUserId" : "", "ns2:personalNo" : "", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,NG5E059", "ns2:userId" : "NG5E059", "ns2:erpUserId" : "", "ns2:personalNo" : "", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,NG5E7C1", "ns2:userId" : "NG5E7C1", "ns2:erpUserId" : "", "ns2:personalNo" : "", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,NG65FF5", "ns2:userId" : "NG65FF5", "ns2:erpUserId" : "", "ns2:personalNo" : "", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,S007C96", "ns2:userId" : "S007C96", "ns2:erpUserId" : "", "ns2:personalNo" : "", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,S00DB44", "ns2:userId" : "S00DB44", "ns2:erpUserId" : "", "ns2:personalNo" : "", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,S0137BF", "ns2:userId" : "S0137BF", "ns2:erpUserId" : "S0137BF", "ns2:personalNo" : "S0137BF", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,SITE_ADMIN", "ns2:userId" : "SITE_ADMIN", "ns2:erpUserId" : "", "ns2:personalNo" : "", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,ST27164", "ns2:userId" : "ST27164", "ns2:erpUserId" : "", "ns2:personalNo" : "", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,TH32PK", "ns2:userId" : "TH32PK", "ns2:erpUserId" : "", "ns2:personalNo" : "", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,TO105976", "ns2:userId" : "TO105976", "ns2:erpUserId" : "", "ns2:personalNo" : "", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,TO31681", "ns2:userId" : "TO31681", "ns2:erpUserId" : "", "ns2:personalNo" : "", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,TO80924", "ns2:userId" : "TO80924", "ns2:erpUserId" : "", "ns2:personalNo" : "", "ns2:type" : "U"}, {"ns2:handle" : "UserBO:FNZ1,TO95871", "ns2:userId" : "TO95871", "ns2:erpUserId" : "", "ns2:personalNo" : "", "ns2:type" : "U"}], "ns2:workCentersAvailable" : [{"ns2:handle" : "WorkCenterBO:FNZ1,1L", "ns2:name" : "1L", "ns2:type" : "WC", "ns2:description" : "ASO labour work centre"}, {"ns2:handle" : "WorkCenterBO:FNZ1,2L", "ns2:name" : "2L", "ns2:type" : "WC", "ns2:description" : "SASC-1-20"}, {"ns2:handle" : "WorkCenterBO:FNZ1,3L", "ns2:name" : "3L", "ns2:type" : "WC", "ns2:description" : "SASC-1-30"}, {"ns2:handle" : "WorkCenterBO:FNZ1,4L", "ns2:name" : "4L", "ns2:type" : "WC", "ns2:description" : "SASC-1-40"}, {"ns2:handle" : "WorkCenterBO:FNZ1,5L", "ns2:name" : "5L", "ns2:type" : "WC", "ns2:description" : "SASC-1-50"}, {"ns2:handle" : "WorkCenterBO:FNZ1,6L", "ns2:name" : "6L", "ns2:type" : "WC", "ns2:description" : "SASC-1-60"}, {"ns2:handle" : "WorkCenterBO:FNZ1,7L", "ns2:name" : "7L", "ns2:type" : "WC", "ns2:description" : "SASC-1-70"}, {"ns2:handle" : "WorkCenterBO:FNZ1,8L", "ns2:name" : "8L", "ns2:type" : "WC", "ns2:description" : "SASC-1-80"}, {"ns2:handle" : "WorkCenterBO:FNZ1,CHES_LG_1_L1_CG", "ns2:name" : "CHES_LG_1_L1_CG", "ns2:type" : "WC", "ns2:description" : "CHES_LG_1_L1_CG"}, {"ns2:handle" : "WorkCenterBO:FNZ1,CHES_LG_1_L2_CG", "ns2:name" : "CHES_LG_1_L2_CG", "ns2:type" : "WC", "ns2:description" : "CHES_LG_1_L1_CG"}, {"ns2:handle" : "WorkCenterBO:FNZ1,CHES_LG_1_L3_CG", "ns2:name" : "CHES_LG_1_L3_CG", "ns2:type" : "WC", "ns2:description" : "CHES_LG_1_L1_CG"}, {"ns2:handle" : "WorkCenterBO:FNZ1,CHES_LG_2_L1_CG", "ns2:name" : "CHES_LG_2_L1_CG", "ns2:type" : "WC", "ns2:description" : "CHES_LG_1_L1_CG"}, {"ns2:handle" : "WorkCenterBO:FNZ1,CHES_LG_2_L2_CG", "ns2:name" : "CHES_LG_2_L2_CG", "ns2:type" : "WC", "ns2:description" : "CHES_LG_1_L1_CG"}, {"ns2:handle" : "WorkCenterBO:FNZ1,CHES_LG_2_L3_CG", "ns2:name" : "CHES_LG_2_L3_CG", "ns2:type" : "WC", "ns2:description" : "CHES_LG_1_L1_CG"}, {"ns2:handle" : "WorkCenterBO:FNZ1,CHES_LG_3_L1_CG", "ns2:name" : "CHES_LG_3_L1_CG", "ns2:type" : "WC", "ns2:description" : "CHES_LG_1_L1_CG"}, {"ns2:handle" : "WorkCenterBO:FNZ1,CHES_LG_3_L2_CG", "ns2:name" : "CHES_LG_3_L2_CG", "ns2:type" : "WC", "ns2:description" : "CHES_LG_1_L1_CG"}, {"ns2:handle" : "WorkCenterBO:FNZ1,CHES_LG_3_L3_CG", "ns2:name" : "CHES_LG_3_L3_CG", "ns2:type" : "WC", "ns2:description" : "CHES_LG_1_L1_CG"}, {"ns2:handle" : "WorkCenterBO:FNZ1,IP1 PA", "ns2:name" : "IP1 PA", "ns2:type" : "WC", "ns2:description" : "Assemblage Structure 11/12 4"}, {"ns2:handle" : "WorkCenterBO:FNZ1,IP1 TC", "ns2:name" : "IP1 TC", "ns2:type" : "WC", "ns2:description" : "Assemblage Systeme 15/21 1"}, {"ns2:handle" : "WorkCenterBO:FNZ1,IP2 PA", "ns2:name" : "IP2 PA", "ns2:type" : "WC", "ns2:description" : "Assemblage Structure 11/12 5"}, {"ns2:handle" : "WorkCenterBO:FNZ1,IP2 TC", "ns2:name" : "IP2 TC", "ns2:type" : "WC", "ns2:description" : "Assemblage Systeme 15/21 2"}, {"ns2:handle" : "WorkCenterBO:FNZ1,IP3 PA", "ns2:name" : "IP3 PA", "ns2:type" : "WC", "ns2:description" : "Assemblage Structure 11/12 6"}, {"ns2:handle" : "WorkCenterBO:FNZ1,IP3 TC", "ns2:name" : "IP3 TC", "ns2:type" : "WC", "ns2:description" : "Assemblage Systeme 15/21 3"}, {"ns2:handle" : "WorkCenterBO:FNZ1,IP4 TC", "ns2:name" : "IP4 TC", "ns2:type" : "WC", "ns2:description" : "Assemblage Systeme 15/21 4"}, {"ns2:handle" : "WorkCenterBO:FNZ1,IP5 TC", "ns2:name" : "IP5 TC", "ns2:type" : "WC", "ns2:description" : "Assemblage Systeme 15/21 5"}, {"ns2:handle" : "WorkCenterBO:FNZ1,PHYS_ST_IP3", "ns2:name" : "PHYS_ST_IP3", "ns2:type" : "WC", "ns2:description" : "IP3 Physical Station"}, {"ns2:handle" : "WorkCenterBO:FNZ1,PHYS_ST_IP4", "ns2:name" : "PHYS_ST_IP4", "ns2:type" : "WC", "ns2:description" : "IP4 Physical Station"}, {"ns2:handle" : "WorkCenterBO:FNZ1,STATION_N", "ns2:name" : "STATION_N", "ns2:type" : "WC", "ns2:description" : "STATION_N"}
-	]}},
+		{ "id" : "44", "name" : "TOTO", "description" : "TEETTTTT" } ]
+		 }, 	{ "Columns" : { 
+		"Column" : [ 
+		{ "Name" : "handle", "SourceColumn" : "handle", "Description" : "handle", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "userId", "SourceColumn" : "userId", "Description" : "userId", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "erpUserId", "SourceColumn" : "erpUserId", "Description" : "erpUserId", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "name", "SourceColumn" : "name", "Description" : "name", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "personalNo", "SourceColumn" : "personalNo", "Description" : "personalNo", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "type", "SourceColumn" : "type", "Description" : "type", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "loanedToPool", "SourceColumn" : "loanedToPool", "Description" : "loanedToPool", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "loanedToRPName", "SourceColumn" : "loanedToRPName", "Description" : "loanedToRPName", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "assignedToRPName", "SourceColumn" : "assignedToRPName", "Description" : "assignedToRPName", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 } ] }		 }, 	{ "Columns" : { 
+		"Column" : [ 
+		{ "Name" : "handle", "SourceColumn" : "handle", "Description" : "handle", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "name", "SourceColumn" : "name", "Description" : "name", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "type", "SourceColumn" : "type", "Description" : "type", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "description", "SourceColumn" : "description", "Description" : "description", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 } ] }		 }, 	{ "Columns" : { 
+		"Column" : [ 
+		{ "Name" : "handle", "SourceColumn" : "handle", "Description" : "handle", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "userId", "SourceColumn" : "userId", "Description" : "userId", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "erpUserId", "SourceColumn" : "erpUserId", "Description" : "erpUserId", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "name", "SourceColumn" : "name", "Description" : "name", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "personalNo", "SourceColumn" : "personalNo", "Description" : "personalNo", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "type", "SourceColumn" : "type", "Description" : "type", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "loanedToPool", "SourceColumn" : "loanedToPool", "Description" : "loanedToPool", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "loanedToRPName", "SourceColumn" : "loanedToRPName", "Description" : "loanedToRPName", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "assignedToRPName", "SourceColumn" : "assignedToRPName", "Description" : "assignedToRPName", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 } ] }, 
+	"Row" : [ 
+		{ "handle" : "UserBO:FNZ1,COURRENT", "userId" : "COURRENT", "erpUserId" : "", "name" : "COURRENT, RAFAEL", "personalNo" : "", "type" : "U", "loanedToPool" : "", "loanedToRPName" : "", "assignedToRPName" : "" }, 
+		{ "handle" : "UserBO:FNZ1,LEONARD_PI", "userId" : "LEONARD_PI", "erpUserId" : "", "name" : "LEONARD, PIERRICK", "personalNo" : "", "type" : "U", "loanedToPool" : "", "loanedToRPName" : "", "assignedToRPName" : "" }, 
+		{ "handle" : "UserBO:FNZ1,MESYS", "userId" : "MESYS", "erpUserId" : "", "name" : "site admin, ", "personalNo" : "", "type" : "U", "loanedToPool" : "", "loanedToRPName" : "", "assignedToRPName" : "" }, 
+		{ "handle" : "UserBO:FNZ1,NG000524", "userId" : "NG000524", "erpUserId" : "", "name" : "PALLAM REDDY, SRIKANTH", "personalNo" : "", "type" : "U", "loanedToPool" : "", "loanedToRPName" : "", "assignedToRPName" : "" }, 
+		{ "handle" : "UserBO:FNZ1,NG004BDE", "userId" : "NG004BDE", "erpUserId" : "", "name" : "MISHRA, DHIRENDRA NATH", "personalNo" : "", "type" : "U", "loanedToPool" : "", "loanedToRPName" : "", "assignedToRPName" : "" }, 
+		{ "handle" : "UserBO:FNZ1,NG33A7F", "userId" : "NG33A7F", "erpUserId" : "", "name" : "CALVET, BRUNO", "personalNo" : "", "type" : "U", "loanedToPool" : "", "loanedToRPName" : "", "assignedToRPName" : "" }, 
+		{ "handle" : "UserBO:FNZ1,NG34ED3", "userId" : "NG34ED3", "erpUserId" : "", "name" : "AGGARWAL, PIYUSH", "personalNo" : "", "type" : "U", "loanedToPool" : "", "loanedToRPName" : "", "assignedToRPName" : "" }, 
+		{ "handle" : "UserBO:FNZ1,NG3B45E", "userId" : "NG3B45E", "erpUserId" : "", "name" : "TORREGROSSA, VINCENT", "personalNo" : "", "type" : "U", "loanedToPool" : "", "loanedToRPName" : "", "assignedToRPName" : "" }, 
+		{ "handle" : "UserBO:FNZ1,NG42E7A", "userId" : "NG42E7A", "erpUserId" : "", "name" : "JAJOO, MASOOM", "personalNo" : "4400022", "type" : "U", "loanedToPool" : "", "loanedToRPName" : "", "assignedToRPName" : "" }, 
+		{ "handle" : "UserBO:FNZ1,NG43F36", "userId" : "NG43F36", "erpUserId" : "", "name" : "FERRAND, ALEXIS", "personalNo" : "", "type" : "U", "loanedToPool" : "", "loanedToRPName" : "", "assignedToRPName" : "" }, 
+		{ "handle" : "UserBO:FNZ1,NG4B21D", "userId" : "NG4B21D", "erpUserId" : "", "name" : "RAMOS ASTOLA, IBAI", "personalNo" : "", "type" : "U", "loanedToPool" : "", "loanedToRPName" : "", "assignedToRPName" : "" }, 
+		{ "handle" : "UserBO:FNZ1,NG55033", "userId" : "NG55033", "erpUserId" : "", "name" : "MARTINS, DAVID", "personalNo" : "", "type" : "U", "loanedToPool" : "", "loanedToRPName" : "", "assignedToRPName" : "" }, 
+		{ "handle" : "UserBO:FNZ1,NG55E48", "userId" : "NG55E48", "erpUserId" : "", "name" : "FONTENEAU, GUILLAUME", "personalNo" : "", "type" : "U", "loanedToPool" : "", "loanedToRPName" : "", "assignedToRPName" : "" }, 
+		{ "handle" : "UserBO:FNZ1,NG56D2A", "userId" : "NG56D2A", "erpUserId" : "", "name" : "MISHRA, VAIBHAV", "personalNo" : "", "type" : "U", "loanedToPool" : "", "loanedToRPName" : "", "assignedToRPName" : "" }, 
+		{ "handle" : "UserBO:FNZ1,NG5B8F3", "userId" : "NG5B8F3", "erpUserId" : "", "name" : "LIENARD, MICKAEL", "personalNo" : "", "type" : "U", "loanedToPool" : "", "loanedToRPName" : "", "assignedToRPName" : "" }, 
+		{ "handle" : "UserBO:FNZ1,NG5E052", "userId" : "NG5E052", "erpUserId" : "", "name" : "JAMES, IAN", "personalNo" : "", "type" : "U", "loanedToPool" : "", "loanedToRPName" : "", "assignedToRPName" : "" }, 
+		{ "handle" : "UserBO:FNZ1,NG5E054", "userId" : "NG5E054", "erpUserId" : "", "name" : "HOPWOOD, ANDREW", "personalNo" : "", "type" : "U", "loanedToPool" : "", "loanedToRPName" : "", "assignedToRPName" : "" }, 
+		{ "handle" : "UserBO:FNZ1,NG5E059", "userId" : "NG5E059", "erpUserId" : "", "name" : "WILLIAMSON, STEVEN", "personalNo" : "", "type" : "U", "loanedToPool" : "", "loanedToRPName" : "", "assignedToRPName" : "" }, 
+		{ "handle" : "UserBO:FNZ1,NG5E7C1", "userId" : "NG5E7C1", "erpUserId" : "", "name" : "JANVIER, NICOLAS", "personalNo" : "", "type" : "U", "loanedToPool" : "", "loanedToRPName" : "", "assignedToRPName" : "" }, 
+		{ "handle" : "UserBO:FNZ1,NG65FF5", "userId" : "NG65FF5", "erpUserId" : "", "name" : "PAGES, VINCENT", "personalNo" : "", "type" : "U", "loanedToPool" : "", "loanedToRPName" : "", "assignedToRPName" : "" }, 
+		{ "handle" : "UserBO:FNZ1,S007C96", "userId" : "S007C96", "erpUserId" : "", "name" : "DANEL, CEDRIC", "personalNo" : "", "type" : "U", "loanedToPool" : "", "loanedToRPName" : "", "assignedToRPName" : "" }, 
+		{ "handle" : "UserBO:FNZ1,S00DB44", "userId" : "S00DB44", "erpUserId" : "", "name" : "BARRAUD, DELPHIN", "personalNo" : "", "type" : "U", "loanedToPool" : "", "loanedToRPName" : "", "assignedToRPName" : "" }, 
+		{ "handle" : "UserBO:FNZ1,S0137BF", "userId" : "S0137BF", "erpUserId" : "S0137BF", "name" : "ROULLEAUX, RICHARD", "personalNo" : "S0137BF", "type" : "U", "loanedToPool" : "", "loanedToRPName" : "", "assignedToRPName" : "" }, 
+		{ "handle" : "UserBO:FNZ1,SITE_ADMIN", "userId" : "SITE_ADMIN", "erpUserId" : "", "name" : "site admin, ", "personalNo" : "", "type" : "U", "loanedToPool" : "", "loanedToRPName" : "", "assignedToRPName" : "" }, 
+		{ "handle" : "UserBO:FNZ1,ST27164", "userId" : "ST27164", "erpUserId" : "", "name" : "BAVIERE, PASCAL", "personalNo" : "", "type" : "U", "loanedToPool" : "", "loanedToRPName" : "", "assignedToRPName" : "" }, 
+		{ "handle" : "UserBO:FNZ1,TH32PK", "userId" : "TH32PK", "erpUserId" : "", "name" : "KOLBERG, PETER", "personalNo" : "", "type" : "U", "loanedToPool" : "", "loanedToRPName" : "", "assignedToRPName" : "" }, 
+		{ "handle" : "UserBO:FNZ1,TO105976", "userId" : "TO105976", "erpUserId" : "", "name" : "KAISER, MORITZ", "personalNo" : "", "type" : "U", "loanedToPool" : "", "loanedToRPName" : "", "assignedToRPName" : "" }, 
+		{ "handle" : "UserBO:FNZ1,TO31681", "userId" : "TO31681", "erpUserId" : "", "name" : "BENET, SEBASTIEN", "personalNo" : "", "type" : "U", "loanedToPool" : "", "loanedToRPName" : "", "assignedToRPName" : "" }, 
+		{ "handle" : "UserBO:FNZ1,TO80924", "userId" : "TO80924", "erpUserId" : "", "name" : "PETAT, THIERRY", "personalNo" : "", "type" : "U", "loanedToPool" : "", "loanedToRPName" : "", "assignedToRPName" : "" }, 
+		{ "handle" : "UserBO:FNZ1,TO95871", "userId" : "TO95871", "erpUserId" : "", "name" : "POUILLE, JEROME", "personalNo" : "", "type" : "U", "loanedToPool" : "", "loanedToRPName" : "", "assignedToRPName" : "" } ]
+		 }, 	{ "Columns" : { 
+		"Column" : [ 
+		{ "Name" : "handle", "SourceColumn" : "handle", "Description" : "handle", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "name", "SourceColumn" : "name", "Description" : "name", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "type", "SourceColumn" : "type", "Description" : "type", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "description", "SourceColumn" : "description", "Description" : "description", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 } ] }, 
+	"Row" : [ 
+		{ "handle" : "WorkCenterBO:FNZ1,1L", "name" : "1L", "type" : "WC", "description" : "ASO labour work centre" }, 
+		{ "handle" : "WorkCenterBO:FNZ1,2L", "name" : "2L", "type" : "WC", "description" : "SASC-1-20" }, 
+		{ "handle" : "WorkCenterBO:FNZ1,3L", "name" : "3L", "type" : "WC", "description" : "SASC-1-30" }, 
+		{ "handle" : "WorkCenterBO:FNZ1,4L", "name" : "4L", "type" : "WC", "description" : "SASC-1-40" }, 
+		{ "handle" : "WorkCenterBO:FNZ1,5L", "name" : "5L", "type" : "WC", "description" : "SASC-1-50" }, 
+		{ "handle" : "WorkCenterBO:FNZ1,6L", "name" : "6L", "type" : "WC", "description" : "SASC-1-60" }, 
+		{ "handle" : "WorkCenterBO:FNZ1,7L", "name" : "7L", "type" : "WC", "description" : "SASC-1-70" }, 
+		{ "handle" : "WorkCenterBO:FNZ1,8L", "name" : "8L", "type" : "WC", "description" : "SASC-1-80" }, 
+		{ "handle" : "WorkCenterBO:FNZ1,CHES_LG_1_L1_CG", "name" : "CHES_LG_1_L1_CG", "type" : "WC", "description" : "CHES_LG_1_L1_CG" }, 
+		{ "handle" : "WorkCenterBO:FNZ1,CHES_LG_1_L2_CG", "name" : "CHES_LG_1_L2_CG", "type" : "WC", "description" : "CHES_LG_1_L1_CG" }, 
+		{ "handle" : "WorkCenterBO:FNZ1,CHES_LG_1_L3_CG", "name" : "CHES_LG_1_L3_CG", "type" : "WC", "description" : "CHES_LG_1_L1_CG" }, 
+		{ "handle" : "WorkCenterBO:FNZ1,CHES_LG_2_L1_CG", "name" : "CHES_LG_2_L1_CG", "type" : "WC", "description" : "CHES_LG_1_L1_CG" }, 
+		{ "handle" : "WorkCenterBO:FNZ1,CHES_LG_2_L2_CG", "name" : "CHES_LG_2_L2_CG", "type" : "WC", "description" : "CHES_LG_1_L1_CG" }, 
+		{ "handle" : "WorkCenterBO:FNZ1,CHES_LG_2_L3_CG", "name" : "CHES_LG_2_L3_CG", "type" : "WC", "description" : "CHES_LG_1_L1_CG" }, 
+		{ "handle" : "WorkCenterBO:FNZ1,CHES_LG_3_L1_CG", "name" : "CHES_LG_3_L1_CG", "type" : "WC", "description" : "CHES_LG_1_L1_CG" }, 
+		{ "handle" : "WorkCenterBO:FNZ1,CHES_LG_3_L2_CG", "name" : "CHES_LG_3_L2_CG", "type" : "WC", "description" : "CHES_LG_1_L1_CG" }, 
+		{ "handle" : "WorkCenterBO:FNZ1,CHES_LG_3_L3_CG", "name" : "CHES_LG_3_L3_CG", "type" : "WC", "description" : "CHES_LG_1_L1_CG" }, 
+		{ "handle" : "WorkCenterBO:FNZ1,IP1 PA", "name" : "IP1 PA", "type" : "WC", "description" : "Assemblage Structure 11/12 4" }, 
+		{ "handle" : "WorkCenterBO:FNZ1,IP1 TC", "name" : "IP1 TC", "type" : "WC", "description" : "Assemblage Systeme 15/21 1" }, 
+		{ "handle" : "WorkCenterBO:FNZ1,IP2 PA", "name" : "IP2 PA", "type" : "WC", "description" : "Assemblage Structure 11/12 5" }, 
+		{ "handle" : "WorkCenterBO:FNZ1,IP2 TC", "name" : "IP2 TC", "type" : "WC", "description" : "Assemblage Systeme 15/21 2" }, 
+		{ "handle" : "WorkCenterBO:FNZ1,IP3 PA", "name" : "IP3 PA", "type" : "WC", "description" : "Assemblage Structure 11/12 6" }, 
+		{ "handle" : "WorkCenterBO:FNZ1,IP3 TC", "name" : "IP3 TC", "type" : "WC", "description" : "Assemblage Systeme 15/21 3" }, 
+		{ "handle" : "WorkCenterBO:FNZ1,IP4 TC", "name" : "IP4 TC", "type" : "WC", "description" : "Assemblage Systeme 15/21 4" }, 
+		{ "handle" : "WorkCenterBO:FNZ1,IP5 TC", "name" : "IP5 TC", "type" : "WC", "description" : "Assemblage Systeme 15/21 5" }, 
+		{ "handle" : "WorkCenterBO:FNZ1,PHYS_ST_IP3", "name" : "PHYS_ST_IP3", "type" : "WC", "description" : "IP3 Physical Station" }, 
+		{ "handle" : "WorkCenterBO:FNZ1,PHYS_ST_IP4", "name" : "PHYS_ST_IP4", "type" : "WC", "description" : "IP4 Physical Station" }, 
+		{ "handle" : "WorkCenterBO:FNZ1,STATION_N", "name" : "STATION_N", "type" : "WC", "description" : "STATION_N" } ]
+		 }, 	{ "Columns" : { 
+		"Column" : [ 
+		{ "Name" : "handle", "SourceColumn" : "handle", "Description" : "handle", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "name", "SourceColumn" : "name", "Description" : "name", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "shiftEndDateTime", "SourceColumn" : "shiftEndDateTime", "Description" : "shiftEndDateTime", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "shiftStartDateTime", "SourceColumn" : "shiftStartDateTime", "Description" : "shiftStartDateTime", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "shiftValidFrom", "SourceColumn" : "shiftValidFrom", "Description" : "shiftValidFrom", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "shiftValidTo", "SourceColumn" : "shiftValidTo", "Description" : "shiftValidTo", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "type", "SourceColumn" : "type", "Description" : "type", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "shiftAssigned", "SourceColumn" : "shiftAssigned", "Description" : "shiftAssigned", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "description", "SourceColumn" : "description", "Description" : "description", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 } ] }, 
+	"Row" : [ 
+		{ "handle" : "WorkCenterBO:FNZ1,1L", "name" : "1L", "shiftEndDateTime" : "420000", "shiftStartDateTime" : "4200", "type": "S", "shiftAssigned": "true" , "description": "wwq", "shiftValidFrom": "4020", "shiftValidTo": "45" }, 
+		{ "handle" : "WorkCenterBO:FNZ1,2L", "name" : "1L", "shiftEndDateTime" : "420000", "shiftStartDateTime" : "4200", "type": "S", "shiftAssigned": "false" , "description": "wwq", "shiftValidFrom": "4020", "shiftValidTo": "45" }]		 } ]
+	 }
+ }

@@ -96,40 +96,18 @@ sap.ui
 						var oListOfItems = oEvent.getSource().getParent()
 								.getParent();
 
-						/* empty the AvailableShiftModel */
-						sap.ui.getCore().getModel("AvailableShiftModel").oData.Rowsets.Rowset[0].Row = []
 						for (var i = 0; i < oListOfItems.getItems().length; i++) {
+							var sPath = oListOfItems.getItems()[i].getBindingContext("ResourcePoolDetailModel").sPath
+							var rowNum = sPath.split("/")[5];
+							
 							/* if item is one on which the shift is changed */
 							if (oListOfItems.getItems()[i] === oItemAssign) {
-
-								/* create a JSON object with all the details */
-								var oJsonShifts = {
-
-									"USER_SHIFT_BO" : "",
-									"SITE" : airbus.mes.resourcepool.util.ModelManager.site,
-									"NAME" : oItemAssign.getCells()[0]
-											.getText(),
-									"SHIFT_BEGIN" : airbus.mes.resourcepool.util.Formatter
-											.shiftHoursToTime(oItemAssign
-													.getCells()[1].getText()),
-									"SHIFT_END" : airbus.mes.resourcepool.util.Formatter
-											.shiftHoursToTime(oItemAssign
-													.getCells()[2].getText()),
-									"VALID_FROM" : airbus.mes.resourcepool.util.Formatter
-											.shiftDateToString(oItemAssign
-													.getCells()[3].getText()),
-									"VALID_TO" : airbus.mes.resourcepool.util.Formatter
-											.shiftDateToString(oItemAssign
-													.getCells()[4].getText()),
-									"DESCRIPTION" : "",
-									"CREATED_DATE_TIME" : "",
-									"ASSIGNED" : oItemAssign.getCells()[5]
-											.getState().toString(),
-								}
-								/* push JSON object to Model */
-								sap.ui.getCore()
-										.getModel("AvailableShiftModel").oData.Rowsets.Rowset[0].Row
-										.push(oJsonShifts);
+								
+								// Set Shift Assigned Property True
+								sap.ui.getCore().getModel("ResourcePoolDetailModel").oData.Rowsets.Rowset[5].Row[rowNum].shiftAssigned = 
+									oItemAssign.getCells()[5].getState().toString();
+								
+								
 								/* set styleClass selected or not selected */
 								if (oItemAssign.getCells()[5].getState() == true)
 									oItemAssign
@@ -141,49 +119,16 @@ sap.ui
 							}
 							/* For all other items on which shift is not changed */
 							else {
-								/*
-								 * create a JSON object with all details but
-								 * Assignment = false
-								 */
-								var oJsonShifts = {
-
-									"USER_SHIFT_BO" : "",
-									"SITE" : airbus.mes.resourcepool.util.ModelManager.site,
-									"NAME" : oListOfItems.getItems()[i]
-											.getCells()[0].getText(),
-									"SHIFT_BEGIN" : airbus.mes.resourcepool.util.Formatter
-											.shiftHoursToTime(oListOfItems
-													.getItems()[i].getCells()[1]
-													.getText()),
-									"SHIFT_END" : airbus.mes.resourcepool.util.Formatter
-											.shiftHoursToTime(oListOfItems
-													.getItems()[i].getCells()[2]
-													.getText()),
-									"VALID_FROM" : airbus.mes.resourcepool.util.Formatter
-											.shiftDateToString(oListOfItems
-													.getItems()[i].getCells()[3]
-													.getText()),
-									"VALID_TO" : airbus.mes.resourcepool.util.Formatter
-											.shiftDateToString(oListOfItems
-													.getItems()[i].getCells()[4]
-													.getText()),
-									"DESCRIPTION" : "",
-									"CREATED_DATE_TIME" : "",
-									"ASSIGNED" : "false",
-								}
-								/* Push JSON to Model */
-								sap.ui.getCore()
-										.getModel("AvailableShiftModel").oData.Rowsets.Rowset[0].Row
-										.push(oJsonShifts);
+								// Set Shift Assigned Property false
+								sap.ui.getCore().getModel("ResourcePoolDetailModel").oData.Rowsets.Rowset[5].Row[rowNum].shiftAssigned = "false";
 
 								oListOfItems.getItems()[i]
 										.removeStyleClass("sapMLIBSelected");
 							}
 
 						}
-						/* Refresh Shift Model */
-						sap.ui.getCore().getModel("AvailableShiftModel")
-								.refresh();
+						/* Refresh Model */
+						sap.ui.getCore().getModel("ResourcePoolDetailModel").refresh();
 					},
 					/**
 					 * Called when the Controller is destroyed. Use this one to
