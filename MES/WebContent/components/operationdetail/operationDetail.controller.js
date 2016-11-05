@@ -148,8 +148,11 @@ sap.ui
 							this.getView().byId("switchStatusLabel").setText(
 									this.getView().getModel("i18n")
 											.getProperty("ReadOnly"));
-							// this.setScreenforSwitchMode(false);
+							// this.setScreenforSwitchMode(false);						
 						}
+						/*****set the buttons according to the status of operation mode ******/
+						sap.ui.getCore().byId("idStatusView").rerender();
+						sap.ui.getCore().byId("ViewDisruptionView").rerender();
 					},
 					
 					/***********************************************************

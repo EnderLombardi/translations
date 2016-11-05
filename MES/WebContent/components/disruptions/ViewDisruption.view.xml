@@ -206,7 +206,7 @@
 		<footer>
 			<Bar design="Footer" class="viewDisruptionFooter">
 				<contentLeft>
-					<Button text="{i18nModel>reportDisruption}" press="onReportDisruption"
+					<Button id="reportDisruption" text="{i18nModel>reportDisruption}" press="onReportDisruption"
 						icon="sap-icon://add" />
 				</contentLeft>
 				<contentRight>
