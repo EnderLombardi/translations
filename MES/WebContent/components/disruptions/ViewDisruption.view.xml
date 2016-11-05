@@ -186,6 +186,8 @@
 
 						<Toolbar class="barcolor">
 							<ToolbarSpacer />
+							<Button id="rejectDisruption" text="{i18nModel>reject}"
+								press="onRejectDisruption" design="Transparent" icon="sap-icon://sys-cancel-2" />
 							<Button id="addComment" text="{i18nModel>addComment}"
 								press="showCommentBox" design="Transparent" icon="sap-icon://comment" />
 							<Button text="{i18nModel>acknowledge}"

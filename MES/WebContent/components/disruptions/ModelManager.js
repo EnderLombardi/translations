@@ -124,7 +124,7 @@ airbus.mes.disruptions.ModelManager = {
 	 */
 	loadDisruptionsByOperation : function(operation) {
 		
-		airbus.mes.operationdetail.oView.setBusy(true); //Set Busy Indicator 
+//		airbus.mes.operationdetail.oView.setBusy(true); //Set Busy Indicator 
 		
 		var oViewModel = sap.ui.getCore().getModel("operationDisruptionsModel");
 

@@ -103,6 +103,42 @@ sap.ui
 					cancelClosingDisruption : function(oEvent) {
 						this._closeDialog.close();
 					},
+					
+					/********************************************
+					 * Reject the Disruption
+					 */
+					onRejectDisruption: function(oEvt){
+//						var sPath = oEvt.getSource().getParent().getParent().getParent().getBindingContext("operationDisruptionsModel").sPath;
+//						var messageRef = this.getView().getModel("operationDisruptionsModel").getProperty(sPath+"/MessageRef");
+						
+						// Call Reject Disruption fragment
+						if (!this._rejectDialog) {
+
+							this._rejectDialog = sap.ui.xmlfragment("airbus.mes.disruptions.fragment.commentBoxDisruption",this);
+
+							this.getView().addDependent(this._rejectDialog);
+
+						}
+						this._rejectDialog.open();
+					},
+					/********************************************
+					 * Confirming Reject Disruption pop-up
+					 */
+					onAcceptRejectDisruption: function(oEvent){
+						var rejComment = this.getView().byId("rejectDisruptionComment").getValue();
+						
+						sap.ui.getCore().byId("rejectDisruptionComment").setValue("");
+						this._rejectDialog.close();
+
+					},
+					/********************************************
+					 * close the Reject Disruption pop-up
+					 */
+					oncancelRejectDisruption: function(oEvent){
+						sap.ui.getCore().byId("rejectDisruptionComment").setValue("");
+						this._rejectDialog.close();
+
+					},
 
 					showCommentBox : function(oEvt) {
 						var path = oEvt.getSource().sId;
