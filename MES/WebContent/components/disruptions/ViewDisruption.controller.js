@@ -47,44 +47,39 @@ sap.ui
 					applyFiltersOnComments : function() {
 						var listItems = this.getView().byId("disrptlist")
 								.getItems();
-						$
-								.each(
-										listItems,
-										function(key, value) {
-											// Apply filters on Message Comments
-											var oBinding = value.getContent()[0]
-													.getContent()[2]
-													.getBinding("items");
+						$.each(listItems,
+								function(key, value) {
+									// Apply filters on Message Comments
+									var oBinding = value.getContent()[0]
+											.getContent()[2]
+											.getBinding("items");
 
-											var sPath = value
-													.getBindingContext("operationDisruptionsModel");
-											var messageRef = sap.ui
-													.getCore()
-													.getModel(
-															"operationDisruptionsModel")
-													.getProperty(
-															sPath
-																	+ "/MessageRef")
+									var messageRef = value.getBindingContext(
+											"operationDisruptionsModel")
+											.getObject().MessageRef;
 
-											oBinding
-													.filter([ new sap.ui.model.Filter(
-															"MessageRef", "EQ",
-															messageRef) ]);
-										});
+									oBinding.filter([ new sap.ui.model.Filter(
+											"MessageRef", "EQ", messageRef) ]);
+								});
 
 					},
 
 					/***********************************************************
 					 * Open Pop-Up to ask Time Lost while Closing the Disruption
 					 */
-					onCloseDisruption: function(oEvt){
-						var sPath = oEvt.getSource().getParent().getParent().getParent().getBindingContext("operationDisruptionsModel").sPath;
-						var messageRef = this.getView().getModel("operationDisruptionsModel").getProperty(sPath+"/MessageRef");
-						
+					onCloseDisruption : function(oEvt) {
+						var messageRef = oEvt.getSource().getParent()
+								.getParent().getParent().getBindingContext(
+										"operationDisruptionsModel")
+								.getObject().MessageRef;
+
 						// Call Close Disruption fragment
 						if (!this._closeDialog) {
 
-							this._closeDialog = sap.ui.xmlfragment("airbus.mes.disruptions.fragment.closeDisruption",this);
+							this._closeDialog = sap.ui
+									.xmlfragment(
+											"airbus.mes.disruptions.fragment.closeDisruption",
+											this);
 
 							this.getView().addDependent(this._closeDialog);
 
@@ -95,27 +90,28 @@ sap.ui
 					/***********************************************************
 					 * Close selected disruption
 					 */
-					onAcceptCloseDisruption: function(oEvent){
+					onAcceptCloseDisruption : function(oEvent) {
 						this._closeDialog.close();
-						//	Initialize the inputs							
+						// Initialize the inputs
 						sap.ui.getCore().byId("input1").setValue("");
-						sap.ui.getCore().byId("closeDisruptionComments").setValue(""); 
+						sap.ui.getCore().byId("closeDisruptionComments")
+								.setValue("");
 					},
-					
+
 					/***********************************************************
 					 * Close Pop-Up
 					 */
-					cancelClosingDisruption: function(oEvent){
+					cancelClosingDisruption : function(oEvent) {
 						this._closeDialog.close();
 					},
-					
+
 					showCommentBox : function(oEvt) {
 						var path = oEvt.getSource().sId;
 						var listnum = path.split("-");
 						listnum = listnum[listnum.length - 1];
 						var a = this.getView().byId(
-								this.getView().sId + "--commentBox-" +
-								this.getView().sId + "--disrptlist-"
+								this.getView().sId + "--commentBox-"
+										+ this.getView().sId + "--disrptlist-"
 										+ listnum);
 						a.setVisible(true);
 
@@ -129,14 +125,14 @@ sap.ui
 						var listnum = path.split("-");
 						listnum = listnum[listnum.length - 1];
 						var a = this.getView().byId(
-								this.getView().sId + "--commentBox-" +
-								this.getView().sId + "--disrptlist-"
+								this.getView().sId + "--commentBox-"
+										+ this.getView().sId + "--disrptlist-"
 										+ listnum);
 						a.setVisible(false);
 
 						var b = sap.ui.getCore().byId(
-								this.getView().sId + "--addComment-" +
-								this.getView().sId + "--disrptlist-"
+								this.getView().sId + "--addComment-"
+										+ this.getView().sId + "--disrptlist-"
 										+ listnum);
 						b.setVisible(true);
 
@@ -154,8 +150,9 @@ sap.ui
 						var listnum = path.split("-");
 						listnum = listnum[listnum.length - 1];
 						var sComment = this.getView().byId(
-								this.getView().sId + "--commentArea-" +
-								this.getView().sId + "--disrptlist-" + listnum).getValue();
+								this.getView().sId + "--commentArea-"
+										+ this.getView().sId + "--disrptlist-"
+										+ listnum).getValue();
 
 						var oComment = {
 							"MessageRef" : msgRef,
@@ -165,11 +162,11 @@ sap.ui
 						// Call Add comment Service
 						airbus.mes.disruptions.ModelManager
 								.addComment(oComment);
-						
+
 						this.getView().byId(
-									this.getView().sId + "--commentArea-" +
-									this.getView().sId + "--disrptlist-" + listnum).setValue("");
-						
+								this.getView().sId + "--commentArea-"
+										+ this.getView().sId + "--disrptlist-"
+										+ listnum).setValue("");
 
 					},
 
@@ -279,7 +276,7 @@ sap.ui
 
 						airbus.mes.stationtracker.operationDetailPopup.close();
 						airbus.mes.shell.oView.getController()
-								.renderStationTracker();						
+								.renderStationTracker();
 					}
 
 				});

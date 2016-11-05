@@ -16,11 +16,11 @@ airbus.mes.resourcepool.util.ModelManager = {
 
 	init : function(core) {
 		core.setModel(new sap.ui.model.json.JSONModel(), "ValueHelpModel");
-		core.setModel(new sap.ui.model.json.JSONModel(), "AvailableUsersModel");
+		/*core.setModel(new sap.ui.model.json.JSONModel(), "AvailableUsersModel");
 		core.setModel(new sap.ui.model.json.JSONModel(), "AssignedUsersModel");
 		core.setModel(new sap.ui.model.json.JSONModel(), "AvailableWCModel");
 		core.setModel(new sap.ui.model.json.JSONModel(), "AssignedWCModel");
-		core.setModel(new sap.ui.model.json.JSONModel(), "AvailableShiftModel");
+		core.setModel(new sap.ui.model.json.JSONModel(), "AvailableShiftModel");*/
 		core.setModel(new sap.ui.model.json.JSONModel(), "ResourcePoolDetailModel");
 		var dest;
 
@@ -90,7 +90,7 @@ airbus.mes.resourcepool.util.ModelManager = {
 		oValueHelpModel.loadData(geturlvaluehelp, null, false);
 	},
 
-	getUrlAvailableUsersModel : function() {
+	/*getUrlAvailableUsersModel : function() {
 
 		var urlAvailableUsers = this.urlModel.getProperty('urlavailableusers');
 		urlAvailableUsers = urlAvailableUsers.replace("$Site",
@@ -175,7 +175,7 @@ airbus.mes.resourcepool.util.ModelManager = {
 		var oAvailableShiftModel = sap.ui.getCore().getModel(
 				"AvailableShiftModel");
 		oAvailableShiftModel.loadData(geturlavailableShift, null, false);
-	},
+	},*/
 
 	getUrlResourcePoolDetail : function(){
 		var urlResourceDetailPool = this.urlModel.getProperty('resourcepooldetails');
