@@ -31,7 +31,7 @@
 						<HBox height="100%" class="fixHboxItemDisplay">
 
 							<List id="listAvailableUsers" height="100%"
-								items="{ResourcePoolDetailModel>/ns2:resourcePool/ns2:usersAvailable}"
+								items="{ResourcePoolDetailModel>/Rowsets/Rowset/3/Row}"
 								mode="{path:'ResourcePoolDetailModel>',formatter:'airbus.mes.resourcepool.util.Formatter.selectionMode'}"
 								includeItemInSelection="true" noDataText="{i18nModel>NoUserAvailable}"
 								rememberSelections="false" growingScrollToLoad="true" growing="true"
@@ -41,30 +41,34 @@
 										<VBox>
 											<HBox>
 												<Text class="customlistTitle"
-													text="{parts: ['ResourcePoolDetailModel>FNAME', 'ResourcePoolDetailModel>LNAME'], formatter:'airbus.mes.resourcepool.util.Formatter.nameFormatter'}"></Text>
-												<Text text="{ResourcePoolDetailModel>ns2:userId}" class="floatRight"></Text>
+													text="{ResourcePoolDetailModel>name}"></Text>
+												<Text text="{ResourcePoolDetailModel>userId}" class="floatRight"></Text>
 											</HBox>
 											<Text class="listItemDescrption"
-												text="{parts: ['ResourcePoolDetailModel>LOANED_RP_NAME', 'ResourcePoolDetailModel>NAME'], formatter:'airbus.mes.resourcepool.util.Formatter.userAlreadyAssigned'}"></Text>
+												text="{parts: ['ResourcePoolDetailModel>loanedToRPName', 'ResourcePoolDetailModel>assignedToRPName'], formatter:'airbus.mes.resourcepool.util.Formatter.userAlreadyAssigned'}"></Text>
 										</VBox>
 									</content>
-									<customData>
+																		<customData>
 										<core:CustomData key="personal_no"
-											value="{ResourcePoolDetailModel>ns2:personalNo}" />
+											value="{ResourcePoolDetailModel>personalNo}" />
 										<core:CustomData key="erp_user_id"
-											value="{ResourcePoolDetailModel>ERP_USER_ID}" />
+											value="{ResourcePoolDetailModel>erpUserId}" />
 										<core:CustomData key="loan"
-											value="{ResourcePoolDetailModel>LOANED_TO_POOL}" />
+											value="{ResourcePoolDetailModel>loanedToPool}" />
 										<core:CustomData key="assignedToPool"
-											value="{ResourcePoolDetailModel>NAME}" />
+											value="{ResourcePoolDetailModel>assignedToRPName}" />
 										<core:CustomData key="loanedToPool"
-											value="{ResourcePoolDetailModel>LOANED_RP_NAME}" />
+											value="{ResourcePoolDetailModel>loanedToRPName}" />
 										<core:CustomData key="fName"
-											value="{ResourcePoolDetailModel>FNAME}" />
+											value="{ResourcePoolDetailModel>name}" />
 										<core:CustomData key="lName"
-											value="{ResourcePoolDetailModel>LNAME}" />
+											value="" />
 										<core:CustomData key="user_id"
-											value="{ResourcePoolDetailModel>ns2:userId}" />
+											value="{ResourcePoolDetailModel>userId}" />
+											<core:CustomData key="type"
+											value="{ResourcePoolDetailModel>type}" />
+											<core:CustomData key="handle"
+											value="{ResourcePoolDetailModel>handle}" />
 									</customData>
 								</CustomListItem>
 							</List>
@@ -105,46 +109,50 @@
 					</infoToolbar>
 					<content>
 						<HBox height="100%" class="fixHboxItemDisplay">
-							<List id="listAllocatedUsers" items="{AssignedUsersModel>/Rowsets/Rowset/0/Row}"
+							<List id="listAllocatedUsers" items="{ResourcePoolDetailModel>/Rowsets/Rowset/1/Row}"
 								mode="{path:'ResourcePoolDetailModel>',formatter:'airbus.mes.resourcepool.util.Formatter.selectionMode'}"
 								includeItemInSelection="true" rememberSelections="false"
 								growingScrollToLoad="true" growing="true" growingThreshold="1000"
 								noDataText="{i18nModel>NoUserAssigned}">
 
 
-								<!-- <StandardListItem title="{parts: ['AssignedUsersModel>FNAME', 
-									'AssignedUsersModel>LNAME'], formatter:'airbus.mes.resourcepool.util.Formatter.nameFormatter'}" 
-									description="{AssignedUsersModel>USER_ID}" info="{parts: ['AssignedUsersModel>LOANED_RP_NAME', 
-									'AssignedUsersModel>NAME'], formatter:'airbus.mes.resourcepool.util.Formatter.assignedToSelf'}"> -->
+								<!-- <StandardListItem title="{parts: ['ResourcePoolDetailModel>FNAME', 
+									'ResourcePoolDetailModel>LNAME'], formatter:'airbus.mes.resourcepool.util.Formatter.nameFormatter'}" 
+									description="{ResourcePoolDetailModel>USER_ID}" info="{parts: ['ResourcePoolDetailModel>LOANED_RP_NAME', 
+									'ResourcePoolDetailModel>NAME'], formatter:'airbus.mes.resourcepool.util.Formatter.assignedToSelf'}"> -->
 								<CustomListItem>
 									<content>
 										<VBox>
 											<HBox>
 												<Text class="customlistTitle"
-													text="{parts: ['AssignedUsersModel>FNAME', 'AssignedUsersModel>LNAME'], formatter:'airbus.mes.resourcepool.util.Formatter.nameFormatter'}"></Text>
-												<Text text="{AssignedUsersModel>USER_ID}" class="floatRight"></Text>
+													text="{ResourcePoolDetailModel>name}"></Text>
+												<Text text="{ResourcePoolDetailModel>userId}" class="floatRight"></Text>
 											</HBox>
 											<Text class="listItemDescrption"
-												text="{parts: ['AssignedUsersModel>LOANED_RP_NAME', 'AssignedUsersModel>NAME'], formatter:'airbus.mes.resourcepool.util.Formatter.assignedToSelf'}"></Text>
+												text="{parts: ['ResourcePoolDetailModel>loanedToPool', 'ResourcePoolDetailModel>assignedToRPName'], formatter:'airbus.mes.resourcepool.util.Formatter.assignedToSelf'}"></Text>
 										</VBox>
 									</content>
 									<customData>
 										<core:CustomData key="personal_no"
-											value="{AssignedUsersModel>PERSONAL_NO}" />
+											value="{ResourcePoolDetailModel>personalNo}" />
 										<core:CustomData key="erp_user_id"
-											value="{AssignedUsersModel>ERP_USER_ID}" />
+											value="{ResourcePoolDetailModel>erpUserId}" />
 										<core:CustomData key="loan"
-											value="{AssignedUsersModel>LOANED_TO_POOL}" />
+											value="{ResourcePoolDetailModel>loanedToPool}" />
 										<core:CustomData key="assignedToPool"
-											value="{AssignedUsersModel>NAME}" />
+											value="{ResourcePoolDetailModel>assignedToRPName}" />
 										<core:CustomData key="loanedToPool"
-											value="{AssignedUsersModel>LOANED_RP_NAME}" />
+											value="{ResourcePoolDetailModel>loanedToRPName}" />
 										<core:CustomData key="fName"
-											value="{AssignedUsersModel>FNAME}" />
+											value="{ResourcePoolDetailModel>name}" />
 										<core:CustomData key="lName"
-											value="{AssignedUsersModel>LNAME}" />
+											value="" />
 										<core:CustomData key="user_id"
-											value="{AssignedUsersModel>USER_ID}" />
+											value="{ResourcePoolDetailModel>userId}" />
+											<core:CustomData key="type"
+											value="{ResourcePoolDetailModel>type}" />
+											<core:CustomData key="handle"
+											value="{ResourcePoolDetailModel>handle}" />
 									</customData>
 								</CustomListItem>
 

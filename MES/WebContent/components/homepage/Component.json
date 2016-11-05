@@ -10,5 +10,6 @@
 	    "libs": {
 	        "sap.ui.core.UIComponent": {},
 	        "sap.ui.base.Event":{}
+	    }
     }
 }

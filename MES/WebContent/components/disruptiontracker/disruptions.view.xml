@@ -28,7 +28,7 @@
 						placeholder="{disruptiontrackerI18n>selectStatus}"
 						selectionChange="filterByStatus">
 						<core:Item key="PENDING" text="{disruptiontrackerI18n>status.pending}" />
-						<core:Item key="ACKNOWLEDGED" text="{disruptiontrackerI18n>status.acknowledge}" />
+						<core:Item key="ACKNOWLEDGED" text="{disruptiontrackerI18n>status.acknowledged}" />
 						<core:Item key="SOLVED" text="{disruptiontrackerI18n>status.solved}" />
 						<core:Item key="CLOSED" text="{disruptiontrackerI18n>status.closed}" />
 						<core:Item key="REJECTED" text="{disruptiontrackerI18n>status.rejected}" />

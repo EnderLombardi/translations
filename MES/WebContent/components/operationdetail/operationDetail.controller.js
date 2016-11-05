@@ -72,7 +72,10 @@ sap.ui
 						this.disruptionsFlag = false;
 						
 						// Navigation to Status every time pop-up is opened
-						//this.nav.to(airbus.mes.operationdetail.status.oView.getId());
+						this.nav.to(airbus.mes.operationdetail.status.oView.getId());
+						this.getView().byId("opDetailSegmentButtons").setSelectedButton(
+								this.getView().byId("opDetailSegmentButtons").getButtons()[0].sId
+						);
 
 						// Collapse Operation Detail panel and show Expand
 						// button
@@ -214,6 +217,8 @@ sap.ui
 								airbus.mes.disruptions.ModelManager.loadDisruptionCategory();
 								this.disruptionsCustomDataFlag = true;
 							}
+							
+							airbus.mes.operationdetail.oView.setBusy(false); //Remove Busy Indicator
 							break;
 							
 							

@@ -76,7 +76,7 @@ sap.ui
 
 							// direct nav container to workcenter view
 							this.nav.to("idWorkCenterView");
-							
+
 						} else if (itemKey === "shifts") {
 
 							this.nav.to("idShiftView");
@@ -220,68 +220,44 @@ sap.ui
 						 * if no data was present in AssignedUsersModel then set
 						 * an empty Row
 						 */
-						if (!sap.ui.getCore().getModel("AssignedUsersModel").oData.Rowsets.Rowset[0].Row)
-							sap.ui.getCore().getModel("AssignedUsersModel").oData.Rowsets.Rowset[0].Row = [];
+						if (!sap.ui.getCore().getModel("ResourcePoolDetailModel").getProperty("/Rowsets/Rowset/1/Row/"))
+							sap.ui.getCore().getModel("ResourcePoolDetailModel").getProperty("/Rowsets/Rowset/1/").Row = [];
 
+						var rowIDs = [];
 						/* for each user selected to assign */
 						aUsersToAssign
 								.forEach(function(item) {
 
+									var oBinding = item.getBindingContext("ResourcePoolDetailModel");
+									var oUser = oBinding.getObject();
+									rowIDs.push(oUser.handle);
+									
 									/*
 									 * If any user is already loaned or assigned
 									 * then prepare error messages
 									 */
-									if (item.getCustomData()[2].getValue() != "---"
-											&& item.getCustomData()[3]
-													.getValue() != airbus.mes.resourcepool.util.ModelManager.resourceName)
+									if (oUser.loanedToPool != "" && oUser.assignedToRPName != airbus.mes.resourcepool.util.ModelManager.resourceName)
 										aError.push(item);
 									else {
 										/*
-										 * prepare a JSON object with all
-										 * details of Assigned User
+										 * Push JSON Object to Assigned Users Model
 										 */
-										// var info = item.getInfo().split("/
-										// ");
-										// var name =
-										// item.getCustomData()[3].getValue();
-										var loaned_RP_Name = item
-												.getCustomData()[4].getValue() ? item
-												.getCustomData()[4].getValue()
-												: "";
-
-										var oJsonAssignedUsers = {
-											"USER_ID" : item.getCustomData()[7]
-													.getValue(),
-											"SITE" : airbus.mes.resourcepool.util.ModelManager.site,
-											"NAME" : item.getCustomData()[3]
-													.getValue(),
-											"PERSONAL_NO" : item
-													.getCustomData()[0]
-													.getValue(),
-											"ERP_USER_ID" : item
-													.getCustomData()[1]
-													.getValue(),
-											"FNAME" : item.getCustomData()[5]
-													.getValue(),
-											"LNAME" : item.getCustomData()[6]
-													.getValue(),
-											"LOANED_TO_POOL" : item
-													.getCustomData()[2]
-													.getValue(),
-											"LOANED_RP_NAME" : loaned_RP_Name
-										}
-										/*
-										 * push JSON Object to
-										 * AssignedUsersModel
-										 */
-										sap.ui.getCore().getModel(
-												"AssignedUsersModel").oData.Rowsets.Rowset[0].Row
-												.push(oJsonAssignedUsers);
+										sap.ui.getCore().getModel("ResourcePoolDetailModel").getProperty("/Rowsets/Rowset/1/Row/").push(oUser);
 									}
 								});
 
-						sap.ui.getCore().getModel("AssignedUsersModel")
-								.refresh();
+						// Remove Users(s) from Available User model
+						$.each(rowIDs, function(key, handle){
+							var oAvailUsers = sap.ui.getCore().getModel("ResourcePoolDetailModel").getProperty("/Rowsets/Rowset/3/Row/")
+							$.each(oAvailUsers, function(key2, obj){
+								if(obj.handle == handle){
+									sap.ui.getCore().getModel("ResourcePoolDetailModel").getProperty("/Rowsets/Rowset/3/Row/").splice(key2, 1);
+									return false;
+								}
+							});
+						});
+						
+						sap.ui.getCore().getModel("ResourcePoolDetailModel").refresh();
 
 						/* remove all selections on screen */
 						this.getView().byId("listAvailableUsers")
@@ -290,25 +266,7 @@ sap.ui
 								false);
 						this.getView().byId("allAssignedUsers").setSelected(
 								false);
-
-						/* remove assigned users from AvailableUsersModel */
-						var oModelAvailableUsers = sap.ui.getCore().getModel(
-								"AvailableUsersModel").oData.Rowsets.Rowset[0].Row;
-
-						for (var i = 0; i < aUsersToAssign.length; i++) {
-							if (aUsersToAssign[i].getCustomData()[2].getValue() != "---"
-									&& aUsersToAssign[i].getCustomData()[3]
-											.getValue() != airbus.mes.resourcepool.util.ModelManager.resourceName)
-								continue;
-							for (var j = 0; j < oModelAvailableUsers.length; j++) {
-								if (oModelAvailableUsers[j].USER_ID == aUsersToAssign[i]
-										.getCustomData()[7].getValue())
-									oModelAvailableUsers.splice(j, 1);
-							}
-						}
-
-						sap.ui.getCore().getModel("AvailableUsersModel")
-								.refresh();
+						
 
 						/* for loaned and assigned users show error message */
 						if (aError.length != 0)
@@ -331,7 +289,6 @@ sap.ui
 							airbus.mes.resourcepool.oView
 									.addDependent(airbus.mes.resourcepool.messageDialog);
 						}
-						
 
 						for (var i = 0; i < aError.length; i++) {
 							airbus.mes.resourcepool.messageDialog.getContent()[0]
@@ -412,76 +369,40 @@ sap.ui
 						 * if no data is present in AvailableUsersModel then
 						 * create a row
 						 */
-						if (!sap.ui.getCore().getModel("AvailableUsersModel").oData.Rowsets.Rowset[0].Row)
-							sap.ui.getCore().getModel("AvailableUsersModel").oData.Rowsets.Rowset[0].Row = [];
+						if (!sap.ui.getCore().getModel("ResourcePoolDetailModel").getProperty("/Rowsets/Rowset/3/Row/"))
+							sap.ui.getCore().getModel("ResourcePoolDetailModel").getProperty("/Rowsets/Rowset/3/").Row = [];
 
+						var rowIDs = [];
 						/* for each user which is to be unassigned */
 						aUsersToUnassign
 								.forEach(function(item) {
-									/* create JSON Object */
-									var loaned_RP_Name = item.getCustomData()[4]
-											.getValue() ? item.getCustomData()[4]
-											.getValue()
-											: "";
+									
+									var oBinding = item.getBindingContext("ResourcePoolDetailModel");
+									var oUser = oBinding.getObject();
+									rowIDs.push(oUser.handle);
+									
+									// If Loaned to current resource, empty loanedToPool field
+									if (oUser.assignedToRPName != airbus.mes.resourcepool.util.ModelManager.resourceName)
+										oUser.loanedToPool = "";
 
-									if (item.getCustomData()[3].getValue() != airbus.mes.resourcepool.util.ModelManager.resourceName)
-										// If Loaned to current resource
-										var oJsonAvailableUsers = {
-											"USER_ID" : item.getCustomData()[7]
-													.getValue(),
-											"SITE" : airbus.mes.resourcepool.util.ModelManager.site,
-											"NAME" : item.getCustomData()[3]
-													.getValue(),
-											"PERSONAL_NO" : item
-													.getCustomData()[0]
-													.getValue(),
-											"ERP_USER_ID" : item
-													.getCustomData()[1]
-													.getValue(),
-											"FNAME" : item.getCustomData()[5]
-													.getValue(),
-											"LNAME" : item.getCustomData()[6]
-													.getValue(),
-											"LOANED_TO_POOL" : "---",
-											"LOANED_RP_NAME" : loaned_RP_Name
-										}
-									else
-										// If assigned to current resource
-										// and may be loaned to other
-										// resource
-										var oJsonAvailableUsers = {
-											"USER_ID" : item.getCustomData()[7]
-													.getValue(),
-											"SITE" : airbus.mes.resourcepool.util.ModelManager.site,
-											"NAME" : item.getCustomData()[3]
-													.getValue(),
-											"PERSONAL_NO" : item
-													.getCustomData()[0]
-													.getValue(),
-											"ERP_USER_ID" : item
-													.getCustomData()[1]
-													.getValue(),
-											"FNAME" : item.getCustomData()[5]
-													.getValue(),
-											"LNAME" : item.getCustomData()[6]
-													.getValue(),
-											"LOANED_TO_POOL" : item
-													.getCustomData()[2]
-													.getValue(),
-											"LOANED_RP_NAME" : loaned_RP_Name
-										}
-
-										/*
-										 * push prepared JSON Object to
-										 * AvailableUsersModel
-										 */
-									sap.ui.getCore().getModel(
-											"AvailableUsersModel").oData.Rowsets.Rowset[0].Row
-											.push(oJsonAvailableUsers);
+									/*
+									 * Push prepared JSON Object to Available Users Model
+									 */
+									sap.ui.getCore().getModel("ResourcePoolDetailModel").getProperty("/Rowsets/Rowset/3/Row/").push(oUser);
 								});
 
-						sap.ui.getCore().getModel("AvailableUsersModel")
-								.refresh();
+						// Remove User(s) from Assigned User model
+						$.each(rowIDs, function(key, handle){
+							var oAssigUsers = sap.ui.getCore().getModel("ResourcePoolDetailModel").getProperty("/Rowsets/Rowset/1/Row/")
+							$.each(oAssigUsers, function(key2, obj){
+								if(obj.handle == handle){
+									sap.ui.getCore().getModel("ResourcePoolDetailModel").getProperty("/Rowsets/Rowset/1/Row/").splice(key2, 1);
+									return false;
+								}
+							});
+						});
+						
+						sap.ui.getCore().getModel("ResourcePoolDetailModel").refresh();
 
 						/* remove all selection */
 						this.getView().byId("listAllocatedUsers")
@@ -490,21 +411,7 @@ sap.ui
 								false);
 						this.getView().byId("allAssignedUsers").setSelected(
 								false);
-
-						/* remove Users from AssignedUsersModel */
-						var oModelAssignedUsers = sap.ui.getCore().getModel(
-								"AssignedUsersModel").oData.Rowsets.Rowset[0].Row;
-
-						for (var i = 0; i < aUsersToUnassign.length; i++) {
-							for (var j = 0; j < oModelAssignedUsers.length; j++) {
-								if (oModelAssignedUsers[j].USER_ID === aUsersToUnassign[i]
-										.getCustomData()[7].getValue())
-									oModelAssignedUsers.splice(j, 1);
-							}
-						}
-
-						sap.ui.getCore().getModel("AssignedUsersModel")
-								.refresh();
+						
 					},
 
 					/***********************************************************
@@ -532,57 +439,45 @@ sap.ui
 						 * if no data was present in AssignedWCModel then set an
 						 * empty Row
 						 */
-						if (!sap.ui.getCore().getModel("AssignedWCModel").oData.Rowsets.Rowset[0].Row)
-							sap.ui.getCore().getModel("AssignedWCModel").oData.Rowsets.Rowset[0].Row = [];
+						if (!sap.ui.getCore().getModel("ResourcePoolDetailModel").getProperty("/Rowsets/Rowset/2/Row/"))
+							sap.ui.getCore().getModel("ResourcePoolDetailModel").getProperty("/Rowsets/Rowset/2/").Row = [];
 
-						/* for each WC selected to assign */
+						var rowIDs = [];
+						/* For each WC selected to assign */
 						aWorkCenterToAssign
 								.forEach(function(item) {
+									var oBinding = item.getBindingContext("ResourcePoolDetailModel");
+									var oWorkCenter = oBinding.getObject();
+									rowIDs(oWorkCenter.handle);
 									/*
-									 * prepare a JSON object with all details of
-									 * Assigned WC
+									 * Push JSON Object to Assigned WC Model
 									 */
-									var oJsonAssignedWC = {
-										"ASSIGNMENT_NAME" : item.getTitle(),
-										"DESCRIPTION" : item.getDescription()
-									}
-									/*
-									 * push JSON Object to AssignedWCModel
-									 */
-									sap.ui.getCore()
-											.getModel("AssignedWCModel").oData.Rowsets.Rowset[0].Row
-											.push(oJsonAssignedWC);
+									sap.ui.getCore().getModel("ResourcePoolDetailModel").getProperty("/Rowsets/Rowset/2/Row/").push(oWorkCenter);
 								});
 
-						sap.ui.getCore().getModel("AssignedWCModel").refresh();
+						// Remove WorkCenters(s) from Available WC model
+						$.each(rowIDs, function(key, handle){
+							var oAvailWC = sap.ui.getCore().getModel("ResourcePoolDetailModel").getProperty("/Rowsets/Rowset/4/Row/")
+							$.each(oAvailWC, function(key2, obj){
+								if(obj.handle == handle){
+									sap.ui.getCore().getModel("ResourcePoolDetailModel").getProperty("/Rowsets/Rowset/4/Row/").splice(key2, 1);
+									return false;
+								}
+							});
+						});
+						sap.ui.getCore().getModel("ResourcePoolDetailModel").refresh();
 
-						/* remove all selections on screen */
+						/* Remove all selections on screen */
 						this.getView().byId("listAvailableWorkCenter")
 								.removeSelections();
 						this.getView().byId("allAvailableWC")
 								.setSelected(false);
 						this.getView().byId("allAssignedWC").setSelected(false);
-
-						/* remove assigned WC from AvailableWCModel */
-						var oModelAvailableWC = sap.ui.getCore().getModel(
-								"AvailableWCModel").oData.Rowsets.Rowset[0].Row;
-
-						for (var i = 0; i < aWorkCenterToAssign.length; i++) {
-							for (var j = 0; j < oModelAvailableWC.length; j++) {
-								if (oModelAvailableWC[j].WorkCenter == aWorkCenterToAssign[i]
-										.getTitle()
-										&& oModelAvailableWC[j].Description == aWorkCenterToAssign[i]
-												.getDescription())
-									oModelAvailableWC.splice(j, 1);
-							}
-						}
-
-						sap.ui.getCore().getModel("AvailableWCModel").refresh();
-
+						
 					},
 
 					/***********************************************************
-					 * triggers when assign button is clicked on WC Tab
+					 * Triggers when assign button is clicked on WC Tab
 					 **********************************************************/
 					unassignWorkCenter : function(evt) {
 
@@ -603,45 +498,37 @@ sap.ui
 						}
 						airbus.mes.resourcepool.util.ModelManager.anyChangesFlag = true;
 
-						if (!sap.ui.getCore().getModel("AvailableWCModel").oData.Rowsets.Rowset[0].Row)
-							sap.ui.getCore().getModel("AvailableWCModel").oData.Rowsets.Rowset[0].Row = [];
-
+						if (!sap.ui.getCore().getModel("ResourcePoolDetailModel").getProperty("/Rowsets/Rowset/4/Row/"))
+							sap.ui.getCore().getModel("ResourcePoolDetailModel").getProperty("/Rowsets/Rowset/4/").Row = [];
+						
+						var rowIDs = [];
 						aWorkCenterToUnassign
 								.forEach(function(item) {
-									var oJsonAvailableWC = {
-										"WorkCenter" : item.getTitle(),
-										"Description" : item.getDescription()
-									}
-
-									sap.ui.getCore().getModel(
-											"AvailableWCModel").oData.Rowsets.Rowset[0].Row
-											.push(oJsonAvailableWC);
+									var oBinding = item.getBindingContext("ResourcePoolDetailModel");
+									var oWorkCenter = oBinding.getObject();
+									rowIDs.push(oWrokCenter.handle);
+									/*
+									 * Push JSON Object to Available WC Model
+									 */
+									sap.ui.getCore().getModel("ResourcePoolDetailModel").getProperty("/Rowsets/Rowset/4/Row/").push(oWorkCenter);									
 								});
 
-						sap.ui.getCore().getModel("AvailableWCModel").refresh();
+						// Remove WorkCenters(s) from Assigned WC model
+						$.each(rowIDs, function(key, handle){
+							var oAssigWC = sap.ui.getCore().getModel("ResourcePoolDetailModel").getProperty("/Rowsets/Rowset/2/Row/")
+							$.each(oAssigWC, function(key2, obj){
+								if(obj.handle == handle){
+									sap.ui.getCore().getModel("ResourcePoolDetailModel").getProperty("/Rowsets/Rowset/2/Row/").splice(key2, 1);
+									return false;
+								}
+							});
+						});
 
 						this.getView().byId("listAllocatedWorkCenter")
 								.removeSelections();
 						this.getView().byId("allAssignedWC").setSelected(false);
 						this.getView().byId("allAvailableWC")
 								.setSelected(false);
-
-						var oModelAssignedWC = sap.ui.getCore().getModel(
-								"AssignedWCModel").oData.Rowsets.Rowset[0].Row;
-						var length = sap.ui.getCore().getModel(
-								"AssignedWCModel").oData.Rowsets.Rowset[0].Row.length
-						for (var i = 0; i < aWorkCenterToUnassign.length; i++) {
-							for (var j = 0; j < oModelAssignedWC.length; j++) {
-								if (oModelAssignedWC[j].ASSIGNMENT_NAME === aWorkCenterToUnassign[i]
-										.getTitle()
-										&& oModelAssignedWC[j].DESCRIPTION === aWorkCenterToUnassign[i]
-												.getDescription())
-									oModelAssignedWC.splice(j, 1);
-							}
-						}
-
-						sap.ui.getCore().getModel("AssignedWCModel").refresh();
-
 					},
 
 					/***********************************************************
@@ -677,7 +564,7 @@ sap.ui
 						}
 
 					},
-					
+
 					onSelectAllUsers : function(oEvent) {
 
 						var flag = oEvent.getSource().getSelected();
@@ -1034,11 +921,11 @@ sap.ui
 					cancelForm : function(oEvt) {
 						if (airbus.mes.resourcepool.util.ModelManager.resourceName === undefined
 								|| airbus.mes.resourcepool.util.ModelManager.resourceName == "") {
-							 nav.back();
+							nav.back();
 						}
-					},	
-					
-					closeForm: function(){
+					},
+
+					closeForm : function() {
 						airbus.mes.resourcepool.searchResourcePool.close();
 					},
 
@@ -1428,7 +1315,7 @@ sap.ui
 
 						}
 					},
-					
+
 					/***********************************************************
 					 * update description using dialog box
 					 **********************************************************/
@@ -1525,40 +1412,28 @@ sap.ui
 						this.getView().byId("searchAssignedWC").clear();
 					},
 
-				/*	editTeamOpen : function() {
-						if (airbus.mes.resourcepool.editTeam === undefined) {
-
-							airbus.mes.resourcepool.editTeam = sap.ui
-									.xmlfragment(
-											"editTeam",
-											"airbus.mes.resourcepool.views.editTeam",
-											airbus.mes.resourcepool.oView
-													.getController());
-							airbus.mes.resourcepool.oView
-									.addDependent(airbus.mes.resourcepool.editTeam);
-						}
-
-						// Open
-						airbus.mes.resourcepool.editTeam.open();
-
-						// Set Site, Resource Pool name and Description
-						sap.ui.getCore().byId("editTeam--site").setText(
-								airbus.mes.resourcepool.util.ModelManager.site);
-						sap.ui
-								.getCore()
-								.byId("editTeam--resourcePoolName")
-								.setText(
-										airbus.mes.resourcepool.util.ModelManager.resourceName);
-						sap.ui
-								.getCore()
-								.byId("editTeam--description")
-								.setValue(
-										airbus.mes.resourcepool.util.ModelManager.resourceDescription);
-					},
-
-					editTeamClose : function() {
-						airbus.mes.resourcepool.editTeam.close();
-					},*/
+					/*
+					 * editTeamOpen : function() { if
+					 * (airbus.mes.resourcepool.editTeam === undefined) {
+					 * 
+					 * airbus.mes.resourcepool.editTeam = sap.ui .xmlfragment(
+					 * "editTeam", "airbus.mes.resourcepool.views.editTeam",
+					 * airbus.mes.resourcepool.oView .getController());
+					 * airbus.mes.resourcepool.oView
+					 * .addDependent(airbus.mes.resourcepool.editTeam); }
+					 *  // Open airbus.mes.resourcepool.editTeam.open();
+					 *  // Set Site, Resource Pool name and Description
+					 * sap.ui.getCore().byId("editTeam--site").setText(
+					 * airbus.mes.resourcepool.util.ModelManager.site); sap.ui
+					 * .getCore() .byId("editTeam--resourcePoolName") .setText(
+					 * airbus.mes.resourcepool.util.ModelManager.resourceName);
+					 * sap.ui .getCore() .byId("editTeam--description")
+					 * .setValue(
+					 * airbus.mes.resourcepool.util.ModelManager.resourceDescription); },
+					 * 
+					 * editTeamClose : function() {
+					 * airbus.mes.resourcepool.editTeam.close(); },
+					 */
 
 					/***********************************************************
 					 * Triggers when Save button is clicked on the Pop-Up
@@ -1721,20 +1596,21 @@ sap.ui
 
 					},
 
-					afterNavigate: function(oEvt){
-						
-						if(oEvt.getParameters().toId == "idUsersView"){
-							this.getView().byId("availableUsersPanel").rerender();
-							this.getView().byId("assignedUsersPanel").rerender();
-						}
+					afterNavigate : function(oEvt) {
 
-						else if (oEvt.getParameters().toId == "idWorkCenterView"){
-							this.getView().byId("availableWCPanel").rerender();
-							this.getView().byId("assignedWCPanel").rerender();
-						}
+						// if(oEvt.getParameters().toId == "idUsersView"){
+						// this.getView().byId("availableUsersPanel").rerender();
+						// this.getView().byId("assignedUsersPanel").rerender();
+						// }
+						//
+						// else if (oEvt.getParameters().toId ==
+						// "idWorkCenterView"){
+						// this.getView().byId("availableWCPanel").rerender();
+						// this.getView().byId("assignedWCPanel").rerender();
+						// }
 					},
-					
-					onNavBack: function(oEvent){
+
+					onNavBack : function(oEvent) {
 						nav.back();
 					}
 				});

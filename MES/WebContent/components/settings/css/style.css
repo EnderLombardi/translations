@@ -46,7 +46,20 @@ font-style: normal !important;
 	background: #0F2D65 ! important;
 	border: 0;
 }
-
+.classSettingPage .pageHeader {
+	box-shadow: 0px 2px 15px -5px #0F2D65;
+    border: none;
+    border-top: 0.6rem solid #ffffff;
+    position: relative;
+    z-index: 10;
+}
+.classSettingPage .pageHeader span {
+    font-size: 1.2rem;
+    color: white;
+}
+.sapMPage .classSettingPage >.sapMPageHeader + .sapMPageSubHeader + section {
+	margin-top:0.55rem;
+}
 .pageTitle {
 	color: white !important;
 	font-family: "Arial", Sans-serif !important;
@@ -55,6 +68,89 @@ font-style: normal !important;
   font-style: normal;
   font-stretch: normal;
   color: #ffffff;
+}
+.classListProgram .sapMLIBContent .sapMHBox .sapMFlexItem:nth-child(2):before {    
+    content: ' ';
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+}
+.classListProgram .sapMLIBContent div > div:nth-child(2) {
+	text-align:center;
+}
+.classListProgram .sapMLIBContent div > div:nth-child(2) img {
+    display: inline-block;
+    vertical-align: middle;
+}
+.classListProgramRadioBtn .sapMRbB {
+	display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+}
+.classListProgramRadioBtn .sapMRbB .sapMRbBOut {
+	margin: 1.2rem 0 1.2rem 1.2rem;
+	border: 2px solid #73d2e6;
+}
+.classListProgramRadioBtn label {
+    display: inline-block;
+    vertical-align: middle;
+}
+.classListProgram {
+	border: 1px solid #e5e5e5;
+    border-bottom: 0;
+    margin-top: 0.8rem!important;
+    margin-left: 0.8rem!important;
+}
+.classOtherSetting .sapUiFormTitle, .classListProgram .sapMListHdr, .classSelectListBox .sapMListHdr {
+	text-shadow:none;
+}
+.classOtherSetting .sapUiFormTitle, .classListProgram .sapMListHdr {
+	border-bottom: 1px solid #e5e5e5;	
+}
+.classOtherSetting {
+	border: 1px solid #e5e5e5;
+	margin-top: 0.8rem!important;
+}
+.classOtherSetting label {
+	color:rgba(0, 86, 112, 0.94);
+}
+.classOtherSetting .sapUiFormM .sapUiFormResGridCont {
+    padding: 0.6rem!important;	
+}
+.classSelectListBox .sapMBar label {
+	color: rgba(0, 86, 112, 0.94);
+	overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 1.125rem;
+    font-family: Arial,Helvetica,sans-serif;
+    height: 3rem;
+    line-height: 3rem;
+    padding: 0 1rem;
+    }
+.classSelectList {
+    max-width: 100%;
+    margin: 0!important;
+    border: none;
+}
+.classSelectListBox {
+	margin-top: 0.8rem;
+    border: 1px solid #e5e5e5;
+    border-right:none;
+}
+.classSelectListBox .sapMListHdr {
+	border:none
+	
+}
+.classSelectList > li {
+	border-bottom: 1px solid #e5e5e5;
+}
+.classSelectList > li:last-chlid {
+	border-bottom: none;
+}
+
+.sap-desktop .classSettingPage  .sapUiLoSplitterH.sapUiLoSplitter>.sapUiLoSplitterBar {
+
 }
 
 .pageWelcome {

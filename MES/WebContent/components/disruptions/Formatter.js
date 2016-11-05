@@ -3,6 +3,8 @@
 jQuery.sap.declare("airbus.mes.disrtuptions.Formatter");
 
 airbus.mes.disruptions.Formatter = {
+		monthNames : [ "January", "February", "March", "April", "May", "June",
+		   			"July", "August", "September", "October", "November", "December" ],
 
 	json2xml : function(o, tab) {
 		var toXml = function(v, name, ind) {
@@ -60,5 +62,35 @@ airbus.mes.disruptions.Formatter = {
 			return "Not Blocked";
 		else if (gravity == 2)
 			return "Disturbed";
+	},
+	
+	formatUserGroup : function(userGroup){
+		
+		return userGroup.split(",")[1];
+	},
+	
+	getCurrentdate : function() {
+		var today = new Date();
+		var dd = today.getDate();
+		var mm = today.getMonth(); // January is 0!
+
+		var yyyy = today.getFullYear();
+		if (dd < 10) {
+			dd = '0' + dd
+		}
+		
+		var month = airbus.mes.disruptions.Formatter.monthNames[mm];
+		
+		return (month + ' ' + dd + ',' + yyyy);
+	},
+	
+	getCurrentTime : function() {
+		var today = new Date();
+		var HH = today.getHours();
+		var mm = today.getMinutes();
+		var ss = today.getSeconds();
+		
+		return (HH + ":" + mm + ":" + ss);
 	}
+
 };

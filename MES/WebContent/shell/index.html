@@ -14,7 +14,7 @@
 <!-- <body class="sapUiBody" role="application">
 	<div id="content"></div>
 </body> -->
-	<body class="sapUiBody" id="content" style="background-color: #002C63; margin: 0;">
+	<body class="sapUiBody" id="content" style="background: #002C63; margin: 0;">
 		<div id="welcome_airbus" style="height: 100vh; display: flex;">
 			<div style="margin: auto;">
 				<img src="../images/Airbus-xl.png" style="display: block; width: 40vw; height: auto; margin: auto; transform: translateY(2vh);" />
@@ -24,7 +24,8 @@
 		
 	<!-- src="https://sapui5.netweaver.ondemand.com/1.36.11/resources/sap-ui-core.js" -->
 <script
-	src="../resources/sap-ui-core.js"
+
+	src="https://sapui5.netweaver.ondemand.com/1.36.11/resources/sap-ui-core.js"
 	id="sap-ui-bootstrap" data-sap-ui-libs="sap.m, sap.ui.table"
 	data-sap-ui-theme="sap_bluecrystal"
 	data-sap-ui-xx-bindingSyntax="complex">
@@ -55,7 +56,9 @@
 		airbus.mes.component.settings = sap.ui.getCore().createComponent({
 			name : "airbus.mes.settings", // root component folder is resources
 		});
-	
+		
+		airbus.mes.settings.oView.getController().getUserSettings();
+		
 		nav = airbus.mes.shell.oView.byId("navCont");
 		nav.afterNavigate;
 	

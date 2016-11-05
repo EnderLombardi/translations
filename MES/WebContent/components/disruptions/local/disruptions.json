@@ -340,7 +340,7 @@
 				"ClosureDate": "",
 				"OriginatorGroup": "",
 				"ResponsibleGroup": "Logistic Support",
-				"TimeLost": "---"
+				"TimeLost": "123"
 			}, {
 				"MessageRef": "MessageDO:CHES,286446d6896:1581a1d1173:-7469",
 				"MessageType": "MessageTypeBO:CHES,FREE_FORM",
@@ -359,7 +359,7 @@
 				"ClosureDate": "",
 				"OriginatorGroup": "",
 				"ResponsibleGroup": "Logistic Support",
-				"TimeLost": "---"
+				"TimeLost": "456"
 			}, {
 				"MessageRef": "MessageDO:CHES,286446d6896:1581a1d1173:-7469",
 				"MessageType": "MessageTypeBO:CHES,FREE_FORM",

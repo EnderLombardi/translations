@@ -1,3 +1,7 @@
+.classFormHint{
+	font-size: 80% !important;
+    font-style: italic !important;
+}
 /****** classes for Disruption screen **********/
 .disruptionDetail .formDisruptionDetail {
 	background-color: rgba(0,0,0,0.2) !important;
@@ -22,6 +26,7 @@
 .disruptionDetail .formoperationDisruptionsModel > div > div {
 	background-color: #F5F5F5 !important;
 }
+
 /****** End of CSS for Disruption screen **********/
 
 
