@@ -296,6 +296,7 @@ sap.ui
 					
 
 					onReportDisruption : function(oEvent) {
+						airbus.mes.operationdetail.oView.setBusy(true); //Set Busy Indicator
 
 						var oOperDetailNavContainer = sap.ui.getCore().byId(
 								"operationDetailsView--operDetailNavContainer");
