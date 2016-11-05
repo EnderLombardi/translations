@@ -84,8 +84,8 @@ sap.ui
 
 						}
 						
-						sap.ui.getCore().byId("timeLost").setValue(timeLost);
-						sap.ui.getCore().byId("msgRef").setText(msgRef);
+						sap.ui.getCore().byId("closeDisruption-timeLost").setValue(timeLost);
+						sap.ui.getCore().byId("closeDisruption-msgRef").setText(msgRef);
 						
 						this._closeDialog.open();
 					},
@@ -97,9 +97,9 @@ sap.ui
 
 						this._closeDialog.close();
 						
-						var timeLost = sap.ui.getCore().byId("timeLost");
+						var timeLost = sap.ui.getCore().byId("closeDisruption-timeLost");
 						var comment =  sap.ui.getCore().byId("closeDisruptionComments");
-						var msgRef = sap.ui.getCore().byId("msgRef");
+						var msgRef = sap.ui.getCore().byId("closeDisruption-msgRef");
 						
 						var timeLostValue = timeLost.getValue();
 						var commentValue =  comment.getValue();
@@ -115,7 +115,7 @@ sap.ui
 								.closeDisruption(msgRefValue, commentValue, timeLostValue);
 						
 						// Initialize the inputs
-						sap.ui.getCore().byId("input1").setValue("");
+						sap.ui.getCore().byId("closeDisruption-timeLost").setValue("");
 						sap.ui.getCore().byId("closeDisruptionComments").setValue("");
 					},
 
@@ -125,14 +125,14 @@ sap.ui
 					cancelClosingDisruption : function(oEvent) {
 						this._closeDialog.close();
 						
-						var timeLost = sap.ui.getCore().byId("timeLost");
+						var timeLost = sap.ui.getCore().byId("closeDisruption-timeLost");
 						var comment =  sap.ui.getCore().byId("closeDisruptionComments");
-						var msgRef = sap.ui.getCore().byId("msgRef");
+						var msgRef = sap.ui.getCore().byId("closeDisruption-msgRef");
 						
 						// Initialize the inputs							
 						timeLost.setValue("");
 						comment.setValue("");
-						msgRef.setValue("");
+						msgRef.setText("");
 					},
 					
 					/********************************************
@@ -146,6 +146,11 @@ sap.ui
 						if (!this._rejectDialog) {
 
 							this._rejectDialog = sap.ui.xmlfragment("airbus.mes.disruptions.fragment.commentBoxDisruption",this);
+							
+							var title = this.getView().getModel("i18nModel").getProperty("rejectDisruption");
+							
+							sap.ui.getCore().byId("disruptionCommentDialogue").setTitle(title);
+							sap.ui.getCore().byId("disruptionCommentOK").attachPress(this.onAcceptDisruptionComment);
 
 							this.getView().addDependent(this._rejectDialog);
 
@@ -155,7 +160,7 @@ sap.ui
 					/********************************************
 					 * Confirming Reject Disruption pop-up
 					 */
-					onAcceptRejectDisruption: function(oEvent){
+					onAcceptDisruptionComment: function(oEvent){
 						var rejComment = this.getView().byId("rejectDisruptionComment").getValue();
 						
 						sap.ui.getCore().byId("rejectDisruptionComment").setValue("");
@@ -165,8 +170,8 @@ sap.ui
 					/********************************************
 					 * close the Reject Disruption pop-up
 					 */
-					oncancelRejectDisruption: function(oEvent){
-						sap.ui.getCore().byId("rejectDisruptionComment").setValue("");
+					onCancelDisruptionComment: function(oEvent){
+						sap.ui.getCore().byId("disruptionCommentBox").setValue("");
 						this._rejectDialog.close();
 
 					},

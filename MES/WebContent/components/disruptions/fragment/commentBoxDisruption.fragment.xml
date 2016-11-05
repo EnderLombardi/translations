@@ -1,8 +1,7 @@
 <core:FragmentDefinition xmlns:core="sap.ui.core"
 	xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.ui.layout.form"
 	xmlns:l="sap.ui.layout">
-	<Dialog contentHeight="30%" contentWidth="60%" id="disruotionCommentDialogue"
-		title="{i18nModel>rejectDisruption}">
+	<Dialog contentHeight="30%" contentWidth="60%" id="disruptionCommentDialogue">
 		<content>
 			<f:SimpleForm id="rejectDisruption" backgroundDesign="Transparent"
 				maxContainerCols="2" editable="true" layout="ResponsiveGridLayout"
@@ -17,7 +16,7 @@
 
 		<buttons>
 			<Button text="{i18nModel>ok}" id="disruptionCommentOK" press="" type="Accept" />
-			<Button text="{i18nModel>cancel}" press="onCancelDisruptionComment" />
+			<Button text="{i18nModel>cancel}" id="asd" press="onCancelDisruptionComment" />
 		</buttons>
 
 	</Dialog>
