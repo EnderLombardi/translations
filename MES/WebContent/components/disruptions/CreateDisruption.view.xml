@@ -190,7 +190,7 @@
 									</f:label>
 									<f:fields>
 										<DatePicker enabled="false" id="openDate" displayFormat="long"
-											value="{path: 'i18nModel>OpenDate', formatter: 'airbus.mes.disruptions.Formatter.getCurrentdate'}">
+											value="{path: 'DisruptionDetailModel>/OpeningTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}">
 											<layoutData>
 												<l:GridData span="L3 M6 S12" />
 											</layoutData>
@@ -225,7 +225,7 @@
 										</Label>
 									</f:label>
 									<f:fields>
-										<TimePicker enabled="false" id="openTime" displayFormat="HH:mm:ss" valueFormat="HH:mm:ss" value="{path: 'DisruptionDetailModel>OpeningTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}">
+										<TimePicker enabled="false" id="openTime" displayFormat="HH:mm:ss" valueFormat="HH:mm:ss" value="{path: 'DisruptionDetailModel>/OpeningTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}">
 											<layoutData>
 												<l:GridData span="L3 M6 S12" />
 											</layoutData>
