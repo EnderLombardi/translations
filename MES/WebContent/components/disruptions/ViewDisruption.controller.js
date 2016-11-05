@@ -371,9 +371,7 @@ sap.ui
 					},
 
 					onReportDisruption : function(oEvent) {
-						airbus.mes.operationdetail.oView.setBusy(true); // Set
-						// Busy
-						// Indicator
+						airbus.mes.operationdetail.oView.setBusy(true); // Set Busy Indicator
 
 						var oOperDetailNavContainer = sap.ui.getCore().byId(
 								"operationDetailsView--operDetailNavContainer");
@@ -401,37 +399,23 @@ sap.ui
 
 					onEditDisruption : function(oEvent) {
                        	
-						//to auto fill fields on edit screen
+						// create a new model to autofill the data on edit screen
+						sap.ui.getCore().setModel(new sap.ui.model.json.JSONModel(),"DisruptionDetailModel");
+						var oModel = sap.ui.getCore().getModel("DisruptionDetailModel");
+		
+						// set the data for this new model from the already loaded model 
+						var oBindingContext= oEvent.getSource().getBindingContext("operationDisruptionsModel");
+
+						oModel.setData(oBindingContext.getProperty(oBindingContext.sPath));
+						sap.ui.getCore().getModel("DisruptionDetailModel").refresh();
 						
-
-						sap.ui.getCore().setModel(new sap.ui.model.json.JSONModel(),
-						"DisruptionModel");
-						var oTranModel = sap.ui.getCore().getModel("DisruptionModel");
 						
-
-						// to auto fill fields on edit screen
-
-						var oTranModel = sap.ui.getCore().getModel(
-								"DisruptionModel");
-
-						// set the data for the model
-
-						var oBind = oEvent.getSource().getBindingContext(
-						"operationDisruptionsModel");
-
-						oTranModel
-								.setData(oEvent.getSource().getBindingContext(
-										"operationDisruptionsModel"));
-
-
+						// Navigate to Edit Screen
 						var oOperDetailNavContainer = sap.ui.getCore().byId(
 								"operationDetailsView--operDetailNavContainer");
 
                         
-						
-						
-					
-						
+						//if component is not created - create the component
 						if (airbus.mes.operationdetail.createDisruption === undefined
 								|| airbus.mes.operationdetail.createDisruption.oView === undefined) {
 

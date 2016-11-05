@@ -69,28 +69,47 @@ airbus.mes.disruptions.Formatter = {
 		return userGroup.split(",")[1];
 	},
 	
-	getCurrentdate : function() {
-		var today = new Date();
-		var dd = today.getDate();
-		var mm = today.getMonth(); // January is 0!
+	getCurrentdate : function(datetime) {
+		
+		if(datetime == undefined)
+			{
+			var today = new Date();
+			var dd = today.getDate();
+			var mm = today.getMonth(); // January is 0!
 
-		var yyyy = today.getFullYear();
-		if (dd < 10) {
-			dd = '0' + dd
-		}
+			var yyyy = today.getFullYear();
+			if (dd < 10) {
+				dd = '0' + dd
+			}
+			
+			var month = airbus.mes.disruptions.Formatter.monthNames[mm];
+			
+			return (month + ' ' + dd + ',' + yyyy);
+			}
+		else
+			{
+			return datetime.split(" ")[0];
+			}
 		
-		var month = airbus.mes.disruptions.Formatter.monthNames[mm];
-		
-		return (month + ' ' + dd + ',' + yyyy);
 	},
 	
-	getCurrentTime : function() {
-		var today = new Date();
-		var HH = today.getHours();
-		var mm = today.getMinutes();
-		var ss = today.getSeconds();
+	getTime : function(datetime) {
 		
-		return (HH + ":" + mm + ":" + ss);
+		if(datetime == undefined)
+			{
+			var today = new Date();
+			var HH = today.getHours();
+			var mm = today.getMinutes();
+			var ss = today.getSeconds();
+			
+			return (HH + ":" + mm + ":" + ss);
+			}
+		else
+			{
+			
+			return datetime.split(" ")[1];
+			
+			}
 	}
 
 };
