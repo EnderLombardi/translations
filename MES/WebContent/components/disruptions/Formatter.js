@@ -105,6 +105,12 @@ airbus.mes.disruptions.Formatter = {
 			return datetime.split(" ")[1];
 			
 			}
+	},
+	
+	setVisibility : function(text, originatorGrp, responsibleGrp) {
+		
+		
+		return text;
 	}
 
 };

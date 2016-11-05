@@ -16,11 +16,6 @@ airbus.mes.resourcepool.util.ModelManager = {
 
 	init : function(core) {
 		core.setModel(new sap.ui.model.json.JSONModel(), "ValueHelpModel");
-		/*core.setModel(new sap.ui.model.json.JSONModel(), "AvailableUsersModel");
-		core.setModel(new sap.ui.model.json.JSONModel(), "AssignedUsersModel");
-		core.setModel(new sap.ui.model.json.JSONModel(), "AvailableWCModel");
-		core.setModel(new sap.ui.model.json.JSONModel(), "AssignedWCModel");
-		core.setModel(new sap.ui.model.json.JSONModel(), "AvailableShiftModel");*/
 		core.setModel(new sap.ui.model.json.JSONModel(), "ResourcePoolDetailModel");
 		var dest;
 
@@ -67,11 +62,6 @@ airbus.mes.resourcepool.util.ModelManager = {
 	loadMainViewModels : function() {
 		this.currentView.setBusy(true);
 		this.loadModelResourcePoolModel();
-		/*this.loadModelAvailableShift();
-		this.loadModelAssignedUsers();
-		this.loadModelAvailableUsers();
-		this.loadModelAssignedWC();
-		this.loadModelAvailableWC();*/
 		this.currentView.setBusy(false);
 	},
 
@@ -230,25 +220,20 @@ airbus.mes.resourcepool.util.ModelManager = {
 		// this.loadModelValueHelp();
 	},
 
-	getUrlUpdateResource : function(name, description) {
-		var urlUpdateResource = this.urlModel.getProperty('urlupdateresdesc');
-		urlUpdateResource = urlUpdateResource.replace("$Site",
-				airbus.mes.settings.ModelManager.site);
-		urlUpdateResource = urlUpdateResource.replace("$ResourcePoolName",
-				name);
-		urlUpdateResource = urlUpdateResource.replace("$Description",
-				description);
-
-		return urlUpdateResource;
-	},
-
 	updateResource : function(name, description) {
 		var value;
 		jQuery.ajax({
 			async : false,
-			url : this.getUrlUpdateResource(name, description),
+			url : this.getUrlUpdateResourcePool(),
 			cache : false,
-			type : 'GET',
+			type : 'POST',
+			data : {
+				"Param.1" : airbus.mes.settings.ModelManager.site,
+				"Param.2" : name,
+				"Param.3" : description,
+				"Param.4" : "false",
+				"Param.5" : ""
+			},
 			success : function(data, textStatus, jqXHR) {
 				var message = airbus.mes.resourcepool.oView.getModel(
 						"i18nModel").getProperty("Updated");
@@ -267,29 +252,18 @@ airbus.mes.resourcepool.util.ModelManager = {
 
 	},
 
-	getUrlUpdateResourcePool : function(oModelData) {
+	getUrlUpdateResourcePool : function() {
 		var urlUpdateResourcePool = this.urlModel
 				.getProperty('urlupdateresource');
-		/*
-		 * urlUpdateResourcePool = urlUpdateResourcePool.replace("$Site",
-		 * ModelManager.site); urlUpdateResourcePool =
-		 * urlUpdateResourcePool.replace( "$ResourcePoolName",
-		 * ModelManager.resourceName); urlUpdateResourcePool =
-		 * urlUpdateResourcePool.replace("$Description",
-		 * ModelManager.resourceDescription);
-		 * 
-		 * urlUpdateResourcePool = urlUpdateResourcePool.replace("$Assignments",
-		 * airbus.mes.shell.ModelManager.json2xml({ CT_WORKLIST : { item :
-		 * oModelData } }));
-		 */
+
 		return urlUpdateResourcePool;
 	},
 
-	updateResourcePool : function(oModelData) {
+	updateResourcePool : function(oModelData){
 		jQuery.ajax({
 			async : true,
 			cache : false,
-			url : this.getUrlUpdateResourcePool(oModelData),
+			url : this.getUrlUpdateResourcePool(),
 			type : 'POST',
 			data : {
 				"Param.1" : airbus.mes.settings.ModelManager.site,
@@ -303,7 +277,7 @@ airbus.mes.resourcepool.util.ModelManager = {
 			},
 			success : function(data, textStatus, jqXHR) {
 				airbus.mes.resourcepool.util.ModelManager.loadMainViewModels();
-				sap.ui.core.BusyIndicator.hide();
+				this.currentView.setBusy(false);
 				var message = airbus.mes.resourcepool.oView.getModel(
 						"i18nModel").getProperty("SavedResourcePool");
 				airbus.mes.resourcepool.util.ModelManager.handleMessages(data,
@@ -311,19 +285,16 @@ airbus.mes.resourcepool.util.ModelManager = {
 
 			},
 			error : function() {
-				sap.ui.core.BusyIndicator.hide();
+				this.currentView.setBusy(false);
 				airbus.mes.resourcepool.util.ModelManager
 						.handleServerError("Toast")
 			}
 
 		});
-
 	},
 
-	getUrlDeleteResource : function(name) {
+	getUrlDeleteResource : function() {
 		var urlDeleteResource = this.urlModel.getProperty('urldeleteresource');
-		urlDeleteResource = urlDeleteResource.replace("$Site", airbus.mes.settings.ModelManager.site);
-		urlDeleteResource = urlDeleteResource.replace("$ResourcePoolName", name);
 		return urlDeleteResource;
 	},
 
@@ -331,9 +302,13 @@ airbus.mes.resourcepool.util.ModelManager = {
 		var value;
 		jQuery.ajax({
 			async : false,
-			url : this.getUrlDeleteResource(name),
+			url : this.getUrlDeleteResource(),
 			cache : false,
-			type : 'GET',
+			type : 'POST',
+			data : {
+				"Param.1" : name,
+				"Param.2" : airbus.mes.settings.ModelManager.site,
+			},
 			success : function(data, textStatus, jqXHR) {
 				var message = airbus.mes.resourcepool.oView.getModel(
 						"i18nModel").getProperty("Deleted");
@@ -355,7 +330,8 @@ airbus.mes.resourcepool.util.ModelManager = {
 	handleServerError : function(display) {
 		this.showMessage(display, "Error", airbus.mes.resourcepool.oView
 				.getModel("i18nModel").getProperty("TryAgain"), true);
-		this.currentView.setBusy(false);
+		if(this.currentView)
+			this.currentView.setBusy(false);
 	},
 
 	handleMessages : function(data, textStatus, jqXHR, message, display) {
@@ -381,8 +357,9 @@ airbus.mes.resourcepool.util.ModelManager = {
 				return 0;
 			}
 		}
-
-		this.currentView.setBusy(false);
+		
+		if(this.currentView)
+			this.currentView.setBusy(false);
 	},
 
 	showMessage : function(display, msgType, msgText, visible, duration) {
@@ -414,8 +391,6 @@ airbus.mes.resourcepool.util.ModelManager = {
 				oMessageStrip.setText("");
 			}, 10000);
 		}
-
-		this.currentView.setBusy(false);
 	}
 
 }

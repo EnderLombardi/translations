@@ -7,21 +7,21 @@
 				alignItems="Center" direction="Column">
 				<items> -->
 					<!-- <Panel expanded="true" expandable="false" width="60em" > <content> -->
+							
+					<HBox  width="100%" height="40px" class="messageHBox">
+						<layoutData>
+							<l:ResponsiveFlowLayoutData weight="25" />
+						</layoutData>
+						<items>
+							<MessageStrip id="messageBox" class="messageStrip"
+								showIcon="true" showCloseButton="true" visible="false" width="100%">
+								
+							</MessageStrip>
+						</items>
+					</HBox>
 					<form:SimpleForm maxContainerCols="1" class="myForm"
 						editable="true" id="searchForm" height="inherit">
 						<form:content>
-							
-							<HBox  width="100%" height="40px" class="messageHBox">
-								<layoutData>
-									<l:ResponsiveFlowLayoutData weight="25" />
-								</layoutData>
-								<items>
-									<MessageStrip id="messageBox" class="messageStrip"
-										showIcon="true" showCloseButton="true" visible="false" width="100%">
-										
-									</MessageStrip>
-								</items>
-							</HBox>
 							
 							<Label text="{i18nModel>Site}" required="true">
 								<layoutData>

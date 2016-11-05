@@ -171,7 +171,7 @@ sap.ui
 					/**********************************************************
 					 * Open the Enter Comment Pop-Up
 					 */
-					onOpenDisruptionComment: function(title, okEvent){
+					onOpenDisruptionComment: function(title, msgRef, okEvent){
 						// Call Reject Disruption fragment
 						if (!airbus.mes.disruptions.__enterCommentDialogue) {
 							airbus.mes.disruptions.__enterCommentDialogue = sap.ui.xmlfragment("airbus.mes.disruptions.fragment.commentBoxDisruption",this);
@@ -179,6 +179,7 @@ sap.ui
 
 						}
 						sap.ui.getCore().byId("disruptionCommentDialogue").setTitle(title);
+						sap.ui.getCore().byId("disruptionComment-msgRef").setText(msgRef);
 						sap.ui.getCore().byId("disruptionCommentBox").setValue("");
 						sap.ui.getCore().byId("disruptionCommentOK").attachPress(okEvent);
 						
@@ -199,7 +200,9 @@ sap.ui
 					 */
 					onRejectDisruption: function(oEvt){
 						var title = this.getView().getModel("i18nModel").getProperty("rejectDisruption");
-						this.onOpenDisruptionComment(title, this.onConfirmRejection);				
+						var msgRef = oEvt.getSource().getBindingContext(
+						"operationDisruptionsModel").getObject("MessageRef");
+						this.onOpenDisruptionComment(title, msgRef, this.onConfirmRejection);				
 					},
 					/********************************************
 					 * Confirming Reject Disruption
@@ -213,6 +216,9 @@ sap.ui
 						airbus.mes.disruptions.__enterCommentDialogue.close();
 					},
 
+					/***********************************************************
+					 * Show Comment Box to Add Comments
+					 */
 					showCommentBox : function(oEvt) {
 						var path = oEvt.getSource().sId;
 						var listnum = path.split("-");
@@ -228,6 +234,9 @@ sap.ui
 
 					},
 
+					/***********************************************************
+					 * Hide Comment Box to Add Comments
+					 */
 					hideCommentBox : function(oEvt) {
 						var path = oEvt.getSource().sId;
 						var listnum = path.split("-");
@@ -249,6 +258,9 @@ sap.ui
 
 					},
 
+					/***********************************************************
+					 * Submit Disruption Comment 
+					 */
 					submitComment : function(oEvt) {
 						var path = oEvt.getSource().sId;
 
@@ -286,16 +298,25 @@ sap.ui
 										+ this.getView().sId + "--disrptlist-"
 										+ listnum).setValue("");
 					},
-
-					onAckDisruption : function() {
+					
+					/***********************************************************
+					 * When Acknowledge Button is Pressed
+					 */
+					onAckDisruption : function(oEvt) {
 						var title = this.getView().getModel("i18nModel").getProperty("ackDisruption");
-						this.onOpenDisruptionComment(title, this.onAcceptAckDisruptionComment);
+						var msgRef = oEvt.getSource().getBindingContext(
+							"operationDisruptionsModel").getObject("MessageRef");
+						
+						this.onOpenDisruptionComment(title, msgRef, this.onAcceptAckDisruptionComment);
 					},
 
+					/***********************************************************
+					 * When Comment is Added to Acknowledge Disruption
+					 */
 					onAcceptAckDisruptionComment : function() {
 
 						var msgRef = sap.ui.getCore().byId(
-								"commentDisruption-msgRef").getText();
+								"disruptionComment-msgRef").getText();
 
 						var comment = sap.ui.getCore().byId(
 								"disruptionCommentBox").getValue();
@@ -342,7 +363,7 @@ sap.ui
 
 					},
 
-					operationDisruptionsModel : function(oEvent) {
+					onEscalateDisruption : function(oEvent) {
 
 						var msgRef = oEvent.getSource().getBindingContext(
 								"operationDisruptionsModel").getObject(
