@@ -12,11 +12,9 @@ airbus.mes.disruptions.ModelManager = {
 		this.core = core;
 
 		core.setModel(new sap.ui.model.json.JSONModel(), "operationDisruptionsModel");
-		core.setModel(new sap.ui.model.json.JSONModel(), "commentsModel");
 
 	
 		sap.ui.getCore().getModel("operationDisruptionsModel").attachRequestCompleted(airbus.mes.disruptions.ModelManager.onOperationDisruptionsLoad);
-		sap.ui.getCore().getModel("commentsModel").attachRequestCompleted(airbus.mes.disruptions.ModelManager.onCommentsLoad);
 
 		core.setModel(new sap.ui.model.json.JSONModel(),
 		"DisruptionModel");
@@ -144,22 +142,6 @@ airbus.mes.disruptions.ModelManager = {
 	 * After Disruptions related to a operation is loaded
 	 */
 	onOperationDisruptionsLoad: function(){
-		airbus.mes.disruptions.ModelManager.loadComments();
-	},
-	
-	/*************************************************************************
-	 * Load Comments for all the disruptions of an operation
-	 */
-	loadComments: function(){
-		var oModel = sap.ui.getCore().getModel("commentsModel");
-		oModel.loadData("../components/disruptions/local/commentsModel.json", null, false);
-	},
-	
-	/**************************************************************************
-	 * After Comments is loaded
-	 */
-	onCommentsLoad: function(){
-		
 		/* Set filter for Comments on all the disruptions */
 		airbus.mes.operationdetail.viewDisruption.oView.getController().applyFiltersOnComments();
 	
