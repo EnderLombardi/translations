@@ -222,6 +222,9 @@ sap.ui
 
 					},
 
+					/***********************************************************
+					 * Show Comment Box to Add Comments
+					 */
 					showCommentBox : function(oEvt) {
 						var path = oEvt.getSource().sId;
 						var listnum = path.split("-");
@@ -237,6 +240,9 @@ sap.ui
 
 					},
 
+					/***********************************************************
+					 * Hide Comment Box to Add Comments
+					 */
 					hideCommentBox : function(oEvt) {
 						var path = oEvt.getSource().sId;
 						var listnum = path.split("-");
@@ -258,6 +264,9 @@ sap.ui
 
 					},
 
+					/***********************************************************
+					 * Submit Disruption Comment 
+					 */
 					submitComment : function(oEvt) {
 						var path = oEvt.getSource().sId;
 
@@ -296,6 +305,9 @@ sap.ui
 										+ listnum).setValue("");
 					},
 
+					/***********************************************************
+					 * When Acknowledge Button is Pressed
+					 */
 					onAckDisruption : function(oEvt) {
 
 						if (!this._commentDialog) {
@@ -329,6 +341,9 @@ sap.ui
 
 					},
 
+					/***********************************************************
+					 * When Comment is Added to Acknowledge Disruption
+					 */
 					onAcceptAckDisruptionComment : function() {
 
 						var msgRef = sap.ui.getCore().byId(
@@ -381,7 +396,7 @@ sap.ui
 
 					},
 
-					operationDisruptionsModel : function(oEvent) {
+					onEscalateDisruption : function(oEvent) {
 
 						var msgRef = oEvent.getSource().getBindingContext(
 								"operationDisruptionsModel").getObject(
