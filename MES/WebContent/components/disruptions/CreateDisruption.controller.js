@@ -282,6 +282,17 @@ sap.ui
 				 */
 				 onAfterRendering: function() {
 					// this.filterField(this.selectTree);
+					 if (sap.ui.getCore().byId(
+								"operationDetailsView--switchOperationModeBtn")
+								.getState() == false) {
+							this.getView().byId("createDisruption").setVisible(false);
+							this.getView().byId("updateDisruption").setVisible(false);
+							this.getView().byId("cancelDisruption").setVisible(false);
+						} else {
+							this.getView().byId("createDisruption").setVisible(true);
+							this.getView().byId("updateDisruption").setVisible(true);
+							this.getView().byId("cancelDisruption").setVisible(true);
+						}
 				 },
 				 
 				 onCloseCreateDisruption :function() {
