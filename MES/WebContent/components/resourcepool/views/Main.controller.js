@@ -448,7 +448,7 @@ sap.ui
 								.forEach(function(item) {
 									var oBinding = item.getBindingContext("ResourcePoolDetailModel");
 									var oWorkCenter = oBinding.getObject();
-									rowIDs(oWorkCenter.handle);
+									rowIDs.push(oWorkCenter.handle);
 									/*
 									 * Push JSON Object to Assigned WC Model
 									 */

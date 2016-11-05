@@ -56,15 +56,18 @@ sap.ui
 								.getItems();
 						$.each(listItems,
 								function(key, value) {
-									// Apply filters on Message Comments
-									var oBinding = value.getContent()[0]
-											.getContent()[2]
-											.getBinding("items");
-
+									/** Apply filters on Message Comments **/
+							
+									// Get Message Ref from current list
 									var messageRef = value.getBindingContext(
 											"operationDisruptionsModel")
 											.getObject().MessageRef;
 
+									// Get Binding of Comment list in Current List item
+									var oBinding = value.getContent()[0]
+											.getContent()[2]
+											.getBinding("items");
+									// Aplly filter
 									oBinding.filter([ new sap.ui.model.Filter(
 											"MessageRef", "EQ", messageRef) ]);
 								});
