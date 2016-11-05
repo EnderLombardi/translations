@@ -506,7 +506,7 @@ sap.ui
 								.forEach(function(item) {
 									var oBinding = item.getBindingContext("ResourcePoolDetailModel");
 									var oWorkCenter = oBinding.getObject();
-									rowIDs.push(oWrokCenter.handle);
+									rowIDs.push(oWorkCenter.handle);
 									/*
 									 * Push JSON Object to Available WC Model
 									 */
@@ -523,6 +523,8 @@ sap.ui
 								}
 							});
 						});
+						
+						sap.ui.getCore().getModel("ResourcePoolDetailModel").refresh();
 
 						this.getView().byId("listAllocatedWorkCenter")
 								.removeSelections();
