@@ -14,12 +14,15 @@
 							<Toolbar>
 								<Title text="{operationDisruptionsModel>Subject}" class="panelTitleText" />
 								<ToolbarSpacer />
-								<Button text="{parts: [ {path: 'i18nModel>edit'}, {path: 'operationDisruptionsModel>OriginatorGroup'}, {path: 'operationDisruptionsModel>ResponsibleGroup'} ], formatter: 'airbus.mes.disruptions.Formatter.setVisibility'}" press="onEditDisruption" design="Transparent"
-									icon="sap-icon://edit" />
-								<Button text="{parts: [ {path: 'i18nModel>delete'}, {path: 'operationDisruptionsModel>OriginatorGroup'}, {path: 'operationDisruptionsModel>ResponsibleGroup'} ], formatter: 'airbus.mes.disruptions.Formatter.setVisibility'}" design="Transparent"
-									icon="sap-icon://delete" press="onDeleteDisruption" />
-								<Button text="{parts: [ {path: 'i18nModel>close'}, {path: 'operationDisruptionsModel>OriginatorGroup'}, {path: 'operationDisruptionsModel>ResponsibleGroup'} ], formatter: 'airbus.mes.disruptions.Formatter.setVisibility'}" design="Transparent"
-									icon="sap-icon://collapse" press="onCloseDisruption" />
+								<Button text="{i18nModel>edit}"
+									visible="{parts: [ {path: 'i18nModel>edit'}, {path: 'operationDisruptionsModel>OriginatorGroup'}, {path: 'operationDisruptionsModel>ResponsibleGroup'} ], formatter: 'airbus.mes.disruptions.Formatter.setEditButtonVisibility'}"
+									press="onEditDisruption" design="Transparent" icon="sap-icon://edit" />
+								<Button text="{i18nModel>delete}"
+									visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorGroup'}, {path: 'operationDisruptionsModel>ResponsibleGroup'} ], formatter: 'airbus.mes.disruptions.Formatter.setDeleteButtonVisibility'}"
+									design="Transparent" icon="sap-icon://delete" press="onDeleteDisruption" />
+								<Button text="{i18nModel>close}"
+									visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorGroup'}, {path: 'operationDisruptionsModel>ResponsibleGroup'} ], formatter: 'airbus.mes.disruptions.Formatter.setCloseButtonVisibility'}"
+									design="Transparent" icon="sap-icon://collapse" press="onCloseDisruption" />
 
 							</Toolbar>
 						</headerToolbar>
@@ -156,8 +159,9 @@
 						</f:Form>
 
 						<Text text="{i18nModel>status} : {operationDisruptionsModel>Status}" />
-						
+
 						<List showNoData="false" class="sapUiSmallMargin"
+							backgroundDesign="Transparent"
 							items="{path: 'operationDisruptionsModel>/Rowsets/Rowset/1/Row'}">
 
 							<CustomListItem>
@@ -185,17 +189,29 @@
 						</Panel>
 
 						<Toolbar class="barcolor">
+
 							<ToolbarSpacer />
-							<Button id="rejectDisruption" text="{parts: [ {path: 'i18nModel>reject'}, {path: 'operationDisruptionsModel>OriginatorGroup'}, {path: 'operationDisruptionsModel>ResponsibleGroup'} ], formatter: 'airbus.mes.disruptions.Formatter.setVisibility'}"
+
+							<Button id="rejectDisruption" text="{i18nModel>reject}"
+								visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorGroup'}, {path: 'operationDisruptionsModel>ResponsibleGroup'} ], formatter: 'airbus.mes.disruptions.Formatter.setRejectButtonVisibility'}"
 								press="onRejectDisruption" design="Transparent" icon="sap-icon://sys-cancel-2" />
-							<Button id="addComment" text="{parts: [ {path: 'i18nModel>addComment'}, {path: 'operationDisruptionsModel>OriginatorGroup'}, {path: 'operationDisruptionsModel>ResponsibleGroup'} ], formatter: 'airbus.mes.disruptions.Formatter.setVisibility'}"
+
+							<Button id="addComment" text="{i18nModel>addComment}"
+								visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorGroup'}, {path: 'operationDisruptionsModel>ResponsibleGroup'} ], formatter: 'airbus.mes.disruptions.Formatter.setAddCommentButtonVisibility'}"
 								press="showCommentBox" design="Transparent" icon="sap-icon://comment" />
-							<Button text="{parts: [ {path: 'i18nModel>acknowledge'}, {path: 'operationDisruptionsModel>OriginatorGroup'}, {path: 'operationDisruptionsModel>ResponsibleGroup'} ], formatter: 'airbus.mes.disruptions.Formatter.setVisibility'}"
+
+							<Button text="{i18nModel>acknowledge}"
+								visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorGroup'}, {path: 'operationDisruptionsModel>ResponsibleGroup'} ], formatter: 'airbus.mes.disruptions.Formatter.setAcknowledgeButtonVisibility'}"
 								press="onAckDisruption" design="Transparent" icon="sap-icon://to-be-reviewed" />
-							<Button text="{parts: [ {path: 'i18nModel>escalate'}, {path: 'operationDisruptionsModel>OriginatorGroup'}, {path: 'operationDisruptionsModel>ResponsibleGroup'} ], formatter: 'airbus.mes.disruptions.Formatter.setVisibility'}"
+
+							<Button text="{i18nModel>escalate}"
+								visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorGroup'}, {path: 'operationDisruptionsModel>ResponsibleGroup'} ], formatter: 'airbus.mes.disruptions.Formatter.setEscalateButtonVisibility'}"
 								press="onEscalateDisruption" design="Transparent" icon="sap-icon://message-warning" />
-							<Button text="{parts: [ {path: 'i18nModel>markSolved'}, {path: 'operationDisruptionsModel>OriginatorGroup'}, {path: 'operationDisruptionsModel>ResponsibleGroup'} ], formatter: 'airbus.mes.disruptions.Formatter.setVisibility'}"
+
+							<Button text="{i18nModel>markSolved}"
+								visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorGroup'}, {path: 'operationDisruptionsModel>ResponsibleGroup'} ], formatter: 'airbus.mes.disruptions.Formatter.setMarkSolvedButtonVisibility'}"
 								press="onMarkSolvedDisruption" design="Transparent" icon="sap-icon://sys-add" />
+
 						</Toolbar>
 					</Panel>
 
@@ -205,14 +221,21 @@
 		</content>
 		<footer>
 			<Bar design="Footer" class="viewDisruptionFooter">
+
 				<contentLeft>
-					<Button id="reportDisruption" text="{i18nModel>reportDisruption}" press="onReportDisruption"
-						icon="sap-icon://add" />
+
+					<Button id="reportDisruption" text="{i18nModel>reportDisruption}"
+						press="onReportDisruption" icon="sap-icon://add" />
+
 				</contentLeft>
+
 				<contentRight>
+
 					<Button id="btnClose" text="{i18nModel>close}" icon="sap-icon://decline"
 						press="onCloseOperationDetailPopup" />
+
 				</contentRight>
+
 			</Bar>
 		</footer>
 

@@ -107,10 +107,52 @@ airbus.mes.disruptions.Formatter = {
 			}
 	},
 	
-	setVisibility : function(text, originatorGrp, responsibleGrp) {
+	setEditButtonVisibility : function(originatorGrp, responsibleGrp) {
 		
 		
-		return text;
+		return true;
+	},
+	
+	setDeleteButtonVisibility : function(originatorGrp, responsibleGrp) {
+		
+		
+		return true;
+	},
+	
+	setCloseButtonVisibility : function(originatorGrp, responsibleGrp) {
+		
+		
+		return true;
+	},
+	
+	setRejectButtonVisibility : function(originatorGrp, responsibleGrp) {
+		
+		
+		return true;
+	},
+	
+	setAddCommentButtonVisibility : function(originatorGrp, responsibleGrp) {
+		
+		
+		return true;
+	},
+	
+	setAcknowledgeButtonVisibility : function(originatorGrp, responsibleGrp) {
+		
+		
+		return true;
+	},
+	
+	setEscalateButtonVisibility : function(originatorGrp, responsibleGrp) {
+		
+		
+		return true;
+	},
+	
+	setMarkSolvedButtonVisibility : function(originatorGrp, responsibleGrp) {
+		
+		
+		return true;
 	}
 
 };
