@@ -54,7 +54,7 @@
 									<f:label>
 										<Label text="{i18nModel>ReasonTree}">
 											<layoutData>
-												<l:GridData span="L3 M6 S12" linebreak="true" />
+												<l:GridData span="L3 M6 S12" />
 											</layoutData>
 										</Label>
 									</f:label>
@@ -76,7 +76,7 @@
 									<f:label>
 										<Label text="{i18nModel>ResponsibleSupport}">
 											<layoutData>
-												<l:GridData span="L3 M6 S12" />
+												<l:GridData span="L3 M6 S12"  linebreak="true" />
 											</layoutData>
 										</Label>
 									</f:label>
@@ -97,7 +97,7 @@
 									<f:label>
 										<Label text="{i18nModel>OriginatorGroup}">
 											<layoutData>
-												<l:GridData span="L3 M6 S12" linebreak="true" />
+												<l:GridData span="L3 M6 S12" />
 											</layoutData>
 										</Label>
 									</f:label>
