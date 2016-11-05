@@ -13,12 +13,14 @@ airbus.mes.disruptions.ModelManager = {
 
 		core.setModel(new sap.ui.model.json.JSONModel(), "operationDisruptionsModel");
 		core.setModel(new sap.ui.model.json.JSONModel(), "commentsModel");
+
 	
 		sap.ui.getCore().getModel("operationDisruptionsModel").attachRequestCompleted(airbus.mes.disruptions.ModelManager.onOperationDisruptionsLoad);
 		sap.ui.getCore().getModel("commentsModel").attachRequestCompleted(airbus.mes.disruptions.ModelManager.onCommentsLoad);
 
 		core.setModel(new sap.ui.model.json.JSONModel(),
 		"DisruptionModel");
+
 
 		var dest;
 

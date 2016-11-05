@@ -39,6 +39,9 @@ airbus.mes.operationdetail.createDisruption.Component.prototype.createContent = 
 		//Model for custom data of create disruption
 		this.oView.setModel(sap.ui.getCore().getModel("disruptionCustomData"),"disruptionCustomData");
 		
+		//Model for custom data of edit disruption
+		this.oView.setModel(sap.ui.getCore().getModel("DisruptionDetailModel"),"DisruptionDetailModel");
+		
 		return this.oView;
 		
 	}

@@ -12,6 +12,7 @@ sap.ui
 					 * @memberOf components.disruptions.ViewDisruption
 					 */
 					onInit : function() {
+						
 					},
 					/**
 					 * Similar to onAfterRendering, but this hook is invoked
@@ -31,9 +32,16 @@ sap.ui
 					 * 
 					 * @memberOf components.disruptions.ViewDisruption
 					 */
-					// onAfterRendering: function() {
-					//
-					// },
+					 onAfterRendering: function() {
+						 if(sap.ui.getCore().byId("operationDetailsView--switchOperationModeBtn").getState() == false)
+						 {
+						 this.getView().byId("reportDisruption").setVisible(false);
+						 }
+						else{
+							this.getView().byId("reportDisruption").setVisible(true);
+						}
+				
+					},
 					/**
 					 * Called when the Controller is destroyed. Use this one to
 					 * free resources and finalize activities.
@@ -381,9 +389,7 @@ sap.ui
 					},
 
 					onReportDisruption : function(oEvent) {
-						airbus.mes.operationdetail.oView.setBusy(true); // Set
-						// Busy
-						// Indicator
+						airbus.mes.operationdetail.oView.setBusy(true); // Set Busy Indicator
 
 						var oOperDetailNavContainer = sap.ui.getCore().byId(
 								"operationDetailsView--operDetailNavContainer");
@@ -410,35 +416,40 @@ sap.ui
 					},
 
 					onEditDisruption : function(oEvent) {
+                       	
+						// create a new model to autofill the data on edit screen
+						sap.ui.getCore().setModel(new sap.ui.model.json.JSONModel(),"DisruptionDetailModel");
+						var oModel = sap.ui.getCore().getModel("DisruptionDetailModel");
+		
+						// set the data for this new model from the already loaded model 
+						var oBindingContext= oEvent.getSource().getBindingContext("operationDisruptionsModel");
 
-						// to auto fill fields on edit screen
-
-						var oTranModel = sap.ui.getCore().getModel(
-								"DisruptionModel");
-
-						// set the data for the model
-						oTranModel
-								.setData(oEvent.getSource().getBindingContext(
-										"operationDisruptionsModel"));
-
+						oModel.setData(oBindingContext.getProperty(oBindingContext.sPath));
+						sap.ui.getCore().getModel("DisruptionDetailModel").refresh();
+						
+						
+						// Navigate to Edit Screen
 						var oOperDetailNavContainer = sap.ui.getCore().byId(
 								"operationDetailsView--operDetailNavContainer");
 
-						if (airbus.mes.operationdetail.editDisruption === undefined
-								|| airbus.mes.operationdetail.editDisruption.oView === undefined) {
+                        
+						//if component is not created - create the component
+						if (airbus.mes.operationdetail.createDisruption === undefined
+								|| airbus.mes.operationdetail.createDisruption.oView === undefined) {
+
 							sap.ui
 									.getCore()
 									.createComponent(
 											{
-												name : "airbus.mes.operationdetail.editDisruption",
+												name : "airbus.mes.operationdetail.createDisruption",
 											});
 
 							oOperDetailNavContainer
-									.addPage(airbus.mes.operationdetail.editDisruption.oView);
+									.addPage(airbus.mes.operationdetail.createDisruption.oView);
 						}
 
 						oOperDetailNavContainer
-								.to(airbus.mes.operationdetail.editDisruption.oView
+								.to(airbus.mes.operationdetail.createDisruption.oView
 										.getId());
 
 					},

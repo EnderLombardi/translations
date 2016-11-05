@@ -16,8 +16,8 @@
 									text="OP {operationDetailModel>/Rowsets/Rowset/0/Row/0/operation_no} - {operationDetailModel>/Rowsets/Rowset/0/Row/0/operation_desc}" />
 
 								<HBox justifyContent="SpaceBetween">
-									<Text id="switchStatusLabel" text="Execution Mode" class="ExecutionModeText" />
-									<Switch customTextOn=" " customTextOff=" " state="true"
+									<Text id="switchStatusLabel" text="Read-Mode" class="ExecutionModeText" />
+									<Switch id="switchOperationModeBtn" customTextOn=" " customTextOff=" " state="false"
 										class="switchExecutionButton" change="switchMode" />
 								</HBox>
 
