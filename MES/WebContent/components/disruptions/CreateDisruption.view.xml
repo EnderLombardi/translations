@@ -3,7 +3,7 @@
 	xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml">
 
 	<Page enableScrolling="false" showHeader="false" height="100%">
-		<FlexBox width="100%" height="100%" justifyContent="Center"
+		<FlexBox width="100%" height="100%" justifyContent="Center" backgroundDesign="Transparent"
 			direction="Column">
 			<items>
 				<f:Form id="createDisruptionForm" editable="true"  backgroundDesign="Transparent"

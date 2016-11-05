@@ -61,8 +61,8 @@ airbus.mes.resourcepool.Component.prototype.createContent = function() {
 		
 		// Local Model
 		this.oView.setModel(i18nModel, "i18nModel");
-		/*this.oView.setModel(sap.ui.getCore().getModel("ValueHelpModel"), "ValueHelpModel");
-		this.oView.setModel(sap.ui.getCore().getModel("AvailableUsersModel"), "AvailableUsersModel");
+		this.oView.setModel(sap.ui.getCore().getModel("ValueHelpModel"), "ValueHelpModel");
+		/*this.oView.setModel(sap.ui.getCore().getModel("AvailableUsersModel"), "AvailableUsersModel");
 		this.oView.setModel(sap.ui.getCore().getModel("AssignedUsersModel"), "AssignedUsersModel");
 		this.oView.setModel(sap.ui.getCore().getModel("AvailableWCModel"), "AvailableWCModel");
 		this.oView.setModel(sap.ui.getCore().getModel("AssignedWCModel"), "AssignedWCModel");
