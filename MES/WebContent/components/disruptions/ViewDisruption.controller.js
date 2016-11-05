@@ -65,7 +65,7 @@ sap.ui
 					
 					onAcceptCloseDisruption: function(oEvent){
 						this._closeDialog.close();
-//						Initialize the inputs							
+//	Initialize the inputs							
 						sap.ui.getCore().byId("input1").setValue("");
 						sap.ui.getCore().byId("closeDisruptionComments").setValue("");
 //						this.onCloseOperationDetailPopup(); 
