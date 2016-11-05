@@ -83,7 +83,7 @@
 									</f:label>
 									<f:fields>
 										<Select id="selectReasonTree"
-											items="{disruptionCustomData>/Rowsets/Rowset/0/Row}" change="onSelectionChange" selectedKey="{DisruptionModel>/Reason}" forceSelection="false" >
+											items="{disruptionCustomData>/Rowsets/Rowset/0/Row}" change="onSelectionChange" selectedKey="" forceSelection="false" >
 											<items>
 												<core:Item text="{disruptionCustomData>Reason}" key="{disruptionCustomData>Reason}" />
 											</items>

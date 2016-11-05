@@ -183,8 +183,7 @@ sap.ui
 					
 					onEditDisruption : function(oEvent) {
                           
-					   	
-					
+					   	  
 						
 						//to auto fill fields on edit screen
 						
@@ -220,7 +219,11 @@ sap.ui
 									.addPage(airbus.mes.operationdetail.createDisruption.oView);
 						}
 
-                        
+						
+				
+						sap.ui.getCore().byId("createDisruptionView--Reason").setSelectedKey("Reason");
+						
+						
 						
 						oOperDetailNavContainer
 								.to(airbus.mes.operationdetail.createDisruption.oView
