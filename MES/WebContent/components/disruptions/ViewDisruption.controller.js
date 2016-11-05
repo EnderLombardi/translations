@@ -65,13 +65,13 @@ sap.ui
 
 					/***********************************************************
 					 * Open Pop-Up to ask Time Lost while Closing the Disruption
+<<<<<<< HEAD
 					 */
-					onCloseDisruption : function(oEvt) {
-						var messageRef = oEvt.getSource().getParent()
-								.getParent().getParent().getBindingContext(
-										"operationDisruptionsModel")
-								.getObject().MessageRef;
-
+					onCloseDisruption: function(oEvt){
+						var sPath = oEvt.getSource().getParent().getParent().getParent().getBindingContext("operationDisruptionsModel").sPath;
+						var msgRef = this.getView().getModel("operationDisruptionsModel").getProperty(sPath+"/MessageRef");
+						var timeLost = this.getView().getModel("operationDisruptionsModel").getProperty(sPath+"/TimeLost");
+						
 						// Call Close Disruption fragment
 						if (!this._closeDialog) {
 
@@ -83,18 +83,40 @@ sap.ui
 							this.getView().addDependent(this._closeDialog);
 
 						}
+						
+						sap.ui.getCore().byId("timeLost").setValue(timeLost);
+						sap.ui.getCore().byId("msgRef").setText(msgRef);
+						
 						this._closeDialog.open();
 					},
 
 					/***********************************************************
 					 * Close selected disruption
 					 */
-					onAcceptCloseDisruption : function(oEvent) {
+					onAcceptCloseDisruption: function(oEvent){
+
 						this._closeDialog.close();
+						
+						var timeLost = sap.ui.getCore().byId("timeLost");
+						var comment =  sap.ui.getCore().byId("closeDisruptionComments");
+						var msgRef = sap.ui.getCore().byId("msgRef");
+						
+						var timeLostValue = timeLost.getValue();
+						var commentValue =  comment.getValue();
+						var msgRefValue = msgRef.getText();
+						
+						//	Initialize the inputs							
+						timeLost.setValue("");
+						comment.setValue("");
+						msgRef.setValue("");
+						
+						// Call Close Disruption Service
+						airbus.mes.disruptions.ModelManager
+								.closeDisruption(msgRefValue, commentValue, timeLostValue);
+						
 						// Initialize the inputs
 						sap.ui.getCore().byId("input1").setValue("");
-						sap.ui.getCore().byId("closeDisruptionComments")
-								.setValue("");
+						sap.ui.getCore().byId("closeDisruptionComments").setValue("");
 					},
 
 					/***********************************************************
@@ -102,6 +124,15 @@ sap.ui
 					 */
 					cancelClosingDisruption : function(oEvent) {
 						this._closeDialog.close();
+						
+						var timeLost = sap.ui.getCore().byId("timeLost");
+						var comment =  sap.ui.getCore().byId("closeDisruptionComments");
+						var msgRef = sap.ui.getCore().byId("msgRef");
+						
+						// Initialize the inputs							
+						timeLost.setValue("");
+						comment.setValue("");
+						msgRef.setValue("");
 					},
 					
 					/********************************************
@@ -160,18 +191,19 @@ sap.ui
 						var path = oEvt.getSource().sId;
 						var listnum = path.split("-");
 						listnum = listnum[listnum.length - 1];
-						var a = this.getView().byId(
-								this.getView().sId + "--commentBox-"
-										+ this.getView().sId + "--disrptlist-"
-										+ listnum);
-						a.setVisible(false);
 
-						var b = sap.ui.getCore().byId(
-								this.getView().sId + "--addComment-"
-										+ this.getView().sId + "--disrptlist-"
-										+ listnum);
+						var commentBoxId = this.getView().byId(
+								this.getView().sId + "--commentBox-" +
+								this.getView().sId + "--disrptlist-" + listnum);
 
-						b.setVisible(true);
+						commentBoxId.setVisible(false);
+
+						var submitCommentId = sap.ui.getCore().byId(
+								this.getView().sId + "--addComment-" +
+								this.getView().sId + "--disrptlist-"
+										+ listnum);
+						
+						submitCommentId.setVisible(true);
 
 					},
 					
