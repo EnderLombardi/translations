@@ -10,11 +10,12 @@
 				class="sapUiMediumMarginTop">
 				<f:content>
 					<Label text="{i18nModel>timeLost}" />
-					<Input id="input1" type="Number">
+					<Input id="timeLost" type="Number">
 					</Input>
 					<Text text="{i18nModel>indMinutes}" class="classFormHint" />
 					<Label text="{i18nModel>comment}" />
 					<TextArea id="closeDisruptionComments" />
+					<core:InvisibleText id="msgRef" text=""/>
 				</f:content>
 			</f:SimpleForm>
 		</content>
