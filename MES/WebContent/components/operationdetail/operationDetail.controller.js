@@ -214,8 +214,9 @@ sap.ui
 								airbus.mes.disruptions.ModelManager.loadDisruptionCategory();
 								this.disruptionsCustomDataFlag = true;
 							}
-							break;
 							
+							airbus.mes.operationdetail.oView.setBusy(false); //Remove Busy Indicator
+							break;
 							
 							
 						

@@ -46,11 +46,18 @@ sap.ui
 									type : "select",
 									path : "RootCause",
 									attr : "RootCause",
-									childs: []}, {
-									id : "Return",
-									type : "Return",
-									childs : []
-								} ]
+									childs: [{
+										id : "handle",
+										type : "select",
+										path : "Handle",
+										attr : "Handle",
+										childs: []},
+										{
+											id : "Return",
+											type : "Return",
+											childs : []
+										}
+									         ]},  ]
 							} ]
 						}, ]
 					},
@@ -191,11 +198,13 @@ sap.ui
 					 */
 					onCreateDisrupution : function() {
 						
-
+						// forfully set handle as the first item in the list after selecting Category, Reason, Responsible and rootcasue,
+						//As this handle will act as a unique key for selection
+						this.getView().byId("handle").setSelectedKey(this.getView().byId("handle").getItemAt(0).getText());
 						var sCategory = this.getView().byId("selectCategory").getSelectedKey();
 						var sRootCause = this.getView().byId("selectRootCause").getSelectedKey();			
 						var sComment = this.getView().byId("comment").getValue();
-
+						var sHandle = this.getView().byId("handle").getSelectedKey();
 						
 						// Create a JSON for payload attributes
 						var aModelData = []
@@ -252,7 +261,7 @@ sap.ui
 							aModelData.push(oJson);
 
 							
-						airbus.mes.disruptions.ModelManager.createDisruption(sCategory,sRootCause,sComment,aModelData);
+						airbus.mes.disruptions.ModelManager.createDisruption(sHandle,sCategory,sRootCause,sComment,aModelData);
 					},
 
 				/**

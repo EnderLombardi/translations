@@ -176,8 +176,11 @@ airbus.mes.disruptions.ModelManager = {
 		return urlCreateDisruption;
 	},
 
-	createDisruption : function(messageType, messageSubject, messageBody,
+	createDisruption : function(messageHandle,messageType, messageSubject, messageBody,
 			payloadData) {
+		
+		
+		
 		jQuery
 				.ajax({
 					async : true,
@@ -186,12 +189,14 @@ airbus.mes.disruptions.ModelManager = {
 					type : 'POST',
 					data : {
 						"Param.1" : airbus.mes.settings.ModelManager.site,
-						"Param.2" : sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"),
+						/*"Param.2" : sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"),*/
+						"Param.2" : "NG000524",
 						"Param.3" : messageType,
 						"Param.4" : messageSubject,
 						"Param.5" : messageBody,
 						"Param.6" : airbus.mes.disruptions.Formatter.json2xml({
-							payloadAttributelist : payloadData
+							payloadAttributelist : payloadData,
+						"Param.7" : messageHandle	
 						})
 					},
 					success : function(data, textStatus, jqXHR) {
@@ -200,6 +205,12 @@ airbus.mes.disruptions.ModelManager = {
 						if (rowExists != undefined) {
 							if (data.Rowsets.Rowset[0].Row[0].Message_Type == "S") {
 								airbus.mes.shell.ModelManager.messageShow(data.Rowsets.Rowset[0].Row[0].Message);
+								//navigate to View Disruption after message success
+								sap.ui.getCore().byId("operationDetailsView--operDetailNavContainer").to(airbus.mes.operationdetail.viewDisruption.oView.getId());
+								//load disruption Model again for new message
+								var operationBO = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_bo;
+								airbus.mes.disruptions.ModelManager.loadDisruptionsByOperation(operationBO);
+								
 							} else if (data.Rowsets.Rowset[0].Row[0].Message_Type == "E"){
 								if(data.Rowsets.Rowset[0].Row[0].Message === undefined)
 									airbus.mes.shell.ModelManager.messageShow(airbus.mes.operationdetail.createDisruption.oView.getModel("i18nModel").getProperty("DisruptionNotSaved"));
@@ -211,6 +222,8 @@ airbus.mes.disruptions.ModelManager = {
 								airbus.mes.shell.ModelManager.messageShow(data.Rowsets.FatalError);
 							}
 						}
+						
+						
 
 					},
 
