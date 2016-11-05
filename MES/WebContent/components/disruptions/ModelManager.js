@@ -124,7 +124,7 @@ airbus.mes.disruptions.ModelManager = {
 	 */
 	loadDisruptionsByOperation : function(operation) {
 		
-		airbus.mes.operationdetail.oView.setBusy(true); //Set Busy Indicator 
+//		airbus.mes.operationdetail.oView.setBusy(true); //Set Busy Indicator 
 		
 		var oViewModel = sap.ui.getCore().getModel("operationDisruptionsModel");
 
@@ -341,4 +341,56 @@ airbus.mes.disruptions.ModelManager = {
 		var urlOnAddComment = this.urlModel.getProperty("urlOnAddComment");
 		return urlOnAddComment;
 	},
+
+	/***************************************************************************
+	 * Close Disruption
+	 **************************************************************************/
+	closeDisruption : function(msgRef, comment, timeLost) {
+		
+		var sMessageSuccess = "Disruption Closed Successfully";
+		var flag_success;
+
+		jQuery
+				.ajax({
+					url : this.getUrlToCloseDisruption(),
+					data : {
+						"Param.1" : airbus.mes.settings.ModelManager.site,
+						"Param.2" : sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"),
+						"Param.3" : msgRef,
+						"Param.4" : comment,
+						"Param.5" : timeLost
+					},
+					error : function(xhr, status, error) {
+						airbus.mes.shell.ModelManager
+								.messageShow(sMessageError);
+						flag_success = false
+
+					},
+					success : function(result, status, xhr) {
+						if (result.Rowsets.Rowset[0].Row[0].Message_Type === undefined) {
+							airbus.mes.shell.ModelManager
+									.messageShow(sMessageSuccess);
+							flag_success = true;
+						} else if (result.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
+							airbus.mes.shell.ModelManager
+									.messageShow(result.Rowsets.Rowset[0].Row[0].Message)
+							flag_success = false;
+						} else {
+							airbus.mes.shell.ModelManager
+									.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
+							flag_success = true;
+						}
+						
+					}
+				});		
+	},
+	
+	/***************************************************************************
+	 * Get URL to Close Disruption
+	 **************************************************************************/
+	getUrlToCloseDisruption : function() {
+
+		var urlToCloseDisruption = this.urlModel.getProperty("urlToCloseDisruption");
+		return urlToCloseDisruption;
+	}
 };

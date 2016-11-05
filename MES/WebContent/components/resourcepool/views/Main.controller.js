@@ -231,7 +231,7 @@ sap.ui
 									 * If any user is already loaned or assigned
 									 * then prepare error messages
 									 */
-									if (item.getCustomData()[2].getValue() != "---"
+									if (item.getCustomData()[2].getValue() != ""
 											&& item.getCustomData()[3]
 													.getValue() != airbus.mes.resourcepool.util.ModelManager.resourceName)
 										aError.push(item);
@@ -240,16 +240,9 @@ sap.ui
 										 * prepare a JSON object with all
 										 * details of Assigned User
 										 */
-										// var info = item.getInfo().split("/
-										// ");
-										// var name =
-										// item.getCustomData()[3].getValue();
-										var loaned_RP_Name = item
-												.getCustomData()[4].getValue() ? item
-												.getCustomData()[4].getValue()
-												: "";
-
-										var oJsonAssignedUsers = {
+										var oAssignedUser = item.getBindingContext("ResourcePoolDetailModel").getObject();
+										
+										/*var oJsonAssignedUsers = {
 											"userId" : item.getCustomData()[7]
 													.getValue(),
 											"site" : airbus.mes.resourcepool.util.ModelManager.site,
@@ -272,15 +265,13 @@ sap.ui
 													.getValue(),
 											"type" : item.getCustomData()[8]
 													.getValue(),
-
-										}
+										}*/
+										
 										/*
 										 * push JSON Object to
 										 * AssignedUsersModel
 										 */
-										sap.ui.getCore().getModel(
-												"AssignedUsersModel").oData.Rowsets.Rowset[0].Row
-												.push(oJsonAssignedUsers);
+										sap.ui.getCore().getModel("ResourcePoolDetailModel").getProperty("/Rowsets/Rowset/1/Row/").push(oAssignedUser);
 									}
 								});
 
@@ -300,7 +291,7 @@ sap.ui
 								"AvailableUsersModel").oData.Rowsets.Rowset[0].Row;
 
 						for (var i = 0; i < aUsersToAssign.length; i++) {
-							if (aUsersToAssign[i].getCustomData()[2].getValue() != "---"
+							if ( (aUsersToAssign[i].getCustomData()[2].getValue() != "---" || aUsersToAssign[i].getCustomData()[2].getValue() != "" )
 									&& aUsersToAssign[i].getCustomData()[3]
 											.getValue() != airbus.mes.resourcepool.util.ModelManager.resourceName)
 								continue;
