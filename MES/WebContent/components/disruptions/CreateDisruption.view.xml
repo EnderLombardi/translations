@@ -84,7 +84,7 @@
 										<Select id="selectResponsible"
 											items="{disruptionCustomData>/Rowsets/Rowset/0/Row}" change="onSelectionChange" selectedKey="{DisruptionModel>ResponsibleGroup}" forceSelection="false">
 											<items>
-												<core:Item text="{ path : 'disruptionCustomData>ResponsibleGroup' , formatter : 'airbus.mes.disruptions.Formatter.formatUserGroup'}" key="{disruptionCustomData>ResponsibleGroup}" />
+												<core:Item text="{disruptionCustomData>ResponsibleGroupDesc}" key="{disruptionCustomData>ResponsibleGroup}" />
 											</items>
 											<layoutData>
 												<l:GridData span="L3 M6 S12" />

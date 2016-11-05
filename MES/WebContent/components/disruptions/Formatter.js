@@ -64,11 +64,6 @@ airbus.mes.disruptions.Formatter = {
 			return "Disturbed";
 	},
 	
-	formatUserGroup : function(userGroup){
-		
-		return userGroup.split(",")[1];
-	},
-	
 	getDate : function(datetime) {
 		
 		if(datetime === null)
