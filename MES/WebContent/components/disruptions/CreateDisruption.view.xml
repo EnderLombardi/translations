@@ -3,7 +3,7 @@
 	xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml">
 
 	<Page enableScrolling="false" showHeader="false" height="100%">
-		<FlexBox width="100%" height="100%" justifyContent="Center"
+		<FlexBox width="100%" height="100%" justifyContent="Center" backgroundDesign="Transparent"
 			direction="Column">
 			<items>
 				<f:Form id="createDisruptionForm" editable="true"  backgroundDesign="Transparent"
@@ -54,7 +54,7 @@
 									<f:label>
 										<Label text="{i18nModel>ReasonTree}">
 											<layoutData>
-												<l:GridData span="L3 M6 S12" linebreak="true" />
+												<l:GridData span="L3 M6 S12" />
 											</layoutData>
 										</Label>
 									</f:label>
@@ -76,7 +76,7 @@
 									<f:label>
 										<Label text="{i18nModel>ResponsibleSupport}">
 											<layoutData>
-												<l:GridData span="L3 M6 S12" />
+												<l:GridData span="L3 M6 S12"  linebreak="true" />
 											</layoutData>
 										</Label>
 									</f:label>
@@ -97,15 +97,15 @@
 									<f:label>
 										<Label text="{i18nModel>OriginatorGroup}">
 											<layoutData>
-												<l:GridData span="L3 M6 S12" linebreak="true" />
+												<l:GridData span="L3 M6 S12" />
 											</layoutData>
 										</Label>
 									</f:label>
 									<f:fields>
 										<Select id="selectOriginator" selectedKey="" forceSelection="false"
-											items="{userSettingModel>/Rowsets/Rowset/1/Row}">
+											items="{disruptionCustomData>/Rowsets/Rowset/1/Row}">
 											<items>
-												<core:Item text="{userDetailModel>RootCause}" key="{disruptionCustomData>RootCause}" />
+												<core:Item text="{disruptionCustomData>group_desc}" key="{disruptionCustomData>group_name}" />
 											</items>
 											<layoutData>
 												<l:GridData span="L3 M6 S12" />
