@@ -167,9 +167,9 @@ sap.ui
 						// this.getView().getModel("operationDisruptionsModel").getProperty(sPath+"/MessageRef");
 
 						// Call Reject Disruption fragment
-						if (!this._rejectDialog) {
+						if (!this._commentDialog) {
 
-							this._rejectDialog = sap.ui
+							this._commentDialog = sap.ui
 									.xmlfragment(
 											"airbus.mes.disruptions.fragment.commentBoxDisruption",
 											this);
@@ -184,10 +184,10 @@ sap.ui
 									.byId("disruptionCommentOK")
 									.attachPress(this.onAcceptDisruptionComment);
 
-							this.getView().addDependent(this._rejectDialog);
+							this.getView().addDependent(this._commentDialog);
 
 						}
-						this._rejectDialog.open();
+						this._commentDialog.open();
 					},
 					/***********************************************************
 					 * Confirming Reject Disruption pop-up
@@ -198,15 +198,16 @@ sap.ui
 
 						sap.ui.getCore().byId("rejectDisruptionComment")
 								.setValue("");
-						this._rejectDialog.close();
+						this._commentDialog.close();
 
 					},
 					/***********************************************************
 					 * close the Reject Disruption pop-up
 					 */
-					onCancelDisruptionComment : function(oEvent) {
+					closeDisruptionComment : function() {
 						sap.ui.getCore().byId("disruptionCommentBox").setValue("");
-						this._rejectDialog.close();
+						sap.ui.getCore().byId("commentDisruption-msgRef").setText("");
+						sap.ui.getCore().byId("disruptionCommentDialogue").close();
 
 					},
 
@@ -284,7 +285,7 @@ sap.ui
 										+ listnum).setValue("");
 					},
 
-					onAckDisruption : function() {
+					onAckDisruption : function(oEvt) {
 
 						if (!this._commentDialog) {
 
@@ -298,6 +299,13 @@ sap.ui
 
 							sap.ui.getCore().byId("disruptionCommentDialogue")
 									.setTitle(title);
+							
+							var msgRef = oEvt.getSource().getBindingContext(
+							"operationDisruptionsModel").getObject(
+							"MessageRef");
+							
+							sap.ui.getCore().byId("commentDisruption-msgRef")
+							.setText(msgRef);
 
 							sap.ui.getCore().byId("disruptionCommentOK")
 									.attachPress(
@@ -316,13 +324,15 @@ sap.ui
 								"commentDisruption-msgRef").getText();
 
 						var comment = sap.ui.getCore().byId(
-								"disruptionCommentBox").getText();
+								"disruptionCommentBox").getValue();
 						
-						msgRef.setText("");
-
 						// Call to Acknowledge Disruption
 						airbus.mes.disruptions.ModelManager.ackDisruption(
 								msgRef, comment);
+						
+						sap.ui.getCore().byId("disruptionCommentBox").setValue("");
+						sap.ui.getCore().byId("commentDisruption-msgRef").setText("");
+						sap.ui.getCore().byId("disruptionCommentDialogue").close();
 					},
 
 					onMarkSolvedDisruption : function(oEvt) {
