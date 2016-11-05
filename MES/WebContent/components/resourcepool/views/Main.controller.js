@@ -599,29 +599,28 @@ sap.ui
 					saveChangesToResourcePool : function(oEvent) {
 
 						/* show busy indicator as the process might be slow */
-						sap.ui.core.BusyIndicator.show();
+						this.getView().setBusy(true);
 						/*
 						 * clear all filters on Lists as it was creating problem
 						 * in saving the list
 						 */
-						this.clearFilters();
+						/*this.clearFilters();
 						var aModelUsersData = this.saveAssignedUsers();
 						var aModelWCData = this.saveAssignedWC();
 						var aModelShifts = this.saveAssignedShifts();
 						var aModelData = [];
 						aModelData.push.apply(aModelData, aModelUsersData);
 						aModelData.push.apply(aModelData, aModelWCData);
-						aModelData.push.apply(aModelData, aModelShifts);
+						aModelData.push.apply(aModelData, aModelShifts);*/
+						
+						var oModelData = this.getView().getModel("ResourcePoolDetailModel").getData()
 
 						airbus.mes.resourcepool.util.ModelManager
-								.updateResourcePool(aModelData);
+								.updateResourcePool(oModelData);
 						airbus.mes.resourcepool.util.ModelManager.anyChangesFlag = false;
-
-						/* airbus.mes.resourcepool.util.ModelManager.loadMainViewModels(); */
-
 					},
 
-					saveAssignedUsers : function() {
+					/*saveAssignedUsers : function() {
 
 						var aAssignedItems = this.getView().byId(
 								"listAllocatedUsers").getItems();
@@ -710,7 +709,7 @@ sap.ui
 						}
 						return aModelData;
 
-					},
+					},*/
 
 					/**
 					 * *************************** Back Button Press
@@ -910,8 +909,6 @@ sap.ui
 										airbus.mes.resourcepool.util.ModelManager.resourceDescription);
 
 						/* Attach focus out event to resource pool field */
-						airbus.mes.resourcepool.util.ModelManager.currentView = this
-								.getView();
 						var oInputResource = sap.ui.getCore().byId(
 								"searchResourcePool--resourcePool");
 						oInputResource.attachBrowserEvent("focusout",
@@ -1405,12 +1402,12 @@ sap.ui
 						return splitStr.join(' ');
 					},
 
-					clearFilters : function() {
+					/*clearFilters : function() {
 						this.getView().byId("searchAvailableUsers").clear();
 						this.getView().byId("searchAssignedUsers").clear();
 						this.getView().byId("searchAvailableWC").clear();
 						this.getView().byId("searchAssignedWC").clear();
-					},
+					},*/
 
 					/*
 					 * editTeamOpen : function() { if
@@ -1492,14 +1489,21 @@ sap.ui
 										"searchResourcePool--resourcePool")
 										.getValue());
 						airbus.mes.resourcepool.deleteTeam.close();
+						
+						if (anyError == 0) {
+							var oButton = sap.ui.getCore().byId("searchResourcePool--createOrDeleteButton");
+							oButton.setIcon("sap-icon://create");
+							oButton.setTooltip("create");
+						
 
-						if (airbus.mes.resourcepool.util.ModelManager.resourceName == sap.ui
-								.getCore().byId(
-										"searchResourcePool--resourcePool")
-								.getValue()) {
-							airbus.mes.resourcepool.util.ModelManager.resourceName = undefined;
-							airbus.mes.resourcepool.util.ModelManager.resourceDescription = undefined;
-							this.getView().byId("resourcePoolName").setText("");
+							if (airbus.mes.resourcepool.util.ModelManager.resourceName == sap.ui
+									.getCore().byId(
+											"searchResourcePool--resourcePool")
+									.getValue()) {
+								airbus.mes.resourcepool.util.ModelManager.resourceName = undefined;
+								airbus.mes.resourcepool.util.ModelManager.resourceDescription = undefined;
+								this.getView().byId("resourcePoolName").setText("");
+							}
 						}
 
 					},
