@@ -82,7 +82,7 @@
 									</f:label>
 									<f:fields>
 										<Select id="selectResponsible"
-											items="{disruptionCustomData>/Rowsets/Rowset/0/Row}" change="onSelectionChange" selectedKey="{DisruptionDetailModel>ResponsibleGroup}" forceSelection="false">
+											items="{disruptionCustomData>/Rowsets/Rowset/0/Row}" change="onSelectionChange" selectedValue="{DisruptionDetailModel>/ResponsibleGroup}" forceSelection="false">
 											<items>
 												<core:Item text="{disruptionCustomData>ResponsibleGroupDesc}" key="{disruptionCustomData>ResponsibleGroup}" />
 											</items>
