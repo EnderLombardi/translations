@@ -143,45 +143,16 @@ sap.ui
 									this.getView().getModel("i18n")
 											.getProperty("Execution"));
 							// this.setScreenforSwitchMode(true);
-							/*****set the buttons according to the status of operation mode ******/
-							var currentPage = sap.ui.getCore().byId("operationDetailsView--operDetailNavContainer").getCurrentPage();
-							switch (currentPage){
-							case sap.ui.getCore().byId("idStatusView"):
-								sap.ui.getCore().byId("idStatusView").rerender();
-								sap.ui.getCore().byId("ViewDisruptionView").rerender();
-								break;
-							case sap.ui.getCore().byId("ViewDisruptionView"):
-								//sap.ui.getCore().byId("ViewDisruptionView--reportDisruption").setVisible(true);
-							sap.ui.getCore().byId("idStatusView").rerender();
-							sap.ui.getCore().byId("ViewDisruptionView").rerender();
-								break;
-							
-							
-							}
 
 						} else {
 							this.getView().byId("switchStatusLabel").setText(
 									this.getView().getModel("i18n")
 											.getProperty("ReadOnly"));
-							// this.setScreenforSwitchMode(false);
-							/*****set the buttons according to the status of operation mode ******/
-							var currentPage = sap.ui.getCore().byId("operationDetailsView--operDetailNavContainer").getCurrentPage();
-							switch (currentPage){
-							case sap.ui.getCore().byId("idStatusView"):
-								sap.ui.getCore().byId("idStatusView").rerender();
-								sap.ui.getCore().byId("ViewDisruptionView").rerender();
-								
-								break;
-							case sap.ui.getCore().byId("ViewDisruptionView"):
-								//sap.ui.getCore().byId("ViewDisruptionView--reportDisruption").setVisible(false);
-								sap.ui.getCore().byId("idStatusView").rerender();
-								sap.ui.getCore().byId("ViewDisruptionView").rerender();
-							
-								break;
-							
-							
-							}
+							// this.setScreenforSwitchMode(false);						
 						}
+						/*****set the buttons according to the status of operation mode ******/
+						sap.ui.getCore().byId("idStatusView").rerender();
+						sap.ui.getCore().byId("ViewDisruptionView").rerender();
 					},
 					
 					/***********************************************************
