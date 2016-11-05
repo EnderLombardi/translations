@@ -13,7 +13,7 @@
 
 		<buttons>
 			<Button text="{i18nModel>ok}" id="disruptionCommentOK" press="" type="Accept" />
-			<Button text="{i18nModel>cancel}" press="onCancelDisruptionComment" />
+			<Button text="{i18nModel>cancel}" press="onCloseDisruptionComment" />
 		</buttons>
 
 	</Dialog>

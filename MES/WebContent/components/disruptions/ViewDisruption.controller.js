@@ -164,22 +164,39 @@ sap.ui
 						comment.setValue("");
 						msgRef.setText("");
 					},
+					
+					/**********************************************************
+					 * Open the Enter Comment Pop-Up
+					 */
+					onOpenDisruptionComment: function(title, okEvent){
+						// Call Reject Disruption fragment
+						if (!airbus.mes.disruptions.__enterCommentDialogue) {
+							airbus.mes.disruptions.__enterCommentDialogue = sap.ui.xmlfragment("airbus.mes.disruptions.fragment.commentBoxDisruption",this);
+							this.getView().addDependent(airbus.mes.disruptions.__enterCommentDialogue);
+
+						}
+						sap.ui.getCore().byId("disruptionCommentDialogue").setTitle(title);
+						sap.ui.getCore().byId("disruptionCommentBox").setValue("");
+						sap.ui.getCore().byId("disruptionCommentOK").attachPress(okEvent);
+						
+						airbus.mes.disruptions.__enterCommentDialogue.open();
+					},
+					
+					/***********************************************************
+					 * Close the Enter Comment Pop-Up
+					 */
+					onCloseDisruptionComment : function(oEvent) {
+						sap.ui.getCore().byId("disruptionCommentBox").setValue("");
+						airbus.mes.disruptions.__enterCommentDialogue.close();
+
+					},
 
 					/***********************************************************
 					 * Reject the Disruption
 					 */
 					onRejectDisruption: function(oEvt){
-						// Call Reject Disruption fragment
-						if (!this._rejectDialog) {
-							this._rejectDialog = sap.ui.xmlfragment("airbus.mes.disruptions.fragment.commentBoxDisruption",this);
-							
-							var title = this.getView().getModel("i18nModel").getProperty("rejectDisruption");
-							
-							sap.ui.getCore().byId("disruptionCommentDialogue").setTitle(title);
-							this.getView().addDependent(this._rejectDialog);
-
-						}
-						this._rejectDialog.open();
+						var title = this.getView().getModel("i18nModel").getProperty("rejectDisruption");
+						this.onOpenDisruptionComment(title, this.onConfirmRejection);				
 					},
 					/********************************************
 					 * Confirming Reject Disruption
@@ -187,20 +204,11 @@ sap.ui
 					onConfirmRejection: function(oEvent){
 						var comment = sap.ui.getCore().byId("disruptionCommentBox").getValue();
 						var msgref = sap.ui.getCore().byId("disruptionComment-msgRef").getText();
-//						Call Disruption Service
+						
+						//	Call Disruption Service
 						airbus.mes.disruptions.ModelManager.rejectDisruption(comment,msgref);
 						sap.ui.getCore().byId("disruptionCommentBox").setValue("");
-
-						this._rejectDialog.close();
-
-					},
-					/***********************************************************
-					 * close the Reject Disruption pop-up
-					 */
-					onCancelDisruptionComment : function(oEvent) {
-						sap.ui.getCore().byId("disruptionCommentBox").setValue("");
-						this._rejectDialog.close();
-
+						airbus.mes.disruptions.__enterCommentDialogue.close();
 					},
 
 					showCommentBox : function(oEvt) {
@@ -278,29 +286,8 @@ sap.ui
 					},
 
 					onAckDisruption : function() {
-
-						if (!this._commentDialog) {
-
-							this._commentDialog = sap.ui
-									.xmlfragment(
-											"airbus.mes.disruptions.fragment.commentBoxDisruption",
-											this);
-
-							var title = this.getView().getModel("i18nModel")
-									.getProperty("ackDisruption");
-
-							sap.ui.getCore().byId("disruptionCommentDialogue")
-									.setTitle(title);
-
-							sap.ui.getCore().byId("disruptionCommentOK")
-									.attachPress(
-											this.onAcceptAckDisruptionComment);
-
-							this.getView().addDependent(this._commentDialog);
-
-						}
-						this._commentDialog.open();
-
+						var title = this.getView().getModel("i18nModel").getProperty("ackDisruption");
+						this.onOpenDisruptionComment(title, this.onAcceptAckDisruptionComment);
 					},
 
 					onAcceptAckDisruptionComment : function() {
@@ -316,6 +303,8 @@ sap.ui
 						// Call to Acknowledge Disruption
 						airbus.mes.disruptions.ModelManager.ackDisruption(
 								msgRef, comment);
+						
+						airbus.mes.disruptions.__enterCommentDialogue.close();
 					},
 
 					onMarkSolvedDisruption : function(oEvt) {

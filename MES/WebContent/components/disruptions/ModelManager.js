@@ -459,7 +459,7 @@ airbus.mes.disruptions.ModelManager = {
 	rejectDisruption : function(comment, msgref) {
 		
 		var sMessageSuccess = "Disruption Rejected Successfully";
-		var sMessageError = sap.ui.getCore().getModel("i18nModel").getProperty("DisruptionNotReject");
+		var sMessageError = "Error occured while rejecting Disruption"
 		var flag_success;
 
 		jQuery
