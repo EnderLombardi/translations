@@ -146,10 +146,6 @@ airbus.mes.disruptions.ModelManager = {
 	 */
 	onOperationDisruptionsLoad : function() {
 
-		var oModel = sap.ui.getCore().getModel("operationDisruptionsModel");
-		oModel.loadData("../components/disruptions/local/disruptions.json",
-				null, false);
-
 		/* Set filter for Comments on all the disruptions */
 		airbus.mes.operationdetail.viewDisruption.oView.getController()
 				.applyFiltersOnComments();
@@ -392,7 +388,7 @@ airbus.mes.disruptions.ModelManager = {
 						}
 
 						// Add Comment to Model
-						if (!flag_success) {
+						if (flag_success) {
 							var oModel = sap.ui.getCore().getModel(
 									"operationDisruptionsModel");
 							oModel.getProperty("/Rowsets/Rowset/1/Row").push(
