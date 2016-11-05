@@ -191,11 +191,11 @@
 							<Button id="addComment" text="{i18nModel>addComment}"
 								press="showCommentBox" design="Transparent" icon="sap-icon://comment" />
 							<Button text="{i18nModel>acknowledge}"
-								design="Transparent" icon="sap-icon://to-be-reviewed" />
+								press="onAckDisruption" design="Transparent" icon="sap-icon://to-be-reviewed" />
 							<Button text="{i18nModel>escalate}"
-								press="onEscalate" design="Transparent" icon="sap-icon://message-warning" />
+								press="onEscalateDisruption" design="Transparent" icon="sap-icon://message-warning" />
 							<Button text="{i18nModel>markSolved}"
-								press="onMarkSolved" design="Transparent" icon="sap-icon://sys-add" />
+								press="onMarkSolvedDisruption" design="Transparent" icon="sap-icon://sys-add" />
 						</Toolbar>
 					</Panel>
 

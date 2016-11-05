@@ -10,13 +10,14 @@
 				<f:content>
 					<Label text="{i18nModel>comment}" />
 					<TextArea id="disruptionCommentBox" placeholder="{i18nModel>AddCommentBox}" />
+					<core:InvisibleText id="commentDisruption-msgRef"/>
 				</f:content>
 			</f:SimpleForm>
 		</content>
 
 		<buttons>
 			<Button text="{i18nModel>ok}" id="disruptionCommentOK" press="" type="Accept" />
-			<Button text="{i18nModel>cancel}" id="asd" press="onCancelDisruptionComment" />
+			<Button text="{i18nModel>cancel}" press="onCancelDisruptionComment" />
 		</buttons>
 
 	</Dialog>
