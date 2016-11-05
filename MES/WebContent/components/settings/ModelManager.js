@@ -15,6 +15,7 @@ airbus.mes.settings.ModelManager =  {
 	taktEnd : undefined,
 	taktDuration : undefined,
 	currentMsnSelected : true,
+	currentMsnValue : "",
 	core : undefined,
 	urlModel : undefined,
 	current_flag:"X",
@@ -158,7 +159,15 @@ airbus.mes.settings.ModelManager =  {
 		  urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(urlSaveUserSetting, "$program", airbus.mes.settings.ModelManager.program);
 		  urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(urlSaveUserSetting, "$line", airbus.mes.settings.ModelManager.line);
 		  urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(urlSaveUserSetting, "$station", airbus.mes.settings.ModelManager.station);
-		  urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(urlSaveUserSetting, "$msn", airbus.mes.settings.ModelManager.msn);
+		  if ( airbus.mes.settings.ModelManager.currentMsnSelected  ) {
+			  
+			  urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(urlSaveUserSetting, "$msn", "");
+					  
+		  } else  {
+			  
+			  urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(urlSaveUserSetting, "$msn", airbus.mes.settings.ModelManager.msn);
+		  
+		  }
 		  urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(urlSaveUserSetting, "$current_flag", airbus.mes.settings.ModelManager.current_flag);
 		  	  
 		  jQuery.ajax({
@@ -167,7 +176,10 @@ airbus.mes.settings.ModelManager =  {
 					
 				},
 				success : function(result, status, xhr) {
-			
+					
+				//	airbus.mes.settings.ModelManager.loadUserSettingsModel()
+					airbus.mes.shell.oView.byId("labelMSN").setText(airbus.mes.settings.ModelManager.msn);
+					
 				}
 			});
 		  

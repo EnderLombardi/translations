@@ -883,15 +883,9 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 	},
 
 	onSaveColumnPopup : function() {
-		var sTechname = columnModel.oData.techname.toUpperCase();
-		var aSpecialChar = [":", ",", "'", "%", "\\?", "\\*", '"', " "];
-		var bCheckStr = true;
-		
-		aSpecialChar.forEach(function(char){
-			if(sTechname.search(char) != -1){
-				bCheckStr = false;
-			}
-		});
+		var reg = new RegExp('[A-Z0-9\_]*');
+		var sTechname = columnModel.oData.techname;
+		sTechname=sTechname.match(reg)[0];
 		
 		var sName = columnModel.oData.competency;
 		var sNeed3 = columnModel.oData.need3;
@@ -904,7 +898,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 				});
 		var sQA = aQAfiltered.toString();
 
-		if (aQAfiltered.length <= 5 && sTechname != "" && sName != "" && bCheckStr) {
+		if (aQAfiltered.length <= 5 && sTechname != "" && sName != "") {
 			if (airbus.mes.polypoly.PolypolyManager.internalContext.saveContext == "CREATE") {
 				airbus.mes.polypoly.PolypolyManager.createColumn(sName, sQA, sNeed3, sNeed4, sTechname);
 			} else {
@@ -912,8 +906,6 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 			}
 		} else if (sTechname == "") {
 			sap.m.MessageToast.show(airbus.mes.polypoly.oView.getController().getI18n("TechNameEmpty"));
-		}else if (!bCheckStr) {
-			sap.m.MessageToast.show(airbus.mes.polypoly.oView.getController().getI18n("TechNameSpecial"));
 		}else if (sName == "") {
 			sap.m.MessageToast.show(airbus.mes.polypoly.oView.getController().getI18n("DescEmpty"));
 		} else if (aQAfiltered.length > 5) {

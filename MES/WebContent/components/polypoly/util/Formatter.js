@@ -8,4 +8,15 @@ airbus.mes.polypoly.util.Formatter = {
 //			return airbus.mes.polypoly.oView.getModel("mToggleVisibility").getData().bVisible;
 			return !airbus.mes.stationtracker.AssignmentManager.polypolyAffectation;
 		},
+		
+		techNameFormat : function(){
+			var stationMII = airbus.mes.polypoly.ModelManager.stationMII;
+			var nMaxLength = 13;
+			var sMask = stationMII + "_";
+			var nDispLen = nMaxLength - stationMII.length;
+			for(var i = 0; i<nDispLen;i++){
+				sMask = sMask.concat("C");
+			}
+			return sMask
+		}
 };

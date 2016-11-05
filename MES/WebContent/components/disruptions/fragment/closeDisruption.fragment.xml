@@ -22,7 +22,7 @@
 		<buttons>
 			<Button text="{i18nModel>ok}" press="onAcceptCloseDisruption"
 				type="Accept" />
-			<Button text="{i18nModel>cancel}" press="cancelCloseDisruption" />
+			<Button text="{i18nModel>cancel}" press="cancelClosingDisruption" />
 		</buttons>
 
 	</Dialog>

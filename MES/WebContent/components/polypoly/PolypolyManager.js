@@ -691,8 +691,8 @@ airbus.mes.polypoly.PolypolyManager = {
 
 		urlmovecolumn = urlmovecolumn.replace("$polypoly", sName);
 		urlmovecolumn = urlmovecolumn.replace("$order", newPos);
-//		urlmovecolumn = urlmovecolumn.replace("$station", airbus.mes.settings.ModelManager.station); //FIXME: Uncomment when ready
-		urlmovecolumn = urlmovecolumn.replace("$station", "1L");
+		urlmovecolumn = urlmovecolumn.replace("$station", airbus.mes.polypoly.ModelManager.stationMII); //FIXME: Uncomment when ready
+//		urlmovecolumn = urlmovecolumn.replace("$station", "1L");
 //		urlmovecolumn = urlmovecolumn.replace("$site", airbus.mes.settings.ModelManager.site); //FIXME: Uncomment when ready
 		urlmovecolumn = urlmovecolumn.replace("$site", "CHES");
 		

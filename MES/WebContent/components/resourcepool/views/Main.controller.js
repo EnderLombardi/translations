@@ -231,7 +231,7 @@ sap.ui
 									 * If any user is already loaned or assigned
 									 * then prepare error messages
 									 */
-									if (item.getCustomData()[2].getValue() != "---"
+									if (item.getCustomData()[2].getValue() != ""
 											&& item.getCustomData()[3]
 													.getValue() != airbus.mes.resourcepool.util.ModelManager.resourceName)
 										aError.push(item);
@@ -300,7 +300,7 @@ sap.ui
 								"AvailableUsersModel").oData.Rowsets.Rowset[0].Row;
 
 						for (var i = 0; i < aUsersToAssign.length; i++) {
-							if (aUsersToAssign[i].getCustomData()[2].getValue() != "---"
+							if (aUsersToAssign[i].getCustomData()[2].getValue() != ""
 									&& aUsersToAssign[i].getCustomData()[3]
 											.getValue() != airbus.mes.resourcepool.util.ModelManager.resourceName)
 								continue;
