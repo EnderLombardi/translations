@@ -312,6 +312,9 @@ sap.ui
 						oOperDetailNavContainer
 								.to(airbus.mes.operationdetail.createDisruption.oView
 										.getId());
+						
+						airbus.mes.operationdetail.createDisruption.oView.oController.resetAllFields();
+						
 					},
 
 					

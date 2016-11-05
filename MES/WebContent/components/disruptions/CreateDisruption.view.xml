@@ -103,9 +103,9 @@
 									</f:label>
 									<f:fields>
 										<Select id="selectOriginator" selectedKey="" forceSelection="false"
-											items="{userSettingModel>/Rowsets/Rowset/1/Row}">
+											items="{disruptionCustomData>/Rowsets/Rowset/1/Row}">
 											<items>
-												<core:Item text="{userDetailModel>RootCause}" key="{disruptionCustomData>RootCause}" />
+												<core:Item text="{disruptionCustomData>group_desc}" key="{disruptionCustomData>group_name}" />
 											</items>
 											<layoutData>
 												<l:GridData span="L3 M6 S12" />
