@@ -64,14 +64,9 @@ airbus.mes.disruptions.Formatter = {
 			return "Disturbed";
 	},
 	
-	formatUserGroup : function(userGroup){
+	getDate : function(datetime) {
 		
-		return userGroup.split(",")[1];
-	},
-	
-	getCurrentdate : function(datetime) {
-		
-		if(datetime == undefined)
+		if(datetime === null)
 			{
 			var today = new Date();
 			var dd = today.getDate();
@@ -95,7 +90,7 @@ airbus.mes.disruptions.Formatter = {
 	
 	getTime : function(datetime) {
 		
-		if(datetime == undefined)
+		if(datetime == null)
 			{
 			var today = new Date();
 			var HH = today.getHours();

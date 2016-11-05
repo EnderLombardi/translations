@@ -56,15 +56,18 @@ sap.ui
 								.getItems();
 						$.each(listItems,
 								function(key, value) {
-									// Apply filters on Message Comments
-									var oBinding = value.getContent()[0]
-											.getContent()[2]
-											.getBinding("items");
-
+									/** Apply filters on Message Comments **/
+							
+									// Get Message Ref from current list
 									var messageRef = value.getBindingContext(
 											"operationDisruptionsModel")
 											.getObject().MessageRef;
 
+									// Get Binding of Comment list in Current List item
+									var oBinding = value.getContent()[0]
+											.getContent()[2]
+											.getBinding("items");
+									// Aplly filter
 									oBinding.filter([ new sap.ui.model.Filter(
 											"MessageRef", "EQ", messageRef) ]);
 								});
@@ -207,7 +210,6 @@ sap.ui
 						
 						//	Call Disruption Service
 						airbus.mes.disruptions.ModelManager.rejectDisruption(comment,msgref);
-						sap.ui.getCore().byId("disruptionCommentBox").setValue("");
 						airbus.mes.disruptions.__enterCommentDialogue.close();
 					},
 
@@ -250,10 +252,10 @@ sap.ui
 					submitComment : function(oEvt) {
 						var path = oEvt.getSource().sId;
 
-						var oModel = sap.ui.getCore().getModel("commentsModel");
+						var oModel = sap.ui.getCore().getModel("operationDisruptionsModel");
 						oModel
 								.loadData(
-										"../components/disruptions/local/commentsModel.json",
+										"../components/disruptions/local/disruptions.json",
 										null, false);
 
 						var commentsData = oModel.getData();
@@ -296,10 +298,8 @@ sap.ui
 								"commentDisruption-msgRef").getText();
 
 						var comment = sap.ui.getCore().byId(
-								"disruptionCommentBox").getText();
+								"disruptionCommentBox").getValue();
 						
-						msgRef.setText("");
-
 						// Call to Acknowledge Disruption
 						airbus.mes.disruptions.ModelManager.ackDisruption(
 								msgRef, comment);

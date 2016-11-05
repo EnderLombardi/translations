@@ -215,6 +215,7 @@ sap.ui
 							/**************************
 							 * Load Disruption Custom Data
 							 *************************/
+							//sap.ui.getCore().getModel("DisruptionDetailModel").refresh();
 							if(!this.disruptionsCustomDataFlag){
 								airbus.mes.disruptions.ModelManager.loadDisruptionCustomData();
 								airbus.mes.disruptions.ModelManager.loadDisruptionCategory();
