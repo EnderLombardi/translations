@@ -151,8 +151,8 @@ airbus.mes.disruptions.ModelManager = {
 	 * Load Comments for all the disruptions of an operation
 	 */
 	loadComments: function(){
-		var oModel = sap.ui.getCore().getModel("commentsModel");
-		oModel.loadData("../components/disruptions/local/commentsModel.json", null, false);
+		var oModel = sap.ui.getCore().getModel("operationDisruptionsModel");
+		oModel.loadData("../components/disruptions/local/disruptions.json", null, false);
 	},
 	
 	/**************************************************************************
@@ -376,9 +376,9 @@ airbus.mes.disruptions.ModelManager = {
 						}
 						
 						// Add Comment to Model
-						if(flag_success){
-							var oModel = sap.ui.getCore().getModel("commentsModel");
-							oModel.getProperty("/Rowsets/Rowset/0/Row").push(oComment);
+						if(!flag_success){
+							var oModel = sap.ui.getCore().getModel("operationDisruptionsModel");
+							oModel.getProperty("/Rowsets/Rowset/1/Row").push(oComment);
 							oModel.refresh();
 						}
 

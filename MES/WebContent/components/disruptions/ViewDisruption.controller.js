@@ -258,10 +258,10 @@ sap.ui
 					submitComment : function(oEvt) {
 						var path = oEvt.getSource().sId;
 
-						var oModel = sap.ui.getCore().getModel("commentsModel");
+						var oModel = sap.ui.getCore().getModel("operationDisruptionsModel");
 						oModel
 								.loadData(
-										"../components/disruptions/local/commentsModel.json",
+										"../components/disruptions/local/disruptions.json",
 										null, false);
 
 						var commentsData = oModel.getData();
