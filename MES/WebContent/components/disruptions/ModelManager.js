@@ -13,12 +13,14 @@ airbus.mes.disruptions.ModelManager = {
 
 		core.setModel(new sap.ui.model.json.JSONModel(), "operationDisruptionsModel");
 		core.setModel(new sap.ui.model.json.JSONModel(), "commentsModel");
+
 	
 		sap.ui.getCore().getModel("operationDisruptionsModel").attachRequestCompleted(airbus.mes.disruptions.ModelManager.onOperationDisruptionsLoad);
 		sap.ui.getCore().getModel("commentsModel").attachRequestCompleted(airbus.mes.disruptions.ModelManager.onCommentsLoad);
 
 		core.setModel(new sap.ui.model.json.JSONModel(),
 		"DisruptionModel");
+
 
 		var dest;
 
@@ -285,12 +287,63 @@ airbus.mes.disruptions.ModelManager = {
 	},
 
 	/***************************************************************************
+	 * Get URL to Acknowledge Disruption
+	 **************************************************************************/
+	getUrlToAckDisruption : function() {
+
+		var urlToAckDisruption = this.urlModel.getProperty("urlToAckDisruption");
+		return urlToAckDisruption;
+	},
+	/***************************************************************************
+	 * Acknowledge Disruption
+	 **************************************************************************/
+	ackDisruption : function(msgRef, comment) {
+		
+		var sMessageSuccess = "Disruption Acknowledged Successfully";
+		var flag_success;
+
+		jQuery
+				.ajax({
+					url : this.getUrlToAckDisruption(),
+					data : {
+						"Param.1" : airbus.mes.settings.ModelManager.site,
+						"Param.2" : sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"),
+						"Param.3" : msgRef,
+						"Param.4" : comment
+					},
+					async : false,
+					error : function(xhr, status, error) {
+						airbus.mes.shell.ModelManager
+								.messageShow(sMessageError);
+						flag_success = false
+
+					},
+					success : function(result, status, xhr) {
+						if (result.Rowsets.Rowset[0].Row[0].Message_Type === undefined) {
+							airbus.mes.shell.ModelManager
+									.messageShow(sMessageSuccess);
+							flag_success = true;
+						} else if (result.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
+							airbus.mes.shell.ModelManager
+									.messageShow(result.Rowsets.Rowset[0].Row[0].Message)
+							flag_success = false;
+						} else {
+							airbus.mes.shell.ModelManager
+									.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
+							flag_success = true;
+						}
+
+					}
+				});
+	},
+
+	/***************************************************************************
 	 * Get URL to Add Comment
 	 **************************************************************************/
-	getUrlOnAddComment : function() {
+	getUrlToAddComment : function() {
 
-		var urlOnAddComment = this.urlModel.getProperty("urlOnAddComment");
-		return urlOnAddComment;
+		var urlToAddComment = this.urlModel.getProperty("urlToAddComment");
+		return urlToAddComment;
 	},
 	/***************************************************************************
 	 * Add Comment service
@@ -301,7 +354,7 @@ airbus.mes.disruptions.ModelManager = {
 
 		jQuery
 				.ajax({
-					url : this.getUrlOnAddComment(),
+					url : this.getUrlToAddComment(),
 					data : {
 						"Param.1" : airbus.mes.settings.ModelManager.site,
 						"Param.2" : sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"),

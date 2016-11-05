@@ -254,6 +254,14 @@ sap.ui
 								{
 									"attribute" : "MSN",
 									"value": airbus.mes.settings.ModelManager.msn
+								},
+								{
+									"attribute" : "RESPONSIBLE_GROUP",
+									"value": this.getView().byId("selectResponsible").getSelectedKey()
+								},
+								{
+									"attribute" : "ORIGINATOR_GROUP",
+									"value": this.getView().byId("selectOriginator").getSelectedKey()
 								}
 								]
 								
@@ -304,6 +312,22 @@ sap.ui
 				oOperDetailNavContainer
 						.to(airbus.mes.operationdetail.viewDisruption.oView
 								.getId());
+				 },
+				 
+				 /********************
+				  * Reset all the fields of Form create disruption
+				  */
+				 resetAllFields : function(){
+					 this.getView().byId("selectCategory").setSelectedKey();
+					 this.getView().byId("selectReasonTree").setSelectedKey();
+					 this.getView().byId("selectResponsible").setSelectedKey();
+					 this.getView().byId("selectOriginator").setSelectedKey();
+					 this.getView().byId("selectRootCause").setSelectedKey();
+					 this.getView().byId("gravity").setSelectedKey();
+					 this.getView().byId("expectedDate").setValue();
+					 this.getView().byId("expectedTime").setValue();
+					 this.getView().byId("timeLost").setValue();
+					 this.getView().byId("comment").setValue();
 				 }
 				 
 				/**

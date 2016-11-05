@@ -5,9 +5,7 @@
 	<Page enableScrolling="false" showHeader="false" height="100%">
 		<FlexBox width="100%" height="100%" justifyContent="Center"
 			direction="Column">
-			
 			<items>
-			
 				<f:Form id="editDisruptionForm" editable="true"
 					class="sapUiMediumMargin" visible="true">
 					<f:layout>
