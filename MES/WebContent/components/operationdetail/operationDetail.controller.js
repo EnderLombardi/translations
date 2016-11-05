@@ -148,9 +148,12 @@ sap.ui
 							switch (currentPage){
 							case sap.ui.getCore().byId("idStatusView"):
 								sap.ui.getCore().byId("idStatusView").rerender();
+								sap.ui.getCore().byId("ViewDisruptionView").rerender();
 								break;
 							case sap.ui.getCore().byId("ViewDisruptionView"):
-								sap.ui.getCore().byId("ViewDisruptionView--reportDisruption").setVisible(true);
+								//sap.ui.getCore().byId("ViewDisruptionView--reportDisruption").setVisible(true);
+							sap.ui.getCore().byId("idStatusView").rerender();
+							sap.ui.getCore().byId("ViewDisruptionView").rerender();
 								break;
 							
 							
@@ -166,10 +169,13 @@ sap.ui
 							switch (currentPage){
 							case sap.ui.getCore().byId("idStatusView"):
 								sap.ui.getCore().byId("idStatusView").rerender();
+								sap.ui.getCore().byId("ViewDisruptionView").rerender();
 								
 								break;
 							case sap.ui.getCore().byId("ViewDisruptionView"):
-								sap.ui.getCore().byId("ViewDisruptionView--reportDisruption").setVisible(false);
+								//sap.ui.getCore().byId("ViewDisruptionView--reportDisruption").setVisible(false);
+								sap.ui.getCore().byId("idStatusView").rerender();
+								sap.ui.getCore().byId("ViewDisruptionView").rerender();
 							
 								break;
 							

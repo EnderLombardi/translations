@@ -12,13 +12,7 @@ sap.ui
 					 * @memberOf components.disruptions.ViewDisruption
 					 */
 					onInit : function() {
-						if(sap.ui.getCore().byId("operationDetailsView--switchOperationModeBtn").getState() == false)
-						 {
-						 this.getView().byId("reportDisruption").setVisible(false);
-						 }
-						else{
-							this.getView().byId("reportDisruption").setVisible(true);
-						}
+						
 					},
 					/**
 					 * Similar to onAfterRendering, but this hook is invoked
@@ -38,9 +32,16 @@ sap.ui
 					 * 
 					 * @memberOf components.disruptions.ViewDisruption
 					 */
-					// onAfterRendering: function() {
-					//
-					// },
+					 onAfterRendering: function() {
+						 if(sap.ui.getCore().byId("operationDetailsView--switchOperationModeBtn").getState() == false)
+						 {
+						 this.getView().byId("reportDisruption").setVisible(false);
+						 }
+						else{
+							this.getView().byId("reportDisruption").setVisible(true);
+						}
+				
+					},
 					/**
 					 * Called when the Controller is destroyed. Use this one to
 					 * free resources and finalize activities.
