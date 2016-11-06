@@ -706,32 +706,32 @@ sap.ui
 						var binding = oList.getBinding("items");
 						// console.log('Search '+sQuery);
 						if (sQuery && sQuery.length > 0) {
-							var filter1 = new sap.ui.model.Filter("USER_ID",
+							var filter1 = new sap.ui.model.Filter("userId",
 									sap.ui.model.FilterOperator.Contains,
 									sQuery);
 							aFilters.push(filter1);
 
 							var filter2 = new sap.ui.model.Filter(
-									"PERSONAL_NO",
+									"personalNo",
 									sap.ui.model.FilterOperator.Contains,
 									sQuery);
 							aFilters.push(filter2);
 
 							var filter3 = new sap.ui.model.Filter(
-									"ERP_USER_ID",
+									"erpUserIid",
 									sap.ui.model.FilterOperator.Contains,
 									sQuery);
 							aFilters.push(filter3);
 
-							var filter4 = new sap.ui.model.Filter("FNAME",
+							var filter4 = new sap.ui.model.Filter("name",
 									sap.ui.model.FilterOperator.Contains,
 									sQuery);
 							aFilters.push(filter4);
 
-							var filter5 = new sap.ui.model.Filter("LNAME",
-									sap.ui.model.FilterOperator.Contains,
-									sQuery);
-							aFilters.push(filter5);
+//							var filter5 = new sap.ui.model.Filter("LNAME",
+//									sap.ui.model.FilterOperator.Contains,
+//									sQuery);
+//							aFilters.push(filter5);
 							binding.filter(new sap.ui.model.Filter(aFilters,
 									false), "Control");
 						}
@@ -751,13 +751,13 @@ sap.ui
 						var binding = oList.getBinding("items");
 
 						if (sQuery && sQuery.length > 0) {
-							var filter1 = new sap.ui.model.Filter("WorkCenter",
+							var filter1 = new sap.ui.model.Filter("name",
 									sap.ui.model.FilterOperator.Contains,
 									sQuery);
 							aFilters.push(filter1);
 
 							var filter2 = new sap.ui.model.Filter(
-									"Description",
+									"description",
 									sap.ui.model.FilterOperator.Contains,
 									sQuery);
 							aFilters.push(filter2);
@@ -783,13 +783,13 @@ sap.ui
 
 						if (sQuery && sQuery.length > 0) {
 							var filter1 = new sap.ui.model.Filter(
-									"ASSIGNMENT_NAME",
+									"name",
 									sap.ui.model.FilterOperator.Contains,
 									sQuery);
 							aFilters.push(filter1);
 
 							var filter2 = new sap.ui.model.Filter(
-									"DESCRIPTION",
+									"description",
 									sap.ui.model.FilterOperator.Contains,
 									sQuery);
 							aFilters.push(filter2);
@@ -1017,7 +1017,7 @@ sap.ui
 						// add filter for search
 						var aFilters = [];
 						var sQuery = oEvt.getParameter("value");
-						if (sQuery && sQuery.length > 0) {
+						if (sQuery && sQuery.length >= 0) {
 							var filter = new sap.ui.model.Filter("NAME",
 									sap.ui.model.FilterOperator.Contains,
 									sQuery);
@@ -1025,7 +1025,7 @@ sap.ui
 						}
 
 						// update list binding
-						var oDialog = sap.ui.getCore().byId("selectDialog");
+						var oDialog = sap.ui.getCore().byId("valueHelp--selectDialog-list");
 						var binding = oDialog.getBinding("items");
 						binding.filter(aFilters, "Application");
 					},

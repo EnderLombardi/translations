@@ -112,7 +112,7 @@
 		{ "Name" : "shiftAssigned", "SourceColumn" : "shiftAssigned", "Description" : "shiftAssigned", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
 		{ "Name" : "description", "SourceColumn" : "description", "Description" : "description", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 } ] }, 
 	"Row" : [ 
-		{ "handle" : "WorkCenterBO:FNZ1,1L", "name" : "1L", "shiftEndDateTime" : "420000", "shiftStartDateTime" : "4200", "type": "S", "shiftAssigned": "true" , "description": "wwq", "shiftValidFrom": "4020", "shiftValidTo": "45" }, 
-		{ "handle" : "WorkCenterBO:FNZ1,2L", "name" : "1L", "shiftEndDateTime" : "420000", "shiftStartDateTime" : "4200", "type": "S", "shiftAssigned": "false" , "description": "wwq", "shiftValidFrom": "4020", "shiftValidTo": "45" }]		 } ]
+		{ "handle" : "WorkCenterBO:FNZ1,1L", "name" : "1L", "shiftEndDateTime" : "420000", "shiftStartDateTime" : "4200", "type": "S", "shiftAssigned": "true" , "description": "wwq", "shiftValidFrom": "20161210", "shiftValidTo": "20161412" }, 
+		{ "handle" : "WorkCenterBO:FNZ1,2L", "name" : "1L", "shiftEndDateTime" : "420000", "shiftStartDateTime" : "4200", "type": "S", "shiftAssigned": "false" , "description": "wwq", "shiftValidFrom": "20160908", "shiftValidTo": "20161413" }]		 } ]
 	 }
  }
