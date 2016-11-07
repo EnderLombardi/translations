@@ -1,3 +1,5 @@
+jQuery.sap.require("sap.m.MessageBox");
+
 sap.ui
 		.controller(
 				"airbus.mes.disruptions.ViewDisruption",
@@ -212,28 +214,36 @@ sap.ui
 					/***********************************************************
 					 * Reject the Disruption
 					 */
-					onRejectDisruption : function(oEvt) {
-						var title = this.getView().getModel("i18nModel")
-								.getProperty("rejectDisruption");
-						var msgRef = oEvt.getSource().getBindingContext(
-								"operationDisruptionsModel").getObject(
-								"MessageRef");
-						this.onOpenDisruptionComment(title, msgRef,
-								this.onConfirmRejection);
+					onRejectDisruption: function(oEvt){
+						
+						var status = oEvt.getSource().getBindingContext(
+						"operationDisruptionsModel").getObject("Status");
+						
+						if(status == airbus.mes.disruptions.Formatter.status.pending) {
+							
+							sap.m.MessageBox.error("You must first \"Acknowledge\" the disruption.");
+							
+						} else {
+
+							var title = this.getView().getModel("i18nModel").getProperty("rejectDisruption");
+							var msgRef = oEvt.getSource().getBindingContext(
+							"operationDisruptionsModel").getObject("MessageRef");
+							this.onOpenDisruptionComment(title, msgRef, this.onConfirmRejection);	
+							
+						}
+									
 					},
-					/***********************************************************
+					/********************************************
 					 * Confirming Reject Disruption
 					 */
-					onConfirmRejection : function(oEvent) {
-						var comment = sap.ui.getCore().byId(
-								"disruptionCommentBox").getValue();
-						var msgref = sap.ui.getCore().byId(
-								"disruptionComment-msgRef").getText();
-
-						// Call Disruption Service
-						airbus.mes.disruptions.ModelManager.rejectDisruption(
-								comment, msgref);
+					onConfirmRejection: function(oEvent){
+						var comment = sap.ui.getCore().byId("disruptionCommentBox").getValue();
+						var msgref = sap.ui.getCore().byId("disruptionComment-msgRef").getText();
+						
+						//	Call Disruption Service
+						airbus.mes.disruptions.ModelManager.rejectDisruption(comment,msgref);
 						airbus.mes.disruptions.__enterCommentDialogue.close();
+
 					},
 
 					/***********************************************************
@@ -340,31 +350,52 @@ sap.ui
 					onAcceptAckDisruptionComment : function() {
 
 						var msgRef = sap.ui.getCore().byId(
+								"disruptionAckSpathMsgRef").getText();
+
+						var comment = sap.ui.getCore().byId(
+								"disruptionAckComment").getValue();
+						
+						var i18nModel = this.getView().getModel("i18nModel");
+
+						// Call to Acknowledge Disruption
+						var success = airbus.mes.disruptions.ModelManager.ackDisruption(
+								msgRef, comment, i18nModel);
+
+						airbus.mes.disruptions.__enterCommentDialogue.close();
+						
+						if(success){
+							var sPath = sap.ui.getCore().byId("disruptionAckSpath").getValue();
+							this.getView().getModel("operationDisruptionsModel").getProperty(sPath).Status = airbus.mes.disruptions.Formatter.status.acknowledged;
+							this.getView().getModel("operationDisruptionsModel").refresh();
+						}
+					},
+
+					onMarkSolvedDisruption : function(oEvt) {
+						
+						var title = this.getView().getModel("i18nModel").getProperty("markSolvedDisruption");
+						var msgRef = oEvt.getSource().getBindingContext(
+							"operationDisruptionsModel").getObject("MessageRef");
+						
+						this.onOpenDisruptionComment(title, msgRef, this.onMarkSolvedDisruptionComment);
+
+					},
+					
+					/***********************************************************
+					 * When Comment is Submitted to Mark Solved Disruption
+					 */
+					onMarkSolvedDisruptionComment : function() {
+
+						var msgRef = sap.ui.getCore().byId(
 								"disruptionComment-msgRef").getText();
 
 						var comment = sap.ui.getCore().byId(
 								"disruptionCommentBox").getValue();
-
-						// Call to Acknowledge Disruption
-						airbus.mes.disruptions.ModelManager.ackDisruption(
+						
+						// Call to Mark Solved Disruption
+						airbus.mes.disruptions.ModelManager.markSolvedDisruption(
 								msgRef, comment);
-
+						
 						airbus.mes.disruptions.__enterCommentDialogue.close();
-					},
-
-					onMarkSolvedDisruption : function(oEvt) {
-						/*
-						 * var path = oEvt.getSource().getBindingContext(
-						 * "disruptionModel").getPath();
-						 * this.getView().getModel("disruptionModel").setProperty(
-						 * path + "/Status", "Solved");
-						 * this.getView().getModel("disruptionModel").setProperty(
-						 * path + "/commentVisible", "false");
-						 * this.getView().getModel("disruptionModel").setProperty(
-						 * path + "/message", " ");
-						 * oEvt.getSource().setType("Accept");
-						 */
-
 					},
 
 					/***********************************************************
@@ -392,9 +423,32 @@ sap.ui
 						var msgRef = oEvent.getSource().getBindingContext(
 								"operationDisruptionsModel").getObject(
 								"MessageRef");
+						
+						var i18nModel = this.getView().getModel("i18nModel");
+						
+						// Call Escalate Service
+						var isSuccess = airbus.mes.disruptions.ModelManager
+								.escalateDisruption(msgRef, i18nModel);
 
-						airbus.mes.disruptions.ModelManager
-								.escalateDisruption(msgRef);
+						// Change Severity level in model
+						if(isSuccess){
+							var sPath = oEvent.getSource().getBindingContext("operationDisruptionsModel").sPath;
+							
+							var severity = this.getView().getModel("operationDisruptionsModel").getProperty(sPath).Severity;
+							
+							switch(severity){
+							case airbus.mes.disruptions.Formatter.severity[0]:
+								this.getView().getModel("operationDisruptionsModel").getProperty(sPath).Severity = airbus.mes.disruptions.ModelManager.severity[1]
+								break;
+							
+							case severity == airbus.mes.disruptions.Formatter.severity[1]:
+								this.getView().getModel("operationDisruptionsModel").getProperty(sPath).Severity = airbus.mes.disruptions.Formatter.severity[2];
+								break;
+							};
+							
+							this.getView().getModel("operationDisruptionsModel").refresh();
+						}
+						
 					},
 
 					onReportDisruption : function(oEvent) {
