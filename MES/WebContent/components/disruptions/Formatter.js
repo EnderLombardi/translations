@@ -3,8 +3,22 @@
 jQuery.sap.declare("airbus.mes.disrtuptions.Formatter");
 
 airbus.mes.disruptions.Formatter = {
-		monthNames : [ "January", "February", "March", "April", "May", "June",
-		   			"July", "August", "September", "October", "November", "December" ],
+	monthNames : [ "January", "February", "March", "April", "May", "June",
+			"July", "August", "September", "October", "November", "December" ],
+			
+	status: {
+		"pending": "Pending",
+		"closed" : "Closed",
+		"acknowledged" : "Acknowledged",
+		"solved" : "Solved",
+		"rejected" : "Rejected"
+	},
+	
+	severity: {
+		"info": "Info",
+		"warning" : "Closed",
+		"critical" : "Critical"
+	},
 
 	json2xml : function(o, tab) {
 		var toXml = function(v, name, ind) {
@@ -54,8 +68,8 @@ airbus.mes.disruptions.Formatter = {
 
 	setText : function(status, gravity, escalation) {
 
-		if (status == "CLOSED") {
-			return "Solved";
+		if (status == airbus.mes.disruptions.Formatter.status.closed) {
+			return airbus.mes.disruptions.Formatter.status.solved;
 		} else if (gravity == 3 || escalation == 2 || escalation == 3)
 			return "Blocked";
 		else if (gravity == 1)
@@ -63,11 +77,10 @@ airbus.mes.disruptions.Formatter = {
 		else if (gravity == 2)
 			return "Disturbed";
 	},
-	
+
 	getDate : function(datetime) {
-		
-		if(datetime === null)
-			{
+
+		if (datetime === null) {
 			var today = new Date();
 			var dd = today.getDate();
 			var mm = today.getMonth(); // January is 0!
@@ -76,83 +89,143 @@ airbus.mes.disruptions.Formatter = {
 			if (dd < 10) {
 				dd = '0' + dd
 			}
-			
+
 			var month = airbus.mes.disruptions.Formatter.monthNames[mm];
-			
+
 			return (month + ' ' + dd + ',' + yyyy);
-			}
-		else
-			{
+		} else {
 			return datetime.split(" ")[0];
-			}
-		
+		}
+
 	},
-	
+
 	getTime : function(datetime) {
-		
-		if(datetime == null)
-			{
+
+		if (datetime == null) {
 			var today = new Date();
 			var HH = today.getHours();
 			var mm = today.getMinutes();
 			var ss = today.getSeconds();
-			
+
 			return (HH + ":" + mm + ":" + ss);
-			}
-		else
-			{
-			
+		} else {
+
 			return datetime.split(" ")[1];
-			
+
+		}
+	},
+
+	setEditButtonVisibility : function(originatorFlag, status) {
+
+		if (originatorFlag == "X") {
+
+			if (status == airbus.mes.disruptions.Formatter.status.solved || status == airbus.mes.disruptions.Formatter.status.reject || status == airbus.mes.disruptions.Formatter.status.pending) {
+				return true;
 			}
+		}
+
+		return false;
 	},
-	
-	setEditButtonVisibility : function(originatorGrp, responsibleGrp) {
-		
-		
+
+	setDeleteButtonVisibility : function(originatorFlag) {
+
+		if (originatorFlag == 'X') {
+			return true;
+		}
+
+		return false;
+	},
+
+	setCloseButtonVisibility : function(originatorFlag, status) {
+
+		if (originatorFlag == "X") {
+
+			if (status == airbus.mes.disruptions.Formatter.status.solved || status == airbus.mes.disruptions.Formatter.status.reject || status == airbus.mes.disruptions.Formatter.status.pending) {
+				return true;
+			}
+		}
+
+		return false;
+	},
+
+	setRejectButtonVisibility : function(responsibleFlag, status) {
+
+		if (responsibleFlag == "X") {
+
+			if (status == airbus.mes.disruptions.Formatter.status.rejected) {
+				
+				this.setText(airbus.mes.disruptions.Formatter.status.rejected);
+				this.setEnabled(false);
+				
+				return true;
+				
+			} else if (status == airbus.mes.disruptions.Formatter.status.pending) {
+				return true;
+				
+			} else if(status == airbus.mes.disruptions.Formatter.status.acknowledged) {
+				
+				return true;
+				
+			}
+
+		}
+
+		return false;
+	},
+
+	setAddCommentButtonVisibility : function(originatorFlag, responsibleFlag) {
+
 		return true;
 	},
-	
-	setDeleteButtonVisibility : function(originatorGrp, responsibleGrp) {
-		
-		
-		return true;
+
+	setAcknowledgeButtonVisibility : function(responsibleFlag, status) {
+
+		if (responsibleFlag == "X") {
+
+			if (status == airbus.mes.disruptions.Formatter.status.pending) {
+				return true;
+			}
+		}
+
+		return false;
 	},
-	
-	setCloseButtonVisibility : function(originatorGrp, responsibleGrp) {
-		
-		
-		return true;
+
+	setEscalateButtonVisibility : function(originatorFlag, severity) {
+
+		if (originatorFlag == "X") {
+
+			if (severity == airbus.mes.disruptions.Formatter.severity.info) {
+				
+				this.setText("Escalate to Level 1")
+				
+			} else if (severity == airbus.mes.disruptions.Formatter.severity.warning) {
+				
+				this.setText("Escalate to Level 2")
+				
+			} else if (severity == airbus.mes.disruptions.Formatter.severity.critical) {
+				
+				this.setText("Escalated");
+				this.setEnabled(false);
+				
+			}
+			
+			return true;
+
+		}
+
+		return false;
 	},
-	
-	setRejectButtonVisibility : function(originatorGrp, responsibleGrp) {
-		
-		
-		return true;
-	},
-	
-	setAddCommentButtonVisibility : function(originatorGrp, responsibleGrp) {
-		
-		
-		return true;
-	},
-	
-	setAcknowledgeButtonVisibility : function(originatorGrp, responsibleGrp) {
-		
-		
-		return true;
-	},
-	
-	setEscalateButtonVisibility : function(originatorGrp, responsibleGrp) {
-		
-		
-		return true;
-	},
-	
-	setMarkSolvedButtonVisibility : function(originatorGrp, responsibleGrp) {
-		
-		
-		return true;
+
+	setMarkSolvedButtonVisibility : function(responsibleFlag, status) {
+
+		if (responsibleFlag == "X") {
+
+			if (status == airbus.mes.disruptions.Formatter.status.acknowledged) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 };
