@@ -399,13 +399,13 @@ sap.ui
 
 					onReportDisruption : function(oEvent) {
 
-						airbus.mes.operationdetail.oView.setBusy(true);
+						
 						var oOperDetailNavContainer = sap.ui.getCore().byId(
 								"operationDetailsView--operDetailNavContainer");
 
 						if (airbus.mes.operationdetail.createDisruption === undefined
 								|| airbus.mes.operationdetail.createDisruption.oView === undefined) {
-
+							airbus.mes.operationdetail.oView.setBusy(true);
 							sap.ui
 									.getCore()
 									.createComponent(
@@ -428,7 +428,10 @@ sap.ui
 
 						airbus.mes.operationdetail.createDisruption.oView.oController
 								.resetAllFields();
-
+						
+						//set buttons according to create disruption
+						sap.ui.getCore().byId("createDisruptionView--btnUpdateDisruption").setVisible(false);
+						sap.ui.getCore().byId("createDisruptionView--btnCreateDisruption").setVisible(true);
 					},
 
 					onEditDisruption : function(oEvent) {
@@ -436,11 +439,12 @@ sap.ui
 						// Navigate to Edit Screen
 						var oOperDetailNavContainer = sap.ui.getCore().byId(
 								"operationDetailsView--operDetailNavContainer");
+						
 
 						// if component is not created - create the component
 						if (airbus.mes.operationdetail.createDisruption === undefined
 								|| airbus.mes.operationdetail.createDisruption.oView === undefined) {
-
+							airbus.mes.operationdetail.oView.setBusy(true);
 							sap.ui
 									.getCore()
 									.createComponent(
@@ -467,8 +471,12 @@ sap.ui
 
 						oModel.setData(oBindingContext
 								.getProperty(oBindingContext.sPath));
-						sap.ui.getCore().getModel("DisruptionDetailModel")
-								.refresh();
+						oModel.refresh();
+						
+						
+						//set buttons according to update disruption
+						sap.ui.getCore().byId("createDisruptionView--btnUpdateDisruption").setVisible(true);
+						sap.ui.getCore().byId("createDisruptionView--btnCreateDisruption").setVisible(false);
 
 					},
 
