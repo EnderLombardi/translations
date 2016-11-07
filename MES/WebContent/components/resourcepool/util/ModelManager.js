@@ -7,6 +7,7 @@ airbus.mes.resourcepool.util.ModelManager = {
 	oCreateResDialog : undefined,
 	site : undefined,
 	resourceName : undefined,
+	resourceId : undefined,
 	// resourcePool: undefined,
 	resourceDescription : undefined,
 	date : undefined,
@@ -60,9 +61,9 @@ airbus.mes.resourcepool.util.ModelManager = {
 	},
 
 	loadMainViewModels : function() {
-		this.currentView.setBusy(true);
+		airbus.mes.resourcepool.util.ModelManager.currentView.setBusy(true);
 		this.loadModelResourcePoolModel();
-		this.currentView.setBusy(false);
+		airbus.mes.resourcepool.util.ModelManager.currentView.setBusy(false);
 	},
 
 	getUrlValueHelpModel : function() {
@@ -224,7 +225,7 @@ airbus.mes.resourcepool.util.ModelManager = {
 		var value;
 		jQuery.ajax({
 			async : false,
-			url : this.getUrlUpdateResourcePool(),
+			url : airbus.mes.resourcepool.util.ModelManager.getUrlUpdateResourcePool(),
 			cache : false,
 			type : 'POST',
 			data : {
@@ -274,7 +275,7 @@ airbus.mes.resourcepool.util.ModelManager = {
 			},
 			success : function(data, textStatus, jqXHR) {
 				airbus.mes.resourcepool.util.ModelManager.loadMainViewModels();
-				this.currentView.setBusy(false);
+				airbus.mes.resourcepool.util.ModelManager.currentView.setBusy(false);
 				var message = airbus.mes.resourcepool.oView.getModel(
 						"i18nModel").getProperty("SavedResourcePool");
 				airbus.mes.resourcepool.util.ModelManager.handleMessages(data,
@@ -282,7 +283,7 @@ airbus.mes.resourcepool.util.ModelManager = {
 
 			},
 			error : function() {
-				this.currentView.setBusy(false);
+				airbus.mes.resourcepool.util.ModelManager.currentView.setBusy(false);
 				airbus.mes.resourcepool.util.ModelManager
 						.handleServerError("Toast")
 			}
@@ -327,8 +328,8 @@ airbus.mes.resourcepool.util.ModelManager = {
 	handleServerError : function(display) {
 		this.showMessage(display, "Error", airbus.mes.resourcepool.oView
 				.getModel("i18nModel").getProperty("TryAgain"), true);
-		if(this.currentView)
-			this.currentView.setBusy(false);
+		if(airbus.mes.resourcepool.util.ModelManager.currentView)
+			airbus.mes.resourcepool.util.ModelManager.currentView.setBusy(false);
 	},
 
 	handleMessages : function(data, textStatus, jqXHR, message, display) {
@@ -355,8 +356,8 @@ airbus.mes.resourcepool.util.ModelManager = {
 			}
 		}
 		
-		if(this.currentView)
-			this.currentView.setBusy(false);
+		if(airbus.mes.resourcepool.util.ModelManager.currentView)
+			airbus.mes.resourcepool.util.ModelManager.currentView.setBusy(false);
 	},
 
 	showMessage : function(display, msgType, msgText, visible, duration) {
