@@ -112,7 +112,8 @@ sap.ui.controller("airbus.mes.settings.Settings",
 							         el.Current_MSN != "---"
 							});
 						if ( oModel.length > 0 ) {
-							
+					
+							// This is need to reset the previous current msn value when we reload the applicatoin
 							airbus.mes.settings.ModelManager.currentMsnValue = oModel[0].msn;
 							airbus.mes.settings.oView.byId("selectMSN").setValue( oModel[0].msn );
 							
@@ -376,6 +377,8 @@ sap.ui.controller("airbus.mes.settings.Settings",
 							
 							this.getView().getController().onSelectionChange("selectStation");
 							airbus.mes.settings.ModelManager.msn = this.getView().byId("selectMSN").getValue();
+							// When current msn is selected we dont store msn in save user setting we reuse currentMsnValue
+							// variable wich is set during the filtering of combobox STATION.
 							airbus.mes.shell.oView.byId("labelMSN").setText(airbus.mes.settings.ModelManager.currentMsnValue);
 						}
 						this.setEnabledCombobox(true, true, true, true);
