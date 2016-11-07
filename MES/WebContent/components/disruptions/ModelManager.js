@@ -276,6 +276,7 @@ airbus.mes.disruptions.ModelManager = {
 	 **************************************************************************/
 	escalateDisruption : function(msgRef, i18nModel) {
 		var sMessageSuccess = i18nModel.getProperty("successfulEscalation");
+		var sMessageError   = i18nModel.getProperty("tryAgain");
 		var flag_success;
 
 		jQuery.ajax({
@@ -328,6 +329,7 @@ airbus.mes.disruptions.ModelManager = {
 	ackDisruption : function(msgRef, comment, i18nModel) {
 
 		var sMessageSuccess = i18nModel.getProperty("successfulAcknowledge");
+		var sMessageError   = i18nModel.getProperty("tryAgain");
 		var flag_success;
 
 		jQuery.ajax({
@@ -364,52 +366,54 @@ airbus.mes.disruptions.ModelManager = {
 
 			}
 		});
-		return flag;
+		return flag_success;
 	},
 	
 	/***************************************************************************
 	 * Mark Solved Disruption
 	 **************************************************************************/
-	markSolvedDisruption : function(msgRef, comment) {
+	markSolvedDisruption : function(msgRef, comment, i18nModel) {
 
-		var sMessageSuccess = "Disruption Marked Solved Successfully";
+		var sMessageSuccess = i18nModel.getProperty("successSolved");
+		var sMessageError   = i18nModel.getProperty("tryAgain");
 		var flag_success;
 
-		jQuery
-				.ajax({
-					url : this.getUrlToMarkSolvedDisruption(),
-					data : {
-						"Param.1" : airbus.mes.settings.ModelManager.site,
-						"Param.2" : sap.ui.getCore().getModel(
-								"userSettingModel").getProperty(
-								"/Rowsets/Rowset/0/Row/0/user"),
-						"Param.3" : msgRef,
-						"Param.4" : comment
-					},
-					async : false,
-					error : function(xhr, status, error) {
-						airbus.mes.shell.ModelManager
-								.messageShow(sMessageError);
-						flag_success = false
+		jQuery.ajax({
+			url : this.getUrlToMarkSolvedDisruption(),
+			data : {
+				"Param.1" : airbus.mes.settings.ModelManager.site,
+				"Param.2" : sap.ui.getCore().getModel(
+						"userSettingModel").getProperty(
+						"/Rowsets/Rowset/0/Row/0/user"),
+				"Param.3" : msgRef,
+				"Param.4" : comment
+			},
+			async : false,
+			error : function(xhr, status, error) {
+				airbus.mes.shell.ModelManager
+						.messageShow(sMessageError);
+				flag_success = false
 
-					},
-					success : function(result, status, xhr) {
-						if (result.Rowsets.Rowset[0].Row[0].Message_Type === undefined) {
-							airbus.mes.shell.ModelManager
-									.messageShow(sMessageSuccess);
-							flag_success = true;
-						} else if (result.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
-							airbus.mes.shell.ModelManager
-									.messageShow(result.Rowsets.Rowset[0].Row[0].Message)
-							flag_success = false;
-						} else {
-							airbus.mes.shell.ModelManager
-									.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
-							flag_success = true;
-						}
+			},
+			success : function(result, status, xhr) {
+				if (result.Rowsets.Rowset[0].Row[0].Message_Type === undefined) {
+					airbus.mes.shell.ModelManager
+							.messageShow(sMessageSuccess);
+					flag_success = true;
+				} else if (result.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
+					airbus.mes.shell.ModelManager
+							.messageShow(result.Rowsets.Rowset[0].Row[0].Message)
+					flag_success = false;
+				} else {
+					airbus.mes.shell.ModelManager
+							.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
+					flag_success = true;
+				}
 
-					}
-				});
+			}
+		});
+		
+		return flag_success;
 	},
 	
 
@@ -438,6 +442,7 @@ airbus.mes.disruptions.ModelManager = {
 	 **************************************************************************/
 	addComment : function(oComment) {
 		var sMessageSuccess = "Comment Added Successfully";
+		var sMessageError   = i18nModel.getProperty("tryAgain");
 		var flag_success;
 
 		jQuery
@@ -499,46 +504,49 @@ airbus.mes.disruptions.ModelManager = {
 	/***************************************************************************
 	 * Close Disruption Service
 	 **************************************************************************/
-	closeDisruption : function(msgRef, comment, timeLost) {
+	closeDisruption : function(msgRef, comment, timeLost, i18nModel) {
 
-		var sMessageSuccess = "Disruption Closed Successfully";
+		var sMessageSuccess = i18nModel.getProperty("successClosed");
+		var sMessageError   = i18nModel.getProperty("tryAgain");
 		var flag_success;
 
-		jQuery
-				.ajax({
-					url : this.getUrlToCloseDisruption(),
-					data : {
-						"Param.1" : airbus.mes.settings.ModelManager.site,
-						"Param.2" : sap.ui.getCore().getModel(
-								"userSettingModel").getProperty(
-								"/Rowsets/Rowset/0/Row/0/user"),
-						"Param.3" : msgRef,
-						"Param.4" : comment,
-						"Param.5" : timeLost
-					},
-					error : function(xhr, status, error) {
-						airbus.mes.shell.ModelManager
-								.messageShow(sMessageError);
-						flag_success = false
+		jQuery.ajax({
+			url : this.getUrlToCloseDisruption(),
+			async:false,
+			data : {
+				"Param.1" : airbus.mes.settings.ModelManager.site,
+				"Param.2" : sap.ui.getCore().getModel(
+						"userSettingModel").getProperty(
+						"/Rowsets/Rowset/0/Row/0/user"),
+				"Param.3" : msgRef,
+				"Param.4" : comment,
+				"Param.5" : timeLost
+			},
+			error : function(xhr, status, error) {
+				airbus.mes.shell.ModelManager
+						.messageShow(sMessageError);
+				flag_success = false
 
-					},
-					success : function(result, status, xhr) {
-						if (result.Rowsets.Rowset[0].Row[0].Message_Type === undefined) {
-							airbus.mes.shell.ModelManager
-									.messageShow(sMessageSuccess);
-							flag_success = true;
-						} else if (result.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
-							airbus.mes.shell.ModelManager
-									.messageShow(result.Rowsets.Rowset[0].Row[0].Message)
-							flag_success = false;
-						} else {
-							airbus.mes.shell.ModelManager
-									.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
-							flag_success = true;
-						}
+			},
+			success : function(result, status, xhr) {
+				if (result.Rowsets.Rowset[0].Row[0].Message_Type === undefined) {
+					airbus.mes.shell.ModelManager
+							.messageShow(sMessageSuccess);
+					flag_success = true;
+				} else if (result.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
+					airbus.mes.shell.ModelManager
+							.messageShow(result.Rowsets.Rowset[0].Row[0].Message)
+					flag_success = false;
+				} else {
+					airbus.mes.shell.ModelManager
+							.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
+					flag_success = true;
+				}
 
-					}
-				});
+			}
+		});
+		
+		return flag_success;
 	},
 
 	/***************************************************************************
@@ -552,45 +560,47 @@ airbus.mes.disruptions.ModelManager = {
 	/***************************************************************************
 	 * Reject Disruption Service
 	 **************************************************************************/
-	rejectDisruption : function(comment, msgref) {
+	rejectDisruption : function(comment, msgref, i18nModel) {
 
-		var sMessageSuccess = "Disruption Rejected Successfully";
-		var sMessageError = "Error occured while rejecting Disruption"
+		var sMessageSuccess = i18nModel.getProperty("successReject");
+		var sMessageError   = i18nModel.getProperty("tryAgain");
 		var flag_success;
 
-		jQuery
-				.ajax({
-					url : this.getUrlToRejectDisruption(),
-					data : {
-						"Param.1" : airbus.mes.settings.ModelManager.site,
-						"Param.2" : sap.ui.getCore().getModel(
-								"userSettingModel").getProperty(
-								"/Rowsets/Rowset/0/Row/0/user"),
-						"Param.3" : msgref,
-						"Param.4" : comment
-					},
-					error : function(xhr, status, error) {
-						airbus.mes.shell.ModelManager
-								.messageShow(sMessageError);
-						flag_success = false
+		jQuery.ajax({
+			url : this.getUrlToRejectDisruption(),
+			async: false,
+			data : {
+				"Param.1" : airbus.mes.settings.ModelManager.site,
+				"Param.2" : sap.ui.getCore().getModel(
+						"userSettingModel").getProperty(
+						"/Rowsets/Rowset/0/Row/0/user"),
+				"Param.3" : msgref,
+				"Param.4" : comment
+			},
+			error : function(xhr, status, error) {
+				airbus.mes.shell.ModelManager
+						.messageShow(sMessageError);
+				flag_success = false
 
-					},
-					success : function(result, status, xhr) {
-						if (result.Rowsets.Rowset[0].Row[0].Message_Type === undefined) {
-							airbus.mes.shell.ModelManager
-									.messageShow(sMessageSuccess);
-							flag_success = true;
-						} else if (result.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
-							airbus.mes.shell.ModelManager
-									.messageShow(result.Rowsets.Rowset[0].Row[0].Message)
-							flag_success = false;
-						} else {
-							airbus.mes.shell.ModelManager
-									.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
-							flag_success = true;
-						}
+			},
+			success : function(result, status, xhr) {
+				if (result.Rowsets.Rowset[0].Row[0].Message_Type === undefined) {
+					airbus.mes.shell.ModelManager
+							.messageShow(sMessageSuccess);
+					flag_success = true;
+				} else if (result.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
+					airbus.mes.shell.ModelManager
+							.messageShow(result.Rowsets.Rowset[0].Row[0].Message)
+					flag_success = false;
+				} else {
+					airbus.mes.shell.ModelManager
+							.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
+					flag_success = true;
+				}
 
-					}
-				});
+			}
+		});
+		
+		return flag_success
 	},
 };
