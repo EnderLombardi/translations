@@ -60,7 +60,7 @@
 									</f:label>
 									<f:fields>
 										<Select id="selectReasonTree"
-											items="{disruptionCustomData>/Rowsets/Rowset/0/Row}" change="onSelectionChange" forceSelection="false" >
+											items="{disruptionCustomData>/Rowsets/Rowset/1/Row}" change="onSelectionChange" forceSelection="false" >
 											<items>
 												<core:Item text="{disruptionCustomData>Reason}" key="{disruptionCustomData>Reason}" />
 											</items>
@@ -82,7 +82,7 @@
 									</f:label>
 									<f:fields>
 										<Select id="selectResponsible"
-											items="{disruptionCustomData>/Rowsets/Rowset/0/Row}" change="onSelectionChange" forceSelection="false">
+											items="{disruptionCustomData>/Rowsets/Rowset/1/Row}" change="onSelectionChange" forceSelection="false">
 											<items>
 												<core:Item text="{disruptionCustomData>ResponsibleGroupDesc}" key="{disruptionCustomData>ResponsibleGroup}" />
 											</items>
@@ -103,7 +103,7 @@
 									</f:label>
 									<f:fields>
 										<Select id="selectOriginator" selectedKey="" forceSelection="false"
-											items="{disruptionCustomData>/Rowsets/Rowset/1/Row}">
+											items="{disruptionCustomData>/Rowsets/Rowset/0/Row}">
 											<items>
 												<core:Item text="{disruptionCustomData>group_desc}" key="{disruptionCustomData>group_name}" />
 											</items>
@@ -124,7 +124,7 @@
 									</f:label>
 									<f:fields>
 										<Select id="selectRootCause" selectedKey="{DisruptionModel>RootCause}" forceSelection="false"
-											items="{disruptionCustomData>/Rowsets/Rowset/0/Row}" change="onSelectionChange">
+											items="{disruptionCustomData>/Rowsets/Rowset/1/Row}" change="onSelectionChange">
 											<items>
 												<core:Item text="{disruptionCustomData>RootCause}" key="{disruptionCustomData>RootCause}" />
 											</items>
@@ -169,7 +169,7 @@
 									<f:fields>
 									
 										 <Select id="handle" selectedKey="" forceSelection="false"
-											items="{disruptionCustomData>/Rowsets/Rowset/0/Row}" change="onSelectionChange">
+											items="{disruptionCustomData>/Rowsets/Rowset/1/Row}" change="onSelectionChange">
 											<items>
 												<core:Item text="{disruptionCustomData>Handle}" key="{disruptionCustomData>Handle}" />
 											</items>
