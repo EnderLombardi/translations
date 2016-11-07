@@ -15,13 +15,13 @@
 					<Select class="sapUiTinyMarginBeginEnd comboBoxStyle"
 						    items="{groupModel>/Rowsets/Rowset/0/Row/Grouping}"
 						    change="changeGroupWorkList"
-						    visible="{ path: 'WorkListModel>andons' , formatter: 'airbus.mes.stationtracker.util.Formatter.isGroupingVisible' }">
+						    visible="true">
 						<core:ListItem key="{groupModel>key}" text="{ path : 'groupModel>Value' , formatter : '.getI18nValue' }" />				
 					</Select>
 					<Select class="sapUiTinyMarginBeginEnd comboBoxStyle"
 						    items="{groupModel>/Rowsets/Rowset/0/Row/Status}"
 						    change="onChangeFilter"
-					        visible="{ path: 'WorkListModel>andons' , formatter: 'airbus.mes.stationtracker.util.Formatter.isGroupingVisible' }">						
+					        visible="true">						
 						<core:ListItem key="{groupModel>Value}" text="{ path : 'groupModel>Value' , formatter : '.getI18nValue' }" />					
 					</Select>
 				</HBox>
