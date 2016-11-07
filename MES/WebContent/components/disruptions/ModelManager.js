@@ -20,8 +20,9 @@ airbus.mes.disruptions.ModelManager = {
 				.attachRequestCompleted(
 						airbus.mes.disruptions.ModelManager.onOperationDisruptionsLoad);
 
-		core.setModel(new sap.ui.model.json.JSONModel(), "DisruptionModel");
-
+	/*	core.setModel(new sap.ui.model.json.JSONModel(),
+				"DisruptionDetailModel");
+*/
 		var dest;
 
 		switch (window.location.hostname) {
@@ -47,7 +48,13 @@ airbus.mes.disruptions.ModelManager = {
 				"disruptionCustomData");
 
 		this.core.setModel(new sap.ui.model.json.JSONModel(),
-				"disruptionCategoryModel")
+				"disruptionCategoryModel");
+
+		sap.ui
+				.getCore()
+				.getModel("disruptionCustomData")
+				.attachRequestCompleted(
+						airbus.mes.disruptions.ModelManager.onDisruptionCustomDataLoad);
 
 	},
 
@@ -66,6 +73,15 @@ airbus.mes.disruptions.ModelManager = {
 				"$station", airbus.mes.settings.ModelManager.station);
 		return urlCustomData;
 
+	},
+
+	/***************************************************************************
+	 * After Custom data for disruption is loaded
+	 **************************************************************************/
+	onDisruptionCustomDataLoad : function() {
+
+		airbus.mes.operationdetail.oView.setBusy(false); // Set Busy
+		// Indicator false
 	},
 
 	/***************************************************************************
@@ -300,7 +316,8 @@ airbus.mes.disruptions.ModelManager = {
 	 **************************************************************************/
 	getUrlToAckDisruption : function() {
 
-		var urlToAckDisruption = this.urlModel.getProperty("urlToAckDisruption");
+		var urlToAckDisruption = this.urlModel
+				.getProperty("urlToAckDisruption");
 		return urlToAckDisruption;
 	},
 
@@ -354,7 +371,8 @@ airbus.mes.disruptions.ModelManager = {
 	 **************************************************************************/
 	getUrlToAddComment : function() {
 		var urlToAddComment = this.urlModel.getProperty("urlToAddComment");
-		return urlToAddComment;;
+		return urlToAddComment;
+		;
 	},
 
 	/***************************************************************************
@@ -415,7 +433,8 @@ airbus.mes.disruptions.ModelManager = {
 	 **************************************************************************/
 	getUrlToCloseDisruption : function() {
 
-		var urlToCloseDisruption = this.urlModel.getProperty("urlToCloseDisruption");
+		var urlToCloseDisruption = this.urlModel
+				.getProperty("urlToCloseDisruption");
 		return urlToCloseDisruption;
 	},
 
@@ -461,21 +480,22 @@ airbus.mes.disruptions.ModelManager = {
 						}
 
 					}
-				});		
-	},	
+				});
+	},
 
 	/***************************************************************************
 	 * Get URL to Reject Disruption
 	 **************************************************************************/
 	getUrlToRejectDisruption : function() {
-		var urlToDisruptionComment = this.urlModel.getProperty("urlToRejectDisruption");
+		var urlToDisruptionComment = this.urlModel
+				.getProperty("urlToRejectDisruption");
 		return urlToDisruptionComment;
 	},
 	/***************************************************************************
 	 * Reject Disruption Service
 	 **************************************************************************/
 	rejectDisruption : function(comment, msgref) {
-		
+
 		var sMessageSuccess = "Disruption Rejected Successfully";
 		var sMessageError = "Error occured while rejecting Disruption"
 		var flag_success;
@@ -485,7 +505,9 @@ airbus.mes.disruptions.ModelManager = {
 					url : this.getUrlToRejectDisruption(),
 					data : {
 						"Param.1" : airbus.mes.settings.ModelManager.site,
-						"Param.2" : sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"),
+						"Param.2" : sap.ui.getCore().getModel(
+								"userSettingModel").getProperty(
+								"/Rowsets/Rowset/0/Row/0/user"),
 						"Param.3" : msgref,
 						"Param.4" : comment
 					},
@@ -509,8 +531,8 @@ airbus.mes.disruptions.ModelManager = {
 									.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
 							flag_success = true;
 						}
-												
+
 					}
-				});		
+				});
 	},
 };

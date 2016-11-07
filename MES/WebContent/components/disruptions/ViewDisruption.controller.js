@@ -374,13 +374,15 @@ sap.ui
 					},
 
 					onReportDisruption : function(oEvent) {
-						airbus.mes.operationdetail.oView.setBusy(true); // Set Busy Indicator
+						
+						
 
 						var oOperDetailNavContainer = sap.ui.getCore().byId(
 								"operationDetailsView--operDetailNavContainer");
 
 						if (airbus.mes.operationdetail.createDisruption === undefined
 								|| airbus.mes.operationdetail.createDisruption.oView === undefined) {
+							airbus.mes.operationdetail.oView.setBusy(true); // Set Busy Indicator
 							sap.ui
 									.getCore()
 									.createComponent(
@@ -401,18 +403,7 @@ sap.ui
 					},
 
 					onEditDisruption : function(oEvent) {
-                       	
-						// create a new model to autofill the data on edit screen
-						sap.ui.getCore().setModel(new sap.ui.model.json.JSONModel(),"DisruptionDetailModel");
-						var oModel = sap.ui.getCore().getModel("DisruptionDetailModel");
-		
-						// set the data for this new model from the already loaded model 
-						var oBindingContext= oEvent.getSource().getBindingContext("operationDisruptionsModel");
-
-						oModel.setData(oBindingContext.getProperty(oBindingContext.sPath));
-						sap.ui.getCore().getModel("DisruptionDetailModel").refresh();
-						
-						
+                       						
 						// Navigate to Edit Screen
 						var oOperDetailNavContainer = sap.ui.getCore().byId(
 								"operationDetailsView--operDetailNavContainer");
@@ -421,6 +412,7 @@ sap.ui
 						//if component is not created - create the component
 						if (airbus.mes.operationdetail.createDisruption === undefined
 								|| airbus.mes.operationdetail.createDisruption.oView === undefined) {
+							airbus.mes.operationdetail.oView.setBusy(true); // Set Busy Indicator
 
 							sap.ui
 									.getCore()
@@ -436,6 +428,19 @@ sap.ui
 						oOperDetailNavContainer
 								.to(airbus.mes.operationdetail.createDisruption.oView
 										.getId());
+						
+						// create a new model to autofill the data on edit screen
+						sap.ui.getCore().setModel(new sap.ui.model.json.JSONModel(),"DisruptionDetailModel");
+						var oModel = sap.ui.getCore().getModel("DisruptionDetailModel");
+		
+						// set the data for this new model from the already loaded model 
+						var oBindingContext= oEvent.getSource().getBindingContext("operationDisruptionsModel");
+
+						oModel.setData(oBindingContext.getProperty(oBindingContext.sPath));
+						sap.ui.getCore().getModel("DisruptionDetailModel").refresh();
+						
+						
+						
 
 					},
 

@@ -262,6 +262,10 @@ sap.ui
 								{
 									"attribute" : "ORIGINATOR_GROUP",
 									"value": this.getView().byId("selectOriginator").getSelectedKey()
+								},
+								{
+									"attribute" : "WORK_CENTER",
+									"value":airbus.mes.settings.ModelManager.station
 								}
 								]
 								
