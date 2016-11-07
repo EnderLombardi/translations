@@ -217,12 +217,16 @@ sap.ui
 							/**************************
 							 * Load Disruption Custom Data
 							 *************************/
-							sap.ui.getCore().getModel("DisruptionDetailModel").refresh();
+						//	sap.ui.getCore().getModel("DisruptionDetailModel").refresh();
 							if(!this.disruptionsCustomDataFlag){
 								airbus.mes.disruptions.ModelManager.loadDisruptionCustomData();
 								airbus.mes.disruptions.ModelManager.loadDisruptionCategory();
 								this.disruptionsCustomDataFlag = true;
 							}
+							
+							/*sap.ui.getCore().byId("createDisruptionView--selectCategory").setSelectedKey(sap.ui.getCore().getModel("DisruptionDetailModel").getProperty("/MessageType").split(",")[1]);
+							sap.ui.getCore().byId("createDisruptionView--selectResponsible").setSelectedKey(sap.ui.getCore().getModel("DisruptionDetailModel").getProperty("/ResponsibleGroup"));
+							sap.ui.getCore().byId("createDisruptionView--selectReasonTree").setSelectedKey(sap.ui.getCore().getModel("DisruptionDetailModel").getProperty("/Reason"));*/
 							
 							break;
 							
