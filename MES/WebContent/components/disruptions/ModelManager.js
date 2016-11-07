@@ -6,6 +6,11 @@ airbus.mes.disruptions.ModelManager = {
 
 	urlModel : undefined,
 	queryParams : jQuery.sap.getUriParameters(),
+	severity: {
+		"1": "INFO",
+		"2": "WARNING",
+		"3": "CRITICAL"
+	},
 
 	init : function(core) {
 
@@ -274,40 +279,42 @@ airbus.mes.disruptions.ModelManager = {
 	/***************************************************************************
 	 * Escalate Disruption Service
 	 **************************************************************************/
-	escalateDisruption : function(msgRef) {
-		var sMessageSuccess = "Escalation Successful";
+	escalateDisruption : function(msgRef, i18nModel) {
+		var sMessageSuccess = i18nModel.getProperty("successfulEscalation");
 		var flag_success;
 
-		jQuery
-				.ajax({
-					url : this.getUrlOnEscalate(),
-					data : {
-						"Param.1" : msgRef
-					},
-					async : false,
-					error : function(xhr, status, error) {
-						airbus.mes.shell.ModelManager
-								.messageShow(sMessageError);
-						flag_success = false
+		jQuery.ajax({
+			url : this.getUrlOnEscalate(),
+			data : {
+				"Param.1" : msgRef
+			},
+			async : false,
+			error : function(xhr, status, error) {
+				airbus.mes.shell.ModelManager
+						.messageShow(sMessageError);
+				flag_success = false
 
-					},
-					success : function(result, status, xhr) {
-						if (result.Rowsets.Rowset[0].Row[0].Message_Type === undefined) {
-							airbus.mes.shell.ModelManager
-									.messageShow(sMessageSuccess);
-							flag_success = true;
-						} else if (result.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
-							airbus.mes.shell.ModelManager
-									.messageShow(result.Rowsets.Rowset[0].Row[0].Message)
-							flag_success = false;
-						} else {
-							airbus.mes.shell.ModelManager
-									.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
-							flag_success = true;
-						}
+			},
+			success : function(result, status, xhr) {
+				if (result.Rowsets.Rowset[0].Row[0].Message_Type === undefined) {
+					airbus.mes.shell.ModelManager
+							.messageShow(sMessageSuccess);
+					flag_success = true;
+				} else if (result.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
+					airbus.mes.shell.ModelManager
+							.messageShow(result.Rowsets.Rowset[0].Row[0].Message)
+					flag_success = false;
+				} else {
+					airbus.mes.shell.ModelManager
+							.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
+					flag_success = true;
+				}
 
-					}
-				});
+			}
+		});
+		
+		
+		return flag_success;
 	},
 
 	/***************************************************************************

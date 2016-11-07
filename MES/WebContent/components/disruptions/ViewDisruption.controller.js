@@ -392,9 +392,32 @@ sap.ui
 						var msgRef = oEvent.getSource().getBindingContext(
 								"operationDisruptionsModel").getObject(
 								"MessageRef");
+						
+						var i18nModel = this.getView().getModel("i18nModel");
+						
+						// Call Escalate Service
+						var isSuccess = airbus.mes.disruptions.ModelManager
+								.escalateDisruption(msgRef, i18nModel);
 
-						airbus.mes.disruptions.ModelManager
-								.escalateDisruption(msgRef);
+						// Change Severity level in model
+						if(isSuccess){
+							var sPath = oEvent.getSource().getBindingContext("operationDisruptionsModel").sPath;
+							
+							var severity = this.getView().getModel("operationDisruptionsModel").getProperty(sPath).Severity;
+							
+							switch(severity){
+							case airbus.mes.disruptions.ModelManager.severity[0]:
+								this.getView().getModel("operationDisruptionsModel").getProperty(sPath).Severity = airbus.mes.disruptions.ModelManager.severity[1]
+								break;
+							
+							case severity == airbus.mes.disruptions.ModelManager.severity[1]:
+								this.getView().getModel("operationDisruptionsModel").getProperty(sPath).Severity = airbus.mes.disruptions.ModelManager.severity[2];
+								break;
+							};
+							
+							this.getView().getModel("operationDisruptionsModel").refresh();
+						}
+						
 					},
 
 					onReportDisruption : function(oEvent) {
