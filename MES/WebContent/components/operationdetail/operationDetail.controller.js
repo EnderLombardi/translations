@@ -153,10 +153,14 @@ sap.ui
 						/*****set the buttons according to the status of operation mode ******/
 						sap.ui.getCore().byId("idStatusView").rerender();
 						sap.ui.getCore().byId("ViewDisruptionView").rerender();
+
 						if(this.nav.getCurrentPage().getId() == "createDisruptionView")
 							{
 						sap.ui.getCore().byId("createDisruptionView").getController().onCancelCreateDisruption()
 							}
+
+
+			
 						
 					},
 					
@@ -222,15 +226,34 @@ sap.ui
 							 *************************/
 						//	sap.ui.getCore().getModel("DisruptionDetailModel").refresh();
 							if(!this.disruptionsCustomDataFlag){
+								airbus.mes.operationdetail.oView.setBusy(true); // Set Busy Indicator
 								airbus.mes.disruptions.ModelManager.loadDisruptionCustomData();
 								airbus.mes.disruptions.ModelManager.loadDisruptionCategory();
 								this.disruptionsCustomDataFlag = true;
 							}
 							
-							/*sap.ui.getCore().byId("createDisruptionView--selectCategory").setSelectedKey(sap.ui.getCore().getModel("DisruptionDetailModel").getProperty("/MessageType").split(",")[1]);
-							sap.ui.getCore().byId("createDisruptionView--selectResponsible").setSelectedKey(sap.ui.getCore().getModel("DisruptionDetailModel").getProperty("/ResponsibleGroup"));
-							sap.ui.getCore().byId("createDisruptionView--selectReasonTree").setSelectedKey(sap.ui.getCore().getModel("DisruptionDetailModel").getProperty("/Reason"));*/
 							
+							if(sap.ui.getCore().getModel("DisruptionDetailModel").getData() != undefined)
+								{
+								
+								// fill select boxes on CreateDisruptionView for edit screen
+								var oModel = sap.ui.getCore().getModel("DisruptionDetailModel");
+								var oView = sap.ui.getCore().byId("createDisruptionView");
+									oView.byId("selectCategory").setSelectedKey(oModel.getProperty("/MessageType"));
+									oView.byId("selectResponsible").setSelectedKey(oModel.getProperty("/ResponsibleGroup"));
+									
+									//forced fireChange event on responsible group to get a good list in reason.
+									oView.byId("selectResponsible").fireChange(oView.byId("selectResponsible").getSelectedItem());
+									
+									oView.byId("selectReasonTree").setSelectedKey(oModel.getProperty("/Reason"));
+									oView.byId("selectOriginator").setSelectedKey(oModel.getProperty("/OriginatorGroup"));
+									oView.byId("selectRootCause").setSelectedKey(oModel.getProperty("/Subject"));
+									
+									airbus.mes.operationdetail.createDisruption.oView.oController.initializeTree();
+									
+									// Set only Root Cause enabled so that it can be edited in Edit Disruption
+									airbus.mes.operationdetail.createDisruption.oView.oController.setEnabledSelectBox(false,false,false,true);
+								}
 							break;
 							
 							

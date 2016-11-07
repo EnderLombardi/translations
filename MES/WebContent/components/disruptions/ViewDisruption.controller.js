@@ -375,14 +375,16 @@ sap.ui
 
 					onReportDisruption : function(oEvent) {
 						
+						// clear disruptionDetailModel if edit is loaded before ReportDisruption
+						sap.ui.getCore().getModel("DisruptionDetailModel").setData();
 						
-
+						airbus.mes.operationdetail.oView.setBusy(true);
 						var oOperDetailNavContainer = sap.ui.getCore().byId(
 								"operationDetailsView--operDetailNavContainer");
 
 						if (airbus.mes.operationdetail.createDisruption === undefined
 								|| airbus.mes.operationdetail.createDisruption.oView === undefined) {
-							airbus.mes.operationdetail.oView.setBusy(true); // Set Busy Indicator
+							
 							sap.ui
 									.getCore()
 									.createComponent(
@@ -412,7 +414,6 @@ sap.ui
 						//if component is not created - create the component
 						if (airbus.mes.operationdetail.createDisruption === undefined
 								|| airbus.mes.operationdetail.createDisruption.oView === undefined) {
-							airbus.mes.operationdetail.oView.setBusy(true); // Set Busy Indicator
 
 							sap.ui
 									.getCore()

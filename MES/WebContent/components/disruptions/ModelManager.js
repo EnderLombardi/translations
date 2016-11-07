@@ -80,8 +80,7 @@ airbus.mes.disruptions.ModelManager = {
 	 **************************************************************************/
 	onDisruptionCustomDataLoad : function() {
 
-		airbus.mes.operationdetail.oView.setBusy(false); // Set Busy
-		// Indicator false
+		airbus.mes.operationdetail.oView.setBusy(false); // Set Busy Indicator false
 	},
 
 	/***************************************************************************
