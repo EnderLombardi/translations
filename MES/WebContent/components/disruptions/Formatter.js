@@ -15,9 +15,9 @@ airbus.mes.disruptions.Formatter = {
 	},
 	
 	severity: {
-		"info": "Info",
-		"warning" : "Closed",
-		"critical" : "Critical"
+		"info": "INTO",
+		"warning" : "CLOSED",
+		"critical" : "CRITICAL"
 	},
 
 	json2xml : function(o, tab) {

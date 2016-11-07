@@ -350,16 +350,24 @@ sap.ui
 					onAcceptAckDisruptionComment : function() {
 
 						var msgRef = sap.ui.getCore().byId(
-								"disruptionComment-msgRef").getText();
+								"disruptionAckSpathMsgRef").getText();
 
 						var comment = sap.ui.getCore().byId(
-								"disruptionCommentBox").getValue();
+								"disruptionAckComment").getValue();
+						
+						var i18nModel = this.getView().getModel("i18nModel");
 
 						// Call to Acknowledge Disruption
-						airbus.mes.disruptions.ModelManager.ackDisruption(
-								msgRef, comment);
+						var success = airbus.mes.disruptions.ModelManager.ackDisruption(
+								msgRef, comment, i18nModel);
 
 						airbus.mes.disruptions.__enterCommentDialogue.close();
+						
+						if(success){
+							var sPath = sap.ui.getCore().byId("disruptionAckSpath").getValue();
+							this.getView().getModel("operationDisruptionsModel").getProperty(sPath).Status = airbus.mes.disruptions.Formatter.status.acknowledged;
+							this.getView().getModel("operationDisruptionsModel").refresh();
+						}
 					},
 
 					onMarkSolvedDisruption : function(oEvt) {
@@ -429,12 +437,12 @@ sap.ui
 							var severity = this.getView().getModel("operationDisruptionsModel").getProperty(sPath).Severity;
 							
 							switch(severity){
-							case airbus.mes.disruptions.ModelManager.severity[0]:
+							case airbus.mes.disruptions.Formatter.severity[0]:
 								this.getView().getModel("operationDisruptionsModel").getProperty(sPath).Severity = airbus.mes.disruptions.ModelManager.severity[1]
 								break;
 							
-							case severity == airbus.mes.disruptions.ModelManager.severity[1]:
-								this.getView().getModel("operationDisruptionsModel").getProperty(sPath).Severity = airbus.mes.disruptions.ModelManager.severity[2];
+							case severity == airbus.mes.disruptions.Formatter.severity[1]:
+								this.getView().getModel("operationDisruptionsModel").getProperty(sPath).Severity = airbus.mes.disruptions.Formatter.severity[2];
 								break;
 							};
 							
