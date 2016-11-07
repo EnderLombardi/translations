@@ -153,7 +153,9 @@ sap.ui
 						/*****set the buttons according to the status of operation mode ******/
 						sap.ui.getCore().byId("idStatusView").rerender();
 						sap.ui.getCore().byId("ViewDisruptionView").rerender();
-						//sap.ui.getCore().byId("createDisruptionView").rerender();
+
+						sap.ui.getCore().byId("createDisruptionView").getController().onCancelCreateDisruption()
+
 						
 					},
 					
