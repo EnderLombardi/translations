@@ -79,8 +79,9 @@ airbus.mes.disruptions.Formatter = {
 	},
 
 	getDate : function(datetime) {
-
-		if (datetime === null) {
+		
+		if(datetime == null || datetime === undefined)
+			{
 			var today = new Date();
 			var dd = today.getDate();
 			var mm = today.getMonth(); // January is 0!
@@ -100,8 +101,9 @@ airbus.mes.disruptions.Formatter = {
 	},
 
 	getTime : function(datetime) {
-
-		if (datetime == null) {
+		
+		if(datetime == null || datetime === undefined)
+			{
 			var today = new Date();
 			var HH = today.getHours();
 			var mm = today.getMinutes();

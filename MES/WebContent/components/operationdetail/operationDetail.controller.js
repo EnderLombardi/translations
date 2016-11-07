@@ -153,7 +153,14 @@ sap.ui
 						/*****set the buttons according to the status of operation mode ******/
 						sap.ui.getCore().byId("idStatusView").rerender();
 						sap.ui.getCore().byId("ViewDisruptionView").rerender();
-						sap.ui.getCore().byId("createDisruptionView").rerender();
+
+						if(this.nav.getCurrentPage().getId() == "createDisruptionView")
+							{
+						sap.ui.getCore().byId("createDisruptionView").getController().onCancelCreateDisruption()
+							}
+
+
+			
 						
 					},
 					
@@ -217,14 +224,46 @@ sap.ui
 							/**************************
 							 * Load Disruption Custom Data
 							 *************************/
-							//sap.ui.getCore().getModel("DisruptionDetailModel").refresh();
+						//	sap.ui.getCore().getModel("DisruptionDetailModel").refresh();
 							if(!this.disruptionsCustomDataFlag){
+								airbus.mes.operationdetail.oView.setBusy(true); // Set Busy Indicator
 								airbus.mes.disruptions.ModelManager.loadDisruptionCustomData();
 								airbus.mes.disruptions.ModelManager.loadDisruptionCategory();
 								this.disruptionsCustomDataFlag = true;
 							}
 							
-							airbus.mes.operationdetail.oView.setBusy(false); //Remove Busy Indicator
+							
+							if(sap.ui.getCore().getModel("DisruptionDetailModel").getData() != undefined)
+								{
+								
+								// fill select boxes on CreateDisruptionView for edit screen
+								var oModel = sap.ui.getCore().getModel("DisruptionDetailModel");
+								var oView = sap.ui.getCore().byId("createDisruptionView");
+									oView.byId("selectCategory").setSelectedKey(oModel.getProperty("/MessageType"));
+									//forced fireChange event on Category to get a good list in Responsible Group.
+									oView.byId("selectCategory").fireChange(oView.byId("selectResponsible").getSelectedItem());
+									
+									oView.byId("selectResponsible").setSelectedKey(oModel.getProperty("/ResponsibleGroup"));
+									//forced fireChange event on Responsible Group to get a good list in reason.
+									//oView.byId("selectResponsible").fireChange(oView.byId("selectResponsible").getSelectedItem());
+									
+									
+									oView.byId("selectReasonTree").setSelectedKey(oModel.getProperty("/Reason"));
+									//forced fireChange event on Reason to get a good list in reason.
+									//oView.byId("selectReasonTree").fireChange(oView.byId("selectResponsible").getSelectedItem());
+									
+									oView.byId("selectOriginator").setSelectedKey(oModel.getProperty("/OriginatorGroup"));
+									oView.byId("selectRootCause").setSelectedKey(oModel.getProperty("/Subject"));
+									
+									airbus.mes.operationdetail.createDisruption.oView.oController.initializeTree();
+									
+									// Set only Root Cause enabled so that it can be edited in Edit Disruption
+									airbus.mes.operationdetail.createDisruption.oView.oController.setEnabledSelectBox(false,true,true,true);
+									
+									//Set Update button visible
+									oView.byId("updateDisruption").setVisible(true);
+									oView.byId("cancelDisruption").setVisible(true);
+								}
 							break;
 							
 							

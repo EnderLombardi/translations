@@ -14,7 +14,7 @@ sap.ui
 					 * @memberOf components.disruptions.ViewDisruption
 					 */
 					onInit : function() {
-						
+
 					},
 					/**
 					 * Similar to onAfterRendering, but this hook is invoked
@@ -34,15 +34,17 @@ sap.ui
 					 * 
 					 * @memberOf components.disruptions.ViewDisruption
 					 */
-					 onAfterRendering: function() {
-						 if(sap.ui.getCore().byId("operationDetailsView--switchOperationModeBtn").getState() == false)
-						 {
-						 this.getView().byId("reportDisruption").setVisible(false);
-						 }
-						else{
-							this.getView().byId("reportDisruption").setVisible(true);
+					onAfterRendering : function() {
+						if (sap.ui.getCore().byId(
+								"operationDetailsView--switchOperationModeBtn")
+								.getState() == false) {
+							this.getView().byId("reportDisruption").setVisible(
+									false);
+						} else {
+							this.getView().byId("reportDisruption").setVisible(
+									true);
 						}
-				
+
 					},
 					/**
 					 * Called when the Controller is destroyed. Use this one to
@@ -58,14 +60,15 @@ sap.ui
 								.getItems();
 						$.each(listItems,
 								function(key, value) {
-									/** Apply filters on Message Comments **/
-							
+									/** Apply filters on Message Comments * */
+
 									// Get Message Ref from current list
 									var messageRef = value.getBindingContext(
 											"operationDisruptionsModel")
 											.getObject().MessageRef;
 
-									// Get Binding of Comment list in Current List item
+									// Get Binding of Comment list in Current
+									// List item
 									var oBinding = value.getContent()[0]
 											.getContent()[2]
 											.getBinding("items");
@@ -169,30 +172,41 @@ sap.ui
 						comment.setValue("");
 						msgRef.setText("");
 					},
-					
-					/**********************************************************
+
+					/***********************************************************
 					 * Open the Enter Comment Pop-Up
 					 */
-					onOpenDisruptionComment: function(title, msgRef, okEvent){
+					onOpenDisruptionComment : function(title, msgRef, okEvent) {
 						// Call Reject Disruption fragment
 						if (!airbus.mes.disruptions.__enterCommentDialogue) {
-							airbus.mes.disruptions.__enterCommentDialogue = sap.ui.xmlfragment("airbus.mes.disruptions.fragment.commentBoxDisruption",this);
-							this.getView().addDependent(airbus.mes.disruptions.__enterCommentDialogue);
+							airbus.mes.disruptions.__enterCommentDialogue = sap.ui
+									.xmlfragment(
+											"airbus.mes.disruptions.fragment.commentBoxDisruption",
+											this);
+							this
+									.getView()
+									.addDependent(
+											airbus.mes.disruptions.__enterCommentDialogue);
 
 						}
-						sap.ui.getCore().byId("disruptionCommentDialogue").setTitle(title);
-						sap.ui.getCore().byId("disruptionComment-msgRef").setText(msgRef);
-						sap.ui.getCore().byId("disruptionCommentBox").setValue("");
-						sap.ui.getCore().byId("disruptionCommentOK").attachPress(okEvent);
-						
+						sap.ui.getCore().byId("disruptionCommentDialogue")
+								.setTitle(title);
+						sap.ui.getCore().byId("disruptionComment-msgRef")
+								.setText(msgRef);
+						sap.ui.getCore().byId("disruptionCommentBox").setValue(
+								"");
+						sap.ui.getCore().byId("disruptionCommentOK")
+								.attachPress(okEvent);
+
 						airbus.mes.disruptions.__enterCommentDialogue.open();
 					},
-					
+
 					/***********************************************************
 					 * Close the Enter Comment Pop-Up
 					 */
 					onCloseDisruptionComment : function(oEvent) {
-						sap.ui.getCore().byId("disruptionCommentBox").setValue("");
+						sap.ui.getCore().byId("disruptionCommentBox").setValue(
+								"");
 						airbus.mes.disruptions.__enterCommentDialogue.close();
 
 					},
@@ -229,6 +243,7 @@ sap.ui
 						//	Call Disruption Service
 						airbus.mes.disruptions.ModelManager.rejectDisruption(comment,msgref);
 						airbus.mes.disruptions.__enterCommentDialogue.close();
+
 					},
 
 					/***********************************************************
@@ -274,12 +289,13 @@ sap.ui
 					},
 
 					/***********************************************************
-					 * Submit Disruption Comment 
+					 * Submit Disruption Comment
 					 */
 					submitComment : function(oEvt) {
 						var path = oEvt.getSource().sId;
 
-						var oModel = sap.ui.getCore().getModel("operationDisruptionsModel");
+						var oModel = sap.ui.getCore().getModel(
+								"operationDisruptionsModel");
 						oModel
 								.loadData(
 										"../components/disruptions/local/disruptions.json",
@@ -313,16 +329,19 @@ sap.ui
 										+ this.getView().sId + "--disrptlist-"
 										+ listnum).setValue("");
 					},
-					
+
 					/***********************************************************
 					 * When Acknowledge Button is Pressed
 					 */
 					onAckDisruption : function(oEvt) {
-						var title = this.getView().getModel("i18nModel").getProperty("ackDisruption");
+						var title = this.getView().getModel("i18nModel")
+								.getProperty("ackDisruption");
 						var msgRef = oEvt.getSource().getBindingContext(
-							"operationDisruptionsModel").getObject("MessageRef");
-						
-						this.onOpenDisruptionComment(title, msgRef, this.onAcceptAckDisruptionComment);
+								"operationDisruptionsModel").getObject(
+								"MessageRef");
+
+						this.onOpenDisruptionComment(title, msgRef,
+								this.onAcceptAckDisruptionComment);
 					},
 
 					/***********************************************************
@@ -335,11 +354,11 @@ sap.ui
 
 						var comment = sap.ui.getCore().byId(
 								"disruptionCommentBox").getValue();
-						
+
 						// Call to Acknowledge Disruption
 						airbus.mes.disruptions.ModelManager.ackDisruption(
 								msgRef, comment);
-						
+
 						airbus.mes.disruptions.__enterCommentDialogue.close();
 					},
 
@@ -402,13 +421,14 @@ sap.ui
 					},
 
 					onReportDisruption : function(oEvent) {
-						airbus.mes.operationdetail.oView.setBusy(true); // Set Busy Indicator
 
+						airbus.mes.operationdetail.oView.setBusy(true);
 						var oOperDetailNavContainer = sap.ui.getCore().byId(
 								"operationDetailsView--operDetailNavContainer");
 
 						if (airbus.mes.operationdetail.createDisruption === undefined
 								|| airbus.mes.operationdetail.createDisruption.oView === undefined) {
+
 							sap.ui
 									.getCore()
 									.createComponent(
@@ -420,33 +440,27 @@ sap.ui
 									.addPage(airbus.mes.operationdetail.createDisruption.oView);
 						}
 
+						// clear disruptionDetailModel if edit is loaded before
+						// ReportDisruption
+							sap.ui.getCore().getModel("DisruptionDetailModel")
+									.setData();
+
 						oOperDetailNavContainer
 								.to(airbus.mes.operationdetail.createDisruption.oView
 										.getId());
-						
-						airbus.mes.operationdetail.createDisruption.oView.oController.resetAllFields();
-						
+
+						airbus.mes.operationdetail.createDisruption.oView.oController
+								.resetAllFields();
+
 					},
 
 					onEditDisruption : function(oEvent) {
-                       	
-						// create a new model to autofill the data on edit screen
-						sap.ui.getCore().setModel(new sap.ui.model.json.JSONModel(),"DisruptionDetailModel");
-						var oModel = sap.ui.getCore().getModel("DisruptionDetailModel");
-		
-						// set the data for this new model from the already loaded model 
-						var oBindingContext= oEvent.getSource().getBindingContext("operationDisruptionsModel");
 
-						oModel.setData(oBindingContext.getProperty(oBindingContext.sPath));
-						sap.ui.getCore().getModel("DisruptionDetailModel").refresh();
-						
-						
 						// Navigate to Edit Screen
 						var oOperDetailNavContainer = sap.ui.getCore().byId(
 								"operationDetailsView--operDetailNavContainer");
 
-                        
-						//if component is not created - create the component
+						// if component is not created - create the component
 						if (airbus.mes.operationdetail.createDisruption === undefined
 								|| airbus.mes.operationdetail.createDisruption.oView === undefined) {
 
@@ -464,6 +478,20 @@ sap.ui
 						oOperDetailNavContainer
 								.to(airbus.mes.operationdetail.createDisruption.oView
 										.getId());
+
+						// fill model DisruptionDetailModel to show data on edit screen
+						var oModel = sap.ui.getCore().getModel(
+								"DisruptionDetailModel");
+
+						// set the data for this new model from the already
+						// loaded model
+						var oBindingContext = oEvent.getSource()
+								.getBindingContext("operationDisruptionsModel");
+
+						oModel.setData(oBindingContext
+								.getProperty(oBindingContext.sPath));
+						sap.ui.getCore().getModel("DisruptionDetailModel")
+								.refresh();
 
 					},
 

@@ -63,9 +63,16 @@ sap.ui
 					},
 					ModelManager : undefined,
 					onInit : function() {
-
+						
+					
+						
 						this.addParent(this.selectTree, undefined);
 						this.ModelManager = airbus.mes.disruptions.ModelManager;
+					/*	
+						this.ModelManager.loadDisruptionCustomData();
+						this.ModelManager.loadDisruptionCategory();
+						*/
+						
 						this.getView().byId("selectReasonTree").setSelectedKey();
 						this.getView().byId("selectRootCause").setSelectedKey();
 						this.getView().byId("selectResponsible").setSelectedKey();
@@ -74,13 +81,17 @@ sap.ui
 						//this.filterField(this.selectTree);
 						
 
-						this.addParent(this.selectTree, undefined);
-						this.ModelManager = airbus.mes.settings.ModelManager;
+						//this.addParent(this.selectTree, undefined);
+						//this.ModelManager = airbus.mes.settings.ModelManager;
 						
 						/*this.getView().core.setModel(new sap.ui.model.json.JSONModel(),
 						"disruptionCustomData");*/
 						
 
+					},
+					
+					initializeTree : function() {
+						this.addParent(this.selectTree, undefined);
 					},
 
 					addParent : function(oTree, oParent) {
@@ -262,6 +273,10 @@ sap.ui
 								{
 									"attribute" : "ORIGINATOR_GROUP",
 									"value": this.getView().byId("selectOriginator").getSelectedKey()
+								},
+								{
+									"attribute" : "WORK_CENTER",
+									"value":airbus.mes.settings.ModelManager.station
 								}
 								]
 								
@@ -269,7 +284,7 @@ sap.ui
 							aModelData.push(oJson);
 
 							
-						airbus.mes.disruptions.ModelManager.createDisruption(sHandle,sCategory,sRootCause,sComment,aModelData);
+						this.ModelManager.createDisruption(sHandle,sCategory,sRootCause,sComment,aModelData);
 					},
 
 				/**
