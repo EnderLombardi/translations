@@ -35,6 +35,15 @@
 	border-bottom: none !important;
 }
 
+.disruptionDetail .msgHeaderText {
+	font-weight: bold !important;
+}
+
+.disruptionDetail .msgColor {
+	background: #F5F5F5 !important;
+	color: #5198A8 !important;
+}
+
 /****** End of CSS for Disruption screen **********/
 
 

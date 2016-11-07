@@ -276,6 +276,7 @@ airbus.mes.disruptions.ModelManager = {
 	 **************************************************************************/
 	escalateDisruption : function(msgRef, i18nModel) {
 		var sMessageSuccess = i18nModel.getProperty("successfulEscalation");
+		var sMessageError = i18nModel.getProperty("unsuccessfulEscalation");
 		var flag_success;
 
 		jQuery.ajax({
@@ -325,9 +326,10 @@ airbus.mes.disruptions.ModelManager = {
 	/***************************************************************************
 	 * Acknowledge Disruption
 	 **************************************************************************/
-	ackDisruption : function(msgRef, comment, i18nModel) {
+	ackDisruption : function(dateTime, msgRef, comment, i18nModel) {
 
 		var sMessageSuccess = i18nModel.getProperty("successfulAcknowledge");
+		var sMessageError = i18nModel.getProperty("unsuccessfulAcknowledge");
 		var flag_success;
 
 		jQuery.ajax({
@@ -338,7 +340,8 @@ airbus.mes.disruptions.ModelManager = {
 						"userSettingModel").getProperty(
 						"/Rowsets/Rowset/0/Row/0/user"),
 				"Param.3" : msgRef,
-				"Param.4" : comment
+				"Param.4" : comment,
+				"Param.5" : dateTime
 			},
 			async : false,
 			error : function(xhr, status, error) {
@@ -373,6 +376,7 @@ airbus.mes.disruptions.ModelManager = {
 	markSolvedDisruption : function(msgRef, comment) {
 
 		var sMessageSuccess = "Disruption Marked Solved Successfully";
+		var sMessageError = "Error occured while Marking Disruption Solved";
 		var flag_success;
 
 		jQuery
@@ -438,6 +442,7 @@ airbus.mes.disruptions.ModelManager = {
 	 **************************************************************************/
 	addComment : function(oComment) {
 		var sMessageSuccess = "Comment Added Successfully";
+		var sMessageError = "Error occured while adding Disruption Comment";
 		var flag_success;
 
 		jQuery
@@ -502,6 +507,7 @@ airbus.mes.disruptions.ModelManager = {
 	closeDisruption : function(msgRef, comment, timeLost) {
 
 		var sMessageSuccess = "Disruption Closed Successfully";
+		var sMessageError = "Error occured while closing Disruption";
 		var flag_success;
 
 		jQuery
@@ -555,7 +561,7 @@ airbus.mes.disruptions.ModelManager = {
 	rejectDisruption : function(comment, msgref) {
 
 		var sMessageSuccess = "Disruption Rejected Successfully";
-		var sMessageError = "Error occured while rejecting Disruption"
+		var sMessageError = i18nModel.getProperty("disruptionNotReject");
 		var flag_success;
 
 		jQuery
