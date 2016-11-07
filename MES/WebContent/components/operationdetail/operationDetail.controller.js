@@ -154,7 +154,7 @@ sap.ui
 						sap.ui.getCore().byId("idStatusView").rerender();
 						sap.ui.getCore().byId("ViewDisruptionView").rerender();
 
-						sap.ui.getCore().byId("createDisruptionView").getController().onCancelCreateDisruption()
+						sap.ui.getCore().byId("createDisruptionView").getController().onCancelCreateDisruption();
 
 						
 					},
