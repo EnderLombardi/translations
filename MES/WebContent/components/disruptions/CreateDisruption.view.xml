@@ -216,9 +216,9 @@
 									</f:fields>
 								</f:FormElement>
 
-								<f:FormElement label="{i18nModel>Time}">
+								<f:FormElement>
 									<f:label>
-										<Label text="Time">
+										<Label text="{i18nModel>Time}">
 											<layoutData>
 												<l:GridData span="L3 M6 S12" linebreak="true" />
 											</layoutData>
