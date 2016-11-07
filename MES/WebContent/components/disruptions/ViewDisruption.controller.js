@@ -1,3 +1,5 @@
+jQuery.sap.require("sap.m.MessageBox");
+
 sap.ui
 		.controller(
 				"airbus.mes.disruptions.ViewDisruption",
@@ -212,28 +214,36 @@ sap.ui
 					/***********************************************************
 					 * Reject the Disruption
 					 */
-					onRejectDisruption : function(oEvt) {
-						var title = this.getView().getModel("i18nModel")
-								.getProperty("rejectDisruption");
-						var msgRef = oEvt.getSource().getBindingContext(
-								"operationDisruptionsModel").getObject(
-								"MessageRef");
-						this.onOpenDisruptionComment(title, msgRef,
-								this.onConfirmRejection);
+					onRejectDisruption: function(oEvt){
+						
+						var status = oEvt.getSource().getBindingContext(
+						"operationDisruptionsModel").getObject("Status");
+						
+						if(status == airbus.mes.disruptions.Formatter.status.pending) {
+							
+							sap.m.MessageBox.error("You must first \"Acknowledge\" the disruption.");
+							
+						} else {
+
+							var title = this.getView().getModel("i18nModel").getProperty("rejectDisruption");
+							var msgRef = oEvt.getSource().getBindingContext(
+							"operationDisruptionsModel").getObject("MessageRef");
+							this.onOpenDisruptionComment(title, msgRef, this.onConfirmRejection);	
+							
+						}
+									
 					},
-					/***********************************************************
+					/********************************************
 					 * Confirming Reject Disruption
 					 */
-					onConfirmRejection : function(oEvent) {
-						var comment = sap.ui.getCore().byId(
-								"disruptionCommentBox").getValue();
-						var msgref = sap.ui.getCore().byId(
-								"disruptionComment-msgRef").getText();
-
-						// Call Disruption Service
-						airbus.mes.disruptions.ModelManager.rejectDisruption(
-								comment, msgref);
+					onConfirmRejection: function(oEvent){
+						var comment = sap.ui.getCore().byId("disruptionCommentBox").getValue();
+						var msgref = sap.ui.getCore().byId("disruptionComment-msgRef").getText();
+						
+						//	Call Disruption Service
+						airbus.mes.disruptions.ModelManager.rejectDisruption(comment,msgref);
 						airbus.mes.disruptions.__enterCommentDialogue.close();
+
 					},
 
 					/***********************************************************
@@ -353,18 +363,31 @@ sap.ui
 					},
 
 					onMarkSolvedDisruption : function(oEvt) {
-						/*
-						 * var path = oEvt.getSource().getBindingContext(
-						 * "disruptionModel").getPath();
-						 * this.getView().getModel("disruptionModel").setProperty(
-						 * path + "/Status", "Solved");
-						 * this.getView().getModel("disruptionModel").setProperty(
-						 * path + "/commentVisible", "false");
-						 * this.getView().getModel("disruptionModel").setProperty(
-						 * path + "/message", " ");
-						 * oEvt.getSource().setType("Accept");
-						 */
+						
+						var title = this.getView().getModel("i18nModel").getProperty("markSolvedDisruption");
+						var msgRef = oEvt.getSource().getBindingContext(
+							"operationDisruptionsModel").getObject("MessageRef");
+						
+						this.onOpenDisruptionComment(title, msgRef, this.onMarkSolvedDisruptionComment);
 
+					},
+					
+					/***********************************************************
+					 * When Comment is Submitted to Mark Solved Disruption
+					 */
+					onMarkSolvedDisruptionComment : function() {
+
+						var msgRef = sap.ui.getCore().byId(
+								"disruptionComment-msgRef").getText();
+
+						var comment = sap.ui.getCore().byId(
+								"disruptionCommentBox").getValue();
+						
+						// Call to Mark Solved Disruption
+						airbus.mes.disruptions.ModelManager.markSolvedDisruption(
+								msgRef, comment);
+						
+						airbus.mes.disruptions.__enterCommentDialogue.close();
 					},
 
 					/***********************************************************
