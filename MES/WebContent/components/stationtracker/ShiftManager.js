@@ -555,7 +555,7 @@ airbus.mes.stationtracker.ShiftManager = {
 			d4.setMinutes(d4.getMinutes() + 5);
 			scheduler.addMarkedTimespan({
 				start_date : d3,
-				//end_date : d4,
+				end_date : d4,
 				css : "begin_shifht"
 			});
 		}
@@ -574,8 +574,14 @@ airbus.mes.stationtracker.ShiftManager = {
 		d4.setMinutes(d4.getMinutes() + 5);
 		scheduler.addMarkedTimespan({
 			start_date : d3,
-			//end_date : d4,
+			end_date : d4,
 			css : "begin_shifht"
+		});
+		// Add maker for takt time
+		scheduler.addMarkedTimespan({
+			start_date : airbus.mes.settings.ModelManager.taktStart,
+			end_date : airbus.mes.settings.ModelManager.taktEnd,
+			css : "taktMarker"
 		});
 
 	},

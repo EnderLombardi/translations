@@ -2,7 +2,7 @@
 
 jQuery.sap.declare("airbus.mes.settings.ModelManager")
 
-airbus.mes.settings.ModelManager =  {
+airbus.mes.settings.ModelManager.taktEnd =  {
 	
 	site : undefined,
 	//plant : undefined,
