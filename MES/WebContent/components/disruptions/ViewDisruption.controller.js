@@ -116,6 +116,8 @@ sap.ui
 								.setValue(timeLost);
 						sap.ui.getCore().byId("closeDisruption-msgRef")
 								.setText(msgRef);
+						sap.ui.getCore().byId("closeDisruption-sPath").setText(sPath);
+						sap.ui.getCore().byId("closeDisruptionComments").setText("");
 
 						this._closeDialog.open();
 					},
@@ -137,21 +139,18 @@ sap.ui
 						var timeLostValue = timeLost.getValue();
 						var commentValue = comment.getValue();
 						var msgRefValue = msgRef.getText();
-
-						// Initialize the inputs
-						timeLost.setValue("");
-						comment.setValue("");
-						msgRef.setValue("");
+						
+						var i18nModel = this.getView().getModel("i18nModel");
 
 						// Call Close Disruption Service
-						airbus.mes.disruptions.ModelManager.closeDisruption(
-								msgRefValue, commentValue, timeLostValue);
-
-						// Initialize the inputs
-						sap.ui.getCore().byId("closeDisruption-timeLost")
-								.setValue("");
-						sap.ui.getCore().byId("closeDisruptionComments")
-								.setValue("");
+						var isSuccess = airbus.mes.disruptions.ModelManager.closeDisruption(
+								msgRefValue, commentValue, timeLostValue, i18nModel);
+						
+						if(isSuccess){
+							var sPath = sap.ui.getCore().byId("disruptionCommentSpath").getValue();
+							this.getView().getModel("operationDisruptionsModel").getProperty(sPath).Status = airbus.mes.disruptions.Formatter.status.closed;
+							this.getView().getModel("operationDisruptionsModel").refresh();
+						}
 					},
 
 					/***********************************************************
@@ -159,24 +158,12 @@ sap.ui
 					 */
 					cancelClosingDisruption : function(oEvent) {
 						this._closeDialog.close();
-
-						var timeLost = sap.ui.getCore().byId(
-								"closeDisruption-timeLost");
-						var comment = sap.ui.getCore().byId(
-								"closeDisruptionComments");
-						var msgRef = sap.ui.getCore().byId(
-								"closeDisruption-msgRef");
-
-						// Initialize the inputs
-						timeLost.setValue("");
-						comment.setValue("");
-						msgRef.setText("");
 					},
 
 					/***********************************************************
 					 * Open the Enter Comment Pop-Up
 					 */
-					onOpenDisruptionComment : function(title, msgRef, okEvent) {
+					onOpenDisruptionComment : function(title, msgRef, sPath, okEvent) {
 						// Call Reject Disruption fragment
 						if (!airbus.mes.disruptions.__enterCommentDialogue) {
 							airbus.mes.disruptions.__enterCommentDialogue = sap.ui
@@ -191,8 +178,10 @@ sap.ui
 						}
 						sap.ui.getCore().byId("disruptionCommentDialogue")
 								.setTitle(title);
-						sap.ui.getCore().byId("disruptionComment-msgRef")
+						sap.ui.getCore().byId("disruptionCommentMsgRef")
 								.setText(msgRef);
+								sap.ui.getCore().byId("disruptionCommentSpath")
+								.setText(sPath);
 						sap.ui.getCore().byId("disruptionCommentBox").setValue(
 								"");
 						sap.ui.getCore().byId("disruptionCommentOK")
@@ -227,8 +216,10 @@ sap.ui
 
 							var title = this.getView().getModel("i18nModel").getProperty("rejectDisruption");
 							var msgRef = oEvt.getSource().getBindingContext(
-							"operationDisruptionsModel").getObject("MessageRef");
-							this.onOpenDisruptionComment(title, msgRef, this.onConfirmRejection);	
+								"operationDisruptionsModel").getObject("MessageRef");
+							var sPath = oEvt.getSource().getBindingContext("operationDisruptionsModel").sPath;
+							
+							this.onOpenDisruptionComment(title, msgRef, sPath, this.onConfirmRejection);	
 							
 						}
 									
@@ -238,11 +229,19 @@ sap.ui
 					 */
 					onConfirmRejection: function(oEvent){
 						var comment = sap.ui.getCore().byId("disruptionCommentBox").getValue();
-						var msgref = sap.ui.getCore().byId("disruptionComment-msgRef").getText();
+						var msgref = sap.ui.getCore().byId("disruptionCommentMsgRef").getText();
+						var i18nModel = this.getView().getModel("i18nModel");
 						
 						//	Call Disruption Service
-						airbus.mes.disruptions.ModelManager.rejectDisruption(comment,msgref);
+						var isSuccess = airbus.mes.disruptions.ModelManager.rejectDisruption(comment,msgref, i18nModel);
+						
 						airbus.mes.disruptions.__enterCommentDialogue.close();
+						
+						if(isSuccess){
+							var sPath = sap.ui.getCore().byId("disruptionCommentSpath").getValue();
+							this.getView().getModel("operationDisruptionsModel").getProperty(sPath).Status = airbus.mes.disruptions.Formatter.status.rejected;
+							this.getView().getModel("operationDisruptionsModel").refresh();
+						}
 
 					},
 
@@ -386,12 +385,12 @@ sap.ui
 						var i18nModel = this.getView().getModel("i18nModel");
 
 						// Call to Acknowledge Disruption
-						var success = airbus.mes.disruptions.ModelManager.ackDisruption(
+						var isSuccess = airbus.mes.disruptions.ModelManager.ackDisruption(
 								dateTime, msgRef, comment, i18nModel);
-
+						
 						airbus.mes.disruptions.__enterAckCommentDialogue.close();
 						
-						if(success){
+						if(isSuccess){
 							var sPath = sap.ui.getCore().byId("disruptionAckSpath").getValue();
 							this.getView().getModel("operationDisruptionsModel").getProperty(sPath).Status = airbus.mes.disruptions.Formatter.status.acknowledged;
 							this.getView().getModel("operationDisruptionsModel").refresh();
@@ -418,8 +417,9 @@ sap.ui
 						var title = this.getView().getModel("i18nModel").getProperty("markSolvedDisruption");
 						var msgRef = oEvt.getSource().getBindingContext(
 							"operationDisruptionsModel").getObject("MessageRef");
+						var sPath = oEvt.getSource().getBindingContext("operationDisruptionsModel").sPath;
 						
-						this.onOpenDisruptionComment(title, msgRef, this.onMarkSolvedDisruptionComment);
+						this.onOpenDisruptionComment(title, msgRef, sPath, this.onMarkSolvedDisruptionComment);
 
 					},
 					
@@ -429,16 +429,24 @@ sap.ui
 					onMarkSolvedDisruptionComment : function() {
 
 						var msgRef = sap.ui.getCore().byId(
-								"disruptionComment-msgRef").getText();
+								"disruptionCommentMsgRef").getText();
 
 						var comment = sap.ui.getCore().byId(
 								"disruptionCommentBox").getValue();
 						
+						var i18nModel = this.getView().getModel("i18nModel");
+						
 						// Call to Mark Solved Disruption
-						airbus.mes.disruptions.ModelManager.markSolvedDisruption(
-								msgRef, comment);
+						var isSuccess = airbus.mes.disruptions.ModelManager.markSolvedDisruption(
+								msgRef, comment, i18nModel);
 						
 						airbus.mes.disruptions.__enterCommentDialogue.close();
+						
+						if(isSuccess){
+							var sPath = sap.ui.getCore().byId("disruptionCommentSpath").getValue();
+							this.getView().getModel("operationDisruptionsModel").getProperty(sPath).Status = airbus.mes.disruptions.Formatter.status.solved;
+							this.getView().getModel("operationDisruptionsModel").refresh();
+						}
 					},
 
 					/***********************************************************
@@ -496,13 +504,13 @@ sap.ui
 
 					onReportDisruption : function(oEvent) {
 
-						airbus.mes.operationdetail.oView.setBusy(true);
+						
 						var oOperDetailNavContainer = sap.ui.getCore().byId(
 								"operationDetailsView--operDetailNavContainer");
 
 						if (airbus.mes.operationdetail.createDisruption === undefined
 								|| airbus.mes.operationdetail.createDisruption.oView === undefined) {
-
+							airbus.mes.operationdetail.oView.setBusy(true);
 							sap.ui
 									.getCore()
 									.createComponent(
@@ -525,7 +533,10 @@ sap.ui
 
 						airbus.mes.operationdetail.createDisruption.oView.oController
 								.resetAllFields();
-
+						
+						//set buttons according to create disruption
+						sap.ui.getCore().byId("createDisruptionView--btnUpdateDisruption").setVisible(false);
+						sap.ui.getCore().byId("createDisruptionView--btnCreateDisruption").setVisible(true);
 					},
 
 					onEditDisruption : function(oEvent) {
@@ -533,11 +544,12 @@ sap.ui
 						// Navigate to Edit Screen
 						var oOperDetailNavContainer = sap.ui.getCore().byId(
 								"operationDetailsView--operDetailNavContainer");
+						
 
 						// if component is not created - create the component
 						if (airbus.mes.operationdetail.createDisruption === undefined
 								|| airbus.mes.operationdetail.createDisruption.oView === undefined) {
-
+							airbus.mes.operationdetail.oView.setBusy(true);
 							sap.ui
 									.getCore()
 									.createComponent(
@@ -564,8 +576,12 @@ sap.ui
 
 						oModel.setData(oBindingContext
 								.getProperty(oBindingContext.sPath));
-						sap.ui.getCore().getModel("DisruptionDetailModel")
-								.refresh();
+						oModel.refresh();
+						
+						
+						//set buttons according to update disruption
+						sap.ui.getCore().byId("createDisruptionView--btnUpdateDisruption").setVisible(true);
+						sap.ui.getCore().byId("createDisruptionView--btnCreateDisruption").setVisible(false);
 
 					},
 

@@ -11,10 +11,10 @@ sap.ui
 					 * 
 					 * @memberOf airbus.mes.components.disruptions.CreateDisruption
 					 */
-	/*				onInit : function() {
-						// this.loadDisruptionCustomData();
-						this.addParent(this.selectTree, undefined);
-					},*/
+					/*
+					 * onInit : function() { // this.loadDisruptionCustomData();
+					 * this.addParent(this.selectTree, undefined); },
+					 */
 
 					/**
 					 * Similar to onAfterRendering, but this hook is invoked
@@ -46,50 +46,51 @@ sap.ui
 									type : "select",
 									path : "RootCause",
 									attr : "RootCause",
-									childs: [{
+									childs : [ {
 										id : "handle",
 										type : "select",
 										path : "Handle",
 										attr : "Handle",
-										childs: []},
-										{
-											id : "Return",
-											type : "Return",
-											childs : []
-										}
-									         ]},  ]
+										childs : []
+									}, {
+										id : "Return",
+										type : "Return",
+										childs : []
+									} ]
+								}, ]
 							} ]
 						}, ]
 					},
 					ModelManager : undefined,
 					onInit : function() {
-						
-					
-						
+
 						this.addParent(this.selectTree, undefined);
 						this.ModelManager = airbus.mes.disruptions.ModelManager;
-					/*	
-						this.ModelManager.loadDisruptionCustomData();
-						this.ModelManager.loadDisruptionCategory();
-						*/
-						
-						this.getView().byId("selectReasonTree").setSelectedKey();
-						this.getView().byId("selectRootCause").setSelectedKey();
-						this.getView().byId("selectResponsible").setSelectedKey();
-						this.setEnabledSelectBox(true,false,false,false);
-						
-						//this.filterField(this.selectTree);
-						
+						/*
+						 * this.ModelManager.loadDisruptionCustomData();
+						 * this.ModelManager.loadDisruptionCategory();
+						 */
 
-						//this.addParent(this.selectTree, undefined);
-						//this.ModelManager = airbus.mes.settings.ModelManager;
-						
-						/*this.getView().core.setModel(new sap.ui.model.json.JSONModel(),
-						"disruptionCustomData");*/
-						
+						this.getView().byId("selectReasonTree")
+								.setSelectedKey();
+						this.getView().byId("selectRootCause").setSelectedKey();
+						this.getView().byId("selectResponsible")
+								.setSelectedKey();
+						this.setEnabledSelectBox(true, false, false, false);
+
+						// this.filterField(this.selectTree);
+
+						// this.addParent(this.selectTree, undefined);
+						// this.ModelManager = airbus.mes.settings.ModelManager;
+
+						/*
+						 * this.getView().core.setModel(new
+						 * sap.ui.model.json.JSONModel(),
+						 * "disruptionCustomData");
+						 */
 
 					},
-					
+
 					initializeTree : function() {
 						this.addParent(this.selectTree, undefined);
 					},
@@ -190,7 +191,6 @@ sap.ui
 							that.filterField(oElement);
 						});
 					},
-					
 
 					setEnabledSelectBox : function(fCategory, fReason,
 							fResponsible, fRootCause) {
@@ -208,154 +208,258 @@ sap.ui
 					 * Create Disruption
 					 */
 					onCreateDisrupution : function() {
-						
-						// forfully set handle as the first item in the list after selecting Category, Reason, Responsible and rootcasue,
-						//As this handle will act as a unique key for selection
-						this.getView().byId("handle").setSelectedKey(this.getView().byId("handle").getItemAt(0).getText());
-						var sCategory = this.getView().byId("selectCategory").getSelectedKey();
-						var sRootCause = this.getView().byId("selectRootCause").getSelectedKey();			
-						var sComment = this.getView().byId("comment").getValue();
-						var sHandle = this.getView().byId("handle").getSelectedKey();
-						
+
+						// forfully set handle as the first item in the list
+						// after selecting Category, Reason, Responsible and
+						// rootcasue,
+						// As this handle will act as a unique key for selection
+						this.getView().byId("handle").setSelectedKey(
+								this.getView().byId("handle").getItemAt(0)
+										.getText());
+						var sCategory = this.getView().byId("selectCategory")
+								.getSelectedKey();
+						var sRootCause = this.getView().byId("selectRootCause")
+								.getSelectedKey();
+						var sComment = this.getView().byId("comment")
+								.getValue();
+						var sHandle = this.getView().byId("handle")
+								.getSelectedKey();
+
 						// Create a JSON for payload attributes
 						var aModelData = []
-						
 
-							var oJson = {
-								"payload":[{
-									"attribute" : "OPERATION_BO",
-									"value": sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/operation_bo"),
-								},
-								{
-									"attribute" : "SFC_BO",
-									"value": sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/sfc"),	
-								},
-								{
-									"attribute" : "SFC_STEP_BO",
-									"value": sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/sfc_step_ref"),	
-								},
-								{
-									"attribute" : "DESCRIPTION",
-									"value": this.getView().byId("comment").getValue()
-								},
-								{
-									"attribute" : "REASON",
-									"value": this.getView().byId("selectReasonTree").getSelectedKey()
-								},
-								{
-									"attribute" : "TIME_LOST",
-									"value": this.getView().byId("timeLost").getValue()
-								},
-								{
-									"attribute" : "REQD_FIX_BY",
-									"value": this.getView().byId("expectedDate").getValue()+" "+this.getView().byId("expectedTime").getValue()
-								},
-								{
-									"attribute" : "GRAVITY",
-									"value": this.getView().byId("gravity").getSelectedKey()
-								},
-								{
-									"attribute" : "STATUS",
-									"value": this.getView().getModel("i18nModel").getProperty("Pending")
-								},
-								{
-									"attribute" : "ROOT_CAUSE",
-									"value": this.getView().byId("selectRootCause").getSelectedKey()
-								},
-								{
-									"attribute" : "MSN",
-									"value": airbus.mes.settings.ModelManager.msn
-								},
-								{
-									"attribute" : "RESPONSIBLE_GROUP",
-									"value": this.getView().byId("selectResponsible").getSelectedKey()
-								},
-								{
-									"attribute" : "ORIGINATOR_GROUP",
-									"value": this.getView().byId("selectOriginator").getSelectedKey()
-								},
-								{
-									"attribute" : "WORK_CENTER",
-									"value":airbus.mes.settings.ModelManager.station
-								}
-								]
-								
-							}
-							aModelData.push(oJson);
+						var oJson = {
+							"payload" : [
+									{
+										"attribute" : "OPERATION_BO",
+										"value" : sap.ui
+												.getCore()
+												.getModel(
+														"operationDetailModel")
+												.getProperty(
+														"/Rowsets/Rowset/0/Row/0/operation_bo"),
+									},
+									{
+										"attribute" : "SFC_BO",
+										"value" : sap.ui
+												.getCore()
+												.getModel(
+														"operationDetailModel")
+												.getProperty(
+														"/Rowsets/Rowset/0/Row/0/sfc"),
+									},
+									{
+										"attribute" : "SFC_STEP_BO",
+										"value" : sap.ui
+												.getCore()
+												.getModel(
+														"operationDetailModel")
+												.getProperty(
+														"/Rowsets/Rowset/0/Row/0/sfc_step_ref"),
+									},
+									{
+										"attribute" : "DESCRIPTION",
+										"value" : this.getView()
+												.byId("comment").getValue()
+									},
+									{
+										"attribute" : "REASON",
+										"value" : this.getView().byId(
+												"selectReasonTree")
+												.getSelectedKey()
+									},
+									{
+										"attribute" : "TIME_LOST",
+										"value" : this.getView().byId(
+												"timeLost").getValue()
+									},
+									{
+										"attribute" : "REQD_FIX_BY",
+										"value" : this.getView().byId(
+												"expectedDate").getValue()
+												+ " "
+												+ this.getView().byId(
+														"expectedTime")
+														.getValue()
+									},
+									{
+										"attribute" : "GRAVITY",
+										"value" : this.getView()
+												.byId("gravity")
+												.getSelectedKey()
+									},
+									{
+										"attribute" : "STATUS",
+										"value" : this.getView().getModel(
+												"i18nModel").getProperty(
+												"Pending")
+									},
+									{
+										"attribute" : "ROOT_CAUSE",
+										"value" : this.getView().byId(
+												"selectRootCause")
+												.getSelectedKey()
+									},
+									{
+										"attribute" : "MSN",
+										"value" : airbus.mes.settings.ModelManager.msn
+									},
+									{
+										"attribute" : "RESPONSIBLE_GROUP",
+										"value" : this.getView().byId(
+												"selectResponsible")
+												.getSelectedKey()
+									},
+									{
+										"attribute" : "ORIGINATOR_GROUP",
+										"value" : this.getView().byId(
+												"selectOriginator")
+												.getSelectedKey()
+									},
+									{
+										"attribute" : "WORK_CENTER",
+										"value" : airbus.mes.settings.ModelManager.station
+									} ]
 
-							
-						this.ModelManager.createDisruption(sHandle,sCategory,sRootCause,sComment,aModelData);
+						}
+						aModelData.push(oJson);
+
+						this.ModelManager.createDisruption(sHandle, sCategory,
+								sRootCause, sComment, aModelData);
 					},
 
-				/**
-				 * Called when the View has been rendered (so its HTML is part
-				 * of the document). Post-rendering manipulations of the HTML
-				 * could be done here. This hook is the same one that SAPUI5
-				 * controls get after being rendered.
-				 * 
-				 * @memberOf airbus.mes.components.disruptions.CreateDisruption
-				 */
-				 onAfterRendering: function() {
-					// this.filterField(this.selectTree);
-					 if (sap.ui.getCore().byId(
-								"operationDetailsView--switchOperationModeBtn")
-								.getState() == false) {
-							this.getView().byId("createDisruption").setVisible(false);
-							this.getView().byId("updateDisruption").setVisible(false);
-							this.getView().byId("cancelDisruption").setVisible(false);
-						} else {
-							this.getView().byId("createDisruption").setVisible(true);
-							this.getView().byId("updateDisruption").setVisible(true);
-							this.getView().byId("cancelDisruption").setVisible(true);
+					/***********************************************************
+					 * For originator - update will be done for comment, Reason,
+					 * Responsible Group, Time lost , Expected date/time and Root Cause.
+					 */
+					onUpdateDisrupution : function() {
+
+						// Create a JSON for payload attributes
+						var aModelData = []
+
+						var oJson = {
+							"payload" : [
+									{
+										"attribute" : "REASON",
+										"value" : this.getView().byId(
+												"selectReasonTree")
+												.getSelectedKey()
+									},
+									{
+										"attribute" : "TIME_LOST",
+										"value" : this.getView().byId(
+												"timeLost").getValue()
+									},
+									{
+										"attribute" : "REQD_FIX_BY",
+										"value" : this.getView().byId(
+												"expectedDate").getValue()
+												+ " "
+												+ this.getView().byId(
+														"expectedTime")
+														.getValue()
+									},
+									{
+										"attribute" : "GRAVITY",
+										"value" : this.getView()
+												.byId("gravity")
+												.getSelectedKey()
+									},
+									{
+										"attribute" : "STATUS",
+										"value" : this.getView().getModel(
+												"i18nModel").getProperty(
+												"Pending")
+									},
+									{
+										"attribute" : "ROOT_CAUSE",
+										"value" : this.getView().byId(
+												"selectRootCause")
+												.getSelectedKey()
+									},
+									{
+										"attribute" : "RESPONSIBLE_GROUP",
+										"value" : this.getView().byId(
+												"selectResponsible")
+												.getSelectedKey()
+									},
+									{
+										"attribute" : "COMMENT",
+										"value" : this.getView().byId(
+												"comment")
+												.getValue()
+									}
+									
+									]
+
 						}
-				 },
-				 
-				 onCloseCreateDisruption :function() {
-					 airbus.mes.stationtracker.operationDetailPopup.close();
+						aModelData.push(oJson);
+
+					//	this.ModelManager.updateDisruption();
+
+					},
+
+					/**
+					 * Called when the View has been rendered (so its HTML is
+					 * part of the document). Post-rendering manipulations of
+					 * the HTML could be done here. This hook is the same one
+					 * that SAPUI5 controls get after being rendered.
+					 * 
+					 * @memberOf airbus.mes.components.disruptions.CreateDisruption
+					 */
+	/*				onAfterRendering : function() {
+
+					},*/
+
+					onCloseCreateDisruption : function() {
+						airbus.mes.stationtracker.operationDetailPopup.close();
 						airbus.mes.shell.oView.getController()
 								.renderStationTracker();
-					 
-				 },
-				 
-				 onCancelCreateDisruption: function(){
-					 
-					 var oOperDetailNavContainer = sap.ui.getCore().byId(
-						"operationDetailsView--operDetailNavContainer");
 
-				if (airbus.mes.operationdetail.viewDisruption === undefined
-						|| airbus.mes.operationdetail.viewDisruption.oView === undefined) {
-					sap.ui
-							.getCore()
-							.createComponent(
-									{
-										name : "airbus.mes.operationdetail.viewDisruption",
-									});
+					},
 
-					oOperDetailNavContainer
-							.addPage(airbus.mes.operationdetail.viewDisruption.oView);
-				}
+					onCancelCreateDisruption : function() {
 
-				oOperDetailNavContainer
-						.to(airbus.mes.operationdetail.viewDisruption.oView
-								.getId());
-				 },
-				 
-				 /********************
-				  * Reset all the fields of Form create disruption
-				  */
-				 resetAllFields : function(){
-					 this.getView().byId("selectCategory").setSelectedKey();
-					 this.getView().byId("selectReasonTree").setSelectedKey();
-					 this.getView().byId("selectResponsible").setSelectedKey();
-					 this.getView().byId("selectOriginator").setSelectedKey();
-					 this.getView().byId("selectRootCause").setSelectedKey();
-					 this.getView().byId("gravity").setSelectedKey();
-					 this.getView().byId("expectedDate").setValue();
-					 this.getView().byId("expectedTime").setValue();
-					 this.getView().byId("timeLost").setValue();
-					 this.getView().byId("comment").setValue();
-				 }
-				 
+						var oOperDetailNavContainer = sap.ui.getCore().byId(
+								"operationDetailsView--operDetailNavContainer");
+
+						if (airbus.mes.operationdetail.viewDisruption === undefined
+								|| airbus.mes.operationdetail.viewDisruption.oView === undefined) {
+							sap.ui
+									.getCore()
+									.createComponent(
+											{
+												name : "airbus.mes.operationdetail.viewDisruption",
+											});
+
+							oOperDetailNavContainer
+									.addPage(airbus.mes.operationdetail.viewDisruption.oView);
+						}
+
+						oOperDetailNavContainer
+								.to(airbus.mes.operationdetail.viewDisruption.oView
+										.getId());
+					},
+
+					/***********************************************************
+					 * Reset all the fields of Form create disruption
+					 */
+					resetAllFields : function() {
+						this.getView().byId("selectCategory").setSelectedKey();
+						this.getView().byId("selectReasonTree")
+								.setSelectedKey();
+						this.getView().byId("selectResponsible")
+								.setSelectedKey();
+						this.getView().byId("selectOriginator")
+								.setSelectedKey();
+						this.getView().byId("selectRootCause").setSelectedKey();
+						this.getView().byId("gravity").setSelectedKey();
+						this.getView().byId("expectedDate").setValue();
+						this.getView().byId("expectedTime").setValue();
+						this.getView().byId("timeLost").setValue();
+						this.getView().byId("comment").setValue();
+					}
+
 				/**
 				 * Called when the Controller is destroyed. Use this one to free
 				 * resources and finalize activities.
