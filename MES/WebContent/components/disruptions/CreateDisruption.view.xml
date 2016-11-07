@@ -208,7 +208,7 @@
 									</f:label>
 									<f:fields>
 										<DatePicker id="expectedDate" valueFormat="yyyy-MM-dd"
-											displayFormat="long" change="handleChange">
+											displayFormat="long" value="{path: 'DisruptionDetailModel>/FixedByTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}">
 											<layoutData>
 												<l:GridData span="L3 M6 S12" />
 											</layoutData>
@@ -242,7 +242,7 @@
 										</Label>
 									</f:label>
 									<f:fields>
-										<TimePicker id="expectedTime" displayFormat="HH:mm:ss" valueFormat="HH:mm:ss">
+										<TimePicker id="expectedTime" displayFormat="HH:mm:ss" valueFormat="HH:mm:ss" value="{path: 'DisruptionDetailModel>/FixedByTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}">
 											<layoutData>
 												<l:GridData span="L3 M6 S12" />
 											</layoutData>

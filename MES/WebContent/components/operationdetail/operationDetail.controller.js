@@ -247,7 +247,11 @@ sap.ui
 									airbus.mes.operationdetail.createDisruption.oView.oController.initializeTree();
 									
 									// Set only Root Cause enabled so that it can be edited in Edit Disruption
-									airbus.mes.operationdetail.createDisruption.oView.oController.setEnabledSelectBox(false,false,false,true);
+									airbus.mes.operationdetail.createDisruption.oView.oController.setEnabledSelectBox(false,true,true,true);
+									
+									//Set Update button visible
+									oView.byId("updateDisruption").setVisible(true);
+									oView.byId("cancelDisruption").setVisible(true);
 								}
 							break;
 							
