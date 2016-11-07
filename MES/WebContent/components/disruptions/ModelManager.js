@@ -20,9 +20,9 @@ airbus.mes.disruptions.ModelManager = {
 				.attachRequestCompleted(
 						airbus.mes.disruptions.ModelManager.onOperationDisruptionsLoad);
 
-	/*	core.setModel(new sap.ui.model.json.JSONModel(),
+		core.setModel(new sap.ui.model.json.JSONModel(),
 				"DisruptionDetailModel");
-*/
+
 		var dest;
 
 		switch (window.location.hostname) {

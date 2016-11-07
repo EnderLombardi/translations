@@ -240,12 +240,18 @@ sap.ui
 								var oModel = sap.ui.getCore().getModel("DisruptionDetailModel");
 								var oView = sap.ui.getCore().byId("createDisruptionView");
 									oView.byId("selectCategory").setSelectedKey(oModel.getProperty("/MessageType"));
-									oView.byId("selectResponsible").setSelectedKey(oModel.getProperty("/ResponsibleGroup"));
+									//forced fireChange event on Category to get a good list in Responsible Group.
+									oView.byId("selectCategory").fireChange(oView.byId("selectResponsible").getSelectedItem());
 									
-									//forced fireChange event on responsible group to get a good list in reason.
-									oView.byId("selectResponsible").fireChange(oView.byId("selectResponsible").getSelectedItem());
+									oView.byId("selectResponsible").setSelectedKey(oModel.getProperty("/ResponsibleGroup"));
+									//forced fireChange event on Responsible Group to get a good list in reason.
+									//oView.byId("selectResponsible").fireChange(oView.byId("selectResponsible").getSelectedItem());
+									
 									
 									oView.byId("selectReasonTree").setSelectedKey(oModel.getProperty("/Reason"));
+									//forced fireChange event on Reason to get a good list in reason.
+									//oView.byId("selectReasonTree").fireChange(oView.byId("selectResponsible").getSelectedItem());
+									
 									oView.byId("selectOriginator").setSelectedKey(oModel.getProperty("/OriginatorGroup"));
 									oView.byId("selectRootCause").setSelectedKey(oModel.getProperty("/Subject"));
 									
