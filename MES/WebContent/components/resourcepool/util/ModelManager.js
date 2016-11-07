@@ -231,7 +231,7 @@ airbus.mes.resourcepool.util.ModelManager = {
 				"Param.1" : airbus.mes.settings.ModelManager.site,
 				"Param.2" : name,
 				"Param.3" : description,
-				"Param.4" : "false",
+				"Param.4" : false,
 				"Param.5" : ""
 			},
 			success : function(data, textStatus, jqXHR) {
@@ -269,11 +269,8 @@ airbus.mes.resourcepool.util.ModelManager = {
 				"Param.1" : airbus.mes.settings.ModelManager.site,
 				"Param.2" : this.resourceName,
 				"Param.3" : this.resourceDescription,
-				"Param.4" : airbus.mes.shell.ModelManager.json2xml({
-					CT_WORKLIST : {
-						item : oModelData
-					}
-				})
+				"Param.4" : true,
+				"Param.5" : airbus.mes.shell.ModelManager.json2xml(oModelData)
 			},
 			success : function(data, textStatus, jqXHR) {
 				airbus.mes.resourcepool.util.ModelManager.loadMainViewModels();

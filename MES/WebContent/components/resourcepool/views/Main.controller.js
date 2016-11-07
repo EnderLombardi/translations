@@ -1502,7 +1502,7 @@ sap.ui
 					 **********************************************************/
 					upperCaseConversion : function(oEvt) {
 						oEvt.getSource().setValue(
-								oEvt.getSource().getValue().toUpperCase())
+								oEvt.getSource().getValue().toUpperCase().replace(" ", ""));
 					},
 
 					/***********************************************************
