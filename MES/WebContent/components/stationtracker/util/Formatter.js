@@ -321,29 +321,43 @@ airbus.mes.stationtracker.util.Formatter = {
 
 				if (airbus.mes.stationtracker.AssignmentManager.affectationHierarchy[oSection.avlLine][sshiftID]) {
 	
-						// See SD there is only one user affected for the couple of shift id + avlLine
-						var oCurrentAffectedUser = airbus.mes.stationtracker.AssignmentManager.affectationHierarchy[oSection.avlLine][sshiftID][0];
-						var oHierarchyDelay =airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchyDelay;
-						var fProgress = oHierarchyDelay[oSection.group][oSection.avlLine].progress;
-						var fDuration =	oHierarchyDelay[oSection.group][oSection.avlLine].duration;
+					// See SD there is only one user affected for the couple of shift id + avlLine
+					var oCurrentAffectedUser = airbus.mes.stationtracker.AssignmentManager.affectationHierarchy[oSection.avlLine][sshiftID][0];
+					var oHierarchyDelay =airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchyDelay;
+					var fProgress = oHierarchyDelay[oSection.group][oSection.avlLine].progress;
+					var fDuration =	oHierarchyDelay[oSection.group][oSection.avlLine].duration;
+					var sSpanWarn = "";
+					var sNotConfirmedOpLS = "";
+					var bNotConfirmedOpLS = airbus.mes.stationtracker.ShiftManager.noTotalConfLastShift( oSection );
+					
+					if ( bNotConfirmedOpLS ) {
 						
-						if ( oSection.rescheduled ) {
-							
-							var html = '<div><img src=' + oCurrentAffectedUser.picture + ' class="ylabelUserImage"></i>'
-								//<i class="fa fa-user ylabelUserImage"></i>'
-									
-//								span class="rond" title='	+ airbus.mes.stationtracker.util.Formatter.spaceInsecable(oCurrentAffectedUser.firstName)
-//									+ ' >'+ oCurrentAffectedUser.firstName + '</span>
-									
+						sNotConfirmedOpLS = '<span class="classNotConfirmedOperation"></span>';
+					}
+					
+					if ( oCurrentAffectedUser.warn === "true" ) {
+						
+						sSpanWarn = '<span class="fa fa-exclamation-triangle" style="padding-right: 5px;" ></span>';
+						
+					}
+					
+					if ( oSection.rescheduled ) {
+						//XX TODO POSTION OF THIS.
+						var html = sNotConfirmedOpLS
+								+ '<div><img src=' + oCurrentAffectedUser.picture + ' class="ylabelUserImage"></i>'
 								+ '<span class="ylabelUser" title='
-									+ airbus.mes.stationtracker.util.Formatter.spaceInsecable(oCurrentAffectedUser.lastName) + '>'
-									+ oCurrentAffectedUser.lastName	+ '</span><span  class="yMoreLabel" ><span title=' +  airbus.mes.stationtracker.util.Formatter.computeDelay( fProgress,fDuration ) +
-									'>' + airbus.mes.stationtracker.util.Formatter.computeDelay( fProgress,fDuration )
-									+ '</span>' +
-									 '</span></div>';
-							return html;
-	
-						}
+								+ airbus.mes.stationtracker.util.Formatter.spaceInsecable(oCurrentAffectedUser.lastName) + '>'
+								+ oCurrentAffectedUser.lastName	+ '</span><span  class="yMoreLabel" >'
+								+ sSpanWarn
+								+ '<span title=' +  airbus.mes.stationtracker.util.Formatter.computeDelay( fProgress,fDuration ) 
+								+ '>' 
+								+ airbus.mes.stationtracker.util.Formatter.computeDelay( fProgress,fDuration )
+								+ '</span>' 
+								+ '</span></div>';
+						return html;
+
+					}
+
 	
 					
 				} else {

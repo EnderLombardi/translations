@@ -248,6 +248,8 @@ sap.ui.controller("airbus.mes.settings.Settings",
 				var fIndex = oModel.map(function(x) {return x.site_desc; }).indexOf( site );
 				// get real value of site making the link betwen the siteModel and from mii and local site
 				airbus.mes.settings.ModelManager.site = sap.ui.getCore().getModel("siteModel").getProperty("/Rowsets/Rowset/0/Row/" + fIndex + "/site");
+				airbus.mes.settings.ModelManager.siteDesc = sap.ui.getCore().getModel("siteModel").getProperty("/Rowsets/Rowset/0/Row/" + fIndex + "/site_desc");
+				
 				var oData = this.getView().getModel("region").oData;
 
 				for (var i = 0; i < oData.Spots.length; i++) {
@@ -332,9 +334,9 @@ sap.ui.controller("airbus.mes.settings.Settings",
 				airbus.mes.settings.ModelManager.station = oModel.Rowsets.Rowset[0].Row[0].station;
 				airbus.mes.settings.ModelManager.msn = oModel.Rowsets.Rowset[0].Row[0].msn;
 				// Maybe change regarding model get from mii
-				airbus.mes.settings.ModelManager.taktStart = oModel.Rowsets.Rowset[0].Row[0].begin;
-				airbus.mes.settings.ModelManager.taktEnd = oModel.Rowsets.Rowset[0].Row[0].end;
-				airbus.mes.settings.ModelManager.taktDuration = oModel.Rowsets.Rowset[0].Row[0].duration;
+				airbus.mes.settings.ModelManager.taktStart = oModel.Rowsets.Rowset[0].Row[0].Takt_Start;
+				airbus.mes.settings.ModelManager.taktEnd = oModel.Rowsets.Rowset[0].Row[0].Takt_End;
+				airbus.mes.settings.ModelManager.taktDuration = oModel.Rowsets.Rowset[0].Row[0].Takt_Duration;
 				
 				// Replace with current new element in UI
 				if (airbus.mes.settings.ModelManager.site) {
@@ -439,15 +441,25 @@ sap.ui.controller("airbus.mes.settings.Settings",
 						  return el.program ===  airbus.mes.settings.ModelManager.program &&
 						       	 el.line === airbus.mes.settings.oView.byId("selectLine").getValue() &&
 						         el.station === airbus.mes.settings.oView.byId("selectStation").getValue() &&
-						         el.Current_MSN != airbus.mes.settings.oView.byId("selectMSN").getValue();
-						});
-	
+						         el.msn === airbus.mes.settings.oView.byId("selectMSN").getValue();
+						})[0];
+					//Internal value update
 					airbus.mes.settings.ModelManager.line = this.getView().byId("selectLine").getValue();
 					airbus.mes.settings.ModelManager.station = this.getView().byId("selectStation").getValue();
 					airbus.mes.settings.ModelManager.msn = this.getView().byId("selectMSN").getValue();
 					airbus.mes.settings.ModelManager.taktStart = aModel.begin;
 					airbus.mes.settings.ModelManager.taktEnd = aModel.end;
 					airbus.mes.settings.ModelManager.taktDuration = aModel.duration;
+					airbus.mes.settings.ModelManager.taktStart = aModel.Takt_Start;
+					airbus.mes.settings.ModelManager.taktEnd = aModel.Takt_End;
+					airbus.mes.settings.ModelManager.taktDuration = aModel.Takt_Duration;
+					//Description update
+					airbus.mes.settings.ModelManager.siteDesc = airbus.mes.settings.ModelManager.siteDesc;
+					airbus.mes.settings.ModelManager.lineDesc = aModel.lineDescription
+					airbus.mes.settings.ModelManager.programDesc = aModel.programDescription;
+					airbus.mes.settings.ModelManager.stationDesc = aModel.stationDescription;
+				
+					
 					
 					airbus.mes.settings.ModelManager.getUrlSaveUserSetting();
 					// Navigate to correct view

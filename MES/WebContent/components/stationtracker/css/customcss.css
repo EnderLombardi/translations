@@ -296,11 +296,6 @@ div#iconTabBar--header {
 	background-image:  url('./img/fat_lines.png');
 }
 
-.begin_shifht {
-	background-color: #ffa749;
-	opacity: 0.25; 
-}
-
 .initialSection {
 	background-color: gray;
 	color: white;

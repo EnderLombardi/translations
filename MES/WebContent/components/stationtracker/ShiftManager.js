@@ -555,7 +555,7 @@ airbus.mes.stationtracker.ShiftManager = {
 			d4.setMinutes(d4.getMinutes() + 5);
 			scheduler.addMarkedTimespan({
 				start_date : d3,
-				end_date : d4,
+				//end_date : d4,
 				css : "begin_shifht"
 			});
 		}
@@ -574,7 +574,7 @@ airbus.mes.stationtracker.ShiftManager = {
 		d4.setMinutes(d4.getMinutes() + 5);
 		scheduler.addMarkedTimespan({
 			start_date : d3,
-			end_date : d4,
+			//end_date : d4,
 			css : "begin_shifht"
 		});
 
@@ -591,6 +591,55 @@ airbus.mes.stationtracker.ShiftManager = {
 		
 		scheduler.updateView(new Date(sPreviousDate));
 		
+	},
+	
+
+	/**
+	 * Search in last shift if there is an operation not confirmed return true if result
+	 * 
+	 * @param {OBJECT} oSection, AVL line wich is currently rendering
+	 */
+	noTotalConfLastShift : function (oSection) {
+		
+		var oShift = airbus.mes.stationtracker.ShiftManager.ShiftSelected;
+		var fIndexShift = airbus.mes.stationtracker.ShiftManager.closestShift(oShift.StartDate);
+		var bResult = false;
+		
+		// Selectet only previous shift
+		if ( fIndexShift != -1 && fIndexShift != 0 ) {
+						
+			var oPreviousShift = airbus.mes.stationtracker.ShiftManager.shifts[fIndexShift -1] ;
+			var oOperation = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy[oSection.group][oSection.avlLine];	
+			
+			for ( var aBox in oOperation ) {
+				
+				if ( bResult ) {
+					
+					return true;
+				} 
+				
+				// Select only operation wich Are in the previous shiftId
+				if ( aBox.indexOf( oPreviousShift.shiftID ) != -1 ) {
+					
+					var aOpration = oOperation[aBox];
+					//Parse all opration in corresponding group avlLine shift Id return true if one is not completed
+					aOpration.forEach(function(el){
+						
+						if ( el.STATE != "C" )
+							
+							
+							bResult = true;					
+						
+					})
+				}
+				
+			}
+			// All operation are completed
+			return false;
+				
+		}
+		// First shift reach no operation before the shift selected
+		return false;
 	},
 	/**
 	 * 

@@ -190,7 +190,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 				
 			}
 						
-			var ssBox = el[sBoxing] + "_"  + el["WORKORDER_ID"] + "_" + oShift.day + "-" + oShift.shiftName;
+			var ssBox = el[sBoxing] + "_"  + el["WORKORDER_ID"] + "_" + oShift.shiftID;
 						
 			if ( !oHierachy[ssGroup] ) {
 				
@@ -267,7 +267,8 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 					"SFC_STEP_REF":el.SFC_STEP_REF,
 					"SHOP_ORDER_BO":el.SHOP_ORDER_BO,
 					"PP_STATION":el.PP_STATION,
-					"OPERATION_BO": el.OPERATION_BO
+					"OPERATION_BO": el.OPERATION_BO,
+					"SKILLS" : el.SKILLS
 					//"competency": el.competency,
 					//"rescheduledStarDate": el.rescheduledStarDate,
 					//"rescheduledEndDate": el.rescheduledEndDate,
