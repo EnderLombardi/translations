@@ -31,7 +31,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
     } else  {
     	
     	console.log("no shift Data for station tracker");
-    };	
+    }
 	
 	oModelShift.forEach(function(el) {
 		
@@ -56,8 +56,6 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 	});
 	// Shift Model (without breaks)
 	var oHierachy2 = airbus.mes.stationtracker.GroupingBoxingManager.shiftNoBreakHierarchy = [];
-	var oFormatter = airbus.mes.stationtracker.util.Formatter;
-
 	
 		for( var i in oHierachy ) { 
 			for ( var a in oHierachy[i] ) {
@@ -117,36 +115,36 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 	groupingBoxing : function(sGroup,sBoxing) {
 		
 		airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy = {};
-//		var oHierachy = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy;
-		var oModel = sap.ui.getCore().getModel("stationTrackerRModel");
-		var oModelI = sap.ui.getCore().getModel("stationTrackerIModel");
+
+		var aModel = sap.ui.getCore().getModel("stationTrackerRModel");
+		var aModelI = sap.ui.getCore().getModel("stationTrackerIModel");
 		
 		// check if model full or not
-		if(oModel.getProperty("/Rowsets/Rowset/0/Row")){              
+		if(aModel.getProperty("/Rowsets/Rowset/0/Row")){              
 			
-			oModel = sap.ui.getCore().getModel("stationTrackerRModel").oData.Rowsets.Rowset[0].Row;
+			aModel = sap.ui.getCore().getModel("stationTrackerRModel").oData.Rowsets.Rowset[0].Row;
 			
         } else  {
-        	oModel = [];
+        	aModel = [];
         	console.log("no Rescheduled operation load");
         }
 		
-		if(oModelI.getProperty("/Rowsets/Rowset/0/Row")){              
+		if(aModelI.getProperty("/Rowsets/Rowset/0/Row")){              
 			
-			oModelI = sap.ui.getCore().getModel("stationTrackerIModel").oData.Rowsets.Rowset[0].Row;
+			aModelI = sap.ui.getCore().getModel("stationTrackerIModel").oData.Rowsets.Rowset[0].Row;
 			
         } else  {
         	
-        	oModelI = [];
+        	aModelI = [];
         	console.log("no Initial operation load");
         }
 		if ( airbus.mes.stationtracker.GroupingBoxingManager.showInitial ) {
 			
-			this.computeOperationHierarchy(oModelI,sGroup,sBoxing,"I");
-			this.computeOperationHierarchy(oModel,sGroup,sBoxing);
+			this.computeOperationHierarchy(aModelI,sGroup,sBoxing,"I");
+			this.computeOperationHierarchy(aModel,sGroup,sBoxing);
 		} else {
 			
-			this.computeOperationHierarchy(oModel,sGroup,sBoxing);
+			this.computeOperationHierarchy(aModel,sGroup,sBoxing);
 		}
 		
 	},
@@ -212,23 +210,23 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 				
 			}
 			
-			var sPaused = "0";
+			var sStatus = "0";
 			// Operation is active	
 
 			if (  el.PAUSED === "false") {
 				
-				sPaused = "2";
+				sStatus = "2";
 			}
 					
 			// Operation is not started
 			if ( el.PAUSED === "---" ) {
 				
-				sPaused = "1";
+				sStatus = "1";
 				
 				// Operation is pause	
 				if ( el.PAUSED === "---" && el.PROGRESS != "0" ) {
 					
-					sPaused = "3";
+					sStatus = "3";
 				}	
 			
 			}
@@ -236,7 +234,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 			// Operation Completed
 			if ( el.STATE === "C" ) {
 				
-				sPaused = "0";
+				sStatus = "0";
 			}	
 				
 			var oOperation = {
@@ -254,7 +252,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 					//"disruptions": el.disruptions,
 					"ANDONS": el.ANDONS,
 					"RMA_STATUS_COLOR": el.RMA_STATUS_COLOR,
-					"paused" : sPaused,
+					"status" : sStatus,
 					//"ata": el.ata,
 					//"familyTarget": el.familyTarget,
 					"CPP_CLUSTER" : el.CPP_CLUSTER,
@@ -374,7 +372,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 					var aDisruptions = [];
 					var aAndons = [];
 					var aTotalDuration = [];
-					var sPaused = [];
+					var aStatus = [];
 					
 					var fProgress = 0;
 					var fDuration = 0;
@@ -396,7 +394,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 						aDisruptions.push(el.disruptions);
 						aAndons.push(el.ANDONS);
 						aTotalDuration.push( el.DURATION );
-						sPaused.push(el.paused);
+						aStatus.push(el.status);
 						
 						fProgress += parseFloat(el.PROGRESS);
 						fDuration += parseFloat(el.DURATION);
@@ -460,8 +458,8 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 							"shopOrder" : sShopOrder,
 							"shopOrderDescription" : sShopOrderDescription,
 							"rmaStatus" : sRmaStatus,
-							"paused" : Math.max.apply(null,sPaused),
-							"status" : sStatus,
+							"status" : Math.max.apply(null,aStatus),
+//							"status" : sStatus,
 							"totalDuration" : fDuration.toString(), 
 							// This is the real value of boxing 
 							"realValueBox" : key2.split("_")[0],

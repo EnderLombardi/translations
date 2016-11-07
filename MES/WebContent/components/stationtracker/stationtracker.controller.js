@@ -336,7 +336,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	    var sProdGroup = airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("ProductionGroup") + " : ";
 	    var sProdGroupMii = "";
 	     
-		if(sap.ui.getCore().byId("productionGroupPopover--myList").getSelectedItems().length != 0 ){
+		if(sap.ui.getCore().byId("productionGroupPopover--myList").getSelectedItems().length !== 0 ){
 			
 			sap.ui.getCore().byId("productionGroupPopover--myList").getSelectedItems().forEach(function(el){
 				
@@ -360,8 +360,8 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		airbus.mes.stationtracker.ModelManager.loadStationTracker("U");		
 		airbus.mes.stationtracker.ModelManager.loadStationTracker("O");		
 		
-		GroupingBoxingManager.parseOperation(GroupingBoxingManager.group,GroupingBoxingManager.box);		
 
+		GroupingBoxingManager.parseOperation(GroupingBoxingManager.group,GroupingBoxingManager.box);		
 		
 	},
 	
@@ -666,15 +666,27 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
      },
      onChangeFilter : function(oEvent){
          var aMyFilter = [];    	 
+         var sStatus;
+         
 //    	 Check the current value of the filter status
-    	 if(oEvent.getSource().getSelectedKey() === "A") {
+    	 if(oEvent.getSource().getSelectedKey() === "StatusAll") {
 //			if status ALL, we have to remove all filter
     		 sap.ui.getCore().byId("worklistPopover--myList").getBinding("items").filter();    	
     		 
     	 } else {
 //    		 we apply the a filter
-
-    		 var oFilterStatus = new sap.ui.model.Filter("STATE","EQ",oEvent.getSource().getSelectedKey());        
+    		 switch (oEvent.getSource().getSelectedKey()) {
+    			 case "StatusStarted":
+    				 sStatus = "2";
+    				 break;
+    			 case "StatusNotStarted":
+    				 sStatus = "1";
+    				 break;
+    		     case "StatusConfirmed":
+    			     sStatus = "0";
+       				 break;
+    		 }
+    		 var oFilterStatus = new sap.ui.model.Filter("status","EQ",sStatus);        
              aMyFilter.push(oFilterStatus);
              sap.ui.getCore().byId("worklistPopover--myList").getBinding("items").filter(new sap.ui.model.Filter(aMyFilter, true));    		 
     	 }
@@ -752,9 +764,30 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		oPanel.setExpanded(!bIsExpanded);
 
 	},
-	operationWorkListClick : function() {
+	/**
+     * Action on fragment worklist
+     */		
+	operationWorkListClick : function(oEvent) {
 		
-		console.log("e");
+		console.log(oEvent);
+		
+//		Retrieve corresponding operation
+//		Format of attribute displayValue is WorkOrderId Name separated by space
+		var sWorkOrder_id = oEvent.getSource().getParent().getAggregation("items")[0].getDisplayValue().split(" ")[0];
+		
+//		Format of attribute displayValue2 is OperationId space process calculation 
+		var sOperation_id = oEvent.getSource().getParent().getAggregation("items")[0].getDisplayValue2().split(" ")[0];
+		
+//		We have to scan operationHierarchie to retrieve the corresponding item on the Model
+		var aModel = airbus.mes.stationtracker.worklistPopover.aModel;
+
+		aModel = aModel.filter(function (el) {
+			  return el.OPERATION_ID ===  sOperation_id &&
+			       	 el.WORKORDER_ID === sWorkOrder_id;
+			}); 
+
+//		Call the operation list popup
+		airbus.mes.stationtracker.ModelManager.openOperationDetailPopup(aModel);
 		
 	},
 	

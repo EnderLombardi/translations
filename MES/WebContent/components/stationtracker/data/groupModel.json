@@ -36,12 +36,12 @@
                 {
 
                   "Value": "GroupingCPPCluster",
-																		"key": "CPP_CLUSTER"
+				  "key": "CPP_CLUSTER"
                  },
                 {
 
                   "Value": "GroupingAVLFamily",
-																		"key": "FAMILY"
+				  "key": "FAMILY"
                  }
                ],
                "Boxing":[  

@@ -129,8 +129,61 @@ airbus.mes.stationtracker.ModelManager = {
 
               oViewModel.loadData(geturlstationtracker, null, false);
 
+              switch (sType) {
+              case "U":
+//             		 Compute status for Unplanned and OSW Model
+             		 airbus.mes.stationtracker.ModelManager.computeStatus(oViewModel);
+                     break;
+              case "O":
+//             		 Compute status for Unplanned and OSW Model
+             		 airbus.mes.stationtracker.ModelManager.computeStatus(oViewModel);                     
+                     break;
+              }              
+             
+              
        },
+       computeStatus : function(oViewModel) {
+        var aModel;
 
+//		Retrieve data of Unplanned Model
+        aModel = oViewModel.getData().Rowsets.Rowset[0].Row;;
+        
+		aModel.forEach(function(el){
+
+//			TODO : factorize this computation 
+//			Developped too on ModelManager.js
+			var sStatus = "0";
+			// Operation is active	
+
+			if (  el.PAUSED === "false") {
+				
+				sStatus = "2";
+			}
+					
+			// Operation is not started
+			if ( el.PAUSED === "---" ) {
+				
+				sStatus = "1";
+				
+				// Operation is pause	
+				if ( el.PAUSED === "---" && el.PROGRESS != "0" ) {
+					
+					sStatus = "3";
+				}	
+			
+			}
+									
+			// Operation Completed
+			if ( el.STATE === "C" ) {
+				
+				sStatus = "0";
+			}	
+				
+			el.status = sStatus;
+		});
+        
+    		
+	   },
        setOSW : function(aItem) {
 
               console.log(airbus.mes.stationtracker.util.Formatter.json2xml({
@@ -173,12 +226,6 @@ airbus.mes.stationtracker.ModelManager = {
               airbus.mes.stationtracker.ModelManager.filterUnplanned = oViewModel;
 
        },
-       loadOSW : function() {
-              var oViewModel = sap.ui.getCore().getModel("OSWModel");
-              oViewModel.loadData(this.urlModel.getProperty("urlOSW"), null, false);
-              airbus.mes.stationtracker.ModelManager.OSW = oViewModel;
-
-       },
        loadRessourcePool : function() {
               var oViewModel = sap.ui.getCore().getModel("ressourcePoolModel");
               oViewModel.loadData(this.urlModel.getProperty("urlressourcepool"), null, false);
@@ -207,7 +254,7 @@ airbus.mes.stationtracker.ModelManager = {
        /**
        * Used to update data of shift combobox regarding the day of the gantt
        * 
-        */
+       */
        selectMyShift : function() {
               // stationTrackerShift model
               var oView = airbus.mes.stationtracker.oView;
@@ -320,36 +367,19 @@ airbus.mes.stationtracker.ModelManager = {
               });
        },
 
-       openOperationPopOver : function(id) {
-
-              if (airbus.mes.stationtracker.operationPopover === undefined) {
-
-                     airbus.mes.stationtracker.operationPopover = sap.ui.xmlfragment("operationPopover",
-                                  "airbus.mes.stationtracker.operationPopover", airbus.mes.stationtracker.oView.getController());
-                     airbus.mes.stationtracker.operationPopover.addStyleClass("alignTextLeft");
-                     airbus.mes.stationtracker.operationPopover.setModel(sap.ui.getCore().getModel("WorkListModel"),
-                                  "WorkListModel");
-                     airbus.mes.stationtracker.oView.addDependent(airbus.mes.stationtracker.operationPopover);
-              }
-
-              var oNavCon = sap.ui.getCore().byId("operationPopover--navOperatorContainer");
-              var oMasterPage = sap.ui.getCore().byId("operationPopover--master");
-              oNavCon.to(oMasterPage);
-              oNavCon.currentPageIsTopPage();
-              var oOperationPopover = sap.ui.getCore().byId("operationPopover--operationPopoverID");
-              var oModel = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy[scheduler.getEvent(id).group][scheduler
-                           .getEvent(id).avlLine][scheduler.getEvent(id).box];
-
-              // Set data in Model WorkList
-              airbus.mes.stationtracker.operationPopover.getModel("WorkListModel").setData(oModel);
-              airbus.mes.stationtracker.operationPopover.getModel("WorkListModel").refresh();
-
-              airbus.mes.stationtracker.operationPopover.open();
-
-       },
-
        openWorkListPopover : function(id) {
 
+//    	   	  Check if there is only one operation on the worklist
+//    	   	  If yes, open the operation list
+    	   	  var aModel = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy[scheduler.getEvent(id).group][scheduler
+                                                                                                                         .getEvent(id).avlLine][scheduler.getEvent(id).box];
+
+              if (aModel.length === 1) {
+				
+	      		   airbus.mes.stationtracker.ModelManager.openOperationDetailPopup(aModel);
+     			   return;
+              }
+   
               if (airbus.mes.stationtracker.worklistPopover === undefined) {
 
                      airbus.mes.stationtracker.worklistPopover = sap.ui.xmlfragment("worklistPopover",
@@ -360,11 +390,12 @@ airbus.mes.stationtracker.ModelManager = {
                      airbus.mes.stationtracker.worklistPopover.setModel(new sap.ui.model.json.JSONModel(sap.ui.getCore()
                                   .getModel("groupModel").getData()), "groupModel");
                      airbus.mes.stationtracker.oView.addDependent(airbus.mes.stationtracker.worklistPopover);
-
               }
 
               airbus.mes.stationtracker.worklistPopover.OSW = false;
               airbus.mes.stationtracker.worklistPopover.unPlanned = false;
+//            Keep the array list of operation to ease the click action on the operation
+              airbus.mes.stationtracker.worklistPopover.aModel = aModel;
 
               sap.ui.getCore().byId("worklistPopover--myList").bindAggregation('items', {
                      path : "WorkListModel>/",
@@ -380,20 +411,11 @@ airbus.mes.stationtracker.ModelManager = {
                      }) ]
               });
 
-              var oModel = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy[scheduler.getEvent(id).group][scheduler
-                           .getEvent(id).avlLine][scheduler.getEvent(id).box];
-
-              if (oModel.length === 1) {
-
-            	  	airbus.mes.stationtracker.ModelManager.openOperationDetailPopup(id);
-                     return;
+              if (aModel && aModel.length > 0 && aModel) {
+                     aModel = airbus.mes.stationtracker.util.Formatter.sortWorkList(aModel);
               }
 
-              if (oModel && oModel.length > 0 && oModel) {
-                     oModel = airbus.mes.stationtracker.util.Formatter.sortWorkList(oModel);
-              }
-
-              airbus.mes.stationtracker.worklistPopover.setModel(new sap.ui.model.json.JSONModel(oModel), "WorkListModel");
+              airbus.mes.stationtracker.worklistPopover.setModel(new sap.ui.model.json.JSONModel(aModel), "WorkListModel");
               airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").refresh(true);
               // delay because addDependent will do a async rerendering and the
               // popover will immediately close without it
@@ -406,7 +428,10 @@ airbus.mes.stationtracker.ModelManager = {
               switch (airbus.mes.stationtracker.GroupingBoxingManager.box) {
               case "OPERATION_ID":
                      // Boxing operation, we display the operation list
-                      airbus.mes.stationtracker.ModelManager.openOperationDetailPopup(id);
+                     var aModel = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy[scheduler.getEvent(id).group][scheduler
+                                                                                                                                .getEvent(id).avlLine][scheduler.getEvent(id).box];
+     
+                	 airbus.mes.stationtracker.ModelManager.openOperationDetailPopup(aModel);
                      break;
 
               case "WORKORDER_ID":
@@ -420,7 +445,7 @@ airbus.mes.stationtracker.ModelManager = {
        /***************************************************************************
        * open operation detail popup containing progress slider
        **************************************************************************/
-       openOperationDetailPopup : function(id) {
+       openOperationDetailPopup : function(aModel) {
               if (airbus.mes.stationtracker.operationDetailPopup === undefined) {
 
                      airbus.mes.stationtracker.operationDetailPopup = sap.ui.xmlfragment("operationDetailPopup",
@@ -433,49 +458,47 @@ airbus.mes.stationtracker.ModelManager = {
  
               }
 
-              var oModel = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy[scheduler.getEvent(id).group][scheduler
-                           .getEvent(id).avlLine][scheduler.getEvent(id).box];
-
+             
               // calculate status of operation
               var sStatus;
-              if (oModel[0].paused == "0")
+              if (aModel[0].status == "0")
                      sStatus = "COMPLETED";
-              else if (oModel[0].paused == "2")
+              else if (aModel[0].status == "2")
                      sStatus = "IN_WORK";
-              else if (oModel[0].paused === "3")
+              else if (aModel[0].status === "3")
                      sStatus = "IN_QUEUE";
-              else if (oModel[0].paused === "1")
+              else if (aModel[0].status === "1")
                      sStatus = "NOT_STARTED";
               
               // progress calculation
               var progress;
-              if(oModel[0].DURATION === 0)
+              if(aModel[0].DURATION === 0)
             	  progress = 0;
               else
-            	 progress = oModel[0].PROGRESS / oModel[0].DURATION * 100; 
+            	 progress = aModel[0].PROGRESS / aModel[0].DURATION * 100; 
               var oOperModel = {
                      "Rowsets" : {
                            "Rowset" : [ {
                                   "Row" : [ {
-                                         "sfc" : oModel[0].WORKORDER_ID,
-                                         "sfc_step_ref" : oModel[0].SFC_STEP_REF,
-                                         "operation_bo" : oModel[0].OPERATION_BO,
-                                         "operation_no" : oModel[0].OPERATION_BO.split(",")[1],
-                                         "operation_desc" : oModel[0].OPERATION_DESCRIPTION,
-                                         "material_description": oModel[0].WORKORDER_DESCRIPTION,
-                                         "operation_revision" : oModel[0].SFC_STEP_REF.split(",")[5],
-                                         "wo_no" : oModel[0].SHOP_ORDER_BO.split(",")[1],
-                                         "workcenter" : oModel[0].PP_STATION.split(",")[1],
+                                         "sfc" : aModel[0].WORKORDER_ID,
+                                         "sfc_step_ref" : aModel[0].SFC_STEP_REF,
+                                         "operation_bo" : aModel[0].OPERATION_BO,
+                                         "operation_no" : aModel[0].OPERATION_BO.split(",")[1],
+                                         "operation_desc" : aModel[0].OPERATION_DESCRIPTION,
+                                         "material_description": aModel[0].WORKORDER_DESCRIPTION,
+                                         "operation_revision" : aModel[0].SFC_STEP_REF.split(",")[5],
+                                         "wo_no" : aModel[0].SHOP_ORDER_BO.split(",")[1],
+                                         "workcenter" : aModel[0].PP_STATION.split(",")[1],
                                          "status" : sStatus,
                                          "progress" : parseInt(progress),
                                          "progress_new" : parseInt(progress),
-                                         "time_spent" : airbus.mes.stationtracker.util.Formatter.msToTime(oModel[0].PROGRESS),
+                                         "time_spent" : airbus.mes.stationtracker.util.Formatter.msToTime(aModel[0].PROGRESS),
                                          "planned_start_time" : "TimeUnavailable",
                                          "planned_end_time" : "TimeUnavailable",
-                                         "original_start_time" : oModel[0].START_TIME,
-                                         "original_end_time" : oModel[0].END_TIME,
-                                         "cpp_cluster": oModel[0].CPP_CLUSTER,
-                                         "work_package": oModel[0].WORK_PACKAGE
+                                         "original_start_time" : aModel[0].START_TIME,
+                                         "original_end_time" : aModel[0].END_TIME,
+                                         "cpp_cluster": aModel[0].CPP_CLUSTER,
+                                         "work_package": aModel[0].WORK_PACKAGE
                                   } ]
                            } ]
                      }
