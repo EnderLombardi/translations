@@ -7,7 +7,8 @@
 				<TextArea id="disruptionCommentBox" placeholder="{i18nModel>AddCommentBox}"
 					rows="10" cols="50" />
 			</HBox>
-			<core:InvisibleText id="disruptionComment-msgRef" text="" />
+			<core:InvisibleText id="disruptionCommentMsgRef" text="" />
+			<core:InvisibleText id="disruptionCommentSpath" text="" />
 
 		</content>
 
