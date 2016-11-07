@@ -313,8 +313,8 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 		
 		Object.keys(oModel).forEach(function(key,index) { 
 			
-			//Creation of gantt groups
-			//chexk if it is avl Initial or rechedule
+			//Creation of Gantt groups
+			//Check if it is AVL Initial or Rechedule
 						
 			var oRecheduleGroup = {
 					

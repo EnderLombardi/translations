@@ -151,6 +151,7 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 			else{
 				airbus.mes.disruptiontracker.ModelManager.loadDisruptionTrackerModel({});
 			}
+			this.renderDisruptionTracker();
 			break;
 			
 		case "resourcePool":
@@ -206,6 +207,31 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 	},
 	onCloseInformation : function(){
 		airbus.mes.shell.oView.removeStyleClass("viewOpacity");		
+	},
+	/*******************************************
+	 * Render disruption Tracker
+	 */
+	renderDisruptionTracker:function(){
+		var aFilters = [];
+		var aTemp = [];
+		var duplicatesFilter = new sap.ui.model.Filter({
+			path : "station",
+			test : function(value) {
+				if (aTemp.indexOf(value) == -1) {
+					aTemp.push(value)
+					return true;
+				} else {
+					return false;
+				}
+			}
+		});
+		aFilters.push(duplicatesFilter);
+		sap.ui
+				.getCore()
+				.byId("disruptiontrackerView--stationComboBox")
+				.getBinding("items")
+				.filter(new sap.ui.model.Filter(aFilters, true));
+		
 	}
 	
 });
