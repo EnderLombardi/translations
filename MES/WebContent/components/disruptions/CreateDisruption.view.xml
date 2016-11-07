@@ -200,7 +200,7 @@
 
 								<f:FormElement>
 									<f:label>
-										<Label text="{i18nModel>expected}">
+										<Label text="{i18nModel>Expected}">
 											<layoutData>
 												<l:GridData span="L3 M6 S12" />
 											</layoutData>
