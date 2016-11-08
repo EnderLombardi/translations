@@ -147,7 +147,7 @@ sap.ui
 								msgRefValue, commentValue, timeLostValue, i18nModel);
 						
 						if(isSuccess){
-							var sPath = sap.ui.getCore().byId("disruptionCommentSpath").getValue();
+							var sPath = sap.ui.getCore().byId("closeDisruption-sPath").getValue();
 							this.getView().getModel("operationDisruptionsModel").getProperty(sPath).Status = airbus.mes.disruptions.Formatter.status.closed;
 							this.getView().getModel("operationDisruptionsModel").refresh();
 						}
