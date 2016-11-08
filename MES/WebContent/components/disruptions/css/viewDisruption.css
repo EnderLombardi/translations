@@ -48,7 +48,7 @@
 
 
 /* CSS for disruptionAckCommentDialogue */
-#disruptionAckCommentDialogue--searchRessourcePoolDialog {
+#disruptionAckCommentDialogue{
                 background: #ffffff;
     border: none;
     border-radius: 0;
@@ -62,7 +62,7 @@
 #disruptionAckCommentDialogue-title {
                 color:#434343;
 }
-#disruptionAckCommentDialogue--searchRessourcePoolDialog-cont {
+#disruptionAckCommentDialogue-cont {
                 border-top:3px solid  rgba(255, 255, 255, 0);
 }
 #disruptionAckCommentDialogue-header {
@@ -72,7 +72,29 @@
 
 /********End of CSS for disruptionAckCommentDialogue */
 
+/* CSS for disruptionCommentDialogue  */
+#disruptionCommentDialogue{
+                background: #ffffff;
+    border: none;
+    border-radius: 0;
+    box-shadow: 0 0 5px #333;
+}
 
+#disruptionCommentDialogue-BarPH {
+                background:#d4f1f7;
+
+}
+#disruptionCommentDialogue-title {
+                color:#434343;
+}
+#disruptionCommentDialogue-cont {
+                border-top:3px solid  rgba(255, 255, 255, 0);
+}
+#disruptionCommentDialogue-header {
+                box-shadow: 0 0 5px #333;
+    overflow: visible;
+}
+/********End of CSS for disruptionCommentDialogue */
 
 /*** CSS for Footers ***********/
 .viewDisruptionFooter{
