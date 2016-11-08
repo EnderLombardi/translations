@@ -260,7 +260,7 @@ sap.ui
 									{
 										"attribute" : "DESCRIPTION",
 										"value" : this.getView()
-												.byId("comment").getValue()
+												.byId("description").getValue()
 									},
 									{
 										"attribute" : "REASON",
@@ -323,9 +323,10 @@ sap.ui
 
 						}
 						aModelData.push(oJson);
-
+						
+						// message subject is passed as category because subject is compulsary and category will always be in input.
 						this.ModelManager.createDisruption(sHandle, sCategory,
-								sRootCause, sComment, aModelData);
+								sCategory, sComment, aModelData);
 					},
 
 					/***********************************************************

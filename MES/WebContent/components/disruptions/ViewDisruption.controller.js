@@ -537,6 +537,15 @@ sap.ui
 						//set buttons according to create disruption
 						sap.ui.getCore().byId("createDisruptionView--btnUpdateDisruption").setVisible(false);
 						sap.ui.getCore().byId("createDisruptionView--btnCreateDisruption").setVisible(true);
+						
+						//set input according to update disruption
+						sap.ui.getCore().byId("createDisruptionView--selectOriginator").setEnabled(true);
+						sap.ui.getCore().byId("createDisruptionView--description").setEnabled(true);
+						sap.ui.getCore().byId("createDisruptionView--timeLost").setEnabled(true);
+						airbus.mes.operationdetail.createDisruption.oView.oController
+						.setEnabledSelectBox(true, false, false,
+								false);
+						
 					},
 
 					onEditDisruption : function(oEvent) {
@@ -582,6 +591,15 @@ sap.ui
 						//set buttons according to update disruption
 						sap.ui.getCore().byId("createDisruptionView--btnUpdateDisruption").setVisible(true);
 						sap.ui.getCore().byId("createDisruptionView--btnCreateDisruption").setVisible(false);
+						
+						//set input according to update disruption
+						sap.ui.getCore().byId("createDisruptionView--selectOriginator").setEnabled(false);
+						sap.ui.getCore().byId("createDisruptionView--description").setEnabled(false);
+						sap.ui.getCore().byId("createDisruptionView--timeLost").setEnabled(false);
+						
+						airbus.mes.operationdetail.createDisruption.oView.oController
+						.setEnabledSelectBox(false, true, true,
+								true);
 
 					},
 
