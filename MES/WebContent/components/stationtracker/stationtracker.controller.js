@@ -357,8 +357,8 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		
 		airbus.mes.stationtracker.oView.byId("ProductionButton").setText(sProdGroup);
 
-		airbus.mes.stationtracker.ModelManager.loadStationTracker("I");		
 		airbus.mes.stationtracker.ModelManager.loadStationTracker("R");
+		airbus.mes.stationtracker.ModelManager.loadStationTracker("I");
 		airbus.mes.stationtracker.ModelManager.loadStationTracker("U");		
 		airbus.mes.stationtracker.ModelManager.loadStationTracker("O");		
 				
