@@ -240,7 +240,17 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 			if ( el.STATE === "C" ) {
 				
 				sStatus = "0";
-			}	
+			}
+			//disruption
+			if ( el.STATE === "D")
+			{
+				sStatus = "4";
+			}
+			//andon
+			if ( el.STATE === "B")
+			{
+				sStatus = "5";
+			}
 				
 			var oOperation = {
 										

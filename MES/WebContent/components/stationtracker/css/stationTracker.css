@@ -271,6 +271,118 @@
 	background-color: #97999b;
 }
 
+/* box management */
+.trackerBox{
+	width:100%;
+	height:inherit;
+	position:absolute;
+	z-index: 1;
+	line-height: 23px;
+	left: 0px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.trackerText{
+	padding-left: 10px;
+	position: relative;
+	z-index: 1;
+	float: left;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width:40%;
+	white-space: nowrap;
+	color: white;
+	overflow: hidden;
+}
+.trackerTextBlock{
+	padding-left: 10px;
+	position: relative;
+	z-index: 1;
+	float: left;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width:40%;
+	white-space: nowrap;
+	color: rgba(0, 86, 112, 0.94); /* petrol-blue */
+}
+
+.colorProgress{
+	 height: inherit;
+	 position: absolute;
+	 z-index: 0;
+	 left: 0px;
+	 overflow: hidden;
+}
+
+.triangleIcon{
+	position: relative;
+	z-index: 1;
+	padding-left:10px;
+	padding-right:10px;
+	line-height: 23px;
+	color:white;
+	float: left;
+	overflow: hidden;
+}
+
+.oswIcon{
+	position: relative;
+	z-index: 1;
+	padding-left:5px;
+	padding-right:5px;
+	border-radius: 10px;
+	float: left;
+	top:5px;
+	margin-bottom: 30px;
+	color: rgba(0, 86, 112, 0.94);
+	overflow: hidden;
+}
+
+.rightIcon{
+	position: relative;
+	z-index: 1;
+	padding-right:10px;
+	line-height: 23px;
+	color:white;
+	float: right;
+	overflow: hidden;
+}
+
+.dandelion{
+	color: #fbec00;
+}
+
+.dandelion-back{
+	background-color: #fbec00;
+}
+
+.teal-blue{
+	color: #0085ad;
+}
+
+.petrol{
+	color: rgba(0, 86, 112, 0.94);
+}
+.petrol-back{
+	background-color: rgba(0, 86, 112, 0.94);
+}
+.cherry-red{
+	color: #e4002b;
+}
+.cherry-red-back{
+	background-color: #e4002b;
+}
+
+.dark-lime-green-back{
+	background-color: #84bd00;
+}
+
+.teal-blue-back{
+	background-color: #0085ad;
+}
+
+/* End of box management */
 .grey2 {
 	background-color: #dddddd;
 }
@@ -301,7 +413,7 @@
 }
 
 .sapMPIBarBlue {
-	background: -moz-linear-gradient(top, #008cda 0, #006ca7 100%)
+	backgrou5656nd: -moz-linear-gradient(top, #008cda 0, #006ca7 100%)
 		!important;
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #008cda),
 		color-stop(100%, #006ca7)) !important;
