@@ -42,6 +42,13 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 			"station": this.getView().byId("stationComboBox").getSelectedItem()
 		});
 	},
+	filterByResolutionGroup:function(oEvent){
+		sValue = oEvent.getSource().getSelectedKey();
+		if (sValue != "") {
+			this.getView().byId("disruptionsTable").getBinding("items").filter(
+					new sap.ui.model.Filter("ResponsibleGroup", "EQ", sValue));
+		}
+	},
 	
 	filterDisruptions: function(oEvent){
 		var sValue = this.getView().byId("statusComboBox").getSelectedKey();
@@ -49,7 +56,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
         var oBinding = this.byId("disruptionsTable").getBinding("items");
         
         if(sValue != "")
-        	oBinding.filter([new sap.ui.model.Filter("Status", "EQ", sValue)]);
+        	oBinding.filter(new sap.ui.model.Filter("Status", "EQ", sValue));
         else
         	oBinding.filter([]);
         
