@@ -853,7 +853,7 @@ sap.ui
 							airbus.mes.resourcepool.oView
 									.addDependent(airbus.mes.resourcepool.searchResourcePool);
 						}
-						airbus.mes.resourcepool.searchResourcePool.open();
+						
 						sap.ui
 								.getCore()
 								.byId("searchResourcePool--site")
@@ -875,6 +875,8 @@ sap.ui
 								"searchResourcePool--resourcePool");
 						oInputResource.attachBrowserEvent("focusout",
 								this.onFocusOutOfResourcePool, this);
+						airbus.mes.resourcepool.util.ModelManager.loadModelValueHelp();
+						airbus.mes.resourcepool.searchResourcePool.open();
 					},
 
 					cancelForm : function(oEvt) {
