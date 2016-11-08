@@ -26,12 +26,9 @@ airbus.mes.stationtracker.ModelManager = {
               core.setModel(new sap.ui.model.json.JSONModel(), "groupModel"); // Unplanned// Filter// Model
 
               core.getModel("stationTrackerRModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onStationTrackerLoad);
-              core.getModel("stationTrackerIModel").attachRequestCompleted(
-                           airbus.mes.stationtracker.ModelManager.onStationTrackerLoad);
+              core.getModel("stationTrackerIModel").attachRequestCompleted( airbus.mes.stationtracker.ModelManager.onStationTrackerLoad);
               core.getModel("shiftsModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onShiftsLoad);
-              core.getModel("affectationModel").attachRequestCompleted(
-                           airbus.mes.stationtracker.ModelManager.onAffectationLoad);
-
+              core.getModel("affectationModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onAffectationLoad);
               core.getModel("unPlannedModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onUnPlannedLoad);
               core.getModel("OSWModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onOWSLoad);
 

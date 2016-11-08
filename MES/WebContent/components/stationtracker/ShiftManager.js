@@ -353,6 +353,7 @@ airbus.mes.stationtracker.ShiftManager = {
 		// /////////////////////////////////////////////////
 		// Recalculate X_SIZE to display X Intervals
 		// /////////////////////////////////////////////////
+		scheduler.xy.scroll_width=20;
 		var c = this.closestShift(new Date(date));
 		this.current_shift = this.shifts[c];
 		this.current_day = this.shifts[c].day;

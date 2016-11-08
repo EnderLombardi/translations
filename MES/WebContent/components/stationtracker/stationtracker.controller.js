@@ -41,7 +41,9 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	onAfterRendering : function() {
 		// Capture the open/close panel event
 		airbus.mes.stationtracker.oView.byId('kpi_header').attachExpand(resizeGantt);
-		
+		// Set instant display for busy indicator
+	    airbus.mes.stationtracker.oView.byId("stationtracker").setBusyIndicatorDelay(0);
+
 		// First run on init
 		if (typeof airbus.mes.stationtracker.cachedGanttTop === 'undefined'){
 			resizeGantt();
@@ -359,10 +361,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		airbus.mes.stationtracker.ModelManager.loadStationTracker("R");
 		airbus.mes.stationtracker.ModelManager.loadStationTracker("U");		
 		airbus.mes.stationtracker.ModelManager.loadStationTracker("O");		
-		
-
-		GroupingBoxingManager.parseOperation(GroupingBoxingManager.group,GroupingBoxingManager.box);		
-		
+				
 	},
 	
 	changeGroup : function() {
