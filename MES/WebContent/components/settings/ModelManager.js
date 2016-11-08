@@ -32,7 +32,7 @@ airbus.mes.settings.ModelManager =  {
 		core.setModel(new sap.ui.model.json.JSONModel(), "program");
 		core.setModel(new sap.ui.model.json.JSONModel(), "site");
 		
-		//core.getModel("plantModel").attachRequestCompleted( airbus.mes.settings.ModelManager.onPlantLoad );
+		core.getModel("userSettingModel").attachRequestCompleted( airbus.mes.settings.ModelManager.onUserSettingLoad );
 //		core.setModel(new sap.ui.model.json.JSONModel(), "langModel");
 //		core.setModel(new sap.ui.model.json.JSONModel(), "userSettingModel");
 
@@ -62,9 +62,7 @@ airbus.mes.settings.ModelManager =  {
 		//Loading of model
 		
 		this.loadSiteModel();
-		//this.loadPlantModel();
-        this.loadUserSettingsModel();
-        this.getProgram();
+	    this.getProgram();
         
 	},
 	
@@ -124,12 +122,16 @@ airbus.mes.settings.ModelManager =  {
 	loadUserSettingsModel:function(){
 		var oUserSettingModel = sap.ui.getCore().getModel("userSettingModel");
 		oUserSettingModel.loadData(airbus.mes.settings.ModelManager.getUrlUserSetting(),null,false);
-		
-		//Set Data
-		oUserSettingModel = this.core.getModel("userSettingModel").getData();  
-		this.site = oUserSettingModel.Rowsets.Rowset[0].Row[0].plant;
-		this.station = oUserSettingModel.Rowsets.Rowset[0].Row[0].station;
+	
 	},
+	onUserSettingLoad : function() {
+		// Apply user settings.
+		airbus.mes.settings.oView.getController().getUserSettings();
+		// Current Msn is store with "" so we reuse msn selected
+		airbus.mes.shell.oView.byId("labelMSN").setText(airbus.mes.settings.ModelManager.msn);
+		
+	},
+	
 	// ********************************************************************************
 	 messageShow : function(text) {
 	        sap.m.MessageToast
@@ -184,10 +186,8 @@ airbus.mes.settings.ModelManager =  {
 				success : function(result, status, xhr) {
 					
 					//Refresh label in header.
-					airbus.mes.settings.ModelManager.loadUserSettingsModel()
-					// Current Msn is store with "" so we reuse msn selected
-					airbus.mes.shell.oView.byId("labelMSN").setText(airbus.mes.settings.ModelManager.msn);
-					
+					airbus.mes.settings.ModelManager.loadUserSettingsModel();
+								
 				}
 			});
 		  

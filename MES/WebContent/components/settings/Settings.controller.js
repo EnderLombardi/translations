@@ -41,7 +41,6 @@ sap.ui.controller("airbus.mes.settings.Settings",
 
 			onAfterRendering : function() {
 				this.byId("vbi").zoomToRegions([ "FR", "GB", "ES", "DE" ]);
-				//this.getUserSettings();
 			},
 
 			onInit : function() {
