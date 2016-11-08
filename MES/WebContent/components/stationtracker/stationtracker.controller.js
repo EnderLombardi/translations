@@ -699,6 +699,10 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
  		
      },
      
+     deleteLineAssignment : function(){
+    	 airbus.mes.stationtracker.AssignmentManager.handleLineAssignment("D", false);
+     },
+     
  	getI18nValue : function(sKey) {
 	    return this.getView().getModel("StationTrackerI18n").getProperty(sKey);
 	},

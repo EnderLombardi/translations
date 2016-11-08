@@ -64,7 +64,29 @@ airbus.mes.stationtracker.ModelManager = {
               this.loadProductionGroup();
               this.loadRessourcePool();
        },
-
+       
+       setLineAssignment : function(sSite, sStation, sUserID, sShiftName, sDay, sLine, sSkill, sMyUserID, sModeAssignment, bQACheck) {
+    	   var seturlLineAssignment = this.urlModel.getProperty('urlsetlineassignment');
+    	   seturlLineAssignment = this.replaceURI(seturlLineAssignment, "$site", sSite);
+    	   seturlLineAssignment = this.replaceURI(seturlLineAssignment, "$station", sStation);
+    	   seturlLineAssignment = this.replaceURI(seturlLineAssignment, "$userid", sUserID);
+    	   seturlLineAssignment = this.replaceURI(seturlLineAssignment, "$shiftname", sShiftName);
+    	   seturlLineAssignment = this.replaceURI(seturlLineAssignment, "$day", sDay);
+    	   seturlLineAssignment = this.replaceURI(seturlLineAssignment, "$line", sLine);
+    	   seturlLineAssignment = this.replaceURI(seturlLineAssignment, "$skill", sSkill);
+    	   seturlLineAssignment = this.replaceURI(seturlLineAssignment, "$myuserid", sMyUserID);
+    	   seturlLineAssignment = this.replaceURI(seturlLineAssignment, "$mode", sModeAssignment);
+    	   seturlLineAssignment = this.replaceURI(seturlLineAssignment, "$qacheck", bQACheck);
+    	   
+    	   $.ajax({
+   			url : seturlLineAssignment,
+   			cache : false,
+   			success : function(data, textStatus, jqXHR) {
+   				//TODO handle Warning QA
+   			},
+   		});
+       },
+              
        loadAffectation : function() {
 
               var oData = airbus.mes.settings.ModelManager;

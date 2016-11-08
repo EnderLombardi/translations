@@ -700,7 +700,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 			if ( airbus.mes.stationtracker.AssignmentManager.polypolyAffectation ) {
 				airbus.mes.polypoly.oView.byId("oTablePolypoly").getBinding("rows").filter(aFilters);
 				airbus.mes.polypoly.oView.byId("oTablePolypoly").setFixedRowCount(0);
-				airbus.mes.polypoly.oView.byId("oTablePolypoly").setVisibleRowCount(8);
+				airbus.mes.polypoly.oView.byId("oTablePolypoly").setVisibleRowCount(15); //FIXME : Depends on PopUp size small = 8
 
 			} else {
 				airbus.mes.polypoly.oView.byId("oTablePolypoly").getBinding("rows").filter();
@@ -1030,9 +1030,12 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 			ModelManager.messageShow(airbus.mes.polypoly.oView.getController().getI18n("InvalidID") + sERP_ID);
 			return false;
 		}
-		if (!airbus.mes.polypoly.PolypolyManager.oViewController.oDialogConfirmationPoyPoly) {
-			airbus.mes.polypoly.PolypolyManager.oViewController.oDialogConfirmationPoyPoly = sap.ui.xmlfragment("airbus.mes.polypoly.userAffectationConfirmationPolyPoly",airbus.mes.polypoly.oView.getController());
-		}
+		
+		airbus.mes.stationtracker.AssignmentManager.handleLineAssignment("S", true);
+		
+//		if (!airbus.mes.polypoly.PolypolyManager.oViewController.oDialogConfirmationPoyPoly) {
+//			airbus.mes.polypoly.PolypolyManager.oViewController.oDialogConfirmationPoyPoly = sap.ui.xmlfragment("airbus.mes.polypoly.userAffectationConfirmationPolyPoly",airbus.mes.polypoly.oView.getController());
+//		}
 		 
 //		airbus.mes.polypoly.ModelManager.chkUserOprCertificatePolyPoly(sERP_ID);
 		return;

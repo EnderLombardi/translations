@@ -237,7 +237,8 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 							
 							// place this Ui Container with the Component inside into UI Area
 							airbus.mes.stationtracker.oPopoverPolypoly.addContent(airbus.mes.polypoly.oView);
-						
+							
+							airbus.mes.stationtracker.oPopoverPolypoly.setModel(airbus.mes.stationtracker.oView.getModel("StationTrackerI18n"),"StationTrackerI18n");
 
 							airbus.mes.stationtracker.oPopoverPolypoly.open();
 							// Permit to display or not polypoly affectation or polypoly simple

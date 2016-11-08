@@ -10,7 +10,9 @@ airbus.mes.stationtracker.AssignmentManager = {
 	avlLineSelected : "%",
 	polypolyAssignment : {
 		selectedLine : undefined,
-		selectedUser : undefined,
+		selectedUser : {
+			login : ""
+		},
 		selectedShift : undefined,
 	},
 	
