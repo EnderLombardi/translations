@@ -199,7 +199,7 @@ airbus.mes.disruptions.ModelManager = {
 						"Param.3" : messageType,
 						"Param.4" : messageSubject,
 						"Param.5" : messageBody,
-						"Param.6" : airbus.mes.disruptions.Formatter.json2xml({
+						"Param.6" : airbus.mes.shell.ModelManager.json2xml({
 							payloadAttributelist : payloadData,
 							"Param.7" : messageHandle
 						})
@@ -375,7 +375,7 @@ airbus.mes.disruptions.ModelManager = {
 	 **************************************************************************/
 	markSolvedDisruption : function(msgRef, comment, i18nModel) {
 
-		var sMessageSuccess = "Disruption Marked Solved Successfully";
+		var sMessageSuccess = i18nModel.getProperty("successSolved");
 		var sMessageError   = i18nModel.getProperty("tryAgain");
 		var flag_success;
 
