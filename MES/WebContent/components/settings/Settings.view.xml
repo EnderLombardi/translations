@@ -96,7 +96,7 @@
 						<ComboBox id="selectLine" items="{plantModel>/Rowsets/Rowset/0/Row}"
 							visible="true" change="onSelectionChange">
 							<items>
-								<core:Item key="{plantModel>line}" text="{plantModel>line}" />
+								<core:Item key="{plantModel>line}" text="{plantModel>lineDescription}" />
 							</items>
 						</ComboBox>
 						<Label id="lblStation" text="{i18n>Station}" design="Bold" />
@@ -104,7 +104,7 @@
 							items="{plantModel>/Rowsets/Rowset/0/Row}"
 							visible="true" change="onSelectionChange">
 							<items>
-								<core:Item key="{plantModel>station}" text="{plantModel>station}" />
+								<core:Item key="{plantModel>station}" text="{plantModel>stationDescription}" />
 							</items>
 						</ComboBox>
 						<Label id="lblMSN" text="{i18n>MSN}" design="Bold" />

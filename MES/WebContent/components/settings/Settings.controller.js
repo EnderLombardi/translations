@@ -107,8 +107,8 @@ sap.ui.controller("airbus.mes.settings.Settings",
 						// Find automatically the msn with the flag Current MSN different of "---"
 						oModel = oModel.filter(function (el) {
 							  return el.program ===  airbus.mes.settings.ModelManager.program &&
-							       	 el.line === airbus.mes.settings.oView.byId("selectLine").getValue() &&
-							         el.station === airbus.mes.settings.oView.byId("selectStation").getValue() &&
+							       	 el.line === airbus.mes.settings.oView.byId("selectLine").getSelectedKey() &&
+							         el.station === airbus.mes.settings.oView.byId("selectStation").getSelectedKey() &&
 							         el.Current_MSN != "---"
 							});
 						if ( oModel.length > 0 ) {
@@ -182,7 +182,7 @@ sap.ui.controller("airbus.mes.settings.Settings",
 				   
 				    default:
 				     			        
-				     var val = this.getView().byId(oElement.id).getValue();
+				     var val = this.getView().byId(oElement.id).getSelectedKey();
 					
 					var oFilter = new sap.ui.model.Filter( oElement.path, "EQ", val);
 					aFilters.push(oFilter);
@@ -340,7 +340,7 @@ sap.ui.controller("airbus.mes.settings.Settings",
 				
 				// Replace with current new element in UI
 				if (airbus.mes.settings.ModelManager.site) {
-					airbus.mes.settings.ModelManager.loadPlantModel();
+					//airbus.mes.settings.ModelManager.loadPlantModel();
 					
 					//Select site
 					var oModel = sap.ui.getCore().getModel("siteModel").getProperty("/Rowsets/Rowset/0/Row");
@@ -439,17 +439,15 @@ sap.ui.controller("airbus.mes.settings.Settings",
 					var aModel = sap.ui.getCore().getModel("plantModel").getProperty("/Rowsets/Rowset/0/Row");
 					aModel = aModel.filter(function (el) {
 						  return el.program ===  airbus.mes.settings.ModelManager.program &&
-						       	 el.line === airbus.mes.settings.oView.byId("selectLine").getValue() &&
-						         el.station === airbus.mes.settings.oView.byId("selectStation").getValue() &&
+						       	 el.line === airbus.mes.settings.oView.byId("selectLine").getSelectedKey() &&
+						         el.station === airbus.mes.settings.oView.byId("selectStation").getSelectedKey() &&
 						         el.msn === airbus.mes.settings.oView.byId("selectMSN").getValue();
 						})[0];
 					//Internal value update
-					airbus.mes.settings.ModelManager.line = this.getView().byId("selectLine").getValue();
-					airbus.mes.settings.ModelManager.station = this.getView().byId("selectStation").getValue();
+					airbus.mes.settings.ModelManager.line = this.getView().byId("selectLine").getSelectedKey();
+					airbus.mes.settings.ModelManager.station = this.getView().byId("selectStation").getSelectedKey();
+					// Msn value is directly selected by function in that case we get SelectedKey does not work so we take directly the value.
 					airbus.mes.settings.ModelManager.msn = this.getView().byId("selectMSN").getValue();
-					airbus.mes.settings.ModelManager.taktStart = aModel.begin;
-					airbus.mes.settings.ModelManager.taktEnd = aModel.end;
-					airbus.mes.settings.ModelManager.taktDuration = aModel.duration;
 					airbus.mes.settings.ModelManager.taktStart = aModel.Takt_Start;
 					airbus.mes.settings.ModelManager.taktEnd = aModel.Takt_End;
 					airbus.mes.settings.ModelManager.taktDuration = aModel.Takt_Duration;
