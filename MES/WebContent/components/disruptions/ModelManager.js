@@ -262,6 +262,99 @@ airbus.mes.disruptions.ModelManager = {
 				});
 
 	},
+	
+	/***************************************************************************
+	 * Create Disruption service
+	 */
+
+	getURLUpdateDisruption : function() {
+		airbus.mes.operationdetail.oView.setBusy(true); // Set Busy Indicator
+		var urlUpdateDisruption = this.urlModel
+				.getProperty("urlUpdateDisruption");
+		return  urlUpdateDisruption;
+	},
+
+	updateDisruption : function(sMessageRef,sReason,sResponsibleGroup,sRootCause,iTimeLost,dFixedByTime,sComment,iGravity) {
+
+		jQuery
+				.ajax({
+					async : true,
+					cache : false,
+					url : this.getURLUpdateDisruption(),
+					type : 'POST',
+					data : {
+						"Param.1" : airbus.mes.settings.ModelManager.site,
+						"Param.2" : sMessageRef,
+						"Param.3" : sReason,
+						"Param.4" : sResponsibleGroup,
+						"Param.5" : sRootCause,
+						"Param.6" : iTimeLost,
+						"Param.7" : dFixedByTime,
+						"Param.8" : sComment,
+						"Param.9" : iGravity
+					},
+					success : function(data, textStatus, jqXHR) {
+						
+						// Remove Busy Indicator
+						airbus.mes.operationdetail.oView.setBusy(false);
+						
+						//Message handling
+						var rowExists = data.Rowsets.Rowset;
+						if (rowExists != undefined) {
+							if (data.Rowsets.Rowset[0].Row[0].Message_Type == "S") {
+								airbus.mes.shell.ModelManager
+										.messageShow(data.Rowsets.Rowset[0].Row[0].Message);
+								
+								// navigate to View Disruption after message
+								// success
+								sap.ui
+										.getCore()
+										.byId(
+												"operationDetailsView--operDetailNavContainer")
+										.to(
+												airbus.mes.operationdetail.viewDisruption.oView
+														.getId());
+								
+								// load disruption Model again for updated message
+								var operationBO = sap.ui.getCore().getModel(
+										"operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_bo;
+								airbus.mes.disruptions.ModelManager
+										.loadDisruptionsByOperation(operationBO);
+
+							} else if (data.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
+								if (data.Rowsets.Rowset[0].Row[0].Message === undefined)
+									airbus.mes.shell.ModelManager
+											.messageShow(airbus.mes.operationdetail.createDisruption.oView
+													.getModel("i18nModel")
+													.getProperty(
+															"DisruptionNotUpdated"));
+								else
+									airbus.mes.shell.ModelManager
+											.messageShow(data.Rowsets.Rowset[0].Row[0].Message)
+							}
+						} else {
+							if (data.Rowsets.FatalError) {
+								airbus.mes.shell.ModelManager
+										.messageShow(data.Rowsets.FatalError);
+							}
+						}
+
+					},
+
+					error : function() {
+						airbus.mes.operationdetail.oView.setBusy(false); // Remove
+						// Busy
+						// Indicator
+						airbus.mes.shell.ModelManager
+								.messageShow(airbus.mes.operationdetail.createDisruption.oView
+										.getModel("i18nModel").getProperty(
+												"DisruptionNotSaved"));
+
+					}
+
+				});
+
+	},
 
 	/***************************************************************************
 	 * Get URL to Escalate Disruption

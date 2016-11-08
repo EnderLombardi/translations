@@ -333,69 +333,18 @@ sap.ui
 					 * Responsible Group, Time lost , Expected date/time and Root Cause.
 					 */
 					onUpdateDisrupution : function() {
-
-						// Create a JSON for payload attributes
-						var aModelData = []
-
-						var oJson = {
-							"payload" : [
-									{
-										"attribute" : "REASON",
-										"value" : this.getView().byId(
-												"selectreason")
-												.getSelectedKey()
-									},
-									{
-										"attribute" : "TIME_LOST",
-										"value" : this.getView().byId(
-												"timeLost").getValue()
-									},
-									{
-										"attribute" : "REQD_FIX_BY",
-										"value" : this.getView().byId(
-												"expectedDate").getValue()
-												+ " "
-												+ this.getView().byId(
-														"expectedTime")
-														.getValue()
-									},
-									{
-										"attribute" : "GRAVITY",
-										"value" : this.getView()
-												.byId("gravity")
-												.getSelectedKey()
-									},
-									{
-										"attribute" : "STATUS",
-										"value" : this.getView().getModel(
-												"i18nModel").getProperty(
-												"Pending")
-									},
-									{
-										"attribute" : "ROOT_CAUSE",
-										"value" : this.getView().byId(
-												"selectRootCause")
-												.getSelectedKey()
-									},
-									{
-										"attribute" : "RESPONSIBLE_GROUP",
-										"value" : this.getView().byId(
-												"selectResponsible")
-												.getSelectedKey()
-									},
-									{
-										"attribute" : "COMMENT",
-										"value" : this.getView().byId(
-												"comment")
-												.getValue()
-									}
-									
-									]
-
-						}
-						aModelData.push(oJson);
-
-					//	this.ModelManager.updateDisruption();
+						
+						var sMessageRef = sap.ui.getCore().getModel("DisruptionDetailModel").getProperty("/MessageRef")
+						var sReason	= this.getView().byId("selectreason").getSelectedKey();
+						var sResponsibleGroup = this.getView().byId("selectResponsible").getSelectedKey();
+						var sRootCause	= this.getView().byId("selectRootCause").getSelectedKey();
+						var iTimeLost = this.getView().byId("timeLost").getValue()
+						var dFixedByTime = this.getView().byId("expectedDate").getValue()+ " " + this.getView().byId("expectedTime").getValue()
+						var sComment = this.getView().byId("comment").getValue()
+						var iGravity = this.getView().byId("gravity").getSelectedKey()
+						
+						//call update service
+						this.ModelManager.updateDisruption(sMessageRef,sReason,sResponsibleGroup,sRootCause,iTimeLost,dFixedByTime,sComment,iGravity);
 
 					},
 
