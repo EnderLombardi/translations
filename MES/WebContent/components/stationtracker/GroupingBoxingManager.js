@@ -175,7 +175,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 				ssAvLine = "I_" +  el.AVL_LINE;
 			} else {
 				
-				ssAvLine = el.AVL_LINE + el.SKILLS;
+				ssAvLine = el.AVL_LINE + "_" + el.SKILLS;
 			}
 					
 			//permit to DO THE boxing on the only corresponding shift selected in day mode

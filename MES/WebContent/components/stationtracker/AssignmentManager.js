@@ -8,6 +8,30 @@ airbus.mes.stationtracker.AssignmentManager = {
 	polypolyAffectation : undefined,
 	userSelected : "%",
 	avlLineSelected : "%",
+	polypolyAssignment : {
+		selectedLine : undefined,
+		selectedUser : {
+			login : "NA"
+		},
+		selectedShift : undefined,
+	},
+	
+	handleLineAssignment : function( sModeAssignment, bQACheck) {
+		var sUserID = airbus.mes.stationtracker.AssignmentManager.polypolyAssignment.selectedUser.login;
+		var sShiftName = airbus.mes.stationtracker.AssignmentManager.polypolyAssignment.selectedShift.shiftName;
+		var sDay = airbus.mes.stationtracker.AssignmentManager.polypolyAssignment.selectedShift.day;
+		var sAVLLineSKILL = airbus.mes.stationtracker.AssignmentManager.polypolyAssignment.selectedLine.avlLine;
+		var sLine = sAVLLineSKILL.split("_")[0];
+		var sSkill = sAVLLineSKILL.split("_")[1];
+		var sSite = airbus.mes.settings.ModelManager.site;
+		var sStation = airbus.mes.settings.ModelManager.station;
+		var sMyUserID = "MESYS"; //FIXME ??
+		
+		sDay = (new Date(sDay)).toISOString().slice(0,10).replace(/-/g,"");
+		
+		airbus.mes.stationtracker.ModelManager.setLineAssignment(sSite, sStation, sUserID, sShiftName, sDay, sLine, sSkill, sMyUserID, sModeAssignment, bQACheck);
+
+	},
 	
 	computeAffectationHierarchy : function() {
 		

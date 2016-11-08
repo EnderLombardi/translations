@@ -1,14 +1,13 @@
-<core:FragmentDefinition
-	xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc">
-		<Dialog
-		title="Polyvalence-Polycompetence Matrix"
-		class="sapUiPopupWithPadding"
-		id="pop-up-polypoly"
-		verticalScrolling="false"
-		horizontalScrolling="false"
-		afterOpen="onAfterOpenPolypoly">
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc">
+	<Dialog title="Polyvalence-Polycompetence Matrix" class="sapUiPopupWithPadding"
+		id="pop-up-polypoly" verticalScrolling="false" horizontalScrolling="false"
+		afterOpen="onAfterOpenPolypoly" stretch="true">
 		<buttons>
-				<Button text="{StationTrackerI18n>Close}" icon="sap-icon://decline" press="ClosePolyPoly" />
+			<Button text="{StationTrackerI18n>DeleteAssignment}" icon="sap-icon://employee-rejections"
+				press="deleteLineAssignment" />
+			<Button text="{StationTrackerI18n>Close}" icon="sap-icon://decline"
+				press="ClosePolyPoly" />
 		</buttons>
 		<content>
 		</content>
