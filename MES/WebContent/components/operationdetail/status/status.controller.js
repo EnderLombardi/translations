@@ -233,6 +233,71 @@ sap.ui
 					 * User Confirmation Dialog Methods
 					 * 
 					 **********************************************************/
+					/*********************************************************
+					 * Scan Badge for User Confirmation
+					 */
+					onScanConfirmation: function(){
+						 // Open a web socket connection
+			               var ws = new WebSocket("ws://localhost:754/TouchNTag");
+                           
+			               ws.onopen = function()
+			               {	
+			            	   var msgData = {
+			            			   BadgeOrRFID:"BADGE",
+			            			   Message:"UID:263808008C0F3D"
+			            			  };
+
+			                  // Web Socket is connected
+			                  ws.send(JSON.stringify(msgData));
+//			                  ws.send(JSON.stringify(
+//			                		  {"BadgeOrRFID":"BADGE","Message":"UID:263808008C0F31"}
+//			                  ));
+//			                  {"BadgeOrRFID":"BADGE","NotificationLevel":"INFO","Status":"CONNECTING"}
+//			                  {"BadgeOrRFID":"BADGE","NotificationLevel":"INFO","Status":"CONNECTED"}
+
+			                  alert("Message is sent...");
+			               // For Simulation purpose (comment below line when you scan through reader)	
+			                  onSimulation(msgData);
+			               }; 
+			               ws.onmessage = function (evt) 
+			               { 
+			                  var scanData = JSON.parse(evt.data);	
+			                  var uID  = scanData.Message;			//UID
+			                  var badgeID = scanData.BadgeOrRFID;     //BID
+			                  
+			                  if(uID != undefined && uID != "")
+			                	  uID = uID.split(":")[1];
+			                  sap.ui.getCore().getElementById("UIDForConfirmation").setValue(uID);
+			                  sap.ui.getCore().getElementById("badgeIDForConfirmation").setValue(badgeID);
+			                  
+//			                  alert(status);
+			               };
+			               
+			               ws.onerror = function(evnt){
+			            	   alert("Error has occured...");  
+			               }
+			               
+			               ws.onclose = function()
+			               { 
+			                  // websocket is closed.			            	  			            	   
+			                  alert("Connection is closed..."); 
+			               }		               
+			               
+			            // For Simulation purpose (Local Server Tesing)				
+							function onSimulation(data){
+//								 var data = JSON.parse(evt.data);	
+				                  var uID  = data.Message;			//UID
+				                  var badgeID = data.BadgeOrRFID;     //BID
+				                  
+				                  if(uID != undefined && uID != "")
+				                	  uID = uID.split(":")[1];
+				                  sap.ui.getCore().getElementById("UIDForConfirmation").setValue(uID);
+				                  sap.ui.getCore().getElementById("badgeIDForConfirmation").setValue(badgeID);
+							}
+						
+					},
+	
+					
 					onCancelConfirmation : function() {
 						this._oUserConfirmationDialog.close();
 						
@@ -246,7 +311,10 @@ sap.ui
 					},
 
 					onOKConfirmation : function(oEvent) {
-
+						
+						var uID = sap.ui.getCore().getElementById("UIDForConfirmation").getValue();
+						var bID = sap.ui.getCore().getElementById("badgeIDForConfirmation").getValue();
+						
 						var user = sap.ui.getCore().byId(
 								"userNameForConfirmation").getValue();
 						var pass = sap.ui.getCore().byId(
@@ -257,7 +325,7 @@ sap.ui
 						var sMessageError = this.getView().getModel("i18n")
 								.getProperty("ErrorDuringConfirmation");
 
-						if (user == "" || pass == "") {
+						if ((user == "" || pass == "") && ( uID == "" || bID == "" )) {
 							sap.ui.getCore().byId("msgstrpConfirm").setVisible(
 									true);
 							sap.ui.getCore().byId("msgstrpConfirm").setType(
