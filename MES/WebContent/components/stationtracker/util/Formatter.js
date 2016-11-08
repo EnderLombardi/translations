@@ -198,7 +198,20 @@ airbus.mes.stationtracker.util.Formatter = {
 						sRightIcon = '<i class="fa fa-check" style="position: relative; z-index: 1; padding-right:10px; line-height: 23px; color:white; float: right;" ></i>';
 					
 					break;	
-	
+
+					// box Disruption
+					case 4 :
+						var sColorProgress ='<div style="width:100%; height:inherit; background-color:#fbec00 ; position:absolute; z-index: 0;left: 0px;"></div>';
+						var sRightIcon = '<i class="fa fa-stop" style="position: relative; z-index: 1; padding-right:10px; line-height: 23px; color:white; float: right;" ></i>';
+					
+					break;	
+				// box Andon
+					case 5 :
+						var sColorProgress ='<div style="width:100%; height:inherit; background-color:#e4002b ; position:absolute; z-index: 0;left: 0px;"></div>';
+						var sRightIcon = '<i class="fa fa-stop" style="position: relative; z-index: 1; padding-right:10px; line-height: 23px; color:white; float: right;" ></i>';
+					
+					break;	
+					
 				}
 		
 //				html = sDivForLeftDisplay + sRightIcon + sLeftIcon + sSpanText + sProgressText + sColorProgress + '</div>'
@@ -361,7 +374,7 @@ airbus.mes.stationtracker.util.Formatter = {
 	
 					
 				} else {
-
+					
 					var html = '<div><i class="fa fa-pencil ylabelEditIcon"></i><span class="ylabel">'
 						+ airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("SelectOperator") + '</span></div>';
 					return html;
@@ -586,3 +599,4 @@ airbus.mes.stationtracker.util.Formatter = {
 		    		
 		    	}
 };
+

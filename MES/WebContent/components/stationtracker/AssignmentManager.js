@@ -74,10 +74,17 @@ airbus.mes.stationtracker.AssignmentManager = {
 		
 	},
 	
+	/**
+	 *	action attach to + button on scheduler 
+	 */
 	newLine : function(sKey) {
-			
+//			TODO : only 9 numbers (INTEGER --> 9 numbers) problem with unicity
+//			Define an unique identifier for the AVL Line by using the date in millisecond
+			var oDate = new Date(); 
+			var sAVLKey = oDate.getTime();
+
 			airbus.mes.stationtracker.AssignmentManager.bOpen = true;
-			scheduler.addSection({ key: (Math.random()).toString() , rescheduled:"R" , name:"Select Operator"}, sKey );   
+			scheduler.addSection({ key: sAVLKey , rescheduled:"R" , name:"Select Operator"}, sKey );   
 		
 	},
 	
