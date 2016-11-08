@@ -89,18 +89,14 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 	 * Apply selected settings on table
 	 */
 	onTableSettingsConfirm: function(oEvent){
-		var oView = this.getView();
-	    var oTable = oView.byId("disruptionsTable");
-
+		
 	    var mParams = oEvent.getParameters();
-	    var oBinding = oTable.getBinding("items");
-
 	     // apply sorter
 	    var aSorters = [];
 	    var sPath = mParams.sortItem.getKey();
 	    var bDescending = mParams.sortDescending;
 	    aSorters.push(new sap.ui.model.Sorter(sPath, bDescending));
-	    oBinding.sort(aSorters);
+	    this.getView().byId("disruptionsTable").getBinding("items").sort(aSorters);
 	},
 	
 	/**********************************

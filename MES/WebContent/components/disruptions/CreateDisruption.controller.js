@@ -207,7 +207,7 @@ sap.ui
 					/***********************************************************
 					 * Create Disruption
 					 */
-					onCreateDisrupution : function() {
+					onCreateDisruption : function() {
 
 						// forfully set handle as the first item in the list
 						// after selecting Category, Reason, Responsible and
@@ -332,7 +332,7 @@ sap.ui
 					 * For originator - update will be done for comment, Reason,
 					 * Responsible Group, Time lost , Expected date/time and Root Cause.
 					 */
-					onUpdateDisrupution : function() {
+					onUpdateDisruption : function() {
 						
 						var sMessageRef = sap.ui.getCore().getModel("DisruptionDetailModel").getProperty("/MessageRef")
 						var sReason	= this.getView().byId("selectreason").getSelectedKey();

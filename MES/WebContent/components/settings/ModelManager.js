@@ -183,7 +183,9 @@ airbus.mes.settings.ModelManager =  {
 				},
 				success : function(result, status, xhr) {
 					
-				//	airbus.mes.settings.ModelManager.loadUserSettingsModel()
+					//Refresh label in header.
+					airbus.mes.settings.ModelManager.loadUserSettingsModel()
+					// Current Msn is store with "" so we reuse msn selected
 					airbus.mes.shell.oView.byId("labelMSN").setText(airbus.mes.settings.ModelManager.msn);
 					
 				}

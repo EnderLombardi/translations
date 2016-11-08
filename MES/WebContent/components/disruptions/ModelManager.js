@@ -281,7 +281,7 @@ airbus.mes.disruptions.ModelManager = {
 					async : true,
 					cache : false,
 					url : this.getURLUpdateDisruption(),
-					type : 'POST',
+					type : 'GET',
 					data : {
 						"Param.1" : airbus.mes.settings.ModelManager.site,
 						"Param.2" : sMessageRef,

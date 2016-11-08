@@ -47,6 +47,30 @@
 /****** End of CSS for Disruption screen **********/
 
 
+/* CSS for disruptionAckCommentDialogue */
+#disruptionAckCommentDialogue--searchRessourcePoolDialog {
+                background: #ffffff;
+    border: none;
+    border-radius: 0;
+    box-shadow: 0 0 5px #333;
+}
+
+#disruptionAckCommentDialogue-BarPH {
+                background:#d4f1f7;
+
+}
+#disruptionAckCommentDialogue-title {
+                color:#434343;
+}
+#disruptionAckCommentDialogue--searchRessourcePoolDialog-cont {
+                border-top:3px solid  rgba(255, 255, 255, 0);
+}
+#disruptionAckCommentDialogue-header {
+                box-shadow: 0 0 5px #333;
+    overflow: visible;
+}
+
+/********End of CSS for disruptionAckCommentDialogue */
 
 
 
