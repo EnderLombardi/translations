@@ -273,6 +273,7 @@ sap.ui
 								oView.byId("selectRootCause").setSelectedKey(
 										oModel.getProperty("/Subject"));
 								oView.byId("timeLost").setValue(oModel.getProperty("/TimeLost"));
+								oView.byId("status").setValue(oModel.getProperty("/Status"))
 								
 
 								airbus.mes.operationdetail.createDisruption.oView.oController

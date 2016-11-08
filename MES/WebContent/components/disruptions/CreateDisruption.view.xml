@@ -3,11 +3,11 @@
 	xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml">
 
 	<Page enableScrolling="false" showHeader="false" height="100%">
-		<FlexBox width="100%" height="100%" justifyContent="Center" backgroundDesign="Transparent"
-			direction="Column">
+		<FlexBox width="100%" height="100%" justifyContent="Center"
+			backgroundDesign="Transparent" direction="Column">
 			<items>
-				<f:Form id="createDisruptionForm" editable="true"  backgroundDesign="Transparent"
-					class="sapUiMediumMargin" visible="true">
+				<f:Form id="createDisruptionForm" editable="true"
+					backgroundDesign="Transparent" class="sapUiMediumMargin" visible="true">
 					<f:layout>
 						<f:ResponsiveGridLayout span="L12 M12 S12" />
 					</f:layout>
@@ -37,7 +37,7 @@
 									<f:fields>
 										<Select id="selectCategory"
 											items="{disruptionCategoryModel>/Rowsets/Rowset/0/Row}"
-											 change="onSelectionChange" forceSelection="false">
+											change="onSelectionChange" forceSelection="false">
 											<items>
 												<core:Item text="{disruptionCategoryModel>Category}"
 													key="{disruptionCategoryModel>MessageType}" />
@@ -60,9 +60,11 @@
 									</f:label>
 									<f:fields>
 										<Select id="selectreason"
-											items="{disruptionCustomData>/Rowsets/Rowset/1/Row}" change="onSelectionChange" forceSelection="false" >
+											items="{disruptionCustomData>/Rowsets/Rowset/1/Row}" change="onSelectionChange"
+											forceSelection="false">
 											<items>
-												<core:Item text="{disruptionCustomData>Reason}" key="{disruptionCustomData>Reason}" />
+												<core:Item text="{disruptionCustomData>Reason}"
+													key="{disruptionCustomData>Reason}" />
 											</items>
 											<layoutData>
 												<l:GridData span="L3 M6 S12" />
@@ -76,15 +78,17 @@
 									<f:label>
 										<Label text="{i18nModel>ResponsibleSupport}">
 											<layoutData>
-												<l:GridData span="L3 M6 S12"  linebreak="true" />
+												<l:GridData span="L3 M6 S12" linebreak="true" />
 											</layoutData>
 										</Label>
 									</f:label>
 									<f:fields>
 										<Select id="selectResponsible"
-											items="{disruptionCustomData>/Rowsets/Rowset/1/Row}" change="onSelectionChange" forceSelection="false">
+											items="{disruptionCustomData>/Rowsets/Rowset/1/Row}" change="onSelectionChange"
+											forceSelection="false">
 											<items>
-												<core:Item text="{disruptionCustomData>ResponsibleGroupDesc}" key="{disruptionCustomData>ResponsibleGroup}" />
+												<core:Item text="{disruptionCustomData>ResponsibleGroupDesc}"
+													key="{disruptionCustomData>ResponsibleGroup}" />
 											</items>
 											<layoutData>
 												<l:GridData span="L3 M6 S12" />
@@ -102,10 +106,11 @@
 										</Label>
 									</f:label>
 									<f:fields>
-										<Select id="selectOriginator" selectedKey="" forceSelection="false"
-											items="{disruptionCustomData>/Rowsets/Rowset/0/Row}">
+										<Select id="selectOriginator" selectedKey=""
+											forceSelection="false" items="{disruptionCustomData>/Rowsets/Rowset/0/Row}">
 											<items>
-												<core:Item text="{disruptionCustomData>group_desc}" key="{disruptionCustomData>group_name}" />
+												<core:Item text="{disruptionCustomData>group_desc}"
+													key="{disruptionCustomData>group_name}" />
 											</items>
 											<layoutData>
 												<l:GridData span="L3 M6 S12" />
@@ -113,7 +118,7 @@
 										</Select>
 									</f:fields>
 								</f:FormElement>
-								
+
 								<f:FormElement>
 									<f:label>
 										<Label text="{i18nModel>RootCause}">
@@ -123,10 +128,12 @@
 										</Label>
 									</f:label>
 									<f:fields>
-										<Select id="selectRootCause" selectedKey="{DisruptionModel>RootCause}" forceSelection="false"
-											items="{disruptionCustomData>/Rowsets/Rowset/1/Row}" change="onSelectionChange">
+										<Select id="selectRootCause" selectedKey="{DisruptionModel>RootCause}"
+											forceSelection="false" items="{disruptionCustomData>/Rowsets/Rowset/1/Row}"
+											change="onSelectionChange">
 											<items>
-												<core:Item text="{disruptionCustomData>RootCause}" key="{disruptionCustomData>RootCause}" />
+												<core:Item text="{disruptionCustomData>RootCause}"
+													key="{disruptionCustomData>RootCause}" />
 											</items>
 											<layoutData>
 												<l:GridData span="L3 M6 S12" />
@@ -134,7 +141,7 @@
 										</Select>
 									</f:fields>
 								</f:FormElement>
-								
+
 								<f:FormElement>
 									<f:label>
 										<Label text="{i18nModel>gravity}">
@@ -167,16 +174,17 @@
 										</Label>
 									</f:label>
 									<f:fields>
-									
-										 <Select id="handle" selectedKey="" forceSelection="false"
+
+										<Select id="handle" selectedKey="" forceSelection="false"
 											items="{disruptionCustomData>/Rowsets/Rowset/1/Row}" change="onSelectionChange">
 											<items>
-												<core:Item text="{disruptionCustomData>Handle}" key="{disruptionCustomData>Handle}" />
+												<core:Item text="{disruptionCustomData>Handle}"
+													key="{disruptionCustomData>Handle}" />
 											</items>
 											<layoutData>
 												<l:GridData span="L9 M9 S12" />
 											</layoutData>
-										</Select> 
+										</Select>
 									</f:fields>
 								</f:FormElement>
 
@@ -189,7 +197,8 @@
 										</Label>
 									</f:label>
 									<f:fields>
-										<DatePicker enabled="false" id="openDate" displayFormat="long"
+										<DatePicker enabled="false" id="openDate"
+											displayFormat="long"
 											value="{path: 'DisruptionDetailModel>/OpeningTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}">
 											<layoutData>
 												<l:GridData span="L3 M6 S12" />
@@ -208,7 +217,8 @@
 									</f:label>
 									<f:fields>
 										<DatePicker id="expectedDate" valueFormat="yyyy-MM-dd"
-											displayFormat="long" value="{path: 'DisruptionDetailModel>/FixedByTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}">
+											displayFormat="long"
+											value="{path: 'DisruptionDetailModel>/FixedByTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}">
 											<layoutData>
 												<l:GridData span="L3 M6 S12" />
 											</layoutData>
@@ -225,7 +235,9 @@
 										</Label>
 									</f:label>
 									<f:fields>
-										<TimePicker enabled="false" id="openTime" displayFormat="HH:mm:ss" valueFormat="HH:mm:ss" value="{path: 'DisruptionDetailModel>/OpeningTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}">
+										<TimePicker enabled="false" id="openTime"
+											displayFormat="HH:mm:ss" valueFormat="HH:mm:ss"
+											value="{path: 'DisruptionDetailModel>/OpeningTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}">
 											<layoutData>
 												<l:GridData span="L3 M6 S12" />
 											</layoutData>
@@ -242,7 +254,9 @@
 										</Label>
 									</f:label>
 									<f:fields>
-										<TimePicker id="expectedTime" displayFormat="HH:mm:ss" valueFormat="HH:mm:ss" value="{path: 'DisruptionDetailModel>/FixedByTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}">
+										<TimePicker id="expectedTime" displayFormat="HH:mm:ss"
+											valueFormat="HH:mm:ss"
+											value="{path: 'DisruptionDetailModel>/FixedByTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}">
 											<layoutData>
 												<l:GridData span="L3 M6 S12" />
 											</layoutData>
@@ -259,7 +273,25 @@
 										</Label>
 									</f:label>
 									<f:fields>
-										<Input placeholder="{i18nModel>IM}" id="timeLost" type="Number" value="">
+										<Input placeholder="{i18nModel>IM}" id="timeLost" type="Number"
+											value="">
+											<layoutData>
+												<l:GridData span="L3 M6 S12" />
+											</layoutData>
+										</Input>
+									</f:fields>
+								</f:FormElement>
+
+								<f:FormElement>
+									<f:label>
+										<Label text="{i18nModel>Status}">
+											<layoutData>
+												<l:GridData span="L3 M6 S12" />
+											</layoutData>
+										</Label>
+									</f:label>
+									<f:fields>
+										<Input id="status" value="{i18nModel>Pending}" enabled="false">
 											<layoutData>
 												<l:GridData span="L3 M6 S12" />
 											</layoutData>
@@ -292,10 +324,14 @@
 		<footer>
 			<Bar design="" class="createDisruptionFooter">
 				<contentRight>
-					<Button id="btnCreateDisruption" text="{i18nModel>create}" type="Accept" press="onCreateDisrupution" />
-					<Button id="btnUpdateDisruption" text="{i18nModel>update}" type="Accept" press="onUpdateDisrupution" />
-					<Button id="btnCancelDisruption" text="{i18nModel>cancel}" type="Reject" press="onCancelCreateDisruption" />
-					<Button id="btnCloseDisruption" text="{i18nModel>close}" icon="sap-icon://decline" press="onCloseCreateDisruption" />
+					<Button id="btnCreateDisruption" text="{i18nModel>create}"
+						type="Accept" press="onCreateDisruption" />
+					<Button id="btnUpdateDisruption" text="{i18nModel>update}"
+						type="Accept" press="onUpdateDisruption" />
+					<Button id="btnCancelDisruption" text="{i18nModel>cancel}"
+						type="Reject" press="onCancelCreateDisruption" />
+					<Button id="btnCloseDisruption" text="{i18nModel>close}"
+						icon="sap-icon://decline" press="onCloseCreateDisruption" />
 				</contentRight>
 			</Bar>
 		</footer>
