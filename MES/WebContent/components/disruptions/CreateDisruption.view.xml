@@ -200,7 +200,7 @@
 
 								<f:FormElement>
 									<f:label>
-										<Label text="{i18nModel>expected}">
+										<Label text="{i18nModel>Expected}">
 											<layoutData>
 												<l:GridData span="L3 M6 S12" />
 											</layoutData>
@@ -216,9 +216,9 @@
 									</f:fields>
 								</f:FormElement>
 
-								<f:FormElement label="{i18nModel>Time}">
+								<f:FormElement>
 									<f:label>
-										<Label text="Time">
+										<Label text="{i18nModel>Time}">
 											<layoutData>
 												<l:GridData span="L3 M6 S12" linebreak="true" />
 											</layoutData>
@@ -259,7 +259,7 @@
 										</Label>
 									</f:label>
 									<f:fields>
-										<Input placeholder="{i18nModel>IM}" id="timeLost" type="Number" value="{DisruptionDetailModel>/TimeLost}">
+										<Input placeholder="{i18nModel>IM}" id="timeLost" type="Number" value="">
 											<layoutData>
 												<l:GridData span="L3 M6 S12" />
 											</layoutData>
@@ -276,7 +276,7 @@
 										</Label>
 									</f:label>
 									<TextArea placeholder="{i18nModel>AddCommentBox}" id="comment"
-										valueLiveUpdate="true" rows="10" value="{DisruptionDetailModel>/Body}">
+										valueLiveUpdate="true" rows="10" value="">
 										<layoutData>
 											<l:GridData span="L10 M10 S12" />
 										</layoutData>
@@ -292,10 +292,10 @@
 		<footer>
 			<Bar design="" class="createDisruptionFooter">
 				<contentRight>
-					<Button id="createDisruption" text="{i18nModel>create}" type="Accept" press="onCreateDisrupution" />
-					<Button id="updateDisruption" text="{i18nModel>update}" type="Accept" visible="false" press="onUpdateDisrupution" />
-					<Button id="cancelDisruption" text="{i18nModel>cancel}" type="Reject" press="onCancelCreateDisruption" />
-					<Button id="closeDisruption" text="{i18nModel>close}" icon="sap-icon://decline" press="onCloseCreateDisruption" />
+					<Button id="btnCreateDisruption" text="{i18nModel>create}" type="Accept" press="onCreateDisrupution" />
+					<Button id="btnUpdateDisruption" text="{i18nModel>update}" type="Accept" press="onUpdateDisrupution" />
+					<Button id="btnCancelDisruption" text="{i18nModel>cancel}" type="Reject" press="onCancelCreateDisruption" />
+					<Button id="btnCloseDisruption" text="{i18nModel>close}" icon="sap-icon://decline" press="onCloseCreateDisruption" />
 				</contentRight>
 			</Bar>
 		</footer>

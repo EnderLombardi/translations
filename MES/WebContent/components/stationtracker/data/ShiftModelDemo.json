@@ -9,16 +9,16 @@
              { "Name" : "beginDateTime", "SourceColumn" : "beginDateTime", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
              { "Name" : "endDateTime", "SourceColumn" : "endDateTime", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 } ] }, 
        "Row" : [ 
-             { "shiftName" : "MORNING","shiftID" : "MORNING", "day" : "2016-10-31", "beginDateTime" : "2016-10-31 06:00:00", "endDateTime" : "2016-10-31 14:00:00" }, 
-             { "shiftName" : "AFTERNOON","shiftID" : "AFTERNOON", "day" : "2016-10-31", "beginDateTime" : "2016-10-31 14:15:00", "endDateTime" : "2016-10-31 22:00:00" },
-             { "shiftName" : "MORNING","shiftID" : "MORNING", "day" : "2016-11-01", "beginDateTime" : "2016-11-01 06:00:00", "endDateTime" : "2016-11-01 14:00:00" }, 
-             { "shiftName" : "AFTERNOON","shiftID" : "AFTERNOON", "day" : "2016-11-01", "beginDateTime" : "2016-11-01 14:15:00", "endDateTime" : "2016-11-01 22:00:00" },
-             { "shiftName" : "MORNING","shiftID" : "MORNING", "day" : "2016-11-02", "beginDateTime" : "2016-11-02 06:00:00", "endDateTime" : "2016-11-02 12:00:00" }, 
-             { "shiftName" : "AFTERNOON","shiftID" : "AFTERNOON", "day" : "2016-11-02", "beginDateTime" : "2016-11-02 12:30:00", "endDateTime" : "2016-11-02 21:00:00" },  
-             { "shiftName" : "MORNING","shiftID" : "MORNING", "day" : "2016-11-03", "beginDateTime" : "2016-11-03 06:00:00", "endDateTime" : "2016-11-03 14:00:00" }, 
-             { "shiftName" : "AFTERNOON","shiftID" : "AFTERNOON", "day" : "2016-11-03", "beginDateTime" : "2016-11-03 14:15:00", "endDateTime" : "2016-11-03 22:00:00" },  
-             { "shiftName" : "MORNING","shiftID" : "MORNING", "day" : "2016-11-04", "beginDateTime" : "2016-11-04 05:00:00", "endDateTime" : "2016-11-04 07:00:00" }, 
-             { "shiftName" : "AFTERNOON","shiftID" : "AFTERNOON", "day" : "2016-11-04", "beginDateTime" : "2016-11-04 14:15:00", "endDateTime" : "2016-11-04 22:00:00" }  
+             { "shiftName" : "MORNING","shiftID" : "2016-10-31MORNING", "day" : "2016-10-31", "beginDateTime" : "2016-10-31 06:00:00", "endDateTime" : "2016-10-31 14:00:00" }, 
+             { "shiftName" : "AFTERNOON","shiftID" : "2016-10-31AFTERNOON", "day" : "2016-10-31", "beginDateTime" : "2016-10-31 14:15:00", "endDateTime" : "2016-10-31 22:00:00" },
+             { "shiftName" : "MORNING","shiftID" : "2016-11-01MORNING", "day" : "2016-11-01", "beginDateTime" : "2016-11-01 06:00:00", "endDateTime" : "2016-11-01 14:00:00" }, 
+             { "shiftName" : "AFTERNOON","shiftID" : "2016-11-01AFTERNOON", "day" : "2016-11-01", "beginDateTime" : "2016-11-01 14:15:00", "endDateTime" : "2016-11-01 22:00:00" },
+             { "shiftName" : "MORNING","shiftID" : "2016-11-02MORNING", "day" : "2016-11-02", "beginDateTime" : "2016-11-02 06:00:00", "endDateTime" : "2016-11-02 12:00:00" }, 
+             { "shiftName" : "AFTERNOON","shiftID" : "2016-11-02AFTERNOON", "day" : "2016-11-02", "beginDateTime" : "2016-11-02 12:30:00", "endDateTime" : "2016-11-02 21:00:00" },  
+             { "shiftName" : "MORNING","shiftID" : "2016-11-03MORNING", "day" : "2016-11-03", "beginDateTime" : "2016-11-03 06:00:00", "endDateTime" : "2016-11-03 14:00:00" }, 
+             { "shiftName" : "AFTERNOON","shiftID" : "2016-11-03AFTERNOON", "day" : "2016-11-03", "beginDateTime" : "2016-11-03 14:15:00", "endDateTime" : "2016-11-03 22:00:00" },  
+             { "shiftName" : "MORNING","shiftID" : "2016-11-04MORNING", "day" : "2016-11-04", "beginDateTime" : "2016-11-04 05:00:00", "endDateTime" : "2016-11-04 07:00:00" }, 
+             { "shiftName" : "AFTERNOON","shiftID" : "2016-11-04AFTERNOON", "day" : "2016-11-04", "beginDateTime" : "2016-11-04 14:15:00", "endDateTime" : "2016-11-04 22:00:00" }  
              
             ]             } ]
        }

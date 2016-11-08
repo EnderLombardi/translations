@@ -5,6 +5,7 @@ sap.ui
 
 					resourcePoolName : undefined,
 					resourcePoolDescription : undefined,
+					resourceId : undefined,
 
 					/**
 					 * Called when a controller is instantiated and its View
@@ -183,12 +184,18 @@ sap.ui
 									 */
 									if (oUser.loanedToPool != "" && oUser.assignedToRPName != airbus.mes.resourcepool.util.ModelManager.resourceName)
 										aError.push(item);
-									else {
+									else if(loanedToPool == "" && oUser.assignedToRPName != airbus.mes.resourcepool.util.ModelManager.resourceName){
+										oUser.loanedToPool=airbus.mes.resourcepool.util.ModelManager.resourceId;
+										oUser.loanedToRPName = airbus.mes.resourcepool.util.ModelManager.resourceName;
+										sap.ui.getCore().getModel("ResourcePoolDetailModel").getProperty("/Rowsets/Rowset/1/Row/").push(oUser);
+									}
 										/*
 										 * Push JSON Object to Assigned Users Model
 										 */
+									else{
 										sap.ui.getCore().getModel("ResourcePoolDetailModel").getProperty("/Rowsets/Rowset/1/Row/").push(oUser);
 									}
+									
 								});
 
 						// Remove Users(s) from Available User model
@@ -327,9 +334,10 @@ sap.ui
 									rowIDs.push(oUser.handle);
 									
 									// If Loaned to current resource, empty loanedToPool field
-									if (oUser.assignedToRPName != airbus.mes.resourcepool.util.ModelManager.resourceName)
+									if (oUser.loanedToRPName != airbus.mes.resourcepool.util.ModelManager.resourceName){
 										oUser.loanedToPool = "";
-
+										oUser.loanedToRPName = "";
+									}
 									/*
 									 * Push prepared JSON Object to Available Users Model
 									 */
@@ -885,9 +893,12 @@ sap.ui
 
 						var oButton = sap.ui.getCore().byId(
 								"searchResourcePool--createOrDeleteButton");
+						var oSaveButton = sap.ui.getCore().byId(
+						"searchResourcePool--saveButtonforRPDesc");
+						//oSaveButton.setEnabled=true;
 						/*
 						 * if resource pool is empty , create button will be
-						 * shown
+						 * shown and save button as hidden
 						 */
 						if (resource === "") {
 
@@ -896,6 +907,8 @@ sap.ui
 									.setValue("");
 							oButton.setIcon("sap-icon://create");
 							oButton.setTooltip("create");
+							if(airbus.mes.resourcepool.util.Formatter.isEnabled)
+								oSaveButton.setEnabled(false);
 							return;
 
 						}
@@ -904,7 +917,7 @@ sap.ui
 
 						/*
 						 * if description not exists - means resource pool does
-						 * not exists
+						 * not exists: hide save button as well
 						 */
 						if (!value) {
 							/* message displayed according to roles */
@@ -951,17 +964,21 @@ sap.ui
 									.setValue("");
 							oButton.setIcon("sap-icon://create");
 							oButton.setTooltip("create");
+							if(airbus.mes.resourcepool.util.Formatter.isEnabled)
+								oSaveButton.setEnabled(false);
 							return false;
 						} else {
 							/*
 							 * resource pool exists- show description and set
-							 * delete button
+							 * delete button and show save button
 							 */
 							sap.ui.getCore().byId(
 									"searchResourcePool--description")
 									.setValue(value);
 							oButton.setIcon("sap-icon://delete");
 							oButton.setTooltip("delete");
+							if(airbus.mes.resourcepool.util.Formatter.isEnabled)
+								oSaveButton.setEnabled(true);
 							return true;
 						}
 					},
@@ -1046,13 +1063,13 @@ sap.ui
 								"searchResourcePool--description");
 						var oButton = sap.ui.getCore().byId(
 								"searchResourcePool--createOrDeleteButton");
-
+						sap.ui.getCore().byId("searchResourcePool--rpId").setText(oSelectedItem.getToolTtip());
 						oResourcePool.setValue(oSelectedItem.getTitle());
 						oDescription.setValue(oSelectedItem.getDescription());
 
 						this.resourcePoolName = oResourcePool.getValue();
 						this.resourcePoolDescription = oDescription.getValue();
-
+						this.resourceId = oSelectedItem.getToolTtip();
 						/* set create or delete buton based on some conditions */
 						if (!oResourcePool) {
 							oButton.setIcon("sap-icon://create");
@@ -1133,12 +1150,14 @@ sap.ui
 					 * @returns {Number} 0: if not error in updating else 1.
 					 **********************************************************/
 					updateResource : function() {
-
+						
 						var resourcePool = sap.ui.getCore().byId(
 								"searchResourcePool--resourcePool").getValue();
 						var description = sap.ui.getCore().byId(
 								"searchResourcePool--description").getValue();
 
+//						check if resourcepool exists
+						
 						/*
 						 * check mandatory paramaters are filled before
 						 * proceeding to update
@@ -1310,7 +1329,7 @@ sap.ui
 						/* Set Model Manager Global Variables */
 						airbus.mes.resourcepool.util.ModelManager.resourceName = this.resourcePoolName;
 						airbus.mes.resourcepool.util.ModelManager.resourceDescription = this.resourcePoolDescription;
-
+						airbus.mes.resourcepool.util.ModelManager.resourceId = this.resourceId;
 						/* Set the title header of the main page */
 						this
 								.getView()
@@ -1502,7 +1521,7 @@ sap.ui
 					 **********************************************************/
 					upperCaseConversion : function(oEvt) {
 						oEvt.getSource().setValue(
-								oEvt.getSource().getValue().toUpperCase())
+								oEvt.getSource().getValue().toUpperCase().replace(" ", ""));
 					},
 
 					/***********************************************************

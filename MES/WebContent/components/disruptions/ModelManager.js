@@ -326,7 +326,7 @@ airbus.mes.disruptions.ModelManager = {
 	/***************************************************************************
 	 * Acknowledge Disruption
 	 **************************************************************************/
-	ackDisruption : function(msgRef, comment, i18nModel) {
+	ackDisruption : function(dateTime, msgRef, comment, i18nModel) {
 
 		var sMessageSuccess = i18nModel.getProperty("successfulAcknowledge");
 		var sMessageError   = i18nModel.getProperty("tryAgain");
@@ -340,7 +340,8 @@ airbus.mes.disruptions.ModelManager = {
 						"userSettingModel").getProperty(
 						"/Rowsets/Rowset/0/Row/0/user"),
 				"Param.3" : msgRef,
-				"Param.4" : comment
+				"Param.4" : comment,
+				"Param.5" : dateTime
 			},
 			async : false,
 			error : function(xhr, status, error) {
@@ -374,7 +375,7 @@ airbus.mes.disruptions.ModelManager = {
 	 **************************************************************************/
 	markSolvedDisruption : function(msgRef, comment, i18nModel) {
 
-		var sMessageSuccess = i18nModel.getProperty("successSolved");
+		var sMessageSuccess = "Disruption Marked Solved Successfully";
 		var sMessageError   = i18nModel.getProperty("tryAgain");
 		var flag_success;
 

@@ -30,7 +30,12 @@
 							</Label>
 							<Text id="site" text="">
 								<layoutData>
-									<l:ResponsiveFlowLayoutData weight="3" />
+									<l:ResponsiveFlowLayoutData weight="2" />
+								</layoutData>
+							</Text>
+							<Text id="rpId" visible="false">
+								<layoutData>
+									<l:ResponsiveFlowLayoutData weight="1" />
 								</layoutData>
 							</Text>
 							<Label text="{i18nModel>ResourcePool}" required="true">
@@ -62,7 +67,7 @@
 									<l:ResponsiveFlowLayoutData weight="11" />
 								</layoutData>
 							</Input>
-							<Button icon="sap-icon://save"
+							<Button icon="sap-icon://save" id="saveButtonforRPDesc"
 								enabled="{path:'i18nModel>ResourcePool',formatter:'airbus.mes.resourcepool.util.Formatter.isEnabled'}"
 								press="updateResource" class="iconMiddle">
 								<layoutData>

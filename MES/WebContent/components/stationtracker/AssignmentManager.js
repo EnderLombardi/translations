@@ -42,6 +42,7 @@ airbus.mes.stationtracker.AssignmentManager = {
 				"lastName" : el.lastName,
 				"email" : el.email,
 				"picture" : el.picture,
+				"warn" : el.warn,
 			};
 
 			oHierarchy[el.avlLine][el.shiftID].push(userAffectation);

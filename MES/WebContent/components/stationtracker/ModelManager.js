@@ -129,26 +129,10 @@ airbus.mes.stationtracker.ModelManager = {
 
               oViewModel.loadData(geturlstationtracker, null, false);
 
-              switch (sType) {
-              case "U":
-//             		 Compute status for Unplanned and OSW Model
-             		 airbus.mes.stationtracker.ModelManager.computeStatus(oViewModel);
-                     break;
-              case "O":
-//             		 Compute status for Unplanned and OSW Model
-             		 airbus.mes.stationtracker.ModelManager.computeStatus(oViewModel);                     
-                     break;
-              }              
-             
-              
        },
-       computeStatus : function(oViewModel) {
-        var aModel;
+       computeStatus : function(aModel) {
 
-//		Retrieve data of Unplanned Model
-        aModel = oViewModel.getData().Rowsets.Rowset[0].Row;;
-        
-		aModel.forEach(function(el){
+    	   aModel.forEach(function(el){
 
 //			TODO : factorize this computation 
 //			Developped too on ModelManager.js
@@ -196,27 +180,38 @@ airbus.mes.stationtracker.ModelManager = {
 
        onUnPlannedLoad : function() {
 
-              var oModel = sap.ui.getCore().getModel("unPlannedModel");
+              var aModel = sap.ui.getCore().getModel("unPlannedModel");
 
-              if (!oModel.getProperty("/Rowsets/Rowset/0/Row")) {
+              if (!aModel.getProperty("/Rowsets/Rowset/0/Row")) {
 
-                     oModel = [];
+            	  	aModel = [];
                      console.log("no Unplanned operation load");
 
+              } else {
+            	  
+            	  aModel = aModel.getProperty("/Rowsets/Rowset/0/Row")
               }
-
+              
+//      		 Compute status for Unplanned and OSW Model
+              airbus.mes.stationtracker.ModelManager.computeStatus(aModel);
+              
        },
 
        onOWSLoad : function() {
 
-              var oModel = sap.ui.getCore().getModel("OSWModel");
+              var aModel = sap.ui.getCore().getModel("OSWModel");
 
-              if (!oModel.getProperty("/Rowsets/Rowset/0/Row")) {
+              if (!aModel.getProperty("/Rowsets/Rowset/0/Row")) {
 
-                     oModel = [];
+            	  aModel = [];
                      console.log("no OWS operation load");
 
+              } else {
+            	  
+            	  aModel = aModel.getProperty("/Rowsets/Rowset/0/Row")
               }
+//      		 Compute status for Unplanned and OSW Model
+              airbus.mes.stationtracker.ModelManager.computeStatus(aModel);     
 
        },
 
