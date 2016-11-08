@@ -43,7 +43,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		});
 	},
 	
-	filterByStatus: function(oEvent){
+	filterDisruptions: function(oEvent){
 		var sValue = this.getView().byId("statusComboBox").getSelectedKey();
 
         var oBinding = this.byId("disruptionsTable").getBinding("items");

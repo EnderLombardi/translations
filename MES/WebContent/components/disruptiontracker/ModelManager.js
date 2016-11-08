@@ -33,6 +33,11 @@ airbus.mes.disruptiontracker.ModelManager = {
 
 		airbus.mes.disruptiontracker.ModelManager.fixNoDataRow();
 		
+		// Apply filter on Resolution Group Filter Box
+		
+		
+		
+		
 		airbus.mes.disruptiontracker.oView.setBusy(false); //Remove Busy Indicator
 	},
 	
