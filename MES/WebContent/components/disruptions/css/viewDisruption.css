@@ -34,13 +34,18 @@
 	border-bottom: none !important;
 }
 
+.disruptionDetail .statusText {
+	font-weight: 700 !important;
+	font-style: italic !important;
+}
+
 .disruptionDetail .msgHeaderText {
-	font-weight: bold !important;
+	font-weight: 700 !important;
 }
 
 .disruptionDetail .msgColor {
 	background: #F5F5F5 !important;
-	color: #5198A8 !important;
+	color: #0f86ae !important;
 }
 
 /****** End of CSS for Disruption screen **********/

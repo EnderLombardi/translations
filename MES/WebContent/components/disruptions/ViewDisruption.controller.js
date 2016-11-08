@@ -117,7 +117,7 @@ sap.ui
 						sap.ui.getCore().byId("closeDisruption-msgRef")
 								.setText(msgRef);
 						sap.ui.getCore().byId("closeDisruption-sPath").setText(sPath);
-						sap.ui.getCore().byId("closeDisruptionComments").setText("");
+						sap.ui.getCore().byId("closeDisruptionComments").setValue("");
 
 						this._closeDialog.open();
 					},
@@ -164,7 +164,7 @@ sap.ui
 					 * Open the Enter Comment Pop-Up
 					 */
 					onOpenDisruptionComment : function(title, msgRef, sPath, okEvent) {
-						// Call Reject Disruption fragment
+						// Call Disruption Comment Popup fragment
 						if (!airbus.mes.disruptions.__enterCommentDialogue) {
 							airbus.mes.disruptions.__enterCommentDialogue = sap.ui
 									.xmlfragment(
@@ -353,10 +353,16 @@ sap.ui
 						}
 						sap.ui.getCore().byId("disruptionAckCommentDialogue")
 								.setTitle(title);
+						
+						sap.ui.getCore().byId("disruptionAckDate")
+								.setDateValue(new Date());
+						
 						sap.ui.getCore().byId("disruptionAckSpathMsgRef")
 								.setText(msgRef);
+						
 						sap.ui.getCore().byId("disruptionAckComment").setValue(
 								"");
+						
 						sap.ui.getCore().byId("disruptionAckCommentOK")
 								.attachPress(this.onAcceptAckDisruptionComment);
 
@@ -371,30 +377,43 @@ sap.ui
 						var date = sap.ui.getCore().byId(
 						"disruptionAckDate").getValue();
 						
-						var time = sap.ui.getCore().byId(
-						"disruptionAckTime").getValue();
+						var obDate = new Date(date);
 						
-						var dateTime = date + " " + time;
+						if(obDate == "Invalid Date" || date.length != 10)
+							airbus.mes.shell.ModelManager.messageShow("Please enter a valid Promised Date");
 						
-						var msgRef = sap.ui.getCore().byId(
-								"disruptionAckSpathMsgRef").getText();
+						else {
 
-						var comment = sap.ui.getCore().byId(
-								"disruptionAckComment").getValue();
-						
-						var i18nModel = this.getView().getModel("i18nModel");
+							var time = sap.ui.getCore().byId(
+							"disruptionAckTime").getValue();
+							
+							if(time == "")
+								time = "00:00:00";
+							
+							var dateTime = date + " " + time;
+							
+							var msgRef = sap.ui.getCore().byId(
+									"disruptionAckSpathMsgRef").getText();
 
-						// Call to Acknowledge Disruption
-						var isSuccess = airbus.mes.disruptions.ModelManager.ackDisruption(
-								dateTime, msgRef, comment, i18nModel);
-						
-						airbus.mes.disruptions.__enterAckCommentDialogue.close();
-						
-						if(isSuccess){
-							var sPath = sap.ui.getCore().byId("disruptionAckSpath").getValue();
-							this.getView().getModel("operationDisruptionsModel").getProperty(sPath).Status = airbus.mes.disruptions.Formatter.status.acknowledged;
-							this.getView().getModel("operationDisruptionsModel").refresh();
+							var comment = sap.ui.getCore().byId(
+									"disruptionAckComment").getValue();
+							
+							var i18nModel = this.getView().getModel("i18nModel");
+
+							// Call to Acknowledge Disruption
+							var isSuccess = airbus.mes.disruptions.ModelManager.ackDisruption(
+									dateTime, msgRef, comment, i18nModel);
+							
+							airbus.mes.disruptions.__enterAckCommentDialogue.close();
+							
+							if(isSuccess){
+								var sPath = sap.ui.getCore().byId("disruptionAckSpath").getValue();
+								this.getView().getModel("operationDisruptionsModel").getProperty(sPath).Status = airbus.mes.disruptions.Formatter.status.acknowledged;
+								this.getView().getModel("operationDisruptionsModel").refresh();
+							}
 						}
+							
+						
 					},
 					
 					/***********************************************************
@@ -485,17 +504,8 @@ sap.ui
 						if(isSuccess){
 							var sPath = oEvent.getSource().getBindingContext("operationDisruptionsModel").sPath;
 							
-							var severity = this.getView().getModel("operationDisruptionsModel").getProperty(sPath).Severity;
-							
-							switch(severity){
-							case airbus.mes.disruptions.Formatter.severity[0]:
-								this.getView().getModel("operationDisruptionsModel").getProperty(sPath).Severity = airbus.mes.disruptions.ModelManager.severity[1]
-								break;
-							
-							case severity == airbus.mes.disruptions.Formatter.severity[1]:
-								this.getView().getModel("operationDisruptionsModel").getProperty(sPath).Severity = airbus.mes.disruptions.Formatter.severity[2];
-								break;
-							};
+							this.getView().getModel("operationDisruptionsModel").getProperty(sPath).Escalation = 
+								this.getView().getModel("operationDisruptionsModel").getProperty(sPath).Escalation + 1;
 							
 							this.getView().getModel("operationDisruptionsModel").refresh();
 						}
@@ -547,25 +557,56 @@ sap.ui
 					},
 
 					onEditDisruption : function(oEvent) {
-
-						// Navigate to Edit Screen
-						var oOperDetailNavContainer = sap.ui.getCore().byId(
-								"operationDetailsView--operDetailNavContainer");
 						
+						if(sap.ui.getCore().byId("operationDetailsView--switchOperationModeBtn").getState() == false) {
+							
+							sap.m.MessageBox.error("You must be in \"Execution-Mode\" to Edit.");
+							
+						}
+						else {
+							
+							// Navigate to Edit Screen
+							var oOperDetailNavContainer = sap.ui.getCore().byId(
+									"operationDetailsView--operDetailNavContainer");
+							
 
-						// if component is not created - create the component
-						if (airbus.mes.operationdetail.createDisruption === undefined
-								|| airbus.mes.operationdetail.createDisruption.oView === undefined) {
-							airbus.mes.operationdetail.oView.setBusy(true);
-							sap.ui
-									.getCore()
-									.createComponent(
-											{
-												name : "airbus.mes.operationdetail.createDisruption",
-											});
+							// if component is not created - create the component
+							if (airbus.mes.operationdetail.createDisruption === undefined
+									|| airbus.mes.operationdetail.createDisruption.oView === undefined) {
+								airbus.mes.operationdetail.oView.setBusy(true);
+								sap.ui
+										.getCore()
+										.createComponent(
+												{
+													name : "airbus.mes.operationdetail.createDisruption",
+												});
+
+								oOperDetailNavContainer
+										.addPage(airbus.mes.operationdetail.createDisruption.oView);
+							}
 
 							oOperDetailNavContainer
-									.addPage(airbus.mes.operationdetail.createDisruption.oView);
+									.to(airbus.mes.operationdetail.createDisruption.oView
+											.getId());
+
+							// fill model DisruptionDetailModel to show data on edit screen
+							var oModel = sap.ui.getCore().getModel(
+									"DisruptionDetailModel");
+
+							// set the data for this new model from the already
+							// loaded model
+							var oBindingContext = oEvent.getSource()
+									.getBindingContext("operationDisruptionsModel");
+
+							oModel.setData(oBindingContext
+									.getProperty(oBindingContext.sPath));
+							oModel.refresh();
+							
+							
+							//set buttons according to update disruption
+							sap.ui.getCore().byId("createDisruptionView--btnUpdateDisruption").setVisible(true);
+							sap.ui.getCore().byId("createDisruptionView--btnCreateDisruption").setVisible(false);
+
 						}
 
 						oOperDetailNavContainer
@@ -594,6 +635,7 @@ sap.ui
 						sap.ui.getCore().byId("createDisruptionView--selectOriginator").setEnabled(false);
 						sap.ui.getCore().byId("createDisruptionView--description").setEnabled(false);
 						sap.ui.getCore().byId("createDisruptionView--timeLost").setEnabled(false);
+
 
 					},
 
