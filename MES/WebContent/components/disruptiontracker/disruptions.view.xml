@@ -33,6 +33,11 @@
 						<core:Item key="CLOSED" text="{disruptiontrackerI18n>status.closed}" />
 						<core:Item key="REJECTED" text="{disruptiontrackerI18n>status.rejected}" />
 					</ComboBox>
+					<ComboBox id="resolutionGroupBox" class="sapUiMediumMarginEnd"
+						placeholder="{disruptiontrackerI18n>resolutionGroup}" items="{disruptionsTrackerModel>/Rowsets/Rowset/0/Row}"
+						selectedKey="" selectionChange="filterByStation">
+						<core:Item key="{disruptionsTrackerModel>ResponsibleGroup}" text="{disruptionsTrackerModel>ResponsibleGroup}" />
+					</ComboBox>
 
 					<!-- <SearchField width="13rem" placeholder="{disruptiontrackerI18n>search}" /> -->
 					<ToolbarSpacer />
