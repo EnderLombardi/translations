@@ -53,6 +53,12 @@
 
 		<Table id="disruptionsTable" class="disruptionsTable sapUiSmallMarginBottom"
 			items="{ path: 'disruptionsTrackerModel>/Rowsets/Rowset/0/Row' }">
+			<headerToolbar>
+				<Toolbar>
+					<ToolbarSpacer />
+					<Button press="onDisruptionTableSettings" icon="sap-icon://drop-down-list" />
+				</Toolbar>
+			</headerToolbar>
 			<columns>
 				<Column>
 					<Text text="{disruptiontrackerI18n>operation}" />
@@ -76,7 +82,7 @@
 					<Text text="{disruptiontrackerI18n>resolutionGroup}" />
 				</Column>
 				<Column>
-					<Text text="{disruptiontrackerI18n>severity}" />
+					<Text text="{disruptiontrackerI18n>escalation}" />
 				</Column>
 				<Column>
 					<Text text="{disruptiontrackerI18n>openingTime}" />

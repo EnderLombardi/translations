@@ -56,7 +56,39 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
         airbus.mes.disruptiontracker.ModelManager.fixNoDataRow();// Remove last column
 	},
 	
+	/***********************************************
+	 * Open fragment for table setting options
+	 */	
+	onDisruptionTableSettings: function(oEvent){
+		if (!this.tableSettingsDialogue) {
+
+			this.tableSettingsDialogue = 
+				sap.ui.xmlfragment("airbus.mes.disruptiontracker.tableSettings", this);
+
+			this.getView().addDependent(this.tableSettingsDialogue);
+
+		}
+
+		this.tableSettingsDialogue.open();
+	},
 	
+	/***************************************
+	 * Apply selected settings on table
+	 */
+	onTableSettingsConfirm: function(oEvent){
+		var oView = this.getView();
+	    var oTable = oView.byId("disruptionsTable");
+
+	    var mParams = oEvent.getParameters();
+	    var oBinding = oTable.getBinding("items");
+
+	     // apply sorter
+	    var aSorters = [];
+	    var sPath = mParams.sortItem.getKey();
+	    var bDescending = mParams.sortDescending;
+	    aSorters.push(new sap.ui.model.Sorter(sPath, bDescending));
+	    oBinding.sort(aSorters);
+	},
 	
 	/**********************************
 	 * Call Disruption KPI charts 
