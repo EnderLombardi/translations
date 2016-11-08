@@ -82,7 +82,7 @@
 										</Label>
 									</f:label>
 									<f:fields>
-										<Select id="selectReasonTree"
+										<Select id="selectreason"
 											items="{disruptionCustomData>/Rowsets/Rowset/0/Row}" change="onSelectionChange">
 											<items>
 												<core:Item text="{disruptionCustomData>Reason}" key="{disruptionCustomData>Reason}" />

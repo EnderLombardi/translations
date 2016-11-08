@@ -3,10 +3,13 @@
 	xmlns:l="sap.ui.layout">
 	<Dialog contentHeight="30%" contentWidth="60%"	id="disruptionCommentDialogue">
 		<content>
-			<HBox justifyContent="Center" width="100%">
+		
+			<VBox alignItems="Center" width="100%">
+				
 				<TextArea id="disruptionCommentBox" placeholder="{i18nModel>AddCommentBox}"
 					rows="10" cols="50" />
-			</HBox>
+			</VBox>
+			
 			<core:InvisibleText id="disruptionCommentMsgRef" text="" />
 			<core:InvisibleText id="disruptionCommentSpath" text="" />
 

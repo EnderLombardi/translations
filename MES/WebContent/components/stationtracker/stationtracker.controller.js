@@ -466,7 +466,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftName = oModel.shiftName;
 		airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftID = oModel.shiftID;
 		airbus.mes.stationtracker.ShiftManager.ShiftSelected.day = oModel.day;
-	
+
 		if ( airbus.mes.stationtracker.ShiftManager.dayDisplay ) {
 				
 		var intervals = airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy[airbus.mes.stationtracker.ShiftManager.current_day][airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftID];

@@ -12,23 +12,23 @@
 						expand="handleDisruptionPanelExpand">
 						<headerToolbar>
 							<Toolbar>
-							
+
 								<Title text="{operationDisruptionsModel>Subject}" class="panelTitleText" />
-								
+
 								<ToolbarSpacer />
-								
+
 								<Button text="{i18nModel>close}" type="Accept"
 									visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setCloseButtonVisibility'}"
 									design="Transparent" icon="sap-icon://collapse" press="onCloseDisruption" />
-								
+
 								<Button text="{i18nModel>edit}" type="Emphasized"
 									visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setEditButtonVisibility'}"
 									press="onEditDisruption" design="Transparent" icon="sap-icon://edit" />
-									
+
 								<Button text="{i18nModel>delete}" type="Reject"
 									visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'} ], formatter: 'airbus.mes.disruptions.Formatter.setDeleteButtonVisibility'}"
 									design="Transparent" icon="sap-icon://delete" press="onDeleteDisruption" />
-								
+
 							</Toolbar>
 						</headerToolbar>
 
@@ -99,7 +99,7 @@
 
 										<f:FormElement>
 											<f:label>
-												<Label class="detailLabels" text="{i18nModel>nature}">
+												<Label class="detailLabels" text="{i18nModel>reason}">
 													<layoutData>
 														<l:GridData span="L2 M2 S12" />
 													</layoutData>
@@ -166,11 +166,17 @@
 						<Text text="{i18nModel>status} : {operationDisruptionsModel>Status}" />
 
 						<List showNoData="false" class="sapUiSmallMargin"
-							backgroundDesign="Transparent"
 							items="{path: 'operationDisruptionsModel>/Rowsets/Rowset/1/Row'}">
 
-							<CustomListItem class="asd">
-								<Text text="Comment : {operationDisruptionsModel>Comment}"></Text>
+							<CustomListItem class="msgColor">
+								<HBox justifyContent="SpaceBetween" class="sapUiSmallMargin msgHeaderText">
+									<items>
+										<Text text="From : {operationDisruptionsModel>UserFullName}"></Text>
+										<Text text="Action : {operationDisruptionsModel>Action}"></Text>
+									</items>
+								</HBox>
+
+								<Text text="{operationDisruptionsModel>Comments}" class="sapUiSmallMarginBegin  sapUiSmallMarginEnd sapUiSmallMarginBottom"></Text>
 							</CustomListItem>
 						</List>
 
@@ -201,11 +207,13 @@
 								visible="{parts: [ {path: 'operationDisruptionsModel>ResponsibleFlag'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setAcknowledgeButtonVisibility'}"
 								press="onAckDisruption" design="Transparent" icon="sap-icon://to-be-reviewed" />
 
-							<Button id="rejectDisruption" text="{i18nModel>reject}" type="Reject"
+							<Button id="rejectDisruption" text="{i18nModel>reject}"
+								type="Reject"
 								visible="{parts: [ {path: 'operationDisruptionsModel>ResponsibleFlag'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setRejectButtonVisibility'}"
 								press="onRejectDisruption" design="Transparent" icon="sap-icon://sys-cancel-2" />
 
-							<Button id="addComment" text="{i18nModel>addComment}" type="Emphasized"
+							<Button id="addComment" text="{i18nModel>addComment}"
+								type="Emphasized"
 								visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>ResponsibleFlag'} ], formatter: 'airbus.mes.disruptions.Formatter.setAddCommentButtonVisibility'}"
 								press="showCommentBox" design="Transparent" icon="sap-icon://comment" />
 

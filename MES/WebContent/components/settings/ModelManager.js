@@ -159,6 +159,12 @@ airbus.mes.settings.ModelManager =  {
 		  urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(urlSaveUserSetting, "$program", airbus.mes.settings.ModelManager.program);
 		  urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(urlSaveUserSetting, "$line", airbus.mes.settings.ModelManager.line);
 		  urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(urlSaveUserSetting, "$station", airbus.mes.settings.ModelManager.station);
+		 
+		  urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(urlSaveUserSetting, "$siteDesc", airbus.mes.settings.ModelManager.siteDesc);
+		  urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(urlSaveUserSetting, "$lineDesc", airbus.mes.settings.ModelManager.lineDesc);
+		  urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(urlSaveUserSetting, "$programDesc", airbus.mes.settings.ModelManager.programDesc);
+		  urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(urlSaveUserSetting, "$stationDesc", airbus.mes.settings.ModelManager.stationDesc);
+	
 		  if ( airbus.mes.settings.ModelManager.currentMsnSelected  ) {
 			  
 			  urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(urlSaveUserSetting, "$msn", "");

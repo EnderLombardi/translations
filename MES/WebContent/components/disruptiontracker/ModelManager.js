@@ -9,6 +9,7 @@ airbus.mes.disruptiontracker.ModelManager = {
 		core.setModel(new sap.ui.model.json.JSONModel(), "disruptionsTrackerModel");//Model having disruptions tracker data
 		core.getModel("disruptionsTrackerModel").attachRequestCompleted(airbus.mes.disruptiontracker.ModelManager.onDisruptionsLoad);
 		
+		
 	},
 	
 	loadDisruptionTrackerModel : function(oFilters) {
@@ -32,6 +33,32 @@ airbus.mes.disruptiontracker.ModelManager = {
 	onDisruptionsLoad: function(){
 
 		airbus.mes.disruptiontracker.ModelManager.fixNoDataRow();
+		
+		// Apply filter on Resolution Group Filter Box
+		var aTemp = [];	
+		sap.ui
+		.getCore()
+		.byId("disruptiontrackerView--resolutionGroupBox")
+		.getBinding("items")
+		.filter(new sap.ui.model.Filter({
+		    path: "ResponsibleGroup",
+		    test: function(oValue) {
+		    	if(aTemp.indexOf(oValue) == -1)
+		    		{
+		    		aTemp.push(oValue);
+		    		return true;
+		    		}
+		    	
+		    	else{
+		    		return false;
+		    	}
+		    }
+		  }));
+		
+		
+		
+		
+		
 		
 		airbus.mes.disruptiontracker.oView.setBusy(false); //Remove Busy Indicator
 	},

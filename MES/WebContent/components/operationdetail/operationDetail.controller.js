@@ -265,7 +265,7 @@ sap.ui
 												oModel
 														.getProperty("/ResponsibleGroup"));
 								
-								oView.byId("selectReasonTree").setSelectedKey(
+								oView.byId("selectreason").setSelectedKey(
 										oModel.getProperty("/Reason"));
 
 								oView.byId("selectOriginator").setSelectedKey(

@@ -147,7 +147,7 @@ sap.ui
 								msgRefValue, commentValue, timeLostValue, i18nModel);
 						
 						if(isSuccess){
-							var sPath = sap.ui.getCore().byId("disruptionCommentSpath").getValue();
+							var sPath = sap.ui.getCore().byId("closeDisruption-sPath").getValue();
 							this.getView().getModel("operationDisruptionsModel").getProperty(sPath).Status = airbus.mes.disruptions.Formatter.status.closed;
 							this.getView().getModel("operationDisruptionsModel").refresh();
 						}
@@ -339,8 +339,28 @@ sap.ui
 								"operationDisruptionsModel").getObject(
 								"MessageRef");
 
-						this.onOpenDisruptionComment(title, msgRef,
-								this.onAcceptAckDisruptionComment);
+						// Call Acknowledge Disruption fragment
+						if (!airbus.mes.disruptions.__enterAckCommentDialogue) {
+							airbus.mes.disruptions.__enterAckCommentDialogue = sap.ui
+									.xmlfragment(
+											"airbus.mes.disruptions.fragment.ackDisruption",
+											this);
+							this
+									.getView()
+									.addDependent(
+											airbus.mes.disruptions.__enterAckCommentDialogue);
+
+						}
+						sap.ui.getCore().byId("disruptionAckCommentDialogue")
+								.setTitle(title);
+						sap.ui.getCore().byId("disruptionAckSpathMsgRef")
+								.setText(msgRef);
+						sap.ui.getCore().byId("disruptionAckComment").setValue(
+								"");
+						sap.ui.getCore().byId("disruptionAckCommentOK")
+								.attachPress(this.onAcceptAckDisruptionComment);
+
+						airbus.mes.disruptions.__enterAckCommentDialogue.open();
 					},
 
 					/***********************************************************
@@ -348,6 +368,14 @@ sap.ui
 					 */
 					onAcceptAckDisruptionComment : function() {
 
+						var date = sap.ui.getCore().byId(
+						"disruptionAckDate").getValue();
+						
+						var time = sap.ui.getCore().byId(
+						"disruptionAckTime").getValue();
+						
+						var dateTime = date + " " + time;
+						
 						var msgRef = sap.ui.getCore().byId(
 								"disruptionAckSpathMsgRef").getText();
 
@@ -358,15 +386,30 @@ sap.ui
 
 						// Call to Acknowledge Disruption
 						var isSuccess = airbus.mes.disruptions.ModelManager.ackDisruption(
-								msgRef, comment, i18nModel);
-
-						airbus.mes.disruptions.__enterCommentDialogue.close();
+								dateTime, msgRef, comment, i18nModel);
+						
+						airbus.mes.disruptions.__enterAckCommentDialogue.close();
 						
 						if(isSuccess){
 							var sPath = sap.ui.getCore().byId("disruptionAckSpath").getValue();
 							this.getView().getModel("operationDisruptionsModel").getProperty(sPath).Status = airbus.mes.disruptions.Formatter.status.acknowledged;
 							this.getView().getModel("operationDisruptionsModel").refresh();
 						}
+					},
+					
+					/***********************************************************
+					 * Close the Enter Comment Pop-Up
+					 */
+					onCloseAckDisruptionComment : function(oEvent) {
+						
+						sap.ui.getCore().byId("disruptionAckDate").setValue(
+						"");
+						sap.ui.getCore().byId("disruptionAckTime").setValue(
+						"");
+						sap.ui.getCore().byId("disruptionAckComment").setValue(
+								"");
+						airbus.mes.disruptions.__enterAckCommentDialogue.close();
+
 					},
 
 					onMarkSolvedDisruption : function(oEvt) {

@@ -32,7 +32,7 @@ sap.ui
 						path : "MessageType",
 						attr : "MessageType",
 						childs : [ {
-							id : "selectReasonTree",
+							id : "selectreason",
 							type : "select",
 							path : "Reason",
 							attr : "Reason",
@@ -71,7 +71,7 @@ sap.ui
 						 * this.ModelManager.loadDisruptionCategory();
 						 */
 
-						this.getView().byId("selectReasonTree")
+						this.getView().byId("selectreason")
 								.setSelectedKey();
 						this.getView().byId("selectRootCause").setSelectedKey();
 						this.getView().byId("selectResponsible")
@@ -131,7 +131,7 @@ sap.ui
 
 						if (id === "selectCategory") {
 							this.setEnabledSelectBox(true, true, false, false);
-						} else if (id === "selectReasonTree") {
+						} else if (id === "selectreason") {
 							this.setEnabledSelectBox(true, true, true, false);
 						} else if (id === "selectResponsible") {
 							this.setEnabledSelectBox(true, true, true, true);
@@ -196,7 +196,7 @@ sap.ui
 							fResponsible, fRootCause) {
 						this.getView().byId("selectCategory").setEnabled(
 								fCategory);
-						this.getView().byId("selectReasonTree").setEnabled(
+						this.getView().byId("selectreason").setEnabled(
 								fReason);
 						this.getView().byId("selectRootCause").setEnabled(
 								fRootCause);
@@ -265,7 +265,7 @@ sap.ui
 									{
 										"attribute" : "REASON",
 										"value" : this.getView().byId(
-												"selectReasonTree")
+												"selectreason")
 												.getSelectedKey()
 									},
 									{
@@ -333,69 +333,18 @@ sap.ui
 					 * Responsible Group, Time lost , Expected date/time and Root Cause.
 					 */
 					onUpdateDisrupution : function() {
-
-						// Create a JSON for payload attributes
-						var aModelData = []
-
-						var oJson = {
-							"payload" : [
-									{
-										"attribute" : "REASON",
-										"value" : this.getView().byId(
-												"selectReasonTree")
-												.getSelectedKey()
-									},
-									{
-										"attribute" : "TIME_LOST",
-										"value" : this.getView().byId(
-												"timeLost").getValue()
-									},
-									{
-										"attribute" : "REQD_FIX_BY",
-										"value" : this.getView().byId(
-												"expectedDate").getValue()
-												+ " "
-												+ this.getView().byId(
-														"expectedTime")
-														.getValue()
-									},
-									{
-										"attribute" : "GRAVITY",
-										"value" : this.getView()
-												.byId("gravity")
-												.getSelectedKey()
-									},
-									{
-										"attribute" : "STATUS",
-										"value" : this.getView().getModel(
-												"i18nModel").getProperty(
-												"Pending")
-									},
-									{
-										"attribute" : "ROOT_CAUSE",
-										"value" : this.getView().byId(
-												"selectRootCause")
-												.getSelectedKey()
-									},
-									{
-										"attribute" : "RESPONSIBLE_GROUP",
-										"value" : this.getView().byId(
-												"selectResponsible")
-												.getSelectedKey()
-									},
-									{
-										"attribute" : "COMMENT",
-										"value" : this.getView().byId(
-												"comment")
-												.getValue()
-									}
-									
-									]
-
-						}
-						aModelData.push(oJson);
-
-					//	this.ModelManager.updateDisruption();
+						
+						var sMessageRef = sap.ui.getCore().getModel("DisruptionDetailModel").getProperty("/MessageRef")
+						var sReason	= this.getView().byId("selectreason").getSelectedKey();
+						var sResponsibleGroup = this.getView().byId("selectResponsible").getSelectedKey();
+						var sRootCause	= this.getView().byId("selectRootCause").getSelectedKey();
+						var iTimeLost = this.getView().byId("timeLost").getValue()
+						var dFixedByTime = this.getView().byId("expectedDate").getValue()+ " " + this.getView().byId("expectedTime").getValue()
+						var sComment = this.getView().byId("comment").getValue()
+						var iGravity = this.getView().byId("gravity").getSelectedKey()
+						
+						//call update service
+						this.ModelManager.updateDisruption(sMessageRef,sReason,sResponsibleGroup,sRootCause,iTimeLost,dFixedByTime,sComment,iGravity);
 
 					},
 
@@ -446,7 +395,7 @@ sap.ui
 					 */
 					resetAllFields : function() {
 						this.getView().byId("selectCategory").setSelectedKey();
-						this.getView().byId("selectReasonTree")
+						this.getView().byId("selectreason")
 								.setSelectedKey();
 						this.getView().byId("selectResponsible")
 								.setSelectedKey();
