@@ -1023,8 +1023,9 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 		}
 		airbus.mes.polypoly.PolypolyManager.oViewController.oUserIcon = oEvt.getSource();
 		airbus.mes.polypoly.PolypolyManager.polypolyIndex = airbus.mes.polypoly.PolypolyManager.oViewController.oUserIcon.getModel().getProperty(airbus.mes.polypoly.PolypolyManager.oViewController.oUserIcon.getBindingContext().getPath());
+		airbus.mes.stationtracker.AssignmentManager.polypolyAssignment.selectedUser = airbus.mes.polypoly.PolypolyManager.polypolyIndex;
 		
-		var sERP_ID = airbus.mes.polypoly.PolypolyManager.polypolyIndex.ERP_ID;
+		var sERP_ID = airbus.mes.polypoly.PolypolyManager.polypolyIndex.login;
 		if (sERP_ID == "---" || sERP_ID == " ") {
 			ModelManager.messageShow(airbus.mes.polypoly.oView.getController().getI18n("InvalidID") + sERP_ID);
 			return false;
@@ -1033,7 +1034,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 			airbus.mes.polypoly.PolypolyManager.oViewController.oDialogConfirmationPoyPoly = sap.ui.xmlfragment("airbus.mes.polypoly.userAffectationConfirmationPolyPoly",airbus.mes.polypoly.oView.getController());
 		}
 		 
-		airbus.mes.polypoly.ModelManager.chkUserOprCertificatePolyPoly(sERP_ID);
+//		airbus.mes.polypoly.ModelManager.chkUserOprCertificatePolyPoly(sERP_ID);
 		return;
 
 	},

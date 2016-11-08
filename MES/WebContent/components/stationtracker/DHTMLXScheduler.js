@@ -242,6 +242,9 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 							airbus.mes.stationtracker.oPopoverPolypoly.open();
 							// Permit to display or not polypoly affectation or polypoly simple
 							airbus.mes.polypoly.oView.getController().initiatePolypoly();
+							
+							airbus.mes.stationtracker.AssignmentManager.polypolyAssignment.selectedLine = section;
+							airbus.mes.stationtracker.AssignmentManager.polypolyAssignment.selectedShift = airbus.mes.stationtracker.ShiftManager.ShiftSelected;
 							}
 
 						}));

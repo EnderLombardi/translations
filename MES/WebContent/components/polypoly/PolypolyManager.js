@@ -14,7 +14,8 @@ airbus.mes.polypoly.PolypolyManager = {
 		columnIndex : undefined,
 		newLevel : undefined,
 	},
-
+	
+	
 	internalContext : {
 		oModel : undefined,
 		saveContext : undefined,
