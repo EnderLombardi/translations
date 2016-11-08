@@ -42,23 +42,29 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 			"station": this.getView().byId("stationComboBox").getSelectedItem()
 		});
 	},
-	filterByResolutionGroup:function(oEvent){
+	/*filterByResolutionGroup:function(oEvent){
 		sValue = oEvent.getSource().getSelectedKey();
 		if (sValue != "") {
 			this.getView().byId("disruptionsTable").getBinding("items").filter(
 					new sap.ui.model.Filter("ResponsibleGroup", "EQ", sValue));
 		}
-	},
+	},*/
 	
 	filterDisruptions: function(oEvent){
-		var sValue = this.getView().byId("statusComboBox").getSelectedKey();
+		var sStatus = this.getView().byId("statusComboBox").getSelectedKey();
+		var sResoGroup = this.getView().byId("resolutionGroupBox").getSelectedKey();
+		var aFilters = [];
 
         var oBinding = this.byId("disruptionsTable").getBinding("items");
         
-        if(sValue != "")
-        	oBinding.filter(new sap.ui.model.Filter("Status", "EQ", sValue));
-        else
-        	oBinding.filter([]);
+        if(sStatus != "")
+        	aFilters.push(new sap.ui.model.Filter("Status", "EQ", sStatus));
+        
+        if(sResoGroup != "")
+        	aFilters.push(new sap.ui.model.Filter("ResponsibleGroup", "EQ", sResoGroup));
+        
+        
+    	oBinding.filter(aFilters);
         
         airbus.mes.disruptiontracker.ModelManager.fixNoDataRow();// Remove last column
 	},

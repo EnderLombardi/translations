@@ -35,7 +35,7 @@
 					</ComboBox>
 					<ComboBox id="resolutionGroupBox" class="sapUiMediumMarginEnd"
 						placeholder="{disruptiontrackerI18n>resolutionGroup}" items="{disruptionsTrackerModel>/Rowsets/Rowset/0/Row}"
-						selectedKey="" selectionChange="filterByResolutionGroup">
+						selectedKey="" selectionChange="filterDisruptions">
 						<core:Item key="{disruptionsTrackerModel>ResponsibleGroup}" text="{disruptionsTrackerModel>ResponsibleGroup}" />
 					</ComboBox>
 
