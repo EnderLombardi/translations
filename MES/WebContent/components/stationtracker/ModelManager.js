@@ -57,9 +57,12 @@ airbus.mes.stationtracker.ModelManager = {
 
               // TODO DEPLACE this in shell controller and when service is ok remove
               // all of this function
+             this.loadShifts();
+              airbus.mes.stationtracker.ShiftManager.init(airbus.mes.stationtracker.GroupingBoxingManager.shiftNoBreakHierarchy);
               this.loadFilterUnplanned();
               this.loadProductionGroup();
               this.loadRessourcePool();
+              this.loadKPI();
        },
        
        setLineAssignment : function(sSite, sStation, sMSN, sUserID, sShiftName, sDay, sLine, sSkill, sMyUserID, sModeAssignment, bQACheck) {
