@@ -270,10 +270,12 @@ sap.ui
 
 								oView.byId("selectOriginator").setSelectedKey(
 										oModel.getProperty("/OriginatorGroup"));
+								oView.byId("selectOriginator").setEnabled(false);
 								oView.byId("selectRootCause").setSelectedKey(
 										oModel.getProperty("/Subject"));
 								oView.byId("timeLost").setValue(oModel.getProperty("/TimeLost"));
-								oView.byId("status").setValue(oModel.getProperty("/Status"))
+								oView.byId("status").setValue(oModel.getProperty("/Status"));
+								oView.byId("comment").setValue();
 								
 
 								airbus.mes.operationdetail.createDisruption.oView.oController
@@ -294,6 +296,7 @@ sap.ui
 								airbus.mes.operationdetail.createDisruption.oView.oController
 								.setEnabledSelectBox(true, false, false,
 										false);
+								oView.byId("selectOriginator").setEnabled(true);
 							}
 							break;
 
