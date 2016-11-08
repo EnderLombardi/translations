@@ -19,10 +19,10 @@
                            
  
                            <Select id="SelectLanguage" class="sapUiTinyMarginBeginEnd pageHeader pageHeaderBlue" change="onChangeLanguage"> 
-	                           <core:Item text="English" />
-	                           <core:Item text="Deutsch" />
-	                           <core:Item text="French" />
-	                           <core:Item text="Spanish" />                                                      
+	                           <core:Item text="English" key="En"/>
+	                           <core:Item text="Deutsch" key="DE"/>
+	                           <core:Item text="French" key="FR"/>
+	                           <core:Item text="Spanish" key="SP"/>                                                      
                            </Select>
                            <Button id="informationButton" icon="sap-icon://message-information" type="Transparent" press="onInformation" visible="false"  class="whiteColor whiteButton" />
                            <Button id="homeButton" icon="sap-icon://home" type="Transparent" press="goToHome" visible="false"  class="whiteColor whiteButton" />

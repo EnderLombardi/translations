@@ -86,8 +86,8 @@ airbus.mes.shell.util.navFunctions = {
 				}
 			}
 			nav.to(oPolypolyPage);						
-			airbus.mes.polypoly.ModelManager.getPolyPolyModel("CHES", "1L"); //FIXME When Settings ready
-//			airbus.mes.polypoly.ModelManager.getPolyPolyModel(airbus.mes.settings.ModelManager.site, airbus.mes.settings.ModelManager.station);
+//			airbus.mes.polypoly.ModelManager.getPolyPolyModel("CHES", "1L"); //FIXME When Settings ready
+			airbus.mes.polypoly.ModelManager.getPolyPolyModel(airbus.mes.settings.ModelManager.site, airbus.mes.settings.ModelManager.station);
 			airbus.mes.polypoly.oView.getController().initiatePolypoly();	
 			
 		},

@@ -79,13 +79,13 @@
 									<l:ResponsiveFlowLayoutData weight="1" />
 								</layoutData>
 							</Label>
-							<Button text="{i18nModel>Submit}" type="Accept"
+							<Button text="{i18nModel>Submit}" type="Accept" class="buttonAccept"
 								enabled="true" tap="submitForm">
 								<layoutData>
 									<l:ResponsiveFlowLayoutData weight="13" />
 								</layoutData>
 							</Button>
-							<Button text="{i18nModel>Cancel}" type="Reject"
+							<Button text="{i18nModel>Cancel}" type="Reject" class="buttonReject"
 								enabled="true" tap="closeForm">
 								<layoutData>
 									<l:ResponsiveFlowLayoutData weight="12" />
