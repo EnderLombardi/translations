@@ -177,3 +177,28 @@ html.sap-desktop .operationDetailHeadPanel + .opDetailNavToolbar .sapMSegBBtnFoc
 	border-top: 5px solid #ccc;	
 }
 /*** End of Styling of Navigation Toolbar ***/
+
+/*** CSS for Confirmation Dialogue  ***/
+#partialConfirmDialogue  {
+                background: #ffffff;
+    border: none;
+    border-radius: 0;
+    box-shadow: 0 0 5px #333;
+}
+
+#partialConfirmDialogue-header-BarPH {
+                background:#d4f1f7;
+
+}
+#partialConfirmDialogue-title {
+                color:#434343;
+}
+#partialConfirmDialogue-cont {
+                border-top:3px solid  rgba(255, 255, 255, 0);
+}
+#partialConfirmDialogue-header {
+                box-shadow: 0 0 5px #333;
+    overflow: visible;
+}
+
+/*** End for Confirmation Dialogue ***/
