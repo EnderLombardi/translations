@@ -216,7 +216,10 @@ sap.ui
 							}
 							
 							this._oUserConfirmationDialog.open();
-
+							sap.ui.getCore().byId("UIDForConfirmation")
+									.setValue("");
+							sap.ui.getCore().byId("badgeIDForConfirmation")
+									.setValue("");
 							sap.ui.getCore().byId("userNameForConfirmation")
 									.setValue("");
 							sap.ui.getCore().byId("passwordForConfirmation")
@@ -240,8 +243,7 @@ sap.ui
 						 // Open a web socket connection
 			               var ws = new WebSocket("ws://localhost:754/TouchNTag");
                            
-			               ws.onopen = function()
-			               {	
+			               ws.onopen = function(){	
 			            	   var msgData = {
 			            			   BadgeOrRFID:"BADGE",
 			            			   Message:"UID:263808008C0F3D"
@@ -252,15 +254,26 @@ sap.ui
 //			                  ws.send(JSON.stringify(
 //			                		  {"BadgeOrRFID":"BADGE","Message":"UID:263808008C0F31"}
 //			                  ));
-//			                  {"BadgeOrRFID":"BADGE","NotificationLevel":"INFO","Status":"CONNECTING"}
-//			                  {"BadgeOrRFID":"BADGE","NotificationLevel":"INFO","Status":"CONNECTED"}
 
 			                  alert("Message is sent...");
 			               // For Simulation purpose (comment below line when you scan through reader)	
 			                  onSimulation(msgData);
-			               }; 
-			               ws.onmessage = function (evt) 
-			               { 
+			               };
+			               
+			              /* ws.addEventListener("message", function(event) {
+			            	   var data = event.data;
+			            	   // process data as string, blob, or ArrayBuffer
+			            	   var scanData = JSON.parse(event.data);	
+				                  var uID  = scanData.Message;			//UID
+				                  var badgeID = scanData.BadgeOrRFID;     //BID
+				                  
+				                  if(uID != undefined && uID != "")
+				                	  uID = uID.split(":")[1];
+				                  sap.ui.getCore().getElementById("UIDForConfirmation").setValue(uID);
+				                  sap.ui.getCore().getElementById("badgeIDForConfirmation").setValue(badgeID);
+			            	 });*/
+			               
+			               ws.onmessage = function (evt){ 
 			                  var scanData = JSON.parse(evt.data);	
 			                  var uID  = scanData.Message;			//UID
 			                  var badgeID = scanData.BadgeOrRFID;     //BID
@@ -277,8 +290,7 @@ sap.ui
 			            	   alert("Error has occured...");  
 			               }
 			               
-			               ws.onclose = function()
-			               { 
+			               ws.onclose = function(){ 
 			                  // websocket is closed.			            	  			            	   
 			                  alert("Connection is closed..."); 
 			               }		               
@@ -293,6 +305,7 @@ sap.ui
 				                	  uID = uID.split(":")[1];
 				                  sap.ui.getCore().getElementById("UIDForConfirmation").setValue(uID);
 				                  sap.ui.getCore().getElementById("badgeIDForConfirmation").setValue(badgeID);
+				                  ws.close();
 							}
 						
 					},
@@ -376,7 +389,7 @@ sap.ui
 																		"operationDetailModel")
 																.getProperty(
 																		"/Rowsets/Rowset/0/Row/0/sfc_step_ref"),
-														this.reasonCodeText,this.Mode),
+														this.reasonCodeText,this.Mode,bID),
 										async : false,
 										error : function(xhr, status, error) {
 											airbus.mes.operationdetail.ModelManager
@@ -448,6 +461,10 @@ sap.ui
 									this._oUserConfirmationDialog);
 						}
 						this._oUserConfirmationDialog.open();
+						sap.ui.getCore().byId("UIDForConfirmation")
+								.setValue("");
+						sap.ui.getCore().byId("badgeIDForConfirmation")
+								.setValue("");
 						sap.ui.getCore().byId("userNameForConfirmation")
 								.setValue("");
 						sap.ui.getCore().byId("passwordForConfirmation")
