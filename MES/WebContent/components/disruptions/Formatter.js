@@ -13,12 +13,6 @@ airbus.mes.disruptions.Formatter = {
 		"solved" : "Solved",
 		"rejected" : "Rejected"
 	},
-	
-	severity: {
-		"info": "INTO",
-		"warning" : "CLOSED",
-		"critical" : "CRITICAL"
-	},
 
 	json2xml : function(o, tab) {
 		var toXml = function(v, name, ind) {
@@ -122,6 +116,7 @@ airbus.mes.disruptions.Formatter = {
 		if (originatorFlag == "X") {
 
 			if (status == airbus.mes.disruptions.Formatter.status.solved || status == airbus.mes.disruptions.Formatter.status.reject || status == airbus.mes.disruptions.Formatter.status.pending) {
+				
 				return true;
 			}
 		}
@@ -132,6 +127,7 @@ airbus.mes.disruptions.Formatter = {
 	setDeleteButtonVisibility : function(originatorFlag) {
 
 		if (originatorFlag == 'X') {
+
 			return true;
 		}
 
@@ -143,6 +139,7 @@ airbus.mes.disruptions.Formatter = {
 		if (originatorFlag == "X") {
 
 			if (status == airbus.mes.disruptions.Formatter.status.solved || status == airbus.mes.disruptions.Formatter.status.reject || status == airbus.mes.disruptions.Formatter.status.pending) {
+				
 				return true;
 			}
 		}
@@ -162,6 +159,7 @@ airbus.mes.disruptions.Formatter = {
 				return true;
 				
 			} else if (status == airbus.mes.disruptions.Formatter.status.pending) {
+
 				return true;
 				
 			} else if(status == airbus.mes.disruptions.Formatter.status.acknowledged) {
@@ -185,6 +183,7 @@ airbus.mes.disruptions.Formatter = {
 		if (responsibleFlag == "X") {
 
 			if (status == airbus.mes.disruptions.Formatter.status.pending) {
+
 				return true;
 			}
 		}
@@ -192,30 +191,13 @@ airbus.mes.disruptions.Formatter = {
 		return false;
 	},
 
-	setEscalateButtonVisibility : function(originatorFlag, severity) {
+	setEscalateButtonVisibility : function(originatorFlag, escalation) {
 
-		if (originatorFlag == "X") {
-
-			if (severity == airbus.mes.disruptions.Formatter.severity.info) {
-				
-				this.setText("Escalate to Level 1")
-				
-			} else if (severity == airbus.mes.disruptions.Formatter.severity.warning) {
-				
-				this.setText("Escalate to Level 2")
-				
-			} else if (severity == airbus.mes.disruptions.Formatter.severity.critical) {
-				
-				this.setText("Escalated");
-				this.setEnabled(false);
-				
-			}
-			
+		if (originatorFlag != "X" || escalation == 3) 				
+				return false;
+		
+		else			
 			return true;
-
-		}
-
-		return false;
 	},
 
 	setMarkSolvedButtonVisibility : function(responsibleFlag, status) {
@@ -223,6 +205,7 @@ airbus.mes.disruptions.Formatter = {
 		if (responsibleFlag == "X") {
 
 			if (status == airbus.mes.disruptions.Formatter.status.acknowledged) {
+
 				return true;
 			}
 		}

@@ -153,6 +153,41 @@
 										</f:FormElement>
 
 
+										<f:FormElement>
+											<f:label>
+												<Label class="detailLabels" text="{i18nModel>escalationLevel}">
+													<layoutData>
+														<l:GridData span="L3 M3 S12" />
+													</layoutData>
+												</Label>
+											</f:label>
+											<f:fields>
+
+												<Text text="{operationDisruptionsModel>Escalation}">
+													<layoutData>
+														<l:GridData span="L3 M3 S12" />
+													</layoutData>
+												</Text>
+											</f:fields>
+										</f:FormElement>
+
+										<f:FormElement>
+											<f:label>
+												<Label class="detailLabels" text="{i18nModel>promisedDateTime}">
+													<layoutData>
+														<l:GridData span="L2 M2 S12" />
+													</layoutData>
+												</Label>
+											</f:label>
+											<f:fields>
+												<Text text="{operationDisruptionsModel>PromisedDateTime}">
+													<layoutData>
+														<l:GridData span="L4 M4 S12" />
+													</layoutData>
+												</Text>
+											</f:fields>
+										</f:FormElement>
+
 										<!-- <f:FormElement> <f:label> <Label class="detailLabels" text="{i18nModel>status}"> 
 											<layoutData> <l:GridData span="L3 M3 S12" /> </layoutData> </Label> </f:label> 
 											<f:fields> <Text text="{operationDisruptionsModel>Status}"> <layoutData> 
@@ -163,15 +198,16 @@
 							</f:formContainers>
 						</f:Form>
 
-						<Text text="{i18nModel>status} : {operationDisruptionsModel>Status}" />
+						<Text text="{i18nModel>status} : {operationDisruptionsModel>Status}" class="sapUiSmallMarginBegin statusText" />
 
 						<List showNoData="false" class="sapUiSmallMargin"
 							items="{path: 'operationDisruptionsModel>/Rowsets/Rowset/1/Row'}">
 
 							<CustomListItem class="msgColor">
-								<HBox justifyContent="SpaceBetween" class="sapUiSmallMargin msgHeaderText">
+								<HBox class="sapUiSmallMarginBeginEnd sapUiTinyMarginTopBottom msgHeaderText">
 									<items>
 										<Text text="From : {operationDisruptionsModel>UserFullName}"></Text>
+										<Text text="|" class="sapUiSmallMarginBeginEnd"></Text>
 										<Text text="Action : {operationDisruptionsModel>Action}"></Text>
 									</items>
 								</HBox>
