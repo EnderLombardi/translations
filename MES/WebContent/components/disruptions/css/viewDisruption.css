@@ -36,11 +36,12 @@
 }
 
 .disruptionDetail .statusText {
-	font-weight: 600 !important;
+	font-weight: 700 !important;
+	font-style: italic !important;
 }
 
 .disruptionDetail .msgHeaderText {
-	font-weight: bold !important;
+	font-weight: 700 !important;
 }
 
 .disruptionDetail .msgColor {

@@ -177,6 +177,7 @@
                   "MessageType":"MessageTypeBO:FNZ1,DISRUPT_ASSEMBLY",
                   "Status":"Pending",
                   "Severity":"INFO",
+                  "Escalation":1,
                   "Subject":"HMI",
                   "Body":"Masoom Test HMI",
                   "Operation":"OperationBO:FNZ1,50065586-1-0-0020,#",
@@ -192,13 +193,15 @@
                   "ResponsibleGroup":"MANAGERS",
                   "TimeLost":"20",
                   "OriginatorFlag":"X",
-                  "ResponsibleFlag":"X"
+                  "ResponsibleFlag":"X",
+                  "PromisedDateTime":""
                },
                {
                   "MessageRef":"MessageDO:FNZ1,7191846d6896:1581a1d1173:-380a",
                   "MessageType":"MessageTypeBO:FNZ1,DISRUPT_ASSEMBLY",
                   "Status":"NEW",
                   "Severity":"INFO",
+                  "Escalation":2,
                   "Subject":"HMI",
                   "Body":"Masoom Test HMI",
                   "Operation":"OperationBO:FNZ1,50065586-1-0-0020,#",
@@ -214,13 +217,15 @@
                   "ResponsibleGroup":"MANAGERS",
                   "TimeLost":"20",
                   "OriginatorFlag":"X",
-                  "ResponsibleFlag":"X"
+                  "ResponsibleFlag":"X",
+                  "PromisedDateTime":""
                },
                {
                   "MessageRef":"MessageDO:FNZ1,9914-55e7758e:1581a1d117e:-14ad",
                   "MessageType":"MessageTypeBO:FNZ1,DISRUPT_ASSEMBLY",
                   "Status":"NEW",
                   "Severity":"INFO",
+                  "Escalation":3,
                   "Subject":"For Testing",
                   "Body":"message Test HMI masoom Final test",
                   "Operation":"OperationBO:FNZ1,50065170-1-0-0030,#",
@@ -236,12 +241,13 @@
                   "ResponsibleGroup":"MANAGERS",
                   "TimeLost":"20",
                   "OriginatorFlag":"X",
-                  "ResponsibleFlag":"X"
+                  "ResponsibleFlag":"X",
+                  "PromisedDateTime":""
                },
                {
                   "MessageRef":"MessageDO:FNZ1,2771646d6896:1581a1d1173:-3d11",
                   "MessageType":"MessageTypeBO:FNZ1,DISRUPT_ASSEMBLY",
-                  "Status":"NEW",
+                  "Status":"Deleted",
                   "Severity":"INFO",
                   "Subject":"Test Dhirendra",
                   "Body":"ALL",
@@ -258,7 +264,8 @@
                   "ResponsibleGroup":"MANAGERS",
                   "TimeLost":"20",
                   "OriginatorFlag":"X",
-                  "ResponsibleFlag":"X"
+                  "ResponsibleFlag":"X",
+                  "PromisedDateTime":""
                },
                {
                   "MessageRef":"MessageDO:FNZ1,831562edc7a:1582f096492:-4cbf",
@@ -280,7 +287,8 @@
                   "ResponsibleGroup":"MANAGERS",
                   "TimeLost":"30",
                   "OriginatorFlag":"X",
-                  "ResponsibleFlag":"X"
+                  "ResponsibleFlag":"X",
+                  "PromisedDateTime":""
                },
                {
                   "MessageRef":"MessageDO:FNZ1,830462edc7a:1582f096492:-50f5",
@@ -302,7 +310,8 @@
                   "ResponsibleGroup":"MANAGERS",
                   "TimeLost":"30",
                   "OriginatorFlag":"X",
-                  "ResponsibleFlag":"X"
+                  "ResponsibleFlag":"X",
+                  "PromisedDateTime":""
                }
             ]
          },
