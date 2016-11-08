@@ -188,11 +188,11 @@
 									width="100%" />
 
 								<HBox>
-									<Button text="{i18nModel>submitComment}" press="submitComment"
-										class="sapUiSmallMarginEnd" width="12rem" />
+									<Button text="{i18nModel>submitComment}" type="Accept" press="submitComment"
+										class="sapUiSmallMarginEnd buttonAccept" width="12rem" />
 
-									<Button text="{i18nModel>cancelComment}" press="hideCommentBox"
-										class="sapUiSmallMarginEnd" width="12rem" />
+									<Button text="{i18nModel>cancelComment}" type="Reject" press="hideCommentBox"
+										class="sapUiSmallMarginEnd buttonReject" width="12rem" />
 								</HBox>
 
 							</VBox>
@@ -200,6 +200,11 @@
 						</Panel>
 
 						<Toolbar class="disruptionBottomBar">
+
+							<Button id="addComment" text="{i18nModel>addComment}"
+								type="Emphasized"
+								visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>ResponsibleFlag'} ], formatter: 'airbus.mes.disruptions.Formatter.setAddCommentButtonVisibility'}"
+								press="showCommentBox" design="Transparent" icon="sap-icon://comment" />
 
 							<ToolbarSpacer />
 
@@ -211,11 +216,6 @@
 								type="Reject"
 								visible="{parts: [ {path: 'operationDisruptionsModel>ResponsibleFlag'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setRejectButtonVisibility'}"
 								press="onRejectDisruption" design="Transparent" icon="sap-icon://sys-cancel-2" />
-
-							<Button id="addComment" text="{i18nModel>addComment}"
-								type="Emphasized"
-								visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>ResponsibleFlag'} ], formatter: 'airbus.mes.disruptions.Formatter.setAddCommentButtonVisibility'}"
-								press="showCommentBox" design="Transparent" icon="sap-icon://comment" />
 
 							<Button text="{i18nModel>escalate}" type="Reject"
 								visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>Severity'} ], formatter: 'airbus.mes.disruptions.Formatter.setEscalateButtonVisibility'}"
