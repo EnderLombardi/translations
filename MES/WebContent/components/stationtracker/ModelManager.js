@@ -344,8 +344,17 @@ airbus.mes.stationtracker.ModelManager = {
 
        },
        loadShifts : function() {
-              var oViewModelshift = sap.ui.getCore().getModel("shiftsModel");
+             
+    	   var oViewModelshift = sap.ui.getCore().getModel("shiftsModel");
+              var getUrlShifts = this.urlModel.getProperty("urlshifts");
+              var oData = airbus.mes.settings.ModelManager;
+              
+              getUrlShifts = airbus.mes.stationtracker.ModelManager.replaceURI(getUrlShifts, "$site", oData.site );
+              getUrlShifts = airbus.mes.stationtracker.ModelManager.replaceURI(getUrlShifts, "$station", oData.station );
+              getUrlShifts = airbus.mes.stationtracker.ModelManager.replaceURI(getUrlShifts, "$msn", oData.msn );
+              
               oViewModelshift.loadData(this.urlModel.getProperty("urlshifts"), null, false);
+                
        },
        onShiftsLoad : function() {
 
