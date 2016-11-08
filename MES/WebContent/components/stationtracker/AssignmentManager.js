@@ -11,7 +11,7 @@ airbus.mes.stationtracker.AssignmentManager = {
 	polypolyAssignment : {
 		selectedLine : undefined,
 		selectedUser : {
-			login : ""
+			login : "NA"
 		},
 		selectedShift : undefined,
 	},
