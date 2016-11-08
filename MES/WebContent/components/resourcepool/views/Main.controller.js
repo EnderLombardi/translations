@@ -176,23 +176,27 @@ sap.ui
 
 									var oBinding = item.getBindingContext("ResourcePoolDetailModel");
 									var oUser = oBinding.getObject();
-									rowIDs.push(oUser.handle);
+//									rowIDs.push(oUser.handle);
 									
 									/*
 									 * If any user is already loaned or assigned
 									 * then prepare error messages
 									 */
-									if (oUser.loanedToPool != "" && oUser.assignedToRPName != airbus.mes.resourcepool.util.ModelManager.resourceName)
+									if (oUser.loanedToPool != "" && oUser.assignedToRPName != airbus.mes.resourcepool.util.ModelManager.resourceName){
+										//console.log(item.getBindingContext("ResourcePoolDetailModel"))	
 										aError.push(item);
+									}
 									else if(oUser.loanedToPool == "" && oUser.assignedToRPName != airbus.mes.resourcepool.util.ModelManager.resourceName){
 										oUser.loanedToPool=airbus.mes.resourcepool.util.ModelManager.resourceId;
 										oUser.loanedToRPName = airbus.mes.resourcepool.util.ModelManager.resourceName;
 										sap.ui.getCore().getModel("ResourcePoolDetailModel").getProperty("/Rowsets/Rowset/1/Row/").push(oUser);
+										rowIDs.push(oUser.handle);
 									}
 										/*
 										 * Push JSON Object to Assigned Users Model
 										 */
 									else{
+										rowIDs.push(oUser.handle);
 										sap.ui.getCore().getModel("ResourcePoolDetailModel").getProperty("/Rowsets/Rowset/1/Row/").push(oUser);
 									}
 									

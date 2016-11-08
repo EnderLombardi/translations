@@ -129,7 +129,7 @@
 												<Text text="{ResourcePoolDetailModel>userId}" class="floatRight"></Text>
 											</HBox>
 											<Text class="listItemDescrption"
-												text="{parts: ['ResourcePoolDetailModel>loanedToPool', 'ResourcePoolDetailModel>assignedToRPName'], formatter:'airbus.mes.resourcepool.util.Formatter.assignedToSelf'}"></Text>
+												text="{parts: ['ResourcePoolDetailModel>loanedToRPName', 'ResourcePoolDetailModel>assignedToRPName'], formatter:'airbus.mes.resourcepool.util.Formatter.assignedToSelf'}"></Text>
 										</VBox>
 									</content>
 									<customData>
