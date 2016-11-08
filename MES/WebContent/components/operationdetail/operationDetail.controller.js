@@ -5,7 +5,7 @@ sap.ui
 					reasonCodeText : undefined,
 					operationStatus : undefined,
 					disruptionsFlag : false,
-					disruptionCustomDataflag : false,
+					disruptionsCustomDataFlag: undefined,
 
 					/**
 					 * Called when a controller is instantiated and its View
@@ -68,6 +68,7 @@ sap.ui
 					 */
 					onAfterRendering : function() {
 						this.disruptionsFlag = false;
+						this.disruptionsCustomDataFlag = false;
 
 						// Navigation to Status every time pop-up is opened
 						this.nav.to(airbus.mes.operationdetail.status.oView
@@ -230,16 +231,15 @@ sap.ui
 							 **************************************************/
 							// sap.ui.getCore().getModel("DisruptionDetailModel").refresh();
 							if (!this.disruptionsCustomDataFlag) {
-								airbus.mes.operationdetail.oView.setBusy(true); // Set
-								// Busy
-								// Indicator
-								airbus.mes.disruptions.ModelManager
-										.loadDisruptionCustomData();
-								airbus.mes.disruptions.ModelManager
-										.loadDisruptionCategory();
+								
+								airbus.mes.disruptions.ModelManager.loadData();
 								this.disruptionsCustomDataFlag = true;
 							}
-
+							
+							
+							/************************************
+							 * Pre-fill fields in update request 
+							 */
 							var oView = sap.ui.getCore().byId(
 									"createDisruptionView");
 

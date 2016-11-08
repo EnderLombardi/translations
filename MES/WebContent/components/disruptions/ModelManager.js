@@ -63,7 +63,7 @@ airbus.mes.disruptions.ModelManager = {
 	 **************************************************************************/
 	loadDisruptionCustomData : function() {
 		var oModel = sap.ui.getCore().getModel("disruptionCustomData");
-		oModel.loadData(this.getDisruptionCustomData(), null, false);
+		oModel.loadData(this.getDisruptionCustomData());
 	},
 	getDisruptionCustomData : function() {
 		var urlCustomData = this.urlModel.getProperty("urlCustomData");
@@ -88,7 +88,7 @@ airbus.mes.disruptions.ModelManager = {
 	 **************************************************************************/
 	loadDisruptionCategory : function() {
 		var oModel = sap.ui.getCore().getModel("disruptionCategoryModel");
-		oModel.loadData(this.getDisruptionCategory(), null, false);
+		oModel.loadData(this.getDisruptionCategory());
 	},
 	getDisruptionCategory : function() {
 		var urlCustomCategory = this.urlModel.getProperty("urlCustomCategory");
@@ -100,6 +100,18 @@ airbus.mes.disruptions.ModelManager = {
 				airbus.mes.settings.ModelManager.station);
 		return urlCustomCategory;
 
+	},
+	
+	/*******************************
+	 * Load Category and custom Data
+	 */
+	
+	loadData : function(){
+		
+		airbus.mes.operationdetail.oView.setBusy(true); // Set Busy Indicator true
+		this.loadDisruptionCategory();
+		this.loadDisruptionCustomData();
+		
 	},
 
 	/***************************************************************************
@@ -152,7 +164,7 @@ airbus.mes.disruptions.ModelManager = {
 					"operation" : operation
 				});
 
-		oViewModel.loadData(getDisruptionsURL, null, false);
+		oViewModel.loadData(getDisruptionsURL);
 
 	},
 

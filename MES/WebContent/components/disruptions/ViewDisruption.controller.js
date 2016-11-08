@@ -520,7 +520,7 @@ sap.ui
 
 						if (airbus.mes.operationdetail.createDisruption === undefined
 								|| airbus.mes.operationdetail.createDisruption.oView === undefined) {
-							airbus.mes.operationdetail.oView.setBusy(true);
+							this.getView().setBusy(true);
 							sap.ui
 									.getCore()
 									.createComponent(
@@ -530,6 +530,7 @@ sap.ui
 
 							oOperDetailNavContainer
 									.addPage(airbus.mes.operationdetail.createDisruption.oView);
+							this.getView().setBusy(false);
 						}
 
 						// clear disruptionDetailModel if edit is loaded before
@@ -573,7 +574,7 @@ sap.ui
 							// if component is not created - create the component
 							if (airbus.mes.operationdetail.createDisruption === undefined
 									|| airbus.mes.operationdetail.createDisruption.oView === undefined) {
-								airbus.mes.operationdetail.oView.setBusy(true);
+								this.getView().setBusy(true);
 								sap.ui
 										.getCore()
 										.createComponent(
@@ -583,6 +584,7 @@ sap.ui
 
 								oOperDetailNavContainer
 										.addPage(airbus.mes.operationdetail.createDisruption.oView);
+								this.getView().setBusy(false);
 							}
 
 							oOperDetailNavContainer
