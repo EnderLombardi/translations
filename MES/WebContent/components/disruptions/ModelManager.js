@@ -463,6 +463,16 @@ airbus.mes.disruptions.ModelManager = {
 		return flag_success;
 	},
 	
+
+	/***************************************************************************
+	 * Get URL to Mark Solved Disruption
+	 **************************************************************************/
+	getUrlToMarkSolvedDisruption : function() {
+
+		var urlToAckDisruption = this.urlModel.getProperty("urlToMarkSolvedDisruption");
+		return urlToMarkSolvedDisruption;
+	},
+	
 	/***************************************************************************
 	 * Mark Solved Disruption
 	 **************************************************************************/
@@ -476,11 +486,8 @@ airbus.mes.disruptions.ModelManager = {
 			url : this.getUrlToMarkSolvedDisruption(),
 			data : {
 				"Param.1" : airbus.mes.settings.ModelManager.site,
-				"Param.2" : sap.ui.getCore().getModel(
-						"userSettingModel").getProperty(
-						"/Rowsets/Rowset/0/Row/0/user"),
-				"Param.3" : msgRef,
-				"Param.4" : comment
+				"Param.2" : msgRef,
+				"Param.3" : comment
 			},
 			async : false,
 			error : function(xhr, status, error) {
@@ -508,17 +515,6 @@ airbus.mes.disruptions.ModelManager = {
 		});
 		
 		return flag_success;
-	},
-	
-
-
-	/***************************************************************************
-	 * Get URL to Mark Solved Disruption
-	 **************************************************************************/
-	getUrlToMarkSolvedDisruption : function() {
-
-		var urlToAckDisruption = this.urlModel.getProperty("urlToMarkSolvedDisruption");
-		return urlToMarkSolvedDisruption;
 	},
 
 

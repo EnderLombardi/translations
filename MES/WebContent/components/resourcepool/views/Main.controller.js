@@ -184,7 +184,7 @@ sap.ui
 									 */
 									if (oUser.loanedToPool != "" && oUser.assignedToRPName != airbus.mes.resourcepool.util.ModelManager.resourceName)
 										aError.push(item);
-									else if(loanedToPool == "" && oUser.assignedToRPName != airbus.mes.resourcepool.util.ModelManager.resourceName){
+									else if(oUser.loanedToPool == "" && oUser.assignedToRPName != airbus.mes.resourcepool.util.ModelManager.resourceName){
 										oUser.loanedToPool=airbus.mes.resourcepool.util.ModelManager.resourceId;
 										oUser.loanedToRPName = airbus.mes.resourcepool.util.ModelManager.resourceName;
 										sap.ui.getCore().getModel("ResourcePoolDetailModel").getProperty("/Rowsets/Rowset/1/Row/").push(oUser);
@@ -1063,13 +1063,13 @@ sap.ui
 								"searchResourcePool--description");
 						var oButton = sap.ui.getCore().byId(
 								"searchResourcePool--createOrDeleteButton");
-						sap.ui.getCore().byId("searchResourcePool--rpId").setText(oSelectedItem.getToolTtip());
+						sap.ui.getCore().byId("searchResourcePool--rpId").setText(oSelectedItem.getTooltip());
 						oResourcePool.setValue(oSelectedItem.getTitle());
 						oDescription.setValue(oSelectedItem.getDescription());
 
 						this.resourcePoolName = oResourcePool.getValue();
 						this.resourcePoolDescription = oDescription.getValue();
-						this.resourceId = oSelectedItem.getToolTtip();
+						this.resourceId = oSelectedItem.getTooltip();
 						/* set create or delete buton based on some conditions */
 						if (!oResourcePool) {
 							oButton.setIcon("sap-icon://create");

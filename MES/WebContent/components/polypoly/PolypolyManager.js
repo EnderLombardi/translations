@@ -14,7 +14,8 @@ airbus.mes.polypoly.PolypolyManager = {
 		columnIndex : undefined,
 		newLevel : undefined,
 	},
-
+	
+	
 	internalContext : {
 		oModel : undefined,
 		saveContext : undefined,
@@ -477,8 +478,8 @@ airbus.mes.polypoly.PolypolyManager = {
 		urlqalevelcreate = urlqalevelcreate.replace("$erpid", sUserID);
 		urlqalevelcreate = urlqalevelcreate.replace("$certification", sTechName);
 		urlqalevelcreate = urlqalevelcreate.replace("$nLevel", sNewLevel);
-//		urlqalevelcreate = urlqalevelcreate.replace("$site", airbus.mes.settings.ModelManager.site); //FIXME: Uncomment when ready
-		urlqalevelcreate = urlqalevelcreate.replace("$site", "CHES"); 								 //FIXME
+		urlqalevelcreate = urlqalevelcreate.replace("$site", airbus.mes.settings.ModelManager.site); //FIXME: Uncomment when ready
+//		urlqalevelcreate = urlqalevelcreate.replace("$site", "CHES"); 								 //FIXME
 		
 		//Handle User & Password																	 //FIXME Temp
 		urlqalevelcreate = airbus.mes.polypoly.ModelManager.handleUserConnection(urlqalevelcreate);  //FIXME Temp
@@ -488,8 +489,8 @@ airbus.mes.polypoly.PolypolyManager = {
 			success : function(data, textStatus, jqXHR) {
 				switch(data.Rowsets.Rowset[0].Row[0].Message_Type){
 				case "S":
-					airbus.mes.polypoly.ModelManager.getPolyPolyModel("CHES", "1L"); //FIXME When Settings ready
-//					airbus.mes.polypoly.ModelManager.getPolyPolyModel(airbus.mes.settings.ModelManager.site, airbus.mes.settings.ModelManager.station);
+//					airbus.mes.polypoly.ModelManager.getPolyPolyModel("CHES", "1L"); //FIXME When Settings ready
+					airbus.mes.polypoly.ModelManager.getPolyPolyModel(airbus.mes.settings.ModelManager.site, airbus.mes.settings.ModelManager.station);
 					break;
 				case "E":
 					sap.m.MessageToast.show("Error : " + data.Rowsets.Rowset[0].Row[0].Message );
@@ -504,8 +505,8 @@ airbus.mes.polypoly.PolypolyManager = {
 
 		urlqaleveldelete = urlqaleveldelete.replace("$erpid", sUserID);
 		urlqaleveldelete = urlqaleveldelete.replace("$competency", sTechName);
-//		urlqaleveldelete = urlqaleveldelete.replace("$site", airbus.mes.settings.ModelManager.site); //FIXME: Uncomment when ready
-		urlqaleveldelete = urlqaleveldelete.replace("$site", "CHES"); 								 //FIXME
+		urlqaleveldelete = urlqaleveldelete.replace("$site", airbus.mes.settings.ModelManager.site); //FIXME: Uncomment when ready
+//		urlqaleveldelete = urlqaleveldelete.replace("$site", "CHES"); 								 //FIXME
 		
 		//Handle User & Password																	 //FIXME Temp
 		urlqaleveldelete = airbus.mes.polypoly.ModelManager.handleUserConnection(urlqaleveldelete);  //FIXME Temp
@@ -515,8 +516,8 @@ airbus.mes.polypoly.PolypolyManager = {
 			success : function(data, textStatus, jqXHR) {
 				switch(data.Rowsets.Rowset[0].Row[0].Message_Type){
 				case "S":
-					airbus.mes.polypoly.ModelManager.getPolyPolyModel("CHES", "1L"); //FIXME When Settings ready
-//					airbus.mes.polypoly.ModelManager.getPolyPolyModel(airbus.mes.settings.ModelManager.site, airbus.mes.settings.ModelManager.station);
+//					airbus.mes.polypoly.ModelManager.getPolyPolyModel("CHES", "1L"); //FIXME When Settings ready
+					airbus.mes.polypoly.ModelManager.getPolyPolyModel(airbus.mes.settings.ModelManager.site, airbus.mes.settings.ModelManager.station);
 					break;
 				case "E":
 					sap.m.MessageToast.show("Error : " + data.Rowsets.Rowset[0].Row[0].Message );
@@ -532,8 +533,8 @@ airbus.mes.polypoly.PolypolyManager = {
 		urlqalevelupdate = urlqalevelupdate.replace("$erpid", sUserID);
 		urlqalevelupdate = urlqalevelupdate.replace("$competency", sTechName);
 		urlqalevelupdate = urlqalevelupdate.replace("$nLevel", sNewLevel);
-//		urlqalevelupdate = urlqalevelupdate.replace("$site", airbus.mes.settings.ModelManager.site); //FIXME: Uncomment when ready
-		urlqalevelupdate = urlqalevelupdate.replace("$site", "CHES"); 								 //FIXME
+		urlqalevelupdate = urlqalevelupdate.replace("$site", airbus.mes.settings.ModelManager.site); //FIXME: Uncomment when ready
+//		urlqalevelupdate = urlqalevelupdate.replace("$site", "CHES"); 								 //FIXME
 		
 		//Handle User & Password																	 //FIXME Temp
 		urlqalevelupdate = airbus.mes.polypoly.ModelManager.handleUserConnection(urlqalevelupdate);  //FIXME Temp
@@ -543,8 +544,8 @@ airbus.mes.polypoly.PolypolyManager = {
 			success : function(data, textStatus, jqXHR) {
 				switch(data.Rowsets.Rowset[0].Row[0].Message_Type){
 				case "S":
-					airbus.mes.polypoly.ModelManager.getPolyPolyModel("CHES", "1L"); //FIXME When Settings ready
-//					airbus.mes.polypoly.ModelManager.getPolyPolyModel(airbus.mes.settings.ModelManager.site, airbus.mes.settings.ModelManager.station);
+//					airbus.mes.polypoly.ModelManager.getPolyPolyModel("CHES", "1L"); //FIXME When Settings ready
+					airbus.mes.polypoly.ModelManager.getPolyPolyModel(airbus.mes.settings.ModelManager.site, airbus.mes.settings.ModelManager.station);
 					break;
 				case "E":
 					sap.m.MessageToast.show("Error : " + data.Rowsets.Rowset[0].Row[0].Message );
@@ -560,8 +561,8 @@ airbus.mes.polypoly.PolypolyManager = {
 
 		urlqalevel12 = urlqalevel12.replace("$erpid", sUserID);
 		urlqalevel12 = urlqalevel12.replace("$competency", sTechName);
-//		urlqalevel12 = urlqalevel12.replace("$site", airbus.mes.settings.ModelManager.site); //FIXME: Uncomment when ready
-		urlqalevel12 = urlqalevel12.replace("$site", "CHES");
+		urlqalevel12 = urlqalevel12.replace("$site", airbus.mes.settings.ModelManager.site); //FIXME: Uncomment when ready
+//		urlqalevel12 = urlqalevel12.replace("$site", "CHES");
 		
 		//Handle User & Password																	 //FIXME Temp
 		urlqalevel12 = airbus.mes.polypoly.ModelManager.handleUserConnection(urlqalevel12);			 //FIXME Temp
@@ -588,8 +589,8 @@ airbus.mes.polypoly.PolypolyManager = {
 
 		urlqalevel23 = urlqalevel23.replace("$erpid", sUserID);
 		urlqalevel23 = urlqalevel23.replace("$competency", sTechName);
-//		urlqalevel23 = urlqalevel23.replace("$site", airbus.mes.settings.ModelManager.site); //FIXME: Uncomment when ready
-		urlqalevel23 = urlqalevel23.replace("$site", "CHES");
+		urlqalevel23 = urlqalevel23.replace("$site", airbus.mes.settings.ModelManager.site); //FIXME: Uncomment when ready
+//		urlqalevel23 = urlqalevel23.replace("$site", "CHES");
 		
 		//Handle User & Password																	 //FIXME Temp
 		urlqalevel23 = airbus.mes.polypoly.ModelManager.handleUserConnection(urlqalevel23);			 //FIXME Temp
@@ -620,8 +621,8 @@ airbus.mes.polypoly.PolypolyManager = {
 
 		urlcreatecolumn = urlcreatecolumn.replace("$polypoly", sTechname);
 		urlcreatecolumn = urlcreatecolumn.replace("$sName", sName);
-//		urlcreatecolumn = urlcreatecolumn.replace("$site", airbus.mes.settings.ModelManager.site); //FIXME: Uncomment when ready
-		urlcreatecolumn = urlcreatecolumn.replace("$site", "CHES");
+		urlcreatecolumn = urlcreatecolumn.replace("$site", airbus.mes.settings.ModelManager.site); //FIXME: Uncomment when ready
+//		urlcreatecolumn = urlcreatecolumn.replace("$site", "CHES");
 		
 		//Handle User & Password																	 		 //FIXME Temp
 		urlcreatecolumn = airbus.mes.polypoly.ModelManager.handleUserConnection(urlcreatecolumn);			 //FIXME Temp
@@ -644,8 +645,8 @@ airbus.mes.polypoly.PolypolyManager = {
 		urlupdatecolumn = urlupdatecolumn.replace("$Needs_3", sNeed3);
 		urlupdatecolumn = urlupdatecolumn.replace("$Needs_4", sNeed4);
 		urlupdatecolumn = urlupdatecolumn.replace("$polypoly", sTechname);
-//		urlupdatecolumn = urlupdatecolumn.replace("$site", airbus.mes.settings.ModelManager.site); //FIXME: Uncomment when ready
-		urlupdatecolumn = urlupdatecolumn.replace("$site", "CHES");
+		urlupdatecolumn = urlupdatecolumn.replace("$site", airbus.mes.settings.ModelManager.site); //FIXME: Uncomment when ready
+//		urlupdatecolumn = urlupdatecolumn.replace("$site", "CHES");
 		
 		//Handle User & Password																	 		 //FIXME Temp
 		urlupdatecolumn = airbus.mes.polypoly.ModelManager.handleUserConnection(urlupdatecolumn);			 //FIXME Temp
@@ -659,8 +660,8 @@ airbus.mes.polypoly.PolypolyManager = {
 						sap.ui.getCore().byId("columnPopupDialog").close();
 					}
 				}
-				airbus.mes.polypoly.ModelManager.getPolyPolyModel("CHES", "1L"); //FIXME When Settings ready
-//				airbus.mes.polypoly.ModelManager.getPolyPolyModel(airbus.mes.settings.ModelManager.site, airbus.mes.settings.ModelManager.station);
+//				airbus.mes.polypoly.ModelManager.getPolyPolyModel("CHES", "1L"); //FIXME When Settings ready
+				airbus.mes.polypoly.ModelManager.getPolyPolyModel(airbus.mes.settings.ModelManager.site, airbus.mes.settings.ModelManager.station);
 			},
 		});
 	},
@@ -669,8 +670,8 @@ airbus.mes.polypoly.PolypolyManager = {
 		var urldeletecolumn = this.urlModel.getProperty("urldeletecolumn");
 
 		urldeletecolumn = urldeletecolumn.replace("$polypoly", sName);
-//		urldeletecolumn = urldeletecolumn.replace("$site", airbus.mes.settings.ModelManager.site); //FIXME: Uncomment when ready
-		urldeletecolumn = urldeletecolumn.replace("$site", "CHES");
+		urldeletecolumn = urldeletecolumn.replace("$site", airbus.mes.settings.ModelManager.site); //FIXME: Uncomment when ready
+//		urldeletecolumn = urldeletecolumn.replace("$site", "CHES");
 		
 		//Handle User & Password																	 		 //FIXME Temp
 		urldeletecolumn = airbus.mes.polypoly.ModelManager.handleUserConnection(urldeletecolumn);			 //FIXME Temp
@@ -680,8 +681,8 @@ airbus.mes.polypoly.PolypolyManager = {
 			cache : false,
 			success : function(data, textStatus, jqXHR) {
 				airbus.mes.polypoly.delDialog.close();
-				airbus.mes.polypoly.ModelManager.getPolyPolyModel("CHES", "1L"); //FIXME When Settings ready
-//				airbus.mes.polypoly.ModelManager.getPolyPolyModel(airbus.mes.settings.ModelManager.site, airbus.mes.settings.ModelManager.station);
+//				airbus.mes.polypoly.ModelManager.getPolyPolyModel("CHES", "1L"); //FIXME When Settings ready
+				airbus.mes.polypoly.ModelManager.getPolyPolyModel(airbus.mes.settings.ModelManager.site, airbus.mes.settings.ModelManager.station);
 			},
 		});
 	},
@@ -693,8 +694,8 @@ airbus.mes.polypoly.PolypolyManager = {
 		urlmovecolumn = urlmovecolumn.replace("$order", newPos);
 		urlmovecolumn = urlmovecolumn.replace("$station", airbus.mes.polypoly.ModelManager.stationMII); //FIXME: Uncomment when ready
 //		urlmovecolumn = urlmovecolumn.replace("$station", "1L");
-//		urlmovecolumn = urlmovecolumn.replace("$site", airbus.mes.settings.ModelManager.site); //FIXME: Uncomment when ready
-		urlmovecolumn = urlmovecolumn.replace("$site", "CHES");
+		urlmovecolumn = urlmovecolumn.replace("$site", airbus.mes.settings.ModelManager.site); //FIXME: Uncomment when ready
+//		urlmovecolumn = urlmovecolumn.replace("$site", "CHES");
 		
 		//Handle User & Password																	 		 //FIXME Temp
 		urlmovecolumn = airbus.mes.polypoly.ModelManager.handleUserConnection(urlmovecolumn);			     //FIXME Temp
