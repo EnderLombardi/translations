@@ -55,24 +55,24 @@ airbus.mes.shell.Component.prototype.createContent = function() {
 		
 		switch(sLanguage) {
 		case "EN":
-			var sLanguageText = "English";
+
 			break;
 		case "DE":
-			var sLanguageText = "Deutsch";
+
 			break;
 		case "FR":
-			var sLanguageText = "French";
+		
 			break;
 		case "SP":
-			var sLanguageText = "Spanish";
+			
 			break;
-		default :
-			var sLanguageText = "English";
-			this.oView.getController().updateUrlForLanguage(sLanguageText);
+			default :
+		
+			this.oView.getController().updateUrlForLanguage(sLanguage);
 			break;
 		};
 	    for(var i=0; i<aItems.length; i++) {
-	        if (aItems[i].getText() === sLanguageText) {
+	        if (aItems[i].getKey() === sLanguage) {
 	        	this.oView.byId("SelectLanguage").setSelectedItemId(aItems[i].getId());
 	        }
 	    }

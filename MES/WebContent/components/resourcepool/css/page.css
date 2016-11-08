@@ -155,22 +155,6 @@
 [id^="searchResourcePool--searchRessourcePoolDialog"] .sapMBtnDisabled {
     opacity: 1;
 }
-[id^="searchResourcePool--searchRessourcePoolDialog"] div.sapMBtnInner.sapMBtnAccept {
-    background-image: none;
-    background-color: #84bd00;
-    color: #ffffff;
-    text-shadow: none;
-    border-radius:0;
-    border:none;
-}
-[id^="searchResourcePool--searchRessourcePoolDialog"] div.sapMBtnInner.sapMBtnReject {
-    background-image: none;
-    background-color: #e5002b;
-    color: #ffffff;
-    text-shadow: none;
-    border-radius:0;
-    border:none;
-}
 [id^="searchResourcePool--searchRessourcePoolDialog"] .sapUiRFL.sapUiRLContainer>div:first-child {
 	display:none;
 }

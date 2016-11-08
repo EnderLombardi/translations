@@ -39,22 +39,22 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 //	Change language, reload the URL with the new language
 	onChangeLanguage : function(oEvent) {
 //		Retrieve language 		
-		var sText = sap.ui.getCore().byId(oEvent.getSource().getSelectedItemId()).getText();
+		var sText = oEvent.getSource().getSelectedKey();	
 
 		this.updateUrlForLanguage(sText);
 	},
 	updateUrlForLanguage : function(sText){
 		switch (sText) {
-		case "English":
+		case "EN":
 			window.location.href = window.location.origin + window.location.pathname + "?sap-language=EN";
 			break;
-		case "Deutsch":
+		case "DE":
 			window.location.href = window.location.href = window.location.origin + window.location.pathname + "?sap-language=DE";
 			break;
-		case "French":
+		case "FR":
 			window.location.href = window.location.href = window.location.origin + window.location.pathname + "?sap-language=FR";
 			break;
-		case "Spanish":
+		case "SP":
 			window.location.href = window.location.href = window.location.origin + window.location.pathname + "?sap-language=SP";
 			break;
 		default:
