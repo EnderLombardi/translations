@@ -41,7 +41,6 @@ sap.ui.controller("airbus.mes.settings.Settings",
 
 			onAfterRendering : function() {
 				this.byId("vbi").zoomToRegions([ "FR", "GB", "ES", "DE" ]);
-				//this.getUserSettings();
 			},
 
 			onInit : function() {
@@ -459,7 +458,7 @@ sap.ui.controller("airbus.mes.settings.Settings",
 				
 					
 					
-					airbus.mes.settings.ModelManager.getUrlSaveUserSetting();
+					airbus.mes.settings.ModelManager.saveUserSetting();
 					// Navigate to correct view
 					that.navigate(oEvent);
 				}
