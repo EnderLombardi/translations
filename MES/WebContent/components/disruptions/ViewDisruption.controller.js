@@ -542,9 +542,7 @@ sap.ui
 						sap.ui.getCore().byId("createDisruptionView--selectOriginator").setEnabled(true);
 						sap.ui.getCore().byId("createDisruptionView--description").setEnabled(true);
 						sap.ui.getCore().byId("createDisruptionView--timeLost").setEnabled(true);
-						airbus.mes.operationdetail.createDisruption.oView.oController
-						.setEnabledSelectBox(true, false, false,
-								false);
+					
 						
 					},
 
@@ -596,10 +594,6 @@ sap.ui
 						sap.ui.getCore().byId("createDisruptionView--selectOriginator").setEnabled(false);
 						sap.ui.getCore().byId("createDisruptionView--description").setEnabled(false);
 						sap.ui.getCore().byId("createDisruptionView--timeLost").setEnabled(false);
-						
-						airbus.mes.operationdetail.createDisruption.oView.oController
-						.setEnabledSelectBox(false, true, true,
-								true);
 
 					},
 

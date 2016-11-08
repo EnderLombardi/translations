@@ -408,6 +408,7 @@ sap.ui
 						this.getView().byId("expectedTime").setValue();
 						this.getView().byId("timeLost").setValue();
 						this.getView().byId("comment").setValue();
+						this.getView().byId("description").setValue();
 					}
 
 				/**

@@ -200,9 +200,9 @@ airbus.mes.disruptions.ModelManager = {
 						"Param.4" : messageSubject,
 						"Param.5" : messageBody,
 						"Param.6" : airbus.mes.shell.ModelManager.json2xml({
-							payloadAttributelist : payloadData,
-							"Param.7" : messageHandle
-						})
+							payloadAttributelist : payloadData}),
+						"Param.7" : messageHandle
+						
 					},
 					success : function(data, textStatus, jqXHR) {
 						airbus.mes.operationdetail.oView.setBusy(false); // Remove
