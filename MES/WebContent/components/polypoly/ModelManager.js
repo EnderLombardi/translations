@@ -158,7 +158,7 @@ airbus.mes.polypoly.ModelManager = {
 	},
 	
 	handleUserConnection : function(sUrl) {
-		var bModeDroits = false;
+		var bModeDroits = true;
 		if(bModeDroits){
 			if(this.queryParams.get("url_config") == "sopra" || this.queryParams.get("url_config") == "airbus"){
 				var sUser = "NG43F36";
