@@ -12,3 +12,10 @@
 .ClassOperationDetailPopUp .sapMPageBusyCoversAll {
 	background: #f5f5f5 !important;
 }
+
+.toolBarBottom{
+border-bottom: none 
+}
+.alignCenter{
+ text-align: center !important;
+}

@@ -542,8 +542,8 @@ airbus.mes.disruptions.ModelManager = {
 	/***************************************************************************
 	 * Add Comment service
 	 **************************************************************************/
-	addComment : function(oComment) {
-		var sMessageSuccess = "Comment Added Successfully";
+	addComment : function(oComment, i18nModel) {
+		var sMessageSuccess = i18nModel.getProperty("commentSuccessful");
 		var sMessageError   = i18nModel.getProperty("tryAgain");
 		var flag_success;
 

@@ -18,7 +18,7 @@ airbus.mes.disruptions.Formatter = {
 	defaultDateConversion : function(defaultDate, defaultTime) {
 
 		return defaultDate.getFullYear() + "-" + defaultDate.getMonth() + "-"
-				+ defaultDate.getDate()
+				+ defaultDate.getDate();
 	},
 
 	setText : function(status, gravity, escalation) {
