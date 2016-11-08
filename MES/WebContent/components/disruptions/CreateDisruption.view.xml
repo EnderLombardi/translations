@@ -30,7 +30,7 @@
 									<f:label>
 										<Label text="{i18nModel>Category}">
 											<layoutData>
-												<l:GridData span="L3 M6 S12" />
+												<l:GridData span="L2 M6 S12" />
 											</layoutData>
 										</Label>
 									</f:label>
@@ -54,7 +54,7 @@
 
 										<Label text="{i18nModel>Reason}">
 											<layoutData>
-												<l:GridData span="L3 M6 S12" />
+												<l:GridData span="L2 M6 S12" />
 											</layoutData>
 										</Label>
 									</f:label>
@@ -78,7 +78,7 @@
 									<f:label>
 										<Label text="{i18nModel>ResponsibleSupport}">
 											<layoutData>
-												<l:GridData span="L3 M6 S12" linebreak="true" />
+												<l:GridData span="L2 M6 S12" linebreak="true" />
 											</layoutData>
 										</Label>
 									</f:label>
@@ -101,7 +101,7 @@
 									<f:label>
 										<Label text="{i18nModel>OriginatorGroup}">
 											<layoutData>
-												<l:GridData span="L3 M6 S12" />
+												<l:GridData span="L2 M6 S12" />
 											</layoutData>
 										</Label>
 									</f:label>
@@ -123,7 +123,7 @@
 									<f:label>
 										<Label text="{i18nModel>RootCause}">
 											<layoutData>
-												<l:GridData span="L3 M6 S12" linebreak="true" />
+												<l:GridData span="L2 M6 S12" linebreak="true" />
 											</layoutData>
 										</Label>
 									</f:label>
@@ -146,7 +146,7 @@
 									<f:label>
 										<Label text="{i18nModel>gravity}">
 											<layoutData>
-												<l:GridData span="L3 M6 S12" />
+												<l:GridData span="L2 M6 S12" />
 											</layoutData>
 										</Label>
 									</f:label>
@@ -169,7 +169,7 @@
 									<f:label>
 										<Label text="">
 											<layoutData>
-												<l:GridData span="L3 M3 S12" linebreak="true" />
+												<l:GridData span="L2 M3 S12" linebreak="true" />
 											</layoutData>
 										</Label>
 									</f:label>
@@ -192,7 +192,7 @@
 									<f:label>
 										<Label text="{i18nModel>OpenDate}">
 											<layoutData>
-												<l:GridData span="L3 M6 S12" linebreak="true" />
+												<l:GridData span="L2 M6 S12" linebreak="true" />
 											</layoutData>
 										</Label>
 									</f:label>
@@ -211,7 +211,7 @@
 									<f:label>
 										<Label text="{i18nModel>Expected}">
 											<layoutData>
-												<l:GridData span="L3 M6 S12" />
+												<l:GridData span="L2 M6 S12" />
 											</layoutData>
 										</Label>
 									</f:label>
@@ -230,7 +230,7 @@
 									<f:label>
 										<Label text="{i18nModel>Time}">
 											<layoutData>
-												<l:GridData span="L3 M6 S12" linebreak="true" />
+												<l:GridData span="L2 M6 S12" linebreak="true" />
 											</layoutData>
 										</Label>
 									</f:label>
@@ -249,7 +249,7 @@
 									<f:label>
 										<Label text="{i18nModel>Time}">
 											<layoutData>
-												<l:GridData span="L3 M6 S12" />
+												<l:GridData span="L2 M6 S12" />
 											</layoutData>
 										</Label>
 									</f:label>
@@ -268,7 +268,7 @@
 									<f:label>
 										<Label text="{i18nModel>TimeLost}">
 											<layoutData>
-												<l:GridData span="L3 M6 S12" linebreak="true" />
+												<l:GridData span="L2 M6 S12" linebreak="true" />
 											</layoutData>
 										</Label>
 									</f:label>
@@ -286,7 +286,7 @@
 									<f:label>
 										<Label text="{i18nModel>Status}">
 											<layoutData>
-												<l:GridData span="L3 M6 S12" />
+												<l:GridData span="L2 M6 S12" />
 											</layoutData>
 										</Label>
 									</f:label>
@@ -298,7 +298,24 @@
 										</Input>
 									</f:fields>
 								</f:FormElement>
-
+								
+								<f:FormElement>
+									<f:label>
+										<Label text="{i18nModel>Description}">
+											<layoutData>
+												<l:GridData span="L2 M6 S12" linebreak="true" />
+											</layoutData>
+										</Label>
+									</f:label>
+									<f:fields>
+										<Input id="description" maxLength="40">
+											<layoutData>
+												<l:GridData span="L9 M6 S12" />
+											</layoutData>
+										</Input>
+									</f:fields>
+								</f:FormElement>
+								
 								<f:FormElement>
 									<f:label>
 										<Label text=" ">
@@ -310,7 +327,7 @@
 									<TextArea placeholder="{i18nModel>AddCommentBox}" id="comment"
 										valueLiveUpdate="true" rows="10" value="">
 										<layoutData>
-											<l:GridData span="L10 M10 S12" />
+											<l:GridData span="L9 M9 S12" />
 										</layoutData>
 									</TextArea>
 								</f:FormElement>

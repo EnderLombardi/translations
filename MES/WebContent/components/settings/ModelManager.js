@@ -133,7 +133,7 @@ airbus.mes.settings.ModelManager =  {
 		var sLangage = sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/language") ;
 		if ( sLangage != undefined && sLangage != "---" ) {
 			 	
-			airbus.mes.shell.oView.getController().updateUrlForLanguage(sLangage);
+	//		airbus.mes.shell.oView.getController().updateUrlForLanguage(sLangage);
 		}
 		
 	},
