@@ -9,7 +9,8 @@ airbus.mes.shell.ModelManager = {
 		init : function(core) {
 			
 			core.setModel(new sap.ui.model.json.JSONModel(),"userDetailModel");	
-			core.setModel(new sap.ui.model.json.JSONModel(),"userSettingModel");	
+			core.setModel(new sap.ui.model.json.JSONModel(),"userSettingModel");
+			
 		
 			var dest;
 
@@ -142,5 +143,17 @@ airbus.mes.shell.ModelManager = {
 	                             closeOnBrowserNavigation : true
 	                      });
 	               
-	  }
+	  },
+	  
+	  loadLanguage : function(){
+			
+		  	var urlUserSetting = this.urlModel.getProperty("urlUserSettings");
+			
+		  	var oUserSettingModel = new sap.ui.model.json.JSONModel();
+		  	oUserSettingModel.loadData(urlUserSetting, null, false);
+
+        
+			return oUserSettingModel.getProperty("/Rowsets/Rowset/0/Row/0/language");
+		
+		},
 }

@@ -129,12 +129,6 @@ airbus.mes.settings.ModelManager =  {
 		airbus.mes.settings.oView.getController().getUserSettings();
 		// Current Msn is store with "" so we reuse msn selected
 		airbus.mes.shell.oView.byId("labelMSN").setText(airbus.mes.settings.ModelManager.msn);
-		 
-		var sLangage = sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/language") ;
-		if ( sLangage != undefined && sLangage != "---" ) {
-			 	
-	//		airbus.mes.shell.oView.getController().updateUrlForLanguage(sLangage);
-		}
 		
 	},
 	

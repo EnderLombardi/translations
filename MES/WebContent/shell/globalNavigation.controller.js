@@ -229,6 +229,6 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 				.getBinding("items")
 				.filter(new sap.ui.model.Filter(aFilters, true));
 		
-	}
-	
+	},
+			
 });
