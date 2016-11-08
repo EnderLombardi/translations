@@ -57,7 +57,7 @@
 			name : "airbus.mes.settings", // root component folder is resources
 		});
 		
-		airbus.mes.settings.oView.getController().getUserSettings();
+		airbus.mes.settings.ModelManager.loadUserSettingsModel();
 		
 		nav = airbus.mes.shell.oView.byId("navCont");
 		nav.afterNavigate;

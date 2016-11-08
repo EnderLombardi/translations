@@ -199,10 +199,10 @@ airbus.mes.disruptions.ModelManager = {
 						"Param.3" : messageType,
 						"Param.4" : messageSubject,
 						"Param.5" : messageBody,
-						"Param.6" : airbus.mes.disruptions.Formatter.json2xml({
-							payloadAttributelist : payloadData,
-							"Param.7" : messageHandle
-						})
+						"Param.6" : airbus.mes.shell.ModelManager.json2xml({
+							payloadAttributelist : payloadData}),
+						"Param.7" : messageHandle
+						
 					},
 					success : function(data, textStatus, jqXHR) {
 						airbus.mes.operationdetail.oView.setBusy(false); // Remove
@@ -235,6 +235,99 @@ airbus.mes.disruptions.ModelManager = {
 													.getModel("i18nModel")
 													.getProperty(
 															"DisruptionNotSaved"));
+								else
+									airbus.mes.shell.ModelManager
+											.messageShow(data.Rowsets.Rowset[0].Row[0].Message)
+							}
+						} else {
+							if (data.Rowsets.FatalError) {
+								airbus.mes.shell.ModelManager
+										.messageShow(data.Rowsets.FatalError);
+							}
+						}
+
+					},
+
+					error : function() {
+						airbus.mes.operationdetail.oView.setBusy(false); // Remove
+						// Busy
+						// Indicator
+						airbus.mes.shell.ModelManager
+								.messageShow(airbus.mes.operationdetail.createDisruption.oView
+										.getModel("i18nModel").getProperty(
+												"DisruptionNotSaved"));
+
+					}
+
+				});
+
+	},
+	
+	/***************************************************************************
+	 * Create Disruption service
+	 */
+
+	getURLUpdateDisruption : function() {
+		airbus.mes.operationdetail.oView.setBusy(true); // Set Busy Indicator
+		var urlUpdateDisruption = this.urlModel
+				.getProperty("urlUpdateDisruption");
+		return  urlUpdateDisruption;
+	},
+
+	updateDisruption : function(sMessageRef,sReason,sResponsibleGroup,sRootCause,iTimeLost,dFixedByTime,sComment,iGravity) {
+
+		jQuery
+				.ajax({
+					async : true,
+					cache : false,
+					url : this.getURLUpdateDisruption(),
+					type : 'GET',
+					data : {
+						"Param.1" : airbus.mes.settings.ModelManager.site,
+						"Param.2" : sMessageRef,
+						"Param.3" : sReason,
+						"Param.4" : sResponsibleGroup,
+						"Param.5" : sRootCause,
+						"Param.6" : iTimeLost,
+						"Param.7" : dFixedByTime,
+						"Param.8" : sComment,
+						"Param.9" : iGravity
+					},
+					success : function(data, textStatus, jqXHR) {
+						
+						// Remove Busy Indicator
+						airbus.mes.operationdetail.oView.setBusy(false);
+						
+						//Message handling
+						var rowExists = data.Rowsets.Rowset;
+						if (rowExists != undefined) {
+							if (data.Rowsets.Rowset[0].Row[0].Message_Type == "S") {
+								airbus.mes.shell.ModelManager
+										.messageShow(data.Rowsets.Rowset[0].Row[0].Message);
+								
+								// navigate to View Disruption after message
+								// success
+								sap.ui
+										.getCore()
+										.byId(
+												"operationDetailsView--operDetailNavContainer")
+										.to(
+												airbus.mes.operationdetail.viewDisruption.oView
+														.getId());
+								
+								// load disruption Model again for updated message
+								var operationBO = sap.ui.getCore().getModel(
+										"operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_bo;
+								airbus.mes.disruptions.ModelManager
+										.loadDisruptionsByOperation(operationBO);
+
+							} else if (data.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
+								if (data.Rowsets.Rowset[0].Row[0].Message === undefined)
+									airbus.mes.shell.ModelManager
+											.messageShow(airbus.mes.operationdetail.createDisruption.oView
+													.getModel("i18nModel")
+													.getProperty(
+															"DisruptionNotUpdated"));
 								else
 									airbus.mes.shell.ModelManager
 											.messageShow(data.Rowsets.Rowset[0].Row[0].Message)
@@ -370,12 +463,22 @@ airbus.mes.disruptions.ModelManager = {
 		return flag_success;
 	},
 	
+
+	/***************************************************************************
+	 * Get URL to Mark Solved Disruption
+	 **************************************************************************/
+	getUrlToMarkSolvedDisruption : function() {
+
+		var urlToAckDisruption = this.urlModel.getProperty("urlToMarkSolvedDisruption");
+		return urlToMarkSolvedDisruption;
+	},
+	
 	/***************************************************************************
 	 * Mark Solved Disruption
 	 **************************************************************************/
 	markSolvedDisruption : function(msgRef, comment, i18nModel) {
 
-		var sMessageSuccess = "Disruption Marked Solved Successfully";
+		var sMessageSuccess = i18nModel.getProperty("successSolved");
 		var sMessageError   = i18nModel.getProperty("tryAgain");
 		var flag_success;
 
@@ -383,11 +486,8 @@ airbus.mes.disruptions.ModelManager = {
 			url : this.getUrlToMarkSolvedDisruption(),
 			data : {
 				"Param.1" : airbus.mes.settings.ModelManager.site,
-				"Param.2" : sap.ui.getCore().getModel(
-						"userSettingModel").getProperty(
-						"/Rowsets/Rowset/0/Row/0/user"),
-				"Param.3" : msgRef,
-				"Param.4" : comment
+				"Param.2" : msgRef,
+				"Param.3" : comment
 			},
 			async : false,
 			error : function(xhr, status, error) {
@@ -416,17 +516,6 @@ airbus.mes.disruptions.ModelManager = {
 		
 		return flag_success;
 	},
-	
-
-
-	/***************************************************************************
-	 * Get URL to Mark Solved Disruption
-	 **************************************************************************/
-	getUrlToMarkSolvedDisruption : function() {
-
-		var urlToAckDisruption = this.urlModel.getProperty("urlToMarkSolvedDisruption");
-		return urlToMarkSolvedDisruption;
-	},
 
 
 	/***************************************************************************
@@ -441,8 +530,8 @@ airbus.mes.disruptions.ModelManager = {
 	/***************************************************************************
 	 * Add Comment service
 	 **************************************************************************/
-	addComment : function(oComment) {
-		var sMessageSuccess = "Comment Added Successfully";
+	addComment : function(oComment, i18nModel) {
+		var sMessageSuccess = i18nModel.getProperty("commentSuccessful");
 		var sMessageError   = i18nModel.getProperty("tryAgain");
 		var flag_success;
 

@@ -26,7 +26,7 @@
 									press="onEditDisruption" design="Transparent" icon="sap-icon://edit" />
 
 								<Button text="{i18nModel>delete}" type="Reject"
-									visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'} ], formatter: 'airbus.mes.disruptions.Formatter.setDeleteButtonVisibility'}"
+									visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setDeleteButtonVisibility'}"
 									design="Transparent" icon="sap-icon://delete" press="onDeleteDisruption" />
 
 							</Toolbar>
@@ -62,7 +62,7 @@
 
 										<f:FormElement>
 											<f:label>
-												<Label class="detailLabels" text="{i18nModel>problem}">
+												<Label class="detailLabels" text="{i18nModel>rootCause}">
 													<layoutData>
 														<l:GridData span="L2 M2 S12" />
 													</layoutData>
@@ -153,25 +153,56 @@
 										</f:FormElement>
 
 
-										<!-- <f:FormElement> <f:label> <Label class="detailLabels" text="{i18nModel>status}"> 
-											<layoutData> <l:GridData span="L3 M3 S12" /> </layoutData> </Label> </f:label> 
-											<f:fields> <Text text="{operationDisruptionsModel>Status}"> <layoutData> 
-											<l:GridData span="L3 M3 S12" /> </layoutData> </Text> </f:fields> </f:FormElement> -->
+										<f:FormElement>
+											<f:label>
+												<Label class="detailLabels" text="{i18nModel>escalation}">
+													<layoutData>
+														<l:GridData span="L3 M3 S12" />
+													</layoutData>
+												</Label>
+											</f:label>
+											<f:fields>
+
+												<Text text="{path: 'operationDisruptionsModel>Escalation', formatter: 'airbus.mes.disruptions.Formatter.setEscalationText'}">
+													<layoutData>
+														<l:GridData span="L3 M3 S12" />
+													</layoutData>
+												</Text>
+											</f:fields>
+										</f:FormElement>
+
+										<f:FormElement>
+											<f:label>
+												<Label class="detailLabels" text="{i18nModel>promisedDateTime}">
+													<layoutData>
+														<l:GridData span="L2 M2 S12" />
+													</layoutData>
+												</Label>
+											</f:label>
+											<f:fields>
+												<Text text="{path: 'operationDisruptionsModel>PromisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.setEmptyPromisedDateTimeText'}">
+													<layoutData>
+														<l:GridData span="L4 M4 S12" />
+													</layoutData>
+												</Text>
+											</f:fields>
+										</f:FormElement>
 
 									</f:formElements>
 								</f:FormContainer>
 							</f:formContainers>
 						</f:Form>
 
-						<Text text="{i18nModel>status} : {operationDisruptionsModel>Status}" />
+						<Text text="{i18nModel>status} : {operationDisruptionsModel>Status}" class="sapUiMediumMarginBegin statusText" />
 
 						<List showNoData="false" class="sapUiSmallMargin"
 							items="{path: 'operationDisruptionsModel>/Rowsets/Rowset/1/Row'}">
 
 							<CustomListItem class="msgColor">
-								<HBox justifyContent="SpaceBetween" class="sapUiSmallMargin msgHeaderText">
+								<HBox class="sapUiSmallMarginBeginEnd sapUiTinyMarginTopBottom msgHeaderText">
 									<items>
 										<Text text="From : {operationDisruptionsModel>UserFullName}"></Text>
+										<Text text="|" class="sapUiSmallMarginBeginEnd"></Text>
 										<Text text="Action : {operationDisruptionsModel>Action}"></Text>
 									</items>
 								</HBox>
@@ -188,11 +219,11 @@
 									width="100%" />
 
 								<HBox>
-									<Button text="{i18nModel>submitComment}" press="submitComment"
-										class="sapUiSmallMarginEnd" width="12rem" />
+									<Button text="{i18nModel>submitComment}" type="Accept" press="submitComment"
+										class="sapUiSmallMarginEnd buttonAccept" width="12rem" />
 
-									<Button text="{i18nModel>cancelComment}" press="hideCommentBox"
-										class="sapUiSmallMarginEnd" width="12rem" />
+									<Button text="{i18nModel>cancelComment}" type="Reject" press="hideCommentBox"
+										class="sapUiSmallMarginEnd buttonReject" width="12rem" />
 								</HBox>
 
 							</VBox>
@@ -200,6 +231,11 @@
 						</Panel>
 
 						<Toolbar class="disruptionBottomBar">
+
+							<Button id="addComment" text="{i18nModel>addComment}"
+								type="Emphasized"
+								visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>ResponsibleFlag'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setAddCommentButtonVisibility'}"
+								press="showCommentBox" design="Transparent" icon="sap-icon://comment" />
 
 							<ToolbarSpacer />
 
@@ -212,13 +248,8 @@
 								visible="{parts: [ {path: 'operationDisruptionsModel>ResponsibleFlag'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setRejectButtonVisibility'}"
 								press="onRejectDisruption" design="Transparent" icon="sap-icon://sys-cancel-2" />
 
-							<Button id="addComment" text="{i18nModel>addComment}"
-								type="Emphasized"
-								visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>ResponsibleFlag'} ], formatter: 'airbus.mes.disruptions.Formatter.setAddCommentButtonVisibility'}"
-								press="showCommentBox" design="Transparent" icon="sap-icon://comment" />
-
 							<Button text="{i18nModel>escalate}" type="Reject"
-								visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>Severity'} ], formatter: 'airbus.mes.disruptions.Formatter.setEscalateButtonVisibility'}"
+								visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>Severity'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setEscalateButtonVisibility'}"
 								press="onEscalateDisruption" design="Transparent" icon="sap-icon://message-warning" />
 
 							<Button text="{i18nModel>markSolved}" type="Accept"

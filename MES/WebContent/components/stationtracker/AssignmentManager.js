@@ -8,6 +8,31 @@ airbus.mes.stationtracker.AssignmentManager = {
 	polypolyAffectation : undefined,
 	userSelected : "%",
 	avlLineSelected : "%",
+	polypolyAssignment : {
+		selectedLine : undefined,
+		selectedUser : {
+			login : "NA"
+		},
+		selectedShift : undefined,
+	},
+	
+	handleLineAssignment : function( sModeAssignment, bQACheck) {
+		var sUserID = airbus.mes.stationtracker.AssignmentManager.polypolyAssignment.selectedUser.login;
+		var sShiftName = airbus.mes.stationtracker.AssignmentManager.polypolyAssignment.selectedShift.shiftName;
+		var sDay = airbus.mes.stationtracker.AssignmentManager.polypolyAssignment.selectedShift.day;
+		var sAVLLineSKILL = airbus.mes.stationtracker.AssignmentManager.polypolyAssignment.selectedLine.avlLine;
+		var sLine = sAVLLineSKILL.split("_")[0];
+		var sSkill = sAVLLineSKILL.split("_")[1];
+		var sSite = airbus.mes.settings.ModelManager.site;
+		var sStation = airbus.mes.settings.ModelManager.station;
+		var sMSN = airbus.mes.settings.ModelManager.msn;
+		var sMyUserID = "MESYS"; //FIXME ??
+		
+		sDay = (new Date(sDay)).toISOString().slice(0,10).replace(/-/g,"");
+		
+		airbus.mes.stationtracker.ModelManager.setLineAssignment(sSite, sStation, sMSN, sUserID, sShiftName, sDay, sLine, sSkill, sMyUserID, sModeAssignment, bQACheck);
+
+	},
 	
 	computeAffectationHierarchy : function() {
 		
@@ -50,10 +75,17 @@ airbus.mes.stationtracker.AssignmentManager = {
 		
 	},
 	
+	/**
+	 *	action attach to + button on scheduler 
+	 */
 	newLine : function(sKey) {
-			
+//			TODO : only 9 numbers (INTEGER --> 9 numbers) problem with unicity
+//			Define an unique identifier for the AVL Line by using the date in millisecond
+			var oDate = new Date(); 
+			var sAVLKey = oDate.getTime();
+
 			airbus.mes.stationtracker.AssignmentManager.bOpen = true;
-			scheduler.addSection({ key: (Math.random()).toString() , rescheduled:"R" , name:"Select Operator"}, sKey );   
+			scheduler.addSection({ key: sAVLKey , rescheduled:"R" , name:"Select Operator"}, sKey );   
 		
 	},
 	

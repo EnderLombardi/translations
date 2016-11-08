@@ -802,16 +802,14 @@ background-color: #0085AD !important;
 #stationTrackerView--stationtracker .dhx_row_folder .dhx_scell_name .fa-chevron-right{
     position: absolute;
 	left: 0;
-    line-height: 20px;
-    margin-left: 10px;
+   margin-left: 10px;
 	margin-right: 10px;
 	color: #0F5F78;
 }
 
 #stationTrackerView--stationtracker .dhx_row_folder .dhx_scell_name .fa-plus{
     position: absolute;
-	right: 0;
-    line-height: 20px;
+				right: 0;
     margin-right: 10px;
     margin-left: 10px;
 	color: #0F5F78;

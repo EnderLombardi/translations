@@ -8,8 +8,8 @@
 				<VBox>
 					<HBox alignItems="Center" width="100%">
 						<Label text="Promised Date"></Label>
-						<DatePicker id="disruptionAckDate" valueFormat="yyyy-mm-dd"
-							placeholder="yyyy-mm-dd" displayFormat="short" class="sapUiSmallMarginBegin"
+						<DatePicker id="disruptionAckDate" valueFormat="yyyy-MM-dd"
+							placeholder="yyyy-mm-dd" displayFormat="yyyy-MM-dd" class="sapUiSmallMarginBegin"
 							width="100%" />
 					</HBox>
 					<HBox alignItems="Center" width="100%">

@@ -207,7 +207,7 @@ sap.ui
 					/***********************************************************
 					 * Create Disruption
 					 */
-					onCreateDisrupution : function() {
+					onCreateDisruption : function() {
 
 						// forfully set handle as the first item in the list
 						// after selecting Category, Reason, Responsible and
@@ -260,7 +260,7 @@ sap.ui
 									{
 										"attribute" : "DESCRIPTION",
 										"value" : this.getView()
-												.byId("comment").getValue()
+												.byId("description").getValue()
 									},
 									{
 										"attribute" : "REASON",
@@ -323,79 +323,29 @@ sap.ui
 
 						}
 						aModelData.push(oJson);
-
+						
+						// message subject is passed as category because subject is compulsary and category will always be in input.
 						this.ModelManager.createDisruption(sHandle, sCategory,
-								sRootCause, sComment, aModelData);
+								sCategory, sComment, aModelData);
 					},
 
 					/***********************************************************
 					 * For originator - update will be done for comment, Reason,
 					 * Responsible Group, Time lost , Expected date/time and Root Cause.
 					 */
-					onUpdateDisrupution : function() {
-
-						// Create a JSON for payload attributes
-						var aModelData = []
-
-						var oJson = {
-							"payload" : [
-									{
-										"attribute" : "REASON",
-										"value" : this.getView().byId(
-												"selectreason")
-												.getSelectedKey()
-									},
-									{
-										"attribute" : "TIME_LOST",
-										"value" : this.getView().byId(
-												"timeLost").getValue()
-									},
-									{
-										"attribute" : "REQD_FIX_BY",
-										"value" : this.getView().byId(
-												"expectedDate").getValue()
-												+ " "
-												+ this.getView().byId(
-														"expectedTime")
-														.getValue()
-									},
-									{
-										"attribute" : "GRAVITY",
-										"value" : this.getView()
-												.byId("gravity")
-												.getSelectedKey()
-									},
-									{
-										"attribute" : "STATUS",
-										"value" : this.getView().getModel(
-												"i18nModel").getProperty(
-												"Pending")
-									},
-									{
-										"attribute" : "ROOT_CAUSE",
-										"value" : this.getView().byId(
-												"selectRootCause")
-												.getSelectedKey()
-									},
-									{
-										"attribute" : "RESPONSIBLE_GROUP",
-										"value" : this.getView().byId(
-												"selectResponsible")
-												.getSelectedKey()
-									},
-									{
-										"attribute" : "COMMENT",
-										"value" : this.getView().byId(
-												"comment")
-												.getValue()
-									}
-									
-									]
-
-						}
-						aModelData.push(oJson);
-
-					//	this.ModelManager.updateDisruption();
+					onUpdateDisruption : function() {
+						
+						var sMessageRef = sap.ui.getCore().getModel("DisruptionDetailModel").getProperty("/MessageRef")
+						var sReason	= this.getView().byId("selectreason").getSelectedKey();
+						var sResponsibleGroup = this.getView().byId("selectResponsible").getSelectedKey();
+						var sRootCause	= this.getView().byId("selectRootCause").getSelectedKey();
+						var iTimeLost = this.getView().byId("timeLost").getValue()
+						var dFixedByTime = this.getView().byId("expectedDate").getValue()+ " " + this.getView().byId("expectedTime").getValue()
+						var sComment = this.getView().byId("comment").getValue()
+						var iGravity = this.getView().byId("gravity").getSelectedKey()
+						
+						//call update service
+						this.ModelManager.updateDisruption(sMessageRef,sReason,sResponsibleGroup,sRootCause,iTimeLost,dFixedByTime,sComment,iGravity);
 
 					},
 
@@ -458,6 +408,7 @@ sap.ui
 						this.getView().byId("expectedTime").setValue();
 						this.getView().byId("timeLost").setValue();
 						this.getView().byId("comment").setValue();
+						this.getView().byId("description").setValue();
 					}
 
 				/**

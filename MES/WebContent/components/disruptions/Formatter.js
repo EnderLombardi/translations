@@ -5,65 +5,20 @@ jQuery.sap.declare("airbus.mes.disrtuptions.Formatter");
 airbus.mes.disruptions.Formatter = {
 	monthNames : [ "January", "February", "March", "April", "May", "June",
 			"July", "August", "September", "October", "November", "December" ],
-			
-	status: {
-		"pending": "Pending",
+
+	status : {
+		"pending" : "Pending",
 		"closed" : "Closed",
 		"acknowledged" : "Acknowledged",
 		"solved" : "Solved",
-		"rejected" : "Rejected"
-	},
-	
-	severity: {
-		"info": "INTO",
-		"warning" : "CLOSED",
-		"critical" : "CRITICAL"
-	},
-
-	json2xml : function(o, tab) {
-		var toXml = function(v, name, ind) {
-			var xml = "";
-			if (v instanceof Array) {
-				for (var i = 0, n = v.length; i < n; i++)
-					xml += ind + toXml(v[i], name, ind + "\t") + "\n";
-			} else if (typeof (v) == "object") {
-				var hasChild = false;
-				xml += ind + "<" + name;
-				for ( var m in v) {
-					if (m.charAt(0) == "@")
-						xml += " " + m.substr(1) + "=\"" + v[m].toString()
-								+ "\"";
-					else
-						hasChild = true;
-				}
-				xml += hasChild ? ">" : "/>";
-				if (hasChild) {
-					for ( var m in v) {
-						if (m == "#text")
-							xml += v[m];
-						else if (m == "#cdata")
-							xml += "<![CDATA[" + v[m] + "]]>";
-						else if (m.charAt(0) != "@")
-							xml += toXml(v[m], m, ind + "\t");
-					}
-					xml += (xml.charAt(xml.length - 1) == "\n" ? ind : "")
-							+ "</" + name + ">";
-				}
-			} else {
-				xml += ind + "<" + name + ">" + v.toString() + "</" + name
-						+ ">";
-			}
-			return xml;
-		}, xml = "";
-		for ( var m in o)
-			xml += toXml(o[m], m, "");
-		return tab ? xml.replace(/\t/g, tab) : xml.replace(/\t|\n/g, "");
+		"rejected" : "Rejected",
+		"deleted" : "Deleted"
 	},
 
 	defaultDateConversion : function(defaultDate, defaultTime) {
 
 		return defaultDate.getFullYear() + "-" + defaultDate.getMonth() + "-"
-				+ defaultDate.getDate()
+				+ defaultDate.getDate();
 	},
 
 	setText : function(status, gravity, escalation) {
@@ -79,9 +34,8 @@ airbus.mes.disruptions.Formatter = {
 	},
 
 	getDate : function(datetime) {
-		
-		if(datetime == null || datetime === undefined)
-			{
+
+		if (datetime == null || datetime === undefined) {
 			var today = new Date();
 			var dd = today.getDate();
 			var mm = today.getMonth(); // January is 0!
@@ -101,9 +55,8 @@ airbus.mes.disruptions.Formatter = {
 	},
 
 	getTime : function(datetime) {
-		
-		if(datetime == null || datetime === undefined)
-			{
+
+		if (datetime == null || datetime === undefined) {
 			var today = new Date();
 			var HH = today.getHours();
 			var mm = today.getMinutes();
@@ -116,12 +69,30 @@ airbus.mes.disruptions.Formatter = {
 
 		}
 	},
-
+	
+	setEscalationText : function(escalationLevel) {
+		if(escalationLevel == 1)
+			return "Not Escalated";
+		
+		else if(escalationLevel == 2)
+			return "First Escalation";
+		
+		else if(escalationLevel == 3)
+			return "Final Escalation";
+		else
+			return "-----";
+	},
+	
 	setEditButtonVisibility : function(originatorFlag, status) {
 
-		if (originatorFlag == "X") {
+		if (status == airbus.mes.disruptions.Formatter.status.deleted) {
+			return false;
+		} else if (originatorFlag == "X") {
 
-			if (status == airbus.mes.disruptions.Formatter.status.solved || status == airbus.mes.disruptions.Formatter.status.reject || status == airbus.mes.disruptions.Formatter.status.pending) {
+			if (status == airbus.mes.disruptions.Formatter.status.solved
+					|| status == airbus.mes.disruptions.Formatter.status.reject
+					|| status == airbus.mes.disruptions.Formatter.status.pending) {
+
 				return true;
 			}
 		}
@@ -129,9 +100,12 @@ airbus.mes.disruptions.Formatter = {
 		return false;
 	},
 
-	setDeleteButtonVisibility : function(originatorFlag) {
+	setDeleteButtonVisibility : function(originatorFlag, status) {
 
-		if (originatorFlag == 'X') {
+		if (status == airbus.mes.disruptions.Formatter.status.deleted) {
+			return false;
+		} else if (originatorFlag == 'X') {
+
 			return true;
 		}
 
@@ -140,9 +114,14 @@ airbus.mes.disruptions.Formatter = {
 
 	setCloseButtonVisibility : function(originatorFlag, status) {
 
-		if (originatorFlag == "X") {
+		if (status == airbus.mes.disruptions.Formatter.status.deleted) {
+			return false;
+		} else if (originatorFlag == "X") {
 
-			if (status == airbus.mes.disruptions.Formatter.status.solved || status == airbus.mes.disruptions.Formatter.status.reject || status == airbus.mes.disruptions.Formatter.status.pending) {
+			if (status == airbus.mes.disruptions.Formatter.status.solved
+					|| status == airbus.mes.disruptions.Formatter.status.reject
+					|| status == airbus.mes.disruptions.Formatter.status.pending) {
+
 				return true;
 			}
 		}
@@ -152,22 +131,25 @@ airbus.mes.disruptions.Formatter = {
 
 	setRejectButtonVisibility : function(responsibleFlag, status) {
 
-		if (responsibleFlag == "X") {
+		if (status == airbus.mes.disruptions.Formatter.status.deleted) {
+			return false;
+		} else if (responsibleFlag == "X") {
 
 			if (status == airbus.mes.disruptions.Formatter.status.rejected) {
-				
+
 				this.setText(airbus.mes.disruptions.Formatter.status.rejected);
 				this.setEnabled(false);
-				
+
 				return true;
-				
+
 			} else if (status == airbus.mes.disruptions.Formatter.status.pending) {
+
 				return true;
-				
-			} else if(status == airbus.mes.disruptions.Formatter.status.acknowledged) {
-				
+
+			} else if (status == airbus.mes.disruptions.Formatter.status.acknowledged) {
+
 				return true;
-				
+
 			}
 
 		}
@@ -175,16 +157,23 @@ airbus.mes.disruptions.Formatter = {
 		return false;
 	},
 
-	setAddCommentButtonVisibility : function(originatorFlag, responsibleFlag) {
+	setAddCommentButtonVisibility : function(originatorFlag, responsibleFlag, status) {
 
-		return true;
+		if (status == airbus.mes.disruptions.Formatter.status.deleted)
+			return false;
+		
+		else 
+			return true;
 	},
 
 	setAcknowledgeButtonVisibility : function(responsibleFlag, status) {
 
-		if (responsibleFlag == "X") {
+		if (status == airbus.mes.disruptions.Formatter.status.deleted) {
+			return false;
+		} else if (responsibleFlag == "X") {
 
 			if (status == airbus.mes.disruptions.Formatter.status.pending) {
+
 				return true;
 			}
 		}
@@ -192,42 +181,37 @@ airbus.mes.disruptions.Formatter = {
 		return false;
 	},
 
-	setEscalateButtonVisibility : function(originatorFlag, severity) {
+	setEscalateButtonVisibility : function(originatorFlag, escalation, status) {
 
-		if (originatorFlag == "X") {
+		if (status == airbus.mes.disruptions.Formatter.status.deleted) {
+			return false;
+		} else if (originatorFlag != "X" || escalation == 3)
+			return false;
 
-			if (severity == airbus.mes.disruptions.Formatter.severity.info) {
-				
-				this.setText("Escalate to Level 1")
-				
-			} else if (severity == airbus.mes.disruptions.Formatter.severity.warning) {
-				
-				this.setText("Escalate to Level 2")
-				
-			} else if (severity == airbus.mes.disruptions.Formatter.severity.critical) {
-				
-				this.setText("Escalated");
-				this.setEnabled(false);
-				
-			}
-			
+		else
 			return true;
-
-		}
-
-		return false;
 	},
 
 	setMarkSolvedButtonVisibility : function(responsibleFlag, status) {
 
-		if (responsibleFlag == "X") {
+		if (status == airbus.mes.disruptions.Formatter.status.deleted) {
+			return false;
+		} else if (responsibleFlag == "X") {
 
 			if (status == airbus.mes.disruptions.Formatter.status.acknowledged) {
+
 				return true;
 			}
 		}
 
 		return false;
+	},
+	
+	setEmptyPromisedDateTimeText : function(dateTime) {
+		if(dateTime == "")
+			return "--:--:--";
+		
+		return dateTime;
 	}
 
 };

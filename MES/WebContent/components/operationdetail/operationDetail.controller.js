@@ -258,41 +258,40 @@ sap.ui
 								oView.byId("selectCategory").fireChange(
 										oView.byId("selectCategory")
 												.getSelectedItem());
-
 								oView
 										.byId("selectResponsible")
 										.setSelectedKey(
 												oModel
-														.getProperty("/ResponsibleGroup"));
-								
+													.getProperty("/ResponsibleGroup"));
 								oView.byId("selectreason").setSelectedKey(
 										oModel.getProperty("/Reason"));
-
 								oView.byId("selectOriginator").setSelectedKey(
 										oModel.getProperty("/OriginatorGroup"));
 								oView.byId("selectRootCause").setSelectedKey(
 										oModel.getProperty("/Subject"));
 								oView.byId("timeLost").setValue(oModel.getProperty("/TimeLost"));
+								oView.byId("status").setValue(oModel.getProperty("/Status"));
+								oView.byId("description").setValue(oModel.getProperty("/Description"));
+								oView.byId("comment").setValue();
 								
-
 								airbus.mes.operationdetail.createDisruption.oView.oController
 										.initializeTree();
-
-								// Set only Root Cause enabled so that it can be
-								// edited in Edit Disruption
-								airbus.mes.operationdetail.createDisruption.oView.oController
-										.setEnabledSelectBox(false, true, true,
-												true);
-
 								
-							} else {
+								airbus.mes.operationdetail.createDisruption.oView.oController
+								.setEnabledSelectBox(false, true, true,
+										true);
 
-							
+				
+							} else {
+								
+								
 								airbus.mes.operationdetail.createDisruption.oView.oController
 								.initializeTree();
+								
 								airbus.mes.operationdetail.createDisruption.oView.oController
 								.setEnabledSelectBox(true, false, false,
 										false);
+								
 							}
 							break;
 

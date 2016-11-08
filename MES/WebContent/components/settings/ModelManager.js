@@ -32,7 +32,7 @@ airbus.mes.settings.ModelManager =  {
 		core.setModel(new sap.ui.model.json.JSONModel(), "program");
 		core.setModel(new sap.ui.model.json.JSONModel(), "site");
 		
-		//core.getModel("plantModel").attachRequestCompleted( airbus.mes.settings.ModelManager.onPlantLoad );
+		core.getModel("userSettingModel").attachRequestCompleted( airbus.mes.settings.ModelManager.onUserSettingLoad );
 //		core.setModel(new sap.ui.model.json.JSONModel(), "langModel");
 //		core.setModel(new sap.ui.model.json.JSONModel(), "userSettingModel");
 
@@ -62,9 +62,7 @@ airbus.mes.settings.ModelManager =  {
 		//Loading of model
 		
 		this.loadSiteModel();
-		//this.loadPlantModel();
-        this.loadUserSettingsModel();
-        this.getProgram();
+	    this.getProgram();
         
 	},
 	
@@ -124,12 +122,22 @@ airbus.mes.settings.ModelManager =  {
 	loadUserSettingsModel:function(){
 		var oUserSettingModel = sap.ui.getCore().getModel("userSettingModel");
 		oUserSettingModel.loadData(airbus.mes.settings.ModelManager.getUrlUserSetting(),null,false);
-		
-		//Set Data
-		oUserSettingModel = this.core.getModel("userSettingModel").getData();  
-		this.site = oUserSettingModel.Rowsets.Rowset[0].Row[0].plant;
-		this.station = oUserSettingModel.Rowsets.Rowset[0].Row[0].station;
+	
 	},
+	onUserSettingLoad : function() {
+		// Apply user settings.
+		airbus.mes.settings.oView.getController().getUserSettings();
+		// Current Msn is store with "" so we reuse msn selected
+		airbus.mes.shell.oView.byId("labelMSN").setText(airbus.mes.settings.ModelManager.msn);
+		 
+		var sLangage = sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/language") ;
+		if ( sLangage != undefined && sLangage != "---" ) {
+			 	
+	//		airbus.mes.shell.oView.getController().updateUrlForLanguage(sLangage);
+		}
+		
+	},
+	
 	// ********************************************************************************
 	 messageShow : function(text) {
 	        sap.m.MessageToast
@@ -152,9 +160,10 @@ airbus.mes.settings.ModelManager =  {
 	               
 	  },
 	  // ************************************************************************************
-	  getUrlSaveUserSetting:function(){
+	  saveUserSetting:function(){
 		  var urlSaveUserSetting = this.urlModel.getProperty("urlSaveUserSetting");
 		 // urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(urlSaveUserSetting, "$user", airbus.mes.settings.ModelManager.user);
+		  urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(urlSaveUserSetting, "$langage", jQuery.sap.getUriParameters().get("sap-language"));
 		  urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(urlSaveUserSetting, "$plant", airbus.mes.settings.ModelManager.site);
 		  urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(urlSaveUserSetting, "$program", airbus.mes.settings.ModelManager.program);
 		  urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(urlSaveUserSetting, "$line", airbus.mes.settings.ModelManager.line);
@@ -183,9 +192,9 @@ airbus.mes.settings.ModelManager =  {
 				},
 				success : function(result, status, xhr) {
 					
-				//	airbus.mes.settings.ModelManager.loadUserSettingsModel()
-					airbus.mes.shell.oView.byId("labelMSN").setText(airbus.mes.settings.ModelManager.msn);
-					
+					//Refresh label in header.
+					airbus.mes.settings.ModelManager.loadUserSettingsModel();
+								
 				}
 			});
 		  

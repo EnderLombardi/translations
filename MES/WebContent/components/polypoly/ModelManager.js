@@ -158,12 +158,17 @@ airbus.mes.polypoly.ModelManager = {
 	},
 	
 	handleUserConnection : function(sUrl) {
-		if(this.queryParams.get("url_config") == "sopra" || this.queryParams.get("url_config") == "airbus"){
-			var sUser = "NG43F36";
-			var sPassword = "tretre654";
-			var sAddUrl = "&j_user="+ sUser + "&j_password=" + sPassword;
+		var bModeDroits = true;
+		if(bModeDroits){
+			if(this.queryParams.get("url_config") == "sopra" || this.queryParams.get("url_config") == "airbus"){
+				var sUser = "NG43F36";
+				var sPassword = "tretre654";
+				var sAddUrl = "&j_user="+ sUser + "&j_password=" + sPassword;
 
-			return sUrl + sAddUrl
+				return sUrl + sAddUrl
+			}else{
+				return sUrl
+			}
 		}else{
 			return sUrl
 		}
