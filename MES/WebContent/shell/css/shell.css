@@ -152,3 +152,24 @@ table {
 .WhiteBG{
 	background-color:#fff !important;
 }
+
+
+/*** CSS for Buttons **********/
+
+.buttonAccept div.sapMBtnInner.sapMBtnAccept {
+    background-image: none;
+    background-color: #84bd00;
+    color: #ffffff;
+    text-shadow: none;
+    border-radius:0;
+    border:none;
+}
+.buttonReject div.sapMBtnInner.sapMBtnReject {
+    background-image: none;
+    background-color: #e5002b;
+    color: #ffffff;
+    text-shadow: none;
+    border-radius:0;
+    border:none;
+}
+/** End of CSS for buttons *****/
