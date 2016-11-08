@@ -276,11 +276,21 @@ sap.ui
 								
 								airbus.mes.operationdetail.createDisruption.oView.oController
 										.initializeTree();
+								
+								airbus.mes.operationdetail.createDisruption.oView.oController
+								.setEnabledSelectBox(false, true, true,
+										true);
+
 				
 							} else {
-	
+								
+								
 								airbus.mes.operationdetail.createDisruption.oView.oController
 								.initializeTree();
+								
+								airbus.mes.operationdetail.createDisruption.oView.oController
+								.setEnabledSelectBox(true, false, false,
+										false);
 								
 							}
 							break;

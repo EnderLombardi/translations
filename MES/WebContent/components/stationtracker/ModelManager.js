@@ -65,10 +65,11 @@ airbus.mes.stationtracker.ModelManager = {
               this.loadRessourcePool();
        },
        
-       setLineAssignment : function(sSite, sStation, sUserID, sShiftName, sDay, sLine, sSkill, sMyUserID, sModeAssignment, bQACheck) {
+       setLineAssignment : function(sSite, sStation, sMSN, sUserID, sShiftName, sDay, sLine, sSkill, sMyUserID, sModeAssignment, bQACheck) {
     	   var seturlLineAssignment = this.urlModel.getProperty('urlsetlineassignment');
     	   seturlLineAssignment = this.replaceURI(seturlLineAssignment, "$site", sSite);
     	   seturlLineAssignment = this.replaceURI(seturlLineAssignment, "$station", sStation);
+    	   seturlLineAssignment = this.replaceURI(seturlLineAssignment, "$msn", sMSN);
     	   seturlLineAssignment = this.replaceURI(seturlLineAssignment, "$userid", sUserID);
     	   seturlLineAssignment = this.replaceURI(seturlLineAssignment, "$shiftname", sShiftName);
     	   seturlLineAssignment = this.replaceURI(seturlLineAssignment, "$day", sDay);
@@ -343,8 +344,17 @@ airbus.mes.stationtracker.ModelManager = {
 
        },
        loadShifts : function() {
-              var oViewModelshift = sap.ui.getCore().getModel("shiftsModel");
+             
+    	   var oViewModelshift = sap.ui.getCore().getModel("shiftsModel");
+              var getUrlShifts = this.urlModel.getProperty("urlshifts");
+              var oData = airbus.mes.settings.ModelManager;
+              
+              getUrlShifts = airbus.mes.stationtracker.ModelManager.replaceURI(getUrlShifts, "$site", oData.site );
+              getUrlShifts = airbus.mes.stationtracker.ModelManager.replaceURI(getUrlShifts, "$station", oData.station );
+              getUrlShifts = airbus.mes.stationtracker.ModelManager.replaceURI(getUrlShifts, "$msn", oData.msn );
+              
               oViewModelshift.loadData(this.urlModel.getProperty("urlshifts"), null, false);
+                
        },
        onShiftsLoad : function() {
 

@@ -88,6 +88,10 @@ airbus.mes.polypoly.PolypolyManager = {
 	},
 	
 	createQATableData : function(oMiiData) {
+		if(oMiiColumns == undefined){
+			return false
+		}
+		
 		var oMiiColumns = oMiiData.Rowsets.Rowset[1].Row;
 		var lines = 0;
 		var qaList = {};
@@ -95,6 +99,7 @@ airbus.mes.polypoly.PolypolyManager = {
 				"rows" : [],
 				"columns" : []
 			};
+		
 		oMiiColumns.forEach(function(col) {
 			oTableRows.columns.push({});
 			oTableRows.columns[oTableRows.columns.length - 1]["name"] = col.competencyName;
@@ -205,8 +210,8 @@ airbus.mes.polypoly.PolypolyManager = {
 		var colonnes = {};
 		var need3 = 0;
 		var need4 = 0;
-		oMiiColumns
-				.forEach(function(col) {
+		if(oMiiColumns != undefined){
+		oMiiColumns.forEach(function(col) {
 					if (col != "") {
 						if (col.POLYPOLY_NEEDS_3 == '---') {
 							oTableRows.rows[1][col.technicalName] = "0";
@@ -252,7 +257,7 @@ airbus.mes.polypoly.PolypolyManager = {
 								need4 ];
 					}
 				});
-
+		}
 		var separateur = "";
 		Object
 				.keys(ressourcePools)
@@ -365,14 +370,15 @@ airbus.mes.polypoly.PolypolyManager = {
 								oTableRows.rows[oTableRows.rows.length - 1]["type"] = "ASIS";
 								oTableRows.rows[oTableRows.rows.length - 1]["ressourcepool"] = ressourcePools[rp];
 								oTableRows.rows[oTableRows.rows.length - 1]["ressourcepoolId"] = rp;
-								oMiiColumns
-										.forEach(function(col) {
+								if(oMiiColumns != undefined){
+								oMiiColumns.forEach(function(col) {
 											if (col != "") {
 												var c = col.technicalName;
 												oTableRows.rows[oTableRows.rows.length - 1][c] = colonnes[c][i - 1]
 														.toString();
 											}
 										});
+								}
 							}
 							// Gap
 							oTableRows.rows.push({
@@ -390,8 +396,8 @@ airbus.mes.polypoly.PolypolyManager = {
 								oTableRows.rows[oTableRows.rows.length - 1]["type"] = "GAP";
 								oTableRows.rows[oTableRows.rows.length - 1]["ressourcepool"] = ressourcePools[rp];
 								oTableRows.rows[oTableRows.rows.length - 1]["ressourcepoolId"] = rp;
-								oMiiColumns
-										.forEach(function(col) {
+								if(oMiiColumns != undefined){
+								oMiiColumns.forEach(function(col) {
 											if (col != "") {
 												var c = col.technicalName;
 												var u = (colonnes[c][j + 1] - colonnes[c][j + 3]);
@@ -405,8 +411,10 @@ airbus.mes.polypoly.PolypolyManager = {
 														.toString();
 											}
 										});
+								}
 							}
 							// Ré-initialiser le calcul de GAP et de AS IS
+							if(oMiiColumns != undefined){
 							oMiiColumns.forEach(function(col) {
 								if (col != "") {
 									if (col.POLYPOLY_NEEDS_3 == '---') {
@@ -425,6 +433,7 @@ airbus.mes.polypoly.PolypolyManager = {
 											need3, need4 ];
 								}
 							});
+						}
 						});
 		return oTableRows;
 	},

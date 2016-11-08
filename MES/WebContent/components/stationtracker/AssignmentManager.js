@@ -25,11 +25,12 @@ airbus.mes.stationtracker.AssignmentManager = {
 		var sSkill = sAVLLineSKILL.split("_")[1];
 		var sSite = airbus.mes.settings.ModelManager.site;
 		var sStation = airbus.mes.settings.ModelManager.station;
+		var sMSN = airbus.mes.settings.ModelManager.msn;
 		var sMyUserID = "MESYS"; //FIXME ??
 		
 		sDay = (new Date(sDay)).toISOString().slice(0,10).replace(/-/g,"");
 		
-		airbus.mes.stationtracker.ModelManager.setLineAssignment(sSite, sStation, sUserID, sShiftName, sDay, sLine, sSkill, sMyUserID, sModeAssignment, bQACheck);
+		airbus.mes.stationtracker.ModelManager.setLineAssignment(sSite, sStation, sMSN, sUserID, sShiftName, sDay, sLine, sSkill, sMyUserID, sModeAssignment, bQACheck);
 
 	},
 	
