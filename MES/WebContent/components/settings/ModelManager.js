@@ -154,7 +154,7 @@ airbus.mes.settings.ModelManager =  {
 	               
 	  },
 	  // ************************************************************************************
-	  getUrlSaveUserSetting:function(){
+	  saveUserSetting:function(){
 		  var urlSaveUserSetting = this.urlModel.getProperty("urlSaveUserSetting");
 		 // urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(urlSaveUserSetting, "$user", airbus.mes.settings.ModelManager.user);
 		  urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(urlSaveUserSetting, "$plant", airbus.mes.settings.ModelManager.site);

@@ -458,7 +458,7 @@ sap.ui.controller("airbus.mes.settings.Settings",
 				
 					
 					
-					airbus.mes.settings.ModelManager.getUrlSaveUserSetting();
+					airbus.mes.settings.ModelManager.saveUserSetting();
 					// Navigate to correct view
 					that.navigate(oEvent);
 				}
