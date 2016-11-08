@@ -52,7 +52,7 @@ airbus.mes.shell.util.Formatter = {
 		}
 	},
 	
-	getMiiText : function(sID, sParam1, sParam2, sParam3, sParam3, sParam4, sParam5, sParam6, sParam6, sParam7, sParam8, sParam9, sParam10) {
+	getMiiText : function(sID, sParam1, sParam2, sParam3, sParam4, sParam5, sParam6, sParam7, sParam8, sParam9, sParam10) {
 		var sMessage = airbus.mes.shell.oView.getModel("miiI18n").getProperty(sID);
 		if(sParam1.constructor === String){
 			var aParams = Array.from(arguments).slice(1);
@@ -62,16 +62,16 @@ airbus.mes.shell.util.Formatter = {
 		return jQuery.sap.formatMessage(sMessage, aParams)
 	},
 	
-	getMiiTextFromData : function(data) {
-		if(data.hasOwnProperty("Rowsets")){
-			data = data.Rowsets.Rowset[0].Row[0];
+	getMiiTextFromData : function(oData) {
+		if(oData.hasOwnProperty("Rowsets")){
+			oData = oData.Rowsets.Rowset[0].Row[0];
 		}
-		var sMessageID = data.Message_ID;
+		var sMessageID = oData.Message_ID;
 		var aParams = [];
-		if(data.hasOwnProperty("Message_ID")){
-			for(var property in data){
-				if(property != "Message_ID" && property !="Message_Type" && data[property] != ""){
-					aParams.push(data[property]);
+		if(oData.hasOwnProperty("Message_ID")){
+			for(var sProperty in oData){
+				if(sProperty != "Message_ID" && sProperty !="Message_Type" && oData[sProperty] != ""){
+					aParams.push(oData[sProperty]);
 				}
 			}
 			this.getMiiText(sMessageID, aParams);
