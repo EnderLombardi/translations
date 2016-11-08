@@ -374,7 +374,7 @@ airbus.mes.stationtracker.util.Formatter = {
 	
 					
 				} else {
-
+					
 					var html = '<div><i class="fa fa-pencil ylabelEditIcon"></i><span class="ylabel">'
 						+ airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("SelectOperator") + '</span></div>';
 					return html;
