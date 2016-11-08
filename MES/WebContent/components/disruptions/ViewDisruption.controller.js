@@ -142,7 +142,7 @@ sap.ui
 						var commentValue = comment.getValue();
 						var msgRefValue = msgRef.getText();
 
-						var i18nModel = this.getView().getModel("i18nModel");
+						var i18nModel = airbus.mes.operationdetail.viewDisruption.oView.getModel("i18nModel");
 
 						// Call Close Disruption Service
 						var isSuccess = airbus.mes.disruptions.ModelManager
@@ -234,11 +234,11 @@ sap.ui
 								"disruptionCommentBox").getValue();
 						var msgref = sap.ui.getCore().byId(
 								"disruptionCommentMsgRef").getText();
-						var i18nModel = this.getView().getModel("i18nModel");
+						var i18nModel = airbus.mes.operationdetail.viewDisruption.oView.getModel("i18nModel");
 
 						// Call Disruption Service
 						var isSuccess = airbus.mes.disruptions.ModelManager
-								.rejectDisruption(comment, msgref, i18nModel);
+								.deleteDisruption(comment, msgref, i18nModel);
 
 						airbus.mes.disruptions.__enterCommentDialogue.close();
 
@@ -267,7 +267,7 @@ sap.ui
 						if (status == airbus.mes.disruptions.Formatter.status.pending) {
 
 							sap.m.MessageBox
-									.error(this.getView().getModel("i18nModel").getProperty("disruptionNotAckError"));
+									.error(airbus.mes.operationdetail.viewDisruption.oView.getModel("i18nModel").getProperty("disruptionNotAckError"));
 
 						} else {
 
@@ -294,7 +294,7 @@ sap.ui
 								"disruptionCommentBox").getValue();
 						var msgref = sap.ui.getCore().byId(
 								"disruptionCommentMsgRef").getText();
-						var i18nModel = this.getView().getModel("i18nModel");
+						var i18nModel = airbus.mes.operationdetail.viewDisruption.oView.getModel("i18nModel");;
 
 						// Call Disruption Service
 						var isSuccess = airbus.mes.disruptions.ModelManager
@@ -389,7 +389,7 @@ sap.ui
 							"Comment" : sComment
 						};
 
-						var i18nModel = this.getView().getModel("i18nModel");
+						var i18nModel = airbus.mes.operationdetail.viewDisruption.oView.getModel("i18nModel");
 
 						// Call Add comment Service
 						airbus.mes.disruptions.ModelManager.addComment(
@@ -583,7 +583,7 @@ sap.ui
 								"operationDisruptionsModel").getObject(
 								"MessageRef");
 
-						var i18nModel = this.getView().getModel("i18nModel");
+						var i18nModel = airbus.mes.operationdetail.viewDisruption.oView.getModel("i18nModel");
 
 						// Call Escalate Service
 						var isSuccess = airbus.mes.disruptions.ModelManager
@@ -596,10 +596,10 @@ sap.ui
 
 							this.getView()
 									.getModel("operationDisruptionsModel")
-									.getProperty(sPath).Escalation = this
+									.getProperty(sPath).EscalationLevel = this
 									.getView().getModel(
 											"operationDisruptionsModel")
-									.getProperty(sPath).Escalation + 1;
+									.getProperty(sPath).EscalationLevel + 1;
 
 							this.getView()
 									.getModel("operationDisruptionsModel")

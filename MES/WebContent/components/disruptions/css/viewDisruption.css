@@ -41,6 +41,7 @@
 
 .disruptionDetail .msgHeaderText {
 	font-weight: 700 !important;
+	text-transform: capitalize !important;
 }
 
 .disruptionDetail .msgColor {

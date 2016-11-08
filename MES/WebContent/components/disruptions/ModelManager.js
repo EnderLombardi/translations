@@ -693,4 +693,51 @@ airbus.mes.disruptions.ModelManager = {
 		
 		return flag_success
 	},
+	
+	/***************************************************************************
+	 * Delete Disruption Service
+	 **************************************************************************/
+	deleteDisruption : function(comment, msgref, i18nModel) {
+
+		var sMessageSuccess = i18nModel.getProperty("successDelete");
+		var sMessageError   = i18nModel.getProperty("tryAgain");
+		var flag_success;
+
+		jQuery.ajax({
+			url : this.getUrlToRejectDisruption(),
+			async: false,
+			data : {
+				"Param.1" : airbus.mes.settings.ModelManager.site,
+				"Param.2" : sap.ui.getCore().getModel(
+						"userSettingModel").getProperty(
+						"/Rowsets/Rowset/0/Row/0/user"),
+				"Param.3" : msgref,
+				"Param.4" : comment
+			},
+			error : function(xhr, status, error) {
+				airbus.mes.shell.ModelManager
+						.messageShow(sMessageError);
+				flag_success = false
+
+			},
+			success : function(result, status, xhr) {
+				if (result.Rowsets.Rowset[0].Row[0].Message_Type === undefined) {
+					airbus.mes.shell.ModelManager
+							.messageShow(sMessageSuccess);
+					flag_success = true;
+				} else if (result.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
+					airbus.mes.shell.ModelManager
+							.messageShow(result.Rowsets.Rowset[0].Row[0].Message)
+					flag_success = false;
+				} else {
+					airbus.mes.shell.ModelManager
+							.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
+					flag_success = true;
+				}
+
+			}
+		});
+		
+		return flag_success
+	}
 };

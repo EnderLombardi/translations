@@ -121,7 +121,7 @@
 						<Text text="{disruptionsTrackerModel>Reason}" />
 						<Text text="{disruptionsTrackerModel>OriginatorGroup}" />
 						<Text text="{disruptionsTrackerModel>ResponsibleGroup}" />
-						<Text text="{disruptionsTrackerModel>Severity}" />
+						<Text text="{path: 'disruptionsTrackerModel>EscalationLevel', formatter: 'airbus.mes.disruptiontracker.Formatter.setEscalationText'}" />
 						<Text text="{disruptionsTrackerModel>OpeningTime}" />
 						<Text text="{disruptionsTrackerModel>FixedByTime}" />
 						<Text text="{path: 'disruptionsTrackerModel>FixedByTime', formatter: 'airbus.mes.disruptiontracker.Formatter.formatTTGF'}" />
