@@ -1,16 +1,15 @@
-.classFormHint{
+.classFormHint {
 	font-size: 80% !important;
-    font-style: italic !important;
+	font-style: italic !important;
 }
 /****** classes for Disruption screen **********/
 .disruptionDetail .formDisruptionDetail {
-	background-color: rgba(0,0,0,0.2) !important;
+	background-color: rgba(0, 0, 0, 0.2) !important;
 }
 
 /* .disruptionDetail .barcolor {
 	background-color: #607381 !important;
 } */
-
 .disruptionDetail .expandableIcon {
 	background-color: #F5F5F5 !important;
 }
@@ -23,12 +22,12 @@
 	overflow: visible !important;
 }
 
-.disruptionDetail .formoperationDisruptionsModel > div > div {
+.disruptionDetail .formoperationDisruptionsModel>div>div {
 	background-color: #F5F5F5 !important;
 }
 
 .formoperationDisruptionsModel .sapMListBGSolid .sapMLIB {
-    background: #F5F5F5 !important;
+	background: #F5F5F5 !important;
 }
 
 .disruptionBottomBar {
@@ -46,63 +45,94 @@
 
 /****** End of CSS for Disruption screen **********/
 
-
 /* CSS for disruptionAckCommentDialogue */
-#disruptionAckCommentDialogue{
-                background: #ffffff;
-    border: none;
-    border-radius: 0;
-    box-shadow: 0 0 5px #333;
+#disruptionAckCommentDialogue {
+	background: #ffffff;
+	border: none;
+	border-radius: 0;
+	box-shadow: 0 0 5px #333;
 }
 
 #disruptionAckCommentDialogue-BarPH {
-                background:#d4f1f7;
+	background: #d4f1f7;
+}
 
-}
 #disruptionAckCommentDialogue-title {
-                color:#434343;
+	color: #434343;
 }
+
 #disruptionAckCommentDialogue-cont {
-                border-top:3px solid  rgba(255, 255, 255, 0);
+	border-top: 3px solid rgba(255, 255, 255, 0);
 }
+
 #disruptionAckCommentDialogue-header {
-                box-shadow: 0 0 5px #333;
-    overflow: visible;
+	box-shadow: 0 0 5px #333;
+	overflow: visible;
 }
 
 /********End of CSS for disruptionAckCommentDialogue */
 
 /* CSS for disruptionCommentDialogue  */
-#disruptionCommentDialogue{
-                background: #ffffff;
-    border: none;
-    border-radius: 0;
-    box-shadow: 0 0 5px #333;
+#disruptionCommentDialogue {
+	background: #ffffff;
+	border: none;
+	border-radius: 0;
+	box-shadow: 0 0 5px #333;
 }
 
 #disruptionCommentDialogue-BarPH {
-                background:#d4f1f7;
+	background: #d4f1f7;
+}
 
-}
 #disruptionCommentDialogue-title {
-                color:#434343;
+	color: #434343;
 }
+
 #disruptionCommentDialogue-cont {
-                border-top:3px solid  rgba(255, 255, 255, 0);
+	border-top: 3px solid rgba(255, 255, 255, 0);
 }
+
 #disruptionCommentDialogue-header {
-                box-shadow: 0 0 5px #333;
-    overflow: visible;
+	box-shadow: 0 0 5px #333;
+	overflow: visible;
 }
 /********End of CSS for disruptionCommentDialogue */
 
-/*** CSS for Footers ***********/
-.viewDisruptionFooter{
-    position: fixed;
-    bottom: 0px;
-    background:#607381 !important;
+/**** CSS for disruptionCloseDislog**************/
+#disruptionCloseDislog {
+	background: #ffffff;
+	border: none;
+	border-radius: 0;
+	box-shadow: 0 0 5px #333;
 }
-.viewDisruptionFooter .sapMBtnContent, .operationDetailFooter .sapMBtnIcon{
-	color:#fff !important;
+
+#disruptionCloseDislog-BarPH {
+	background: #d4f1f7;
+}
+
+#disruptionCloseDislog-title {
+	color: #434343;
+}
+
+#disruptionCloseDislog-cont {
+	border-top: 3px solid rgba(255, 255, 255, 0);
+}
+
+#disruptionCloseDislog-header {
+	box-shadow: 0 0 5px #333;
+	overflow: visible;
+}
+/****End of CSS for disruptionCloseDislog ***/
+
+/*** CSS for Footers ***********/
+.viewDisruptionFooter {
+	position: fixed;
+	bottom: 0px;
+	background: #607381 !important;
+}
+
+.viewDisruptionFooter .sapMBtnContent, .operationDetailFooter .sapMBtnIcon
+	{
+	color: #fff !important;
 }
 /*** end of CSS for Footer *********/
