@@ -32,7 +32,7 @@ sap.ui
 						path : "MessageType",
 						attr : "MessageType",
 						childs : [ {
-							id : "selectReasonTree",
+							id : "selectreason",
 							type : "select",
 							path : "Reason",
 							attr : "Reason",
@@ -71,7 +71,7 @@ sap.ui
 						 * this.ModelManager.loadDisruptionCategory();
 						 */
 
-						this.getView().byId("selectReasonTree")
+						this.getView().byId("selectreason")
 								.setSelectedKey();
 						this.getView().byId("selectRootCause").setSelectedKey();
 						this.getView().byId("selectResponsible")
@@ -131,7 +131,7 @@ sap.ui
 
 						if (id === "selectCategory") {
 							this.setEnabledSelectBox(true, true, false, false);
-						} else if (id === "selectReasonTree") {
+						} else if (id === "selectreason") {
 							this.setEnabledSelectBox(true, true, true, false);
 						} else if (id === "selectResponsible") {
 							this.setEnabledSelectBox(true, true, true, true);
@@ -196,7 +196,7 @@ sap.ui
 							fResponsible, fRootCause) {
 						this.getView().byId("selectCategory").setEnabled(
 								fCategory);
-						this.getView().byId("selectReasonTree").setEnabled(
+						this.getView().byId("selectreason").setEnabled(
 								fReason);
 						this.getView().byId("selectRootCause").setEnabled(
 								fRootCause);
@@ -265,7 +265,7 @@ sap.ui
 									{
 										"attribute" : "REASON",
 										"value" : this.getView().byId(
-												"selectReasonTree")
+												"selectreason")
 												.getSelectedKey()
 									},
 									{
@@ -342,7 +342,7 @@ sap.ui
 									{
 										"attribute" : "REASON",
 										"value" : this.getView().byId(
-												"selectReasonTree")
+												"selectreason")
 												.getSelectedKey()
 									},
 									{
@@ -446,7 +446,7 @@ sap.ui
 					 */
 					resetAllFields : function() {
 						this.getView().byId("selectCategory").setSelectedKey();
-						this.getView().byId("selectReasonTree")
+						this.getView().byId("selectreason")
 								.setSelectedKey();
 						this.getView().byId("selectResponsible")
 								.setSelectedKey();

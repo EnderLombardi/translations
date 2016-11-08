@@ -44,7 +44,7 @@ sap.ui
 						path : "MessageType",
 						attr : "MessageType",
 						childs : [ {
-							id : "selectReasonTree",
+							id : "selectreason",
 							type : "select",
 							path : "Reason",
 							attr : "Reason",
@@ -114,7 +114,7 @@ sap.ui
 
 					/*	if (id === "selectCatogory") {
 							this.setEnabledSelectBox(true, true, false, false);
-						} else if (id === "selectReasonTree") {
+						} else if (id === "selectreason") {
 							this.setEnabledSelectBox(true, true, true, false);
 						} else {
 							this.setEnabledSelectBox(true, true, true, true);
@@ -184,7 +184,7 @@ sap.ui
 								.loadDisruptionCustomData();
 						this.filterField(this.selectTree);
 						this.getView().byId("selectCategory").setValue("");
-						this.getView().byId("selectReasonTree").setValue("");
+						this.getView().byId("selectreason").setValue("");
 						this.getView().byId("selectRootCause").setValue("");
 						this.getView().byId("selectResponsible").setValue("");
 
@@ -195,7 +195,7 @@ sap.ui
 							fResponsible, fRootCause) {
 						this.getView().byId("selectCategory").setEnabled(
 								fCategory);
-						this.getView().byId("selectReasonTree").setEnabled(
+						this.getView().byId("selectreason").setEnabled(
 								fReason);
 						this.getView().byId("selectRootCause").setEnabled(
 								fResponsible);
@@ -236,7 +236,7 @@ sap.ui
 								},
 								{
 									"attribute" : "REASON",
-									"value": this.getView().byId("selectReasonTree").getSelectedKey()
+									"value": this.getView().byId("selectreason").getSelectedKey()
 								},
 								{
 									"attribute" : "TIME_LOST",

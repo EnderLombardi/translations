@@ -99,7 +99,7 @@
 
 										<f:FormElement>
 											<f:label>
-												<Label class="detailLabels" text="{i18nModel>nature}">
+												<Label class="detailLabels" text="{i18nModel>reason}">
 													<layoutData>
 														<l:GridData span="L2 M2 S12" />
 													</layoutData>
