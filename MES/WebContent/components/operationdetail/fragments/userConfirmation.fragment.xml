@@ -4,7 +4,6 @@
 			<content>	
 			<Toolbar class="toolBarBottom">
 			<ToolbarSpacer/><Button icon="sap-icon://business-card" text="Scan" type="Emphasized" press="onScanConfirmation"/> 
-<!-- 				<Button text="Scan" press="onScanConfirmation" type="Emphasized"/> -->
 			</Toolbar>	
 			<HBox justifyContent="SpaceAround">
 					
@@ -16,12 +15,12 @@
 						<f:content>
 							<Label text="UID" required="true" />
 							<Input id="UIDForConfirmation" type="Text"
-								placeholder="UID" liveChange="uIDLive" />
-							
+								placeholder="UID" liveChange="uIDLive" />							
 							<Label text="Badge ID" required="true" />
 							<Input id="badgeIDForConfirmation" type="Text"
 								placeholder="Badge ID" liveChange="badgeIDLive" />
 							<Text text="--------OR--------" class="alignCenter"/>
+							
 							<Label text="Username" required="true" />
 							<Input id="userNameForConfirmation" type="Text"
 								placeholder="Username" liveChange="usernameLive" />
@@ -33,7 +32,6 @@
 						</f:content>
 					</f:SimpleForm>
 				</VBox>
-
 			</HBox>
 			<HBox height="35px" width="100%">
 				<MessageStrip id="msgstrpConfirm" visible="false"
@@ -41,9 +39,7 @@
 					showCloseButton="true">
 				</MessageStrip>
 			</HBox>
-
 		</content>
-
 		<beginButton>
 			<Button text="Cancel" press="onCancelConfirmation" />
 		</beginButton>

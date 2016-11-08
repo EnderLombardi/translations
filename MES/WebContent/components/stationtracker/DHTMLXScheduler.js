@@ -1,5 +1,8 @@
 sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 
+//					Define if it is a simple click or a double click. Used on event onDblClick and onClick
+					byPassOnClick: "boolean",
+	
 					renderer : function(oRm, oControl) {
 				
 						oRm.write("<div ");
@@ -170,8 +173,8 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 							return true;
 
 						}));
-					
-						//
+						
+
 						/* 	Custom Y group display */
 
 						scheduler.templates.timeline_scale_label = function(key, label, section) {
@@ -307,11 +310,37 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 												
 							}));
 						
-											
+//						Action double click on scheduler
+						scheduler.eventId.push( scheduler.attachEvent("onDblClick", function(id, e) {
+						
+//							Set the bypass variable to true
+							this.byPassOnClick = true;
+							airbus.mes.stationtracker.ModelManager.OpenReschedule(id);
+	
+							return false;
+
+						}));
+
+//						Action simple click on scheduler
 						scheduler.eventId.push ( scheduler.attachEvent("onClick", function(id, e) {	
 							
-							airbus.mes.stationtracker.ModelManager.OpenWorkList(id);
+							  var that = this;
+							  
+//							  Need to define a time out to differenciate simple click and double click
+							  setTimeout(function() {
+								  	
+//								  	If the bypass variable has been set on true to the double click action
+//								    we don't perform the simple click action
+								    if (that.byPassOnClick) {
+								    	return false;
+								    } else {
+									    airbus.mes.stationtracker.ModelManager.OpenWorkList(id);
+									    return true;
+									    }
+								  }, 200)							
 							
+//							  Reinitiate the bypass variable
+							  this.byPassOnClick = false;
 						}));
 						
 					},

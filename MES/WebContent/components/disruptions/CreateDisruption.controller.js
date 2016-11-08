@@ -348,6 +348,54 @@ sap.ui
 						this.ModelManager.updateDisruption(sMessageRef,sReason,sResponsibleGroup,sRootCause,iTimeLost,dFixedByTime,sComment,iGravity);
 
 					},
+					
+					setDataForEditDisruption : function(){
+						/************************************
+						 * Pre-fill fields in update request 
+						 */
+						if (sap.ui.getCore().getModel(
+								"DisruptionDetailModel").getData() != undefined) {
+
+							// fill select boxes on CreateDisruptionView for
+							// edit screen
+							var oModel = sap.ui.getCore().getModel(
+									"DisruptionDetailModel");
+
+							this.getView().byId("selectCategory").setSelectedKey(
+									oModel.getProperty("/MessageType"));
+							// forced fireChange event on Category to get a
+							// good list in Responsible Group.
+							this.getView().byId("selectCategory").fireChange(
+									this.getView().byId("selectCategory")
+											.getSelectedItem());
+							this.getView()
+									.byId("selectResponsible")
+									.setSelectedKey(
+											oModel
+												.getProperty("/ResponsibleGroup"));
+							this.getView().byId("selectreason").setSelectedKey(
+									oModel.getProperty("/Reason"));
+							this.getView().byId("selectOriginator").setSelectedKey(
+									oModel.getProperty("/OriginatorGroup"));
+							this.getView().byId("selectRootCause").setSelectedKey(
+									oModel.getProperty("/Subject"));
+							this.getView().byId("timeLost").setValue(oModel.getProperty("/TimeLost"));
+							this.getView().byId("status").setValue(oModel.getProperty("/Status"));
+							this.getView().byId("description").setValue(oModel.getProperty("/Description"));
+							this.getView().byId("comment").setValue();
+							this.initializeTree();		
+							this.setEnabledSelectBox(false, true, true,
+									true);
+
+			
+						} else {
+							
+							this.initializeTree();
+							this.setEnabledSelectBox(true, false, false,
+									false);
+							
+						}
+					},
 
 					/**
 					 * Called when the View has been rendered (so its HTML is

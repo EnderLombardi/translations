@@ -549,6 +549,31 @@ airbus.mes.stationtracker.ModelManager = {
               sap.ui.getCore().getModel("operationDetailModel").setData(oOperModel);
               sap.ui.getCore().getModel("operationDetailModel").refresh();
 
+       },
+       OpenReschedule : function(id) {
+
+// 	   	  Check if we are on operation grouping
+//    	  SD-PPC-ST-386
+    	  if (airbus.mes.stationtracker.GroupingBoxingManager.box !== 'OPERATION_ID') {
+    		  return false;
+    	  }
+        	   
+ 	   	  var aModel = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy[scheduler.getEvent(id).group][scheduler
+                                                                                                                      .getEvent(id).avlLine][scheduler.getEvent(id).box];
+
+           if (airbus.mes.stationtracker.ReschedulePopover === undefined) {
+
+               airbus.mes.stationtracker.ReschedulePopover = sap.ui.xmlfragment("ReschedulePopover",
+                            "airbus.mes.stationtracker.Reschedule", airbus.mes.stationtracker.oView.getController());
+               airbus.mes.stationtracker.ReschedulePopover.addStyleClass("alignTextLeft");
+               var oModel = sap.ui.model.json.JSONModel("RescheduleModel");
+               oModel.setData(aModel);
+               airbus.mes.stationtracker.ReschedulePopover.setModel(oModel, "RescheduleModel");
+               airbus.mes.stationtracker.oView.addDependent(airbus.mes.stationtracker.ReschedulePopover);
+        }		
+		
+           airbus.mes.stationtracker.ReschedulePopover.open();           
+           
        }
 };
 

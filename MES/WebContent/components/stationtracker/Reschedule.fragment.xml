@@ -1,37 +1,25 @@
 <core:FragmentDefinition xmlns="sap.m"
 	xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout"
 	xmlns:u="sap.ui.unified">
-	<Popover id="resourceDialog" title="RescheduleActivityTitle" horizontalScrolling="false"
+	<Dialog id="resourceDialog" title="RescheduleActivityTitle" horizontalScrolling="false"
 		placement="Bottom" class="sapUiSizeCompact">
-<!-- 		<buttons>
-			<Button id="removeButton" text="Remove" press="removeResourceDialog" visible="false" />
-			<Button id="rescheduleButton" text="Confirm" press="confirmResourceDialog" />
-			<Button text="Close" press="closeResourceDialog" />
-		</buttons> -->
 		<content>
 			<VBox>
-				<Toolbar>
-					<content>
-						<ToolbarSpacer />
-						<Title id="rescheduleTitle" text="rescheduleTitle" titleStyle="H5"></Title><!-- binding/value remains -->
-						<ToolbarSpacer />
-					</content>
-				</Toolbar>
 				<f:SimpleForm maxContainerCols="1" editable="false"
 					layout="ResponsiveGridLayout" labelSpanL="3" labelSpanM="4"
 					labelSpanS="6" emptySpanL="2" emptySpanM="2" emptySpanS="0"
 					columnsL="1" columnsM="1" columnsS="1" class="shrinkArea">
 					<f:content class="shrinkArea">
-						<Label class="topMargin" text="ScheduleStartLbl" />
+						<Label class="topMargin" text="{StationTrackerI18n>ReschedulePopupReschStart}" />
 						<Text id="rescheduleStart" class="topMargin" 
+							text="{RescheduleModel>START_TIME}" />
+						<Label class="topMargin" text="{StationTrackerI18n>ReschedulePopupReschEnd}" />
+						<Text id="{RescheduleModel>End_TIME}" class="topMargin"
 							text="" />
-						<Label class="topMargin" text="ScheduleEndLbl" />
-						<Text id="rescheduleEnd" class="topMargin"
-							text="" />
-						<Label class="topMargin" text="AcpngStartLbl" />
+						<Label class="topMargin" text="{StationTrackerI18n>ReschedulePopupAcpStart}" />
 						<Text id="rescheduleStartAcpng" class="topMargin"
 							text="" />
-						<Label class="topMargin" text="AcpngEndLbl" />
+						<Label class="topMargin" text="{StationTrackerI18n>ReschedulePopupAcpEnd}" />
 						<Text id="rescheduleEndAcpng" class="topMargin"
 							text="" />
 					</f:content>
@@ -60,11 +48,21 @@
 					</f:content>
 				</f:SimpleForm>
 			</VBox>
-			<VBox>
+<!-- 			<VBox>
 				<Button id="removeButton" text="Remove" press="removeResourceDialog" visible="false" />
 				<Button id="rescheduleButton" text="Confirm" press="confirmResourceDialog" />
 				<Button text="Close" press="closeResourceDialog" />
 			</VBox>			
-		</content>
-	</Popover>
+ -->		</content>
+		<buttons>
+			<Button text="{StationTrackerI18n>ReschedulePopupConfirm}" type="Transparent" icon="sap-icon://forward"
+				class="sapUiTinyMarginBeginEnd pageHeaderDialog" press="onRescheduleConfirm"
+				>
+			</Button>
+			<Button text="{StationTrackerI18n>Close}" type="Transparent" icon="sap-icon://decline"
+				class="sapUiTinyMarginBeginEnd" press="onCloseDialog"
+			>
+			</Button>
+		</buttons>	
+	</Dialog>
 </core:FragmentDefinition>
