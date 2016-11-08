@@ -857,19 +857,15 @@ sap.ui
 						sap.ui
 								.getCore()
 								.byId("searchResourcePool--site")
-								.setText(
-										airbus.mes.resourcepool.util.ModelManager.site);
+								.setText(airbus.mes.resourcepool.util.ModelManager.site);
 						sap.ui
 								.getCore()
 								.byId("searchResourcePool--resourcePool")
-								.setValue(
-										airbus.mes.resourcepool.util.ModelManager.resourceName);
+								.setValue();
 						sap.ui
 								.getCore()
 								.byId("searchResourcePool--description")
-								.setValue(
-										airbus.mes.resourcepool.util.ModelManager.resourceDescription);
-
+								.setValue();
 						/* Attach focus out event to resource pool field */
 						var oInputResource = sap.ui.getCore().byId(
 								"searchResourcePool--resourcePool");
