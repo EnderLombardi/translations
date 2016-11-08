@@ -229,70 +229,16 @@ sap.ui
 							/***************************************************
 							 * Load Disruption Custom Data
 							 **************************************************/
-							// sap.ui.getCore().getModel("DisruptionDetailModel").refresh();
+							
 							if (!this.disruptionsCustomDataFlag) {
 								
 								airbus.mes.disruptions.ModelManager.loadData();
 								this.disruptionsCustomDataFlag = true;
 							}
-							
-							
-							/************************************
-							 * Pre-fill fields in update request 
-							 */
-							var oView = sap.ui.getCore().byId(
-									"createDisruptionView");
-
-							if (sap.ui.getCore().getModel(
-									"DisruptionDetailModel").getData() != undefined) {
-
-								// fill select boxes on CreateDisruptionView for
-								// edit screen
-								var oModel = sap.ui.getCore().getModel(
-										"DisruptionDetailModel");
-
-								oView.byId("selectCategory").setSelectedKey(
-										oModel.getProperty("/MessageType"));
-								// forced fireChange event on Category to get a
-								// good list in Responsible Group.
-								oView.byId("selectCategory").fireChange(
-										oView.byId("selectCategory")
-												.getSelectedItem());
-								oView
-										.byId("selectResponsible")
-										.setSelectedKey(
-												oModel
-													.getProperty("/ResponsibleGroup"));
-								oView.byId("selectreason").setSelectedKey(
-										oModel.getProperty("/Reason"));
-								oView.byId("selectOriginator").setSelectedKey(
-										oModel.getProperty("/OriginatorGroup"));
-								oView.byId("selectRootCause").setSelectedKey(
-										oModel.getProperty("/Subject"));
-								oView.byId("timeLost").setValue(oModel.getProperty("/TimeLost"));
-								oView.byId("status").setValue(oModel.getProperty("/Status"));
-								oView.byId("description").setValue(oModel.getProperty("/Description"));
-								oView.byId("comment").setValue();
-								
-								airbus.mes.operationdetail.createDisruption.oView.oController
-										.initializeTree();
-								
-								airbus.mes.operationdetail.createDisruption.oView.oController
-								.setEnabledSelectBox(false, true, true,
-										true);
-
-				
-							} else {
-								
-								
-								airbus.mes.operationdetail.createDisruption.oView.oController
-								.initializeTree();
-								
-								airbus.mes.operationdetail.createDisruption.oView.oController
-								.setEnabledSelectBox(true, false, false,
-										false);
-								
+							else {
+								airbus.mes.operationdetail.createDisruption.oView.oController.setDataForEditDisruption();
 							}
+							
 							break;
 
 						}

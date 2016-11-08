@@ -644,7 +644,7 @@ sap.ui
 						sap.ui.getCore().byId("createDisruptionView--btnUpdateDisruption").setVisible(false);
 						sap.ui.getCore().byId("createDisruptionView--btnCreateDisruption").setVisible(true);
 						
-						//set input according to update disruption
+						//set input according to create disruption
 						sap.ui.getCore().byId("createDisruptionView--selectOriginator").setEnabled(true);
 						sap.ui.getCore().byId("createDisruptionView--description").setEnabled(true);
 						sap.ui.getCore().byId("createDisruptionView--timeLost").setEnabled(true);
@@ -714,36 +714,14 @@ sap.ui
 									.byId(
 											"createDisruptionView--btnCreateDisruption")
 									.setVisible(false);
+							
+							
+							//set input according to update disruption
+							sap.ui.getCore().byId("createDisruptionView--selectOriginator").setEnabled(false);
+							sap.ui.getCore().byId("createDisruptionView--description").setEnabled(false);
+							sap.ui.getCore().byId("createDisruptionView--timeLost").setEnabled(false);
 
 						}
-
-						oOperDetailNavContainer
-								.to(airbus.mes.operationdetail.createDisruption.oView
-										.getId());
-
-						// fill model DisruptionDetailModel to show data on edit
-						// screen
-						var oModel = sap.ui.getCore().getModel(
-								"DisruptionDetailModel");
-
-						// set the data for this new model from the already
-						// loaded model
-						var oBindingContext = oEvent.getSource()
-								.getBindingContext("operationDisruptionsModel");
-
-						oModel.setData(oBindingContext
-								.getProperty(oBindingContext.sPath));
-						oModel.refresh();
-						
-						//set buttons according to update disruption
-						sap.ui.getCore().byId("createDisruptionView--btnUpdateDisruption").setVisible(true);
-						sap.ui.getCore().byId("createDisruptionView--btnCreateDisruption").setVisible(false);
-						
-						//set input according to update disruption
-						sap.ui.getCore().byId("createDisruptionView--selectOriginator").setEnabled(false);
-						sap.ui.getCore().byId("createDisruptionView--description").setEnabled(false);
-						sap.ui.getCore().byId("createDisruptionView--timeLost").setEnabled(false);
-
 
 					},
 

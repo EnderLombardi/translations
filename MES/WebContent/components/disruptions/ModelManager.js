@@ -55,6 +55,12 @@ airbus.mes.disruptions.ModelManager = {
 				.getModel("disruptionCustomData")
 				.attachRequestCompleted(
 						airbus.mes.disruptions.ModelManager.onDisruptionCustomDataLoad);
+		sap.ui
+		.getCore()
+		.getModel("disruptionCategoryModel")
+		.attachRequestCompleted(
+				airbus.mes.disruptions.ModelManager.onLoadDisruptionCategory);
+		
 
 	},
 
@@ -100,6 +106,11 @@ airbus.mes.disruptions.ModelManager = {
 				airbus.mes.settings.ModelManager.station);
 		return urlCustomCategory;
 
+	},
+	
+	onLoadDisruptionCategory : function(){
+		
+		airbus.mes.operationdetail.createDisruption.oView.oController.setDataForEditDisruption();
 	},
 	
 	/*******************************
