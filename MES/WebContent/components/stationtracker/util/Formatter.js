@@ -176,7 +176,7 @@ airbus.mes.stationtracker.util.Formatter = {
 				
 				// add disruption andon display
 				
-				switch ( oBox.paused ) {
+				switch ( oBox.status ) {
 				// box is active
 					case 2 :
 						sColorProgress = '<div style="width:' + sProgress + '%; height:inherit; background-color:#84bd00; position:absolute; z-index: 0; left: 0px;"></div>';

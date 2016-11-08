@@ -450,7 +450,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		
 	},
 	
-	onUnplannedClose : function() {
+	onUnplannedClose : function(oEvent) {
 		
 		airbus.mes.stationtracker.worklistPopover.unPlanned = false;
 		airbus.mes.stationtracker.worklistPopover.OSW = false;			
@@ -695,7 +695,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
      
      ClosePolyPoly : function(oEvent){
     	 
- 		oEvent.getSource().getParent().close();
+ 		this.onCloseDialog(oEvent);
  		
      },
      
@@ -706,11 +706,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
  	getI18nValue : function(sKey) {
 	    return this.getView().getModel("StationTrackerI18n").getProperty(sKey);
 	},
-	
-	_close : function() {
-		airbus.mes.stationtracker.operationDetailPopup.close();
-	},
-	
+
 	selectUser : function(oEvt) {
 		
 		var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
@@ -845,6 +841,8 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			oText.setValue("No Date Selected");
 		}
 	},
-	
+	onCloseDialog : function(oEvent) {
+		oEvent.getSource().getParent().close();
+	}
 	
 });
