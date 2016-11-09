@@ -175,15 +175,15 @@ airbus.mes.stationtracker.util.Formatter = {
 				
 				
 				var sSpanText = '<span class="trackerText '+ trackerTextClass+' ">' + sText + '</span>';
-//				var sProgressText = '<span style="position: relative;  z-index: 1; float: right; overflow: hidden; text-overflow: ellipsis; max-width:40%; white-space: nowrap; padding-left:10px; padding-right:10px;"> ['+
-//				airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.progress) +'/'+ 
-//				airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.totalDuration) +' IM]</span>';
-//				airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.totalDuration) +'</span>';	
+				var sProgressText = '<span style="position: relative;  z-index: 1; float: right; overflow: hidden; text-overflow: ellipsis; max-width:40%; white-space: nowrap; padding-left:10px; padding-right:10px;"> ['+
+				airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.progress) +'/'+ 
+				airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.totalDuration) +' IM]</span>';
+				airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.totalDuration) +'</span>';	
 				
 
 
 //OSW to be managed with real functional data TODO
-					if ( oBox.rmaStatus != "---" )	//rma
+					if ( oBox.rmaStatus != "0" )	//rma
 					{
 						sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon dandelion"></i>';
 					}
@@ -211,7 +211,7 @@ airbus.mes.stationtracker.util.Formatter = {
 					case 0 :
 						sColorProgress ='<div class="colorProgress teal-blue-back" style="width:100%;background-color:#0085ad;"></div>';
 						sRightIcon = '<i class="fa fa-check rightIcon"></i>';
-						if ( oBox.rmaStatus != "---" )	//rma
+						if ( oBox.rmaStatus != "0" )	//rma
 						{
 							sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon"></i>';
 						}
@@ -228,7 +228,7 @@ airbus.mes.stationtracker.util.Formatter = {
 //						sColorProgress ='<div class="colorProgress dandelion-back" style="width:100%;background-color: #fbec00;"></div>';
 //						sRightIcon = '<i class="fa fa-stop rightIcon petrol" ></i>';
 						sSpanText = '<span class="trackerTextBlock">' + sText + '</span>';
-						if ( oBox.rmaStatus != "---" )	//rma
+						if ( oBox.rmaStatus != "0" )	//rma
 						{
 							sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon petrol"></i>';
 						}
@@ -275,19 +275,19 @@ airbus.mes.stationtracker.util.Formatter = {
 				}
 		
 //				html = sDivForLeftDisplay + sRightIcon + sLeftIcon + sSpanText + sProgressText + sColorProgress + '</div>'
-				html = sDivForLeftDisplay + sRightIcon + sLeftIcon + sLeftIcon2 + sSpanText + sColorProgress + '</div>'; 
+				html = sDivForLeftDisplay + sRightIcon + sLeftIcon + sLeftIcon2 + sSpanText + sProgressText + sColorProgress + '</div>'; 
 							
 				if ( oBox.type === "I" ) {
 					
 //					html = sDivForLeftDisplayInitial + sRightIcon + sLeftIcon + sSpanText + sProgressText + sColorProgress + '</div>'
-					html = sDivForLeftDisplayInitial + sRightIcon + sLeftIcon + sLeftIcon2 + sSpanText + sColorProgress + '</div>' ;
+					html = sDivForLeftDisplayInitial + sRightIcon + sLeftIcon + sLeftIcon2 + sSpanText + sProgressText + sColorProgress + '</div>' ;
 
 					return html;
 					
 				} else {
 					
 //					html = sDivForLeftDisplay + sRightIcon + sLeftIcon + sSpanText + sProgressText + sColorProgress + '</div>' 
-					html = sDivForLeftDisplay + sRightIcon + sLeftIcon + sLeftIcon2 + sSpanText + sColorProgress + '</div>' ;
+					html = sDivForLeftDisplay + sRightIcon + sLeftIcon + sLeftIcon2 + sSpanText + sProgressText + sColorProgress + '</div>' ;
 
 					return html;
 					

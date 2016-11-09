@@ -47,34 +47,6 @@ airbus.mes.shell.Component.prototype.createContent = function() {
 		this.oView.setModel(sap.ui.getCore().getModel("ShellI18n"), "ShellI18n");
 		this.oView.setModel(sap.ui.getCore().getModel("userSettingModel"),	"userSettingModel");
 		
-//		Retrieve the language selector to define default language corresponding to sap-language parameter
-		var aItems = this.oView.byId("SelectLanguage").getItems();
-		
-//		Retrieve connexion language
-		var sSaveLanguage =  airbus.mes.shell.ModelManager.loadLanguage();
-		
-		if ( sSaveLanguage != undefined && sSaveLanguage != "---" && sSaveLanguage != "" ) {
-			
-			var sSaveLanguage = sSaveLanguage;
-			if ( sSaveLanguage != jQuery.sap.getUriParameters().get("sap-language") ) {
-				
-				this.oView.getController().updateUrlForLanguage(sSaveLanguage);
-				
-			}
-			
-		} else {
-			
-			var sSaveLanguage = jQuery.sap.getUriParameters().get("sap-language"); 	
-			
-		}
-			
-	    for(var i=0; i<aItems.length; i++) {
-	        if (aItems[i].getKey() === sSaveLanguage) {
-	        	this.oView.byId("SelectLanguage").setSelectedItemId(aItems[i].getId());
-	        }
-	    }
-		
-		
 		return this.oView;
 	}
 

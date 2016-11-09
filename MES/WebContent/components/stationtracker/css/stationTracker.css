@@ -288,7 +288,7 @@
 	float: left;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	max-width:calc(100% - 30px);
+	max-width:calc(100% - 50px);
 	white-space: nowrap;
 	color: white;
 	overflow: hidden;

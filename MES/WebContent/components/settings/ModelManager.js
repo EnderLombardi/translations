@@ -63,6 +63,7 @@ airbus.mes.settings.ModelManager =  {
 		
 		this.loadSiteModel();
 	    this.getProgram();
+	    this.checkLanguage();
         
 	},
 	
@@ -195,6 +196,38 @@ airbus.mes.settings.ModelManager =  {
 	  },
 	  replaceURI : function (sURI, sFrom, sTo) {
 			return sURI.replace(sFrom, encodeURIComponent(sTo));
-		}
+		},
+	  
+	  checkLanguage : function() {
+//			Retrieve the language selector to define default language corresponding to sap-language parameter
+			var aItems = airbus.mes.shell.oView.byId("SelectLanguage").getItems();
+			
+//			Retrieve connexion language
+			var sSaveLanguage =  airbus.mes.shell.ModelManager.loadLanguage();
+			
+			if ( sSaveLanguage != undefined && sSaveLanguage != "---" && sSaveLanguage != ""  && sSaveLanguage != null) {
+				
+				var sSaveLanguage = sSaveLanguage;
+				if ( sSaveLanguage != navigator.language ) {
+					
+					this.oView.getController().updateUrlForLanguage(sSaveLanguage);
+					
+				}
+				
+			} else {
+				
+				airbus.mes.settings.ModelManager.saveUserSetting(navigator.language);
+				var sSaveLanguage = jQuery.sap.getUriParameters().get("sap-language"); 	
+				
+				
+			}
+				
+		    for(var i=0; i<aItems.length; i++) {
+		        if (aItems[i].getKey() === sSaveLanguage) {
+		        	airbus.mes.shell.oView.byId("SelectLanguage").setSelectedItemId(aItems[i].getId());
+		        }
+		    }
+		  
+	  }
 
 };

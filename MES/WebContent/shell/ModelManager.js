@@ -156,4 +156,10 @@ airbus.mes.shell.ModelManager = {
 			return oUserSettingModel.getProperty("/Rowsets/Rowset/0/Row/0/language");
 		
 		},
+		saveUserSetting:function(sLanguage){
+			  var urlSaveUserSetting = this.urlModel.getProperty("urlSaveUserSetting");
+			 // urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(urlSaveUserSetting, "$user", airbus.mes.settings.ModelManager.user);
+			  urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(urlSaveUserSetting, "$langage", sLanguage);
+				  
+		},
 }
