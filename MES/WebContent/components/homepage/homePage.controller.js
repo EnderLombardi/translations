@@ -33,6 +33,9 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 			case "DisruptionAndon":
 				airbus.mes.settings.GlobalFunction.navigateTo("Go to Disruption Tracker", "disruptiontracker");
 				break;
+			case "Polypoly":
+				airbus.mes.settings.GlobalFunction.navigateTo("Go to Polypoly", "polypoly");
+				break;
 			case "TeamCompetencies" :
 				airbus.mes.settings.GlobalFunction.navigateTo("Go to Team competencies & qualification", "disruptiontracker");
 			}

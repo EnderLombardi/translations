@@ -310,7 +310,6 @@ sap.ui.controller("airbus.mes.settings.Settings",
 				case "disruptiontracker":
 					airbus.mes.shell.util.navFunctions.disruptionTracker();
 					break;
-
 				case "back":
 					nav.back();
 				}
@@ -490,7 +489,11 @@ sap.ui.controller("airbus.mes.settings.Settings",
 				case "disruptiontracker":
 					airbus.mes.shell.util.navFunctions.disruptionTracker();
 					break;
-
+				
+					/** Disruption Tracker **/
+				case "polypoly":
+					airbus.mes.shell.util.navFunctions.polypoly();
+					break;
 
 				case "back":
 					nav.back();

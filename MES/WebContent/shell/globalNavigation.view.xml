@@ -26,7 +26,7 @@
                            </Select>
                            <Button id="informationButton" icon="sap-icon://message-information" type="Transparent" press="onInformation" visible="false"  class="whiteColor whiteButton" />
                            <Button id="homeButton" icon="sap-icon://home" type="Transparent" press="goToHome" visible="false"  class="whiteColor whiteButton" />
-                           <Button id="settingsButton" 
+                           <Button id="settingsButton"
                                    type="Transparent" 
                                    icon="sap-icon://action-settings" 
                                    class="whiteColor whiteButton" 

@@ -30,25 +30,15 @@ airbus.mes.shell.util.navFunctions = {
 					name : "airbus.mes.stationtracker",
 				});
 			}
-
-//			if (airbus.mes.polypoly === undefined){
-//				
-//				jQuery.sap.registerModulePath("airbus.mes.polypoly", "../components/polypoly");
-//
-//				sap.ui.getCore().createComponent({
-//					name : "airbus.mes.polypoly",
-//				});
-//				nav.addPage(airbus.mes.polypoly.oView);	
-//			}
-//			
-//			nav.to(airbus.mes.polypoly.oView.getId());
 			
-			jQuery.sap.registerModulePath("airbus.mes.polypoly","../components/polypoly");
-			airbus.mes.stationtracker.AssignmentManager.polypolyAffectation = false;
-			if(airbus.mes.polypoly == undefined){
-				sap.ui.getCore().createComponent({
-					name : "airbus.mes.polypoly", // root component folder is resources
-	         	});
+			if (airbus.mes.polypoly === undefined){
+				jQuery.sap.registerModulePath("airbus.mes.polypoly","../components/polypoly");
+				airbus.mes.stationtracker.AssignmentManager.polypolyAffectation = false;
+				if(airbus.mes.polypoly == undefined){
+					sap.ui.getCore().createComponent({
+						name : "airbus.mes.polypoly", // root component folder is resources
+					});
+				}
 			}
 			
 			airbus.mes.polypoly.PolypolyManager.globalContext.bEditable = !airbus.mes.stationtracker.AssignmentManager.polypolyAffectation;
@@ -85,7 +75,14 @@ airbus.mes.shell.util.navFunctions = {
 					oPolypolyPage.addContent(airbus.mes.polypoly.oView);
 				}
 			}
-			nav.to(oPolypolyPage);						
+			if(nav.getPreviousPage() == undefined){
+				nav.to(oPolypolyPage);
+			}else if(nav.getPreviousPage().getId()=="polypolyPage"){
+				nav.back();
+			}else{
+				nav.to(oPolypolyPage);
+			}
+			
 //			airbus.mes.polypoly.ModelManager.getPolyPolyModel("CHES", "1L"); //FIXME When Settings ready
 			airbus.mes.polypoly.ModelManager.getPolyPolyModel(airbus.mes.settings.ModelManager.site, airbus.mes.settings.ModelManager.station);
 			airbus.mes.polypoly.oView.getController().initiatePolypoly();	
