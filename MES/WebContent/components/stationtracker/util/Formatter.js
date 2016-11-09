@@ -147,7 +147,7 @@ airbus.mes.stationtracker.util.Formatter = {
 				switch (airbus.mes.stationtracker.GroupingBoxingManager.box) {
 		
 				case "OPERATION_ID":
-					sText = oBox.operationId + " - " + oBox.shopOrder + " - " + oBox.operationDescription;
+					sText = oBox.operationDescription + " - " + oBox.shopOrder + " - " + oBox.operationId;
 					break;
 	
 				case "WORKORDER_ID":
@@ -165,7 +165,7 @@ airbus.mes.stationtracker.util.Formatter = {
 					trackerTextClass = "trackerTextBlack";
 				
 				
-				var sSpanText = '<span class="trackerText '+trackerTextClass+' ">' + sText + '</span>';
+				var sSpanText = '<span class="trackerText '+ trackerTextClass+' ">' + sText + '</span>';
 //				var sProgressText = '<span style="position: relative;  z-index: 1; float: right; overflow: hidden; text-overflow: ellipsis; max-width:40%; white-space: nowrap; padding-left:10px; padding-right:10px;"> ['+
 //				airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.progress) +'/'+ 
 //				airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.totalDuration) +' IM]</span>';

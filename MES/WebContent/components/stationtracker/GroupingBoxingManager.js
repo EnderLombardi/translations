@@ -11,6 +11,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 	minDate: undefined,
 	maxDate: undefined,
 	
+	//Default value grouping boxing
 	group : "COMPETENCY" ,
 	box : "OPERATION_ID",
 	// Group use for special case compute
