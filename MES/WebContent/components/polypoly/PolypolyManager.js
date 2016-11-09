@@ -88,10 +88,6 @@ airbus.mes.polypoly.PolypolyManager = {
 	},
 	
 	createQATableData : function(oMiiData) {
-		if(oMiiColumns == undefined){
-			return false
-		}
-		
 		var oMiiColumns = oMiiData.Rowsets.Rowset[1].Row;
 		var lines = 0;
 		var qaList = {};
@@ -99,6 +95,10 @@ airbus.mes.polypoly.PolypolyManager = {
 				"rows" : [],
 				"columns" : []
 			};
+		
+		if(oMiiColumns == undefined){
+			return false
+		}
 		
 		oMiiColumns.forEach(function(col) {
 			oTableRows.columns.push({});
@@ -529,7 +529,7 @@ airbus.mes.polypoly.PolypolyManager = {
 					airbus.mes.polypoly.ModelManager.getPolyPolyModel(airbus.mes.settings.ModelManager.site, airbus.mes.settings.ModelManager.station);
 					break;
 				case "E":
-					sap.m.MessageToast.show("Error : " + data.Rowsets.Rowset[0].Row[0].Message );
+					sap.m.MessageToast.show("Error : " + airbus.mes.shell.util.Formatter.getMiiTextFromData(data) );
 					break;
 				}	
 			},
@@ -586,9 +586,9 @@ airbus.mes.polypoly.PolypolyManager = {
 						if (!airbus.mes.polypoly.infoUpdate12) {
 							airbus.mes.polypoly.infoUpdate12 = sap.ui.xmlfragment("airbus.mes.polypoly.InfoUpdate12", airbus.mes.polypoly.oView.getController());
 						}
-						airbus.mes.polypoly.infoUpdate12.open();
 						airbus.mes.polypoly.infoUpdate12.setModel(infoModel, "infoModel");
 						airbus.mes.polypoly.infoUpdate12.setModel(airbus.mes.polypoly.oView.getModel("PolypolyI18n"),"PolypolyI18n");
+						airbus.mes.polypoly.infoUpdate12.open();
 					},
 				})
 	},
@@ -615,9 +615,9 @@ airbus.mes.polypoly.PolypolyManager = {
 							if (!airbus.mes.polypoly.infoUpdate23) {
 								airbus.mes.polypoly.infoUpdate23 = sap.ui.xmlfragment("airbus.mes.polypoly.InfoUpdate23", airbus.mes.polypoly.oView.getController());
 							}
-							airbus.mes.polypoly.infoUpdate23.open();
 							airbus.mes.polypoly.infoUpdate23.setModel(infoModel, "infoModel");
 							airbus.mes.polypoly.infoUpdate23.setModel(airbus.mes.polypoly.oView.getModel("PolypolyI18n"),"PolypolyI18n");
+							airbus.mes.polypoly.infoUpdate23.open();
 						} else {
 							airbus.mes.polypoly.PolypolyManager.checkUpdateLevel();
 						}

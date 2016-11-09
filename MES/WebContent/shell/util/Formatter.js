@@ -53,7 +53,7 @@ airbus.mes.shell.util.Formatter = {
 	},
 	
 	getMiiText : function(sID, sParam1, sParam2, sParam3, sParam4, sParam5, sParam6, sParam7, sParam8, sParam9, sParam10) {
-		var sMessage = airbus.mes.shell.oView.getModel("miiI18n").getProperty(sID);
+		var sMessage = sap.ui.getCore().getModel("miiI18n").getProperty(sID);
 		if(sParam1.constructor === String){
 			var aParams = Array.from(arguments).slice(1);
 		}else if(sParam1.constructor === Array){
@@ -74,7 +74,7 @@ airbus.mes.shell.util.Formatter = {
 					aParams.push(oData[sProperty]);
 				}
 			}
-			this.getMiiText(sMessageID, aParams);
+			return this.getMiiText(sMessageID, aParams);
 		}else{
 			console.log("Parameter data cannot be processed");
 		}
