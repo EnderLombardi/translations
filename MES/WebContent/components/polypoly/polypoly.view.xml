@@ -9,7 +9,7 @@
 		<table:Table rows="{ path: '/rows' }"
 		columns="{ path: '/columns', factory: '.createColumn' }"
 		enableColumnReordering="true" rowHeight="30" id="oTablePolypoly"
-		enableSelectAll="false" columnMove="onColumnMove" fixedColumnCount="6" >
+		enableSelectAll="false" columnMove="onColumnMove" fixedColumnCount="6" visibleRowCountMode="Fixed">
 		<table:toolbar>
 			<Toolbar design="Transparent" id="toolbarPolypoly">
 				<content>

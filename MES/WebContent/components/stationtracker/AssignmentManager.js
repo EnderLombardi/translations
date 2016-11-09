@@ -16,7 +16,7 @@ airbus.mes.stationtracker.AssignmentManager = {
 		selectedShift : undefined,
 	},
 	
-	handleLineAssignment : function( sModeAssignment, bQACheck) {
+	handleLineAssignment : function( sModeAssignment, bIgnoreCheckQA) {
 		var sUserID = airbus.mes.stationtracker.AssignmentManager.polypolyAssignment.selectedUser.login;
 		var sShiftName = airbus.mes.stationtracker.AssignmentManager.polypolyAssignment.selectedShift.shiftName;
 		var sDay = airbus.mes.stationtracker.AssignmentManager.polypolyAssignment.selectedShift.day;
@@ -30,7 +30,7 @@ airbus.mes.stationtracker.AssignmentManager = {
 		
 		sDay = (new Date(sDay)).toISOString().slice(0,10).replace(/-/g,"");
 		
-		airbus.mes.stationtracker.ModelManager.setLineAssignment(sSite, sStation, sMSN, sUserID, sShiftName, sDay, sLine, sSkill, sMyUserID, sModeAssignment, bQACheck);
+		airbus.mes.stationtracker.ModelManager.setLineAssignment(sSite, sStation, sMSN, sUserID, sShiftName, sDay, sLine, sSkill, sMyUserID, sModeAssignment, bIgnoreCheckQA);
 
 	},
 	

@@ -687,7 +687,22 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 		airbus.mes.polypoly.PolypolyManager.updateColumn(sName, sQA, sNeed3,
 				sNeed4, sTechname);
 	},
-
+	
+	setRowCountVisible : function(){
+		var e = window
+		, a = 'inner';
+		if ( !( 'innerWidth' in window ) )
+		{
+			a = 'client';
+			e = document.documentElement || document.body;
+		}
+		var oDim = { width : e[ a+'Width' ] , height : e[ a+'Height' ] };
+		
+		var oNumberRows = Math.floor(oDim.height*0.0267 - 10.035);
+		
+		airbus.mes.polypoly.oView.byId("oTablePolypoly").setVisibleRowCount(oNumberRows);
+	},
+	
 	filterUA : function() {
 		if (sap.ui.getCore().byId("typeRow") /*&& sap.ui.getCore().byId("FilterClockedUsers")*/){
 			var filterLabels = new sap.ui.model.Filter("type", "EQ", "LABEL_RP");
@@ -700,12 +715,12 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 			if ( airbus.mes.stationtracker.AssignmentManager.polypolyAffectation ) {
 				airbus.mes.polypoly.oView.byId("oTablePolypoly").getBinding("rows").filter(aFilters);
 				airbus.mes.polypoly.oView.byId("oTablePolypoly").setFixedRowCount(0);
-				airbus.mes.polypoly.oView.byId("oTablePolypoly").setVisibleRowCount(15); //FIXME : Depends on PopUp size small = 8
+//				airbus.mes.polypoly.oView.byId("oTablePolypoly").setVisibleRowCount(15); //FIXME : Depends on PopUp size small = 8
 
 			} else {
 				airbus.mes.polypoly.oView.byId("oTablePolypoly").getBinding("rows").filter();
 				airbus.mes.polypoly.oView.byId("oTablePolypoly").setFixedRowCount(3);
-				airbus.mes.polypoly.oView.byId("oTablePolypoly").setVisibleRowCount(13);
+//				airbus.mes.polypoly.oView.byId("oTablePolypoly").setVisibleRowCount(13);
 			}
 		}
 	},
@@ -714,6 +729,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 		var aControlsId = ["AddPolypoly"];
 
 		this.filterUA();
+		this.setRowCountVisible();
 		this.hideContent(aControlsId);
 	},
 
@@ -1031,7 +1047,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 			return false;
 		}
 		
-		airbus.mes.stationtracker.AssignmentManager.handleLineAssignment("S", true);
+		airbus.mes.stationtracker.AssignmentManager.handleLineAssignment("S", false);
 		
 //		if (!airbus.mes.polypoly.PolypolyManager.oViewController.oDialogConfirmationPoyPoly) {
 //			airbus.mes.polypoly.PolypolyManager.oViewController.oDialogConfirmationPoyPoly = sap.ui.xmlfragment("airbus.mes.polypoly.userAffectationConfirmationPolyPoly",airbus.mes.polypoly.oView.getController());

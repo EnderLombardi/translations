@@ -2,7 +2,7 @@
 	xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc">
 	<Dialog title="Polyvalence-Polycompetence Matrix" class="sapUiPopupWithPadding"
 		id="pop-up-polypoly" verticalScrolling="false" horizontalScrolling="false"
-		afterOpen="onAfterOpenPolypoly" stretch="true">
+		afterOpen="onAfterOpenPolypoly" resizable="false" stretch="true">
 		<buttons>
 			<Button text="{StationTrackerI18n>DeleteAssignment}" icon="sap-icon://employee-rejections"
 				press="deleteLineAssignment" />
