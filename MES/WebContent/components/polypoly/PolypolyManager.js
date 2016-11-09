@@ -690,8 +690,12 @@ airbus.mes.polypoly.PolypolyManager = {
 			cache : false,
 			success : function(data, textStatus, jqXHR) {
 				airbus.mes.polypoly.delDialog.close();
-//				airbus.mes.polypoly.ModelManager.getPolyPolyModel("CHES", "1L"); //FIXME When Settings ready
-				airbus.mes.polypoly.ModelManager.getPolyPolyModel(airbus.mes.settings.ModelManager.site, airbus.mes.settings.ModelManager.station);
+				if(airbus.mes.shell.util.Formatter.getMiiMessageType(data)=="E"){
+					sap.m.MessageToast.show(airbus.mes.shell.util.Formatter.getMiiTextFromData(data));
+				}else{
+//					airbus.mes.polypoly.ModelManager.getPolyPolyModel("CHES", "1L"); //FIXME When Settings ready
+					airbus.mes.polypoly.ModelManager.getPolyPolyModel(airbus.mes.settings.ModelManager.site, airbus.mes.settings.ModelManager.station);
+				}
 			},
 		});
 	},
