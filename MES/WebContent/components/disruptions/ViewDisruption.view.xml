@@ -113,7 +113,7 @@
                                                                            </f:label>
                                                                            <f:fields>
 
-                                                                                  <Text text="{operationDisruptionsModel>ResponsibleGroup}">
+                                                                                  <Text text="{operationDisruptionsModel>ResponsibleGroupDesc}">
                                                                                          <layoutData>
                                                                                                 <l:GridData span="L4 M4 S12" />
                                                                                          </layoutData>
@@ -188,7 +188,7 @@
                                                                                   </Label>
                                                                            </f:label>
                                                                            <f:fields>
-                                                                                  <Text text="{operationDisruptionsModel>FixedByTime}">
+                                                                                  <Text text="{operationDisruptionsModel>RequiredFixBy}">
                                                                                          <layoutData>
                                                                                                 <l:GridData span="L4 M4 S12" />
                                                                                          </layoutData>

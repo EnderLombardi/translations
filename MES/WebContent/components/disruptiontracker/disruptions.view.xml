@@ -119,11 +119,11 @@
 						<Text
 							text="{path: 'disruptionsTrackerModel>MessageType', formatter: 'airbus.mes.disruptiontracker.Formatter.formatCategory'}" />
 						<Text text="{disruptionsTrackerModel>Reason}" />
-						<Text text="{disruptionsTrackerModel>OriginatorGroup}" />
-						<Text text="{disruptionsTrackerModel>ResponsibleGroup}" />
+						<Text text="{disruptionsTrackerModel>OriginatorGroupDesc}" />
+						<Text text="{disruptionsTrackerModel>ResponsibleGroupDesc}" />
 						<Text text="{path: 'disruptionsTrackerModel>EscalationLevel', formatter: 'airbus.mes.disruptiontracker.Formatter.setEscalationText'}" />
 						<Text text="{disruptionsTrackerModel>OpeningTime}" />
-						<Text text="{disruptionsTrackerModel>FixedByTime}" />
+						<Text text="{disruptionsTrackerModel>RequiredFixBy}" />
 						<Text text="{path: 'disruptionsTrackerModel>FixedByTime', formatter: 'airbus.mes.disruptiontracker.Formatter.formatTTGF'}" />
 						<Text text="{disruptionsTrackerModel>TimeBeforeNextEscalation}" />
 						<Text text="{disruptionsTrackerModel>Description}" />
