@@ -225,21 +225,24 @@ sap.ui
 					 * Create Disruption
 					 */
 					onCreateDisruption : function() {
+						var oView = airbus.mes.operationdetail.createDisruption.oView;
+						var oController = oView.getController();
+						
 
 						// forfully set handle as the first item in the list
 						// after selecting Category, Reason, Responsible and
 						// rootcasue,
 						// As this handle will act as a unique key for selection
-						this.getView().byId("handle").setSelectedKey(
-								this.getView().byId("handle").getItemAt(0)
+						oView.byId("handle").setSelectedKey(
+								oView.byId("handle").getItemAt(0)
 										.getText());
-						var sCategory = this.getView().byId("selectCategory")
+						var sCategory = oView.byId("selectCategory")
 								.getSelectedKey();
-						var sRootCause = this.getView().byId("selectRootCause")
+						var sRootCause = oView.byId("selectRootCause")
 								.getSelectedKey();
-						var sComment = this.getView().byId("comment")
+						var sComment = oView.byId("comment")
 								.getValue();
-						var sHandle = this.getView().byId("handle")
+						var sHandle = oView.byId("handle")
 								.getSelectedKey();
 
 						// Create a JSON for payload attributes
@@ -276,44 +279,44 @@ sap.ui
 									},
 									{
 										"attribute" : "DESCRIPTION",
-										"value" : this.getView()
+										"value" : oView
 												.byId("description").getValue()
 									},
 									{
 										"attribute" : "REASON",
-										"value" : this.getView().byId(
+										"value" : oView.byId(
 												"selectreason")
 												.getSelectedKey()
 									},
 									{
 										"attribute" : "TIME_LOST",
-										"value" : this.getView().byId(
+										"value" : oView.byId(
 												"timeLost").getValue()
 									},
 									{
 										"attribute" : "REQD_FIX_BY",
-										"value" : this.getView().byId(
+										"value" : oView.byId(
 												"expectedDate").getValue()
 												+ " "
-												+ this.getView().byId(
+												+ oView.byId(
 														"expectedTime")
 														.getValue()
 									},
 									{
 										"attribute" : "GRAVITY",
-										"value" : this.getView()
+										"value" : oView
 												.byId("gravity")
 												.getSelectedKey()
 									},
 									{
 										"attribute" : "STATUS",
-										"value" : this.getView().getModel(
+										"value" : oView.getModel(
 												"i18nModel").getProperty(
 												"Pending")
 									},
 									{
 										"attribute" : "ROOT_CAUSE",
-										"value" : this.getView().byId(
+										"value" : oView.byId(
 												"selectRootCause")
 												.getSelectedKey()
 									},
@@ -323,13 +326,13 @@ sap.ui
 									},
 									{
 										"attribute" : "RESPONSIBLE_GROUP",
-										"value" : this.getView().byId(
+										"value" : oView.byId(
 												"selectResponsible")
 												.getSelectedKey()
 									},
 									{
 										"attribute" : "ORIGINATOR_GROUP",
-										"value" : this.getView().byId(
+										"value" : oView.byId(
 												"selectOriginator")
 												.getSelectedKey()
 									},
@@ -341,7 +344,7 @@ sap.ui
 						}
 						aModelData.push(oJson);
 						
-						var sDescription = this.getView().byId("description").getValue();
+						var sDescription = oView.byId("description").getValue();
 						// message subject is passed as description because subject is compulsary
 						this.ModelManager.createDisruption(sHandle,sCategory,sDescription,sComment,aModelData);
 					},
@@ -351,18 +354,19 @@ sap.ui
 					 * Responsible Group, Time lost , Expected date/time and Root Cause.
 					 */
 					onUpdateDisruption : function() {
+						var oView = airbus.mes.operationdetail.createDisruption.oView;
 						
 						var sMessageRef = sap.ui.getCore().getModel("DisruptionDetailModel").getProperty("/MessageRef")
-						var sReason	= this.getView().byId("selectreason").getSelectedKey();
-						var sResponsibleGroup = this.getView().byId("selectResponsible").getSelectedKey();
-						var sRootCause	= this.getView().byId("selectRootCause").getSelectedKey();
-						var iTimeLost = this.getView().byId("timeLost").getValue()
-						var dFixedByTime = this.getView().byId("expectedDate").getValue()+ " " + this.getView().byId("expectedTime").getValue()
-						var sComment = this.getView().byId("comment").getValue()
-						var iGravity = this.getView().byId("gravity").getSelectedKey()
+						var sReason	= oView.byId("selectreason").getSelectedKey();
+						var sResponsibleGroup = oView.byId("selectResponsible").getSelectedKey();
+						var sRootCause	= oView.byId("selectRootCause").getSelectedKey();
+						var iTimeLost = oView.byId("timeLost").getValue()
+						var dFixedByTime = oView.byId("expectedDate").getValue()+ " " + oView.byId("expectedTime").getValue()
+						var sComment = oView.byId("comment").getValue()
+						var iGravity = oView.byId("gravity").getSelectedKey()
 						
 						//call update service
-						this.ModelManager.updateDisruption(sMessageRef,sReason,sResponsibleGroup,sRootCause,iTimeLost,dFixedByTime,sComment,iGravity);
+						airbus.mes.operationdetail.createDisruption.ModelManager.updateDisruption(sMessageRef,sReason,sResponsibleGroup,sRootCause,iTimeLost,dFixedByTime,sComment,iGravity);
 
 					},
 					
