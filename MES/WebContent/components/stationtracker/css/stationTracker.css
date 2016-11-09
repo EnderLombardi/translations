@@ -324,23 +324,21 @@
 	height: inherit;
 	width:100%;
 	background-color:#f00;
-	color:#fff;
 }
 .openBlocked{
 	height: inherit;
 	width:100%;
 	background-color:yellow;
-	color:#fff;
 }
 .solvedBloackedExcalated{
 	height: inherit;
 	width:100%;
-	color:#fff;	
+    background: repeating-linear-gradient( 135deg, #ff8c8c, #ff8c8c 10px, red 10px, red 20px );
 }
 .solvedBlocked{
 	height: inherit;
 	width:100%;
-	color:#fff;	
+	background: repeating-linear-gradient( 135deg, #f3ff85, #f3ff8f 10px, yellow 10px, yellow 20px );
 }
 .triangleIcon{
 	position: relative;

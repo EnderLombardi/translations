@@ -229,13 +229,13 @@ airbus.mes.stationtracker.util.Formatter = {
 					
 					// Solved Blocking and Escalated disruption
 					case 6 :
-						sColorProgress ='<div class="closedBlockedEscalated"></div>';
+						sColorProgress ='<div class="solvedBlockedEscalated"></div>';
 						sRightIcon = '<i class="fa fa-exclamation-triangle triangleIcon"></i>';
 						break;
 					
 					// Solved Blocking disruption
 					case 7 :
-						sColorProgress ='<div class="closedBlocked"></div>';
+						sColorProgress ='<div class="solvedBlocked"></div>';
 						sRightIcon = '<i class="fa fa-exclamation-triangle triangleIcon"></i>';
 						break;
 						
