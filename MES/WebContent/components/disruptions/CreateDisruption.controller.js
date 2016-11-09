@@ -70,10 +70,10 @@ sap.ui
 					onInit : function() {
 						// Set events on buttons
 						sap.ui.getCore().byId(
-								"operationDetailPopup--btnUpdateDisruption")
+								"operationDetailPopup--btnCreateDisruption")
 								.attachPress(this.onCreateDisruption);
 						sap.ui.getCore().byId(
-								"operationDetailPopup--btnCreateDisruption")
+								"operationDetailPopup--btnUpdateDisruption")
 								.attachPress(this.onUpdateDisruption);
 						sap.ui.getCore().byId(
 								"operationDetailPopup--btnCancelDisruption")
