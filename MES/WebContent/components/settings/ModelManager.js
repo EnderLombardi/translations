@@ -197,29 +197,41 @@ airbus.mes.settings.ModelManager =  {
 	  replaceURI : function (sURI, sFrom, sTo) {
 			return sURI.replace(sFrom, encodeURIComponent(sTo));
 		},
-	  
+		
+		  loadLanguage : function(){
+				
+			  	var urlUserSetting = this.urlModel.getProperty("urlUserSettings");
+				
+			  	var oUserSettingModel = new sap.ui.model.json.JSONModel();
+			  	oUserSettingModel.loadData(urlUserSetting, null, false);
+
+	        
+				return oUserSettingModel.getProperty("/Rowsets/Rowset/0/Row/0/language");
+			
+		  },
+			
 	  checkLanguage : function() {
 //			Retrieve the language selector to define default language corresponding to sap-language parameter
 			var aItems = airbus.mes.shell.oView.byId("SelectLanguage").getItems();
-			
+			var sSapLanguage = sap.ui.getCore().getConfiguration().getLanguage().slice(0,2);
 //			Retrieve connexion language
-			var sSaveLanguage =  airbus.mes.shell.ModelManager.loadLanguage();
+			var sSaveLanguage =  airbus.mes.settings.ModelManager.loadLanguage();
 			
 			if ( sSaveLanguage != undefined && sSaveLanguage != "---" && sSaveLanguage != ""  && sSaveLanguage != null) {
 				
-				var sSaveLanguage = sSaveLanguage;
-				if ( sSaveLanguage != navigator.language ) {
-					
-					this.oView.getController().updateUrlForLanguage(sSaveLanguage);
-					
-				}
+//				var sSaveLanguage = sSaveLanguage;
+//				if ( sSaveLanguage != sSapLanguage ) {
+//					
+//					airbus.mes.shell.oView.getController().updateUrlForLanguage(sSaveLanguage);
+//					
+//				}
 				
 			} else {
 				
-				airbus.mes.settings.ModelManager.saveUserSetting(navigator.language);
-				var sSaveLanguage = jQuery.sap.getUriParameters().get("sap-language"); 	
 				
-				
+				airbus.mes.settings.ModelManager.saveUserSetting(sSapLanguage);
+				airbus.mes.shell.oView.getController().updateUrlForLanguage(sSapLanguage);
+						
 			}
 				
 		    for(var i=0; i<aItems.length; i++) {
