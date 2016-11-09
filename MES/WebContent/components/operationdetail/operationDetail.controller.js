@@ -157,11 +157,17 @@ sap.ui
 						 * ***set the buttons according to the status of
 						 * operation mode *****
 						 */
-						sap.ui.getCore().byId("idStatusView").rerender();
-						if(sap.ui.getCore().byId("ViewDisruptionView"))
-								sap.ui.getCore().byId("ViewDisruptionView").rerender();
+						switch(this.nav.getCurrentPage().getId()){
+						
+						case "idStatusView":
+							airbus.mes.operationdetail.status.oView.getController().setOperationActionButtons();
+							break;
+							
+						case "ViewDisruptionView":
+							airbus.mes.operationdetail.viewDisruption.oView.getController().turnOnOffButtons();
+							break;
 
-						if (this.nav.getCurrentPage().getId() == "createDisruptionView") {
+						case "createDisruptionView":
 							sap.ui.getCore().byId("createDisruptionView")
 									.getController().onCancelCreateDisruption()
 						}
@@ -257,7 +263,7 @@ sap.ui
 							sap.ui.getCore().byId("operationDetailPopup--btnComplete").setVisible(false);
 						}
 						else{
-							airbus.mes.operationdetail.status.oView.getController.setOperationActionButtons();
+							airbus.mes.operationdetail.status.oView.getController().setOperationActionButtons();
 						}
 						
 						
