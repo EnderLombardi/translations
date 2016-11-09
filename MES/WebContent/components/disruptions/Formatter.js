@@ -21,16 +21,14 @@ airbus.mes.disruptions.Formatter = {
 				+ defaultDate.getDate();
 	},
 
-	setText : function(status, gravity, escalation) {
+	setGravityText : function(gravity) {
 
-		if (status == airbus.mes.disruptions.Formatter.status.closed) {
-			return airbus.mes.disruptions.Formatter.status.solved;
-		} else if (gravity == 3 || escalation == 2 || escalation == 3)
-			return "Blocked";
-		else if (gravity == 1)
+		if (gravity == 1)
 			return "Not Blocked";
 		else if (gravity == 2)
 			return "Disturbed";
+		else if (gravity == 3)
+			return "Blocked";
 	},
 
 	getDate : function(datetime) {

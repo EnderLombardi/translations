@@ -325,8 +325,8 @@ sap.ui
 						aModelData.push(oJson);
 						
 						// message subject is passed as category because subject is compulsary and category will always be in input.
-						this.ModelManager.createDisruption(sHandle, sCategory,
-								sCategory, sComment, aModelData);
+						this.ModelManager.createDisruption(sHandle, this.getView()
+								.byId("description").getValue(),sCategory, sComment, aModelData);
 					},
 
 					/***********************************************************

@@ -244,25 +244,24 @@ sap.ui
 			               var ws = new WebSocket("ws://localhost:754/TouchNTag");
                            
 			               ws.onopen = function(){	
-			            	   var msgData = {
+			            	  /* var msgData = {
 			            			   BadgeOrRFID:"BADGE",
 			            			   Message:"UID:263808008C0F3D"
-			            			  };
+			            			  };*/
 
 			                  // Web Socket is connected
-			                  ws.send(JSON.stringify(msgData));
+//			                  ws.send(JSON.stringify(msgData));
 //			                  ws.send(JSON.stringify(
 //			                		  {"BadgeOrRFID":"BADGE","Message":"UID:263808008C0F31"}
 //			                  ));
 
-			                  alert("Message is sent...");
+//			                  alert("Message is sent...");
 			               // For Simulation purpose (comment below line when you scan through reader)	
-			                  onSimulation(msgData);
+//			                  onSimulation(msgData);
 			               };
 			               
 			              /* ws.addEventListener("message", function(event) {
-			            	   var data = event.data;
-			            	   // process data as string, blob, or ArrayBuffer
+			            	  // var data = event.data;
 			            	   var scanData = JSON.parse(event.data);	
 				                  var uID  = scanData.Message;			//UID
 				                  var badgeID = scanData.BadgeOrRFID;     //BID
@@ -282,12 +281,11 @@ sap.ui
 			                	  uID = uID.split(":")[1];
 			                  sap.ui.getCore().getElementById("UIDForConfirmation").setValue(uID);
 			                  sap.ui.getCore().getElementById("badgeIDForConfirmation").setValue(badgeID);
-			                  
-//			                  alert(status);
+
 			               };
 			               
 			               ws.onerror = function(evnt){
-			            	   alert("Error has occured...");  
+			            	   alert("Error has occured");
 			               }
 			               
 			               ws.onclose = function(){ 

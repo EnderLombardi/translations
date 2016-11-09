@@ -40,7 +40,7 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 	onChangeLanguage : function(oEvent) {
 //		Retrieve language 		
 		var sText = oEvent.getSource().getSelectedKey();	
-
+		airbus.mes.settings.ModelManager.saveUserSetting(sText);
 		this.updateUrlForLanguage(sText);
 	},
 	updateUrlForLanguage : function(sText){
@@ -229,6 +229,6 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 				.getBinding("items")
 				.filter(new sap.ui.model.Filter(aFilters, true));
 		
-	}
-	
+	},
+			
 });

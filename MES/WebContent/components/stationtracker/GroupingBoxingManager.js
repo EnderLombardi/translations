@@ -3,7 +3,6 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 	
 	operationHierarchyDelay : {},
 	operationHierarchy : {},
-	operationHierarchyArray : {},
 	shiftHierarchy : {},
 	shiftNoBreakHierarchy: [],
 	shiftBreakHierarchy: [],

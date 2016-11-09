@@ -75,7 +75,7 @@
                                                                            <f:fields>
 
                                                                                   <Text
-                                                                                         text="{parts: [ {path: 'operationDisruptionsModel>Status'}, {path: 'operationDisruptionsModel>Gravity'}, {path: 'operationDisruptionsModel>Severity'} ], formatter: 'airbus.mes.disruptions.Formatter.setText'}">
+                                                                                         text="{path: 'operationDisruptionsModel>Gravity', formatter: 'airbus.mes.disruptions.Formatter.setGravityText'}">
                                                                                          <layoutData>
                                                                                                 <l:GridData span="L4 M4 S12" />
                                                                                          </layoutData>

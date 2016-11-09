@@ -345,7 +345,7 @@ airbus.mes.stationtracker.ModelManager = {
        },
        loadShifts : function() {
              
-    	   var oViewModelshift = sap.ui.getCore().getModel("shiftsModel");
+    	   	  var oViewModelshift = sap.ui.getCore().getModel("shiftsModel");
               var getUrlShifts = this.urlModel.getProperty("urlshifts");
               var oData = airbus.mes.settings.ModelManager;
               
@@ -409,13 +409,10 @@ airbus.mes.stationtracker.ModelManager = {
    
               if (airbus.mes.stationtracker.worklistPopover === undefined) {
 
-                     airbus.mes.stationtracker.worklistPopover = sap.ui.xmlfragment("worklistPopover",
-                                  "airbus.mes.stationtracker.worklistPopover", airbus.mes.stationtracker.oView.getController());
+                     airbus.mes.stationtracker.worklistPopover = sap.ui.xmlfragment("worklistPopover", "airbus.mes.stationtracker.worklistPopover", airbus.mes.stationtracker.oView.getController());
                      airbus.mes.stationtracker.worklistPopover.addStyleClass("alignTextLeft");
-                     airbus.mes.stationtracker.worklistPopover.setModel(sap.ui.getCore().getModel("WorkListModel"),
-                                  "WorkListModel");
-                     airbus.mes.stationtracker.worklistPopover.setModel(new sap.ui.model.json.JSONModel(sap.ui.getCore()
-                                  .getModel("groupModel").getData()), "groupModel");
+                     airbus.mes.stationtracker.worklistPopover.setModel(sap.ui.getCore().getModel("WorkListModel"), "WorkListModel");
+                     airbus.mes.stationtracker.worklistPopover.setModel(new sap.ui.model.json.JSONModel(sap.ui.getCore().getModel("groupModel").getData()), "groupModel");
                      airbus.mes.stationtracker.oView.addDependent(airbus.mes.stationtracker.worklistPopover);
               }
 
