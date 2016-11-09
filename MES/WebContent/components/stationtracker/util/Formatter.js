@@ -177,6 +177,7 @@ airbus.mes.stationtracker.util.Formatter = {
 					{
 						sLeftIcon2 = '<i class="fa fa-refresh oswIcon dandelion-back "><b style="padding-left:1px">OSW</b></i>';
 					}
+				}
 												
 				switch ( oBox.status ) {
 				// box is active
@@ -258,7 +259,7 @@ airbus.mes.stationtracker.util.Formatter = {
 				
 				
 				
-			}},
+			},
 			
 			
 			initial : function(sText,sProgress) {
