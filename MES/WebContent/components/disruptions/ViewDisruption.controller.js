@@ -258,7 +258,7 @@ sap.ui
 							var sPath = sap.ui.getCore().byId(
 									"disruptionCommentSpath").getText();
 
-							operationDisruptionsModel.getProperty(sPath).Status = airbus.mes.disruptions.Formatter.status.rejected;
+							operationDisruptionsModel.getProperty(sPath).Status = airbus.mes.disruptions.Formatter.status.deleted;
 
 							operationDisruptionsModel.refresh();
 						}
