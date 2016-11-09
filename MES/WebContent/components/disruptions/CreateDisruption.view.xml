@@ -28,7 +28,7 @@
 
 								<f:FormElement>
 									<f:label>
-										<Label text="{i18nModel>Category}">
+										<Label  required="true" text="{i18nModel>Category}">
 											<layoutData>
 												<l:GridData span="L2 M6 S12" />
 											</layoutData>
@@ -52,7 +52,7 @@
 								<f:FormElement>
 									<f:label>
 
-										<Label text="{i18nModel>Reason}">
+										<Label  required="true" text="{i18nModel>Reason}">
 											<layoutData>
 												<l:GridData span="L2 M6 S12" />
 											</layoutData>
@@ -76,7 +76,7 @@
 
 								<f:FormElement>
 									<f:label>
-										<Label text="{i18nModel>ResponsibleSupport}">
+										<Label  required="true"  text="{i18nModel>ResponsibleSupport}">
 											<layoutData>
 												<l:GridData span="L2 M6 S12" linebreak="true" />
 											</layoutData>
@@ -99,7 +99,7 @@
 
 								<f:FormElement>
 									<f:label>
-										<Label text="{i18nModel>OriginatorGroup}">
+										<Label  required="true" text="{i18nModel>OriginatorGroup}">
 											<layoutData>
 												<l:GridData span="L2 M6 S12" />
 											</layoutData>
@@ -144,7 +144,7 @@
 
 								<f:FormElement>
 									<f:label>
-										<Label text="{i18nModel>gravity}">
+										<Label  required="true" text="{i18nModel>gravity}">
 											<layoutData>
 												<l:GridData span="L2 M6 S12" />
 											</layoutData>
@@ -284,7 +284,7 @@
 
 								<f:FormElement>
 									<f:label>
-										<Label text="{i18nModel>Status}">
+										<Label  text="{i18nModel>Status}">
 											<layoutData>
 												<l:GridData span="L2 M6 S12" />
 											</layoutData>
@@ -301,7 +301,7 @@
 								
 								<f:FormElement>
 									<f:label>
-										<Label text="{i18nModel>Description}">
+										<Label  required="true" text="{i18nModel>Description}">
 											<layoutData>
 												<l:GridData span="L2 M6 S12" linebreak="true" />
 											</layoutData>
