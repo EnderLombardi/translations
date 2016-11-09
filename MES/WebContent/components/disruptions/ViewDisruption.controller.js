@@ -152,7 +152,7 @@ sap.ui
 
 						if (isSuccess) {
 							var sPath = sap.ui.getCore().byId(
-									"closeDisruption-sPath").getValue();
+									"closeDisruption-sPath").getText();
 							this.getView()
 									.getModel("operationDisruptionsModel")
 									.getProperty(sPath).Status = airbus.mes.disruptions.Formatter.status.closed;
@@ -231,28 +231,36 @@ sap.ui
 					 * Confirming Delete Disruption
 					 */
 					onConfirmDelete : function(oEvent) {
+
+						var i18nModel = airbus.mes.operationdetail.viewDisruption.oView
+								.getModel("i18nModel");
+
 						var comment = sap.ui.getCore().byId(
 								"disruptionCommentBox").getValue();
+
 						var msgref = sap.ui.getCore().byId(
 								"disruptionCommentMsgRef").getText();
-						var sMessage = this.getView().getModel("i18nModel")
-								.getProperty("successDelete");
+
+						var sMessage = i18nModel.getProperty("successDelete");
 
 						// Call Disruption Service
 						var isSuccess = airbus.mes.disruptions.ModelManager
-								.rejectDisruption(comment, msgref, sMessage);
+								.rejectDisruption(comment, msgref, sMessage,
+										i18nModel);
 
 						airbus.mes.disruptions.__enterCommentDialogue.close();
 
 						if (isSuccess) {
+
+							var operationDisruptionsModel = airbus.mes.operationdetail.viewDisruption.oView
+									.getModel("operationDisruptionsModel");
+
 							var sPath = sap.ui.getCore().byId(
-									"disruptionCommentSpath").getValue();
-							this.getView()
-									.getModel("operationDisruptionsModel")
-									.getProperty(sPath).Status = airbus.mes.disruptions.Formatter.status.rejected;
-							this.getView()
-									.getModel("operationDisruptionsModel")
-									.refresh();
+									"disruptionCommentSpath").getText();
+
+							operationDisruptionsModel.getProperty(sPath).Status = airbus.mes.disruptions.Formatter.status.deleted;
+
+							operationDisruptionsModel.refresh();
 						}
 
 					},
