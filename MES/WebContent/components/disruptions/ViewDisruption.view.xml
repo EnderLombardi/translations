@@ -8,7 +8,7 @@
 
                            <CustomListItem>
 
-                                  <Panel expandable="true" expanded="false" class="expandableIcon"
+                                  <Panel expandable="true" expanded="false" class="disruptionExpandablePanel"
                                          expand="handleDisruptionPanelExpand">
                                          <headerToolbar>
                                                 <Toolbar>
