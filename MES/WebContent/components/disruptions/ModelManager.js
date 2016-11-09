@@ -140,7 +140,8 @@ airbus.mes.disruptions.ModelManager = {
 		getDiruptionsURL = getDiruptionsURL.replace('$Resource', "");
 
 		if (oFilters.operation != undefined && oFilters.operation != "")
-			getDiruptionsURL = getDiruptionsURL.replace('$Operation',oFilters.operation);
+			getDiruptionsURL = getDiruptionsURL.replace('$Operation',
+					oFilters.operation.replace("#", "HASH"));
 		else
 			getDiruptionsURL = getDiruptionsURL.replace('$Operation', "");
 

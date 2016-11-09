@@ -26,6 +26,7 @@ sap.ui
 							this.nav
 									.addPage(airbus.mes.operationdetail.status.oView);
 						}
+						
 					},
 					expandOperationDetailPanel : function(oEvent) {
 						var toggleButton = this.getView().byId(
@@ -40,12 +41,12 @@ sap.ui
 								.setExpanded();
 					},
 
-					onCloseOperationDetailPopup : function() {
+					/*onCloseOperationDetailPopup : function() {
 
 						airbus.mes.stationtracker.operationDetailPopup.close();
 						airbus.mes.shell.oView.getController()
 								.renderStationTracker();
-					},
+					},*/
 
 					/**
 					 * Similar to onBeforeRendering, but this hook is invoked
@@ -238,11 +239,18 @@ sap.ui
 							else {
 								airbus.mes.operationdetail.createDisruption.oView.oController.setDataForEditDisruption();
 							}
-							
 							break;
+							
+						default:
+							
 
+						};
+						
+						if(this.nav.getCurrentPage().sId != "ViewDisruptionView"){
+							// Hide buttons
+							sap.ui.getCore().byId("operationDetailPopup--reportDisruption").setVisible(
+									true);
 						}
-						;
 
 					}
 

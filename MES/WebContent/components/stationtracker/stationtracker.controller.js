@@ -427,7 +427,20 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		var oOperationPopover = sap.ui.getCore().byId("operationPopover--operationPopoverID");
 		oOperationPopover.close();
 	},
+	onRescheduleConfirm : function(oEvent) {
+//		Retrieve selected date
+		var oDate = sap.ui.getCore().byId("ReschedulePopover--DP1").getAggregation("selectedDates")[0].getStartDate();
 		
+//		Retrieve selected group
+		var sGroup = sap.ui.getCore().byId("ReschedulePopover--SelectedGroup").getSelectedKey();
+		
+//		Call rescheduling service
+//		TODO
+		
+//		Close Popup
+		onCloseDialog(oEvent);
+		
+	},
 	/**
 	 * Fire when the user click on Import of unplanned pop-up or OSW pop-up  
 	 *
@@ -726,9 +739,6 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			
 		}
 			
-		
-			
-			
 	},
 	showDisruption : function(oEvent){
 		
@@ -842,6 +852,20 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	},
 	onCloseDialog : function(oEvent) {
 		oEvent.getSource().getParent().close();
-	}
+	},
+	
+
+	/******************************************
+	 * Operation Detail Pop-Up Close functions
+	 */
+	onCloseOperationDetailPopup : function() {
+
+		airbus.mes.stationtracker.operationDetailPopup.close();
+	},
+
+	afterCloseOperationDetailPopup : function() {
+		airbus.mes.shell.oView.getController()
+				.renderStationTracker();
+	},
 	
 });

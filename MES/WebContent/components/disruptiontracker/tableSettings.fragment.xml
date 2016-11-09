@@ -1,5 +1,5 @@
 <core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
-	<ViewSettingsDialog confirm="onTableSettingsConfirm">
+	<ViewSettingsDialog id="disrptTrackerSettings" confirm="onTableSettingsConfirm">
 		<sortItems>
 			<ViewSettingsItem selected="true" key="OpeningTime" text="{disruptiontrackerI18n>openingTime}" />
 			<ViewSettingsItem key="FixedByTime" text="{disruptiontrackerI18n>fixedByTime}" />			

@@ -416,12 +416,12 @@ sap.ui
 
 					},*/
 
-					onCloseCreateDisruption : function() {
+					/*onCloseCreateDisruption : function() {
 						airbus.mes.stationtracker.operationDetailPopup.close();
 						airbus.mes.shell.oView.getController()
 								.renderStationTracker();
 
-					},
+					},*/
 
 					onCancelCreateDisruption : function() {
 

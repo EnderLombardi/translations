@@ -14,6 +14,9 @@ sap.ui
 					 * @memberOf components.disruptions.ViewDisruption
 					 */
 					onInit : function() {
+						
+						// Set click event on create disruption button 
+						sap.ui.getCore().byId("operationDetailPopup--reportDisruption").attachPress(this.getView().getController().onReportDisruption);
 
 					},
 					/**
@@ -38,10 +41,10 @@ sap.ui
 						if (sap.ui.getCore().byId(
 								"operationDetailsView--switchOperationModeBtn")
 								.getState() == false) {
-							this.getView().byId("reportDisruption").setVisible(
+							sap.ui.getCore().byId("operationDetailPopup--reportDisruption").setVisible(
 									false);
 						} else {
-							this.getView().byId("reportDisruption").setVisible(
+							sap.ui.getCore().byId("operationDetailPopup--reportDisruption").setVisible(
 									true);
 						}
 
@@ -632,7 +635,7 @@ sap.ui
 
 						if (airbus.mes.operationdetail.createDisruption === undefined
 								|| airbus.mes.operationdetail.createDisruption.oView === undefined) {
-							this.getView().setBusy(true);
+
 							sap.ui
 									.getCore()
 									.createComponent(
@@ -642,7 +645,7 @@ sap.ui
 
 							oOperDetailNavContainer
 									.addPage(airbus.mes.operationdetail.createDisruption.oView);
-							this.getView().setBusy(false);
+
 						}
 
 						// clear disruptionDetailModel if edit is loaded before
@@ -754,13 +757,6 @@ sap.ui
 
 						}
 
-					},
-
-					onCloseOperationDetailPopup : function() {
-
-						airbus.mes.stationtracker.operationDetailPopup.close();
-						airbus.mes.shell.oView.getController()
-								.renderStationTracker();
 					}
 
 				});

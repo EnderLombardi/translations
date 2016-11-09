@@ -95,7 +95,7 @@ airbus.mes.disruptions.Formatter = {
 
 	setDeleteButtonVisibility : function(originatorFlag, status) {
 
-		if (status == airbus.mes.disruptions.Formatter.status.deleted || status == airbus.mes.disruptions.Formatter.status.closed) {
+		if (status == airbus.mes.disruptions.Formatter.status.deleted || status == airbus.mes.disruptions.Formatter.status.closed || status == airbus.mes.disruptions.Formatter.status.acknowledged) {
 			return false;
 		} 
 		else if (originatorFlag == 'X') {
@@ -224,23 +224,18 @@ airbus.mes.disruptions.Formatter = {
 		return true;
 	},
 	
-	setDisruptionTitle : function(iGravity,sStatus,sCategory,sReason,sDescription){
+	setDisruptionTitle : function(iGravity){
 		
 		var sGravity;
 		switch(iGravity)
 		{
 		case "1":
-			sGravity = "Not Blocked";
-			break;
+			return "green";
 		case "2":
-			sGravity = "Disturbed";
-			break;
+			return "amber";
 		case "3":
-			sGravity = "Blocked";
-			break;
+			return "red";
 		}
-		
-		return sGravity + "/" + sStatus + "/" + sCategory + "/" + sReason + "/" + sDescription;
 	}
 
 };
