@@ -25,6 +25,23 @@
 
 
 								</f:FormElement>
+								
+								<f:FormElement>
+									<f:label>
+										<Label  required="true" text="{i18nModel>Description}">
+											<layoutData>
+												<l:GridData span="L2 M6 S12" linebreak="true" />
+											</layoutData>
+										</Label>
+									</f:label>
+									<f:fields>
+										<Input id="description" maxLength="40">
+											<layoutData>
+												<l:GridData span="L9 M6 S12" />
+											</layoutData>
+										</Input>
+									</f:fields>
+								</f:FormElement>
 
 								<f:FormElement>
 									<f:label>
@@ -121,24 +138,18 @@
 
 								<f:FormElement>
 									<f:label>
-										<Label text="{i18nModel>RootCause}">
+										<Label  text="{i18nModel>Status}">
 											<layoutData>
-												<l:GridData span="L2 M6 S12" linebreak="true" />
+												<l:GridData span="L2 M6 S12" />
 											</layoutData>
 										</Label>
 									</f:label>
 									<f:fields>
-										<Select id="selectRootCause" selectedKey="{DisruptionModel>RootCause}"
-											forceSelection="false" items="{disruptionCustomData>/Rowsets/Rowset/1/Row}"
-											change="onSelectionChange">
-											<items>
-												<core:Item text="{disruptionCustomData>RootCause}"
-													key="{disruptionCustomData>RootCause}" />
-											</items>
+										<Input id="status" value="{i18nModel>Pending}" enabled="false">
 											<layoutData>
 												<l:GridData span="L3 M6 S12" />
 											</layoutData>
-										</Select>
+										</Input>
 									</f:fields>
 								</f:FormElement>
 
@@ -284,35 +295,24 @@
 
 								<f:FormElement>
 									<f:label>
-										<Label  text="{i18nModel>Status}">
-											<layoutData>
-												<l:GridData span="L2 M6 S12" />
-											</layoutData>
-										</Label>
-									</f:label>
-									<f:fields>
-										<Input id="status" value="{i18nModel>Pending}" enabled="false">
-											<layoutData>
-												<l:GridData span="L3 M6 S12" />
-											</layoutData>
-										</Input>
-									</f:fields>
-								</f:FormElement>
-								
-								<f:FormElement>
-									<f:label>
-										<Label  required="true" text="{i18nModel>Description}">
+										<Label text="{i18nModel>RootCause}">
 											<layoutData>
 												<l:GridData span="L2 M6 S12" linebreak="true" />
 											</layoutData>
 										</Label>
 									</f:label>
 									<f:fields>
-										<Input id="description" maxLength="40">
+										<Select id="selectRootCause" selectedKey="{DisruptionModel>RootCause}"
+											forceSelection="false" items="{disruptionCustomData>/Rowsets/Rowset/1/Row}"
+											change="onSelectionChange">
+											<items>
+												<core:Item text="{disruptionCustomData>RootCause}"
+													key="{disruptionCustomData>RootCause}" />
+											</items>
 											<layoutData>
-												<l:GridData span="L9 M6 S12" />
+												<l:GridData span="L3 M6 S12" />
 											</layoutData>
-										</Input>
+										</Select>
 									</f:fields>
 								</f:FormElement>
 								
