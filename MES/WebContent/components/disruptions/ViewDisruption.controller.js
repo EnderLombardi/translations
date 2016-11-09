@@ -105,7 +105,7 @@ sap.ui
 							var title = this.getView().getModel("i18nModel")
 									.getProperty("closeDisruption");
 
-							sap.ui.getCore().byId("disruptionCloseDislog")
+							sap.ui.getCore().byId("disruptionCloseDialogue")
 									.setTitle(title);
 
 							this.getView().addDependent(this._closeDialog);
