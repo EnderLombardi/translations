@@ -125,5 +125,18 @@ airbus.mes.disruptiontracker.Formatter = {
 		}
 		
 		return sTime;
+	},
+	
+	setEscalationText : function(escalationLevel) {
+		if(escalationLevel == 1)
+			return "Not Escalated";
+		
+		else if(escalationLevel == 2)
+			return "First Escalation";
+		
+		else if(escalationLevel == 3)
+			return "Final Escalation";
+		else
+			return "-----";
 	}
 };
