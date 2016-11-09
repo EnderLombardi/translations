@@ -259,7 +259,7 @@ airbus.mes.stationtracker.util.Formatter = {
 				
 				
 				
-			}},
+			},
 			
 			
 			initial : function(sText,sProgress) {
