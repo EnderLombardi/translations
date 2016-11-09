@@ -79,4 +79,14 @@ airbus.mes.shell.util.Formatter = {
 			console.log("Parameter data cannot be processed");
 		}
 	},
+	getMiiMessageType : function(oData) {
+		if(oData.hasOwnProperty("Rowsets")){
+			oData = oData.Rowsets.Rowset[0].Row[0];
+		}
+		if(oData.hasOwnProperty("Message_Type"))
+		{
+			return oData.Message_Type;
+		}
+		
+	}
 };

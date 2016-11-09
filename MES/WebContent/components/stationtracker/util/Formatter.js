@@ -72,8 +72,12 @@ airbus.mes.stationtracker.util.Formatter = {
 			jsDateFromDayTimeStr : function(day) {
 				
 				// return day for IE not working. - 1 on month because 00 = january
-				
-				return new Date(day.slice(0,4),day.slice(5,7)-1,day.slice(8,10),day.slice(11,13),day.slice(14,16),day.slice(17,19));
+				if ( day != undefined ){
+					return new Date(day.slice(0,4),day.slice(5,7)-1,day.slice(8,10),day.slice(11,13),day.slice(14,16),day.slice(17,19));
+				}
+				else{
+					return new Date();
+				}
 				
 			},
 			date2Hour : function(day) {
@@ -143,7 +147,7 @@ airbus.mes.stationtracker.util.Formatter = {
 				switch (airbus.mes.stationtracker.GroupingBoxingManager.box) {
 		
 				case "OPERATION_ID":
-					sText = oBox.operationId + " - " + oBox.shopOrder + " - " + oBox.operationDescription;
+					sText = oBox.operationDescription + " - " + oBox.shopOrder + " - " + oBox.operationId;
 					break;
 	
 				case "WORKORDER_ID":
@@ -161,29 +165,23 @@ airbus.mes.stationtracker.util.Formatter = {
 					trackerTextClass = "trackerTextBlack";
 				
 				
-				var sSpanText = '<span class="trackerText '+trackerTextClass+' ">' + sText + '</span>';
+				var sSpanText = '<span class="trackerText '+ trackerTextClass+' ">' + sText + '</span>';
 //				var sProgressText = '<span style="position: relative;  z-index: 1; float: right; overflow: hidden; text-overflow: ellipsis; max-width:40%; white-space: nowrap; padding-left:10px; padding-right:10px;"> ['+
 //				airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.progress) +'/'+ 
 //				airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.totalDuration) +' IM]</span>';
 //				airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.totalDuration) +'</span>';	
 				
 
-				//OSW to be managed with real functional data
-				//Status completed or andon
-								
-				if ( oBox.rmaStatus != "---" )	//rma
-				{
 
+//OSW to be managed with real functional data TODO
 					if ( oBox.rmaStatus != "---" )	//rma
 					{
 						sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon dandelion"></i>';
 					}
-					if (oBox.rmaStatus = "OSW") //OSW
+					if (oBox.rmaStatus == "OSW") //OSW
 					{
 						sLeftIcon2 = '<i class="fa fa-refresh oswIcon dandelion-back "><b style="padding-left:1px">OSW</b></i>';
 					}
-				}
-											
 				switch ( oBox.status ) {
 				// box is active
 					case 2 :
@@ -203,13 +201,12 @@ airbus.mes.stationtracker.util.Formatter = {
 				// box Completed
 					case 0 :
 						sColorProgress ='<div class="colorProgress teal-blue-back" style="width:100%;background-color:#0085ad;"></div>';
-//						sColorProgress ='<div style="width:100%; height:inherit; background-color:#0085ad ; position:absolute; z-index: 0;left: 0px;"></div>';
 						sRightIcon = '<i class="fa fa-check rightIcon"></i>';
 						if ( oBox.rmaStatus != "---" )	//rma
 						{
 							sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon"></i>';
 						}
-						if (oBox.rmaStatus = "OSW") //OSW
+						if (oBox.rmaStatus == "OSW") //OSW
 						{
 							sLeftIcon2 = '<i class="fa fa-refresh oswIcon teal-blue white"><b style="padding-left:1px">OSW</b></i>';
 						}
@@ -219,35 +216,49 @@ airbus.mes.stationtracker.util.Formatter = {
 					case 4 :
 						sColorProgress ='<div class="openBlockedEscalated"></div>';
 						sRightIcon = '<i class="fa fa-exclamation-triangle triangleIcon"></i>';
+//						sColorProgress ='<div class="colorProgress dandelion-back" style="width:100%;background-color: #fbec00;"></div>';
+//						sRightIcon = '<i class="fa fa-stop rightIcon petrol" ></i>';
+						sSpanText = '<span class="trackerTextBlock">' + sText + '</span>';
+						if ( oBox.rmaStatus != "---" )	//rma
+						{
+							sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon petrol"></i>';
+						}
+						if (oBox.rmaStatus == "OSW") //OSW
+						{
+							sLeftIcon2 = '<i class="fa fa-refresh oswIcon petrol-back dandelion"><b style="padding-left:1px">OSW</b></i>';
+						}
 						break;
 
 					// Opened Blocking disruption
 					case 5 :
 						sColorProgress ='<div class="openBlocked"></div>';
-						sRightIcon = '<i class="fa fa-exclamation-triangle triangleIcon"></i>';
+//						sRightIcon = '<i class="fa fa-exclamation-triangle triangleIcon"></i>';
+						sRightIcon = '<i class="fa fa-play rightIcon"></i>';
 						break;
 					
 					// Solved Blocking and Escalated disruption
 					case 6 :
 						sColorProgress ='<div class="solvedBlockedEscalated"></div>';
-						sRightIcon = '<i class="fa fa-exclamation-triangle triangleIcon"></i>';
+//						sRightIcon = '<i class="fa fa-exclamation-triangle triangleIcon"></i>';
+						sRightIcon = '<i class="fa fa-play rightIcon"></i>';
 						break;
 					
 					// Solved Blocking disruption
 					case 7 :
 						sColorProgress ='<div class="solvedBlocked"></div>';
-						sRightIcon = '<i class="fa fa-exclamation-triangle triangleIcon"></i>';
+//						sRightIcon = '<i class="fa fa-exclamation-triangle triangleIcon"></i>';
+						sRightIcon = '<i class="fa fa-play rightIcon"></i>';
 						break;
 						
 				// andon
-					case 5 :
+					case 99 :
 						sColorProgress ='<div class="colorProgress cherry-red-back" style="width:100%;background-color: #e4002b;"></div>';
 						sRightIcon = '<i class="fa fa-stop rightIcon"></i>';
 						if ( oBox.rmaStatus != "---" )	//rma
 						{
 							sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon"></i>';
 						}
-						if (oBox.rmaStatus = "OSW") //OSW
+						if (oBox.rmaStatus == "OSW") //OSW
 						{
 							sLeftIcon2 = '<i class="fa fa-refresh oswIcon cherry-red white"><b style="padding-left:1px">OSW</b></i>';
 						}

@@ -137,7 +137,7 @@ sap.ui
 								});
 
 						if (id === "selectCategory") {
-							this.setEnabledSelectBox(true, true, false, true);
+							this.setEnabledSelectBox(true, true, true, false);
 						} else if (id === "selectreason") {
 							this.setEnabledSelectBox(true, true, true, true);
 						} 
@@ -329,9 +329,9 @@ sap.ui
 						}
 						aModelData.push(oJson);
 						
-						// message subject is passed as category because subject is compulsary and category will always be in input.
-						this.ModelManager.createDisruption(sHandle, this.getView()
-								.byId("description").getValue(),sCategory, sComment, aModelData);
+						var sDescription = this.getView().byId("description").getValue();
+						// message subject is passed as description because subject is compulsary
+						this.ModelManager.createDisruption(sHandle,sCategory,sDescription,sComment,aModelData);
 					},
 
 					/***********************************************************
