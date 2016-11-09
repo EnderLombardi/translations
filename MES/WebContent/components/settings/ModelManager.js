@@ -219,12 +219,12 @@ airbus.mes.settings.ModelManager =  {
 			
 			if ( sSaveLanguage != undefined && sSaveLanguage != "---" && sSaveLanguage != ""  && sSaveLanguage != null) {
 				
-				var sSaveLanguage = sSaveLanguage;
-				if ( sSaveLanguage != sSapLanguage ) {
-					
-					airbus.mes.shell.oView.getController().updateUrlForLanguage(sSaveLanguage);
-					
-				}
+//				var sSaveLanguage = sSaveLanguage;
+//				if ( sSaveLanguage != sSapLanguage ) {
+//					
+//					airbus.mes.shell.oView.getController().updateUrlForLanguage(sSaveLanguage);
+//					
+//				}
 				
 			} else {
 				
