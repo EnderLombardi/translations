@@ -1,7 +1,7 @@
 <core:FragmentDefinition xmlns:core="sap.ui.core"
 	xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.ui.layout.form"
 	xmlns:l="sap.ui.layout">
-	<Dialog id="disruptionCloseDialogue" contentHeight="30%" contentWidth="60%" >
+	<Dialog id="disruptionCloseDialogue" >
 		<content>
 			<f:SimpleForm id="closeDisruption" backgroundDesign="Transparent"
 				maxContainerCols="2" editable="true" layout="ResponsiveGridLayout"
