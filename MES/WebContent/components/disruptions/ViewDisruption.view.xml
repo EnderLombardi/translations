@@ -1,347 +1,348 @@
 <core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
-	xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout"
-	controllerName="airbus.mes.disruptions.ViewDisruption" xmlns:html="http://www.w3.org/1999/xhtml">
-	<Page enableScrolling="false" showHeader="false">
-		<content>
-			<List id="disrptlist" noDataText="{i18nModel>noDisruptions}"
-				class="disruptionDetail sapUiSmallMarginBottom" items="{path: 'operationDisruptionsModel>/Rowsets/Rowset/0/Row'}">
-
-				<CustomListItem>
-
-					<Panel expandable="true" expanded="false" class="expandableIcon"
-						expand="handleDisruptionPanelExpand">
-						<headerToolbar>
-							<Toolbar>
-
-								<Title text="{operationDisruptionsModel>Description}"
-									class="panelTitleText" />
-
-								<ToolbarSpacer />
-
-								<Text
-									text="{i18nModel>closureDate} : {operationDisruptionsModel>ClosureDate}"
-									visible="{path: 'operationDisruptionsModel>Status', formatter: 'airbus.mes.disruptions.Formatter.setClosureDateVisibility'}"
-									class="msgHeaderText" />
-
-								<Button text="{i18nModel>close}" type="Accept"
-									visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setCloseButtonVisibility'}"
-									design="Transparent" icon="sap-icon://collapse" press="onCloseDisruption" />
-
-								<Button text="{i18nModel>edit}" type="Emphasized"
-									visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setEditButtonVisibility'}"
-									press="onEditDisruption" design="Transparent" icon="sap-icon://edit" />
-
-								<Button text="{i18nModel>delete}" type="Reject"
-									visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setDeleteButtonVisibility'}"
-									design="Transparent" icon="sap-icon://delete" press="onDeleteDisruption" />
-
-							</Toolbar>
-						</headerToolbar>
-
-						<f:Form class="formoperationDisruptionsModel" editable="true">
-							<f:layout>
-								<f:ResponsiveGridLayout span="L12 M12 S12" />
-							</f:layout>
-							<f:formContainers>
-								<f:FormContainer ariaLabelledBy="Title2">
-									<f:formElements>
-
-										<f:FormElement>
-											<f:label>
-												<Label class="detailLabels" text="{i18nModel>Category}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
-												</Label>
-											</f:label>
-											<f:fields>
-
-												<Text text="{path: 'operationDisruptionsModel>Category'}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
-												</Text>
-											</f:fields>
-										</f:FormElement>
-
-										<f:FormElement>
-											<f:label>
-												<Label class="detailLabels" text="{i18nModel>gravity}">
-													<layoutData>
-														<l:GridData span="L2 M2 S12" />
-													</layoutData>
-												</Label>
-											</f:label>
-											<f:fields>
-
-												<Text
-													text="{parts: [ {path: 'operationDisruptionsModel>Status'}, {path: 'operationDisruptionsModel>Gravity'}, {path: 'operationDisruptionsModel>Severity'} ], formatter: 'airbus.mes.disruptions.Formatter.setText'}">
-													<layoutData>
-														<l:GridData span="L4 M4 S12" />
-													</layoutData>
-												</Text>
-											</f:fields>
-										</f:FormElement>
-
-
-										<f:FormElement>
-											<f:label>
-												<Label class="detailLabels" text="{i18nModel>rootCause}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
-												</Label>
-											</f:label>
-											<f:fields>
-
-												<Text text="{operationDisruptionsModel>Subject}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
-												</Text>
-											</f:fields>
-										</f:FormElement>
-
-
-										<f:FormElement>
-											<f:label>
-												<Label class="detailLabels" text="{i18nModel>resGroup}">
-													<layoutData>
-														<l:GridData span="L2 M2 S12" />
-													</layoutData>
-												</Label>
-											</f:label>
-											<f:fields>
-
-												<Text text="{operationDisruptionsModel>ResponsibleGroup}">
-													<layoutData>
-														<l:GridData span="L4 M4 S12" />
-													</layoutData>
-												</Text>
-											</f:fields>
-										</f:FormElement>
-
-										<f:FormElement>
-											<f:label>
-												<Label class="detailLabels" text="{i18nModel>reason}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
-												</Label>
-											</f:label>
-											<f:fields>
-
-												<Text text="{operationDisruptionsModel>Reason}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
-												</Text>
-											</f:fields>
-										</f:FormElement>
-
-
-										<f:FormElement>
-											<f:label>
-												<Label class="detailLabels" text="{i18nModel>openDate}">
-													<layoutData>
-														<l:GridData span="L2 M2 S12" />
-													</layoutData>
-												</Label>
-											</f:label>
-											<f:fields>
-
-												<Text text="{operationDisruptionsModel>OpeningTime}">
-													<layoutData>
-														<l:GridData span="L4 M4 S12" />
-													</layoutData>
-												</Text>
-											</f:fields>
-										</f:FormElement>
-
-										<f:FormElement>
-											<f:label>
-												<Label class="detailLabels" text="{i18nModel>escalation}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
-												</Label>
-											</f:label>
-											<f:fields>
-
-												<Text
-													text="{path: 'operationDisruptionsModel>EscalationLevel', formatter: 'airbus.mes.disruptions.Formatter.setEscalationText'}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
-												</Text>
-											</f:fields>
-										</f:FormElement>
-
-
-
-										<f:FormElement>
-											<f:label>
-												<Label class="detailLabels" text="{i18nModel>expected}">
-													<layoutData>
-														<l:GridData span="L2 M2 S12" />
-													</layoutData>
-												</Label>
-											</f:label>
-											<f:fields>
-												<Text text="{operationDisruptionsModel>FixedByTime}">
-													<layoutData>
-														<l:GridData span="L4 M4 S12" />
-													</layoutData>
-												</Text>
-											</f:fields>
-										</f:FormElement>
-
-
-										<f:FormElement>
-											<f:label>
-												<Label class="detailLabels" text="{i18nModel>promisedDateTime}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
-												</Label>
-											</f:label>
-											<f:fields>
-
-												<Text
-													text="{path: 'operationDisruptionsModel>PromisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.setEmptyPromisedDateTimeText'}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
-												</Text>
-											</f:fields>
-										</f:FormElement>
-
-										<f:FormElement>
-											<f:label>
-												<Label class="detailLabels" text="{i18nModel>timeBeforeNextEsc}"
-													visible="{path: 'operationDisruptionsModel>EscalationLevel', formatter: 'airbus.mes.disruptions.Formatter.setTimeBeforeNextEscVisibility'}">
-													<layoutData>
-														<l:GridData span="L2 M2 S12" />
-													</layoutData>
-												</Label>
-											</f:label>
-											<f:fields>
-												<Text text="{operationDisruptionsModel>TimeBeforeNextEscalation}"
-													visible="{path: 'operationDisruptionsModel>EscalationLevel', formatter: 'airbus.mes.disruptions.Formatter.setTimeBeforeNextEscVisibility'}">
-													<layoutData>
-														<l:GridData span="L4 M4 S12" />
-													</layoutData>
-												</Text>
-											</f:fields>
-										</f:FormElement>
-
-									</f:formElements>
-								</f:FormContainer>
-							</f:formContainers>
-						</f:Form>
-
-						<Text text="{i18nModel>status} : {operationDisruptionsModel>Status}"
-							class="sapUiMediumMarginBegin statusText" />
-
-						<VBox class="msgColor sapUiSmallMarginBeginEnd sapUiTinyMarginTopBottom">
-							<Text class="sapUiSmallMarginBeginEnd sapUiTinyMarginTopBottom msgHeaderText"
-								text="Solution"></Text>
-							<Text text="{operationDisruptionsModel>Solution}"
-								class="sapUiSmallMarginBegin  sapUiSmallMarginEnd sapUiSmallMarginBottom"></Text>
-						</VBox>
-
-						<List showNoData="false" class="sapUiSmallMargin"
-							items="{path: 'operationDisruptionsModel>/Rowsets/Rowset/1/Row'}">
-
-							<CustomListItem class="msgColor">
-								<HBox
-									class="sapUiSmallMarginBeginEnd sapUiTinyMarginTopBottom msgHeaderText">
-									<items>
-										<Text
-											text="From : {path: 'operationDisruptionsModel>UserFullName', formatter: 'airbus.mes.disruptions.Formatter.textCaseFormat'}"></Text>
-										<Text text="|" class="sapUiSmallMarginBeginEnd"></Text>
-										<Text
-											text="Action : {path: 'operationDisruptionsModel>Action', formatter: 'airbus.mes.disruptions.Formatter.textCaseFormat'}"></Text>
-									</items>
-								</HBox>
-
-								<Text text="{operationDisruptionsModel>Comments}"
-									class="sapUiSmallMarginBegin  sapUiSmallMarginEnd sapUiSmallMarginBottom"></Text>
-							</CustomListItem>
-						</List>
-
-
-						<Panel id="commentBox" visible="false">
-
-							<VBox width="79%">
-								<TextArea id="commentArea" placeholder="{i18nModel>addCommentPlaceholder}"
-									width="100%" />
-
-								<HBox>
-									<Button text="{i18nModel>submitComment}" type="Accept"
-										press="submitComment" class="sapUiSmallMarginEnd buttonAccept"
-										width="12rem" />
-
-									<Button text="{i18nModel>cancelComment}" type="Reject"
-										press="hideCommentBox" class="sapUiSmallMarginEnd buttonReject"
-										width="12rem" />
-								</HBox>
-
-							</VBox>
-
-						</Panel>
-
-						<Toolbar class="disruptionBottomBar">
-
-							<Button id="addComment" text="{i18nModel>addComment}"
-								type="Emphasized"
-								visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>ResponsibleFlag'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setAddCommentButtonVisibility'}"
-								press="showCommentBox" design="Transparent" icon="sap-icon://comment" />
-
-							<ToolbarSpacer />
-
-							<Button text="{i18nModel>acknowledge}" type="Accept"
-								visible="{parts: [ {path: 'operationDisruptionsModel>ResponsibleFlag'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setAcknowledgeButtonVisibility'}"
-								press="onAckDisruption" design="Transparent" icon="sap-icon://to-be-reviewed" />
-
-							<Button id="rejectDisruption" text="{i18nModel>reject}"
-								type="Reject"
-								visible="{parts: [ {path: 'operationDisruptionsModel>ResponsibleFlag'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setRejectButtonVisibility'}"
-								press="onRejectDisruption" design="Transparent" icon="sap-icon://sys-cancel-2" />
-							<Button text="{i18nModel>escalate}" type="Reject"
-								visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>Severity'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setEscalateButtonVisibility'}"
-								press="onEscalateDisruption" design="Transparent" icon="sap-icon://message-warning" />
-
-							<Button text="{i18nModel>markSolved}" type="Accept"
-								visible="{parts: [ {path: 'operationDisruptionsModel>ResponsibleFlag'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setMarkSolvedButtonVisibility'}"
-								press="onMarkSolvedDisruption" design="Transparent" icon="sap-icon://sys-add" />
-
-						</Toolbar>
-					</Panel>
-
-				</CustomListItem>
-
-			</List>
-		</content>
-		<footer>
-			<Bar design="Footer" class="viewDisruptionFooter">
-
-				<contentLeft>
-
-					<Button id="reportDisruption" text="{i18nModel>reportDisruption}"
-						press="onReportDisruption" icon="sap-icon://add" />
-
-				</contentLeft>
-
-				<contentRight>
-
-					<Button id="btnClose" text="{i18nModel>close}" icon="sap-icon://decline"
-						press="onCloseOperationDetailPopup" />
-
-				</contentRight>
-
-			</Bar>
-		</footer>
-
-	</Page>
+       xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout"
+       controllerName="airbus.mes.disruptions.ViewDisruption" xmlns:html="http://www.w3.org/1999/xhtml">
+       <Page enableScrolling="false" showHeader="false">
+              <content>
+                     <List id="disrptlist" noDataText="{i18nModel>noDisruptions}"
+                           class="disruptionDetail sapUiSmallMarginBottom" items="{path: 'operationDisruptionsModel>/Rowsets/Rowset/0/Row'}">
+
+                           <CustomListItem>
+
+                                  <Panel expandable="true" expanded="false" class="expandableIcon"
+                                         expand="handleDisruptionPanelExpand">
+                                         <headerToolbar>
+                                                <Toolbar>
+
+                                                       <Title text="{operationDisruptionsModel>Description}"
+                                                              class="panelTitleText" />
+
+                                                       <ToolbarSpacer />
+
+                                                       <Text
+                                                              text="{i18nModel>closureDate} : {operationDisruptionsModel>ClosureDate}"
+                                                              visible="{path: 'operationDisruptionsModel>Status', formatter: 'airbus.mes.disruptions.Formatter.setClosureDateVisibility'}"
+                                                              class="msgHeaderText" />
+
+                                                       <Button text="{i18nModel>close}" type="Accept"
+                                                              visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setCloseButtonVisibility'}"
+                                                              design="Transparent" icon="sap-icon://collapse" press="onCloseDisruption" />
+
+                                                       <Button text="{i18nModel>edit}" type="Emphasized"
+                                                              visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setEditButtonVisibility'}"
+                                                              press="onEditDisruption" design="Transparent" icon="sap-icon://edit" />
+
+                                                       <Button text="{i18nModel>delete}" type="Reject"
+                                                              visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setDeleteButtonVisibility'}"
+                                                              design="Transparent" icon="sap-icon://delete" press="onDeleteDisruption" />
+
+                                                </Toolbar>
+                                         </headerToolbar>
+
+                                         <f:Form class="formoperationDisruptionsModel" editable="true">
+                                                <f:layout>
+                                                       <f:ResponsiveGridLayout span="L12 M12 S12" />
+                                                </f:layout>
+                                                <f:formContainers>
+                                                       <f:FormContainer ariaLabelledBy="Title2">
+                                                              <f:formElements>
+
+                                                                     <f:FormElement>
+                                                                           <f:label>
+                                                                                  <Label class="detailLabels" text="{i18nModel>Category}">
+                                                                                         <layoutData>
+                                                                                                <l:GridData span="L3 M3 S12" />
+                                                                                         </layoutData>
+                                                                                  </Label>
+                                                                           </f:label>
+                                                                           <f:fields>
+
+                                                                                  <Text text="{path: 'operationDisruptionsModel>Category'}">
+                                                                                         <layoutData>
+                                                                                                <l:GridData span="L3 M3 S12" />
+                                                                                         </layoutData>
+                                                                                  </Text>
+                                                                           </f:fields>
+                                                                     </f:FormElement>
+
+                                                                     <f:FormElement>
+                                                                           <f:label>
+                                                                                  <Label class="detailLabels" text="{i18nModel>gravity}">
+                                                                                         <layoutData>
+                                                                                                <l:GridData span="L2 M2 S12" />
+                                                                                         </layoutData>
+                                                                                  </Label>
+                                                                           </f:label>
+                                                                           <f:fields>
+
+                                                                                  <Text
+                                                                                         text="{parts: [ {path: 'operationDisruptionsModel>Status'}, {path: 'operationDisruptionsModel>Gravity'}, {path: 'operationDisruptionsModel>Severity'} ], formatter: 'airbus.mes.disruptions.Formatter.setText'}">
+                                                                                         <layoutData>
+                                                                                                <l:GridData span="L4 M4 S12" />
+                                                                                         </layoutData>
+                                                                                  </Text>
+                                                                           </f:fields>
+                                                                     </f:FormElement>
+
+
+                                                                     <f:FormElement>
+                                                                           <f:label>
+                                                                                  <Label class="detailLabels" text="{i18nModel>rootCause}">
+                                                                                         <layoutData>
+                                                                                                <l:GridData span="L3 M3 S12" />
+                                                                                         </layoutData>
+                                                                                  </Label>
+                                                                           </f:label>
+                                                                           <f:fields>
+
+                                                                                  <Text text="{operationDisruptionsModel>Subject}">
+                                                                                         <layoutData>
+                                                                                                <l:GridData span="L3 M3 S12" />
+                                                                                         </layoutData>
+                                                                                  </Text>
+                                                                           </f:fields>
+                                                                     </f:FormElement>
+
+
+                                                                     <f:FormElement>
+                                                                           <f:label>
+                                                                                  <Label class="detailLabels" text="{i18nModel>resGroup}">
+                                                                                         <layoutData>
+                                                                                                <l:GridData span="L2 M2 S12" />
+                                                                                         </layoutData>
+                                                                                  </Label>
+                                                                           </f:label>
+                                                                           <f:fields>
+
+                                                                                  <Text text="{operationDisruptionsModel>ResponsibleGroup}">
+                                                                                         <layoutData>
+                                                                                                <l:GridData span="L4 M4 S12" />
+                                                                                         </layoutData>
+                                                                                  </Text>
+                                                                           </f:fields>
+                                                                     </f:FormElement>
+
+                                                                     <f:FormElement>
+                                                                           <f:label>
+                                                                                  <Label class="detailLabels" text="{i18nModel>reason}">
+                                                                                         <layoutData>
+                                                                                                <l:GridData span="L3 M3 S12" />
+                                                                                         </layoutData>
+                                                                                  </Label>
+                                                                           </f:label>
+                                                                           <f:fields>
+
+                                                                                  <Text text="{operationDisruptionsModel>Reason}">
+                                                                                         <layoutData>
+                                                                                                <l:GridData span="L3 M3 S12" />
+                                                                                         </layoutData>
+                                                                                  </Text>
+                                                                           </f:fields>
+                                                                     </f:FormElement>
+
+
+                                                                     <f:FormElement>
+                                                                           <f:label>
+                                                                                  <Label class="detailLabels" text="{i18nModel>openDate}">
+                                                                                         <layoutData>
+                                                                                                <l:GridData span="L2 M2 S12" />
+                                                                                         </layoutData>
+                                                                                  </Label>
+                                                                           </f:label>
+                                                                           <f:fields>
+
+                                                                                  <Text text="{operationDisruptionsModel>OpeningTime}">
+                                                                                         <layoutData>
+                                                                                                <l:GridData span="L4 M4 S12" />
+                                                                                         </layoutData>
+                                                                                  </Text>
+                                                                           </f:fields>
+                                                                     </f:FormElement>
+
+                                                                     <f:FormElement>
+                                                                           <f:label>
+                                                                                  <Label class="detailLabels" text="{i18nModel>escalation}">
+                                                                                         <layoutData>
+                                                                                                <l:GridData span="L3 M3 S12" />
+                                                                                         </layoutData>
+                                                                                  </Label>
+                                                                           </f:label>
+                                                                           <f:fields>
+
+                                                                                  <Text
+                                                                                         text="{path: 'operationDisruptionsModel>EscalationLevel', formatter: 'airbus.mes.disruptions.Formatter.setEscalationText'}">
+                                                                                         <layoutData>
+                                                                                                <l:GridData span="L3 M3 S12" />
+                                                                                         </layoutData>
+                                                                                  </Text>
+                                                                           </f:fields>
+                                                                     </f:FormElement>
+
+
+
+                                                                     <f:FormElement>
+                                                                           <f:label>
+                                                                                  <Label class="detailLabels" text="{i18nModel>expected}">
+                                                                                         <layoutData>
+                                                                                                <l:GridData span="L2 M2 S12" />
+                                                                                         </layoutData>
+                                                                                  </Label>
+                                                                           </f:label>
+                                                                           <f:fields>
+                                                                                  <Text text="{operationDisruptionsModel>FixedByTime}">
+                                                                                         <layoutData>
+                                                                                                <l:GridData span="L4 M4 S12" />
+                                                                                         </layoutData>
+                                                                                  </Text>
+                                                                           </f:fields>
+                                                                     </f:FormElement>
+
+
+                                                                     <f:FormElement>
+                                                                           <f:label>
+                                                                                  <Label class="detailLabels" text="{i18nModel>promisedDateTime}">
+                                                                                         <layoutData>
+                                                                                                <l:GridData span="L3 M3 S12" />
+                                                                                         </layoutData>
+                                                                                  </Label>
+                                                                           </f:label>
+                                                                           <f:fields>
+
+                                                                                  <Text
+                                                                                         text="{path: 'operationDisruptionsModel>PromisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.setEmptyPromisedDateTimeText'}">
+                                                                                         <layoutData>
+                                                                                                <l:GridData span="L3 M3 S12" />
+                                                                                         </layoutData>
+                                                                                  </Text>
+                                                                           </f:fields>
+                                                                     </f:FormElement>
+
+                                                                     <f:FormElement>
+                                                                           <f:label>
+                                                                                  <Label class="detailLabels" text="{i18nModel>timeBeforeNextEsc}"
+                                                                                         visible="{path: 'operationDisruptionsModel>EscalationLevel', formatter: 'airbus.mes.disruptions.Formatter.setTimeBeforeNextEscVisibility'}">
+                                                                                         <layoutData>
+                                                                                                <l:GridData span="L2 M2 S12" />
+                                                                                         </layoutData>
+                                                                                  </Label>
+                                                                           </f:label>
+                                                                           <f:fields>
+                                                                                  <Text text="{operationDisruptionsModel>TimeBeforeNextEscalation}"
+                                                                                         visible="{path: 'operationDisruptionsModel>EscalationLevel', formatter: 'airbus.mes.disruptions.Formatter.setTimeBeforeNextEscVisibility'}">
+                                                                                         <layoutData>
+                                                                                                <l:GridData span="L4 M4 S12" />
+                                                                                         </layoutData>
+                                                                                  </Text>
+                                                                           </f:fields>
+                                                                     </f:FormElement>
+
+                                                              </f:formElements>
+                                                       </f:FormContainer>
+                                                </f:formContainers>
+                                         </f:Form>
+
+                                         <Text text="{i18nModel>status} : {operationDisruptionsModel>Status}"
+                                                class="sapUiMediumMarginBegin statusText" />
+                                                
+                                         <VBox visible="{path: 'operationDisruptionsModel>Solution', formatter: 'airbus.mes.disruptions.Formatter.setSolutionVisibility'}" class="msgColor sapUiSmallMarginBeginEnd sapUiTinyMarginTop">
+                                                <Text class="sapUiSmallMarginBeginEnd sapUiTinyMarginTopBottom msgHeaderText"
+                                                       text="{i18nModel>solution}"></Text>
+                                                <Text text="{operationDisruptionsModel>Solution}"
+                                                       class="sapUiSmallMarginBegin  sapUiSmallMarginEnd sapUiSmallMarginBottom"></Text>
+                                         </VBox>
+
+                                         <List showNoData="false" class="sapUiSmallMarginBeginEnd"
+                                                items="{path: 'operationDisruptionsModel>/Rowsets/Rowset/1/Row'}">
+
+                                                <CustomListItem class="msgColor">
+                                                       <HBox
+                                                              class="sapUiSmallMarginBeginEnd sapUiTinyMarginTopBottom msgHeaderText">
+                                                              <items>
+                                                                     <Text
+                                                                           text="From : {path: 'operationDisruptionsModel>UserFullName', formatter: 'airbus.mes.disruptions.Formatter.textCaseFormat'}"></Text>
+                                                                     <Text text="|" class="sapUiSmallMarginBeginEnd"></Text>
+                                                                     <Text
+                                                                           text="Action : {path: 'operationDisruptionsModel>Action', formatter: 'airbus.mes.disruptions.Formatter.textCaseFormat'}"></Text>
+                                                              </items>
+                                                       </HBox>
+
+                                                       <Text text="{operationDisruptionsModel>Comments}"
+                                                              class="sapUiSmallMarginBegin  sapUiSmallMarginEnd sapUiSmallMarginBottom"></Text>
+                                                </CustomListItem>
+                                         </List>
+
+
+                                         <Panel id="commentBox" visible="false">
+
+                                                <VBox width="79%">
+                                                       <TextArea id="commentArea" placeholder="{i18nModel>addCommentPlaceholder}"
+                                                              width="100%" />
+
+                                                       <HBox>
+                                                              <Button text="{i18nModel>submitComment}" type="Accept"
+                                                                     press="submitComment" class="sapUiSmallMarginEnd buttonAccept"
+                                                                     width="12rem" />
+
+                                                              <Button text="{i18nModel>cancelComment}" type="Reject"
+                                                                     press="hideCommentBox" class="sapUiSmallMarginEnd buttonReject"
+                                                                     width="12rem" />
+                                                       </HBox>
+
+                                                </VBox>
+
+                                         </Panel>
+
+                                         <Toolbar class="disruptionBottomBar">
+
+                                                <Button id="addComment" text="{i18nModel>addComment}"
+                                                       type="Emphasized"
+                                                       visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>ResponsibleFlag'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setAddCommentButtonVisibility'}"
+                                                       press="showCommentBox" design="Transparent" icon="sap-icon://comment" />
+
+                                                <ToolbarSpacer />
+
+                                                <Button text="{i18nModel>acknowledge}" type="Accept"
+                                                       visible="{parts: [ {path: 'operationDisruptionsModel>ResponsibleFlag'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setAcknowledgeButtonVisibility'}"
+                                                       press="onAckDisruption" design="Transparent" icon="sap-icon://to-be-reviewed" />
+
+                                                <Button id="rejectDisruption" text="{i18nModel>reject}"
+                                                       type="Reject"
+                                                       visible="{parts: [ {path: 'operationDisruptionsModel>ResponsibleFlag'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setRejectButtonVisibility'}"
+                                                       press="onRejectDisruption" design="Transparent" icon="sap-icon://sys-cancel-2" />
+                                                <Button text="{i18nModel>escalate}" type="Reject"
+                                                       visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>Severity'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setEscalateButtonVisibility'}"
+                                                       press="onEscalateDisruption" design="Transparent" icon="sap-icon://message-warning" />
+
+                                                <Button text="{i18nModel>markSolved}" type="Accept"
+                                                       visible="{parts: [ {path: 'operationDisruptionsModel>ResponsibleFlag'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setMarkSolvedButtonVisibility'}"
+                                                       press="onMarkSolvedDisruption" design="Transparent" icon="sap-icon://sys-add" />
+
+                                         </Toolbar>
+                                  </Panel>
+
+                           </CustomListItem>
+
+                     </List>
+              </content>
+              <footer>
+                     <Bar design="Footer" class="viewDisruptionFooter">
+
+                           <contentLeft>
+
+                                  <Button id="reportDisruption" text="{i18nModel>reportDisruption}"
+                                         press="onReportDisruption" icon="sap-icon://add" />
+
+                           </contentLeft>
+
+                           <contentRight>
+
+                                  <Button id="btnClose" text="{i18nModel>close}" icon="sap-icon://decline"
+                                         press="onCloseOperationDetailPopup" />
+
+                           </contentRight>
+
+                     </Bar>
+              </footer>
+
+       </Page>
 </core:View>
+

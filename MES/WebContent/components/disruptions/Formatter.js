@@ -87,14 +87,9 @@ airbus.mes.disruptions.Formatter = {
 
 		if (status == airbus.mes.disruptions.Formatter.status.deleted || status == airbus.mes.disruptions.Formatter.status.closed) {
 			return false;
-		} else if (originatorFlag == "X") {
-
-			if (status == airbus.mes.disruptions.Formatter.status.solved
-					|| status == airbus.mes.disruptions.Formatter.status.reject
-					|| status == airbus.mes.disruptions.Formatter.status.pending) {
-
+		} 
+		else if(originatorFlag == "X") {
 				return true;
-			}
 		}
 
 		return false;
@@ -104,7 +99,8 @@ airbus.mes.disruptions.Formatter = {
 
 		if (status == airbus.mes.disruptions.Formatter.status.deleted || status == airbus.mes.disruptions.Formatter.status.closed) {
 			return false;
-		} else if (originatorFlag == 'X') {
+		} 
+		else if (originatorFlag == 'X') {
 
 			return true;
 		}
@@ -114,9 +110,7 @@ airbus.mes.disruptions.Formatter = {
 
 	setCloseButtonVisibility : function(originatorFlag, status) {
 
-		if (status == airbus.mes.disruptions.Formatter.status.deleted || status == airbus.mes.disruptions.Formatter.status.closed) {
-			return false;
-		} else if (originatorFlag == "X") {
+		if (originatorFlag == "X") {
 
 			if (status == airbus.mes.disruptions.Formatter.status.solved
 					|| status == airbus.mes.disruptions.Formatter.status.reject
@@ -131,9 +125,7 @@ airbus.mes.disruptions.Formatter = {
 
 	setRejectButtonVisibility : function(responsibleFlag, status) {
 
-		if (status == airbus.mes.disruptions.Formatter.status.deleted || status == airbus.mes.disruptions.Formatter.status.closed) {
-			return false;
-		} else if (responsibleFlag == "X") {
+		if (responsibleFlag == "X") {
 
 			if (status == airbus.mes.disruptions.Formatter.status.rejected) {
 
@@ -142,11 +134,8 @@ airbus.mes.disruptions.Formatter = {
 
 				return true;
 
-			} else if (status == airbus.mes.disruptions.Formatter.status.pending) {
-
-				return true;
-
-			} else if (status == airbus.mes.disruptions.Formatter.status.acknowledged) {
+			}
+			else if (status == airbus.mes.disruptions.Formatter.status.pending || status == airbus.mes.disruptions.Formatter.status.acknowledged) {
 
 				return true;
 
@@ -168,9 +157,7 @@ airbus.mes.disruptions.Formatter = {
 
 	setAcknowledgeButtonVisibility : function(responsibleFlag, status) {
 
-		if (status == airbus.mes.disruptions.Formatter.status.deleted || status == airbus.mes.disruptions.Formatter.status.closed) {
-			return false;
-		} else if (responsibleFlag == "X") {
+		if (responsibleFlag == "X") {
 
 			if (status == airbus.mes.disruptions.Formatter.status.pending) {
 
@@ -185,18 +172,17 @@ airbus.mes.disruptions.Formatter = {
 
 		if (status == airbus.mes.disruptions.Formatter.status.deleted || status == airbus.mes.disruptions.Formatter.status.closed) {
 			return false;
-		} else if (originatorFlag != "X" || escalation == 3)
-			return false;
+		} 
+		else if (originatorFlag == "X" && escalation < 3)
+			return true;
 
 		else
-			return true;
+			return false;
 	},
 
 	setMarkSolvedButtonVisibility : function(responsibleFlag, status) {
 
-		if (status == airbus.mes.disruptions.Formatter.status.deleted || status == airbus.mes.disruptions.Formatter.status.closed) {
-			return false;
-		} else if (responsibleFlag == "X") {
+		if (responsibleFlag == "X") {
 
 			if (status == airbus.mes.disruptions.Formatter.status.acknowledged) {
 
@@ -231,6 +217,13 @@ airbus.mes.disruptions.Formatter = {
 			return true;
 		
 		return false;
+	},
+	
+	setSolutionVisibility : function(solution) {
+		if(solution == "")
+			return false;
+		
+		return true;
 	}
 
 };

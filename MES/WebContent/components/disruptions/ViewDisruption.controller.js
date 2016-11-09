@@ -72,7 +72,7 @@ sap.ui
 									var oBinding = value.getContent()[0]
 											.getContent()[3]
 											.getBinding("items");
-									// Aplly filter
+									// Apply filter
 									oBinding.filter([ new sap.ui.model.Filter(
 											"MessageRef", "EQ", messageRef) ]);
 								});
@@ -173,7 +173,7 @@ sap.ui
 					 */
 					onOpenDisruptionComment : function(title, msgRef, sPath,
 							okEvent) {
-						// Call Disruption Comment Popup fragment
+						// Call Disruption Comment Pop-up fragment
 						if (!airbus.mes.disruptions.__enterCommentDialogue) {
 							airbus.mes.disruptions.__enterCommentDialogue = sap.ui
 									.xmlfragment(
@@ -362,15 +362,6 @@ sap.ui
 					 */
 					submitComment : function(oEvt) {
 						var path = oEvt.getSource().sId;
-
-						var oModel = sap.ui.getCore().getModel(
-								"operationDisruptionsModel");
-						oModel
-								.loadData(
-										"../components/disruptions/local/disruptions.json",
-										null, false);
-
-						var commentsData = oModel.getData();
 
 						var msgRef = oEvt.getSource().getBindingContext(
 								"operationDisruptionsModel").getObject(
