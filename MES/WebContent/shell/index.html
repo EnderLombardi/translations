@@ -39,6 +39,7 @@
 	 	jQuery.sap.registerModulePath("airbus.mes.settings", "../components/settings");
 		jQuery.sap.registerModulePath("airbus.mes.homepage", "../components/homepage");
 		
+	
 		// Create a Ui container 
 		oCompCont = new sap.ui.core.ComponentContainer({
 			component : sap.ui.getCore().createComponent({
@@ -56,6 +57,7 @@
 		airbus.mes.component.settings = sap.ui.getCore().createComponent({
 			name : "airbus.mes.settings", // root component folder is resources
 		});
+	
 		
 		airbus.mes.settings.ModelManager.loadUserSettingsModel();
 		

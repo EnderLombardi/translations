@@ -216,6 +216,8 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 			}
 			
 			var sStatus = "0";
+			var fOSW = "0";
+			var fRMA = "0";
 			// Operation is active	
 
 			if (  el.PAUSED === "false") {
@@ -266,6 +268,20 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 			{
 				sStatus = "99";
 			}
+			
+			
+			// Operation is from OSW
+			if ( el.EXECUTION_STATION_SOURCE[0] === "3" ) {
+				
+				fOSW = "1";
+				
+			}
+			// Maturity
+			if ( el.RMA_STATUS_COLOR != "---" ) {
+						
+				fRMA = "1";
+						
+			}
 				
 			var oOperation = {
 										
@@ -281,7 +297,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 					"STATE": el.STATE,
 					//"disruptions": el.disruptions,
 					"ANDONS": el.ANDONS,
-					"RMA_STATUS_COLOR": el.RMA_STATUS_COLOR,
+					"RMA_STATUS_COLOR": el.fRMA,
 					"status" : sStatus,
 					//"ata": el.ata,
 					//"familyTarget": el.familyTarget,
@@ -292,6 +308,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 					"CRITICAL_PATH" : el.CRITICAL_PATH,
 					//"avlStartDate" : el.avlStartDate,
 					//"avlEndDate" : el.avlEndDate,
+					"EXECUTION_STATION_SOURCE" : fOSW,
 					"AVL_LINE": el.AVL_LINE,
 					"PROD_GROUP":el.PROD_GROUP,
 					"SFC_STEP_REF":el.SFC_STEP_REF,
@@ -404,6 +421,8 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 					var aAndons = [];
 					var aTotalDuration = [];
 					var aStatus = [];
+					var aSWO = [];
+					var aRMAStatus = [];
 					
 					var fProgress = 0;
 					var fDuration = 0;
@@ -415,8 +434,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 					var sRoutingMaturityAssessment = "";
 					var fCriticalPath = 0;		
 					var sStatus = "";
-					var sRmaStatus = "";
-					
+										
 					oModel[key][key1][key2].forEach( function( el ) { 
 						
 						//Store in array value needed to be compare in case of boxing
@@ -426,6 +444,8 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 						aAndons.push(el.ANDONS);
 						aTotalDuration.push( el.DURATION );
 						aStatus.push(el.status);
+						aSWO.push(el.EXECUTION_STATION_SOURCE);
+						aRMAStatus.push(el.RMA_STATUS_COLOR);
 						
 						fProgress += parseFloat(el.PROGRESS);
 						fDuration += parseFloat(el.DURATION);
@@ -437,9 +457,6 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 						fCriticalPath = el.CRITICAL_PATH;
 						sOperationDescription = el.sBox;
 						sStatus = el.STATE;
-						sRmaStatus = el.RMA_STATUS_COLOR;
-					
-
 						
 						if ( sBox === oGroupingBoxingManager.specialGroup) {
 							
@@ -488,9 +505,10 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 							"operationDescription" : sOperationDescription,
 							"shopOrder" : sShopOrder,
 							"shopOrderDescription" : sShopOrderDescription,
-							"rmaStatus" : sRmaStatus,
+							"rmaStatus" : Math.max.apply(null,aRMAStatus),
 							"status" : Math.max.apply(null,aStatus),
-//							"status" : sStatus,
+							"OSW" : Math.max.apply(null,aSWO),
+							"status" : sStatus,
 							"totalDuration" : fDuration.toString(), 
 							// This is the real value of boxing 
 							"realValueBox" : key2.split("_")[0],
