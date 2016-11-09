@@ -336,6 +336,11 @@ sap.ui.controller("airbus.mes.settings.Settings",
 				airbus.mes.settings.ModelManager.taktStart = oModel.Rowsets.Rowset[0].Row[0].Takt_Start;
 				airbus.mes.settings.ModelManager.taktEnd = oModel.Rowsets.Rowset[0].Row[0].Takt_End;
 				airbus.mes.settings.ModelManager.taktDuration = oModel.Rowsets.Rowset[0].Row[0].Takt_Duration;
+				//Description update
+				airbus.mes.settings.ModelManager.siteDesc = oModel.Rowsets.Rowset[0].Row[0].siteDescription;
+				airbus.mes.settings.ModelManager.lineDesc = oModel.Rowsets.Rowset[0].Row[0].lineDescription
+				airbus.mes.settings.ModelManager.programDesc = oModel.Rowsets.Rowset[0].Row[0].programDescription;
+				airbus.mes.settings.ModelManager.stationDesc = oModel.Rowsets.Rowset[0].Row[0].stationDescription;
 				
 				// Replace with current new element in UI
 				if (airbus.mes.settings.ModelManager.site) {
