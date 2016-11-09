@@ -137,7 +137,7 @@ sap.ui
 								});
 
 						if (id === "selectCategory") {
-							this.setEnabledSelectBox(true, true, false, true);
+							this.setEnabledSelectBox(true, true, true, false);
 						} else if (id === "selectreason") {
 							this.setEnabledSelectBox(true, true, true, true);
 						} 
