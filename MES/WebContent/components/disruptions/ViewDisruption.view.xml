@@ -247,7 +247,7 @@
                                                                            <f:fields>
 
                                                                                   <Text
-                                                                                         text="{operationDisruptionsModel>TimeLost}">
+                                                                                         text="{operationDisruptionsModel>TimeLost} im">
                                                                                          <layoutData>
                                                                                                 <l:GridData span="L3 M3 S12" />
                                                                                          </layoutData>
