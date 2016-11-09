@@ -297,7 +297,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 					"STATE": el.STATE,
 					//"disruptions": el.disruptions,
 					"ANDONS": el.ANDONS,
-					"RMA_STATUS_COLOR": el.fRMA,
+					"RMA_STATUS_COLOR": fRMA,
 					"status" : sStatus,
 					//"ata": el.ata,
 					//"familyTarget": el.familyTarget,
