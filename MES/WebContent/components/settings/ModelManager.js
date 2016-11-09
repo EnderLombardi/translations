@@ -40,7 +40,7 @@ airbus.mes.settings.ModelManager =  {
 
 		switch (window.location.hostname) {
 		case "localhost":
-			dest = "local";
+			dest = "sopra";
 			break;
 		case "wsapbpc01.ptx.fr.sopra":
 			dest = "sopra";

@@ -144,7 +144,5 @@ airbus.mes.shell.ModelManager = {
 	                      });
 	               
 	  },
-	  
 
-	
 }

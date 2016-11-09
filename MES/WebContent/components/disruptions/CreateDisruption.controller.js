@@ -66,7 +66,7 @@ sap.ui
 							attr : "ResponsibleGroup",
 							childs : []} ]
 					},
-					ModelManager : undefined,
+
 					onInit : function() {
 						// Set events on buttons
 						sap.ui.getCore().byId(
@@ -82,7 +82,6 @@ sap.ui
 						
 						
 						this.addParent(this.selectTree, undefined);
-						this.ModelManager = airbus.mes.disruptions.ModelManager;
 						/*
 						 * this.ModelManager.loadDisruptionCustomData();
 						 * this.ModelManager.loadDisruptionCategory();

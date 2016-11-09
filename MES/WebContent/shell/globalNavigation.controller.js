@@ -46,7 +46,7 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 	updateUrlForLanguage : function(sText){
 		switch (sText) {
 		case "en":
-			window.location.href = window.location.origin + window.location.pathname + "?sap-language=en&url_config=sopra";
+			window.location.href = window.location.origin + window.location.pathname +  window.location.search + "?sap-language=en";
 			break;
 		case "de":
 			window.location.href = window.location.href = window.location.origin + window.location.pathname + "?sap-language=de";
@@ -58,7 +58,7 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 			window.location.href = window.location.href = window.location.origin + window.location.pathname + "?sap-language=sp";
 			break;
 		default:
-			window.location.href = window.location.href = window.location.origin + window.location.pathname + "?sap-language=en&url_config=sopra";
+			window.location.href = window.location.href = window.location.origin + window.location.pathname + "?sap-language=en";
 			break;
 		};		
 	},
