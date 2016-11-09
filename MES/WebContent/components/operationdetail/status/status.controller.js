@@ -226,7 +226,7 @@ sap.ui
 												"airbus.mes.operationdetail.fragments.userConfirmation",
 												oView.getController());
 
-								airbus.mes.operationdetail.status.oView.addDependent(
+								oView.addDependent(
 										oView._oUserConfirmationDialog);								
 							}
 							
@@ -466,7 +466,7 @@ sap.ui
 							oView._oUserConfirmationDialog = sap.ui
 									.xmlfragment(
 											"airbus.mes.operationdetail.fragments.userConfirmation",
-											oView);
+											oView.getController());
 
 							oView.addDependent(
 									oView._oUserConfirmationDialog);
