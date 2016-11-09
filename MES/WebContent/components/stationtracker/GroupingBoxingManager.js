@@ -264,7 +264,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 			//andon
 			if ( el.STATE === "B")
 			{
-				sStatus = "8";
+				sStatus = "99";
 			}
 				
 			var oOperation = {

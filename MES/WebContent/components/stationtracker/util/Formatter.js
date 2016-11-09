@@ -232,23 +232,26 @@ airbus.mes.stationtracker.util.Formatter = {
 					// Opened Blocking disruption
 					case 5 :
 						sColorProgress ='<div class="openBlocked"></div>';
-						sRightIcon = '<i class="fa fa-exclamation-triangle triangleIcon"></i>';
+//						sRightIcon = '<i class="fa fa-exclamation-triangle triangleIcon"></i>';
+						sRightIcon = '<i class="fa fa-play rightIcon"></i>';
 						break;
 					
 					// Solved Blocking and Escalated disruption
 					case 6 :
 						sColorProgress ='<div class="solvedBlockedEscalated"></div>';
-						sRightIcon = '<i class="fa fa-exclamation-triangle triangleIcon"></i>';
+//						sRightIcon = '<i class="fa fa-exclamation-triangle triangleIcon"></i>';
+						sRightIcon = '<i class="fa fa-play rightIcon"></i>';
 						break;
 					
 					// Solved Blocking disruption
 					case 7 :
 						sColorProgress ='<div class="solvedBlocked"></div>';
-						sRightIcon = '<i class="fa fa-exclamation-triangle triangleIcon"></i>';
+//						sRightIcon = '<i class="fa fa-exclamation-triangle triangleIcon"></i>';
+						sRightIcon = '<i class="fa fa-play rightIcon"></i>';
 						break;
 						
 				// andon
-					case 5 :
+					case 99 :
 						sColorProgress ='<div class="colorProgress cherry-red-back" style="width:100%;background-color: #e4002b;"></div>';
 						sRightIcon = '<i class="fa fa-stop rightIcon"></i>';
 						if ( oBox.rmaStatus != "---" )	//rma
