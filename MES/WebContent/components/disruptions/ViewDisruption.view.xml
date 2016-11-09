@@ -105,7 +105,7 @@
 
                                                                      <f:FormElement>
                                                                            <f:label>
-                                                                                  <Label class="detailLabels" text="{i18nModel>resGroup}">
+                                                                                  <Label class="detailLabels" text="{i18nModel>origGrpDesc}">
                                                                                          <layoutData>
                                                                                                 <l:GridData span="L2 M2 S12" />
                                                                                          </layoutData>
@@ -113,7 +113,7 @@
                                                                            </f:label>
                                                                            <f:fields>
 
-                                                                                  <Text text="{operationDisruptionsModel>ResponsibleGroup}">
+                                                                                  <Text text="{operationDisruptionsModel>OriginatorGroupDesc}">
                                                                                          <layoutData>
                                                                                                 <l:GridData span="L4 M4 S12" />
                                                                                          </layoutData>
@@ -142,7 +142,7 @@
 
                                                                      <f:FormElement>
                                                                            <f:label>
-                                                                                  <Label class="detailLabels" text="{i18nModel>openDate}">
+                                                                                  <Label class="detailLabels" text="{i18nModel>resGroup}">
                                                                                          <layoutData>
                                                                                                 <l:GridData span="L2 M2 S12" />
                                                                                          </layoutData>
@@ -150,7 +150,7 @@
                                                                            </f:label>
                                                                            <f:fields>
 
-                                                                                  <Text text="{operationDisruptionsModel>OpeningTime}">
+                                                                                  <Text text="{operationDisruptionsModel>ResponsibleGroup}">
                                                                                          <layoutData>
                                                                                                 <l:GridData span="L4 M4 S12" />
                                                                                          </layoutData>
@@ -181,14 +181,14 @@
 
                                                                      <f:FormElement>
                                                                            <f:label>
-                                                                                  <Label class="detailLabels" text="{i18nModel>expected}">
+                                                                                  <Label class="detailLabels" text="{i18nModel>openDate}">
                                                                                          <layoutData>
                                                                                                 <l:GridData span="L2 M2 S12" />
                                                                                          </layoutData>
                                                                                   </Label>
                                                                            </f:label>
                                                                            <f:fields>
-                                                                                  <Text text="{operationDisruptionsModel>FixedByTime}">
+                                                                                  <Text text="{operationDisruptionsModel>OpeningTime}">
                                                                                          <layoutData>
                                                                                                 <l:GridData span="L4 M4 S12" />
                                                                                          </layoutData>
@@ -216,6 +216,43 @@
                                                                            </f:fields>
                                                                      </f:FormElement>
 
+                                                                     <f:FormElement>
+                                                                           <f:label>
+                                                                                  <Label class="detailLabels" text="{i18nModel>expected}"
+                                                                                         visible="{path: 'operationDisruptionsModel>EscalationLevel', formatter: 'airbus.mes.disruptions.Formatter.setTimeBeforeNextEscVisibility'}">
+                                                                                         <layoutData>
+                                                                                                <l:GridData span="L2 M2 S12" />
+                                                                                         </layoutData>
+                                                                                  </Label>
+                                                                           </f:label>
+                                                                           <f:fields>
+                                                                                  <Text text="{operationDisruptionsModel>FixedByTime}">
+                                                                                         <layoutData>
+                                                                                                <l:GridData span="L4 M4 S12" />
+                                                                                         </layoutData>
+                                                                                  </Text>
+                                                                           </f:fields>
+                                                                     </f:FormElement>
+                                                                     
+                                                                     <f:FormElement>
+                                                                           <f:label>
+                                                                                  <Label class="detailLabels" text="{i18nModel>timeLost}">
+                                                                                         <layoutData>
+                                                                                                <l:GridData span="L3 M3 S12" />
+                                                                                         </layoutData>
+                                                                                  </Label>
+                                                                           </f:label>
+                                                                           <f:fields>
+
+                                                                                  <Text
+                                                                                         text="{operationDisruptionsModel>TimeLost}">
+                                                                                         <layoutData>
+                                                                                                <l:GridData span="L3 M3 S12" />
+                                                                                         </layoutData>
+                                                                                  </Text>
+                                                                           </f:fields>
+                                                                     </f:FormElement>
+                                                                     
                                                                      <f:FormElement>
                                                                            <f:label>
                                                                                   <Label class="detailLabels" text="{i18nModel>timeBeforeNextEsc}"
