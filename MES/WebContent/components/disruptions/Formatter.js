@@ -224,6 +224,25 @@ airbus.mes.disruptions.Formatter = {
 			return false;
 		
 		return true;
+	},
+	
+	setDisruptionTitle : function(iGravity,sStatus,sCategory,sReason,sDescription){
+		
+		var sGravity;
+		switch(iGravity)
+		{
+		case "1":
+			sGravity = "Not Blocked";
+			break;
+		case "2":
+			sGravity = "Disturbed";
+			break;
+		case "3":
+			sGravity = "Blocked";
+			break;
+		}
+		
+		return sGravity + "/" + sStatus + "/" + sCategory + "/" + sReason + "/" + sDescription;
 	}
 
 };

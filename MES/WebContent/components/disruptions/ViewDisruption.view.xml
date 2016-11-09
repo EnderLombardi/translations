@@ -12,8 +12,8 @@
                                          expand="handleDisruptionPanelExpand">
                                          <headerToolbar>
                                                 <Toolbar>
-
-                                                       <Title text="{operationDisruptionsModel>Description}"
+<!-- /*Gravity / Status / Category / Reason / Description*/ -->
+                                                       <Title text="{parts: [ 'operationDisruptionsModel>Gravity','operationDisruptionsModel>Status','operationDisruptionsModel>Category','operationDisruptionsModel>Reason','operationDisruptionsModel>Description'], formatter: 'airbus.mes.disruptions.Formatter.setDisruptionTitle'}"
                                                               class="panelTitleText" />
 
                                                        <ToolbarSpacer />
