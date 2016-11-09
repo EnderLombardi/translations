@@ -154,10 +154,10 @@ airbus.mes.settings.ModelManager =  {
 	               
 	  },
 	  // ************************************************************************************
-	  saveUserSetting:function(){
+	  saveUserSetting:function(sLanguage){
 		  var urlSaveUserSetting = this.urlModel.getProperty("urlSaveUserSetting");
 		 // urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(urlSaveUserSetting, "$user", airbus.mes.settings.ModelManager.user);
-		  urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(urlSaveUserSetting, "$langage", jQuery.sap.getUriParameters().get("sap-language"));
+		  urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(urlSaveUserSetting, "$langage", sLanguage);
 		  urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(urlSaveUserSetting, "$plant", airbus.mes.settings.ModelManager.site);
 		  urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(urlSaveUserSetting, "$program", airbus.mes.settings.ModelManager.program);
 		  urlSaveUserSetting = airbus.mes.settings.ModelManager.replaceURI(urlSaveUserSetting, "$line", airbus.mes.settings.ModelManager.line);

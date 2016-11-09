@@ -345,7 +345,7 @@ airbus.mes.stationtracker.ModelManager = {
        },
        loadShifts : function() {
              
-    	   var oViewModelshift = sap.ui.getCore().getModel("shiftsModel");
+    	   	  var oViewModelshift = sap.ui.getCore().getModel("shiftsModel");
               var getUrlShifts = this.urlModel.getProperty("urlshifts");
               var oData = airbus.mes.settings.ModelManager;
               
