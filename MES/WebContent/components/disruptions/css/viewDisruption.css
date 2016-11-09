@@ -59,7 +59,7 @@
 	box-shadow: 0 0 5px #333;
 }
 
-#disruptionAckCommentDialogue-BarPH {
+#disruptionAckCommentDialogue-header-BarPH {
 	background: #d4f1f7;
 }
 
@@ -86,7 +86,7 @@
 	box-shadow: 0 0 5px #333;
 }
 
-#disruptionCommentDialogue-BarPH {
+#disruptionCommentDialogue-header-BarPH {
 	background: #d4f1f7;
 }
 
@@ -104,31 +104,31 @@
 }
 /********End of CSS for disruptionCommentDialogue */
 
-/**** CSS for disruptionCloseDislog**************/
-#disruptionCloseDislog {
+/**** CSS for disruptionCloseDialogue**************/
+#disruptionCloseDialogue {
 	background: #ffffff;
 	border: none;
 	border-radius: 0;
 	box-shadow: 0 0 5px #333;
 }
 
-#disruptionCloseDislog-BarPH {
+#disruptionCloseDialogue-header-BarPH {
 	background: #d4f1f7;
 }
 
-#disruptionCloseDislog-title {
+#disruptionCloseDialogue-title {
 	color: #434343;
 }
 
-#disruptionCloseDislog-cont {
+#disruptionCloseDialogue-cont {
 	border-top: 3px solid rgba(255, 255, 255, 0);
 }
 
-#disruptionCloseDislog-header {
+#disruptionCloseDialogue-header {
 	box-shadow: 0 0 5px #333;
 	overflow: visible;
 }
-/****End of CSS for disruptionCloseDislog ***/
+/****End of CSS for disruptionCloseDialogue ***/
 
 /*** CSS for Footers ***********/
 .viewDisruptionFooter {

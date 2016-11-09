@@ -673,9 +673,7 @@ airbus.mes.disruptions.ModelManager = {
 	/***************************************************************************
 	 * Reject Disruption Service
 	 **************************************************************************/
-	rejectDisruption : function(comment, msgref, i18nModel) {
-
-		var sMessageSuccess = i18nModel.getProperty("successReject");
+	rejectDisruption : function(comment, msgref, sMessageSuccess) {
 		var sMessageError   = i18nModel.getProperty("tryAgain");
 		var flag_success;
 

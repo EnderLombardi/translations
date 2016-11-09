@@ -105,7 +105,7 @@ sap.ui
 							var title = this.getView().getModel("i18nModel")
 									.getProperty("closeDisruption");
 
-							sap.ui.getCore().byId("disruptionCloseDislog")
+							sap.ui.getCore().byId("disruptionCloseDialogue")
 									.setTitle(title);
 
 							this.getView().addDependent(this._closeDialog);
@@ -234,11 +234,11 @@ sap.ui
 								"disruptionCommentBox").getValue();
 						var msgref = sap.ui.getCore().byId(
 								"disruptionCommentMsgRef").getText();
-						var i18nModel = airbus.mes.operationdetail.viewDisruption.oView.getModel("i18nModel");
+						var sMessage = this.getView().getModel("i18nModel").getProperty("successDelete");
 
 						// Call Disruption Service
 						var isSuccess = airbus.mes.disruptions.ModelManager
-								.deleteDisruption(comment, msgref, i18nModel);
+								.rejectDisruption(comment, msgref, sMessage);
 
 						airbus.mes.disruptions.__enterCommentDialogue.close();
 
@@ -294,11 +294,11 @@ sap.ui
 								"disruptionCommentBox").getValue();
 						var msgref = sap.ui.getCore().byId(
 								"disruptionCommentMsgRef").getText();
-						var i18nModel = airbus.mes.operationdetail.viewDisruption.oView.getModel("i18nModel");;
+						var sMessage = this.getView().getModel("i18nModel").getProperty("successReject");
 
 						// Call Disruption Service
 						var isSuccess = airbus.mes.disruptions.ModelManager
-								.rejectDisruption(comment, msgref, i18nModel);
+								.rejectDisruption(comment, msgref, sMessage);
 
 						airbus.mes.disruptions.__enterCommentDialogue.close();
 
