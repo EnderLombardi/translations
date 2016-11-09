@@ -19,7 +19,7 @@
                            
  
                            <Select id="SelectLanguage" class="sapUiTinyMarginBeginEnd pageHeader pageHeaderBlue" change="onChangeLanguage"> 
-	                           <core:Item text="English" key="En"/>
+	                           <core:Item text="English" key="EN"/>
 	                           <core:Item text="Deutsch" key="DE"/>
 	                           <core:Item text="French" key="FR"/>
 	                           <core:Item text="Spanish" key="SP"/>                                                      
