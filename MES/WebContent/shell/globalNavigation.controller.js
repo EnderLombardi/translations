@@ -161,26 +161,23 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 		}
 	},
 	
-	/*******************************************
-	 * Render Station Tracker
+	/**
+	 * RenderStation Tracker and reload all model/ shift are not reaload
 	 */
 	renderStationTracker: function(){
+		
+		var oModule = airbus.mes.stationtracker.ModelManager;
 		this.setInformationVisibility(true);
+    
 		airbus.mes.stationtracker.oView.byId("stationtracker").setBusy(true);
-		
-		airbus.mes.stationtracker.ModelManager.loadShifts();
-		airbus.mes.stationtracker.ModelManager.loadAffectation();
-		airbus.mes.stationtracker.ShiftManager.init(airbus.mes.stationtracker.GroupingBoxingManager.shiftNoBreakHierarchy);
-		airbus.mes.stationtracker.ModelManager.loadStationTracker("U");
-		airbus.mes.stationtracker.ModelManager.loadStationTracker("O");
-		airbus.mes.stationtracker.ModelManager.loadStationTracker("R");
-		//TODO DEPLACE when the user change settings
-		airbus.mes.stationtracker.ModelManager.loadProductionGroup();		
-		airbus.mes.stationtracker.ModelManager.loadKPI();
-		
-		scheduler.xy.scroll_width = 20;
-		//scheduler.xy.nav_height = 0;
-		scheduler.updateView();
+
+		oModule.loadAffectation();
+   		oModule.loadStationTracker("U");
+   		oModule.loadStationTracker("O");
+   		oModule.loadStationTracker("R");
+    	oModule.loadProductionGroup();
+    	oModule.loadKPI();
+   	
 	},
 	
 	

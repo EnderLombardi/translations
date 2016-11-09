@@ -1,8 +1,9 @@
 jQuery.sap.declare("airbus.mes.stationtracker.GroupingBoxingManager")
-airbus.mes.stationtracker.GroupingBoxingManager = {
+airbus.mes.stationtracker.GroupingBoxingManager	 = {
 	
 	operationHierarchyDelay : {},
 	operationHierarchy : {},
+	operationHierarchyArray : {},
 	shiftHierarchy : {},
 	shiftNoBreakHierarchy: [],
 	shiftBreakHierarchy: [],
@@ -140,8 +141,10 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
         }
 		if ( airbus.mes.stationtracker.GroupingBoxingManager.showInitial ) {
 			
+			
 			this.computeOperationHierarchy(aModelI,sGroup,sBoxing,"I");
 			this.computeOperationHierarchy(aModel,sGroup,sBoxing);
+			
 		} else {
 			
 			this.computeOperationHierarchy(aModel,sGroup,sBoxing);
@@ -172,7 +175,7 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 			// permit to create initial AVL line
 			if (sInitial) {
 				
-				ssAvLine = "I_" +  el.AVL_LINE;
+				ssAvLine = "I_" +  el.AVL_LINE 	+ "_" + el.SKILLS;
 			} else {
 				
 				ssAvLine = el.AVL_LINE + "_" + el.SKILLS;
@@ -202,11 +205,13 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 				
 				oHierachy[ssGroup][ssAvLine] = {};
 				oHierarchyDelay[ssGroup][ssAvLine] = { "progress" : 0 ,"duration" : 0 };
+								
 			}
 			
 			if ( !oHierachy[ssGroup][ssAvLine][ssBox] ) {
 				
 				oHierachy[ssGroup][ssAvLine][ssBox] = [];
+				
 				
 			}
 			
@@ -235,7 +240,17 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 			if ( el.STATE === "C" ) {
 				
 				sStatus = "0";
-			}	
+			}
+			//disruption
+			if ( el.STATE === "D")
+			{
+				sStatus = "4";
+			}
+			//andon
+			if ( el.STATE === "B")
+			{
+				sStatus = "5";
+			}
 				
 			var oOperation = {
 										
@@ -325,9 +340,9 @@ airbus.mes.stationtracker.GroupingBoxingManager = {
 				
 			aElements2.push(oRecheduleGroup);
 			var fGroupIndex = aElements2.indexOf(oRecheduleGroup);
-			
-			Object.keys(oModel[key]).forEach(function(key1,index) {
-				
+	
+			Object.keys(oModel[key]).sort().forEach(function(key1){
+						
 				//Creation of avl line of the current group
 				var fIndex = aElements2.indexOf(oRecheduleGroup);
 				

@@ -48,7 +48,11 @@ airbus.mes.shell.ModelManager = {
 //				bundleLocale : core.getConfiguration().getLanguage()
 //			});
 			core.setModel(i18nModel, "ShellI18n");
-						
+			
+			var MIIi18nModel = new sap.ui.model.resource.ResourceModel({
+	            bundleUrl : "./i18n/mii_i18n.properties",
+	         });
+			core.setModel(MIIi18nModel, "miiI18n");
 		},
 				
 		loadUserDetail : function() {

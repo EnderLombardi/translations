@@ -853,28 +853,26 @@ sap.ui
 							airbus.mes.resourcepool.oView
 									.addDependent(airbus.mes.resourcepool.searchResourcePool);
 						}
-						airbus.mes.resourcepool.searchResourcePool.open();
+						
 						sap.ui
 								.getCore()
 								.byId("searchResourcePool--site")
-								.setText(
-										airbus.mes.resourcepool.util.ModelManager.site);
+								.setText(airbus.mes.resourcepool.util.ModelManager.site);
 						sap.ui
 								.getCore()
 								.byId("searchResourcePool--resourcePool")
-								.setValue(
-										airbus.mes.resourcepool.util.ModelManager.resourceName);
+								.setValue();
 						sap.ui
 								.getCore()
 								.byId("searchResourcePool--description")
-								.setValue(
-										airbus.mes.resourcepool.util.ModelManager.resourceDescription);
-
+								.setValue();
 						/* Attach focus out event to resource pool field */
 						var oInputResource = sap.ui.getCore().byId(
 								"searchResourcePool--resourcePool");
 						oInputResource.attachBrowserEvent("focusout",
 								this.onFocusOutOfResourcePool, this);
+						airbus.mes.resourcepool.util.ModelManager.loadModelValueHelp();
+						airbus.mes.resourcepool.searchResourcePool.open();
 					},
 
 					cancelForm : function(oEvt) {

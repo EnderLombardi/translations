@@ -130,10 +130,12 @@ airbus.mes.stationtracker.util.Formatter = {
 				
 				var html = "";
 				
-				var sDivForLeftDisplay = '<div  style="width:100%; height:inherit; position:absolute; z-index: 1; line-height: 23px;left: 0px; overflow: hidden; text-overflow: ellipsis; " >';
+//				var sDivForLeftDisplay = '<div  style="width:100%; height:inherit; position:absolute; z-index: 1; line-height: 23px;left: 0px; overflow: hidden; text-overflow: ellipsis; " >';
+				var sDivForLeftDisplay = '<div  class="trackerBox">';
 				var sDivForLeftDisplayInitial = '<div class="tracker-item-initial" >';
 				var sRightIcon = "";	
 				var sLeftIcon = "";
+				var sLeftIcon2 = "";
 				var sColorProgress = "";
 				var sText = "";
 				var sProgress = airbus.mes.stationtracker.util.Formatter.percentValue(oBox.progress,oBox.totalDuration);
@@ -153,40 +155,40 @@ airbus.mes.stationtracker.util.Formatter = {
 		
 				}
 			
-				var sSpanText = '<span style="padding-left: 10px; position: relative; z-index: 1; float: left; overflow: hidden; text-overflow: ellipsis; max-width:40%; white-space: nowrap;">' + sText + '</span>';	
+//				var sSpanText = '<span style="padding-left: 10px; position: relative; z-index: 1; float: left; overflow: hidden; text-overflow: ellipsis; max-width:40%; white-space: nowrap;">' + sText + '</span>';	
+				var sSpanText = '<span class="trackerText">' + sText + '</span>';
 //				var sProgressText = '<span style="position: relative;  z-index: 1; float: right; overflow: hidden; text-overflow: ellipsis; max-width:40%; white-space: nowrap; padding-left:10px; padding-right:10px;"> ['+
 //				airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.progress) +'/'+ 
 //				airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.totalDuration) +' IM]</span>';
 //				airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.totalDuration) +'</span>';	
+				
 
+//OSW to be managed with real functional data
+				//Status completed or andon
 								
-				// need one more condition to add OSW
-				if ( oBox.rmaStatus != "---" ) {
-					
-					sLeftIcon = '<i class="fa fa-exclamation-triangle" style="position: relative; z-index: 1; padding-left:10px; padding-right:10px; line-height: 23px; color:white; float: left;" ></i>';
-				}  
-				
-				// box completed
-				
-				if ( oBox.status === "C" ) {
-					
-					sColorProgress ='<div style="width:100%; height:inherit; background-color:#0085ad ; position:absolute; z-index: 0;left: 0px;"></div>';
-				
-				}
-				
-				// add disruption andon display
-				
+				if ( oBox.rmaStatus != "---" )	//rma
+				{
+
+					if ( oBox.rmaStatus != "---" )	//rma
+					{
+						sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon dandelion"></i>';
+					}
+					if (oBox.rmaStatus = "OSW") //OSW
+					{
+						sLeftIcon2 = '<i class="fa fa-refresh oswIcon dandelion-back "><b style="padding-left:1px">OSW</b></i>';
+					}
+												
 				switch ( oBox.status ) {
 				// box is active
 					case 2 :
-						sColorProgress = '<div style="width:' + sProgress + '%; height:inherit; background-color:#84bd00; position:absolute; z-index: 0; left: 0px;"></div>';
-						sRightIcon = '<i class="fa fa-play" style="position: relative; z-index: 1; padding-right:10px; line-height: 23px; color:white; float: right;" ></i>';
+						sColorProgress = '<div class="colorProgress dark-lime-green-back" style="width:' + sProgress + '%;background-color: #84bd00"></div>';
+						sRightIcon = '<i class="fa fa-play rightIcon"></i>';
 						
 					break;
 				// box is paused
 					case 3 :
-						sColorProgress = '<div style="width:' + sProgress + '%; height:inherit; background-color:#84bd00; position:absolute; z-index: 0; left: 0px;"></div>';
-						sRightIcon = '<i class="fa fa-pause" style="position: relative; z-index: 1; padding-right:10px; line-height: 23px; color:white; float: right;" ></i>';
+						sColorProgress = '<div class="colorProgress dark-lime-green-back" style="width:' + sProgress + '%;background-color: #84bd00;"></div>';
+						sRightIcon = '<i class="fa fa-pause rightIcon"></i>';
 						break;
 				// box not started
 					case 1 :
@@ -194,40 +196,61 @@ airbus.mes.stationtracker.util.Formatter = {
 						break;
 				// box Completed
 					case 0 :
-						sColorProgress ='<div style="width:100%; height:inherit; background-color:#0085ad ; position:absolute; z-index: 0;left: 0px;"></div>';
-						sRightIcon = '<i class="fa fa-check" style="position: relative; z-index: 1; padding-right:10px; line-height: 23px; color:white; float: right;" ></i>';
-					
+						sColorProgress ='<div class="colorProgress teal-blue-back" style="width:100%;background-color:#0085ad;"></div>';
+//						sColorProgress ='<div style="width:100%; height:inherit; background-color:#0085ad ; position:absolute; z-index: 0;left: 0px;"></div>';
+						sRightIcon = '<i class="fa fa-check rightIcon"></i>';
+						if ( oBox.rmaStatus != "---" )	//rma
+						{
+							sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon"></i>';
+						}
+						if (oBox.rmaStatus = "OSW") //OSW
+						{
+							sLeftIcon2 = '<i class="fa fa-refresh oswIcon teal-blue white"><b style="padding-left:1px">OSW</b></i>';
+						}
 					break;	
-
-					// box Disruption
+				// disruption
 					case 4 :
-						var sColorProgress ='<div style="width:100%; height:inherit; background-color:#fbec00 ; position:absolute; z-index: 0;left: 0px;"></div>';
-						var sRightIcon = '<i class="fa fa-stop" style="position: relative; z-index: 1; padding-right:10px; line-height: 23px; color:white; float: right;" ></i>';
-					
-					break;	
-				// box Andon
+						sColorProgress ='<div class="colorProgress dandelion-back" style="width:100%;background-color: #fbec00;"></div>';
+						sRightIcon = '<i class="fa fa-stop rightIcon petrol" ></i>';
+						sSpanText = '<span class="trackerTextBlock">' + sText + '</span>';
+						if ( oBox.rmaStatus != "---" )	//rma
+						{
+							sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon petrol"></i>';
+						}
+						if (oBox.rmaStatus = "OSW") //OSW
+						{
+							sLeftIcon2 = '<i class="fa fa-refresh oswIcon petrol-back dandelion"><b style="padding-left:1px">OSW</b></i>';
+						}
+						break;
+				// andon
 					case 5 :
-						var sColorProgress ='<div style="width:100%; height:inherit; background-color:#e4002b ; position:absolute; z-index: 0;left: 0px;"></div>';
-						var sRightIcon = '<i class="fa fa-stop" style="position: relative; z-index: 1; padding-right:10px; line-height: 23px; color:white; float: right;" ></i>';
-					
-					break;	
-					
+						sColorProgress ='<div class="colorProgress cherry-red-back" style="width:100%;background-color: #e4002b;"></div>';
+						sRightIcon = '<i class="fa fa-stop rightIcon"></i>';
+						if ( oBox.rmaStatus != "---" )	//rma
+						{
+							sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon"></i>';
+						}
+						if (oBox.rmaStatus = "OSW") //OSW
+						{
+							sLeftIcon2 = '<i class="fa fa-refresh oswIcon cherry-red white"><b style="padding-left:1px">OSW</b></i>';
+						}
+						break;					
 				}
 		
 //				html = sDivForLeftDisplay + sRightIcon + sLeftIcon + sSpanText + sProgressText + sColorProgress + '</div>'
-				html = sDivForLeftDisplay + sRightIcon + sLeftIcon + sSpanText + sColorProgress + '</div>'; 
+				html = sDivForLeftDisplay + sRightIcon + sLeftIcon + sLeftIcon2 + sSpanText + sColorProgress + '</div>'; 
 							
 				if ( oBox.type === "I" ) {
 					
 //					html = sDivForLeftDisplayInitial + sRightIcon + sLeftIcon + sSpanText + sProgressText + sColorProgress + '</div>'
-					html = sDivForLeftDisplayInitial + sRightIcon + sLeftIcon + sSpanText + sColorProgress + '</div>' ;
+					html = sDivForLeftDisplayInitial + sRightIcon + sLeftIcon + sLeftIcon2 + sSpanText + sColorProgress + '</div>' ;
 
 					return html;
 					
 				} else {
 					
 //					html = sDivForLeftDisplay + sRightIcon + sLeftIcon + sSpanText + sProgressText + sColorProgress + '</div>' 
-					html = sDivForLeftDisplay + sRightIcon + sLeftIcon + sSpanText + sColorProgress + '</div>' ;
+					html = sDivForLeftDisplay + sRightIcon + sLeftIcon + sLeftIcon2 + sSpanText + sColorProgress + '</div>' ;
 
 					return html;
 					
