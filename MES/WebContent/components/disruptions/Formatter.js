@@ -231,6 +231,13 @@ airbus.mes.disruptions.Formatter = {
 			return true;
 		
 		return false;
+	},
+	
+	setSolutionVisibility : function(solution) {
+		if(solution == "")
+			return false;
+		
+		return true;
 	}
 
 };
