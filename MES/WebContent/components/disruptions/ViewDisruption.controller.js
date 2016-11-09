@@ -70,7 +70,7 @@ sap.ui
 									// Get Binding of Comment list in Current
 									// List item
 									var oBinding = value.getContent()[0]
-											.getContent()[2]
+											.getContent()[3]
 											.getBinding("items");
 									// Aplly filter
 									oBinding.filter([ new sap.ui.model.Filter(
