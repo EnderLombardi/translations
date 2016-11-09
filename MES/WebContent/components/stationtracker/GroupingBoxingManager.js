@@ -240,15 +240,30 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 				
 				sStatus = "0";
 			}
-			//disruption
-			if ( el.STATE === "D")
+			//Opened Blocking and Escalated disruption
+			if ( el.STATE === "D1")
 			{
 				sStatus = "4";
+			}
+			//Opened Blocking disruption
+			if ( el.STATE === "D2")
+			{
+				sStatus = "5";
+			}
+			//Solved Blocking and Escalated disruption
+			if ( el.STATE === "D3")
+			{
+				sStatus = "6";
+			}
+			//Solved Blocking disruption
+			if ( el.STATE === "D4")
+			{
+				sStatus = "7";
 			}
 			//andon
 			if ( el.STATE === "B")
 			{
-				sStatus = "5";
+				sStatus = "8";
 			}
 				
 			var oOperation = {

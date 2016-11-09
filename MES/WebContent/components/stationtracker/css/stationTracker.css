@@ -266,24 +266,9 @@
 	border-radius: 100px;
 	float: left !important;
 }
-/***** Color for Station Tracker Gantt Chart ************/
-.openBlockedEscalated{
-	background-color:#f00;
-}
-.openBlocked{
-	background-color:yellow;
-}
-.solvedBloackedExcalated{
-	
-}
-.solvedBlocked{
-	
-}
 .grey {
 	background-color: #97999b;
 }
-
-/***** End of Color for Station Tracker Gantt Chart *****/
 /* box management */
 .trackerBox{
 	width:100%;
@@ -308,6 +293,13 @@
 	color: white;
 	overflow: hidden;
 }
+.trackerTextWhite{
+	color:#fff;
+}
+.trackerTextBlack{
+	color:#000;
+	font-weight: 600;
+}
 .trackerTextBlock{
 	padding-left: 10px;
 	position: relative;
@@ -328,6 +320,28 @@
 	 overflow: hidden;
 }
 
+.openBlockedEscalated{
+	height: inherit;
+	width:100%;
+	background-color:#f00;
+	color:#fff;
+}
+.openBlocked{
+	height: inherit;
+	width:100%;
+	background-color:yellow;
+	color:#fff;
+}
+.solvedBloackedExcalated{
+	height: inherit;
+	width:100%;
+	color:#fff;	
+}
+.solvedBlocked{
+	height: inherit;
+	width:100%;
+	color:#fff;	
+}
 .triangleIcon{
 	position: relative;
 	z-index: 1;
