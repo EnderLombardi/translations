@@ -224,9 +224,8 @@ airbus.mes.stationtracker.util.Formatter = {
 					// Opened Blocking and Escalated disruption
 					case 4 :
 						sColorProgress ='<div class="openBlockedEscalated"></div>';
-						sRightIcon = '<i class="fa fa-exclamation-triangle triangleIcon"></i>';
+						sRightIcon = '<i class="fa fa-play rightIcon" ></i>';
 //						sColorProgress ='<div class="colorProgress dandelion-back" style="width:100%;background-color: #fbec00;"></div>';
-//						sRightIcon = '<i class="fa fa-stop rightIcon petrol" ></i>';
 						sSpanText = '<span class="trackerTextBlock">' + sText + '</span>';
 						if ( oBox.rmaStatus != "0" )	//rma
 						{
