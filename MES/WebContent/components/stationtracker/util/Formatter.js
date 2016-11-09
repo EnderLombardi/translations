@@ -80,6 +80,15 @@ airbus.mes.stationtracker.util.Formatter = {
 				}
 				
 			},
+			/** 
+			 * Transform object Date to date (without hour) 
+			 */
+			date2date : function(day) {
+				return day.split(' ')[0];
+			},
+			date2jsDate : function(day) {
+				return new Date(day.split(' ')[0]);
+			},			
 			date2Hour : function(day) {
 				
 				var date = new Date(day)

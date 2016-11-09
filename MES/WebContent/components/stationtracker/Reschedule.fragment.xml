@@ -11,17 +11,11 @@
 					columnsL="1" columnsM="1" columnsS="1" class="shrinkArea">
 					<f:content class="shrinkArea">
 						<Label class="topMargin" text="{StationTrackerI18n>ReschedulePopupReschStart}" />
-						<Text id="rescheduleStart" class="topMargin" 
-							text="{RescheduleModel>START_TIME}" />
+						<Text  class="topMargin" 
+							    text="{path : 'RescheduleModel>/0/START_TIME' , formatter : 'airbus.mes.stationtracker.util.Formatter.date2date' }" />
 						<Label class="topMargin" text="{StationTrackerI18n>ReschedulePopupReschEnd}" />
-						<Text id="{RescheduleModel>End_TIME}" class="topMargin"
-							text="" />
-						<Label class="topMargin" text="{StationTrackerI18n>ReschedulePopupAcpStart}" />
-						<Text id="rescheduleStartAcpng" class="topMargin"
-							text="" />
-						<Label class="topMargin" text="{StationTrackerI18n>ReschedulePopupAcpEnd}" />
-						<Text id="rescheduleEndAcpng" class="topMargin"
-							text="" />
+						<Text class="topMargin"
+							text="{path : 'RescheduleModel>/0/END_TIME' , formatter : 'airbus.mes.stationtracker.util.Formatter.date2date' }" />
 					</f:content>
 				</f:SimpleForm>
 				<f:SimpleForm maxContainerCols="1" editable="false"
@@ -29,11 +23,10 @@
 					labelSpanS="12" emptySpanL="0" emptySpanM="0" emptySpanS="0"
 					columnsL="1" columnsM="1" columnsS="1" class="shrinkArea">
 					<f:content class="shrinkArea">
-						<Label class="topMargin" text="SelectNewGrp" />
-						<Select
-							id="groupIdComboBox"
-							items="{PerformanceModel>/Rowsets/Rowset/0/Row}">
-							<core:Item key="{PerformanceModel>groupId}" text="{PerformanceModel>groupId}" />
+						<Label class="topMargin" text="{StationTrackerI18n>ReschedulePopupSelectNewGrp}" />
+						<Select id="SelectedGroup"
+								items="{ path : 'RescheduleGroupModel>/' }" >
+							<core:Item key="{RescheduleGroupModel>}" text="{RescheduleGroupModel>}" />
 						</Select>
 					</f:content>
 				</f:SimpleForm>
@@ -43,17 +36,15 @@
 					columnsL="1" columnsM="1" columnsS="1" class="shrinkArea">
 					<f:content class="shrinkArea">
 						<u:Calendar id="DP1">
-
+							<u:selectedDates>
+								<u:DateRange  startDate="{path : 'RescheduleModel>/0/START_TIME' , formatter : 'airbus.mes.stationtracker.util.Formatter.date2jsDate' }"  
+										     endDate="{path : 'RescheduleModel>/0/START_TIME' , formatter : 'airbus.mes.stationtracker.util.Formatter.date2jsDate' }" />
+							</u:selectedDates>
 						</u:Calendar>
 					</f:content>
 				</f:SimpleForm>
 			</VBox>
-<!-- 			<VBox>
-				<Button id="removeButton" text="Remove" press="removeResourceDialog" visible="false" />
-				<Button id="rescheduleButton" text="Confirm" press="confirmResourceDialog" />
-				<Button text="Close" press="closeResourceDialog" />
-			</VBox>			
- -->		</content>
+		</content>
 		<buttons>
 			<Button text="{StationTrackerI18n>ReschedulePopupConfirm}" type="Transparent" icon="sap-icon://forward"
 				class="sapUiTinyMarginBeginEnd pageHeaderDialog" press="onRescheduleConfirm"
