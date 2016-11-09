@@ -346,7 +346,7 @@ sap.ui
 						
 						var sDescription = oView.byId("description").getValue();
 						// message subject is passed as description because subject is compulsary
-						this.ModelManager.createDisruption(sHandle,sCategory,sDescription,sComment,aModelData);
+						airbus.mes.disruptions.ModelManager.createDisruption(sHandle,sCategory,sDescription,sComment,aModelData);
 					},
 
 					/***********************************************************
@@ -366,7 +366,7 @@ sap.ui
 						var iGravity = oView.byId("gravity").getSelectedKey()
 						
 						//call update service
-						airbus.mes.operationdetail.createDisruption.ModelManager.updateDisruption(sMessageRef,sReason,sResponsibleGroup,sRootCause,iTimeLost,dFixedByTime,sComment,iGravity);
+						airbus.mes.disruptions.ModelManager.updateDisruption(sMessageRef,sReason,sResponsibleGroup,sRootCause,iTimeLost,dFixedByTime,sComment,iGravity);
 
 					},
 					
