@@ -218,15 +218,16 @@
 
 										<f:FormElement>
 											<f:label>
-												<Label class="detailLabels" text="{i18nModel>timeBeforeNextEsc}" visible="{path: 'operationDisruptionsModel>EscalationLevel', formatter: 'airbus.mes.disruptions.Formatter.setTimeBeforeNextEscVisibility'}">
+												<Label class="detailLabels" text="{i18nModel>timeBeforeNextEsc}"
+													visible="{path: 'operationDisruptionsModel>EscalationLevel', formatter: 'airbus.mes.disruptions.Formatter.setTimeBeforeNextEscVisibility'}">
 													<layoutData>
 														<l:GridData span="L2 M2 S12" />
 													</layoutData>
 												</Label>
 											</f:label>
 											<f:fields>
-												<Text
-													text="{operationDisruptionsModel>TimeBeforeNextEscalation}" visible="{path: 'operationDisruptionsModel>EscalationLevel', formatter: 'airbus.mes.disruptions.Formatter.setTimeBeforeNextEscVisibility'}">
+												<Text text="{operationDisruptionsModel>TimeBeforeNextEscalation}"
+													visible="{path: 'operationDisruptionsModel>EscalationLevel', formatter: 'airbus.mes.disruptions.Formatter.setTimeBeforeNextEscVisibility'}">
 													<layoutData>
 														<l:GridData span="L4 M4 S12" />
 													</layoutData>
@@ -241,6 +242,13 @@
 
 						<Text text="{i18nModel>status} : {operationDisruptionsModel>Status}"
 							class="sapUiMediumMarginBegin statusText" />
+
+						<VBox class="msgColor sapUiSmallMarginBeginEnd sapUiTinyMarginTopBottom msgHeaderText">
+							<Text class="sapUiSmallMarginBeginEnd sapUiTinyMarginTopBottom msgHeaderText"
+								text="Solution"></Text>
+							<Text text="{operationDisruptionsModel>Solution}"
+								class="sapUiSmallMarginBegin  sapUiSmallMarginEnd sapUiSmallMarginBottom"></Text>
+						</VBox>
 
 						<List showNoData="false" class="sapUiSmallMargin"
 							items="{path: 'operationDisruptionsModel>/Rowsets/Rowset/1/Row'}">
