@@ -209,7 +209,7 @@ airbus.mes.settings.ModelManager =  {
 				return oUserSettingModel.getProperty("/Rowsets/Rowset/0/Row/0/language");
 			
 		  },
-			
+
 	  checkLanguage : function() {
 //			Retrieve the language selector to define default language corresponding to sap-language parameter
 			var aItems = airbus.mes.shell.oView.byId("SelectLanguage").getItems();
@@ -217,29 +217,47 @@ airbus.mes.settings.ModelManager =  {
 //			Retrieve connexion language
 			var sSaveLanguage =  airbus.mes.settings.ModelManager.loadLanguage();
 			
-			if ( sSaveLanguage != undefined && sSaveLanguage != "---" && sSaveLanguage != ""  && sSaveLanguage != null) {
-				
-//				var sSaveLanguage = sSaveLanguage;
-//				if ( sSaveLanguage != sSapLanguage ) {
-//					
-//					airbus.mes.shell.oView.getController().updateUrlForLanguage(sSaveLanguage);
-//					
-//				}
-				
-			} else {
-				
-				
-				airbus.mes.settings.ModelManager.saveUserSetting(sSapLanguage);
-				airbus.mes.shell.oView.getController().updateUrlForLanguage(sSapLanguage);
-						
-			}
+//			if ( sSaveLanguage != undefined && sSaveLanguage != "---" && sSaveLanguage != ""  && sSaveLanguage != null) {
+//			
+////				var sSaveLanguage = sSaveLanguage;
+////				if ( sSaveLanguage != sSapLanguage ) {
+////					
+////					airbus.mes.shell.oView.getController().updateUrlForLanguage(sSaveLanguage);
+////					
+////				}
+//				
+//			} else {
+//				
+//				
+//				airbus.mes.settings.ModelManager.saveUserSetting(sSapLanguage);
+//				airbus.mes.shell.oView.getController().updateUrlForLanguage(sSapLanguage);
+//						
+//			}
 				
 		    for(var i=0; i<aItems.length; i++) {
 		        if (aItems[i].getKey() === sSaveLanguage) {
 		        	airbus.mes.shell.oView.byId("SelectLanguage").setSelectedItemId(aItems[i].getId());
 		        }
 		    }
+		    
+		   
 		  
+	  },
+	  
+	  checkDisplayFirstSetting : function() {
+		  
+		  var oModel = sap.ui.getCore().getModel("userSettingModel");
+		  
+		  if ( oModel.getProperty("/Rowsets/Rowset/0/Row") ) {
+			  
+			  if ( airbus.mes.shell.oView.byId("labelMSN").getText() === "" ) {
+				 // nav.addPage(airbus.mes.settings.oView);
+				//  nav.to(airbus.mes.settings.oView.getId());
+				  
+			  } 
+			  	 
+		  }
+		  			  
 	  }
 
 };

@@ -59,7 +59,7 @@
 		});
 	
 		
-		airbus.mes.settings.ModelManager.loadUserSettingsModel();
+	
 		
 		nav = airbus.mes.shell.oView.byId("navCont");
 		nav.afterNavigate;
@@ -72,6 +72,8 @@
 		// remove splash color & style
 		document.body.style = {};
 		
+		airbus.mes.settings.ModelManager.loadUserSettingsModel();
+		airbus.mes.settings.ModelManager.checkDisplayFirstSetting();
 	} );
 	
 </script>
