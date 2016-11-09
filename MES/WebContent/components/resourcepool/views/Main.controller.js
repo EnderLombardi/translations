@@ -877,7 +877,7 @@ sap.ui
 
 					cancelForm : function(oEvt) {
 						if (airbus.mes.resourcepool.util.ModelManager.resourceName === undefined
-								|| airbus.mes.resourcepool.util.ModelManager.resourceName == "") {
+								|| airbus.mes.resourcepool.util.ModelManager.resourceName == "" || airbus.mes.resourcepool.util.ModelManager.goBack) {
 							nav.back();
 						}
 					},
@@ -1335,6 +1335,7 @@ sap.ui
 						airbus.mes.resourcepool.util.ModelManager.resourceName = this.resourcePoolName;
 						airbus.mes.resourcepool.util.ModelManager.resourceDescription = this.resourcePoolDescription;
 						airbus.mes.resourcepool.util.ModelManager.resourceId = this.resourceId;
+						 airbus.mes.resourcepool.util.ModelManager.goBack = false;
 						/* Set the title header of the main page */
 						this
 								.getView()

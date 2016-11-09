@@ -55,8 +55,12 @@ airbus.mes.resourcepool.util.ModelManager = {
 		// Ask to select Resource Pool if launched initially or Site is changed
 		if(airbus.mes.resourcepool.util.ModelManager.site != airbus.mes.settings.ModelManager.site || airbus.mes.resourcepool.util.ModelManager.resourceName === undefined){
 			airbus.mes.resourcepool.util.ModelManager.site = airbus.mes.settings.ModelManager.site;
-			var controller = airbus.mes.resourcepool.oView.getController();
-			controller.openSelectResourcePool();
+			airbus.mes.resourcepool.oView.getController().openSelectResourcePool();
+			sap.ui.getCore().getModel("ResourcePoolDetailModel").setData();
+			sap.ui.getCore().getModel("ResourcePoolDetailModel").refresh();
+			sap.ui.getCore().byId("resourcePool--resourcePoolName").setText();
+			airbus.mes.resourcepool.util.ModelManager.resourceName = undefined;
+			airbus.mes.resourcepool.util.ModelManager.goBack=true;
 		}
 	},
 
