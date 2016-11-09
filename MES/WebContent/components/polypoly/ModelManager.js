@@ -218,25 +218,49 @@ airbus.mes.polypoly.ModelManager = {
 		})
 	},
 	
-	onPolyPolyModelLoaded : function() {
+	onPolyPolyModelLoaded : function(oResponse) {
+//		oResponse = oResponse.getSource().getData().Rowsets.Rowset[0].Row[0];
+//		if(oResponse.hasOwnProperty("Message_Type")){
+//		if(oResponse.Message_Type == "E"){
+//		sap.ui.getCore().getModel("mii").oData.Rowsets.Rowset[0].Row = {};
+//		}
+//		}
+
+//		var oData = sap.ui.getCore().getModel("mii").getData().Rowsets;
+//		if (oData.Rowset && oData.Rowset.length > 0 && oData.Rowset[0].Row && !oData.Rowset[0].Row[0].hasOwnProperty("Message_Type")) {
+//			var oMiiData = sap.ui.getCore().getModel("mii").getData();
+//			var oTableData = airbus.mes.polypoly.PolypolyManager.createTableData(oMiiData);
+//			var mTableModel = new sap.ui.model.json.JSONModel(oTableData);
+//			airbus.mes.polypoly.PolypolyManager.internalContext.oModel = mTableModel;
+//
+//			var oQATableData = airbus.mes.polypoly.PolypolyManager.createQATableData(oMiiData);
+//			var mQATableModel = new sap.ui.model.json.JSONModel(oQATableData);
+//			airbus.mes.polypoly.PolypolyManager.internalContext.oModelQA = mQATableModel;
+//			// ????? 
+//			sap.ui.getCore().byId("polypoly").setModel(mTableModel);
+//			//sap.ui.getCore().getModel("mTableModel").loadData(mTableModel);
+//
+//		}else{
+//			var mTableModel = new sap.ui.model.json.JSONModel();
+//		}
+		
 		var oData = sap.ui.getCore().getModel("mii").getData().Rowsets;
-		if (oData.Rowset && oData.Rowset.length > 0 && oData.Rowset[0].Row) {
+		if (oData.Rowset && oData.Rowset.length > 0 && oData.Rowset[0].Row && !oData.Rowset[0].Row[0].hasOwnProperty("Message_Type")) {
 			var oMiiData = sap.ui.getCore().getModel("mii").getData();
 			var oTableData = airbus.mes.polypoly.PolypolyManager.createTableData(oMiiData);
 			var mTableModel = new sap.ui.model.json.JSONModel(oTableData);
-			airbus.mes.polypoly.PolypolyManager.internalContext.oModel = mTableModel;
-			
 			var oQATableData = airbus.mes.polypoly.PolypolyManager.createQATableData(oMiiData);
 			var mQATableModel = new sap.ui.model.json.JSONModel(oQATableData);
-			airbus.mes.polypoly.PolypolyManager.internalContext.oModelQA = mQATableModel;
-			// ????? 
-			sap.ui.getCore().byId("polypoly").setModel(mTableModel);
-			//sap.ui.getCore().getModel("mTableModel").loadData(mTableModel);
-			
-		} 
-		else {
+		}else{
 			var mTableModel = new sap.ui.model.json.JSONModel();
-			}
+			airbus.mes.polypoly.oView.byId("oTablePolypoly").setNoData(airbus.mes.shell.util.Formatter.getMiiTextFromData(oResponse.getSource().getData()));
+		}
+		airbus.mes.polypoly.PolypolyManager.internalContext.oModel = mTableModel;
+		airbus.mes.polypoly.PolypolyManager.internalContext.oModelQA = mQATableModel;
+		// ????? 
+		sap.ui.getCore().byId("polypoly").setModel(mTableModel);
+		//sap.ui.getCore().getModel("mTableModel").loadData(mTableModel);
+		
 	},
 	
 	
