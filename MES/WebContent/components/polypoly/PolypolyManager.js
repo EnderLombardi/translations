@@ -586,9 +586,9 @@ airbus.mes.polypoly.PolypolyManager = {
 						if (!airbus.mes.polypoly.infoUpdate12) {
 							airbus.mes.polypoly.infoUpdate12 = sap.ui.xmlfragment("airbus.mes.polypoly.InfoUpdate12", airbus.mes.polypoly.oView.getController());
 						}
-						airbus.mes.polypoly.infoUpdate12.open();
 						airbus.mes.polypoly.infoUpdate12.setModel(infoModel, "infoModel");
 						airbus.mes.polypoly.infoUpdate12.setModel(airbus.mes.polypoly.oView.getModel("PolypolyI18n"),"PolypolyI18n");
+						airbus.mes.polypoly.infoUpdate12.open();
 					},
 				})
 	},
@@ -615,9 +615,9 @@ airbus.mes.polypoly.PolypolyManager = {
 							if (!airbus.mes.polypoly.infoUpdate23) {
 								airbus.mes.polypoly.infoUpdate23 = sap.ui.xmlfragment("airbus.mes.polypoly.InfoUpdate23", airbus.mes.polypoly.oView.getController());
 							}
-							airbus.mes.polypoly.infoUpdate23.open();
 							airbus.mes.polypoly.infoUpdate23.setModel(infoModel, "infoModel");
 							airbus.mes.polypoly.infoUpdate23.setModel(airbus.mes.polypoly.oView.getModel("PolypolyI18n"),"PolypolyI18n");
+							airbus.mes.polypoly.infoUpdate23.open();
 						} else {
 							airbus.mes.polypoly.PolypolyManager.checkUpdateLevel();
 						}
