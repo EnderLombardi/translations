@@ -341,7 +341,7 @@ sap.ui
 									rowIDs.push(oUser.handle);
 									
 									// If Loaned to current resource, empty loanedToPool field
-									if (oUser.loanedToRPName != airbus.mes.resourcepool.util.ModelManager.resourceName){
+									if (oUser.loanedToRPName == airbus.mes.resourcepool.util.ModelManager.resourceName){
 										oUser.loanedToPool = "";
 										oUser.loanedToRPName = "";
 									}
