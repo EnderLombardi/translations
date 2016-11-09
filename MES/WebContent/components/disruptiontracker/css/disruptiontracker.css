@@ -101,3 +101,24 @@
 	font-size: 1.2rem !important;
 }
 
+#disrptTrackerSettings-dialog {
+	background: #ffffff;
+    border: none;
+    border-radius: 0;
+    box-shadow: 0 0 5px #333;
+}
+
+#disrptTrackerSettings-dialog header{
+	background:#d4f1f7;
+
+}
+#disrptTrackerSettings-title {
+	color:#434343;
+}
+#disrptTrackerSettings-page1-cont {
+	border-top:3px solid  rgba(255, 255, 255, 0);
+}
+#disrptTrackerSettings header {
+	box-shadow: 0 0 5px #333;
+    overflow: visible;
+}

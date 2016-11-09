@@ -842,6 +842,20 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	},
 	onCloseDialog : function(oEvent) {
 		oEvent.getSource().getParent().close();
-	}
+	},
+	
+
+	/******************************************
+	 * Operation Detail Pop-Up Close functions
+	 */
+	onCloseOperationDetailPopup : function() {
+
+		airbus.mes.stationtracker.operationDetailPopup.close();
+	},
+
+	afterCloseOperationDetailPopup : function() {
+		airbus.mes.shell.oView.getController()
+				.renderStationTracker();
+	},
 	
 });

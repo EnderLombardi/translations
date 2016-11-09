@@ -6,7 +6,7 @@
 		<subHeader>
 			<Bar class="pageHeader">
 				<contentLeft>
-					<Button id="navBack" icon="sap-icon://arrow-left" text="Back" press="onNavBack" type="Transparent"/>
+					<Button id="navBack" icon="sap-icon://arrow-left" text="{disruptiontrackerI18n>back}" press="onNavBack" type="Transparent"/>
 				</contentLeft>
 				<contentMiddle>
 					<Text text="{disruptiontrackerI18n>disruptionsTitle}" class="headerText" />
@@ -42,8 +42,8 @@
 					<!-- <SearchField width="13rem" placeholder="{disruptiontrackerI18n>search}" /> -->
 					<ToolbarSpacer />
 
- 					<Button id="gotoDisruptionKpi" icon="sap-icon://area-chart"
-						text="{disruptiontrackerI18n>disruptionKPI}" press="onPressDisruptionKPI" />
+ 					<!-- <Button id="gotoDisruptionKpi" icon="sap-icon://area-chart"
+						text="{disruptiontrackerI18n>disruptionKPI}" press="onPressDisruptionKPI" /> -->
 				</Toolbar>
 
 			</content>

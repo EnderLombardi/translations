@@ -1,10 +1,15 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
 
 	<Dialog id="operationDetailPopUp" class="ClassOperationDetailPopUp" contentWidth="90%"
-		contentHeight="90%" verticalScrolling="false" showHeader="false">
+		contentHeight="90%" verticalScrolling="false" showHeader="false" afterClose="afterCloseOperationDetailPopup">
 		<content>
 
 		</content>
+		
+		<buttons>
+			<Button id="reportDisruption" text="{StationTrackerI18n>reportDisruption}" press="" icon="sap-icon://add" visible="false" />
+			<Button text="{StationTrackerI18n>Close}"  icon="sap-icon://decline" press="onCloseOperationDetailPopup" />
+		</buttons>
 	</Dialog>
 
 </core:FragmentDefinition>
