@@ -140,8 +140,7 @@ airbus.mes.disruptions.ModelManager = {
 		getDiruptionsURL = getDiruptionsURL.replace('$Resource', "");
 
 		if (oFilters.operation != undefined && oFilters.operation != "")
-			getDiruptionsURL = getDiruptionsURL.replace('$Operation',
-					oFilters.operation);
+			getDiruptionsURL = getDiruptionsURL.replace('$Operation',oFilters.operation);
 		else
 			getDiruptionsURL = getDiruptionsURL.replace('$Operation', "");
 
@@ -216,9 +215,10 @@ airbus.mes.disruptions.ModelManager = {
 					type : 'POST',
 					data : {
 						"Param.1" : airbus.mes.settings.ModelManager.site,
-						"Param.2" : sap.ui.getCore().getModel(
+						"Param.2" : "NG42E7A",
+/*						"Param.2" : sap.ui.getCore().getModel(
 								"userSettingModel").getProperty(
-								"/Rowsets/Rowset/0/Row/0/user"),
+								"/Rowsets/Rowset/0/Row/0/user"),*/
 						"Param.3" : messageType,
 						"Param.4" : messageSubject,
 						"Param.5" : messageBody,
@@ -306,7 +306,7 @@ airbus.mes.disruptions.ModelManager = {
 					async : true,
 					cache : false,
 					url : this.getURLUpdateDisruption(),
-					type : 'GET',
+					type : 'POST',
 					data : {
 						"Param.1" : airbus.mes.settings.ModelManager.site,
 						"Param.2" : sMessageRef,
