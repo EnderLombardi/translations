@@ -11,9 +11,15 @@ sap.ui
 					 * 
 					 * @memberOf components.operationdetail.status.status
 					 */
-					// onInit: function() {
-					//
-					// },
+					 onInit: function() {
+						 
+						 // Set action on buttons
+						 sap.ui.getCore().byId("operationDetailPopup--btnPause").attachPress(this.pauseOperation);
+						 sap.ui.getCore().byId("operationDetailPopup--btnConfirm").attachPress(this.confirmOperation);
+						 sap.ui.getCore().byId("operationDetailPopup--btnActivate").attachPress(this.activateOperation);
+						 sap.ui.getCore().byId("operationDetailPopup--btnComplete").attachPress(this.confirmOperation);
+					
+					 },
 					/**
 					 * Similar to onAfterRendering, but this hook is invoked
 					 * before the controller's View is re-rendered (NOT before
@@ -487,13 +493,13 @@ sap.ui
 							actionBtnStatus, activateBtnStatus) {
 						
 					
-						this.getView().byId("btnPause").setVisible(
+						sap.ui.getCore().byId("operationDetailPopup--btnPause").setVisible(
 								actionBtnStatus);
-						this.getView().byId("btnConfirm").setVisible(
+						sap.ui.getCore().byId("operationDetailPopup--btnConfirm").setVisible(
 								actionBtnStatus);
-						this.getView().byId("btnComplete").setVisible(
+						sap.ui.getCore().byId("operationDetailPopup--btnComplete").setVisible(
 								actionBtnStatus);
-						this.getView().byId("btnActivate").setVisible(
+						sap.ui.getCore().byId("operationDetailPopup--btnActivate").setVisible(
 								activateBtnStatus);
 					},
 
@@ -509,32 +515,33 @@ sap.ui
 						 this.setOperationActionButtons();
 						
 
-						},
-						setOperationActionButtons:function(){
-							 if(sap.ui.getCore().byId("operationDetailsView--switchOperationModeBtn").getState() == false)
-							 {
-							 this.setProgressScreenBtn(false, false);
-							 }
+					},
+					
+					setOperationActionButtons:function(){
+						 if(sap.ui.getCore().byId("operationDetailsView--switchOperationModeBtn").getState() == false)
+						 {
+						 this.setProgressScreenBtn(false, false);
+						 }
 						 else if (this.getView().byId("operationStatus").getText() === "Not Started"
-									|| this.getView().byId("operationStatus")
-											.getText() === "Paused") {
+								|| this.getView().byId("operationStatus")
+										.getText() === "Paused") {
 
-								this.setProgressScreenBtn(false, true);
-								
-							} else if (this.getView().byId("operationStatus")
-									.getText() === "In Progress") {
-
-								this.setProgressScreenBtn(true, false);
-								
-							} else if (this.getView().byId("operationStatus")
-									.getText() === "Blocked"
-									|| this.getView().byId("operationStatus")
-											.getText() === "Confirmed") {
-
-								this.setProgressScreenBtn(false, false);
-														}
+							this.setProgressScreenBtn(false, true);
 							
-						}
+						} else if (this.getView().byId("operationStatus")
+								.getText() === "In Progress") {
+
+							this.setProgressScreenBtn(true, false);
+							
+						} else if (this.getView().byId("operationStatus")
+								.getText() === "Blocked"
+								|| this.getView().byId("operationStatus")
+										.getText() === "Confirmed") {
+
+							this.setProgressScreenBtn(false, false);
+													}
+						
+					}
 						
 				/**
 				 * Called when the Controller is destroyed. Use this one to free

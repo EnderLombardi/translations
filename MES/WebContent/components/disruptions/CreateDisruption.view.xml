@@ -336,9 +336,10 @@
 						</f:FormContainer>
 					</f:formContainers>
 				</f:Form>
+				
 			</items>
 		</FlexBox>
-		<footer>
+<!-- 		<footer>
 			<Bar design="" class="createDisruptionFooter">
 				<contentRight>
 					<Button id="btnCreateDisruption" text="{i18nModel>create}"
@@ -351,6 +352,6 @@
 						icon="sap-icon://decline" press="onCloseCreateDisruption" />
 				</contentRight>
 			</Bar>
-		</footer>
+		</footer> -->
 	</Page>
 </core:View>

@@ -68,7 +68,19 @@ sap.ui
 					},
 					ModelManager : undefined,
 					onInit : function() {
-
+						// Set events on buttons
+						sap.ui.getCore().byId(
+								"operationDetailPopup--btnUpdateDisruption")
+								.attachPress(this.onCreateDisruption);
+						sap.ui.getCore().byId(
+								"operationDetailPopup--btnCreateDisruption")
+								.attachPress(this.onUpdateDisruption);
+						sap.ui.getCore().byId(
+								"operationDetailPopup--btnCancelDisruption")
+								.attachPress(this.onCancelCreateDisruption);
+						
+						
+						
 						this.addParent(this.selectTree, undefined);
 						this.ModelManager = airbus.mes.disruptions.ModelManager;
 						/*

@@ -25,8 +25,6 @@
 							class="sapUiTinyMarginBeginEnd pageHeader pageHeaderBlue" items="{ path : 'ressourcePoolModel>/Rowsets/Rowset/0/Row' }">
 							<core:Item key="{ressourcePoolModel>user}" text="{ressourcePoolModel>user}" />
 						</Select>
-						<Button text="Disruptions" type="Transparent" class="whiteColor whiteButton"
-							press="showDisruption"></Button>
 						<ToolbarSpacer />
 						<Button id="TeamButton" text="{StationTrackerI18n>ButtonTeam}"
 							type="Transparent"
@@ -386,7 +384,7 @@
 					<Button text="{StationTrackerI18n>ButtonShowCP}" type="Transparent"
 						icon="sap-icon://kpi-corporate-performance" class="sapUiTinyMarginBeginEnd"
 						press="onCPPress"></Button>
-						<Button text="{StationTrackerI18n>disruptions/andon}" enabled="false"
+						<Button text="{StationTrackerI18n>disruptions/andon}" press="showDisruption"
 						type="Transparent" icon="sap-icon://alert" class="sapUiTinyMarginBeginEnd"></Button>
 					<Button text="{StationTrackerI18n>ButtonOutstandingWork}"
 						type="Transparent" icon="sap-icon://cause" class="sapUiTinyMarginBeginEnd"

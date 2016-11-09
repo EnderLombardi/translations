@@ -22,7 +22,7 @@
 			</Slider>
 
 		</VBox>
-		<footer>
+		<!-- <footer>
 			<Bar id="operationStatusFooter" class="operationDetailFooter">
 				<contentRight>
 					<Button id="btnPause" text="{i18n>pause}" icon="sap-icon://media-pause"
@@ -36,6 +36,6 @@
 						press="onCloseOperationDetailPopup" />
 				</contentRight>
 			</Bar>
-		</footer>
+		</footer> -->
 	</Page>
 </core:View>

@@ -16,7 +16,7 @@ sap.ui
 					onInit : function() {
 						
 						// Set click event on create disruption button 
-						sap.ui.getCore().byId("operationDetailPopup--reportDisruption").attachPress(this.getView().getController().onReportDisruption);
+						sap.ui.getCore().byId("operationDetailPopup--reportDisruption").attachPress(this.onReportDisruption);
 
 					},
 					/**
@@ -38,16 +38,7 @@ sap.ui
 					 * @memberOf components.disruptions.ViewDisruption
 					 */
 					onAfterRendering : function() {
-						if (sap.ui.getCore().byId(
-								"operationDetailsView--switchOperationModeBtn")
-								.getState() == false) {
-							sap.ui.getCore().byId("operationDetailPopup--reportDisruption").setVisible(
-									false);
-						} else {
-							sap.ui.getCore().byId("operationDetailPopup--reportDisruption").setVisible(
-									true);
-						}
-
+						this.turnOnOffButtons()
 					},
 					/**
 					 * Called when the Controller is destroyed. Use this one to
@@ -58,6 +49,23 @@ sap.ui
 					// onExit: function() {
 					//
 					// },
+					
+					/***************************
+					 * Turn buttons on off based on execution mode
+					 */
+					turnOnOffButtons: function(){
+						if (sap.ui.getCore().byId(
+						"operationDetailsView--switchOperationModeBtn")
+								.getState() == false) {
+							sap.ui.getCore().byId("operationDetailPopup--reportDisruption").setVisible(
+									false);
+						} else {
+							sap.ui.getCore().byId("operationDetailPopup--reportDisruption").setVisible(
+									true);
+						}
+					},
+					
+					
 					applyFiltersOnComments : function() {
 						var listItems = this.getView().byId("disrptlist")
 								.getItems();
@@ -662,10 +670,13 @@ sap.ui
 
 						// set buttons according to create disruption
 						sap.ui.getCore().byId(
-								"createDisruptionView--btnUpdateDisruption")
+								"operationDetailPopup--btnUpdateDisruption")
 								.setVisible(false);
 						sap.ui.getCore().byId(
-								"createDisruptionView--btnCreateDisruption")
+								"operationDetailPopup--btnCreateDisruption")
+								.setVisible(true);
+						sap.ui.getCore().byId(
+								"operationDetailPopup--btnCancelDisruption")
 								.setVisible(true);
 
 						// set input according to create disruption
@@ -736,13 +747,16 @@ sap.ui
 							sap.ui
 									.getCore()
 									.byId(
-											"createDisruptionView--btnUpdateDisruption")
+											"operationDetailPopup--btnUpdateDisruption")
 									.setVisible(true);
 							sap.ui
 									.getCore()
 									.byId(
-											"createDisruptionView--btnCreateDisruption")
+											"operationDetailPopup--btnCreateDisruption")
 									.setVisible(false);
+							sap.ui.getCore().byId(
+									"operationDetailPopup--btnCancelDisruption")
+									.setVisible(true);
 
 							// set input according to update disruption
 							sap.ui.getCore().byId(
