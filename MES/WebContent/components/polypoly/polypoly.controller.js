@@ -671,9 +671,9 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 		if (sNeed == "3") {
 			var sNeed3 = ""
 				+ oEvt.getSource().getSelectedIndex();
-			var sNeed4 = oModel.oData.rows[1][columnData.techname];
+			var sNeed4 = oModel.oData.rows[2][columnData.techname];
 		} else {
-			var sNeed3 = oModel.oData.rows[0][columnData.techname];
+			var sNeed3 = oModel.oData.rows[1][columnData.techname];
 			var sNeed4 = ""
 				+ oEvt.getSource().getSelectedIndex();
 		}
