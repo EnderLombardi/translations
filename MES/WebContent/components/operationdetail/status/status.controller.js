@@ -44,7 +44,7 @@ sap.ui
 					/*onCloseOperationDetailPopup : function() {
 
 						airbus.mes.stationtracker.operationDetailPopup.close();
-						airbus.mes.shell.oView.getController()
+						airbus.mes.shell.oView.getController().getController()
 								.renderStationTracker();
 					},*/
 					
@@ -54,13 +54,15 @@ sap.ui
 					 * 
 					 **********************************************************/
 					activateOperation : function() {
+						
+						var oView = airbus.mes.operationdetail.status.oView;
 
-						var data = airbus.mes.operationdetail.status.oView.getModel(
+						var data = oView.getModel(
 								"operationDetailModel").oData.Rowsets.Rowset[0].Row[0];
 						
-						var sMessageSuccess = airbus.mes.operationdetail.status.oView.getModel("i18n")
+						var sMessageSuccess = oView.getModel("i18n")
 								.getProperty("SuccessfulActivation");
-						var sMessageError = airbus.mes.operationdetail.status.oView.getModel("i18n")
+						var sMessageError = oView.getModel("i18n")
 								.getProperty("UnsuccessfulActivation");
 						
 						var flag_success;
@@ -98,10 +100,10 @@ sap.ui
 								.renderStationTracker();
 
 						if (flag_success == true) {
-							this.setProgressScreenBtn( true, false);
+							oView.getController().setProgressScreenBtn( true, false);
 							
-							airbus.mes.operationdetail.status.oView.byId("operationStatus").setText(
-									airbus.mes.operationdetail.status.oView.getModel("i18n")
+							oView.byId("operationStatus").setText(
+									oView.getModel("i18n")
 											.getProperty("in_progress"));
 
 							// Re-Render Station Tracker
@@ -120,11 +122,13 @@ sap.ui
 						}
 					},
 					pauseOperation : function() {
-						var data = airbus.mes.operationdetail.status.oView.getModel(
+						var oView = airbus.mes.operationdetail.status.oView;
+						
+						var data = oView.getModel(
 								"operationDetailModel").oData.Rowsets.Rowset[0].Row[0];
-						var sMessageSuccess = airbus.mes.operationdetail.status.oView.getModel("i18n")
+						var sMessageSuccess = oView.getModel("i18n")
 								.getProperty("SuccessfulPause");
-						var sMessageError = airbus.mes.operationdetail.status.oView.getModel("i18n")
+						var sMessageError = oView.getModel("i18n")
 								.getProperty("UnsuccessfulPause");
 						var flag_success;
 						jQuery
@@ -158,12 +162,12 @@ sap.ui
 								});
 
 						if (flag_success == true) {
-							this.setProgressScreenBtn( false, true);
+							oView.getController().setProgressScreenBtn( false, true);
 							
-							airbus.mes.operationdetail.status.oView.byId("btnActivate")
+							oView.byId("btnActivate")
 									.setType("Accept");
-							airbus.mes.operationdetail.status.oView.byId("operationStatus").setText(
-									airbus.mes.operationdetail.status.oView.getModel("i18n")
+							oView.byId("operationStatus").setText(
+									oView.getModel("i18n")
 											.getProperty("paused"));
 
 							// Re-Render Station Tracker
@@ -184,47 +188,49 @@ sap.ui
 					},
 
 					confirmOperation : function(oEvent) {
+						
+						var oView = airbus.mes.operationdetail.status.oView;
 
 						switch(oEvent.getSource().getText()){
 						
-						case airbus.mes.operationdetail.status.oView.getModel("i18n").getProperty("confirm"):
+						case oView.getModel("i18n").getProperty("confirm"):
 
 							// click on confirm
-							this.operationStatus = "C";
-							this.Mode = airbus.mes.operationdetail.status.oView.getModel("i18n").getProperty("EarnedStandards")
+							oView.getController().operationStatus = "C";
+							oView.getController().Mode = oView.getModel("i18n").getProperty("EarnedStandards")
 							
 							airbus.mes.operationdetail.ModelManager.loadReasonCodeModel();
-							if (!this._reasonCodeDialog) {
+							if (!oView._reasonCodeDialog) {
 
-								this._reasonCodeDialog = sap.ui
+								oView._reasonCodeDialog = sap.ui
 										.xmlfragment(
 												"airbus.mes.operationdetail.fragments.reasonCode",
-												this);
+												oView.getController());
 
-								airbus.mes.operationdetail.status.oView.addDependent(
-										this._reasonCodeDialog);
+								oView.addDependent(
+										oView._reasonCodeDialog);
 							}
-							this._reasonCodeDialog.open();
+							oView._reasonCodeDialog.open();
 							
 							break;
 							
-						case airbus.mes.operationdetail.status.oView.getModel("i18n").getProperty("complete"):
+						case oView.getModel("i18n").getProperty("complete"):
 							
 							// Click on Complete
-							this.operationStatus = "X";
-							this.Mode = airbus.mes.operationdetail.status.oView.getModel("i18n").getProperty("complete")
-							if (!this._oUserConfirmationDialog) {
+							oView.getController().operationStatus = "X";
+							oView.getController().Mode = airbus.mes.operationdetail.status.oView.getModel("i18n").getProperty("complete")
+							if (!oView._oUserConfirmationDialog) {
 
-								this._oUserConfirmationDialog = sap.ui
+								oView._oUserConfirmationDialog = sap.ui
 										.xmlfragment(
 												"airbus.mes.operationdetail.fragments.userConfirmation",
-												this);
+												oView.getController());
 
 								airbus.mes.operationdetail.status.oView.addDependent(
-										this._oUserConfirmationDialog);								
+										oView._oUserConfirmationDialog);								
 							}
 							
-							this._oUserConfirmationDialog.open();
+							oView._oUserConfirmationDialog.open();
 							sap.ui.getCore().byId("UIDForConfirmation")
 									.setValue("");
 							sap.ui.getCore().byId("badgeIDForConfirmation")
@@ -319,11 +325,15 @@ sap.ui
 	
 					
 					onCancelConfirmation : function() {
-						this._oUserConfirmationDialog.close();
+						var oView = airbus.mes.operationdetail.status.oView;
+						
+						oView._oUserConfirmationDialog.close();
 						
 					},
 
 					onOKConfirmation : function(oEvent) {
+						
+						var oView = airbus.mes.operationdetail.status.oView;
 						
 						var uID = sap.ui.getCore().getElementById("UIDForConfirmation").getValue();
 						var bID = sap.ui.getCore().getElementById("badgeIDForConfirmation").getValue();
@@ -333,9 +343,9 @@ sap.ui
 						var pass = sap.ui.getCore().byId(
 								"passwordForConfirmation").getValue();
 
-						var sMessageSuccess = airbus.mes.operationdetail.status.oView.getModel("i18n")
+						var sMessageSuccess = oView.getModel("i18n")
 								.getProperty("SuccessfulConfirmation");
-						var sMessageError = airbus.mes.operationdetail.status.oView.getModel("i18n")
+						var sMessageError = oView.getModel("i18n")
 								.getProperty("ErrorDuringConfirmation");
 
 						if ((user == "" || pass == "") && ( uID == "" || bID == "" )) {
@@ -344,20 +354,20 @@ sap.ui
 							sap.ui.getCore().byId("msgstrpConfirm").setType(
 									"Error");
 							sap.ui.getCore().byId("msgstrpConfirm").setText(
-									airbus.mes.operationdetail.status.oView.getModel("i18n")
+									oView.getModel("i18n")
 											.getProperty(
 													"CompulsaryConfirmation"));
 						} else {
 							sap.ui.getCore().byId("msgstrpConfirm").setVisible(
 									false);
 							var sfc = airbus.mes.operationdetail.ModelManager.sfc;
-							if (this.operationStatus == "X")
+							if (oView.getController().operationStatus == "X")
 								{
 								var percent = 100;
-									airbus.mes.operationdetail.status.oView.byId("operationStatus").setText(
-											airbus.mes.operationdetail.status.oView.getModel("i18n")
+									oView.byId("operationStatus").setText(
+											oView.getModel("i18n")
 													.getProperty("confirm"));
-								this.setProgressScreenBtn(false,false);
+								oView.getController().setProgressScreenBtn(false,false);
 								sap.ui.getCore().getModel("operationDetailModel")
 								.setProperty(
 										"/Rowsets/Rowset/0/Row/0/status",
@@ -381,15 +391,14 @@ sap.ui
 												.getConfirmationUrl(
 														user,
 														pass,
-														this.operationStatus,
+														oView.getController().operationStatus,
 														percent,
-														this
-																.getView()
+														oView.getController()
 																.getModel(
 																		"operationDetailModel")
 																.getProperty(
 																		"/Rowsets/Rowset/0/Row/0/sfc_step_ref"),
-														this.reasonCodeText,this.Mode,bID),
+														oView.getController().reasonCodeText,oView.getController().Mode,bID),
 										async : false,
 										error : function(xhr, status, error) {
 											airbus.mes.operationdetail.ModelManager
@@ -415,8 +424,8 @@ sap.ui
 										}
 									});
 							// Close reason code dialog
-							this._reasonCodeDialog.close();
-							this._oUserConfirmationDialog.close();
+							oView._reasonCodeDialog.close();
+							oView._oUserConfirmationDialog.close();
 
 							if (flag_success === true) {
 								// Refresh User Operation Model and Operation
@@ -441,8 +450,10 @@ sap.ui
 					 * ReasonCode Fragment Methods
 					 **********************************************************/
 					onSubmitReasonCode : function(oEvent) {
+						var oView = airbus.mes.operationdetail.status.oView;
+						
 						// store reason Code text
-						this.reasonCodeText = sap.ui.getCore().byId(
+						oView.getController().reasonCodeText = sap.ui.getCore().byId(
 								"reasonCodeSelectBox").getSelectedKey()
 								+ "-"
 								+ sap.ui.getCore().byId("reasonCodeComments")
@@ -450,17 +461,17 @@ sap.ui
 						// Close reason code dialog
 						//this._reasonCodeDialog.close();
 
-						if (!this._oUserConfirmationDialog) {
+						if (!oView._oUserConfirmationDialog) {
 
-							this._oUserConfirmationDialog = sap.ui
+							oView._oUserConfirmationDialog = sap.ui
 									.xmlfragment(
 											"airbus.mes.operationdetail.fragments.userConfirmation",
-											this);
+											oView);
 
-							airbus.mes.operationdetail.status.oView.addDependent(
-									this._oUserConfirmationDialog);
+							oView.addDependent(
+									oView._oUserConfirmationDialog);
 						}
-						this._oUserConfirmationDialog.open();
+						oView._oUserConfirmationDialog.open();
 						sap.ui.getCore().byId("UIDForConfirmation")
 								.setValue("");
 						sap.ui.getCore().byId("badgeIDForConfirmation")
@@ -474,10 +485,12 @@ sap.ui
 
 					onCancelReasonCode : function() {
 						
+						var oView = airbus.mes.operationdetail.status.oView;
+						
 						sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].progress_new = sap.ui
 								.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].progress;
 						sap.ui.getCore().getModel("operationDetailModel").refresh();
-						this._reasonCodeDialog.close();
+						oView._reasonCodeDialog.close();
 					},
 					/***********************************************************
 					 * set Buttons on the screen according to status
