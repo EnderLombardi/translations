@@ -266,11 +266,24 @@
 	border-radius: 100px;
 	float: left !important;
 }
-
+/***** Color for Station Tracker Gantt Chart ************/
+.openBlockedEscalated{
+	background-color:#f00;
+}
+.openBlocked{
+	background-color:yellow;
+}
+.solvedBloackedExcalated{
+	
+}
+.solvedBlocked{
+	
+}
 .grey {
 	background-color: #97999b;
 }
 
+/***** End of Color for Station Tracker Gantt Chart *****/
 /* box management */
 .trackerBox{
 	width:100%;

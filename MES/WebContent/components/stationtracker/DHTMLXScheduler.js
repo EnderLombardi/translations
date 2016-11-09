@@ -204,7 +204,29 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 
 						scheduler.templates.event_class = function(start, end, event) {
 						
-							return "grey";
+							switch(parseInt(event.DISRUPTION_STATUS)){
+							
+							case 1:
+								return "openBlockedEscalated";
+								break;
+							
+							case 2:
+								return "openBlocked";
+								break;
+								
+							case 3:
+								return "solvedBlockedEscalated";
+								break;
+								
+							case 4:
+								return "solvedBlocked";
+								break;
+								
+							
+							
+							default:
+								return "grey";
+							}
 
 						};
 

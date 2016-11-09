@@ -84,11 +84,11 @@
 									</f:label>
 									<f:fields>
 										<Select id="selectResponsible"
-											items="{disruptionCustomData>/Rowsets/Rowset/1/Row}" change="onSelectionChange"
+											items="{disruptionCategoryModel>/Rowsets/Rowset/1/Row}" change="onSelectionChange"
 											forceSelection="false">
 											<items>
-												<core:Item text="{disruptionCustomData>ResponsibleGroupDesc}"
-													key="{disruptionCustomData>ResponsibleGroup}" />
+												<core:Item text="{disruptionCategoryModel>ResponsibleGroupDesc}"
+													key="{disruptionCategoryModel>ResponsibleGroup}" />
 											</items>
 											<layoutData>
 												<l:GridData span="L3 M6 S12" />

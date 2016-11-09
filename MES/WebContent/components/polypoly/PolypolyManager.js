@@ -370,7 +370,7 @@ airbus.mes.polypoly.PolypolyManager = {
 								oTableRows.rows[oTableRows.rows.length - 1]["type"] = "ASIS";
 								oTableRows.rows[oTableRows.rows.length - 1]["ressourcepool"] = ressourcePools[rp];
 								oTableRows.rows[oTableRows.rows.length - 1]["ressourcepoolId"] = rp;
-								if(oMiiColumns != undefined){
+//								if(oMiiColumns != undefined){
 								oMiiColumns.forEach(function(col) {
 											if (col != "") {
 												var c = col.technicalName;
@@ -378,7 +378,7 @@ airbus.mes.polypoly.PolypolyManager = {
 														.toString();
 											}
 										});
-								}
+//								}
 							}
 							// Gap
 							oTableRows.rows.push({
@@ -414,7 +414,7 @@ airbus.mes.polypoly.PolypolyManager = {
 								}
 							}
 							// Ré-initialiser le calcul de GAP et de AS IS
-							if(oMiiColumns != undefined){
+//							if(oMiiColumns != undefined){
 							oMiiColumns.forEach(function(col) {
 								if (col != "") {
 									if (col.POLYPOLY_NEEDS_3 == '---') {
@@ -433,7 +433,7 @@ airbus.mes.polypoly.PolypolyManager = {
 											need3, need4 ];
 								}
 							});
-						}
+//						}
 						});
 		return oTableRows;
 	},

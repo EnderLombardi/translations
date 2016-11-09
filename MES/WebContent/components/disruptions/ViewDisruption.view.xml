@@ -114,6 +114,7 @@
                                                                            <f:fields>
 
                                                                                   <Text text="{operationDisruptionsModel>OriginatorGroupDesc}">
+
                                                                                          <layoutData>
                                                                                                 <l:GridData span="L4 M4 S12" />
                                                                                          </layoutData>
@@ -189,6 +190,7 @@
                                                                            </f:label>
                                                                            <f:fields>
                                                                                   <Text text="{operationDisruptionsModel>OpeningTime}">
+
                                                                                          <layoutData>
                                                                                                 <l:GridData span="L4 M4 S12" />
                                                                                          </layoutData>

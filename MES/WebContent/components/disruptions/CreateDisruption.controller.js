@@ -36,11 +36,11 @@ sap.ui
 							type : "select",
 							path : "Reason",
 							attr : "Reason",
-							childs : [ {
+					/*		childs : [ {
 								id : "selectResponsible",
 								type : "select",
 								path : "ResponsibleGroup",
-								attr : "ResponsibleGroup",
+								attr : "ResponsibleGroup",*/
 								childs : [ {
 									id : "selectRootCause",
 									type : "select",
@@ -58,8 +58,13 @@ sap.ui
 										childs : []
 									} ]
 								}, ]
-							} ]
-						}, ]
+					/*		} ]*/
+						},{
+							id : "selectResponsible",
+							type : "select",
+							path : "ResponsibleGroup",
+							attr : "ResponsibleGroup",
+							childs : []} ]
 					},
 					ModelManager : undefined,
 					onInit : function() {
@@ -76,6 +81,8 @@ sap.ui
 						this.getView().byId("selectRootCause").setSelectedKey();
 						this.getView().byId("selectResponsible")
 								.setSelectedKey();
+						this.getView().byId("selectOriginator")
+						.setSelectedKey();
 						this.setEnabledSelectBox(true, false, false, false);
 
 						// this.filterField(this.selectTree);
@@ -130,12 +137,10 @@ sap.ui
 								});
 
 						if (id === "selectCategory") {
-							this.setEnabledSelectBox(true, true, false, false);
+							this.setEnabledSelectBox(true, true, false, true);
 						} else if (id === "selectreason") {
-							this.setEnabledSelectBox(true, true, true, false);
-						} else if (id === "selectResponsible") {
 							this.setEnabledSelectBox(true, true, true, true);
-						}
+						} 
 
 					},
 
@@ -353,6 +358,8 @@ sap.ui
 						/************************************
 						 * Pre-fill fields in update request 
 						 */
+						
+							this.resetAllFields();
 						if (sap.ui.getCore().getModel(
 								"DisruptionDetailModel").getData() != undefined) {
 
