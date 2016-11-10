@@ -112,12 +112,12 @@
 	
 }
  
- #idUsersView .sapMPanelContent{
+/*  #idUsersView .sapMPanelContent{
  height : 100% !important;
  }
  #idWorkCenterView .sapMPanelContent{
  height : 100% !important;
- }
+ } */
  #idShiftView{
  }
  

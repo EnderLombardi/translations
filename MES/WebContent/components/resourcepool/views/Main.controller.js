@@ -1574,16 +1574,16 @@ sap.ui
 
 					afterNavigate : function(oEvt) {
 
-						// if(oEvt.getParameters().toId == "idUsersView"){
-						// this.getView().byId("availableUsersPanel").rerender();
-						// this.getView().byId("assignedUsersPanel").rerender();
-						// }
-						//
-						// else if (oEvt.getParameters().toId ==
-						// "idWorkCenterView"){
-						// this.getView().byId("availableWCPanel").rerender();
-						// this.getView().byId("assignedWCPanel").rerender();
-						// }
+						if(oEvt.getParameters().toId == "idUsersView"){
+							sap.ui.getCore().byId("idUsersView--availableUsersPanel").rerender();
+							sap.ui.getCore().byId("idUsersView--assignedUsersPanel").rerender();
+						 }
+						
+						 else if (oEvt.getParameters().toId == "idWorkCenterView"){
+							 sap.ui.getCore().byId("idWorkCenterView--assignedWCPanel").rerender();
+							 sap.ui.getCore().byId("idWorkCenterView--availableWCPanel").rerender();
+						 }
+						/*sap.ui.getCore().getModel("ResourcePoolDetailModel").refresh();*/
 					},
 
 					onNavBack : function(oEvent) {

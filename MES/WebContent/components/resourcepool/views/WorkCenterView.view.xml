@@ -6,7 +6,7 @@
 			<HBox height="100%" class="fixHboxItemDisplay">
 				<items>
 					<Panel class="panelBorder" expanded="true" expandable="false" id="availableWCPanel"
-						width="100%" height="100%">
+						width="100%" height="95%">
 						<headerToolbar>
 
 							<Toolbar>
@@ -50,7 +50,7 @@
 						</items>
 					</VBox>
 					<Panel class="panelBorder" expanded="true" expandable="false" id="assignedWCPanel"
-						width="100%" height="100%">
+						width="100%" height="95%">
 						<headerToolbar>
 
 							<Toolbar>
