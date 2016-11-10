@@ -702,7 +702,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 		}
 		var oDim = { width : e[ a+'Width' ] , height : e[ a+'Height' ] };
 		
-		var oNumberRows = Math.floor(oDim.height*0.0267 - 10.035);
+		var oNumberRows = Math.floor(oDim.height*0.0267 - 10.035);	//FIXME : Change if Rows' height CSS is modified
 		
 		if(bAssign){
 			var aListRows = airbus.mes.polypoly.oView.byId("oTablePolypoly").getBinding("rows").oList;
@@ -743,6 +743,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 		var aControlsId = ["AddPolypoly"];
 		this.filterUA();
 		this.hideContent(aControlsId);
+		this.clearFilters();
 	},
 
 	hideContent : function(aControlsId){
