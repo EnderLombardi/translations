@@ -217,7 +217,46 @@ sap.ui
 					},
 
 					renderViews : function(oEvent) {
+						
+						
+						/***************************************************
+						 * Show/ Hide Footer Buttons
+						 */
+						if(this.nav.getCurrentPage().sId != "idStatusView"){
+							// Hide buttons
+							sap.ui.getCore().byId("operationDetailPopup--btnPause").setVisible(false);
+							sap.ui.getCore().byId("operationDetailPopup--btnActivate").setVisible(false);
+							sap.ui.getCore().byId("operationDetailPopup--btnConfirm").setVisible(false);
+							sap.ui.getCore().byId("operationDetailPopup--btnComplete").setVisible(false);
+						}
+						else{
+							airbus.mes.operationdetail.status.oView.getController().setOperationActionButtons();
+						}
+						
+						
+						if(this.nav.getCurrentPage().sId != "ViewDisruptionView"){
+							// Hide buttons
+							sap.ui.getCore().byId("operationDetailPopup--reportDisruption").setVisible(
+									false);
+						}
+						else{
+							airbus.mes.operationdetail.viewDisruption.oView.getController().turnOnOffButtons();
+						}
+						
+						if(this.nav.getCurrentPage().sId != "createDisruptionView"){
+							// Hide buttons
+							sap.ui.getCore().byId("operationDetailPopup--btnCreateDisruption").setVisible(
+									false);
+							sap.ui.getCore().byId("operationDetailPopup--btnUpdateDisruption").setVisible(
+									false);
+							sap.ui.getCore().byId("operationDetailPopup--btnCancelDisruption").setVisible(
+									false);
+						}
 
+						
+						/*****************************************
+						 * Load Data
+						 */
 						switch (this.nav.getCurrentPage().sId) {
 
 						case "ViewDisruptionView":
@@ -252,39 +291,6 @@ sap.ui
 							
 
 						};
-						
-						
-						
-						if(this.nav.getCurrentPage().sId != "idStatusView"){
-							// Hide buttons
-							sap.ui.getCore().byId("operationDetailPopup--btnPause").setVisible(false);
-							sap.ui.getCore().byId("operationDetailPopup--btnActivate").setVisible(false);
-							sap.ui.getCore().byId("operationDetailPopup--btnConfirm").setVisible(false);
-							sap.ui.getCore().byId("operationDetailPopup--btnComplete").setVisible(false);
-						}
-						else{
-							airbus.mes.operationdetail.status.oView.getController().setOperationActionButtons();
-						}
-						
-						
-						if(this.nav.getCurrentPage().sId != "ViewDisruptionView"){
-							// Hide buttons
-							sap.ui.getCore().byId("operationDetailPopup--reportDisruption").setVisible(
-									false);
-						}
-						else{
-							airbus.mes.operationdetail.viewDisruption.oView.getController().turnOnOffButtons();
-						}
-						
-						if(this.nav.getCurrentPage().sId != "createDisruptionView"){
-							// Hide buttons
-							sap.ui.getCore().byId("operationDetailPopup--btnCreateDisruption").setVisible(
-									false);
-							sap.ui.getCore().byId("operationDetailPopup--btnUpdateDisruption").setVisible(
-									false);
-							sap.ui.getCore().byId("operationDetailPopup--btnCancelDisruption").setVisible(
-									false);
-						}
 
 					}
 

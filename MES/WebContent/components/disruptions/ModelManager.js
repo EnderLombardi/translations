@@ -30,7 +30,7 @@ airbus.mes.disruptions.ModelManager = {
 			dest = "local";
 			break;
 		default:
-			dest = "local";
+			dest = "airbus";
 			break;
 		}
 
@@ -141,7 +141,7 @@ airbus.mes.disruptions.ModelManager = {
 
 		if (oFilters.operation != undefined && oFilters.operation != "")
 			getDiruptionsURL = getDiruptionsURL.replace('$Operation',
-					oFilters.operation.replace("#", "HASH"));
+					oFilters.operation.split(",")[1]);
 		else
 			getDiruptionsURL = getDiruptionsURL.replace('$Operation', "");
 
