@@ -517,6 +517,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		if ( airbus.mes.stationtracker.ShiftManager.shiftDisplay ) {
 			
 			scheduler.updateView(airbus.mes.stationtracker.ShiftManager.ShiftSelected.StartDate);
+			airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftID);
 		}	
 		
 		

@@ -40,7 +40,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 			
 			oHierachy[el.day] = {};
 		}
-		if ( !oHierachy[el.day][el.shiftName /*el.shiftName + el.day*/] ) {
+		if ( !oHierachy[el.day][el.shiftID /*el.shiftName + el.day*/] ) {
 			
 			oHierachy[el.day][el.shiftID /*el.shiftName + el.day*/ ] = [];
 		}
@@ -299,7 +299,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 					"ANDONS": el.ANDONS,
 					"RMA_STATUS_COLOR": fRMA,
 					"status" : sStatus,
-					//"ata": el.ata,
+					"ATA": el.ata,
 					//"familyTarget": el.familyTarget,
 					"CPP_CLUSTER" : el.CPP_CLUSTER,
 					"WORK_PACKAGE" : el.WORK_PACKAGE,

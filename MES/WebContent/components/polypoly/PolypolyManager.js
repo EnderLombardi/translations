@@ -401,12 +401,13 @@ airbus.mes.polypoly.PolypolyManager = {
 											if (col != "") {
 												var c = col.technicalName;
 												var u = (colonnes[c][j + 1] - colonnes[c][j + 3]);
-												if (j == 1) {
-													var v = (colonnes[c][j + 2] - colonnes[c][j + 4]);
-													if (v > 0) {
-														u = u + v;
-													}
-												}
+//											//A Level4 cannot replace a Level 3//
+//												if (j == 1) {
+//													var v = (colonnes[c][j + 2] - colonnes[c][j + 4]);
+//													if (v > 0) {
+//														u = u + v;
+//													}
+//												}
 												oTableRows.rows[oTableRows.rows.length - 1][c] = u
 														.toString();
 											}
