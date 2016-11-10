@@ -51,6 +51,7 @@ sap.ui
 					// onExit: function() {
 					//
 					// },
+					
 					/***********************************************************
 					 * Turn buttons on off based on execution mode
 					 */
@@ -68,6 +69,9 @@ sap.ui
 						}
 					},
 
+					/*************************************************************
+					 * Filter comments by removing comments not related to the selected disruption
+					 */
 					applyFiltersOnComments : function() {
 						var listItems = this.getView().byId("disrptlist")
 								.getItems();
@@ -93,8 +97,7 @@ sap.ui
 					},
 
 					/***********************************************************
-					 * Open Pop-Up to ask Time Lost while Closing the Disruption <<<<<<<
-					 * HEAD
+					 * Open Pop-Up to ask Time Lost while Closing the Disruption 
 					 */
 					onCloseDisruption : function(oEvt) {
 						var sPath = oEvt.getSource().getParent().getParent()
@@ -237,7 +240,8 @@ sap.ui
 									.error(airbus.mes.operationdetail.viewDisruption.oView
 											.getModel("i18nModel").getProperty(
 													"disruptionDeleteError"));
-						} else {
+						} 
+						else {
 
 							var title = this.getView().getModel("i18nModel")
 									.getProperty("deleteDisruption");
@@ -619,6 +623,9 @@ sap.ui
 
 					},
 
+					/***********************************************************
+					 * When Comment is Submitted to Escalate Disruption
+					 */
 					onEscalateDisruption : function(oEvent) {
 
 						var msgRef = oEvent.getSource().getBindingContext(
@@ -706,6 +713,9 @@ sap.ui
 								.setEnabled(true);
 					},
 
+					/***********************************************************
+					 * When Comment is Submitted to Mark Solved Disruption
+					 */
 					onEditDisruption : function(oEvent) {
 
 						if (sap.ui.getCore().byId(
@@ -732,7 +742,7 @@ sap.ui
 										.getCore()
 										.createComponent(
 												{
-													name : "airbus.mes.operationdetail.createDisruption",
+													name : "airbus.mes.operationdetail.createDisruption"
 												});
 
 								oOperDetailNavContainer

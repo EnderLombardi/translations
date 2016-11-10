@@ -146,9 +146,6 @@ table {
     border-color:transparent;
     outline:1px dotted transparent;
 }
-.sap-desktop .sapMBtnTransparent>#globalNavView--settingsButton-img.sapMBtnIcon {
-    color:#ffffff;	
-}
 .WhiteBG{
 	background-color:#fff !important;
 }

@@ -68,7 +68,7 @@
 											<f:label>
 												<Label class="detailLabels" text="{i18nModel>gravity}">
 													<layoutData>
-														<l:GridData span="L2 M2 S12" />
+														<l:GridData span="L3 M3 S12" />
 													</layoutData>
 												</Label>
 											</f:label>
@@ -77,7 +77,7 @@
 												<Text
 													text="{path: 'operationDisruptionsModel>Gravity', formatter: 'airbus.mes.disruptions.Formatter.setGravityText'}">
 													<layoutData>
-														<l:GridData span="L4 M4 S12" />
+														<l:GridData span="L3 M3 S12" />
 													</layoutData>
 												</Text>
 											</f:fields>
@@ -107,7 +107,7 @@
 											<f:label>
 												<Label class="detailLabels" text="{i18nModel>origGrpDesc}">
 													<layoutData>
-														<l:GridData span="L2 M2 S12" />
+														<l:GridData span="L3 M3 S12" />
 													</layoutData>
 												</Label>
 											</f:label>
@@ -116,7 +116,7 @@
 												<Text text="{operationDisruptionsModel>OriginatorGroupDesc}">
 
 													<layoutData>
-														<l:GridData span="L4 M4 S12" />
+														<l:GridData span="L3 M3 S12" />
 													</layoutData>
 												</Text>
 											</f:fields>
@@ -145,7 +145,7 @@
 											<f:label>
 												<Label class="detailLabels" text="{i18nModel>resGroup}">
 													<layoutData>
-														<l:GridData span="L2 M2 S12" />
+														<l:GridData span="L3 M3 S12" />
 													</layoutData>
 												</Label>
 											</f:label>
@@ -153,7 +153,7 @@
 
 												<Text text="{operationDisruptionsModel>ResponsibleGroupDesc}">
 													<layoutData>
-														<l:GridData span="L4 M4 S12" />
+														<l:GridData span="L3 M3 S12" />
 													</layoutData>
 												</Text>
 											</f:fields>
@@ -184,7 +184,7 @@
 											<f:label>
 												<Label class="detailLabels" text="{i18nModel>openDate}">
 													<layoutData>
-														<l:GridData span="L2 M2 S12" />
+														<l:GridData span="L3 M3 S12" />
 													</layoutData>
 												</Label>
 											</f:label>
@@ -192,7 +192,7 @@
 												<Text text="{operationDisruptionsModel>OpeningTime}">
 
 													<layoutData>
-														<l:GridData span="L4 M4 S12" />
+														<l:GridData span="L3 M3 S12" />
 													</layoutData>
 												</Text>
 											</f:fields>
@@ -223,14 +223,14 @@
 												<Label class="detailLabels" text="{i18nModel>expected}"
 													visible="{path: 'operationDisruptionsModel>EscalationLevel', formatter: 'airbus.mes.disruptions.Formatter.setTimeBeforeNextEscVisibility'}">
 													<layoutData>
-														<l:GridData span="L2 M2 S12" />
+														<l:GridData span="L3 M3 S12" />
 													</layoutData>
 												</Label>
 											</f:label>
 											<f:fields>
 												<Text text="{operationDisruptionsModel>FixedByTime}">
 													<layoutData>
-														<l:GridData span="L4 M4 S12" />
+														<l:GridData span="L3 M3 S12" />
 													</layoutData>
 												</Text>
 											</f:fields>
@@ -259,7 +259,7 @@
 												<Label class="detailLabels" text="{i18nModel>timeBeforeNextEsc}"
 													visible="{path: 'operationDisruptionsModel>EscalationLevel', formatter: 'airbus.mes.disruptions.Formatter.setTimeBeforeNextEscVisibility'}">
 													<layoutData>
-														<l:GridData span="L2 M2 S12" />
+														<l:GridData span="L3 M3 S12" />
 													</layoutData>
 												</Label>
 											</f:label>
@@ -267,7 +267,7 @@
 												<Text text="{operationDisruptionsModel>TimeBeforeNextEscalation}"
 													visible="{path: 'operationDisruptionsModel>EscalationLevel', formatter: 'airbus.mes.disruptions.Formatter.setTimeBeforeNextEscVisibility'}">
 													<layoutData>
-														<l:GridData span="L4 M4 S12" />
+														<l:GridData span="L3 M3 S12" />
 													</layoutData>
 												</Text>
 											</f:fields>
