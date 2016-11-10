@@ -19,12 +19,18 @@
                   "Value": "GroupingCompetency",
                    "key": "COMPETENCY"
 
-                 },
+               },
 
                {
 
                   "Value": "GroupingAVLLine",
                   "key": "AVL_LINE"
+
+                 },
+                 {
+
+                  "Value": "GroupingAta",
+                   "key": "ATA"  
 
                  },
                {
