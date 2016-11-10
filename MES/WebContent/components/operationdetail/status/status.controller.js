@@ -231,6 +231,7 @@ sap.ui
 							}
 							
 							oView._oUserConfirmationDialog.open();
+							sap.ui.getCore().getElementById("msgstrpConfirm").setVisible(false);
 							sap.ui.getCore().byId("UIDForConfirmation")
 									.setValue("");
 							sap.ui.getCore().byId("badgeIDForConfirmation")
@@ -259,9 +260,9 @@ sap.ui
 			               var ws = new WebSocket("ws://localhost:754/TouchNTag");
                            
 			               ws.onopen = function(){	
-			            	   sap.ui.getCore().getElementById("msgstrpScan").setVisible(true);
-			            	   sap.ui.getCore().byId("msgstrpScan").setType("Information");
-			            	   sap.ui.getCore().byId("msgstrpScan").setText(
+			            	   sap.ui.getCore().getElementById("msgstrpConfirm").setVisible(true);
+			            	   sap.ui.getCore().byId("msgstrpConfirm").setType("Information");
+			            	   sap.ui.getCore().byId("msgstrpConfirm").setText(
 			            			   airbus.mes.operationdetail.status.oView.getModel("i18n")
 			            			   		.getProperty("scanBadge"));
 			            	   var msgData = {
@@ -281,7 +282,6 @@ sap.ui
 			               };
 			               
 			               ws.onmessage = function (evt){ 
-			            	  sap.ui.getCore().getElementById("msgstrpScan").setVisible(false);
 			                  var scanData = JSON.parse(evt.data);	
 			                  var uID  = scanData.Message;			//UID
 			                  var badgeID = scanData.BadgeOrRFID;     //BID
@@ -291,6 +291,7 @@ sap.ui
 			                  sap.ui.getCore().getElementById("UIDForConfirmation").setValue(uID);
 			                  sap.ui.getCore().getElementById("badgeIDForConfirmation").setValue(badgeID);
 			                  ws.close();
+			                  sap.ui.getCore().getElementById("msgstrpConfirm").setVisible(false);
 			               };
 			               // Error Handling while connection failed to WebSocket
 			               ws.onerror = function(evnt){
@@ -306,7 +307,7 @@ sap.ui
 			                  alert("Connection is closed..."); 
 			               }		               
 			               
-			            // For Simulation purpose (Local Server Tesing)				
+			            // For Simulation purpose (Local Server Testing)				
 							function onSimulation(data){
 //								 var data = JSON.parse(evt.data);	
 				                  var uID  = data.Message;			//UID
@@ -354,7 +355,7 @@ sap.ui
 							sap.ui.getCore().byId("msgstrpConfirm").setText(
 									oView.getModel("i18n")
 											.getProperty(
-													"CompulsaryConfirmation"));
+													"CompulsaryCredentials"));
 						} else {
 							sap.ui.getCore().byId("msgstrpConfirm").setVisible(
 									false);
@@ -471,6 +472,7 @@ sap.ui
 									oView._oUserConfirmationDialog);
 						}
 						oView._oUserConfirmationDialog.open();
+						sap.ui.getCore().getElementById("msgstrpConfirm").setVisible(false);
 						sap.ui.getCore().byId("UIDForConfirmation")
 								.setValue("");
 						sap.ui.getCore().byId("badgeIDForConfirmation")

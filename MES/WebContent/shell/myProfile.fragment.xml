@@ -1,0 +1,49 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.ui.layout.form"
+	xmlns:l="sap.ui.layout">
+	<Dialog title="{ShellI18n>myProfileTitle}" contentHeight="40%" contentWidth="20%"	id="badgeMngMyProfile">
+		<Toolbar class="toolBarBottom">
+			<Button icon="sap-icon://business-card" text="Scan" type="Emphasized" press="onScanMyProfile"/>
+			<ToolbarSpacer/>
+			<Button icon="sap-icon://edit" text="Edit" type="Emphasized" press="onEditMyProfile"/>
+		</Toolbar>
+		<content>
+			<HBox justifyContent="SpaceAround">					
+				<VBox class="sapUiSmallMarginEnd" width="100%" justifyContent="Center">
+					<f:SimpleForm id="myProfile" minWidth="1024"
+						maxContainerCols="1" editable="true" layout="ResponsiveGridLayout"
+						labelSpanL="1" labelSpanM="2" emptySpanL="0" emptySpanM="0"
+						columnsL="3" columnsM="3">
+						<f:content>
+							<Input id="uIdMyProfile" type="Text" required="true"
+								placeholder="{ShellI18n>UID}" liveChange="uIDLive" />							
+							<Input id="badgeIdMyProfile" type="Text" required="true"
+								placeholder="{ShellI18n>badgeID}" liveChange="badgeIDLive" />
+							<Input id="pinCodeMyProfile" type="Text"
+								placeholder="{ShellI18n>pinCode}" liveChange="pinCodeLive" />							
+							<Input id="userNameMyProfile" type="Text" required="true"
+								placeholder="{ShellI18n>userName}" liveChange="usernameLive" />
+							<Input id="passwordMyProfile" type="Password" required="true"
+								placeholder="{ShellI18n>password}" liveChange="passwordLive" />
+						</f:content>
+					</f:SimpleForm>
+				</VBox>
+			</HBox>
+			<HBox height="35px" width="100%">
+				<MessageStrip id="msgstrpMyProfile" visible="false"
+					width="100%" class="sapUiSmallMarginBeginEnd" showIcon="true"
+					showCloseButton="true">
+				</MessageStrip>
+			</HBox>
+
+		</content>
+		<beginButton>
+			<Button type="Emphasized" text="Cancel" press="onCancelMyProfile" icon="sap-icon://decline" iconFirst="false"
+					width="48%" class=''/>
+		</beginButton>
+		<endButton>
+			<Button type="Emphasized" text="Save" press="onSaveMyProfile" icon="sap-icon://accept" iconFirst="false"
+					width="48%" class=''/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

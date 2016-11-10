@@ -144,5 +144,12 @@ airbus.mes.shell.ModelManager = {
 	                      });
 	               
 	  },
+	  
+	  /********************************
+		 * Get URL for My Profile
+		 */
+	  getMyProfileUrl:function(urlMyProfile){
+		  
+	  },
 
 }

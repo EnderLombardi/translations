@@ -241,5 +241,138 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 				.filter(new sap.ui.model.Filter(aFilters, true));
 		
 	},
+	/*******************************************
+	 * My Profile PopUp
+	 */
+	goToMyProfile:function(){
+		if(!this._myProfileDailog){
+			this._myProfileDailog = sap.ui.xmlfragment("airbus.mes.shell.myProfile", this);
+			this.getView().addDependent(this._myProfileDialog);			
+		}
+		this._myProfileDailog.open();
+	},
+	onCancelMyProfile:function(){
+		this._myProfileDailog.close();
+	},
+	
+	onScanMyProfile:function(){
+
+		 // Open a web socket connection
+          var ws = new WebSocket("ws://localhost:754/TouchNTag");
+          
+          ws.onopen = function(){	
+       	   sap.ui.getCore().getElementById("msgstrpMyProfile").setVisible(true);
+       	   sap.ui.getCore().byId("msgstrpMyProfile").setType("Information");
+       	   sap.ui.getCore().byId("msgstrpMyProfile").setText(getModel("Shelli18n").getProperty("scanBadge"));
+       	   var msgData = {
+       			   BadgeOrRFID:"BADGE",
+       			   Message:"UID:263808008C0F3D"
+       			  };
+
+             // Web Socket is connected
+             ws.send(JSON.stringify(msgData));
+//             ws.send(JSON.stringify(
+//           		  {"BadgeOrRFID":"BADGE","Message":"UID:263808008C0F31"}
+//             ));
+
+//             alert("Message is sent...");
+          // For Simulation purpose (comment below line when you scan through reader)	
+             onSimulation(msgData);
+          };
+          
+          ws.onmessage = function (evt){ 
+             var scanData = JSON.parse(evt.data);	
+             var uID  = scanData.Message;			//UID
+             var badgeID = scanData.BadgeOrRFID;     //BID
+             
+//             if(uID != undefined && uID != "")
+//           	  uID = uID.split(":")[1];
+             sap.ui.getCore().getElementById("uIdMyProfile").setValue(uID);
+             sap.ui.getCore().getElementById("badgeIdMyProfile").setValue(badgeID);
+             ws.close();
+             sap.ui.getCore().getElementById("msgstrpMyProfile").setVisible(false);
+          };
+          // Error Handling while connection failed to WebSocket
+          ws.onerror = function(evnt){
+       	   //alert("Error has occured");
+       	   var badgeScanError = oView.getModel("i18n")
+				.getProperty("webSocketConnectionFailed");
+       	   airbus.mes.operationdetail.ModelManager
+				.messageShow(badgeScanError);
+          }
+          
+          ws.onclose = function(){ 
+             // websocket is closed.			            	  			            	   
+             alert("Connection is closed..."); 
+          }		               
+          
+       // For Simulation purpose (Local Server Testing)				
+			function onSimulation(data){
+//				 var data = JSON.parse(evt.data);	
+                 var uID  = data.Message;			//UID
+                 var badgeID = data.BadgeOrRFID;     //BID
+                 
+//                 if(uID != undefined && uID != "")
+//               	  uID = uID.split(":")[1];
+                 sap.ui.getCore().getElementById("uIdMyProfile").setValue(uID);
+                 sap.ui.getCore().getElementById("badgeIdMyProfile").setValue(badgeID);
+                 ws.close();
+			}		
+	
+	},
+	
+	onSaveMyProfile:function(oEvent){
+		var badgeID = sap.ui.getCore().getElementById("badgeIdMyProfile").getValue();
+		var uID = sap.ui.getCore().getElementById("uIdMyProfile").getValue();
+		var user = sap.ui.getCore().getElementById("userNameMyProfile").getValue();
+		var pass = sap.ui.getCore().getElementById("passwordMyProfile").getValue();
+		var pinCode = sap.ui.getCore().getElementById("pinCodeMyProfile").getValue();
+		
+		if(badgeID == "" || uID == "" || user == "" || pass == ""){
+			sap.ui.getCore().byId("msgstrpMyProfile").setVisible(true);
+			sap.ui.getCore().byId("msgstrpMyProfile").setType("Error");
+			sap.ui.getCore().byId("msgstrpMyProfile").setText(getModel("Shelli18n")
+							.getProperty("CompulsaryCredentials"));
+		}
+		else{
+			sap.ui.getCore().byId("msgstrpMyProfile").setVisible(true);
+			
+			// Call service for Operation Confirmation
+			jQuery
+					.ajax({
+						url : airbus.mes.shell.ModelManager
+								.getMyProfileUrl(
+										badgeID,
+										user,
+										pass,
+										pinCode,
+										uID),
+						async : false,
+						error : function(xhr, status, error) {
+							airbus.mes.shell.ModelManager
+									.messageShow(sMessageError);
+							flag_success = false
+
+						},
+						success : function(result, status, xhr) {
+							if (result.Rowsets.Rowset[0].Row[0].Message_Type === undefined) {
+								airbus.mes.shell.ModelManager
+										.messageShow(sMessageSuccess);
+								flag_success = true;
+							} else if (result.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
+								airbus.mes.shell.ModelManager
+										.messageShow(result.Rowsets.Rowset[0].Row[0].Message)
+								flag_success = false;
+							} else {
+								airbus.mes.shell.ModelManager
+										.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
+								flag_success = true;
+							}
+
+						}
+					});
+		}
+		
+	}
 			
 });

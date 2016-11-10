@@ -5,8 +5,8 @@
 			<Toolbar class="toolBarBottom">
 			<ToolbarSpacer/><Button icon="sap-icon://business-card" text="Scan" type="Emphasized" press="onScanConfirmation"/> 
 			</Toolbar>
-			<HBox height="35px" width="100%">
-				<MessageStrip id="msgstrpScan" visible="false"
+			<HBox height="35px" class="messageHBox">
+				<MessageStrip id="msgstrpConfirm" visible="false"
 					width="100%" class="sapUiSmallMarginBeginEnd" showIcon="true"
 					showCloseButton="true">
 				</MessageStrip>
@@ -37,12 +37,6 @@
 						</f:content>
 					</f:SimpleForm>
 				</VBox>
-			</HBox>
-			<HBox height="35px" width="100%">
-				<MessageStrip id="msgstrpConfirm" visible="false"
-					width="100%" class="sapUiSmallMarginBeginEnd" showIcon="true"
-					showCloseButton="true">
-				</MessageStrip>
 			</HBox>
 		</content>
 		<beginButton>

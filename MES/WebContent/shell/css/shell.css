@@ -150,6 +150,9 @@ table {
 	background-color:#fff !important;
 }
 
+.messageHBox .sapMFlexItem{
+	width:100%;
+}
 
 /*** CSS for Buttons **********/
 
@@ -169,4 +172,17 @@ table {
     border-radius:0;
     border:none;
 }
+
 /** End of CSS for buttons *****/
+
+/** CSS for My Profile **/
+.toolBarBottom{
+	border-bottom: none;
+}
+#__button3-img{
+	 background-color: red;
+}
+#__button4-img{
+	background-color: green;
+}
+/** End CSS for My Profile **/

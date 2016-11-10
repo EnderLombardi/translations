@@ -111,9 +111,6 @@
     border-right-width: 1px;
 	
 }
-.messageHBox .sapMFlexItem{
-	width:100%;
-}
  
  #idUsersView .sapMPanelContent{
  height : 100% !important;
