@@ -508,7 +508,8 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 							"rmaStatus" : Math.max.apply(null,aRMAStatus),
 							"status" : Math.max.apply(null,aStatus),
 							"OSW" : Math.max.apply(null,aSWO),
-							"status" : sStatus,
+							// This is real value from backend
+							"state" : sStatus,
 							"totalDuration" : fDuration.toString(), 
 							// This is the real value of boxing 
 							"realValueBox" : key2.split("_")[0],
