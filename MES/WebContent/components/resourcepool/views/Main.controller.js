@@ -1361,6 +1361,9 @@ sap.ui
 						
 						sap.ui.getCore().byId("idUsersView--availableUsersPanel").rerender();
 						sap.ui.getCore().byId("idUsersView--assignedUsersPanel").rerender();
+						sap.ui.getCore().byId("idWorkCenterView--assignedWCPanel").rerender();
+						 sap.ui.getCore().byId("idWorkCenterView--availableWCPanel").rerender();
+						 sap.ui.getCore().byId("idShiftView--userShiftPanel").rerender();
 
 					},
 
@@ -1586,9 +1589,9 @@ sap.ui
 							 sap.ui.getCore().byId("idWorkCenterView--assignedWCPanel").rerender();
 							 sap.ui.getCore().byId("idWorkCenterView--availableWCPanel").rerender();
 						 }
-						/* else {
+						 else {
 							 sap.ui.getCore().byId("idShiftView--userShiftPanel").rerender();
-						 }*/
+						 }
 						 
 					},
 
