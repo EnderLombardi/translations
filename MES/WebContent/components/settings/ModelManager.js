@@ -224,14 +224,13 @@ airbus.mes.settings.ModelManager =  {
 			var sSaveLanguage =  airbus.mes.settings.ModelManager.loadLanguage();
 			
 //			if ( sSaveLanguage != undefined && sSaveLanguage != "---" && sSaveLanguage != ""  && sSaveLanguage != null) {
-//			
-////				var sSaveLanguage = sSaveLanguage;
-////				if ( sSaveLanguage != sSapLanguage ) {
-////					
-////					airbus.mes.shell.oView.getController().updateUrlForLanguage(sSaveLanguage);
-////					
-////				}
-//				
+//						
+//				if ( jQuery.sap.getUriParameters().get("sap-language") === null ) {
+//					
+//					airbus.mes.shell.oView.getController().updateUrlForLanguage(sSaveLanguage);
+//					
+//				}
+				
 //			} else {
 //				
 //				
@@ -257,7 +256,9 @@ airbus.mes.settings.ModelManager =  {
 		  if ( oModel.getProperty("/Rowsets/Rowset/0/Row") ) {
 			  
 			  if ( airbus.mes.shell.oView.byId("labelMSN").getText() === "" ) {
-				 // nav.addPage(airbus.mes.settings.oView);
+				
+				  airbus.mes.shell.oView.getController().navigate();
+				  // nav.addPage(airbus.mes.settings.oView);
 				//  nav.to(airbus.mes.settings.oView.getId());
 				  
 			  } 

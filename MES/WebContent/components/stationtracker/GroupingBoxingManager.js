@@ -40,7 +40,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 			
 			oHierachy[el.day] = {};
 		}
-		if ( !oHierachy[el.day][el.shiftName /*el.shiftName + el.day*/] ) {
+		if ( !oHierachy[el.day][el.shiftID /*el.shiftName + el.day*/] ) {
 			
 			oHierachy[el.day][el.shiftID /*el.shiftName + el.day*/ ] = [];
 		}
