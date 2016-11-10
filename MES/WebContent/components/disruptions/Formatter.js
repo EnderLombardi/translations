@@ -95,7 +95,7 @@ airbus.mes.disruptions.Formatter = {
 
 	setDeleteButtonVisibility : function(originatorFlag, status) {
 
-		if (status == airbus.mes.disruptions.Formatter.status.deleted || status == airbus.mes.disruptions.Formatter.status.closed || status == airbus.mes.disruptions.Formatter.status.acknowledged) {
+		if (status == airbus.mes.disruptions.Formatter.status.deleted || status == airbus.mes.disruptions.Formatter.status.closed) {
 			return false;
 		} 
 		else if (originatorFlag == 'X') {

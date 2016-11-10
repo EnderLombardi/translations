@@ -14,9 +14,11 @@ sap.ui
 					 * @memberOf components.disruptions.ViewDisruption
 					 */
 					onInit : function() {
-						
-						// Set click event on create disruption button 
-						sap.ui.getCore().byId("operationDetailPopup--reportDisruption").attachPress(this.onReportDisruption);
+
+						// Set click event on create disruption button
+						sap.ui.getCore().byId(
+								"operationDetailPopup--reportDisruption")
+								.attachPress(this.onReportDisruption);
 
 					},
 					/**
@@ -49,23 +51,23 @@ sap.ui
 					// onExit: function() {
 					//
 					// },
-					
-					/***************************
+					/***********************************************************
 					 * Turn buttons on off based on execution mode
 					 */
-					turnOnOffButtons: function(){
+					turnOnOffButtons : function() {
 						if (sap.ui.getCore().byId(
-						"operationDetailsView--switchOperationModeBtn")
+								"operationDetailsView--switchOperationModeBtn")
 								.getState() == false) {
-							sap.ui.getCore().byId("operationDetailPopup--reportDisruption").setVisible(
-									false);
+							sap.ui.getCore().byId(
+									"operationDetailPopup--reportDisruption")
+									.setVisible(false);
 						} else {
-							sap.ui.getCore().byId("operationDetailPopup--reportDisruption").setVisible(
-									true);
+							sap.ui.getCore().byId(
+									"operationDetailPopup--reportDisruption")
+									.setVisible(true);
 						}
 					},
-					
-					
+
 					applyFiltersOnComments : function() {
 						var listItems = this.getView().byId("disrptlist")
 								.getItems();
@@ -226,18 +228,31 @@ sap.ui
 					 */
 					onDeleteDisruption : function(oEvt) {
 
-						var title = this.getView().getModel("i18nModel")
-								.getProperty("deleteDisruption");
-						var msgRef = oEvt.getSource().getBindingContext(
-								"operationDisruptionsModel").getObject(
-								"MessageRef");
-						var sPath = oEvt.getSource().getBindingContext(
-								"operationDisruptionsModel").sPath;
+						var status = oEvt.getSource().getBindingContext(
+								"operationDisruptionsModel")
+								.getObject("Status");
 
-						this.onOpenDisruptionComment(title, msgRef, sPath,
-								this.onConfirmDelete);
+						if (status == airbus.mes.disruptions.Formatter.status.acknowledged) {
+							sap.m.MessageBox
+									.error(airbus.mes.operationdetail.viewDisruption.oView
+											.getModel("i18nModel").getProperty(
+													"disruptionDeleteError"));
+						} else {
+
+							var title = this.getView().getModel("i18nModel")
+									.getProperty("deleteDisruption");
+							var msgRef = oEvt.getSource().getBindingContext(
+									"operationDisruptionsModel").getObject(
+									"MessageRef");
+							var sPath = oEvt.getSource().getBindingContext(
+									"operationDisruptionsModel").sPath;
+
+							this.onOpenDisruptionComment(title, msgRef, sPath,
+									this.onConfirmDelete);
+						}
 
 					},
+
 					/***********************************************************
 					 * Confirming Delete Disruption
 					 */
@@ -754,8 +769,10 @@ sap.ui
 									.byId(
 											"operationDetailPopup--btnCreateDisruption")
 									.setVisible(false);
-							sap.ui.getCore().byId(
-									"operationDetailPopup--btnCancelDisruption")
+							sap.ui
+									.getCore()
+									.byId(
+											"operationDetailPopup--btnCancelDisruption")
 									.setVisible(true);
 
 							// set input according to update disruption
