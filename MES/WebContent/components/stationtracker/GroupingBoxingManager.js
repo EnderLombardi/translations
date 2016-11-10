@@ -421,7 +421,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 					var aAndons = [];
 					var aTotalDuration = [];
 					var aStatus = [];
-					var aSWO = [];
+					var aOSW = [];
 					var aRMAStatus = [];
 					
 					var fProgress = 0;
@@ -444,7 +444,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 						aAndons.push(el.ANDONS);
 						aTotalDuration.push( el.DURATION );
 						aStatus.push(el.status);
-						aSWO.push(el.EXECUTION_STATION_SOURCE);
+						aOSW.push(el.EXECUTION_STATION_SOURCE);
 						aRMAStatus.push(el.RMA_STATUS_COLOR);
 						
 						fProgress += parseFloat(el.PROGRESS);
@@ -507,7 +507,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 							"shopOrderDescription" : sShopOrderDescription,
 							"rmaStatus" : Math.max.apply(null,aRMAStatus),
 							"status" : Math.max.apply(null,aStatus),
-							"OSW" : Math.max.apply(null,aSWO),
+							"OSW" : Math.max.apply(null,aOSW),
 							// This is real value from backend
 							"state" : sStatus,
 							"totalDuration" : fDuration.toString(), 
