@@ -86,8 +86,9 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 					};
 					oHierachy2.push(oShift);
 					
-//					this.fillStartDate(startDate);
-//					this.fillEndDate(endDate);
+					// Permit to define the range of datepicker selection day
+					this.fillStartDate(startDate);
+					this.fillEndDate(endDate);
 			}
 			
 		}
