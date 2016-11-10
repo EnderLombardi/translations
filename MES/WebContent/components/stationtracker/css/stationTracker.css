@@ -920,6 +920,7 @@ background-color: #0085AD !important;
 #stationTrackerView--stationtracker .dhx_matrix_cell div,
 	#stationTrackerView--stationtracker .dhx_matrix_scell div {
 	text-align: left;
+	white-space: nowrap;
 }
 
 #stationTrackerView--stationtracker .dhx_row_folder .ylabelfolder {

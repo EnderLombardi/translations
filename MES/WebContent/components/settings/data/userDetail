@@ -1,0 +1,48 @@
+{
+   "Rowsets": {
+      "DateCreated": "2016-11-10T11:06:25",
+      "Version": "15.1 SP2 Patch 13 (Oct 6, 2016)",
+      "StartDate": "2016-11-10T10:06:25+0100",
+      "EndDate": "2016-11-10T11:06:25+0100",
+      "CachedTime": "",
+      "Rowset": [
+         {
+            "Columns": {
+               "Column": [
+                  {
+                     "Name": "first_name",
+                     "SourceColumn": "first_name",
+                     "Description": "",
+                     "SQLDataType": 1,
+                     "MinRange": 1,
+                     "MaxRange": 1
+                  },
+                  {
+                     "Name": "last_name",
+                     "SourceColumn": "last_name",
+                     "Description": "",
+                     "SQLDataType": 1,
+                     "MinRange": 1,
+                     "MaxRange": 1
+                  },
+                  {
+                     "Name": "user_id",
+                     "SourceColumn": "user_id",
+                     "Description": "",
+                     "SQLDataType": 1,
+                     "MinRange": 1,
+                     "MaxRange": 1
+                  }
+               ]
+            },
+            "Row": [
+               {
+                  "first_name": "PIERRE",
+                  "last_name": "BARILLON",
+                  "user_id": "NG560DB"
+               }
+            ]
+         }
+      ]
+   }
+}
