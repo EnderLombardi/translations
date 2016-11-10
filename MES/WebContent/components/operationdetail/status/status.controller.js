@@ -259,13 +259,18 @@ sap.ui
 			               var ws = new WebSocket("ws://localhost:754/TouchNTag");
                            
 			               ws.onopen = function(){	
-			            	  /* var msgData = {
+			            	   sap.ui.getCore().getElementById("msgstrpScan").setVisible(true);
+			            	   sap.ui.getCore().byId("msgstrpScan").setType("Information");
+			            	   sap.ui.getCore().byId("msgstrpScan").setText(
+			            			   airbus.mes.operationdetail.status.oView.getModel("i18n")
+			            			   		.getProperty("scanBadge"));
+			            	   var msgData = {
 			            			   BadgeOrRFID:"BADGE",
 			            			   Message:"UID:263808008C0F3D"
-			            			  };*/
+			            			  };
 
 			                  // Web Socket is connected
-//			                  ws.send(JSON.stringify(msgData));
+			                  ws.send(JSON.stringify(msgData));
 //			                  ws.send(JSON.stringify(
 //			                		  {"BadgeOrRFID":"BADGE","Message":"UID:263808008C0F31"}
 //			                  ));
@@ -275,32 +280,25 @@ sap.ui
 //			                  onSimulation(msgData);
 			               };
 			               
-			              /* ws.addEventListener("message", function(event) {
-			            	  // var data = event.data;
-			            	   var scanData = JSON.parse(event.data);	
-				                  var uID  = scanData.Message;			//UID
-				                  var badgeID = scanData.BadgeOrRFID;     //BID
-				                  
-				                  if(uID != undefined && uID != "")
-				                	  uID = uID.split(":")[1];
-				                  sap.ui.getCore().getElementById("UIDForConfirmation").setValue(uID);
-				                  sap.ui.getCore().getElementById("badgeIDForConfirmation").setValue(badgeID);
-			            	 });*/
-			               
 			               ws.onmessage = function (evt){ 
+			            	  sap.ui.getCore().getElementById("msgstrpScan").setVisible(false);
 			                  var scanData = JSON.parse(evt.data);	
 			                  var uID  = scanData.Message;			//UID
 			                  var badgeID = scanData.BadgeOrRFID;     //BID
 			                  
-			                  if(uID != undefined && uID != "")
-			                	  uID = uID.split(":")[1];
+//			                  if(uID != undefined && uID != "")
+//			                	  uID = uID.split(":")[1];
 			                  sap.ui.getCore().getElementById("UIDForConfirmation").setValue(uID);
 			                  sap.ui.getCore().getElementById("badgeIDForConfirmation").setValue(badgeID);
-
+			                  ws.close();
 			               };
-			               
+			               // Error Handling while connection failed to WebSocket
 			               ws.onerror = function(evnt){
-			            	   alert("Error has occured");
+			            	   //alert("Error has occured");
+			            	   var badgeScanError = oView.getModel("i18n")
+								.getProperty("webSocketConnectionFailed");
+			            	   airbus.mes.operationdetail.ModelManager
+								.messageShow(badgeScanError);
 			               }
 			               
 			               ws.onclose = function(){ 
@@ -314,8 +312,8 @@ sap.ui
 				                  var uID  = data.Message;			//UID
 				                  var badgeID = data.BadgeOrRFID;     //BID
 				                  
-				                  if(uID != undefined && uID != "")
-				                	  uID = uID.split(":")[1];
+//				                  if(uID != undefined && uID != "")
+//				                	  uID = uID.split(":")[1];
 				                  sap.ui.getCore().getElementById("UIDForConfirmation").setValue(uID);
 				                  sap.ui.getCore().getElementById("badgeIDForConfirmation").setValue(badgeID);
 				                  ws.close();
@@ -393,12 +391,13 @@ sap.ui
 														pass,
 														oView.getController().operationStatus,
 														percent,
-														oView.getController()
+														oView
 																.getModel(
 																		"operationDetailModel")
 																.getProperty(
 																		"/Rowsets/Rowset/0/Row/0/sfc_step_ref"),
-														oView.getController().reasonCodeText,oView.getController().Mode,bID),
+														oView.getController().reasonCodeText,oView.getController().Mode,
+														bID),
 										async : false,
 										error : function(xhr, status, error) {
 											airbus.mes.operationdetail.ModelManager

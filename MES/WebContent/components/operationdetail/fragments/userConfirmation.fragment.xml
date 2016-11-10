@@ -4,9 +4,14 @@
 			<content>	
 			<Toolbar class="toolBarBottom">
 			<ToolbarSpacer/><Button icon="sap-icon://business-card" text="Scan" type="Emphasized" press="onScanConfirmation"/> 
-			</Toolbar>	
+			</Toolbar>
+			<HBox height="35px" width="100%">
+				<MessageStrip id="msgstrpScan" visible="false"
+					width="100%" class="sapUiSmallMarginBeginEnd" showIcon="true"
+					showCloseButton="true">
+				</MessageStrip>
+			</HBox>	
 			<HBox justifyContent="SpaceAround">
-					
 				<VBox class="sapUiSmallMarginEnd" width="100%" justifyContent="Center">
 					<f:SimpleForm id="partialConfirm" minWidth="1024"
 						maxContainerCols="3" editable="true" layout="ResponsiveGridLayout"
