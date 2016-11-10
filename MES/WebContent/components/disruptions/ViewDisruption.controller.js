@@ -698,6 +698,7 @@ sap.ui
 						sap.ui.getCore().byId(
 								"createDisruptionView--selectOriginator")
 								.setEnabled(true);
+						
 						sap.ui.getCore().byId(
 								"createDisruptionView--description")
 								.setEnabled(true);

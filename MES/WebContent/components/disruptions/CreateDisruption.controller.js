@@ -477,6 +477,11 @@ sap.ui
 						} else {
 
 							this.initializeTree();
+							if(sap.ui.getCore().byId(
+							"createDisruptionView--selectOriginator").getItems().length == 1)
+								sap.ui.getCore().byId(
+								"createDisruptionView--selectOriginator").setSelectedKey(sap.ui.getCore().byId(
+								"createDisruptionView--selectOriginator").getItemAt(0).getKey());
 							this.setEnabledSelectBox(true, false, false, false);
 
 						}
