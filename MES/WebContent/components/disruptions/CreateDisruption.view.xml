@@ -30,14 +30,14 @@
 									<f:label>
 										<Label  required="true" text="{i18nModel>Description}">
 											<layoutData>
-												<l:GridData span="L2 M6 S12" linebreak="true" />
+												<l:GridData span="L2 M3 S12" linebreak="true" />
 											</layoutData>
 										</Label>
 									</f:label>
 									<f:fields>
 										<Input id="description" maxLength="40">
 											<layoutData>
-												<l:GridData span="L9 M6 S12" />
+												<l:GridData span="L8 M9 S12" />
 											</layoutData>
 										</Input>
 									</f:fields>
@@ -47,7 +47,7 @@
 									<f:label>
 										<Label  required="true" text="{i18nModel>Category}">
 											<layoutData>
-												<l:GridData span="L2 M6 S12" />
+												<l:GridData span="L2 M3 S12" linebreak="true"/>
 											</layoutData>
 										</Label>
 									</f:label>
@@ -60,7 +60,7 @@
 													key="{disruptionCategoryModel>MessageType}" />
 											</items>
 											<layoutData>
-												<l:GridData span="L3 M6 S12" />
+												<l:GridData span="L3 M9 S12" />
 											</layoutData>
 										</Select>
 									</f:fields>
@@ -71,7 +71,7 @@
 
 										<Label  required="true" text="{i18nModel>Reason}">
 											<layoutData>
-												<l:GridData span="L2 M6 S12" />
+												<l:GridData span="L2 M3 S12" />
 											</layoutData>
 										</Label>
 									</f:label>
@@ -84,7 +84,7 @@
 													key="{disruptionCustomData>Reason}" />
 											</items>
 											<layoutData>
-												<l:GridData span="L3 M6 S12" />
+												<l:GridData span="L3 M9 S12" />
 											</layoutData>
 
 										</Select>
@@ -95,7 +95,7 @@
 									<f:label>
 										<Label  required="true"  text="{i18nModel>ResponsibleSupport}">
 											<layoutData>
-												<l:GridData span="L2 M6 S12" linebreak="true" />
+												<l:GridData span="L2 M3 S12" linebreak="true" />
 											</layoutData>
 										</Label>
 									</f:label>
@@ -108,7 +108,7 @@
 													key="{disruptionCategoryModel>ResponsibleGroup}" />
 											</items>
 											<layoutData>
-												<l:GridData span="L3 M6 S12" />
+												<l:GridData span="L3 M9 S12" />
 											</layoutData>
 										</Select>
 									</f:fields>
@@ -118,7 +118,7 @@
 									<f:label>
 										<Label  required="true" text="{i18nModel>OriginatorGroup}">
 											<layoutData>
-												<l:GridData span="L2 M6 S12" />
+												<l:GridData span="L2 M3 S12" />
 											</layoutData>
 										</Label>
 									</f:label>
@@ -130,7 +130,7 @@
 													key="{disruptionCustomData>group_name}" />
 											</items>
 											<layoutData>
-												<l:GridData span="L3 M6 S12" />
+												<l:GridData span="L3 M9 S12" />
 											</layoutData>
 										</Select>
 									</f:fields>
@@ -140,14 +140,14 @@
 									<f:label>
 										<Label  text="{i18nModel>Status}">
 											<layoutData>
-												<l:GridData span="L2 M6 S12" />
+												<l:GridData span="L2 M3 S12" linebreak="true" />
 											</layoutData>
 										</Label>
 									</f:label>
 									<f:fields>
 										<Input id="status" value="{i18nModel>Pending}" enabled="false">
 											<layoutData>
-												<l:GridData span="L3 M6 S12" />
+												<l:GridData span="L3 M9 S12" />
 											</layoutData>
 										</Input>
 									</f:fields>
@@ -157,7 +157,7 @@
 									<f:label>
 										<Label  required="true" text="{i18nModel>gravity}">
 											<layoutData>
-												<l:GridData span="L2 M6 S12" />
+												<l:GridData span="L2 M3 S12" />
 											</layoutData>
 										</Label>
 									</f:label>
@@ -169,7 +169,7 @@
 												<core:Item text="{i18nModel>Blocked}" key="3" />
 											</items>
 											<layoutData>
-												<l:GridData span="L3 M6 S6" />
+												<l:GridData span="L3 M9 S6" />
 											</layoutData>
 
 										</Select>
@@ -203,7 +203,7 @@
 									<f:label>
 										<Label text="{i18nModel>OpenDate}">
 											<layoutData>
-												<l:GridData span="L2 M6 S12" linebreak="true" />
+												<l:GridData span="L2 M3 S12" linebreak="true" />
 											</layoutData>
 										</Label>
 									</f:label>
@@ -212,17 +212,37 @@
 											displayFormat="long"
 											value="{path: 'DisruptionDetailModel>/OpeningTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}">
 											<layoutData>
-												<l:GridData span="L3 M6 S12" />
+												<l:GridData span="L2 M5 S6" />
 											</layoutData>
 										</DatePicker>
+										<TimePicker enabled="false" id="openTime"
+											displayFormat="HH:mm:ss" valueFormat="HH:mm:ss"
+											value="{path: 'DisruptionDetailModel>/OpeningTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}">
+											<layoutData>
+												<l:GridData span="L1 M4 S6" />
+											</layoutData>
+										</TimePicker>
 									</f:fields>
 								</f:FormElement>
+								
+					<!-- 			<f:FormElement>
+									<f:label>
+										<Label text="{i18nModel>Time}">
+											<layoutData>
+												<l:GridData span="L2 M6 S12" linebreak="true" />
+											</layoutData>
+										</Label>
+									</f:label>
+									<f:fields>
+										
+									</f:fields>
+								</f:FormElement> -->
 
 								<f:FormElement>
 									<f:label>
-										<Label text="{i18nModel>Expected}">
+										<Label required="true" text="{i18nModel>Expected}">
 											<layoutData>
-												<l:GridData span="L2 M6 S12" />
+												<l:GridData span="L2 M3 S12" />
 											</layoutData>
 										</Label>
 									</f:label>
@@ -231,55 +251,39 @@
 											displayFormat="long"
 											value="{path: 'DisruptionDetailModel>/FixedByTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}">
 											<layoutData>
-												<l:GridData span="L3 M6 S12" />
+												<l:GridData span="L2 M5 S6" />
 											</layoutData>
 										</DatePicker>
-									</f:fields>
-								</f:FormElement>
-
-								<f:FormElement>
-									<f:label>
-										<Label text="{i18nModel>Time}">
-											<layoutData>
-												<l:GridData span="L2 M6 S12" linebreak="true" />
-											</layoutData>
-										</Label>
-									</f:label>
-									<f:fields>
-										<TimePicker enabled="false" id="openTime"
-											displayFormat="HH:mm:ss" valueFormat="HH:mm:ss"
-											value="{path: 'DisruptionDetailModel>/OpeningTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}">
-											<layoutData>
-												<l:GridData span="L3 M6 S12" />
-											</layoutData>
-										</TimePicker>
-									</f:fields>
-								</f:FormElement>
-
-								<f:FormElement>
-									<f:label>
-										<Label text="{i18nModel>Time}">
-											<layoutData>
-												<l:GridData span="L2 M6 S12" />
-											</layoutData>
-										</Label>
-									</f:label>
-									<f:fields>
-										<TimePicker id="expectedTime" displayFormat="HH:mm:ss"
+											<TimePicker id="expectedTime" displayFormat="HH:mm:ss"
 											valueFormat="HH:mm:ss"
 											value="{path: 'DisruptionDetailModel>/FixedByTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}">
 											<layoutData>
-												<l:GridData span="L3 M6 S12" />
+												<l:GridData span="L1 M4 S6" />
 											</layoutData>
 										</TimePicker>
 									</f:fields>
 								</f:FormElement>
+
+								
+
+<!-- 								<f:FormElement>
+									<f:label>
+										<Label text="{i18nModel>Time}">
+											<layoutData>
+												<l:GridData span="L1 M6 S12" />
+											</layoutData>
+										</Label>
+									</f:label>
+									<f:fields>
+									
+									</f:fields>
+								</f:FormElement> -->
 
 								<f:FormElement>
 									<f:label>
 										<Label text="{i18nModel>TimeLost}">
 											<layoutData>
-												<l:GridData span="L2 M6 S12" linebreak="true" />
+												<l:GridData span="L2 M3 S12" linebreak="true" />
 											</layoutData>
 										</Label>
 									</f:label>
@@ -287,7 +291,7 @@
 										<Input placeholder="{i18nModel>IM}" id="timeLost" type="Number"
 											value="">
 											<layoutData>
-												<l:GridData span="L3 M6 S12" />
+												<l:GridData span="L3 M9 S12" />
 											</layoutData>
 										</Input>
 									</f:fields>
@@ -297,7 +301,7 @@
 									<f:label>
 										<Label text="{i18nModel>RootCause}">
 											<layoutData>
-												<l:GridData span="L2 M6 S12" linebreak="true" />
+												<l:GridData span="L2 M3 S12"/>
 											</layoutData>
 										</Label>
 									</f:label>
@@ -310,7 +314,7 @@
 													key="{disruptionCustomData>RootCause}" />
 											</items>
 											<layoutData>
-												<l:GridData span="L3 M6 S12" />
+												<l:GridData span="L3 M9 S12" />
 											</layoutData>
 										</Select>
 									</f:fields>
@@ -320,14 +324,14 @@
 									<f:label>
 										<Label text=" ">
 											<layoutData>
-												<l:GridData span="L2 M2 S12" linebreak="true" />
+												<l:GridData span="L2 M3 S1" linebreak="true" />
 											</layoutData>
 										</Label>
 									</f:label>
 									<TextArea placeholder="{i18nModel>AddCommentBox}" id="comment"
 										valueLiveUpdate="true" rows="10" value="">
 										<layoutData>
-											<l:GridData span="L9 M9 S12" />
+											<l:GridData span="L8 M9 S11" />
 										</layoutData>
 									</TextArea>
 								</f:FormElement>
