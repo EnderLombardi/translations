@@ -341,7 +341,7 @@ airbus.mes.stationtracker.ModelManager = {
                  
                     
                      airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftID);
-                     //scheduler.updateView(airbus.mes.stationtracker.ShiftManager.ShiftSelected.StartDate);
+                     scheduler.updateView(airbus.mes.stationtracker.ShiftManager.ShiftSelected.StartDate);
                     
               }
 
@@ -370,7 +370,7 @@ airbus.mes.stationtracker.ModelManager = {
               getUrlShifts = airbus.mes.stationtracker.ModelManager.replaceURI(getUrlShifts, "$station", oData.station );
               getUrlShifts = airbus.mes.stationtracker.ModelManager.replaceURI(getUrlShifts, "$msn", oData.msn );
               
-              oViewModelshift.loadData(this.urlModel.getProperty("urlshifts"), null, false);
+              oViewModelshift.loadData(getUrlShifts, null, false);
               
               reqResult = airbus.mes.shell.util.Formatter.getMiiMessageType(oViewModelshift.oData);
               if (reqResult === "E")

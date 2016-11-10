@@ -381,12 +381,7 @@ airbus.mes.stationtracker.ShiftManager = {
 		    scheduler.matrix.timeline.x_size = Math.ceil((new Date(this.shifts[c].EndDate) - new Date(this.shifts[c].StartDate))/1000/60/30);
 	
 		    var date = new Date(this.shifts[c].StartDate).setMinutes(0);
-
-//			Manage display of selected shift
-			var oSelectShift = sap.ui.getCore().byId("stationTrackerView--selectShift");
-			var oShiftManager = airbus.mes.stationtracker.ShiftManager;
-			oSelectShift.setSelectedKey(oShiftManager.shifts[oShiftManager.currentShiftIndex].shiftName);
-		    
+    
 		    return new Date( date );
 		    
 		}
