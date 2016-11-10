@@ -8,6 +8,8 @@ airbus.mes.stationtracker.ModelManager = {
        i18nModel : undefined,
        operationType : undefined,
 
+       firstTime : undefined,
+       
        init : function(core) {
 
               core.setModel(new sap.ui.model.json.JSONModel(), "operationDetailModel");// Model having operation detail
@@ -36,9 +38,6 @@ airbus.mes.stationtracker.ModelManager = {
 
               switch (window.location.hostname) {
               case "localhost":
-                     dest = "local";
-                     break;
-              case "wsapbpc01.ptx.fr.sopra":
                      dest = "sopra";
                      break;
               default:
@@ -63,6 +62,19 @@ airbus.mes.stationtracker.ModelManager = {
               this.loadProductionGroup();
               this.loadRessourcePool();
               this.loadKPI();
+
+       
+//              Refresh the model 
+//                var that = this;
+//              	if(this.firstTime !== true) {
+//              	setInterval(function()
+//              			{	
+//              				console.log("Refresh");
+//              				airbus.mes.stationtracker.ModelManager.init(core);
+//              		    }, 10000);
+//              	that.firstTime = true;
+//              	}
+       
        },
        
        setLineAssignment : function(sSite, sStation, sMSN, sUserID, sShiftName, sDay, sLine, sSkill, sMyUserID, sModeAssignment, bQACheck) {
