@@ -1358,6 +1358,9 @@ sap.ui
 						// Close Search Resource Pool Pop-Up
 						if (airbus.mes.resourcepool.searchResourcePool)
 							airbus.mes.resourcepool.searchResourcePool.close();
+						
+						sap.ui.getCore().byId("idUsersView--availableUsersPanel").rerender();
+						sap.ui.getCore().byId("idUsersView--assignedUsersPanel").rerender();
 
 					},
 
@@ -1583,7 +1586,10 @@ sap.ui
 							 sap.ui.getCore().byId("idWorkCenterView--assignedWCPanel").rerender();
 							 sap.ui.getCore().byId("idWorkCenterView--availableWCPanel").rerender();
 						 }
-						/*sap.ui.getCore().getModel("ResourcePoolDetailModel").refresh();*/
+						/* else {
+							 sap.ui.getCore().byId("idShiftView--userShiftPanel").rerender();
+						 }*/
+						 
 					},
 
 					onNavBack : function(oEvent) {

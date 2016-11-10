@@ -3,8 +3,9 @@
 	xmlns:html="http://www.w3.org/1999/xhtml">
 	<Page showHeader="false" enableScrolling="false" height="100%">
 		<content>
-			<HBox height="100%" class="fixHboxItemDisplay">
-				<items>
+		<Panel height="100%" id="userShiftPanel">
+<!--  			<HBox height="100%" class="fixHboxItemDisplay">
+			<items> -->
 					<Table id="shiftTable" inset="false"
 						items="{ResourcePoolDetailModel>/Rowsets/Rowset/5/Row}" mode="None"
 						selectionChange="onSelectionChange">
@@ -53,8 +54,10 @@
 							</ColumnListItem>
 						</items>
 					</Table>
-				</items>
-			</HBox>
+				<!-- </items>
+			</HBox> -->
+			</Panel>
 		</content>
+		
 	</Page>
 </core:View>
