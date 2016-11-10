@@ -180,14 +180,11 @@ airbus.mes.stationtracker.util.Formatter = {
 				airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.totalDuration) +' IM]</span>';
 				airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.totalDuration) +'</span>';	
 				
-
-
-//OSW to be managed with real functional data TODO
-					if ( oBox.rmaStatus != "0" )	//rma
+					if ( oBox.rmaStatus === 1 )	//rma
 					{
 						sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon dandelion"></i>';
 					}
-					if (oBox.rmaStatus == "OSW") //OSW
+					if (oBox.OSW === 1) //OSW
 					{
 						sLeftIcon2 = '<i class="fa fa-refresh oswIcon dandelion-back "><b style="padding-left:1px">OSW</b></i>';
 					}
@@ -211,11 +208,11 @@ airbus.mes.stationtracker.util.Formatter = {
 					case 0 :
 						sColorProgress ='<div class="colorProgress teal-blue-back" style="width:100%;background-color:#0085ad;"></div>';
 						sRightIcon = '<i class="fa fa-check rightIcon"></i>';
-						if ( oBox.rmaStatus != "0" )	//rma
+						if ( oBox.rmaStatus === 1 )	//rma
 						{
 							sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon"></i>';
 						}
-						if (oBox.rmaStatus == "OSW") //OSW
+						if (oBox.OSW === 1) //OSW
 						{
 							sLeftIcon2 = '<i class="fa fa-refresh oswIcon teal-blue white"><b style="padding-left:1px">OSW</b></i>';
 						}
@@ -224,15 +221,14 @@ airbus.mes.stationtracker.util.Formatter = {
 					// Opened Blocking and Escalated disruption
 					case 4 :
 						sColorProgress ='<div class="openBlockedEscalated"></div>';
-						sRightIcon = '<i class="fa fa-exclamation-triangle triangleIcon"></i>';
+						sRightIcon = '<i class="fa fa-play rightIcon" ></i>';
 //						sColorProgress ='<div class="colorProgress dandelion-back" style="width:100%;background-color: #fbec00;"></div>';
-//						sRightIcon = '<i class="fa fa-stop rightIcon petrol" ></i>';
 						sSpanText = '<span class="trackerTextBlock">' + sText + '</span>';
-						if ( oBox.rmaStatus != "0" )	//rma
+						if ( oBox.rmaStatus === 1 )	//rma
 						{
 							sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon petrol"></i>';
 						}
-						if (oBox.rmaStatus == "OSW") //OSW
+						if (oBox.OSW === 1) //OSW
 						{
 							sLeftIcon2 = '<i class="fa fa-refresh oswIcon petrol-back dandelion"><b style="padding-left:1px">OSW</b></i>';
 						}
@@ -263,11 +259,11 @@ airbus.mes.stationtracker.util.Formatter = {
 					case 99 :
 						sColorProgress ='<div class="colorProgress cherry-red-back" style="width:100%;background-color: #e4002b;"></div>';
 						sRightIcon = '<i class="fa fa-stop rightIcon"></i>';
-						if ( oBox.rmaStatus != "---" )	//rma
+						if ( oBox.rmaStatus === 1 )	//rma
 						{
 							sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon"></i>';
 						}
-						if (oBox.rmaStatus == "OSW") //OSW
+						if (oBox.OSW === 1) //OSW
 						{
 							sLeftIcon2 = '<i class="fa fa-refresh oswIcon cherry-red white"><b style="padding-left:1px">OSW</b></i>';
 						}
