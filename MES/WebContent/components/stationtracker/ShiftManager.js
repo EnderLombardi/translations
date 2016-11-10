@@ -415,7 +415,7 @@ airbus.mes.stationtracker.ShiftManager = {
 			/** search StartDate of the Day of the current shift */ 
 			while (!fStartDate) {
 			
-			if ( b > 0) {
+			if ( b >= 0) {
 						
 				if ( this.shifts[b].day === this.current_day ) {
 					
@@ -429,8 +429,8 @@ airbus.mes.stationtracker.ShiftManager = {
 					}
 			else {
 				
-				var fStartDate =  Date.parse(new Date(this.shifts[b].StartDate));
-				this.current_shift = this.shifts[b];
+				var fStartDate =  Date.parse(new Date(this.shifts[0].StartDate));
+				this.current_shift = this.shifts[0];
 				}
 			}
 			
