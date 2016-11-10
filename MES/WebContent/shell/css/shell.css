@@ -179,10 +179,10 @@ table {
 .toolBarBottom{
 	border-bottom: none;
 }
-#__button3-img{
-	 background-color: red;
+[id^="myProfileCancel-img"] {
+	background-color: red;
 }
-#__button4-img{
+[id^="myProfileAccept-img"] {
 	background-color: green;
 }
 /** End CSS for My Profile **/
