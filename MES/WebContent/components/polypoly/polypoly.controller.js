@@ -200,7 +200,9 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 							   	src : {
 			        				 parts : [oContext.getProperty("name")],
 			        				 formatter : function(oRow) {
-			        					 return oRow.picture;
+			        					 if(oRow != null){
+			        						 return oRow.picture;
+			        					 }
 			        				 }
 			        			 } ,
 							   	visible : {
@@ -216,7 +218,9 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 							   text : {
 								   parts : [oContext.getProperty("name")],
 								   formatter : function(oRow){
-									   return oRow.category;
+									   if(oRow != null){
+										   return oRow.category;
+									   }
 								   }
 							   }
 						   })
@@ -688,7 +692,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 				sNeed4, sTechname);
 	},
 	
-	setRowCountVisible : function(){
+	setRowCountVisible : function(bAssign){
 		var e = window
 		, a = 'inner';
 		if ( !( 'innerWidth' in window ) )
@@ -700,6 +704,13 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 		
 		var oNumberRows = Math.floor(oDim.height*0.0267 - 10.035);
 		
+		if(bAssign){
+			var aListRows = airbus.mes.polypoly.oView.byId("oTablePolypoly").getBinding("rows").oList;
+			aListRows = aListRows.filter(function(el){
+				return el.type == "UA_P" || el.type == "UA_A"
+			});
+			oNumberRows = Math.min(oNumberRows, aListRows.length + 1);
+		}
 		airbus.mes.polypoly.oView.byId("oTablePolypoly").setVisibleRowCount(oNumberRows);
 	},
 	
@@ -712,24 +723,25 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 //			filterUA = new sap.ui.model.Filter("type", "EQ", "UA_CI","UA_NCD");
 //			else
 
-			if ( airbus.mes.stationtracker.AssignmentManager.polypolyAffectation ) {
+//			if ( airbus.mes.stationtracker.AssignmentManager.polypolyAffectation ) {
+			if (nav.getCurrentPage().getId()!="polypolyPage"){
 				airbus.mes.polypoly.oView.byId("oTablePolypoly").getBinding("rows").filter(aFilters);
 				airbus.mes.polypoly.oView.byId("oTablePolypoly").setFixedRowCount(0);
 //				airbus.mes.polypoly.oView.byId("oTablePolypoly").setVisibleRowCount(15); //FIXME : Depends on PopUp size small = 8
+				airbus.mes.polypoly.oView.getController().setRowCountVisible(true);
 
 			} else {
 				airbus.mes.polypoly.oView.byId("oTablePolypoly").getBinding("rows").filter();
 				airbus.mes.polypoly.oView.byId("oTablePolypoly").setFixedRowCount(3);
 //				airbus.mes.polypoly.oView.byId("oTablePolypoly").setVisibleRowCount(13);
+				airbus.mes.polypoly.oView.getController().setRowCountVisible(false);
 			}
 		}
 	},
 
 	initiatePolypoly : function(){
 		var aControlsId = ["AddPolypoly"];
-
 		this.filterUA();
-		this.setRowCountVisible();
 		this.hideContent(aControlsId);
 	},
 

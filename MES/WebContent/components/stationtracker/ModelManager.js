@@ -71,7 +71,7 @@ airbus.mes.stationtracker.ModelManager = {
     	   seturlLineAssignment = this.replaceURI(seturlLineAssignment, "$station", sStation);
     	   seturlLineAssignment = this.replaceURI(seturlLineAssignment, "$msn", sMSN);
     	   seturlLineAssignment = this.replaceURI(seturlLineAssignment, "$userid", sUserID);
-    	   seturlLineAssignment = this.replaceURI(seturlLineAssignment, "$shiftname", sShiftName);
+    	   seturlLineAssignment = this.replaceURI(seturlLineAssignment, "$shiftName", sShiftName);
     	   seturlLineAssignment = this.replaceURI(seturlLineAssignment, "$day", sDay);
     	   seturlLineAssignment = this.replaceURI(seturlLineAssignment, "$line", sLine);
     	   seturlLineAssignment = this.replaceURI(seturlLineAssignment, "$skill", sSkill);
@@ -84,6 +84,9 @@ airbus.mes.stationtracker.ModelManager = {
    			cache : false,
    			success : function(data, textStatus, jqXHR) {
    				//TODO handle Warning QA
+   				if(getMiiMessageType(data) == "E"){
+   					sap.m.MessageToast.show(getMiiTextFromData(data));
+   				}
    			},
    		});
        },
