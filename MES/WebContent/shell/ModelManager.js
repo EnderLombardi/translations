@@ -148,8 +148,20 @@ airbus.mes.shell.ModelManager = {
 	  /********************************
 		 * Get URL for My Profile
 		 */
-	  getMyProfileUrl:function(urlMyProfile){
+	  getMyProfileUrl:function(bID,user,pass,pinCode,uID){
+		  var myProfileUrl = this.urlModel.getProperty("urlMyProfileSave");
+		  myProfileUrl = airbus.mes.shell.ModelManager.replaceURI(
+				  myProfileUrl, "$badgeID", bID);
+		  myProfileUrl = airbus.mes.shell.ModelManager.replaceURI(
+				  myProfileUrl, "$userID", user);
+		  myProfileUrl = airbus.mes.shell.ModelManager.replaceURI(
+				  myProfileUrl, "$password", pass);
+		  myProfileUrl = airbus.mes.shell.ModelManager.replaceURI(
+				  myProfileUrl, "$pinCode", pinCode);
+		  myProfileUrl = airbus.mes.shell.ModelManager.replaceURI(
+				  myProfileUrl, "$UID", uID);
 		  
+		  return myProfileUrl;		  
 	  },
 
 }

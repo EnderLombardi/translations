@@ -7,7 +7,13 @@
 			<ToolbarSpacer/>
 			<Button icon="sap-icon://edit" text="Edit" type="Emphasized" press="onEditMyProfile"/>
 		</Toolbar>
-		<content>
+		<content>		
+			<HBox height="35px" class="messageHBox">
+				<MessageStrip id="msgstrpMyProfile" visible="false"
+					width="100%" class="sapUiSmallMarginBeginEnd" showIcon="true"
+					showCloseButton="true">
+				</MessageStrip>
+			</HBox>
 			<HBox justifyContent="SpaceAround">					
 				<VBox class="sapUiSmallMarginEnd" width="100%" justifyContent="Center">
 					<f:SimpleForm id="myProfile" minWidth="1024"
@@ -28,12 +34,6 @@
 						</f:content>
 					</f:SimpleForm>
 				</VBox>
-			</HBox>
-			<HBox height="35px" width="100%">
-				<MessageStrip id="msgstrpMyProfile" visible="false"
-					width="100%" class="sapUiSmallMarginBeginEnd" showIcon="true"
-					showCloseButton="true">
-				</MessageStrip>
 			</HBox>
 
 		</content>
