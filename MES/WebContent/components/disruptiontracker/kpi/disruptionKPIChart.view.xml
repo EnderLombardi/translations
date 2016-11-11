@@ -39,23 +39,17 @@
 			</viz:VizFrame>
 
 			<viz:VizFrame id="vizFrame2" height="400px" width="50%"
-				class="chart" uiConfig="{applicationSet:'fiori'}" legendVisible="false"
-				vizProperties="{
-                       title : { 
- 							visible : true, 
- 							text : 'Time Lost per Reason'
- 							} 
- 			            }">
+				class="chart" uiConfig="{applicationSet:'fiori'}" legendVisible="false">
 				<viz:dataset width="50%">
 					<viz.data:FlattenedDataset
-						data="{TimeLostperReason>/TimeLostperReasonData}">
+						data="{TimeLostperReason>/Rowsets/Rowset/1/Row}">
 						<viz.data:dimensions>
 							<viz.data:DimensionDefinition axis="1"
 								name="Reason" value="{TimeLostperReason>Reason}" />
 						</viz.data:dimensions>
 						<viz.data:measures>
 							<viz.data:MeasureDefinition name="Time Lost"
-								value="{TimeLostperReason>Time Lost}" />
+								value="{TimeLostperReason>TimeLost}" />
 						</viz.data:measures>
 					</viz.data:FlattenedDataset>
 				</viz:dataset>
@@ -69,23 +63,17 @@
 
 			<viz:VizFrame id="vizFrame3" height="400px" width="50%"
 				class="chart" vizType="bar" uiConfig="{applicationSet:'fiori'}"
-				legendVisible="false"
-				vizProperties="{
-                       title : { 
- 							visible : true, 
- 							text : '{i18n>frame3Title}' 
- 							} 
- 			            }">
+				legendVisible="false">
 				<viz:dataset width="50%">
 					<viz.data:FlattenedDataset
-						data="{TimeLostperOperation>/LostTimeperOperationData}">
+						data="{TimeLostperOperation>/Rowsets/Rowset/2/Row}">
 						<viz.data:dimensions>
 							<viz.data:DimensionDefinition axis="1"
 								name="Operation" value="{TimeLostperOperation>Operation}" />
 						</viz.data:dimensions>
 						<viz.data:measures>
 							<viz.data:MeasureDefinition name="Time Lost"
-								value="{TimeLostperOperation>Time Lost}" />
+								value="{TimeLostperOperation>TimeLost}" />
 						</viz.data:measures>
 					</viz.data:FlattenedDataset>
 				</viz:dataset>
@@ -99,22 +87,16 @@
 
 			<viz:VizFrame id="vizFrame4" height="400px" width="50%"
 				class="chart" vizType="bar" uiConfig="{applicationSet:'fiori'}"
-				legendVisible="false"
-				vizProperties="{
-                       title : { 
- 							visible : true, 
- 							text : '{i18n>frame4Title}' 
- 							} 
- 			            }">
+				legendVisible="false">
 				<viz:dataset width="50%">
-					<viz.data:FlattenedDataset data="{TimeLostperMSN>/LostTimeperMSNData}">
+					<viz.data:FlattenedDataset data="{TimeLostperMSN>/Rowsets/Rowset/0/Row}">
 						<viz.data:dimensions>
 							<viz.data:DimensionDefinition axis="1"
 								name="MSN" value="{TimeLostperMSN>MSN}" />
 						</viz.data:dimensions>
 						<viz.data:measures>
 							<viz.data:MeasureDefinition name="Time Lost"
-								value="{TimeLostperMSN>Time Lost}" />
+								value="{TimeLostperMSN>TimeLost}" />
 						</viz.data:measures>
 					</viz.data:FlattenedDataset>
 				</viz:dataset>
