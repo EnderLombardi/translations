@@ -3,31 +3,31 @@
 	xmlns:u="sap.ui.unified" xmlns:table="sap.ui.table">
 	<Dialog id="checkQAPopUp" stretchOnPhone="false" showHeader="false">
 		<buttons>
-			<Button text="{PolypolyI18n>OK}" press="onClickInfoUpdate12" />
+			<Button text="{StationTrackerI18n>Continue}" press="onContinueCheckQA" />
+			<Button text="{StationTrackerI18n>Cancel}" press="onCancelCheckQA" />
 		</buttons>
 		<content>
 			<VBox alignItems="Center">
 				<items>
-					<Label text="{infoModel>/name}" textAlign="Center" design="Bold" />
-					<Table items="{path: 'infoModel>/Row'}">
+					<Label text="{checkQAModel>/name}" textAlign="Center" design="Bold" />
+					<Table items="{path: 'checkQAModel>/Row'}">
 						<columns>
 							<Column hAlign="Center" width="7rem">
-								<Text text="{PolypolyI18n>AVLLine}" />
+								<Text text="{StationTrackerI18n>Operator}" />
 							</Column>
 							<Column hAlign="Center" width="7rem">
-								<Text text="{PolypolyI18n>ExpiryDate}" />
+								<Text text="{StationTrackerI18n>Operation}" />
 							</Column>
 							<Column hAlign="Center" width="7rem">
-								<Text text="{PolypolyI18n>Status}" />
+								<Text text="{StationTrackerI18n>missingQA}" />
 							</Column>
 						</columns>
 						<items>
 							<ColumnListItem>
 								<cells>
-									<Text text="{infoModel>QA}" />
-									<Text text="{path:'infoModel>Date', formatter: 'formatter.dateFormat'}" />
-									<core:Icon src="{parts: [{path:'infoModel>Status'}], formatter: '.statusFormatter'}"
-												color= "{parts: [{path:'infoModel>Status'}], formatter: '.colorFormatter'}"/>
+									<Text text="{checkQAModel>longName}" />
+									<Text text="{checkQAModel>Operation}" />
+									<Text text="{checkQAModel>missingQA}" />
 								</cells>
 							</ColumnListItem>
 						</items>

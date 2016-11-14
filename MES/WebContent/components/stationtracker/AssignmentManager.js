@@ -17,7 +17,11 @@ airbus.mes.stationtracker.AssignmentManager = {
 	},
 	
 	handleLineAssignment : function( sModeAssignment, bIgnoreCheckQA) {
-		var sUserID = airbus.mes.stationtracker.AssignmentManager.polypolyAssignment.selectedUser.login;
+		if(sModeAssignment == "S"){
+			var sUserID = airbus.mes.stationtracker.AssignmentManager.polypolyAssignment.selectedUser.login;
+		} else if(sModeAssignment == "D"){
+			var sUserID = undefined;
+		}
 		var sShiftName = airbus.mes.stationtracker.AssignmentManager.polypolyAssignment.selectedShift.shiftName;
 		var sDay = airbus.mes.stationtracker.AssignmentManager.polypolyAssignment.selectedShift.day;
 		var sAVLLineSKILL = airbus.mes.stationtracker.AssignmentManager.polypolyAssignment.selectedLine.avlLine;

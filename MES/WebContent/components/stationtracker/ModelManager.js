@@ -104,6 +104,19 @@ airbus.mes.stationtracker.ModelManager = {
 //   				if(){
 //   					//Call PopUp Missing QAs
 //   				}
+   				if(data.message == "W"){
+   					var checkQAModel = new sap.ui.model.json.JSONModel();
+   					checkQAModel.setData(data.Rowsets.Rowset[1]);
+   					if (!airbus.mes.stationtracker.checkQAPopUp) {
+   						airbus.mes.stationtracker.checkQAPopUp = sap.ui.xmlfragment("airbus.mes.stationtracker.checkQAPopUp", airbus.mes.stationtracker.oView.getController());
+   					}
+   					airbus.mes.stationtracker.checkQAPopUp.setModel(checkQAModel, "checkQAModel");
+   					airbus.mes.stationtracker.checkQAPopUp.setModel(airbus.mes.stationtracker.oView.getModel("StationTrackerI18n"),"StationTrackerI18n");
+   					airbus.mes.stationtracker.checkQAPopUp.open();
+   				} else if (data.message == "S"){
+   					airbus.mes.shell.globalNavigation.renderStationTracker();
+   					airbus.mes.stationtracker.oPopoverPolypoly.close();
+   				}
    			},
    		});
        },

@@ -870,4 +870,17 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 				.renderStationTracker();
 	},
 	
+	onContinueCheckQA : function(){
+		airbus.mes.stationtracker.AssignmentManager.handleLineAssignment("S", true);
+	},
+	
+	onCancelCheckQA : function(oEvent){
+		this.onCloseDialog(oEvent);
+	},
+	
+	deleteLineAssignment : function(){
+		airbus.mes.stationtracker.AssignmentManager.handleLineAssignment("D", true);
+		airbus.mes.stationtracker.oPopoverPolypoly.close();
+	},
+	
 });
