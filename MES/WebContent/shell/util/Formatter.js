@@ -80,13 +80,14 @@ airbus.mes.shell.util.Formatter = {
 		}
 	},
 	getMiiMessageType : function(oData) {
-		if(oData.hasOwnProperty("Rowsets")){
-			oData = oData.Rowsets.Rowset[0].Row[0];
+		if( oData.Rowsets != undefined ){
+			if ( oData.Rowsets.Rowset[0] != undefined ) {
+				if ( oData.Rowsets.Rowset[0].Row != undefined ) {
+					if ( oData.Rowsets.Rowset[0].Row[0].hasOwnProperty("Message_Type")) {
+						return oData.Rowsets.Rowset[0].Row[0].Message_Type;				
+					}			
+				}
+			}		
 		}
-		if(oData.hasOwnProperty("Message_Type"))
-		{
-			return oData.Message_Type;
-		}
-		
 	}
 };

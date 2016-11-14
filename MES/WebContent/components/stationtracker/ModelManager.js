@@ -378,11 +378,16 @@ airbus.mes.stationtracker.ModelManager = {
               oViewModelshift.loadData(getUrlShifts, null, false);
               
               reqResult = airbus.mes.shell.util.Formatter.getMiiMessageType(oViewModelshift.oData);
-              if (reqResult === "E")
-              {
-            	  airbus.mes.shell.util.Formatter.getMiiTextFromData(oViewModelshift.oData);
-              }
-                
+              
+  				switch( reqResult ){
+  				case "S":
+  					break;
+  				case "E":
+  					sap.m.MessageToast.show("Error : " + airbus.mes.shell.util.Formatter.getMiiTextFromData( oViewModelshift.oData ));
+  				
+  					break;
+  				}	
+                           
        },
        onShiftsLoad : function() {
 

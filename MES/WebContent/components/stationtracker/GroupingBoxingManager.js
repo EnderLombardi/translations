@@ -32,6 +32,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
     } else  {
     	
     	console.log("no shift Data for station tracker");
+    	oModelShift = [];
     }
 	
 	oModelShift.forEach(function(el) {
@@ -569,9 +570,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 	    scheduler.xy.scroll_width=20;
 	    airbus.mes.stationtracker.oView.byId("stationtracker").setBusy(false);
 	    scheduler.parse(aBox,"json");
-	    
-	
-	    
+	    	
 	}
 	
 };
