@@ -91,6 +91,8 @@ airbus.mes.stationtracker.ModelManager = {
     	   seturlLineAssignment = this.replaceURI(seturlLineAssignment, "$mode", sModeAssignment);
     	   seturlLineAssignment = this.replaceURI(seturlLineAssignment, "$qacheck", bQACheck);
     	   
+//    	   seturlLineAssignment = "https://dmiswde0.eu.airbus.corp/XMII/Illuminator?QueryTemplate=XX_MOD1684_Temp%2FTestNJA%2FXMLTest%2FxmlOutput_SQUE&IsTesting=T&Content-Type=text%2Fxml&j_user=ng560db&j_password=pierre247";
+    	   
     	   $.ajax({
    			url : seturlLineAssignment,
    			cache : false,
