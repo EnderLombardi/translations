@@ -1015,8 +1015,9 @@ background-color: #0085AD !important;
 }
 
 #stationTrackerView--stationtracker .dhx_row_item .dhx_scell_name {
-	padding: 0 40px 0 0;
+	/*padding: 0 40px 0 0;*/
 	white-space: nowrap;
+	padding:0px;	
 }
 
 #stationTrackerView--stationtracker .ylabelEditIcon,

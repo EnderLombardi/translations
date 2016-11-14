@@ -2,41 +2,39 @@
 	xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form">
 	<Dialog title="{i18n>userConfirmation}" type="Message" id="partial" width="70% !important" >
 			<content>	
-			<Toolbar class="toolBarBottom">
-			<ToolbarSpacer/><Button icon="sap-icon://business-card" text="Scan" type="Emphasized" press="onScanConfirmation"/> 
-			</Toolbar>
+			<HBox justifyContent="End">
+				<Button icon="sap-icon://business-card" text="Scan" type="Emphasized" press="onScanConfirmation"/> 
+			</HBox>
 			<HBox height="35px" class="messageHBox">
 				<MessageStrip id="msgstrpConfirm" visible="false"
 					width="100%" class="sapUiSmallMarginBeginEnd" showIcon="true"
 					showCloseButton="true">
 				</MessageStrip>
 			</HBox>	
-			<HBox justifyContent="SpaceAround">
-				<VBox class="sapUiSmallMarginEnd" width="100%" justifyContent="Center">
-					<f:SimpleForm id="partialConfirm" minWidth="1024"
-						maxContainerCols="3" editable="true" layout="ResponsiveGridLayout"
-						labelSpanL="1" labelSpanM="2" emptySpanL="0" emptySpanM="0"
-						columnsL="3" columnsM="3">
-						<f:content>
-							<Label text="UID" required="true" />
-							<Input id="UIDForConfirmation" type="Text"
-								placeholder="UID" liveChange="uIDLive" />							
-							<Label text="Badge ID" required="true" />
-							<Input id="badgeIDForConfirmation" type="Text"
-								placeholder="Badge ID" liveChange="badgeIDLive" />
-							<Text text="--------OR--------" class="alignCenter"/>
-							
-							<Label text="Username" required="true" />
-							<Input id="userNameForConfirmation" type="Text"
-								placeholder="Username" liveChange="usernameLive" />
+			<HBox  width="100%" justifyContent="Center">
+				<f:SimpleForm id="partialConfirm" minWidth="1024"
+					maxContainerCols="3" editable="true" layout="ResponsiveGridLayout"
+					labelSpanL="1" labelSpanM="2" emptySpanL="0" emptySpanM="0"
+					columnsL="3" columnsM="3">
+					<f:content>
+						<Label text="UID" required="true" />
+						<Input id="UIDForConfirmation" type="Text"
+							placeholder="UID" liveChange="uIDLive" />							
+						<Label text="Badge ID" required="true" />
+						<Input id="badgeIDForConfirmation" type="Text"
+							placeholder="Badge ID" liveChange="badgeIDLive" />
+						<Text text="--------OR--------" textAlign="Center"/>
+						
+						<Label text="Username" required="true" />
+						<Input id="userNameForConfirmation" type="Text"
+							placeholder="Username" liveChange="usernameLive" />
 
-							<Label text="Password" required="true" />
-							<Input id="passwordForConfirmation" type="Password"
-								placeholder="Password" liveChange="passwordLive" />
+						<Label text="Password" required="true" />
+						<Input id="passwordForConfirmation" type="Password"
+							placeholder="Password" liveChange="passwordLive" />
 
-						</f:content>
-					</f:SimpleForm>
-				</VBox>
+					</f:content>
+				</f:SimpleForm>
 			</HBox>
 		</content>
 		<beginButton>

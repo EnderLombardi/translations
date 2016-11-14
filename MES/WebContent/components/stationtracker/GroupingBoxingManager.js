@@ -86,8 +86,9 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 					};
 					oHierachy2.push(oShift);
 					
-//					this.fillStartDate(startDate);
-//					this.fillEndDate(endDate);
+					// Permit to define the range of datepicker selection day
+					this.fillStartDate(startDate);
+					this.fillEndDate(endDate);
 			}
 			
 		}
@@ -299,7 +300,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 					"ANDONS": el.ANDONS,
 					"RMA_STATUS_COLOR": fRMA,
 					"status" : sStatus,
-					"ATA": el.ata,
+					//"ata": el.ata,
 					//"familyTarget": el.familyTarget,
 					"CPP_CLUSTER" : el.CPP_CLUSTER,
 					"WORK_PACKAGE" : el.WORK_PACKAGE,
@@ -562,9 +563,9 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 	    airbus.mes.stationtracker.ShiftManager.addMarkedShifts();
 	    
 
-	    if (airbus.mes.stationtracker.ShiftManager.dayDisplay) {
-			airbus.mes.stationtracker.oView.getController().changeShift();
-		}
+//	    if (airbus.mes.stationtracker.ShiftManager.dayDisplay) {
+//			airbus.mes.stationtracker.oView.getController().changeShift();
+//		}
 	    scheduler.xy.scroll_width=20;
 	    airbus.mes.stationtracker.oView.byId("stationtracker").setBusy(false);
 	    scheduler.parse(aBox,"json");

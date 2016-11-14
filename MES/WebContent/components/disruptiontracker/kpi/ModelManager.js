@@ -49,6 +49,14 @@ airbus.mes.disruptiontracker.kpi.ModelManager = {
 		return urlCategoryData;
 	},
 	
+	getKPIData : function() {
+		var urlCategoryData = this.urlModel.getProperty("getDiruptionKPIURL");
+//		urlCategoryData = airbus.mes.shell.ModelManager.replaceURI(urlCategoryData,
+	//			"$site", airbus.mes.settings.ModelManager.site);
+		return urlCategoryData;
+	},
+	
+	
 	loadDisruptionCategoryModel : function() {
 		var oViewModel = sap.ui.getCore().getModel("TimeLostperCategory");
 		oViewModel.loadData(this.getKPICategoryData(), null, false);
@@ -56,19 +64,19 @@ airbus.mes.disruptiontracker.kpi.ModelManager = {
 	
 	loadDisruptionReasonModel : function() {
 		var oViewModel = sap.ui.getCore().getModel("TimeLostperReason");
-		oViewModel.loadData(this.urlModel.getProperty("urlreasonmodel"), null, false);
+		oViewModel.loadData(this.getKPIData(), null, false);
 
 	},
 	
 	loadDisruptionOperationModel : function() {
 		var oViewModel = sap.ui.getCore().getModel("TimeLostperOperation");
-		oViewModel.loadData(this.urlModel.getProperty("urloperationmodel"), null, false);
+		oViewModel.loadData(this.getKPIData(), null, false);
 
 	},
 	
 	loadDisruptionmsnModel : function() {
 		var oViewModel = sap.ui.getCore().getModel("TimeLostperMSN");
-		oViewModel.loadData(this.urlModel.getProperty("urlmsnmodel"), null, false);
+		oViewModel.loadData(this.getKPIData(), null, false);
 
 	}
 

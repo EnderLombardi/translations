@@ -463,7 +463,7 @@ sap.ui.controller("airbus.mes.settings.Settings",
 					airbus.mes.settings.ModelManager.programDesc = aModel.programDescription;
 					airbus.mes.settings.ModelManager.stationDesc = aModel.stationDescription;
 						
-					airbus.mes.settings.ModelManager.saveUserSetting(jQuery.sap.getUriParameters().get("sap-language"));
+					airbus.mes.settings.ModelManager.saveUserSetting(sap.ui.getCore().getConfiguration().getLanguage().slice(0,2));
 					// Navigate to correct view
 					that.navigate(oEvent);
 				}

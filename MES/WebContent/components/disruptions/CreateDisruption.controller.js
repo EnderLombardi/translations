@@ -239,9 +239,9 @@ sap.ui
 								.getSelectedKey();
 						var sComment = oView.byId("comment").getValue();
 
-						// forfully set handle as the first item in the list
+						// forcefully set handle as the first item in the list
 						// after selecting Category, Reason, Responsible and
-						// rootcasue,
+						// RootCasue,
 						// As this handle will act as a unique key for selection
 						
 						oView.byId("handle").setSelectedKey(
@@ -345,7 +345,7 @@ sap.ui
 
 						var sDescription = oView.byId("description").getValue();
 						// message subject is passed as description because
-						// subject is compulsary
+						// subject is compulsory
 						airbus.mes.disruptions.ModelManager.createDisruption(
 								sHandle, sCategory, sDescription, sComment,
 								aModelData);
@@ -394,7 +394,7 @@ sap.ui
 					},
 
 					/***********************************************************
-					 * For originator - update will be done for comment, Reason,
+					 * For originator - update will be done for Comment, Reason,
 					 * Responsible Group, Time lost , Expected date/time and
 					 * Root Cause.
 					 */
