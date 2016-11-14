@@ -98,9 +98,12 @@ airbus.mes.stationtracker.ModelManager = {
    			cache : false,
    			success : function(data, textStatus, jqXHR) {
    				//TODO handle Warning QA
-   				if(getMiiMessageType(data) == "E"){
-   					sap.m.MessageToast.show(getMiiTextFromData(data));
+   				if(airbus.mes.shell.util.Formatter.getMiiMessageType(data) == "E"){
+   					sap.m.MessageToast.show(airbus.mes.shell.util.Formatter.getMiiTextFromData(data));
    				}
+//   				if(){
+//   					//Call PopUp Missing QAs
+//   				}
    			},
    		});
        },

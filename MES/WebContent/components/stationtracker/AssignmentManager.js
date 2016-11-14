@@ -28,7 +28,7 @@ airbus.mes.stationtracker.AssignmentManager = {
 		var sMSN = airbus.mes.settings.ModelManager.msn;
 		var sMyUserID = "MESYS"; //FIXME ??
 		
-		sDay = (new Date(sDay)).toISOString().slice(0,10).replace(/-/g,"");
+//		sDay = (new Date(sDay)).toISOString().slice(0,10).replace(/-/g,"");
 		
 		airbus.mes.stationtracker.ModelManager.setLineAssignment(sSite, sStation, sMSN, sUserID, sShiftName, sDay, sLine, sSkill, sMyUserID, sModeAssignment, bIgnoreCheckQA);
 
