@@ -40,9 +40,9 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 			
 			oHierachy[el.day] = {};
 		}
-		if ( !oHierachy[el.day][el.shiftID /*el.shiftName + el.day*/] ) {
+		if ( !oHierachy[el.day][el.shiftName + el.day] ) {
 			
-			oHierachy[el.day][el.shiftID /*el.shiftName + el.day*/ ] = [];
+			oHierachy[el.day][el.shiftName + el.day] = [];
 		}
 		
 		var oShift = {
@@ -51,7 +51,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 				"EndDate" : oFormatter.jsDateFromDayTimeStr(el.endDateTime),
 		};
 		
-		oHierachy[el.day][el.shiftID].push(oShift);
+		oHierachy[el.day][el.shiftName + el.day].push(oShift);
 		aShiftBreak.push(oShift);
 		
 	});
