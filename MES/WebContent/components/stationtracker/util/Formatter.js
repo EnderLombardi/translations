@@ -337,7 +337,15 @@ airbus.mes.stationtracker.util.Formatter = {
 			displayValueIM : function(operation, operationDescription,	progress, duration) {
 				progress = ((progress * 100 * 0.001)/3600).toFixed(4);
 				duration = ((duration * 100 * 0.001)/3600).toFixed(4);
-				return operation + " - " + operationDescription + ": " + "[" + progress + "/" + duration + " IM]";
+				
+				if(operation === "") {
+//					Case of Overall progress
+					return "[" + progress + "/" + duration + " IM]";
+				} else {
+//					Others operation
+					return operation + " - " + operationDescription + ": " + "[" + progress + "/" + duration + " IM]";
+				}
+				
 			},
 			percentValue : function(progress, duration) {
 

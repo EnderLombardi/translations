@@ -285,7 +285,8 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		airbus.mes.stationtracker.worklistPopover.setModel(new sap.ui.model.json.JSONModel(oModel.oData.Rowsets.Rowset[0].Row),"WorkListModel");
 		airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").refresh(true);
 
-		
+//      Overall Progress is only display on worklist
+        sap.ui.getCore().byId("worklistPopover--overallProgress").setVisible(false);         
 		
 		// delay because addDependent will do a async rerendering and the popover will immediately close without it
 		jQuery.sap.delayedCall(0, this, function () {
@@ -294,6 +295,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 
 		});		
 	},
+	
 	onOSWPress : function(oEvent) {
 		
 		if ( airbus.mes.stationtracker.worklistPopover === undefined ) {
@@ -321,6 +323,10 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		//Changed the data of the worklist by OSW model
 		airbus.mes.stationtracker.worklistPopover.setModel(new sap.ui.model.json.JSONModel(oModel.oData.Rowsets.Rowset[0].Row),"WorkListModel");
 		airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").refresh(true);
+
+//      Overall Progress is only display on worklist
+        sap.ui.getCore().byId("worklistPopover--overallProgress").setVisible(false);         
+		
 		
 		// delay because addDependent will do a async rerendering and the popover will immediately close without it
 		var oButton = oEvent.getSource();
@@ -869,7 +875,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		airbus.mes.shell.oView.getController()
 				.renderStationTracker();
 	},
-	
+
 	onContinueCheckQA : function(){
 		airbus.mes.stationtracker.AssignmentManager.handleLineAssignment("S", true);
 	},
@@ -883,4 +889,10 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		airbus.mes.stationtracker.oPopoverPolypoly.close();
 	},
 	
+	tooltipDisplay : function(oEvent) {
+		var oEventProvider = new sap.ui.base.EventProvider();
+		var oEvent = new sap.ui.base.Event("test",oEventProvider);
+		this.onProductionGroupPress(oEvent);
+		console.log("tooltip");
+	}
 });

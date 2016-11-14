@@ -40,6 +40,19 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 						scheduler.config.preserve_length = true;
 						scheduler.config.dblclick_create = false;
 						
+//						scheduler.config.className = 'dhtmlxscheduler_tooltip'; 
+						scheduler.config.timeout_to_display = 10000; 
+						scheduler.config.delta_x = 15; 
+						scheduler.config.delta_y = -20;						
+						
+						scheduler.templates.tooltip_text = function(start,end,ev){
+						    var sString;
+							
+						    airbus.mes.stationtracker.oView.getController().tooltipDisplay(ev);
+						    
+							return sString;
+						};						
+						
 						
 					    scheduler.eventId = scheduler.eventId || [];
                         scheduler.eventId.forEach(function(el) { scheduler.detachEvent(el); });
@@ -74,7 +87,6 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 						scheduler.date.add_timeline = ShiftManager.bounded("timelineAddStep");
 						//////////////////////////////////////////////////////
                                                 
-                        
                        
 						scheduler.eventId.push ( scheduler.attachEvent("onEventDrag", function SchedStartChange(ev, mode, e) {
 					
@@ -340,6 +352,11 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 //							  Reinitiate the bypass variable
 							  this.byPassOnClick = false;
 						}));
+
 						
+//						scheduler.eventId.push ( scheduler.attachEvent("onMouseMove", function(id, ind) {	
+//							alert(id + ind);
+//
+//						}));						
 					},
 				});

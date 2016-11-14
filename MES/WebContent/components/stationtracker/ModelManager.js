@@ -442,6 +442,13 @@ airbus.mes.stationtracker.ModelManager = {
 
        openWorkListPopover : function(id) {
 
+    	   	  var elModel;
+    	   	  var elOverallModel = {};
+    	   	  var aOverallModel = [];
+    	   	  var fAllDuration = 0;
+    	   	  var fAllProgress = 0;
+    	   	  var fNumberEl = 0;
+    	   	  
 //    	   	  Check if there is only one operation on the worklist
 //    	   	  If yes, open the operation list
     	   	  var aModel = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy[scheduler.getEvent(id).group][scheduler
@@ -457,8 +464,8 @@ airbus.mes.stationtracker.ModelManager = {
 
                      airbus.mes.stationtracker.worklistPopover = sap.ui.xmlfragment("worklistPopover", "airbus.mes.stationtracker.worklistPopover", airbus.mes.stationtracker.oView.getController());
                      airbus.mes.stationtracker.worklistPopover.addStyleClass("alignTextLeft");
-                     airbus.mes.stationtracker.worklistPopover.setModel(sap.ui.getCore().getModel("WorkListModel"), "WorkListModel");
-                     airbus.mes.stationtracker.worklistPopover.setModel(new sap.ui.model.json.JSONModel(sap.ui.getCore().getModel("groupModel").getData()), "groupModel");
+//                     airbus.mes.stationtracker.worklistPopover.setModel(sap.ui.getCore().getModel("WorkListModel"), "WorkListModel");
+//                     airbus.mes.stationtracker.worklistPopover.setModel(new sap.ui.model.json.JSONModel(sap.ui.getCore().getModel("groupModel").getData()), "groupModel");
                      airbus.mes.stationtracker.oView.addDependent(airbus.mes.stationtracker.worklistPopover);
               }
 
@@ -484,9 +491,37 @@ airbus.mes.stationtracker.ModelManager = {
               if (aModel && aModel.length > 0 && aModel) {
                      aModel = airbus.mes.stationtracker.util.Formatter.sortWorkList(aModel);
               }
+              
+//            Manage model on worklist
+//            Overall progress model
+              aModel.forEach(function(elModel){
+//            	  TODO
+//            	  elOverallModel.STATE =???
+//            	  elOverallModel.andons = ???
+            	  fNumberEl = fNumberEl + 1;
+            	  fAllDuration = fAllDuration + elModel.DURATION;
+            	  fAllProgress = fAllProgress + elModel.PROGRESS;            	  
 
+            	  elOverallModel.WORKORDER_ID = elModel.WORKORDER_ID;
+            	  elOverallModel.WORKORDER_DESCRIPTION = elModel.WORKORDER_DESCRIPTION;              
+              });
+
+        	  elOverallModel.OPERATION_ID = "";
+        	  elOverallModel.OPERATION_DESCRIPTION = "";
+        	  elOverallModel.DURATION = Math.floor(fAllDuration / fNumberEl);
+        	  elOverallModel.PROGRESS = Math.floor(fAllProgress / fNumberEl);  
+        	  aOverallModel.push(elOverallModel);
+
+              airbus.mes.stationtracker.worklistPopover.setModel(new sap.ui.model.json.JSONModel(aOverallModel), "WorkListOverallModel");
+              airbus.mes.stationtracker.worklistPopover.getModel("WorkListOverallModel").refresh(true);
+        	  
+//            Operation model  
               airbus.mes.stationtracker.worklistPopover.setModel(new sap.ui.model.json.JSONModel(aModel), "WorkListModel");
               airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").refresh(true);
+
+//            Overall Progress is only display on worklist
+              sap.ui.getCore().byId("worklistPopover--overallProgress").setVisible(true);         
+              
               // delay because addDependent will do a async rerendering and the
               // popover will immediately close without it
               airbus.mes.stationtracker.worklistPopover.open();
