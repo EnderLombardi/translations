@@ -165,12 +165,19 @@ airbus.mes.stationtracker.util.Formatter = {
 					break;
 		
 				}
-			
-				var trackerTextClass = "trackerTextWhite";
-				if(oBox.status == 5 || oBox.status == 7)
-					trackerTextClass = "trackerTextBlock";				
-				var sSpanText = '<span class="trackerText '+ trackerTextClass+' ">' + sText + '</span>';
-				var sProgressText = '<span  class="trackerText '+ trackerTextClass+' " style="float: right; overflow: hidden; text-overflow: ellipsis; max-width:40%; white-space: nowrap; padding-left:10px; padding-right:10px;"> ['+
+				if ( oBox.type === "I" ){
+					
+					var trackerTextClass = "trackerTextInitial";
+										
+				} else {
+					
+					var trackerTextClass = "trackerText";		
+				}
+				
+				if(oBox.status == 5 || oBox.status == 7) trackerTextClass = "trackerTextBlock";		
+				
+				var sSpanText = '<span class=" '+ trackerTextClass+' ">' + sText + '</span>';
+				var sProgressText = '<span  class=" '+ trackerTextClass+' " style="float: right; overflow: hidden; text-overflow: ellipsis; max-width:40%; white-space: nowrap; padding-left:10px; padding-right:10px;"> ['+
 				airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.progress) +'/'+ 
 				airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.totalDuration) +' IM]</span>';
 				airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.totalDuration) +'</span>';	
@@ -287,12 +294,10 @@ airbus.mes.stationtracker.util.Formatter = {
 						}
 						break;					
 				}
-		
-//				html = sDivForLeftDisplay + sRightIcon + sLeftIcon + sSpanText + sProgressText + sColorProgress + '</div>'
-				html = sDivForLeftDisplay + sRightIcon + sLeftIcon + sLeftIcon2 + sSpanText + sProgressText + sColorProgress + '</div>'; 
-							
+								
 				if ( oBox.type === "I" ) {
 					
+					trackerTextClass = ""
 //					html = sDivForLeftDisplayInitial + sRightIcon + sLeftIcon + sSpanText + sProgressText + sColorProgress + '</div>'
 					html = sDivForLeftDisplayInitial + sRightIcon + sLeftIcon + sLeftIcon2 + sSpanText + sProgressText + sColorProgress + '</div>' ;
 
