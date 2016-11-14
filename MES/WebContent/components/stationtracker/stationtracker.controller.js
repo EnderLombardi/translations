@@ -709,6 +709,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
      ClosePolyPoly : function(oEvent){
     	 
  		this.onCloseDialog(oEvent);
+ 		airbus.mes.stationtracker.AssignmentManager.polypolyAffectation = false; 
  		
      },
      
