@@ -685,7 +685,7 @@ sap.ui
 						oOperDetailNavContainer
 								.to(airbus.mes.operationdetail.createDisruption.oView
 										.getId());
-						
+
 						airbus.mes.operationdetail.createDisruption.oView.oController
 								.resetAllFields();
 
@@ -723,7 +723,78 @@ sap.ui
 
 							sap.m.MessageBox.error(this.getView().getModel(
 									"i18nModel").getProperty("readModeError"));
-							return;
+
+						} else {
+
+							// Navigate to Edit Screen
+							var oOperDetailNavContainer = sap.ui
+									.getCore()
+									.byId(
+											"operationDetailsView--operDetailNavContainer");
+
+							// if component is not created - create the
+							// component
+							if (airbus.mes.operationdetail.createDisruption === undefined
+									|| airbus.mes.operationdetail.createDisruption.oView === undefined) {
+								this.getView().setBusy(true);
+								sap.ui
+										.getCore()
+										.createComponent(
+												{
+													name : "airbus.mes.operationdetail.createDisruption"
+												});
+
+								oOperDetailNavContainer
+										.addPage(airbus.mes.operationdetail.createDisruption.oView);
+								this.getView().setBusy(false);
+							}
+
+							oOperDetailNavContainer
+									.to(airbus.mes.operationdetail.createDisruption.oView
+											.getId());
+
+							// fill model DisruptionDetailModel to show data on
+							// edit screen
+							var oModel = sap.ui.getCore().getModel(
+									"DisruptionDetailModel");
+
+							// set the data for this new model from the already
+							// loaded model
+							var oBindingContext = oEvent.getSource()
+									.getBindingContext(
+											"operationDisruptionsModel");
+
+							oModel.setData(oBindingContext
+									.getProperty(oBindingContext.sPath));
+							oModel.refresh();
+
+							// set buttons according to update disruption
+							sap.ui
+									.getCore()
+									.byId(
+											"operationDetailPopup--btnUpdateDisruption")
+									.setVisible(true);
+							sap.ui
+									.getCore()
+									.byId(
+											"operationDetailPopup--btnCreateDisruption")
+									.setVisible(false);
+							sap.ui
+									.getCore()
+									.byId(
+											"operationDetailPopup--btnCancelDisruption")
+									.setVisible(true);
+
+							// set input according to update disruption
+							sap.ui.getCore().byId(
+									"createDisruptionView--selectOriginator")
+									.setEnabled(false);
+							sap.ui.getCore().byId(
+									"createDisruptionView--description")
+									.setEnabled(false);
+							sap.ui.getCore().byId(
+									"createDisruptionView--timeLost")
+									.setEnabled(false);
 
 							// Set fields editable according to Originator and
 							// Resolution Flag
@@ -760,7 +831,6 @@ sap.ui
 										"createDisruptionView--comment")
 										.setEnabled(true);
 								
-								
 								/*--------------------------------------------------*/
 								
 
@@ -791,50 +861,6 @@ sap.ui
 							}
 
 						}
-						
-					
-
-						// Navigate to Edit Screen
-						var oOperDetailNavContainer = sap.ui
-								.getCore()
-								.byId(
-										"operationDetailsView--operDetailNavContainer");
-
-						// if component is not created - create the
-						// component
-						if (airbus.mes.operationdetail.createDisruption === undefined
-								|| airbus.mes.operationdetail.createDisruption.oView === undefined) {
-							this.getView().setBusy(true);
-							sap.ui
-									.getCore()
-									.createComponent(
-											{
-												name : "airbus.mes.operationdetail.createDisruption"
-											});
-
-							oOperDetailNavContainer
-									.addPage(airbus.mes.operationdetail.createDisruption.oView);
-							this.getView().setBusy(false);
-						}
-	
-						oOperDetailNavContainer
-								.to(airbus.mes.operationdetail.createDisruption.oView
-										.getId());
-
-						// fill model DisruptionDetailModel to show data on
-						// edit screen
-						var oModel = sap.ui.getCore().getModel(
-								"DisruptionDetailModel");
-
-						// set the data for this new model from the already
-						// loaded model
-						var oBindingContext = oEvent.getSource()
-								.getBindingContext(
-										"operationDisruptionsModel");
-
-						oModel.setData(oBindingContext
-								.getProperty(oBindingContext.sPath));
-						oModel.refresh();
 
 					}
 
