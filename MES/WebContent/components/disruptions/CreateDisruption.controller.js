@@ -467,6 +467,21 @@ sap.ui
 							this.getView().byId("description").setEnabled(false);
 							this.getView().byId("timeLost").setEnabled(false);
 
+							
+
+							// Set fields non-editable for resolution group
+							var origFlag = sap.ui.getCore().getModel("DisruptionDetailModel").getData().OriginatorFlag;
+
+							var resFlag = sap.ui.getCore().getModel("DisruptionDetailModel").getData().ResponsibleFlag;
+
+							if (origFlag == "" && resFlag == "X") {
+								this.reolsutionGroupSettings(false);
+							}
+							else
+								this.reolsutionGroupSettings(false);
+							
+							
+
 						} else {
 
 							this.initializeTree();
@@ -485,8 +500,18 @@ sap.ui
 							this.getView().byId("selectOriginator").setEnabled(true);
 							this.getView().byId("description").setEnabled(true);
 							this.getView().byId("timeLost").setEnabled(true);
+							
+							this.reolsutionGroupSettings(true);
 
 						}
+					},
+					
+					
+					resolutionGroupSettings: function(state){
+						this.getView().byId("selectCategory").setEnabled(state);
+						this.getView().byId("selectreason").setEnabled(state);
+						this.getView().byId("status").setEnabled(state);
+						this.getView().byId("gravity").setEnabled(state);
 					},
 
 					/**
