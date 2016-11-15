@@ -89,7 +89,7 @@ airbus.mes.stationtracker.AssignmentManager = {
 			var sAVLKey = Math.floor((new Date() - new Date("2016-11-01")) /100)
 
 			airbus.mes.stationtracker.AssignmentManager.bOpen = true;
-			scheduler.addSection({ key: sAVLKey , rescheduled:"R" , name:"Select Operator"}, sKey );   
+			scheduler.addSection({ key: sAVLKey , rescheduled:"R" , name:"Select Operator" }, sKey );   
 		
 	},
 	

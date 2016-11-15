@@ -12,23 +12,24 @@
 		<subHeader>
 			<Bar>
 				<contentLeft>
-					<Button id="navBack" type="Transparent" text="{i18n>Back}" press="onPress"
-						icon="sap-icon://arrow-left" height="100%" />
+					<Button id="navBack" type="Transparent" text="{i18n>Back}"
+						press="onPress" icon="sap-icon://arrow-left" height="100%" />
 				</contentLeft>
 				<contentRight>
-					<Button  id="navConfirm" type="Transparent" text="{i18n>Confirm}"
+					<Button id="navConfirm" type="Transparent" text="{i18n>Confirm}"
 						press="saveUserSettings" iconFirst="false" icon="sap-icon://arrow-right"
 						height="100%" />
 				</contentRight>
 			</Bar>
 		</subHeader>
 		<l:Splitter width="100%" height="100%">
-		<List headerText="{i18n>Program}" items="{path: 'program>/ProgramCollection'}"
+			<List headerText="{i18n>Program}" items="{path: 'program>/ProgramCollection'}"
 				width="auto" class="sapUiTinyMargin classListProgram" id="headTextProgram">
 				<CustomListItem icon="{program>picture}">
 					<HBox>
-						<RadioButton enabled="{ path : 'program>prog', formatter : 'airbus.mes.settings.util.Formatter.enabledProgram' }"
-						select="onProgramSelect" class="classListProgramRadioBtn"	text="{program>prog}" />
+						<RadioButton
+							enabled="{ path : 'program>prog', formatter : 'airbus.mes.settings.util.Formatter.enabledProgram' }"
+							select="onProgramSelect" class="classListProgramRadioBtn" text="{program>prog}" />
 						<Image src="{program>picture}" width="75%" />
 					</HBox>
 				</CustomListItem>
@@ -38,40 +39,22 @@
 			</List>
 
 			<VBox class="classSelectListBox">
-		<Bar class="sapMListHdr">
-		<contentLeft>
-			<Label text="{i18n>Site}"></Label>
-		</contentLeft>
-		</Bar>
-			<SelectList items="{path: 'site>/SiteCollection'}"
-				width="100%" class="sapUiTinyMargin classSelectList" id="headTextPlant" itemPress="onPressSite" >
-				<core:Item text="{site>Site}" key="{site>Site}" enabled="{ path : 'site>Site', formatter : 'airbus.mes.settings.util.Formatter.enabledSite' }" />
+				<Bar class="sapMListHdr">
+					<contentLeft>
+						<Label text="{i18n>Site}"></Label>
+					</contentLeft>
+				</Bar>
+				<SelectList items="{path: 'site>/SiteCollection'}" width="100%"
+					class="sapUiTinyMargin classSelectList" id="headTextPlant"
+					itemPress="onPressSite">
+					<core:Item text="{site>Site}" key="{site>Site}"
+						enabled="{ path : 'site>Site', formatter : 'airbus.mes.settings.util.Formatter.enabledSite' }" />
 
-				<layoutData>
-					<l:SplitterLayoutData size="20%" resizable="true" />
-				</layoutData>
-			</SelectList>
+					<layoutData>
+						<l:SplitterLayoutData size="20%" resizable="true" />
+					</layoutData>
+				</SelectList>
 			</VBox>
-			<!-- <List headerText="Program" items="{path: 'plantModel>/Rowsets/Rowset/0/Row'}"
-				width="95%" class=" selectProgram sapUiTinyMargin">
-				<CustomListItem>
-					<HBox>
-						<Text text="{plantModel>program}" />
-						<Image src="{program>picture}" press="onImagePress" width="70%" />
-					</HBox>
-				</CustomListItem>
-				<layoutData>
-					<l:SplitterLayoutData size="20%" resizable="true" />
-				</layoutData>
-			</List>
-			<List headerText="Plant" items="{path: 'siteModel>/Rowsets/Rowset/0/Row'}"
-				width="95%" class="selectSite sapUiTinyMargin">
-				<StandardListItem title="{siteModel>site}" type="Navigation"
-					press="onPressSite" />
-				<layoutData>
-					<l:SplitterLayoutData size="25%" resizable="true" />
-				</layoutData>
-			</List> -->
 			<vbm:AnalyticMap id="vbi" width="100%" height="100%"
 				regions="{region>/Regions}" regionClick="onRegionClick">
 				<vbm:regions>
@@ -100,8 +83,7 @@
 							</items>
 						</ComboBox>
 						<Label id="lblStation" text="{i18n>Station}" design="Bold" />
-						<ComboBox id="selectStation"
-							items="{plantModel>/Rowsets/Rowset/0/Row}"
+						<ComboBox id="selectStation" items="{plantModel>/Rowsets/Rowset/0/Row}"
 							visible="true" change="onSelectionChange">
 							<items>
 								<core:Item key="{plantModel>station}" text="{plantModel>stationDescription}" />
@@ -114,7 +96,8 @@
 								<core:Item key="{plantModel>msn}" text="{plantModel>msn}" />
 							</items>
 						</ComboBox>
-						<CheckBox id="currMSN"  selected="true"  text="{i18n>CurrentMSN}" style="font-weight: bold;" select="selectCurrentMsn" />
+						<CheckBox id="currMSN" selected="true" text="{i18n>CurrentMSN}"
+							style="font-weight: bold;" select="selectCurrentMsn" />
 					</f:content>
 				</f:SimpleForm>
 				<layoutData>

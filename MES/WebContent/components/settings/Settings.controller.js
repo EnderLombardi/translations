@@ -253,7 +253,7 @@ sap.ui.controller("airbus.mes.settings.Settings",
 
 				for (var i = 0; i < oData.Spots.length; i++) {
 					var spot = oData.Spots[i].tooltip;
-					if (spot == site) {
+					if (spot === site) {
 
 						var splitter = oData.Spots[i].pos.split(";");
 						//sap.m.MessageToast.show(site);
@@ -385,12 +385,13 @@ sap.ui.controller("airbus.mes.settings.Settings",
 							
 							this.getView().getController().onSelectionChange("selectStation");
 							airbus.mes.settings.ModelManager.msn = this.getView().byId("selectMSN").getValue();
-							// When current msn is selected we dont store msn in save user setting we reuse currentMsnValue
-							// variable wich is set during the filtering of combobox STATION.
-							airbus.mes.shell.oView.byId("labelMSN").setText(airbus.mes.settings.ModelManager.currentMsnValue);
+							// When current msn is selected we save in user setting "" for the value msn  							
+							// To redisplay the real value of ms we reuse currentMsnValue variable wich is set during the filtering of combobox STATION.
+							airbus.mes.shell.oView.byId("labelMSN").setText(airbus.mes.shell.oView.getModel("ShellI18n").getProperty(
+							"MSN") + " " + airbus.mes.settings.ModelManager.currentMsnValue);
 						}
 						this.setEnabledCombobox(true, true, true, true);
-				} else {
+				} else {	
 					this.setEnabledCombobox(true, false, false, false);
 				}
 			},

@@ -125,9 +125,7 @@ airbus.mes.settings.ModelManager =  {
 	onUserSettingLoad : function() {
 		// Apply user settings.
 		airbus.mes.settings.oView.getController().getUserSettings();
-		// Current Msn is store with "" so we reuse msn selected
-		airbus.mes.shell.oView.byId("labelMSN").setText(airbus.mes.settings.ModelManager.msn);
-		
+			
 	},
 	
 	// ********************************************************************************
