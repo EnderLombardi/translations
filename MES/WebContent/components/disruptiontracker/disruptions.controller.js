@@ -113,24 +113,22 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 	
 
 	/*****************************************************
-	 * Open Operation Detail Popup on table item click
+	 * Open Operation Detail PopUp on table item click
 	 */	
-	
 	onTableClick: function(){
-		//create popup as a fragment 
+		//create Pop-Up as a fragment 
+		if (airbus.mes.disruptiontracker.disruptionDetailPopup === undefined) {
 
-		/*if (airbus.mes.disruptiontracker.operationDetailPopup === undefined) {
-
-		    airbus.mes.disruptiontracker.operationDetailPopup = sap.ui.xmlfragment("disruptionDetailPopUp",
-		                 "airbus.mes.disruptiontracker.detail.operationDetailPopup", airbus.mes.disruptiontracker.oView
+		    airbus.mes.disruptiontracker.detailPopUp = sap.ui.xmlfragment("disruptionDetailPopup",
+		                 "airbus.mes.disruptiontracker.detail.disruptionDetailPopup", airbus.mes.disruptiontracker.oView
 		                               .getController());
 
-		    airbus.mes.disruptiontracker.oView.addDependent(airbus.mes.disruptiontracker.operationDetailPopup);
+		    airbus.mes.disruptiontracker.oView.addDependent(airbus.mes.disruptiontracker.detailPopUp);
 
 
 		} 
-		airbus.mes.disruptiontracker.operationDetailPopup.open();
-		//Create component for popup
+		airbus.mes.disruptiontracker.detailPopUp.open();
+		//Create component for PopUp
 		this.nav = sap.ui.getCore().byId("disruptionDetailPopUp--disruptDetailNavContainer");
 
 		if (airbus.mes.disruptiontracker.detail === undefined || airbus.mes.disruptiontracker.detail.oView === undefined) {
@@ -142,8 +140,20 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 			this.nav.addPage(airbus.mes.disruptiontracker.detail.oView);
 		}
 		
-		this.nav.to(airbus.mes.disruptiontracker.detail.oView.getId()); */
+		this.nav.to(airbus.mes.disruptiontracker.detail.oView.getId());
 
+		
+	},
+	
+	
+	/**************************************
+	 * Disruption Close Pop-Up Functions 
+	 */
+	onCloseDisruptnDetailPopUp: function(){
+		airbus.mes.disruptiontracker.detailPopUp.close();
+	},
+	
+	afterCloseDisruptnDetailPopUp: function(){
 		
 	}
 	
