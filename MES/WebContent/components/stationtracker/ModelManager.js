@@ -91,8 +91,7 @@ airbus.mes.stationtracker.ModelManager = {
     	   seturlLineAssignment = this.replaceURI(seturlLineAssignment, "$mode", sModeAssignment);
     	   seturlLineAssignment = this.replaceURI(seturlLineAssignment, "$qacheck", bQACheck);
     	   
-//    	   seturlLineAssignment = "https://dmiswde0.eu.airbus.corp/XMII/Illuminator?QueryTemplate=XX_MOD1684_Temp%2FTestNJA%2FXMLTest%2FxmlOutput_SQUE&IsTesting=T&Content-Type=text%2Fxml&j_user=ng560db&j_password=pierre247";
-    	   
+ 	   
     	   $.ajax({
    			url : seturlLineAssignment,
    			cache : false,
@@ -100,11 +99,7 @@ airbus.mes.stationtracker.ModelManager = {
    				//TODO handle Warning QA
    				if(airbus.mes.shell.util.Formatter.getMiiMessageType(data) == "E"){
    					sap.m.MessageToast.show(airbus.mes.shell.util.Formatter.getMiiTextFromData(data));
-   				}
-//   				if(){
-//   					//Call PopUp Missing QAs
-//   				}
-   				if(data.message == "W"){
+   				} else if(data.message == "W"){
    					var checkQAModel = new sap.ui.model.json.JSONModel();
    					checkQAModel.setData(data.Rowsets.Rowset[1]);
    					if (!airbus.mes.stationtracker.checkQAPopUp) {
