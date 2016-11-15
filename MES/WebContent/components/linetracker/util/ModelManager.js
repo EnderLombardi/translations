@@ -998,17 +998,23 @@ airbus.mes.linetracker.util.ModelManager = {
 	// ***********************************SwapStations******************************************
 	onSwap : function(oEvent) {
 
-		var oShell = sap.ui.getCore().byId("idMainView--myShell");
-		var worksetItem = oShell.getSelectedWorksetItem();
+//		var oShell = sap.ui.getCore().byId("idMainView--myShell");
+//		var worksetItem = oShell.getSelectedWorksetItem();
+//		var pressed = oEvent.getSource().getPressed();
+		
+		var oNav = sap.ui.getCore().byId("idMainView--MainViewNavContainer");
+		var worksetItem = oNav.getCurrentPage().getId();
 		var pressed = oEvent.getSource().getPressed();
 
 		switch (worksetItem) {
-		case "idMainView--idFactory":
+//		case "idMainView--idFactory":
+		case "idFactoryView":
 			airbus.mes.linetracker.util.ModelManager.swapStationsFactoryView(pressed);
 
 			break;
 
-		case "idMainView--idProduction":
+//		case "idMainView--idProduction":
+		case "idProductionView":
 			airbus.mes.linetracker.util.ModelManager.swapStationsProductionView(pressed);
 			break;
 
