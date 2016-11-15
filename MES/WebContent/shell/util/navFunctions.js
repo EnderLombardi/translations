@@ -121,6 +121,39 @@ airbus.mes.shell.util.navFunctions = {
 			nav.to(airbus.mes.linetracker.oView.getId());
 		},
 		
+		disruptionsDetail: function(container, reportDisruptButton, createButton, updateButton, cancelButton){
+			if (airbus.mes.disruptions === undefined || airbus.mes.disruptions.oView === undefined) {
+				jQuery.sap.registerModulePath("airbus.mes.disruptions", "../components/disruptions");
+				
+				sap.ui.getCore().createComponent({
+					name : "airbus.mes.disruptions",
+				});
+			}
+			if(container.getPage("ViewDisruptionView") == null){
+				container.addPage(airbus.mes.disruptions.oView.viewDisruption);
+				container.addPage(airbus.mes.disruptions.oView.createDisruption);
+			}
+			
+
+			// Set click event on report disruption button
+			if(reportDisruptButton){
+				reportDisruptButton.attachPress(airbus.mes.disruptions.oView.viewDisruption.oController.onReportDisruption);
+			}
+			
+			// Set click event on create, update and cancel disruption button
+			if(createButton){
+				createButton.attachPress(airbus.mes.disruptions.oView.createDisruption.oController.onCreateDisruption);
+			}
+			
+			if(updateButton){
+				updateButton.attachPress(airbus.mes.disruptions.oView.createDisruption.oController.onUpdateDisruption);
+			}
+			
+			if(cancelButton){
+				cancelButton.attachPress(airbus.mes.disruptions.oView.createDisruption.oController.onCancelCreateDisruption);
+			}	
+		},
+		
 		disruptionTracker: function(){
 
 			if (airbus.mes.disruptiontracker === undefined || airbus.mes.disruptiontracker.oView === undefined){

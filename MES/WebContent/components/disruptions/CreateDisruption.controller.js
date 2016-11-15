@@ -69,16 +69,6 @@ sap.ui
 					},
 
 					onInit : function() {
-						// Set events on buttons
-						sap.ui.getCore().byId(
-								"operationDetailPopup--btnCreateDisruption")
-								.attachPress(this.onCreateDisruption);
-						sap.ui.getCore().byId(
-								"operationDetailPopup--btnUpdateDisruption")
-								.attachPress(this.onUpdateDisruption);
-						sap.ui.getCore().byId(
-								"operationDetailPopup--btnCancelDisruption")
-								.attachPress(this.onCancelCreateDisruption);
 
 						this.addParent(this.selectTree, undefined);
 						/*
@@ -222,7 +212,7 @@ sap.ui
 					 */
 					onCreateDisruption : function() {
 
-						var oView = airbus.mes.operationdetail.createDisruption.oView;
+						var oView = airbus.mes.disruptions.oView.createDisruption;
 						var oController = oView.getController();
 
 						// some mandatory fields need to be filled before
@@ -399,7 +389,7 @@ sap.ui
 					 * Root Cause.
 					 */
 					onUpdateDisruption : function() {
-						var oView = airbus.mes.operationdetail.createDisruption.oView;
+						var oView = airbus.mes.disruptions.oView.createDisruption;
 
 						var sMessageRef = sap.ui.getCore().getModel(
 								"DisruptionDetailModel").getProperty(
@@ -473,6 +463,11 @@ sap.ui
 							this.getView().byId("comment").setValue();
 							this.initializeTree();
 							this.setEnabledSelectBox(false, true, true, true);
+							
+							// Disable input according to update disruption
+							this.getView().byId("selectOriginator").setEnabled(false);
+							this.getView().byId("description").setEnabled(false);
+							this.getView().byId("timeLost").setEnabled(false);
 
 						} else {
 
@@ -483,6 +478,11 @@ sap.ui
 										this.getView().byId("selectOriginator").getItemAt(0).getKey());
 							
 							this.setEnabledSelectBox(true, false, false, false);
+
+							// Enable fields for creation
+							this.getView().byId("selectOriginator").setEnabled(true);
+							this.getView().byId("description").setEnabled(true);
+							this.getView().byId("timeLost").setEnabled(true);
 
 						}
 					},
@@ -510,23 +510,7 @@ sap.ui
 
 						var oOperDetailNavContainer = sap.ui.getCore().byId(
 								"operationDetailsView--operDetailNavContainer");
-
-						if (airbus.mes.operationdetail.viewDisruption === undefined
-								|| airbus.mes.operationdetail.viewDisruption.oView === undefined) {
-							sap.ui
-									.getCore()
-									.createComponent(
-											{
-												name : "airbus.mes.operationdetail.viewDisruption",
-											});
-
-							oOperDetailNavContainer
-									.addPage(airbus.mes.operationdetail.viewDisruption.oView);
-						}
-
-						oOperDetailNavContainer
-								.to(airbus.mes.operationdetail.viewDisruption.oView
-										.getId());
+						oOperDetailNavContainer.back();						
 					},
 
 					/***********************************************************

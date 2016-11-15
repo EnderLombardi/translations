@@ -117,7 +117,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 	 */	
 	onTableClick: function(){
 		//create Pop-Up as a fragment 
-		if (airbus.mes.disruptiontracker.disruptionDetailPopup === undefined) {
+		if (airbus.mes.disruptiontracker.detailPopUp === undefined) {
 
 		    airbus.mes.disruptiontracker.detailPopUp = sap.ui.xmlfragment("disruptionDetailPopup",
 		                 "airbus.mes.disruptiontracker.detail.disruptionDetailPopup", airbus.mes.disruptiontracker.oView
@@ -128,35 +128,18 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 
 		} 
 		airbus.mes.disruptiontracker.detailPopUp.open();
-		//Create component for PopUp
-		this.nav = sap.ui.getCore().byId("disruptionDetailPopUp--disruptDetailNavContainer");
-		if (airbus.mes.operationdetail.viewDisruption === undefined
-				|| airbus.mes.operationdetail.viewDisruption.oView === undefined) {
-			sap.ui
-					.getCore()
-					.createComponent(
-							{
-								name : "airbus.mes.operationdetail.viewDisruption",
-							});
-			this.nav
-					.addPage(airbus.mes.operationdetail.viewDisruption.oView);
-		}
-
-		this.nav
-				.to(airbus.mes.operationdetail.viewDisruption.oView
-						.getId());
-
-		/*if (airbus.mes.disruptiontracker.detail === undefined || airbus.mes.disruptiontracker.detail.oView === undefined) {
-			jQuery.sap.registerModulePath("airbus.mes.disruptiontracker.detail", "../components/disruptiontracker/detail");
-			sap.ui.getCore().createComponent({
-				name : "airbus.mes.disruptiontracker.detail",
-			});
-			
-			this.nav.addPage(airbus.mes.disruptiontracker.detail.oView);
-		}
 		
-		this.nav.to(airbus.mes.disruptiontracker.detail.oView.getId());*/
-
+		//Add View Disruptions view to pop-up navigation container
+		this.nav = sap.ui.getCore().byId("disruptionDetailPopup--disruptDetailNavContainer");
+		
+		airbus.mes.shell.util.navFunctions.disruptionsDetail(this.nav,
+			0, // Report Disruption Button
+			0, // Create Button
+			sap.ui.getCore().byId("disruptionDetailPopup--btnUpdateDisruption"), // Update Button
+			sap.ui.getCore().byId("disruptionDetailPopup--btnCancelDisruption")	// Cancel Button	
+		);
+		
+		this.nav.to(airbus.mes.disruptions.oView.viewDisruption.getId());
 		
 	},
 	

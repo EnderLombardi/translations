@@ -122,7 +122,7 @@ airbus.mes.disruptions.ModelManager = {
 
 	onLoadDisruptionCategory : function() {
 
-		airbus.mes.operationdetail.createDisruption.oView.oController
+		airbus.mes.disruptions.oView.createDisruption.oController
 				.setDataForEditDisruption();
 	},
 
@@ -186,11 +186,10 @@ airbus.mes.disruptions.ModelManager = {
 	onOperationDisruptionsLoad : function() {
 
 		/* Set filter for Comments on all the disruptions */
-		airbus.mes.operationdetail.viewDisruption.oView.getController()
+		airbus.mes.disruptions.oView.viewDisruption.oController
 				.applyFiltersOnComments();
 
-		airbus.mes.operationdetail.oView.setBusy(false); // Set Busy
-		// Indicator false
+		airbus.mes.operationdetail.oView.setBusy(false); // Set Busy Indicator false
 	},
 
 	/***************************************************************************
@@ -215,10 +214,10 @@ airbus.mes.disruptions.ModelManager = {
 					type : 'POST',
 					data : {
 						"Param.1" : airbus.mes.settings.ModelManager.site,
-						"Param.2" : "NG42E7A",
-/*						"Param.2" : sap.ui.getCore().getModel(
+						/*"Param.2" : "NG42E7A",*/
+						"Param.2" : sap.ui.getCore().getModel(
 								"userSettingModel").getProperty(
-								"/Rowsets/Rowset/0/Row/0/user"),*/
+								"/Rowsets/Rowset/0/Row/0/user"),
 						"Param.3" : messageType,
 						"Param.4" : messageSubject,
 						"Param.5" : messageBody,
@@ -243,9 +242,7 @@ airbus.mes.disruptions.ModelManager = {
 										.getCore()
 										.byId(
 												"operationDetailsView--operDetailNavContainer")
-										.to(
-												airbus.mes.operationdetail.viewDisruption.oView
-														.getId());
+										back();
 								// load disruption Model again for new message
 								var operationBO = sap.ui.getCore().getModel(
 										"operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_bo;
@@ -273,9 +270,7 @@ airbus.mes.disruptions.ModelManager = {
 					},
 
 					error : function() {
-						airbus.mes.operationdetail.oView.setBusy(false); // Remove
-						// Busy
-						// Indicator
+						airbus.mes.operationdetail.oView.setBusy(false); // Remove Busy Indicator
 						airbus.mes.shell.ModelManager
 								.messageShow(airbus.mes.operationdetail.createDisruption.oView
 										.getModel("i18nModel").getProperty(
@@ -330,18 +325,10 @@ airbus.mes.disruptions.ModelManager = {
 								airbus.mes.shell.ModelManager
 										.messageShow(data.Rowsets.Rowset[0].Row[0].Message);
 
-								// navigate to View Disruption after message
-								// success
-								sap.ui
-										.getCore()
-										.byId(
-												"operationDetailsView--operDetailNavContainer")
-										.to(
-												airbus.mes.operationdetail.viewDisruption.oView
-														.getId());
+								// Navigate to View Disruption after message success
+								sap.ui.getCore().byId("operationDetailsView--operDetailNavContainer").back();
 
-								// load disruption Model again for updated
-								// message
+								// Load disruption Model again for updated message
 								var operationBO = sap.ui.getCore().getModel(
 										"operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_bo;
 								airbus.mes.disruptions.ModelManager
@@ -368,9 +355,7 @@ airbus.mes.disruptions.ModelManager = {
 					},
 
 					error : function() {
-						airbus.mes.operationdetail.oView.setBusy(false); // Remove
-						// Busy
-						// Indicator
+						airbus.mes.operationdetail.oView.setBusy(false); // Remove Busy Indicator
 						airbus.mes.shell.ModelManager
 								.messageShow(airbus.mes.operationdetail.createDisruption.oView
 										.getModel("i18nModel").getProperty(

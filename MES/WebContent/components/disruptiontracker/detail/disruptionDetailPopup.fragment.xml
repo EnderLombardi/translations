@@ -1,7 +1,7 @@
 <core:FragmentDefinition xmlns="sap.m"
 	xmlns:core="sap.ui.core">
 
-	<Dialog id="disruptionDetailPopUp" contentWidth="90%"
+	<Dialog id="disruptionDetailPopUp" class="classDisruptionDetailPopUp" contentWidth="90%"
 		contentHeight="90%" verticalScrolling="true" showHeader="false" afterClose="">
 		<content>
 			<NavContainer id="disruptDetailNavContainer" class="navContAutoHeight"
@@ -13,6 +13,9 @@
 
 		</content>
 		<buttons>
+			<Button id="btnUpdateDisruption" text="{StationTrackerI18n>update}" type="Accept" press="onUpdateDisruption" visible="false" />
+			<Button id="btnCancelDisruption" text="{StationTrackerI18n>cancel}" type="Reject" press="onCancelCreateDisruption" visible="false" />
+
 			<Button text="{disruptiontrackerI18n>Close}" icon="sap-icon://decline" press="onCloseDisruptnDetailPopUp" />
 		</buttons>
 	</Dialog>

@@ -44,7 +44,7 @@ sap.ui
 					/*onCloseOperationDetailPopup : function() {
 
 						airbus.mes.stationtracker.operationDetailPopup.close();
-						airbus.mes.shell.oView.getController()
+						airbus.mes.shell.oView.oController
 								.renderStationTracker();
 					},*/
 
@@ -55,10 +55,9 @@ sap.ui
 					 * 
 					 * @memberOf components.operationdetail.operationDetail
 					 */
-					onBeforeRendering : function() {
-
-						//				
-					},
+					//onBeforeRendering : function() {/
+					//				
+					//},
 					/**
 					 * Called when the View has been rendered (so its HTML is
 					 * part of the document). Post-rendering manipulations of
@@ -88,48 +87,6 @@ sap.ui
 								false);
 						this.getView().byId("operationDetailPanel")
 								.setExpanded(false);
-
-						/*
-						 * // Load Reason Code Model // Model for Reason Code
-						 * Comments airbus.mes.operationdetail.ModelManager
-						 * .loadReasonCodeModel(); // Set Slider enabled or
-						 * dis-abeled based on Status
-						 * sap.ui.getCore().getModel("operationDetailModel")
-						 * .refresh();
-						 * 
-						 * if (this.getView().byId("operationStatus").getText()
-						 * === "Not Started" ||
-						 * this.getView().byId("operationStatus") .getText() ===
-						 * "Paused") {
-						 * 
-						 * this.setProgressScreenBtn(false, false, true);
-						 * this.getView().byId("progressSlider").setEnabled(
-						 * false); } else if
-						 * (this.getView().byId("operationStatus") .getText()
-						 * === "In Progress") {
-						 * 
-						 * this.setProgressScreenBtn(true, true, false);
-						 * this.getView().byId("progressSlider").setEnabled(
-						 * true); } else if
-						 * (this.getView().byId("operationStatus") .getText()
-						 * === "Blocked" ||
-						 * this.getView().byId("operationStatus") .getText() ===
-						 * "Confirmed") {
-						 * 
-						 * this.setProgressScreenBtn(false, false, false);
-						 * this.getView().byId("progressSlider").setEnabled(
-						 * false); this.getView().byId("progressSliderfirst")
-						 * .setEnabled(false); }
-						 * 
-						 * $("#operationDetailsView--operationNav-content")
-						 * .height( ($("#"+
-						 * airbus.mes.operationdetail.parentId).height() -
-						 * $("#operationDetailsView--operationDetailPanel").height() -
-						 * $("#operationDetailsView--operationNav--header").height() -
-						 * $("#operationDetailsView--operationStatusFooter").height()
-						 * ));
-						 */
-
 					},
 
 					/***********************************************************
@@ -145,13 +102,11 @@ sap.ui
 							this.getView().byId("switchStatusLabel").setText(
 									this.getView().getModel("i18n")
 											.getProperty("Execution"));
-							// this.setScreenforSwitchMode(true);
 
 						} else {
 							this.getView().byId("switchStatusLabel").setText(
 									this.getView().getModel("i18n")
 											.getProperty("ReadOnly"));
-							// this.setScreenforSwitchMode(false);
 						}
 						/**
 						 * ***set the buttons according to the status of
@@ -160,16 +115,15 @@ sap.ui
 						switch(this.nav.getCurrentPage().getId()){
 						
 						case "idStatusView":
-							airbus.mes.operationdetail.status.oView.getController().setOperationActionButtons();
+							airbus.mes.operationdetail.status.oView.oController.setOperationActionButtons();
 							break;
 							
 						case "ViewDisruptionView":
-							airbus.mes.operationdetail.viewDisruption.oView.getController().turnOnOffButtons();
+							airbus.mes.disruptions.oView.viewDisruption.oController.turnOnOffButtons();
 							break;
 
 						case "createDisruptionView":
-							sap.ui.getCore().byId("createDisruptionView")
-									.getController().onCancelCreateDisruption()
+							airbus.mes.disruptions.oView.createDisruption.oController.onCancelCreateDisruption();
 						}
 
 					},
@@ -197,21 +151,14 @@ sap.ui
 
 							break;
 						case "disruption":
-							if (airbus.mes.operationdetail.viewDisruption === undefined
-									|| airbus.mes.operationdetail.viewDisruption.oView === undefined) {
-								sap.ui
-										.getCore()
-										.createComponent(
-												{
-													name : "airbus.mes.operationdetail.viewDisruption",
-												});
-								this.nav
-										.addPage(airbus.mes.operationdetail.viewDisruption.oView);
-							}
-
-							this.nav
-									.to(airbus.mes.operationdetail.viewDisruption.oView
-											.getId());
+							airbus.mes.shell.util.navFunctions.disruptionsDetail(this.nav,
+									sap.ui.getCore().byId("operationDetailPopup--reportDisruption"), // Report Disruption Button
+									sap.ui.getCore().byId("operationDetailPopup--btnCreateDisruption"), // Create Button
+									sap.ui.getCore().byId("operationDetailPopup--btnUpdateDisruption"), // Update Button
+									sap.ui.getCore().byId("operationDetailPopup--btnCancelDisruption")	// Cancel Button							
+							);
+							
+							this.nav.to(airbus.mes.disruptions.oView.viewDisruption.getId());
 							break;
 						}
 					},
@@ -223,29 +170,22 @@ sap.ui
 						/***************************************************
 						 * Show/ Hide Footer Buttons
 						 */
-						if(this.nav.getCurrentPage().sId != "idStatusView"){
+						switch(this.nav.getCurrentPage().sId){
+						case "idStatusView":
 							// Hide buttons
 							sap.ui.getCore().byId("operationDetailPopup--btnPause").setVisible(false);
 							sap.ui.getCore().byId("operationDetailPopup--btnActivate").setVisible(false);
 							sap.ui.getCore().byId("operationDetailPopup--btnConfirm").setVisible(false);
 							sap.ui.getCore().byId("operationDetailPopup--btnComplete").setVisible(false);
-						}
-						else{
-							airbus.mes.operationdetail.status.oView.getController().setOperationActionButtons();
-						}
-						
-						
-						if(this.nav.getCurrentPage().sId != "ViewDisruptionView"){
+							break;
+							
+						case "ViewDisruptionView":
 							// Hide buttons
-							sap.ui.getCore().byId("operationDetailPopup--reportDisruption").setVisible(
-									false);
-						}
-						else{
-							airbus.mes.operationdetail.viewDisruption.oView.getController().turnOnOffButtons();
-						}
+							sap.ui.getCore().byId("operationDetailPopup--reportDisruption").setVisible(false);
+							break;
 						
 						
-						if(this.nav.getCurrentPage().sId != "createDisruptionView"){
+						case "createDisruptionView":
 							// Hide buttons
 							sap.ui.getCore().byId("operationDetailPopup--btnCreateDisruption").setVisible(
 									false);
@@ -253,40 +193,8 @@ sap.ui
 									false);
 							sap.ui.getCore().byId("operationDetailPopup--btnCancelDisruption").setVisible(
 									false);
+							break;
 						}
-						else{
-							
-							// In case of Update of Disruption
-							if (sap.ui.getCore().getModel("DisruptionDetailModel").getData() != undefined) {
-									
-								sap.ui.getCore().byId("operationDetailPopup--btnUpdateDisruption").setVisible(true);
-								sap.ui.getCore().byId("operationDetailPopup--btnCreateDisruption").setVisible(false);
-								sap.ui.getCore().byId("operationDetailPopup--btnCancelDisruption").setVisible(true);
-	
-								// Disable input according to update disruption
-								sap.ui.getCore().byId("createDisruptionView--selectOriginator").setEnabled(false);
-								sap.ui.getCore().byId("createDisruptionView--description").setEnabled(false);
-								sap.ui.getCore().byId("createDisruptionView--timeLost").setEnabled(false);
-							}
-							
-							// In case of Creation of disruption
-							else{
-
-
-								airbus.mes.operationdetail.createDisruption.oView.oController.resetAllFields();
-
-								// set buttons according to create disruption
-								sap.ui.getCore().byId("operationDetailPopup--btnUpdateDisruption").setVisible(false);
-								sap.ui.getCore().byId("operationDetailPopup--btnCreateDisruption").setVisible(true);
-								sap.ui.getCore().byId("operationDetailPopup--btnCancelDisruption").setVisible(true);
-
-								// set input according to create disruption
-								sap.ui.getCore().byId("createDisruptionView--selectOriginator").setEnabled(true);
-								sap.ui.getCore().byId("createDisruptionView--description").setEnabled(true);
-								sap.ui.getCore().byId("createDisruptionView--timeLost").setEnabled(true);
-							}
-						}
-
 						
 					},
 
@@ -296,8 +204,16 @@ sap.ui
 						 * Load Data
 						 */
 						switch (this.nav.getCurrentPage().sId) {
+						
+						case "idStatusView":
+							/** Set buttons visibility ****/
+							airbus.mes.operationdetail.status.oView.oController.setOperationActionButtons();
+							break;
 
 						case "ViewDisruptionView":
+							/** Set buttons visibility ****/
+							airbus.mes.disruptions.oView.viewDisruption.oController.turnOnOffButtons();
+							
 							/***************************************************
 							 * Load Disruption Data
 							 **************************************************/
@@ -311,18 +227,40 @@ sap.ui
 							break;
 
 						case "createDisruptionView":
+
+							/*****************************
+							 *  Set buttons visibility
+							 *****************************/							
+							// In case of Update of Disruption
+							if (sap.ui.getCore().getModel("DisruptionDetailModel").getData() != undefined) {
+									
+								// set buttons according to update disruption
+								sap.ui.getCore().byId("operationDetailPopup--btnUpdateDisruption").setVisible(true);
+								sap.ui.getCore().byId("operationDetailPopup--btnCreateDisruption").setVisible(false);
+								sap.ui.getCore().byId("operationDetailPopup--btnCancelDisruption").setVisible(true);
+							}
+							
+							// In case of Creation of disruption
+							else{
+
+								// set buttons according to create disruption
+								sap.ui.getCore().byId("operationDetailPopup--btnUpdateDisruption").setVisible(false);
+								sap.ui.getCore().byId("operationDetailPopup--btnCreateDisruption").setVisible(true);
+								sap.ui.getCore().byId("operationDetailPopup--btnCancelDisruption").setVisible(true);
+							}
+							
 							/***************************************************
 							 * Load Disruption Custom Data
 							 **************************************************/
-							
 							if (!this.disruptionsCustomDataFlag) {
 								
 								airbus.mes.disruptions.ModelManager.loadData();
 								this.disruptionsCustomDataFlag = true;
 							}
-							else {
-								airbus.mes.operationdetail.createDisruption.oView.oController.setDataForEditDisruption();
-							}
+							else
+								airbus.mes.disruptions.oView.createDisruption.oController.setDataForEditDisruption();
+							
+							
 							break;
 							
 						default:
