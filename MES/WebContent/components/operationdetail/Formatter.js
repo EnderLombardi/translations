@@ -90,6 +90,39 @@ airbus.mes.operationdetail.Formatter = {
 		default:
 			return false;
 		}
+	},
+	displayOriginalPlan : function(startTime, endTime) {
+		if (endTime !== undefined) {
+			var newStartTime = startTime.split("T")
+			var startTimeonly = newStartTime.pop();
+			var startDate = newStartTime.pop();
+			var newEndTime = endTime.split("T")
+			var endTimeonly = newEndTime.pop();
+			var endDate = newEndTime.pop();
+			return startDate+ " " +startTimeonly+ " - " + endDate+ " "
+			+ endTimeonly;
+		}
+	},
+	checkOperationStartEndDate:function(startTime, endTime,endDate){
+		if (endDate !== undefined) {
+			if(endDate === 'TimeUnavailable')
+			{
+				var newStartTime = startTime.split("T")
+				var startTimeonly = newStartTime.pop();
+				var startDate = newStartTime.pop();
+				var newEndTime = endTime.split("T")
+				var endTimeonly = newEndTime.pop();
+				var endDate = newEndTime.pop();
+				return startDate+ " " +startTimeonly+ " - " + endDate+ " "
+				+ endTimeonly;
+			
+			}
+			else return endDate;
+			
+		}
+		
 	}
+
+		
 
 };
