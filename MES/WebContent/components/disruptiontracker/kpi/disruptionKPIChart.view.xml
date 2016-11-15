@@ -69,7 +69,7 @@
 						data="{TimeLostperOperation>/Rowsets/Rowset/2/Row}">
 						<viz.data:dimensions>
 							<viz.data:DimensionDefinition axis="1"
-								name="Operation" value="{TimeLostperOperation>Operation}" />
+								name="Operation" value="{ path: 'TimeLostperOperation>Operation' , formatter: 'airbus.mes.disruptiontracker.Formatter.formatOperation'}" />
 						</viz.data:dimensions>
 						<viz.data:measures>
 							<viz.data:MeasureDefinition name="Time Lost"
