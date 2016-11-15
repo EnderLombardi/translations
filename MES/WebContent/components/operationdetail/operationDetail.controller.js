@@ -215,8 +215,9 @@ sap.ui
 							break;
 						}
 					},
-
-					renderViews : function(oEvent) {
+					
+					
+					onNavigate: function(oEvent){
 						
 						
 						/***************************************************
@@ -243,6 +244,7 @@ sap.ui
 							airbus.mes.operationdetail.viewDisruption.oView.getController().turnOnOffButtons();
 						}
 						
+						
 						if(this.nav.getCurrentPage().sId != "createDisruptionView"){
 							// Hide buttons
 							sap.ui.getCore().byId("operationDetailPopup--btnCreateDisruption").setVisible(
@@ -252,7 +254,43 @@ sap.ui
 							sap.ui.getCore().byId("operationDetailPopup--btnCancelDisruption").setVisible(
 									false);
 						}
+						else{
+							
+							// In case of Update of Disruption
+							if (sap.ui.getCore().getModel("DisruptionDetailModel").getData() != undefined) {
+									
+								sap.ui.getCore().byId("operationDetailPopup--btnUpdateDisruption").setVisible(true);
+								sap.ui.getCore().byId("operationDetailPopup--btnCreateDisruption").setVisible(false);
+								sap.ui.getCore().byId("operationDetailPopup--btnCancelDisruption").setVisible(true);
+	
+								// Disable input according to update disruption
+								sap.ui.getCore().byId("createDisruptionView--selectOriginator").setEnabled(false);
+								sap.ui.getCore().byId("createDisruptionView--description").setEnabled(false);
+								sap.ui.getCore().byId("createDisruptionView--timeLost").setEnabled(false);
+							}
+							
+							// In case of Creation of disruption
+							else{
 
+
+								airbus.mes.operationdetail.createDisruption.oView.oController.resetAllFields();
+
+								// set buttons according to create disruption
+								sap.ui.getCore().byId("operationDetailPopup--btnUpdateDisruption").setVisible(false);
+								sap.ui.getCore().byId("operationDetailPopup--btnCreateDisruption").setVisible(true);
+								sap.ui.getCore().byId("operationDetailPopup--btnCancelDisruption").setVisible(true);
+
+								// set input according to create disruption
+								sap.ui.getCore().byId("createDisruptionView--selectOriginator").setEnabled(true);
+								sap.ui.getCore().byId("createDisruptionView--description").setEnabled(true);
+								sap.ui.getCore().byId("createDisruptionView--timeLost").setEnabled(true);
+							}
+						}
+
+						
+					},
+
+					renderViews : function(oEvent) {
 						
 						/*****************************************
 						 * Load Data

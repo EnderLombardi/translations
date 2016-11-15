@@ -64,6 +64,18 @@ airbus.mes.disruptions.ModelManager = {
 	},
 
 	/***************************************************************************
+	 * Load Category and custom Data
+	 */
+
+	loadData : function() {
+
+		airbus.mes.operationdetail.oView.setBusy(true); // Set Busy Indicator true
+		this.loadDisruptionCategory();
+		this.loadDisruptionCustomData();
+
+	},
+
+	/***************************************************************************
 	 * Set the Models for Custom Data of create Disruption
 	 **************************************************************************/
 	loadDisruptionCustomData : function() {
@@ -112,19 +124,6 @@ airbus.mes.disruptions.ModelManager = {
 
 		airbus.mes.operationdetail.createDisruption.oView.oController
 				.setDataForEditDisruption();
-	},
-
-	/***************************************************************************
-	 * Load Category and custom Data
-	 */
-
-	loadData : function() {
-
-		airbus.mes.operationdetail.oView.setBusy(true); // Set Busy Indicator
-														// true
-		this.loadDisruptionCategory();
-		this.loadDisruptionCustomData();
-
 	},
 
 	/***************************************************************************
