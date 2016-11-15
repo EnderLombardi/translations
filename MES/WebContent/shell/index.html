@@ -49,7 +49,7 @@
 		});
 
 
-		if(window.location.hostname === "localhost") {
+/* 		if(window.location.hostname === "localhost") {
 //		Case of localhost connection, need to define login pass			
 			   jQuery.sap.registerModulePath("airbus.mes.login", "../components/login");		
 			   
@@ -68,7 +68,7 @@
 				document.body.style = {};
 
 		} else {
-//		Case of airbus connection			
+//		Case of airbus connection	 */		
 		
 			oComp1 = sap.ui.getCore().createComponent({
 				name : "airbus.mes.homepage", // root component folder is resources
@@ -97,7 +97,7 @@
 			airbus.mes.settings.ModelManager.loadUserSettingsModel();
 			airbus.mes.settings.ModelManager.checkDisplayFirstSetting();
 		
-		}
+/* 		} */
 	} );
 	
 </script>
