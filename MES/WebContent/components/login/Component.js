@@ -9,7 +9,7 @@ sap.ui.core.UIComponent.extend("airbus.mes.login.Component", {
 	metadata : {
 //		manifest: "json",
 		properties : {},
-		includes : [ "css/shell.css" ] //array of css and/or javascript files that should be used in the component  
+		includes : [ "./css/margin.css" ]
 
 	},
 
