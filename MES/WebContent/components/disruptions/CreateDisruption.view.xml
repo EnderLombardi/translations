@@ -175,7 +175,7 @@
 										</Select>
 									</f:fields>
 								</f:FormElement>
-								<!-- this handle will be hiddin in the UI -->
+								<!-- this handle will be hidden in the UI -->
 								<f:FormElement visible="false">
 									<f:label>
 										<Label text="">

@@ -85,12 +85,8 @@ airbus.mes.disruptions.Formatter = {
 
 		if (status == airbus.mes.disruptions.Formatter.status.deleted || status == airbus.mes.disruptions.Formatter.status.closed) {
 			return false;
-		} 
-		else if(originatorFlag == "X") {
-				return true;
 		}
-
-		return false;
+		return true;
 	},
 
 	setDeleteButtonVisibility : function(originatorFlag, status) {

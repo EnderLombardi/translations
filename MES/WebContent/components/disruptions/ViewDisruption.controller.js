@@ -51,7 +51,6 @@ sap.ui
 					// onExit: function() {
 					//
 					// },
-					
 					/***********************************************************
 					 * Turn buttons on off based on execution mode
 					 */
@@ -69,8 +68,9 @@ sap.ui
 						}
 					},
 
-					/*************************************************************
-					 * Filter comments by removing comments not related to the selected disruption
+					/***********************************************************
+					 * Filter comments by removing comments not related to the
+					 * selected disruption
 					 */
 					applyFiltersOnComments : function() {
 						var listItems = this.getView().byId("disrptlist")
@@ -97,7 +97,7 @@ sap.ui
 					},
 
 					/***********************************************************
-					 * Open Pop-Up to ask Time Lost while Closing the Disruption 
+					 * Open Pop-Up to ask Time Lost while Closing the Disruption
 					 */
 					onCloseDisruption : function(oEvt) {
 						var sPath = oEvt.getSource().getParent().getParent()
@@ -240,8 +240,7 @@ sap.ui
 									.error(airbus.mes.operationdetail.viewDisruption.oView
 											.getModel("i18nModel").getProperty(
 													"disruptionDeleteError"));
-						} 
-						else {
+						} else {
 
 							var title = this.getView().getModel("i18nModel")
 									.getProperty("deleteDisruption");
@@ -686,10 +685,35 @@ sap.ui
 						oOperDetailNavContainer
 								.to(airbus.mes.operationdetail.createDisruption.oView
 										.getId());
+						
+						airbus.mes.operationdetail.createDisruption.oView.oController
+								.resetAllFields();
+
+						// set buttons according to create disruption
+						sap.ui.getCore().byId(
+								"operationDetailPopup--btnUpdateDisruption")
+								.setVisible(false);
+						sap.ui.getCore().byId(
+								"operationDetailPopup--btnCreateDisruption")
+								.setVisible(true);
+						sap.ui.getCore().byId(
+								"operationDetailPopup--btnCancelDisruption")
+								.setVisible(true);
+
+						// set input according to create disruption
+						sap.ui.getCore().byId(
+								"createDisruptionView--selectOriginator")
+								.setEnabled(true);
+
+						sap.ui.getCore().byId(
+								"createDisruptionView--description")
+								.setEnabled(true);
+						sap.ui.getCore().byId("createDisruptionView--timeLost")
+								.setEnabled(true);
 					},
 
 					/***********************************************************
-					 * When Comment is Submitted to Mark Solved Disruption
+					 * Edit Disruption
 					 */
 					onEditDisruption : function(oEvent) {
 
@@ -700,6 +724,71 @@ sap.ui
 							sap.m.MessageBox.error(this.getView().getModel(
 									"i18nModel").getProperty("readModeError"));
 							return;
+
+							// Set fields editable according to Originator and
+							// Resolution Flag
+							var origFlag = oEvent.getSource()
+									.getBindingContext(
+											"operationDisruptionsModel")
+									.getObject("OriginatorFlag");
+
+							var resFlag = oEvent.getSource().getBindingContext(
+									"operationDisruptionsModel").getObject(
+									"ResponsibleFlag");
+
+							if (origFlag == "" && resFlag == "X") {
+
+
+								// Set enabled = true
+								sap.ui.getCore().byId(
+										"createDisruptionView--selectResponsible")
+										.setEnabled(true);
+
+								sap.ui.getCore().byId(
+										"createDisruptionView--expectedDate")
+										.setEnabled(true);
+
+								sap.ui.getCore().byId(
+										"createDisruptionView--expectedTime")
+										.setEnabled(true);
+
+								sap.ui.getCore().byId(
+										"createDisruptionView--selectRootCause")
+										.setEnabled(true);
+
+								sap.ui.getCore().byId(
+										"createDisruptionView--comment")
+										.setEnabled(true);
+								
+								
+								/*--------------------------------------------------*/
+								
+
+								// Set enabled = false
+								sap.ui.getCore().byId(
+										"createDisruptionView--selectCategory")
+										.setEnabled(false);
+
+								sap.ui.getCore().byId(
+										"createDisruptionView--selectreason")
+										.setEnabled(false);
+
+								sap.ui.getCore().byId(
+										"createDisruptionView--status")
+										.setEnabled(false);
+
+								sap.ui.getCore().byId(
+										"createDisruptionView--gravity")
+										.setEnabled(false);
+
+								sap.ui.getCore().byId(
+										"createDisruptionView--openDate")
+										.setEnabled(false);
+
+								sap.ui.getCore().byId(
+										"createDisruptionView--openTime")
+										.setEnabled(false);
+							}
 
 						}
 						
