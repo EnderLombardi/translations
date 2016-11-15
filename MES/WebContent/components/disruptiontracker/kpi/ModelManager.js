@@ -51,8 +51,8 @@ airbus.mes.disruptiontracker.kpi.ModelManager = {
 	
 	getKPIData : function() {
 		var urlCategoryData = this.urlModel.getProperty("getDiruptionKPIURL");
-//		urlCategoryData = airbus.mes.shell.ModelManager.replaceURI(urlCategoryData,
-	//			"$site", airbus.mes.settings.ModelManager.site);
+		urlCategoryData = airbus.mes.shell.ModelManager.replaceURI(urlCategoryData,
+				"$Site", airbus.mes.settings.ModelManager.site);
 		return urlCategoryData;
 	},
 	
