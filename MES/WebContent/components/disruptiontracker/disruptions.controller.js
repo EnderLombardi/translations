@@ -130,8 +130,23 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		airbus.mes.disruptiontracker.detailPopUp.open();
 		//Create component for PopUp
 		this.nav = sap.ui.getCore().byId("disruptionDetailPopUp--disruptDetailNavContainer");
+		if (airbus.mes.operationdetail.viewDisruption === undefined
+				|| airbus.mes.operationdetail.viewDisruption.oView === undefined) {
+			sap.ui
+					.getCore()
+					.createComponent(
+							{
+								name : "airbus.mes.operationdetail.viewDisruption",
+							});
+			this.nav
+					.addPage(airbus.mes.operationdetail.viewDisruption.oView);
+		}
 
-		if (airbus.mes.disruptiontracker.detail === undefined || airbus.mes.disruptiontracker.detail.oView === undefined) {
+		this.nav
+				.to(airbus.mes.operationdetail.viewDisruption.oView
+						.getId());
+
+		/*if (airbus.mes.disruptiontracker.detail === undefined || airbus.mes.disruptiontracker.detail.oView === undefined) {
 			jQuery.sap.registerModulePath("airbus.mes.disruptiontracker.detail", "../components/disruptiontracker/detail");
 			sap.ui.getCore().createComponent({
 				name : "airbus.mes.disruptiontracker.detail",
@@ -140,7 +155,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 			this.nav.addPage(airbus.mes.disruptiontracker.detail.oView);
 		}
 		
-		this.nav.to(airbus.mes.disruptiontracker.detail.oView.getId());
+		this.nav.to(airbus.mes.disruptiontracker.detail.oView.getId());*/
 
 		
 	},
