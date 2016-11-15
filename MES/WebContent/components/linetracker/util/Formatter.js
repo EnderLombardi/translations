@@ -118,24 +118,24 @@ airbus.mes.linetracker.util.Formatter = {
 	setVisible : function(value) {
 		return airbus.mes.linetracker.util.RoleManager.isAllowed('MII_MOD1684_PULSE');
 	},
-	isPolypolyEditable : function() {
-		if (PolypolyManager.globalContext.tabSelected == "polypoly") {
-			return airbus.mes.linetracker.util.RoleManager.isAllowed('MII_MOD1684_PRODMNG')
-					|| airbus.mes.linetracker.util.RoleManager.isAllowed('MII_MOD1684_MANUFMNG')
-					|| airbus.mes.linetracker.util.RoleManager.isAllowed('MII_MOD1684_HOOPE')
-					|| airbus.mes.linetracker.util.RoleManager.isAllowed('MII_MOD1684_MFTEAM');
-		} else {
-			return false;
-		}
-	},
-	isPolypolyVisible : function() {
-		return airbus.mes.linetracker.util.RoleManager.isAllowed('MII_MOD1684_PRODMNG')
-				|| airbus.mes.linetracker.util.RoleManager.isAllowed('MII_MOD1684_MANUFMNG')
-				|| airbus.mes.linetracker.util.RoleManager.isAllowed('MII_MOD1684_HOOPE')
-				|| airbus.mes.linetracker.util.RoleManager.isAllowed('MII_MOD1684_MFTEAM')
-				|| airbus.mes.linetracker.util.RoleManager.isAllowed('MII_MOD1684_CDTSUP')
-				|| airbus.mes.linetracker.util.RoleManager.isAllowed('MII_MOD1684_PLTMNG');
-	},
+//	isPolypolyEditable : function() {
+//		if (PolypolyManager.globalContext.tabSelected == "polypoly") {
+//			return airbus.mes.linetracker.util.RoleManager.isAllowed('MII_MOD1684_PRODMNG')
+//					|| airbus.mes.linetracker.util.RoleManager.isAllowed('MII_MOD1684_MANUFMNG')
+//					|| airbus.mes.linetracker.util.RoleManager.isAllowed('MII_MOD1684_HOOPE')
+//					|| airbus.mes.linetracker.util.RoleManager.isAllowed('MII_MOD1684_MFTEAM');
+//		} else {
+//			return false;
+//		}
+//	},
+//	isPolypolyVisible : function() {
+//		return airbus.mes.linetracker.util.RoleManager.isAllowed('MII_MOD1684_PRODMNG')
+//				|| airbus.mes.linetracker.util.RoleManager.isAllowed('MII_MOD1684_MANUFMNG')
+//				|| airbus.mes.linetracker.util.RoleManager.isAllowed('MII_MOD1684_HOOPE')
+//				|| airbus.mes.linetracker.util.RoleManager.isAllowed('MII_MOD1684_MFTEAM')
+//				|| airbus.mes.linetracker.util.RoleManager.isAllowed('MII_MOD1684_CDTSUP')
+//				|| airbus.mes.linetracker.util.RoleManager.isAllowed('MII_MOD1684_PLTMNG');
+//	},
 
 	appendStation : function(station_number) {
 		return airbus.mes.linetracker.util.ModelManager.i18nModel.getProperty("Station") + station_number

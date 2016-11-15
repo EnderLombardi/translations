@@ -154,6 +154,28 @@ airbus.mes.linetracker.util.ModelManager = {
 		//core.setModel(this.i18nModel, "messageBundle");
 
 	},
+	
+	getTranscoStation : function(sSite, sFactory, sLineNumber, sStationNumber, sMsn) {
+		var geturltranscostation = this.urlModel.getProperty('urltranscostation');
+		geturltranscostation = this.replaceURI(geturltranscostation, "$site", sSite);
+		geturltranscostation = this.replaceURI(geturltranscostation, "$factory", sFactory);
+		geturltranscostation = this.replaceURI(geturltranscostation, "$line", sLineNumber);
+		geturltranscostation = this.replaceURI(geturltranscostation, "$station", sStationNumber);
+
+		$.ajax({
+			url : geturltranscostation,
+			cache : false,
+			success : function(data, textStatus, jqXHR) {
+				//TODO handle Warning QA
+				if(airbus.mes.shell.util.Formatter.getMiiMessageType(data) == "E"){
+					sap.m.MessageToast.show(airbus.mes.shell.util.Formatter.getMiiTextFromData(data));
+				}
+				
+			},
+		});
+	},
+	
+	
 	getMessageControler : function() {
 
 		if (!this.MessageBar)

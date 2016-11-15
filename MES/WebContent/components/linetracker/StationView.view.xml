@@ -29,11 +29,11 @@
 							<HBox height="inherit" class="stationTilesHbox">
 								<items>
 									<custom:customStationBox class="stationStationBox"
-										height="100%"
+										press= "onStationPress" height="100%"
 										heading="Station {parts:[{path:'newStationModel>Line'},{path:'newStationModel>Station'}] , formatter:'airbus.mes.linetracker.util.Formatter.stationName'}"
 										state="Error" msn="{newStationModel>MSN}" hand="{newStationModel>HAND}"
 										stationHeadColor="{path:'newStationModel>Conveyor_Status' , formatter:'airbus.mes.linetracker.util.Formatter.stationColor'}"
-										lineNumber="newStationModel>Line" taktResourceStatus="{newStationModel>TAKT_STATUS}">
+										lineNumber="{newStationModel>Line}" taktResourceStatus="{newStationModel>TAKT_STATUS}">
 										<Image class="stationDetailImgStation"
 											src="{path:'newStationModel>TAKT_STATUS' , formatter:'airbus.mes.linetracker.util.Formatter.imageFormatter'}">
 										</Image>
