@@ -221,8 +221,7 @@ sap.ui
 								.validateDisruptionInput(oView);
 						if (bInputMissing == false)
 							return;
-						
-						
+
 						var sCategory = oView.byId("selectCategory")
 								.getSelectedKey();
 						var sRootCause = oView.byId("selectRootCause")
@@ -233,7 +232,7 @@ sap.ui
 						// after selecting Category, Reason, Responsible and
 						// RootCasue,
 						// As this handle will act as a unique key for selection
-						
+
 						oView.byId("handle").setSelectedKey(
 								oView.byId("handle").getItemAt(0).getText());
 
@@ -346,39 +345,38 @@ sap.ui
 					 */
 					validateDisruptionInput : function(oView) {
 						if (oView.byId("description").getValue() == "") {
-							airbus.mes.shell.ModelManager
-									.messageShow(oView.getModel("i18nModel")
-											.getProperty("CompulsaryDescription"));
+							airbus.mes.shell.ModelManager.messageShow(oView
+									.getModel("i18nModel").getProperty(
+											"CompulsaryDescription"));
 							return false;
 						} else if (oView.byId("selectCategory")
 								.getSelectedKey() == "") {
-							airbus.mes.shell.ModelManager
-									.messageShow(oView.getModel("i18nModel")
-											.getProperty("CompulsaryCategory"));
+							airbus.mes.shell.ModelManager.messageShow(oView
+									.getModel("i18nModel").getProperty(
+											"CompulsaryCategory"));
 							return false;
 						} else if (oView.byId("selectreason").getSelectedKey() == "") {
-							airbus.mes.shell.ModelManager
-									.messageShow(oView.getModel("i18nModel")
-											.getProperty("CompulsaryReason"));
+							airbus.mes.shell.ModelManager.messageShow(oView
+									.getModel("i18nModel").getProperty(
+											"CompulsaryReason"));
 							return false;
 						} else if (oView.byId("selectResponsible")
 								.getSelectedKey() == "") {
-							airbus.mes.shell.ModelManager
-									.messageShow(oView.getModel("i18nModel")
-											.getProperty("CompulsaryResponsible"));
+							airbus.mes.shell.ModelManager.messageShow(oView
+									.getModel("i18nModel").getProperty(
+											"CompulsaryResponsible"));
 							return false;
 						} else if (oView.byId("selectOriginator")
 								.getSelectedKey() == "") {
-							airbus.mes.shell.ModelManager
-									.messageShow(oView.getModel("i18nModel")
-											.getProperty("CompulsaryOriginator"));
+							airbus.mes.shell.ModelManager.messageShow(oView
+									.getModel("i18nModel").getProperty(
+											"CompulsaryOriginator"));
 							return false;
-						} else if (oView.byId("expectedDate")
-								.getValue() == "" || oView.byId("expectedTime")
-								.getValue() == "") {
-							airbus.mes.shell.ModelManager
-									.messageShow(oView.getModel("i18nModel")
-											.getProperty("CompulsaryExpectedDateTime"));
+						} else if (oView.byId("expectedDate").getValue() == ""
+								|| oView.byId("expectedTime").getValue() == "") {
+							airbus.mes.shell.ModelManager.messageShow(oView
+									.getModel("i18nModel").getProperty(
+											"CompulsaryExpectedDateTime"));
 							return false;
 						}
 					},
@@ -472,11 +470,15 @@ sap.ui
 						} else {
 
 							this.initializeTree();
-							if(this.getView().byId("selectOriginator").getItems().length == 1)
-								
-								this.getView().byId("selectOriginator").setSelectedKey(
-										this.getView().byId("selectOriginator").getItemAt(0).getKey());
-							
+							if (this.getView().byId("selectOriginator")
+									.getItems().length == 1)
+
+								this.getView().byId("selectOriginator")
+										.setSelectedKey(
+												this.getView().byId(
+														"selectOriginator")
+														.getItemAt(0).getKey());
+
 							this.setEnabledSelectBox(true, false, false, false);
 
 							// Enable fields for creation
@@ -530,6 +532,45 @@ sap.ui
 						this.getView().byId("timeLost").setValue();
 						this.getView().byId("comment").setValue();
 						this.getView().byId("description").setValue();
+					},
+
+					/***********************************************************
+					 * requesting material list to select on create disruption
+					 **********************************************************/
+
+					onMaterialValueHelpRequest : function() {
+						if (!this._materialListDialog) {
+
+							this._materialListDialog = sap.ui
+									.xmlfragment(
+											"airbus.mes.disruptions.fragment.MaterialList",
+											this);
+
+							this.getView().addDependent(
+									this._materialListDialog);
+
+						}
+
+						this._materialListDialog.open();
+					},
+
+					/***********************************************************
+					 * show selected material list to user in create disruption
+					 * view
+					 **********************************************************/
+					handleSelectMaterialList : function(oEvent) {
+						
+						var aSelectedItems = oEvent.getParameters().selectedItems;
+						aSelectedItems.forEach(function(item, index){
+							var oToken = new sap.m.Token({
+								key : item.getContent()[0].getContent()[0].getText(),
+								text: item.getContent()[0].getContent()[0].getText()+"("+item.getContent()[0].getContent()[2].getValue()+")"
+								
+							});
+							sap.ui.getCore().byId("createDisruptionView--materials").addToken(oToken);
+						});
+						
+						this._materialListDialog.close();
 					}
 
 				/**

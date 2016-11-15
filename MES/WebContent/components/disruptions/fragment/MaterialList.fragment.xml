@@ -1,0 +1,34 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.ui.layout.form"
+	xmlns:l="sap.ui.layout">
+	<SelectDialog id="materialListSelectDialog" title="Select Material"
+		search="handleSearchMaterialList" confirm="handleSelectMaterialList"
+		close="handleCloseMaterialList" multiSelect="true">
+		<!-- items="{ path: '/ProductCollection' }" > -->
+		<items>
+			<CustomListItem>
+				<l:Grid class="sapUiSmallMarginTop"
+					 defaultSpan="L12 M12 S12">
+					<l:content>
+						<Title level="H3" text="Material 1">
+							<layoutData>
+								<l:GridData span="L7 M7 S12" />
+							</layoutData>
+						</Title>
+						<Label text="Qty:">
+							<layoutData>
+								<l:GridData span="L2 M2 S12" />
+							</layoutData>
+						</Label>
+						<Input type="Number">
+							<layoutData>
+								<l:GridData span="L3 M3 S12" />
+							</layoutData>
+						</Input>
+
+					</l:content>
+				</l:Grid>
+			</CustomListItem>
+		</items>
+	</SelectDialog>
+</core:FragmentDefinition>
