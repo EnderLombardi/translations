@@ -1,0 +1,70 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:custom="airbus.mes.stationtracker"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Dialog title="Unplanned activities" class="pageHeaderDialog classWorklistPopover">
+		<customHeader>
+			<Toolbar>
+				<ToolbarSpacer />
+				<Label id="LabelTitle" text="{ path: 'WorkListModel>andons' , formatter: 'airbus.mes.stationtracker.util.Formatter.setWorkListText' }" />
+				<ToolbarSpacer />
+			</Toolbar>
+		</customHeader>
+		<content>
+			<VBox>
+				<HBox>
+					<Select id="selectGroupingOSW"
+							class="sapUiTinyMarginBeginEnd comboBoxStyle"
+						    items="{groupModel>/Rowsets/Rowset/0/Row/Grouping}"
+						    change="changeGroupWorkList"
+						    visible="true">
+						<core:ListItem key="{groupModel>key}" text="{ path : 'groupModel>Value' , formatter : '.getI18nValue' }" />				
+					</Select>
+					<Select class="sapUiTinyMarginBeginEnd comboBoxStyle"
+						    items="{groupModel>/Rowsets/Rowset/0/Row/Status}"
+						    change="onChangeFilter"
+					        visible="true">						
+						<core:ListItem key="{groupModel>Value}" text="{ path : 'groupModel>Value' , formatter : '.getI18nValue' }" />					
+					</Select>
+				</HBox>
+				<List id="myList" growing="true" growingThreshold="20"
+					growingScrollToLoad="true" items="{ path: 'WorkListModel>/' }"
+					selectionChange="onSelectionChange"
+					mode="{ path : 'WorkListModel>andons' , formatter: 'airbus.mes.stationtracker.util.Formatter.setmodeList'}"
+					includeItemInSelection="{ path : 'WorkListModel>andons' , formatter: 'airbus.mes.stationtracker.util.Formatter.isCheckboxVisible'}">
+					<items>
+						<InputListItem id="sorterList">
+							<content>
+								<HBox>
+									<items>
+										<custom:customProgressIndicator
+											width="auto" state="sap.ui.core.ValueState.Success" status="{WorkListModel>STATE}"
+											click="operationWorkListClick"
+											isAndon="{WorkListModel>andons}"
+											displayValue="{ parts: [ 'WorkListModel>WORKORDER_ID','WorkListModel>WORKORDER_DESCRIPTION' ], formatter: 'airbus.mes.stationtracker.util.Formatter.titleWorklist'}"
+											displayValue2="{ parts: [ 'WorkListModel>OPERATION_ID','WorkListModel>OPERATION_DESCRIPTION','WorkListModel>PROGRESS','WorkListModel>DURATION' ], formatter: 'airbus.mes.stationtracker.util.Formatter.displayValueIM'}"
+											percentValue="{ parts: [ 'WorkListModel>PROGRESS','WorkListModel>DURATION' ], formatter: 'airbus.mes.stationtracker.util.Formatter.percentValue'}">
+											<custom:layoutData>
+												<FlexItemData baseSize="60%" growFactor="1"></FlexItemData>
+											</custom:layoutData>
+										</custom:customProgressIndicator>
+									</items>
+								</HBox>
+							</content>
+						</InputListItem>
+					</items>
+				</List>
+			</VBox>
+		</content>
+		<buttons>
+			<Button text="{StationTrackerI18n>WorklistButtonImport}" type="Transparent" icon="sap-icon://forward"
+				class="sapUiTinyMarginBeginEnd pageHeaderDialog" press="onUnplannedImport"
+				visible="{ path : 'WorkListModel>andons' , formatter: 'airbus.mes.stationtracker.util.Formatter.isCheckboxVisible'}">
+			</Button>
+			<Button text="{StationTrackerI18n>Close}" type="Transparent" icon="sap-icon://decline"
+				class="sapUiTinyMarginBeginEnd" press="onUnplannedClose"
+			>
+			</Button>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>
+

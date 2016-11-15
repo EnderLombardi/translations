@@ -21,6 +21,12 @@ sap.ui.core.UIComponent.extend("airbus.mes.shell.Component", {
 	oView:undefined,
 });
 
+
+airbus.mes.shell.Component.prototype.init = function() {
+	sap.ui.core.UIComponent.prototype.init.apply(this, arguments);
+	
+},
+
 airbus.mes.shell.Component.prototype.createContent = function() {
 	
 	//	View on XML
@@ -46,6 +52,11 @@ airbus.mes.shell.Component.prototype.createContent = function() {
 		this.oView.setModel(sap.ui.getCore().getModel("userDetailModel"),	"userDetailModel");
 		this.oView.setModel(sap.ui.getCore().getModel("ShellI18n"), "ShellI18n");
 		this.oView.setModel(sap.ui.getCore().getModel("userSettingModel"),	"userSettingModel");
+
+//	Manage visibility of connection button
+		if(window.location.hostname === "localhost" ) {
+			sap.ui.getCore().byId("globalNavView--Connection").setVisible(true);
+		}			
 		
 		return this.oView;
 	}

@@ -48,32 +48,57 @@
 			})
 		});
 
-		oComp1 = sap.ui.getCore().createComponent({
-			name : "airbus.mes.homepage", // root component folder is resources
-		});
+
+		if(window.location.hostname === "localhost") {
+//		Case of localhost connection, need to define login pass			
+			   jQuery.sap.registerModulePath("airbus.mes.login", "../components/login");		
+			   
+				oCompLogin = sap.ui.getCore().createComponent({
+					name : "airbus.mes.login", // root component folder is resources
+				});
+				
+				nav = airbus.mes.shell.oView.byId("navCont");
+				nav.afterNavigate;
+			
+				nav.addPage(airbus.mes.login.oView);
+				airbus.mes.login.oView.placeAt(nav);
+			
+				// place this Ui Container with the Component inside into UI Area 
+				oCompCont.placeAt("content");
+				// remove splash color & style
+				document.body.style = {};
+
+		} else {
+//		Case of airbus connection			
 		
-	 	airbus.mes.component = airbus.mes.component || {};
+			oComp1 = sap.ui.getCore().createComponent({
+				name : "airbus.mes.homepage", // root component folder is resources
+			});
+			
+		 	airbus.mes.component = airbus.mes.component || {};
+			
+			airbus.mes.component.settings = sap.ui.getCore().createComponent({
+				name : "airbus.mes.settings", // root component folder is resources
+			});
 		
-		airbus.mes.component.settings = sap.ui.getCore().createComponent({
-			name : "airbus.mes.settings", // root component folder is resources
-		});
-	
+			
 		
-	
+			
+			nav = airbus.mes.shell.oView.byId("navCont");
+			nav.afterNavigate;
 		
-		nav = airbus.mes.shell.oView.byId("navCont");
-		nav.afterNavigate;
-	
-		nav.addPage(airbus.mes.homepage.oView);
-		airbus.mes.homepage.oView.placeAt(nav);
-	
-		// place this Ui Container with the Component inside into UI Area 
-		oCompCont.placeAt("content");
-		// remove splash color & style
-		document.body.style = {};
+			nav.addPage(airbus.mes.homepage.oView);
+			airbus.mes.homepage.oView.placeAt(nav);
 		
-		airbus.mes.settings.ModelManager.loadUserSettingsModel();
-		airbus.mes.settings.ModelManager.checkDisplayFirstSetting();
+			// place this Ui Container with the Component inside into UI Area 
+			oCompCont.placeAt("content");
+			// remove splash color & style
+			document.body.style = {};
+			
+			airbus.mes.settings.ModelManager.loadUserSettingsModel();
+			airbus.mes.settings.ModelManager.checkDisplayFirstSetting();
+		
+		}
 	} );
 	
 </script>

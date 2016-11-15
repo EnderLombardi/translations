@@ -16,7 +16,10 @@
 							<Label text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/lineDescription', formatter : 'airbus.mes.shell.util.Formatter.stationTrackerLine' }" class="pageWelcome sapUiTinyMarginBeginEnd" />					
 					       <ToolbarSpacer />
                            
-                           
+                           <Button id="Connection"
+                           		   text="Connection"
+                           		   visible="false" 
+                           		   press="onPressConnection" />
  
                            <Select id="SelectLanguage" class="sapUiTinyMarginBeginEnd pageHeader pageHeaderBlue" change="onChangeLanguage"> 
 	                           <core:Item text="English" key="en"/>

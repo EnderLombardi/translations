@@ -133,7 +133,9 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 
 
 	},
-
+	onPressConnection : function() {
+		
+	},
 	renderViews : function() {
 
         if ( nav.getCurrentPage().getId() != "homePageView" ) {
