@@ -1,5 +1,11 @@
 sap.ui.controller("airbus.mes.shell.globalNavigation", {
 
+	/****************************************
+	 * Variable for auto refresh
+	 */
+	autoRefresh: undefined,
+	
+	
 	/**
 	 * Called when a controller is instantiated and its View controls (if
 	 * available) are already created. Can be used to modify the View before it
@@ -9,13 +15,9 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 	 * @memberOf components.globalnav.globalNavigation
 	 */
 
-	onInit : function() {
-
-	},
-	onPress : function(oEvt) {
-
-	},
-
+	//onInit : function() {
+	//
+	//},
 
 	goToHome : function() {
 
@@ -139,7 +141,7 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 	
 	
 	onNavigate: function(){
-		
+		clearInterval(this.autoRefresh);
 	},
 	
 	
@@ -161,8 +163,9 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 		
 		case "stationTrackerView":
 
-			//autoRefresh = window.setInterval(this.renderStationTracker, 1000);
 			this.renderStationTracker();
+			this.autoRefresh = window.setInterval(this.renderStationTracker, 300000);
+			
 			break;
 			
 		case "disruptiontrackerView":
@@ -225,7 +228,7 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 		});
 		aFilters.push(duplicatesFilter);
 		
-		aFilters.push(sap.ui.model.Filter("program", "EQ", airbus.mes.settings.ModelManager.program));	// Filter on selected A/C Program
+		aFilters.push(new sap.ui.model.Filter("program", "EQ", airbus.mes.settings.ModelManager.program));	// Filter on selected A/C Program
 		
 		sap.ui
 				.getCore()
