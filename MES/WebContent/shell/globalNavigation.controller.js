@@ -223,8 +223,6 @@ sap.ui
 					 */
 					renderStationTracker : function() {
 
-						console.log("Hello");
-
 						var oModule = airbus.mes.stationtracker.ModelManager;
 						airbus.mes.shell.oView.getController()
 								.setInformationVisibility(true);
