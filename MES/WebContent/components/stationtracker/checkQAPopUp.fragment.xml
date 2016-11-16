@@ -26,8 +26,8 @@
 							<ColumnListItem>
 								<cells>
 									<Text text="{checkQAModel>longName}" />
-									<Text text="{checkQAModel>Operation}" />
-									<Text text="{checkQAModel>missingQA}" />
+									<Text text="{checkQAModel>operationDescription}" />
+									<Text text="{checkQAModel>certificationName}" />
 								</cells>
 							</ColumnListItem>
 						</items>

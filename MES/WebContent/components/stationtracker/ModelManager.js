@@ -99,7 +99,7 @@ airbus.mes.stationtracker.ModelManager = {
    				//TODO handle Warning QA
    				if(airbus.mes.shell.util.Formatter.getMiiMessageType(data) == "E"){
    					sap.m.MessageToast.show(airbus.mes.shell.util.Formatter.getMiiTextFromData(data));
-   				} else if(data.message == "W"){
+   				} else if(data.Rowsets.Rowset[0].Row[0].message == "W"){
    					var checkQAModel = new sap.ui.model.json.JSONModel();
    					checkQAModel.setData(data.Rowsets.Rowset[1]);
    					if (!airbus.mes.stationtracker.checkQAPopUp) {
@@ -108,7 +108,7 @@ airbus.mes.stationtracker.ModelManager = {
    					airbus.mes.stationtracker.checkQAPopUp.setModel(checkQAModel, "checkQAModel");
    					airbus.mes.stationtracker.checkQAPopUp.setModel(airbus.mes.stationtracker.oView.getModel("StationTrackerI18n"),"StationTrackerI18n");
    					airbus.mes.stationtracker.checkQAPopUp.open();
-   				} else if (data.message == "S"){
+   				} else if (data.Rowsets.Rowset[0].Row[0].message == "S"){
    					airbus.mes.shell.globalNavigation.renderStationTracker();
    					airbus.mes.stationtracker.oPopoverPolypoly.close();
    				}
