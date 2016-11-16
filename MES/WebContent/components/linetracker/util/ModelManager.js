@@ -166,7 +166,7 @@ airbus.mes.linetracker.util.ModelManager = {
 
 	},
 	
-	getTranscoStation : function(sSite, sFactory, sLineNumber, sStationNumber, sMsn) {
+	getTranscoStation : function(sSite, sFactory, sLineNumber, sStationNumber) {
 		var geturltranscostation = this.urlModel.getProperty('urltranscostation');
 		geturltranscostation = this.replaceURI(geturltranscostation, "$site", sSite);
 		geturltranscostation = this.replaceURI(geturltranscostation, "$factory", sFactory);
@@ -181,7 +181,13 @@ airbus.mes.linetracker.util.ModelManager = {
 				if(airbus.mes.shell.util.Formatter.getMiiMessageType(data) == "E"){
 					sap.m.MessageToast.show(airbus.mes.shell.util.Formatter.getMiiTextFromData(data));
 				}else{
-					
+					airbus.mes.settings.ModelManager.site = data.Rowsets.Rowset[0].Row[0].Site;
+					airbus.mes.settings.ModelManager.program = data.Rowsets.Rowset[0].Row[0].Program;
+					airbus.mes.settings.ModelManager.station = data.Rowsets.Rowset[0].Row[0].Physical_Station;
+					airbus.mes.settings.ModelManager.line = data.Rowsets.Rowset[0].Row[0].Line;
+					airbus.mes.settings.ModelManager.saveUserSetting(sap.ui.getCore().getConfiguration().getLanguage().slice(0,2));
+//					airbus.mes.settings.ModelManager.loadUserSettingsModel();
+					airbus.mes.shell.util.navFunctions.stationTracker();
 				}
 				
 			},

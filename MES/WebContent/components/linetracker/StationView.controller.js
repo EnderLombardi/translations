@@ -51,7 +51,8 @@ sap.ui.controller("airbus.mes.linetracker.StationView", {
 		var sFactory = airbus.mes.linetracker.util.ModelManager.factory_name;
 		var sSite = airbus.mes.linetracker.util.ModelManager.site;
 		
-		airbus.mes.linetracker.util.ModelManager.getTranscoStation(sSite, sFactory, sLineNumber, sStationNumber, sMsn);
+		airbus.mes.settings.ModelManager.msn = sMsn;
+		airbus.mes.linetracker.util.ModelManager.getTranscoStation(sSite, sFactory, sLineNumber, sStationNumber);
 	},
 	/*onAfterRendering: function(){
 	}*/
