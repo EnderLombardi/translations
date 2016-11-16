@@ -5,9 +5,9 @@
 			<Panel width="450px">	
 				<Image src="../images/Airbus-xl.png" width="90%" display="block" class="sapUiSmallMargin sapThemeHighlight-asColor"/>		
 				<Text text="Login" class="sapUiSmallMargin sapThemeHighlight-asColor "/>
-				<Input placeholder="Login" width="98%"/>
+				<Input id="login" placeholder="Login" width="98%"/>
 				<Text text="Password" class="sapUiSmallMargin sapThemeHighlight-asColor "/>
-				<Input placeholder="Password" width="98%"/>
+				<Input id="password" placeholder="Password" width="98%"/>
 				<Button text="Log in sopra with user password" press="onConfirm" class="sapUiSmallMargin"/>
 				<Button text="Log in Local" press="logLocal" class="sapUiSmallMargin"/>
 			</Panel>
