@@ -461,26 +461,25 @@ sap.ui
 							this.getView().byId("comment").setValue();
 							this.initializeTree();
 							this.setEnabledSelectBox(false, true, true, true);
-							
+
 							// Disable input according to update disruption
-							this.getView().byId("selectOriginator").setEnabled(false);
-							this.getView().byId("description").setEnabled(false);
+							this.getView().byId("selectOriginator").setEnabled(
+									false);
+							this.getView().byId("description")
+									.setEnabled(false);
 							this.getView().byId("timeLost").setEnabled(false);
 
-							
-
 							// Set fields non-editable for resolution group
-							var origFlag = sap.ui.getCore().getModel("DisruptionDetailModel").getData().OriginatorFlag;
+							var origFlag = sap.ui.getCore().getModel(
+									"DisruptionDetailModel").getData().OriginatorFlag;
 
-							var resFlag = sap.ui.getCore().getModel("DisruptionDetailModel").getData().ResponsibleFlag;
+							var resFlag = sap.ui.getCore().getModel(
+									"DisruptionDetailModel").getData().ResponsibleFlag;
 
 							if (origFlag == "" && resFlag == "X") {
 								this.resolutionGroupSettings(false);
-							}
-							else
+							} else
 								this.resolutionGroupSettings(true);
-							
-							
 
 						} else {
 
@@ -497,17 +496,17 @@ sap.ui
 							this.setEnabledSelectBox(true, false, false, false);
 
 							// Enable fields for creation
-							this.getView().byId("selectOriginator").setEnabled(true);
+							this.getView().byId("selectOriginator").setEnabled(
+									true);
 							this.getView().byId("description").setEnabled(true);
 							this.getView().byId("timeLost").setEnabled(true);
-							
+
 							this.resolutionGroupSettings(true);
 
 						}
 					},
-					
-					
-					resolutionGroupSettings: function(state){
+
+					resolutionGroupSettings : function(state) {
 						this.getView().byId("selectCategory").setEnabled(state);
 						this.getView().byId("selectreason").setEnabled(state);
 						this.getView().byId("status").setEnabled(state);
@@ -537,7 +536,7 @@ sap.ui
 
 						var oOperDetailNavContainer = sap.ui.getCore().byId(
 								"operationDetailsView--operDetailNavContainer");
-						oOperDetailNavContainer.back();						
+						oOperDetailNavContainer.back();
 					},
 
 					/***********************************************************
@@ -584,58 +583,80 @@ sap.ui
 					 * view
 					 **********************************************************/
 					handleSelectMaterialList : function(oEvent) {
-						
+
 						var aSelectedItems = oEvent.getParameters().selectedItems;
-						aSelectedItems.forEach(function(item, index){
+						aSelectedItems.forEach(function(item, index) {
 							var oToken = new sap.m.Token({
-								key : item.getContent()[0].getContent()[0].getText(),
-								text: item.getContent()[0].getContent()[0].getText()+"("+item.getContent()[0].getContent()[2].getValue()+")"
-								
+								key : item.getContent()[0].getContent()[0]
+										.getText(),
+								text : item.getContent()[0].getContent()[0]
+										.getText()
+										+ "("
+										+ item.getContent()[0].getContent()[2]
+												.getValue() + ")"
+
 							});
-							sap.ui.getCore().byId("createDisruptionView--materials").addToken(oToken);
+							sap.ui.getCore().byId(
+									"createDisruptionView--materials")
+									.addToken(oToken);
 						});
-						
+
 						this._materialListDialog.close();
 					},
-					
+
 					/***********************************************************
 					 * Adds new free text Material along with quantity to the
 					 * list
 					 */
-					addNewMaterialToList : function(){
-/*						if(this.getView().byId("customMaterial") != ""){
-							
-							var oMaterialItem = new sap.m.CustomListItem({
-								items : new sap.ui.layout.Grid({
-										defaultSpan : "L12 M12 S12",
-										content		: new sap.m.HBox({
-											items : [new sap.m.Title({
-												textAlign : "Center",
-												level	: "H3",
-												text	: this.getView().byId("customMaterial")}),									
-												new sap.m.VBox({
-													width : "20%" ,
-													items : [new sap.m.Label({
-														text : "Quantity"
-													}),
-													new sap.m.Input({
-														type : "Number",
-														width : "80%",
-														
-													}).addStyleClass("inputQty")]
-													
+					addNewMaterialToList : function() {
+
+						if (this.getView().byId("customMaterial") != "") {
+
+							var oMaterialItem = new sap.m.CustomListItem(
+									{
+										items : new sap.ui.layout.Grid(
+												{
+													defaultSpan : "L12 M12 S12",
+													content : new sap.m.HBox(
+															{
+																items : [
+																		new sap.m.Title(
+																				{
+																					textAlign : "Center",
+																					level : "H3",
+																					text : this
+																							.getView()
+																							.byId(
+																									"customMaterial")
+																				}), // title,
+																		new sap.m.VBox(
+																				{
+																					width : "20%",
+																					items : [
+																							new sap.m.Label(
+																									{
+																										text : "Quantity"
+																									}),
+																							new sap.m.Input(
+																									{
+																										type : "Number",
+																										width : "80%",
+
+																									})
+																									.addStyleClass("inputQty") ]
+
+																				}) ]
+															})
 												})
-											})]	
-										})
-								})
-							})
-	
-							this.getView().byId("materialList").insertItem();
-							this.getView().byId("customMaterial")
-						}*/
+									
+									})
 							
+							this.getView().byId("materialList").insertItem(oItem,1);
+						} 
+						
+						
+
 					},
-					
 
 				/**
 				 * Called when the Controller is destroyed. Use this one to free
