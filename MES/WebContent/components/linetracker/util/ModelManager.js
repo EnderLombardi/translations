@@ -169,10 +169,16 @@ airbus.mes.linetracker.util.ModelManager = {
 				//TODO handle Warning QA
 				if(airbus.mes.shell.util.Formatter.getMiiMessageType(data) == "E"){
 					sap.m.MessageToast.show(airbus.mes.shell.util.Formatter.getMiiTextFromData(data));
+				}else{
+					
 				}
 				
 			},
 		});
+	},
+	
+	replaceURI : function(sURI, sFrom, sTo) {
+		return sURI.replace(sFrom, encodeURIComponent(sTo));
 	},
 	
 	

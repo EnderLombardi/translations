@@ -45,7 +45,7 @@ sap.ui.controller("airbus.mes.linetracker.StationView", {
 	},
 	
 	onStationPress : function(oEvt){
-		var sLineNumber = oEvt.getSource().getLineNumber();
+		var sLineNumber = parseInt(oEvt.getSource().getLineNumber());
 		var sMsn = oEvt.getSource().getMsn();
 		var sStationNumber = airbus.mes.linetracker.util.ModelManager.station_number;
 		var sFactory = airbus.mes.linetracker.util.ModelManager.factory_name;
