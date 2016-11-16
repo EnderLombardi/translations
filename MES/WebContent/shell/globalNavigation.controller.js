@@ -35,9 +35,9 @@ sap.ui
 						} else {
 							sap.ui.getCore().createComponent({
 								name : "airbus.mes.homepage", // root
-																// component
-																// folder is
-																// resources
+							// component
+							// folder is
+							// resources
 							});
 
 							nav.addPage(airbus.mes.homepage.oView);
@@ -99,7 +99,6 @@ sap.ui
 					// onAfterRendering : function() {
 					//		
 					// },
-
 					/**
 					 * Called when the Controller is destroyed. Use this one to
 					 * free resources and finalize activities.
@@ -190,20 +189,21 @@ sap.ui
 						case "disruptiontrackerView":
 
 							if (nav.getPreviousPage().sId == "stationTrackerView") {
-								
+
 								airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter = {
 									'station' : airbus.mes.settings.ModelManager.station
 								};
-							}
-							else{
+							} else {
 								airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter = {};
 							}
-							
-							this.loadDisruptionTracker();
-							
+
+							airbus.mes.disruptiontracker.ModelManager
+									.loadDisruptionTrackerModel();
+
 							this.autoRefresh = setInterval(
-								airbus.mes.disruptiontracker.ModelManager
-									.loadDisruptionTrackerModel(), 300000);
+									airbus.mes.disruptiontracker.ModelManager
+											.loadDisruptionTrackerModel(),
+									300000);
 
 							this.renderDisruptionTracker();
 
@@ -216,7 +216,6 @@ sap.ui
 
 						}
 					},
-
 
 					/**
 					 * RenderStation Tracker and reload all model/ shift are not
@@ -263,10 +262,10 @@ sap.ui
 
 						aFilters.push(new sap.ui.model.Filter("program", "EQ",
 								airbus.mes.settings.ModelManager.program)); // Filter
-																			// on
-																			// selected
-																			// A/C
-																			// Program
+						// on
+						// selected
+						// A/C
+						// Program
 
 						sap.ui
 								.getCore()
@@ -300,7 +299,7 @@ sap.ui
 						}
 
 						// delay because addDependent will do a async
-						// rerendering and the popover will immediately close
+						// re-rendering and the popover will immediately close
 						// without it
 						var oButton = oEvent.getSource();
 						jQuery.sap.delayedCall(0, this, function() {
