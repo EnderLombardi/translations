@@ -20,6 +20,9 @@
 				value="{operationDetailModel>/Rowsets/Rowset/0/Row/0/progress}"
 				enabled="false">
 			</Slider>
+			<Text id="blockedText" text="{i18n>blockedText}" visible="false" class="sapUiMediumMarginTop" >
+			
+			</Text>
 
 		</VBox>
 		<!-- <footer>

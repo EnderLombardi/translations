@@ -526,30 +526,47 @@ sap.ui
 
 					},
 					
-					setOperationActionButtons:function(){
-						 if(sap.ui.getCore().byId("operationDetailsView--switchOperationModeBtn").getState() == false)
-						 {
-						 this.setProgressScreenBtn(false, false);
-						 }
-						 else if (this.getView().byId("operationStatus").getText() === airbus.mes.operationdetail.status.oView.getModel("i18n").getProperty("notStarted")
+
+					setOperationActionButtons : function() {
+						this.getView().byId("blockedText").setVisible(false);
+						if (sap.ui.getCore().byId(
+								"operationDetailsView--switchOperationModeBtn")
+								.getState() == false) {
+							this.setProgressScreenBtn(false, false);
+							if (this.getView().byId("operationStatus")
+									.getText() === airbus.mes.operationdetail.status.oView
+									.getModel("i18n").getProperty("blocked")) {								
+								this.getView().byId("blockedText").setVisible(true);
+
+							}
+						} else if (this.getView().byId("operationStatus")
+								.getText() === airbus.mes.operationdetail.status.oView
+								.getModel("i18n").getProperty("notStarted")
 								|| this.getView().byId("operationStatus")
-										.getText() === airbus.mes.operationdetail.status.oView.getModel("i18n").getProperty("paused") ) {
+										.getText() === airbus.mes.operationdetail.status.oView
+										.getModel("i18n").getProperty("paused")) {
 
 							this.setProgressScreenBtn(false, true);
-							
+
 						} else if (this.getView().byId("operationStatus")
-								.getText() === airbus.mes.operationdetail.status.oView.getModel("i18n").getProperty("in_progress")) {
+								.getText() === airbus.mes.operationdetail.status.oView
+								.getModel("i18n").getProperty("in_progress")) {
 
 							this.setProgressScreenBtn(true, false);
-							
+
 						} else if (this.getView().byId("operationStatus")
-								.getText() === airbus.mes.operationdetail.status.oView.getModel("i18n").getProperty("blocked")
-								|| this.getView().byId("operationStatus")
-										.getText() === airbus.mes.operationdetail.status.oView.getModel("i18n").getProperty("confirm")) {
+								.getText() === airbus.mes.operationdetail.status.oView
+								.getModel("i18n").getProperty("blocked")) {
+							this.setProgressScreenBtn(false, false);
+							this.getView().byId("blockedText").setVisible(true);
+
+						} else if (this.getView().byId("operationStatus")
+								.getText() === airbus.mes.operationdetail.status.oView
+								.getModel("i18n").getProperty("confirm")) {
 
 							this.setProgressScreenBtn(false, false);
-													}
-						
+						}
+
 					}
 						
 				/**
