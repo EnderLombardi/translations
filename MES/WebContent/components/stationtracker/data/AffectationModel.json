@@ -16,10 +16,11 @@
                   "firstName": "MICHEL",
                   "lastName": "CADOU",
                   "picture": "../components/stationtracker/css/img/NZ12_AMEN-F-NZ170.jpg",
-                  "avlLine": "3",
-                  "shiftName": "2016-11-04MORNING",
-                  "shiftID": "2016-11-04MORNING",
-                  "day": "2_AMEN-F-NZ016-11-04"
+                  "avlLine": "1_MECA-F-NZ",
+                  "shiftName": "MORNING",
+                  "shiftID": "MORNING2016-11-04",
+                  "day": "2016-11-04",
+                  "warn":"true"
                },
                {
                   "user": "NZ113918",

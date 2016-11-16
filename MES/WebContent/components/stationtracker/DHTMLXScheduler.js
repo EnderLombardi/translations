@@ -252,13 +252,29 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 							airbus.mes.stationtracker.oPopoverPolypoly.addContent(airbus.mes.polypoly.oView);
 							
 							airbus.mes.stationtracker.oPopoverPolypoly.setModel(airbus.mes.stationtracker.oView.getModel("StationTrackerI18n"),"StationTrackerI18n");
-
+							
+							airbus.mes.stationtracker.AssignmentManager.polypolyAssignment.selectedLine = section;
+							airbus.mes.stationtracker.AssignmentManager.polypolyAssignment.selectedShift = airbus.mes.stationtracker.ShiftManager.ShiftSelected;
+							
+							var myButton = airbus.mes.stationtracker.oPopoverPolypoly.getButtons().find(function(el){
+								return el.sId == "deleteLineAssignmentButton";
+							});
+							if (airbus.mes.stationtracker.AssignmentManager.affectationHierarchy[section.avlLine]) {
+								if (airbus.mes.stationtracker.AssignmentManager.affectationHierarchy[section.avlLine][airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftID]){
+									if(!myButton.getVisible()){
+										myButton.setVisible(true);
+									}
+								}
+							}else{
+								if(myButton.getVisible()){
+									myButton.setVisible(false);
+								}
+							}
 							airbus.mes.stationtracker.oPopoverPolypoly.open();
 							// Permit to display or not polypoly affectation or polypoly simple
 							airbus.mes.polypoly.oView.getController().initiatePolypoly();
 							
-							airbus.mes.stationtracker.AssignmentManager.polypolyAssignment.selectedLine = section;
-							airbus.mes.stationtracker.AssignmentManager.polypolyAssignment.selectedShift = airbus.mes.stationtracker.ShiftManager.ShiftSelected;
+							
 							}
 
 						}));

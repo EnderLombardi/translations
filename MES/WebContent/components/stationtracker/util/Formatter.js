@@ -437,7 +437,7 @@ airbus.mes.stationtracker.util.Formatter = {
 					
 					if ( oCurrentAffectedUser.warn === "true" ) {
 						
-						sSpanWarn = '<span class="fa fa-exclamation-triangle" style="padding-right: 5px;" ></span>';
+						sSpanWarn = '<span class="fa fa-exclamation-triangle" style="padding-right: 5px;" onclick="airbus.mes.stationtracker.oView.getController().onCheckQA()"></span>';
 						
 					}
 					

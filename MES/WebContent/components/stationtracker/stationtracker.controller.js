@@ -900,5 +900,17 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		var oEvent = new sap.ui.base.Event("test",oEventProvider);
 		this.onProductionGroupPress(oEvent);
 		console.log("tooltip");
-	}
+	},
+	
+	onCheckQA : function(){
+		event = event || window.event // cross-browser event
+		if (event.stopPropagation) {
+			// W3C standard variant
+			event.stopPropagation()
+		} else {
+			// IE variant
+			event.cancelBubble = true
+		}
+		console.log('toto'); //TODO Call to airbus.mes.stationtracker.ModelManager.checkQA()
+	},
 });

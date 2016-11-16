@@ -4,7 +4,7 @@
 		id="pop-up-polypoly" verticalScrolling="false" horizontalScrolling="false"
 		afterOpen="onAfterOpenPolypoly" resizable="false" stretch="true">
 		<buttons>
-			<Button text="{StationTrackerI18n>DeleteAssignment}" icon="sap-icon://employee-rejections"
+			<Button id="deleteLineAssignmentButton" text="{StationTrackerI18n>DeleteAssignment}" icon="sap-icon://employee-rejections"
 				press="deleteLineAssignment" />
 			<Button text="{StationTrackerI18n>Close}" icon="sap-icon://decline"
 				press="ClosePolyPoly" />
