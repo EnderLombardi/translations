@@ -596,7 +596,46 @@ sap.ui
 						});
 						
 						this._materialListDialog.close();
-					}
+					},
+					
+					/***********************************************************
+					 * Adds new free text Material along with quantity to the
+					 * list
+					 */
+					addNewMaterialToList : function(){
+/*						if(this.getView().byId("customMaterial") != ""){
+							
+							var oMaterialItem = new sap.m.CustomListItem({
+								items : new sap.ui.layout.Grid({
+										defaultSpan : "L12 M12 S12",
+										content		: new sap.m.HBox({
+											items : [new sap.m.Title({
+												textAlign : "Center",
+												level	: "H3",
+												text	: this.getView().byId("customMaterial")}),									
+												new sap.m.VBox({
+													width : "20%" ,
+													items : [new sap.m.Label({
+														text : "Quantity"
+													}),
+													new sap.m.Input({
+														type : "Number",
+														width : "80%",
+														
+													}).addStyleClass("inputQty")]
+													
+												})
+											})]	
+										})
+								})
+							})
+	
+							this.getView().byId("materialList").insertItem();
+							this.getView().byId("customMaterial")
+						}*/
+							
+					},
+					
 
 				/**
 				 * Called when the Controller is destroyed. Use this one to free
