@@ -196,8 +196,8 @@ airbus.mes.settings.ModelManager =  {
 		  	  
 		  jQuery.ajax({
 				url : urlSaveUserSetting,
+				async : false,	
 				error : function(xhr, status, error) {
-					
 				},
 				success : function(result, status, xhr) {
 					

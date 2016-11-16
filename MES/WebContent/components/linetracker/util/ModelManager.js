@@ -186,6 +186,7 @@ airbus.mes.linetracker.util.ModelManager = {
 					airbus.mes.settings.ModelManager.station = data.Rowsets.Rowset[0].Row[0].Physical_Station;
 					airbus.mes.settings.ModelManager.line = data.Rowsets.Rowset[0].Row[0].Line;
 					airbus.mes.settings.ModelManager.saveUserSetting(sap.ui.getCore().getConfiguration().getLanguage().slice(0,2));
+					airbus.mes.settings.oView.getController().saveUserSettings();
 //					airbus.mes.settings.ModelManager.loadUserSettingsModel();
 					airbus.mes.shell.util.navFunctions.stationTracker();
 				}
