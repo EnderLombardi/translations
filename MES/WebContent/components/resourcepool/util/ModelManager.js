@@ -185,10 +185,8 @@ airbus.mes.resourcepool.util.ModelManager = {
 
 	getUrlResourcePoolDetail : function(){
 		var urlResourceDetailPool = this.urlModel.getProperty('resourcepooldetails');
-		urlResourceDetailPool = urlResourceDetailPool.replace("$Site",
-				airbus.mes.settings.ModelManager.site);
-		urlResourceDetailPool = urlResourceDetailPool.replace("$ResourcePoolName",
-				this.resourceName);
+		urlResourceDetailPool = urlResourceDetailPool.replace("$Site",airbus.mes.settings.ModelManager.site);
+		urlResourceDetailPool = urlResourceDetailPool.replace("$ResourcePoolName",this.resourceName);
 		return urlResourceDetailPool;
 	},
 	loadModelResourcePoolModel : function(){

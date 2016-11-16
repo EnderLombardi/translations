@@ -263,7 +263,7 @@ sap.ui.controller("airbus.mes.settings.Settings",
 								
 				//airbus.mes.settings.ModelManager.site = this.getView().byId("ComboBoxPlant").getValue();
 				airbus.mes.settings.ModelManager.loadPlantModel();
-				this.filterField(this.selectTree);
+				// Delete value of other combobox
 				this.getView().byId("headTextProgram").getItems().forEach(function(el){
 					
 					el.getContent()[0].getItems()[0].setSelected(false);
@@ -272,9 +272,10 @@ sap.ui.controller("airbus.mes.settings.Settings",
 				this.getView().byId("selectLine").setValue("");
 				this.getView().byId("selectStation").setValue("");
 				this.getView().byId("selectMSN").setValue("");
-								
 				this.setEnabledCombobox(true, false, false, false);
 
+				this.filterField(this.selectTree);
+				
 			},
 
 			// User clicks on a site map
