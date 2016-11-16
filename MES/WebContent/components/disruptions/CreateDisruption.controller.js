@@ -475,10 +475,10 @@ sap.ui
 							var resFlag = sap.ui.getCore().getModel("DisruptionDetailModel").getData().ResponsibleFlag;
 
 							if (origFlag == "" && resFlag == "X") {
-								this.reolsutionGroupSettings(false);
+								this.resolutionGroupSettings(false);
 							}
 							else
-								this.reolsutionGroupSettings(false);
+								this.resolutionGroupSettings(true);
 							
 							
 
@@ -501,7 +501,7 @@ sap.ui
 							this.getView().byId("description").setEnabled(true);
 							this.getView().byId("timeLost").setEnabled(true);
 							
-							this.reolsutionGroupSettings(true);
+							this.resolutionGroupSettings(true);
 
 						}
 					},

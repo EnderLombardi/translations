@@ -137,6 +137,7 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 		
 	},
 	renderViews : function() {
+		var autoRefresh = undefined;
 
         if ( nav.getCurrentPage().getId() != "homePageView" ) {
             
@@ -152,7 +153,9 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 		switch(nav.getCurrentPage().getId()){
 		
 		case "stationTrackerView":
-			this.renderStationTracker();
+
+			autoRefresh = window.setInterval(this.renderStationTracker, 1000);
+			//this.renderStationTracker();
 			break;
 			
 		case "disruptiontrackerView":
@@ -179,8 +182,10 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 	 */
 	renderStationTracker: function(){
 		
+		console.log("Hello");
+		
 		var oModule = airbus.mes.stationtracker.ModelManager;
-		this.setInformationVisibility(true);
+		airbus.mes.shell.oView.getController().setInformationVisibility(true);
     
 		airbus.mes.stationtracker.oView.byId("stationtracker").setBusy(true);
 
