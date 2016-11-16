@@ -23,7 +23,7 @@
 							type="Transparent" class="whiteColor whiteButton" press="onProductionGroupPress" />
 						<Select id="selectUser" change="selectUser"
 							class="sapUiTinyMarginBeginEnd pageHeader pageHeaderBlue" items="{ path : 'ressourcePoolModel>/Rowsets/Rowset/0/Row' }">
-							<core:Item key="{ressourcePoolModel>user}" text="{ressourcePoolModel>user}" />
+							<core:Item key="{ressourcePoolModel>USER_ID}" text="{ressourcePoolModel>FNAME}" />
 						</Select>
 						<ToolbarSpacer />
 						<Button id="TeamButton" text="{StationTrackerI18n>ButtonTeam}"
