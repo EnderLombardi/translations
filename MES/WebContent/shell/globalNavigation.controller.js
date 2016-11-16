@@ -136,6 +136,13 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 	onPressConnection : function() {
 		
 	},
+	
+	
+	onNavigate: function(){
+		
+	},
+	
+	
 	renderViews : function() {
 		var autoRefresh = undefined;
 
@@ -199,6 +206,36 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 	},
 	
 	
+	/*******************************************
+	 * Render disruption Tracker
+	 */
+	renderDisruptionTracker:function(){
+		var aFilters = [];
+		var aTemp = [];
+		var duplicatesFilter = new sap.ui.model.Filter({
+			path : "station",
+			test : function(value) {
+				if (aTemp.indexOf(value) == -1) {
+					aTemp.push(value)
+					return true;
+				} else {
+					return false;
+				}
+			}
+		});
+		aFilters.push(duplicatesFilter);
+		
+		aFilters.push(sap.ui.model.Filter("program", "EQ", airbus.mes.settings.ModelManager.program));	// Filter on selected A/C Program
+		
+		sap.ui
+				.getCore()
+				.byId("disruptiontrackerView--stationComboBox")
+				.getBinding("items")
+				.filter(new sap.ui.model.Filter(aFilters, true));
+		
+	},
+	
+	
 	setInformationVisibility : function(bSet) {
 		this.getView().byId("informationButton").setVisible(bSet);
 		this.getView().byId("homeButton").setVisible(bSet);
@@ -222,31 +259,6 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 	},
 	onCloseInformation : function(){
 		airbus.mes.shell.oView.removeStyleClass("viewOpacity");		
-	},
-	/*******************************************
-	 * Render disruption Tracker
-	 */
-	renderDisruptionTracker:function(){
-		var aFilters = [];
-		var aTemp = [];
-		var duplicatesFilter = new sap.ui.model.Filter({
-			path : "station",
-			test : function(value) {
-				if (aTemp.indexOf(value) == -1) {
-					aTemp.push(value)
-					return true;
-				} else {
-					return false;
-				}
-			}
-		});
-		aFilters.push(duplicatesFilter);
-		sap.ui
-				.getCore()
-				.byId("disruptiontrackerView--stationComboBox")
-				.getBinding("items")
-				.filter(new sap.ui.model.Filter(aFilters, true));
-		
 	},
 	/*******************************************
 	 * My Profile PopUp

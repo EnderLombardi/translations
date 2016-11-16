@@ -494,7 +494,7 @@ sap.ui.controller("airbus.mes.settings.Settings",
 					airbus.mes.shell.util.navFunctions.disruptionTracker();
 					break;
 				
-					/** Disruption Tracker **/
+				/** PolyPoly **/
 				case "polypoly":
 					airbus.mes.shell.util.navFunctions.polypoly();
 					break;
