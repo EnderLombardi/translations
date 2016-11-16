@@ -127,6 +127,10 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 			textButtonTo = "Go to Polypoly";
 			airbus.mes.settings.GlobalFunction.navigateTo(textButtonTo, "polypoly");
 			break;
+		case "idMainView":
+			textButtonTo = "Go to LineTracker";
+			airbus.mes.settings.GlobalFunction.navigateTo(textButtonTo, "back");
+			break;
 			
 			
 		}
