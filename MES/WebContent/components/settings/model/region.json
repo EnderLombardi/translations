@@ -53,6 +53,12 @@
 			"text": "BGT"
 		},
 		{
+			"pos": "-2.982056;53.170039;0",
+			"tooltip": "Broughton",
+			"type": "Success",
+			"text": "BGT"
+		},
+		{
 			"pos": "-3.825973;40.160493;0",
 			"tooltip": "Illescas",
 			"type": "Success",
