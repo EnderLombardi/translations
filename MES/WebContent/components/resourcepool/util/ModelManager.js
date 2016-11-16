@@ -38,6 +38,17 @@ airbus.mes.resourcepool.util.ModelManager = {
 			bundleLocale : dest
 
 		});
+		
+		if (  dest === "sopra" ) {
+
+			var oModel = this.urlModel._oResourceBundle.aPropertyFiles[0].mProperties;
+				
+			for (var prop in oModel) {
+				if (oModel[prop].slice(-5) != ".json" ) {
+				oModel[prop] += "&j_user=" + Cookies.getJSON("login").user + "&j_password="  + Cookies.getJSON("login").mdp; 
+				}
+			}
+		}
 
 		/*
 		 * airbus.mes.resourcepool.oView.getModel("i18nModel"). = new

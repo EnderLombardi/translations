@@ -5,7 +5,6 @@ jQuery.sap.declare("airbus.mes.settings.ModelManager")
 airbus.mes.settings.ModelManager =  {
 	
 	site : undefined,
-	//plant : undefined,
 	program : undefined,
 	line : undefined,
 	station : undefined,
@@ -14,6 +13,9 @@ airbus.mes.settings.ModelManager =  {
 	taktStart : undefined,
 	taktEnd : undefined,
 	taktDuration : undefined,
+	
+	
+	
 	currentMsnSelected : true,
 	currentMsnValue : "",
 	core : undefined,
@@ -55,6 +57,17 @@ airbus.mes.settings.ModelManager =  {
 			bundleUrl : "../components/settings/config/url_config.properties",
 			bundleLocale : dest
 		});
+		
+		if (  dest === "sopra" ) {
+
+			var oModel = this.urlModel._oResourceBundle.aPropertyFiles[0].mProperties;
+				
+			for (var prop in oModel) {
+				if (oModel[prop].slice(-5) != ".json" ) {
+				oModel[prop] += "&j_user=" + Cookies.getJSON("login").user + "&j_password="  + Cookies.getJSON("login").mdp; 
+				}
+			}
+		}
 
 		//Loading of model
 		

@@ -53,10 +53,21 @@ airbus.mes.stationtracker.ModelManager = {
                      bundleUrl : "../components/stationtracker/config/url_config.properties",
                      bundleLocale : dest
               });
+              
+              if (  dest === "sopra" ) {
+
+      			var oModel = this.urlModel._oResourceBundle.aPropertyFiles[0].mProperties;
+      				
+      			for (var prop in oModel) {
+      				if (oModel[prop].slice(-5) != ".json" ) {
+      				oModel[prop] += "&j_user=" + Cookies.getJSON("login").user + "&j_password="  + Cookies.getJSON("login").mdp; 
+      				}
+      			}
+      		}
 
               // TODO DEPLACE this in shell controller and when service is ok remove
               // all of this function
-             this.loadShifts();
+              this.loadShifts();
               airbus.mes.stationtracker.ShiftManager.init(airbus.mes.stationtracker.GroupingBoxingManager.shiftNoBreakHierarchy);
               this.loadFilterUnplanned();
               this.loadProductionGroup();

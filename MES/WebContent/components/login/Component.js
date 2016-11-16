@@ -9,7 +9,7 @@ sap.ui.core.UIComponent.extend("airbus.mes.login.Component", {
 	metadata : {
 //		manifest: "json",
 		properties : {},
-		includes : [ "./css/margin.css" ]
+		includes : [ "../homepage/css/margin.css" ] //array of css and/or javascript files that should be used in the component  
 
 	},
 
@@ -18,10 +18,10 @@ sap.ui.core.UIComponent.extend("airbus.mes.login.Component", {
 
 
 airbus.mes.login.Component.prototype.createContent = function() {
-	
+		
 	//	View on XML
 	if (airbus.mes.login.oView === undefined) {
-
+		
 		this.oView = sap.ui.view({
 			id : "login",
 			viewName : "airbus.mes.login.login",

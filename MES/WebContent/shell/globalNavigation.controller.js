@@ -403,6 +403,13 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 			}
 		}
 		
+	},
+	
+	logOut : function() {
+		
+		Cookies.remove("login");
+		window.location = window.location.origin + window.location.pathname;
+		
 	}
 			
 });

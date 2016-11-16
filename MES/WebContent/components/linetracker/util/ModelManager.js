@@ -144,6 +144,17 @@ airbus.mes.linetracker.util.ModelManager = {
 			bundleUrl : "../components/linetracker/config/url_config.properties",
 			bundleLocale : dest
 		});
+		
+		if (  dest === "sopra" ) {
+
+			var oModel = this.urlModel._oResourceBundle.aPropertyFiles[0].mProperties;
+				
+			for (var prop in oModel) {
+				if (oModel[prop].slice(-5) != ".json" ) {
+				oModel[prop] += "&j_user=" + Cookies.getJSON("login").user + "&j_password="  + Cookies.getJSON("login").mdp; 
+				}
+			}
+		}
 //		this.i18nModel = new sap.ui.model.resource.ResourceModel({
 //			bundleUrl : "i18n/messageBundle.properties",
 //			bundleLocale : sap.ui.getCore().getConfiguration().getLanguage()

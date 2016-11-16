@@ -43,7 +43,18 @@ airbus.mes.disruptions.ModelManager = {
 					bundleUrl : "../components/disruptions/config/url_config.properties",
 					bundleLocale : dest
 				});
+		
+		if (  dest === "sopra" ) {
 
+			var oModel = this.urlModel._oResourceBundle.aPropertyFiles[0].mProperties;
+				
+			for (var prop in oModel) {
+				if (oModel[prop].slice(-5) != ".json" ) {
+				oModel[prop] += "&j_user=" + Cookies.getJSON("login").user + "&j_password="  + Cookies.getJSON("login").mdp; 
+				}
+			}
+		}
+		
 		this.core.setModel(new sap.ui.model.json.JSONModel(),
 				"disruptionCustomData");
 

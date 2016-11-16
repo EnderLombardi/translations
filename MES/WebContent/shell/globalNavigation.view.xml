@@ -14,14 +14,9 @@
 							<Label id="labelMSN" text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/msn', formatter : 'airbus.mes.shell.util.Formatter.stationTrackerMsn' }" class="pageWelcome sapUiTinyMarginBeginEnd" /> 
 							<Label text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/siteDescription', formatter : 'airbus.mes.shell.util.Formatter.stationTrackerPlant' }" class="pageWelcome sapUiTinyMarginBeginEnd" />
 							<Label text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/lineDescription', formatter : 'airbus.mes.shell.util.Formatter.stationTrackerLine' }" class="pageWelcome sapUiTinyMarginBeginEnd" />					
-					       <ToolbarSpacer />
-                           
-                           <Button id="Connection"
-                           		   text="Connection"
-                           		   visible="false" 
-                           		   press="onPressConnection" />
- 
-                           <Select id="SelectLanguage" class="sapUiTinyMarginBeginEnd pageHeader pageHeaderBlue" change="onChangeLanguage"> 
+					       <ToolbarSpacer />	
+																												<Button id="localDELog" press="logOut" text="Remove Cookie"></Button>                         
+                         	  <Select id="SelectLanguage" class="sapUiTinyMarginBeginEnd pageHeader pageHeaderBlue" change="onChangeLanguage"> 
 	                           <core:Item text="English" key="en"/>
 	                           <core:Item text="Deutsch" key="de"/>
 	                           <core:Item text="French" key="fr"/>
