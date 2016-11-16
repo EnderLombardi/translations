@@ -584,16 +584,13 @@ sap.ui
 					 **********************************************************/
 					handleSelectMaterialList : function(oEvent) {
 
-						var aSelectedItems = oEvent.getParameters().selectedItems;
+						var aSelectedItems = sap.ui.getCore().byId("materialList").getSelectedItems();
 						aSelectedItems.forEach(function(item, index) {
 							var oToken = new sap.m.Token({
-								key : item.getContent()[0].getContent()[0]
-										.getText(),
-								text : item.getContent()[0].getContent()[0]
-										.getText()
+								key : item.getContent()[0].getContent()[0].getItems()[0].getText(),
+								text : item.getContent()[0].getContent()[0].getItems()[0].getText()
 										+ "("
-										+ item.getContent()[0].getContent()[2]
-												.getValue() + ")"
+										+ item.getContent()[0].getContent()[0].getItems()[1].getItems()[1].getValue() + ")"
 
 							});
 							sap.ui.getCore().byId(
@@ -611,23 +608,25 @@ sap.ui
 					addNewMaterialToList : function() {
 
 						if (this.getView().byId("customMaterial") != "") {
-
+							
+							// make an Item to add in the list.
 							var oMaterialItem = new sap.m.CustomListItem(
 									{
-										items : new sap.ui.layout.Grid(
+										content : new sap.ui.layout.Grid(
 												{
 													defaultSpan : "L12 M12 S12",
 													content : new sap.m.HBox(
 															{
+																justifyContent :"SpaceBetween",
+																alignContent :"SpaceBetween",
+																alignItems :"Center",
 																items : [
 																		new sap.m.Title(
 																				{
 																					textAlign : "Center",
 																					level : "H3",
-																					text : this
-																							.getView()
-																							.byId(
-																									"customMaterial")
+																					text : sap.ui.getCore().byId(
+																									"customMaterial").getValue()
 																				}), // title,
 																		new sap.m.VBox(
 																				{
@@ -641,7 +640,8 @@ sap.ui
 																									{
 																										type : "Number",
 																										width : "80%",
-
+																										value : sap.ui.getCore().byId(
+																										"customMaterialQty").getValue()
 																									})
 																									.addStyleClass("inputQty") ]
 
@@ -649,9 +649,14 @@ sap.ui
 															})
 												})
 									
-									})
+									}).addStyleClass("customListItemPadding")
 							
-							this.getView().byId("materialList").insertItem(oItem,1);
+									//add item in starting of the Material List
+							sap.ui.getCore().byId("materialList").insertItem(oMaterialItem,0);
+							sap.ui.getCore().byId("materialList").setSelectedItem(oMaterialItem,true);
+							
+							// by default select this item
+							
 						} 
 						
 						

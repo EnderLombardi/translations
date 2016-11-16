@@ -15,7 +15,7 @@
 		</HBox> </l:content> </l:Grid> </CustomListItem> </items> </SelectDialog> -->
 
 	<Dialog id="materialListSelectDialog" title="Select Material"
-		height="40%" width="40%" verticalScrolling="true" horizontalScrolling="false">
+		verticalScrolling="true" horizontalScrolling="false">
 		<content>
 			<f:SimpleForm backgroundDesign="Solid" class="formBackgroundColor"
 				layout="ResponsiveGridLayout">
@@ -170,7 +170,7 @@
 
 		</content>
 		<buttons>
-			<Button text="OK" />
+			<Button text="OK" press="handleSelectMaterialList" />
 			<Button text="Cancel" />
 		</buttons>
 	</Dialog>
