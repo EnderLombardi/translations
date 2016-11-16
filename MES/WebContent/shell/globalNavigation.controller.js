@@ -153,8 +153,8 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 		switch(nav.getCurrentPage().getId()){
 		
 		case "stationTrackerView":
+			//autoRefresh = window.setInterval(this.renderStationTracker, 1000);
 
-//			autoRefresh = window.setInterval(this.renderStationTracker, 1000);
 			this.renderStationTracker();
 			break;
 			
@@ -402,6 +402,13 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 				.messageShow(sMessageSuccess);
 			}
 		}
+		
+	},
+	
+	logOut : function() {
+		
+		Cookies.remove("login");
+		window.location = window.location.origin + window.location.pathname;
 		
 	}
 			

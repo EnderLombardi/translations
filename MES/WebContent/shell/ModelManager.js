@@ -29,12 +29,23 @@ airbus.mes.shell.ModelManager = {
 			if (this.queryParams.get("url_config")) {
 				dest = this.queryParams.get("url_config");
 			}
-
+					
 			this.urlModel = new sap.ui.model.resource.ResourceModel({
 				bundleUrl : "../shell/config/url_config.properties",
 				bundleLocale : dest
 			});
-						
+			
+			if (  dest === "sopra" ) {
+
+				var oModel = airbus.mes.shell.ModelManager.urlModel._oResourceBundle.aPropertyFiles[0].mProperties;
+					
+				for (var prop in oModel) {
+					if (oModel[prop].slice(-5) != ".json" ) {
+					oModel[prop] += "&j_user=" + Cookies.getJSON("login").user + "&j_password="  + Cookies.getJSON("login").mdp; 
+					}
+				}
+			}
+							
 			// TODO DEPLACE this in shell controller and when service is ok remove all of this function
 			this.loadUserDetail();		
 			//this.loadUserSettings();
@@ -43,11 +54,6 @@ airbus.mes.shell.ModelManager = {
 	            bundleUrl : "./i18n/i18n.properties",
 	         });
 			
-			
-//			this.i18nModel = new sap.ui.model.resource.ResourceModel({
-//				bundleUrl : "i18n/messageBundle.properties",
-//				bundleLocale : core.getConfiguration().getLanguage()
-//			});
 			core.setModel(i18nModel, "ShellI18n");
 			
 			var MIIi18nModel = new sap.ui.model.resource.ResourceModel({
@@ -111,6 +117,7 @@ airbus.mes.shell.ModelManager = {
 			}, xml = "";
 			for ( var m in o)
 				xml += toXml(o[m], m, "");
+			xml =  xml.replace(/&/g, "&amp;").replace(/"/g, "&quot;");
 			return tab ? xml.replace(/\t/g, tab) : xml.replace(/\t|\n/g, "");
 		},
 

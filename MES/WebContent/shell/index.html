@@ -8,6 +8,8 @@
 <link rel='stylesheet' type='text/css' href='../lib/dhtmlxscheduler/dhtmlxscheduler_flat.css'>
 <link rel="stylesheet" href="../components/stationtracker/css/font-awesome.min.css">
 <link rel="stylesheet" href="../components/stationtracker/css/customcss.css" type="text/css" media="screen">
+<script type="text/javascript" src="../lib/js-cookie.js"></script>
+
 
 
 </head>
@@ -37,38 +39,29 @@
 
 	 	jQuery.sap.registerModulePath("airbus.mes.shell", "./"); 
 	 	jQuery.sap.registerModulePath("airbus.mes.settings", "../components/settings");
-		jQuery.sap.registerModulePath("airbus.mes.homepage", "../components/homepage");
-		
-	
-		// Create a Ui container 
-		oCompCont = new sap.ui.core.ComponentContainer({
-			component : sap.ui.getCore().createComponent({
-				name : "airbus.mes.shell", // root component folder is resources
-	 			propagateModel : true,
-			})
-		});
-
-
-/* 		if(window.location.hostname === "localhost") {
+			jQuery.sap.registerModulePath("airbus.mes.homepage", "../components/homepage");
+			
+		if( window.location.hostname === "localhost" && window.location.search != "?url_config=local" && Cookies.getJSON("login") === undefined ) {
 //		Case of localhost connection, need to define login pass			
 			   jQuery.sap.registerModulePath("airbus.mes.login", "../components/login");		
-			   
-				oCompLogin = sap.ui.getCore().createComponent({
-					name : "airbus.mes.login", // root component folder is resources
-				});
-				
-				nav = airbus.mes.shell.oView.byId("navCont");
-			
-				nav.addPage(airbus.mes.login.oView);
-				airbus.mes.login.oView.placeAt(nav);
-			
-				// place this Ui Container with the Component inside into UI Area 
-				oCompCont.placeAt("content");
-				// remove splash color & style
-				document.body.style = {};
-
+			  
+					oCompCont = new sap.ui.core.ComponentContainer({
+					component : sap.ui.getCore().createComponent({
+						name : "airbus.mes.login", // root component folder is resources
+					})
+					});
+					oCompCont.placeAt("content");
+								
 		} else {
-//		Case of airbus connection	 */		
+//		Case of airbus connection	 		
+		
+				// Create a Ui container 
+			oCompCont = new sap.ui.core.ComponentContainer({
+				component : sap.ui.getCore().createComponent({
+					name : "airbus.mes.shell", // root component folder is resources
+		 			propagateModel : true,
+				})
+			});
 		
 			oComp1 = sap.ui.getCore().createComponent({
 				name : "airbus.mes.homepage", // root component folder is resources
@@ -97,7 +90,7 @@
 			airbus.mes.settings.ModelManager.loadUserSettingsModel();
 			airbus.mes.settings.ModelManager.checkDisplayFirstSetting();
 		
-/* 		} */
+ 		} 
 	} );
 	
 </script>

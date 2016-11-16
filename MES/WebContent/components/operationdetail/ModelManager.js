@@ -24,6 +24,9 @@ airbus.mes.operationdetail.ModelManager = {
 		case "localhost":
 			dest = "local";
 			break;
+		case "wsapbpc01.ptx.fr.sopra":
+			dest = "sopra";
+			break;
 		default:
 			dest = "airbus";
 			break;
@@ -37,6 +40,17 @@ airbus.mes.operationdetail.ModelManager = {
 			bundleUrl : "../components/operationdetail/config/url_config.properties",
 			bundleLocale : dest
 		});
+		
+		if (  dest === "sopra" ) {
+
+			var oModel = this.urlModel._oResourceBundle.aPropertyFiles[0].mProperties;
+				
+			for (var prop in oModel) {
+				if (oModel[prop].slice(-5) != ".json" ) {
+				oModel[prop] += "&j_user=" + Cookies.getJSON("login").user + "&j_password="  + Cookies.getJSON("login").mdp; 
+				}
+			}
+		}
 
 		this.core.setModel(new sap.ui.model.json.JSONModel(), "reasonCodeModel");
 

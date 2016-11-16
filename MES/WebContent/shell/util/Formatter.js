@@ -89,5 +89,6 @@ airbus.mes.shell.util.Formatter = {
 				}
 			}		
 		}
-	}
+	},
+	
 };

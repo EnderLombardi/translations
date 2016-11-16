@@ -131,11 +131,22 @@ airbus.mes.polypoly.ModelManager = {
 		if (this.queryParams.get("url_config")) {
 			dest = this.queryParams.get("url_config");
 		}
-
+			
 		this.urlModel = new sap.ui.model.resource.ResourceModel({
 			bundleUrl : "../components/polypoly/config/url_config.properties",
 			bundleLocale : dest
 		});
+		
+		if (  dest === "sopra" ) {
+
+			var oModel = this.urlModel._oResourceBundle.aPropertyFiles[0].mProperties;
+				
+			for (var prop in oModel) {
+				if (oModel[prop].slice(-5) != ".json" ) {
+				oModel[prop] += "&j_user=" + Cookies.getJSON("login").user + "&j_password="  + Cookies.getJSON("login").mdp; 
+				}
+			}
+		}
 
 	},
 
@@ -158,7 +169,7 @@ airbus.mes.polypoly.ModelManager = {
 	},
 	
 	handleUserConnection : function(sUrl) {
-		var bModeDroits = true;
+		var bModeDroits = false;
 		if(bModeDroits){
 			if(this.queryParams.get("url_config") == "sopra" || this.queryParams.get("url_config") == "airbus"){
 				var sUser = "NG43F36";

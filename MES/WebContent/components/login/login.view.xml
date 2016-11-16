@@ -1,18 +1,19 @@
 <core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:cData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
 		controllerName="airbus.mes.login.login" xmlns:html="http://www.w3.org/1999/xhtml">
-	<Page title="Login" >	
+	<Page title="Login" class="titleToolbar">	
 		<content>
 			<Label text="login" />
-			<Input id="login">
+			<Input id="user">
 			
 			</Input>
 	
 			<Label text="pass" />
-			<Input id="pass">
+			<Input id="mdp">
 			
 			</Input>
 			
-			<Button text="confirm" press="onConfirm" />
+			<Button text="Log in sopra with user password" press="onConfirm" />
+				<Button text="Log in Local" press="logLocal" />
 		</content>
 		</Page>
 </core:View>
