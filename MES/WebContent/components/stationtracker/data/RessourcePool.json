@@ -1,79 +1,165 @@
-{ "Rowsets": {
-
-      "DateCreated": "2016-07-13T10:26:38",
-      "Version": "15.1 SP1 Patch 0 (Jan 21, 2016)",
-      "StartDate": "2016-07-13T09:26:38+0200",
-      "EndDate": "2016-07-13T10:26:38+0200",
+{
+   "Rowsets": {
+      "DateCreated": "2016-11-16T17:32:27",
+      "Version": "15.1 SP2 Patch 13 (Oct 6, 2016)",
+      "StartDate": "2016-11-16T16:32:27+0100",
+      "EndDate": "2016-11-16T17:32:27+0100",
       "CachedTime": "",
-
       "Rowset": [
-
          {
-
             "Columns": {
-
-               "Column": []
-
+               "Column": [
+                  {
+                     "Name": "RESOURCEPOOL_ID",
+                     "SourceColumn": "RESOURCEPOOL_ID",
+                     "Description": "",
+                     "SQLDataType": 1,
+                     "MinRange": 1,
+                     "MaxRange": 1
+                  },
+                  {
+                     "Name": "RP_DESCRIPTION",
+                     "SourceColumn": "RP_DESCRIPTION",
+                     "Description": "",
+                     "SQLDataType": 1,
+                     "MinRange": 1,
+                     "MaxRange": 1
+                  },
+                  {
+                     "Name": "USER_ID",
+                     "SourceColumn": "USER_ID",
+                     "Description": "",
+                     "SQLDataType": 1,
+                     "MinRange": 1,
+                     "MaxRange": 1
+                  },
+                  {
+                     "Name": "PERSONAL_NO",
+                     "SourceColumn": "PERSONAL_NO",
+                     "Description": "",
+                     "SQLDataType": 1,
+                     "MinRange": 1,
+                     "MaxRange": 1
+                  },
+                  {
+                     "Name": "ERP_USER_ID",
+                     "SourceColumn": "ERP_USER_ID",
+                     "Description": "",
+                     "SQLDataType": 1,
+                     "MinRange": 1,
+                     "MaxRange": 1
+                  },
+                  {
+                     "Name": "FNAME",
+                     "SourceColumn": "FNAME",
+                     "Description": "",
+                     "SQLDataType": 1,
+                     "MinRange": 1,
+                     "MaxRange": 1
+                  },
+                  {
+                     "Name": "LNAME",
+                     "SourceColumn": "LNAME",
+                     "Description": "",
+                     "SQLDataType": 1,
+                     "MinRange": 1,
+                     "MaxRange": 1
+                  }
+               ]
             },
-
             "Row": [
-            
-             {
-
-                  "user": "All User",
-
-                  "firstName": "pierre",
-
-                  "lastName": "barillon"
-
-               },
-
                {
-
-                  "user": "CADOU MICHEL",
-
-                  "firstName": "MICHEL",
-
-                  "lastName": "CADOU",
-
-                  "picture": "toto",
-
-                  "avlLine": "1",
-
-                  "shiftName": "NORMAL 1",
-
-                  "shiftID": "NORMAL 1",
-
-                  "day": "2016-10-03"
-
+                  "RESOURCEPOOL_ID": "TESTRESOURCE",
+                  "RP_DESCRIPTION": "TEST Ressource Pool SNZ - ANNE MOD",
+                  "USER_ID": "NG000524",
+                  "PERSONAL_NO": "---",
+                  "ERP_USER_ID": "---",
+                  "FNAME": "SRIKANTH",
+                  "LNAME": "PALLAM REDDY"
                },
-
-              {
-
-                  "user": "CHEVALIER LAURA",
-
-                  "firstName": "LAURA",
-
-                  "lastName": "CHEVALIER",
-
-                  "picture": "toto",
-
-                  "avlLine": "1",
-
-                  "shiftName": "NIGHT 2",
-
-                  "shiftID": "NIGHT 2",
-
-                  "day": "2016-10-18"
-
+               {
+                  "RESOURCEPOOL_ID": "TESTRESOURCE",
+                  "RP_DESCRIPTION": "TEST Ressource Pool SNZ - ANNE MOD",
+                  "USER_ID": "LEONARD_PI",
+                  "PERSONAL_NO": "---",
+                  "ERP_USER_ID": "---",
+                  "FNAME": "PIERRICK",
+                  "LNAME": "LEONARD"
+               },
+               {
+                  "RESOURCEPOOL_ID": "TESTRESOURCE",
+                  "RP_DESCRIPTION": "TEST Ressource Pool SNZ - ANNE MOD",
+                  "USER_ID": "TH32PK",
+                  "PERSONAL_NO": "---",
+                  "ERP_USER_ID": "---",
+                  "FNAME": "PETER",
+                  "LNAME": "KOLBERG"
+               },
+               {
+                  "RESOURCEPOOL_ID": "TEST2_RESOURCE",
+                  "RP_DESCRIPTION": "TEST2 _RESOURCE POOL SNZ - Anne",
+                  "USER_ID": "NG34ED3",
+                  "PERSONAL_NO": "---",
+                  "ERP_USER_ID": "---",
+                  "FNAME": "PIYUSH",
+                  "LNAME": "AGGARWAL"
+               },
+               {
+                  "RESOURCEPOOL_ID": "TEST2_RESOURCE",
+                  "RP_DESCRIPTION": "TEST2 _RESOURCE POOL SNZ - Anne",
+                  "USER_ID": "NG55E48",
+                  "PERSONAL_NO": "---",
+                  "ERP_USER_ID": "---",
+                  "FNAME": "GUILLAUME",
+                  "LNAME": "FONTENEAU"
+               },
+               {
+                  "RESOURCEPOOL_ID": "TEST2_RESOURCE",
+                  "RP_DESCRIPTION": "TEST2 _RESOURCE POOL SNZ - Anne",
+                  "USER_ID": "NG42E7A",
+                  "PERSONAL_NO": "---",
+                  "ERP_USER_ID": "---",
+                  "FNAME": "MASOOM",
+                  "LNAME": "JAJOO"
+               },
+               {
+                  "RESOURCEPOOL_ID": "TEST2_RESOURCE",
+                  "RP_DESCRIPTION": "TEST2 _RESOURCE POOL SNZ - Anne",
+                  "USER_ID": "NG55033",
+                  "PERSONAL_NO": "---",
+                  "ERP_USER_ID": "---",
+                  "FNAME": "DAVID",
+                  "LNAME": "MARTINS"
+               },
+               {
+                  "RESOURCEPOOL_ID": "TESTRESOURCE_SNZ-ANNE",
+                  "RP_DESCRIPTION": "TESTRESOURCE_SNZ-ANNE",
+                  "USER_ID": "NG55E48",
+                  "PERSONAL_NO": "---",
+                  "ERP_USER_ID": "---",
+                  "FNAME": "GUILLAUME",
+                  "LNAME": "FONTENEAU"
+               },
+               {
+                  "RESOURCEPOOL_ID": "TESTRESOURCE_SNZ-ANNE",
+                  "RP_DESCRIPTION": "TESTRESOURCE_SNZ-ANNE",
+                  "USER_ID": "NG42E7A",
+                  "PERSONAL_NO": "---",
+                  "ERP_USER_ID": "---",
+                  "FNAME": "MASOOM",
+                  "LNAME": "JAJOO"
+               },
+               {
+                  "RESOURCEPOOL_ID": "TESTRESOURCE_SNZ-ANNE",
+                  "RP_DESCRIPTION": "TESTRESOURCE_SNZ-ANNE",
+                  "USER_ID": "NG004BDE",
+                  "PERSONAL_NO": "---",
+                  "ERP_USER_ID": "---",
+                  "FNAME": "DHIRENDRA NATH",
+                  "LNAME": "MISHRA"
                }
-
             ]
-
          }
-
       ]
-
    }
-
 }

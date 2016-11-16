@@ -737,9 +737,8 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		
 		var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
 		var oSelected = oEvt.getSource().getSelectedItem().mProperties;
-		var aModel = sap.ui.getCore().getModel("affectationModel").oData.Rowsets.Rowset[0].Row;
-		
-		if (oSelected.key != "All User") {
+				
+		if (oSelected.key != "ALL") {
 		
 			airbus.mes.stationtracker.AssignmentManager.userSelected = oSelected.key;
 			airbus.mes.stationtracker.ModelManager.loadStationTracker("I");		

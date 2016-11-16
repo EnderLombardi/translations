@@ -33,6 +33,7 @@ airbus.mes.stationtracker.ModelManager = {
               core.getModel("affectationModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onAffectationLoad);
               core.getModel("unPlannedModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onUnPlannedLoad);
               core.getModel("OSWModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onOWSLoad);
+              core.getModel("ressourcePoolModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onRessourcePoolLoad);
 
               var dest;
 
@@ -284,10 +285,38 @@ airbus.mes.stationtracker.ModelManager = {
 
        },
        loadRessourcePool : function() {
+    	   	
+    	   	  var oData = airbus.mes.settings.ModelManager;
               var oViewModel = sap.ui.getCore().getModel("ressourcePoolModel");
-              oViewModel.loadData(this.urlModel.getProperty("urlressourcepool"), null, false);
+              var geturlressourcepool = this.urlModel.getProperty("urlressourcepool");
+              
+              geturlressourcepool = airbus.mes.stationtracker.ModelManager.replaceURI(geturlressourcepool, "$site", oData.site );
+              geturlressourcepool = airbus.mes.stationtracker.ModelManager.replaceURI(geturlressourcepool, "$station", oData.station );
+                            
+              oViewModel.loadData(geturlressourcepool, null, true);
 
        },
+       onRessourcePoolLoad : function() {
+    	   
+    	   var oViewModel = sap.ui.getCore().getModel("ressourcePoolModel");
+    	   var aModel = sap.ui.getCore().getModel("ressourcePoolModel");
+    	 
+    		if(aModel.getProperty("/Rowsets/Rowset/0/Row")){              
+    	
+    			aModel.oData.Rowsets.Rowset[0].Row.unshift({
+    		    		"FNAME" : "All User", 
+    		    		"USER_ID" : "ALL",	
+    		    	   });  
+    			
+    			sap.ui.getCore().getModel("ressourcePoolModel").refresh(true)
+    			    			
+    	    } else {
+    	    	
+    	    	console.log("NO user in ressource pool");
+    	    }
+    	   
+    	   	   
+       },     
        loadProductionGroup : function() {
 
               var oData = airbus.mes.settings.ModelManager;
