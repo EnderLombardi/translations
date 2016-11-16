@@ -344,8 +344,18 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	    var sProdGroup = airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("ProductionGroup") + " : ";
 	    var sProdGroupMii = "";
 	     
-		if(sap.ui.getCore().byId("productionGroupPopover--myList").getSelectedItems().length !== 0 ){
+	    
+//	    If no Production group have been selected 
+//	    Or all production group have been selected
+		if(sap.ui.getCore().byId("productionGroupPopover--myList").getSelectedItems().length === 0 
+	    || sap.ui.getCore().byId("productionGroupPopover--myList").getSelectedItems().length === sap.ui.getCore().byId("productionGroupPopover--myList").getItems().length ){
+
+//			We write All instead of concatenantion of production group
+			sProdGroup += airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("StatusAll");
 			
+			airbus.mes.settings.ModelManager.prodGroup ="%";
+			
+		} else {
 			sap.ui.getCore().byId("productionGroupPopover--myList").getSelectedItems().forEach(function(el){
 				
 				sProdGroup += el.mProperties.label + ",";
@@ -353,11 +363,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			}); 
 			sProdGroup = sProdGroup.slice(0,-1);
 			airbus.mes.settings.ModelManager.prodGroup = sProdGroupMii.slice(0,-3);
-		} else {
 				
-			sProdGroup += airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("StatusAll");
-				
-			airbus.mes.settings.ModelManager.prodGroup ="%";
 		}
 
 		

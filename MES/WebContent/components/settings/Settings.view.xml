@@ -17,7 +17,7 @@
 				</contentLeft>
 				<contentRight>
 					<Button id="navConfirm" type="Transparent" text="{i18n>Confirm}"
-						press="saveUserSettings" iconFirst="false" icon="sap-icon://arrow-right"
+						press="onConfirm" iconFirst="false" icon="sap-icon://arrow-right"
 						height="100%" />
 				</contentRight>
 			</Bar>
