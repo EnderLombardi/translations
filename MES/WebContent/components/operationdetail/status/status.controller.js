@@ -615,6 +615,10 @@ sap.ui
 						);
 						this.nav.to(airbus.mes.disruptions.oView.viewDisruption.getId());
 						
+						sap.ui.getCore().byId("operationDetailsView--opDetailSegmentButtons").setSelectedButton(
+								sap.ui.getCore().byId("operationDetailsView--opDetailSegmentButtons").getButtons()[1].sId
+						);
+						
 						
 
 					}
