@@ -75,7 +75,7 @@
 							<VBox>
 								<Label text="End:" />
 								<Text
-									text="{parts:['operationDetailModel>/Rowsets/Rowset/0/Row/0/original_start_time' ,'operationDetailModel>/Rowsets/Rowset/0/Row/0/original_end_time','operationDetailModel>/Rowsets/Rowset/0/Row/0/planned_end_time'],formatter:'airbus.mes.operationdetail.Formatter.checkOperationStartEndDate'}" />
+									text="{= ${operationDetailModel>/Rowsets/Rowset/0/Row/0/planned_start_time} === 'TimeUnavailable' ? ${i18n>notStarted} : ${operationDetailModel>/Rowsets/Rowset/0/Row/0/planned_start_time} }" />
 								<Label type="space"></Label>
 								<Label text="Original plan:" />
 								<Text

@@ -531,21 +531,21 @@ sap.ui
 						 {
 						 this.setProgressScreenBtn(false, false);
 						 }
-						 else if (this.getView().byId("operationStatus").getText() === "Not Started"
+						 else if (this.getView().byId("operationStatus").getText() === airbus.mes.operationdetail.status.oView.getModel("i18n").getProperty("notStarted")
 								|| this.getView().byId("operationStatus")
-										.getText() === "Paused") {
+										.getText() === airbus.mes.operationdetail.status.oView.getModel("i18n").getProperty("paused") ) {
 
 							this.setProgressScreenBtn(false, true);
 							
 						} else if (this.getView().byId("operationStatus")
-								.getText() === "In Progress") {
+								.getText() === airbus.mes.operationdetail.status.oView.getModel("i18n").getProperty("in_progress")) {
 
 							this.setProgressScreenBtn(true, false);
 							
 						} else if (this.getView().byId("operationStatus")
-								.getText() === "Blocked"
+								.getText() === airbus.mes.operationdetail.status.oView.getModel("i18n").getProperty("blocked")
 								|| this.getView().byId("operationStatus")
-										.getText() === "Confirmed") {
+										.getText() === airbus.mes.operationdetail.status.oView.getModel("i18n").getProperty("confirm")) {
 
 							this.setProgressScreenBtn(false, false);
 													}

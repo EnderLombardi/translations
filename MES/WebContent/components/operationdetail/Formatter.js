@@ -6,7 +6,8 @@ airbus.mes.operationdetail.Formatter = {
 		status:{'completed': 'COMPLETED', 
 			'paused': 'IN_QUEUE',
 			'active': 'IN_WORK',
-			'notStarted': 'NOT_STARTED'},
+			'notStarted': 'NOT_STARTED',
+			'blocked':'Blocked'},
 			
 	setSliderStatus : function(status, progress) {
 		switch (status) {
@@ -21,6 +22,8 @@ airbus.mes.operationdetail.Formatter = {
 				return "Not Started";
 			else
 				return "Paused " + String(progress).split(".")[0] + "%";
+		case airbus.mes.operationdetail.Formatter.status.blocked:
+			return "Blocked";
 		default:
 			return "Not Started";
 		}
