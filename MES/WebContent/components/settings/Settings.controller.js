@@ -263,7 +263,7 @@ sap.ui.controller("airbus.mes.settings.Settings",
 								
 				//airbus.mes.settings.ModelManager.site = this.getView().byId("ComboBoxPlant").getValue();
 				airbus.mes.settings.ModelManager.loadPlantModel();
-				this.filterField(this.selectTree);
+				// Delete value of other combobox
 				this.getView().byId("headTextProgram").getItems().forEach(function(el){
 					
 					el.getContent()[0].getItems()[0].setSelected(false);
@@ -272,9 +272,10 @@ sap.ui.controller("airbus.mes.settings.Settings",
 				this.getView().byId("selectLine").setValue("");
 				this.getView().byId("selectStation").setValue("");
 				this.getView().byId("selectMSN").setValue("");
-								
 				this.setEnabledCombobox(true, false, false, false);
 
+				this.filterField(this.selectTree);
+				
 			},
 
 			// User clicks on a site map
@@ -415,18 +416,25 @@ sap.ui.controller("airbus.mes.settings.Settings",
 				}
 				
 			},
+			onConfirm : function(oEvent) { 
+//				Firstly, save the new user settings
+				this.saveUserSettings();
+//				Then Navigate to correct view
+				this.navigate(oEvent);
+			},
+			
 			/**
 		     * Fire when the user press confirm it save data.
 		     */
-			saveUserSettings : function(oEvent) {
-				var that = this;
+			saveUserSettings : function() {
+
 				if (this.getView().byId("headTextPlant").getSelectedItem() === null ) {
 					airbus.mes.settings.ModelManager.messageShow(this.getView().getModel("i18n").getProperty("SelectSite"));
 					return;
 					// check if one combobox of program is selected
 				} else if ( !this.getView().byId("headTextProgram").getItems().some(function(el){
 					
-					return el.getContent()[0].getItems()[0].getSelected() 
+					return el.getContent()[0].getItems()[0].getSelected(); 
 					
 				})) {
 					airbus.mes.settings.ModelManager.messageShow(this.getView().getModel("i18n").getProperty("SelectProgram"));
@@ -465,8 +473,8 @@ sap.ui.controller("airbus.mes.settings.Settings",
 					airbus.mes.settings.ModelManager.stationDesc = aModel.stationDescription;
 						
 					airbus.mes.settings.ModelManager.saveUserSetting(sap.ui.getCore().getConfiguration().getLanguage().slice(0,2));
-					// Navigate to correct view
-					that.navigate(oEvent);
+//					// Navigate to correct view
+//					that.navigate(oEvent);
 				}
 			},			
 			/**
@@ -494,7 +502,7 @@ sap.ui.controller("airbus.mes.settings.Settings",
 					airbus.mes.shell.util.navFunctions.disruptionTracker();
 					break;
 				
-					/** Disruption Tracker **/
+				/** PolyPoly **/
 				case "polypoly":
 					airbus.mes.shell.util.navFunctions.polypoly();
 					break;

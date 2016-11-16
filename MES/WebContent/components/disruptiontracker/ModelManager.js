@@ -1,8 +1,7 @@
 //"use strict";
 jQuery.sap.declare("airbus.mes.disruptiontracker.ModelManager")
 airbus.mes.disruptiontracker.ModelManager = {
-	urlModel : undefined,
-	queryParams : jQuery.sap.getUriParameters(),
+	oDisruptionFilter: {},
 
 	init : function(core) {
 		
@@ -12,8 +11,10 @@ airbus.mes.disruptiontracker.ModelManager = {
 		
 	},
 	
-	loadDisruptionTrackerModel : function(oFilters) {
+	loadDisruptionTrackerModel : function() {
 		
+		var oFilters = this.oDisruptionFilter;
+				
 		airbus.mes.disruptiontracker.oView.setBusy(true); //Set Busy Indicator
 		
 		var oViewModel = sap.ui.getCore().getModel("disruptionsTrackerModel");

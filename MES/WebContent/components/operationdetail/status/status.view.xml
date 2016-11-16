@@ -20,9 +20,10 @@
 				value="{operationDetailModel>/Rowsets/Rowset/0/Row/0/progress}"
 				enabled="false">
 			</Slider>
-			<Text id="blockedText" text="{i18n>blockedText}" visible="false" class="sapUiMediumMarginTop" >
-			
-			</Text>
+			<HBox class="sapUiMediumMarginTop" alignItems="Center" justifyContent="Center">
+				<Text id="blockedText" text="{i18n>blockedText}" visible="false"  textAlign="Center" />
+				<Button id="goToDisruption" text="{i18n>goToDisruption}" type="Transparent" visible="false" press="onPressGotoDisruptios"/>
+			</HBox>
 
 		</VBox>
 		<!-- <footer>

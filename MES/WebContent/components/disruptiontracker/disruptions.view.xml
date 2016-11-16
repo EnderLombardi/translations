@@ -21,7 +21,7 @@
 					<ComboBox id="stationComboBox" class="sapUiMediumMarginEnd"
 						placeholder="{disruptiontrackerI18n>selectStation}" items="{ path:'plantModel>/Rowsets/Rowset/0/Row' }"
 						selectedKey="" selectionChange="filterByStation">
-						<core:Item key="{plantModel>station}" text="{plantModel>station}" />
+						<core:Item key="{plantModel>station}" text="{plantModel>stationDescription}" />
 					</ComboBox>
 
 					<ComboBox id="statusComboBox" class="sapUiMediumMarginEnd"

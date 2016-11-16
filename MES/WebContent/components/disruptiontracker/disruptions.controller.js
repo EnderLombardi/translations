@@ -115,7 +115,8 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 	/*****************************************************
 	 * Open Operation Detail PopUp on table item click
 	 */	
-	onTableClick: function(){
+	onTableClick: function(oEvt){
+				
 		//create Pop-Up as a fragment 
 		if (airbus.mes.disruptiontracker.detailPopUp === undefined) {
 
@@ -126,7 +127,8 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		    airbus.mes.disruptiontracker.oView.addDependent(airbus.mes.disruptiontracker.detailPopUp);
 
 
-		} 
+		}
+		
 		airbus.mes.disruptiontracker.detailPopUp.open();
 		
 		//Add View Disruptions view to pop-up navigation container
@@ -139,6 +141,23 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 			sap.ui.getCore().byId("disruptionDetailPopup--btnCancelDisruption")	// Cancel Button	
 		);
 		
+		var disruptionData = {
+				   "Rowsets":{
+					      "Rowset":[
+					         {
+					            "Row":[
+					               oEvt.getSource().getBindingContext("disruptionsTrackerModel").getObject()
+					            ]
+					         }
+					      ]
+					   }
+					};
+		
+		sap.ui.getCore().getModel("operationDisruptionsModel").setData(disruptionData);
+		sap.ui.getCore().byId("__panel1-ViewDisruptionView--disrptlist-0").setExpanded(true);
+		sap.ui.getCore().byId("__panel1-ViewDisruptionView--disrptlist-0-CollapsedImg").setVisible(false);
+		
+		
 		this.nav.to(airbus.mes.disruptions.oView.viewDisruption.getId());
 		
 	},
@@ -148,11 +167,26 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 	 * Disruption Close Pop-Up Functions 
 	 */
 	onCloseDisruptnDetailPopUp: function(){
+		this.afterCloseDisruptnDetailPopUp()
 		airbus.mes.disruptiontracker.detailPopUp.close();
 	},
 	
 	afterCloseDisruptnDetailPopUp: function(){
+				
+		sap.ui.getCore().byId("__panel1-ViewDisruptionView--disrptlist-0").setExpanded(false);
+		sap.ui.getCore().byId("__panel1-ViewDisruptionView--disrptlist-0-CollapsedImg").setVisible(true);
 		
+
+		var disruptionData = {
+				   "Rowsets":{
+					      "Rowset":[
+					         {
+					            "Row":[]
+					         }
+					      ]
+					   }
+					};
+		sap.ui.getCore().getModel("operationDisruptionsModel").setData(disruptionData);
 	}
 	
 

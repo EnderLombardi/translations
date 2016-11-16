@@ -950,7 +950,7 @@ background-color: #0085AD !important;
 
 #stationTrackerView--stationtracker .dhx_row_folder .dhx_marked_timespan.begin_shifht
 	{
-	background-color: #ffa749;
+	background-color: blue;
 	/* 	opacity: 0.25;*/
 	width: 3px !important;
 }
@@ -958,7 +958,7 @@ background-color: #0085AD !important;
 ,
 #stationTrackerView--stationtracker .dhx_row_folder .dhx_marked_timespan.taktMarker
 	{
-	background-color: #3498db;
+	background-color: green;
 	/* 	opacity: 0.25;*/
 	width: 3px !important;
 }
@@ -972,7 +972,7 @@ background-color: #0085AD !important;
 
 #stationTrackerView--stationtracker .dhx_row_item .dhx_marked_timespan.begin_shifht
 	{
-	background-color: #ffa749;
+	background-color: blue;
 	/* 	opacity: 0.25;*/
 	width: 3px !important;
 }
@@ -980,7 +980,7 @@ background-color: #0085AD !important;
 ,
 #stationTrackerView--stationtracker .dhx_row_item .dhx_marked_timespan.taktMarker
 	{
-	background-color: #3498db;
+	background-color: green;
 	/* 	opacity: 0.25;*/
 	width: 3px !important;
 }
@@ -1006,7 +1006,7 @@ background-color: #0085AD !important;
 
 #stationTrackerView--stationtracker .dhx_marked_timespan.dhx_matrix_now_time
 	{
-	border-left-color: #0f2d65;
+	border-left-color: purple;
 	opacity: 1;
 }
 
