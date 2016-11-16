@@ -154,8 +154,8 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 		
 		case "stationTrackerView":
 
-			autoRefresh = window.setInterval(this.renderStationTracker, 1000);
-			//this.renderStationTracker();
+			//autoRefresh = window.setInterval(this.renderStationTracker, 1000);
+			this.renderStationTracker();
 			break;
 			
 		case "disruptiontrackerView":
