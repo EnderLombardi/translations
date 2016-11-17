@@ -65,6 +65,7 @@ airbus.mes.settings.AppConfManager =  {
 			return true;
 		else
 			return value;
+		return true
 	},
 	
 }

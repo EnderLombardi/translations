@@ -65,9 +65,9 @@ airbus.mes.stationtracker.AssignmentManager = {
 		
 		oModel.forEach(function(el) {
 
-			if (!oHierarchy[el.avlLine]) {
+			if (!oHierarchy[el.avlLine + "_" + el.skills]) {
 
-				oHierarchy[el.avlLine] = {};
+				oHierarchy[el.avlLine + "_" + el.skills] = {};
 			}
 			if (!oHierarchy[el.avlLine + "_" + el.skills][el.shiftName.split(",")[1] + el.day]) {
 
