@@ -1,0 +1,20 @@
+{
+"configarationList": [
+  {
+"key": "MES_PHOTO_DISPLAY",
+"value": "FALSE"
+},
+  {
+"key": "MES_PHOTO_NAME",
+"value": "TRUE"
+},
+  {
+"key": "MES_BADGE_PIN",
+"value": "FALSE"
+},
+  {
+"key": "MES_BADGE_ACTIVE",
+"value": "TRUE"
+}
+],
+}

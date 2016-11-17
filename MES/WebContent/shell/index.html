@@ -87,7 +87,11 @@
 			// remove splash color & style
 			document.body.style = {};
 			
+			
+			// Load User and Application Settings
 			airbus.mes.settings.ModelManager.loadUserSettingsModel();
+			
+			// Check user settings and if not defined then navigate to Settings screen
 			airbus.mes.settings.ModelManager.checkDisplayFirstSetting();
 		
  		} 

@@ -138,6 +138,9 @@ airbus.mes.settings.ModelManager =  {
 	onUserSettingLoad : function() {
 		// Apply user settings.
 		airbus.mes.settings.oView.getController().getUserSettings();
+		
+		
+		airbus.mes.settings.AppConfManager.loadAppConfig();
 			
 	},
 	

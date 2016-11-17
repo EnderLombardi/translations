@@ -247,13 +247,11 @@ airbus.mes.disruptions.ModelManager = {
 							if (data.Rowsets.Rowset[0].Row[0].Message_Type == "S") {
 								airbus.mes.shell.ModelManager
 										.messageShow(data.Rowsets.Rowset[0].Row[0].Message);
-								// navigate to View Disruption after message
-								// success
-								sap.ui
-										.getCore()
-										.byId(
-												"operationDetailsView--operDetailNavContainer")
-										back();
+								
+								
+								// navigate to View Disruption after success message
+								sap.ui.getCore().byId("operationDetailsView--operDetailNavContainer").back();
+								
 								// load disruption Model again for new message
 								var operationBO = sap.ui.getCore().getModel(
 										"operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_bo;
