@@ -62,7 +62,7 @@ airbus.mes.polypoly.PolypolyManager = {
 		
 		if (  dest === "sopra" ) {
 
-			var oModel = airbus.mes.shell.ModelManager.urlModel._oResourceBundle.aPropertyFiles[0].mProperties;
+			var oModel = this.urlModel._oResourceBundle.aPropertyFiles[0].mProperties;
 				
 			for (var prop in oModel) {
 				if (oModel[prop].slice(-5) != ".json" ) {
