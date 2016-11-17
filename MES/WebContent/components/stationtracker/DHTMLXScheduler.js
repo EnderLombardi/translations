@@ -227,58 +227,56 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 							}
 
 							if (section.rescheduled && !section.children) {
-								
 								jQuery.sap.registerModulePath("airbus.mes.polypoly","../components/polypoly");
 								airbus.mes.stationtracker.AssignmentManager.polypolyAffectation = true;
-		
-							if (!airbus.mes.stationtracker.oPopoverPolypoly) {
-								airbus.mes.stationtracker.oPopoverPolypoly = sap.ui.xmlfragment("airbus.mes.stationtracker.polypolyFragment", airbus.mes.stationtracker.oView.getController());
+								airbus.mes.stationtracker.AssignmentManager.polypolyAssignment.selectedLine = section;
+								airbus.mes.stationtracker.AssignmentManager.polypolyAssignment.selectedShift = airbus.mes.stationtracker.ShiftManager.ShiftSelected;
 								
-								if(airbus.mes.polypoly == undefined){
-									sap.ui.getCore().createComponent({
-										name : "airbus.mes.polypoly", // root component folder is resources
-									});	
-								}
-							}
-							//load model of polypoly
-//							airbus.mes.polypoly.ModelManager.getPolyPolyModel("CHES", "1L"); //FIXME When Settings ready
-							airbus.mes.polypoly.ModelManager.getPolyPolyModel(airbus.mes.settings.ModelManager.site, airbus.mes.settings.ModelManager.station);
-							
-							// set polypoly in non-editable mode
-							airbus.mes.polypoly.PolypolyManager.globalContext.bEditable = !airbus.mes.stationtracker.AssignmentManager.polypolyAffectation;
-							
-							
-							// place this Ui Container with the Component inside into UI Area
-							airbus.mes.stationtracker.oPopoverPolypoly.addContent(airbus.mes.polypoly.oView);
-							
-							airbus.mes.stationtracker.oPopoverPolypoly.setModel(airbus.mes.stationtracker.oView.getModel("StationTrackerI18n"),"StationTrackerI18n");
-							
-							airbus.mes.stationtracker.AssignmentManager.polypolyAssignment.selectedLine = section;
-							airbus.mes.stationtracker.AssignmentManager.polypolyAssignment.selectedShift = airbus.mes.stationtracker.ShiftManager.ShiftSelected;
-							
-							var myButton = airbus.mes.stationtracker.oPopoverPolypoly.getButtons().find(function(el){
-								return el.sId == "deleteLineAssignmentButton";
-							});
-							if (airbus.mes.stationtracker.AssignmentManager.affectationHierarchy[section.avlLine]) {
-								if (airbus.mes.stationtracker.AssignmentManager.affectationHierarchy[section.avlLine][airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftID]){
-									if(!myButton.getVisible()){
-										myButton.setVisible(true);
+								if(!airbus.mes.stationtracker.AssignmentManager.checkQA){
+									if (!airbus.mes.stationtracker.oPopoverPolypoly) {
+										airbus.mes.stationtracker.oPopoverPolypoly = sap.ui.xmlfragment("airbus.mes.stationtracker.polypolyFragment", airbus.mes.stationtracker.oView.getController());
+
+										if(airbus.mes.polypoly == undefined){
+											sap.ui.getCore().createComponent({
+												name : "airbus.mes.polypoly", // root component folder is resources
+											});	
+										}
 									}
+									//load model of polypoly
+//									airbus.mes.polypoly.ModelManager.getPolyPolyModel("CHES", "1L"); //FIXME When Settings ready
+									airbus.mes.polypoly.ModelManager.getPolyPolyModel(airbus.mes.settings.ModelManager.site, airbus.mes.settings.ModelManager.station);
+									// set polypoly in non-editable mode
+									airbus.mes.polypoly.PolypolyManager.globalContext.bEditable = !airbus.mes.stationtracker.AssignmentManager.polypolyAffectation;
+
+									// place this Ui Container with the Component inside into UI Area
+									airbus.mes.stationtracker.oPopoverPolypoly.addContent(airbus.mes.polypoly.oView);
+									airbus.mes.stationtracker.oPopoverPolypoly.setModel(airbus.mes.stationtracker.oView.getModel("StationTrackerI18n"),"StationTrackerI18n");
+
+									var myButton = airbus.mes.stationtracker.oPopoverPolypoly.getButtons().find(function(el){
+										return el.sId == "deleteLineAssignmentButton";
+									});
+									if (airbus.mes.stationtracker.AssignmentManager.affectationHierarchy[section.avlLine]) {
+										if (airbus.mes.stationtracker.AssignmentManager.affectationHierarchy[section.avlLine][airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftID]){
+											if(!myButton.getVisible()){
+												myButton.setVisible(true);
+											}
+										}else{
+											if(myButton.getVisible()){
+												myButton.setVisible(false);
+											}
+										}
+									}else{
+										if(myButton.getVisible()){
+											myButton.setVisible(false);
+										}
+									}
+									airbus.mes.stationtracker.oPopoverPolypoly.open();
+									// Permit to display or not polypoly affectation or polypoly simple
+									airbus.mes.polypoly.oView.getController().initiatePolypoly();
+
 								}else{
-									if(myButton.getVisible()){
-										myButton.setVisible(false);
-									}
+									airbus.mes.stationtracker.AssignmentManager.handleLineAssignment("W", false);
 								}
-							}else{
-								if(myButton.getVisible()){
-									myButton.setVisible(false);
-								}
-							}
-							airbus.mes.stationtracker.oPopoverPolypoly.open();
-							// Permit to display or not polypoly affectation or polypoly simple
-							airbus.mes.polypoly.oView.getController().initiatePolypoly();
-							
-							
 							}
 
 						}));

@@ -885,7 +885,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		airbus.mes.stationtracker.AssignmentManager.handleLineAssignment("S", true);
 	},
 	
-	openCheckQAPopup : function(sMode, oModel){
+	openCheckQAPopup : function(oModel){
 		if (!airbus.mes.stationtracker.checkQAPopUp) {
 			airbus.mes.stationtracker.checkQAPopUp = sap.ui.xmlfragment("airbus.mes.stationtracker.checkQAPopUp", airbus.mes.stationtracker.oView.getController());
 		}
@@ -902,22 +902,23 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 				aInfoButtons[aInfoButtons.indexOf(el.sId)] = el;
 			}
 		});
-		
+
 		aConfirmButtons.forEach(function(el){
-			if(!el.getVisible() && sMode == "confirm"){
+			if(!el.getVisible() && !airbus.mes.stationtracker.AssignmentManager.checkQA){
 				el.setVisible(true);
-			}else if(el.getVisible() && sMode == "info"){
+			}else if(el.getVisible() && airbus.mes.stationtracker.AssignmentManager.checkQA){
 				el.setVisible(false);
 			}
 		});
 		aInfoButtons.forEach(function(el){
-			if(!el.getVisible() && sMode == "info"){
+			if(!el.getVisible() && airbus.mes.stationtracker.AssignmentManager.checkQA){
 				el.setVisible(true);
-			}else if(el.getVisible() && sMode == "confirm"){
+			}else if(el.getVisible() && !airbus.mes.stationtracker.AssignmentManager.checkQA){
 				el.setVisible(false);
 			}
 		});
 		airbus.mes.stationtracker.checkQAPopUp.open();
+		airbus.mes.stationtracker.AssignmentManager.checkQA = false;
 	},
 	
 	onCancelCheckQA : function(oEvent){
@@ -937,14 +938,6 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	},
 	
 	onCheckQA : function(){
-		event = event || window.event // cross-browser event
-		if (event.stopPropagation) {
-			// W3C standard variant
-			event.stopPropagation()
-		} else {
-			// IE variant
-			event.cancelBubble = true
-		}
-		console.log('toto'); //TODO Call to airbus.mes.stationtracker.ModelManager.checkQA()
+		airbus.mes.stationtracker.AssignmentManager.checkQA = true;
 	},
 });
