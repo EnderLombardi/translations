@@ -958,7 +958,10 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	tooltipDisplay : function(oEvent) {
 		var oEventProvider = new sap.ui.base.EventProvider();
 		var oEvent = new sap.ui.base.Event("test",oEventProvider);
+<<<<<<< Upstream, based on origin/MESv0.9
 		//this.onProductionGroupPress(oEvent);
+=======
+>>>>>>> 2d38025 [stationtracker] -User local file added regarding new .
 		console.log("tooltip");
 	},
 	
