@@ -455,8 +455,6 @@ airbus.mes.stationtracker.util.Formatter = {
 						return html;
 
 					}
-
-	
 					
 				} else {
 					
