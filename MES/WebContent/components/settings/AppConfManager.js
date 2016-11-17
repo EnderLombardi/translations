@@ -21,9 +21,13 @@ airbus.mes.settings.AppConfManager =  {
 	loadAppConfig: function(){
 		jQuery.ajax({
 		    type:'post',
-		    url: this.getUrlAppConfig(),
-		    contentType: 'application/json',
-		    data: {
+		    url: "https://dmiswde0.eu.airbus.corp/airbus-rswebservice/rest/mesAppConfigurationService/getConfiguration?j_user=ng34ed3&j_password=Malice0*",
+		    contentType: 'application/json; charset=utf-8',
+		    accept: 'application/json',
+		    headers: {
+			    "Access-Control-Allow-Origin": '*'
+		    },
+			data: {
 		    	"site": airbus.mes.settings.ModelManager.site,
 		    	"configurationGroup":"AIRBUS_MES_APP"
 		    },
