@@ -762,7 +762,7 @@ background-color: #0085AD !important;
 }
 
 .classKpiHeaderContent .kpiValue {
-	font-size: 28px;
+	font-size: 20px;
 	width: 100%;
 	text-align: center ! important;
 }
@@ -773,6 +773,7 @@ background-color: #0085AD !important;
 }
 
 .classKpiHeaderContent .kpiErrorValue {
+	font-size: 20px;
 	color: #fe5000;
 }
 

@@ -146,8 +146,77 @@
 								</micro:ComparisonMicroChart>
 							</VBox>
 						</VBox>
+						
+						<VBox id="boxOpenDisruptions" width="40%" class="contentHeaderCont">
+							<Label text="{StationTrackerI18n>DisruptionOpen}"
+								design="Bold" width="100%" class="whiteTextHeader sapUiSmallMarginTopBottom" />
+							<HBox height="65%">
+								<VBox direction="Column" alignItems="Start" justifyContent="Center" width= "15%">
+									<Label text="{StationTrackerI18n>DisruptionTotal}"
+										   class = "sapUiTinyMarginBegin wrap"/>
+								    <Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/TotalDisruption}"
+										class="whiteText kpiValue sapUiLargeMarginTop sapUiTinyMargin"  />
+							    </VBox>
+							    
+							    <VBox direction="Column" alignItems="Start" justifyContent="Center" 
+							          class="sapUiTinyMarginBegin wrap" width= "10%" >
+							       <Label text="{StationTrackerI18n>DisruptionsNC}" class="disruptionText wrap" />
+							       <Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/NCDisruption}"
+										class="whiteText kpiValue sapUiMediumMarginTop"  />
+								   <Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/NCAndon}"
+										class= " redText kpiErrorValue sapUiSmallMarginTop"  />
+							    </VBox>
+							    
+							    <VBox direction="Column" alignItems="Start" justifyContent="Center" 
+							          class="sapUiTinyMarginBegin wrap" width= "10%" >
+							       <Label text="{StationTrackerI18n>DisruptionsMissing}"  
+							              	class="disruptionText wrap" />
+							       <Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/MissingDisruption}"
+										class="whiteText kpiValue sapUiSmallMarginTop"  />
+								   <Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/MissingAndon}"
+										class= " redText kpiErrorValue sapUiSmallMarginTop"  />
+							    </VBox>
+							    
+							    <VBox direction="Column" alignItems="Start" justifyContent="Center" 
+							          class="sapUiTinyMarginBegin wrap" width= "10%" >
+							       <Label text="{StationTrackerI18n>DisruptionJnT}" class="disruptionText wrap" />
+							       <Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/JTDisruption}"
+										class="whiteText kpiValue sapUiSmallMarginTop"  />
+								   <Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/JTAndon}"
+										class= " redText kpiErrorValue sapUiSmallMarginTop"  />
+							    </VBox>
+							    
+							    <VBox direction="Column" alignItems="Start" justifyContent="Center"
+							          class="sapUiTinyMarginBegin wrap" width= "10%">
+							       <Label text="{StationTrackerI18n>DisruptionPeople}" class="disruptionText wrap" />
+							       <Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/FTEDisruption}"
+										class="whiteText kpiValue sapUiMediumMarginTop"  />
+								   <Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/FTEAndon}"
+										class= " redText kpiErrorValue sapUiSmallMarginTop"  />
+							    </VBox>
+							    
+							    <VBox direction="Column" alignItems="Start" justifyContent="Center"
+							          class="sapUiTinyMarginBegin wrap" width= "10%" >
+							       <Label text="{StationTrackerI18n>DisruptionOther}" class="disruptionText wrap" />
+							       <Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/OtherDisruption}"
+										class="whiteText kpiValue sapUiMediumMarginTop"  />
+								   <Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/OtherAndon}"
+										class= " redText kpiErrorValue sapUiSmallMarginTop"  />
+							    </VBox>
+							    
+							   <!--  <VBox> -->
+							      <!--  <micro:ComparisonMicroChart size="S" scale="M" class="sapUiSmallMargin" press="press">
+		                             <micro:data>
+			                         <micro:ComparisonMicroChartData	title="EMEA" displayValue="USD 0" color="Good" />
+                                      <micro:ComparisonMicroChartData	title="EMEA" value="50" color="Good"/>
+			                          <micro:ComparisonMicroChartData	title="APAC" value="-20" color="Error"/>
+		                              </micro:data>
+		                             </ComparisonMicroChart> -->
+							   <!--  </VBox> -->
+							    							    	
+						
 
-						<VBox id="boxOpenDisruptions" width="24%" class="contentHeaderCont">
+						<!-- <VBox id="boxOpenDisruptions" width="24%" class="contentHeaderCont">
 							<Label text="{StationTrackerI18n>DisruptionOpen/Andon}"
 								design="Bold" width="100%" class="whiteTextHeader sapUiSmallMarginTopBottom" />
 							<HBox height="65%">
@@ -200,28 +269,33 @@
 										class="redText kpiErrorValu" />
 								</VBox>
 							</HBox>
-						</VBox>
+						</VBox> -->
 
-						<VBox id="boxResolutionEfficiency" width="11%" alignItems="Center"
-							class="contentHeaderCont">
-							<Label text="{StationTrackerI18n>ResolutionEfficiency}"
-								design="Bold" class="whiteTextHeader sapUiSmallMarginTopBottom" />
-							<VBox width="90%">
+						<!-- <VBox id="boxResolutionEfficiency" width="11%" alignItems="Center"
+							class="contentHeaderCont"> -->
+					    <VBox id="boxResolutionEfficiency" width="35%" class="sapUiTinyMarginBegin sapUiTinyMarginEnd" 
+					          alignItems="Center" justifyContent="Center">
+							<!-- <Label text="{StationTrackerI18n>ResolutionEfficiency}"
+								design="Bold" class="whiteTextHeader sapUiSmallMarginTopBottom" /> -->
+							<!-- <VBox width="100%"> -->
 								<micro:ComparisonMicroChart size="L"
 									id="boxResolutionEfficiecy_chart"
-									width="100%" colorPalette="#84bd00,#fe5000,#fe5000,#0F2D65" >
-									<micro:data>
+									colorPalette="#84bd00,#fe5000,#fe5000,#0F2D65" width="100%"  >
+									<micro:data >
+										<micro:ComparisonMicroChartData 
+											title="{StationTrackerI18n>PromisedInTakt}" value="8"   />
+									    
 										<micro:ComparisonMicroChartData
-											title="{StationTrackerI18n>PromisedInTakt}" value="8" />
-										<micro:ComparisonMicroChartData
-											title="{StationTrackerI18n>PromisedOutTakt}" value="3" />
+											title="{StationTrackerI18n>PromisedOutTakt}" value="3"  />
 										<micro:ComparisonMicroChartData
 											title="{StationTrackerI18n>NotAcknowledged}" value="2" />
 										<micro:ComparisonMicroChartData
 											id="hiddenRefBarResolution" title="{StationTrackerI18n>RedSpaces}" value="13" visible="false"/>
 									</micro:data>
 								</micro:ComparisonMicroChart>
-							</VBox>
+							<!-- </VBox> -->
+						</VBox>
+						</HBox>
 						</VBox>
 
 						<VBox id="boxExtraWork" wrap="Wrap" width="6%" class="contentHeaderCont">
