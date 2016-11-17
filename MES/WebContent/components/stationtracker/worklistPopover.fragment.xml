@@ -1,35 +1,24 @@
 <core:FragmentDefinition xmlns:core="sap.ui.core"
 	xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:custom="airbus.mes.stationtracker"
 	xmlns:html="http://www.w3.org/1999/xhtml">
-	<Dialog title="Unplanned activities" class="pageHeaderDialog classWorklistPopover">
-		<customHeader>
-			<Toolbar>
-				<ToolbarSpacer />
-				<!-- <Label id="LabelTitle" text="{ path: 'WorkListModel>andons' , formatter: 'airbus.mes.stationtracker.util.Formatter.setWorkListText' }" /> -->
-				<Label id="LabelTitle" text="{ parts: [ 'WorkListOverallModel>/0/WORKORDER_ID','WorkListOverallModel>/0/WORKORDER_DESCRIPTION' ], formatter: 'airbus.mes.stationtracker.util.Formatter.titleWorklist'}" />
-				<ToolbarSpacer />
-			</Toolbar>
-		</customHeader>
+	<Dialog title="Unplanned activities" class="pageHeaderDialog classWorklistPopover" showHeader="false">
+		
+		
 		<content>
+			<VBox class="sapMFooter-CTX classWorklistPopoverHeader">
+					<Label id="LabelTitle" width="100%" text="{path: 'WorkListModel>andons' , formatter: 'airbus.mes.stationtracker.util.Formatter.setWorkListText' }" />
+				
+					<custom:customProgressIndicator
+					id="overallProgress" 
+					visible="false"
+					width="auto" state="sap.ui.core.ValueState.Success" status="{WorkListOverallModel>STATE}"
+					isAndon="{WorkListOverallModel>andons}"
+					displayValue="{ parts: [ 'WorkListOverallModel>/0/WORKORDER_ID','WorkListOverallModel>/0/WORKORDER_DESCRIPTION' ], formatter: 'airbus.mes.stationtracker.util.Formatter.titleWorklist'}"
+					displayValue2="{ parts: [ 'WorkListOverallModel>/0/OPERATION_ID','WorkListOverallModel>/0/OPERATION_DESCRIPTION','WorkListOverallModel>/0/PROGRESS','WorkListOverallModel>/0/DURATION' ], formatter: 'airbus.mes.stationtracker.util.Formatter.displayValueIM'}"
+					percentValue="{ parts: [ 'WorkListOverallModel>/0/PROGRESS','WorkListOverallModel>/0/DURATION' ], formatter: 'airbus.mes.stationtracker.util.Formatter.percentValue'}">
+					</custom:customProgressIndicator>
+			</VBox>
 			
-			<!-- old script but wait before delete
-			 
-				<custom:customProgressIndicator
-				id="overallProgress"
-				visible="false"
-				width="auto" state="sap.ui.core.ValueState.Success" status="{WorkListOverallModel>STATE}"
-				isAndon="{WorkListOverallModel>andons}"
-				displayValue="{ parts: [ 'WorkListOverallModel>/0/WORKORDER_ID','WorkListOverallModel>/0/WORKORDER_DESCRIPTION' ], formatter: 'airbus.mes.stationtracker.util.Formatter.titleWorklist'}"
-				displayValue2="{ parts: [ 'WorkListOverallModel>/0/OPERATION_ID','WorkListOverallModel>/0/OPERATION_DESCRIPTION','WorkListOverallModel>/0/PROGRESS','WorkListOverallModel>/0/DURATION' ], formatter: 'airbus.mes.stationtracker.util.Formatter.displayValueIM'}"
-				percentValue="{ parts: [ 'WorkListOverallModel>/0/PROGRESS','WorkListOverallModel>/0/DURATION' ], formatter: 'airbus.mes.stationtracker.util.Formatter.percentValue'}">
-			 -->
-			 <custom:customProgressIndicator	
-				id="overallProgress"
-				class="overallProgresstitle"
-				visible="false"
-				width="auto"
-				displayValue="{ path: 'WorkListModel>andons' , formatter: 'airbus.mes.stationtracker.util.Formatter.setWorkListText' }">
-			</custom:customProgressIndicator>		
 			<VBox>
 				<HBox>
 					<Select class="sapUiTinyMarginBeginEnd comboBoxStyle"
@@ -45,7 +34,8 @@
 						<core:ListItem key="{groupModel>Value}" text="{ path : 'groupModel>Value' , formatter : '.getI18nValue' }" />					
 					</Select>
 				</HBox>
-				<List id="myList" growing="true" growingThreshold="20"
+			
+			<List id="myList" growing="true" growingThreshold="20"
 					growingScrollToLoad="true" items="{ path: 'WorkListModel>/' }"
 					selectionChange="onSelectionChange"
 					mode="{ path : 'WorkListModel>andons' , formatter: 'airbus.mes.stationtracker.util.Formatter.setmodeList'}"

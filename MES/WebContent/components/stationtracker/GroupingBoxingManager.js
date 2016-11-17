@@ -534,8 +534,8 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 			
 		});
 		
-		var t1 = performance.now();
-		console.log("Call to doSomething took " + (t1 - t0) + " milliseconds.");
+		//var t1 = performance.now();
+		//console.log("Call to doSomething took " + (t1 - t0) + " milliseconds.");
 		
 		scheduler.matrix['timeline'].y_unit_original = aElements2;
 		scheduler.callEvent("onOptionsLoad", []);

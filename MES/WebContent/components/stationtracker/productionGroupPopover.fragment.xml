@@ -2,7 +2,7 @@
 	xmlns:core="sap.ui.core"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m">
-	<Popover placement="Bottom" id="productionGroupPopover" top="105px" showHeader="false" contentWidth="10%" contentHeight="auto" afterClose="onProdGroupSelFinish" >
+	<Popover placement="Bottom" showHeader="false" contentWidth="10%" contentHeight="auto" afterClose="onProdGroupSelFinish" >
 		
 		<!-- <List id="myList"
 			items="{ path : 'productionGroupModel>/Rowsets/Rowset/0/Row' }"

@@ -959,7 +959,12 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	tooltipDisplay : function(oEvent) {
 		var oEventProvider = new sap.ui.base.EventProvider();
 		var oEvent = new sap.ui.base.Event("test",oEventProvider);
+<<<<<<< Upstream, based on origin/MESv0.9
 	
+=======
+		//this.onProductionGroupPress(oEvent);
+		console.log("tooltip");
+>>>>>>> c959b49 [workliste] - design
 	},
 	
 	onCheckQA : function(){
@@ -967,18 +972,18 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	},
 	// Displays the number of items selected in the "Groupe de production
 	// TODO : get id of the fragment "productionGroupPopover" to insert value (line 915 and 920)
-	onSelectionChange : function (oEvt) {
-		
-		var oList = oEvt.getSource();
-		var oLabel = this.getView().byId("idFilterLabel");
-		var oInfoToolbar = airbus.mes.stationtracker.oView.byId("idInfoToolbar");
-		//alert("oInfoToolbar : " + oInfoToolbar)
-		var aContexts = oList.getSelectedContexts(true);
-		// update UI
-		var bSelected = (aContexts && aContexts.length > 0);
-		var sText = (bSelected) ? aContexts.length + " selected" : null;
-		
-		oInfoToolbar.setVisible(bSelected);
-		oLabel.setText(sText);
-	}
+//	onSelectionChange : function (oEvt) {
+//		
+//		var oList = oEvt.getSource();
+//		var oLabel = this.getView().byId("idFilterLabel");
+//		var oInfoToolbar = airbus.mes.stationtracker.oView.byId("idInfoToolbar");
+//		//alert("oInfoToolbar : " + oInfoToolbar)
+//		var aContexts = oList.getSelectedContexts(true);
+//		// update UI
+//		var bSelected = (aContexts && aContexts.length > 0);
+//		var sText = (bSelected) ? aContexts.length + " selected" : null;
+//		
+//		oInfoToolbar.setVisible(bSelected);
+//		oLabel.setText(sText);
+//	}
 });

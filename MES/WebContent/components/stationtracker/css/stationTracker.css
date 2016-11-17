@@ -1543,7 +1543,7 @@ svg#stationTrackerView--takt_adherence_area_chart {
 
 /*** productionGroupPopover  ***/
 
-#productionGroupPopover{
+ #productionGroupPopover{
 	top:105px;
 }
 .sapMSLITitleOnly{
@@ -1561,3 +1561,14 @@ svg#stationTrackerView--takt_adherence_area_chart {
 }
 
 /*** end productionGroupPopover  ***/
+/*** worklistPopover  ***/
+#mes .sapMDialog:not(.theme-disabled) .classWorklistPopoverHeader {
+    box-shadow: 0 0 5px #333;
+    overflow: visible;
+    background-color: #d4f1f7;
+    color: #434343;
+    margin: -1rem -1rem 1rem -1rem;
+    padding: 1rem;
+}
+
+/*** end worklistPopover  ***/

@@ -136,7 +136,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 						
 						scheduler.eventId.push(scheduler.attachEvent("onBeforeDrag",function blockReadonly(id) {
 
-						    dragged_event=scheduler.getEvent(id); //use it to get the object of the dragged event
+						    var dragged_event=scheduler.getEvent(id); //use it to get the object of the dragged event
 							
 							if (this.getEvent(id).type === "I" ) {
 								

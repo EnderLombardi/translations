@@ -24,46 +24,11 @@
 							text="{StationTrackerI18n>ProductionGroup} : {StationTrackerI18n>StatusAll}"
 							type="Transparent" class="whiteColor whiteButton" press="onProductionGroupPress" />
 						
-						<!-- ***************************************************** -->
-						
-					 	<!-- <Select id="myList"
-								class="sapUiTinyMarginBeginEnd pageHeader pageHeaderBlue" 
-								items="{ path : 'productionGroupModel>/Rowsets/Rowset/0/Row' }">
-							<core:Item key="{productionGroupModel>PROD_GROUP}" 
-									   text="{productionGroupModel>PROD_GROUP}" />
-						</Select> -->
-						
-						<!--  ***************************************************** -->
-						
-						<!--  <VBox>
-						<SelectList
-							id="myList3"
-								class="sapUiTinyMarginBeginEnd pageHeader pageHeaderBlue" 
-								items="{ path : 'productionGroupModel>/Rowsets/Rowset/0/Row' }">
-							<core:Item key="{productionGroupModel>PROD_GROUP}" 
-									   text="{productionGroupModel>PROD_GROUP}" />
-						</SelectList>
-						</VBox> -->
-						
-						<!--  ***************************************************** -->
-						
-						<!-- <VBox><List id="myList2"
-								class="sapUiTinyMarginBeginEnd pageHeader pageHeaderBlue" 
-								items="{ path : 'productionGroupModel>/Rowsets/Rowset/0/Row' }">
-								<InputListItem key="{productionGroupModel>PROD_GROUP}" 
-									        label="{productionGroupModel>PROD_GROUP}">
-									<CheckBox state="true" />
-								</InputListItem>
-						</List></VBox> -->
-						
-						<!-- ***************************************************** -->
-						
 						<Select id="selectUser" change="selectUser"
 							class="sapUiTinyMarginBeginEnd pageHeader pageHeaderBlue" 
 							items="{ path : 'ressourcePoolModel>/Rowsets/Rowset/0/Row' }" text="test">
 							<core:Item key="{ressourcePoolModel>USER_ID}" text="{ressourcePoolModel>FNAME}" />
 						</Select>
-						
 						
 						<ToolbarSpacer />
 						<Button id="TeamButton" text="{StationTrackerI18n>ButtonTeam}"
