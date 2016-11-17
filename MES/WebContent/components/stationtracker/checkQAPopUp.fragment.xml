@@ -3,8 +3,8 @@
 	xmlns:u="sap.ui.unified" xmlns:table="sap.ui.table">
 	<Dialog id="checkQAPopUp" stretchOnPhone="false" showHeader="false">
 		<buttons>
-			<Button id="continueButton" text="{StationTrackerI18n>Continue}" press="onContinueCheckQA" />
-			<Button id="cancelButton" text="{StationTrackerI18n>Cancel}" press="onCancelCheckQA" />
+			<Button id="continueButton" text="{StationTrackerI18n>Continue}" press="onContinueCheckQA" icon="sap-icon://accept"/>
+			<Button id="cancelButton" text="{StationTrackerI18n>Cancel}" press="onCancelCheckQA" icon="sap-icon://decline"/>
 			<Button id="okButton" text="{StationTrackerI18n>OK}" press="onCancelCheckQA" />
 		</buttons>
 		<content>
