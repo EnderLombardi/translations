@@ -151,14 +151,14 @@
 							<Label text="{StationTrackerI18n>DisruptionOpen}"
 								design="Bold" width="100%" class="whiteTextHeader sapUiSmallMarginTopBottom" />
 							<HBox height="65%">
-								<VBox direction="Column" alignItems="Start" justifyContent="Center" width= "15%">
+								<VBox direction="Column" alignItems="Start" width= "15%">
 									<Label text="{StationTrackerI18n>DisruptionTotal}"
 										   class = "sapUiTinyMarginBegin wrap"/>
 								    <Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/TotalDisruption}"
 										class="whiteText kpiValue sapUiLargeMarginTop sapUiTinyMargin"  />
 							    </VBox>
 							    
-							    <VBox direction="Column" alignItems="Start" justifyContent="Center" 
+							    <VBox direction="Column" alignItems="Start" 
 							          class="sapUiTinyMarginBegin wrap" width= "10%" >
 							       <Label text="{StationTrackerI18n>DisruptionsNC}" class="disruptionText wrap" />
 							       <Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/NCDisruption}"
@@ -167,7 +167,7 @@
 										class= " redText kpiErrorValue sapUiSmallMarginTop"  />
 							    </VBox>
 							    
-							    <VBox direction="Column" alignItems="Start" justifyContent="Center" 
+							    <VBox direction="Column" alignItems="Start" 
 							          class="sapUiTinyMarginBegin wrap" width= "10%" >
 							       <Label text="{StationTrackerI18n>DisruptionsMissing}"  
 							              	class="disruptionText wrap" />
@@ -177,7 +177,7 @@
 										class= " redText kpiErrorValue sapUiSmallMarginTop"  />
 							    </VBox>
 							    
-							    <VBox direction="Column" alignItems="Start" justifyContent="Center" 
+							    <VBox direction="Column" alignItems="Start" 
 							          class="sapUiTinyMarginBegin wrap" width= "10%" >
 							       <Label text="{StationTrackerI18n>DisruptionJnT}" class="disruptionText wrap" />
 							       <Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/JTDisruption}"
@@ -186,7 +186,7 @@
 										class= " redText kpiErrorValue sapUiSmallMarginTop"  />
 							    </VBox>
 							    
-							    <VBox direction="Column" alignItems="Start" justifyContent="Center"
+							    <VBox direction="Column" alignItems="Start" 
 							          class="sapUiTinyMarginBegin wrap" width= "10%">
 							       <Label text="{StationTrackerI18n>DisruptionPeople}" class="disruptionText wrap" />
 							       <Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/FTEDisruption}"
@@ -195,7 +195,7 @@
 										class= " redText kpiErrorValue sapUiSmallMarginTop"  />
 							    </VBox>
 							    
-							    <VBox direction="Column" alignItems="Start" justifyContent="Center"
+							    <VBox direction="Column" alignItems="Start" 
 							          class="sapUiTinyMarginBegin wrap" width= "10%" >
 							       <Label text="{StationTrackerI18n>DisruptionOther}" class="disruptionText wrap" />
 							       <Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/OtherDisruption}"
@@ -274,7 +274,7 @@
 						<!-- <VBox id="boxResolutionEfficiency" width="11%" alignItems="Center"
 							class="contentHeaderCont"> -->
 					    <VBox id="boxResolutionEfficiency" width="35%" class="sapUiTinyMarginBegin sapUiTinyMarginEnd" 
-					          alignItems="Center" justifyContent="Center">
+					          alignItems="Center" >
 							<!-- <Label text="{StationTrackerI18n>ResolutionEfficiency}"
 								design="Bold" class="whiteTextHeader sapUiSmallMarginTopBottom" /> -->
 							<!-- <VBox width="100%"> -->
