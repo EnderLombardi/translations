@@ -381,7 +381,14 @@ sap.ui
 								"UIDForConfirmation").getValue();
 						var bID = sap.ui.getCore().getElementById(
 								"badgeIDForConfirmation").getValue();
-
+						var ID;
+						if(bID != "" || bID != undefined){
+							ID = bID;
+						}elseif(uID != "" || uID != undefined){
+							ID = uID;
+						}
+						var pin = sap.ui.getCore().getElementById(
+								"pinForConfirmation").getValue();
 						var user = sap.ui.getCore().byId(
 								"userNameForConfirmation").getValue();
 						var pass = sap.ui.getCore().byId(
@@ -393,7 +400,7 @@ sap.ui
 								"ErrorDuringConfirmation");
 
 						if ((user == "" || pass == "")
-								&& (uID == "" || bID == "")) {
+								&& (ID == "")) {
 							sap.ui.getCore().byId("msgstrpConfirm").setVisible(
 									true);
 							sap.ui.getCore().byId("msgstrpConfirm").setType(
@@ -445,7 +452,7 @@ sap.ui
 																		"/Rowsets/Rowset/0/Row/0/sfc_step_ref"),
 														oView.getController().reasonCodeText,
 														oView.getController().Mode,
-														bID),
+														ID, pin),
 										async : false,
 										error : function(xhr, status, error) {
 											airbus.mes.operationdetail.ModelManager

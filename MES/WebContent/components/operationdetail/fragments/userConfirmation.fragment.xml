@@ -23,6 +23,9 @@
 						<Label text="Badge ID" required="true" />
 						<Input id="badgeIDForConfirmation" type="Text"
 							placeholder="Badge ID" liveChange="badgeIDLive" />
+						<Label text="PIN" required="false" />
+						<Input id="pinForConfirmation" type="Text"
+							placeholder="PIN" liveChange="pinIDLive" />
 						<Text text="--------OR--------" textAlign="Center"/>
 						
 						<Label text="Username" required="true" />

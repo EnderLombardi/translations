@@ -142,7 +142,7 @@ airbus.mes.operationdetail.ModelManager = {
 	 * Get URL for Operation Confirmation
 	 **************************************************************************/
 	getConfirmationUrl : function(userId, password, confirmationType,
-			percentConfirm, sfcStepRef, reasonCodeText, Mode, bID) {
+			percentConfirm, sfcStepRef, reasonCodeText, Mode, ID, pin) {
 		var totalPartialConfirmationUrl = this.urlModel
 				.getProperty("operationConfirmatonUrl");
 		totalPartialConfirmationUrl = airbus.mes.shell.ModelManager.replaceURI(
@@ -161,7 +161,9 @@ airbus.mes.operationdetail.ModelManager = {
 		totalPartialConfirmationUrl = airbus.mes.shell.ModelManager.replaceURI(
 				totalPartialConfirmationUrl, "$Mode", Mode);
 		totalPartialConfirmationUrl = airbus.mes.shell.ModelManager.replaceURI(
-				totalPartialConfirmationUrl, "$bID", bID);
+				totalPartialConfirmationUrl, "$ID", ID);
+		totalPartialConfirmationUrl = airbus.mes.shell.ModelManager.replaceURI(
+				totalPartialConfirmationUrl, "$pin", pin);
 		return totalPartialConfirmationUrl;
 
 	}

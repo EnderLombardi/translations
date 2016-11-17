@@ -14,8 +14,8 @@
 					showCloseButton="true">
 				</MessageStrip>
 			</HBox>
-			<HBox justifyContent="SpaceAround">					
-				<VBox class="sapUiSmallMarginEnd" width="100%" justifyContent="Center">
+			<HBox justifyContent="Center">					
+
 					<f:SimpleForm id="myProfile" minWidth="1024"
 						maxContainerCols="1" editable="true" layout="ResponsiveGridLayout"
 						labelSpanL="1" labelSpanM="2" emptySpanL="0" emptySpanM="0"
@@ -33,7 +33,7 @@
 								placeholder="{ShellI18n>password}" liveChange="passwordLive" />
 						</f:content>
 					</f:SimpleForm>
-				</VBox>
+
 			</HBox>
 
 		</content>
