@@ -1,3 +1,5 @@
+"use strict";
+
 jQuery.sap.declare("airbus.mes.stationtracker.GroupingBoxingManager")
 airbus.mes.stationtracker.GroupingBoxingManager	 = {
 	
@@ -29,10 +31,9 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 		
 		oModelShift = sap.ui.getCore().getModel("shiftsModel").oData.Rowsets.Rowset[0].Row;
 		
-    } else  {
-    	
-    	console.log("no shift Data for station tracker");
-    	oModelShift = [];
+    } else  { 	
+    console.log("no shift Data for station tracker");
+    oModelShift = [];
     }
 	
 	oModelShift.forEach(function(el) {
@@ -123,23 +124,22 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 		var aModelI = sap.ui.getCore().getModel("stationTrackerIModel");
 		
 		// check if model full or not
-		if(aModel.getProperty("/Rowsets/Rowset/0/Row")){              
+		if (aModel.getProperty("/Rowsets/Rowset/0/Row")) {              
 			
 			aModel = sap.ui.getCore().getModel("stationTrackerRModel").oData.Rowsets.Rowset[0].Row;
 			
         } else  {
-        	aModel = [];
-        	console.log("no Rescheduled operation load");
+        aModel = [];
+        console.log("no Rescheduled operation load");
         }
 		
 		if(aModelI.getProperty("/Rowsets/Rowset/0/Row")){              
 			
 			aModelI = sap.ui.getCore().getModel("stationTrackerIModel").oData.Rowsets.Rowset[0].Row;
 			
-        } else  {
-        	
-        	aModelI = [];
-        	console.log("no Initial operation load");
+        } else  {	
+        aModelI = [];
+        console.log("no Initial operation load");
         }
 		if ( airbus.mes.stationtracker.GroupingBoxingManager.showInitial ) {
 			
@@ -246,28 +246,23 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 				sStatus = "0";
 			}
 			//Opened Blocking and Escalated disruption
-			if ( el.STATE === "D1")
-			{
+			if ( el.STATE === "D1") {
 				sStatus = "4";
 			}
 			//Opened Blocking disruption
-			if ( el.STATE === "D2")
-			{
+			if ( el.STATE === "D2") {
 				sStatus = "5";
 			}
 			//Solved Blocking and Escalated disruption
-			if ( el.STATE === "D3")
-			{
+			if ( el.STATE === "D3") {
 				sStatus = "6";
 			}
 			//Solved Blocking disruption
-			if ( el.STATE === "D4")
-			{
+			if ( el.STATE === "D4") {
 				sStatus = "7";
 			}
 			//andon
-			if ( el.STATE === "B")
-			{
+			if ( el.STATE === "B") {
 				sStatus = "99";
 			}
 			
@@ -353,10 +348,10 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 		
 		oGroupingBoxingManager.groupingBoxing(sGroup,sBox);
 		
-	    var oModelAffectation = sap.ui.getCore().getModel("affectationModel");
+	    //var oModelAffectation = sap.ui.getCore().getModel("affectationModel");
 		var oModel = oGroupingBoxingManager.operationHierarchy;
-		aElements2 = [];
-		aBox = [];
+		var aElements2 = [];
+		var aBox = [];
 		//for( var i in oModel ) 
 		
 		Object.keys(oModel).forEach(function(key,index) { 
@@ -436,6 +431,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 					var sRoutingMaturityAssessment = "";
 					var fCriticalPath = 0;		
 					var sStatus = "";
+					var sShopOrder;
 										
 					oModel[key][key1][key2].forEach( function( el ) { 
 						
@@ -570,7 +566,6 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 	    scheduler.xy.scroll_width=20;
 	    airbus.mes.stationtracker.oView.byId("stationtracker").setBusy(false);
 	    scheduler.parse(aBox,"json");
-	    	
 	}
 	
 };
