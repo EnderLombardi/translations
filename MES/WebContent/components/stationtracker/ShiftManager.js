@@ -612,30 +612,28 @@ airbus.mes.stationtracker.ShiftManager = {
 						
 			var oPreviousShift = airbus.mes.stationtracker.ShiftManager.shifts[fIndexShift -1] ;
 			var oOperation = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy[oSection.group][oSection.avlLine];	
-			
-			for ( var aBox in oOperation ) {
 				
-				if ( bResult ) {
+				for ( var aBox in oOperation ) {
 					
-					return true;
-				} 
-				
-				// Select only operation wich Are in the previous shiftId
-				if ( aBox.indexOf( oPreviousShift.shiftID ) != -1 ) {
+					if ( bResult ) {
+						
+						return true;
+					} 
+							
+					// Select only operation wich Are in the previous shiftId
+					if ( new Date(aBox.slice(-10)) <=  oPreviousShift.StartDate ) {
+						var aOpration = oOperation[aBox];
+						//Parse all opration in corresponding group avlLine shift Id return true if one is not completed
+						aOpration.forEach(function(el){
+							
+							if ( el.STATE != "C" )
+							
+								bResult = true;	
+														
+						})
+					}
 					
-					var aOpration = oOperation[aBox];
-					//Parse all opration in corresponding group avlLine shift Id return true if one is not completed
-					aOpration.forEach(function(el){
-						
-						if ( el.STATE != "C" )
-							
-							
-							bResult = true;					
-						
-					})
 				}
-				
-			}
 			// All operation are completed
 			return false;
 				

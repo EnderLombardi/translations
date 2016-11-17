@@ -88,10 +88,19 @@
                      "Value":"StatusStarted"
                   },
                   {  
+                     "Value":"StatusPartiallyConfirmed"
+                  },
+                  {  
                      "Value":"StatusNotStarted"
                   },
                   {  
+                     "Value":"StatusPaused"
+                  },
+                  {  
                      "Value":"StatusConfirmed"
+                  },
+                  {  
+                     "Value":"StatusBlocked"
                   }
                ]
             }

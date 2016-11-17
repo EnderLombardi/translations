@@ -177,7 +177,6 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 		case "resourcePool":
 			airbus.mes.resourcepool.util.ModelManager.askResourcePool();
 			break;
-
 		}
 	},
 	
@@ -185,8 +184,6 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 	 * RenderStation Tracker and reload all model/ shift are not reaload
 	 */
 	renderStationTracker: function(){
-		
-		console.log("Hello");
 		
 		var oModule = airbus.mes.stationtracker.ModelManager;
 		airbus.mes.shell.oView.getController().setInformationVisibility(true);
@@ -204,7 +201,6 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
     	oModule.loadKPI();
    	
 	},
-	
 	
 	setInformationVisibility : function(bSet) {
 		this.getView().byId("informationButton").setVisible(bSet);
@@ -327,7 +323,7 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 		var pass = sap.ui.getCore().getElementById("passwordMyProfile").getValue();
 		var pinCode = sap.ui.getCore().getElementById("pinCodeMyProfile").getValue();
 		
-		if(badgeID == "" || uID == "" || user == "" || pass == ""){
+		if(user == "" || pass == ""){
 			sap.ui.getCore().byId("msgstrpMyProfile").setVisible(true);
 			sap.ui.getCore().byId("msgstrpMyProfile").setType("Error");
 			sap.ui.getCore().byId("msgstrpMyProfile").setText(sap.ui.getCore().getModel("ShellI18n")
@@ -342,16 +338,6 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 			}else{
 				sap.ui.getCore().getElementById("passwordMyProfile").setValueState(sap.ui.core.ValueState.None);	
 			};
-			if(uID === ""){
-				sap.ui.getCore().getElementById("uIdMyProfile").setValueState(sap.ui.core.ValueState.Error);
-			}else{
-				sap.ui.getCore().getElementById("uIdMyProfile").setValueState(sap.ui.core.ValueState.None);	
-			};
-			if(badgeID === ""){
-				sap.ui.getCore().getElementById("badgeIdMyProfile").setValueState(sap.ui.core.ValueState.Error);
-			}else{
-				sap.ui.getCore().getElementById("badgeIdMyProfile").setValueState(sap.ui.core.ValueState.None);	
-			};
 		}
 		else{
 			if(user != "" || user != undefined){
@@ -359,12 +345,6 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 				};
 			if(pass != "" || pass != undefined){
 				sap.ui.getCore().getElementById("passwordMyProfile").setValueState(sap.ui.core.ValueState.None);	
-			};
-			if(uID != "" || uID != undefined){
-				sap.ui.getCore().getElementById("uIdMyProfile").setValueState(sap.ui.core.ValueState.None);	
-			};
-			if(badgeID != "" || badgeID != undefined){
-				sap.ui.getCore().getElementById("badgeIdMyProfile").setValueState(sap.ui.core.ValueState.None);	
 			};
 			var sMessageError = sap.ui.getCore().getModel("ShellI18n").getProperty("errorMsgwhileSavingProfile");
 			var sMessageSuccess = sap.ui.getCore().getModel("ShellI18n").getProperty("successMsgwhileSavingProfile");

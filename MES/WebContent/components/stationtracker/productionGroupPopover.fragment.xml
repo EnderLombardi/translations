@@ -1,7 +1,10 @@
-<core:FragmentDefinition xmlns="sap.m"
-	xmlns:core="sap.ui.core" >
+<core:FragmentDefinition xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m">
 	<Popover placement="Bottom" showHeader="false" contentWidth="10%" contentHeight="auto" afterClose="onProdGroupSelFinish" >
-		<List id="myList"
+		
+		<!-- <List id="myList"
 			items="{ path : 'productionGroupModel>/Rowsets/Rowset/0/Row' }"
 			mode="MultiSelect"
 			includeItemInSelection="true"
@@ -12,6 +15,27 @@
 				              label="{productionGroupModel>PROD_GROUP}" >
 				</InputListItem>
 			</items>
+		</List> -->
+				
+		<List id="myList" 
+		items="{ path : 'productionGroupModel>/Rowsets/Rowset/0/Row' }" 
+		mode="MultiSelect" 
+		includeItemInSelection="true" 
+		selectionChange="onSelectionChange">
+				
+				<items>
+					<StandardListItem
+						key="{productionGroupModel>PROD_GROUP}" 
+				        title="{productionGroupModel>PROD_GROUP}"
+						iconDensityAware="false"
+						iconInset="false" />
+				</items>
+				
+				<infoToolbar>
+					<Toolbar visible="false" id="idInfoToolbar" >
+						<Label id="idFilterLabel" />
+					</Toolbar>
+				</infoToolbar>
 		</List>
 	</Popover>
 </core:FragmentDefinition>

@@ -1,4 +1,4 @@
-"use strict";
+
 jQuery.sap.require("sap.ui.core.format.DateFormat");
 jQuery.sap.declare("airbus.mes.stationtracker.ModelManager");
 airbus.mes.stationtracker.ModelManager = {
@@ -481,8 +481,7 @@ airbus.mes.stationtracker.ModelManager = {
     	   	  
 //    	   	  Check if there is only one operation on the worklist
 //    	   	  If yes, open the operation list
-    	   	  var aModel = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy[scheduler.getEvent(id).group][scheduler
-                                                                                                                         .getEvent(id).avlLine][scheduler.getEvent(id).box];
+    	   	  var aModel = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy[scheduler.getEvent(id).group][scheduler.getEvent(id).avlLine][scheduler.getEvent(id).box];
 
               if (aModel.length === 1) {
 				

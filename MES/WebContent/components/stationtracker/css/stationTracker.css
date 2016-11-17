@@ -507,7 +507,7 @@
 	border-bottom: 1px solid #ffffff;
 }
 
-.sapMPIText2 {
+.sapMPIText2{
 	margin-top: -1.1rem;
 	float: left;
 	font-family: Arial, Helvetica, sans-serif;
@@ -519,7 +519,25 @@
 	overflow: hidden;
 	height: 1.2em;
 	line-height: 1.2em;
-	color: white;
+	color:white;
+	padding-left: 0.5rem;
+	font-size: 100%;
+	word-break: break-all;
+}
+
+.overallProgresstitle span{
+	margin-top: -25px;
+	float: left;
+	font-family: Arial, Helvetica, sans-serif;
+	/*font-weight: bold;*/
+	line-height: normal !important;
+	text-overflow: clip;
+	display: inline-block;
+	/*white-space: nowrap;*/
+	overflow: hidden;
+	height: 1.2em;
+	line-height: 1.2em;
+	color:#004990;
 	padding-left: 0.5rem;
 	font-size: 100%;
 	word-break: break-all;
@@ -1521,5 +1539,36 @@ svg#stationTrackerView--takt_adherence_area_chart {
 	position: relative;
 	z-index: 10;
 }
-
 /*** End of Styling of  Kpi Header ***/
+
+/*** productionGroupPopover  ***/
+
+ #productionGroupPopover{
+	top:105px;
+}
+.sapMSLITitleOnly{
+	font-size:inherit;	
+	margin:0;
+	padding:0;
+}
+.sapMSLI {
+    height: 28px;
+    padding: 0 1rem 0 1rem;
+    line-height: 2.5rem;
+}
+.sapMPopoverArrUp{
+	display:none;
+}
+
+/*** end productionGroupPopover  ***/
+/*** worklistPopover  ***/
+#mes .sapMDialog:not(.theme-disabled) .classWorklistPopoverHeader {
+    box-shadow: 0 0 5px #333;
+    overflow: visible;
+    background-color: #d4f1f7;
+    color: #434343;
+    margin: -1rem -1rem 1rem -1rem;
+    padding: 1rem;
+}
+
+/*** end worklistPopover  ***/

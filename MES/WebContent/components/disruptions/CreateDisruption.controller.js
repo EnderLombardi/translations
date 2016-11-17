@@ -195,18 +195,7 @@ sap.ui
 							that.filterField(oElement);
 						});
 					},
-
-					setEnabledSelectBox : function(fCategory, fReason,
-							fResponsible, fRootCause) {
-						this.getView().byId("selectCategory").setEnabled(
-								fCategory);
-						this.getView().byId("selectreason").setEnabled(fReason);
-						this.getView().byId("selectRootCause").setEnabled(
-								fRootCause);
-						this.getView().byId("selectResponsible").setEnabled(
-								fResponsible);
-
-					},
+					
 					/***********************************************************
 					 * Create Disruption
 					 */
@@ -460,9 +449,9 @@ sap.ui
 									oModel.getProperty("/Description"));
 							this.getView().byId("comment").setValue();
 							this.initializeTree();
-							this.setEnabledSelectBox(false, true, true, true);
 
 							// Disable input according to update disruption
+							this.setEnabledSelectBox(false, true, true, true);
 							this.getView().byId("selectOriginator").setEnabled(
 									false);
 							this.getView().byId("description")
@@ -476,12 +465,16 @@ sap.ui
 							var resFlag = sap.ui.getCore().getModel(
 									"DisruptionDetailModel").getData().ResponsibleFlag;
 
-							if (origFlag == "" && resFlag == "X") {
+							/*if (origFlag == "" && resFlag == "X") {
 								this.resolutionGroupSettings(false);
 							} else
-								this.resolutionGroupSettings(true);
+								this.resolutionGroupSettings(true);*/
 
 						} else {
+							
+							//expected date and time are not cleared in reset all fields as formatter has to be applied
+							this.getView().byId("expectedDate").setValue();
+							this.getView().byId("expectedTime").setValue();
 
 							this.initializeTree();
 							if (this.getView().byId("selectOriginator")
@@ -493,23 +486,33 @@ sap.ui
 														"selectOriginator")
 														.getItemAt(0).getKey());
 
-							this.setEnabledSelectBox(true, false, false, false);
 
 							// Enable fields for creation
+							this.setEnabledSelectBox(true, false, false, false);
 							this.getView().byId("selectOriginator").setEnabled(
 									true);
 							this.getView().byId("description").setEnabled(true);
 							this.getView().byId("timeLost").setEnabled(true);
 
-							this.resolutionGroupSettings(true);
+							/*this.resolutionGroupSettings(true);*/
 
 						}
 					},
 
+					setEnabledSelectBox : function(fCategory, fReason,
+							fResponsible, fRootCause) {
+						this.getView().byId("selectCategory").setEnabled(
+								fCategory);
+						this.getView().byId("selectreason").setEnabled(fReason);
+						this.getView().byId("selectRootCause").setEnabled(
+								fRootCause);
+						this.getView().byId("selectResponsible").setEnabled(
+								fResponsible);
+
+					},
+
 					resolutionGroupSettings : function(state) {
-						this.getView().byId("selectCategory").setEnabled(state);
 						this.getView().byId("selectreason").setEnabled(state);
-						this.getView().byId("status").setEnabled(state);
 						this.getView().byId("gravity").setEnabled(state);
 					},
 
@@ -551,8 +554,8 @@ sap.ui
 								.setSelectedKey();
 						this.getView().byId("selectRootCause").setSelectedKey();
 						this.getView().byId("gravity").setSelectedKey();
-						this.getView().byId("expectedDate").setValue();
-						this.getView().byId("expectedTime").setValue();
+						/*this.getView().byId("expectedDate").setValue();
+						this.getView().byId("expectedTime").setValue();*/
 						this.getView().byId("timeLost").setValue();
 						this.getView().byId("comment").setValue();
 						this.getView().byId("description").setValue();

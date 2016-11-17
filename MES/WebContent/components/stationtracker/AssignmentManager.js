@@ -1,3 +1,4 @@
+"use strict"
 jQuery.sap.declare("airbus.mes.stationtracker.AssignmentManager")
 airbus.mes.stationtracker.AssignmentManager = {
 	
@@ -38,7 +39,9 @@ airbus.mes.stationtracker.AssignmentManager = {
 		var sSite = airbus.mes.settings.ModelManager.site;
 		var sStation = airbus.mes.settings.ModelManager.station;
 		var sMSN = airbus.mes.settings.ModelManager.msn;
-		var sMyUserID = "MESYS"; //FIXME ??
+		var sMyUserID = "UserBO:" + sSite + ",NG55E48"; //FIXME ??
+//		var sMyUserID = "UserBO:" + sSite + "," + Cookies.getJSON("login").user; //FIXME ??
+
 		
 //		sDay = (new Date(sDay)).toISOString().slice(0,10).replace(/-/g,"");
 		
@@ -63,13 +66,13 @@ airbus.mes.stationtracker.AssignmentManager = {
 		
 		oModel.forEach(function(el) {
 
-			if (!oHierarchy[el.avlLine]) {
+			if (!oHierarchy[el.avlLine + "_" + el.skills]) {
 
-				oHierarchy[el.avlLine] = {};
+				oHierarchy[el.avlLine + "_" + el.skills] = {};
 			}
-			if (!oHierarchy[el.avlLine][el.shiftID]) {
+			if (!oHierarchy[el.avlLine + "_" + el.skills][el.shiftName.split(",")[1] + el.day]) {
 
-				oHierarchy[el.avlLine][el.shiftID] = [];
+				oHierarchy[el.avlLine + "_" + el.skills][el.shiftName.split(",")[1] + el.day] = [];
 			}
 			
 			var userAffectation = {
@@ -79,11 +82,12 @@ airbus.mes.stationtracker.AssignmentManager = {
 				"firstName" : el.firstName,
 				"lastName" : el.lastName,
 				"email" : el.email,
-				"picture" : el.picture,
+				//"picture" : el.picture,
+				"picture": airbus.mes.shell.UserImageManager.getUserImage(el.user),
 				"warn" : el.warn,
 			};
 
-			oHierarchy[el.avlLine][el.shiftID].push(userAffectation);
+			oHierarchy[el.avlLine + "_" + el.skills][el.shiftName.split(",")[1] + el.day].push(userAffectation);
 		});
 		
 	},

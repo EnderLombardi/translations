@@ -3,7 +3,7 @@
 
 	<Dialog id="disruptionDetailPopUp" class="classDisruptionDetailPopUp"
 		contentWidth="90%" contentHeight="90%" verticalScrolling="true"
-		showHeader="false" afterClose="">
+		showHeader="false" afterClose="afterCloseDisruptnDetailPopUp">
 		<content>
 			<NavContainer id="disruptDetailNavContainer"
 				afterNavigate="renderViews">
