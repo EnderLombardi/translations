@@ -150,19 +150,24 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 					               oEvt.getSource().getBindingContext("disruptionsTrackerModel").getObject()
 					            ]
 					         },
-					         sap.ui.getCore().getModel("disruptionsTrackerModel").getProperty("/Rowsets/Rowset/1")
+					         {
+					        	 "Row":[
+							               
+							            ]
+					         }
 					      ]
 					   }
 					};
-
+		
+		var aComments=sap.ui.getCore().getModel("disruptionsTrackerModel").getData().Rowsets.Rowset[1].Row;
+		var sCurrMessageRef = oEvt.getSource().getBindingContext("disruptionsTrackerModel").getObject().MessageRef;
+		
+		aComments.find(function(el){ if(el.MessageRef == sCurrMessageRef) disruptionData.Rowsets.Rowset[1].Row.push(el); }) 
+		
 		airbus.mes.disruptions.oView.viewDisruption.getModel("operationDisruptionsModel").setData(disruptionData);
-		airbus.mes.disruptions.oView.viewDisruption.getController().applyFiltersOnComments();
 		
 		//Set Expanded by Default
-		//sap.ui.getCore().byId("__panel1-ViewDisruptionView--disrptlist-0").setExpanded(true);
-		
-		//Set visibility of expandable panel icon
-		//sap.ui.getCore().byId("__panel1-ViewDisruptionView--disrptlist-0-CollapsedImg").setVisible(false);
+		sap.ui.getCore().byId("ViewDisruptionView").getContent()[0].getContent()[0].getItems()[0].getContent()[0].setExpandable(false);
 
 		airbus.mes.disruptiontracker.detailPopUp.open();
 		
@@ -182,13 +187,11 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 	afterCloseDisruptnDetailPopUp: function(){
 			
 		// Reset Expandable
-		//sap.ui.getCore().byId("__panel0-ViewDisruptionView--disrptlist-0").setExpandable(true);
+		sap.ui.getCore().byId("ViewDisruptionView").getContent()[0].getContent()[0].getItems()[0].getContent()[0].setExpandable(true);
+		
 
 		// Empty Model
-		airbus.mes.disruptions.oView.viewDisruption.getModel("operationDisruptionsModel").setData(null);
-		
-		sap.ui.getCore().setModel(airbus.mes.disruptions.oView.viewDisruption.getModel("operationDisruptionsModel"), 
-														"operationDisruptionsModel");
+		airbus.mes.disruptions.oView.viewDisruption.getModel("operationDisruptionsModel").setData();
 	}
 	
 

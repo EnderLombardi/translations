@@ -1,4 +1,5 @@
 jQuery.sap.require("sap.m.MessageBox");
+jQuery.sap.require("sap.m.MessageToast");
 
 sap.ui
 		.controller(
@@ -167,6 +168,22 @@ sap.ui
 							this.getView()
 									.getModel("operationDisruptionsModel")
 									.getProperty(sPath).Status = airbus.mes.disruptions.Formatter.status.closed;
+							
+							var currDate = new Date();
+							var date = currDate.getFullYear() + "-" + currDate.getMonth() + "-" + currDate.getDate();
+							
+							var oComment = {
+									"Action" : "CLOSED",
+									"Comments" : commentValue,
+									"Counter" : "",
+									"Date" : date,
+									"MessageRef" : msgRefValue,
+									"UserFullName" : sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user")
+							};
+							this.getView()
+									.getModel("operationDisruptionsModel")
+									.getProperty("/Rowsets/Rowset/1/Row").push(oComment);
+							
 							this.getView()
 									.getModel("operationDisruptionsModel")
 									.refresh();
@@ -180,9 +197,12 @@ sap.ui
 						this._closeDialog.close();
 					},
 
+					
 					/***********************************************************
 					 * Open the Enter Comment Pop-Up
 					 */
+					disruptionCommentBoxOKEvent: undefined, // To detach event while closing pop-up- to avoid multiple fire
+					
 					onOpenDisruptionComment : function(title, msgRef, sPath,
 							okEvent) {
 						// Call Disruption Comment Pop-up fragment
@@ -207,6 +227,7 @@ sap.ui
 								"");
 						sap.ui.getCore().byId("disruptionCommentOK")
 								.attachPress(okEvent);
+						this.disruptionCommentBoxOKEvent = okEvent;
 
 						airbus.mes.disruptions.__enterCommentDialogue.open();
 					},
@@ -332,13 +353,13 @@ sap.ui
 
 						var comment = sap.ui.getCore().byId(
 								"disruptionCommentBox").getValue();
-						var msgref = sap.ui.getCore().byId(
+						var msgRef = sap.ui.getCore().byId(
 								"disruptionCommentMsgRef").getText();
 						var sMessage = i18nModel.getProperty("successReject");
 
 						// Call Disruption Service
 						var isSuccess = airbus.mes.disruptions.ModelManager
-								.rejectDisruption(comment, msgref, sMessage,
+								.rejectDisruption(comment, msgRef, sMessage,
 										i18nModel);
 
 						airbus.mes.disruptions.__enterCommentDialogue.close();
@@ -351,6 +372,19 @@ sap.ui
 									.getModel("operationDisruptionsModel");
 
 							operationDisruptionsModel.getProperty(sPath).Status = airbus.mes.disruptions.Formatter.status.rejected;
+							
+							var currDate = new Date();
+							var date = currDate.getFullYear() + "-" + currDate.getMonth() + "-" + currDate.getDate();
+							
+							var oComment = {
+									"Action" : "REJECT",
+									"Comments" : comment,
+									"Counter" : "",
+									"Date" : date,
+									"MessageRef" : msgRef,
+									"UserFullName" : sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user")
+							};
+							operationDisruptionsModel.getProperty("/Rowsets/Rowset/1/Row").push(oComment);
 
 							operationDisruptionsModel.refresh();
 						}
@@ -403,6 +437,18 @@ sap.ui
 					 * Submit Disruption Comment
 					 */
 					submitComment : function(oEvt) {
+						
+						var status = oEvt.getSource().getBindingContext(
+								"operationDisruptionsModel").getObject(
+								"Status");
+						
+						if (status == airbus.mes.disruptions.Formatter.status.deleted || status == airbus.mes.disruptions.Formatter.status.closed) {
+							
+							sap.m.MessageToast.show(this.getView().getModel("i18nModel").getProperty("cannotComment"));
+							
+							return;
+						}
+							
 						var path = oEvt.getSource().sId;
 
 						var msgRef = oEvt.getSource().getBindingContext(
@@ -416,10 +462,17 @@ sap.ui
 								this.getView().sId + "--commentArea-"
 										+ this.getView().sId + "--disrptlist-"
 										+ listnum).getValue();
+						
+						var currDate = new Date();
+						var date = currDate.getFullYear() + "-" + currDate.getMonth() + "-" + currDate.getDate();
 
 						var oComment = {
-							"MessageRef" : msgRef,
-							"Comment" : sComment
+								"Action" : "COMMENT",
+								"Comments" : sComment,
+								"Counter" : "",
+								"Date" : date,
+								"MessageRef" : msgRef,
+								"UserFullName" : sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user")
 						};
 
 						var i18nModel = airbus.mes.disruptions.oView.viewDisruption
@@ -472,9 +525,6 @@ sap.ui
 
 						sap.ui.getCore().byId("disruptionAckComment").setValue(
 								"");
-
-						sap.ui.getCore().byId("disruptionAckCommentOK")
-								.attachPress(this.onAcceptAckDisruptionComment);
 
 						airbus.mes.disruptions.__enterAckCommentDialogue.open();
 					},
@@ -529,8 +579,24 @@ sap.ui
 										.getModel("operationDisruptionsModel");
 
 								operationDisruptionsModel.getProperty(sPath).Status = airbus.mes.disruptions.Formatter.status.acknowledged;
+								operationDisruptionsModel.getProperty(sPath).PromisedDateTime = dateTime;
+								
+								var currDate = new Date();
+								var date = currDate.getFullYear() + "-" + currDate.getMonth() + "-" + currDate.getDate();
+								
+								var oComment = {
+										"Action" : "ACKNOWLEDGE",
+										"Comments" : comment,
+										"Counter" : "",
+										"Date" : date,
+										"MessageRef" : msgRef,
+										"UserFullName" : sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user")
+								};
+								operationDisruptionsModel.getProperty("/Rowsets/Rowset/1/Row").push(oComment);
 
 								operationDisruptionsModel.refresh();
+								
+								
 							}
 						}
 
@@ -591,6 +657,22 @@ sap.ui
 							this.getView()
 									.getModel("operationDisruptionsModel")
 									.getProperty(sPath).Status = airbus.mes.disruptions.Formatter.status.solved;
+							
+							var currDate = new Date();
+							var date = currDate.getFullYear() + "-" + currDate.getMonth() + "-" + currDate.getDate();
+							
+							var oComment = {
+									"Action" : "MARKED SOLVED",
+									"Comments" : comment,
+									"Counter" : "",
+									"Date" : date,
+									"MessageRef" : msgRef,
+									"UserFullName" : sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user")
+							};
+							this.getView()
+									.getModel("operationDisruptionsModel")
+									.getProperty("/Rowsets/Rowset/1/Row").push(oComment);
+							
 							this.getView()
 									.getModel("operationDisruptionsModel")
 									.refresh();
