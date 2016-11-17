@@ -1,3 +1,21 @@
 .disruptionKPI .chart{
 	float:left;
 }
+.disruptionKPI .pageHeader {
+    -webkit-box-shadow: 0px 2px 15px -5px #0F2D65;
+    -moz-box-shadow: 0px 2px 15px -5px #0F2D65;
+    box-shadow: 0px 2px 15px -5px #0F2D65;
+    border: none;
+    border-top: 0.6rem solid #ffffff;
+    position: relative;
+    z-index: 10;
+    color: white !important;
+    background: #0F2D65 !important;
+    height: 3rem!important;
+    line-height: 3rem!important;
+}
+
+.disruptionKPI .pageHeader label {
+    font-size: 1.2rem;
+    color: white;
+    }

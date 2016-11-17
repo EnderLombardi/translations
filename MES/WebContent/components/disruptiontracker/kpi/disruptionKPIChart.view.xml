@@ -4,15 +4,14 @@
 	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds">
 
 	<Page showHeader="false" class="disruptionKPI">
-		<subHeader>
-			<Toolbar>
-				<Button id="navBack" icon="sap-icon://arrow-left" text="Back"
-					press="onNavBack" type="Transparent" />
-				<ToolbarSpacer />
-				<Text text="{i18n>disruptionKPITitle}" />
-				<ToolbarSpacer />
-			</Toolbar>
-		</subHeader>
+		<Bar id="disruptionKPITitleSubheader" class="pageHeader">
+			<contentLeft>
+				<Button id="navBack" icon="sap-icon://arrow-left" text="Back" press="onNavBack" type="Transparent"/>
+			</contentLeft>
+			<contentMiddle>
+				<Label id="disruptionKPITitle" text="{i18n>disruptionKPITitle}" class="lineTrackerName" />
+			</contentMiddle>
+		</Bar>
 		<content>
 			<viz:VizFrame id="vizFrame" height="400px" width="50%"
 				class="chart" uiConfig="{applicationSet:'fiori'}" legendVisible="false">
