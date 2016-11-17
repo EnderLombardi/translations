@@ -304,6 +304,19 @@ sap.ui
 									"disruptionCommentSpath").getText();
 
 							operationDisruptionsModel.getProperty(sPath).Status = airbus.mes.disruptions.Formatter.status.deleted;
+							
+							var currDate = new Date();
+							var date = currDate.getFullYear() + "-" + currDate.getMonth() + "-" + currDate.getDate();
+							
+							var oComment = {
+									"Action" : "DELETE",
+									"Comments" : comment,
+									"Counter" : "",
+									"Date" : date,
+									"MessageRef" : msgRef,
+									"UserFullName" : sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user")
+							};
+							operationDisruptionsModel.getProperty("/Rowsets/Rowset/1/Row").push(oComment);
 
 							operationDisruptionsModel.refresh();
 						}
