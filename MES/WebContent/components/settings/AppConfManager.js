@@ -24,7 +24,7 @@ airbus.mes.settings.AppConfManager =  {
 		    url: this.getUrlAppConfig(),
 		    //url: "https://dmiswde0.eu.airbus.corp/airbus-rswebservice/rest/mesAppConfigurationService/getConfiguration?j_user=ng34ed3&j_password=Malice0*",
 		    contentType: 'application/json; charset=utf-8',
-		    accept: 'application/json',
+		    dataType : "json",
 		    headers: {
 			    "Access-Control-Allow-Origin": '*',
 			    "Access-Control-Allow-Methods": 'POST',

@@ -241,7 +241,13 @@ sap.ui
 										.addDependent(oView._oUserConfirmationDialog);
 							}
 							//Display PIN Field in Confirmation PopUp
-							this.displayPINfield();
+							var flagForPIN = airbus.mes.settings.AppConfManager.getConfiguration("MES_BADGE_PIN");	
+							if(flagForPIN == true){	
+								sap.ui.getCore().getElementById("confirmPinLabel")
+								.setVisible(true);
+								sap.ui.getCore().getElementById("pinForConfirmation")
+								.setVisible(true);
+							}	
 
 							oView._oUserConfirmationDialog.open();
 							sap.ui.getCore().getElementById("msgstrpConfirm")
@@ -262,15 +268,7 @@ sap.ui
 						}
 
 					},
-					displayPINfield : function(){		
-						var flagForPIN = airbus.mes.settings.AppConfManager.getConfiguration("MES_BADGE_PIN");	
-						if(flagForPIN == true){	
-							sap.ui.getCore().getElementById("confirmPinLabel")
-							.setVisible(true);
-							sap.ui.getCore().getElementById("pinForConfirmation")
-							.setVisible(true);
-						}	
-					},		
+
 
 					/***********************************************************
 					 * on click of go to Disruption button when status of
@@ -561,7 +559,13 @@ sap.ui
 							oView.addDependent(oView._oUserConfirmationDialog);
 						}
 						//Display PIN Field in Confirmation PopUp
-						this.displayPINfield();
+						var flagForPIN = airbus.mes.settings.AppConfManager.getConfiguration("MES_BADGE_PIN");	
+						if(flagForPIN == true){	
+							sap.ui.getCore().getElementById("confirmPinLabel")
+							.setVisible(true);
+							sap.ui.getCore().getElementById("pinForConfirmation")
+							.setVisible(true);
+						} 
 						oView._oUserConfirmationDialog.open();
 						sap.ui.getCore().getElementById("msgstrpConfirm")
 								.setVisible(false);
