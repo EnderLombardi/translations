@@ -846,7 +846,13 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 //			We feed the scheduler with the new selected date
 			airbus.mes.stationtracker.oView.getController().updateDateLabel(airbus.mes.stationtracker.oView.oCalendar);
 			airbus.mes.stationtracker.datePicker.close();
-			scheduler.updateView(airbus.mes.stationtracker.oView.oCalendar.getSelectedDates()[0].getStartDate());
+			// Reselect the date in shift hierarchy to select the good date
+			var dDataSelected = airbus.mes.stationtracker.oView.oCalendar.getSelectedDates()[0].getStartDate();
+			var sDate = dDataSelected.toJSON().slice(0,10);
+			var sDateId = Object.keys(airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy[sDate])[0];
+			var dStartDate = airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy[sDate][sDateId][0].StartDate;
+			
+			scheduler.updateView(dStartDate);
 			airbus.mes.stationtracker.ModelManager.selectMyShift();
 		}
 	},
