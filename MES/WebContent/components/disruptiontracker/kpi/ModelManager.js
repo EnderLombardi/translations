@@ -5,12 +5,8 @@ airbus.mes.disruptiontracker.kpi.ModelManager = {
 	queryParams : jQuery.sap.getUriParameters(),
 
 	init : function(core) {
-		
-		core.setModel(new sap.ui.model.json.JSONModel(), "TimeLostperCategory");//Model having disruptionKPI category detail
-		core.setModel(new sap.ui.model.json.JSONModel(), "TimeLostperReason");
-		core.setModel(new sap.ui.model.json.JSONModel(), "TimeLostperOperation");
-		core.setModel(new sap.ui.model.json.JSONModel(), "TimeLostperMSN");
-		core.setModel(new sap.ui.model.resource.ResourceModel({bundleName:"airbus.mes.disruptiontracker.kpi.i18n.i18n",bundleLocale:"en"}), 
+		core.setModel(new sap.ui.model.json.JSONModel(), "TimeLostperAttribute");
+	    core.setModel(new sap.ui.model.resource.ResourceModel({bundleName:"airbus.mes.disruptiontracker.kpi.i18n.i18n",bundleLocale:"en"}), 
 														 "i18n");
 
 
@@ -35,50 +31,27 @@ airbus.mes.disruptiontracker.kpi.ModelManager = {
 					bundleLocale : dest
 				});
 		
-//		this.loadDisruptionCustomData();
-		this.loadDisruptionCategoryModel();
-		this.loadDisruptionReasonModel();
-		this.loadDisruptionOperationModel();
-		this.loadDisruptionmsnModel();
+	
+		this.loadDisruptionKPIModel();
 	},
 	
-	getKPICategoryData : function() {
-		var urlCategoryData = this.urlModel.getProperty("getDiruptionKPIcategoryURL");
-		urlCategoryData = airbus.mes.shell.ModelManager.replaceURI(urlCategoryData,
-				"$site", airbus.mes.settings.ModelManager.site);
-		return urlCategoryData;
-	},
 	
 	getKPIData : function() {
 		var urlCategoryData = this.urlModel.getProperty("getDiruptionKPIURL");
 		urlCategoryData = airbus.mes.shell.ModelManager.replaceURI(urlCategoryData,
 				"$Site", airbus.mes.settings.ModelManager.site);
+		urlCategoryData = airbus.mes.shell.ModelManager.replaceURI(urlCategoryData,
+				"$Station", airbus.mes.disruptiontracker.oView.getController().sStation);
+		
 		return urlCategoryData;
 	},
 	
-	
-	loadDisruptionCategoryModel : function() {
-		var oViewModel = sap.ui.getCore().getModel("TimeLostperCategory");
-		oViewModel.loadData(this.getKPICategoryData(), null, false);
-	},
-	
-	loadDisruptionReasonModel : function() {
-		var oViewModel = sap.ui.getCore().getModel("TimeLostperReason");
+	loadDisruptionKPIModel : function() {
+		var oViewModel = sap.ui.getCore().getModel("TimeLostperAttribute");
 		oViewModel.loadData(this.getKPIData(), null, false);
-
-	},
-	
-	loadDisruptionOperationModel : function() {
-		var oViewModel = sap.ui.getCore().getModel("TimeLostperOperation");
-		oViewModel.loadData(this.getKPIData(), null, false);
-
-	},
-	
-	loadDisruptionmsnModel : function() {
-		var oViewModel = sap.ui.getCore().getModel("TimeLostperMSN");
-		oViewModel.loadData(this.getKPIData(), null, false);
-
+		
 	}
+	
 
 		
 }
