@@ -43,23 +43,28 @@ airbus.mes.disruptions.ModelManager = {
 					bundleUrl : "../components/disruptions/config/url_config.properties",
 					bundleLocale : dest
 				});
-		
-		if (  dest === "sopra" ) {
+
+		if (dest === "sopra") {
 
 			var oModel = this.urlModel._oResourceBundle.aPropertyFiles[0].mProperties;
-				
-			for (var prop in oModel) {
-				if (oModel[prop].slice(-5) != ".json" ) {
-				oModel[prop] += "&j_user=" + Cookies.getJSON("login").user + "&j_password="  + Cookies.getJSON("login").mdp; 
+
+			for ( var prop in oModel) {
+				if (oModel[prop].slice(-5) != ".json") {
+					oModel[prop] += "&j_user=" + Cookies.getJSON("login").user
+							+ "&j_password=" + Cookies.getJSON("login").mdp;
 				}
 			}
 		}
-		
+
 		this.core.setModel(new sap.ui.model.json.JSONModel(),
 				"disruptionCustomData");
 
 		this.core.setModel(new sap.ui.model.json.JSONModel(),
 				"disruptionCategoryModel");
+
+		// Material List Model
+		this.core.setModel(new sap.ui.model.json.JSONModel(),
+				"MaterialListModel");
 
 		sap.ui
 				.getCore()
@@ -80,9 +85,11 @@ airbus.mes.disruptions.ModelManager = {
 
 	loadData : function() {
 
-		airbus.mes.operationdetail.oView.setBusy(true); // Set Busy Indicator true
+		airbus.mes.operationdetail.oView.setBusy(true); // Set Busy Indicator
+														// true
 		this.loadDisruptionCategory();
 		this.loadDisruptionCustomData();
+		this.loadMaterialList();
 
 	},
 
@@ -109,7 +116,7 @@ airbus.mes.disruptions.ModelManager = {
 	onDisruptionCustomDataLoad : function() {
 
 		airbus.mes.operationdetail.oView.setBusy(false); // Set Busy
-															// Indicator false
+		// Indicator false
 	},
 
 	/***************************************************************************
@@ -200,9 +207,32 @@ airbus.mes.disruptions.ModelManager = {
 		airbus.mes.disruptions.oView.viewDisruption.oController
 				.applyFiltersOnComments();
 
-		airbus.mes.operationdetail.oView.setBusy(false); // Set Busy Indicator false
+		airbus.mes.operationdetail.oView.setBusy(false); // Set Busy
+															// Indicator false
 	},
 
+	/***************************************************************************
+	 * Load Material List for create/update disruption
+	 */
+
+	getURLMaterialList : function() {
+		var urlMaterialList = this.urlModel.getProperty("urlMaterialList");
+		return urlMaterialList;
+	},
+
+	/***************************************************************************
+	 * Load Disruptions for a single operation
+	 */
+	loadMaterialList : function() {
+
+		var oViewModel = sap.ui.getCore().getModel("MaterialListModel");
+
+		var getMaterialListURL = airbus.mes.disruptions.ModelManager
+				.getURLMaterialList();
+
+		oViewModel.loadData(getMaterialListURL);
+
+	},
 	/***************************************************************************
 	 * Create Disruption service
 	 */
@@ -225,7 +255,7 @@ airbus.mes.disruptions.ModelManager = {
 					type : 'POST',
 					data : {
 						"Param.1" : airbus.mes.settings.ModelManager.site,
-						/*"Param.2" : "NG42E7A",*/
+						/* "Param.2" : "NG42E7A", */
 						"Param.2" : sap.ui.getCore().getModel(
 								"userSettingModel").getProperty(
 								"/Rowsets/Rowset/0/Row/0/user"),
@@ -246,12 +276,12 @@ airbus.mes.disruptions.ModelManager = {
 						if (rowExists != undefined) {
 							if (data.Rowsets.Rowset[0].Row[0].Message_Type == "S") {
 								airbus.mes.shell.ModelManager
-										.messageShow(data.Rowsets.Rowset[0].Row[0].Message);
-								
+										.messageShow(data.Rowsets.Rowset[0].Row[0].Message);				
 								
 								// navigate to View Disruption after success message
 								sap.ui.getCore().byId("operationDetailsView--operDetailNavContainer").back();
 								
+
 								// load disruption Model again for new message
 								var operationBO = sap.ui.getCore().getModel(
 										"operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_bo;
@@ -279,7 +309,9 @@ airbus.mes.disruptions.ModelManager = {
 					},
 
 					error : function() {
-						airbus.mes.operationdetail.oView.setBusy(false); // Remove Busy Indicator
+						airbus.mes.operationdetail.oView.setBusy(false); // Remove
+																			// Busy
+																			// Indicator
 						airbus.mes.shell.ModelManager
 								.messageShow(airbus.mes.operationdetail.createDisruption.oView
 										.getModel("i18nModel").getProperty(
@@ -334,10 +366,16 @@ airbus.mes.disruptions.ModelManager = {
 								airbus.mes.shell.ModelManager
 										.messageShow(data.Rowsets.Rowset[0].Row[0].Message);
 
-								// Navigate to View Disruption after message success
-								sap.ui.getCore().byId("operationDetailsView--operDetailNavContainer").back();
+								// Navigate to View Disruption after message
+								// success
+								sap.ui
+										.getCore()
+										.byId(
+												"operationDetailsView--operDetailNavContainer")
+										.back();
 
-								// Load disruption Model again for updated message
+								// Load disruption Model again for updated
+								// message
 								var operationBO = sap.ui.getCore().getModel(
 										"operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_bo;
 								airbus.mes.disruptions.ModelManager
@@ -364,7 +402,9 @@ airbus.mes.disruptions.ModelManager = {
 					},
 
 					error : function() {
-						airbus.mes.operationdetail.oView.setBusy(false); // Remove Busy Indicator
+						airbus.mes.operationdetail.oView.setBusy(false); // Remove
+																			// Busy
+																			// Indicator
 						airbus.mes.shell.ModelManager
 								.messageShow(airbus.mes.operationdetail.createDisruption.oView
 										.getModel("i18nModel").getProperty(
@@ -384,8 +424,7 @@ airbus.mes.disruptions.ModelManager = {
 		var urlOnEscalate = this.urlModel.getProperty("urlOnEscalate");
 		return urlOnEscalate;
 	},
-	
-	
+
 	/***************************************************************************
 	 * Escalate Disruption Service
 	 **************************************************************************/
@@ -427,7 +466,6 @@ airbus.mes.disruptions.ModelManager = {
 
 		return flag_success;
 	},
-	
 
 	/***************************************************************************
 	 * Get URL to Acknowledge Disruption
@@ -438,7 +476,6 @@ airbus.mes.disruptions.ModelManager = {
 				.getProperty("urlToAckDisruption");
 		return urlToAckDisruption;
 	},
-	
 
 	/***************************************************************************
 	 * Acknowledge Disruption
@@ -488,7 +525,6 @@ airbus.mes.disruptions.ModelManager = {
 		return flag_success;
 	},
 
-	
 	/***************************************************************************
 	 * Get URL to Mark Solved Disruption
 	 **************************************************************************/
@@ -498,7 +534,6 @@ airbus.mes.disruptions.ModelManager = {
 				.getProperty("urlToMarkSolvedDisruption");
 		return urlToMarkSolvedDisruption;
 	},
-	
 
 	/***************************************************************************
 	 * Mark Solved Disruption
@@ -554,7 +589,6 @@ airbus.mes.disruptions.ModelManager = {
 		;
 	},
 
-	
 	/***************************************************************************
 	 * Add Comment service
 	 **************************************************************************/
@@ -609,7 +643,6 @@ airbus.mes.disruptions.ModelManager = {
 
 	},
 
-	
 	/***************************************************************************
 	 * Get URL to Close Disruption
 	 **************************************************************************/
@@ -619,7 +652,6 @@ airbus.mes.disruptions.ModelManager = {
 				.getProperty("urlToCloseDisruption");
 		return urlToCloseDisruption;
 	},
-	
 
 	/***************************************************************************
 	 * Close Disruption Service
@@ -679,7 +711,6 @@ airbus.mes.disruptions.ModelManager = {
 		return urlToDisruptionComment;
 	},
 
-	
 	/***************************************************************************
 	 * Reject Disruption Service
 	 **************************************************************************/

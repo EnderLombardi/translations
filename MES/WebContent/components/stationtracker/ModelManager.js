@@ -70,7 +70,6 @@ airbus.mes.stationtracker.ModelManager = {
               // all of this function
               this.loadFilterUnplanned();
               this.loadProductionGroup();
-              this.loadRessourcePool();
               this.loadKPI();
 
        
@@ -304,7 +303,7 @@ airbus.mes.stationtracker.ModelManager = {
     		    		"USER_ID" : "ALL",	
     		    	   });  
     			
-    			sap.ui.getCore().getModel("ressourcePoolModel").refresh(true)
+    			sap.ui.getCore().getModel("ressourcePoolModel").refresh(true);
     			    			
     	    } else {
     	    	

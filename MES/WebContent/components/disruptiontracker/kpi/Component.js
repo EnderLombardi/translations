@@ -34,17 +34,10 @@ airbus.mes.disruptiontracker.kpi.Component.prototype.createContent = function() 
 		airbus.mes.disruptiontracker.kpi.oView = this.oView	
 		
 		
-		//Model for disruptionKPI Category vs Time Lost Chart
-		this.oView.setModel(sap.ui.getCore().getModel("TimeLostperCategory"),"TimeLostperCategory");
+		//Model for disruptionKPI Attributes vs Time Lost Chart
+		this.oView.setModel(sap.ui.getCore().getModel("TimeLostperAttribute"),"TimeLostperAttribute");
 		
-		//Model for disruptionKPI Time Lost vs Reason Chart
-		this.oView.setModel(sap.ui.getCore().getModel("TimeLostperReason"), "TimeLostperReason");
 		
-		//Model for disruptionKPI Time Lost vs Operation Chart
-		this.oView.setModel(sap.ui.getCore().getModel("TimeLostperOperation"), "TimeLostperOperation");
-		
-		//Model for disruptionKPI Time Lost vs MSN Chart
-		this.oView.setModel(sap.ui.getCore().getModel("TimeLostperMSN"), "TimeLostperMSN");
 		
 		return this.oView;
 	}

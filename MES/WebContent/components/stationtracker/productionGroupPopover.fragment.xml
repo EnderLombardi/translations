@@ -4,7 +4,9 @@
 		<List id="myList"
 			items="{ path : 'productionGroupModel>/Rowsets/Rowset/0/Row' }"
 			mode="MultiSelect"
-			includeItemInSelection="true">
+			includeItemInSelection="true"
+			showArrow="false"
+			>
 			<items>
 				<InputListItem key="{productionGroupModel>PROD_GROUP}" 
 				              label="{productionGroupModel>PROD_GROUP}" >

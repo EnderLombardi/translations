@@ -616,7 +616,7 @@ sap.ui
 
 						} else if (this.getView().byId("operationStatus")
 								.getText() === airbus.mes.operationdetail.status.oView
-								.getModel("i18n").getProperty("confirm")) {
+								.getModel("i18n").getProperty("confirmed")) {
 
 							this.setProgressScreenBtn(false, false);
 						}

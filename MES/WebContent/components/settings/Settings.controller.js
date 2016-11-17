@@ -487,7 +487,7 @@ sap.ui.controller("airbus.mes.settings.Settings",
 					
 					oModel.refresh( true );
 					
-						airbus.mes.shell.oView.byId("labelMSN").setText(airbus.mes.shell.oView.getModel("ShellI18n").getProperty(
+					airbus.mes.shell.oView.byId("labelMSN").setText(airbus.mes.shell.oView.getModel("ShellI18n").getProperty(
 					"MSN") + " " + airbus.mes.settings.ModelManager.msn);
 					
 					}

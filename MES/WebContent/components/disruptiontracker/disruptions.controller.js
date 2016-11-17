@@ -1,5 +1,5 @@
 sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
-
+ sStation: undefined,
 /**
 * Called when a controller is instantiated and its View controls (if available) are already created.
 * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
@@ -103,7 +103,10 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 	 * Call Disruption KPI charts 
 	 */	
 	onPressDisruptionKPI: function(oEvent){
+		 this.sStation = this.getView().byId("stationComboBox").getSelectedKey();
 		airbus.mes.shell.util.navFunctions.disruptionKPI();
+		
+	//	airbus.mes.disruptiontracker.kpi.ModelManager.loadDisruptionKPIModel(sStation);
 		
 	},
 	
@@ -121,15 +124,13 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		if (airbus.mes.disruptiontracker.detailPopUp === undefined) {
 
 		    airbus.mes.disruptiontracker.detailPopUp = sap.ui.xmlfragment("disruptionDetailPopup",
-		                 "airbus.mes.disruptiontracker.detail.disruptionDetailPopup", airbus.mes.disruptiontracker.oView
+		                 "airbus.mes.disruptiontracker.disruptionDetailPopup", airbus.mes.disruptiontracker.oView
 		                               .getController());
 
 		    airbus.mes.disruptiontracker.oView.addDependent(airbus.mes.disruptiontracker.detailPopUp);
 
 
 		}
-		
-		airbus.mes.disruptiontracker.detailPopUp.open();
 		
 		//Add View Disruptions view to pop-up navigation container
 		this.nav = sap.ui.getCore().byId("disruptionDetailPopup--disruptDetailNavContainer");
@@ -140,8 +141,6 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 			sap.ui.getCore().byId("disruptionDetailPopup--btnUpdateDisruption"), // Update Button
 			sap.ui.getCore().byId("disruptionDetailPopup--btnCancelDisruption")	// Cancel Button	
 		);
-		
-		sap.ui.getCore().getModel("operationDisruptionsModel").setData({});
 		
 		var disruptionData = {
 				   "Rowsets":{
@@ -155,20 +154,20 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 					      ]
 					   }
 					};
-		
-		sap.ui.getCore().getModel("operationDisruptionsModel").setData(disruptionData);
+
+		airbus.mes.disruptions.oView.viewDisruption.getModel("operationDisruptionsModel").setData(disruptionData);
 		airbus.mes.disruptions.oView.viewDisruption.getController().applyFiltersOnComments();
 		
 		//Set Expanded by Default
-		sap.ui.getCore().byId("__panel1-ViewDisruptionView--disrptlist-0").setExpanded(true);
+		//sap.ui.getCore().byId("__panel1-ViewDisruptionView--disrptlist-0").setExpanded(true);
 		
 		//Set visibility of expandable panel icon
-		sap.ui.getCore().byId("__panel1-ViewDisruptionView--disrptlist-0-CollapsedImg").setVisible(false);
-		
-		
+		//sap.ui.getCore().byId("__panel1-ViewDisruptionView--disrptlist-0-CollapsedImg").setVisible(false);
+
+		airbus.mes.disruptiontracker.detailPopUp.open();
 		
 		this.nav.to(airbus.mes.disruptions.oView.viewDisruption.getId());
-		
+				
 	},
 	
 	
@@ -183,10 +182,13 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 	afterCloseDisruptnDetailPopUp: function(){
 			
 		// Reset Expandable
-		sap.ui.getCore().byId("__panel1-ViewDisruptionView--disrptlist-0").setExpandable(true);
+		//sap.ui.getCore().byId("__panel0-ViewDisruptionView--disrptlist-0").setExpandable(true);
 
 		// Empty Model
-		sap.ui.getCore().getModel("operationDisruptionsModel").setData();
+		airbus.mes.disruptions.oView.viewDisruption.getModel("operationDisruptionsModel").setData(null);
+		
+		sap.ui.getCore().setModel(airbus.mes.disruptions.oView.viewDisruption.getModel("operationDisruptionsModel"), 
+														"operationDisruptionsModel");
 	}
 	
 

@@ -311,7 +311,7 @@
 										</Label>
 									</f:label>
 									<f:fields>
-										<MultiInput id="materials" valueHelpRequest="onMaterialValueHelpRequest">
+										<MultiInput id="materials" valueHelpRequest="onMaterialValueHelpRequest" tokenChange="onMaterialTokenChange" liveChange="onMaterialTokenChange">
 											<layoutData>
 												<l:GridData span="L3 M9 S12" />
 											</layoutData>

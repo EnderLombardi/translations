@@ -556,6 +556,7 @@ sap.ui
 						this.getView().byId("timeLost").setValue();
 						this.getView().byId("comment").setValue();
 						this.getView().byId("description").setValue();
+						this.getView().byId("materials").destroyTokens();
 					},
 
 					/***********************************************************
@@ -579,55 +580,59 @@ sap.ui
 					},
 
 					/***********************************************************
-					 * show selected material list to user in create disruption
-					 * view
-					 **********************************************************/
-					handleSelectMaterialList : function(oEvent) {
-
-						var aSelectedItems = sap.ui.getCore().byId("materialList").getSelectedItems();
-						aSelectedItems.forEach(function(item, index) {
-							var oToken = new sap.m.Token({
-								key : item.getContent()[0].getContent()[0].getItems()[0].getText(),
-								text : item.getContent()[0].getContent()[0].getItems()[0].getText()
-										+ "("
-										+ item.getContent()[0].getContent()[0].getItems()[1].getItems()[1].getValue() + ")"
-
-							});
-							sap.ui.getCore().byId(
-									"createDisruptionView--materials")
-									.addToken(oToken);
-						});
-
-						this._materialListDialog.close();
-					},
-
-					/***********************************************************
 					 * Adds new free text Material along with quantity to the
 					 * list
 					 */
 					addNewMaterialToList : function() {
 
-						if (this.getView().byId("customMaterial") != "") {
-							
-							// make an Item to add in the list.
-							var oMaterialItem = new sap.m.CustomListItem(
+						var oModelData = sap.ui.getCore().getModel(
+								"MaterialListModel").getProperty(
+								"/MaterialList");
+
+						if (sap.ui.getCore().byId("customMaterial").getValue() != "") {
+
+							/*
+							 * var oNewMaterial = { "Material" :
+							 * sap.ui.getCore().byId(
+							 * "customMaterial").getValue() }
+							 * 
+							 * oModelData.push(oNewMaterial);
+							 * oModelData.splice(0, 0, oNewMaterial);
+							 * sap.ui.getCore().getModel("MaterialListModel")
+							 * .refresh();
+							 * 
+							 * var oNewMaterialItem = sap.ui.getCore().byId(
+							 * "materialList").getItems()[0];
+							 * oNewMaterialItem.getContent()[0].getContent()[0]
+							 * .getItems()[1].getItems()[1]
+							 * .setValue(sap.ui.getCore().byId(
+							 * "customMaterialQty").getValue());
+							 * sap.ui.getCore().byId("materialList")
+							 * .setSelectedItem(oNewMaterialItem, true);
+							 */
+
+							// make an Item to add in the list. var
+							oMaterialItem = new sap.m.CustomListItem(
 									{
 										content : new sap.ui.layout.Grid(
 												{
 													defaultSpan : "L12 M12 S12",
 													content : new sap.m.HBox(
 															{
-																justifyContent :"SpaceBetween",
-																alignContent :"SpaceBetween",
-																alignItems :"Center",
+																justifyContent : "SpaceBetween",
+																alignContent : "SpaceBetween",
+																alignItems : "Center",
 																items : [
 																		new sap.m.Title(
 																				{
 																					textAlign : "Center",
 																					level : "H3",
-																					text : sap.ui.getCore().byId(
-																									"customMaterial").getValue()
-																				}), // title,
+																					text : sap.ui
+																							.getCore()
+																							.byId(
+																									"customMaterial")
+																							.getValue()
+																				}),
 																		new sap.m.VBox(
 																				{
 																					width : "20%",
@@ -640,27 +645,102 @@ sap.ui
 																									{
 																										type : "Number",
 																										width : "80%",
-																										value : sap.ui.getCore().byId(
-																										"customMaterialQty").getValue()
+																										value : sap.ui
+																												.getCore()
+																												.byId(
+																														"customMaterialQty")
+																												.getValue()
 																									})
 																									.addStyleClass("inputQty") ]
-
 																				}) ]
 															})
 												})
-									
-									}).addStyleClass("customListItemPadding")
-							
-									//add item in starting of the Material List
-							sap.ui.getCore().byId("materialList").insertItem(oMaterialItem,0);
-							sap.ui.getCore().byId("materialList").setSelectedItem(oMaterialItem,true);
-							
-							// by default select this item
-							
-						} 
-						
-						
 
+									}).addStyleClass("customListItemPadding")
+							// *
+							// add item in starting of the Material List
+							sap.ui.getCore().byId("materialList").insertItem(
+									oMaterialItem, 0);
+
+							// by default select this item
+							sap.ui.getCore().byId("materialList")
+									.setSelectedItem(oMaterialItem, true);
+
+						}
+
+					},
+
+					/***********************************************************
+					 * show selected material list to user in create disruption
+					 * view
+					 **********************************************************/
+					handleSelectMaterialList : function(oEvent) {
+
+						var aSelectedItems = sap.ui.getCore().byId(
+								"materialList").getSelectedItems();
+
+						/*
+						 * remove all token already present in the MultiInput
+						 * the already selected tokens will be selected in the
+						 * MaterialList Dialog already so there will be no
+						 * chance of data loss
+						 */
+						sap.ui.getCore()
+								.byId("createDisruptionView--materials")
+								.removeAllTokens();
+						sap.ui.getCore()
+								.byId("createDisruptionView--materials")
+								.setValue();
+
+						// for each Item add token to MaterialInput
+						aSelectedItems
+								.forEach(function(item, index) {
+									// if any selected item doesnt contain qty
+									// set it to 1.
+									if (item.getContent()[0].getContent()[0]
+											.getItems()[1].getItems()[1]
+											.getValue() == "")
+										item.getContent()[0].getContent()[0]
+												.getItems()[1].getItems()[1]
+												.setValue(1);
+									var oToken = new sap.m.Token(
+											{
+												key : item.getContent()[0]
+														.getContent()[0]
+														.getItems()[0]
+														.getText(),
+												text : item.getContent()[0]
+														.getContent()[0]
+														.getItems()[0]
+														.getText()
+														+ "("
+														+ item.getContent()[0]
+																.getContent()[0]
+																.getItems()[1]
+																.getItems()[1]
+																.getValue()
+														+ ")"
+
+											});
+									sap.ui.getCore().byId(
+											"createDisruptionView--materials")
+											.addToken(oToken);
+								});
+
+						this._materialListDialog.close();
+					},
+
+					/***********************************************************
+					 * On token change in MultiInput field directly, we need to
+					 * restrict it
+					 **********************************************************/
+
+					onMaterialTokenChange : function() {
+						this.onMaterialValueHelpRequest();
+					},
+
+					handleCancelMaterialList : function() {
+						this._materialListDialog.close();
 					},
 
 				/**
@@ -669,7 +749,7 @@ sap.ui
 				 * 
 				 * @memberOf airbus.mes.components.disruptions.CreateDisruption
 				 */
-				// onExit: function() {
-				//
-				// }
+				/*
+				 * onExit: function() { }
+				 */
 				});

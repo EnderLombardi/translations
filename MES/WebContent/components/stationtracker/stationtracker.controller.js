@@ -838,15 +838,37 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	dateSelected : function(){
 //		Check if current selected date corresponds to range of shift date
 		var dSeletectedDate = airbus.mes.stationtracker.oView.oCalendar.getSelectedDates()[0].getStartDate();
-		if(dSeletectedDate < airbus.mes.stationtracker.GroupingBoxingManager.minDate
-		  || dSeletectedDate > airbus.mes.stationtracker.GroupingBoxingManager.maxDate ) {
+		if(dSeletectedDate < airbus.mes.stationtracker.GroupingBoxingManager.minDate || dSeletectedDate > airbus.mes.stationtracker.GroupingBoxingManager.maxDate ) {
 //			If we are out of range, we display a message and don't close the date picker
 			sap.m.MessageToast.show("Selected date out of range");
 		} else {
 //			We feed the scheduler with the new selected date
 			airbus.mes.stationtracker.oView.getController().updateDateLabel(airbus.mes.stationtracker.oView.oCalendar);
 			airbus.mes.stationtracker.datePicker.close();
-			scheduler.updateView(airbus.mes.stationtracker.oView.oCalendar.getSelectedDates()[0].getStartDate());
+			// Reselect the date in shift hierarchy to select the good date
+			var dDataSelected = airbus.mes.stationtracker.oView.oCalendar.getSelectedDates()[0].getStartDate();
+			var sYear = dDataSelected.getFullYear();
+			var sMounth = dDataSelected.getMonth() + 1;
+			var sDay = dDataSelected.getDate();
+			
+			if ( sMounth < 10 ) { 
+				
+				sMounth = "0" + sMounth
+				
+				}
+			var sDay = dDataSelected.getDate();
+			
+			if ( sDay < 10 ) { 
+				
+				sDay = "0" + sDay
+				
+			}
+			// Search in the shift hierarshy the first date of first shift of the current date
+			var sDate = sYear + "-" + sMounth + "-" + sDay;
+			var sDateId = Object.keys( airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy[sDate] )[0];
+			var dStartDate = airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy[sDate][sDateId][0].StartDate;
+			
+			scheduler.updateView(dStartDate);
 			airbus.mes.stationtracker.ModelManager.selectMyShift();
 		}
 	},
