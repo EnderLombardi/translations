@@ -25,8 +25,10 @@ airbus.mes.shell.util.Formatter = {
 		}
 	},
 	stationTrackerMsn : function(sMsn) {
-		if (sMsn === "") {
-			return "";
+		if (sMsn === "---") {
+			return airbus.mes.shell.oView.getModel("ShellI18n").getProperty(
+			"MSN")
+			+ " " + airbus.mes.settings.ModelManager.currentMsnValue ;
 		} else {
 			return airbus.mes.shell.oView.getModel("ShellI18n").getProperty(
 					"MSN")
