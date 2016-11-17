@@ -885,6 +885,41 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		airbus.mes.stationtracker.AssignmentManager.handleLineAssignment("S", true);
 	},
 	
+	openCheckQAPopup : function(sMode, oModel){
+		if (!airbus.mes.stationtracker.checkQAPopUp) {
+			airbus.mes.stationtracker.checkQAPopUp = sap.ui.xmlfragment("airbus.mes.stationtracker.checkQAPopUp", airbus.mes.stationtracker.oView.getController());
+		}
+		airbus.mes.stationtracker.checkQAPopUp.setModel(oModel, "checkQAModel");
+		airbus.mes.stationtracker.checkQAPopUp.setModel(airbus.mes.stationtracker.oView.getModel("StationTrackerI18n"),"StationTrackerI18n");
+		
+		var aConfirmButtons = ["continueButton", "cancelButton"];
+		var aInfoButtons = ["okButton"];
+		var aButtons = airbus.mes.stationtracker.checkQAPopUp.getButtons();
+		aButtons.forEach(function(el){
+			if(aConfirmButtons.indexOf(el.sId)!== -1){
+				aConfirmButtons[aConfirmButtons.indexOf(el.sId)] = el;
+			}else if(aInfoButtons.indexOf(el.sId)!== -1){
+				aInfoButtons[aInfoButtons.indexOf(el.sId)] = el;
+			}
+		});
+		
+		aConfirmButtons.forEach(function(el){
+			if(!el.getVisible() && sMode == "confirm"){
+				el.setVisible(true);
+			}else if(el.getVisible() && sMode == "info"){
+				el.setVisible(false);
+			}
+		});
+		aInfoButtons.forEach(function(el){
+			if(!el.getVisible() && sMode == "info"){
+				el.setVisible(true);
+			}else if(el.getVisible() && sMode == "confirm"){
+				el.setVisible(false);
+			}
+		});
+		airbus.mes.stationtracker.checkQAPopUp.open();
+	},
+	
 	onCancelCheckQA : function(oEvent){
 		this.onCloseDialog(oEvent);
 	},

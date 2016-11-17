@@ -3,19 +3,20 @@
 	xmlns:u="sap.ui.unified" xmlns:table="sap.ui.table">
 	<Dialog id="checkQAPopUp" stretchOnPhone="false" showHeader="false">
 		<buttons>
-			<Button text="{StationTrackerI18n>Continue}" press="onContinueCheckQA" />
-			<Button text="{StationTrackerI18n>Cancel}" press="onCancelCheckQA" />
+			<Button id="continueButton" text="{StationTrackerI18n>Continue}" press="onContinueCheckQA" />
+			<Button id="cancelButton" text="{StationTrackerI18n>Cancel}" press="onCancelCheckQA" />
+			<Button id="okButton" text="{StationTrackerI18n>OK}" press="onCancelCheckQA" />
 		</buttons>
 		<content>
 			<VBox alignItems="Center">
 				<items>
-					<Label text="{checkQAModel>/name}" textAlign="Center" design="Bold" />
+					<Label text="{StationTrackerI18n>checkQAMissing}" textAlign="Center" design="Bold" />
 					<Table items="{path: 'checkQAModel>/Row'}">
 						<columns>
-							<Column hAlign="Center" width="7rem">
+							<Column hAlign="Center" width="7rem" mergeDuplicates="true">
 								<Text text="{StationTrackerI18n>Operator}" />
 							</Column>
-							<Column hAlign="Center" width="7rem">
+							<Column hAlign="Center" width="7rem" mergeDuplicates="true">
 								<Text text="{StationTrackerI18n>Operation}" />
 							</Column>
 							<Column hAlign="Center" width="7rem">
