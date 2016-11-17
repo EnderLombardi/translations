@@ -259,36 +259,6 @@
 									</micro:ComparisonMicroChart>
 								</VBox>
 							</HBox>
-<<<<<<< Upstream, based on origin/MESv0.9
-						</VBox> -->
-
-						<!-- <VBox id="boxResolutionEfficiency" width="11%" alignItems="Center"
-							class="contentHeaderCont"> -->
-					    <VBox id="boxResolutionEfficiency" width="35%" class="sapUiTinyMarginBegin sapUiTinyMarginEnd" 
-					          alignItems="Center" >
-							<!-- <Label text="{StationTrackerI18n>ResolutionEfficiency}"
-								design="Bold" class="whiteTextHeader sapUiSmallMarginTopBottom" /> -->
-							<!-- <VBox width="100%"> -->
-								<micro:ComparisonMicroChart 
-									id="boxResolutionEfficiecy_chart"
-									colorPalette="#84bd00,#fe5000,#fe5000,#0F2D65" width="100%" class="spaceBetweenCharts">
-									<micro:data >
-										<micro:ComparisonMicroChartData 
-											title="{StationTrackerI18n>PromisedInTakt}" value="8"   />
-									    
-										<micro:ComparisonMicroChartData 
-											title="{StationTrackerI18n>PromisedOutTakt}" value="3"  />
-										<micro:ComparisonMicroChartData
-											title="{StationTrackerI18n>NotAcknowledged}" value="2" />
-										<micro:ComparisonMicroChartData
-											id="hiddenRefBarResolution" title="{StationTrackerI18n>RedSpaces}" value="13" visible="false"/>
-									</micro:data>
-								</micro:ComparisonMicroChart>
-							<!-- </VBox> -->
-						</VBox>
-						</HBox>
-=======
->>>>>>> 98ce3c6 [Settings] - fix change language.
 						</VBox>
 
 						<VBox id="boxExtraWork" wrap="Wrap" width="6%" class="contentHeaderCont">
