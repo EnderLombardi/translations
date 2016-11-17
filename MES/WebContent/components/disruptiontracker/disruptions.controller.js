@@ -141,6 +141,8 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 			sap.ui.getCore().byId("disruptionDetailPopup--btnCancelDisruption")	// Cancel Button	
 		);
 		
+		sap.ui.getCore().getModel("operationDisruptionsModel").setData({});
+		
 		var disruptionData = {
 				   "Rowsets":{
 					      "Rowset":[
@@ -148,15 +150,21 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 					            "Row":[
 					               oEvt.getSource().getBindingContext("disruptionsTrackerModel").getObject()
 					            ]
-					         }
+					         },
+					         sap.ui.getCore().getModel("disruptionsTrackerModel").getProperty("/Rowsets/Rowset/1")
 					      ]
 					   }
 					};
 		
 		sap.ui.getCore().getModel("operationDisruptionsModel").setData(disruptionData);
+		airbus.mes.disruptions.oView.viewDisruption.getController().applyFiltersOnComments();
 		
-		// Set Expanded by default
-		sap.ui.getCore().byId("__panel1-ViewDisruptionView--disrptlist-0").setExpandable(false);
+		//Set Expanded by Default
+		sap.ui.getCore().byId("__panel1-ViewDisruptionView--disrptlist-0").setExpanded(true);
+		
+		//Set visibility of expandable panel icon
+		sap.ui.getCore().byId("__panel1-ViewDisruptionView--disrptlist-0-CollapsedImg").setVisible(false);
+		
 		
 		
 		this.nav.to(airbus.mes.disruptions.oView.viewDisruption.getId());

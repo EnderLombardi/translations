@@ -33,6 +33,10 @@
 	color: #0f86ae !important;
 }
 
+.disruptionDetail .disruptionExpandablePanel .sapMPanelBGTranslucent .sapMPanelContent {
+    margin-left: 0 !important;
+}
+
 /****** End of CSS for Disruption screen **********/
 
 /* CSS for disruptionAckCommentDialogue */
