@@ -84,6 +84,53 @@ table {
 }
 /** End **/
 
+/** Global Button reset **/
+#mes .sapMToggleBtnPressed, 
+#mes .sapMIBar-CTX .sapMToggleBtnPressed, 
+#mes .sapMTB-Transparent-CTX .sapMBtnInner.sapMToggleBtnPressed {
+    background-image: none;
+    background-color: transparent;
+    border-color: transparent;
+    color: transparent;
+    text-shadow: none;
+}
+#mes .Subheader:not(.theme-disabled) button span:hover {
+    background-color: transparent;
+}
+/** End **/
+
+/** Global subheader Button **/
+#mes .Subheader:not(.theme-disabled) button>div {
+    border-radius: 0;
+    border: 0;
+    height: 3rem;
+}
+#mes .Subheader:not(.theme-disabled) button>div>span {
+    line-height: 3rem;
+    max-height: 3rem;
+}
+#mes .Subheader:not(.theme-disabled) button {
+	padding:0;
+}
+#mes .Subheader:not(.theme-disabled) button:hover {
+    background-color: rgba(0, 86, 112, 0.20);
+}
+#mes .Subheader:not(.theme-disabled) button[aria-pressed^="true"]:hover {
+    background-color: rgb(73,164,188);
+}
+#mes .Subheader:not(.theme-disabled) button[aria-pressed^="true"] {
+    background-color: #74D2E7;
+}
+#mes .Subheader:not(.theme-disabled) button[aria-pressed^="true"] span {
+	color:#ffffff;
+}
+#mes .Subheader:not(.theme-disabled) button:hover>div.sapMBtnActive {
+	color:#ffffff;
+	background-color:#74D2E7;	
+}
+/** End **/
+
+
 .sapUiBody#content {
 	background-image:none;
 }

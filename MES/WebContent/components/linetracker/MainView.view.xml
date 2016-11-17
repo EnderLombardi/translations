@@ -40,7 +40,7 @@
 		</contentMiddle>
 	</Bar>
 
-	<Toolbar id="lineTrackerToolbar"  class="lineTrackerSubheader">
+	<Toolbar id="lineTrackerToolbar"  class="lineTrackerSubheader Subheader theme-disabled">
 		<content>
 			<SegmentedButton id="IconTabsPages">
 				<items>
@@ -67,7 +67,7 @@
 			<Button id="Andon" type="Transparent" tooltip="Andon"
 				icon="sap-icon://marketing-campaign" press="airbus.mes.linetracker.util.ModelManager.onAndonClick" />
 			<ToggleButton id="swapStationButton" type="Transparent"
-				class="#idMainViewswapStationButton" press="airbus.mes.linetracker.util.ModelManager.onSwap"
+				class="#idMainViewswapStationButton rotated-icon" press="airbus.mes.linetracker.util.ModelManager.onSwap"
 				icon="sap-icon://sort" />
 			<Slider id="refreshSlider" visible="false" value="30" width="50%"
 				class="refreshSlider" />

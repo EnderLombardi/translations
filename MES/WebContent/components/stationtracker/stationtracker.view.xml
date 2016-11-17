@@ -289,9 +289,9 @@
 
 				</content>
 			</Panel>
+			
 
-
-			<OverflowToolbar id="toolbarstationtracker" width="100%">
+			<OverflowToolbar id="toolbarstationtracker" class="Subheader" width="100%">
 				<content>
 					<SegmentedButton id="buttonViewMode">
 						<layoutData>
@@ -326,9 +326,10 @@
 					<ToolbarSpacer />
 					<Button text="{StationTrackerI18n>missingParts}" enabled="false"
 						type="Transparent" icon="sap-icon://task" class="sapUiTinyMarginBeginEnd"></Button>
-					<Button text="{StationTrackerI18n>ButtonShowCP}" type="Transparent"
+					<ToggleButton text="{StationTrackerI18n>ButtonShowCP}" type="Transparent"
 						icon="sap-icon://kpi-corporate-performance" class="sapUiTinyMarginBeginEnd"
-						press="onCPPress"></Button>
+						press="onCPPress" pressed="false" />
+		
 					<Button text="{StationTrackerI18n>disruptions/andon}" press="showDisruption"
 						type="Transparent" icon="sap-icon://alert" class="sapUiTinyMarginBeginEnd"></Button>
 					<Button text="{StationTrackerI18n>ButtonOutstandingWork}"
@@ -336,9 +337,8 @@
 						press="onOSWPress"></Button>
 					<Button text="{StationTrackerI18n>ButtonUnplanned}" type="Transparent"
 						icon="sap-icon://inspect" class="sapUiTinyMarginBeginEnd" press="onUnplannedPress"></Button>
-
-					<Button text="{StationTrackerI18n>ButtonInitial}" type="Transparent"
-						icon="sap-icon://past" class="sapUiTinyMarginBeginEnd" press="onInitialPlanPress"></Button>
+					<ToggleButton text="{StationTrackerI18n>ButtonInitial}" type="Transparent"
+						icon="sap-icon://past" class="sapUiTinyMarginBeginEnd" press="onInitialPlanPress" />
 
 				</content>
 			</OverflowToolbar>

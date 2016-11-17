@@ -11,7 +11,7 @@
 		enableColumnReordering="true" rowHeight="30" id="oTablePolypoly"
 		enableSelectAll="false" columnMove="onColumnMove" fixedColumnCount="6" visibleRowCountMode="Fixed">
 		<table:toolbar>
-			<Toolbar design="Transparent" id="toolbarPolypoly">
+			<Toolbar design="Transparent" id="toolbarPolypoly" class="Subheader">
 				<content>
 					<Image src="../components/polypoly/images/1.png" height="1.5rem"/>
 					<Label class="QA-text-style" text = "Side 1"/>
