@@ -1,22 +1,29 @@
 { "MaterialList" : [{
+	"MATNR"	   : "01",
 	"Material" : "Material ex1" 
 },
 {
+	"MATNR"	   : "02",
 	"Material" : "Material ex2" 
 },
 {
+	"MATNR"	   : "03",
 	"Material" : "Material ex3" 
 },
 {
+	"MATNR"	   : "04",
 	"Material" : "Material ex4" 
 },
 {
+	"MATNR"	   : "05",
 	"Material" : "Material ex5" 
 },
 {
+	"MATNR"	   : "06",
 	"Material" : "Material ex6" 
 },
 {
+	"MATNR"	   : "07",
 	"Material" : "Material ex7" 
 }
 ]

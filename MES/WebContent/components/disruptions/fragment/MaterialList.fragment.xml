@@ -43,7 +43,7 @@
 				</f:content>
 			</f:SimpleForm>
 
-			<List id="materialList" mode="MultiSelect">
+			<List id="materialList" mode="MultiSelect" items="{MaterialListModel>/MaterialList}">
 				<items>
 					<CustomListItem class="customListItemPadding">
 						<l:Grid class="sapUiSmallMarginTop" defaultSpan="L12 M12 S12">
@@ -51,111 +51,13 @@
 								<HBox justifyContent="SpaceBetween" alignContent="SpaceBetween"
 									alignItems="Center">
 									<items>
-										<Title textAlign="Center" level="H3" text="Material 1">
+										<Title textAlign="Center" level="H3"
+											text="{MaterialListModel>Material}">
 											<layoutData>
 												<l:GridData span="L6 M6 S12" />
 											</layoutData>
 										</Title>
-										<VBox width="20%">
-											<Label text="Quantity" />
-											<Input type="Number" width="80%" class="inputQty" />
-										</VBox>
-									</items>
-								</HBox>
-							</l:content>
-						</l:Grid>
-					</CustomListItem>
-					<CustomListItem class="customListItemPadding">
-						<l:Grid class="sapUiSmallMarginTop" defaultSpan="L12 M12 S12">
-							<l:content>
-								<HBox justifyContent="SpaceBetween" alignContent="SpaceBetween"
-									alignItems="Center">
-									<items>
-										<Title textAlign="Center" level="H3" text="Material 1">
-											<layoutData>
-												<l:GridData span="L6 M6 S12" />
-											</layoutData>
-										</Title>
-										<VBox width="20%">
-											<Label text="Quantity" />
-											<Input type="Number" width="80%" class="inputQty" />
-										</VBox>
-									</items>
-								</HBox>
-							</l:content>
-						</l:Grid>
-					</CustomListItem>
-					<CustomListItem class="customListItemPadding">
-						<l:Grid class="sapUiSmallMarginTop" defaultSpan="L12 M12 S12">
-							<l:content>
-								<HBox justifyContent="SpaceBetween" alignContent="SpaceBetween"
-									alignItems="Center">
-									<items>
-										<Title textAlign="Center" level="H3" text="Material 1">
-											<layoutData>
-												<l:GridData span="L6 M6 S12" />
-											</layoutData>
-										</Title>
-										<VBox width="20%">
-											<Label text="Quantity" />
-											<Input type="Number" width="80%" class="inputQty" />
-										</VBox>
-									</items>
-								</HBox>
-							</l:content>
-						</l:Grid>
-					</CustomListItem>
-					<CustomListItem class="customListItemPadding">
-						<l:Grid class="sapUiSmallMarginTop" defaultSpan="L12 M12 S12">
-							<l:content>
-								<HBox justifyContent="SpaceBetween" alignContent="SpaceBetween"
-									alignItems="Center">
-									<items>
-										<Title textAlign="Center" level="H3" text="Material 1">
-											<layoutData>
-												<l:GridData span="L6 M6 S12" />
-											</layoutData>
-										</Title>
-										<VBox width="20%">
-											<Label text="Quantity" class="inputQty" />
-											<Input type="Number" width="80%" class="inputQty" />
-										</VBox>
-									</items>
-								</HBox>
-							</l:content>
-						</l:Grid>
-					</CustomListItem>
-					<CustomListItem class="customListItemPadding">
-						<l:Grid class="sapUiSmallMarginTop" defaultSpan="L12 M12 S12">
-							<l:content>
-								<HBox justifyContent="SpaceBetween" alignContent="SpaceBetween"
-									alignItems="Center">
-									<items>
-										<Title textAlign="Center" level="H3" text="Material 1">
-											<layoutData>
-												<l:GridData span="L6 M6 S12" />
-											</layoutData>
-										</Title>
-										<VBox width="20%">
-											<Label text="Quantity" />
-											<Input type="Number" width="80%" class="inputQty" />
-										</VBox>
-									</items>
-								</HBox>
-							</l:content>
-						</l:Grid>
-					</CustomListItem>
-					<CustomListItem class="customListItemPadding">
-						<l:Grid class="sapUiSmallMarginTop" defaultSpan="L12 M12 S12">
-							<l:content>
-								<HBox justifyContent="SpaceBetween" alignContent="SpaceBetween"
-									alignItems="Center">
-									<items>
-										<Title textAlign="Center" level="H3" text="Material 1">
-											<layoutData>
-												<l:GridData span="L6 M6 S12" />
-											</layoutData>
-										</Title>
+										<!-- <Text text="{MaterialListModel>MATNR}" visible="false"/> -->
 										<VBox width="20%">
 											<Label text="Quantity" />
 											<Input type="Number" width="80%" class="inputQty" />
@@ -167,11 +69,10 @@
 					</CustomListItem>
 				</items>
 			</List>
-
 		</content>
 		<buttons>
 			<Button text="OK" press="handleSelectMaterialList" />
-			<Button text="Cancel" />
+			<Button text="Cancel" press="handleCancelMaterialList" />
 		</buttons>
 	</Dialog>
 </core:FragmentDefinition>

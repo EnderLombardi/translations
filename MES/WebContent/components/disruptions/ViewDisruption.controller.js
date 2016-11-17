@@ -665,6 +665,11 @@ sap.ui
 						sap.ui.getCore().getModel("DisruptionDetailModel").setData();
 
 						oOperDetailNavContainer.to(airbus.mes.disruptions.oView.createDisruption.getId());
+						
+						if(sap.ui.getCore().byId("createDisruptionView").oController._materialListDialog){
+							sap.ui.getCore().byId("createDisruptionView").oController._materialListDialog.destroy(false);
+							sap.ui.getCore().byId("createDisruptionView").oController._materialListDialog = undefined;
+						}
 					},
 
 					/***********************************************************
