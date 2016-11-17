@@ -177,7 +177,6 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 		case "resourcePool":
 			airbus.mes.resourcepool.util.ModelManager.askResourcePool();
 			break;
-
 		}
 	},
 	
@@ -185,8 +184,6 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 	 * RenderStation Tracker and reload all model/ shift are not reaload
 	 */
 	renderStationTracker: function(){
-		
-		console.log("Hello");
 		
 		var oModule = airbus.mes.stationtracker.ModelManager;
 		airbus.mes.shell.oView.getController().setInformationVisibility(true);
@@ -204,7 +201,6 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
     	oModule.loadKPI();
    	
 	},
-	
 	
 	setInformationVisibility : function(bSet) {
 		this.getView().byId("informationButton").setVisible(bSet);

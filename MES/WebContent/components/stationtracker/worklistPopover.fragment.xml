@@ -5,12 +5,16 @@
 		<customHeader>
 			<Toolbar>
 				<ToolbarSpacer />
-				<Label id="LabelTitle" text="{ path: 'WorkListModel>andons' , formatter: 'airbus.mes.stationtracker.util.Formatter.setWorkListText' }" />
+				<!-- <Label id="LabelTitle" text="{ path: 'WorkListModel>andons' , formatter: 'airbus.mes.stationtracker.util.Formatter.setWorkListText' }" /> -->
+				<Label id="LabelTitle" text="{ parts: [ 'WorkListOverallModel>/0/WORKORDER_ID','WorkListOverallModel>/0/WORKORDER_DESCRIPTION' ], formatter: 'airbus.mes.stationtracker.util.Formatter.titleWorklist'}" />
 				<ToolbarSpacer />
 			</Toolbar>
 		</customHeader>
 		<content>
-			<custom:customProgressIndicator
+			
+			<!-- old script but wait before delete
+			 
+				<custom:customProgressIndicator
 				id="overallProgress"
 				visible="false"
 				width="auto" state="sap.ui.core.ValueState.Success" status="{WorkListOverallModel>STATE}"
@@ -18,9 +22,13 @@
 				displayValue="{ parts: [ 'WorkListOverallModel>/0/WORKORDER_ID','WorkListOverallModel>/0/WORKORDER_DESCRIPTION' ], formatter: 'airbus.mes.stationtracker.util.Formatter.titleWorklist'}"
 				displayValue2="{ parts: [ 'WorkListOverallModel>/0/OPERATION_ID','WorkListOverallModel>/0/OPERATION_DESCRIPTION','WorkListOverallModel>/0/PROGRESS','WorkListOverallModel>/0/DURATION' ], formatter: 'airbus.mes.stationtracker.util.Formatter.displayValueIM'}"
 				percentValue="{ parts: [ 'WorkListOverallModel>/0/PROGRESS','WorkListOverallModel>/0/DURATION' ], formatter: 'airbus.mes.stationtracker.util.Formatter.percentValue'}">
-				<custom:layoutData>
-					<FlexItemData baseSize="60%" growFactor="1"></FlexItemData>
-				</custom:layoutData>
+			 -->
+			 <custom:customProgressIndicator	
+				id="overallProgress"
+				class="overallProgresstitle"
+				visible="false"
+				width="auto"
+				displayValue="{ path: 'WorkListModel>andons' , formatter: 'airbus.mes.stationtracker.util.Formatter.setWorkListText' }">
 			</custom:customProgressIndicator>		
 			<VBox>
 				<HBox>

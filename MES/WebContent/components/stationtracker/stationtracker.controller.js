@@ -1,3 +1,5 @@
+"use strict";
+
 jQuery.sap.require("airbus.mes.stationtracker.util.Formatter");
 
 sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
@@ -963,4 +965,20 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	onCheckQA : function(){
 		airbus.mes.stationtracker.AssignmentManager.checkQA = true;
 	},
+	// Displays the number of items selected in the "Groupe de production
+	// TODO : get id of the fragment "productionGroupPopover" to insert value (line 915 and 920)
+	onSelectionChange : function (oEvt) {
+		
+		var oList = oEvt.getSource();
+		var oLabel = this.getView().byId("idFilterLabel");
+		var oInfoToolbar = airbus.mes.stationtracker.oView.byId("idInfoToolbar");
+		//alert("oInfoToolbar : " + oInfoToolbar)
+		var aContexts = oList.getSelectedContexts(true);
+		// update UI
+		var bSelected = (aContexts && aContexts.length > 0);
+		var sText = (bSelected) ? aContexts.length + " selected" : null;
+		
+		oInfoToolbar.setVisible(bSelected);
+		oLabel.setText(sText);
+	}
 });

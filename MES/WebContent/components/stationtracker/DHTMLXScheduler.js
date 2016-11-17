@@ -1,3 +1,5 @@
+"use strict";
+
 sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 
 //					Define if it is a simple click or a double click. Used on event onDblClick and onClick
@@ -89,14 +91,9 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
                                                 
                        
 						scheduler.eventId.push ( scheduler.attachEvent("onEventDrag", function SchedStartChange(ev, mode, e) {
-					
-							if ( this.getEvent(ev).start_date.getTime() >= scheduler._max_date  )
-								{
+							if ( this.getEvent(ev).start_date.getTime() >= scheduler._max_date  ){
 								console.log("yes");
-								
 								}
-							
-							
 						}));
 						
 						
@@ -196,20 +193,13 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 						};
 
 						scheduler.templates.timeline_scaley_class = function(key, label, section) {
-
 							if (section.initial != undefined) {
-
 								return "initial";
-
 							}
 
 							if (section.rescheduled != undefined) {
-
 								return "lineYaxis";
-
 							}
-							
-							
 						};
 
 						/* 	 Custom progress background display  */
@@ -296,19 +286,13 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 
 						/* custom initial */
 
-						scheduler.templates.timeline_cell_class = function(evs, date, section) {
-														
-							if (section.initial != undefined) {
-								
+						scheduler.templates.timeline_cell_class = function(evs, date, section) {							
+							if (section.initial != undefined) {								
 								return "initial";
-
 							}
 							if (section.children != undefined) {
-
 								return "folderAxisColor";
-
 							}
-							
 						};
 						
 						scheduler.eventId.push ( scheduler.attachEvent("onScaleAdd", function( unit , date ) {
@@ -356,7 +340,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 							  
 //							  Need to define a time out to differenciate simple click and double click
 							  setTimeout(function() {
-								  	
+						  	
 //								  	If the bypass variable has been set on true to the double click action
 //								    we don't perform the simple click action
 								    if (that.byPassOnClick) {
