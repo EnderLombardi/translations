@@ -97,7 +97,7 @@ sap.ui
 											flag_success = false;
 										} else {
 											airbus.mes.operationdetail.ModelManager
-													.messageShow(sMessageSuccess);
+													.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
 											flag_success = true;
 										}
 
@@ -163,7 +163,7 @@ sap.ui
 											flag_success = false;
 										} else {
 											airbus.mes.operationdetail.ModelManager
-													.messageShow(sMessageSuccess);
+													.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
 											flag_success = true;
 										}
 
@@ -174,7 +174,7 @@ sap.ui
 							oView.getController().setProgressScreenBtn(false,
 									true);
 
-							oView.byId("btnActivate").setType("Accept");
+							//oView.byId("btnActivate").setType("Accept");
 							oView.byId("operationStatus").setText(
 									oView.getModel("i18n")
 											.getProperty("paused"));
