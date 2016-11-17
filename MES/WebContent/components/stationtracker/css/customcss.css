@@ -420,3 +420,17 @@ button.textRed div.sapMBtnInner {
 }
 
 
+/** Not totally confirmed operations in last shift **/
+.classNotConfirmedOperation {
+	position: absolute;
+    width: 5px;
+    background: #ee373d;
+    left: -20px;
+    top: -2px;
+    height: 35px;
+}
+#stationTrackerView .dhx_matrix_scell div {
+	overflow:visible;
+}
+/** END - Not totally confirmed operations in last shift **/
+

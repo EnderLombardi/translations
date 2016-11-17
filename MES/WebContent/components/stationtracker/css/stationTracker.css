@@ -1467,10 +1467,6 @@ svg#stationTrackerView--takt_adherence_area_chart {
 	font-size: 1rem;
 }
 
-.classNotConfirmedOperation {
-	height: 100%;
-	background-color: #ee373d;
-}
 
 /*** CSS Kpi Header ***/
 .kpiPageHeader {
