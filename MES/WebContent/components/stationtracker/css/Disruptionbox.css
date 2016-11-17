@@ -1,7 +1,8 @@
-.wrap .sapMLabel{
+.wrap .sapMLabel {
 	white-space: normal !important;
 }
 
-.TopMargin{
-	margin-top: 1rem !important;
+.spaceBetweenCharts .sapSuiteCmpChartItem.Normal.Auto {
+	margin-top: 0.5rem !important;
 }
+
