@@ -264,6 +264,10 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 									if(!myButton.getVisible()){
 										myButton.setVisible(true);
 									}
+								}else{
+									if(myButton.getVisible()){
+										myButton.setVisible(false);
+									}
 								}
 							}else{
 								if(myButton.getVisible()){
