@@ -438,7 +438,11 @@ airbus.mes.stationtracker.util.Formatter = {
 					if ( oSection.rescheduled ) {
 						//XX TODO POSTION OF THIS.
 						var html = sNotConfirmedOpLS
-								+ '<div><img src=' + oCurrentAffectedUser.picture + ' class="ylabelUserImage"></i>'
+								
+								if(airbus.mes.settings.AppConfManager.getConfiguration("MES_PHOTO_DISPLAY")){ // Check if user image to be displayed  or not
+									
+									+ '<div><img src=' + oCurrentAffectedUser.picture + ' class="ylabelUserImage" ></i>'		// To display User Image
+								}
 								+ '<span class="ylabelUser" title='
 								+ airbus.mes.stationtracker.util.Formatter.spaceInsecable(oCurrentAffectedUser.lastName) + '>'
 								+ oCurrentAffectedUser.lastName	+ '</span><span  class="yMoreLabel" >'
