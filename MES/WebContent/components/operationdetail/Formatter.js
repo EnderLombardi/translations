@@ -80,11 +80,15 @@ airbus.mes.operationdetail.Formatter = {
 
 	
 	displayOriginalPlan : function(startTime, endTime) {
-		if (endTime !== undefined) {
+		if (endTime !== undefined) 
 			var newStartTime = startTime.replace("T", " ");
 			var newEndTime = endTime.replace("T", " ");
 			return newStartTime + " - " + newEndTime;
-		}
+
+			var newStartTime = startTime.replace("T"," ");			
+			var newEndTime = endTime.replace("T"," ");
+			return newStartTime+" - " + newEndTime ;
+
 	},
 	checkOperationStartEndDate:function(startTime, endTime,endDate){
 		if (endDate === undefined || endDate === 'TimeUnavailable'){
@@ -94,9 +98,7 @@ airbus.mes.operationdetail.Formatter = {
 		
 		}
 		else return endDate;
-		
 	}
 
-		
 
 };
