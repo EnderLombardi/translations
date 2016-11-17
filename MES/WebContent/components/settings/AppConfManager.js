@@ -21,11 +21,14 @@ airbus.mes.settings.AppConfManager =  {
 	loadAppConfig: function(){
 		jQuery.ajax({
 		    type:'post',
-		    url: "https://dmiswde0.eu.airbus.corp/airbus-rswebservice/rest/mesAppConfigurationService/getConfiguration?j_user=ng34ed3&j_password=Malice0*",
+		    url: this.getUrlAppConfig(),
+		    //url: "https://dmiswde0.eu.airbus.corp/airbus-rswebservice/rest/mesAppConfigurationService/getConfiguration?j_user=ng34ed3&j_password=Malice0*",
 		    contentType: 'application/json; charset=utf-8',
 		    accept: 'application/json',
 		    headers: {
-			    "Access-Control-Allow-Origin": '*'
+			    "Access-Control-Allow-Origin": '*',
+			    "Access-Control-Allow-Methods": 'POST',
+			    "Access-Control-Allow-Headers": '*',
 		    },
 			data: {
 		    	"site": airbus.mes.settings.ModelManager.site,
