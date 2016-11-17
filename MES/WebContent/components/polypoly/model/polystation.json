@@ -1,0 +1,11 @@
+{ "Rowsets" : { 
+	"DateCreated" : "2016-11-17T10:43:57", "Version" : "15.1 SP2 Patch 13 (Oct 6, 2016)", "StartDate" : "2016-11-17T09:43:57+0100", "EndDate" : "2016-11-17T10:43:57+0100", "CachedTime" : "", 
+	"Rowset" : [ 
+	{ "Columns" : { 
+		"Column" : [ 
+		{ "Name" : "PPM_Station", "SourceColumn" : "PPM_Station", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 } ] }, 
+	"Row" : [ 
+		{ "PPM_Station" : "PHYS_ST_IP4" } ]
+		 } ]
+	 }
+ }

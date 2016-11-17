@@ -1,0 +1,12 @@
+{ "Rowsets" : { 
+	"DateCreated" : "2016-11-17T10:48:40", "Version" : "15.1 SP2 Patch 13 (Oct 6, 2016)", "StartDate" : "2016-11-17T09:48:40+0100", "EndDate" : "2016-11-17T10:48:40+0100", "CachedTime" : "", 
+	"Rowset" : [ 
+	{ "Columns" : { 
+		"Column" : [ 
+		{ "Name" : "QA", "SourceColumn" : "QA", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 } ] }, 
+	"Row" : [ 
+		{ "QA" : "NZPI1146" }, 
+		{ "QA" : "NZF1013B" } ]
+		 } ]
+	 }
+ }

@@ -593,6 +593,10 @@ airbus.mes.polypoly.PolypolyManager = {
 				.ajax({
 					url : urlqalevel12,
 					success : function(data, textStatus, jqXHR) {
+						//Handle Local url_config
+						if(typeof data == "string"){
+							data = JSON.parse(data);
+						}
 						data.Rowsets.Rowset[0].name = airbus.mes.polypoly.PolypolyManager.levelUpdater.sUserName;
 						var infoModel = new sap.ui.model.json.JSONModel();
 						infoModel.setData(data.Rowsets.Rowset[0]);
@@ -621,6 +625,10 @@ airbus.mes.polypoly.PolypolyManager = {
 				.ajax({
 					url : urlqalevel23,
 					success : function(data, textStatus, jqXHR) {
+						//Handle Local url_config
+						if(typeof data == "string"){
+							data = JSON.parse(data);
+						}
 						data.Rowsets.Rowset[0].name = airbus.mes.polypoly.PolypolyManager.levelUpdater.sUserName;
 						var infoModel = new sap.ui.model.json.JSONModel();
 						infoModel.setData(data.Rowsets.Rowset[0]);

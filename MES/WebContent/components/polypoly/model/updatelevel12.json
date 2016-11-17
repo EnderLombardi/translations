@@ -1,0 +1,14 @@
+{"Rowsets" : { 
+	"DateCreated" : "2016-11-17T10:47:11", "Version" : "15.1 SP2 Patch 13 (Oct 6, 2016)", "StartDate" : "2016-11-17T09:47:11+0100", "EndDate" : "2016-11-17T10:47:11+0100", "CachedTime" : "", 
+	"Rowset" : [ 
+	{ "Columns" : { 
+		"Column" : [ 
+		{ "Name" : "QA", "SourceColumn" : "QA", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "Status", "SourceColumn" : "Status", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "Date", "SourceColumn" : "Date", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 } ] }, 
+	"Row" : [ 
+		{ "QA" : "NZPI1146", "Status" : "KO", "Date" : "12/06/2016" }, 
+		{ "QA" : "NZF1013B", "Status" : "OK", "Date" : "23/11/2018" } ]
+		 } ]
+	 }
+ }

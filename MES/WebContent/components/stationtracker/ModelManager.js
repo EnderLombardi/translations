@@ -106,7 +106,10 @@ airbus.mes.stationtracker.ModelManager = {
    			url : seturlLineAssignment,
    			cache : false,
    			success : function(data, textStatus, jqXHR) {
-   				//TODO handle Warning QA
+   				//Handle Local url_config
+				if(typeof data == "string"){
+					data = JSON.parse(data);
+				}
    				if(airbus.mes.shell.util.Formatter.getMiiMessageType(data) == "E"){
    					sap.m.MessageToast.show(airbus.mes.shell.util.Formatter.getMiiTextFromData(data));
    				} else if(data.Rowsets.Rowset[0].Row[0].message == "W"){

@@ -1,0 +1,29 @@
+{ "Rowsets" : { 
+	"DateCreated" : "2016-11-17T10:50:23", "Version" : "15.1 SP2 Patch 13 (Oct 6, 2016)", "StartDate" : "2016-11-17T09:50:22+0100", "EndDate" : "2016-11-17T10:50:22+0100", "CachedTime" : "", 
+	"Rowset" : [ 
+	{ "Columns" : { 
+		"Column" : [ 
+		{ "Name" : "message", "SourceColumn" : "message", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 } ] }, 
+	"Row" : [ 
+		{ "message" : "W" } ]
+		 }, 	{ "Columns" : { 
+		"Column" : [ 
+		{ "Name" : "longName", "SourceColumn" : "longName", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "operationDescription", "SourceColumn" : "operationDescription", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "certificationName", "SourceColumn" : "certificationName", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 } ] }, 
+	"Row" : [ 
+		{ "longName" : "FONTENEAU GUILLAUME", "operationDescription" : "No_Description", "certificationName" : "NZF1013B" }, 
+		{ "longName" : "FONTENEAU GUILLAUME", "operationDescription" : "No_Description", "certificationName" : "NZSU113B" }, 
+		{ "longName" : "FONTENEAU GUILLAUME", "operationDescription" : "No_Description", "certificationName" : "PSILF2161A08" }, 
+		{ "longName" : "FONTENEAU GUILLAUME", "operationDescription" : "No_Description", "certificationName" : "TEST 0A" }, 
+		{ "longName" : "FONTENEAU GUILLAUME", "operationDescription" : "No_Description", "certificationName" : "TEST 0A BIS" }, 
+		{ "longName" : "FONTENEAU GUILLAUME", "operationDescription" : "No_Description", "certificationName" : "TEST 0A INIT" }, 
+		{ "longName" : "FONTENEAU GUILLAUME", "operationDescription" : "No_Description", "certificationName" : "NZF1013B" }, 
+		{ "longName" : "FONTENEAU GUILLAUME", "operationDescription" : "No_Description", "certificationName" : "NZSU113B" }, 
+		{ "longName" : "FONTENEAU GUILLAUME", "operationDescription" : "No_Description", "certificationName" : "PSILF2161A08" }, 
+		{ "longName" : "FONTENEAU GUILLAUME", "operationDescription" : "No_Description", "certificationName" : "TEST 0A" }, 
+		{ "longName" : "FONTENEAU GUILLAUME", "operationDescription" : "No_Description", "certificationName" : "TEST 0A BIS" }, 
+		{ "longName" : "FONTENEAU GUILLAUME", "operationDescription" : "No_Description", "certificationName" : "TEST 0A INIT" } ]
+		 } ]
+	 }
+ }
