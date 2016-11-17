@@ -258,6 +258,29 @@ sap.ui
 						}
 
 					},
+					/***********************************************************
+					 * on click of go to Disruption button when status of
+					 * operation is Blocked
+					 * 
+					 */
+					onPressGotoDisruptios : function() {
+						this.nav = sap.ui.getCore().byId("operationDetailsView--operDetailNavContainer")
+						airbus.mes.shell.util.navFunctions.disruptionsDetail(this.nav,
+								sap.ui.getCore().byId("operationDetailPopup--reportDisruption"), // Report Disruption Button
+								sap.ui.getCore().byId("operationDetailPopup--btnCreateDisruption"), // Create Button
+								sap.ui.getCore().byId("operationDetailPopup--btnUpdateDisruption"), // Update Button
+								sap.ui.getCore().byId("operationDetailPopup--btnCancelDisruption")	// Cancel Button							
+						);
+						this.nav.to(airbus.mes.disruptions.oView.viewDisruption.getId());
+						
+						sap.ui.getCore().byId("operationDetailsView--opDetailSegmentButtons").setSelectedButton(
+								sap.ui.getCore().byId("operationDetailsView--opDetailSegmentButtons").getButtons()[1].sId
+						);
+						
+						
+
+					},
+
 
 					/***********************************************************
 					 * 
@@ -598,31 +621,9 @@ sap.ui
 							this.setProgressScreenBtn(false, false);
 						}
 
-					},
-
-					/***********************************************************
-					 * on click of go to Disruption button when status of
-					 * operation is Blocked
-					 * 
-					 */
-					onPressGotoDisruptios : function() {
-						this.nav = sap.ui.getCore().byId("operationDetailsView--operDetailNavContainer")
-						airbus.mes.shell.util.navFunctions.disruptionsDetail(this.nav,
-								sap.ui.getCore().byId("operationDetailPopup--reportDisruption"), // Report Disruption Button
-								sap.ui.getCore().byId("operationDetailPopup--btnCreateDisruption"), // Create Button
-								sap.ui.getCore().byId("operationDetailPopup--btnUpdateDisruption"), // Update Button
-								sap.ui.getCore().byId("operationDetailPopup--btnCancelDisruption")	// Cancel Button							
-						);
-						this.nav.to(airbus.mes.disruptions.oView.viewDisruption.getId());
-						
-						sap.ui.getCore().byId("operationDetailsView--opDetailSegmentButtons").setSelectedButton(
-								sap.ui.getCore().byId("operationDetailsView--opDetailSegmentButtons").getButtons()[1].sId
-						);
-						
-						
-
 					}
 
+					
 				/**
 				 * Called when the Controller is destroyed. Use this one to free
 				 * resources and finalize activities.

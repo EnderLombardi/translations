@@ -10,7 +10,7 @@
                            <Label text="MES - AOS" class="pageTitle"/>
                            <ToolbarSpacer />
                            
-                            <Label text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/stationDescription', formatter : 'airbus.mes.shell.util.Formatter.stationTrackerStation' }" class="pageTitle titleStation sapUiTinyMarginBeginEnd" />
+       <Label text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/stationDescription', formatter : 'airbus.mes.shell.util.Formatter.stationTrackerStation' }" class="pageTitle titleStation sapUiTinyMarginBeginEnd" />
 							<Label id="labelMSN" text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/msn', formatter : 'airbus.mes.shell.util.Formatter.stationTrackerMsn' }" class="pageWelcome sapUiTinyMarginBeginEnd" /> 
 							<Label text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/siteDescription', formatter : 'airbus.mes.shell.util.Formatter.stationTrackerPlant' }" class="pageWelcome sapUiTinyMarginBeginEnd" />
 							<Label text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/lineDescription', formatter : 'airbus.mes.shell.util.Formatter.stationTrackerLine' }" class="pageWelcome sapUiTinyMarginBeginEnd" />					

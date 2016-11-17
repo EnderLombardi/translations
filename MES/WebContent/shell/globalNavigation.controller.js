@@ -193,6 +193,8 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
     
 		airbus.mes.stationtracker.oView.byId("stationtracker").setBusy(true);
 
+		oModule.loadShifts();
+        airbus.mes.stationtracker.ShiftManager.init(airbus.mes.stationtracker.GroupingBoxingManager.shiftNoBreakHierarchy);
 		oModule.loadAffectation();
    		oModule.loadStationTracker("U");
    		oModule.loadStationTracker("O");
