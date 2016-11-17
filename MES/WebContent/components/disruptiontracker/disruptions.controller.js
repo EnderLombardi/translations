@@ -154,8 +154,9 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 					};
 		
 		sap.ui.getCore().getModel("operationDisruptionsModel").setData(disruptionData);
-		sap.ui.getCore().byId("__panel1-ViewDisruptionView--disrptlist-0").setExpanded(true);
-		sap.ui.getCore().byId("__panel1-ViewDisruptionView--disrptlist-0-CollapsedImg").setVisible(false);
+		
+		// Set Expanded by default
+		sap.ui.getCore().byId("__panel1-ViewDisruptionView--disrptlist-0").setExpandable(false);
 		
 		
 		this.nav.to(airbus.mes.disruptions.oView.viewDisruption.getId());
@@ -172,21 +173,12 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 	},
 	
 	afterCloseDisruptnDetailPopUp: function(){
-				
-		sap.ui.getCore().byId("__panel1-ViewDisruptionView--disrptlist-0").setExpanded(false);
-		sap.ui.getCore().byId("__panel1-ViewDisruptionView--disrptlist-0-CollapsedImg").setVisible(true);
-		
+			
+		// Reset Expandable
+		sap.ui.getCore().byId("__panel1-ViewDisruptionView--disrptlist-0").setExpandable(true);
 
-		var disruptionData = {
-				   "Rowsets":{
-					      "Rowset":[
-					         {
-					            "Row":[]
-					         }
-					      ]
-					   }
-					};
-		sap.ui.getCore().getModel("operationDisruptionsModel").setData(disruptionData);
+		// Empty Model
+		sap.ui.getCore().getModel("operationDisruptionsModel").setData();
 	}
 	
 
