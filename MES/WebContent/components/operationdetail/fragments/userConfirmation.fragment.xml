@@ -17,15 +17,15 @@
 					labelSpanL="1" labelSpanM="2" emptySpanL="0" emptySpanM="0"
 					columnsL="3" columnsM="3">
 					<f:content>
-						<Label text="UID" required="true" />
+						<Label text="UID" />
 						<Input id="UIDForConfirmation" type="Text"
 							placeholder="UID" liveChange="uIDLive" />							
-						<Label text="Badge ID" required="true" />
+						<Label text="Badge ID" />
 						<Input id="badgeIDForConfirmation" type="Text"
 							placeholder="Badge ID" liveChange="badgeIDLive" />
-						<Label text="PIN" required="false" />
-						<Input id="pinForConfirmation" type="Text"
-							placeholder="PIN" liveChange="pinIDLive" />
+						<Label text="PIN" id="pinLab" required="false" visible="false"/>
+						<Input id="pinForConfirmation" type="Text" maxLength = "7"
+							placeholder="PIN" liveChange="pinIDLive" visible="false"/>
 						<Text text="--------OR--------" textAlign="Center"/>
 						
 						<Label text="Username" required="true" />

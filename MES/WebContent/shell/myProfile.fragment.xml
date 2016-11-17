@@ -21,11 +21,11 @@
 						labelSpanL="1" labelSpanM="2" emptySpanL="0" emptySpanM="0"
 						columnsL="3" columnsM="3">
 						<f:content>
-							<Input id="uIdMyProfile" type="Text" required="true"
+							<Input id="uIdMyProfile" type="Text"
 								placeholder="{ShellI18n>UID}" liveChange="uIDLive" />							
-							<Input id="badgeIdMyProfile" type="Text" required="true"
+							<Input id="badgeIdMyProfile" type="Text"
 								placeholder="{ShellI18n>badgeID}" liveChange="badgeIDLive" />
-							<Input id="pinCodeMyProfile" type="Text"
+							<Input id="pinCodeMyProfile" type="Text" maxLength = "4"
 								placeholder="{ShellI18n>pinCode}" liveChange="pinCodeLive" />							
 							<Input id="userNameMyProfile" type="Text" required="true"
 								placeholder="{ShellI18n>userName}" liveChange="usernameLive" />

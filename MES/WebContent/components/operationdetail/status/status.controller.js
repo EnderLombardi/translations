@@ -248,6 +248,8 @@ sap.ui
 									.setValue("");
 							sap.ui.getCore().byId("badgeIDForConfirmation")
 									.setValue("");
+							sap.ui.getCore().getElementById("pinForConfirmation")
+									.setValue("");
 							sap.ui.getCore().byId("userNameForConfirmation")
 									.setValue("");
 							sap.ui.getCore().byId("passwordForConfirmation")
@@ -264,23 +266,48 @@ sap.ui
 					 * 
 					 */
 					onPressGotoDisruptios : function() {
-						this.nav = sap.ui.getCore().byId("operationDetailsView--operDetailNavContainer")
-						airbus.mes.shell.util.navFunctions.disruptionsDetail(this.nav,
-								sap.ui.getCore().byId("operationDetailPopup--reportDisruption"), // Report Disruption Button
-								sap.ui.getCore().byId("operationDetailPopup--btnCreateDisruption"), // Create Button
-								sap.ui.getCore().byId("operationDetailPopup--btnUpdateDisruption"), // Update Button
-								sap.ui.getCore().byId("operationDetailPopup--btnCancelDisruption")	// Cancel Button							
-						);
-						this.nav.to(airbus.mes.disruptions.oView.viewDisruption.getId());
-						
-						sap.ui.getCore().byId("operationDetailsView--opDetailSegmentButtons").setSelectedButton(
-								sap.ui.getCore().byId("operationDetailsView--opDetailSegmentButtons").getButtons()[1].sId
-						);
-						
-						
+						this.nav = sap.ui.getCore().byId(
+								"operationDetailsView--operDetailNavContainer")
+						airbus.mes.shell.util.navFunctions
+								.disruptionsDetail(
+										this.nav,
+										sap.ui
+												.getCore()
+												.byId(
+														"operationDetailPopup--reportDisruption"), // Report
+																									// Disruption
+																									// Button
+										sap.ui
+												.getCore()
+												.byId(
+														"operationDetailPopup--btnCreateDisruption"), // Create
+																										// Button
+										sap.ui
+												.getCore()
+												.byId(
+														"operationDetailPopup--btnUpdateDisruption"), // Update
+																										// Button
+										sap.ui
+												.getCore()
+												.byId(
+														"operationDetailPopup--btnCancelDisruption") // Cancel
+																										// Button
+								);
+						this.nav.to(airbus.mes.disruptions.oView.viewDisruption
+								.getId());
+
+						sap.ui
+								.getCore()
+								.byId(
+										"operationDetailsView--opDetailSegmentButtons")
+								.setSelectedButton(
+										sap.ui
+												.getCore()
+												.byId(
+														"operationDetailsView--opDetailSegmentButtons")
+												.getButtons()[1].sId);
 
 					},
-
 
 					/***********************************************************
 					 * 
@@ -355,8 +382,6 @@ sap.ui
 							var uID = data.Message; // UID
 							var badgeID = data.BadgeOrRFID; // BID
 
-							// if(uID != undefined && uID != "")
-							// uID = uID.split(":")[1];
 							sap.ui.getCore().getElementById(
 									"UIDForConfirmation").setValue(uID);
 							sap.ui.getCore().getElementById(
@@ -382,9 +407,9 @@ sap.ui
 						var bID = sap.ui.getCore().getElementById(
 								"badgeIDForConfirmation").getValue();
 						var ID;
-						if(bID != "" || bID != undefined){
+						if (bID != "") {
 							ID = bID;
-						}elseif(uID != "" || uID != undefined){
+						} else {
 							ID = uID;
 						}
 						var pin = sap.ui.getCore().getElementById(
@@ -399,8 +424,7 @@ sap.ui
 						var sMessageError = oView.getModel("i18n").getProperty(
 								"ErrorDuringConfirmation");
 
-						if ((user == "" || pass == "")
-								&& (ID == "")) {
+						if ((user == "" || pass == "") && (ID == "")) {
 							sap.ui.getCore().byId("msgstrpConfirm").setVisible(
 									true);
 							sap.ui.getCore().byId("msgstrpConfirm").setType(
@@ -531,6 +555,8 @@ sap.ui
 								.setValue("");
 						sap.ui.getCore().byId("badgeIDForConfirmation")
 								.setValue("");
+						sap.ui.getCore().getElementById("pinForConfirmation")
+								.setValue("");
 						sap.ui.getCore().byId("userNameForConfirmation")
 								.setValue("");
 						sap.ui.getCore().byId("passwordForConfirmation")
@@ -630,7 +656,6 @@ sap.ui
 
 					}
 
-					
 				/**
 				 * Called when the Controller is destroyed. Use this one to free
 				 * resources and finalize activities.
