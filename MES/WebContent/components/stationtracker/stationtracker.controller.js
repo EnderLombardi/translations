@@ -388,7 +388,6 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		GroupingBoxingManager.parseOperation(GroupingBoxingManager.group, GroupingBoxingManager.box);
 		// Need to display marked shift		
 		airbus.mes.stationtracker.oView.getController().changeShift();
-		// Need render for display marked shift 
 		
 	},
 
@@ -959,12 +958,8 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	tooltipDisplay : function(oEvent) {
 		var oEventProvider = new sap.ui.base.EventProvider();
 		var oEvent = new sap.ui.base.Event("test",oEventProvider);
-<<<<<<< Upstream, based on origin/MESv0.9
-	
-=======
 		//this.onProductionGroupPress(oEvent);
 		console.log("tooltip");
->>>>>>> c959b49 [workliste] - design
 	},
 	
 	onCheckQA : function(){
