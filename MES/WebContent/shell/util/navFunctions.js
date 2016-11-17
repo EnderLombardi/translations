@@ -137,19 +137,23 @@ airbus.mes.shell.util.navFunctions = {
 
 			// Set click event on report disruption button
 			if(reportDisruptButton){
+				reportDisruptButton.detachPress(airbus.mes.disruptions.oView.viewDisruption.oController.onReportDisruption);
 				reportDisruptButton.attachPress(airbus.mes.disruptions.oView.viewDisruption.oController.onReportDisruption);
 			}
 			
 			// Set click event on create, update and cancel disruption button
 			if(createButton){
+				createButton.detachPress(airbus.mes.disruptions.oView.createDisruption.oController.onCreateDisruption);
 				createButton.attachPress(airbus.mes.disruptions.oView.createDisruption.oController.onCreateDisruption);
 			}
 			
 			if(updateButton){
+				updateButton.detachPress(airbus.mes.disruptions.oView.createDisruption.oController.onUpdateDisruption);
 				updateButton.attachPress(airbus.mes.disruptions.oView.createDisruption.oController.onUpdateDisruption);
 			}
 			
 			if(cancelButton){
+				cancelButton.detachPress(airbus.mes.disruptions.oView.createDisruption.oController.onCancelCreateDisruption);
 				cancelButton.attachPress(airbus.mes.disruptions.oView.createDisruption.oController.onCancelCreateDisruption);
 			}	
 		},

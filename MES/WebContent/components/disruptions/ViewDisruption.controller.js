@@ -666,6 +666,8 @@ sap.ui
 
 						oOperDetailNavContainer.to(airbus.mes.disruptions.oView.createDisruption.getId());
 						
+						
+						//destroying Material List dialog which might have already loaded and willl show inconsistent data otherwise
 						if(sap.ui.getCore().byId("createDisruptionView").oController._materialListDialog){
 							sap.ui.getCore().byId("createDisruptionView").oController._materialListDialog.destroy(false);
 							sap.ui.getCore().byId("createDisruptionView").oController._materialListDialog = undefined;
