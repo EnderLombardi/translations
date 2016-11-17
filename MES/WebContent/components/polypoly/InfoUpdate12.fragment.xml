@@ -1,14 +1,13 @@
 <core:FragmentDefinition xmlns="sap.m"
 	xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout"
 	xmlns:u="sap.ui.unified" xmlns:table="sap.ui.table">
-	<Dialog id="infoUpdate12" stretchOnPhone="false" showHeader="false">
+	<Dialog id="infoUpdate12" stretchOnPhone="false" showHeader="true" title="{infoModel>/name}">
 		<buttons>
 			<Button text="{PolypolyI18n>OK}" press="onClickInfoUpdate12" />
 		</buttons>
 		<content>
 			<VBox alignItems="Center">
 				<items>
-					<Label text="{infoModel>/name}" textAlign="Center" design="Bold" />
 					<Table items="{path: 'infoModel>/Row'}">
 						<columns>
 							<Column hAlign="Center" width="7rem">

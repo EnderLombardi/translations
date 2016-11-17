@@ -241,9 +241,9 @@
 									<!-- <Label text="{StationTrackerI18n>ResolutionEfficiency}" design="Bold" 
 										class="whiteTextHeader sapUiSmallMarginTopBottom" /> -->
 									<!-- <VBox width="100%"> -->
-									<micro:ComparisonMicroChart size="L"
+									<micro:ComparisonMicroChart 
 										id="boxResolutionEfficiecy_chart" colorPalette="#84bd00,#fe5000,#fe5000,#0F2D65"
-										width="100%">
+										width="100%" class="spaceBetweenCharts">
 										<micro:data>
 											<micro:ComparisonMicroChartData
 												title="{StationTrackerI18n>PromisedInTakt}" value="8" />

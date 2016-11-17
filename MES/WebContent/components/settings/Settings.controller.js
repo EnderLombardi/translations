@@ -420,6 +420,10 @@ sap.ui.controller("airbus.mes.settings.Settings",
 //				Firstly, save the new user settings
 				this.saveUserSettings();
 //				Then Navigate to correct view
+				if (!this.getView().byId("selectMSN").getValue()) {
+					airbus.mes.settings.ModelManager.messageShow(this.getView().getModel("i18n").getProperty("SelectMSN"));
+					return;
+				}
 				this.navigate(oEvent);
 			},
 			

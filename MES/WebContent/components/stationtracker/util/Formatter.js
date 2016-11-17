@@ -53,17 +53,12 @@ airbus.mes.stationtracker.util.Formatter = {
 			    var sTextF="";
 			    var aText=sText.split(new RegExp("[ ]+", "g"));    // Récupère tous les mots dans un tableau : texte_decoup
 			 
-			    for (var i=0; i < aText.length; i++)
-			    {
-			    	if ( aText.length - 1=== i ){
-			    		
+			    for (var i=0; i < aText.length; i++) {
+			    if ( aText.length - 1=== i ) {
 			        sTextF += aText[i];  // le + " " NE FONCTIONNE PAS. IDEM AVEC String.fromCharCode(32) 
-			    	
-			    	} else {
-			    		
-			    		sTextF += aText[i] + "&nbsp;";
-			    		
-			    	}
+			    } else {
+			    sTextF += aText[i] + "&nbsp;";
+			    }
 			    }
 			    
 			    return sTextF;
@@ -74,9 +69,8 @@ airbus.mes.stationtracker.util.Formatter = {
 				// return day for IE not working. - 1 on month because 00 = january
 				if ( day != undefined ){
 					return new Date(day.slice(0,4),day.slice(5,7)-1,day.slice(8,10),day.slice(11,13),day.slice(14,16),day.slice(17,19));
-				}
-				else{
-					return new Date();
+				} else {
+				return new Date();
 				}
 				
 			},
@@ -198,7 +192,7 @@ airbus.mes.stationtracker.util.Formatter = {
 					break;
 				// box is paused
 					case 3 :
-						sColorProgress = '<div class="colorProgress dark-lime-green-back" style="width:' + sProgress + '%;background-color: #84bd00;"></div>';
+						sColorProgress = '<div class="colorProgress dark-lime-green-back" style="width:' + sProgress + '%;background-color: #84bd00"></div>';
 						sRightIcon = '<i class="fa fa-pause rightIcon"></i>';
 						break;
 				// box not started
@@ -221,7 +215,7 @@ airbus.mes.stationtracker.util.Formatter = {
 
 					// Opened Blocking and Escalated disruption
 					case 4 :
-						sColorProgress ='<div class="openBlockedEscalated"></div>';
+						sColorProgress ='<div class="openBlockedEscalated" style="background-color:#fbec00"></div>';
 						sRightIcon = '<i class="fa fa-play rightIcon petrol" ></i>';
 //						sColorProgress ='<div class="colorProgress dandelion-back" style="width:100%;background-color: #fbec00;"></div>';
 						sSpanText = '<span class="trackerTextBlock">' + sText + '</span>';
@@ -237,7 +231,7 @@ airbus.mes.stationtracker.util.Formatter = {
 
 					// Opened Blocking disruption
 					case 5 :
-						sColorProgress ='<div class="openBlocked"></div>';
+						sColorProgress ='<div class="openBlocked" style="background-color:#fbec00"></div>';
 //						sRightIcon = '<i class="fa fa-exclamation-triangle triangleIcon"></i>';
 						sRightIcon = '<i class="fa fa-play rightIcon petrol"></i>';
 						if ( oBox.rmaStatus === 1 )	//rma
@@ -444,7 +438,11 @@ airbus.mes.stationtracker.util.Formatter = {
 					if ( oSection.rescheduled ) {
 						//XX TODO POSTION OF THIS.
 						var html = sNotConfirmedOpLS
-								+ '<div><img src=' + oCurrentAffectedUser.picture + ' class="ylabelUserImage"></i>'
+								
+								if(airbus.mes.settings.AppConfManager.getConfiguration("MES_PHOTO_DISPLAY")){ // Check if user image to be displayed  or not
+									
+									+ '<div><img src=' + oCurrentAffectedUser.picture + ' class="ylabelUserImage" ></i>'		// To display User Image
+								}
 								+ '<span class="ylabelUser" title='
 								+ airbus.mes.stationtracker.util.Formatter.spaceInsecable(oCurrentAffectedUser.lastName) + '>'
 								+ oCurrentAffectedUser.lastName	+ '</span><span  class="yMoreLabel" >'
@@ -457,8 +455,6 @@ airbus.mes.stationtracker.util.Formatter = {
 						return html;
 
 					}
-
-	
 					
 				} else {
 					

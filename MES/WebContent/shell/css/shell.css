@@ -66,6 +66,24 @@ table {
 }
 /** End **/
 
+/** Global pop-up **/
+#mes .sapMDialog:not(.theme-disabled) header {
+    box-shadow: 0 0 5px #333;
+    overflow: visible;
+    background-color: #d4f1f7;
+    color: #434343;
+}
+#mes .sapMDialog:not(.theme-disabled) footer {
+	background-color: #0F2D65;
+}
+#mes .sapMDialog:not(.theme-disabled) {
+    background: #ffffff;
+    border: none;
+    border-radius: 0;
+    box-shadow: 0 0 5px #333;	
+}
+/** End **/
+
 .sapUiBody#content {
 	background-image:none;
 }

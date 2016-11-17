@@ -384,8 +384,10 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		GroupingBoxingManager.box = sap.ui.getCore().byId("stationTrackerView").byId("selectBox").getSelectedKey();
 
 		GroupingBoxingManager.parseOperation(GroupingBoxingManager.group, GroupingBoxingManager.box);
+		// Need to display marked shift		
+		airbus.mes.stationtracker.oView.getController().changeShift();
 		// Need render for display marked shift 
-		scheduler.updateView();
+		
 	},
 
 	changeBox : function() {
@@ -396,9 +398,9 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		GroupingBoxingManager.box = sap.ui.getCore().byId("stationTrackerView").byId("selectBox").getSelectedKey();
 
 		GroupingBoxingManager.parseOperation(GroupingBoxingManager.group, GroupingBoxingManager.box);
-		// Need render for display marked shift 
-		//scheduler.updateView();
-
+		// Need to display marked shift		
+		airbus.mes.stationtracker.oView.getController().changeShift();
+		
 	},
 	onReschedulePress : function(oEvent) {
 		
@@ -482,7 +484,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		
 	},	
 
-	changeShift : function(Oevt) {
+	changeShift : function() {
 			
 		var sPath = airbus.mes.stationtracker.oView.byId("selectShift").getSelectedIndex();
 		var oModel = airbus.mes.stationtracker.oView.getModel("stationTrackerShift").getProperty("/" + sPath);
@@ -864,7 +866,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 				
 			}
 			// Search in the shift hierarshy the first date of first shift of the current date
-			var sDate = sYear + "-" + sMounth + "-" + sDay;
+			var sDate = sYear.toString() + sMounth.toString() + sDay.toString();
 			var sDateId = Object.keys( airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy[sDate] )[0];
 			var dStartDate = airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy[sDate][sDateId][0].StartDate;
 			
@@ -955,8 +957,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	tooltipDisplay : function(oEvent) {
 		var oEventProvider = new sap.ui.base.EventProvider();
 		var oEvent = new sap.ui.base.Event("test",oEventProvider);
-		this.onProductionGroupPress(oEvent);
-		console.log("tooltip");
+	
 	},
 	
 	onCheckQA : function(){

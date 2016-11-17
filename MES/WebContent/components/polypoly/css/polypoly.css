@@ -320,20 +320,13 @@ button[id^="polypoly"].sapMBtn:hover> div[id^="polypoly"].sapMBtnHoverable, html
 }
 
 /* Pop-up QA */
-#oQADialog {
+#oQADialog, #infoUpdate12  {
 	background: #ffffff;
     border: none;
     border-radius: 0;
     box-shadow: 0 0 5px #333;
 }
 
-#oQADialog-header-BarPH {
-	background:#d4f1f7;
-
-}
-#oQADialog-title {
-	color:#434343;
-}
 #oQADialog .sapMSlt>.sapMSltLabel {
     line-height: 2.5rem;
     border: none;
@@ -344,10 +337,6 @@ button[id^="polypoly"].sapMBtn:hover> div[id^="polypoly"].sapMBtnHoverable, html
 }
 #oQADialog-cont {
 	border-top:3px solid  rgba(255, 255, 255, 0);
-}
-#oQADialog-header {
-	box-shadow: 0 0 5px #333;
-    overflow: visible;
 }
 #oQADialog-footer {
 	background-color:#0F2D65;

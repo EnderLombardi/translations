@@ -81,7 +81,8 @@ airbus.mes.stationtracker.AssignmentManager = {
 				"firstName" : el.firstName,
 				"lastName" : el.lastName,
 				"email" : el.email,
-				"picture" : el.picture,
+				//"picture" : el.picture,
+				"picture": airbus.mes.shell.UserImageManager.getUserImage(el.user),
 				"warn" : el.warn,
 			};
 
