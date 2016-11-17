@@ -3,7 +3,7 @@
 	<Dialog title="{i18n>userConfirmation}" type="Message" id="partial" width="70% !important" >
 			<content>	
 			<HBox justifyContent="End">
-				<Button icon="sap-icon://business-card" text="Scan" type="Emphasized" press="onScanConfirmation"/> 
+				<Button id="scanButton" icon="sap-icon://business-card" text="Scan" type="Emphasized" press="onScanConfirmation"/> 
 			</HBox>
 			<HBox height="35px" class="messageHBox">
 				<MessageStrip id="msgstrpConfirm" visible="false"

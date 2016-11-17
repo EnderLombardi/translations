@@ -250,7 +250,7 @@ sap.ui
 							}	
 
 							oView._oUserConfirmationDialog.open();
-							sap.ui.getCore().getElementById("msgstrpConfirm")
+							sap.ui.getCore().byId("msgstrpConfirm")
 									.setVisible(false);
 							sap.ui.getCore().byId("UIDForConfirmation")
 									.setValue("");
@@ -327,12 +327,69 @@ sap.ui
 					/***********************************************************
 					 * Scan Badge for User Confirmation
 					 */
-					onScanConfirmation : function() {
-						// Open a web socket connection
-						var ws = new WebSocket("ws://localhost:754/TouchNTag");
+					onScanConfirmation : function(oEvt) {
+						
+							//close existing connection. then open again
+							oEvt.getSource().setEnabled(false);
+							var callBackFn = function(){
+								console.log("callback entry \n");
+							}
+							// Open a web socket connection
+							if(!airbus.mes.operationdetail.ModelManager.badgeReader){
+							airbus.mes.operationdetail.ModelManager.connectBadgeReader(callBackFn);
+							}
+							while(airbus.mes.operationdetail.ModelManager.badgeReader.readyState){
+								
+							}
+							if(airbus.mes.operationdetail.ModelManager.badgeReader.readyState==1)
+							airbus.mes.operationdetail.ModelManager.brStopReading();
+							sap.ui.getCore().byId("msgstrpConfirm").setType("Information");
+							sap.ui.getCore().byId("msgstrpConfirm").setText("Opening connection Please wait...")
+							sap.ui.getCore().byId("msgstrpConfirm").setVisible(true);
+//							airbus.mes.operationdetail.ModelManager.brOnOpen();
+							while(airbus.mes.operationdetail.ModelManager.badgeReader.readyState == 0){
+								console.log("connecting");
+							}
+							console.log("connected");
+							if(airbus.mes.operationdetail.ModelManager.badgeReader.readyState==1){
+								airbus.mes.operationdetail.ModelManager.brStartReading();
+								sap.ui.getCore().byId("msgstrpConfirm").setText("Conenction Opened");
+								var i=10;
+								var timer = setInterval(function(){
+									sap.ui.getCore().byId("msgstrpConfirm").setType("Information");
+									sap.ui.getCore().byId("msgstrpConfirm").setText("Please Connect your badge in "+ i--);
+									if(i<0){
+										clearInterval(timer);
+										airbus.mes.operationdetail.ModelManager.brStopReading();
+										sap.ui.getCore().byId("scanButton").setEnabled(true);
+										sap.ui.getCore().byId("msgstrpConfirm").setType("Warning");
+										sap.ui.getCore().byId("msgstrpConfirm").setText("Conenction Timeout. Click on scan to confirm");
+										setTimeout(function(){
+											sap.ui.getCore().byId("msgstrpConfirm").setVisible(false);
+										},2000)
+									}
+								}, 1000)
+								
 
+							}
+							else{
+								console.log("Connection is already closed/closing");
+							}
+					},
+/*						 ws.onmessage = function (evt){ 
+	                           var scanData = JSON.parse(evt.data);      
+	                           var uID  = scanData.Message;              //UID
+	                           var badgeID = scanData.BadgeOrRFID;     //BID
+	                           
+//	                         if(uID != undefined && uID != "")
+//	                             uID = uID.split(":")[1];
+	                           sap.ui.getCore().byId("UIDForConfirmation").setValue(uID);
+	                           sap.ui.getCore().byId("badgeIDForConfirmation").setValue(badgeID);
+	                           ws.close();
+	                           sap.ui.getCore().byId("msgstrpConfirm").setVisible(false);
+	                        };
 						ws.onopen = function() {
-							sap.ui.getCore().getElementById("msgstrpConfirm")
+							sap.ui.getCore().byId("msgstrpConfirm")
 									.setVisible(true);
 							sap.ui.getCore().byId("msgstrpConfirm").setType(
 									"Information");
@@ -364,12 +421,12 @@ sap.ui
 
 							// if(uID != undefined && uID != "")
 							// uID = uID.split(":")[1];
-							sap.ui.getCore().getElementById(
+							sap.ui.getCore().byId(
 									"UIDForConfirmation").setValue(uID);
-							sap.ui.getCore().getElementById(
+							sap.ui.getCore().byId(
 									"badgeIDForConfirmation").setValue(badgeID);
 							ws.close();
-							sap.ui.getCore().getElementById("msgstrpConfirm")
+							sap.ui.getCore().byId("msgstrpConfirm")
 									.setVisible(false);
 						};
 						// Error Handling while connection failed to WebSocket
@@ -384,22 +441,22 @@ sap.ui
 						ws.onclose = function() {
 							// websocket is closed.
 							alert("Connection is closed...");
-						}
+						}*/
 
 						// For Simulation purpose (Local Server Testing)
-						function onSimulation(data) {
+					onSimulation: function (data) {
 							// var data = JSON.parse(evt.data);
 							var uID = data.Message; // UID
 							var badgeID = data.BadgeOrRFID; // BID
 
-							sap.ui.getCore().getElementById(
+							sap.ui.getCore().byId(
 									"UIDForConfirmation").setValue(uID);
-							sap.ui.getCore().getElementById(
+							sap.ui.getCore().byId(
 									"badgeIDForConfirmation").setValue(badgeID);
-							ws.close();
-						}
+							//ws.close();
+						},
 
-					},
+             
 
 					onCancelConfirmation : function() {
 						var oView = airbus.mes.operationdetail.status.oView;
@@ -412,9 +469,9 @@ sap.ui
 
 						var oView = airbus.mes.operationdetail.status.oView;
 
-						var uID = sap.ui.getCore().getElementById(
+						var uID = sap.ui.getCore().byId(
 								"UIDForConfirmation").getValue();
-						var bID = sap.ui.getCore().getElementById(
+						var bID = sap.ui.getCore().byId(
 								"badgeIDForConfirmation").getValue();
 						var ID;
 						if (bID != "") {
@@ -567,13 +624,13 @@ sap.ui
 							.setVisible(true);
 						} 
 						oView._oUserConfirmationDialog.open();
-						sap.ui.getCore().getElementById("msgstrpConfirm")
+						sap.ui.getCore().byId("msgstrpConfirm")
 								.setVisible(false);
 						sap.ui.getCore().byId("UIDForConfirmation")
 								.setValue("");
 						sap.ui.getCore().byId("badgeIDForConfirmation")
 								.setValue("");
-						sap.ui.getCore().getElementById("pinForConfirmation")
+						sap.ui.getCore().byId("pinForConfirmation")
 								.setValue("");
 						sap.ui.getCore().byId("userNameForConfirmation")
 								.setValue("");

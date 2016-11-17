@@ -11,7 +11,8 @@ airbus.mes.operationdetail.ModelManager = {
 		'user_id' : undefined,
 		'image' : undefined
 	},
-
+	badgeReader:undefined,
+	brOnMessageCallBack:function (data) {},
 	queryParams : jQuery.sap.getUriParameters(),
 
 	init : function(core) {
@@ -166,6 +167,76 @@ airbus.mes.operationdetail.ModelManager = {
 				totalPartialConfirmationUrl, "$pin", pin);
 		return totalPartialConfirmationUrl;
 
+	},
+	/************************************************************************ BadeReader functions */
+connectBadgeReader: function(brOnMessageCallBack ){
+		
+	if(!this.badgeReader){
+	
+	var wsUrl; 
+		
+	if(location.protocal = "https:")
+		wsUrl = "wss://" + this.urlModel.getProperty("badgeReader");
+	else
+	wsUrl = "ws://" + this.urlModel.getProperty("badgeReader");
+	wsUrl = "ws://localhost:754/TouchNTag";
+	this.badgeReader = new WebSocket(wsUrl);
+	
+	this.badgeReader.onopen = this.brOnOpen;
+	this.badgeReader.onerror = this.brOnError;
+	this.badgeReader.onclose = this.brOnClose;
+	this.badgeReader.onmessage = this.brOnMessage;
+	
 	}
+	
+	this.brOnMessageCallBack = brOnMessageCallBack;
+},
+
+brOnOpen: function(){	
+	console.log("Connection is opened..."); 
+},
+brOpen : function(){
+	 var msgData = {"BadgeOrRFID":"BADGE","CommandName":"CONNECT","Language":null,"ReaderName":null};
+	  if(this.badgeReader)
+		  this.badgeReader.send(JSON.stringify(msgData));
+},
+
+brOnMessage : function (evt){ 
+ var scanData = JSON.parse(evt.data);	
+ var uID  = scanData.Message;			// UID
+ var badgeID = scanData.BadgeOrRFID;     // BID
+console.log(scanData);
+
+if(!this.brOnMessageCallBack)
+	this.brOnMessageCallBack(scanData);	
+},
+brStartReading: function(){
+   var msgData = {"BadgeOrRFID":"BADGE","CommandName":"START_READING","Language":null,"ReaderName":null};
+      if(this.badgeReader)
+    	  this.badgeReader.send(JSON.stringify(msgData));
+  
+},
+brStopReading:function(){
+   var msgData = {"BadgeOrRFID":"BADGE","CommandName":"STOP_READING","Language":null,"ReaderName":null};
+      if(this.badgeReader)
+    	  this.badgeReader.send(JSON.stringify(msgData));
+  
+},
+brClose:function(){
+   var msgData = {"BadgeOrRFID":"BADGE","CommandName":"DISCONNECT","Language":null,"ReaderName":null};
+      if(this.badgeReader)
+    	  this.badgeReader.send(JSON.stringify(msgData));
+  
+},
+brOnError : function(evnt){
+   alert("Error has occured In Badge Reader Connection");
+},
+
+brOnClose : function(){ 
+ // websocket is closed.
+  console.log("Connection is closed..."); 
+}		               
+
 };
+
 // airbus.mes.operationdetail.ModelManager.init(sap.ui.getCore());
