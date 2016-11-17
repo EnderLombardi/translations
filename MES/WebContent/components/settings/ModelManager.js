@@ -202,7 +202,7 @@ airbus.mes.settings.ModelManager =  {
 				success : function(result, status, xhr) {
 					
 					//Refresh label in header.
-					airbus.mes.settings.ModelManager.loadUserSettingsModel();
+					//airbus.mes.settings.ModelManager.loadUserSettingsModel();
 								
 				}
 			});

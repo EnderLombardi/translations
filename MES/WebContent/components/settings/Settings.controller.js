@@ -473,6 +473,25 @@ sap.ui.controller("airbus.mes.settings.Settings",
 					airbus.mes.settings.ModelManager.stationDesc = aModel.stationDescription;
 						
 					airbus.mes.settings.ModelManager.saveUserSetting(sap.ui.getCore().getConfiguration().getLanguage().slice(0,2));
+					
+					//Refresh label in header.
+					var oModel = sap.ui.getCore().getModel("userSettingModel")
+					
+					if ( oModel.getProperty("/Rowsets/Rowset/0/Row")) {
+						
+					var oModelData = sap.ui.getCore().getModel("userSettingModel").getData().Rowsets.Rowset[0].Row[0]
+					
+					oModelData.lineDescription = airbus.mes.settings.ModelManager.programDesc;
+					oModelData.siteDescription = airbus.mes.settings.ModelManager.siteDesc;
+					oModelData.stationDescription = airbus.mes.settings.ModelManager.stationDesc;
+					
+					oModel.refresh( true );
+					
+						airbus.mes.shell.oView.byId("labelMSN").setText(airbus.mes.shell.oView.getModel("ShellI18n").getProperty(
+					"MSN") + " " + airbus.mes.settings.ModelManager.msn);
+					
+					}
+					
 //					// Navigate to correct view
 //					that.navigate(oEvent);
 				}
