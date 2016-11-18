@@ -297,7 +297,8 @@ airbus.mes.polypoly.PolypolyManager = {
 											// if(!ressourcePools.has(row.RP_ID)){ressourcePools.push()}
 											oTableRows.rows.push({});
 											oTableRows.rows[oTableRows.rows.length - 1]["category"] = row.longName;
-											oTableRows.rows[oTableRows.rows.length - 1]["picture"] = row.picture;
+//											oTableRows.rows[oTableRows.rows.length - 1]["picture"] = row.picture;
+											oTableRows.rows[oTableRows.rows.length - 1]["picture"] = airbus.mes.shell.UserImageManager.getImageifConfig(row.login);
 											oTableRows.rows[oTableRows.rows.length - 1]["ressourcepool"] = row.RP_Description;
 											oTableRows.rows[oTableRows.rows.length - 1]["ressourcepoolId"] = row.RP_ID;
 											oTableRows.rows[oTableRows.rows.length - 1]["login"] = row.login;
