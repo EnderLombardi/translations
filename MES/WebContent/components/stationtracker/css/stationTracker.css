@@ -1516,59 +1516,54 @@ svg#stationTrackerView--takt_adherence_area_chart {
 	text-shadow: none;
 }
 
-/*Worklist Popover*/
-.classWorklistPopover header.sapMIBar.sapMHeader-CTX {
-	background: #d4f1f7;
-	box-shadow: 0 0 5px #333;
-	z-index: 1000;
-}
+/*** Worklist Popover ***/
 
-.classWorklistPopover header.sapMIBar.sapMHeader-CTX label {
-	color: #434343;
-	font-size: 1rem;
-}
-
+		.classWorklistPopover header.sapMIBar.sapMHeader-CTX {
+			background: #d4f1f7;
+			box-shadow: 0 0 5px #333;
+			z-index: 1000;
+		}
+		
+		.classWorklistPopover header.sapMIBar.sapMHeader-CTX label {
+			color: #434343;
+			font-size: 1rem;
+		}
 
 /*** CSS Kpi Header ***/
-.kpiPageHeader {
-	-webkit-box-shadow: 0px 2px 15px -5px #0F2D65;
-	-moz-box-shadow: 0px 2px 15px -5px #0F2D65;
-	box-shadow: 0px 2px 15px -5px #0F2D65;
-	border: none;
-	border-top: 0.6rem solid #ffffff;
-	position: relative;
-	z-index: 10;
-}
-/*** End of Styling of  Kpi Header ***/
+		.kpiPageHeader {
+			-webkit-box-shadow: 0px 2px 15px -5px #0F2D65;
+			-moz-box-shadow: 0px 2px 15px -5px #0F2D65;
+			box-shadow: 0px 2px 15px -5px #0F2D65;
+			border: none;
+			border-top: 0.6rem solid #ffffff;
+			position: relative;
+			z-index: 10;
+		}
 
 /*** productionGroupPopover  ***/
 
- #productionGroupPopover{
-	top:105px;
-}
-.sapMSLITitleOnly{
-	font-size:inherit;	
-	margin:0;
-	padding:0;
-}
-.sapMSLI {
-    height: 28px;
-    padding: 0 1rem 0 1rem;
-    line-height: 2.5rem;
-}
-.sapMPopoverArrUp{
-	display:none;
-}
+		#mes .MyproductionGroupPopover{
+			/*top:100px;*/
+		}
+				
+		#mes .MyproductionGroupPopoverList{
+			font-size:0.875rem;	
+			margin:0;
+			height : inherit;
+			border-bottom : none;
+		}
+		
+		#mes span.sapMPopoverArr, #mes span.sapMPopoverArrUp{
+			display:none !important;
+		} 
 
-/*** end productionGroupPopover  ***/
 /*** worklistPopover  ***/
-#mes .sapMDialog:not(.theme-disabled) .classWorklistPopoverHeader {
-    box-shadow: 0 0 5px #333;
-    overflow: visible;
-    background-color: #d4f1f7;
-    color: #434343;
-    margin: -1rem -1rem 1rem -1rem;
-    padding: 1rem;
-}
 
-/*** end worklistPopover  ***/
+		#mes .sapMDialog:not(.theme-disabled) .classWorklistPopoverHeader {
+		    box-shadow: 0 0 5px #333;
+		    overflow: visible;
+		    background-color: #d4f1f7;
+		    color: #434343;
+		    margin: -1rem -1rem 1rem -1rem;
+		    padding: 1rem;
+		}
