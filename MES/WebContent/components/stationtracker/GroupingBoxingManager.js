@@ -327,11 +327,11 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 			
 			if ( oFormatter.jsDateFromDayTimeStr(el.END_TIME) < new Date() ) {
 						
-				oHierarchyDelay[ssGroup][ssAvLine].duration += el.DURATION;
+				oHierarchyDelay[ssGroup][ssAvLine].duration += parseFloat(el.DURATION);
 				
 			}
 			
-			oHierarchyDelay[ssGroup][ssAvLine].progress += el.PROGRESS;	
+			oHierarchyDelay[ssGroup][ssAvLine].progress += parseFloat(el.PROGRESS);	
 			
 		});
 		
