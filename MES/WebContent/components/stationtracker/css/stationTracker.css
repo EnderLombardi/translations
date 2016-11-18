@@ -297,7 +297,7 @@
 	float: left;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	max-width:calc(100% - 50px);
+	max-width:calc(100% - 70px);
 	white-space: nowrap;
 	color: white;
 	overflow: hidden;
@@ -1567,3 +1567,8 @@ svg#stationTrackerView--takt_adherence_area_chart {
 		    margin: -1rem -1rem 1rem -1rem;
 		    padding: 1rem;
 		}
+/*** stationtracker hoover on event ***/
+
+.dhx_cal_event_line:hover div {	
+	background: none;
+}

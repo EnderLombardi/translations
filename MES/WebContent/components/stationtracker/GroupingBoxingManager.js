@@ -221,7 +221,6 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 			var fOSW = "0";
 			var fRMA = "0";
 			// Operation is active	
-
 			if (  el.PAUSED === "false") {
 				
 				sStatus = "2";

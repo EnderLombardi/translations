@@ -19,7 +19,7 @@ BOX MANAGEMENT
     float: left;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: calc(100% - 50px);
+    max-width: calc(100% - 70px);
     white-space: nowrap;
     color: white;
     overflow: hidden; }
