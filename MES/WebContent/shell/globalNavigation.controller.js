@@ -1,5 +1,11 @@
 sap.ui.controller("airbus.mes.shell.globalNavigation", {
 
+	/****************************************
+	* Variable for auto refresh
+	*/
+	autoRefresh: undefined,
+	
+	
 	/**
 	 * Called when a controller is instantiated and its View controls (if
 	 * available) are already created. Can be used to modify the View before it
@@ -140,6 +146,14 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 	onPressConnection : function() {
 		
 	},
+	
+	onNavigate: function(){
+		
+		
+	},
+	
+	
+	
 	renderViews : function() {
 		var autoRefresh = undefined;
 
@@ -157,21 +171,25 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 		switch(nav.getCurrentPage().getId()){
 		
 		case "stationTrackerView":
-			//autoRefresh = window.setInterval(this.renderStationTracker, 1000);
-
 			this.renderStationTracker();
+			this.autoRefresh = window.setInterval(this.renderStationTracker, 300000);
 			break;
 			
 		case "disruptiontrackerView":
-			if(nav.getPreviousPage().sId == "stationTrackerView"){
-				airbus.mes.disruptiontracker.ModelManager.loadDisruptionTrackerModel({
-					'station': airbus.mes.settings.ModelManager.station
-				});
+			
+			this.renderDisruptionTracker();
+			
+			if (nav.getPreviousPage().sId == "stationTrackerView") {
+												
+				airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.station = airbus.mes.settings.ModelManager.station;
 			}
 			else{
-				airbus.mes.disruptiontracker.ModelManager.loadDisruptionTrackerModel({});
+				airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.station = "";
 			}
-			this.renderDisruptionTracker();
+
+			airbus.mes.disruptiontracker.ModelManager.loadDisruptionTrackerModel();
+			this.autoRefresh = setInterval(airbus.mes.disruptiontracker.ModelManager
+					.loadDisruptionTrackerModel(), 300000);
 			break;
 			
 		case "resourcePool":
@@ -207,31 +225,7 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
     	oModule.loadKPI();
    	
 	},
-	
-	setInformationVisibility : function(bSet) {
-		this.getView().byId("informationButton").setVisible(bSet);
-		this.getView().byId("homeButton").setVisible(bSet);
-		this.getView().byId("SelectLanguage").setVisible(!bSet);
-	},
-	onInformation : function(oEvent){
-		airbus.mes.shell.oView.addStyleClass("viewOpacity");
-		
-		if ( airbus.mes.stationtracker.informationPopover === undefined ) {
-			var oView = airbus.mes.stationtracker.oView;
-			airbus.mes.stationtracker.informationPopover = sap.ui.xmlfragment("informationPopover","airbus.mes.shell.informationPopover", airbus.mes.shell.oView.getController());
-			airbus.mes.stationtracker.informationPopover.addStyleClass("alignTextLeft");
-			oView.addDependent(airbus.mes.stationtracker.informationPopover);
-		}
 
-		// delay because addDependent will do a async rerendering and the popover will immediately close without it
-		var oButton = oEvent.getSource();
-		jQuery.sap.delayedCall(0, this, function () {
-			airbus.mes.stationtracker.informationPopover.openBy(oButton);	
-		});			
-	},
-	onCloseInformation : function(){
-		airbus.mes.shell.oView.removeStyleClass("viewOpacity");		
-	},
 	/*******************************************
 	 * Render disruption Tracker
 	 */
@@ -250,12 +244,41 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 			}
 		});
 		aFilters.push(duplicatesFilter);
+		
+		aFilters.push(new sap.ui.model.Filter("program", "EQ", airbus.mes.settings.ModelManager.program));	// Filter on selected A/C Program
+		
+		
 		sap.ui
 				.getCore()
 				.byId("disruptiontrackerView--stationComboBox")
 				.getBinding("items")
 				.filter(new sap.ui.model.Filter(aFilters, true));
 		
+	},
+	
+	setInformationVisibility : function(bSet) {
+		this.getView().byId("informationButton").setVisible(bSet);
+		this.getView().byId("homeButton").setVisible(bSet);
+		this.getView().byId("SelectLanguage").setVisible(!bSet);
+	},
+	onInformation : function(oEvent){
+		airbus.mes.shell.oView.addStyleClass("viewOpacity");
+		
+		if ( airbus.mes.stationtracker.informationPopover === undefined ) {
+			var oView = airbus.mes.stationtracker.oView;
+			airbus.mes.stationtracker.informationPopover = sap.ui.xmlfragment("informationPopover","airbus.mes.shell.informationPopover", airbus.mes.shell.oView.getController());
+			airbus.mes.stationtracker.informationPopover.addStyleClass("alignTextLeft");
+			oView.addDependent(airbus.mes.stationtracker.informationPopover);
+		}
+
+		// delay because addDependent will do a async re-rendering and the popover will immediately close without it
+		var oButton = oEvent.getSource();
+		jQuery.sap.delayedCall(0, this, function () {
+			airbus.mes.stationtracker.informationPopover.openBy(oButton);	
+		});			
+	},
+	onCloseInformation : function(){
+		airbus.mes.shell.oView.removeStyleClass("viewOpacity");		
 	},
 	/*******************************************
 	 * My Profile PopUp
