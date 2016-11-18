@@ -39,13 +39,13 @@ airbus.mes.stationtracker.AssignmentManager = {
 		var sSite = airbus.mes.settings.ModelManager.site;
 		var sStation = airbus.mes.settings.ModelManager.station;
 		var sMSN = airbus.mes.settings.ModelManager.msn;
-		var sMyUserID = "UserBO:" + sSite + ",NG55E48"; //FIXME ??
+//		var sMyUserID = "UserBO:" + sSite + ",NG55E48"; //FIXME ??
 //		var sMyUserID = "UserBO:" + sSite + "," + Cookies.getJSON("login").user; //FIXME ??
 
 		
 //		sDay = (new Date(sDay)).toISOString().slice(0,10).replace(/-/g,"");
 		
-		airbus.mes.stationtracker.ModelManager.setLineAssignment(sSite, sStation, sMSN, sUserID, sShiftName, sDay, sLine, sSkill, sMyUserID, sModeAssignment, bIgnoreCheckQA);
+		airbus.mes.stationtracker.ModelManager.setLineAssignment(sSite, sStation, sMSN, sUserID, sShiftName, sDay, sLine, sSkill, sModeAssignment, bIgnoreCheckQA);
 
 	},
 	

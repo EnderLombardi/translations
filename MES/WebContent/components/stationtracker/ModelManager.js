@@ -86,7 +86,7 @@ airbus.mes.stationtracker.ModelManager = {
        
        },
        
-       setLineAssignment : function(sSite, sStation, sMSN, sUserID, sShiftName, sDay, sLine, sSkill, sMyUserID, sModeAssignment, bQACheck) {
+       setLineAssignment : function(sSite, sStation, sMSN, sUserID, sShiftName, sDay, sLine, sSkill, sModeAssignment, bQACheck) {
     	   var seturlLineAssignment = this.urlModel.getProperty('urlsetlineassignment');
     	   seturlLineAssignment = this.replaceURI(seturlLineAssignment, "$site", sSite);
     	   seturlLineAssignment = this.replaceURI(seturlLineAssignment, "$station", sStation);
@@ -96,7 +96,7 @@ airbus.mes.stationtracker.ModelManager = {
     	   seturlLineAssignment = this.replaceURI(seturlLineAssignment, "$day", sDay);
     	   seturlLineAssignment = this.replaceURI(seturlLineAssignment, "$line", sLine);
     	   seturlLineAssignment = this.replaceURI(seturlLineAssignment, "$skill", sSkill);
-    	   seturlLineAssignment = this.replaceURI(seturlLineAssignment, "$myuserid", sMyUserID);
+//    	   seturlLineAssignment = this.replaceURI(seturlLineAssignment, "$myuserid", sMyUserID);
     	   seturlLineAssignment = this.replaceURI(seturlLineAssignment, "$mode", sModeAssignment);
     	   seturlLineAssignment = this.replaceURI(seturlLineAssignment, "$qacheck", bQACheck);
     	   
