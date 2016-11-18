@@ -169,9 +169,9 @@ airbus.mes.operationdetail.ModelManager = {
 
 	},
 	/************************************************************************ BadeReader functions */
-connectBadgeReader: function(brOnMessageCallBack ){
+connectBadgeReader: function(brOnMessageCallBack, response ){
 		
-	if(!this.badgeReader){
+	if(!this.badgeReader || airbus.mes.operationdetail.ModelManager.badgeReader.readyState==3){
 	
 	var wsUrl; 
 		
@@ -186,14 +186,16 @@ connectBadgeReader: function(brOnMessageCallBack ){
 	this.badgeReader.onerror = this.brOnError;
 	this.badgeReader.onclose = this.brOnClose;
 	this.badgeReader.onmessage = this.brOnMessage;
-	
 	}
 	
 	this.brOnMessageCallBack = brOnMessageCallBack;
+	this.brResponseMessage = response;
 },
 
 brOnOpen: function(){	
 	console.log("Connection is opened..."); 
+	if(airbus.mes.operationdetail.ModelManager.brOnMessageCallBack)
+		airbus.mes.operationdetail.ModelManager.brOnMessageCallBack();	
 },
 brOpen : function(){
 	 var msgData = {"BadgeOrRFID":"BADGE","CommandName":"CONNECT","Language":null,"ReaderName":null};
@@ -203,12 +205,11 @@ brOpen : function(){
 
 brOnMessage : function (evt){ 
  var scanData = JSON.parse(evt.data);	
- var uID  = scanData.Message;			// UID
- var badgeID = scanData.BadgeOrRFID;     // BID
 console.log(scanData);
 
-if(!this.brOnMessageCallBack)
-	this.brOnMessageCallBack(scanData);	
+if(airbus.mes.operationdetail.ModelManager.brResponseMessage && scanData.Message)
+	airbus.mes.operationdetail.ModelManager.brResponseMessage(scanData);	
+
 },
 brStartReading: function(){
    var msgData = {"BadgeOrRFID":"BADGE","CommandName":"START_READING","Language":null,"ReaderName":null};

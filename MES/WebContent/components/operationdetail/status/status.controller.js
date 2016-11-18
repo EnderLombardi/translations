@@ -243,9 +243,9 @@ sap.ui
 							//Display PIN Field in Confirmation PopUp
 							var flagForPIN = airbus.mes.settings.AppConfManager.getConfiguration("MES_BADGE_PIN");	
 							if(flagForPIN == true){	
-								sap.ui.getCore().getElementById("confirmPinLabel")
+								sap.ui.getCore().byId("confirmPinLabel")
 								.setVisible(true);
-								sap.ui.getCore().getElementById("pinForConfirmation")
+								sap.ui.getCore().byId("pinForConfirmation")
 								.setVisible(true);
 							}	
 
@@ -256,7 +256,7 @@ sap.ui
 									.setValue("");
 							sap.ui.getCore().byId("badgeIDForConfirmation")
 									.setValue("");
-							sap.ui.getCore().getElementById("pinForConfirmation")
+							sap.ui.getCore().byId("pinForConfirmation")
 									.setValue("");
 							sap.ui.getCore().byId("userNameForConfirmation")
 									.setValue("");
@@ -328,135 +328,81 @@ sap.ui
 					 * Scan Badge for User Confirmation
 					 */
 					onScanConfirmation : function(oEvt) {
-						
+						var timer;
+						sap.ui.getCore().byId("UIDForConfirmation").setValue();
+						sap.ui.getCore().byId("badgeIDForConfirmation").setValue();
 							//close existing connection. then open again
 							oEvt.getSource().setEnabled(false);
 							var callBackFn = function(){
 								console.log("callback entry \n");
+								console.log("connected");
+								if(airbus.mes.operationdetail.ModelManager.badgeReader.readyState==1){
+									airbus.mes.operationdetail.ModelManager.brStartReading();
+									sap.ui.getCore().byId("msgstrpConfirm").setText("Conenction Opened");
+									var i=10;
+									
+									timer = setInterval(function(){
+										sap.ui.getCore().byId("msgstrpConfirm").setType("Information");
+										sap.ui.getCore().byId("msgstrpConfirm").setText("Please Connect your badge in "+ i--);
+										if(i<0){
+											clearInterval(timer);
+											airbus.mes.operationdetail.ModelManager.brStopReading();
+											sap.ui.getCore().byId("scanButton").setEnabled(true);
+											sap.ui.getCore().byId("msgstrpConfirm").setType("Warning");
+											sap.ui.getCore().byId("msgstrpConfirm").setText("Conenction Timeout. Click on scan to confirm");
+											airbus.mes.operationdetail.ModelManager.brStopReading();
+											airbus.mes.operationdetail.ModelManager.badgeReader.close();
+											setTimeout(function(){
+												sap.ui.getCore().byId("msgstrpConfirm").setVisible(false);
+											},2000)
+										}
+									}, 1000)
+									
+
+								}
 							}
+							
+
+						var response = function(data) {
+							clearInterval(timer);
+							sap.ui.getCore().byId("scanButton").setEnabled(true);
+							sap.ui.getCore().byId("msgstrpConfirm").setVisible(false);
+							if (data.Message) {
+								type = data.Message.split(":")[0]
+								id = data.Message.split(":")[1];
+
+								if (type == "UID") {
+									sap.ui.getCore().byId("UIDForConfirmation")
+											.setValue(id);
+								} else if (type == "BID") {
+									sap.ui.getCore().byId(
+											"badgeIDForConfirmation").setValue(id);
+								} else {
+									sap.ui.getCore().byId("msgstrpConfirm")
+											.setVisible(true);
+									sap.ui.getCore().byId("msgstrpConfirm")
+											.setText("Error in scanning. Please try again.");
+								}
+							}
+							else {
+								sap.ui.getCore().byId("msgstrpConfirm")
+										.setVisible(true);
+								sap.ui.getCore().byId("msgstrpConfirm")
+										.setText("Error in scanning. Please try again.");
+							}
+							airbus.mes.operationdetail.ModelManager.badgeReader.close();
+						}
+							
 							// Open a web socket connection
-							if(!airbus.mes.operationdetail.ModelManager.badgeReader){
-							airbus.mes.operationdetail.ModelManager.connectBadgeReader(callBackFn);
-							}
-							while(airbus.mes.operationdetail.ModelManager.badgeReader.readyState){
-								
-							}
-							if(airbus.mes.operationdetail.ModelManager.badgeReader.readyState==1)
-							airbus.mes.operationdetail.ModelManager.brStopReading();
+							//if(!airbus.mes.operationdetail.ModelManager.badgeReader){
+							airbus.mes.operationdetail.ModelManager.connectBadgeReader(callBackFn,response);
+							//}
+
 							sap.ui.getCore().byId("msgstrpConfirm").setType("Information");
 							sap.ui.getCore().byId("msgstrpConfirm").setText("Opening connection Please wait...")
 							sap.ui.getCore().byId("msgstrpConfirm").setVisible(true);
-//							airbus.mes.operationdetail.ModelManager.brOnOpen();
-							while(airbus.mes.operationdetail.ModelManager.badgeReader.readyState == 0){
-								console.log("connecting");
-							}
-							console.log("connected");
-							if(airbus.mes.operationdetail.ModelManager.badgeReader.readyState==1){
-								airbus.mes.operationdetail.ModelManager.brStartReading();
-								sap.ui.getCore().byId("msgstrpConfirm").setText("Conenction Opened");
-								var i=10;
-								var timer = setInterval(function(){
-									sap.ui.getCore().byId("msgstrpConfirm").setType("Information");
-									sap.ui.getCore().byId("msgstrpConfirm").setText("Please Connect your badge in "+ i--);
-									if(i<0){
-										clearInterval(timer);
-										airbus.mes.operationdetail.ModelManager.brStopReading();
-										sap.ui.getCore().byId("scanButton").setEnabled(true);
-										sap.ui.getCore().byId("msgstrpConfirm").setType("Warning");
-										sap.ui.getCore().byId("msgstrpConfirm").setText("Conenction Timeout. Click on scan to confirm");
-										setTimeout(function(){
-											sap.ui.getCore().byId("msgstrpConfirm").setVisible(false);
-										},2000)
-									}
-								}, 1000)
-								
-
-							}
-							else{
-								console.log("Connection is already closed/closing");
-							}
+							
 					},
-/*						 ws.onmessage = function (evt){ 
-	                           var scanData = JSON.parse(evt.data);      
-	                           var uID  = scanData.Message;              //UID
-	                           var badgeID = scanData.BadgeOrRFID;     //BID
-	                           
-//	                         if(uID != undefined && uID != "")
-//	                             uID = uID.split(":")[1];
-	                           sap.ui.getCore().byId("UIDForConfirmation").setValue(uID);
-	                           sap.ui.getCore().byId("badgeIDForConfirmation").setValue(badgeID);
-	                           ws.close();
-	                           sap.ui.getCore().byId("msgstrpConfirm").setVisible(false);
-	                        };
-						ws.onopen = function() {
-							sap.ui.getCore().byId("msgstrpConfirm")
-									.setVisible(true);
-							sap.ui.getCore().byId("msgstrpConfirm").setType(
-									"Information");
-							sap.ui.getCore().byId("msgstrpConfirm").setText(
-									airbus.mes.operationdetail.status.oView
-											.getModel("i18n").getProperty(
-													"scanBadge"));
-							var msgData = {
-								BadgeOrRFID : "BADGE",
-								Message : "UID:263808008C0F3D"
-							};
-
-							// Web Socket is connected
-							ws.send(JSON.stringify(msgData));
-							// ws.send(JSON.stringify(
-							// {"BadgeOrRFID":"BADGE","Message":"UID:263808008C0F31"}
-							// ));
-
-							// alert("Message is sent...");
-							// For Simulation purpose (comment below line when
-							// you scan through reader)
-							// onSimulation(msgData);
-						};
-
-						ws.onmessage = function(evt) {
-							var scanData = JSON.parse(evt.data);
-							var uID = scanData.Message; // UID
-							var badgeID = scanData.BadgeOrRFID; // BID
-
-							// if(uID != undefined && uID != "")
-							// uID = uID.split(":")[1];
-							sap.ui.getCore().byId(
-									"UIDForConfirmation").setValue(uID);
-							sap.ui.getCore().byId(
-									"badgeIDForConfirmation").setValue(badgeID);
-							ws.close();
-							sap.ui.getCore().byId("msgstrpConfirm")
-									.setVisible(false);
-						};
-						// Error Handling while connection failed to WebSocket
-						ws.onerror = function(evnt) {
-							// alert("Error has occured");
-							var badgeScanError = oView.getModel("i18n")
-									.getProperty("webSocketConnectionFailed");
-							airbus.mes.operationdetail.ModelManager
-									.messageShow(badgeScanError);
-						}
-
-						ws.onclose = function() {
-							// websocket is closed.
-							alert("Connection is closed...");
-						}*/
-
-						// For Simulation purpose (Local Server Testing)
-					onSimulation: function (data) {
-							// var data = JSON.parse(evt.data);
-							var uID = data.Message; // UID
-							var badgeID = data.BadgeOrRFID; // BID
-
-							sap.ui.getCore().byId(
-									"UIDForConfirmation").setValue(uID);
-							sap.ui.getCore().byId(
-									"badgeIDForConfirmation").setValue(badgeID);
-							//ws.close();
-						},
-
-             
 
 					onCancelConfirmation : function() {
 						var oView = airbus.mes.operationdetail.status.oView;
@@ -479,7 +425,7 @@ sap.ui
 						} else {
 							ID = uID;
 						}
-						var pin = sap.ui.getCore().getElementById(
+						var pin = sap.ui.getCore().byId(
 								"pinForConfirmation").getValue();
 						var user = sap.ui.getCore().byId(
 								"userNameForConfirmation").getValue();
@@ -618,9 +564,9 @@ sap.ui
 						//Display PIN Field in Confirmation PopUp
 						var flagForPIN = airbus.mes.settings.AppConfManager.getConfiguration("MES_BADGE_PIN");	
 						if(flagForPIN == true){	
-							sap.ui.getCore().getElementById("confirmPinLabel")
+							sap.ui.getCore().byId("confirmPinLabel")
 							.setVisible(true);
-							sap.ui.getCore().getElementById("pinForConfirmation")
+							sap.ui.getCore().byId("pinForConfirmation")
 							.setVisible(true);
 						} 
 						oView._oUserConfirmationDialog.open();
