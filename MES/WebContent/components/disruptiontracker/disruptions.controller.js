@@ -104,7 +104,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 	 */	
 	onPressDisruptionKPI: function(oEvent){
 		 this.sStation = this.getView().byId("stationComboBox").getSelectedKey();
-		airbus.mes.shell.util.navFunctions.disruptionKPI();
+		 airbus.mes.shell.util.navFunctions.disruptionKPI();
 		
 	//	airbus.mes.disruptiontracker.kpi.ModelManager.loadDisruptionKPIModel(sStation);
 		
