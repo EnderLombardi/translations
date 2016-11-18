@@ -859,10 +859,16 @@ sap.ui
 						} else {
 
 							// Navigate to Edit Screen
-							var oOperDetailNavContainer = sap.ui
-									.getCore()
-									.byId(
-											"operationDetailsView--operDetailNavContainer");
+							if (nav.getCurrentPage() == "stationTrackerView")
+								var oOperDetailNavContainer = sap.ui
+										.getCore()
+										.byId(
+												"operationDetailsView--operDetailNavContainer");
+							else
+								var oOperDetailNavContainer = sap.ui
+										.getCore()
+										.byId(
+												"disruptionDetailPopup--disruptDetailNavContainer");
 
 							oOperDetailNavContainer.to(airbus.mes.disruptions.oView.createDisruption.getId());
 

@@ -170,5 +170,75 @@ airbus.mes.shell.ModelManager = {
 		  
 		  return myProfileUrl;		  
 	  },
+	  
+		/************************************************************************ BadeReader functions */
+	  connectBadgeReader: function(brOnMessageCallBack, response ){
+	  		
+	  	if(!this.badgeReader || airbus.mes.shell.ModelManager.badgeReader.readyState==3){
+	  	
+	  	var wsUrl; 
+	  		
+	  	if(location.protocal = "https:")
+	  		wsUrl = "wss://" + this.urlModel.getProperty("badgeReader");
+	  	else
+	  	wsUrl = "ws://" + this.urlModel.getProperty("badgeReader");
+	  	wsUrl = "ws://localhost:754/TouchNTag";
+	  	this.badgeReader = new WebSocket(wsUrl);
+	  	
+	  	this.badgeReader.onopen = this.brOnOpen;
+	  	this.badgeReader.onerror = this.brOnError;
+	  	this.badgeReader.onclose = this.brOnClose;
+	  	this.badgeReader.onmessage = this.brOnMessage;
+	  	}
+	  	
+	  	this.brOnMessageCallBack = brOnMessageCallBack;
+	  	this.brResponseMessage = response;
+	  },
+
+	  brOnOpen: function(){	
+	  	console.log("Connection is opened..."); 
+	  	if(airbus.mes.shell.ModelManager.brOnMessageCallBack)
+	  		airbus.mes.shell.ModelManager.brOnMessageCallBack();	
+	  },
+	  brOpen : function(){
+	  	 var msgData = {"BadgeOrRFID":"BADGE","CommandName":"CONNECT","Language":null,"ReaderName":null};
+	  	  if(this.badgeReader)
+	  		  this.badgeReader.send(JSON.stringify(msgData));
+	  },
+
+	  brOnMessage : function (evt){ 
+	   var scanData = JSON.parse(evt.data);	
+	  console.log(scanData);
+
+	  if(airbus.mes.shell.ModelManager.brResponseMessage && scanData.Message)
+	  	airbus.mes.shell.ModelManager.brResponseMessage(scanData);	
+
+	  },
+	  brStartReading: function(){
+	     var msgData = {"BadgeOrRFID":"BADGE","CommandName":"START_READING","Language":null,"ReaderName":null};
+	        if(this.badgeReader)
+	      	  this.badgeReader.send(JSON.stringify(msgData));
+	    
+	  },
+	  brStopReading:function(){
+	     var msgData = {"BadgeOrRFID":"BADGE","CommandName":"STOP_READING","Language":null,"ReaderName":null};
+	        if(this.badgeReader)
+	      	  this.badgeReader.send(JSON.stringify(msgData));
+	    
+	  },
+	  brClose:function(){
+	     var msgData = {"BadgeOrRFID":"BADGE","CommandName":"DISCONNECT","Language":null,"ReaderName":null};
+	        if(this.badgeReader)
+	      	  this.badgeReader.send(JSON.stringify(msgData));
+	    
+	  },
+	  brOnError : function(evnt){
+	     alert("Error has occured In Badge Reader Connection");
+	  },
+
+	  brOnClose : function(){ 
+	   // websocket is closed.
+	    console.log("Connection is closed..."); 
+	  }
 
 }

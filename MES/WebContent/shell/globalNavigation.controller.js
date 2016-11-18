@@ -1,5 +1,11 @@
 sap.ui.controller("airbus.mes.shell.globalNavigation", {
 
+	/****************************************
+	* Variable for auto refresh
+	*/
+	autoRefresh: undefined,
+	
+	
 	/**
 	 * Called when a controller is instantiated and its View controls (if
 	 * available) are already created. Can be used to modify the View before it
@@ -140,6 +146,14 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 	onPressConnection : function() {
 		
 	},
+	
+	onNavigate: function(){
+		clearInterval(this.autoRefresh);
+		
+	},
+	
+	
+	
 	renderViews : function() {
 		var autoRefresh = undefined;
 
@@ -157,21 +171,25 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 		switch(nav.getCurrentPage().getId()){
 		
 		case "stationTrackerView":
-			//autoRefresh = window.setInterval(this.renderStationTracker, 1000);
-
 			this.renderStationTracker();
+			this.autoRefresh = window.setInterval(this.renderStationTracker, 300000);
 			break;
 			
 		case "disruptiontrackerView":
-			if(nav.getPreviousPage().sId == "stationTrackerView"){
-				airbus.mes.disruptiontracker.ModelManager.loadDisruptionTrackerModel({
-					'station': airbus.mes.settings.ModelManager.station
-				});
+			
+			this.renderDisruptionTracker();
+			
+			if (nav.getPreviousPage().sId == "stationTrackerView") {
+												
+				airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.station = airbus.mes.settings.ModelManager.station;
 			}
 			else{
-				airbus.mes.disruptiontracker.ModelManager.loadDisruptionTrackerModel({});
+				airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.station = "";
 			}
-			this.renderDisruptionTracker();
+
+			airbus.mes.disruptiontracker.ModelManager.loadDisruptionTrackerModel();
+			this.autoRefresh = setInterval(airbus.mes.disruptiontracker.ModelManager
+					.loadDisruptionTrackerModel, 300000);
 			break;
 			
 		case "resourcePool":
@@ -207,31 +225,7 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
     	oModule.loadKPI();
    	
 	},
-	
-	setInformationVisibility : function(bSet) {
-		this.getView().byId("informationButton").setVisible(bSet);
-		this.getView().byId("homeButton").setVisible(bSet);
-		this.getView().byId("SelectLanguage").setVisible(!bSet);
-	},
-	onInformation : function(oEvent){
-		airbus.mes.shell.oView.addStyleClass("viewOpacity");
-		
-		if ( airbus.mes.stationtracker.informationPopover === undefined ) {
-			var oView = airbus.mes.stationtracker.oView;
-			airbus.mes.stationtracker.informationPopover = sap.ui.xmlfragment("informationPopover","airbus.mes.shell.informationPopover", airbus.mes.shell.oView.getController());
-			airbus.mes.stationtracker.informationPopover.addStyleClass("alignTextLeft");
-			oView.addDependent(airbus.mes.stationtracker.informationPopover);
-		}
 
-		// delay because addDependent will do a async rerendering and the popover will immediately close without it
-		var oButton = oEvent.getSource();
-		jQuery.sap.delayedCall(0, this, function () {
-			airbus.mes.stationtracker.informationPopover.openBy(oButton);	
-		});			
-	},
-	onCloseInformation : function(){
-		airbus.mes.shell.oView.removeStyleClass("viewOpacity");		
-	},
 	/*******************************************
 	 * Render disruption Tracker
 	 */
@@ -250,12 +244,41 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 			}
 		});
 		aFilters.push(duplicatesFilter);
+		
+		aFilters.push(new sap.ui.model.Filter("program", "EQ", airbus.mes.settings.ModelManager.program));	// Filter on selected A/C Program
+		
+		
 		sap.ui
 				.getCore()
 				.byId("disruptiontrackerView--stationComboBox")
 				.getBinding("items")
 				.filter(new sap.ui.model.Filter(aFilters, true));
 		
+	},
+	
+	setInformationVisibility : function(bSet) {
+		this.getView().byId("informationButton").setVisible(bSet);
+		this.getView().byId("homeButton").setVisible(bSet);
+		this.getView().byId("SelectLanguage").setVisible(!bSet);
+	},
+	onInformation : function(oEvent){
+		airbus.mes.shell.oView.addStyleClass("viewOpacity");
+		
+		if ( airbus.mes.stationtracker.informationPopover === undefined ) {
+			var oView = airbus.mes.stationtracker.oView;
+			airbus.mes.stationtracker.informationPopover = sap.ui.xmlfragment("informationPopover","airbus.mes.shell.informationPopover", airbus.mes.shell.oView.getController());
+			airbus.mes.stationtracker.informationPopover.addStyleClass("alignTextLeft");
+			oView.addDependent(airbus.mes.stationtracker.informationPopover);
+		}
+
+		// delay because addDependent will do a async re-rendering and the popover will immediately close without it
+		var oButton = oEvent.getSource();
+		jQuery.sap.delayedCall(0, this, function () {
+			airbus.mes.stationtracker.informationPopover.openBy(oButton);	
+		});			
+	},
+	onCloseInformation : function(){
+		airbus.mes.shell.oView.removeStyleClass("viewOpacity");		
 	},
 	/*******************************************
 	 * My Profile PopUp
@@ -282,44 +305,86 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 		this._myProfileDailog.close();
 	},
 	
-	onScanMyProfile:function(){
+	/***********************************************************
+	 * Scan Badge for Save User Profile
+	 */
+	onScanMyProfile : function(oEvt) {
+		var timer;
+		sap.ui.getCore().byId("uIdMyProfile").setValue();
+		sap.ui.getCore().byId("badgeIdMyProfile").setValue();
+			//close existing connection. then open again
+			oEvt.getSource().setEnabled(false);
+			var callBackFn = function(){
+				console.log("callback entry \n");
+				console.log("connected");
+				if(airbus.mes.shell.ModelManager.badgeReader.readyState==1){
+					airbus.mes.shell.ModelManager.brStartReading();
+					sap.ui.getCore().byId("msgstrpMyProfile").setText("Conenction Opened");
+					var i=10;
+					
+					timer = setInterval(function(){
+						sap.ui.getCore().byId("msgstrpMyProfile").setType("Information");
+						sap.ui.getCore().byId("msgstrpMyProfile").setText("Please Connect your badge in "+ i--);
+						if(i<0){
+							clearInterval(timer);
+							airbus.mes.shell.ModelManager.brStopReading();
+							sap.ui.getCore().byId("scanButton").setEnabled(true);
+							sap.ui.getCore().byId("msgstrpMyProfile").setType("Warning");
+							sap.ui.getCore().byId("msgstrpMyProfile").setText("Conenction Timeout. Click on scan to confirm");
+							airbus.mes.shell.ModelManager.brStopReading();
+							airbus.mes.shell.ModelManager.badgeReader.close();
+							setTimeout(function(){
+								sap.ui.getCore().byId("msgstrpMyProfile").setVisible(false);
+							},2000)
+						}
+					}, 1000)
+					
 
-		 // Open a web socket connection
-          var ws = new WebSocket("ws://localhost:754/TouchNTag");
-          
-          ws.onopen = function(){
-       	   sap.ui.getCore().getElementById("msgstrpMyProfile").setVisible(true);
-       	   sap.ui.getCore().byId("msgstrpMyProfile").setType("Information");
-       	   sap.ui.getCore().byId("msgstrpMyProfile").setText(
-       			   			sap.ui.getCore().getModel("ShellI18n").getProperty("scanBadge"));
-           console.log("Connection Established");
-          };
-          
-          ws.onmessage = function (evt){ 
-             var scanData = JSON.parse(evt.data);	
-             var uID  = scanData.Message;			//UID
-             var badgeID = scanData.BadgeOrRFID;     //BID
-             sap.ui.getCore().getElementById("uIdMyProfile").setValue(uID);
-             sap.ui.getCore().getElementById("badgeIdMyProfile").setValue(badgeID);
-             sap.ui.getCore().getElementById("msgstrpMyProfile").setVisible(false);
-             console.log("message recieved from server");
-             ws.close();
-          };
-          // Error Handling while connection failed to WebSocket
-          ws.onerror = function(evnt){
-       	   var connectionError = sap.ui.getCore().getModel("ShellI18n")
-				.getProperty("webSocketConnectionFailed");
-       	   airbus.mes.operationdetail.ModelManager
-				.messageShow(connectionError);
-       	   console.log("Error Occurred while Connecting");
-          }
-          
-          ws.onclose = function(){ 
-             // websocket is closed.			            	  			            	   
-        	  console.log("Connection closed");
-          }		               
-	
+				}
+			}
+			
+
+		var response = function(data) {
+			clearInterval(timer);
+			sap.ui.getCore().byId("scanButton").setEnabled(true);
+			sap.ui.getCore().byId("msgstrpMyProfile").setVisible(false);
+			if (data.Message) {
+				type = data.Message.split(":")[0]
+				id = data.Message.split(":")[1];
+
+				if (type == "UID") {
+					sap.ui.getCore().byId("uIdMyProfile")
+							.setValue(id);
+				} else if (type == "BID") {
+					sap.ui.getCore().byId(
+							"badgeIdMyProfile").setValue(id);
+				} else {
+					sap.ui.getCore().byId("msgstrpMyProfile")
+							.setVisible(true);
+					sap.ui.getCore().byId("msgstrpMyProfile")
+							.setText("Error in scanning. Please try again.");
+				}
+			}
+			else {
+				sap.ui.getCore().byId("msgstrpMyProfile")
+						.setVisible(true);
+				sap.ui.getCore().byId("msgstrpMyProfile")
+						.setText("Error in scanning. Please try again.");
+			}
+			airbus.mes.shell.ModelManager.badgeReader.close();
+		}
+			
+			// Open a web socket connection
+			//if(!airbus.mes.shell.ModelManager.badgeReader){
+			airbus.mes.shell.ModelManager.connectBadgeReader(callBackFn,response);
+			//}
+
+			sap.ui.getCore().byId("msgstrpMyProfile").setType("Information");
+			sap.ui.getCore().byId("msgstrpMyProfile").setText("Opening connection Please wait...")
+			sap.ui.getCore().byId("msgstrpMyProfile").setVisible(true);
+			
 	},
+	
 	
 	onSaveMyProfile:function(oEvent){
 		sap.ui.getCore().getElementById("msgstrpMyProfile").setVisible(false);
