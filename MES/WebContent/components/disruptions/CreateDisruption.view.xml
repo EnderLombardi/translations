@@ -256,6 +256,35 @@
 										</TimePicker>
 									</f:fields>
 								</f:FormElement>
+								
+								<f:FormElement>
+									<f:label>
+										<Label id="promisedDateLabel" required="true" text="{i18nModel>PromisedDate}">
+											<layoutData>
+												<l:GridData span="L2 M3 S12" linebreak="true"/>
+											</layoutData>
+										</Label>
+									</f:label>
+									<f:fields>
+									
+										<DatePicker id="promisedDate"  valueFormat="yyyy-MM-dd"
+											displayFormat="long"
+											value="{path: 'DisruptionDetailModel>/PromisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}">
+											<layoutData>
+												<l:GridData span="L2 M5 S6" />
+											</layoutData>
+											
+											
+										</DatePicker>
+										<TimePicker id="promisedTime" displayFormat="HH:mm:ss"
+											valueFormat="HH:mm:ss"
+											value="{path: 'DisruptionDetailModel>/PromisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}">
+											<layoutData>
+												<l:GridData span="L1 M4 S6" />
+											</layoutData>
+										</TimePicker>
+									</f:fields>
+								</f:FormElement>
 
 
 

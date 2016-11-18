@@ -441,6 +441,10 @@ sap.ui
 							this.getView().byId("selectRootCause")
 									.setSelectedKey(
 											oModel.getProperty("/Subject"));
+							this.getView().byId("gravity")
+							.setSelectedKey(
+									oModel.getProperty("/Gravity"));
+							
 							this.getView().byId("timeLost").setValue(
 									oModel.getProperty("/TimeLost"));
 							this.getView().byId("status").setValue(
@@ -450,25 +454,18 @@ sap.ui
 							this.getView().byId("comment").setValue();
 							this.initializeTree();
 
-							// Disable input according to update disruption
-							this.setEnabledSelectBox(false, true, true, true);
-							this.getView().byId("selectOriginator").setEnabled(
-									false);
-							this.getView().byId("description")
-									.setEnabled(false);
-							this.getView().byId("timeLost").setEnabled(false);
 
-							// Set fields non-editable for resolution group
+							// Disable/Enable inputs according to Originator/Resolution Group
 							var origFlag = sap.ui.getCore().getModel(
 									"DisruptionDetailModel").getData().OriginatorFlag;
 
 							var resFlag = sap.ui.getCore().getModel(
 									"DisruptionDetailModel").getData().ResponsibleFlag;
 
-							/*if (origFlag == "" && resFlag == "X") {
-								this.resolutionGroupSettings(false);
+							if (origFlag == " " && resFlag == "X") {
+								this.resolutionGroupSettings();
 							} else
-								this.resolutionGroupSettings(true);*/
+								this.originatorGroupSettings();
 
 						} else {
 							
@@ -487,14 +484,8 @@ sap.ui
 														.getItemAt(0).getKey());
 
 
-							// Enable fields for creation
-							this.setEnabledSelectBox(true, false, false, false);
-							this.getView().byId("selectOriginator").setEnabled(
-									true);
-							this.getView().byId("description").setEnabled(true);
-							this.getView().byId("timeLost").setEnabled(true);
-
-							/*this.resolutionGroupSettings(true);*/
+							// Enable fields for creation	
+							this.createDisruptionSettings();
 
 						}
 					},
@@ -511,9 +502,69 @@ sap.ui
 
 					},
 
-					resolutionGroupSettings : function(state) {
-						this.getView().byId("selectreason").setEnabled(state);
-						this.getView().byId("gravity").setEnabled(state);
+					resolutionGroupSettings : function() {
+						
+						this.setEnabledSelectBox(false, false, true, true);
+						this.getView().byId("selectOriginator").setEnabled(
+								false);
+						this.getView().byId("description")
+								.setEnabled(false);
+						this.getView().byId("promisedDate").setEnabled(true);
+						this.getView().byId("promisedTime").setEnabled(true);
+						this.getView().byId("expectedDate").setEnabled(false);
+						this.getView().byId("expectedTime").setEnabled(false);
+						this.getView().byId("gravity").setEnabled(false);
+						this.getView().byId("timeLost").setEnabled(false);
+						this.getView().byId("materials").setEnabled(false);
+						this.getView().byId("jigtools").setEnabled(false);
+						
+						//promised date has to be visible while editing
+						this.getView().byId("promisedDateLabel").setVisible(true);
+						this.getView().byId("promisedDate").setVisible(true);
+						this.getView().byId("promisedTime").setVisible(true);
+					},
+					
+					originatorGroupSettings : function(){
+
+						this.setEnabledSelectBox(false, true, true, true);
+						this.getView().byId("selectOriginator").setEnabled(
+								false);
+						this.getView().byId("description")
+								.setEnabled(false);
+						this.getView().byId("promisedDate").setEnabled(false);
+						this.getView().byId("promisedTime").setEnabled(false);
+						this.getView().byId("expectedDate").setEnabled(true);
+						this.getView().byId("expectedTime").setEnabled(true);
+						this.getView().byId("gravity").setEnabled(true);
+						this.getView().byId("timeLost").setEnabled(false);
+						this.getView().byId("materials").setEnabled(false);
+						this.getView().byId("jigtools").setEnabled(false);
+						
+						//promised date has to be visible while editing
+						this.getView().byId("promisedDateLabel").setVisible(true);
+						this.getView().byId("promisedDate").setVisible(true);
+						this.getView().byId("promisedTime").setVisible(true);
+					},
+					
+					createDisruptionSettings : function(){
+						
+						this.setEnabledSelectBox(true, false, false, false);
+						this.getView().byId("selectOriginator").setEnabled(
+								true);
+						this.getView().byId("description").setEnabled(true);
+						this.getView().byId("timeLost").setEnabled(true);
+						this.getView().byId("expectedDate").setEnabled(true);
+						this.getView().byId("expectedTime").setEnabled(true);
+						this.getView().byId("gravity").setEnabled(true);
+						this.getView().byId("timeLost").setEnabled(true);
+						this.getView().byId("materials").setEnabled(true);
+						this.getView().byId("jigtools").setEnabled(true);
+						
+						// at the time of creation promised date would be invisible
+						this.getView().byId("promisedDateLabel").setVisible(false);
+						this.getView().byId("promisedDate").setVisible(false);
+						this.getView().byId("promisedTime").setVisible(false);
+
 					},
 
 					/**

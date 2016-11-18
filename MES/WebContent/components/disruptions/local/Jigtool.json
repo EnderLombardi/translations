@@ -1,0 +1,30 @@
+{ "MaterialList" : [{
+	"MATNR"	   : "01",
+	"JigTool" : "JigTool ex1" 
+},
+{
+	"MATNR"	   : "02",
+	"JigTool" : "JigTool ex2" 
+},
+{
+	"MATNR"	   : "03",
+	"JigTool" : "JigTool ex3" 
+},
+{
+	"MATNR"	   : "04",
+	"JigTool" : "JigTool ex4" 
+},
+{
+	"MATNR"	   : "05",
+	"JigTool" : "JigTool ex5" 
+},
+{
+	"MATNR"	   : "06",
+	"JigTool" : "JigTool ex6" 
+},
+{
+	"MATNR"	   : "07",
+	"JigTool" : "JigTool ex7" 
+}
+]
+}
