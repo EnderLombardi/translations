@@ -171,7 +171,7 @@ airbus.mes.operationdetail.ModelManager = {
 	
 
 		confirmOperation : function(userId, password, confirmationType,percentConfirm, sfcStepRef, reasonCodeText, Mode, ID, pin, sMessageError, sMessageSuccess) {
-			var url = getConfirmationUrl(userId, password, confirmationType,percentConfirm, sfcStepRef, reasonCodeText, Mode, ID, pin);
+			var url = this.getConfirmationUrl(userId, password, confirmationType,percentConfirm, sfcStepRef, reasonCodeText, Mode, ID, pin);
 			var flag_success;
 			jQuery
 					.ajax({
