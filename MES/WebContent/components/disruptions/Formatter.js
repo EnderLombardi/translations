@@ -228,7 +228,7 @@ airbus.mes.disruptions.Formatter = {
 		case "1":
 			return "green";
 		case "2":
-			return "amber";
+			return "orange";
 		case "3":
 			return "red";
 		}
