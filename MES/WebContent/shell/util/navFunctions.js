@@ -173,7 +173,7 @@ airbus.mes.shell.util.navFunctions = {
 			nav.to(airbus.mes.disruptiontracker.oView.getId());
 		},
 		
-		disruptionKPI: function(){
+		disruptionKPI: function(pStation){
 			if (airbus.mes.disruptiontracker === undefined){				
 				jQuery.sap.registerModulePath("airbus.mes.disruptiontracker", "../components/disruptiontracker");
 			}
@@ -186,6 +186,10 @@ airbus.mes.shell.util.navFunctions = {
 				});
 				nav.addPage(airbus.mes.disruptiontracker.kpi.oView);
 			}
+			
+			// Set station
+			airbus.mes.disruptiontracker.kpi.ModelManager.sStation = pStation;
+			
 			nav.to(airbus.mes.disruptiontracker.kpi.oView.getId());	
 		},
 		

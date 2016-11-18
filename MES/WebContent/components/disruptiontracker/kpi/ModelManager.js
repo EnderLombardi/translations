@@ -3,6 +3,8 @@ jQuery.sap.declare("airbus.mes.disruptiontracker.kpi.ModelManager")
 airbus.mes.disruptiontracker.kpi.ModelManager = {
 	urlModel : undefined,
 	queryParams : jQuery.sap.getUriParameters(),
+	
+	sStaion: "",
 
 	init : function(core) {
 		core.setModel(new sap.ui.model.json.JSONModel(), "TimeLostperAttribute");
@@ -30,18 +32,15 @@ airbus.mes.disruptiontracker.kpi.ModelManager = {
 					bundleUrl : "../components/disruptiontracker/kpi/config/url_config.properties",
 					bundleLocale : dest
 				});
-		
-	
-		this.loadDisruptionKPIModel();
 	},
 	
 	
 	getKPIData : function() {
-		var urlCategoryData = this.urlModel.getProperty("getDiruptionKPIURL");
+		var urlCategoryData = this.urlModel.getProperty("getDisruptionKPIURL");
 		urlCategoryData = airbus.mes.shell.ModelManager.replaceURI(urlCategoryData,
-				"$Site", airbus.mes.settings.ModelManager.site);
+				"$site", airbus.mes.settings.ModelManager.site);
 		urlCategoryData = airbus.mes.shell.ModelManager.replaceURI(urlCategoryData,
-				"$Station", airbus.mes.disruptiontracker.oView.getController().sStation);
+				"$station", this.sStation);
 		
 		return urlCategoryData;
 	},

@@ -177,6 +177,12 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 		case "resourcePool":
 			airbus.mes.resourcepool.util.ModelManager.askResourcePool();
 			break;
+			
+			
+		case "disruptionKPIView":
+			airbus.mes.disruptiontracker.kpi.ModelManager.loadDisruptionKPIModel();
+			break;
+			
 		}
 	},
 	

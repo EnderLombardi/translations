@@ -1,5 +1,5 @@
 sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
- sStation: undefined,
+	
 /**
 * Called when a controller is instantiated and its View controls (if available) are already created.
 * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
@@ -103,8 +103,8 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 	 * Call Disruption KPI charts 
 	 */	
 	onPressDisruptionKPI: function(oEvent){
-		 this.sStation = this.getView().byId("stationComboBox").getSelectedKey();
-		 airbus.mes.shell.util.navFunctions.disruptionKPI();
+		 var sStation = this.getView().byId("stationComboBox").getSelectedKey();
+		 airbus.mes.shell.util.navFunctions.disruptionKPI(sStation);
 		
 	//	airbus.mes.disruptiontracker.kpi.ModelManager.loadDisruptionKPIModel(sStation);
 		
