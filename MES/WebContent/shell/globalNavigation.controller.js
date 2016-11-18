@@ -197,10 +197,12 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 			break;
 			
 			
-		case "disruptionKPIView":
-			airbus.mes.disruptiontracker.kpi.ModelManager.loadDisruptionKPIModel();
-			break;
-			
+	/*	case "disruptionKPIView":
+			airbus.mes.disruptiontracker.kpi.oView.setBusy(true); 
+		airbus.mes.disruptiontracker.kpi.ModelManager.loadDisruptionKPIModel();
+		sap.ui.core.BusyIndicator.hide();
+		break;*/
+
 		}
 	},
 	

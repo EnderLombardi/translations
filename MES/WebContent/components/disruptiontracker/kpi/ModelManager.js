@@ -8,6 +8,11 @@ airbus.mes.disruptiontracker.kpi.ModelManager = {
 
 	init : function(core) {
 		core.setModel(new sap.ui.model.json.JSONModel(), "TimeLostperAttribute");
+		
+	/*	core.getModel("TimeLostperAttribute").attachRequestCompleted(function(){
+			airbus.mes.disruptiontracker.kpi.oView.setBusy(false); 
+		});*/
+		
 	    core.setModel(new sap.ui.model.resource.ResourceModel({bundleName:"airbus.mes.disruptiontracker.kpi.i18n.i18n",bundleLocale:"en"}), 
 														 "i18n");
 
@@ -46,6 +51,8 @@ airbus.mes.disruptiontracker.kpi.ModelManager = {
 	},
 	
 	loadDisruptionKPIModel : function() {
+		//airbus.mes.disruptiontracker.kpi.oView.setBusy(true);
+		
 		var oViewModel = sap.ui.getCore().getModel("TimeLostperAttribute");
 		oViewModel.loadData(this.getKPIData(), null, false);
 		
