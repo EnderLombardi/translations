@@ -850,7 +850,7 @@ sap.ui
 					 */
 					onEditDisruption : function(oEvent) {
 
-						if (nav.getCurrentPage() == "stationTrackerView" && 
+						if (nav.getCurrentPage().sId == "stationTrackerView" && 
 								sap.ui.getCore().byId("operationDetailsView--switchOperationModeBtn").getState() == false) {
 
 							sap.m.MessageBox.error(this.getView().getModel(
@@ -859,12 +859,12 @@ sap.ui
 						} else {
 
 							// Navigate to Edit Screen
-							if (nav.getCurrentPage() == "stationTrackerView")
+							if (nav.getCurrentPage().sId == "stationTrackerView")
 								var oOperDetailNavContainer = sap.ui
 										.getCore()
 										.byId(
 												"operationDetailsView--operDetailNavContainer");
-							else if (nav.getCurrentPage() == "disruptiontrackerview")
+							else if (nav.getCurrentPage().sId == "disruptiontrackerview")
 								var oOperDetailNavContainer = sap.ui
 										.getCore()
 										.byId(
