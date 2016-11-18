@@ -148,7 +148,7 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 	},
 	
 	onNavigate: function(){
-		
+		clearInterval(this.autoRefresh);
 		
 	},
 	
