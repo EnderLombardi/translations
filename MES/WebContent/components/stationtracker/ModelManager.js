@@ -115,8 +115,8 @@ airbus.mes.stationtracker.ModelManager = {
    					var checkQAModel = new sap.ui.model.json.JSONModel();
    					checkQAModel.setData(data.Rowsets.Rowset[1]);
    					airbus.mes.stationtracker.oView.getController().openCheckQAPopup(checkQAModel);
-   				} else if (data.Rowsets.Rowset[0].Row[0].message == "S"){
-   					airbus.mes.shell.globalNavigation.renderStationTracker();
+   				} else {//if (data.Rowsets.Rowset[0].Row[0].message == "S"){
+   					airbus.mes.shell.globalNavigation.oView.getController().renderStationTracker();
    					airbus.mes.stationtracker.oPopoverPolypoly.close();
    				}
    			},
