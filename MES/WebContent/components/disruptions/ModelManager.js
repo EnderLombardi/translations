@@ -601,7 +601,7 @@ airbus.mes.disruptions.ModelManager = {
 					url : this.getUrlToAddComment(),
 					data : {
 						"Param.1" : airbus.mes.settings.ModelManager.site,
-						"Param.2" : oComment.Comment,
+						"Param.2" : oComment.Comments,
 						"Param.3" : sap.ui.getCore().getModel(
 								"userSettingModel").getProperty(
 								"/Rowsets/Rowset/0/Row/0/user"),
