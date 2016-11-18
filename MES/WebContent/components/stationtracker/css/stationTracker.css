@@ -269,53 +269,11 @@
 .grey {
 	background-color: #97999b;
 }
-.grey:hover {
-	background-color: #767879;
-}
-.grey:focus {
-	background-color: #767879;
-}
-.grey:active {
-	background-color: #767879;
-}
-/* box management */
-.trackerBox{
-	width:100%;
-	height:inherit;
-	position:absolute;
-	z-index: 1;
-	line-height: 23px;
-	left: 0px;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
 
-.trackerText{
-	padding-left: 10px;
-	position: relative;
-	z-index: 1;
-	float: left;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	max-width:calc(100% - 50px);
-	white-space: nowrap;
-	color: white;
-	overflow: hidden;
-}
+/* box management */
 
 .trackerTextBlack{
 	color:#000;
-}
-.trackerTextBlock{
-	padding-left: 10px;
-	position: relative;
-	z-index: 1;
-	float: left;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	max-width:40%;
-	white-space: nowrap;
-	 color: rgba(0, 86, 112, 0.94); /* petrol-blue */
 }
 
 .colorProgress{
@@ -331,28 +289,13 @@
 	width:100%;
 	background-color:#fbec00;
 }
-<<<<<<< Upstream, based on origin/MESv0.9
-=======
-.trackerTextBlock:hover + .trackerText + .openBlockedEscalated,
-.openBlockedEscalated:hover,
-.openBlockedEscalated:focus,
-.openBlockedEscalated:active{
-	background-color:#ffbf00 !important;
-}
->>>>>>> 4e5ef95 Revert "[stationtracker] sass v4"
+
 .openBlocked{
 	height: inherit;
 	width:100%;
 	background-color:#fbec00;
 }
-<<<<<<< Upstream, based on origin/MESv0.9
-=======
-.trackerTextBlock:hover + .trackerTextBlock  + .openBlocked,
-.openBlocked:hover,
-.openBlocked:focus{
-	background-color:#ffbf00 !important;
-}
->>>>>>> 4e5ef95 Revert "[stationtracker] sass v4"
+
 .solvedBloackedExcalated{
 	height: inherit;
 	width:100%;
@@ -424,32 +367,13 @@
 .cherry-red-back{
 	background-color: #e4002b;
 }
-.trackerText:hover + .trackerText + .cherry-red-back,
-.cherry-red-back:hover:hover,
-.cherry-red-back:focus,
-.cherry-red-back:active{
-	background-color: #9e001e !important;
-}
 
 .dark-lime-green-back{
 	background-color: #84bd00;
 }
-.trackerText:hover + .trackerText + .colorProgress.dark-lime-green-back,
-.colorProgress.dark-lime-green-back:hover,
-.colorProgress.dark-lime-green-back:focus,
-.colorProgress.dark-lime-green-back:active{
-	background-color: #536f12 !important;
-	width: 99%;
-}
 
 .teal-blue-back{
 	background-color: #0085ad;
-}
-.trackerText:hover + .trackerText + .teal-blue-back,
-.teal-blue-back:hover,
-.teal-blue-back:active,
-.teal-blue-back:focus{
-	background-color: #0f2d65 !important;
 }
 
 /* End of box management */
