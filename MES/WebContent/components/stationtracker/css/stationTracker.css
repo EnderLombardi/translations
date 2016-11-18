@@ -1520,3 +1520,8 @@ svg#stationTrackerView--takt_adherence_area_chart {
     overflow: visible;
     display: table-footer-group;
 }
+.dhx_cal_event_line:hover div {
+	background-color: none;
+	}
+	
+}
