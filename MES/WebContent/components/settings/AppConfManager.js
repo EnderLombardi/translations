@@ -43,8 +43,11 @@ airbus.mes.settings.AppConfManager =  {
 	 */
 	getConfiguration: function(pKey) {
 		
-		var value;
+    	// check if object exist before lopping on.
+		if ( airbus.mes.settings.AppConfManager.oAppConfiguration.configarationList != undefined ) {
 		
+		var value;
+				
 		$.each(airbus.mes.settings.AppConfManager.oAppConfiguration.configarationList, function(key, row) {
 			if(row.key == pKey){
 				value = row.value;
@@ -60,6 +63,8 @@ airbus.mes.settings.AppConfManager =  {
 		else
 			return value;
 		return true
+	
+		}		
 	},
 	
 }
