@@ -864,7 +864,7 @@ sap.ui
 										.getCore()
 										.byId(
 												"operationDetailsView--operDetailNavContainer");
-							else
+							else if (nav.getCurrentPage() == "disruptiontrackerview")
 								var oOperDetailNavContainer = sap.ui
 										.getCore()
 										.byId(

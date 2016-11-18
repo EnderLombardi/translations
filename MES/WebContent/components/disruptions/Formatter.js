@@ -24,11 +24,11 @@ airbus.mes.disruptions.Formatter = {
 	setGravityText : function(gravity) {
 
 		if (gravity == 1)
-			return "Not Blocked";
+			return airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("NotBlocked");
 		else if (gravity == 2)
-			return "Disturbed";
+			return airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("Disturbed");
 		else if (gravity == 3)
-			return "Blocked";
+			return airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("Blocked");
 	},
 
 	getDate : function(datetime) {
@@ -70,13 +70,13 @@ airbus.mes.disruptions.Formatter = {
 	
 	setEscalationText : function(escalationLevel) {
 		if(escalationLevel == 1)
-			return "Not Escalated";
+			return airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("NotEscalated");
 		
 		else if(escalationLevel == 2)
-			return "First Escalation";
+			return airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("FirstEscalation");
 		
 		else if(escalationLevel == 3)
-			return "Final Escalation";
+			return airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("FinalEscalation");
 		else
 			return "-----";
 	},
