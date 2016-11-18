@@ -15,6 +15,18 @@ sap.ui
 
 						// Set action on buttons
 						sap.ui.getCore().byId("operationDetailPopup--btnPause")
+								.detachPress(this.pauseOperation);
+						sap.ui.getCore().byId(
+								"operationDetailPopup--btnConfirm")
+								.detachPress(this.confirmOperation);
+						sap.ui.getCore().byId(
+								"operationDetailPopup--btnActivate")
+								.detachPress(this.activateOperation);
+						sap.ui.getCore().byId(
+								"operationDetailPopup--btnComplete")
+								.detachPress(this.confirmOperation);
+						
+						sap.ui.getCore().byId("operationDetailPopup--btnPause")
 								.attachPress(this.pauseOperation);
 						sap.ui.getCore().byId(
 								"operationDetailPopup--btnConfirm")

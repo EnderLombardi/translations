@@ -200,9 +200,7 @@ sap.ui
 					
 					/***********************************************************
 					 * Open the Enter Comment Pop-Up
-					 */
-					disruptionCommentBoxOKEvent: undefined, // To detach event while closing pop-up- to avoid multiple fire
-					
+					 */					
 					onOpenDisruptionComment : function(title, msgRef, sPath,
 							okEvent) {
 						// Call Disruption Comment Pop-up fragment
@@ -227,7 +225,6 @@ sap.ui
 								"");
 						sap.ui.getCore().byId("disruptionCommentOK")
 								.attachPress(okEvent);
-						this.disruptionCommentBoxOKEvent = okEvent;
 
 						airbus.mes.disruptions.__enterCommentDialogue.open();
 					},
