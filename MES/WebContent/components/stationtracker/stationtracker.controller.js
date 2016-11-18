@@ -360,8 +360,8 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		} else {
 			sap.ui.getCore().byId("productionGroupPopover--myList").getSelectedItems().forEach(function(el){
 				
-				sProdGroup += el.mProperties.label + ",";
-				sProdGroupMii += el.mProperties.label + "','";
+				sProdGroup += el.mProperties.title + ",";
+				sProdGroupMii += el.mProperties.title + "','";
 			}); 
 			sProdGroup = sProdGroup.slice(0,-1);
 			airbus.mes.settings.ModelManager.prodGroup = sProdGroupMii.slice(0,-3);
@@ -966,18 +966,18 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	},
 	// Displays the number of items selected in the "Groupe de production
 	// TODO : get id of the fragment "productionGroupPopover" to insert value (line 915 and 920)
-//	onSelectionChange : function (oEvt) {
-//		
-//		var oList = oEvt.getSource();
-//		var oLabel = this.getView().byId("idFilterLabel");
-//		var oInfoToolbar = airbus.mes.stationtracker.oView.byId("idInfoToolbar");
-//		//alert("oInfoToolbar : " + oInfoToolbar)
-//		var aContexts = oList.getSelectedContexts(true);
-//		// update UI
-//		var bSelected = (aContexts && aContexts.length > 0);
-//		var sText = (bSelected) ? aContexts.length + " selected" : null;
-//		
-//		oInfoToolbar.setVisible(bSelected);
-//		oLabel.setText(sText);
-//	}
+	onSelectionChange : function (oEvt) {
+		
+		var oList = oEvt.getSource();
+		var oInfoToolbar = sap.ui.getCore().byId("productionGroupPopover--idInfoToolbar");
+		var oLabel  =  oInfoToolbar.getContent()[0];
+		//alert("oInfoToolbar : " + oInfoToolbar)
+		var aContexts = oList.getSelectedContexts(true);
+		// update UI
+		var bSelected = (aContexts && aContexts.length > 0);
+		var sText = (bSelected) ? aContexts.length + " selected" : null;
+		
+		oInfoToolbar.setVisible(bSelected);
+		oLabel.setText(sText);
+	}
 });
