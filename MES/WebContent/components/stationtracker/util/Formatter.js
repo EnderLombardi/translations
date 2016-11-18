@@ -293,14 +293,15 @@ airbus.mes.stationtracker.util.Formatter = {
 					
 					trackerTextClass = ""
 //					html = sDivForLeftDisplayInitial + sRightIcon + sLeftIcon + sSpanText + sProgressText + sColorProgress + '</div>'
-					html = sDivForLeftDisplayInitial + sRightIcon + sLeftIcon + sLeftIcon2 + sSpanText + sProgressText + sColorProgress + '</div>' ;
-
+					html = sDivForLeftDisplayInitial + '<span class="trackerBoxtooltiptext">'+ sSpanText + sProgressText +'</span>' + sRightIcon + sLeftIcon + sLeftIcon2 + sSpanText + sProgressText + sColorProgress + '</div>' ;
+					//html = '<span class="trackerBoxtooltiptext">' + html + sSpanText +'</div>' ;
+					
 					return html;
 					
 				} else {
 					
 //					html = sDivForLeftDisplay + sRightIcon + sLeftIcon + sSpanText + sProgressText + sColorProgress + '</div>' 
-					html = sDivForLeftDisplay + sRightIcon + sLeftIcon + sLeftIcon2 + sSpanText + sProgressText + sColorProgress + '</div>' ;
+					html = sDivForLeftDisplay + '<span class="trackerBoxtooltiptext">'+ sSpanText + sProgressText +'</span>' + sRightIcon + sLeftIcon + sLeftIcon2 + sSpanText + sProgressText + sColorProgress + '</div>' ;
 
 					return html;
 					

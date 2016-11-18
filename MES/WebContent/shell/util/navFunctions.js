@@ -189,7 +189,7 @@ airbus.mes.shell.util.navFunctions = {
 			
 			// Set station
 			airbus.mes.disruptiontracker.kpi.ModelManager.sStation = pStation;
-			
+			airbus.mes.disruptiontracker.kpi.ModelManager.loadDisruptionKPIModel();
 			nav.to(airbus.mes.disruptiontracker.kpi.oView.getId());	
 		},
 		

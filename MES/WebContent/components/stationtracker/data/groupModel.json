@@ -1,110 +1,66 @@
-{  
-   "Rowsets":{  
-      "DateCreated":"2016-07-13T10:26:38",
-      "Version":"15.1 SP1 Patch 0 (Jan 21, 2016)",
-      "StartDate":"2016-07-13T09:26:38+0200",
-      "EndDate":"2016-07-13T10:26:38+0200",
-      "CachedTime":"",
-      "Rowset":[  
-         {  
-            "Columns":{  
-               "Column":[  
-
-               ]
-            },
-            "Row":{  
-               "Grouping":[  
-               {
-
-                  "Value": "GroupingCompetency",
-                   "key": "COMPETENCY"
-
-               },
-
-               {
-
-                  "Value": "GroupingAVLLine",
-                  "key": "AVL_LINE"
-
-                 },
-                 {
-
-                  "Value": "GroupingAta",
-                   "key": "ATA"  
-
-                 },
-               {
-
-                  "Value": "GroupingFamiltyTarget",
-                   "key": "FAMILY_TARGET"  
-
-                 },
-                {
-
-                  "Value": "GroupingCPPCluster",
-				  "key": "CPP_CLUSTER"
-                 },
-                {
-
-                  "Value": "GroupingAVLFamily",
-				  "key": "FAMILY"
-                 }
-               ],
-               "Boxing":[  
-               {
-
-                  "Value": "BoxingOperation",
-                  "key": "OPERATION_ID"
-
-                 },
-
-               {
-
-                  "Value": "BoxingWorkOrder",
- 																	"key": "WORKORDER_ID"
-                 },
-               {
-
-                  "Value": "BoxingCPPCluster",
-																		"key": "CPP_CLUSTER"
-                 },
-                {
-
-                  "Value": "BoxingWorkPackage",
-																		"key": "WORK_PACKAGE"
-																		
-                 },
-                {
-
-                  "Value": "BoxingAVLFamily",
-																		"key": "FAMILY"
-                 }
-               ],               
-               "Status":[  
-                  {  
-                     "Value":"StatusAll"
-                  },
-                  {  
-                     "Value":"StatusStarted"
-                  },
-                  {  
-                     "Value":"StatusPartiallyConfirmed"
-                  },
-                  {  
-                     "Value":"StatusNotStarted"
-                  },
-                  {  
-                     "Value":"StatusPaused"
-                  },
-                  {  
-                     "Value":"StatusConfirmed"
-                  },
-                  {  
-                     "Value":"StatusBlocked"
-                  }
-               ]
-            }
-         }
-      ]
-   }
+{
+	"Rowsets": {
+		"DateCreated": "2016-07-13T10:26:38",
+		"Version": "15.1 SP1 Patch 0 (Jan 21, 2016)",
+		"StartDate": "2016-07-13T09:26:38+0200",
+		"EndDate": "2016-07-13T10:26:38+0200",
+		"CachedTime": "",
+		"Rowset": [{
+			"Columns": {
+				"Column": [
+				]},
+			"Row": {
+				"Grouping": [{
+					"Value": "GroupingCompetency",
+					"key": "COMPETENCY"
+				},{
+					"Value": "GroupingAVLLine",
+					"key": "AVL_LINE"
+				}, {
+					"Value": "GroupingAta",
+					"key": "ATA"
+				}, {
+					"Value": "GroupingFamiltyTarget",
+					"key": "FAMILY_TARGET"
+				}, {
+					"Value": "GroupingCPPCluster",
+					"key": "CPP_CLUSTER"
+				}, {
+					"Value": "GroupingAVLFamily",
+					"key": "FAMILY"
+				}],
+				"Boxing": [{
+					"Value": "BoxingOperation",
+					"key": "OPERATION_ID"
+				},{
+					"Value": "BoxingWorkOrder",
+					"key": "WORKORDER_ID"
+				}, {
+					"Value": "BoxingCPPCluster",
+					"key": "CPP_CLUSTER"
+				}, {
+					"Value": "BoxingWorkPackage",
+					"key": "WORK_PACKAGE"
+				}, {
+					"Value": "BoxingAVLFamily",
+					"key": "FAMILY"
+				}],
+				"Status": [{
+					"Value": "StatusAll"
+				}, {
+					"Value": "StatusStarted"
+				}, {
+					"Value": "StatusPartiallyConfirmed"
+				}, {
+					"Value": "StatusNotStarted"
+				}, {
+					"Value": "StatusPaused"
+				}, {
+					"Value": "StatusConfirmed"
+				}, {
+					"Value": "StatusBlocked"
+				}]
+			}
+		}]
+	}
 }

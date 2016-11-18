@@ -48,6 +48,12 @@ airbus.mes.shell.Component.prototype.createContent = function() {
 			
 		}).addStyleClass("absolutePosition");
 
+		if (window.location.hostname != "localhost") {
+
+			this.oView.byId("localDELog").setVisible(false);
+
+		}
+			
 		airbus.mes.shell.oView = this.oView;
 		
 		this.oView.setModel(sap.ui.getCore().getModel("userDetailModel"),	"userDetailModel");
