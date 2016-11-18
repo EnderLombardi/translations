@@ -218,6 +218,7 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
         airbus.mes.stationtracker.ShiftManager.init(airbus.mes.stationtracker.GroupingBoxingManager.shiftNoBreakHierarchy);
         oModule.loadRessourcePool();
         oModule.loadAffectation();
+        airbus.mes.stationtracker.AssignmentManager.computeAffectationHierarchy();
    		oModule.loadStationTracker("U");
    		oModule.loadStationTracker("O");
    		oModule.loadStationTracker("R");

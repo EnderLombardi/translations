@@ -906,8 +906,9 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 				.renderStationTracker();
 	},
 
-	onContinueCheckQA : function(){
+	onContinueCheckQA : function(oEvent){
 		airbus.mes.stationtracker.AssignmentManager.handleLineAssignment("S", true);
+		this.onCloseDialog(oEvent);
 	},
 	
 	openCheckQAPopup : function(oModel){

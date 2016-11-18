@@ -28,6 +28,7 @@ airbus.mes.stationtracker.AssignmentManager = {
 			break;
 		case "W" :
 			var sUserID = airbus.mes.stationtracker.AssignmentManager.affectationHierarchy[airbus.mes.stationtracker.AssignmentManager.polypolyAssignment.selectedLine.avlLine][airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftID][0].user;
+//			airbus.mes.stationtracker.AssignmentManager.checkQA = false;
 			sModeAssignment = "S";
 			break;
 		}
