@@ -601,11 +601,12 @@ airbus.mes.disruptions.ModelManager = {
 					url : this.getUrlToAddComment(),
 					data : {
 						"Param.1" : airbus.mes.settings.ModelManager.site,
-						"Param.2" : sap.ui.getCore().getModel(
+						"Param.2" : oComment.Comment,
+						"Param.3" : sap.ui.getCore().getModel(
 								"userSettingModel").getProperty(
 								"/Rowsets/Rowset/0/Row/0/user"),
-						"Param.3" : oComment.MessageRef,
-						"Param.4" : oComment.Comment
+						"Param.4" : oComment.MessageRef
+						
 					},
 					error : function(xhr, status, error) {
 						airbus.mes.shell.ModelManager
