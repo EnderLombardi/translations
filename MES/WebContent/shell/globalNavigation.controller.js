@@ -189,7 +189,7 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 
 			airbus.mes.disruptiontracker.ModelManager.loadDisruptionTrackerModel();
 			this.autoRefresh = setInterval(airbus.mes.disruptiontracker.ModelManager
-					.loadDisruptionTrackerModel(), 300000);
+					.loadDisruptionTrackerModel, 300000);
 			break;
 			
 		case "resourcePool":
