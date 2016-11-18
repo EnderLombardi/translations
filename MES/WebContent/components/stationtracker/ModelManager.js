@@ -170,8 +170,7 @@ airbus.mes.stationtracker.ModelManager = {
               geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$msn", oData.msn);
               geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$operationType", sType);
               geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$productionGroup", airbus.mes.settings.ModelManager.prodGroup);
-              geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$user",
-                           airbus.mes.stationtracker.AssignmentManager.userSelected);
+              geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$user", airbus.mes.stationtracker.AssignmentManager.userSelected);
               console.log(geturlstationtracker);
               var oViewModel;
               switch (sType) {
