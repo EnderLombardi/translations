@@ -38,9 +38,9 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 	 * Filter disruptions
 	 */
 	filterByStation: function(oEvent){
-		airbus.mes.disruptiontracker.ModelManager.loadDisruptionTrackerModel({
-			"station": this.getView().byId("stationComboBox").getSelectedItem()
-		});
+		airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.station = this.getView().byId("stationComboBox").getSelectedKey();  
+		
+		airbus.mes.disruptiontracker.ModelManager.loadDisruptionTrackerModel();
 	},
 	/*filterByResolutionGroup:function(oEvent){
 		sValue = oEvent.getSource().getSelectedKey();
