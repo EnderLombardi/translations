@@ -460,74 +460,27 @@ sap.ui
 									oView.getModel("i18n").getProperty(
 											"CompulsaryCredentials"));
 						} else {
-							sap.ui.getCore().byId("msgstrpConfirm").setVisible(
-									false);
+							sap.ui.getCore().byId("msgstrpConfirm").setVisible(false);
+							var percent;
+							
 							var sfc = airbus.mes.operationdetail.ModelManager.sfc;
 							if (oView.getController().operationStatus == "X") {
-								var percent = 100;
-								oView.byId("operationStatus").setText(
-										oView.getModel("i18n").getProperty(
-												"confirm"));
-								oView.getController().setProgressScreenBtn(
-										false, false);
-								sap.ui.getCore().getModel(
-										"operationDetailModel").setProperty(
-										"/Rowsets/Rowset/0/Row/0/status",
-										"COMPLETED")
-								sap.ui
-										.getCore()
-										.getModel("operationDetailModel")
-										.setProperty(
-												"/Rowsets/Rowset/0/Row/0/progress",
-												100);
-								sap.ui.getCore().getModel(
-										"operationDetailModel").refresh();
-							} else {
-								var percent = sap.ui.getCore().byId(
-										"progressSlider").getValue();
+								percent = 100;
+							} 
+							else{
+								percent = sap.ui.getCore().byId("progressSlider").getValue();
 							}
-
+							//
 							// Call service for Operation Confirmation
-							jQuery
-									.ajax({
-										url : airbus.mes.operationdetail.ModelManager
-												.getConfirmationUrl(
-														user,
-														pass,
-														oView.getController().operationStatus,
-														percent,
-														oView
-																.getModel(
-																		"operationDetailModel")
-																.getProperty(
-																		"/Rowsets/Rowset/0/Row/0/sfc_step_ref"),
-														oView.getController().reasonCodeText,
-														oView.getController().Mode,
-														ID, pin),
-										async : false,
-										error : function(xhr, status, error) {
-											airbus.mes.operationdetail.ModelManager
-													.messageShow(sMessageError);
-											flag_success = false
-
-										},
-										success : function(result, status, xhr) {
-											if (result.Rowsets.Rowset[0].Row[0].Message_Type === undefined) {
-												airbus.mes.operationdetail.ModelManager
-														.messageShow(sMessageSuccess);
-												flag_success = true;
-											} else if (result.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
-												airbus.mes.operationdetail.ModelManager
-														.messageShow(result.Rowsets.Rowset[0].Row[0].Message)
-												flag_success = false;
-											} else {
-												airbus.mes.operationdetail.ModelManager
-														.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
-												flag_success = true;
-											}
-
-										}
-									});
+							var flag_success = airbus.mes.operationdetail.ModelManager.confirmOperation(user,
+									pass,
+									oView.getController().operationStatus,
+									percent,
+									oView.getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/sfc_step_ref"),
+									oView.getController().reasonCodeText,
+									oView.getController().Mode,
+									ID, pin, sMessageError, sMessageSuccess);
+							
 							// Close reason code dialog
 							oView._reasonCodeDialog.close();
 							oView._oUserConfirmationDialog.close();
@@ -539,12 +492,14 @@ sap.ui
 										.renderStationTracker();*/
 
 								// update operationDetailsModel
-								sap.ui.getCore().getModel(
-										"operationDetailModel").setProperty(
-										"/Rowsets/Rowset/0/Row/0/progress",
-										percent)
-								sap.ui.getCore().getModel(
-										"operationDetailModel").refresh();
+								if(oView.getController().operationStatus == "X"){
+									sap.ui.getCore().getModel("operationDetailModel").setProperty("/Rowsets/Rowset/0/Row/0/status","COMPLETED");
+									oView.getController().setProgressScreenBtn(false, false);
+								}
+								
+								sap.ui.getCore().getModel("operationDetailModel").setProperty("/Rowsets/Rowset/0/Row/0/progress",percent)
+								sap.ui.getCore().getModel("operationDetailModel").refresh();
+								
 
 							}
 

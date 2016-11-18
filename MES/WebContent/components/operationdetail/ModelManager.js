@@ -168,6 +168,61 @@ airbus.mes.operationdetail.ModelManager = {
 		return totalPartialConfirmationUrl;
 
 	},
+	
+
+		confirmOperation : function(userId, password, confirmationType,percentConfirm, sfcStepRef, reasonCodeText, Mode, ID, pin, sMessageError, sMessageSuccess) {
+			var url = getConfirmationUrl(userId, password, confirmationType,percentConfirm, sfcStepRef, reasonCodeText, Mode, ID, pin);
+			var flag_success;
+			jQuery
+					.ajax({
+						url : url,
+						async : false,
+						error : function(xhr, status, error) {
+							airbus.mes.operationdetail.ModelManager
+									.messageShow(sMessageError);
+							flag_success = false;
+	
+						},
+						success : function(result, status, xhr) {
+							flag_success =true;
+							/*if(result.Rowset.FatalError){
+								flag_success = false;
+							}
+							else*/ if (result.Rowsets.Rowset) {
+	
+								if (result.Rowsets.Rowset[0].Row) {
+	
+									if (result.Rowsets.Rowset[0].Row[0].Message_Type === undefined) {
+										airbus.mes.operationdetail.ModelManager
+												.messageShow(sMessageSuccess);
+										flag_success = true;
+									} else if (result.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
+										airbus.mes.operationdetail.ModelManager
+												.messageShow(result.Rowsets.Rowset[0].Row[0].Message)
+										flag_success = false;
+									} else {
+										airbus.mes.operationdetail.ModelManager
+												.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
+										flag_success = true;
+									}
+								}
+								else{
+									//TODO
+	//								//case if no row
+									if(result.Rowsets.Rowset[0].Message){
+										airbus.mes.operationdetail.ModelManager.messageShow(result.Rowsets.Rowset[0].Message);
+									}
+								}
+							}
+							else{
+								//TODO
+								//case if no rowset
+							}
+						}
+					});
+		return flag_success;
+	},
+	
 	/************************************************************************ BadeReader functions */
 connectBadgeReader: function(brOnMessageCallBack, response ){
 		
