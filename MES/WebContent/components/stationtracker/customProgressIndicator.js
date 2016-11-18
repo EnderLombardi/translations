@@ -97,7 +97,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 		}
 	},
 
-	onclick : function(evt) {   // is called when the Button is hovered - no event registration required
+	onclick : function() {   // is called when the Button is hovered - no event registration required
         this.fireClick();
     },
 	
@@ -105,7 +105,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 		if (!c.getVisible()) {
 			return;
 		}
-		
+		var color;
 		var w = c.getPercentValue();
 		var W = c.getWidth();
 		var h = c.getHeight();
@@ -115,10 +115,10 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 		var nc = c.getNc();
 		var reservation = c.getReservation();
 		var s = c.getShowValue();
-		var S = c.getState();
+//		var S = c.getState();
 //		var i = c.getShowIcon();
 //		var ic = c.getIconColor();
- 		var andon = c.getIsAndon();
+		var andon = c.getIsAndon();
 		var delayed = parseInt(c.getDelayed()) > 0 ? true : false;
 		var status = c.getStatus();
 //		if (andon === '1')
@@ -250,9 +250,9 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 			r.write('id="' + c.sId + '-TextRight"' );
 
 			if (t3 === '1'){
-				var color = 'white';
+				color = 'white';
 			}else if (t3 === '2'){
-				var color = 'red';
+				color = 'red';
 			}
 			r.addStyle('color', color);
 			r.writeStyles();
@@ -260,7 +260,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 			}
 		
 		if(nc != '0' && reservation != "" ){
-			var sNc = nc;
+//			var sNc = nc;
 			r.write('<span class="sapMPITextRightBar" style="color:red">Q</span>&nbsp;');
 		}			
 

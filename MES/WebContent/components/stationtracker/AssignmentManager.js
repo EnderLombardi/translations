@@ -1,4 +1,4 @@
-"use strict"
+
 jQuery.sap.declare("airbus.mes.stationtracker.AssignmentManager")
 airbus.mes.stationtracker.AssignmentManager = {
 	
