@@ -15,6 +15,18 @@ sap.ui
 
 						// Set action on buttons
 						sap.ui.getCore().byId("operationDetailPopup--btnPause")
+								.detachPress(this.pauseOperation);
+						sap.ui.getCore().byId(
+								"operationDetailPopup--btnConfirm")
+								.detachPress(this.confirmOperation);
+						sap.ui.getCore().byId(
+								"operationDetailPopup--btnActivate")
+								.detachPress(this.activateOperation);
+						sap.ui.getCore().byId(
+								"operationDetailPopup--btnComplete")
+								.detachPress(this.confirmOperation);
+						
+						sap.ui.getCore().byId("operationDetailPopup--btnPause")
 								.attachPress(this.pauseOperation);
 						sap.ui.getCore().byId(
 								"operationDetailPopup--btnConfirm")
@@ -50,13 +62,7 @@ sap.ui
 								"progressSlider")
 						oProgressSlider.stepDown(1);
 					},
-					/*
-					 * onCloseOperationDetailPopup : function() {
-					 * 
-					 * airbus.mes.stationtracker.operationDetailPopup.close();
-					 * airbus.mes.shell.oView.getController().getController()
-					 * .renderStationTracker(); },
-					 */
+
 
 					/***********************************************************
 					 * 
@@ -109,6 +115,8 @@ sap.ui
 						airbus.mes.shell.oView.getController()
 								.renderStationTracker();
 
+
+						// Refresh User Operation Model and Operation Detail
 						if (flag_success == true) {
 							oView.getController().setProgressScreenBtn(true,
 									false);
@@ -118,8 +126,8 @@ sap.ui
 											"in_progress"));
 
 							// Re-Render Station Tracker
-							airbus.mes.shell.oView.getController()
-									.renderStationTracker();
+							/*airbus.mes.shell.oView.getController()
+									.renderStationTracker();*/
 
 							// update operationDetailsModel
 
@@ -129,6 +137,11 @@ sap.ui
 											"IN_WORK")
 							sap.ui.getCore().getModel("operationDetailModel")
 									.refresh();
+							
+							
+							// Refresh Station tracker Gantt Chart
+							/*airbus.mes.shell.oView.getController()
+									.renderStationTracker();*/
 
 						}
 					},
@@ -181,8 +194,8 @@ sap.ui
 											.getProperty("paused"));
 
 							// Re-Render Station Tracker
-							airbus.mes.shell.oView.getController()
-									.renderStationTracker();
+							/*airbus.mes.shell.oView.getController()
+									.renderStationTracker();*/
 
 							// update operationDetailsModel
 
@@ -522,8 +535,8 @@ sap.ui
 							if (flag_success === true) {
 								// Refresh User Operation Model and Operation
 								// Detail
-								airbus.mes.shell.oView.getController()
-										.renderStationTracker();
+								/*airbus.mes.shell.oView.getController()
+										.renderStationTracker();*/
 
 								// update operationDetailsModel
 								sap.ui.getCore().getModel(
