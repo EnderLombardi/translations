@@ -441,7 +441,7 @@ airbus.mes.stationtracker.util.Formatter = {
 						//Correction by NJA		
 						if(airbus.mes.settings.AppConfManager.getConfiguration("MES_PHOTO_DISPLAY")){ // Check if user image to be displayed  or not
 
-							html = html+ '<img src=' + oCurrentAffectedUser.picture + ' class="ylabelUserImage" />'		// To display User Image
+							html += + '<img src=' + oCurrentAffectedUser.picture + ' class="ylabelUserImage" />'		// To display User Image
 						}
 						html = html
 								+ '<span class="ylabelUser" title='

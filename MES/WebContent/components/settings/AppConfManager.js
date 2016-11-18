@@ -13,8 +13,7 @@ airbus.mes.settings.AppConfManager =  {
 	 */
 	
 	getUrlAppConfig : function() {
-		var urlAppConf = airbus.mes.settings.ModelManager.urlModel
-				.getProperty("urlAppConfiguration");
+		var urlAppConf = airbus.mes.settings.ModelManager.urlModel.getProperty("urlAppConfiguration");
 		return urlAppConf;
 	},
 	
@@ -29,8 +28,12 @@ airbus.mes.settings.AppConfManager =  {
 		    success: function(data){
 		    	airbus.mes.settings.AppConfManager.oAppConfiguration = data;
 		    },
-		    
-		    error: function(error,  jQXHR){console.log(error)}
+		   
+		    error: function(error,  jQXHR){
+		    	console.log(error);
+		    	// Permit to do the check on every component where it use even if we have no response.
+		    	airbus.mes.settings.AppConfManager.oAppConfiguration = {};		    	 
+		    }
 		});
 	},
 	
