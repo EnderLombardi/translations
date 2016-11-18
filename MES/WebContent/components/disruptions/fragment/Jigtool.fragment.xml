@@ -1,18 +1,6 @@
 <core:FragmentDefinition xmlns:core="sap.ui.core"
 	xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.ui.layout.form"
 	xmlns:l="sap.ui.layout">
-	<!-- <SelectDialog id="materialListSelectDialog" title="Select Material" 
-		search="handleSearchMaterialList" confirm="handleSelectMaterialList" close="handleCloseMaterialList" 
-		multiSelect="true"> items="{ path: '/ProductCollection' }" > <items> <CustomListItem> 
-		<f:SimpleForm> <f:content> <Label text="Material"/> <Input id="customMaterial"/> 
-		<Label text="Quantity"/> <Input id="customMaterialQty" value="1"/> <Button 
-		text="Add Material"/> </f:content> </f:SimpleForm> </CustomListItem> <CustomListItem 
-		class="customListItemPadding"> <l:Grid class="sapUiSmallMarginTop" defaultSpan="L12 
-		M12 S12"> <l:content> <HBox justifyContent="SpaceBetween" alignContent="SpaceBetween"> 
-		<items> <Title textAlign="Center" level="H3" text="Material 1"> <layoutData> 
-		<l:GridData span="L6 M6 S12" /> </layoutData> </Title> <VBox width="20%"> 
-		<Label text="Quantity"/> <Input type="Number" width="80%"/> </VBox> </items> 
-		</HBox> </l:content> </l:Grid> </CustomListItem> </items> </SelectDialog> -->
 
 	<Dialog id="materialListSelectDialog" title="Select Material"
 		verticalScrolling="true" horizontalScrolling="false">

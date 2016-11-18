@@ -105,6 +105,7 @@ sap.ui
 								});
 
 						// Refresh User Operation Model and Operation Detail
+						
 						airbus.mes.shell.oView.getController()
 								.renderStationTracker();
 

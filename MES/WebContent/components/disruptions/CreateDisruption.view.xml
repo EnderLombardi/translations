@@ -320,6 +320,23 @@
 										</MultiInput>
 									</f:fields>
 								</f:FormElement>
+								
+								<f:FormElement>
+									<f:label>
+										<Label text="{i18nModel>Jigtool}">
+											<layoutData>
+												<l:GridData span="L2 M3 S12" />
+											</layoutData>
+										</Label>
+									</f:label>
+									<f:fields>
+										<MultiInput id="jigtools" valueHelpRequest="onJigToolValueHelpRequest" tokenChange="onJigToolTokenChange" liveChange="onJigToolTokenChange">
+											<layoutData>
+												<l:GridData span="L3 M9 S12" />
+											</layoutData>
+										</MultiInput>
+									</f:fields>
+								</f:FormElement>
 
 								<f:FormElement>
 									<f:label>
