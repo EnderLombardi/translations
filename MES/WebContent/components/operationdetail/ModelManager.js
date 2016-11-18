@@ -183,12 +183,10 @@ airbus.mes.operationdetail.ModelManager = {
 							flag_success = false;
 	
 						},
-						success : function(result, status, xhr) {
+						success : function(data, status, xhr) {
 							flag_success =true;
-							/*if(result.Rowset.FatalError){
-								flag_success = false;
-							}
-							else*/ if (result.Rowsets.Rowset) {
+							flag_success = airbus.mes.operationdetail.ModelManager.ajaxMsgHandler(data,sMessageSuccess);
+							/*if (result.Rowsets.Rowset) {
 	
 								if (result.Rowsets.Rowset[0].Row) {
 	
@@ -217,12 +215,48 @@ airbus.mes.operationdetail.ModelManager = {
 							else{
 								//TODO
 								//case if no rowset
-							}
+							}*/
 						}
 					});
 		return flag_success;
 	},
-	
+	ajaxMsgHandler : function(data, Message) {
+		var flag_success;
+
+		if (data.Rowsets.FatalError != undefined) {
+			
+			airbus.mes.operationdetail.ModelManager
+			.messageShow(data.Rowsets.FatalError);
+			flag_success = false;
+			
+
+		}
+		// Need to implement Server message
+		else if (data.Rowsets.Messages != undefined) {
+			airbus.mes.operationdetail.ModelManager
+					.messageShow(data.Rowsets.Messages[0].Message)
+					flag_success = false;
+		} 
+		else if (data.Rowsets.Rowset != undefined) {
+			// [0].Row[0].Message != undefined
+			if (data.Rowsets.Rowset[0].Row[0].Message_Type != undefined) {
+				if (data.Rowsets.Rowset[0].Row[0].Message_Type == "S"){
+					airbus.mes.operationdetail.ModelManager.messageShow(data.Rowsets.Rowset[0].Row[0].Message);	
+					flag_success = true;
+				}
+				else{
+					airbus.mes.operationdetail.ModelManager.messageShow(data.Rowsets.Rowset[0].Row[0].Message);	
+					flag_success = false;
+				}
+
+			} else {
+				airbus.mes.operationdetail.ModelManager.messageShow(Message);
+				flag_success = false;
+				
+			}
+		}
+		return flag_success;
+	},
 	/************************************************************************ BadeReader functions */
 connectBadgeReader: function(brOnMessageCallBack, response ){
 		
