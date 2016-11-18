@@ -1,0 +1,51 @@
+/********************
+WORK TRACKER
+SCHEDULAR TASK STYLE
+BOX MANAGEMENT 
+*********************/
+.trackerBox {
+  width: 100%;
+  height: inherit;
+  position: absolute;
+  z-index: 1;
+  line-height: 23px;
+  left: 0px;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+  .trackerBox .trackerText {
+    padding-left: 10px;
+    position: relative;
+    z-index: 1;
+    float: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: calc(100% - 50px);
+    white-space: nowrap;
+    color: white;
+    overflow: hidden; }
+  .trackerBox .trackerTextBlock {
+    padding-left: 10px;
+    position: relative;
+    z-index: 1;
+    float: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 40%;
+    white-space: nowrap;
+    color: rgba(0, 86, 112, 0.94); }
+
+.trackerBox:hover .dark-lime-green-back {
+  background-color: #536f12 !important; }
+.trackerBox:hover .teal-blue-back {
+  background-color: #0f2d65 !important; }
+.trackerBox:hover .cherry-red-back {
+  background-color: #9e001e !important; }
+.trackerBox:hover .openBlockedEscalated {
+  background-color: #ffbf00 !important; }
+.trackerBox:hover .openBlocked {
+  background-color: #ffbf00 !important; }
+
+.grey:hover {
+  background-color: #767879; }
+
+/*# sourceMappingURL=styleScss.css.map */

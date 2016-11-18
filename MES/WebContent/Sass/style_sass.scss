@@ -1,0 +1,79 @@
+$tiffany-blue : rgb(116, 210, 231);
+$bright-ligh-blue : rgba(49, 220, 240, 0.1);
+$white : rgb(221, 221, 221);
+$silver-15: rgba(187, 188, 188, 0.15);
+$silver-30: rgba(216, 221, 227, 0.3);
+$black-94: rgba(44, 42, 41, 0.94);
+$petrol-blue: rgba(0, 86, 112, 0.94);
+$teal-blue: #0085ad;
+$dark-lime-green: #84bd00;
+$cool-grey: #97999b;
+$dandelion: #fbec00;
+$cherry-red: #e4002b;
+$blood-orange: #fe5000;
+$twilight-blue-94: rgba(12, 75, 131, 0.94);
+$white-two: #ffffff;
+$navy-blue-94: rgba(0, 32, 91, 0.94);
+$duck-egg-blue: #d5f1f8;
+
+
+
+/********************
+WORK TRACKER
+SCHEDULAR TASK STYLE
+BOX MANAGEMENT 
+*********************/
+.trackerBox{
+	width:100%;
+	height:inherit;
+	position:absolute;
+	z-index: 1;
+	line-height: 23px;
+	left: 0px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	.trackerText{
+		padding-left: 10px;
+		position: relative;
+		z-index: 1;
+		float: left;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		max-width:calc(100% - 50px);
+		white-space: nowrap;
+		color: white;
+		overflow: hidden;
+	}
+	.trackerTextBlock{
+		padding-left: 10px;
+		position: relative;
+		z-index: 1;
+		float: left;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		max-width:40%;
+		white-space: nowrap;
+		color: $petrol-blue;
+	}
+}
+.trackerBox:hover{
+	.dark-lime-green-back{
+		background-color: #536f12 !important;
+	}
+	.teal-blue-back{
+		background-color: #0f2d65 !important;
+	}
+	.cherry-red-back{
+		background-color: #9e001e !important;
+	}
+	.openBlockedEscalated{
+		background-color:#ffbf00 !important;
+	}
+	.openBlocked{
+		background-color:#ffbf00 !important;
+	}
+}
+
+.grey:hover{
+	background-color: #767879;
+}
