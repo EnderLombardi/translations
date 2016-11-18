@@ -19,7 +19,7 @@
 			<Button id="btnCancelDisruption" text="{StationTrackerI18n>cancel}"
 				type="Reject" press="onCancelCreateDisruption" visible="false" />
 
-			<Button text="{disruptiontrackerI18n>Close}" icon="sap-icon://decline"
+			<Button id="btnCloseDisruptionPopup" text="{disruptiontrackerI18n>Close}" icon="sap-icon://decline"
 				press="onCloseDisruptnDetailPopUp" />
 		</buttons>
 	</Dialog>

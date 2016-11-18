@@ -96,6 +96,26 @@ sap.ui
 					 * Open Pop-Up to ask Time Lost while Closing the Disruption
 					 */
 					onCloseDisruption : function(oEvt) {
+						
+						// Close Comment Box if open
+						var path = oEvt.getSource().sId;
+						var listnum = path.split("-");
+						listnum = listnum[listnum.length - 1];
+						var commentBox = this.getView().byId(
+								this.getView().sId + "--commentBox-"
+										+ this.getView().sId + "--disrptlist-"
+										+ listnum);
+						commentBox.setVisible(false);
+						
+						var submitCommentId = sap.ui.getCore().byId(
+								this.getView().sId + "--addComment-"
+										+ this.getView().sId + "--disrptlist-"
+										+ listnum);
+
+						submitCommentId.setVisible(true);
+						//*********************************************************
+						
+						// Get Fields to Pre-Fill Comment Pop-up
 						var sPath = oEvt.getSource().getParent().getParent()
 								.getParent().getBindingContext(
 										"operationDisruptionsModel").sPath;
@@ -169,11 +189,15 @@ sap.ui
 									.getModel("operationDisruptionsModel")
 									.getProperty(sPath).Status = airbus.mes.disruptions.Formatter.status.closed;
 							
+							this.getView()
+							.getModel("operationDisruptionsModel")
+							.getProperty(sPath).TimeLost = timeLostValue;
+							
 							var currDate = new Date();
 							var date = currDate.getFullYear() + "-" + currDate.getMonth() + "-" + currDate.getDate();
 							
 							var oComment = {
-									"Action" : "CLOSED",
+									"Action" : this.getView().getModel("i18nModel").getProperty("close"),
 									"Comments" : commentValue,
 									"Counter" : "",
 									"Date" : date,
@@ -244,6 +268,24 @@ sap.ui
 					 */
 					onDeleteDisruption : function(oEvt) {
 
+						// Close Comment Box if open
+						var path = oEvt.getSource().sId;
+						var listnum = path.split("-");
+						listnum = listnum[listnum.length - 1];
+						var commentBox = this.getView().byId(
+								this.getView().sId + "--commentBox-"
+										+ this.getView().sId + "--disrptlist-"
+										+ listnum);
+						commentBox.setVisible(false);
+						
+						var submitCommentId = sap.ui.getCore().byId(
+								this.getView().sId + "--addComment-"
+										+ this.getView().sId + "--disrptlist-"
+										+ listnum);
+
+						submitCommentId.setVisible(true);
+						//*********************************************************
+						
 						var status = oEvt.getSource().getBindingContext(
 								"operationDisruptionsModel")
 								.getObject("Status");
@@ -280,14 +322,14 @@ sap.ui
 						var comment = sap.ui.getCore().byId(
 								"disruptionCommentBox").getValue();
 
-						var msgref = sap.ui.getCore().byId(
+						var msgRef = sap.ui.getCore().byId(
 								"disruptionCommentMsgRef").getText();
 
 						var sMessage = i18nModel.getProperty("successDelete");
 
 						// Call Disruption Service
 						var isSuccess = airbus.mes.disruptions.ModelManager
-								.rejectDisruption(comment, msgref, sMessage,
+								.rejectDisruption(comment, msgRef, sMessage,
 										i18nModel);
 
 						airbus.mes.disruptions.__enterCommentDialogue.close();
@@ -306,7 +348,7 @@ sap.ui
 							var date = currDate.getFullYear() + "-" + currDate.getMonth() + "-" + currDate.getDate();
 							
 							var oComment = {
-									"Action" : "DELETE",
+									"Action" : airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("delete"),
 									"Comments" : comment,
 									"Counter" : "",
 									"Date" : date,
@@ -325,6 +367,24 @@ sap.ui
 					 */
 					onRejectDisruption : function(oEvt) {
 
+						// Close Comment Box if open
+						var path = oEvt.getSource().sId;
+						var listnum = path.split("-");
+						listnum = listnum[listnum.length - 1];
+						var commentBox = this.getView().byId(
+								this.getView().sId + "--commentBox-"
+										+ this.getView().sId + "--disrptlist-"
+										+ listnum);
+						commentBox.setVisible(false);
+						
+						var submitCommentId = sap.ui.getCore().byId(
+								this.getView().sId + "--addComment-"
+										+ this.getView().sId + "--disrptlist-"
+										+ listnum);
+
+						submitCommentId.setVisible(true);
+						//*********************************************************
+						
 						var status = oEvt.getSource().getBindingContext(
 								"operationDisruptionsModel")
 								.getObject("Status");
@@ -387,7 +447,7 @@ sap.ui
 							var date = currDate.getFullYear() + "-" + currDate.getMonth() + "-" + currDate.getDate();
 							
 							var oComment = {
-									"Action" : "REJECT",
+									"Action" : airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("reject"),
 									"Comments" : comment,
 									"Counter" : "",
 									"Date" : date,
@@ -408,14 +468,14 @@ sap.ui
 						var path = oEvt.getSource().sId;
 						var listnum = path.split("-");
 						listnum = listnum[listnum.length - 1];
-						var a = this.getView().byId(
+						var commentBox = this.getView().byId(
 								this.getView().sId + "--commentBox-"
 										+ this.getView().sId + "--disrptlist-"
 										+ listnum);
-						a.setVisible(true);
+						commentBox.setVisible(true);
 
-						var b = sap.ui.getCore().byId(path);
-						b.setVisible(false);
+						var submitComment = sap.ui.getCore().byId(path);
+						submitComment.setVisible(false);
 
 					},
 
@@ -477,7 +537,7 @@ sap.ui
 						var date = currDate.getFullYear() + "-" + currDate.getMonth() + "-" + currDate.getDate();
 
 						var oComment = {
-								"Action" : "COMMENT",
+								"Action" : this.getView().getModel("i18nModel").getProperty("comment"),
 								"Comments" : sComment,
 								"Counter" : "",
 								"Date" : date,
@@ -502,6 +562,25 @@ sap.ui
 					 * When Acknowledge Button is Pressed
 					 */
 					onAckDisruption : function(oEvt) {
+
+						// Close Comment Box if open
+						var path = oEvt.getSource().sId;
+						var listnum = path.split("-");
+						listnum = listnum[listnum.length - 1];
+						var commentBox = this.getView().byId(
+								this.getView().sId + "--commentBox-"
+										+ this.getView().sId + "--disrptlist-"
+										+ listnum);
+						commentBox.setVisible(false);
+						
+						var submitCommentId = sap.ui.getCore().byId(
+								this.getView().sId + "--addComment-"
+										+ this.getView().sId + "--disrptlist-"
+										+ listnum);
+
+						submitCommentId.setVisible(true);
+						//*********************************************************
+						
 						var title = this.getView().getModel("i18nModel")
 								.getProperty("ackDisruption");
 						var msgRef = oEvt.getSource().getBindingContext(
@@ -595,7 +674,7 @@ sap.ui
 								var date = currDate.getFullYear() + "-" + currDate.getMonth() + "-" + currDate.getDate();
 								
 								var oComment = {
-										"Action" : "ACKNOWLEDGE",
+										"Action" : this.getView().getModel("i18nModel").getProperty("acknowledge"),
 										"Comments" : comment,
 										"Counter" : "",
 										"Date" : date,
@@ -672,7 +751,7 @@ sap.ui
 							var date = currDate.getFullYear() + "-" + currDate.getMonth() + "-" + currDate.getDate();
 							
 							var oComment = {
-									"Action" : "MARKED SOLVED",
+									"Action" : this.getView().getModel("i18nModel").getProperty("markSolved"),
 									"Comments" : comment,
 									"Counter" : "",
 									"Date" : date,
@@ -732,10 +811,10 @@ sap.ui
 
 							this.getView()
 									.getModel("operationDisruptionsModel")
-									.getProperty(sPath).EscalationLevel = this
+									.getProperty(sPath).EscalationLevel = parseInt(this
 									.getView().getModel(
 											"operationDisruptionsModel")
-									.getProperty(sPath).EscalationLevel + 1;
+									.getProperty(sPath).EscalationLevel) + 1;
 
 							this.getView()
 									.getModel("operationDisruptionsModel")
@@ -759,7 +838,7 @@ sap.ui
 						oOperDetailNavContainer.to(airbus.mes.disruptions.oView.createDisruption.getId());
 						
 						
-						//destroying Material List dialog which might have already loaded and willl show inconsistent data otherwise
+						//destroying Material List dialog which might have already loaded and will show inconsistent data otherwise
 						if(sap.ui.getCore().byId("createDisruptionView").oController._materialListDialog){
 							sap.ui.getCore().byId("createDisruptionView").oController._materialListDialog.destroy(false);
 							sap.ui.getCore().byId("createDisruptionView").oController._materialListDialog = undefined;
@@ -771,9 +850,8 @@ sap.ui
 					 */
 					onEditDisruption : function(oEvent) {
 
-						if (sap.ui.getCore().byId(
-								"operationDetailsView--switchOperationModeBtn")
-								.getState() == false) {
+						if (nav.getCurrentPage() == "stationTrackerView" && 
+								sap.ui.getCore().byId("operationDetailsView--switchOperationModeBtn").getState() == false) {
 
 							sap.m.MessageBox.error(this.getView().getModel(
 									"i18nModel").getProperty("readModeError"));

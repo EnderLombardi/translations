@@ -192,6 +192,9 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 
 		// Empty Model
 		airbus.mes.disruptions.oView.viewDisruption.getModel("operationDisruptionsModel").setData();
+		
+		sap.ui.getCore().byId("disruptionCommentOK")
+		.detachPress(airbus.mes.disruptions.oView.getController().disruptionCommentBoxOKEvent);
 	}
 	
 
