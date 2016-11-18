@@ -305,44 +305,86 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 		this._myProfileDailog.close();
 	},
 	
-	onScanMyProfile:function(){
+	/***********************************************************
+	 * Scan Badge for Save User Profile
+	 */
+	onScanMyProfile : function(oEvt) {
+		var timer;
+		sap.ui.getCore().byId("uIdMyProfile").setValue();
+		sap.ui.getCore().byId("badgeIdMyProfile").setValue();
+			//close existing connection. then open again
+			oEvt.getSource().setEnabled(false);
+			var callBackFn = function(){
+				console.log("callback entry \n");
+				console.log("connected");
+				if(airbus.mes.shell.ModelManager.badgeReader.readyState==1){
+					airbus.mes.shell.ModelManager.brStartReading();
+					sap.ui.getCore().byId("msgstrpMyProfile").setText("Conenction Opened");
+					var i=10;
+					
+					timer = setInterval(function(){
+						sap.ui.getCore().byId("msgstrpMyProfile").setType("Information");
+						sap.ui.getCore().byId("msgstrpMyProfile").setText("Please Connect your badge in "+ i--);
+						if(i<0){
+							clearInterval(timer);
+							airbus.mes.shell.ModelManager.brStopReading();
+							sap.ui.getCore().byId("scanButton").setEnabled(true);
+							sap.ui.getCore().byId("msgstrpMyProfile").setType("Warning");
+							sap.ui.getCore().byId("msgstrpMyProfile").setText("Conenction Timeout. Click on scan to confirm");
+							airbus.mes.shell.ModelManager.brStopReading();
+							airbus.mes.shell.ModelManager.badgeReader.close();
+							setTimeout(function(){
+								sap.ui.getCore().byId("msgstrpMyProfile").setVisible(false);
+							},2000)
+						}
+					}, 1000)
+					
 
-		 // Open a web socket connection
-          var ws = new WebSocket("ws://localhost:754/TouchNTag");
-          
-          ws.onopen = function(){
-       	   sap.ui.getCore().getElementById("msgstrpMyProfile").setVisible(true);
-       	   sap.ui.getCore().byId("msgstrpMyProfile").setType("Information");
-       	   sap.ui.getCore().byId("msgstrpMyProfile").setText(
-       			   			sap.ui.getCore().getModel("ShellI18n").getProperty("scanBadge"));
-           console.log("Connection Established");
-          };
-          
-          ws.onmessage = function (evt){ 
-             var scanData = JSON.parse(evt.data);	
-             var uID  = scanData.Message;			//UID
-             var badgeID = scanData.BadgeOrRFID;     //BID
-             sap.ui.getCore().getElementById("uIdMyProfile").setValue(uID);
-             sap.ui.getCore().getElementById("badgeIdMyProfile").setValue(badgeID);
-             sap.ui.getCore().getElementById("msgstrpMyProfile").setVisible(false);
-             console.log("message recieved from server");
-             ws.close();
-          };
-          // Error Handling while connection failed to WebSocket
-          ws.onerror = function(evnt){
-       	   var connectionError = sap.ui.getCore().getModel("ShellI18n")
-				.getProperty("webSocketConnectionFailed");
-       	   airbus.mes.operationdetail.ModelManager
-				.messageShow(connectionError);
-       	   console.log("Error Occurred while Connecting");
-          }
-          
-          ws.onclose = function(){ 
-             // websocket is closed.			            	  			            	   
-        	  console.log("Connection closed");
-          }		               
-	
+				}
+			}
+			
+
+		var response = function(data) {
+			clearInterval(timer);
+			sap.ui.getCore().byId("scanButton").setEnabled(true);
+			sap.ui.getCore().byId("msgstrpMyProfile").setVisible(false);
+			if (data.Message) {
+				type = data.Message.split(":")[0]
+				id = data.Message.split(":")[1];
+
+				if (type == "UID") {
+					sap.ui.getCore().byId("uIdMyProfile")
+							.setValue(id);
+				} else if (type == "BID") {
+					sap.ui.getCore().byId(
+							"badgeIdMyProfile").setValue(id);
+				} else {
+					sap.ui.getCore().byId("msgstrpMyProfile")
+							.setVisible(true);
+					sap.ui.getCore().byId("msgstrpMyProfile")
+							.setText("Error in scanning. Please try again.");
+				}
+			}
+			else {
+				sap.ui.getCore().byId("msgstrpMyProfile")
+						.setVisible(true);
+				sap.ui.getCore().byId("msgstrpMyProfile")
+						.setText("Error in scanning. Please try again.");
+			}
+			airbus.mes.shell.ModelManager.badgeReader.close();
+		}
+			
+			// Open a web socket connection
+			//if(!airbus.mes.shell.ModelManager.badgeReader){
+			airbus.mes.shell.ModelManager.connectBadgeReader(callBackFn,response);
+			//}
+
+			sap.ui.getCore().byId("msgstrpMyProfile").setType("Information");
+			sap.ui.getCore().byId("msgstrpMyProfile").setText("Opening connection Please wait...")
+			sap.ui.getCore().byId("msgstrpMyProfile").setVisible(true);
+			
 	},
+	
 	
 	onSaveMyProfile:function(oEvent){
 		sap.ui.getCore().getElementById("msgstrpMyProfile").setVisible(false);
