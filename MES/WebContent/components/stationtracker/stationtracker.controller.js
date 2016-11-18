@@ -1,5 +1,3 @@
-"use strict";
-
 jQuery.sap.require("airbus.mes.stationtracker.util.Formatter");
 
 sap.ui.controller("airbus.mes.stationtracker.stationtracker", {

@@ -20,8 +20,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 					},
 
 					onAfterRendering: function onAfterRendering(){
-					
-						
+											
 						scheduler.xy.nav_height = 0; //Div height for date
 						scheduler.xy.scroll_width=20;
 						scheduler.xy.bar_height = 30;
@@ -136,7 +135,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 						
 						scheduler.eventId.push(scheduler.attachEvent("onBeforeDrag",function blockReadonly(id) {
 
-						    var dragged_event=scheduler.getEvent(id); //use it to get the object of the dragged event
+						    scheduler.dragged_event = scheduler.getEvent(id); //use it to get the object of the dragged event
 							
 							if (this.getEvent(id).type === "I" ) {
 								
@@ -154,7 +153,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 						
 						scheduler.eventId.push(scheduler.attachEvent("onDragEnd", function rescheduling(id, mode, e){
 ////						Filled on event onBeforeDrag
-							var event_obj_before = dragged_event;
+							var event_obj_before = scheduler.dragged_event;
 
 							var event_obj_now = scheduler.getEvent(id); 
 
