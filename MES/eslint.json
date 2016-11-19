@@ -5,7 +5,8 @@
 	"globals": {
 		"sap": true,
 		"jQuery": true,
-		"airbus": true
+		"airbus": true,
+		"scheduler": true
 	},
 	"rules": {
 		"block-scoped-var": 1,
