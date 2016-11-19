@@ -82,6 +82,7 @@ airbus.mes.shell.ModelManager = {
 
 		json2xml : function(o, tab) {
 			var toXml = function(v, name, ind) {
+				var m;
 				var xml = "";
 				if (v instanceof Array) {
 					for (var i = 0, n = v.length; i < n; i++)
@@ -89,7 +90,7 @@ airbus.mes.shell.ModelManager = {
 				} else if (typeof (v) == "object") {
 					var hasChild = false;
 					xml += ind + "<" + name;
-					for ( var m in v) {
+					for (m in v) {
 						if (m.charAt(0) == "@")
 							xml += " " + m.substr(1) + "=\"" + v[m].toString()
 									+ "\"";
@@ -98,7 +99,7 @@ airbus.mes.shell.ModelManager = {
 					}
 					xml += hasChild ? ">" : "/>";
 					if (hasChild) {
-						for ( var m in v) {
+						for (m in v) {
 							if (m == "#text")
 								xml += v[m];
 							else if (m == "#cdata")
@@ -121,41 +122,39 @@ airbus.mes.shell.ModelManager = {
 			return tab ? xml.replace(/\t/g, tab) : xml.replace(/\t|\n/g, "");
 		},
 
-		/***************************************************************************
-		 * Replace URL Parameters
-		 **************************************************************************/
+		/* *********************************************************************** *
+		 *  Replace URL Parameters                                                 *
+		 * *********************************************************************** */
 		replaceURI : function(sURI, sFrom, sTo) {
 			return sURI.replace(sFrom, encodeURIComponent(sTo));
 		},
 		
-		/********************************
-		 * Show message Toast
-		 */
+		/* ******************************* *
+		 *  Show message Toast             *
+		 * ******************************* */
 		messageShow : function(text) {
-	        sap.m.MessageToast
-	        .show(
-	        		text,
-	                      {
-	                             duration : 3000,
-	                             width : "25em",
-	                             my : "center center",
-	                             at : "center center",
-	                             of : window,
-	                             offset : "0 0",
-	                             collision : "fit fit",
-	                             onClose : null,
-	                             autoClose : true,
-	                             animationTimingFunction : "ease",
-	                             animationDuration : 1000,
-	                             closeOnBrowserNavigation : true
-	                      });
+			sap.m.MessageToast
+				.show(text,  {
+                         duration : 3000,
+                         width : "25em",
+                         my : "center center",
+                         at : "center center",
+                         of : window,
+                         offset : "0 0",
+                         collision : "fit fit",
+                         onClose : null,
+                         autoClose : true,
+                         animationTimingFunction : "ease",
+                         animationDuration : 1000,
+                         closeOnBrowserNavigation : true
+				});
 	               
 	  },
 	  
-	  /********************************
-		 * Get URL for My Profile
-		 */
-	  getMyProfileUrl:function(bID,user,pass,pinCode,uID){
+	  /* **************************** *
+	   * Get URL for My Profile       *
+	   * **************************** */
+	  getMyProfileUrl: function(bID,user,pass,pinCode,uID) {
 		  var myProfileUrl = this.urlModel.getProperty("urlMyProfileSave");
 		  myProfileUrl = airbus.mes.shell.ModelManager.replaceURI(
 				  myProfileUrl, "$badgeID", bID);
@@ -167,11 +166,12 @@ airbus.mes.shell.ModelManager = {
 				  myProfileUrl, "$pinCode", pinCode);
 		  myProfileUrl = airbus.mes.shell.ModelManager.replaceURI(
 				  myProfileUrl, "$UID", uID);
-		  
 		  return myProfileUrl;		  
 	  },
 	  
-		/************************************************************************ BadeReader functions */
+		/* *********************** *
+		 *  BadeReader functions   *
+		 * *********************** */
 	  connectBadgeReader: function(brOnMessageCallBack, response, error){
 			
 			if(!this.badgeReader || airbus.mes.shell.ModelManager.badgeReader.readyState==3){
@@ -181,9 +181,9 @@ airbus.mes.shell.ModelManager = {
 			if(location.protocal = "https:"){
 				//wsUrl = "wss://" + this.urlModel.getProperty("badgeReader");
 				wsUrl = "ws://" + this.urlModel.getProperty("badgeReader");
-			}
-			else
+			} else {
 				wsUrl = "ws://" + this.urlModel.getProperty("badgeReader");
+			}
 			if(window.location.hostname =="localhost"  || window.location.hostname =="wsapbpc01.ptx.fr.sopra")
 				wsUrl = "ws://localhost:754/TouchNTag";
 			this.badgeReader = new WebSocket(wsUrl);
@@ -206,6 +206,7 @@ airbus.mes.shell.ModelManager = {
 			if(airbus.mes.shell.ModelManager.brOnMessageCallBack)
 				airbus.mes.shell.ModelManager.brOnMessageCallBack();	
 		},
+		
 		brOpen : function(){
 			 var msgData = {"BadgeOrRFID":"BADGE","CommandName":"CONNECT","Language":null,"ReaderName":null};
 			  if(this.badgeReader)
@@ -220,24 +221,28 @@ airbus.mes.shell.ModelManager = {
 			airbus.mes.shell.ModelManager.brResponseMessage(scanData);	
 
 		},
-		brStartReading: function(){
-		   var msgData = {"BadgeOrRFID":"BADGE","CommandName":"START_READING","Language":null,"ReaderName":null};
-		      if(this.badgeReader)
-		    	  this.badgeReader.send(JSON.stringify(msgData));
-		  
+		
+		brStartReading: function() {
+			var msgData = {"BadgeOrRFID":"BADGE","CommandName":"START_READING","Language":null,"ReaderName":null};
+			if(this.badgeReader) {
+				this.badgeReader.send(JSON.stringify(msgData));
+			}
 		},
-		brStopReading:function(){
-		   var msgData = {"BadgeOrRFID":"BADGE","CommandName":"STOP_READING","Language":null,"ReaderName":null};
-		      if(this.badgeReader)
-		    	  this.badgeReader.send(JSON.stringify(msgData));
-		  
+		
+		brStopReading: function() {
+			var msgData = {"BadgeOrRFID":"BADGE","CommandName":"STOP_READING","Language":null,"ReaderName":null};
+			if(this.badgeReader) {
+				this.badgeReader.send(JSON.stringify(msgData));
+			}
 		},
-		brClose:function(){
-		   var msgData = {"BadgeOrRFID":"BADGE","CommandName":"DISCONNECT","Language":null,"ReaderName":null};
-		      if(this.badgeReader)
-		    	  this.badgeReader.send(JSON.stringify(msgData));
-		  
+		
+		brClose: function() {
+			var msgData = {"BadgeOrRFID":"BADGE","CommandName":"DISCONNECT","Language":null,"ReaderName":null};
+			if (this.badgeReader) {
+				this.badgeReader.send(JSON.stringify(msgData));
+			}
 		},
+		
 		brOnError : function(evnt){
 			airbus.mes.shell.ModelManager.badgeReader =undefined;
 			if(airbus.mes.shell.ModelManager.brResponseError)
