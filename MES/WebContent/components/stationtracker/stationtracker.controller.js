@@ -1,5 +1,3 @@
-"use strict";
-
 jQuery.sap.require("airbus.mes.stationtracker.util.Formatter");
 
 sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
@@ -906,8 +904,9 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 				.renderStationTracker();
 	},
 
-	onContinueCheckQA : function(){
+	onContinueCheckQA : function(oEvent){
 		airbus.mes.stationtracker.AssignmentManager.handleLineAssignment("S", true);
+		this.onCloseDialog(oEvent);
 	},
 	
 	openCheckQAPopup : function(oModel){
@@ -958,7 +957,6 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	tooltipDisplay : function(oEvent) {
 		var oEventProvider = new sap.ui.base.EventProvider();
 		var oEvent = new sap.ui.base.Event("test",oEventProvider);
-		console.log("tooltip");
 	},
 	
 	onCheckQA : function(){

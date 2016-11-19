@@ -409,13 +409,16 @@ sap.ui.controller("airbus.mes.settings.Settings",
 					this.getView().getController().onSelectionChange("selectStation");
 				}
 				
-				if ( airbus.mes.settings.oView.byId("selectStation").getValue() != "" ) {
+				if ( airbus.mes.settings.oView.byId("selectStation").getValue() !== "" ) {
 				
 				this.getView().byId("selectMSN").setEnabled(!fSelected);
 				
 				}
 				
 			},
+			/**
+		     * Fire when the user press confirm it save data.
+		     */
 			onConfirm : function(oEvent) { 
 //				Firstly, save the new user settings
 				this.saveUserSettings();
@@ -427,9 +430,6 @@ sap.ui.controller("airbus.mes.settings.Settings",
 				this.navigate(oEvent);
 			},
 			
-			/**
-		     * Fire when the user press confirm it save data.
-		     */
 			saveUserSettings : function() {
 
 				if (this.getView().byId("headTextPlant").getSelectedItem() === null ) {

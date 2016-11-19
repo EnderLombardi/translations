@@ -267,8 +267,9 @@ connectBadgeReader: function(brOnMessageCallBack, response ){
 	if(location.protocal = "https:")
 		wsUrl = "wss://" + this.urlModel.getProperty("badgeReader");
 	else
-	wsUrl = "ws://" + this.urlModel.getProperty("badgeReader");
-	wsUrl = "ws://localhost:754/TouchNTag";
+		wsUrl = "ws://" + this.urlModel.getProperty("badgeReader");
+	if(window.location.hostname =="local"  || window.location.hostname =="wsapbpc01.ptx.fr.sopra")
+		wsUrl = "ws://localhost:754/TouchNTag";
 	this.badgeReader = new WebSocket(wsUrl);
 	
 	this.badgeReader.onopen = this.brOnOpen;

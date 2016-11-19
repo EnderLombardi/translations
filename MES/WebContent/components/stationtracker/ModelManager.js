@@ -111,12 +111,17 @@ airbus.mes.stationtracker.ModelManager = {
 				}
    				if(airbus.mes.shell.util.Formatter.getMiiMessageType(data) == "E"){
    					sap.m.MessageToast.show(airbus.mes.shell.util.Formatter.getMiiTextFromData(data));
-   				} else if(data.Rowsets.Rowset[0].Row[0].message == "W"){
-   					var checkQAModel = new sap.ui.model.json.JSONModel();
-   					checkQAModel.setData(data.Rowsets.Rowset[1]);
-   					airbus.mes.stationtracker.oView.getController().openCheckQAPopup(checkQAModel);
+   				} else if(data.Rowsets.Rowset != undefined){
+   					if(data.Rowsets.Rowset[0].Row[0].message == "W"){
+   						var checkQAModel = new sap.ui.model.json.JSONModel();
+   						checkQAModel.setData(data.Rowsets.Rowset[1]);
+   						airbus.mes.stationtracker.oView.getController().openCheckQAPopup(checkQAModel);
+   					} else if(data.Rowsets.Rowset[0].Row[0].message == "S"){
+   						airbus.mes.shell.oView.getController().renderStationTracker();
+   	   					airbus.mes.stationtracker.oPopoverPolypoly.close();
+   					}
    				} else {//if (data.Rowsets.Rowset[0].Row[0].message == "S"){
-   					airbus.mes.shell.globalNavigation.oView.getController().renderStationTracker();
+   					airbus.mes.shell.oView.getController().renderStationTracker();
    					airbus.mes.stationtracker.oPopoverPolypoly.close();
    				}
    			},
@@ -165,8 +170,7 @@ airbus.mes.stationtracker.ModelManager = {
               geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$msn", oData.msn);
               geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$operationType", sType);
               geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$productionGroup", airbus.mes.settings.ModelManager.prodGroup);
-              geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$user",
-                           airbus.mes.stationtracker.AssignmentManager.userSelected);
+              geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$user", airbus.mes.stationtracker.AssignmentManager.userSelected);
               console.log(geturlstationtracker);
               var oViewModel;
               switch (sType) {
