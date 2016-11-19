@@ -347,7 +347,7 @@ sap.ui
 						sap.ui.getCore().byId("badgeIDForConfirmation").setValue();
 							//close existing connection. then open again
 							oEvt.getSource().setEnabled(false);
-							var callBackFn = function(){
+						var callBackFn = function(){
 								console.log("callback entry \n");
 								console.log("connected");
 								if(airbus.mes.operationdetail.ModelManager.badgeReader.readyState==1){
@@ -388,28 +388,54 @@ sap.ui
 								if (type == "UID") {
 									sap.ui.getCore().byId("UIDForConfirmation")
 											.setValue(id);
+									sap.ui.getCore().byId("msgstrpConfirm").setType("Success");
+									sap.ui.getCore().byId("msgstrpConfirm").setText("Scanned Successfully");
+									sap.ui.getCore().byId("msgstrpConfirm").setVisble(true);
 								} else if (type == "BID") {
-									sap.ui.getCore().byId(
-											"badgeIDForConfirmation").setValue(id);
+									sap.ui.getCore().byId("badgeIDForConfirmation").setValue(id);
+									sap.ui.getCore().byId("msgstrpConfirm").setType("Success");
+									sap.ui.getCore().byId("msgstrpConfirm").setText("Scanned Successfully");
+									sap.ui.getCore().byId("msgstrpConfirm").setVisble(true);
 								} else {
 									sap.ui.getCore().byId("msgstrpConfirm")
 											.setVisible(true);
 									sap.ui.getCore().byId("msgstrpConfirm")
 											.setText("Error in scanning. Please try again.");
+									sap.ui.getCore().byId("msgstrpConfirm").setType("Error");
 								}
 							}
 							else {
 								sap.ui.getCore().byId("msgstrpConfirm")
 										.setVisible(true);
+								sap.ui.getCore().byId("msgstrpConfirm").setType("Error");
 								sap.ui.getCore().byId("msgstrpConfirm")
 										.setText("Error in scanning. Please try again.");
 							}
+							setTimeout(function(){
+								sap.ui.getCore().byId("msgstrpConfirm").setVisible(false);
+								sap.ui.getCore().byId("msgstrpConfirm").setText("");
+							},2000)
+							
 							airbus.mes.operationdetail.ModelManager.badgeReader.close();
+							sap.ui.getCore().byId("scanButton").setEnabled("true");
+						}
+						
+						var error = function(){
+							sap.ui.getCore().byId("scanButton").setEnabled(true);
+							sap.ui.getCore().byId("msgstrpConfirm").setVisible(true);
+							sap.ui.getCore().byId("msgstrpConfirm").setType("Error");
+							sap.ui.getCore().byId("msgstrpConfirm").setText("Error Establishing Connection. Please try again.");
+							setTimeout(function(){
+								sap.ui.getCore().byId("msgstrpConfirm").setVisible(false);
+								sap.ui.getCore().byId("msgstrpConfirm").setText("");
+							},2000)
+							sap.ui.getCore().byId("scanButton").setEnabled("true");
+							
 						}
 							
 							// Open a web socket connection
 							//if(!airbus.mes.operationdetail.ModelManager.badgeReader){
-							airbus.mes.operationdetail.ModelManager.connectBadgeReader(callBackFn,response);
+							airbus.mes.operationdetail.ModelManager.connectBadgeReader(callBackFn,response, error);
 							//}
 
 							sap.ui.getCore().byId("msgstrpConfirm").setType("Information");

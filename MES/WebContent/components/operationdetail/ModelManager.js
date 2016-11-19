@@ -258,7 +258,7 @@ airbus.mes.operationdetail.ModelManager = {
 		return flag_success;
 	},
 	/************************************************************************ BadeReader functions */
-connectBadgeReader: function(brOnMessageCallBack, response ){
+connectBadgeReader: function(brOnMessageCallBack, response, error){
 		
 	if(!this.badgeReader || airbus.mes.operationdetail.ModelManager.badgeReader.readyState==3){
 	
@@ -280,6 +280,7 @@ connectBadgeReader: function(brOnMessageCallBack, response ){
 	
 	this.brOnMessageCallBack = brOnMessageCallBack;
 	this.brResponseMessage = response;
+	this.brResponseError = error;
 },
 
 brOnOpen: function(){	
@@ -320,7 +321,9 @@ brClose:function(){
   
 },
 brOnError : function(evnt){
-   alert("Error has occured In Badge Reader Connection");
+	if(airbus.mes.operationdetail.ModelManager.brResponseError)
+		airbus.mes.operationdetail.ModelManager.brResponseError();	
+   //alert("Error has occured In Badge Reader Connection");
 },
 
 brOnClose : function(){ 
