@@ -350,8 +350,8 @@ sap.ui
 						var callBackFn = function(){
 								console.log("callback entry \n");
 								console.log("connected");
-								if(airbus.mes.operationdetail.ModelManager.badgeReader.readyState==1){
-									airbus.mes.operationdetail.ModelManager.brStartReading();
+								if(airbus.mes.shell.ModelManager.badgeReader.readyState==1){
+									airbus.mes.shell.ModelManager.brStartReading();
 									sap.ui.getCore().byId("msgstrpConfirm").setText("Conenction Opened");
 									var i=10;
 									
@@ -360,12 +360,12 @@ sap.ui
 										sap.ui.getCore().byId("msgstrpConfirm").setText("Please Connect your badge in "+ i--);
 										if(i<0){
 											clearInterval(timer);
-											airbus.mes.operationdetail.ModelManager.brStopReading();
+											airbus.mes.shell.ModelManager.brStopReading();
 											sap.ui.getCore().byId("scanButton").setEnabled(true);
 											sap.ui.getCore().byId("msgstrpConfirm").setType("Warning");
 											sap.ui.getCore().byId("msgstrpConfirm").setText("Conenction Timeout. Click on scan to confirm");
-											airbus.mes.operationdetail.ModelManager.brStopReading();
-											airbus.mes.operationdetail.ModelManager.badgeReader.close();
+											airbus.mes.shell.ModelManager.brStopReading();
+											airbus.mes.shell.ModelManager.badgeReader.close();
 											setTimeout(function(){
 												sap.ui.getCore().byId("msgstrpConfirm").setVisible(false);
 											},2000)
@@ -416,26 +416,26 @@ sap.ui
 								sap.ui.getCore().byId("msgstrpConfirm").setText("");
 							},2000)
 							
-							airbus.mes.operationdetail.ModelManager.badgeReader.close();
-							sap.ui.getCore().byId("scanButton").setEnabled("true");
+							airbus.mes.shell.ModelManager.badgeReader.close();
+							sap.ui.getCore().byId("scanButton").setEnabled(true);
 						}
 						
 						var error = function(){
 							sap.ui.getCore().byId("scanButton").setEnabled(true);
 							sap.ui.getCore().byId("msgstrpConfirm").setVisible(true);
 							sap.ui.getCore().byId("msgstrpConfirm").setType("Error");
-							sap.ui.getCore().byId("msgstrpConfirm").setText("Error Establishing Connection. Please try again.");
+							sap.ui.getCore().byId("msgstrpConfirm").setText("Error in connection to websocket. try again.");
 							setTimeout(function(){
 								sap.ui.getCore().byId("msgstrpConfirm").setVisible(false);
 								sap.ui.getCore().byId("msgstrpConfirm").setText("");
 							},2000)
-							sap.ui.getCore().byId("scanButton").setEnabled("true");
+							sap.ui.getCore().byId("scanButton").setEnabled(true);
 							
 						}
 							
 							// Open a web socket connection
 							//if(!airbus.mes.operationdetail.ModelManager.badgeReader){
-							airbus.mes.operationdetail.ModelManager.connectBadgeReader(callBackFn,response, error);
+							airbus.mes.shell.ModelManager.connectBadgeReader(callBackFn,response, error);
 							//}
 
 							sap.ui.getCore().byId("msgstrpConfirm").setType("Information");
