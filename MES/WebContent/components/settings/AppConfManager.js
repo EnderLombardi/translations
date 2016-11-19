@@ -40,7 +40,7 @@ airbus.mes.settings.AppConfManager =  {
 	/******************************************************
 	 * Get the Configuration value
 	 */
-	getConfiguration: function(pKey) {
+	getConfiguration: function(pKey, dKey) {
 		
     	// check if object exist before lopping on.
 		if ( airbus.mes.settings.AppConfManager.oAppConfiguration.configarationList != undefined ) {

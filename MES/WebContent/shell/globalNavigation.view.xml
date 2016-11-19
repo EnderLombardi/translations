@@ -25,14 +25,21 @@
                            <Button id="informationButton" icon="sap-icon://message-information" type="Transparent" press="onInformation" visible="false"  class="whiteColor whiteButton" />
                            <Button id="homeButton" icon="sap-icon://home" type="Transparent" press="goToHome" visible="false"  class="whiteColor whiteButton" />
                           <!--  <Button id="myProfile" icon="sap-icon://account" type="Transparent" press="goToMyProfile" visible="true"/> -->
-                           <Button id="settingsButton"
+                          <!--  <Button id="settingsButton"
                                    type="Transparent" 
                                    icon="sap-icon://action-settings" 
                                    tooltip="{ShellI18n>Settings}"
                                    class="whiteColor whiteButton" 
                                    press="navigate"
                                    enabled="{ path : './', formatter : 'airbus.mes.shell.util.Formatter.checkCurrentView' }"
-                            ></Button> 
+                            ></Button> --> 
+                             <Button id="settingsButton"
+                                   type="Transparent" 
+                                   icon="sap-icon://action-settings" 
+                                   class="whiteColor whiteButton" 
+                                   press="openSettingPopup"
+                                   enabled="{ path : './', formatter : 'airbus.mes.shell.util.Formatter.checkCurrentView' }"
+                            ></Button>
                            </content>
                     </Toolbar>
 		</customHeader>

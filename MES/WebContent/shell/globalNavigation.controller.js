@@ -383,13 +383,13 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 			//}
 
 			sap.ui.getCore().byId("msgstrpMyProfile").setType("Information");
-			sap.ui.getCore().byId("msgstrpMyProfile").setText("Opening connection Please wait...")
+			sap.ui.getCore().byId("msgstrpMyProfile").setText("Opening connection Please wait...");
 			sap.ui.getCore().byId("msgstrpMyProfile").setVisible(true);
 			
 	},
 	
 	
-	onSaveMyProfile:function(oEvent){
+	onSaveMyProfile : function(oEvent){
 		sap.ui.getCore().getElementById("msgstrpMyProfile").setVisible(false);
 		var badgeID = sap.ui.getCore().getElementById("badgeIdMyProfile").getValue();
 		var uID = sap.ui.getCore().getElementById("uIdMyProfile").getValue();
@@ -464,6 +464,12 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 			}
 		}
 		
+	},
+	openSettingPopup : function(){
+		if(!this.settingPopup){
+			this.settingPopup = sap.ui.xmlfragment("airbus.mes.shell.settingPopover", airbus.mes.shell.oView.getController());
+		}
+		this.settingPopup.openBy(this.getView().byId("settingsButton"));
 	},
 	
 	logOut : function() {
