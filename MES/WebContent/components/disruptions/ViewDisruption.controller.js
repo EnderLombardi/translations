@@ -5,6 +5,7 @@ sap.ui
 		.controller(
 				"airbus.mes.disruptions.ViewDisruption",
 				{
+					pressEvent : undefined,
 
 					/**
 					 * Called when a controller is instantiated and its View
@@ -247,9 +248,13 @@ sap.ui
 								.setText(sPath);
 						sap.ui.getCore().byId("disruptionCommentBox").setValue(
 								"");
+						
+						sap.ui.getCore().byId("disruptionCommentOK")
+						.detachPress(this.pressEvent);
 						sap.ui.getCore().byId("disruptionCommentOK")
 								.attachPress(okEvent);
-
+						this.pressEvent = okEvent;
+						
 						airbus.mes.disruptions.__enterCommentDialogue.open();
 					},
 
@@ -742,7 +747,7 @@ sap.ui
 
 						if (isSuccess) {
 							var sPath = sap.ui.getCore().byId(
-									"disruptionCommentSpath").getValue();
+									"disruptionCommentSpath").getText();
 							sap.ui.getCore().byId("ViewDisruptionView").getModel("operationDisruptionsModel").getProperty(sPath).Status = airbus.mes.disruptions.Formatter.status.solved;
 							
 							var currDate = new Date();
