@@ -8,20 +8,21 @@ airbus.mes.shell.UserImageManager =  {
 	/**************************************************
 	 * Get user image
 	 */
-	getUserImage: function(username){
+	getUserImage: function(imageId, username){
 		
 		var urlUserImage = airbus.mes.shell.ModelManager.urlModel.getProperty("urlGetUserImage");
-		return urlUserImage.replace("$username", username.toUpperCase());
-	},
-	
-	getImageifConfig: function(username){
-		if(airbus.mes.settings.AppConfManager.getConfiguration("MES_PHOTO_DISPLAY")){
-			var urlUserImage = airbus.mes.shell.ModelManager.urlModel.getProperty("urlGetUserImage");
-			return urlUserImage.replace("$username", username.toUpperCase());
-		}
-		else
-			return "../images/user.png";
+		urlUserImage = urlUserImage.replace("$username", username.toUpperCase());
 		
-	}
+		var downloadingImage = new Image();
+		downloadingImage.id = imageId+"_rand";
+
+		downloadingImage.onload = function(){ 
+                                var id = this.id.split("_rand")[0];
+		                  $("#" + id )[0].src = this.src; };
+		                  
+		downloadingImage.src = urlUserImage;
+
+		
+		return "../images/user.png"	}
 	
 }

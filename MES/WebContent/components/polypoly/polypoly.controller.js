@@ -201,7 +201,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 			        				 parts : [oContext.getProperty("name")],
 			        				 formatter : function(oRow) {
 			        					 if(oRow != null){
-			        						 return oRow.picture;
+			        						 return oRow.picture?airbus.mes.shell.UserImageManager.getUserImage(this.getId(), oRow.picture):oRow.picture;
 			        					 }
 			        				 }
 			        			 } ,
@@ -210,7 +210,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 			        				 formatter : function(
 			        						 type) {
 			        					 return type == "UA_A"
-			        						 || type == "UA_P"
+			        						 || (type == "UA_P" && airbus.mes.settings.AppConfManager.getConfiguration("MES_PHOTO_DISPLAY")); 
 			        				 }
 			        			 } 
 						   }),

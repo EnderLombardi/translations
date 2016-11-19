@@ -442,19 +442,30 @@ airbus.mes.stationtracker.util.Formatter = {
 						//Correction by NJA		
 						if(airbus.mes.settings.AppConfManager.getConfiguration("MES_PHOTO_DISPLAY")){ // Check if user image to be displayed  or not
 
-							html += + '<img src=' + oCurrentAffectedUser.picture + ' class="ylabelUserImage" />'		// To display User Image
+
+							var imgId = sap.ui.getCore().byId("stationTrackerView").createId("folder_" + oSection.key + "Image--"+ oCurrentAffectedUser.picture);
+//							var imgId = sap.ui.getCore().byId("stationTrackerView").createId("Image--"+ Math.floor((Math.random() * 10000000000) + 1) + "--"+ oCurrentAffectedUser.picture);
+							
+							html += '<img id="' + imgId +'" src=' + airbus.mes.shell.UserImageManager.getUserImage(imgId, oCurrentAffectedUser.picture) + ' class="ylabelUserImage" />'		// To display User Image
 						}
-						html = html
-								+ '<span class="ylabelUser" title='
+
+						if(airbus.mes.settings.AppConfManager.getConfiguration("MES_PHOTO_NAME")){ // Check if user image to be displayed  or not
+
+
+						html +=  '<span class="ylabelUser" title='
 								+ airbus.mes.stationtracker.util.Formatter.spaceInsecable(oCurrentAffectedUser.lastName) + '>'
-								+ oCurrentAffectedUser.lastName	+ '</span><span  class="yMoreLabel" >'
+								+ oCurrentAffectedUser.lastName	+ '</span>';
+						}
+
+						html += '<span  class="yMoreLabel" >'
 								+ sSpanWarn
 								+ '<span title=' +  airbus.mes.stationtracker.util.Formatter.computeDelay( fProgress,fDuration ) 
 								+ '>' 
 								+ airbus.mes.stationtracker.util.Formatter.computeDelay( fProgress,fDuration )
 								+ '</span>' 
-								+ '</span></div>';
-						return html;
+								+ '</span>';
+						
+						return html + '</div>';
 
 					}
 					
