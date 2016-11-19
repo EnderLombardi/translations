@@ -731,7 +731,7 @@ sap.ui
 						var comment = sap.ui.getCore().byId(
 								"disruptionCommentBox").getValue();
 
-						var i18nModel = this.getView().getModel("i18nModel");
+						var i18nModel = sap.ui.getCore().byId("ViewDisruptionView").getModel("i18nModel");
 
 						// Call to Mark Solved Disruption
 						var isSuccess = airbus.mes.disruptions.ModelManager
@@ -743,27 +743,23 @@ sap.ui
 						if (isSuccess) {
 							var sPath = sap.ui.getCore().byId(
 									"disruptionCommentSpath").getValue();
-							this.getView()
-									.getModel("operationDisruptionsModel")
-									.getProperty(sPath).Status = airbus.mes.disruptions.Formatter.status.solved;
+							sap.ui.getCore().byId("ViewDisruptionView").getModel("operationDisruptionsModel").getProperty(sPath).Status = airbus.mes.disruptions.Formatter.status.solved;
 							
 							var currDate = new Date();
 							var date = currDate.getFullYear() + "-" + currDate.getMonth() + "-" + currDate.getDate();
 							
 							var oComment = {
-									"Action" : this.getView().getModel("i18nModel").getProperty("markSolved"),
+									"Action" : i18nModel.getProperty("markSolved"),
 									"Comments" : comment,
 									"Counter" : "",
 									"Date" : date,
 									"MessageRef" : msgRef,
 									"UserFullName" : sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user")
 							};
-							this.getView()
-									.getModel("operationDisruptionsModel")
+							sap.ui.getCore().byId("ViewDisruptionView").getModel("operationDisruptionsModel")
 									.getProperty("/Rowsets/Rowset/1/Row").push(oComment);
 							
-							this.getView()
-									.getModel("operationDisruptionsModel")
+							sap.ui.getCore().byId("ViewDisruptionView").getModel("operationDisruptionsModel")
 									.refresh();
 						}
 					},

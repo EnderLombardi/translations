@@ -530,7 +530,7 @@ airbus.mes.disruptions.ModelManager = {
 	 **************************************************************************/
 	getUrlToMarkSolvedDisruption : function() {
 
-		var urlToAckDisruption = this.urlModel
+		var urlToMarkSolvedDisruption = this.urlModel
 				.getProperty("urlToMarkSolvedDisruption");
 		return urlToMarkSolvedDisruption;
 	},
