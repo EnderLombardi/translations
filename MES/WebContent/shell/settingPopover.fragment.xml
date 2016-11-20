@@ -1,9 +1,18 @@
 <core:FragmentDefinition xmlns="sap.m"
 	xmlns:core="sap.ui.core">
-	<Popover showHeader="false" placement="Button" showArrow="true">
-		<VBox>
+	<Popover showHeader="false" placement="Bottom" showArrow="false">
+		<VBox justifyContent="start" class="backgroundColor">
 			<items>
-				<Text text="tdfgbgdfd"></Text>
+				<Button id="popupSettingsButton" class="whiteText" width="100%" type="Transparent" text="{ShellI18n>ChangeStation}"
+					icon="sap-icon://repost" press="navigate">
+				</Button>
+				<Button class="whiteText" type="Transparent" width="100%" text="{ShellI18n>myProfileTitle}"
+					icon="sap-icon://business-card" press="goToMyProfile"
+					enabled="{ path : 'ShellI18n>', formatter : 'airbus.mes.shell.util.Formatter.checkToEnableProfile' }">
+				</Button>
+				<Button class="whiteText" type="Transparent" width="100%" text="{ShellI18n>close}"
+					icon="sap-icon://log" press="closePopover">
+				</Button>
 			</items>
 		</VBox>
 	</Popover>

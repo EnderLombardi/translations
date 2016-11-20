@@ -352,18 +352,18 @@ sap.ui
 								console.log("connected");
 								if(airbus.mes.shell.ModelManager.badgeReader.readyState==1){
 									airbus.mes.shell.ModelManager.brStartReading();
-									sap.ui.getCore().byId("msgstrpConfirm").setText("Conenction Opened");
+									sap.ui.getCore().byId("msgstrpConfirm").setText(sap.ui.getCore().getModel("ShellI18n").getProperty("ConenctionOpened"));
 									var i=10;
 									
 									timer = setInterval(function(){
 										sap.ui.getCore().byId("msgstrpConfirm").setType("Information");
-										sap.ui.getCore().byId("msgstrpConfirm").setText("Please Connect your badge in "+ i--);
+										sap.ui.getCore().byId("msgstrpConfirm").setText(sap.ui.getCore().getModel("ShellI18n").getProperty("ConnectYourBadge")+ i--);//
 										if(i<0){
 											clearInterval(timer);
 											airbus.mes.shell.ModelManager.brStopReading();
 											sap.ui.getCore().byId("scanButton").setEnabled(true);
 											sap.ui.getCore().byId("msgstrpConfirm").setType("Warning");
-											sap.ui.getCore().byId("msgstrpConfirm").setText("Conenction Timeout. Click on scan to confirm");
+											sap.ui.getCore().byId("msgstrpConfirm").setText(sap.ui.getCore().getModel("ShellI18n").getProperty("timeout"));
 											airbus.mes.shell.ModelManager.brStopReading();
 											airbus.mes.shell.ModelManager.badgeReader.close();
 											setTimeout(function(){
@@ -386,45 +386,40 @@ sap.ui
 								id = data.Message.split(":")[1];
 
 								if (type == "UID") {
-									sap.ui.getCore().byId("UIDForConfirmation")
-											.setValue(id);
+									sap.ui.getCore().byId("UIDForConfirmation").setValue(id);
 									sap.ui.getCore().byId("msgstrpConfirm").setType("Success");
-									sap.ui.getCore().byId("msgstrpConfirm").setText("Scanned Successfully");
+									sap.ui.getCore().byId("msgstrpConfirm").setText(sap.ui.getCore().getModel("ShellI18n").getProperty("ScannedSuccessfully"));
 									sap.ui.getCore().byId("msgstrpConfirm").setVisble(true);
 								} else if (type == "BID") {
 									sap.ui.getCore().byId("badgeIDForConfirmation").setValue(id);
 									sap.ui.getCore().byId("msgstrpConfirm").setType("Success");
-									sap.ui.getCore().byId("msgstrpConfirm").setText("Scanned Successfully");
+									sap.ui.getCore().byId("msgstrpConfirm").setText(sap.ui.getCore().getModel("ShellI18n").getProperty("ScannedSuccessfully"));
 									sap.ui.getCore().byId("msgstrpConfirm").setVisble(true);
 								} else {
-									sap.ui.getCore().byId("msgstrpConfirm")
-											.setVisible(true);
-									sap.ui.getCore().byId("msgstrpConfirm")
-											.setText("Error in scanning. Please try again.");
+									sap.ui.getCore().byId("msgstrpConfirm").setVisible(true);
+									sap.ui.getCore().byId("msgstrpConfirm").setText(sap.ui.getCore().getModel("ShellI18n").getProperty("ErrorScanning"));
 									sap.ui.getCore().byId("msgstrpConfirm").setType("Error");
 								}
 							}
 							else {
-								sap.ui.getCore().byId("msgstrpConfirm")
-										.setVisible(true);
+								sap.ui.getCore().byId("msgstrpConfirm").setVisible(true);
 								sap.ui.getCore().byId("msgstrpConfirm").setType("Error");
-								sap.ui.getCore().byId("msgstrpConfirm")
-										.setText("Error in scanning. Please try again.");
+								sap.ui.getCore().byId("msgstrpConfirm").setText(sap.ui.getCore().getModel("ShellI18n").getProperty("ErrorScanning"));
 							}
 							setTimeout(function(){
 								sap.ui.getCore().byId("msgstrpConfirm").setVisible(false);
 								sap.ui.getCore().byId("msgstrpConfirm").setText("");
-							},2000)
-							
+							},2000);
 							airbus.mes.shell.ModelManager.badgeReader.close();
 							sap.ui.getCore().byId("scanButton").setEnabled(true);
 						}
 						
 						var error = function(){
+							clearInterval(timer);
 							sap.ui.getCore().byId("scanButton").setEnabled(true);
 							sap.ui.getCore().byId("msgstrpConfirm").setVisible(true);
 							sap.ui.getCore().byId("msgstrpConfirm").setType("Error");
-							sap.ui.getCore().byId("msgstrpConfirm").setText("Error in connection to websocket. try again.");
+							sap.ui.getCore().byId("msgstrpConfirm").setText(sap.ui.getCore().getModel("ShellI18n").getProperty("ErrorConnectionWebSocket"));
 							setTimeout(function(){
 								sap.ui.getCore().byId("msgstrpConfirm").setVisible(false);
 								sap.ui.getCore().byId("msgstrpConfirm").setText("");
@@ -439,7 +434,7 @@ sap.ui
 							//}
 
 							sap.ui.getCore().byId("msgstrpConfirm").setType("Information");
-							sap.ui.getCore().byId("msgstrpConfirm").setText("Opening connection Please wait...")
+							sap.ui.getCore().byId("msgstrpConfirm").setText(sap.ui.getCore().getModel("ShellI18n").getProperty("OpeningConnection"));//
 							sap.ui.getCore().byId("msgstrpConfirm").setVisible(true);
 							
 					},

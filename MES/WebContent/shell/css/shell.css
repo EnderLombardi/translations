@@ -251,3 +251,11 @@ table {
 	background-color: green;
 }
 /** End CSS for My Profile **/
+
+/** CSS for setting popover fragment **/
+.backgroundColor{
+	background-color:black;
+}
+.backgroundColor .whiteText .sapMBtnContent{
+	color:white !important;
+}

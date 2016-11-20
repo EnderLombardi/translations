@@ -8,6 +8,12 @@ airbus.mes.shell.util.Formatter = {
 
 		console.log("toto");
 	},
+	checkToEnableProfile : function(){
+		if(airbus.mes.settings.ModelManager.site)
+			return true;
+		else 
+			return false;
+	},
 	setInformationVisibility : function() {
 		if (!airbus.mes.stationtracker.isVisible) {
 			return airbus.mes.stationtracker.isVisible;

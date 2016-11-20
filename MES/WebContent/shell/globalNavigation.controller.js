@@ -27,7 +27,7 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 
 		// Active settings button during leaving settings screen
 		if (airbus.mes.shell != undefined) {
-			airbus.mes.shell.oView.byId("settingsButton").setEnabled(true);
+			sap.ui.getCore().byId("popupSettingsButton").setEnabled(true);
 			this.setInformationVisibility(false);
 		};
 
@@ -86,9 +86,11 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 	 * @memberOf components.globalnav.globalNavigation
 	 */
 
-//	onAfterRendering : function() {
-//		
-//	},
+	onAfterRendering : function() {
+		//to avoid the error and multiple checks of undefined buttons 
+		if(!this.settingPopup)
+			this.settingPopup = sap.ui.xmlfragment("airbus.mes.shell.settingPopover", airbus.mes.shell.oView.getController());
+	},
 
 
 	/**
@@ -104,7 +106,7 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 
 		this.setInformationVisibility(false);
 		// Deactivate button on settings screen
-		airbus.mes.shell.oView.byId("settingsButton").setEnabled(false);
+		sap.ui.getCore().byId("popupSettingsButton").setEnabled(false);
 		
 		var textButtonTo = undefined;
 		
@@ -287,13 +289,14 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 	 * My Profile PopUp
 	 */
 	goToMyProfile:function(){
-		if(!this._myProfileDailog){
-			this._myProfileDailog = sap.ui.xmlfragment("airbus.mes.shell.myProfile", this);
+		if(!this.myProfileDailog){
+			this.myProfileDailog = sap.ui.xmlfragment("airbus.mes.shell.myProfile", this);
 			this.getView().addDependent(this._myProfileDialog);			
 		}
-		this._myProfileDailog.open();
+		this.myProfileDailog.open();
 		sap.ui.getCore().getElementById("msgstrpMyProfile").setVisible(false);
-		sap.ui.getCore().byId("uIdMyProfile")
+		//TODO bind to data model not to clear explicitly
+		/*		sap.ui.getCore().byId("uIdMyProfile")
 				.setValue("");
 		sap.ui.getCore().byId("badgeIdMyProfile")
 				.setValue("");
@@ -302,10 +305,10 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 		sap.ui.getCore().byId("passwordMyProfile")
 				.setValue("");
 		sap.ui.getCore().byId("pinCodeMyProfile")
-		.setValue("");
+		.setValue("");*/
 	},
 	onCancelMyProfile:function(){
-		this._myProfileDailog.close();
+		this.myProfileDailog.close();
 	},
 	
 	/***********************************************************
@@ -313,8 +316,6 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 	 */
 	onScanMyProfile : function(oEvt) {
 		var timer;
-		sap.ui.getCore().byId("uIdMyProfile").setValue();
-		sap.ui.getCore().byId("badgeIdMyProfile").setValue();
 			//close existing connection. then open again
 			oEvt.getSource().setEnabled(false);
 			var callBackFn = function(){
@@ -322,18 +323,18 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 				console.log("connected");
 				if(airbus.mes.shell.ModelManager.badgeReader.readyState==1){
 					airbus.mes.shell.ModelManager.brStartReading();
-					sap.ui.getCore().byId("msgstrpMyProfile").setText("Conenction Opened");
+					sap.ui.getCore().byId("msgstrpMyProfile").setText(sap.ui.getCore().getModel("ShellI18n").getProperty("ConenctionOpened"));
 					var i=10;
 					
 					timer = setInterval(function(){
 						sap.ui.getCore().byId("msgstrpMyProfile").setType("Information");
-						sap.ui.getCore().byId("msgstrpMyProfile").setText("Please Connect your badge in "+ i--);
+						sap.ui.getCore().byId("msgstrpMyProfile").setText(sap.ui.getCore().getModel("ShellI18n").getProperty("ConnectYourBadge")+""+i--);
 						if(i<0){
 							clearInterval(timer);
 							airbus.mes.shell.ModelManager.brStopReading();
-							sap.ui.getCore().byId("scanButton").setEnabled(true);
+							sap.ui.getCore().byId("scanButtonMyProfile").setEnabled(true);
 							sap.ui.getCore().byId("msgstrpMyProfile").setType("Warning");
-							sap.ui.getCore().byId("msgstrpMyProfile").setText("Conenction Timeout. Click on scan to confirm");
+							sap.ui.getCore().byId("msgstrpMyProfile").setText(sap.ui.getCore().getModel("ShellI18n").getProperty("timeout"));
 							airbus.mes.shell.ModelManager.brStopReading();
 							airbus.mes.shell.ModelManager.badgeReader.close();
 							setTimeout(function(){
@@ -349,41 +350,64 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 
 		var response = function(data) {
 			clearInterval(timer);
-			sap.ui.getCore().byId("scanButton").setEnabled(true);
+			sap.ui.getCore().byId("uIdMyProfile").setValue();
+			sap.ui.getCore().byId("badgeIdMyProfile").setValue();
+			sap.ui.getCore().byId("scanButtonMyProfile").setEnabled(true);
 			sap.ui.getCore().byId("msgstrpMyProfile").setVisible(false);
 			if (data.Message) {
 				type = data.Message.split(":")[0]
 				id = data.Message.split(":")[1];
 
 				if (type == "UID") {
-					sap.ui.getCore().byId("uIdMyProfile")
-							.setValue(id);
+					sap.ui.getCore().byId("uIdMyProfile").setValue(id);
+					sap.ui.getCore().byId("msgstrpMyProfile").setType("Success");
+					sap.ui.getCore().byId("msgstrpMyProfile").setText(sap.ui.getCore().getModel("ShellI18n").getProperty("ScannedSuccessfully"));
+					sap.ui.getCore().byId("msgstrpMyProfile").setVisble(true);
+		
 				} else if (type == "BID") {
-					sap.ui.getCore().byId(
-							"badgeIdMyProfile").setValue(id);
+					sap.ui.getCore().byId("badgeIdMyProfile").setValue(id);
+					sap.ui.getCore().byId("msgstrpMyProfile").setType("Success");
+					sap.ui.getCore().byId("msgstrpMyProfile").setText(sap.ui.getCore().getModel("ShellI18n").getProperty("ScannedSuccessfully"));
+					sap.ui.getCore().byId("msgstrpMyProfile").setVisble(true);
 				} else {
-					sap.ui.getCore().byId("msgstrpMyProfile")
-							.setVisible(true);
-					sap.ui.getCore().byId("msgstrpMyProfile")
-							.setText("Error in scanning. Please try again.");
+					sap.ui.getCore().byId("msgstrpMyProfile").setVisible(true);
+					sap.ui.getCore().byId("msgstrpMyProfile").setText(sap.ui.getCore().getModel("ShellI18n").getProperty("ErrorScanning"));
+					sap.ui.getCore().byId("msgstrpMyProfile").setType("Error");
 				}
 			}
 			else {
-				sap.ui.getCore().byId("msgstrpMyProfile")
-						.setVisible(true);
-				sap.ui.getCore().byId("msgstrpMyProfile")
-						.setText("Error in scanning. Please try again.");
+				sap.ui.getCore().byId("msgstrpMyProfile").setVisible(true);
+				sap.ui.getCore().byId("msgstrpMyProfile").setType("Error");
+				sap.ui.getCore().byId("msgstrpMyProfile").setText(sap.ui.getCore().getModel("ShellI18n").getProperty("ErrorScanning"));
 			}
+			setTimeout(function(){
+				sap.ui.getCore().byId("msgstrpMyProfile").setVisible(false);
+				sap.ui.getCore().byId("msgstrpMyProfile").setText("");
+			},2000);
 			airbus.mes.shell.ModelManager.badgeReader.close();
+			sap.ui.getCore().byId("scanButtonMyProfile").setEnabled(true);
 		}
+		var error = function(){
+			clearInterval(timer);
+			sap.ui.getCore().byId("scanButtonMyProfile").setEnabled(true);
+			sap.ui.getCore().byId("msgstrpMyProfile").setVisible(true);
+			sap.ui.getCore().byId("msgstrpMyProfile").setType("Error");
+			sap.ui.getCore().byId("msgstrpMyProfile").setText(sap.ui.getCore().getModel("ShellI18n").getProperty("ErrorConnectionWebSocket"));
+			setTimeout(function(){
+				sap.ui.getCore().byId("msgstrpMyProfile").setVisible(false);
+				sap.ui.getCore().byId("msgstrpMyProfile").setText("");
+			},2000)
+			sap.ui.getCore().byId("scanButtonMyProfile").setEnabled(true);
 			
+		}
+	
 			// Open a web socket connection
 			//if(!airbus.mes.shell.ModelManager.badgeReader){
-			airbus.mes.shell.ModelManager.connectBadgeReader(callBackFn,response);
+			airbus.mes.shell.ModelManager.connectBadgeReader(callBackFn,response,error);
 			//}
 
 			sap.ui.getCore().byId("msgstrpMyProfile").setType("Information");
-			sap.ui.getCore().byId("msgstrpMyProfile").setText("Opening connection Please wait...");
+			sap.ui.getCore().byId("msgstrpMyProfile").setText(sap.ui.getCore().getModel("ShellI18n").getProperty("OpeningConnection"));
 			sap.ui.getCore().byId("msgstrpMyProfile").setVisible(true);
 			
 	},
@@ -470,6 +494,9 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 			this.settingPopup = sap.ui.xmlfragment("airbus.mes.shell.settingPopover", airbus.mes.shell.oView.getController());
 		}
 		this.settingPopup.openBy(this.getView().byId("settingsButton"));
+	},
+	closePopover :function(){
+		this.settingPopup.close()
 	},
 	
 	logOut : function() {

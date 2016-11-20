@@ -296,7 +296,7 @@ sap.ui.controller("airbus.mes.settings.Settings",
 				// nav.to("Detail", context);
 				// Active settings button during leaving settings screen
 				if (airbus.mes.shell != undefined) {
-					airbus.mes.shell.oView.byId("settingsButton").setEnabled(true);
+					sap.ui.getCore().byId("popupSettingsButton").setEnabled(true);
 				}
 
 				switch (this.getOwnerComponent().mProperties.buttonAction) {
@@ -507,7 +507,7 @@ sap.ui.controller("airbus.mes.settings.Settings",
 
 				// Active settings button during leaving settings screen
 				if (airbus.mes.shell != undefined) {
-					airbus.mes.shell.oView.byId("settingsButton").setEnabled(true);
+					sap.ui.getCore().byId("popupSettingsButton").setEnabled(true);
 				}
 
 				switch (this.getOwnerComponent().mProperties.buttonAction) {

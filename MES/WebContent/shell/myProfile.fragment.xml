@@ -1,14 +1,14 @@
 <core:FragmentDefinition xmlns:core="sap.ui.core"
 	xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.ui.layout.form"
 	xmlns:l="sap.ui.layout">
-	<Dialog title="{ShellI18n>myProfileTitle}" contentHeight="40%" contentWidth="20%"	id="badgeMngMyProfile">
+	<Dialog title="{ShellI18n>myProfileTitle}" contentHeight="60%" contentWidth="30%"	id="badgeMngMyProfile">
 		<Toolbar class="toolBarBottom">
-			<Button icon="sap-icon://business-card" text="Scan" type="Emphasized" press="onScanMyProfile"/>
+			<Button id="scanButtonMyProfile" icon="sap-icon://business-card" text="Scan" type="Emphasized" press="onScanMyProfile"/>
 			<ToolbarSpacer/>
 			<Button icon="sap-icon://edit" text="Edit" type="Emphasized" press="onEditMyProfile"/>
 		</Toolbar>
 		<content>		
-			<HBox height="35px" class="messageHBox">
+			<HBox height="3rem" class="messageHBox">
 				<MessageStrip id="msgstrpMyProfile" visible="false"
 					width="100%" class="sapUiSmallMarginBeginEnd" showIcon="true"
 					showCloseButton="true">
@@ -22,9 +22,9 @@
 						columnsL="3" columnsM="3">
 						<f:content>
 							<Input id="uIdMyProfile" type="Text"
-								placeholder="{ShellI18n>UID}" liveChange="uIDLive" />							
+								placeholder="{ShellI18n>UID}" liveChange="uIDLive" enabled="false"/>							
 							<Input id="badgeIdMyProfile" type="Text"
-								placeholder="{ShellI18n>badgeID}" liveChange="badgeIDLive" />
+								placeholder="{ShellI18n>badgeID}" liveChange="badgeIDLive" enabled="false"/>
 							<Input id="pinCodeMyProfile" type="Text" maxLength = "4"
 								placeholder="{ShellI18n>pinCode}" liveChange="pinCodeLive" />							
 							<Input id="userNameMyProfile" type="Text" required="true"
