@@ -45,25 +45,36 @@ airbus.mes.settings.AppConfManager =  {
     	// check if object exist before lopping on.
 		if ( airbus.mes.settings.AppConfManager.oAppConfiguration.configarationList != undefined ) {
 		
-		var value;
+			var value = _getConfiguration(pKey); // checking with primary key 
+			
+			return value != null?value: _getConfiguration(dKey); // if value not found return default Value
+			
+		}		
+	},
+	_getConfiguration: function(Key) {
+		
+    	// check if object exist before lopping on.
+		if ( airbus.mes.settings.AppConfManager.oAppConfiguration.configarationList != undefined ) {
+		
+		var value = null;
 				
 		$.each(airbus.mes.settings.AppConfManager.oAppConfiguration.configarationList, function(key, row) {
-			if(row.key == pKey){
+			if(row.key == Key){
 				value = row.value;
 				return;
 			}
 
 		});
-		
+
 		if(value == "FALSE")
 			return false;
 		else if (value == "TRUE")
 			return true;
 		else
 			return value;
-		return true
-	
+		  
+			
 		}		
-	},
+	}
 	
 }
