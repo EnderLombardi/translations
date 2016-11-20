@@ -295,8 +295,7 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 		}
 		this.myProfileDailog.open();
 		sap.ui.getCore().getElementById("msgstrpMyProfile").setVisible(false);
-		//TODO bind to data model not to clear explicitly
-		/*		sap.ui.getCore().byId("uIdMyProfile")
+				sap.ui.getCore().byId("uIdMyProfile")
 				.setValue("");
 		sap.ui.getCore().byId("badgeIdMyProfile")
 				.setValue("");
@@ -305,7 +304,7 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 		sap.ui.getCore().byId("passwordMyProfile")
 				.setValue("");
 		sap.ui.getCore().byId("pinCodeMyProfile")
-		.setValue("");*/
+		.setValue("");
 	},
 	onCancelMyProfile:function(){
 		this.myProfileDailog.close();

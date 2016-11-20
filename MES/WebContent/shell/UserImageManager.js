@@ -17,12 +17,11 @@ airbus.mes.shell.UserImageManager =  {
 		downloadingImage.id = imageId+"_rand";
 
 		downloadingImage.onload = function(){ 
-                                var id = this.id.split("_rand")[0];
-		                  $("#" + id )[0].src = this.src; };
-		                  
-		downloadingImage.src = urlUserImage;
-
-		
-		return "../images/user.png"	}
+                          	var id = this.id.split("_rand")[0];
+                          	$("#" + id )[0].src = this.src;
+		                  };
+		downloadingImage.src = urlUserImage;		
+		return "../images/user.png"
+	}
 	
 }

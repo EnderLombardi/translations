@@ -1,5 +1,5 @@
 <core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
-	xmlns="sap.m" controllerName="airbus.mes.resourcepool.views.Main"
+	xmlns="sap.m" xmlns:ui="sap.ui.layout" controllerName="airbus.mes.resourcepool.views.Main"
 	xmlns:html="http://www.w3.org/1999/xhtml">
 	<Page showHeader="false" height="100%" enableScrolling="false">
 		<content>
@@ -39,8 +39,11 @@
 								growingThreshold="1000">
 								<CustomListItem>
 									<content>
-										<HBox>
-											<Image></Image>
+										<ui:HorizontalLayout class="fixDsiplayRpImg">
+											<Image class="ylabelUserImage"
+												visible="{ path : 'ResourcePoolDetailModel>userId', formatter : 'airbus.mes.resourcepool.util.Formatter.displayImage' }"
+												src="{ path : 'ResourcePoolDetailModel>userId', formatter : 'airbus.mes.resourcepool.util.Formatter.selectImageToDisplay' }"></Image>
+
 											<VBox>
 												<HBox>
 													<Text class="customlistTitle" text="{ResourcePoolDetailModel>name}"></Text>
@@ -49,7 +52,7 @@
 												<Text class="listItemDescrption"
 													text="{parts: ['ResourcePoolDetailModel>loanedToRPName', 'ResourcePoolDetailModel>assignedToRPName'], formatter:'airbus.mes.resourcepool.util.Formatter.userAlreadyAssigned'}"></Text>
 											</VBox>
-										</HBox>
+										</ui:HorizontalLayout>
 									</content>
 									<customData>
 										<core:CustomData key="personal_no"
@@ -124,9 +127,10 @@
 									'ResourcePoolDetailModel>NAME'], formatter:'airbus.mes.resourcepool.util.Formatter.assignedToSelf'}"> -->
 								<CustomListItem>
 									<content>
-										<HBox>
-											<Image>
-											</Image>
+										<ui:HorizontalLayout class="fixDsiplayRpImg">
+											<Image class="ylabelUserImage"
+												visible="{ path : 'ResourcePoolDetailModel>userId', formatter : 'airbus.mes.resourcepool.util.Formatter.displayImage' }"
+												src="{ path : 'ResourcePoolDetailModel>userId', formatter : 'airbus.mes.resourcepool.util.Formatter.selectImageToDisplay' }"></Image>
 											<VBox>
 												<HBox>
 													<Text class="customlistTitle" text="{ResourcePoolDetailModel>name}"></Text>
@@ -135,7 +139,7 @@
 												<Text class="listItemDescrption"
 													text="{parts: ['ResourcePoolDetailModel>loanedToRPName', 'ResourcePoolDetailModel>assignedToRPName'], formatter:'airbus.mes.resourcepool.util.Formatter.assignedToSelf'}"></Text>
 											</VBox>
-										</HBox>
+										</ui:HorizontalLayout>
 									</content>
 									<customData>
 										<core:CustomData key="personal_no"

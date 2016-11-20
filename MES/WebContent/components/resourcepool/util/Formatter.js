@@ -145,6 +145,13 @@ airbus.mes.resourcepool.util.Formatter = {
 				|| airbus.mes.shell.RoleManager.isAllowed('MII_MOD1684_MANUFMNG')
 				|| airbus.mes.shell.RoleManager.isAllowed('MII_MOD1684_HOOPE')
 				|| airbus.mes.shell.RoleManager.isAllowed('MII_MOD1684_MFTEAM');
+	},
+	displayImage : function() {
+		return airbus.mes.settings.AppConfManager.getConfiguration("MES_PHOTO_DISPLAY");
+	},
+	selectImageToDisplay : function(userId){
+		var src = airbus.mes.shell.UserImageManager.getUserImage(this.sId, userId);
+		return src;
 	}
 
 };
