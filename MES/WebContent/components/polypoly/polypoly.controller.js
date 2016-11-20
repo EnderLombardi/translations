@@ -222,7 +222,13 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 										   return oRow.category;
 									   }
 								   }
-							   }
+							   },
+								visible : {
+			        				 parts : [ "type" ],
+			        				 formatter : function(type) {
+			        					 return airbus.mes.settings.AppConfManager.getConfiguration("MES_PHOTO_NAME"); 
+			        				 }
+			        			 } 
 						   })
 						]
 					})
