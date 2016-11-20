@@ -45,7 +45,7 @@ airbus.mes.settings.AppConfManager =  {
     	// check if object exist before lopping on.
 		if ( airbus.mes.settings.AppConfManager.oAppConfiguration.configarationList != undefined ) {
 		
-			var value = _getConfiguration(pKey); // checking with primary key 
+			var value = airbus.mes.settings.AppConfManager._getConfiguration(pKey); // checking with primary key 
 			
 			return value != null?value: _getConfiguration(dKey); // if value not found return default Value
 			
