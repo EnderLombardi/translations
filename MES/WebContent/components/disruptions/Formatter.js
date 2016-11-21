@@ -81,11 +81,21 @@ airbus.mes.disruptions.Formatter = {
 			return "-----";
 	},
 	
-	setEditButtonVisibility : function(originatorFlag, status) {
+	setEditButtonVisibility : function(originatorFlag, responsibleFlag, status) {
 
-		if (status == airbus.mes.disruptions.Formatter.status.deleted || status == airbus.mes.disruptions.Formatter.status.closed) {
+		if (originatorFlag == "" && responsibleFlag == "")
+			return false;
+		
+		else if (originatorFlag == "X" && responsibleFlag == "" && status == airbus.mes.disruptions.Formatter.status.acknowledged)
+			return false;
+		
+		else if (status == airbus.mes.disruptions.Formatter.status.pending && responsibleFlag == "X" && originatorFlag == "")
+			return false;
+		
+		else if (status == airbus.mes.disruptions.Formatter.status.deleted || status == airbus.mes.disruptions.Formatter.status.closed) {
 			return false;
 		}
+		
 		return true;
 	},
 
@@ -143,6 +153,9 @@ airbus.mes.disruptions.Formatter = {
 	setAddCommentButtonVisibility : function(originatorFlag, responsibleFlag, status) {
 
 		if (originatorFlag == "X" && responsibleFlag == "" && status == airbus.mes.disruptions.Formatter.status.acknowledged)
+			return false;
+		
+		else if (originatorFlag == "" && responsibleFlag == "")
 			return false;
 		
 		else if (status == airbus.mes.disruptions.Formatter.status.deleted || status == airbus.mes.disruptions.Formatter.status.closed)

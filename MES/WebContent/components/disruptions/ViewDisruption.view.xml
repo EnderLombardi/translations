@@ -28,7 +28,7 @@
 									design="Transparent" icon="sap-icon://collapse" press="onCloseDisruption" />
 
 								<Button text="{i18nModel>edit}" type="Emphasized"
-									visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setEditButtonVisibility'}"
+									visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>ResponsibleFlag'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setEditButtonVisibility'}"
 									press="onEditDisruption" design="Transparent" icon="sap-icon://edit" />
 
 								<Button text="{i18nModel>delete}" type="Reject"

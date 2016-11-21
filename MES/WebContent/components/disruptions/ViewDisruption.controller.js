@@ -396,28 +396,27 @@ sap.ui
 								"operationDisruptionsModel")
 								.getObject("Status");
 
-						if (status == airbus.mes.disruptions.Formatter.status.pending) {
+						/*if (status == airbus.mes.disruptions.Formatter.status.pending) {
 
 							sap.m.MessageBox
 									.error(airbus.mes.disruptions.oView.viewDisruption
 											.getModel("i18nModel").getProperty(
 													"disruptionNotAckError"));
+							return;
 
-						} else {
+						}*/
 
-							var title = airbus.mes.disruptions.oView.viewDisruption
-									.getModel("i18nModel").getProperty(
-											"rejectDisruption");
-							var msgRef = oEvt.getSource().getBindingContext(
-									"operationDisruptionsModel").getObject(
-									"MessageRef");
-							var sPath = oEvt.getSource().getBindingContext(
-									"operationDisruptionsModel").sPath;
+						var title = airbus.mes.disruptions.oView.viewDisruption
+								.getModel("i18nModel").getProperty(
+										"rejectDisruption");
+						var msgRef = oEvt.getSource().getBindingContext(
+								"operationDisruptionsModel").getObject(
+								"MessageRef");
+						var sPath = oEvt.getSource().getBindingContext(
+								"operationDisruptionsModel").sPath;
 
-							this.onOpenDisruptionComment(title, msgRef, sPath,
-									this.onConfirmRejection);
-
-						}
+						this.onOpenDisruptionComment(title, msgRef, sPath,
+								this.onConfirmRejection);
 
 					},
 
@@ -433,6 +432,11 @@ sap.ui
 						var msgRef = sap.ui.getCore().byId(
 								"disruptionCommentMsgRef").getText();
 						var sMessage = i18nModel.getProperty("successReject");
+						
+						if(comment == "") {
+							sap.m.MessageToast.show(i18nModel.getProperty("plsEnterComment"));
+							return;
+						}
 
 						// Call Disruption Service
 						var isSuccess = airbus.mes.disruptions.ModelManager
@@ -832,6 +836,11 @@ sap.ui
 
 					onReportDisruption : function(oEvent) {
 
+						// Close expanded disruption panel
+						var splitId = oEvent.oSource.getId().split("-");
+						var panelIndex = splitId[splitId.length - 1];
+						sap.ui.getCore().byId("__panel0-" + this.getView().getId() + "--disrptlist-" + panelIndex).setExpanded(false)
+						
 						var oOperDetailNavContainer = sap.ui.getCore().byId(
 								"operationDetailsView--operDetailNavContainer");
 						
@@ -864,6 +873,11 @@ sap.ui
 									"i18nModel").getProperty("readModeError"));
 
 						} else {
+							
+							// Close expanded disruption panel
+							var splitId = oEvent.oSource.getId().split("-");
+							var panelIndex = splitId[splitId.length - 1];
+							sap.ui.getCore().byId("__panel0-" + this.getView().getId() + "--disrptlist-" + panelIndex).setExpanded(false)
 							
 							var oOperDetailNavContainer;
 
