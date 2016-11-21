@@ -174,94 +174,81 @@
 							</VBox>
 						</VBox>
 
-						<VBox id="boxOpenDisruptions" width="40%" class="contentHeaderCont">
-							<Label text="{StationTrackerI18n>DisruptionOpen}" design="Bold"
-								width="100%" class="whiteTextHeader sapUiSmallMarginTopBottom" />
+						<VBox id="boxOpenDisruptions" width="24%" class="contentHeaderCont">
+							<Label text="{StationTrackerI18n>DISRUPTION/ANDON}"
+								design="Bold" width="100%" class="whiteTextHeader sapUiSmallMarginTopBottom" />
 							<HBox height="65%">
-								<VBox direction="Column" alignItems="Start" width="15%" class="wrap" >
-									<Label text="{StationTrackerI18n>DisruptionTotal}" class="wrap sapUiTinyMarginBegin disruptionTextSize " />
-									<Label
-										text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/TotalDisruption}"
-										class="whiteText kpiValue sapUiLargeMarginTop sapUiTinyMargin" />
+								<VBox width="30%" justifyContent="SpaceAround" class="classOpenDisruptionTotal">
+									<Label text="{StationTrackerI18n>DisruptionTotal}" class=" whiteText kpiName"
+										design="Bold" />
+									<Label text="{StationTrackerI18n>Disruption}" class=" whiteText kpiName" />
+									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/TotalDisruption}"
+										class=" whiteText kpiValue" design="Bold" />
+									<Label text="{StationTrackerI18n>Andon}" class=" redText kpiErrorValue"
+										design="Bold" />
+									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/TotalAndon}"
+										class="redText kpiValue kpiErrorValue" design="Bold" />
 								</VBox>
-
-								<VBox direction="Column" alignItems="Start"
-									class="sapUiTinyMarginBegin wrap" width="10%">
-									<Label text="{StationTrackerI18n>DisruptionsNC}" class="disruptionText wrap disruptionTextSize" />
-									<Label
-										text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/NCDisruption}"
-										class="whiteText kpiValue sapUiMediumMarginTop" />
-									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/NCAndon}"
-										class=" redText kpiErrorValue sapUiSmallMarginTop" />
-								</VBox>
-
-								<VBox direction="Column" alignItems="Start"
-									class="sapUiTinyMarginBegin wrap" width="10%">
+								<VBox width="35%" class="classOpenDisruptionDetail" justifyContent="SpaceAround">
+									<Label text="{StationTrackerI18n>DisruptionDetails}"
+										class="disruptionText" design="Bold" />
+									<Label text="{StationTrackerI18n>DisruptionsNC}" class="disruptionText" />
 									<Label text="{StationTrackerI18n>DisruptionsMissing}"
-										class="disruptionText wrap disruptionTextSize" />
-									<Label
-										text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/MissingDisruption}"
-										class="whiteText kpiValue sapUiSmallMarginTop" />
-									<Label
-										text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/MissingAndon}"
-										class=" redText kpiErrorValue sapUiSmallMarginTop" />
+										class="disruptionText" />
+									<Label text="{StationTrackerI18n>DisruptionsTools}"
+										class="disruptionText" />
+									<Label text="{StationTrackerI18n>DisruptionFTE}" class="disruptionText" />
+									<Label text="{StationTrackerI18n>DisruptionOther}" class="disruptionText" />
 								</VBox>
-
-								<VBox direction="Column" alignItems="Start"
-									class="sapUiTinyMarginBegin wrap" width="10%">
-									<Label text="{StationTrackerI18n>DisruptionJnT}" class="disruptionText wrap disruptionTextSize" />
-									<Label
-										text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/JTDisruption}"
-										class="whiteText kpiValue sapUiSmallMarginTop" />
+								<VBox alignItems="Center" width="20%" justifyContent="SpaceAround" class="classOpenDisruptionDisruption">
+									<Label text="{StationTrackerI18n>Disruption}" class="whiteText" />
+									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/NCDisruption}"
+										class=" whiteText" />
+									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/MissingDisruption}"
+										class=" whiteText" />
+									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/JTDisruption}"
+										class=" whiteText" />
+									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/FTEDisruption}"
+										class=" whiteText" />
+											<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/OtherDisruption}"
+										class=" whiteText" />
+								</VBox>
+								<VBox alignItems="Center" width="15%" justifyContent="SpaceAround" class="classOpenDisruptionAndon">
+									<Label text="{StationTrackerI18n>Andon}" class="redText kpiErrorValue" />
+									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/NCAndon}"
+										class=" redText kpiErrorValue" />
+									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/MissingAndon}"
+										class=" redText kpiErrorValue" />
 									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/JTAndon}"
-										class=" redText kpiErrorValue sapUiSmallMarginTop" />
-								</VBox>
-
-								<VBox direction="Column" alignItems="Start"
-									class="sapUiTinyMarginBegin wrap" width="10%">
-									<Label text="{StationTrackerI18n>DisruptionPeople}"
-										class="disruptionText wrap disruptionTextSize" />
-									<Label
-										text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/FTEDisruption}"
-										class="whiteText kpiValue sapUiMediumMarginTop" />
+										class=" redText kpiErrorValue" />
 									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/FTEAndon}"
-										class=" redText kpiErrorValue sapUiSmallMarginTop" />
-								</VBox>
-
-								<VBox direction="Column" alignItems="Start"
-									class="sapUiTinyMarginBegin wrap" width="10%">
-									<Label text="{StationTrackerI18n>DisruptionOther}" class="disruptionText wrap disruptionTextSize" />
-									<Label
-										text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/OtherDisruption}"
-										class="whiteText kpiValue sapUiMediumMarginTop" />
-									<Label
-										text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/OtherAndon}"
-										class=" redText kpiErrorValue sapUiSmallMarginTop" />
-								</VBox>
-
-								<VBox id="boxResolutionEfficiency" width="35%"
-									class="sapUiTinyMarginBegin sapUiTinyMarginEnd disruptionText disruptionTextSize" alignItems="Center" >
-									<!-- <Label text="{StationTrackerI18n>ResolutionEfficiency}" design="Bold" 
-										class="whiteTextHeader sapUiSmallMarginTopBottom" /> -->
-									<!-- <VBox width="100%"> -->
-									<micro:ComparisonMicroChart 
-										id="boxResolutionEfficiecy_chart" colorPalette="#84bd00,#fe5000,#fe5000,#0F2D65"
-										width="100%" class="spaceBetweenCharts disruptionText disruptionTextSize">
-										<micro:data class="disruptionText disruptionTextSize" >
-											<micro:ComparisonMicroChartData
-												title="{StationTrackerI18n>PromisedInTakt}" value="8" class="disruptionText disruptionTextSize" />
-
-											<micro:ComparisonMicroChartData
-												title="{StationTrackerI18n>PromisedOutTakt}" value="3" class="disruptionText disruptionTextSize"/>
-											<micro:ComparisonMicroChartData
-												title="{StationTrackerI18n>NotAcknowledged}" value="2" class="disruptionText disruptionTextSize" />
-											<micro:ComparisonMicroChartData
-												id="hiddenRefBarResolution" title="{StationTrackerI18n>RedSpaces}" class="disruptionText disruptionTextSize"
-												value="13" visible="false" />
-										</micro:data>
-									</micro:ComparisonMicroChart>
+										class="redText kpiErrorValue" />
+											<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/OtherAndon}"
+										class="redText kpiErrorValu" />
 								</VBox>
 							</HBox>
+						</VBox>
+
+						<VBox id="boxResolutionEfficiency" width="11%" alignItems="Center"
+							class="contentHeaderCont">
+							<Label text="{StationTrackerI18n>ResolutionEfficiency}"
+								design="Bold" class="whiteTextHeader sapUiSmallMarginTopBottom" />
+							<VBox width="90%">
+								<micro:ComparisonMicroChart size="L"
+									id="boxResolutionEfficiecy_chart"
+									width="100%" colorPalette="#84bd00,#fe5000,#fe5000,#0F2D65" >
+									<micro:data>
+										<micro:ComparisonMicroChartData
+											title="{StationTrackerI18n>PromisedInTakt}" value="8" />
+										<micro:ComparisonMicroChartData
+											title="{StationTrackerI18n>PromisedOutTakt}" value="3" />
+										<micro:ComparisonMicroChartData
+											title="{StationTrackerI18n>NotAcknowledged}" value="2" />
+										<micro:ComparisonMicroChartData
+											id="hiddenRefBarResolution" title="{StationTrackerI18n>RedSpaces}" value="13" visible="false"/>
+									</micro:data>
+								</micro:ComparisonMicroChart>
+							</VBox>
 						</VBox>
 
 						<VBox id="boxExtraWork" wrap="Wrap" width="6%" class="contentHeaderCont">
