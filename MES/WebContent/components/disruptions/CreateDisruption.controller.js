@@ -440,7 +440,7 @@ sap.ui
 													.getProperty("/OriginatorGroup"));
 							this.getView().byId("selectRootCause")
 									.setSelectedKey(
-											oModel.getProperty("/Subject"));
+											oModel.getProperty("/RootCause"));
 							this.getView().byId("gravity")
 							.setSelectedKey(
 									oModel.getProperty("/Gravity"));
