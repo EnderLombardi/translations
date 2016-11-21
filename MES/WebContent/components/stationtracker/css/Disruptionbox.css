@@ -2,6 +2,12 @@
 	white-space: normal !important;
 }
 
+.disruptionTextSize .sapSuiteCmpChartItemTitle {
+	font-size: 0.8vw !important;
+	padding-right: 2vw;
+	padding-bottom: 0.25vw;
+}
+
 .spaceBetweenCharts .sapSuiteCmpChartItem.Normal.Auto {
 	margin-top: 0.5rem !important;
 }

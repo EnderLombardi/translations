@@ -178,8 +178,8 @@
 							<Label text="{StationTrackerI18n>DisruptionOpen}" design="Bold"
 								width="100%" class="whiteTextHeader sapUiSmallMarginTopBottom" />
 							<HBox height="65%">
-								<VBox direction="Column" alignItems="Start" width="15%">
-									<Label text="{StationTrackerI18n>DisruptionTotal}" class="sapUiTinyMarginBegin wrap" />
+								<VBox direction="Column" alignItems="Start" width="15%" class="wrap" >
+									<Label text="{StationTrackerI18n>DisruptionTotal}" class="wrap sapUiTinyMarginBegin disruptionTextSize " />
 									<Label
 										text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/TotalDisruption}"
 										class="whiteText kpiValue sapUiLargeMarginTop sapUiTinyMargin" />
@@ -187,7 +187,7 @@
 
 								<VBox direction="Column" alignItems="Start"
 									class="sapUiTinyMarginBegin wrap" width="10%">
-									<Label text="{StationTrackerI18n>DisruptionsNC}" class="disruptionText wrap" />
+									<Label text="{StationTrackerI18n>DisruptionsNC}" class="disruptionText wrap disruptionTextSize" />
 									<Label
 										text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/NCDisruption}"
 										class="whiteText kpiValue sapUiMediumMarginTop" />
@@ -198,7 +198,7 @@
 								<VBox direction="Column" alignItems="Start"
 									class="sapUiTinyMarginBegin wrap" width="10%">
 									<Label text="{StationTrackerI18n>DisruptionsMissing}"
-										class="disruptionText wrap" />
+										class="disruptionText wrap disruptionTextSize" />
 									<Label
 										text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/MissingDisruption}"
 										class="whiteText kpiValue sapUiSmallMarginTop" />
@@ -209,7 +209,7 @@
 
 								<VBox direction="Column" alignItems="Start"
 									class="sapUiTinyMarginBegin wrap" width="10%">
-									<Label text="{StationTrackerI18n>DisruptionJnT}" class="disruptionText wrap" />
+									<Label text="{StationTrackerI18n>DisruptionJnT}" class="disruptionText wrap disruptionTextSize" />
 									<Label
 										text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/JTDisruption}"
 										class="whiteText kpiValue sapUiSmallMarginTop" />
@@ -220,7 +220,7 @@
 								<VBox direction="Column" alignItems="Start"
 									class="sapUiTinyMarginBegin wrap" width="10%">
 									<Label text="{StationTrackerI18n>DisruptionPeople}"
-										class="disruptionText wrap" />
+										class="disruptionText wrap disruptionTextSize" />
 									<Label
 										text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/FTEDisruption}"
 										class="whiteText kpiValue sapUiMediumMarginTop" />
@@ -230,7 +230,7 @@
 
 								<VBox direction="Column" alignItems="Start"
 									class="sapUiTinyMarginBegin wrap" width="10%">
-									<Label text="{StationTrackerI18n>DisruptionOther}" class="disruptionText wrap" />
+									<Label text="{StationTrackerI18n>DisruptionOther}" class="disruptionText wrap disruptionTextSize" />
 									<Label
 										text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/OtherDisruption}"
 										class="whiteText kpiValue sapUiMediumMarginTop" />
@@ -240,23 +240,23 @@
 								</VBox>
 
 								<VBox id="boxResolutionEfficiency" width="35%"
-									class="sapUiTinyMarginBegin sapUiTinyMarginEnd" alignItems="Center">
+									class="sapUiTinyMarginBegin sapUiTinyMarginEnd disruptionText disruptionTextSize" alignItems="Center" >
 									<!-- <Label text="{StationTrackerI18n>ResolutionEfficiency}" design="Bold" 
 										class="whiteTextHeader sapUiSmallMarginTopBottom" /> -->
 									<!-- <VBox width="100%"> -->
 									<micro:ComparisonMicroChart 
 										id="boxResolutionEfficiecy_chart" colorPalette="#84bd00,#fe5000,#fe5000,#0F2D65"
-										width="100%" class="spaceBetweenCharts">
-										<micro:data>
+										width="100%" class="spaceBetweenCharts disruptionText disruptionTextSize">
+										<micro:data class="disruptionText disruptionTextSize" >
 											<micro:ComparisonMicroChartData
-												title="{StationTrackerI18n>PromisedInTakt}" value="8" />
+												title="{StationTrackerI18n>PromisedInTakt}" value="8" class="disruptionText disruptionTextSize" />
 
 											<micro:ComparisonMicroChartData
-												title="{StationTrackerI18n>PromisedOutTakt}" value="3" />
+												title="{StationTrackerI18n>PromisedOutTakt}" value="3" class="disruptionText disruptionTextSize"/>
 											<micro:ComparisonMicroChartData
-												title="{StationTrackerI18n>NotAcknowledged}" value="2" />
+												title="{StationTrackerI18n>NotAcknowledged}" value="2" class="disruptionText disruptionTextSize" />
 											<micro:ComparisonMicroChartData
-												id="hiddenRefBarResolution" title="{StationTrackerI18n>RedSpaces}"
+												id="hiddenRefBarResolution" title="{StationTrackerI18n>RedSpaces}" class="disruptionText disruptionTextSize"
 												value="13" visible="false" />
 										</micro:data>
 									</micro:ComparisonMicroChart>
