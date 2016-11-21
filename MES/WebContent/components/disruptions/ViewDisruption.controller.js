@@ -6,6 +6,7 @@ sap.ui
 				"airbus.mes.disruptions.ViewDisruption",
 				{
 					pressEvent : undefined,
+					expandedDisruptionPanel : undefined,
 
 					/**
 					 * Called when a controller is instantiated and its View
@@ -783,9 +784,12 @@ sap.ui
 					 * Close other panels when one panel is expanded
 					 */
 					handleDisruptionPanelExpand : function(oevent) {
-
+						
 						if (!oevent.oSource.getExpanded())
 							return;
+						
+						this.expandedDisruptionPanel = oevent.getSource().getId();
+						
 						var disruptions = this.getView().byId("disrptlist");
 						$(disruptions.getItems())
 								.each(
@@ -835,11 +839,10 @@ sap.ui
 					},
 
 					onReportDisruption : function(oEvent) {
-
+						
 						// Close expanded disruption panel
-						var splitId = oEvent.oSource.getId().split("-");
-						var panelIndex = splitId[splitId.length - 1];
-						sap.ui.getCore().byId("__panel0-" + this.getView().getId() + "--disrptlist-" + panelIndex).setExpanded(false)
+						if(this.expandedDisruptionPanel)
+							sap.ui.getCore().byId(this.expandedDisruptionPanel).setExpanded(false);
 						
 						var oOperDetailNavContainer = sap.ui.getCore().byId(
 								"operationDetailsView--operDetailNavContainer");
@@ -875,9 +878,8 @@ sap.ui
 						} else {
 							
 							// Close expanded disruption panel
-							var splitId = oEvent.oSource.getId().split("-");
-							var panelIndex = splitId[splitId.length - 1];
-							sap.ui.getCore().byId("__panel0-" + this.getView().getId() + "--disrptlist-" + panelIndex).setExpanded(false)
+							if(this.expandedDisruptionPanel)
+								sap.ui.getCore().byId(this.expandedDisruptionPanel).setExpanded(false);
 							
 							var oOperDetailNavContainer;
 
