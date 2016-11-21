@@ -9,9 +9,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	 * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
 	 * @memberOf components.stationtracker.stationtracker
 	 */
-		onInit: function() {
-<<<<<<< Upstream, based on origin/MESv0.9
-		
+		onInit: function() {		
 //		var oModel = sap.ui.getCore().getModel("productionGroupModel");
 //		var aProdGroup = oModel.getData().Rowsets.Rowset[0].Row;
 //		var aItems = [];
@@ -28,24 +26,6 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 //		for (var i = 0; i < aProdGroup.length; i++) {
 //			aItems.push(aProdGroup[i].PROD_GROUP);
 //		}
-=======
-//			Retrieve all value of Production Group
-			var oModel = airbus.mes.stationtracker.ModelManager.ProductionGroup;
-			var aProdGroup = oModel.getData().Rowsets.Rowset[0].Row;
-			var aItems = [];
-
-			// Check if model is load ,create empty model if no data
-			if(!oModel.getProperty("/Rowsets/Rowset/0/Row")){              
-				console.log("No production group available");
-		    	oModel.oData.Rowsets.Rowset[0].Row = [];
-		    	aProdGroup = [];
-			}
-			
-			
-			for (var i = 0; i < aProdGroup.length; i++) {
-				aItems.push(aProdGroup[i].PROD_GROUP);
-			}
->>>>>>> 46203a3 [stationtracker] - IM of "Line for Reference" 				 - other css config
 		},
 	/**
 	 * Similar to onBeforeRendering, but this hook is invoked before the controller's View is re-rendered
