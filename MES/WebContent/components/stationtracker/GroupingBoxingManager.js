@@ -231,9 +231,9 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 				
 				sStatus = "1";
 				
-				// Operation is pause	
-				if ( el.PAUSED === "---" && el.PROGRESS != "0" ) {
-					
+			// Operation is pause	
+			if ( el.PAUSED === "---" && el.PROGRESS != "0" ) {
+	
 					sStatus = "3";
 				}	
 			
@@ -252,6 +252,8 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 			if ( el.STATE === "D2") {
 				sStatus = "5";
 			}
+			
+			//todo 
 			//Solved Blocking and Escalated disruption
 			if ( el.STATE === "D3") {
 				sStatus = "6";

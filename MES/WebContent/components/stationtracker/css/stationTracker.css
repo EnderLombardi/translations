@@ -900,9 +900,8 @@ background-color: #0085AD !important;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
-	border: none;
 	*/
-	
+	border: none;
 }
 
 #stationTrackerView--stationtracker .dhx_matrix_cell div,
@@ -1492,12 +1491,12 @@ svg#stationTrackerView--takt_adherence_area_chart {
 		}
 /*** stationtracker hoover on event ***/
 
-/* Tooltip text test*/
+/* Tooltip text */
 .dhx_cal_event_line .trackerBoxtooltiptext {
 	display: none;
     background-color: black;
-    min-width:250px;
-    color: #fff;
+    color: #fff !important;
+    min-width:300px;
     text-align: center;
     padding: 5px 2px;
     border-radius: 6px;
@@ -1505,7 +1504,7 @@ svg#stationTrackerView--takt_adherence_area_chart {
     z-index: 1;
 }
 
-.dhx_cal_event_line:hover .trackerBoxtooltiptext {
+.dhx_cal_event_line:hover .trackerBoxtooltiptext{
 	display: block;
     position: fixed;
     margin-top: -35px;
@@ -1515,6 +1514,4 @@ svg#stationTrackerView--takt_adherence_area_chart {
 }
 .dhx_cal_event_line:hover div {
 	background: none;
-	}
-	
 }
