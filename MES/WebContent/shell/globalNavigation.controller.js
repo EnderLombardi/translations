@@ -357,17 +357,17 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 			sap.ui.getCore().byId("scanButtonMyProfile").setEnabled(true);
 			sap.ui.getCore().byId("msgstrpMyProfile").setVisible(false);
 			if (data.Message) {
-				type = data.Message.split(":")[0]
-				id = data.Message.split(":")[1];
+				type = data.Message.split(":")[0];
+				//id = data.Message.split(":")[1];
 
 				if (type == "UID") {
-					sap.ui.getCore().byId("uIdMyProfile").setValue(id);
+					sap.ui.getCore().byId("uIdMyProfile").setValue(data.Message);
 					sap.ui.getCore().byId("msgstrpMyProfile").setType("Success");
 					sap.ui.getCore().byId("msgstrpMyProfile").setText(sap.ui.getCore().getModel("ShellI18n").getProperty("ScannedSuccessfully"));
 					sap.ui.getCore().byId("msgstrpMyProfile").setVisible(true);
 		
 				} else if (type == "BID") {
-					sap.ui.getCore().byId("badgeIdMyProfile").setValue(id);
+					sap.ui.getCore().byId("badgeIdMyProfile").setValue(data.Message);
 					sap.ui.getCore().byId("msgstrpMyProfile").setType("Success");
 					sap.ui.getCore().byId("msgstrpMyProfile").setText(sap.ui.getCore().getModel("ShellI18n").getProperty("ScannedSuccessfully"));
 					sap.ui.getCore().byId("msgstrpMyProfile").setVisible(true);
