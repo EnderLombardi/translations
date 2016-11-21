@@ -29,6 +29,7 @@ airbus.mes.shell.util.navFunctions = {
 				sap.ui.getCore().createComponent({
 					name : "airbus.mes.stationtracker",
 				});
+				nav.addPage(airbus.mes.stationtracker.oView);
 			}
 			
 			if (airbus.mes.polypoly === undefined){
