@@ -6,7 +6,7 @@
 		showHeader="false" afterClose="afterCloseDisruptnDetailPopUp">
 		<content>
 			<NavContainer id="disruptDetailNavContainer"
-				afterNavigate="renderViews">
+				afterNavigate="afterNavigate" navigate="onNavigate">
 				<pages>
 
 				</pages>

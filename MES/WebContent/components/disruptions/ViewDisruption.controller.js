@@ -203,7 +203,8 @@ sap.ui
 									"Counter" : "",
 									"Date" : date,
 									"MessageRef" : msgRefValue,
-									"UserFullName" : sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user")
+									"UserFullName" : ( sap.ui.getCore().getModel("userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/first_name").toLowerCase() + " " +
+											   sap.ui.getCore().getModel("userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/last_name").toLowerCase() )
 							};
 							this.getView()
 									.getModel("operationDisruptionsModel")
@@ -358,7 +359,8 @@ sap.ui
 									"Counter" : "",
 									"Date" : date,
 									"MessageRef" : msgRef,
-									"UserFullName" : sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user")
+									"UserFullName" : ( sap.ui.getCore().getModel("userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/first_name").toLowerCase() + " " +
+											   sap.ui.getCore().getModel("userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/last_name").toLowerCase() )
 							};
 							operationDisruptionsModel.getProperty("/Rowsets/Rowset/1/Row").push(oComment);
 
@@ -457,7 +459,8 @@ sap.ui
 									"Counter" : "",
 									"Date" : date,
 									"MessageRef" : msgRef,
-									"UserFullName" : sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user")
+									"UserFullName" : ( sap.ui.getCore().getModel("userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/first_name").toLowerCase() + " " +
+											   sap.ui.getCore().getModel("userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/last_name").toLowerCase() )
 							};
 							operationDisruptionsModel.getProperty("/Rowsets/Rowset/1/Row").push(oComment);
 
@@ -547,7 +550,8 @@ sap.ui
 								"Counter" : "",
 								"Date" : date,
 								"MessageRef" : msgRef,
-								"UserFullName" : sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user")
+								"UserFullName" : ( sap.ui.getCore().getModel("userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/first_name").toLowerCase() + " " +
+										   sap.ui.getCore().getModel("userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/last_name").toLowerCase() )
 						};
 
 						var i18nModel = airbus.mes.disruptions.oView.viewDisruption
@@ -646,7 +650,7 @@ sap.ui
 							if (time == "")
 								time = "00:00:00";
 
-							var dateTime = date + " " + time;
+							var dateTime = date + " " + + time;
 
 							var msgRef = sap.ui.getCore().byId(
 									"disruptionAckSpathMsgRef").getText();
@@ -684,7 +688,8 @@ sap.ui
 										"Counter" : "",
 										"Date" : date,
 										"MessageRef" : msgRef,
-										"UserFullName" : sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user")
+										"UserFullName" : ( sap.ui.getCore().getModel("userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/first_name").toLowerCase() + " " +
+												   sap.ui.getCore().getModel("userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/last_name").toLowerCase() )
 								};
 								operationDisruptionsModel.getProperty("/Rowsets/Rowset/1/Row").push(oComment);
 
@@ -759,7 +764,8 @@ sap.ui
 									"Counter" : "",
 									"Date" : date,
 									"MessageRef" : msgRef,
-									"UserFullName" : sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user")
+									"UserFullName" : ( sap.ui.getCore().getModel("userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/first_name").toLowerCase() + " " +
+													   sap.ui.getCore().getModel("userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/last_name").toLowerCase() )
 							};
 							sap.ui.getCore().byId("ViewDisruptionView").getModel("operationDisruptionsModel")
 									.getProperty("/Rowsets/Rowset/1/Row").push(oComment);
@@ -858,15 +864,17 @@ sap.ui
 									"i18nModel").getProperty("readModeError"));
 
 						} else {
+							
+							var oOperDetailNavContainer;
 
 							// Navigate to Edit Screen
 							if (nav.getCurrentPage().sId == "stationTrackerView")
-								var oOperDetailNavContainer = sap.ui
+								oOperDetailNavContainer = sap.ui
 										.getCore()
 										.byId(
 												"operationDetailsView--operDetailNavContainer");
-							else if (nav.getCurrentPage().sId == "disruptiontrackerview")
-								var oOperDetailNavContainer = sap.ui
+							else if (nav.getCurrentPage().sId == "disruptiontrackerView")
+								oOperDetailNavContainer = sap.ui
 										.getCore()
 										.byId(
 												"disruptionDetailPopup--disruptDetailNavContainer");

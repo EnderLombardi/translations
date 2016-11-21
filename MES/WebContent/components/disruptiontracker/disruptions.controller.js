@@ -5,6 +5,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
 * @memberOf table.table
 */
+	disruptionsCustomDataFlag : undefined,
 	onInit: function() {
 	},
 
@@ -174,6 +175,8 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		//Set Expanded by Default
 		sap.ui.getCore().byId("ViewDisruptionView").getContent()[0].getContent()[0].getItems()[0].getContent()[0].setExpandable(false);
 
+		disruptionsCustomDataFlag = false;
+		
 		airbus.mes.disruptiontracker.detailPopUp.open();
 		
 		this.nav.to(airbus.mes.disruptions.oView.viewDisruption.getId());
@@ -197,6 +200,28 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 
 		// Empty Model
 		airbus.mes.disruptions.oView.viewDisruption.getModel("operationDisruptionsModel").setData();
+	},
+	
+	onNavigate : function() {
+		
+		sap.ui.getCore().byId("disruptionDetailPopup--btnUpdateDisruption").setVisible(
+				false);
+		sap.ui.getCore().byId("disruptionDetailPopup--btnCancelDisruption").setVisible(
+				false);
+	},
+	
+	afterNavigate : function() {
+		
+		sap.ui.getCore().byId("disruptionDetailPopup--btnUpdateDisruption").setVisible(true);
+		sap.ui.getCore().byId("disruptionDetailPopup--btnCancelDisruption").setVisible(true);
+		
+		/***************************************************
+		 * Load Disruption Custom Data
+		 **************************************************/
+		if (!this.disruptionsCustomDataFlag) 
+			airbus.mes.disruptions.ModelManager.loadData();
+		
+		airbus.mes.disruptions.oView.createDisruption.oController.setDataForEditDisruption();
 	}
 	
 

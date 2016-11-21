@@ -85,7 +85,7 @@ airbus.mes.disruptions.ModelManager = {
 
 	loadData : function() {
 
-		airbus.mes.operationdetail.oView.setBusy(true); // Set Busy Indicator
+		airbus.mes.disruptions.oView.viewDisruption.setBusy(true); // Set Busy Indicator
 														// true
 		this.loadDisruptionCategory();
 		this.loadDisruptionCustomData();
@@ -115,8 +115,7 @@ airbus.mes.disruptions.ModelManager = {
 	 **************************************************************************/
 	onDisruptionCustomDataLoad : function() {
 
-		airbus.mes.operationdetail.oView.setBusy(false); // Set Busy
-		// Indicator false
+		airbus.mes.disruptions.oView.viewDisruption.setBusy(false); // Set Busy Indicator false
 	},
 
 	/***************************************************************************
@@ -189,7 +188,6 @@ airbus.mes.disruptions.ModelManager = {
 
 		airbus.mes.operationdetail.oView.setBusy(true); // Set Busy Indicator
 
-		//var oViewModel = sap.ui.getCore().getModel("operationDisruptionsModel");
 		var oViewModel = airbus.mes.disruptions.oView.viewDisruption.getModel("operationDisruptionsModel");
 
 		var getDisruptionsURL = airbus.mes.disruptions.ModelManager

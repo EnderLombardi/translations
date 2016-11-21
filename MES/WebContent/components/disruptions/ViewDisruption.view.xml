@@ -246,7 +246,7 @@
 											</f:label>
 											<f:fields>
 
-												<Text text="{operationDisruptionsModel>TimeLost} im">
+												<Text text="{=${operationDisruptionsModel>TimeLost}.length > 0 ? ${operationDisruptionsModel>TimeLost} : '0' } im">
 													<layoutData>
 														<l:GridData span="L3 M3 S12" />
 													</layoutData>
