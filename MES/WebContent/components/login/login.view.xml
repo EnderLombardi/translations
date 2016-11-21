@@ -7,7 +7,7 @@
 				<Text text="Login" class="sapUiSmallMargin sapThemeHighlight-asColor "/>
 				<Input id="login" placeholder="Login" width="98%"/>
 				<Text text="Password" class="sapUiSmallMargin sapThemeHighlight-asColor "/>
-				<Input id="password" placeholder="Password" width="98%"/>
+				<Input id="password" type="Password" placeholder="Password" width="98%"/>
 				<Button text="Log in sopra with user password" press="onConfirm" class="sapUiSmallMargin"/>
 				<Button text="Log in Local" press="logLocal" class="sapUiSmallMargin"/>
 			</Panel>
