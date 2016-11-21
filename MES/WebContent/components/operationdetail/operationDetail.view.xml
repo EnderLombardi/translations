@@ -113,7 +113,7 @@
 			</Panel>
 
 			<Toolbar class="opDetailNavToolbar">
-				<SegmentedButton id="opDetailSegmentButtons" class="opDetailNav">
+				<SegmentedButton id="opDetailSegmentButtons" class="opDetailNav" width="500px">
 					<items>
 						<SegmentedButtonItem id="idStatus" text="Status"
 							key="status" press="openPage" />

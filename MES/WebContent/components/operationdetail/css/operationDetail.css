@@ -22,11 +22,8 @@
 	font-weight:700 !important;
 }
 .operationDetailHeadPanel .subText{
-	font-size:75% !important;
 	color:#0085AD !important;
-	font-weight:700 !important;
 }
-
 
 .operationDetailHeadPanel .sapMPanelWrappingDivTb{
 	border-bottom:0px !important;
@@ -61,7 +58,7 @@
 	align-items: center;
 }
 .operationDetailHeadPanel.sapMPanel .sapMPanelWrappingDivTb .sapMIBar.sapMTB>:first-child div:nth-child(2) .subText {
-    font-weight: normal!important;
+    font-weight: bold !important;
     font-size: 1rem!important;
     line-height: 3rem;
 }
@@ -148,7 +145,7 @@
 	position:relative;
 }
 .operationDetailHeadPanel + .opDetailNavToolbar .sapMSegBBtn:not(.sapMSegBBtnSel) {
-    color: #ccc;
+    background-color: #D5F1F8 !important;
 }
 
 .operationDetailHeadPanel + .opDetailNavToolbar .sapMSegBBtn.sapMSegBBtnSel {
@@ -174,6 +171,7 @@
     position: relative;
     border:0;
     height:auto;
+    background-color: #D5F1F8 !important;
 }
 html.sap-desktop .operationDetailHeadPanel + .opDetailNavToolbar .sapMSegBBtnFocusable:hover {
     background: rgba(0, 86, 112, 0.20);
