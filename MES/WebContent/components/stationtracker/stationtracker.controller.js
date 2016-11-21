@@ -9,17 +9,17 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	 */
 		onInit: function() {
 		
-//		var oModel = airbus.mes.stationtracker.ModelManager.ProductionGroup;
+//		var oModel = sap.ui.getCore().getModel("productionGroupModel");
 //		var aProdGroup = oModel.getData().Rowsets.Rowset[0].Row;
 //		var aItems = [];
 //
 		// Check if model is load ,create empty model if no data
-		if(!oModel.getProperty("/Rowsets/Rowset/0/Row")){              
-			
-	    	console.log("No production group available");
-	    	oModel.oData.Rowsets.Rowset[0].Row = [];
-	    	aProdGroup = [];
-		}
+//		if(!oModel.getProperty("/Rowsets/Rowset/0/Row")){              
+//			
+//	    	console.log("No production group available");
+//	    	oModel.oData.Rowsets.Rowset[0].Row = [];
+//	    	aProdGroup = [];
+//		}
 //		
 //		
 //		for (var i = 0; i < aProdGroup.length; i++) {
@@ -41,9 +41,6 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	onAfterRendering : function() {
 		// Capture the open/close panel event
 		airbus.mes.stationtracker.oView.byId('kpi_header').attachExpand(resizeGantt);
-		// Set instant display for busy indicator
-	    airbus.mes.stationtracker.oView.byId("stationtracker").setBusyIndicatorDelay(0);
-
 		// First run on init
 		if (typeof airbus.mes.stationtracker.cachedGanttTop === 'undefined'){
 			resizeGantt();

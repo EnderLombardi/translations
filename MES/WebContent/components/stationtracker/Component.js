@@ -52,7 +52,9 @@ airbus.mes.stationtracker.Component.prototype.createContent = function() {
 	        bundleUrl : "../components/stationtracker/i18n/i18n.properties",
 //	        bundleLocale : "en" automatic defined by parameter sap-language
 	     });
-		this.oView.setModel(i18nModel, "StationTrackerI18n");		
+		this.oView.setModel(i18nModel, "StationTrackerI18n");
+		// Set instant display for busy indicator
+	    this.oView.byId("stationtracker").setBusyIndicatorDelay(0);
 		airbus.mes.stationtracker.oView = this.oView;
 
 		this.oView.setModel(new sap.ui.model.json.JSONModel(),"productionGroupDisplay");
