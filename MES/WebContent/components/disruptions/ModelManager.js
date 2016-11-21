@@ -187,7 +187,8 @@ airbus.mes.disruptions.ModelManager = {
 
 		airbus.mes.operationdetail.oView.setBusy(true); // Set Busy Indicator
 
-		var oViewModel = sap.ui.getCore().getModel("operationDisruptionsModel");
+		//var oViewModel = sap.ui.getCore().getModel("operationDisruptionsModel");
+		var oViewModel = airbus.mes.disruptions.oView.viewDisruption.getModel("operationDisruptionsModel");
 
 		var getDisruptionsURL = airbus.mes.disruptions.ModelManager
 				.getDisruptionsURL({

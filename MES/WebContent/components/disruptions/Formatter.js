@@ -142,7 +142,10 @@ airbus.mes.disruptions.Formatter = {
 
 	setAddCommentButtonVisibility : function(originatorFlag, responsibleFlag, status) {
 
-		if (status == airbus.mes.disruptions.Formatter.status.deleted || status == airbus.mes.disruptions.Formatter.status.closed)
+		if (originatorFlag == "X" && responsibleFlag == "" && status == airbus.mes.disruptions.Formatter.status.acknowledged)
+			return false;
+		
+		else if (status == airbus.mes.disruptions.Formatter.status.deleted || status == airbus.mes.disruptions.Formatter.status.closed)
 			return false;
 		
 		else 

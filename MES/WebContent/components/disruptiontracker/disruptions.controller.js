@@ -164,7 +164,10 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		var aComments=sap.ui.getCore().getModel("disruptionsTrackerModel").getData().Rowsets.Rowset[1].Row;
 		var sCurrMessageRef = oEvt.getSource().getBindingContext("disruptionsTrackerModel").getObject().MessageRef;
 		
-		aComments.find(function(el){ if(el.MessageRef == sCurrMessageRef) disruptionData.Rowsets.Rowset[1].Row.push(el); }) 
+		aComments.find(function(el){ 
+			if(el.MessageRef == sCurrMessageRef) 
+				disruptionData.Rowsets.Rowset[1].Row.push(el); 
+		}); 
 		
 		airbus.mes.disruptions.oView.viewDisruption.getModel("operationDisruptionsModel").setData(disruptionData);
 		
