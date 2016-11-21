@@ -42,7 +42,9 @@
 										<ui:HorizontalLayout class="fixDsiplayRpImg">
 											<Image class="ylabelUserImage"
 												visible="{ path : 'ResourcePoolDetailModel>userId', formatter : 'airbus.mes.resourcepool.util.Formatter.displayImage' }"
-												src="{ path : 'ResourcePoolDetailModel>userId', formatter : 'airbus.mes.resourcepool.util.Formatter.selectImageToDisplay' }"></Image>
+												error = "{ path : 'ResourcePoolDetailModel>userId', formatter : 'airbus.mes.shell.UserImageManager.getErrorUserImage' }"
+												src="{ path : 'ResourcePoolDetailModel>userId', formatter : 'airbus.mes.resourcepool.util.Formatter.selectImageToDisplay' }"
+												></Image>
 
 											<VBox>
 												<HBox>
@@ -130,7 +132,9 @@
 										<ui:HorizontalLayout class="fixDsiplayRpImg">
 											<Image class="ylabelUserImage"
 												visible="{ path : 'ResourcePoolDetailModel>userId', formatter : 'airbus.mes.resourcepool.util.Formatter.displayImage' }"
-												src="{ path : 'ResourcePoolDetailModel>userId', formatter : 'airbus.mes.resourcepool.util.Formatter.selectImageToDisplay' }"></Image>
+												error = "{ path : 'ResourcePoolDetailModel>userId', formatter : 'airbus.mes.shell.UserImageManager.getErrorUserImage' }"
+												src="{ path : 'ResourcePoolDetailModel>userId', formatter : 'airbus.mes.resourcepool.util.Formatter.selectImageToDisplay' }"
+												></Image>
 											<VBox>
 												<HBox>
 													<Text class="customlistTitle" text="{ResourcePoolDetailModel>name}"></Text>

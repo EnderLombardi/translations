@@ -12,16 +12,15 @@ airbus.mes.shell.UserImageManager =  {
 		
 		var urlUserImage = airbus.mes.shell.ModelManager.urlModel.getProperty("urlGetUserImage");
 		urlUserImage = urlUserImage.replace("$username", username.toUpperCase());
-		
-		var downloadingImage = new Image();
-		downloadingImage.id = imageId+"_rand";
+		sap.ui.getCore().byId(imageId).onerror = airbus.mes.shell.UserImageManager.getErrorUserImage;
+		return urlUserImage; 
+	},
+getErrorUserImage: function(){
 
-		downloadingImage.onload = function(){ 
-                          	var id = this.id.split("_rand")[0];
-                          	$("#" + id )[0].src = this.src;
-		                  };
-		downloadingImage.src = urlUserImage;		
-		return "../images/user.png"
-	}
+	if(this.setSrc)
+	this.setSrc ( "../images/user.png");
+	else
+	 this.src =  "../images/user.png";
+}
 	
 }
