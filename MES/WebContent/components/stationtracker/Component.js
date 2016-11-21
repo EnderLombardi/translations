@@ -25,7 +25,7 @@ jQuery.sap.declare("airbus.mes.stationtracker.Component");
 sap.ui.core.UIComponent.extend("airbus.mes.stationtracker.Component", {
 	metadata : {
 		properties : {},
-		includes : [ "./css/stationTracker.css","./css/disruptionNotification.css","./css/Disruptionbox.css" ]
+		includes : [ "./css/stationTracker.css","./css/disruptionNotification.css" ]
 	// array of css and/or javascript files that should be used in the component
 
 	}
