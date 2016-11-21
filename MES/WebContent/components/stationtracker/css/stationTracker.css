@@ -946,16 +946,12 @@ background-color: #0085AD !important;
 	/* 	opacity: 0.25;*/
 	width: 3px !important;
 }
-
-,
 #stationTrackerView--stationtracker .dhx_row_folder .dhx_marked_timespan.taktMarker
 	{
 	background-color: green;
 	/* 	opacity: 0.25;*/
-	width: 3px !important;
+	 width: 3px !important; 
 }
-
-,
 #stationTrackerView--stationtracker .dhx_row_folder .dhx_marked_timespan.shiftCss,
 	#stationTrackerView--stationtracker .dhx_row_folder .dhx_marked_timespan.offtime
 	{
@@ -968,16 +964,13 @@ background-color: #0085AD !important;
 	/* 	opacity: 0.25;*/
 	width: 3px !important;
 }
-
-,
 #stationTrackerView--stationtracker .dhx_row_item .dhx_marked_timespan.taktMarker
 	{
 	background-color: green;
 	/* 	opacity: 0.25;*/
-	width: 3px !important;
+ 	width: 3px !important;
+ */
 }
-
-,
 #stationTrackerView--stationtracker .dhx_data_table.folder td {
 	border-bottom: 2px solid #dddddd;
 	background-color: #ECEEEF;

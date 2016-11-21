@@ -146,9 +146,9 @@
                   "stationDescription": "IP3 Physical Station Mod",
                   "siteDescription": "Saint Nazaire",
                   "Takt_Duration": "---",
-                  "Takt_Start": "---",
-                  "Takt_End": "---"
-               }
+                  "Takt_Start": "2016-11-21 10:00:00",
+                  "Takt_End": "2016-11-21 15:00:00"
+               } 
             ]
          }
       ]

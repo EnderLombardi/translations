@@ -520,7 +520,7 @@ airbus.mes.stationtracker.ShiftManager = {
 		if (this.shifts.length === 0)
 			return; // do nothing
 		
-		var d1, d2, d3, d4, d5;
+		var d1, d2, d3, d4, d5, d6, d7;
 		
 		d2 = aShiftBreak[0].StartDate;
 		d1 = scheduler.date.copy(d2);
@@ -574,9 +574,21 @@ airbus.mes.stationtracker.ShiftManager = {
 			css : "begin_shifht"
 		});
 		// Add maker for takt time
+		var d6 = airbus.mes.stationtracker.util.Formatter.jsDateFromDayTimeStr(airbus.mes.settings.ModelManager.taktStart);
+		d6.setMinutes(d6.getMinutes() + 5);
+		
 		scheduler.addMarkedTimespan({
-			start_date : airbus.mes.settings.ModelManager.taktStart,
-			end_date : airbus.mes.settings.ModelManager.taktEnd,
+			start_date : airbus.mes.stationtracker.util.Formatter.jsDateFromDayTimeStr(airbus.mes.settings.ModelManager.taktStart),
+			end_date : d6,
+			css : "taktMarker"
+		});
+		
+		var d7 = airbus.mes.stationtracker.util.Formatter.jsDateFromDayTimeStr(airbus.mes.settings.ModelManager.taktEnd);
+		d7.setMinutes(d7.getMinutes() + 5);
+		
+		scheduler.addMarkedTimespan({
+			start_date : airbus.mes.stationtracker.util.Formatter.jsDateFromDayTimeStr(airbus.mes.settings.ModelManager.taktEnd),
+			end_date : d7,
 			css : "taktMarker"
 		});
 
