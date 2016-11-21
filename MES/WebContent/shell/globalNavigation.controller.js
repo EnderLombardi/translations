@@ -310,6 +310,8 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 		.setValue("");
 	},
 	onCancelMyProfile:function(){
+		sap.ui.getCore().getElementById("userNameMyProfile").setValueState(sap.ui.core.ValueState.None);
+		sap.ui.getCore().getElementById("passwordMyProfile").setValueState(sap.ui.core.ValueState.None);	
 		this.myProfileDailog.close();
 	},
 	
@@ -496,9 +498,6 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 			this.settingPopup = sap.ui.xmlfragment("airbus.mes.shell.settingPopover", airbus.mes.shell.oView.getController());
 		}
 		this.settingPopup.openBy(this.getView().byId("settingsButton"));
-	},
-	closePopover :function(){
-		this.settingPopup.close()
 	},
 	
 	logOut : function() {
