@@ -59,7 +59,16 @@
 											</layout:content>
 										</layout:Grid>
 										<custom:TaktAdherenceAreaChart
-											id="takt_adherence_area_chart"></custom:TaktAdherenceAreaChart>
+											id="takt_adherence_area_chart" 
+											data="{KPI>/Rowsets/Rowset/0/Row/ChartTakt/data}"
+											realData="{KPI>/Rowsets/Rowset/0/Row/ChartTakt/realData}">
+											<custom:data>
+												<custom:Coordinates x="{KPI>x}" y="{KPI>y}"></custom:Coordinates>
+											</custom:data>
+											<custom:realData>
+												<custom:Coordinates x="{KPI>x}" y="{KPI>y}"></custom:Coordinates>
+											</custom:realData>
+										</custom:TaktAdherenceAreaChart>
 										<Label text="Planned Start/End of Assembly" class=" whiteText" />
 
 										<layout:Grid class="" defaultSpan="L6 M6 S6">
@@ -167,9 +176,8 @@
 											title="{StationTrackerI18n>RedSpaces}" value="5" />
 										<micro:ComparisonMicroChartData
 											id="hiddenRefBarSBL" title="{StationTrackerI18n>RedSpaces}"
-											value="100" visible="false" />
+											value="100" visible="true" />
 									</micro:data>
-
 								</micro:ComparisonMicroChart>
 							</VBox>
 						</VBox>

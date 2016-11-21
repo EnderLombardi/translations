@@ -1,5 +1,22 @@
+//jQuery.sap.require("airbus.mes.stationtracker.Coordinates")
 sap.ui.core.Control.extend("airbus.mes.stationtracker.TaktAdherenceAreaChart", {
-
+	metadata : {
+		aggregations : {
+			"data" : {
+				type : "airbus.mes.stationtracker.Coordinates",
+//				multiple : false,
+				singularName : "data",
+//				bindable: "bindable"
+			},
+			"realData" : {
+				type : "airbus.mes.stationtracker.Coordinates",
+//				multiple : false,
+				singularName : "realData",
+//				bindable: "bindable"
+			}
+		}
+     },
+     
 	renderer: function (oRm, oControl) {
 
 		oRm.write("<svg ");
@@ -8,7 +25,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.TaktAdherenceAreaChart", {
 		oRm.write(" />");
 	},
 
-	onAfterRendering: function onAfterRendering(){
+	onAfterRendering: function onAfterRendering(oEvt){
 
 		function make_y_axis() {
 			return d3.svg.axis()
@@ -16,24 +33,33 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.TaktAdherenceAreaChart", {
 				.orient("left")
 				.ticks(8);
 		}
-
-		var data = [
-			{ x: 0, y: 10, },
-			{ x: 1, y: 15, },
-			{ x: 2, y: 25, },
-			{ x: 3, y: 35, },
-		];
-
-		var realData = [
-			{ x: 0, y: 0, },
-			{ x: 1, y: 20, },
-			{ x: 2, y: 20, },
-		];
-
-		var estimateData = [
-			{ x: 2, y: 20, },
-			{ x: 3, y: 25, },
-		];
+		
+		function bindingToArray(c) {
+			return {x : c.getX(), y : c.getY()}
+		}
+		
+		var oCtrl = oEvt.srcControl; 
+		var data = oCtrl.getData().map(bindingToArray);
+		var realData = oCtrl.getRealData().map(bindingToArray);
+		
+//		var data = [
+//			{ x: 0, y: 5, },
+//			{ x: 1, y: 15, },
+//			{ x: 2, y: 20, },
+//			{ x: 3, y: 35, },
+//			{ x: 4, y: 40, },
+//		];
+//
+//		var realData = [
+//			{ x: 0, y: 0, },
+//			{ x: 1, y: 20, },
+//			{ x: 2, y: 20, },
+//			{ x: 3, y: 25, },
+//		];
+//		var estimateData = [
+//			{ x: 2, y: 20, },
+//			{ x: 3, y: 25, },
+//		];
 
 		var parent = $("#stationTrackerView--chartId");
 		var chart = $("#stationTrackerView--takt_adherence_area_chart"),
@@ -130,11 +156,11 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.TaktAdherenceAreaChart", {
 			.datum(realData)
 			.attr("class", "realLine")
 			.attr("d", line);
-		//add esttimate line to svg
-		svg.append("path")
-			.datum(estimateData)
-			.attr("class", "estimateLine")
-			.attr("d", line);
+//		//add esttimate line to svg
+//		svg.append("path")
+//			.datum(estimateData)
+//			.attr("class", "estimateLine")
+//			.attr("d", line);
 		//Draw vertical line
 		svg.append("line")
 			.attr("x1", function () { return x(data[data.length - 2].x); })
