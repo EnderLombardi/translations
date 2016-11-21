@@ -19,15 +19,14 @@
 					<f:content>
 						<Label text="{i18n>UID}" visible="{path:'i18n>' , formatter:'airbus.mes.operationdetail.Formatter.displayBadge'}"/>
 						<Input id="UIDForConfirmation" type="Text"
-							placeholder="{i18n>UID}" liveChange="uIDLive" visible="{path:'i18n>' , formatter:'airbus.mes.operationdetail.Formatter.displayBadge'}"/>							
+							placeholder="{i18n>UID}" liveChange="uIDLive" visible="{path:'i18n>' , formatter:'airbus.mes.operationdetail.Formatter.displayBadge'}" enabled="false"/>							
 						<Label text="{i18n>BadgeID}" visible="{path:'i18n>' , formatter:'airbus.mes.operationdetail.Formatter.displayBadge'}"/>
 						<Input id="badgeIDForConfirmation" type="Text"
-							placeholder="{i18n>BadgeID}" liveChange="badgeIDLive" visible="{path:'i18n>' , formatter:'airbus.mes.operationdetail.Formatter.displayBadge'}"/>
+							placeholder="{i18n>BadgeID}" liveChange="badgeIDLive" visible="{path:'i18n>' , formatter:'airbus.mes.operationdetail.Formatter.displayBadge'}" enabled="false"/>
 						<Label text="{i18n>PIN}" id="confirmPinLabel" required="false" visible="{path:'i18n>' , formatter:'airbus.mes.operationdetail.Formatter.displayPin'}"/>
 						<Input id="pinForConfirmation" type="Text" maxLength = "7"
 							placeholder="{i18n>PIN}" liveChange="pinIDLive" visible="{path:'i18n>' , formatter:'airbus.mes.operationdetail.Formatter.displayPin'}"/>
-						<Text text="{i18n>OR}" textAlign="Center" visible="{path:'i18n>' , formatter:'airbus.mes.operationdetail.Formatter.displaySeperator'}"/>
-						
+						<Text text="{i18n>OR}" textAlign="Center" visible="{path:'i18n>' , formatter:'airbus.mes.operationdetail.Formatter.displaySeperator'}"/>				
 						<Label text="{i18n>username}" required="true" />
 						<Input id="userNameForConfirmation" type="Text"
 							placeholder="{i18n>username}" liveChange="usernameLive" />

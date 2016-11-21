@@ -389,12 +389,12 @@ sap.ui
 									sap.ui.getCore().byId("UIDForConfirmation").setValue(id);
 									sap.ui.getCore().byId("msgstrpConfirm").setType("Success");
 									sap.ui.getCore().byId("msgstrpConfirm").setText(sap.ui.getCore().getModel("ShellI18n").getProperty("ScannedSuccessfully"));
-									sap.ui.getCore().byId("msgstrpConfirm").setVisble(true);
+									sap.ui.getCore().byId("msgstrpConfirm").setVisible(true);
 								} else if (type == "BID") {
 									sap.ui.getCore().byId("badgeIDForConfirmation").setValue(id);
 									sap.ui.getCore().byId("msgstrpConfirm").setType("Success");
 									sap.ui.getCore().byId("msgstrpConfirm").setText(sap.ui.getCore().getModel("ShellI18n").getProperty("ScannedSuccessfully"));
-									sap.ui.getCore().byId("msgstrpConfirm").setVisble(true);
+									sap.ui.getCore().byId("msgstrpConfirm").setVisible(true);
 								} else {
 									sap.ui.getCore().byId("msgstrpConfirm").setVisible(true);
 									sap.ui.getCore().byId("msgstrpConfirm").setText(sap.ui.getCore().getModel("ShellI18n").getProperty("ErrorScanning"));

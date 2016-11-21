@@ -361,13 +361,13 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 					sap.ui.getCore().byId("uIdMyProfile").setValue(id);
 					sap.ui.getCore().byId("msgstrpMyProfile").setType("Success");
 					sap.ui.getCore().byId("msgstrpMyProfile").setText(sap.ui.getCore().getModel("ShellI18n").getProperty("ScannedSuccessfully"));
-					sap.ui.getCore().byId("msgstrpMyProfile").setVisble(true);
+					sap.ui.getCore().byId("msgstrpMyProfile").setVisible(true);
 		
 				} else if (type == "BID") {
 					sap.ui.getCore().byId("badgeIdMyProfile").setValue(id);
 					sap.ui.getCore().byId("msgstrpMyProfile").setType("Success");
 					sap.ui.getCore().byId("msgstrpMyProfile").setText(sap.ui.getCore().getModel("ShellI18n").getProperty("ScannedSuccessfully"));
-					sap.ui.getCore().byId("msgstrpMyProfile").setVisble(true);
+					sap.ui.getCore().byId("msgstrpMyProfile").setVisible(true);
 				} else {
 					sap.ui.getCore().byId("msgstrpMyProfile").setVisible(true);
 					sap.ui.getCore().byId("msgstrpMyProfile").setText(sap.ui.getCore().getModel("ShellI18n").getProperty("ErrorScanning"));
