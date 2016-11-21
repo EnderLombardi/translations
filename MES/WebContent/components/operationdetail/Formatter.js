@@ -98,14 +98,14 @@ airbus.mes.operationdetail.Formatter = {
 		else return endDate;
 	},
 	displayBadge : function(){
-		return airbus.mes.settings.AppConfManager.getConfiguration("MES_BADGE_ACTIVATED");
+		return airbus.mes.settings.AppConfManager.getConfiguration("MES_BADGE_ACTIVE");
 	},
 	displayPin : function(){
 		return airbus.mes.settings.AppConfManager.getConfiguration("MES_BADGE_PIN");
 	},
 	displaySeperator : function() {
 		if (airbus.mes.settings.AppConfManager
-				.getConfiguration("MES_BADGE_ACTIVATED")
+				.getConfiguration("MES_BADGE_ACTIVE")
 				|| airbus.mes.settings.AppConfManager
 						.getConfiguration("MES_BADGE_PIN")) {
 			return true;
