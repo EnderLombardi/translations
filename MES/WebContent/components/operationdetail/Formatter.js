@@ -102,7 +102,15 @@ airbus.mes.operationdetail.Formatter = {
 	},
 	displayPin : function(){
 		return airbus.mes.settings.AppConfManager.getConfiguration("MES_BADGE_PIN");
+	},
+	displaySeperator : function() {
+		if (airbus.mes.settings.AppConfManager
+				.getConfiguration("MES_BADGE_ACTIVATED")
+				|| airbus.mes.settings.AppConfManager
+						.getConfiguration("MES_BADGE_PIN")) {
+			return true;
+		} else
+			return false;
 	}
-
 
 };

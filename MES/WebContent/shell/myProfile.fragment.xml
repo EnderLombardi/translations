@@ -3,9 +3,9 @@
 	xmlns:l="sap.ui.layout">
 	<Dialog title="{ShellI18n>myProfileTitle}" contentHeight="auto" contentWidth="30%"	id="badgeMngMyProfile">
 		<Toolbar class="toolBarBottom">
-			<Button id="scanButtonMyProfile" icon="sap-icon://business-card" text="Scan" type="Emphasized" press="onScanMyProfile" visible="{path:'ShellI18n>' , formatter:'airbus.mes.shell.util.Formatter.displayBadge'}"/>
+			<Button id="scanButtonMyProfile" icon="sap-icon://business-card" text="{ShellI18n>scan}" type="Emphasized" press="onScanMyProfile" visible="{path:'ShellI18n>' , formatter:'airbus.mes.shell.util.Formatter.displayBadge'}"/>
 			<ToolbarSpacer/>
-			<Button icon="sap-icon://edit" text="Edit" type="Emphasized" press="onEditMyProfile"/>
+			<Button icon="sap-icon://edit" text="{ShellI18n>edit}" type="Emphasized" press="onEditMyProfile"/>
 		</Toolbar>
 		<content>		
 			<HBox height="3rem" class="messageHBox">
@@ -38,11 +38,11 @@
 
 		</content>
 		<beginButton>
-			<Button id="myProfileCancel" type="Emphasized" text="Cancel" press="onCancelMyProfile" icon="sap-icon://decline" iconFirst="false"
+			<Button id="myProfileCancel" type="Emphasized" text="{ShellI18n>cancel}" press="onCancelMyProfile" icon="sap-icon://decline" iconFirst="false"
 					width="48%"/>
 		</beginButton>
 		<endButton>
-			<Button id="myProfileAccept" type="Emphasized" text="Save" press="onSaveMyProfile" icon="sap-icon://accept" iconFirst="false"
+			<Button id="myProfileAccept" type="Emphasized" text="{ShellI18n>save}" press="onSaveMyProfile" icon="sap-icon://accept" iconFirst="false"
 					width="48%"/>
 		</endButton>
 	</Dialog>
