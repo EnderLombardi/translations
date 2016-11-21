@@ -39,7 +39,7 @@ airbus.mes.settings.util.Formatter = {
         } else  {
         	oModel = []
         	console.log("no siteModel load");
-        }
+       }
 		
 		if ( oModel.map(function(x) {return x.site_desc; }).indexOf( sValue ) != -1 ) {
 			

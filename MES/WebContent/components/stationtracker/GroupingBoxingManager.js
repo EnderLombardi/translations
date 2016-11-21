@@ -19,7 +19,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 	// Group use for special case compute
 	specialGroup : "WORKORDER_ID",
 	
-	parseShift : function()  {
+	parseShift : function()  { 
 		
 	// Tree Shift Model	
 	var oHierachy = airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy = {};
@@ -167,8 +167,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 			
 			if ( sGroup === "AVL_LINE") {				
 			// permit to create only one folder when avl Line is selected.	
-				ssGroup = "AvlLine";
-				
+				ssGroup = "AvlLine";	
 			} else {				
 			// otherwise create dynamic group.	
 				ssGroup = el[sGroup];
@@ -176,72 +175,53 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 			
 			// permit to create initial AVL line
 			if (sInitial) {
-				
 				ssAvLine = "I_" +  el.AVL_LINE 	+ "_" + el.SKILLS;
 			} else {
-				
 				ssAvLine = el.AVL_LINE + "_" + el.SKILLS;
 			}
 					
 			//permit to DO THE boxing on the only corresponding shift selected in day mode
 			if ( airbus.mes.stationtracker.ShiftManager.closestShift(oFormatter.jsDateFromDayTimeStr(el.START_TIME)) != -1 ) {
-			
 				oShift = airbus.mes.stationtracker.ShiftManager.shifts[airbus.mes.stationtracker.ShiftManager.closestShift(oFormatter.jsDateFromDayTimeStr(el.START_TIME))]; 
-			
 			} else {
-				
 				console.log("operation is not in the shift");
 				oShift = "";
-				
 			}
 						
 			var ssBox = el[sBoxing] + "_"  + el["WORKORDER_ID"] + "_" + oShift.shiftID;
 						
 			if ( !oHierachy[ssGroup] ) {
-				
 				oHierachy[ssGroup] = {};
 				oHierarchyDelay[ssGroup]= {};
 			}
 			
 			if ( !oHierachy[ssGroup][ssAvLine] ) {
-				
 				oHierachy[ssGroup][ssAvLine] = {};
-				oHierarchyDelay[ssGroup][ssAvLine] = { "progress" : 0 ,"duration" : 0 };
-								
+				oHierarchyDelay[ssGroup][ssAvLine] = { "progress" : 0 ,"duration" : 0 };				
 			}
 			
-			if ( !oHierachy[ssGroup][ssAvLine][ssBox] ) {
-				
+			if ( !oHierachy[ssGroup][ssAvLine][ssBox] ) {	
 				oHierachy[ssGroup][ssAvLine][ssBox] = [];
-				
-				
 			}
 			
 			var sStatus = "0";
 			var fOSW = "0";
 			var fRMA = "0";
+			
 			// Operation is active	
 			if (  el.PAUSED === "false") {
-				
 				sStatus = "2";
-			}
-					
+			}		
 			// Operation is not started
 			if ( el.PAUSED === "---" ) {
-				
 				sStatus = "1";
-				
-			// Operation is pause	
-			if ( el.PAUSED === "---" && el.PROGRESS != "0" ) {
-	
-					sStatus = "3";
-				}	
-			
-			}
-									
+				// Operation is pause	
+				if ( el.PAUSED === "---" && el.PROGRESS != "0" ) {
+						sStatus = "3";
+					}	
+			}				
 			// Operation Completed
 			if ( el.STATE === "C" ) {
-				
 				sStatus = "0";
 			}
 			//Opened Blocking and Escalated disruption
@@ -252,8 +232,6 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 			if ( el.STATE === "D2") {
 				sStatus = "5";
 			}
-			
-			//todo 
 			//Solved Blocking and Escalated disruption
 			if ( el.STATE === "D3") {
 				sStatus = "6";
@@ -266,23 +244,16 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 			if ( el.STATE === "B") {
 				sStatus = "99";
 			}
-			
-			
 			// Operation is from OSW
 			if ( el.EXECUTION_STATION_SOURCE[0] === "3" ) {
-				
 				fOSW = "1";
-				
 			}
 			// Maturity
 			if ( el.RMA_STATUS_COLOR != "---" ) {
-						
-				fRMA = "1";
-						
+				fRMA = "1";		
 			}
 				
-			var oOperation = {
-										
+			var oOperation = {						
 					"WORKORDER_ID" : el.WORKORDER_ID, // workOrder
 					"WORKORDER_DESCRIPTION": el.WORKORDER_DESCRIPTION,
 					"OPERATION_ID" : el.OPERATION_ID,
@@ -318,32 +289,20 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 					//"rescheduledStarDate": el.rescheduledStarDate,
 					//"rescheduledEndDate": el.rescheduledEndDate,
 					//"rescheduledLine": el.rescheduledLine,
-					//"initial" : sInitial,
-					
-		
-					
+					//"initial" : sInitial,	
 			};
 			
 			oHierachy[ssGroup][ssAvLine][ssBox].push(oOperation);
 			
-			if ( oFormatter.jsDateFromDayTimeStr(el.END_TIME) < new Date() ) {
-						
+			if ( oFormatter.jsDateFromDayTimeStr(el.END_TIME) < new Date() ) {		
 				oHierarchyDelay[ssGroup][ssAvLine].duration += parseFloat(el.DURATION);
-				
 			}
-			
 			oHierarchyDelay[ssGroup][ssAvLine].progress += parseFloat(el.PROGRESS);	
-			
 		});
-		
 	},
 	
-	parseOperation : function(sGroup,sBox) {
-		
-		
+	parseOperation : function(sGroup,sBox) {		
 		var t0 = performance.now();
-		
-	
 		var oGroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
 		var oFormatter = airbus.mes.stationtracker.util.Formatter;
 		
@@ -489,6 +448,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 								"type":"I",
 								"text" : sOperationDescription,
 								"section_id" : 	"I_" + airbus.mes.stationtracker.AssignmentManager.idName(key) + "_" + airbus.mes.stationtracker.AssignmentManager.idName(key1),
+								"totalDuration" : fDuration.toString(), 
 								"progress" : fProgress.toString(),
 								"start_date" : new Date(Math.min.apply(null,aStartDateRescheduling)),
 								"end_date" : oFormatter.sizeMin(new Date(Math.max.apply(null,aEndDateRescheduling)),new Date(Math.min.apply(null,aStartDateRescheduling))),

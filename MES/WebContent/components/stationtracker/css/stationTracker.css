@@ -1497,7 +1497,6 @@ svg#stationTrackerView--takt_adherence_area_chart {
     background-color: black;
     color: #fff !important;
     min-width:300px;
-    text-align: center;
     padding: 5px 2px;
     border-radius: 6px;
     position: absolute;
@@ -1505,13 +1504,13 @@ svg#stationTrackerView--takt_adherence_area_chart {
 }
 
 .dhx_cal_event_line:hover .trackerBoxtooltiptext{
-	display: block;
-    position: fixed;
+	display:inline; 
+	position:fixed;
     margin-top: -35px;
     margin-left: -100px;
-    overflow: visible;
-    display: table-footer-group;
+    z-index:99;
 }
+
 .dhx_cal_event_line:hover div {
 	background: none;
 }

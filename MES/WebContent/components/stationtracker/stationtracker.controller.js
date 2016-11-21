@@ -1,3 +1,5 @@
+"use strict";
+
 jQuery.sap.require("airbus.mes.stationtracker.util.Formatter");
 
 sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
@@ -8,6 +10,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	 * @memberOf components.stationtracker.stationtracker
 	 */
 		onInit: function() {
+<<<<<<< Upstream, based on origin/MESv0.9
 		
 //		var oModel = sap.ui.getCore().getModel("productionGroupModel");
 //		var aProdGroup = oModel.getData().Rowsets.Rowset[0].Row;
@@ -25,6 +28,24 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 //		for (var i = 0; i < aProdGroup.length; i++) {
 //			aItems.push(aProdGroup[i].PROD_GROUP);
 //		}
+=======
+//			Retrieve all value of Production Group
+			var oModel = airbus.mes.stationtracker.ModelManager.ProductionGroup;
+			var aProdGroup = oModel.getData().Rowsets.Rowset[0].Row;
+			var aItems = [];
+
+			// Check if model is load ,create empty model if no data
+			if(!oModel.getProperty("/Rowsets/Rowset/0/Row")){              
+				console.log("No production group available");
+		    	oModel.oData.Rowsets.Rowset[0].Row = [];
+		    	aProdGroup = [];
+			}
+			
+			
+			for (var i = 0; i < aProdGroup.length; i++) {
+				aItems.push(aProdGroup[i].PROD_GROUP);
+			}
+>>>>>>> 46203a3 [stationtracker] - IM of "Line for Reference" 				 - other css config
 		},
 	/**
 	 * Similar to onBeforeRendering, but this hook is invoked before the controller's View is re-rendered
@@ -434,11 +455,8 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		
 //		Retrieve selected group
 		var sGroup = sap.ui.getCore().byId("ReschedulePopover--SelectedGroup").getSelectedKey();
-		
-//		Call rescheduling service
-//		TODO
-		
-//		Close Popup
+
+		//Close Popup
 		onCloseDialog(oEvent);
 		
 	},
@@ -446,10 +464,12 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	 * Fire when the user click on Import of unplanned pop-up or OSW pop-up  
 	 *
 	 *  @return{STRING} Myvalue, current value of box/group Id
+	 *  
+	 *  TODO : change access to list
 	 */
 	onUnplannedImport : function() {
 
-		var oList = sap.ui.getCore().byId("worklistPopover--myList"); //TODO : change access to list
+		var oList = sap.ui.getCore().byId("worklistPopover--myList"); 
 		var aPath = oList.getSelectedContextPaths();
 		var aSFC_Step = [];
 		
@@ -951,8 +971,8 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	onCheckQA : function(){
 		airbus.mes.stationtracker.AssignmentManager.checkQA = true;
 	},
+	
 	// Displays the number of items selected in the "Groupe de production
-	// TODO : get id of the fragment "productionGroupPopover" to insert value (line 915 and 920)
 	onSelectionChange : function (oEvt) {
 		
 		var oList = oEvt.getSource();
