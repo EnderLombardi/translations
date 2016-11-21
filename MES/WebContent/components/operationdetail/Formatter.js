@@ -96,6 +96,12 @@ airbus.mes.operationdetail.Formatter = {
 		
 		}
 		else return endDate;
+	},
+	displayBadge : function(){
+		return airbus.mes.settings.AppConfManager.getConfiguration("MES_BADGE_ACTIVATED");
+	},
+	displayPin : function(){
+		return airbus.mes.settings.AppConfManager.getConfiguration("MES_BADGE_PIN");
 	}
 
 

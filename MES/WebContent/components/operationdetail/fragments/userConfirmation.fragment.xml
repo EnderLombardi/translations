@@ -3,7 +3,7 @@
 	<Dialog title="{i18n>userConfirmation}" type="Message" id="partial" width="70% !important" >
 			<content>	
 			<HBox justifyContent="End">
-				<Button id="scanButton" icon="sap-icon://business-card" text="Scan" type="Emphasized" press="onScanConfirmation"/> 
+				<Button id="scanButton" icon="sap-icon://business-card" text="Scan" type="Emphasized" press="onScanConfirmation" visible="{path:'operationDetailModel>' , formatter:'airbus.mes.operationdetail.Formatter.displayBadge'}"/> 
 			</HBox>
 			<HBox height="35px" class="messageHBox">
 				<MessageStrip id="msgstrpConfirm" visible="false"
@@ -17,12 +17,12 @@
 					labelSpanL="1" labelSpanM="2" emptySpanL="0" emptySpanM="0"
 					columnsL="3" columnsM="3">
 					<f:content>
-						<Label text="UID" />
+						<Label text="UID" visible="{path:'operationDetailModel>' , formatter:'airbus.mes.operationdetail.Formatter.displayBadge'}"/>
 						<Input id="UIDForConfirmation" type="Text"
-							placeholder="UID" liveChange="uIDLive" />							
-						<Label text="Badge ID" />
+							placeholder="UID" liveChange="uIDLive" visible="{path:'operationDetailModel>' , formatter:'airbus.mes.operationdetail.Formatter.displayBadge'}"/>							
+						<Label text="Badge ID" visible="{path:'operationDetailModel>' , formatter:'airbus.mes.operationdetail.Formatter.displayBadge'}"/>
 						<Input id="badgeIDForConfirmation" type="Text"
-							placeholder="Badge ID" liveChange="badgeIDLive" />
+							placeholder="Badge ID" liveChange="badgeIDLive" visible="{path:'operationDetailModel>' , formatter:'airbus.mes.operationdetail.Formatter.displayBadge'}"/>
 						<Label text="PIN" id="confirmPinLabel" required="false" visible="false"/>
 						<Input id="pinForConfirmation" type="Text" maxLength = "7"
 							placeholder="PIN" liveChange="pinIDLive" visible="false"/>

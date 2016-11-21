@@ -1,9 +1,9 @@
 <core:FragmentDefinition xmlns:core="sap.ui.core"
 	xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.ui.layout.form"
 	xmlns:l="sap.ui.layout">
-	<Dialog title="{ShellI18n>myProfileTitle}" contentHeight="60%" contentWidth="30%"	id="badgeMngMyProfile">
+	<Dialog title="{ShellI18n>myProfileTitle}" contentHeight="auto" contentWidth="30%"	id="badgeMngMyProfile">
 		<Toolbar class="toolBarBottom">
-			<Button id="scanButtonMyProfile" icon="sap-icon://business-card" text="Scan" type="Emphasized" press="onScanMyProfile"/>
+			<Button id="scanButtonMyProfile" icon="sap-icon://business-card" text="Scan" type="Emphasized" press="onScanMyProfile" visible="{path:'ShellI18n>' , formatter:'airbus.mes.shell.util.Formatter.displayBadge'}"/>
 			<ToolbarSpacer/>
 			<Button icon="sap-icon://edit" text="Edit" type="Emphasized" press="onEditMyProfile"/>
 		</Toolbar>
@@ -22,11 +22,11 @@
 						columnsL="3" columnsM="3">
 						<f:content>
 							<Input id="uIdMyProfile" type="Text"
-								placeholder="{ShellI18n>UID}" liveChange="uIDLive" enabled="false"/>							
+								placeholder="{ShellI18n>UID}" liveChange="uIDLive" enabled="false"  visible="{path:'ShellI18n>' , formatter:'airbus.mes.shell.util.Formatter.displayBadge'}"/>							
 							<Input id="badgeIdMyProfile" type="Text"
-								placeholder="{ShellI18n>badgeID}" liveChange="badgeIDLive" enabled="false"/>
+								placeholder="{ShellI18n>badgeID}" liveChange="badgeIDLive" enabled="false"  visible="{path:'ShellI18n>' , formatter:'airbus.mes.shell.util.Formatter.displayBadge'}"/>
 							<Input id="pinCodeMyProfile" type="Text" maxLength = "4"
-								placeholder="{ShellI18n>pinCode}" liveChange="pinCodeLive" />							
+								placeholder="{ShellI18n>pinCode}" liveChange="pinCodeLive"  visible="{path:'ShellI18n>' , formatter:'airbus.mes.shell.util.Formatter.displayPin'}"/>							
 							<Input id="userNameMyProfile" type="Text" required="true"
 								placeholder="{ShellI18n>userName}" liveChange="usernameLive" />
 							<Input id="passwordMyProfile" type="Password" required="true"

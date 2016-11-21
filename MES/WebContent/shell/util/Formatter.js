@@ -100,5 +100,11 @@ airbus.mes.shell.util.Formatter = {
 			}
 		}
 	},
+	displayBadge : function(){
+		return airbus.mes.settings.AppConfManager.getConfiguration("MES_BADGE_ACTIVATED");
+	},
+	displayPin : function(){
+		return airbus.mes.settings.AppConfManager.getConfiguration("MES_BADGE_PIN");
+	}
 	
 };

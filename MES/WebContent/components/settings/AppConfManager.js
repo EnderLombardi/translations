@@ -47,7 +47,7 @@ airbus.mes.settings.AppConfManager =  {
 		
 			var value = airbus.mes.settings.AppConfManager._getConfiguration(pKey); // checking with primary key 
 			
-			return value != null?value: _getConfiguration(dKey); // if value not found return default Value
+			return value != null?value: airbus.mes.settings.AppConfManager._getConfiguration(dKey); // if value not found return default Value
 			
 		}		
 	},
