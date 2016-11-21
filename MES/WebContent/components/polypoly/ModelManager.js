@@ -271,6 +271,7 @@ airbus.mes.polypoly.ModelManager = {
 		// ????? 
 		sap.ui.getCore().byId("polypoly").setModel(mTableModel);
 		//sap.ui.getCore().getModel("mTableModel").loadData(mTableModel);
+		airbus.mes.polypoly.oView.getController().clearFilters();
 		
 	},
 	
