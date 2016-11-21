@@ -319,7 +319,7 @@
 										</Label>
 									</f:label>
 									<f:fields>
-										<Select id="selectRootCause" selectedKey="{DisruptionModel>RootCause}"
+										<Select id="selectRootCause" selectedKey=""
 											forceSelection="false" items="{disruptionCustomData>/Rowsets/Rowset/1/Row}"
 											change="onSelectionChange">
 											<items>

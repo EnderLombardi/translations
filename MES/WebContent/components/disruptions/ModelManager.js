@@ -355,7 +355,10 @@ airbus.mes.disruptions.ModelManager = {
 						"Param.6" : iTimeLost,
 						"Param.7" : dFixedByTime,
 						"Param.8" : sComment,
-						"Param.9" : iGravity
+						"Param.9" : iGravity,
+						"Param.10": sap.ui.getCore().getModel(
+						"userSettingModel").getProperty(
+						"/Rowsets/Rowset/0/Row/0/user")
 					},
 					success : function(data, textStatus, jqXHR) {
 
