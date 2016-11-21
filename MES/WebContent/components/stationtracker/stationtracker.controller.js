@@ -8,6 +8,23 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	 * @memberOf components.stationtracker.stationtracker
 	 */
 		onInit: function() {
+		
+//		var oModel = airbus.mes.stationtracker.ModelManager.ProductionGroup;
+//		var aProdGroup = oModel.getData().Rowsets.Rowset[0].Row;
+//		var aItems = [];
+//
+		// Check if model is load ,create empty model if no data
+		if(!oModel.getProperty("/Rowsets/Rowset/0/Row")){              
+			
+	    	console.log("No production group available");
+	    	oModel.oData.Rowsets.Rowset[0].Row = [];
+	    	aProdGroup = [];
+		}
+//		
+//		
+//		for (var i = 0; i < aProdGroup.length; i++) {
+//			aItems.push(aProdGroup[i].PROD_GROUP);
+//		}
 		},
 	/**
 	 * Similar to onBeforeRendering, but this hook is invoked before the controller's View is re-rendered
