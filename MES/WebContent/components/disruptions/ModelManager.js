@@ -149,35 +149,37 @@ airbus.mes.disruptions.ModelManager = {
 	 * filters
 	 */
 	getDisruptionsURL : function(oFilters) {
-		var getDiruptionsURL = this.urlModel.getProperty("getDiruptionsURL");
+		var getDisruptionsURL = this.urlModel.getProperty("getDiruptionsURL");
 
-		getDiruptionsURL = getDiruptionsURL.replace('$Site',
+		getDisruptionsURL = getDisruptionsURL.replace('$Site',
 				airbus.mes.settings.ModelManager.site);
-		getDiruptionsURL = getDiruptionsURL.replace('$Status', "ALL");
-		getDiruptionsURL = getDiruptionsURL.replace('$Resource', "");
+		getDisruptionsURL = getDisruptionsURL.replace('$Status', "ALL");
+		getDisruptionsURL = getDisruptionsURL.replace('$Resource', "");
 
 		if (oFilters.operation != undefined && oFilters.operation != "")
-			getDiruptionsURL = getDiruptionsURL.replace('$Operation',
+			getDisruptionsURL = getDisruptionsURL.replace('$Operation',
 					oFilters.operation.split(",")[1]);
 		else
-			getDiruptionsURL = getDiruptionsURL.replace('$Operation', "");
+			getDisruptionsURL = getDisruptionsURL.replace('$Operation', "");
 
-		getDiruptionsURL = getDiruptionsURL.replace('$SFC', "");
-		getDiruptionsURL = getDiruptionsURL.replace('$OperationRevision', "");
-		getDiruptionsURL = getDiruptionsURL.replace('$SignalFlag', "");
-		getDiruptionsURL = getDiruptionsURL.replace('$FromDate', "");
-		getDiruptionsURL = getDiruptionsURL.replace('$ToDate', "");
+		getDisruptionsURL = getDisruptionsURL.replace('$SFC', "");
+		getDisruptionsURL = getDisruptionsURL.replace('$OperationRevision', "");
+		getDisruptionsURL = getDisruptionsURL.replace('$SignalFlag', "");
+		getDisruptionsURL = getDisruptionsURL.replace('$FromDate', "");
+		getDisruptionsURL = getDisruptionsURL.replace('$ToDate', "");
 
 		if (oFilters.station != undefined && oFilters.station != "")
-			getDiruptionsURL = getDiruptionsURL.replace('$WorkCenter',
+			getDisruptionsURL = getDisruptionsURL.replace('$WorkCenter',
 					oFilters.station);
 		else
-			getDiruptionsURL = getDiruptionsURL.replace('$WorkCenter', "");
+			getDisruptionsURL = getDisruptionsURL.replace('$WorkCenter', "");
 
-		getDiruptionsURL = getDiruptionsURL.replace('$userGroup', "");
-		getDiruptionsURL = getDiruptionsURL.replace('$MessageType', "");
-
-		return getDiruptionsURL;
+		getDisruptionsURL = getDisruptionsURL.replace('$userGroup', "");
+		getDisruptionsURL = getDisruptionsURL.replace('$MessageType', "");
+		getDisruptionsURL = getDisruptionsURL.replace('$User',sap.ui.getCore().getModel(
+		"userSettingModel").getProperty(
+		"/Rowsets/Rowset/0/Row/0/user"));
+		return getDisruptionsURL;
 	},
 
 	/***************************************************************************
