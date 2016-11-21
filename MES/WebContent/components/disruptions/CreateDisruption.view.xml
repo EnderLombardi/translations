@@ -259,7 +259,7 @@
 								
 								<f:FormElement>
 									<f:label>
-										<Label id="promisedDateLabel" required="true" text="{i18nModel>PromisedDate}">
+										<Label id="promisedDateLabel" required="true" text="{i18nModel>promisedDateTime}">
 											<layoutData>
 												<l:GridData span="L2 M3 S12" linebreak="true"/>
 											</layoutData>
