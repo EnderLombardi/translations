@@ -27,7 +27,7 @@
 						<Select id="selectUser" change="selectUser"
 							class="sapUiTinyMarginBeginEnd pageHeader pageHeaderBlue" 
 							items="{ path : 'ressourcePoolModel>/Rowsets/Rowset/0/Row' }" text="test">
-							<core:Item key="{ressourcePoolModel>USER_ID}" text="{ressourcePoolModel>FNAME}" />
+							<core:Item key="{ressourcePoolModel>USER_ID}" text="{ressourcePoolModel>FNAME} {ressourcePoolModel>LNAME}" />
 						</Select>
 						
 						<ToolbarSpacer />

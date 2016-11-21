@@ -382,16 +382,16 @@ sap.ui
 							sap.ui.getCore().byId("scanButton").setEnabled(true);
 							sap.ui.getCore().byId("msgstrpConfirm").setVisible(false);
 							if (data.Message) {
-								type = data.Message.split(":")[0]
-								id = data.Message.split(":")[1];
+								type = data.Message.split(":")[0];
+								//id = data.Message.split(":")[1];
 
 								if (type == "UID") {
-									sap.ui.getCore().byId("UIDForConfirmation").setValue(id);
+									sap.ui.getCore().byId("UIDForConfirmation").setValue(data.Message);
 									sap.ui.getCore().byId("msgstrpConfirm").setType("Success");
 									sap.ui.getCore().byId("msgstrpConfirm").setText(sap.ui.getCore().getModel("ShellI18n").getProperty("ScannedSuccessfully"));
 									sap.ui.getCore().byId("msgstrpConfirm").setVisible(true);
 								} else if (type == "BID") {
-									sap.ui.getCore().byId("badgeIDForConfirmation").setValue(id);
+									sap.ui.getCore().byId("badgeIDForConfirmation").setValue(data.Message);
 									sap.ui.getCore().byId("msgstrpConfirm").setType("Success");
 									sap.ui.getCore().byId("msgstrpConfirm").setText(sap.ui.getCore().getModel("ShellI18n").getProperty("ScannedSuccessfully"));
 									sap.ui.getCore().byId("msgstrpConfirm").setVisible(true);

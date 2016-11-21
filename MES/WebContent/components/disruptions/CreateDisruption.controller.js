@@ -195,7 +195,7 @@ sap.ui
 							that.filterField(oElement);
 						});
 					},
-					
+
 					/***********************************************************
 					 * Create Disruption
 					 */
@@ -439,12 +439,11 @@ sap.ui
 											oModel
 													.getProperty("/OriginatorGroup"));
 							this.getView().byId("selectRootCause")
-									.setSelectedKey(
-											oModel.getProperty("/RootCause"));
-							this.getView().byId("gravity")
-							.setSelectedKey(
+									.setSelectedKey(oModel.getProperty("/RootCause"));
+
+							this.getView().byId("gravity").setSelectedKey(
 									oModel.getProperty("/Gravity"));
-							
+
 							this.getView().byId("timeLost").setValue(
 									oModel.getProperty("/TimeLost"));
 							this.getView().byId("status").setValue(
@@ -454,8 +453,8 @@ sap.ui
 							this.getView().byId("comment").setValue();
 							this.initializeTree();
 
-
-							// Disable/Enable inputs according to Originator/Resolution Group
+							// Disable/Enable inputs according to
+							// Originator/Resolution Group
 							var origFlag = sap.ui.getCore().getModel(
 									"DisruptionDetailModel").getData().OriginatorFlag;
 
@@ -468,8 +467,9 @@ sap.ui
 								this.originatorGroupSettings();
 
 						} else {
-							
-							//expected date and time are not cleared in reset all fields as formatter has to be applied
+
+							// expected date and time are not cleared in reset
+							// all fields as formatter has to be applied
 							this.getView().byId("expectedDate").setValue();
 							this.getView().byId("expectedTime").setValue();
 
@@ -483,8 +483,7 @@ sap.ui
 														"selectOriginator")
 														.getItemAt(0).getKey());
 
-
-							// Enable fields for creation	
+							// Enable fields for creation
 							this.createDisruptionSettings();
 
 						}
@@ -503,12 +502,11 @@ sap.ui
 					},
 
 					resolutionGroupSettings : function() {
-						
+
 						this.setEnabledSelectBox(false, false, true, true);
 						this.getView().byId("selectOriginator").setEnabled(
 								false);
-						this.getView().byId("description")
-								.setEnabled(false);
+						this.getView().byId("description").setEnabled(false);
 						this.getView().byId("promisedDate").setEnabled(true);
 						this.getView().byId("promisedTime").setEnabled(true);
 						this.getView().byId("expectedDate").setEnabled(false);
@@ -517,20 +515,19 @@ sap.ui
 						this.getView().byId("timeLost").setEnabled(false);
 						this.getView().byId("materials").setEnabled(false);
 						this.getView().byId("jigtools").setEnabled(false);
-						
-						//promised date has to be visible while editing
+
+						// promised date has to be visible while editing
 						this.getView().byId("promisedDateLabel").setVisible(true);
 						this.getView().byId("promisedDate").setVisible(true);
 						this.getView().byId("promisedTime").setVisible(true);
 					},
-					
-					originatorGroupSettings : function(){
+
+					originatorGroupSettings : function() {
 
 						this.setEnabledSelectBox(false, true, true, true);
 						this.getView().byId("selectOriginator").setEnabled(
 								false);
-						this.getView().byId("description")
-								.setEnabled(false);
+						this.getView().byId("description").setEnabled(false);
 						this.getView().byId("promisedDate").setEnabled(false);
 						this.getView().byId("promisedTime").setEnabled(false);
 						this.getView().byId("expectedDate").setEnabled(true);
@@ -539,18 +536,19 @@ sap.ui
 						this.getView().byId("timeLost").setEnabled(false);
 						this.getView().byId("materials").setEnabled(false);
 						this.getView().byId("jigtools").setEnabled(false);
-						
-						//promised date has to be visible while editing
-						this.getView().byId("promisedDateLabel").setVisible(true);
+
+						// promised date has to be visible while editing
+						this.getView().byId("promisedDateLabel").setVisible(
+								true);
 						this.getView().byId("promisedDate").setVisible(true);
 						this.getView().byId("promisedTime").setVisible(true);
 					},
-					
-					createDisruptionSettings : function(){
-						
+
+					createDisruptionSettings : function() {
+
 						this.setEnabledSelectBox(true, false, false, false);
-						this.getView().byId("selectOriginator").setEnabled(
-								true);
+						this.getView().byId("selectOriginator")
+								.setEnabled(true);
 						this.getView().byId("description").setEnabled(true);
 						this.getView().byId("timeLost").setEnabled(true);
 						this.getView().byId("expectedDate").setEnabled(true);
@@ -559,9 +557,11 @@ sap.ui
 						this.getView().byId("timeLost").setEnabled(true);
 						this.getView().byId("materials").setEnabled(true);
 						this.getView().byId("jigtools").setEnabled(true);
-						
-						// at the time of creation promised date would be invisible
-						this.getView().byId("promisedDateLabel").setVisible(false);
+
+						// at the time of creation promised date would be
+						// invisible
+						this.getView().byId("promisedDateLabel").setVisible(
+								false);
 						this.getView().byId("promisedDate").setVisible(false);
 						this.getView().byId("promisedTime").setVisible(false);
 
@@ -605,8 +605,10 @@ sap.ui
 								.setSelectedKey();
 						this.getView().byId("selectRootCause").setSelectedKey();
 						this.getView().byId("gravity").setSelectedKey();
-						/*this.getView().byId("expectedDate").setValue();
-						this.getView().byId("expectedTime").setValue();*/
+						/*
+						 * this.getView().byId("expectedDate").setValue();
+						 * this.getView().byId("expectedTime").setValue();
+						 */
 						this.getView().byId("timeLost").setValue();
 						this.getView().byId("comment").setValue();
 						this.getView().byId("description").setValue();
@@ -796,6 +798,168 @@ sap.ui
 					handleCancelMaterialList : function() {
 						this._materialListDialog.close();
 					},
+
+					/***********************************************************
+					 * on click of value help request in jig and tools
+					 * 
+					 */
+					onJigToolValueHelpRequest : function() {
+						if (!this.jigToolSelectDialog) {
+
+							this.jigToolSelectDialog = sap.ui.xmlfragment(
+									"airbus.mes.disruptions.fragment.Jigtool",
+									this);
+
+							this.getView().addDependent(
+									this.jigToolSelectDialog);
+
+						}
+						this.jigToolSelectDialog.open();
+
+					},
+					/***********************************************************
+					 * Adds new free jig tool along with quantity to the list
+					 */
+					addNewJigToolToList : function() {
+
+						var oModelData = sap.ui.getCore().getModel(
+								"MaterialListModel").getProperty(
+								"/MaterialList");
+
+						if (sap.ui.getCore().byId("customJigTool").getValue() != "") {
+
+							// make an Item to add in the list.
+
+							var oJigToolItem = new sap.m.CustomListItem(
+									{
+										content : new sap.ui.layout.Grid(
+												{
+													defaultSpan : "L12 M12 S12",
+													content : new sap.m.HBox(
+															{
+																justifyContent : "SpaceBetween",
+																alignContent : "SpaceBetween",
+																alignItems : "Center",
+																items : [
+																		new sap.m.Title(
+																				{
+																					textAlign : "Center",
+																					level : "H3",
+																					text : sap.ui
+																							.getCore()
+																							.byId(
+																									"customJigTool")
+																							.getValue()
+																				}),
+																		new sap.m.VBox(
+																				{
+																					width : "20%",
+																					items : [
+																							new sap.m.Label(
+																									{
+																										text : "Quantity"
+																									}),
+																							new sap.m.Input(
+																									{
+																										type : "Number",
+																										width : "80%",
+																										value : sap.ui
+																												.getCore()
+																												.byId(
+																														"jigToolQty")
+																												.getValue()
+																									})
+																									.addStyleClass("inputQty") ]
+																				}) ]
+															})
+												})
+
+									}).addStyleClass("customListItemPadding")
+							// *
+							// add item in starting of the Material List
+							sap.ui.getCore().byId("jigToolList").insertItem(
+									oJigToolItem, 0);
+
+							// by default select this item
+							sap.ui.getCore().byId("jigToolList")
+									.setSelectedItem(oJigToolItem, true);
+
+						}
+
+					},
+
+					/***********************************************************
+					 * on click cancel value help jigTool Box
+					 * 
+					 */
+
+					onjigToolValueHelpCancel : function() {
+						this.jigToolSelectDialog.close();
+						
+
+					},
+
+					/***********************************************************
+					 * on click ok value help jigTool Box
+					 * 
+					 */
+
+					onjigToolValueHelpOk : function(oEvt) {
+						var aSelectedItems = sap.ui.getCore().byId(
+								"jigToolList").getSelectedItems();
+
+						/*
+						 * remove all token already present in the MultiInput
+						 * the already selected tokens will be selected in the
+						 * MaterialList Dialog already so there will be no
+						 * chance of data loss
+						 */
+						sap.ui.getCore().byId("createDisruptionView--jigtools")
+								.removeAllTokens();
+						sap.ui.getCore().byId("createDisruptionView--jigtools")
+								.setValue();
+
+						// for each Item add token to MaterialInput
+						aSelectedItems
+								.forEach(function(item, index) {
+									// if any selected item doesnt contain qty
+									// set it to 1.
+									if (item.getContent()[0].getContent()[0]
+											.getItems()[1].getItems()[1]
+											.getValue() == "")
+										item.getContent()[0].getContent()[0]
+												.getItems()[1].getItems()[1]
+												.setValue(1);
+									var oToken = new sap.m.Token(
+											{
+												key : item.getContent()[0]
+														.getContent()[0]
+														.getItems()[0]
+														.getText(),
+												text : item.getContent()[0]
+														.getContent()[0]
+														.getItems()[0]
+														.getText()
+														+ "("
+														+ item.getContent()[0]
+																.getContent()[0]
+																.getItems()[1]
+																.getItems()[1]
+																.getValue()
+														+ ")"
+
+											});
+									sap.ui.getCore().byId(
+											"createDisruptionView--jigtools")
+											.addToken(oToken);
+								});
+
+						this.jigToolSelectDialog.close();
+					},
+					onJigToolTokenChange : function() {
+						this.onJigToolValueHelpRequest();
+					},
+
 
 				/**
 				 * Called when the Controller is destroyed. Use this one to free

@@ -6,7 +6,7 @@
 				<Button id="popupSettingsButton" class="whiteText" width="100%" type="Transparent" text="{ShellI18n>ChangeStation}"
 					icon="sap-icon://repost" press="navigate">
 				</Button>
-				<Button class="whiteText" type="Transparent" width="100%" text="{ShellI18n>myProfileTitle}"
+				<Button id="idMyprofileSetting" class="whiteText" type="Transparent" width="100%" text="{ShellI18n>myProfileTitle}"
 					icon="sap-icon://business-card" press="goToMyProfile"
 					enabled="{ path : 'ShellI18n>', formatter : 'airbus.mes.shell.util.Formatter.checkToEnableProfile' }">
 				</Button>

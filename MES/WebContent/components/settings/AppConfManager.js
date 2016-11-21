@@ -26,12 +26,18 @@ airbus.mes.settings.AppConfManager =  {
 		    
 		    success: function(data){
 		    	airbus.mes.settings.AppConfManager.oAppConfiguration = data;
+		    	//enable the button when the asynce request is complete
+		    	if(sap.ui.getCore().byId("idMyprofileSettingButton"))
+		    		sap.ui.getCore().byId("idMyprofileSettingButton").setBusy(false);
 		    },
 		   
 		    error: function(error,  jQXHR){
 		    	console.log(error);
 		    	// Permit to do the check on every component where it use even if we have no response.
-		    	airbus.mes.settings.AppConfManager.oAppConfiguration = {};		    	 
+		    	airbus.mes.settings.AppConfManager.oAppConfiguration = {};
+		    	//enable the button when the request is complete
+		    	if(sap.ui.getCore().byId("idMyprofileSettingButton"))
+		    	sap.ui.getCore().byId("idMyprofileSettingButton").setBusy(false);
 		    }
 		});
 	},

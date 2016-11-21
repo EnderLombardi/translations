@@ -1,6 +1,11 @@
  /*** CSS for Sub header - Operation Details Sub Header and Menu Bar)  ******/
  
 .operationDetailHeadPanel {
+    background-color: #D5F1F8 !important;
+    border-bottom: 1px solid #dddddd;
+}
+
+.operationDetailHeadPanel {
     overflow: visible;
     z-index: 1001;
 }
@@ -24,7 +29,9 @@
 
 
 .operationDetailHeadPanel .sapMPanelWrappingDivTb{
-	border-bottom:0px !important
+	border-bottom:0px !important;
+    background-color: #D5F1F8 !important;
+    box-shadow: 0px 5px 15px -5px #434343;
 }
 .operationDetailHeadPanel .sapMPanelBGTranslucent, .operationDetailHeadPanel .operationDetailForm .sapUiRLContainer{
 	background:transparent !important;
@@ -54,7 +61,6 @@
 	align-items: center;
 }
 .operationDetailHeadPanel.sapMPanel .sapMPanelWrappingDivTb .sapMIBar.sapMTB>:first-child div:nth-child(2) .subText {
-	color: #434343!important;
     font-weight: normal!important;
     font-size: 1rem!important;
     line-height: 3rem;
@@ -163,6 +169,7 @@
 .operationDetailHeadPanel + .opDetailNavToolbar {
 	background:#fff;
     box-shadow: 0px 5px 5px -5px #434343;
+    border-top: 2px solid #ccc;
     z-index: 1000;
     position: relative;
     border:0;
@@ -173,9 +180,6 @@ html.sap-desktop .operationDetailHeadPanel + .opDetailNavToolbar .sapMSegBBtnFoc
     color:#0D5D76;
 }
 
-.operationDetailHeadPanel + .opDetailNavToolbar + .navContAutoHeight {
-	border-top: 5px solid #ccc;	
-}
 /*** End of Styling of Navigation Toolbar ***/
 
 /*** CSS for Confirmation Dialogue  ***/

@@ -213,21 +213,24 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 	 */
 	renderStationTracker: function(){
 		
+		airbus.mes.stationtracker.oView.byId("stationtracker").setBusy(true);
 		var oModule = airbus.mes.stationtracker.ModelManager;
 		airbus.mes.shell.oView.getController().setInformationVisibility(true);
     
-		airbus.mes.stationtracker.oView.byId("stationtracker").setBusy(true);
-
+		// synchrone call
 		oModule.loadShifts();
-        airbus.mes.stationtracker.ShiftManager.init(airbus.mes.stationtracker.GroupingBoxingManager.shiftNoBreakHierarchy);
-        oModule.loadRessourcePool();
-        oModule.loadAffectation();
-        airbus.mes.stationtracker.AssignmentManager.computeAffectationHierarchy();
-   		oModule.loadStationTracker("U");
+		oModule.loadAffectation();
+		airbus.mes.stationtracker.ShiftManager.init(airbus.mes.stationtracker.GroupingBoxingManager.shiftNoBreakHierarchy);
+		airbus.mes.stationtracker.AssignmentManager.computeAffectationHierarchy();
+		
+		// asynchrone call
+		oModule.loadRessourcePool();
+    	oModule.loadStationTracker("U");
    		oModule.loadStationTracker("O");
    		oModule.loadStationTracker("R");
     	oModule.loadProductionGroup();
     	oModule.loadKPI();
+    	oModule.loadFilterUnplanned();
    	
 	},
 
@@ -307,6 +310,8 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 		.setValue("");
 	},
 	onCancelMyProfile:function(){
+		sap.ui.getCore().getElementById("userNameMyProfile").setValueState(sap.ui.core.ValueState.None);
+		sap.ui.getCore().getElementById("passwordMyProfile").setValueState(sap.ui.core.ValueState.None);	
 		this.myProfileDailog.close();
 	},
 	
@@ -354,17 +359,17 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 			sap.ui.getCore().byId("scanButtonMyProfile").setEnabled(true);
 			sap.ui.getCore().byId("msgstrpMyProfile").setVisible(false);
 			if (data.Message) {
-				type = data.Message.split(":")[0]
-				id = data.Message.split(":")[1];
+				type = data.Message.split(":")[0];
+				//id = data.Message.split(":")[1];
 
 				if (type == "UID") {
-					sap.ui.getCore().byId("uIdMyProfile").setValue(id);
+					sap.ui.getCore().byId("uIdMyProfile").setValue(data.Message);
 					sap.ui.getCore().byId("msgstrpMyProfile").setType("Success");
 					sap.ui.getCore().byId("msgstrpMyProfile").setText(sap.ui.getCore().getModel("ShellI18n").getProperty("ScannedSuccessfully"));
 					sap.ui.getCore().byId("msgstrpMyProfile").setVisible(true);
 		
 				} else if (type == "BID") {
-					sap.ui.getCore().byId("badgeIdMyProfile").setValue(id);
+					sap.ui.getCore().byId("badgeIdMyProfile").setValue(data.Message);
 					sap.ui.getCore().byId("msgstrpMyProfile").setType("Success");
 					sap.ui.getCore().byId("msgstrpMyProfile").setText(sap.ui.getCore().getModel("ShellI18n").getProperty("ScannedSuccessfully"));
 					sap.ui.getCore().byId("msgstrpMyProfile").setVisible(true);
@@ -493,9 +498,6 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 			this.settingPopup = sap.ui.xmlfragment("airbus.mes.shell.settingPopover", airbus.mes.shell.oView.getController());
 		}
 		this.settingPopup.openBy(this.getView().byId("settingsButton"));
-	},
-	closePopover :function(){
-		this.settingPopup.close()
 	},
 	
 	logOut : function() {

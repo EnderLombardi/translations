@@ -1,3 +1,5 @@
+"use strict";
+
 jQuery.sap.require("airbus.mes.stationtracker.util.Formatter");
 
 sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
@@ -8,6 +10,25 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	 * @memberOf components.stationtracker.stationtracker
 	 */
 		onInit: function() {
+<<<<<<< Upstream, based on origin/MESv0.9
+		
+//		var oModel = sap.ui.getCore().getModel("productionGroupModel");
+//		var aProdGroup = oModel.getData().Rowsets.Rowset[0].Row;
+//		var aItems = [];
+//
+		// Check if model is load ,create empty model if no data
+//		if(!oModel.getProperty("/Rowsets/Rowset/0/Row")){              
+//			
+//	    	console.log("No production group available");
+//	    	oModel.oData.Rowsets.Rowset[0].Row = [];
+//	    	aProdGroup = [];
+//		}
+//		
+//		
+//		for (var i = 0; i < aProdGroup.length; i++) {
+//			aItems.push(aProdGroup[i].PROD_GROUP);
+//		}
+=======
 //			Retrieve all value of Production Group
 			var oModel = airbus.mes.stationtracker.ModelManager.ProductionGroup;
 			var aProdGroup = oModel.getData().Rowsets.Rowset[0].Row;
@@ -15,8 +36,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 
 			// Check if model is load ,create empty model if no data
 			if(!oModel.getProperty("/Rowsets/Rowset/0/Row")){              
-				
-		    	console.log("No production group available");
+				console.log("No production group available");
 		    	oModel.oData.Rowsets.Rowset[0].Row = [];
 		    	aProdGroup = [];
 			}
@@ -25,6 +45,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			for (var i = 0; i < aProdGroup.length; i++) {
 				aItems.push(aProdGroup[i].PROD_GROUP);
 			}
+>>>>>>> 46203a3 [stationtracker] - IM of "Line for Reference" 				 - other css config
 		},
 	/**
 	 * Similar to onBeforeRendering, but this hook is invoked before the controller's View is re-rendered
@@ -41,9 +62,6 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	onAfterRendering : function() {
 		// Capture the open/close panel event
 		airbus.mes.stationtracker.oView.byId('kpi_header').attachExpand(resizeGantt);
-		// Set instant display for busy indicator
-	    airbus.mes.stationtracker.oView.byId("stationtracker").setBusyIndicatorDelay(0);
-
 		// First run on init
 		if (typeof airbus.mes.stationtracker.cachedGanttTop === 'undefined'){
 			resizeGantt();
@@ -178,10 +196,10 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	},
 
 	onInitialPlanPress : function() {
-
-		// XX TO REDEFINE
+		
+		airbus.mes.stationtracker.oView.byId("stationtracker").setBusy(true);
 		var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
-
+		
 		if (airbus.mes.stationtracker.GroupingBoxingManager.showInitial) {
 
 			airbus.mes.stationtracker.GroupingBoxingManager.showInitial = false;
@@ -189,19 +207,9 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		
 			
 		} else {
-
+			
 			airbus.mes.stationtracker.GroupingBoxingManager.showInitial = true;
-			//If model is allready load I dont call back the service
-			if ( !sap.ui.getCore().getModel("stationTrackerIModel").getProperty("/Rowsets/Rowset/0/Row") ) {
-				
-				airbus.mes.stationtracker.ModelManager.loadStationTracker("I");
-				
-			} else {
-			
-			GroupingBoxingManager.parseOperation(GroupingBoxingManager.group, GroupingBoxingManager.box);
-			
-		
-			}
+			airbus.mes.stationtracker.ModelManager.loadStationTracker("I");
 			
 		}
 	},
@@ -339,6 +347,8 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	},
 	onProdGroupSelFinish : function(oEvent) {
 		
+		// show loading on gantt
+		airbus.mes.stationtracker.oView.byId("stationtracker").setBusy(true);  
 //		Filter the stationtracker model with current production group
 		var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
 	    var sProdGroup = airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("ProductionGroup") + " : ";
@@ -369,11 +379,10 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		
 		airbus.mes.stationtracker.oView.byId("ProductionButton").setText(sProdGroup);
 
-		airbus.mes.stationtracker.ModelManager.loadStationTracker("R");
 		airbus.mes.stationtracker.ModelManager.loadStationTracker("I");
 		airbus.mes.stationtracker.ModelManager.loadStationTracker("U");		
 		airbus.mes.stationtracker.ModelManager.loadStationTracker("O");		
-				
+		airbus.mes.stationtracker.ModelManager.loadStationTracker("R");		
 	},
 	
 	changeGroup : function() {
@@ -446,11 +455,8 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		
 //		Retrieve selected group
 		var sGroup = sap.ui.getCore().byId("ReschedulePopover--SelectedGroup").getSelectedKey();
-		
-//		Call rescheduling service
-//		TODO
-		
-//		Close Popup
+
+		//Close Popup
 		onCloseDialog(oEvent);
 		
 	},
@@ -458,10 +464,12 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	 * Fire when the user click on Import of unplanned pop-up or OSW pop-up  
 	 *
 	 *  @return{STRING} Myvalue, current value of box/group Id
+	 *  
+	 *  TODO : change access to list
 	 */
 	onUnplannedImport : function() {
 
-		var oList = sap.ui.getCore().byId("worklistPopover--myList"); //TODO : change access to list
+		var oList = sap.ui.getCore().byId("worklistPopover--myList"); 
 		var aPath = oList.getSelectedContextPaths();
 		var aSFC_Step = [];
 		
@@ -738,7 +746,8 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		
 		var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
 		var oSelected = oEvt.getSource().getSelectedItem().mProperties;
-				
+		airbus.mes.stationtracker.oView.byId("stationtracker").setBusy(true);
+		
 		if (oSelected.key != "ALL") {
 		
 			airbus.mes.stationtracker.AssignmentManager.userSelected = oSelected.key;
@@ -900,8 +909,8 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	},
 
 	afterCloseOperationDetailPopup : function() {
-		airbus.mes.shell.oView.getController()
-				.renderStationTracker();
+		// perf issue if stationtracker dont rerender correctly its because of this.
+		//airbus.mes.shell.oView.getController().renderStationTracker();
 	},
 
 	onContinueCheckQA : function(oEvent){
@@ -962,8 +971,8 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	onCheckQA : function(){
 		airbus.mes.stationtracker.AssignmentManager.checkQA = true;
 	},
+	
 	// Displays the number of items selected in the "Groupe de production
-	// TODO : get id of the fragment "productionGroupPopover" to insert value (line 915 and 920)
 	onSelectionChange : function (oEvt) {
 		
 		var oList = oEvt.getSource();

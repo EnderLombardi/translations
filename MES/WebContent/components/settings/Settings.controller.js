@@ -248,7 +248,10 @@ sap.ui.controller("airbus.mes.settings.Settings",
 				// get real value of site making the link betwen the siteModel and from mii and local site
 				airbus.mes.settings.ModelManager.site = sap.ui.getCore().getModel("siteModel").getProperty("/Rowsets/Rowset/0/Row/" + fIndex + "/site");
 				airbus.mes.settings.ModelManager.siteDesc = sap.ui.getCore().getModel("siteModel").getProperty("/Rowsets/Rowset/0/Row/" + fIndex + "/site_desc");
-				
+				//load appconfiguration for that site and disable the save my profile till the data for the site is loaded
+				if(sap.ui.getCore().byId("idMyprofileSettingButton"))
+					sap.ui.getCore().byId("idMyprofileSettingButton").setBusy(true);
+				airbus.mes.settings.AppConfManager.loadAppConfig();
 				var oData = this.getView().getModel("region").oData;
 
 				for (var i = 0; i < oData.Spots.length; i++) {
@@ -422,6 +425,8 @@ sap.ui.controller("airbus.mes.settings.Settings",
 			onConfirm : function(oEvent) { 
 //				Firstly, save the new user settings
 				this.saveUserSettings();
+				//load appconfiguration for that site
+				airbus.mes.settings.AppConfManager.loadAppConfig();
 //				Then Navigate to correct view
 				if (!this.getView().byId("selectMSN").getValue()) {
 					airbus.mes.settings.ModelManager.messageShow(this.getView().getModel("i18n").getProperty("SelectMSN"));
