@@ -213,21 +213,24 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 	 */
 	renderStationTracker: function(){
 		
+		airbus.mes.stationtracker.oView.byId("stationtracker").setBusy(true);
 		var oModule = airbus.mes.stationtracker.ModelManager;
 		airbus.mes.shell.oView.getController().setInformationVisibility(true);
     
-		airbus.mes.stationtracker.oView.byId("stationtracker").setBusy(true);
-
+		// synchrone call
 		oModule.loadShifts();
-        airbus.mes.stationtracker.ShiftManager.init(airbus.mes.stationtracker.GroupingBoxingManager.shiftNoBreakHierarchy);
-        oModule.loadRessourcePool();
-        oModule.loadAffectation();
-        airbus.mes.stationtracker.AssignmentManager.computeAffectationHierarchy();
-   		oModule.loadStationTracker("U");
+		oModule.loadAffectation();
+		airbus.mes.stationtracker.ShiftManager.init(airbus.mes.stationtracker.GroupingBoxingManager.shiftNoBreakHierarchy);
+		airbus.mes.stationtracker.AssignmentManager.computeAffectationHierarchy();
+		
+		// asynchrone call
+		oModule.loadRessourcePool();
+    	oModule.loadStationTracker("U");
    		oModule.loadStationTracker("O");
    		oModule.loadStationTracker("R");
     	oModule.loadProductionGroup();
     	oModule.loadKPI();
+    	oModule.loadFilterUnplanned();
    	
 	},
 

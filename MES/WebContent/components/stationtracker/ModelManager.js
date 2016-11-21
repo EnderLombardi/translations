@@ -66,23 +66,8 @@ airbus.mes.stationtracker.ModelManager = {
       			}
       		}
 
-              // TODO DEPLACE this in shell controller and when service is ok remove
-              // all of this function
               this.loadFilterUnplanned();
-              this.loadProductionGroup();
-              this.loadKPI();
 
-       
-//              Refresh the model 
-//                var that = this;
-//              	if(this.firstTime !== true) {
-//              	setInterval(function()
-//              			{	
-//              				console.log("Refresh");
-//              				airbus.mes.stationtracker.ModelManager.init(core);
-//              		    }, 10000);
-//              	that.firstTime = true;
-//              	}
        
        },
        
@@ -134,8 +119,7 @@ airbus.mes.stationtracker.ModelManager = {
               var geturlAffectation = this.urlModel.getProperty('urlaffectation');
 
               geturlAffectation = airbus.mes.stationtracker.ModelManager.replaceURI(geturlAffectation, "$site", oData.site);
-              geturlAffectation = airbus.mes.stationtracker.ModelManager.replaceURI(geturlAffectation, "$station",
-                           oData.station);
+              geturlAffectation = airbus.mes.stationtracker.ModelManager.replaceURI(geturlAffectation, "$station", oData.station);
               geturlAffectation = airbus.mes.stationtracker.ModelManager.replaceURI(geturlAffectation, "$msn", oData.msn);
 
               var oViewModel = sap.ui.getCore().getModel("affectationModel");
@@ -189,7 +173,7 @@ airbus.mes.stationtracker.ModelManager = {
 
               }
 
-              oViewModel.loadData(geturlstationtracker, null, false);
+              oViewModel.loadData(geturlstationtracker, null, true );
 
        },
        computeStatus : function(aModel) {
@@ -325,13 +309,13 @@ airbus.mes.stationtracker.ModelManager = {
               geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$plant", oData.site );
 
               var oViewModel = sap.ui.getCore().getModel("productionGroupModel");
-              oViewModel.loadData(geturlstationtracker, null, false);
+              oViewModel.loadData(geturlstationtracker, null, true);
               airbus.mes.stationtracker.ModelManager.ProductionGroup = oViewModel;
 
        },
        loadKPI : function() {
               var oViewModel = sap.ui.getCore().getModel("KPI");
-              oViewModel.loadData(this.urlModel.getProperty("urlKPI"), null, false);
+              oViewModel.loadData(this.urlModel.getProperty("urlKPI"), null, true);
               airbus.mes.stationtracker.ModelManager.KPI = oViewModel;
 
        },
@@ -412,9 +396,10 @@ airbus.mes.stationtracker.ModelManager = {
               airbus.mes.stationtracker.ModelManager.selectMyShift();
 
        },
+        
        loadShifts : function() {
              
-    	   	  var oViewModelshift = sap.ui.getCore().getModel("shiftsModel");
+    	      var oViewModelshift = sap.ui.getCore().getModel("shiftsModel");
               var getUrlShifts = this.urlModel.getProperty("urlshifts");
               var oData = airbus.mes.settings.ModelManager;
               var reqResult = "";
