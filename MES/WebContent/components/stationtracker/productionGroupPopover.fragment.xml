@@ -5,7 +5,7 @@
 	<Popover placement="Bottom" 
 	showHeader="false"
 	showArrow="false" 
-	contentWidth="10%" 
+	contentWidth="auto" 
 	contentHeight="auto"
 	offsetY="5px"
 	offsetX="5px" 
