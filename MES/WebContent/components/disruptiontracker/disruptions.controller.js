@@ -172,12 +172,12 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		
 		airbus.mes.disruptions.oView.viewDisruption.getModel("operationDisruptionsModel").setData(disruptionData);
 		
-		//Set Expanded by Default
-		sap.ui.getCore().byId("ViewDisruptionView").getContent()[0].getContent()[0].getItems()[0].getContent()[0].setExpandable(false);
-
 		disruptionsCustomDataFlag = false;
 		
 		airbus.mes.disruptiontracker.detailPopUp.open();
+
+		//Set Expanded by Default
+		sap.ui.getCore().byId("ViewDisruptionView").getContent()[0].getContent()[1].getItems()[0].getContent()[0].setExpandable(false);
 		
 		this.nav.to(airbus.mes.disruptions.oView.viewDisruption.getId());
 				
@@ -195,7 +195,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 	afterCloseDisruptnDetailPopUp: function(){
 			
 		// Reset Expandable
-		sap.ui.getCore().byId("ViewDisruptionView").getContent()[0].getContent()[0].getItems()[0].getContent()[0].setExpandable(true);
+		sap.ui.getCore().byId("ViewDisruptionView").getContent()[0].getContent()[1].getItems()[0].getContent()[0].setExpandable(true);
 		
 
 		// Empty Model
@@ -217,8 +217,8 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 	afterNavigate : function() {
 		
 		if(this.nav.getCurrentPage().sId == "createDisruptionView" ){
-			sap.ui.getCore().byId("disruptionDetailPopup--btnUpdateDisruption").setVisible(false);
-			sap.ui.getCore().byId("disruptionDetailPopup--btnCancelDisruption").setVisible(false);
+			sap.ui.getCore().byId("disruptionDetailPopup--btnUpdateDisruption").setVisible(true);
+			sap.ui.getCore().byId("disruptionDetailPopup--btnCancelDisruption").setVisible(true);
 			
 			
 

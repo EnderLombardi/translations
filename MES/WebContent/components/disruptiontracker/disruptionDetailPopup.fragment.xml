@@ -5,7 +5,7 @@
 		contentWidth="90%" contentHeight="90%" verticalScrolling="true"
 		showHeader="false" afterClose="afterCloseDisruptnDetailPopUp">
 		<content>
-			<NavContainer id="disruptDetailNavContainer"
+			<NavContainer id="disruptDetailNavContainer" autoFocus="false"
 				afterNavigate="afterNavigate" navigate="onNavigate">
 				<pages>
 

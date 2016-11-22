@@ -25,7 +25,10 @@
 }
 
 /*** End of CSS for Fragment Material List ***/
-
+label#createDisruptionView--disruptLabel {
+	font-size: 1.2rem !important;
+	font-weight: bold !important;
+}
 
 /**** CSS for materialListSelectDialog**************/
 #materialListSelectDialog {
