@@ -180,7 +180,7 @@ airbus.mes.disruptions.Formatter = {
 
 	setEscalateButtonVisibility : function(originatorFlag, escalation, status) {
 
-		if (status == airbus.mes.disruptions.Formatter.status.deleted || status == airbus.mes.disruptions.Formatter.status.closed) {
+		if (status == airbus.mes.disruptions.Formatter.status.solved || status == airbus.mes.disruptions.Formatter.status.deleted || status == airbus.mes.disruptions.Formatter.status.closed) {
 			return false;
 		} 
 		else if (originatorFlag == "X" && escalation < 3)
