@@ -3,6 +3,11 @@
 	font-style: italic !important;
 }
 /****** classes for Disruption screen **********/
+label#ViewDisruptionView--disruptLabel {
+	font-size: 1.2rem !important;
+	font-weight: bold;
+}
+
 .disruptionDetail .disruptionExpandablePanel .sapMPanelBGTranslucent {
 	background-color: #F5F5F5 !important;
 }

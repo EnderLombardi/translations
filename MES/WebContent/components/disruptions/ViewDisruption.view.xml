@@ -3,6 +3,9 @@
 	controllerName="airbus.mes.disruptions.ViewDisruption" xmlns:html="http://www.w3.org/1999/xhtml">
 	<Page enableScrolling="false" showHeader="false">
 		<content>
+
+		<Label id="disruptLabel" class="sapUiMediumMargin" text="{i18nModel>Disruptions}"></Label>
+
 			<List id="disrptlist" noDataText="{i18nModel>noDisruptions}"
 				class="disruptionDetail sapUiSmallMarginBottom" items="{path: 'operationDisruptionsModel>/Rowsets/Rowset/0/Row'}">
 
