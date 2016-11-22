@@ -3,10 +3,9 @@
 	xmlns:html="http://www.w3.org/1999/xhtml">
 	<Dialog title="Unplanned activities" class="pageHeaderDialog classWorklistPopover" showHeader="false">
 		
-		
 		<content>
 			<VBox class="sapMFooter-CTX classWorklistPopoverHeader">
-					<Label id="LabelTitle" width="100%" text="{StationTrackerI18n>WorklistHeaderWorklist}" />
+					<Label id="LabelTitle" width="100%" text="{path: 'WorkListModel>andons' , formatter: 'airbus.mes.stationtracker.util.Formatter.setWorkListText' }" />
 				
 					<custom:customProgressIndicator
 					id="overallProgress" 
@@ -22,7 +21,7 @@
 			<VBox>
 				<HBox>
 					<Select class="sapUiTinyMarginBeginEnd comboBoxStyle"
-						    items="{groupModel>/Rowsets/Rowset/0/Row/GroupingWorklist}"
+						    items="{groupModel>/Rowsets/Rowset/0/Row/Grouping}"
 						    change="changeGroupWorkList"
 						    visible="true">
 						<core:ListItem key="{groupModel>key}" text="{ path : 'groupModel>Value' , formatter : '.getI18nValue' }" />				
@@ -33,7 +32,7 @@
 					        visible="true">						
 						<core:ListItem key="{groupModel>Value}" text="{ path : 'groupModel>Value' , formatter : '.getI18nValue' }" />					
 					</Select>
-				</HBox>
+			</HBox>
 			
 			<List id="myList" growing="true" growingThreshold="20"
 					growingScrollToLoad="true" items="{ path: 'WorkListModel>/' }"
@@ -46,9 +45,14 @@
 								<HBox>
 									<items>
 										<custom:customProgressIndicator
-											width="auto" state="sap.ui.core.ValueState.Success" status="{WorkListModel>STATE}"
+											width="auto" 
+											state="sap.ui.core.ValueState.Success" 
 											click="operationWorkListClick"
-											isAndon="{WorkListModel>andons}"
+											paused="{WorkListModel>PAUSED}"
+											progress="{WorkListModel>PROGRESS}"
+											rmastatus="{WorkListModel>RMA_STATUS_COLOR}"
+											osw="{WorkListModel>EXECUTION_STATION_SOURCE}"
+											status="{WorkListModel>STATE}"
 											displayValue="{ parts: [ 'WorkListModel>WORKORDER_ID','WorkListModel>WORKORDER_DESCRIPTION' ], formatter: 'airbus.mes.stationtracker.util.Formatter.titleWorklist'}"
 											displayValue2="{ parts: [ 'WorkListModel>OPERATION_ID','WorkListModel>OPERATION_DESCRIPTION','WorkListModel>PROGRESS','WorkListModel>DURATION' ], formatter: 'airbus.mes.stationtracker.util.Formatter.displayValueIM'}"
 											percentValue="{ parts: [ 'WorkListModel>PROGRESS','WorkListModel>DURATION' ], formatter: 'airbus.mes.stationtracker.util.Formatter.percentValue'}">
@@ -70,8 +74,7 @@
 				visible="{ path : 'WorkListModel>andons' , formatter: 'airbus.mes.stationtracker.util.Formatter.isCheckboxVisible'}">
 			</Button>
 			<Button text="{StationTrackerI18n>Close}" type="Transparent" icon="sap-icon://decline"
-				class="sapUiTinyMarginBeginEnd" press="onUnplannedClose"
-			>
+				class="sapUiTinyMarginBeginEnd" press="onUnplannedClose">
 			</Button>
 		</buttons>
 	</Dialog>

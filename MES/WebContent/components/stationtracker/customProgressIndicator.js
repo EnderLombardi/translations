@@ -4,7 +4,6 @@ jQuery.sap.declare("airbus.mes.stationtracker.customProgressIndicator");
 
 sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", {
 	metadata : {
-		
 		  events: {
               "click" : {}  // this Button has also a "hover" event, in addition to "press" of the normal Button
           },
@@ -38,19 +37,6 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 				type : 'string',
 				group : 'Appearance',
 				defaultValue : ''
-			},
-			displayValue3 : {
-				type : 'string',
-				group : 'Appearance',
-				defaultValue : ''
-			},nc : {
-				type : 'string',
-				group : 'Appearance',
-				defaultValue : ''
-			},reservation : {
-				type : 'string',
-				group : 'Appearance',
-				defaultValue : ''
 			},			
 			percentValue : {
 				type : 'float',
@@ -72,193 +58,233 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 				group : 'Dimension',
 				defaultValue : null
 			},
-			isAndon : {
-				type : 'string', // 'boolean',
-				group : 'Appearance',
-				defaultValue : ''
-			},
 			status : {
 				type : 'string',
 				group : 'Appearance',
 				defaultValue : ''
 			},
-			delayed : {
+			paused : {
 				type : 'string',
+				group : 'Appearance',
 				defaultValue : ''
 			},
-//			showIcon : {
-//				type : 'boolean',
-//				defaultValue :false
-//			},
-//			iconColor : {
-//				type : 'string',
-//				defaultValue : 'white'
-//			}
+			osw : {
+				type : 'string',
+				group : 'Appearance',
+				defaultValue : ''
+			},
+			progress : {
+				type : 'string',
+				group : 'Appearance',
+				defaultValue : ''
+			},
+			rmastatus: {
+				type : 'string',
+				group : 'Appearance',
+				defaultValue : ''
+			}
 		}
 	},
 
 	onclick : function() {   // is called when the Button is hovered - no event registration required
         this.fireClick();
     },
-	
+ 
 	renderer : function(r, c) {
+		
 		if (!c.getVisible()) {
 			return;
 		}
-		var color;
-		var w = c.getPercentValue();
+		
+		var PercValue = c.getPercentValue();
+		var Status = c.getStatus();
+		var DispValue = c.getDisplayValue();
+		var DispValue2 = c.getDisplayValue2();
+		var ShowValue = c.getShowValue();
+		var paused = c.getPaused();
+		var progress = c.getProgress();
+		var rmastatus = c.getRmastatus();
+		var osw = c.getOsw();
+		var S = c.getState();
 		var W = c.getWidth();
-		var h = c.getHeight();
-		var t = c.getDisplayValue();
-		var t2 = c.getDisplayValue2();
-		var t3 = c.getDisplayValue3();
-		var nc = c.getNc();
-		var reservation = c.getReservation();
-		var s = c.getShowValue();
-//		var S = c.getState();
-//		var i = c.getShowIcon();
-//		var ic = c.getIconColor();
-		var andon = c.getIsAndon();
-		var delayed = parseInt(c.getDelayed(), 10) > 0 ? true : false;
-		var status = c.getStatus();
-//		if (andon === '1')
-//			r.addClass('sapMPIAndon');
-		
-		if (parseInt(c.getDelayed(), 10) > 0) {
-			console.log('delayed!');
-		}
-		
+		var H = c.getHeight();
+		var sRightIcon = "";	
+		var sLeftIcon = "";
+		var sLeftIcon2 = "";
 		
 		r.write('<div');
-		r.writeControlData(c);
-
-		r.addClass('sapMPI');
-		if (andon === '1') {
-			r.addClass('sapMPIAndon');
-		} else {
-		
-		if (delayed) {
-			r.addClass('sapMPIBarDarkGrey');			
-		} else {
-			r.addClass('sapMPIBarGrey');			
-		}
-		}
-
-		// if (w > 50) {
-		// r.addClass('sapMPIValueGreaterHalf')
-		// }
-		r.addStyle('width', W);
-		if (h) {
-			r.addStyle('height', h);
-		}
-		r.writeStyles();
-		if (c.getEnabled()) {
-			r.writeAttribute('tabIndex', '-1');
-		} else {
-			r.addClass('sapMPIBarDisabled');
-		}
-
-		r.writeClasses();
-		r.write('>');
-
-		r.write('<div');
-
-		r.addClass('sapMPIBar');
-
-		if (status === "SFFI") {
-			r.addClass('sapMPIBarDarkGrey');
-		} else {
-			r.addClass('sapMPIBarGreen');
-		}
-		
-		r.writeClasses();
-
-		r.writeAttribute('id', c.getId() + '-bar');
-		r.writeAttribute('style', 'width:' + w + '%');
-		r.write('>');
-
-		r.write('</div>');
-
-		r.write('<div');
-		r.addClass('sapMPIBar');
-		
-		if (andon === '0') {
-		if (delayed) {
-			r.addClass('sapMPIBarYellow');			
-		} else {
-			r.addClass('sapMPIBarGrey');			
-		}
-		}
-		
-// r.addClass('sapMPIBarBlue');
-		r.writeClasses();
-		r.writeAttribute('id', c.getId() + '-bar2');
-		// if(!w){w=0;}
-		r.writeAttribute('style', 'width:' + (100-w) + '%; float:left;');
-
-		r.write('>');
-		r.write('</div>');
-		
-	
-		// r.write('</div>');
-		if(s) {
-			if(t2=='') {
-// if(i===false){
-				r.write("<span class='sapMPIText2'");
-				//r.addStyle('width', 'calc(100% - 40px)');
-				//r.addStyle('max-height', '1.5rem');
+				r.writeControlData(c);
+				r.addClass('sapMPI');
+				r.addClass('sapMPIBarGrey');
+				r.addStyle('width', W);
+				
+				if (H) {
+					r.addStyle('height', H);
+				}
+				
 				r.writeStyles();
-				r.write(">");
-				r.writeEscaped(t);
-				r.write("</span>");
-
-		} else{
-		r.write("<span class='sapMPIText1'");
-		// r.writeControlData(c);
-		r.addStyle('width', W);
-		r.writeStyles();
-		r.write(">");
-			r.writeEscaped(t);
-			r.write("</span>");
-			r.write("<span class='sapMPIText2'");
-			// r.writeControlData(c);
-		r.addStyle('width', W);
-		r.writeStyles();
-		r.write(">");
-			r.writeEscaped(t2);
-			r.write("</span>");
-		}
-		}
+				r.writeClasses();
+				r.write('>');
+				r.write('<div');
+						r.addClass('sapMPIBar');
+											
+						// condition design for worklist pop up
+						/************************************/
+						if ( rmastatus != "---" ){	//rma
+							sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon dandelion"></i>';
+						}
+						if (osw[0] === "3" ){ //OSW
+							sLeftIcon2 = '<i class="fa fa-refresh oswIcon dandelion-back "><b style="padding-left:1px">OSW</b></i>';
+						}
+						
+								// Operation is active	
+								if ( paused === "false") {
+									//sStatus = "2";
+									r.addStyle('background-color','#84bd00');
+									sRightIcon = '<i class="fa fa-play rightIcon"></i>';
+								}		
+									// Operation is not started
+								if ( paused === "---" ) {
+									//sStatus = "1";
+									// Operation is pause	
+									if ( paused === "---" && progress != "0" ) {
+										//sStatus = "3";
+										r.addStyle('background-color','#84bd00');
+										sRightIcon = '<i class="fa fa-pause rightIcon"></i>';
+									}	
+								}				
+								// Operation Completed
+								if ( Status === "C" ) {
+									//sStatus = "0";
+									r.addStyle('background-color','#0085ad');
+									if ( rmastatus != "---" ){	//rma
+										sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon"></i>';
+									}
+									if (osw[0] === "3" ){ //OSW
+										sLeftIcon2 = '<i class="fa fa-refresh oswIcon teal-blue white"><b style="padding-left:1px">OSW</b></i>';
+									}
+								}
+								//Opened Blocking and Escalated disruption
+								debugger ;
+								if ( Status === "D1") {
+									//sStatus = "4";
+									r.addStyle('background-color','#fbec00');
+									sRightIcon = '<i class="fa fa-stop rightIcon petrol" ></i>';
+									if ( rmastatus != "---" ){	//rma
+										sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon petrol"></i>';
+									}
+									if (osw[0] === "3" ){ //OSW
+										sLeftIcon2 = '<i class="fa fa-refresh oswIcon petrol-back dandelion"><b style="padding-left:1px">OSW</b></i>';
+									}
+								}
+								//Opened Blocking disruption
+								if ( Status === "D2") {
+									//sStatus = "5";
+									r.addStyle('background-color','#fbec00');
+									if ( rmastatus != "---" ){	//rma
+										sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon petrol"></i>';
+									}
+									if (osw[0] === "3" ){ //OSW
+										sLeftIcon2 = '<i class="fa fa-refresh oswIcon petrol-back dandelion"><b style="padding-left:1px">OSW</b></i>';
+									}
+								}
+								//Solved Blocking and Escalated disruption
+								if ( Status === "D3") {
+									//sStatus = "6";
+									if ( rmastatus != "---" ){	//rma
+										sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon petrol"></i>';
+									}
+									if (osw[0] === "3" ){ //OSW
+										sLeftIcon2 = '<i class="fa fa-refresh oswIcon petrol-back dandelion"><b style="padding-left:1px">OSW</b></i>';
+									}
+								}
+								//Solved Blocking disruption
+								if ( Status === "D4") {
+									//sStatus = "7";
+									if ( rmastatus != "---" ){	//rma
+										sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon petrol"></i>';
+									}
+									if (osw[0] === "3" ){ //OSW
+										sLeftIcon2 = '<i class="fa fa-refresh oswIcon petrol-back dandelion"><b style="padding-left:1px">OSW</b></i>';
+									}
+								}
+								//andon
+								if ( Status === "B") {
+									//sStatus = "99";
+						    		r.addStyle('background-color','#e4002b');
+						    		if ( rmastatus != "---" ){	//rma
+										sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon"></i>';
+									}
+									if (osw[0] === "3" ){ //OSW
+										sLeftIcon2 = '<i class="fa fa-refresh oswIcon cherry-red white"><b style="padding-left:1px">OSW</b></i>';
+									}
+								}
+								// Operation is from OSW
+//								if ( osw[0] === "3" ) {
+//									//fOSW = "1";
+//									//sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon"></i>';
+//									
+//								}
+//								//Maturity
+//								if ( rmastatus != "---" ) {
+//									//fRMA = "1";		
+//									//sLeftIcon2 = '<i class="fa fa-refresh oswIcon cherry-red white"><b style="padding-left:1px">OSW</b></i>';
+//									
+//								}
+											
+						
+						/*******************************************/
+						else {
+							r.addClass('sapMPIBarGreen');
+							r.writeClasses();
+							r.writeAttribute('style', 'width:' + PercValue + '%');
+						}
+								
+						r.write('>');
+				r.write('</div>');
+				r.write('<div');
+						r.addClass('sapMPIBar');
+						r.writeClasses();
+						r.writeAttribute('style', 'width:' + (100-PercValue) + '%; float:left;');
+						r.write('>');
+				r.write('</div>');
 		
-	
-		if(reservation != '0' && reservation != ""){
-			var sReservation = reservation;	
-			r.write('<span class="sapMPITextRightBar" style="color:red">' + sReservation + '</span>&nbsp;');
-
-		}	
-		
-		if (t3 === '1' || t3 === '2'){
-			r.write("<span class='sapMPITextRightBar'");
-			r.write('id="' + c.sId + '-TextRight"' );
-
-			if (t3 === '1'){
-				color = 'white';
-			}else if (t3 === '2'){
-				color = 'red';
-			}
-			r.addStyle('color', color);
-			r.writeStyles();
-			r.write(">R</span>&nbsp;");
-			}
-		
-		if(nc != '0' && reservation != "" ){
-//			var sNc = nc;
-			r.write('<span class="sapMPITextRightBar" style="color:red">Q</span>&nbsp;');
-		}			
-
+				if (ShowValue) {
+					if (DispValue2 == '') {
+						r.write("<span class='sapMPIText2'");
+								r.writeStyles();
+								r.write(">");
+								r.writeEscaped(DispValue);
+						r.write("</span>");
+					} else {
+						r.write("<span class='sapMPIText1'");
+								r.addStyle('width', W);
+								if ( Status === "D2" || Status === "D1") {
+									r.addStyle('color','#0F2D65');
+								}
+								r.writeStyles();
+								r.write(">");
+								r.writeEscaped(DispValue);
+						r.write("</span>");
+						r.write("<span class='sapMPIText2'");
+								r.addStyle('width', W);
+								if ( Status === "D2" || Status === "D1") {
+									r.addStyle('color','#0F2D65');
+								}
+								r.writeStyles();
+								r.write(">");
+								r.writeEscaped(DispValue2);
+						r.write("</span>");
+						r.write("<span class='sapMPIText3'");
+								r.write(">");
+								r.write(sLeftIcon);
+								r.write(sLeftIcon2);
+								r.write(sRightIcon);
+						r.write("</span>");
+					}
+				}
 		
 	r.write('</div>');
-	}
-
 	
+	}
 });
