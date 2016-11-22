@@ -348,7 +348,7 @@ sap.ui
 												.getSelectedKey()
 									},
 									{
-										"attribute" : "WORK_CENTER",
+										"attribute" : "WORK_CENTER_BO",
 										"value" : "WorkCenterBO:"
 												+ airbus.mes.settings.ModelManager.site
 												+ ","

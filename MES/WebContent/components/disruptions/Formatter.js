@@ -95,7 +95,7 @@ airbus.mes.disruptions.Formatter = {
 		else if ( (status == airbus.mes.disruptions.Formatter.status.pending || status == airbus.mes.disruptions.Formatter.status.rejected)
 					&& responsibleFlag == "X" && originatorFlag != "X")
 			return false;
-		
+
 		return true;
 	},
 
