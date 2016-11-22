@@ -1,3 +1,4 @@
+"use strict";
 
 jQuery.sap.require("sap.ui.core.format.DateFormat");
 jQuery.sap.declare("airbus.mes.stationtracker.ModelManager");

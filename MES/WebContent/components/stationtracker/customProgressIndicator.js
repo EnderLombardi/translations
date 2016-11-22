@@ -119,12 +119,12 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 //		var i = c.getShowIcon();
 //		var ic = c.getIconColor();
 		var andon = c.getIsAndon();
-		var delayed = parseInt(c.getDelayed()) > 0 ? true : false;
+		var delayed = parseInt(c.getDelayed(), 10) > 0 ? true : false;
 		var status = c.getStatus();
 //		if (andon === '1')
 //			r.addClass('sapMPIAndon');
 		
-		if (parseInt(c.getDelayed()) > 0) {
+		if (parseInt(c.getDelayed(), 10) > 0) {
 			console.log('delayed!');
 		}
 		
@@ -139,9 +139,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 		
 		if (delayed) {
 			r.addClass('sapMPIBarDarkGrey');			
-		} 
-	
-		else {
+		} else {
 			r.addClass('sapMPIBarGrey');			
 		}
 		}
@@ -169,8 +167,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 
 		if (status === "SFFI") {
 			r.addClass('sapMPIBarDarkGrey');
-		}
-		else {
+		} else {
 			r.addClass('sapMPIBarGreen');
 		}
 		
@@ -188,9 +185,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 		if (andon === '0') {
 		if (delayed) {
 			r.addClass('sapMPIBarYellow');			
-		} 
-	
-		else {
+		} else {
 			r.addClass('sapMPIBarGrey');			
 		}
 		}
@@ -206,10 +201,8 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 		
 	
 		// r.write('</div>');
-		if(s)
-		{
-		if(t2=='')
-		{
+		if(s) {
+			if(t2=='') {
 // if(i===false){
 				r.write("<span class='sapMPIText2'");
 				//r.addStyle('width', 'calc(100% - 40px)');
@@ -219,8 +212,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 				r.writeEscaped(t);
 				r.write("</span>");
 
-		}
-		else{
+		} else{
 		r.write("<span class='sapMPIText1'");
 		// r.writeControlData(c);
 		r.addStyle('width', W);

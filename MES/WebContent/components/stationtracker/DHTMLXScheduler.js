@@ -28,7 +28,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 						scheduler.config.drag_resize = true;
 						scheduler.locale.labels.timeline_tab = "Timeline";
 						scheduler.locale.labels.section_custom="Section";
-			 		    scheduler.config.details_on_create=false;
+						scheduler.config.details_on_create=false;
 						scheduler.config.details_on_dblclick=false;
 						scheduler.config.xml_date="%Y-%m-%d %H:%i";
 						scheduler.config.markedCells = 0;
@@ -36,7 +36,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 						scheduler.config.mark_now = true;
 						scheduler.config.drag_create = false;
 						scheduler.config.touch = "force";
-					 	scheduler.config.details_on_create = false;
+						scheduler.config.details_on_create = false;
 						scheduler.config.details_on_dblclick = false;
 						scheduler.config.preserve_length = true;
 						scheduler.config.dblclick_create = false;
@@ -79,9 +79,9 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
                         
                         //Shift Management
                         airbus.mes.stationtracker.ShiftManager.init(airbus.mes.stationtracker.GroupingBoxingManager.shiftNoBreakHierarchy);
-                    	var ShiftManager = airbus.mes.stationtracker.ShiftManager;
+						var ShiftManager = airbus.mes.stationtracker.ShiftManager;
                        
-                    	scheduler.ignore_timeline = ShiftManager.bounded("isDateIgnored");
+						scheduler.ignore_timeline = ShiftManager.bounded("isDateIgnored");
 						scheduler.templates.timeline_date = ShiftManager.bounded("timelineHeaderTitle");
 						scheduler.date.timeline_start = ShiftManager.bounded("adjustSchedulerXStart");
 						scheduler.date.add_timeline_old = scheduler.date.add_timeline;
@@ -339,11 +339,11 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 							  
 //							  Need to define a time out to differenciate simple click and double click
 							  setTimeout(function() {
-						  	
-//								  	If the bypass variable has been set on true to the double click action
+
+								  //								  	If the bypass variable has been set on true to the double click action
 //								    we don't perform the simple click action
 								    if (that.byPassOnClick) {
-								    	return false;
+										return false;
 								    } else {
 									    airbus.mes.stationtracker.ModelManager.OpenWorkList(id);
 									    return true;

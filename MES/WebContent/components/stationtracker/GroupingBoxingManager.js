@@ -302,7 +302,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 	},
 	
 	parseOperation : function(sGroup,sBox) {		
-		var t0 = performance.now();
+//		var t0 = performance.now();	not used
 		var oGroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
 		var oFormatter = airbus.mes.stationtracker.util.Formatter;
 		
@@ -372,8 +372,8 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 
 					var aStartDateRescheduling = [];
 					var aEndDateRescheduling = [];
-					var aStartDateInitial = [];
-					var aEndDateInitial = [];
+//					var aStartDateInitial = [];	not used
+//					var aEndDateInitial = []; not used
 					var aDisruptions = [];
 					var aAndons = [];
 					var aTotalDuration = [];
@@ -385,10 +385,10 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 					var fDuration = 0;
 									
 					var sShopOrderDescription = "";
-					var sWORKORDER_ID = "";
+//					var sWORKORDER_ID = "";	not used
 					var sOperationDescription = "";
 					var sOperationId = "";
-					var sRoutingMaturityAssessment = "";
+//					var sRoutingMaturityAssessment = ""; not used
 					var fCriticalPath = 0;		
 					var sStatus = "";
 					var sShopOrder;

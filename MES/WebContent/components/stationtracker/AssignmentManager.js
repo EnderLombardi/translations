@@ -1,3 +1,4 @@
+"use strict";
 
 jQuery.sap.declare("airbus.mes.stationtracker.AssignmentManager")
 airbus.mes.stationtracker.AssignmentManager = {
@@ -19,18 +20,20 @@ airbus.mes.stationtracker.AssignmentManager = {
 	},
 	
 	handleLineAssignment : function( sModeAssignment, bIgnoreCheckQA) {
+		var sUserID ;
 		switch(sModeAssignment){
 		case "S" :
-			var sUserID = airbus.mes.stationtracker.AssignmentManager.polypolyAssignment.selectedUser.login;
+			sUserID = airbus.mes.stationtracker.AssignmentManager.polypolyAssignment.selectedUser.login;
 			break;
 		case "D" :
-			var sUserID = undefined;
+			sUserID = undefined;
 			break;
 		case "W" :
-			var sUserID = airbus.mes.stationtracker.AssignmentManager.affectationHierarchy[airbus.mes.stationtracker.AssignmentManager.polypolyAssignment.selectedLine.avlLine][airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftID][0].user;
+			sUserID = airbus.mes.stationtracker.AssignmentManager.affectationHierarchy[airbus.mes.stationtracker.AssignmentManager.polypolyAssignment.selectedLine.avlLine][airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftID][0].user;
 //			airbus.mes.stationtracker.AssignmentManager.checkQA = false;
 			sModeAssignment = "S";
 			break;
+		default:
 		}
 		var sShiftName = airbus.mes.stationtracker.AssignmentManager.polypolyAssignment.selectedShift.shiftName;
 		var sDay = airbus.mes.stationtracker.AssignmentManager.polypolyAssignment.selectedShift.day;
@@ -61,8 +64,8 @@ airbus.mes.stationtracker.AssignmentManager = {
 			oModel = oModel.oData.Rowsets.Rowset[0].Row;
 			
         } else  {
-        	oModel = []
-        	console.log("no affectation load");
+            oModel = []
+            console.log("no affectation load");
         }
 		
 		oModel.forEach(function(el) {
@@ -110,19 +113,14 @@ airbus.mes.stationtracker.AssignmentManager = {
 	 idName : function(sText){
 			 
 			 var sTextF="";
-			    var aText=sText.split(new RegExp("[ ]+", "g"));    // Récupère tous les mots dans un tableau : texte_decoup
+			 var aText=sText.split(new RegExp("[ ]+", "g"));    // Récupère tous les mots dans un tableau : texte_decoup
 			 
-			    for (var i=0; i < aText.length; i++)
-			    {
-			    	if ( aText.length - 1=== i ){
-			    		
-			        sTextF += aText[i];  // le + " " NE FONCTIONNE PAS. IDEM AVEC String.fromCharCode(32) 
-			    	
-			    	} else {
-			    		
-			    		sTextF += aText[i] + "_";
-			    		
-			    	}
+			 for (var i=0; i < aText.length; i++) {
+				 if ( aText.length - 1=== i ){
+					 sTextF += aText[i];  // le + " " NE FONCTIONNE PAS. IDEM AVEC String.fromCharCode(32) 
+					 } else {
+						 sTextF += aText[i] + "_";
+					}
 			    }
 			    
 			    return sTextF;

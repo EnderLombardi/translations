@@ -1,3 +1,5 @@
+"use strict";
+
 sap.ui.core.Element.extend("airbus.mes.stationtracker.Coordinates", {
 	metadata : { // meta
 		properties : { // prop

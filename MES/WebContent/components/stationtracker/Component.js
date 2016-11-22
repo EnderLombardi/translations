@@ -1,3 +1,5 @@
+"use strict";
+
 jQuery.sap.require("sap.ui.core.UIComponent");
 jQuery.sap.require("airbus.mes.stationtracker.util.Formatter");
 jQuery.sap.require("airbus.mes.stationtracker.AssignmentManager");
@@ -67,5 +69,7 @@ airbus.mes.stationtracker.Component.prototype.createContent = function() {
 		
 	/*	airbus.mes.disruptiontracker.oView = this.odisruptiontrackerComp.oView;*/
 		return this.oView;
+	} else {
+		return airbus.mes.stationtracker.oView;
 	}
 };
