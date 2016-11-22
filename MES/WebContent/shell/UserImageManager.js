@@ -16,12 +16,12 @@ airbus.mes.shell.UserImageManager =  {
 		sap.ui.getCore().byId(imageId).onerror = airbus.mes.shell.UserImageManager.getErrorUserImage;
 		return urlUserImage; 
 	},
-getErrorUserImage: function(){
+getErrorUserImage: function(img){
 
 	if(this.setSrc)
 	this.setSrc ( "../images/user.png");
 	else
-	 this.src =  "../images/user.png";
+	 img.src =  "../images/user.png";
 }
 	
 }

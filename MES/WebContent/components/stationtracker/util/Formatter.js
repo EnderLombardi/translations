@@ -407,7 +407,7 @@ airbus.mes.stationtracker.util.Formatter = {
 							var imgId = sap.ui.getCore().byId("stationTrackerView").createId("folder_" + oSection.key + "Image--"+ oCurrentAffectedUser.picture);
 //							var imgId = sap.ui.getCore().byId("stationTrackerView").createId("Image--"+ Math.floor((Math.random() * 10000000000) + 1) + "--"+ oCurrentAffectedUser.picture);
 							
-							html += '<img id="' + imgId +'" src=' + airbus.mes.shell.UserImageManager.getUserImage(imgId, oCurrentAffectedUser.picture) + ' class="ylabelUserImage" />'		// To display User Image
+							html += '<img  onerror = "airbus.mes.shell.UserImageManager.getErrorUserImage(this)" id="' + imgId +'" src=' + airbus.mes.shell.UserImageManager.getUserImage(imgId, oCurrentAffectedUser.picture) + ' class="ylabelUserImage"/>'		// To display User Image
 						}
 
 						if(airbus.mes.settings.AppConfManager.getConfiguration("MES_PHOTO_NAME")){ // Check if user image to be displayed  or not
