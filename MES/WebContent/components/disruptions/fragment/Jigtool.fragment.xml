@@ -2,7 +2,7 @@
 	xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.ui.layout.form"
 	xmlns:l="sap.ui.layout">
 
-	<Dialog id="jigToolSelectDialog" title="Select Material"
+	<Dialog id="jigToolSelectDialog" title="{i18nModel>Select_Jig_Tool}"
 		verticalScrolling="true" horizontalScrolling="false">
 		<content>
 			<f:SimpleForm backgroundDesign="Solid" class="formBackgroundColor"
@@ -10,7 +10,7 @@
 				<f:content>
 					<l:Grid defaultSpan="L12 M12 S12">
 						<l:content>
-							<Input id="customJigTool" placeholder="{i18nModel>AddNewMaterial}">
+							<Input id="customJigTool" placeholder="{i18nModel>AddNewJig_Tool}">
 								<layoutData>
 									<l:GridData span="L7 M7 S12" />
 								</layoutData>

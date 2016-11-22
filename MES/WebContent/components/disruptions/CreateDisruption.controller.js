@@ -199,9 +199,36 @@ sap.ui
 					/***********************************************************
 					 * Create Disruption
 					 */
+					//get selected jig Tools
+					getSelectedJIg_Tool : function() {
+						var getTokens = sap.ui.getCore().byId("createDisruptionView--jigtools").getTokens();
+						var result;
+						getTokens.forEach(function(entry) {    
+							if(result  == undefined)
+								result = entry.getText();
+							else						
+								result = result+","+entry.getText();
+					});
+					return result;
+					},
+					//get selected jig Tools
+					getSelectedMaterials : function() {
+						var getTokens = sap.ui.getCore().byId("createDisruptionView--materials").getTokens();
+						var result;
+						getTokens.forEach(function(entry) {    
+							if(result  == undefined)
+								result = entry.getText();
+							else						
+								result = result+","+entry.getText();
+					});
+					return result;
+					},
+					 
 					onCreateDisruption : function() {
-
+						
 						var oView = airbus.mes.disruptions.oView.createDisruption;
+						var jigtools = oView.getController().getSelectedJIg_Tool();
+						var Materials = oView.getController().getSelectedMaterials();
 						var oController = oView.getController();
 
 						// some mandatory fields need to be filled before
@@ -316,7 +343,16 @@ sap.ui
 									{
 										"attribute" : "WORK_CENTER",
 										"value" : airbus.mes.settings.ModelManager.station
-									} ]
+									},
+									{
+										"attribute" : "MATERIALS",
+										"value" : Materials
+									},
+									{
+										"attribute" : "JIG_TOOLS",
+										"value" : jigtools
+									}
+									]
 
 						}
 						aModelData.push(oJson);
