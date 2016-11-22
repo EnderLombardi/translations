@@ -42,24 +42,24 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.TaktAdherenceAreaChart", {
 		var data = oCtrl.getData().map(bindingToArray);
 		var realData = oCtrl.getRealData().map(bindingToArray);
 		
-//		var data = [
-//			{ x: 0, y: 5, },
-//			{ x: 1, y: 15, },
-//			{ x: 2, y: 20, },
-//			{ x: 3, y: 35, },
-//			{ x: 4, y: 40, },
-//		];
-//
-//		var realData = [
-//			{ x: 0, y: 0, },
-//			{ x: 1, y: 20, },
-//			{ x: 2, y: 20, },
-//			{ x: 3, y: 25, },
-//		];
-//		var estimateData = [
-//			{ x: 2, y: 20, },
-//			{ x: 3, y: 25, },
-//		];
+		var data = [
+			{ x: 0, y: 5, },
+			{ x: 1, y: 15, },
+			{ x: 2, y: 20, },
+			{ x: 3, y: 35, },
+			{ x: 4, y: 40, },
+		];
+
+		var realData = [
+			{ x: 0, y: 0, },
+			{ x: 1, y: 20, },
+			{ x: 2, y: 20, },
+			{ x: 3, y: 25, },
+		];
+		var estimateData = [
+			{ x: 2, y: 20, },
+			{ x: 3, y: 25, },
+		];
 
 		var parent = $("#stationTrackerView--chartId");
 		var chart = $("#stationTrackerView--takt_adherence_area_chart"),
