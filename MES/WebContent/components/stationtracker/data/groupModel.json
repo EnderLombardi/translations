@@ -45,18 +45,35 @@
 					"Value": "BoxingAVLFamily",
 					"key": "FAMILY"
 				}],
+				"GroupingWorklist": [{
+					"Value": "BoxingWorkOrder",
+					"key": "WORKORDER_ID"					
+				}, {
+					"Value": "BoxingCPPCluster",
+					"key": "CPP_CLUSTER"					
+				}, {
+					"Value": "BoxingWorkPackage",
+					"key": "WORK_PACKAGE"					
+				}, {
+					"Value": "BoxingAVLFamily",
+					"key": "FAMILY"					
+				}],				
 				"Status": [{
 					"Value": "StatusAll"
 				}, {
-					"Value": "StatusStarted"
+					"Value": "StatusStarted",
+					"key":"2"
 				}, {
 					"Value": "StatusPartiallyConfirmed"
 				}, {
-					"Value": "StatusNotStarted"
+					"Value": "StatusNotStarted",
+					"key":"1"					
 				}, {
-					"Value": "StatusPaused"
+					"Value": "StatusPaused",
+					"key":"3"					
 				}, {
-					"Value": "StatusConfirmed"
+					"Value": "StatusConfirmed",
+					"key":"0"					
 				}, {
 					"Value": "StatusBlocked"
 				}]
@@ -64,3 +81,7 @@
 		}]
 	}
 }
+
+
+
+

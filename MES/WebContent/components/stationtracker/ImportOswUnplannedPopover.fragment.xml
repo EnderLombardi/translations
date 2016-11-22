@@ -5,7 +5,7 @@
 		<customHeader>
 			<Toolbar>
 				<ToolbarSpacer />
-				<Label id="LabelTitle" text="{ path: 'WorkListModel>andons' , formatter: 'airbus.mes.stationtracker.util.Formatter.setWorkListText' }" />
+				<Label id="LabelTitle" text="Import" />
 				<ToolbarSpacer />
 			</Toolbar>
 		</customHeader>
@@ -21,16 +21,15 @@
 					</Select>
 					<Select class="sapUiTinyMarginBeginEnd comboBoxStyle"
 						    items="{groupModel>/Rowsets/Rowset/0/Row/Status}"
-						    change="onChangeFilter"
+						    change="onChangeFilterOSWUnplanned"
 					        visible="true">						
 						<core:ListItem key="{groupModel>Value}" text="{ path : 'groupModel>Value' , formatter : '.getI18nValue' }" />					
 					</Select>
 				</HBox>
 				<List id="myList" growing="true" growingThreshold="20"
 					growingScrollToLoad="true" items="{ path: 'WorkListModel>/' }"
-					selectionChange="onSelectionChange"
-					mode="{ path : 'WorkListModel>andons' , formatter: 'airbus.mes.stationtracker.util.Formatter.setmodeList'}"
-					includeItemInSelection="{ path : 'WorkListModel>andons' , formatter: 'airbus.mes.stationtracker.util.Formatter.isCheckboxVisible'}">
+					mode="MultiSelect"
+					includeItemInSelection="true">
 					<items>
 						<InputListItem id="sorterList">
 							<content>
@@ -38,7 +37,6 @@
 									<items>
 										<custom:customProgressIndicator
 											width="auto" state="sap.ui.core.ValueState.Success" status="{WorkListModel>STATE}"
-											click="operationWorkListClick"
 											isAndon="{WorkListModel>andons}"
 											displayValue="{ parts: [ 'WorkListModel>WORKORDER_ID','WorkListModel>WORKORDER_DESCRIPTION' ], formatter: 'airbus.mes.stationtracker.util.Formatter.titleWorklist'}"
 											displayValue2="{ parts: [ 'WorkListModel>OPERATION_ID','WorkListModel>OPERATION_DESCRIPTION','WorkListModel>PROGRESS','WorkListModel>DURATION' ], formatter: 'airbus.mes.stationtracker.util.Formatter.displayValueIM'}"
@@ -58,10 +56,10 @@
 		<buttons>
 			<Button text="{StationTrackerI18n>WorklistButtonImport}" type="Transparent" icon="sap-icon://forward"
 				class="sapUiTinyMarginBeginEnd pageHeaderDialog" press="onUnplannedImport"
-				visible="{ path : 'WorkListModel>andons' , formatter: 'airbus.mes.stationtracker.util.Formatter.isCheckboxVisible'}">
+				visible="true">
 			</Button>
 			<Button text="{StationTrackerI18n>Close}" type="Transparent" icon="sap-icon://decline"
-				class="sapUiTinyMarginBeginEnd" press="onUnplannedClose"
+				class="sapUiTinyMarginBeginEnd" press="onCloseDialog"
 			>
 			</Button>
 		</buttons>

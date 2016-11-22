@@ -239,19 +239,19 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 
 
 	onUnplannedPress : function(oEvent) {
-		if ( airbus.mes.stationtracker.worklistPopover === undefined ) {
+		if ( airbus.mes.stationtracker.ImportOswUnplannedPopover === undefined ) {
 			
-			airbus.mes.stationtracker.worklistPopover = sap.ui.xmlfragment("worklistPopover","airbus.mes.stationtracker.worklistPopover", airbus.mes.stationtracker.oView.getController());
-			airbus.mes.stationtracker.worklistPopover.addStyleClass("alignTextLeft");
-			airbus.mes.stationtracker.oView.addDependent(airbus.mes.stationtracker.worklistPopover);
-			airbus.mes.stationtracker.worklistPopover.setModel(sap.ui.getCore().getModel("groupModel"),"groupModel");
+			airbus.mes.stationtracker.ImportOswUnplannedPopover = sap.ui.xmlfragment("ImportOswUnplannedPopover","airbus.mes.stationtracker.ImportOswUnplannedPopover", airbus.mes.stationtracker.oView.getController());
+			airbus.mes.stationtracker.ImportOswUnplannedPopover.addStyleClass("alignTextLeft");
+			airbus.mes.stationtracker.oView.addDependent(airbus.mes.stationtracker.ImportOswUnplannedPopover);
+			airbus.mes.stationtracker.ImportOswUnplannedPopover.setModel(sap.ui.getCore().getModel("groupModel"),"groupModel");
 				
-			airbus.mes.stationtracker.worklistPopover.setBusyIndicatorDelay(0);
+			airbus.mes.stationtracker.ImportOswUnplannedPopover.setBusyIndicatorDelay(0);
 					
 		}
-		sap.ui.getCore().byId("worklistPopover--myList").bindAggregation('items', {
+		sap.ui.getCore().byId("ImportOswUnplannedPopover--myList").bindAggregation('items', {
 			path : "WorkListModel>/",
-			template : sap.ui.getCore().byId("worklistPopover--sorterList"),
+			template : sap.ui.getCore().byId("ImportOswUnplannedPopover--sorterList"),
 			sorter : [ new sap.ui.model.Sorter({
 				// Change this value dynamic
 				path : 'WORKORDER_ID',
@@ -263,66 +263,53 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			}) ]
 		});
 		
-//		global variable to manage display on worklist
-		airbus.mes.stationtracker.worklistPopover.unPlanned = true;
-		airbus.mes.stationtracker.worklistPopover.OSW = false;		
-	
+		sap.ui.getCore().byId("ImportOswUnplannedPopover--LabelTitle").setText(airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("WorklistHeaderUnplanned"));
+
 		var oModel = sap.ui.getCore().getModel("unPlannedModel");
 
 		//Changed the data of the worklist by unplannned model
-		airbus.mes.stationtracker.worklistPopover.setModel(new sap.ui.model.json.JSONModel(oModel.oData.Rowsets.Rowset[0].Row),"WorkListModel");
-		airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").refresh(true);
+		airbus.mes.stationtracker.ImportOswUnplannedPopover.setModel(new sap.ui.model.json.JSONModel(oModel.oData.Rowsets.Rowset[0].Row),"WorkListModel");
+		airbus.mes.stationtracker.ImportOswUnplannedPopover.getModel("WorkListModel").refresh(true);
 
-//      Overall Progress is only display on worklist
-        sap.ui.getCore().byId("worklistPopover--overallProgress").setVisible(false);         
-		
 		// delay because addDependent will do a async rerendering and the popover will immediately close without it
 		jQuery.sap.delayedCall(0, this, function () {
-//			airbus.mes.stationtracker.worklistPopover.openBy(oButton);	
-			airbus.mes.stationtracker.worklistPopover.open();	
+			airbus.mes.stationtracker.ImportOswUnplannedPopover.open();	
 
-		});		
+		});	
 	},
 	
 	onOSWPress : function(oEvent) {
 		
-		if ( airbus.mes.stationtracker.worklistPopover === undefined ) {
+		if ( airbus.mes.stationtracker.ImportOswUnplannedPopover === undefined ) {
 			
 			var oView = airbus.mes.stationtracker.oView;
-			airbus.mes.stationtracker.worklistPopover = sap.ui.xmlfragment("worklistPopover","airbus.mes.stationtracker.worklistPopover", airbus.mes.stationtracker.oView.getController());
-			airbus.mes.stationtracker.worklistPopover.addStyleClass("alignTextLeft");
-			airbus.mes.stationtracker.oView.addDependent(airbus.mes.stationtracker.worklistPopover);
-			airbus.mes.stationtracker.worklistPopover.setModel(sap.ui.getCore().getModel("groupModel"),"groupModel");
+			airbus.mes.stationtracker.ImportOswUnplannedPopover = sap.ui.xmlfragment("ImportOswUnplannedPopover","airbus.mes.stationtracker.ImportOswUnplannedPopover", airbus.mes.stationtracker.oView.getController());
+			airbus.mes.stationtracker.ImportOswUnplannedPopover.addStyleClass("alignTextLeft");
+			airbus.mes.stationtracker.oView.addDependent(airbus.mes.stationtracker.ImportOswUnplannedPopover);
+			airbus.mes.stationtracker.ImportOswUnplannedPopover.setModel(sap.ui.getCore().getModel("groupModel"),"groupModel");
 					
-			airbus.mes.stationtracker.worklistPopover.setBusyIndicatorDelay(0);
+			airbus.mes.stationtracker.ImportOswUnplannedPopover.setBusyIndicatorDelay(0);
 		}
-		sap.ui.getCore().byId("worklistPopover--myList").bindAggregation('items', {
+		sap.ui.getCore().byId("ImportOswUnplannedPopover--myList").bindAggregation('items', {
 			path : "WorkListModel>/",
-			template : sap.ui.getCore().byId("worklistPopover--sorterList"),
+			template : sap.ui.getCore().byId("ImportOswUnplannedPopover--sorterList"),
 			sorter : []
 		});
 		
-		
-		airbus.mes.stationtracker.worklistPopover.unPlanned = true;
-		airbus.mes.stationtracker.worklistPopover.OSW = true;	
+		sap.ui.getCore().byId("ImportOswUnplannedPopover--LabelTitle").setText(airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("WorklistHeaderOSW"));		
 		
 		var oModel = sap.ui.getCore().getModel("OSWModel");
 
 		//Changed the data of the worklist by OSW model
-		airbus.mes.stationtracker.worklistPopover.setModel(new sap.ui.model.json.JSONModel(oModel.oData.Rowsets.Rowset[0].Row),"WorkListModel");
-		airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").refresh(true);
+		airbus.mes.stationtracker.ImportOswUnplannedPopover.setModel(new sap.ui.model.json.JSONModel(oModel.oData.Rowsets.Rowset[0].Row),"WorkListModel");
+		airbus.mes.stationtracker.ImportOswUnplannedPopover.getModel("WorkListModel").refresh(true);
 
-//      Overall Progress is only display on worklist
-        sap.ui.getCore().byId("worklistPopover--overallProgress").setVisible(false);         
-		
-		
 		// delay because addDependent will do a async rerendering and the popover will immediately close without it
 		var oButton = oEvent.getSource();
 		jQuery.sap.delayedCall(0, this, function () {
-//			airbus.mes.stationtracker.worklistPopover.openBy(oButton);	
-			airbus.mes.stationtracker.worklistPopover.open();	
+			airbus.mes.stationtracker.ImportOswUnplannedPopover.open();	
 
-		});				
+		});		
 		
 	},
 	onProdGroupSelFinish : function(oEvent) {

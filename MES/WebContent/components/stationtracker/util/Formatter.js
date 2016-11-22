@@ -141,6 +141,7 @@ airbus.mes.stationtracker.util.Formatter = {
 				var sLeftIcon2 = "";
 				var sColorProgress = "";
 				var sText = "";
+				var trackerTextClass = "";
 				var sProgress = airbus.mes.stationtracker.util.Formatter.percentValue(oBox.progress,oBox.totalDuration);
 				// Text to display different case regarding box selected
 				switch (airbus.mes.stationtracker.GroupingBoxingManager.box) {
@@ -159,11 +160,11 @@ airbus.mes.stationtracker.util.Formatter = {
 				}
 				if ( oBox.type === "I" ){
 					
-					var trackerTextClass = "trackerTextInitial";
+					trackerTextClass = "trackerTextInitial";
 										
 				} else {
 					
-					var trackerTextClass = "trackerText";		
+					trackerTextClass = "trackerText";		
 				}
 				
 				if(oBox.status == 5 || oBox.status == 7 || oBox.status == 4) trackerTextClass = "trackerTextBlock";		
@@ -184,6 +185,7 @@ airbus.mes.stationtracker.util.Formatter = {
 					case 2 :
 						sColorProgress = '<div class="colorProgress dark-lime-green-back" style="width:' + sProgress + '%;background-color: #84bd00"></div>';
 						sRightIcon = '<i class="fa fa-play rightIcon"></i>';
+						
 					break;
 				// box is paused
 					case 3 :
@@ -204,11 +206,14 @@ airbus.mes.stationtracker.util.Formatter = {
 						if (oBox.OSW === 1){ //OSW
 							sLeftIcon2 = '<i class="fa fa-refresh oswIcon teal-blue white"><b style="padding-left:1px">OSW</b></i>';
 						}
-						break;	
-				// Opened Blocking and Escalated disruption
+					break;	
+
+					// Opened Blocking and Escalated disruption
 					case 4 :
 						sColorProgress ='<div class="openBlockedEscalated" style="background-color:#fbec00"></div>';
-						sRightIcon = '<i class="fa fa-stop rightIcon petrol" ></i>';
+						sRightIcon = '<i class="fa fa-play rightIcon petrol" ></i>';
+//						sColorProgress ='<div class="colorProgress dandelion-back" style="width:100%;background-color: #fbec00;"></div>';
+						//sSpanText = '<span class="trackerTextBlock">' + sText + '</span>';
 						if ( oBox.rmaStatus === 1 ){	//rma
 							sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon petrol"></i>';
 						}
@@ -216,7 +221,8 @@ airbus.mes.stationtracker.util.Formatter = {
 							sLeftIcon2 = '<i class="fa fa-refresh oswIcon petrol-back dandelion"><b style="padding-left:1px">OSW</b></i>';
 						}
 						break;
-				// Opened Blocking disruption
+
+					// Opened Blocking disruption
 					case 5 :
 						sColorProgress ='<div class="openBlocked" style="background-color:#fbec00"></div>';
 						sRightIcon = '<i class="fa fa-stop rightIcon petrol"></i>';
@@ -227,9 +233,11 @@ airbus.mes.stationtracker.util.Formatter = {
 							sLeftIcon2 = '<i class="fa fa-refresh oswIcon petrol-back dandelion"><b style="padding-left:1px">OSW</b></i>';
 						}
 						break;
-				// Solved Blocking and Escalated disruption
+					
+					// Solved Blocking and Escalated disruption
 					case 6 :
 						sColorProgress ='<div class="solvedBlockedEscalated"></div>';
+//						sRightIcon = '<i class="fa fa-exclamation-triangle triangleIcon"></i>';
 						sRightIcon = '<i class="fa fa-play rightIcon"></i>';
 						if ( oBox.rmaStatus === 1 ){	//rma
 							sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon petrol"></i>';
@@ -238,9 +246,11 @@ airbus.mes.stationtracker.util.Formatter = {
 							sLeftIcon2 = '<i class="fa fa-refresh oswIcon petrol-back dandelion"><b style="padding-left:1px">OSW</b></i>';
 						}
 						break;
-				// Solved Blocking disruption
+					
+					// Solved Blocking disruption
 					case 7 :
 						sColorProgress ='<div class="solvedBlocked"></div>';
+//						sRightIcon = '<i class="fa fa-exclamation-triangle triangleIcon"></i>';
 						sRightIcon = '<i class="fa fa-play rightIcon petrol"></i>';
 						if ( oBox.rmaStatus === 1 ){	//rma
 							sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon petrol"></i>';
@@ -249,6 +259,7 @@ airbus.mes.stationtracker.util.Formatter = {
 							sLeftIcon2 = '<i class="fa fa-refresh oswIcon petrol-back dandelion"><b style="padding-left:1px">OSW</b></i>';
 						}
 						break;
+						
 				// andon
 					case 99 :
 						sColorProgress ='<div class="colorProgress cherry-red-back" style="width:100%;background-color: #e4002b;"></div>';
@@ -260,6 +271,8 @@ airbus.mes.stationtracker.util.Formatter = {
 							sLeftIcon2 = '<i class="fa fa-refresh oswIcon cherry-red white"><b style="padding-left:1px">OSW</b></i>';
 						}
 						break;
+					default : 
+						return;
 				}
 								
 				if ( oBox.type === "I" ) {
@@ -303,7 +316,6 @@ airbus.mes.stationtracker.util.Formatter = {
 			titleWorklist : function(workOrder, workOrderDescritpion) {
 				return workOrder + " - " + workOrderDescritpion;
 			},
-			
 			displayValueIM : function(operation, operationDescription,	progress, duration) {
 				progress = ((progress * 100 * 0.001)/3600).toFixed(4);
 				duration = ((duration * 100 * 0.001)/3600).toFixed(4);
@@ -318,47 +330,32 @@ airbus.mes.stationtracker.util.Formatter = {
 				
 			},
 			percentValue : function(progress, duration) {
-				
-//				progress = parseInt(progress, 10);
-//				duration = parseInt(duration, 10);
-				if (!isNaN(parseInt(progress,10)) || !isNaN(parseInt(duration,10))) {
+
+				progress = parseInt(progress);
+				duration = parseInt(duration);
+				if (!isNaN(parseInt(progress)) || !isNaN(parseInt(duration))) {
 					if (duration <= 0) {
 						return 0;
 					} else {
 						return Math.round((progress * 100) / duration);
 					}
 				} else {
+
 					return 0;
 				}
-			},
-
-			isGroupingVisible : function() { 
-				if (airbus.mes.stationtracker.worklistPopover.OSW) {
-					return false;
-				} else if(airbus.mes.stationtracker.worklistPopover.unPlanned) {
-					return true;
-				} else {
-					return true;
-				}				
-			},
-			
-			setWorkListText : function() {
-				if (airbus.mes.stationtracker.worklistPopover.OSW) {
-					return airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("WorklistHeaderOSW");
-				} else if(airbus.mes.stationtracker.worklistPopover.unPlanned) {
-					return airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("WorklistHeaderUnplanned");
-				} else {
-					return airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("WorklistHeaderWorklist");
-				}
-			},
-
+			},			
 			YdisplayRules : function( oSection ) {
+			
 				if (oSection.initial != undefined ) {
-					var html = '<span  style="float: right;margin-right: 5px;" >' + oSection.initial + '</span>';
+
+					var html = '<span  style="float: right;margin-right: 5px;" >' + oSection.initial
+							+ '</span>';
 					return html;
+
 				}
 
 				if (oSection.children != undefined) {
+
 					var html = '<div><span id= folder_' +oSection.key
 							+ ' class="' + airbus.mes.stationtracker.util.Formatter.openFolder(oSection.open) + '"></span><div title='
 							+ airbus.mes.stationtracker.util.Formatter.spaceInsecable(oSection.label) + ' class="ylabelfolder">' + oSection.label
@@ -366,6 +363,7 @@ airbus.mes.stationtracker.util.Formatter = {
 							+ ' class="fa fa-plus custom" onclick="airbus.mes.stationtracker.AssignmentManager.newLine(\''
 							+ oSection.key + '\')"></span></div>';
 					return html;
+
 				}
 				
 				// User affectation
@@ -409,7 +407,7 @@ airbus.mes.stationtracker.util.Formatter = {
 							var imgId = sap.ui.getCore().byId("stationTrackerView").createId("folder_" + oSection.key + "Image--"+ oCurrentAffectedUser.picture);
 //							var imgId = sap.ui.getCore().byId("stationTrackerView").createId("Image--"+ Math.floor((Math.random() * 10000000000) + 1) + "--"+ oCurrentAffectedUser.picture);
 							
-							html += '<img id="' + imgId +'" src=' + airbus.mes.shell.UserImageManager.getUserImage(imgId, oCurrentAffectedUser.picture) + ' class="ylabelUserImage" onerror = '+airbus.mes.shell.UserImageManager.getErrorUserImage+' />'		// To display User Image
+							html += '<img id="' + imgId +'" src=' + airbus.mes.shell.UserImageManager.getUserImage(imgId, oCurrentAffectedUser.picture) + ' class="ylabelUserImage" />'		// To display User Image
 						}
 
 						if(airbus.mes.settings.AppConfManager.getConfiguration("MES_PHOTO_NAME")){ // Check if user image to be displayed  or not
@@ -477,7 +475,7 @@ airbus.mes.stationtracker.util.Formatter = {
 		           // Constitute a table of WO groups with operations associated
 		           // The group object has template bellow.
 		           var currentWO = {
-		        		   shopOrder : undefined,
+		        		  shopOrder : undefined,
 		                  dynamicStartDate : undefined,
 		                  scheduledStartDate : undefined,
 		                  operationsID : [],
@@ -569,76 +567,73 @@ airbus.mes.stationtracker.util.Formatter = {
 		 	 * Author: Stefan Goessner/2006 Web:
 		 	 * http://goessner.net/download/prj/jsonxml/json2xml.js
 		 	 */
-		 	json2xml : function(o, tab) {
-		 		var toXml = function(v, name, ind) {
-		 			var xml = "";
-		 			if (v instanceof Array) {
-		 				for (var i = 0, n = v.length; i < n; i++)
-		 					xml += ind + toXml(v[i], name, ind + "\t") + "\n";
-		 			} else if (typeof (v) == "object") {
-		 				var hasChild = false;
-		 				xml += ind + "<" + name;
-		 				for ( var m in v) {
-		 					if (m.charAt(0) == "@")
-		 						xml += " " + m.substr(1) + "=\"" + v[m].toString()
-		 								+ "\"";
-		 					else
-		 						hasChild = true;
-		 				}
-		 				xml += hasChild ? ">" : "/>";
-		 				if (hasChild) {
-		 					for ( var m in v) {
-		 						if (m == "#text")
-		 							xml += v[m];
-		 						else if (m == "#cdata")
-		 							xml += "<![CDATA[" + v[m] + "]]>";
-		 						else if (m.charAt(0) != "@")
-		 							xml += toXml(v[m], m, ind + "\t");
-		 					}
-		 					xml += (xml.charAt(xml.length - 1) == "\n" ? ind : "")
-		 							+ "</" + name + ">";
-		 				}
-		 			} else {
-		 				xml += ind + "<" + name + ">" + v.toString() + "</" + name
-		 						+ ">";
-		 			}
-		 			return xml;
-		 		}, xml = "";
-		 		for ( var m in o)
-		 			xml += toXml(o[m], m, "");
-		 		return tab ? xml.replace(/\t/g, tab) : xml.replace(/\t|\n/g, "");
-		 	},
+		     json2xml : function(o, tab) {
+			     var toXml = function(v, name, ind) {
+				     var xml = "";
+				     if (v instanceof Array) {
+					     for (var i = 0, n = v.length; i < n; i++)
+						     xml += ind + toXml(v[i], name, ind + "\t") + "\n";
+					     } else if (typeof (v) == "object") {
+						     var hasChild = false;
+						     xml += ind + "<" + name;
+						     for ( var m in v) {
+							     if (m.charAt(0) == "@")
+								     xml += " " + m.substr(1) + "=\"" + v[m].toString() + "\"";
+							     else
+								     hasChild = true;
+							     }
+						     xml += hasChild ? ">" : "/>";
+						     if (hasChild) {
+							     for ( var m in v) {
+								     if (m == "#text")
+									     xml += v[m];
+								     else if (m == "#cdata")
+									     xml += "<![CDATA[" + v[m] + "]]>";
+								     else if (m.charAt(0) != "@")
+									     xml += toXml(v[m], m, ind + "\t");
+								     }
+							     xml += (xml.charAt(xml.length - 1) == "\n" ? ind : "") + "</" + name + ">";
+							     }
+						     } else {
+							     xml += ind + "<" + name + ">" + v.toString() + "</" + name + ">";
+							     }
+				     return xml;
+				     }, xml = "";
+				     for ( var m in o)
+					     xml += toXml(o[m], m, "");
+				     return tab ? xml.replace(/\t/g, tab) : xml.replace(/\t|\n/g, "");
+				     },
 	     
 		     datepicker : function(sString){
-		    	 console.log("toto");
-		    	 return "toto";
+			     console.log("toto");
+			     return "toto";
 //		    	 $("div[id="+toolbarDateId+"]").append($("div[class='dhx_cal_date']").contents().clone()); 
 		     },
 		     productionGroup : function(sProductionG) {
-		    	 
-		    	 return sProductionG;
-		    	 
+
+			     return sProductionG;
+
 		     },
 		     
 		     msToTime : function(s) {
-		    	  var ms = s % 1000;
-		    	  s = (s - ms) / 1000;
-		    	  var secs = s % 60;
-		    	  s = (s - secs) / 60;
-		    	  var mins = s % 60;
-		    	  var hrs = (s - mins) / 60;
-		    	  
-		    	  if(hrs == 0)
-		    		  hrs = "00";
-		    	  if(mins == 0)
-		    		  mins = "00";
-		    	  if(secs == 0)
-		    		  secs = "00";
-		    	  return hrs + ':' + mins + ':' + secs;
-		    	},
-		    	
-		    	computeDelay : function( fProgress,fDuration ) {
-		    		
+			     var ms = s % 1000;
+			     s = (s - ms) / 1000;
+			     var secs = s % 60;
+			     s = (s - secs) / 60;
+			     var mins = s % 60;
+			     var hrs = (s - mins) / 60;
+
+			     if(hrs == 0)
+				     hrs = "00";
+			     if(mins == 0)
+				     mins = "00";
+			     if(secs == 0)
+				     secs = "00";
+			     return hrs + ':' + mins + ':' + secs;
+			     },
+
+			     computeDelay : function( fProgress,fDuration ) {
+
 		    		//sec Gap
 		    		var sGap = Math.round((fProgress - fDuration))/1000/60/60;
 					var sGapHour = parseInt(sGap);
