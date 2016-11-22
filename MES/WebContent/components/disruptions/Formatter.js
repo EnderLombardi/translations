@@ -250,6 +250,23 @@ airbus.mes.disruptions.Formatter = {
 		case "3":
 			return "red";
 		}
+	},
+	
+	setMaterialqty :function(oText) {
+		
+		if (oText){
+			var loString = oText.replace(/[(]/g , " Quantity-");
+			var loNewStr = loString.replace(/[)]/g,"");
+			
+		} else {
+			
+			var loNewStr = "Blank";
+			
+		}
+		return loNewStr;
+		
+		
+		
 	}
 
 };

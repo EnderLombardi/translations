@@ -278,39 +278,35 @@
 										
 										<f:FormElement>
 											<f:label>
-												<Label class="detailLabels" text="{i18nModel>stMaterial}"
-													visible="{path: 'operationDisruptionsModel>Material', formatter: 'airbus.mes.disruptions.Formatter.setTimeBeforeNextEscVisibility'}">
+												<Label class="detailLabels" text="{i18nModel>stMaterial}">
 													<layoutData>
 														<l:GridData span="L3 M3 S12" />
 													</layoutData>
 												</Label>
 											</f:label>
 											<f:fields>
-												<Text text="{operationDisruptionsModel>Material}"
-													visible="{path: 'operationDisruptionsModel>Material', formatter: 'airbus.mes.disruptions.Formatter.setTimeBeforeNextEscVisibility'}">
+												<TextArea value="{path: 'operationDisruptionsModel>Materials', formatter: 'airbus.mes.disruptions.Formatter.setMaterialqty'}">
 													<layoutData>
 														<l:GridData span="L3 M3 S12" />
 													</layoutData>
-												</Text>
+												</TextArea>
 											</f:fields>
 										</f:FormElement>
 										
 										<f:FormElement>
 											<f:label>
-												<Label class="detailLabels" text="{i18nModel>stjigtool}"
-													visible="{path: 'operationDisruptionsModel>Jigtool', formatter: 'airbus.mes.disruptions.Formatter.setTimeBeforeNextEscVisibility'}">
+												<Label class="detailLabels" text="{i18nModel>stjigtool}">
 													<layoutData>
 														<l:GridData span="L3 M3 S12" />
 													</layoutData>
 												</Label>
 											</f:label>
 											<f:fields>
-												<Text text="{operationDisruptionsModel>Jigtool}"
-													visible="{path: 'operationDisruptionsModel>Jigtool', formatter: 'airbus.mes.disruptions.Formatter.setTimeBeforeNextEscVisibility'}">
+												<TextArea value="{path: 'operationDisruptionsModel>JigTools', formatter: 'airbus.mes.disruptions.Formatter.setMaterialqty'}">
 													<layoutData>
 														<l:GridData span="L3 M3 S12" />
 													</layoutData>
-												</Text>
+												</TextArea>
 											</f:fields>
 										</f:FormElement>
 
