@@ -663,6 +663,7 @@ sap.ui
 						this.getView().byId("comment").setValue();
 						this.getView().byId("description").setValue();
 						this.getView().byId("materials").destroyTokens();
+						this.getView().byId("jigtools").destroyTokens();
 					},
 
 					/***********************************************************

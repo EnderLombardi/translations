@@ -933,6 +933,10 @@ sap.ui
 							sap.ui.getCore().byId("createDisruptionView").oController._materialListDialog.destroy(false);
 							sap.ui.getCore().byId("createDisruptionView").oController._materialListDialog = undefined;
 						}
+						if(sap.ui.getCore().byId("createDisruptionView").oController.jigToolSelectDialog){
+							sap.ui.getCore().byId("createDisruptionView").oController.jigToolSelectDialog.destroy(false);
+							sap.ui.getCore().byId("createDisruptionView").oController.jigToolSelectDialog = undefined;
+						}
 					},
 
 					/***********************************************************
