@@ -597,8 +597,10 @@ airbus.mes.stationtracker.ModelManager = {
               
               // progress calculation
               var progress;
-              if(parseInt(aModel[0].DURATION) === 0)
-            	  progress = 0;
+              if (sStatus == "COMPLETED")
+             	 progress = 100;
+              else if(parseInt(aModel[0].DURATION) === 0)
+        	  progress = 0; 
               else
             	 progress = aModel[0].PROGRESS / parseInt(aModel[0].DURATION) * 100; 
               var oOperModel = {
