@@ -337,9 +337,9 @@ airbus.mes.stationtracker.util.Formatter = {
 			},
 			percentValue : function(progress, duration) {
 
-				progress = parseInt(progress);
-				duration = parseInt(duration);
-				if (!isNaN(parseInt(progress)) || !isNaN(parseInt(duration))) {
+				progress = parseInt(progress, 10);
+				duration = parseInt(duration, 10);
+				if (!isNaN(parseInt(progress, 10)) || !isNaN(parseInt(duration, 10))) {
 					if (duration <= 0) {
 						return 0;
 					} else {
@@ -360,10 +360,10 @@ airbus.mes.stationtracker.util.Formatter = {
 			     * @param {oSection} Object wich represent the current Row
 			****************************************************************************/
 			YdisplayRules : function( oSection ) {
-			
+				var html;
 				if (oSection.initial != undefined ) {
 
-					var html = '<span  style="float: right;margin-right: 5px;" >' + oSection.initial
+					html = '<span  style="float: right;margin-right: 5px;" >' + oSection.initial
 							+ '</span>';
 					return html;
 
@@ -371,7 +371,7 @@ airbus.mes.stationtracker.util.Formatter = {
 				//** folder row **/
 				if (oSection.children != undefined) {
 
-					var html = '<div><span id= folder_' +oSection.key
+					html = '<div><span id= folder_' +oSection.key
 							+ ' class="' + airbus.mes.stationtracker.util.Formatter.openFolder(oSection.open) + '"></span><div title='
 							+ airbus.mes.stationtracker.util.Formatter.spaceInsecable(oSection.label) + ' class="ylabelfolder">' + oSection.label
 							+ '</div><span id= add_' + oSection.key
@@ -383,10 +383,11 @@ airbus.mes.stationtracker.util.Formatter = {
 				
 				//** user affected **/
 				var sshiftID = airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftID;
-						
-				if ( airbus.mes.stationtracker.ShiftManager.dayDisplay ) {
-					var sShiftName = airbus.mes.stationtracker.ShiftManager.ShiftSelected 
-				}
+
+//				not used
+//				if ( airbus.mes.stationtracker.ShiftManager.dayDisplay ) {
+//					var sShiftName = airbus.mes.stationtracker.ShiftManager.ShiftSelected 
+//				}
 								
 				if (airbus.mes.stationtracker.AssignmentManager.affectationHierarchy[oSection.avlLine]) {
 
@@ -414,7 +415,7 @@ airbus.mes.stationtracker.util.Formatter = {
 					
 					if ( oSection.rescheduled ) {
 						//XX TODO POSTION OF THIS.
-						var html = sNotConfirmedOpLS + '<div>';
+						html = sNotConfirmedOpLS + '<div>';
 						//Correction by NJA		
 						if(airbus.mes.settings.AppConfManager.getConfiguration("MES_PHOTO_DISPLAY")){ // Check if user image to be displayed  or not
 
@@ -455,7 +456,7 @@ airbus.mes.stationtracker.util.Formatter = {
 					
 				} else {
 					//** no user affected **/
-					var html = '<div><i class="fa fa-pencil ylabelEditIcon"></i><span class="ylabel">'
+					html = '<div><i class="fa fa-pencil ylabelEditIcon"></i><span class="ylabel">'
 						+ airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("SelectOperator") + '</span></div>';
 					return html;
 			

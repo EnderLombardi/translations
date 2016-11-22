@@ -1,3 +1,5 @@
+"use strict";
+
 //jQuery.sap.require("airbus.mes.stationtracker.Coordinates")
 sap.ui.core.Control.extend("airbus.mes.stationtracker.TaktAdherenceAreaChart", {
 	metadata : {
