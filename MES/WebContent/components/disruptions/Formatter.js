@@ -86,15 +86,15 @@ airbus.mes.disruptions.Formatter = {
 		if (originatorFlag != "X" && responsibleFlag != "X")
 			return false;
 		
+		else if (status == airbus.mes.disruptions.Formatter.status.deleted || status == airbus.mes.disruptions.Formatter.status.closed)
+			return false;
+		
 		else if (originatorFlag == "X" && responsibleFlag != "X" && status == airbus.mes.disruptions.Formatter.status.acknowledged)
 			return false;
 		
-		else if (status == airbus.mes.disruptions.Formatter.status.pending && responsibleFlag == "X" && originatorFlag != "X")
+		else if ( (status == airbus.mes.disruptions.Formatter.status.pending || status == airbus.mes.disruptions.Formatter.status.rejected)
+					&& responsibleFlag == "X" && originatorFlag != "X")
 			return false;
-		
-		else if (status == airbus.mes.disruptions.Formatter.status.deleted || status == airbus.mes.disruptions.Formatter.status.closed) {
-			return false;
-		}
 		
 		return true;
 	},
@@ -133,7 +133,7 @@ airbus.mes.disruptions.Formatter = {
 
 			if (status == airbus.mes.disruptions.Formatter.status.rejected) {
 
-				this.setText(airbus.mes.disruptions.Formatter.status.rejected);
+				this.setText(airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("rejected"));
 				this.setEnabled(false);
 
 				return true;
