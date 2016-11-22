@@ -28,15 +28,15 @@
 
 								<Button text="{i18nModel>close}" type="Accept"
 									visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setCloseButtonVisibility'}"
-									design="Transparent" icon="sap-icon://collapse" press="onCloseDisruption" />
+									design="Transparent" icon="sap-icon://accept" press="onCloseDisruption" class="disruptionTitleBarButtons"/>
 
 								<Button text="{i18nModel>edit}" type="Emphasized"
 									visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>ResponsibleFlag'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setEditButtonVisibility'}"
-									press="onEditDisruption" design="Transparent" icon="sap-icon://edit" />
+									press="onEditDisruption" design="Transparent" icon="sap-icon://edit" class="disruptionTitleBarButtons"/>
 
 								<Button text="{i18nModel>delete}" type="Reject"
 									visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setDeleteButtonVisibility'}"
-									design="Transparent" icon="sap-icon://delete" press="onDeleteDisruption" />
+									design="Transparent" icon="sap-icon://delete" press="onDeleteDisruption" class="disruptionTitleBarButtons"/>
 
 							</Toolbar>
 						</headerToolbar>

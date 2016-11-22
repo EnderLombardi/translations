@@ -2,6 +2,49 @@
 	font-size: 80% !important;
 	font-style: italic !important;
 }
+
+.disruptionExpandablePanel >.sapMPanelContent{
+	padding: 0 1rem;
+}
+
+/****** classes for disruption title bar buttons **********/
+.disruptionTitleBarButtons >.sapMBtnReject {
+	background-color: transparent !important;
+    color: #cc1919 !important;
+    border-color: transparent !important;
+	text-shadow: none !important;
+}
+
+.disruptionTitleBarButtons:hover {
+	background: rgba(0, 86, 112, 0.20) !important;
+}
+
+.disruptionTitleBarButtons >.sapMBtnReject> .sapMBtnIcon {
+    color: #cc1919 !important;
+}
+
+.disruptionTitleBarButtons >.sapMBtnEmphasized {
+	background-color: transparent !important;
+    color: #008bc7 !important;
+    border-color: transparent !important;
+	text-shadow: none !important;
+}
+
+.disruptionTitleBarButtons >.sapMBtnEmphasized > .sapMBtnIcon {
+    color: #008bc7 !important;
+}
+
+.disruptionTitleBarButtons >.sapMBtnAccept {
+	background-color: transparent !important;
+    color: #005f28 !important;
+    border-color: transparent !important;
+	text-shadow: none !important;
+}
+
+.disruptionTitleBarButtons >.sapMBtnAccept > .sapMBtnIcon {
+    color: #005f28 !important;
+}
+
 /****** classes for Disruption screen **********/
 .disruptionBottomBar >.sapMBtn >.sapMBtnText  {
 	border-radius: 1.5rem;
@@ -25,11 +68,13 @@ label#ViewDisruptionView--disruptLabel {
 }
 .disruptionBottomBar {
 	border-bottom: none !important;
+	margin: 0.5rem!important;
 }
 
 .disruptionDetail .statusText {
 	font-weight: 700 !important;
 	font-style: italic !important;
+	color: #0f86ae !important;
 }
 
 .disruptionDetail .msgHeaderText {
