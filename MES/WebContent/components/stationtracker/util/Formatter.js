@@ -130,7 +130,13 @@ airbus.mes.stationtracker.util.Formatter = {
 				}
 		
 			},
-
+			/***************************************************************************
+		     * Permit to display the different case of rendering of box in scheduler : 
+		     * See sd for different cases
+		     * 
+		     * @param {oBox} Object wich represent the current event in scheduler
+		     * @return {STRING} html the html wich will apply
+		     ****************************************************************************/
 			BoxDisplay : function( oBox ) {
 				
 				var html = "";
@@ -272,7 +278,7 @@ airbus.mes.stationtracker.util.Formatter = {
 						}
 						break;
 					default : 
-						return;
+						
 				}
 								
 				if ( oBox.type === "I" ) {
@@ -343,7 +349,16 @@ airbus.mes.stationtracker.util.Formatter = {
 
 					return 0;
 				}
-			},			
+			},
+
+			/***************************************************************************
+			     * Permit to display the different case to the left y-axis of scheduler
+			     * display the case of user affected 
+			     * no user affected
+			     * folder row.
+			     * 
+			     * @param {oSection} Object wich represent the current Row
+			****************************************************************************/
 			YdisplayRules : function( oSection ) {
 			
 				if (oSection.initial != undefined ) {
@@ -353,7 +368,7 @@ airbus.mes.stationtracker.util.Formatter = {
 					return html;
 
 				}
-
+				//** folder row **/
 				if (oSection.children != undefined) {
 
 					var html = '<div><span id= folder_' +oSection.key
@@ -366,7 +381,7 @@ airbus.mes.stationtracker.util.Formatter = {
 
 				}
 				
-				// User affectation
+				//** user affected **/
 				var sshiftID = airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftID;
 						
 				if ( airbus.mes.stationtracker.ShiftManager.dayDisplay ) {
@@ -417,6 +432,14 @@ airbus.mes.stationtracker.util.Formatter = {
 								+ airbus.mes.stationtracker.util.Formatter.spaceInsecable(oCurrentAffectedUser.firstName + " " + oCurrentAffectedUser.lastName) + '>'
 								+ oCurrentAffectedUser.firstName + " " + oCurrentAffectedUser.lastName + '</span>';
 						}
+						// value used in localhost
+						if(airbus.mes.settings.AppConfManager.getConfiguration("MES_PHOTO_NAME") === undefined ){ 
+
+
+							html +=  '<span class="ylabelUser" title='
+									+ airbus.mes.stationtracker.util.Formatter.spaceInsecable(oCurrentAffectedUser.firstName + " " + oCurrentAffectedUser.lastName) + '>'
+									+ oCurrentAffectedUser.firstName + " " + oCurrentAffectedUser.lastName + '</span>';
+							}
 
 						html += '<span  class="yMoreLabel" >'
 								+ sSpanWarn
@@ -431,7 +454,7 @@ airbus.mes.stationtracker.util.Formatter = {
 					}
 					
 				} else {
-					
+					//** no user affected **/
 					var html = '<div><i class="fa fa-pencil ylabelEditIcon"></i><span class="ylabel">'
 						+ airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("SelectOperator") + '</span></div>';
 					return html;
@@ -440,7 +463,7 @@ airbus.mes.stationtracker.util.Formatter = {
 					}
 	
 			} else {
-
+				//** no user affected **/
 				var html = '<div><i class="fa  fa-pencil ylabelEditIcon"></i><span class="ylabel">'
 					+ airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("SelectOperator") + '</span></div>';
 				return html;
