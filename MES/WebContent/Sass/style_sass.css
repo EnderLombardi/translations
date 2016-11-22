@@ -33,6 +33,16 @@ BOX MANAGEMENT
     max-width: 40%;
     white-space: nowrap;
     color: rgba(0, 86, 112, 0.94); }
+  .trackerBox .colorProgress {
+    height: inherit;
+    position: absolute;
+    z-index: 0;
+    left: 0px;
+    overflow: hidden; }
+  .trackerBox .openBlockedEscalated, .trackerBox .openBlocked {
+    height: inherit;
+    width: 100%;
+    background-color: #fbec00; }
 
 .trackerBox:hover .dark-lime-green-back {
   background-color: #536f12 !important; }
@@ -46,6 +56,7 @@ BOX MANAGEMENT
   background-color: #ffbf00 !important; }
 
 .grey:hover {
-  background-color: #767879; }
+  background-color: #767879;
+  color: black; }
 
-/*# sourceMappingURL=styleScss.css.map */
+/*# sourceMappingURL=style_sass.css.map */

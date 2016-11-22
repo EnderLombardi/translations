@@ -275,27 +275,6 @@
 .trackerTextBlack{
 	color:#000;
 }
-
-.colorProgress{
-	 height: inherit;
-	 position: absolute;
-	 z-index: 0;
-	 left: 0px;
-	 overflow: hidden;
-}
-
-.openBlockedEscalated{
-	height: inherit;
-	width:100%;
-	background-color:#fbec00;
-}
-
-.openBlocked{
-	height: inherit;
-	width:100%;
-	background-color:#fbec00;
-}
-
 .solvedBloackedExcalated{
 	height: inherit;
 	width:100%;

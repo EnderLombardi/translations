@@ -55,6 +55,18 @@ BOX MANAGEMENT
 		white-space: nowrap;
 		color: $petrol-blue;
 	}
+	.colorProgress{
+	   	height: inherit;
+	   	position: absolute;
+	   	z-index: 0;
+	   	left: 0px;
+	   	overflow: hidden;
+	}
+	.openBlockedEscalated, .openBlocked{
+	   	height: inherit;
+		width:100%;
+		background-color:#fbec00;
+	}
 }
 .trackerBox:hover{
 	.dark-lime-green-back{
