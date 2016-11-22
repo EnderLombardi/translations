@@ -83,13 +83,13 @@ airbus.mes.disruptions.Formatter = {
 	
 	setEditButtonVisibility : function(originatorFlag, responsibleFlag, status) {
 
-		if (originatorFlag == " " && responsibleFlag == " ")
+		if (originatorFlag != "X" && responsibleFlag != "X")
 			return false;
 		
-		else if (originatorFlag == "X" && responsibleFlag == " " && status == airbus.mes.disruptions.Formatter.status.acknowledged)
+		else if (originatorFlag == "X" && responsibleFlag != "X" && status == airbus.mes.disruptions.Formatter.status.acknowledged)
 			return false;
 		
-		else if (status == airbus.mes.disruptions.Formatter.status.pending && responsibleFlag == "X" && originatorFlag == " ")
+		else if (status == airbus.mes.disruptions.Formatter.status.pending && responsibleFlag == "X" && originatorFlag != "X")
 			return false;
 		
 		else if (status == airbus.mes.disruptions.Formatter.status.deleted || status == airbus.mes.disruptions.Formatter.status.closed) {
@@ -152,10 +152,10 @@ airbus.mes.disruptions.Formatter = {
 
 	setAddCommentButtonVisibility : function(originatorFlag, responsibleFlag, status) {
 
-		if (originatorFlag == "X" && responsibleFlag == "" && status == airbus.mes.disruptions.Formatter.status.acknowledged)
+		if (originatorFlag == "X" && responsibleFlag != "X" && status == airbus.mes.disruptions.Formatter.status.acknowledged)
 			return false;
 		
-		else if (originatorFlag == "" && responsibleFlag == "")
+		else if (originatorFlag != "X" && responsibleFlag != "X")
 			return false;
 		
 		else if (status == airbus.mes.disruptions.Formatter.status.deleted || status == airbus.mes.disruptions.Formatter.status.closed)
