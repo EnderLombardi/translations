@@ -14,9 +14,9 @@
 
 		</content>
 		<buttons>
-			<Button id="btnUpdateDisruption" text="{StationTrackerI18n>update}"
+			<Button id="btnUpdateDisruption" text="{disruptiontrackerI18n>update}"
 				type="Accept" press="onUpdateDisruption" visible="false" />
-			<Button id="btnCancelDisruption" text="{StationTrackerI18n>cancel}"
+			<Button id="btnCancelDisruption" text="{disruptiontrackerI18n>cancel}"
 				type="Reject" press="onCancelCreateDisruption" visible="false" />
 
 			<Button id="btnCloseDisruptionPopup" text="{disruptiontrackerI18n>Close}" icon="sap-icon://decline"

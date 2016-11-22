@@ -628,8 +628,18 @@ sap.ui
 
 					onCancelCreateDisruption : function() {
 
-						var oOperDetailNavContainer = sap.ui.getCore().byId(
-								"operationDetailsView--operDetailNavContainer");
+						var currentPage = nav.getCurrentPage().getId();
+						
+						var oOperDetailNavContainer;
+						
+						if(currentPage == "stationTrackerView")
+							oOperDetailNavContainer = sap.ui.getCore().byId("operationDetailsView--operDetailNavContainer");
+
+						
+						else if(currentPage == "disruptiontrackerView")
+							oOperDetailNavContainer = sap.ui.getCore().byId("disruptionDetailPopup--disruptDetailNavContainer");
+						
+
 						oOperDetailNavContainer.back();
 					},
 

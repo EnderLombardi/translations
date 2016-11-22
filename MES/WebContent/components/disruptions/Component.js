@@ -34,7 +34,7 @@ airbus.mes.disruptions.Component.prototype.createContent = function() {
 			id : "createDisruptionView",
 			viewName : "airbus.mes.disruptions.CreateDisruption",
 			type : "XML",
-			height:"auto"
+			height:"100%"
 		})
 
 		var i18nModel = new sap.ui.model.resource.ResourceModel({

@@ -98,6 +98,16 @@ sap.ui
 					 * Open Pop-Up to ask Time Lost while Closing the Disruption
 					 */
 					onCloseDisruption : function(oEvt) {
+
+						if (nav.getCurrentPage().sId == "stationTrackerView" && 
+								sap.ui.getCore().byId("operationDetailsView--switchOperationModeBtn").getState() == false) {
+
+							sap.m.MessageBox.error(this.getView().getModel(
+									"i18nModel").getProperty("readModeError"));
+							
+							return;
+
+						}
 						
 						// Close Comment Box if open
 						var path = oEvt.getSource().sId;
@@ -275,6 +285,16 @@ sap.ui
 					 */
 					onDeleteDisruption : function(oEvt) {
 
+						if (nav.getCurrentPage().sId == "stationTrackerView" && 
+								sap.ui.getCore().byId("operationDetailsView--switchOperationModeBtn").getState() == false) {
+
+							sap.m.MessageBox.error(this.getView().getModel(
+									"i18nModel").getProperty("readModeError"));
+							
+							return;
+
+						}
+						
 						// Close Comment Box if open
 						var path = oEvt.getSource().sId;
 						var listnum = path.split("-");
@@ -375,6 +395,16 @@ sap.ui
 					 */
 					onRejectDisruption : function(oEvt) {
 
+						if (nav.getCurrentPage().sId == "stationTrackerView" && 
+								sap.ui.getCore().byId("operationDetailsView--switchOperationModeBtn").getState() == false) {
+
+							sap.m.MessageBox.error(this.getView().getModel(
+									"i18nModel").getProperty("readModeError"));
+							
+							return;
+
+						}
+						
 						// Close Comment Box if open
 						var path = oEvt.getSource().sId;
 						var listnum = path.split("-");
@@ -478,6 +508,17 @@ sap.ui
 					 * Show Comment Box to Add Comments
 					 */
 					showCommentBox : function(oEvt) {
+
+						if (nav.getCurrentPage().sId == "stationTrackerView" && 
+								sap.ui.getCore().byId("operationDetailsView--switchOperationModeBtn").getState() == false) {
+
+							sap.m.MessageBox.error(this.getView().getModel(
+									"i18nModel").getProperty("readModeError"));
+							
+							return;
+
+						}
+						
 						var path = oEvt.getSource().sId;
 						var listnum = path.split("-");
 						listnum = listnum[listnum.length - 1];
@@ -577,6 +618,16 @@ sap.ui
 					 */
 					onAckDisruption : function(oEvt) {
 
+						if (nav.getCurrentPage().sId == "stationTrackerView" && 
+								sap.ui.getCore().byId("operationDetailsView--switchOperationModeBtn").getState() == false) {
+
+							sap.m.MessageBox.error(this.getView().getModel(
+									"i18nModel").getProperty("readModeError"));
+							
+							return;
+
+						}
+						
 						// Close Comment Box if open
 						var path = oEvt.getSource().sId;
 						var listnum = path.split("-");
@@ -722,6 +773,16 @@ sap.ui
 
 					onMarkSolvedDisruption : function(oEvt) {
 
+						if (nav.getCurrentPage().sId == "stationTrackerView" && 
+								sap.ui.getCore().byId("operationDetailsView--switchOperationModeBtn").getState() == false) {
+
+							sap.m.MessageBox.error(this.getView().getModel(
+									"i18nModel").getProperty("readModeError"));
+							
+							return;
+
+						}
+						
 						var title = this.getView().getModel("i18nModel")
 								.getProperty("markSolvedDisruption");
 						var msgRef = oEvt.getSource().getBindingContext(
@@ -808,6 +869,16 @@ sap.ui
 					 */
 					onEscalateDisruption : function(oEvent) {
 
+						if (nav.getCurrentPage().sId == "stationTrackerView" && 
+								sap.ui.getCore().byId("operationDetailsView--switchOperationModeBtn").getState() == false) {
+
+							sap.m.MessageBox.error(this.getView().getModel(
+									"i18nModel").getProperty("readModeError"));
+							
+							return;
+
+						}
+						
 						var msgRef = oEvent.getSource().getBindingContext(
 								"operationDisruptionsModel").getObject(
 								"MessageRef");

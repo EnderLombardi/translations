@@ -503,7 +503,10 @@ sap.ui
 									ID, pin, sMessageError, sMessageSuccess);
 							
 							// Close reason code dialog
-							oView._reasonCodeDialog.close();
+							if(oView._reasonCodeDialog)
+								oView._reasonCodeDialog.close();
+							
+							// Close confirmation dialogue
 							oView._oUserConfirmationDialog.close();
 
 							if (flag_success === true) {

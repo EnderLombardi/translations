@@ -204,24 +204,36 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 	
 	onNavigate : function() {
 		
-		sap.ui.getCore().byId("disruptionDetailPopup--btnUpdateDisruption").setVisible(
-				false);
-		sap.ui.getCore().byId("disruptionDetailPopup--btnCancelDisruption").setVisible(
-				false);
+		if(this.nav.getCurrentPage().sId == "createDisruptionView" ){
+			sap.ui.getCore().byId("disruptionDetailPopup--btnUpdateDisruption").setVisible(false);
+
+
+			sap.ui.getCore().byId("disruptionDetailPopup--btnCancelDisruption").setVisible(false);
+		}
+
+
 	},
 	
 	afterNavigate : function() {
 		
-		sap.ui.getCore().byId("disruptionDetailPopup--btnUpdateDisruption").setVisible(true);
-		sap.ui.getCore().byId("disruptionDetailPopup--btnCancelDisruption").setVisible(true);
-		
-		/***************************************************
-		 * Load Disruption Custom Data
-		 **************************************************/
-		if (!this.disruptionsCustomDataFlag) 
-			airbus.mes.disruptions.ModelManager.loadData();
-		
-		airbus.mes.disruptions.oView.createDisruption.oController.setDataForEditDisruption();
+		if(this.nav.getCurrentPage().sId == "createDisruptionView" ){
+			sap.ui.getCore().byId("disruptionDetailPopup--btnUpdateDisruption").setVisible(false);
+			sap.ui.getCore().byId("disruptionDetailPopup--btnCancelDisruption").setVisible(false);
+			
+			
+
+			/***************************************************
+			 * Load Disruption Custom Data
+			 **************************************************/
+			if (!this.disruptionsCustomDataFlag){
+				airbus.mes.disruptions.ModelManager.loadData();
+				this.disruptionsCustomDataFlag = true;
+			}
+			else
+				airbus.mes.disruptions.oView.createDisruption.oController.setDataForEditDisruption();
+			
+		}
+
 	}
 	
 

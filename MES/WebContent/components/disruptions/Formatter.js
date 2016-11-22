@@ -1,6 +1,6 @@
 "use strict";
 
-jQuery.sap.declare("airbus.mes.disrtuptions.Formatter");
+jQuery.sap.declare("airbus.mes.disruptions.Formatter");
 
 airbus.mes.disruptions.Formatter = {
 	monthNames : [ "January", "February", "March", "April", "May", "June",
