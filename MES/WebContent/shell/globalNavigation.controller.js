@@ -1,9 +1,4 @@
 sap.ui.controller("airbus.mes.shell.globalNavigation", {
-
-	/****************************************
-	* Variable for auto refresh
-	*/
-	autoRefresh: undefined,
 	
 	
 	/**
@@ -150,14 +145,13 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 	},
 	
 	onNavigate: function(){
-		clearInterval(this.autoRefresh);
+		airbus.mes.shell.AutoRefreshManager.clearInterval();
 		
 	},
 	
 	
 	
 	renderViews : function() {
-		var autoRefresh = undefined;
 
         if ( nav.getCurrentPage().getId() != "homePageView" ) {
             
@@ -174,7 +168,11 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 		
 		case "stationTrackerView":
 			this.renderStationTracker();
-			this.autoRefresh = window.setInterval(this.renderStationTracker, 300000);
+			
+			
+			// Set Refresh Interval based on configuration
+			airbus.mes.shell.AutoRefreshManager.setInterval("STATION_TRACKER");
+			
 			break;
 			
 		case "disruptiontrackerView":
@@ -190,20 +188,24 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 			}
 
 			airbus.mes.disruptiontracker.ModelManager.loadDisruptionTrackerModel();
-			this.autoRefresh = setInterval(airbus.mes.disruptiontracker.ModelManager
-					.loadDisruptionTrackerModel, 300000);
+
+			// Set Refresh Interval based on configuration
+			airbus.mes.shell.AutoRefreshManager.setInterval("DISRUPTION_TRACKER");
+			
 			break;
 			
+		
+		case "disruptionKPIView":
+			
+			// Set Refresh Interval based on configuration
+			airbus.mes.shell.AutoRefreshManager.setInterval("DISRUPTION_KPI");
+			
+			break;
+			
+		
 		case "resourcePool":
 			airbus.mes.resourcepool.util.ModelManager.askResourcePool();
 			break;
-			
-			
-	/*	case "disruptionKPIView":
-			airbus.mes.disruptiontracker.kpi.oView.setBusy(true); 
-		airbus.mes.disruptiontracker.kpi.ModelManager.loadDisruptionKPIModel();
-		sap.ui.core.BusyIndicator.hide();
-		break;*/
 
 		}
 	},
@@ -224,15 +226,25 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 		airbus.mes.stationtracker.AssignmentManager.computeAffectationHierarchy();
 		
 		// asynchrone call
+		this.loadStationTrackerGantKPI();
+   	
+	},
+	
+	
+	loadStationTrackerGantKPI: function(){
+		var oModule = airbus.mes.stationtracker.ModelManager;
+		
+		// asynchrone call
 		oModule.loadRessourcePool();
     	oModule.loadStationTracker("U");
    		oModule.loadStationTracker("O");
    		oModule.loadStationTracker("R");
     	oModule.loadProductionGroup();
-    	oModule.loadKPI();
     	oModule.loadFilterUnplanned();
-   	
+    	oModule.loadKPI();
 	},
+	
+	
 
 	/*******************************************
 	 * Render disruption Tracker

@@ -6,6 +6,7 @@ jQuery.sap.require("airbus.mes.shell.util.navFunctions");
 jQuery.sap.require("airbus.mes.shell.ModelManager");
 jQuery.sap.require("airbus.mes.shell.RoleManager");
 jQuery.sap.require("airbus.mes.shell.UserImageManager");
+jQuery.sap.require("airbus.mes.shell.AutoRefreshManager");
 
 jQuery.sap.declare("airbus.mes.shell.Component");
 

@@ -878,6 +878,9 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	afterCloseOperationDetailPopup : function() {
 		// perf issue if stationtracker dont rerender correctly its because of this.
 		//airbus.mes.shell.oView.getController().renderStationTracker();
+		
+		// Refresh Station tracker
+		airbus.mes.shell.oView.getController().loadStationTrackerGantKPI();
 	},
 
 	onContinueCheckQA : function(oEvent){
