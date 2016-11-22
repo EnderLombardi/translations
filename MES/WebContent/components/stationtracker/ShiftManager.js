@@ -632,18 +632,19 @@ airbus.mes.stationtracker.ShiftManager = {
 						return true;
 					} 
 							
-					// Select only operation wich Are in the previous shiftId
-					if ( new Date(aBox.slice(-10)) <=  oPreviousShift.StartDate ) {
 						var aOpration = oOperation[aBox];
-						//Parse all opration in corresponding group avlLine shift Id return true if one is not completed
-						aOpration.forEach(function(el){
+						//Parse all opration in corresponding group avlLine return true if one is not completed
+						aOpration.forEach(function(el,index){
+							// check if operation start date is less than the end date of prevous shift.
+							if ( airbus.mes.stationtracker.util.Formatter.jsDateFromDayTimeStr(aOpration[index].START_TIME) <  oPreviousShift.EndDate ) {
 							
-							if ( el.STATE != "C" )
+								if ( el.STATE != "C" )
 							
 								bResult = true;	
+							
+							}
 														
 						})
-					}
 					
 				}
 			// All operation are completed

@@ -12,6 +12,7 @@ airbus.mes.shell.UserImageManager =  {
 		
 		var urlUserImage = airbus.mes.shell.ModelManager.urlModel.getProperty("urlGetUserImage");
 		urlUserImage = urlUserImage.replace("$username", username.toUpperCase());
+		if(sap.ui.getCore().byId(imageId))
 		sap.ui.getCore().byId(imageId).onerror = airbus.mes.shell.UserImageManager.getErrorUserImage;
 		return urlUserImage; 
 	},
