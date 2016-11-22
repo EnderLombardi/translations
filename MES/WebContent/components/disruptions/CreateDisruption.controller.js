@@ -353,13 +353,13 @@ sap.ui
 												+ airbus.mes.settings.ModelManager.site
 												+ ","
 												+ airbus.mes.settings.ModelManager.station
-									}, /*{
+									}, {
 										"attribute" : "MATERIALS",
 										"value" : Materials
 									}, {
 										"attribute" : "JIG_TOOLS",
 										"value" : jigtools
-									}*/ ]
+									} ]
 
 						}
 						aModelData.push(oJson);
@@ -669,6 +669,7 @@ sap.ui
 						this.getView().byId("timeLost").setValue();
 						this.getView().byId("comment").setValue();
 						this.getView().byId("description").setValue();
+
 						this.getView().byId("materials").destroyTokens();
 						this.getView().byId("jigtools").destroyTokens();
 

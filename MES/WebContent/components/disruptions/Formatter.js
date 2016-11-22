@@ -117,7 +117,7 @@ airbus.mes.disruptions.Formatter = {
 		if (originatorFlag == "X") {
 
 			if (status == airbus.mes.disruptions.Formatter.status.solved
-					|| status == airbus.mes.disruptions.Formatter.status.reject
+					|| status == airbus.mes.disruptions.Formatter.status.rejected
 					|| status == airbus.mes.disruptions.Formatter.status.pending) {
 
 				return true;
@@ -140,7 +140,9 @@ airbus.mes.disruptions.Formatter = {
 
 			}
 			else if (status == airbus.mes.disruptions.Formatter.status.pending || status == airbus.mes.disruptions.Formatter.status.acknowledged) {
-
+				
+				this.setText(airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("reject"));
+				this.setEnabled(true);
 				return true;
 
 			}
