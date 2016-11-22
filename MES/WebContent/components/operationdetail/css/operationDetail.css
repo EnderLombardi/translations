@@ -1,9 +1,4 @@
  /*** CSS for Sub header - Operation Details Sub Header and Menu Bar)  ******/
- 
-.operationDetailHeadPanel {
-    background-color: #D5F1F8 !important;
-    border-bottom: 1px solid #dddddd;
-}
 
 .operationDetailHeadPanel {
     overflow: visible;
@@ -21,15 +16,7 @@
 	color:#0085AD !important;
 	font-weight:700 !important;
 }
-.operationDetailHeadPanel .subText{
-	color:#0085AD !important;
-}
 
-.operationDetailHeadPanel .sapMPanelWrappingDivTb{
-	border-bottom:0px !important;
-    background-color: #D5F1F8 !important;
-    box-shadow: 0px 5px 15px -5px #434343;
-}
 .operationDetailHeadPanel .sapMPanelBGTranslucent, .operationDetailHeadPanel .operationDetailForm .sapUiRLContainer{
 	background:transparent !important;
 	border-bottom:0px !important;
@@ -58,7 +45,6 @@
 	align-items: center;
 }
 .operationDetailHeadPanel.sapMPanel .sapMPanelWrappingDivTb .sapMIBar.sapMTB>:first-child div:nth-child(2) .subText {
-    font-weight: bold !important;
     font-size: 1rem!important;
     line-height: 3rem;
 }
@@ -67,6 +53,7 @@
 	margin: -1rem -1rem 0 -1rem;
     padding: 1rem 1rem 0 1rem;
     background: #fff;
+    border-bottom: none;
 }
 /*** End of CSS for Operation Details Sub Header  ******/
 
@@ -124,9 +111,6 @@
     color: #0085AD;
     margin-right: 10px;
 }
-.operationDetailHeadPanel .ExecutionModeText.sapMTextBreakWord {
-	color:#73d2e6;
-}
 /***End of CSS for Execution Switch Button and text****/
 
 /*** CSS Button show / hide ***/
@@ -143,9 +127,7 @@
 /*** CSS To Style Font and Border colors for Navigation Toolbar ***/
 .operationDetailHeadPanel + .opDetailNavToolbar .sapMSegBBtn {
 	position:relative;
-}
-.operationDetailHeadPanel + .opDetailNavToolbar .sapMSegBBtn:not(.sapMSegBBtnSel) {
-    background-color: #D5F1F8 !important;
+    color:#333333;
 }
 
 .operationDetailHeadPanel + .opDetailNavToolbar .sapMSegBBtn.sapMSegBBtnSel {
@@ -171,7 +153,6 @@
     position: relative;
     border:0;
     height:auto;
-    background-color: #D5F1F8 !important;
 }
 html.sap-desktop .operationDetailHeadPanel + .opDetailNavToolbar .sapMSegBBtnFocusable:hover {
     background: rgba(0, 86, 112, 0.20);
