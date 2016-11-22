@@ -37,6 +37,21 @@ airbus.mes.disruptiontracker.kpi.ModelManager = {
 					bundleUrl : "../components/disruptiontracker/kpi/config/url_config.properties",
 					bundleLocale : dest
 				});
+		
+
+		if (dest === "sopra") {
+
+			var oModel = this.urlModel._oResourceBundle.aPropertyFiles[0].mProperties;
+
+			for ( var prop in oModel) {
+				if (oModel[prop].slice(-5) != ".json") {
+					oModel[prop] += "&j_user=" + Cookies.getJSON("login").user
+							+ "&j_password=" + Cookies.getJSON("login").mdp;
+				}
+			}
+		}
+		
+		
 	},
 	
 	

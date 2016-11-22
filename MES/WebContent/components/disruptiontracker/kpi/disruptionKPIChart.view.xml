@@ -13,7 +13,8 @@
 			</contentMiddle>
 		</Bar>
 		<content>
-			<viz:VizFrame id="vizFrame" height="400px" width="50%"
+	
+			<viz:VizFrame id="vizFrame"  width="50%"
 				class="chart" uiConfig="{applicationSet:'fiori'}" legendVisible="false">
 				<viz:dataset>
 					<viz.data:FlattenedDataset
@@ -21,7 +22,7 @@
 						<viz.data:dimensions>
 							<viz.data:DimensionDefinition axis="1"
 								name="Category"
-								value="{ path: 'TimeLostperAttribute>Category' , formatter: 'airbus.mes.disruptiontracker.Formatter.formatCategory' }" />
+								value="{TimeLostperAttribute>Category}" />
 						</viz.data:dimensions>
 						<viz.data:measures>
 							<viz.data:MeasureDefinition name="Time Lost"
@@ -37,7 +38,7 @@
 				</viz:feeds>
 			</viz:VizFrame>
 
-			<viz:VizFrame id="vizFrame2" height="400px" width="50%"
+			<viz:VizFrame id="vizFrame2" width="50%"
 				class="chart" uiConfig="{applicationSet:'fiori'}" legendVisible="false">
 				<viz:dataset width="50%">
 					<viz.data:FlattenedDataset
@@ -60,7 +61,7 @@
 				</viz:feeds>
 			</viz:VizFrame>
 
-			<viz:VizFrame id="vizFrame3" height="400px" width="50%"
+			<viz:VizFrame id="vizFrame3" width="50%"
 				class="chart" vizType="bar" uiConfig="{applicationSet:'fiori'}"
 				legendVisible="false">
 				<viz:dataset width="50%">
@@ -84,7 +85,7 @@
 				</viz:feeds>
 			</viz:VizFrame>
 
-			<viz:VizFrame id="vizFrame4" height="400px" width="50%"
+			<viz:VizFrame id="vizFrame4" width="50%"
 				class="chart" vizType="bar" uiConfig="{applicationSet:'fiori'}"
 				legendVisible="false">
 				<viz:dataset width="50%">
@@ -106,6 +107,7 @@
 						type="Measure" values="Time Lost" />
 				</viz:feeds>
 			</viz:VizFrame>
+			
 		</content>
 	</Page>
 </core:View>
