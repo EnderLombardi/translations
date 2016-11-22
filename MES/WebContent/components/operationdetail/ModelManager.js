@@ -147,7 +147,7 @@ airbus.mes.operationdetail.ModelManager = {
 		var totalPartialConfirmationUrl = this.urlModel
 				.getProperty("operationConfirmatonUrl");
 		totalPartialConfirmationUrl = airbus.mes.shell.ModelManager.replaceURI(
-				totalPartialConfirmationUrl, "$userId", userId);
+				totalPartialConfirmationUrl, "$userId", userId.toUpperCase());
 		totalPartialConfirmationUrl = airbus.mes.shell.ModelManager.replaceURI(
 				totalPartialConfirmationUrl, "$password", password);
 		totalPartialConfirmationUrl = airbus.mes.shell.ModelManager.replaceURI(
