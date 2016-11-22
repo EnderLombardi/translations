@@ -186,7 +186,7 @@ airbus.mes.stationtracker.ShiftManager = {
 	timelineAddStep : function(date, step, mode) {
 		
 		
-		var oFormatter = airbus.mes.stationtracker.util.Formatter;
+//		var oFormatter = airbus.mes.stationtracker.util.Formatter;	not used
 		if (this.shifts.length === 0)
 		return scheduler.date.add_timeline_old(date, step, mode);
 
@@ -200,8 +200,7 @@ airbus.mes.stationtracker.ShiftManager = {
 				
 				while (!dNewShift) {
 				
-				if ( a >= this.shifts.length)
-					{
+				if ( a >= this.shifts.length) {
 					dhtmlx.message({
 						id: "lastShiftDHTMLX",
 						text: "Last Shift Reached",
@@ -267,7 +266,7 @@ airbus.mes.stationtracker.ShiftManager = {
 		
 		
 //		Feedback the date to the date picker 
-	 	this.setCalendarDate(d);
+       this.setCalendarDate(d);
 		
 		return d;
 
@@ -369,12 +368,12 @@ airbus.mes.stationtracker.ShiftManager = {
 		if (curDay<10) {curDay = "0"+curDay;}
 		this.current_Date = this.current_Date.getFullYear()+"-"	+currMotn+"-"+curDay;	
 		
-		var nb_int = scheduler.matrix.timeline.x_length;
-		var end_int_date;
-		var w_int = 0;
-		var previous_shift_end;
-		var shift_begin = date;
-		var shift_end = this.shifts[c].EndDate;
+//		var nb_int = scheduler.matrix.timeline.x_length; not used
+//		var end_int_date; not used
+//		var w_int = 0; not used
+//		var previous_shift_end; not used
+//		var shift_begin = date; not used
+//		var shift_end = this.shifts[c].EndDate; not used
 		
 		if ( this.shiftDisplay ) {
 		
@@ -426,8 +425,7 @@ airbus.mes.stationtracker.ShiftManager = {
 						this.current_shift = this.shifts[b+1];
 							}
 				
-					}
-			else {
+					} else {
 				
 				var fStartDate =  Date.parse(new Date(this.shifts[0].StartDate));
 				this.current_shift = this.shifts[0];
@@ -446,7 +444,7 @@ airbus.mes.stationtracker.ShiftManager = {
 			/**Compute the number of 1hour step needed to display all the time between start and day of the current day */ 
 		    scheduler.matrix.timeline.x_size += Math.ceil((new Date(fEndDate) - new Date(fStartDate))/1000/60/60);
 		    scheduler.matrix.timeline.x_size += Math.ceil(fTotalMS/1000/60/60);
-		    	
+
 			return new Date (new Date ( fStartDate ).setMinutes(0));
 		    
 			}
@@ -520,7 +518,8 @@ airbus.mes.stationtracker.ShiftManager = {
 		if (this.shifts.length === 0)
 			return; // do nothing
 		
-		var d1, d2, d3, d4, d5, d6, d7;
+		var d1, d2, d3, d4,  d6, d7;
+//		var d5; not used
 		
 		d2 = aShiftBreak[0].StartDate;
 		d1 = scheduler.date.copy(d2);
