@@ -199,36 +199,40 @@ sap.ui
 					/***********************************************************
 					 * Create Disruption
 					 */
-					//get selected jig Tools
+					// get selected jig Tools
 					getSelectedJIg_Tool : function() {
-						var getTokens = sap.ui.getCore().byId("createDisruptionView--jigtools").getTokens();
+						var getTokens = sap.ui.getCore().byId(
+								"createDisruptionView--jigtools").getTokens();
 						var result;
-						getTokens.forEach(function(entry) {    
-							if(result  == undefined)
+						getTokens.forEach(function(entry) {
+							if (result == undefined)
 								result = entry.getText();
-							else						
-								result = result+","+entry.getText();
-					});
-					return result;
+							else
+								result = result + "," + entry.getText();
+						});
+						return result;
 					},
-					//get selected jig Tools
+					// get selected jig Tools
 					getSelectedMaterials : function() {
-						var getTokens = sap.ui.getCore().byId("createDisruptionView--materials").getTokens();
+						var getTokens = sap.ui.getCore().byId(
+								"createDisruptionView--materials").getTokens();
 						var result;
-						getTokens.forEach(function(entry) {    
-							if(result  == undefined)
+						getTokens.forEach(function(entry) {
+							if (result == undefined)
 								result = entry.getText();
-							else						
-								result = result+","+entry.getText();
-					});
-					return result;
+							else
+								result = result + "," + entry.getText();
+						});
+						return result;
 					},
-					 
+
 					onCreateDisruption : function() {
-						
+
 						var oView = airbus.mes.disruptions.oView.createDisruption;
-						var jigtools = oView.getController().getSelectedJIg_Tool();
-						var Materials = oView.getController().getSelectedMaterials();
+						var jigtools = oView.getController()
+								.getSelectedJIg_Tool();
+						var Materials = oView.getController()
+								.getSelectedMaterials();
 						var oController = oView.getController();
 
 						// some mandatory fields need to be filled before
@@ -270,12 +274,15 @@ sap.ui
 									},
 									{
 										"attribute" : "SFC_BO",
-										"value" : "SFCBO:"+airbus.mes.settings.ModelManager.site+","+sap.ui
-												.getCore()
-												.getModel(
-														"operationDetailModel")
-												.getProperty(
-														"/Rowsets/Rowset/0/Row/0/sfc"),
+										"value" : "SFCBO:"
+												+ airbus.mes.settings.ModelManager.site
+												+ ","
+												+ sap.ui
+														.getCore()
+														.getModel(
+																"operationDetailModel")
+														.getProperty(
+																"/Rowsets/Rowset/0/Row/0/sfc"),
 									},
 									{
 										"attribute" : "SFC_STEP_BO",
@@ -342,19 +349,17 @@ sap.ui
 									},
 									{
 										"attribute" : "WORK_CENTER",
-										"value" : "WorkCenterBO:"+airbus.mes.settings.ModelManager.site+","+airbus.mes.settings.ModelManager.station
-									},
-									{
+										"value" : "WorkCenterBO:"
+												+ airbus.mes.settings.ModelManager.site
+												+ ","
+												+ airbus.mes.settings.ModelManager.station
+									}, /*{
 										"attribute" : "MATERIALS",
 										"value" : Materials
-									},
-									{
+									}, {
 										"attribute" : "JIG_TOOLS",
 										"value" : jigtools
-									}
-									]
-
-
+									}*/ ]
 
 						}
 						aModelData.push(oJson);
@@ -432,13 +437,13 @@ sap.ui
 						var sComment = oView.byId("comment").getValue()
 						var iGravity = oView.byId("gravity").getSelectedKey()
 						var dPromisedTime = oView.byId("promisedDate")
-						.getValue()
-						+ " " + oView.byId("promisedTime").getValue()
+								.getValue()
+								+ " " + oView.byId("promisedTime").getValue()
 						// call update service
 						airbus.mes.disruptions.ModelManager.updateDisruption(
 								sMessageRef, sReason, sResponsibleGroup,
 								sRootCause, iTimeLost, dFixedByTime, sComment,
-								iGravity,dPromisedTime);
+								iGravity, dPromisedTime);
 
 					},
 
@@ -479,7 +484,8 @@ sap.ui
 											oModel
 													.getProperty("/OriginatorGroup"));
 							this.getView().byId("selectRootCause")
-									.setSelectedKey(oModel.getProperty("/RootCause"));
+									.setSelectedKey(
+											oModel.getProperty("/RootCause"));
 
 							this.getView().byId("gravity").setSelectedKey(
 									oModel.getProperty("/Gravity"));
@@ -557,7 +563,8 @@ sap.ui
 						this.getView().byId("jigtools").setEnabled(false);
 
 						// promised date has to be visible while editing
-						this.getView().byId("promisedDateLabel").setVisible(true);
+						this.getView().byId("promisedDateLabel").setVisible(
+								true);
 						this.getView().byId("promisedDate").setVisible(true);
 						this.getView().byId("promisedTime").setVisible(true);
 					},
@@ -664,6 +671,7 @@ sap.ui
 						this.getView().byId("description").setValue();
 						this.getView().byId("materials").destroyTokens();
 						this.getView().byId("jigtools").destroyTokens();
+
 					},
 
 					/***********************************************************
@@ -946,7 +954,6 @@ sap.ui
 
 					onjigToolValueHelpCancel : function() {
 						this.jigToolSelectDialog.close();
-						
 
 					},
 
@@ -1010,7 +1017,6 @@ sap.ui
 					onJigToolTokenChange : function() {
 						this.onJigToolValueHelpRequest();
 					},
-
 
 				/**
 				 * Called when the Controller is destroyed. Use this one to free

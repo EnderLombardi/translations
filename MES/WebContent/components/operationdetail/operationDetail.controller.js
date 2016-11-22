@@ -249,6 +249,7 @@ sap.ui
 								sap.ui.getCore().byId("operationDetailPopup--btnCancelDisruption").setVisible(true);
 								sap.ui.getCore().byId("createDisruptionView--openTime").setValue(airbus.mes.disruptions.Formatter.getTime());
 								sap.ui.getCore().byId("createDisruptionView--openDate").setValue(airbus.mes.disruptions.Formatter.getDate());
+								sap.ui.getCore().byId("createDisruptionView--status").setValue(this.getView().getModel("i18n").getProperty("Pending"));
 							}
 							
 							/***************************************************
