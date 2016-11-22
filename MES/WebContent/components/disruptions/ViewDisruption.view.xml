@@ -275,6 +275,44 @@
 												</Text>
 											</f:fields>
 										</f:FormElement>
+										
+										<f:FormElement>
+											<f:label>
+												<Label class="detailLabels" text="{i18nModel>stMaterial}"
+													visible="{path: 'operationDisruptionsModel>Material', formatter: 'airbus.mes.disruptions.Formatter.setTimeBeforeNextEscVisibility'}">
+													<layoutData>
+														<l:GridData span="L3 M3 S12" />
+													</layoutData>
+												</Label>
+											</f:label>
+											<f:fields>
+												<Text text="{operationDisruptionsModel>Material}"
+													visible="{path: 'operationDisruptionsModel>Material', formatter: 'airbus.mes.disruptions.Formatter.setTimeBeforeNextEscVisibility'}">
+													<layoutData>
+														<l:GridData span="L3 M3 S12" />
+													</layoutData>
+												</Text>
+											</f:fields>
+										</f:FormElement>
+										
+										<f:FormElement>
+											<f:label>
+												<Label class="detailLabels" text="{i18nModel>stjigtool}"
+													visible="{path: 'operationDisruptionsModel>Jigtool', formatter: 'airbus.mes.disruptions.Formatter.setTimeBeforeNextEscVisibility'}">
+													<layoutData>
+														<l:GridData span="L3 M3 S12" />
+													</layoutData>
+												</Label>
+											</f:label>
+											<f:fields>
+												<Text text="{operationDisruptionsModel>Jigtool}"
+													visible="{path: 'operationDisruptionsModel>Jigtool', formatter: 'airbus.mes.disruptions.Formatter.setTimeBeforeNextEscVisibility'}">
+													<layoutData>
+														<l:GridData span="L3 M3 S12" />
+													</layoutData>
+												</Text>
+											</f:fields>
+										</f:FormElement>
 
 									</f:formElements>
 								</f:FormContainer>
