@@ -83,13 +83,13 @@ airbus.mes.disruptions.Formatter = {
 	
 	setEditButtonVisibility : function(originatorFlag, responsibleFlag, status) {
 
-		if (originatorFlag == "" && responsibleFlag == "")
+		if (originatorFlag == " " && responsibleFlag == " ")
 			return false;
 		
-		else if (originatorFlag == "X" && responsibleFlag == "" && status == airbus.mes.disruptions.Formatter.status.acknowledged)
+		else if (originatorFlag == "X" && responsibleFlag == " " && status == airbus.mes.disruptions.Formatter.status.acknowledged)
 			return false;
 		
-		else if (status == airbus.mes.disruptions.Formatter.status.pending && responsibleFlag == "X" && originatorFlag == "")
+		else if (status == airbus.mes.disruptions.Formatter.status.pending && responsibleFlag == "X" && originatorFlag == " ")
 			return false;
 		
 		else if (status == airbus.mes.disruptions.Formatter.status.deleted || status == airbus.mes.disruptions.Formatter.status.closed) {

@@ -270,7 +270,7 @@ sap.ui
 									},
 									{
 										"attribute" : "SFC_BO",
-										"value" : sap.ui
+										"value" : "SFCBO:"+airbus.mes.settings.ModelManager.site+","+sap.ui
 												.getCore()
 												.getModel(
 														"operationDetailModel")
@@ -342,7 +342,7 @@ sap.ui
 									},
 									{
 										"attribute" : "WORK_CENTER",
-										"value" : airbus.mes.settings.ModelManager.station
+										"value" : "WorkCenterBO:"+airbus.mes.settings.ModelManager.site+","+airbus.mes.settings.ModelManager.station
 									},
 									{
 										"attribute" : "MATERIALS",
@@ -353,6 +353,8 @@ sap.ui
 										"value" : jigtools
 									}
 									]
+
+
 
 						}
 						aModelData.push(oJson);
@@ -429,12 +431,14 @@ sap.ui
 								+ " " + oView.byId("expectedTime").getValue()
 						var sComment = oView.byId("comment").getValue()
 						var iGravity = oView.byId("gravity").getSelectedKey()
-
+						var dPromisedTime = oView.byId("promisedDate")
+						.getValue()
+						+ " " + oView.byId("promisedTime").getValue()
 						// call update service
 						airbus.mes.disruptions.ModelManager.updateDisruption(
 								sMessageRef, sReason, sResponsibleGroup,
 								sRootCause, iTimeLost, dFixedByTime, sComment,
-								iGravity);
+								iGravity,dPromisedTime);
 
 					},
 
@@ -497,7 +501,7 @@ sap.ui
 							var resFlag = sap.ui.getCore().getModel(
 									"DisruptionDetailModel").getData().ResponsibleFlag;
 
-							if (origFlag == " " && resFlag == "X") {
+							if (origFlag != "X" && resFlag == "X") {
 								this.resolutionGroupSettings();
 							} else
 								this.originatorGroupSettings();

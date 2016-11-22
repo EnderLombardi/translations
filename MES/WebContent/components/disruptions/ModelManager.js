@@ -336,7 +336,7 @@ airbus.mes.disruptions.ModelManager = {
 	},
 
 	updateDisruption : function(sMessageRef, sReason, sResponsibleGroup,
-			sRootCause, iTimeLost, dFixedByTime, sComment, iGravity) {
+			sRootCause, iTimeLost, dFixedByTime, sComment, iGravity,dPromisedDate) {
 
 		jQuery
 				.ajax({
@@ -356,7 +356,9 @@ airbus.mes.disruptions.ModelManager = {
 						"Param.9" : iGravity,
 						"Param.10": sap.ui.getCore().getModel(
 						"userSettingModel").getProperty(
-						"/Rowsets/Rowset/0/Row/0/user")
+						"/Rowsets/Rowset/0/Row/0/user"),
+						"Param.11": dPromisedDate
+						
 					},
 					success : function(data, textStatus, jqXHR) {
 
@@ -441,7 +443,8 @@ airbus.mes.disruptions.ModelManager = {
 				.ajax({
 					url : this.getUrlOnEscalate(),
 					data : {
-						"Param.1" : msgRef
+						"Param.1" : airbus.mes.settings.ModelManager.site,
+						"Param.2" : msgRef
 					},
 					async : false,
 					error : function(xhr, status, error) {
