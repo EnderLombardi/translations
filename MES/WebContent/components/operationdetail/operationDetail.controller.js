@@ -38,7 +38,7 @@ sap.ui
 						toggleButton2.setVisible(!toggleButton2.getVisible());
 
 						this.getView().byId("operationDetailPanel")
-								.setExpanded();
+								.setExpanded(!toggleButton.getVisible());
 					},
 
 					/*onCloseOperationDetailPopup : function() {
