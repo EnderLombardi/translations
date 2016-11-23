@@ -22,6 +22,56 @@ TABLE
     }
 }
 
+/********************
+WORK LIST POP OVER
+*********************/
+.classWorklistPopover {
+	.fa {
+	    position: relative;
+	    z-index: 1;
+	    line-height: 20px;
+		height:20px;
+	   	color: $white-two;
+	    overflow: hidden;
+	    &.rightIcon {
+	    	padding-left: 6px;
+		    padding-right: 6px;
+		    float: right;
+		    &.petrol {
+		    	color:$petrol-94;
+		    }
+		}
+		&.oswIcon2 {
+		    position: relative;
+		    z-index: 1;
+		    line-height: 20px;
+		    height: auto;
+		    padding-left: 5px;
+		    padding-right: 5px;
+		    border-radius: 10px;
+		    float: right;
+		    top: 0px;
+		    margin-left: 0px;
+		    margin-right: 0px;
+		    color: $petrol-94;
+		    overflow: hidden;
+		    background-color: $dandelion;
+		    & b {
+		    	font-family: arial;
+		    }
+		}
+	}
+	.sapMPIText3 {
+	    position: absolute;
+	    display: block;
+	    right: 0px;
+	    height: 20px;
+	    margin-right: 6px;
+	    top: 50%;
+	    margin-top: calc(-20px/2);
+	    width: auto;
+	}	
+}
 
 
 /********************
