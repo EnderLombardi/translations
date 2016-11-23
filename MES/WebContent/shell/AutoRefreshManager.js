@@ -48,7 +48,7 @@ airbus.mes.shell.AutoRefreshManager =  {
 			this.refreshAPI = airbus.mes.disruptiontracker.ModelManager.loadDisruptionTrackerModelr;
 			this.refreshInterval = parseInt(
 				airbus.mes.settings.AppConfManager.getConfiguration(		// Get interval time from configuration
-					"REFRESH_DISRUPTION_TRACKER_"+station,		// Primary Key
+					"REFRESH_DISRUPTION_TRACKER_"+station,	// Primary Key
 					this.defaultKey							// Default Key
 				)
 			)*60000;
@@ -76,6 +76,21 @@ airbus.mes.shell.AutoRefreshManager =  {
 		
 		
 		
+		
+		window.setInterval(this.autoRefreshAPI, this.refreshInterval);
+		
+		
+		
+		
+		window.setInterval(this.autoRefreshAPI, this.refreshInterval);
+		
+		
+		
+	},
+	
+	autoRefreshAPI: function(){
+		
+		this.autoRefreshAPI();
 	},
 	
 	
@@ -83,9 +98,8 @@ airbus.mes.shell.AutoRefreshManager =  {
 		clearInterval(this.autoRefresh)
 	},
 	
+
 	pauseRefresh:function(){
-		
+		this.clearInterval();
 	}
-	
-	
 }
