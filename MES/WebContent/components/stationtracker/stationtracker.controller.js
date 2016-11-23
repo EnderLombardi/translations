@@ -352,7 +352,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 //			We write All instead of concatenantion of production group
 			sProdGroup += airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("StatusAll");
 			
-			airbus.mes.settings.ModelManager.prodGroup ="%";
+			airbus.mes.stationtracker.ModelManager.settings.prodGroup ="%";
 			
 		} else {
 			sap.ui.getCore().byId("productionGroupPopover--myList").getSelectedItems().forEach(function(el){
@@ -361,7 +361,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 				sProdGroupMii += el.mProperties.title + "','";
 			}); 
 			sProdGroup = sProdGroup.slice(0,-1);
-			airbus.mes.settings.ModelManager.prodGroup = sProdGroupMii.slice(0,-3);
+			airbus.mes.stationtracker.ModelManager.settings.prodGroup = sProdGroupMii.slice(0,-3);
 				
 		}
 		

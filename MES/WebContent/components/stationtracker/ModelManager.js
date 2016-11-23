@@ -120,7 +120,7 @@ airbus.mes.stationtracker.ModelManager = {
               
        loadAffectation : function() {
 
-              var oData = airbus.mes.settings.ModelManager;
+              var oData = airbus.mes.stationtracker.ModelManager.settings;
               var geturlAffectation = this.urlModel.getProperty('urlaffectation');
 
               geturlAffectation = airbus.mes.stationtracker.ModelManager.replaceURI(geturlAffectation, "$site", oData.site);
@@ -150,7 +150,7 @@ airbus.mes.stationtracker.ModelManager = {
 
        loadStationTracker : function(sType) {
 
-              var oData = airbus.mes.settings.ModelManager;
+              var oData = airbus.mes.stationtracker.ModelManager.settings;
               this.operationType = sType;
 
               var geturlstationtracker = this.urlModel.getProperty('urlstationtrackeroperation');
@@ -158,7 +158,7 @@ airbus.mes.stationtracker.ModelManager = {
               geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$station", oData.station);
               geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$msn", oData.msn);
               geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$operationType", sType);
-              geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$productionGroup", airbus.mes.settings.ModelManager.prodGroup);
+              geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$productionGroup", oData.prodGroup);
               geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$user", airbus.mes.stationtracker.AssignmentManager.userSelected);
               console.log(geturlstationtracker);
               var oViewModel;
@@ -275,7 +275,7 @@ airbus.mes.stationtracker.ModelManager = {
        },
        loadRessourcePool : function() {
 
-          var oData = airbus.mes.settings.ModelManager;
+          var oData = airbus.mes.stationtracker.ModelManager.settings;
           var oViewModel = sap.ui.getCore().getModel("ressourcePoolModel");
           var geturlressourcepool = this.urlModel.getProperty("urlressourcepool");
               
@@ -305,7 +305,7 @@ airbus.mes.stationtracker.ModelManager = {
        },     
        loadProductionGroup : function() {
 
-              var oData = airbus.mes.settings.ModelManager;
+              var oData = airbus.mes.stationtracker.ModelManager.settings;
               var geturlstationtracker = this.urlModel.getProperty('urlproductiongroup');
 
               geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$station", oData.station );
@@ -404,7 +404,7 @@ airbus.mes.stationtracker.ModelManager = {
              
            var oViewModelshift = sap.ui.getCore().getModel("shiftsModel");
               var getUrlShifts = this.urlModel.getProperty("urlshifts");
-              var oData = airbus.mes.settings.ModelManager;
+              var oData = airbus.mes.stationtracker.ModelManager.settings;
               var reqResult = "";
               getUrlShifts = airbus.mes.stationtracker.ModelManager.replaceURI(getUrlShifts, "$site", oData.site );
               getUrlShifts = airbus.mes.stationtracker.ModelManager.replaceURI(getUrlShifts, "$station", oData.station );
@@ -438,22 +438,22 @@ airbus.mes.stationtracker.ModelManager = {
               var urlReschedulingService = this.urlModel.getProperty("urlReschedulingService");
               // Set input parameter for the service
               // TODO : the service is not yet defined
-              urlReschedulingService = airbus.mes.settings.ModelManager.replaceURI(urlSaveUserSetting, "$user",
-                           airbus.mes.settings.ModelManager.user);
+              urlReschedulingService = airbus.mes.stationtracker.ModelManager.settings.replaceURI(urlSaveUserSetting, "$user",
+                      airbus.mes.stationtracker.ModelManager.settings.user);
               return urlReschedulingService;
        },
        sendRescheduleRequest : function(oEvent) {
               jQuery.ajax({
                      url : airbus.mes.stationtracker.ModelManager.getUrlReschedulingService(),
                      error : function(xhr, status, error) {
-                           airbus.mes.settings.ModelManager.messageShow("Couldn't Save Changes");
+                         airbus.mes.stationtracker.ModelManager.settings.messageShow("Couldn't Save Changes");
                            that.navigate(oEvent);
                            // window.location.pathname =
                            // "/MES/WebContent/components/stationtracker/index.html";
                      },
                      success : function(result, status, xhr) {
                            // window.location.href = url;
-                           airbus.mes.settings.ModelManager.messageShow("Settings Saved Successfully");
+                         airbus.mes.stationtracker.ModelManager.settings.messageShow("Settings Saved Successfully");
                            that.navigate(oEvent);
                            // window.location.pathname =
                            // "/MES/WebContent/components/stationtracker/index.html";

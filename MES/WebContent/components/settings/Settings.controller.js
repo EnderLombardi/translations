@@ -503,10 +503,13 @@ sap.ui.controller("airbus.mes.settings.Settings",
 					airbus.mes.shell.oView.byId("labelMSN").setText(airbus.mes.shell.oView.getModel("ShellI18n").getProperty(
 					"MSN") + " " + airbus.mes.settings.ModelManager.msn);
 					
+//					Update settings on others components
+					if(airbus.mes.stationtracker !== undefined) {
+						airbus.mes.stationtracker.ModelManager.settings = airbus.mes.settings.ModelManager;
 					}
 					
-//					// Navigate to correct view
-//					that.navigate(oEvent);
+					
+					}
 				}
 			},			
 			/**
