@@ -661,7 +661,7 @@ airbus.mes.stationtracker.ModelManager = {
 // 	   	  Check if we are on operation grouping
 //    	  SD-PPC-ST-386
            if (airbus.mes.stationtracker.GroupingBoxingManager.box !== 'OPERATION_ID') {
-               return false;
+               return;
            }
 
            var aOperationHierachy = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy;
@@ -690,7 +690,7 @@ airbus.mes.stationtracker.ModelManager = {
           oModel.setData(aGroup);
           airbus.mes.stationtracker.ReschedulePopover.setModel(oModel, "RescheduleGroupModel");
 
-           airbus.mes.stationtracker.ReschedulePopover.open();           
+          airbus.mes.stationtracker.ReschedulePopover.open();           
            
        }
 };
