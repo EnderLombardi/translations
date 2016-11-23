@@ -10,7 +10,7 @@ airbus.mes.stationtracker.util.Formatter = {
 			}else if(bTrend == "false"){
 				return "sap-icon://down"
 			}else{
-				return "sap-icon://decline"
+				return "sap-icon://media-play"
 			}
 		},
 		
@@ -18,9 +18,9 @@ airbus.mes.stationtracker.util.Formatter = {
 			if(bTrend == "true"){
 				return "#84bd00"
 			}else  if(bTrend == "false"){
-				return "#ff0000"
+				return "#e4002b"
 			}else{
-				return "#ffe900"
+				return "#97999b"
 			}
 		},
 		
