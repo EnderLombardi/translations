@@ -137,7 +137,6 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 						}
 						
 						// Operation is active	
-						if ( paused === "false") {
 						
 				//------------------------------------------						
 				// condition design for worklist pop up
