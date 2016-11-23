@@ -223,8 +223,7 @@
 
 										<f:FormElement>
 											<f:label>
-												<Label class="detailLabels" text="{i18nModel>expected}"
-													visible="{path: 'operationDisruptionsModel>EscalationLevel', formatter: 'airbus.mes.disruptions.Formatter.setTimeBeforeNextEscVisibility'}">
+												<Label class="detailLabels" text="{i18nModel>expected}">
 													<layoutData>
 														<l:GridData span="L3 M3 S12" />
 													</layoutData>
@@ -259,8 +258,7 @@
 
 										<f:FormElement>
 											<f:label>
-												<Label class="detailLabels" text="{i18nModel>timeBeforeNextEsc}"
-													visible="{path: 'operationDisruptionsModel>EscalationLevel', formatter: 'airbus.mes.disruptions.Formatter.setTimeBeforeNextEscVisibility'}">
+												<Label class="detailLabels" text="{i18nModel>timeBeforeNextEsc}">
 													<layoutData>
 														<l:GridData span="L3 M3 S12" />
 													</layoutData>

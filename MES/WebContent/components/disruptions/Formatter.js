@@ -226,9 +226,7 @@ airbus.mes.disruptions.Formatter = {
 	
 	setTimeBeforeNextEscVisibility : function(escalationLevel) {
 		if(escalationLevel < 3)
-			return true;
-		
-		return false;
+			this.setText(airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("NotBlocked"));
 	},
 	
 	setSolutionVisibility : function(solution) {
