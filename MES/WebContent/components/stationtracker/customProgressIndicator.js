@@ -106,7 +106,6 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 		var rmastatus = c.getRmastatus();
 		var osw = c.getOsw();
 //		var S = c.getState();	not used
-		//var S = c.getState();
 		var W = c.getWidth();
 		var H = c.getHeight();
 		var sRightIcon = "";	
@@ -128,9 +127,8 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 				r.write('>');
 				r.write('<div');
 						r.addClass('sapMPIBar');
-											
+										
 						// condition design for worklist pop up
-						/************************************/
 						if ( rmastatus != "---" ){	//rma
 							sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon dandelion"></i>';
 						}
@@ -141,105 +139,104 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 						// Operation is active	
 						if ( paused === "false") {
 							//sStatus = "2";
-							r.addStyle('background-color','#84bd00');
+							
 							sRightIcon = '<i class="fa fa-play rightIcon"></i>';
 						}		
-							// Operation is not started
-						if ( paused === "---" ) {
+						// Operation is not started
+						if ( paused == "---" ) {
 							//sStatus = "1";
 							// Operation is pause	
 							if ( paused === "---" && progress != "0" ) {
 								//sStatus = "3";
-								r.addStyle('background-color','#84bd00');
+							
 								sRightIcon = '<i class="fa fa-pause rightIcon"></i>';
 							}	
-						}				
+						}
 						// Operation Completed
 						if ( Status === "C" ) {
 							//sStatus = "0";
 							r.addStyle('background-color','#0085ad');
-							if ( rmastatus != "---" ){	//rma
+							sRightIcon = '<i class="fa fa-check rightIcon"></i>';
+							
+							if ( rmastatus === 1 ){	//rma
 								sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon"></i>';
 							}
 							if (osw[0] === "3" ){ //OSW
-								sLeftIcon2 = '<i class="fa fa-refresh oswIcon teal-blue white"><b style="padding-left:1px">OSW</b></i>';
+								sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 teal-blue white"><b style="padding-left:1px">OSW</b></i>';
 							}
 						}
 						//Opened Blocking and Escalated disruption
-						
 						if ( Status === "D1") {
 							//sStatus = "4";
 							r.addStyle('background-color','#fbec00');
-							sRightIcon = '<i class="fa fa-stop rightIcon petrol" ></i>';
-							if ( rmastatus != "---" ){	//rma
+							sRightIcon = '<i class="fa fa-play rightIcon petrol" ></i>';
+							if ( rmastatus === 1 ){	//rma
 								sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon petrol"></i>';
 							}
 							if (osw[0] === "3" ){ //OSW
-								sLeftIcon2 = '<i class="fa fa-refresh oswIcon petrol-back dandelion"><b style="padding-left:1px">OSW</b></i>';
+								sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 petrol-back dandelion"><b style="padding-left:1px">OSW</b></i>';
 							}
 						}
 						//Opened Blocking disruption
 						if ( Status === "D2") {
 							//sStatus = "5";
 							r.addStyle('background-color','#fbec00');
-							if ( rmastatus != "---" ){	//rma
+							sRightIcon = '<i class="fa fa-stop rightIcon petrol" ></i>';
+							if ( rmastatus === 1 ){	//rma
 								sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon petrol"></i>';
 							}
 							if (osw[0] === "3" ){ //OSW
-								sLeftIcon2 = '<i class="fa fa-refresh oswIcon petrol-back dandelion"><b style="padding-left:1px">OSW</b></i>';
+								sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 petrol-back dandelion"><b style="padding-left:1px">OSW</b></i>';
 							}
 						}
 						//Solved Blocking and Escalated disruption
 						if ( Status === "D3") {
 							//sStatus = "6";
-							if ( rmastatus != "---" ){	//rma
+							sRightIcon = '<i class="fa fa-play rightIcon"></i>';
+							if ( rmastatus === 1 ){	//rma
 								sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon petrol"></i>';
 							}
 							if (osw[0] === "3" ){ //OSW
-								sLeftIcon2 = '<i class="fa fa-refresh oswIcon petrol-back dandelion"><b style="padding-left:1px">OSW</b></i>';
+								sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 petrol-back dandelion"><b style="padding-left:1px">OSW</b></i>';
 							}
 						}
 						//Solved Blocking disruption
 						if ( Status === "D4") {
 							//sStatus = "7";
-							if ( rmastatus != "---" ){	//rma
+							sRightIcon = '<i class="fa fa-play rightIcon petrol"></i>';
+							if ( rmastatus === 1 ){	//rma
 								sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon petrol"></i>';
 							}
 							if (osw[0] === "3" ){ //OSW
-								sLeftIcon2 = '<i class="fa fa-refresh oswIcon petrol-back dandelion"><b style="padding-left:1px">OSW</b></i>';
+								sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 petrol-back dandelion"><b style="padding-left:1px">OSW</b></i>';
 							}
 						}
 						//andon
 						if ( Status === "B") {
 							//sStatus = "99";
 							r.addStyle('background-color','#e4002b');
-							if ( rmastatus != "---" ){	//rma
+							sRightIcon = '<i class="fa fa-stop rightIcon"></i>';
+							if ( rmastatus === 1 ){	//rma
 								sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon"></i>';
 							}
 							if (osw[0] === "3" ){ //OSW
-								sLeftIcon2 = '<i class="fa fa-refresh oswIcon cherry-red white"><b style="padding-left:1px">OSW</b></i>';
+								sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 cherry-red white"><b style="padding-left:1px">OSW</b></i>';
 							}
+						}
+						//rma
+						if ( rmastatus === 1 ){	
+							sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon dandelion"></i>';
+						}
+						//OSW
+						if (osw[0] === "3" ){ 
+							sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 dandelion-back "><b style="padding-left:1px">OSW</b></i>';
 						} else {
 							r.addClass('sapMPIBarGreen');
 							r.writeClasses();
 							r.writeAttribute('style', 'width:' + PercValue + '%');
-						}						
-						// Operation is from OSW
-//								if ( osw[0] === "3" ) {
-//									//fOSW = "1";
-//									//sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon"></i>';
-//									
-//								}
-//								//Maturity
-//								if ( rmastatus != "---" ) {
-//									//fRMA = "1";		
-//									//sLeftIcon2 = '<i class="fa fa-refresh oswIcon cherry-red white"><b style="padding-left:1px">OSW</b></i>';
-//									
-//								}
-											
-						
-						
-								
+							console.log(PercValue);
+						}	
+
 						r.write('>');
 				r.write('</div>');
 				r.write('<div');

@@ -36,8 +36,14 @@
 								<HBox>
 									<items>
 										<custom:customProgressIndicator
-											width="auto" state="sap.ui.core.ValueState.Success" status="{WorkListModel>STATE}"
-											isAndon="{WorkListModel>andons}"
+											width="auto" 
+											state="sap.ui.core.ValueState.Success" 
+											click="operationWorkListClick"
+											paused="{WorkListModel>PAUSED}"
+											progress="{WorkListModel>PROGRESS}"
+											rmastatus="{WorkListModel>RMA_STATUS_COLOR}"
+											osw="{WorkListModel>EXECUTION_STATION_SOURCE}"
+											status="{WorkListModel>STATE}"
 											displayValue="{ parts: [ 'WorkListModel>WORKORDER_ID','WorkListModel>WORKORDER_DESCRIPTION' ], formatter: 'airbus.mes.stationtracker.util.Formatter.titleWorklist'}"
 											displayValue2="{ parts: [ 'WorkListModel>OPERATION_ID','WorkListModel>OPERATION_DESCRIPTION','WorkListModel>PROGRESS','WorkListModel>DURATION' ], formatter: 'airbus.mes.stationtracker.util.Formatter.displayValueIM'}"
 											percentValue="{ parts: [ 'WorkListModel>PROGRESS','WorkListModel>DURATION' ], formatter: 'airbus.mes.stationtracker.util.Formatter.percentValue'}">

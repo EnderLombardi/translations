@@ -211,6 +211,7 @@ sap.ui
 							break;
 
 						case "ViewDisruptionView":
+							
 							/** Set buttons visibility ****/
 							airbus.mes.disruptions.oView.viewDisruption.oController.turnOnOffButtons();
 							

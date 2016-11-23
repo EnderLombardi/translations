@@ -31,7 +31,7 @@
 				</f:content>
 			</f:SimpleForm>
 
-			<List id="jigToolList" mode="MultiSelect" items="{MaterialListModel>/MaterialList}">
+			<List id="jigToolList" mode="MultiSelect" items="{JigtoolListModel>/JigtoolList}">
 				<items>
 					<CustomListItem class="customListItemPadding">
 						<l:Grid class="sapUiSmallMarginTop" defaultSpan="L12 M12 S12">
@@ -40,12 +40,11 @@
 									alignItems="Center">
 									<items>
 										<Title textAlign="Center" level="H3"
-											text="{MaterialListModel>Material}">
+											text="{JigtoolListModel>JigTool}">
 											<layoutData>
 												<l:GridData span="L6 M6 S12" />
 											</layoutData>
 										</Title>
-										<!-- <Text text="{MaterialListModel>MATNR}" visible="false"/> -->
 										<VBox width="20%">
 											<Label text="Quantity" />
 											<Input type="Number" width="80%" value="1" class="inputQty" />

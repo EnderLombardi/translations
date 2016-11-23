@@ -1,3 +1,5 @@
+"use strict";
+
 jQuery.sap.require("sap.ui.core.UIComponent");
 
 sap.ui.core.UIComponent.extend("airbus.mes.homepage.Component", {
@@ -38,6 +40,8 @@ airbus.mes.homepage.Component.prototype.createContent = function() {
 		
 		return this.oView;
 
+	} else {
+		return airbus.mes.homepage.oView;
 	}
 
 };
