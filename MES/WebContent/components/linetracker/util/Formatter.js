@@ -36,7 +36,7 @@ airbus.mes.linetracker.util.Formatter = {
 
 	parseInteger : function(value) {
 
-		return parseInt(value);
+		return parseInt(value,10);
 	},
 
 	imageFormatter : function(taktStatus) {
@@ -55,11 +55,11 @@ airbus.mes.linetracker.util.Formatter = {
 			return "red"
 	},
 
-	lineFormatter : function(lineNo, station_number) {
-		if (station_number == "5") {
-			if (parseInt(lineNo) === 1)
+	lineFormatter : function(lineNo, stationNumber) {
+		if (stationNumber == "5") {
+			if (parseInt(lineNo,10) === 1)
 				return "Station 5 Panels"
-			else if (parseInt(lineNo) === 2)
+			else if (parseInt(lineNo,10) === 2)
 				return "Station 5 Ribs"
 			else
 				return "Station 5 Spars"
@@ -88,10 +88,10 @@ airbus.mes.linetracker.util.Formatter = {
 			return "../components/linetracker/images/grey.png"
 	},
 	stationName : function(lineNo, station_number) {
-		if (parseInt(station_number) === 5) {
-			if (parseInt(lineNo) === 1)
+		if (parseInt(station_number,10) === 5) {
+			if (parseInt(lineNo,10) === 1)
 				return "5 Panels"
-			else if (parseInt(lineNo) === 2)
+			else if (parseInt(lineNo,10) === 2)
 				return "5 Ribs"
 			else
 				return "5 Spars"
@@ -137,8 +137,8 @@ airbus.mes.linetracker.util.Formatter = {
 //				|| airbus.mes.linetracker.util.RoleManager.isAllowed('MII_MOD1684_PLTMNG');
 //	},
 
-	appendStation : function(station_number) {
-		return airbus.mes.linetracker.util.ModelManager.i18nModel.getProperty("Station") + station_number
+	appendStation : function(stationNumber) {
+		return airbus.mes.linetracker.util.ModelManager.i18nModel.getProperty("Station") + stationNumber
 	},
 
 	showCusto : function() {
@@ -187,10 +187,9 @@ airbus.mes.linetracker.util.Formatter = {
 		}
 	},
 	
-	dateFormat : function(date){
-		var date = date.split("T");
-		return date[0]+" "+date[1];
+	dateFormat : function(sDate){
+		var aDate = sDate.split("T");
+		return aDate[0] + " " + aDate[1];
 	}
 	
-
 }

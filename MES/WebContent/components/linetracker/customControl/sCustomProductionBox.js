@@ -118,12 +118,12 @@ sap.ui.core.Control.extend("airbus.mes.linetracker.customControl.sCustomProducti
 		var s = t.getStv();
 		var o = t.getOpen();
 		var e = t.getEscalated();
-		var c = t.getContent();
+//		var c = t.getContent();
 		var up = t.getUnitPercentage();
 		var uh = t.getUnitHours();
 		var w = t.getWidth();
 		var os = t.getOpenStatus();
-		var es = t.getEscalatedStatus();
+//		var es = t.getEscalatedStatus();
 		
 		r.write("<div align='center'");
 		r.writeControlData(t);

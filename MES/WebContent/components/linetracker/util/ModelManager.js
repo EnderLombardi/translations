@@ -2,9 +2,9 @@
 /* refresh object */
 var oRefresh;
 var oRefreshDiaporama;
-var Takt_start_date; // variable for takt start marker on order worklist
-var aContent = {};// we cache the content in this object
-var bClearData = false;// var to prevent clearing on gantt data for first time.
+//var Takt_start_date; // variable for takt start marker on order worklist
+//var aContent = {};// we cache the content in this object
+//var bClearData = false;// var to prevent clearing on gantt data for first time.
 // gantt data needs to be cleared for refresh.
 // refer:StationView.cotroller.js lockStation function
 /* Initializing Gannt Objects for 'order worklist' and 'Operation worklist' */
@@ -273,9 +273,9 @@ airbus.mes.linetracker.util.ModelManager = {
 
 	// ************************************Launch/StopDiaporama**************************************
 	screendiaporama : function() {
-		var station = this.station_number;
-		var line = this.line_number;
-		var screen;
+//		var station = this.station_number;
+//		var line = this.line_number;
+//		var screen;
 		var aStation = [];
 		var oViewModel = sap.ui.getCore().getModel("FactoryModel").oData.Rowsets.Rowset[0].Row;
 
@@ -366,6 +366,8 @@ airbus.mes.linetracker.util.ModelManager = {
 //			this.indexrow++;
 //
 //			break;
+			default:
+				break;
 		}
 
 	},
@@ -492,7 +494,7 @@ airbus.mes.linetracker.util.ModelManager = {
 			async : 'false',
 			data : {
 				"Param.1" : this.factory_name,
-				"Param.2" : parseInt(this.line_number),
+				"Param.2" : parseInt(this.line_number,10),
 				"Param.3" : this.Load_Unload,
 				"Param.4" : hand_loaded,
 				"Param.5" : msn_loaded,
@@ -522,10 +524,9 @@ airbus.mes.linetracker.util.ModelManager = {
 			airbus.mes.linetracker.util.ModelManager.addMessages(data.Rowsets.FatalError,
 					sap.ui.core.MessageType.Error);
 
-		}
+		} else if (data.Rowsets.Messages != undefined) {
 		// Need to implement Server message
 		// else if(data.Rowsets.Message_Type ){
-		else if (data.Rowsets.Messages != undefined) {
 			airbus.mes.linetracker.util.ModelManager.addMessages(data.Rowsets.Messages[0].Message,
 					sap.ui.core.MessageType.Success);
 		} else if (data.Rowsets.Rowset != undefined) {
@@ -560,7 +561,7 @@ airbus.mes.linetracker.util.ModelManager = {
 	},
 	
 	// *****************************************Pulse**************************************
-	pulse : function(line_number, station_number) {
+	pulse : function(lineNumber, stationNumber) {
 		sap.ui.core.BusyIndicator.show(0);
 		jQuery.ajax({
 			url : this.urlModel.getProperty('urlpulse'),
@@ -568,8 +569,8 @@ airbus.mes.linetracker.util.ModelManager = {
 			async : 'false',
 			data : {
 				"Param.1" : "F1",
-				"Param.2" : line_number,
-				"Param.3" : station_number,
+				"Param.2" : lineNumber,
+				"Param.3" : stationNumber,
 
 			},
 			success : function(data, textStatus, jqXHR) {
@@ -581,7 +582,7 @@ airbus.mes.linetracker.util.ModelManager = {
 		});
 
 	},
-	pulseLine : function(line_number) {
+	pulseLine : function(lineNumber) {
 		sap.ui.core.BusyIndicator.show(0);
 		jQuery.ajax({
 			url : this.urlModel.getProperty('urlpulseLine'),
@@ -589,7 +590,7 @@ airbus.mes.linetracker.util.ModelManager = {
 			async : 'false',
 			data : {
 				"Param.1" : this.factory_name,
-				"Param.2" : line_number,
+				"Param.2" : lineNumber,
 			},
 			success : function(data, textStatus, jqXHR) {
 
@@ -667,15 +668,15 @@ airbus.mes.linetracker.util.ModelManager = {
 			oLength = sap.ui.getCore().getModel("FactoryModel").oData.Rowsets.Rowset[0].Row.length;
 		}
 		var line = [ 1, 2, 3 ];
-		var ModelDataFactory = [];
+//		var ModelDataFactory = [];
 		var count = 0;
-		var outerJson;
+//		var outerJson;
 		var cModelDataLine = [];
 		while (count < line.length) {
 			var sModelDataLine = [];
 
 			for (var j = 0; j < oLength; j++) {
-				if (parseInt(oProperty[j].Line) == line[count] /*
+				if (parseInt(oProperty[j].Line,10) == line[count] /*
 																 * &&
 																 * parseInt(oProperty[j].Station)!==5
 																 */) {
@@ -740,7 +741,7 @@ airbus.mes.linetracker.util.ModelManager = {
 		}
 		var ModelData = [];
 		for (var j = 0; j < oLength; j++) {
-			if (parseInt(oProperty[j].Line) == airbus.mes.linetracker.util.ModelManager.line_number) {
+			if (parseInt(oProperty[j].Line,10) == airbus.mes.linetracker.util.ModelManager.line_number) {
 				ModelData.push(oProperty[j]);
 			}
 		}
@@ -753,13 +754,13 @@ airbus.mes.linetracker.util.ModelManager = {
 			} else if (ModelData[k]
 					&& ModelData[k].Station === airbus.mes.linetracker.util.ModelManager.StationList[i]) {
 				var total;
-				var onSchedule = Math.abs(parseInt(ModelData[k].Takt)
-						- parseInt(ModelData[k].Progress));
+				var onSchedule = Math.abs(parseInt(ModelData[k].Takt,10)
+						- parseInt(ModelData[k].Progress,10));
 
-				if (parseInt(ModelData[k].Progress) > parseInt(ModelData[k].Takt)) {
+				if (parseInt(ModelData[k].Progress,10) > parseInt(ModelData[k].Takt,10)) {
 					if (onSchedule > 100)
 						onSchedule = 100;
-					total = 100 - (parseInt(ModelData[k].Takt) + onSchedule)
+					total = 100 - (parseInt(ModelData[k].Takt,10) + onSchedule)
 					ModelData[k].Donut = [ {
 						"name" : "Certified work on time",
 						"value" : ModelData[k].Takt
@@ -782,7 +783,7 @@ airbus.mes.linetracker.util.ModelManager = {
 					} ];
 
 				} else {
-					total = 100 - (parseInt(ModelData[k].Progress) + onSchedule)
+					total = 100 - (parseInt(ModelData[k].Progress,10) + onSchedule)
 
 					ModelData[k].Donut = [ {
 						"name" : "Certified work on time",
@@ -880,23 +881,23 @@ airbus.mes.linetracker.util.ModelManager = {
 		var ModelData = [];
 
 		for (var j = 0; j < oLength; j++) {
-			if (parseInt(oProperty[j].Station) == airbus.mes.linetracker.util.ModelManager.station_number) {
+			if (parseInt(oProperty[j].Station,10) == airbus.mes.linetracker.util.ModelManager.station_number) {
 				ModelData.push(oProperty[j]);
 			}
 		}
 		var StationModelData = [];
 		var k = 0;
 		for (var i = 1; i <= 3; i++) {
-			if (ModelData[k] && parseInt(ModelData[k].Line) === i) {
+			if (ModelData[k] && parseInt(ModelData[k].Line,10) === i) {
 
 				var total;
-				var onSchedule = Math.abs(parseInt(ModelData[k].Takt)
-						- parseInt(ModelData[k].Progress));
+				var onSchedule = Math.abs(parseInt(ModelData[k].Takt,10)
+						- parseInt(ModelData[k].Progress,10));
 
-				if (parseInt(ModelData[k].Progress) > parseInt(ModelData[k].Takt)) {
+				if (parseInt(ModelData[k].Progress,10) > parseInt(ModelData[k].Takt,10)) {
 					if (onSchedule > 100)
 						onSchedule = 100;
-					total = 100 - (parseInt(ModelData[k].Takt) + onSchedule)
+					total = 100 - (parseInt(ModelData[k].Takt,10) + onSchedule)
 					ModelData[k].Donut = [ {
 						"name" : "Certified work on time",
 						"value" : ModelData[k].Takt
@@ -919,7 +920,7 @@ airbus.mes.linetracker.util.ModelManager = {
 					} ];
 
 				} else {
-					total = 100 - (parseInt(ModelData[k].Progress) + onSchedule)
+					total = 100 - (parseInt(ModelData[k].Progress,10) + onSchedule)
 
 					ModelData[k].Donut = [ {
 						"name" : "Certified work on time",
@@ -1074,8 +1075,8 @@ airbus.mes.linetracker.util.ModelManager = {
 
 		var oFactoryHBox = sap.ui.getCore().byId("idFactoryView").byId(
 				"factoryHBox");
-		var oLineVBox = sap.ui.getCore().byId("idFactoryView").byId(
-				"idFactoryView--VboxLeft");
+//		var oLineVBox = sap.ui.getCore().byId("idFactoryView").byId(
+//				"idFactoryView--VboxLeft");
 		var oLineHBox1 = sap.ui.getCore().byId("idFactoryView").byId(
 				"idFactoryView--stationLine1");
 		var oLineHBox2 = sap.ui.getCore().byId("idFactoryView").byId(

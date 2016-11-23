@@ -5,7 +5,7 @@ jQuery.sap.declare("lib.Library");
 lib.Library = {
 
 	parseInteger : function(value) {
-		return parseInt(value);
+		return parseInt(value, 10);
 	},
 
 	json2xml : function(o, tab) {
@@ -280,10 +280,9 @@ lib.Library = {
 			ModelManager.addMessages(data.Rowsets.FatalError,
 					sap.ui.core.MessageType.Error);
 
-		}
+		} else if (data.Rowsets.Messages != undefined) {
 		// Need to implement Server message
 		// else if(data.Rowsets.Message_Type ){
-		else if (data.Rowsets.Messages != undefined) {
 			ModelManager.addMessages(data.Rowsets.Messages[0].Message,
 					sap.ui.core.MessageType.Success);
 		} else if (data.Rowsets.Rowset != undefined) {

@@ -1,3 +1,4 @@
+"use strict";
 sap.ui.jsfragment("airbus.mes.linetracker.Station5Load", {  
     createContent: function(oController) { 
     var sIDrow = "";
@@ -161,5 +162,6 @@ var oAffectation7 = new sap.ui.commons.CheckBox({
 	oDialog5
 			.setTitle('Choose the MSN to load on Station 5 '
 					+ oController.stype);
-return oDialog5;    }  
+		return oDialog5;    
+    }  
 });  

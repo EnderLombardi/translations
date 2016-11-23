@@ -1,3 +1,4 @@
+"use strict";
 sap.ui.jsfragment("airbus.mes.linetracker.popoverMenu", {
 	
 	createContent : function(oController) {

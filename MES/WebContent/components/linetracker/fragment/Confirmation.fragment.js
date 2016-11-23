@@ -1,3 +1,4 @@
+"use strict";
 sap.ui.jsfragment("airbus.mes.linetracker.Confirmation", {
 	createContent : function(oController) {
 
@@ -5,7 +6,7 @@ sap.ui.jsfragment("airbus.mes.linetracker.Confirmation", {
 
 		var username;
 		var password;
-		var percent;
+		var percentBox;
 		var oProgress;
 		// create confirm button
 		var oBtnCnf = new sap.m.Button({
@@ -56,7 +57,7 @@ sap.ui.jsfragment("airbus.mes.linetracker.Confirmation", {
 
 		});
 
-		percent_box = new sap.m.Label("percent_box", {});
+		percentBox = new sap.m.Label("percent_box", {});
 
 		var spanMsg = new sap.m.Label("spanMsg", {}).setVisible(false);
 
@@ -69,7 +70,7 @@ sap.ui.jsfragment("airbus.mes.linetracker.Confirmation", {
 			widths : [ "8%", "34%", "50%", "8%" ]
 		});
 
-		var oProgress = new airbus.customProgressIndicator("oProgress", {
+			oProgress = new airbus.customProgressIndicator("oProgress", {
 
 			layoutData : new sap.m.FlexItemData({
 				baseSize : "100%",
@@ -84,15 +85,15 @@ sap.ui.jsfragment("airbus.mes.linetracker.Confirmation", {
 		/* Different display values in aos and step change hence different binding here */ //+vaibhav
 		oProgress.bindProperty("displayValue", {
 			parts : [ "Order_ID","Order_Desc"],
-			formatter : function(Order_ID, Order_Desc) {
-				return Order_ID + " - " + Order_Desc;
+			formatter : function(OrderID, OrderDesc) {
+				return OrderID + " - " + OrderDesc;
 			}
 		});
 		
 		oProgress.bindProperty("displayValue2", {
 			parts : [ "Operation_ID","Operation_Desc","Progress"],
-			formatter : function(Operation_ID, Operation_Desc, Progress) {
-				return Operation_ID + " - " + Operation_Desc + " : " + Progress*100
+			formatter : function(OperationID, OperationDesc, Progress) {
+				return OperationID + " - " + OperationDesc + " : " + Progress*100
 						+ "%";
 			}
 		});
@@ -151,7 +152,7 @@ sap.ui.jsfragment("airbus.mes.linetracker.Confirmation", {
 		});
 
 		var oCellPercentBox = new sap.ui.commons.layout.MatrixLayoutCell({
-			content : [ percent_box ]
+			content : [ percentBox ]
 		});
 
 		oPopupLayout.createRow("", oCellProgress, "");
@@ -165,8 +166,8 @@ sap.ui.jsfragment("airbus.mes.linetracker.Confirmation", {
 		var title = new sap.m.Text({
 			text : {
 				parts : [ "Order_ID", "Order_Desc", "Operation_ID", "Operation_Desc", "Progress" ],
-				formatter : function(Order_ID, Order_Desc, Operation_ID, Operation_Desc, Progress) {
-					return Order_ID + " " + Order_Desc + "\n" + Operation_ID + " " + Operation_Desc
+				formatter : function(OrderID, OrderDesc, OperationID, OperationDesc, Progress) {
+					return OrderID + " " + OrderDesc + "\n" + OperationID + " " + OperationDesc
 							+ Progress
 				}
 			}

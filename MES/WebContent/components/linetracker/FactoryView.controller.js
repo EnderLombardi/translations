@@ -1,3 +1,4 @@
+"use strict";
 sap.ui.controller("airbus.mes.linetracker.FactoryView", {
 
 	/**
@@ -28,7 +29,7 @@ sap.ui.controller("airbus.mes.linetracker.FactoryView", {
 		airbus.mes.linetracker.util.ModelManager.station_number = oStation.getHeading().substring(8,10).trim();
 
 		// get Line for station clicked
-		airbus.mes.linetracker.util.ModelManager.line_number = parseInt(oStation.getLineNumber());
+		airbus.mes.linetracker.util.ModelManager.line_number = parseInt(oStation.getLineNumber(),10);
 		airbus.mes.linetracker.util.ModelManager.msn = oStation.getMsn();
 		airbus.mes.linetracker.util.ModelManager.hand = oStation.getHand();
 		oEventBus.publish("MainView", "onClickStation", null);
@@ -70,15 +71,13 @@ sap.ui.controller("airbus.mes.linetracker.FactoryView", {
 		airbus.mes.linetracker.util.ModelManager.line_number =  evt.getSource().getParent().getItems()[0].getLineNumber();
 		switch (evt.getSource().getText()) {
 		  case "Load":
-			  if (evt.getSource().getParent().getItems()[0].getMsn()!="" )
-				{
+			  if (evt.getSource().getParent().getItems()[0].getMsn()!="" ) {
 				  evt.getSource().setText("Unload");
 				  evt.getSource().setIcon("sap-icon://down");
 				  evt.getSource().setTooltip("Unload " + this.stype);
 					airbus.mes.linetracker.util.ModelManager.messageShow("MSN already loaded");
 					
-				}
-				else {
+				} else {
 				airbus.mes.linetracker.util.ModelManager.Load_Unload = "Load";
 //				if (!this.openLoad) {
 					var openLoad = sap.ui.jsfragment("airbus.mes.linetracker.fragment.Station5Load", this);
@@ -87,18 +86,17 @@ sap.ui.controller("airbus.mes.linetracker.FactoryView", {
 				}
 			  break;
 		  case "Unload":
-			  if (evt.getSource().getParent().getItems()[0].getMsn()=="")
-				{
+			  if (evt.getSource().getParent().getItems()[0].getMsn()=="") {
 				  evt.getSource().setText("Load");
 				  evt.getSource().setIcon("sap-icon://up");
 				  evt.getSource().setTooltip("Load " + this.stype);
 				  airbus.mes.linetracker.util.ModelManager.messageShow("MSN already unloaded");
-				}
-				else {
-				airbus.mes.linetracker.util.ModelManager.Load_Unload = "Unload";
+				} else {
+					airbus.mes.linetracker.util.ModelManager.Load_Unload = "Unload";
 //				var msn=evt.getSource().getParent().getItems()[0].getMsn();
 //				var hand=evt.getSource().getParent().getItems()[0].getHand();
-				this.openDialogUnload();}
+					this.openDialogUnload();
+				}
 			  break;
 		}
 },
@@ -109,7 +107,7 @@ openDialogUnload : function() {
 						var HAND=this.SelectedStationBtnObj.getParent().getItems()[0].getHand();
 						//var LINE_NUMBER = this.SelectedStationBtnObj.getParent().getItems()[0].getLineNumber();
 						//Local Station 5 Model
-						var tModel = new sap.ui.model.json.JSONModel();	
+//						var tModel = new sap.ui.model.json.JSONModel();	
 						//Unloading pop up Elements
 						sap.ui.commons.MessageBox.confirm(
 								'Do you want to unload the ' + this.stype + ' from MSN ' + MSN + ' ' + HAND  + ' ?',
@@ -219,15 +217,13 @@ openDialogUnload : function() {
 					sap.ui.commons.MessageBox.Action.YES);
 			function fnCallbackMessageBox(bResult) {
 				if (bResult == "YES") {
-					if (value_station_l1 == "ne") 
-					 {
+					if (value_station_l1 == "ne") {
 						 airbus.mes.linetracker.util.ModelManager.pulseLine(line);
 					 }
 					 else {airbus.mes.linetracker.util.ModelManager.pulse(line,value_station_l1);};			}
 			};}
 		else {
-			if (value_station_l1 == "ne") 
-			 {
+			if (value_station_l1 == "ne") {
 				 airbus.mes.linetracker.util.ModelManager.pulseLine(line);
 			 }
 			 else {airbus.mes.linetracker.util.ModelManager.pulse(line,value_station_l1);};	
