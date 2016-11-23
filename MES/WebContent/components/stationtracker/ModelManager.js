@@ -27,6 +27,9 @@ airbus.mes.stationtracker.ModelManager = {
               core.setModel(new sap.ui.model.json.JSONModel(), "productionGroupModel"); // production Group model
               core.setModel(new sap.ui.model.json.JSONModel(), "ressourcePoolModel"); // Resource// poolModel
               core.setModel(new sap.ui.model.json.JSONModel(), "groupModel"); // Unplanned// Filter// Model
+              core.setModel(new sap.ui.model.json.JSONModel(), "KPIextraWork"); // KPI Extra Work
+              core.setModel(new sap.ui.model.json.JSONModel(), "KPItaktAdherence"); // KPI Takt Adherence
+
 
               core.getModel("stationTrackerRModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onStationTrackerLoad);
               core.getModel("stationTrackerIModel").attachRequestCompleted( airbus.mes.stationtracker.ModelManager.onStationTrackerLoad);
@@ -315,8 +318,55 @@ airbus.mes.stationtracker.ModelManager = {
               var oViewModel = sap.ui.getCore().getModel("KPI");
               oViewModel.loadData(this.urlModel.getProperty("urlKPI"), null, true);
               airbus.mes.stationtracker.ModelManager.KPI = oViewModel;
+              
+              this.loadKPIextraWork();
+              this.loadKPItaktAdherence();
 
        },
+       loadKPIextraWork : function(){
+    	 var oViewModel = sap.ui.getCore().getModel("KPIextraWork");
+    	 jQuery.ajax({
+ 		    type:'post',
+ 		    url: this.urlModel.getProperty("urlKPIextraWork"),
+ 		    contentType: 'application/json',
+ 			data: JSON.stringify({
+ 				"site": airbus.mes.settings.ModelManager.site,
+ 				"station": airbus.mes.settings.ModelManager.station,
+ 				"msn": airbus.mes.settings.ModelManager.msn
+ 				}),
+ 		    
+ 		    success: function(data){
+ 		    	oViewModel.setData(data);
+ 		    },
+ 		   
+ 		    error: function(error,  jQXHR){
+ 		    	console.log(error);
+ 		    	
+ 		    }
+ 		});
+       },
+       loadKPItaktAdherence : function(){
+      	 var oViewModel = sap.ui.getCore().getModel("KPItaktAdherence");
+      	 jQuery.ajax({
+   		    type:'post',
+   		    url: this.urlModel.getProperty("urlKPItaktAdherence"),
+   		    contentType: 'application/json',
+   			data: JSON.stringify({
+   				"site": airbus.mes.settings.ModelManager.site,
+   				"currentStation": airbus.mes.settings.ModelManager.station,
+   				"msn": airbus.mes.settings.ModelManager.msn
+   				}),
+   		    
+   		    success: function(data){
+   		    	oViewModel.setData(data);
+   		    },
+   		   
+   		    error: function(error,  jQXHR){
+   		    	console.log(error);
+   		    	
+   		    }
+   		});
+         },
 
        /**
        * Used to update data of shift combobox regarding the day of the gantt

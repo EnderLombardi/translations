@@ -264,11 +264,11 @@
 								width="100%" class="whiteTextHeader sapUiSmallMarginTopBottom " />
 							<Label text="{StationTrackerI18n>Operations}" width="100%"
 								class="whiteText kpiName" />
-							<Label text="{KPI>/Rowsets/Rowset/0/Row/ExtraWork/Ops}"
+							<Label text="{KPIextraWork>/operations}"
 								class="whiteText kpiValue" design="Bold" />
 							<Label text="{StationTrackerI18n>Hrs}" width="100%"
 								class="whiteText kpiName" />
-							<Label text="{KPI>/Rowsets/Rowset/0/Row/ExtraWork/Hrs}"
+							<Label text="{KPIextraWork>/hours}"
 								class="whiteText kpiValue" design="Bold" />
 						</VBox>
 

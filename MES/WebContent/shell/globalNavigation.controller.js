@@ -242,6 +242,7 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
     	oModule.loadProductionGroup();
     	oModule.loadFilterUnplanned();
     	oModule.loadKPI();
+//    	oModule.loadKPIextraWork();
 	},
 	
 	
