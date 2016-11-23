@@ -465,16 +465,20 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	onUnplannedImport : function() {
 
 		var oList = sap.ui.getCore().byId("worklistPopover--myList"); 
-		var aPath = oList.getSelectedContextPaths();
-		var aSFC_Step = [];
-		
-		aPath.forEach(function(el) {
-		
-			aSFC_Step.push(airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").getProperty(el).SFC_STEP_REF);
+		if(oList != undefined){
+			var aPath = oList.getSelectedContextPaths();
+			var aSFC_Step = [];
+			aPath.forEach(function(el) {
 			
-		});
-		
-		airbus.mes.stationtracker.ModelManager.setOSW(aSFC_Step);
+				aSFC_Step.push(airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").getProperty(el).SFC_STEP_REF);
+				
+			});
+			
+			airbus.mes.stationtracker.ModelManager.setOSW(aSFC_Step);
+		}else{
+			
+			sap.m.MessageToast.show(airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("NoOSWData"));
+		}
 		
 	},
 	
