@@ -11,7 +11,11 @@ airbus.mes.stationtracker.ModelManager = {
 
        firstTime : undefined,
        
+//     parameters from the settings component
+       settings : undefined,
+       
        init : function(core) {
+
 
               core.setModel(new sap.ui.model.json.JSONModel(), "operationDetailModel");// Model having operation detail
               core.setModel(new sap.ui.model.json.JSONModel(), "WorkListModel");
@@ -31,46 +35,48 @@ airbus.mes.stationtracker.ModelManager = {
               core.setModel(new sap.ui.model.json.JSONModel(), "KPItaktAdherence"); // KPI Takt Adherence
 
 
-              core.getModel("stationTrackerRModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onStationTrackerLoad);
-              core.getModel("stationTrackerIModel").attachRequestCompleted( airbus.mes.stationtracker.ModelManager.onStationTrackerLoad);
-              core.getModel("shiftsModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onShiftsLoad);
-              core.getModel("affectationModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onAffectationLoad);
-              core.getModel("unPlannedModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onUnPlannedLoad);
-              core.getModel("OSWModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onOWSLoad);
-              core.getModel("ressourcePoolModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onRessourcePoolLoad);
+           this.settings = airbus.mes.settings.ModelManager;
 
-              var dest;
+           core.getModel("stationTrackerRModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onStationTrackerLoad);
+           core.getModel("stationTrackerIModel").attachRequestCompleted( airbus.mes.stationtracker.ModelManager.onStationTrackerLoad);
+           core.getModel("shiftsModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onShiftsLoad);
+           core.getModel("affectationModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onAffectationLoad);
+           core.getModel("unPlannedModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onUnPlannedLoad);
+           core.getModel("OSWModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onOWSLoad);
+           core.getModel("ressourcePoolModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onRessourcePoolLoad);
 
-              switch (window.location.hostname) {
-              case "localhost":
-                     dest = "sopra";
-                     break;
-              default:
-                     dest = "airbus";
-                     break;
-              }
+           var dest;
 
-              if (this.queryParams.get("url_config")) {
-                     dest = this.queryParams.get("url_config");
-              }
+           switch (window.location.hostname) {
+           case "localhost":
+               dest = "sopra";
+               break;
+           default:
+               dest = "airbus";
+           break;
+           }
 
-              this.urlModel = new sap.ui.model.resource.ResourceModel({
-                     bundleUrl : "../components/stationtracker/config/url_config.properties",
-                     bundleLocale : dest
-              });
+           if (this.queryParams.get("url_config")) {
+               dest = this.queryParams.get("url_config");
+           }
+
+           this.urlModel = new sap.ui.model.resource.ResourceModel({
+               bundleUrl : "../components/stationtracker/config/url_config.properties",
+               bundleLocale : dest
+           });
               
-              if (  dest === "sopra" ) {
+           if (  dest === "sopra" ) {
 
-                  var oModel = this.urlModel._oResourceBundle.aPropertyFiles[0].mProperties;
+               var oModel = this.urlModel._oResourceBundle.aPropertyFiles[0].mProperties;
 
-                  for (var prop in oModel) {
-                      if (oModel[prop].slice(-5) != ".json" ) {
-                          oModel[prop] += "&j_user=" + Cookies.getJSON("login").user + "&j_password="  + Cookies.getJSON("login").mdp; 
-                      }
+               for (var prop in oModel) {
+                  if (oModel[prop].slice(-5) != ".json" ) {
+                      oModel[prop] += "&j_user=" + Cookies.getJSON("login").user + "&j_password="  + Cookies.getJSON("login").mdp; 
                   }
               }
+          }
 
-              this.loadFilterUnplanned();
+           this.loadFilterUnplanned();
 
        
        },
@@ -118,7 +124,7 @@ airbus.mes.stationtracker.ModelManager = {
               
        loadAffectation : function() {
 
-              var oData = airbus.mes.settings.ModelManager;
+              var oData = airbus.mes.stationtracker.ModelManager.settings;
               var geturlAffectation = this.urlModel.getProperty('urlaffectation');
 
               geturlAffectation = airbus.mes.stationtracker.ModelManager.replaceURI(geturlAffectation, "$site", oData.site);
@@ -148,7 +154,7 @@ airbus.mes.stationtracker.ModelManager = {
 
        loadStationTracker : function(sType) {
 
-              var oData = airbus.mes.settings.ModelManager;
+              var oData = airbus.mes.stationtracker.ModelManager.settings;
               this.operationType = sType;
 
               var geturlstationtracker = this.urlModel.getProperty('urlstationtrackeroperation');
@@ -156,7 +162,7 @@ airbus.mes.stationtracker.ModelManager = {
               geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$station", oData.station);
               geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$msn", oData.msn);
               geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$operationType", sType);
-              geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$productionGroup", airbus.mes.settings.ModelManager.prodGroup);
+              geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$productionGroup", oData.prodGroup);
               geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$user", airbus.mes.stationtracker.AssignmentManager.userSelected);
               console.log(geturlstationtracker);
               var oViewModel;
@@ -273,7 +279,7 @@ airbus.mes.stationtracker.ModelManager = {
        },
        loadRessourcePool : function() {
 
-          var oData = airbus.mes.settings.ModelManager;
+          var oData = airbus.mes.stationtracker.ModelManager.settings;
           var oViewModel = sap.ui.getCore().getModel("ressourcePoolModel");
           var geturlressourcepool = this.urlModel.getProperty("urlressourcepool");
               
@@ -303,7 +309,7 @@ airbus.mes.stationtracker.ModelManager = {
        },     
        loadProductionGroup : function() {
 
-              var oData = airbus.mes.settings.ModelManager;
+              var oData = airbus.mes.stationtracker.ModelManager.settings;
               var geturlstationtracker = this.urlModel.getProperty('urlproductiongroup');
 
               geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$station", oData.station );
@@ -449,7 +455,7 @@ airbus.mes.stationtracker.ModelManager = {
              
            var oViewModelshift = sap.ui.getCore().getModel("shiftsModel");
               var getUrlShifts = this.urlModel.getProperty("urlshifts");
-              var oData = airbus.mes.settings.ModelManager;
+              var oData = airbus.mes.stationtracker.ModelManager.settings;
               var reqResult = "";
               getUrlShifts = airbus.mes.stationtracker.ModelManager.replaceURI(getUrlShifts, "$site", oData.site );
               getUrlShifts = airbus.mes.stationtracker.ModelManager.replaceURI(getUrlShifts, "$station", oData.station );
@@ -483,22 +489,22 @@ airbus.mes.stationtracker.ModelManager = {
               var urlReschedulingService = this.urlModel.getProperty("urlReschedulingService");
               // Set input parameter for the service
               // TODO : the service is not yet defined
-              urlReschedulingService = airbus.mes.settings.ModelManager.replaceURI(urlSaveUserSetting, "$user",
-                           airbus.mes.settings.ModelManager.user);
+              urlReschedulingService = airbus.mes.stationtracker.ModelManager.settings.replaceURI(urlSaveUserSetting, "$user",
+                      airbus.mes.stationtracker.ModelManager.settings.user);
               return urlReschedulingService;
        },
        sendRescheduleRequest : function(oEvent) {
               jQuery.ajax({
                      url : airbus.mes.stationtracker.ModelManager.getUrlReschedulingService(),
                      error : function(xhr, status, error) {
-                           airbus.mes.settings.ModelManager.messageShow("Couldn't Save Changes");
+                         airbus.mes.stationtracker.ModelManager.settings.messageShow("Couldn't Save Changes");
                            that.navigate(oEvent);
                            // window.location.pathname =
                            // "/MES/WebContent/components/stationtracker/index.html";
                      },
                      success : function(result, status, xhr) {
                            // window.location.href = url;
-                           airbus.mes.settings.ModelManager.messageShow("Settings Saved Successfully");
+                         airbus.mes.stationtracker.ModelManager.settings.messageShow("Settings Saved Successfully");
                            that.navigate(oEvent);
                            // window.location.pathname =
                            // "/MES/WebContent/components/stationtracker/index.html";
@@ -711,7 +717,7 @@ airbus.mes.stationtracker.ModelManager = {
 // 	   	  Check if we are on operation grouping
 //    	  SD-PPC-ST-386
            if (airbus.mes.stationtracker.GroupingBoxingManager.box !== 'OPERATION_ID') {
-               return false;
+               return;
            }
 
            var aOperationHierachy = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy;
@@ -740,7 +746,7 @@ airbus.mes.stationtracker.ModelManager = {
           oModel.setData(aGroup);
           airbus.mes.stationtracker.ReschedulePopover.setModel(oModel, "RescheduleGroupModel");
 
-           airbus.mes.stationtracker.ReschedulePopover.open();           
+          airbus.mes.stationtracker.ReschedulePopover.open();           
            
        }
 };

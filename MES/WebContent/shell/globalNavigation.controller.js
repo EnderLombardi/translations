@@ -211,7 +211,7 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 	},
 	
 	/**
-	 * RenderStation Tracker and reload all model/ shift are not reaload
+	 * RenderStation Tracker and reload all model reload shift and compute shift hierarchy.
 	 */
 	renderStationTracker: function(){
 		
@@ -219,13 +219,13 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 		var oModule = airbus.mes.stationtracker.ModelManager;
 		airbus.mes.shell.oView.getController().setInformationVisibility(true);
     
-		// synchrone call
+		//** synchrone call **//
 		oModule.loadShifts();
 		oModule.loadAffectation();
 		airbus.mes.stationtracker.ShiftManager.init(airbus.mes.stationtracker.GroupingBoxingManager.shiftNoBreakHierarchy);
 		airbus.mes.stationtracker.AssignmentManager.computeAffectationHierarchy();
 		
-		// asynchrone call
+		//** asynchrone call **//
 		this.loadStationTrackerGantKPI();
    	
 	},
@@ -234,7 +234,7 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 	loadStationTrackerGantKPI: function(){
 		var oModule = airbus.mes.stationtracker.ModelManager;
 		
-		// asynchrone call
+		//** asynchrone call **//
 		oModule.loadRessourcePool();
     	oModule.loadStationTracker("U");
    		oModule.loadStationTracker("O");

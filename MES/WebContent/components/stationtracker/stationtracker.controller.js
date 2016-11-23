@@ -61,6 +61,12 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		}
 
 	},
+	/***************************************************************************
+     * Open the production group Popover and display all the prodgroup selectable
+     * 
+     * @param {oEvent} Object wich represent the event on press from "ProductionButton"
+     * button
+     ****************************************************************************/
 	onProductionGroupPress : function(oEvent){
 		if ( airbus.mes.stationtracker.productionGroupPopover === undefined ) {
 			
@@ -95,6 +101,13 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			airbus.mes.stationtracker.productionGroupPopover.openBy(oButton);	
 		});		
 	},
+	/***************************************************************************
+     * Open the popover of Team it permit to go on team avaibility
+     * polyPoly ressource pool
+     * 
+     * @param {oEvent} Object wich represent the event on press from "TeamButton"
+     * button
+     ****************************************************************************/
 	onTeamPress : function(oEvent) {
 
 		var bindingContext = oEvent.getSource().getBindingContext();
@@ -107,26 +120,24 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		this._oPopover.openBy(oEvent.getSource());
 
 	},
-
+	/***************************************************************************
+     * Display the scheduler in view mode "Shift" only on shift is represented
+     * and the step of scheduler is set to 30min
+     * 
+     ****************************************************************************/
 	onShiftPress : function() {
-		
-	
+			
 		airbus.mes.stationtracker.ShiftManager.shiftDisplay = true;
 		airbus.mes.stationtracker.ShiftManager.dayDisplay = false;
 		
 		scheduler.matrix['timeline'].x_unit = 'minute';
 		scheduler.matrix['timeline'].x_step = 30;
-		//scheduler.matrix['timeline'].x_size = 18;
-		//scheduler.matrix['timeline'].x_length = 18;
-		//scheduler.matrix['timeline'].x_start = 0,
 		scheduler.matrix['timeline'].x_date = '%H:%i';
 		scheduler.templates.timeline_scale_date = function(date) {
 			var func = scheduler.date.date_to_str(scheduler.matrix['timeline'].x_date);
 			return func(date);
 		};
 		scheduler.config.preserve_length = true;
-		//scheduler.updateView(airbus.mes.stationtracker.ShiftManager.currentShiftStart);
-		/* Delete Selection box when shift */
 		for (var i = 0; i < $("select[class='selectBoxStation']").length; i++) {
 			$("select[class='selectBoxStation']").eq(i).remove();
 		}
@@ -139,25 +150,19 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		
 		airbus.mes.stationtracker.oView.byId("selectShift").setEnabled(false);
 		airbus.mes.stationtracker.oView.byId("selectShift").fireChange(0);
-		//scheduler.updateView();
 	},
-
+	/***************************************************************************
+      * Display the scheduler in view mode "Day" all shift of the day are represented
+     * and the step of scheduler is set to 60min
+     * 
+     ****************************************************************************/
 	onDayPress : function() {
-	
-//		scheduler.addMarkedTimespan({  
-//			start_date: airbus.mes.stationtracker.ShiftManager.ShiftSelectedStart,
-//			end_date: airbus.mes.stationtracker.ShiftManager.ShiftSelectedEnd,
-//		    css:   "shiftCss",
-//		});
 				
 		airbus.mes.stationtracker.ShiftManager.shiftDisplay = false;
 		airbus.mes.stationtracker.ShiftManager.dayDisplay = true;
 		
 		scheduler.matrix['timeline'].x_unit = 'minute';
 		scheduler.matrix['timeline'].x_step = 60;
-		//scheduler.matrix['timeline'].x_start = 0;
-		//scheduler.matrix['timeline'].x_size = 18;
-		//scheduler.matrix['timeline'].x_length = 18;
 		scheduler.matrix['timeline'].x_date = '%H:%i';
 		
 		scheduler.templates.timeline_scale_date = function(date) {
@@ -165,7 +170,6 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			return func(date);
 		};
 		scheduler.config.preserve_length = true;
-		//scheduler.updateView(airbus.mes.stationtracker.ShiftManager.currentShiftStart);
 		
 		// Need this to update selected view and dont brake the behaviour of overflowtoolbar not needed if use Toolbar
 		airbus.mes.stationtracker.oView.byId("buttonViewMode").rerender();
@@ -174,7 +178,11 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		airbus.mes.stationtracker.oView.byId("selectShift").setEnabled(true);
 		airbus.mes.stationtracker.ModelManager.selectMyShift();
 	},
-
+	/***************************************************************************
+     * On initial pressed it load the model of initial operation re-compute the
+     * hierarchy of operation and display in grey initial operation
+     * 
+     ****************************************************************************/
 	onInitialPlanPress : function() {
 		
 		airbus.mes.stationtracker.oView.byId("stationtracker").setBusy(true);
@@ -193,7 +201,11 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			
 		}
 	},
-
+	/***************************************************************************
+     * Display a border blue on operation in gantt wich has the attribute CPP_CLUSTER
+     * fullfil
+     *
+     ****************************************************************************/
 	onCPPress : function() {
 
 		if (airbus.mes.stationtracker.AssignmentManager.CpPress === false) {
@@ -237,8 +249,11 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		airbus.mes.shell.util.navFunctions.resourcePool();
 	},
 
-
-	onUnplannedPress : function(oEvent) {
+	/***************************************************************************
+     * Open fragment of unplanned activities
+     * 
+     ****************************************************************************/
+	onUnplannedPress : function() {
 		if ( airbus.mes.stationtracker.ImportOswUnplannedPopover === undefined ) {
 			
 			airbus.mes.stationtracker.ImportOswUnplannedPopover = sap.ui.xmlfragment("ImportOswUnplannedPopover","airbus.mes.stationtracker.ImportOswUnplannedPopover", airbus.mes.stationtracker.oView.getController());
@@ -277,8 +292,11 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 
 		});	
 	},
-	
-	onOSWPress : function(oEvent) {
+	/***************************************************************************
+     * Open fragment of OSW and open dialog.
+     * 
+     ****************************************************************************/
+	onOSWPress : function() {
 		
 		if ( airbus.mes.stationtracker.ImportOswUnplannedPopover === undefined ) {
 			
@@ -305,14 +323,18 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		airbus.mes.stationtracker.ImportOswUnplannedPopover.getModel("WorkListModel").refresh(true);
 
 		// delay because addDependent will do a async rerendering and the popover will immediately close without it
-		var oButton = oEvent.getSource();
 		jQuery.sap.delayedCall(0, this, function () {
 			airbus.mes.stationtracker.ImportOswUnplannedPopover.open();	
 
 		});		
 		
 	},
-	onProdGroupSelFinish : function(oEvent) {
+	/***************************************************************************
+     * Fire when the user close the popover of prodgroup
+     * It Reload all the operation filtered by mii regarding prodgroup send
+     * 
+     ****************************************************************************/
+	onProdGroupSelFinish : function() {
 		
 		// show loading on gantt
 		airbus.mes.stationtracker.oView.byId("stationtracker").setBusy(true);  
@@ -330,7 +352,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 //			We write All instead of concatenantion of production group
 			sProdGroup += airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("StatusAll");
 			
-			airbus.mes.settings.ModelManager.prodGroup ="%";
+			airbus.mes.stationtracker.ModelManager.settings.prodGroup ="%";
 			
 		} else {
 			sap.ui.getCore().byId("productionGroupPopover--myList").getSelectedItems().forEach(function(el){
@@ -339,19 +361,21 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 				sProdGroupMii += el.mProperties.title + "','";
 			}); 
 			sProdGroup = sProdGroup.slice(0,-1);
-			airbus.mes.settings.ModelManager.prodGroup = sProdGroupMii.slice(0,-3);
+			airbus.mes.stationtracker.ModelManager.settings.prodGroup = sProdGroupMii.slice(0,-3);
 				
 		}
-
 		
 		airbus.mes.stationtracker.oView.byId("ProductionButton").setText(sProdGroup);
-
 		airbus.mes.stationtracker.ModelManager.loadStationTracker("I");
 		airbus.mes.stationtracker.ModelManager.loadStationTracker("U");		
 		airbus.mes.stationtracker.ModelManager.loadStationTracker("O");		
 		airbus.mes.stationtracker.ModelManager.loadStationTracker("R");		
 	},
-	
+	/***************************************************************************
+     * Open the popover of Team it permit to go on team avaibility
+     * polyPoly ressource pool
+     * 
+     ****************************************************************************/
 	changeGroup : function() {
 
 		var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
@@ -364,7 +388,10 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		airbus.mes.stationtracker.oView.getController().changeShift();
 		
 	},
-
+	/***************************************************************************
+     * Re compute the operation hierarchy regarding the boxing value selected
+     * 
+     ****************************************************************************/
 	changeBox : function() {
 
 		var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
@@ -377,6 +404,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		airbus.mes.stationtracker.oView.getController().changeShift();
 		
 	},
+	
 	onReschedulePress : function(oEvent) {
 		
 		var oNavCon = sap.ui.getCore().byId("operationPopover--navOperatorContainer");
@@ -457,7 +485,11 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		airbus.mes.stationtracker.worklistPopover.close();
 		
 	},	
-
+	/***************************************************************************
+     * Fire when selected shift value in combobox it redisplay marker of shift 
+     * in the gantt
+     * 
+     ****************************************************************************/
 	changeShift : function() {
 			
 		var sPath = airbus.mes.stationtracker.oView.byId("selectShift").getSelectedIndex();
@@ -510,7 +542,13 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		
 		
 	},
-	
+	/***************************************************************************
+     * Re apply the sorter on the model of the worklist to group operation
+     * in worklist popup
+     *
+     * @param {oEvent} Object wich represent the event on press from "TeamButton"
+     * button
+     ****************************************************************************/
 	changeGroupWorkList : function(oEvent) {
 		// TOSEE if we can get ID by better way
 		sap.ui.getCore().byId("worklistPopover--myList").bindAggregation('items', {

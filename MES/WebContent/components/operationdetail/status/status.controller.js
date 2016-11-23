@@ -1,3 +1,5 @@
+"use strict";
+
 sap.ui
 		.controller(
 				"airbus.mes.operationdetail.status.status",
@@ -36,7 +38,7 @@ sap.ui
 								.attachPress(this.activateOperation);
 						sap.ui.getCore().byId(
 								"operationDetailPopup--btnComplete")
-								.attachPress(this.confirmOperation);
+								.attachPress(this.completeOperation);
 
 					},
 					/**
@@ -214,75 +216,68 @@ sap.ui
 
 						var oView = airbus.mes.operationdetail.status.oView;
 
-						switch (oEvent.getSource().getText()) {
+						// click on confirm
+						oView.getController().operationStatus = "C";
+						oView.getController().Mode = oView.getModel("i18n")
+								.getProperty("EarnedStandards")
 
-						case oView.getModel("i18n").getProperty("confirm"):
+						airbus.mes.operationdetail.ModelManager
+								.loadReasonCodeModel();
+						if (!oView._reasonCodeDialog) {
 
-							// click on confirm
-							oView.getController().operationStatus = "C";
-							oView.getController().Mode = oView.getModel("i18n")
-									.getProperty("EarnedStandards")
+							oView._reasonCodeDialog = sap.ui
+									.xmlfragment(
+											"airbus.mes.operationdetail.fragments.reasonCode",
+											oView.getController());
 
-							airbus.mes.operationdetail.ModelManager
-									.loadReasonCodeModel();
-							if (!oView._reasonCodeDialog) {
-
-								oView._reasonCodeDialog = sap.ui
-										.xmlfragment(
-												"airbus.mes.operationdetail.fragments.reasonCode",
-												oView.getController());
-
-								oView.addDependent(oView._reasonCodeDialog);
-							}
-							oView._reasonCodeDialog.open();
-
-							break;
-
-						case oView.getModel("i18n").getProperty("complete"):
-
-							// Click on Complete
-							oView.getController().operationStatus = "X";
-							oView.getController().Mode = airbus.mes.operationdetail.status.oView
-									.getModel("i18n").getProperty("complete")
-							if (!oView._oUserConfirmationDialog) {
-
-								oView._oUserConfirmationDialog = sap.ui
-										.xmlfragment(
-												"airbus.mes.operationdetail.fragments.userConfirmation",
-												oView.getController());
-
-								oView
-										.addDependent(oView._oUserConfirmationDialog);
-							}
-							//Display PIN Field in Confirmation PopUp
-							var flagForPIN = airbus.mes.settings.AppConfManager.getConfiguration("MES_BADGE_PIN");	
-							if(flagForPIN == true){	
-								sap.ui.getCore().byId("confirmPinLabel")
-								.setVisible(true);
-								sap.ui.getCore().byId("pinForConfirmation")
-								.setVisible(true);
-							}	
-
-							oView._oUserConfirmationDialog.open();
-							sap.ui.getCore().byId("msgstrpConfirm")
-									.setVisible(false);
-							sap.ui.getCore().byId("UIDForConfirmation")
-									.setValue("");
-							sap.ui.getCore().byId("badgeIDForConfirmation")
-									.setValue("");
-							sap.ui.getCore().byId("pinForConfirmation")
-									.setValue("");
-							sap.ui.getCore().byId("userNameForConfirmation")
-									.setValue("");
-							sap.ui.getCore().byId("passwordForConfirmation")
-									.setValue("");
-
-							break;
-
+							oView.addDependent(oView._reasonCodeDialog);
 						}
+						oView._reasonCodeDialog.open();
 
 					},
 
+					completeOperation : function(oEvent) {
+
+						var oView = airbus.mes.operationdetail.status.oView;
+
+						// Click on Complete
+						oView.getController().operationStatus = "X";
+						oView.getController().Mode = airbus.mes.operationdetail.status.oView
+								.getModel("i18n").getProperty("complete")
+						if (!oView._oUserConfirmationDialog) {
+
+							oView._oUserConfirmationDialog = sap.ui
+									.xmlfragment(
+											"airbus.mes.operationdetail.fragments.userConfirmation",
+											oView.getController());
+
+							oView
+									.addDependent(oView._oUserConfirmationDialog);
+						}
+						//Display PIN Field in Confirmation PopUp
+						var flagForPIN = airbus.mes.settings.AppConfManager.getConfiguration("MES_BADGE_PIN");	
+						if(flagForPIN == true){	
+							sap.ui.getCore().byId("confirmPinLabel")
+							.setVisible(true);
+							sap.ui.getCore().byId("pinForConfirmation")
+							.setVisible(true);
+						}	
+
+						oView._oUserConfirmationDialog.open();
+						sap.ui.getCore().byId("msgstrpConfirm")
+								.setVisible(false);
+						sap.ui.getCore().byId("UIDForConfirmation")
+								.setValue("");
+						sap.ui.getCore().byId("badgeIDForConfirmation")
+								.setValue("");
+						sap.ui.getCore().byId("pinForConfirmation")
+								.setValue("");
+						sap.ui.getCore().byId("userNameForConfirmation")
+								.setValue("");
+						sap.ui.getCore().byId("passwordForConfirmation")
+								.setValue("");
+
+					},
 
 					/***********************************************************
 					 * on click of go to Disruption button when status of
