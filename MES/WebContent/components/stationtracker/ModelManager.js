@@ -11,63 +11,68 @@ airbus.mes.stationtracker.ModelManager = {
 
        firstTime : undefined,
        
+//     parameters from the settings component
+       settings : undefined,
+       
        init : function(core) {
 
-              core.setModel(new sap.ui.model.json.JSONModel(), "operationDetailModel");// Model having operation detail
-              core.setModel(new sap.ui.model.json.JSONModel(), "WorkListModel");
-              core.setModel(new sap.ui.model.json.JSONModel(), "stationTrackerRModel"); // Station tracker model  // reschedule line
-              core.setModel(new sap.ui.model.json.JSONModel(), "stationTrackerIModel"); // Station tracker model// initial line
-              core.setModel(new sap.ui.model.json.JSONModel(), "shiftsModel"); // Shifts// model
-              core.setModel(new sap.ui.model.json.JSONModel(), "affectationModel");
-              core.setModel(new sap.ui.model.json.JSONModel(), "unPlannedModel"); // Unplanned// // model
-              core.setModel(new sap.ui.model.json.JSONModel(), "groupModel"); // Unplanned      // Filter// Model
-              core.setModel(new sap.ui.model.json.JSONModel(), "OSWModel"); // OutStanding// Work      // model
-              core.setModel(new sap.ui.model.json.JSONModel(), "stationTrackerShift"); // Shifts// for/ station// tracker
-              core.setModel(new sap.ui.model.json.JSONModel(), "KPI"); // KPI
-              core.setModel(new sap.ui.model.json.JSONModel(), "productionGroupModel"); // production Group model
-              core.setModel(new sap.ui.model.json.JSONModel(), "ressourcePoolModel"); // Resource// poolModel
-              core.setModel(new sap.ui.model.json.JSONModel(), "groupModel"); // Unplanned// Filter// Model
+           this.settings = airbus.mes.settings.ModelManager;
 
-              core.getModel("stationTrackerRModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onStationTrackerLoad);
-              core.getModel("stationTrackerIModel").attachRequestCompleted( airbus.mes.stationtracker.ModelManager.onStationTrackerLoad);
-              core.getModel("shiftsModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onShiftsLoad);
-              core.getModel("affectationModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onAffectationLoad);
-              core.getModel("unPlannedModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onUnPlannedLoad);
-              core.getModel("OSWModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onOWSLoad);
-              core.getModel("ressourcePoolModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onRessourcePoolLoad);
+           core.setModel(new sap.ui.model.json.JSONModel(), "operationDetailModel");// Model having operation detail
+           core.setModel(new sap.ui.model.json.JSONModel(), "WorkListModel");
+           core.setModel(new sap.ui.model.json.JSONModel(), "stationTrackerRModel"); // Station tracker model  // reschedule line
+           core.setModel(new sap.ui.model.json.JSONModel(), "stationTrackerIModel"); // Station tracker model// initial line
+           core.setModel(new sap.ui.model.json.JSONModel(), "shiftsModel"); // Shifts// model
+           core.setModel(new sap.ui.model.json.JSONModel(), "affectationModel");
+           core.setModel(new sap.ui.model.json.JSONModel(), "unPlannedModel"); // Unplanned// // model
+           core.setModel(new sap.ui.model.json.JSONModel(), "groupModel"); // Unplanned      // Filter// Model
+           core.setModel(new sap.ui.model.json.JSONModel(), "OSWModel"); // OutStanding// Work      // model
+           core.setModel(new sap.ui.model.json.JSONModel(), "stationTrackerShift"); // Shifts// for/ station// tracker
+           core.setModel(new sap.ui.model.json.JSONModel(), "KPI"); // KPI
+           core.setModel(new sap.ui.model.json.JSONModel(), "productionGroupModel"); // production Group model
+           core.setModel(new sap.ui.model.json.JSONModel(), "ressourcePoolModel"); // Resource// poolModel
+           core.setModel(new sap.ui.model.json.JSONModel(), "groupModel"); // Unplanned// Filter// Model
 
-              var dest;
+           core.getModel("stationTrackerRModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onStationTrackerLoad);
+           core.getModel("stationTrackerIModel").attachRequestCompleted( airbus.mes.stationtracker.ModelManager.onStationTrackerLoad);
+           core.getModel("shiftsModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onShiftsLoad);
+           core.getModel("affectationModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onAffectationLoad);
+           core.getModel("unPlannedModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onUnPlannedLoad);
+           core.getModel("OSWModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onOWSLoad);
+           core.getModel("ressourcePoolModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onRessourcePoolLoad);
 
-              switch (window.location.hostname) {
-              case "localhost":
-                     dest = "sopra";
-                     break;
-              default:
-                     dest = "airbus";
-                     break;
-              }
+           var dest;
 
-              if (this.queryParams.get("url_config")) {
-                     dest = this.queryParams.get("url_config");
-              }
+           switch (window.location.hostname) {
+           case "localhost":
+               dest = "sopra";
+               break;
+           default:
+               dest = "airbus";
+           break;
+           }
 
-              this.urlModel = new sap.ui.model.resource.ResourceModel({
-                     bundleUrl : "../components/stationtracker/config/url_config.properties",
-                     bundleLocale : dest
-              });
+           if (this.queryParams.get("url_config")) {
+               dest = this.queryParams.get("url_config");
+           }
+
+           this.urlModel = new sap.ui.model.resource.ResourceModel({
+               bundleUrl : "../components/stationtracker/config/url_config.properties",
+               bundleLocale : dest
+           });
               
-              if (  dest === "sopra" ) {
+           if (  dest === "sopra" ) {
 
-                  var oModel = this.urlModel._oResourceBundle.aPropertyFiles[0].mProperties;
+               var oModel = this.urlModel._oResourceBundle.aPropertyFiles[0].mProperties;
 
-                  for (var prop in oModel) {
-                      if (oModel[prop].slice(-5) != ".json" ) {
-                          oModel[prop] += "&j_user=" + Cookies.getJSON("login").user + "&j_password="  + Cookies.getJSON("login").mdp; 
-                      }
+               for (var prop in oModel) {
+                  if (oModel[prop].slice(-5) != ".json" ) {
+                      oModel[prop] += "&j_user=" + Cookies.getJSON("login").user + "&j_password="  + Cookies.getJSON("login").mdp; 
                   }
               }
+          }
 
-              this.loadFilterUnplanned();
+           this.loadFilterUnplanned();
 
        
        },
