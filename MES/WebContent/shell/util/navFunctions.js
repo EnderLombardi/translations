@@ -22,6 +22,8 @@ airbus.mes.shell.util.navFunctions = {
 		
 		polypoly: function(){
 			
+			var oPolypolyPage;
+			
 			if (airbus.mes.stationtracker === undefined){
 				
 				jQuery.sap.registerModulePath("airbus.mes.stationtracker", "../components/stationtracker");
@@ -45,7 +47,7 @@ airbus.mes.shell.util.navFunctions = {
 			airbus.mes.polypoly.PolypolyManager.globalContext.bEditable = !airbus.mes.stationtracker.AssignmentManager.polypolyAffectation;
 			
 			if(!nav.getPage("polypolyPage")){
-			var oPolypolyPage = new sap.m.Page({
+				oPolypolyPage = new sap.m.Page({
 				content: airbus.mes.polypoly.oView,
 				title : "POLYPOLY",
 				id:"polypolyPage",
@@ -54,24 +56,23 @@ airbus.mes.shell.util.navFunctions = {
 					design: 'SubHeader',
 					contentLeft: [
 					          new sap.m.Button({
-					        	  icon:"sap-icon://arrow-left",
-					        	  type:"Transparent",
-					        	  press: function(){nav.back()},
-					        	  text: "Back",
+									icon:"sap-icon://arrow-left",
+									type:"Transparent",
+									press: function(){nav.back()},
+									text: "Back",
 					          })
 					          ],
 					contentMiddle: [
 						          new sap.m.Label("polypolytitle", {
-						        	  text: "Polyvalence-Polycompetence Matrix"
+										text: "Polyvalence-Polycompetence Matrix"
 						          }).addStyleClass("pageWelcome sapUiTinyMarginBeginEnd")
 						          ]
 				}).addStyleClass("pageHeader contentNoPad"),
 			}).addStyleClass("classPolypolyPage");
 			
 			nav.addPage(oPolypolyPage);
-			}
-			else{
-				var oPolypolyPage = nav.getPage("polypolyPage");
+			} else{
+				oPolypolyPage = nav.getPage("polypolyPage");
 				if(oPolypolyPage.getContent().length == 0){
 					oPolypolyPage.addContent(airbus.mes.polypoly.oView);
 				}
@@ -98,7 +99,7 @@ airbus.mes.shell.util.navFunctions = {
 	
 				sap.ui.getCore().createComponent({
 					name : "airbus.mes.resourcepool",
-	         	});
+				});
 				nav.addPage(airbus.mes.resourcepool.oView);
 			}
 			
@@ -225,8 +226,7 @@ airbus.mes.shell.util.navFunctions = {
 									+ airbus.mes.settings.ModelManager.station, 5000)
 				 }
 					
-			}
-			else{
+			} else{
 				airbus.mes.worktracker.util.ModelManager
 				.messageShow(airbus.mes.worktracker.oView.getModel("i18n").getProperty("notAssigned_Workcenter")
 						+ airbus.mes.settings.ModelManager.station, 5000)

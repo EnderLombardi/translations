@@ -1,3 +1,5 @@
+"use strict";
+
 jQuery.sap.declare("airbus.mes.settings.GlobalFunction")
 airbus.mes.settings.GlobalFunction = {
 	
@@ -17,7 +19,6 @@ airbus.mes.settings.GlobalFunction = {
 				});	  
 			
 		} else {	
-//			airbus.mes.component.settings.setTextButtonTo(sButtonText);
 			airbus.mes.component.settings.setButtonAction(sButtonAction);
 		};
 		

@@ -36,7 +36,7 @@ airbus.mes.shell.AutoRefreshManager =  {
 				airbus.mes.settings.AppConfManager.getConfiguration(		// Get interval time from configuration
 					"REFRESH_STATION_TRACKER_"+station,		// Primary Key
 					this.defaultKey							// Default Key
-				)
+				), 10										// radix 10
 			)*60000;
 			break;
 			
@@ -50,7 +50,7 @@ airbus.mes.shell.AutoRefreshManager =  {
 				airbus.mes.settings.AppConfManager.getConfiguration(		// Get interval time from configuration
 					"REFRESH_DISRUPTION_TRACKER_"+station,	// Primary Key
 					this.defaultKey							// Default Key
-				)
+				), 10										// radix 10
 			)*60000;
 			break;
 			
@@ -65,10 +65,12 @@ airbus.mes.shell.AutoRefreshManager =  {
 				airbus.mes.settings.AppConfManager.getConfiguration(		// Get interval time from configuration
 					"REFRESH_DISRUPTION_KPI_"+station,		// Primary Key
 					this.defaultKey							// Default Key
-				)
+				), 10										// radix 10
 			)*60000;
 			break;
-
+		default : 
+			
+			
 		}
 		
 		
