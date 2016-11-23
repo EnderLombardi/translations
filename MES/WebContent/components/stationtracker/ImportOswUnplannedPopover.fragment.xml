@@ -26,8 +26,8 @@
 						<core:ListItem key="{groupModel>Value}" text="{ path : 'groupModel>Value' , formatter : '.getI18nValue' }" />					
 					</Select>
 				</HBox>
-				<List id="myList" growing="true" growingThreshold="20"
-					growingScrollToLoad="true" items="{ path: 'WorkListModel>/' }"
+				<List id="myList" 
+					items="{ path: 'WorkListModel>/' }"
 					mode="MultiSelect"
 					includeItemInSelection="true">
 					<items>

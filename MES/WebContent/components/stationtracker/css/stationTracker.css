@@ -27,7 +27,7 @@
 }
 
 .ylabelUser {
-	max-width: 50%;
+	max-width: 75px;
 	white-space: nowrap;
 	position: relative;
 	display: inline-block;
