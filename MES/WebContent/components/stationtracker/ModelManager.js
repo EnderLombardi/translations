@@ -337,64 +337,10 @@ airbus.mes.stationtracker.ModelManager = {
 
 		if (aModel.getProperty("/Rowsets/Rowset/0/Row")) {
 
-<<<<<<< HEAD
-       },
-       loadKPIextraWork : function(){
-    	 var oViewModel = sap.ui.getCore().getModel("KPIextraWork");
-    	 jQuery.ajax({
- 		    type:'post',
- 		    url: this.urlModel.getProperty("urlKPIextraWork"),
- 		    contentType: 'application/json',
- 			data: JSON.stringify({
- 				"site": airbus.mes.settings.ModelManager.site,
- 				"station": airbus.mes.settings.ModelManager.station,
- 				"msn": airbus.mes.settings.ModelManager.msn
- 				}),
- 		    
- 		    success: function(data){
- 		    	if(typeof data == "string"){
-					data = JSON.parse(data);
-				}
- 		    	oViewModel.setData(data);
- 		    },
- 		   
- 		    error: function(error,  jQXHR){
- 		    	console.log(error);
- 		    	
- 		    }
- 		});
-       },
-       loadKPItaktAdherence : function(){
-      	 var oViewModel = sap.ui.getCore().getModel("KPItaktAdherence");
-      	 jQuery.ajax({
-   		    type:'post',
-   		    url: this.urlModel.getProperty("urlKPItaktAdherence"),
-   		    contentType: 'application/json',
-   			data: JSON.stringify({
-   				"site": airbus.mes.settings.ModelManager.site,
-   				"currentStation": airbus.mes.settings.ModelManager.station,
-   				"msn": airbus.mes.settings.ModelManager.msn
-   				}),
-   		    
-   		    success: function(data){
-   		    	if(typeof data == "string"){
-					data = JSON.parse(data);
-				}
-   		    	oViewModel.setData(data);
-   		    },
-   		   
-   		    error: function(error,  jQXHR){
-   		    	console.log(error);
-   		    	
-   		    }
-   		});
-         },
-=======
 			aModel.oData.Rowsets.Rowset[0].Row.unshift({
 				"FNAME" : "All User",
 				"USER_ID" : "ALL",
 			});
->>>>>>> branch 'MESv0.9' of https://bundleerp.git.ptx.fr.sopra/g/mes
 
 			sap.ui.getCore().getModel("ressourcePoolModel").refresh(true);
 
