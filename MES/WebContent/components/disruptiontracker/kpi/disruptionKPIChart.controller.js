@@ -1,3 +1,4 @@
+"use strict";
 sap.ui.controller("airbus.mes.disruptiontracker.kpi.disruptionKPIChart", {
 
 	/* ============================================================ */

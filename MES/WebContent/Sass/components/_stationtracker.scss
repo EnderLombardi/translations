@@ -1,9 +1,35 @@
-@import '../../../Sass/colours';
+/********************
+TABLE
+*********************/
+	.dhx_matrix_scell{
+	
+	&.folder {
+		max-width:199px;
+		.ylabelfolder {
+		padding: 0 30px;
+	    margin: 0;
+	    font-size: 12px;
+	    color: #0F5F78;
+	    font-weight: normal;
+	    box-sizing: border-box;
+	    width: 100%;
+	    display: inline-block;
+	    position: relative;
+	    overflow: hidden!important;
+	    text-overflow: ellipsis;
+	    white-space: nowrap;
+	    }
+    }
+}
+
+
 
 /********************
-WORK TRACKER
 SCHEDULAR TASK STYLE
-BOX MANAGEMENT 
+*********************/
+
+/********************
+BOX MANAGEMENT
 *********************/
 .trackerBox{
 	width:100%;
@@ -59,6 +85,9 @@ BOX MANAGEMENT
 	    &.rightIcon {
 		    padding-right: 6px;
 		    float: right;
+		    &.petrol {
+		    	color:$petrol-94;
+		    }
 		}
 		&.triangleIcon {
 		    padding-left: 6px;

@@ -1,3 +1,4 @@
+"use strict";
 sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 	
 /**
@@ -5,6 +6,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
 * @memberOf table.table
 */
+	disruptionTrackerRefresh : false,
 	disruptionsCustomDataFlag : undefined,
 	onInit: function() {
 	},
@@ -58,14 +60,14 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 
         var oBinding = this.byId("disruptionsTable").getBinding("items");
         
-        if(sStatus != "")
-        	aFilters.push(new sap.ui.model.Filter("Status", "EQ", sStatus));
-        
-        if(sResoGroup != "")
-        	aFilters.push(new sap.ui.model.Filter("ResponsibleGroup", "EQ", sResoGroup));
-        
-        
-    	oBinding.filter(aFilters);
+
+		if (sStatus != "")
+			aFilters.push(new sap.ui.model.Filter("Status","EQ", sStatus));
+
+		if (sResoGroup != "")
+			aFilters.push(new sap.ui.model.Filter("ResponsibleGroup", "EQ", sResoGroup));
+            
+		oBinding.filter(aFilters);
         
         airbus.mes.disruptiontracker.ModelManager.fixNoDataRow();// Remove last column
 	},
@@ -154,7 +156,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 					            ]
 					         },
 					         {
-					        	 "Row":[
+								"Row" : [
 							               
 							            ]
 					         }
@@ -172,7 +174,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		
 		airbus.mes.disruptions.oView.viewDisruption.getModel("operationDisruptionsModel").setData(disruptionData);
 		
-		disruptionsCustomDataFlag = false;
+		this.disruptionsCustomDataFlag = false;
 		
 		airbus.mes.disruptiontracker.detailPopUp.open();
 
@@ -180,6 +182,10 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		sap.ui.getCore().byId("ViewDisruptionView").getContent()[0].getContent()[1].getItems()[0].getContent()[0].setExpandable(false);
 		
 		this.nav.to(airbus.mes.disruptions.oView.viewDisruption.getId());
+		
+
+        // Pause the Refresh timer till the Pop-Up is opened
+        airbus.mes.shell.AutoRefreshManager.pauseRefresh();
 				
 	},
 	
@@ -201,7 +207,13 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		// Empty Model
 		airbus.mes.disruptions.oView.viewDisruption.getModel("operationDisruptionsModel").setData();
 		
-		airbus.mes.disruptiontracker.ModelManager.loadDisruptionTrackerModel();
+		if(airbus.mes.disruptiontracker.oView.getController().disruptionTrackerRefresh == true) {
+			airbus.mes.disruptiontracker.ModelManager.loadDisruptionTrackerModel();
+			airbus.mes.disruptiontracker.oView.getController().disruptionTrackerRefresh = false;
+		}
+
+        // Resume the Refresh timer when the Pop-Up is opened
+        airbus.mes.shell.AutoRefreshManager.resumeRefresh();
 	},
 	
 	onNavigate : function() {
@@ -230,10 +242,9 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 			if (!this.disruptionsCustomDataFlag){
 				airbus.mes.disruptions.ModelManager.loadData();
 				this.disruptionsCustomDataFlag = true;
-			}
-			else
+			} else {
 				airbus.mes.disruptions.oView.createDisruption.oController.setDataForEditDisruption();
-			
+			}
 		}
 
 	}

@@ -1,3 +1,5 @@
+"use strict";
+
 sap.ui
 		.controller(
 				"airbus.mes.disruptions.CreateDisruption",
@@ -200,7 +202,7 @@ sap.ui
 					 * Create Disruption
 					 */
 					// get selected jig Tools
-					getSelectedJIg_Tool : function() {
+					getSelectedJIgTool : function() {
 						var getTokens = sap.ui.getCore().byId(
 								"createDisruptionView--jigtools").getTokens();
 						var result;
@@ -231,7 +233,7 @@ sap.ui
 						var oView = airbus.mes.disruptions.oView.createDisruption;
 						
 						var sJigtools = oView.getController()
-								.getSelectedJIg_Tool();
+								.getSelectedJIgTool();
 						if(sJigtools == undefined){
 							sJigtools = ""
 						}	
@@ -253,8 +255,8 @@ sap.ui
 
 						var sCategory = oView.byId("selectCategory")
 								.getSelectedKey();
-						var sRootCause = oView.byId("selectRootCause")
-								.getSelectedKey();
+//						var sRootCause = oView.byId("selectRootCause")
+//								.getSelectedKey();
 						var sComment = oView.byId("comment").getValue();
 
 						// forcefully set handle as the first item in the list
@@ -419,6 +421,8 @@ sap.ui
 									.getModel("i18nModel").getProperty(
 											"CompulsaryExpectedDateTime"));
 							return false;
+						} else {
+							return true;
 						}
 					},
 
@@ -460,88 +464,144 @@ sap.ui
 						/*******************************************************
 						 * Pre-fill fields in update request
 						 */
+						try {
+							this.resetAllFields();
+							if (sap.ui.getCore().getModel("DisruptionDetailModel")
+									.getData() != undefined) {
 
-						this.resetAllFields();
-						if (sap.ui.getCore().getModel("DisruptionDetailModel")
-								.getData() != undefined) {
+								// fill select boxes on CreateDisruptionView for
+								// edit screen
+								var oModel = sap.ui.getCore().getModel("DisruptionDetailModel");
 
-							// fill select boxes on CreateDisruptionView for
-							// edit screen
-							var oModel = sap.ui.getCore().getModel(
-									"DisruptionDetailModel");
-
-							this.getView().byId("selectCategory")
+								this.getView().byId("selectCategory")
 									.setSelectedKey(
 											oModel.getProperty("/MessageType"));
-							// forced fireChange event on Category to get a
-							// good list in Responsible Group.
-							this.getView().byId("selectCategory").fireChange(
+								// forced fireChange event on Category to get a	
+								// good list in Responsible Group.
+								this.getView().byId("selectCategory").fireChange(
 									this.getView().byId("selectCategory")
 											.getSelectedItem());
-							this
+								this
 									.getView()
 									.byId("selectResponsible")
 									.setSelectedKey(
 											oModel
 													.getProperty("/ResponsibleGroup"));
-							this.getView().byId("selectreason").setSelectedKey(
+								this.getView().byId("selectreason").setSelectedKey(
 									oModel.getProperty("/Reason"));
-							this
+								this
 									.getView()
 									.byId("selectOriginator")
 									.setSelectedKey(
 											oModel
 													.getProperty("/OriginatorGroup"));
-							this.getView().byId("selectRootCause")
+								this.getView().byId("selectRootCause")
 									.setSelectedKey(
 											oModel.getProperty("/RootCause"));
 
-							this.getView().byId("gravity").setSelectedKey(
+								this.getView().byId("gravity").setSelectedKey(
 									oModel.getProperty("/Gravity"));
 
-							this.getView().byId("timeLost").setValue(
+								this.getView().byId("timeLost").setValue(
 									oModel.getProperty("/TimeLost"));
-							this.getView().byId("status").setValue(
+								this.getView().byId("status").setValue(
 									oModel.getProperty("/Status"));
-							this.getView().byId("description").setValue(
+								this.getView().byId("description").setValue(
 									oModel.getProperty("/Description"));
-							this.getView().byId("comment").setValue();
-							this.initializeTree();
 
-							// Disable/Enable inputs according to
-							// Originator/Resolution Group
-							var origFlag = sap.ui.getCore().getModel(
+								this.getView().byId("comment").setValue();
+								
+								var oMatInp = this.getView().byId("materials");
+								var oJiginp = this.getView().byId("jigtools");
+								
+								var aMatArray = oModel.oData.Materials.split(",");
+								var aJigArray = oModel.oData.JigTools.split(",");
+								
+								var aMatTokens = [];
+								var aJigTokens = [];
+								
+								
+								for (var i in aMatArray) {
+	
+									if(aMatArray[i] !== ""){
+	
+										var loMatToken = new sap.m.Token({
+											text : aMatArray[i],
+											editable : false,
+										});
+	
+										aMatTokens.push(loMatToken)
+	
+									}							
+								}
+								
+								oMatInp.setTokens(aMatTokens);
+								this._materialListDialog.close();
+								
+								for (var j in aJigArray) {
+	
+									if (aJigArray[j] != "") {
+										var loJigToken = new sap.m.Token({
+											text : aJigArray[j],
+											editable : false,
+										});
+	
+										aJigTokens.push(loJigToken)
+	
+									}
+								}
+								
+								oJiginp.setTokens(aJigTokens);
+								this.jigToolSelectDialog.close();
+							
+								
+								this.initializeTree();
+
+								// Disable/Enable inputs according to
+								// Originator/Resolution Group
+								var origFlag = sap.ui.getCore().getModel(
 									"DisruptionDetailModel").getData().OriginatorFlag;
 
-							var resFlag = sap.ui.getCore().getModel(
+								var resFlag = sap.ui.getCore().getModel(
 									"DisruptionDetailModel").getData().ResponsibleFlag;
 
-							if (origFlag != "X" && resFlag == "X") {
-								this.resolutionGroupSettings();
-							} else
+								if (origFlag != "X" && resFlag == "X") {
+									this.resolutionGroupSettings();
+								} else
 								this.originatorGroupSettings();
 
-						} else {
+							} else {
 
-							// expected date and time are not cleared in reset
-							// all fields as formatter has to be applied
-							this.getView().byId("expectedDate").setValue();
-							this.getView().byId("expectedTime").setValue();
+								// expected date and time are not cleared in reset
+								// all fields as formatter has to be applied
+								this.getView().byId("expectedDate").setValue();
+								this.getView().byId("expectedTime").setValue();
 
-							this.initializeTree();
-							if (this.getView().byId("selectOriginator")
-									.getItems().length == 1)
-
-								this.getView().byId("selectOriginator")
+								this.initializeTree();
+								
+								if (this.getView().byId("selectOriginator").getItems().length == 1)
+									this.getView().byId("selectOriginator")
 										.setSelectedKey(
 												this.getView().byId(
 														"selectOriginator")
 														.getItemAt(0).getKey());
 
-							// Enable fields for creation
-							this.createDisruptionSettings();
+								// Enable fields for creation
+								this.createDisruptionSettings();
 
+							}
+						} catch(err) {
+							sap.m.MessageToast.show(
+									airbus.mes.disruptions.oView.viewDisruption.
+										getModel("i18nModel").getProperty("error"));
+							
+							if(nav.getCurrentPage().getId() == "stationTrackerView") {
+								sap.ui.getCore().byId("operationDetailsView--operDetailNavContainer").back();
+							} else if(nav.getCurrentPage().getId() == "disruptiontrackerView") {
+								sap.ui.getCore().byId("disruptionDetailPopup--disruptDetailNavContainer").back();
+							}
 						}
+						
 					},
 
 					setEnabledSelectBox : function(fCategory, fReason,
@@ -710,9 +770,9 @@ sap.ui
 					 */
 					addNewMaterialToList : function() {
 
-						var oModelData = sap.ui.getCore().getModel(
-								"MaterialListModel").getProperty(
-								"/MaterialList");
+//						var oModelData = sap.ui.getCore().getModel(
+//								"MaterialListModel").getProperty(
+//								"/MaterialList");
 
 						if (sap.ui.getCore().byId("customMaterial").getValue() != "") {
 
@@ -891,9 +951,9 @@ sap.ui
 					 */
 					addNewJigToolToList : function() {
 
-						var oModelData = sap.ui.getCore().getModel(
-								"MaterialListModel").getProperty(
-								"/MaterialList");
+//						var oModelData = sap.ui.getCore().getModel(
+//								"MaterialListModel").getProperty(
+//								"/MaterialList");
 
 						if (sap.ui.getCore().byId("customJigTool").getValue() != "") {
 

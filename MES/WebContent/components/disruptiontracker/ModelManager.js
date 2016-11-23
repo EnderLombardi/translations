@@ -1,4 +1,4 @@
-//"use strict";
+"use strict";
 jQuery.sap.declare("airbus.mes.disruptiontracker.ModelManager")
 airbus.mes.disruptiontracker.ModelManager = {
 	oDisruptionFilter: {},
@@ -21,12 +21,12 @@ airbus.mes.disruptiontracker.ModelManager = {
 		
 		var getDisruptionsURL = airbus.mes.disruptions.ModelManager.getDisruptionsURL(oFilters);
 		
-		oViewModel.loadData(getDisruptionsURL, null, false);
+		oViewModel.loadData(getDisruptionsURL);
 		
 		if(oFilters.station != undefined && oFilters.station != ""){
 			airbus.mes.disruptiontracker.oView.byId("stationComboBox").setSelectedKey(oFilters.station);
 		}
-		else{
+		else {
 			airbus.mes.disruptiontracker.oView.byId("stationComboBox").setSelectedKey("");
 		}
 	},
@@ -44,13 +44,10 @@ airbus.mes.disruptiontracker.ModelManager = {
 		.filter(new sap.ui.model.Filter({
 		    path: "ResponsibleGroup",
 		    test: function(oValue) {
-		    	if(aTemp.indexOf(oValue) == -1)
-		    		{
+		    	if(aTemp.indexOf(oValue) == -1) {
 		    		aTemp.push(oValue);
 		    		return true;
-		    		}
-		    	
-		    	else{
+		    		} else {
 		    		return false;
 		    	}
 		    }

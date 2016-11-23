@@ -1,3 +1,4 @@
+"use strict";
 jQuery.sap.require("sap.ui.core.UIComponent");
 jQuery.sap.require("airbus.mes.disruptiontracker.util.Formatter");
 jQuery.sap.require("airbus.mes.disruptiontracker.ModelManager");
@@ -48,5 +49,7 @@ airbus.mes.disruptiontracker.Component.prototype.createContent = function() {
 		
 		return this.oView;
 		
+	} else {
+		return airbus.mes.disruptiontracker.oView;
 	}
 };

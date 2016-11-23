@@ -1,3 +1,4 @@
+"use strict";
 jQuery.sap.require("sap.m.MessageBox");
 jQuery.sap.require("sap.m.MessageToast");
 
@@ -195,15 +196,15 @@ sap.ui
 										timeLostValue, i18nModel);
 
 						if (isSuccess) {
+							
+							var operationDisruptionsModel = this.getView().getModel("operationDisruptionsModel");
+							
 							var sPath = sap.ui.getCore().byId(
 									"closeDisruption-sPath").getText();
-							this.getView()
-									.getModel("operationDisruptionsModel")
-									.getProperty(sPath).Status = airbus.mes.disruptions.Formatter.status.closed;
 							
-							this.getView()
-							.getModel("operationDisruptionsModel")
-							.getProperty(sPath).TimeLost = timeLostValue;
+							operationDisruptionsModel.getProperty(sPath).Status = airbus.mes.disruptions.Formatter.status.closed;
+							
+							operationDisruptionsModel.getProperty(sPath).TimeLost = timeLostValue;
 							
 							var currDate = new Date();
 							var date = currDate.getFullYear() + "-" + currDate.getMonth() + "-" + currDate.getDate();
@@ -217,13 +218,13 @@ sap.ui
 									"UserFullName" : ( sap.ui.getCore().getModel("userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/first_name").toLowerCase() + " " +
 											   sap.ui.getCore().getModel("userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/last_name").toLowerCase() )
 							};
-							this.getView()
-									.getModel("operationDisruptionsModel")
-									.getProperty("/Rowsets/Rowset/1/Row").push(oComment);
 							
-							this.getView()
-									.getModel("operationDisruptionsModel")
-									.refresh();
+							operationDisruptionsModel.getProperty("/Rowsets/Rowset/1/Row").push(oComment);
+							
+							operationDisruptionsModel.refresh();
+							
+							if (nav.getCurrentPage().sId == "stationTrackerView")
+								airbus.mes.disruptions.ModelManager.checkDisruptionStatus(operationDisruptionsModel);
 						}
 					},
 
@@ -386,6 +387,9 @@ sap.ui
 							operationDisruptionsModel.getProperty("/Rowsets/Rowset/1/Row").push(oComment);
 
 							operationDisruptionsModel.refresh();
+
+							if (nav.getCurrentPage().sId == "stationTrackerView")
+								airbus.mes.disruptions.ModelManager.checkDisruptionStatus(operationDisruptionsModel);
 						}
 
 					},
@@ -423,9 +427,9 @@ sap.ui
 						submitCommentId.setVisible(true);
 						//*********************************************************
 						
-						var status = oEvt.getSource().getBindingContext(
-								"operationDisruptionsModel")
-								.getObject("Status");
+//						var status = oEvt.getSource().getBindingContext(
+//								"operationDisruptionsModel")
+//								.getObject("Status");
 
 						/*if (status == airbus.mes.disruptions.Formatter.status.pending) {
 
@@ -986,7 +990,7 @@ sap.ui
 							oModel.setData(oBindingContext
 									.getProperty(oBindingContext.sPath));
 							oModel.refresh();
-
+							
 						}
 
 					}
