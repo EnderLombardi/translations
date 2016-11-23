@@ -174,7 +174,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		
 		airbus.mes.disruptions.oView.viewDisruption.getModel("operationDisruptionsModel").setData(disruptionData);
 		
-		disruptionsCustomDataFlag = false;
+		this.disruptionsCustomDataFlag = false;
 		
 		airbus.mes.disruptiontracker.detailPopUp.open();
 
