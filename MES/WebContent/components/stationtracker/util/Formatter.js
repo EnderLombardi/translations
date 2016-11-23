@@ -337,9 +337,9 @@ airbus.mes.stationtracker.util.Formatter = {
 			},
 			percentValue : function(progress, duration) {
 
-				progress = parseInt(progress);
-				duration = parseInt(duration);
-				if (!isNaN(parseInt(progress)) || !isNaN(parseInt(duration))) {
+				progress = parseInt(progress, 10);
+				duration = parseInt(duration, 10);
+				if (!isNaN(parseInt(progress, 10)) || !isNaN(parseInt(duration, 10))) {
 					if (duration <= 0) {
 						return 0;
 					} else {
@@ -383,10 +383,11 @@ airbus.mes.stationtracker.util.Formatter = {
 				
 				//** user affected **/
 				var sshiftID = airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftID;
-						
-				if ( airbus.mes.stationtracker.ShiftManager.dayDisplay ) {
-					var sShiftName = airbus.mes.stationtracker.ShiftManager.ShiftSelected 
-				}
+
+				//				not used						
+//				if ( airbus.mes.stationtracker.ShiftManager.dayDisplay ) {
+//					var sShiftName = airbus.mes.stationtracker.ShiftManager.ShiftSelected 
+//				}
 								
 				if (airbus.mes.stationtracker.AssignmentManager.affectationHierarchy[oSection.avlLine]) {
 
@@ -498,7 +499,7 @@ airbus.mes.stationtracker.util.Formatter = {
 		           // Constitute a table of WO groups with operations associated
 		           // The group object has template bellow.
 		           var currentWO = {
-		        		  shopOrder : undefined,
+				           shopOrder : undefined,
 		                  dynamicStartDate : undefined,
 		                  scheduledStartDate : undefined,
 		                  operationsID : [],
@@ -512,7 +513,7 @@ airbus.mes.stationtracker.util.Formatter = {
 		                         }
 
 		                         currentWO = {
-		                        		shopkOrder : oWorkList[i].shopOrder,
+				                         shopkOrder : oWorkList[i].shopOrder,
 		                                startDate : oWorkList[i].startDate,
 //		                                scheduledStartDate : oWorkList[i].start,
 		                                operationsID : [ oWorkList[i] ],
@@ -657,9 +658,9 @@ airbus.mes.stationtracker.util.Formatter = {
 
 			     computeDelay : function( fProgress,fDuration ) {
 
-		    		//sec Gap
-		    		var sGap = Math.round((fProgress - fDuration))/1000/60/60;
-					var sGapHour = parseInt(sGap);
+                     //sec Gap
+                     var sGap = Math.round((fProgress - fDuration))/1000/60/60;
+					var sGapHour = parseInt(sGap, 10);
 					//Transfomr in hour
 					var sGapMin = Math.abs(Math.round((sGap - sGapHour)*60));
 					
@@ -673,7 +674,7 @@ airbus.mes.stationtracker.util.Formatter = {
 					}
 					
 					return sGapHour + "," + sGapMin + "h";
-		    		
-		    	}
+
+                    }
 };
 
