@@ -65,6 +65,10 @@ airbus.mes.disruptions.ModelManager = {
 		// Material List Model
 		this.core.setModel(new sap.ui.model.json.JSONModel(),
 				"MaterialListModel");
+		
+		// Jigtool List Model
+		this.core.setModel(new sap.ui.model.json.JSONModel(),
+				"JigtoolListModel");
 
 		sap.ui
 				.getCore()
@@ -90,6 +94,7 @@ airbus.mes.disruptions.ModelManager = {
 		this.loadDisruptionCategory();
 		this.loadDisruptionCustomData();
 		this.loadMaterialList();
+		this.loadJigtoolList();
 
 	},
 
@@ -234,6 +239,29 @@ airbus.mes.disruptions.ModelManager = {
 				.getURLMaterialList();
 
 		oViewModel.loadData(getMaterialListURL);
+
+	},
+	
+	/***************************************************************************
+	 * Load Jigtool List for create/update disruption
+	 */
+
+	getURLJigtoolList : function() {
+		var urlJigtoolList = this.urlModel.getProperty("urlJigtoolList");
+		return urlJigtoolList;
+	},
+
+	/***************************************************************************
+	 * Load Disruptions for a single operation
+	 */
+	loadJigtoolList : function() {
+
+		var oViewModel = sap.ui.getCore().getModel("JigtoolListModel");
+
+		var getJigtoolListURL = airbus.mes.disruptions.ModelManager
+				.getURLJigtoolList();
+
+		oViewModel.loadData(getJigtoolListURL);
 
 	},
 	/***************************************************************************
