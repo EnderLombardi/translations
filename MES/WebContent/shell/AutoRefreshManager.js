@@ -89,8 +89,7 @@ airbus.mes.shell.AutoRefreshManager =  {
 	},
 	
 	autoRefreshAPI: function(){
-		
-		this.autoRefreshAPI();
+		this.autoRefresh();
 	},
 	
 	
