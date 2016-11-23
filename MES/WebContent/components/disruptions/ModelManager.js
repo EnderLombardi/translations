@@ -169,6 +169,8 @@ airbus.mes.disruptions.ModelManager = {
 
 		if (oFilters.station != undefined && oFilters.station != "")
 			getDisruptionsURL = getDisruptionsURL.replace('$WorkCenter',
+					"WorkCenterBO:" + 								// WorkCenter BO
+					airbus.mes.settings.ModelManager.site + "," + 
 					oFilters.station);
 		else
 			getDisruptionsURL = getDisruptionsURL.replace('$WorkCenter', "");

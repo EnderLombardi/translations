@@ -7,75 +7,85 @@ airbus.mes.shell.AutoRefreshManager =  {
 		
 	autoRefresh: undefined,
 	
+	refreshInterval: undefined,
+	
+	refreshAPI: undefined,	
+	
+	defaultKey : "MES_REFRESH_DEF_VAL",
+	
 	/**************************************************
 	 * Set Refresh Interval based on configuration
 	 */
 	setInterval: function(viewName){
 		
 		var station = airbus.mes.settings.ModelManager.station;
-		var defaultKey = "MES_REFRESH_DEF_VAL";
+		
+		
+		if(!viewName)
+			viewName = nav.getCurrentPage().getId();
 		
 		switch(viewName){
 		
-		case "STATION_TRACKER":
+		case "stationTrackerView":
 			
 			/**********************************************
 			 * Set Window Interval
 			 */
-			this.autoRefresh = window.setInterval(
-				airbus.mes.shell.oView.oController.renderStationTracker(),		// API reference 
-				
-				parseInt(
-					airbus.mes.settings.AppConfManager.getConfiguration(		// Set interval time from configuration
-						"REFRESH_STATION_TRACKER_"+station,		// Primary Key
-						defaultKey							 	// Default Key
-					)
-				)*60000
-			);
+			this.refreshAPI = airbus.mes.shell.oView.oController.renderStationTracker;
+			this.refreshInterval = parseInt(
+				airbus.mes.settings.AppConfManager.getConfiguration(		// Get interval time from configuration
+					"REFRESH_STATION_TRACKER_"+station,		// Primary Key
+					this.defaultKey							// Default Key
+				)
+			)*60000;
 			break;
 			
-		case "DISRUPTION_TRACKER":
+		case "disruptiontrackerView":
 			
 			/**********************************************
 			 * Set Window Interval
 			 */
-			this.autoRefresh = window.setInterval(
-				airbus.mes.disruptiontracker.ModelManager.loadDisruptionTrackerModel(),	// API reference 
-				
-				parseInt(
-					airbus.mes.settings.AppConfManager.getConfiguration(				// Set interval time from configuration
-						"REFRESH_DISRUPTION_TRACKER_"+station,		// Primary Key
-						defaultKey								 	// Default Key
-					)
-				)*60000
-			);
+			this.refreshAPI = airbus.mes.disruptiontracker.ModelManager.loadDisruptionTrackerModelr;
+			this.refreshInterval = parseInt(
+				airbus.mes.settings.AppConfManager.getConfiguration(		// Get interval time from configuration
+					"REFRESH_DISRUPTION_TRACKER_"+station,		// Primary Key
+					this.defaultKey							// Default Key
+				)
+			)*60000;
 			break;
 			
 			
-		case "DISRUPTION_KPI":
+		case "disruptionKPIView":
 			
 			/**********************************************
 			 * Set Window Interval
 			 */
-			this.autoRefresh = window.setInterval(
-				airbus.mes.disruptiontracker.kpi.ModelManager.loadDisruptionKPIModel(),	// API reference 
-				
-				parseInt(
-					airbus.mes.settings.AppConfManager.getConfiguration(				// Set interval time from configuration
-						"REFRESH_DISRUPTION_KPI_"+station,		// Primary Key
-						defaultKey							 	// Default Key
-					)
-				)*60000
-			);
+			this.refreshAPI = airbus.mes.disruptiontracker.kpi.ModelManager.loadDisruptionKPIModel;
+			this.refreshInterval = parseInt(
+				airbus.mes.settings.AppConfManager.getConfiguration(		// Get interval time from configuration
+					"REFRESH_DISRUPTION_KPI_"+station,		// Primary Key
+					this.defaultKey							// Default Key
+				)
+			)*60000;
 			break;
 
 		}
+		
+		
+		window.setInterval(this.autoRefreshAPI, this.refreshInterval);
+		
+		
 		
 	},
 	
 	
 	clearInterval: function(){
 		clearInterval(this.autoRefresh)
+	},
+	
+	pauseRefresh:function(){
+		
 	}
+	
 	
 }
