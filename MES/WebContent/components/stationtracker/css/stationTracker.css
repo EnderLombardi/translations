@@ -1506,8 +1506,8 @@ svg#stationTrackerView--takt_adherence_area_chart {
 	overflow:visible;
 }
 
-
-.resolutionEfficiencyContentHeaderCont > .sapMFlexItem:not(.resolutionEfficiencyChartContainer) {
+/*microchart part*/
+.efficiencyContentHeaderCont > .sapMFlexItem:not(.efficiencyChartContainer) {
 	height: 50px;
 	width: 100% !important;
     line-height: normal;
@@ -1517,7 +1517,7 @@ svg#stationTrackerView--takt_adherence_area_chart {
     
 }
 
-.resolutionEfficiencyContentHeaderCont > .sapMFlexItem:not(.resolutionEfficiencyChartContainer):before {
+.efficiencyContentHeaderCont > .sapMFlexItem:not(.efficiencyChartContainer):before {
   content: "" !important;
   font-size: 0 !important;
   vertical-align: middle !important;
@@ -1526,7 +1526,7 @@ svg#stationTrackerView--takt_adherence_area_chart {
   height: 100% !important;
 }
 
-.resolutionEfficiencyContentHeaderCont > .sapMFlexItem:not(.resolutionEfficiencyChartContainer)> .sapMLabel {
+.efficiencyContentHeaderCont > .sapMFlexItem:not(.efficiencyChartContainer)> .sapMLabel {
   display: inline-block;
   vertical-align: middle !important;
   margin-left: -1px;
@@ -1534,48 +1534,11 @@ svg#stationTrackerView--takt_adherence_area_chart {
   max-height: 50px;
 }
 
-.resolutionEfficiencyCharts {
-  height: 145px;
+.efficiencyCharts {
+  height: 140px;
 }
 
-.resolutionEfficiencyChartContainer {
-  width: 100%;
-  padding: 0 10px;
-  margin-top: 5px;
-}
-
-.slbEfficiencyContentHeaderCont > .sapMFlexItem:not(.slbEfficiencyChartContainer) {
-	height: 50px;
-	width: 100% !important;
-    line-height: normal;
-
-	display: inline-block;
-    vertical-align: middle !important;
-    
-}
-
-.slbEfficiencyContentHeaderCont > .sapMFlexItem:not(.slbEfficiencyChartContainer):before {
-  content: "" !important;
-  font-size: 0 !important;
-  vertical-align: middle !important;
-  display: inline-block !important;
-  width: 0px !important;
-  height: 100% !important;
-}
-
-.slbEfficiencyContentHeaderCont > .sapMFlexItem:not(.slbEfficiencyChartContainer)> .sapMLabel {
-  display: inline-block;
-  vertical-align: middle !important;
-  margin-left: -1px;
-  max-width: 100% !important;
-  max-height: 50px;
-}
-
-.slbEfficiencyCharts {
-  height: 145px;
-}
-
-.slbEfficiencyChartContainer {
+.efficiencyChartContainer {
   width: 100%;
   padding: 0 10px;
   margin-top: 5px;

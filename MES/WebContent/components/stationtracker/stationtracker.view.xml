@@ -161,13 +161,13 @@
 						</VBox>
 
 						<VBox id="boxSLBEfficiecy" width="10%" alignItems="Center"
-							class="contentHeaderCont slbEfficiencyContentHeaderCont">
+							class="contentHeaderCont efficiencyContentHeaderCont">
 							<Label text="{StationTrackerI18n>SLBEFFICIENCY}" design="Bold"
 								class="whiteTextHeader" />
-							<VBox class="slbEfficiencyChartContainer" width="100%">
+							<VBox class="efficiencyChartContainer" width="100%">
 								<micro:ComparisonMicroChart size="L"
 									id="boxSLBEfficiecy_chart" 
-									width="100%" colorPalette="#84bd00, #f5f5f5, #fe5000" class="slbEfficiencyCharts">
+									width="100%" colorPalette="#84bd00, #f5f5f5, #fe5000" class="efficiencyCharts">
 									<micro:data>
 										<micro:ComparisonMicroChartData
 											title="{StationTrackerI18n>TaktSLB}" value="85" />
@@ -239,13 +239,13 @@
 						</VBox>
 
 						<VBox id="boxResolutionEfficiency" width="11%" alignItems="Center"
-							class="contentHeaderCont resolutionEfficiencyContentHeaderCont">
+							class="contentHeaderCont efficiencyContentHeaderCont">
 							<Label text="{StationTrackerI18n>ResolutionEfficiency}"
 								design="Bold" class="whiteTextHeader" />
-							<VBox class="resolutionEfficiencyChartContainer" width="100%">
+							<VBox class="efficiencyChartContainer" width="100%">
 								<micro:ComparisonMicroChart size="L"
 									id="boxResolutionEfficiecy_chart"
-									width="100%" colorPalette="#84bd00,#fe5000,#fe5000,#0F2D65" class="resolutionEfficiencyCharts">
+									width="100%" colorPalette="#84bd00,#fe5000,#fe5000,#0F2D65" class="efficiencyCharts">
 									<micro:data>
 										<micro:ComparisonMicroChartData
 											title="{StationTrackerI18n>PromisedInTakt}" value="8" />
