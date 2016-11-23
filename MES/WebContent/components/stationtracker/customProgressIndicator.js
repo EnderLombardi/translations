@@ -138,35 +138,45 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 						
 						// Operation is active	
 						if ( paused === "false") {
+						
+				//------------------------------------------						
+				// condition design for worklist pop up
+				//------------------------------------------
+				
+				switch ( paused ) {
+					case "false" :
+					// Operation is active
 							//sStatus = "2";
-							
 							sRightIcon = '<i class="fa fa-play rightIcon"></i>';
-						}		
-						// Operation is not started
-						if ( paused == "---" ) {
+							break;
+					case "---" :				
+					// Operation is not started
 							//sStatus = "1";
 							// Operation is pause	
 							if ( paused === "---" && progress != "0" ) {
 								//sStatus = "3";
-							
 								sRightIcon = '<i class="fa fa-pause rightIcon"></i>';
 							}	
-						}
-						// Operation Completed
-						if ( Status === "C" ) {
+							break;
+					default :
+				}
+				
+				switch ( Status ) {
+					case "C" :
+					// Operation Completed
 							//sStatus = "0";
 							r.addStyle('background-color','#0085ad');
 							sRightIcon = '<i class="fa fa-check rightIcon"></i>';
-							
 							if ( rmastatus === 1 ){	//rma
 								sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon"></i>';
 							}
 							if (osw[0] === "3" ){ //OSW
 								sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 teal-blue white"><b style="padding-left:1px">OSW</b></i>';
 							}
-						}
-						//Opened Blocking and Escalated disruption
-						if ( Status === "D1") {
+							break;
+					case "D1" :
+					//Opened Blocking and Escalated disruption
+							//if ( Status === "D1") {
 							//sStatus = "4";
 							r.addStyle('background-color','#fbec00');
 							sRightIcon = '<i class="fa fa-play rightIcon petrol" ></i>';
@@ -176,9 +186,11 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 							if (osw[0] === "3" ){ //OSW
 								sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 petrol-back dandelion"><b style="padding-left:1px">OSW</b></i>';
 							}
-						}
-						//Opened Blocking disruption
-						if ( Status === "D2") {
+							//}
+							break;
+					case "D2" :
+					//Opened Blocking disruption
+							//if ( Status === "D2") {
 							//sStatus = "5";
 							r.addStyle('background-color','#fbec00');
 							sRightIcon = '<i class="fa fa-stop rightIcon petrol" ></i>';
@@ -188,9 +200,10 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 							if (osw[0] === "3" ){ //OSW
 								sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 petrol-back dandelion"><b style="padding-left:1px">OSW</b></i>';
 							}
-						}
-						//Solved Blocking and Escalated disruption
-						if ( Status === "D3") {
+							break;
+					case "D3" :
+					//Solved Blocking and Escalated disruption
+							//if ( Status === "D3") {
 							//sStatus = "6";
 							sRightIcon = '<i class="fa fa-play rightIcon"></i>';
 							if ( rmastatus === 1 ){	//rma
@@ -199,9 +212,10 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 							if (osw[0] === "3" ){ //OSW
 								sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 petrol-back dandelion"><b style="padding-left:1px">OSW</b></i>';
 							}
-						}
-						//Solved Blocking disruption
-						if ( Status === "D4") {
+							break;
+					case "D4" :
+					//Solved Blocking disruption
+							//if ( Status === "D4") {
 							//sStatus = "7";
 							sRightIcon = '<i class="fa fa-play rightIcon petrol"></i>';
 							if ( rmastatus === 1 ){	//rma
@@ -210,9 +224,10 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 							if (osw[0] === "3" ){ //OSW
 								sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 petrol-back dandelion"><b style="padding-left:1px">OSW</b></i>';
 							}
-						}
-						//andon
-						if ( Status === "B") {
+							break;
+					case "B" :
+					//andon
+							//if ( Status === "B") {
 							//sStatus = "99";
 							r.addStyle('background-color','#e4002b');
 							sRightIcon = '<i class="fa fa-stop rightIcon"></i>';
@@ -222,20 +237,24 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 							if (osw[0] === "3" ){ //OSW
 								sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 cherry-red white"><b style="padding-left:1px">OSW</b></i>';
 							}
-						}
-						//rma
-						if ( rmastatus === 1 ){	
-							sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon dandelion"></i>';
-						}
-						//OSW
-						if (osw[0] === "3" ){ 
-							sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 dandelion-back "><b style="padding-left:1px">OSW</b></i>';
-						} else {
-							r.addClass('sapMPIBarGreen');
-							r.writeClasses();
-							r.writeAttribute('style', 'width:' + PercValue + '%');
-							console.log(PercValue);
-						}	
+							break;
+					default:		
+				}
+						
+				//rma
+				if ( rmastatus === 1 ){	
+					sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon dandelion"></i>';
+				}
+				//OSW
+				if (osw[0] === "3" ){ 
+					sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 dandelion-back "><b style="padding-left:1px">OSW</b></i>';
+				} else {
+					r.addClass('sapMPIBarGreen');
+					r.writeClasses();
+					r.writeAttribute('style', 'width:' + PercValue + '%');
+				}
+				
+				//------------------------------------------------------------
 
 						r.write('>');
 				r.write('</div>');
@@ -278,7 +297,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 								r.write(sLeftIcon2);
 								r.write(sRightIcon);
 						r.write("</span>");
-					}
+					} 
 				}
 		
 	r.write('</div>');

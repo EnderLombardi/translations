@@ -53,15 +53,10 @@ airbus.mes.stationtracker.util.Formatter = {
 		openFolder :function( bOpen ){
 			
 			if ( bOpen ) {
-				
 			return "fa fa-chevron-down custom";
-			
 			} else  {
-				
 				return "fa fa-chevron-right custom";
-				
 			}
-			
 		},
 		
 		 spaceInsecable : function(sText){
@@ -82,7 +77,7 @@ airbus.mes.stationtracker.util.Formatter = {
 			
 			jsDateFromDayTimeStr : function(day) {
 				
-				// return day for IE not working. - 1 on month because 00 = january
+			// return day for IE not working. - 1 on month because 00 = january
 				if ( day != undefined ){
 					return new Date(day.slice(0,4),day.slice(5,7)-1,day.slice(8,10),day.slice(11,13),day.slice(14,16),day.slice(17,19));
 				} else {
@@ -90,7 +85,9 @@ airbus.mes.stationtracker.util.Formatter = {
 				}
 				
 			},
-			/*** Transform object Date to date (without hour) ***/
+			
+			// Transform object Date to date (without hour) 
+			
 			date2date : function(day) {
 				return day.split('T')[0];
 			},
@@ -146,13 +143,13 @@ airbus.mes.stationtracker.util.Formatter = {
 				}
 		
 			},
-			/***************************************************************************
+			/*----------------------------------------------------------------------------
 		     * Permit to display the different case of rendering of box in scheduler : 
 		     * See sd for different cases
 		     * 
 		     * @param {oBox} Object wich represent the current event in scheduler
 		     * @return {STRING} html the html wich will apply
-		     ****************************************************************************/
+		     ----------------------------------------------------------------------------*/
 			BoxDisplay : function( oBox ) {
 				
 				var html = "";
@@ -367,23 +364,23 @@ airbus.mes.stationtracker.util.Formatter = {
 				}
 			},
 
-			/***************************************************************************
+			/*----------------------------------------------------------------------------
 			     * Permit to display the different case to the left y-axis of scheduler
 			     * display the case of user affected 
 			     * no user affected
 			     * folder row.
 			     * 
 			     * @param {oSection} Object wich represent the current Row
-			****************************************************************************/
-			YdisplayRules : function( oSection ) {
-			
+			----------------------------------------------------------------------------*/
+			YdisplayRules : function ( oSection ) {
+
 				if (oSection.initial != undefined ) {
 
 					var html = '<span  style="float: right;margin-right: 5px;" >' + oSection.initial
 							+ '</span>';
 					return html;
-
 				}
+				
 				//** folder row **/
 				if (oSection.children != undefined) {
 
@@ -394,16 +391,10 @@ airbus.mes.stationtracker.util.Formatter = {
 							+ ' class="fa fa-plus custom" onclick="airbus.mes.stationtracker.AssignmentManager.newLine(\''
 							+ oSection.key + '\')"></span></div>';
 					return html;
-
 				}
 				
-				//** user affected **/
+				// user affected 
 				var sshiftID = airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftID;
-
-				//				not used						
-//				if ( airbus.mes.stationtracker.ShiftManager.dayDisplay ) {
-//					var sShiftName = airbus.mes.stationtracker.ShiftManager.ShiftSelected 
-//				}
 								
 				if (airbus.mes.stationtracker.AssignmentManager.affectationHierarchy[oSection.avlLine]) {
 
@@ -484,13 +475,9 @@ airbus.mes.stationtracker.util.Formatter = {
 				var html = '<div><i class="fa  fa-pencil ylabelEditIcon"></i><span class="ylabel">'
 					+ airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("SelectOperator") + '</span></div>';
 				return html;
-		
-		
 				}
-				
-				
 			},
-			/**
+			/*
 		     * Sort worklist according to business rule.
 		     * 
 		      * Rule in detail: the operations shall be grouped by WO. These WO groups
