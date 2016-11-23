@@ -342,6 +342,9 @@ airbus.mes.stationtracker.ModelManager = {
  				}),
  		    
  		    success: function(data){
+ 		    	if(typeof data == "string"){
+					data = JSON.parse(data);
+				}
  		    	oViewModel.setData(data);
  		    },
  		   
@@ -364,6 +367,9 @@ airbus.mes.stationtracker.ModelManager = {
    				}),
    		    
    		    success: function(data){
+   		    	if(typeof data == "string"){
+					data = JSON.parse(data);
+				}
    		    	oViewModel.setData(data);
    		    },
    		   

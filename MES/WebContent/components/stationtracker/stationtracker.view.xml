@@ -87,7 +87,7 @@
 											<VBox width="31%">
 												<Label text="{StationTrackerI18n>Adherence}" class=" whiteText" />
 												<Label
-													text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/Labour}"
+													text="{KPItaktAdherence>/taktAdherence}%"
 													class="sapUiSmallMarginTop kpiValue  whiteText" height="100%" />
 
 											</VBox>
@@ -101,8 +101,8 @@
 																<layout:GridData span="L8 M8 S8" />
 															</layoutData>
 														</Label>
-														<core:Icon src="sap-icon://up"
-															class=" TrendGreen takt_kpi_value takt_kpi_trend_value" />
+														<core:Icon src="{path:'KPItaktAdherence>/trend', formatter:'airbus.mes.stationtracker.util.Formatter.KPIiconTrendSrc'}"
+															class="{path:'KPItaktAdherence>/trend', formatter:'airbus.mes.stationtracker.util.Formatter.KPIiconTrendColor'}" />
 
 														<Label text="{StationTrackerI18n>DeltaVsSLB}" class="whiteText takt_kpi_name">
 															<layoutData>

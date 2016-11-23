@@ -2,6 +2,10 @@
 	color: #84bd00;
 }
 
+.TrendRed {
+	color: #ff0000;
+}
+
 #team-popover button {
 	display: block;
 	width: 100%;
@@ -1075,6 +1079,10 @@ background-color: #0085AD !important;
 }
 
 .classKpiHeaderContent .classTaktAdherenceTrend .TrendGreen {
+	margin-bottom: 0.5rem;
+}
+
+.classKpiHeaderContent .classTaktAdherenceTrend .TrendRed {
 	margin-bottom: 0.5rem;
 }
 

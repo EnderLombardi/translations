@@ -4,6 +4,22 @@ jQuery.sap.declare("airbus.mes.stationtracker.util.Formatter");
 
 airbus.mes.stationtracker.util.Formatter = {
 		
+		KPIiconTrendSrc : function(bTrend){
+			if(bTrend){
+				return "sap-icon://up"
+			}else{
+				return "sap-icon://down"
+			}
+		},
+		
+		KPIiconTrendColor : function(bTrend){
+			if(bTrend){
+				return "TrendGreen takt_kpi_value takt_kpi_trend_value"
+			}else{
+				return "TrendRed takt_kpi_value takt_kpi_trend_value"
+			}
+		},
+		
 		minSizeMinutes : 30,
 
 		sizeMin : function(sEndDate, sStartDate) {
