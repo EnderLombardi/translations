@@ -25,10 +25,12 @@ airbus.mes.shell.AutoRefreshManager =  {
 			this.autoRefresh = window.setInterval(
 				airbus.mes.shell.oView.oController.renderStationTracker(),		// API reference 
 				
-				airbus.mes.settings.AppConfManager.getConfiguration(			// Set interval time from configuration
+				parseInt(
+					airbus.mes.settings.AppConfManager.getConfiguration(		// Set interval time from configuration
 						"REFRESH_STATION_TRACKER_"+station,		// Primary Key
 						defaultKey							 	// Default Key
-				)
+					)
+				)*60000
 			);
 			break;
 			
@@ -40,10 +42,12 @@ airbus.mes.shell.AutoRefreshManager =  {
 			this.autoRefresh = window.setInterval(
 				airbus.mes.disruptiontracker.ModelManager.loadDisruptionTrackerModel(),	// API reference 
 				
-				airbus.mes.settings.AppConfManager.getConfiguration(					// Set interval time from configuration
+				parseInt(
+					airbus.mes.settings.AppConfManager.getConfiguration(				// Set interval time from configuration
 						"REFRESH_DISRUPTION_TRACKER_"+station,		// Primary Key
 						defaultKey								 	// Default Key
-				)
+					)
+				)*60000
 			);
 			break;
 			
@@ -56,10 +60,12 @@ airbus.mes.shell.AutoRefreshManager =  {
 			this.autoRefresh = window.setInterval(
 				airbus.mes.disruptiontracker.kpi.ModelManager.loadDisruptionKPIModel(),	// API reference 
 				
-				airbus.mes.settings.AppConfManager.getConfiguration(					// Set interval time from configuration
+				parseInt(
+					airbus.mes.settings.AppConfManager.getConfiguration(				// Set interval time from configuration
 						"REFRESH_DISRUPTION_KPI_"+station,		// Primary Key
 						defaultKey							 	// Default Key
-				)
+					)
+				)*60000
 			);
 			break;
 

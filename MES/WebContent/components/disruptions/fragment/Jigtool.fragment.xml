@@ -48,7 +48,7 @@
 										<!-- <Text text="{MaterialListModel>MATNR}" visible="false"/> -->
 										<VBox width="20%">
 											<Label text="Quantity" />
-											<Input type="Number" width="80%" class="inputQty" />
+											<Input type="Number" width="80%" value="1" class="inputQty" />
 										</VBox>
 									</items>
 								</HBox>

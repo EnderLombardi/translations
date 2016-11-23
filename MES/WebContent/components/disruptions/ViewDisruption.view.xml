@@ -285,11 +285,11 @@
 												</Label>
 											</f:label>
 											<f:fields>
-												<TextArea value="{path: 'operationDisruptionsModel>Materials', formatter: 'airbus.mes.disruptions.Formatter.setMaterialqty'}">
+												<Text text="{path: 'operationDisruptionsModel>Materials', formatter: 'airbus.mes.disruptions.Formatter.setMaterialqty'}">
 													<layoutData>
 														<l:GridData span="L3 M3 S12" />
 													</layoutData>
-												</TextArea>
+												</Text>
 											</f:fields>
 										</f:FormElement>
 										
@@ -302,11 +302,11 @@
 												</Label>
 											</f:label>
 											<f:fields>
-												<TextArea value="{path: 'operationDisruptionsModel>JigTools', formatter: 'airbus.mes.disruptions.Formatter.setMaterialqty'}">
+												<Text text="{path: 'operationDisruptionsModel>JigTools', formatter: 'airbus.mes.disruptions.Formatter.setMaterialqty'}">
 													<layoutData>
 														<l:GridData span="L3 M3 S12" />
 													</layoutData>
-												</TextArea>
+												</Text>
 											</f:fields>
 										</f:FormElement>
 
