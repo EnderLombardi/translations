@@ -330,12 +330,10 @@ airbus.mes.disruptions.ModelManager = {
 									airbus.mes.shell.ModelManager
 											.messageShow(data.Rowsets.Rowset[0].Row[0].Message)
 							}
-						} else {
-							if (data.Rowsets.FatalError) {
-								airbus.mes.shell.ModelManager
-										.messageShow(data.Rowsets.FatalError);
-							}
+						} else if (data.Rowsets.FatalError) {
+							airbus.mes.shell.ModelManager.messageShow(data.Rowsets.FatalError);
 						}
+						
 
 					},
 
@@ -429,14 +427,10 @@ airbus.mes.disruptions.ModelManager = {
 									airbus.mes.disruptions.ModelManager
 											.loadDisruptionsByOperation(operationBO);
 									
-								}
-								else if(currentPage == "disruptiontrackerView") {
-
-									airbus.mes.disruptions.ModelManager
-											.updateDisruptionModel();
-									
+								} else if(currentPage == "disruptiontrackerView") {
+									airbus.mes.disruptions.ModelManager.updateDisruptionModel();
 									sap.ui.getCore().byId("disruptionDetailPopup--disruptDetailNavContainer").back();
-									
+
 								}
 								
 								
@@ -467,11 +461,9 @@ airbus.mes.disruptions.ModelManager = {
 									airbus.mes.shell.ModelManager
 											.messageShow(data.Rowsets.Rowset[0].Row[0].Message)
 							}
-						} else {
-							if (data.Rowsets.FatalError) {
-								airbus.mes.shell.ModelManager
-										.messageShow(data.Rowsets.FatalError);
-							}
+						} else if (data.Rowsets.FatalError) {
+								airbus.mes.shell.ModelManager.messageShow(data.Rowsets.FatalError);
+							
 						}
 
 					},
@@ -552,7 +544,7 @@ airbus.mes.disruptions.ModelManager = {
 	escalateDisruption : function(msgRef, i18nModel) {
 		var sMessageSuccess = i18nModel.getProperty("successfulEscalation");
 		var sMessageError = i18nModel.getProperty("tryAgain");
-		var flag_success;
+		var flagSuccess;
 
 		jQuery
 				.ajax({
@@ -565,28 +557,28 @@ airbus.mes.disruptions.ModelManager = {
 					error : function(xhr, status, error) {
 						airbus.mes.shell.ModelManager
 								.messageShow(sMessageError);
-						flag_success = false
+						flagSuccess = false
 
 					},
 					success : function(result, status, xhr) {
 						if (result.Rowsets.Rowset[0].Row[0].Message_Type === undefined) {
 							airbus.mes.shell.ModelManager
 									.messageShow(sMessageSuccess);
-							flag_success = true;
+							flagSuccess = true;
 						} else if (result.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
 							airbus.mes.shell.ModelManager
 									.messageShow(result.Rowsets.Rowset[0].Row[0].Message)
-							flag_success = false;
+							flagSuccess = false;
 						} else {
 							airbus.mes.shell.ModelManager
 									.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
-							flag_success = true;
+							flagSuccess = true;
 						}
 
 					}
 				});
 
-		return flag_success;
+		return flagSuccess;
 	},
 
 	/***************************************************************************
@@ -606,7 +598,7 @@ airbus.mes.disruptions.ModelManager = {
 
 		var sMessageSuccess = i18nModel.getProperty("successfulAcknowledge");
 		var sMessageError = i18nModel.getProperty("tryAgain");
-		var flag_success;
+		var flagSuccess;
 
 		jQuery
 				.ajax({
@@ -624,27 +616,27 @@ airbus.mes.disruptions.ModelManager = {
 					error : function(xhr, status, error) {
 						airbus.mes.shell.ModelManager
 								.messageShow(sMessageError);
-						flag_success = false
+						flagSuccess = false
 
 					},
 					success : function(result, status, xhr) {
 						if (result.Rowsets.Rowset[0].Row[0].Message_Type === undefined) {
 							airbus.mes.shell.ModelManager
 									.messageShow(sMessageSuccess);
-							flag_success = true;
+							flagSuccess = true;
 						} else if (result.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
 							airbus.mes.shell.ModelManager
 									.messageShow(result.Rowsets.Rowset[0].Row[0].Message)
-							flag_success = false;
+							flagSuccess = false;
 						} else {
 							airbus.mes.shell.ModelManager
 									.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
-							flag_success = true;
+							flagSuccess = true;
 						}
 
 					}
 				});
-		return flag_success;
+		return flagSuccess;
 	},
 
 	/***************************************************************************
@@ -664,7 +656,7 @@ airbus.mes.disruptions.ModelManager = {
 
 		var sMessageSuccess = i18nModel.getProperty("successSolved");
 		var sMessageError = i18nModel.getProperty("tryAgain");
-		var flag_success;
+		var flagSuccess;
 
 		jQuery
 				.ajax({
@@ -678,28 +670,28 @@ airbus.mes.disruptions.ModelManager = {
 					error : function(xhr, status, error) {
 						airbus.mes.shell.ModelManager
 								.messageShow(sMessageError);
-						flag_success = false
+						flagSuccess = false
 
 					},
 					success : function(result, status, xhr) {
 						if (result.Rowsets.Rowset[0].Row[0].Message_Type === undefined) {
 							airbus.mes.shell.ModelManager
 									.messageShow(sMessageSuccess);
-							flag_success = true;
+							flagSuccess = true;
 						} else if (result.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
 							airbus.mes.shell.ModelManager
 									.messageShow(result.Rowsets.Rowset[0].Row[0].Message)
-							flag_success = false;
+							flagSuccess = false;
 						} else {
 							airbus.mes.shell.ModelManager
 									.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
-							flag_success = true;
+							flagSuccess = true;
 						}
 
 					}
 				});
 
-		return flag_success;
+		return flagSuccess;
 	},
 
 	/***************************************************************************
@@ -736,24 +728,24 @@ airbus.mes.disruptions.ModelManager = {
 
 					},
 					success : function(result, status, xhr) {
-						var flag_success = false;
+						var flagSuccess = false;
 
 						if (result.Rowsets.Rowset[0].Row[0].Message_Type === undefined) {
 							airbus.mes.shell.ModelManager
 									.messageShow(sMessageSuccess);
-							flag_success = true;
+							flagSuccess = true;
 						} else if (result.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
 							airbus.mes.shell.ModelManager
 									.messageShow(result.Rowsets.Rowset[0].Row[0].Message)
-							flag_success = false;
+							flagSuccess = false;
 						} else {
 							airbus.mes.shell.ModelManager
 									.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
-							flag_success = true;
+							flagSuccess = true;
 						}
 
 						// Add Comment to Model
-						if (flag_success) {
+						if (flagSuccess) {
 							var oModel = sap.ui.getCore().getModel(
 									"operationDisruptionsModel");
 							oModel.getProperty("/Rowsets/Rowset/1/Row").push(
@@ -783,7 +775,7 @@ airbus.mes.disruptions.ModelManager = {
 
 		var sMessageSuccess = i18nModel.getProperty("successClosed");
 		var sMessageError = i18nModel.getProperty("tryAgain");
-		var flag_success;
+		var flagSuccess;
 
 		jQuery
 				.ajax({
@@ -801,28 +793,28 @@ airbus.mes.disruptions.ModelManager = {
 					error : function(xhr, status, error) {
 						airbus.mes.shell.ModelManager
 								.messageShow(sMessageError);
-						flag_success = false
+						flagSuccess = false
 
 					},
 					success : function(result, status, xhr) {
 						if (result.Rowsets.Rowset[0].Row[0].Message_Type === undefined) {
 							airbus.mes.shell.ModelManager
 									.messageShow(sMessageSuccess);
-							flag_success = true;
+							flagSuccess = true;
 						} else if (result.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
 							airbus.mes.shell.ModelManager
 									.messageShow(result.Rowsets.Rowset[0].Row[0].Message)
-							flag_success = false;
+							flagSuccess = false;
 						} else {
 							airbus.mes.shell.ModelManager
 									.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
-							flag_success = true;
+							flagSuccess = true;
 						}
 
 					}
 				});
 
-		return flag_success;
+		return flagSuccess;
 	},
 
 	/***************************************************************************
@@ -839,7 +831,7 @@ airbus.mes.disruptions.ModelManager = {
 	 **************************************************************************/
 	rejectDisruption : function(comment, msgref, sMessageSuccess, i18nModel) {
 		var sMessageError = i18nModel.getProperty("tryAgain");
-		var flag_success;
+		var flagSuccess;
 
 		jQuery
 				.ajax({
@@ -856,27 +848,27 @@ airbus.mes.disruptions.ModelManager = {
 					error : function(xhr, status, error) {
 						airbus.mes.shell.ModelManager
 								.messageShow(sMessageError);
-						flag_success = false
+						flagSuccess = false
 
 					},
 					success : function(result, status, xhr) {
 						if (result.Rowsets.Rowset[0].Row[0].Message_Type === undefined) {
 							airbus.mes.shell.ModelManager
 									.messageShow(sMessageSuccess);
-							flag_success = true;
+							flagSuccess = true;
 						} else if (result.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
 							airbus.mes.shell.ModelManager
 									.messageShow(result.Rowsets.Rowset[0].Row[0].Message)
-							flag_success = false;
+							flagSuccess = false;
 						} else {
 							airbus.mes.shell.ModelManager
 									.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
-							flag_success = true;
+							flagSuccess = true;
 						}
 
 					}
 				});
 
-		return flag_success
+		return flagSuccess
 	}
 };

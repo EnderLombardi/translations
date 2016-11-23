@@ -1,3 +1,4 @@
+"use strict";
 jQuery.sap.require("sap.m.MessageBox");
 jQuery.sap.require("sap.m.MessageToast");
 

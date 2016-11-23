@@ -1,3 +1,4 @@
+"use strict";
 sap.ui
 		.controller(
 				"airbus.mes.disruptions.CreateDisruption",
@@ -200,7 +201,7 @@ sap.ui
 					 * Create Disruption
 					 */
 					// get selected jig Tools
-					getSelectedJIg_Tool : function() {
+					getSelectedJIgTool : function() {
 						var getTokens = sap.ui.getCore().byId(
 								"createDisruptionView--jigtools").getTokens();
 						var result;
@@ -231,7 +232,7 @@ sap.ui
 						var oView = airbus.mes.disruptions.oView.createDisruption;
 						
 						var sJigtools = oView.getController()
-								.getSelectedJIg_Tool();
+								.getSelectedJIgTool();
 						if(sJigtools == undefined){
 							sJigtools = ""
 						}	
@@ -253,8 +254,8 @@ sap.ui
 
 						var sCategory = oView.byId("selectCategory")
 								.getSelectedKey();
-						var sRootCause = oView.byId("selectRootCause")
-								.getSelectedKey();
+//						var sRootCause = oView.byId("selectRootCause")
+//								.getSelectedKey();
 						var sComment = oView.byId("comment").getValue();
 
 						// forcefully set handle as the first item in the list
@@ -419,6 +420,8 @@ sap.ui
 									.getModel("i18nModel").getProperty(
 											"CompulsaryExpectedDateTime"));
 							return false;
+						} else {
+							return true;
 						}
 					},
 
@@ -757,9 +760,9 @@ sap.ui
 					 */
 					addNewMaterialToList : function() {
 
-						var oModelData = sap.ui.getCore().getModel(
-								"MaterialListModel").getProperty(
-								"/MaterialList");
+//						var oModelData = sap.ui.getCore().getModel(
+//								"MaterialListModel").getProperty(
+//								"/MaterialList");
 
 						if (sap.ui.getCore().byId("customMaterial").getValue() != "") {
 
@@ -938,9 +941,9 @@ sap.ui
 					 */
 					addNewJigToolToList : function() {
 
-						var oModelData = sap.ui.getCore().getModel(
-								"MaterialListModel").getProperty(
-								"/MaterialList");
+//						var oModelData = sap.ui.getCore().getModel(
+//								"MaterialListModel").getProperty(
+//								"/MaterialList");
 
 						if (sap.ui.getCore().byId("customJigTool").getValue() != "") {
 

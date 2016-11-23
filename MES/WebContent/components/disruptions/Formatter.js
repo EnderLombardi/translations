@@ -22,13 +22,23 @@ airbus.mes.disruptions.Formatter = {
 	},
 
 	setGravityText : function(gravity) {
-
-		if (gravity == 1)
-			return airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("NotBlocked");
-		else if (gravity == 2)
-			return airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("Disturbed");
-		else if (gravity == 3)
-			return airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("Blocked");
+		
+		var property;
+		
+		switch(gravity) {
+		case 1:
+			property = airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("NotBlocked");
+			break;
+		case 2:
+			property = airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("Disturbed");
+			break;
+		case 3:
+			property = airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("Blocked");
+			break;
+		default:
+			break;
+		}
+		return property;
 	},
 
 	getDate : function(datetime) {
@@ -103,9 +113,7 @@ airbus.mes.disruptions.Formatter = {
 
 		if (status == airbus.mes.disruptions.Formatter.status.deleted || status == airbus.mes.disruptions.Formatter.status.closed) {
 			return false;
-		} 
-		else if (originatorFlag == 'X') {
-
+		} else if (originatorFlag == 'X') {
 			return true;
 		}
 
@@ -138,15 +146,12 @@ airbus.mes.disruptions.Formatter = {
 
 				return true;
 
-			}
-			else if (status == airbus.mes.disruptions.Formatter.status.pending || status == airbus.mes.disruptions.Formatter.status.acknowledged) {
+			} else if (status == airbus.mes.disruptions.Formatter.status.pending || status == airbus.mes.disruptions.Formatter.status.acknowledged) {
 				
 				this.setText(airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("reject"));
 				this.setEnabled(true);
 				return true;
-
 			}
-
 		}
 
 		return false;
@@ -182,12 +187,10 @@ airbus.mes.disruptions.Formatter = {
 
 	setEscalateButtonVisibility : function(originatorFlag, escalation, status) {
 
-		if (status == airbus.mes.disruptions.Formatter.status.solved || status == airbus.mes.disruptions.Formatter.status.deleted || status == airbus.mes.disruptions.Formatter.status.closed) {
-			return false;
-		} 
-		else if (originatorFlag == "X" && escalation < 3)
-			return true;
-
+	if (status == airbus.mes.disruptions.Formatter.status.solved || status == airbus.mes.disruptions.Formatter.status.deleted || status == airbus.mes.disruptions.Formatter.status.closed) {
+		return false;
+	} else if (originatorFlag == "X" && escalation < 3)
+		return true;
 		else
 			return false;
 	},
@@ -238,33 +241,36 @@ airbus.mes.disruptions.Formatter = {
 	
 	setDisruptionTitle : function(iGravity){
 		
-		var sGravity;
-		switch(iGravity)
-		{
+		switch(iGravity) {
 		case "1":
 			return "green";
+			break;
 		case "2":
 			return "orange";
+			break;
 		case "3":
 			return "red";
+			break;
+		default:
+			return "";
+			break;
 		}
 	},
 	
 	setMaterialqty :function(oText) {
-		
+		var loString;
+		var loNewStr;
 		if (oText){
-			var loString = oText.replace(/[(]/g , " Quantity-");
-			var loNewStr = loString.replace(/[)]/g,"");
-			var loNewStr = loNewStr.replace(/[,]/g,"\n");
+			loString = oText.replace(/[(]/g , " Quantity-");
+			loNewStr = loString.replace(/[)]/g,"");
+			loNewStr = loNewStr.replace(/[,]/g,"\n");
 			
 		} else {
 			
-			var loNewStr = "-";
+			loNewStr = "-";
 			
 		}
 		return loNewStr;
-		
-		
 		
 	}
 

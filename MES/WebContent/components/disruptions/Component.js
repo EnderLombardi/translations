@@ -1,3 +1,4 @@
+"use strict";
 jQuery.sap.require("sap.ui.core.UIComponent");
 jQuery.sap.require("airbus.mes.disruptions.ModelManager");
 jQuery.sap.require("airbus.mes.disruptions.Formatter");
@@ -64,5 +65,7 @@ airbus.mes.disruptions.Component.prototype.createContent = function() {
 		
 		return this.oView.viewDisruption;
 		
+	} else {
+		return airbus.mes.disruptions.oView;
 	}
 };
