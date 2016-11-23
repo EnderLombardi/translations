@@ -1,3 +1,96 @@
+/* Colours */
+/* Primary colours */
+/* Secondary Colours */
+/* Secondary Colours */
+/* Font colours */
+/********************
+WORK TRACKER
+SCHEDULAR TASK STYLE
+BOX MANAGEMENT 
+*********************/
+.trackerBox {
+  width: 100%;
+  height: inherit;
+  position: absolute;
+  z-index: 1;
+  line-height: 23px;
+  left: 0px;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+  .trackerBox .trackerText {
+    padding-left: 10px;
+    position: relative;
+    z-index: 1;
+    float: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: calc(100% - 70px);
+    white-space: nowrap;
+    color: white;
+    overflow: hidden; }
+  .trackerBox .trackerTextBlock {
+    padding-left: 10px;
+    position: relative;
+    z-index: 1;
+    float: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 40%;
+    white-space: nowrap;
+    color: rgba(0, 86, 112, 0.94); }
+  .trackerBox .colorProgress {
+    height: inherit;
+    position: absolute;
+    z-index: 0;
+    left: 0px;
+    overflow: hidden; }
+  .trackerBox .openBlockedEscalated, .trackerBox .openBlocked {
+    height: inherit;
+    width: 100%;
+    background-color: #fbec00; }
+  .trackerBox .fa {
+    position: relative;
+    z-index: 1;
+    line-height: 24px;
+    height: 23px;
+    color: #ffffff;
+    overflow: hidden; }
+    .trackerBox .fa.rightIcon {
+      padding-right: 6px;
+      float: right; }
+    .trackerBox .fa.triangleIcon {
+      padding-left: 6px;
+      float: left; }
+    .trackerBox .fa.oswIcon {
+      position: relative;
+      z-index: 1;
+      line-height: 14px;
+      height: auto;
+      padding-left: 5px;
+      padding-right: 5px;
+      border-radius: 10px;
+      float: left;
+      top: 5px;
+      margin-left: 6px;
+      color: rgba(0, 86, 112, 0.94);
+      overflow: hidden;
+      background-color: #fbec00; }
+      .trackerBox .fa.oswIcon b {
+        font-family: arial; }
 
+.trackerBox:hover .dark-lime-green-back {
+  background-color: #536f12 !important; }
+.trackerBox:hover .teal-blue-back {
+  background-color: #0f2d65 !important; }
+.trackerBox:hover .cherry-red-back {
+  background-color: #9e001e !important; }
+.trackerBox:hover .openBlockedEscalated {
+  background-color: #ffbf00 !important; }
+.trackerBox:hover .openBlocked {
+  background-color: #ffbf00 !important; }
+
+.grey:hover {
+  background-color: #767879;
+  color: black; }
 
 /*# sourceMappingURL=stationtracker.css.map */

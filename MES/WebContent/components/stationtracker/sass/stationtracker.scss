@@ -1,0 +1,109 @@
+@import '../../../Sass/colours';
+
+/********************
+WORK TRACKER
+SCHEDULAR TASK STYLE
+BOX MANAGEMENT 
+*********************/
+.trackerBox{
+	width:100%;
+	height:inherit;
+	position:absolute;
+	z-index: 1;
+	line-height: 23px;
+	left: 0px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	.trackerText{
+		padding-left: 10px;
+		position: relative;
+		z-index: 1;
+		float: left;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		max-width:calc(100% - 70px);
+		white-space: nowrap;
+		color: white;
+		overflow: hidden;
+	}
+	.trackerTextBlock{
+		padding-left: 10px;
+		position: relative;
+		z-index: 1;
+		float: left;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		max-width:40%;
+		white-space: nowrap;
+		color: $petrol-94;
+	}
+	.colorProgress{
+	   	height: inherit;
+	   	position: absolute;
+	   	z-index: 0;
+	   	left: 0px;
+	   	overflow: hidden;
+	}
+	.openBlockedEscalated, .openBlocked{
+	   	height: inherit;
+		width:100%;
+		background-color:$dandelion;
+	}
+	.fa {
+	    position: relative;
+	    z-index: 1;
+	    line-height: 24px;
+		height:23px;
+	   	color: $white-two;
+	    overflow: hidden;
+	    &.rightIcon {
+		    padding-right: 6px;
+		    float: right;
+		}
+		&.triangleIcon {
+		    padding-left: 6px;
+		    float: left;
+		}
+		&.oswIcon {
+		    position: relative;
+		    z-index: 1;
+		    line-height: 14px;
+		    height: auto;
+		    padding-left: 5px;
+		    padding-right: 5px;
+		    border-radius: 10px;
+		    float: left;
+		    top: 5px;
+		    margin-left: 6px;
+		    color: rgba(0, 86, 112, 0.94);
+		    overflow: hidden;
+		    background-color: $dandelion;
+		    & b {
+		    	font-family: arial;
+		    }
+		}
+	}
+
+}
+.trackerBox:hover{
+	.dark-lime-green-back{
+		background-color:$dark-lime-green-hover !important;
+	}
+	.teal-blue-back{
+		background-color:$teal-blue-hover !important;
+	}
+	.cherry-red-back{
+		background-color:$cherry-red-hover !important;
+	}
+	.openBlockedEscalated{
+		background-color:$dandelion-hover !important;
+	}
+	.openBlocked{
+		background-color:$dandelion-hover !important;
+	}
+}
+
+.grey:hover{
+	background-color: $cool-grey-hover;
+	color: black;
+}
