@@ -881,6 +881,7 @@ background-color: #0085AD !important;
     box-shadow: none;
 	*/
 	border: none;
+	overflow:visible;
 }
 
 #stationTrackerView--stationtracker .dhx_matrix_cell div,
@@ -1043,6 +1044,7 @@ background-color: #0085AD !important;
 	text-overflow: ellipsis;
 	border: solid 2px #BBBCBC;
 	background-color: #F5F5F5;
+	overflow:hidden;
 }
 
 #stationTrackerView--stationtracker .tracker-item-initial .fa-exclamation-triangle
@@ -1484,7 +1486,7 @@ svg#stationTrackerView--takt_adherence_area_chart {
 
 .dhx_cal_event_line:hover .trackerBoxtooltiptext{
 	display:inline; 
-	position:fixed;
+	position:absolute;
     margin-top: -35px;
     margin-left: -100px;
     z-index:99;
@@ -1492,4 +1494,7 @@ svg#stationTrackerView--takt_adherence_area_chart {
 
 .dhx_cal_event_line:hover div {
 	background: none;
+}
+.dhx_cal_container div {
+	overflow:visible;
 }
