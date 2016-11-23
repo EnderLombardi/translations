@@ -35,6 +35,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 
 						scheduler.config.mark_now = true;
 						scheduler.config.drag_create = false;
+						// cant drag andr drop verticaly if set to force
 						scheduler.config.touch = "force";
 						scheduler.config.details_on_create = false;
 						scheduler.config.details_on_dblclick = false;
