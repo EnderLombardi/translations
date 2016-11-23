@@ -18,7 +18,6 @@ airbus.mes.shell.AutoRefreshManager =  {
 		switch(viewName){
 		
 		case "STATION_TRACKER":
-			this.renderStationTracker();
 			
 			/**********************************************
 			 * Set Window Interval

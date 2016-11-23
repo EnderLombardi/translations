@@ -9,10 +9,10 @@
 			backgroundDesign="Transparent" direction="Column">
 			<items>
 			
-				<Label id="disruptLabel" class="sapUiMediumMargin" text="{i18nModel>Disruption}"></Label>
+				<Label id="disruptLabel" class="sapUiMediumMarginBeginEnd sapUiMediumMarginTop sapUiSmallMarginBottom" text="{i18nModel>Disruption}"></Label>
 							
 				<f:Form id="createDisruptionForm" editable="true"
-					backgroundDesign="Transparent" class="sapUiMediumMargin" visible="true">
+					backgroundDesign="Transparent" class="sapUiSmallMargin" visible="true">
 					<f:layout>
 						<f:ResponsiveGridLayout span="L12 M12 S12" />
 					</f:layout>
