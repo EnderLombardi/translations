@@ -462,24 +462,45 @@ airbus.mes.disruptions.ModelManager = {
 	},
 	
 	updateDisruptionModel : function() {
-		var desc = sap.ui.getCore().byId("createDisruptionView--description").getValue();
-		var category = sap.ui.getCore().byId("createDisruptionView--selectCategory").getSelectedKey();
-		var reason = sap.ui.getCore().byId("createDisruptionView--selectreason").getSelectedKey();
-		var resp = sap.ui.getCore().byId("createDisruptionView--selectResponsible").getSelectedKey();
-		var orig = sap.ui.getCore().byId("createDisruptionView--selectOriginator").getSelectedKey();
-		var status = sap.ui.getCore().byId("createDisruptionView--status").getValue();
-		var gravity = sap.ui.getCore().byId("createDisruptionView--gravity").getSelectedKey();
-		var openDate = sap.ui.getCore().byId("createDisruptionView--openDate").getValue();
-		var openTime = sap.ui.getCore().byId("createDisruptionView--openTime").getValue();
-		var expectedDate = sap.ui.getCore().byId("createDisruptionView--expectedDate").getValue();
-		var expectedTime = sap.ui.getCore().byId("createDisruptionView--expectedTime").getValue();
-		var promisedDate = sap.ui.getCore().byId("createDisruptionView--promisedDate").getValue();
-		var promisedTime = sap.ui.getCore().byId("createDisruptionView--promisedTime").getValue();
-		var timeLost = sap.ui.getCore().byId("createDisruptionView--timeLost").getValue();
-		var rootCause = sap.ui.getCore().byId("createDisruptionView--selectRootCause").getSelectedKey();
-		var material = sap.ui.getCore().byId("createDisruptionView--materials").getValue();
-		var jigTool = sap.ui.getCore().byId("createDisruptionView--jigtools").getValue();
-		var comment = sap.ui.getCore().byId("createDisruptionView--comment").getValue();
+		
+		var oModel = airbus.mes.disruptions.oView.viewDisruption.getModel("operationDisruptionsModel");
+		
+		var disruptionModel = oModel.getProperty("/Rowsets/Rowset/0/Row/0");		
+		
+		disruptionModel.Reason = sap.ui.getCore().byId("createDisruptionView--selectreason").getSelectedKey();
+		
+		disruptionModel.ResponsibleGroup = sap.ui.getCore().byId("createDisruptionView--selectResponsible").getSelectedKey();
+		
+		disruptionModel.RootCause = sap.ui.getCore().byId("createDisruptionView--selectRootCause").getSelectedKey();
+		
+		disruptionModel.TimeLost = sap.ui.getCore().byId("createDisruptionView--timeLost").getValue();
+		
+		disruptionModel.FixedByTime = sap.ui.getCore().byId("createDisruptionView--expectedDate").getValue() + " " 
+								+ sap.ui.getCore().byId("createDisruptionView--expectedTime").getValue();
+		
+		disruptionModel.PromisedDateTime = sap.ui.getCore().byId("createDisruptionView--promisedDate").getValue() + " " 
+									+ sap.ui.getCore().byId("createDisruptionView--promisedTime").getValue();
+		
+
+		var sComment = sap.ui.getCore().byId("createDisruptionView--comment").getValue();
+		var currDate = new Date();
+		var date = currDate.getFullYear() + "-" + currDate.getMonth() + "-" + currDate.getDate();
+
+		var oComment = {
+				"Action" : airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("comment"),
+				"Comments" : sComment,
+				"Counter" : "",
+				"Date" : date,
+				"MessageRef" : disruptionModel.MessageRef,
+				"UserFullName" : ( sap.ui.getCore().getModel("userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/first_name").toLowerCase() + " " +
+						   sap.ui.getCore().getModel("userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/last_name").toLowerCase() )
+		};
+		
+		var commentModel = oModel.getProperty("/Rowsets/Rowset/1/Row");
+		
+		commentModel.push(oComment);
+		
+		oModel.refresh();
 		
 	},
 

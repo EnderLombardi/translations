@@ -200,6 +200,8 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 
 		// Empty Model
 		airbus.mes.disruptions.oView.viewDisruption.getModel("operationDisruptionsModel").setData();
+		
+		airbus.mes.disruptiontracker.ModelManager.loadDisruptionTrackerModel();
 	},
 	
 	onNavigate : function() {
