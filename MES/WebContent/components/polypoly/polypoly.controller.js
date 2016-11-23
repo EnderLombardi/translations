@@ -918,7 +918,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 	},
 
 	onSaveColumnPopup : function() {
-		var reg = new RegExp('[A-Z0-9\_]*');
+		var reg = new RegExp('[A-Z0-9\_-]*');
 		var sTechname = columnModel.oData.techname;
 		sTechname=sTechname.match(reg)[0];
 		
