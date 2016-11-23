@@ -15,7 +15,7 @@ airbus.mes.polypoly.util.Formatter = {
 			var sMask = stationMII + "_";
 			var nDispLen = nMaxLength - stationMII.length;
 			for(var i = 0; i<nDispLen;i++){
-				sMask = sMask.concat("C");
+				sMask = sMask.concat("*");
 			}
 			return sMask
 		}

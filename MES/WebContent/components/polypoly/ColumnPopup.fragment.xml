@@ -19,7 +19,7 @@
 						mask="{ path : 'columnModel>/techname', formatter : 'airbus.mes.polypoly.util.Formatter.techNameFormat' }"
 						placeholderSymbol="~" value="{columnModel>/techname}">
 						<rules>
-							<MaskInputRule maskFormatSymbol = "C" regex = "^[A-Z0-9\_-]"/>
+							<MaskInputRule maskFormatSymbol = "*" regex = "^[A-Z0-9\_-]"/>
 						</rules>
 					</MaskInput>
 					<Label class="" text="{PolypolyI18n>CompetencyDescription}" />
