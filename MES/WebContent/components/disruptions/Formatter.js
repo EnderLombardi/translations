@@ -255,7 +255,7 @@ airbus.mes.disruptions.Formatter = {
 		if (oText){
 			var loString = oText.replace(/[(]/g , " Quantity-");
 			var loNewStr = loString.replace(/[)]/g,"");
-			var loNewStr = loNewStr.replace(/[,]/g,"<br />");
+			var loNewStr = loNewStr.replace(/[,]/g,"\n");
 			
 		} else {
 			
