@@ -229,10 +229,19 @@ sap.ui
 					onCreateDisruption : function() {
 
 						var oView = airbus.mes.disruptions.oView.createDisruption;
-						var jigtools = oView.getController()
+						
+						var sJigtools = oView.getController()
 								.getSelectedJIg_Tool();
-						var Materials = oView.getController()
+						if(sJigtools == undefined){
+							sJigtools = ""
+						}	
+						
+						var sMaterials = oView.getController()
 								.getSelectedMaterials();
+						if(sMaterials == undefined){
+							sMaterials = ""
+						}
+						
 						var oController = oView.getController();
 
 						// some mandatory fields need to be filled before
@@ -355,10 +364,10 @@ sap.ui
 												+ airbus.mes.settings.ModelManager.station
 									}, {
 										"attribute" : "MATERIALS",
-										"value" : Materials
+										"value" : sMaterials
 									}, {
 										"attribute" : "JIG_TOOLS",
-										"value" : jigtools
+										"value" : sJigtools
 									} ]
 
 						}
