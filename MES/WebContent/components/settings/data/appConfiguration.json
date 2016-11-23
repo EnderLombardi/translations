@@ -1,15 +1,40 @@
 {
-	"configarationList": [{
-		"key": "MES_PHOTO_DISPLAY",
-		"value": "FALSE"
-	}, {
-		"key": "MES_PHOTO_NAME",
-		"value": "TRUE"
-	}, {
-		"key": "MES_BADGE_PIN",
-		"value": "FALSE"
-	}, {
-		"key": "MES_BADGE_ACTIVE",
-		"value": "TRUE"
-	}]
+"configarationList": [
+  {
+"key": "MES_BADGE_ACTIVE",
+"value": "FALSE"
+},
+  {
+"key": "MES_BADGE_PIN",
+"value": "FALSE"
+},
+  {
+"key": "MES_PHOTO_DISPLAY",
+"value": "TRUE"
+},
+  {
+"key": "MES_PHOTO_NAME",
+"value": "TRUE"
+},
+  {
+"key": "MES_REFRESH_ACTIVE",
+"value": "FALSE"
+},
+  {
+"key": "MES_REFRESH_DEF_VAL",
+"value": "120"
+},
+  {
+"key": "POLYGROUP_PHYS_ST_IP4",
+"value": "POLY_IP"
+},
+  {
+"key": "REFRESH_STATION_TRACKER_PHYS_ST_IP4",
+"value": "120"
+},
+  {
+"key": "POLYGROUP_PHYS_ST_IP2",
+"value": "POLY_IP"
+}
+],
 }

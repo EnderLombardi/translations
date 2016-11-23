@@ -226,7 +226,7 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 		airbus.mes.stationtracker.AssignmentManager.computeAffectationHierarchy();
 		
 		//** asynchrone call **//
-		this.loadStationTrackerGantKPI();
+		airbus.mes.shell.oView.oController.loadStationTrackerGantKPI();
    	
 	},
 	
