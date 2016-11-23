@@ -79,7 +79,7 @@
 										</layout:Grid>
 									</VBox>
 								</VBox>
-								<VBox width="50%">
+								<VBox id="boxTaktAdherenceRight" width="50%">
 									<Label text="{StationTrackerI18n>TaktAdherence}" design="Bold"
 										width="100%" class="whiteTextHeader sapUiSmallMarginTop" />
 									<VBox justifyContent="SpaceAround" height="100%">
@@ -87,7 +87,7 @@
 											<VBox width="31%">
 												<Label text="{StationTrackerI18n>Adherence}" class=" whiteText" />
 												<Label
-													text="{KPItaktAdherence>/taktAdherence}%"
+													text="{KPItaktAdherence>/taktAdherenceUI}%"
 													class="sapUiSmallMarginTop kpiValue  whiteText" height="100%" />
 
 											</VBox>
@@ -101,8 +101,8 @@
 																<layout:GridData span="L8 M8 S8" />
 															</layoutData>
 														</Label>
-														<core:Icon src="{path:'KPItaktAdherence>/trend', formatter:'airbus.mes.stationtracker.util.Formatter.KPIiconTrendSrc'}"
-															class="{path:'KPItaktAdherence>/trend', formatter:'airbus.mes.stationtracker.util.Formatter.KPIiconTrendColor'}" />
+														<core:Icon src="{path:'KPItaktAdherence>/trendUI', formatter:'airbus.mes.stationtracker.util.Formatter.KPIiconTrendSrc'}"
+															class="TrendGreen takt_kpi_value takt_kpi_trend_value" color="{path:'KPItaktAdherence>/trendUI', formatter:'airbus.mes.stationtracker.util.Formatter.KPIiconTrendColor'}"/>
 
 														<Label text="{StationTrackerI18n>DeltaVsSLB}" class="whiteText takt_kpi_name">
 															<layoutData>
@@ -110,7 +110,7 @@
 															</layoutData>
 														</Label>
 														<Label
-															text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/DeltaVsSLB}"
+															text="{KPItaktAdherence>/deltaVsSLBUI} Hrs"
 															class="whiteText takt_kpi_value" />
 
 														<Label text="{StationTrackerI18n>DeltaVsSoA}" class="whiteText takt_kpi_name">
@@ -119,7 +119,7 @@
 															</layoutData>
 														</Label>
 														<Label
-															text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/DeltaVsSoA}"
+															text="{KPItaktAdherence>/deltaVsSoAUI} Hrs"
 															class="whiteText takt_kpi_value" />
 
 														<Label text="{StationTrackerI18n>CycleTime}" class="whiteText takt_kpi_name">
@@ -128,7 +128,7 @@
 															</layoutData>
 														</Label>
 														<Label
-															text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/CycleTime}"
+															text="{KPItaktAdherence>/cycleTimeUI} Hrs"
 															class="whiteText takt_kpi_value" />
 
 														<Label text="{StationTrackerI18n>WorkCintent}"
@@ -138,7 +138,7 @@
 															</layoutData>
 														</Label>
 														<Label
-															text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/WorkContent}"
+															text="{KPItaktAdherence>/workContentUI} Hrs"
 															class="whiteText takt_kpi_value" />
 													</layout:content>
 												</layout:Grid>
@@ -264,11 +264,11 @@
 								width="100%" class="whiteTextHeader sapUiSmallMarginTopBottom " />
 							<Label text="{StationTrackerI18n>Operations}" width="100%"
 								class="whiteText kpiName" />
-							<Label text="{KPIextraWork>/operations}"
+							<Label text="{KPIextraWork>/operationsUI}"
 								class="whiteText kpiValue" design="Bold" />
 							<Label text="{StationTrackerI18n>Hrs}" width="100%"
 								class="whiteText kpiName" />
-							<Label text="{KPIextraWork>/hours}"
+							<Label text="{KPIextraWork>/hoursUI}"
 								class="whiteText kpiValue" design="Bold" />
 						</VBox>
 

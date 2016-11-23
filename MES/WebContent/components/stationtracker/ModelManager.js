@@ -375,6 +375,7 @@ airbus.mes.stationtracker.ModelManager = {
 	},
 	loadKPIextraWork : function() {
 		var oViewModel = sap.ui.getCore().getModel("KPIextraWork");
+		airbus.mes.stationtracker.oView.byId("boxExtraWork").setBusy(true);
 		jQuery.ajax({
 			type : 'post',
 			url : this.urlModel.getProperty("urlKPIextraWork"),
@@ -386,7 +387,11 @@ airbus.mes.stationtracker.ModelManager = {
 			}),
 
 			success : function(data) {
+				if(typeof data == "string"){
+					data = JSON.parse(data);
+				}
 				oViewModel.setData(data);
+				airbus.mes.stationtracker.oView.byId("boxExtraWork").setBusy(false);
 			},
 
 			error : function(error, jQXHR) {
@@ -397,6 +402,7 @@ airbus.mes.stationtracker.ModelManager = {
 	},
 	loadKPItaktAdherence : function() {
 		var oViewModel = sap.ui.getCore().getModel("KPItaktAdherence");
+		airbus.mes.stationtracker.oView.byId("boxTaktAdherenceRight").setBusy(true);
 		jQuery.ajax({
 			type : 'post',
 			url : this.urlModel.getProperty("urlKPItaktAdherence"),
@@ -408,7 +414,11 @@ airbus.mes.stationtracker.ModelManager = {
 			}),
 
 			success : function(data) {
+				if(typeof data == "string"){
+					data = JSON.parse(data);
+				}
 				oViewModel.setData(data);
+				airbus.mes.stationtracker.oView.byId("boxTaktAdherenceRight").setBusy(false);
 			},
 
 			error : function(error, jQXHR) {

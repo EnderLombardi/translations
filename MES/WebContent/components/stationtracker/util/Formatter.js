@@ -5,18 +5,22 @@ jQuery.sap.declare("airbus.mes.stationtracker.util.Formatter");
 airbus.mes.stationtracker.util.Formatter = {
 		
 		KPIiconTrendSrc : function(bTrend){
-			if(bTrend){
+			if(bTrend == "true"){
 				return "sap-icon://up"
-			}else{
+			}else if(bTrend == "false"){
 				return "sap-icon://down"
+			}else{
+				return "sap-icon://decline"
 			}
 		},
 		
 		KPIiconTrendColor : function(bTrend){
-			if(bTrend){
-				return "TrendGreen takt_kpi_value takt_kpi_trend_value"
+			if(bTrend == "true"){
+				return "#84bd00"
+			}else  if(bTrend == "false"){
+				return "#ff0000"
 			}else{
-				return "TrendRed takt_kpi_value takt_kpi_trend_value"
+				return "#ffe900"
 			}
 		},
 		

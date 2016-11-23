@@ -1,8 +1,8 @@
 {
-	"taktAdherence":"85",
-	"deltaVsSLB":"-32",
-	"deltaVsSoA":"-4",
-	"cycleTime":"26",
-	"workContent":"130",
-	"trend":false
+	"taktAdherenceUI":"85",
+	"deltaVsSLBUI":"-32",
+	"deltaVsSoAUI":"-4",
+	"cycleTimeUI":"26",
+	"workContentUI":"130",
+	"trendUI":"true"
 }
