@@ -427,9 +427,9 @@ sap.ui
 						submitCommentId.setVisible(true);
 						//*********************************************************
 						
-						var status = oEvt.getSource().getBindingContext(
-								"operationDisruptionsModel")
-								.getObject("Status");
+//						var status = oEvt.getSource().getBindingContext(
+//								"operationDisruptionsModel")
+//								.getObject("Status");
 
 						/*if (status == airbus.mes.disruptions.Formatter.status.pending) {
 

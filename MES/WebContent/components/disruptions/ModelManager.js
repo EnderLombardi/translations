@@ -889,7 +889,7 @@ airbus.mes.disruptions.ModelManager = {
 					}
 				});
 
-		return flag_success
+		return flagSuccess
 	},
 	
 	// Change text of status in progress tab if any blocking disruption still open (not closed)
@@ -902,29 +902,22 @@ airbus.mes.disruptions.ModelManager = {
 		
 		// Check if any blocking disruption still open (not closed)
 		for(var i = 0; i < aDisruption.length; i++){
-			
-		    if(aDisruption[i].Gravity == 3 && aDisruption[i].Status != airbus.mes.disruptions.Formatter.status.closed) {
-		    	
-		    	sStatus = airbus.mes.operationdetail.Formatter.status.blocked;
-		    	break;
-		    }
+			if (aDisruption[i].Gravity == 3 && aDisruption[i].Status != airbus.mes.disruptions.Formatter.status.closed) {
+				sStatus = airbus.mes.operationdetail.Formatter.status.blocked;
+				break;
+			}
 		}
 		
 		// Set status = blocking
 		if(sStatus != null){
 			sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].status = sStatus;
 			modelRefresh = true;
-		}
-		
-		// Set status = In Progess if blocked earlier
-		else{
-			if(sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].status ==
-				airbus.mes.operationdetail.Formatter.status.blocked){
-				sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].status = 
-					airbus.mes.operationdetail.Formatter.status.active;
+		} else if(sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].status == airbus.mes.operationdetail.Formatter.status.blocked) {
+			// Set status = In Progess if blocked earlier	
+			sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].status =  airbus.mes.operationdetail.Formatter.status.active;
 				
 				modelRefresh = true;
-			}
+			
 		}
 	
 		// Refresh model

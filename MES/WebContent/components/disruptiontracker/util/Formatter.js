@@ -8,13 +8,14 @@ airbus.mes.disruptiontracker.Formatter = {
 			
 			if(status == "CLOSED") {
 				return "Solved";
-			}
-			else if(gravity == 3 || escalation == 2 || escalation == 3)
+			} else if(gravity == 3 || escalation == 2 || escalation == 3)
 				return "Blocked";
 			else if(gravity == 1)
 				return "Not Blocked";
 			else if(gravity == 2)
 				return "Disturbed";
+			else
+				return "";
 		},
 
 	setState : function(status, gravity, escalation) {
@@ -29,9 +30,7 @@ airbus.mes.disruptiontracker.Formatter = {
 			
 			else if(gravity == 3)
 				return "Warning";
-		}
-		
-		else if(escalation == 2 || escalation == 3)
+		} else if(escalation == 2 || escalation == 3)
 			return "Error";
 		
 		else if(gravity == 3)

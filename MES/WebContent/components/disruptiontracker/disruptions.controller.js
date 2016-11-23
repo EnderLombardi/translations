@@ -1,3 +1,4 @@
+"use strict";
 sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 	
 /**
@@ -59,14 +60,14 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 
         var oBinding = this.byId("disruptionsTable").getBinding("items");
         
-        if(sStatus != "")
-        	aFilters.push(new sap.ui.model.Filter("Status", "EQ", sStatus));
-        
-        if(sResoGroup != "")
-        	aFilters.push(new sap.ui.model.Filter("ResponsibleGroup", "EQ", sResoGroup));
-        
-        
-    	oBinding.filter(aFilters);
+
+		if (sStatus != "")
+			aFilters.push(new sap.ui.model.Filter("Status","EQ", sStatus));
+
+		if (sResoGroup != "")
+			aFilters.push(new sap.ui.model.Filter("ResponsibleGroup", "EQ", sResoGroup));
+            
+		oBinding.filter(aFilters);
         
         airbus.mes.disruptiontracker.ModelManager.fixNoDataRow();// Remove last column
 	},
@@ -155,7 +156,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 					            ]
 					         },
 					         {
-					        	 "Row":[
+								"Row" : [
 							               
 							            ]
 					         }
@@ -241,10 +242,9 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 			if (!this.disruptionsCustomDataFlag){
 				airbus.mes.disruptions.ModelManager.loadData();
 				this.disruptionsCustomDataFlag = true;
-			}
-			else
+			} else {
 				airbus.mes.disruptions.oView.createDisruption.oController.setDataForEditDisruption();
-			
+			}
 		}
 
 	}

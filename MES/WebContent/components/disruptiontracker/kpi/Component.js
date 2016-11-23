@@ -1,3 +1,4 @@
+"use strict";
 jQuery.sap.require("sap.ui.core.UIComponent");
 //jQuery.sap.require("airbus.mes.disruptiontracker.kpi.util.Formatter");
 jQuery.sap.require("airbus.mes.disruptiontracker.kpi.ModelManager");
@@ -40,5 +41,7 @@ airbus.mes.disruptiontracker.kpi.Component.prototype.createContent = function() 
 		
 		
 		return this.oView;
+	} else {
+		return airbus.mes.disruptiontracker.kpi.oView;
 	}
 };

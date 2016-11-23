@@ -1,4 +1,4 @@
-//"use strict";
+"use strict";
 jQuery.sap.declare("airbus.mes.disruptiontracker.kpi.ModelManager")
 airbus.mes.disruptiontracker.kpi.ModelManager = {
 	urlModel : undefined,

@@ -570,9 +570,7 @@ sap.ui
 								} else
 								this.originatorGroupSettings();
 
-							} 
-							
-							else {
+							} else {
 
 								// expected date and time are not cleared in reset
 								// all fields as formatter has to be applied
@@ -592,16 +590,14 @@ sap.ui
 								this.createDisruptionSettings();
 
 							}
-						}
-						catch(err) {
+						} catch(err) {
 							sap.m.MessageToast.show(
 									airbus.mes.disruptions.oView.viewDisruption.
 										getModel("i18nModel").getProperty("error"));
 							
 							if(nav.getCurrentPage().getId() == "stationTrackerView") {
 								sap.ui.getCore().byId("operationDetailsView--operDetailNavContainer").back();
-							}
-							else if(nav.getCurrentPage().getId() == "disruptiontrackerView") {
+							} else if(nav.getCurrentPage().getId() == "disruptiontrackerView") {
 								sap.ui.getCore().byId("disruptionDetailPopup--disruptDetailNavContainer").back();
 							}
 						}
