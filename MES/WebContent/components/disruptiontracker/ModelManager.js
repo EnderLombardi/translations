@@ -21,7 +21,7 @@ airbus.mes.disruptiontracker.ModelManager = {
 		
 		var getDisruptionsURL = airbus.mes.disruptions.ModelManager.getDisruptionsURL(oFilters);
 		
-		oViewModel.loadData(getDisruptionsURL, null, false);
+		oViewModel.loadData(getDisruptionsURL);
 		
 		if(oFilters.station != undefined && oFilters.station != ""){
 			airbus.mes.disruptiontracker.oView.byId("stationComboBox").setSelectedKey(oFilters.station);

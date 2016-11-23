@@ -64,11 +64,6 @@ airbus.mes.disruptiontracker.Formatter = {
 		
 	},
 	
-	formatCategory: function(category){
-		if(category != undefined && category != "")
-			return category.split(",")[1];
-	},
-	
 	formatTTGF: function(ttgf){
 		if(ttgf == undefined || ttgf == "")
 			return 0;

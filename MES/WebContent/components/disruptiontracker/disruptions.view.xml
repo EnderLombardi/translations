@@ -116,8 +116,7 @@
 							state="{parts: [ {path: 'disruptionsTrackerModel>Status'}, {path: 'disruptionsTrackerModel>Gravity'}, {path: 'disruptionsTrackerModel>Severity'} ], formatter: 'airbus.mes.disruptiontracker.Formatter.setState'}"
 							icon="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setIcon'}" />
 						<Text text="{disruptionsTrackerModel>Status}" />
-						<Text
-							text="{path: 'disruptionsTrackerModel>MessageType', formatter: 'airbus.mes.disruptiontracker.Formatter.formatCategory'}" />
+						<Text text="{disruptionsTrackerModel>Category}" />
 						<Text text="{disruptionsTrackerModel>Reason}" />
 						<Text text="{disruptionsTrackerModel>OriginatorGroupDesc}" />
 						<Text text="{disruptionsTrackerModel>ResponsibleGroupDesc}" />

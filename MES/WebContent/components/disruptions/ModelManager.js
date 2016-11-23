@@ -4,6 +4,7 @@ jQuery.sap.declare("airbus.mes.disruptions.ModelManager")
 
 airbus.mes.disruptions.ModelManager = {
 
+	createEditFlag : false,
 	urlModel : undefined,
 	queryParams : jQuery.sap.getUriParameters(),
 
@@ -217,6 +218,14 @@ airbus.mes.disruptions.ModelManager = {
 
 		airbus.mes.operationdetail.oView.setBusy(false); // Set Busy
 															// Indicator false
+		
+
+		if (nav.getCurrentPage().sId == "stationTrackerView" && airbus.mes.disruptions.ModelManager.createEditFlag) {
+			
+			airbus.mes.disruptions.ModelManager.checkDisruptionStatus(airbus.mes.disruptions.oView.viewDisruption
+				.getModel("operationDisruptionsModel"));
+		}
+		airbus.mes.disruptions.ModelManager.createEditFlag =false;
 	},
 
 	/***************************************************************************
@@ -318,6 +327,9 @@ airbus.mes.disruptions.ModelManager = {
 										"operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_bo;
 								airbus.mes.disruptions.ModelManager
 										.loadDisruptionsByOperation(operationBO);
+								
+								airbus.mes.disruptions.ModelManager.createEditFlag =true;
+								
 
 							} else if (data.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
 								if (data.Rowsets.Rowset[0].Row[0].Message === undefined)
@@ -432,23 +444,9 @@ airbus.mes.disruptions.ModelManager = {
 									sap.ui.getCore().byId("disruptionDetailPopup--disruptDetailNavContainer").back();
 
 								}
-								
-								
-								
-								/*// Navigate to View Disruption after message
-								// success
-								sap.ui
-										.getCore()
-										.byId(
-												"operationDetailsView--operDetailNavContainer")
-										.back();
 
-								// Load disruption Model again for updated
-								// message
-								var operationBO = sap.ui.getCore().getModel(
-										"operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_bo;
-								airbus.mes.disruptions.ModelManager
-										.loadDisruptionsByOperation(operationBO);*/
+								airbus.mes.disruptions.ModelManager.createEditFlag =true;
+								
 
 							} else if (data.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
 								if (data.Rowsets.Rowset[0].Row[0].Message === undefined)
@@ -491,10 +489,11 @@ airbus.mes.disruptions.ModelManager = {
 		
 		disruptionModel.Reason = sap.ui.getCore().byId("createDisruptionView--selectreason").getSelectedKey();
 
-		disruptionModel.ResponsibleGroup = sap.ui.getCore().byId("createDisruptionView--selectResponsible").getSelectedKey();
 		
-		//if(sap.ui.getCore().byId("createDisruptionView--selectResponsible").getSelectedItem())
-		disruptionModel.ResponsibleGroupDesc = sap.ui.getCore().byId("createDisruptionView--selectResponsible").getSelectedItem().getText();
+		if(sap.ui.getCore().byId("createDisruptionView--selectResponsible").getSelectedItem()) {
+			disruptionModel.ResponsibleGroupDesc = sap.ui.getCore().byId("createDisruptionView--selectResponsible").getSelectedItem().getText();
+			disruptionModel.ResponsibleGroup = sap.ui.getCore().byId("createDisruptionView--selectResponsible").getSelectedKey();
+		}
 		
 		disruptionModel.RootCause = sap.ui.getCore().byId("createDisruptionView--selectRootCause").getSelectedKey();
 		
@@ -869,6 +868,47 @@ airbus.mes.disruptions.ModelManager = {
 					}
 				});
 
-		return flagSuccess
+		return flag_success
+	},
+	
+	// Change text of status in progress tab if any blocking disruption still open (not closed)
+	checkDisruptionStatus : function(operationDisruptionsModel) {
+		var aDisruption = operationDisruptionsModel.getProperty("/Rowsets/Rowset/0/Row");
+		var sStatus = null;
+		
+		var modelRefresh = false;
+		
+		
+		// Check if any blocking disruption still open (not closed)
+		for(var i = 0; i < aDisruption.length; i++){
+			
+		    if(aDisruption[i].Gravity == 3 && aDisruption[i].Status != airbus.mes.disruptions.Formatter.status.closed) {
+		    	
+		    	sStatus = airbus.mes.operationdetail.Formatter.status.blocked;
+		    	break;
+		    }
+		}
+		
+		// Set status = blocking
+		if(sStatus != null){
+			sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].status = sStatus;
+			modelRefresh = true;
+		}
+		
+		// Set status = In Progess if blocked earlier
+		else{
+			if(sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].status ==
+				airbus.mes.operationdetail.Formatter.status.blocked){
+				sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].status = 
+					airbus.mes.operationdetail.Formatter.status.active;
+				
+				modelRefresh = true;
+			}
+		}
+	
+		// Refresh model
+		if(modelRefresh == true){
+			sap.ui.getCore().getModel("operationDetailModel").refresh();
+		}
 	}
 };
