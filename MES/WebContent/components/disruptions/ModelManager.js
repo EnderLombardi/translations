@@ -470,14 +470,17 @@ airbus.mes.disruptions.ModelManager = {
 		var disruptionModel = oModel.getProperty("/Rowsets/Rowset/0/Row/0");		
 		
 		disruptionModel.Reason = sap.ui.getCore().byId("createDisruptionView--selectreason").getSelectedKey();
-		
+
 		disruptionModel.ResponsibleGroup = sap.ui.getCore().byId("createDisruptionView--selectResponsible").getSelectedKey();
+		
+		//if(sap.ui.getCore().byId("createDisruptionView--selectResponsible").getSelectedItem())
+		disruptionModel.ResponsibleGroupDesc = sap.ui.getCore().byId("createDisruptionView--selectResponsible").getSelectedItem().getText();
 		
 		disruptionModel.RootCause = sap.ui.getCore().byId("createDisruptionView--selectRootCause").getSelectedKey();
 		
 		disruptionModel.TimeLost = sap.ui.getCore().byId("createDisruptionView--timeLost").getValue();
 		
-		disruptionModel.FixedByTime = sap.ui.getCore().byId("createDisruptionView--expectedDate").getValue() + " " 
+		disruptionModel.RequiredFixBy = sap.ui.getCore().byId("createDisruptionView--expectedDate").getValue() + " " 
 								+ sap.ui.getCore().byId("createDisruptionView--expectedTime").getValue();
 		
 		disruptionModel.PromisedDateTime = sap.ui.getCore().byId("createDisruptionView--promisedDate").getValue() + " " 
