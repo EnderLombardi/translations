@@ -1,41 +1,62 @@
-/*
-Error: Invalid CSS after "...] - super modif": expected "{", was ""
-        on line 98 of ./Sass/style_sass.scss
+/********************
+WORK TRACKER
+SCHEDULAR TASK STYLE
+BOX MANAGEMENT 
+*********************/
+.trackerBox {
+  width: 100%;
+  height: inherit;
+  position: absolute;
+  z-index: 1;
+  line-height: 23px;
+  left: 0px;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+  .trackerBox .trackerText {
+    padding-left: 10px;
+    position: relative;
+    z-index: 1;
+    float: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: calc(100% - 70px);
+    white-space: nowrap;
+    color: white;
+    overflow: hidden; }
+  .trackerBox .trackerTextBlock {
+    padding-left: 10px;
+    position: relative;
+    z-index: 1;
+    float: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 40%;
+    white-space: nowrap;
+    color: rgba(0, 86, 112, 0.94); }
+  .trackerBox .colorProgress {
+    height: inherit;
+    position: absolute;
+    z-index: 0;
+    left: 0px;
+    overflow: hidden; }
+  .trackerBox .openBlockedEscalated, .trackerBox .openBlocked {
+    height: inherit;
+    width: 100%;
+    background-color: #fbec00; }
 
-93: <<<<<<< Upstream, based on origin/MESv0.9
-94: /* test *\/
-95: =======
-96: /* Test *\/
-97: >>>>>>> 61f99b0 [sass] - super modif
+.trackerBox:hover .dark-lime-green-back {
+  background-color: #536f12 !important; }
+.trackerBox:hover .teal-blue-back {
+  background-color: #0f2d65 !important; }
+.trackerBox:hover .cherry-red-back {
+  background-color: #9e001e !important; }
+.trackerBox:hover .openBlockedEscalated {
+  background-color: #ffbf00 !important; }
+.trackerBox:hover .openBlocked {
+  background-color: #ffbf00 !important; }
 
-Backtrace:
-./Sass/style_sass.scss:98
-C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:1189:in `expected'
-C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:1125:in `expected'
-C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:1120:in `tok!'
-C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:656:in `block'
-C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:649:in `ruleset'
-C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:675:in `block_child'
-C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:668:in `block_contents'
-C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:125:in `stylesheet'
-C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:41:in `parse'
-C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/engine.rb:406:in `_to_tree'
-C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/engine.rb:381:in `_render_with_sourcemap'
-C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/engine.rb:298:in `render_with_sourcemap'
-C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:492:in `update_stylesheet'
-C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
-C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:209:in `each'
-C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
-C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:473:in `on_file_changed'
-C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:331:in `block in watch'
-C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/vendor/listen/lib/listen/listener.rb:252:in `call'
-C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/vendor/listen/lib/listen/listener.rb:252:in `on_change'
-C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/vendor/listen/lib/listen/listener.rb:290:in `block in initialize_adapter'
-C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/vendor/listen/lib/listen/adapters/polling.rb:48:in `call'
-C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/vendor/listen/lib/listen/adapters/polling.rb:48:in `poll_changed_directories'
-C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/vendor/listen/lib/listen/adapter.rb:299:in `block in start_poller'
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Error: Invalid CSS after \"...] - super modif\": expected \"{\", was \"\"\A         on line 98 of ./Sass/style_sass.scss\A \A 93: <<<<<<< Upstream, based on origin/MESv0.9\A 94: /* test */\A 95: =======\A 96: /* Test */\A 97: >>>>>>> 61f99b0 [sass] - super modif"; }
+.grey:hover {
+  background-color: #767879;
+  color: black; }
+
+/*# sourceMappingURL=style_sass.css.map */

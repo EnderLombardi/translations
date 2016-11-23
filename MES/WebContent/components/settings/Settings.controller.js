@@ -394,9 +394,9 @@ sap.ui.controller("airbus.mes.settings.Settings",
 							airbus.mes.shell.oView.byId("labelMSN").setText(airbus.mes.shell.oView.getModel("ShellI18n").getProperty(
 							"MSN") + " " + airbus.mes.settings.ModelManager.currentMsnValue);
 						}
-						
+						// if no msn go by default on user settings.
 						if (!this.getView().byId("selectMSN").getValue()) {
-							nav.back();
+							//airbus.mes.shell.oView.getController().navigate();
 						}					
 						this.setEnabledCombobox(true, true, true, true);
 				} else {	

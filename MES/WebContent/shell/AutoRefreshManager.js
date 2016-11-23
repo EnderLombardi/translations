@@ -72,17 +72,17 @@ airbus.mes.shell.AutoRefreshManager =  {
 		}
 		
 		
-		window.setInterval(this.autoRefreshAPI, this.refreshInterval);
-		
-		
-		
-		
-		window.setInterval(this.autoRefreshAPI, this.refreshInterval);
-		
-		
-		
-		
-		window.setInterval(this.autoRefreshAPI, this.refreshInterval);
+//		window.setInterval(this.autoRefreshAPI, this.refreshInterval);
+//		
+//		
+//		
+//		
+//		window.setInterval(this.autoRefreshAPI, this.refreshInterval);
+//		
+//		
+//		
+//		
+//		window.setInterval(this.autoRefreshAPI, this.refreshInterval);
 		
 		
 		
