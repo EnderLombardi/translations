@@ -919,6 +919,9 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		
 		// Refresh Station tracker
 		airbus.mes.shell.oView.getController().loadStationTrackerGantKPI();
+		
+		// Resume the Refresh timer when the Pop-Up is opened
+        airbus.mes.shell.AutoRefreshManager.resumeRefresh();
 	},
 
 	onContinueCheckQA : function(oEvent){

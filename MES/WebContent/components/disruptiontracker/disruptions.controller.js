@@ -180,6 +180,10 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		sap.ui.getCore().byId("ViewDisruptionView").getContent()[0].getContent()[1].getItems()[0].getContent()[0].setExpandable(false);
 		
 		this.nav.to(airbus.mes.disruptions.oView.viewDisruption.getId());
+		
+
+        // Pause the Refresh timer till the Pop-Up is opened
+        airbus.mes.shell.AutoRefreshManager.pauseRefresh();
 				
 	},
 	
@@ -202,6 +206,10 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		airbus.mes.disruptions.oView.viewDisruption.getModel("operationDisruptionsModel").setData();
 		
 		airbus.mes.disruptiontracker.ModelManager.loadDisruptionTrackerModel();
+		
+
+        // Resume the Refresh timer when the Pop-Up is opened
+        airbus.mes.shell.AutoRefreshManager.resumeRefresh();
 	},
 	
 	onNavigate : function() {
