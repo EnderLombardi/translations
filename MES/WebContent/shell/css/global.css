@@ -26,6 +26,12 @@ TABLE
     white-space: nowrap; }
 
 /********************
+TOOLBAR
+*********************/
+#mes .sapMPopover .sapMBtnIcon {
+  color: rgba(0, 86, 112, 0.94); }
+
+/********************
 WORK LIST POP OVER
 *********************/
 .classWorklistPopover .fa {
