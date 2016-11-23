@@ -464,12 +464,14 @@ sap.ui
 						this.resetAllFields();
 						if (sap.ui.getCore().getModel("DisruptionDetailModel")
 								.getData() != undefined) {
+							
+							
 
 							// fill select boxes on CreateDisruptionView for
 							// edit screen
 							var oModel = sap.ui.getCore().getModel(
 									"DisruptionDetailModel");
-
+			
 							this.getView().byId("selectCategory")
 									.setSelectedKey(
 											oModel.getProperty("/MessageType"));
@@ -506,6 +508,51 @@ sap.ui
 							this.getView().byId("description").setValue(
 									oModel.getProperty("/Description"));
 							this.getView().byId("comment").setValue();
+							
+							var oMatInp = this.getView().byId("materials");
+							var oJiginp = this.getView().byId("jigtools");
+							
+							var aMatArray = oModel.oData.Materials.split(",");
+							var aJigArray = oModel.oData.JigTools.split(",");
+							
+							var aMatTokens = [];
+							var aJigTokens = [];
+							
+							
+							for (var i in aMatArray) {
+
+								if(aMatArray[i] !== ""){
+
+									var loMatToken = new sap.m.Token({
+										text : aMatArray[i],
+										editable : false,
+									});
+
+									aMatTokens.push(loMatToken)
+
+								}							
+							}
+							
+							oMatInp.setTokens(aMatTokens);
+							this._materialListDialog.close();
+							
+							for (var j in aJigArray) {
+
+								if (aJigArray[j] != "") {
+									var loJigToken = new sap.m.Token({
+										text : aJigArray[j],
+										editable : false,
+									});
+
+									aJigTokens.push(loJigToken)
+
+								}
+							}
+							
+							oJiginp.setTokens(aJigTokens);
+							this.jigToolSelectDialog.close();
+						
+							
 							this.initializeTree();
 
 							// Disable/Enable inputs according to

@@ -347,7 +347,7 @@
 										</Label>
 									</f:label>
 									<f:fields>
-										<MultiInput id="materials" valueHelpRequest="onMaterialValueHelpRequest" tokenChange="onMaterialTokenChange" liveChange="onMaterialTokenChange">
+										<MultiInput id="materials" valueHelpRequest="onMaterialValueHelpRequest" tokenChange="onMaterialTokenChange" liveChange="onMaterialTokenChange" enabled="false">
 											<layoutData>
 												<l:GridData span="L3 M9 S12" />
 											</layoutData>
@@ -364,7 +364,7 @@
 										</Label>
 									</f:label>
 									<f:fields>
-										<MultiInput id="jigtools" valueHelpRequest="onJigToolValueHelpRequest" tokenChange="onJigToolTokenChange" liveChange="onJigToolTokenChange">
+										<MultiInput id="jigtools" valueHelpRequest="onJigToolValueHelpRequest" tokenChange="onJigToolTokenChange" liveChange="onJigToolTokenChange" enabled="false">
 											<layoutData>
 												<l:GridData span="L3 M9 S12" />
 											</layoutData>
