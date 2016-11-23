@@ -1,9 +1,0 @@
-3.4.22 (Selective Steve)
-01b944ed9ddf1366369f1e77742138e0c08e344a
-o:Sass::Tree::RootNode:@children[o:Sass::Tree::VariableNode:
-@nameI"tiffany-blue:ET:
-@expro: Sass::Script::Tree::Funcall;I"rgb;	T:
-@args[o: Sass::Script::Tree::Literal
-:@valueo: Sass::Script::Value::Number
-;iy:
-@options{
