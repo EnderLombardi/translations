@@ -895,6 +895,9 @@ airbus.mes.disruptions.ModelManager = {
 	// Change text of status in progress tab if any blocking disruption still open (not closed)
 	checkDisruptionStatus : function(operationDisruptionsModel) {
 		var aDisruption = operationDisruptionsModel.getProperty("/Rowsets/Rowset/0/Row");
+		if(aDisruption === undefined)
+			return;
+		
 		var sStatus = null;
 		
 		var modelRefresh = false;

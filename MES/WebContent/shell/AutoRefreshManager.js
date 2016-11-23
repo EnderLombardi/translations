@@ -50,7 +50,6 @@ airbus.mes.shell.AutoRefreshManager =  {
 			
 			this.autoRefreshAPI = airbus.mes.shell.oView.oController.renderStationTracker;
 			//this.autoRefresh = window.setInterval(airbus.mes.shell.oView.oController.renderStationTracker, this.refreshInterval);
-
 			
 			break;
 			
