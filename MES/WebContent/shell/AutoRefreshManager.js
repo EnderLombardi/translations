@@ -40,7 +40,7 @@ airbus.mes.shell.AutoRefreshManager =  {
 				), 10										// radix 10
 			)*60000;
 			
-			this.autoRefresh = window.setInterval(airbus.mes.shell.oView.oController.renderStationTracker, this.refreshInterval);
+			//this.autoRefresh = window.setInterval(airbus.mes.shell.oView.oController.renderStationTracker, this.refreshInterval);
 			
 			break;
 			
@@ -55,7 +55,7 @@ airbus.mes.shell.AutoRefreshManager =  {
 					this.defaultKey							// Default Key
 				), 10										// radix 10
 			)*60000;
-			this.autoRefresh = window.setInterval(airbus.mes.disruptiontracker.ModelManager.loadDisruptionTrackerModel, this.refreshInterval);
+			//this.autoRefresh = window.setInterval(airbus.mes.disruptiontracker.ModelManager.loadDisruptionTrackerModel, this.refreshInterval);
 			
 			break;
 			
@@ -71,7 +71,7 @@ airbus.mes.shell.AutoRefreshManager =  {
 					this.defaultKey							// Default Key
 				), 10										// radix 10
 			)*60000;
-			this.autoRefresh = window.setInterval(airbus.mes.disruptiontracker.kpi.ModelManager.loadDisruptionKPIModel, this.refreshInterval);
+			//this.autoRefresh = window.setInterval(airbus.mes.disruptiontracker.kpi.ModelManager.loadDisruptionKPIModel, this.refreshInterval);
 			
 			break;
 		default : 
