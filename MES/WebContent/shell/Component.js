@@ -1,3 +1,5 @@
+"use strict";
+
 jQuery.sap.require("sap.ui.core.UIComponent");
 jQuery.sap.require("sap.ui.model.resource.ResourceModel");
 jQuery.sap.require("airbus.mes.shell.ModelManager");
@@ -63,6 +65,9 @@ airbus.mes.shell.Component.prototype.createContent = function() {
 
 		return this.oView;
 		
+	} else {
+		
+		return airbus.mes.shell.oView;
 	}
 
 };
