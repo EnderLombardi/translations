@@ -5,6 +5,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
 * @memberOf table.table
 */
+	disruptionTrackerRefresh : false,
 	disruptionsCustomDataFlag : undefined,
 	onInit: function() {
 	},
@@ -205,8 +206,10 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		// Empty Model
 		airbus.mes.disruptions.oView.viewDisruption.getModel("operationDisruptionsModel").setData();
 		
-		airbus.mes.disruptiontracker.ModelManager.loadDisruptionTrackerModel();
-		
+		if(airbus.mes.disruptiontracker.oView.getController().disruptionTrackerRefresh == true) {
+			airbus.mes.disruptiontracker.ModelManager.loadDisruptionTrackerModel();
+			airbus.mes.disruptiontracker.oView.getController().disruptionTrackerRefresh = false;
+		}
 
         // Resume the Refresh timer when the Pop-Up is opened
         airbus.mes.shell.AutoRefreshManager.resumeRefresh();

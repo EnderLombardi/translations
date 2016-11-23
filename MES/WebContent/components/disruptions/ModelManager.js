@@ -441,6 +441,7 @@ airbus.mes.disruptions.ModelManager = {
 									
 								} else if(currentPage == "disruptiontrackerView") {
 									airbus.mes.disruptions.ModelManager.updateDisruptionModel();
+									airbus.mes.disruptiontracker.oView.getController().disruptionTrackerRefresh = true;
 									sap.ui.getCore().byId("disruptionDetailPopup--disruptDetailNavContainer").back();
 
 								}
@@ -564,6 +565,7 @@ airbus.mes.disruptions.ModelManager = {
 							airbus.mes.shell.ModelManager
 									.messageShow(sMessageSuccess);
 							flagSuccess = true;
+								
 						} else if (result.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
 							airbus.mes.shell.ModelManager
 									.messageShow(result.Rowsets.Rowset[0].Row[0].Message)
@@ -572,6 +574,9 @@ airbus.mes.disruptions.ModelManager = {
 							airbus.mes.shell.ModelManager
 									.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
 							flagSuccess = true;
+							
+							if(nav.getCurrentPage().getId() == "disruptiontrackerView")
+								airbus.mes.disruptiontracker.oView.getController().disruptionTrackerRefresh = true;
 						}
 
 					}
@@ -623,6 +628,7 @@ airbus.mes.disruptions.ModelManager = {
 							airbus.mes.shell.ModelManager
 									.messageShow(sMessageSuccess);
 							flagSuccess = true;
+							
 						} else if (result.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
 							airbus.mes.shell.ModelManager
 									.messageShow(result.Rowsets.Rowset[0].Row[0].Message)
@@ -631,6 +637,9 @@ airbus.mes.disruptions.ModelManager = {
 							airbus.mes.shell.ModelManager
 									.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
 							flagSuccess = true;
+							
+							if(nav.getCurrentPage().getId() == "disruptiontrackerView")
+								airbus.mes.disruptiontracker.oView.getController().disruptionTrackerRefresh = true;
 						}
 
 					}
@@ -677,6 +686,7 @@ airbus.mes.disruptions.ModelManager = {
 							airbus.mes.shell.ModelManager
 									.messageShow(sMessageSuccess);
 							flagSuccess = true;
+							
 						} else if (result.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
 							airbus.mes.shell.ModelManager
 									.messageShow(result.Rowsets.Rowset[0].Row[0].Message)
@@ -685,6 +695,9 @@ airbus.mes.disruptions.ModelManager = {
 							airbus.mes.shell.ModelManager
 									.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
 							flagSuccess = true;
+							
+							if(nav.getCurrentPage().getId() == "disruptiontrackerView")
+								airbus.mes.disruptiontracker.oView.getController().disruptionTrackerRefresh = true;
 						}
 
 					}
@@ -800,6 +813,7 @@ airbus.mes.disruptions.ModelManager = {
 							airbus.mes.shell.ModelManager
 									.messageShow(sMessageSuccess);
 							flagSuccess = true;
+							
 						} else if (result.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
 							airbus.mes.shell.ModelManager
 									.messageShow(result.Rowsets.Rowset[0].Row[0].Message)
@@ -808,6 +822,9 @@ airbus.mes.disruptions.ModelManager = {
 							airbus.mes.shell.ModelManager
 									.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
 							flagSuccess = true;
+							
+							if(nav.getCurrentPage().getId() == "disruptiontrackerView")
+								airbus.mes.disruptiontracker.oView.getController().disruptionTrackerRefresh = true;
 						}
 
 					}
@@ -855,6 +872,7 @@ airbus.mes.disruptions.ModelManager = {
 							airbus.mes.shell.ModelManager
 									.messageShow(sMessageSuccess);
 							flagSuccess = true;
+							
 						} else if (result.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
 							airbus.mes.shell.ModelManager
 									.messageShow(result.Rowsets.Rowset[0].Row[0].Message)
@@ -863,6 +881,9 @@ airbus.mes.disruptions.ModelManager = {
 							airbus.mes.shell.ModelManager
 									.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
 							flagSuccess = true;
+							
+							if(nav.getCurrentPage().getId() == "disruptiontrackerView")
+								airbus.mes.disruptiontracker.oView.getController().disruptionTrackerRefresh = true;
 						}
 
 					}
