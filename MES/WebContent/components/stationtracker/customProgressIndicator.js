@@ -129,11 +129,6 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 						r.addClass('sapMPIBar');
 										
 						// condition design for worklist pop up
-<<<<<<< Upstream, based on origin/MESv0.9
-
-=======
-						/*****************
-						 * *******************/
 						if ( rmastatus != "---" ){	//rma
 							sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon dandelion"></i>';
 						}
@@ -141,7 +136,6 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 							sLeftIcon2 = '<i class="fa fa-refresh oswIcon dandelion-back "><b style="padding-left:1px">OSW</b></i>';
 						}
 						
->>>>>>> 695a366 [disruption] ESLint cleaning
 						// Operation is active	
 						if ( paused === "false") {
 							//sStatus = "2";
