@@ -647,6 +647,10 @@ airbus.mes.stationtracker.ModelManager = {
               airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").refresh();
               sap.ui.getCore().getModel("operationDetailModel").setData(oOperModel);
               sap.ui.getCore().getModel("operationDetailModel").refresh();
+              
+              // Pause the Refresh timer till the Pop-Up is opened
+              airbus.mes.shell.AutoRefreshManager.pauseRefresh();
+              
 
        },
        OpenReschedule : function(id) {

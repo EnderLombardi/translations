@@ -226,7 +226,7 @@ airbus.mes.disruptions.Formatter = {
 	
 	setTimeBeforeNextEscVisibility : function(escalationLevel) {
 		if(escalationLevel < 3)
-			this.setText(airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("NotBlocked"));
+			this.setText(airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("escalated"));
 	},
 	
 	setSolutionVisibility : function(solution) {
@@ -255,7 +255,7 @@ airbus.mes.disruptions.Formatter = {
 		if (oText){
 			var loString = oText.replace(/[(]/g , " Quantity-");
 			var loNewStr = loString.replace(/[)]/g,"");
-			var loNewStr = loNewStr.replace(/[,]/g,"<br />");
+			var loNewStr = loNewStr.replace(/[,]/g,"\n");
 			
 		} else {
 			

@@ -171,7 +171,7 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 			
 			
 			// Set Refresh Interval based on configuration
-			airbus.mes.shell.AutoRefreshManager.setInterval("STATION_TRACKER");
+			airbus.mes.shell.AutoRefreshManager.setInterval("stationTrackerView");
 			
 			break;
 			
@@ -190,7 +190,7 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 			airbus.mes.disruptiontracker.ModelManager.loadDisruptionTrackerModel();
 
 			// Set Refresh Interval based on configuration
-			airbus.mes.shell.AutoRefreshManager.setInterval("DISRUPTION_TRACKER");
+			airbus.mes.shell.AutoRefreshManager.setInterval("disruptiontrackerView");
 			
 			break;
 			
@@ -198,7 +198,7 @@ sap.ui.controller("airbus.mes.shell.globalNavigation", {
 		case "disruptionKPIView":
 			
 			// Set Refresh Interval based on configuration
-			airbus.mes.shell.AutoRefreshManager.setInterval("DISRUPTION_KPI");
+			airbus.mes.shell.AutoRefreshManager.setInterval("disruptionKPIView");
 			
 			break;
 			
