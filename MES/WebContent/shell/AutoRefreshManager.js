@@ -118,7 +118,7 @@ airbus.mes.shell.AutoRefreshManager =  {
 		var remainingTime = this.refreshInterval - ( this.pauseTime - this.lastRefreshTime );
 		
 		this.remianinTimeRefresher = window.setInterval(
-				function(){
+				function () {
 					airbus.mes.shell.AutoRefreshManager.autoRefreshAPI(),
 					clearInterval(airbus.mes.shell.AutoRefreshManager.remianinTimeRefresher);
 					airbus.mes.shell.AutoRefreshManager.setInterval(airbus.mes.shell.AutoRefreshManager.viewName);

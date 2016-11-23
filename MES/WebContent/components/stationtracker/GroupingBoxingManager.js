@@ -260,7 +260,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 					"OPERATION_DESCRIPTION" : el.OPERATION_DESCRIPTION,
 					"DURATION": el.DURATION,
 					"PROGRESS" : el.PROGRESS,
-					//"certification": el.certification,
+					"SFC" : el.SFC,//"certification": el.certification,
 					"START_TIME" : el.START_TIME,
 					"END_TIME" : el.END_TIME,
 					"STATE": el.STATE,

@@ -170,16 +170,13 @@ sap.ui
 									success : function(result, status, xhr) {
 
 										if (result.Rowsets.Rowset[0].Row[0].Message_Type === undefined) {
-											airbus.mes.operationdetail.ModelManager
-													.messageShow(sMessageSuccess);
+											airbus.mes.operationdetail.ModelManager.messageShow(sMessageSuccess);
 											flag_success = true;
 										} else if (result.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
-											airbus.mes.operationdetail.ModelManager
-													.messageShow(result.Rowsets.Rowset[0].Row[0].Message)
+											airbus.mes.operationdetail.ModelManager.messageShow(result.Rowsets.Rowset[0].Row[0].Message)
 											flag_success = false;
 										} else {
-											airbus.mes.operationdetail.ModelManager
-													.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
+											airbus.mes.operationdetail.ModelManager.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
 											flag_success = true;
 										}
 

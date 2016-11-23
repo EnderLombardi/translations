@@ -122,20 +122,11 @@ airbus.mes.operationdetail.ModelManager = {
 	 **************************************************************************/
 	getUrlPauseOperation : function(data) {
 		var urlPauseOperation = this.urlModel.getProperty("pauseOperation");
-		urlPauseOperation = airbus.mes.shell.ModelManager
-				.replaceURI(urlPauseOperation, "$Operation", data.operation_no);
-
-		urlPauseOperation = airbus.mes.shell.ModelManager
-				.replaceURI(urlPauseOperation, "$Sfc", data.sfc);
-		urlPauseOperation = airbus.mes.shell.ModelManager
-				.replaceURI(urlPauseOperation, "$Site",
-						airbus.mes.settings.ModelManager.site);
-		urlPauseOperation = airbus.mes.shell.ModelManager
-				.replaceURI(urlPauseOperation, "$Resource", "DEFAULT");
-		urlPauseOperation = airbus.mes.shell.ModelManager
-				.replaceURI(urlPauseOperation, "$OperationRevision",
-						data.operation_revision);
-
+		urlPauseOperation = airbus.mes.shell.ModelManager.replaceURI(urlPauseOperation, "$Operation", data.operation_no);
+		urlPauseOperation = airbus.mes.shell.ModelManager.replaceURI(urlPauseOperation, "$Sfc", data.sfc);
+		urlPauseOperation = airbus.mes.shell.ModelManager.replaceURI(urlPauseOperation, "$Site",airbus.mes.settings.ModelManager.site);
+		urlPauseOperation = airbus.mes.shell.ModelManager.replaceURI(urlPauseOperation, "$Resource", "DEFAULT");
+		urlPauseOperation = airbus.mes.shell.ModelManager.replaceURI(urlPauseOperation, "$OperationRevision", data.operation_revision);
 		return urlPauseOperation;
 	},
 
