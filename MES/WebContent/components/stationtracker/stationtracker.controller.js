@@ -99,7 +99,8 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
      ****************************************************************************/
 	onTeamPress : function(oEvent) {
 
-var bindingContext = oEvent.getSource().getBindingContext();
+//		not used
+//var bindingContext = oEvent.getSource().getBindingContext();
 				// open team popover fragment		 
 		if (!this._oPopover) {
 			this._oPopover = sap.ui.xmlfragment("airbus.mes.stationtracker.teamPopover", this);
@@ -288,7 +289,8 @@ var bindingContext = oEvent.getSource().getBindingContext();
 	onOSWPress : function() {
 		
 		if ( airbus.mes.stationtracker.ImportOswUnplannedPopover === undefined ) {
-			var oView = airbus.mes.stationtracker.oView;
+//			not used
+//			var oView = airbus.mes.stationtracker.oView;
 			
 			airbus.mes.stationtracker.ImportOswUnplannedPopover = sap.ui.xmlfragment("ImportOswUnplannedPopover","airbus.mes.stationtracker.ImportOswUnplannedPopover", airbus.mes.stationtracker.oView.getController());
 			airbus.mes.stationtracker.ImportOswUnplannedPopover.addStyleClass("alignTextLeft");
@@ -328,7 +330,8 @@ var bindingContext = oEvent.getSource().getBindingContext();
 		// show loading on gantt
 		airbus.mes.stationtracker.oView.byId("stationtracker").setBusy(true);  
 //		Filter the stationtracker model with current production group
-	    var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
+//		not used
+//	    var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
 	    var sProdGroup = airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("ProductionGroup") + " : ";
 	    var sProdGroupMii = "";
 	     
@@ -430,18 +433,12 @@ var bindingContext = oEvent.getSource().getBindingContext();
 		oNavCon.back();
 	},
 	onCloseWorklist: function (oEvent) {
-		var oOperationPopover = sap.ui.getCore().byId("operationPopover--operationPopoverID");
-		oOperationPopover.close();
+		//Close Popup
+		this.onCloseDialog(oEvent);
 	},
 	onRescheduleConfirm : function(oEvent) {
-//		Retrieve selected date
-		var oDate = sap.ui.getCore().byId("ReschedulePopover--DP1").getAggregation("selectedDates")[0].getStartDate();
-		
-//		Retrieve selected group
-		var sGroup = sap.ui.getCore().byId("ReschedulePopover--SelectedGroup").getSelectedKey();
-
 		//Close Popup
-		onCloseDialog(oEvent);
+		this.onCloseDialog(oEvent);
 		
 	},
 	/**
@@ -569,7 +566,8 @@ var bindingContext = oEvent.getSource().getBindingContext();
      */
      changeGrouping : function(oEvt) {
            
-            var aModelToTest = airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").oData;
+//    	 	not used
+//            var aModelToTest = airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").oData;
          
            sap.ui.getCore().byId("myList").bindAggregation('items', {
                   path : "/Rowsets/Rowset/0/Row",
@@ -737,18 +735,15 @@ var bindingContext = oEvent.getSource().getBindingContext();
 
 	},
 	
-	 deleteLineAssignment : function(){
-    	 airbus.mes.stationtracker.AssignmentManager.handleLineAssignment("D", false);
-     },
-	
 	getI18nValue : function(sKey) {
 		return this.getView().getModel("StationTrackerI18n")
 				.getProperty(sKey);
 	},
 
 	selectUser : function(oEvt) {
-		
-		var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
+
+//		not used
+//		var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
 		var oSelected = oEvt.getSource().getSelectedItem().mProperties;
 		airbus.mes.stationtracker.oView.byId("stationtracker").setBusy(true);
 		
@@ -870,7 +865,7 @@ var bindingContext = oEvent.getSource().getBindingContext();
 				sMounth = "0" + sMounth
 				
 				}
-			var sDay = dDataSelected.getDate();
+			sDay = dDataSelected.getDate();
 			
 			if ( sDay < 10 ) { 
 				
@@ -971,11 +966,6 @@ var bindingContext = oEvent.getSource().getBindingContext();
 	deleteLineAssignment : function(){
 		airbus.mes.stationtracker.AssignmentManager.handleLineAssignment("D", true);
 		airbus.mes.stationtracker.oPopoverPolypoly.close();
-	},
-	
-	tooltipDisplay : function(oEvent) {
-		var oEventProvider = new sap.ui.base.EventProvider();
-		var oEvent = new sap.ui.base.Event("test",oEventProvider);
 	},
 	
 	onCheckQA : function(){
