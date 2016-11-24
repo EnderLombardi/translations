@@ -27,7 +27,7 @@ TOOLBAR
 *********************/
 	#mes .sapMPopover{	
 	.sapMBtnIcon {
-    color: $petrol-94;
+    color: $petrol;
     }
 }
 
@@ -51,7 +51,7 @@ WORK LIST POP OVER
 		    padding-right: 6px;
 		    float: right;
 		    &.petrol {
-		    	color:$petrol-94;
+		    	color:$petrol;
 		    }
 		}
 		&.oswIcon2 {
@@ -66,7 +66,7 @@ WORK LIST POP OVER
 		    top: 0px;
 		    margin-left: 0px;
 		    margin-right: 0px;
-		    color: $petrol-94;
+		    color: $petrol;
 		    overflow: hidden;
 		    background-color: $dandelion;
 		    & b {
@@ -85,7 +85,6 @@ WORK LIST POP OVER
 	    width: auto;
 	}	
 }
-
 
 /********************
 SCHEDULAR TASK STYLE
@@ -124,7 +123,7 @@ BOX MANAGEMENT
 		text-overflow: ellipsis;
 		max-width:40%;
 		white-space: nowrap;
-		color: $petrol-94;
+		color: $petrol;
 	}
 	.colorProgress{
 	   	height: inherit;
@@ -149,7 +148,7 @@ BOX MANAGEMENT
 		    padding-right: 6px;
 		    float: right;
 		    &.petrol {
-		    	color:$petrol-94;
+		    	color:$petrol;
 		    }
 		}
 		&.triangleIcon {

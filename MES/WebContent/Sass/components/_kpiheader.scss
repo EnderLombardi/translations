@@ -8,11 +8,11 @@ KPI Header Content
 
 .classKpiHeaderContent .contentHeaderCont {
 	white-space: normal;
-	background-color: #0F2D65;
-	border-right: solid 1px #74d2e7;
+	background-color: $teal-blue-hover;
+	border-right: solid 1px $tiffany-blue;
 	margin: 0px ! important;
 	border-bottom: none;
-	border-top: solid 1px #74d2e7;
+	border-top: solid 1px $tiffany-blue;
 	padding: 0 5px;
 }
 
@@ -23,12 +23,12 @@ KPI Header Content
 .classKpiHeaderContent .sapSuiteCmpChartItemTitle,
 	.classKpiHeaderContent .sapSuiteCmpChartItemValue,
 	.classKpiHeaderContent label {
-	color: #F5F5F5;
+	color: #ffffff;
 	font-size: 0.8vw;
 }
 
 .classKpiHeaderContent .sapSuiteCmpChartBarNoValue {
-	background-color: rgba(187, 188, 188, 0.15);
+	background-color: $silver-15;
 }
 
 .classKpiHeaderContent .kpiValue {

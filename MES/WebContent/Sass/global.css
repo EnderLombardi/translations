@@ -176,7 +176,7 @@ KPI Header Content
 
 .classKpiHeaderContent .contentHeaderCont {
   white-space: normal;
-  background-color: #0F2D65;
+  background-color: #0f2d65;
   border-right: solid 1px #74d2e7;
   margin: 0px !important;
   border-bottom: none;
@@ -189,7 +189,7 @@ KPI Header Content
 .classKpiHeaderContent .sapSuiteCmpChartItemTitle,
 .classKpiHeaderContent .sapSuiteCmpChartItemValue,
 .classKpiHeaderContent label {
-  color: #F5F5F5;
+  color: #ffffff;
   font-size: 0.8vw; }
 
 .classKpiHeaderContent .sapSuiteCmpChartBarNoValue {
