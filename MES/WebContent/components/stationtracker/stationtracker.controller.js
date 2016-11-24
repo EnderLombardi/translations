@@ -450,28 +450,47 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	 */
 	onUnplannedImport : function() {
 
-		var oList = sap.ui.getCore().byId("worklistPopover--myList"); 
+		var oList = airbus.mes.stationtracker.ImportOswUnplannedPopover.getContent()[0].getItems()[1]; 
 		if(oList != undefined){
-			var aPath = oList.getSelectedContextPaths();
-			var aSFC_Step = [];
-			aPath.forEach(function(el) {
-			
-				aSFC_Step.push(airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").getProperty(el).SFC_STEP_REF);
 				
-			});
+			var oModel = sap.ui.getCore().getModel("productionGroupModel");
+			if (!airbus.mes.stationtracker.dialogProdGroup) {
+				airbus.mes.stationtracker.dialogProdGroup = sap.ui.xmlfragment("airbus.mes.stationtracker.dialogProdGroup", airbus.mes.stationtracker.oView.getController());
+				airbus.mes.stationtracker.dialogProdGroup.setModel(oModel, "productionGroupModel");
+				airbus.mes.stationtracker.dialogProdGroup.setModel(airbus.mes.stationtracker.oView.getModel("StationTrackerI18n"),"StationTrackerI18n");
+			}
 			
-			airbus.mes.stationtracker.ModelManager.setOSW(aSFC_Step);
+			airbus.mes.stationtracker.dialogProdGroup.open();
+					
 		}else{
 			
 			sap.m.MessageToast.show(airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("NoOSWData"));
 		}
 		
 	},
+	/***************************************************************************
+     * Fire selected the prodGroup and import osw 
+     * 
+     ****************************************************************************/
+	onOswImport: function() {
+		
+		var sProdGroup = airbus.mes.stationtracker.dialogProdGroup.getContent()[0].getSelectedItem().getText();
+		var oList = airbus.mes.stationtracker.ImportOswUnplannedPopover.getContent()[0].getItems()[1]; 
+		var aPath = oList.getSelectedContextPaths();
+		var aSFC_Step = [];
+		aPath.forEach(function(el) {
+		
+			aSFC_Step.push(airbus.mes.stationtracker.ImportOswUnplannedPopover.getModel("WorkListModel").getProperty(el).SFC_STEP_REF);
+			
+		});
+		
+		airbus.mes.stationtracker.ModelManager.setOSW(aSFC_Step,sProdGroup,true,true);
+
+		
+	},
 	
 	onUnplannedClose : function(oEvent) {
 		
-		airbus.mes.stationtracker.worklistPopover.unPlanned = false;
-		airbus.mes.stationtracker.worklistPopover.OSW = false;			
 		airbus.mes.stationtracker.worklistPopover.close();
 		
 	},	

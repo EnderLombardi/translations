@@ -67,8 +67,7 @@ airbus.mes.shell.AutoRefreshManager =  {
 		            }
 				sVal.timerValueStationTracker--;
 		    }, 1000);
-			
-			break;
+		break;
 			
 		case "disruptiontrackerView":
 			
@@ -83,9 +82,7 @@ airbus.mes.shell.AutoRefreshManager =  {
 			)*1000;
 			
 			this.autoRefreshAPI = airbus.mes.disruptiontracker.ModelManager.loadDisruptionTrackerModel;
-			//this.autoRefresh = setInterval(airbus.mes.disruptiontracker.ModelManager.loadDisruptionTrackerModel, this.refreshInterval);
-			
-			break;
+	break;
 			
 			
 		case "disruptionKPIView":
@@ -101,8 +98,7 @@ airbus.mes.shell.AutoRefreshManager =  {
 			)*1000;
 			
 			this.autoRefreshAPI = airbus.mes.disruptiontracker.kpi.ModelManager.loadDisruptionKPIModel;
-			//this.autoRefresh = setInterval(airbus.mes.disruptiontracker.kpi.ModelManager.loadDisruptionKPIModel, this.refreshInterval);
-			
+		
 			break;
 		default : 
 			
