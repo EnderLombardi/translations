@@ -180,9 +180,7 @@ airbus.mes.worktracker.util.ModelManager = {
 				'image' : undefined
 			};
 
-		}
-
-		else
+		} else
 			this.currentOperator = {
 				'fname' : oprtr.first_name,
 				'lname' : oprtr.last_name,

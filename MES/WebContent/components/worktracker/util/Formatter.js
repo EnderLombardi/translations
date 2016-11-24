@@ -13,7 +13,7 @@ airbus.mes.worktracker.util.Formatter = {
 
 	
 	setOprtnStatus: function(status, progress){
-		progress=parseInt(progress);
+		progress=parseInt(progress,10);
 		switch (status) {
 			case airbus.mes.worktracker.util.Formatter.status.completed:
 				return "Confirmed";
@@ -165,8 +165,7 @@ airbus.mes.worktracker.util.Formatter = {
 			if (status === "Acknowledge")
 				return true;
 			return false;
-		}
-		else{
+		} else {
 			this.getParent().getParent().getParent().addStyleClass("formBackgroundAck");
 			this.getParent().getParent().getParent().getParent().addStyleClass("formBorderAck");
 			return false;
@@ -176,8 +175,7 @@ airbus.mes.worktracker.util.Formatter = {
 	showComment : function(commentVisible){
 		if (commentVisible == "false"){
 			return false;
-		}
-		else{
+		} else{
 			return true;
 		}
 	},
@@ -212,16 +210,14 @@ airbus.mes.worktracker.util.Formatter = {
 			this.setProperty("max",0);
 			this.setProperty("value",0);
 			return "0%";
-		}
-		else if (String(progress) == "100") {
+		} else if (String(progress) == "100") {
 			this.setProperty("max",100);
 			this.setProperty("value",100);
 			return progress+"%";
 		    
-		}
-		else{
-			this.setProperty("max",parseInt(progress));
-			this.setProperty("value",parseInt(progress));
+		} else{
+			this.setProperty("max",parseInt(progress,10));
+			this.setProperty("value",parseInt(progress,10));
 			return progress+"%";
 			
 		}
@@ -241,16 +237,14 @@ airbus.mes.worktracker.util.Formatter = {
 			this.setProperty("min", 0);
 			this.setProperty("value", 0);
 			return "100%";
-		}
-		else if (String(progress) == "100") {
+		} else if (String(progress) == "100") {
 			this.setVisible(false);
 			return "0%";
-		}
-		else{
+		} else {
 			this.addStyleClass("dynProgressSlider");
-			this.setProperty("min", parseInt(progress));
-			this.setProperty("value", parseInt(progress));
-			return (100 - parseInt(progress)) + "%";
+			this.setProperty("min", parseInt(progress,10));
+			this.setProperty("value", parseInt(progress,10));
+			return (100 - parseInt(progress,10)) + "%";
 			
 		}
 	

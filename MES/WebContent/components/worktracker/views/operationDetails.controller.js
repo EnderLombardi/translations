@@ -1,3 +1,4 @@
+"use strict";
 jQuery.sap.require("airbus.mes.worktracker.util.ModelManager");
 jQuery.sap.require("airbus.mes.worktracker.util.Functions");
 jQuery.sap.require("airbus.mes.worktracker.util.Formatter");
@@ -150,7 +151,7 @@ sap.ui
 								"operationDetailModel").oData.schedule;
 						var sMessage = this.getView().getModel("i18n")
 								.getProperty("SuccessfulActivation");
-						var flag_success;
+						var FlagSuccess;
 						jQuery
 								.ajax({
 									url : airbus.mes.worktracker.util.ModelManager
@@ -165,15 +166,15 @@ sap.ui
 										if (result.Rowsets.Rowset[0].Row[0].Message_Type == undefined) {
 											airbus.mes.worktracker.util.ModelManager
 													.messageShow(sMessage);
-											flag_success = true;
+											FlagSuccess = true;
 										} else if (result.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
 											airbus.mes.worktracker.util.ModelManager
 													.messageShow(result.Rowsets.Rowset[0].Row[0].Message)
-											flag_success = false;
+											FlagSuccess = false;
 										} else {
 											airbus.mes.worktracker.util.ModelManager
 													.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
-											flag_success = true;
+											FlagSuccess = true;
 										}
 
 									}
@@ -185,7 +186,7 @@ sap.ui
 
 						// this.refreshOperationData();
 
-						if (flag_success == true) {
+						if (FlagSuccess == true) {
 							this.setProgressScreenBtn(true, true, false);
 							this.getView().byId("progressSlider").setEnabled(
 									true);
@@ -215,15 +216,15 @@ sap.ui
 										if (result.Rowsets.Rowset[0].Row[0].Message_Type == undefined) {
 											airbus.mes.worktracker.util.ModelManager
 													.messageShow(sMessage);
-											flag_success = true;
+											FlagSuccess = true;
 										} else if (result.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
 											airbus.mes.worktracker.util.ModelManager
 													.messageShow(result.Rowsets.Rowset[0].Row[0].Message)
-											flag_success = false;
+											FlagSuccess = false;
 										} else {
 											airbus.mes.worktracker.util.ModelManager
 													.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
-											flag_success = true;
+											FlagSuccess = true;
 										}
 
 									}
@@ -234,7 +235,7 @@ sap.ui
 								.loadUserOperationsModel();
 						// this.refreshOperationData();
 
-						if (flag_success == true) {
+						if (FlagSuccess == true) {
 							this.setProgressScreenBtn(false, false, true);
 							this.getView().byId("progressSlider").setEnabled(
 									false);
@@ -351,10 +352,11 @@ sap.ui
 							sap.ui.getCore().byId("msgstrpConfirm").setVisible(
 									false);
 							var sfc = airbus.mes.worktracker.util.ModelManager.sfc;
+							var percent;
 							if (this.operationStatus == "X")
-								var percent = "100"
+								percent = "100"
 							else {
-								var percent = this.getView().byId(
+								percent = this.getView().byId(
 										"progressSlider").getValue();
 							}
 
@@ -400,19 +402,19 @@ sap.ui
 						this.getView().byId("progressSliderfirst").setWidth(
 								percentage + "%");
 						this.getView().byId("progressSlider").setWidth(
-								(100 - parseInt(percentage)) + "%");
+								(100 - parseInt(percentage,10)) + "%");
 
 						this.getView().byId("progressSliderfirst").setMax(
-								parseInt(percentage));
+								parseInt(percentage,10));
 						this.getView().byId("progressSlider").setMin(
-								parseInt(percentage));
+								parseInt(percentage,10));
 
 						this.getView().byId("progressSliderfirst").setValue(
-								parseInt(percentage));
+								parseInt(percentage,10));
 						this.getView().byId("progressSlider").setValue(
-								parseInt(percentage));
+								parseInt(percentage,10));
 
-						switch (parseInt(percentage)) {
+						switch (parseInt(percentage,10)) {
 						case 100:
 							this.getView().byId("progressSliderfirst")
 									.setVisible(true);

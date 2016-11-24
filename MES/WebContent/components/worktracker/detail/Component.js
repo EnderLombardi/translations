@@ -1,3 +1,4 @@
+"use strict";
 jQuery.sap.require("sap.ui.core.UIComponent");
 
 jQuery.sap.declare("airbus.mes.worktracker.detail.Component");
@@ -34,5 +35,7 @@ airbus.mes.worktracker.detail.Component.prototype.createContent = function() {
 		
 		airbus.mes.worktracker.detail.oView = this.oView;
 		return this.oView;
+	} else {
+		return airbus.mes.worktracker.detail.oView;
 	}
 };

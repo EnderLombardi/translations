@@ -1,3 +1,4 @@
+"use strict";
 jQuery.sap.declare("airbus.mes.worktracker.custom.ClickText");
 jQuery.sap.require("sap.m.Text");
 jQuery.sap.require("sap.m.TextRenderer");

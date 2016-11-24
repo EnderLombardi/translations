@@ -27,7 +27,7 @@ airbus.mes.worktracker.util.Functions = {
 		oBject.getView().getModel("messagesModel").loadData("local/messages.json",null,false);
 		
 		// create popover
-		if (! oBject.messagePopover) {
+		if (!oBject.messagePopover) {
 			oBject.messagePopover = sap.ui.xmlfragment("airbus.mes.worktracker.fragments.MessagesPopOver", oBject);
 			oBject.messagePopover.setModel(oBject.getView().getModel("messagesModel"));
 			oBject.getView().addDependent(oBject.messagePopover);
