@@ -40,33 +40,32 @@ airbus.mes.shell.AutoRefreshManager =  {
 			/**********************************************
 			 * Set Window Interval
 			 */
-			this.refreshInterval = parseInt(
-				airbus.mes.settings.AppConfManager.getConfiguration(		// Get interval time from configuration
-					"REFRESH_STATION_TRACKER_"+station,		// Primary Key
-					this.defaultKey							// Default Key
-				), 10										// radix 10
-			)*1000;
-			
-			// value to decrease the timer show in the station traker view
-			this.timerValueStationTracker = parseInt(airbus.mes.settings.AppConfManager.getConfiguration(		// Get interval time from configuration
-							"REFRESH_STATION_TRACKER_"+station,		// Primary Key
-							this.defaultKey							// Default Key
-						), 10										// radix 10
-					);
-			
-			this.autoRefreshAPI = airbus.mes.shell.oView.oController.renderStationTracker;
-			//this.autoRefresh = setInterval(airbus.mes.shell.oView.oController.renderStationTracker, this.refreshInterval);
-			
-			// Visual button update
-			this.autoRefresh = window.setInterval(function refreshTime(){
-				var sVal = airbus.mes.shell.AutoRefreshManager; 
-				airbus.mes.shell.oView.byId('refreshTime').setText("Refresh (" + sVal.timerValueStationTracker  + "s)");
-				if(sVal.timerValueStationTracker  == 0 || sVal.timerValueStationTracker  < 0) {
-					sVal.timerValueStationTracker = 180
-					airbus.mes.shell.oView.getController().renderStationTracker();
-		            }
-				sVal.timerValueStationTracker--;
-		    }, 1000);
+//			this.refreshInterval = parseInt(
+//				airbus.mes.settings.AppConfManager.getConfiguration(		// Get interval time from configuration
+//					"REFRESH_STATION_TRACKER_"+station,		// Primary Key
+//					this.defaultKey							// Default Key
+//				), 10										// radix 10
+//			)*1000;
+//			
+//			// value to decrease the timer show in the station traker view
+//			this.timerValueStationTracker = parseInt(airbus.mes.settings.AppConfManager.getConfiguration(		// Get interval time from configuration
+//							"REFRESH_STATION_TRACKER_"+station,		// Primary Key
+//							this.defaultKey							// Default Key
+//						), 10										// radix 10
+//					);
+//			
+//			this.autoRefreshAPI = airbus.mes.shell.oView.oController.renderStationTracker;
+//		
+//			// Visual button update
+//			this.autoRefresh = window.setInterval(function refreshTime(){
+//				var sVal = airbus.mes.shell.AutoRefreshManager; 
+//				airbus.mes.shell.oView.byId('refreshTime').setText("Refresh (" + sVal.timerValueStationTracker  + "s)");
+//				if(sVal.timerValueStationTracker  == 0 || sVal.timerValueStationTracker  < 0) {
+//					sVal.timerValueStationTracker = 180
+//					airbus.mes.shell.oView.getController().renderStationTracker();
+//		            }
+//				sVal.timerValueStationTracker--;
+//		    }, 1000);
 		
 			break;
 			

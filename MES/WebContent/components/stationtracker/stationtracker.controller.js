@@ -452,7 +452,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	onUnplannedImport : function() {
 
 		var oList = airbus.mes.stationtracker.ImportOswUnplannedPopover.getContent()[0].getItems()[1]; 
-		if(oList != undefined){
+		if(oList.getSelectedItems().length > 0 ){
 				
 			var oModel = sap.ui.getCore().getModel("productionGroupModel");
 			if (!airbus.mes.stationtracker.dialogProdGroup) {
