@@ -1,5 +1,4 @@
 "use strict";
-
 sap.ui
 		.controller(
 				"airbus.mes.operationdetail.status.status",
@@ -82,7 +81,7 @@ sap.ui
 						var sMessageError = oView.getModel("i18n").getProperty(
 								"UnsuccessfulActivation");
 
-						var flag_success;
+						var flagSuccess;
 						jQuery
 								.ajax({
 									url : airbus.mes.operationdetail.ModelManager
@@ -91,22 +90,22 @@ sap.ui
 									error : function(xhr, status, error) {
 										airbus.mes.operationdetail.ModelManager
 												.messageShow(sMessageError);
-										flag_success = false
+										flagSuccess = false
 									},
 									success : function(result, status, xhr) {
 
 										if (result.Rowsets.Rowset[0].Row[0].Message_Type === undefined) {
 											airbus.mes.operationdetail.ModelManager
 													.messageShow(sMessageSuccess);
-											flag_success = true;
+											flagSuccess = true;
 										} else if (result.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
 											airbus.mes.operationdetail.ModelManager
 													.messageShow(result.Rowsets.Rowset[0].Row[0].Message)
-											flag_success = false;
+											flagSuccess = false;
 										} else {
 											airbus.mes.operationdetail.ModelManager
 													.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
-											flag_success = true;
+											flagSuccess = true;
 										}
 
 									}
@@ -119,7 +118,7 @@ sap.ui
 
 
 						// Refresh User Operation Model and Operation Detail
-						if (flag_success == true) {
+						if (flagSuccess == true) {
 							oView.getController().setProgressScreenBtn(true,
 									false);
 
@@ -155,7 +154,7 @@ sap.ui
 								.getProperty("SuccessfulPause");
 						var sMessageError = oView.getModel("i18n").getProperty(
 								"UnsuccessfulPause");
-						var flag_success;
+						var flagSuccess;
 						jQuery
 								.ajax({
 									url : airbus.mes.operationdetail.ModelManager
@@ -164,26 +163,26 @@ sap.ui
 									error : function(xhr, status, error) {
 										airbus.mes.operationdetail.ModelManager
 												.messageShow(sMessageError);
-										flag_success = false
+										flagSuccess = false
 
 									},
 									success : function(result, status, xhr) {
 
 										if (result.Rowsets.Rowset[0].Row[0].Message_Type === undefined) {
 											airbus.mes.operationdetail.ModelManager.messageShow(sMessageSuccess);
-											flag_success = true;
+											flagSuccess = true;
 										} else if (result.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
 											airbus.mes.operationdetail.ModelManager.messageShow(result.Rowsets.Rowset[0].Row[0].Message)
-											flag_success = false;
+											flagSuccess = false;
 										} else {
 											airbus.mes.operationdetail.ModelManager.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
-											flag_success = true;
+											flagSuccess = true;
 										}
 
 									}
 								});
 
-						if (flag_success == true) {
+						if (flagSuccess == true) {
 							oView.getController().setProgressScreenBtn(false,
 									true);
 
@@ -392,8 +391,7 @@ sap.ui
 									sap.ui.getCore().byId("msgstrpConfirm").setText(sap.ui.getCore().getModel("ShellI18n").getProperty("ErrorScanning"));
 									sap.ui.getCore().byId("msgstrpConfirm").setType("Error");
 								}
-							}
-							else {
+							} else {
 								sap.ui.getCore().byId("msgstrpConfirm").setVisible(true);
 								sap.ui.getCore().byId("msgstrpConfirm").setType("Error");
 								sap.ui.getCore().byId("msgstrpConfirm").setText(sap.ui.getCore().getModel("ShellI18n").getProperty("ErrorScanning"));
@@ -476,16 +474,15 @@ sap.ui
 							sap.ui.getCore().byId("msgstrpConfirm").setVisible(false);
 							var percent;
 							
-							var sfc = airbus.mes.operationdetail.ModelManager.sfc;
+//							var sfc = airbus.mes.operationdetail.ModelManager.sfc;
 							if (oView.getController().operationStatus == "X") {
 								percent = 100;
-							} 
-							else{
+							} else {
 								percent = sap.ui.getCore().byId("progressSlider").getValue();
 							}
 							//
 							// Call service for Operation Confirmation
-							var flag_success = airbus.mes.operationdetail.ModelManager.confirmOperation(user,
+							var flagSuccess = airbus.mes.operationdetail.ModelManager.confirmOperation(user,
 									pass,
 									oView.getController().operationStatus,
 									percent,
@@ -501,7 +498,7 @@ sap.ui
 							// Close confirmation dialogue
 							oView._oUserConfirmationDialog.close();
 
-							if (flag_success === true) {
+							if (flagSuccess === true) {
 								// Refresh User Operation Model and Operation
 								// Detail
 								/*airbus.mes.shell.oView.getController()

@@ -1,3 +1,4 @@
+"use strict";
 sap.ui
 		.controller(
 				"airbus.mes.operationdetail.operationDetail",
@@ -124,6 +125,8 @@ sap.ui
 
 						case "createDisruptionView":
 							airbus.mes.disruptions.oView.createDisruption.oController.onCancelCreateDisruption();
+						default:
+							break;
 						}
 
 					},
@@ -155,8 +158,8 @@ sap.ui
 									sap.ui.getCore().byId("operationDetailPopup--reportDisruption"), // Report Disruption Button
 									sap.ui.getCore().byId("operationDetailPopup--btnCreateDisruption"), // Create Button
 									sap.ui.getCore().byId("operationDetailPopup--btnUpdateDisruption"), // Update Button
-									sap.ui.getCore().byId("operationDetailPopup--btnCancelDisruption")	// Cancel Button							
-							);
+									sap.ui.getCore().byId("operationDetailPopup--btnCancelDisruption")	// Cancel Button		
+						);
 							
 
 							
@@ -180,6 +183,9 @@ sap.ui
 							airbus.mes.disruptions.oView.viewDisruption.oController.turnOnOffButtons();
 							
 							break;
+							
+							default:
+								break;
 						}
 					},
 					
@@ -214,6 +220,9 @@ sap.ui
 							sap.ui.getCore().byId("operationDetailPopup--btnCancelDisruption").setVisible(
 									false);
 							break;
+						
+						default:
+							break;
 						}
 						
 					},
@@ -245,11 +254,8 @@ sap.ui
 								sap.ui.getCore().byId("operationDetailPopup--btnUpdateDisruption").setVisible(true);
 								sap.ui.getCore().byId("operationDetailPopup--btnCreateDisruption").setVisible(false);
 								sap.ui.getCore().byId("operationDetailPopup--btnCancelDisruption").setVisible(true);
-							}
-							
-							// In case of Creation of disruption
-							else{
-
+							} else {
+								// In case of Creation of disruption
 								// set buttons according to create disruption
 								sap.ui.getCore().byId("operationDetailPopup--btnUpdateDisruption").setVisible(false);
 								sap.ui.getCore().byId("operationDetailPopup--btnCreateDisruption").setVisible(true);
@@ -266,8 +272,7 @@ sap.ui
 								
 								airbus.mes.disruptions.ModelManager.loadData();
 								this.disruptionsCustomDataFlag = true;
-							}
-							else
+							} else
 								airbus.mes.disruptions.oView.createDisruption.oController.setDataForEditDisruption();
 							
 							

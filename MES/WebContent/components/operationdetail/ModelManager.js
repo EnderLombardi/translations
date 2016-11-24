@@ -1,5 +1,4 @@
 "use strict";
-
 jQuery.sap.declare("airbus.mes.operationdetail.ModelManager")
 
 airbus.mes.operationdetail.ModelManager = {
@@ -163,7 +162,7 @@ airbus.mes.operationdetail.ModelManager = {
 
 		confirmOperation : function(userId, password, confirmationType,percentConfirm, sfcStepRef, reasonCodeText, Mode, ID, pin, sMessageError, sMessageSuccess) {
 			var url = this.getConfirmationUrl(userId, password, confirmationType,percentConfirm, sfcStepRef, reasonCodeText, Mode, ID, pin);
-			var flag_success;
+			var flagSuccess;
 			jQuery
 					.ajax({
 						url : url,
@@ -171,12 +170,12 @@ airbus.mes.operationdetail.ModelManager = {
 						error : function(xhr, status, error) {
 							airbus.mes.operationdetail.ModelManager
 									.messageShow(sMessageError);
-							flag_success = false;
+							flagSuccess = false;
 	
 						},
 						success : function(data, status, xhr) {
-							flag_success =true;
-							flag_success = airbus.mes.operationdetail.ModelManager.ajaxMsgHandler(data,sMessageSuccess);
+							flagSuccess =true;
+							flagSuccess = airbus.mes.operationdetail.ModelManager.ajaxMsgHandler(data,sMessageSuccess);
 							/*if (result.Rowsets.Rowset) {
 	
 								if (result.Rowsets.Rowset[0].Row) {
@@ -184,15 +183,15 @@ airbus.mes.operationdetail.ModelManager = {
 									if (result.Rowsets.Rowset[0].Row[0].Message_Type === undefined) {
 										airbus.mes.operationdetail.ModelManager
 												.messageShow(sMessageSuccess);
-										flag_success = true;
+										flagSuccess = true;
 									} else if (result.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
 										airbus.mes.operationdetail.ModelManager
 												.messageShow(result.Rowsets.Rowset[0].Row[0].Message)
-										flag_success = false;
+										flagSuccess = false;
 									} else {
 										airbus.mes.operationdetail.ModelManager
 												.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
-										flag_success = true;
+										flagSuccess = true;
 									}
 								}
 								else{
@@ -209,43 +208,40 @@ airbus.mes.operationdetail.ModelManager = {
 							}*/
 						}
 					});
-		return flag_success;
+		return flagSuccess;
 	},
 	ajaxMsgHandler : function(data, Message) {
-		var flag_success;
+		var flagSuccess;
 
 		if (data.Rowsets.FatalError != undefined) {
 			
 			airbus.mes.operationdetail.ModelManager
 			.messageShow(data.Rowsets.FatalError);
-			flag_success = false;
+			flagSuccess = false;
 			
 
-		}
-		// Need to implement Server message
-		else if (data.Rowsets.Messages != undefined) {
+		} else if (data.Rowsets.Messages != undefined) {
+			// Need to implement Server message
 			airbus.mes.operationdetail.ModelManager
 					.messageShow(data.Rowsets.Messages[0].Message)
-					flag_success = false;
-		} 
-		else if (data.Rowsets.Rowset != undefined) {
+					flagSuccess = false;
+		}  else if (data.Rowsets.Rowset != undefined) {
 			// [0].Row[0].Message != undefined
 			if (data.Rowsets.Rowset[0].Row[0].Message_Type != undefined) {
 				if (data.Rowsets.Rowset[0].Row[0].Message_Type == "S"){
 					airbus.mes.operationdetail.ModelManager.messageShow(data.Rowsets.Rowset[0].Row[0].Message);	
-					flag_success = true;
-				}
-				else{
+					flagSuccess = true;
+				} else {
 					airbus.mes.operationdetail.ModelManager.messageShow(data.Rowsets.Rowset[0].Row[0].Message);	
-					flag_success = false;
+					flagSuccess = false;
 				}
 
 			} else {
 				airbus.mes.operationdetail.ModelManager.messageShow(Message);
-				flag_success = false;
+				flagSuccess = false;
 				
 			}
 		}
-		return flag_success;
+		return flagSuccess;
 	},
 };

@@ -1,5 +1,4 @@
 "use strict";
-
 jQuery.sap.declare("airbus.mes.operationdetail.Formatter");
 
 airbus.mes.operationdetail.Formatter = {
@@ -72,7 +71,7 @@ airbus.mes.operationdetail.Formatter = {
 			return "0%";
 		} else {
 			this.addStyleClass("dynProgressSlider");
-			return (100 - parseInt(progress)) + "%";
+			return (100 - parseInt(progress,10)) + "%";
 
 		}
 
@@ -94,8 +93,8 @@ airbus.mes.operationdetail.Formatter = {
 			var newEndTime = endTime.replace("T", " ");
 			return newStartTime + " - " + newEndTime;
 		
-		}
-		else return endDate;
+		} else 
+			return endDate;
 	},
 	displayBadge : function(){
 		return airbus.mes.settings.AppConfManager.getConfiguration("MES_BADGE_ACTIVE");

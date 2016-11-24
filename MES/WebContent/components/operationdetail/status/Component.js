@@ -1,3 +1,4 @@
+"use strict";
 jQuery.sap.registerModulePath("airbus.mes.operationdetail.status", "../components/operationdetail/status");
 //jQuery.sap.require("airbus.mes.operationdetail.status.Formatter");
 jQuery.sap.require("airbus.mes.operationdetail.ModelManager");
@@ -36,6 +37,8 @@ airbus.mes.operationdetail.status.Component.prototype.createContent = function()
 		this.oView.setModel(i18nModel, "i18n");		
 
 		return this.oView;
+	} else {
+		return airbus.mes.operationdetail.status.oView;
 	}
 
 };

@@ -1,3 +1,4 @@
+"use strict";
 jQuery.sap.registerModulePath("airbus.mes.operationdetail", "../components/operationdetail");
 jQuery.sap.require("airbus.mes.operationdetail.Formatter");
 jQuery.sap.require("airbus.mes.operationdetail.ModelManager");
@@ -36,6 +37,8 @@ airbus.mes.operationdetail.Component.prototype.createContent = function() {
 		
 	//	this.oView.setModel(sap.ui.getCore().getModel("reasonCodeModel"), "reasonCodeModel");)
 		return this.oView;
+	} else {
+		return airbus.mes.operationdetail.oView;
 	}
 
 };
