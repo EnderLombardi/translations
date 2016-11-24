@@ -263,13 +263,70 @@ airbus.mes.stationtracker.ModelManager = {
 		});
 
 	},
-	setOSW : function(aItem) {
+	setOSW : function(aItem,sProdgroups,sCheckQa,bOuStanding) {
+		//bOuStanding = true insert OSW
+		//bOuStanding = false insert unplanned
+		
+		
+		var sXmlStart = '<?xml version="1.0" encoding="iso-8859-1"?><Rowsets><Rowset>';
+		var sXmlEnd =     '</Rowset></Rowsets>';
+		var sXml = sXmlStart + airbus.mes.stationtracker.util.Formatter.json2xml({
+			Row : {
+				sfcStepBO : aItem
+			}}) + sXmlEnd;
+			
+		var oData = airbus.mes.stationtracker.ModelManager.settings;
+		var geturlsetosw = this.urlModel.getProperty('urlsetosw');
+		
+		
+		geturlsetosw = airbus.mes.stationtracker.ModelManager.replaceURI(geturlsetosw, "$station", oData.station);
+		geturlsetosw = airbus.mes.stationtracker.ModelManager.replaceURI(geturlsetosw, "$msn", oData.msn);
+	
+		
+		jQuery.ajax({
+			type : 'post',
+			url : geturlsetosw,
+			contentType : 'application/json',
+			data : JSON.stringify({
+				"Param.1" : oData.site,
+				"Param.2" : sCheckQa,
+				"Param.3" : bOuStanding,
+				"Param.4" : oData.sProdgroup,
+				"Param.5" : oData.station,
+				"Param.6" : oData.msn,
+				"Param.7" : oData.messageHandl,
+				"Param.8" : oData.msn,
+				"Param.9" : sXml,
+				}),
+				
+				success : function(data, textStatus, jqXHR) {
+					// Handle Local url_config
+					if (typeof data == "string") {
+						data = JSON.parse(data);
+					}
+					if (airbus.mes.shell.util.Formatter.getMiiMessageType(data) == "E") {
+						sap.m.MessageToast.show(airbus.mes.shell.util.Formatter.getMiiTextFromData(data));
+					} else if ( data.Rowsets.Rowset != undefined ) {
+						if (data.Rowsets.Rowset[0].Row[0].message == "W") {
+							var checkQAModel = new sap.ui.model.json.JSONModel();
+							checkQAModel.setData(data.Rowsets.Rowset[1]);
+							airbus.mes.stationtracker.oView.getController().openCheckQAPopup(checkQAModel);
+						} else if (data.Rowsets.Rowset[0].Row[0].message == "S") {
+							airbus.mes.shell.oView.getController().renderStationTracker();
+						}
+					} else {
+						
+						airbus.mes.shell.oView.getController().renderStationTracker();
+						airbus.mes.stationtracker.oPopoverPolypoly.close();
+					}
+				},
+			});
 
-		console.log(airbus.mes.stationtracker.util.Formatter.json2xml({
-			SFC_Step : {
-				item : aItem
+		console.log(sXmlStart +airbus.mes.stationtracker.util.Formatter.json2xml({
+			Row : {
+				sfcStepBO : aItem
 			}
-		}));
+		}) + sXmlEnd );
 
 	},
 

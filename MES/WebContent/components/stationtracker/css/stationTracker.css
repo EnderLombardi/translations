@@ -612,53 +612,6 @@ background-color: #0085AD !important;
     color: #74d2e7 !important;
 }
 
-/***** KPI Header Content *****/
-
-.classKpiHeaderContent {
-    height: 195px;
-    overflow-y: hidden;
-}
-.classKpiHeaderContent .contentHeaderCont {
-    white-space: normal;
-    background-color: #0F2D65;
-    border-right: solid 1px #74d2e7;
-    margin: 0px ! important;
-    border-bottom: none;
-    border-top: solid 1px #74d2e7;
-}
-.classKpiHeaderContent .contentHeaderCont:last-child {
-    border-right: none;
-}
-.classKpiHeaderContent .sapSuiteCmpChartItemTitle,
-.classKpiHeaderContent .sapSuiteCmpChartItemValue,
-.classKpiHeaderContent label {
-    color: #F5F5F5;
-    font-size: 1vw;
-}
-.classKpiHeaderContent .sapSuiteCmpChartBarNoValue {
-    background-color: rgba(187, 188, 188, 0.15);
-}
-.classKpiHeaderContent .kpiValue {
-    font-size: 20px;
-    width: 100%;
-    text-align: center ! important;
-}
-.classKpiHeaderContent .kpiName {
-    text-align: center ! important;
-    width: 100%;
-}
-.classKpiHeaderContent .kpiErrorValue {
-    font-size: 20px;
-    color: #fe5000;
-}
-.classKpiHeaderContent .whiteTextHeader {
-    white-space: normal;
-    text-align: center ! important;
-    color: white;
-    width: 100%;
-    font-size: 1.1vw;
-}
-
 /***** Gantt Chart *****/
 
 
@@ -1056,7 +1009,7 @@ svg#stationTrackerView--takt_adherence_area_chart {
 }
 #stationTrackerView--shifStaffingHeader .sapSuiteDmcTitle,
 #stationTrackerView--shifStaffingHeader .sapSuiteDmcLbls {
-    font-size: 1vw;
+    font-size: 0.8vw;
 }
 #stationTrackerView--shifStaffingHeader .sapSuiteDmcCnt {
     right: 2rem;
@@ -1298,39 +1251,6 @@ svg#stationTrackerView--takt_adherence_area_chart {
 .dhx_cal_container div:not(.trackerBox) {
     overflow: visible;
 }
-
-/*microchart part*/
-
-.efficiencyContentHeaderCont > .sapMFlexItem:not(.efficiencyChartContainer) {
-    height: 50px;
-    width: 100% !important;
-    line-height: normal;
-    display: inline-block;
-    vertical-align: middle !important;
-}
-.efficiencyContentHeaderCont > .sapMFlexItem:not(.efficiencyChartContainer):before {
-    content: "" !important;
-    font-size: 0 !important;
-    vertical-align: middle !important;
-    display: inline-block !important;
-    width: 0px !important;
-    height: 100% !important;
-}
-.efficiencyContentHeaderCont > .sapMFlexItem:not(.efficiencyChartContainer)> .sapMLabel {
-    display: inline-block;
-    vertical-align: middle !important;
-    margin-left: -1px;
-    max-width: 100% !important;
-    max-height: 50px;
-}
-.efficiencyCharts {
-    height: 140px;
-}
-.efficiencyChartContainer {
-    width: 100%;
-    padding: 0 10px;
-    margin-top: 5px;
-}
 .test {
     background: red !important;
 }
@@ -1523,13 +1443,6 @@ div#iconTabBar--header {
 .upperCaseConversion input {
     text-transform: uppercase;
 }
-
-/*
-.increaseBarHeight{
-height:5rem !important;
-}
-*/
-
 
 /* WorkList */
 

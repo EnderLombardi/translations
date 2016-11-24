@@ -173,18 +173,17 @@ KPI Header Content
 .classKpiHeaderContent {
   height: 195px;
   overflow-y: hidden; }
-
-.classKpiHeaderContent .contentHeaderCont {
-  white-space: normal;
-  background-color: #0f2d65;
-  border-right: solid 1px #74d2e7;
-  margin: 0px !important;
-  border-bottom: none;
-  border-top: solid 1px #74d2e7;
-  padding: 0 5px; }
+  .classKpiHeaderContent .contentHeaderCont {
+    white-space: normal;
+    background-color: #0f2d65;
+    border-right: solid 1px #74d2e7;
+    margin: 0px !important;
+    border-bottom: none;
+    border-top: solid 1px #74d2e7;
+    padding: 0 5px; }
 
 .classKpiHeaderContent .contentHeaderCont:last-child {
-  border-right: none; }
+  border-right: none !important; }
 
 .classKpiHeaderContent .sapSuiteCmpChartItemTitle,
 .classKpiHeaderContent .sapSuiteCmpChartItemValue,
@@ -217,17 +216,12 @@ KPI Header Content
 
 /*KPI boxes*/
 .kpiBoxes > .sapMFlexItem:first-child {
-  height: 50px;
-  width: 100% !important;
-  line-height: normal;
-  display: inline-block;
-  vertical-align: middle !important; }
-
-.kpiBoxes > .sapMFlexItem:first-child > .sapMLabel {
-  display: inline-block;
-  vertical-align: middle !important;
-  max-width: 100% !important;
-  max-height: 50px; }
+  height: 50px; }
+  .kpiBoxes > .sapMFlexItem:first-child .sapMLabel {
+    display: inline-block;
+    vertical-align: middle !important;
+    max-width: 100% !important;
+    max-height: 50px; }
 
 .kpiBoxes > .sapMFlexItem:before {
   content: "" !important;
@@ -238,225 +232,47 @@ KPI Header Content
   height: 100% !important; }
 
 /*general kpi*/
-.kpiBoxExtraWork > .sapMFlexItem {
+.kpiBoxExtraWork .sapMFlexItem {
   width: 100% !important;
   line-height: normal;
   display: inline-block;
   vertical-align: middle !important; }
-
-.kpiBoxExtraWork > .sapMFlexItem > .sapMLabel {
-  display: inline-block;
-  max-width: 100% !important;
-  vertical-align: middle !important; }
-
-/*specific component sizes*/
-.kpiBoxExtraWork > .sapMFlexItem:nth-child(2) {
+  .kpiBoxExtraWork .sapMFlexItem .sapMLabel {
+    display: inline-block;
+    max-width: 100% !important;
+    vertical-align: middle !important; }
+.kpiBoxExtraWork .sapMFlexItem:nth-child(2) {
   height: 30px; }
-
-.kpiBoxExtraWork > .sapMFlexItem:nth-child(4) {
-  height: 30px;
-  vertical-align: sub; }
-
-/*specific label sizes*/
-.kpiBoxExtraWork > .sapMFlexItem:nth-child(2) > .sapMLabel {
-  display: inline-block;
-  vertical-align: sub !important;
-  max-width: 100% !important;
-  max-height: 30px; }
-
-.kpiBoxExtraWork > .sapMFlexItem:nth-child(4) > .sapMLabel {
-  display: inline-block;
-  vertical-align: sub !important;
-  max-width: 100% !important;
-  max-height: 30px; }
-
-.kpiBoxExtraWork > .sapMFlexItem:nth-child(3) > .sapMLabel {
-  display: inline-block;
+  .kpiBoxExtraWork .sapMFlexItem:nth-child(2) .sapMLabel {
+    vertical-align: sub !important;
+    max-height: 30px; }
+.kpiBoxExtraWork .sapMFlexItem:nth-child(4) {
+  height: 30px; }
+  .kpiBoxExtraWork .sapMFlexItem:nth-child(4) .sapMLabel {
+    vertical-align: sub !important;
+    max-height: 30px; }
+.kpiBoxExtraWork .sapMFlexItem:nth-child(3) .sapMLabel {
   vertical-align: top !important;
-  max-width: 100% !important;
+  max-height: 42px; }
+.kpiBoxExtraWork .sapMFlexItem:nth-child(5) .sapMLabel {
+  vertical-align: top !important;
   max-height: 42px; }
 
-.kpiBoxExtraWork > .sapMFlexItem:nth-child(5) > .sapMLabel {
-  display: inline-block;
-  vertical-align: top !important;
-  max-width: 100% !important;
-  max-height: 42px; }
+.kpiBody {
+  height: 139px; }
 
-.efficiencyCharts {
-  height: 140px; }
+.kpiDeltaMicroChart {
+  margin: 10px 0;
+  height: 119px; }
+
+.labourEfficiencyBody {
+  height: 129px; }
 
 .efficiencyChartContainer {
   width: 100%;
   margin-top: 5px; }
 
-/*# sourceMappingURL=global.css.map */
-#mes .sapMToggleBtnPressed {
-  background-image: none;
-  background-color: transparent;
-  border-color: transparent;
-  color: transparent;
-  text-shadow: none; }
-
-/* WORK TRACKER / STATION TRACKER */
-/********************
-TABLE
-*********************/
-.dhx_matrix_scell.folder {
-  max-width: 199px; }
-  .dhx_matrix_scell.folder .ylabelfolder {
-    padding: 0 30px;
-    margin: 0;
-    font-size: 12px;
-    color: #0F5F78;
-    font-weight: normal;
-    box-sizing: border-box;
-    width: 100%;
-    display: inline-block;
-    position: relative;
-    overflow: hidden !important;
-    text-overflow: ellipsis;
-    white-space: nowrap; }
-
-/********************
-TOOLBAR
-*********************/
-#mes .sapMPopover .sapMBtnIcon {
-  color: rgba(0, 86, 112, 0.94); }
-
-/********************
-WORK LIST POP OVER
-*********************/
-.classWorklistPopover .fa {
-  position: relative;
-  z-index: 1;
-  line-height: 20px;
-  height: 20px;
-  color: #ffffff;
-  overflow: hidden; }
-  .classWorklistPopover .fa.rightIcon {
-    padding-left: 6px;
-    padding-right: 6px;
-    float: right; }
-    .classWorklistPopover .fa.rightIcon.petrol {
-      color: rgba(0, 86, 112, 0.94); }
-  .classWorklistPopover .fa.oswIcon2 {
-    position: relative;
-    z-index: 1;
-    line-height: 20px;
-    height: auto;
-    padding-left: 5px;
-    padding-right: 5px;
-    border-radius: 10px;
-    float: right;
-    top: 0px;
-    margin-left: 0px;
-    margin-right: 0px;
-    color: rgba(0, 86, 112, 0.94);
-    overflow: hidden;
-    background-color: #fbec00; }
-    .classWorklistPopover .fa.oswIcon2 b {
-      font-family: arial; }
-.classWorklistPopover .sapMPIText3 {
-  position: absolute;
-  display: block;
-  right: 0px;
-  height: 20px;
-  margin-right: 6px;
-  top: 50%;
-  margin-top: calc(-20px/2);
-  width: auto; }
-
-/********************
-SCHEDULAR TASK STYLE
-*********************/
-/********************
-BOX MANAGEMENT
-*********************/
-.trackerBox {
-  width: 100%;
-  height: inherit;
-  position: absolute;
-  z-index: 1;
-  line-height: 23px;
-  left: 0px;
-  overflow: hidden;
-  text-overflow: ellipsis; }
-  .trackerBox .trackerText {
-    padding-left: 10px;
-    position: relative;
-    z-index: 1;
-    float: left;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: calc(100% - 70px);
-    white-space: nowrap;
-    color: white;
-    overflow: hidden; }
-  .trackerBox .trackerTextBlock {
-    padding-left: 10px;
-    position: relative;
-    z-index: 1;
-    float: left;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 40%;
-    white-space: nowrap;
-    color: rgba(0, 86, 112, 0.94); }
-  .trackerBox .colorProgress {
-    height: inherit;
-    position: absolute;
-    z-index: 0;
-    left: 0px;
-    overflow: hidden; }
-  .trackerBox .openBlockedEscalated, .trackerBox .openBlocked {
-    height: inherit;
-    width: 100%;
-    background-color: #fbec00; }
-  .trackerBox .fa {
-    position: relative;
-    z-index: 1;
-    line-height: 24px;
-    height: 23px;
-    color: #ffffff;
-    overflow: hidden; }
-    .trackerBox .fa.rightIcon {
-      padding-right: 6px;
-      float: right; }
-      .trackerBox .fa.rightIcon.petrol {
-        color: rgba(0, 86, 112, 0.94); }
-    .trackerBox .fa.triangleIcon {
-      padding-left: 6px;
-      float: left; }
-    .trackerBox .fa.oswIcon {
-      position: relative;
-      z-index: 1;
-      line-height: 14px;
-      height: auto;
-      padding-left: 5px;
-      padding-right: 5px;
-      border-radius: 10px;
-      float: left;
-      top: 5px;
-      margin-left: 6px;
-      color: rgba(0, 86, 112, 0.94);
-      overflow: hidden;
-      background-color: #fbec00; }
-      .trackerBox .fa.oswIcon b {
-        font-family: arial; }
-
-.trackerBox:hover .dark-lime-green-back {
-  background-color: #536f12 !important; }
-.trackerBox:hover .teal-blue-back {
-  background-color: #0f2d65 !important; }
-.trackerBox:hover .cherry-red-back {
-  background-color: #9e001e !important; }
-.trackerBox:hover .openBlockedEscalated {
-  background-color: #ffbf00 !important; }
-.trackerBox:hover .openBlocked {
-  background-color: #ffbf00 !important; }
-
-.grey:hover {
-  background-color: #767879;
-  color: black; }
+#mes .sapMPI {
+  margin: 1.25rem 0; }
 
 /*# sourceMappingURL=global.css.map */

@@ -175,8 +175,11 @@ sap.ui
 					 * TODO: conect with refresh function => AutoRefreshManager.js
 					 */
 					refreshgantt: function() {
-						alert("refresh gantt view : ok ");
+						console.log(" =========== refresh ==========");
+						airbus.mes.shell.oView.getController().renderStationTracker();
+						airbus.mes.shell.AutoRefreshManager.clearInterval();
 						airbus.mes.shell.AutoRefreshManager.setInterval("stationTrackerView");
+						
 					},
 
 					renderViews : function() {

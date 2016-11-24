@@ -152,12 +152,11 @@
 						</HBox>
 
 						<VBox id="boxLabourEfficiency" wrap="Wrap" width="7%"
-							class="contentHeaderCont">
-
+							class="contentHeaderCont kpiBoxes ">
 							<Label text="{StationTrackerI18n>LabourEfficiency}" design="Bold"
-								width="100%" class="whiteTextHeader sapUiSmallMarginTopBottom" />
+								width="100%" class="whiteTextHeader" />
 							<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/Labour}"
-								id="LabourEfficiencyValue" class="sapUiSmallMarginTop whiteText kpiValue" />
+								id="LabourEfficiencyValue" class="kpiValue labourEfficiencyBody"/>
 						</VBox>
 
 						<VBox id="boxSLBEfficiecy" width="10%" alignItems="Center"
@@ -167,7 +166,7 @@
 							<VBox class="efficiencyChartContainer" width="100%">
 								<micro:ComparisonMicroChart size="L"
 									id="boxSLBEfficiecy_chart" 
-									width="100%" colorPalette="#84bd00, #f5f5f5, #fe5000" class="efficiencyCharts">
+									width="100%" colorPalette="#84bd00, #f5f5f5, #fe5000" class="kpiBody">
 									<micro:data>
 										<micro:ComparisonMicroChartData
 											title="{StationTrackerI18n>TaktSLB}"
@@ -253,7 +252,7 @@
 							<VBox class="efficiencyChartContainer" width="100%">
 								<micro:ComparisonMicroChart size="L"
 									id="boxResolutionEfficiecy_chart"
-									width="100%" colorPalette="#84bd00,#fe5000,#fe5000,#0F2D65" class="efficiencyCharts">
+									width="100%" colorPalette="#84bd00,#fe5000,#fe5000,#0F2D65" class="kpiBody">
 									<micro:data>
 										<micro:ComparisonMicroChartData
 											title="{StationTrackerI18n>PromisedInTakt}"
@@ -278,21 +277,22 @@
 							<Label text="{StationTrackerI18n>ExtraWork}" design="Bold"
 								width="100%" class="whiteTextHeader " />
 							<Label text="{StationTrackerI18n>Operations}" width="100%"
-								class="whiteText kpiName" />
+								class="kpiName" />
 							<Label text="{KPIextraWork>/operationsUI}"
-								class="whiteText kpiValue" design="Bold" />
+								class="kpiValue" design="Bold" />
 							<Label text="{StationTrackerI18n>Hrs}" width="100%"
-								class="whiteText kpiName" />
+								class="kpiName" />
 							<Label text="{KPIextraWork>/hoursUI}"
-								class="whiteText kpiValue" design="Bold" />
+								class="kpiValue" design="Bold" />
 						</VBox>
 
 						<VBox id="boxShiftStaffing" wrap="Wrap" width="10%"
 							alignItems="Center" class="contentHeaderCont kpiBoxes">
 							<Label text="{StationTrackerI18n>ShiftSTAFFING}" size="L"
 								design="Bold" width="100%" class="whiteTextHeader" />
-							<VBox width="90%" justifyContent="SpaceAround" height="55%">
+							<VBox width="100%" justifyContent="SpaceAround">
 								<micro:DeltaMicroChart width="100%"
+<<<<<<< HEAD
 									id="shifStaffingHeader" isResponsive="true"
 									value1="{path:'KPIshiftStaffing>/neededFteUI', formatter:'airbus.mes.stationtracker.util.Formatter.stringToInt'}"
 									value2="{path:'KPIshiftStaffing>/allocatedFteUI', formatter:'airbus.mes.stationtracker.util.Formatter.stringToInt'}"
@@ -301,6 +301,11 @@
 									displayValue1="{KPIshiftStaffing>/neededFteUI}"
 									displayValue2="{KPIshiftStaffing>/allocatedFteUI}"
 									deltaDisplayValue="{KPIshiftStaffing>/notAllocatedFteUI}" />
+=======
+									id="shifStaffingHeader" isResponsive="true" value1="10" value2="9"
+									title1="{StationTrackerI18n>NeedFTE}" title2="{StationTrackerI18n>AllocatedFTE}"
+									displayValue1="10" displayValue2="9" deltaDisplayValue="1" class="kpiDeltaMicroChart"/>
+>>>>>>> branch 'MESv0.9' of https://bundleerp.git.ptx.fr.sopra/g/mes
 							</VBox>
 						</VBox>
 					</HBox>

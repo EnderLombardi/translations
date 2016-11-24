@@ -194,7 +194,7 @@ airbus.mes.disruptions.Formatter = {
 			return true;
 	},
 
-	setAcknowledgeButtonVisibility : function(responsibleFlag, status) {
+	setAcknowledgeButtonVisibility : function(originatorFlag,responsibleFlag, status) {
 
 		if (responsibleFlag == "X") {
 
