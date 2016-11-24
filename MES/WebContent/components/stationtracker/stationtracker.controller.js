@@ -267,7 +267,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 				descending : false
 			}) ]
 		});
-		
+		airbus.mes.stationtracker.ImportOswUnplannedPopover.mode = "UNPLANNED";
 		sap.ui.getCore().byId("ImportOswUnplannedPopover--LabelTitle").setText(airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("WorklistHeaderUnplanned"));
 
 		var oModel = sap.ui.getCore().getModel("unPlannedModel");
@@ -305,6 +305,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			sorter : []
 		});
 		
+		airbus.mes.stationtracker.ImportOswUnplannedPopover.mode = "OSW";
 		sap.ui.getCore().byId("ImportOswUnplannedPopover--LabelTitle").setText(airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("WorklistHeaderOSW"));		
 		
 		var oModel = sap.ui.getCore().getModel("OSWModel");
@@ -484,9 +485,17 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			
 		});
 		
-		airbus.mes.stationtracker.ModelManager.setOSW(aSFC_Step,sProdGroup,true,true);
-
-		
+		switch(airbus.mes.stationtracker.ImportOswUnplannedPopover.mode) {
+	    case "OSW":
+	    	airbus.mes.stationtracker.ModelManager.setOSW(aSFC_Step,sProdGroup,true,true);
+	        break;
+	    case "UNPLANNED":
+	    	airbus.mes.stationtracker.ModelManager.setOSW(aSFC_Step,sProdGroup,true,false);
+	        break;
+	    default:
+	    	console.log("itsnot possible");
+	    }
+			
 	},
 	
 	onUnplannedClose : function(oEvent) {
