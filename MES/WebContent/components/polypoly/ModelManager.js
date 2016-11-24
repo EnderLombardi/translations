@@ -1,12 +1,12 @@
-"use strict";
+//"use strict";
 jQuery.sap.declare("airbus.mes.polypoly.ModelManager")
 
 /* refresh object */
-//var oRefresh;
-//var oRefreshDiaporama;
-//var Takt_start_date; // variable for takt start marker on order worklist
-//var aContent = {};// we cache the content in this object
-//var bClearData = false;// var to prevent clearing on gantt data for first time.
+var oRefresh;
+var oRefreshDiaporama;
+var Takt_start_date; // variable for takt start marker on order worklist
+var aContent = {};// we cache the content in this object
+var bClearData = false;// var to prevent clearing on gantt data for first time.
 // gantt data needs to be cleared for refresh.
 // refer:StationView.cotroller.js lockStation function
 /* Initializing Gannt Objects for 'order worklist' and 'Operation worklist' */
@@ -103,7 +103,7 @@ airbus.mes.polypoly.ModelManager = {
 		core.getModel("mii").attachRequestCompleted(airbus.mes.polypoly.ModelManager.onPolyPolyModelLoaded);
 				
 		core.setModel(new sap.ui.model.json.JSONModel(), "listQA");
-//		core.setModel(new sap.ui.model.json.JSONModel(), "columnModel");
+		core.setModel(new sap.ui.model.json.JSONModel(), "columnModel");
 		core.setModel(new sap.ui.model.json.JSONModel(), "rpModel");
 		core.setModel(new sap.ui.model.json.JSONModel("../components/polypoly/model/needlevels.json"), "needlevels");
 		core.setModel(new sap.ui.model.json.JSONModel(), "affectationModel");

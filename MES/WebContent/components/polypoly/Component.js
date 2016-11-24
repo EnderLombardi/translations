@@ -1,4 +1,4 @@
-"use strict";
+//"use strict";
 jQuery.sap.require("sap.ui.core.UIComponent");
 jQuery.sap.require("sap.ui.model.resource.ResourceModel");
 jQuery.sap.require("sap.ui.base.Event");
@@ -63,7 +63,7 @@ airbus.mes.polypoly.Component.prototype.createContent = function() {
 		
 //		this.oView.setModel(i18nModel, "i18n");		
 		this.oView.setModel(sap.ui.getCore().getModel("rpModel"), "rpModel");
-//		this.oView.setModel(sap.ui.getCore().getModel("columnModel"), "columnModel");
+		this.oView.setModel(sap.ui.getCore().getModel("columnModel"), "columnModel");
 		this.oView.setModel(sap.ui.getCore().getModel("listQA"), "listQA");
 		this.oView.setModel(sap.ui.getCore().getModel("needlevels"), "needlevels");
 		this.oView.setModel(sap.ui.getCore().getModel("affectationModel"), "affectationModel");
