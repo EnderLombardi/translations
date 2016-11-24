@@ -2,11 +2,11 @@
 jQuery.sap.declare("airbus.mes.polypoly.ModelManager")
 
 /* refresh object */
-var oRefresh;
-var oRefreshDiaporama;
-var Takt_start_date; // variable for takt start marker on order worklist
-var aContent = {};// we cache the content in this object
-var bClearData = false;// var to prevent clearing on gantt data for first time.
+//var oRefresh;
+//var oRefreshDiaporama;
+//var Takt_start_date; // variable for takt start marker on order worklist
+//var aContent = {};// we cache the content in this object
+//var bClearData = false;// var to prevent clearing on gantt data for first time.
 // gantt data needs to be cleared for refresh.
 // refer:StationView.cotroller.js lockStation function
 /* Initializing Gannt Objects for 'order worklist' and 'Operation worklist' */

@@ -1,3 +1,4 @@
+"use strict";
 jQuery.sap.require("sap.ui.core.UIComponent");
 jQuery.sap.require("sap.ui.model.resource.ResourceModel");
 jQuery.sap.require("sap.ui.base.Event");
@@ -70,6 +71,8 @@ airbus.mes.polypoly.Component.prototype.createContent = function() {
 
 		return this.oView;
 
+	} else {
+		return airbus.mes.polypoly.oView;
 	}
 
 };
