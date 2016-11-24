@@ -60,10 +60,10 @@ airbus.mes.shell.AutoRefreshManager =  {
 			// Visual button update
 			this.autoRefresh = window.setInterval(function refreshTime(){
 				var sVal = airbus.mes.shell.AutoRefreshManager; 
-				airbus.mes.shell.oView.byId('refreshTime').setText("Refrech (" + sVal.timerValueStationTracker  + "s)");
+				airbus.mes.shell.oView.byId('refreshTime').setText("Refresh (" + sVal.timerValueStationTracker  + "s)");
 				if(sVal.timerValueStationTracker  == 0 || sVal.timerValueStationTracker  < 0) {
 					sVal.timerValueStationTracker = 180
-					airbus.mes.shell.oView.oController().renderStationTracker();
+					airbus.mes.shell.oView.getController().renderStationTracker();
 		            }
 				sVal.timerValueStationTracker--;
 		    }, 1000);
