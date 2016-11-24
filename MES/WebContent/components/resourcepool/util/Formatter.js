@@ -65,10 +65,8 @@ airbus.mes.resourcepool.util.Formatter = {
 		// User is completely available
 		if (assignedTo == "---" || assignedTo == "") {
 			return;
-		}
-
-		// User is only assigned
-		else if (loanedRP_Name == "---" || loanedRP_Name == "") {
+		} else if (loanedRP_Name == "---" || loanedRP_Name == "") {
+			// User is only assigned
 			if(airbus.mes.resourcepool.util.ModelManager.resourceName !=assignedTo)
 				that.addStyleClass("yellowColor");
 			else
@@ -92,8 +90,7 @@ airbus.mes.resourcepool.util.Formatter = {
 		if (assignedTo == "---" || assignedTo == ""){
 			that.addStyleClass("blueBorderChange");
 			return;
-		}
-		else if (loanedRP_Name == "---" || loanedRP_Name == ""){
+		} else if (loanedRP_Name == "---" || loanedRP_Name == ""){
 			if(airbus.mes.resourcepool.util.ModelManager.resourceName !=assignedTo)
 				that.addStyleClass("blueBorderChange");
 			return "Assigned : "+assignedTo;

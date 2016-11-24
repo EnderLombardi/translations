@@ -1,3 +1,4 @@
+"use strict";
 sap.ui
 		.controller(
 				"airbus.mes.resourcepool.views.Main",
@@ -117,9 +118,8 @@ sap.ui
 									oItemAssign
 											.removeStyleClass("sapMLIBSelected");
 
-							}
-							/* For all other items on which shift is not changed */
-							else {
+							} else {
+								/* For all other items on which shift is not changed */
 								// Set Shift Assigned Property false
 								sap.ui.getCore().getModel("ResourcePoolDetailModel").oData.Rowsets.Rowset[5].Row[rowNum].shiftAssigned = "false";
 
@@ -185,20 +185,17 @@ sap.ui
 									if (oUser.loanedToPool != "" && oUser.assignedToRPName != airbus.mes.resourcepool.util.ModelManager.resourceName){
 										//console.log(item.getBindingContext("ResourcePoolDetailModel"))	
 										aError.push(item);
-									}
-									else if(oUser.loanedToPool == "" && oUser.assignedToRPName != airbus.mes.resourcepool.util.ModelManager.resourceName){
-										if(oUser.assignedToRPName!="")
-										{
+									} else if(oUser.loanedToPool == "" && oUser.assignedToRPName != airbus.mes.resourcepool.util.ModelManager.resourceName){
+										if(oUser.assignedToRPName!="") {
 											oUser.loanedToPool=airbus.mes.resourcepool.util.ModelManager.resourceId;
 											oUser.loanedToRPName = airbus.mes.resourcepool.util.ModelManager.resourceName;
 										}
 										sap.ui.getCore().getModel("ResourcePoolDetailModel").getProperty("/Rowsets/Rowset/1/Row/").push(oUser);
 										rowIDs.push(oUser.handle);
-									}
+									} else {
 										/*
 										 * Push JSON Object to Assigned Users Model
 										 */
-									else{
 										rowIDs.push(oUser.handle);
 										sap.ui.getCore().getModel("ResourcePoolDetailModel").getProperty("/Rowsets/Rowset/1/Row/").push(oUser);
 									}
@@ -523,6 +520,8 @@ sap.ui
 								this.getView().byId("listAllocatedWorkCenter")
 										.removeSelections();
 							break;
+							default:
+								break;
 						}
 
 					},
@@ -552,6 +551,8 @@ sap.ui
 							else
 								this.getView().byId("listAllocatedUsers")
 										.removeSelections();
+							break;
+						default:
 							break;
 						}
 					},
@@ -749,9 +750,8 @@ sap.ui
 //							aFilters.push(filter5);
 							binding.filter(new sap.ui.model.Filter(aFilters,
 									false), "Control");
-						}
-						// update list binding
-						else {
+						} else {
+							// update list binding
 							binding.filter();
 						}
 					},
@@ -779,9 +779,8 @@ sap.ui
 
 							binding.filter(new sap.ui.model.Filter(aFilters,
 									false), "Control");
-						}
-						// update list binding
-						else {
+						} else {
+							// update list binding
 							binding.filter();
 						}
 					},
@@ -811,9 +810,8 @@ sap.ui
 
 							binding.filter(new sap.ui.model.Filter(aFilters,
 									false), "Control");
-						}
-						// update list binding
-						else {
+						} else {
+							// update list binding
 							binding.filter();
 						}
 					},
@@ -1280,6 +1278,10 @@ sap.ui
 
 							// Open
 							airbus.mes.resourcepool.oUpdateDialog.open();
+							break;
+							
+						default:
+							break;
 
 						}
 					},
@@ -1588,8 +1590,7 @@ sap.ui
 						 else if (oEvt.getParameters().toId == "idWorkCenterView"){
 							 sap.ui.getCore().byId("idWorkCenterView--assignedWCPanel").rerender();
 							 sap.ui.getCore().byId("idWorkCenterView--availableWCPanel").rerender();
-						 }
-						 else {
+						 } else {
 							 sap.ui.getCore().byId("idShiftView--userShiftPanel").rerender();
 						 }
 						 
