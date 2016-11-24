@@ -33,8 +33,11 @@ airbus.mes.stationtracker.ModelManager = {
               core.setModel(new sap.ui.model.json.JSONModel(), "groupModel"); // Unplanned// Filter// Model
               core.setModel(new sap.ui.model.json.JSONModel(), "KPIextraWork"); // KPI Extra Work
               core.setModel(new sap.ui.model.json.JSONModel(), "KPItaktAdherence"); // KPI Takt Adherence
+
               core.setModel(new sap.ui.model.json.JSONModel(), "KPIshiftStaffing"); // KPI Shift Staffing
               core.setModel(new sap.ui.model.json.JSONModel(), "KPItaktEfficiency"); // KPI Shift Staffing
+
+              core.setModel(new sap.ui.model.json.JSONModel(), "disruptionAndonKPI");//DisruptionAndonKPI Service Added.
 
 
            this.settings = airbus.mes.settings.ModelManager;
@@ -46,6 +49,7 @@ airbus.mes.stationtracker.ModelManager = {
            core.getModel("unPlannedModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onUnPlannedLoad);
            core.getModel("OSWModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onOWSLoad);
            core.getModel("ressourcePoolModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onRessourcePoolLoad);
+         
 
 		var dest;
 
@@ -427,7 +431,14 @@ airbus.mes.stationtracker.ModelManager = {
 		var oViewModel = sap.ui.getCore().getModel("KPI");
 		oViewModel.loadData(this.urlModel.getProperty("urlKPI"), null, true);
 		airbus.mes.stationtracker.ModelManager.KPI = oViewModel;
-
+		
+		// Model For the Disruption Andon KPI
+		var oDisruptionAndonModel = sap.ui.getCore().getModel("disruptionAndonKPI");
+		var urlDisruptionKpi = this.urlModel.getProperty("urlDisruptionKpi");
+		urlDisruptionKpi = airbus.mes.settings.ModelManager.replaceURI(urlDisruptionKpi, "$site", airbus.mes.settings.ModelManager.site);
+		urlDisruptionKpi = airbus.mes.settings.ModelManager.replaceURI(urlDisruptionKpi, "$station", airbus.mes.settings.ModelManager.station);
+		oDisruptionAndonModel.loadData(urlDisruptionKpi, null, true);
+		
 		this.loadKPIextraWork();
 		this.loadKPItaktAdherence();
 		this.loadKPIshiftStaffing();

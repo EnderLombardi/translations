@@ -198,11 +198,11 @@
 									<Label text="{StationTrackerI18n>DisruptionTotal}" class=" whiteText kpiName"
 										design="Bold" />
 									<Label text="{StationTrackerI18n>Disruption}" class=" whiteText kpiName" />
-									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/TotalDisruption}"
+									<Label text="{disruptionAndonKPI>/Rowsets/Rowset/0/Row/0/totalDisruption}"
 										class=" whiteText kpiValue" design="Bold" />
 									<Label text="{StationTrackerI18n>Andon}" class=" redText kpiErrorValue"
 										design="Bold" />
-									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/TotalAndon}"
+									<Label text="{disruptionAndonKPI>/Rowsets/Rowset/0/Row/0/totalAndon}"
 										class="redText kpiValue kpiErrorValue" design="Bold" />
 								</VBox>
 								<VBox width="35%" class="classOpenDisruptionDetail" justifyContent="SpaceAround">
@@ -218,28 +218,28 @@
 								</VBox>
 								<VBox alignItems="Center" width="20%" justifyContent="SpaceAround" class="classOpenDisruptionDisruption">
 									<Label text="{StationTrackerI18n>Disruption}" class="whiteText" />
-									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/NCDisruption}"
+									<Label text="{disruptionAndonKPI>/Rowsets/Rowset/0/Row/0/NC}"
 										class=" whiteText" />
-									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/MissingDisruption}"
+									<Label text="{disruptionAndonKPI>/Rowsets/Rowset/0/Row/0/MissingParts}"
 										class=" whiteText" />
-									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/JTDisruption}"
+									<Label text="{disruptionAndonKPI>/Rowsets/Rowset/0/Row/0/Jnt}"
 										class=" whiteText" />
-									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/FTEDisruption}"
+									<Label text="{disruptionAndonKPI>/Rowsets/Rowset/0/Row/0/FTE}"
 										class=" whiteText" />
-											<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/OtherDisruption}"
+											<Label text="{disruptionAndonKPI>/Rowsets/Rowset/0/Row/0/Other}"
 										class=" whiteText" />
 								</VBox>
 								<VBox alignItems="Center" width="15%" justifyContent="SpaceAround" class="classOpenDisruptionAndon">
 									<Label text="{StationTrackerI18n>Andon}" class="redText kpiErrorValue" />
-									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/NCAndon}"
+									<Label text="{disruptionAndonKPI>/Rowsets/Rowset/0/Row/0/NC_escalated}"
 										class=" redText kpiErrorValue" />
-									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/MissingAndon}"
+									<Label text="{disruptionAndonKPI>/Rowsets/Rowset/0/Row/0/MissingParts_escalated}"
 										class=" redText kpiErrorValue" />
-									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/JTAndon}"
+									<Label text="{disruptionAndonKPI>/Rowsets/Rowset/0/Row/0/Jnt_escalated}"
 										class=" redText kpiErrorValue" />
-									<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/FTEAndon}"
+									<Label text="{disruptionAndonKPI>/Rowsets/Rowset/0/Row/0/FTE_escalated}"
 										class="redText kpiErrorValue" />
-											<Label text="{KPI>/Rowsets/Rowset/0/Row/DisruptionStatus/OtherAndon}"
+											<Label text="{disruptionAndonKPI>/Rowsets/Rowset/0/Row/0/Other_escalated}"
 										class="redText kpiErrorValu" />
 								</VBox>
 							</HBox>
@@ -255,19 +255,21 @@
 									width="100%" colorPalette="#84bd00,#fe5000,#fe5000,#0F2D65" class="kpiBody">
 									<micro:data>
 										<micro:ComparisonMicroChartData
-											title="{StationTrackerI18n>PromisedInTakt}"
-											value="8"
-											displayValue="8" />
+
+											title="{StationTrackerI18n>PromisedInTakt}" value="{disruptionAndonKPI>/Rowsets/Rowset/0/Row/0/InTakt}" />
+
 										<micro:ComparisonMicroChartData
-											title="{StationTrackerI18n>PromisedOutTakt}"
-											value="3"
-											displayValue="3" />
+											title="{StationTrackerI18n>PromisedOutTakt}" value="{disruptionAndonKPI>/Rowsets/Rowset/0/Row/0/OutTakt}" />
+
 										<micro:ComparisonMicroChartData
+
 											title="{StationTrackerI18n>NotAcknowledged}"
 											value="2"
 											displayValue="2" />
-										<micro:ComparisonMicroChartData
-											id="hiddenRefBarResolution" title="{StationTrackerI18n>RedSpaces}" value="13" visible="false"/>
+										<micro:ComparisonMicroChartData	title="{StationTrackerI18n>NotAcknowledged}" value="{disruptionAndonKPI>/Rowsets/Rowset/0/Row/0/NotAcknowledged}" />
+										<!-- <micro:ComparisonMicroChartData
+											id="hiddenRefBarResolution" title="{StationTrackerI18n>RedSpaces}" value="13" visible="false"/> -->
+
 									</micro:data>
 								</micro:ComparisonMicroChart>
 							</VBox>
