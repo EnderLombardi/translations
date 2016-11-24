@@ -924,8 +924,7 @@ sap.ui
 												"rows").filter(filters)
 							}
 
-						} else {
-							if (airbus.mes.stationtracker.AssignmentManager.polypolyAffectation) {
+						} else if (airbus.mes.stationtracker.AssignmentManager.polypolyAffectation) {
 								airbus.mes.polypoly.oView
 										.byId("oTablePolypoly").getBinding(
 												"rows").filter(aFilters);
@@ -934,7 +933,7 @@ sap.ui
 										.byId("oTablePolypoly").getBinding(
 												"rows").filter()
 							}
-						}
+
 					},
 
 					clearFilters : function() {
@@ -1184,7 +1183,7 @@ sap.ui
 									oTable.insertColumn(oColumn, oldPos);
 								}, 0);
 							} else {
-								var newPos = newPos - 5;
+								newPos = newPos - 5;
 								var sTechname = oEvt.getParameters().column
 										.getBindingContext().getProperty(
 												"techname");

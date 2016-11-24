@@ -459,7 +459,7 @@ airbus.mes.polypoly.PolypolyManager = {
 		this.levelUpdater.sUserName = this.userComptencyContext.rowBindingContext.getProperty("category");
 		this.levelUpdater.sTechName = oModel.getData().columns[airbus.mes.polypoly.PolypolyManager.userComptencyContext.columnIndex + 4].techname;
 		this.levelUpdater.startLevel = parseInt(airbus.mes.polypoly.PolypolyManager.userComptencyContext.rowBindingContext
-				.getProperty(this.levelUpdater.sTechName));
+				.getProperty(this.levelUpdater.sTechName),10);
 		this.levelUpdater.endLevel = airbus.mes.polypoly.PolypolyManager.userComptencyContext.newLevel;
 		this.levelUpdater.currentLevel = this.levelUpdater.startLevel;
 
@@ -518,6 +518,8 @@ airbus.mes.polypoly.PolypolyManager = {
 				case "E":
 					sap.m.MessageToast.show("Error : " + data.Rowsets.Rowset[0].Row[0].Message );
 					break;
+				default:
+					break;
 				}	
 			},
 		})
@@ -545,7 +547,10 @@ airbus.mes.polypoly.PolypolyManager = {
 				case "E":
 					sap.m.MessageToast.show("Error : " + airbus.mes.shell.util.Formatter.getMiiTextFromData(data) );
 					break;
-				}	
+				default:
+					break;
+				}
+
 			},
 		})
 	},
@@ -572,6 +577,8 @@ airbus.mes.polypoly.PolypolyManager = {
 					break;
 				case "E":
 					sap.m.MessageToast.show("Error : " + data.Rowsets.Rowset[0].Row[0].Message );
+					break;
+				default:
 					break;
 				}				
 				
