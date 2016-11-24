@@ -13,7 +13,7 @@ sap.ui
 					 * @memberOf polypoly.main
 					 */
 					onInit : function() {
-						columnModel = new sap.ui.model.json.JSONModel();
+//						var columnModel = new sap.ui.model.json.JSONModel();
 					},
 
 					onBeforeRendering : function() {
