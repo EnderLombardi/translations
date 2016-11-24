@@ -10,22 +10,6 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	 * @memberOf components.stationtracker.stationtracker
 	 */
 		onInit: function() {		
-//		var oModel = sap.ui.getCore().getModel("productionGroupModel");
-//		var aProdGroup = oModel.getData().Rowsets.Rowset[0].Row;
-//		var aItems = [];
-//
-		// Check if model is load ,create empty model if no data
-//		if(!oModel.getProperty("/Rowsets/Rowset/0/Row")){              
-//			
-//	    	console.log("No production group available");
-//	    	oModel.oData.Rowsets.Rowset[0].Row = [];
-//	    	aProdGroup = [];
-//		}
-//		
-//		
-//		for (var i = 0; i < aProdGroup.length; i++) {
-//			aItems.push(aProdGroup[i].PROD_GROUP);
-//		}
 		},
 	/**
 	 * Similar to onBeforeRendering, but this hook is invoked before the controller's View is re-rendered
@@ -110,7 +94,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
      ****************************************************************************/
 	onTeamPress : function(oEvent) {
 
-		var bindingContext = oEvent.getSource().getBindingContext();
+//		var bindingContext = oEvent.getSource().getBindingContext();
 		// open team popover fragment		 
 		if (!this._oPopover) {
 			this._oPopover = sap.ui.xmlfragment("airbus.mes.stationtracker.teamPopover", this);
@@ -300,7 +284,6 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		
 		if ( airbus.mes.stationtracker.ImportOswUnplannedPopover === undefined ) {
 			
-			var oView = airbus.mes.stationtracker.oView;
 			airbus.mes.stationtracker.ImportOswUnplannedPopover = sap.ui.xmlfragment("ImportOswUnplannedPopover","airbus.mes.stationtracker.ImportOswUnplannedPopover", airbus.mes.stationtracker.oView.getController());
 			airbus.mes.stationtracker.ImportOswUnplannedPopover.addStyleClass("alignTextLeft");
 			airbus.mes.stationtracker.oView.addDependent(airbus.mes.stationtracker.ImportOswUnplannedPopover);
@@ -339,7 +322,6 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		// show loading on gantt
 		airbus.mes.stationtracker.oView.byId("stationtracker").setBusy(true);  
 //		Filter the stationtracker model with current production group
-		var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
 	    var sProdGroup = airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("ProductionGroup") + " : ";
 	    var sProdGroupMii = "";
 	     
@@ -446,12 +428,6 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	
 	},
 	onRescheduleConfirm : function(oEvent) {
-//		Retrieve selected date
-		var oDate = sap.ui.getCore().byId("ReschedulePopover--DP1").getAggregation("selectedDates")[0].getStartDate();
-		
-//		Retrieve selected group
-		var sGroup = sap.ui.getCore().byId("ReschedulePopover--SelectedGroup").getSelectedKey();
-
 //		Close Popup
 		onCloseDialog(oEvent);
 		
@@ -583,8 +559,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
      */
      changeGrouping : function(oEvt) {
            
-           var aModelToTest = airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").oData;
-           
+          
            sap.ui.getCore().byId("myList").bindAggregation('items', {
                   path : "/Rowsets/Rowset/0/Row",
                   template : sap.ui.getCore().byId("sorterList"),
@@ -626,7 +601,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
            // Constitute a table of WO groups with operations associated
            // The group object has template bellow.
            var currentWO = {
-        		  shopOrder : undefined,
+                   shopOrder : undefined,
                   dynamicStartDate : undefined,
                   scheduledStartDate : undefined,
                   operationsID : [],
@@ -640,7 +615,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
                          }
 
                          currentWO = {
-                        		shopkOrder : oWorkList[i].shopOrder,
+                                 shopkOrder : oWorkList[i].shopOrder,
                                 startDate : oWorkList[i].startDate,
 //                                scheduledStartDate : oWorkList[i].start,
                                 operationsID : [ oWorkList[i] ],
@@ -713,46 +688,54 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
      onChangeFilter : function(oEvent){
          var aMyFilter = [];    	 
          var sStatus;
-         
-//    	 Check the current value of the filter status
-    	 if(oEvent.getSource().getSelectedKey() === "StatusAll") {
-//			if status ALL, we have to remove all filter
-    		 sap.ui.getCore().byId("worklistPopover--myList").getBinding("items").filter();    	
-    		 
-    	 } else {
-//    		 we apply the a filter
-    		 switch (oEvent.getSource().getSelectedKey()) {
-    			 case "StatusStarted":
-    				 sStatus = "2";
-    				 break;
-    			 case "StatusNotStarted":
-    				 sStatus = "1";
-    				 break;
-    		     case "StatusConfirmed":
-    			     sStatus = "0";
-       				 break;
-       			default:
-    		 }
-    		 var oFilterStatus = new sap.ui.model.Filter("status","EQ",sStatus);        
-             aMyFilter.push(oFilterStatus);
-             sap.ui.getCore().byId("worklistPopover--myList").getBinding("items").filter(new sap.ui.model.Filter(aMyFilter, true));    		 
-    	 }
-    	 
-     },
-     
-     ClosePolyPoly : function(oEvent){
 
- 		this.onCloseDialog(oEvent);
- 		airbus.mes.stationtracker.AssignmentManager.polypolyAffectation = false; 
- 		
-     },
- 	getI18nValue : function(sKey) {
-	    return this.getView().getModel("StationTrackerI18n").getProperty(sKey);
+		// Check the current value of the filter status
+		if (oEvent.getSource().getSelectedKey() === "StatusAll") {
+			// if status ALL, we have to remove all filter
+			sap.ui.getCore().byId("worklistPopover--myList")
+					.getBinding("items").filter();
+	
+		} else {
+			// we apply the a filter
+			switch (oEvent.getSource().getSelectedKey()) {
+			case "StatusStarted":
+				sStatus = "2";
+				break;
+			case "StatusNotStarted":
+				sStatus = "1";
+				break;
+			case "StatusConfirmed":
+				sStatus = "0";
+				break;
+			default:
+			}
+			var oFilterStatus = new sap.ui.model.Filter(
+					"status", "EQ", sStatus);
+			aMyFilter.push(oFilterStatus);
+			sap.ui.getCore().byId("worklistPopover--myList")
+					.getBinding("items").filter(
+											new sap.ui.model.Filter(aMyFilter,
+													true));
+			}
+	
+		},
+ 
+
+					
+					
+     ClosePolyPoly : function(oEvent) {
+
+		this.onCloseDialog(oEvent);
+		airbus.mes.stationtracker.AssignmentManager.polypolyAffectation = false;
+
+	},
+	getI18nValue : function(sKey) {
+		return this.getView().getModel("StationTrackerI18n")
+				.getProperty(sKey);
 	},
 
 	selectUser : function(oEvt) {
 		
-		var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
 		var oSelected = oEvt.getSource().getSelectedItem().mProperties;
 		airbus.mes.stationtracker.oView.byId("stationtracker").setBusy(true);
 		
@@ -823,7 +806,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 
 		aModel = aModel.filter(function (el) {
 			  return el.OPERATION_ID ===  sOperation_id &&
-			       	 el.WORKORDER_ID === sWorkOrder_id;
+					el.WORKORDER_ID === sWorkOrder_id;
 			}); 
 
 //		Call the operation list popup
@@ -874,7 +857,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 				sMounth = "0" + sMounth
 				
 				}
-			var sDay = dDataSelected.getDate();
+				sDay = dDataSelected.getDate();
 			
 			if ( sDay < 10 ) { 
 				
@@ -977,11 +960,6 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		airbus.mes.stationtracker.AssignmentManager.handleLineAssignment("D", true);
 //		Close Popup
 		onCloseDialog(oEvent);
-	},
-	
-	tooltipDisplay : function(oEvent) {
-		var oEventProvider = new sap.ui.base.EventProvider();
-		var oEvent = new sap.ui.base.Event("test",oEventProvider);
 	},
 	
 	onCheckQA : function(){
