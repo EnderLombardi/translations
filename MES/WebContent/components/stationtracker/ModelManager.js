@@ -396,7 +396,7 @@ airbus.mes.stationtracker.ModelManager = {
 
 			error : function(error, jQXHR) {
 				console.log(error);
-
+				airbus.mes.stationtracker.oView.byId("boxExtraWork").setBusy(false);
 			}
 		});
 	},
@@ -423,6 +423,7 @@ airbus.mes.stationtracker.ModelManager = {
 
 			error : function(error, jQXHR) {
 				console.log(error);
+				airbus.mes.stationtracker.oView.byId("boxTaktAdherenceRight").setBusy(false);
 
 			}
 		});
