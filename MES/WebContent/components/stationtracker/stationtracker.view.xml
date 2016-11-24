@@ -161,7 +161,7 @@
 						</VBox>
 
 						<VBox id="boxSLBEfficiecy" width="10%" alignItems="Center"
-							class="contentHeaderCont efficiencyContentHeaderCont">
+							class="contentHeaderCont kpiBoxes">
 							<Label text="{StationTrackerI18n>SLBEFFICIENCY}" design="Bold"
 								class="whiteTextHeader" />
 							<VBox class="efficiencyChartContainer" width="100%">
@@ -239,7 +239,7 @@
 						</VBox>
 
 						<VBox id="boxResolutionEfficiency" width="11%" alignItems="Center"
-							class="contentHeaderCont efficiencyContentHeaderCont">
+							class="contentHeaderCont kpiBoxes">
 							<Label text="{StationTrackerI18n>ResolutionEfficiency}"
 								design="Bold" class="whiteTextHeader" />
 							<VBox class="efficiencyChartContainer" width="100%">
@@ -260,9 +260,9 @@
 							</VBox>
 						</VBox>
 
-						<VBox id="boxExtraWork" wrap="Wrap" width="6%" class="contentHeaderCont">
+						<VBox id="boxExtraWork" wrap="Wrap" width="6%" class="contentHeaderCont kpiBoxes kpiBoxExtraWork">
 							<Label text="{StationTrackerI18n>ExtraWork}" design="Bold"
-								width="100%" class="whiteTextHeader sapUiSmallMarginTopBottom " />
+								width="100%" class="whiteTextHeader " />
 							<Label text="{StationTrackerI18n>Operations}" width="100%"
 								class="whiteText kpiName" />
 							<Label text="{KPIextraWork>/operationsUI}"
@@ -274,9 +274,9 @@
 						</VBox>
 
 						<VBox id="boxShiftStaffing" wrap="Wrap" width="10%"
-							alignItems="Center" class="contentHeaderCont">
+							alignItems="Center" class="contentHeaderCont kpiBoxes">
 							<Label text="{StationTrackerI18n>ShiftSTAFFING}" size="L"
-								design="Bold" width="100%" class="whiteTextHeader sapUiSmallMarginTopBottom" />
+								design="Bold" width="100%" class="whiteTextHeader" />
 							<VBox width="90%" justifyContent="SpaceAround" height="55%">
 								<micro:DeltaMicroChart width="100%"
 									id="shifStaffingHeader" isResponsive="true" value1="10" value2="9"

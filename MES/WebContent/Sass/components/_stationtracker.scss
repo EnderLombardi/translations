@@ -199,3 +199,151 @@ BOX MANAGEMENT
 	background-color: $cool-grey-hover;
 	color: black;
 }
+
+/********************
+KPI Header Content
+*********************/
+.classKpiHeaderContent {
+	height: 195px;
+	overflow-y: hidden;
+}
+
+.classKpiHeaderContent .contentHeaderCont {
+	white-space: normal;
+	background-color: #0F2D65;
+	border-right: solid 1px #74d2e7;
+	margin: 0px ! important;
+	border-bottom: none;
+	border-top: solid 1px #74d2e7;
+	padding: 0 5px;
+}
+
+.classKpiHeaderContent .contentHeaderCont:last-child {
+	border-right: none;
+}
+
+.classKpiHeaderContent .sapSuiteCmpChartItemTitle,
+	.classKpiHeaderContent .sapSuiteCmpChartItemValue,
+	.classKpiHeaderContent label {
+	color: #F5F5F5;
+	font-size: 0.8vw;
+}
+
+.classKpiHeaderContent .sapSuiteCmpChartBarNoValue {
+	background-color: rgba(187, 188, 188, 0.15);
+}
+
+.classKpiHeaderContent .kpiValue {
+	font-size: 20px;
+	width: 100%;
+	text-align: center ! important;
+}
+
+.classKpiHeaderContent .kpiName {
+	text-align: center ! important;
+	width: 100%;
+}
+
+.classKpiHeaderContent .kpiErrorValue {
+	font-size: 20px;
+	color: $blood-orange;
+}
+
+.classKpiHeaderContent .whiteTextHeader {
+	white-space: normal;
+	text-align: center ! important;
+	color: white;
+	width: 100%;
+	font-size: 1.1vw;
+}
+
+/*KPI boxes*/
+$kpi-box-title-height: 50px;
+$kpi-box-extrawork-text-height:30px;
+$kpi-box-extrawork-percent-height:42px;
+
+.kpiBoxes > .sapMFlexItem:first-child {
+	height: $kpi-box-title-height;
+	width: 100% !important;
+    line-height: normal;
+	display: inline-block;
+    vertical-align: middle !important;
+}
+
+.kpiBoxes > .sapMFlexItem:first-child> .sapMLabel {
+  display: inline-block;
+  vertical-align: middle !important;
+  max-width: 100% !important;
+  max-height: $kpi-box-title-height;
+}
+
+.kpiBoxes > .sapMFlexItem:before {
+  content: "" !important;
+  font-size: 0 !important;
+  vertical-align: middle !important;
+  display: inline-block !important;
+  width: 0px !important;
+  height: 100% !important;
+}
+
+/*general kpi*/
+.kpiBoxExtraWork > .sapMFlexItem {
+  width: 100% !important;
+  line-height: normal;
+  display: inline-block;
+  vertical-align: middle !important;
+}
+
+.kpiBoxExtraWork > .sapMFlexItem> .sapMLabel {
+  display: inline-block;
+  max-width: 100% !important;
+  vertical-align: middle !important;
+}
+
+/*specific component sizes*/
+.kpiBoxExtraWork > .sapMFlexItem:nth-child(2) {
+  height: $kpi-box-extrawork-text-height;
+}
+
+.kpiBoxExtraWork > .sapMFlexItem:nth-child(4) {
+  height: $kpi-box-extrawork-text-height;
+  vertical-align: sub;
+}
+
+/*specific label sizes*/
+.kpiBoxExtraWork > .sapMFlexItem:nth-child(2)> .sapMLabel {
+  display: inline-block;
+  vertical-align: sub !important;
+  max-width: 100% !important;
+  max-height: $kpi-box-extrawork-text-height;
+}
+
+.kpiBoxExtraWork > .sapMFlexItem:nth-child(4)> .sapMLabel {
+  display: inline-block;
+  vertical-align: sub !important;
+  max-width: 100% !important;
+  max-height: $kpi-box-extrawork-text-height;
+}
+
+.kpiBoxExtraWork > .sapMFlexItem:nth-child(3)> .sapMLabel {
+  display: inline-block;
+  vertical-align: top !important;
+  max-width: 100% !important;
+  max-height: $kpi-box-extrawork-percent-height;
+}
+
+.kpiBoxExtraWork > .sapMFlexItem:nth-child(5)> .sapMLabel {
+  display: inline-block;
+  vertical-align: top !important;
+  max-width: 100% !important;
+  max-height: $kpi-box-extrawork-percent-height;
+}
+
+.efficiencyCharts {
+  height: 140px;
+}
+
+.efficiencyChartContainer {
+  width: 100%;
+  margin-top: 5px;
+}
