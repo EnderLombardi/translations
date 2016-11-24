@@ -8,7 +8,7 @@
       
     },
     "eslint": {
-      "configFile": ".eslint.json"
+      "configFile": ".eslintrc.json"
     },
     "complete_strings": {
       
