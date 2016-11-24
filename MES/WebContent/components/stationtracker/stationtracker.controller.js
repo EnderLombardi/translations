@@ -10,7 +10,10 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	 * @memberOf components.stationtracker.stationtracker
 	 */
 		onInit: function() {		
-		},
+			
+		
+		
+        },
 	/**
 	 * Similar to onBeforeRendering, but this hook is invoked before the controller's View is re-rendered
 	 * (NOT before the first rendering! onInit() is used for that one!).
@@ -24,11 +27,13 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	 * @memberOf components.stationtracker.stationtracker
 	 */
 	onAfterRendering : function() {
+		
 		// Capture the open/close panel event
 		airbus.mes.stationtracker.oView.byId('kpi_header').attachExpand(resizeGantt);
 		// First run on init
 		if (typeof airbus.mes.stationtracker.cachedGanttTop === 'undefined'){
 			resizeGantt();
+			
 		}else{
 			$(airbus.mes.stationtracker.oView.byId('stationtracker').getDomRef())
 				.css('top', airbus.mes.stationtracker.cachedGanttTop);
@@ -94,8 +99,8 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
      ****************************************************************************/
 	onTeamPress : function(oEvent) {
 
-//		var bindingContext = oEvent.getSource().getBindingContext();
-		// open team popover fragment		 
+var bindingContext = oEvent.getSource().getBindingContext();
+				// open team popover fragment		 
 		if (!this._oPopover) {
 			this._oPopover = sap.ui.xmlfragment("airbus.mes.stationtracker.teamPopover", this);
 			this._oPopover.addStyleClass("alignTextLeft");
@@ -283,6 +288,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	onOSWPress : function() {
 		
 		if ( airbus.mes.stationtracker.ImportOswUnplannedPopover === undefined ) {
+			var oView = airbus.mes.stationtracker.oView;
 			
 			airbus.mes.stationtracker.ImportOswUnplannedPopover = sap.ui.xmlfragment("ImportOswUnplannedPopover","airbus.mes.stationtracker.ImportOswUnplannedPopover", airbus.mes.stationtracker.oView.getController());
 			airbus.mes.stationtracker.ImportOswUnplannedPopover.addStyleClass("alignTextLeft");
@@ -322,6 +328,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		// show loading on gantt
 		airbus.mes.stationtracker.oView.byId("stationtracker").setBusy(true);  
 //		Filter the stationtracker model with current production group
+	    var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
 	    var sProdGroup = airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("ProductionGroup") + " : ";
 	    var sProdGroupMii = "";
 	     
@@ -423,12 +430,17 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		oNavCon.back();
 	},
 	onCloseWorklist: function (oEvent) {
-//		Close Popup
-		onCloseDialog(oEvent);
-	
+		var oOperationPopover = sap.ui.getCore().byId("operationPopover--operationPopoverID");
+		oOperationPopover.close();
 	},
 	onRescheduleConfirm : function(oEvent) {
-//		Close Popup
+//		Retrieve selected date
+		var oDate = sap.ui.getCore().byId("ReschedulePopover--DP1").getAggregation("selectedDates")[0].getStartDate();
+		
+//		Retrieve selected group
+		var sGroup = sap.ui.getCore().byId("ReschedulePopover--SelectedGroup").getSelectedKey();
+
+		//Close Popup
 		onCloseDialog(oEvent);
 		
 	},
@@ -463,9 +475,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		
 		airbus.mes.stationtracker.worklistPopover.unPlanned = false;
 		airbus.mes.stationtracker.worklistPopover.OSW = false;			
-
-//		Close Popup
-		onCloseDialog(oEvent);
+		airbus.mes.stationtracker.worklistPopover.close();
 		
 	},	
 	/***************************************************************************
@@ -559,7 +569,8 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
      */
      changeGrouping : function(oEvt) {
            
-          
+            var aModelToTest = airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").oData;
+         
            sap.ui.getCore().byId("myList").bindAggregation('items', {
                   path : "/Rowsets/Rowset/0/Row",
                   template : sap.ui.getCore().byId("sorterList"),
@@ -709,16 +720,12 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 				break;
 			default:
 			}
-			var oFilterStatus = new sap.ui.model.Filter(
-					"status", "EQ", sStatus);
-			aMyFilter.push(oFilterStatus);
-			sap.ui.getCore().byId("worklistPopover--myList")
-					.getBinding("items").filter(
-											new sap.ui.model.Filter(aMyFilter,
-													true));
-			}
-	
-		},
+			var oFilterStatus = new sap.ui.model.Filter("status","EQ",sStatus);        
+             aMyFilter.push(oFilterStatus);
+             sap.ui.getCore().byId("worklistPopover--myList").getBinding("items").filter(new sap.ui.model.Filter(aMyFilter, true));    		 
+    	 }
+    	 
+     },
  
 
 					
@@ -729,6 +736,11 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		airbus.mes.stationtracker.AssignmentManager.polypolyAffectation = false;
 
 	},
+	
+	 deleteLineAssignment : function(){
+    	 airbus.mes.stationtracker.AssignmentManager.handleLineAssignment("D", false);
+     },
+	
 	getI18nValue : function(sKey) {
 		return this.getView().getModel("StationTrackerI18n")
 				.getProperty(sKey);
@@ -736,6 +748,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 
 	selectUser : function(oEvt) {
 		
+		var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
 		var oSelected = oEvt.getSource().getSelectedItem().mProperties;
 		airbus.mes.stationtracker.oView.byId("stationtracker").setBusy(true);
 		
@@ -857,7 +870,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 				sMounth = "0" + sMounth
 				
 				}
-				sDay = dDataSelected.getDate();
+			var sDay = dDataSelected.getDate();
 			
 			if ( sDay < 10 ) { 
 				
@@ -894,10 +907,9 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	/******************************************
 	 * Operation Detail Pop-Up Close functions
 	 */
-	onCloseOperationDetailPopup : function(oEvent) {
+	onCloseOperationDetailPopup : function() {
 
-//		Close Popup
-		this.onCloseDialog(oEvent);
+		airbus.mes.stationtracker.operationDetailPopup.close();
 	},
 
 	afterCloseOperationDetailPopup : function() {
@@ -956,10 +968,14 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		this.onCloseDialog(oEvent);
 	},
 	
-	deleteLineAssignment : function(oEvent){
+	deleteLineAssignment : function(){
 		airbus.mes.stationtracker.AssignmentManager.handleLineAssignment("D", true);
-//		Close Popup
-		onCloseDialog(oEvent);
+		airbus.mes.stationtracker.oPopoverPolypoly.close();
+	},
+	
+	tooltipDisplay : function(oEvent) {
+		var oEventProvider = new sap.ui.base.EventProvider();
+		var oEvent = new sap.ui.base.Event("test",oEventProvider);
 	},
 	
 	onCheckQA : function(){

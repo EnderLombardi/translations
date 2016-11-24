@@ -12,6 +12,7 @@ airbus.mes.shell.AutoRefreshManager =  {
 	viewName: undefined,	
 
 	refreshInterval: undefined,
+	refreshInterval2 : 5,
 	lastRefreshTime: undefined,
 	pauseTime: undefined,
 	
@@ -46,8 +47,27 @@ airbus.mes.shell.AutoRefreshManager =  {
 				), 10										// radix 10
 			)*1000;
 			
+			// value to decrease the timer show in the station traker view
+			this.timerValueStationTracker = parseInt(airbus.mes.settings.AppConfManager.getConfiguration(		// Get interval time from configuration
+							"REFRESH_STATION_TRACKER_"+station,		// Primary Key
+							this.defaultKey							// Default Key
+						), 10										// radix 10
+					);
+			
 			this.autoRefreshAPI = airbus.mes.shell.oView.oController.renderStationTracker;
 			//this.autoRefresh = setInterval(airbus.mes.shell.oView.oController.renderStationTracker, this.refreshInterval);
+			
+			// Visual button update
+			window.setInterval(function refreshTime(){
+				var sVal = airbus.mes.shell.AutoRefreshManager; 
+				console.log("btn:" + sVal.timerValueStationTracker );
+				airbus.mes.shell.oView.byId('refreshTime').setText("Refrech (" + sVal.timerValueStationTracker  + "s)");
+				if(sVal.timerValueStationTracker  == 0 || sVal.timerValueStationTracker  < 0) {
+					sVal.timerValueStationTracker = 180
+					airbus.mes.shell.oView.oController.renderStationTracker;
+		            }
+				sVal.timerValueStationTracker--;
+		    }, 1000);
 			
 			break;
 			
@@ -92,27 +112,21 @@ airbus.mes.shell.AutoRefreshManager =  {
 		
 		this.autoRefresh = setInterval(this.autoRefreshFunc, this.refreshInterval);
 		this.lastRefreshTime = 0;
-		
 	},
-	
 	
 	clearInterval: function(){
 		clearInterval(airbus.mes.shell.AutoRefreshManager.autoRefresh);
 	},
-	
 
 	pauseRefresh:function(){
 		var d = new Date();
 		this.pauseTime = d.getTime();		
-		
 		this.clearInterval();
 	},
-	
 
 	resumeRefresh:function(){
 		
 		var remainingTime = this.refreshInterval - ( this.pauseTime - this.lastRefreshTime );
-		
 		remainingTime = remainingTime < 60000 ? 60000 : remainingTime;
 		
 		this.remianinTimeRefresher = setInterval(
@@ -123,7 +137,6 @@ airbus.mes.shell.AutoRefreshManager =  {
 				},
 				remainingTime
 		);
-		
 	},
 	
 	autoRefreshFunc: function(){

@@ -15,6 +15,7 @@ sap.ui
 					 */
 
 					onInit : function() {
+						
 
 					},
 					onPress : function(oEvt) {
@@ -109,6 +110,7 @@ sap.ui
 							this.settingPopup = sap.ui.xmlfragment("airbus.mes.shell.settingPopover", airbus.mes.shell.oView.getController());
 					},
 
+					
 					/**
 					 * Called when the Controller is destroyed. Use this one to
 					 * free resources and finalize activities.
@@ -167,6 +169,15 @@ sap.ui
 						airbus.mes.shell.AutoRefreshManager.clearInterval();
 
 					},
+					
+					/**
+					 * Refresh gantt view
+					 * TODO: conect with refresh function => AutoRefreshManager.js
+					 */
+					refreshgantt: function() {
+						alert("refresh gantt view : ok ");
+						airbus.mes.shell.AutoRefreshManager.setInterval("stationTrackerView");
+					},
 
 					renderViews : function() {
 
@@ -191,9 +202,8 @@ sap.ui
 							this.renderStationTracker();
 
 							// Set Refresh Interval based on configuration
-							airbus.mes.shell.AutoRefreshManager
-									.setInterval("stationTrackerView");
-
+							airbus.mes.shell.AutoRefreshManager.setInterval("stationTrackerView");
+						
 							break;
 
 						case "disruptiontrackerView":
@@ -207,26 +217,22 @@ sap.ui
 								airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.station = "";
 							}
 
-							airbus.mes.disruptiontracker.ModelManager
-									.loadDisruptionTrackerModel();
+							airbus.mes.disruptiontracker.ModelManager.loadDisruptionTrackerModel();
 
 							// Set Refresh Interval based on configuration
-							airbus.mes.shell.AutoRefreshManager
-									.setInterval("disruptiontrackerView");
+							airbus.mes.shell.AutoRefreshManager.setInterval("disruptiontrackerView");
 
 							break;
 
 						case "disruptionKPIView":
 
 							// Set Refresh Interval based on configuration
-							airbus.mes.shell.AutoRefreshManager
-									.setInterval("disruptionKPIView");
+							airbus.mes.shell.AutoRefreshManager.setInterval("disruptionKPIView");
 
 							break;
 
 						case "resourcePool":
-							airbus.mes.resourcepool.util.ModelManager
-									.askResourcePool();
+							airbus.mes.resourcepool.util.ModelManager.askResourcePool();
 							break;
 						default:
 						}
@@ -238,19 +244,15 @@ sap.ui
 					 */
 					renderStationTracker : function() {
 
-						airbus.mes.stationtracker.oView.byId("stationtracker")
-								.setBusy(true);
+						airbus.mes.stationtracker.oView.byId("stationtracker").setBusy(true);
 						var oModule = airbus.mes.stationtracker.ModelManager;
-						airbus.mes.shell.oView.getController()
-								.setInformationVisibility(true);
+						airbus.mes.shell.oView.getController().setInformationVisibility(true);
 
 						// ** synchrone call **//
 						oModule.loadShifts();
 						oModule.loadAffectation();
-						airbus.mes.stationtracker.ShiftManager
-								.init(airbus.mes.stationtracker.GroupingBoxingManager.shiftNoBreakHierarchy);
-						airbus.mes.stationtracker.AssignmentManager
-								.computeAffectationHierarchy();
+						airbus.mes.stationtracker.ShiftManager.init(airbus.mes.stationtracker.GroupingBoxingManager.shiftNoBreakHierarchy);
+						airbus.mes.stationtracker.AssignmentManager.computeAffectationHierarchy();
 
 						// ** asynchrone call **//
 						airbus.mes.shell.oView.oController.loadStationTrackerGantKPI();
@@ -689,6 +691,5 @@ sap.ui
 						window.location = window.location.origin
 								+ window.location.pathname;
 
-					}
-
+					},
 				});
