@@ -318,15 +318,15 @@ airbus.mes.disruptions.ModelManager = {
 								airbus.mes.shell.ModelManager
 										.messageShow(data.Rowsets.Rowset[0].Row[0].Message);				
 								
-								// navigate to View Disruption after success message
-								sap.ui.getCore().byId("operationDetailsView--operDetailNavContainer").back();
-								
 
 								// load disruption Model again for new message
 								var operationBO = sap.ui.getCore().getModel(
 										"operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_bo;
 								airbus.mes.disruptions.ModelManager
 										.loadDisruptionsByOperation(operationBO);
+								
+								// navigate to View Disruption after success message
+								sap.ui.getCore().byId("operationDetailsView--operDetailNavContainer").back();
 								
 								airbus.mes.disruptions.ModelManager.createEditFlag =true;
 								
@@ -430,14 +430,15 @@ airbus.mes.disruptions.ModelManager = {
 								
 								if(currentPage == "stationTrackerView") {
 									
-									sap.ui.getCore().byId("operationDetailsView--operDetailNavContainer").back();
-									
-									// Load disruption Model again for updated
-									// message
+									// Load disruption Model again for updated message
 									var operationBO = sap.ui.getCore().getModel(
 											"operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_bo;
 									airbus.mes.disruptions.ModelManager
 											.loadDisruptionsByOperation(operationBO);
+									
+
+									
+									sap.ui.getCore().byId("operationDetailsView--operDetailNavContainer").back();
 									
 								} else if(currentPage == "disruptiontrackerView") {
 									airbus.mes.disruptions.ModelManager.updateDisruptionModel();

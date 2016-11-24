@@ -158,7 +158,27 @@ sap.ui
 									sap.ui.getCore().byId("operationDetailPopup--btnCancelDisruption")	// Cancel Button							
 							);
 							
+
+							
+							/***************************************************
+							 * Load Disruption Data
+							 **************************************************/
+							if (!this.disruptionsFlag) {
+								var operationBO = sap.ui.getCore().getModel(
+										"operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_bo;
+								airbus.mes.disruptions.ModelManager
+										.loadDisruptionsByOperation(operationBO);
+								this.disruptionsFlag = true;
+							}
+							
+							
+							/** Navigate **/
 							this.nav.to(airbus.mes.disruptions.oView.viewDisruption.getId());
+							
+
+							/** Set buttons visibility ****/
+							airbus.mes.disruptions.oView.viewDisruption.oController.turnOnOffButtons();
+							
 							break;
 						}
 					},
@@ -211,20 +231,6 @@ sap.ui
 							break;
 
 						case "ViewDisruptionView":
-							
-							/** Set buttons visibility ****/
-							airbus.mes.disruptions.oView.viewDisruption.oController.turnOnOffButtons();
-							
-							/***************************************************
-							 * Load Disruption Data
-							 **************************************************/
-							if (!this.disruptionsFlag) {
-								var operationBO = sap.ui.getCore().getModel(
-										"operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_bo;
-								airbus.mes.disruptions.ModelManager
-										.loadDisruptionsByOperation(operationBO);
-								this.disruptionsFlag = true;
-							}
 							break;
 
 						case "createDisruptionView":

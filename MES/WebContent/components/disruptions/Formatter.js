@@ -20,19 +20,41 @@ airbus.mes.disruptions.Formatter = {
 		return defaultDate.getFullYear() + "-" + defaultDate.getMonth() + "-"
 				+ defaultDate.getDate();
 	},
-
+	
+	setDisruptionTitle : function(iGravity, escalationLevel){
+		
+		switch(iGravity) {
+		case "1":
+			return "green";
+			break;
+		case "2":
+			return "green";
+			break;
+			
+		case "3":
+			if(escalationLevel>2)
+				return "red";
+			else
+			return "orange";			
+			break;
+		default:
+			return "";
+			break;
+		}
+	},
+	
 	setGravityText : function(gravity) {
 		
 		var property;
 		
 		switch(gravity) {
-		case 1:
+		case "1":
 			property = airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("NotBlocked");
 			break;
-		case 2:
+		case "2":
 			property = airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("Disturbed");
 			break;
-		case 3:
+		case "3":
 			property = airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("Blocked");
 			break;
 		default:
@@ -135,9 +157,9 @@ airbus.mes.disruptions.Formatter = {
 		return false;
 	},
 
-	setRejectButtonVisibility : function(responsibleFlag, status) {
+	setRejectButtonVisibility : function(originatorFlag, responsibleFlag, status) {
 
-		if (responsibleFlag == "X") {
+		if (responsibleFlag == "X" && originatorFlag != "X") {
 
 			if (status == airbus.mes.disruptions.Formatter.status.rejected) {
 
@@ -227,34 +249,16 @@ airbus.mes.disruptions.Formatter = {
 		return false;
 	},
 	
-	setTimeBeforeNextEscVisibility : function(escalationLevel) {
-		if(escalationLevel < 3)
+	/*setTimeBeforeNextEsc : function(escalationLevel) {
+		if(escalationLevel == 3)
 			this.setText(airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("escalated"));
-	},
+	},*/
 	
 	setSolutionVisibility : function(solution) {
 		if(solution == "")
 			return false;
 		
 		return true;
-	},
-	
-	setDisruptionTitle : function(iGravity){
-		
-		switch(iGravity) {
-		case "1":
-			return "green";
-			break;
-		case "2":
-			return "orange";
-			break;
-		case "3":
-			return "red";
-			break;
-		default:
-			return "";
-			break;
-		}
 	},
 	
 	setMaterialqty :function(oText) {

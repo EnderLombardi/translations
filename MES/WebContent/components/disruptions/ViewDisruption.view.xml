@@ -15,7 +15,7 @@
 						expand="handleDisruptionPanelExpand">
 						<headerToolbar>
 							<Toolbar>
-								<core:Icon src="sap-icon://alert" color="{parts: [ 'operationDisruptionsModel>Gravity'], formatter: 'airbus.mes.disruptions.Formatter.setDisruptionTitle'}" class="sapUiSmallMarginEnd" />
+								<core:Icon src="sap-icon://alert" color="{parts: [ 'operationDisruptionsModel>Gravity','operationDisruptionsModel>EscalationLevel'], formatter: 'airbus.mes.disruptions.Formatter.setDisruptionTitle'}" class="sapUiSmallMarginEnd" />
 								<Title
 									text="{operationDisruptionsModel>Description}" />
 
@@ -265,8 +265,7 @@
 												</Label>
 											</f:label>
 											<f:fields>
-												<Text text="{operationDisruptionsModel>TimeBeforeNextEscalation}"
-													visible="{path: 'operationDisruptionsModel>EscalationLevel', formatter: 'airbus.mes.disruptions.Formatter.setTimeBeforeNextEscVisibility'}">
+												<Text text="{=${operationDisruptionsModel>EscalationLevel} === 3 ? ${i18nModel>escalated} : ${operationDisruptionsModel>TimeBeforeNextEscalation}}">
 													<layoutData>
 														<l:GridData span="L3 M3 S12" />
 													</layoutData>
@@ -377,7 +376,7 @@
 							<ToolbarSpacer />
 
 							<Button text="{i18nModel>acknowledge}" type="Accept"
-								visible="{parts: [ {path: 'operationDisruptionsModel>ResponsibleFlag'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setAcknowledgeButtonVisibility'}"
+								visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>ResponsibleFlag'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setAcknowledgeButtonVisibility'}"
 								press="onAckDisruption" design="Transparent" />
 
 							<Button id="rejectDisruption" text="{i18nModel>reject}"
