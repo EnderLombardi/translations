@@ -173,18 +173,17 @@ KPI Header Content
 .classKpiHeaderContent {
   height: 195px;
   overflow-y: hidden; }
-
-.classKpiHeaderContent .contentHeaderCont {
-  white-space: normal;
-  background-color: #0f2d65;
-  border-right: solid 1px #74d2e7;
-  margin: 0px !important;
-  border-bottom: none;
-  border-top: solid 1px #74d2e7;
-  padding: 0 5px; }
+  .classKpiHeaderContent .contentHeaderCont {
+    white-space: normal;
+    background-color: #0f2d65;
+    border-right: solid 1px #74d2e7;
+    margin: 0px !important;
+    border-bottom: none;
+    border-top: solid 1px #74d2e7;
+    padding: 0 5px; }
 
 .classKpiHeaderContent .contentHeaderCont:last-child {
-  border-right: none; }
+  border-right: none !important; }
 
 .classKpiHeaderContent .sapSuiteCmpChartItemTitle,
 .classKpiHeaderContent .sapSuiteCmpChartItemValue,
@@ -217,17 +216,12 @@ KPI Header Content
 
 /*KPI boxes*/
 .kpiBoxes > .sapMFlexItem:first-child {
-  height: 50px;
-  width: 100% !important;
-  line-height: normal;
-  display: inline-block;
-  vertical-align: middle !important; }
-
-.kpiBoxes > .sapMFlexItem:first-child > .sapMLabel {
-  display: inline-block;
-  vertical-align: middle !important;
-  max-width: 100% !important;
-  max-height: 50px; }
+  height: 50px; }
+  .kpiBoxes > .sapMFlexItem:first-child .sapMLabel {
+    display: inline-block;
+    vertical-align: middle !important;
+    max-width: 100% !important;
+    max-height: 50px; }
 
 .kpiBoxes > .sapMFlexItem:before {
   content: "" !important;
@@ -238,52 +232,41 @@ KPI Header Content
   height: 100% !important; }
 
 /*general kpi*/
-.kpiBoxExtraWork > .sapMFlexItem {
+.kpiBoxExtraWork .sapMFlexItem {
   width: 100% !important;
   line-height: normal;
   display: inline-block;
   vertical-align: middle !important; }
-
-.kpiBoxExtraWork > .sapMFlexItem > .sapMLabel {
-  display: inline-block;
-  max-width: 100% !important;
-  vertical-align: middle !important; }
-
-/*specific component sizes*/
-.kpiBoxExtraWork > .sapMFlexItem:nth-child(2) {
+  .kpiBoxExtraWork .sapMFlexItem .sapMLabel {
+    display: inline-block;
+    max-width: 100% !important;
+    vertical-align: middle !important; }
+.kpiBoxExtraWork .sapMFlexItem:nth-child(2) {
   height: 30px; }
-
-.kpiBoxExtraWork > .sapMFlexItem:nth-child(4) {
-  height: 30px;
-  vertical-align: sub; }
-
-/*specific label sizes*/
-.kpiBoxExtraWork > .sapMFlexItem:nth-child(2) > .sapMLabel {
-  display: inline-block;
-  vertical-align: sub !important;
-  max-width: 100% !important;
-  max-height: 30px; }
-
-.kpiBoxExtraWork > .sapMFlexItem:nth-child(4) > .sapMLabel {
-  display: inline-block;
-  vertical-align: sub !important;
-  max-width: 100% !important;
-  max-height: 30px; }
-
-.kpiBoxExtraWork > .sapMFlexItem:nth-child(3) > .sapMLabel {
-  display: inline-block;
+  .kpiBoxExtraWork .sapMFlexItem:nth-child(2) .sapMLabel {
+    vertical-align: sub !important;
+    max-height: 30px; }
+.kpiBoxExtraWork .sapMFlexItem:nth-child(4) {
+  height: 30px; }
+  .kpiBoxExtraWork .sapMFlexItem:nth-child(4) .sapMLabel {
+    vertical-align: sub !important;
+    max-height: 30px; }
+.kpiBoxExtraWork .sapMFlexItem:nth-child(3) .sapMLabel {
   vertical-align: top !important;
-  max-width: 100% !important;
+  max-height: 42px; }
+.kpiBoxExtraWork .sapMFlexItem:nth-child(5) .sapMLabel {
+  vertical-align: top !important;
   max-height: 42px; }
 
-.kpiBoxExtraWork > .sapMFlexItem:nth-child(5) > .sapMLabel {
-  display: inline-block;
-  vertical-align: top !important;
-  max-width: 100% !important;
-  max-height: 42px; }
+.kpiBody {
+  height: 139px; }
 
-.efficiencyCharts {
-  height: 140px; }
+.kpiDeltaMicroChart {
+  margin: 10px 0;
+  height: 119px; }
+
+.labourEfficiencyBody {
+  height: 129px; }
 
 .efficiencyChartContainer {
   width: 100%;
