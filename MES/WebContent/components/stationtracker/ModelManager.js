@@ -33,6 +33,8 @@ airbus.mes.stationtracker.ModelManager = {
               core.setModel(new sap.ui.model.json.JSONModel(), "groupModel"); // Unplanned// Filter// Model
               core.setModel(new sap.ui.model.json.JSONModel(), "KPIextraWork"); // KPI Extra Work
               core.setModel(new sap.ui.model.json.JSONModel(), "KPItaktAdherence"); // KPI Takt Adherence
+              core.setModel(new sap.ui.model.json.JSONModel(), "KPIshiftStaffing"); // KPI Shift Staffing
+              core.setModel(new sap.ui.model.json.JSONModel(), "KPItaktEfficiency"); // KPI Shift Staffing
 
 
            this.settings = airbus.mes.settings.ModelManager;
@@ -371,6 +373,8 @@ airbus.mes.stationtracker.ModelManager = {
 
 		this.loadKPIextraWork();
 		this.loadKPItaktAdherence();
+		this.loadKPIshiftStaffing();
+		this.loadKPItaktEfficiency();
 
 	},
 	loadKPIextraWork : function() {
@@ -424,6 +428,66 @@ airbus.mes.stationtracker.ModelManager = {
 			error : function(error, jQXHR) {
 				console.log(error);
 				airbus.mes.stationtracker.oView.byId("boxTaktAdherenceRight").setBusy(false);
+
+			}
+		});
+	},
+	
+	loadKPIshiftStaffing : function() {
+		var oViewModel = sap.ui.getCore().getModel("KPIshiftStaffing");
+		airbus.mes.stationtracker.oView.byId("boxShiftStaffing").setBusy(true);
+		jQuery.ajax({
+			type : 'post',
+			url : this.urlModel.getProperty("urlKPIshiftStaffing"),
+			contentType : 'application/json',
+			data : JSON.stringify({
+				"site" : airbus.mes.settings.ModelManager.site,
+				"physicalStation" : airbus.mes.settings.ModelManager.station,
+				"msn" : airbus.mes.settings.ModelManager.msn,
+				"day" : airbus.mes.stationtracker.ShiftManager.ShiftSelected.day,
+				"shift" : airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftName 
+			}),
+
+			success : function(data) {
+				if(typeof data == "string"){
+					data = JSON.parse(data);
+				}
+				oViewModel.setData(data);
+				airbus.mes.stationtracker.oView.byId("boxShiftStaffing").setBusy(false);
+			},
+
+			error : function(error, jQXHR) {
+				console.log(error);
+				airbus.mes.stationtracker.oView.byId("boxShiftStaffing").setBusy(false);
+
+			}
+		});
+	},
+	
+	loadKPItaktEfficiency : function() {
+		var oViewModel = sap.ui.getCore().getModel("KPItaktEfficiency");
+		airbus.mes.stationtracker.oView.byId("boxSLBEfficiecy").setBusy(true);
+		jQuery.ajax({
+			type : 'post',
+			url : this.urlModel.getProperty("urlKPItaktEfficiency"),
+			contentType : 'application/json',
+			data : JSON.stringify({
+				"site" : airbus.mes.settings.ModelManager.site,
+				"currentStation" : airbus.mes.settings.ModelManager.station,
+				"msn" : airbus.mes.settings.ModelManager.msn
+			}),
+
+			success : function(data) {
+				if(typeof data == "string"){
+					data = JSON.parse(data);
+				}
+				oViewModel.setData(data);
+				airbus.mes.stationtracker.oView.byId("boxSLBEfficiecy").setBusy(false);
+			},
+
+			error : function(error, jQXHR) {
+				console.log(error);
+				airbus.mes.stationtracker.oView.byId("boxSLBEfficiecy").setBusy(false);
 
 			}
 		});

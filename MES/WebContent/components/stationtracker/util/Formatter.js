@@ -4,6 +4,14 @@ jQuery.sap.declare("airbus.mes.stationtracker.util.Formatter");
 
 airbus.mes.stationtracker.util.Formatter = {
 		
+		stringToInt : function(string){
+			if(typeof string =="string"){
+				return parseInt(string)
+			}else{
+				return string
+			}
+		},
+		
 		KPIiconTrendSrc : function(bTrend){
 			if(bTrend == "true"){
 				return "sap-icon://up"

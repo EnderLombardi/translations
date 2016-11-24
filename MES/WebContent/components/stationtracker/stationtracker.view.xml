@@ -170,14 +170,22 @@
 									width="100%" colorPalette="#84bd00, #f5f5f5, #fe5000" class="efficiencyCharts">
 									<micro:data>
 										<micro:ComparisonMicroChartData
-											title="{StationTrackerI18n>TaktSLB}" value="85" />
+											title="{StationTrackerI18n>TaktSLB}"
+											value="{path:'KPItaktEfficiency>/labourEfficiencyUI', formatter:'airbus.mes.stationtracker.util.Formatter.stringToInt'}"
+											displayValue="{KPItaktEfficiency>/labourEfficiencyUI}%" />
 										<micro:ComparisonMicroChartData
-											title="{StationTrackerI18n>WhiteSpaces}" value="10" />
+											title="{StationTrackerI18n>WhiteSpaces}"
+											value="{path:'KPItaktEfficiency>/slbWhiteSpaceUI', formatter:'airbus.mes.stationtracker.util.Formatter.stringToInt'}"
+											displayValue="{KPItaktEfficiency>/slbWhiteSpaceUI}%" />
 										<micro:ComparisonMicroChartData
-											title="{StationTrackerI18n>RedSpaces}" value="5" />
+											title="{StationTrackerI18n>RedSpaces}"
+											value="{path:'KPItaktEfficiency>/slbRedSpacesUI', formatter:'airbus.mes.stationtracker.util.Formatter.stringToInt'}"
+											displayValue="{KPItaktEfficiency>/slbRedSpacesUI}%"/>
 										<micro:ComparisonMicroChartData
-											id="hiddenRefBarSBL" title="{StationTrackerI18n>RedSpaces}"
-											value="100" visible="true" />
+											id="hiddenRefBarSBL"
+											title="{StationTrackerI18n>RedSpaces}"
+											value="{path:'KPItaktEfficiency>/slbEffectiveCapacityUI', formatter:'airbus.mes.stationtracker.util.Formatter.stringToInt'}"
+											visible="false" />
 									</micro:data>
 								</micro:ComparisonMicroChart>
 							</VBox>
@@ -248,11 +256,17 @@
 									width="100%" colorPalette="#84bd00,#fe5000,#fe5000,#0F2D65" class="efficiencyCharts">
 									<micro:data>
 										<micro:ComparisonMicroChartData
-											title="{StationTrackerI18n>PromisedInTakt}" value="8" />
+											title="{StationTrackerI18n>PromisedInTakt}"
+											value="8"
+											displayValue="8" />
 										<micro:ComparisonMicroChartData
-											title="{StationTrackerI18n>PromisedOutTakt}" value="3" />
+											title="{StationTrackerI18n>PromisedOutTakt}"
+											value="3"
+											displayValue="3" />
 										<micro:ComparisonMicroChartData
-											title="{StationTrackerI18n>NotAcknowledged}" value="2" />
+											title="{StationTrackerI18n>NotAcknowledged}"
+											value="2"
+											displayValue="2" />
 										<micro:ComparisonMicroChartData
 											id="hiddenRefBarResolution" title="{StationTrackerI18n>RedSpaces}" value="13" visible="false"/>
 									</micro:data>
@@ -279,9 +293,14 @@
 								design="Bold" width="100%" class="whiteTextHeader" />
 							<VBox width="90%" justifyContent="SpaceAround" height="55%">
 								<micro:DeltaMicroChart width="100%"
-									id="shifStaffingHeader" isResponsive="true" value1="10" value2="9"
-									title1="{StationTrackerI18n>NeedFTE}" title2="{StationTrackerI18n>AllocatedFTE}"
-									displayValue1="10" displayValue2="9" deltaDisplayValue="1" />
+									id="shifStaffingHeader" isResponsive="true"
+									value1="{path:'KPIshiftStaffing>/neededFteUI', formatter:'airbus.mes.stationtracker.util.Formatter.stringToInt'}"
+									value2="{path:'KPIshiftStaffing>/allocatedFteUI', formatter:'airbus.mes.stationtracker.util.Formatter.stringToInt'}"
+									title1="{StationTrackerI18n>NeedFTE}"
+									title2="{StationTrackerI18n>AllocatedFTE}"
+									displayValue1="{KPIshiftStaffing>/neededFteUI}"
+									displayValue2="{KPIshiftStaffing>/allocatedFteUI}"
+									deltaDisplayValue="{KPIshiftStaffing>/notAllocatedFteUI}" />
 							</VBox>
 						</VBox>
 					</HBox>

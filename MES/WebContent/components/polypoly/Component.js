@@ -1,4 +1,4 @@
-//"use strict";
+"use strict";
 jQuery.sap.require("sap.ui.core.UIComponent");
 jQuery.sap.require("sap.ui.model.resource.ResourceModel");
 jQuery.sap.require("sap.ui.base.Event");
