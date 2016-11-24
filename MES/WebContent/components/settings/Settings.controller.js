@@ -1,3 +1,4 @@
+"use strict";
 jQuery.sap.require("sap.ui.vbm.AnalyticMap");
 // sap.ui.vbm.AnalyticMap.GeoJSONURL = "model/europe.json";
 sap.ui.vbm.AnalyticMap.GeoJSONURL = "../components/settings/model/europe.json";
@@ -100,7 +101,7 @@ sap.ui.controller("airbus.mes.settings.Settings",
 			    	
 					if ( airbus.mes.settings.ModelManager.currentMsnSelected ) {
 						
-						var sCurrentMsn = "";
+//						var sCurrentMsn = "";
 						if ( sap.ui.getCore().getModel("plantModel").getProperty("/Rowsets/Rowset/0/Row") != undefined ) {
 						var oModel = sap.ui.getCore().getModel("plantModel").getProperty("/Rowsets/Rowset/0/Row");
 						// Find automatically the msn with the flag Current MSN different of "---"
@@ -319,6 +320,9 @@ sap.ui.controller("airbus.mes.settings.Settings",
 					break;
 				case "back":
 					nav.back();
+					break;
+				default:
+					break;
 				}
 			},
 			onImagePress : function(oEvent) {
@@ -544,6 +548,9 @@ sap.ui.controller("airbus.mes.settings.Settings",
 
 				case "back":
 					nav.back();
+					break;
+				default:
+					break;
 				}
 
 			},
