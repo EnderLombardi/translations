@@ -253,7 +253,7 @@ sap.ui
 								.computeAffectationHierarchy();
 
 						// ** asynchrone call **//
-						this.loadStationTrackerGantKPI();
+						airbus.mes.shell.oView.oController.loadStationTrackerGantKPI();
 
 					},
 

@@ -8,8 +8,6 @@ airbus.mes.shell.AutoRefreshManager =  {
 	autoRefresh: undefined,
 	
 	autoRefreshAPI: function(){},
-	
-	autoRefreshTimerFunc: undefined,
  
 	viewName: undefined,	
 
@@ -46,10 +44,10 @@ airbus.mes.shell.AutoRefreshManager =  {
 					"REFRESH_STATION_TRACKER_"+station,		// Primary Key
 					this.defaultKey							// Default Key
 				), 10										// radix 10
-			)*60000;
+			)*1000;
 			
 			this.autoRefreshAPI = airbus.mes.shell.oView.oController.renderStationTracker;
-			//this.autoRefresh = window.setInterval(airbus.mes.shell.oView.oController.renderStationTracker, this.refreshInterval);
+			//this.autoRefresh = setInterval(airbus.mes.shell.oView.oController.renderStationTracker, this.refreshInterval);
 			
 			break;
 			
@@ -63,10 +61,10 @@ airbus.mes.shell.AutoRefreshManager =  {
 					"REFRESH_DISRUPTION_TRACKER_"+station,	// Primary Key
 					this.defaultKey							// Default Key
 				), 10										// radix 10
-			)*60000;
+			)*1000;
 			
 			this.autoRefreshAPI = airbus.mes.disruptiontracker.ModelManager.loadDisruptionTrackerModel;
-			//this.autoRefresh = window.setInterval(airbus.mes.disruptiontracker.ModelManager.loadDisruptionTrackerModel, this.refreshInterval);
+			//this.autoRefresh = setInterval(airbus.mes.disruptiontracker.ModelManager.loadDisruptionTrackerModel, this.refreshInterval);
 			
 			break;
 			
@@ -81,10 +79,10 @@ airbus.mes.shell.AutoRefreshManager =  {
 					"REFRESH_DISRUPTION_KPI_"+station,		// Primary Key
 					this.defaultKey							// Default Key
 				), 10										// radix 10
-			)*60000;
+			)*1000;
 			
 			this.autoRefreshAPI = airbus.mes.disruptiontracker.kpi.ModelManager.loadDisruptionKPIModel;
-			//this.autoRefresh = window.setInterval(airbus.mes.disruptiontracker.kpi.ModelManager.loadDisruptionKPIModel, this.refreshInterval);
+			//this.autoRefresh = setInterval(airbus.mes.disruptiontracker.kpi.ModelManager.loadDisruptionKPIModel, this.refreshInterval);
 			
 			break;
 		default : 
@@ -92,15 +90,14 @@ airbus.mes.shell.AutoRefreshManager =  {
 			
 		}
 		
-		this.autoRefreshTimerFunc = window.setInterval(this.autoRefreshTimer, this.refreshInterval);
+		this.autoRefresh = setInterval(this.autoRefreshFunc, this.refreshInterval);
 		this.lastRefreshTime = 0;
 		
 	},
 	
 	
 	clearInterval: function(){
-		clearInterval(this.autoRefresh);
-		clearInterval(this.autoRefreshTimerFunc);
+		clearInterval(airbus.mes.shell.AutoRefreshManager.autoRefresh);
 	},
 	
 
@@ -116,7 +113,9 @@ airbus.mes.shell.AutoRefreshManager =  {
 		
 		var remainingTime = this.refreshInterval - ( this.pauseTime - this.lastRefreshTime );
 		
-		this.remianinTimeRefresher = window.setInterval(
+		remainingTime = remainingTime < 60000 ? 60000 : remainingTime;
+		
+		this.remianinTimeRefresher = setInterval(
 				function () {
 					airbus.mes.shell.AutoRefreshManager.autoRefreshAPI(),
 					clearInterval(airbus.mes.shell.AutoRefreshManager.remianinTimeRefresher);
@@ -127,8 +126,14 @@ airbus.mes.shell.AutoRefreshManager =  {
 		
 	},
 	
-	autoRefreshTimer: function(){
+	autoRefreshFunc: function(){
+		
+		// Store last refresh time
 		var d = new Date();
 		this.lastRefreshTime = d.getTime();
+		
+		// Call Auto Refresh API
+		airbus.mes.shell.AutoRefreshManager.autoRefreshAPI()
+		
 	}
 }

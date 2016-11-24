@@ -22,7 +22,7 @@
 },
   {
 "key": "MES_REFRESH_DEF_VAL",
-"value": "120"
+"value": "1100"
 },
   {
 "key": "POLYGROUP_PHYS_ST_IP4",
@@ -30,11 +30,11 @@
 },
   {
 "key": "REFRESH_STATION_TRACKER_PHYS_ST_IP4",
-"value": "120"
+"value": "900"
 },
   {
 "key": "POLYGROUP_PHYS_ST_IP2",
 "value": "POLY_IP"
 }
-],
+]
 }

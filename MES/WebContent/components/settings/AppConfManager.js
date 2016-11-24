@@ -13,6 +13,7 @@ airbus.mes.settings.AppConfManager = {
 	getUrlAppConfig : function() {
 		var urlAppConf = airbus.mes.settings.ModelManager.urlModel
 				.getProperty("urlAppConfiguration");
+		
 		return urlAppConf;
 	},
 
@@ -28,6 +29,12 @@ airbus.mes.settings.AppConfManager = {
 
 			success : function(data) {
 				airbus.mes.settings.AppConfManager.oAppConfiguration = data;
+
+				
+				if (airbus.mes.settings.AppConfManager.oAppConfiguration.configarationList === undefined && airbus.mes.settings.AppConfManager != "")
+					airbus.mes.settings.AppConfManager.oAppConfiguration = JSON.parse(airbus.mes.settings.AppConfManager.oAppConfiguration);
+				
+				
 				// enable the button when the asynce request is complete
 				if (sap.ui.getCore().byId("idMyprofileSettingButton"))
 					sap.ui.getCore().byId("idMyprofileSettingButton").setBusy(
