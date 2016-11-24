@@ -1,3 +1,4 @@
+"use strict";
 sap.ui.controller("airbus.mes.linetracker.ProductionLineView", {
 
 	/**
@@ -33,14 +34,14 @@ sap.ui.controller("airbus.mes.linetracker.ProductionLineView", {
 
 	parseInteger : function(value) {
 
-		return parseInt(value);
+		return parseInt(value,10);
 	},
 	 refreshProdLine : function(ok) {
 			airbus.mes.linetracker.util.ModelManager.loadModelProductionModel();
-	    	if(ok === true){
-	    		airbus.mes.linetracker.util.ModelManager.loadModelFactoryModel();
+			if(ok === true){
+				airbus.mes.linetracker.util.ModelManager.loadModelFactoryModel();
 /*why put in a condition commented for now*/
-	    		//ModelManager.loadModelProductionModel();
+//ModelManager.loadModelProductionModel();
 			}
 		//	this.selectedLineDesc("LINE" + ModelManager.line_number);
 		//	this.processing("LINE" + ModelManager.line_number);

@@ -1,3 +1,4 @@
+"use strict";
 sap.ui.controller("airbus.mes.linetracker.StationView", {
 
 	/**
@@ -21,12 +22,11 @@ sap.ui.controller("airbus.mes.linetracker.StationView", {
 		if(oEvent){
 			
 			oEvent.getSource().addStyleClass("hboxselect");
-			airbus.mes.linetracker.util.ModelManager.line_number = parseInt(oEvent.getSource().getBindingContext("newStationModel").getPath().split("")[1])+1;
+			airbus.mes.linetracker.util.ModelManager.line_number = parseInt(oEvent.getSource().getBindingContext("newStationModel").getPath().split("")[1],10)+1;
 			sap.ui.getCore().byId('idMainView--idProduction').setText("PRODUCTION LINE " + airbus.mes.linetracker.util.ModelManager.line_number);
 			airbus.mes.linetracker.util.ModelManager.msn = oEvent.getSource().getContent().getItems()[0].getMsn();
 			airbus.mes.linetracker.util.ModelManager.hand = oEvent.getSource().getContent().getItems()[0].getHand();
-		}
-		else{
+		} else {
 			sap.ui.getCore().byId("idStationView--staionVbox2").getItems()[airbus.mes.linetracker.util.ModelManager.line_number-1].addStyleClass("hboxselect");
 		}
 	},
@@ -45,7 +45,7 @@ sap.ui.controller("airbus.mes.linetracker.StationView", {
 	},
 	
 	onStationPress : function(oEvt){
-		var sLineNumber = parseInt(oEvt.getSource().getLineNumber());
+		var sLineNumber = parseInt(oEvt.getSource().getLineNumber(),10);
 		var sMsn = oEvt.getSource().getMsn();
 		var sStationNumber = airbus.mes.linetracker.util.ModelManager.station_number;
 		var sFactory = airbus.mes.linetracker.util.ModelManager.factory_name;

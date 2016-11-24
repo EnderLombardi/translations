@@ -1,3 +1,4 @@
+"use strict";
 sap.ui.controller("airbus.mes.linetracker.MainView", {
 
 	/**
@@ -75,8 +76,7 @@ sap.ui.controller("airbus.mes.linetracker.MainView", {
 			//to get the first button(Factory View) on list of 3 buttons and then forcefully select it
 			sap.ui.getCore().byId("idMainView--IconTabsPages").setSelectedButton(sap.ui.getCore().byId("idMainView--IconTabsPages").getButtons()[0]);
 		
-		}
-		else if(itemKey === "prod_line"){
+		} else if(itemKey === "prod_line") {
 			//disable options for station
 			sap.ui.getCore().byId("idMainView--idStation").setEnabled(false);
 			//unlock selected station box
@@ -103,15 +103,12 @@ sap.ui.controller("airbus.mes.linetracker.MainView", {
 				sap.ui.getCore().byId("idMainView--MainViewNavContainer").to("idProductionView");
 				//to get the second button(Production DETAIL) on list of 3 buttons and then forcefully select it
 				sap.ui.getCore().byId("idMainView--IconTabsPages").setSelectedButton(sap.ui.getCore().byId("idMainView--IconTabsPages").getButtons()[1]);
-		}
-		else if(itemKey === "station"){
+		} else if(itemKey === "station") {
 			//to prevent opening line View if station 5 is selected
-			if(airbus.mes.linetracker.util.ModelManager.station_number != "5")
-			{
+			if(airbus.mes.linetracker.util.ModelManager.station_number != "5") {
 				sap.ui.getCore().byId('idMainView--idProduction').setText("PRODUCTION LINE " + airbus.mes.linetracker.util.ModelManager.line_number);
 				sap.ui.getCore().byId("idMainView--idProduction").setEnabled(true);
-			}
-			else{
+			} else {
 				sap.ui.getCore().byId('idMainView--idProduction').setText("PRODUCTION LINE ");
 				sap.ui.getCore().byId("idMainView--idProduction").setEnabled(false);
 			}
@@ -137,8 +134,7 @@ sap.ui.controller("airbus.mes.linetracker.MainView", {
 			sap.ui.getCore().byId("idMainView--MainViewNavContainer").to("idStationView");
 			//to get the third button(station DETAIL) on list of 3 buttons and then forcefully select it
 			sap.ui.getCore().byId("idMainView--IconTabsPages").setSelectedButton(sap.ui.getCore().byId("idMainView--IconTabsPages").getButtons()[2]);
-		}
-		else{
+		} else {
 			//do nothing or probably select factory view again
 		}
 		airbus.mes.linetracker.util.ModelManager.minimizeMsgBar();
@@ -186,12 +182,10 @@ sap.ui.controller("airbus.mes.linetracker.MainView", {
 		//enable navigation buttons
 
 		//to prevent opening line View if station 5 is selected
-		if(airbus.mes.linetracker.util.ModelManager.station_number != "5")
-		{
+		if(airbus.mes.linetracker.util.ModelManager.station_number != "5") {
 			sap.ui.getCore().byId('idMainView--idProduction').setText("PRODUCTION LINE " + airbus.mes.linetracker.util.ModelManager.line_number);
 			sap.ui.getCore().byId("idMainView--idProduction").setEnabled(true);
-		}
-		else{
+		} else {
 			sap.ui.getCore().byId('idMainView--idProduction').setText("PRODUCTION LINE ");
 			sap.ui.getCore().byId("idMainView--idProduction").setEnabled(false);
 		}

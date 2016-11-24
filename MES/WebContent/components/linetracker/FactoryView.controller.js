@@ -204,31 +204,35 @@ openDialogUnload : function() {
 	}},
 	pulse : function(oEvt){
 		var line = oEvt.getSource().getParent().getParent().getItems()[0].getText().split(" ")[1];
-		var station_l1 = oEvt.getSource().getParent().getItems()[0].getSelectedItem().getText();
-		if(station_l1==="Reverse Pulse Entire Line"){station_l1="RP"};
-	  	var value_station_l1 = station_l1.substr(station_l1.length - 2);
-	  	//Confirmation box to check if the station has been previously loaded on station 05 or not
-	  	jQuery.sap.require("sap.ui.commons.MessageBox");
-	  	
-	  	//Confirmation box to pulse when station 80 is not available
+		var stationL1 = oEvt.getSource().getParent().getItems()[0].getSelectedItem().getText();
+		if(stationL1 === "Reverse Pulse Entire Line"){
+			stationL1="RP";
+		}
+		var valueStationL1 = stationL1.substr(stationL1.length - 2);
+		//Confirmation box to check if the station has been previously loaded on station 05 or not
+		jQuery.sap.require("sap.ui.commons.MessageBox");
+	
+		//Confirmation box to pulse when station 80 is not available
 		if(sap.ui.getCore().byId("idFactoryView--stationLine"+line).getItems()[6].getMsn() !=  '' && sap.ui.getCore().byId("idFactoryView--stationLine"+line).getItems()[7].getStationHeadColor() != "green" && station_l1 != "RP" ) {	
 			sap.ui.commons.MessageBox.show('On line ' + line + ', you are pulsing from Station 70 to Station 80, But the conveyor status of station 80 (Crane presence) is  not green. Do you want to continue?',sap.ui.commons.MessageBox.Icon.WARNING, 'Warning',[sap.ui.commons.MessageBox.Action.YES, sap.ui.commons.MessageBox.Action.NO],
 					fnCallbackMessageBox,
 					sap.ui.commons.MessageBox.Action.YES);
 			function fnCallbackMessageBox(bResult) {
 				if (bResult == "YES") {
-					if (value_station_l1 == "ne") {
+					if (valueStationL1 == "ne") {
 						 airbus.mes.linetracker.util.ModelManager.pulseLine(line);
-					 }
-					 else {airbus.mes.linetracker.util.ModelManager.pulse(line,value_station_l1);};			}
-			};}
-		else {
-			if (value_station_l1 == "ne") {
-				 airbus.mes.linetracker.util.ModelManager.pulseLine(line);
-			 }
-			 else {airbus.mes.linetracker.util.ModelManager.pulse(line,value_station_l1);};	
-		};
-		},
+					 } else {
+						 airbus.mes.linetracker.util.ModelManager.pulse(line,value_station_l1);
+					}			
+				}
+			}
+		} else if (valueStationL1 == "ne") {
+			airbus.mes.linetracker.util.ModelManager.pulseLine(line);
+		} else {
+			airbus.mes.linetracker.util.ModelManager.pulse(line,value_station_l1);
+		}
+
+	},
 		/**
 		 * Called when pulse drop down list is selected.
 		 * It enables the the pulse button if a value from drop down is selected

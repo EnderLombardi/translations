@@ -420,17 +420,19 @@ airbus.mes.linetracker.util.ModelManager = {
 
 			this.loadOrderWorklistModel();
 			break;
-
+		default:
+			break;
 		}
 	},
 
 	// ************************************getCurrentDate**************************************
 
 	getCurrentDate : function(transform) {
+		var today;
 		if (transform) {
-			var today = new Date(transform);
+			today = new Date(transform);
 		} else {
-			var today = new Date();
+			today = new Date();
 		}
 		var isotoday = moment(today).format('YYYY-MM-DD[T]HH:mm:ss')
 		return isotoday;
@@ -486,7 +488,7 @@ airbus.mes.linetracker.util.ModelManager = {
 		oViewModel.loadData(geturlload, null, false);
 	},
 
-	loadUnloadStation5 : function(msn_loaded, hand_loaded) {
+	loadUnloadStation5 : function(msnLoaded, handLoaded) {
 		sap.ui.core.BusyIndicator.show(0);
 		jQuery.ajax({
 			url : this.urlModel.getProperty('urlloadunload5'),
@@ -496,8 +498,8 @@ airbus.mes.linetracker.util.ModelManager = {
 				"Param.1" : this.factory_name,
 				"Param.2" : parseInt(this.line_number,10),
 				"Param.3" : this.Load_Unload,
-				"Param.4" : hand_loaded,
-				"Param.5" : msn_loaded,
+				"Param.4" : handLoaded,
+				"Param.5" : msnLoaded,
 			},
 			success : function(data, textStatus, jqXHR) {
 				var message;

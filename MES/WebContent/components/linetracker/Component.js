@@ -60,5 +60,7 @@ airbus.mes.linetracker.Component.prototype.createContent = function() {
 		return this.oView;
 		
 
+	} else {
+		return airbus.mes.linetracker.oView;
 	}
 };
