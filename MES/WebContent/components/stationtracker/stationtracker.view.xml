@@ -155,7 +155,7 @@
 							class="contentHeaderCont kpiBoxes ">
 							<Label text="{StationTrackerI18n>LabourEfficiency}" design="Bold"
 								width="100%" class="whiteTextHeader" />
-							<Label text="{KPI>/Rowsets/Rowset/0/Row/EfficiencyFactors/Labour}"
+							<Label text="{KPItaktEfficiency>/labourEfficiencyUI}%"
 								id="LabourEfficiencyValue" class="kpiValue labourEfficiencyBody"/>
 						</VBox>
 
@@ -170,8 +170,8 @@
 									<micro:data>
 										<micro:ComparisonMicroChartData
 											title="{StationTrackerI18n>TaktSLB}"
-											value="{path:'KPItaktEfficiency>/labourEfficiencyUI', formatter:'airbus.mes.stationtracker.util.Formatter.stringToInt'}"
-											displayValue="{KPItaktEfficiency>/labourEfficiencyUI}%" />
+											value="{path:'KPItaktEfficiency>/slbEffectiveCapacityUI', formatter:'airbus.mes.stationtracker.util.Formatter.stringToInt'}"
+											displayValue="{KPItaktEfficiency>/slbEffectiveCapacityUI}%" />
 										<micro:ComparisonMicroChartData
 											title="{StationTrackerI18n>WhiteSpaces}"
 											value="{path:'KPItaktEfficiency>/slbWhiteSpaceUI', formatter:'airbus.mes.stationtracker.util.Formatter.stringToInt'}"
@@ -183,7 +183,7 @@
 										<micro:ComparisonMicroChartData
 											id="hiddenRefBarSBL"
 											title="{StationTrackerI18n>RedSpaces}"
-											value="{path:'KPItaktEfficiency>/slbEffectiveCapacityUI', formatter:'airbus.mes.stationtracker.util.Formatter.stringToInt'}"
+											value="100"
 											visible="false" />
 									</micro:data>
 								</micro:ComparisonMicroChart>
@@ -292,7 +292,6 @@
 								design="Bold" width="100%" class="whiteTextHeader" />
 							<VBox width="100%" justifyContent="SpaceAround">
 								<micro:DeltaMicroChart width="100%"
-<<<<<<< HEAD
 									id="shifStaffingHeader" isResponsive="true"
 									value1="{path:'KPIshiftStaffing>/neededFteUI', formatter:'airbus.mes.stationtracker.util.Formatter.stringToInt'}"
 									value2="{path:'KPIshiftStaffing>/allocatedFteUI', formatter:'airbus.mes.stationtracker.util.Formatter.stringToInt'}"
@@ -300,12 +299,8 @@
 									title2="{StationTrackerI18n>AllocatedFTE}"
 									displayValue1="{KPIshiftStaffing>/neededFteUI}"
 									displayValue2="{KPIshiftStaffing>/allocatedFteUI}"
-									deltaDisplayValue="{KPIshiftStaffing>/notAllocatedFteUI}" />
-=======
-									id="shifStaffingHeader" isResponsive="true" value1="10" value2="9"
-									title1="{StationTrackerI18n>NeedFTE}" title2="{StationTrackerI18n>AllocatedFTE}"
-									displayValue1="10" displayValue2="9" deltaDisplayValue="1" class="kpiDeltaMicroChart"/>
->>>>>>> branch 'MESv0.9' of https://bundleerp.git.ptx.fr.sopra/g/mes
+									deltaDisplayValue="{KPIshiftStaffing>/notAllocatedFteUI}"
+									class="kpiDeltaMicroChart"/>
 							</VBox>
 						</VBox>
 					</HBox>
