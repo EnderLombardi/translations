@@ -2,3 +2,4 @@
 *.map
 /.sass-cache
 /Sass/.sass-cache
+/WebContent/.sass-cache
