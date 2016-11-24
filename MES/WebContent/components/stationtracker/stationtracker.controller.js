@@ -441,8 +441,9 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		oNavCon.back();
 	},
 	onCloseWorklist: function (oEvent) {
-		var oOperationPopover = sap.ui.getCore().byId("operationPopover--operationPopoverID");
-		oOperationPopover.close();
+//		Close Popup
+		onCloseDialog(oEvent);
+	
 	},
 	onRescheduleConfirm : function(oEvent) {
 //		Retrieve selected date
@@ -451,7 +452,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 //		Retrieve selected group
 		var sGroup = sap.ui.getCore().byId("ReschedulePopover--SelectedGroup").getSelectedKey();
 
-		//Close Popup
+//		Close Popup
 		onCloseDialog(oEvent);
 		
 	},
@@ -486,7 +487,9 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		
 		airbus.mes.stationtracker.worklistPopover.unPlanned = false;
 		airbus.mes.stationtracker.worklistPopover.OSW = false;			
-		airbus.mes.stationtracker.worklistPopover.close();
+
+//		Close Popup
+		onCloseDialog(oEvent);
 		
 	},	
 	/***************************************************************************
@@ -728,6 +731,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
     		     case "StatusConfirmed":
     			     sStatus = "0";
        				 break;
+       			default:
     		 }
     		 var oFilterStatus = new sap.ui.model.Filter("status","EQ",sStatus);        
              aMyFilter.push(oFilterStatus);
@@ -737,16 +741,11 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
      },
      
      ClosePolyPoly : function(oEvent){
-    	 
+
  		this.onCloseDialog(oEvent);
  		airbus.mes.stationtracker.AssignmentManager.polypolyAffectation = false; 
  		
      },
-     
-     deleteLineAssignment : function(){
-    	 airbus.mes.stationtracker.AssignmentManager.handleLineAssignment("D", false);
-     },
-     
  	getI18nValue : function(sKey) {
 	    return this.getView().getModel("StationTrackerI18n").getProperty(sKey);
 	},
@@ -912,9 +911,10 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	/******************************************
 	 * Operation Detail Pop-Up Close functions
 	 */
-	onCloseOperationDetailPopup : function() {
+	onCloseOperationDetailPopup : function(oEvent) {
 
-		airbus.mes.stationtracker.operationDetailPopup.close();
+//		Close Popup
+		this.onCloseDialog(oEvent);
 	},
 
 	afterCloseOperationDetailPopup : function() {
@@ -973,9 +973,10 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		this.onCloseDialog(oEvent);
 	},
 	
-	deleteLineAssignment : function(){
+	deleteLineAssignment : function(oEvent){
 		airbus.mes.stationtracker.AssignmentManager.handleLineAssignment("D", true);
-		airbus.mes.stationtracker.oPopoverPolypoly.close();
+//		Close Popup
+		onCloseDialog(oEvent);
 	},
 	
 	tooltipDisplay : function(oEvent) {
