@@ -172,8 +172,59 @@ airbus.mes.shell.util.navFunctions = {
 				nav.addPage(airbus.mes.disruptiontracker.oView);
 			}
 			
+			
+			
+			// Load data
+			airbus.mes.shell.util.navFunctions.renderDisruptionTracker();
+
+			if (nav.getPreviousPage() != undefined && nav.getPreviousPage().sId == "stationTrackerView") {
+
+				airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.station = airbus.mes.settings.ModelManager.station;
+			} else {
+				airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.station = "";
+			}
+
+			airbus.mes.disruptiontracker.ModelManager.loadDisruptionTrackerModel();
+			
+			// Navigate
 			nav.to(airbus.mes.disruptiontracker.oView.getId());
 		},
+
+
+		/***********************************************************
+		 * Render disruption Tracker
+		 */
+		renderDisruptionTracker : function() {
+			var aFilters = [];
+			var aTemp = [];
+			var duplicatesFilter = new sap.ui.model.Filter({
+				path : "station",
+				test : function(value) {
+					if (aTemp.indexOf(value) == -1) {
+						aTemp.push(value)
+						return true;
+					} else {
+						return false;
+					}
+				}
+			});
+			aFilters.push(duplicatesFilter);
+
+			aFilters.push(new sap.ui.model.Filter("program", "EQ",
+					airbus.mes.settings.ModelManager.program)); // Filter
+			// on
+			// selected
+			// A/C
+			// Program
+
+			sap.ui
+					.getCore()
+					.byId("disruptiontrackerView--stationComboBox")
+					.getBinding("items")
+					.filter(new sap.ui.model.Filter(aFilters, true));
+
+		},
+		
 		
 		disruptionKPI: function(pStation){
 			if (airbus.mes.disruptiontracker === undefined){				
