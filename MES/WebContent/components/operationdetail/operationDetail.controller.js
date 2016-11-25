@@ -178,10 +178,6 @@ sap.ui
 							/** Navigate **/
 							this.nav.to(airbus.mes.disruptions.oView.viewDisruption.getId());
 							
-
-							/** Set buttons visibility ****/
-							airbus.mes.disruptions.oView.viewDisruption.oController.turnOnOffButtons();
-							
 							break;
 							
 							default:
@@ -240,6 +236,8 @@ sap.ui
 							break;
 
 						case "ViewDisruptionView":
+							/** Set buttons visibility ****/
+							airbus.mes.disruptions.oView.viewDisruption.oController.turnOnOffButtons();
 							break;
 
 						case "createDisruptionView":

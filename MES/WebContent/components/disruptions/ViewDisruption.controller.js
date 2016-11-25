@@ -38,9 +38,12 @@ sap.ui
 					 * 
 					 * @memberOf components.disruptions.ViewDisruption
 					 */
-					//onAfterRendering : function() {
-					//
-					//},
+					onAfterRendering : function() {
+						var oSorter = new sap.ui.model.Sorter("OpeningTime", true);
+
+						// sorting based on opening time
+						this.getView().byId("ViewDisruptionView--disrptlist").getBinding("items").sort(oSorter);
+					},
 					/**
 					 * Called when the Controller is destroyed. Use this one to
 					 * free resources and finalize activities.
@@ -109,6 +112,10 @@ sap.ui
 							return;
 
 						}
+						
+						//Close panel
+						oEvt.getSource().getParent().getParent().setExpanded(false);
+						
 						
 						// Close Comment Box if open
 						var path = oEvt.getSource().sId;
@@ -205,6 +212,12 @@ sap.ui
 							operationDisruptionsModel.getProperty(sPath).Status = airbus.mes.disruptions.Formatter.status.closed;
 							
 							operationDisruptionsModel.getProperty(sPath).TimeLost = timeLostValue;
+							
+							
+							// Set Closure date
+							var date = new Date();							
+							operationDisruptionsModel.getProperty(sPath).ClosureDate = 
+								date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate()+" "+date.getHours()+":"+date.getMinutes()+":"+date.getSeconds();
 							
 							var currDate = new Date();
 							var date = currDate.getFullYear() + "-" + currDate.getMonth() + "-" + currDate.getDate();
