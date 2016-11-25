@@ -690,6 +690,13 @@ airbus.mes.stationtracker.util.Formatter = {
 					
 					return sGapHour + "," + sGapMin + "h";
 
+                    },
+//				Calculate Total Takt
+                    totalTakt:function(inTakt,outTakt,notAck){
+                    	var total;
+                    	total = inTakt + outTakt + notAck;
+                    	return total;
+                    	
                     }
 };
 

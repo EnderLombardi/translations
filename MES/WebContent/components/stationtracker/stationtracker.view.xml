@@ -261,14 +261,11 @@
 										<micro:ComparisonMicroChartData
 											title="{StationTrackerI18n>PromisedOutTakt}" value="{disruptionAndonKPI>/Rowsets/Rowset/0/Row/0/OutTakt}" />
 
-										<micro:ComparisonMicroChartData
-
-											title="{StationTrackerI18n>NotAcknowledged}"
-											value="2"
-											displayValue="2" />
+									
 										<micro:ComparisonMicroChartData	title="{StationTrackerI18n>NotAcknowledged}" value="{disruptionAndonKPI>/Rowsets/Rowset/0/Row/0/NotAcknowledged}" />
-										<!-- <micro:ComparisonMicroChartData
-											id="hiddenRefBarResolution" title="{StationTrackerI18n>RedSpaces}" value="13" visible="false"/> -->
+									
+										<micro:ComparisonMicroChartData
+											id="hiddenRefBarResolution" title="{StationTrackerI18n>RedSpaces}" visible="false"  value="{parts:['disruptionAndonKPI>/Rowsets/Rowset/0/Row/0/InTakt','disruptionAndonKPI>/Rowsets/Rowset/0/Row/0/OutTakt','disruptionAndonKPI>/Rowsets/Rowset/0/Row/0/NotAcknowledged'], formatter:'airbus.mes.stationtracker.util.Formatter.totalTakt'}" />
 
 									</micro:data>
 								</micro:ComparisonMicroChart>
