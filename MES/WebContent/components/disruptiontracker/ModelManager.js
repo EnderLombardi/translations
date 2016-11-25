@@ -7,8 +7,6 @@ airbus.mes.disruptiontracker.ModelManager = {
 		
 		core.setModel(new sap.ui.model.json.JSONModel(), "disruptionsTrackerModel");//Model having disruptions tracker data
 		core.getModel("disruptionsTrackerModel").attachRequestCompleted(airbus.mes.disruptiontracker.ModelManager.onDisruptionsLoad);
-		
-		
 	},
 	
 	loadDisruptionTrackerModel : function() {
@@ -43,19 +41,14 @@ airbus.mes.disruptiontracker.ModelManager = {
 		.filter(new sap.ui.model.Filter({
 		    path: "ResponsibleGroup",
 		    test: function(oValue) {
-		    	if(aTemp.indexOf(oValue) == -1) {
-		    		aTemp.push(oValue);
-		    		return true;
-		    		} else {
-		    		return false;
-		    	}
+				if (aTemp.indexOf(oValue) == -1) {
+					aTemp.push(oValue);
+					return true;
+				} else {
+					return false;
+				}
 		    }
 		  }));
-		
-		
-		
-		
-		
 		
 		airbus.mes.disruptiontracker.oView.setBusy(false); //Remove Busy Indicator
 	},
@@ -69,5 +62,4 @@ airbus.mes.disruptiontracker.ModelManager = {
 			noDataRow.colSpan = colCount - 1;
 		}
 	}
-	
 }
