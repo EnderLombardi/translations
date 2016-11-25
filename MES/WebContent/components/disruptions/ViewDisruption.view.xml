@@ -265,7 +265,7 @@
 												</Label>
 											</f:label>
 											<f:fields>
-												<Text text="{=${operationDisruptionsModel>EscalationLevel} === 3 ? ${i18nModel>escalated} : ${operationDisruptionsModel>TimeBeforeNextEscalation}}">
+												<Text text="{=${operationDisruptionsModel>EscalationLevel} === 3 ? 'Escalated' : ${operationDisruptionsModel>TimeBeforeNextEscalation}}">
 													<layoutData>
 														<l:GridData span="L3 M3 S12" />
 													</layoutData>

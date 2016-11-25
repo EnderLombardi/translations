@@ -25,17 +25,15 @@ airbus.mes.disruptions.Formatter = {
 		
 		switch(iGravity) {
 		case "1":
-			return "green";
-			break;
 		case "2":
 			return "green";
 			break;
 			
 		case "3":
-			if(escalationLevel>2)
+			if(escalationLevel>1)
 				return "red";
 			else
-			return "orange";			
+				return "orange";			
 			break;
 		default:
 			return "";
