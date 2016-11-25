@@ -1,3 +1,5 @@
+"use strict";
+
 sap.ui.controller("airbus.mes.homepage.homePage", {
 
 	/**
