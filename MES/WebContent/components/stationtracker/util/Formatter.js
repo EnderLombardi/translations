@@ -6,7 +6,7 @@ airbus.mes.stationtracker.util.Formatter = {
 		
 		stringToInt : function(string){
 			if(typeof string =="string"){
-				return parseInt(string)
+				return parseInt(string,10)
 			}else{
 				return string
 			}
