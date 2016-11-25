@@ -1,5 +1,8 @@
+/**
+ * @fileOverview Define the homepage controller.
+ * @version 1.0.0
+ */
 "use strict";
-
 sap.ui.controller("airbus.mes.homepage.homePage", {
 
 	/**
@@ -13,6 +16,11 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 	onInit : function() {
 
 	},
+	
+	/**
+	 * Navigation management on the homepage
+	 * @param {string} text : identifying the tile that has been clicked on 
+	 */
 	onPress : function(text) {
 
 		//		If default user settings are not yet loaded, need to load them
@@ -40,8 +48,10 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 				break;
 			case "TeamCompetencies" :
 				airbus.mes.settings.GlobalFunction.navigateTo("Go to Team competencies & qualification", "disruptiontracker");
+				break;
+			default:
+				break;
 			}
-			;
 
 		} else {
 			// If default user settings are already loaded,
@@ -67,14 +77,21 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 				airbus.mes.shell.util.navFunctions.disruptionTracker();
 				break;
 			case "TeamCompetencies" :
-			airbus.mes.shell.util.navFunctions.polypoly();
+				airbus.mes.shell.util.navFunctions.polypoly();
+				break;
+			default:
+				break;
 			}
 			
 
 		}
-		;
 	},
 
+	/**
+	 * Is triggered when clicking on a tile of the homepage view
+	 * Launch the onPress function with the text corresponding to the Tile that has been clicked on
+	 * @param {Event} oEvt : Tile press event
+	 */
 	onPressLine1 : function(oEvt) {
 
 		var sPath = oEvt.getSource().oBindingContexts["1TileLineHome"].sPath;
@@ -83,6 +100,11 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 		this.onPress(text);
 	},
 
+	/**
+	 * Get translated text
+	 * @param {string} sKey : the ID of the text to be fetched
+	 * @returns {string} the text found
+	 */
 	getI18nValue : function(sKey) {
 		return this.getView().getModel("i18n").getProperty(sKey);
 	},
