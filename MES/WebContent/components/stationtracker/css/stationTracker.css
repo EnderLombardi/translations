@@ -223,74 +223,6 @@
 .solvedBlocked:hover {
     background: repeating-linear-gradient( 135deg, #f3ff85, #f3ff8f 10px, yellow 10px, yellow 20px) !important;
 }
-.triangleIcon {
-    position: relative;
-    z-index: 1;
-    padding-left: 10px;
-    line-height: 23px;
-    color: white;
-    float: left;
-    overflow: hidden;
-}
-.oswIcon {
-    position: relative;
-    z-index: 1;
-    padding-left: 5px;
-    padding-right: 5px;
-    border-radius: 10px;
-    float: left;
-    top: 5px;
-    margin-bottom: 30px;
-    color: rgba(0, 86, 112, 0.94);
-    overflow: hidden;
-}
-.oswIcon2 {
-    position: relative;
-    z-index: 1;
-    padding-left: 5px;
-    padding-right: 5px;
-    border-radius: 10px;
-    float: right;
-    top: 5px;
-    color: rgba(0, 86, 112, 0.94);
-    overflow: hidden;
-}
-.rightIcon {
-    position: relative;
-    z-index: 1;
-    padding-right: 10px;
-    line-height: 23px;
-    color: white;
-    float: right;
-    overflow: hidden;
-}
-.dandelion {
-    color: #fbec00;
-}
-.dandelion-back {
-    background-color: #fbec00;
-}
-.teal-blue {
-    color: #0085ad;
-}
-.petrol {
-    color: rgba(0, 86, 112, 0.94);
-}
-.petrol-back {
-    background-color: rgba(0, 86, 112, 0.94);
-}
-.cherry-red {
-    color: #e4002b;
-}
-.cherry-red-back {
-    background-color: #e4002b;
-}
-.dark-lime-green-back {
-    background-color: #84bd00;
-}
-.teal-blue-back {
-    background-color: #0085ad;
-}
 
 /* End of box management */
 
@@ -1339,7 +1271,7 @@ svg#stationTrackerView--takt_adherence_area_chart {
     color: white;
     font-size: 100%;
     word-break: break-all;
-    idth: 100% !important;
+    width: 100% !important;
 }
 .sapMPIText3 {
     float: right;

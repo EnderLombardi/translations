@@ -5,6 +5,51 @@
   color: transparent;
   text-shadow: none; }
 
+.trackerBox .fa {
+  position: relative;
+  z-index: 1;
+  line-height: 23px;
+  color: #ffffff;
+  overflow: hidden; }
+
+.trackerBox .fa.oswIcon {
+  position: relative;
+  z-index: 1;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-radius: 10px;
+  top: 5px;
+  color: rgba(0, 86, 112, 0.94);
+  overflow: hidden; }
+
+.trackerBox .trackerText, .trackerBox .trackerTextBlock {
+  padding-left: 10px;
+  position: relative;
+  z-index: 1;
+  float: left;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+
+.sapMPIText1, .sapMPIText2 {
+  float: left;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: normal !important;
+  text-overflow: clip;
+  display: inline-block;
+  overflow: hidden;
+  height: 100%;
+  line-height: 1.2em;
+  color: #ffffff;
+  font-size: 100%;
+  word-break: break-all; }
+
+#mes .sapMToggleBtnPressed {
+  background-image: none;
+  background-color: transparent;
+  border-color: transparent;
+  color: transparent;
+  text-shadow: none; }
+
 /* WORK TRACKER / STATION TRACKER */
 /********************
 TABLE
@@ -30,6 +75,15 @@ TOOLBAR
 *********************/
 #mes .sapMPopover .sapMBtnIcon {
   color: rgba(0, 86, 112, 0.94); }
+
+.sapMPIText1 {
+  padding-left: 8px;
+  margin-top: -2.2rem;
+  width: 98.9% !important; }
+
+.sapMPIText2 {
+  margin-top: -1.1rem;
+  width: 100% !important; }
 
 /********************
 WORK LIST POP OVER
@@ -90,23 +144,11 @@ BOX MANAGEMENT
   overflow: hidden;
   text-overflow: ellipsis; }
   .trackerBox .trackerText {
-    padding-left: 10px;
-    position: relative;
-    z-index: 1;
-    float: left;
-    overflow: hidden;
-    text-overflow: ellipsis;
     max-width: calc(100% - 70px);
     white-space: nowrap;
     color: white;
     overflow: hidden; }
   .trackerBox .trackerTextBlock {
-    padding-left: 10px;
-    position: relative;
-    z-index: 1;
-    float: left;
-    overflow: hidden;
-    text-overflow: ellipsis;
     max-width: 40%;
     white-space: nowrap;
     color: rgba(0, 86, 112, 0.94); }
@@ -121,12 +163,7 @@ BOX MANAGEMENT
     width: 100%;
     background-color: #fbec00; }
   .trackerBox .fa {
-    position: relative;
-    z-index: 1;
-    line-height: 24px;
-    height: 23px;
-    color: #ffffff;
-    overflow: hidden; }
+    height: 23px; }
     .trackerBox .fa.rightIcon {
       padding-right: 6px;
       float: right; }
@@ -136,21 +173,31 @@ BOX MANAGEMENT
       padding-left: 6px;
       float: left; }
     .trackerBox .fa.oswIcon {
-      position: relative;
-      z-index: 1;
       line-height: 14px;
       height: auto;
-      padding-left: 5px;
-      padding-right: 5px;
-      border-radius: 10px;
       float: left;
-      top: 5px;
       margin-left: 6px;
-      color: rgba(0, 86, 112, 0.94);
-      overflow: hidden;
       background-color: #fbec00; }
       .trackerBox .fa.oswIcon b {
         font-family: arial; }
+  .trackerBox .dandelion {
+    color: #fbec00; }
+  .trackerBox .dandelion-back {
+    background-color: #fbec00; }
+  .trackerBox .teal-blue {
+    color: #0085ad; }
+  .trackerBox .petrol {
+    color: rgba(0, 86, 112, 0.94); }
+  .trackerBox .petrol-back {
+    background-color: rgba(0, 86, 112, 0.94); }
+  .trackerBox .cherry-red {
+    color: #e4002b; }
+  .trackerBox .cherry-red-back {
+    background-color: #e4002b; }
+  .trackerBox .dark-lime-green-back {
+    background-color: #84bd00; }
+  .trackerBox .teal-blue-back {
+    background-color: #0085ad; }
 
 .trackerBox:hover .dark-lime-green-back {
   background-color: #536f12 !important; }

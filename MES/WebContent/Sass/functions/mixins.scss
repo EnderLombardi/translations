@@ -1,13 +1,1 @@
-/**********************************************************************************************************
-***********************************************************************************************************
-Here you can create you SASS function (mixins), to call them just use @import where you want to and then use them with @include.
 
-mixins example :
-@mixin background($text-color){
-    width: 100%
-    font-family: Verdana;
-    backrgound-color: $text-color;
-}
-Lets imagine you have to use the same brackground in different pages you just call this and change the colors for each page with the $text-color and the background will have all the properties of the mixins function !
-***********************************************************************************************************
-**********************************************************************************************************/
