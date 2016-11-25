@@ -108,27 +108,6 @@
 .white {
     background-color: white ! important;
 }
-.whiteText {
-    text-align: center ! important;
-    color: white;
-    width: 100%;
-}
-.disruptionText {
-    color: white;
-}
-.classOpenDisruptionAndon div:first-child label,
-.classOpenDisruptionDisruption div:first-child label,
-.classOpenDisruptionDetail div:first-child label {
-    padding-bottom: 5px;
-}
-.classOpenDisruptionTotal div:first-child label {
-    padding-bottom: 0.2vw;
-}
-.redText {
-    text-align: center ! important;
-    color: #fe5000;
-    width: 100%;
-}
 .centerItems.NS.sapSuiteHdrCellNorth {
     text-align: center !important;
 }
@@ -912,9 +891,6 @@ background-color: #0085AD !important;
 .classKpiHeaderContent .KPITaktChartRightText {
     text-align: right ! important;
     width: 100%;
-}
-#stationTrackerView--LabourEfficiencyValue {
-    text-align: center ! important;
 }
 
 /** Area Chart **/

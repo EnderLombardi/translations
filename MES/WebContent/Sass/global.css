@@ -195,7 +195,7 @@ KPI Header Content
   background-color: rgba(187, 188, 188, 0.15); }
 
 .classKpiHeaderContent .kpiValue {
-  font-size: 20px;
+  font-size: 1.6vw;
   width: 100%;
   text-align: center !important; }
 
@@ -203,16 +203,12 @@ KPI Header Content
   text-align: center !important;
   width: 100%; }
 
-.classKpiHeaderContent .kpiErrorValue {
-  font-size: 20px;
-  color: #fe5000; }
-
 .classKpiHeaderContent .whiteTextHeader {
   white-space: normal;
   text-align: center !important;
   color: white;
   width: 100%;
-  font-size: 1.1vw; }
+  font-size: 1vw; }
 
 /*KPI boxes*/
 .kpiBoxes > .sapMFlexItem:first-child {
@@ -231,6 +227,14 @@ KPI Header Content
   width: 0px !important;
   height: 100% !important; }
 
+.labourEfficiencyBox .sapMFlexItem:nth-child(2) {
+  height: 144px;
+  display: inline-block;
+  vertical-align: middle !important; }
+  .labourEfficiencyBox .sapMFlexItem:nth-child(2) .sapMLabel {
+    vertical-align: super !important;
+    max-height: 144px; }
+
 /*general kpi*/
 .kpiBoxExtraWork .sapMFlexItem {
   width: 100% !important;
@@ -245,12 +249,14 @@ KPI Header Content
   height: 30px; }
   .kpiBoxExtraWork .sapMFlexItem:nth-child(2) .sapMLabel {
     vertical-align: sub !important;
-    max-height: 30px; }
+    max-height: 30px;
+    font-size: 0.9vw; }
 .kpiBoxExtraWork .sapMFlexItem:nth-child(4) {
   height: 30px; }
   .kpiBoxExtraWork .sapMFlexItem:nth-child(4) .sapMLabel {
     vertical-align: sub !important;
-    max-height: 30px; }
+    max-height: 30px;
+    font-size: 0.9vw; }
 .kpiBoxExtraWork .sapMFlexItem:nth-child(3) .sapMLabel {
   vertical-align: top !important;
   max-height: 42px; }
@@ -261,16 +267,83 @@ KPI Header Content
 .kpiBody {
   height: 139px; }
 
+.kpiBodyWithoutMargin {
+  height: 144px; }
+
 .kpiDeltaMicroChart {
   margin: 10px 0;
   height: 119px; }
 
-.labourEfficiencyBody {
-  height: 129px; }
-
-.efficiencyChartContainer {
-  width: 100%;
+.marginTopKpiBody {
   margin-top: 5px; }
+
+.openDisruptionTotal .sapMFlexItem {
+  width: 100% !important;
+  line-height: normal;
+  display: inline-block;
+  vertical-align: middle !important; }
+  .openDisruptionTotal .sapMFlexItem .sapMLabel {
+    display: inline-block;
+    max-width: 100% !important;
+    vertical-align: middle !important; }
+.openDisruptionTotal .sapMFlexItem:nth-child(1) {
+  height: 25px; }
+  .openDisruptionTotal .sapMFlexItem:nth-child(1) .sapMLabel {
+    vertical-align: middle !important;
+    max-height: 25px;
+    font-size: 0.9vw; }
+.openDisruptionTotal .sapMFlexItem:nth-child(2) {
+  height: 20px; }
+  .openDisruptionTotal .sapMFlexItem:nth-child(2) .sapMLabel {
+    vertical-align: middle !important;
+    max-height: 20px; }
+.openDisruptionTotal .sapMFlexItem:nth-child(4) {
+  height: 20px; }
+  .openDisruptionTotal .sapMFlexItem:nth-child(4) .sapMLabel {
+    vertical-align: middle !important;
+    max-height: 20px; }
+.openDisruptionTotal .sapMFlexItem:nth-child(3) .sapMLabel {
+  vertical-align: top !important;
+  max-height: 30px; }
+.openDisruptionTotal .sapMFlexItem:nth-child(5) {
+  height: 44px; }
+  .openDisruptionTotal .sapMFlexItem:nth-child(5) .sapMLabel {
+    vertical-align: top !important;
+    max-height: 44px; }
+
+.openDisruptionTotal > .sapMFlexItem:nth-child(2):before {
+  content: "" !important;
+  font-size: 0 !important;
+  vertical-align: middle !important;
+  display: inline-block !important;
+  width: 0px !important;
+  height: 100% !important; }
+
+.openDisruptionTotal > .sapMFlexItem:nth-child(4):before {
+  content: "" !important;
+  font-size: 0 !important;
+  vertical-align: middle !important;
+  display: inline-block !important;
+  width: 0px !important;
+  height: 100% !important; }
+
+.openDisruptionAndon div:first-child label,
+.openDisruptionDisruption div:first-child label,
+.openDisruptionDetail div:first-child label {
+  padding-bottom: 5px; }
+
+.whiteText {
+  text-align: center !important;
+  color: white;
+  width: 100%; }
+
+.disruptionText {
+  color: white; }
+
+.redText {
+  text-align: center !important;
+  color: #fe5000 !important;
+  width: 100%; }
 
 #mes .sapMPI {
   margin: 1.25rem 0; }

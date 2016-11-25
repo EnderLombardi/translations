@@ -31,7 +31,7 @@ KPI Header Content
 }
 
 .classKpiHeaderContent .kpiValue {
-	font-size: 20px;
+	font-size: 1.6vw;
 	width: 100%;
 	text-align: center ! important;
 }
@@ -41,21 +41,17 @@ KPI Header Content
 	width: 100%;
 }
 
-.classKpiHeaderContent .kpiErrorValue {
-	font-size: 20px;
-	color: $blood-orange;
-}
-
 .classKpiHeaderContent .whiteTextHeader {
 	white-space: normal;
 	text-align: center ! important;
 	color: white;
 	width: 100%;
-	font-size: 1.1vw;
+	font-size: 1vw;
 }
 
 /*KPI boxes*/
 $kpi-box-title-height: 50px;
+$kpi-box-body-height: 144px;
 $kpi-box-extrawork-text-height:30px;
 $kpi-box-extrawork-percent-height:42px;
 
@@ -80,6 +76,18 @@ $kpi-box-extrawork-percent-height:42px;
   height: 100% !important;
 }
 
+.labourEfficiencyBox {
+	.sapMFlexItem:nth-child(2) {
+		height: $kpi-box-body-height;
+		display: inline-block;
+    	vertical-align: middle !important;
+		.sapMLabel {
+			vertical-align: super !important;
+    		max-height: 144px;
+		}
+	}
+}
+
 /*general kpi*/
 .kpiBoxExtraWork {
 	.sapMFlexItem {
@@ -98,6 +106,7 @@ $kpi-box-extrawork-percent-height:42px;
 		.sapMLabel {
 			vertical-align: sub !important;
 			max-height: $kpi-box-extrawork-text-height;
+			font-size: 0.9vw;
 		}
 	}
 	.sapMFlexItem:nth-child(4) {
@@ -105,6 +114,7 @@ $kpi-box-extrawork-percent-height:42px;
 		.sapMLabel {
 			vertical-align: sub !important;
 			max-height: $kpi-box-extrawork-text-height;
+			font-size: 0.9vw;
 		}
 	}.sapMFlexItem:nth-child(3) {
 		.sapMLabel {
@@ -120,8 +130,13 @@ $kpi-box-extrawork-percent-height:42px;
 	}
 }
 
+// kpi others
 .kpiBody {
     height: 139px;
+}
+
+.kpiBodyWithoutMargin {
+    height: 144px;
 }
 
 .kpiDeltaMicroChart {
@@ -129,11 +144,100 @@ $kpi-box-extrawork-percent-height:42px;
     height: 119px;
 }
 
-.labourEfficiencyBody {
-  height: 129px;
+.marginTopKpiBody {
+  margin-top: 5px;
 }
 
-.efficiencyChartContainer {
-  width: 100%;
-  margin-top: 5px;
+$kpi-box-disruptions-total-title-height: 25px;
+$kpi-box-disruptions-total-text-height: 20px;
+$kpi-box-disruptions-total-numbers-height: 30px;
+$kpi-box-disruptions-total-numbers-height-bis: 44px;
+
+// openDisruption
+.openDisruptionTotal {
+	.sapMFlexItem {
+		width: 100% !important;
+		line-height: normal;
+		display: inline-block;
+		vertical-align: middle !important;
+		.sapMLabel {
+			display: inline-block;
+			max-width: 100% !important;
+			vertical-align: middle !important;
+		}
+	}
+	.sapMFlexItem:nth-child(1) {
+  		height: $kpi-box-disruptions-total-title-height;
+		.sapMLabel {
+			vertical-align: middle !important;
+			max-height: $kpi-box-disruptions-total-title-height;
+			font-size: 0.9vw;
+		}
+	}
+	.sapMFlexItem:nth-child(2) {
+  		height: $kpi-box-disruptions-total-text-height;
+		.sapMLabel {
+			vertical-align: middle !important;
+			max-height: $kpi-box-disruptions-total-text-height;
+		}
+	}
+	.sapMFlexItem:nth-child(4) {
+  		height: $kpi-box-disruptions-total-text-height;
+		.sapMLabel {
+			vertical-align: middle !important;
+			max-height: $kpi-box-disruptions-total-text-height;
+		}
+	}.sapMFlexItem:nth-child(3) {
+		.sapMLabel {
+			vertical-align: top !important;
+  			max-height: $kpi-box-disruptions-total-numbers-height
+		}
+	}
+	.sapMFlexItem:nth-child(5) {
+		height: $kpi-box-disruptions-total-numbers-height-bis;
+		.sapMLabel {
+			vertical-align: top !important;
+  			max-height: $kpi-box-disruptions-total-numbers-height-bis;
+		}
+	}
+}
+
+.openDisruptionTotal > .sapMFlexItem:nth-child(2):before {
+  content: "" !important;
+  font-size: 0 !important;
+  vertical-align: middle !important;
+  display: inline-block !important;
+  width: 0px !important;
+  height: 100% !important;
+}
+
+.openDisruptionTotal > .sapMFlexItem:nth-child(4):before {
+  content: "" !important;
+  font-size: 0 !important;
+  vertical-align: middle !important;
+  display: inline-block !important;
+  width: 0px !important;
+  height: 100% !important;
+}
+
+
+// old code
+.openDisruptionAndon div:first-child label,
+.openDisruptionDisruption div:first-child label,
+.openDisruptionDetail div:first-child label {
+    padding-bottom: 5px;
+}
+
+.whiteText {
+    text-align: center !important;
+    color: white;
+    width: 100%;
+}
+.disruptionText {
+    color: white;
+}
+.redText {
+    text-align: center !important;
+    color: $blood-orange !important;
+    width: 100%;
 }
