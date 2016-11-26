@@ -93,11 +93,11 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 					     ****************************************************************************/ 
 						scheduler.eventId.push (scheduler.attachEvent("onBeforeEventChanged", function(ev, e, is_new, original){
 						  
-//							if ( ev.section_id.slice(0,2) === "I_" ) {
-//						    return false;
-//						  } 
+							if ( ev.section_id.slice(0,2) === "I_" ) {
+						    return false;
+						  } 
 //							
-						  return false;
+						  return true;
 						  
 						}));
 					
@@ -138,7 +138,13 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 						
 						scheduler.eventId.push(scheduler.attachEvent("onBeforeDrag",function blockReadonly(id) {
 
-						    scheduler.dragged_event = scheduler.getEvent(id); //use it to get the object of the dragged event
+							//use it to get the object of the dragged event
+						    scheduler.InitialPosition = {
+						    		"start_date" : scheduler.getEvent(id).start_date,
+						    		"skill" : scheduler.getEvent(id).avlLine.split("_")[1],
+						    		"avlLine" : scheduler.getEvent(id).avlLine.split("_")[0],
+						    		"sSfcStep" :  scheduler.getEvent(id).sSfcStep,
+						    }
 							
 							if (this.getEvent(id).type === "I" ) {
 								
@@ -163,15 +169,18 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 						
 						scheduler.eventId.push(scheduler.attachEvent("onDragEnd", function rescheduling(id, mode, e){
 							//Filled on event onBeforeDrag
-							var event_obj_before = scheduler.dragged_event;
-							var event_obj_now = scheduler.getEvent(id); 
+							var oInitial = scheduler.InitialPosition;
+							var oFinal = scheduler.getEvent(id); 
 
 							//We check only the first start date because the duration of the operation cannot changed							
-							if(event_obj_before.start_date === event_obj_now.start_date) {
+							if( oInitial.start_date === oFinal.start_date ) {
 							//date aren't change , nothing to do
 								return true;
 							} else {
-								airbus.mes.stationtracker.ModelManager.sendRescheduleRequest(event_obj_now);
+								//Store oFinal and oInitial value in case of check qa is not successfull
+								airbus.mes.stationtracker.oFinal = oFinal;
+								airbus.mes.stationtracker.oInitial = oInitial;
+								airbus.mes.stationtracker.ModelManager.sendRescheduleRequest(false,oFinal,oInitial);
 							}
 							
 							console.log("end of drag");

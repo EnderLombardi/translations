@@ -267,7 +267,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 				descending : false
 			}) ]
 		});
-		airbus.mes.stationtracker.ImportOswUnplannedPopover.mode = "UNPLANNED";
+		airbus.mes.stationtracker.CheckQa = "UNPLANNED";
 		sap.ui.getCore().byId("ImportOswUnplannedPopover--LabelTitle").setText(airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("WorklistHeaderUnplanned"));
 
 		var oModel = sap.ui.getCore().getModel("unPlannedModel");
@@ -305,7 +305,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			sorter : []
 		});
 		
-		airbus.mes.stationtracker.ImportOswUnplannedPopover.mode = "OSW";
+		airbus.mes.stationtracker.CheckQa= "OSW";
 		sap.ui.getCore().byId("ImportOswUnplannedPopover--LabelTitle").setText(airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("WorklistHeaderOSW"));		
 		
 		var oModel = sap.ui.getCore().getModel("OSWModel");
@@ -485,7 +485,11 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			
 		});
 		
-		switch(airbus.mes.stationtracker.ImportOswUnplannedPopover.mode) {
+		//store sfcstep and prodgroup if Qa check is not succesfull
+		airbus.mes.stationtracker.ImportOswUnplannedPopover.aSFC_Step = aSFC_Step;
+		airbus.mes.stationtracker.ImportOswUnplannedPopover.sProdGroup = sProdGroup;
+				
+		switch(airbus.mes.stationtracker.CheckQa) {
 	    case "OSW":
 	    	airbus.mes.stationtracker.ModelManager.setOSW(aSFC_Step,sProdGroup,false,true);
 	        break;
@@ -948,13 +952,18 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 
 	onContinueCheckQA : function(oEvent){
 		// special case for polypoly
-		switch(airbus.mes.stationtracker.ImportOswUnplannedPopover.mode) {
+		switch(airbus.mes.stationtracker.CheckQa) {
 	    case "UNPLANNED":
-	    	airbus.mes.stationtracker.ModelManager.setOSW(aSFC_Step,sProdGroup,true,false);
+	    	var oModel = airbus.mes.stationtracker.ImportOswUnplannedPopover;
+	       	airbus.mes.stationtracker.ModelManager.setOSW(oModel.aSFC_Step,oModel.sProdGroup,true,false);
 	        break;
 	    case "OSW":
-	    	airbus.mes.stationtracker.ModelManager.setOSW(aSFC_Step,sProdGroup,true,true);
+	    	var oModel = airbus.mes.stationtracker.ImportOswUnplannedPopover;
+	       	airbus.mes.stationtracker.ModelManager.setOSW(oModel.aSFC_Step,oModel.sProdGroup,true,true);
 	        break;
+	    case "RESCHEDULING":
+	    	var oModel = airbus.mes.stationtracker;
+	    	airbus.mes.stationtracker.ModelManager.sendRescheduleRequest(true,oModel.oFinal,oModel.oInitial)     
 	    default:
 		}
 		airbus.mes.stationtracker.AssignmentManager.handleLineAssignment("S", true);
