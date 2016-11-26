@@ -32,31 +32,15 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 						scheduler.config.details_on_dblclick=false;
 						scheduler.config.xml_date="%Y-%m-%d %H:%i";
 						scheduler.config.markedCells = 0;
-
 						scheduler.config.mark_now = true;
 						scheduler.config.drag_create = false;
-						// cant drag andr drop verticaly if set to force
+						// cant drag & drop verticaly if set to force
 						scheduler.config.touch = "force";
 						scheduler.config.details_on_create = false;
 						scheduler.config.details_on_dblclick = false;
 						scheduler.config.preserve_length = true;
 						scheduler.config.dblclick_create = false;
-						
-						//scheduler.config.className = 'dhtmlXTooltip'; 
-						//scheduler.config.timeout_to_display = 50; 
-						//scheduler.config.delta_x = 10; 
-						//scheduler.config.delta_y = 0;						
-						
-						//scheduler.config.tooltip_text = function(start,end,ev){
-						    //alert(airbus.mes.stationtracker.oView.getController().tooltipDisplay(ev));
-//							var x = document.getElementById("dhtmlXTooltip").clientWidth ;
-//							var y = document.getElementById("dhtmlXTooltip").clientHeight ;
-//							console.log("x : " + x + " y : " + y);
-
-						//};						
-						
-						
-					    scheduler.eventId = scheduler.eventId || [];
+						scheduler.eventId = scheduler.eventId || [];
                         scheduler.eventId.forEach(function(el) { scheduler.detachEvent(el); });
                         scheduler.eventId = [];
                         
@@ -87,16 +71,26 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 						scheduler.date.timeline_start = ShiftManager.bounded("adjustSchedulerXStart");
 						scheduler.date.add_timeline_old = scheduler.date.add_timeline;
 						scheduler.date.add_timeline = ShiftManager.bounded("timelineAddStep");
-						//////////////////////////////////////////////////////
-                                                
-                       
-						scheduler.eventId.push ( scheduler.attachEvent("onEventDrag", function SchedStartChange(ev, mode, e) {
-							if ( this.getEvent(ev).start_date.getTime() >= scheduler._max_date  ){
-								console.log("yes");
-								}
-						}));
 						
+						/************************************************************************/
+						/************************************************************************/
+						/**                                                                    **/
+						/**         DECLARTION OF ALL DHTMLX EVENT (REF TO DHTMLX DOC)         **/							
+						/**                                                                    **/
+						/************************************************************************/
+						/************************************************************************/
 						
+//						scheduler.eventId.push ( scheduler.attachEvent("onEventDrag", function SchedStartChange(ev, mode, e) {
+//							if ( this.getEvent(ev).start_date.getTime() >= scheduler._max_date  ){
+//								console.log("yes");
+//								}
+//						}));
+						
+						/***************************************************************************
+					     * ??????????
+					     *
+					     * @param {oEvent} Object wich represent the event on press from "TeamButton"
+					     ****************************************************************************/ 
 						scheduler.eventId.push (scheduler.attachEvent("onBeforeEventChanged", function(ev, e, is_new, original){
 						  
 //							if ( ev.section_id.slice(0,2) === "I_" ) {
@@ -134,6 +128,14 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 //									// false cancels the operation
 //								}));
 						
+						/**
+					     * This event permit to cancel the drag and drop of Initial operation and when
+					     * the boxing value selected = operation_Id
+					     *
+					     * @param {STRING} id, the Id of the box selected in gantt
+					     * @return {boolean} true if not dragable, false to permit drag & drop
+					     */ 
+						
 						scheduler.eventId.push(scheduler.attachEvent("onBeforeDrag",function blockReadonly(id) {
 
 						    scheduler.dragged_event = scheduler.getEvent(id); //use it to get the object of the dragged event
@@ -152,27 +154,36 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 			
 						}));
 						
+						/**
+					     * After drag & drop check the initial Date and compare with the new date if
+					     * it is different it call the rescheduling request to MII
+					     *
+					     * @param {STRING} id, the Id of the box selected in gantt
+					     */ 
+						
 						scheduler.eventId.push(scheduler.attachEvent("onDragEnd", function rescheduling(id, mode, e){
-////						Filled on event onBeforeDrag
+							//Filled on event onBeforeDrag
 							var event_obj_before = scheduler.dragged_event;
-
 							var event_obj_now = scheduler.getEvent(id); 
 
-//							We check only the first start date because the duration of the operation cannot changed							
+							//We check only the first start date because the duration of the operation cannot changed							
 							if(event_obj_before.start_date === event_obj_now.start_date) {
-//								date aren't change , nothing to do
+							//date aren't change , nothing to do
 								return true;
 							} else {
 								airbus.mes.stationtracker.ModelManager.sendRescheduleRequest(event_obj_now);
 							}
 							
-							
-//							airbus.mes.stationtracker.ModelManager.reschedulingEvent(event_obj);
-							
 							console.log("end of drag");
 							
 						}));
-												
+								
+						/**
+					     * ??????????
+					     *
+					     * @param {oEvent} Object wich represent the event on press from "TeamButton"
+					     */ 
+						
 						scheduler.eventId.push(scheduler.attachEvent("onBeforeTodayDisplayed", function() {
 							
 							ShiftManager.step = 0;
@@ -183,31 +194,14 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 
 						}));
 						
-
-						/* 	Custom Y group display */
-
-						scheduler.templates.timeline_scale_label = function(key, label, section) {
-
-							return airbus.mes.stationtracker.util.Formatter.YdisplayRules(section);
-							
-						};
-
-						scheduler.templates.timeline_scaley_class = function(key, label, section) {
-							if (section.initial != undefined) {
-								return "initial";
-							}
-
-							if (section.rescheduled != undefined) {
-								return "lineYaxis";
-							}
-						};
-
-						/* 	 Custom progress background display  */
-
-						scheduler.templates.event_class = function(start, end, event) {
-							return "grey";
-						};
-
+						/**
+					     * Open PolyPoly fragment in affectation mode
+					     *
+					     * @param {STRING} id, the Id of the box selected in gantt
+					     * @param {OBJECT}	section a data object of the clicked cell
+					     * @param {Event} e	a native event object
+					     */ 
+						
 						scheduler.eventId.push (scheduler.attachEvent("onYScaleClick", function(index, section, e) {
 
 							if (airbus.mes.stationtracker.AssignmentManager.bOpen && section.children != undefined) {
@@ -270,6 +264,118 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 							}
 
 						}));
+						
+						/**
+					     * Permit to replace the default arrow to change the day in scheduler change the icon
+					     * display on the collapse open folder 
+					     *
+					     */ 
+						
+						scheduler.eventId.push ( scheduler.attachEvent("onScaleAdd", function() {
+							  /* Delete initial - + to indicate the collapse or expand of folder */		
+									for (var i = 0; i < $("div[class='dhx_scell_expand']").length; i++) {
+										$("div[class='dhx_scell_expand']").eq(i).remove();
+									}
+
+								/* Create arrow to change shift/day */								
+									if ($("div[class='dhx_cal_next_button']").length === 0) {
+										$("div[class='dhx_cal_header']").append(("<div class='dhx_cal_next_button' Style='float:right; width:30px;'></div>"));
+										$("div[class='dhx_cal_next_button']").click(function() {
+											scheduler._click.dhx_cal_next_button();
+											//airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(airbus.mes.stationtracker.ShiftManager.current_shift.shiftID);
+											airbus.mes.stationtracker.ModelManager.selectMyShift();
+										});
+									}
+
+									if ($("div[class='dhx_cal_prev_button']").length === 0) {
+										$("div[class='dhx_cal_header']").append(("<div class='dhx_cal_prev_button' Style='float:right; width:30px;'></div>"));
+										$("div[class='dhx_cal_prev_button']").click(function() {
+											scheduler._click.dhx_cal_prev_button();
+											//airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(airbus.mes.stationtracker.ShiftManager.current_shift.shiftID);
+											airbus.mes.stationtracker.ModelManager.selectMyShift();
+										});
+									}
+														
+									}));
+								
+						/**
+					     * Manage the double click on a box it open the recheduling popup dialog
+					     *
+					     * @param {STRING} id, the Id of the box selected in gantt
+					     */ 
+						
+						scheduler.eventId.push( scheduler.attachEvent("onDblClick", function(id) {
+							
+//							Set the bypass variable to true
+							this.byPassOnClick = true;
+							airbus.mes.stationtracker.ModelManager.OpenReschedule(id);
+	
+							return false;
+
+						}));
+
+						/**
+					     * Manage the simple click it open the operationInfo popup if boxing is
+					     * operation otherwise it open worklist dialog
+					     *
+					     * @param {STRING} id, the Id of the box selected in gantt
+					     */ 
+						
+						scheduler.eventId.push ( scheduler.attachEvent("onClick", function(id) {	
+							
+							  var that = this;
+							  
+//							  Need to define a time out to differenciate simple click and double click
+							  setTimeout(function() {
+
+								  //If the bypass variable has been set on true to the double click action
+//								    we don't perform the simple click action
+								    if (that.byPassOnClick) {
+										return false;
+								    } else {
+									    airbus.mes.stationtracker.ModelManager.OpenWorkList(id);
+									    return true;
+									    }
+								  }, 200)							
+							
+//							  Reinitiate the bypass variable
+							  this.byPassOnClick = false;
+						}));
+											
+								/************************************************************************/
+								/************************************************************************/
+								/**                                                                    **/
+								/**      DECLARTION OF ALL DHTMLX TEMPLATES (REF TO DHTMLX DOC)        **/							
+								/**                                                                    **/
+								/************************************************************************/
+								/************************************************************************/
+								
+								
+					
+						
+						scheduler.templates.timeline_scale_label = function(key, label, section) {
+
+							return airbus.mes.stationtracker.util.Formatter.YdisplayRules(section);
+							
+						};
+
+						scheduler.templates.timeline_scaley_class = function(key, label, section) {
+							if (section.initial != undefined) {
+								return "initial";
+							}
+
+							if (section.rescheduled != undefined) {
+								return "lineYaxis";
+							}
+						};
+
+						/* 	 Custom progress background display  */
+
+						scheduler.templates.event_class = function(start, end, event) {
+							return "grey";
+						};
+
+						
 
 						/* 	 Custom Hour display display  */
 						scheduler.templates.timeline_scalex_class = function(date){
@@ -294,71 +400,6 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 								return "folderAxisColor";
 							}
 						};
-						
-						scheduler.eventId.push ( scheduler.attachEvent("onScaleAdd", function( unit , date ) {
-					  /* Delete initial - + to indicate the collapse or expand of folder */		
-							for (var i = 0; i < $("div[class='dhx_scell_expand']").length; i++) {
-								$("div[class='dhx_scell_expand']").eq(i).remove();
-							}
-
-						/* Create arrow to change shift/day */								
-							if ($("div[class='dhx_cal_next_button']").length === 0) {
-								$("div[class='dhx_cal_header']").append(("<div class='dhx_cal_next_button' Style='float:right; width:30px;'></div>"));
-								$("div[class='dhx_cal_next_button']").click(function() {
-									scheduler._click.dhx_cal_next_button();
-									//airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(airbus.mes.stationtracker.ShiftManager.current_shift.shiftID);
-									airbus.mes.stationtracker.ModelManager.selectMyShift();
-								});
-							}
-
-							if ($("div[class='dhx_cal_prev_button']").length === 0) {
-								$("div[class='dhx_cal_header']").append(("<div class='dhx_cal_prev_button' Style='float:right; width:30px;'></div>"));
-								$("div[class='dhx_cal_prev_button']").click(function() {
-									scheduler._click.dhx_cal_prev_button();
-									//airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(airbus.mes.stationtracker.ShiftManager.current_shift.shiftID);
-									airbus.mes.stationtracker.ModelManager.selectMyShift();
-								});
-							}
-												
-							}));
-						
-//						Action double click on scheduler
-						scheduler.eventId.push( scheduler.attachEvent("onDblClick", function(id, e) {
-						
-//							Set the bypass variable to true
-							this.byPassOnClick = true;
-							airbus.mes.stationtracker.ModelManager.OpenReschedule(id);
-	
-							return false;
-
-						}));
-
-//						Action simple click on scheduler
-						scheduler.eventId.push ( scheduler.attachEvent("onClick", function(id, e) {	
-							
-							  var that = this;
-							  
-//							  Need to define a time out to differenciate simple click and double click
-							  setTimeout(function() {
-
-								  //								  	If the bypass variable has been set on true to the double click action
-//								    we don't perform the simple click action
-								    if (that.byPassOnClick) {
-										return false;
-								    } else {
-									    airbus.mes.stationtracker.ModelManager.OpenWorkList(id);
-									    return true;
-									    }
-								  }, 200)							
-							
-//							  Reinitiate the bypass variable
-							  this.byPassOnClick = false;
-						}));
-
-						
-//						scheduler.eventId.push ( scheduler.attachEvent("onMouseMove", function(id, ind) {	
-//							alert(id + ind);
-//
-//						}));						
+											
 					},
 				});
