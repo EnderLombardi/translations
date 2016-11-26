@@ -947,6 +947,16 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	},
 
 	onContinueCheckQA : function(oEvent){
+		// special case for polypoly
+		switch(airbus.mes.stationtracker.ImportOswUnplannedPopover.mode) {
+	    case "UNPLANNED":
+	    	airbus.mes.stationtracker.ModelManager.setOSW(aSFC_Step,sProdGroup,false,false);
+	        break;
+	    case "OSW":
+	    	airbus.mes.stationtracker.ModelManager.setOSW(aSFC_Step,sProdGroup,false,true);
+	        break;
+	    default:
+		}
 		airbus.mes.stationtracker.AssignmentManager.handleLineAssignment("S", true);
 		this.onCloseDialog(oEvent);
 	},

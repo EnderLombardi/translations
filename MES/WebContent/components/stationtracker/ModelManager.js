@@ -296,7 +296,8 @@ airbus.mes.stationtracker.ModelManager = {
 			
 		var oData = airbus.mes.stationtracker.ModelManager.settings;
 		var geturlsetosw = this.urlModel.getProperty('urlsetosw');
-		
+		var dDateShift = airbus.mes.stationtracker.ShiftManager.shifts[airbus.mes.stationtracker.ShiftManager.closestShift(new Date())].StartDate;
+		var sDateShift = airbus.mes.stationtracker.util.Formatter.dDate2sDate(dDateShift);
 		
 		geturlsetosw = airbus.mes.stationtracker.ModelManager.replaceURI(geturlsetosw, "$station", oData.station);
 		geturlsetosw = airbus.mes.stationtracker.ModelManager.replaceURI(geturlsetosw, "$msn", oData.msn);
@@ -313,7 +314,7 @@ airbus.mes.stationtracker.ModelManager = {
 				"Param.4" : oData.sProdgroup,
 				"Param.5" : oData.station,
 				"Param.6" : oData.msn,
-				"Param.7" : "startDate",//startDate???,
+				"Param.7" : sDateShift,//startDate???,
 				"Param.8" : sXml,
 				}),
 				

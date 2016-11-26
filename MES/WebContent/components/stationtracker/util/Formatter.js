@@ -100,6 +100,12 @@ airbus.mes.stationtracker.util.Formatter = {
 			
 			// Transform object Date to date (without hour) 
 			
+			dDate2sDate : function(dDate) {
+				
+				return dDateShift.getFullYear()+"-"+(dDateShift.getMonth()+1)+"-"+dDateShift.getDate()+"T"+dDateShift.getHours()+":"+dDateShift.getMinutes()+":"+dDateShift.getSeconds();
+
+			},
+			
 			date2date : function(day) {
 				return day.split('T')[0];
 			},
