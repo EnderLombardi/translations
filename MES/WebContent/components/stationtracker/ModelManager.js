@@ -278,6 +278,8 @@ airbus.mes.stationtracker.ModelManager = {
      * @param {BOOLEAN} bOuStanding Permit to know if we import unplanned or Osw
      ****************************************************************************/
 	setOSW : function(aItem,sProdgroups,sCheckQa,bOuStanding) {
+		//sCheckQa true dont do check Qa
+		//sCheckQa false do check Qa
 		//bOuStanding = true insert OSW
 		//bOuStanding = false insert unplanned
 		
@@ -299,25 +301,19 @@ airbus.mes.stationtracker.ModelManager = {
 		var dDateShift = airbus.mes.stationtracker.ShiftManager.shifts[airbus.mes.stationtracker.ShiftManager.closestShift(new Date())].StartDate;
 		var sDateShift = airbus.mes.stationtracker.util.Formatter.dDate2sDate(dDateShift);
 		
+		geturlsetosw = airbus.mes.stationtracker.ModelManager.replaceURI(geturlsetosw, "$site", oData.site);
+		geturlsetosw = airbus.mes.stationtracker.ModelManager.replaceURI(geturlsetosw, "$sCheckQa", sCheckQa);
+		geturlsetosw = airbus.mes.stationtracker.ModelManager.replaceURI(geturlsetosw, "$bOuStanding", bOuStanding);
+		geturlsetosw = airbus.mes.stationtracker.ModelManager.replaceURI(geturlsetosw, "$sProdgroups", sProdgroups);
 		geturlsetosw = airbus.mes.stationtracker.ModelManager.replaceURI(geturlsetosw, "$station", oData.station);
 		geturlsetosw = airbus.mes.stationtracker.ModelManager.replaceURI(geturlsetosw, "$msn", oData.msn);
-	
+		geturlsetosw = airbus.mes.stationtracker.ModelManager.replaceURI(geturlsetosw, "$sDateShift", sDateShift);
+		geturlsetosw = airbus.mes.stationtracker.ModelManager.replaceURI(geturlsetosw, "$sXml", sXml);
 		
-		jQuery.ajax({
-			type : 'post',
+		$.ajax({
 			url : geturlsetosw,
 			contentType : 'application/json',
-			data : JSON.stringify({
-				"Param.1" : oData.site,
-				"Param.2" : sCheckQa,
-				"Param.3" : bOuStanding,
-				"Param.4" : oData.sProdgroup,
-				"Param.5" : oData.station,
-				"Param.6" : oData.msn,
-				"Param.7" : sDateShift,//startDate???,
-				"Param.8" : sXml,
-				}),
-				
+		
 				success : function(data, textStatus, jqXHR) {
 					// Handle Local url_config
 					if (typeof data == "string") {
@@ -325,6 +321,7 @@ airbus.mes.stationtracker.ModelManager = {
 					}
 					if (airbus.mes.shell.util.Formatter.getMiiMessageType(data) == "E") {
 						sap.m.MessageToast.show(airbus.mes.shell.util.Formatter.getMiiTextFromData(data));
+						console.log("no import done")
 					} else if ( data.Rowsets.Rowset != undefined ) {
 						if (data.Rowsets.Rowset[0].Row[0].message == "W") {
 							var checkQAModel = new sap.ui.model.json.JSONModel();
@@ -334,11 +331,14 @@ airbus.mes.stationtracker.ModelManager = {
 							airbus.mes.stationtracker.oView.getController().openCheckQAPopup(checkQAModel);
 						} else if (data.Rowsets.Rowset[0].Row[0].message == "S") {
 							airbus.mes.shell.oView.getController().renderStationTracker();
+							airbus.mes.stationtracker.dialogProdGroup.close();
+							airbus.mes.stationtracker.ImportOswUnplannedPopover.close();
 						}
 					} else {
 						
 						airbus.mes.shell.oView.getController().renderStationTracker();
-						airbus.mes.stationtracker.oPopoverPolypoly.close();
+						airbus.mes.stationtracker.dialogProdGroup.close();
+						airbus.mes.stationtracker.ImportOswUnplannedPopover.close();
 					}
 				},
 			});

@@ -487,10 +487,10 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		
 		switch(airbus.mes.stationtracker.ImportOswUnplannedPopover.mode) {
 	    case "OSW":
-	    	airbus.mes.stationtracker.ModelManager.setOSW(aSFC_Step,sProdGroup,true,true);
+	    	airbus.mes.stationtracker.ModelManager.setOSW(aSFC_Step,sProdGroup,false,true);
 	        break;
 	    case "UNPLANNED":
-	    	airbus.mes.stationtracker.ModelManager.setOSW(aSFC_Step,sProdGroup,true,false);
+	    	airbus.mes.stationtracker.ModelManager.setOSW(aSFC_Step,sProdGroup,false,false);
 	        break;
 	    default:
 	    	console.log("itsnot possible");
@@ -950,10 +950,10 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		// special case for polypoly
 		switch(airbus.mes.stationtracker.ImportOswUnplannedPopover.mode) {
 	    case "UNPLANNED":
-	    	airbus.mes.stationtracker.ModelManager.setOSW(aSFC_Step,sProdGroup,false,false);
+	    	airbus.mes.stationtracker.ModelManager.setOSW(aSFC_Step,sProdGroup,true,false);
 	        break;
 	    case "OSW":
-	    	airbus.mes.stationtracker.ModelManager.setOSW(aSFC_Step,sProdGroup,false,true);
+	    	airbus.mes.stationtracker.ModelManager.setOSW(aSFC_Step,sProdGroup,true,true);
 	        break;
 	    default:
 		}

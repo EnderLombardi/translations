@@ -7,7 +7,7 @@
 		enableScrolling="false " class="GenricBgColor">
 
 		<content width="100%" height="100%">
-			<Panel id="kpi_header" expandable="false" expanded="false"
+			<Panel id="kpi_header" expandable="true" expanded="true"
 				expandAnimation="false" class="pageHeader kpiPageHeader contentNoPad">
 				<headerToolbar>
 					<Toolbar id="kpiHeaderToolbar" class="classKpiheaderToolbar">
@@ -22,7 +22,7 @@
 						</Select>
 						<Button id="ProductionButton"
 							text="{StationTrackerI18n>ProductionGroup} : {StationTrackerI18n>StatusAll}"
-							type="Transparent" class="whiteColor whiteButton" press="onProductionGroupPress" enabled="false"/>
+							type="Transparent" class="whiteColor whiteButton" press="onProductionGroupPress" />
 						
 						<Select id="selectUser" change="selectUser"
 							class="sapUiTinyMarginBeginEnd pageHeader pageHeaderBlue" 
@@ -36,7 +36,7 @@
 							class="tiffanyColor whiteButton buttonStatus2 iconbuttonTeam sapUiSmallMarginBegin"
 							icon="sap-icon://group" press="onTeamPress" />
 						<Button id="hideKPI" type="Transparent" icon="sap-icon://hide"
-							text="{StationTrackerI18n>HideKPIS}" press="hideKPI" enabled="false"/>
+							text="{StationTrackerI18n>HideKPIS}" press="hideKPI" />
 					</Toolbar>
 
 				</headerToolbar>
@@ -152,18 +152,18 @@
 						</HBox>
 
 						<VBox id="boxLabourEfficiency" wrap="Wrap" width="7%"
-							class="contentHeaderCont kpiBoxes labourEfficiencyBox">
+							class="contentHeaderCont kpiBoxes ">
 							<Label text="{StationTrackerI18n>LabourEfficiency}" design="Bold"
 								width="100%" class="whiteTextHeader" />
 							<Label text="{KPItaktEfficiency>/labourEfficiencyUI}%"
-								id="LabourEfficiencyValue" class="kpiValue"/>
+								id="LabourEfficiencyValue" class="kpiValue labourEfficiencyBody"/>
 						</VBox>
 
 						<VBox id="boxSLBEfficiecy" width="10%" alignItems="Center"
 							class="contentHeaderCont kpiBoxes">
 							<Label text="{StationTrackerI18n>SLBEFFICIENCY}" design="Bold"
 								class="whiteTextHeader" />
-							<VBox class="marginTopKpiBody" width="100%">
+							<VBox class="efficiencyChartContainer" width="100%">
 								<micro:ComparisonMicroChart size="L"
 									id="boxSLBEfficiecy_chart" 
 									width="100%" colorPalette="#84bd00, #f5f5f5, #fe5000" class="kpiBody">
@@ -190,27 +190,22 @@
 							</VBox>
 						</VBox>
 
-						<VBox id="boxOpenDisruptions" width="24%" class="contentHeaderCont kpiBoxes">
+						<VBox id="boxOpenDisruptions" width="24%" class="contentHeaderCont">
 							<Label text="{StationTrackerI18n>DISRUPTION/ANDON}"
-								design="Bold" class="whiteTextHeader" />
-							<HBox class="kpiBodyWithoutMargin">
-								<VBox width="30%" justifyContent="SpaceAround" class="openDisruptionTotal">
-									<Label text="{StationTrackerI18n>DisruptionTotal}" class="kpiName"
+								design="Bold" width="100%" class="whiteTextHeader sapUiSmallMarginTopBottom" />
+							<HBox height="65%">
+								<VBox width="30%" justifyContent="SpaceAround" class="classOpenDisruptionTotal">
+									<Label text="{StationTrackerI18n>DisruptionTotal}" class=" whiteText kpiName"
 										design="Bold" />
-									<Label text="{StationTrackerI18n>Disruption}" class="kpiName" />
+									<Label text="{StationTrackerI18n>Disruption}" class=" whiteText kpiName" />
 									<Label text="{disruptionAndonKPI>/Rowsets/Rowset/0/Row/0/totalDisruption}"
-										class="kpiValue" design="Bold" />
-									<!-- hard-coding to see real layouting -->
-									<!--<Label text="5"
-										class="kpiValue" design="Bold" />-->
-									<!--<Label text="15"
-										class="redText kpiValue kpiErrorValue" design="Bold" />-->
-									<Label text="{StationTrackerI18n>Andon}" class="redText kpiErrorValue"
+										class=" whiteText kpiValue" design="Bold" />
+									<Label text="{StationTrackerI18n>Andon}" class=" redText kpiErrorValue"
 										design="Bold" />
 									<Label text="{disruptionAndonKPI>/Rowsets/Rowset/0/Row/0/totalAndon}"
 										class="redText kpiValue kpiErrorValue" design="Bold" />
 								</VBox>
-								<VBox width="35%" class="openDisruptionDetail" justifyContent="SpaceAround">
+								<VBox width="35%" class="classOpenDisruptionDetail" justifyContent="SpaceAround">
 									<Label text="{StationTrackerI18n>DisruptionDetails}"
 										class="disruptionText" design="Bold" />
 									<Label text="{StationTrackerI18n>DisruptionsNC}" class="disruptionText" />
@@ -221,7 +216,7 @@
 									<Label text="{StationTrackerI18n>DisruptionFTE}" class="disruptionText" />
 									<Label text="{StationTrackerI18n>DisruptionOther}" class="disruptionText" />
 								</VBox>
-								<VBox alignItems="Center" width="20%" justifyContent="SpaceAround" class="openDisruptionDisruption">
+								<VBox alignItems="Center" width="20%" justifyContent="SpaceAround" class="classOpenDisruptionDisruption">
 									<Label text="{StationTrackerI18n>Disruption}" class="whiteText" />
 									<Label text="{disruptionAndonKPI>/Rowsets/Rowset/0/Row/0/NC}"
 										class=" whiteText" />
@@ -234,7 +229,7 @@
 											<Label text="{disruptionAndonKPI>/Rowsets/Rowset/0/Row/0/Other}"
 										class=" whiteText" />
 								</VBox>
-								<VBox alignItems="Center" width="15%" justifyContent="SpaceAround" class="openDisruptionAndon">
+								<VBox alignItems="Center" width="15%" justifyContent="SpaceAround" class="classOpenDisruptionAndon">
 									<Label text="{StationTrackerI18n>Andon}" class="redText kpiErrorValue" />
 									<Label text="{disruptionAndonKPI>/Rowsets/Rowset/0/Row/0/NC_escalated}"
 										class=" redText kpiErrorValue" />
@@ -254,7 +249,7 @@
 							class="contentHeaderCont kpiBoxes">
 							<Label text="{StationTrackerI18n>ResolutionEfficiency}"
 								design="Bold" class="whiteTextHeader" />
-							<VBox class="marginTopKpiBody" width="100%">
+							<VBox class="efficiencyChartContainer" width="100%">
 								<micro:ComparisonMicroChart size="L"
 									id="boxResolutionEfficiecy_chart"
 									width="100%" colorPalette="#84bd00,#fe5000,#fe5000,#0F2D65" class="kpiBody">
@@ -356,9 +351,9 @@
 						type="Transparent" icon="sap-icon://alert" class="sapUiTinyMarginBeginEnd"></Button>
 					<Button text="{StationTrackerI18n>ButtonOutstandingWork}"
 						type="Transparent" icon="sap-icon://cause" class="sapUiTinyMarginBeginEnd"
-						press="onOSWPress" enabled="false"></Button>
+						press="onOSWPress"></Button>
 					<Button text="{StationTrackerI18n>ButtonUnplanned}" type="Transparent"
-						icon="sap-icon://inspect" class="sapUiTinyMarginBeginEnd" press="onUnplannedPress" enabled="false"></Button>
+						icon="sap-icon://inspect" class="sapUiTinyMarginBeginEnd" press="onUnplannedPress"></Button>
 					<ToggleButton text="{StationTrackerI18n>ButtonInitial}" type="Transparent"
 						icon="sap-icon://past" class="sapUiTinyMarginBeginEnd" press="onInitialPlanPress" />
 
