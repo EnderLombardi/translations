@@ -13,7 +13,7 @@
 		"value": "TRUE"
 	}, {
 		"key": "MES_REFRESH_ACTIVE",
-		"value": "FALSE"
+		"value": "TRUE"
 	}, {
 		"key": "MES_REFRESH_DEF_VAL",
 		"value": "180"

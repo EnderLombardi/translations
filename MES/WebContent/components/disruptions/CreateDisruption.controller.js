@@ -797,7 +797,7 @@ sap.ui
 							 */
 
 							// make an Item to add in the list. var
-							oMaterialItem = new sap.m.CustomListItem(
+							var oMaterialItem = new sap.m.CustomListItem(
 									{
 										content : new sap.ui.layout.Grid(
 												{

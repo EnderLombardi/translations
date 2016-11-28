@@ -1,23 +1,23 @@
 /********************
 TABLE
 *********************/
-    .dhx_matrix_scell{
+.dhx_matrix_scell{
 
     &.folder {
         max-width:199px;
         .ylabelfolder {
-        padding: 0 30px;
-        margin: 0;
-        font-size: 12px;
-        color: #0F5F78;
-        font-weight: normal;
-        box-sizing: border-box;
-        width: 100%;
-        display: inline-block;
-        position: relative;
-        overflow: hidden!important;
-        text-overflow: ellipsis;
-        white-space: nowrap;
+            padding: 0 30px;
+            margin: 0;
+            font-size: 12px;
+            color: #0F5F78;
+            font-weight: normal;
+            box-sizing: border-box;
+            width: 100%;
+            display: inline-block;
+            position: relative;
+            overflow: hidden!important;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
     }
 }
@@ -26,7 +26,7 @@ TABLE
 TOOLBAR
 *********************/
 #mes .sapMPopover{
-        .sapMBtnIcon {
+    .sapMBtnIcon {
         color: $petrol;
     }
 }
@@ -54,7 +54,7 @@ WORK LIST POP OVER
         z-index: 1;
         line-height: 20px;
         height:20px;
-           color: $white-two;
+        color: $white-two;
         overflow: hidden;
         &.rightIcon {
             padding-left: 6px;
@@ -94,6 +94,15 @@ WORK LIST POP OVER
         margin-top: calc(-20px/2);
         width: auto;
     }
+    header.sapMIBar.sapMHeader-CTX {
+        background: #d4f1f7;
+        box-shadow: 0 0 5px #333;
+        z-index: 1000;
+    }
+    header.sapMIBar.sapMHeader-CTX label {
+        color: #434343;
+        font-size: 1rem;
+    }
 }
 
 /********************
@@ -126,14 +135,14 @@ BOX MANAGEMENT
         color: $petrol;
     }
     .colorProgress{
-           height: inherit;
-           position: absolute;
-           z-index: 0;
-           left: 0px;
-           overflow: hidden;
+        height: inherit;
+        position: absolute;
+        z-index: 0;
+        left: 0px;
+        overflow: hidden;
     }
     .openBlockedEscalated, .openBlocked{
-           height: inherit;
+        height: inherit;
         width:100%;
         background-color:$dandelion;
     }
@@ -214,4 +223,404 @@ BOX MANAGEMENT
 .grey:hover{
     background-color: $cool-grey-hover;
     color: black;
+}
+
+/***********************
+KPI HEADER
+************************/
+#stationTrackerView--kpi_header{
+    .hiddenRefBar{
+        display: none;
+    }
+    .sapMPanelWrappingDivTb{
+        border-bottom: none;
+    }
+    .sapMPanelExpandableIcon{
+        @extend %sapMPanelExpandableIcon;
+    }
+    .sapMPanelExpandableIconExpanded{
+        @extend %sapMPanelExpandableIconExpanded;
+    }
+}
+
+#stationTrackerView--kpiHeaderToolbar{
+    margin-left: 0;
+    .sapMBtnContent,
+    .sapMSltLabel,
+    .sapMInputBaseInner,
+    .sapMSltArrow{
+        color: #F5F5F5;
+        font-size: 12px;
+    }
+}
+
+#stationTrackerView--kpi_header-CollapsedImg {
+    right: 0;
+    color: #74d2e7;
+    display: none;
+}
+
+#stationTrackerView--ProductionButton,
+#stationTrackerView--DisruptionButton {
+    border-right: solid 1px #74d2e7;
+    margin-right: 0;
+}
+
+#stationTrackerView--DatePicker-inner {
+    @extend %datePickerInner;
+}
+
+#stationTrackerView--DatePicker{
+    border-right: solid 1px #74d2e7;
+    margin-right: 0;
+    .sapMInputValHelp{
+        right: auto;
+        left: 0;
+    }
+    .sapMInputValHelpInner {
+        color: #F5F5F5;
+        font-size: 24px;
+    }
+}
+#stationTrackerView--selectShift,
+#stationTrackerView--selectUser {
+    @extend %stationTrackerViewShiftAndUser;
+}
+#stationTrackerView--selectShift-label,
+#stationTrackerView--selectShift-arrow,
+#stationTrackerView--selectUser-label,
+#stationTrackerView--selectUser-arrow {
+    top: 0;
+    bottom: 0;
+    line-height: 3rem;
+}
+#stationTrackerView--ProductionButton-inner:hover,
+#stationTrackerView--ProductionButton:hover #stationTrackerView--ProductionButton-inner,
+#stationTrackerView--DisruptionButton-inner:hover,
+#stationTrackerView--DisruptionButton:hover #stationTrackerView--DisruptionButton-inner,
+#stationTrackerView--TeamButton-inner:hover,
+#stationTrackerView--TeamButton:hover #stationTrackerView--TeamButton-inner {
+    background-color: transparent;
+}
+#stationTrackerView--TeamButton-img,
+#stationTrackerView--TeamButton-content,
+#stationTrackerView--hideKPI-img,
+#stationTrackerView--hideKPI-content {
+    color: #74d2e7 !important;
+}
+
+/******************************************
+STATIONTRACKERVIEW ID AND DHX AND CONTENT
+******************************************/
+#stationTrackerView{
+    .dhx_matrix_scell div{
+        overflow: visible;
+    }
+}
+#stationTrackerView--stationtracker{
+    @extend %stationTrackerView;
+    .customHour{
+        @extend %stationTrackerViewCustomHour;
+    }
+    .customHour:before{
+        @extend %customHourBefore;
+    }
+    .dhx_cal_data{
+        overflow-y: scroll;
+        bottom: 0;
+        height: auto !important;
+        border-top: solid 1px #979797;
+    }
+    .dhx_cal_header {
+        border: none;
+        width: 100% !important;
+    }
+    .dhx_cal_next_button{
+        @extend %dhxtButton;
+        right: 0px;
+    }
+    .dhx_cal_prev_button{
+        @extend %dhxtButton;
+        right: 30px;
+    }
+    .dhx_cal_next_button:before {
+        content: "\f105";
+    }
+    .dhx_cal_prev_button:before {
+        content: "\f104";
+    }
+    .dhx_matrix_scell{
+        &.folder{
+            background-color: #d5f1f8;
+            border-bottom: solid 1px #EAFCFE;
+            @extend %dhxItemFolder;
+        }
+        &.item{
+            border-bottom: solid 1px #d5f1f8;
+            color: #0D5D76;
+            background-color: #EAFBFD;
+            @extend %dhxItemFolder;
+            &.initial{
+                cursor: default;
+            }
+        }
+    }
+    .dhx_matrix_cell{
+        background-color: #F3F5F6;
+        border-bottom: 1px solid #dddddd;
+        border-right: 1px solid #dddddd;
+    }
+    .dhx_matrix_cell div,
+    .dhx_matrix_scell div {
+        text-align: left;
+        white-space: nowrap;
+    }
+    .dhx_cal_event,
+    .dhx_cal_event_line {
+        border: none;
+        overflow: visible;
+    }
+    .dhx_scell_name {
+        float: none;
+        text-align: left;
+        position: relative;
+    }
+    .dhx_row_folder{
+        .dhx_matrix_scell{
+            &.folder{
+                background-color: white;
+            }
+        }
+        .dhx_scell_name{
+            .fa-chevron-down{
+                @extend %faChevron;
+            }
+            .fa-chevron-right{
+                @extend %faChevron;
+            }
+            .fa-plus{
+                @extend %faChevron;
+            }
+        }
+        .dhx_marked_timespan{
+            &.begin_shifht{
+                @extend %timeSpanWidth;
+                background-color: blue;
+            }
+            &.taktMarker{
+                @extend %timeSpanWidth;
+                background-color: green;
+            }
+            &.shiftCss,&.offtime{
+                display: none;
+            }
+            &.dhx_matrix_now_time{
+                border-left-color: purple;
+                opacity: 1;
+            }
+        }
+        .dhx_matrix_cell, .dhx_marked_timespan.shiftCss{
+            border-right: none;
+            border-bottom: none;
+            background-color: #ECEEEF ! important;
+        }
+        .folderAxisColor{
+            background-color: #ECEEEF ! important;
+        }
+    }
+    .dhx_row_item{
+        .dhx_marked_timespan{
+            &.begin_shifht{
+                @extend %timeSpanWidth;
+                background-color: blue;
+            }
+            &.taktMarker{
+                @extend %timeSpanWidth;
+                background-color: green;
+            }
+        }
+        .dhx_scell_name{
+            white-space: nowrap;
+            padding: 0px;
+        }
+    }
+    .dhx_data_table{
+        &.folder td{
+            border-bottom: 2px solid #dddddd;
+            background-color: #ECEEEF;
+        }
+    }
+    .ylabel{
+        white-space: nowrap;
+        color: #0D5D76;
+        vertical-align: middle;
+    }
+    .ylabelEditIcon{
+        @extend %stationViewYlabelIconAndImage;
+    }
+    .ylabelUserImage{
+        @extend %stationViewYlabelIconAndImage;
+        background-color: #D5F1F8;
+        border-radius: 999px;
+    }
+    .ylabelUser{
+        @extend %stationViewYlabelUser;
+    }
+    .yMoreLabel{
+        position: absolute;
+        line-height: 30px;
+        right: 5px;
+        color: #8db9ca;
+        .fa-pencil{
+            width: 30px;
+            text-align: center;
+        }
+    }
+    .tracker-item-initial{
+        @extend %tracker-item-initial;
+        .fa-exclamation-triangle{
+            color: #BBBCBC !important;
+        }
+    }
+    .shiftCss{
+        background-color: #DDDDDD;
+        opacity: 0.8;
+    }
+    .operationCP {
+        background-color: #97999b;
+        border: 2px solid #0D2C63;
+    }
+
+}
+
+/***********************
+TASK ADHERENCE
+************************/
+.classTaktAdherenceTrend{
+    &.sapUiRespGrid{
+        &.sapUiRespGridHSpace1{
+            &>div{
+                margin: 0 0.5rem 0 0;
+                line-height: 1rem;
+            }
+            &>.sapUiRespGridSpanL4{
+                margin: 0;
+                width: auto;
+            }
+        }
+    }
+}
+.classKpiHeaderContent{
+    .classTaktAdherenceTrend{
+        .TrendGree{
+            margin-bottom: 0.5rem;
+        }
+        .TrendRed{
+            margin-bottom: 0.5rem;
+        }
+        .takt_kpi_name{
+            &.takt_kpi_trend{
+                font-size: 1vw;
+            }
+        }
+    }
+    .takt_kpi_name{
+        text-align: right !important;
+        font-size: 0.85vw;
+        vertical-align: middle;
+        display: baseline;
+    }
+    .takt_kpi_value{
+        display: inline-block;
+        vertical-align: baseline;
+    }
+    .KPITaktChartBlueText{
+        color: #74d2e7;
+        margin-left: 10px;
+    }
+    .KPITaktChartRightText{
+        text-align: right ! important;
+        width: 100%;
+    }
+}
+#stationTrackerView--takt_adherence_adherence_value {
+    font-size: 15px;
+}
+
+/*************
+ARE CHART
+**************/
+svg{
+    &#stationTrackerView--takt_adherence_area_chart{
+        border: none;
+    }
+}
+.classTaktAdherenceAreaChart{
+    div{
+        &:nth-child(2){
+            position: absolute;
+            top: 0;
+            left: 20px;
+        }
+        &:nth-child(3){
+            position: absolute;
+            top: 0;
+            right: 15px;
+        }
+    }
+}
+.takt_adherence_area_chart_svg-container{
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    /* aspect ratio */
+    vertical-align: top;
+    overflow: hidden;
+}
+.takt_adherence_area_chart_svg-content-responsive {
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    left: 0;
+}
+
+#stationTrackerView--takt_adherence_area_chart{
+    .yaxis{
+        @include fillChart(white);
+        font-size: 7px;
+    }
+    .yaxelabel{
+        @include fillChart(white);
+        font-size: 7px;
+        margin-bottom: 2px;
+    }
+    .axis path,
+    .axis line{
+        @include fillChart(none);
+        stroke: grey;
+        shape-rendering: crispEdges;
+    }
+    .area{
+        fill: #E5002B;
+    }
+    .line{
+        @include fillChartStroke(none, #0D2C63, 1);
+    }
+    .realLine {
+        @include fillChartStroke(none, white, 1);
+    }
+    .estimateLine {
+        @include fillChartStroke(none, white, 1);
+        stroke-dasharray: 10;
+    }
+    .ygrid{
+        .tick{
+            stroke: rgba(109, 147, 194, 0.39);
+            opacity: 0.7;
+        }
+        path{
+            stroke-width: 0;
+        }
+    }
 }

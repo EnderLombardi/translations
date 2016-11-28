@@ -22,7 +22,7 @@
 						</Select>
 						<Button id="ProductionButton"
 							text="{StationTrackerI18n>ProductionGroup} : {StationTrackerI18n>StatusAll}"
-							type="Transparent" class="whiteColor whiteButton" press="onProductionGroupPress" />
+							type="Transparent" class="whiteColor whiteButton" press="onProductionGroupPress"/>
 						
 						<Select id="selectUser" change="selectUser"
 							class="sapUiTinyMarginBeginEnd pageHeader pageHeaderBlue" 
@@ -36,7 +36,7 @@
 							class="tiffanyColor whiteButton buttonStatus2 iconbuttonTeam sapUiSmallMarginBegin"
 							icon="sap-icon://group" press="onTeamPress" />
 						<Button id="hideKPI" type="Transparent" icon="sap-icon://hide"
-							text="{StationTrackerI18n>HideKPIS}" press="hideKPI" />
+							text="{StationTrackerI18n>HideKPIS}" press="hideKPI"/>
 					</Toolbar>
 
 				</headerToolbar>
@@ -84,7 +84,7 @@
 									</VBox>
 								</VBox>
 								<VBox id="boxTaktAdherenceRight" width="50%">
-									<Label text="{StationTrackerI18n>TaktAdherence}" design="Bold"
+									<Label text="{StationTrackerI18n>TaktAdherence}"
 										width="100%" class="whiteTextHeader sapUiSmallMarginTop" />
 									<VBox justifyContent="SpaceAround" height="100%">
 										<HBox class="sapUiSmallMarginBottom">
@@ -156,18 +156,18 @@
 						</HBox>
 
 						<VBox id="boxLabourEfficiency" wrap="Wrap" width="7%"
-							class="contentHeaderCont kpiBoxes ">
-							<Label text="{StationTrackerI18n>LabourEfficiency}" design="Bold"
+							class="contentHeaderCont kpiBoxes labourEfficiencyBox">
+							<Label text="{StationTrackerI18n>LabourEfficiency}"
 								width="100%" class="whiteTextHeader" />
 							<Label text="{KPItaktEfficiency>/labourEfficiencyUI}%"
-								id="LabourEfficiencyValue" class="kpiValue labourEfficiencyBody"/>
+								id="LabourEfficiencyValue" class="kpiValue"/>
 						</VBox>
 
 						<VBox id="boxSLBEfficiecy" width="10%" alignItems="Center"
 							class="contentHeaderCont kpiBoxes">
-							<Label text="{StationTrackerI18n>SLBEFFICIENCY}" design="Bold"
+							<Label text="{StationTrackerI18n>SLBEFFICIENCY}"
 								class="whiteTextHeader" />
-							<VBox class="efficiencyChartContainer" width="100%">
+							<VBox class="marginTopKpiBody" width="100%">
 								<micro:ComparisonMicroChart size="L"
 									id="boxSLBEfficiecy_chart" 
 									width="100%" colorPalette="#84bd00, #f5f5f5, #fe5000" class="kpiBody">
@@ -194,33 +194,36 @@
 							</VBox>
 						</VBox>
 
-						<VBox id="boxOpenDisruptions" width="24%" class="contentHeaderCont">
+						<VBox id="boxOpenDisruptions" width="24%" class="contentHeaderCont kpiBoxes">
 							<Label text="{StationTrackerI18n>DISRUPTION/ANDON}"
-								design="Bold" width="100%" class="whiteTextHeader sapUiSmallMarginTopBottom" />
-							<HBox height="65%">
-								<VBox width="30%" justifyContent="SpaceAround" class="classOpenDisruptionTotal">
-									<Label text="{StationTrackerI18n>DisruptionTotal}" class=" whiteText kpiName"
+								class="whiteTextHeader" />
+							<HBox class="kpiBodyWithoutMargin">
+								<VBox width="30%" justifyContent="SpaceAround" class="openDisruptionTotal">
+									<Label text="{StationTrackerI18n>DisruptionTotal}" class="kpiName"
 										design="Bold" />
-									<Label text="{StationTrackerI18n>Disruption}" class=" whiteText kpiName" />
+									<Label text="{StationTrackerI18n>Disruption}" class="kpiName" />
 									<Label text="{KPIdisruption>/disruptionTotalUI}"
-										class=" whiteText kpiValue" design="Bold" />
-									<Label text="{StationTrackerI18n>Andon}" class=" redText kpiErrorValue"
+										class="kpiValue" design="Bold" />
+									<!-- hard-coding to see real layouting -->
+									<!--<Label text="5"
+										class="kpiValue" design="Bold" />-->
+									<!--<Label text="15"
+										class="redText kpiValue kpiErrorValue" design="Bold" />-->
+									<Label text="{StationTrackerI18n>Andon}" class="redText kpiErrorValue"
 										design="Bold" />
 									<Label text="{KPIdisruption>/andonTotalUI}"
 										class="redText kpiValue kpiErrorValue" design="Bold" />
 								</VBox>
-								<VBox width="35%" class="classOpenDisruptionDetail" justifyContent="SpaceAround">
+								<VBox width="35%" class="openDisruptionDetail" justifyContent="SpaceAround">
 									<Label text="{StationTrackerI18n>DisruptionDetails}"
-										class="disruptionText" design="Bold" />
-									<Label text="{StationTrackerI18n>DisruptionsNC}" class="disruptionText" />
-									<Label text="{StationTrackerI18n>DisruptionsMissing}"
-										class="disruptionText" />
-									<Label text="{StationTrackerI18n>DisruptionsTools}"
-										class="disruptionText" />
-									<Label text="{StationTrackerI18n>DisruptionFTE}" class="disruptionText" />
-									<Label text="{StationTrackerI18n>DisruptionOther}" class="disruptionText" />
+										class="kpiName" design="Bold" />
+									<Label text="{StationTrackerI18n>DisruptionsNC}"/>
+									<Label text="{StationTrackerI18n>DisruptionsMissing}"/>
+									<Label text="{StationTrackerI18n>DisruptionsTools}"/>
+									<Label text="{StationTrackerI18n>DisruptionFTE}"/>
+									<Label text="{StationTrackerI18n>DisruptionOther}"/>
 								</VBox>
-								<VBox alignItems="Center" width="20%" justifyContent="SpaceAround" class="classOpenDisruptionDisruption">
+								<VBox alignItems="Center" width="20%" justifyContent="SpaceAround" class="openDisruptionValues kpiName">
 									<Label text="{StationTrackerI18n>Disruption}" class="whiteText" />
 									<Label text="{KPIdisruption>/disruptionNCUI}"
 										class=" whiteText" />
@@ -233,7 +236,7 @@
 									<Label text="{KPIdisruption>/disruptionOtherUI}"
 										class=" whiteText" />
 								</VBox>
-								<VBox alignItems="Center" width="15%" justifyContent="SpaceAround" class="classOpenDisruptionAndon">
+								<VBox alignItems="Center" width="15%" justifyContent="SpaceAround" class="openDisruptionAndon kpiName">
 									<Label text="{StationTrackerI18n>Andon}" class="redText kpiErrorValue" />
 									<Label text="{KPIdisruption>/andonNCUI}"
 										class=" redText kpiErrorValue" />
@@ -243,8 +246,8 @@
 										class=" redText kpiErrorValue" />
 									<Label text="{KPIdisruption>/andonMissingFTEUI}"
 										class="redText kpiErrorValue" />
-											<Label text="{KPIdisruption>/andonOtherUI}"
-										class="redText kpiErrorValue" />
+									<Label text="{KPIdisruption>/andonOtherUI}"
+										class="redText kpiErrorValu" />
 								</VBox>
 							</HBox>
 						</VBox>
@@ -252,24 +255,24 @@
 						<VBox id="boxResolutionEfficiency" width="11%" alignItems="Center"
 							class="contentHeaderCont kpiBoxes">
 							<Label text="{StationTrackerI18n>ResolutionEfficiency}"
-								design="Bold" class="whiteTextHeader" />
-							<VBox class="efficiencyChartContainer" width="100%">
+								class="whiteTextHeader" />
+							<VBox class="marginTopKpiBody" width="100%">
 								<micro:ComparisonMicroChart size="L"
 									id="boxResolutionEfficiecy_chart"
 									width="100%" colorPalette="#84bd00,#fe5000,#fe5000,#0F2D65" class="kpiBody">
 									<micro:data>
 										<micro:ComparisonMicroChartData
-											title="{StationTrackerI18n>PromisedInTakt}"
+											title="{StationTrackerI18n>PromisedInTakt}" 
 											value="{path:'KPIresolutionEfficiency>/promisedInTaktUI', formatter:'airbus.mes.stationtracker.util.Formatter.stringToInt'}"
 											displayValue="{KPIresolutionEfficiency>/promisedInTaktUI}"/>
 										<micro:ComparisonMicroChartData
 											title="{StationTrackerI18n>PromisedOutTakt}"
 											value="{path:'KPIresolutionEfficiency>/promisedOutOfTaktUI', formatter:'airbus.mes.stationtracker.util.Formatter.stringToInt'}"
 											displayValue="{KPIresolutionEfficiency>/promisedOutOfTaktUI}"/>
-										<micro:ComparisonMicroChartData
-										title="{StationTrackerI18n>NotAcknowledged}"
-										value="{path:'KPIresolutionEfficiency>/notAcknowledgedUI', formatter:'airbus.mes.stationtracker.util.Formatter.stringToInt'}"
-										displayValue="{KPIresolutionEfficiency>/notAcknowledgedUI}"/>
+										<micro:ComparisonMicroChartData	
+											title="{StationTrackerI18n>NotAcknowledged}"
+											value="{path:'KPIresolutionEfficiency>/notAcknowledgedUI', formatter:'airbus.mes.stationtracker.util.Formatter.stringToInt'}"
+											displayValue="{KPIresolutionEfficiency>/notAcknowledgedUI}"/>
 										<micro:ComparisonMicroChartData
 											id="hiddenRefBarResolution"
 											title="{StationTrackerI18n>RedSpaces}"
@@ -281,7 +284,7 @@
 						</VBox>
 
 						<VBox id="boxExtraWork" wrap="Wrap" width="6%" class="contentHeaderCont kpiBoxes kpiBoxExtraWork">
-							<Label text="{StationTrackerI18n>ExtraWork}" design="Bold"
+							<Label text="{StationTrackerI18n>ExtraWork}"
 								width="100%" class="whiteTextHeader " />
 							<Label text="{StationTrackerI18n>Operations}" width="100%"
 								class="kpiName" />
@@ -296,7 +299,7 @@
 						<VBox id="boxShiftStaffing" wrap="Wrap" width="10%"
 							alignItems="Center" class="contentHeaderCont kpiBoxes">
 							<Label text="{StationTrackerI18n>ShiftSTAFFING}" size="L"
-								design="Bold" width="100%" class="whiteTextHeader" />
+								width="100%" class="whiteTextHeader" />
 							<VBox width="100%" justifyContent="SpaceAround">
 								<micro:DeltaMicroChart width="100%"
 									id="shifStaffingHeader" isResponsive="true"
@@ -381,7 +384,3 @@
 		</content>
 	</Page>
 </core:View>
-
-
-
-
