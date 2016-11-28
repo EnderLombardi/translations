@@ -128,6 +128,13 @@ STATION TRACKER
     margin-right: 10px;
     color: #0F5F78;
 }
+%faChevronRight{
+    position: absolute;
+    right: 0;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: #0F5F78;
+}
 %timeSpanWidth{
     width: 3px !important;
 }
@@ -191,4 +198,64 @@ STATION TRACKER
     border: solid 2px #BBBCBC;
     background-color: #F5F5F5;
     overflow: hidden;
+}
+%sapMsegStationTracker{
+    height: 3rem;
+    border: none;
+    border-right: 1px solid #8db9ca;
+    background-color: transparent;
+    color: #0D5D76;
+    text-transform: uppercase;
+    line-height: 3rem;
+}
+%comboBoxStyleStationTracker{
+    width: auto;
+    max-width: 100%;
+    background-color: transparent;
+    margin: 0 !important;
+    border-right: 1px solid #8db9ca;
+    height: 3rem;
+}
+%kpiPageHeader{
+    -webkit-box-shadow: 0px 2px 15px -5px #0F2D65;
+    -moz-box-shadow: 0px 2px 15px -5px #0F2D65;
+    box-shadow: 0px 2px 15px -5px #0F2D65;
+    border: none;
+    border-top: 0.6rem solid #ffffff;
+    position: relative;
+    z-index: 10;
+}
+%tooltip{
+    visibility: hidden;
+    position: absolute;
+    width: 120px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    z-index: 1;
+    bottom: 115%;
+    left: 50%;
+    margin-left: -60px;
+}
+%dhx_scell_expand{
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+%rond{
+    color: white;
+    display: inline-table;
+    width: 20px !important;
+    height: 20px !important;
+    background: #3498db;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    -o-border-radius: 100px;
+    border-radius: 100px;
+    float: left !important;
 }

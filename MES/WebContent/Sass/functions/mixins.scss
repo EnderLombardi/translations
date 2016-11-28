@@ -9,3 +9,19 @@ STATIONTRACKER
     stroke: $stroke;
     stroke-width: $width;
 }
+@mixin background($color){
+    background-color: $color;
+}
+@mixin font($family, $weight : 400, $size : medium){
+    font-family: $family;
+    font-weight: $weight;
+    font-size: $size;
+}
+@mixin trackerSolvedBlock($background, $height: inherit, $width: 100%){
+    height: $height;
+    width: $width;
+    background: $background;
+}
+@mixin gradient($background){
+    background: $background;
+}
