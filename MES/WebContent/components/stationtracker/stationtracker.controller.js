@@ -9,10 +9,13 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	 * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
 	 * @memberOf components.stationtracker.stationtracker
 	 */
-		onInit: function() {		
-			
-		
-		
+		onInit: function() {
+			// show the refresh button
+			airbus.mes.shell.oView.byId('refreshTime').setVisible(true);
+			// if the page is not busy
+			if (airbus.mes.shell.oView.byId('refreshTime').setBusyIndicatorDelay(0)){
+				airbus.mes.shell.oView.byId('refreshTime').setEnabled(true);
+			}
         },
 	/**
 	 * Similar to onBeforeRendering, but this hook is invoked before the controller's View is re-rendered
@@ -21,6 +24,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	 */
 		onBeforeRendering: function() {
 		},
+		
 	/**
 	 * Called when the View has been rendered (so its HTML is part of the document). Post-rendering manipulations of the HTML could be done here.
 	 * This hook is the same one that SAPUI5 controls get after being rendered.
@@ -50,6 +54,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		}
 
 	},
+	
 	/***************************************************************************
      * Open the production group Popover and display all the prodgroup selectable
      * 
@@ -65,7 +70,6 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			oView.addDependent(airbus.mes.stationtracker.productionGroupPopover);
 			
 			airbus.mes.stationtracker.productionGroupPopover.setModel(sap.ui.getCore().getModel("productionGroupModel"), "productionGroupModel");
-		
 		}
 
 		var temp = [];
@@ -90,6 +94,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			airbus.mes.stationtracker.productionGroupPopover.openBy(oButton);	
 		});		
 	},
+	
 	/***************************************************************************
      * Open the popover of Team it permit to go on team avaibility
      * polyPoly ressource pool
@@ -110,6 +115,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		this._oPopover.openBy(oEvent.getSource());
 
 	},
+	
 	/***************************************************************************
      * Display the scheduler in view mode "Shift" only on shift is represented
      * and the step of scheduler is set to 30min
@@ -141,6 +147,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		airbus.mes.stationtracker.oView.byId("selectShift").setEnabled(false);
 		airbus.mes.stationtracker.oView.byId("selectShift").fireChange(0);
 	},
+	
 	/***************************************************************************
       * Display the scheduler in view mode "Day" all shift of the day are represented
      * and the step of scheduler is set to 60min
@@ -168,6 +175,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		airbus.mes.stationtracker.oView.byId("selectShift").setEnabled(true);
 		airbus.mes.stationtracker.ModelManager.selectMyShift();
 	},
+	
 	/***************************************************************************
      * On initial pressed it load the model of initial operation re-compute the
      * hierarchy of operation and display in grey initial operation
@@ -191,6 +199,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			
 		}
 	},
+	
 	/***************************************************************************
      * Display a border blue on operation in gantt wich has the attribute CPP_CLUSTER
      * fullfil
@@ -282,6 +291,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 
 		});	
 	},
+	
 	/***************************************************************************
      * Open fragment of OSW and open dialog.
      * 
@@ -321,6 +331,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		});		
 		
 	},
+	
 	/***************************************************************************
      * Fire when the user close the popover of prodgroup
      * It Reload all the operation filtered by mii regarding prodgroup send
@@ -364,6 +375,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		airbus.mes.stationtracker.ModelManager.loadStationTracker("O");		
 		airbus.mes.stationtracker.ModelManager.loadStationTracker("R");		
 	},
+	
 	/***************************************************************************
      * Open the popover of Team it permit to go on team avaibility
      * polyPoly ressource pool
@@ -381,6 +393,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		airbus.mes.stationtracker.oView.getController().changeShift();
 		
 	},
+	
 	/***************************************************************************
      * Re compute the operation hierarchy regarding the boxing value selected
      * 
@@ -407,6 +420,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		oOperationPopover.setContentHeight("640px");
 		oNavCon.to(oReschedulePage);
 	},
+	
 	onPartialPress: function(oEvent) {
 		
 		var oNavCon = sap.ui.getCore().byId("operationPopover--navOperatorContainer");
@@ -416,6 +430,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		oOperationPopover.setContentHeight("400px");
 		oNavCon.to(oConfirmOperationPage);
 	},
+	
 	onTotalPress: function(oEvent) {
 		
 		var oNavCon = sap.ui.getCore().byId("operationPopover--navOperatorContainer");
@@ -424,8 +439,8 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		oOperationPopover.setContentWidth("455px");
 		oOperationPopover.setContentHeight("455px");
 		oNavCon.to(oConfirmOperationTotalPage);
-	
 	},
+	
 	onNavBack : function (oEvent) {
 		var oNavCon = sap.ui.getCore().byId("operationPopover--navOperatorContainer");
 		var oOperationPopover = sap.ui.getCore().byId("operationPopover--operationPopoverID");
@@ -433,15 +448,17 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		oOperationPopover.setContentWidth("770px");
 		oNavCon.back();
 	},
+	
 	onCloseWorklist: function (oEvent) {
 		//Close Popup
 		this.onCloseDialog(oEvent);
 	},
+	
 	onRescheduleConfirm : function(oEvent) {
 		//Close Popup
 		this.onCloseDialog(oEvent);
-		
 	},
+	
 	/**
 	 * Fire when the user click on Import of unplanned pop-up or OSW pop-up  
 	 *
@@ -469,6 +486,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		}
 		
 	},
+	
 	/***************************************************************************
      * Fire selected the prodGroup and import osw 
      * 
@@ -507,6 +525,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		airbus.mes.stationtracker.worklistPopover.close();
 		
 	},	
+	
 	/***************************************************************************
      * Fire when selected shift value in combobox it redisplay marker of shift 
      * in the gantt
@@ -561,9 +580,8 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			scheduler.updateView(airbus.mes.stationtracker.ShiftManager.ShiftSelected.StartDate);
 			airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftID);
 		}	
-		
-		
 	},
+	
 	/***************************************************************************
      * Re apply the sorter on the model of the worklist to group operation
      * in worklist popup
@@ -586,21 +604,14 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 				descending : false
 			}) ]
 		});
-		
 	},
-	
 
-/////////////////////////////////////////////////////////////////////////////////////////////////
 	/**
-     * Fire the sorter when picking a value in the combobox worklist 
-      * 
-      * @returns {sap.ui.model.Sorter}
-     */
+    * Fire the sorter when picking a value in the combobox worklist 
+    * 
+    * @returns {sap.ui.model.Sorter} */
      changeGrouping : function(oEvt) {
-           
-//    	 	not used
-//            var aModelToTest = airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").oData;
-         
+
            sap.ui.getCore().byId("myList").bindAggregation('items', {
                   path : "/Rowsets/Rowset/0/Row",
                   template : sap.ui.getCore().byId("sorterList"),
@@ -615,19 +626,18 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
            });
      },
 
-////////////////////////////
-
-/**
-     * Sort worklist according to business rule.
-     * 
-      * Rule in detail: the operations shall be grouped by WO. These WO groups
-     * shall be sorted using the start date/time of their box in the Gantt, then
-     * using the schedule start date/time and then numerical order, ascending
-     * order. Within one group of operations belonging to the same WO,
-     * operations shall be sorted by ascending operation number.
-     * 
-      * @param oWorkList
-     */
+	/**
+	 * Sort worklist according to business rule.
+	 * 
+	 * Rule in detail: the operations shall be grouped by WO.
+	 * These WO groups shall be sorted using the start date/time
+	 * of their box in the Gantt, then using the schedule start
+	 * date/time and then numerical order, ascending order.
+	 * Within one group of operations belonging to the same WO,
+	 * operations shall be sorted by ascending operation number.
+	 * 
+	 * @param oWorkList
+	 */
      sortWorkList : function(oWorkList) {
            var oWL2 = [];
            var oWOList = [];
@@ -700,7 +710,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 
 //////////////////////////////////////
 
-/**
+     /**
      * Returns a comparator function on the provided fields, in the provided
      * order of priority, to be used for example by an Array.sort() function.
      * 
