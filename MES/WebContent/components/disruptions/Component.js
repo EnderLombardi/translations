@@ -15,10 +15,6 @@ sap.ui.core.UIComponent.extend("airbus.mes.disruptions.Component", {
 
 });
 
-/**
- *
- *
- */
 airbus.mes.disruptions.Component.prototype.createContent = function() {
 	
 	if (airbus.mes.disruptions.oView === undefined) {

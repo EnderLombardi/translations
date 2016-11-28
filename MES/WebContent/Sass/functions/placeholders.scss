@@ -1,13 +1,43 @@
-/**********************************************************************************************************
-***********************************************************************************************************
-Here you can create you SASS default code bloc for css ! To call them just use @import where you want to and then use them with @extend.
+// Styles
+@import '../styles/colours';
+@import '../styles/buttons';
 
-placeholder example :
-%background{
-width: 100%
-font-family: Verdana;
-backrgound-color: black;
+%icon{
+    position: relative;
+    z-index: 1;
+    line-height: 23px;
+    color: $white-two;
+    overflow: hidden;
 }
-When you call @extend background your background will automaticly have a 100% with, a verdana font-family and black color.
-***********************************************************************************************************
-**********************************************************************************************************/
+%oswIcon{
+    position: relative;
+    z-index: 1;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 10px;
+    top: 5px;
+    color: rgba(0, 86, 112, 0.94);
+    overflow: hidden;
+}
+%trackerText{
+    padding-left: 10px;
+    position: relative;
+    z-index: 1;
+    float: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+%sapMPIText{
+    float: left;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: normal !important;
+    text-overflow: clip;
+    display: inline-block;
+    overflow: hidden;
+    height: 100%;
+    line-height: 1.2em;
+    color: $white-two;
+    font-size: 100%;
+    word-break: break-all;
+}

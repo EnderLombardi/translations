@@ -1,37 +1,47 @@
 /********************
 TABLE
 *********************/
-	.dhx_matrix_scell{
-	
-	&.folder {
-		max-width:199px;
-		.ylabelfolder {
-		padding: 0 30px;
-	    margin: 0;
-	    font-size: 12px;
-	    color: #0F5F78;
-	    font-weight: normal;
-	    box-sizing: border-box;
-	    width: 100%;
-	    display: inline-block;
-	    position: relative;
-	    overflow: hidden!important;
-	    text-overflow: ellipsis;
-	    white-space: nowrap;
-	    }
+    .dhx_matrix_scell{
+
+    &.folder {
+        max-width:199px;
+        .ylabelfolder {
+        padding: 0 30px;
+        margin: 0;
+        font-size: 12px;
+        color: #0F5F78;
+        font-weight: normal;
+        box-sizing: border-box;
+        width: 100%;
+        display: inline-block;
+        position: relative;
+        overflow: hidden!important;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        }
     }
 }
 
 /********************
 TOOLBAR
 *********************/
-	#mes .sapMPopover{	
-	.sapMBtnIcon {
-    color: $petrol;
+#mes .sapMPopover{
+        .sapMBtnIcon {
+        color: $petrol;
     }
 }
 
-
+.sapMPIText1{
+    @extend %sapMPIText;
+    padding-left: 8px;
+    margin-top: -2.2rem;
+    width: 98.9% !important;
+}
+.sapMPIText2{
+    @extend %sapMPIText;
+    margin-top: -1.1rem;
+    width: 100% !important;
+}
 
 
 
@@ -39,51 +49,51 @@ TOOLBAR
 WORK LIST POP OVER
 *********************/
 .classWorklistPopover {
-	.fa {
-	    position: relative;
-	    z-index: 1;
-	    line-height: 20px;
-		height:20px;
-	   	color: $white-two;
-	    overflow: hidden;
-	    &.rightIcon {
-	    	padding-left: 6px;
-		    padding-right: 6px;
-		    float: right;
-		    &.petrol {
-		    	color:$petrol;
-		    }
-		}
-		&.oswIcon2 {
-		    position: relative;
-		    z-index: 1;
-		    line-height: 20px;
-		    height: auto;
-		    padding-left: 5px;
-		    padding-right: 5px;
-		    border-radius: 10px;
-		    float: right;
-		    top: 0px;
-		    margin-left: 0px;
-		    margin-right: 0px;
-		    color: $petrol;
-		    overflow: hidden;
-		    background-color: $dandelion;
-		    & b {
-		    	font-family: arial;
-		    }
-		}
-	}
-	.sapMPIText3 {
-	    position: absolute;
-	    display: block;
-	    right: 0px;
-	    height: 20px;
-	    margin-right: 6px;
-	    top: 50%;
-	    margin-top: calc(-20px/2);
-	    width: auto;
-	}	
+    .fa {
+        position: relative;
+        z-index: 1;
+        line-height: 20px;
+        height:20px;
+           color: $white-two;
+        overflow: hidden;
+        &.rightIcon {
+            padding-left: 6px;
+            padding-right: 6px;
+            float: right;
+            &.petrol {
+                color:$petrol;
+            }
+        }
+        &.oswIcon2 {
+            position: relative;
+            z-index: 1;
+            line-height: 20px;
+            height: auto;
+            padding-left: 5px;
+            padding-right: 5px;
+            border-radius: 10px;
+            float: right;
+            top: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            color: $petrol;
+            overflow: hidden;
+            background-color: $dandelion;
+            & b {
+                font-family: arial;
+            }
+        }
+    }
+    .sapMPIText3 {
+        position: absolute;
+        display: block;
+        right: 0px;
+        height: 20px;
+        margin-right: 6px;
+        top: 50%;
+        margin-top: calc(-20px/2);
+        width: auto;
+    }
 }
 
 /********************
@@ -94,107 +104,114 @@ SCHEDULAR TASK STYLE
 BOX MANAGEMENT
 *********************/
 .trackerBox{
-	width:100%;
-	height:inherit;
-	position:absolute;
-	z-index: 1;
-	line-height: 23px;
-	left: 0px;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	.trackerText{
-		padding-left: 10px;
-		position: relative;
-		z-index: 1;
-		float: left;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		max-width:calc(100% - 70px);
-		white-space: nowrap;
-		color: white;
-		overflow: hidden;
-	}
-	.trackerTextBlock{
-		padding-left: 10px;
-		position: relative;
-		z-index: 1;
-		float: left;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		max-width:40%;
-		white-space: nowrap;
-		color: $petrol;
-	}
-	.colorProgress{
-	   	height: inherit;
-	   	position: absolute;
-	   	z-index: 0;
-	   	left: 0px;
-	   	overflow: hidden;
-	}
-	.openBlockedEscalated, .openBlocked{
-	   	height: inherit;
-		width:100%;
-		background-color:$dandelion;
-	}
-	.fa {
-	    position: relative;
-	    z-index: 1;
-	    line-height: 24px;
-		height:23px;
-	   	color: $white-two;
-	    overflow: hidden;
-	    &.rightIcon {
-		    padding-right: 6px;
-		    float: right;
-		    &.petrol {
-		    	color:$petrol;
-		    }
-		}
-		&.triangleIcon {
-		    padding-left: 6px;
-		    float: left;
-		}
-		&.oswIcon {
-		    position: relative;
-		    z-index: 1;
-		    line-height: 14px;
-		    height: auto;
-		    padding-left: 5px;
-		    padding-right: 5px;
-		    border-radius: 10px;
-		    float: left;
-		    top: 5px;
-		    margin-left: 6px;
-		    color: rgba(0, 86, 112, 0.94);
-		    overflow: hidden;
-		    background-color: $dandelion;
-		    & b {
-		    	font-family: arial;
-		    }
-		}
-	}
+    width:100%;
+    height:inherit;
+    position:absolute;
+    z-index: 1;
+    line-height: 23px;
+    left: 0px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    .trackerText{
+        @extend %trackerText;
+        max-width:calc(100% - 70px);
+        white-space: nowrap;
+        color: white;
+        overflow: hidden;
+    }
+    .trackerTextBlock{
+        @extend %trackerText;
+        max-width:40%;
+        white-space: nowrap;
+        color: $petrol;
+    }
+    .colorProgress{
+           height: inherit;
+           position: absolute;
+           z-index: 0;
+           left: 0px;
+           overflow: hidden;
+    }
+    .openBlockedEscalated, .openBlocked{
+           height: inherit;
+        width:100%;
+        background-color:$dandelion;
+    }
+    .fa {
+        @extend %icon;
+        height:23px;
+        &.rightIcon {
+            padding-right: 6px;
+            float: right;
+            &.petrol {
+                color:$petrol;
+            }
+        }
+        &.triangleIcon {
+            padding-left: 6px;
+            float: left;
+        }
+        &.oswIcon {
+            @extend %oswIcon;
+            line-height: 14px;
+            height: auto;
+            float: left;
+            margin-left: 6px;
+            background-color: $dandelion;
+            & b {
+                font-family: arial;
+            }
+        }
+    }
+
+    .dandelion {
+        color: $dandelion;
+    }
+    .dandelion-back {
+        background-color: $dandelion;
+    }
+    .teal-blue {
+        color: $teal-blue;
+    }
+    .petrol {
+        color: $petrol;
+    }
+    .petrol-back {
+        background-color: $petrol;
+    }
+    .cherry-red {
+        color: $cherry-red;
+    }
+    .cherry-red-back {
+        background-color: $cherry-red;
+    }
+    .dark-lime-green-back {
+        background-color: $dark-lime-green;
+    }
+    .teal-blue-back {
+        background-color: $teal-blue;
+    }
 
 }
 .trackerBox:hover{
-	.dark-lime-green-back{
-		background-color:$dark-lime-green-hover !important;
-	}
-	.teal-blue-back{
-		background-color:$teal-blue-hover !important;
-	}
-	.cherry-red-back{
-		background-color:$cherry-red-hover !important;
-	}
-	.openBlockedEscalated{
-		background-color:$dandelion-hover !important;
-	}
-	.openBlocked{
-		background-color:$dandelion-hover !important;
-	}
+    .dark-lime-green-back{
+        background-color:$dark-lime-green-hover !important;
+    }
+    .teal-blue-back{
+        background-color:$teal-blue-hover !important;
+    }
+    .cherry-red-back{
+        background-color:$cherry-red-hover !important;
+    }
+    .openBlockedEscalated{
+        background-color:$dandelion-hover !important;
+    }
+    .openBlocked{
+        background-color:$dandelion-hover !important;
+    }
 }
 
 .grey:hover{
-	background-color: $cool-grey-hover;
-	color: black;
+    background-color: $cool-grey-hover;
+    color: black;
 }

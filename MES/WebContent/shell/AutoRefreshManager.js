@@ -13,7 +13,7 @@ airbus.mes.shell.AutoRefreshManager =  {
 
 	refreshInterval: undefined,
 	refreshInterval2 : 5,
-	lastRefreshTime: undefined,
+	lastRefreshTime: 0,
 	pauseTime: undefined,
 	
 	remianinTimeRefresher: undefined,
@@ -24,6 +24,12 @@ airbus.mes.shell.AutoRefreshManager =  {
 	 * Set Refresh Interval based on configuration
 	 */
 	setInterval: function(viewName){
+		
+		if(!airbus.mes.settings.AppConfManager._getConfiguration("MES_REFRESH_ACTIVE")){
+			airbus.mes.shell.AutoRefreshManager.clearInterval();
+			return;
+		}
+		
 		
 		var station = airbus.mes.settings.ModelManager.station;
 		
@@ -112,6 +118,7 @@ airbus.mes.shell.AutoRefreshManager =  {
 	
 	clearInterval: function(){
 		clearInterval(airbus.mes.shell.AutoRefreshManager.autoRefresh);
+		airbus.mes.lastRefreshTime = 0;
 	},
 
 	pauseRefresh:function(){

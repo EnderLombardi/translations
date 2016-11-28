@@ -268,42 +268,54 @@ airbus.mes.stationtracker.ModelManager = {
 		});
 
 	},
+	/***************************************************************************
+     * Import OSw or UNplanned activities selected in gantt before importing it
+     * call the check QA and display it if operation are inserted and the user
+     * affected has no QA
+     * 
+     * @param {ARRAY} aItem, List of sfcStepBO selected
+     * @param {STRING} sProdgroups, Value of Prod group selected
+     * @param {STRING} sCheckQa Perform the CheckQA or not true/false
+     * @param {BOOLEAN} bOuStanding Permit to know if we import unplanned or Osw
+     ****************************************************************************/
 	setOSW : function(aItem,sProdgroups,sCheckQa,bOuStanding) {
+		//sCheckQa true dont do check Qa
+		//sCheckQa false do check Qa
 		//bOuStanding = true insert OSW
 		//bOuStanding = false insert unplanned
 		
-		
+		// This is done to kep dmi xml format Rowsets/Rowset/Row/ect..
 		var sXmlStart = '<?xml version="1.0" encoding="iso-8859-1"?><Rowsets><Rowset>';
 		var sXmlEnd =     '</Rowset></Rowsets>';
-		var sXml = sXmlStart + airbus.mes.stationtracker.util.Formatter.json2xml({
-			Row : {
-				sfcStepBO : aItem
-			}}) + sXmlEnd;
+		var sXmlByRow = "";
+		
+		aItem.forEach(function(el){			
+			sXmlByRow += airbus.mes.stationtracker.util.Formatter.json2xml({Row : {
+				sfcStepBO : [el]
+			},})
+		})
+		
+		var sXml = sXmlStart + sXmlByRow + sXmlEnd;
 			
 		var oData = airbus.mes.stationtracker.ModelManager.settings;
 		var geturlsetosw = this.urlModel.getProperty('urlsetosw');
+		var dDateShift = airbus.mes.stationtracker.ShiftManager.shifts[airbus.mes.stationtracker.ShiftManager.closestShift(new Date())].StartDate;
+		var sDateShift = airbus.mes.stationtracker.util.Formatter.dDate2sDate(dDateShift);
 		
-		
+		geturlsetosw = airbus.mes.stationtracker.ModelManager.replaceURI(geturlsetosw, "$site", oData.site);
+		geturlsetosw = airbus.mes.stationtracker.ModelManager.replaceURI(geturlsetosw, "$sCheckQa", sCheckQa);
+		geturlsetosw = airbus.mes.stationtracker.ModelManager.replaceURI(geturlsetosw, "$bOuStanding", bOuStanding);
+		geturlsetosw = airbus.mes.stationtracker.ModelManager.replaceURI(geturlsetosw, "$sProdgroups", sProdgroups);
 		geturlsetosw = airbus.mes.stationtracker.ModelManager.replaceURI(geturlsetosw, "$station", oData.station);
 		geturlsetosw = airbus.mes.stationtracker.ModelManager.replaceURI(geturlsetosw, "$msn", oData.msn);
-	
+		geturlsetosw = airbus.mes.stationtracker.ModelManager.replaceURI(geturlsetosw, "$sDateShift", sDateShift);
+		geturlsetosw = airbus.mes.stationtracker.ModelManager.replaceURI(geturlsetosw, "$sXml", sXml);
 		
-		jQuery.ajax({
-			type : 'post',
+		$.ajax({
+			async : false,
 			url : geturlsetosw,
 			contentType : 'application/json',
-			data : JSON.stringify({
-				"Param.1" : oData.site,
-				"Param.2" : sCheckQa,
-				"Param.3" : bOuStanding,
-				"Param.4" : oData.sProdgroup,
-				"Param.5" : oData.station,
-				"Param.6" : oData.msn,
-				"Param.7" : oData.messageHandl,
-				"Param.8" : oData.msn,
-				"Param.9" : sXml,
-				}),
-				
+		
 				success : function(data, textStatus, jqXHR) {
 					// Handle Local url_config
 					if (typeof data == "string") {
@@ -311,27 +323,29 @@ airbus.mes.stationtracker.ModelManager = {
 					}
 					if (airbus.mes.shell.util.Formatter.getMiiMessageType(data) == "E") {
 						sap.m.MessageToast.show(airbus.mes.shell.util.Formatter.getMiiTextFromData(data));
+						console.log("no import done");
 					} else if ( data.Rowsets.Rowset != undefined ) {
 						if (data.Rowsets.Rowset[0].Row[0].message == "W") {
 							var checkQAModel = new sap.ui.model.json.JSONModel();
 							checkQAModel.setData(data.Rowsets.Rowset[1]);
+							//Permit to display button ok and cancel
+							airbus.mes.stationtracker.AssignmentManager.checkQA = true;
 							airbus.mes.stationtracker.oView.getController().openCheckQAPopup(checkQAModel);
 						} else if (data.Rowsets.Rowset[0].Row[0].message == "S") {
 							airbus.mes.shell.oView.getController().renderStationTracker();
+							airbus.mes.stationtracker.dialogProdGroup.close();
+							airbus.mes.stationtracker.ImportOswUnplannedPopover.close();
 						}
 					} else {
 						
 						airbus.mes.shell.oView.getController().renderStationTracker();
-						airbus.mes.stationtracker.oPopoverPolypoly.close();
+						airbus.mes.stationtracker.dialogProdGroup.close();
+						airbus.mes.stationtracker.ImportOswUnplannedPopover.close();
 					}
 				},
 			});
 
-		console.log(sXmlStart +airbus.mes.stationtracker.util.Formatter.json2xml({
-			Row : {
-				sfcStepBO : aItem
-			}
-		}) + sXmlEnd );
+		console.log(sXml);
 
 	},
 
@@ -722,37 +736,66 @@ airbus.mes.stationtracker.ModelManager = {
 	replaceURI : function(sURI, sFrom, sTo) {
 		return sURI.replace(sFrom, encodeURIComponent(sTo));
 	},
-	getUrlReschedulingService : function() {
+	
+	sendRescheduleRequest : function(bCheckQa,oFinal,oInitial) {
+		
 		// get Url of the service
-		var urlReschedulingService = this.urlModel
-				.getProperty("urlReschedulingService");
-		// Set input parameter for the service
-		// TODO : the service is not yet defined
-		urlReschedulingService = airbus.mes.stationtracker.ModelManager.settings
-				.replaceURI(urlSaveUserSetting, "$user",
-						airbus.mes.stationtracker.ModelManager.settings.user);
-		return urlReschedulingService;
-	},
-	sendRescheduleRequest : function(oEvent) {
-		jQuery.ajax({
-			url : airbus.mes.stationtracker.ModelManager
-					.getUrlReschedulingService(),
-			error : function(xhr, status, error) {
-				airbus.mes.stationtracker.ModelManager.settings
-						.messageShow("Couldn't Save Changes");
-				that.navigate(oEvent);
-				// window.location.pathname =
-				// "/MES/WebContent/components/stationtracker/index.html";
-			},
-			success : function(result, status, xhr) {
-				// window.location.href = url;
-				airbus.mes.stationtracker.ModelManager.settings
-						.messageShow("Settings Saved Successfully");
-				that.navigate(oEvent);
-				// window.location.pathname =
-				// "/MES/WebContent/components/stationtracker/index.html";
+		var urlReschedulingService = this.urlModel.getProperty("urlReschedulingService");
+		var oData = airbus.mes.stationtracker.ModelManager.settings;
 
-			}
+//		geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$station", oData.station);
+//		geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$plant", oData.site);
+//			
+//		urlReschedulingService = airbus.mes.stationtracker.ModelManager.settings.replaceURI(urlSaveUserSetting, "$site", oData.site);
+//		urlReschedulingService = airbus.mes.stationtracker.ModelManager.settings.replaceURI(urlSaveUserSetting, "$sCheckkQa", sCheckkQa);
+//		urlReschedulingService = airbus.mes.stationtracker.ModelManager.settings.replaceURI(urlSaveUserSetting, "$prodGroup", oData.prodGroup);
+//		urlReschedulingService = airbus.mes.stationtracker.ModelManager.settings.replaceURI(urlSaveUserSetting, "$station", oData.station);
+//		urlReschedulingService = airbus.mes.stationtracker.ModelManager.settings.replaceURI(urlSaveUserSetting, "$msn", oData.msn);
+//		urlReschedulingService = airbus.mes.stationtracker.ModelManager.settings.replaceURI(urlSaveUserSetting, "$user", oNew.startDate);
+	
+		jQuery.ajax({
+			async : false ,
+			url : urlReschedulingService,
+			data : {
+				"Param.1" : oData.site,
+				"Param.2" : bCheckQa,
+				"Param.3" : oData.prodGroup,
+				"Param.4" : oData.station,
+				"Param.5" : oData.msn, 
+				"Param.6" : airbus.mes.stationtracker.util.Formatter.dDate2sDate(oFinal.start_date),
+				"Param.7" : oInitial.sSfcStep,
+				"Param.8" : oFinal.section_id.split("_")[1],
+				"Param.9" : oFinal.section_id.split("_")[2],
+				"Param.10" : oInitial.avlLine,
+				"Param.11" : oInitial.skill,
+
+			},
+			
+			success : function(data, textStatus, jqXHR) {
+				// Handle Local url_config
+				if (typeof data == "string") {
+					data = JSON.parse(data);
+				}
+				if (airbus.mes.shell.util.Formatter.getMiiMessageType(data) == "E") {
+					sap.m.MessageToast.show(airbus.mes.shell.util.Formatter.getMiiTextFromData(data));
+				} else if ( data.Rowsets.Rowset != undefined ) {
+					if (data.Rowsets.Rowset[0].Row[0].message == "W") {
+						var checkQAModel = new sap.ui.model.json.JSONModel();
+						checkQAModel.setData(data.Rowsets.Rowset[1]);
+						//Permit to display button ok and cancel
+						airbus.mes.stationtracker.AssignmentManager.checkQA = true;
+						airbus.mes.stationtracker.oView.getController().openCheckQAPopup(checkQAModel);
+					} else if (data.Rowsets.Rowset[0].Row[0].message == "S") {
+						airbus.mes.shell.oView.getController().renderStationTracker();
+					}
+				} else {
+					
+					airbus.mes.shell.oView.getController().renderStationTracker();
+					airbus.mes.stationtracker.dialogProdGroup.close();
+					airbus.mes.stationtracker.ImportOswUnplannedPopover.close();
+				}
+			},
+	
 		});
 	},
 

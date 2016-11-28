@@ -915,9 +915,8 @@ sap.ui
 							this.getView()
 									.getModel("operationDisruptionsModel")
 									.getProperty(sPath).EscalationLevel = parseInt(this
-									.getView().getModel(
-											"operationDisruptionsModel")
-									.getProperty(sPath).EscalationLevel) + 1;
+									.getView().getModel("operationDisruptionsModel")
+									.getProperty(sPath).EscalationLevel,10) + 1;
 
 							this.getView()
 									.getModel("operationDisruptionsModel")

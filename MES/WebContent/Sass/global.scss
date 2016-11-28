@@ -1,10 +1,12 @@
+// Functions
+@import 'functions/mixins.scss';
+@import 'functions/placeholders.scss';
 
-// Styles 
-
+// Styles
 @import 'styles/colours';
 @import 'styles/buttons';
 
-// ============== Components =============== 
+// ============== Components ===============
 
 /* WORK TRACKER / STATION TRACKER */
 @import 'components/stationtracker';
@@ -12,4 +14,4 @@
 
 #mes .sapMPI{
     margin: 1.25rem 0;
-} 
+}

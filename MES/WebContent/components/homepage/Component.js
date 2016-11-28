@@ -1,7 +1,18 @@
-"use strict";
+/**
+ * @fileOverview Define the homepage component.
+ * @module homepage.Component
+ * @version 1.0.0
+ */
+
+"use strict"; //ESLint
 
 jQuery.sap.require("sap.ui.core.UIComponent");
 
+
+/**
+ * @extends sap.ui.core.UIComponent
+ * @memberOf sap.ui.core.UIComponent
+ */
 sap.ui.core.UIComponent.extend("airbus.mes.homepage.Component", {
 	metadata : {
 		properties : {},
@@ -11,10 +22,14 @@ sap.ui.core.UIComponent.extend("airbus.mes.homepage.Component", {
 	//manifestUrl : "component.json",
 });
 
+/**
+ * Create the view corresponding to the homepage component
+ * @returns {sap.ui.view} view of the homepage component
+ */
 airbus.mes.homepage.Component.prototype.createContent = function() {
 
+	//get tiles of the homepage view
 	var oModel1 = new sap.ui.model.json.JSONModel();	
-	
 	oModel1.loadData("../components/homepage/data/1TileLineHome.json", null, false);
 	
 	if (airbus.mes.homepage.oView === undefined) {

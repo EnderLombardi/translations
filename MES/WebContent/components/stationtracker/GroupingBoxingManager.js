@@ -391,7 +391,8 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 //					var sRoutingMaturityAssessment = ""; not used
 					var fCriticalPath = 0;		
 					var sStatus = "";
-					var sShopOrder;
+					var sShopOrder = "";
+					var sSfcStep = "";
 										
 					oModel[key][key1][key2].forEach( function( el ) { 
 						
@@ -415,6 +416,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 						fCriticalPath = el.CRITICAL_PATH;
 						sOperationDescription = el.sBox;
 						sStatus = el.STATE;
+						sSfcStep = el.SFC_STEP_REF;
 						
 						if ( sBox === oGroupingBoxingManager.specialGroup) {
 							
@@ -435,6 +437,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 					if (  key1.slice(0,2) === "I_" ) {
 						var oOperationInitial = {
 								
+								"sSfcStep" : sSfcStep,
 								"operationId" : sOperationId,
 								"operationDescription" : sOperationDescription,
 								"shopOrder" : sShopOrder,
@@ -459,7 +462,8 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 					} else {
 					
 						var oOperationRescheduling = {
-							
+								
+							"sSfcStep" : sSfcStep,
 							"operationId" : sOperationId,
 							"operationDescription" : sOperationDescription,
 							"shopOrder" : sShopOrder,

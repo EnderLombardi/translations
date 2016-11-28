@@ -1,15 +1,8 @@
-/**********************************************************************************************************
-***********************************************************************************************************
-Here you can create you SASS default code bloc for css ! To call them just use @import where you want to and then use them with @extend.
-
-placeholder example :
-%background{
-width: 100%
-font-family: Verdana;
-backrgound-color: black;
-}
-When you call @extend background your background will automaticly have a 100% with, a verdana font-family and black color.
-***********************************************************************************************************
-**********************************************************************************************************/
+#mes .sapMToggleBtnPressed {
+  background-image: none;
+  background-color: transparent;
+  border-color: transparent;
+  color: transparent;
+  text-shadow: none; }
 
 /*# sourceMappingURL=placeholders.css.map */

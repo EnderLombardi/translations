@@ -496,8 +496,7 @@ sap.ui
 					onSelectAllWC : function(oEvent) {
 
 						var flag = oEvent.getSource().getSelected();
-						var oList = oEvent.getSource().getParent().getParent()
-								.getContent()[0];
+						//var oList = oEvent.getSource().getParent().getParent().getContent()[0];
 
 						switch (oEvent.getSource().getId()) {
 
@@ -529,8 +528,7 @@ sap.ui
 					onSelectAllUsers : function(oEvent) {
 
 						var flag = oEvent.getSource().getSelected();
-						var oList = oEvent.getSource().getParent().getParent()
-								.getContent()[0];
+						//var oList = oEvent.getSource().getParent().getParent().getContent()[0];
 
 						switch (oEvent.getSource().getId()) {
 						/* for Available Users List */
@@ -1200,9 +1198,7 @@ sap.ui
 						 * if 1 is returned, means resource pool does not
 						 * exists, create new one by calling createResource()
 						 */
-						else if (anyError == 1)
-							var error = airbus.mes.resourcepool.util.ModelManager
-									.createResource(resourcePool, description);
+						else if (anyError == 1) var error = airbus.mes.resourcepool.util.ModelManager.createResource(resourcePool, description);
 						/* if creation is successful return 0 */
 						if (error == 0)
 							return 0;
@@ -1437,8 +1433,7 @@ sap.ui
 						 * call updateResource() method from
 						 * airbus.mes.resourcepool.util.ModelManager.
 						 */
-						var anyError = airbus.mes.resourcepool.util.ModelManager
-								.updateResource();
+						//var anyError = airbus.mes.resourcepool.util.ModelManager.updateResource();
 
 					},
 
