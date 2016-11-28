@@ -38,6 +38,8 @@ airbus.mes.stationtracker.ModelManager = {
               core.setModel(new sap.ui.model.json.JSONModel(), "KPItaktEfficiency"); // KPI Shift Staffing
               core.setModel(new sap.ui.model.json.JSONModel(), "KPIresolutionEfficiency"); // KPI Resolution Staffing
               core.setModel(new sap.ui.model.json.JSONModel(), "KPIdisruption"); // KPI Resolution Staffing
+              core.setModel(new sap.ui.model.json.JSONModel(), "KPIchartTaktAdherence"); // KPI Resolution Staffing
+
 
            this.settings = airbus.mes.settings.ModelManager;
 
@@ -458,6 +460,7 @@ airbus.mes.stationtracker.ModelManager = {
 		this.loadKPItaktEfficiency();
 		this.loadKPIresolutionEfficiency();
 		this.loadKPIdisruption();
+		this.loadKPIchartTaktAdherence();
 
 	},
 	loadKPIextraWork : function() {
@@ -631,6 +634,35 @@ airbus.mes.stationtracker.ModelManager = {
 			error : function(error, jQXHR) {
 				console.log(error);
 				airbus.mes.stationtracker.oView.byId("boxOpenDisruptions").setBusy(false);
+
+			}
+		});
+	},
+	
+	loadKPIchartTaktAdherence : function() {
+		var oViewModel = sap.ui.getCore().getModel("KPIchartTaktAdherence");
+		airbus.mes.stationtracker.oView.byId("chartId").setBusy(true);
+		jQuery.ajax({
+			type : 'post',
+			url : this.urlModel.getProperty("urlKPIchartTaktAdherence"),
+			contentType : 'application/json',
+			data : JSON.stringify({
+				"site" : airbus.mes.settings.ModelManager.site,
+				"station" : airbus.mes.settings.ModelManager.station,
+				"msn" : airbus.mes.settings.ModelManager.msn
+			}),
+
+			success : function(data) {
+				if(typeof data == "string"){
+					data = JSON.parse(data);
+				}
+				oViewModel.setData(data);
+				airbus.mes.stationtracker.oView.byId("chartId").setBusy(false);
+			},
+
+			error : function(error, jQXHR) {
+				console.log(error);
+				airbus.mes.stationtracker.oView.byId("chartId").setBusy(false);
 
 			}
 		});

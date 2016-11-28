@@ -29,39 +29,44 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.TaktAdherenceAreaChart", {
 
 	onAfterRendering: function onAfterRendering(oEvt){
 
-		function make_y_axis() {
+		function makeYaxis() {
 			return d3.svg.axis()
 				.scale(y)
 				.orient("left")
 				.ticks(8);
 		}
 		
-//		function bindingToArray(c) {
-//			return {x : c.getX(), y : c.getY()}
-//		}
-//		
-//		var oCtrl = oEvt.srcControl; 
-//		var data = oCtrl.getData().map(bindingToArray);
-//		var realData = oCtrl.getRealData().map(bindingToArray);
+		function bindingToArray(c) {
+			return {x : c.getX(), y : c.getY()}
+		}
 		
-		var data = [
-			{ x: 0, y: 5, },
-			{ x: 1, y: 15, },
-			{ x: 2, y: 20, },
-			{ x: 3, y: 35, },
-			{ x: 4, y: 40, },
-		];
-
-		var realData = [
-			{ x: 0, y: 0, },
-			{ x: 1, y: 20, },
-			{ x: 2, y: 20, },
-			{ x: 3, y: 25, },
-		];
-		var estimateData = [
-			{ x: 2, y: 20, },
-			{ x: 3, y: 25, },
-		];
+		var oCtrl = oEvt.srcControl; 
+		var data = oCtrl.getData().map(bindingToArray);
+		var realData = oCtrl.getRealData().map(bindingToArray);
+		
+		if(data.length == 0){
+			data=[{x:0, y:0}, {x:0, y:0}];
+			realData=[{x:0, y:0}, {x:0, y:0}];
+		}
+		
+//		var data = [
+//			{ x: 0, y: 5, },
+//			{ x: 1, y: 15, },
+//			{ x: 2, y: 20, },
+//			{ x: 3, y: 35, },
+//			{ x: 4, y: 40, },
+//		];
+//
+//		var realData = [
+//			{ x: 0, y: 0, },
+//			{ x: 1, y: 20, },
+//			{ x: 2, y: 20, },
+//			{ x: 3, y: 25, },
+//		];
+//		var estimateData = [
+//			{ x: 2, y: 20, },
+//			{ x: 3, y: 25, },
+//		];
 
 		var parent = $("#stationTrackerView--chartId");
 		var chart = $("#stationTrackerView--takt_adherence_area_chart"),
@@ -138,7 +143,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.TaktAdherenceAreaChart", {
 		//add y grid
 		svg.append("g")
 			.attr("class", "ygrid")
-			.call(make_y_axis()
+			.call(makeYaxis()
 			.tickSize(-width, 0, 0)
 			.tickFormat("")
 			);
