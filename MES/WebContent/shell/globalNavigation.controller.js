@@ -231,6 +231,7 @@ sap.ui
 
 					setInformationVisibility : function(bSet) {
 						this.getView().byId("informationButton").setVisible(bSet);
+						this.getView().byId('refreshTime').setVisible(bSet);
 						this.getView().byId("homeButton").setVisible(bSet);
 						this.getView().byId("SelectLanguage").setVisible(!bSet);
 					},

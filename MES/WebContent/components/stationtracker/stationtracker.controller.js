@@ -10,9 +10,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	 * @memberOf components.stationtracker.stationtracker
 	 */
 		onInit: function() {
-			// show the refresh button
-			airbus.mes.shell.oView.byId('refreshTime').setVisible(true);
-			// if the page is not busy
+			//if the page is not busy
 			if (airbus.mes.shell.oView.byId('refreshTime').setBusyIndicatorDelay(0)){
 				airbus.mes.shell.oView.byId('refreshTime').setEnabled(true);
 			}
@@ -858,10 +856,8 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			  return el.OPERATION_ID ===  sOperation_id &&
 					el.WORKORDER_ID === sWorkOrder_id;
 			}); 
-
 //		Call the operation list popup
 		airbus.mes.stationtracker.ModelManager.openOperationDetailPopup(aModel);
-		
 	},
 	
 	
