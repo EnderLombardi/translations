@@ -496,7 +496,9 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
 /***********************
 TASK ADHERENCE
 ************************/
-.classTaktAdherenceTrend{
+.taktAdherenceTrend{
+    height: 100%;
+    padding-right: 0 !important;
     &.sapUiRespGrid{
         &.sapUiRespGridHSpace1{
             &>div{
@@ -511,26 +513,28 @@ TASK ADHERENCE
     }
 }
 .classKpiHeaderContent{
-    .classTaktAdherenceTrend{
+    .taktAdherenceTrend{
         .TrendGree{
             margin-bottom: 0.5rem;
         }
         .TrendRed{
             margin-bottom: 0.5rem;
         }
-        .takt_kpi_name{
+        .taktKpiName{
             &.takt_kpi_trend{
                 font-size: 1vw;
             }
         }
     }
-    .takt_kpi_name{
+    .taktKpiName{
+        height: 25px;
         text-align: right !important;
         font-size: 0.85vw;
         vertical-align: middle;
         display: baseline;
     }
-    .takt_kpi_value{
+    .taktKpiValue{
+        height: 25px;
         display: inline-block;
         vertical-align: baseline;
     }
