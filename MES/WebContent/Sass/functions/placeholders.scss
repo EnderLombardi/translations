@@ -147,3 +147,48 @@ STATION TRACKER
     font-size: 14px;
     font-weight: bold;
 }
+%yHrLabel{
+    float: right;
+    margin-right: 5px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    text-align: right;
+    color: #8db9ca;
+    line-height: 25px;
+    max-width: 25%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+%ylabelUser {
+    max-width: 75px;
+    white-space: nowrap;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 25px;
+    font-size: 18px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    color: rgba(0, 86, 112, 0.94);
+}
+%tracker-item-initial{
+    color: #BBBCBC;
+    padding-left: 10px;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+    left: 0px;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    box-sizing: border-box;
+    text-overflow: ellipsis;
+    border: solid 2px #BBBCBC;
+    background-color: #F5F5F5;
+    overflow: hidden;
+}
