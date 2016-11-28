@@ -42,7 +42,6 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 	 */
 	filterByStation: function(oEvent){
 		airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.station = this.getView().byId("stationComboBox").getSelectedKey();  
-		
 		airbus.mes.disruptiontracker.ModelManager.loadDisruptionTrackerModel();
 	},
 	/*filterByResolutionGroup:function(oEvent){
@@ -57,18 +56,14 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		var sStatus = this.getView().byId("statusComboBox").getSelectedKey();
 		var sResoGroup = this.getView().byId("resolutionGroupBox").getSelectedKey();
 		var aFilters = [];
-
         var oBinding = this.byId("disruptionsTable").getBinding("items");
-        
 
 		if (sStatus != "")
 			aFilters.push(new sap.ui.model.Filter("Status","EQ", sStatus));
-
 		if (sResoGroup != "")
 			aFilters.push(new sap.ui.model.Filter("ResponsibleGroup", "EQ", sResoGroup));
             
 		oBinding.filter(aFilters);
-        
         airbus.mes.disruptiontracker.ModelManager.fixNoDataRow();// Remove last column
 	},
 	
@@ -77,14 +72,10 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 	 */	
 	onDisruptionTableSettings: function(oEvent){
 		if (!this.tableSettingsDialogue) {
-
 			this.tableSettingsDialogue = 
 				sap.ui.xmlfragment("airbus.mes.disruptiontracker.tableSettings", this);
-
 			this.getView().addDependent(this.tableSettingsDialogue);
-
 		}
-
 		this.tableSettingsDialogue.open();
 	},
 	
@@ -109,8 +100,6 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		 var sStation = this.getView().byId("stationComboBox").getSelectedKey();
 		// sap.ui.core.BusyIndicator.show(0);
 		 airbus.mes.shell.util.navFunctions.disruptionKPI(sStation);
-			
-		
 	//	airbus.mes.disruptiontracker.kpi.ModelManager.loadDisruptionKPIModel(sStation);
 		
 	},
@@ -118,7 +107,6 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 	onNavBack: function(oEvent){
 		nav.back();
 	},
-	
 
 	/*****************************************************
 	 * Open Operation Detail PopUp on table item click
@@ -129,12 +117,9 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		if (airbus.mes.disruptiontracker.detailPopUp === undefined) {
 
 		    airbus.mes.disruptiontracker.detailPopUp = sap.ui.xmlfragment("disruptionDetailPopup",
-		                 "airbus.mes.disruptiontracker.disruptionDetailPopup", airbus.mes.disruptiontracker.oView
-		                               .getController());
+		                 "airbus.mes.disruptiontracker.disruptionDetailPopup", airbus.mes.disruptiontracker.oView.getController());
 
 		    airbus.mes.disruptiontracker.oView.addDependent(airbus.mes.disruptiontracker.detailPopUp);
-
-
 		}
 		
 		//Add View Disruptions view to pop-up navigation container
@@ -151,14 +136,10 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 				   "Rowsets":{
 					      "Rowset":[
 					         {
-					            "Row":[
-					               oEvt.getSource().getBindingContext("disruptionsTrackerModel").getObject()
-					            ]
+					            "Row":[oEvt.getSource().getBindingContext("disruptionsTrackerModel").getObject()]
 					         },
 					         {
-								"Row" : [
-							               
-							            ]
+								"Row" : []
 					         }
 					      ]
 					   }
@@ -182,19 +163,16 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		sap.ui.getCore().byId("ViewDisruptionView").getContent()[0].getContent()[1].getItems()[0].getContent()[0].setExpandable(false);
 		
 		this.nav.to(airbus.mes.disruptions.oView.viewDisruption.getId());
-		
 
         // Pause the Refresh timer till the Pop-Up is opened
-        airbus.mes.shell.AutoRefreshManager.pauseRefresh();
-				
+        //airbus.mes.shell.AutoRefreshManager.pauseRefresh();
+		this.getView().byId('refreshTime').setVisible(false);		
 	},
-	
 	
 	/**************************************
 	 * Disruption Close Pop-Up Functions 
 	 */
 	onCloseDisruptnDetailPopUp: function(oEvt){
-		
 		airbus.mes.disruptiontracker.detailPopUp.close();
 	},
 	
@@ -203,7 +181,6 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		// Reset Expandable
 		sap.ui.getCore().byId("ViewDisruptionView").getContent()[0].getContent()[1].getItems()[0].getContent()[0].setExpandable(true);
 		
-
 		// Empty Model
 		airbus.mes.disruptions.oView.viewDisruption.getModel("operationDisruptionsModel").setData();
 		
@@ -211,7 +188,6 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 			airbus.mes.disruptiontracker.ModelManager.loadDisruptionTrackerModel();
 			airbus.mes.disruptiontracker.oView.getController().disruptionTrackerRefresh = false;
 		}
-
         // Resume the Refresh timer when the Pop-Up is opened
         airbus.mes.shell.AutoRefreshManager.resumeRefresh();
 	},
@@ -220,12 +196,8 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		
 		if(this.nav.getCurrentPage().sId == "createDisruptionView" ){
 			sap.ui.getCore().byId("disruptionDetailPopup--btnUpdateDisruption").setVisible(false);
-
-
 			sap.ui.getCore().byId("disruptionDetailPopup--btnCancelDisruption").setVisible(false);
 		}
-
-
 	},
 	
 	afterNavigate : function() {
@@ -233,8 +205,6 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		if(this.nav.getCurrentPage().sId == "createDisruptionView" ){
 			sap.ui.getCore().byId("disruptionDetailPopup--btnUpdateDisruption").setVisible(true);
 			sap.ui.getCore().byId("disruptionDetailPopup--btnCancelDisruption").setVisible(true);
-			
-			
 
 			/***************************************************
 			 * Load Disruption Custom Data
@@ -246,8 +216,5 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 				airbus.mes.disruptions.oView.createDisruption.oController.setDataForEditDisruption();
 			}
 		}
-
 	}
-	
-
 });
