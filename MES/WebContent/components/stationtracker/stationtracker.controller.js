@@ -453,6 +453,31 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	},
 	
 	onRescheduleConfirm : function(oEvent) {
+		
+		var dNewDate = sap.ui.getCore().byId("reschedulePage--datePicker").getDateValue();
+		var dNewDateSecond = sap.ui.getCore().byId("reschedulePage--hourPicker").getDateValue();
+		var sNewDate =  airbus.mes.stationtracker.util.Formatter.dDate2sDate(dNewDate);
+		var oModel = airbus.mes.stationtracker.ReschedulePopover.getModel("RescheduleModel").getData()[0]; 
+		var oInitial = {
+	    		"start_date" : oModel.start_date,
+	    		"skill" : oModel.avlLine.split("_")[1],
+	    		"avlLine" : oModel.avlLine.split("_")[0],
+	    		"sSfcStep" :  oModel.sSfcStep,
+	    		"ProdGroup" : oModel.ProdGroup,
+	    };
+		
+		var oFinal = {
+				"start_date" : sNewDate,
+	    		"skill" : oModel.avlLine.split("_")[1],
+	    		"avlLine" : oModel.avlLine.split("_")[0],
+	    		"sSfcStep" :  oModel.sSfcStep,
+	    		"ProdGroup" : oModel.ProdGroup,
+	    		};
+		
+		
+		
+		
+		airbus.mes.stationtracker.ModelManager.sendRescheduleRequest(false,oFinal,oInitial);
 		//Close Popup
 		this.onCloseDialog(oEvent);
 	},
@@ -971,9 +996,10 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	    	var oModel = airbus.mes.stationtracker;
 	    	airbus.mes.stationtracker.ModelManager.sendRescheduleRequest(true,oModel.oFinal,oModel.oInitial)     
 	    default:
+	    	airbus.mes.stationtracker.AssignmentManager.handleLineAssignment("S", true);
+			this.onCloseDialog(oEvent);
 		}
-		airbus.mes.stationtracker.AssignmentManager.handleLineAssignment("S", true);
-		this.onCloseDialog(oEvent);
+		
 	},
 	
 	openCheckQAPopup : function(oModel){

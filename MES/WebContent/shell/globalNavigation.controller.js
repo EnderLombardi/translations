@@ -110,7 +110,7 @@ sap.ui
 					
 					/**
 					 * Called when the Controller is destroyed. Use this one to
-					 * free resources and finalize activities.
+					 * free resources and finalize activities.?????
 					 * 
 					 * @memberOf components.globalnav.globalNavigation
 					 */
@@ -118,6 +118,10 @@ sap.ui
 						this.setInformationVisibility(false);
 						// Deactivate button on settings screen
 						sap.ui.getCore().byId("popupSettingsButton").setEnabled(false);
+<<<<<<< Upstream, based on origin/MESv0.9
+=======
+
+>>>>>>> 8d6317a [stationtracker] -plug rescheduling [oeprationDetail] - plug rescheduling
 						var textButtonTo = undefined;
 
 						switch (nav.getCurrentPage().getId()) {

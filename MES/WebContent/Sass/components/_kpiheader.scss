@@ -62,7 +62,7 @@ $kpi-box-extrawork-percent-height:42px;
 			max-height: $kpi-box-title-height;
 		}
 	}
-	> .sapMFlexItem:before {
+	> .sapMFlexItem:not(.taktAdherenceBox):before {
     	@extend %beforeCenteredElement;
 	}
 }
@@ -92,7 +92,7 @@ $kpi-box-extrawork-percent-height:42px;
 			vertical-align: middle !important;
 		}
 	}
-	.sapMFlexItem:nth-child(2) {
+	.sapMFlexItem:nth-child(2), .sapMFlexItem:nth-child(4) {
   		height: $kpi-box-extrawork-text-height;
 		.sapMLabel {
 			vertical-align: sub !important;
@@ -100,27 +100,13 @@ $kpi-box-extrawork-percent-height:42px;
 			font-size: 0.9vw;
 		}
 	}
-	.sapMFlexItem:nth-child(4) {
-  		height: $kpi-box-extrawork-text-height;
-		.sapMLabel {
-			vertical-align: sub !important;
-			max-height: $kpi-box-extrawork-text-height;
-			font-size: 0.9vw;
-		}
-	}.sapMFlexItem:nth-child(3) {
-		.sapMLabel {
-			vertical-align: top !important;
-  			max-height: $kpi-box-extrawork-percent-height;
-		}
-	}
-	.sapMFlexItem:nth-child(5) {
+	.sapMFlexItem:nth-child(3), .sapMFlexItem:nth-child(5) {
 		.sapMLabel {
 			vertical-align: top !important;
   			max-height: $kpi-box-extrawork-percent-height;
 		}
 	}
 }
-
 
 // kpi others
 .kpiBody {
@@ -209,14 +195,17 @@ $kpi-box-disruptions-total-numbers-height-bis: 44px;
 	.sapMFlexItem:nth-child(1) {
   		height: $kpi-box-disruptions-total-title-height;
 		.sapMLabel {
-			vertical-align: middle !important;
 			max-height: $kpi-box-disruptions-total-title-height;
 			font-size: 0.9vw;
 		}
 	}
 }
 
-// code from stationTracker.css
+.taktAdherenceTrendBox > .sapMFlexItem {
+	height: 100%;
+}
+
+// text classes
 .whiteText {
     text-align: center !important;
     color: $white-two;

@@ -48,7 +48,6 @@
 							width="32%" class="contentHeaderCont">
 
 							<HBox>
-
 								<VBox justifyContent="SpaceAround" width="50%" id="chartId">
 									<VBox>
 										<layout:Grid class="" defaultSpan="L6 M6 S12">
@@ -83,67 +82,60 @@
 										</layout:Grid>
 									</VBox>
 								</VBox>
-								<VBox id="boxTaktAdherenceRight" width="50%">
+								
+								<VBox id="boxTaktAdherenceRight" width="50%" class="kpiBoxes">
 									<Label text="{StationTrackerI18n>TaktAdherence}"
-										width="100%" class="whiteTextHeader sapUiSmallMarginTop" />
-									<VBox justifyContent="SpaceAround" height="100%">
-										<HBox class="sapUiSmallMarginBottom">
+										class="whiteTextHeader" />
+									<VBox justifyContent="SpaceAround" height="100%" class="taktAdherenceBox">
+										<HBox height="100%">
 											<VBox width="31%">
 												<Label text="{StationTrackerI18n>Adherence}" class=" whiteText" />
 												<Label
 													text="{KPItaktAdherence>/taktAdherenceUI}%"
 													class="sapUiSmallMarginTop kpiValue  whiteText" height="100%" />
-
 											</VBox>
-											<VBox width="69%">
-												<layout:Grid id="TaktAdherenceTrend" class="classTaktAdherenceTrend"
+											<VBox width="69%" class="taktAdherenceTrendBox">
+												<layout:Grid id="TaktAdherenceTrend" class="taktAdherenceTrend"
 													defaultSpan="L4 M4 S4">
 													<layout:content>
 														<Label text="{StationTrackerI18n>Trend}"
-															class=" whiteText takt_kpi_name takt_kpi_trend ">
+															class=" whiteText taktKpiName takt_kpi_trend">
 															<layoutData>
 																<layout:GridData span="L8 M8 S8" />
 															</layoutData>
 														</Label>
 														<core:Icon src="{path:'KPItaktAdherence>/trendUI', formatter:'airbus.mes.stationtracker.util.Formatter.KPIiconTrendSrc'}"
-															class="TrendGreen takt_kpi_value takt_kpi_trend_value" color="{path:'KPItaktAdherence>/trendUI', formatter:'airbus.mes.stationtracker.util.Formatter.KPIiconTrendColor'}"/>
+															class="TrendGreen taktKpiValue takt_kpi_trend_value" color="{path:'KPItaktAdherence>/trendUI', formatter:'airbus.mes.stationtracker.util.Formatter.KPIiconTrendColor'}"/>
 
-														<Label text="{StationTrackerI18n>DeltaVsSLB}" class="whiteText takt_kpi_name">
+														<Label text="{StationTrackerI18n>DeltaVsSLB}" class="whiteText taktKpiName">
 															<layoutData>
 																<layout:GridData span="L8 M8 S8" />
 															</layoutData>
 														</Label>
-														<Label
-															text="{KPItaktAdherence>/deltaVsSLBUI} Hrs"
-															class="whiteText takt_kpi_value" />
-
-														<Label text="{StationTrackerI18n>DeltaVsSoA}" class="whiteText takt_kpi_name">
+														<Label text="{KPItaktAdherence>/deltaVsSLBUI} Hrs"
+															class="whiteText taktKpiValue" />
+														<Label text="{StationTrackerI18n>DeltaVsSoA}" class="whiteText taktKpiName">
 															<layoutData>
 																<layout:GridData span="L8 M8 S8" />
 															</layoutData>
 														</Label>
-														<Label
-															text="{KPItaktAdherence>/deltaVsSoAUI} Hrs"
-															class="whiteText takt_kpi_value" />
-
-														<Label text="{StationTrackerI18n>CycleTime}" class="whiteText takt_kpi_name">
+														<Label text="{KPItaktAdherence>/deltaVsSoAUI} Hrs"
+															class="whiteText taktKpiValue" />
+														<Label text="{StationTrackerI18n>CycleTime}" class="whiteText taktKpiName">
 															<layoutData>
 																<layout:GridData span="L8 M8 S8" />
 															</layoutData>
 														</Label>
-														<Label
-															text="{KPItaktAdherence>/cycleTimeUI} Hrs"
-															class="whiteText takt_kpi_value" />
-
+														<Label text="{KPItaktAdherence>/cycleTimeUI} Hrs"
+															class="whiteText taktKpiValue" />
 														<Label text="{StationTrackerI18n>WorkCintent}"
-															class="whiteText takt_kpi_name">
+															class="whiteText taktKpiName">
 															<layoutData>
 																<layout:GridData span="L8 M8 S8" />
 															</layoutData>
 														</Label>
-														<Label
-															text="{KPItaktAdherence>/workContentUI} Hrs"
-															class="whiteText takt_kpi_value" />
+														<Label text="{KPItaktAdherence>/workContentUI} Hrs"
+															class="whiteText taktKpiValue" />
 													</layout:content>
 												</layout:Grid>
 											</VBox>

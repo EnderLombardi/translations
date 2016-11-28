@@ -144,6 +144,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 						    		"skill" : scheduler.getEvent(id).avlLine.split("_")[1],
 						    		"avlLine" : scheduler.getEvent(id).avlLine.split("_")[0],
 						    		"sSfcStep" :  scheduler.getEvent(id).sSfcStep,
+						    		"ProdGroup" : scheduler.getEvent(id).ProdGroup,
 						    }
 							
 							if (this.getEvent(id).type === "I" ) {
@@ -317,7 +318,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 							
 //							Set the bypass variable to true
 							this.byPassOnClick = true;
-							airbus.mes.stationtracker.ModelManager.OpenReschedule(id);
+							//airbus.mes.stationtracker.ModelManager.OpenReschedule(id);
 	
 							return false;
 
@@ -351,21 +352,16 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 							  this.byPassOnClick = false;
 						}));
 											
-								/************************************************************************/
-								/************************************************************************/
-								/**                                                                    **/
-								/**      DECLARTION OF ALL DHTMLX TEMPLATES (REF TO DHTMLX DOC)        **/							
-								/**                                                                    **/
-								/************************************************************************/
-								/************************************************************************/
+						/************************************************************************/
+						/************************************************************************/
+						/**                                                                    **/
+						/**      DECLARTION OF ALL DHTMLX TEMPLATES (REF TO DHTMLX DOC)        **/							
+						/**                                                                    **/
+						/************************************************************************/
+						/************************************************************************/
 								
-								
-					
-						
 						scheduler.templates.timeline_scale_label = function(key, label, section) {
-
 							return airbus.mes.stationtracker.util.Formatter.YdisplayRules(section);
-							
 						};
 
 						scheduler.templates.timeline_scaley_class = function(key, label, section) {
@@ -379,28 +375,20 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 						};
 
 						/* 	 Custom progress background display  */
-
 						scheduler.templates.event_class = function(start, end, event) {
 							return "grey";
 						};
 
-						
-
 						/* 	 Custom Hour display display  */
 						scheduler.templates.timeline_scalex_class = function(date){
-							
 						    return "customHour";
-						    
 						};
 						
 						scheduler.templates.event_bar_text = function(start, end, event) {
-
 							return airbus.mes.stationtracker.util.Formatter.BoxDisplay(event);
-					
 						};
 
 						/* custom initial */
-
 						scheduler.templates.timeline_cell_class = function(evs, date, section) {							
 							if (section.initial != undefined) {								
 								return "initial";
@@ -408,7 +396,6 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 							if (section.children != undefined) {
 								return "folderAxisColor";
 							}
-						};
-											
+						};					
 					},
 				});

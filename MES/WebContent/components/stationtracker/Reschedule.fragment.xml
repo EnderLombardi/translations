@@ -1,47 +1,32 @@
 <core:FragmentDefinition xmlns="sap.m"
 	xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout"
 	xmlns:u="sap.ui.unified">
-	<Dialog id="resourceDialog" title="{StationTrackerI18n>ReschedulePopupTitle}" horizontalScrolling="false"
-		    class="pageHeaderDialog classWorklistPopover">
+	<Page id="reschedulePage" showHeader="false" horizontalScrolling="false"
+		class="pageHeaderDialog classWorklistPopover">
 		<content>
-			<VBox>
-				<f:SimpleForm maxContainerCols="1" editable="false"
-					layout="ResponsiveGridLayout" labelSpanL="3" labelSpanM="4"
-					labelSpanS="6" emptySpanL="2" emptySpanM="2" emptySpanS="0"
-					columnsL="1" columnsM="1" columnsS="1" class="shrinkArea">
-					<f:content class="shrinkArea">
-						<Label class="topMargin" text="{StationTrackerI18n>ReschedulePopupReschStart}" />
-						<Text  class="topMargin" 
-							    text="{path : 'RescheduleModel>/0/START_TIME' , formatter : 'airbus.mes.stationtracker.util.Formatter.date2date' }" />
-						<Label class="topMargin" text="{StationTrackerI18n>ReschedulePopupReschEnd}" />
-						<Text class="topMargin"
-							text="{path : 'RescheduleModel>/0/END_TIME' , formatter : 'airbus.mes.stationtracker.util.Formatter.date2date' }" />
-					</f:content>
-				</f:SimpleForm>
-				<f:SimpleForm maxContainerCols="1" editable="false"
-					layout="ResponsiveGridLayout" labelSpanL="0" labelSpanM="0"
-					labelSpanS="0" emptySpanL="3" emptySpanM="0" emptySpanS="0"
-					columnsL="1" columnsM="1" columnsS="1" class="shrinkArea">
-					<f:content class="shrinkArea">
-						<u:Calendar id="DP1">
-							<u:selectedDates>
-								<u:DateRange  startDate="{path : 'RescheduleModel>/0/START_TIME' , formatter : 'airbus.mes.stationtracker.util.Formatter.date2jsDate' }"  
-										     endDate="{path : 'RescheduleModel>/0/START_TIME' , formatter : 'airbus.mes.stationtracker.util.Formatter.date2jsDate' }" />
-							</u:selectedDates>
-						</u:Calendar>
-					</f:content>
-				</f:SimpleForm>
-			</VBox>
+			<HBox>
+
+				<VBox>
+				
+					<Label  text="{i18nModel>Date}"></Label>
+					<DatePicker id="datePicker" valueFormat="yyyy-MM-dd"
+						displayFormat="long"
+						value="{path : 'RescheduleModel>/0/original_start_time' , formatter : 'airbus.mes.stationtracker.util.Formatter.date2jsDate' }">
+					</DatePicker>
+				</VBox>
+				<VBox>
+					
+					<Label  text="{i18nModel>Time}"></Label>
+					<TimePicker id="hourPicker" displayFormat="HH:mm:ss"
+						valueFormat="HH:mm:ss"></TimePicker>
+				</VBox>
+
+			</HBox>
 		</content>
-		<buttons>
-			<Button text="{StationTrackerI18n>ReschedulePopupConfirm}" type="Transparent" icon="sap-icon://forward"
-				class="sapUiTinyMarginBeginEnd pageHeaderDialog" press="onRescheduleConfirm"
-				>
-			</Button>
-			<Button text="{StationTrackerI18n>Close}" type="Transparent" icon="sap-icon://decline"
-				class="sapUiTinyMarginBeginEnd" press="onCloseDialog"
-			>
-			</Button>
-		</buttons>	
-	</Dialog>
+		<!-- <buttons> <Button text="{StationTrackerI18n>ReschedulePopupConfirm}" 
+			type="Transparent" icon="sap-icon://forward" class="sapUiTinyMarginBeginEnd 
+			pageHeaderDialog" press="onRescheduleConfirm" > </Button> <Button text="{StationTrackerI18n>Close}" 
+			type="Transparent" icon="sap-icon://decline" class="sapUiTinyMarginBeginEnd" 
+			press="onCloseDialog" > </Button> </buttons> -->
+	</Page>
 </core:FragmentDefinition>

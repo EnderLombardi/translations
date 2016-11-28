@@ -508,25 +508,30 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
 /***********************
 TASK ADHERENCE
 ************************/
-.classTaktAdherenceTrend.sapUiRespGrid.sapUiRespGridHSpace1 > div {
-  margin: 0 0.5rem 0 0;
-  line-height: 1rem; }
-.classTaktAdherenceTrend.sapUiRespGrid.sapUiRespGridHSpace1 > .sapUiRespGridSpanL4 {
-  margin: 0;
-  width: auto; }
+.taktAdherenceTrend {
+  height: 100%;
+  padding-right: 0 !important; }
+  .taktAdherenceTrend.sapUiRespGrid.sapUiRespGridHSpace1 > div {
+    margin: 0 0.5rem 0 0;
+    line-height: 1rem; }
+  .taktAdherenceTrend.sapUiRespGrid.sapUiRespGridHSpace1 > .sapUiRespGridSpanL4 {
+    margin: 0;
+    width: auto; }
 
-.classKpiHeaderContent .classTaktAdherenceTrend .TrendGree {
+.classKpiHeaderContent .taktAdherenceTrend .TrendGree {
   margin-bottom: 0.5rem; }
-.classKpiHeaderContent .classTaktAdherenceTrend .TrendRed {
+.classKpiHeaderContent .taktAdherenceTrend .TrendRed {
   margin-bottom: 0.5rem; }
-.classKpiHeaderContent .classTaktAdherenceTrend .takt_kpi_name.takt_kpi_trend {
+.classKpiHeaderContent .taktAdherenceTrend .taktKpiName.takt_kpi_trend {
   font-size: 1vw; }
-.classKpiHeaderContent .takt_kpi_name {
+.classKpiHeaderContent .taktKpiName {
+  height: 25px;
   text-align: right !important;
   font-size: 0.85vw;
   vertical-align: middle;
   display: baseline; }
-.classKpiHeaderContent .takt_kpi_value {
+.classKpiHeaderContent .taktKpiValue {
+  height: 25px;
   display: inline-block;
   vertical-align: baseline; }
 .classKpiHeaderContent .KPITaktChartBlueText {
@@ -666,22 +671,13 @@ KPI Header Content
     display: inline-block;
     max-width: 100% !important;
     vertical-align: middle !important; }
-.kpiBoxExtraWork .sapMFlexItem:nth-child(2) {
+.kpiBoxExtraWork .sapMFlexItem:nth-child(2), .kpiBoxExtraWork .sapMFlexItem:nth-child(4) {
   height: 30px; }
-  .kpiBoxExtraWork .sapMFlexItem:nth-child(2) .sapMLabel {
+  .kpiBoxExtraWork .sapMFlexItem:nth-child(2) .sapMLabel, .kpiBoxExtraWork .sapMFlexItem:nth-child(4) .sapMLabel {
     vertical-align: sub !important;
     max-height: 30px;
     font-size: 0.9vw; }
-.kpiBoxExtraWork .sapMFlexItem:nth-child(4) {
-  height: 30px; }
-  .kpiBoxExtraWork .sapMFlexItem:nth-child(4) .sapMLabel {
-    vertical-align: sub !important;
-    max-height: 30px;
-    font-size: 0.9vw; }
-.kpiBoxExtraWork .sapMFlexItem:nth-child(3) .sapMLabel {
-  vertical-align: top !important;
-  max-height: 42px; }
-.kpiBoxExtraWork .sapMFlexItem:nth-child(5) .sapMLabel {
+.kpiBoxExtraWork .sapMFlexItem:nth-child(3) .sapMLabel, .kpiBoxExtraWork .sapMFlexItem:nth-child(5) .sapMLabel {
   vertical-align: top !important;
   max-height: 42px; }
 
@@ -742,9 +738,11 @@ KPI Header Content
 .openDisruptionDetail .sapMFlexItem:nth-child(1), .openDisruptionValues .sapMFlexItem:nth-child(1), .openDisruptionAndon .sapMFlexItem:nth-child(1) {
   height: 25px; }
   .openDisruptionDetail .sapMFlexItem:nth-child(1) .sapMLabel, .openDisruptionValues .sapMFlexItem:nth-child(1) .sapMLabel, .openDisruptionAndon .sapMFlexItem:nth-child(1) .sapMLabel {
-    vertical-align: middle !important;
     max-height: 25px;
     font-size: 0.9vw; }
+
+.taktAdherenceTrendBox > .sapMFlexItem {
+  height: 100%; }
 
 .whiteText {
   text-align: center !important;
@@ -756,7 +754,7 @@ KPI Header Content
   color: #fe5000 !important;
   width: 100%; }
 
-.kpiBoxes > .sapMFlexItem:before, .openDisruptionTotal > .sapMFlexItem:nth-child(2):before, .openDisruptionTotal .sapMFlexItem:nth-child(4):before {
+.kpiBoxes > .sapMFlexItem:not(.taktAdherenceBox):before, .openDisruptionTotal > .sapMFlexItem:nth-child(2):before, .openDisruptionTotal .sapMFlexItem:nth-child(4):before {
   content: "" !important;
   font-size: 0 !important;
   vertical-align: middle !important;

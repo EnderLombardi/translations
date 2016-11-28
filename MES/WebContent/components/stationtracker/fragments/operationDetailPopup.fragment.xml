@@ -15,8 +15,9 @@
 			<Button id="btnCreateDisruption" text="{StationTrackerI18n>create}" type="Accept" press="onCreateDisruption" visible="false" />
 			<Button id="btnUpdateDisruption" text="{StationTrackerI18n>update}" type="Accept" press="onUpdateDisruption" visible="false" />
 			<Button id="btnCancelDisruption" text="{StationTrackerI18n>cancel}" type="Reject" press="onCancelCreateDisruption" visible="false" />
-			
 			<Button id="reportDisruption" text="{StationTrackerI18n>reportDisruption}" press="" icon="sap-icon://add" visible="false" />
+			
+			<Button id="btnReschedule" visible="false" text="{StationTrackerI18n>ReschedulePopupConfirm}" type="Accept" press="onRescheduleConfirm" /> 
 			
 			<Button text="{StationTrackerI18n>Close}"  icon="sap-icon://decline" press="onCloseOperationDetailPopup" />
 		</buttons>

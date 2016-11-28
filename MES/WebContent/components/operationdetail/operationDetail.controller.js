@@ -125,6 +125,14 @@ sap.ui
 
 						case "createDisruptionView":
 							airbus.mes.disruptions.oView.createDisruption.oController.onCancelCreateDisruption();
+							
+						case "reschedulePage--reschedulePage":
+							
+							if (sap.ui.getCore().byId("operationDetailsView--switchOperationModeBtn").getState() === true) {
+								
+								sap.ui.getCore().byId("operationDetailPopup--btnReschedule").setVisible(true);
+							} else  { sap.ui.getCore().byId("operationDetailPopup--btnReschedule").setVisible(false); }
+							
 						default:
 							break;
 						}
@@ -140,17 +148,12 @@ sap.ui
 						switch (sItemKey) {
 
 						case "status":
-							if (airbus.mes.operationdetail.status === undefined
-									|| airbus.mes.operationdetail.status.oView === undefined) {
-								sap.ui.getCore().createComponent({
-									name : "airbus.mes.operationdetail.status",
-								});
-								this.nav
-										.addPage(airbus.mes.operationdetail.status.oView);
+							if (airbus.mes.operationdetail.status === undefined	|| airbus.mes.operationdetail.status.oView === undefined) {
+								sap.ui.getCore().createComponent({ name : "airbus.mes.operationdetail.status",	});
+								this.nav.addPage(airbus.mes.operationdetail.status.oView);
 							}
 
-							this.nav.to(airbus.mes.operationdetail.status.oView
-									.getId());
+							this.nav.to(airbus.mes.operationdetail.status.oView	.getId());
 
 							break;
 						case "disruption":
@@ -167,10 +170,8 @@ sap.ui
 							 * Load Disruption Data
 							 **************************************************/
 							if (!this.disruptionsFlag) {
-								var operationBO = sap.ui.getCore().getModel(
-										"operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_bo;
-								airbus.mes.disruptions.ModelManager
-										.loadDisruptionsByOperation(operationBO);
+								var operationBO = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_bo;
+								airbus.mes.disruptions.ModelManager.loadDisruptionsByOperation(operationBO);
 								this.disruptionsFlag = true;
 							}
 							
@@ -180,8 +181,48 @@ sap.ui
 							
 							break;
 							
+							case "reschedule":
+							  	  
+							var aGroup = [];
+
+							// Check if we are on operation grouping
+							// SD-PPC-ST-386
+							if (airbus.mes.stationtracker.GroupingBoxingManager.box !== 'OPERATION_ID') {
+								return;
+							}
+
+//							var aOperationHierachy = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy;
+							var aModel = [sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0]];
+
+//							// Define all group
+//							for ( var oTmpOperationHierarchy in aOperationHierachy) {
+//								aGroup.push(oTmpOperationHierarchy);
+//							}
+
+							if (airbus.mes.stationtracker.ReschedulePopover === undefined) {
+								var oModel = airbus.mes.stationtracker.oView.getModel("StationTrackerI18n");
+								airbus.mes.stationtracker.ReschedulePopover = sap.ui.xmlfragment("reschedulePage","airbus.mes.stationtracker.Reschedule",airbus.mes.stationtracker.oView.getController());
+								airbus.mes.stationtracker.ReschedulePopover.addStyleClass("alignTextLeft");
+								airbus.mes.stationtracker.ReschedulePopover.setModel(oModel,"i18nModel");
+								airbus.mes.stationtracker.oView.addDependent(airbus.mes.stationtracker.ReschedulePopover);
+								this.nav.addPage(airbus.mes.stationtracker.ReschedulePopover);
+							}
+							// Model for the current operation
+							var oModel = new sap.ui.model.json.JSONModel();
+							oModel.setData(aModel);
+							
+							airbus.mes.stationtracker.ReschedulePopover.setModel(oModel,"RescheduleModel");
+														
+							if (sap.ui.getCore().byId("operationDetailsView--switchOperationModeBtn").getState() === true) {
+								
+								sap.ui.getCore().byId("operationDetailPopup--btnReschedule").setVisible(true);
+							} else  { sap.ui.getCore().byId("operationDetailPopup--btnReschedule").setVisible(false); }
+							
+							this.nav.to(airbus.mes.stationtracker.ReschedulePopover.getId());
+							
+							break;
 							default:
-								break;
+							break;
 						}
 					},
 					
@@ -199,24 +240,32 @@ sap.ui
 							sap.ui.getCore().byId("operationDetailPopup--btnActivate").setVisible(false);
 							sap.ui.getCore().byId("operationDetailPopup--btnConfirm").setVisible(false);
 							sap.ui.getCore().byId("operationDetailPopup--btnComplete").setVisible(false);
+							
 							break;
 							
 						case "ViewDisruptionView":
 							// Hide buttons
 							sap.ui.getCore().byId("operationDetailPopup--reportDisruption").setVisible(false);
+							
 							break;
 						
 						
 						case "createDisruptionView":
 							// Hide buttons
-							sap.ui.getCore().byId("operationDetailPopup--btnCreateDisruption").setVisible(
-									false);
-							sap.ui.getCore().byId("operationDetailPopup--btnUpdateDisruption").setVisible(
-									false);
-							sap.ui.getCore().byId("operationDetailPopup--btnCancelDisruption").setVisible(
-									false);
+							sap.ui.getCore().byId("operationDetailPopup--btnCreateDisruption").setVisible(false);
+							sap.ui.getCore().byId("operationDetailPopup--btnUpdateDisruption").setVisible(false);
+							sap.ui.getCore().byId("operationDetailPopup--btnCancelDisruption").setVisible(false);
+						
 							break;
 						
+						case "reschedulePage--reschedulePage":
+							
+							 sap.ui.getCore().byId("operationDetailPopup--btnReschedule").setVisible(false); 
+							
+							break;
+							
+							
+							
 						default:
 							break;
 						}

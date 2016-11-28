@@ -133,7 +133,7 @@ airbus.mes.stationtracker.util.Formatter = {
 			},
 			
 			date2date : function(day) {
-				return day.split('T')[0];
+				return day.split(' ')[0];
 			},
 			date2jsDate : function(day) {
 				return new Date(day.split(' ')[0]);

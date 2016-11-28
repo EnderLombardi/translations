@@ -393,6 +393,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 					var sStatus = "";
 					var sShopOrder = "";
 					var sSfcStep = "";
+					var sProdGroup = "";
 										
 					oModel[key][key1][key2].forEach( function( el ) { 
 						
@@ -417,6 +418,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 						sOperationDescription = el.sBox;
 						sStatus = el.STATE;
 						sSfcStep = el.SFC_STEP_REF;
+						sProdGroup = el.PROD_GROUP;
 						
 						if ( sBox === oGroupingBoxingManager.specialGroup) {
 							
@@ -463,6 +465,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 					
 						var oOperationRescheduling = {
 								
+							"ProdGroup" : sProdGroup,	
 							"sSfcStep" : sSfcStep,
 							"operationId" : sOperationId,
 							"operationDescription" : sOperationDescription,
