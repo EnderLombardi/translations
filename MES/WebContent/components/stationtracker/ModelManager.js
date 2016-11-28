@@ -648,7 +648,7 @@ airbus.mes.stationtracker.ModelManager = {
 			contentType : 'application/json',
 			data : JSON.stringify({
 				"site" : airbus.mes.settings.ModelManager.site,
-				"station" : airbus.mes.settings.ModelManager.station,
+				"currentStation" : airbus.mes.settings.ModelManager.station,
 				"msn" : airbus.mes.settings.ModelManager.msn
 			}),
 

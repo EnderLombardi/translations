@@ -45,8 +45,8 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.TaktAdherenceAreaChart", {
 		var realData = oCtrl.getRealData().map(bindingToArray);
 		
 		if(data.length == 0){
-			data=[{x:0, y:0}, {x:0, y:0}];
-			realData=[{x:0, y:0}, {x:0, y:0}];
+			data=[{x:"0", y:"0"}, {x:"0", y:"0"}];
+			realData=[{x:"0", y:"0"}, {x:"0", y:"0"}];
 		}
 		
 //		var data = [
@@ -68,7 +68,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.TaktAdherenceAreaChart", {
 //			{ x: 3, y: 25, },
 //		];
 
-		var parent = $("#stationTrackerView--chartId");
+//		var parent = $("#stationTrackerView--chartId");
 		var chart = $("#stationTrackerView--takt_adherence_area_chart"),
 			aspect = 0.3,
 			container = chart.parent();
@@ -99,9 +99,9 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.TaktAdherenceAreaChart", {
 			.domain([0, d3.max(data, function (d) { return d.y; })])
 			.range([height, 0]);
 
-		var xAxis = d3.svg.axis()
-			.scale(x)
-			.orient("bottom");
+//		var xAxis = d3.svg.axis()
+//			.scale(x)
+//			.orient("bottom");
 
 		var yAxis = d3.svg.axis()
 			.scale(y)
@@ -125,7 +125,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.TaktAdherenceAreaChart", {
 
 		var groupe = svg.append("g");
 		//background
-		var rectangle = groupe.append("rect")
+		var rectangle = groupe.append("rect") //FIXME : ESLint (Not used) but needed
 			.attr("x", 0)
 			.attr("y", 0)
 			.attr("width", width)
@@ -177,7 +177,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.TaktAdherenceAreaChart", {
 			.style("stroke-width", 1)
 			.style("stroke", "white");
 		//Draw the blue Circle
-		var circle = svg.append("circle")
+		var circle = svg.append("circle") //FIXME : ESLint (Not used) but needed
 			.attr("cx", function () { return x(data[data.length - 2].x); })
 			.attr("cy", function () { return y(data[data.length - 2].y); })
 			.attr("r", 3)

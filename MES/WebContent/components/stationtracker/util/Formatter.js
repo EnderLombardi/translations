@@ -1,8 +1,17 @@
 "use strict";
- 
+jQuery.sap.require("sap.ui.core.format.DateFormat");
 jQuery.sap.declare("airbus.mes.stationtracker.util.Formatter");
 
 airbus.mes.stationtracker.util.Formatter = {
+		
+		dateToStringFormat : function(sDate){
+			var oDate = new Date(sDate);
+			var oFormat = sap.ui.core.format.DateFormat.getInstance({
+				pattern : "dd MMM - HH:mm",
+				calendarType : sap.ui.core.CalendarType.Gregorian
+			});
+			return oFormat.format(oDate)
+		},
 		
 		stringToInt : function(string){
 			if(typeof string =="string"){
