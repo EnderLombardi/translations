@@ -15,40 +15,6 @@ KPI Header Content
 	}
 }
 
-.classKpiHeaderContent .contentHeaderCont:last-child {
-	border-right: none !important;
-}
-
-.classKpiHeaderContent .sapSuiteCmpChartItemTitle,
-	.classKpiHeaderContent .sapSuiteCmpChartItemValue,
-	.classKpiHeaderContent label {
-	color: #ffffff;
-	font-size: 0.8vw;
-}
-
-.classKpiHeaderContent .sapSuiteCmpChartBarNoValue {
-	background-color: $silver-15;
-}
-
-.classKpiHeaderContent .kpiValue {
-	font-size: 1.6vw;
-	width: 100%;
-	text-align: center ! important;
-}
-
-.classKpiHeaderContent .kpiName {
-	text-align: center ! important;
-	width: 100%;
-}
-
-.classKpiHeaderContent .whiteTextHeader {
-	white-space: normal;
-	text-align: center ! important;
-	color: white;
-	width: 100%;
-	font-size: 1vw;
-}
-
 /*KPI boxes*/
 $kpi-box-title-height: 50px;
 $kpi-box-body-height: 144px;
@@ -68,12 +34,7 @@ $kpi-box-extrawork-percent-height:42px;
 }
 
 .kpiBoxes > .sapMFlexItem:before {
-  content: "" !important;
-  font-size: 0 !important;
-  vertical-align: middle !important;
-  display: inline-block !important;
-  width: 0px !important;
-  height: 100% !important;
+    @extend %beforeCenteredElement;
 }
 
 .labourEfficiencyBox {
@@ -130,6 +91,8 @@ $kpi-box-extrawork-percent-height:42px;
 	}
 }
 
+$kpi-box-body-height:144px;
+
 // kpi others
 .kpiBody {
     height: 139px;
@@ -155,6 +118,8 @@ $kpi-box-disruptions-total-numbers-height-bis: 44px;
 
 // openDisruption
 .openDisruptionTotal {
+	justify-content: inherit !important;
+	padding-right: 5px;
 	.sapMFlexItem {
 		width: 100% !important;
 		line-height: normal;
@@ -203,29 +168,73 @@ $kpi-box-disruptions-total-numbers-height-bis: 44px;
 }
 
 .openDisruptionTotal > .sapMFlexItem:nth-child(2):before {
-  content: "" !important;
-  font-size: 0 !important;
-  vertical-align: middle !important;
-  display: inline-block !important;
-  width: 0px !important;
-  height: 100% !important;
+    @extend %beforeCenteredElement;
 }
 
 .openDisruptionTotal > .sapMFlexItem:nth-child(4):before {
-  content: "" !important;
-  font-size: 0 !important;
-  vertical-align: middle !important;
-  display: inline-block !important;
-  width: 0px !important;
-  height: 100% !important;
+	@extend %beforeCenteredElement;
+}
+
+//openDisruptionDetail
+.openDisruptionDetail {
+	padding-right: 5px;
+	.sapMFlexItem {
+		width: 100% !important;
+		line-height: normal;
+		display: inline-block;
+		vertical-align: middle !important;
+		height: 23px;
+		.sapMLabel {
+			display: inline-block;
+			max-width: 100% !important;
+			vertical-align: middle !important;
+			max-height: 23px;
+		}
+	}
+	.sapMFlexItem:nth-child(1) {
+  		height: $kpi-box-disruptions-total-title-height;
+		.sapMLabel {
+			vertical-align: middle !important;
+			max-height: $kpi-box-disruptions-total-title-height;
+			font-size: 0.9vw;
+		}
+	}
 }
 
 
-// old code
-.openDisruptionAndon div:first-child label,
-.openDisruptionDisruption div:first-child label,
-.openDisruptionDetail div:first-child label {
-    padding-bottom: 5px;
+// code from stationTracker.css
+.classKpiHeaderContent .contentHeaderCont:last-child {
+	border-right: none !important;
+}
+
+.classKpiHeaderContent .sapSuiteCmpChartItemTitle,
+	.classKpiHeaderContent .sapSuiteCmpChartItemValue,
+	.classKpiHeaderContent label {
+	color: #ffffff;
+	font-size: 0.8vw;
+}
+
+.classKpiHeaderContent .sapSuiteCmpChartBarNoValue {
+	background-color: $silver-15;
+}
+
+.classKpiHeaderContent .kpiValue {
+	font-size: 1.6vw;
+	width: 100%;
+	text-align: center !important;
+}
+
+.classKpiHeaderContent .kpiName {
+	text-align: center !important;
+	width: 100%;
+}
+
+.classKpiHeaderContent .whiteTextHeader {
+	white-space: normal;
+	text-align: center !important;
+	color: white;
+	width: 100%;
+	font-size: 1vw;
 }
 
 .whiteText {
@@ -233,11 +242,18 @@ $kpi-box-disruptions-total-numbers-height-bis: 44px;
     color: white;
     width: 100%;
 }
-.disruptionText {
-    color: white;
-}
+
 .redText {
     text-align: center !important;
     color: $blood-orange !important;
     width: 100%;
+}
+
+%beforeCenteredElement{
+	content: "" !important;
+    font-size: 0 !important;
+    vertical-align: middle !important;
+    display: inline-block !important;
+    width: 0px !important;
+    height: 100% !important;
 }
