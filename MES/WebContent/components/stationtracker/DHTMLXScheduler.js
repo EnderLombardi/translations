@@ -144,6 +144,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 						    		"skill" : scheduler.getEvent(id).avlLine.split("_")[1],
 						    		"avlLine" : scheduler.getEvent(id).avlLine.split("_")[0],
 						    		"sSfcStep" :  scheduler.getEvent(id).sSfcStep,
+						    		"ProdGroup" : scheduler.getEvent(id).ProdGroup,
 						    }
 							
 							if (this.getEvent(id).type === "I" ) {
@@ -317,7 +318,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 							
 //							Set the bypass variable to true
 							this.byPassOnClick = true;
-							airbus.mes.stationtracker.ModelManager.OpenReschedule(id);
+							//airbus.mes.stationtracker.ModelManager.OpenReschedule(id);
 	
 							return false;
 

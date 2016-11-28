@@ -26,7 +26,7 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 
 		// If default user settings are not yet loaded, need to load them
 		// We display settings screen
-		if (airbus.mes.settings.ModelManager.station === "") {
+		if (airbus.mes.settings.ModelManager.msn === "") {
 
 		  switch (text) {
 			case "StationTracker":

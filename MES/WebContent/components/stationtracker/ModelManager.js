@@ -819,7 +819,7 @@ airbus.mes.stationtracker.ModelManager = {
 			data : {
 				"Param.1" : oData.site,
 				"Param.2" : bCheckQa,
-				"Param.3" : oData.prodGroup,
+				"Param.3" : oInitial.ProdGroup,
 				"Param.4" : oData.station,
 				"Param.5" : oData.msn, 
 				"Param.6" : airbus.mes.stationtracker.util.Formatter.dDate2sDate(oFinal.start_date),
@@ -1103,8 +1103,7 @@ airbus.mes.stationtracker.ModelManager = {
 		}
 
 		var aOperationHierachy = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy;
-		var aModel = aOperationHierachy[scheduler.getEvent(id).group][scheduler
-				.getEvent(id).avlLine][scheduler.getEvent(id).box];
+		var aModel = [scheduler.getEvent(id)];
 
 		// Define all group
 		for ( var oTmpOperationHierarchy in aOperationHierachy) {
@@ -1112,27 +1111,19 @@ airbus.mes.stationtracker.ModelManager = {
 		}
 
 		if (airbus.mes.stationtracker.ReschedulePopover === undefined) {
-			airbus.mes.stationtracker.ReschedulePopover = sap.ui.xmlfragment(
-					"ReschedulePopover",
-					"airbus.mes.stationtracker.Reschedule",
-					airbus.mes.stationtracker.oView.getController());
+			airbus.mes.stationtracker.ReschedulePopover = sap.ui.xmlfragment("ReschedulePopover","airbus.mes.stationtracker.Reschedule",airbus.mes.stationtracker.oView.getController());
+			airbus.mes.stationtracker.ReschedulePopover.addStyleClass("alignTextLeft");
 
-			airbus.mes.stationtracker.ReschedulePopover
-					.addStyleClass("alignTextLeft");
-
-			airbus.mes.stationtracker.oView
-					.addDependent(airbus.mes.stationtracker.ReschedulePopover);
+			airbus.mes.stationtracker.oView.addDependent(airbus.mes.stationtracker.ReschedulePopover);
 		}
 		// Model for the current operation
 		var oModel = new sap.ui.model.json.JSONModel();
 		oModel.setData(aModel);
-		airbus.mes.stationtracker.ReschedulePopover.setModel(oModel,
-				"RescheduleModel");
+		airbus.mes.stationtracker.ReschedulePopover.setModel(oModel,"RescheduleModel");
 
 		oModel = new sap.ui.model.json.JSONModel();
 		oModel.setData(aGroup);
-		airbus.mes.stationtracker.ReschedulePopover.setModel(oModel,
-				"RescheduleGroupModel");
+		airbus.mes.stationtracker.ReschedulePopover.setModel(oModel,"RescheduleGroupModel");
 
 		airbus.mes.stationtracker.ReschedulePopover.open();
 
