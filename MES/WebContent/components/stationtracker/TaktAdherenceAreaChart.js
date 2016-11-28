@@ -36,13 +36,13 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.TaktAdherenceAreaChart", {
 				.ticks(8);
 		}
 		
-		function bindingToArray(c) {
-			return {x : c.getX(), y : c.getY()}
-		}
-		
-		var oCtrl = oEvt.srcControl; 
-		var data = oCtrl.getData().map(bindingToArray);
-		var realData = oCtrl.getRealData().map(bindingToArray);
+//		function bindingToArray(c) {
+//			return {x : c.getX(), y : c.getY()}
+//		}
+//		
+//		var oCtrl = oEvt.srcControl; 
+//		var data = oCtrl.getData().map(bindingToArray);
+//		var realData = oCtrl.getRealData().map(bindingToArray);
 		
 		var data = [
 			{ x: 0, y: 5, },

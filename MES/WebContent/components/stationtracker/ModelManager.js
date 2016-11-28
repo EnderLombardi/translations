@@ -39,9 +39,6 @@ airbus.mes.stationtracker.ModelManager = {
               core.setModel(new sap.ui.model.json.JSONModel(), "KPIresolutionEfficiency"); // KPI Resolution Staffing
               core.setModel(new sap.ui.model.json.JSONModel(), "KPIdisruption"); // KPI Resolution Staffing
 
-              core.setModel(new sap.ui.model.json.JSONModel(), "disruptionAndonKPI");//DisruptionAndonKPI Service Added.
-
-
            this.settings = airbus.mes.settings.ModelManager;
 
            core.getModel("stationTrackerRModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onStationTrackerLoad);
@@ -448,12 +445,12 @@ airbus.mes.stationtracker.ModelManager = {
 		oViewModel.loadData(this.urlModel.getProperty("urlKPI"), null, true);
 		airbus.mes.stationtracker.ModelManager.KPI = oViewModel;
 		
-		// Model For the Disruption Andon KPI
-		var oDisruptionAndonModel = sap.ui.getCore().getModel("disruptionAndonKPI");
-		var urlDisruptionKpi = this.urlModel.getProperty("urlDisruptionKpi");
-		urlDisruptionKpi = airbus.mes.settings.ModelManager.replaceURI(urlDisruptionKpi, "$site", airbus.mes.settings.ModelManager.site);
-		urlDisruptionKpi = airbus.mes.settings.ModelManager.replaceURI(urlDisruptionKpi, "$station", airbus.mes.settings.ModelManager.station);
-		oDisruptionAndonModel.loadData(urlDisruptionKpi, null, true);
+//		// Model For the Disruption Andon KPI
+//		var oDisruptionAndonModel = sap.ui.getCore().getModel("disruptionAndonKPI");
+//		var urlDisruptionKpi = this.urlModel.getProperty("urlDisruptionKpi");
+//		urlDisruptionKpi = airbus.mes.settings.ModelManager.replaceURI(urlDisruptionKpi, "$site", airbus.mes.settings.ModelManager.site);
+//		urlDisruptionKpi = airbus.mes.settings.ModelManager.replaceURI(urlDisruptionKpi, "$station", airbus.mes.settings.ModelManager.station);
+//		oDisruptionAndonModel.loadData(urlDisruptionKpi, null, true);
 		
 		this.loadKPIextraWork();
 		this.loadKPItaktAdherence();
