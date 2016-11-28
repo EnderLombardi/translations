@@ -198,11 +198,11 @@
 									<Label text="{StationTrackerI18n>DisruptionTotal}" class=" whiteText kpiName"
 										design="Bold" />
 									<Label text="{StationTrackerI18n>Disruption}" class=" whiteText kpiName" />
-									<Label text="{disruptionAndonKPI>/Rowsets/Rowset/0/Row/0/totalDisruption}"
+									<Label text="{KPIdisruption>/disruptionTotalUI}"
 										class=" whiteText kpiValue" design="Bold" />
 									<Label text="{StationTrackerI18n>Andon}" class=" redText kpiErrorValue"
 										design="Bold" />
-									<Label text="{disruptionAndonKPI>/Rowsets/Rowset/0/Row/0/totalAndon}"
+									<Label text="{KPIdisruption>/andonTotalUI}"
 										class="redText kpiValue kpiErrorValue" design="Bold" />
 								</VBox>
 								<VBox width="35%" class="classOpenDisruptionDetail" justifyContent="SpaceAround">
@@ -218,29 +218,29 @@
 								</VBox>
 								<VBox alignItems="Center" width="20%" justifyContent="SpaceAround" class="classOpenDisruptionDisruption">
 									<Label text="{StationTrackerI18n>Disruption}" class="whiteText" />
-									<Label text="{disruptionAndonKPI>/Rowsets/Rowset/0/Row/0/NC}"
+									<Label text="{KPIdisruption>/disruptionNCUI}"
 										class=" whiteText" />
-									<Label text="{disruptionAndonKPI>/Rowsets/Rowset/0/Row/0/MissingParts}"
+									<Label text="{KPIdisruption>/disruptionMissingPartsUI}"
 										class=" whiteText" />
-									<Label text="{disruptionAndonKPI>/Rowsets/Rowset/0/Row/0/Jnt}"
+									<Label text="{KPIdisruption>/disruptionMissingJTUI}"
 										class=" whiteText" />
-									<Label text="{disruptionAndonKPI>/Rowsets/Rowset/0/Row/0/FTE}"
+									<Label text="{KPIdisruption>/disruptionMissingFTEUI}"
 										class=" whiteText" />
-											<Label text="{disruptionAndonKPI>/Rowsets/Rowset/0/Row/0/Other}"
+									<Label text="{KPIdisruption>/disruptionOtherUI}"
 										class=" whiteText" />
 								</VBox>
 								<VBox alignItems="Center" width="15%" justifyContent="SpaceAround" class="classOpenDisruptionAndon">
 									<Label text="{StationTrackerI18n>Andon}" class="redText kpiErrorValue" />
-									<Label text="{disruptionAndonKPI>/Rowsets/Rowset/0/Row/0/NC_escalated}"
+									<Label text="{KPIdisruption>/andonNCUI}"
 										class=" redText kpiErrorValue" />
-									<Label text="{disruptionAndonKPI>/Rowsets/Rowset/0/Row/0/MissingParts_escalated}"
+									<Label text="{KPIdisruption>/andonMissingPartsUI}"
 										class=" redText kpiErrorValue" />
-									<Label text="{disruptionAndonKPI>/Rowsets/Rowset/0/Row/0/Jnt_escalated}"
+									<Label text="{KPIdisruption>/andonMissingJTUI}"
 										class=" redText kpiErrorValue" />
-									<Label text="{disruptionAndonKPI>/Rowsets/Rowset/0/Row/0/FTE_escalated}"
+									<Label text="{KPIdisruption>/andonMissingFTEUI}"
 										class="redText kpiErrorValue" />
-											<Label text="{disruptionAndonKPI>/Rowsets/Rowset/0/Row/0/Other_escalated}"
-										class="redText kpiErrorValu" />
+											<Label text="{KPIdisruption>/andonOtherUI}"
+										class="redText kpiErrorValue" />
 								</VBox>
 							</HBox>
 						</VBox>
@@ -255,18 +255,22 @@
 									width="100%" colorPalette="#84bd00,#fe5000,#fe5000,#0F2D65" class="kpiBody">
 									<micro:data>
 										<micro:ComparisonMicroChartData
-
-											title="{StationTrackerI18n>PromisedInTakt}" value="{disruptionAndonKPI>/Rowsets/Rowset/0/Row/0/InTakt}" />
-
+											title="{StationTrackerI18n>PromisedInTakt}"
+											value="{path:'KPIresolutionEfficiency>/promisedInTaktUI', formatter:'airbus.mes.stationtracker.util.Formatter.stringToInt'}"
+											displayValue="{KPIresolutionEfficiency>/promisedInTaktUI}"/>
 										<micro:ComparisonMicroChartData
-											title="{StationTrackerI18n>PromisedOutTakt}" value="{disruptionAndonKPI>/Rowsets/Rowset/0/Row/0/OutTakt}" />
-
-									
-										<micro:ComparisonMicroChartData	title="{StationTrackerI18n>NotAcknowledged}" value="{disruptionAndonKPI>/Rowsets/Rowset/0/Row/0/NotAcknowledged}" />
-									
+											title="{StationTrackerI18n>PromisedOutTakt}"
+											value="{path:'KPIresolutionEfficiency>/promisedOutOfTaktUI', formatter:'airbus.mes.stationtracker.util.Formatter.stringToInt'}"
+											displayValue="{KPIresolutionEfficiency>/promisedOutOfTaktUI}"/>
 										<micro:ComparisonMicroChartData
-											id="hiddenRefBarResolution" title="{StationTrackerI18n>RedSpaces}" visible="false"  value="{parts:['disruptionAndonKPI>/Rowsets/Rowset/0/Row/0/InTakt','disruptionAndonKPI>/Rowsets/Rowset/0/Row/0/OutTakt','disruptionAndonKPI>/Rowsets/Rowset/0/Row/0/NotAcknowledged'], formatter:'airbus.mes.stationtracker.util.Formatter.totalTakt'}" />
-
+										title="{StationTrackerI18n>NotAcknowledged}"
+										value="{path:'KPIresolutionEfficiency>/notAcknowledgedUI', formatter:'airbus.mes.stationtracker.util.Formatter.stringToInt'}"
+										displayValue="{KPIresolutionEfficiency>/notAcknowledgedUI}"/>
+										<micro:ComparisonMicroChartData
+											id="hiddenRefBarResolution"
+											title="{StationTrackerI18n>RedSpaces}"
+											visible="false"
+											value="{path:'KPIresolutionEfficiency>/totalUI', formatter:'airbus.mes.stationtracker.util.Formatter.stringToInt'}" />
 									</micro:data>
 								</micro:ComparisonMicroChart>
 							</VBox>

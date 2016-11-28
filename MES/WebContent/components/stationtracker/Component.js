@@ -68,6 +68,7 @@ airbus.mes.stationtracker.Component.prototype.createContent = function() {
 		this.oView.setModel(sap.ui.getCore().getModel("KPIshiftStaffing"), "KPIshiftStaffing");
 		this.oView.setModel(sap.ui.getCore().getModel("KPItaktEfficiency"), "KPItaktEfficiency");
 		this.oView.setModel(sap.ui.getCore().getModel("KPIresolutionEfficiency"), "KPIresolutionEfficiency");
+		this.oView.setModel(sap.ui.getCore().getModel("KPIdisruption"), "KPIdisruption");
 		this.oView.setModel(sap.ui.getCore().getModel("groupModel"), "groupModel");
 		this.oView.setModel(sap.ui.getCore().getModel("affectationModel"), "affectationModel");
 		this.oView.setModel(sap.ui.getCore().getModel("ressourcePoolModel"), "ressourcePoolModel");

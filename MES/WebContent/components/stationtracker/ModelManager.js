@@ -37,6 +37,7 @@ airbus.mes.stationtracker.ModelManager = {
               core.setModel(new sap.ui.model.json.JSONModel(), "KPIshiftStaffing"); // KPI Shift Staffing
               core.setModel(new sap.ui.model.json.JSONModel(), "KPItaktEfficiency"); // KPI Shift Staffing
               core.setModel(new sap.ui.model.json.JSONModel(), "KPIresolutionEfficiency"); // KPI Resolution Staffing
+              core.setModel(new sap.ui.model.json.JSONModel(), "KPIdisruption"); // KPI Resolution Staffing
 
               core.setModel(new sap.ui.model.json.JSONModel(), "disruptionAndonKPI");//DisruptionAndonKPI Service Added.
 
@@ -459,6 +460,7 @@ airbus.mes.stationtracker.ModelManager = {
 //		this.loadKPIshiftStaffing(); Moved to the end of this.selectMyShift()
 		this.loadKPItaktEfficiency();
 		this.loadKPIresolutionEfficiency();
+		this.loadKPIdisruption();
 
 	},
 	loadKPIextraWork : function() {
@@ -590,6 +592,7 @@ airbus.mes.stationtracker.ModelManager = {
 			data : JSON.stringify({
 				"site" : airbus.mes.settings.ModelManager.site,
 				"station" : airbus.mes.settings.ModelManager.station,
+				"msn" : airbus.mes.settings.ModelManager.msn
 			}),
 
 			success : function(data) {
@@ -603,6 +606,34 @@ airbus.mes.stationtracker.ModelManager = {
 			error : function(error, jQXHR) {
 				console.log(error);
 				airbus.mes.stationtracker.oView.byId("boxResolutionEfficiency").setBusy(false);
+
+			}
+		});
+	},
+	
+	loadKPIdisruption : function() {
+		var oViewModel = sap.ui.getCore().getModel("KPIdisruption");
+		airbus.mes.stationtracker.oView.byId("boxOpenDisruptions").setBusy(true);
+		jQuery.ajax({
+			type : 'post',
+			url : this.urlModel.getProperty("urlKPIdisruption"),
+			contentType : 'application/json',
+			data : JSON.stringify({
+				"site" : airbus.mes.settings.ModelManager.site,
+				"station" : airbus.mes.settings.ModelManager.station
+			}),
+
+			success : function(data) {
+				if(typeof data == "string"){
+					data = JSON.parse(data);
+				}
+				oViewModel.setData(data);
+				airbus.mes.stationtracker.oView.byId("boxOpenDisruptions").setBusy(false);
+			},
+
+			error : function(error, jQXHR) {
+				console.log(error);
+				airbus.mes.stationtracker.oView.byId("boxOpenDisruptions").setBusy(false);
 
 			}
 		});
