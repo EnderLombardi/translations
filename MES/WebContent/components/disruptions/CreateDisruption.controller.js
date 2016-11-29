@@ -321,11 +321,11 @@ sap.ui
 									},
 									{
 										"attribute" : "REQD_FIX_BY",
-										"value" : oView.byId("expectedDate")
+										"value" : new Date(oView.byId("expectedDate")
 												.getValue()
 												+ " "
 												+ oView.byId("expectedTime")
-														.getValue()
+														.getValue()).toISOString()
 									},
 									{
 										"attribute" : "GRAVITY",
@@ -444,14 +444,14 @@ sap.ui
 						var sRootCause = oView.byId("selectRootCause")
 								.getSelectedKey();
 						var iTimeLost = oView.byId("timeLost").getValue()
-						var dFixedByTime = oView.byId("expectedDate")
+						var dFixedByTime = new Date(oView.byId("expectedDate")
 								.getValue()
-								+ " " + oView.byId("expectedTime").getValue()
+								+ " " + oView.byId("expectedTime").getValue()).toISOString();
 						var sComment = oView.byId("comment").getValue()
 						var iGravity = oView.byId("gravity").getSelectedKey()
-						var dPromisedTime = oView.byId("promisedDate")
+						var dPromisedTime = new Date(oView.byId("promisedDate")
 								.getValue()
-								+ " " + oView.byId("promisedTime").getValue()
+								+ " " + oView.byId("promisedTime").getValue()).toISOString();
 						// call update service
 						airbus.mes.disruptions.ModelManager.updateDisruption(
 								sMessageRef, sReason, sResponsibleGroup,
