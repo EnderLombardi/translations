@@ -68,10 +68,12 @@ airbus.mes.settings.AppConfManager = {
 			return value != null ? value : airbus.mes.settings.AppConfManager
 					._getConfiguration(dKey); // if value not found return
 			// default Value
-		} else  {
-			// If no data return from loadAppConfig set internal value for delay.(in localhost no data is load)
-			return 180;
-		}
+		} 
+		
+//		else  {
+//			// If no data return from loadAppConfig set internal value for delay.(in localhost no data is load)
+//			return 180;
+//		}
 	},
 	_getConfiguration : function(Key) {
 
