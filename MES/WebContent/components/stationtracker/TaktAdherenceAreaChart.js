@@ -23,7 +23,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.TaktAdherenceAreaChart", {
 
 		oRm.write("<svg ");
 		oRm.writeControlData(oControl);
-		oRm.write(" class='takt_adherence_area_chart' viewBox='0 0 180 60' perserveAspectRatio='xMinYMid'");
+		oRm.write(" class='takt_adherence_area_chart' viewBox='0 0 " + $('#stationTrackerView--chartId').width() + " 119' perserveAspectRatio='xMinYMid'");
 		oRm.write(" />");
 	},
 
@@ -83,27 +83,26 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.TaktAdherenceAreaChart", {
 //			{ x: 3, y: 25, },
 //		];
 
-//		var parent = $("#stationTrackerView--chartId");
-		var chart = $("#stationTrackerView--takt_adherence_area_chart"),
-			aspect = 0.3,
-			container = chart.parent();
-		
-		var contWidth = container.width();
-		if (contWidth === 0){
-			contWidth = 200;
-		}
-		var margin = { top: 10, right: 0, bottom: 10, left: 30 },
-			width = contWidth - margin.left - margin.right - 15,
-			height = Math.min(80, Math.round(contWidth / aspect)) - margin.top - margin.bottom;
 
+		var chart = $("#stationTrackerView--chartId");
+
+		//in progress
 		$(window).on("resize", function() {
-			if (container.width() > 0){
-				var targetWidth = container.width() - 15;
-				chart.attr("width", targetWidth);
-				chart.attr("height", Math.min(80, Math.round(targetWidth / aspect)));
+			if (chart.width() > 0){
+				// var contWidth = chart.width();
+				// chart.attr("width", contWidth);
+				// chart.attr("height", contHeight);
+				// onAfterRendering();
 			}
-		}).trigger("resize");
+		});
 
+
+
+		var contHeight = 119;
+		var contWidth = chart.width();
+		var margin = { top: 10, right: 5, bottom: 5, left: 20 },
+			width = contWidth - margin.left - margin.right,
+			height = contHeight - margin.top - margin.bottom;
 
 		//axes
 		var x = d3.scale.linear()
@@ -113,10 +112,6 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.TaktAdherenceAreaChart", {
 		var y = d3.scale.linear()
 			.domain([0, d3.max(maxData, function (d) { return d.y; })])
 			.range([height, 0]);
-
-		var xAxis = d3.svg.axis()
-			.scale(x)
-			.orient("bottom");
 
 		var yAxis = d3.svg.axis()
 			.scale(y)
@@ -133,12 +128,16 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.TaktAdherenceAreaChart", {
 			.y(function (d) { return y(d.y); });
 
 		var svg = d3.select("svg.takt_adherence_area_chart")
-			.attr("width", width + margin.left + margin.right)
-			.attr("height", height + margin.top + margin.bottom)
+			.attr("width", contWidth)
+			.attr("height", contHeight)
 			.append("g")
-			.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-		var groupe = svg.append("g");
+			.attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+			.attr("width", width)
+			.attr("height", height);
+			
+		var groupe = svg.append("g")
+			.attr("width", width)
+			.attr("height", height);
 		//background
 		var rectangle = groupe.append("rect") //FIXME : ESLint (Not used) but needed
 			.attr("x", 0)
