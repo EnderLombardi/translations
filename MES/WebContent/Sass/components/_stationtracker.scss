@@ -1,3 +1,4 @@
+@import '../global.scss';
 #mes{
     #stationTrackerView{
         border-top: 0.6rem solid #ffffff;
@@ -1051,9 +1052,6 @@ TOOLTIP TEXT
 .gray_section {
     background-color: grey;
 }
-.sapMPIText1{
-    @extend %customSapText1;
-}
 .sapMPIText3 {
     float: right;
     margin-top: -29px;
@@ -1096,9 +1094,6 @@ FROM CUSTOM CSS
     padding: 0rem;
     background-color: #0F2D65;
     border-bottom: 1px solid #ffffff;
-}
-.sapMPIText2{
-    @extend %customSapText2;
 }
 .overallProgresstitle{
     span{

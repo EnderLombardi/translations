@@ -1,0 +1,184 @@
+/****************
+STATIONTRACKER
+*****************/
+#mes .sapMToggleBtnPressed {
+  background-image: none;
+  background-color: transparent;
+  border-color: transparent;
+  color: transparent;
+  text-shadow: none; }
+
+/*********************
+STATION TRACKER
+*********************/
+/**********************
+***********************
+PAGE HEADER
+***********************
+***********************/
+#mes .sapMToggleBtnPressed {
+  background-image: none;
+  background-color: transparent;
+  border-color: transparent;
+  color: transparent;
+  text-shadow: none; }
+
+#mes .sapMPI {
+  margin: 1.25rem 0; }
+
+/********************
+KPI Header Content
+*********************/
+/*KPI header*/
+.classKpiHeaderContent {
+  height: 195px;
+  overflow-y: hidden; }
+  .classKpiHeaderContent .contentHeaderCont {
+    white-space: normal;
+    background-color: #0f2d65;
+    border-right: solid 1px #74d2e7;
+    margin: 0px !important;
+    border-bottom: none;
+    border-top: solid 1px #74d2e7;
+    padding: 0 5px; }
+  .classKpiHeaderContent .contentHeaderCont:last-child {
+    border-right: none !important; }
+  .classKpiHeaderContent .sapSuiteCmpChartBarNoValue {
+    background-color: rgba(187, 188, 188, 0.15); }
+  .classKpiHeaderContent .kpiValue {
+    font-size: 1.6vw;
+    width: 100%;
+    text-align: center !important; }
+  .classKpiHeaderContent .kpiName {
+    text-align: center !important;
+    width: 100%; }
+  .classKpiHeaderContent .whiteTextHeader {
+    white-space: normal;
+    text-align: center !important;
+    color: #ffffff;
+    width: 100%;
+    font-size: 1vw; }
+  .classKpiHeaderContent .sapSuiteCmpChartItemTitle, .classKpiHeaderContent .sapSuiteCmpChartItemValue,
+  .classKpiHeaderContent label {
+    color: #ffffff;
+    font-size: 0.8vw; }
+
+/*KPI boxes*/
+.kpiBoxes > .sapMFlexItem:first-child {
+  height: 50px; }
+  .kpiBoxes > .sapMFlexItem:first-child .sapMLabel {
+    display: inline-block;
+    vertical-align: middle !important;
+    max-width: 100% !important;
+    max-height: 50px; }
+
+.labourEfficiencyBox .sapMFlexItem:nth-child(2) {
+  height: 144px;
+  display: inline-block;
+  vertical-align: middle !important; }
+  .labourEfficiencyBox .sapMFlexItem:nth-child(2) .sapMLabel {
+    vertical-align: super !important;
+    max-height: 144px; }
+
+/*general kpi*/
+.kpiBoxExtraWork .sapMFlexItem {
+  width: 100% !important;
+  line-height: normal;
+  display: inline-block;
+  vertical-align: middle !important; }
+  .kpiBoxExtraWork .sapMFlexItem .sapMLabel {
+    display: inline-block;
+    max-width: 100% !important;
+    vertical-align: middle !important; }
+.kpiBoxExtraWork .sapMFlexItem:nth-child(2), .kpiBoxExtraWork .sapMFlexItem:nth-child(4) {
+  height: 30px; }
+  .kpiBoxExtraWork .sapMFlexItem:nth-child(2) .sapMLabel, .kpiBoxExtraWork .sapMFlexItem:nth-child(4) .sapMLabel {
+    vertical-align: sub !important;
+    max-height: 30px;
+    font-size: 0.9vw; }
+.kpiBoxExtraWork .sapMFlexItem:nth-child(3) .sapMLabel, .kpiBoxExtraWork .sapMFlexItem:nth-child(5) .sapMLabel {
+  vertical-align: top !important;
+  max-height: 42px; }
+
+.kpiBody {
+  height: 139px; }
+
+.kpiBodyWithoutMargin {
+  height: 144px; }
+
+.kpiDeltaMicroChart {
+  margin: 10px 0;
+  height: 119px; }
+
+.marginTopKpiBody {
+  margin-top: 5px; }
+
+.openDisruptionTotal {
+  justify-content: inherit !important;
+  padding-right: 5px; }
+  .openDisruptionTotal .sapMFlexItem {
+    width: 100% !important;
+    line-height: normal;
+    display: inline-block;
+    vertical-align: middle !important; }
+    .openDisruptionTotal .sapMFlexItem .sapMLabel {
+      display: inline-block;
+      max-width: 100% !important;
+      vertical-align: middle !important; }
+  .openDisruptionTotal .sapMFlexItem:nth-child(1) {
+    height: 25px; }
+    .openDisruptionTotal .sapMFlexItem:nth-child(1) .sapMLabel {
+      vertical-align: middle !important;
+      max-height: 25px;
+      font-size: 0.9vw; }
+  .openDisruptionTotal .sapMFlexItem:nth-child(2), .openDisruptionTotal .sapMFlexItem:nth-child(4) {
+    height: 20px; }
+    .openDisruptionTotal .sapMFlexItem:nth-child(2) .sapMLabel, .openDisruptionTotal .sapMFlexItem:nth-child(4) .sapMLabel {
+      vertical-align: middle !important;
+      max-height: 20px; }
+  .openDisruptionTotal .sapMFlexItem:nth-child(3) .sapMLabel, .openDisruptionTotal .sapMFlexItem:nth-child(5) .sapMLabel {
+    vertical-align: top !important;
+    max-height: 30px; }
+
+.openDisruptionDetail, .openDisruptionValues {
+  padding-right: 5px; }
+
+.openDisruptionDetail .sapMFlexItem, .openDisruptionValues .sapMFlexItem, .openDisruptionAndon .sapMFlexItem {
+  width: 100% !important;
+  line-height: normal;
+  display: inline-block;
+  vertical-align: middle !important;
+  height: 23px; }
+  .openDisruptionDetail .sapMFlexItem .sapMLabel, .openDisruptionValues .sapMFlexItem .sapMLabel, .openDisruptionAndon .sapMFlexItem .sapMLabel {
+    display: inline-block;
+    max-width: 100% !important;
+    vertical-align: middle !important;
+    max-height: 23px; }
+.openDisruptionDetail .sapMFlexItem:nth-child(1), .openDisruptionValues .sapMFlexItem:nth-child(1), .openDisruptionAndon .sapMFlexItem:nth-child(1) {
+  height: 25px; }
+  .openDisruptionDetail .sapMFlexItem:nth-child(1) .sapMLabel, .openDisruptionValues .sapMFlexItem:nth-child(1) .sapMLabel, .openDisruptionAndon .sapMFlexItem:nth-child(1) .sapMLabel {
+    max-height: 25px;
+    font-size: 0.9vw; }
+
+.taktAdherenceTrendBox > .sapMFlexItem {
+  height: 100%; }
+
+.whiteText {
+  text-align: center !important;
+  color: #ffffff;
+  width: 100%; }
+
+.redText {
+  text-align: center !important;
+  color: #fe5000 !important;
+  width: 100%; }
+
+.kpiBoxes > .sapMFlexItem:not(.taktAdherenceBox):before, .openDisruptionTotal > .sapMFlexItem:nth-child(2):before, .openDisruptionTotal .sapMFlexItem:nth-child(4):before {
+  content: "" !important;
+  font-size: 0 !important;
+  vertical-align: middle !important;
+  display: inline-block !important;
+  width: 0px !important;
+  height: 100% !important; }
+
+/*# sourceMappingURL=kpiHeader.css.map */

@@ -1,3 +1,4 @@
+@import '../global.scss';
 /********************
 KPI Header Content
 *********************/
@@ -6,44 +7,44 @@ KPI Header Content
 $kpi-box-header-height: 195px;
 
 .classKpiHeaderContent {
-	height: $kpi-box-header-height;
-	overflow-y: hidden;
+    height: $kpi-box-header-height;
+    overflow-y: hidden;
     .contentHeaderCont {
-		white-space: normal;
-		background-color: $teal-blue-hover;
-		border-right: solid 1px $tiffany-blue;
-		margin: 0px ! important;
-		border-bottom: none;
-		border-top: solid 1px $tiffany-blue;
-		padding: 0 5px;
-	}
-	.contentHeaderCont:last-child {
-		border-right: none !important;
-	}
-	.sapSuiteCmpChartBarNoValue {
-		background-color: $silver-15;
-	}
-	.kpiValue {
-		font-size: 1.6vw;
-		width: 100%;
-		text-align: center !important;
-	}
-	.kpiName {
-		text-align: center !important;
-		width: 100%;
-	}
-	.whiteTextHeader {
-		white-space: normal;
-		text-align: center !important;
-		color: $white-two;
-		width: 100%;
-		font-size: 1vw;
-	}
-	.sapSuiteCmpChartItemTitle, .sapSuiteCmpChartItemValue,
-	label {
-		color: $white-two;
-		font-size: 0.8vw;
-	}
+        white-space: normal;
+        background-color: $teal-blue-hover;
+        border-right: solid 1px $tiffany-blue;
+        margin: 0px ! important;
+        border-bottom: none;
+        border-top: solid 1px $tiffany-blue;
+        padding: 0 5px;
+    }
+    .contentHeaderCont:last-child {
+        border-right: none !important;
+    }
+    .sapSuiteCmpChartBarNoValue {
+        background-color: $silver-15;
+    }
+    .kpiValue {
+        font-size: 1.6vw;
+        width: 100%;
+        text-align: center !important;
+    }
+    .kpiName {
+        text-align: center !important;
+        width: 100%;
+    }
+    .whiteTextHeader {
+        white-space: normal;
+        text-align: center !important;
+        color: $white-two;
+        width: 100%;
+        font-size: 1vw;
+    }
+    .sapSuiteCmpChartItemTitle, .sapSuiteCmpChartItemValue,
+    label {
+        color: $white-two;
+        font-size: 0.8vw;
+    }
 }
 
 /*KPI boxes*/
@@ -53,59 +54,59 @@ $kpi-box-extrawork-text-height:30px;
 $kpi-box-extrawork-percent-height:42px;
 
 .kpiBoxes {
-	>.sapMFlexItem:first-child {
-		height: $kpi-box-title-height;
-		.sapMLabel {
-			display: inline-block;
-			vertical-align: middle !important;
-			max-width: 100% !important;
-			max-height: $kpi-box-title-height;
-		}
-	}
-	> .sapMFlexItem:not(.taktAdherenceBox):before {
-    	@extend %beforeCenteredElement;
-	}
+    >.sapMFlexItem:first-child {
+        height: $kpi-box-title-height;
+        .sapMLabel {
+            display: inline-block;
+            vertical-align: middle !important;
+            max-width: 100% !important;
+            max-height: $kpi-box-title-height;
+        }
+    }
+    > .sapMFlexItem:not(.taktAdherenceBox):before {
+        @extend %beforeCenteredElement;
+    }
 }
 
 .labourEfficiencyBox {
-	.sapMFlexItem:nth-child(2) {
-		height: $kpi-box-body-height;
-		display: inline-block;
-    	vertical-align: middle !important;
-		.sapMLabel {
-			vertical-align: super !important;
-    		max-height: $kpi-box-body-height;
-		}
-	}
+    .sapMFlexItem:nth-child(2) {
+        height: $kpi-box-body-height;
+        display: inline-block;
+        vertical-align: middle !important;
+        .sapMLabel {
+            vertical-align: super !important;
+            max-height: $kpi-box-body-height;
+        }
+    }
 }
 
 /*general kpi*/
 .kpiBoxExtraWork {
-	.sapMFlexItem {
-		width: 100% !important;
-		line-height: normal;
-		display: inline-block;
-		vertical-align: middle !important;
-		.sapMLabel {
-			display: inline-block;
-			max-width: 100% !important;
-			vertical-align: middle !important;
-		}
-	}
-	.sapMFlexItem:nth-child(2), .sapMFlexItem:nth-child(4) {
-  		height: $kpi-box-extrawork-text-height;
-		.sapMLabel {
-			vertical-align: sub !important;
-			max-height: $kpi-box-extrawork-text-height;
-			font-size: 0.9vw;
-		}
-	}
-	.sapMFlexItem:nth-child(3), .sapMFlexItem:nth-child(5) {
-		.sapMLabel {
-			vertical-align: top !important;
-  			max-height: $kpi-box-extrawork-percent-height;
-		}
-	}
+    .sapMFlexItem {
+        width: 100% !important;
+        line-height: normal;
+        display: inline-block;
+        vertical-align: middle !important;
+        .sapMLabel {
+            display: inline-block;
+            max-width: 100% !important;
+            vertical-align: middle !important;
+        }
+    }
+    .sapMFlexItem:nth-child(2), .sapMFlexItem:nth-child(4) {
+          height: $kpi-box-extrawork-text-height;
+        .sapMLabel {
+            vertical-align: sub !important;
+            max-height: $kpi-box-extrawork-text-height;
+            font-size: 0.9vw;
+        }
+    }
+    .sapMFlexItem:nth-child(3), .sapMFlexItem:nth-child(5) {
+        .sapMLabel {
+            vertical-align: top !important;
+              max-height: $kpi-box-extrawork-percent-height;
+        }
+    }
 }
 
 // kpi others
@@ -118,7 +119,7 @@ $kpi-box-extrawork-percent-height:42px;
 }
 
 .kpiDeltaMicroChart {
-	margin: 10px 0;
+    margin: 10px 0;
     height: 119px;
 }
 
@@ -133,76 +134,76 @@ $kpi-box-disruptions-total-numbers-height-bis: 44px;
 
 // openDisruption
 .openDisruptionTotal {
-	justify-content: inherit !important;
-	padding-right: 5px;
-	.sapMFlexItem {
-		width: 100% !important;
-		line-height: normal;
-		display: inline-block;
-		vertical-align: middle !important;
-		.sapMLabel {
-			display: inline-block;
-			max-width: 100% !important;
-			vertical-align: middle !important;
-		}
-	}
-	.sapMFlexItem:nth-child(1) {
-  		height: $kpi-box-disruptions-total-title-height;
-		.sapMLabel {
-			vertical-align: middle !important;
-			max-height: $kpi-box-disruptions-total-title-height;
-			font-size: 0.9vw;
-		}
-	}
-	.sapMFlexItem:nth-child(2), .sapMFlexItem:nth-child(4) {
-  		height: $kpi-box-disruptions-total-text-height;
-		.sapMLabel {
-			vertical-align: middle !important;
-			max-height: $kpi-box-disruptions-total-text-height;
-		}
-	}
-	.sapMFlexItem:nth-child(3), .sapMFlexItem:nth-child(5) {
-		.sapMLabel {
-			vertical-align: top !important;
-  			max-height: $kpi-box-disruptions-total-numbers-height
-		}
-	}
-	> .sapMFlexItem:nth-child(2):before, .sapMFlexItem:nth-child(4):before {
-		@extend %beforeCenteredElement;
-	}
+    justify-content: inherit !important;
+    padding-right: 5px;
+    .sapMFlexItem {
+        width: 100% !important;
+        line-height: normal;
+        display: inline-block;
+        vertical-align: middle !important;
+        .sapMLabel {
+            display: inline-block;
+            max-width: 100% !important;
+            vertical-align: middle !important;
+        }
+    }
+    .sapMFlexItem:nth-child(1) {
+          height: $kpi-box-disruptions-total-title-height;
+        .sapMLabel {
+            vertical-align: middle !important;
+            max-height: $kpi-box-disruptions-total-title-height;
+            font-size: 0.9vw;
+        }
+    }
+    .sapMFlexItem:nth-child(2), .sapMFlexItem:nth-child(4) {
+          height: $kpi-box-disruptions-total-text-height;
+        .sapMLabel {
+            vertical-align: middle !important;
+            max-height: $kpi-box-disruptions-total-text-height;
+        }
+    }
+    .sapMFlexItem:nth-child(3), .sapMFlexItem:nth-child(5) {
+        .sapMLabel {
+            vertical-align: top !important;
+              max-height: $kpi-box-disruptions-total-numbers-height
+        }
+    }
+    > .sapMFlexItem:nth-child(2):before, .sapMFlexItem:nth-child(4):before {
+        @extend %beforeCenteredElement;
+    }
 }
 
 //openDisruptionDetail
 
 .openDisruptionDetail, .openDisruptionValues {
-	padding-right: 5px;
+    padding-right: 5px;
 }
 
 .openDisruptionDetail, .openDisruptionValues, .openDisruptionAndon {
-	.sapMFlexItem {
-		width: 100% !important;
-		line-height: normal;
-		display: inline-block;
-		vertical-align: middle !important;
-		height: 23px;
-		.sapMLabel {
-			display: inline-block;
-			max-width: 100% !important;
-			vertical-align: middle !important;
-			max-height: 23px;
-		}
-	}
-	.sapMFlexItem:nth-child(1) {
-  		height: $kpi-box-disruptions-total-title-height;
-		.sapMLabel {
-			max-height: $kpi-box-disruptions-total-title-height;
-			font-size: 0.9vw;
-		}
-	}
+    .sapMFlexItem {
+        width: 100% !important;
+        line-height: normal;
+        display: inline-block;
+        vertical-align: middle !important;
+        height: 23px;
+        .sapMLabel {
+            display: inline-block;
+            max-width: 100% !important;
+            vertical-align: middle !important;
+            max-height: 23px;
+        }
+    }
+    .sapMFlexItem:nth-child(1) {
+          height: $kpi-box-disruptions-total-title-height;
+        .sapMLabel {
+            max-height: $kpi-box-disruptions-total-title-height;
+            font-size: 0.9vw;
+        }
+    }
 }
 
 .taktAdherenceTrendBox > .sapMFlexItem {
-	height: 100%;
+    height: 100%;
 }
 
 // text classes
@@ -220,7 +221,7 @@ $kpi-box-disruptions-total-numbers-height-bis: 44px;
 
 // placeholder
 %beforeCenteredElement{
-	content: "" !important;
+    content: "" !important;
     font-size: 0 !important;
     vertical-align: middle !important;
     display: inline-block !important;
