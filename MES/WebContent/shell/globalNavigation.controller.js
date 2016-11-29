@@ -222,6 +222,7 @@ sap.ui
 					 */
 					renderStationTracker : function() {
 						airbus.mes.stationtracker.oView.byId("stationtracker").setBusy(true);
+						airbus.mes.stationtracker.ShiftManager.updateShift = false;
 						var oModule = airbus.mes.stationtracker.ModelManager;
 						airbus.mes.shell.oView.getController().setInformationVisibility(true);
 
@@ -233,10 +234,12 @@ sap.ui
 
 						// ** asynchrone call **//
 						airbus.mes.shell.oView.oController.loadStationTrackerGantKPI();
+						
 					},
 
 					loadStationTrackerGantKPI : function() {
 						var oModule = airbus.mes.stationtracker.ModelManager;
+						airbus.mes.stationtracker.ShiftManager.updateShift = false;
 						// ** asynchrone call **//
 						oModule.loadRessourcePool();
 						oModule.loadStationTracker("U");

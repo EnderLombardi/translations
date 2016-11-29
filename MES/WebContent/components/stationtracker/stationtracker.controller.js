@@ -368,10 +368,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		}
 		
 		airbus.mes.stationtracker.oView.byId("ProductionButton").setText(sProdGroup);
-		airbus.mes.stationtracker.ModelManager.loadStationTracker("I");
-		airbus.mes.stationtracker.ModelManager.loadStationTracker("U");		
-		airbus.mes.stationtracker.ModelManager.loadStationTracker("O");		
-		airbus.mes.stationtracker.ModelManager.loadStationTracker("R");		
+		airbus.mes.shell.oView.getController().loadStationTrackerGantKPI();
 	},
 	
 	/***************************************************************************
@@ -628,9 +625,9 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
      ****************************************************************************/
 	changeGroupWorkList : function(oEvent) {
 		// TOSEE if we can get ID by better way
-		sap.ui.getCore().byId("worklistPopover--myList").bindAggregation('items', {
+		sap.ui.getCore().byId("ImportOswUnplannedPopover--myList").bindAggregation('items', {
 			path : "WorkListModel>/",
-			template : sap.ui.getCore().byId("worklistPopover--sorterList"),
+			template : sap.ui.getCore().byId("ImportOswUnplannedPopover--sorterList"),
 			sorter : [ new sap.ui.model.Sorter({
 				// Change this value dynamic
 				path : oEvent.getSource().getSelectedKey(), //oEvt.getSource().getSelectedKey();
@@ -829,14 +826,12 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		if (oSelected.key != "ALL") {
 		
 			airbus.mes.stationtracker.AssignmentManager.userSelected = oSelected.key;
-			airbus.mes.stationtracker.ModelManager.loadStationTracker("I");		
-			airbus.mes.stationtracker.ModelManager.loadStationTracker("R");		
+			airbus.mes.shell.oView.getController().loadStationTrackerGantKPI();		
 			
 		} else {
 			
 			airbus.mes.stationtracker.AssignmentManager.userSelected = "%";
-			airbus.mes.stationtracker.ModelManager.loadStationTracker("I");		
-			airbus.mes.stationtracker.ModelManager.loadStationTracker("R");		
+			airbus.mes.shell.oView.getController().loadStationTrackerGantKPI();	
 			
 		}
 			
@@ -989,7 +984,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		//airbus.mes.shell.oView.getController().renderStationTracker();
 		
 		// Refresh Station tracker
-		airbus.mes.shell.oView.getController().loadStationTrackerGantKPI();
+		//airbus.mes.shell.oView.getController().loadStationTrackerGantKPI();
 		
 		// Resume the Refresh timer when the Pop-Up is opened
         airbus.mes.shell.AutoRefreshManager.resumeRefresh();

@@ -5,6 +5,7 @@ jQuery.sap.declare("airbus.mes.stationtracker.ShiftManager");
 airbus.mes.stationtracker.ShiftManager = {
     
 	firstTimelineStart : undefined,
+	updateShift : true,
 	
 	dayDisplay : undefined,
 	shiftDisplay :true,
