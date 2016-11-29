@@ -19,8 +19,8 @@ airbus.mes.shell.AutoRefreshManager =  {
 	customRefreshTime : undefined,
 	initDate : undefined,
 	nowDate : undefined,
+	addtime : 0,
 	timer : 0,
-	
 	defaultKey : "MES_REFRESH_DEF_VAL",
 	
 	/**
@@ -39,7 +39,6 @@ airbus.mes.shell.AutoRefreshManager =  {
 		//get view name
 		if(!viewName) viewName = nav.getCurrentPage().getId();
 		this.viewName = viewName;
-		
 		switch(viewName){
 			case "stationTrackerView":
 				// value to decrease the timer show in the station tracker view
@@ -64,22 +63,33 @@ airbus.mes.shell.AutoRefreshManager =  {
 		// init function
 		airbus.mes.shell.AutoRefreshManager.lastRefreshTimefct();
 		airbus.mes.shell.AutoRefreshManager.dateNow();
-
-		//this.autoRefreshAPI = airbus.mes.shell.oView.oController.renderStationTracker;
-			
+		// mousse & keyboard event
+		airbus.mes.shell.AutoRefreshManager.setupCtrl();
+		
 		// Button refresh
 		this.autoRefresh = window.setInterval(function refreshTime(){
 			
+			//shortcut
 			var sVal = airbus.mes.shell.AutoRefreshManager; 
+			
 			//Difference in second between the two dates
 			sVal.timer=Math.floor((sVal.dateNow()-sVal.lastRefreshTime2)/1000);
-			//console.log(sVal.timer);
-			
+			console.log("timer :" + sVal.timer);
+
+			// writte "s" or "min" in the button 
 			if(sVal.timer < 60 ){
 				airbus.mes.shell.oView.byId('refreshTime').setText(" Last Refresh : " + sVal.timer + "s");
 			} else {
 				airbus.mes.shell.oView.byId('refreshTime').setText(" Last Refresh : >" + Math.trunc(sVal.timer/60) + "min");
 			}
+			
+			//Add 60sec if time is <60sec
+			if(sVal.addtime != 0){
+				sVal.refreshInterval += sVal.addtime ;
+				sVal.addtime = 0;
+			}
+			console.log("refreshInterval :" + sVal.refreshInterval);
+			
 			//refresh when times are equal
 			if(sVal.timer%sVal.refreshInterval == 0 && sVal.timer !=0) {
 				//change last Refresh Time 
@@ -90,11 +100,10 @@ airbus.mes.shell.AutoRefreshManager =  {
 			sVal.timer++;
 	    }, 1000);
 						
-		//this.autoRefresh = setInterval(this.autoRefreshFunc, this.refreshInterval);
 		this.lastRefreshTime = 0;
 	},
 	
-	///////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////   time operation   ////////////////////////////////
 	
 	//Stops processing at regular intervals
 	clearInterval: function(){
@@ -119,15 +128,57 @@ airbus.mes.shell.AutoRefreshManager =  {
 	
 	// if user action add 60s at the refresh time before refresh
 	customTime: function() 	{
-		return ( Math.floor( ((sVal.dateNow()-sVal.lastRefreshTime2)/1000)<60) ? 60 : (sVal.dateNow()-sVal.lastRefreshTime2)/1000 );
+		airbus.mes.shell.AutoRefreshManager.addtime =  Math.round((airbus.mes.shell.AutoRefreshManager.refreshInterval-airbus.mes.shell.AutoRefreshManager.timer)<60) ? 60 : 0 ;
+		//result of operation
+		//console.log("calcule : " +  (airbus.mes.shell.AutoRefreshManager.refreshInterval-airbus.mes.shell.AutoRefreshManager.timer));
+		//add time
+		//console.log("addtime : " + airbus.mes.shell.AutoRefreshManager.addtime)
+		return airbus.mes.shell.AutoRefreshManager.addtime;
 	},
 	
-	///////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////  event mousse   ///////////////////////////////////
+
+	setupCtrl: function() {
+				/*document.addEventListener("click", function(){
+					console.log("Click");
+					airbus.mes.shell.AutoRefreshManager.customTime();
+				});
+				document.addEventListener("mousemove", function(){ 
+					console.log("mousemove");
+					airbus.mes.shell.AutoRefreshManager.customTime();
+				});*/
+			    document.addEventListener("mousedown", function(){ 
+					console.log("mousedown");
+					airbus.mes.shell.AutoRefreshManager.customTime();
+			    });
+			    document.addEventListener("keypress", function(){ 
+					console.log("keypress");
+					airbus.mes.shell.AutoRefreshManager.customTime();
+			    });
+			  /*  document.addEventListener("DOMMouseScroll", function(){ 
+			    	console.log("DOMMouseScroll");
+			    	airbus.mes.shell.AutoRefreshManager.customTime();
+			    });
+			    document.addEventListener("mousewheel",function(){ 
+			    	console.log("mousewheel");
+			    	airbus.mes.shell.AutoRefreshManager.customTime();
+			    });
+			    document.addEventListener("touchmove", function(){ 
+			    	console.log("touchmove");
+			    	airbus.mes.shell.AutoRefreshManager.customTime();
+			    });
+			    document.addEventListener("MSPointerMove", function(){ 
+			    	console.log("MSPointerMove");
+			    	airbus.mes.shell.AutoRefreshManager.customTime();
+			    });*/
+	},
 	
+	/////////////////////////////////   old functions ///////////////////////////////////
+
 	pauseRefresh:function(){
 		var d = new Date();
 		this.pauseTime = d.getTime();	
-		console.log(" pause date : " + this.pauseTime);
+		//console.log(" pause date : " + this.pauseTime);
 		this.clearInterval();
 	},
 	

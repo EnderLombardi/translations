@@ -1092,7 +1092,7 @@ airbus.mes.stationtracker.ModelManager = {
 		sap.ui.getCore().getModel("operationDetailModel").refresh();
 
 		// Pause the Refresh timer till the Pop-Up is opened
-		airbus.mes.shell.AutoRefreshManager.pauseRefresh();
+		//airbus.mes.shell.AutoRefreshManager.pauseRefresh();
 
 	},
 	OpenReschedule : function(id) {
