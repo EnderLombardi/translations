@@ -457,21 +457,22 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		var dNewDate = sap.ui.getCore().byId("reschedulePage--datePicker").getDateValue();
 		var dNewDateSecond = sap.ui.getCore().byId("reschedulePage--hourPicker").getDateValue();
 		var sNewDate =  airbus.mes.stationtracker.util.Formatter.dDate2sDate(dNewDate);
-		var oModel = airbus.mes.stationtracker.ReschedulePopover.getModel("RescheduleModel").getData()[0]; 
+		var oModel = airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel");
+		
 		var oInitial = {
-	    		"start_date" : oModel.start_date,
-	    		"skill" : oModel.avlLine.split("_")[1],
-	    		"avlLine" : oModel.avlLine.split("_")[0],
-	    		"sSfcStep" :  oModel.sSfcStep,
-	    		"ProdGroup" : oModel.ProdGroup,
+	    		"start_date" : oModel.original_start_time.replace(" ","-"),
+	    		"skill" : oModel.skills,
+	    		"avlLine" : oModel.avlLine,
+	    		"sSfcStep" :  oModel.sfc_step_ref,
+	    		"ProdGroup" : oModel.prodGroup,
 	    };
 		
 		var oFinal = {
 				"start_date" : sNewDate,
-	    		"skill" : oModel.avlLine.split("_")[1],
-	    		"avlLine" : oModel.avlLine.split("_")[0],
-	    		"sSfcStep" :  oModel.sSfcStep,
-	    		"ProdGroup" : oModel.ProdGroup,
+				"skill" : oModel.skills,
+	    		"avlLine" : oModel.avlLine,
+	    		"sSfcStep" :  oModel.sfc_step_ref,
+	    		"ProdGroup" : oModel.prodGroup,
 	    		};
 		
 		

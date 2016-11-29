@@ -133,7 +133,7 @@ airbus.mes.operationdetail.ModelManager = {
 	 * Get URL for Operation Confirmation
 	 **************************************************************************/
 	getConfirmationUrl : function(userId, password, confirmationType,
-			percentConfirm, sfcStepRef, reasonCodeText, Mode, ID, pin,sWo) {
+			percentConfirm, sfcStepRef, reasonCodeText, Mode, ID, pin,osw) {
 		var totalPartialConfirmationUrl = this.urlModel
 				.getProperty("operationConfirmatonUrl");
 		totalPartialConfirmationUrl = airbus.mes.shell.ModelManager.replaceURI(
@@ -156,15 +156,15 @@ airbus.mes.operationdetail.ModelManager = {
 		totalPartialConfirmationUrl = airbus.mes.shell.ModelManager.replaceURI(
 				totalPartialConfirmationUrl, "$pin", pin);
 		totalPartialConfirmationUrl = airbus.mes.shell.ModelManager.replaceURI(
-				totalPartialConfirmationUrl, "$sWo", sWo);
+				totalPartialConfirmationUrl, "$osw", osw);
 		
 		return totalPartialConfirmationUrl;
 
 	},
 	
 
-		confirmOperation : function(userId, password, confirmationType,percentConfirm, sfcStepRef, reasonCodeText, Mode, ID, pin, sMessageError, sMessageSuccess,sWo) {
-			var url = this.getConfirmationUrl(userId, password, confirmationType,percentConfirm, sfcStepRef, reasonCodeText, Mode, ID, pin,sWo);
+		confirmOperation : function(userId, password, confirmationType,percentConfirm, sfcStepRef, reasonCodeText, Mode, ID, pin, sMessageError, sMessageSuccess,osw) {
+			var url = this.getConfirmationUrl(userId, password, confirmationType,percentConfirm, sfcStepRef, reasonCodeText, Mode, ID, pin,osw);
 			var flagSuccess;
 			jQuery
 					.ajax({

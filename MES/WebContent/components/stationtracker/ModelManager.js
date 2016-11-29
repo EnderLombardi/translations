@@ -1039,6 +1039,9 @@ airbus.mes.stationtracker.ModelManager = {
 			"Rowsets" : {
 				"Rowset" : [ {
 					"Row" : [ {
+						"prodGroup" : aModel[0].PROD_GROUP,
+						"skills" : aModel[0].SKILLS,
+						"avlLine" : aModel[0].AVL_LINE,
 						"sfc" : aModel[0].SFC,
 						"sfc_step_ref" : aModel[0].SFC_STEP_REF,
 						"operation_bo" : aModel[0].OPERATION_BO,
