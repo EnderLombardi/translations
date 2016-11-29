@@ -25,15 +25,18 @@ airbus.mes.disruptions.Formatter = {
 		
 		switch(iGravity) {
 		case "1":
+			return airbus.mes.settings.AppConfManager._getConfiguration("MES_COLOR_GRAVITY1");
+			break;
 		case "2":
-			return "green";
+			return airbus.mes.settings.AppConfManager._getConfiguration("MES_COLOR_GRAVITY2");
 			break;
 			
 		case "3":
-			if(escalationLevel>1)
+			/*if(escalationLevel>1)
 				return "red";
 			else
-				return "orange";			
+				return "orange";*/		
+			return airbus.mes.settings.AppConfManager._getConfiguration("MES_COLOR_GRAVITY3");
 			break;
 		default:
 			return "";

@@ -166,7 +166,8 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 
         // Pause the Refresh timer till the Pop-Up is opened
         //airbus.mes.shell.AutoRefreshManager.pauseRefresh();
-		this.getView().byId('refreshTime').setVisible(false);		
+		//this.getView().byId('refreshTime').setVisible(false);			--commented by MJ
+		airbus.mes.shell.oView.byId('refreshTime').setVisible(false);					// ++ MJ
 	},
 	
 	/**************************************

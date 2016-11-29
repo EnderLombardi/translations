@@ -321,7 +321,7 @@ airbus.mes.disruptions.ModelManager = {
 
 								// load disruption Model again for new message
 								var operationBO = sap.ui.getCore().getModel(
-										"operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_bo;
+										"operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_bo; 
 								airbus.mes.disruptions.ModelManager
 										.loadDisruptionsByOperation(operationBO);
 								

@@ -64,6 +64,9 @@
 					<Text text="{disruptiontrackerI18n>operation}" />
 				</Column>
 				<Column>
+					<Text text="{disruptiontrackerI18n>oldgravity}" />
+				</Column>
+				<Column>
 					<Text text="{disruptiontrackerI18n>gravity}" />
 				</Column>
 				<Column>
@@ -115,6 +118,10 @@
 							text="{parts: [ {path: 'disruptionsTrackerModel>Status'}, {path: 'disruptionsTrackerModel>Gravity'}, {path: 'disruptionsTrackerModel>Severity'} ], formatter: 'airbus.mes.disruptiontracker.Formatter.setText'}"
 							state="{parts: [ {path: 'disruptionsTrackerModel>Status'}, {path: 'disruptionsTrackerModel>Gravity'}, {path: 'disruptionsTrackerModel>Severity'} ], formatter: 'airbus.mes.disruptiontracker.Formatter.setState'}"
 							icon="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setIcon'}" />
+						<HBox>
+							<core:Icon src="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setIcon'}" color="{parts: [ {path: 'disruptionsTrackerModel>Status'}, {path: 'disruptionsTrackerModel>Gravity'}, {path: 'disruptionsTrackerModel>Severity'} ], formatter: 'airbus.mes.disruptiontracker.Formatter.setGravityColor'}" class="sapUiSmallMarginEnd" />
+							<Text text="{parts: [ {path: 'disruptionsTrackerModel>Status'}, {path: 'disruptionsTrackerModel>Gravity'}, {path: 'disruptionsTrackerModel>Severity'} ], formatter: 'airbus.mes.disruptiontracker.Formatter.setText'}" />
+						</HBox>	
 						<Text text="{disruptionsTrackerModel>Status}" />
 						<Text text="{disruptionsTrackerModel>Category}" />
 						<Text text="{disruptionsTrackerModel>Reason}" />
