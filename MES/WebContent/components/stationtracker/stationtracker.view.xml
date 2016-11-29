@@ -49,11 +49,11 @@
 
 							<HBox>
 								<VBox justifyContent="SpaceAround" width="50%" id="chartId">
-									<VBox>
-										<layout:Grid class="" defaultSpan="L6 M6 S12">
+									<VBox class="chartColumn">
+										<layout:Grid defaultSpan="L6 M6 S12">
 											<layout:content>
-												<Label text="{StationTrackerI18n>Plan}{KPIchartTaktAdherence>/planUI}" class="KpiMediumText KPITaktChartBlueText" />
-												<Label text="{StationTrackerI18n>Actual}{KPIchartTaktAdherence>/actualUI}" class="KpiMediumText whiteText KPITaktChartRightText" />
+												<Label text="{StationTrackerI18n>Plan}{KPIchartTaktAdherence>/planUI}" class="KPITaktChartBlueText" />
+												<Label text="{StationTrackerI18n>Actual}{KPIchartTaktAdherence>/actualUI}"/>
 											</layout:content>
 										</layout:Grid>
 										<custom:TaktAdherenceAreaChart
@@ -68,14 +68,11 @@
 											</custom:realData>
 										</custom:TaktAdherenceAreaChart>
 										<Label text="{StationTrackerI18n>PlannedStart} / {StationTrackerI18n>EndOfAssembly}" class=" whiteText" />
-										<!-- <layout:Grid class="" defaultSpan="L6 M6 S6">
-											<layout:content>
-												<Label text="{StationTrackerI18n>PlannedStart}" class=" whiteText" />
-												<Label text="{StationTrackerI18n>EndOfAssembly}" class=" whiteText" />
-											</layout:content>
-										</layout:Grid> -->
 										<layout:Grid class="" defaultSpan="L6 M6 S6">
 											<layout:content>
+												<!--<Label text="25 JUN - 7:00" class="whiteText" />
+												<Label text="02 JUL - 16:00" class="whiteText" />-->
+
 												<Label text="{path:'KPIchartTaktAdherence>/plannedStart', formatter:'airbus.mes.stationtracker.util.Formatter.dateToStringFormat'}" class=" whiteText" />
 												<Label text="{path:'KPIchartTaktAdherence>/endOfAssembly', formatter:'airbus.mes.stationtracker.util.Formatter.dateToStringFormat'}" class=" whiteText KPITaktChartRightText" />
 											</layout:content>
