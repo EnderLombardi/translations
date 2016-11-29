@@ -4,9 +4,9 @@
 	<Page id="reschedulePage" showHeader="false" horizontalScrolling="false"
 		class="pageHeaderDialog classWorklistPopover">
 		<content>
-			<HBox>
+			<HBox class="sapUiMediumMarginTop" justifyContent="Center" >
 
-				<VBox>
+				<VBox class="sapUiMediumMarginEnd" >
 
 					<Label text="{i18nModel>Date}"></Label>
 					<DatePicker id="datePicker" valueFormat="yyyy-MM-dd"

@@ -117,11 +117,8 @@ sap.ui
 					navigate : function() {
 						this.setInformationVisibility(false);
 						// Deactivate button on settings screen
-<<<<<<< Upstream, based on origin/MESv0.9
 						sap.ui.getCore().byId("popupSettingsButton").setEnabled(false);
-=======
-						sap.ui.getCore().byId("popupSettingsButton").setEnabled(false);
->>>>>>> 3228b27 [stationtracker] - reschedule
+
 						var textButtonTo = undefined;
 
 						switch (nav.getCurrentPage().getId()) {

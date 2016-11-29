@@ -333,14 +333,14 @@ airbus.mes.stationtracker.ModelManager = {
 							airbus.mes.stationtracker.oView.getController().openCheckQAPopup(checkQAModel);
 						} else if (data.Rowsets.Rowset[0].Row[0].message == "S") {
 							airbus.mes.shell.oView.getController().renderStationTracker();
-							airbus.mes.stationtracker.dialogProdGroup.close();
 							airbus.mes.stationtracker.ImportOswUnplannedPopover.close();
+							 if ( airbus.mes.stationtracker.dialogProdGroup != undefined ) { airbus.mes.stationtracker.dialogProdGroup.close(); }
 						}
 					} else {
 						
 						airbus.mes.shell.oView.getController().renderStationTracker();
-						airbus.mes.stationtracker.dialogProdGroup.close();
 						airbus.mes.stationtracker.ImportOswUnplannedPopover.close();
+						if ( airbus.mes.stationtracker.dialogProdGroup != undefined ) { airbus.mes.stationtracker.dialogProdGroup.close(); }
 					}
 				},
 			});
@@ -838,6 +838,7 @@ airbus.mes.stationtracker.ModelManager = {
 				}
 				if (airbus.mes.shell.util.Formatter.getMiiMessageType(data) == "E") {
 					sap.m.MessageToast.show(airbus.mes.shell.util.Formatter.getMiiTextFromData(data));
+					airbus.mes.shell.oView.getController().renderStationTracker();
 				} else if ( data.Rowsets.Rowset != undefined ) {
 					if (data.Rowsets.Rowset[0].Row[0].message == "W") {
 						var checkQAModel = new sap.ui.model.json.JSONModel();

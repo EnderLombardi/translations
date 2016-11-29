@@ -451,16 +451,23 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		//Close Popup
 		this.onCloseDialog(oEvent);
 	},
-	
+	/**
+	 * Fire when the user click on confirm in the operation info popup in folder
+	 * reschedule call the rescheduling service.
+	 *
+	 * @param{OBEJCT} oEvent, Object of event press
+	 */
 	onRescheduleConfirm : function(oEvent) {
-		
+
+		var fFormater = airbus.mes.stationtracker.util.Formatter;
 		var dNewDate = sap.ui.getCore().byId("reschedulePage--datePicker").getDateValue();
 		var dNewDateSecond = sap.ui.getCore().byId("reschedulePage--hourPicker").getDateValue();
-		var sNewDate =  airbus.mes.stationtracker.util.Formatter.dDate2sDate(dNewDate);
-		var oModel = airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel");
+		// Merge in string year mount date + hour minutes second in string + retransform in js date format
+		var sNewDate =  fFormater.jsDateFromDayTimeStr(fFormater.dDate2sDate(dNewDate).split("T")[0] + "T" + fFormater.dDate2sDate(dNewDateSecond).split("T")[1]);
+		var oModel = airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0];
 		
 		var oInitial = {
-	    		"start_date" : oModel.original_start_time.replace(" ","-"),
+	    		"start_date" : oModel.original_start_time.replace(" ","T"),
 	    		"skill" : oModel.skills,
 	    		"avlLine" : oModel.avlLine,
 	    		"sSfcStep" :  oModel.sfc_step_ref,
@@ -469,15 +476,14 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		
 		var oFinal = {
 				"start_date" : sNewDate,
+				// Merge avl + skill to correspond with the section_Id used in sendRescheduleRequest function.
+				"section_id" : "_" + oModel.avlLine + "_" + oModel.skills,
 				"skill" : oModel.skills,
 	    		"avlLine" : oModel.avlLine,
 	    		"sSfcStep" :  oModel.sfc_step_ref,
 	    		"ProdGroup" : oModel.prodGroup,
 	    		};
-		
-		
-		
-		
+	
 		airbus.mes.stationtracker.ModelManager.sendRescheduleRequest(false,oFinal,oInitial);
 		//Close Popup
 		this.onCloseDialog(oEvent);
@@ -492,25 +498,40 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	 */
 	onUnplannedImport : function() {
 
-		var oList = airbus.mes.stationtracker.ImportOswUnplannedPopover.getContent()[0].getItems()[1]; 
-		if(oList.getSelectedItems().length > 0 ){
+		var oList = airbus.mes.stationtracker.ImportOswUnplannedPopover.getContent()[0].getItems()[1];
+
+		if (oList.getSelectedItems().length > 0) {
+
+			if (airbus.mes.stationtracker.CheckQa === "UNPLANNED") {
+				var aPath = oList.getSelectedContextPaths();
+				var aSFC_Step = [];
+				aPath.forEach(function(el) {
 				
-			var oModel = sap.ui.getCore().getModel("productionGroupModel");
-			if (!airbus.mes.stationtracker.dialogProdGroup) {
-				airbus.mes.stationtracker.dialogProdGroup = sap.ui.xmlfragment("airbus.mes.stationtracker.dialogProdGroup", airbus.mes.stationtracker.oView.getController());
-				airbus.mes.stationtracker.dialogProdGroup.setModel(oModel, "productionGroupModel");
-				airbus.mes.stationtracker.dialogProdGroup.setModel(airbus.mes.stationtracker.oView.getModel("StationTrackerI18n"),"StationTrackerI18n");
-			}
-			
-			airbus.mes.stationtracker.dialogProdGroup.open();
+					aSFC_Step.push(airbus.mes.stationtracker.ImportOswUnplannedPopover.getModel("WorkListModel").getProperty(el).SFC_STEP_REF);
 					
-		}else{
-			
-			sap.m.MessageToast.show(airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("NoOSWData"));
+				});
+				
+				airbus.mes.stationtracker.ModelManager.setOSW(aSFC_Step, "", false, false);
+
+			} else {
+
+				var oModel = sap.ui.getCore().getModel("productionGroupModel");
+				if (!airbus.mes.stationtracker.dialogProdGroup) {
+					airbus.mes.stationtracker.dialogProdGroup = sap.ui.xmlfragment("airbus.mes.stationtracker.dialogProdGroup",	airbus.mes.stationtracker.oView.getController());
+					airbus.mes.stationtracker.dialogProdGroup.setModel(oModel, "productionGroupModel");
+					airbus.mes.stationtracker.dialogProdGroup.setModel(airbus.mes.stationtracker.oView.getModel("StationTrackerI18n"), "StationTrackerI18n");
+				}
+
+				airbus.mes.stationtracker.dialogProdGroup.open();
+			}
+		} else {
+
+			sap.m.MessageToast.show(airbus.mes.stationtracker.oView.getModel("StationTrackerI18n")
+					.getProperty("NoOSWData"));
 		}
-		
+
 	},
-	
+				
 	/***************************************************************************
      * Fire selected the prodGroup and import osw 
      * 
@@ -531,16 +552,8 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		airbus.mes.stationtracker.ImportOswUnplannedPopover.aSFC_Step = aSFC_Step;
 		airbus.mes.stationtracker.ImportOswUnplannedPopover.sProdGroup = sProdGroup;
 				
-		switch(airbus.mes.stationtracker.CheckQa) {
-	    case "OSW":
-	    	airbus.mes.stationtracker.ModelManager.setOSW(aSFC_Step,sProdGroup,false,true);
-	        break;
-	    case "UNPLANNED":
-	    	airbus.mes.stationtracker.ModelManager.setOSW(aSFC_Step,sProdGroup,false,false);
-	        break;
-	    default:
-	    	console.log("itsnot possible");
-	    }
+	   	airbus.mes.stationtracker.ModelManager.setOSW(aSFC_Step,sProdGroup,false,true);
+	   
 			
 	},
 	
@@ -987,7 +1000,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		switch(airbus.mes.stationtracker.CheckQa) {
 	    case "UNPLANNED":
 	    	var oModel = airbus.mes.stationtracker.ImportOswUnplannedPopover;
-	       	airbus.mes.stationtracker.ModelManager.setOSW(oModel.aSFC_Step,oModel.sProdGroup,true,false);
+	       	airbus.mes.stationtracker.ModelManager.setOSW(oModel.aSFC_Step,"",true,false);
 	        break;
 	    case "OSW":
 	    	var oModel = airbus.mes.stationtracker.ImportOswUnplannedPopover;

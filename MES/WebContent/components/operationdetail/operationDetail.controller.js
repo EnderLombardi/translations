@@ -191,13 +191,7 @@ sap.ui
 								return;
 							}
 
-//							var aOperationHierachy = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy;
 							var aModel = [sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0]];
-
-//							// Define all group
-//							for ( var oTmpOperationHierarchy in aOperationHierachy) {
-//								aGroup.push(oTmpOperationHierarchy);
-//							}
 
 							if (airbus.mes.stationtracker.ReschedulePopover === undefined) {
 								var oModel = airbus.mes.stationtracker.oView.getModel("StationTrackerI18n");
@@ -212,7 +206,7 @@ sap.ui
 							oModel.setData(aModel);
 							
 							airbus.mes.stationtracker.ReschedulePopover.setModel(oModel,"RescheduleModel");
-														
+							airbus.mes.stationtracker.ReschedulePopover.getModel()
 							if (sap.ui.getCore().byId("operationDetailsView--switchOperationModeBtn").getState() === true) {
 								
 								sap.ui.getCore().byId("operationDetailPopup--btnReschedule").setVisible(true);
