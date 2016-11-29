@@ -128,7 +128,7 @@
 														</Label>
 														<Label text="{KPItaktAdherence>/cycleTimeUI} Hrs"
 															class="whiteText taktKpiValue" />
-														<Label text="{StationTrackerI18n>WorkCintent}"
+														<Label text="{StationTrackerI18n>WorkContent}"
 															class="whiteText taktKpiName">
 															<layoutData>
 																<layout:GridData span="L8 M8 S8" />
@@ -147,7 +147,7 @@
 
 						</HBox>
 
-						<VBox id="boxLabourEfficiency" wrap="Wrap" width="7%"
+						<VBox id="boxLabourEfficiency" wrap="Wrap" width="9%"
 							class="contentHeaderCont kpiBoxes labourEfficiencyBox">
 							<Label text="{StationTrackerI18n>LabourEfficiency}"
 								width="100%" class="whiteTextHeader" />
@@ -186,21 +186,16 @@
 							</VBox>
 						</VBox>
 
-						<VBox id="boxOpenDisruptions" width="24%" class="contentHeaderCont kpiBoxes">
+						<VBox id="boxOpenDisruptions" width="22%" class="contentHeaderCont kpiBoxes">
 							<Label text="{StationTrackerI18n>DISRUPTION/ANDON}"
 								class="whiteTextHeader" />
 							<HBox class="kpiBodyWithoutMargin">
-								<VBox width="30%" justifyContent="SpaceAround" class="openDisruptionTotal">
+								<VBox width="25%" justifyContent="SpaceAround" class="openDisruptionTotal">
 									<Label text="{StationTrackerI18n>DisruptionTotal}" class="kpiName"
 										design="Bold" />
 									<Label text="{StationTrackerI18n>Disruption}" class="kpiName" />
 									<Label text="{KPIdisruption>/disruptionTotalUI}"
 										class="kpiValue" design="Bold" />
-									<!-- hard-coding to see real layouting -->
-									<!--<Label text="5"
-										class="kpiValue" design="Bold" />-->
-									<!--<Label text="15"
-										class="redText kpiValue kpiErrorValue" design="Bold" />-->
 									<Label text="{StationTrackerI18n>Andon}" class="redText kpiErrorValue"
 										design="Bold" />
 									<Label text="{KPIdisruption>/andonTotalUI}"
@@ -215,7 +210,7 @@
 									<Label text="{StationTrackerI18n>DisruptionFTE}"/>
 									<Label text="{StationTrackerI18n>DisruptionOther}"/>
 								</VBox>
-								<VBox alignItems="Center" width="20%" justifyContent="SpaceAround" class="openDisruptionValues kpiName">
+								<VBox alignItems="Center" width="22%" justifyContent="SpaceAround" class="openDisruptionValues kpiName">
 									<Label text="{StationTrackerI18n>Disruption}" class="whiteText" />
 									<Label text="{KPIdisruption>/disruptionNCUI}"
 										class=" whiteText" />
@@ -228,7 +223,7 @@
 									<Label text="{KPIdisruption>/disruptionOtherUI}"
 										class=" whiteText" />
 								</VBox>
-								<VBox alignItems="Center" width="15%" justifyContent="SpaceAround" class="openDisruptionAndon kpiName">
+								<VBox alignItems="Center" width="18%" justifyContent="SpaceAround" class="openDisruptionAndon kpiName">
 									<Label text="{StationTrackerI18n>Andon}" class="redText kpiErrorValue" />
 									<Label text="{KPIdisruption>/andonNCUI}"
 										class=" redText kpiErrorValue" />
