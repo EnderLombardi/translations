@@ -118,13 +118,13 @@ airbus.mes.disruptiontracker.Formatter = {
 		
 		if (unit == "HR")
 			ttgf = ( Math.round( (oClosureDate - oOpenDate)/(1000 * 60 * 60) * 100 ) / 100 ) + " hr";
-		
+			
 		else if (unit == "IM")
-			ttgf = ( Math.round( (oClosureDate - oOpenDate)/(1000 * 60 * 60) * 100 ) / 100 ) + " im";
-		
+			ttgf = ( Math.round( (oClosureDate - oOpenDate) * 100 / (1000 * 60 * 60) * 100 ) / 100 ) + " im";
+			
 		else if (unit == "M")
 			ttgf = ( Math.round( (oClosureDate - oOpenDate)/(1000 * 60) * 100 ) / 100 ) + " mim";
-		
+			
 		else if (unit == "D")
 			ttgf = ( Math.round( (oClosureDate - oOpenDate)/(1000 * 60 * 60 * 24) * 100 ) / 100 ) + " days";
 		
