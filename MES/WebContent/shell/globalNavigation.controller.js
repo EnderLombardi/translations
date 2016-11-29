@@ -118,7 +118,6 @@ sap.ui
 						this.setInformationVisibility(false);
 						// Deactivate button on settings screen
 						sap.ui.getCore().byId("popupSettingsButton").setEnabled(false);
-
 						var textButtonTo = undefined;
 
 						switch (nav.getCurrentPage().getId()) {
