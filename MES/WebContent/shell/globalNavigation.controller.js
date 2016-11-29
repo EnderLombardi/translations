@@ -148,47 +148,65 @@ sap.ui
 						default:
 						}
 					},
-					
-					onPressConnection : function() {
-					},
 
 					onNavigate : function() {
 						airbus.mes.shell.AutoRefreshManager.clearInterval();
 					},
 					
 					/**
-					 * Refresh gantt view
+					 * Refresh view
 					 */
-					refreshgantt: function() {
+					refreshbtn: function() {
 						console.log(" ========== refresh ==========");
-						airbus.mes.shell.oView.getController().renderStationTracker();
-						airbus.mes.shell.AutoRefreshManager.clearInterval();
-						airbus.mes.shell.AutoRefreshManager.setInterval("stationTrackerView");
+						switch (nav.getCurrentPage().getId()) {
+						
+							case "stationTrackerView":
+								this.renderStationTracker();
+								airbus.mes.shell.oView.getController().renderStationTracker();
+								airbus.mes.shell.AutoRefreshManager.clearInterval();
+								airbus.mes.shell.AutoRefreshManager.setInterval("stationTrackerView");
+								break;
+							case "disruptiontrackerView":
+								airbus.mes.shell.AutoRefreshManager.clearInterval();
+								airbus.mes.shell.AutoRefreshManager.setInterval("disruptiontrackerView");
+								break;
+							case "disruptionKPIView":
+								airbus.mes.shell.AutoRefreshManager.clearInterval();
+								airbus.mes.shell.AutoRefreshManager.setInterval("disruptionKPIView");
+								break;
+							default:
+							}
 					},
-
+					
 					renderViews : function() {
-						if (nav.getCurrentPage().getId() != "homePageView") {
-							airbus.mes.shell.oView.byId("homeButton").setVisible(true);
-							airbus.mes.shell.oView.byId("SelectLanguage").setVisible(false);
-						} else {
+						
+						switch (nav.getCurrentPage().getId()) {
+						case "homePageView":
+							airbus.mes.shell.oView.byId('refreshTime').setVisible(false);
 							airbus.mes.shell.oView.byId("homeButton").setVisible(false);
 							airbus.mes.shell.oView.byId("SelectLanguage").setVisible(true);
-						}
-
-						switch (nav.getCurrentPage().getId()) {
-
+							break;
+						case "View1":
+							airbus.mes.shell.oView.byId('refreshTime').setVisible(false);
+							break;
 						case "stationTrackerView":
 							this.renderStationTracker();
-							// Set Refresh Interval based on configuration
 							airbus.mes.shell.AutoRefreshManager.setInterval("stationTrackerView");
+							airbus.mes.shell.oView.byId('refreshTime').setVisible(true);
+							airbus.mes.shell.oView.byId("homeButton").setVisible(true);
+							airbus.mes.shell.oView.byId("SelectLanguage").setVisible(false);
 							break;
 						case "disruptiontrackerView":
-							// Set Refresh Interval based on configuration
 							airbus.mes.shell.AutoRefreshManager.setInterval("disruptiontrackerView");
+							airbus.mes.shell.oView.byId('refreshTime').setVisible(true);
+							airbus.mes.shell.oView.byId("homeButton").setVisible(true);
+							airbus.mes.shell.oView.byId("SelectLanguage").setVisible(false);
 							break;
 						case "disruptionKPIView":
-							// Set Refresh Interval based on configuration
 							airbus.mes.shell.AutoRefreshManager.setInterval("disruptionKPIView");
+							airbus.mes.shell.oView.byId('refreshTime').setVisible(true);
+							airbus.mes.shell.oView.byId("homeButton").setVisible(true);
+							airbus.mes.shell.oView.byId("SelectLanguage").setVisible(false);
 							break;
 						case "resourcePool":
 							airbus.mes.resourcepool.util.ModelManager.askResourcePool();
@@ -231,7 +249,6 @@ sap.ui
 
 					setInformationVisibility : function(bSet) {
 						this.getView().byId("informationButton").setVisible(bSet);
-						this.getView().byId('refreshTime').setVisible(bSet);
 						this.getView().byId("homeButton").setVisible(bSet);
 						this.getView().byId("SelectLanguage").setVisible(!bSet);
 					},
@@ -497,11 +514,6 @@ sap.ui
 						Cookies.remove("login");
 						window.location = window.location.origin + window.location.pathname;
 
-					},
-					
-					/** 
-					 * test */
-					onExit: function() {
-						console.log("onExit() of controller called...");
-					  }
+					}
 				});
+

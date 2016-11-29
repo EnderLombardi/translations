@@ -24,7 +24,7 @@ airbus.mes.shell.AutoRefreshManager =  {
 	defaultKey : "MES_REFRESH_DEF_VAL",
 	
 	/**
-	* Set Refresh Interval based on configuration
+	*  Set Refresh Interval based on configuration
 	*/
 	
 	setInterval: function(viewName){
@@ -41,78 +41,55 @@ airbus.mes.shell.AutoRefreshManager =  {
 		this.viewName = viewName;
 		
 		switch(viewName){
-		
-		case "stationTrackerView":
-			
-			airbus.mes.shell.AutoRefreshManager.lastRefreshTimefct();
-			airbus.mes.shell.AutoRefreshManager.dateNow();
-			
-			// value to decrease the timer show in the station tracker view
-			// Get interval time from configuration (Primary Key, Default Key, radix 10)
-			this.refreshInterval = parseInt(airbus.mes.settings.AppConfManager.getConfiguration(	
-				"REFRESH_STATION_TRACKER_"+station, this.defaultKey), 10 
-				);
-
-			//this.autoRefreshAPI = airbus.mes.shell.oView.oController.renderStationTracker;
-			
-			// Button refresh
-			this.autoRefresh = window.setInterval(function refreshTime(){
-				
-				var sVal = airbus.mes.shell.AutoRefreshManager; 
-				//Difference in second between the two dates
-				sVal.timer=Math.floor((sVal.dateNow()-sVal.lastRefreshTime2)/1000);
-				//console.log(sVal.timer);
-				
-				if(sVal.timer < 60 ){
-					airbus.mes.shell.oView.byId('refreshTime').setText(" Last Refresh : " + sVal.timer + "s");
-				} else {
-					airbus.mes.shell.oView.byId('refreshTime').setText(" Last Refresh : >" + Math.trunc(sVal.timer/60) + "min");
-				}
-				//refresh when times are equal
-				if(sVal.timer%sVal.refreshInterval == 0 && sVal.timer !=0) {
-					//change last Refresh Time 
-					sVal.lastRefreshTimefct();
-					//refresh
-					airbus.mes.shell.oView.getController().renderStationTracker();
-		            }
-				sVal.timer++;
-		    }, 1000);
-			break;
-			
-		case "disruptiontrackerView":
-			
-			/**********************************************
-			 * Set Window Interval
-			 */
-			this.refreshInterval = parseInt(
-				airbus.mes.settings.AppConfManager.getConfiguration(		// Get interval time from configuration
-					"REFRESH_DISRUPTION_TRACKER_"+station,					// Primary Key
-					this.defaultKey											// Default Key
-				), 10														// radix 10
-			)*1000;
-			
-			this.autoRefreshAPI = airbus.mes.disruptiontracker.ModelManager.loadDisruptionTrackerModel;
-			//this.autoRefresh = setInterval(airbus.mes.disruptiontracker.ModelManager.loadDisruptionTrackerModel, this.refreshInterval);
-			break;
-			
-			
-		case "disruptionKPIView":
-			
-			/**********************************************
-			 * Set Window Interval
-			 */
-			this.refreshInterval = parseInt(
-				airbus.mes.settings.AppConfManager.getConfiguration(		// Get interval time from configuration
-					"REFRESH_DISRUPTION_KPI_"+station,						// Primary Key
-					this.defaultKey											// Default Key
-				), 10														// radix 10
-			)*1000;
-			
-			this.autoRefreshAPI = airbus.mes.disruptiontracker.kpi.ModelManager.loadDisruptionKPIModel;
-			//this.autoRefresh = setInterval(airbus.mes.disruptiontracker.kpi.ModelManager.loadDisruptionKPIModel, this.refreshInterval);
-			break;
-		default : 
+			case "stationTrackerView":
+				// value to decrease the timer show in the station tracker view
+				// Get interval time from configuration (Primary Key, Default Key, radix 10)
+				this.refreshInterval = parseInt(
+						airbus.mes.settings.AppConfManager.getConfiguration("REFRESH_STATION_TRACKER_"+station, this.defaultKey), 10 
+					);
+				break;			
+			case "disruptiontrackerView":
+				this.refreshInterval = parseInt(
+						airbus.mes.settings.AppConfManager.getConfiguration("REFRESH_DISRUPTION_TRACKER_"+station,this.defaultKey), 10														// radix 10
+					);
+				break;	
+			case "disruptionKPIView":			
+				this.refreshInterval = parseInt(
+						airbus.mes.settings.AppConfManager.getConfiguration("REFRESH_DISRUPTION_KPI_"+station,this.defaultKey), 10														// radix 10
+					);
+				break;
+			default:
 		}
+		
+		// init function
+		airbus.mes.shell.AutoRefreshManager.lastRefreshTimefct();
+		airbus.mes.shell.AutoRefreshManager.dateNow();
+
+		//this.autoRefreshAPI = airbus.mes.shell.oView.oController.renderStationTracker;
+			
+		// Button refresh
+		this.autoRefresh = window.setInterval(function refreshTime(){
+			
+			var sVal = airbus.mes.shell.AutoRefreshManager; 
+			//Difference in second between the two dates
+			sVal.timer=Math.floor((sVal.dateNow()-sVal.lastRefreshTime2)/1000);
+			//console.log(sVal.timer);
+			
+			if(sVal.timer < 60 ){
+				airbus.mes.shell.oView.byId('refreshTime').setText(" Last Refresh : " + sVal.timer + "s");
+			} else {
+				airbus.mes.shell.oView.byId('refreshTime').setText(" Last Refresh : >" + Math.trunc(sVal.timer/60) + "min");
+			}
+			//refresh when times are equal
+			if(sVal.timer%sVal.refreshInterval == 0 && sVal.timer !=0) {
+				//change last Refresh Time 
+				sVal.lastRefreshTimefct();
+				//refresh
+				airbus.mes.shell.oView.getController().renderStationTracker();
+	            }
+			sVal.timer++;
+	    }, 1000);
+						
 		//this.autoRefresh = setInterval(this.autoRefreshFunc, this.refreshInterval);
 		this.lastRefreshTime = 0;
 	},
