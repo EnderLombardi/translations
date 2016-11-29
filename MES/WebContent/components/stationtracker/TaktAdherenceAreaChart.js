@@ -43,11 +43,26 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.TaktAdherenceAreaChart", {
 		var oCtrl = oEvt.srcControl; 
 		var data = oCtrl.getData().map(bindingToArray);
 		var realData = oCtrl.getRealData().map(bindingToArray);
+		var bDisplayCircles = true;
+		var maxData = data;
 		
-		if(data.length == 0){
+		if(data.length < realData.length){
+			for(var i=0; i<(realData.length - data.length); i++){
+				//Deep clone last object of data and increment its x value by 1
+				data.push(JSON.parse(JSON.stringify(data[data.length-1])));
+				data[data.length-1].x = (parseInt(data[data.length-1].x, 10)+1).toString();
+				bDisplayCircles = false;
+				maxData = realData;
+			}
+		}else if(data.length == 0){
 			data=[{x:"0", y:"0"}, {x:"0", y:"0"}];
 			realData=[{x:"0", y:"0"}, {x:"0", y:"0"}];
+			bDisplayCircles = false;
+		}else if(realData.length == 0 || data.length == realData.length){
+			bDisplayCircles = false;
 		}
+		
+		
 		
 //		var data = [
 //			{ x: 0, y: 5, },
@@ -92,16 +107,16 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.TaktAdherenceAreaChart", {
 
 		//axes
 		var x = d3.scale.linear()
-			.domain([0, d3.max(data, function (d) { return d.x; })])
+			.domain([0, d3.max(maxData, function (d) { return d.x; })])
 			.range([0, width]);
 
 		var y = d3.scale.linear()
-			.domain([0, d3.max(data, function (d) { return d.y; })])
+			.domain([0, d3.max(maxData, function (d) { return d.y; })])
 			.range([height, 0]);
 
-//		var xAxis = d3.svg.axis()
-//			.scale(x)
-//			.orient("bottom");
+		var xAxis = d3.svg.axis()
+			.scale(x)
+			.orient("bottom");
 
 		var yAxis = d3.svg.axis()
 			.scale(y)
@@ -168,25 +183,42 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.TaktAdherenceAreaChart", {
 //			.datum(estimateData)
 //			.attr("class", "estimateLine")
 //			.attr("d", line);
-		//Draw vertical line
-		svg.append("line")
-			.attr("x1", function () { return x(data[data.length - 2].x); })
+//		//Draw vertical line
+//		svg.append("line")
+//			.attr("x1", function () { return x(data[data.length - 2].x); })
+//			.attr("y1", function () { return y(0); })
+//			.attr("x2", function () { return x(data[data.length - 2].x); })
+//			.attr("y2", function () { return y(d3.max(data, function (d) { return d.y; })); })
+//			.style("stroke-width", 1)
+//			.style("stroke", "white");
+//		//Draw the blue Circle
+//		var circle = svg.append("circle") //FIXME : ESLint (Not used) but needed
+//			.attr("cx", function () { return x(data[data.length - 2].x); })
+//			.attr("cy", function () { return y(data[data.length - 2].y); })
+//			.attr("r", 3)
+//			.attr("fill", "#0D2C63");
+		
+		if(bDisplayCircles){
+			//Draw vertical line
+			svg.append("line")
+			.attr("x1", function () { return x(realData[realData.length - 1].x); })
 			.attr("y1", function () { return y(0); })
-			.attr("x2", function () { return x(data[data.length - 2].x); })
+			.attr("x2", function () { return x(realData[realData.length - 1].x); })
 			.attr("y2", function () { return y(d3.max(data, function (d) { return d.y; })); })
 			.style("stroke-width", 1)
 			.style("stroke", "white");
-		//Draw the blue Circle
-		var circle = svg.append("circle") //FIXME : ESLint (Not used) but needed
-			.attr("cx", function () { return x(data[data.length - 2].x); })
-			.attr("cy", function () { return y(data[data.length - 2].y); })
+			//Draw the blue Circle
+			var circle = svg.append("circle") //FIXME : ESLint (Not used) but needed
+			.attr("cx", function () { return x(data[realData.length - 1].x); })
+			.attr("cy", function () { return y(data[realData.length - 1].y); })
 			.attr("r", 3)
 			.attr("fill", "#0D2C63");
-		//Draw the white Circle
-		var circle = svg.append("circle")
+			//Draw the white Circle
+			var circle = svg.append("circle")
 			.attr("cx", function () { return x(realData[realData.length - 1].x); })
 			.attr("cy", function () { return y(realData[realData.length - 1].y); })
 			.attr("r", 3)
 			.attr("fill", "white");
+		}
 	}
 });

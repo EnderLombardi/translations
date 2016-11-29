@@ -168,6 +168,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
         //airbus.mes.shell.AutoRefreshManager.pauseRefresh();
 		//this.getView().byId('refreshTime').setVisible(false);			--commented by MJ
 		airbus.mes.shell.oView.byId('refreshTime').setVisible(false);					// ++ MJ
+		//this.getView().byId('refreshTime').setVisible(false);		
 	},
 	
 	/**************************************

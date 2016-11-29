@@ -12,9 +12,9 @@
 								<Label id="labelMSN" text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/msn', formatter : 'airbus.mes.shell.util.Formatter.stationTrackerMsn' }" class="pageWelcome sapUiTinyMarginBeginEnd" /> 
 								<Label text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/siteDescription', formatter : 'airbus.mes.shell.util.Formatter.stationTrackerPlant' }" class="pageWelcome sapUiTinyMarginBeginEnd" />
 								<Label text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/lineDescription', formatter : 'airbus.mes.shell.util.Formatter.stationTrackerLine' }" class="pageWelcome sapUiTinyMarginBeginEnd" />					
-					       	<ToolbarSpacer />	
-							<Button id="refreshTime" press="refreshbtn" text="Last Refresh : 0s" visible="false" enabled="false"></Button> 
-							<Button id="localDELog" press="logOut" text="Remove Cookie"></Button>                         
+					       	<ToolbarSpacer />	                   
+							<Button id="refreshTime"  icon="sap-icon://refresh" press="refreshbtn" text="Last Refresh : 0s" visible="false" enabled="false" type="Transparent"></Button> 
+							<Button id="localDELog" press="logOut" text="Remove Cookie" type="Transparent"></Button>                         
                          	 <Select id="SelectLanguage" class="sapUiTinyMarginBeginEnd pageHeader pageHeaderBlue" change="onChangeLanguage"> 
 	                           		<core:Item text="English" key="en"/>
 	                           		<core:Item text="Deutsch" key="de"/>
