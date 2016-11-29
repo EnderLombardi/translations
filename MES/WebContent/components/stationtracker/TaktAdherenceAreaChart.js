@@ -40,7 +40,8 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.TaktAdherenceAreaChart", {
 			return {x : c.getX(), y : c.getY()}
 		}
 		
-		var oCtrl = oEvt.srcControl; 
+		var oCtrl = airbus.mes.stationtracker.oView.byId("stationTrackerView--takt_adherence_area_chart");
+//		var oCtrl = oEvt.srcControl; 
 		var data = oCtrl.getData().map(bindingToArray);
 		var realData = oCtrl.getRealData().map(bindingToArray);
 		var bDisplayCircles = true;
@@ -89,10 +90,10 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.TaktAdherenceAreaChart", {
 		//in progress
 		$(window).on("resize", function() {
 			if (chart.width() > 0){
-				// var contWidth = chart.width();
-				// chart.attr("width", contWidth);
-				// chart.attr("height", contHeight);
-				// onAfterRendering();
+				 var contWidth = chart.width();
+				 chart.attr("width", contWidth);
+				 chart.attr("height", contHeight);
+				 onAfterRendering();
 			}
 		});
 
