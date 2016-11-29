@@ -163,7 +163,7 @@ sap.ui
 						
 							case "stationTrackerView":
 								this.renderStationTracker();
-								airbus.mes.shell.oView.getController().renderStationTracker();
+								//airbus.mes.shell.oView.getController().renderStationTracker();
 								airbus.mes.shell.AutoRefreshManager.clearInterval();
 								airbus.mes.shell.AutoRefreshManager.setInterval("stationTrackerView");
 								break;

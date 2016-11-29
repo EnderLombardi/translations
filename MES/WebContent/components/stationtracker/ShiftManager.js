@@ -630,23 +630,29 @@ airbus.mes.stationtracker.ShiftManager = {
 					if ( bResult ) {
 						
 						return true;
+						
 					} 
 							
-						var aOpration = oOperation[aBox];
-						//Parse all opration in corresponding group avlLine return true if one is not completed
-						aOpration.forEach(function(el,index){
-							// check if operation start date is less than the end date of prevous shift.
-							if ( airbus.mes.stationtracker.util.Formatter.jsDateFromDayTimeStr(aOpration[index].START_TIME) <  oPreviousShift.EndDate ) {
+					var aOpration = oOperation[aBox];
+					//Parse all opration in corresponding group avlLine return true if one is not completed
+					aOpration.forEach(function(el,index){
+						// check if operation start date is less than the end date of prevous shift.
+						if ( airbus.mes.stationtracker.util.Formatter.jsDateFromDayTimeStr(aOpration[index].START_TIME) <  oPreviousShift.EndDate ) {
+						
+							if ( el.STATE != "C" )
+						
+							return bResult = true;	
 							
-								if ( el.STATE != "C" )
-							
-								bResult = true;	
-							
-							}
-														
-						})
+						
+						}
+													
+					})	
 					
 				}
+				if ( bResult ) {
+					
+					return true;
+				} 
 			// All operation are completed
 			return false;
 				
