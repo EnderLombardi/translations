@@ -306,6 +306,23 @@
 												</Text>
 											</f:fields>
 										</f:FormElement>
+										
+										<f:FormElement visible="{path: 'operationDisruptionsModel>ClosureDate', formatter: 'airbus.mes.disruptions.Formatter.setTtgfVisibility'}">
+											<f:label>
+												<Label class="detailLabels" text="Time To Get Fix">
+													<layoutData>
+														<l:GridData span="L3 M3 S12" />
+													</layoutData>
+												</Label>
+											</f:label>
+											<f:fields>
+												<Text text="{parts: [ {path: 'operationDisruptionsModel>OpeningTime'}, {path: 'operationDisruptionsModel>ClosureDate'}], formatter: 'airbus.mes.disruptiontracker.Formatter.formatTTGF'}">
+													<layoutData>
+														<l:GridData span="L3 M3 S12" />
+													</layoutData>
+												</Text>
+											</f:fields>
+										</f:FormElement>
 
 									</f:formElements>
 								</f:FormContainer>

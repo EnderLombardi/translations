@@ -130,7 +130,8 @@
 						<Text text="{path: 'disruptionsTrackerModel>EscalationLevel', formatter: 'airbus.mes.disruptiontracker.Formatter.setEscalationText'}" />
 						<Text text="{disruptionsTrackerModel>OpeningTime}" />
 						<Text text="{disruptionsTrackerModel>RequiredFixBy}" />
-						<Text text="{path: 'disruptionsTrackerModel>FixedByTime', formatter: 'airbus.mes.disruptiontracker.Formatter.formatTTGF'}" />
+						<!-- <Text text="{path: 'disruptionsTrackerModel>FixedByTime', formatter: 'airbus.mes.disruptiontracker.Formatter.formatTTGF'}" /> -->
+						<Text text="{parts: [ {path: 'disruptionsTrackerModel>OpeningTime'}, {path: 'disruptionsTrackerModel>ClosureDate'}], formatter: 'airbus.mes.disruptiontracker.Formatter.formatTTGF'}" />
 						<Text text="{disruptionsTrackerModel>TimeBeforeNextEscalation}" />
 						<Text text="{disruptionsTrackerModel>Description}" />
 						<Text text="{disruptionsTrackerModel>Solution}" />

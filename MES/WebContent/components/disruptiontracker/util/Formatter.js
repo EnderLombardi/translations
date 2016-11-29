@@ -87,7 +87,51 @@ airbus.mes.disruptiontracker.Formatter = {
 		
 	},
 	
-	formatTTGF: function(ttgf){
+	formatTTGF: function(openDate, closureDate){
+		if(closureDate == undefined || closureDate == "")
+			return 0;
+		
+		var reggie = /(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})/;
+		var aOpenDate = reggie.exec(openDate); 
+		var oOpenDate = new Date(
+		    (+aOpenDate[1]),
+		    (+aOpenDate[2])-1, // Careful, month starts at 0!
+		    (+aOpenDate[3]),
+		    (+aOpenDate[4]),
+		    (+aOpenDate[5]),
+		    (+aOpenDate[6])
+		);
+		
+		var aClosureDate = reggie.exec(closureDate); 
+		var oClosureDate = new Date(
+		    (+aClosureDate[1]),
+		    (+aClosureDate[2])-1, // Careful, month starts at 0!
+		    (+aClosureDate[3]),
+		    (+aClosureDate[4]),
+		    (+aClosureDate[5]),
+		    (+aClosureDate[6])
+		);
+		
+		var unit = airbus.mes.settings.AppConfManager._getConfiguration("MES_TIME_UNIT");
+		
+		var ttgf;
+		
+		if (unit == "HR")
+			ttgf = ( Math.round( (oClosureDate - oOpenDate)/(1000 * 60 * 60) * 100 ) / 100 ) + " hr";
+		
+		else if (unit == "IM")
+			ttgf = ( Math.round( (oClosureDate - oOpenDate)/(1000 * 60 * 60) * 100 ) / 100 ) + " im";
+		
+		else if (unit == "M")
+			ttgf = ( Math.round( (oClosureDate - oOpenDate)/(1000 * 60) * 100 ) / 100 ) + " mim";
+		
+		else if (unit == "D")
+			ttgf = ( Math.round( (oClosureDate - oOpenDate)/(1000 * 60 * 60 * 24) * 100 ) / 100 ) + " days";
+		
+		return ttgf;
+	},
+	
+	/*formatTTGF: function(ttgf){
 		if(ttgf == undefined || ttgf == "")
 			return 0;
 		
@@ -104,9 +148,9 @@ airbus.mes.disruptiontracker.Formatter = {
 		
 		var oDate = new Date();
 		
-		/***********************************************************
+		*//***********************************************************
 		 * Convert Difference in to Days, Hours and Minutes format
-		 */
+		 *//*
 		var seconds = Math.floor((oTTGF- oDate)/1000);
 		if(seconds <= 0 )
 			return 0;
@@ -143,7 +187,7 @@ airbus.mes.disruptiontracker.Formatter = {
 		}
 		
 		return sTime;
-	},
+	},*/
 	
 	setEscalationText : function(escalationLevel) {
 		if(escalationLevel == 1)

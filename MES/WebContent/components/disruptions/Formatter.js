@@ -277,6 +277,15 @@ airbus.mes.disruptions.Formatter = {
 		}
 		return loNewStr;
 		
+	},
+	
+
+	
+	setTtgfVisibility : function(closureDate) {
+		if (closureDate != "")
+			return true;
+		
+		return false;
 	}
 
 };
