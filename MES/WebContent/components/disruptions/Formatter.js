@@ -279,7 +279,7 @@ airbus.mes.disruptions.Formatter = {
 	
 
 	
-	setTtgfVisibility : function(closureDate) {
+	setOpeningTimeVisibility : function(closureDate) {
 		if (closureDate != "")
 			return true;
 		

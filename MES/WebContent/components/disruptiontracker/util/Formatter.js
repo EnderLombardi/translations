@@ -87,7 +87,7 @@ airbus.mes.disruptiontracker.Formatter = {
 		
 	},
 	
-	formatTTGF: function(openDate, closureDate){
+	formatOpeningTime: function(openDate, closureDate){
 		if(closureDate == undefined || closureDate == "")
 			return 0;
 		
@@ -114,80 +114,22 @@ airbus.mes.disruptiontracker.Formatter = {
 		
 		var unit = airbus.mes.settings.AppConfManager._getConfiguration("MES_TIME_UNIT");
 		
-		var ttgf;
+		var openingTime;
 		
 		if (unit == "HR")
-			ttgf = ( Math.round( (oClosureDate - oOpenDate)/(1000 * 60 * 60) * 100 ) / 100 ) + " hr";
+			openingTime = ( Math.round( (oClosureDate - oOpenDate)/(1000 * 60 * 60) * 100 ) / 100 ) + " Hr";
 			
 		else if (unit == "IM")
-			ttgf = ( Math.round( (oClosureDate - oOpenDate) * 100 / (1000 * 60 * 60) * 100 ) / 100 ) + " im";
+			openingTime = ( Math.round( (oClosureDate - oOpenDate) * 100 / (1000 * 60 * 60) * 100 ) / 100 ) + " IM";
 			
 		else if (unit == "M")
-			ttgf = ( Math.round( (oClosureDate - oOpenDate)/(1000 * 60) * 100 ) / 100 ) + " mim";
+			openingTime = ( Math.round( (oClosureDate - oOpenDate)/(1000 * 60) * 100 ) / 100 ) + " Min";
 			
 		else if (unit == "D")
-			ttgf = ( Math.round( (oClosureDate - oOpenDate)/(1000 * 60 * 60 * 24) * 100 ) / 100 ) + " days";
+			openingTime = ( Math.round( (oClosureDate - oOpenDate)/(1000 * 60 * 60 * 24) * 100 ) / 100 ) + " Days";
 		
-		return ttgf;
+		return openingTime;
 	},
-	
-	/*formatTTGF: function(ttgf){
-		if(ttgf == undefined || ttgf == "")
-			return 0;
-		
-		var reggie = /(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})/;
-		var aTTGF = reggie.exec(ttgf); 
-		var oTTGF = new Date(
-		    (+aTTGF[1]),
-		    (+aTTGF[2])-1, // Careful, month starts at 0!
-		    (+aTTGF[3]),
-		    (+aTTGF[4]),
-		    (+aTTGF[5]),
-		    (+aTTGF[6])
-		);
-		
-		var oDate = new Date();
-		
-		*//***********************************************************
-		 * Convert Difference in to Days, Hours and Minutes format
-		 *//*
-		var seconds = Math.floor((oTTGF- oDate)/1000);
-		if(seconds <= 0 )
-			return 0;
-		
-		var minutes = Math.floor(seconds/60);
-		var hours = Math.floor(minutes/60);
-		var days = Math.floor(hours/24);
-
-		hours = hours-(days*24);
-		minutes = minutes-(days*24*60)-(hours*60);
-		seconds = seconds-(days*24*60*60)-(hours*60*60)-(minutes*60);	
-		
-		var sTime = "";
-		
-		if(days > 0)
-			sTime = sTime + days + "D";
-		
-		if(hours > 0){
-			if(sTime != "")
-				sTime = sTime + " ";
-			sTime = sTime + hours + "H";
-		}
-		
-		if(minutes > 0){
-			if(sTime != "")
-				sTime = sTime + " ";
-			sTime = sTime + minutes + "M";
-		}
-		
-		if(seconds > 0){
-			if(sTime != "")
-				sTime = sTime + " ";
-			sTime = sTime + seconds + "S";
-		}
-		
-		return sTime;
-	},*/
 	
 	setEscalationText : function(escalationLevel) {
 		if(escalationLevel == 1)

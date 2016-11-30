@@ -36,7 +36,7 @@
 					<ComboBox id="resolutionGroupBox" class="sapUiMediumMarginEnd"
 						placeholder="{disruptiontrackerI18n>resolutionGroup}" items="{disruptionsTrackerModel>/Rowsets/Rowset/0/Row}"
 						selectedKey="" selectionChange="filterDisruptions">
-						<core:Item key="{disruptionsTrackerModel>ResponsibleGroup}" text="{disruptionsTrackerModel>ResponsibleGroup}" />
+						<core:Item key="{disruptionsTrackerModel>ResponsibleGroup}" text="{disruptionsTrackerModel>ResponsibleGroupDesc}" />
 					</ComboBox>
 
 					<!-- <SearchField width="13rem" placeholder="{disruptiontrackerI18n>search}" /> -->
@@ -128,10 +128,8 @@
 						<Text text="{disruptionsTrackerModel>OriginatorGroupDesc}" />
 						<Text text="{disruptionsTrackerModel>ResponsibleGroupDesc}" />
 						<Text text="{path: 'disruptionsTrackerModel>EscalationLevel', formatter: 'airbus.mes.disruptiontracker.Formatter.setEscalationText'}" />
-						<Text text="{parts: [ {path: 'disruptionsTrackerModel>OpeningTime'}, {path: 'disruptionsTrackerModel>ClosureDate'}], formatter: 'airbus.mes.disruptiontracker.Formatter.formatTTGF'}" />
-						<!-- <Text text="{disruptionsTrackerModel>RequiredFixBy}" /> -->
+						<Text text="{parts: [ {path: 'disruptionsTrackerModel>OpeningTime'}, {path: 'disruptionsTrackerModel>ClosureDate'}], formatter: 'airbus.mes.disruptiontracker.Formatter.formatOpeningTime'}" />
 						<Text text="0" />
-						<!-- <Text text="{path: 'disruptionsTrackerModel>FixedByTime', formatter: 'airbus.mes.disruptiontracker.Formatter.formatTTGF'}" /> -->
 						<Text text="{disruptionsTrackerModel>TimeBeforeNextEscalation}" />
 						<Text text="{disruptionsTrackerModel>Description}" />
 						<Text text="{disruptionsTrackerModel>Solution}" />
