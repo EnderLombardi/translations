@@ -5,7 +5,7 @@
 		<customHeader>
 			<Toolbar>
 				<ToolbarSpacer />
-				<Label id="LabelTitle" text="Import" />
+				<Label id="LabelTitle"/>
 				<ToolbarSpacer />
 			</Toolbar>
 		</customHeader>

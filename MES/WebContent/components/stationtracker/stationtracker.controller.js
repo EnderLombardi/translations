@@ -209,7 +209,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 
 			scheduler.templates.event_class = function(start, end, ev) {
 
-				if (ev.criticalPath != undefined) {
+				if (ev.criticalPath != "---") {
 
 					return "operationCP";
 
