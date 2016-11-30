@@ -45,7 +45,6 @@ STATIONTRACKER
     background: linear-gradient(to bottom, $color1 0, $color2 100%);
     -ms-filter: unquote("progid:DXImageTransform.Microsoft.gradient(startColorstr=#{$color1}, endColorstr=#{$color2}), GradientType=0)");
 }
-
 @mixin textHeader($fontSize : 24px, $color: white){
     font-family: "Arial", Sans-serif !important;
     font-size: $fontSize;
@@ -53,5 +52,13 @@ STATIONTRACKER
     font-style: normal;
     font-stretch: normal;
     color: $color;
+}
+@mixin globalButon($color1, $color2){
+    background-image: none;
+    background-color: $color1;
+    color: $color2;
+    text-shadow: none;
+    border-radius:0;
+    border:none;
 }
 

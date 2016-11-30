@@ -1,21 +1,21 @@
 {
   "_version": "1.1.0",
   "sap.ui5": {
-	"_version": "1.1.0",
-	"rootView": "MES.shell",
-	"dependencies": {
-	  "minUI5Version": "1.30",
-	  "libs": {
-		"sap.m": {}
-	  }
-	},	
-	"resources": {
-	  "css": [
-		{
-		  "uri": "css/shell.css"
-		}
-	  ]
-	},
+    "_version": "1.1.0",
+    "rootView": "MES.shell",
+    "dependencies": {
+      "minUI5Version": "1.30",
+      "libs": {
+        "sap.m": {}
+      }
+    },
+    "resources": {
+      "css": [
+        {
+            "uri": "../Sass/global.css"
+        }
+      ]
+    },
       "routing": {
          "config": {
             "routerClass": "sap.m.routing.Router",
