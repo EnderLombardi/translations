@@ -6,14 +6,11 @@
 
 <link rel="stylesheet" href="../Sass/global.css">
 <link rel="stylesheet" href="../lib/dhtmlxscheduler/dhtmlxscheduler.css"
-	type="text/css" title="no title">
+    type="text/css" title="no title">
 <link rel='stylesheet' type='text/css'
-	href='../lib/dhtmlxscheduler/dhtmlxscheduler_flat.css'>
+    href='../lib/dhtmlxscheduler/dhtmlxscheduler_flat.css'>
 <link rel="stylesheet"
-	href="../components/stationtracker/css/font-awesome.min.css">
-<link rel="stylesheet"
-	href="../components/stationtracker/css/customcss.css" type="text/css"
-	media="screen">
+    href="../components/stationtracker/css/font-awesome.min.css">
 <script type="text/javascript" src="../lib/js-cookie.js"></script>
 
 
@@ -23,92 +20,92 @@
     <div id="content"></div>
 </body> -->
 <body class="sapUiBody" id="content"
-	style="background: #002C63; margin: 0;">
-	<div id="welcome_airbus" style="height: 100vh; display: flex;">
-		<div style="margin: auto;">
-			<img src="../images/Airbus-xl.png"
-				style="display: block; width: 40vw; height: auto; margin: auto; transform: translateY(2vh);" />
-			<img src="../images/ajax_loader_metal_512.gif"
-				style="display: block; width: auto; height: 8vh; margin: 0 auto; transform: translateY(12vh);" />
-		</div>
-	</div>
+    style="background: #002C63; margin: 0;">
+    <div id="welcome_airbus" style="height: 100vh; display: flex;">
+        <div style="margin: auto;">
+            <img src="../images/Airbus-xl.png"
+                style="display: block; width: 40vw; height: auto; margin: auto; transform: translateY(2vh);" />
+            <img src="../images/ajax_loader_metal_512.gif"
+                style="display: block; width: auto; height: 8vh; margin: 0 auto; transform: translateY(12vh);" />
+        </div>
+    </div>
 
-	<!-- src="https://sapui5.netweaver.ondemand.com/1.36.11/resources/sap-ui-core.js" -->
-	<script
-		src="https://sapui5.netweaver.ondemand.com/1.36.11/resources/sap-ui-core.js"
-		id="sap-ui-bootstrap" data-sap-ui-libs="sap.m, sap.ui.table"
-		data-sap-ui-theme="sap_bluecrystal"
-		data-sap-ui-xx-bindingSyntax="complex">
-		
-	</script>
+    <!-- src="https://sapui5.netweaver.ondemand.com/1.36.11/resources/sap-ui-core.js" -->
+    <script
+        src="https://sapui5.netweaver.ondemand.com/1.36.11/resources/sap-ui-core.js"
+        id="sap-ui-bootstrap" data-sap-ui-libs="sap.m, sap.ui.table"
+        data-sap-ui-theme="sap_bluecrystal"
+        data-sap-ui-xx-bindingSyntax="complex">
 
-	<script>
-		sap.ui.getCore().attachInit(
-				function() {
+    </script>
 
-					jQuery.sap.registerModulePath("airbus.mes.shell", "./");
-					jQuery.sap.registerModulePath("airbus.mes.settings",
-							"../components/settings");
-					jQuery.sap.registerModulePath("airbus.mes.homepage",
-							"../components/homepage");
+    <script>
+        sap.ui.getCore().attachInit(
+                function() {
 
-					if (window.location.hostname === "localhost"
-							&& window.location.search != "?url_config=local"
-							&& Cookies.getJSON("login") === undefined) {
-						//        Case of localhost connection, need to define login pass
-						jQuery.sap.registerModulePath("airbus.mes.login",
-								"../components/login");
+                    jQuery.sap.registerModulePath("airbus.mes.shell", "./");
+                    jQuery.sap.registerModulePath("airbus.mes.settings",
+                            "../components/settings");
+                    jQuery.sap.registerModulePath("airbus.mes.homepage",
+                            "../components/homepage");
 
-						oCompCont = new sap.ui.core.ComponentContainer({
-							component : sap.ui.getCore().createComponent({
-								name : "airbus.mes.login", // root component folder is resources
-							})
-						});
-						oCompCont.placeAt("content");
+                    if (window.location.hostname === "localhost"
+                            && window.location.search != "?url_config=local"
+                            && Cookies.getJSON("login") === undefined) {
+                        //        Case of localhost connection, need to define login pass
+                        jQuery.sap.registerModulePath("airbus.mes.login",
+                                "../components/login");
 
-					} else {
-						//        Case of airbus connection
+                        oCompCont = new sap.ui.core.ComponentContainer({
+                            component : sap.ui.getCore().createComponent({
+                                name : "airbus.mes.login", // root component folder is resources
+                            })
+                        });
+                        oCompCont.placeAt("content");
 
-						// Create a Ui container
-						oCompCont = new sap.ui.core.ComponentContainer({
-							component : sap.ui.getCore().createComponent({
-								name : "airbus.mes.shell", // root component folder is resources
-								propagateModel : true,
-							})
-						});
+                    } else {
+                        //        Case of airbus connection
 
-						oComp1 = sap.ui.getCore().createComponent({
-							name : "airbus.mes.homepage", // root component folder is resources
-						});
+                        // Create a Ui container
+                        oCompCont = new sap.ui.core.ComponentContainer({
+                            component : sap.ui.getCore().createComponent({
+                                name : "airbus.mes.shell", // root component folder is resources
+                                propagateModel : true,
+                            })
+                        });
 
-						airbus.mes.component = airbus.mes.component || {};
+                        oComp1 = sap.ui.getCore().createComponent({
+                            name : "airbus.mes.homepage", // root component folder is resources
+                        });
 
-						airbus.mes.component.settings = sap.ui.getCore()
-								.createComponent({
-									name : "airbus.mes.settings", // root component folder is resources
-								});
+                        airbus.mes.component = airbus.mes.component || {};
 
-						nav = airbus.mes.shell.oView.byId("navCont");
+                        airbus.mes.component.settings = sap.ui.getCore()
+                                .createComponent({
+                                    name : "airbus.mes.settings", // root component folder is resources
+                                });
 
-						nav.addPage(airbus.mes.homepage.oView);
-						airbus.mes.homepage.oView.placeAt(nav);
+                        nav = airbus.mes.shell.oView.byId("navCont");
 
-						// place this Ui Container with the Component inside into UI Area
-						oCompCont.placeAt("content");
-						// remove splash color & style
-						document.body.style = {};
+                        nav.addPage(airbus.mes.homepage.oView);
+                        airbus.mes.homepage.oView.placeAt(nav);
 
-						// Load User and Application Settings
-						airbus.mes.settings.ModelManager
-								.loadUserSettingsModel();
+                        // place this Ui Container with the Component inside into UI Area
+                        oCompCont.placeAt("content");
+                        // remove splash color & style
+                        document.body.style = {};
 
-						// Check user settings and if not defined then navigate to Settings screen
-						airbus.mes.settings.ModelManager
-								.checkDisplayFirstSetting();
+                        // Load User and Application Settings
+                        airbus.mes.settings.ModelManager
+                                .loadUserSettingsModel();
 
-					}
-				});
-	</script>
+                        // Check user settings and if not defined then navigate to Settings screen
+                        airbus.mes.settings.ModelManager
+                                .checkDisplayFirstSetting();
+
+                    }
+                });
+    </script>
 
 
 </body>
