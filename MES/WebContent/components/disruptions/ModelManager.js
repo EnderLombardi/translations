@@ -167,7 +167,12 @@ airbus.mes.disruptions.ModelManager = {
 		else
 			getDisruptionsURL = getDisruptionsURL.replace('$Operation', "");
 
-		getDisruptionsURL = getDisruptionsURL.replace('$SFC', "");
+		if (oFilters.sfc != undefined && oFilters.sfc != "")
+			getDisruptionsURL = getDisruptionsURL.replace('$SFC',
+					oFilters.sfc);
+		else
+			getDisruptionsURL = getDisruptionsURL.replace('$SFC',"");
+		
 		getDisruptionsURL = getDisruptionsURL.replace('$OperationRevision', "");
 		getDisruptionsURL = getDisruptionsURL.replace('$SignalFlag', "");
 		getDisruptionsURL = getDisruptionsURL.replace('$FromDate', "");
@@ -192,7 +197,7 @@ airbus.mes.disruptions.ModelManager = {
 	/***************************************************************************
 	 * Load Disruptions for a single operation
 	 */
-	loadDisruptionsByOperation : function(operation) {
+	loadDisruptionsByOperation : function(operation,sSfc) {
 
 		airbus.mes.operationdetail.oView.setBusy(true); // Set Busy Indicator
 
@@ -200,13 +205,14 @@ airbus.mes.disruptions.ModelManager = {
 
 		var getDisruptionsURL = airbus.mes.disruptions.ModelManager
 				.getDisruptionsURL({
-					"operation" : operation
+					"operation" : operation,
+					"sfc"		: sSfc
 				});
 
 		oViewModel.loadData(getDisruptionsURL);
 
 	},
-
+	
 	/***************************************************************************
 	 * After Disruptions related to a operation is loaded
 	 */
@@ -322,8 +328,10 @@ airbus.mes.disruptions.ModelManager = {
 								// load disruption Model again for new message
 								var operationBO = sap.ui.getCore().getModel(
 										"operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_bo; 
+								var sSfcBO = sap.ui.getCore().getModel(
+								"operationDetailModel").oData.Rowsets.Rowset[0].Row[0].sfc; 
 								airbus.mes.disruptions.ModelManager
-										.loadDisruptionsByOperation(operationBO);
+										.loadDisruptionsByOperation(operationBO,sSfcBO);
 								
 								// navigate to View Disruption after success message
 								sap.ui.getCore().byId("operationDetailsView--operDetailNavContainer").back();
@@ -433,8 +441,10 @@ airbus.mes.disruptions.ModelManager = {
 									// Load disruption Model again for updated message
 									var operationBO = sap.ui.getCore().getModel(
 											"operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_bo;
+									var sSfcBO = sap.ui.getCore().getModel(
+									"operationDetailModel").oData.Rowsets.Rowset[0].Row[0].sfc;
 									airbus.mes.disruptions.ModelManager
-											.loadDisruptionsByOperation(operationBO);
+											.loadDisruptionsByOperation(operationBO,sSfcBO);
 									
 
 									

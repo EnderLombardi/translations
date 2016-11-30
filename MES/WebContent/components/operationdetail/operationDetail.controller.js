@@ -171,7 +171,8 @@ sap.ui
 							 **************************************************/
 							if (!this.disruptionsFlag) {
 								var operationBO = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_bo;
-								airbus.mes.disruptions.ModelManager.loadDisruptionsByOperation(operationBO);
+								var sSfcBO = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].sfc;
+								airbus.mes.disruptions.ModelManager.loadDisruptionsByOperation(operationBO,sSfcBO);
 								this.disruptionsFlag = true;
 							}
 							
