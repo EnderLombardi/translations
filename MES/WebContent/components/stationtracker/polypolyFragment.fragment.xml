@@ -1,8 +1,8 @@
 <core:FragmentDefinition xmlns="sap.m"
 	xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc">
 	<Dialog title="Polyvalence-Polycompetence Matrix" class="sapUiPopupWithPadding"
-		id="pop-up-polypoly" verticalScrolling="false" horizontalScrolling="false"
-		afterOpen="onAfterOpenPolypoly" resizable="false" stretch="true">
+		id="pop-up-polypoly" verticalScrolling="true" horizontalScrolling="false"
+		afterOpen="onAfterOpenPolypoly" contentWidth="90%" resizable="false" stretch="false" draggable="false">
 		<buttons>
 			<Button id="deleteLineAssignmentButton" text="{StationTrackerI18n>DeleteAssignment}" icon="sap-icon://employee-rejections"
 				press="deleteLineAssignment" />

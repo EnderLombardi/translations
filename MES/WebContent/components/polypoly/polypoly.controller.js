@@ -1061,9 +1061,9 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 		airbus.mes.polypoly.PolypolyManager.polypolyIndex = airbus.mes.polypoly.PolypolyManager.oViewController.oUserIcon.getModel().getProperty(airbus.mes.polypoly.PolypolyManager.oViewController.oUserIcon.getBindingContext().getPath());
 		airbus.mes.stationtracker.AssignmentManager.polypolyAssignment.selectedUser = airbus.mes.polypoly.PolypolyManager.polypolyIndex;
 		
-		var sERP_ID = airbus.mes.polypoly.PolypolyManager.polypolyIndex.login;
-		if (sERP_ID == "---" || sERP_ID == " ") {
-			ModelManager.messageShow(airbus.mes.polypoly.oView.getController().getI18n("InvalidID") + sERP_ID);
+		var sLogin = airbus.mes.polypoly.PolypolyManager.polypolyIndex.login;
+		if (sLogin == "---" || sLogin == " ") {
+			ModelManager.messageShow(airbus.mes.polypoly.oView.getController().getI18n("InvalidID") + sLogin);
 			return false;
 		}
 		
@@ -1159,6 +1159,20 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 //		sap.ui.getCore().byId(
 //		"polypolyView--lineSelectPolyPoly")
 //		.setSelectedKey(airbus.mes.polypoly.ModelManager.line_number);
+		
+		
+//		//track width, set to window width
+//		var height = $(window).height(); 
+//		$(window).on("resize", function() {
+//			// do nothing if the width is the same
+//			if ($(window).height()==height) return; 
+//			// update new width value
+//			height = $(window).height();
+//			console.log("yay");
+//			if(nav.getCurrentPage().getId()=="polypolyPage"){
+//				airbus.mes.polypoly.oView.getController().setRowCountVisible(true);
+//			}
+//		}).trigger("resize");
 	},
 
 	onValueChange : function(oEvt) {
