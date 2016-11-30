@@ -1,33 +1,33 @@
 "use strict";
 
-//jQuery.sap.require("airbus.mes.stationtracker.Coordinates")
 sap.ui.core.Control.extend("airbus.mes.stationtracker.TaktAdherenceAreaChart", {
-	metadata : {
-		aggregations : {
-			"data" : {
-				type : "airbus.mes.stationtracker.Coordinates",
-//				multiple : false,
-				singularName : "data",
-//				bindable: "bindable"
+	metadata: {
+		aggregations: {
+			"data": {
+				type: "airbus.mes.stationtracker.Coordinates",
+				//				multiple : false,
+				singularName: "data",
+				//				bindable: "bindable"
 			},
-			"realData" : {
-				type : "airbus.mes.stationtracker.Coordinates",
-//				multiple : false,
-				singularName : "realData",
-//				bindable: "bindable"
+			"realData": {
+				type: "airbus.mes.stationtracker.Coordinates",
+				//				multiple : false,
+				singularName: "realData",
+				//				bindable: "bindable"
 			}
 		}
-     },
-     
-	renderer: function (oRm, oControl) {
-
-		oRm.write("<svg ");
-		oRm.writeControlData(oControl);
-		oRm.write(" class='takt_adherence_area_chart' viewBox='0 0 " + $('#stationTrackerView--chartId').width() + " 119' perserveAspectRatio='xMinYMid'");
-		oRm.write(" />");
 	},
 
-	onAfterRendering: function onAfterRendering(oEvt){
+	renderer: function (oRm, oControl) {
+		if ($('#stationTrackerView--chartId').width()) {
+			oRm.write("<svg ");
+			oRm.writeControlData(oControl);
+			oRm.write(" class='takt_adherence_area_chart' viewBox='0 0 " + $('#stationTrackerView--chartId').width() + " 119' perserveAspectRatio='xMinYMid'");
+			oRm.write(" />");
+		}
+	},
+
+	onAfterRendering: function onAfterRendering(oEvt) {
 
 		function makeYaxis() {
 			return d3.svg.axis()
@@ -35,70 +35,92 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.TaktAdherenceAreaChart", {
 				.orient("left")
 				.ticks(8);
 		}
-		
+
 		function bindingToArray(c) {
-			return {x : c.getX(), y : c.getY()}
+			return { x: c.getX(), y: c.getY() }
 		}
-		
+
 		var oCtrl = airbus.mes.stationtracker.oView.byId("stationTrackerView--takt_adherence_area_chart");
-//		var oCtrl = oEvt.srcControl; 
 		var data = oCtrl.getData().map(bindingToArray);
 		var realData = oCtrl.getRealData().map(bindingToArray);
 		var bDisplayCircles = true;
 		var maxData = data;
-		
-		if(data.length < realData.length){
-			for(var i=0; i<(realData.length - data.length); i++){
+
+		if (data.length < realData.length) {
+			for (var i = 0; i < (realData.length - data.length); i++) {
 				//Deep clone last object of data and increment its x value by 1
-				data.push(JSON.parse(JSON.stringify(data[data.length-1])));
-				data[data.length-1].x = (parseInt(data[data.length-1].x, 10)+1).toString();
+				data.push(JSON.parse(JSON.stringify(data[data.length - 1])));
+				data[data.length - 1].x = (parseInt(data[data.length - 1].x, 10) + 1).toString();
 				bDisplayCircles = false;
 				maxData = realData;
 			}
-		}else if(data.length == 0){
-			data=[{x:"0", y:"0"}, {x:"0", y:"0"}];
-			realData=[{x:"0", y:"0"}, {x:"0", y:"0"}];
+		} else if (data.length == 0) {
+			data = [{ x: "0", y: "0" }, { x: "0", y: "0" }];
+			realData = [{ x: "0", y: "0" }, { x: "0", y: "0" }];
 			bDisplayCircles = false;
-		}else if(realData.length == 0 || data.length == realData.length){
+		} else if (realData.length == 0 || data.length == realData.length) {
 			bDisplayCircles = false;
 		}
-		
-		
-		
-//		var data = [
-//			{ x: 0, y: 5, },
-//			{ x: 1, y: 15, },
-//			{ x: 2, y: 20, },
-//			{ x: 3, y: 35, },
-//			{ x: 4, y: 40, },
-//		];
-//
-//		var realData = [
-//			{ x: 0, y: 0, },
-//			{ x: 1, y: 20, },
-//			{ x: 2, y: 20, },
-//			{ x: 3, y: 25, },
-//		];
-//		var estimateData = [
-//			{ x: 2, y: 20, },
-//			{ x: 3, y: 25, },
-//		];
-
 
 		var chart = $("#stationTrackerView--chartId");
 
-		//in progress
-		$(window).on("resize", function() {
-			if (chart.width() > 0){
-				 var contWidth = chart.width();
-				 chart.attr("width", contWidth);
-				 chart.attr("height", contHeight);
-				 onAfterRendering();
+		$(window).on("resize", function () {
+			chart = $("#stationTrackerView--chartId");
+			contWidth = chart.width();
+			if (contWidth > 0) {
+				// var resize
+				width = contWidth - margin.left - margin.right;
+				x.range([0, width]);
+				area.x(function (d) { return x(d.x); });
+				line.x(function (d) { return x(d.x); });
+
+				//container changes
+				var svg = d3.select("svg.takt_adherence_area_chart")
+					.attr("width", contWidth)
+					.attr("viewBox", "0 0 " + contWidth + " " + contHeight);
+
+				var gContainer = svg.select("g")
+					.attr("width", width);
+
+				groupe = gContainer.select("g")
+					.attr("width", width);
+
+				//chart changes
+				groupe.select("rect")
+					.attr("width", width);
+
+				groupe.select("path")
+					.attr("d", area);
+
+				svg.select(".ygrid")
+					.call(makeYaxis()
+						.tickSize(-width, 0, 0)
+						.tickFormat("")
+					);
+
+				gContainer.select(".line")
+					.attr("d", line);
+
+				gContainer.select(".realLine")
+					.attr("d", line);
+
+				if (bDisplayCircles) {
+					gContainer.select("#verticalLine")
+						.attr("x1", function () { return x(realData[realData.length - 1].x); })
+						.attr("x2", function () { return x(realData[realData.length - 1].x); });
+
+					gContainer.select("#blueCircle")
+						.attr("cx", function () { return x(data[realData.length - 1].x); });
+
+					gContainer.select("#whiteCircle")
+						.attr("cx", function () { return x(realData[realData.length - 1].x); });
+				}
 			}
 		});
 
-
-
+		/********************
+		Chart creation
+		*********************/
 		var contHeight = 119;
 		var contWidth = chart.width();
 		var margin = { top: 10, right: 5, bottom: 5, left: 20 },
@@ -131,11 +153,12 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.TaktAdherenceAreaChart", {
 		var svg = d3.select("svg.takt_adherence_area_chart")
 			.attr("width", contWidth)
 			.attr("height", contHeight)
+			.attr("viewBox", "0 0 " + contWidth + " " + contHeight)
 			.append("g")
 			.attr("transform", "translate(" + margin.left + "," + margin.top + ")")
 			.attr("width", width)
 			.attr("height", height);
-			
+
 		var groupe = svg.append("g")
 			.attr("width", width)
 			.attr("height", height);
@@ -159,15 +182,15 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.TaktAdherenceAreaChart", {
 		svg.append("g")
 			.attr("class", "ygrid")
 			.call(makeYaxis()
-			.tickSize(-width, 0, 0)
-			.tickFormat("")
+				.tickSize(-width, 0, 0)
+				.tickFormat("")
 			);
 		//y axe label
 		svg.append("text")
-            .attr("text-anchor", "end")
+			.attr("text-anchor", "end")
 			.attr("class", "yaxelabel")
 			.attr("transform", "translate(-4,-4)")
-            .text("Hrs");
+			.text("Hrs");
 		//add line to svg
 		svg.append("path")
 			.datum(data)
@@ -178,47 +201,31 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.TaktAdherenceAreaChart", {
 			.datum(realData)
 			.attr("class", "realLine")
 			.attr("d", line);
-//		//add esttimate line to svg
-//		svg.append("path")
-//			.datum(estimateData)
-//			.attr("class", "estimateLine")
-//			.attr("d", line);
-//		//Draw vertical line
-//		svg.append("line")
-//			.attr("x1", function () { return x(data[data.length - 2].x); })
-//			.attr("y1", function () { return y(0); })
-//			.attr("x2", function () { return x(data[data.length - 2].x); })
-//			.attr("y2", function () { return y(d3.max(data, function (d) { return d.y; })); })
-//			.style("stroke-width", 1)
-//			.style("stroke", "white");
-//		//Draw the blue Circle
-//		var circle = svg.append("circle") //FIXME : ESLint (Not used) but needed
-//			.attr("cx", function () { return x(data[data.length - 2].x); })
-//			.attr("cy", function () { return y(data[data.length - 2].y); })
-//			.attr("r", 3)
-//			.attr("fill", "#0D2C63");
-		
-		if(bDisplayCircles){
+
+		if (bDisplayCircles) {
 			//Draw vertical line
 			svg.append("line")
-			.attr("x1", function () { return x(realData[realData.length - 1].x); })
-			.attr("y1", function () { return y(0); })
-			.attr("x2", function () { return x(realData[realData.length - 1].x); })
-			.attr("y2", function () { return y(d3.max(data, function (d) { return d.y; })); })
-			.style("stroke-width", 1)
-			.style("stroke", "white");
+				.attr("id", "verticalLine")
+				.attr("x1", function () { return x(realData[realData.length - 1].x); })
+				.attr("y1", function () { return y(0); })
+				.attr("x2", function () { return x(realData[realData.length - 1].x); })
+				.attr("y2", function () { return y(d3.max(data, function (d) { return d.y; })); })
+				.style("stroke-width", 1)
+				.style("stroke", "white");
 			//Draw the blue Circle
 			var circle = svg.append("circle") //FIXME : ESLint (Not used) but needed
-			.attr("cx", function () { return x(data[realData.length - 1].x); })
-			.attr("cy", function () { return y(data[realData.length - 1].y); })
-			.attr("r", 3)
-			.attr("fill", "#0D2C63");
+				.attr("id", "blueCircle")
+				.attr("cx", function () { return x(data[realData.length - 1].x); })
+				.attr("cy", function () { return y(data[realData.length - 1].y); })
+				.attr("r", 3)
+				.attr("fill", "#0D2C63");
 			//Draw the white Circle
 			var circle = svg.append("circle")
-			.attr("cx", function () { return x(realData[realData.length - 1].x); })
-			.attr("cy", function () { return y(realData[realData.length - 1].y); })
-			.attr("r", 3)
-			.attr("fill", "white");
+				.attr("id", "whiteCircle")
+				.attr("cx", function () { return x(realData[realData.length - 1].x); })
+				.attr("cy", function () { return y(realData[realData.length - 1].y); })
+				.attr("r", 3)
+				.attr("fill", "white");
 		}
 	}
 });

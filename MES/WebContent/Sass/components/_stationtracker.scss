@@ -5,6 +5,9 @@
 // Styles
 @import '../styles/colours';
 
+//Ruby cmd
+//sass --watch components/_stationtracker.scss:components/css/stationtracker.css
+
 #mes{
     #stationTrackerView{
         border-top: 0.6rem solid #ffffff;
@@ -814,10 +817,10 @@ svg{
         fill: #E5002B;
     }
     .line{
-        @include fillChartStroke(none, #0D2C63, 1);
+        @include fillChartStroke(none, #0D2C63, 2);
     }
     .realLine {
-        @include fillChartStroke(none, white, 1);
+        @include fillChartStroke(none, white, 2);
     }
     .estimateLine {
         @include fillChartStroke(none, white, 1);

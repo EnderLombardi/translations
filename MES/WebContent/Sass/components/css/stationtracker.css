@@ -2,13 +2,6 @@
 /****************
 STATIONTRACKER
 *****************/
-#mes .sapMToggleBtnPressed {
-  background-image: none;
-  background-color: transparent;
-  border-color: transparent;
-  color: transparent;
-  text-shadow: none; }
-
 /*********************
 STATION TRACKER
 *********************/
@@ -365,33 +358,8 @@ STATION TRACKER
   height: 35px; }
 
 /**********************
-***********************
-PAGE HEADER
-***********************
+SETTINGS
 ***********************/
-#mes .sapMToggleBtnPressed {
-  background-image: none;
-  background-color: transparent;
-  border-color: transparent;
-  color: transparent;
-  text-shadow: none; }
-
-/*************
-GENERALE RULES
-**************/
-#mes .sapMPI {
-  margin: 1.25rem 0; }
-
-#mes #content #globalNavView #globalNavView--refreshTime-inner, #mes #content #globalNavView #globalNavView--localDELog-inner {
-  color: #73d2e6 !important;
-  text-shadow: none; }
-#mes #content #globalNavView #globalNavView--refreshTime-img {
-  color: #73d2e6;
-  text-shadow: none; }
-#mes #content #globalNavView .sapMBtn:hover > #globalNavView--refreshTime,
-#mes #content #globalNavView .sapMBtn:hover > #globalNavView--localDELog {
-  background-color: rgba(255, 255, 255, 0.2); }
-
 #mes #stationTrackerView {
   border-top: 0.6rem solid #ffffff; }
 
@@ -936,11 +904,11 @@ svg#stationTrackerView--takt_adherence_area_chart {
 #stationTrackerView--takt_adherence_area_chart .line {
   fill: none;
   stroke: #0D2C63;
-  stroke-width: 1; }
+  stroke-width: 2; }
 #stationTrackerView--takt_adherence_area_chart .realLine {
   fill: none;
   stroke: white;
-  stroke-width: 1; }
+  stroke-width: 2; }
 #stationTrackerView--takt_adherence_area_chart .estimateLine {
   fill: none;
   stroke: white;
@@ -1451,6 +1419,6 @@ OTHER
   padding: 0rem !important; }
 
 .offtime {
-  background-image: url("../../components/stationtracker/css/img/fat_lines.png"); }
+  background-image: url("../../../components/stationtracker/css/img/fat_lines.png"); }
 
 /*# sourceMappingURL=stationtracker.css.map */
