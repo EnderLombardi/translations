@@ -1,4 +1,10 @@
-@import '../global.scss';
+// Functions
+@import '../functions/mixins.scss';
+@import '../functions/placeholders.scss';
+
+// Styles
+@import '../styles/colours';
+
 #mes{
     #stationTrackerView{
         border-top: 0.6rem solid #ffffff;
@@ -16,7 +22,7 @@ TABLE
         }
     }
 }
- 
+
 /********************
 TOOLBAR
 *********************/
@@ -510,11 +516,11 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
         }
     }
     .dhx_data_table {
-    	overflow:visible;
+        overflow:visible;
     }
-	.dhx_matrix_line {
-		overflow:visible;
-	}
+    .dhx_matrix_line {
+        overflow:visible;
+    }
     .ylabel{
         white-space: nowrap;
         color: #0D5D76;

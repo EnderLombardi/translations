@@ -1,4 +1,10 @@
-@import '../global.scss';
+// Functions
+@import '../functions/mixins.scss';
+@import '../functions/placeholders.scss';
+
+// Styles
+@import '../styles/colours';
+
 .elementContainer{
     margin: 15% 0% 0% 22%;
 }

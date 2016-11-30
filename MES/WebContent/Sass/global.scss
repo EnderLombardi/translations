@@ -4,7 +4,6 @@
 
 // Styles
 @import 'styles/colours';
-@import 'styles/buttons';
 
 // ============== Components ===============
 
@@ -14,31 +13,38 @@ GENERALE RULES
 **************/
 
 #mes{
-	.sapMPI{
-		 margin: 1.25rem 0;
-	}
+    .sapMPI{
+         margin: 1.25rem 0;
+    }
 }
 
 #mes{
-	#content{
-		#globalNavView{
-			#globalNavView--refreshTime-inner, #globalNavView--localDELog-inner{
-					color: #73d2e6 !important;
-					text-shadow: none;
-			} 
-		
-			#globalNavView--refreshTime-img{
-					color: #73d2e6;
-					text-shadow: none;
-			}
-		
-			.sapMBtn:hover>#globalNavView--refreshTime, 
-			.sapMBtn:hover>#globalNavView--localDELog{
-			    background-color: rgba(255, 255, 255, 0.20);
-			}
+    #content{
+        #globalNavView{
+            #globalNavView--refreshTime-inner, #globalNavView--localDELog-inner{
+                    color: #73d2e6 !important;
+                    text-shadow: none;
+            }
 
-		}
-	}
+            #globalNavView--refreshTime-img{
+                    color: #73d2e6;
+                    text-shadow: none;
+            }
+
+            .sapMBtn:hover>#globalNavView--refreshTime,
+            .sapMBtn:hover>#globalNavView--localDELog{
+                background-color: rgba(255, 255, 255, 0.20);
+            }
+
+        }
+    }
+   .sapMToggleBtnPressed {
+        background-image: none;
+        background-color: transparent;
+        border-color: transparent;
+        color: transparent;
+        text-shadow: none;
+    }
 }
 
 

@@ -1,4 +1,10 @@
-@import '../global.scss';
+// Functions
+@import '../functions/mixins.scss';
+@import '../functions/placeholders.scss';
+
+// Styles
+@import '../styles/colours';
+
 /********************
 KPI Header Content
 *********************/
@@ -220,81 +226,81 @@ $kpi-box-disruptions-total-numbers-height-bis: 44px;
 }
 
 .chartColumn {
-	height: 100%;
-	>.sapMFlexItem {
-		&:nth-child(1) {
-			height: 25px;
-			>.sapUiRespGrid {
-			width: 100%;
-			height: 100%;
-			padding: 0;
-			>div {
-				margin: 0 2%;
-				width: 46% !important;
-				line-height: normal;
-				display: inline-block;
-				vertical-align: middle !important;
-				height: 25px;
-				&:before{
-					@extend %beforeCenteredElement;
-				}
-				&:nth-child(1) {
-					text-align: -webkit-right !important;
-				}
-				&:nth-child(2) {
-					text-align: -webkit-left !important;
-				}
-				.sapMLabel {
-					display: inline-block;
-					max-width: 100% !important;
-					vertical-align: middle !important;
-					max-height: 25px;
-				}
-			}
-			}
-		}
-		&:nth-child(2) {
-			height: 119px;
-		}
-		&:nth-child(3) {
-			height: 25px;
-			width: 100% !important;
-			line-height: normal;
-			display: inline-block;
-			vertical-align: middle !important;
-			.sapMLabel {
-				display: inline-block;
-				max-width: 100% !important;
-				vertical-align: bottom !important;
-				max-height: 25px;
-			}
-		}
-		&:nth-child(4) {
-			height: 25px;
-			>.sapUiRespGrid {
-			width: 100%;
-			height: 100%;
-			padding: 0;
-			>div {
-				margin: 0;
-				width: 50% !important;
-				line-height: normal;
-				display: inline-block;
-				vertical-align: middle !important;
-				height: 25px;
-				&:before{
-					@extend %beforeCenteredElement;
-				}
-				.sapMLabel {
-					display: inline-block;
-					max-width: 100% !important;
-					vertical-align: middle !important;
-					max-height: 25px;
-				}
-			}
-			}
-		}
-	}
+    height: 100%;
+    >.sapMFlexItem {
+        &:nth-child(1) {
+            height: 25px;
+            >.sapUiRespGrid {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            >div {
+                margin: 0 2%;
+                width: 46% !important;
+                line-height: normal;
+                display: inline-block;
+                vertical-align: middle !important;
+                height: 25px;
+                &:before{
+                    @extend %beforeCenteredElement;
+                }
+                &:nth-child(1) {
+                    text-align: -webkit-right !important;
+                }
+                &:nth-child(2) {
+                    text-align: -webkit-left !important;
+                }
+                .sapMLabel {
+                    display: inline-block;
+                    max-width: 100% !important;
+                    vertical-align: middle !important;
+                    max-height: 25px;
+                }
+            }
+            }
+        }
+        &:nth-child(2) {
+            height: 119px;
+        }
+        &:nth-child(3) {
+            height: 25px;
+            width: 100% !important;
+            line-height: normal;
+            display: inline-block;
+            vertical-align: middle !important;
+            .sapMLabel {
+                display: inline-block;
+                max-width: 100% !important;
+                vertical-align: bottom !important;
+                max-height: 25px;
+            }
+        }
+        &:nth-child(4) {
+            height: 25px;
+            >.sapUiRespGrid {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            >div {
+                margin: 0;
+                width: 50% !important;
+                line-height: normal;
+                display: inline-block;
+                vertical-align: middle !important;
+                height: 25px;
+                &:before{
+                    @extend %beforeCenteredElement;
+                }
+                .sapMLabel {
+                    display: inline-block;
+                    max-width: 100% !important;
+                    vertical-align: middle !important;
+                    max-height: 25px;
+                }
+            }
+            }
+        }
+    }
 }
 
 //placeholder
