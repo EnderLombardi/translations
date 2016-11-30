@@ -186,11 +186,11 @@ sap.ui
 							  	  
 							var aGroup = [];
 
-							// Check if we are on operation grouping
-							// SD-PPC-ST-386
-							if (airbus.mes.stationtracker.GroupingBoxingManager.box !== 'OPERATION_ID') {
-								return;
-							}
+//							// Check if we are on operation grouping
+//							// SD-PPC-ST-386
+//							if (airbus.mes.stationtracker.GroupingBoxingManager.box !== 'OPERATION_ID') {
+//								return;
+//							}
 
 							var aModel = [sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0]];
 
