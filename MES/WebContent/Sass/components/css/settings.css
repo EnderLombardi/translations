@@ -1,13 +1,9 @@
 /****************
 STATIONTRACKER
 *****************/
-#mes .sapMToggleBtnPressed {
-  background-image: none;
-  background-color: transparent;
-  border-color: transparent;
-  color: transparent;
-  text-shadow: none; }
-
+/*********************
+GLOBAL
+*********************/
 /*********************
 STATION TRACKER
 *********************/
@@ -31,29 +27,6 @@ SETTINGS
   height: 3rem;
   line-height: 3rem;
   padding: 0 1rem; }
-
-#mes .sapMToggleBtnPressed {
-  background-image: none;
-  background-color: transparent;
-  border-color: transparent;
-  color: transparent;
-  text-shadow: none; }
-
-/*************
-GENERALE RULES
-**************/
-#mes .sapMPI {
-  margin: 1.25rem 0; }
-
-#mes #content #globalNavView #globalNavView--refreshTime-inner, #mes #content #globalNavView #globalNavView--localDELog-inner {
-  color: #73d2e6 !important;
-  text-shadow: none; }
-#mes #content #globalNavView #globalNavView--refreshTime-img {
-  color: #73d2e6;
-  text-shadow: none; }
-#mes #content #globalNavView .sapMBtn:hover > #globalNavView--refreshTime,
-#mes #content #globalNavView .sapMBtn:hover > #globalNavView--localDELog {
-  background-color: rgba(255, 255, 255, 0.2); }
 
 .elementContainer {
   margin: 15% 0% 0% 22%; }
