@@ -93,9 +93,9 @@
 				<Column>
 					<Text text="{disruptiontrackerI18n>fixedByTime}" />
 				</Column>
-				<Column>
+				<!-- <Column>
 					<Text text="{disruptiontrackerI18n>TTGF}" />
-				</Column>
+				</Column> -->
 				<Column>
 					<Text text="{disruptiontrackerI18n>timeBofreNextEsc}" />
 				</Column>
@@ -128,10 +128,10 @@
 						<Text text="{disruptionsTrackerModel>OriginatorGroupDesc}" />
 						<Text text="{disruptionsTrackerModel>ResponsibleGroupDesc}" />
 						<Text text="{path: 'disruptionsTrackerModel>EscalationLevel', formatter: 'airbus.mes.disruptiontracker.Formatter.setEscalationText'}" />
-						<Text text="{disruptionsTrackerModel>OpeningTime}" />
-						<Text text="{disruptionsTrackerModel>RequiredFixBy}" />
-						<!-- <Text text="{path: 'disruptionsTrackerModel>FixedByTime', formatter: 'airbus.mes.disruptiontracker.Formatter.formatTTGF'}" /> -->
 						<Text text="{parts: [ {path: 'disruptionsTrackerModel>OpeningTime'}, {path: 'disruptionsTrackerModel>ClosureDate'}], formatter: 'airbus.mes.disruptiontracker.Formatter.formatTTGF'}" />
+						<!-- <Text text="{disruptionsTrackerModel>RequiredFixBy}" /> -->
+						<Text text="0" />
+						<!-- <Text text="{path: 'disruptionsTrackerModel>FixedByTime', formatter: 'airbus.mes.disruptiontracker.Formatter.formatTTGF'}" /> -->
 						<Text text="{disruptionsTrackerModel>TimeBeforeNextEscalation}" />
 						<Text text="{disruptionsTrackerModel>Description}" />
 						<Text text="{disruptionsTrackerModel>Solution}" />
