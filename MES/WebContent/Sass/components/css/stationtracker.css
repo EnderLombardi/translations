@@ -584,9 +584,7 @@ KPI HEADER
 #stationTrackerView--ProductionButton-inner:hover,
 #stationTrackerView--ProductionButton:hover #stationTrackerView--ProductionButton-inner,
 #stationTrackerView--DisruptionButton-inner:hover,
-#stationTrackerView--DisruptionButton:hover #stationTrackerView--DisruptionButton-inner,
-#stationTrackerView--TeamButton-inner:hover,
-#stationTrackerView--TeamButton:hover #stationTrackerView--TeamButton-inner {
+#stationTrackerView--DisruptionButton:hover #stationTrackerView--DisruptionButton-inner {
   background-color: transparent; }
 
 #stationTrackerView--TeamButton-img,
