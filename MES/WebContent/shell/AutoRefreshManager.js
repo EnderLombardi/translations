@@ -46,7 +46,11 @@ airbus.mes.shell.AutoRefreshManager =  {
              sVal.viewName = viewName;
              
              //get refresh time config for this.viewname else default time
-             sVal.refreshInterval = config[sVal.viewName].timer;
+             if(config[sVal.viewName].timer){
+                 sVal.refreshInterval = config[sVal.viewName].timer; 
+             } else {
+                 sVal.refreshInterval = config.base.timer ;
+             }
              
              // init function
              airbus.mes.shell.AutoRefreshManager.lastRefreshTimefct();

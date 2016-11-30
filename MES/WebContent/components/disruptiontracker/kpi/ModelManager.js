@@ -13,9 +13,7 @@ airbus.mes.disruptiontracker.kpi.ModelManager = {
 			airbus.mes.disruptiontracker.kpi.oView.setBusy(false); 
 		});*/
 		
-	    core.setModel(new sap.ui.model.resource.ResourceModel({bundleName:"airbus.mes.disruptiontracker.kpi.i18n.i18n",bundleLocale:"en"}), 
-														 "i18n");
-
+	    core.setModel(new sap.ui.model.resource.ResourceModel({bundleName:"airbus.mes.disruptiontracker.kpi.i18n.i18n",bundleLocale:"en"}),"i18n");
 
 		var dest;
 
@@ -37,7 +35,6 @@ airbus.mes.disruptiontracker.kpi.ModelManager = {
 					bundleUrl : "../components/disruptiontracker/kpi/config/url_config.properties",
 					bundleLocale : dest
 				});
-		
 
 		if (dest === "sopra") {
 
@@ -50,29 +47,19 @@ airbus.mes.disruptiontracker.kpi.ModelManager = {
 				}
 			}
 		}
-		
-		
 	},
-	
 	
 	getKPIData : function() {
 		var urlCategoryData = this.urlModel.getProperty("getDisruptionKPIURL");
-		urlCategoryData = airbus.mes.shell.ModelManager.replaceURI(urlCategoryData,
-				"$site", airbus.mes.settings.ModelManager.site);
-		urlCategoryData = airbus.mes.shell.ModelManager.replaceURI(urlCategoryData,
-				"$station", this.sStation);
-		
+		urlCategoryData = airbus.mes.shell.ModelManager.replaceURI(urlCategoryData,"$site", airbus.mes.settings.ModelManager.site);
+		urlCategoryData = airbus.mes.shell.ModelManager.replaceURI(urlCategoryData,"$station", this.sStation);
 		return urlCategoryData;
 	},
 	
 	loadDisruptionKPIModel : function() {
-		//airbus.mes.disruptiontracker.kpi.oView.setBusy(true);
-		
+		airbus.mes.disruptiontracker.kpi.oView.setBusy(true); //Set Busy Indicator
+			
 		var oViewModel = sap.ui.getCore().getModel("TimeLostperAttribute");
 		oViewModel.loadData(this.getKPIData());
-		
 	}
-	
-
-		
 }

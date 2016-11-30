@@ -4,7 +4,6 @@ airbus.mes.disruptiontracker.ModelManager = {
 	oDisruptionFilter: {},
 
 	init : function(core) {
-		
 		core.setModel(new sap.ui.model.json.JSONModel(), "disruptionsTrackerModel");//Model having disruptions tracker data
 		core.getModel("disruptionsTrackerModel").attachRequestCompleted(airbus.mes.disruptiontracker.ModelManager.onDisruptionsLoad);
 	},
@@ -12,13 +11,9 @@ airbus.mes.disruptiontracker.ModelManager = {
 	loadDisruptionTrackerModel : function() {
 		
 		var oFilters = this.oDisruptionFilter;
-				
 		airbus.mes.disruptiontracker.oView.setBusy(true); //Set Busy Indicator
-		
 		var oViewModel = sap.ui.getCore().getModel("disruptionsTrackerModel");
-		
 		var getDisruptionsURL = airbus.mes.disruptions.ModelManager.getDisruptionsURL(oFilters);
-		
 		oViewModel.loadData(getDisruptionsURL);
 		
 		if(oFilters.station != undefined && oFilters.station != ""){
