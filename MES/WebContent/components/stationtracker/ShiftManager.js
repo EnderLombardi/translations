@@ -355,6 +355,7 @@ airbus.mes.stationtracker.ShiftManager = {
 		// /////////////////////////////////////////////////
 		scheduler.xy.scroll_width=20;
 		var c = this.closestShift(new Date(date));
+		if ( c === -1 ){ return date; }
 		this.current_shift = this.shifts[c];
 		this.current_day = this.shifts[c].day;
 		this.current_Date = this.shifts[c].StartDate;

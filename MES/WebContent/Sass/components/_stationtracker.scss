@@ -1,4 +1,13 @@
-@import '../global.scss';
+// Functions
+@import '../functions/mixins.scss';
+@import '../functions/placeholders.scss';
+
+// Styles
+@import '../styles/colours';
+
+//Ruby cmd
+//sass --watch components/_stationtracker.scss:components/css/stationtracker.css
+
 #mes{
     #stationTrackerView{
         border-top: 0.6rem solid #ffffff;
@@ -123,6 +132,7 @@ BOX MANAGEMENT
         color: white;
         overflow: hidden;
     }
+
     .trackerTextBlock{
         @extend %trackerText;
         max-width:40%;
@@ -165,6 +175,9 @@ BOX MANAGEMENT
             & b {
                 font-family: arial;
             }
+            &+.trackerText {
+            	 max-width: calc(100% - 100px);
+        	}
         }
     }
 
@@ -315,9 +328,7 @@ KPI HEADER
 #stationTrackerView--ProductionButton-inner:hover,
 #stationTrackerView--ProductionButton:hover #stationTrackerView--ProductionButton-inner,
 #stationTrackerView--DisruptionButton-inner:hover,
-#stationTrackerView--DisruptionButton:hover #stationTrackerView--DisruptionButton-inner,
-#stationTrackerView--TeamButton-inner:hover,
-#stationTrackerView--TeamButton:hover #stationTrackerView--TeamButton-inner {
+#stationTrackerView--DisruptionButton:hover #stationTrackerView--DisruptionButton-inner {
     background-color: transparent;
 }
 #stationTrackerView--TeamButton-img,
@@ -508,6 +519,12 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
         .dhx_matrix_cell{
             background-color: white;
         }
+    }
+    .dhx_data_table {
+        overflow:visible;
+    }
+    .dhx_matrix_line {
+        overflow:visible;
     }
     .ylabel{
         white-space: nowrap;
@@ -802,10 +819,10 @@ svg{
         fill: #E5002B;
     }
     .line{
-        @include fillChartStroke(none, #0D2C63, 1);
+        @include fillChartStroke(none, #0D2C63, 2);
     }
     .realLine {
-        @include fillChartStroke(none, white, 1);
+        @include fillChartStroke(none, white, 2);
     }
     .estimateLine {
         @include fillChartStroke(none, white, 1);
@@ -1459,5 +1476,10 @@ OTHER
     padding: 0rem !important;
 }
 .offtime{
-    background-image: url('../../components/stationtracker/css/img/fat_lines.png');
+    background-image: url('../../../components/stationtracker/css/img/fat_lines.png');
+}
+#mes {
+	.ClassOperationDetailPopUp .sapMInputBaseInner {
+	    width: 35vw;
+	}	
 }

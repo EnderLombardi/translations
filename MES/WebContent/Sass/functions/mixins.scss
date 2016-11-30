@@ -46,3 +46,12 @@ STATIONTRACKER
     -ms-filter: unquote("progid:DXImageTransform.Microsoft.gradient(startColorstr=#{$color1}, endColorstr=#{$color2}), GradientType=0)");
 }
 
+@mixin textHeader($fontSize : 24px, $color: white){
+    font-family: "Arial", Sans-serif !important;
+    font-size: $fontSize;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    color: $color;
+}
+

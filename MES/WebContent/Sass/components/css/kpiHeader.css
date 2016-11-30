@@ -1,31 +1,12 @@
 /****************
 STATIONTRACKER
 *****************/
-#mes .sapMToggleBtnPressed {
-  background-image: none;
-  background-color: transparent;
-  border-color: transparent;
-  color: transparent;
-  text-shadow: none; }
-
 /*********************
 STATION TRACKER
 *********************/
 /**********************
-***********************
-PAGE HEADER
-***********************
+SETTINGS
 ***********************/
-#mes .sapMToggleBtnPressed {
-  background-image: none;
-  background-color: transparent;
-  border-color: transparent;
-  color: transparent;
-  text-shadow: none; }
-
-#mes .sapMPI {
-  margin: 1.25rem 0; }
-
 /********************
 KPI Header Content
 *********************/
@@ -173,7 +154,63 @@ KPI Header Content
   color: #fe5000 !important;
   width: 100%; }
 
-.kpiBoxes > .sapMFlexItem:not(.taktAdherenceBox):before, .openDisruptionTotal > .sapMFlexItem:nth-child(2):before, .openDisruptionTotal .sapMFlexItem:nth-child(4):before {
+.chartColumn {
+  height: 100%; }
+  .chartColumn > .sapMFlexItem:nth-child(1) {
+    height: 25px; }
+    .chartColumn > .sapMFlexItem:nth-child(1) > .sapUiRespGrid {
+      width: 100%;
+      height: 100%;
+      padding: 0; }
+      .chartColumn > .sapMFlexItem:nth-child(1) > .sapUiRespGrid > div {
+        margin: 0 2%;
+        width: 46% !important;
+        line-height: normal;
+        display: inline-block;
+        vertical-align: middle !important;
+        height: 25px; }
+        .chartColumn > .sapMFlexItem:nth-child(1) > .sapUiRespGrid > div:nth-child(1) {
+          text-align: -webkit-right !important; }
+        .chartColumn > .sapMFlexItem:nth-child(1) > .sapUiRespGrid > div:nth-child(2) {
+          text-align: -webkit-left !important; }
+        .chartColumn > .sapMFlexItem:nth-child(1) > .sapUiRespGrid > div .sapMLabel {
+          display: inline-block;
+          max-width: 100% !important;
+          vertical-align: middle !important;
+          max-height: 25px; }
+  .chartColumn > .sapMFlexItem:nth-child(2) {
+    height: 119px; }
+  .chartColumn > .sapMFlexItem:nth-child(3) {
+    height: 25px;
+    width: 100% !important;
+    line-height: normal;
+    display: inline-block;
+    vertical-align: middle !important; }
+    .chartColumn > .sapMFlexItem:nth-child(3) .sapMLabel {
+      display: inline-block;
+      max-width: 100% !important;
+      vertical-align: bottom !important;
+      max-height: 25px; }
+  .chartColumn > .sapMFlexItem:nth-child(4) {
+    height: 25px; }
+    .chartColumn > .sapMFlexItem:nth-child(4) > .sapUiRespGrid {
+      width: 100%;
+      height: 100%;
+      padding: 0; }
+      .chartColumn > .sapMFlexItem:nth-child(4) > .sapUiRespGrid > div {
+        margin: 0;
+        width: 50% !important;
+        line-height: normal;
+        display: inline-block;
+        vertical-align: middle !important;
+        height: 25px; }
+        .chartColumn > .sapMFlexItem:nth-child(4) > .sapUiRespGrid > div .sapMLabel {
+          display: inline-block;
+          max-width: 100% !important;
+          vertical-align: middle !important;
+          max-height: 25px; }
+
+.kpiBoxes > .sapMFlexItem:not(.taktAdherenceBox):before, .openDisruptionTotal > .sapMFlexItem:nth-child(2):before, .openDisruptionTotal .sapMFlexItem:nth-child(4):before, .chartColumn > .sapMFlexItem:nth-child(1) > .sapUiRespGrid > div:before, .chartColumn > .sapMFlexItem:nth-child(4) > .sapUiRespGrid > div:before {
   content: "" !important;
   font-size: 0 !important;
   vertical-align: middle !important;
@@ -181,4 +218,4 @@ KPI Header Content
   width: 0px !important;
   height: 100% !important; }
 
-/*# sourceMappingURL=kpiHeader.css.map */
+/*# sourceMappingURL=kpiheader.css.map */

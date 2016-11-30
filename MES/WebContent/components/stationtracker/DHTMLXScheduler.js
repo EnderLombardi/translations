@@ -130,7 +130,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 						
 						/**
 					     * This event permit to cancel the drag and drop of Initial operation and when
-					     * the boxing value selected = operation_Id
+					     * the boxing value selected != operation_Id
 					     *
 					     * @param {STRING} id, the Id of the box selected in gantt
 					     * @return {boolean} true if not dragable, false to permit drag & drop

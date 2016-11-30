@@ -1,6 +1,5 @@
 // Styles
 @import '../styles/colours';
-@import '../styles/buttons';
 
 /*********************
 STATION TRACKER
@@ -390,9 +389,7 @@ STATION TRACKER
 }
 
 /**********************
-***********************
-PAGE HEADER
-***********************
+SETTINGS
 ***********************/
 %pageHeader{
     box-shadow: 0px 2px 15px -5px #0F2D65;
@@ -401,12 +398,14 @@ PAGE HEADER
     position: relative;
     z-index: 10;
 }
-%pageTitle{
-    color: white !important;
-    font-family: "Arial", Sans-serif !important;
-    font-size: 30px;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    color: #ffffff;
+%classSelectListBox{
+    color: rgba(0, 86, 112, 0.94);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 1.125rem;
+    font-family: Arial,Helvetica,sans-serif;
+    height: 3rem;
+    line-height: 3rem;
+    padding: 0 1rem;
 }

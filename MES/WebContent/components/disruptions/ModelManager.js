@@ -154,7 +154,7 @@ airbus.mes.disruptions.ModelManager = {
 	 * filters
 	 */
 	getDisruptionsURL : function(oFilters) {
-		var getDisruptionsURL = this.urlModel.getProperty("getDiruptionsURL");
+		var getDisruptionsURL = airbus.mes.disruptions.ModelManager.urlModel.getProperty("getDiruptionsURL");
 
 		getDisruptionsURL = getDisruptionsURL.replace('$Site',
 				airbus.mes.settings.ModelManager.site);
@@ -167,7 +167,12 @@ airbus.mes.disruptions.ModelManager = {
 		else
 			getDisruptionsURL = getDisruptionsURL.replace('$Operation', "");
 
-		getDisruptionsURL = getDisruptionsURL.replace('$SFC', "");
+		if (oFilters.sfc_step_ref != undefined && oFilters.sfc_step_ref != "")
+			getDisruptionsURL = getDisruptionsURL.replace('$SFCStepRef',
+					oFilters.sfc_step_ref);
+		else
+			getDisruptionsURL = getDisruptionsURL.replace('$SFCStepRef',"");
+		
 		getDisruptionsURL = getDisruptionsURL.replace('$OperationRevision', "");
 		getDisruptionsURL = getDisruptionsURL.replace('$SignalFlag', "");
 		getDisruptionsURL = getDisruptionsURL.replace('$FromDate', "");
@@ -192,7 +197,7 @@ airbus.mes.disruptions.ModelManager = {
 	/***************************************************************************
 	 * Load Disruptions for a single operation
 	 */
-	loadDisruptionsByOperation : function(operation) {
+	loadDisruptionsByOperation : function(operation,sSfcStepRef) {
 
 		airbus.mes.operationdetail.oView.setBusy(true); // Set Busy Indicator
 
@@ -200,13 +205,14 @@ airbus.mes.disruptions.ModelManager = {
 
 		var getDisruptionsURL = airbus.mes.disruptions.ModelManager
 				.getDisruptionsURL({
-					"operation" : operation
+					"operation" : operation,
+					"sfc_step_ref"		: sSfcStepRef
 				});
 
 		oViewModel.loadData(getDisruptionsURL);
 
 	},
-
+	
 	/***************************************************************************
 	 * After Disruptions related to a operation is loaded
 	 */
@@ -322,8 +328,10 @@ airbus.mes.disruptions.ModelManager = {
 								// load disruption Model again for new message
 								var operationBO = sap.ui.getCore().getModel(
 										"operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_bo; 
+								var sSfcStepRef = sap.ui.getCore().getModel(
+								"operationDetailModel").oData.Rowsets.Rowset[0].Row[0].sfc_step_ref; 
 								airbus.mes.disruptions.ModelManager
-										.loadDisruptionsByOperation(operationBO);
+										.loadDisruptionsByOperation(operationBO,sSfcStepRef);
 								
 								// navigate to View Disruption after success message
 								sap.ui.getCore().byId("operationDetailsView--operDetailNavContainer").back();
@@ -433,8 +441,10 @@ airbus.mes.disruptions.ModelManager = {
 									// Load disruption Model again for updated message
 									var operationBO = sap.ui.getCore().getModel(
 											"operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_bo;
+									var sSfcStepRef= sap.ui.getCore().getModel(
+									"operationDetailModel").oData.Rowsets.Rowset[0].Row[0].sfc_step_ref;
 									airbus.mes.disruptions.ModelManager
-											.loadDisruptionsByOperation(operationBO);
+											.loadDisruptionsByOperation(operationBO,sSfcStepRef);
 									
 
 									

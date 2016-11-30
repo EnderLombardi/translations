@@ -69,7 +69,7 @@ airbus.mes.disruptiontracker.kpi.ModelManager = {
 		//airbus.mes.disruptiontracker.kpi.oView.setBusy(true);
 		
 		var oViewModel = sap.ui.getCore().getModel("TimeLostperAttribute");
-		oViewModel.loadData(this.getKPIData(), null, false);
+		oViewModel.loadData(this.getKPIData());
 		
 	}
 	

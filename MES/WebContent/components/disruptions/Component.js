@@ -63,6 +63,9 @@ airbus.mes.disruptions.Component.prototype.createContent = function() {
 		//Model for JigTool List
 		this.oView.createDisruption.setModel(sap.ui.getCore().getModel("JigtoolListModel"),"JigtoolListModel");
 		
+		//Model for disruptionCategoryModel
+		this.oView.createDisruption.setModel(sap.ui.getCore().getModel("disruptionCategoryModel"),"disruptionCategoryModel");
+		
 		return this.oView.viewDisruption;
 		
 	} else {

@@ -2,13 +2,6 @@
 /****************
 STATIONTRACKER
 *****************/
-#mes .sapMToggleBtnPressed {
-  background-image: none;
-  background-color: transparent;
-  border-color: transparent;
-  color: transparent;
-  text-shadow: none; }
-
 /*********************
 STATION TRACKER
 *********************/
@@ -365,20 +358,8 @@ STATION TRACKER
   height: 35px; }
 
 /**********************
-***********************
-PAGE HEADER
-***********************
+SETTINGS
 ***********************/
-#mes .sapMToggleBtnPressed {
-  background-image: none;
-  background-color: transparent;
-  border-color: transparent;
-  color: transparent;
-  text-shadow: none; }
-
-#mes .sapMPI {
-  margin: 1.25rem 0; }
-
 #mes #stationTrackerView {
   border-top: 0.6rem solid #ffffff; }
 
@@ -498,6 +479,8 @@ BOX MANAGEMENT
       background-color: #fbec00; }
       .trackerBox .fa.oswIcon b {
         font-family: arial; }
+      .trackerBox .fa.oswIcon + .trackerText {
+        max-width: calc(100% - 100px); }
   .trackerBox .dandelion {
     color: #fbec00; }
   .trackerBox .dandelion-back {
@@ -601,9 +584,7 @@ KPI HEADER
 #stationTrackerView--ProductionButton-inner:hover,
 #stationTrackerView--ProductionButton:hover #stationTrackerView--ProductionButton-inner,
 #stationTrackerView--DisruptionButton-inner:hover,
-#stationTrackerView--DisruptionButton:hover #stationTrackerView--DisruptionButton-inner,
-#stationTrackerView--TeamButton-inner:hover,
-#stationTrackerView--TeamButton:hover #stationTrackerView--TeamButton-inner {
+#stationTrackerView--DisruptionButton:hover #stationTrackerView--DisruptionButton-inner {
   background-color: transparent; }
 
 #stationTrackerView--TeamButton-img,
@@ -712,6 +693,10 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
   background-color: #ECEEEF; }
 #stationTrackerView--stationtracker .dhx_data_table .dhx_matrix_cell {
   background-color: white; }
+#stationTrackerView--stationtracker .dhx_data_table {
+  overflow: visible; }
+#stationTrackerView--stationtracker .dhx_matrix_line {
+  overflow: visible; }
 #stationTrackerView--stationtracker .ylabel {
   white-space: nowrap;
   color: #0D5D76;
@@ -864,8 +849,7 @@ TASK ADHERENCE
   display: inline-block;
   vertical-align: baseline; }
 .classKpiHeaderContent .KPITaktChartBlueText {
-  color: #74d2e7;
-  margin-left: 10px; }
+  color: #74d2e7; }
 .classKpiHeaderContent .KPITaktChartRightText {
   text-align: right !important;
   width: 100%; }
@@ -920,11 +904,11 @@ svg#stationTrackerView--takt_adherence_area_chart {
 #stationTrackerView--takt_adherence_area_chart .line {
   fill: none;
   stroke: #0D2C63;
-  stroke-width: 1; }
+  stroke-width: 2; }
 #stationTrackerView--takt_adherence_area_chart .realLine {
   fill: none;
   stroke: white;
-  stroke-width: 1; }
+  stroke-width: 2; }
 #stationTrackerView--takt_adherence_area_chart .estimateLine {
   fill: none;
   stroke: white;
@@ -1361,7 +1345,7 @@ OTHER
   padding-right: 75%; }
 
 .hachure {
-  background-image: url(../components/img/fat_lines.png); }
+  background-image: url("../../components/stationtracker/css/img/fat_lines.png"); }
 
 .panelContent .sapMPanelContent {
   padding: 0rem;
@@ -1430,5 +1414,14 @@ OTHER
 
 .notifDetails {
   font-size: smaller !important; }
+
+#operationDetailPopup--operationDetailPopUp-scrollCont {
+  padding: 0rem !important; }
+
+.offtime {
+  background-image: url("../../../components/stationtracker/css/img/fat_lines.png"); }
+
+#mes .ClassOperationDetailPopUp .sapMInputBaseInner {
+  width: 35vw; }
 
 /*# sourceMappingURL=stationtracker.css.map */

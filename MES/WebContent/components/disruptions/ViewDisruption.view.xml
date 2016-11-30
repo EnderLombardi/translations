@@ -307,16 +307,16 @@
 											</f:fields>
 										</f:FormElement>
 										
-										<f:FormElement visible="{path: 'operationDisruptionsModel>ClosureDate', formatter: 'airbus.mes.disruptions.Formatter.setTtgfVisibility'}">
+										<f:FormElement visible="{path: 'operationDisruptionsModel>ClosureDate', formatter: 'airbus.mes.disruptions.Formatter.setOpeningTimeVisibility'}">
 											<f:label>
-												<Label class="detailLabels" text="Time To Get Fix">
+												<Label class="detailLabels" text="{i18nModel>openingTime}">
 													<layoutData>
 														<l:GridData span="L3 M3 S12" />
 													</layoutData>
 												</Label>
 											</f:label>
 											<f:fields>
-												<Text text="{parts: [ {path: 'operationDisruptionsModel>OpeningTime'}, {path: 'operationDisruptionsModel>ClosureDate'}], formatter: 'airbus.mes.disruptiontracker.Formatter.formatTTGF'}">
+												<Text text="{parts: [ {path: 'operationDisruptionsModel>OpeningTime'}, {path: 'operationDisruptionsModel>ClosureDate'}], formatter: 'airbus.mes.disruptiontracker.Formatter.formatOpeningTime'}">
 													<layoutData>
 														<l:GridData span="L3 M3 S12" />
 													</layoutData>

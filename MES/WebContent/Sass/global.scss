@@ -4,7 +4,6 @@
 
 // Styles
 @import 'styles/colours';
-@import 'styles/buttons';
 
 // ============== Components ===============
 
@@ -14,31 +13,92 @@ GENERALE RULES
 **************/
 
 #mes{
-	.sapMPI{
-		 margin: 1.25rem 0;
-	}
+    .sapMPI{
+         margin: 1.25rem 0;
+    }
 }
 
 #mes{
-	#content{
-		#globalNavView{
-			#globalNavView--refreshTime-inner, #globalNavView--localDELog-inner{
-					color: #73d2e6 !important;
-					text-shadow: none;
-			} 
-		
-			#globalNavView--refreshTime-img{
-					color: #73d2e6;
-					text-shadow: none;
-			}
-		
-			.sapMBtn:hover>#globalNavView--refreshTime, 
-			.sapMBtn:hover>#globalNavView--localDELog{
-			    background-color: rgba(255, 255, 255, 0.20);
-			}
+    #content{
+        #globalNavView{
+            #globalNavView--refreshTime-inner, #globalNavView--localDELog-inner{
+                    color: #73d2e6 !important;
+                    text-shadow: none;
+            }
 
-		}
-	}
+            #globalNavView--refreshTime-img{
+                    color: #73d2e6;
+                    text-shadow: none;
+            }
+
+            .sapMBtn:hover>#globalNavView--refreshTime,
+            .sapMBtn:hover>#globalNavView--localDELog{
+                background-color: rgba(255, 255, 255, 0.20);
+            }
+
+        }
+    }
+   .sapMToggleBtnPressed {
+        background-image: none;
+        background-color: transparent;
+        border-color: transparent;
+        color: transparent;
+        text-shadow: none;
+    }
 }
 
+/*************
+FORM
+**************/
+#mes {
+	.sapMInputValHelpInner {
+    color: $white-two; 
+    background-color: $twilight-blue;
+    cursor: pointer;
+	}
+	.sapMInputVH:not(.sapMInputBaseReadonly) .sapMInputValHelp>.sapMInputValHelpInner:hover, .sapMInputVH:not(.sapMInputBaseReadonly) .sapMInputValHelp>.sapMInputValHelpInner:focus {
+	background-color: $navy-blue;
+	}
+	.sapMInputBaseInner {
+	    border: 1px solid $ligth-grey;
+	}
+	.sapMInputBaseInner:not(.sapMInputBaseReadonlyInner):not(.sapMInputBaseStateInner):not(.sapMInputBaseDisabledInner):hover {
+	    border-color: $twilight-blue;
+	}
+}
+/*************
+Datepicker
+**************/
+#mes {
+	.sapUiCalItemSel {
+    background-color: $twilight-blue;
+	}
+	.sapUiCalHead>.sapUiCalHeadB, .sapUiCalCancel, .sap-desktop .sapUiCalHead>.sapUiCalHeadB:hover, .sap-desktop .sapUiCalHead>.sapUiCalHeadB:focus {
+    color: $twilight-blue;
+	}
 
+/*************
+Timepicker
+**************/
+#mes {
+	.sapMTimePickerDropDown .sapMTimePickerContainer .sapMTPColumn .sapMTimePickerSlider .sapMTimePickerItem.sapMTimePickerItemSelected {
+	    background: $twilight-blue;
+	}
+	.sapMTimePickerDropDown .sapMTimePickerContainer .sapMTPColumn .sapMTimePickerSlider .sapMTimePickerItem:hover {
+	    background:  $twilight-blue;
+	}
+	.sapMTimePickerDropDown .sapMTimePickerContainer .sapMTPColumn .sapMTimePickerSlider .sapMTimePickerItem.sapMTimePickerItemSelected:hover {
+	    background:  $navy-blue;
+	}
+	.sapMTimePickerDropDown .sapMTimePickerContainer .sapMTPColumn.sapMTPSliderExpanded .sapMTimePickerSlider .sapMTPPickerSelectionFrame {
+	    border: 2px solid $twilight-blue;
+	}
+}
+/*************
+Pop up
+**************/
+#mes {
+	&.sap-desktop .sapMIBar.sapMFooter-CTX, .sapMDialog.ClassOperationDetailPopUp footer {
+	    background-color: $navy-blue;
+	}
+}
