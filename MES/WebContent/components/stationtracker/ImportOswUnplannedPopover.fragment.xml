@@ -15,7 +15,7 @@
 					<Select id="selectGroupingOSW"
 							class="sapUiTinyMarginBeginEnd comboBoxStyle"
 						    items="{groupModel>/Rowsets/Rowset/0/Row/Grouping}"
-						    change="changeGroupWorkList"
+						    change="changeGroupUnplannedOsw"
 						    visible="true">
 						<core:ListItem key="{groupModel>key}" text="{ path : 'groupModel>Value' , formatter : '.getI18nValue' }" />				
 					</Select>

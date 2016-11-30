@@ -625,9 +625,9 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
      ****************************************************************************/
 	changeGroupWorkList : function(oEvent) {
 		// TOSEE if we can get ID by better way
-		sap.ui.getCore().byId("ImportOswUnplannedPopover--myList").bindAggregation('items', {
+		sap.ui.getCore().byId("worklistPopover--myList").bindAggregation('items', {
 			path : "WorkListModel>/",
-			template : sap.ui.getCore().byId("ImportOswUnplannedPopover--sorterList"),
+			template : sap.ui.getCore().byId("worklistPopover--sorterList"),
 			sorter : [ new sap.ui.model.Sorter({
 				// Change this value dynamic
 				path : oEvent.getSource().getSelectedKey(), //oEvt.getSource().getSelectedKey();
@@ -640,24 +640,29 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		});
 	},
 
-	/**
-    * Fire the sorter when picking a value in the combobox worklist 
-    * 
-    * @returns {sap.ui.model.Sorter} */
-     changeGrouping : function(oEvt) {
+	/***************************************************************************
+     * Re apply the sorter on the model of the osw and unplanned to group operation
+     * in worklist popup
+     *
+     * @param {oEvent} Object wich represent the event on press from "TeamButton"
+     * button
+     ****************************************************************************/
+     changeGroupUnplannedOsw : function(oEvent) {
 
-           sap.ui.getCore().byId("myList").bindAggregation('items', {
-                  path : "/Rowsets/Rowset/0/Row",
-                  template : sap.ui.getCore().byId("sorterList"),
-                  sorter : [ new sap.ui.model.Sorter({
-                         path :  "/", //ModelManager.group_parameter,
-                         descending : false,
-                         group : true,
-                  }), new sap.ui.model.Sorter({
-                         path : 'index',
-                         descending : false
-                  }) ]
-           });
+    	// TOSEE if we can get ID by better way
+ 		sap.ui.getCore().byId("ImportOswUnplannedPopover--myList").bindAggregation('items', {
+ 			path : "WorkListModel>/",
+ 			template : sap.ui.getCore().byId("ImportOswUnplannedPopover--sorterList"),
+ 			sorter : [ new sap.ui.model.Sorter({
+ 				// Change this value dynamic
+ 				path : oEvent.getSource().getSelectedKey(), //oEvt.getSource().getSelectedKey();
+ 				descending : false,
+ 				group : true,
+ 			}), new sap.ui.model.Sorter({
+ 				path : 'index',
+ 				descending : false
+ 			}) ]
+ 		});
      },
 
 	/**
@@ -748,8 +753,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
      * Returns a comparator function on the provided fields, in the provided
      * order of priority, to be used for example by an Array.sort() function.
      * 
-      * @param {Array}
-     *            fields, Array of object
+      * @param {Array} fields, Array of object
      * @returns {Function} comparator
      */
      fieldComparator : function(fields) {
@@ -770,6 +774,11 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
                   }, 0);
            };
      },
+     /**
+      * Filter the worklistPopover on the status
+      * 
+      * @param {OBJECT} oEvent,object of event pressed
+      */
      onChangeFilter : function(oEvent){
          var aMyFilter = [];    	 
          var sStatus;
@@ -800,6 +809,42 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
     	 }
     	 
      },
+     /**
+      * Filter the ImportOswUnplannedPopover on the status
+      * 
+      * @param {OBJECT} oEvent,object of event pressed
+      */
+     onChangeFilterOSWUnplanned : function(oEvent){
+         var aMyFilter = [];    	 
+         var sStatus;
+
+		// Check the current value of the filter status
+		if (oEvent.getSource().getSelectedKey() === "StatusAll") {
+			// if status ALL, we have to remove all filter
+			sap.ui.getCore().byId("ImportOswUnplannedPopover--myList")
+					.getBinding("items").filter();
+	
+		} else {
+			// we apply the a filter
+			switch (oEvent.getSource().getSelectedKey()) {
+			case "StatusStarted":
+				sStatus = "2";
+				break;
+			case "StatusNotStarted":
+				sStatus = "1";
+				break;
+			case "StatusConfirmed":
+				sStatus = "0";
+				break;
+			default:
+			}
+			var oFilterStatus = new sap.ui.model.Filter("status","EQ",sStatus);        
+             aMyFilter.push(oFilterStatus);
+             sap.ui.getCore().byId("ImportOswUnplannedPopover--myList").getBinding("items").filter(new sap.ui.model.Filter(aMyFilter, true));    		 
+    	 }
+    	 
+     },
+
  
 
 					
