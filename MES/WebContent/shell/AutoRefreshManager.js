@@ -1,5 +1,7 @@
 "use strict";
 
+jQuery.sap.require("airbus.mes.shell.AutoRefreshConfig");
+
 jQuery.sap.declare("airbus.mes.shell.AutoRefreshManager");
 
 airbus.mes.shell.AutoRefreshManager =  {
@@ -29,52 +31,39 @@ airbus.mes.shell.AutoRefreshManager =  {
 	
 	setInterval: function(viewName){
 		
-		if(!airbus.mes.settings.AppConfManager._getConfiguration("MES_REFRESH_ACTIVE")){
-			airbus.mes.shell.AutoRefreshManager.clearInterval();
-			return;
-		}
+		//shortcut
+		var config = airbus.mes.shell.AutoRefreshConfig;
+		var sVal = airbus.mes.shell.AutoRefreshManager;
 		
-		var station = airbus.mes.settings.ModelManager.station;
+		//if autorefresh disable
+		if(config.mesRefreshActive.value = false){
+			airbus.mes.shell.AutoRefreshManager.clearInterval();
+			return
+		}
 		
 		//get view name
-		if(!viewName) viewName = nav.getCurrentPage().getId();
-		this.viewName = viewName;
-		switch(viewName){
-			case "stationTrackerView":
-				// value to decrease the timer show in the station tracker view
-				// Get interval time from configuration (Primary Key, Default Key, radix 10)
-				this.refreshInterval = parseInt(
-						airbus.mes.settings.AppConfManager.getConfiguration("REFRESH_STATION_TRACKER_"+station, this.defaultKey), 10 
-					);
-				break;			
-			case "disruptiontrackerView":
-				this.refreshInterval = parseInt(
-						airbus.mes.settings.AppConfManager.getConfiguration("REFRESH_DISRUPTION_TRACKER_"+station,this.defaultKey), 10														// radix 10
-					);
-				break;	
-			case "disruptionKPIView":			
-				this.refreshInterval = parseInt(
-						airbus.mes.settings.AppConfManager.getConfiguration("REFRESH_DISRUPTION_KPI_"+station,this.defaultKey), 10														// radix 10
-					);
-				break;
-			default:
+		if(!viewName){
+			viewName = nav.getCurrentPage().getId();
 		}
+		this.viewName = viewName;
+		
+		//get refresh time config for this.viewname esle default time
+		this.refreshInterval = parseInt( (config[this.viewName].timer, config.base.timer), 10);
 		
 		// init function
 		airbus.mes.shell.AutoRefreshManager.lastRefreshTimefct();
 		airbus.mes.shell.AutoRefreshManager.dateNow();
+		
 		// mousse & keyboard event
 		airbus.mes.shell.AutoRefreshManager.setupCtrl();
 		
 		// Button refresh
 		this.autoRefresh = window.setInterval(function refreshTime(){
 			
-			//shortcut
-			var sVal = airbus.mes.shell.AutoRefreshManager; 
-			
 			//Difference in second between the two dates
 			sVal.timer=Math.floor((sVal.dateNow()-sVal.lastRefreshTime2)/1000);
-			console.log("timer :" + sVal.timer);
+			
+			//console.log("timer :" + sVal.timer);
 
 			// writte "s" or "min" in the button 
 			if(sVal.timer < 60 ){
@@ -98,8 +87,7 @@ airbus.mes.shell.AutoRefreshManager =  {
 				airbus.mes.shell.oView.getController().renderStationTracker();
 	            }
 			sVal.timer++;
-	    }, 1000);
-						
+	    }, 1000);			
 		this.lastRefreshTime = 0;
 	},
 	
