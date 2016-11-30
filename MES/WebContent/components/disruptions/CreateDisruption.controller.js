@@ -434,7 +434,30 @@ sap.ui
 							return true;
 						}
 					},
-					
+					onExpectedDateChange:function(oEvt){
+						var oView = airbus.mes.disruptions.oView.createDisruption;
+						
+						var expectedTime = oView.byId("expectedTime").getValue();
+						var openDate = oView.byId("openDate").getValue();
+						var openTime = oView.byId("openTime").getValue();
+						var expectedDate = oView.byId("expectedDate").getValue();
+						  if (expectedTime == "") {
+							var openDateTime = new Date(openDate);
+							var expectedDateTime = new Date(expectedDate);
+
+						} else {
+							var openDateTime = new Date(openDate + " "+ openTime);
+							var expectedDateTime = new Date(expectedDate + " "+ expectedTime);
+						}
+
+						if (openDateTime > expectedDateTime) {
+							airbus.mes.shell.ModelManager.messageShow(oView
+									.getModel("i18nModel").getProperty(
+											"CorrectExpectedDate"));
+						}
+						
+						
+					},
 
 					/***********************************************************
 					 * For originator - update will be done for Comment, Reason,
