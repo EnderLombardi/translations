@@ -5,6 +5,11 @@
 // Styles
 @import '../styles/colours';
 
+
+/*Ruby cmd
+sass --watch components/_stationtracker.scss:components/css/stationtracker.css*/
+
+
 /********************
 TABLE
 *********************/
@@ -554,11 +559,16 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
         background-color: #DDDDDD;
         opacity: 0.8;
     }
-    .operationCP {
-        background-color: #97999b;
-        border: 2px solid #0D2C63;
-    }
 
+	.operationCP{
+	    background-color: #97999b;
+	    border: 2px solid #0D2C63;
+	    &:hover{
+	        background-color: $cool-grey-hover;
+	        color: black;
+	        border: 2px solid $twilight-blue;
+	    }
+	}
 }
 .dhx_event_resize_start{
     background-image: none;
