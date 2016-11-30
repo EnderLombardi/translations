@@ -509,14 +509,24 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 		scheduler.callEvent("onOptionsLoad", []);
 		var ShiftManager = airbus.mes.stationtracker.ShiftManager;
 		
-		if (ShiftManager.current_Date != undefined) {
-			scheduler.init( airbus.mes.stationtracker.oView.byId("stationtracker").getId() , new Date( ShiftManager.currentFullDate), "timeline");
+		if ( ShiftManager.current_Date != undefined) {
+		
+			if ( airbus.mes.stationtracker.ShiftManager.closestShift( ShiftManager.currentFullDate ) != -1 ){
+				
+				scheduler.init( airbus.mes.stationtracker.oView.byId("stationtracker").getId() , new Date( ShiftManager.currentFullDate), "timeline");
+			
+			} else {
+				
+				scheduler.init(airbus.mes.stationtracker.oView.byId("stationtracker").getId(), airbus.mes.stationtracker.ShiftManager.shifts[airbus.mes.stationtracker.ShiftManager.shifts.length -1 ].StartDate , "timeline");
+				
+			}
+						
 		} else if ( airbus.mes.stationtracker.ShiftManager.closestShift(new Date()) != -1 ){
 			
 			var fShiftIndex = airbus.mes.stationtracker.ShiftManager.closestShift(new Date());
 			scheduler.init( airbus.mes.stationtracker.oView.byId("stationtracker").getId() ,airbus.mes.stationtracker.ShiftManager.shifts[fShiftIndex].StartDate , "timeline");		
 		
-		} else{
+		} else {
 			
 			scheduler.init(airbus.mes.stationtracker.oView.byId("stationtracker").getId(), airbus.mes.stationtracker.ShiftManager.shifts[airbus.mes.stationtracker.ShiftManager.shifts.length -1 ].StartDate , "timeline");
 			

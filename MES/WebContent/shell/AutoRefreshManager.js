@@ -1,7 +1,5 @@
 "use strict";
 
-jQuery.sap.require("airbus.mes.shell.AutoRefreshConfig");
-
 jQuery.sap.declare("airbus.mes.shell.AutoRefreshManager");
 
 airbus.mes.shell.AutoRefreshManager =  {
