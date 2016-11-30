@@ -88,7 +88,7 @@ airbus.mes.shell.AutoRefreshManager =  {
 				sVal.refreshInterval += sVal.addtime ;
 				sVal.addtime = 0;
 			}
-			console.log("refreshInterval :" + sVal.refreshInterval);
+			//console.log("refreshInterval :" + sVal.refreshInterval);
 			
 			//refresh when times are equal
 			if(sVal.timer%sVal.refreshInterval == 0 && sVal.timer !=0) {
