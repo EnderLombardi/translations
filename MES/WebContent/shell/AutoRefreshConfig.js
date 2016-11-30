@@ -4,27 +4,50 @@ jQuery.sap.declare("airbus.mes.shell.AutoRefreshConfig");
 
 airbus.mes.shell.AutoRefreshConfig =  {
 		
+		// time to add if user action
+		addtime : {
+			"addtime" : 60
+			},
+		
+		//Automatic app refresh
 		mesRefreshActive : { 
-				"value" : true //Automatic app refresh
+				"value" : true 
 			},
-
+		
+		// If not specified automatic refresh time
 		base : {
-				"timer":180 , 
-				"useraction" : true 
+					"timer":180 
 			},
+		
+		////////////////////////////////////////////////////////////////////////	
+		//base : {															  //
+		//		"timer":		default time for refresh page				  //
+		//		"useraction" :  If one takes into account the user action 	  //
+		//		"area" : 		refresh zone								  //
+		//	},																  //
+		////////////////////////////////////////////////////////////////////////
 
 		stationTrackerView : { 
 				"timer":180 , 
-				"useraction" : true 
+				"useraction" : true,
+				"area" : function() {
+							return airbus.mes.shell.oView.getController().renderStationTracker() 
+							}
 			},
 
 		disruptiontrackerView : { 
 				"timer":180 , 
-				"useraction" : true 
+				"useraction" : true ,
+				"area" : function() {
+							return airbus.mes.disruptiontracker.ModelManager.loadDisruptionTrackerModel();
+							}
 			},
 			
 		disruptionKPIView : {
 				"timer":120 , 
-				"useraction" : false 
+				"useraction" : false ,
+				"area" : function() {
+							return airbus.mes.disruptiontracker.kpi.ModelManager.loadDisruptionKPIModel();
+							}
 			}		
 }

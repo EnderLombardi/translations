@@ -45,15 +45,13 @@ airbus.mes.shell.AutoRefreshManager =  {
 		}
 		this.viewName = viewName;
 		
-		//get refresh time config for this.viewname esle default time
+		//get refresh time config for this.viewname else default time
 		this.refreshInterval = parseInt( (config[this.viewName].timer, config.base.timer), 10);
 		
 		// init function
 		airbus.mes.shell.AutoRefreshManager.lastRefreshTimefct();
 		airbus.mes.shell.AutoRefreshManager.dateNow();
-		
-		// mousse & keyboard event
-		airbus.mes.shell.AutoRefreshManager.setupCtrl();
+		airbus.mes.shell.AutoRefreshManager.setupCtrl(); // mousse & keyboard event
 		
 		// Button refresh
 		this.autoRefresh = window.setInterval(function refreshTime(){
@@ -65,9 +63,9 @@ airbus.mes.shell.AutoRefreshManager =  {
 
 			// writte "s" or "min" in the button 
 			if(sVal.timer < 60 ){
-				airbus.mes.shell.oView.byId('refreshTime').setText(" Last Refresh : " + sVal.timer + "s");
+				airbus.mes.shell.oView.byId('refreshTime').setText(" Last Refresh " + sVal.timer + "s");
 			} else {
-				airbus.mes.shell.oView.byId('refreshTime').setText(" Last Refresh : >" + Math.trunc(sVal.timer/60) + "min");
+				airbus.mes.shell.oView.byId('refreshTime').setText(" Last Refresh >" + Math.trunc(sVal.timer/60) + "min");
 			}
 			
 			//Add 60sec if time is <60sec
@@ -81,8 +79,10 @@ airbus.mes.shell.AutoRefreshManager =  {
 			if(sVal.timer%sVal.refreshInterval == 0 && sVal.timer !=0) {
 				//change last Refresh Time 
 				sVal.lastRefreshTimefct();
-				//refresh
-				airbus.mes.shell.oView.getController().renderStationTracker();
+					//refresh zone if existe
+					if(config[this.viewName].area){
+						config[this.viewName].area;
+					}
 	            }
 			sVal.timer++;
 	    }, 1000);			
@@ -114,7 +114,7 @@ airbus.mes.shell.AutoRefreshManager =  {
 	
 	// if user action add 60s at the refresh time before refresh
 	customTime: function() 	{
-		airbus.mes.shell.AutoRefreshManager.addtime =  Math.round((airbus.mes.shell.AutoRefreshManager.refreshInterval-airbus.mes.shell.AutoRefreshManager.timer)<60) ? 60 : 0 ;
+		airbus.mes.shell.AutoRefreshManager.addtime =  Math.round((airbus.mes.shell.AutoRefreshManager.refreshInterval-airbus.mes.shell.AutoRefreshManager.timer)<airbus.mes.shell.AutoRefreshConfig.addtime.addtime) ? airbus.mes.shell.AutoRefreshConfig.addtime.addtime : 0 ;
 		//result of operation
 		//console.log("calcule : " +  (airbus.mes.shell.AutoRefreshManager.refreshInterval-airbus.mes.shell.AutoRefreshManager.timer));
 		//add time
@@ -176,7 +176,7 @@ airbus.mes.shell.AutoRefreshManager =  {
 		
 		this.remainingTimeRefresher = setInterval(
 				function () {
-					airbus.mes.shell.AutoRefreshManager.autoRefreshAPI(),
+					airbus.mes.shell.AutoRefreshManager.autoRefreshAPI();
 					clearInterval(airbus.mes.shell.AutoRefreshManager.remainingTimeRefresher);
 					airbus.mes.shell.AutoRefreshManager.setInterval(airbus.mes.shell.AutoRefreshManager.viewName);			
 				},
