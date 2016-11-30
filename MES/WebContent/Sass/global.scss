@@ -47,4 +47,58 @@ GENERALE RULES
     }
 }
 
+/*************
+FORM
+**************/
+#mes {
+	.sapMInputValHelpInner {
+    color: $white-two; 
+    background-color: $twilight-blue;
+    cursor: pointer;
+	}
+	.sapMInputVH:not(.sapMInputBaseReadonly) .sapMInputValHelp>.sapMInputValHelpInner:hover, .sapMInputVH:not(.sapMInputBaseReadonly) .sapMInputValHelp>.sapMInputValHelpInner:focus {
+	background-color: $navy-blue;
+	}
+	.sapMInputBaseInner {
+	    border: 1px solid $ligth-grey;
+	}
+	.sapMInputBaseInner:not(.sapMInputBaseReadonlyInner):not(.sapMInputBaseStateInner):not(.sapMInputBaseDisabledInner):hover {
+	    border-color: $twilight-blue;
+	}
+}
+/*************
+Datepicker
+**************/
+#mes {
+	.sapUiCalItemSel {
+    background-color: $twilight-blue;
+	}
+	.sapUiCalHead>.sapUiCalHeadB, .sapUiCalCancel, .sap-desktop .sapUiCalHead>.sapUiCalHeadB:hover, .sap-desktop .sapUiCalHead>.sapUiCalHeadB:focus {
+    color: $twilight-blue;
+	}
 
+/*************
+Timepicker
+**************/
+#mes {
+	.sapMTimePickerDropDown .sapMTimePickerContainer .sapMTPColumn .sapMTimePickerSlider .sapMTimePickerItem.sapMTimePickerItemSelected {
+	    background: $twilight-blue;
+	}
+	.sapMTimePickerDropDown .sapMTimePickerContainer .sapMTPColumn .sapMTimePickerSlider .sapMTimePickerItem:hover {
+	    background:  $twilight-blue;
+	}
+	.sapMTimePickerDropDown .sapMTimePickerContainer .sapMTPColumn .sapMTimePickerSlider .sapMTimePickerItem.sapMTimePickerItemSelected:hover {
+	    background:  $navy-blue;
+	}
+	.sapMTimePickerDropDown .sapMTimePickerContainer .sapMTPColumn.sapMTPSliderExpanded .sapMTimePickerSlider .sapMTPPickerSelectionFrame {
+	    border: 2px solid $twilight-blue;
+	}
+}
+/*************
+Pop up
+**************/
+#mes {
+	&.sap-desktop .sapMIBar.sapMFooter-CTX, .sapMDialog.ClassOperationDetailPopUp footer {
+	    background-color: $navy-blue;
+	}
+}

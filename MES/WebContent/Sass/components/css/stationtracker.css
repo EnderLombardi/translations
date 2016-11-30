@@ -479,6 +479,8 @@ BOX MANAGEMENT
       background-color: #fbec00; }
       .trackerBox .fa.oswIcon b {
         font-family: arial; }
+      .trackerBox .fa.oswIcon + .trackerText {
+        max-width: calc(100% - 100px); }
   .trackerBox .dandelion {
     color: #fbec00; }
   .trackerBox .dandelion-back {
@@ -1420,5 +1422,8 @@ OTHER
 
 .offtime {
   background-image: url("../../../components/stationtracker/css/img/fat_lines.png"); }
+
+#mes .ClassOperationDetailPopUp .sapMInputBaseInner {
+  width: 35vw; }
 
 /*# sourceMappingURL=stationtracker.css.map */

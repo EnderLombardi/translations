@@ -132,6 +132,7 @@ BOX MANAGEMENT
         color: white;
         overflow: hidden;
     }
+
     .trackerTextBlock{
         @extend %trackerText;
         max-width:40%;
@@ -174,6 +175,9 @@ BOX MANAGEMENT
             & b {
                 font-family: arial;
             }
+            &+.trackerText {
+            	 max-width: calc(100% - 100px);
+        	}
         }
     }
 
@@ -1475,4 +1479,9 @@ OTHER
 }
 .offtime{
     background-image: url('../../../components/stationtracker/css/img/fat_lines.png');
+}
+#mes {
+	.ClassOperationDetailPopUp .sapMInputBaseInner {
+	    width: 35vw;
+	}	
 }
