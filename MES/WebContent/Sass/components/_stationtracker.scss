@@ -16,7 +16,7 @@ TABLE
         }
     }
 }
-
+ 
 /********************
 TOOLBAR
 *********************/
@@ -509,6 +509,12 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
             background-color: white;
         }
     }
+    .dhx_data_table {
+    	overflow:visible;
+    }
+	.dhx_matrix_line {
+		overflow:visible;
+	}
     .ylabel{
         white-space: nowrap;
         color: #0D5D76;

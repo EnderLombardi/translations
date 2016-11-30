@@ -376,8 +376,21 @@ PAGE HEADER
   color: transparent;
   text-shadow: none; }
 
+/*************
+GENERALE RULES
+**************/
 #mes .sapMPI {
   margin: 1.25rem 0; }
+
+#mes #content #globalNavView #globalNavView--refreshTime-inner, #mes #content #globalNavView #globalNavView--localDELog-inner {
+  color: #73d2e6 !important;
+  text-shadow: none; }
+#mes #content #globalNavView #globalNavView--refreshTime-img {
+  color: #73d2e6;
+  text-shadow: none; }
+#mes #content #globalNavView .sapMBtn:hover > #globalNavView--refreshTime,
+#mes #content #globalNavView .sapMBtn:hover > #globalNavView--localDELog {
+  background-color: rgba(255, 255, 255, 0.2); }
 
 #mes #stationTrackerView {
   border-top: 0.6rem solid #ffffff; }
@@ -712,6 +725,10 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
   background-color: #ECEEEF; }
 #stationTrackerView--stationtracker .dhx_data_table .dhx_matrix_cell {
   background-color: white; }
+#stationTrackerView--stationtracker .dhx_data_table {
+  overflow: visible; }
+#stationTrackerView--stationtracker .dhx_matrix_line {
+  overflow: visible; }
 #stationTrackerView--stationtracker .ylabel {
   white-space: nowrap;
   color: #0D5D76;
@@ -864,8 +881,7 @@ TASK ADHERENCE
   display: inline-block;
   vertical-align: baseline; }
 .classKpiHeaderContent .KPITaktChartBlueText {
-  color: #74d2e7;
-  margin-left: 10px; }
+  color: #74d2e7; }
 .classKpiHeaderContent .KPITaktChartRightText {
   text-align: right !important;
   width: 100%; }
@@ -1361,7 +1377,7 @@ OTHER
   padding-right: 75%; }
 
 .hachure {
-  background-image: url(../components/img/fat_lines.png); }
+  background-image: url("../../components/stationtracker/css/img/fat_lines.png"); }
 
 .panelContent .sapMPanelContent {
   padding: 0rem;
@@ -1430,5 +1446,11 @@ OTHER
 
 .notifDetails {
   font-size: smaller !important; }
+
+#operationDetailPopup--operationDetailPopUp-scrollCont {
+  padding: 0rem !important; }
+
+.offtime {
+  background-image: url("../../components/stationtracker/css/img/fat_lines.png"); }
 
 /*# sourceMappingURL=stationtracker.css.map */
