@@ -266,7 +266,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			template : sap.ui.getCore().byId("ImportOswUnplannedPopover--sorterList"),
 			sorter : [ new sap.ui.model.Sorter({
 				// Change this value dynamic
-				path : 'WORKORDER_ID',
+				path : 'COMPETENCY',
 				descending : false,
 				group : true,
 			}), new sap.ui.model.Sorter({
@@ -984,8 +984,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		//airbus.mes.shell.oView.getController().renderStationTracker();
 		
 		// Refresh Station tracker
-		//airbus.mes.shell.oView.getController().loadStationTrackerGantKPI();
-		
+	
 		// Resume the Refresh timer when the Pop-Up is opened
         airbus.mes.shell.AutoRefreshManager.resumeRefresh();
 	},

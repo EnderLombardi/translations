@@ -195,11 +195,11 @@ sap.ui
 							var aModel = [sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0]];
 
 							if (airbus.mes.stationtracker.ReschedulePopover === undefined) {
+								
 								var oModel = airbus.mes.stationtracker.oView.getModel("StationTrackerI18n");
 								airbus.mes.stationtracker.ReschedulePopover = sap.ui.xmlfragment("reschedulePage","airbus.mes.stationtracker.Reschedule",airbus.mes.stationtracker.oView.getController());
 								airbus.mes.stationtracker.ReschedulePopover.addStyleClass("alignTextLeft");
 								airbus.mes.stationtracker.ReschedulePopover.setModel(oModel,"i18nModel");
-								airbus.mes.stationtracker.oView.addDependent(airbus.mes.stationtracker.ReschedulePopover);
 								this.nav.addPage(airbus.mes.stationtracker.ReschedulePopover);
 							}
 							// Model for the current operation
