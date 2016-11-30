@@ -284,6 +284,15 @@ sap.ui
 														"/Rowsets/Rowset/0/Row/0/operation_bo"),
 									},
 									{
+										"attribute" : "WORKORDER",
+										"value" : sap.ui
+												.getCore()
+												.getModel(
+														"operationDetailModel")
+												.getProperty(
+														"/Rowsets/Rowset/0/Row/0/wo_no"),
+									},
+									{
 										"attribute" : "SFC_BO",
 										"value" : "SFCBO:"
 												+ airbus.mes.settings.ModelManager.site

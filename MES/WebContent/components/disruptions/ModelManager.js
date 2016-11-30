@@ -154,7 +154,7 @@ airbus.mes.disruptions.ModelManager = {
 	 * filters
 	 */
 	getDisruptionsURL : function(oFilters) {
-		var getDisruptionsURL = this.urlModel.getProperty("getDiruptionsURL");
+		var getDisruptionsURL = airbus.mes.disruptions.ModelManager.urlModel.getProperty("getDiruptionsURL");
 
 		getDisruptionsURL = getDisruptionsURL.replace('$Site',
 				airbus.mes.settings.ModelManager.site);
@@ -171,7 +171,7 @@ airbus.mes.disruptions.ModelManager = {
 			getDisruptionsURL = getDisruptionsURL.replace('$SFCStepRef',
 					oFilters.sfc_step_ref);
 		else
-			getDisruptionsURL = getDisruptionsURL.replace('$SFC',"");
+			getDisruptionsURL = getDisruptionsURL.replace('$SFCStepRef',"");
 		
 		getDisruptionsURL = getDisruptionsURL.replace('$OperationRevision', "");
 		getDisruptionsURL = getDisruptionsURL.replace('$SignalFlag', "");
