@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /****************
 STATIONTRACKER
 *****************/
@@ -1066,10 +1065,35 @@ PRODUCTION GROUP POPOVER
   display: none !important; }
 #mes span.sapMPopoverArrUp {
   display: none !important; }
+#mes .MyproductionGroupPopover .sapMSLITitleOnly {
+  font-size: 0.875rem;
+  color: #333333;
+  line-height: 1rem; }
+#mes .MyproductionGroupPopover .sapMSLIIconThumb > .sapMLIBContent {
+  padding: 0.5rem 0 0.5rem 0; }
+#mes .MyproductionGroupPopover .sapMTB-Info-CTX.sapMTB {
+  background: #74d2e7;
+  border-bottom: 1px solid #ffffff; }
+#mes .MyproductionGroupPopover .sapMLIB.sapMLIBSelected {
+  background: #d5f1f8; }
+#mes .MyproductionGroupPopover .sapMCbBg.sapMCbMarkChecked:before {
+  color: rgba(0, 32, 91, 0.94); }
+#mes .MyproductionGroupPopover .sapMCbBg {
+  border: solid 0.125rem #74d2e7; }
+  #mes .MyproductionGroupPopover .sapMCbBg:hover {
+    border-color: rgba(0, 32, 91, 0.94); }
+#mes .ClassProductionButton {
+  margin-left: 0;
+  max-width: 30vw; }
+#mes .sapMPopover {
+  border: none;
+  box-shadow: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.5);
+  margin-left: -5px;
+  margin-top: -1px; }
 
 /****************************
 TOOLTIP TEXT
-***********************┬Á*****/
+****************************/
 .sapMPIAndon {
   background: #DB5550 !important; }
 

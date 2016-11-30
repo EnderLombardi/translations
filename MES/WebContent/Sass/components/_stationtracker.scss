@@ -1052,10 +1052,48 @@ PRODUCTION GROUP POPOVER
             display: none !important;
         }
     }
+	.MyproductionGroupPopover {
+		.sapMSLITitleOnly {
+	    font-size: 0.875rem;
+	    color: #333333;
+	    line-height:1rem;
+		}
+		.sapMSLIIconThumb>.sapMLIBContent {
+	    padding: 0.5rem 0 0.5rem 0;
+		}
+	.sapMTB-Info-CTX.sapMTB {
+	    background: $twilight-blue;
+	    border-bottom: 1px solid $white-two;
+	}
+	.sapMLIB.sapMLIBSelected {
+	    background: $duck-egg-blue;
+	}
+
+	.sapMCbBg.sapMCbMarkChecked:before {
+	    color: $navy-blue;
+	}
+	.sapMCbBg {
+	    border: solid 0.125rem $twilight-blue;
+	    &:hover {
+	    	border-color:$navy-blue;
+	    }
+    }
 }
+	.ClassProductionButton {
+	    margin-left: 0;
+	    max-width: 30vw;
+	}
+	.sapMPopover {
+	    border: none;
+	    box-shadow: 0 0.0625rem 0.1875rem rgba(0,0,0,0.5);
+	    margin-left: -5px;
+	    margin-top: -1px;
+	}
+}
+
 /****************************
 TOOLTIP TEXT
-***********************µ*****/
+****************************/ 
 .sapMPIAndon{
     background: #DB5550 !important;
 }
@@ -1483,3 +1521,4 @@ OTHER
 	    width: 35vw;
 	}	
 }
+
