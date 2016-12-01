@@ -2,9 +2,9 @@
 		controllerName="airbus.mes.shell.globalNavigation" xmlns:html="http://www.w3.org/1999/xhtml">
 	<Page title="MES" enableScrolling="false">
 		<customHeader>
-			<Toolbar class="pageHeader">
+			<Toolbar class="topPageHeader">
                   <content>	
-                           <Image src="../images/Airbus.png" width="auto" height="1.75rem" press="goToHome" />
+                           <Image id="logo" src="../images/Airbus.png" width="auto" height="1.75rem" press="goToHome"/>
                            <ToolbarSeparator />
                            <Label text="MES - AOS" class="pageTitle"/>
                            <ToolbarSpacer />

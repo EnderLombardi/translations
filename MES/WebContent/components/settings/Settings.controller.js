@@ -398,9 +398,29 @@ sap.ui.controller("airbus.mes.settings.Settings",
 							airbus.mes.shell.oView.byId("labelMSN").setText(airbus.mes.shell.oView.getModel("ShellI18n").getProperty(
 							"MSN") + " " + airbus.mes.settings.ModelManager.currentMsnValue);
 						}
+						
 						// if no msn go by default on user settings.
 						if (!this.getView().byId("selectMSN").getValue()) {
 							airbus.mes.shell.oView.getController().navigate();
+							
+							//if !localhost stop user on setting
+							switch (window.location.hostname) {
+							case "localhost":
+								airbus.mes.settings.oView.byId("navBack").setVisible(false);
+								//airbus.mes.shell.oView.byId("logo").setEnabled(true);
+								//airbus.mes.shell.oView.byId("logo").detachPress(sap.ui.controller.goToHome);
+							    //airbus.mes.shell.getView().byId("logo").setEnabled(true)
+							    //sap.ui.getCore().byId("logo").setEnabled(false);
+								break;
+							default:
+								airbus.mes.settings.oView.byId("navBack").setVisible(false);
+								//airbus.mes.shell.oView.byId("logo").setEnabled(true);
+								//airbus.mes.shell.oView.byId("logo").detachPress(sap.ui.controller.goToHome);
+							    //airbus.mes.shell.getView().byId("logo").setEnabled(true)
+						        //sap.ui.getCore().byId("logo").setEnabled(false);
+								break;
+							}
+							
 						}					
 						this.setEnabledCombobox(true, true, true, true);
 				} else {	

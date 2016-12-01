@@ -1,6 +1,3 @@
-//Ruby cmd
-//sass --watch components/_settings.scss:components/css/settings.css
-
 .elementContainer{
     margin: 15% 0% 0% 22%;
 }
@@ -42,11 +39,15 @@
         color: white;
     }
 }
+.topPageHeader {
+    color: white !important;
+    background: #0F2D65 ! important;
+    border: 0;
+}
 .pageHeader {
     color: white !important;
     background: #0F2D65 ! important;
     border: 0;
-    border-top: 1px solid $tiffany-blue !important;
 }
 .classSettingPage{
     .pageHeader{
@@ -76,7 +77,8 @@
     }
 }
 .pageTitle{
-    @include textHeader(30px, #ffffff !important);
+    min-width: 130px;
+    @include textHeader(24px, #ffffff !important);
 }
 .classListProgram{
     border: 1px solid #e5e5e5;
@@ -314,4 +316,7 @@ html{
             border-left: 0;
         }
     }
+}
+#globalNavView--SelectLanguage-arrow {
+        background: #0F2D65 !important;
 }
