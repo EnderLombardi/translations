@@ -1,0 +1,141 @@
+/************************
+DISRUPTIONTRACKER
+*************************/
+
+.disruptions table th,
+td{
+    text-align: center !important;
+}
+.disruptions{
+    table{
+        td{
+            border-left: 2px solid #E9EEF3 !important;
+        }
+        tr{
+            &:nth-child(even){
+                background:#f7f9fb
+            }
+            &:hover{
+                background: #f0f0f0;
+            }
+        }
+    }
+    .sapMListTblHasNav{
+        .sapMListTblRow{
+            &>:nth-last-child(2){
+                border-right: 2px solid #E9EEF3 !important;
+            }
+        }
+    }
+    .sapMObjStatusWarning{
+        &>.sapMObjStatusIcon{
+            color: rgb(244, 189, 108) !important;
+        }
+    }
+    .sapMObjStatusText{
+        color: black !important;
+    }
+    .sapMListTbl{
+        th{
+            background-color: rgb(230,236,242) !important;
+        }
+    }
+    .sapMListTblNavCol{
+        display:none !important;
+    }
+    @at-root .disruptions .sapMPanel,
+        .sapMPage>.sapMPageHeader + section{
+            background-color: #ffffff !important;
+    }
+    .sapMPanelContent{
+        &:not(.sapMPanelBGTransparent){
+            border-bottom: 0 !important;
+            margin: 0.7rem 0.7rem 0 0.7rem!important;
+            background-color:#e9fbfd;
+        }
+    }
+    @at-root .disruptions .sapMComboBoxTextField,
+        .disruptions .sapMSFF{
+            border: 1px solid #74D2E7;
+    }
+    .sapMSFF{
+        border-radius: 3em;
+        border: 2px solid #74D2E7;
+        color: #74D2E7;
+        overflow: hidden;
+        .sapMSFB{
+            &.sapMSFS{
+                color: #74D2E7;
+            }
+        }
+    }
+    .disruptionsTable{
+        width: auto !important;
+        margin: 0.7rem 0.7rem 0 0.7rem;
+    }
+    header{
+        @extend %kpiPageHeader;
+        .headerText{
+            text-shadow: none;
+        }
+    }
+    .sapMTB{
+        border-bottom: none !important;
+    }
+    .sapMIBar{
+        &.sapMSubHeader-CTX{
+            color: white !important;
+            background: #0F2D65 ! important;
+            color: #FFFFFF !important;
+            .headerText{
+                font-size: 1.2rem !important;
+            }
+        }
+    }
+}
+#disruptiontrackerView--navBack .sapMBtnIcon,
+#disruptiontrackerView--navBack .sapMBtnContent{
+    color: white;
+}
+#disruptiontrackerView--gotoDisruptionKpi{
+    &.sapMBtn{
+        &:hover{
+            background-color: rgba(0, 86, 112, 0.20);
+        }
+        span{
+            color: #0D5D76;
+        }
+    }
+    @at-root #disruptiontrackerView--gotoDisruptionKpi.sapMBtn:hover>.sapMBtnHoverable, #disruptiontrackerView--gotoDisruptionKpi.sapMBtn>.sapMBtnHoverable {
+        background-color: transparent;
+        background: transparent;
+        border:none;
+    }
+}
+#disrptTrackerSettings-dialog{
+    background: #ffffff;
+    border: none;
+    border-radius: 0;
+    box-shadow: 0 0 5px #333;
+    header{
+        background:#d4f1f7;
+    }
+}
+#disrptTrackerSettings-title{
+    color:#434343;
+}
+#disrptTrackerSettings-page1-cont{
+    border-top:3px solid  rgba(255, 255, 255, 0);
+}
+#disrptTrackerSettings header{
+    box-shadow: 0 0 5px #333;
+    overflow: visible;
+}
+
+.classDisruptionDetailPopUp{
+    .sapMPageBusyCoversAll{
+        &>section{
+            overflow-y: scroll!important;
+        }
+    }
+}

@@ -55,7 +55,7 @@ STATION TRACKER
 
 #stationTrackerView--toolbarstationtracker .comboBoxStyle { width: auto; max-width: 100%; background-color: transparent; margin: 0 !important; border-right: 1px solid #8db9ca; height: 3rem; }
 
-.kpiPageHeader { -webkit-box-shadow: 0px 2px 15px -5px #0F2D65; -moz-box-shadow: 0px 2px 15px -5px #0F2D65; box-shadow: 0px 2px 15px -5px #0F2D65; border: none; border-top: 0.6rem solid #ffffff !important; position: relative; z-index: 10; }
+.kpiPageHeader, .disruptions header { -webkit-box-shadow: 0px 2px 15px -5px #0F2D65; -moz-box-shadow: 0px 2px 15px -5px #0F2D65; box-shadow: 0px 2px 15px -5px #0F2D65; border: none; border-top: 0.6rem solid #ffffff !important; position: relative; z-index: 10; }
 
 .tooltip { visibility: hidden; position: absolute; width: 120px; background-color: #555; color: #fff; text-align: center; padding: 5px 0; border-radius: 6px; z-index: 1; bottom: 115%; left: 50%; margin-left: -60px; }
 
@@ -764,6 +764,47 @@ html.sap-desktop .sapMBtnTransparent > .sapMBtnIcon { color: #ffffff; }
 
 .customComboBox button { border: 1px solid #ccc; border-left: 0; }
 .customComboBox:hover button { border: 1px solid #74d2e7; border-left: 0; }
+
+/************************
+DISRUPTIONTRACKER
+*************************/
+.disruptions table th, td { text-align: center !important; }
+
+.disruptions table td { border-left: 2px solid #E9EEF3 !important; }
+.disruptions table tr:nth-child(even) { background: #f7f9fb; }
+.disruptions table tr:hover { background: #f0f0f0; }
+.disruptions .sapMListTblHasNav .sapMListTblRow > :nth-last-child(2) { border-right: 2px solid #E9EEF3 !important; }
+.disruptions .sapMObjStatusWarning > .sapMObjStatusIcon { color: #f4bd6c !important; }
+.disruptions .sapMObjStatusText { color: black !important; }
+.disruptions .sapMListTbl th { background-color: #e6ecf2 !important; }
+.disruptions .sapMListTblNavCol { display: none !important; }
+.disruptions .sapMPanel, .sapMPage > .sapMPageHeader + section { background-color: #ffffff !important; }
+.disruptions .sapMPanelContent:not(.sapMPanelBGTransparent) { border-bottom: 0 !important; margin: 0.7rem 0.7rem 0 0.7rem !important; background-color: #e9fbfd; }
+.disruptions .sapMComboBoxTextField, .disruptions .sapMSFF { border: 1px solid #74D2E7; }
+.disruptions .sapMSFF { border-radius: 3em; border: 2px solid #74D2E7; color: #74D2E7; overflow: hidden; }
+.disruptions .sapMSFF .sapMSFB.sapMSFS { color: #74D2E7; }
+.disruptions .disruptionsTable { width: auto !important; margin: 0.7rem 0.7rem 0 0.7rem; }
+.disruptions header .headerText { text-shadow: none; }
+.disruptions .sapMTB { border-bottom: none !important; }
+.disruptions .sapMIBar.sapMSubHeader-CTX { color: white !important; background: #0F2D65 !important; color: #FFFFFF !important; }
+.disruptions .sapMIBar.sapMSubHeader-CTX .headerText { font-size: 1.2rem !important; }
+
+#disruptiontrackerView--navBack .sapMBtnIcon, #disruptiontrackerView--navBack .sapMBtnContent { color: white; }
+
+#disruptiontrackerView--gotoDisruptionKpi.sapMBtn:hover { background-color: rgba(0, 86, 112, 0.2); }
+#disruptiontrackerView--gotoDisruptionKpi.sapMBtn span { color: #0D5D76; }
+#disruptiontrackerView--gotoDisruptionKpi.sapMBtn:hover > .sapMBtnHoverable, #disruptiontrackerView--gotoDisruptionKpi.sapMBtn > .sapMBtnHoverable { background-color: transparent; background: transparent; border: none; }
+
+#disrptTrackerSettings-dialog { background: #ffffff; border: none; border-radius: 0; box-shadow: 0 0 5px #333; }
+#disrptTrackerSettings-dialog header { background: #d4f1f7; }
+
+#disrptTrackerSettings-title { color: #434343; }
+
+#disrptTrackerSettings-page1-cont { border-top: 3px solid rgba(255, 255, 255, 0); }
+
+#disrptTrackerSettings header { box-shadow: 0 0 5px #333; overflow: visible; }
+
+.classDisruptionDetailPopUp .sapMPageBusyCoversAll > section { overflow-y: scroll !important; }
 
 /*************
 GENERALE RULES
