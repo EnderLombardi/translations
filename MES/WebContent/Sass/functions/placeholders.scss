@@ -85,7 +85,9 @@ STATION TRACKER
     line-height: 3rem;
     text-transform: capitalize;
     margin-right: 0px !important;
-    border-right: solid 1px #74d2e7;
+    border-right: solid 1px #74d2e7 !important;
+    background: #0F2D65 !important;
+    border: 0;
 }
 %stationTrackerView{
     width: auto;
