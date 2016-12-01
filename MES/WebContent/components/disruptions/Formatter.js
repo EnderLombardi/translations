@@ -284,6 +284,29 @@ airbus.mes.disruptions.Formatter = {
 			return true;
 		
 		return false;
-	}
+	},
+	
+  isoDateconvert : function(date) {
+		
+		var date = new Date(date)
+		var dd = date.getDate();
+		
+		if (dd < 10) { dd = "0" + dd }
+		
+		var mm = date.getMonth()+1; //month is returned in 0-11, so adding 1
+		if (mm < 10) { mm = "0" + mm }
+		
+		var yyyy = date.getFullYear();
+		
+		var HH = date.getHours();
+		if (HH < 10) { HH = "0" + HH }
+		var min = date.getMinutes();
+		if (min < 10) { min = "0" + min }
+		var ss = date.getSeconds();
+		if (ss < 10) { ss = "0" + ss }
+		
+		return (yyyy + "-" + mm + "-" + dd + " " + HH + ":" + min + ":" + ss)
+		
+	},
 
 };
