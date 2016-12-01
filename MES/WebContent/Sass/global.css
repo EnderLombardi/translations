@@ -808,6 +808,55 @@ DISRUPTIONTRACKER
 
 .classDisruptionDetailPopUp .sapMPageBusyCoversAll > section { overflow-y: scroll !important; }
 
+/********************
+For HOMEPAGE
+*********************/
+.margin { margin-left: 1rem !important; margin-right: 1rem !important; margin-top: 1rem !important; margin-bottom: 1rem !important; }
+
+.headerTileText { font-size: 18px; color: #ffffff; }
+
+.pageHeader .sapMSltArrow { background: transparent !important; color: #fff; }
+
+.CustomTileText { opacity: 0.6; font-size: 16px; color: #ffffff; font-weight: normal; font-style: normal; font-stretch: normal; margin-top: 1rem; }
+
+.IconTile { font-size: 5em; color: #5f89ae; }
+
+.customTiles { width: 14rem; height: 15rem; border: none; border-radius: 0; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15); background-color: rgba(12, 75, 131, 0.9); margin: 0.5rem; width: 13rem; -webkit-transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out; -moz-transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out; transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out; }
+.customTiles:not([data-enabled^="false"]) { box-shadow: 0 0 10px rgba(9, 56, 99, 0.5); }
+
+.titleToolbar { background-color: lightgrey; }
+
+.sapMSlt > .sapMSltLabel, .sapMSlt, .sapMSltArrow { line-height: 1.9rem; height: 1.9rem; }
+
+.GenricBgColor { background-color: #EBEEF2; }
+
+.langbutton { float: left; width: 33.3%; color: black !important; }
+.langbutton .sapMBtnContent { text-align: start !important; font: 1.125rem !important; }
+
+.textSize { font: caption; }
+
+.PanelbgImg { background-color: white; background-image: url("../../images/dottedCarbon.png"); opacity: 3%; display: block; background-size: 100% 100%; }
+
+.tiffanyColor .sapMBtnInner.sapMBtnText { font-family: "Arial", Sans-serif !important; font-size: 14px !important; }
+
+.absolutePosition { position: absolute !important; }
+
+.sapMPanelBGTranslucent .sapMPanelContent { margin-left: 33%; }
+
+.sapMTCCnt div[data-enabled^="false"] { opacity: 0.6; }
+
+div[data-enabled^="true"] .sapMCustomTileContent:after { content: ""; position: absolute; top: 0; bottom: 0; right: 0; left: 0; cursor: pointer; }
+.sapMTC div[data-enabled^="true"]:hover, div[data-enabled^="true"]:focus { background-color: #0c4b83; box-shadow: 0 0 0 #0c4b83; }
+
+.tileBox { position: absolute; top: 1rem; bottom: 1rem; right: 1rem; left: 1rem; }
+
+.sapMCustomTile:focus { outline: none; }
+
+@media (min-width: 952px) and (max-width: 1229px) { #homePageView .sapMTC { width: 80% !important; margin: 0 auto; } }
+@media (min-width: 1230px) and (max-width: 1589px) { #homePageView .sapMTC { width: 62% !important; margin: 0 auto; } }
+@media (min-width: 1590px) and (max-width: 1895px) { #homePageView .sapMTC { width: 52% !important; margin: 0 auto; } }
+@media (min-width: 1895px) { #homePageView .sapMTC { width: 42% !important; margin: 0 auto; } }
+
 /*************
 GENERALE RULES
 **************/
@@ -832,7 +881,8 @@ table { border-collapse: collapse; border-spacing: 0; }
 #mes #content #globalNavView #globalNavView--refreshTime-img { color: #73d2e6; text-shadow: none; }
 #mes #content #globalNavView .sapMBtn:hover > #globalNavView--refreshTime, #mes #content #globalNavView .sapMBtn:hover > #globalNavView--localDELog { background-color: rgba(255, 255, 255, 0.2); }
 #mes #sap-ui-static .sapMPopover { background-color: #2c2a29; box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5); }
-#mes #sap-ui-static #popupSettingsButton-inner, #mes #sap-ui-static #idMyprofileSetting-inner, #mes #sap-ui-static #popupSettingsButton-img, #mes #sap-ui-static #idMyprofileSetting-img { color: #ffffff; }
+#mes #sap-ui-static #popupSettingsButton-inner, #mes #sap-ui-static #idMyprofileSetting-inner { color: #ffffff; }
+#mes #sap-ui-static #popupSettingsButton-img, #mes #sap-ui-static #idMyprofileSetting-img { color: #74d2e7; }
 #mes #sap-ui-static :not(.sapMBtnDisabled) > .sapMBtnTransparent.sapMBtnActive, #mes #sap-ui-static :not(.sapMBtnDisabled):hover > .sapMBtnTransparent.sapMBtnActive { background-color: rgba(113, 103, 103, 0.5) !important; }
 #mes .sapMDialog:not(.theme-disabled) { background: #ffffff; border: none; border-radius: 0; box-shadow: 0 0 5px #333; }
 #mes .sapMDialog:not(.theme-disabled) header { box-shadow: 0 0 5px #333; overflow: visible; background-color: #d4f1f7; color: #434343; }
@@ -922,5 +972,9 @@ Timepicker
 Pop up
 **************/
 #mes.sap-desktop .sapMIBar.sapMFooter-CTX, #mes .sapMDialog.ClassOperationDetailPopUp footer { background-color: rgba(0, 32, 91, 0.94); }
+
+/*******************
+FROM HOMEPAGE
+********************/
 
 /*# sourceMappingURL=global.css.map */

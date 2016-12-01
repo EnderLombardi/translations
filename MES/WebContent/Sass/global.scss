@@ -10,6 +10,7 @@
 @import 'components/_kpiheader.scss';
 @import 'components/_settings.scss';
 @import 'components/_disruptiontracker.scss';
+@import 'components/_homepage.scss';
 
 // ============== Components ===============
 
@@ -101,10 +102,12 @@ table{
             box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
         }
         #popupSettingsButton-inner,
-        #idMyprofileSetting-inner,
+        #idMyprofileSetting-inner,{
+            color: #ffffff;
+        }
         #popupSettingsButton-img,
         #idMyprofileSetting-img{
-            color: #ffffff;
+            color: #74d2e7;
         }
         :not(.sapMBtnDisabled)>.sapMBtnTransparent.sapMBtnActive,
         :not(.sapMBtnDisabled):hover>.sapMBtnTransparent.sapMBtnActive{
@@ -360,3 +363,7 @@ Pop up
         background-color: $navy-blue;
     }
 }
+
+/*******************
+FROM HOMEPAGE
+********************/
