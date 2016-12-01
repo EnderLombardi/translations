@@ -400,7 +400,7 @@ sap.ui.controller("airbus.mes.settings.Settings",
 						}
 						// if no msn go by default on user settings.
 						if (!this.getView().byId("selectMSN").getValue()) {
-							//airbus.mes.shell.oView.getController().navigate();
+							airbus.mes.shell.oView.getController().navigate();
 						}					
 						this.setEnabledCombobox(true, true, true, true);
 				} else {	
