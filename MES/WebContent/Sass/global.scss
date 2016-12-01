@@ -1,9 +1,14 @@
+// Styles
+@import 'styles/colours';
+
 // Functions
 @import 'functions/mixins.scss';
 @import 'functions/placeholders.scss';
 
 // Styles
-@import 'styles/colours';
+@import 'components/_stationtracker.scss';
+@import 'components/_kpiheader.scss';
+@import 'components/_settings.scss';
 
 // ============== Components ===============
 
