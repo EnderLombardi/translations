@@ -406,18 +406,10 @@ sap.ui.controller("airbus.mes.settings.Settings",
 							//if !localhost stop user on setting
 							switch (window.location.hostname) {
 							case "localhost":
-								airbus.mes.settings.oView.byId("navBack").setVisible(false);
-								//airbus.mes.shell.oView.byId("logo").setEnabled(true);
-								//airbus.mes.shell.oView.byId("logo").detachPress(sap.ui.controller.goToHome);
-							    //airbus.mes.shell.getView().byId("logo").setEnabled(true)
-							    //sap.ui.getCore().byId("logo").setEnabled(false);
+								airbus.mes.settings.oView.byId("navBack").setVisible(true);
 								break;
 							default:
 								airbus.mes.settings.oView.byId("navBack").setVisible(false);
-								//airbus.mes.shell.oView.byId("logo").setEnabled(true);
-								//airbus.mes.shell.oView.byId("logo").detachPress(sap.ui.controller.goToHome);
-							    //airbus.mes.shell.getView().byId("logo").setEnabled(true)
-						        //sap.ui.getCore().byId("logo").setEnabled(false);
 								break;
 							}
 							
