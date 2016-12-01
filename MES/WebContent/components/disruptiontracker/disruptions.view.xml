@@ -18,13 +18,13 @@
 			<content>
 
 				<Toolbar>
-					<ComboBox id="stationComboBox" class="sapUiMediumMarginEnd"
+					<ComboBox id="stationComboBox" class="sapUiMediumMarginEnd customComboBox"
 						placeholder="{disruptiontrackerI18n>selectStation}" items="{ path:'plantModel>/Rowsets/Rowset/0/Row' }"
 						selectedKey="" selectionChange="filterByStation">
 						<core:Item key="{plantModel>station}" text="{plantModel>stationDescription}" />
 					</ComboBox>
 
-					<ComboBox id="statusComboBox" class="sapUiMediumMarginEnd"
+					<ComboBox id="statusComboBox" class="sapUiMediumMarginEnd customComboBox"
 						placeholder="{disruptiontrackerI18n>selectStatus}"
 						selectionChange="filterDisruptions">
 						<core:Item key="PENDING" text="{disruptiontrackerI18n>status.pending}" />
@@ -33,7 +33,7 @@
 						<core:Item key="CLOSED" text="{disruptiontrackerI18n>status.closed}" />
 						<core:Item key="REJECTED" text="{disruptiontrackerI18n>status.rejected}" />
 					</ComboBox>
-					<ComboBox id="resolutionGroupBox" class="sapUiMediumMarginEnd"
+					<ComboBox id="resolutionGroupBox" class="sapUiMediumMarginEnd customComboBox"
 						placeholder="{disruptiontrackerI18n>resolutionGroup}" items="{disruptionsTrackerModel>/Rowsets/Rowset/0/Row}"
 						selectedKey="" selectionChange="filterDisruptions">
 						<core:Item key="{disruptionsTrackerModel>ResponsibleGroup}" text="{disruptionsTrackerModel>ResponsibleGroupDesc}" />
