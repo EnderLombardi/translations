@@ -91,6 +91,9 @@ airbus.mes.disruptiontracker.Formatter = {
 	},
 	
 	formatOpeningTime: function(openDate, closureDate){
+		
+		openDate = airbus.mes.disruptions.Formatter.isoDateconvert(openDate);
+		closureDate = airbus.mes.disruptions.Formatter.isoDateconvert(closureDate);
 		if(closureDate == undefined || closureDate == "")
 			return 0;
 		

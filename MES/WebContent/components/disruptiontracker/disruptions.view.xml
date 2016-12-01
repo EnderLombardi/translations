@@ -52,7 +52,7 @@
 
 
 		<Table id="disruptionsTable" class="disruptionsTable sapUiSmallMarginBottom"
-			items="{ path: 'disruptionsTrackerModel>/Rowsets/Rowset/0/Row' }" growing="true" growingThreshold="50" >
+			items="{ path: 'disruptionsTrackerModel>/Rowsets/Rowset/0/Row' }" growing="true" growingThreshold="50">
 			<headerToolbar>
 				<Toolbar>
 					<ToolbarSpacer />
