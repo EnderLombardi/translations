@@ -284,7 +284,7 @@ airbus.mes.stationtracker.ModelManager = {
 		//bOuStanding = true insert OSW
 		//bOuStanding = false insert unplanned
 		
-		// This is done to kep dmi xml format Rowsets/Rowset/Row/ect..
+		// This is done to keep dmi xml format Rowsets/Rowset/Row/ect..
 		var sXmlStart = '<?xml version="1.0" encoding="iso-8859-1"?><Rowsets><Rowset>';
 		var sXmlEnd =     '</Rowset></Rowsets>';
 		var sXmlByRow = "";
@@ -296,11 +296,28 @@ airbus.mes.stationtracker.ModelManager = {
 		})
 		
 		var sXml = sXmlStart + sXmlByRow + sXmlEnd;
+		
+		switch ( airbus.mes.stationtracker.CheckQa ) {
+	    case "UNPLANNED":
+	    	
+	    	var dDateShift = airbus.mes.stationtracker.ShiftManager.shifts[airbus.mes.stationtracker.ShiftManager.closestShift(new Date())].StartDate;
+			var sDateShift = airbus.mes.stationtracker.util.Formatter.dDate2sDate(dDateShift);
+			    	
+	        break;
+	    case "OSW":
 			
+	    	// See SD inport osw go at the date of startTime of a shift
+	    	var sDateShift = airbus.mes.settings.ModelManager.taktStart;
+		
+	    	break;
+	    default:
+	        
+		}
+		
+		
+		
 		var oData = airbus.mes.stationtracker.ModelManager.settings;
 		var geturlsetosw = this.urlModel.getProperty('urlsetosw');
-		var dDateShift = airbus.mes.stationtracker.ShiftManager.shifts[airbus.mes.stationtracker.ShiftManager.closestShift(new Date())].StartDate;
-		var sDateShift = airbus.mes.stationtracker.util.Formatter.dDate2sDate(dDateShift);
 		
 		geturlsetosw = airbus.mes.stationtracker.ModelManager.replaceURI(geturlsetosw, "$site", oData.site);
 		geturlsetosw = airbus.mes.stationtracker.ModelManager.replaceURI(geturlsetosw, "$sCheckQa", sCheckQa);
@@ -807,16 +824,6 @@ airbus.mes.stationtracker.ModelManager = {
 		var urlReschedulingService = this.urlModel.getProperty("urlReschedulingService");
 		var oData = airbus.mes.stationtracker.ModelManager.settings;
 
-//		geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$station", oData.station);
-//		geturlstationtracker = airbus.mes.stationtracker.ModelManager.replaceURI(geturlstationtracker, "$plant", oData.site);
-//			
-//		urlReschedulingService = airbus.mes.stationtracker.ModelManager.settings.replaceURI(urlSaveUserSetting, "$site", oData.site);
-//		urlReschedulingService = airbus.mes.stationtracker.ModelManager.settings.replaceURI(urlSaveUserSetting, "$sCheckkQa", sCheckkQa);
-//		urlReschedulingService = airbus.mes.stationtracker.ModelManager.settings.replaceURI(urlSaveUserSetting, "$prodGroup", oData.prodGroup);
-//		urlReschedulingService = airbus.mes.stationtracker.ModelManager.settings.replaceURI(urlSaveUserSetting, "$station", oData.station);
-//		urlReschedulingService = airbus.mes.stationtracker.ModelManager.settings.replaceURI(urlSaveUserSetting, "$msn", oData.msn);
-//		urlReschedulingService = airbus.mes.stationtracker.ModelManager.settings.replaceURI(urlSaveUserSetting, "$user", oNew.startDate);
-	
 		jQuery.ajax({
 			async : false ,
 			url : urlReschedulingService,

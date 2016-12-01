@@ -35,10 +35,6 @@
     margin: 0.7rem 0.7rem 0 0.7rem!important;
     background-color:#e9fbfd;
 }
-#disruptiontrackerView--gotoDisruptionKpi.sapMBtn {
-    background-color: #d4f1f7; 
-
-}
 
 #disruptiontrackerView--navBack .sapMBtnIcon, #disruptiontrackerView--navBack .sapMBtnContent {
 	color: white;
