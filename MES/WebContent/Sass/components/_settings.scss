@@ -50,7 +50,6 @@
 .classSettingPage{
     .pageHeader{
         @extend %pageHeader;
-        border-top: 0.1rem solid #74d2e7;
         span{
             font-size: 1.2rem;
             color: white;

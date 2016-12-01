@@ -74,7 +74,6 @@ table{
         margin: 1.25rem 0;
     }
 }
-
 #mes{
     #content{
         #globalNavView{
@@ -94,6 +93,23 @@ table{
             }
 
         }
+    }
+    #sap-ui-static{
+        .sapMPopover{
+            background-color: #2c2a29;
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+        }
+        #popupSettingsButton-inner,
+        #idMyprofileSetting-inner,
+        #popupSettingsButton-img,
+        #idMyprofileSetting-img{
+            color: #ffffff;
+        }
+        :not(.sapMBtnDisabled)>.sapMBtnTransparent.sapMBtnActive,
+        :not(.sapMBtnDisabled):hover>.sapMBtnTransparent.sapMBtnActive{
+            background-color: rgba(113, 103, 103, 0.5) !important;
+        }
+
     }
     .sapMDialog{
         &:not(.theme-disabled){
@@ -289,13 +305,6 @@ table{
 }
 [id^="myProfileAccept-img"]{
     background-color: green;
-}
-.backgroundColor{
-    .whiteText{
-        .sapMBtnContent{
-            background-color:black;
-        }
-    }
 }
 
 /*************

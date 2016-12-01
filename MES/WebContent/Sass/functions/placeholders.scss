@@ -233,9 +233,7 @@ STATION TRACKER
     -moz-box-shadow: 0px 2px 15px -5px #0F2D65;
     box-shadow: 0px 2px 15px -5px #0F2D65;
     border: none;
-    /*border-top: 0.6rem solid #ffffff;*/
-    border-top: 0.1rem solid #74d2e7;
-    
+    border-top: 0.6rem solid #ffffff !important;
     position: relative;
     z-index: 10;
 }

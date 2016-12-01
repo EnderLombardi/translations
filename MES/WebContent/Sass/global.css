@@ -55,7 +55,7 @@ STATION TRACKER
 
 #stationTrackerView--toolbarstationtracker .comboBoxStyle { width: auto; max-width: 100%; background-color: transparent; margin: 0 !important; border-right: 1px solid #8db9ca; height: 3rem; }
 
-.kpiPageHeader { -webkit-box-shadow: 0px 2px 15px -5px #0F2D65; -moz-box-shadow: 0px 2px 15px -5px #0F2D65; box-shadow: 0px 2px 15px -5px #0F2D65; border: none; /*border-top: 0.6rem solid #ffffff;*/ border-top: 0.1rem solid #74d2e7; position: relative; z-index: 10; }
+.kpiPageHeader { -webkit-box-shadow: 0px 2px 15px -5px #0F2D65; -moz-box-shadow: 0px 2px 15px -5px #0F2D65; box-shadow: 0px 2px 15px -5px #0F2D65; border: none; border-top: 0.6rem solid #ffffff !important; position: relative; z-index: 10; }
 
 .tooltip { visibility: hidden; position: absolute; width: 120px; background-color: #555; color: #fff; text-align: center; padding: 5px 0; border-radius: 6px; z-index: 1; bottom: 115%; left: 50%; margin-left: -60px; }
 
@@ -682,7 +682,6 @@ KPI Header Content
 
 .pageHeader { color: white !important; background: #0F2D65 !important; border: 0; }
 
-.classSettingPage .pageHeader { border-top: 0.1rem solid #74d2e7; }
 .classSettingPage .pageHeader span { font-size: 1.2rem; color: white; }
 
 .sapMPage .classSettingPage > .sapMPageHeader + .sapMPageSubHeader + section { margin-top: 0.55rem; }
@@ -786,6 +785,9 @@ table { border-collapse: collapse; border-spacing: 0; }
 #mes #content #globalNavView #globalNavView--refreshTime-inner, #mes #content #globalNavView #globalNavView--localDELog-inner { color: #73d2e6 !important; text-shadow: none; }
 #mes #content #globalNavView #globalNavView--refreshTime-img { color: #73d2e6; text-shadow: none; }
 #mes #content #globalNavView .sapMBtn:hover > #globalNavView--refreshTime, #mes #content #globalNavView .sapMBtn:hover > #globalNavView--localDELog { background-color: rgba(255, 255, 255, 0.2); }
+#mes #sap-ui-static .sapMPopover { background-color: #2c2a29; box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5); }
+#mes #sap-ui-static #popupSettingsButton-inner, #mes #sap-ui-static #idMyprofileSetting-inner, #mes #sap-ui-static #popupSettingsButton-img, #mes #sap-ui-static #idMyprofileSetting-img { color: #ffffff; }
+#mes #sap-ui-static :not(.sapMBtnDisabled) > .sapMBtnTransparent.sapMBtnActive, #mes #sap-ui-static :not(.sapMBtnDisabled):hover > .sapMBtnTransparent.sapMBtnActive { background-color: rgba(113, 103, 103, 0.5) !important; }
 #mes .sapMDialog:not(.theme-disabled) { background: #ffffff; border: none; border-radius: 0; box-shadow: 0 0 5px #333; }
 #mes .sapMDialog:not(.theme-disabled) header { box-shadow: 0 0 5px #333; overflow: visible; background-color: #d4f1f7; color: #434343; }
 #mes .sapMDialog:not(.theme-disabled) footer { background-color: #0F2D65; }
@@ -849,8 +851,6 @@ table { border-collapse: collapse; border-spacing: 0; }
 [id^="myProfileCancel-img"] { background-color: red; }
 
 [id^="myProfileAccept-img"] { background-color: green; }
-
-.backgroundColor .whiteText .sapMBtnContent { background-color: black; }
 
 /*************
 FORM
