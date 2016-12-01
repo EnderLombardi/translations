@@ -48,6 +48,9 @@ td{
     .sapMListTblNavCol{
         display:none !important;
     }
+    .pageHeader {
+        border-top: 0.6rem solid #ffffff;
+    }
     @at-root .disruptions .sapMPanel,
         .sapMPage>.sapMPageHeader + section{
             background-color: #ffffff !important;

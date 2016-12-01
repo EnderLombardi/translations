@@ -680,14 +680,16 @@ KPI Header Content
 
 .whiteButton .sapMBtnIcon { color: white; }
 
-.pageHeader { color: white !important; background: #0F2D65 !important; border: 0; border-top: 1px solid #74d2e7 !important; }
+.topPageHeader { color: white !important; background: #0F2D65 !important; border: 0; }
+
+.pageHeader { color: white !important; background: #0F2D65 !important; border: 0; }
 
 .classSettingPage .pageHeader span { font-size: 1.2rem; color: white; }
 
 .sapMPage .classSettingPage > .sapMPageHeader + .sapMPageSubHeader + section { margin-top: 0.55rem; }
 .sapMPage > .sapMPageHeader + .sapMPageSubHeader + section { background-color: white; }
 
-.pageTitle { font-family: "Arial", Sans-serif !important; font-size: 30px; font-weight: normal; font-style: normal; font-stretch: normal; color: #ffffff !important; }
+.pageTitle { min-width: 130px; font-family: "Arial", Sans-serif !important; font-size: 24px; font-weight: normal; font-style: normal; font-stretch: normal; color: #ffffff !important; }
 
 .classListProgram { border: 1px solid #e5e5e5; border-bottom: 0; margin-top: 0.8rem !important; margin-left: 0.8rem !important; }
 .classListProgram .sapMLIBContent .sapMHBox .sapMFlexItem:nth-child(2):before { content: ' '; display: inline-block; vertical-align: middle; height: 100%; }
@@ -765,6 +767,8 @@ html.sap-desktop .sapMBtnTransparent > .sapMBtnIcon { color: #ffffff; }
 .customComboBox button { border: 1px solid #ccc; border-left: 0; }
 .customComboBox:hover button { border: 1px solid #74d2e7; border-left: 0; }
 
+#globalNavView--SelectLanguage-arrow { background: #0F2D65 !important; }
+
 /************************
 DISRUPTIONTRACKER
 *************************/
@@ -780,6 +784,7 @@ DISRUPTIONTRACKER
 .disruptions .sapMObjStatusText { color: black !important; }
 .disruptions .sapMListTbl th { background-color: #e6ecf2 !important; }
 .disruptions .sapMListTblNavCol { display: none !important; }
+.disruptions .pageHeader { border-top: 0.6rem solid #ffffff; }
 .disruptions .sapMPanel, .sapMPage > .sapMPageHeader + section { background-color: #ffffff !important; }
 .disruptions .sapMPanelContent:not(.sapMPanelBGTransparent) { border-bottom: 0 !important; background-color: #e9fbfd; }
 .disruptions .sapMComboBoxTextField, .disruptions .sapMSFF { border: 1px solid #74D2E7; }
@@ -881,7 +886,7 @@ table { border-collapse: collapse; border-spacing: 0; }
 #mes #content #globalNavView #globalNavView--refreshTime-inner, #mes #content #globalNavView #globalNavView--localDELog-inner { color: #73d2e6 !important; text-shadow: none; }
 #mes #content #globalNavView #globalNavView--refreshTime-img { color: #73d2e6; text-shadow: none; }
 #mes #content #globalNavView .sapMBtn:hover > #globalNavView--refreshTime, #mes #content #globalNavView .sapMBtn:hover > #globalNavView--localDELog { background-color: rgba(255, 255, 255, 0.2); }
-#mes #sap-ui-static .sapMPopover { background-color: #2c2a29; box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5); }
+#mes #sap-ui-static .sapMPopover:not(.informationColor):not(#stationTrackerView--toolbarstationtracker-popover) { background-color: #2c2a29; box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5); }
 #mes #sap-ui-static #popupSettingsButton-inner, #mes #sap-ui-static #idMyprofileSetting-inner { color: #ffffff; }
 #mes #sap-ui-static #popupSettingsButton-img, #mes #sap-ui-static #idMyprofileSetting-img { color: #74d2e7; }
 #mes #sap-ui-static :not(.sapMBtnDisabled) > .sapMBtnTransparent.sapMBtnActive, #mes #sap-ui-static :not(.sapMBtnDisabled):hover > .sapMBtnTransparent.sapMBtnActive { background-color: rgba(113, 103, 103, 0.5) !important; }
