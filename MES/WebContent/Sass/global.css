@@ -1,6 +1,6 @@
 /*
 Error: Invalid CSS after "...ontracker.scss'": expected "{", was ";"
-        on line 16 of global.scss
+        on line 16 of ./global.scss
 
 11: @import 'components/_settings.scss';
 12: <<<<<<< Upstream, based on origin/MESv0.9
@@ -9,13 +9,13 @@ Error: Invalid CSS after "...ontracker.scss'": expected "{", was ";"
 15: >>>>>>> 722c68c [shell] - block navigation if no MSN selected
 16: @import 'components/_disruptiontracker.scss';
 17: @import 'components/_homepage.scss';
-18: 
-19: // ============== Components ===============
-20: 
+18: @import 'components/_ressourcepool.scss';
+19: 
+20: // ============== Components ===============
 21: 
 
 Backtrace:
-global.scss:16
+./global.scss:16
 C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:1189:in `expected'
 C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:1125:in `expected'
 C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:1120:in `tok!'
@@ -44,4 +44,4 @@ C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/vendor/listen/lib/listen/ada
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Invalid CSS after \"...ontracker.scss'\": expected \"{\", was \";\"\A         on line 16 of global.scss\A \A 11: @import 'components/_settings.scss';\A 12: <<<<<<< Upstream, based on origin/MESv0.9\A 13: =======\A 14: /*@import 'components/_polypoly.scss';*/\A 15: >>>>>>> 722c68c [shell] - block navigation if no MSN selected\A 16: @import 'components/_disruptiontracker.scss';\A 17: @import 'components/_homepage.scss';\A 18: \A 19: // ============== Components ===============\A 20: \A 21: "; }
+  content: "Error: Invalid CSS after \"...ontracker.scss'\": expected \"{\", was \";\"\A         on line 16 of ./global.scss\A \A 11: @import 'components/_settings.scss';\A 12: <<<<<<< Upstream, based on origin/MESv0.9\A 13: =======\A 14: /*@import 'components/_polypoly.scss';*/\A 15: >>>>>>> 722c68c [shell] - block navigation if no MSN selected\A 16: @import 'components/_disruptiontracker.scss';\A 17: @import 'components/_homepage.scss';\A 18: @import 'components/_ressourcepool.scss';\A 19: \A 20: // ============== Components ===============\A 21: "; }
