@@ -217,14 +217,14 @@
         }
     }
 }
-[id^="View1--nav"]{
+[id^="settingsView--nav"]{
     color: rgba(0, 86, 112, 0.94);
     font-weight: bold;
 }
-[id^="View1--currMSN"]{
+[id^="settingsView--currMSN"]{
     font-weight: bold;
 }
-[id^="View1--headText"]{
+[id^="settingsView--headText"]{
     color: rgba(0, 86, 112, 0.94);
     &>.sapUiForm{
         .sapUiFormTitle{
@@ -232,7 +232,7 @@
         }
     }
 }
-[id^="View1--nav"]{
+[id^="settingsView--nav"]{
     &>.sapMBtnIcon{
         color: rgba(0, 86, 112, 0.94) !important;
     }

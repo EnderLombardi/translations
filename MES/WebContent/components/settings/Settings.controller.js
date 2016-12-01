@@ -228,7 +228,7 @@ sap.ui.controller("airbus.mes.settings.Settings",
 				this.getView().byId("selectMSN").setEnabled(fMsn);
 			
 			}
-//				View1--selectLine
+//				settingsView--selectLine
 			},
 			/**
 		     * Load plant model when selected a Site and User select a site on the table and the map is zoomed
@@ -453,6 +453,7 @@ sap.ui.controller("airbus.mes.settings.Settings",
 					return;
 				}
 				this.navigate(oEvent);
+				airbus.mes.settings.oView.byId("navBack").setVisible(true);
 			},
 			
 			saveUserSettings : function() {

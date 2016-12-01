@@ -20,8 +20,14 @@ sap.ui.controller(
 
 					goToHome : function() {
 						
-						//if we are on settings page and if selectMSN is null
-						if(nav.getCurrentPage().getId() == "View1" ){
+						//Check if :
+						// - Current Page is Setting
+						// - First screen has been Settings
+						// - No other pages has been loaded
+						// (&& nav.getPages()[1]=="settingsView" && nav.getPages() == 2)
+						// TODO : change the check msn settings.modelmanager.msn 
+						if(nav.getCurrentPage().getId() == "settingsView" ){
+							//Check if MSN is selected
 							if (!airbus.mes.settings.oView.byId("selectMSN").getValue()) {
 								return;
 							} 
@@ -196,7 +202,7 @@ sap.ui.controller(
 							airbus.mes.shell.oView.byId("homeButton").setVisible(false);
 							airbus.mes.shell.oView.byId("SelectLanguage").setVisible(true);
 							break;
-						case "View1":
+						case "settingsView":
 							airbus.mes.shell.oView.byId('refreshTime').setVisible(false);
 							break;
 						case "stationTrackerView":

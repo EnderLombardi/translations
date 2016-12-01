@@ -1,23 +1,23 @@
 /*
 Error: Undefined mixin 'textHeader'.
-        on line 78 of components/_settings.scss, in `textHeader'
-        from line 78 of components/_settings.scss
+        on line 81 of components/_settings.scss, in `textHeader'
+        from line 81 of components/_settings.scss
 
-73:             }
-74:         }
-75:     }
-76: }
-77: .pageTitle{
-78:     @include textHeader(30px, #ffffff !important);
-79: }
-80: .classListProgram{
-81:     border: 1px solid #e5e5e5;
-82:     border-bottom: 0;
-83:     margin-top: 0.8rem!important;
+76:         }
+77:     }
+78: }
+79: .pageTitle{
+80:     min-width: 130px;
+81:     @include textHeader(24px, #ffffff !important);
+82: }
+83: .classListProgram{
+84:     border: 1px solid #e5e5e5;
+85:     border-bottom: 0;
+86:     margin-top: 0.8rem!important;
 
 Backtrace:
-components/_settings.scss:78:in `textHeader'
-components/_settings.scss:78
+components/_settings.scss:81:in `textHeader'
+components/_settings.scss:81
 C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:351:in `block in visit_mixin'
 C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/stack.rb:98:in `block in with_mixin'
 C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/stack.rb:115:in `with_frame'
@@ -71,4 +71,4 @@ C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/vendor/listen/lib/listen/ada
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined mixin 'textHeader'.\A         on line 78 of components/_settings.scss, in `textHeader'\A         from line 78 of components/_settings.scss\A \A 73:             }\A 74:         }\A 75:     }\A 76: }\A 77: .pageTitle{\A 78:     @include textHeader(30px, #ffffff !important);\A 79: }\A 80: .classListProgram{\A 81:     border: 1px solid #e5e5e5;\A 82:     border-bottom: 0;\A 83:     margin-top: 0.8rem!important;"; }
+  content: "Error: Undefined mixin 'textHeader'.\A         on line 81 of components/_settings.scss, in `textHeader'\A         from line 81 of components/_settings.scss\A \A 76:         }\A 77:     }\A 78: }\A 79: .pageTitle{\A 80:     min-width: 130px;\A 81:     @include textHeader(24px, #ffffff !important);\A 82: }\A 83: .classListProgram{\A 84:     border: 1px solid #e5e5e5;\A 85:     border-bottom: 0;\A 86:     margin-top: 0.8rem!important;"; }
