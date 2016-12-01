@@ -614,6 +614,9 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			scheduler.updateView(airbus.mes.stationtracker.ShiftManager.ShiftSelected.StartDate);
 			airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftID);
 		}	
+		
+//		Relaunch service to for KPI header
+		airbus.mes.stationtracker.ModelManager.loadKPIshiftStaffing();
 	},
 	
 	/***************************************************************************
@@ -990,7 +993,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 				
 			}
 			// Search in the shift hierarshy the first date of first shift of the current date
-			var sDate = sYear.toString() + "-" + sMounth.toString() + "-" + sDay.toString();
+			var sDate = sYear.toString() + sMounth.toString()  + sDay.toString();
 			var sDateId = Object.keys( airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy[sDate] )[0];
 			var dStartDate = airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy[sDate][sDateId][0].StartDate;
 			
@@ -1021,6 +1024,13 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	 */
 	onCloseOperationDetailPopup : function() {
 
+		// Close expanded disruption panel
+		var expandedDisruptionPanelId = airbus.mes.disruptions.oView.viewDisruption.getController().expandedDisruptionPanel;
+		
+		if(expandedDisruptionPanelId)
+			sap.ui.getCore().byId(expandedDisruptionPanelId).setExpanded(false);
+		
+		// Close the Popup
 		airbus.mes.stationtracker.operationDetailPopup.close();
 	},
 

@@ -11,21 +11,19 @@
 				expandAnimation="false" class="pageHeader kpiPageHeader contentNoPad">
 				<headerToolbar>
 					<Toolbar id="kpiHeaderToolbar" class="classKpiheaderToolbar">
-						<!-- <DatePicker id="DatePicker" width="auto" change="changeDay" class="pageHeaderBlue"/> -->
 						<Button id="dateButton" icon="sap-icon://appointment" type="Transparent"
 							press="datePick" class="classDateButton" />
 						<Label id="dateLabel" text="" class="classDateLabel" />
 						<Select id="selectShift"
-							class="sapUiTinyMarginBeginEnd pageHeader pageHeaderBlue" change="changeShift"
+							class="sapUiTinyMarginBeginEnd" change="changeShift"
 							items="{ path : 'stationTrackerShift>/' }" enabled="false">
 							<core:Item key="{stationTrackerShift>shiftID}" text="{stationTrackerShift>shiftName}" />
 						</Select>
 						<Button id="ProductionButton"
 							text="{StationTrackerI18n>ProductionGroup} : {StationTrackerI18n>StatusAll}"
 							type="Transparent" class="ClassProductionButton whiteColor whiteButton" press="onProductionGroupPress"/>
-						
 						<Select id="selectUser" change="selectUser"
-							class="sapUiTinyMarginBeginEnd pageHeader pageHeaderBlue" 
+							class="sapUiTinyMarginBeginEnd" 
 							items="{ path : 'ressourcePoolModel>/Rowsets/Rowset/0/Row' }" text="test">
 							<core:Item key="{ressourcePoolModel>USER_ID}" text="{ressourcePoolModel>FNAME} {ressourcePoolModel>LNAME}" />
 						</Select>

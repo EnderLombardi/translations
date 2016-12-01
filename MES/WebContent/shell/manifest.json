@@ -9,13 +9,6 @@
         "sap.m": {}
       }
     },
-    "resources": {
-      "css": [
-        {
-            "uri": "../Sass/global.css"
-        }
-      ]
-    },
       "routing": {
          "config": {
             "routerClass": "sap.m.routing.Router",

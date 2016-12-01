@@ -20,10 +20,10 @@ airbus.mes.shell.AutoRefreshConfig =  {
 			},
 		
 		////////////////////////////////////////////////////////////////////////	
-		//base : {															  //
+		//  base : {														  //
 		//		"timer":		default time for refresh page				  //
 		//		"useraction" :  If one takes into account the user action 	  //
-		//		"area" : 		refresh zone								  //
+		//		"area" : 		function refresh zone						  //
 		//	},																  //
 		////////////////////////////////////////////////////////////////////////
 

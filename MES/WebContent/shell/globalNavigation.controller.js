@@ -104,8 +104,8 @@ sap.ui
 					onAfterRendering : function() {
 						// to avoid the error and multiple checks of undefined
 						// buttons
-						if (!this.settingPopup)
-							this.settingPopup = sap.ui.xmlfragment("airbus.mes.shell.settingPopover", airbus.mes.shell.oView.getController());
+//						if (!this.settingPopup)
+//							this.settingPopup = sap.ui.xmlfragment("airbus.mes.shell.settingPopover", airbus.mes.shell.oView.getController());
 					},
 					
 					/**
@@ -172,7 +172,7 @@ sap.ui
 								airbus.mes.shell.AutoRefreshManager.setInterval("disruptiontrackerView");
 								break;
 							case "disruptionKPIView":
-								airbus.mes.disruptiontracker.kpi.ModelManager.loadDisruptionKPIModel()
+								airbus.mes.disruptiontracker.kpi.ModelManager.loadDisruptionKPIModel();
 								airbus.mes.shell.AutoRefreshManager.clearInterval();
 								airbus.mes.shell.AutoRefreshManager.setInterval("disruptionKPIView");
 								break;
@@ -507,12 +507,9 @@ sap.ui
 
 					},
 					openSettingPopup : function() {
-						if (!this.settingPopup) {
-							this.settingPopup = sap.ui.xmlfragment(
-									"airbus.mes.shell.settingPopover",airbus.mes.shell.oView.getController()
-									);
-						}
-						this.settingPopup.openBy(this.getView().byId("settingsButton"));
+					
+						airbus.mes.shell.settingPopup.openBy(this.getView().byId("settingsButton"));
+					
 					},
 
 					logOut : function() {
