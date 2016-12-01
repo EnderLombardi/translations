@@ -768,6 +768,8 @@ html.sap-desktop .sapMBtnTransparent > .sapMBtnIcon { color: #ffffff; }
 /************************
 DISRUPTIONTRACKER
 *************************/
+.sapMDialog > .sapMDialogSection { width: 101%; max-width: 101%; }
+
 .disruptions table th, td { text-align: center !important; }
 
 .disruptions table td { border-left: 2px solid #E9EEF3 !important; }

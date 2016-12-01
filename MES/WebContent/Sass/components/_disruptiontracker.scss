@@ -1,7 +1,12 @@
 /************************
 DISRUPTIONTRACKER
 *************************/
-
+.sapMDialog{
+    &>.sapMDialogSection{
+        width: 101%;
+         max-width: 101%;
+    }
+}
 .disruptions table th,
 td{
     text-align: center !important;
