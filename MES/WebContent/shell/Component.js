@@ -59,7 +59,8 @@ airbus.mes.shell.Component.prototype.createContent = function() {
         }
 
         airbus.mes.shell.oView = this.oView;
-
+        airbus.mes.shell.settingPopup = sap.ui.xmlfragment("airbus.mes.shell.settingPopover", airbus.mes.shell.oView.getController());
+       
         this.oView.setModel(sap.ui.getCore().getModel("userDetailModel"),    "userDetailModel");
         this.oView.setModel(sap.ui.getCore().getModel("ShellI18n"), "ShellI18n");
         this.oView.setModel(sap.ui.getCore().getModel("userSettingModel"),    "userSettingModel");
