@@ -55,7 +55,6 @@ td{
     .sapMPanelContent{
         &:not(.sapMPanelBGTransparent){
             border-bottom: 0 !important;
-            margin: 0.7rem 0.7rem 0 0.7rem!important;
             background-color:#e9fbfd;
         }
     }
@@ -79,7 +78,8 @@ td{
         margin: 0.7rem 0.7rem 0 0.7rem;
     }
     header{
-        @extend %kpiPageHeader;
+        z-index: 10;
+        box-shadow: 0px 2px 15px -5px #0F2D65;
         .headerText{
             text-shadow: none;
         }
