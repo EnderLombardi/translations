@@ -1,7 +1,6 @@
 "use strict";
 
-sap.ui
-		.controller(
+sap.ui.controller(
 				"airbus.mes.shell.globalNavigation",
 				{
 
@@ -20,20 +19,35 @@ sap.ui
 					},
 
 					goToHome : function() {
+						
+						//Check if :
+						// - Current Page is Setting
+						// - First screen has been Settings
+						// - No other pages has been loaded
+						// (&& nav.getPages()[1]=="settingsView" && nav.getPages() == 2)
+						// TODO : change the check msn settings.modelmanager.msn 
+						if(nav.getCurrentPage().getId() == "settingsView" ){
+							//Check if MSN is selected
+							if (!airbus.mes.settings.oView.byId("selectMSN").getValue()) {
+								return;
+							} 
+						}else {
+						
 						// Active settings button during leaving settings screen
-						if (airbus.mes.shell != undefined) {
-							sap.ui.getCore().byId("popupSettingsButton").setEnabled(true);
-							this.setInformationVisibility(false);
-						}
-
-						if (airbus.mes.homepage != undefined) {
-							nav.to(airbus.mes.homepage.oView.getId());
-						} else {
-							sap.ui.getCore().createComponent({
+							if (airbus.mes.shell != undefined) {
+								sap.ui.getCore().byId("popupSettingsButton").setEnabled(true);
+								this.setInformationVisibility(false);
+							}
+	
+							if (airbus.mes.homepage != undefined) {
+								nav.to(airbus.mes.homepage.oView.getId());
+							} else {
+								sap.ui.getCore().createComponent({
 								name : "airbus.mes.homepage", // root component folder is resources
-							});
-							nav.addPage(airbus.mes.homepage.oView);
-							nav.to(airbus.mes.homepage.oView.getId());
+								});
+								nav.addPage(airbus.mes.homepage.oView);
+								nav.to(airbus.mes.homepage.oView.getId());
+							}
 						}
 					},
 					
@@ -188,7 +202,7 @@ sap.ui
 							airbus.mes.shell.oView.byId("homeButton").setVisible(false);
 							airbus.mes.shell.oView.byId("SelectLanguage").setVisible(true);
 							break;
-						case "View1":
+						case "settingsView":
 							airbus.mes.shell.oView.byId('refreshTime').setVisible(false);
 							break;
 						case "stationTrackerView":

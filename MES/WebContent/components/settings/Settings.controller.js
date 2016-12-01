@@ -228,7 +228,7 @@ sap.ui.controller("airbus.mes.settings.Settings",
 				this.getView().byId("selectMSN").setEnabled(fMsn);
 			
 			}
-//				View1--selectLine
+//				settingsView--selectLine
 			},
 			/**
 		     * Load plant model when selected a Site and User select a site on the table and the map is zoomed
@@ -398,9 +398,21 @@ sap.ui.controller("airbus.mes.settings.Settings",
 							airbus.mes.shell.oView.byId("labelMSN").setText(airbus.mes.shell.oView.getModel("ShellI18n").getProperty(
 							"MSN") + " " + airbus.mes.settings.ModelManager.currentMsnValue);
 						}
+						
 						// if no msn go by default on user settings.
 						if (!this.getView().byId("selectMSN").getValue()) {
 							airbus.mes.shell.oView.getController().navigate();
+							
+							//if !localhost stop user on setting
+							switch (window.location.hostname) {
+							case "localhost":
+								airbus.mes.settings.oView.byId("navBack").setVisible(true);
+								break;
+							default:
+								airbus.mes.settings.oView.byId("navBack").setVisible(false);
+								break;
+							}
+							
 						}					
 						this.setEnabledCombobox(true, true, true, true);
 				} else {	
@@ -441,6 +453,7 @@ sap.ui.controller("airbus.mes.settings.Settings",
 					return;
 				}
 				this.navigate(oEvent);
+				airbus.mes.settings.oView.byId("navBack").setVisible(true);
 			},
 			
 			saveUserSettings : function() {

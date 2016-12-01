@@ -1,234 +1,74 @@
-/****************
-STATIONTRACKER
-*****************/
-/*********************
-GLOBAL
-*********************/
-/*********************
-STATION TRACKER
-*********************/
-/**********************
-SETTINGS
-***********************/
-.classSettingPage .pageHeader {
-  box-shadow: 0px 2px 15px -5px #0F2D65;
-  border: none;
-  border-top: 0.6rem solid #ffffff;
-  position: relative;
-  z-index: 10; }
+/*
+Error: Undefined mixin 'textHeader'.
+        on line 81 of components/_settings.scss, in `textHeader'
+        from line 81 of components/_settings.scss
 
-.classSelectListBox .sapMBar label {
-  color: rgba(0, 86, 112, 0.94);
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  font-size: 1.125rem;
-  font-family: Arial,Helvetica,sans-serif;
-  height: 3rem;
-  line-height: 3rem;
-  padding: 0 1rem; }
+76:         }
+77:     }
+78: }
+79: .pageTitle{
+80:     min-width: 130px;
+81:     @include textHeader(24px, #ffffff !important);
+82: }
+83: .classListProgram{
+84:     border: 1px solid #e5e5e5;
+85:     border-bottom: 0;
+86:     margin-top: 0.8rem!important;
 
-.elementContainer {
-  margin: 15% 0% 0% 22%; }
-
-.PanelbgImg2 {
-  background-color: white;
-  opacity: 3%;
-  display: block;
-  background-size: 100% 100%; }
-
-.elementContainer-header {
-  background-color: lightgrey; }
-
-.buttonLoad > .sapMBtnText {
-  color: white !important; }
-
-.GenricBgColor {
-  background-color: #EBEEF2; }
-
-.titleToolbar {
-  background-color: #D8D8D8; }
-
-.subHeader {
-  background-color: white !important; }
-
-.subHeaderText {
-  color: black !important;
-  font-style: normal !important; }
-
-.whiteButton .sapMBtnIcon {
-  color: white; }
-
-.pageHeader {
-  color: white !important;
-  background: #0F2D65 !important;
-  border: 0; }
-
-.classSettingPage .pageHeader {
-  border-top: 0.1rem solid #74d2e7; }
-  .classSettingPage .pageHeader span {
-    font-size: 1.2rem;
-    color: white; }
-
-.sapMPage .classSettingPage > .sapMPageHeader + .sapMPageSubHeader + section {
-  margin-top: 0.55rem; }
-.sapMPage > .sapMPageHeader + .sapMPageSubHeader + section {
-  background-color: white; }
-
-.pageTitle {
-  font-family: "Arial", Sans-serif !important;
-  font-size: 30px;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
-  color: #ffffff !important; }
-
-.classListProgram {
-  border: 1px solid #e5e5e5;
-  border-bottom: 0;
-  margin-top: 0.8rem !important;
-  margin-left: 0.8rem !important; }
-  .classListProgram .sapMLIBContent .sapMHBox .sapMFlexItem:nth-child(2):before {
-    content: ' ';
-    display: inline-block;
-    vertical-align: middle;
-    height: 100%; }
-  .classListProgram .sapMLIBContent div > div:nth-child(2) {
-    text-align: center; }
-    .classListProgram .sapMLIBContent div > div:nth-child(2) img {
-      display: inline-block;
-      vertical-align: middle; }
-
-.classListProgramRadioBtn .sapMRbB {
-  display: inline-block;
-  vertical-align: middle;
-  height: 100%; }
-  .classListProgramRadioBtn .sapMRbB .sapMRbBOut {
-    margin: 1.2rem 0 1.2rem 1.2rem;
-    border: 2px solid #73d2e6; }
-.classListProgramRadioBtn label {
-  display: inline-block;
-  vertical-align: middle; }
-
-.classOtherSetting {
-  border: 1px solid #e5e5e5;
-  margin-top: 0.8rem !important; }
-  .classOtherSetting .sapUiFormTitle,
-  .classListProgram .sapMListHdr,
-  .classSelectListBox .sapMListHdr {
-    text-shadow: none; }
-    .classOtherSetting .sapUiFormTitle,
-    .classListProgram .sapMListHdr {
-      border-bottom: 1px solid #e5e5e5; }
-  .classOtherSetting label {
-    color: rgba(0, 86, 112, 0.94); }
-  .classOtherSetting .sapUiFormM .sapUiFormResGridCont {
-    padding: 0.6rem !important; }
-
-.classSelectListBox {
-  margin-top: 0.8rem;
-  border: 1px solid #e5e5e5;
-  border-right: none; }
-  .classSelectListBox .sapMListHdr {
-    border: none; }
-
-.classSelectList {
-  max-width: 100%;
-  margin: 0 !important;
-  border: none; }
-  .classSelectList > li {
-    border-bottom: 1px solid #e5e5e5; }
-    .classSelectList > li:last-child {
-      border-bottom: none; }
-
-.pageWelcome {
-  font-family: "Arial", Sans-serif !important;
-  font-size: 24px;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
-  color: #ffffff !important; }
-
-.pageUsername {
-  color: white !important;
-  font-family: "Arial", Sans-serif !important;
-  font-size: 14px !important; }
-
-.sapMListHdr {
-  background-color: #d5f1f8; }
-
-.sap-desktop .sapMIBar .sapMHeader-CTX {
-  background: rgba(0, 32, 91, 0.94); }
-
-.sapMIBar-CTX .sapMTitle {
-  color: white; }
-
-.sapUiFormTitle {
-  background-color: #d5f1f8; }
-  .sapUiFormTitle .sapUiFormTitle {
-    color: white; }
-
-.sapMPageHeader::before {
-  border-top: 0rem solid #92C0E4; }
-
-.sapMIBar .sapMSubHeader-CTX {
-  background-color: #d5f1f8; }
-
-#globalNavView .sapMIBar-CTX .sapMBtnTransparent {
-  color: #ffffff; }
-
-[id^="View1--nav"] {
-  color: rgba(0, 86, 112, 0.94);
-  font-weight: bold; }
-
-[id^="View1--currMSN"] {
-  font-weight: bold; }
-
-[id^="View1--headText"] {
-  color: rgba(0, 86, 112, 0.94); }
-  [id^="View1--headText"] > .sapUiForm .sapUiFormTitle {
-    color: rgba(0, 86, 112, 0.94); }
-
-[id^="View1--nav"] > .sapMBtnIcon {
-  color: rgba(0, 86, 112, 0.94) !important; }
-
-/***************************
-POP-UP CONFIRM DELETE DIALOG
-****************************/
-#messageDialog--errorMessageDialog {
-  background: #ffffff;
-  border: none;
-  border-radius: 0;
-  box-shadow: 0 0 5px #333; }
-
-#messageDialog--errorMessageDialog-header-BarPH {
-  background: #d4f1f7; }
-
-#messageDialog--errorMessageDialog-title {
-  color: #434343; }
-
-#messageDialog--errorMessageDialog-cont {
-  border-top: 3px solid rgba(255, 255, 255, 0); }
-
-#messageDialog--errorMessageDialog-header {
-  box-shadow: 0 0 5px #333;
-  overflow: visible; }
-
-#messageDialog--errorMessageDialog-footer {
-  background-color: #0F2D65; }
-
-/*******************************
-END POP-UP CONFIRM DELETE DIALOG
-********************************/
-html.sap-desktop .sapMBtn:focus > .sapMBtnInner.sapMFocusable {
-  background-color: none;
-  outline: 1px dotted transparent;
-  border-color: transparent; }
-html.sap-desktop .pageHeader .sapMBarMiddle .sapMBarChild {
-  text-shadow: none; }
-html.sap-desktop .sapMBar-CTX:not(.sapMBtnDisabled) > .sapMBtnInner.sapMBtnActive {
-  background-color: #73d2e6; }
-html.sap-desktop .sapMBtnTransparent > .sapMBtnIcon {
-  color: #ffffff; }
-
-/*# sourceMappingURL=settings.css.map */
+Backtrace:
+components/_settings.scss:81:in `textHeader'
+components/_settings.scss:81
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:351:in `block in visit_mixin'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/stack.rb:98:in `block in with_mixin'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/stack.rb:115:in `with_frame'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/stack.rb:98:in `with_mixin'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:349:in `visit_mixin'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:36:in `visit'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:160:in `block in visit'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/stack.rb:79:in `block in with_base'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/stack.rb:115:in `with_frame'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/stack.rb:79:in `with_base'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:160:in `visit'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:433:in `block (2 levels) in visit_rule'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:433:in `map'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:433:in `block in visit_rule'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:181:in `with_environment'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:431:in `visit_rule'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:36:in `visit'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:160:in `block in visit'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/stack.rb:79:in `block in with_base'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/stack.rb:115:in `with_frame'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/stack.rb:79:in `with_base'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:160:in `visit'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:52:in `map'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:169:in `block in visit_children'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:181:in `with_environment'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:168:in `visit_children'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:188:in `visit_root'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:36:in `visit'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:159:in `visit'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:8:in `visit'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/root_node.rb:36:in `css_tree'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/engine.rb:381:in `_render_with_sourcemap'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/engine.rb:298:in `render_with_sourcemap'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:492:in `update_stylesheet'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:209:in `each'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:473:in `on_file_changed'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:331:in `block in watch'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/vendor/listen/lib/listen/listener.rb:252:in `call'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/vendor/listen/lib/listen/listener.rb:252:in `on_change'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/vendor/listen/lib/listen/listener.rb:290:in `block in initialize_adapter'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/vendor/listen/lib/listen/adapters/polling.rb:48:in `call'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/vendor/listen/lib/listen/adapters/polling.rb:48:in `poll_changed_directories'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.4.22/vendor/listen/lib/listen/adapter.rb:299:in `block in start_poller'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Undefined mixin 'textHeader'.\A         on line 81 of components/_settings.scss, in `textHeader'\A         from line 81 of components/_settings.scss\A \A 76:         }\A 77:     }\A 78: }\A 79: .pageTitle{\A 80:     min-width: 130px;\A 81:     @include textHeader(24px, #ffffff !important);\A 82: }\A 83: .classListProgram{\A 84:     border: 1px solid #e5e5e5;\A 85:     border-bottom: 0;\A 86:     margin-top: 0.8rem!important;"; }

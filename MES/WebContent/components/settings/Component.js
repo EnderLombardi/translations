@@ -60,7 +60,7 @@ airbus.mes.settings.Component.prototype.createContent = function() {
 	if (airbus.mes.settings.oView === undefined) {
 		airbus.mes.settings.ModelManager.init(sap.ui.getCore());
 		this.oView = sap.ui.view({
-			id : "View1",
+			id : "settingsView",
 			viewName : "airbus.mes.settings.Settings",
 			type : "XML",
 		})
