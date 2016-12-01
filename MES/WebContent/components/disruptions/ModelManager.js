@@ -96,7 +96,6 @@ airbus.mes.disruptions.ModelManager = {
 		this.loadDisruptionCustomData();
 		this.loadMaterialList();
 		this.loadJigtoolList();
-
 	},
 
 	/***************************************************************************

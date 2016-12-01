@@ -1413,6 +1413,7 @@ sap.ui
 					 * 
 					 * @returns {Number} 0: if not error in updating else 1.
 					 **********************************************************/
+					
 					saveResourcePool : function() {
 
 						var resourcePool = sap.ui.getCore().byId(
@@ -1457,6 +1458,7 @@ sap.ui
 					/***********************************************************
 					 * Triggers when "Yes" is pressed on delete dialog
 					 **********************************************************/
+					
 					deleteResourcePool : function() {
 						/* call deleteResource() from ModelManager */
 						var anyError = airbus.mes.resourcepool.util.ModelManager
@@ -1486,6 +1488,7 @@ sap.ui
 					/***********************************************************
 					 * Triggers on "No" of Update Dialog
 					 **********************************************************/
+					
 					deleteDialogueClose : function() {
 						airbus.mes.resourcepool.deleteTeam.close();
 					},
@@ -1493,6 +1496,7 @@ sap.ui
 					/***********************************************************
 					 * Check mandatory parameters before taking any actions
 					 **********************************************************/
+					
 					checkMandatoryParam : function(resourcePool, description) {
 						/* if resource pool is empty display error and return */
 						if (!resourcePool) {
@@ -1528,6 +1532,7 @@ sap.ui
 					/***********************************************************
 					 * Converts the resource pool name to upper case
 					 **********************************************************/
+					
 					upperCaseConversion : function(oEvt) {
 						oEvt.getSource().setValue(
 								oEvt.getSource().getValue().toUpperCase().replace(" ", ""));
@@ -1541,6 +1546,7 @@ sap.ui
 					 * @returns {Number} 0: if exists 1: if does not exists 2:
 					 *          if description is changed
 					 **********************************************************/
+					
 					checkResourcePool : function(ResourcePool, Description) {
 
 						var actualDescription = this
@@ -1580,9 +1586,7 @@ sap.ui
 						if(oEvt.getParameters().toId == "idUsersView"){
 							sap.ui.getCore().byId("idUsersView--availableUsersPanel").rerender();
 							sap.ui.getCore().byId("idUsersView--assignedUsersPanel").rerender();
-						 }
-						
-						 else if (oEvt.getParameters().toId == "idWorkCenterView"){
+						 } else if (oEvt.getParameters().toId == "idWorkCenterView"){
 							 sap.ui.getCore().byId("idWorkCenterView--assignedWCPanel").rerender();
 							 sap.ui.getCore().byId("idWorkCenterView--availableWCPanel").rerender();
 						 } else {

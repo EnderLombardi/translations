@@ -184,7 +184,7 @@ sap.ui
 							
 							case "reschedule":
 							  	  
-							var aGroup = [];
+							// var aGroup = [];
 
 //							// Check if we are on operation grouping
 //							// SD-PPC-ST-386
