@@ -93,9 +93,9 @@
 				<Column>
 					<Text text="{disruptiontrackerI18n>fixedByTime}" />
 				</Column>
-				<!-- <Column>
-					<Text text="{disruptiontrackerI18n>TTGF}" />
-				</Column> -->
+				<Column>
+					<Text text="{disruptiontrackerI18n>promisedDate}" />
+				</Column>
 				<Column>
 					<Text text="{disruptiontrackerI18n>timeBofreNextEsc}" />
 				</Column>
@@ -130,6 +130,7 @@
 						<Text text="{path: 'disruptionsTrackerModel>EscalationLevel', formatter: 'airbus.mes.disruptiontracker.Formatter.setEscalationText'}" />
 						<Text text="{parts: [ {path: 'disruptionsTrackerModel>OpeningTime'}, {path: 'disruptionsTrackerModel>ClosureDate'}], formatter: 'airbus.mes.disruptiontracker.Formatter.formatOpeningTime'}" />
 						<Text text="0" />
+						<Text text="{disruptionsTrackerModel>PromisedDateTime}" />
 						<Text text="{disruptionsTrackerModel>TimeBeforeNextEscalation}" />
 						<Text text="{disruptionsTrackerModel>Description}" />
 						<Text text="{disruptionsTrackerModel>Solution}" />
