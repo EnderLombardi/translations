@@ -64,9 +64,11 @@ SETTINGS
   background: #0F2D65 !important;
   border: 0; }
 
-.classSettingPage .pageHeader span {
-  font-size: 1.2rem;
-  color: white; }
+.classSettingPage .pageHeader {
+  border-top: 0.1rem solid #74d2e7; }
+  .classSettingPage .pageHeader span {
+    font-size: 1.2rem;
+    color: white; }
 
 .sapMPage .classSettingPage > .sapMPageHeader + .sapMPageSubHeader + section {
   margin-top: 0.55rem; }
