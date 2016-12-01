@@ -268,7 +268,7 @@ KPI HEADER
     }
 }
 .kpiPageHeader{
-    @extend %kpiPageHeader;
+    @extend %kpiPageHeader; 	
 }
 
 #stationTrackerView--kpiHeaderToolbar{
