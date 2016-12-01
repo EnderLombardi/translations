@@ -67,6 +67,17 @@ STATIONTRACKER
     margin-top: 1rem !important;
     margin-bottom: 1rem !important;
 }
+@mixin ylabelUserImage(){
+    width: 2rem;
+    height: 2rem;
+    line-height: 30px;
+    vertical-align: middle;
+    font-size: 16px;
+    text-align: center;
+    color: #0D5D76;
+    background-color: #D5F1F8;
+    border-radius: 999px;
+}
 @mixin customTiles(){
     width : 14rem;
     height: 15rem;
