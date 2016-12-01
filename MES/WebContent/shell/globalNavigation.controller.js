@@ -163,15 +163,16 @@ sap.ui
 						
 							case "stationTrackerView":
 								this.renderStationTracker();
-								//airbus.mes.shell.oView.getController().renderStationTracker();
 								airbus.mes.shell.AutoRefreshManager.clearInterval();
 								airbus.mes.shell.AutoRefreshManager.setInterval("stationTrackerView");
 								break;
 							case "disruptiontrackerView":
+								airbus.mes.disruptiontracker.ModelManager.loadDisruptionTrackerModel();
 								airbus.mes.shell.AutoRefreshManager.clearInterval();
 								airbus.mes.shell.AutoRefreshManager.setInterval("disruptiontrackerView");
 								break;
 							case "disruptionKPIView":
+								airbus.mes.disruptiontracker.kpi.ModelManager.loadDisruptionKPIModel()
 								airbus.mes.shell.AutoRefreshManager.clearInterval();
 								airbus.mes.shell.AutoRefreshManager.setInterval("disruptionKPIView");
 								break;

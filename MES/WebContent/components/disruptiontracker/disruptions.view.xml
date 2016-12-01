@@ -52,7 +52,7 @@
 
 
 		<Table id="disruptionsTable" class="disruptionsTable sapUiSmallMarginBottom"
-			items="{ path: 'disruptionsTrackerModel>/Rowsets/Rowset/0/Row' }">
+			items="{ path: 'disruptionsTrackerModel>/Rowsets/Rowset/0/Row' }" growing="true" growingThreshold="50" >
 			<headerToolbar>
 				<Toolbar>
 					<ToolbarSpacer />
@@ -93,9 +93,9 @@
 				<Column>
 					<Text text="{disruptiontrackerI18n>fixedByTime}" />
 				</Column>
-				<!-- <Column>
-					<Text text="{disruptiontrackerI18n>TTGF}" />
-				</Column> -->
+				<Column>
+					<Text text="{disruptiontrackerI18n>promisedDate}" />
+				</Column>
 				<Column>
 					<Text text="{disruptiontrackerI18n>timeBofreNextEsc}" />
 				</Column>
@@ -113,7 +113,7 @@
 			<items>
 				<ColumnListItem type="Navigation" press="onTableClick">
 					<cells>
-						<Text text="{path: 'disruptionsTrackerModel>Operation', formatter: 'airbus.mes.disruptiontracker.Formatter.formatOperation'}" />
+						<Text text="{disruptionsTrackerModel>WorkOrder} / {path: 'disruptionsTrackerModel>Operation', formatter: 'airbus.mes.disruptiontracker.Formatter.formatOperation'}" />
 						<!-- <ObjectStatus class="sapUiSmallMarginBottom"
 							text="{parts: [ {path: 'disruptionsTrackerModel>Status'}, {path: 'disruptionsTrackerModel>Gravity'}, {path: 'disruptionsTrackerModel>Severity'} ], formatter: 'airbus.mes.disruptiontracker.Formatter.setText'}"
 							state="{parts: [ {path: 'disruptionsTrackerModel>Status'}, {path: 'disruptionsTrackerModel>Gravity'}, {path: 'disruptionsTrackerModel>Severity'} ], formatter: 'airbus.mes.disruptiontracker.Formatter.setState'}"
@@ -130,6 +130,7 @@
 						<Text text="{path: 'disruptionsTrackerModel>EscalationLevel', formatter: 'airbus.mes.disruptiontracker.Formatter.setEscalationText'}" />
 						<Text text="{parts: [ {path: 'disruptionsTrackerModel>OpeningTime'}, {path: 'disruptionsTrackerModel>ClosureDate'}], formatter: 'airbus.mes.disruptiontracker.Formatter.formatOpeningTime'}" />
 						<Text text="0" />
+						<Text text="{disruptionsTrackerModel>PromisedDateTime}" />
 						<Text text="{disruptionsTrackerModel>TimeBeforeNextEscalation}" />
 						<Text text="{disruptionsTrackerModel>Description}" />
 						<Text text="{disruptionsTrackerModel>Solution}" />

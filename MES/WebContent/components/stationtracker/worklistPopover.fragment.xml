@@ -5,8 +5,6 @@
 		
 		<content>
 			<VBox class="sapMFooter-CTX classWorklistPopoverHeader">
-					<Label id="LabelTitle" width="100%" text="{path: 'WorkListModel>andons' , formatter: 'airbus.mes.stationtracker.util.Formatter.setWorkListText' }" />
-				
 					<custom:customProgressIndicator
 					id="overallProgress" 
 					visible="false"
@@ -21,7 +19,7 @@
 			<VBox>
 				<HBox>
 					<Select class="sapUiTinyMarginBeginEnd comboBoxStyle"
-						    items="{groupModel>/Rowsets/Rowset/0/Row/Grouping}"
+						    items="{groupModel>/Rowsets/Rowset/0/Row/GroupingWorklist}"
 						    change="changeGroupWorkList"
 						    visible="true">
 						<core:ListItem key="{groupModel>key}" text="{ path : 'groupModel>Value' , formatter : '.getI18nValue' }" />				

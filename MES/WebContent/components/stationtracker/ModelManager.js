@@ -913,8 +913,7 @@ airbus.mes.stationtracker.ModelManager = {
 				'items',
 				{
 					path : "WorkListModel>/",
-					template : sap.ui.getCore().byId(
-							"worklistPopover--sorterList"),
+					template : sap.ui.getCore().byId("worklistPopover--sorterList"),
 					sorter : [ new sap.ui.model.Sorter({
 						// Change this value dynamic
 						path : 'WORKORDER_ID',

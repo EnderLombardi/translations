@@ -5,14 +5,11 @@
 // Styles
 @import '../styles/colours';
 
-//Ruby cmd
-//sass --watch components/_stationtracker.scss:components/css/stationtracker.css
 
-#mes{
-    #stationTrackerView{
-        border-top: 0.6rem solid #ffffff;
-    }
-}
+/*Ruby cmd
+sass --watch components/_stationtracker.scss:components/css/stationtracker.css*/
+
+
 /********************
 TABLE
 *********************/
@@ -176,8 +173,8 @@ BOX MANAGEMENT
                 font-family: arial;
             }
             &+.trackerText {
-            	 max-width: calc(100% - 100px);
-        	}
+                 max-width: calc(100% - 100px);
+            }
         }
     }
 
@@ -562,11 +559,16 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
         background-color: #DDDDDD;
         opacity: 0.8;
     }
-    .operationCP {
-        background-color: #97999b;
-        border: 2px solid #0D2C63;
-    }
 
+	.operationCP{
+	    background-color: #97999b;
+	    border: 2px solid #0D2C63;
+	    &:hover{
+	        background-color: $cool-grey-hover;
+	        color: black;
+	        border: 2px solid $twilight-blue;
+	    }
+	}
 }
 .dhx_event_resize_start{
     background-image: none;
@@ -1052,10 +1054,48 @@ PRODUCTION GROUP POPOVER
             display: none !important;
         }
     }
+    .MyproductionGroupPopover {
+        .sapMSLITitleOnly {
+        font-size: 0.875rem;
+        color: #333333;
+        line-height:1rem;
+        }
+        .sapMSLIIconThumb>.sapMLIBContent {
+        padding: 0.5rem 0 0.5rem 0;
+        }
+    .sapMTB-Info-CTX.sapMTB {
+        background: $twilight-blue;
+        border-bottom: 1px solid $white-two;
+    }
+    .sapMLIB.sapMLIBSelected {
+        background: $duck-egg-blue;
+    }
+
+    .sapMCbBg.sapMCbMarkChecked:before {
+        color: $navy-blue;
+    }
+    .sapMCbBg {
+        border: solid 0.125rem $twilight-blue;
+        &:hover {
+            border-color:$navy-blue;
+        }
+    }
 }
+    .ClassProductionButton {
+        margin-left: 0;
+        max-width: 30vw;
+    }
+    .sapMPopover {
+        border: none;
+        box-shadow: 0 0.0625rem 0.1875rem rgba(0,0,0,0.5);
+        margin-left: -5px;
+        margin-top: -1px;
+    }
+}
+
 /****************************
 TOOLTIP TEXT
-***********************µ*****/
+****************************/
 .sapMPIAndon{
     background: #DB5550 !important;
 }
@@ -1476,10 +1516,13 @@ OTHER
     padding: 0rem !important;
 }
 .offtime{
-    background-image: url('../../../components/stationtracker/css/img/fat_lines.png');
+    background-image: url("../../../components/stationtracker/css/img/fat_lines.png");
 }
-#mes {
-	.ClassOperationDetailPopUp .sapMInputBaseInner {
-	    width: 35vw;
-	}	
+#mes{
+    .ClassOperationDetailPopUp{
+        .sapMInputBaseInner{
+            width: 35vw;
+        }
+    }
 }
+
