@@ -614,6 +614,9 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			scheduler.updateView(airbus.mes.stationtracker.ShiftManager.ShiftSelected.StartDate);
 			airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftID);
 		}	
+		
+//		Relaunch service to for KPI header
+		airbus.mes.stationtracker.ModelManager.loadKPIshiftStaffing();
 	},
 	
 	/***************************************************************************
