@@ -22,7 +22,7 @@
 								<ToolbarSpacer />
 
 								<Text
-									text="{i18nModel>closureDate} : {operationDisruptionsModel>ClosureDate}"
+									text="{i18nModel>closureDate} : {path: 'operationDisruptionsModel>ClosureDate', formatter: 'airbus.mes.disruptions.Formatter.isoDateconvert'}"
 									visible="{path: 'operationDisruptionsModel>Status', formatter: 'airbus.mes.disruptions.Formatter.setClosureDateVisibility'}"
 									class="msgHeaderText" />
 
@@ -316,7 +316,7 @@
 												</Label>
 											</f:label>
 											<f:fields>
-												<Text text="{parts: [ {path: 'operationDisruptionsModel>OpeningTime'}, {path: 'operationDisruptionsModel>ClosureDate'}], formatter: 'airbus.mes.disruptiontracker.Formatter.formatOpeningTime'}">
+												<Text text="{parts: [ {path: 'operationDisruptionsModel>OpeningTime'}, {path: 'operationDisruptionsModel>ClosureDate'}], formatter: 'airbus.mes.disruptions.Formatter.formatOpeningTime'}">
 													<layoutData>
 														<l:GridData span="L3 M3 S12" />
 													</layoutData>

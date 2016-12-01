@@ -63,7 +63,7 @@ airbus.mes.disruptions.Formatter = {
 	},
 
 	getDate : function(datetime) {
-
+		
 		if (datetime == null || datetime === undefined) {
 			var today = new Date();
 			var dd = today.getDate();
@@ -78,6 +78,7 @@ airbus.mes.disruptions.Formatter = {
 
 			return (month + ' ' + dd + ',' + yyyy);
 		} else {
+			datetime = airbus.mes.disruptions.Formatter.isoDateconvert(datetime);
 			return datetime.split(" ")[0];
 		}
 
@@ -93,7 +94,8 @@ airbus.mes.disruptions.Formatter = {
 
 			return (HH + ":" + mm + ":" + ss);
 		} else {
-
+			
+			datetime = airbus.mes.disruptions.Formatter.isoDateconvert(datetime);
 			return datetime.split(" ")[1];
 
 		}
@@ -233,6 +235,7 @@ airbus.mes.disruptions.Formatter = {
 		if(dateTime == "")
 			return "--:--:--";
 		
+		dateTime = airbus.mes.disruptions.Formatter.isoDateconvert(dateTime);
 		return dateTime;
 	},
 	
@@ -286,7 +289,64 @@ airbus.mes.disruptions.Formatter = {
 		return false;
 	},
 	
+	formatOpeningTime : function(openDate, closureDate) {
+
+		openDate = airbus.mes.disruptions.Formatter.isoDateconvert(openDate);
+		
+		if (closureDate == undefined || closureDate == "")
+			return 0;
+		
+		closureDate = airbus.mes.disruptions.Formatter.isoDateconvert(closureDate);
+		var reggie = /(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})/;
+		var aOpenDate = reggie.exec(openDate);
+		var oOpenDate = new Date((+aOpenDate[1]), (+aOpenDate[2]) - 1, // Careful,
+																		// month
+																		// starts
+																		// at 0!
+		(+aOpenDate[3]), (+aOpenDate[4]), (+aOpenDate[5]), (+aOpenDate[6]));
+
+		var aClosureDate = reggie.exec(closureDate);
+		var oClosureDate = new Date((+aClosureDate[1]), (+aClosureDate[2]) - 1, // Careful,
+																				// month
+																				// starts
+																				// at
+																				// 0!
+		(+aClosureDate[3]), (+aClosureDate[4]), (+aClosureDate[5]),
+				(+aClosureDate[6]));
+
+		var unit = airbus.mes.settings.AppConfManager
+				._getConfiguration("MES_TIME_UNIT");
+
+		var openingTime;
+
+		if (unit == "HR")
+			openingTime = (Math.round((oClosureDate - oOpenDate)
+					/ (1000 * 60 * 60) * 100) / 100)
+					+ " Hr";
+
+		else if (unit == "IM")
+			openingTime = (Math.round((oClosureDate - oOpenDate) * 100
+					/ (1000 * 60 * 60) * 100) / 100)
+					+ " IM";
+
+		else if (unit == "M")
+			openingTime = (Math.round((oClosureDate - oOpenDate) / (1000 * 60)
+					* 100) / 100)
+					+ " Min";
+
+		else if (unit == "D")
+			openingTime = (Math.round((oClosureDate - oOpenDate)
+					/ (1000 * 60 * 60 * 24) * 100) / 100)
+					+ " Days";
+
+		return openingTime;
+	},
+
+	
   isoDateconvert : function(date) {
+		
+		if(date == undefined || date == "")
+			return "";
 		
 		var date = new Date(date)
 		var dd = date.getDate();

@@ -130,11 +130,13 @@
 						<Text text="{path: 'disruptionsTrackerModel>EscalationLevel', formatter: 'airbus.mes.disruptiontracker.Formatter.setEscalationText'}" />
 						<Text text="{parts: [ {path: 'disruptionsTrackerModel>OpeningTime'}, {path: 'disruptionsTrackerModel>ClosureDate'}], formatter: 'airbus.mes.disruptiontracker.Formatter.formatOpeningTime'}" />
 						<Text text="0" />
-						<Text text="{disruptionsTrackerModel>PromisedDateTime}" />
+						<Text text="{path: 'disruptionsTrackerModel>PromisedDateTime', formatter: 'airbus.mes.disruptiontracker.Formatter.isoDateconvert'}" />
 						<Text text="{disruptionsTrackerModel>TimeBeforeNextEscalation}" />
 						<Text text="{disruptionsTrackerModel>Description}" />
 						<Text text="{disruptionsTrackerModel>Solution}" />
-						<Text text="{disruptionsTrackerModel>ClosureDate}" />
+						<Text text="{path: 'disruptionsTrackerModel>ClosureDate', formatter: 'airbus.mes.disruptiontracker.Formatter.isoDateconvert'}" />
+						
+						<!-- isoDateconvert -->
 					</cells>
 				</ColumnListItem>
 			</items>
