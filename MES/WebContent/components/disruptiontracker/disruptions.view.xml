@@ -113,7 +113,7 @@
 			<items>
 				<ColumnListItem type="Navigation" press="onTableClick">
 					<cells>
-						<Text text="{path: 'disruptionsTrackerModel>Operation', formatter: 'airbus.mes.disruptiontracker.Formatter.formatOperation'}" />
+						<Text text="{disruptionsTrackerModel>WorkOrder} / {path: 'disruptionsTrackerModel>Operation', formatter: 'airbus.mes.disruptiontracker.Formatter.formatOperation'}" />
 						<!-- <ObjectStatus class="sapUiSmallMarginBottom"
 							text="{parts: [ {path: 'disruptionsTrackerModel>Status'}, {path: 'disruptionsTrackerModel>Gravity'}, {path: 'disruptionsTrackerModel>Severity'} ], formatter: 'airbus.mes.disruptiontracker.Formatter.setText'}"
 							state="{parts: [ {path: 'disruptionsTrackerModel>Status'}, {path: 'disruptionsTrackerModel>Gravity'}, {path: 'disruptionsTrackerModel>Severity'} ], formatter: 'airbus.mes.disruptiontracker.Formatter.setState'}"
