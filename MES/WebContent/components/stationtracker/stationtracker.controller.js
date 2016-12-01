@@ -1021,6 +1021,13 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	 */
 	onCloseOperationDetailPopup : function() {
 
+		// Close expanded disruption panel
+		var expandedDisruptionPanelId = airbus.mes.disruptions.oView.viewDisruption.getController().expandedDisruptionPanel;
+		
+		if(expandedDisruptionPanelId)
+			sap.ui.getCore().byId(expandedDisruptionPanelId).setExpanded(false);
+		
+		// Close the Popup
 		airbus.mes.stationtracker.operationDetailPopup.close();
 	},
 
