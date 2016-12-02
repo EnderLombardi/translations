@@ -50,6 +50,17 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 				jqStationTracker.css('top', jqToolbar.offset().top);
 			}, 0);
 		}
+		var height = $(window).height(); 
+		$(window).on("resize", function() {
+			if(sap.ui.getCore().byId("pop-up-polypoly")){
+				if(sap.ui.getCore().byId("pop-up-polypoly").isOpen()){
+					if ($(window).height()==height) return; 
+					// update new width value
+					height = $(window).height();
+					airbus.mes.polypoly.oView.getController().setRowCountVisible(true);
+				}
+			}
+		}).trigger("resize");
 
 	},
 	
