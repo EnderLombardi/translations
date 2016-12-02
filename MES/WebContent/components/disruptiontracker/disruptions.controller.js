@@ -98,59 +98,8 @@ sap.ui
 						 * new sap.ui.model.Filter("ResponsibleGroup", "EQ",
 						 * sValue)); } },
 						 */
-
-
-						if (sStatus != " ")
-							aFilters.push(new sap.ui.model.Filter("Status","EQ", sStatus));
-						if (sResoGroup != "")
-							aFilters.push(new sap.ui.model.Filter("ResponsibleGroup", "EQ", sResoGroup));
-				            
-						oBinding.filter(aFilters);
-				        airbus.mes.disruptiontracker.ModelManager.fixNoDataRow();// Remove last column
 					},
-
 	
-	/***********************************************
-	 * Open fragment for table setting options
-	 */	
-	onDisruptionTableSettings: function(oEvent){
-		if (!this.tableSettingsDialogue) {
-			this.tableSettingsDialogue = 
-				sap.ui.xmlfragment("airbus.mes.disruptiontracker.tableSettings", this);
-			this.getView().addDependent(this.tableSettingsDialogue);
-		}
-		this.tableSettingsDialogue.open();
-	},
-	
-	/***************************************
-	 * Apply selected settings on table
-	 */
-	onTableSettingsConfirm: function(oEvent){
-		
-	    var mParams = oEvent.getParameters();
-	     // apply sorter
-	    var aSorters = [];
-	    var sPath = mParams.sortItem.getKey();
-	    var bDescending = mParams.sortDescending;
-	    aSorters.push(new sap.ui.model.Sorter(sPath, bDescending));
-	    this.getView().byId("disruptionsTable").getBinding("items").sort(aSorters);
-	},
-	
-	/**********************************
-	 * Call Disruption KPI charts 
-	 */	
-	onPressDisruptionKPI: function(oEvent){
-		 var sStation = this.getView().byId("stationComboBox").getSelectedKey();
-		// sap.ui.core.BusyIndicator.show(0);
-		 airbus.mes.shell.util.navFunctions.disruptionKPI(sStation);
-	//	airbus.mes.disruptiontracker.kpi.ModelManager.loadDisruptionKPIModel(sStation);
-		
-	},
-	
-	onNavBack: function(oEvent){
-		nav.back();
-	},
-
 					filterDisruptions : function(oEvent) {
 						var sStatus = this.getView().byId("statusComboBox")
 								.getSelectedKey();
@@ -161,7 +110,7 @@ sap.ui
 								.getBinding("items");
 
 
-						if (sStatus != "")
+						if (sStatus != " ")
 							aFilters.push(new sap.ui.model.Filter("Status",
 									"EQ", sStatus));
 						if (sResoGroup != "")
