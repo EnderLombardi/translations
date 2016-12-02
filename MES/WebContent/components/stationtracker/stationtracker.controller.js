@@ -313,6 +313,8 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			airbus.mes.stationtracker.ImportOswUnplannedPopover = sap.ui.xmlfragment("ImportOswUnplannedPopover","airbus.mes.stationtracker.ImportOswUnplannedPopover", airbus.mes.stationtracker.oView.getController());
 			airbus.mes.stationtracker.ImportOswUnplannedPopover.addStyleClass("alignTextLeft");
 			airbus.mes.stationtracker.ImportOswUnplannedPopover.setModel(sap.ui.getCore().getModel("groupModel"),"groupModel");
+			airbus.mes.stationtracker.oView.addDependent(airbus.mes.stationtracker.ImportOswUnplannedPopover);
+
 			var oModel = sap.ui.getCore().getModel("OSWModel");
 
 			//Changed the data of the worklist by OSW model
@@ -335,11 +337,6 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		//Changed the data of the worklist by OSW model
 		airbus.mes.stationtracker.ImportOswUnplannedPopover.setModel(new sap.ui.model.json.JSONModel(oModel.oData.Rowsets.Rowset[0].Row),"WorkListModel");
 		airbus.mes.stationtracker.ImportOswUnplannedPopover.getModel("WorkListModel").refresh(true);
-			
-		var temp = [];
-		var binding = sap.ui.getCore().byId("ImportOswUnplannedPopover--selectPhysicalStation").getBinding("items");
-//		path correspond to relatif path after binding, here absolute path is /Rowsets/Rowset/0/Row			
-		
 		
 		// delay because addDependent will do a async rerendering and the popover will immediately close without it
 		jQuery.sap.delayedCall(0, this, function () {
