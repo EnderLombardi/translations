@@ -63,7 +63,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 
 		if (sStatus != " ")
 			aFilters.push(new sap.ui.model.Filter("Status","EQ", sStatus));
-		if (sResoGroup != " ")
+		if (sResoGroup != "")
 			aFilters.push(new sap.ui.model.Filter("ResponsibleGroup", "EQ", sResoGroup));
             
 		oBinding.filter(aFilters);
