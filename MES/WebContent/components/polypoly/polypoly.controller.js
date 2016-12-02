@@ -700,6 +700,24 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 				sNeed4, sTechname);
 	},
 	
+	findLinesNumber : function(iHeight){
+		var iFloor=306;
+		var iStep = 1;
+		var iWidth = 47;
+		var iLines = 1;
+		var bFound = false;
+		do{
+			if(iHeight-iLines*(iWidth+1)< iFloor){
+				bFound = true
+			}else{
+				iLines = iLines + iStep;
+			}
+		}while(!bFound)
+			
+		console.log(iHeight + "px : " + iLines + " lines!")
+		return iLines
+	},
+	
 	setRowCountVisible : function(bAssign){
 //		var e = window
 //		, a = 'inner';
@@ -710,23 +728,6 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 //		var oDim = { width : e[ a+'Width' ] , height : e[ a+'Height' ] };
 //		
 //		var oNumberRows = Math.floor(oDim.height*0.0267 - 10.035);	//FIXME : Change if Rows' height CSS is modified
-		var oSizes = [
-		              {a:0,b:449,c:3},
-		              {a:450,b:497,c:4},
-		              {a:498,b:545,c:5},
-		              {a:546,b:593,c:6},
-		              {a:594,b:641,c:7},
-		              {a:642,b:689,c:8},
-		              {a:690,b:737,c:9},
-		              {a:738,b:785,c:10},
-		              {a:786,b:833,c:11},
-		              {a:834,b:881,c:12},
-		              {a:882,b:929,c:13},
-		              {a:930,b:977,c:14},
-		              {a:978,b:1025,c:15},
-		              {a:1026,b:1073,c:16},
-		              {a:1074,b:5000,c:17}
-		              ];
 
 		var oNumberRows = 0;
 		var e = window;
@@ -735,19 +736,16 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 			a = 'client';
 			e = document.documentElement || document.body;
 		}
-		var x = e[a+'Height'];
-		oSizes.forEach(function(el){
-			if(el.a<=x==x<=el.b){
-				oNumberRows = el.c;
-			}
-		})
-		
+		oNumberRows = Math.max(this.findLinesNumber(e[a+'Height']),1);
+		var aListRows = airbus.mes.polypoly.oView.byId("oTablePolypoly").getBinding("rows").oList;
+
 		if(bAssign){
-			var aListRows = airbus.mes.polypoly.oView.byId("oTablePolypoly").getBinding("rows").oList;
 			aListRows = aListRows.filter(function(el){
 				return el.type == "UA_P" || el.type == "UA_A"
 			});
 			oNumberRows = Math.min(oNumberRows, aListRows.length + 1);
+		}else{
+			oNumberRows = Math.min(oNumberRows, aListRows.length);
 		}
 		airbus.mes.polypoly.oView.byId("oTablePolypoly").setVisibleRowCount(oNumberRows);
 	},
