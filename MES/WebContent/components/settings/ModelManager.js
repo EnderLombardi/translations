@@ -135,16 +135,17 @@ airbus.mes.settings.ModelManager = {
 		return urlUserSetting;
 
 	},
+	
 	loadUserSettingsModel : function() {
 		var oUserSettingModel = sap.ui.getCore().getModel("userSettingModel");
 		oUserSettingModel.loadData(airbus.mes.settings.ModelManager
 				.getUrlUserSetting(), null, false);
 
 	},
+	
 	onUserSettingLoad : function() {
 		// Apply user settings.
 		airbus.mes.settings.oView.getController().getUserSettings();
-
 		airbus.mes.settings.AppConfManager.loadAppConfig();
 
 	},

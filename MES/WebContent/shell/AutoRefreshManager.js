@@ -85,13 +85,19 @@ airbus.mes.shell.AutoRefreshManager =  {
                            sVal.lastRefreshTimefct();
                                   //refresh zone if existe
                                   if(config[sVal.viewName].area){
+                                	  	console.log("========== refresh ==========");
                                         config[sVal.viewName].area();
                                   }
+                                  sVal.refreshInterval = config[sVal.viewName].timer;
+                                  sVal.addtime = 0 ;
                    }
                     sVal.timer++;
            }, 1000);              
              sVal.lastRefreshTime = 0;
+             
        },
+       
+       
        
        ////////////////////////////////   time operation   ////////////////////////////////
        

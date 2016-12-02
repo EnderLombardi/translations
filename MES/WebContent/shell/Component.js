@@ -64,13 +64,23 @@ airbus.mes.shell.Component.prototype.createContent = function() {
         this.oView.setModel(sap.ui.getCore().getModel("userDetailModel"),    "userDetailModel");
         this.oView.setModel(sap.ui.getCore().getModel("ShellI18n"), "ShellI18n");
         this.oView.setModel(sap.ui.getCore().getModel("userSettingModel"),    "userSettingModel");
-
+	
+        
+		//////////////////////////////////////////////////////////////////////////////////////////
+		//
+	    //$(airbus.mes.shell.oView.byId("logo")).on(airbus.mes.shell.oView.getController().goToHome());
+		//$(airbus.mes.shell.oView.byId("logo")).bind(airbus.mes.shell.oView.getController().goToHome());
+		//$(airbus.mes.shell.oView.byId("logo")).click(airbus.mes.shell.oView.getController().goToHome());
+        console.log("gotohome");
+	    //
+	    //////////////////////////////////////////////////////////////////////////////////////////
+        
+        
         return this.oView;
 
     } else {
 
         return airbus.mes.shell.oView;
     }
-
 };
 

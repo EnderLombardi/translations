@@ -399,21 +399,40 @@ sap.ui.controller("airbus.mes.settings.Settings",
 							"MSN") + " " + airbus.mes.settings.ModelManager.currentMsnValue);
 						}
 						
+						
+						
+						
+						
+						
 						// if no msn go by default on user settings.
-						if (!this.getView().byId("selectMSN").getValue()) {
+						if ( this.getView().byId("selectMSN").getKeys().indexOf(airbus.mes.settings.ModelManager.msn) === -1 ) {
 							airbus.mes.shell.oView.getController().navigate();
+							
+							///////////////////////////////////////////////////////////////////////////////////////////////////////
 							
 							//if !localhost stop user on setting
 							switch (window.location.hostname) {
 							case "localhost":
-								airbus.mes.settings.oView.byId("navBack").setVisible(true);
+								airbus.mes.settings.oView.byId("navBack").setEnabled(false);
+								console.log("gotohome desactivé");
+								$(airbus.mes.shell.oView.byId("logo")).unbind();
 								break;
 							default:
-								airbus.mes.settings.oView.byId("navBack").setVisible(false);
+								airbus.mes.settings.oView.byId("navBack").setEnabled(false);
+								console.log("gotohome desactivé");
+								$(airbus.mes.shell.oView.byId("logo")).unbind();
 								break;
 							}
 							
-						}					
+							///////////////////////////////////////////////////////////////////////////////////////////////////////
+							
+							
+						}	
+						
+						
+						
+						
+						
 						this.setEnabledCombobox(true, true, true, true);
 				} else {	
 					this.setEnabledCombobox(true, false, false, false);
@@ -443,17 +462,26 @@ sap.ui.controller("airbus.mes.settings.Settings",
 		     * Fire when the user press confirm it save data.
 		     */
 			onConfirm : function(oEvent) { 
-//				Firstly, save the new user settings
+				//Firstly, save the new user settings
 				this.saveUserSettings();
 				//load appconfiguration for that site
 				airbus.mes.settings.AppConfManager.loadAppConfig();
-//				Then Navigate to correct view
+				//Then Navigate to correct view
 				if (!this.getView().byId("selectMSN").getValue()) {
 					airbus.mes.settings.ModelManager.messageShow(this.getView().getModel("i18n").getProperty("SelectMSN"));
 					return;
 				}
+				
+				///////////////////////////////////////////////////////////////////////////////////////////////////
+				// 
+				airbus.mes.settings.oView.byId("navBack").setEnabled(true);
+				$( '#' + airbus.mes.shell.oView.byId("logo").sId).click(airbus.mes.shell.oView.getController().goToHome);
+				console.log("gotohome");
+				//
+				///////////////////////////////////////////////////////////////////////////////////////////////////
+				
 				this.navigate(oEvent);
-				airbus.mes.settings.oView.byId("navBack").setVisible(true);
+		
 			},
 			
 			saveUserSettings : function() {

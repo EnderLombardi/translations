@@ -19,35 +19,20 @@ sap.ui.controller(
 					},
 
 					goToHome : function() {
-						
-						//Check if :
-						// - Current Page is Setting
-						// - First screen has been Settings
-						// - No other pages has been loaded
-						// (&& nav.getPages()[1]=="settingsView" && nav.getPages() == 2)
-						// TODO : change the check msn settings.modelmanager.msn 
-						if(nav.getCurrentPage().getId() == "settingsView" ){
-							//Check if MSN is selected
-							if (!airbus.mes.settings.oView.byId("selectMSN").getValue()) {
-								return;
-							} 
-						}else {
-						
 						// Active settings button during leaving settings screen
-							if (airbus.mes.shell != undefined) {
-								sap.ui.getCore().byId("popupSettingsButton").setEnabled(true);
-								this.setInformationVisibility(false);
-							}
-	
-							if (airbus.mes.homepage != undefined) {
-								nav.to(airbus.mes.homepage.oView.getId());
-							} else {
-								sap.ui.getCore().createComponent({
+						if (airbus.mes.shell != undefined) {
+							sap.ui.getCore().byId("popupSettingsButton").setEnabled(true);
+							airbus.mes.shell.oView.getController().setInformationVisibility(false);
+						}
+
+						if (airbus.mes.homepage != undefined) {
+							nav.to(airbus.mes.homepage.oView.getId());
+						} else {
+							sap.ui.getCore().createComponent({
 								name : "airbus.mes.homepage", // root component folder is resources
-								});
-								nav.addPage(airbus.mes.homepage.oView);
-								nav.to(airbus.mes.homepage.oView.getId());
-							}
+							});
+							nav.addPage(airbus.mes.homepage.oView);
+							nav.to(airbus.mes.homepage.oView.getId());
 						}
 					},
 					
@@ -103,9 +88,8 @@ sap.ui.controller(
 					 * 
 					 * @memberOf components.globalnav.globalNavigation
 					 */
-					// onBeforeRendering: function() {
-					//
-					// },
+					 onBeforeRendering: function() {
+					 },
 					
 					/**
 					 * Called when the View has been rendered (so its HTML is
@@ -116,10 +100,6 @@ sap.ui.controller(
 					 * @memberOf components.globalnav.globalNavigation
 					 */
 					onAfterRendering : function() {
-						// to avoid the error and multiple checks of undefined
-						// buttons
-//						if (!this.settingPopup)
-//							this.settingPopup = sap.ui.xmlfragment("airbus.mes.shell.settingPopover", airbus.mes.shell.oView.getController());
 					},
 					
 					/**
