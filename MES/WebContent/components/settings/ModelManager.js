@@ -52,9 +52,9 @@ airbus.mes.settings.ModelManager = {
 			dest = this.queryParams.get("url_config");
 		}
 
-			bundleUrl : "../components/settings/config/url_config.properties",
 			this.urlModel = new sap.ui.model.resource.ResourceModel({
-			bundleLocale : dest
+				bundleUrl : "../components/settings/config/url_config.properties",
+				bundleLocale : dest
 		});
 
 		if (dest === "sopra") {
