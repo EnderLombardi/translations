@@ -21,7 +21,11 @@ airbus.mes.disruptiontracker.ModelManager = {
 		} else {
 			airbus.mes.disruptiontracker.oView.byId("stationComboBox").setSelectedKey("");
 		}
-		//airbus.mes.disruptiontracker.oView.setBusy(false);
+		if(oFilters.msn != undefined && oFilters.msn != ""){
+			airbus.mes.disruptiontracker.oView.byId("msnComboBox").setSelectedKey(oFilters.msn);
+		} else {
+			airbus.mes.disruptiontracker.oView.byId("msnComboBox").setSelectedKey("");
+		}
 	},
 	
 	onDisruptionsLoad: function(){

@@ -190,6 +190,14 @@ airbus.mes.disruptions.ModelManager = {
 		getDisruptionsURL = getDisruptionsURL.replace('$User',sap.ui.getCore().getModel(
 		"userSettingModel").getProperty(
 		"/Rowsets/Rowset/0/Row/0/user"));
+		
+
+		if (oFilters.msn != undefined && oFilters.msn != "")
+			getDisruptionsURL = getDisruptionsURL.replace('$MSN', oFilters.msn);
+		else
+			getDisruptionsURL = getDisruptionsURL.replace('$MSN', "");
+		
+		
 		return getDisruptionsURL;
 	},
 

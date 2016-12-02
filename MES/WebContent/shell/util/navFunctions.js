@@ -196,15 +196,19 @@ airbus.mes.shell.util.navFunctions = {
 				&& nav.getPreviousPage().sId == "stationTrackerView") {
 
 			airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.station = airbus.mes.settings.ModelManager.station;
-		} else if (airbus.mes.stationtracker != undefined) {
+			airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.msn = airbus.mes.settings.ModelManager.msn;
+		
+		
+		} else if (airbus.mes.stationtracker != undefined && airbus.mes.stationtracker.ModelManager.showDisrupionBtnClicked == true) {
 
-			if (airbus.mes.stationtracker.ModelManager.showDisrupionBtnClicked == true) {
-
-				airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.station = airbus.mes.settings.ModelManager.station;
-				airbus.mes.stationtracker.ModelManager.showDisrupionBtnClicked = false;
-			}
+			airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.station = airbus.mes.settings.ModelManager.station;
+			airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.msn = airbus.mes.settings.ModelManager.msn;
+			airbus.mes.stationtracker.ModelManager.showDisrupionBtnClicked = false;
+		
+		
 		} else {
 			airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.station = "";
+			airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.msn = "";
 		}
 
 		airbus.mes.disruptiontracker.ModelManager.loadDisruptionTrackerModel();
