@@ -15,10 +15,6 @@
 /* ---polypoly--oTablePolypoly-table---*/
 
 /* line hover */
-[id^="__column"].sapUiTableColRsz {
-    margin-left: -3px;
-}
-
 /* BTN ADD POLY POLY */
 /*#polypoly--AddPolypoly::after  {
 content: "";
@@ -37,77 +33,5 @@ content: "";
 /* Pop-up Create Polypoly */
 
 /* Pop-up QA */
-#oQADialog, #infoUpdate12  {
-    background: #ffffff;
-    border: none;
-    border-radius: 0;
-    box-shadow: 0 0 5px #333;
-}
-
-#oQADialog .sapMSlt>.sapMSltLabel {
-    line-height: 2.5rem;
-    border: none;
-    height: 2.5rem;
-}
-#oQADialog .sapMCb {
-    width:100%;
-}
-#oQADialog-cont {
-    border-top:3px solid  rgba(255, 255, 255, 0);
-}
-#oQADialog-footer {
-    background-color:#0F2D65;
-}
-#oQADialog .sapUiTableColHdrScr .sapUiTableColHdr:nth-child(2) .sapMLabel {
-    border:none;
-}
-#oQADialog .sapUiTableColHdrScr .sapUiTableColHdr:nth-child(1) .sapMLabel {
-    color: #468497;
-    font-size: 0.975rem;
-    padding-top: 4px;
-}
-#oQADialog .sapUiTableColHdrScr .sapUiTableColHdr:nth-child(2) .sapMLabel {
-    color: #468497;
-    font-size: 0.7rem;
-}
-#oQADialog .sapUiTableColHdrCnt > div:nth-child(1), #oQADialog .sapUiTableCCnt > div:nth-child(1) {
-    display:none;
-}
-#oQADialog #oTableQA-table tr:nth-child(even) {
-    background-color:#f9fafc;
-}
-#oQADialog #oTableQA-table td {
-    border-bottom:1px solid #e5e5e5;
-}
-#oQADialog #oTableQA-table tr:last-child td {
-    border-bottom:1px solid #e5e5e5;
-}
-#oQADialog .sapUiTableHSb {
-    padding-left:0!important;
-}
 
 /* Pop-up Confirm Delete confirmDeleteDialog */
-#confirmDeleteDialog {
-    background: #ffffff;
-    border: none;
-    border-radius: 0;
-    box-shadow: 0 0 5px #333;
-}
-
-#confirmDeleteDialog-header-BarPH {
-    background:#d4f1f7;
-
-}
-#confirmDeleteDialog-title {
-    color:#434343;
-}
-#confirmDeleteDialog-cont {
-    border-top:3px solid  rgba(255, 255, 255, 0);
-}
-#confirmDeleteDialog-header {
-    box-shadow: 0 0 5px #333;
-    overflow: visible;
-}
-#confirmDeleteDialog-footer {
-    background-color:#0F2D65;
-}
