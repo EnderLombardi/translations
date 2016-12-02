@@ -17,17 +17,24 @@ sap.ui
 					onInit : function() {
 					},
 
-/**
-* Called when the View has been rendered (so its HTML is part of the document). Post-rendering manipulations of the HTML could be done here.
-* This hook is the same one that SAPUI5 controls get after being rendered.
-* @memberOf table.table
-*/
-	onAfterRendering: function() {
-		var oSorter = new sap.ui.model.Sorter("OpeningTime", true);
+					/**
+					 * Called when the View has been rendered (so its HTML is
+					 * part of the document). Post-rendering manipulations of
+					 * the HTML could be done here. This hook is the same one
+					 * that SAPUI5 controls get after being rendered.
+					 * 
+					 * @memberOf table.table
+					 */
+					onAfterRendering : function() {
+						var oSorter = new sap.ui.model.Sorter("OpeningTime",
+								true);
 
-		// sorting based on opening time
-		this.getView().byId("disruptiontrackerView--disruptionsTable").getBinding("items").sort(oSorter);
-	},
+						// sorting based on opening time
+						this.getView().byId(
+								"disruptiontrackerView--disruptionsTable")
+								.getBinding("items").sort(oSorter);
+
+					},
 
 					/**
 					 * Similar to onAfterRendering, but this hook is invoked
@@ -70,8 +77,9 @@ sap.ui
 								.loadDisruptionTrackerModel();
 
 						if (this.getView().byId("stationComboBox")
-								.getSelectedKey() == " " || this.getView().byId("stationComboBox")
-								.getSelectedKey() == "") {
+								.getSelectedKey() == " "
+								|| this.getView().byId("stationComboBox")
+										.getSelectedKey() == "") {
 							sap.ui.getCore().byId(
 									"disruptiontrackerView--msnComboBox")
 									.getBinding("items").filter(
@@ -90,16 +98,17 @@ sap.ui
 																	"stationComboBox")
 															.getSelectedKey()));
 						}
-						
+
 						/*
 						 * filterByResolutionGroup:function(oEvent){ sValue =
-						 * oEvent.getSource().getSelectedKey(); if (sValue != "") {
+						 * oEvent.getSource().getSelectedKey(); if (sValue !=
+						 * "") {
 						 * this.getView().byId("disruptionsTable").getBinding("items").filter(
 						 * new sap.ui.model.Filter("ResponsibleGroup", "EQ",
 						 * sValue)); } },
 						 */
 					},
-	
+
 					filterDisruptions : function(oEvent) {
 						var sStatus = this.getView().byId("statusComboBox")
 								.getSelectedKey();
@@ -108,7 +117,6 @@ sap.ui
 						var aFilters = [];
 						var oBinding = this.byId("disruptionsTable")
 								.getBinding("items");
-
 
 						if (sStatus != " ")
 							aFilters.push(new sap.ui.model.Filter("Status",
@@ -120,6 +128,7 @@ sap.ui
 						oBinding.filter(aFilters);
 						airbus.mes.disruptiontracker.ModelManager
 								.fixNoDataRow();// Remove last column
+
 					},
 
 					/***********************************************************
@@ -205,12 +214,12 @@ sap.ui
 												.getCore()
 												.byId(
 														"disruptionDetailPopup--btnUpdateDisruption"), // Update
-																										// Button
+										// Button
 										sap.ui
 												.getCore()
 												.byId(
 														"disruptionDetailPopup--btnCancelDisruption") // Cancel
-																										// Button
+								// Button
 								);
 
 						var disruptionData = {

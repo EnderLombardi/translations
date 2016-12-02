@@ -17,7 +17,7 @@
 		<Panel width="100%">
 			<content>
 
-				<Toolbar>
+				<Toolbar class="sapUiSmallMarginTop" height="1rem">
 					<Label text="Select Station:" width="13.7rem"  class="sapUiLargeMarginEnd" />
 					<Label text="Select Status:" width="13.7rem"  class="sapUiLargeMarginEnd" />
 					<Label text="Select Resolution Group:" />
