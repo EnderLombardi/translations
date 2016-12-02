@@ -165,6 +165,10 @@ sap.ui
 								.getSelectedKey();
 						var sResoGroup = this.getView().byId(
 								"resolutionGroupBox").getSelectedKey();
+						
+					/*	var sMSN = this.getView().byId(
+						"msnComboBox").getSelectedKey();*/
+						
 						var aFilters = [];
 						var oBinding = this.byId("disruptionsTable")
 								.getBinding("items");
@@ -175,6 +179,10 @@ sap.ui
 						if (sResoGroup != "")
 							aFilters.push(new sap.ui.model.Filter(
 									"ResponsibleGroup", "EQ", sResoGroup));
+						
+						/*if (sMSN != "")
+							aFilters.push(new sap.ui.model.Filter(
+									"MSN", "EQ", sMSN));*/
 
 						if(this.mFilterParams) {
 							jQuery.each(this.mFilterParams.filterItems, function(i, oItem) {
