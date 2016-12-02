@@ -141,11 +141,11 @@
 					<SegmentedButton id="IconTabsPages">
 						<items>
 							<SegmentedButtonItem id="idUsers" icon="sap-icon://group"
-								text="Users" key="users" press="openPage" width="" />
+								text="{i18nModel>Users}" key="users" press="openPage" width="" />
 							<SegmentedButtonItem id="idWorkCenters" icon="sap-icon://factory"
-								text="Work Centers" key="workcenters"  press="openPage" />
+								text="{i18nModel>WorkCenters}" key="workcenters"  press="openPage" />
 							<SegmentedButtonItem id="idShifts" icon="sap-icon://future"
-								text="Shifts" key="shifts" press="openPage" />
+								text="{i18nModel>Shifts}" key="shifts" press="openPage" />
 						</items>
 					</SegmentedButton>
 					
