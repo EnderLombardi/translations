@@ -46,6 +46,8 @@ airbus.mes.disruptiontracker.ModelManager = {
 		    }
 		  }));
 
+
+		// Add option "ALL"
 		var a = sap.ui.getCore().byId("disruptiontrackerView--resolutionGroupBox");
 		var item = new sap.ui.core.Item();
 		item.setKey="";
@@ -66,7 +68,10 @@ airbus.mes.disruptiontracker.ModelManager = {
 				if (aMSNval.indexOf(oValue) == -1) {
 					aMSNval.push(oValue);
 					return true;
-				} else {
+				} 
+				else if(oValue == "---")
+					return false;
+				else {
 					return false;
 				}
 		    }
