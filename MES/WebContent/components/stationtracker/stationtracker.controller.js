@@ -944,6 +944,8 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	datePick : function() {
 		if(airbus.mes.stationtracker.datePicker === undefined){
 			airbus.mes.stationtracker.datePicker = sap.ui.xmlfragment("datePickerFragment","airbus.mes.stationtracker.datePickerFragment", airbus.mes.stationtracker.oView.getController());
+			airbus.mes.stationtracker.oView.addDependent(airbus.mes.stationtracker.datePicker);
+
 			airbus.mes.stationtracker.oView.oCalendar = airbus.mes.stationtracker.datePicker.getContent()[0];
 		}
 		airbus.mes.stationtracker.datePicker.openBy(airbus.mes.stationtracker.oView.byId("dateButton"));

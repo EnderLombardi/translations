@@ -398,18 +398,10 @@ sap.ui.controller("airbus.mes.settings.Settings",
 							airbus.mes.shell.oView.byId("labelMSN").setText(airbus.mes.shell.oView.getModel("ShellI18n").getProperty(
 							"MSN") + " " + airbus.mes.settings.ModelManager.currentMsnValue);
 						}
-						
-						
-						
-						
-						
-						
+	
 						// if no msn go by default on user settings.
 						if ( this.getView().byId("selectMSN").getKeys().indexOf(airbus.mes.settings.ModelManager.msn) === -1 ) {
-							airbus.mes.shell.oView.getController().navigate();
-							
-							///////////////////////////////////////////////////////////////////////////////////////////////////////
-							
+							airbus.mes.shell.oView.getController().navigate();				
 							//if !localhost stop user on setting
 							switch (window.location.hostname) {
 							case "localhost":
@@ -424,15 +416,8 @@ sap.ui.controller("airbus.mes.settings.Settings",
 								break;
 							}
 							
-							///////////////////////////////////////////////////////////////////////////////////////////////////////
-							
-							
 						}	
-						
-						
-						
-						
-						
+
 						this.setEnabledCombobox(true, true, true, true);
 				} else {	
 					this.setEnabledCombobox(true, false, false, false);
