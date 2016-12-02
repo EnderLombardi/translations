@@ -150,7 +150,7 @@ sap.ui
 	onNavBack: function(oEvent){
 		nav.back();
 	},
-=======
+
 					filterDisruptions : function(oEvent) {
 						var sStatus = this.getView().byId("statusComboBox")
 								.getSelectedKey();
@@ -159,7 +159,7 @@ sap.ui
 						var aFilters = [];
 						var oBinding = this.byId("disruptionsTable")
 								.getBinding("items");
->>>>>>> e736ad9 [Disruption Tracker] - New Filter MSN 
+
 
 						if (sStatus != "")
 							aFilters.push(new sap.ui.model.Filter("Status",
