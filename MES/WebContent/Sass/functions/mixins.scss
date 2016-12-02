@@ -106,3 +106,8 @@ STATIONTRACKER
         margin: 0 auto;
     }
 }
+@mixin transition($time){
+    -webkit-transition: background-color $time ease-in-out, box-shadow $time ease-in-out;
+    -moz-transition: background-color $time ease-in-out, box-shadow $time ease-in-out;
+    transition: background-color $time ease-in-out, box-shadow $time ease-in-out;
+}

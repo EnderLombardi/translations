@@ -351,7 +351,7 @@ Pop up
         .sapMBtnActive {
             background-color: $sapui-active-grey !important;
         }
-        &:hover {
+        &:not(.sapMBtnDisabled):hover {
             > div {
                 background-color: $sapui-hover-grey;
             }
