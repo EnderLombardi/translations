@@ -13,7 +13,7 @@ airbus.mes.stationtracker.ModelManager = {
        
 //     parameters from the settings component
        settings : undefined,
-       
+       showDisrupionBtnClicked : false, // button Disruption on Station Tracker clicked
        init : function(core) {
 
 

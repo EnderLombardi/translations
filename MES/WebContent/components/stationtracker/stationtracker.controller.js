@@ -919,6 +919,9 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	},
 	showDisruption : function(oEvent){
 		
+		// aboolean variable is taken to know if the button Disruption from station tracker is clicked
+		//If yes, then the Disruptiontracker will be loaded with filter on Current Station
+		airbus.mes.stationtracker.ModelManager.showDisrupionBtnClicked = true;
 		airbus.mes.shell.util.navFunctions.disruptionTracker();
 	},
 	
