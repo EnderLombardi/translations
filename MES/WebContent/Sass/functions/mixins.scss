@@ -106,3 +106,19 @@ STATIONTRACKER
         margin: 0 auto;
     }
 }
+@mixin polypolyTable(){
+    background-color: #ffffff;
+    -webkit-transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out;
+    -moz-transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out;
+    -o-transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out;
+    -ms-transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out;
+    transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out;
+}
+@mixin button($color1, $color2){
+    background-image: none;
+    background-color: color1;
+    color: $color2;
+    text-shadow: none;
+    border-radius:0;
+    border:none;
+}

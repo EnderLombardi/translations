@@ -2,180 +2,18 @@
     background-color : #E4EFF4 !important;
 
 }*/
-/*Default Focus*/
-
-.noRows.sapUiTableColRowHdr, .sapUiTableColHdr .sapUiTableCol, .sapUiTableColHdr .sapUiTableTr>td{
-    border-right: 0px solid #dddddd;
-
-}
-
-}
-.sapUiTableCCnt .sapUiTableRowHdrScr, .sapUiTableColHdrCnt .sapUiTableColRowHdr {
-    display:none;
-}
-.sapUiTableCCnt .sapUiTableCtrlScr, .sapUiTableColHdrCnt .sapUiTableColHdrScr, [id^="polypoly"] .sapUiTableCtrlScrFixed {
-    margin:0;
-}
-[id^="polypoly--oTablePolypoly-table"] .sapUiTableCol, .sapUiTableTr>td, [id^="polypoly--oTablePolypoly-table"] .sapUiTableTr>td, #polypoly--oTablePolypoly.sapUiTable>div.sapUiTableCnt, #polypoly--oTablePolypoly.sapUiTable>div.sapUiTableCnt .sapUiTableColHdrCnt {
-    border: none;
-    outline:1px dotted transparent;
-}
-[id^="polypoly--oTablePolypoly-table"] tr, .sapUiTableCnt .sapUiTableColHdrCnt {
-    background-color: #ffffff;
-        -webkit-transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out;
-        -moz-transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out;
-        -o-transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out;
-        -ms-transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out;
-        transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out;
-}
-[id^="polypoly--oTablePolypoly-table-fixed"] tr:nth-child(1) {
-    background-color: #f5f5f5;
-}
-[id^="polypoly--oTablePolypoly-table-fixed"] td:nth-child(2), [id^="polypoly--oTablePolypoly-table-fixed"] td:nth-child(3) {
-    background-color: #e9fbfd;
-}
-.sapUiTableCtrlFixed [id^="polypoly--oTablePolypoly-table-fixed"] .sapUiTableTr:not(.sapUiTableGroupHeader)>td:last-child,
-.sapUiTableCtrlFixed [id^="polypoly--oTablePolypoly-table-fixed"] [id^="polypoly--oTablePolypoly-rows"] td:nth-child(3) {
-    border-right: 2px solid #ffffff;
-}
-
-.sapUiTable .sapUiTableCtrl [id^="polypoly--oTablePolypoly-rows"].sapUiTableRowHvr>td {
-        background:transparent;
-}
-.sapMFlexItem > [id^="__select"] {
-    border: 2px solid #ebeff4;
-}
-.sapUiTableColHdrScr .sapUiTableColHdr:nth-child(2) .sapMLabel {
-    color: #468497;
-    font-size: 0.975rem;
-    padding-top:4px;
-    border-top: 1px solid #d4f1f7;
-}
-.sapUiTableColHdrScr .sapUiTableColHdr:nth-child(3) .sapMLabel {
-    color: #468497;
-    font-size: 0.7rem;
-}
-.sapUiTableColHdrScr .sapUiTableColHdr .sapUiTableCol:hover, .sapUiTableColHdrScr .sapUiTableColHdr .sapUiTableColRowHdr:hover {
-    background-color: transparent;
-}
-.sapUiTableColHdr:nth-child(1) div[id^="polypoly--oTablePolypoly"] {
-
-}
-div[id^="polypoly--oTablePolypoly"] {
-    padding:0;
-}
-div[id^="polypoly--oTablePolypoly"] span[id^="__icon"] {
-
-}
-#polypoly--toolbarPolypoly.sapMTB {
-border:none;
-}
-
-.sapUiTableCCnt .sapUiTableRowHdrScr {
-    z-index:-1;
-}
 /* tr:nth-child(1) td:nth-child(2), [id^="polypoly--oTablePolypoly-table-fixed"] tr:nth-child(1) td:nth-child(3) {
     background-color: #d4f1f7;
 }*/
 
 /* ---polypoly--oTablePolypoly-table -->ALL<---*/
 
-[id^="polypoly--oTablePolypoly-table"] td {
-    position: relative;
-        padding-top:0;
-    padding-bottom:0;
-}
-[id^="polypoly--oTablePolypoly-table"] td div.sapUiTableCell {
-    /*position: absolute;*/
-    top: 0;
-    right: 0;
-    left: 0;
-    Bottom: 0;
-    padding: 0;
-
-}
-
-[id^="polypoly--oTablePolypoly-table"] div[data-category^="LABEL"] {
-            height: 30px;
-}
-[id^="polypoly--oTablePolypoly-table"] div[data-category^="NEED"], [id^="polypoly--oTablePolypoly-table"] div[data-category^="UA_P"], [id^="polypoly--oTablePolypoly-table"] div[data-category^="GAP"], [id^="polypoly--oTablePolypoly-table"] div[data-category^="ASIS"] {
-            height: 52px;
-}
-[id^="polypoly--oTablePolypoly-table"] div.sapMFlexBox {
-    vertical-align: middle;
-    justify-content: center;
-}
-
-
 /* ---sapUiTableColRowHdr---*/
-
-div[id^="polypoly--oTablePolypoly"].sapUiTableColRowHdr {
-    display:none;
-}
-#polypoly .sapUiTableRSel .sapUiTableColHdrFixed {
-    margin:0;
-}
-#polypoly .sapUiTableCol:hover, #polypoly .sapUiTableColRowHdr:hover {
-    background-color:rgba(255, 255, 255, 0);
-}
-/* ---polypoly--oTablePolypoly-table-fixed---*/
-
-[id^="polypoly--oTablePolypoly-table-fixed"] .sapUiTableTr:not(.sapUiTableGroupHeader)>td:last-child {
-    border-right: 3px solid #ffffff;
-}
-
-
-[id^="polypoly--oTablePolypoly-table-fixed"] td {
-    position: relative;
-}
-
-[id^="polypoly--oTablePolypoly-table-fixed"] div.sapMFlexBox {
-    align-items: center;
-}
-
-
-[id^="polypoly--oTablePolypoly-table-fixed"] td:nth-child(2) div.sapMFlexBox {
-    padding-left: 10px;
-}
-[id^="polypoly--oTablePolypoly-table-fixed"] td:nth-child(2) div.sapMFlexBox .sapMImg {
-    border-radius: 50%;
-    vertical-align: middle;
-}
-[id^="polypoly--oTablePolypoly-table-fixed"] td:nth-child(2) div.sapMFlexBox .sapMFlexItem:nth-child(2) {
-    padding-left:0;
-    width: 100%;
-}
-[id^="polypoly--oTablePolypoly-table-fixed"] td:nth-child(2) div.sapMFlexBox .sapMFlexItem:nth-child(2) span {
-    font-weight:bold;
-    font-size: 0.775rem;
-    width: 100%;
-}
-[id^="polypoly--oTablePolypoly-table-fixed"] div[data-category^="LABEL"] {
-    background-color: #d4f1f7;
-            height: 30px;
-}
-[id^="polypoly--oTablePolypoly-table-fixed"] div[data-category^="UA_P"] {
-    border-bottom: 1px solid #d4f1f7;
-}
-#polypoly--oTablePolypoly.sapUiTableRSel .sapUiTableTr>td.sapUiTableTdFirst>.sapUiTableCell {
-    padding:0;
-}
 
 /* ---polypoly--oTablePolypoly-table-fixrow---*/
 
-[id^="polypoly--oTablePolypoly-table-fixrow"] div[data-category^="LABEL"] {
-    background-color: #f5f5f5;
-}
-
 /* ---polypoly--oTablePolypoly-table---*/
 
-#polypoly--oTablePolypoly-table div[data-category^="LABEL"] {
-    background-color: #f5f5f5;
-
-}
-#polypoly--oTablePolypoly {
-    background-color:#ffffff;
-}
 /* line hover */
 [id^="__column"].sapUiTableColRsz {
     margin-left: -3px;
@@ -191,133 +29,12 @@ content: "";
     bottom: 0;
     right: -0.3125rem;
 }*/
-#polypoly--AddPolypoly {
-    margin-right: 0.3125rem;
-}
-button[id^="polypoly"] .sapMBtnContent, button[id^="polypoly"] .sapMBtnText>.sapMBtnIcon {
-    color: #0D5D76;
-    font-size: 1.6vh;
-}
-button[id^="polypoly"].sapMBtn:hover {
-    background-color: rgba(0, 86, 112, 0.20);
-}
-button[id^="polypoly"].sapMBtn:hover>.sapMBtnHoverable {
-    background-color: transparent;
-    border-color:transparent;
-    outline:1px dotted transparent;
-}
-button[id^="polypoly"].sapMBtn:hover> div[id^="polypoly"].sapMBtnHoverable, html.sap-desktop button[id^="polypoly"].sapMBtn:focus>div[id^="polypoly"].sapMBtnHoverable.sapMFocusable  {
-    background-color: transparent;
-    border-color:transparent;
-    outline:1px dotted transparent;
-}
-[id^="polypoly--oTablePolypoly-table"] div[id^="__button"].sapMBtnTransparent.sapMBtnActive  {
-    background-color: transparent;
-    outline:1px dotted transparent;
-    border-color:transparent;
-}
 
 /* BTN accept reject */
 
-[id^="polypoly--oTablePolypoly-table"] .sapMFlexItem {
-    padding: 0 5px;
-}
-[id^="polypoly--oTablePolypoly-table"] .sapMBtnDisabled {
-    opacity: 1;
-}
-[id^="polypoly--oTablePolypoly-table"] div.sapMBtnInner.sapMBtnAccept {
-    background-image: none;
-    background-color: #84bd00;
-    color: #ffffff;
-    text-shadow: none;
-    border-radius:0;
-    border:none;
-}
-[id^="polypoly--oTablePolypoly-table"] div.sapMBtnInner.sapMBtnReject {
-    background-image: none;
-    background-color: #e5002b;
-    color: #ffffff;
-    text-shadow: none;
-    border-radius:0;
-    border:none;
-}
-
 /*header*/
 
-.classPolypolyPage header {
-    box-shadow: 0px 2px 15px -5px #0F2D65;
-    border: none;
-    border-top:  0.6rem solid #ffffff;
-    position:relative;
-    z-index:10;
-}
-.classPolypolyPage .sapUiTableMTbr .sapMTB {
-    background: #d4f1f7;
-    margin-top:0.55rem;
-}
-
-.classPolypolyPage .sapUiTable>.sapUiTableTbr.sapUiTableMTbr {
-    margin-bottom:10px;
-}
-.classPolypolyPage .sapUiIcon {
-    color: #8fd4e2;
-    outline:1px dotted transparent;
-}
-.sap-desktop .classPolypolyPage .sapMBtnTransparent>.sapMBtnIcon {
-    color: #ffffff;
-}
-
-.classPolypolyPage form {
-    border: 1px solid transparent;
-}
-.classPolypolyPage form.sapMSFF:hover, .classPolypolyPage form.sapMSFF:focus {
-    border-color: #0D5D76;
-}
-.classPolypolyPage .sapMTB-Transparent-CTX .sapMLabel, .classPolypolyPage .sapMBtnInner {
-    text-shadow: none;
-}
-
 /* Pop-up Create Polypoly */
-#columnPopupDialog {
-    background: #ffffff;
-    border: none;
-    border-radius: 0;
-    box-shadow: 0 0 5px #333;
-}
-
-#columnPopupDialog-header {
-    background:#d4f1f7;
-    box-shadow: 0 0 5px #333;
-}
-#columnPopupDialog-title {
-    color:#434343;
-}
-#columnPopupDialog .sapMSlt>.sapMSltLabel {
-    line-height: 1.8rem;
-    border: none;
-    height: 2.5rem;
-}
-#columnPopupDialog .sapMCb {
-    width:100%;
-}
-#columnPopupDialog-cont {
-    border-top:3px solid rgba(255, 255, 255, 0);
-}
-#columnPopupDialog-footer {
-    background-color:#0F2D65;
-}
-#columnPopupDialog .sapUiTableColHdrScr .sapUiTableColHdr:nth-child(2) .sapMLabel {
-    border:none;
-}
-#columnPopupDialog .sapUiTableColHdrScr .sapUiTableColHdr:nth-child(1) .sapMLabel {
-    color: #468497;
-    font-size: 0.975rem;
-    padding-top: 4px;
-}
-#columnPopupDialog .sapUiTableColHdrScr .sapUiTableColHdr:nth-child(2) .sapMLabel {
-    color: #468497;
-    font-size: 0.7rem;
-}
 
 /* Pop-up QA */
 #oQADialog, #infoUpdate12  {
