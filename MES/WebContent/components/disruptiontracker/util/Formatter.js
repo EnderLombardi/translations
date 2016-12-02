@@ -96,18 +96,11 @@ airbus.mes.disruptiontracker.Formatter = {
 		closureDate = airbus.mes.disruptiontracker.Formatter.isoDateconvert(closureDate);
 		var reggie = /(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})/;
 		var aOpenDate = reggie.exec(openDate);
-		var oOpenDate = new Date((+aOpenDate[1]), (+aOpenDate[2]) - 1, // Careful,
-																		// month
-																		// starts
-																		// at 0!
+		var oOpenDate = new Date((+aOpenDate[1]), (+aOpenDate[2]) - 1, // Careful month starts at 0!
 		(+aOpenDate[3]), (+aOpenDate[4]), (+aOpenDate[5]), (+aOpenDate[6]));
 
 		var aClosureDate = reggie.exec(closureDate);
-		var oClosureDate = new Date((+aClosureDate[1]), (+aClosureDate[2]) - 1, // Careful,
-																				// month
-																				// starts
-																				// at
-																				// 0!
+		var oClosureDate = new Date((+aClosureDate[1]), (+aClosureDate[2]) - 1, // Careful month starts at 0!
 		(+aClosureDate[3]), (+aClosureDate[4]), (+aClosureDate[5]),
 				(+aClosureDate[6]));
 

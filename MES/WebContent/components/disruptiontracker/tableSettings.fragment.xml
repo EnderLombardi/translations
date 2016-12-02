@@ -3,12 +3,12 @@
 	<ViewSettingsDialog id="disrptTrackerSettings"
 		confirm="onTableSettingsConfirm" filterDetailPageOpened="onFilterDetailPageOpened"
 		resetFilters="onResetFilters">
-		<sortItems>
+		<!-- <sortItems>
 			<ViewSettingsItem selected="true" key="OpeningTime"
 				text="{disruptiontrackerI18n>openingTime}" />
 			<ViewSettingsItem key="FixedByTime"
 				text="{disruptiontrackerI18n>fixedByTime}" />
-		</sortItems>
+		</sortItems> -->
 		<filterItems>
 			<!-- <ViewSettingsFilterItem
 				filterDetailPageOpened="onFilterDetailPageOpened" text="{disruptiontrackerI18n>status}"
