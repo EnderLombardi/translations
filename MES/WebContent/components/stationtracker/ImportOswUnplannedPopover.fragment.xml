@@ -12,14 +12,7 @@
 		<content>
 			<VBox>
 				<HBox>
-					<Select id="selectPhysicalStation"
-							class="sapUiTinyMarginBeginEnd comboBoxStyle"
-						    items="{ path: 'WorkListModel>/' }"
-						    change="selectPhStation"
-						    visible="true">
-						<core:ListItem key="{WorkListModel>WORK_CENTER	}" text="{WorkListModel>DESCRIPTION}" />				
-					</Select>
-					
+		
 					<Select id="selectGroupingOSW"
 							class="sapUiTinyMarginBeginEnd comboBoxStyle"
 						    items="{groupModel>/Rowsets/Rowset/0/Row/Grouping}"
