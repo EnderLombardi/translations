@@ -51,6 +51,8 @@
 						text="{disruptiontrackerI18n>escalation.firstEscalation}" key="{disruptiontrackerI18n>escalationLevel}_2" />
 					<ViewSettingsItem
 						text="{disruptiontrackerI18n>escalation.finalEscalation}" key="{disruptiontrackerI18n>escalationLevel}_3" />
+						<ViewSettingsItem
+						text="{disruptiontrackerI18n>none}" key="{disruptiontrackerI18n>escalationLevel}_ " />
 				</items>
 			</ViewSettingsFilterItem>
 			<ViewSettingsFilterItem text="{disruptiontrackerI18n>gravity}"
@@ -62,6 +64,8 @@
 						key="{disruptiontrackerI18n>gravity}_2" />
 					<ViewSettingsItem text="{disruptiontrackerI18n>gravity.blocked}"
 						key="{disruptiontrackerI18n>gravity}_3" />
+						<ViewSettingsItem
+						text="{disruptiontrackerI18n>none}" key="{disruptiontrackerI18n>gravity}_ " />
 				</items>
 			</ViewSettingsFilterItem>
 		</filterItems>

@@ -141,9 +141,11 @@ sap.ui
 							var sFilterPath = aSplit[0];
 							var sOperator = "EQ";
 							var sValue1 = aSplit[1];
-							var oFilter = new sap.ui.model.Filter(sFilterPath,
-									sOperator, sValue1);
-							aFilters.push(oFilter);
+							if (sValue1 != " ") {
+								var oFilter = new sap.ui.model.Filter(
+										sFilterPath, sOperator, sValue1);
+								aFilters.push(oFilter);
+							}
 						});
 						this.getView().byId("disruptionsTable").getBinding(
 								"items").filter(aFilters);
