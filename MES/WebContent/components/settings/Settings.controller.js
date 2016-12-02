@@ -413,7 +413,7 @@ sap.ui.controller("airbus.mes.settings.Settings",
 							//if !localhost stop user on setting
 							switch (window.location.hostname) {
 							case "localhost":
-								airbus.mes.settings.oView.byId("navBack").setEnabled(false);
+								airbus.mes.settings.oView.byId("navBack").setEnabled(true);
 								console.log("gotohome desactivé");
 								$(airbus.mes.shell.oView.byId("logo")).unbind();
 								break;

@@ -171,8 +171,7 @@ airbus.mes.operationdetail.ModelManager = {
 						url : url,
 						async : false,
 						error : function(xhr, status, error) {
-							airbus.mes.operationdetail.ModelManager
-									.messageShow(sMessageError);
+							airbus.mes.operationdetail.ModelManager.messageShow(sMessageError);
 							flagSuccess = false;
 	
 						},

@@ -64,16 +64,7 @@ airbus.mes.shell.Component.prototype.createContent = function() {
         this.oView.setModel(sap.ui.getCore().getModel("userDetailModel"),    "userDetailModel");
         this.oView.setModel(sap.ui.getCore().getModel("ShellI18n"), "ShellI18n");
         this.oView.setModel(sap.ui.getCore().getModel("userSettingModel"),    "userSettingModel");
-	
-        
-///////////////////////////////////////////////////////////////////////////////////////////////////
-		// 
-		//airbus.mes.settings.oView.byId("navBack").setEnabled(true);
-		$( '#' + airbus.mes.shell.oView.byId("logo").sId).click(airbus.mes.shell.oView.getController().goToHome);
-		console.log("gotohome");
-		//
-		///////////////////////////////////////////////////////////////////////////////////////////////////
-        
+                
         return this.oView;
 
     } else {

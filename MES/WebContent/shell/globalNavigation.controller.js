@@ -100,6 +100,12 @@ sap.ui.controller(
 					 * @memberOf components.globalnav.globalNavigation
 					 */
 					onAfterRendering : function() {
+						
+						// add event on home button this is not done by ui addEvent because
+						// we cant add and delete the same event several time
+						// this is use to block the user if he has no user setting saved or unvailable.
+						$( '#' + airbus.mes.shell.oView.byId("logo").sId).click(airbus.mes.shell.oView.getController().goToHome);
+				
 					},
 					
 					/**
