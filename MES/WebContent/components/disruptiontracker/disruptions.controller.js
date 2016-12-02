@@ -71,6 +71,20 @@ sap.ui
 					filterByStation : function(oEvent) {
 						airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.station = this
 								.getView().byId("stationComboBox").getSelectedKey();
+						
+						if(airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.station != ""){
+							// When Station is selected on Model Loading
+							sap.ui.getCore().byId("disruptiontrackerView--msnComboBox").getBinding("items")
+								.filter(new sap.ui.model.Filter(
+										"station","EQ", airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.station));
+						} else{
+							sap.ui.getCore().byId("disruptiontrackerView--msnComboBox").getBinding("items")
+								.filter(new sap.ui.model.Filter(
+									"station","EQ", "DISPLAY_NO_MSN"));
+								
+						}
+						
+						
 						airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.msn = this
 								.getView().byId("msnComboBox").getSelectedKey();
 						

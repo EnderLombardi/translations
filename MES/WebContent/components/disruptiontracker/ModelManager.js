@@ -50,49 +50,14 @@ airbus.mes.disruptiontracker.ModelManager = {
 		    }
 		  }));
 
-
-		// Add option "ALL"
-		var a = sap.ui.getCore().byId("disruptiontrackerView--resolutionGroupBox");
-		var item = new sap.ui.core.Item();
-		item.setKey="";
-		item.setText("All");
-		a.addItem(item);
 		
+		var item1 = new sap.ui.core.Item();
+		item1.setKey="";
+		item1.setText("All");
 		
-		// Apply filter on MSN Filter Box
-		var aMSNval = [];			
-		if(airbus.mes.disruptiontracker.oView.byId("stationComboBox").getSelectedKey() == ""){
-		sap.ui
-		.getCore()
-		.byId("disruptiontrackerView--msnComboBox")
-		.getBinding("items")
-		.filter(new sap.ui.model.Filter({
-		    path: "msn",
-		    test: function(oValue) {
-				if (aMSNval.indexOf(oValue) == -1) {
-					aMSNval.push(oValue);
-					return true;
-				} 
-				else if(oValue == "---")
-					return false;
-				else {
-					return false;
-				}
-		    }
-		  }));
-		}
+		var resGroupBox = sap.ui.getCore().byId("disruptiontrackerView--resolutionGroupBox");
+		resGroupBox.insertItem(item1,0);
 		
-		else {
-			// When Station is selected on Model Loading
-			sap.ui
-			.getCore()
-			.byId("disruptiontrackerView--msnComboBox")
-			.getBinding("items")
-			.filter(new sap.ui.model.Filter(
-				"station","EQ", airbus.mes.disruptiontracker.oView.byId("stationComboBox").getSelectedKey()));
-		}
-		// when no station is selected on Model Loading
-
 		airbus.mes.disruptiontracker.oView.setBusy(false); //Remove Busy Indicator
 	},
 	

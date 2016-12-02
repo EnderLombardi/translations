@@ -189,8 +189,6 @@ airbus.mes.shell.util.navFunctions = {
 			nav.addPage(airbus.mes.disruptiontracker.oView);
 		}
 
-		// Load data
-		airbus.mes.shell.util.navFunctions.renderDisruptionTracker();
 
 		if (nav.getPreviousPage() != undefined
 				&& nav.getPreviousPage().sId == "stationTrackerView") {
@@ -207,10 +205,14 @@ airbus.mes.shell.util.navFunctions = {
 		
 		
 		} else {
-			airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.station = "";
+			airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.station = airbus.mes.settings.ModelManager.station;
 			airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.msn = "";
 		}
 
+		airbus.mes.shell.util.navFunctions.renderDisruptionTracker();
+		
+
+		// Load data
 		airbus.mes.disruptiontracker.ModelManager.loadDisruptionTrackerModel();
 
 		// Navigate
@@ -221,6 +223,8 @@ airbus.mes.shell.util.navFunctions = {
 	 * Render disruption Tracker
 	 */
 	renderDisruptionTracker : function() {
+		
+		/*********** Filter for Station **************/
 		var aFilters = [];
 		var aTemp = [];
 		var duplicatesFilter = new sap.ui.model.Filter({
@@ -237,15 +241,54 @@ airbus.mes.shell.util.navFunctions = {
 		aFilters.push(duplicatesFilter);
 
 		aFilters.push(new sap.ui.model.Filter("program", "EQ",
-				airbus.mes.settings.ModelManager.program)); // Filter
-		// on
-		// selected
-		// A/C
-		// Program
+				airbus.mes.settings.ModelManager.program)); // Filter on selected A/C Program
 
 		sap.ui.getCore().byId("disruptiontrackerView--stationComboBox")
 				.getBinding("items").filter(
 						new sap.ui.model.Filter(aFilters, true));
+		
+		var item2 = new sap.ui.core.Item();
+		item2.setKey="";
+		item2.setText("All");
+		
+		var stationBox = sap.ui.getCore().byId("disruptiontrackerView--stationComboBox");
+		stationBox.insertItem(item2,0);
+		
+		
+		
+		/************* Filter for MSN *********************/
+		// Apply filter on MSN Filter Box
+		sap.ui.getCore().byId("disruptiontrackerView--msnComboBox")
+			.getBinding("items").filter(new sap.ui.model.Filter({
+			    path: "msn",
+			    test: function(oValue) {
+			    	if(oValue == "---"){
+						return false;
+					}
+			    }
+		  }));
+
+		
+		if(airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.station != ""){
+			// When Station is selected on Model Loading
+			sap.ui.getCore().byId("disruptiontrackerView--msnComboBox").getBinding("items")
+				.filter(new sap.ui.model.Filter(
+						"station","EQ", airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.station));
+		} else{
+			sap.ui.getCore().byId("disruptiontrackerView--msnComboBox").getBinding("items")
+				.filter(new sap.ui.model.Filter(
+					"station","EQ", "DISPLAY_NO_MSN"));
+				
+		}
+		
+
+		var item3 = new sap.ui.core.Item();
+		item3.setKey="All";
+		item3.setText("All");
+		
+		var msnBox = sap.ui.getCore().byId("disruptiontrackerView--msnComboBox");
+		msnBox.insertItem(item3,0);
+		
 
 	},
 
