@@ -320,3 +320,24 @@ html{
 #globalNavView--SelectLanguage-arrow {
         background: #0F2D65 !important;
 }
+
+// MyProfile css
+.myProfileButton:hover {
+    > div { 
+	    background: rgba(234,234,234,0.1) !important;
+    }
+}
+
+#badgeMngMyProfile-header {
+    box-shadow: 0 0 5px #333 !important;
+    background-color: #fff !important;
+    z-index: 1;
+}
+
+#badgeMngMyProfile-title {
+    color: #333333;
+}
+
+#badgeMngMyProfile-cont {
+    background: #f5f5f5 !important;
+}

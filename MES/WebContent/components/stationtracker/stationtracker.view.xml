@@ -31,7 +31,7 @@
 						<ToolbarSpacer />
 						<Button id="TeamButton" text="{StationTrackerI18n>ButtonTeam}"
 							type="Transparent"
-							class="tiffanyColor whiteButton buttonStatus2 iconbuttonTeam sapUiSmallMarginBegin"
+							class="iconbuttonTeam"
 							icon="sap-icon://group" press="onTeamPress" />
 						<Button id="hideKPI" type="Transparent" icon="sap-icon://hide"
 							text="{StationTrackerI18n>HideKPIS}" press="hideKPI"/>

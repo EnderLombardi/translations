@@ -36,13 +36,11 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
 	/* increase or decrease Progress Functions */
 
 	addProgress : function() {
-		oProgressSlider = sap.ui.getCore().byId("progressSlider")
-		oProgressSlider.stepUp(1);
+		sap.ui.getCore().byId("progressSlider").stepUp(1);
 	},
 
 	reduceProgress : function() {
-		oProgressSlider = sap.ui.getCore().byId("progressSlider")
-		oProgressSlider.stepDown(1);
+		sap.ui.getCore().byId("progressSlider").stepDown(1);
 	},
 
 	/***********************************************************
@@ -84,13 +82,13 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
 		});
 
 		// Refresh User Operation Model and Operation Detail
-
-		airbus.mes.shell.oView.getController().renderStationTracker();
-
-		// Refresh User Operation Model and Operation Detail
 		if (flagSuccess == true) {
 			oView.getController().setProgressScreenBtn(true, false);
 
+			// Refresh User Operation Model and Operation Detail
+			airbus.mes.shell.oView.getController().renderStationTracker();
+
+			
 			oView.byId("operationStatus").setText(oView.getModel("i18n").getProperty("in_progress"));
 
 			// Re-Render Station Tracker
@@ -137,10 +135,13 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
 
 			}
 		});
-
+				
 		if (flagSuccess == true) {
 			oView.getController().setProgressScreenBtn(false, true);
-
+			
+			// Refresh User Operation Model and Operation Detail
+			airbus.mes.shell.oView.getController().renderStationTracker();
+			
 			//oView.byId("btnActivate").setType("Accept");
 			oView.byId("operationStatus").setText(oView.getModel("i18n").getProperty("paused"));
 
@@ -185,8 +186,7 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
 		oView.getController().Mode = airbus.mes.operationdetail.status.oView.getModel("i18n").getProperty("complete")
 		if (!oView._oUserConfirmationDialog) {
 
-			oView._oUserConfirmationDialog = sap.ui.xmlfragment(
-					"airbus.mes.operationdetail.fragments.userConfirmation", oView.getController());
+			oView._oUserConfirmationDialog = sap.ui.xmlfragment("airbus.mes.operationdetail.fragments.userConfirmation", oView.getController());
 
 			oView.addDependent(oView._oUserConfirmationDialog);
 		}
@@ -401,10 +401,9 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
 			oView._oUserConfirmationDialog.close();
 
 			if (flagSuccess === true) {
-				// Refresh User Operation Model and Operation
-				// Detail
-				/*airbus.mes.shell.oView.getController()
-						.renderStationTracker();*/
+			
+				// Refresh User Operation Model and Operation Detail
+				airbus.mes.shell.oView.getController().renderStationTracker();
 
 				// update operationDetailsModel
 				if (oView.getController().operationStatus == "X") {

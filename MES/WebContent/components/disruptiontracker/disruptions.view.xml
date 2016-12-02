@@ -17,9 +17,10 @@
 		<Panel width="100%">
 			<content>
 
-				<Toolbar>
+				<Toolbar class="sapUiSmallMarginTop" height="1rem">
 					<Label text="Select Station:" width="13.7rem"  class="sapUiLargeMarginEnd" />
 					<Label text="Select Status:" width="13.7rem"  class="sapUiLargeMarginEnd" />
+					<Label text="Select MSN:" width="13.7rem"  class="sapUiLargeMarginEnd" />
 					<Label text="Select Resolution Group:" />
 				</Toolbar>
 				<Toolbar>
@@ -28,7 +29,7 @@
 						selectedKey="" selectionChange="filterByStation">
 						<core:Item key="{plantModel>station}" text="{plantModel>stationDescription}" />
 					</ComboBox>
-
+ 
 					<ComboBox id="statusComboBox" class="sapUiMediumMarginEnd customComboBox"
 						placeholder="{disruptiontrackerI18n>selectStatus}"
 						selectedKey=" "
@@ -39,7 +40,14 @@
 						<core:Item key="SOLVED" text="{disruptiontrackerI18n>status.solved}" />
 						<core:Item key="CLOSED" text="{disruptiontrackerI18n>status.closed}" />
 						<core:Item key="REJECTED" text="{disruptiontrackerI18n>status.rejected}" />
-					</ComboBox>
+					</ComboBox> 
+					
+				 	<ComboBox id="msnComboBox" class="sapUiMediumMarginEnd customComboBox"
+						placeholder="{disruptiontrackerI18n>selectMSN}" items="{ path:'plantModel>/Rowsets/Rowset/0/Row' }"
+						selectedKey="" selectionChange="filterByStation">
+						<core:Item key="{plantModel>msn}" text="{plantModel>msn}" />
+					</ComboBox> 
+					
 					<ComboBox id="resolutionGroupBox" class="sapUiMediumMarginEnd customComboBox"
 						placeholder="{disruptiontrackerI18n>resolutionGroup}" items="{disruptionsTrackerModel>/Rowsets/Rowset/0/Row}"
 						selectedKey="" selectionChange="filterDisruptions">
@@ -63,7 +71,9 @@
 			<headerToolbar>
 				<Toolbar>
 					<ToolbarSpacer />
+
 					<Button press="onDisruptionTableSettings" icon="sap-icon://drop-down-list" />
+
 				</Toolbar>
 			</headerToolbar>
 			<columns>

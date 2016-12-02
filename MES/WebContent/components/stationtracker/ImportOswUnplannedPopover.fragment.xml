@@ -12,6 +12,7 @@
 		<content>
 			<VBox>
 				<HBox>
+		
 					<Select id="selectGroupingOSW"
 							class="sapUiTinyMarginBeginEnd comboBoxStyle"
 						    items="{groupModel>/Rowsets/Rowset/0/Row/Grouping}"
@@ -19,12 +20,14 @@
 						    visible="true">
 						<core:ListItem key="{groupModel>key}" text="{ path : 'groupModel>Value' , formatter : '.getI18nValue' }" />				
 					</Select>
+					
 					<Select class="sapUiTinyMarginBeginEnd comboBoxStyle"
 						    items="{groupModel>/Rowsets/Rowset/0/Row/Status}"
 						    change="onChangeFilterOSWUnplanned"
 					        visible="true">						
 						<core:ListItem key="{groupModel>Value}" text="{ path : 'groupModel>Value' , formatter : '.getI18nValue' }" />					
 					</Select>
+					
 				</HBox>
 				<List id="myList" 
 					items="{ path: 'WorkListModel>/' }"

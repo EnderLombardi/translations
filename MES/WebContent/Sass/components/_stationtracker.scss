@@ -302,7 +302,16 @@ KPI HEADER
         font-size: 24px;
     }
 }
-#stationTrackerView--selectShift,
+#stationTrackerView--selectShift {
+    border-left: solid 1px #74d2e7 !important;
+    opacity: 1;
+    @extend %stationTrackerViewShiftAndUser;
+    &.sapMSltDisabled { 
+        .sapMSltLabel, .sapMSltArrow{
+            opacity: 0.5;
+        }
+    }
+}
 #stationTrackerView--selectUser {
     @extend %stationTrackerViewShiftAndUser;
 }
@@ -320,6 +329,13 @@ KPI HEADER
 #stationTrackerView--DisruptionButton:hover #stationTrackerView--DisruptionButton-inner {
     background-color: transparent;
 }
+
+#stationTrackerView--hideKPI {
+    >div {
+        width: 125px;
+    }
+}
+
 #stationTrackerView--TeamButton-img,
 #stationTrackerView--TeamButton-content,
 #stationTrackerView--hideKPI-img,
@@ -1518,3 +1534,8 @@ OTHER
     }
 }
 
+.dhx_marked_timespan, .dhx_matrix_now_time {
+    border-left-color: purple !important;
+    opacity: 1;
+    border-width: 3px !important;
+}

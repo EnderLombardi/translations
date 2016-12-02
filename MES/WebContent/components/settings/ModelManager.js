@@ -52,9 +52,9 @@ airbus.mes.settings.ModelManager = {
 			dest = this.queryParams.get("url_config");
 		}
 
-		this.urlModel = new sap.ui.model.resource.ResourceModel({
-			bundleUrl : "../components/settings/config/url_config.properties",
-			bundleLocale : dest
+			this.urlModel = new sap.ui.model.resource.ResourceModel({
+				bundleUrl : "../components/settings/config/url_config.properties",
+				bundleLocale : dest
 		});
 
 		if (dest === "sopra") {
@@ -135,16 +135,17 @@ airbus.mes.settings.ModelManager = {
 		return urlUserSetting;
 
 	},
+	
 	loadUserSettingsModel : function() {
 		var oUserSettingModel = sap.ui.getCore().getModel("userSettingModel");
 		oUserSettingModel.loadData(airbus.mes.settings.ModelManager
 				.getUrlUserSetting(), null, false);
 
 	},
+	
 	onUserSettingLoad : function() {
 		// Apply user settings.
 		airbus.mes.settings.oView.getController().getUserSettings();
-
 		airbus.mes.settings.AppConfManager.loadAppConfig();
 
 	},

@@ -38,12 +38,12 @@
 
 		</content>
 		<beginButton>
-			<Button id="myProfileCancel" type="Emphasized" text="{ShellI18n>cancel}" press="onCancelMyProfile" icon="sap-icon://decline" iconFirst="false"
-					width="48%"/>
+			<Button id="myProfileCancel" text="{ShellI18n>cancel}" press="onCancelMyProfile" icon="sap-icon://decline"
+					class="myProfileButton"/>
 		</beginButton>
 		<endButton>
-			<Button id="myProfileAccept" type="Emphasized" text="{ShellI18n>save}" press="onSaveMyProfile" icon="sap-icon://accept" iconFirst="false"
-					width="48%"/>
+			<Button id="myProfileAccept" text="{ShellI18n>save}" press="onSaveMyProfile" icon="sap-icon://accept"
+					class="myProfileButton"/>
 		</endButton>
 	</Dialog>
 </core:FragmentDefinition>

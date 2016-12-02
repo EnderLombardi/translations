@@ -1,8 +1,68 @@
-<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
-	<ViewSettingsDialog id="disrptTrackerSettings" confirm="onTableSettingsConfirm">
+<core:FragmentDefinition xmlns:core="sap.ui.core"
+	xmlns="sap.m">
+	<ViewSettingsDialog id="disrptTrackerSettings"
+		confirm="onTableSettingsConfirm" filterDetailPageOpened="onFilterDetailPageOpened"
+		resetFilters="onResetFilters">
 		<sortItems>
-			<ViewSettingsItem selected="true" key="OpeningTime" text="{disruptiontrackerI18n>openingTime}" />
-			<ViewSettingsItem key="FixedByTime" text="{disruptiontrackerI18n>fixedByTime}" />			
+			<ViewSettingsItem selected="true" key="OpeningTime"
+				text="{disruptiontrackerI18n>openingTime}" />
+			<ViewSettingsItem key="FixedByTime"
+				text="{disruptiontrackerI18n>fixedByTime}" />
 		</sortItems>
+		<filterItems>
+			<!-- <ViewSettingsFilterItem
+				filterDetailPageOpened="onFilterDetailPageOpened" text="{disruptiontrackerI18n>status}"
+				key="{disruptiontrackerI18n>status}" multiSelect="false">
+				<items>
+					<ViewSettingsItem text="{disruptiontrackerI18n>status.pending}"
+						key="{disruptiontrackerI18n>status}_{disruptiontrackerI18n>status.pending}" />
+					<ViewSettingsItem text="{disruptiontrackerI18n>status.acknowledged}"
+						key="{disruptiontrackerI18n>status}_{disruptiontrackerI18n>status.acknowledged}" />
+					<ViewSettingsItem text="{disruptiontrackerI18n>status.solved}"
+						key="{disruptiontrackerI18n>status}_{disruptiontrackerI18n>status.solved}" />
+					<ViewSettingsItem text="{disruptiontrackerI18n>status.closed}"
+						key="{disruptiontrackerI18n>status}_{disruptiontrackerI18n>status.closed}" />
+					<ViewSettingsItem text="{disruptiontrackerI18n>status.rejected}"
+						key="{disruptiontrackerI18n>status}_{disruptiontrackerI18n>status.rejected}" />
+				</items>
+			</ViewSettingsFilterItem> -->
+			<ViewSettingsFilterItem text="{disruptiontrackerI18n>category}"
+				key="{disruptionsTrackerModel>Category}" multiSelect="false">
+				<items />
+					
+			</ViewSettingsFilterItem>
+			<ViewSettingsFilterItem text="{disruptiontrackerI18n>reason}"
+				key="{disruptionsTrackerModel>Reason}" multiSelect="false">
+				<items>
+					
+				</items>
+			</ViewSettingsFilterItem> 
+			<ViewSettingsFilterItem text="{disruptiontrackerI18n>escalation}"
+				key="{disruptiontrackerI18n>escalationLevel}" multiSelect="false">
+				<items>
+					<ViewSettingsItem text="{disruptiontrackerI18n>escalation.notEscalated}"
+						key="{disruptiontrackerI18n>escalationLevel}_1" />
+					<ViewSettingsItem
+						text="{disruptiontrackerI18n>escalation.firstEscalation}" key="{disruptiontrackerI18n>escalationLevel}_2" />
+					<ViewSettingsItem
+						text="{disruptiontrackerI18n>escalation.finalEscalation}" key="{disruptiontrackerI18n>escalationLevel}_3" />
+						<ViewSettingsItem
+						text="{disruptiontrackerI18n>All}" key="{disruptiontrackerI18n>escalationLevel}_ " />
+				</items>
+			</ViewSettingsFilterItem>
+			<ViewSettingsFilterItem text="{disruptiontrackerI18n>gravity}"
+				key="{disruptionsTrackerModel>Gravity}" multiSelect="false">
+				<items>
+					<ViewSettingsItem text="{disruptiontrackerI18n>gravity.notBlocked}"
+						key="{disruptiontrackerI18n>gravity}_1" />
+					<ViewSettingsItem text="{disruptiontrackerI18n>gravity.disturbed}"
+						key="{disruptiontrackerI18n>gravity}_2" />
+					<ViewSettingsItem text="{disruptiontrackerI18n>gravity.blocked}"
+						key="{disruptiontrackerI18n>gravity}_3" />
+						<ViewSettingsItem
+						text="{disruptiontrackerI18n>All}" key="{disruptiontrackerI18n>gravity}_ " />
+				</items>
+			</ViewSettingsFilterItem>
+		</filterItems>
 	</ViewSettingsDialog>
 </core:FragmentDefinition>

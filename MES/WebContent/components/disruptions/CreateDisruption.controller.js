@@ -231,6 +231,13 @@ sap.ui
 					onCreateDisruption : function() {
 
 						var oView = airbus.mes.disruptions.oView.createDisruption;
+						var validationFlag = oView.getController().checkExpectedDate();
+						if (validationFlag == false){
+							airbus.mes.shell.ModelManager.messageShow(oView
+									.getModel("i18nModel").getProperty(
+											"CorrectExpectedDate"));
+							return;
+						}
 						
 						var sJigtools = oView.getController()
 								.getSelectedJIgTool();
@@ -434,7 +441,7 @@ sap.ui
 							return true;
 						}
 					},
-					onExpectedDateChange:function(oEvt){
+					checkExpectedDate:function(){
 						var oView = airbus.mes.disruptions.oView.createDisruption;
 						
 						var expectedTime = oView.byId("expectedTime").getValue();
@@ -451,11 +458,11 @@ sap.ui
 						}
 
 						if (openDateTime > expectedDateTime) {
-							airbus.mes.shell.ModelManager.messageShow(oView
-									.getModel("i18nModel").getProperty(
-											"CorrectExpectedDate"));
+							
+							var flagProceed = false;
+							
 						}
-						
+						return flagProceed;
 						
 					},
 

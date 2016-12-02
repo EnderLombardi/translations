@@ -230,23 +230,23 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 				sStatus = "0";
 			}
 			//Opened Blocking and Escalated disruption
-			if ( el.STATE === "D1") {
+			if ( el.DISRUPTION === "D1") {
 				sStatus = "4";
 			}
 			//Opened Blocking disruption
-			if ( el.STATE === "D2") {
+			if ( el.DISRUPTION === "D2") {
 				sStatus = "5";
 			}
 			//Solved Blocking and Escalated disruption
-			if ( el.STATE === "D3") {
+			if ( el.DISRUPTION === "D3") {
 				sStatus = "6";
 			}
 			//Solved Blocking disruption
-			if ( el.STATE === "D4") {
+			if ( el.DISRUPTION === "D4") {
 				sStatus = "7";
 			}
 			//andon
-			if ( el.STATE === "B") {
+			if ( el.DISRUPTION === "B") {
 				sStatus = "99";
 			}
 			// Operation is from OSW
