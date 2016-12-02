@@ -1,24 +1,23 @@
 <core:FragmentDefinition xmlns="sap.m"
 	xmlns:core="sap.ui.core">
 	<Popover id="teamPopoverID" title="{StationTrackerI18n>HeaderTeam}"
-		horizontalScrolling="false" placement="Bottom">
+		horizontalScrolling="false" placement="Bottom" showArrow="true">
 		<content>
 			<List id="team-popover">
-				<CustomListItem>
+				<CustomListItem class="customListItem">
 					<Button type="Transparent" text="{StationTrackerI18n>ButtonOpenTeam}"
-						enabled="false" iconFirst="true" icon="sap-icon://navigation-right-arrow"
-						class="blackTextButton blackTextButton2" press="onPolypolyOpen"></Button>
+						enabled="false" iconFirst="true" icon="sap-icon://sort"
+						class="blackButton blackTextButton blackTextButton2" press="onPolypolyOpen"></Button>
 
 					<Button type="Transparent" text="{StationTrackerI18n>ButtonPolypoly}"
-						iconFirst="true" icon="sap-icon://navigation-right-arrow" class="blackTextButton blackTextButton2"
+						iconFirst="true" icon="sap-icon://sort" class="blackButton blackTextButton blackTextButton2"
 						press="onPolypolyOpen"></Button>
 
 					<Button type="Transparent" text="{StationTrackerI18n>FooterTeam}"
-						iconFirst="true" icon="sap-icon://navigation-right-arrow" class="blackTextButton blackTextButton2"
+						iconFirst="true" icon="sap-icon://sort" class="blackButton blackTextButton blackTextButton2"
 						press="onResourcePoolOpen"></Button>
 				</CustomListItem>
 			</List>
-
 		</content>
 	</Popover>
 </core:FragmentDefinition>
