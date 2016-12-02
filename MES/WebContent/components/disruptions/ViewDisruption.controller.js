@@ -520,6 +520,104 @@ sap.ui
 						}
 
 					},
+					
+					/***********************************************************
+					 * Refuse the Disruption
+					 */
+					onRefuseDisruption : function() {
+						if (nav.getCurrentPage().sId == "stationTrackerView" && 
+								sap.ui.getCore().byId("operationDetailsView--switchOperationModeBtn").getState() == false) {
+
+							sap.m.MessageBox.error(this.getView().getModel(
+									"i18nModel").getProperty("readModeError"));
+							
+							return;
+
+						}
+						
+						// Close Comment Box if open
+						var path = oEvt.getSource().sId;
+						var listnum = path.split("-");
+						listnum = listnum[listnum.length - 1];
+						var commentBox = this.getView().byId(
+								this.getView().sId + "--commentBox-"
+										+ this.getView().sId + "--disrptlist-"
+										+ listnum);
+						commentBox.setVisible(false);
+						
+						var submitCommentId = sap.ui.getCore().byId(
+								this.getView().sId + "--addComment-"
+										+ this.getView().sId + "--disrptlist-"
+										+ listnum);
+
+						submitCommentId.setVisible(true);
+						//*********************************************************
+						
+						var title = airbus.mes.disruptions.oView.viewDisruption
+								.getModel("i18nModel").getProperty(
+										"refuseDisruption");
+						var msgRef = oEvt.getSource().getBindingContext(
+								"operationDisruptionsModel").getObject(
+								"MessageRef");
+						var sPath = oEvt.getSource().getBindingContext(
+								"operationDisruptionsModel").sPath;
+
+						this.onOpenDisruptionComment(title, msgRef, sPath,
+								this.onConfirmRefuse);
+					},
+					
+					/***********************************************************
+					 * Confirming Refuse Disruption
+					 */
+					onConfirmRefuse : function(oEvent) {
+						var i18nModel = airbus.mes.disruptions.oView.viewDisruption
+								.getModel("i18nModel");
+
+						var comment = sap.ui.getCore().byId(
+								"disruptionCommentBox").getValue();
+						var msgRef = sap.ui.getCore().byId(
+								"disruptionCommentMsgRef").getText();
+						var sMessage = i18nModel.getProperty("successRefuse");
+						
+						if(comment == "") {
+							sap.m.MessageToast.show(i18nModel.getProperty("plsEnterComment"));
+							return;
+						}
+
+						// Call Disruption Service
+						var isSuccess = airbus.mes.disruptions.ModelManager
+								.refuseDisruption(comment, msgRef, sMessage,
+										i18nModel);
+
+						airbus.mes.disruptions.__enterCommentDialogue.close();
+
+						if (isSuccess) {
+							var sPath = sap.ui.getCore().byId(
+									"disruptionCommentSpath").getText();
+
+							var operationDisruptionsModel = airbus.mes.disruptions.oView.viewDisruption
+									.getModel("operationDisruptionsModel");
+
+							operationDisruptionsModel.getProperty(sPath).Status = airbus.mes.disruptions.Formatter.status.pending;
+							
+							var currDate = new Date();
+							var date = currDate.getFullYear() + "-" + currDate.getMonth() + "-" + currDate.getDate();
+							
+							var oComment = {
+									"Action" : airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("refuse"),
+									"Comments" : comment,
+									"Counter" : "",
+									"Date" : date,
+									"MessageRef" : msgRef,
+									"UserFullName" : ( sap.ui.getCore().getModel("userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/first_name").toLowerCase() + " " +
+											   sap.ui.getCore().getModel("userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/last_name").toLowerCase() )
+							};
+							operationDisruptionsModel.getProperty("/Rowsets/Rowset/1/Row").push(oComment);
+
+							operationDisruptionsModel.refresh();
+						}
+
+					},
 
 					/***********************************************************
 					 * Show Comment Box to Add Comments

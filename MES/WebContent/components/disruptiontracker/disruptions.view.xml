@@ -18,6 +18,11 @@
 			<content>
 
 				<Toolbar>
+					<Label text="Select Station:" width="13.7rem"  class="sapUiLargeMarginEnd" />
+					<Label text="Select Status:" width="13.7rem"  class="sapUiLargeMarginEnd" />
+					<Label text="Select Resolution Group:" />
+				</Toolbar>
+				<Toolbar>
 					<ComboBox id="stationComboBox" class="sapUiMediumMarginEnd customComboBox"
 						placeholder="{disruptiontrackerI18n>selectStation}" items="{ path:'plantModel>/Rowsets/Rowset/0/Row' }"
 						selectedKey="" selectionChange="filterByStation">
@@ -26,7 +31,9 @@
 
 					<ComboBox id="statusComboBox" class="sapUiMediumMarginEnd customComboBox"
 						placeholder="{disruptiontrackerI18n>selectStatus}"
+						selectedKey=" "
 						selectionChange="filterDisruptions">
+						<core:Item key=" " text="All" />
 						<core:Item key="PENDING" text="{disruptiontrackerI18n>status.pending}" />
 						<core:Item key="ACKNOWLEDGED" text="{disruptiontrackerI18n>status.acknowledged}" />
 						<core:Item key="SOLVED" text="{disruptiontrackerI18n>status.solved}" />

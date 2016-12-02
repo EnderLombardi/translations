@@ -231,6 +231,13 @@ airbus.mes.disruptions.Formatter = {
 		return false;
 	},
 	
+	setRefuseButtonVisibility : function(originatorFlag, responsibleFlag, status) {
+		if (originatorFlag == "X" && responsibleFlag != "X" && status == airbus.mes.disruptions.Formatter.status.solved)
+			return true;
+
+		return false;
+	},
+	
 	setEmptyPromisedDateTimeText : function(dateTime) {
 		if(dateTime == "")
 			return "--:--:--";

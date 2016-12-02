@@ -902,6 +902,63 @@ airbus.mes.disruptions.ModelManager = {
 		return flagSuccess
 	},
 	
+	/***************************************************************************
+	 * Get URL to Reject Disruption
+	 **************************************************************************/
+	getUrlToRefuseDisruption : function() {
+		var urlToDisruptionComment = this.urlModel
+				.getProperty("urlToRefuseDisruption");
+		return urlToDisruptionComment;
+	},
+
+	/***************************************************************************
+	 * Reject Disruption Service
+	 **************************************************************************/
+	refuseDisruption : function(comment, msgref, sMessageSuccess, i18nModel) {
+		var sMessageError = i18nModel.getProperty("tryAgain");
+		var flagSuccess;
+
+		jQuery
+				.ajax({
+					url : this.getUrlToRefuseDisruption(),
+					async : false,
+					data : {
+						"Param.1" : airbus.mes.settings.ModelManager.site,
+						"Param.2" : comment,
+						"Param.3" : sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"),
+						"Param.4" : msgref
+					},
+					error : function(xhr, status, error) {
+						airbus.mes.shell.ModelManager
+								.messageShow(sMessageError);
+						flagSuccess = false
+
+					},
+					success : function(result, status, xhr) {
+						if (result.Rowsets.Rowset[0].Row[0].Message_Type === undefined) {
+							airbus.mes.shell.ModelManager
+									.messageShow(sMessageSuccess);
+							flagSuccess = true;
+							
+						} else if (result.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
+							airbus.mes.shell.ModelManager
+									.messageShow(result.Rowsets.Rowset[0].Row[0].Message)
+							flagSuccess = false;
+						} else {
+							airbus.mes.shell.ModelManager
+									.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
+							flagSuccess = true;
+							
+							if(nav.getCurrentPage().getId() == "disruptiontrackerView")
+								airbus.mes.disruptiontracker.oView.getController().disruptionTrackerRefresh = true;
+						}
+
+					}
+				});
+
+		return flagSuccess
+	},
+	
 	// Change text of status in progress tab if any blocking disruption still open (not closed)
 	checkDisruptionStatus : function(operationDisruptionsModel) {
 		var aDisruption = operationDisruptionsModel.getProperty("/Rowsets/Rowset/0/Row");

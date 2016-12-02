@@ -21,7 +21,7 @@ airbus.mes.disruptiontracker.ModelManager = {
 		} else {
 			airbus.mes.disruptiontracker.oView.byId("stationComboBox").setSelectedKey("");
 		}
-		airbus.mes.disruptiontracker.oView.setBusy(false);
+		//airbus.mes.disruptiontracker.oView.setBusy(false);
 	},
 	
 	onDisruptionsLoad: function(){
