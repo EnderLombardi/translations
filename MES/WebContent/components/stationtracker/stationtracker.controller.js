@@ -268,7 +268,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			airbus.mes.stationtracker.ImportOswUnplannedPopover.addStyleClass("alignTextLeft");
 			airbus.mes.stationtracker.oView.addDependent(airbus.mes.stationtracker.ImportOswUnplannedPopover);
 			airbus.mes.stationtracker.ImportOswUnplannedPopover.setModel(sap.ui.getCore().getModel("groupModel"),"groupModel");
-				
+					
 			airbus.mes.stationtracker.ImportOswUnplannedPopover.setBusyIndicatorDelay(0);
 					
 		}
@@ -287,7 +287,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		});
 		airbus.mes.stationtracker.CheckQa = "UNPLANNED";
 		sap.ui.getCore().byId("ImportOswUnplannedPopover--LabelTitle").setText(airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("WorklistHeaderUnplanned"));
-
+		sap.ui.getCore().byId("ImportOswUnplannedPopover--selectPhysicalStation").setVisible(false);
 		var oModel = sap.ui.getCore().getModel("unPlannedModel");
 
 		//Changed the data of the worklist by unplannned model
@@ -313,26 +313,48 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			
 			airbus.mes.stationtracker.ImportOswUnplannedPopover = sap.ui.xmlfragment("ImportOswUnplannedPopover","airbus.mes.stationtracker.ImportOswUnplannedPopover", airbus.mes.stationtracker.oView.getController());
 			airbus.mes.stationtracker.ImportOswUnplannedPopover.addStyleClass("alignTextLeft");
-			airbus.mes.stationtracker.oView.addDependent(airbus.mes.stationtracker.ImportOswUnplannedPopover);
 			airbus.mes.stationtracker.ImportOswUnplannedPopover.setModel(sap.ui.getCore().getModel("groupModel"),"groupModel");
-					
+			var oModel = sap.ui.getCore().getModel("OSWModel");
+
+			//Changed the data of the worklist by OSW model
+			airbus.mes.stationtracker.ImportOswUnplannedPopover.setModel(new sap.ui.model.json.JSONModel(oModel.oData.Rowsets.Rowset[0].Row),"WorkListModel");
+				
 			airbus.mes.stationtracker.ImportOswUnplannedPopover.setBusyIndicatorDelay(0);
+							
 		}
+		
 		sap.ui.getCore().byId("ImportOswUnplannedPopover--myList").bindAggregation('items', {
 			path : "WorkListModel>/",
 			template : sap.ui.getCore().byId("ImportOswUnplannedPopover--sorterList"),
 			sorter : []
 		});
-		
+			
 		airbus.mes.stationtracker.CheckQa= "OSW";
 		sap.ui.getCore().byId("ImportOswUnplannedPopover--LabelTitle").setText(airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("WorklistHeaderOSW"));		
-		
+		sap.ui.getCore().byId("ImportOswUnplannedPopover--selectPhysicalStation").setVisible(true);
+
 		var oModel = sap.ui.getCore().getModel("OSWModel");
 
 		//Changed the data of the worklist by OSW model
 		airbus.mes.stationtracker.ImportOswUnplannedPopover.setModel(new sap.ui.model.json.JSONModel(oModel.oData.Rowsets.Rowset[0].Row),"WorkListModel");
 		airbus.mes.stationtracker.ImportOswUnplannedPopover.getModel("WorkListModel").refresh(true);
-
+			
+		var temp = [];
+		var binding = sap.ui.getCore().byId("ImportOswUnplannedPopover--selectPhysicalStation").getBinding("items");
+//		path correspond to relatif path after binding, here absolute path is /Rowsets/Rowset/0/Row			
+		var Filter = new sap.ui.model.Filter({ path : "DESCRIPTION",
+									           test : function(value) {
+									                     if (temp.indexOf(value) == -1) {
+									                            temp.push(value);
+									                            return true;
+									                     } else {
+									                            return false;
+									                     }
+									              }
+												});	
+		
+		binding.filter(Filter);	
+		
 		// delay because addDependent will do a async rerendering and the popover will immediately close without it
 		jQuery.sap.delayedCall(0, this, function () {
 			airbus.mes.stationtracker.ImportOswUnplannedPopover.open();	
@@ -1141,5 +1163,15 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		
 		oInfoToolbar.setVisible(bSelected);
 		oLabel.setText(sText);
+	},
+	 /**
+     * Filter physical station of OSW
+     * 
+     * @param {OBJECT} oEvent,object of event pressed
+     */
+	selectPhStation : function(oEvent) {
+		
+		
+		
 	}
 });

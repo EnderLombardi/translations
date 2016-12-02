@@ -296,26 +296,7 @@ airbus.mes.stationtracker.ModelManager = {
 		})
 		
 		var sXml = sXmlStart + sXmlByRow + sXmlEnd;
-		
-		switch ( airbus.mes.stationtracker.CheckQa ) {
-	    case "UNPLANNED":
-	    	
-	    	var dDateShift = airbus.mes.stationtracker.ShiftManager.shifts[airbus.mes.stationtracker.ShiftManager.closestShift(new Date())].StartDate;
-			var sDateShift = airbus.mes.stationtracker.util.Formatter.dDate2sDate(dDateShift);
-			    	
-	        break;
-	    case "OSW":
-			
-	    	// See SD inport osw go at the date of startTime of a shift
-	    	var sDateShift = airbus.mes.settings.ModelManager.taktStart;
-		
-	    	break;
-	    default:
-	        
-		}
-		
-		
-		
+	    var sDateShift = airbus.mes.settings.ModelManager.taktStart;
 		var oData = airbus.mes.stationtracker.ModelManager.settings;
 		var geturlsetosw = this.urlModel.getProperty('urlsetosw');
 		
