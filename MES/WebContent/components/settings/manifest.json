@@ -46,7 +46,7 @@
         "resources": {
             "css": [
                 {
-                    "uri": "../../Sass/components/css/global.css"
+                    "uri": "../../Sass/global.css"
 
                 }
             ]
