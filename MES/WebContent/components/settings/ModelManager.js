@@ -52,8 +52,8 @@ airbus.mes.settings.ModelManager = {
 			dest = this.queryParams.get("url_config");
 		}
 
-		this.urlModel = new sap.ui.model.resource.ResourceModel({
 			bundleUrl : "../components/settings/config/url_config.properties",
+			this.urlModel = new sap.ui.model.resource.ResourceModel({
 			bundleLocale : dest
 		});
 

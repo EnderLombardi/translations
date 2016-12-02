@@ -46,6 +46,37 @@ airbus.mes.disruptiontracker.ModelManager = {
 		    }
 		  }));
 		
+		// Apply filter on MSN Filter Box
+		var aMSNval = [];	
+		// when no station is selected on Model Loading
+		if(airbus.mes.disruptiontracker.oView.byId("stationComboBox").getSelectedKey() == "")
+			{
+			sap.ui
+			.getCore()
+			.byId("disruptiontrackerView--msnComboBox")
+			.getBinding("items")
+			.filter(new sap.ui.model.Filter({
+			    path: "msn",
+			    test: function(oValue) {
+					if (aMSNval.indexOf(oValue) == -1) {
+						aMSNval.push(oValue);
+						return true;
+					} else {
+						return false;
+					}
+			    }
+			  }));
+			}
+		// when Station is selected on Model Loading
+		else
+			{
+			sap.ui
+			.getCore()
+			.byId("disruptiontrackerView--msnComboBox")
+			.getBinding("items")
+			.filter(new sap.ui.model.Filter(
+				"station","EQ", airbus.mes.disruptiontracker.oView.byId("stationComboBox").getSelectedKey()));
+			}
 		airbus.mes.disruptiontracker.oView.setBusy(false); //Remove Busy Indicator
 	},
 	
