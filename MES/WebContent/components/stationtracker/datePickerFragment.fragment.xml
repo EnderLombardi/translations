@@ -3,7 +3,7 @@
 		<Popover id="datePickerPop" placement="Bottom" class="classDatePickerPop">
 			<customHeader>
 				<Toolbar>
-					<Button text="Select Today" design="Transparent" press="onSelectToday" class="classDatePickerButton"/>
+					<Button text="{StationTrackerI18n>SelectToday}" design="Transparent" press="onSelectToday" class="classDatePickerButton"/>
 				</Toolbar>
 			</customHeader>
 			<content>
