@@ -33,7 +33,6 @@ sap.ui
 						this.getView().byId(
 								"disruptiontrackerView--disruptionsTable")
 								.getBinding("items").sort(oSorter);
-
 					},
 
 					/**
@@ -108,6 +107,48 @@ sap.ui
 						 * sValue)); } },
 						 */
 					},
+						/********************************************
+						 * Table Settings Sorter And Filter
+						 * 
+						 * @param oEvent
+						 */
+
+					/*onFilterDetailPageOpened : function(oEvent) {
+						var a = oEvent.getSource().getId();
+						console.log(a);
+
+					},
+					onResetFilters : function(oEvent) {
+						var a = oEvent.getSource().getId();
+						console.log(a);
+
+					},*/
+					onTableSettingsConfirm : function(oEvent) {
+
+						var mParams = oEvent.getParameters();
+						// apply sorter
+						var aSorters = [];
+						var sPath = mParams.sortItem.getKey();
+						var bDescending = mParams.sortDescending;
+						aSorters.push(new sap.ui.model.Sorter(sPath,
+								bDescending));
+						this.getView().byId("disruptionsTable").getBinding(
+								"items").sort(aSorters);
+						// apply filters
+						var aFilters = [];
+						jQuery.each(mParams.filterItems, function(i, oItem) {
+							var aSplit = oItem.getKey().split("_");
+							var sFilterPath = aSplit[0];
+							var sOperator = "EQ";
+							var sValue1 = aSplit[1];
+							var oFilter = new sap.ui.model.Filter(sFilterPath,
+									sOperator, sValue1);
+							aFilters.push(oFilter);
+						});
+						this.getView().byId("disruptionsTable").getBinding(
+								"items").filter(aFilters);
+					},
+
 
 					filterDisruptions : function(oEvent) {
 						var sStatus = this.getView().byId("statusComboBox")
@@ -144,22 +185,6 @@ sap.ui
 									this.tableSettingsDialogue);
 						}
 						this.tableSettingsDialogue.open();
-					},
-
-					/***********************************************************
-					 * Apply selected settings on table
-					 */
-					onTableSettingsConfirm : function(oEvent) {
-
-						var mParams = oEvent.getParameters();
-						// apply sorter
-						var aSorters = [];
-						var sPath = mParams.sortItem.getKey();
-						var bDescending = mParams.sortDescending;
-						aSorters.push(new sap.ui.model.Sorter(sPath,
-								bDescending));
-						this.getView().byId("disruptionsTable").getBinding(
-								"items").sort(aSorters);
 					},
 
 					/***********************************************************

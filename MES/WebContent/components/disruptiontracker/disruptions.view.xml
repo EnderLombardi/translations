@@ -70,7 +70,9 @@
 			<headerToolbar>
 				<Toolbar>
 					<ToolbarSpacer />
+
 					<Button press="onDisruptionTableSettings" icon="sap-icon://drop-down-list" />
+
 				</Toolbar>
 			</headerToolbar>
 			<columns>
