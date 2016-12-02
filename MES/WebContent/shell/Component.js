@@ -66,15 +66,13 @@ airbus.mes.shell.Component.prototype.createContent = function() {
         this.oView.setModel(sap.ui.getCore().getModel("userSettingModel"),    "userSettingModel");
 	
         
-		//////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////
+		// 
+		//airbus.mes.settings.oView.byId("navBack").setEnabled(true);
+		$( '#' + airbus.mes.shell.oView.byId("logo").sId).click(airbus.mes.shell.oView.getController().goToHome);
+		console.log("gotohome");
 		//
-	    //$(airbus.mes.shell.oView.byId("logo")).on(airbus.mes.shell.oView.getController().goToHome());
-		//$(airbus.mes.shell.oView.byId("logo")).bind(airbus.mes.shell.oView.getController().goToHome());
-		//$(airbus.mes.shell.oView.byId("logo")).click(airbus.mes.shell.oView.getController().goToHome());
-        console.log("gotohome");
-	    //
-	    //////////////////////////////////////////////////////////////////////////////////////////
-        
+		///////////////////////////////////////////////////////////////////////////////////////////////////
         
         return this.oView;
 
