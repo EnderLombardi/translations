@@ -97,7 +97,7 @@
 							</items>
 						</ComboBox>
 						<CheckBox id="currMSN" selected="true" text="{i18n>CurrentMSN}"
-							style="font-weight: bold;" select="selectCurrentMsn" />
+							style="font-weight: bold;" select="selectCurrentMsn" visible="false"/>
 					</f:content>
 				</f:SimpleForm>
 				<layoutData>

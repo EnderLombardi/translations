@@ -869,26 +869,15 @@ airbus.mes.stationtracker.ModelManager = {
 
 		if (aModel.length === 1) {
 
-			airbus.mes.stationtracker.ModelManager
-					.openOperationDetailPopup(aModel);
+			airbus.mes.stationtracker.ModelManager.openOperationDetailPopup(aModel);
 			return;
 		}
 
 		if (airbus.mes.stationtracker.worklistPopover === undefined) {
 
-			airbus.mes.stationtracker.worklistPopover = sap.ui.xmlfragment(
-					"worklistPopover",
-					"airbus.mes.stationtracker.worklistPopover",
-					airbus.mes.stationtracker.oView.getController());
-			airbus.mes.stationtracker.worklistPopover
-					.addStyleClass("alignTextLeft");
-			// airbus.mes.stationtracker.worklistPopover.setModel(sap.ui.getCore().getModel("WorkListModel"),
-			// "WorkListModel");
-			// airbus.mes.stationtracker.worklistPopover.setModel(new
-			// sap.ui.model.json.JSONModel(sap.ui.getCore().getModel("groupModel").getData()),
-			// "groupModel");
-			airbus.mes.stationtracker.oView
-					.addDependent(airbus.mes.stationtracker.worklistPopover);
+			airbus.mes.stationtracker.worklistPopover = sap.ui.xmlfragment(	"worklistPopover","airbus.mes.stationtracker.worklistPopover", airbus.mes.stationtracker.oView.getController());
+			airbus.mes.stationtracker.worklistPopover.addStyleClass("alignTextLeft");
+			airbus.mes.stationtracker.oView.addDependent(airbus.mes.stationtracker.worklistPopover);
 		}
 
 		airbus.mes.stationtracker.worklistPopover.OSW = false;
@@ -920,8 +909,7 @@ airbus.mes.stationtracker.ModelManager = {
 
 		// Manage model on worklist
 		// Overall progress model
-		aModel
-				.forEach(function(elModel) {
+		aModel.forEach(function(elModel) {
 					// TODO
 					// elOverallModel.STATE =???
 					// elOverallModel.andons = ???
@@ -962,26 +950,9 @@ airbus.mes.stationtracker.ModelManager = {
 	},
 
 	OpenWorkList : function(id) {
-
-		switch (airbus.mes.stationtracker.GroupingBoxingManager.box) {
-		case "OPERATION_ID":
-			// Boxing operation, we display the operation list
-			var aModel = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy[scheduler
-					.getEvent(id).group][scheduler.getEvent(id).avlLine][scheduler
-					.getEvent(id).box];
-
-			airbus.mes.stationtracker.ModelManager
-					.openOperationDetailPopup(aModel);
-			break;
-
-		case "WORKORDER_ID":
-			// Boxing Work order, we display the worklist list
+	
 			airbus.mes.stationtracker.ModelManager.openWorkListPopover(id);
-			break;
-		default:
-
-		}
-
+	
 	},
 	/***************************************************************************
 	 * open operation detail popup containing progress slider
