@@ -26,22 +26,17 @@
 						key="{disruptiontrackerI18n>status}_{disruptiontrackerI18n>status.rejected}" />
 				</items>
 			</ViewSettingsFilterItem> -->
-			<!-- <ViewSettingsFilterItem text="{disruptiontrackerI18n>category}"
+			<ViewSettingsFilterItem text="{disruptiontrackerI18n>category}"
 				key="{disruptionsTrackerModel>Category}" multiSelect="false">
-				<items>
-					<ViewSettingsItem text="Less Than 100" key="Price___LE___100___X" />
-					<ViewSettingsItem text="Between 100 and 1000" key="Price___BT___100___1000" />
-					<ViewSettingsItem text="More Than 1000" key="Price___GT___1000___X" />
-				</items>
+				<items />
+					
 			</ViewSettingsFilterItem>
 			<ViewSettingsFilterItem text="{disruptiontrackerI18n>reason}"
 				key="{disruptionsTrackerModel>Reason}" multiSelect="false">
 				<items>
-					<ViewSettingsItem text="Less Than 100" key="Price___LE___100___X" />
-					<ViewSettingsItem text="Between 100 and 1000" key="Price___BT___100___1000" />
-					<ViewSettingsItem text="More Than 1000" key="Price___GT___1000___X" />
+					
 				</items>
-			</ViewSettingsFilterItem> -->
+			</ViewSettingsFilterItem> 
 			<ViewSettingsFilterItem text="{disruptiontrackerI18n>escalation}"
 				key="{disruptiontrackerI18n>escalationLevel}" multiSelect="false">
 				<items>
@@ -52,7 +47,7 @@
 					<ViewSettingsItem
 						text="{disruptiontrackerI18n>escalation.finalEscalation}" key="{disruptiontrackerI18n>escalationLevel}_3" />
 						<ViewSettingsItem
-						text="{disruptiontrackerI18n>none}" key="{disruptiontrackerI18n>escalationLevel}_ " />
+						text="{disruptiontrackerI18n>All}" key="{disruptiontrackerI18n>escalationLevel}_ " />
 				</items>
 			</ViewSettingsFilterItem>
 			<ViewSettingsFilterItem text="{disruptiontrackerI18n>gravity}"
@@ -65,7 +60,7 @@
 					<ViewSettingsItem text="{disruptiontrackerI18n>gravity.blocked}"
 						key="{disruptiontrackerI18n>gravity}_3" />
 						<ViewSettingsItem
-						text="{disruptiontrackerI18n>none}" key="{disruptiontrackerI18n>gravity}_ " />
+						text="{disruptiontrackerI18n>All}" key="{disruptiontrackerI18n>gravity}_ " />
 				</items>
 			</ViewSettingsFilterItem>
 		</filterItems>
