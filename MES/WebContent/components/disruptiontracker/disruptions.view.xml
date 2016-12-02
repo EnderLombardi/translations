@@ -18,10 +18,10 @@
 			<content>
 
 				<Toolbar class="sapUiSmallMarginTop" height="1rem">
-					<Label text="Select Station:" width="13.7rem"  class="sapUiLargeMarginEnd" />
-					<Label text="Select Status:" width="13.7rem"  class="sapUiLargeMarginEnd" />
-					<Label text="Select MSN:" width="13.7rem"  class="sapUiLargeMarginEnd" />
-					<Label text="Select Resolution Group:" />
+					<Label text="{disruptiontrackerI18n>selectStation}" width="13.7rem"  class="sapUiLargeMarginEnd" />
+					<Label text="{disruptiontrackerI18n>selectStatus}" width="13.7rem"  class="sapUiLargeMarginEnd" />
+					<Label text="{disruptiontrackerI18n>selectMSN}" width="13.7rem"  class="sapUiLargeMarginEnd" />
+					<Label text="{disruptiontrackerI18n>resolutionGroup}" />
 				</Toolbar>
 				<Toolbar>
 					<ComboBox id="stationComboBox" class="sapUiMediumMarginEnd customComboBox"
@@ -40,7 +40,7 @@
 						<core:Item key="SOLVED" text="{disruptiontrackerI18n>status.solved}" />
 						<core:Item key="CLOSED" text="{disruptiontrackerI18n>status.closed}" />
 						<core:Item key="REJECTED" text="{disruptiontrackerI18n>status.rejected}" />
-					</ComboBox> 
+					</ComboBox>
 					
 				 	<ComboBox id="msnComboBox" class="sapUiMediumMarginEnd customComboBox"
 						placeholder="{disruptiontrackerI18n>selectMSN}" items="{ path:'plantModel>/Rowsets/Rowset/0/Row' }"
