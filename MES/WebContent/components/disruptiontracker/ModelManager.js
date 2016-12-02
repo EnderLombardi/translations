@@ -16,12 +16,12 @@ airbus.mes.disruptiontracker.ModelManager = {
 		var getDisruptionsURL = airbus.mes.disruptions.ModelManager.getDisruptionsURL(oFilters);
 		oViewModel.loadData(getDisruptionsURL);
 		
-		if(oFilters.station != undefined && oFilters.station != ""){
+		if(oFilters.station != undefined && oFilters.station != " "){
 			airbus.mes.disruptiontracker.oView.byId("stationComboBox").setSelectedKey(oFilters.station);
 		} else {
-			airbus.mes.disruptiontracker.oView.byId("stationComboBox").setSelectedKey("");
+			airbus.mes.disruptiontracker.oView.byId("stationComboBox").setSelectedKey(" ");
 		}
-		airbus.mes.disruptiontracker.oView.setBusy(false);
+		//airbus.mes.disruptiontracker.oView.setBusy(false);
 	},
 	
 	onDisruptionsLoad: function(){

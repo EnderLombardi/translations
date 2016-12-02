@@ -18,6 +18,11 @@
 			<content>
 
 				<Toolbar>
+					<Label text="Select Station" width="14rem" />
+					<Label text="Select Status" width="14rem" />
+					<Label text="Select Resolution Group" width="14rem" />
+				</Toolbar>
+				<Toolbar>
 					<ComboBox id="stationComboBox" class="sapUiMediumMarginEnd customComboBox"
 						placeholder="{disruptiontrackerI18n>selectStation}" items="{ path:'plantModel>/Rowsets/Rowset/0/Row' }"
 						selectedKey="" selectionChange="filterByStation">
@@ -26,8 +31,9 @@
 
 					<ComboBox id="statusComboBox" class="sapUiMediumMarginEnd customComboBox"
 						placeholder="{disruptiontrackerI18n>selectStatus}"
+						selectedKey=" "
 						selectionChange="filterDisruptions">
-						<core:Item key="" text="" />
+						<core:Item key=" " text="" />
 						<core:Item key="PENDING" text="{disruptiontrackerI18n>status.pending}" />
 						<core:Item key="ACKNOWLEDGED" text="{disruptiontrackerI18n>status.acknowledged}" />
 						<core:Item key="SOLVED" text="{disruptiontrackerI18n>status.solved}" />
@@ -57,7 +63,7 @@
 			<headerToolbar>
 				<Toolbar>
 					<ToolbarSpacer />
-					<Button press="onDisruptionTableSettings" icon="sap-icon://drop-down-list" />
+					<!-- <Button press="onDisruptionTableSettings" icon="sap-icon://drop-down-list" /> -->
 				</Toolbar>
 			</headerToolbar>
 			<columns>

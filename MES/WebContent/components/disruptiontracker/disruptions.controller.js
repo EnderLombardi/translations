@@ -25,9 +25,12 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 * This hook is the same one that SAPUI5 controls get after being rendered.
 * @memberOf table.table
 */
-//	onAfterRendering: function() {
-//
-//	},
+	onAfterRendering: function() {
+		var oSorter = new sap.ui.model.Sorter("OpeningTime", true);
+
+		// sorting based on opening time
+		this.getView().byId("disruptiontrackerView--disruptionsTable").getBinding("items").sort(oSorter);
+	},
 
 /**
 * Called when the Controller is destroyed. Use this one to free resources and finalize activities.
@@ -58,9 +61,9 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		var aFilters = [];
         var oBinding = this.byId("disruptionsTable").getBinding("items");
 
-		if (sStatus != "")
+		if (sStatus != " ")
 			aFilters.push(new sap.ui.model.Filter("Status","EQ", sStatus));
-		if (sResoGroup != "")
+		if (sResoGroup != " ")
 			aFilters.push(new sap.ui.model.Filter("ResponsibleGroup", "EQ", sResoGroup));
             
 		oBinding.filter(aFilters);
