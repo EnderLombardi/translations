@@ -27,6 +27,7 @@
 					<ComboBox id="statusComboBox" class="sapUiMediumMarginEnd customComboBox"
 						placeholder="{disruptiontrackerI18n>selectStatus}"
 						selectionChange="filterDisruptions">
+						<core:Item key="" text="" />
 						<core:Item key="PENDING" text="{disruptiontrackerI18n>status.pending}" />
 						<core:Item key="ACKNOWLEDGED" text="{disruptiontrackerI18n>status.acknowledged}" />
 						<core:Item key="SOLVED" text="{disruptiontrackerI18n>status.solved}" />
