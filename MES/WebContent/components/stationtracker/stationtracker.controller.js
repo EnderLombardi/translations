@@ -112,16 +112,28 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
      * button
      ****************************************************************************/
 	onTeamPress : function(oEvent) {
+		
+		//		not used
+		//var bindingContext = oEvent.getSource().getBindingContext();
+		// open team popover fragment
 
-//		not used
-//var bindingContext = oEvent.getSource().getBindingContext();
-				// open team popover fragment		 
-		if (!this._oPopover) {
-			this._oPopover = sap.ui.xmlfragment("airbus.mes.stationtracker.teamPopover", this);
-			this._oPopover.addStyleClass("alignTextLeft");
-			this.getView().addDependent(this._oPopover);
-		}
-		this._oPopover.openBy(oEvent.getSource());
+			if (!this._oPopover) {
+				
+					this._oPopover = sap.ui.xmlfragment("airbus.mes.stationtracker.teamPopover", this);
+					this._oPopover.addStyleClass("alignTextLeft");	
+					this.getView().addDependent(this._oPopover);
+	
+			      } 
+			
+		//if (sOpen) {	
+		//	sOpen = false;
+			this._oPopover.openBy(oEvent.getSource());
+		//} else {
+		//	sOpen = true;
+		//	this._oPopover.close();	
+		//}
+
+		
 
 	},
 	
