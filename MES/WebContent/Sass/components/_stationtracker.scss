@@ -37,7 +37,6 @@ TOOLBAR
 }
 
 
-
 /********************
 WORK LIST POP OVER
 *********************/
@@ -97,6 +96,16 @@ WORK LIST POP OVER
             }
         }
     }
+}
+#ImportOswUnplannedPopover--SelectAll{
+ .sapMToggleBtnPressed, .sapMIBar-CTX .sapMToggleBtnPressed, .sapMTB-Transparent-CTX .sapMBtnInner.sapMToggleBtnPressed{
+     background-image: none;
+     background-color: #007cc0;
+     border-color: #006ca7;
+     color: #ffffff;
+     text-shadow: none;
+ }
+
 }
 /********************
 SCHEDULAR TASK STYLE

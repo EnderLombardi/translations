@@ -455,6 +455,13 @@ WORK LIST POP OVER
   margin: -1rem -1rem 1rem -1rem;
   padding: 1rem; }
 
+#ImportOswUnplannedPopover--SelectAll .sapMToggleBtnPressed, #ImportOswUnplannedPopover--SelectAll .sapMIBar-CTX .sapMToggleBtnPressed, #ImportOswUnplannedPopover--SelectAll .sapMTB-Transparent-CTX .sapMBtnInner.sapMToggleBtnPressed {
+  background-image: none;
+  background-color: #007cc0;
+  border-color: #006ca7;
+  color: #ffffff;
+  text-shadow: none; }
+
 /********************
 SCHEDULAR TASK STYLE
 *********************/

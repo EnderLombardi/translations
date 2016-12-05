@@ -545,9 +545,16 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	 * 
 	 */
 	onUnplannedSelectAll : function(oEvent) {
-		
 		var oList = airbus.mes.stationtracker.ImportOswUnplannedPopover.getContent()[0].getItems()[1];
-		oList.selectAll();
+		if (oEvent.getParameter("pressed")){
+			oList.selectAll();
+		} else {
+			oList.getSelectedItems().forEach(function(elt) {
+				elt.setSelected(false);
+			})
+		}
+		
+		
 
 	},
 	

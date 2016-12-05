@@ -12,7 +12,7 @@
 		<content>
 			<VBox>
 				<HBox>
-					<ToggleButton id="selectAll" text="{StationTrackerI18n>WorklistSelectAll}" enabled="true" pressed="false" press="onUnplannedSelectAll" class="sapUiTinyMarginBeginEnd" type="Transparent"/>
+					<ToggleButton id="SelectAllUnpd" text="{StationTrackerI18n>WorklistSelectAll}" enabled="true" pressed="false" press="onUnplannedSelectAll" class="sapUiTinyMarginBeginEnd" type="Transparent"/>
 					<Select id="selectGroupingOSW"
 							class="sapUiTinyMarginBeginEnd comboBoxStyle"
 						    items="{groupModel>/Rowsets/Rowset/0/Row/Grouping}"
