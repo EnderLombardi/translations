@@ -1544,9 +1544,19 @@ OTHER
     >button{
         >div {
             color:inherit !important;
+            &.sapMToggleBtnPressed {
+                background-color: $sapui-petrol !important;
+                &:hover {
+                    opacity: 0.8;        
+                }
+                >* {
+                    color: #ffffff !important;
+                    background-color: $sapui-petrol !important;
+                }
+            }
         }
         &:hover {
-            >div {
+            >div:not(.sapMToggleBtnPressed) {
                 background-color: rgba(222,222,222,0.5);
             }
         }
@@ -1556,7 +1566,7 @@ OTHER
 #ImportOswUnplannedPopover--SelectAllUnpd-inner {
     &.sapMToggleBtnPressed {
         color: #ffffff !important;
-        background-color: #005483 !important;
+        background-color: $sapui-petrol !important;
         &:hover {
             opacity: 0.8;
         }
