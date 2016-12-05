@@ -84,6 +84,10 @@ sap.ui
 								
 						}
 						
+						// Clear MSN ComboBox when Station is changed
+						var msnBox = sap.ui.getCore().byId("disruptiontrackerView--msnComboBox");
+						if (oEvent.getSource().getId() == "disruptiontrackerView--stationComboBox")
+							msnBox.setSelectedKey("");
 						
 						airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.msn = this
 								.getView().byId("msnComboBox").getSelectedKey();
@@ -114,6 +118,12 @@ sap.ui
 																	"stationComboBox")
 															.getSelectedKey()));
 						}
+						
+						// Add item All into MSN ComboBox
+						var msnItemAll = new sap.ui.core.Item();
+						msnItemAll.setKey="";
+						msnItemAll.setText("All");
+						msnBox.insertItem(msnItemAll,0);
 
 						/*
 						 * filterByResolutionGroup:function(oEvent){ sValue =

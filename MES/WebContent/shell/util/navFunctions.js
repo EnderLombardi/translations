@@ -289,6 +289,7 @@ airbus.mes.shell.util.navFunctions = {
 		
 		var msnBox = sap.ui.getCore().byId("disruptiontrackerView--msnComboBox");
 		msnBox.insertItem(msnItemAll,0);
+		msnBox.setSelectedKey("");
 	},
 
 	disruptionKPI : function(pStation) {
