@@ -1,186 +1,21 @@
-.classFormHint {
-	font-size: 80% !important;
-	font-style: italic !important;
-}
-
-.disruptionExpandablePanel >.sapMPanelContent{
-	padding: 0 1rem;
-}
-
 /****** classes for disruption title bar buttons **********/
-.disruptionTitleBarButtons >.sapMBtnReject {
-	background-color: transparent !important;
-    color: #cc1919 !important;
-    border-color: transparent !important;
-	text-shadow: none !important;
-}
-
-.disruptionTitleBarButtons:hover {
-	background: rgba(0, 86, 112, 0.20) !important;
-}
-
-.disruptionTitleBarButtons >.sapMBtnReject> .sapMBtnIcon {
-    color: #cc1919 !important;
-}
-
-.disruptionTitleBarButtons >.sapMBtnEmphasized {
-	background-color: transparent !important;
-    color: #008bc7 !important;
-    border-color: transparent !important;
-	text-shadow: none !important;
-}
-
-.disruptionTitleBarButtons >.sapMBtnEmphasized > .sapMBtnIcon {
-    color: #008bc7 !important;
-}
-
-.disruptionTitleBarButtons >.sapMBtnAccept {
-	background-color: transparent !important;
-    color: #005f28 !important;
-    border-color: transparent !important;
-	text-shadow: none !important;
-}
-
-.disruptionTitleBarButtons >.sapMBtnAccept > .sapMBtnIcon {
-    color: #005f28 !important;
-}
 
 /****** classes for Disruption screen **********/
-.disruptionBottomBar >.sapMBtn >.sapMBtnText  {
-	border-radius: 1.5rem;
-}
-
-label#ViewDisruptionView--disruptLabel {
-	font-size: 1.2rem !important;
-	font-weight: bold;
-}
-
-.disruptionDetail .disruptionExpandablePanel .sapMPanelBGTranslucent {
-	background-color: #F5F5F5 !important;
-}
-
-.disruptionDetail .detailLabels {
-	overflow: visible !important;
-}
-
-.disruptionDetail .formoperationDisruptionsModel>div>div {
-	background-color: transparent !important;
-}
-.disruptionBottomBar {
-	border-bottom: none !important;
-	margin: 0.5rem!important;
-}
-
-.disruptionDetail .statusText {
-	font-weight: 700 !important;
-	font-style: italic !important;
-	color: #0f86ae !important;
-}
-
-.disruptionDetail .msgHeaderText {
-	font-weight: 700 !important;
-	text-transform: capitalize !important;
-}
-
-.disruptionDetail .msgColor {
-	background: #F5F5F5 !important;
-	color: #0f86ae !important;
-}
-
-.disruptionDetail .disruptionExpandablePanel .sapMPanelBGTranslucent .sapMPanelContent {
-    margin-left: 0 !important;
-}
 
 /****** End of CSS for Disruption screen **********/
 
 /* CSS for disruptionAckCommentDialogue */
-#disruptionAckCommentDialogue {
-	background: #ffffff;
-	border: none;
-	border-radius: 0;
-	box-shadow: 0 0 5px #333;
-}
-
-#disruptionAckCommentDialogue-header-BarPH {
-	background: #d4f1f7;
-}
-
-#disruptionAckCommentDialogue-title {
-	color: #434343;
-}
-
-#disruptionAckCommentDialogue-cont {
-	border-top: 3px solid rgba(255, 255, 255, 0);
-}
-
-#disruptionAckCommentDialogue-header {
-	box-shadow: 0 0 5px #333;
-	overflow: visible;
-}
 
 /********End of CSS for disruptionAckCommentDialogue */
 
 /* CSS for disruptionCommentDialogue  */
-#disruptionCommentDialogue {
-	background: #ffffff;
-	border: none;
-	border-radius: 0;
-	box-shadow: 0 0 5px #333;
-}
 
-#disruptionCommentDialogue-header-BarPH {
-	background: #d4f1f7;
-}
-
-#disruptionCommentDialogue-title {
-	color: #434343;
-}
-
-#disruptionCommentDialogue-cont {
-	border-top: 3px solid rgba(255, 255, 255, 0);
-}
-
-#disruptionCommentDialogue-header {
-	box-shadow: 0 0 5px #333;
-	overflow: visible;
-}
 /********End of CSS for disruptionCommentDialogue */
 
 /**** CSS for disruptionCloseDialogue**************/
-#disruptionCloseDialogue {
-	background: #ffffff;
-	border: none;
-	border-radius: 0;
-	box-shadow: 0 0 5px #333;
-}
 
-#disruptionCloseDialogue-header-BarPH {
-	background: #d4f1f7;
-}
-
-#disruptionCloseDialogue-title {
-	color: #434343;
-}
-
-#disruptionCloseDialogue-cont {
-	border-top: 3px solid rgba(255, 255, 255, 0);
-}
-
-#disruptionCloseDialogue-header {
-	box-shadow: 0 0 5px #333;
-	overflow: visible;
-}
 /****End of CSS for disruptionCloseDialogue ***/
 
 /*** CSS for Footers ***********/
-.viewDisruptionFooter {
-	position: fixed;
-	bottom: 0px;
-	background: #607381 !important;
-}
 
-.viewDisruptionFooter .sapMBtnContent, .operationDetailFooter .sapMBtnIcon
-	{
-	color: #fff !important;
-}
 /*** end of CSS for Footer *********/

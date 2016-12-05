@@ -127,3 +127,9 @@ STATIONTRACKER
     -moz-transition: background-color $time ease-in-out, box-shadow $time ease-in-out;
     transition: background-color $time ease-in-out, box-shadow $time ease-in-out;
 }
+@mixin disruptionBackground($color){
+    background-color: transparent !important;
+    color: $color !important;
+    border-color: transparent !important;
+    text-shadow: none !important;
+}

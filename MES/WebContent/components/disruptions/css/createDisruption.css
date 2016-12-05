@@ -1,57 +1,12 @@
 /*** CSS for Footers ***********/
-.createDisruptionFooter{
-    position: fixed;
-    bottom: 0px;
-    background:#607381 !important;
-}
-.createDisruptionFooter .sapMBtnContent, .createDisruptionFooter .sapMBtnIcon{
-	color:#fff !important;
-}
 
 /*** end of CSS for Footer *********/
 /*** CSS for Fragment Material List ***/
 /* .customListItemPadding{
-	padding-top : 2% !important;
-	padding-bottom : 2% !important
+    padding-top : 2% !important;
+    padding-bottom : 2% !important
 } */
 
-.inputQty .sapMInputBaseInner{
-	line-height: 1.9rem !important;
-    height: 1.9rem !important;
-}
-
-.formBackgroundColor {
-	background: #d4f1f7 !important;
-}
-
-/*** End of CSS for Fragment Material List ***/
-label#createDisruptionView--disruptLabel {
-	font-size: 1.2rem !important;
-	font-weight: bold !important;
-}
-
 /**** CSS for materialListSelectDialog**************/
-#materialListSelectDialog {
-	background: #ffffff;
-	border: none;
-	border-radius: 0;
-	box-shadow: 0 0 5px #333;
-}
 
-#materialListSelectDialog-header-BarPH {
-	background: #d4f1f7;
-}
-
-#materialListSelectDialog-title {
-	color: #434343;
-}
-
-#materialListSelectDialog-cont {
-	border-top: 3px solid rgba(255, 255, 255, 0);
-}
-
-#materialListSelectDialog-header {
-	box-shadow: 0 0 5px #333;
-	overflow: visible;
-}
 /****End of CSS for materialListSelectDialog ***/
