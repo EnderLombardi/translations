@@ -1,0 +1,300 @@
+// CSS for Sub header - Operation Details Sub Header and Menu Bar
+.operationDetailHeadPanel{
+    overflow: visible;
+    z-index: 1001;
+    .sapMPageBusyCoversAll{
+        &>section{
+            .sapMIBar{
+                &.sapMTB{
+                    margin:0!important;
+                    height: auto!important;
+                }
+            }
+        }
+    }
+    .ExecutionModeText{
+        font-style: italic;
+        color: #0085AD;
+        margin-right: 10px;
+    }
+    .sapMPanelExpandableIcon{
+        display: none;
+    }
+    .mainText{
+        font-size:1.2rem !important;
+        color:#0085AD !important;
+        font-weight:700 !important;
+    }
+    @at-root .operationDetailHeadPanel .sapMPanelBGTranslucent{
+        @at-root &, .operationDetailHeadPanel .operationDetailForm .sapUiRLContainer{
+            background:transparent !important;
+            border-bottom:0px !important;
+        }
+    }
+    .switchExecutionButton{
+        .sapMSwtHandle{
+            width: 0.8rem;
+            height: 0.8rem;
+            left: 3rem;
+        }
+        .sapMSwt{
+            height: 1rem !important;
+            background: #0D5D76;
+            border-color: #0D5D76;
+        }
+        .sapMSwtOff{
+            &:not(.sapMSwtAcceptReject){
+                background: #ffffff;
+                border-color: #bfbfbf;
+            }
+        }
+    }
+    @at-root .operationDetailHeadPanel .ExecutionModeText{
+        @at-root &, .operationDetailHeadPanel .switchExecutionButton{
+            padding: 0;
+        }
+    }
+    &.sapMPanel{
+        .sapMPanelWrappingDivTb{
+            .sapMIBar{
+                &.sapMTB{
+                    &>:first-child{
+                        margin-right: 0;
+                    }
+                }
+            }
+        }
+    }
+    @at-root .operationDetailHeadPanel.sapMPanel .sapMPanelWrappingDivTb .sapMIBar.sapMTB>:first-child div:nth-child(2){
+        .subText{
+            font-size: 1rem!important;
+            line-height: 3rem;
+        }
+        @at-root &, .operationDetailHeadPanel.sapMPanel .sapMPanelWrappingDivTb .sapMIBar.sapMTB>:first-child div:nth-child(2) div:nth-child(2){
+            align-items: center;
+        }
+    }
+    .sapMPanelWrappingDivTb{
+        margin: -1rem -1rem 0 -1rem;
+        padding: 1rem 1rem 0 1rem;
+        background: #fff;
+        border-bottom: none;
+    }
+    .sapMBtn{
+        &.closeButton{
+            span{
+                color: #0D5D76;
+            }
+        }
+        &.expandButton{
+            span{
+                color:#ccc;
+            }
+        }
+    }
+    &+ .opDetailNavToolbar{
+        background:#fff;
+        box-shadow: 0px 5px 5px -5px #434343;
+        border-top: 2px solid #ccc;
+        z-index: 1000;
+        position: relative;
+        border:0;
+        height:auto;
+        .sapMSegBBtn{
+            position:relative;
+            color:#333333;
+        }
+        .sapMSegBBtn{
+            &.sapMSegBBtnSel{
+                color: #0D5D76;
+                background: transparent;
+                font-weight:bold;
+                &:after{
+                    content: "";
+                    height: 4px;
+                    position:absolute;
+                    bottom:0;
+                    left:0;
+                    right:0;
+                    background:#FF5000;
+                }
+            }
+        }
+    }
+    @at-root html{
+        &.sap-desktop{
+            .operationDetailHeadPanel{
+                .opDetailNavToolbar{
+                    .sapMSegBBtnFocusable{
+                        &:hover{
+                            background: rgba(0, 86, 112, 0.20);
+                            color:#0D5D76;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Navigation Bar
+.opDetailNavToolbar{
+    background:#fff;
+    box-shadow: 0px 5px 15px -5px #0F2D65;
+    ul{
+        &.opDetailNav{
+            margin-left: 0;
+            li{
+                border: 0px !important;
+            }
+        }
+    }
+}
+
+// Operation Icon Nav Bar
+.operationNavBar{
+    .countText{
+        background:#009de0 !important;
+        color:#fff !important;
+    }
+    .sapMITBSelected{
+        &>.sapMITBContentArrow{
+            border-bottom-color: #e52929 !important;
+        }
+    }
+}
+.progressBtnColor{
+    .sapMBtnIcon{
+        color:#0085AD !important;
+    }
+}
+
+// Footer
+.operationDetailFooter{
+    position: fixed;
+    bottom: 0px;
+    background:#607381 !important;
+    @at-root .operationDetailFooter .sapMBtnContent{
+        @at-root &, .operationDetailFooter .sapMBtnIcon{
+            color:#fff !important;
+        }
+    }
+}
+
+//Switch Button and Text
+.switchExecutionButton{
+    .sapMSwtHandle{
+        width: 1rem;
+        height: 1rem;
+        left: 2.9rem;
+    }
+    .sapMSwtOff{
+        &>.sapMSwtInner{
+            left: -2.8rem;
+        }
+    }
+}
+
+// Confirmation Dialogue
+#partialConfirmDialogue  {
+    background: #ffffff;
+    border: none;
+    border-radius: 0;
+    box-shadow: 0 0 5px #333;
+}
+
+#partialConfirmDialogue-header-BarPH{
+    background:#d4f1f7;
+}
+#partialConfirmDialogue-title{
+    color:#434343;
+}
+#partialConfirmDialogue-cont{
+    border-top:3px solid  rgba(255, 255, 255, 0);
+}
+#partialConfirmDialogue-header{
+    box-shadow: 0 0 5px #333;
+    overflow: visible;
+}
+
+//Pop-up confirm delete
+.ClassOperationDetailPopUp{
+    .sapMPageBusyCoversAll{
+        background: #f5f5f5 !important;
+        &>section{
+            overflow-y: scroll!important;
+        }
+    }
+}
+#mes{
+    .sapMDialog{
+        &:not(.theme-disabled){
+            header{
+                box-shadow: 0 0 5px #333;
+                overflow: visible;
+                background-color: #d4f1f7;
+                color: #434343;
+            }
+        }
+        &.ClassOperationDetailPopUp{
+            background: #ffffff;
+            border: none;
+            border-radius: 0;
+            box-shadow: 0 0 5px #333;
+            footer{
+                background-color: #0F2D65;
+            }
+        }
+    }
+}
+
+// Progress Slider Screen
+.proressSliderGrid{
+    .sapUiRespGridSpanL8{
+        &:nth-child(2){
+            overflow: visible !important;
+        }
+    }
+}
+
+// Progress slider styling
+.sliderDisplayStyle{
+    height: 4rem !important;
+    .sapMSliderHandle{
+        height: 2.8rem !important;
+    }
+    @at-root .sliderDisplayStyle .sapMSliderInner{
+        @at-root &, .sliderDisplayStyle .sapMSliderProgress{
+            height: 1.1875rem !important;
+        }
+    }
+}
+.ML-05{
+    margin-left:0.5rem !important;
+    height: auto!important;
+}
+.progressSlider{
+    display:block !important;
+    .comfirmedProgressSlider{
+        float:left !important;
+    }
+    .dynProgressSlider{
+        margin-left: -2.1rem !important;
+    }
+}
+.sliderInprogressColor{
+    .sapMSliderProgress{
+        background-color: lime !important;
+    }
+}
+.sliderCompletedColor{
+    opacity:1 !important;
+    .sapMSliderProgress{
+        background-color: #007cc0 !important;
+    }
+}
+.sliderBlockedColor{
+    .sapMSliderProgress{
+        background-color: darkorange !important;
+    }
+}

@@ -1,48 +1,8 @@
 /**************************************
 *classes for Progress Slider Screen
 ****************************************/
-.proressSliderGrid  .sapUiRespGridSpanL8:nth-child(2){
-	overflow:visible !important;
-}
-
-
 /************
 *progress slider styling
 *************/
-.sliderDisplayStyle {
-     height: 4rem !important;
-}
-.sliderDisplayStyle .sapMSliderHandle {
-     height: 2.8rem !important;
-}
-.sliderDisplayStyle .sapMSliderInner,  .sliderDisplayStyle .sapMSliderProgress{
-	    height: 1.1875rem !important;
-}
 /**** End of Styling Progress Slider***********/
-
-
-
-
-.ML-05{margin-left:0.5rem !important;height: auto!important;}
-.progressSlider{
-	display:block !important;
-}
-.progressSlider .comfirmedProgressSlider{
-	float:left !important;
-}
-.progressSlider .dynProgressSlider{
-	    margin-left: -2.1rem !important;
-}
-.sliderInprogressColor .sapMSliderProgress{
-	background-color: lime !important;
-}
-.sliderCompletedColor{
-	opacity:1 !important;
-}
-.sliderCompletedColor .sapMSliderProgress{
-	background-color: #007cc0 !important;
-}
-.sliderBlockedColor .sapMSliderProgress{
-	background-color: darkorange !important;
-}
  /********** End of CSS for Progress Slider Screen *******/
