@@ -1481,6 +1481,12 @@ OTHER
 #stationTrackerView--toolbarstationtracker-popover-scroll > button:hover > div {
   background-color: rgba(222, 222, 222, 0.5); }
 
+#ImportOswUnplannedPopover--SelectAllUnpd-inner.sapMToggleBtnPressed {
+  color: #ffffff !important;
+  background-color: #005483 !important; }
+#ImportOswUnplannedPopover--SelectAllUnpd-inner.sapMToggleBtnPressed:hover {
+  opacity: 0.8; }
+
 /********************
 KPI Header Content
 *********************/

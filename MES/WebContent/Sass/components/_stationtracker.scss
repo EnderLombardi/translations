@@ -1552,3 +1552,13 @@ OTHER
         }
     }
 }
+
+#ImportOswUnplannedPopover--SelectAllUnpd-inner {
+    &.sapMToggleBtnPressed {
+        color: #ffffff !important;
+        background-color: #005483 !important;
+        &:hover {
+            opacity: 0.8;        
+        }
+    }
+}
