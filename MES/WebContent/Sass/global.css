@@ -455,13 +455,6 @@ WORK LIST POP OVER
   margin: -1rem -1rem 1rem -1rem;
   padding: 1rem; }
 
-#ImportOswUnplannedPopover--SelectAll .sapMToggleBtnPressed, #ImportOswUnplannedPopover--SelectAll .sapMIBar-CTX .sapMToggleBtnPressed, #ImportOswUnplannedPopover--SelectAll .sapMTB-Transparent-CTX .sapMBtnInner.sapMToggleBtnPressed {
-  background-image: none;
-  background-color: #007cc0;
-  border-color: #006ca7;
-  color: #ffffff;
-  text-shadow: none; }
-
 /********************
 SCHEDULAR TASK STYLE
 *********************/
@@ -1481,6 +1474,13 @@ OTHER
   opacity: 1;
   border-width: 3px !important; }
 
+#stationTrackerView--toolbarstationtracker-popover-scroll {
+  color: #000000; }
+#stationTrackerView--toolbarstationtracker-popover-scroll > button > div {
+  color: inherit !important; }
+#stationTrackerView--toolbarstationtracker-popover-scroll > button:hover > div {
+  background-color: rgba(222, 222, 222, 0.5); }
+
 /********************
 KPI Header Content
 *********************/
@@ -1762,7 +1762,6 @@ KPI Header Content
   vertical-align: middle;
   height: 100%; }
 .classListProgramRadioBtn .sapMRbB .sapMRbBOut {
-  margin: 1.2rem 0 1.2rem 1.2rem;
   border: 2px solid #73d2e6; }
 .classListProgramRadioBtn label {
   display: inline-block;
@@ -1912,6 +1911,24 @@ html.sap-desktop .sapMBtnTransparent > .sapMBtnIcon {
   background-color: #74d2e7; }
 #settingsView--settingsSubHeader > div > button:hover > div:not(.sapMBtnActive) {
   background-color: rgba(0, 86, 112, 0.2); }
+
+#settingsView--headTextProgram-listUl > li .classListProgramRadioBtn {
+  padding: 12px 0 12px 12px;
+  height: 3rem; }
+#settingsView--headTextProgram-listUl > li .classListProgramRadioBtn > div {
+  padding: 0;
+  padding-right: 5px; }
+#settingsView--headTextProgram-listUl > li .classListProgramRadioBtn > label {
+  margin-left: 0;
+  padding-left: .8125rem;
+  text-align: left;
+  padding-right: .8125rem; }
+#settingsView--headTextProgram-listUl > li .classListProgramRadioBtn:not(.sapMRbDis):hover > * {
+  background-color: #f0f0f0; }
+#settingsView--headTextProgram-listUl > li .classListProgramRadioBtn.sapMRbBTouched > * {
+  background-color: #007cc0 !important; }
+#settingsView--headTextProgram-listUl > li .classListProgramRadioBtn.sapMRbBTouched > label {
+  color: #ffffff; }
 
 /************************
 DISRUPTIONTRACKER
@@ -2783,8 +2800,8 @@ html.sap-desktop .operationDetailHeadPanel .opDetailNavToolbar .sapMSegBBtnFocus
   color: #cc1919 !important;
   border-color: transparent !important;
   text-shadow: none !important; }
-  .disruptionTitleBarButtons > .sapMBtnReject > .sapMBtnIcon {
-    color: #cc1919 !important; }
+.disruptionTitleBarButtons > .sapMBtnReject > .sapMBtnIcon {
+  color: #cc1919 !important; }
 .disruptionTitleBarButtons:hover {
   background: rgba(0, 86, 112, 0.2) !important; }
 .disruptionTitleBarButtons > .sapMBtnEmphasized {
@@ -2792,21 +2809,21 @@ html.sap-desktop .operationDetailHeadPanel .opDetailNavToolbar .sapMSegBBtnFocus
   color: #008bc7 !important;
   border-color: transparent !important;
   text-shadow: none !important; }
-  .disruptionTitleBarButtons > .sapMBtnEmphasized > .sapMBtnIcon {
-    color: #008bc7 !important; }
+.disruptionTitleBarButtons > .sapMBtnEmphasized > .sapMBtnIcon {
+  color: #008bc7 !important; }
 .disruptionTitleBarButtons > .sapMBtnAccept {
   background-color: transparent !important;
   color: #005f28 !important;
   border-color: transparent !important;
   text-shadow: none !important; }
-  .disruptionTitleBarButtons > .sapMBtnAccept > .sapMBtnIcon {
-    color: #005f28 !important; }
+.disruptionTitleBarButtons > .sapMBtnAccept > .sapMBtnIcon {
+  color: #005f28 !important; }
 
 .disruptionBottomBar {
   border-bottom: none !important;
   margin: 0.5rem !important; }
-  .disruptionBottomBar > .sapMBtn > .sapMBtnText {
-    border-radius: 1.5rem; }
+.disruptionBottomBar > .sapMBtn > .sapMBtnText {
+  border-radius: 1.5rem; }
 
 label #ViewDisruptionView--disruptLabel {
   font-size: 1.2rem !important;
@@ -2814,8 +2831,8 @@ label #ViewDisruptionView--disruptLabel {
 
 .disruptionDetail .disruptionExpandablePanel .sapMPanelBGTranslucent {
   background-color: #F5F5F5 !important; }
-  .disruptionDetail .disruptionExpandablePanel .sapMPanelBGTranslucent .sapMPanelContent {
-    margin-left: 0 !important; }
+.disruptionDetail .disruptionExpandablePanel .sapMPanelBGTranslucent .sapMPanelContent {
+  margin-left: 0 !important; }
 .disruptionDetail .detailLabels {
   overflow: visible !important; }
 .disruptionDetail .formoperationDisruptionsModel > div > div {
@@ -2892,15 +2909,15 @@ label #ViewDisruptionView--disruptLabel {
   position: fixed;
   bottom: 0px;
   background: #607381 !important; }
-  .viewDisruptionFooter .sapMBtnContent, .operationDetailFooter .sapMBtnIcon {
-    color: #fff !important; }
+.viewDisruptionFooter .sapMBtnContent, .operationDetailFooter .sapMBtnIcon {
+  color: #fff !important; }
 
 .createDisruptionFooter {
   position: fixed;
   bottom: 0px;
   background: #607381 !important; }
-  .createDisruptionFooter .sapMBtnContent, .createDisruptionFooter .sapMBtnIcon {
-    color: #fff !important; }
+.createDisruptionFooter .sapMBtnContent, .createDisruptionFooter .sapMBtnIcon {
+  color: #fff !important; }
 
 .inputQty .sapMInputBaseInner {
   line-height: 1.9rem !important;

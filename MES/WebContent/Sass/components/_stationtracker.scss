@@ -1538,3 +1538,17 @@ OTHER
     opacity: 1;
     border-width: 3px !important;
 }
+
+#stationTrackerView--toolbarstationtracker-popover-scroll {
+    color: #000000;
+    >button{
+        >div {
+            color:inherit !important;
+        }
+        &:hover {
+            >div {
+                background-color: rgba(222,222,222,0.5);
+            }
+        }
+    }
+}

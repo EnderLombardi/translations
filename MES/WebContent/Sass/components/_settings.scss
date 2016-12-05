@@ -89,7 +89,6 @@
         vertical-align: middle;
         height: 100%;
         .sapMRbBOut{
-            margin: 1.2rem 0 1.2rem 1.2rem;
             border: 2px solid #73d2e6;
         }
     }
@@ -322,6 +321,38 @@ html{
             &:hover {
                 > div:not(.sapMBtnActive) {
                     background-color: $petrol-20;
+                }
+            }
+        }
+    }
+}
+
+#settingsView--headTextProgram-listUl {
+    >li {
+        .classListProgramRadioBtn {
+            padding: 12px 0 12px 12px;
+            height: 3rem;
+            >div {
+                padding: 0;
+                padding-right: 5px;
+            }
+            >label {
+                margin-left: 0;
+                padding-left: .8125rem;
+                text-align: left;
+                padding-right: .8125rem;
+            }
+            &:not(.sapMRbDis):hover {
+                >* {
+                    background-color: #f0f0f0;
+                }
+            }
+            &.sapMRbBTouched {
+                >*{
+                    background-color: $sapui-blue !important;
+                }
+                >label {
+                    color:#ffffff;
                 }
             }
         }
