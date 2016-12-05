@@ -11,10 +11,7 @@ jQuery.sap.declare("airbus.mes.disruptiontracker.Component");
 
 sap.ui.core.UIComponent.extend("airbus.mes.disruptiontracker.Component", {
     metadata : {
-        properties : {},
-        includes : [ "../../Sass/global.css" ]
-    // array of css and/or javascript files that should be used in the component
-
+        properties : {}
     }
 
 });

@@ -10,9 +10,7 @@ jQuery.sap.declare("airbus.mes.polypoly.Component");
 
 sap.ui.core.UIComponent.extend("airbus.mes.polypoly.Component", {
     metadata : {
-        properties : {},
-        includes : [ "../../Sass/global.css" ] //array of css and/or javascript files that should be used in the component
-
+        properties : {}
     },
     //manifestUrl : "component.json",
 });

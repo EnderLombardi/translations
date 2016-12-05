@@ -18,9 +18,7 @@ sap.ui.core.UIComponent.extend("airbus.mes.shell.Component", {
 
     metadata : {
 //        manifest: "json",
-        properties : {},
-        includes : ["../Sass/global.css"] //array of css and/or javascript files that should be used in the component
-
+        properties : {}
     },
 
     oView:undefined,

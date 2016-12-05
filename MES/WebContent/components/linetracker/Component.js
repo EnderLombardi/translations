@@ -17,9 +17,8 @@ sap.ui.core.UIComponent.extend("airbus.mes.linetracker.Component", {
 //			textButtonTo : "string",
 //			buttonAction : "string"
 		},
-		includes : [ "./css/customControl.css", "./css/bcrystal.css", "./css/chart.css", "./css/customcss.css", "./css/global.css", "./css/stationDetail.css"]
+		includes : [ "./css/customControl.css", "./css/bcrystal.css", "./css/chart.css", "./css/customcss.css", "./css/stationDetail.css"]
 	// array of css and/or javascript files that should be used in the component
-
 	}
 
 });

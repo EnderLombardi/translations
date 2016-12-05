@@ -5,9 +5,7 @@ jQuery.sap.require("airbus.mes.resourcepool.util.Formatter");
 
 sap.ui.core.UIComponent.extend("airbus.mes.resourcepool.Component", {
     metadata : {
-        properties : {},
-        includes : [ "../../Sass/global.css" ]
-
+        properties : {}
     },
 });
 
