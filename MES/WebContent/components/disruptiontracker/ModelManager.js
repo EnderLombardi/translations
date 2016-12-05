@@ -51,12 +51,12 @@ airbus.mes.disruptiontracker.ModelManager = {
 		  }));
 
 		
-		var item1 = new sap.ui.core.Item();
-		item1.setKey="";
-		item1.setText("All");
+		var resGroupItemAll = new sap.ui.core.Item();
+		resGroupItemAll.setKey="";
+		resGroupItemAll.setText("All");
 		
 		var resGroupBox = sap.ui.getCore().byId("disruptiontrackerView--resolutionGroupBox");
-		resGroupBox.insertItem(item1,0);
+		resGroupBox.insertItem(resGroupItemAll,0);
 		
 		airbus.mes.disruptiontracker.oView.setBusy(false); //Remove Busy Indicator
 	},

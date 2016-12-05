@@ -247,12 +247,12 @@ airbus.mes.shell.util.navFunctions = {
 				.getBinding("items").filter(
 						new sap.ui.model.Filter(aFilters, true));
 		
-		var item2 = new sap.ui.core.Item();
-		item2.setKey="";
-		item2.setText("All");
+		var stationItemAll = new sap.ui.core.Item();
+		stationItemAll.setKey="";
+		stationItemAll.setText("All");
 		
 		var stationBox = sap.ui.getCore().byId("disruptiontrackerView--stationComboBox");
-		stationBox.insertItem(item2,0);
+		stationBox.insertItem(stationItemAll,0);
 		
 		
 		
@@ -265,6 +265,7 @@ airbus.mes.shell.util.navFunctions = {
 			    	if(oValue == "---"){
 						return false;
 					}
+			    	return true;
 			    }
 		  }));
 
@@ -282,14 +283,12 @@ airbus.mes.shell.util.navFunctions = {
 		}
 		
 
-		var item3 = new sap.ui.core.Item();
-		item3.setKey="All";
-		item3.setText("All");
+		var msnItemAll = new sap.ui.core.Item();
+		msnItemAll.setKey="";
+		msnItemAll.setText("All");
 		
 		var msnBox = sap.ui.getCore().byId("disruptiontrackerView--msnComboBox");
-		msnBox.insertItem(item3,0);
-		
-
+		msnBox.insertItem(msnItemAll,0);
 	},
 
 	disruptionKPI : function(pStation) {
