@@ -524,7 +524,7 @@ sap.ui.controller("airbus.mes.settings.Settings",
 						
 					var oModelData = sap.ui.getCore().getModel("userSettingModel").getData().Rowsets.Rowset[0].Row[0]
 					
-					oModelData.lineDescription = airbus.mes.settings.ModelManager.programDesc;
+					oModelData.lineDescription = airbus.mes.settings.ModelManager.lineDesc;
 					oModelData.siteDescription = airbus.mes.settings.ModelManager.siteDesc;
 					oModelData.stationDescription = airbus.mes.settings.ModelManager.stationDesc;
 					
