@@ -1,39 +1,11 @@
-.elementContainer{
-    margin: 15% 0% 0% 22%;
-}
-.PanelbgImg2{
-    background-color: white;
-    opacity: 3%;
-    display: block;
-    background-size: 100% 100%;
-}
-.elementContainer-header{
-    background-color: lightgrey;
-}
-
-.buttonLoad{
-    &>.sapMBtnText{
-        color: white !important;
-    }
-}
-
 .GenricBgColor{
     background-color: #EBEEF2;
-}
-
-.titleToolbar{
-    background-color: #D8D8D8;
 }
 
 .subHeader{
     background-color: white !important;
 }
 
-.subHeaderText{
-    color: black !important;
-    font-style: normal !important;
-
-}
 .whiteButton{
     .sapMBtnIcon{
         color: white;
@@ -139,7 +111,7 @@
         }
     }
     label{
-        color:rgba(0, 86, 112, 0.94);
+        color:$petrol;
     }
     .sapUiFormM{
         .sapUiFormResGridCont{
@@ -173,11 +145,6 @@
 }
 .pageWelcome{
     @include textHeader(24px, #ffffff !important);
-}
-.pageUsername{
-    color: white !important;
-    font-family: "Arial", Sans-serif !important;
-    font-size: 14px !important;
 }
 .sapMListHdr{
     background-color: #d5f1f8;
@@ -218,23 +185,23 @@
     }
 }
 [id^="settingsView--nav"]{
-    color: rgba(0, 86, 112, 0.94);
+    color: $petrol;
     font-weight: bold;
 }
 [id^="settingsView--currMSN"]{
     font-weight: bold;
 }
 [id^="settingsView--headText"]{
-    color: rgba(0, 86, 112, 0.94);
+    color: $petrol;
     &>.sapUiForm{
         .sapUiFormTitle{
-            color: rgba(0, 86, 112, 0.94);
+            color: $petrol;
         }
     }
 }
 [id^="settingsView--nav"]{
     &>.sapMBtnIcon{
-        color: rgba(0, 86, 112, 0.94) !important;
+        color: $petrol !important;
     }
 }
 
@@ -311,14 +278,16 @@ html{
         border-left: 0;
     }
     &:hover {
-        button {
-            border: 1px solid #74d2e7;
-            border-left: 0;
+        >* {
+            border: 1px solid $twilight-blue !important;
+        }
+        >button {
+            border-left: 0 !important;
         }
     }
 }
 #globalNavView--SelectLanguage-arrow {
-        background: #0F2D65 !important;
+    background: #0F2D65 !important;
 }
 
 // MyProfile css
@@ -340,4 +309,21 @@ html{
 
 #badgeMngMyProfile-cont {
     background: #f5f5f5 !important;
+}
+
+// header station selector
+#settingsView--settingsSubHeader {
+    background-color: #d5f1f8;
+    > div {
+        > button {      
+            & >.sapMBtnActive {
+                background-color: $twilight-blue;
+            }
+            &:hover {
+                > div:not(.sapMBtnActive) {
+                    background-color: $petrol-20;
+                }
+            }
+        }
+    }
 }

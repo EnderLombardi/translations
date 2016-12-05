@@ -10,7 +10,7 @@
 			</Bar>
 		</customHeader>
 		<subHeader>
-			<Bar>
+			<Bar id="settingsSubHeader">
 				<contentLeft>
 					<Button id="navBack" type="Transparent" text="{i18n>Back}"
 						press="onPress" icon="sap-icon://arrow-left" height="100%" />
