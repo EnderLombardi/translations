@@ -199,7 +199,8 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 
 			airbus.mes.stationtracker.GroupingBoxingManager.showInitial = false;
 			GroupingBoxingManager.parseOperation(GroupingBoxingManager.group, GroupingBoxingManager.box);
-		
+			airbus.mes.stationtracker.oView.getController().changeShift();
+			
 			
 		} else {
 			
