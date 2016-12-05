@@ -165,14 +165,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 							break;
 					default :
 				}
-				
-				switch ( skill ) {
-					case "unplanned" :
-							sLeftIcon2 = '<i class="fa fa-refresh oswIcon cherry-red"><b style="padding-left:1px">UNPD</b></i>';
-							break;
-					default :
-				}
-				
+								
 				switch ( Status ) {
 					case "C" :
 					// Operation Completed
@@ -185,6 +178,11 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 							if (osw[0] === "3" ){ //OSW
 								sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 teal-blue white"><b style="padding-left:1px">OSW</b></i>';
 							}
+							if (skill === "unplanned" ){ //skill
+								sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 petrol-back dandelion"><b style="padding-left:1px">UNPD</b></i>';
+							}
+							
+							
 							break;
 					case "D1" :
 					//Opened Blocking and Escalated disruption
@@ -197,6 +195,9 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 							}
 							if (osw[0] === "3" ){ //OSW
 								sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 petrol-back dandelion"><b style="padding-left:1px">OSW</b></i>';
+							}
+							if (skill === "unplanned" ){ //skill
+								sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 petrol-back dandelion"><b style="padding-left:1px">UNPD</b></i>';
 							}
 							//}
 							break;
@@ -212,6 +213,9 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 							if (osw[0] === "3" ){ //OSW
 								sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 petrol-back dandelion"><b style="padding-left:1px">OSW</b></i>';
 							}
+							if (skill === "unplanned" ){ //OSW
+								sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 petrol-back dandelion"><b style="padding-left:1px">UNPD</b></i>';
+							}
 							break;
 					case "D3" :
 					//Solved Blocking and Escalated disruption
@@ -223,6 +227,9 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 							}
 							if (osw[0] === "3" ){ //OSW
 								sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 petrol-back dandelion"><b style="padding-left:1px">OSW</b></i>';
+							}
+							if (skill === "unplanned" ){ //skill
+								sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 petrol-back dandelion"><b style="padding-left:1px">UNPD</b></i>';
 							}
 							break;
 					case "D4" :
@@ -236,6 +243,9 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 							if (osw[0] === "3" ){ //OSW
 								sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 petrol-back dandelion"><b style="padding-left:1px">OSW</b></i>';
 							}
+							if (skill === "unplanned" ){ //skill
+								sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 petrol-back dandelion"><b style="padding-left:1px">UNPD</b></i>';
+							}
 							break;
 					case "B" :
 					//andon
@@ -248,6 +258,9 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 							}
 							if (osw[0] === "3" ){ //OSW
 								sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 cherry-red white"><b style="padding-left:1px">OSW</b></i>';
+							}
+							if (skill === "unplanned" ){ //skill
+								sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 cherry-red white"><b style="padding-left:1px">UNPD</b></i>';
 							}
 							break;
 					default:		
@@ -264,6 +277,10 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 					r.addClass('sapMPIBarGreen');
 					r.writeClasses();
 					r.writeAttribute('style', 'width:' + PercValue + '%');
+				}
+				//skill
+				if (skill === "unplanned" ){
+						sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 petrol-back dandelion"><b style="padding-left:1px">UNPD</b></i>';
 				}
 				
 				//------------------------------------------------------------
