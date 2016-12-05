@@ -70,8 +70,11 @@ sap.ui
 					 */
 					filterByStation : function(oEvent) {
 						airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.station = this
-								.getView().byId("stationComboBox")
-								.getSelectedKey();
+								.getView().byId("stationComboBox").getSelectedKey();
+						airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.msn = this
+								.getView().byId("msnComboBox").getSelectedKey();
+						
+						
 						airbus.mes.disruptiontracker.ModelManager
 								.loadDisruptionTrackerModel();
 

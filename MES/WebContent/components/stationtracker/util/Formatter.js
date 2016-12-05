@@ -243,6 +243,9 @@ airbus.mes.stationtracker.util.Formatter = {
 				if (oBox.OSW === 1){ //OSW
 					sLeftIcon2 = '<i class="fa fa-refresh oswIcon dandelion-back "><b style="padding-left:1px">OSW</b></i>';
 				}
+				if (oBox.avlLine.slice(-9) === "unplanned"){ //Unplanned
+					sLeftIcon2 = '<i class="fa fa-refresh oswIcon cherry-red white"><b style="padding-left:1px">UNPD</b></i>';
+				}
 				switch ( oBox.status ) {
 				// box is active
 					case 2 :
@@ -269,6 +272,9 @@ airbus.mes.stationtracker.util.Formatter = {
 						if (oBox.OSW === 1){ //OSW
 							sLeftIcon2 = '<i class="fa fa-refresh oswIcon teal-blue white"><b style="padding-left:1px">OSW</b></i>';
 						}
+						if (oBox.avlLine.slice(-9) === "unplanned"){ //Unplanned
+							sLeftIcon2 = '<i class="fa fa-refresh oswIcon cherry-red white"><b style="padding-left:1px">UNPD</b></i>';
+						}
 					break;	
 
 					// Opened Blocking and Escalated disruption
@@ -283,6 +289,9 @@ airbus.mes.stationtracker.util.Formatter = {
 						if (oBox.OSW === 1){ //OSW
 							sLeftIcon2 = '<i class="fa fa-refresh oswIcon petrol-back dandelion"><b style="padding-left:1px">OSW</b></i>';
 						}
+						if (oBox.avlLine.slice(-9) === "unplanned"){ //Unplanned
+							sLeftIcon2 = '<i class="fa fa-refresh oswIcon cherry-red white"><b style="padding-left:1px">UNPD</b></i>';
+						}
 						break;
 
 					// Opened Blocking disruption
@@ -294,6 +303,9 @@ airbus.mes.stationtracker.util.Formatter = {
 						}
 						if (oBox.OSW === 1){ //OSW
 							sLeftIcon2 = '<i class="fa fa-refresh oswIcon petrol-back dandelion"><b style="padding-left:1px">OSW</b></i>';
+						}
+						if (oBox.avlLine.slice(-9) === "unplanned"){ //Unplanned
+							sLeftIcon2 = '<i class="fa fa-refresh oswIcon cherry-red white"><b style="padding-left:1px">UNPD</b></i>';
 						}
 						break;
 					
@@ -308,6 +320,10 @@ airbus.mes.stationtracker.util.Formatter = {
 						if (oBox.OSW === 1){ //OSW
 							sLeftIcon2 = '<i class="fa fa-refresh oswIcon petrol-back dandelion"><b style="padding-left:1px">OSW</b></i>';
 						}
+						
+						if (oBox.avlLine.slice(-9) === "unplanned"){ //Unplanned
+							sLeftIcon2 = '<i class="fa fa-refresh oswIcon cherry-red white"><b style="padding-left:1px">UNPD</b></i>';
+						}
 						break;
 					
 					// Solved Blocking disruption
@@ -321,6 +337,10 @@ airbus.mes.stationtracker.util.Formatter = {
 						if (oBox.OSW === 1){ //OSW
 							sLeftIcon2 = '<i class="fa fa-refresh oswIcon petrol-back dandelion"><b style="padding-left:1px">OSW</b></i>';
 						}
+						
+						if (oBox.avlLine.slice(-9) === "unplanned"){ //Unplanned
+							sLeftIcon2 = '<i class="fa fa-refresh oswIcon cherry-red white"><b style="padding-left:1px">UNPD</b></i>';
+						}
 						break;
 						
 				// andon
@@ -333,11 +353,18 @@ airbus.mes.stationtracker.util.Formatter = {
 						if (oBox.OSW === 1){ //OSW
 							sLeftIcon2 = '<i class="fa fa-refresh oswIcon cherry-red white"><b style="padding-left:1px">OSW</b></i>';
 						}
+						
+						if (oBox.avlLine.slice(-9) === "unplanned"){ //Unplanned
+							sLeftIcon2 = '<i class="fa fa-refresh oswIcon cherry-red white"><b style="padding-left:1px">UNPD</b></i>';
+						}
+						
 						break;
 					default : 
 						
 				}
-								
+				
+				console.log(oBox.avlLine);
+				
 				if ( oBox.type === "I" ) {
 					
 					trackerTextClass = ""

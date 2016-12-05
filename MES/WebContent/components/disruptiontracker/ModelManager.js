@@ -21,7 +21,11 @@ airbus.mes.disruptiontracker.ModelManager = {
 		} else {
 			airbus.mes.disruptiontracker.oView.byId("stationComboBox").setSelectedKey("");
 		}
-		//airbus.mes.disruptiontracker.oView.setBusy(false);
+		if(oFilters.msn != undefined && oFilters.msn != ""){
+			airbus.mes.disruptiontracker.oView.byId("msnComboBox").setSelectedKey(oFilters.msn);
+		} else {
+			airbus.mes.disruptiontracker.oView.byId("msnComboBox").setSelectedKey("");
+		}
 	},
 	
 	onDisruptionsLoad: function(){
@@ -46,29 +50,17 @@ airbus.mes.disruptiontracker.ModelManager = {
 		    }
 		  }));
 
-		
-		/*var a = sap.ui.getCore().byId("disruptiontrackerView--stationComboBox");
-		var b = a.getItems();
-		var item = new sap.ui.core.Item();
-		item.setKey="";
-		item.setText("All");
-		a.addItem(item);
-		a.addItem(b[0]);
-		a.addItem(b[1]);
-		a.addItem(b[2]);*/
 
+		// Add option "ALL"
 		var a = sap.ui.getCore().byId("disruptiontrackerView--resolutionGroupBox");
-		var b = a.getItems();
 		var item = new sap.ui.core.Item();
 		item.setKey="";
 		item.setText("All");
 		a.addItem(item);
-		a.addItem(b[0]);
-		a.addItem(b[1]);
+		
 		
 		// Apply filter on MSN Filter Box
-		var aMSNval = [];	
-		
+		var aMSNval = [];			
 		if(airbus.mes.disruptiontracker.oView.byId("stationComboBox").getSelectedKey() == ""){
 		sap.ui
 		.getCore()
@@ -80,19 +72,24 @@ airbus.mes.disruptiontracker.ModelManager = {
 				if (aMSNval.indexOf(oValue) == -1) {
 					aMSNval.push(oValue);
 					return true;
-				} else {
+				} 
+				else if(oValue == "---")
+					return false;
+				else {
 					return false;
 				}
 		    }
 		  }));
-		}else {
-		// when Station is selected on Model Loading
-		sap.ui
-		.getCore()
-		.byId("disruptiontrackerView--msnComboBox")
-		.getBinding("items")
-		.filter(new sap.ui.model.Filter(
-			"station","EQ", airbus.mes.disruptiontracker.oView.byId("stationComboBox").getSelectedKey()));
+		}
+		
+		else {
+			// When Station is selected on Model Loading
+			sap.ui
+			.getCore()
+			.byId("disruptiontrackerView--msnComboBox")
+			.getBinding("items")
+			.filter(new sap.ui.model.Filter(
+				"station","EQ", airbus.mes.disruptiontracker.oView.byId("stationComboBox").getSelectedKey()));
 		}
 		// when no station is selected on Model Loading
 

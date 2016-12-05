@@ -1,0 +1,505 @@
+/******************
+POLYPOLY
+*******************/
+
+// Default Focus
+.noRows.sapUiTableColRowHdr{
+    @at-root &, .sapUiTableColHdr .sapUiTableTr>td{
+        @at-root &, .sapUiTableColHdr .sapUiTableCol{
+            border-right: 0px solid #dddddd;
+        }
+    }
+}
+.sapUiTableCCnt .sapUiTableRowHdrScr{
+    @at-root &, .sapUiTableColHdrCnt .sapUiTableColRowHdr{
+        display: none;
+    }
+}
+.sapUiTableCCnt .sapUiTableCtrlScr{
+    @at-root &, [id^="polypoly"]{
+        @at-root &, .sapUiTableColHdrCnt .sapUiTableColHdrScr{
+            margin: 0;
+        }
+    }
+}
+[id^="polypoly--oTablePolypoly-table"] .sapUiTableCol,
+.sapUiTableTr>td,
+[id^="polypoly--oTablePolypoly-table"] .sapUiTableTr>td,
+#polypoly--oTablePolypoly.sapUiTable>div.sapUiTableCnt,
+#polypoly--oTablePolypoly.sapUiTable>div.sapUiTableCnt .sapUiTableColHdrCnt{
+    border: none;
+    outline:1px dotted transparent;
+}
+[id^="polypoly--oTablePolypoly-table"] tr,
+.sapUiTableCnt .sapUiTableColHdrCnt{
+    @include polypolyTable();
+    @at-root [id^="polypoly--oTablePolypoly-table-fixed"]{
+        tr{
+            &:nth-child(1){
+                background-color: #f5f5f5;
+            }
+        }
+    }
+    @at-root [id^="polypoly--oTablePolypoly-table-fixed"] td:nth-child(2){
+        @at-root &, [id^="polypoly--oTablePolypoly-table-fixed"] td:nth-child(3){
+            background-color: #e9fbfd;
+        }
+    }
+}
+.sapUiTableCtrlFixed [id^="polypoly--oTablePolypoly-table-fixed"] .sapUiTableTr:not(.sapUiTableGroupHeader)>td:last-child,
+.sapUiTableCtrlFixed [id^="polypoly--oTablePolypoly-table-fixed"] [id^="polypoly--oTablePolypoly-rows"] td:nth-child(3){
+    border-right: 2px solid #ffffff;
+}
+.sapUiTable{
+    .sapUiTableCtrl{
+        [id^="polypoly--oTablePolypoly-rows"]{
+            &.sapUiTableRowHvr{
+                &>td{
+                    background: transparent;
+                }
+            }
+        }
+    }
+}
+.sapMFlexItem{
+    &>[id^="__select"]{
+        border: 2px solid #ebeff4;
+    }
+}
+.sapUiTableColHdrScr{
+    .sapUiTableColHdr{
+        &:nth-child(2){
+            .sapMLabel{
+                color: #468497;
+                font-size: 0.975rem;
+                padding-top:4px;
+                border-top: 1px solid #d4f1f7;
+            }
+        }
+        &:nth-child(3){
+            .sapMLabel{
+                color: #468497;
+                font-size: 0.7rem;
+            }
+        }
+    }
+    @at-root .sapUiTableColHdrScr .sapUiTableColHdr .sapUiTableCol:hover{
+        @at-root &, .sapUiTableColHdrScr .sapUiTableColHdr .sapUiTableColRowHdr:hover{
+            background-color: transparent;
+        }
+    }
+}
+div{
+    &[id^="polypoly--oTablePolypoly"]{
+        padding: 0;
+    }
+}
+#polypoly--toolbarPolypoly{
+    &.sapMTB{
+        border: none;
+    }
+}
+#polypoly{
+    .sapUiTableRSel{
+        .sapUiTableCtrlScrFixed{
+            margin-left: 0px !important;
+        }
+    }
+}
+.sapUiTableCCnt{
+    .sapUiTableRowHdrScr{
+        z-index: -1;
+    }
+}
+
+// POLYPOLY OTABLEPOLY -->ALL<--
+[id^="polypoly--oTablePolypoly-table"]{
+    td{
+        position: relative;
+        padding-top:0;
+        padding-bottom:0;
+        div{
+            &.sapUiTableCell{
+                top: 0;
+                right: 0;
+                left: 0;
+                Bottom: 0;
+                padding: 0;
+            }
+        }
+    }
+    div{
+        &[data-category^="LABEL"]{
+            height: 30px;
+        }
+        &.sapMFlexBox{
+            vertical-align: middle;
+            justify-content: center;
+        }
+        &[id^="__button"]{
+            &.sapMBtnTransparent{
+                &.sapMBtnActive{
+                    background-color: transparent;
+                    outline:1px dotted transparent;
+                    border-color:transparent;
+                }
+            }
+        }
+    }
+}
+[id^="polypoly--oTablePolypoly-table"] div[data-category^="NEED"]{
+    @at-root &, [id^="polypoly--oTablePolypoly-table"] div[data-category^="UA_P"]{
+        @at-root &, [id^="polypoly--oTablePolypoly-table"] div[data-category^="GAP"]{
+            @at-root &, [id^="polypoly--oTablePolypoly-table"] div[data-category^="ASIS"]{
+                height: 52px;
+            }
+        }
+    }
+}
+div{
+    &[id^="polypoly--oTablePolypoly"]{
+        .sapUiTableColRowHdr{
+            display: none;
+        }
+    }
+}
+
+//sapUI TABAL COL ROW HDR
+#polypoly{
+    .sapUiTableRSel{
+        .sapUiTableColHdrFixed{
+            margin: 0;
+        }
+    }
+    @at-root #polypoly .sapUiTableCol:hover{
+        @at-root &, #polypoly .sapUiTableColRowHdr:hover{
+            background-color:rgba(255, 255, 255, 0);
+        }
+    }
+}
+
+// POLYPOLY OTABLE FIXED
+[id^="polypoly--oTablePolypoly-table-fixed"]{
+    .sapUiTableTr{
+        &:not(.sapUiTableGroupHeader){
+            &>td{
+                &:last-child{
+                    border-right: 3px solid #ffffff;
+                }
+            }
+        }
+    }
+    td{
+        position: relative;
+        &:nth-child(2){
+            div{
+                &.sapMFlexBox{
+                    padding-left: 10px;
+                    .sapMImg{
+                        border-radius: 50%;
+                        vertical-align: middle;
+                    }
+                    .sapMFlexItem{
+                        &:nth-child(2){
+                            padding-left:0;
+                            width: 100%;
+                            span{
+                                font-weight:bold;
+                                font-size: 0.775rem;
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    div{
+        &.sapMFlexBox{
+            align-items: center;
+        }
+        &[data-category^="LABEL"]{
+            background-color: #D4F1F7;
+            height: 30px;
+        }
+        &[data-category^="UA_P"]{
+            border-bottom: 1px solid #d4f1f7;
+        }
+    }
+}
+#polypoly--oTablePolypoly{
+    background-color:#ffffff;
+    &.sapUiTableRSel{
+        .sapUiTableTr{
+            &>td{
+                &.sapUiTableTdFirst{
+                    &>.sapUiTableCell{
+                        padding: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+//POLYPOLY TABLE FIXROW
+[id^="polypoly--oTablePolypoly-table-fixrow"]{
+    div{
+        &[data-category^="LABEL"]{
+            background-color: #f5f5f5;
+        }
+    }
+}
+#polypoly--oTablePolypoly-table{
+    div{
+        &[data-category^="LABEL"]{
+            background-color: #f5f5f5;
+        }
+    }
+}
+
+//LINE HOVER
+[id^="__column"]{
+    .sapUiTableColRsz{
+        margin-left: -3px;
+    }
+}
+
+// ADD BTN POLYPOLY
+#polypoly--AddPolypoly{
+    margin-right: 0.3125rem;
+}
+button[id^="polypoly"] .sapMBtnContent{
+    @at-root &, button[id^="polypoly"] .sapMBtnText>.sapMBtnIcon{
+        color: #0D5D76;
+        font-size: 1.6vh;
+    }
+}
+.button[id^="polypoly"]{
+    &.sapMBtn{
+        &:hover{
+            background-color: rgba(0, 86, 112, 0.20);
+            &>.sapMBtnHoverable{
+                background-color: transparent;
+                border-color:transparent;
+                outline:1px dotted transparent;
+            }
+        }
+    }
+}
+button[id^="polypoly"].sapMBtn:hover> div[id^="polypoly"].sapMBtnHoverable{
+    @at-root &, html.sap-desktop button[id^="polypoly"].sapMBtn:focus>div[id^="polypoly"].sapMBtnHoverable.sapMFocusable{
+        background-color: transparent;
+        border-color:transparent;
+        outline:1px dotted transparent;
+    }
+}
+
+//BTN ACCEPT REJECT
+[id^="polypoly--oTablePolypoly-table"]{
+    .sapMFlexItem{
+        padding: 0 5px;
+    }
+    .sapMBtnDisabled{
+        opacity: 1;
+    }
+    div{
+        &.sapMBtnInner{
+            &.sapMBtnAccept{
+                @include button(#84bd00, #ffffff);
+            }
+            &.sapMBtnReject{
+                @include button(#e5002b, #ffffff);
+            }
+        }
+    }
+}
+
+//HEADER
+.classPolypolyPage{
+    header{
+        @extend %kpiPageHeader;
+    }
+    .sapUiTableMTbr{
+        .sapMTB{
+            background: #d4f1f7;
+            margin-top:0.55rem;
+        }
+    }
+    .sapUiTable{
+        &>.sapUiTableTbr{
+            &.sapUiTableMTbr{
+                margin-bottom:10px;
+            }
+        }
+    }
+    .sapUiIcon{
+        color: #8fd4e2;
+        outline:1px dotted transparent;
+    }
+    form{
+        border: 1px solid transparent;
+    }
+}
+.sap-desktop{
+    .classPolypolyPage{
+        .sapMBtnTransparent{
+            &>.sapMBtnIcon{
+                color: #ffffff;
+            }
+        }
+    }
+}
+.classPolypolyPage form.sapMSFF:hover,
+.classPolypolyPage form.sapMSFF:focus{
+    border-color: #0D5D76;
+}
+.classPolypolyPage .sapMTB-Transparent-CTX .sapMLabel,
+.classPolypolyPage .sapMBtnInner{
+    text-shadow: none;
+}
+
+//POP UP CREATE POLYPOLY
+#columnPopupDialog{
+    background: #ffffff;
+    border: none;
+    border-radius: 0;
+    box-shadow: 0 0 5px #333;
+    .sapMSlt{
+        &>.sapMSltLabel{
+            line-height: 1.8rem;
+            border: none;
+            height: 2.5rem;
+        }
+    }
+    .sapMCb{
+        width: 100%;
+    }
+    .sapUiTableColHdrScr{
+        .sapUiTableColHdr{
+            &:nth-child(2){
+                .sapMLabel{
+                    border: none;
+                    color: #468497;
+                    font-size: 0.7rem;
+                }
+            }
+            &:nth-child(1){
+                .sapMLabel{
+                    color: #468497;
+                    font-size: 0.975rem;
+                    padding-top: 4px;
+                }
+            }
+        }
+    }
+}
+#columnPopupDialog-header{
+    background:#d4f1f7;
+    box-shadow: 0 0 5px #333;
+}
+#columnPopupDialog-title{
+    color:#434343;
+}
+
+#columnPopupDialog-cont{
+    border-top:3px solid rgba(255, 255, 255, 0);
+}
+#columnPopupDialog-footer{
+    background-color:#0F2D65;
+}
+
+/* Pop-up QA */
+#oQADialog,
+#infoUpdate12 {
+    background: #ffffff;
+    border: none;
+    border-radius: 0;
+    box-shadow: 0 0 5px #333;
+}
+
+//POP UP QA
+#oQADialog{
+    .sapMSlt{
+        &>.sapMSltLabel{
+            line-height: 2.5rem;
+            border: none;
+            height: 2.5rem;
+        }
+    }
+    .sapMCb{
+        width:100%;
+    }
+    .sapUiTableColHdrScr{
+        .sapUiTableColHdr{
+            &:nth-child(2){
+                .sapMLabel{
+                    border:none;
+                    color: #468497;
+                    font-size: 0.7rem;
+                }
+            }
+            &:nth-child(1){
+                .sapMLabel{
+                    color: #468497;
+                    font-size: 0.975rem;
+                    padding-top: 4px;
+                }
+            }
+        }
+    }
+    #oTableQA-table{
+        tr{
+            &:nth-child(even){
+                background-color:#f9fafc;
+            }
+            &:last-child{
+                td{
+                    border-bottom:1px solid #e5e5e5;
+                }
+            }
+        }
+        td{
+            border-bottom:1px solid #e5e5e5;
+        }
+    }
+    .sapUiTableHSb{
+        padding-left:0!important;
+    }
+}
+#oQADialog .sapUiTableColHdrCnt > div:nth-child(1),
+#oQADialog .sapUiTableCCnt > div:nth-child(1){
+    display:none;
+}
+#oQADialog-cont{
+    border-top:3px solid  rgba(255, 255, 255, 0);
+}
+#oQADialog-footer{
+    background-color:#0F2D65;
+}
+
+// POP UP CONFIRMATION DELETE
+#confirmDeleteDialog{
+    background: #ffffff;
+    border: none;
+    border-radius: 0;
+    box-shadow: 0 0 5px #333;
+}
+
+#confirmDeleteDialog-header-BarPH{
+    background:#d4f1f7;
+
+}
+#confirmDeleteDialog-title{
+    color:#434343;
+}
+#confirmDeleteDialog-cont{
+    border-top:3px solid  rgba(255, 255, 255, 0);
+}
+#confirmDeleteDialog-header{
+    box-shadow: 0 0 5px #333;
+    overflow: visible;
+}
+#confirmDeleteDialog-footer{
+    background-color:#0F2D65;
+}
