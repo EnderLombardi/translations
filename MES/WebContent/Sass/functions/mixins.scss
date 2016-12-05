@@ -133,3 +133,16 @@ STATIONTRACKER
     border-color: transparent !important;
     text-shadow: none !important;
 }
+@mixin sidenav(){
+    height: 0; /* height - change this with JavaScript*/
+    width: 100%; /*100% Full-width */
+    position: fixed; /* Stay in place */
+    z-index: 101;/* Stay on top */
+    bottom: 0;
+    left: 0;
+    background-color: #4a4b4b; /* Black*/
+    overflow-y: hidden; /* Disable horizontal scroll */
+    margin-top: -1rem !important;
+    transition: 0.10s;
+    transition-delay: 1s;/*transition effect to slide in the sidenav */
+}

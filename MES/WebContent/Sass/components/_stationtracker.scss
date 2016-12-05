@@ -305,7 +305,7 @@ KPI HEADER
     border-left: solid 1px #74d2e7 !important;
     opacity: 1;
     @extend %stationTrackerViewShiftAndUser;
-    &.sapMSltDisabled { 
+    &.sapMSltDisabled {
         .sapMSltLabel, .sapMSltArrow{
             opacity: 0.5;
         }
@@ -1558,7 +1558,58 @@ OTHER
         color: #ffffff !important;
         background-color: #005483 !important;
         &:hover {
-            opacity: 0.8;        
+            opacity: 0.8;
         }
     }
 }
+
+// Disruption Box
+.sidenav{
+    @include sidenav();
+}
+#main{
+    transition: margin-right .5s;
+}
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+.sidebarContentMargin{
+    margin:0 1rem 1rem 1rem;
+}
+.slidingUpDownPanel{
+    height: 100%; /* height - change this with JavaScript*/
+    width: 100%; /*100% Full-width */
+    position: fixed; /* Stay in place */
+    z-index: 101;/* Stay on top */
+    overflow-y: hidden; /* Disable horizontal scroll */
+    display:none;
+}
+#stationTrackerView--disruptNotifications{
+    &>.sapMFlexItem{
+        width:100% !important;
+        height:100% !important;
+    }
+}
+.wrap{
+    .sapMLabel{
+        white-space: normal !important;
+    }
+}
+.disruptionTextSize{
+    .sapSuiteCmpChartItemTitle{
+        font-size: 0.8vw !important;
+        padding-right: 2vw;
+        padding-bottom: 0.25vw;
+    }
+}
+.spaceBetweenCharts{
+    .sapSuiteCmpChartItem{
+        &.Normal{
+            &.Auto{
+                margin-top: 0.5rem !important;
+            }
+        }
+    }
+}
+
