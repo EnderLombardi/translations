@@ -1,7 +1,8 @@
 <core:View controllerName="airbus.mes.disruptiontracker.kpi.disruptionKPIChart"
 	xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:viz="sap.viz.ui5.controls"
 	xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:viz.data="sap.viz.ui5.data"
-	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds">
+	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+	xmlns:commons="sap.ui.commons">
 
 	<Page showHeader="false" class="disruptionKPI">
 		<Bar id="disruptionKPITitleSubheader" class="pageHeader">
@@ -29,7 +30,7 @@
 								</viz.data:dimensions>
 								<viz.data:measures>
 									<viz.data:MeasureDefinition name="Time Lost"
-										value="{TimeLostperAttribute>Time_Lost}" />
+										value="{TimeLostperAttribute>Time_Lost}"  />
 								</viz.data:measures>
 							</viz.data:FlattenedDataset>
 						</viz:dataset>
@@ -40,7 +41,11 @@
 								type="Measure" values="Time Lost" />
 						</viz:feeds>
 					</viz:VizFrame>
-
+                    
+                    <commons:HorizontalDivider id ="divider1" class="sapUiSmallMarginTopBottom" visible="" ></commons:HorizontalDivider>
+					
+					
+					
 					<viz:VizFrame id="vizFrame2" width="100%" class="chart"
 						uiConfig="{applicationSet:'fiori'}" legendVisible="false">
 						<viz:dataset width="50%">
@@ -63,7 +68,10 @@
 								type="Measure" values="Time Lost" />
 						</viz:feeds>
 					</viz:VizFrame>
-
+					
+					<commons:HorizontalDivider id ="divider2" class="sapUiSmallMarginTopBottom" visible="true"></commons:HorizontalDivider>
+					<commons:HorizontalDivider id ="divider3" class="sapUiSmallMarginTopBottom"></commons:HorizontalDivider>
+					
 					<viz:VizFrame id="vizFrame3" width="100%" class="chart"
 						vizType="bar" uiConfig="{applicationSet:'fiori'}" legendVisible="false">
 						<viz:dataset width="50%">
@@ -87,7 +95,11 @@
 								type="Measure" values="Time Lost" />
 						</viz:feeds>
 					</viz:VizFrame>
-
+                    
+                    <commons:HorizontalDivider id ="divider4" class="sapUiSmallMarginTopBottom" visible =""></commons:HorizontalDivider>
+					
+					
+					
 					<viz:VizFrame id="vizFrame4" width="100%" class="chart"
 						vizType="bar" uiConfig="{applicationSet:'fiori'}" legendVisible="false">
 						<viz:dataset width="50%">

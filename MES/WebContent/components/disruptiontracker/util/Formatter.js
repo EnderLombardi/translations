@@ -85,7 +85,8 @@ airbus.mes.disruptiontracker.Formatter = {
 			return operation.split(",")[1];
 
 	},
-
+     
+	
 	formatOpeningTime : function(openDate, closureDate) {
 
 		openDate = airbus.mes.disruptiontracker.Formatter.isoDateconvert(openDate);

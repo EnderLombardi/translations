@@ -11,6 +11,8 @@ sap.ui.controller("airbus.mes.disruptiontracker.kpi.disruptionKPIChart", {
 	 */
 	onInit : function() {	
 
+		window.onresize = this.resize;
+		
 //     Title For Category
 		var vizframe1 = this.getView().byId("vizFrame");
 		vizframe1.setVizProperties({
@@ -73,6 +75,9 @@ sap.ui.controller("airbus.mes.disruptiontracker.kpi.disruptionKPIChart", {
 				}
 			},
 		});
+		
+
+		
 				
 //		Title For Operation 
 		var vizframe3 = this.getView().byId("vizFrame3");
@@ -104,6 +109,21 @@ sap.ui.controller("airbus.mes.disruptiontracker.kpi.disruptionKPIChart", {
 		
 		
 	},
+	onAfterRendering : function(){
+		this.resize();
+		
+	}, 
+	resize: function(){
+		 if(window.innerWidth <= 1022){
+			 sap.ui.getCore().byId("disruptionKPIView--divider1").setVisible(true);
+			 sap.ui.getCore().byId("disruptionKPIView--divider4").setVisible(true);
+			 sap.ui.getCore().byId("disruptionKPIView--divider3").setVisible(false);
+		 }else{
+			 sap.ui.getCore().byId("disruptionKPIView--divider1").setVisible(false);
+			 sap.ui.getCore().byId("disruptionKPIView--divider4").setVisible(false);
+			 sap.ui.getCore().byId("disruptionKPIView--divider3").setVisible(true);
+		 }
+		},
 	
 	onNavBack: function(oEvent){
 		nav.back();
