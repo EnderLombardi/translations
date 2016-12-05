@@ -82,6 +82,11 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 				type : 'string',
 				group : 'Appearance',
 				defaultValue : ''
+			},
+			skill: {
+				type : 'string',
+				group : 'Appearance',
+				defaultValue : ''
 			}
 		}
 	},
@@ -104,6 +109,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 		var paused = c.getPaused();
 		var progress = c.getProgress();
 		var rmastatus = c.getRmastatus();
+		var skill = c.getSkill();
 		var osw = c.getOsw();
 //		var S = c.getState();	not used
 		var W = c.getWidth();
@@ -156,6 +162,13 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 								//sStatus = "3";
 								sRightIcon = '<i class="fa fa-pause rightIcon"></i>';
 							}	
+							break;
+					default :
+				}
+				
+				switch ( skill ) {
+					case "unplanned" :
+							sLeftIcon2 = '<i class="fa fa-refresh oswIcon cherry-red"><b style="padding-left:1px">UNPD</b></i>';
 							break;
 					default :
 				}
