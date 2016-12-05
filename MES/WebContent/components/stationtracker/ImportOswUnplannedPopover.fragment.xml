@@ -12,7 +12,7 @@
 		<content>
 			<VBox>
 				<HBox>
-		
+					<ToggleButton id="selectAll" text="{StationTrackerI18n>WorklistSelectAll}" enabled="true" pressed="false" press="onUnplannedSelectAll" class="sapUiTinyMarginBeginEnd" type="Transparent"/>
 					<Select id="selectGroupingOSW"
 							class="sapUiTinyMarginBeginEnd comboBoxStyle"
 						    items="{groupModel>/Rowsets/Rowset/0/Row/Grouping}"
@@ -26,8 +26,7 @@
 						    change="onChangeFilterOSWUnplanned"
 					        visible="true">						
 						<core:ListItem key="{groupModel>Value}" text="{ path : 'groupModel>Value' , formatter : '.getI18nValue' }" />					
-					</Select>
-					
+					</Select>			
 				</HBox>
 				<List id="myList" 
 					items="{ path: 'WorkListModel>/' }"
