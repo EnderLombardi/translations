@@ -1,14 +1,14 @@
 <core:FragmentDefinition
-	xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:uni="sap.ui.unified">
-		<Popover id="datePickerPop" placement="Bottom" class="classDatePickerPop">
-			<customHeader>
-				<Toolbar>
-					<Button text="{StationTrackerI18n>SelectToday}" design="Transparent" press="onSelectToday" class="classDatePickerButton"/>
-				</Toolbar>
-			</customHeader>
-			<content>
-				<uni:Calendar id="oCalendar" select="dateSelected"/>
-			</content>
-		</Popover>
+    xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:uni="sap.ui.unified">
+        <Popover id="datePickerPop" placement="Bottom" class="classDatePickerPop">
+            <customHeader>
+                <Toolbar>
+                    <Button text="{StationTrackerI18n>SelectToday}" design="Transparent" press="onSelectToday" class="classDatePickerButton"/>
+                </Toolbar>
+            </customHeader>
+            <content>
+                <uni:Calendar id="oCalendar" select="dateSelected"/>
+            </content>
+        </Popover>
 </core:FragmentDefinition>
 

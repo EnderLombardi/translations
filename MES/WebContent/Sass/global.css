@@ -2891,6 +2891,8 @@ Pop up
   color: #ffffff; }
   #mes .blackButton > div .sapMBtnIcon {
     color: #74d2e7; }
+#mes #popupSettingsButton {
+  border-bottom: solid 1px #979797; }
 
 /*******************
 FROM HOMEPAGE
