@@ -98,8 +98,9 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 	renderer : function(r, c) {
 		
 		// gloabal name 
-		var sOSW = "O/W";
-		var sUNPD = "UNPD";
+		var sOSW = airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("Osw");
+		var sUNPD = airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("Unplanned");
+		
 		
 		if (!c.getVisible()) {
 			return;

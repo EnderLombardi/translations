@@ -196,9 +196,10 @@ airbus.mes.stationtracker.util.Formatter = {
 		     ----------------------------------------------------------------------------*/
 			BoxDisplay : function( oBox ) {
 				
-				// gloabal name 
-				var sOSW = "O/W";
-				var sUNPD = "UNPD";
+				// gloabal name
+				var sOSW = airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("Osw");
+				var sUNPD = airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("Unplanned");
+				
 				
 				var html = "";
 				var sDivForLeftDisplay = '<div  class="trackerBox">';
