@@ -52,11 +52,7 @@
 					<SegmentedButtonItem enabled="false" id="idStation"
 						icon="sap-icon://customer-view" text="STATION DETAIL" key="station"
 						press="worksetItemSelected" />
-					<!-- <SegmentedButtonItem enabled="false" id="idOrder" text="ORDER WORKLIST" 
-						key="order" press="worksetItemSelected" /> <SegmentedButtonItem enabled="false" 
-						id="idOperation" text="OPERATION WORKLIST" key="operation" press="worksetItemSelected" 
-						/> <SegmentedButtonItem enabled="false" id="idAllocation" text="ALLOCATION 
-						WORKLIST" key="allocation" press="worksetItemSelected" /> -->
+					
 				</items>
 			</SegmentedButton>
 			<ToolbarSpacer />

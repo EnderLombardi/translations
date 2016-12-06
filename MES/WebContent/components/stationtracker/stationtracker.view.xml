@@ -68,8 +68,6 @@
 										<Label text="{StationTrackerI18n>PlannedStart} / {StationTrackerI18n>EndOfAssembly}" class=" whiteText" />
 										<layout:Grid class="" defaultSpan="L6 M6 S6">
 											<layout:content>
-												<!--<Label text="25 JUN - 7:00" class="whiteText" />
-												<Label text="02 JUL - 16:00" class="whiteText" />-->
 
 												<Label text="{path:'KPIchartTaktAdherence>/plannedStart', formatter:'airbus.mes.stationtracker.util.Formatter.dateToStringFormat'}" class=" whiteText" />
 												<Label text="{path:'KPIchartTaktAdherence>/endOfAssembly', formatter:'airbus.mes.stationtracker.util.Formatter.dateToStringFormat'}" class=" whiteText" />

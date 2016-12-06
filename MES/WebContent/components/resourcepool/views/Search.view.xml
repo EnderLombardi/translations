@@ -94,11 +94,6 @@
 					<!-- </content> </Panel> -->
 				</items>
 			</FlexBox>
-
-			<!-- <VBox width="100%" alignItems="center"> <items> <Panel expanded="true" 
-				expandable="false" height="auto" width="100%"> <content> <Label text="Site:" 
-				required = "true"/> <Text text="AUKB"/> <Label text="Resource Pool" required 
-				= "true"/> <Input showValueHelp="true"/> </content> </Panel> </items> </VBox> -->
 		</content>
 	</Page>
 </core:View>
