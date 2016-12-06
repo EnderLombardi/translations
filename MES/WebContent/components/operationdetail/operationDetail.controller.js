@@ -98,7 +98,7 @@ sap.ui
 					 */
 					switchMode : function(oEvent) {
 						var oSwitchButton = oEvent.getSource();
-
+						oSwitchButton.setEnabled(false);
 						if (oSwitchButton.getState() == true) {
 							this.getView().byId("switchStatusLabel").setText(
 									this.getView().getModel("i18n")
