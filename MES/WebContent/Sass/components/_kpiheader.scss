@@ -315,8 +315,8 @@ $kpi-box-disruptions-total-numbers-height-bis: 44px;
             color: $white-two !important;
         }
     &:nth-child(2) {
-        border-bottom: solid 1px #ffffff;
-        border-top: solid 1px #ffffff;
+        border-bottom: solid 1px $white-two;
+        border-top: solid 1px $white-two;
         }
     } 
 }

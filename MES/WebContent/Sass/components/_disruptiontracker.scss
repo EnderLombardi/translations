@@ -49,11 +49,11 @@ td{
         display:none !important;
     }
     .pageHeader {
-        border-top: 0.6rem solid #ffffff;
+        border-top: 0.6rem solid $white-two;
     }
     @at-root .disruptions .sapMPanel,
         .sapMPage>.sapMPageHeader + section{
-            background-color: #ffffff !important;
+            background-color: $white-two !important;
     }
     .sapMPanelContent{
         &:not(.sapMPanelBGTransparent){
@@ -82,7 +82,7 @@ td{
     }
     header{
         z-index: 10;
-        box-shadow: 0px 2px 15px -5px #0F2D65;
+        box-shadow: 0px 2px 15px -5px $teal-blue-hover;
         .headerText{
             text-shadow: none;
         }
@@ -93,8 +93,8 @@ td{
     .sapMIBar{
         &.sapMSubHeader-CTX{
             color: white !important;
-            background: #0F2D65 ! important;
-            color: #FFFFFF !important;
+            background: $teal-blue-hover ! important;
+            color: $white-two !important;
             .headerText{
                 font-size: 1.2rem !important;
             }
@@ -108,7 +108,7 @@ td{
 #disruptiontrackerView--gotoDisruptionKpi{
     &.sapMBtn{
         &:hover{
-            background-color: rgba(0, 86, 112, 0.20);
+            background-color: $petrol-20;
         }
         span{
             color: #0D5D76;
@@ -121,7 +121,7 @@ td{
     }
 }
 #disrptTrackerSettings-dialog{
-    background: #ffffff;
+    background: $white-two;
     border: none;
     border-radius: 0;
     box-shadow: 0 0 5px #333;

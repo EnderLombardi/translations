@@ -167,7 +167,7 @@ BOX MANAGEMENT
                  max-width: calc(100% - 100px);
             }
             &.cherry-red {
-                color: #e4002b;
+                color: $cherry-red;
             }
         }
     }
@@ -229,7 +229,7 @@ BOX MANAGEMENT
 }
 
 .grey{
-    background-color: #97999b;
+    background-color: $cool-grey;
     &:hover{
         background-color: $cool-grey-hover;
         color: black;
@@ -389,12 +389,12 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
     }
     .dhx_matrix_scell{
         &.folder{
-            background-color: #d5f1f8;
+            background-color: $duck-egg-blue;
             border-bottom: solid 1px #EAFCFE;
             @extend %dhxItemFolder;
         }
         &.item{
-            border-bottom: solid 1px #d5f1f8;
+            border-bottom: solid 1px $duck-egg-blue;
             color: #0D5D76;
             background-color: #EAFBFD;
             @extend %dhxItemFolder;
@@ -545,7 +545,7 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
     }
     .ylabelUserImage{
         @extend %stationViewYlabelIconAndImage;
-        background-color: #D5F1F8;
+        background-color: $duck-egg-blue;
         border-radius: 999px;
     }
     .ylabelUser{
@@ -573,7 +573,7 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
     }
 
     .operationCP{
-        background-color: #97999b;
+        background-color: $cool-grey;
         border: 2px solid #0D2C63;
         &:hover{
             background-color: $cool-grey-hover;
@@ -694,13 +694,13 @@ label{
     width: 100%;
 }
 .homeHeaderBox{
-    background-color: #ffffff;
+    background-color: $white-two;
 }
 .DialogWidth{
     width: 50%;
 }
 .noBorderToolbar{
-    background-color: #ffffff !important;
+    background-color: $white-two !important;
     box-shadow: none !important;
     border: 0px !important;
     border-bottom: 0px !important;
@@ -857,10 +857,10 @@ BOX RESOLUTION EFFICIENCY
 ********************************/
 #stationTrackerView--boxResolutionEfficiency{
     .boxResolutionEfficiencyGoodValue{
-        color: #84bd00;
+        color: $dark-lime-green;
     }
     .boxResolutionEfficiencyBadValue {
-        color: #fe5000;
+        color: $blood-orange;
     }
 }
 #stationTrackerView--boxSLBEfficiecy_chart-chart-item-3,
@@ -871,7 +871,7 @@ BOX RESOLUTION EFFICIENCY
 SHIFT STAFFING
 ********************************/
 #stationTrackerView--shifStaffingHeader-dmc-chart .Left {
-    background-color: #84bd00;
+    background-color: $dark-lime-green;
 }
 #stationTrackerView--shifStaffingHeader{
     .sapSuiteDmcTitle,
@@ -885,7 +885,7 @@ SHIFT STAFFING
         color: white;
     }
     .sapSuiteDmcBarDeltaInt {
-        background: #fe5000;
+        background: $blood-orange;
     }
     .sapSuiteDmcBarDeltaStripe {
         background-color: #74D2E7;
@@ -910,7 +910,7 @@ STATION TRACKER TOOLBAR
     }
 }
 #stationTrackerView--toolbarstationtracker{
-    background-color: #D5F1F8 !important;
+    background-color: $duck-egg-blue !important;
     label{
         color: #0D5D76;
         padding: 0 0 0 0.625rem;
@@ -935,7 +935,7 @@ STATION TRACKER TOOLBAR
         color: #0D5D76;
     }
     .sapMBtn:hover{
-        background-color: rgba(0, 86, 112, 0.20);
+        background-color: $petrol-20;
         &>.sapMBtnTransparent{
             &.sapMBtnHoverable{
                 background-color: transparent;
@@ -945,14 +945,14 @@ STATION TRACKER TOOLBAR
 }
 .sapMPopoverScroll{
     .sapMSelectListItemBaseSelected{
-        background-color: #D5F1F8 !important;
+        background-color: $duck-egg-blue !important;
     }
 }
 /********************************
 POP UP POLYPOLY
 *********************************/
 #pop-up-polypoly{
-    background: #ffffff;
+    background: $white-two;
     border: none;
     border-radius: 0;
     box-shadow: 0 0 5px #333;
@@ -986,10 +986,10 @@ POP UP POLYPOLY
     padding: 0;
 }
 #pop-up-polypoly-cont{
-    border-top: 3px solid #ffffff;
+    border-top: 3px solid $white-two;
 }
 #pop-up-polypoly-footer{
-    background-color: #0F2D65;
+    background-color: $teal-blue-hover;
 }
 /**********************
 DATE PICKER
@@ -999,7 +999,7 @@ DATE PICKER
         .sapMBtnTransparent{
             border: none;
             &>.sapMBtnIcon{
-                color: #ffffff;
+                color: $white-two;
             }
         }
     }
@@ -1018,7 +1018,7 @@ DATE PICKER
             }
         }
         .sapMBtn {
-            background-color: #73d2e6;
+            background-color: $twilight-blue;
             &:hover>.sapMBtnHoverable,
             &>.sapMBtnHoverable {
                 background-color: transparent;
@@ -1028,13 +1028,13 @@ DATE PICKER
                 font-weight: 400;
             }
             &:hover{
-                background-color: rgba(0, 86, 112, 0.20);
+                background-color: $petrol-20;
             }
         }
     }
 }
 .classDatePickerButton{
-    color: #ffffff;
+    color: $white-two;
     text-shadow: none;
     &.sapMBarChild{
         &.sapMBtn{
@@ -1046,7 +1046,7 @@ DATE PICKER
 }
 .sapMTB-Transparent-CTX .classDateButton+.sapMLabel {
     text-shadow: none;
-    color: #ffffff;
+    color: $white-two;
 }
 /************************
 PRODUCTION GROUP POPOVER
@@ -1160,8 +1160,8 @@ FROM CUSTOM CSS
 }
 .contentNoPad .sapMPanelContent {
     padding: 0rem;
-    background-color: #0F2D65;
-    border-bottom: 1px solid #ffffff;
+    background-color: $teal-blue-hover;
+    border-bottom: 1px solid $white-two;
 }
 .overallProgresstitle{
     span{
@@ -1263,7 +1263,7 @@ div{
 .pageHeaderDialog{
     &.sapMDialog{
         &>footer{
-            background-color: rgba(0, 32, 91, 0.94) !important;
+            background-color: $navy-blue !important;
         }
     }
 }
@@ -1361,7 +1361,7 @@ OTHER
 }
 .partialConfHeader{
     .sapUxAPObjectPageHeaderIdentifier{
-        background-color: #0085AD !important;
+        background-color: $teal-blue !important;
     }
 }
 .whitePartialConfHeader .sapUxAPObjectPageHeaderIdentifierTitle,
@@ -1503,7 +1503,7 @@ OTHER
     @extend %rond;
 }
 .duck-egg-blue{
-    background-color: #d5f1f8 !important;
+    background-color: $duck-egg-blue !important;
 }
 .eventOrange{
     background-color: #F9DAAB;
@@ -1555,7 +1555,7 @@ OTHER
                     opacity: 0.8;        
                 }
                 >* {
-                    color: #ffffff !important;
+                    color: $white-two !important;
                     background-color: $sapui-petrol !important;
                 }
             }
@@ -1570,7 +1570,7 @@ OTHER
 
 #ImportOswUnplannedPopover--SelectAllUnpd-inner {
     &.sapMToggleBtnPressed {
-        color: #ffffff !important;
+        color: $white-two !important;
         background-color: $sapui-petrol !important;
         &:hover {
             opacity: 0.8;

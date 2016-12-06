@@ -94,7 +94,7 @@ STATIONTRACKER
 @mixin CustomTileText(){
     opacity: 0.6;
     font-size: 16px;
-    color: #ffffff;
+    color: $white-two;
     font-weight: normal;
     font-style: normal;
     font-stretch: normal;
@@ -107,7 +107,7 @@ STATIONTRACKER
     }
 }
 @mixin polypolyTable(){
-    background-color: #ffffff;
+    background-color: $white-two;
     -webkit-transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out;
     -moz-transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out;
     -o-transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out;

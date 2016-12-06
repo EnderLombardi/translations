@@ -17,7 +17,7 @@
         }
     }
     &:hover{
-        background: rgba(0, 86, 112, 0.20) !important;
+        background: $petrol-20 !important;
     }
     &>.sapMBtnEmphasized{
         @include  disruptionBackground(#008bc7);
@@ -85,7 +85,7 @@ label{
 
 // Disruption ack comment dialog
 #disruptionAckCommentDialogue {
-    background: #ffffff;
+    background: $white-two;
     border: none;
     border-radius: 0;
     box-shadow: 0 0 5px #333;
@@ -107,7 +107,7 @@ label{
 
 // Disruption comment dialogue
 #disruptionCommentDialogue{
-    background: #ffffff;
+    background: $white-two;
     border: none;
     border-radius: 0;
     box-shadow: 0 0 5px #333;
@@ -128,7 +128,7 @@ label{
 
 // Disruption close dialog
 #disruptionCloseDialogue{
-    background: #ffffff;
+    background: $white-two;
     border: none;
     border-radius: 0;
     box-shadow: 0 0 5px #333;
@@ -186,7 +186,7 @@ label{
     }
 }
 #materialListSelectDialog{
-    background: #ffffff;
+    background: $white-two;
     border: none;
     border-radius: 0;
     box-shadow: 0 0 5px #333;

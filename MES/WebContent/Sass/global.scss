@@ -86,12 +86,12 @@ table{
     #content{
         #globalNavView{
             #globalNavView--refreshTime-inner, #globalNavView--localDELog-inner{
-                color: #73d2e6 !important;
+                color: #74d2e7 !important;
                 text-shadow: none;
             }
 
             #globalNavView--refreshTime-img{
-                color: #73d2e6;
+                color: $twilight-blue;
                 text-shadow: none;
             }
 
@@ -138,10 +138,10 @@ table{
             button{
                 padding:0;
                 &:hover{
-                    background-color: rgba(0, 86, 112, 0.20);
+                    background-color: $petrol-20;
                     &>div{
                         &.sapMBtnActive{
-                            color:#ffffff;
+                            color:$white-two;
                             background-color:#74D2E7;
                         }
                     }
@@ -167,7 +167,7 @@ table{
                     background-color: rgb(73,164,188);
                 }
                 span{
-                    color:#ffffff;
+                    color:$white-two;
                 }
             }
         }
@@ -186,27 +186,27 @@ table{
 }
 
 .headerColorShell{
-    background: rgba(0, 32, 91, 0.94);
+    background: $navy-blue;
 }
 
 .completedColor{
-    background-color :#0085ad !important;
+    background-color :$teal-blue !important;
 }
 .activeColor{
-    background-color :#84bd00 !important;
+    background-color :$dark-lime-green !important;
 }
 .andonColor{
-    background-color :#e4002b
+    background-color :$cherry-red
 }
 .blockedColor{
-    background-color :#fbec00
+    background-color :$dandelion
 }
 .notStatedColor{
     background-color :#969696
 }
 
 .informationColor{
-    background-color:#d5f1f8;
+    background-color:$duck-egg-blue;
 }
 
 .rightPlace{
@@ -249,20 +249,20 @@ table{
     }
     @at-root #globalNavView--SelectLanguage span, #globalNavView--SelectLanguage label, #globalNavView #globalNavView--informationButton-inner #globalNavView--informationButton-img,
         #globalNavView #globalNavView--homeButton-inner #globalNavView--homeButton-img{
-            color: #73d2e6;
+            color: $twilight-blue;
     }
 }
 
 #globalNavView--SelectLanguage {
-    background: #0F2D65 !important;
+    background: $teal-blue-hover !important;
     border: 0;
 }
 
 #globalNavView--settingsButton {
-    background-color: #73d2e6;
+    background-color: $twilight-blue;
     margin-right: 0;
     padding: 0.250rem;
-    color:#ffffff;
+    color:$white-two;
     &.sapMBtn{
         &:hover{
             background-color: rgba(255, 255, 255, 0.20);
@@ -286,10 +286,10 @@ table{
     div{
         &.sapMBtnInner{
             &.sapMBtnAccept{
-                @include globalButon(#84bd00, #ffffff);
+                @include globalButon($dark-lime-green, $white-two);
             }
             &.sapMBtnReject{
-                @include globalButon(#e5002b, #ffffff);
+                @include globalButon(#e5002b, $white-two);
             }
         }
     }

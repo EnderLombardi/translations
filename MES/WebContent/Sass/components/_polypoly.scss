@@ -48,7 +48,7 @@ POLYPOLY
 }
 .sapUiTableCtrlFixed [id^="polypoly--oTablePolypoly-table-fixed"] .sapUiTableTr:not(.sapUiTableGroupHeader)>td:last-child,
 .sapUiTableCtrlFixed [id^="polypoly--oTablePolypoly-table-fixed"] [id^="polypoly--oTablePolypoly-rows"] td:nth-child(3){
-    border-right: 2px solid #ffffff;
+    border-right: 2px solid $white-two;
 }
 .sapUiTable{
     .sapUiTableCtrl{
@@ -184,7 +184,7 @@ div{
         &:not(.sapUiTableGroupHeader){
             &>td{
                 &:last-child{
-                    border-right: 3px solid #ffffff;
+                    border-right: 3px solid $white-two;
                 }
             }
         }
@@ -228,7 +228,7 @@ div{
     }
 }
 #polypoly--oTablePolypoly{
-    background-color:#ffffff;
+    background-color:$white-two;
     &.sapUiTableRSel{
         .sapUiTableTr{
             &>td{
@@ -278,7 +278,7 @@ button[id^="polypoly"] .sapMBtnContent{
 .button[id^="polypoly"]{
     &.sapMBtn{
         &:hover{
-            background-color: rgba(0, 86, 112, 0.20);
+            background-color: $petrol-20;
             &>.sapMBtnHoverable{
                 background-color: transparent;
                 border-color:transparent;
@@ -306,10 +306,10 @@ button[id^="polypoly"].sapMBtn:hover> div[id^="polypoly"].sapMBtnHoverable{
     div{
         &.sapMBtnInner{
             &.sapMBtnAccept{
-                @include button(#84bd00, #ffffff);
+                @include button($dark-lime-green, $white-two);
             }
             &.sapMBtnReject{
-                @include button(#e5002b, #ffffff);
+                @include button(#e5002b, $white-two);
             }
         }
     }
@@ -345,7 +345,7 @@ button[id^="polypoly"].sapMBtn:hover> div[id^="polypoly"].sapMBtnHoverable{
     .classPolypolyPage{
         .sapMBtnTransparent{
             &>.sapMBtnIcon{
-                color: #ffffff;
+                color: $white-two;
             }
         }
     }
@@ -361,7 +361,7 @@ button[id^="polypoly"].sapMBtn:hover> div[id^="polypoly"].sapMBtnHoverable{
 
 //POP UP CREATE POLYPOLY
 #columnPopupDialog{
-    background: #ffffff;
+    background: $white-two;
     border: none;
     border-radius: 0;
     box-shadow: 0 0 5px #333;
@@ -406,13 +406,13 @@ button[id^="polypoly"].sapMBtn:hover> div[id^="polypoly"].sapMBtnHoverable{
     border-top:3px solid rgba(255, 255, 255, 0);
 }
 #columnPopupDialog-footer{
-    background-color:#0F2D65;
+    background-color:$teal-blue-hover;
 }
 
 /* Pop-up QA */
 #oQADialog,
 #infoUpdate12 {
-    background: #ffffff;
+    background: $white-two;
     border: none;
     border-radius: 0;
     box-shadow: 0 0 5px #333;
@@ -475,12 +475,12 @@ button[id^="polypoly"].sapMBtn:hover> div[id^="polypoly"].sapMBtnHoverable{
     border-top:3px solid  rgba(255, 255, 255, 0);
 }
 #oQADialog-footer{
-    background-color:#0F2D65;
+    background-color:$teal-blue-hover;
 }
 
 // POP UP CONFIRMATION DELETE
 #confirmDeleteDialog{
-    background: #ffffff;
+    background: $white-two;
     border: none;
     border-radius: 0;
     box-shadow: 0 0 5px #333;
@@ -501,5 +501,5 @@ button[id^="polypoly"].sapMBtn:hover> div[id^="polypoly"].sapMBtnHoverable{
     overflow: visible;
 }
 #confirmDeleteDialog-footer{
-    background-color:#0F2D65;
+    background-color:$teal-blue-hover;
 }

@@ -84,7 +84,7 @@ STATION TRACKER
   text-transform: capitalize;
   margin-right: 0px !important;
   border-right: solid 1px #74d2e7 !important;
-  background: #0F2D65 !important;
+  background: #0f2d65 !important;
   border: 0; }
 
 #stationTrackerView--stationtracker {
@@ -739,7 +739,7 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
   color: #0D5D76;
   vertical-align: middle; }
 #stationTrackerView--stationtracker .ylabelUserImage {
-  background-color: #D5F1F8;
+  background-color: #d5f1f8;
   border-radius: 999px; }
 #stationTrackerView--stationtracker .yMoreLabel {
   position: absolute;
@@ -999,7 +999,7 @@ STATION TRACKER TOOLBAR
   color: white; }
 
 #stationTrackerView--toolbarstationtracker {
-  background-color: #D5F1F8 !important; }
+  background-color: #d5f1f8 !important; }
 #stationTrackerView--toolbarstationtracker label {
   color: #0D5D76;
   padding: 0 0 0 0.625rem; }
@@ -1018,7 +1018,7 @@ STATION TRACKER TOOLBAR
   background-color: transparent; }
 
 .sapMPopoverScroll .sapMSelectListItemBaseSelected {
-  background-color: #D5F1F8 !important; }
+  background-color: #d5f1f8 !important; }
 
 /********************************
 POP UP POLYPOLY
@@ -1053,7 +1053,7 @@ POP UP POLYPOLY
   border-top: 3px solid #ffffff; }
 
 #pop-up-polypoly-footer {
-  background-color: #0F2D65; }
+  background-color: #0f2d65; }
 
 /**********************
 DATE PICKER
@@ -1070,7 +1070,7 @@ DATE PICKER
 .sap-desktop .classDatePickerPop .sapMPopoverArrUp:after {
   border-bottom-color: #d4f1f7; }
 .sap-desktop .classDatePickerPop .sapMBtn {
-  background-color: #73d2e6; }
+  background-color: #74d2e7; }
 .sap-desktop .classDatePickerPop .sapMBtn:hover > .sapMBtnHoverable, .sap-desktop .classDatePickerPop .sapMBtn > .sapMBtnHoverable {
   background-color: transparent;
   background: transparent;
@@ -1214,7 +1214,7 @@ FROM CUSTOM CSS
 
 .contentNoPad .sapMPanelContent {
   padding: 0rem;
-  background-color: #0F2D65;
+  background-color: #0f2d65;
   border-bottom: 1px solid #ffffff; }
 
 .sectionusers button {
@@ -1351,7 +1351,7 @@ OTHER
   height: 0rem; }
 
 .partialConfHeader .sapUxAPObjectPageHeaderIdentifier {
-  background-color: #0085AD !important; }
+  background-color: #0085ad !important; }
 
 .whitePartialConfHeader .sapUxAPObjectPageHeaderIdentifierTitle, .whitePartialConfHeader2 .sapUxAPObjectPageHeaderIdentifierDescription {
   color: white !important; }
@@ -1803,12 +1803,12 @@ KPI Header Content
 
 .topPageHeader {
   color: white !important;
-  background: #0F2D65 !important;
+  background: #0f2d65 !important;
   border: 0; }
 
 .pageHeader {
   color: white !important;
-  background: #0F2D65 !important;
+  background: #0f2d65 !important;
   border: 0; }
 
 .classSettingPage .pageHeader span {
@@ -1850,7 +1850,7 @@ KPI Header Content
   vertical-align: middle;
   height: 100%; }
 .classListProgramRadioBtn .sapMRbB .sapMRbBOut {
-  border: 2px solid #73d2e6; }
+  border: 2px solid #74d2e7; }
 .classListProgramRadioBtn label {
   display: inline-block;
   vertical-align: middle; }
@@ -1952,7 +1952,7 @@ POP-UP CONFIRM DELETE DIALOG
   overflow: visible; }
 
 #messageDialog--errorMessageDialog-footer {
-  background-color: #0F2D65; }
+  background-color: #0f2d65; }
 
 /*******************************
 END POP-UP CONFIRM DELETE DIALOG
@@ -1964,7 +1964,7 @@ html.sap-desktop .sapMBtn:focus > .sapMBtnInner.sapMFocusable {
 html.sap-desktop .pageHeader .sapMBarMiddle .sapMBarChild {
   text-shadow: none; }
 html.sap-desktop .sapMBar-CTX:not(.sapMBtnDisabled) > .sapMBtnInner.sapMBtnActive {
-  background-color: #73d2e6; }
+  background-color: #74d2e7; }
 html.sap-desktop .sapMBtnTransparent > .sapMBtnIcon {
   color: #ffffff; }
 
@@ -1977,7 +1977,7 @@ html.sap-desktop .sapMBtnTransparent > .sapMBtnIcon {
   border-left: 0 !important; }
 
 #globalNavView--SelectLanguage-arrow {
-  background: #0F2D65 !important; }
+  background: #0f2d65 !important; }
 
 .myProfileButton:hover > div {
   background: rgba(234, 234, 234, 0.1) !important; }
@@ -1996,9 +1996,15 @@ html.sap-desktop .sapMBtnTransparent > .sapMBtnIcon {
 #settingsView--settingsSubHeader {
   background-color: #d5f1f8; }
 #settingsView--settingsSubHeader > div > button > .sapMBtnActive {
-  background-color: #74d2e7; }
+  background-color: #74d2e7;
+  -webkit-transition: background-color 0.2s ease-in-out;
+  -moz-transition: background-color 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out; }
 #settingsView--settingsSubHeader > div > button:hover > div:not(.sapMBtnActive) {
-  background-color: rgba(0, 86, 112, 0.2); }
+  background-color: rgba(0, 86, 112, 0.2);
+  -webkit-transition: background-color 0.2s ease-in-out;
+  -moz-transition: background-color 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out; }
 
 #settingsView--headTextProgram-listUl > li .classListProgramRadioBtn {
   padding: 12px 0 12px 12px;
@@ -2065,15 +2071,15 @@ DISRUPTIONTRACKER
   margin: 0.7rem 0.7rem 0 0.7rem; }
 .disruptions header {
   z-index: 10;
-  box-shadow: 0px 2px 15px -5px #0F2D65; }
+  box-shadow: 0px 2px 15px -5px #0f2d65; }
 .disruptions header .headerText {
   text-shadow: none; }
 .disruptions .sapMTB {
   border-bottom: none !important; }
 .disruptions .sapMIBar.sapMSubHeader-CTX {
   color: white !important;
-  background: #0F2D65 !important;
-  color: #FFFFFF !important; }
+  background: #0f2d65 !important;
+  color: #ffffff !important; }
 .disruptions .sapMIBar.sapMSubHeader-CTX .headerText {
   font-size: 1.2rem !important; }
 
@@ -2254,7 +2260,7 @@ RESSOURCEPOOL
   overflow: visible; }
 
 #searchResourcePool--searchRessourcePoolDialog-footer {
-  background-color: #0F2D65; }
+  background-color: #0f2d65; }
 
 [id^="searchResourcePool--searchRessourcePoolDialog"] .sapMFlexItem {
   padding: 0 5px; }
@@ -2280,7 +2286,7 @@ RESSOURCEPOOL
   overflow: visible; }
 
 #valueHelp--selectDialog-dialog-footer {
-  background-color: #0F2D65; }
+  background-color: #0f2d65; }
 
 [id^="valueHelp--selectDialog-dialog"] .sapMFlexItem {
   padding: 0 5px; }
@@ -2399,13 +2405,13 @@ RESSOURCEPOOL
   color: #434343; }
 
 .sap-desktop .deleteConfirmation .sapMIBar.sapMFooter-CTX {
-  background-color: #0F2D65; }
+  background-color: #0f2d65; }
 .sap-desktop .helpDialogue .sapMIBar.sapMHeader-CTX {
   background: #d4f1f7;
   box-shadow: 0 0 5px #333;
   overflow: visible; }
 .sap-desktop .helpDialogue .sapMIBar.sapMFooter-CTX {
-  background-color: #0F2D65; }
+  background-color: #0f2d65; }
 .sap-desktop #resourcePool .resourcePoolSubheader button > .sapMBtnTransparent {
   border-radius: 0;
   border: 0;
@@ -2638,7 +2644,7 @@ button[id^="polypoly"].sapMBtn:hover > div[id^="polypoly"].sapMBtnHoverable, htm
   border-top: 3px solid rgba(255, 255, 255, 0); }
 
 #columnPopupDialog-footer {
-  background-color: #0F2D65; }
+  background-color: #0f2d65; }
 
 /* Pop-up QA */
 #oQADialog, #infoUpdate12 {
@@ -2677,7 +2683,7 @@ button[id^="polypoly"].sapMBtn:hover > div[id^="polypoly"].sapMBtnHoverable, htm
   border-top: 3px solid rgba(255, 255, 255, 0); }
 
 #oQADialog-footer {
-  background-color: #0F2D65; }
+  background-color: #0f2d65; }
 
 #confirmDeleteDialog {
   background: #ffffff;
@@ -2699,7 +2705,7 @@ button[id^="polypoly"].sapMBtn:hover > div[id^="polypoly"].sapMBtnHoverable, htm
   overflow: visible; }
 
 #confirmDeleteDialog-footer {
-  background-color: #0F2D65; }
+  background-color: #0f2d65; }
 
 .operationDetailHeadPanel {
   overflow: visible;
@@ -2709,13 +2715,13 @@ button[id^="polypoly"].sapMBtn:hover > div[id^="polypoly"].sapMBtnHoverable, htm
   height: auto !important; }
 .operationDetailHeadPanel .ExecutionModeText {
   font-style: italic;
-  color: #0085AD;
+  color: #0085ad;
   margin-right: 10px; }
 .operationDetailHeadPanel .sapMPanelExpandableIcon {
   display: none; }
 .operationDetailHeadPanel .mainText {
   font-size: 1.2rem !important;
-  color: #0085AD !important;
+  color: #0085ad !important;
   font-weight: 700 !important; }
 .operationDetailHeadPanel .sapMPanelBGTranslucent, .operationDetailHeadPanel .operationDetailForm .sapUiRLContainer {
   background: transparent !important;
@@ -2778,7 +2784,7 @@ html.sap-desktop .operationDetailHeadPanel .opDetailNavToolbar .sapMSegBBtnFocus
 
 .opDetailNavToolbar {
   background: #fff;
-  box-shadow: 0px 5px 15px -5px #0F2D65; }
+  box-shadow: 0px 5px 15px -5px #0f2d65; }
 .opDetailNavToolbar ul.opDetailNav {
   margin-left: 0; }
 .opDetailNavToolbar ul.opDetailNav li {
@@ -2793,7 +2799,7 @@ html.sap-desktop .operationDetailHeadPanel .opDetailNavToolbar .sapMSegBBtnFocus
   border-bottom-color: #e52929 !important; }
 
 .progressBtnColor .sapMBtnIcon {
-  color: #0085AD !important; }
+  color: #0085ad !important; }
 
 .operationDetailFooter {
   position: fixed;
@@ -2844,7 +2850,7 @@ html.sap-desktop .operationDetailHeadPanel .opDetailNavToolbar .sapMSegBBtnFocus
   border-radius: 0;
   box-shadow: 0 0 5px #333; }
 #mes .sapMDialog.ClassOperationDetailPopUp footer {
-  background-color: #0F2D65; }
+  background-color: #0f2d65; }
 
 .proressSliderGrid .sapUiRespGridSpanL8:nth-child(2) {
   overflow: visible !important; }
@@ -3075,10 +3081,10 @@ table {
   transition: background-color 0.2s ease-in-out; }
 
 #mes #content #globalNavView #globalNavView--refreshTime-inner, #mes #content #globalNavView #globalNavView--localDELog-inner {
-  color: #73d2e6 !important;
+  color: #74d2e7 !important;
   text-shadow: none; }
 #mes #content #globalNavView #globalNavView--refreshTime-img {
-  color: #73d2e6;
+  color: #74d2e7;
   text-shadow: none; }
 #mes #content #globalNavView .sapMBtn:hover > #globalNavView--refreshTime, #mes #content #globalNavView .sapMBtn:hover > #globalNavView--localDELog {
   background-color: rgba(255, 255, 255, 0.2); }
@@ -3175,14 +3181,14 @@ table {
   font-size: 1.3rem;
   text-transform: uppercase; }
 #globalNavView--SelectLanguage span, #globalNavView--SelectLanguage label, #globalNavView #globalNavView--informationButton-inner #globalNavView--informationButton-img, #globalNavView #globalNavView--homeButton-inner #globalNavView--homeButton-img {
-  color: #73d2e6; }
+  color: #74d2e7; }
 
 #globalNavView--SelectLanguage {
-  background: #0F2D65 !important;
+  background: #0f2d65 !important;
   border: 0; }
 
 #globalNavView--settingsButton {
-  background-color: #73d2e6;
+  background-color: #74d2e7;
   margin-right: 0;
   padding: 0.250rem;
   color: #ffffff; }

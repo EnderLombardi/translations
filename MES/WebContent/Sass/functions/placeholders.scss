@@ -86,7 +86,7 @@ STATION TRACKER
     text-transform: capitalize;
     margin-right: 0px !important;
     border-right: solid 1px #74d2e7 !important;
-    background: #0F2D65 !important;
+    background: $teal-blue-hover !important;
     border: 0;
 }
 %stationTrackerView{
@@ -235,7 +235,7 @@ STATION TRACKER
     -moz-box-shadow: 0px 2px 15px -5px #0F2D65;
     box-shadow: 0px 2px 15px -5px #0F2D65;
     border: none;
-    border-top: 0.6rem solid #ffffff !important;
+    border-top: 0.6rem solid $white-two !important;
     position: relative;
     z-index: 10;
 }
