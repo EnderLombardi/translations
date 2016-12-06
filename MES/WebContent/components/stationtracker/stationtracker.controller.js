@@ -286,6 +286,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 				descending : false
 			}) ]
 		});
+		sap.ui.getCore().byId("ImportOswUnplannedPopover--filterPhStation").setVisible(false);
 		airbus.mes.stationtracker.CheckQa = "UNPLANNED";
 		sap.ui.getCore().byId("ImportOswUnplannedPopover--LabelTitle").setText(airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("WorklistHeaderUnplanned"));
 		var oModel = sap.ui.getCore().getModel("unPlannedModel");
@@ -332,6 +333,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		});
 			
 		airbus.mes.stationtracker.CheckQa= "OSW";
+		sap.ui.getCore().byId("ImportOswUnplannedPopover--filterPhStation").setVisible(true);
 		sap.ui.getCore().byId("ImportOswUnplannedPopover--LabelTitle").setText(airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("WorklistHeaderOSW"));		
 		var oModel = sap.ui.getCore().getModel("OSWModel");
 
@@ -339,6 +341,22 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		airbus.mes.stationtracker.ImportOswUnplannedPopover.setModel(new sap.ui.model.json.JSONModel(oModel.oData.Rowsets.Rowset[0].Row),"WorkListModel");
 		airbus.mes.stationtracker.ImportOswUnplannedPopover.getModel("WorkListModel").refresh(true);
 		
+		var temp = [];
+		var binding = sap.ui.getCore().byId("ImportOswUnplannedPopover--filterPhStation").getBinding("items");
+		// Erase duplicate key in combobox selection
+		var Filter = new sap.ui.model.Filter({ path : "WORK_CENTER",
+									           test : function(value) {
+									                     if (temp.indexOf(value) == -1) {
+									                            temp.push(value);
+									                            return true;
+									                     } else {
+									                            return false;
+									                     }
+									              }
+												});	
+		
+		binding.filter(Filter);			
+				
 		// delay because addDependent will do a async rerendering and the popover will immediately close without it
 		jQuery.sap.delayedCall(0, this, function () {
 			airbus.mes.stationtracker.ImportOswUnplannedPopover.open();	
@@ -1145,5 +1163,13 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		oInfoToolbar.setVisible(bSelected);
 		oLabel.setText(sText);
 	},
+	
+	/**
+     * Fire 
+     */
+	filterPhStation : function(oEvt) {
+		
+		
+	}
 	
 });
