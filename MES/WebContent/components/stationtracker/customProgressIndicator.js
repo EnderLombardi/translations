@@ -120,7 +120,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 		var paused = c.getPaused();
 		var progress = c.getProgress();
 		var rmastatus = c.getRmastatus();
-		var skill = c.getSkill();
+//		var skill = c.getSkill();
 		var osw = c.getOsw();
 //		var S = c.getState();	not used
 		var W = c.getWidth();
@@ -190,7 +190,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 							if (osw[0] === "3" ){ //OSW
 								sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 petrol-back dandelion"><b style="padding-left:1px">'+sOSW+'</b></i>';
 							}
-							if (skill === "unplanned" ){ //skill
+							if (osw[0] === "1" ){ //unplanned
 								sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 petrol-back dandelion"><b style="padding-left:1px">'+sUNPD+'</b></i>';
 							}
 							//}
@@ -207,7 +207,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 							if (osw[0] === "3" ){ //OSW
 								sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 petrol-back dandelion"><b style="padding-left:1px">'+sOSW+'</b></i>';
 							}
-							if (skill === "unplanned" ){ //OSW
+							if (osw[0] === "1" ){ //unplanned
 								sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 petrol-back dandelion"><b style="padding-left:1px">'+sUNPD+'</b></i>';
 							}
 							break;
@@ -222,7 +222,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 							if (osw[0] === "3" ){ //OSW
 								sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 petrol-back dandelion"><b style="padding-left:1px">'+sOSW+'</b></i>';
 							}
-							if (skill === "unplanned" ){ //skill
+							if (osw[0] === "1" ){ //unplanned
 								sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 petrol-back dandelion"><b style="padding-left:1px">'+sUNPD+'</b></i>';
 							}
 							break;
@@ -237,7 +237,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 							if (osw[0] === "3" ){ //OSW
 								sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 petrol-back dandelion"><b style="padding-left:1px">'+sOSW+'</b></i>';
 							}
-							if (skill === "unplanned" ){ //skill
+							if (osw[0] === "1" ){ //unplanned
 								sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 petrol-back dandelion"><b style="padding-left:1px">'+sUNPD+'</b></i>';
 							}
 							break;
@@ -253,7 +253,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 							if (osw[0] === "3" ){ //OSW
 								sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 cherry-red white"><b style="padding-left:1px">'+sOSW+'</b></i>';
 							}
-							if (skill === "unplanned" ){ //skill
+							if (osw[0] === "1" ){ //unplanned
 								sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 cherry-red white"><b style="padding-left:1px">'+sUNPD+'</b></i>';
 							}
 							break;
@@ -272,7 +272,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 					if (osw[0] === "3" ){ //OSW
 						sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 teal-blue white"><b style="padding-left:1px">'+sOSW+'</b></i>';
 					}
-					if (skill === "unplanned" ){ //skill
+					if (osw[0] === "1" ){ //unplanned
 						sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 petrol-back dandelion"><b style="padding-left:1px">'+sUNPD+'</b></i>';
 					}
 				}
@@ -289,8 +289,8 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 					r.writeClasses();
 					r.writeAttribute('style', 'width:' + PercValue + '%');
 				}
-				//skill
-				if (skill === "unplanned" ){
+				//unplanned
+				if (osw[0] === "1" ){
 						sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 petrol-back dandelion"><b style="padding-left:1px">'+sUNPD+'</b></i>';
 				}
 				
@@ -315,8 +315,8 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 					} else {
 						r.write("<span class='sapMPIText1'");
 								r.addStyle('width', W);
-								if ( Status === "D2" || Status === "D1") {
-									r.addStyle('color','#0F2D65');
+								if ( DisruptionStatus === "D2" || DisruptionStatus === "D1") {
+									r.addStyle('color','rgba(0, 86, 112, 0.94)');
 								}
 								r.writeStyles();
 								r.write(">");
@@ -324,8 +324,8 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 						r.write("</span>");
 						r.write("<span class='sapMPIText2'");
 								r.addStyle('width', W);
-								if ( Status === "D2" || Status === "D1") {
-									r.addStyle('color','#0F2D65');
+								if ( DisruptionStatus === "D2" || DisruptionStatus === "D1") {
+									r.addStyle('color','rgba(0, 86, 112, 0.94)');
 								}
 								r.writeStyles();
 								r.write(">");
