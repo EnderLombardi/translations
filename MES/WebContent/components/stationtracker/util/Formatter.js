@@ -356,14 +356,9 @@ airbus.mes.stationtracker.util.Formatter = {
 						if (oBox.OSW === 1){ //OSW
 							sLeftIcon2 = '<i class="fa fa-refresh oswIcon cherry-red white"><b style="padding-left:1px">'+sOSW+'</b></i>';
 						}
-						
-<<<<<<< Upstream, based on origin/MESv0.9
-						if (oBox.avlLine.slice(-9) === "unplanned"){ //Unplanned
-							sLeftIcon2 = '<i class="fa fa-refresh oswIcon cherry-red white"><b style="padding-left:1px">'+sUNPD+'</b></i>';
-=======
+
 						if (oBox.isUnplanned === 1){ //Unplanned
 							sLeftIcon2 = '<i class="fa ffa-refresh oswIcon cherry-red white"><b style="padding-left:1px">'+sUNPD+'</b></i>';
->>>>>>> 295ad05 [stationtracker] - save filter of osw and new properties for unplanned field
 						}
 						
 						break;

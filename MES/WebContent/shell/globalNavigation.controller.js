@@ -243,6 +243,7 @@ sap.ui.controller(
 						airbus.mes.stationtracker.ShiftManager.updateShift = false;
 						// ** asynchrone call **//
 						oModule.loadRessourcePool();
+						oModule.loadStationTracker("I");
 						oModule.loadStationTracker("U");
 						oModule.loadStationTracker("O");
 						oModule.loadStationTracker("R");
