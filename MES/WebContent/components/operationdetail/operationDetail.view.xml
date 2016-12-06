@@ -115,14 +115,14 @@
 			<Toolbar class="opDetailNavToolbar">
 				<SegmentedButton id="opDetailSegmentButtons" class="opDetailNav" width="500px">
 					<items>
-						<SegmentedButtonItem id="idStatus" text="Status"
+						<SegmentedButtonItem id="idStatus" text="{i18n>Status}"
 							key="status" press="openPage" />
-						<SegmentedButtonItem id="idDisruption" text="Disruption"
-							key="disruption" press="openPage" />
-						<SegmentedButtonItem id="idReschedule" text="Reschedule"
-							key="reschedule" press="openPage" />
-						<SegmentedButtonItem id="idtouchngo" text="TouchNGo"
-							key="touchngo" press="openPage" />
+						<SegmentedButtonItem id="idDisruption" text="{i18n>Disruption}"
+							key="disruption" press="openPage" enabled="false" />
+						 <SegmentedButtonItem id="idReschedule" text="{i18n>Reschedule}"
+							key="reschedule" press="openPage"  enabled="false" />
+						<SegmentedButtonItem id="idtouchngo" text="{i18n>Touchngo}"
+							key="touchngo" press="openPage"  enabled="false" />
 					</items>
 				</SegmentedButton>
 			</Toolbar>
