@@ -26,35 +26,35 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 
 		// If default user settings are not yet loaded, need to load them
 		// We display settings screen
-		if (airbus.mes.settings.ModelManager.msn === "") {
-
-		  switch (text) {
-			case "StationTracker":
-				airbus.mes.settings.GlobalFunction.navigateTo("Go to Station Tracker", "stationtracker");
-				break;
-			case "WorkerOrderTracker":
-				airbus.mes.settings.GlobalFunction.navigateTo("Go to Work Tracker", "stationtracker");
-				break;
-			case "ResourcePool":
-				airbus.mes.settings.GlobalFunction.navigateTo("Go to Team Assignment", "teamassignment");
-				break;
-			case "LineTracker":
-				airbus.mes.settings.GlobalFunction.navigateTo("Go to Line Tracker", "linetracker");
-				break;
-			case "DisruptionAndon":
-				airbus.mes.settings.GlobalFunction.navigateTo("Go to Disruption Tracker", "disruptiontracker");
-				break;
-			case "Polypoly":
-				airbus.mes.settings.GlobalFunction.navigateTo("Go to Polypoly", "polypoly");
-				break;
-			case "TeamCompetencies":
-				airbus.mes.settings.GlobalFunction.navigateTo("Go to Team competencies & qualification","disruptiontracker");
-				break;
-			default:
-				break;
-		}
-
-		} else {
+//		if (airbus.mes.settings.ModelManager.msn === "") {
+//
+//		  switch (text) {
+//			case "StationTracker":
+//				airbus.mes.settings.GlobalFunction.navigateTo("Go to Station Tracker", "stationtracker");
+//				break;
+//			case "WorkerOrderTracker":
+//				airbus.mes.settings.GlobalFunction.navigateTo("Go to Work Tracker", "stationtracker");
+//				break;
+//			case "ResourcePool":
+//				airbus.mes.settings.GlobalFunction.navigateTo("Go to Team Assignment", "teamassignment");
+//				break;
+//			case "LineTracker":
+//				airbus.mes.settings.GlobalFunction.navigateTo("Go to Line Tracker", "linetracker");
+//				break;
+//			case "DisruptionAndon":
+//				airbus.mes.settings.GlobalFunction.navigateTo("Go to Disruption Tracker", "disruptiontracker");
+//				break;
+//			case "Polypoly":
+//				airbus.mes.settings.GlobalFunction.navigateTo("Go to Polypoly", "polypoly");
+//				break;
+//			case "TeamCompetencies":
+//				airbus.mes.settings.GlobalFunction.navigateTo("Go to Team competencies & qualification","disruptiontracker");
+//				break;
+//			default:
+//				break;
+//		}
+//
+//		} else {
 			// If default user settings are already loaded,
 			// We display directly station tracker screen
 
@@ -80,7 +80,7 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 			default:
 				break;
 			}
-		}
+//		}
 	},
 
 	/**
