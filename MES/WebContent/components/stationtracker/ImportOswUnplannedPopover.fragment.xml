@@ -46,6 +46,7 @@
 										<custom:customProgressIndicator
 											width="auto" 
 											state="sap.ui.core.ValueState.Success" 
+											disruption="{WorkListModel>DISRUPTION}"
 											paused="{WorkListModel>PAUSED}"
 											progress="{WorkListModel>PROGRESS}"
 											rmastatus="{WorkListModel>RMA_STATUS_COLOR}"

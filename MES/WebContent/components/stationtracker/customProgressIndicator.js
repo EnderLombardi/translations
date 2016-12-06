@@ -63,6 +63,11 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 				group : 'Appearance',
 				defaultValue : ''
 			},
+			disruption : {
+				type : 'string',
+				group : 'Appearance',
+				defaultValue : ''
+			},
 			paused : {
 				type : 'string',
 				group : 'Appearance',
@@ -108,6 +113,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 		
 		var PercValue = c.getPercentValue();
 		var Status = c.getStatus();
+		var DisruptionStatus = c.getDisruption();
 		var DispValue = c.getDisplayValue();
 		var DispValue2 = c.getDisplayValue2();
 		var ShowValue = c.getShowValue();
@@ -170,25 +176,8 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 							break;
 					default :
 				}
-								
-				switch ( Status ) {
-					case "C" :
-					// Operation Completed
-							//sStatus = "0";
-							r.addStyle('background-color','#0085ad');
-							sRightIcon = '<i class="fa fa-check rightIcon"></i>';
-							if ( rmastatus === 1 ){	//rma
-								sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon"></i>';
-							}
-							if (osw[0] === "3" ){ //OSW
-								sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 teal-blue white"><b style="padding-left:1px">'+sOSW+'</b></i>';
-							}
-							if (skill === "unplanned" ){ //skill
-								sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 petrol-back dandelion"><b style="padding-left:1px">'+sUNPD+'</b></i>';
-							}
-							
-							
-							break;
+											
+				switch ( DisruptionStatus ) {		
 					case "D1" :
 					//Opened Blocking and Escalated disruption
 							//if ( Status === "D1") {
@@ -269,6 +258,23 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 							}
 							break;
 					default:		
+				}
+				
+				// Operation Completed
+				if (Status === "C") {
+					
+					//sStatus = "0";
+					r.addStyle('background-color','#0085ad');
+					sRightIcon = '<i class="fa fa-check rightIcon"></i>';
+					if ( rmastatus === 1 ){	//rma
+						sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon"></i>';
+					}
+					if (osw[0] === "3" ){ //OSW
+						sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 teal-blue white"><b style="padding-left:1px">'+sOSW+'</b></i>';
+					}
+					if (skill === "unplanned" ){ //skill
+						sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 petrol-back dandelion"><b style="padding-left:1px">'+sUNPD+'</b></i>';
+					}
 				}
 						
 				//rma

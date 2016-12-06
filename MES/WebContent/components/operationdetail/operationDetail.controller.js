@@ -27,7 +27,6 @@ sap.ui
 							this.nav
 									.addPage(airbus.mes.operationdetail.status.oView);
 						}
-						
 					},
 					expandOperationDetailPanel : function(oEvent) {
 						var toggleButton = this.getView().byId(
@@ -42,12 +41,12 @@ sap.ui
 								.setExpanded(!toggleButton.getVisible());
 					},
 
-					/*onCloseOperationDetailPopup : function() {
-
-						airbus.mes.stationtracker.operationDetailPopup.close();
-						airbus.mes.shell.oView.oController
-								.renderStationTracker();
-					},*/
+//					onCloseOperationDetailPopup : function() {
+//
+//						airbus.mes.stationtracker.operationDetailPopup.close();
+//						airbus.mes.shell.oView.oController
+//								.renderStationTracker();
+//					},
 
 					/**
 					 * Similar to onBeforeRendering, but this hook is invoked
@@ -88,6 +87,16 @@ sap.ui
 								false);
 						this.getView().byId("operationDetailPanel")
 								.setExpanded(false);
+						var oSwitchButton = this.getView().byId("switchOperationModeBtn");
+						if (oSwitchButton.getState() == true) {
+//							Define visibility for header sections						
+							$(".opDetailNavToolbar > ul > li ~ li").css("display", "inline-block");
+							
+
+						} else {
+//							Define visibility for header sections	
+							$(".opDetailNavToolbar > ul > li ~ li").css("display", "none");
+						}
 					},
 
 					/***********************************************************
