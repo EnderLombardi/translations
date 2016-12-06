@@ -26,41 +26,40 @@
 						key="{disruptiontrackerI18n>status}_{disruptiontrackerI18n>status.rejected}" />
 				</items>
 			</ViewSettingsFilterItem> -->
-			<ViewSettingsFilterItem text="{disruptiontrackerI18n>category}"
-				key="{disruptionsTrackerModel>Category}" multiSelect="false">
-				<items />
-					
-			</ViewSettingsFilterItem>
-			<ViewSettingsFilterItem text="{disruptiontrackerI18n>reason}"
-				key="{disruptionsTrackerModel>Reason}" multiSelect="false">
+			<ViewSettingsFilterItem id="categoryFilter" text="{disruptiontrackerI18n>category}"
+				key="{disruptiontrackerI18n>category}" multiSelect="false" items="{ path: 'disruptionsTrackerModel>/Rowsets/Rowset/0/Row' }">
 				<items>
-					
+				<ViewSettingsItem text="{disruptionsTrackerModel>Category}"
+						key="{disruptionsTrackerModel>Category}" />
+				</items>	
+			</ViewSettingsFilterItem>
+			<ViewSettingsFilterItem id="reasonFilter" text="{disruptiontrackerI18n>reason}"
+				key="{disruptiontrackerI18n>reason}" multiSelect="false" items="{ path: 'disruptionsTrackerModel>/Rowsets/Rowset/0/Row' }">
+				<items>
+					<ViewSettingsItem text="{disruptionsTrackerModel>Reason}"
+						key="{disruptionsTrackerModel>Reason}" />
 				</items>
 			</ViewSettingsFilterItem> 
-			<ViewSettingsFilterItem text="{disruptiontrackerI18n>escalation}"
+			<ViewSettingsFilterItem id="escalationFilter" text="{disruptiontrackerI18n>escalation}"
 				key="{disruptiontrackerI18n>escalationLevel}" multiSelect="false">
 				<items>
-					<ViewSettingsItem text="{disruptiontrackerI18n>escalation.notEscalated}"
-						key="{disruptiontrackerI18n>escalationLevel}_1" />
+					<ViewSettingsItem 
+						text="{disruptiontrackerI18n>escalation.notEscalated}" key="1" />
 					<ViewSettingsItem
-						text="{disruptiontrackerI18n>escalation.firstEscalation}" key="{disruptiontrackerI18n>escalationLevel}_2" />
+						text="{disruptiontrackerI18n>escalation.firstEscalation}" key="2" />
 					<ViewSettingsItem
-						text="{disruptiontrackerI18n>escalation.finalEscalation}" key="{disruptiontrackerI18n>escalationLevel}_3" />
+						text="{disruptiontrackerI18n>escalation.finalEscalation}" key="3" />
 						<ViewSettingsItem
-						text="{disruptiontrackerI18n>All}" key="{disruptiontrackerI18n>escalationLevel}_ " />
+						text="{disruptiontrackerI18n>All}" key=" " />
 				</items>
 			</ViewSettingsFilterItem>
-			<ViewSettingsFilterItem text="{disruptiontrackerI18n>gravity}"
+			<ViewSettingsFilterItem id="gravityFilter" text="{disruptiontrackerI18n>gravity}"
 				key="{disruptionsTrackerModel>Gravity}" multiSelect="false">
 				<items>
-					<ViewSettingsItem text="{disruptiontrackerI18n>gravity.notBlocked}"
-						key="{disruptiontrackerI18n>gravity}_1" />
-					<ViewSettingsItem text="{disruptiontrackerI18n>gravity.disturbed}"
-						key="{disruptiontrackerI18n>gravity}_2" />
-					<ViewSettingsItem text="{disruptiontrackerI18n>gravity.blocked}"
-						key="{disruptiontrackerI18n>gravity}_3" />
-						<ViewSettingsItem
-						text="{disruptiontrackerI18n>All}" key="{disruptiontrackerI18n>gravity}_ " />
+					<ViewSettingsItem text="{disruptiontrackerI18n>gravity.notBlocked}" key="1" />
+					<ViewSettingsItem text="{disruptiontrackerI18n>gravity.disturbed}" key="2" />
+					<ViewSettingsItem text="{disruptiontrackerI18n>gravity.blocked}" key="3" />
+					<ViewSettingsItem text="{disruptiontrackerI18n>All}" key=" " />
 				</items>
 			</ViewSettingsFilterItem>
 		</filterItems>

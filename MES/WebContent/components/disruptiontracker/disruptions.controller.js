@@ -14,6 +14,7 @@ sap.ui
 					 */
 					disruptionTrackerRefresh : false,
 					disruptionsCustomDataFlag : undefined,
+					mFilterParams : undefined,
 					onInit : function() {
 					},
 
@@ -122,7 +123,7 @@ sap.ui
 						// Add item All into MSN ComboBox
 						var msnItemAll = new sap.ui.core.Item();
 						msnItemAll.setKey="";
-						msnItemAll.setText("All");
+						msnItemAll.setText(this.getView().getModel("disruptiontrackerI18n").getProperty("All"));
 						msnBox.insertItem(msnItemAll,0);
 
 						/*
@@ -152,30 +153,10 @@ sap.ui
 					},*/
 					onTableSettingsConfirm : function(oEvent) {
 
-						var mParams = oEvent.getParameters();
-						// apply sorter
-						var aSorters = [];
-						var sPath = mParams.sortItem.getKey();
-						var bDescending = mParams.sortDescending;
-						aSorters.push(new sap.ui.model.Sorter(sPath,
-								bDescending));
-						this.getView().byId("disruptionsTable").getBinding(
-								"items").sort(aSorters);
-						// apply filters
-						var aFilters = [];
-						jQuery.each(mParams.filterItems, function(i, oItem) {
-							var aSplit = oItem.getKey().split("_");
-							var sFilterPath = aSplit[0];
-							var sOperator = "EQ";
-							var sValue1 = aSplit[1];
-							if (sValue1 != " ") {
-								var oFilter = new sap.ui.model.Filter(
-										sFilterPath, sOperator, sValue1);
-								aFilters.push(oFilter);
-							}
-						});
-						this.getView().byId("disruptionsTable").getBinding(
-								"items").filter(aFilters);
+						
+						this.mFilterParams = oEvent.getParameters();
+						
+						airbus.mes.disruptiontracker.oView.oController.filterDisruptions({});
 					},
 
 
@@ -195,6 +176,28 @@ sap.ui
 							aFilters.push(new sap.ui.model.Filter(
 									"ResponsibleGroup", "EQ", sResoGroup));
 
+						if(this.mFilterParams) {
+							jQuery.each(this.mFilterParams.filterItems, function(i, oItem) {
+								var sFilterPath;
+								if(oItem.getParent().getId() == "categoryFilter")
+									sFilterPath = "Category";
+								else if(oItem.getParent().getId() == "reasonFilter")
+									sFilterPath = "Reason";
+								else if(oItem.getParent().getId() == "escalationFilter")
+									sFilterPath = "EscalationLevel";
+								else if(oItem.getParent().getId() == "gravityFilter")
+									sFilterPath = "Gravity";
+								
+								var sOperator = "EQ";
+								var sValue1 = oItem.getKey();
+								if (sValue1 != " ") {
+									var oFilter = new sap.ui.model.Filter(
+											sFilterPath, sOperator, sValue1);
+									aFilters.push(oFilter);
+								}
+							});
+						}
+						
 						oBinding.filter(aFilters);
 						airbus.mes.disruptiontracker.ModelManager
 								.fixNoDataRow();// Remove last column
@@ -214,6 +217,51 @@ sap.ui
 									this.tableSettingsDialogue);
 						}
 						this.tableSettingsDialogue.open();
+						
+						// Remove duplicates from Category filter list
+						var aTemp = [];	
+						sap.ui.getCore().byId("categoryFilter").getBinding("items")
+									.filter(new sap.ui.model.Filter({
+									    path: "Category",
+									    test: function(oValue) {
+											if (aTemp.indexOf(oValue) == -1) {
+												aTemp.push(oValue);
+												return true;
+											} else {
+												return false;
+											}
+									    }
+									  }));
+						
+						// Remove duplicates from Reason filter list
+						aTemp = [];
+						sap.ui.getCore().byId("reasonFilter").getBinding("items")
+						.filter(new sap.ui.model.Filter({
+						    path: "Reason",
+						    test: function(oValue) {
+								if (aTemp.indexOf(oValue) == -1) {
+									aTemp.push(oValue);
+									return true;
+								} else {
+									return false;
+								}
+						    }
+						  }));
+						
+						// Add filter item All in Category filter list
+						var categoryItemAll = new sap.m.ViewSettingsItem();
+						categoryItemAll.setKey(" ");
+						categoryItemAll.setText(this.getView().getModel("disruptiontrackerI18n").getProperty("All"));
+						
+						sap.ui.getCore().byId("categoryFilter").addItem(categoryItemAll);
+						
+						// Add filter item All in Reason filter list
+						var reasonItemAll = new sap.m.ViewSettingsItem();
+						reasonItemAll.setKey(" ");
+						reasonItemAll.setText(this.getView().getModel("disruptiontrackerI18n").getProperty("All"));
+						
+						sap.ui.getCore().byId("reasonFilter").addItem(reasonItemAll);
+
 					},
 
 					/***********************************************************

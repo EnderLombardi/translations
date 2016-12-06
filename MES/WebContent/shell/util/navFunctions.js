@@ -249,7 +249,7 @@ airbus.mes.shell.util.navFunctions = {
 		
 		var stationItemAll = new sap.ui.core.Item();
 		stationItemAll.setKey="";
-		stationItemAll.setText("All");
+		stationItemAll.setText(airbus.mes.disruptiontracker.oView.getModel("disruptiontrackerI18n").getProperty("All"));
 		
 		var stationBox = sap.ui.getCore().byId("disruptiontrackerView--stationComboBox");
 		stationBox.insertItem(stationItemAll,0);
@@ -285,7 +285,7 @@ airbus.mes.shell.util.navFunctions = {
 
 		var msnItemAll = new sap.ui.core.Item();
 		msnItemAll.setKey="";
-		msnItemAll.setText("All");
+		msnItemAll.setText(airbus.mes.disruptiontracker.oView.getModel("disruptiontrackerI18n").getProperty("All"));
 		
 		var msnBox = sap.ui.getCore().byId("disruptiontrackerView--msnComboBox");
 		msnBox.insertItem(msnItemAll,0);

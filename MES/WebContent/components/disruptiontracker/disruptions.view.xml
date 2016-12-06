@@ -40,7 +40,7 @@
 						placeholder="{disruptiontrackerI18n>selectStatus}"
 						selectedKey=" "
 						selectionChange="filterDisruptions">
-						<core:Item key=" " text="All" />
+						<core:Item key=" " text="{disruptiontrackerI18n>All}" />
 						<core:Item key="PENDING" text="{disruptiontrackerI18n>status.pending}" />
 						<core:Item key="ACKNOWLEDGED" text="{disruptiontrackerI18n>status.acknowledged}" />
 						<core:Item key="SOLVED" text="{disruptiontrackerI18n>status.solved}" />
@@ -139,7 +139,7 @@
 							<core:Icon src="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setIcon'}" color="{parts: [ {path: 'disruptionsTrackerModel>Status'}, {path: 'disruptionsTrackerModel>Gravity'}, {path: 'disruptionsTrackerModel>Severity'} ], formatter: 'airbus.mes.disruptiontracker.Formatter.setGravityColor'}" class="sapUiSmallMarginEnd" />
 							<Text text="{parts: [ {path: 'disruptionsTrackerModel>Status'}, {path: 'disruptionsTrackerModel>Gravity'}, {path: 'disruptionsTrackerModel>Severity'} ], formatter: 'airbus.mes.disruptiontracker.Formatter.setText'}" />
 						</HBox>	
-						<Text text="{disruptionsTrackerModel>Status}" />
+						<Text text="{disruptiontrackerI18n>{disruptionsTrackerModel>Status}}" />
 						<Text text="{disruptionsTrackerModel>Category}" />
 						<Text text="{disruptionsTrackerModel>Reason}" />
 						<Text text="{disruptionsTrackerModel>OriginatorGroupDesc}" />

@@ -53,7 +53,7 @@ airbus.mes.disruptiontracker.ModelManager = {
 		
 		var resGroupItemAll = new sap.ui.core.Item();
 		resGroupItemAll.setKey="";
-		resGroupItemAll.setText("All");
+		resGroupItemAll.setText(airbus.mes.disruptiontracker.oView.getModel("disruptiontrackerI18n").getProperty("All"));
 		
 		var resGroupBox = sap.ui.getCore().byId("disruptiontrackerView--resolutionGroupBox");
 		resGroupBox.insertItem(resGroupItemAll,0);
