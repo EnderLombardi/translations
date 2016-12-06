@@ -103,18 +103,25 @@ sap.ui
 							this.getView().byId("switchStatusLabel").setText(
 									this.getView().getModel("i18n")
 											.getProperty("Execution"));
+							
+//							Define visibility for header sections						
+							$(".opDetailNavToolbar > ul > li ~ li").css("display", "inline-block");
+							
 
 						} else {
 							this.getView().byId("switchStatusLabel").setText(
 									this.getView().getModel("i18n")
 											.getProperty("ReadOnly"));
+//							Define visibility for header sections	
+							$(".opDetailNavToolbar > ul > li ~ li").css("display", "none");
 						}
+						
 						/**
 						 * ***set the buttons according to the status of
 						 * operation mode *****
 						 */
 						switch(this.nav.getCurrentPage().getId()){
-						
+
 						case "idStatusView":
 							airbus.mes.operationdetail.status.oView.oController.setOperationActionButtons();
 							break;
