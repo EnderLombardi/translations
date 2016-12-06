@@ -166,6 +166,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 		var oFormatter = airbus.mes.stationtracker.util.Formatter;
 
 		oModel.forEach(function(el){
+			
 			var ssAvLine;
 			var ssGroup;
 			var oShift;
@@ -212,6 +213,8 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 			var sStatus = "0";
 			var fOSW = "0";
 			var fRMA = "0";
+			var sUnplanned = "0";
+
 			
 			// Operation is active	
 			if (  el.PAUSED === "false") {
@@ -253,6 +256,10 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 			if ( el.EXECUTION_STATION_SOURCE[0] === "3" ) {
 				fOSW = "1";
 			}
+			// Operation is from unplanned
+			if ( el.EXECUTION_STATION_SOURCE[0] === "1" ) {
+				sUnplanned = "1";
+			}
 			// Maturity
 			if ( el.RMA_STATUS_COLOR != "---" ) {
 				fRMA = "1";		
@@ -273,6 +280,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 					"ANDONS": el.ANDONS,
 					"RMA_STATUS_COLOR": fRMA,
 					"status" : sStatus,
+					"ISUNPLANNED" : sUnplanned,
 					//"ata": el.ata,
 					//"familyTarget": el.familyTarget,
 					"CPP_CLUSTER" : el.CPP_CLUSTER,
@@ -385,6 +393,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 					var aStatus = [];
 					var aOSW = [];
 					var aRMAStatus = [];
+					var aUnplanned = [];
 					
 					var fProgress = 0;
 					var fDuration = 0;
@@ -411,6 +420,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 						aStatus.push(el.status);
 						aOSW.push(el.EXECUTION_STATION_SOURCE);
 						aRMAStatus.push(el.RMA_STATUS_COLOR);
+						aUnplanned.push(el.ISUNPLANNED);
 						
 						fProgress += parseFloat(el.PROGRESS);
 						fDuration += parseFloat(el.DURATION);
@@ -470,6 +480,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 					
 						var oOperationRescheduling = {
 								
+							"isUnplanned" :  Math.max.apply(null,aUnplanned),
 							"ProdGroup" : sProdGroup,	
 							"sSfcStep" : sSfcStep,
 							"operationId" : sOperationId,

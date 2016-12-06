@@ -249,6 +249,7 @@ sap.ui.controller(
 						oModule.loadProductionGroup();
 						oModule.loadFilterUnplanned();
 						oModule.loadKPI();
+						oModule.getPhStation();
 						// oModule.loadKPIextraWork();
 					},
 

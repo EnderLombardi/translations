@@ -1169,12 +1169,14 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
      */
 	filterPhStation : function(oEvt) {
 		
-		var aValue = oEvt.getParameters().selectedItems;
+		var aValueSelected = oEvt.getSource().getSelectedKeys();
+		// Filter is doing in UpperCase
+		aValueSelected = aValueSelected.map(function(x){ return x.toUpperCase(); })
 		var binding = sap.ui.getCore().byId("ImportOswUnplannedPopover--myList").getBinding("items");
 		// Erase duplicate key in combobox selection
 		var Filter = new sap.ui.model.Filter({ path : "WORK_CENTER",
 									           test : function(value) {
-									                     if (aValue.indexOf(value) === -1) {
+									                     if (aValueSelected.indexOf(value) != -1) {
 									                            return true;
 									                     } else {
 									                            return false;
@@ -1182,7 +1184,9 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 									              }
 												});	
 		
-		binding.filter(Filter);	
+		binding.filter(Filter);
+		
+		airbus.mes.stationtracker.ModelManager.savePhStation(aValueSelected);
 		
 		
 	}

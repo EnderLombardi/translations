@@ -33,7 +33,8 @@ airbus.mes.stationtracker.ModelManager = {
               core.setModel(new sap.ui.model.json.JSONModel(), "groupModel"); // Unplanned// Filter// Model
               core.setModel(new sap.ui.model.json.JSONModel(), "KPIextraWork"); // KPI Extra Work
               core.setModel(new sap.ui.model.json.JSONModel(), "KPItaktAdherence"); // KPI Takt Adherence
-
+              core.setModel(new sap.ui.model.json.JSONModel(), "phStationSelected"); // physical station Selected for Osw
+      
               core.setModel(new sap.ui.model.json.JSONModel(), "KPIshiftStaffing"); // KPI Shift Staffing
               core.setModel(new sap.ui.model.json.JSONModel(), "KPItaktEfficiency"); // KPI Shift Staffing
               core.setModel(new sap.ui.model.json.JSONModel(), "KPIresolutionEfficiency"); // KPI Resolution Staffing
@@ -42,7 +43,7 @@ airbus.mes.stationtracker.ModelManager = {
 
 
            this.settings = airbus.mes.settings.ModelManager;
-
+           
            core.getModel("stationTrackerRModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onStationTrackerLoad);
            core.getModel("stationTrackerIModel").attachRequestCompleted( airbus.mes.stationtracker.ModelManager.onStationTrackerLoad);
            core.getModel("shiftsModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onShiftsLoad);
@@ -50,7 +51,8 @@ airbus.mes.stationtracker.ModelManager = {
            core.getModel("unPlannedModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onUnPlannedLoad);
            core.getModel("OSWModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onOWSLoad);
            core.getModel("ressourcePoolModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onRessourcePoolLoad);
-         
+           core.getModel("phStationSelected").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onPhStationLoad);
+           
 
 		var dest;
 
@@ -765,12 +767,9 @@ airbus.mes.stationtracker.ModelManager = {
 		var getUrlShifts = this.urlModel.getProperty("urlshifts");
 		var oData = airbus.mes.stationtracker.ModelManager.settings;
 		var reqResult = "";
-		getUrlShifts = airbus.mes.stationtracker.ModelManager.replaceURI(
-				getUrlShifts, "$site", oData.site);
-		getUrlShifts = airbus.mes.stationtracker.ModelManager.replaceURI(
-				getUrlShifts, "$station", oData.station);
-		getUrlShifts = airbus.mes.stationtracker.ModelManager.replaceURI(
-				getUrlShifts, "$msn", oData.msn);
+		getUrlShifts = airbus.mes.stationtracker.ModelManager.replaceURI(getUrlShifts, "$site", oData.site);
+		getUrlShifts = airbus.mes.stationtracker.ModelManager.replaceURI(getUrlShifts, "$station", oData.station);
+		getUrlShifts = airbus.mes.stationtracker.ModelManager.replaceURI(getUrlShifts, "$msn", oData.msn);
 
 		oViewModelshift.loadData(getUrlShifts, null, false);
 
@@ -1093,5 +1092,86 @@ airbus.mes.stationtracker.ModelManager = {
 
 		airbus.mes.stationtracker.ReschedulePopover.open();
 
+	},
+	
+
+	savePhStation : function(aPhStation) {
+
+		// get Url of the service
+		var urlsavephstation = this.urlModel.getProperty("urlsavephstation");
+		var oData = airbus.mes.stationtracker.ModelManager.settings;
+
+		jQuery.ajax({
+			async : false,
+			url : urlsavephstation,
+			data : {
+				"Param.1" : oData.site,
+				"Param.2" : oData.station,
+				"Param.3" : aPhStation,
+
+			},
+
+		});
+
+	},
+	
+	getPhStation : function() {
+		
+		var urlgetphstation = this.urlModel.getProperty("urlgetphstation");
+		var oData = airbus.mes.stationtracker.ModelManager.settings;
+
+		urlgetphstation = airbus.mes.stationtracker.ModelManager.replaceURI(urlgetphstation, "$site", oData.site);
+		urlgetphstation = airbus.mes.stationtracker.ModelManager.replaceURI(urlgetphstation, "$station", oData.station);
+		urlgetphstation = airbus.mes.stationtracker.ModelManager.replaceURI(urlgetphstation, "$phStation", oData.station);
+		
+		var oViewModel = sap.ui.getCore().getModel("phStationSelected");
+		oViewModel.loadData(urlgetphstation, null, true);
+				
+	},
+	
+	onPhStationLoad : function() {
+		
+		var aModel = sap.ui.getCore().getModel("phStationSelected");
+		
+		if (aModel.getProperty("/Rowsets/Rowset/0/Row")) {              
+			
+			aModel = sap.ui.getCore().getModel("phStationSelected").oData.Rowsets.Rowset[0].Row;
+			
+        } else  {
+        aModel = [];
+        console.log("no phStationSelected load");
+        }
+		
+		
+		if ( airbus.mes.stationtracker.ImportOswUnplannedPopover != undefined) {
+			
+			if ( airbus.mes.stationtracker.CheckQa === "OSW" ) ;
+
+			var aValueSelected = aModel;
+			// Filter is doing in UpperCase
+			aValueSelected = aValueSelected.map(function(x){ return x.toUpperCase(); })
+			var binding = sap.ui.getCore().byId("ImportOswUnplannedPopover--myList").getBinding("items");
+			// Erase duplicate key in combobox selection
+			var Filter = new sap.ui.model.Filter({ path : "WORK_CENTER",
+										           test : function(value) {
+										                     if (aValueSelected.indexOf(value) != -1) {
+										                            return true;
+										                     } else {
+										                            return false;
+										                     }
+										              }
+													});	
+			
+			binding.filter(Filter);
+			
+			
+			
+			
+			
+			
+			
+		}
+		
 	}
+	
 };
