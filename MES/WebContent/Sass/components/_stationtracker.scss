@@ -1528,7 +1528,7 @@ OTHER
     padding: 0rem !important;
 }
 .offtime{
-    background-image: url("../../../components/stationtracker/css/img/fat_lines.png");
+    background-image: url("../components/stationtracker/css/img/fat_lines.png");
 }
 #mes{
     .ClassOperationDetailPopUp{
@@ -1552,7 +1552,7 @@ OTHER
             &.sapMToggleBtnPressed {
                 background-color: $sapui-petrol !important;
                 &:hover {
-                    opacity: 0.8;        
+                    opacity: 0.8;
                 }
                 >* {
                     color: $white-two !important;
