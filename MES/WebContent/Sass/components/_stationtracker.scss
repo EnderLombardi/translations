@@ -134,11 +134,18 @@ BOX MANAGEMENT
         left: 0px;
         overflow: hidden;
     }
-    .openBlockedEscalated, .openBlocked{
+    .openBlockedEscalated{
+        height: inherit;
+        width:100%;
+        background-color:$cherry-red;
+    }
+   
+   .openBlocked{
         height: inherit;
         width:100%;
         background-color:$dandelion;
     }
+   
     .fa {
         @extend %icon;
         height:23px;
@@ -213,7 +220,7 @@ BOX MANAGEMENT
     }
     .openBlockedEscalated{
         @include backgroundColorTransition(0.2s);
-        background-color:$dandelion-hover !important;
+        background-color:$cherry-red-hover !important;
     }
     .openBlocked{
         @include backgroundColorTransition(0.2s);
@@ -239,12 +246,17 @@ BOX MANAGEMENT
 .trackerTextBlack{
     color: #000;
 }
-.solvedBloackedExcalated{
-    @include trackerSolvedBlock(repeating-linear-gradient(135deg, #ff8c8c, #ff8c8c 10px, red 10px, red 20p));
+#mes{
+	.trackerBox{
+		.solvedBlockedExcalated{
+	    	@include trackerSolvedBlock(repeating-linear-gradient(135deg, #e4002b, #e4002b 10px, #9e001e 10px, #9e001e 20px));
+		}
+	}
 }
 .solvedBlocked{
-    @include trackerSolvedBlock(repeating-linear-gradient(135deg, #f3ff85, #f3ff8f 10px, yellow 10px, yellow 20px));
+    @include trackerSolvedBlock(repeating-linear-gradient(135deg, #ffbf00, #ffbf00 10px, #fbec00 10px, #fbec00 20px));
 }
+
 
 /***********************
 KPI HEADER

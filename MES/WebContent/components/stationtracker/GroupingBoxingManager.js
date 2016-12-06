@@ -249,9 +249,9 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 				sStatus = "7";
 			}
 			//andon
-			if ( el.DISRUPTION === "B") {
+			/*if ( el.DISRUPTION === "B") {
 				sStatus = "99";
-			}
+			}*/
 			// Operation is from OSW
 			if ( el.EXECUTION_STATION_SOURCE[0] === "3" ) {
 				fOSW = "1";

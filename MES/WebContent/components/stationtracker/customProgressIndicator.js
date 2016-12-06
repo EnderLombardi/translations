@@ -179,11 +179,12 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 											
 				switch ( DisruptionStatus ) {		
 					case "D1" :
-					//Opened Blocking and Escalated disruption
+					// Opened Blocking and disruption
 							//if ( Status === "D1") {
 							//sStatus = "4";
 							r.addStyle('background-color','#fbec00');
-							sRightIcon = '<i class="fa fa-play rightIcon petrol" ></i>';
+							r.addStyle('color','rgba(0, 86, 112, 0.94)');
+							sRightIcon = '<i class="fa fa-stop rightIcon petrol" ></i>';
 							if ( rmastatus === 1 ){	//rma
 								sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon petrol"></i>';
 							}
@@ -196,11 +197,11 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 							//}
 							break;
 					case "D2" :
-					//Opened Blocking disruption
+					// Opened Blocking disruption
 							//if ( Status === "D2") {
 							//sStatus = "5";
-							r.addStyle('background-color','#fbec00');
-							sRightIcon = '<i class="fa fa-stop rightIcon petrol" ></i>';
+							r.addStyle('background-color','#e4002b');
+							sRightIcon = '<i class="fa fa-stop rightIcon " ></i>';
 							if ( rmastatus === 1 ){	//rma
 								sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon petrol"></i>';
 							}
@@ -215,7 +216,8 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 					//Solved Blocking and Escalated disruption
 							//if ( Status === "D3") {
 							//sStatus = "6";
-							sRightIcon = '<i class="fa fa-play rightIcon"></i>';
+							r.addStyle('background', 'repeating-linear-gradient(135deg, #ffbf00, #ffbf00 10px, #fbec00 10px, #fbec00 20px)');
+							sRightIcon = '<i class="fa fa-play rightIcon petrol"></i>';
 							if ( rmastatus === 1 ){	//rma
 								sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon petrol"></i>';
 							}
@@ -230,7 +232,8 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 					//Solved Blocking disruption
 							//if ( Status === "D4") {
 							//sStatus = "7";
-							sRightIcon = '<i class="fa fa-play rightIcon petrol"></i>';
+							r.addStyle('background', 'repeating-linear-gradient(135deg, #e4002b, #e4002b 10px, #9e001e 10px, #9e001e 20px)');
+							sRightIcon = '<i class="fa fa-play rightIcon "></i>';
 							if ( rmastatus === 1 ){	//rma
 								sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon petrol"></i>';
 							}
@@ -241,7 +244,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 								sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 petrol-back dandelion"><b style="padding-left:1px">'+sUNPD+'</b></i>';
 							}
 							break;
-					case "B" :
+					/*case "B" :
 					//andon
 							//if ( Status === "B") {
 							//sStatus = "99";
@@ -256,7 +259,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 							if (osw[0] === "1" ){ //unplanned
 								sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 cherry-red white"><b style="padding-left:1px">'+sUNPD+'</b></i>';
 							}
-							break;
+							break;*/
 					default:		
 				}
 				
@@ -315,7 +318,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 					} else {
 						r.write("<span class='sapMPIText1'");
 								r.addStyle('width', W);
-								if ( DisruptionStatus === "D2" || DisruptionStatus === "D1") {
+								if ( DisruptionStatus === "D3" || DisruptionStatus === "D1") {
 									r.addStyle('color','rgba(0, 86, 112, 0.94)');
 								}
 								r.writeStyles();
@@ -324,7 +327,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 						r.write("</span>");
 						r.write("<span class='sapMPIText2'");
 								r.addStyle('width', W);
-								if ( DisruptionStatus === "D2" || DisruptionStatus === "D1") {
+								if ( DisruptionStatus === "D3" || DisruptionStatus === "D1") {
 									r.addStyle('color','rgba(0, 86, 112, 0.94)');
 								}
 								r.writeStyles();
