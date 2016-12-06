@@ -166,6 +166,9 @@ BOX MANAGEMENT
             &+.trackerText {
                  max-width: calc(100% - 100px);
             }
+            &.cherry-red {
+                color: #e4002b;
+            }
         }
     }
 
@@ -184,9 +187,6 @@ BOX MANAGEMENT
     .petrol-back {
         background-color: $petrol;
     }
-    .cherry-red {
-        color: $cherry-red;
-    }
     .cherry-red-back {
         background-color: $cherry-red;
     }
@@ -200,18 +200,23 @@ BOX MANAGEMENT
 }
 .trackerBox:hover{
     .dark-lime-green-back{
+        @include backgroundColorTransition(0.2s);
         background-color:$dark-lime-green-hover !important;
     }
     .teal-blue-back{
+        @include backgroundColorTransition(0.2s);
         background-color:$teal-blue-hover !important;
     }
     .cherry-red-back{
+        @include backgroundColorTransition(0.2s);
         background-color:$cherry-red-hover !important;
     }
     .openBlockedEscalated{
+        @include backgroundColorTransition(0.2s);
         background-color:$dandelion-hover !important;
     }
     .openBlocked{
+        @include backgroundColorTransition(0.2s);
         background-color:$dandelion-hover !important;
     }
     &+ .trackerTextBlock + .solvedBlocked,
@@ -1622,4 +1627,3 @@ OTHER
         }
     }
 }
-

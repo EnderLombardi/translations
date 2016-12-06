@@ -78,6 +78,9 @@ table{
     .sapMPI{
         margin: 1.25rem 0;
     }
+    *:hover {
+        @include backgroundColorTransition(0.2s);
+    }
 }
 #mes{
     #content{

@@ -122,10 +122,10 @@ STATIONTRACKER
     border-radius:0;
     border:none;
 }
-@mixin transition($time){
-    -webkit-transition: background-color $time ease-in-out, box-shadow $time ease-in-out;
-    -moz-transition: background-color $time ease-in-out, box-shadow $time ease-in-out;
-    transition: background-color $time ease-in-out, box-shadow $time ease-in-out;
+@mixin backgroundColorTransition($time){
+    -webkit-transition: background-color $time ease-in-out;
+    -moz-transition: background-color $time ease-in-out;
+    transition: background-color $time ease-in-out;
 }
 @mixin disruptionBackground($color){
     background-color: transparent !important;
