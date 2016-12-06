@@ -30,7 +30,7 @@
 						<RadioButton
 							enabled="{ path : 'program>prog', formatter : 'airbus.mes.settings.util.Formatter.enabledProgram' }"
 							select="onProgramSelect" class="classListProgramRadioBtn" text="{program>prog}" />
-						<Image src="{program>picture}" width="75%" />
+						<Image src="{program>picture}" width="75%" press ="onImagePress" />
 					</HBox>
 				</CustomListItem>
 				<layoutData>

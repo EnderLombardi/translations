@@ -58,6 +58,7 @@ sap.ui.controller("airbus.mes.settings.Settings",
 					that.addParent(oElement, oTree);
 				});
 			},
+			
 			findElement : function(oTree, sId) {
 				if (oTree.id == sId) {
 					return oTree;
