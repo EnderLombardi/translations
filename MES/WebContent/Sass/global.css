@@ -1521,12 +1521,11 @@ OTHER
   background-color: #005483 !important; }
 #stationTrackerView--toolbarstationtracker-popover-scroll > button:hover > div:not(.sapMToggleBtnPressed) {
   background-color: rgba(222, 222, 222, 0.5); }
-=======
+
   #stationTrackerView--toolbarstationtracker-popover-scroll > button > div {
     color: inherit !important; }
   #stationTrackerView--toolbarstationtracker-popover-scroll > button:hover > div {
     background-color: rgba(222, 222, 222, 0.5); }
->>>>>>> a49922b [Station tracker] operation detail section visibility
 
 #ImportOswUnplannedPopover--SelectAllUnpd-inner.sapMToggleBtnPressed {
   color: #ffffff !important;
