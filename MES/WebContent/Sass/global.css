@@ -497,15 +497,11 @@ BOX MANAGEMENT
     z-index: 0;
     left: 0px;
     overflow: hidden; }
-<<<<<<< Upstream, based on origin/MESv0.9
-  .trackerBox .openBlockedEscalated, .trackerBox .openBlocked {
-=======
   .trackerBox .openBlockedEscalated {
     height: inherit;
     width: 100%;
     background-color: #e4002b; }
   .trackerBox .openBlocked {
->>>>>>> 9a6e5ad [stationtracker] - color statut & disruption
     height: inherit;
     width: 100%;
     background-color: #fbec00; }
