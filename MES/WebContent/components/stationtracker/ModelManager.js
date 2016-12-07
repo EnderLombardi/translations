@@ -1107,7 +1107,7 @@ airbus.mes.stationtracker.ModelManager = {
 			data : {
 				"Param.1" : oData.site,
 				"Param.2" : oData.station,
-				"Param.3" : aPhStation,
+				"Param.3" : aPhStation.toString(),
 
 			},
 
@@ -1135,7 +1135,7 @@ airbus.mes.stationtracker.ModelManager = {
 		
 		if (aModel.getProperty("/Rowsets/Rowset/0/Row")) {              
 			
-			aModel = sap.ui.getCore().getModel("phStationSelected").oData.Rowsets.Rowset[0].Row;
+			aModel = sap.ui.getCore().getModel("phStationSelected").oData.Rowsets.Rowset[0].Row[0].originPhysicalStation;
 			
         } else  {
         aModel = [];
@@ -1147,7 +1147,14 @@ airbus.mes.stationtracker.ModelManager = {
 			
 			if ( airbus.mes.stationtracker.CheckQa === "OSW" ) ;
 
-			var aValueSelected = aModel;
+			var aValueSelected = [];
+			
+			aModel.split(",").forEach(function(el){
+			
+				aValueSelected.push(el);
+				
+			})
+			
 			// Filter is doing in UpperCase
 			aValueSelected = aValueSelected.map(function(x){ return x.toUpperCase(); })
 			var binding = sap.ui.getCore().byId("ImportOswUnplannedPopover--myList").getBinding("items");

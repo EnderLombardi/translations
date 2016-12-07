@@ -14,7 +14,7 @@
 				<HBox>
 					<ToggleButton id="SelectAllUnpd" text="{StationTrackerI18n>WorklistSelectAll}" enabled="true" pressed="false" press="onUnplannedSelectAll" class="sapUiTinyMarginBeginEnd" type="Transparent"/>
 					
-						<MultiComboBox id="filterPhStation" items="{WorkListModel>/}"
+						<MultiComboBox id="filterPhStation" items="{WorkListModel>/}" placeholder="{StationTrackerI18n>PhStation}"
 						selectionFinish="filterPhStation" visible="false" class="sapUiSizeCompact" width="20rem">
 						<core:Item key="{WorkListModel>WORK_CENTER}" text="{WorkListModel>DESCRIPTION}"/> 
 					</MultiComboBox>
