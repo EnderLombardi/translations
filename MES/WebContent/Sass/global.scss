@@ -314,11 +314,23 @@ FORM
     }
     .sapMInputBaseInner {
         border: 1px solid $ligth-grey;
+        
     }
     .sapMInputBaseInner:not(.sapMInputBaseReadonlyInner):not(.sapMInputBaseStateInner):not(.sapMInputBaseDisabledInner):hover {
         border-color: $twilight-blue;
     }
+	.sapMComboBoxTextField {
+    	line-height: 1.9rem;
+    	height: 1.9rem;
+    	.sapMInputBaseInner {
+        border: 0px solid $ligth-grey;
+        line-height: 1.9rem;
+    	height: 1.9rem!important;
+        
+    	}
+	}
 }
+
 /*************
 Datepicker
 **************/
