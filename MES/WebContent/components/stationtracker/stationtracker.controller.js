@@ -1186,6 +1186,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		
 		if ( aValueSelected.length === 0 ) {
 			
+			sap.ui.getCore().byId("ImportOswUnplannedPopover--myList").getBinding("items").filter();
 			return;
 			
 		}

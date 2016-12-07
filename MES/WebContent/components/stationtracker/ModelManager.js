@@ -1156,7 +1156,8 @@ airbus.mes.stationtracker.ModelManager = {
 			})
 			
 			if ( aValueSelected.length === 1 ) {
-				
+
+				sap.ui.getCore().byId("ImportOswUnplannedPopover--myList").getBinding("items").filter();
 				return;
 				
 			}
