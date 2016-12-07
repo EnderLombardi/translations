@@ -195,9 +195,9 @@ airbus.mes.disruptions.Formatter = {
 			return true;
 	},
 
-	setAcknowledgeButtonVisibility : function(responsibleFlag, status) {
+	setAcknowledgeButtonVisibility : function(originatorFlag, responsibleFlag, status) {
 
-		if (responsibleFlag == "X") {
+		if (originatorFlag != "X" && responsibleFlag == "X") {
 
 			if (status == airbus.mes.disruptions.Formatter.status.pending) {
 
@@ -218,9 +218,9 @@ airbus.mes.disruptions.Formatter = {
 			return false;
 	},
 
-	setMarkSolvedButtonVisibility : function(responsibleFlag, status) {
+	setMarkSolvedButtonVisibility : function(originatorFlag, responsibleFlag, status) {
 
-		if (responsibleFlag == "X") {
+		if (originatorFlag != "X" && responsibleFlag == "X") {
 
 			if (status == airbus.mes.disruptions.Formatter.status.acknowledged) {
 

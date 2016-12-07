@@ -393,7 +393,7 @@
 							<ToolbarSpacer />
 
 							<Button text="{i18nModel>acknowledge}" type="Accept"
-								visible="{parts: [ {path: 'operationDisruptionsModel>ResponsibleFlag'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setAcknowledgeButtonVisibility'}"
+								visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>ResponsibleFlag'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setAcknowledgeButtonVisibility'}"
 								press="onAckDisruption" design="Transparent" />
 
 							<Button id="rejectDisruption" text="{i18nModel>reject}"
@@ -406,7 +406,7 @@
 								press="onEscalateDisruption" design="Transparent"/>
 
 							<Button text="{i18nModel>markSolved}" type="Accept"
-								visible="{parts: [ {path: 'operationDisruptionsModel>ResponsibleFlag'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setMarkSolvedButtonVisibility'}"
+								visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>ResponsibleFlag'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setMarkSolvedButtonVisibility'}"
 								press="onMarkSolvedDisruption" design="Transparent"/>
 								
 							<!-- <Button text="{i18nModel>refuse}" type="Reject"
