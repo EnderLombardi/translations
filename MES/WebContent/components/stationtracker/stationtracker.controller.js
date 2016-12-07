@@ -1183,10 +1183,11 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	filterPhStation : function(oEvt) {
 		
 		var aValueSelected = oEvt.getSource().getSelectedKeys();
-		
+		//reset the filter if nothing is selected its same as selected all
 		if ( aValueSelected.length === 0 ) {
 			
 			sap.ui.getCore().byId("ImportOswUnplannedPopover--myList").getBinding("items").filter();
+			airbus.mes.stationtracker.ModelManager.savePhStation(aValueSelected);
 			return;
 			
 		}
