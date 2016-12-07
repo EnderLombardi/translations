@@ -95,23 +95,31 @@ LINETRACKER
 
 /* Station Box CSS */
 .structureStationBox {
-	height: 98%;
+	height: 100%;
     width: inherit;
-	padding-top: 1%;
-	padding-bottom: 1%;
 	font-weight: bold;
 	float: left;
 	cursor: pointer;
 }
+#idStationView .sationDetailBox {
+	justify-content: center;
+    -webkit-display: -webkit-box;
+    -webkit-display: -webkit-flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+}
 .stationBoxLower {
-	height: 82%;
 	border-style: groove;
 	border-color: mintcream;
 	background-color: white;
 }
 
 .stationBoxBodyTop {
-	height: 5%;
+	height: 0.5rem;
 }
 
 .stationBoxErrorBdr {
@@ -132,20 +140,17 @@ LINETRACKER
 }
 
 .stationBoxBody {
-	padding-top: 3%;
-	height: 51%;
+
 }
 
 .stationBoxImg {
-	padding-top: 5%;
-	height: 75%;
+
 }
 
 .stationBoxFooter {
 	font-weight: normal;
 	font-size: 12px;
-	height: 40%;
-	padding-top: 3%;
+
 }
 
 .boldFont {
@@ -154,6 +159,9 @@ LINETRACKER
 
 .redHeading {
 	color: #BA000B;
+}
+.stationDetailImgStation {
+    width: 35%;
 }
 
 /******************
@@ -1389,10 +1397,6 @@ old STATIONDETAIL
 	margin-top: 1%
 }
 
-.stationDetailImgStation {
-	margin-top: 5%;
-    width: 25%;
-}
 
 .stationTilesHbox > div {
 	border-right:1px solid #ccc;

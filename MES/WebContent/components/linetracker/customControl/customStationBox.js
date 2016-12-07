@@ -89,7 +89,7 @@ sap.ui.core.Control.extend("airbus.mes.linetracker.customControl.customStationBo
 										 * r.write(";");
 										 */
 		r.writeControlData(t);
-		r.addClass("structureStationBox");
+		r.addClass("structureStationBox sationDetailBox");
 		r.writeClasses();
 		r.write('>');
 		r.write("<div");
@@ -104,10 +104,6 @@ sap.ui.core.Control.extend("airbus.mes.linetracker.customControl.customStationBo
 		/* Title */
 		r.writeEscaped(h);
 		r.write('</div>');
-		r.write('<div');
-		r.addClass("stationBoxLower");
-		r.writeClasses();
-		r.write('>')
 		r.write("<div");
 		r.addClass("stationBoxBodyTop");
 		switch (shc) {
@@ -119,6 +115,10 @@ sap.ui.core.Control.extend("airbus.mes.linetracker.customControl.customStationBo
 		}
 		r.writeClasses();
 		r.write("></div>");
+		r.write('<div');
+		r.addClass("stationBoxLower");
+		r.writeClasses();
+		r.write('>')
 		r.write("<div");
 		r.addClass("stationBoxBody");
 		r.writeClasses();
