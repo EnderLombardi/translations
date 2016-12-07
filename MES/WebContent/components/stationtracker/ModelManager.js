@@ -1138,7 +1138,7 @@ airbus.mes.stationtracker.ModelManager = {
 			aModel = sap.ui.getCore().getModel("phStationSelected").oData.Rowsets.Rowset[0].Row[0].originPhysicalStation;
 			
         } else  {
-        aModel = [];
+        aModel = "";
         console.log("no phStationSelected load");
         }
 		
