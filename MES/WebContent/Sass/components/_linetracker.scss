@@ -813,14 +813,13 @@ html[data-sap-ui-browser*="ie"] .sapUiBody {
 }
 
 .sapMPIText1 {
-	margin-top: -2.0rem;
 	float: left;
 	font-family: Arial, Helvetica, sans-serif;
 	line-height: normal !important;
 	text-overflow: clip;
 	display: inline-block;
 	overflow: hidden;
-	height: 1.2em;
+	height: 100%;
 	line-height: 1.2em;
 	color: white;
 	padding-left: 0.5rem;
