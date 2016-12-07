@@ -303,7 +303,7 @@ airbus.mes.stationtracker.util.Formatter = {
 						sColorProgress ='<div class="openBlockedEscalated"></div>';
 						sRightIcon = '<i class="fa fa-stop rightIcon "></i>';
 						if ( oBox.rmaStatus === 1 ){	//rma
-							sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon white"></i>';
+							sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon"></i>';
 						}
 						if (oBox.OSW === 3){ //OSW
 							sLeftIcon3 = '<i class="fa fa-refresh oswIcon petrol-back dandelion"><b style="padding-left:1px">'+sOSW+'</b></i>';
