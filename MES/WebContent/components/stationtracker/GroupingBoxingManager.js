@@ -254,7 +254,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 			}*/
 			// Operation is from OSW
 			if ( el.EXECUTION_STATION_SOURCE[0] === "3" ) {
-				fOSW = "1";
+				fOSW = "3";
 			}
 			// Operation is from unplanned
 			if ( el.EXECUTION_STATION_SOURCE[0] === "1" ) {
@@ -298,8 +298,11 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 					"PP_STATION":el.PP_STATION,
 					"OPERATION_BO": el.OPERATION_BO,
 					"SKILLS" : el.SKILLS,
-					"PREVIOUSLY_STARTED" : el.PREVIOUSLY_STARTED
+					"PREVIOUSLY_STARTED" : el.PREVIOUSLY_STARTED,
 					//"competency": el.competency,
+					"DISRUPTION" : el.DISRUPTION,
+					"OSW" : el.OSW
+					
 					//"rescheduledStarDate": el.rescheduledStarDate,
 					//"rescheduledEndDate": el.rescheduledEndDate,
 					//"rescheduledLine": el.rescheduledLine,

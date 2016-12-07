@@ -46,6 +46,7 @@
 											width="auto" 
 											state="sap.ui.core.ValueState.Success" 
 											click="operationWorkListClick"
+											unplanned="{WorkListModel>ISUNPLANNED}"
 											disruption="{WorkListModel>DISRUPTION}"
 											paused="{WorkListModel>PAUSED}"
 											progress="{WorkListModel>PROGRESS}"
