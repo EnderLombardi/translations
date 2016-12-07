@@ -1655,3 +1655,16 @@ OTHER
         }
     }
 }
+
+/* oswPopover */
+.oswPopover {
+	.sapUiTinyMarginBeginEnd[role="checkbox"]{
+		margin:0!important;
+		.sapMCbBg{
+			top: 0.5125rem;
+		}
+	}	
+	.sapUiSizeCompact .sapMTokenizer .sapMToken {
+		    margin-top: 0.23rem;
+	}
+}
