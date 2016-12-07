@@ -98,17 +98,7 @@ LINETRACKER
 	float: left;
 	cursor: pointer;
 }
-#idStationView .sationDetailBox {
-	justify-content: center;
-    -webkit-display: -webkit-box;
-    -webkit-display: -webkit-flex;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: space-around;
-}
+
 .stationBoxLower {
 	border-style: groove;
 	border-color: mintcream;
@@ -1369,4 +1359,24 @@ old STATIONDETAIL
 }
 .stationTilesHbox > div:last-child {
 	border-right:none;
+}
+
+
+/* ID STATION VIEW */
+#idStationView {
+	.sationDetailBox {
+		justify-content: center;
+	    -webkit-display: -webkit-box;
+	    -webkit-display: -webkit-flex;
+	    display: -webkit-box;
+	    display: -ms-flexbox;
+	    display: flex;
+	    flex-direction: column;
+	    flex-wrap: nowrap;
+	    justify-content: space-around;
+	}	
+	.stationTilesHbox {
+		border:1px solid $cool-grey;
+	}	
+			
 }
