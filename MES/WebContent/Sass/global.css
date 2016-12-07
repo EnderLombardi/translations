@@ -1634,6 +1634,14 @@ OTHER
 .spaceBetweenCharts .sapSuiteCmpChartItem.Normal.Auto {
   margin-top: 0.5rem !important; }
 
+/* oswPopover */
+.oswPopover .sapUiTinyMarginBeginEnd[role="checkbox"] {
+  margin: 0 !important; }
+.oswPopover .sapUiTinyMarginBeginEnd[role="checkbox"] .sapMCbBg {
+  top: 0.5125rem; }
+.oswPopover .sapUiSizeCompact .sapMTokenizer .sapMToken {
+  margin-top: 0.23rem; }
+
 /********************
 KPI Header Content
 *********************/
