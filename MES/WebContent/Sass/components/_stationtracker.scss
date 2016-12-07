@@ -223,11 +223,21 @@ BOX MANAGEMENT
         background-color:$dandelion-hover !important;
     }
     .solvedBlocked{
-    	@include gradient(repeating-linear-gradient(135deg, #fbec00, #fbec00 10px, #ffbf00 10px, #ffbf00 20px) !important);
+    	@include gradient(repeating-linear-gradient(135deg, #fbec00, #fbec00 10px, #ffbf00 10px, #ffbf00 20px));
+    	@include animbackground(slide 20s infinite linear forwards);
+    	@include keyframes(slide) {
+	    0%{background-position:0% 0%}
+	    100%{background-position:100% 0%}
+	    }  
         
     }
    .solvedBlockedExcalated{
-   	 	@include gradient(repeating-linear-gradient(135deg, #9e001e, #9e001e 10px, #e4002b 10px, #e4002b 20px) !important);
+   	 	@include gradient(repeating-linear-gradient(135deg, #9e001e, #9e001e 10px, #e4002b 10px, #e4002b 20px));
+    	@include animbackground(slide 20s infinite linear forwards);
+    	@include keyframes(slide) {
+	    0%{background-position:0% 0%}
+	    100%{background-position:100% 0%}
+	    }  
     }
 }
 .grey2 {

@@ -556,10 +556,57 @@ BOX MANAGEMENT
   transition: background-color 0.2s ease-in-out;
   background-color: #ffbf00 !important; }
 .trackerBox:hover .solvedBlocked {
-  background: repeating-linear-gradient(135deg, #fbec00, #fbec00 10px, #ffbf00 10px, #ffbf00 20px) !important; }
+  background: repeating-linear-gradient(135deg, #fbec00, #fbec00 10px, #ffbf00 10px, #ffbf00 20px);
+  background-size: 56px 56px;
+  -webkit-animation: slide 20s infinite linear forwards;
+  -moz-animation: slide 20s infinite linear forwards;
+  animation: slide 20s infinite linear forwards; }
+@-webkit-keyframes slide {
+  0% {
+    background-position: 0% 0%; }
+  100% {
+    background-position: 100% 0%; } }
+@-moz-keyframes slide {
+  0% {
+    background-position: 0% 0%; }
+  100% {
+    background-position: 100% 0%; } }
+@-o-keyframes slide {
+  0% {
+    background-position: 0% 0%; }
+  100% {
+    background-position: 100% 0%; } }
+@keyframes slide {
+  0% {
+    background-position: 0% 0%; }
+  100% {
+    background-position: 100% 0%; } }
 .trackerBox:hover .solvedBlockedExcalated {
-  background: repeating-linear-gradient(135deg, #9e001e, #9e001e 10px, #e4002b 10px, #e4002b 20px) !important; }
-
+  background: repeating-linear-gradient(135deg, #9e001e, #9e001e 10px, #e4002b 10px, #e4002b 20px);
+  background-size: 56px 56px;
+  -webkit-animation: slide 20s infinite linear forwards;
+  -moz-animation: slide 20s infinite linear forwards;
+  animation: slide 20s infinite linear forwards; }
+@-webkit-keyframes slide {
+  0% {
+    background-position: 0% 0%; }
+  100% {
+    background-position: 100% 0%; } }
+@-moz-keyframes slide {
+  0% {
+    background-position: 0% 0%; }
+  100% {
+    background-position: 100% 0%; } }
+@-o-keyframes slide {
+  0% {
+    background-position: 0% 0%; }
+  100% {
+    background-position: 100% 0%; } }
+@keyframes slide {
+  0% {
+    background-position: 0% 0%; }
+  100% {
+    background-position: 100% 0%; } }
 .grey2 {
   background-color: #dddddd; }
 
