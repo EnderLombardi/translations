@@ -347,6 +347,7 @@ html{
             &:not(.sapMRbDis):hover {
                 >* {
                     background-color: #f0f0f0;
+                    @include backgroundColorTransition(0.2s);
                 }
             }
             &.sapMRbBTouched {

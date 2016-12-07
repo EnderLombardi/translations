@@ -3,8 +3,6 @@
 	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:custom="airbus.mes.linetracker.customControl"
 	xmlns:l="sap.ui.layout" controllerName="airbus.mes.linetracker.ProductionLineView"
 	xmlns:html="http://www.w3.org/1999/xhtml">
-	<!-- <TileContainer id="prodTileContainer" height="90%" tiles="{newProductionModel>/}"> 
-		<CustomTile class="myCustomTile"> <content> <l:VerticalLayout class="myVLayoutProdLine"> -->
 	<FlexBox id="productionVBox" class="prductionMainBox" fitContainer="true" direction="RowReverse"
 		items="{newProductionModel>/}">
 		<items>
@@ -31,7 +29,7 @@
 						escalatedStatus="{newProductionModel>Andon_esc_stat}" lineNumber="{newProductionModel>Line}"
 						width="100%" height="100%">
 						<custom:content>
-							<viz:VizFrame height="90%" width="100%" vizType='donut' legendVisible="false" >
+							<viz:VizFrame height="100%" width="100%" vizType='donut' legendVisible="false" >
 								<viz:dataset>
 									<viz.data:FlattenedDataset data="{newProductionModel>Donut}">
 										<viz.data:dimensions>
@@ -58,5 +56,4 @@
 			</VBox>
 		</items>
 	</FlexBox>
-	<!-- </l:VerticalLayout> </content> </CustomTile> </TileContainer> -->
 </core:View>

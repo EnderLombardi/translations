@@ -2,55 +2,72 @@
 LINETRACKER
 *******************/
 
-/* Production Box CSS */
-.productionBoxMiddle {
-	height: 40%;
-	width: 50%;
-	float: left;
+/* Production line Box CSS */
+.productionTile>div {
+	&:nth-child(1){
+		height: 33.3333333%;
+	}
+	&:nth-child(2){
+		height: 30%;
+		>section {
+			>h1 {
+				height: 25%;
+			}
+			>div {
+				padding: 0.5rem;
+			}
+		}
+	}
+	&:nth-child(3){
+		height: 36.6666667%;
+		>.productionProductionBox {
+			width: auto;
+			height: 100%;
+			>.productionBoxheight {
+				height: 40%;
+				>.productionBoxMiddle {
+					height: 40%;
+					width: 50%;
+					float: left;
+					>.productionBoxMiddleLabel {
+						height: 40%;
+						font-size: 13px;
+						color: $sapui-font-black;
+						padding-bottom: 2%;
+					}
+					>div:nth-child(2) {
+						height: 58%;
+					}
+				}
+				>.andonLabel {
+					height: 20%;
+					color: $sapui-font-black;
+				}
+			}
+			>.productionBoxLowerMain{
+				height: 20%;
+				color: $white-two;
+				>.productionBoxLower {
+					height: 100%;
+					width: 50%;
+					float: left;
+					>.productionBoxLowerValue {
+						padding-top: 4%;
+    					height: 52%;
+						font-size: 22px;
+					}
+					>.productionBoxLowerLabel {
+						padding-bottom: 8%;
+    					height: 36%;
+						font-size: 16px;
+					}
+				}
+			}
+		}
+	}
 }
 
-.productionBoxMiddleLabel {
-	height: 30%;
-	    font-size: 1.5vh;
-	color: #a5acaa;
-}
-
-.productionBoxLowerValue {
-	height: 60%;
-	font-size: 3vh;
-}
-
-.productionBoxLowerLabel {
-	height: 40%;
-	font-size: 1.9vh;
-}
-
-.productionBoxLower {
-	height: 100%;
-	width: 50%;
-	float: left;
-}
-
-.productionBoxLowerMain {
-	height: 20%;
-	color: white;
-}
-
-.productionBoxFontsize {
-	font-size: 2.5vh;
-}
-
-.productionBoxHeight {
-	height: 40%;
-}
-
-.andonLabel {
-	height: 20%;
-	width: 100%;
-	float: center;
-	font-size: .9rem;
-	color: #a5acaa;
-}
+////////////////////////
 
 .redBackground {
 	background-color: $cherry-red;
@@ -64,30 +81,10 @@ LINETRACKER
 	background-color: white;
 }
 
-.greenColor {
-	color: #2ca02c;
-}
-
 .magentaBackground {
 	background-color: darkmagenta;
 }
 
-.magentacolor {
-	color: #5882aa;
-}
-
-.productionBoxheight {
-	height: 40%
-}
-
-.sizeSmall {
-	font-size: 2vh;
-}
-
-.imageSize {
-	height: 100%;
-	padding: 4%;
-}
 .productionImgStation{
 	margin-top: 7%;
     width: 33%;
@@ -139,18 +136,9 @@ LINETRACKER
 	font-size: 2vh;
 }
 
-.stationBoxBody {
-
-}
-
-.stationBoxImg {
-
-}
-
 .stationBoxFooter {
 	font-weight: normal;
 	font-size: 12px;
-
 }
 
 .boldFont {
@@ -177,15 +165,13 @@ Old global.css
 .factoryButton {
 	height: 100%;
 	min-height: 1.8rem;
-}
-
-.factoryButton>div {
-	height: 100%;
-}
-
-.factoryButton>div>span {
-	font-size: 2vh !important;
-	line-height: 110% !important;
+	>div {
+		height: 100%;
+		>span {
+			font-size: 2vh !important;
+			line-height: 110% !important;
+		}
+	}
 }
 
 /* Factory station5 height adjust  */
@@ -220,10 +206,9 @@ Old global.css
 	width: 15%;
 	height: 100%;
 	align-items: center;
-}
-
-.stationButtons>div {
-	height: 36%;
+	>div {
+		height: 36%;
+	}
 }
 
 .stationTiles {
@@ -231,20 +216,15 @@ Old global.css
 	width: 75%;
 	height: 100%;
 	align-items: center;
-}
-
-.stationTiles>div {
-    flex: 1;
-	width: 100%;
+	>div {
+		flex: 1;
+		width: 100%;
+	}
 }
 
 .stationTilesHbox>div {
 	height: 100%;
 	width: 100%;
-}
-
-.productionTile>div {
-	height: 33.3333333%;
 }
 
 .factoryButton>span {
@@ -287,12 +267,13 @@ Old global.css
 	justify-content: space-around;
 }
 /*alignment of pulse button and drop down*/
-.adjustPulseSelect .sapMFlexItem:nth-child(1) {
-	width: 160%;
-}
-
-.adjustPulseSelect .sapMFlexItem:nth-child(2) { //
-	width: 40%;
+.adjustPulseSelect {
+	.sapMFlexItem:nth-child(1){
+		width: 160%;
+	}
+	.sapMFlexItem:nth-child(2) { //
+		width: 40%;
+	}
 }
 
 .transferIsle {
@@ -312,32 +293,27 @@ Old global.css
 	margin-top: 5%;
 }
 
+//PRODUCTION MAIN BOX
 .prductionMainBox {
 	width: 100%;
 	height: 100%;
 	display: flex;
 	justify-content: space-around;
-
-}
-.prductionMainBox > div .sapMFlexItem {
-	border-right:1px solid #ccc;
-}
-.prductionMainBox > div:first-child .sapMFlexItem {
-	border-right:none;
-}
-.prductionMainBox>div {
-	width: 100%;
-	height: 100%;
-	min-width: 8rem;
+	>div {
+		width: 100%;
+		height: 100%;
+		min-width: 8rem;
+		&:first-child .sapMFlexItem {
+			border-right:none;
+		}
+		& .sapMFlexItem {
+			border-right:1px solid #ccc;
+		}
+	}
 }
 
 .productionStationBox {
 	width: 100%;
-	height: 100%;
-}
-
-.productionProductionBox {
-	width: auto;
 	height: 100%;
 }
 
@@ -363,33 +339,40 @@ Old global.css
 	height: 0;
 }
 
-.panelHeader .sapMPanelHdr {
-	text-align: center;
-	font-size: 1.5vh;
-}
-
-.panelHeader>div {
-	height: 75% !important;
+.panelHeader {
+	.sapMPanelHdr {
+		text-align: center;
+		font-size: 1.5vh;
+	}
+	>div {
+		height: 75% !important;
+	}
 }
 
 .factory_lineButton {
 	height: 100%;
 	color: #007cc0;
 	background-color: #ddeff1;
-
-}
-.factory_lineButton .sapMFocusable {
-    background: #d5f1f8;
-    color: #0D5D76;
-    font-weight: bold;
-    border: 0;
-	text-shadow:none;
+	.sapMFocusable {
+		background: #d5f1f8;
+		color: #0D5D76;
+		font-weight: bold;
+		border: 0;
+		text-shadow:none;
     }
-.factory_lineButton:hover .sapMFocusable, .factory_lineButton:focus .sapMFocusable {
-	background-color: rgba(222,222,222,0.5);
-}
-.factory_lineButton>span {
-	font-size: 120%;
+	>span {
+		font-size: 120%;
+	}
+	&:hover {
+		.sapMFocusable {
+			background-color: rgba(222,222,222,0.5);
+		}
+	}
+	&:focus {
+		.sapMFocusable {
+			background-color: rgba(222,222,222,0.5);
+		}
+	}
 }
 
 .tiPanel {
@@ -1351,13 +1334,6 @@ old STATIONDETAIL
 	font-size: 3vh;
 }
 
-.andonLabel {
-	height: 20%;
-	width: 100%;
-	float: center;
-	font-size: 2vh;
-	color: #a5acaa;
-}
 .greenColor {
 	color: #2ca02c;
 }
@@ -1379,21 +1355,12 @@ old STATIONDETAIL
 
 .imageSize {
 	height: 100%;
-	padding: 4%;
 }
 
 .hboxselect {
 	border-style: solid;
 	border-color: #bec6c6;
 	padding: 0;
-}
-
-.marginLeft {
-	margin-left: 1%
-}
-
-.marginTop {
-	margin-top: 1%
 }
 
 

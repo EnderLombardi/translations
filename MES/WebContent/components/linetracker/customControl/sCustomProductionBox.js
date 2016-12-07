@@ -118,12 +118,10 @@ sap.ui.core.Control.extend("airbus.mes.linetracker.customControl.sCustomProducti
 		var s = t.getStv();
 		var o = t.getOpen();
 		var e = t.getEscalated();
-//		var c = t.getContent();
 		var up = t.getUnitPercentage();
 		var uh = t.getUnitHours();
 		var w = t.getWidth();
 		var os = t.getOpenStatus();
-//		var es = t.getEscalatedStatus();
 		
 		r.write("<div align='center'");
 		r.writeControlData(t);
@@ -135,20 +133,6 @@ sap.ui.core.Control.extend("airbus.mes.linetracker.customControl.sCustomProducti
             r.writeStyles();
         };
 		r.write('>');
-
-		/*r.write("<div");
-		r.addClass("productionBoxheight");
-		r.writeClasses();
-		r.write('>');
-
-		r.write("<div align = 'center'");
-		r.addClass("imageSize");
-		r.writeClasses();
-		r.write('>');
-		r.renderControl(c);
-		r.write('</div>');
-
-		r.write('</div>');*/
 
 		r.write("<div");
 		r.addClass("stationDetailheight");

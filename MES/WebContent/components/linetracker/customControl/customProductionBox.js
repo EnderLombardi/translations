@@ -151,7 +151,6 @@ sap.ui.core.Control.extend("airbus.mes.linetracker.customControl.customProductio
 		r.writeEscaped(pl);
 		r.write('</div>');
 		r.write("<div");
-		r.addClass("magentacolor productionBoxFontsize");
 		r.writeClasses();
 		r.write('>');
 		r.writeEscaped(p + up);
@@ -169,7 +168,7 @@ sap.ui.core.Control.extend("airbus.mes.linetracker.customControl.customProductio
 		r.writeEscaped(tl);
 		r.write('</div>');
 		r.write("<div");
-		r.addClass(" greenColor productionBoxFontsize");
+		r.addClass("greenColor");
 		r.writeClasses();
 		r.write('>');
 		r.writeEscaped(tk + up);
