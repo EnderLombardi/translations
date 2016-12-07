@@ -163,7 +163,7 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
 
 		// click on confirm
 		oView.getController().operationStatus = "C";
-		oView.getController().Mode = oView.getModel("i18n").getProperty("EarnedStandards")
+		oView.getController().Mode = "EarnedStandards";
 
 		airbus.mes.operationdetail.ModelManager.loadReasonCodeModel();
 		if (!oView._reasonCodeDialog) {
@@ -183,7 +183,7 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
 
 		// Click on Complete
 		oView.getController().operationStatus = "X";
-		oView.getController().Mode = airbus.mes.operationdetail.status.oView.getModel("i18n").getProperty("complete")
+		oView.getController().Mode = "Complete";
 		if (!oView._oUserConfirmationDialog) {
 
 			oView._oUserConfirmationDialog = sap.ui.xmlfragment("airbus.mes.operationdetail.fragments.userConfirmation", oView.getController());

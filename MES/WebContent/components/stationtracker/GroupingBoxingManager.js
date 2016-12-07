@@ -224,7 +224,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 			if ( el.PAUSED === "---" ) {
 				sStatus = "1";
 				// Operation is pause	
-				if ( el.PAUSED === "---" && el.PROGRESS != "0" ) {
+				if ( el.PAUSED === "---" && el.PREVIOUSLY_STARTED === "true" ) {
 						sStatus = "3";
 					}	
 			}				
@@ -297,7 +297,8 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 					"SHOP_ORDER_BO":el.SHOP_ORDER_BO,
 					"PP_STATION":el.PP_STATION,
 					"OPERATION_BO": el.OPERATION_BO,
-					"SKILLS" : el.SKILLS
+					"SKILLS" : el.SKILLS,
+					"PREVIOUSLY_STARTED" : el.PREVIOUSLY_STARTED
 					//"competency": el.competency,
 					//"rescheduledStarDate": el.rescheduledStarDate,
 					//"rescheduledEndDate": el.rescheduledEndDate,
