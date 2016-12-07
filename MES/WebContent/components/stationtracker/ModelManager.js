@@ -1152,8 +1152,14 @@ airbus.mes.stationtracker.ModelManager = {
 			aModel.split(",").forEach(function(el){
 			
 				aValueSelected.push(el);
-				
+								
 			})
+			
+			if ( aValueSelected.length === 1 ) {
+				
+				return;
+				
+			}
 			
 			// Filter is doing in UpperCase
 			aValueSelected = aValueSelected.map(function(x){ return x.toUpperCase(); })

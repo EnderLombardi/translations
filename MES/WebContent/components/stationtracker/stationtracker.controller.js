@@ -1183,6 +1183,12 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 	filterPhStation : function(oEvt) {
 		
 		var aValueSelected = oEvt.getSource().getSelectedKeys();
+		
+		if ( aValueSelected.length === 0 ) {
+			
+			return;
+			
+		}
 		// Filter is doing in UpperCase
 		aValueSelected = aValueSelected.map(function(x){ return x.toUpperCase(); })
 		var binding = sap.ui.getCore().byId("ImportOswUnplannedPopover--myList").getBinding("items");
