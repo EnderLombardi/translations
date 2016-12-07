@@ -1,7 +1,7 @@
 <core:FragmentDefinition xmlns:core="sap.ui.core"
 	xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:custom="airbus.mes.stationtracker"
 	xmlns:html="http://www.w3.org/1999/xhtml">
-	<Dialog title="Unplanned activities" class="pageHeaderDialog classWorklistPopover">
+	<Dialog title="Unplanned activities" class="pageHeaderDialog classWorklistPopover oswPopover">
 		<customHeader>
 			<Toolbar>
 				<ToolbarSpacer />
