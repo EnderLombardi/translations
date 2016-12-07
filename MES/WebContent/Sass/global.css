@@ -543,36 +543,39 @@ BOX MANAGEMENT
     background-color: #0085ad; }
 
 .trackerBox:hover .dark-lime-green-back {
-  -webkit-transition: background-color 0.2s ease-in-out;
-  -moz-transition: background-color 0.2s ease-in-out;
-  transition: background-color 0.2s ease-in-out;
+  -webkit-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out;
+  -moz-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out;
   background-color: #536f12 !important; }
 .trackerBox:hover .teal-blue-back {
-  -webkit-transition: background-color 0.2s ease-in-out;
-  -moz-transition: background-color 0.2s ease-in-out;
-  transition: background-color 0.2s ease-in-out;
+  -webkit-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out;
+  -moz-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out;
   background-color: #0f2d65 !important; }
 .trackerBox:hover .cherry-red-back {
-  -webkit-transition: background-color 0.2s ease-in-out;
-  -moz-transition: background-color 0.2s ease-in-out;
-  transition: background-color 0.2s ease-in-out;
+  -webkit-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out;
+  -moz-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out;
   background-color: #9e001e !important; }
 .trackerBox:hover .openBlockedEscalated {
-  -webkit-transition: background-color 0.2s ease-in-out;
-  -moz-transition: background-color 0.2s ease-in-out;
-  transition: background-color 0.2s ease-in-out;
+  -webkit-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out;
+  -moz-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out;
   background-color: #9e001e !important; }
 .trackerBox:hover .openBlocked {
-  -webkit-transition: background-color 0.2s ease-in-out;
-  -moz-transition: background-color 0.2s ease-in-out;
-  transition: background-color 0.2s ease-in-out;
+  -webkit-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out;
+  -moz-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out;
   background-color: #ffbf00 !important; }
 .trackerBox:hover .solvedBlocked {
   background: repeating-linear-gradient(135deg, #fbec00, #fbec00 10px, #ffbf00 10px, #ffbf00 20px);
   background-size: 56px 56px;
   -webkit-animation: slide 20s infinite linear forwards;
   -moz-animation: slide 20s infinite linear forwards;
-  animation: slide 20s infinite linear forwards; }
+  animation: slide 20s infinite linear forwards;
+  -webkit-transition: background 0.2s ease-in-out;
+  -moz-transition: background 0.2s ease-in-out;
+  transition: background 0.2s ease-in-out; }
 @-webkit-keyframes slide {
   0% {
     background-position: 0% 0%; }
@@ -634,12 +637,16 @@ BOX MANAGEMENT
 .solvedBlockedExcalated {
   height: inherit;
   width: 100%;
-  background: repeating-linear-gradient(135deg, #e4002b, #e4002b 10px, #9e001e 10px, #9e001e 20px); }
+  background: repeating-linear-gradient(135deg, #e4002b, #e4002b 10px, #9e001e 10px, #9e001e 20px);
+  background-position: 14px 0;
+  background-size: 56px 56px; }
 
 .solvedBlocked {
   height: inherit;
   width: 100%;
-  background: repeating-linear-gradient(135deg, #ffbf00, #ffbf00 10px, #fbec00 10px, #fbec00 20px); }
+  background: repeating-linear-gradient(135deg, #ffbf00, #ffbf00 10px, #fbec00 10px, #fbec00 20px);
+  background-position: 14px 0;
+  background-size: 56px 56px; }
 
 /***********************
 KPI HEADER
@@ -2082,6 +2089,7 @@ html.sap-desktop .sapMBtnTransparent > .sapMBtnIcon {
 
 #settingsView--settingsSubHeader {
   background-color: #d5f1f8; }
+<<<<<<< Upstream, based on origin/MESv0.9
   #settingsView--settingsSubHeader > div > button > .sapMBtnActive {
     background-color: #74d2e7;
     -webkit-transition: background-color 0.2s ease-in-out;
@@ -2092,6 +2100,18 @@ html.sap-desktop .sapMBtnTransparent > .sapMBtnIcon {
     -webkit-transition: background-color 0.2s ease-in-out;
     -moz-transition: background-color 0.2s ease-in-out;
     transition: background-color 0.2s ease-in-out; }
+=======
+#settingsView--settingsSubHeader > div > button > .sapMBtnActive {
+  background-color: #74d2e7;
+  -webkit-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out;
+  -moz-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; }
+#settingsView--settingsSubHeader > div > button:hover > div:not(.sapMBtnActive) {
+  background-color: rgba(0, 86, 112, 0.2);
+  -webkit-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out;
+  -moz-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; }
+>>>>>>> 2c69010 [Stationtracker] fix css anim
 
 #settingsView--headTextProgram-listUl > li .classListProgramRadioBtn {
   padding: 12px 0 12px 12px;
@@ -4375,9 +4395,9 @@ table {
 #mes .sapMPI {
   margin: 1.25rem 0; }
 #mes *:hover {
-  -webkit-transition: background-color 0.2s ease-in-out;
-  -moz-transition: background-color 0.2s ease-in-out;
-  transition: background-color 0.2s ease-in-out; }
+  -webkit-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out;
+  -moz-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; }
 
 #mes #content #globalNavView #globalNavView--refreshTime-inner, #mes #content #globalNavView #globalNavView--localDELog-inner {
   color: #74d2e7 !important;

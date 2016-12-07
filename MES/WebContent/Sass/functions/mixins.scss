@@ -120,9 +120,15 @@ STATIONTRACKER
     border:none;
 }
 @mixin backgroundColorTransition($time){
-    -webkit-transition: background-color $time ease-in-out;
-    -moz-transition: background-color $time ease-in-out;
-    transition: background-color $time ease-in-out;
+    -webkit-transition: background-color $time ease-in-out, background $time ease-in-out;
+    -moz-transition: background-color $time ease-in-out, background $time ease-in-out;
+    transition: background-color $time ease-in-out, background $time ease-in-out;
+}
+@mixin transition($property,$time){
+    -webkit-transition: $property $time ease-in-out;
+    -moz-transition: $property $time ease-in-out;
+    transition: $property $time ease-in-out;
+
 }
 @mixin disruptionBackground($color){
     background-color: transparent !important;
@@ -146,7 +152,7 @@ STATIONTRACKER
 @mixin gradient($background){
     background: $background;
 }
-@mixin animbackground($animation){
+@mixin animbackground($animation...){
 	    background-size: 56px 56px;
 	    -webkit-animation: $animation;
 	    -moz-animation: $animation;
@@ -165,4 +171,9 @@ STATIONTRACKER
     @keyframes #{$animationName} {
         @content;
     }
+}
+@mixin wordwrap {
+	text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }

@@ -226,18 +226,19 @@ BOX MANAGEMENT
     	@include gradient(repeating-linear-gradient(135deg, #fbec00, #fbec00 10px, #ffbf00 10px, #ffbf00 20px));
     	@include animbackground(slide 20s infinite linear forwards);
     	@include keyframes(slide) {
-	    0%{background-position:0% 0%}
-	    100%{background-position:100% 0%}
-	    }  
+		    0%{background-position:0% 0%}
+		    100%{background-position:100% 0%}
+	    };
+	    @include transition(background,0.2s);
+	}  
         
-    }
    .solvedBlockedExcalated{
    	 	@include gradient(repeating-linear-gradient(135deg, #9e001e, #9e001e 10px, #e4002b 10px, #e4002b 20px));
     	@include animbackground(slide 20s infinite linear forwards);
     	@include keyframes(slide) {
 	    0%{background-position:0% 0%}
 	    100%{background-position:100% 0%}
-	    }  
+	    };  
     }
 }
 .grey2 {
@@ -258,10 +259,14 @@ BOX MANAGEMENT
 
 .solvedBlockedExcalated{
 	@include trackerSolvedBlock(repeating-linear-gradient(135deg, #e4002b, #e4002b 10px, #9e001e 10px, #9e001e 20px));
+	background-position: 14px 0;
+	background-size: 56px 56px;
 }
 
 .solvedBlocked{
     @include trackerSolvedBlock(repeating-linear-gradient(135deg, #ffbf00, #ffbf00 10px, #fbec00 10px, #fbec00 20px));
+    background-position: 14px 0;
+    background-size: 56px 56px;
 }
 
 
