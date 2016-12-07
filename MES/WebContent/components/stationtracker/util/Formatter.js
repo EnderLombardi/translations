@@ -313,7 +313,7 @@ airbus.mes.stationtracker.util.Formatter = {
 						}
 						break;
 					
-					// Solved Blocking and Escalated disruption
+					// Solved Blocking
 					case 6 :
 						sColorProgress ='<div class="solvedBlocked"></div>';
 //						sRightIcon = '<i class="fa fa-exclamation-triangle triangleIcon"></i>';
@@ -330,13 +330,13 @@ airbus.mes.stationtracker.util.Formatter = {
 						}
 						break;
 					
-					// Solved Blocking disruption
+					// Solved Blocking and escalated = andon solved
 					case 7 :
 						sColorProgress ='<div class="solvedBlockedExcalated"></div>';
 //						sRightIcon = '<i class="fa fa-exclamation-triangle triangleIcon"></i>';
 						sRightIcon = '<i class="fa fa-play rightIcon"></i>';
 						if ( oBox.rmaStatus === 1 ){	//rma
-							sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon petrol"></i>';
+							sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon"></i>';
 						}
 						if (oBox.OSW === 3){ //OSW
 							sLeftIcon2 = '<i class="fa fa-refresh oswIcon petrol-back dandelion"><b style="padding-left:1px">'+sOSW+'</b></i>';
