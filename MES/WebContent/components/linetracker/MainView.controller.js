@@ -41,10 +41,14 @@ sap.ui.controller("airbus.mes.linetracker.MainView", {
 	 * @memberOf airbus.MainView
 	 */
 	 onAfterRendering: function() {
-		 //sap.ui.getCore().byId("idMainView--myShell").setContent(sap.ui.getCore().byId("idFactoryView"));
-			$("#idMainView--MainViewNavContainer").height(
-					(($("#idMainView").height()
-					- $("#idMainView--lineTrackerToolbar").height() - $("#idMainView--lineTrackerSubheader").height() )/$("#idMainView").height())*100+"%");
+		 var borderTopWidthString = $("#idMainView--lineTrackerSubheader").css('border-top-width');
+		 var stringLength = borderTopWidthString.length;
+		 var borderTopWidth = parseInt(borderTopWidthString.substring(0,stringLength-2), 10);
+		$("#idMainView--MainViewNavContainer").height(
+				(($("#idMainView").height()
+				- $("#idMainView--lineTrackerToolbar").height() 
+				- $("#idMainView--lineTrackerSubheader").height() 
+				- borderTopWidth ) / $("#idMainView").height()) * 100 + "%");
 	 },
 	/**
 	 * Called when the Controller is destroyed. Use this one to free resources
@@ -88,7 +92,7 @@ sap.ui.controller("airbus.mes.linetracker.MainView", {
 					viewName : "airbus.mes.linetracker.ProductionLineView",
 					type : sap.ui.core.mvc.ViewType.XML,
 					height : "98%",
-					width: "99%"
+					width: "100%"
 				});
 				sap.ui.getCore().byId("idMainView--MainViewNavContainer").addPage(airbus.mes.linetracker.util.ModelManager.ProductionView)
 			}
@@ -150,11 +154,12 @@ sap.ui.controller("airbus.mes.linetracker.MainView", {
 		
 		//create view if not exists
 		if (!airbus.mes.linetracker.util.ModelManager.ProductionView) {
+			var heightContainer = $("#idMainView--MainViewNavContainer").height();
 			airbus.mes.linetracker.util.ModelManager.ProductionView = sap.ui.view({
 				id : "idProductionView",
 				viewName : "airbus.mes.linetracker.ProductionLineView",
 				type : sap.ui.core.mvc.ViewType.XML,
-				height : "95%",
+				height : heightContainer + "px",
 				width:"100%"
 			});
 			sap.ui.getCore().byId("idMainView--MainViewNavContainer").addPage(airbus.mes.linetracker.util.ModelManager.ProductionView);

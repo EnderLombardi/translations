@@ -1,15 +1,8 @@
-/* Production Box CSS */
-.structureProductionBox {
-	/* 	width		: 15%;
-	height		: 35%; */
-	float: left;
-	width: 7.9rem;
-	height: 16rem;
-	border-color: #BA000B;
-	border-style: solid;
-	border-width: thin;
-}
+/******************
+LINETRACKER
+*******************/
 
+/* Production Box CSS */
 .productionBoxMiddle {
 	height: 40%;
 	width: 50%;
@@ -60,11 +53,11 @@
 }
 
 .redBackground {
-	background-color: #BA000B;
+	background-color: $cherry-red;
 }
 
 .greenBackground {
-	background-color: green;
+	background-color: $dark-lime-green;
 }
 
 .whiteBackground {
@@ -98,26 +91,17 @@
 .productionImgStation{
 	margin-top: 7%;
     width: 33%;
-   /*  height: 55%; */
 }
 
 /* Station Box CSS */
 .structureStationBox {
-	/* width: 9rem;
-	height: 9rem; */
-/* 	min-width: 8rem;
-	min-height: 9rem;
-	max-width: 16rem;
-	max-height: 18rem; */
 	height: 98%;
     width: inherit;
 	padding-top: 1%;
 	padding-bottom: 1%;
 	font-weight: bold;
 	float: left;
-	/* margin : 2px; */
 	cursor: pointer;
-/* 	margin-top: 5%; */
 }
 .stationBoxLower {
 	height: 82%;
@@ -131,11 +115,11 @@
 }
 
 .stationBoxErrorBdr {
-	background-color: #BA000B;
+	background-color: $cherry-red;
 }
 
 .stationBoxSuccessBdr {
-	background-color: green;
+	background-color: $dark-lime-green;
 }
 
 .stationBoxNoneBdr {
@@ -144,7 +128,6 @@
 
 .stationBoxHeader {
 	line-height: 225%;
-	/* padding-top: 2%; */
 	font-size: 2vh;
 }
 

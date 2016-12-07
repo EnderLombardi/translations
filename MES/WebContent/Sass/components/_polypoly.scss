@@ -309,7 +309,7 @@ button[id^="polypoly"].sapMBtn:hover> div[id^="polypoly"].sapMBtnHoverable{
                 @include button($dark-lime-green, $white-two);
             }
             &.sapMBtnReject{
-                @include button(#e5002b, $white-two);
+                @include button($cherry-red, $white-two);
             }
         }
     }
@@ -323,7 +323,6 @@ button[id^="polypoly"].sapMBtn:hover> div[id^="polypoly"].sapMBtnHoverable{
     .sapUiTableMTbr{
         .sapMTB{
             background: #d4f1f7;
-            margin-top:0.55rem;
         }
     }
     .sapUiTable{
@@ -339,6 +338,9 @@ button[id^="polypoly"].sapMBtn:hover> div[id^="polypoly"].sapMBtnHoverable{
     }
     form{
         border: 1px solid transparent;
+    }
+    >#polypolyPage-cont {
+        top: 3.6rem;
     }
 }
 .sap-desktop{

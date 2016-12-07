@@ -116,7 +116,7 @@ STATIONTRACKER
 }
 @mixin button($color1, $color2){
     background-image: none;
-    background-color: color1;
+    background-color: $color1;
     color: $color2;
     text-shadow: none;
     border-radius:0;

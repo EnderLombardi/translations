@@ -114,12 +114,10 @@ sap.ui.core.Control.extend("airbus.mes.linetracker.customControl.customProductio
 		var up = t.getUnitPercentage();
 		var uh = t.getUnitHours();
 		var os = t.getOpenStatus();
-//		var es = t.getEscalatedStatus();
 
 		r.write("<div align='center'");
 		r.writeControlData(t);
 
-		r.addClass("structureProductionBox whiteBackground");
 		r.writeClasses();
 		r.write('>');
 
