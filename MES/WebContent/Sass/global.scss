@@ -374,6 +374,17 @@ Pop up
         border-bottom: solid 1px #979797;
     }
 }
+#badgeMngMyProfile{
+    #badgeMngMyProfile-cont{
+        width: 100%;
+        max-width: 100%;
+    }
+    #badgeMngMyProfile-footer{
+        #myProfileCancel{
+            position: absolute;
+        }
+    }
+}
 
 /*******************
 FROM HOMEPAGE
