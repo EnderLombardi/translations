@@ -1162,7 +1162,8 @@ airbus.mes.stationtracker.ModelManager = {
 			var Filter = new sap.ui.model.Filter({ path : "WORK_CENTER",
 										           test : function(value) {
 										                     if (aValueSelected.indexOf(value) != -1) {
-										                            return true;
+										            			 sap.ui.getCore().byId("ImportOswUnplannedPopover--filterPhStation").setSelectedKeys(value);
+										                    	 return true;
 										                     } else {
 										                            return false;
 										                     }
@@ -1170,13 +1171,7 @@ airbus.mes.stationtracker.ModelManager = {
 													});	
 			
 			binding.filter(Filter);
-			
-			
-			
-			
-			
-			
-			
+		
 		}
 		
 	}

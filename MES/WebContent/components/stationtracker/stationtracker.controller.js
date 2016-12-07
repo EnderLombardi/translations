@@ -369,6 +369,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		
 		binding.filter(Filter);			
 				
+		airbus.mes.stationtracker.ModelManager.onPhStationLoad();
 		// delay because addDependent will do a async rerendering and the popover will immediately close without it
 		jQuery.sap.delayedCall(0, this, function () {
 			airbus.mes.stationtracker.ImportOswUnplannedPopover.open();	
@@ -1187,7 +1188,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		var binding = sap.ui.getCore().byId("ImportOswUnplannedPopover--myList").getBinding("items");
 		// Erase duplicate key in combobox selection
 		var Filter = new sap.ui.model.Filter({ path : "WORK_CENTER",
-									           test : function(value) {
+									           test : function( value ) {
 									                     if (aValueSelected.indexOf(value) != -1) {
 									                            return true;
 									                     } else {
