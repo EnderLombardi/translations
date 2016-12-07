@@ -109,9 +109,6 @@ airbus.mes.operationdetail.ModelManager = {
 						airbus.mes.settings.ModelManager.site);
 		urlStartOperation = airbus.mes.shell.ModelManager
 				.replaceURI(urlStartOperation, "$resource", "DEFAULT");
-		urlStartOperation = airbus.mes.shell.ModelManager
-				.replaceURI(urlStartOperation, "$OperationRevision",
-						data.operation_revision);
 
 		return urlStartOperation;
 	},
@@ -125,7 +122,6 @@ airbus.mes.operationdetail.ModelManager = {
 		urlPauseOperation = airbus.mes.shell.ModelManager.replaceURI(urlPauseOperation, "$Sfc", data.sfc);
 		urlPauseOperation = airbus.mes.shell.ModelManager.replaceURI(urlPauseOperation, "$Site",airbus.mes.settings.ModelManager.site);
 		urlPauseOperation = airbus.mes.shell.ModelManager.replaceURI(urlPauseOperation, "$Resource", "DEFAULT");
-		urlPauseOperation = airbus.mes.shell.ModelManager.replaceURI(urlPauseOperation, "$OperationRevision", data.operation_revision);
 		return urlPauseOperation;
 	},
 
