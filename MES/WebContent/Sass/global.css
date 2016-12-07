@@ -569,9 +569,10 @@ BOX MANAGEMENT
   -moz-transition: background-color 0.2s ease-in-out;
   transition: background-color 0.2s ease-in-out;
   background-color: #ffbf00 !important; }
-.trackerBox:hover + .trackerTextBlock + .solvedBlocked,
-.trackerBox:hover .solvedBlocked:hover {
-  background: repeating-linear-gradient(135deg, #f3ff85, #f3ff8f 10px, yellow 10px, yellow 20px) !important; }
+.trackerBox:hover .solvedBlocked {
+  background: repeating-linear-gradient(135deg, #fbec00, #fbec00 10px, #ffbf00 10px, #ffbf00 20px) !important; }
+.trackerBox:hover .solvedBlockedExcalated {
+  background: repeating-linear-gradient(135deg, #9e001e, #9e001e 10px, #e4002b 10px, #e4002b 20px) !important; }
 
 .grey2 {
   background-color: #dddddd; }
@@ -585,7 +586,7 @@ BOX MANAGEMENT
 .trackerTextBlack {
   color: #000; }
 
-#mes .trackerBox .solvedBlockedExcalated {
+.solvedBlockedExcalated {
   height: inherit;
   width: 100%;
   background: repeating-linear-gradient(135deg, #e4002b, #e4002b 10px, #9e001e 10px, #9e001e 20px); }
