@@ -1,60 +1,188 @@
-{ "Rowsets" : { 
-	"DateCreated" : "2016-11-24T07:17:01", "Version" : "15.1 SP2 Patch 13 (Oct 6, 2016)", "StartDate" : "2016-11-24T06:17:00+0100", "EndDate" : "2016-11-24T07:17:00+0100", "CachedTime" : "", 
-	"Rowset" : [ 
-	{ "Columns" : { 
-		"Column" : [ 
-		{ "Name" : "Reason", "SourceColumn" : "Reason", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
-		{ "Name" : "TimeLost", "SourceColumn" : "TimeLost", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 } ] }, 
-	"Row" : [ 
-		{ "Reason" : "Reason Air Compress generation", "TimeLost" : "50" }, 
-		{ "Reason" : "Test Disruption Reason", "TimeLost" : "287" }, 
-		{ "Reason" : "Failure", "TimeLost" : "150" }, 
-		{ "Reason" : "Waiting for", "TimeLost" : "0" }, 
-		{ "Reason" : "Unusable", "TimeLost" : "4073" }, 
-		{ "Reason" : "Non-Conform", "TimeLost" : "12" }, 
-		{ "Reason" : "Unavailable", "TimeLost" : "360" }, 
-		{ "Reason" : "Missing", "TimeLost" : "804" } ]
-		 }, 	{ "Columns" : { 
-		"Column" : [ 
-		{ "Name" : "Operation", "SourceColumn" : "Operation", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
-		{ "Name" : "TimeLost", "SourceColumn" : "TimeLost", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 } ] }, 
-	"Row" : [ 
-		{ "Operation" : "OperationBO:CHES,50000020-1-0-0007", "TimeLost" : "0" }, 
-		{ "Operation" : "OperationBO:FNZ1,50065942-1-0-0020,#", "TimeLost" : "50" }, 
-		{ "Operation" : "OperationBO:FNZ1,50927917-1-0-0020,#", "TimeLost" : "180" }, 
-		{ "Operation" : "OperationBO:FNZ1,50065170-1-0-0030,#", "TimeLost" : "707" }, 
-		{ "Operation" : "OperationBO:FNZ1,50000937-1-0-0020,#", "TimeLost" : "256" }, 
-		{ "Operation" : "OperationBO:FNZ1,50065586-1-0-0020,#", "TimeLost" : "40" }, 
-		{ "Operation" : "OperationBO:FNZ1,50000937-1-0-0030,#", "TimeLost" : "1744" }, 
-		{ "Operation" : "OperationBO:FNZ1,50002137-1-0-0010,#", "TimeLost" : "77" }, 
-		{ "Operation" : "OperationBO:FNZ1,50001575-1-0-0010,#", "TimeLost" : "2658" }, 
-		{ "Operation" : "OperationBO:FNZ1,50002137-1-0-0020,#", "TimeLost" : "24" } ]
-		 }, 	{ "Columns" : { 
-		"Column" : [ 
-		{ "Name" : "MSN", "SourceColumn" : "MSN", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
-		{ "Name" : "TimeLost", "SourceColumn" : "TimeLost", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 } ] }, 
-	"Row" : [ 
-		{ "MSN" : "01736", "TimeLost" : "487" }, 
-		{ "MSN" : "1000", "TimeLost" : "490" }, 
-		{ "MSN" : "00240", "TimeLost" : "2000" }, 
-		{ "MSN" : "00571", "TimeLost" : "101" }, 
-		{ "MSN" : "01240", "TimeLost" : "620" }, 
-		{ "MSN" : "02240", "TimeLost" : "2038" } ]
-		 }, 	{ "Columns" : { 
-		"Column" : [ 
-		{ "Name" : "Category", "SourceColumn" : "Category", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
-		{ "Name" : "Time_Lost", "SourceColumn" : "Time_Lost", "Description" : "", "SQLDataType" : 4, "MinRange" : 1.0, "MaxRange" : 1.0 } ] }, 
-	"Row" : [ 
-		{ "Category" : "Support", "Time_Lost" : 220 }, 
-		{ "Category" : "Air compress Generation", "Time_Lost" : 120 }, 
-		{ "Category" : "Inspection", "Time_Lost" : 80 }, 
-		{ "Category" : "AIPI", "Time_Lost" : 10 }, 
-		{ "Category" : "JIG-Tool", "Time_Lost" : 110 }, 
-		{ "Category" : "Part", "Time_Lost" : 2680 }, 
-		{ "Category" : "Work Order-Operation", "Time_Lost" : 2079 }, 
-		{ "Category" : "Assembly", "Time_Lost" : 307 }, 
-		{ "Category" : "Drawing", "Time_Lost" : 30 }, 
-		{ "Category" : "Lights", "Time_Lost" : 120 } ]
-		 } ]
-	 }
- }
+{
+   "category":    [
+            {
+         "name": "Assembly",
+         "value": "0"
+      },
+            {
+         "name": "Work Order-Operation",
+         "value": "2679"
+      },
+            {
+         "name": "Part",
+         "value": "0"
+      },
+            {
+         "name": "Support",
+         "value": "0"
+      }
+   ],
+   "reason":    [
+            {
+         "name": "Test Disruption Reason",
+         "value": "0"
+      },
+            {
+         "name": "Reason Air Compress generation",
+         "value": "0"
+      },
+            {
+         "name": "Failure",
+         "value": "0"
+      },
+            {
+         "name": "Waiting for",
+         "value": "0"
+      },
+            {
+         "name": "Unusable",
+         "value": "2679"
+      },
+            {
+         "name": "Non-Conform",
+         "value": "0"
+      },
+            {
+         "name": "Test CLA",
+         "value": "0"
+      },
+            {
+         "name": "Missing",
+         "value": "0"
+      },
+            {
+         "name": "Unavailable",
+         "value": "0"
+      }
+   ],
+   "operation":    [
+            {
+         "name": "OperationBO:CHES,50000160-1-0-0029,A",
+         "value": "0"
+      },
+            {
+         "name": "OperationBO:CHES,50000020-1-0-0001,A",
+         "value": "0"
+      },
+            {
+         "name": "OperationBO:CHES,50000020-1-0-0007",
+         "value": "0"
+      },
+            {
+         "name": "50000020-1-0-0007",
+         "value": "0"
+      },
+            {
+         "name": "OperationBO:FNZ1,50065942-1-0-0020,#",
+         "value": "0"
+      },
+            {
+         "name": "OperationBO:CHES,50000160-1-0-0020,A",
+         "value": "0"
+      },
+            {
+         "name": "OperationBO:CHES,50000160-1-0-0030,A",
+         "value": "0"
+      },
+            {
+         "name": "Test Dhirendra",
+         "value": "0"
+      },
+            {
+         "name": "OperationBO:FNZ1,50001575-1-0-0010,A",
+         "value": "0"
+      },
+            {
+         "name": "OperationBO:FNZ1,50002137-1-0-0010,A",
+         "value": "0"
+      },
+            {
+         "name": "OperationBO:FNZ1,50001575-1-0-0020,#",
+         "value": "0"
+      },
+            {
+         "name": "OperationBO:CHES,50000111-1-0-0050,A",
+         "value": "0"
+      },
+            {
+         "name": "OperationBO:CHES,50000160-1-0-0019,A",
+         "value": "0"
+      },
+            {
+         "name": "OperationBO:CHES,50000002-1-0-0001,A",
+         "value": "0"
+      },
+            {
+         "name": "OperationBO:FNZ1,50927917-1-0-0020,#",
+         "value": "0"
+      },
+            {
+         "name": "OperationBO:FNZ1,50001575-1-0-0030,#",
+         "value": "0"
+      },
+            {
+         "name": "OperationBO:FNZ1,50000636-1-0-0010,#",
+         "value": "0"
+      },
+            {
+         "name": "OperationBO:FNZ1,50001575-1-0-0100,#",
+         "value": "0"
+      },
+            {
+         "name": "OperationBO:FNZ1,50001575-1-0-0040,#",
+         "value": "0"
+      },
+            {
+         "name": "OperationBO:FNZ1,50065170-1-0-0030,#",
+         "value": "0"
+      },
+            {
+         "name": "OperationBO:FNZ1,50001575-1-0-0050,#",
+         "value": "0"
+      },
+            {
+         "name": "OperationBO:FNZ1,50000937-1-0-0020,#",
+         "value": "356"
+      },
+            {
+         "name": "OperationBO:CHES,50000158-1-0-0009,A",
+         "value": "0"
+      },
+            {
+         "name": "OperationBO:FNZ1,50065586-1-0-0020,#",
+         "value": "0"
+      },
+            {
+         "name": "OperationBO:FNZ1,50000937-1-0-0030,#",
+         "value": "2323"
+      },
+            {
+         "name": "OperationBO:FNZ1,50002137-1-0-0010,#",
+         "value": "0"
+      },
+            {
+         "name": "OperationBO:FNZ1,50001575-1-0-0030,A",
+         "value": "0"
+      },
+            {
+         "name": "OperationBO:CHES,50000166-1-0-0009,A",
+         "value": "0"
+      },
+            {
+         "name": "OperationBO:CHES,50000020-1-0-0007,A",
+         "value": "0"
+      },
+            {
+         "name": "OperationBO:FNZ1,50001575-1-0-0010,#",
+         "value": "0"
+      },
+            {
+         "name": "OperationBO:FNZ1,50002137-1-0-0020,#",
+         "value": "0"
+      }
+   ],
+   "msn":    {
+      "name": "00240",
+      "value": "2679"
+   }
+}
