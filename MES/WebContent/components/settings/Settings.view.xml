@@ -77,21 +77,21 @@
 					<f:content>
 						<Label id="lblLine" text="{i18n>Line}" design="Bold" />
 						<ComboBox id="selectLine" items="{plantModel>/Rowsets/Rowset/0/Row}"
-							visible="true" change="onSelectionChange" class="customComboBox">
+							visible="true" selectionChange="onSelectionChange" class="customComboBox">
 							<items>
 								<core:Item key="{plantModel>line}" text="{plantModel>lineDescription}" />
 							</items>
 						</ComboBox>
 						<Label id="lblStation" text="{i18n>Station}" design="Bold" />
 						<ComboBox id="selectStation" items="{plantModel>/Rowsets/Rowset/0/Row}"
-							visible="true" change="onSelectionChange" class="customComboBox">
+							visible="true" selectionChange="onSelectionChange" class="customComboBox">
 							<items>
 								<core:Item key="{plantModel>station}" text="{plantModel>stationDescription}" />
 							</items>
 						</ComboBox>
 						<Label id="lblMSN" text="{i18n>MSN}" design="Bold" />
 						<ComboBox id="selectMSN" items="{plantModel>/Rowsets/Rowset/0/Row}"
-							visible="true" change="onSelectionChange" enabled="false">
+							visible="true" selectionChange="onSelectionChange" enabled="false">
 							<items>
 								<core:Item key="{plantModel>msn}" text="{plantModel>msn}" />
 							</items>
