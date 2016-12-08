@@ -164,17 +164,17 @@ sap.ui.controller(
 							case "stationTrackerView":
 								this.renderStationTracker();
 								airbus.mes.shell.AutoRefreshManager.clearInterval();
-								airbus.mes.shell.AutoRefreshManager.setInterval("stationTrackerView");
+								//airbus.mes.shell.AutoRefreshManager.setInterval("stationTrackerView");
 								break;
 							case "disruptiontrackerView":
 								airbus.mes.disruptiontracker.ModelManager.loadDisruptionTrackerModel();
 								airbus.mes.shell.AutoRefreshManager.clearInterval();
-								airbus.mes.shell.AutoRefreshManager.setInterval("disruptiontrackerView");
+								//airbus.mes.shell.AutoRefreshManager.setInterval("disruptiontrackerView");
 								break;
 							case "disruptionKPIView":
 								airbus.mes.disruptiontracker.kpi.ModelManager.loadDisruptionKPIModel();
 								airbus.mes.shell.AutoRefreshManager.clearInterval();
-								airbus.mes.shell.AutoRefreshManager.setInterval("disruptionKPIView");
+								//airbus.mes.shell.AutoRefreshManager.setInterval("disruptionKPIView");
 								break;
 							default:
 							}
@@ -193,20 +193,20 @@ sap.ui.controller(
 							break;
 						case "stationTrackerView":
 							this.renderStationTracker();
-							airbus.mes.shell.AutoRefreshManager.setInterval("stationTrackerView");
-							airbus.mes.shell.oView.byId('refreshTime').setVisible(true);
+							//airbus.mes.shell.AutoRefreshManager.setInterval("stationTrackerView");
+							//airbus.mes.shell.oView.byId('refreshTime').setVisible(true);
 							airbus.mes.shell.oView.byId("homeButton").setVisible(true);
 							airbus.mes.shell.oView.byId("SelectLanguage").setVisible(false);
 							break;
 						case "disruptiontrackerView":
-							airbus.mes.shell.AutoRefreshManager.setInterval("disruptiontrackerView");
-							airbus.mes.shell.oView.byId('refreshTime').setVisible(true);
+							//airbus.mes.shell.AutoRefreshManager.setInterval("disruptiontrackerView");
+							//airbus.mes.shell.oView.byId('refreshTime').setVisible(true);
 							airbus.mes.shell.oView.byId("homeButton").setVisible(true);
 							airbus.mes.shell.oView.byId("SelectLanguage").setVisible(false);
 							break;
 						case "disruptionKPIView":
-							airbus.mes.shell.AutoRefreshManager.setInterval("disruptionKPIView");
-							airbus.mes.shell.oView.byId('refreshTime').setVisible(true);
+							//airbus.mes.shell.AutoRefreshManager.setInterval("disruptionKPIView");
+							//airbus.mes.shell.oView.byId('refreshTime').setVisible(true);
 							airbus.mes.shell.oView.byId("homeButton").setVisible(true);
 							airbus.mes.shell.oView.byId("SelectLanguage").setVisible(false);
 							break;

@@ -96,7 +96,7 @@
 								<core:Item key="{plantModel>msn}" text="{plantModel>msn}" />
 							</items>
 						</ComboBox>
-						<CheckBox id="currMSN" selected="true" text="{i18n>CurrentMSN}"
+						<CheckBox id="currMSN" selected="false" text="{i18n>CurrentMSN}"
 							style="font-weight: bold;" select="selectCurrentMsn" visible="true"/>
 					</f:content>
 				</f:SimpleForm>

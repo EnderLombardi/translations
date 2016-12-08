@@ -14,7 +14,7 @@ airbus.mes.settings.ModelManager = {
 	taktEnd : undefined,
 	taktDuration : undefined,
 
-	currentMsnSelected : true,
+	currentMsnSelected : false,
 	currentMsnValue : "",
 	core : undefined,
 	urlModel : undefined,
