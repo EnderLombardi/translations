@@ -69,6 +69,8 @@ airbus.mes.disruptiontracker.Formatter = {
 	formatOperation : function(operation) {
 		if (operation != undefined && operation != "")
 			return operation.split(",")[1];
+		else
+			return "";
 
 	},
      
@@ -172,5 +174,16 @@ airbus.mes.disruptiontracker.Formatter = {
 	},
 	setDisruptionTrackerStatus : function(status){
 		return airbus.mes.disruptiontracker.oView.getModel("disruptiontrackerI18n").getProperty(status);
+	},
+	/**
+	 *@param milli seconds
+	 *@output minutes 
+	 *function to conver milliseconds to minutes devide by 60000 */
+	msToMinutesConverter : function(ms){
+		if(ms!='' || ms!=undefined){
+			return ms/60000;
+		}
+		return 0;
 	}
+	
 };

@@ -40,12 +40,12 @@
 						placeholder="{disruptiontrackerI18n>selectStatus}"
 						selectedKey=" "
 						selectionChange="filterDisruptions">
-						<core:Item key=" " text="{disruptiontrackerI18n>All}" />
-						<core:Item key="PENDING" text="{disruptiontrackerI18n>status.pending}" />
-						<core:Item key="ACKNOWLEDGED" text="{disruptiontrackerI18n>status.acknowledged}" />
-						<core:Item key="SOLVED" text="{disruptiontrackerI18n>status.solved}" />
-						<core:Item key="CLOSED" text="{disruptiontrackerI18n>status.closed}" />
-						<core:Item key="REJECTED" text="{disruptiontrackerI18n>status.rejected}" />
+						<core:Item key="" text="{disruptiontrackerI18n>All}" />
+						<core:Item key="Pending" text="{disruptiontrackerI18n>status.pending}" />
+						<core:Item key="Acknowledged" text="{disruptiontrackerI18n>status.acknowledged}" />
+						<core:Item key="Solved" text="{disruptiontrackerI18n>status.solved}" />
+						<core:Item key="Closed" text="{disruptiontrackerI18n>status.closed}" />
+						<core:Item key="Rejected" text="{disruptiontrackerI18n>status.rejected}" />
 					</ComboBox>
 					
 					<ComboBox id="resolutionGroupBox" class="sapUiMediumMarginEnd customComboBox"

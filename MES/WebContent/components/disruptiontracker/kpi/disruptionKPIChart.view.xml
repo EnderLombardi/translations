@@ -23,14 +23,14 @@
 						uiConfig="{applicationSet:'fiori'}" legendVisible="false">
 						<viz:dataset>
 							<viz.data:FlattenedDataset
-								data="{TimeLostperAttribute>/Rowsets/Rowset/3/Row}">
+								data="{TimeLostperAttribute>/category}">
 								<viz.data:dimensions>
 									<viz.data:DimensionDefinition
-										axis="1" name="Category" value="{TimeLostperAttribute>Category}" />
+										axis="1" name="{i18n>Category}" value="{TimeLostperAttribute>name}" />
 								</viz.data:dimensions>
 								<viz.data:measures>
 									<viz.data:MeasureDefinition name="Time Lost"
-										value="{TimeLostperAttribute>Time_Lost}"  />
+										value="{path: 'TimeLostperAttribute>value' , formatter: 'airbus.mes.disruptiontracker.Formatter.msToMinutesConverter'}" />
 								</viz.data:measures>
 							</viz.data:FlattenedDataset>
 						</viz:dataset>
@@ -38,7 +38,7 @@
 							<viz.feeds:FeedItem uid="axisLabels" type="Dimension"
 								values="Category" />
 							<viz.feeds:FeedItem id='valueAxisFeed1' uid="primaryValues"
-								type="Measure" values="Time Lost" />
+								type="Measure" values="{i18n>TimeLost}" />
 						</viz:feeds>
 					</viz:VizFrame>
                     
@@ -50,14 +50,14 @@
 						uiConfig="{applicationSet:'fiori'}" legendVisible="false">
 						<viz:dataset width="50%">
 							<viz.data:FlattenedDataset
-								data="{TimeLostperAttribute>/Rowsets/Rowset/0/Row}">
+								data="{TimeLostperAttribute>/reason}">
 								<viz.data:dimensions>
 									<viz.data:DimensionDefinition
-										axis="1" name="Reason" value="{TimeLostperAttribute>Reason}" />
+										axis="1" name="{i18n>Reason}" value="{TimeLostperAttribute>name}" />
 								</viz.data:dimensions>
 								<viz.data:measures>
 									<viz.data:MeasureDefinition name="Time Lost"
-										value="{TimeLostperAttribute>TimeLost}" />
+										value="{path: 'TimeLostperAttribute>value' , formatter: 'airbus.mes.disruptiontracker.Formatter.msToMinutesConverter'}" />
 								</viz.data:measures>
 							</viz.data:FlattenedDataset>
 						</viz:dataset>
@@ -65,7 +65,7 @@
 							<viz.feeds:FeedItem uid="axisLabels" type="Dimension"
 								values="Reason" />
 							<viz.feeds:FeedItem id='valueAxisFeed2' uid="primaryValues"
-								type="Measure" values="Time Lost" />
+								type="Measure" values="{i18n>TimeLost}" />
 						</viz:feeds>
 					</viz:VizFrame>
 					
@@ -76,15 +76,15 @@
 						vizType="bar" uiConfig="{applicationSet:'fiori'}" legendVisible="false">
 						<viz:dataset width="50%">
 							<viz.data:FlattenedDataset
-								data="{TimeLostperAttribute>/Rowsets/Rowset/1/Row}">
+								data="{TimeLostperAttribute>/operation}">
 								<viz.data:dimensions>
 									<viz.data:DimensionDefinition
-										axis="1" name="Operation"
-										value="{ path: 'TimeLostperAttribute>Operation' , formatter: 'airbus.mes.disruptiontracker.Formatter.formatOperation'}" />
+										axis="1" name="{i18n>Operation}"
+										value="{ path: 'TimeLostperAttribute>name' , formatter: 'airbus.mes.disruptiontracker.Formatter.formatOperation'}" />
 								</viz.data:dimensions>
 								<viz.data:measures>
-									<viz.data:MeasureDefinition name="Time Lost"
-										value="{TimeLostperAttribute>TimeLost}" />
+									<viz.data:MeasureDefinition name="{i18n>TimeLost}"
+										value="{path: 'TimeLostperAttribute>value' , formatter: 'airbus.mes.disruptiontracker.Formatter.msToMinutesConverter'}" />
 								</viz.data:measures>
 							</viz.data:FlattenedDataset>
 						</viz:dataset>
@@ -92,7 +92,7 @@
 							<viz.feeds:FeedItem uid="axisLabels" type="Dimension"
 								values="Operation" />
 							<viz.feeds:FeedItem id='valueAxisFeed3' uid="primaryValues"
-								type="Measure" values="Time Lost" />
+								type="Measure" values="{i18n>TimeLost}" />
 						</viz:feeds>
 					</viz:VizFrame>
                     
@@ -104,14 +104,14 @@
 						vizType="bar" uiConfig="{applicationSet:'fiori'}" legendVisible="false">
 						<viz:dataset width="50%">
 							<viz.data:FlattenedDataset
-								data="{TimeLostperAttribute>/Rowsets/Rowset/2/Row}">
+								data="{TimeLostperAttribute>/msn}">
 								<viz.data:dimensions>
 									<viz.data:DimensionDefinition
-										axis="1" name="MSN" value="{TimeLostperAttribute>MSN}" />
+										axis="1" name="{i18n>MSN}" value="{TimeLostperAttribute>name}" />
 								</viz.data:dimensions>
 								<viz.data:measures>
-									<viz.data:MeasureDefinition name="Time Lost"
-										value="{TimeLostperAttribute>TimeLost}" />
+									<viz.data:MeasureDefinition name="{i18n>TimeLost}"
+										value="{path: 'TimeLostperAttribute>value' , formatter: 'airbus.mes.disruptiontracker.Formatter.msToMinutesConverter'}" />
 								</viz.data:measures>
 							</viz.data:FlattenedDataset>
 						</viz:dataset>
@@ -119,7 +119,7 @@
 							<viz.feeds:FeedItem uid="axisLabels" type="Dimension"
 								values="MSN" />
 							<viz.feeds:FeedItem id='valueAxisFeed4' uid="primaryValues"
-								type="Measure" values="Time Lost" />
+								type="Measure" values="{i18n>TimeLost}" />
 						</viz:feeds>
 					</viz:VizFrame>
 

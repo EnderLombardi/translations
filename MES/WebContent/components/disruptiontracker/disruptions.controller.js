@@ -162,7 +162,7 @@ sap.ui
 
 					filterDisruptions : function(oEvent) {
 						var sStatus = this.getView().byId("statusComboBox")
-								.getSelectedKey();
+								.getSelectedKey().toUpperCase();
 						var sResoGroup = this.getView().byId(
 								"resolutionGroupBox").getSelectedKey();
 						
@@ -173,7 +173,7 @@ sap.ui
 						var oBinding = this.byId("disruptionsTable")
 								.getBinding("items");
 
-						if (sStatus != " ")
+						if (sStatus != "")
 							aFilters.push(new sap.ui.model.Filter("Status",
 									"EQ", sStatus));
 						if (sResoGroup != "")
