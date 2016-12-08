@@ -92,6 +92,19 @@ airbus.mes.disruptiontracker.kpi.ModelManager = {
 				if(typeof data == "string"){
 					data = JSON.parse(data);
 				}
+				/*to avoid array inconsistency.. as the service dosent return an array [] when only one value pair has to be returned*/
+				if(!data.msn[0]){
+					data.msn = [data.msn];
+				}
+				if(!data.category[0]){
+					data.category = [data.category];
+				}
+				if(!data.operation[0]){
+					data.operation = [data.operation];
+				}
+				if(!data.reason[0]){
+					data.reason = [data.reason];
+				}
 				oViewModel.setData(data);
 				airbus.mes.disruptiontracker.kpi.oView.setBusy(false);
 				/*airbus.mes.stationtracker.oView.byId("boxSLBEfficiecy").setBusy(false);

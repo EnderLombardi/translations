@@ -36,7 +36,7 @@
 						</viz:dataset>
 						<viz:feeds>
 							<viz.feeds:FeedItem uid="axisLabels" type="Dimension"
-								values="Category" />
+								values="{i18n>Category}" />
 							<viz.feeds:FeedItem id='valueAxisFeed1' uid="primaryValues"
 								type="Measure" values="{i18n>TimeLost}" />
 						</viz:feeds>
@@ -63,7 +63,7 @@
 						</viz:dataset>
 						<viz:feeds>
 							<viz.feeds:FeedItem uid="axisLabels" type="Dimension"
-								values="Reason" />
+								values="{i18n>Reason}" />
 							<viz.feeds:FeedItem id='valueAxisFeed2' uid="primaryValues"
 								type="Measure" values="{i18n>TimeLost}" />
 						</viz:feeds>
@@ -90,7 +90,7 @@
 						</viz:dataset>
 						<viz:feeds>
 							<viz.feeds:FeedItem uid="axisLabels" type="Dimension"
-								values="Operation" />
+								values="{i18n>Operation}" />
 							<viz.feeds:FeedItem id='valueAxisFeed3' uid="primaryValues"
 								type="Measure" values="{i18n>TimeLost}" />
 						</viz:feeds>
@@ -117,7 +117,7 @@
 						</viz:dataset>
 						<viz:feeds>
 							<viz.feeds:FeedItem uid="axisLabels" type="Dimension"
-								values="MSN" />
+								values="{i18n>MSN}" />
 							<viz.feeds:FeedItem id='valueAxisFeed4' uid="primaryValues"
 								type="Measure" values="{i18n>TimeLost}" />
 						</viz:feeds>
