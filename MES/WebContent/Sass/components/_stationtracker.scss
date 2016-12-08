@@ -164,6 +164,8 @@ BOX MANAGEMENT
             margin-left: 6px;
             background-color: $dandelion;
             margin-bottom: 10px;
+            // prevent design to beark on resize
+            min-width: 45px;
             & b {
                 font-family: arial;
             }
@@ -180,7 +182,6 @@ BOX MANAGEMENT
             }
         }
     }
-
     .dandelion {
         color: $dandelion;
     }

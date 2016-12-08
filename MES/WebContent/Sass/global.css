@@ -523,19 +523,14 @@ BOX MANAGEMENT
       float: left;
       margin-left: 6px;
       background-color: #fbec00;
-      margin-bottom: 10px; }
+      margin-bottom: 10px;
+      min-width: 45px; }
       .trackerBox .fa.oswIcon b {
         font-family: arial; }
       .trackerBox .fa.oswIcon + .trackerText {
-<<<<<<< Upstream, based on origin/MESv0.9
         max-width: 40%; }
       .trackerBox .fa.oswIcon + .oswIcon + .trackerText {
         max-width: 40%; }
-=======
-        max-width: calc(100% - 100px); }
-      .trackerBox .fa.oswIcon + .oswIcon + .trackerText {
-        max-width: calc(100% - 170px); }
->>>>>>> dc9f76a [stationtracker] - add filter saved on osw + busyIdincator
       .trackerBox .fa.oswIcon.cherry-red {
         color: #e4002b; }
   .trackerBox .dandelion {
@@ -3483,12 +3478,6 @@ Old global.css
 .sapMSliderProgress {
   position: relative;
   margin-right: 4rem !important; }
-
-.sapMSliderHandle {
-  margin-left: 0 !important;
-  top: -0.30rem !important;
-  height: 0.5rem !important;
-  width: 0.5rem !important; }
 
 .myPulseButton > .sapMBtnInner.sapMBtnText {
   font-size: 100%; }
