@@ -367,7 +367,6 @@ airbus.mes.stationtracker.util.Formatter = {
 						
 				}
 				
-				console.log(oBox.avlLine);
 				
 				if ( oBox.type === "I" ) {
 					
@@ -707,9 +706,7 @@ airbus.mes.stationtracker.util.Formatter = {
 				     },
 	     
 		     datepicker : function(sString){
-			     console.log("toto");
 			     return "toto";
-//		    	 $("div[id="+toolbarDateId+"]").append($("div[class='dhx_cal_date']").contents().clone()); 
 		     },
 		     productionGroup : function(sProductionG) {
 

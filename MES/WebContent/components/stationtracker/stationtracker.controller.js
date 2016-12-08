@@ -822,9 +822,8 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		// Check the current value of the filter status
 		if (oEvent.getSource().getSelectedKey() === "StatusAll") {
 			// if status ALL, we have to remove all filter
-			sap.ui.getCore().byId("worklistPopover--myList")
-					.getBinding("items").filter();
-	
+			sap.ui.getCore().byId("worklistPopover--myList").getBinding("items").filter();
+	//TODO update status
 		} else {
 			// we apply the a filter
 			switch (oEvent.getSource().getSelectedKey()) {

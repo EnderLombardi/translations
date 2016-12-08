@@ -401,20 +401,25 @@ sap.ui.controller("airbus.mes.settings.Settings",
 							"MSN") + " " + airbus.mes.settings.ModelManager.currentMsnValue);
 						}
 	
+						// add event on home button this is not done by ui addEvent because
+						// we cant add and delete the same event several time
+						// this is use to block the user if he has no user setting saved or unvailable.
+						$( '#' + airbus.mes.shell.oView.byId("logo").sId).click(airbus.mes.shell.oView.getController().goToHome);
+				
+						
 						// if no msn go by default on user settings.
 						if ( this.getView().byId("selectMSN").getKeys().indexOf(airbus.mes.settings.ModelManager.msn) === -1 ) {
 							airbus.mes.shell.oView.getController().navigate();				
 							//if !localhost stop user on setting
 							switch (window.location.hostname) {
-							case "localhost":
-								airbus.mes.settings.oView.byId("navBack").setEnabled(true);
-								console.log("gotohome desactivé");
-								$(airbus.mes.shell.oView.byId("logo")).unbind();
-								break;
+//							case "localhost":
+//								airbus.mes.settings.oView.byId("navBack").setEnabled(true);
+//								console.log("gotohome desactivé");
+//								$( '#' + airbus.mes.shell.oView.byId("logo").sId).unbind();
+//								break;
 							default:
 								airbus.mes.settings.oView.byId("navBack").setEnabled(false);
-								console.log("gotohome desactivé");
-								$(airbus.mes.shell.oView.byId("logo")).unbind();
+								$( '#' + airbus.mes.shell.oView.byId("logo").sId).unbind();
 								break;
 							}
 							
@@ -463,7 +468,6 @@ sap.ui.controller("airbus.mes.settings.Settings",
 				// 
 				airbus.mes.settings.oView.byId("navBack").setEnabled(true);
 				$( '#' + airbus.mes.shell.oView.byId("logo").sId).click(airbus.mes.shell.oView.getController().goToHome);
-				console.log("gotohome");
 				//
 				///////////////////////////////////////////////////////////////////////////////////////////////////
 				

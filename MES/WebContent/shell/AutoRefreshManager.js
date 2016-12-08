@@ -144,11 +144,11 @@ airbus.mes.shell.AutoRefreshManager =  {
                                   airbus.mes.shell.AutoRefreshManager.customTime();
                            });*/
                         document.addEventListener("mousedown", function(){ 
-                                  console.log("mousedown");
+                           //       console.log("mousedown");
                                   airbus.mes.shell.AutoRefreshManager.customTime();
                         });
                         document.addEventListener("keypress", function(){ 
-                                  console.log("keypress");
+                             //     console.log("keypress");
                                   airbus.mes.shell.AutoRefreshManager.customTime();
                         });
                       /*  document.addEventListener("DOMMouseScroll", function(){ 
