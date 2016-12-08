@@ -1034,7 +1034,7 @@ airbus.mes.stationtracker.ModelManager = {
 						"wo_no" : aModel[0].SHOP_ORDER_BO.split(",")[1],
 						"workcenter" : aModel[0].PP_STATION.split(",")[1],
 						"status" : sStatus,
-						"realStatus" : status,
+						"realStatus" :  aModel[0].status,
 						"progress" : parseInt(progress, 10),
 						"progress_new" : parseInt(progress, 10),
 						"time_spent" : airbus.mes.stationtracker.util.Formatter.msToTime(aModel[0].PROGRESS),
@@ -1071,17 +1071,19 @@ airbus.mes.stationtracker.ModelManager = {
 		sap.ui.getCore().getModel("operationDetailModel").refresh();
 
 //		If previously_started is true, the operation has to be on execution mode
-		if(aModel[0].PREVIOUSLY_STARTED === "true" ){
+		if( aModel[0].PREVIOUSLY_STARTED === "true" ){
 			airbus.mes.operationdetail.oView.byId("switchOperationModeBtn").setState(true);
 			airbus.mes.operationdetail.oView.byId("switchOperationModeBtn").setEnabled(false);
 			airbus.mes.operationdetail.oView.byId("switchStatusLabel").setText(airbus.mes.operationdetail.oView.getModel("i18n").getProperty("Execution"));
+			// Permit to know if the operation is active pause or not started
+			airbus.mes.operationdetail.status.oView.getController().operationIsActive();
 		} else {
 			airbus.mes.operationdetail.oView.byId("switchOperationModeBtn").setState(false);
 			airbus.mes.operationdetail.oView.byId("switchOperationModeBtn").setEnabled(true);			
 			airbus.mes.operationdetail.oView.byId("switchStatusLabel").setText(airbus.mes.operationdetail.oView.getModel("i18n").getProperty("ReadOnly"));
+			//Set no Button activate
+			airbus.mes.operationdetail.status.oView.getController().setProgressScreenBtn(false,false);
 		}
-		// Permit to know if the operation is active pause or not started
-		airbus.mes.operationdetail.status.oView.getController().operationIsActive();
 		// Pause the Refresh timer till the Pop-Up is opened
 		//airbus.mes.shell.AutoRefreshManager.pauseRefresh();
 

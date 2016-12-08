@@ -554,11 +554,6 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 		scheduler.deleteMarkedTimespan();
 		// Display all marker
 	    airbus.mes.stationtracker.ShiftManager.addMarkedShifts();
-	    
-
-//	    if (airbus.mes.stationtracker.ShiftManager.dayDisplay) {
-//			airbus.mes.stationtracker.oView.getController().changeShift();
-//		}
 	    scheduler.xy.scroll_width=20;
 	    airbus.mes.stationtracker.oView.byId("stationtracker").setBusy(false);
 	    scheduler.parse(aBox,"json");

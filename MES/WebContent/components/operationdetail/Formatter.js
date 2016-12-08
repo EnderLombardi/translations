@@ -79,7 +79,7 @@ airbus.mes.operationdetail.Formatter = {
 
 	
 	displayOriginalPlan : function(startTime, endTime) {
-		if (endTime !== undefined) {
+		if (endTime !== undefined && startTime !== undefined) {
 			var newStartTime = startTime.replace("T", " ");
 			var newEndTime = endTime.replace("T", " ");
 			return newStartTime + " - " + newEndTime;

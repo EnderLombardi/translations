@@ -489,10 +489,6 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
 	 * @memberOf components.operationdetail.status.status
 	 */
 	onAfterRendering : function() {
-		this.setOperationActionButtons();
-		
-		this.operationIsActive();
-
 	},
 
 	setOperationActionButtons : function() {
