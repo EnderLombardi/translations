@@ -1021,21 +1021,20 @@ airbus.mes.stationtracker.ModelManager = {
 						"operation_no" : aModel[0].OPERATION_BO.split(",")[1],
 						"operation_desc" : aModel[0].OPERATION_DESCRIPTION,
 						"material_description" : aModel[0].WORKORDER_DESCRIPTION,
-						"operation_revision" : aModel[0].SFC_STEP_REF
-								.split(",")[5],
+						"operation_revision" : aModel[0].SFC_STEP_REF.split(",")[5],
 						"wo_no" : aModel[0].SHOP_ORDER_BO.split(",")[1],
 						"workcenter" : aModel[0].PP_STATION.split(",")[1],
 						"status" : sStatus,
 						"progress" : parseInt(progress, 10),
 						"progress_new" : parseInt(progress, 10),
-						"time_spent" : airbus.mes.stationtracker.util.Formatter
-								.msToTime(aModel[0].PROGRESS),
+						"time_spent" : airbus.mes.stationtracker.util.Formatter.msToTime(aModel[0].PROGRESS),
 						"planned_start_time" : "TimeUnavailable",
 						"planned_end_time" : "TimeUnavailable",
 						"original_start_time" : aModel[0].START_TIME,
 						"original_end_time" : aModel[0].END_TIME,
 						"cpp_cluster" : aModel[0].CPP_CLUSTER,
-						"work_package" : aModel[0].WORK_PACKAGE
+						"work_package" : aModel[0].WORK_PACKAGE?
+						"erp_system" : aModel[0].ERP_SYTEM
 					} ]
 				} ]
 			}
