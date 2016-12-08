@@ -242,35 +242,27 @@ sap.ui
                             break;
 
                             case "touchngo":
-//                                var oModel = sap.ui.getCore().getModel("WorkListModel")
-//                                var sPath = oEvt.getSource().getBindingContext().sPath;
-//                                var sWorkOrder = oModel.getProperty(sPath + "/workOrder");
-//                                var sOperation = oModel.getProperty(sPath + "/operation");
+                         
                                 var sWorkOrder = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].wo_no;
                                 var operationId = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_no;
                                 var splitOpeId = operationId.split("-");
-
-//                                console.log(sWorkOrder);
-//                                console.log(splitOpeId[3]);
+                                var tAndGoLink = "";
 
                                 switch (window.location.hostname) {
                                     case "p1iswde0.eu.airbus.corp":
-                                        this.tAndGoLink = "pea";
+                                        tAndGoLink = "pea";
                                         break;
                                     case "imiswde0.eu.airbus.corp":
-                                        this.tAndGoLink = "iea";
+                                        tAndGoLink = "iea";
                                         break;
                                     case "dmiswde0.eu.airbus.corp":
-                                        this.tAndGoLink = "dea";
+                                        tAndGoLink = "dea";
                                         break;
                                     case "qmiswde0.eu.airbus.corp":
-                                        this.tAndGoLink = "qea";
+                                        tAndGoLink = "qea";
                                 }
 
-
-
-                                var oLink = "touchngo" + this.tAndGoLink + "://openpage/operation?workorder=" + sWorkOrder + "&operation="
-                                + splitOpeId[3];
+                                var oLink = "touchngo" + this.tAndGoLink + "://openpage/operation?workorder=" + sWorkOrder + "&operation=" + splitOpeId[3];
                                 window.open(oLink, "_blank");
                                 break;
 
