@@ -340,10 +340,10 @@
 		
 					<Button text="{StationTrackerI18n>disruptions/andon}" press="showDisruption"
 						type="Transparent" icon="sap-icon://alert" class="sapUiTinyMarginBeginEnd"></Button>
-					<Button text="{StationTrackerI18n>ButtonOutstandingWork}"
+					<Button id="oswButton" text="{StationTrackerI18n>ButtonOutstandingWork}"
 						type="Transparent" icon="sap-icon://cause" class="sapUiTinyMarginBeginEnd"
 						press="onOSWPress"></Button>
-					<Button text="{StationTrackerI18n>ButtonUnplanned}" type="Transparent"
+					<Button id="unplannedButton" text="{StationTrackerI18n>ButtonUnplanned}" type="Transparent"
 						icon="sap-icon://inspect" class="sapUiTinyMarginBeginEnd" press="onUnplannedPress"></Button>
 					<ToggleButton text="{StationTrackerI18n>ButtonInitial}" type="Transparent"
 						icon="sap-icon://past" class="sapUiTinyMarginBeginEnd" press="onInitialPlanPress" />

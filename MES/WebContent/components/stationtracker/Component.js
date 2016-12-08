@@ -58,6 +58,9 @@ airbus.mes.stationtracker.Component.prototype.createContent = function() {
         this.oView.setModel(i18nModel, "StationTrackerI18n");
         // Set instant display for busy indicator
         this.oView.byId("stationtracker").setBusyIndicatorDelay(0);
+        this.oView.byId("oswButton").setBusyIndicatorDelay(0);
+        this.oView.byId("unplannedButton").setBusyIndicatorDelay(0);
+        
         airbus.mes.stationtracker.oView = this.oView;
 
         this.oView.setModel(new sap.ui.model.json.JSONModel(),"productionGroupDisplay");

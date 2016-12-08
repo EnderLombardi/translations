@@ -328,12 +328,10 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 			airbus.mes.stationtracker.ImportOswUnplannedPopover.addStyleClass("alignTextLeft");
 			airbus.mes.stationtracker.ImportOswUnplannedPopover.setModel(sap.ui.getCore().getModel("groupModel"),"groupModel");
 			airbus.mes.stationtracker.oView.addDependent(airbus.mes.stationtracker.ImportOswUnplannedPopover);
-
 			var oModel = sap.ui.getCore().getModel("OSWModel");
 
 			//Changed the data of the worklist by OSW model
 			airbus.mes.stationtracker.ImportOswUnplannedPopover.setModel(new sap.ui.model.json.JSONModel(oModel.oData.Rowsets.Rowset[0].Row),"WorkListModel");
-				
 			airbus.mes.stationtracker.ImportOswUnplannedPopover.setBusyIndicatorDelay(0);
 							
 		}

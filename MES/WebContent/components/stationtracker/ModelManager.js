@@ -221,9 +221,11 @@ airbus.mes.stationtracker.ModelManager = {
 			oViewModel = sap.ui.getCore().getModel("stationTrackerIModel");
 			break;
 		case "U":
+			airbus.mes.stationtracker.oView.byId("unplannedButton").setBusy(true);
 			oViewModel = sap.ui.getCore().getModel("unPlannedModel");
 			break;
 		case "O":
+			airbus.mes.stationtracker.oView.byId("oswButton").setBusy(true);
 			oViewModel = sap.ui.getCore().getModel("OSWModel");
 			break;
 		default:
@@ -351,6 +353,7 @@ airbus.mes.stationtracker.ModelManager = {
 
 	onUnPlannedLoad : function() {
 
+		airbus.mes.stationtracker.oView.byId("unplannedButton").setBusy(false);
 		var aModel = sap.ui.getCore().getModel("unPlannedModel");
 
 		if (!aModel.getProperty("/Rowsets/Rowset/0/Row")) {
@@ -370,6 +373,7 @@ airbus.mes.stationtracker.ModelManager = {
 
 	onOWSLoad : function() {
 
+		airbus.mes.stationtracker.oView.byId("oswButton").setBusy(false);
 		var aModel = sap.ui.getCore().getModel("OSWModel");
 
 		if (!aModel.getProperty("/Rowsets/Rowset/0/Row")) {
@@ -1132,7 +1136,7 @@ airbus.mes.stationtracker.ModelManager = {
 	onPhStationLoad : function() {
 		
 		var aModel = sap.ui.getCore().getModel("phStationSelected");
-		
+
 		if (aModel.getProperty("/Rowsets/Rowset/0/Row")) {              
 			
 			aModel = sap.ui.getCore().getModel("phStationSelected").oData.Rowsets.Rowset[0].Row[0].originPhysicalStation;
@@ -1154,12 +1158,12 @@ airbus.mes.stationtracker.ModelManager = {
 				aValueSelected.push(el);
 								
 			})
-			
-			if ( aValueSelected.length === 1 ) {
+			//Check if one value is saved otherwise select by default all value// if no value send mii send ---
+			if ( aValueSelected[0] === "---" ) {
 
 				sap.ui.getCore().byId("ImportOswUnplannedPopover--myList").getBinding("items").filter();
 				return;
-				
+								
 			}
 			
 			// Filter is doing in UpperCase
