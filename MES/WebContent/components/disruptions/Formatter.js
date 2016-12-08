@@ -62,6 +62,17 @@ airbus.mes.disruptions.Formatter = {
 		return property;
 	},
 
+	setTimeLostValue : function(timeLost) {
+		
+		var timeUnit = airbus.mes.disruptions.Formatter.getConfigTimeUnit();
+		
+		if (timeLost != "") {
+			return airbus.mes.disruptions.Formatter.timeMillisecondsToConfig(timeLost) + " " + timeUnit;
+		}
+		
+		return 0 + " " + timeUnit;
+	},
+
 	getDate : function(datetime) {
 		
 		if (datetime == null || datetime === undefined) {
@@ -326,25 +337,24 @@ airbus.mes.disruptions.Formatter = {
 
 		var openingTime;
 
-		if (unit == "HR")
-			openingTime = (Math.round((oClosureDate - oOpenDate)
-					/ (1000 * 60 * 60) * 100) / 100)
-					+ " Hr";
+		if (unit == "H")
+			openingTime = airbus.mes.disruptions.Formatter.removeDecimal( ((oClosureDate - oOpenDate) / (1000 * 60 * 60)).toFixed(2) ) + " Hr";
+
+
 
 		else if (unit == "IM")
-			openingTime = (Math.round((oClosureDate - oOpenDate) * 100
-					/ (1000 * 60 * 60) * 100) / 100)
-					+ " IM";
+			openingTime = airbus.mes.disruptions.Formatter.removeDecimal( ((oClosureDate - oOpenDate) * 100 / (1000 * 60 * 60)).toFixed(2) ) + " IM";
+
+
 
 		else if (unit == "M")
-			openingTime = (Math.round((oClosureDate - oOpenDate) / (1000 * 60)
-					* 100) / 100)
-					+ " Min";
+			openingTime = airbus.mes.disruptions.Formatter.removeDecimal( ((oClosureDate - oOpenDate) / (1000 * 60)).toFixed(2) ) + " Min";
+
+
 
 		else if (unit == "D")
-			openingTime = (Math.round((oClosureDate - oOpenDate)
-					/ (1000 * 60 * 60 * 24) * 100) / 100)
-					+ " Days";
+			openingTime = airbus.mes.disruptions.Formatter.removeDecimal( ((oClosureDate - oOpenDate) / (1000 * 60 * 60 * 24)).toFixed(2) ) + " Days";
+
 
 		return openingTime;
 	},
@@ -375,5 +385,92 @@ airbus.mes.disruptions.Formatter = {
 		return (yyyy + "-" + mm + "-" + dd + " " + HH + ":" + min + ":" + ss)
 		
 	},
+	
+	timeToMilliseconds : function (time) {
+		
+		var timeUnit = airbus.mes.settings.AppConfManager._getConfiguration("MES_TIME_UNIT");
+		
+		if (timeUnit == "H")
+			return ( time * 60 * 60 * 1000 );
+			
+		else if (timeUnit == "IM")
+			return ( (time / 100) * 60 * 60 * 1000 );
+		
+		else if (timeUnit == "M")
+			return ( time * 60 * 1000 );
+		
+		else if (timeUnit == "D")
+			return ( time * 24 * 60 * 60 * 1000 );
+				
+		return;
+	},
+	
+	timeMillisecondsToConfig : function (time) {
+		
+		var timeUnit = airbus.mes.settings.AppConfManager._getConfiguration("MES_TIME_UNIT");
+		
+		if (timeUnit == "H")
+			time = (time / (60 * 60 * 1000)).toFixed(2);
+			
+		else if (timeUnit == "IM")
+			time = ((time * 100) / (60 * 60 * 1000)).toFixed(2);
+		
+		else if (timeUnit == "M")
+			time = (time / (60 * 1000)).toFixed(2);
+		
+		else if (timeUnit == "D")
+			time = (time / (24 * 60 * 60 * 1000)).toFixed(2);
+				
+		return airbus.mes.disruptions.Formatter.removeDecimal(time);
+	},
+	
+	getConfigTimeUnit : function() {
+		
+		var timeUnit = airbus.mes.settings.AppConfManager._getConfiguration("MES_TIME_UNIT");
+		
+		if (timeUnit == "H")
+			return "Hr";
+
+		else if (timeUnit == "IM")
+			return "IM";
+
+		else if (timeUnit == "M")
+			return "Min";
+
+		else if (timeUnit == "D")
+			return "Days";
+		
+		return;
+		
+	},
+	
+	getConfigTimeFullUnit : function() {
+		
+		var timeUnit = airbus.mes.settings.AppConfManager._getConfiguration("MES_TIME_UNIT");
+		
+		if (timeUnit == "H")
+			return "Hours";
+
+		else if (timeUnit == "IM")
+			return "Industrial Minutes";
+
+		else if (timeUnit == "M")
+			return "Minutes";
+
+		else if (timeUnit == "D")
+			return "Days";
+		
+		return;
+		
+	},
+	
+	removeDecimal : function(num) {
+		var iNum = parseInt(num);
+		
+		if (num-iNum == 0)
+			return iNum;
+		
+		return num;
+	}
 
 };

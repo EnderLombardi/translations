@@ -248,7 +248,7 @@
 											</f:label>
 											<f:fields>
 
-												<Text text="{=${operationDisruptionsModel>TimeLost}.length > 0 ? ${operationDisruptionsModel>TimeLost} : '0' } Min">
+												<Text text="{path: 'operationDisruptionsModel>TimeLost', formatter: 'airbus.mes.disruptions.Formatter.setTimeLostValue'}">
 													<layoutData>
 														<l:GridData span="L3 M3 S12" />
 													</layoutData>

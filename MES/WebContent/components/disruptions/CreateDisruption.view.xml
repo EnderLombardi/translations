@@ -306,7 +306,7 @@
 										</Label>
 									</f:label>
 									<f:fields>
-										<Input placeholder="{i18nModel>Minutes}" id="timeLost" type="Number"
+										<Input placeholder="" id="timeLost" type="Number"
 											value="">
 											<layoutData>
 												<l:GridData span="L3 M9 S12" />
