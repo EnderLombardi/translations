@@ -168,7 +168,7 @@ sap.ui
                      */
                     openPage : function(oEvent) {
                         var sItemKey = oEvent.getSource().getKey();
-                        console.log(sItemKey);
+
                         switch (sItemKey) {
 
                         case "status":
