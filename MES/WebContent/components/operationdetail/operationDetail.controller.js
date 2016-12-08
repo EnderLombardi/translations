@@ -245,24 +245,26 @@ sap.ui
 
                                 var sWorkOrder = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].wo_no;
                                 var operationId = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_no;
+                                var erpSystem = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].ERP_SYSTEM;
+                                console.log(erpSystem);
                                 var splitOpeId = operationId.split("-");
-                                var tAndGoLink = "";
+//                                var tAndGoLink = "";
 
-                                switch (window.location.hostname) {
-                                    case "p1iswde0.eu.airbus.corp":
-                                        tAndGoLink = "pea";
-                                        break;
-                                    case "imiswde0.eu.airbus.corp":
-                                        tAndGoLink = "iea";
-                                        break;
-                                    case "dmiswde0.eu.airbus.corp":
-                                        tAndGoLink = "dea";
-                                        break;
-                                    case "qmiswde0.eu.airbus.corp":
-                                        tAndGoLink = "qea";
-                                }
+//                                switch (window.location.hostname) {
+//                                    case "p1iswde0.eu.airbus.corp":
+//                                        tAndGoLink = "pea";
+//                                        break;
+//                                    case "imiswde0.eu.airbus.corp":
+//                                        tAndGoLink = "iea";
+//                                        break;
+//                                    case "dmiswde0.eu.airbus.corp":
+//                                        tAndGoLink = "dea";
+//                                        break;
+//                                    case "qmiswde0.eu.airbus.corp":
+//                                        tAndGoLink = "qea";
+//                                }
 
-                                var oLink = "touchngo" + tAndGoLink + "://openpage/operation?workorder=" + sWorkOrder + "&operation=" + splitOpeId[3];
+                                var oLink = "touchngo" + erpSystem + "://openpage/operation?workorder=" + sWorkOrder + "&operation=" + splitOpeId[3];
                                 window.open(oLink, "_blank");
                                 break;
 
