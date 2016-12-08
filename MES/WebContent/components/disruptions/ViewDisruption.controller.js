@@ -165,7 +165,9 @@ sap.ui
 						}
 
 						sap.ui.getCore().byId("closeDisruption-timeLost")
-								.setValue(timeLost);
+								.setValue(airbus.mes.disruptions.Formatter.timeMillisecondsToConfig(timeLost));
+						sap.ui.getCore().byId("closeDisruption-timeLostUnit")
+								.setText(airbus.mes.disruptions.Formatter.getConfigTimeUnit());
 						sap.ui.getCore().byId("closeDisruption-msgRef")
 								.setText(msgRef);
 						sap.ui.getCore().byId("closeDisruption-sPath").setText(
@@ -190,7 +192,7 @@ sap.ui
 						var msgRef = sap.ui.getCore().byId(
 								"closeDisruption-msgRef");
 
-						var timeLostValue = timeLost.getValue();
+						var timeLostValue = airbus.mes.disruptions.Formatter.timeToMilliseconds(timeLost.getValue());
 						var commentValue = comment.getValue();
 						var msgRefValue = msgRef.getText();
 

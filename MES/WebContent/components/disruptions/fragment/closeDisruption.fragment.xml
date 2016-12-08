@@ -18,7 +18,7 @@
 						<l:GridData span="L2 M6 S8" />
 					</layoutData>
 					</Input>
-					<Text text="{i18nModel>Minutes}" class="classFormHint">
+					<Text id="closeDisruption-timeLostUnit" text="" class="classFormHint">
 					<layoutData>
 						<l:GridData span="L2 M2 S4" />
 					</layoutData>

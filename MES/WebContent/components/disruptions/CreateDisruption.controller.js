@@ -85,6 +85,7 @@ sap.ui
 						this.getView().byId("selectOriginator")
 								.setSelectedKey();
 						this.setEnabledSelectBox(true, false, false, false);
+						this.getView().byId("timeLost").setPlaceholder(airbus.mes.disruptions.Formatter.getConfigTimeFullUnit());
 
 						// this.filterField(this.selectTree);
 
@@ -332,8 +333,7 @@ sap.ui
 									},
 									{
 										"attribute" : "TIME_LOST",
-										"value" : oView.byId("timeLost")
-												.getValue()
+										"value" : airbus.mes.disruptions.Formatter.timeToMilliseconds(oView.byId("timeLost").getValue())
 									},
 									{
 										"attribute" : "REQD_FIX_BY",
@@ -483,7 +483,7 @@ sap.ui
 								.getSelectedKey();
 						var sRootCause = oView.byId("selectRootCause")
 								.getSelectedKey();
-						var iTimeLost = oView.byId("timeLost").getValue()
+						var iTimeLost = airbus.mes.disruptions.Formatter.timeToMilliseconds(oView.byId("timeLost").getValue());
 						var dFixedByTime = new Date(oView.byId("expectedDate")
 								.getValue()
 								+ " " + oView.byId("expectedTime").getValue()).toISOString();
@@ -542,8 +542,8 @@ sap.ui
 								this.getView().byId("gravity").setSelectedKey(
 									oModel.getProperty("/Gravity"));
 
-								this.getView().byId("timeLost").setValue(
-									oModel.getProperty("/TimeLost"));
+								this.getView().byId("timeLost").setValue(airbus.mes.disruptions.Formatter.timeMillisecondsToConfig(
+										oModel.getProperty("/TimeLost")));
 								this.getView().byId("status").setValue(
 									oModel.getProperty("/Status"));
 								this.getView().byId("description").setValue(
