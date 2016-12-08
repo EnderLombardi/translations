@@ -13,6 +13,7 @@ sap.ui.controller(
 					 * @memberOf components.globalnav.globalNavigation
 					 */
 					onInit : function() {
+						
 					},
 					
 					onPress : function(oEvt) {
@@ -101,6 +102,8 @@ sap.ui.controller(
 					 */
 					onAfterRendering : function() {
 						
+		                $( '#' + airbus.mes.shell.oView.byId("logo").sId).click(airbus.mes.shell.oView.getController().goToHome);
+
 						
 					},
 					
