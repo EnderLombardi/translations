@@ -148,7 +148,7 @@
                 border: 0px !important;
             }
             li ~ li{
-            	display: none;
+                display: none;
             }
         }
     }
@@ -266,6 +266,8 @@
     .sapMSliderHandle{
         height: 2.8rem !important;
         top: -0.93125rem !important;
+        width: 1.75rem !important;
+        margin-left: -1rem !important;
     }
     @at-root .sliderDisplayStyle .sapMSliderInner{
         @at-root &, .sliderDisplayStyle .sapMSliderProgress{
