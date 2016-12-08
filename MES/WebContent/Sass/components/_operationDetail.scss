@@ -22,7 +22,7 @@
     }
     .mainText{
         font-size:1.2rem !important;
-        color:$teal-blue !important;
+        color:$petrol !important;
         font-weight:700 !important;
     }
     @at-root .operationDetailHeadPanel .sapMPanelBGTranslucent{
@@ -39,8 +39,8 @@
         }
         .sapMSwt{
             height: 1rem !important;
-            background: #0D5D76;
-            border-color: #0D5D76;
+            background: $petrol;
+            border-color: $petrol;
         }
         .sapMSwtOff{
             &:not(.sapMSwtAcceptReject){
@@ -83,7 +83,7 @@
     .sapMBtn{
         &.closeButton{
             span{
-                color: #0D5D76;
+                color: $petrol;
             }
         }
         &.expandButton{
@@ -106,7 +106,7 @@
         }
         .sapMSegBBtn{
             &.sapMSegBBtnSel{
-                color: #0D5D76;
+                color: $petrol;
                 background: transparent;
                 font-weight:bold;
                 &:after{
@@ -116,7 +116,7 @@
                     bottom:0;
                     left:0;
                     right:0;
-                    background:#FF5000;
+                    background:$blood-orange;
                 }
             }
         }
@@ -128,7 +128,7 @@
                     .sapMSegBBtnFocusable{
                         &:hover{
                             background: $petrol-20;
-                            color:#0D5D76;
+                            color:$petrol;
                         }
                     }
                 }
@@ -157,12 +157,12 @@
 // Operation Icon Nav Bar
 .operationNavBar{
     .countText{
-        background:#009de0 !important;
-        color:#fff !important;
+        background:$sapui-blue !important;
+        color:$white-two !important;
     }
     .sapMITBSelected{
         &>.sapMITBContentArrow{
-            border-bottom-color: #e52929 !important;
+            border-bottom-color: $cherry-red !important;
         }
     }
 }
@@ -179,7 +179,7 @@
     background:#607381 !important;
     @at-root .operationDetailFooter .sapMBtnContent{
         @at-root &, .operationDetailFooter .sapMBtnIcon{
-            color:#fff !important;
+            color:$white-two !important;
         }
     }
 }
@@ -265,6 +265,7 @@
     height: 4rem !important;
     .sapMSliderHandle{
         height: 2.8rem !important;
+        top: -0.93125rem !important;
     }
     @at-root .sliderDisplayStyle .sapMSliderInner{
         @at-root &, .sliderDisplayStyle .sapMSliderProgress{

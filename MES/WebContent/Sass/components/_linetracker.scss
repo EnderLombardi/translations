@@ -607,52 +607,6 @@ Old chart.css
 /******************
 old CUSTOMCSS
 *******************/
-html
-{
-    -ms-content-zooming: none; /* Disables zooming */
-    touch-action: none;   /* Disable any special actions on tap/touch */
-}
-/* css filter bar */
-.filterbar {
-	height: auto !important;
-	padding: 0 .5rem;
-	background: #457aae;
-	border-bottom: 1px solid #e5e5e5;
-}
-
-/* css for gantt operation  */
-.labelgantt {
-	color: White;
-}
-
-/* css for toolitem shell */
-#comboboxsearch {
-	margin: 0 4px;
-	height: 2.0rem !important;
-}
-.buttonpulse {
-	background-color: #F72828 !important;
-}
-
-.buttonload {
-	background-color: #F72828 !important;
-	text-align: center !important;
-	font-size: 15px;
-	border-radius: 8px !important;
-	-webkit-transition-duration: 0.4s !important; /* Safari */
-    transition-duration: 0.4s !important ;
-}
-.buttonload:hover {
-	border-radius: 8px;
-	text-align: center !important;
-	font-size: 15px;
-    background-color: #4CAF50 !important ; /* Green */
-    color: white !important;
-}
-
-/* css for header bar of shell */
-.sapUiUx3ShellHeader>img {
-}
 
 .sapUiUx3ShellHeader {
 	background-color: #EAF2F4;
@@ -677,8 +631,6 @@ html[data-sap-ui-browser*="ie"] .sapUiBody {
 	background: -ms-linear-gradient(top, #008cda 0, #006ca7 100%) !important;
 	background: linear-gradient(to bottom, #008cda 0, #006ca7 100%)
 		!important;
-	// filter: progid: DXImageTransform.Microsoft.gradient(startColorstr=#008cda,
-	// 	endColorstr=#006ca7, GradientType=0)
 }
 
 .sapMPIBarGreen {
@@ -688,8 +640,6 @@ html[data-sap-ui-browser*="ie"] .sapUiBody {
 	background: -webkit-linear-gradient(top, #37ce66 0, #34c461 100%);
 	background: -ms-linear-gradient(top, #37ce66 0, #34c461 100%);
 	background: linear-gradient(to bottom, #37ce66 0, #34c461 100%);
-	// filter: progid: DXImageTransform.Microsoft.gradient(startColorstr=#37ce66,
-	// 	endColorstr=#34c461, GradientType=0)
 }
 
 .sapMPIBarRed {
@@ -699,8 +649,6 @@ html[data-sap-ui-browser*="ie"] .sapUiBody {
 	background: -webkit-linear-gradient(top, #b41414 0, #9c1212 100%);
 	background: -ms-linear-gradient(top, #b41414 0, #9c1212 100%);
 	background: linear-gradient(to bottom, #b41414 0, #9c1212 100%);
-	// filter: progid: DXImageTransform.Microsoft.gradient(startColorstr=#b41414,
-	// 	endColorstr=#9c1212, GradientType=0)
 }
 
 .sapMPIBarLightRed {
@@ -710,8 +658,6 @@ html[data-sap-ui-browser*="ie"] .sapUiBody {
 	background: -webkit-linear-gradient(top, #d46a47 0, #d96c49 100%);
 	background: -ms-linear-gradient(top, #d46a47 0, #d96c49 100%);
 	background: linear-gradient(to bottom, #d46a47 0, #d96c49 100%);
-	// filter: progid: DXImageTransform.Microsoft.gradient(startColorstr=#d46a47,
-	// 	endColorstr=#d96c49, GradientType=0)
 }
 
 .sapMPIBarOrange {
@@ -721,8 +667,6 @@ html[data-sap-ui-browser*="ie"] .sapUiBody {
 	background: -webkit-linear-gradient(top, #eb5200 0, #b84000 100%);
 	background: -ms-linear-gradient(top, #eb5200 0, #b84000 100%);
 	background: linear-gradient(to bottom, #eb5200 0, #b84000 100%);
-	// filter: progid: DXImageTransform.Microsoft.gradient(startColorstr=#eb5200,
-	// 	endColorstr=#b84000, GradientType=0)
 }
 
 .sapMPIBarDarkGrey {
@@ -732,8 +676,6 @@ html[data-sap-ui-browser*="ie"] .sapUiBody {
 	background: -webkit-linear-gradient(top, #616161 0, #4d4d4d 100%);
 	background: -ms-linear-gradient(top, #616161 0, #4d4d4d 100%);
 	background: linear-gradient(to bottom, #616161 0, #4d4d4d 100%);
-	// filter: progid: DXImageTransform.Microsoft.gradient(startColorstr=#616161,
-	// 	endColorstr=#4d4d4d, GradientType=0);
 }
 
 .sapMPIBarDarkGreen {
@@ -743,8 +685,6 @@ html[data-sap-ui-browser*="ie"] .sapUiBody {
 	background: -webkit-linear-gradient(top, #24a553 0, #23964d 100%);
 	background: -ms-linear-gradient(top, #24a553 0, #23964d 100%);
 	background: linear-gradient(to bottom, #24a553 0, #23964d 100%);
-	// filter: progid: DXImageTransform.Microsoft.gradient(startColorstr=#24a553,
-	// 	endColorstr=#23964d, GradientType=0);
 }
 
 .sapMPIAndon {
@@ -760,12 +700,6 @@ html[data-sap-ui-browser*="ie"] .sapUiBody {
 	display: block;
 	float: left;
 	padding-left: 0.5rem;
-}
-
-.factHBox .sapMBarChild {
-	font-weight: bold;
-	vertical-align: middle;
-	font-size: 17px;
 }
 
 /*   CSS Manal */
@@ -862,34 +796,6 @@ div#iconTabBar--header {
 	background-color: white;
 }
 
-#hammer_swipe {
-	position: absolute;
-	width: 100%;
-	height: 5%;
-	border: 1px dashed grey;
-	bottom: 0px;
-	background-image: url('../pocaos/model/img/swipe.jpg');
-	background-position: top center;
-	background-repeat: no-repeat;
-	background-size: contain;
-}
-
-.offtime {
-	background-color: transparent !important;
-	background-image: url(../images/fat_lines.png) !important;
-}
-
-.initialSection {
-	background-color: gray;
-	color: white;
-}
-
-.scalebar {
-	background-color: white;
-	color: black;
-	text-align: left;
-}
-
 .upperCaseConversion input {
 	text-transform: uppercase;
 }
@@ -911,20 +817,6 @@ div#iconTabBar--header {
 	margin-botton: 0px !important;
 }
 
-button.menuBtn {
-	margin-right: 10px;
-	margin-left: 10px;
-}
-
-.allowWrapping {
-	flex-wrap: wrap;
-}
-
-label.teamLabel {
-	font-size: 2rem;
-	font-weight: bold;
-}
-
 #hammer_swipe {
 	position: absolute;
 	width: 100%;
@@ -939,10 +831,6 @@ label.teamLabel {
 
 /*Gantt css*/
 /*Coloring Tasks */
-.shift_task {
-	color: #6ba8e3 !important;
-	background: #2980b9 !important;
-}
 .high {
 	border: none !important;
 }
@@ -1027,14 +915,6 @@ z-index :0 !important;
 	margin: 20px 20px 20px 20px;
 	padding: 0;
 }
-
-.prodLineBtn{
-	width: 100%;
-    height: 80px;
-    margin-top: 30px;
-    color: #007cc0 !important;
-    background-color: #ddeff1 !important;
-	}
 
 .stationdetail {
 	width: 100%;
@@ -1121,6 +1001,13 @@ white-space: nowrap !important;
 .factHBox .structureStationBox {
     min-height: auto;
 }
+
+.factHBox .sapMBarChild {
+	font-weight: bold;
+	vertical-align: middle;
+	font-size: 17px;
+}
+
 /* idFactoryView */
 #idFactoryView {
 	background-color:#fff;
@@ -1379,3 +1266,80 @@ old STATIONDETAIL
 	}	
 			
 }
+
+/*******************
+QUARANTINE USELESS CODE
+********************/
+// .filterbar {
+// 	height: auto !important;
+// 	padding: 0 .5rem;
+// 	background: #457aae;
+// 	border-bottom: 1px solid #e5e5e5;
+// }
+
+// /* css for toolitem shell */
+// #comboboxsearch {
+// 	margin: 0 4px;
+// 	height: 2.0rem !important;
+// }
+
+// .labelgantt {
+// 	color: White;
+// }
+
+// .buttonpulse {
+// 	background-color: #F72828 !important;
+// }
+
+// .buttonload {
+// 	background-color: #F72828 !important;
+// 	text-align: center !important;
+// 	font-size: 15px;
+// 	border-radius: 8px !important;
+// 	-webkit-transition-duration: 0.4s !important; /* Safari */
+//     transition-duration: 0.4s !important ;
+// }
+// .buttonload:hover {
+// 	border-radius: 8px;
+// 	text-align: center !important;
+// 	font-size: 15px;
+//     background-color: #4CAF50 !important ; /* Green */
+//     color: white !important;
+// }
+// .initialSection {
+// 	background-color: gray;
+// 	color: white;
+// }
+
+// .scalebar {
+// 	background-color: white;
+// 	color: black;
+// 	text-align: left;
+// }
+
+// .shift_task {
+// 	color: #6ba8e3 !important;
+// 	background: #2980b9 !important;
+// }
+
+// button.menuBtn {
+// 	margin-right: 10px;
+// 	margin-left: 10px;
+// }
+
+// label.teamLabel {
+// 	font-size: 2rem;
+// 	font-weight: bold;
+// }
+
+// .prodLineBtn{
+// 	width: 100%;
+//     height: 80px;
+//     margin-top: 30px;
+//     color: #007cc0 !important;
+//     background-color: #ddeff1 !important;
+// 	}
+
+/*******************
+END OF QUARANTINE
+********************/
