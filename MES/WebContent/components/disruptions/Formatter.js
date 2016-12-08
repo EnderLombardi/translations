@@ -78,8 +78,8 @@ airbus.mes.disruptions.Formatter = {
 
 			return (month + ' ' + dd + ',' + yyyy);
 		} else {
-//			Format 2016-12-12T11:48:58.000Z			
-			return datetime.substring(0, 10);
+			datetime = airbus.mes.disruptions.Formatter.isoDateconvert(datetime);
+			return datetime.split(" ")[0];
 		}
 
 	},
@@ -94,8 +94,10 @@ airbus.mes.disruptions.Formatter = {
 
 			return (HH + ":" + mm + ":" + ss);
 		} else {
-//			Format 2016-12-12T11:48:58.000Z
-			return datetime.substring(11, 19);
+			
+			datetime = airbus.mes.disruptions.Formatter.isoDateconvert(datetime);
+			return datetime.split(" ")[1];
+
 		}
 	},
 	
@@ -237,11 +239,11 @@ airbus.mes.disruptions.Formatter = {
 	},
 	
 	setEmptyPromisedDateTimeText : function(dateTime) {
-		if(dateTime == "") {
+		if(dateTime == "")
 			return "--:--:--";
-		} else {
-			return airbus.mes.disruptions.Formatter.getDate(dateTime) + ' '+ airbus.mes.disruptions.Formatter.getTime(dateTime);
-		}
+		
+		dateTime = airbus.mes.disruptions.Formatter.isoDateconvert(dateTime);
+		return dateTime;
 	},
 	
 	textCaseFormat : function(text) {

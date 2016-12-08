@@ -192,7 +192,9 @@
 												</Label>
 											</f:label>
 											<f:fields>
-												<Text text="{path: 'operationDisruptionsModel>OpeningTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'} {path: 'operationDisruptionsModel>OpeningTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}">													<layoutData>
+												<Text text="{path: 'operationDisruptionsModel>OpeningTime', formatter: 'airbus.mes.disruptions.Formatter.isoDateconvert'}">
+
+													<layoutData>
 														<l:GridData span="L3 M3 S12" />
 													</layoutData>
 												</Text>
@@ -228,7 +230,7 @@
 												</Label>
 											</f:label>
 											<f:fields>
-												<Text text="{path: 'operationDisruptionsModel>RequiredFixBy', formatter: 'airbus.mes.disruptions.Formatter.getDate'} {path: 'operationDisruptionsModel>RequiredFixBy', formatter: 'airbus.mes.disruptions.Formatter.getTime'}">
+												<Text text="{path: 'operationDisruptionsModel>RequiredFixBy', formatter: 'airbus.mes.disruptions.Formatter.isoDateconvert'}">
 													<layoutData>
 														<l:GridData span="L3 M3 S12" />
 													</layoutData>
