@@ -1033,8 +1033,8 @@ airbus.mes.stationtracker.ModelManager = {
 						"original_start_time" : aModel[0].START_TIME,
 						"original_end_time" : aModel[0].END_TIME,
 						"cpp_cluster" : aModel[0].CPP_CLUSTER,
-						"work_package" : aModel[0].WORK_PACKAGE?
-						"erp_system" : aModel[0].ERP_SYTEM
+						"work_package" : aModel[0].WORK_PACKAGE,
+						"erp_system" : aModel[0].ERP_SYSTEM
 					} ]
 				} ]
 			}

@@ -302,7 +302,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 					//"competency": el.competency,
 					"DISRUPTION" : el.DISRUPTION,
 					"OSW" : el.OSW,
-					"ERP_SYTEM" : el.ERP_SYTEM
+					"ERP_SYSTEM" : el.ERP_SYSTEM
 					
 					//"rescheduledStarDate": el.rescheduledStarDate,
 					//"rescheduledEndDate": el.rescheduledEndDate,
