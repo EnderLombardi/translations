@@ -45,7 +45,7 @@ airbus.mes.stationtracker.ModelManager = {
            this.settings = airbus.mes.settings.ModelManager;
            
            core.getModel("stationTrackerRModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onStationTrackerLoad);
-           core.getModel("stationTrackerIModel").attachRequestCompleted( airbus.mes.stationtracker.ModelManager.onStationTrackerLoad);
+           core.getModel("stationTrackerIModel").attachRequestCompleted( airbus.mes.stationtracker.ModelManager.onStationTrackerLoadInitial);
            core.getModel("shiftsModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onShiftsLoad);
            core.getModel("affectationModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onAffectationLoad);
            core.getModel("unPlannedModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onUnPlannedLoad);
@@ -758,10 +758,17 @@ airbus.mes.stationtracker.ModelManager = {
 
 		var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
 
-		GroupingBoxingManager.parseOperation(GroupingBoxingManager.group,
-				GroupingBoxingManager.box);
+		GroupingBoxingManager.parseOperation(GroupingBoxingManager.group,GroupingBoxingManager.box);
 
 		airbus.mes.stationtracker.ModelManager.selectMyShift();
+
+	},
+	
+	onStationTrackerLoadInitial : function() {
+
+		var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
+
+		GroupingBoxingManager.parseOperation(GroupingBoxingManager.group,GroupingBoxingManager.box);
 
 	},
 
