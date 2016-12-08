@@ -1034,7 +1034,8 @@ airbus.mes.stationtracker.ModelManager = {
 						"original_end_time" : aModel[0].END_TIME,
 						"cpp_cluster" : aModel[0].CPP_CLUSTER,
 						"work_package" : aModel[0].WORK_PACKAGE,
-						"erp_system" : aModel[0].ERP_SYSTEM
+						"erp_system" : aModel[0].ERP_SYSTEM,
+						"previously_start" : aModel[0].PREVIOUSLY_STARTED
 					} ]
 				} ]
 			}
@@ -1061,6 +1062,17 @@ airbus.mes.stationtracker.ModelManager = {
 				"operationDetailModel").refresh();
 		sap.ui.getCore().getModel("operationDetailModel").setData(oOperModel);
 		sap.ui.getCore().getModel("operationDetailModel").refresh();
+
+//		If previously_started is true, the operation has to be on execution mode
+		if(aModel[0].PREVIOUSLY_STARTED === "true" ){
+			airbus.mes.operationdetail.oView.byId("switchOperationModeBtn").setState(true);
+			airbus.mes.operationdetail.oView.byId("switchOperationModeBtn").setEnabled(false);
+			airbus.mes.operationdetail.oView.byId("switchStatusLabel").setText(airbus.mes.operationdetail.oView.getModel("i18n").getProperty("Execution"));
+		} else {
+			airbus.mes.operationdetail.oView.byId("switchOperationModeBtn").setState(false);
+			airbus.mes.operationdetail.oView.byId("switchOperationModeBtn").setEnabled(true);			
+			airbus.mes.operationdetail.oView.byId("switchStatusLabel").setText(airbus.mes.operationdetail.oView.getModel("i18n").getProperty("ReadOnly"));
+		}
 
 		// Pause the Refresh timer till the Pop-Up is opened
 		//airbus.mes.shell.AutoRefreshManager.pauseRefresh();
