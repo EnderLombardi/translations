@@ -7,7 +7,7 @@
 		enableScrolling="false " class="GenricBgColor">
 
 		<content width="100%" height="100%">
-			<Panel id="kpi_header" expandable="true" expanded="true"
+			<Panel id="kpi_header" expandable="true" expanded="false"
 				expandAnimation="false" class="pageHeader kpiPageHeader contentNoPad">
 				<headerToolbar>
 					<Toolbar id="kpiHeaderToolbar" class="classKpiheaderToolbar">
@@ -33,7 +33,7 @@
 							type="Transparent"
 							class="iconbuttonTeam"
 							icon="sap-icon://group" press="onTeamPress" />
-						<Button id="hideKPI" type="Transparent" icon="sap-icon://hide"
+						<Button id="hideKPI" type="Transparent" enabled="false" icon="sap-icon://hide"
 							text="{StationTrackerI18n>HideKPIS}" press="hideKPI"/>
 					</Toolbar>
 
@@ -340,10 +340,10 @@
 		
 					<Button text="{StationTrackerI18n>disruptions/andon}" press="showDisruption"
 						type="Transparent" icon="sap-icon://alert" class="sapUiTinyMarginBeginEnd"></Button>
-					<Button id="oswButton" text="{StationTrackerI18n>ButtonOutstandingWork}"
+					<Button id="oswButton" enabled="false" text="{StationTrackerI18n>ButtonOutstandingWork}"
 						type="Transparent" icon="sap-icon://cause" class="sapUiTinyMarginBeginEnd"
 						press="onOSWPress"></Button>
-					<Button id="unplannedButton" text="{StationTrackerI18n>ButtonUnplanned}" type="Transparent"
+					<Button id="unplannedButton" enabled="false" text="{StationTrackerI18n>ButtonUnplanned}" type="Transparent"
 						icon="sap-icon://inspect" class="sapUiTinyMarginBeginEnd" press="onUnplannedPress"></Button>
 					<ToggleButton text="{StationTrackerI18n>ButtonInitial}" type="Transparent"
 						icon="sap-icon://past" class="sapUiTinyMarginBeginEnd" press="onInitialPlanPress" />

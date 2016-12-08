@@ -147,17 +147,19 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 						    		"ProdGroup" : scheduler.getEvent(id).ProdGroup,
 						    }
 							
-							if (this.getEvent(id).type === "I" ) {
-								
-								return false;
-								
-							} else if ( airbus.mes.stationtracker.GroupingBoxingManager.box === "OPERATION_ID") {
-								
-								return true;
-							} else {
-								
-								return false;
-							}
+						    return false;
+						    
+//							if (this.getEvent(id).type === "I" ) {
+//								
+//								return false;
+//								
+//							} else if ( airbus.mes.stationtracker.GroupingBoxingManager.box === "OPERATION_ID") {
+//								
+//								return true;
+//							} else {
+//								
+//								return false;
+//							}
 			
 						}));
 						
