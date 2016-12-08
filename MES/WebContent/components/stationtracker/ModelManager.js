@@ -1006,8 +1006,7 @@ airbus.mes.stationtracker.ModelManager = {
 			sStatus = "NOT_STARTED";
 		else if (aModel[0].status === "D1" || aModel[0].status === "D2"
 				|| aModel[0].status === "D3" || aModel[0].status === "D4")	
-			sStatus = airbus.mes.stationtracker.oView.getModel(
-					"StationTrackerI18n").getProperty("StatusBlocked");
+			sStatus = airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("StatusBlocked");
 
 		// progress calculation
 		var progress;
@@ -1035,6 +1034,7 @@ airbus.mes.stationtracker.ModelManager = {
 						"wo_no" : aModel[0].SHOP_ORDER_BO.split(",")[1],
 						"workcenter" : aModel[0].PP_STATION.split(",")[1],
 						"status" : sStatus,
+						"realStatus" : status,
 						"progress" : parseInt(progress, 10),
 						"progress_new" : parseInt(progress, 10),
 						"time_spent" : airbus.mes.stationtracker.util.Formatter.msToTime(aModel[0].PROGRESS),
@@ -1045,7 +1045,8 @@ airbus.mes.stationtracker.ModelManager = {
 						"cpp_cluster" : aModel[0].CPP_CLUSTER,
 						"work_package" : aModel[0].WORK_PACKAGE,
 						"erp_system" : aModel[0].ERP_SYSTEM,
-						"previously_start" : aModel[0].PREVIOUSLY_STARTED
+						"previously_start" : aModel[0].PREVIOUSLY_STARTED,
+						"paused" : aModel[0].PAUSED 
 					} ]
 				} ]
 			}
@@ -1062,14 +1063,10 @@ airbus.mes.stationtracker.ModelManager = {
 			airbus.mes.operationdetail.parentId = airbus.mes.stationtracker.operationDetailPopup.sId;
 		}
 		airbus.mes.stationtracker.operationDetailPopup.open();
-		airbus.mes.operationdetail.oView
-				.placeAt(airbus.mes.stationtracker.operationDetailPopup.sId
-						+ "-scrollCont");
+		airbus.mes.operationdetail.oView.placeAt(airbus.mes.stationtracker.operationDetailPopup.sId	+ "-scrollCont");
 
-		airbus.mes.stationtracker.operationDetailPopup.getModel(
-				"operationDetailModel").setData(oOperModel);
-		airbus.mes.stationtracker.operationDetailPopup.getModel(
-				"operationDetailModel").refresh();
+		airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").setData(oOperModel);
+		airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").refresh();
 		sap.ui.getCore().getModel("operationDetailModel").setData(oOperModel);
 		sap.ui.getCore().getModel("operationDetailModel").refresh();
 
@@ -1083,7 +1080,8 @@ airbus.mes.stationtracker.ModelManager = {
 			airbus.mes.operationdetail.oView.byId("switchOperationModeBtn").setEnabled(true);			
 			airbus.mes.operationdetail.oView.byId("switchStatusLabel").setText(airbus.mes.operationdetail.oView.getModel("i18n").getProperty("ReadOnly"));
 		}
-
+		// Permit to know if the operation is active pause or not started
+		airbus.mes.operationdetail.status.oView.getController().operationIsActive();
 		// Pause the Refresh timer till the Pop-Up is opened
 		//airbus.mes.shell.AutoRefreshManager.pauseRefresh();
 

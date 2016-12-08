@@ -25,7 +25,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 						scheduler.xy.scroll_width=20;
 						scheduler.xy.bar_height = 30;
 						scheduler.deleteMarkedTimespan();
-						scheduler.config.drag_resize = true;
+						scheduler.config.drag_resize = false;
 						scheduler.locale.labels.timeline_tab = "Timeline";
 						scheduler.locale.labels.section_custom="Section";
 						scheduler.config.details_on_create=false;
@@ -91,17 +91,22 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 					     *
 					     * @param {oEvent} Object wich represent the event on press from "TeamButton"
 					     ****************************************************************************/ 
-						scheduler.eventId.push (scheduler.attachEvent("onBeforeEventChanged", function(ev, e, is_new, original){
-						  
-							if ( ev.section_id.slice(0,2) === "I_" ) {
-						    return false;
-						  } 
-//							
-						  return true;
-						  
+
+						scheduler.eventId.push(scheduler.attachEvent("onBeforeEventChanged", function(ev, e, is_new,original) {
+
+							if (is_new) {
+								return false;
+							}
+
+							if (ev.section_id.slice(0, 2) === "I_") {
+								return false;
+							}
+							//							
+							return true;
+
 						}));
 					
-												
+						
 //				if (!scheduler.checkEvent("onBeforeEventChanged")) {
 //						scheduler.eventId.push(scheduler.attachEvent("onBeforeEventChanged",
 //								
@@ -171,21 +176,21 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 					     */ 
 						
 						scheduler.eventId.push(scheduler.attachEvent("onDragEnd", function rescheduling(id, mode, e){
-							//Filled on event onBeforeDrag
-							var oInitial = scheduler.InitialPosition;
-							var oFinal = scheduler.getEvent(id); 
-
-							//We check only the first start date because the duration of the operation cannot changed							
-							if( oInitial.start_date === oFinal.start_date ) {
-							//date aren't change , nothing to do
-								return true;
-							} else {
-								//Store oFinal and oInitial value in case of check qa is not successfull
-								airbus.mes.stationtracker.oFinal = oFinal;
-								airbus.mes.stationtracker.oInitial = oInitial;
-								airbus.mes.stationtracker.ModelManager.sendRescheduleRequest(false,oFinal,oInitial);
-							}
-							
+//							//Filled on event onBeforeDrag
+//							var oInitial = scheduler.InitialPosition;
+//							var oFinal = scheduler.getEvent(id); 
+//
+//							//We check only the first start date because the duration of the operation cannot changed							
+//							if( oInitial.start_date === oFinal.start_date ) {
+//							//date aren't change , nothing to do
+//								return true;
+//							} else {
+//								//Store oFinal and oInitial value in case of check qa is not successfull
+//								airbus.mes.stationtracker.oFinal = oFinal;
+//								airbus.mes.stationtracker.oInitial = oInitial;
+//								airbus.mes.stationtracker.ModelManager.sendRescheduleRequest(false,oFinal,oInitial);
+//							}
+							return false 
 							console.log("end of drag");
 							
 						}));

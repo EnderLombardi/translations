@@ -21,6 +21,7 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
 		sap.ui.getCore().byId("operationDetailPopup--btnConfirm").attachPress(this.confirmOperation);
 		sap.ui.getCore().byId("operationDetailPopup--btnActivate").attachPress(this.activateOperation);
 		sap.ui.getCore().byId("operationDetailPopup--btnComplete").attachPress(this.completeOperation);
+		
 
 	},
 	/**
@@ -489,12 +490,15 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
 	 */
 	onAfterRendering : function() {
 		this.setOperationActionButtons();
+		
+		this.operationIsActive();
 
 	},
 
 	setOperationActionButtons : function() {
 		this.getView().byId("blockedText").setVisible(false);
-		this.getView().byId("goToDisruption").setVisible(false);
+		this.getView().byId("goToDisruption").setVisible(false);	
+			
 		if (sap.ui.getCore().byId("operationDetailsView--switchOperationModeBtn").getState() == false) {
 			this.setProgressScreenBtn(false, false);
 			if (this.getView().byId("operationStatus").getText() === airbus.mes.operationdetail.status.oView.getModel(
@@ -527,7 +531,50 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
 			this.setProgressScreenBtn(false, false);
 		}
 
-	}
+	},
+
+	/**
+	 * Used to know if an operation is started/paused/notStarted/complete
+	 * and Diplsay button to pause.confirm/complete/activate
+	 * 
+	 */
+	operationIsActive : function() {
+		
+		var aModel = airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0];
+		var sPreviousStarted = aModel.previously_start;
+		var sStatus = aModel.realStatus;
+		var sProgress = aModel.progress;
+		var sPaused = aModel.paused;
+		
+		// Operation is started
+		if ( sPreviousStarted === "true" ) {
+			
+			this.setProgressScreenBtn( true, false );
+						
+		}
+		
+		// Operation is paused
+		if ( sPaused === "---" && sPreviousStarted === "true" ) {
+			
+			this.setProgressScreenBtn( false, true );
+		
+		}
+		
+		// Operation is not started
+		if (  sPreviousStarted === "false" ) {
+			
+			this.setProgressScreenBtn( true, true );
+						
+		}
+		
+		// Operation is complete
+		if ( sStatus === "0" ) {
+			
+			this.setProgressScreenBtn( true, false );
+						
+		}
+		
+	}	
 
 /**
  * Called when the Controller is destroyed. Use this one to free

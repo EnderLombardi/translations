@@ -265,7 +265,8 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 				fRMA = "1";		
 			}
 				
-			var oOperation = {						
+			var oOperation = {		
+					
 					"WORKORDER_ID" : el.WORKORDER_ID, // workOrder
 					"WORKORDER_DESCRIPTION": el.WORKORDER_DESCRIPTION,
 					"OPERATION_ID" : el.OPERATION_ID,
@@ -276,20 +277,13 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 					"START_TIME" : el.START_TIME,
 					"END_TIME" : el.END_TIME,
 					"STATE": el.STATE,
-					//"disruptions": el.disruptions,
 					"ANDONS": el.ANDONS,
 					"RMA_STATUS_COLOR": fRMA,
 					"status" : sStatus,
 					"ISUNPLANNED" : sUnplanned,
-					//"ata": el.ata,
-					//"familyTarget": el.familyTarget,
 					"CPP_CLUSTER" : el.CPP_CLUSTER,
 					"WORK_PACKAGE" : el.WORK_PACKAGE,
-					//"avlPath1": el.avlPath1,
-					//"avlPath2": el.avlPath2,
 					"CRITICAL_PATH" : el.CRITICAL_PATH,
-					//"avlStartDate" : el.avlStartDate,
-					//"avlEndDate" : el.avlEndDate,
 					"EXECUTION_STATION_SOURCE" : fOSW,
 					"AVL_LINE": el.AVL_LINE,
 					"PROD_GROUP":el.PROD_GROUP,
@@ -299,15 +293,11 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 					"OPERATION_BO": el.OPERATION_BO,
 					"SKILLS" : el.SKILLS,
 					"PREVIOUSLY_STARTED" : el.PREVIOUSLY_STARTED,
-					//"competency": el.competency,
 					"DISRUPTION" : el.DISRUPTION,
 					"OSW" : el.OSW,
-					"ERP_SYSTEM" : el.ERP_SYSTEM
-					
-					//"rescheduledStarDate": el.rescheduledStarDate,
-					//"rescheduledEndDate": el.rescheduledEndDate,
-					//"rescheduledLine": el.rescheduledLine,
-					//"initial" : sInitial,	
+					"ERP_SYSTEM" : el.ERP_SYSTEM,
+					"PAUSED" : el.PAUSED
+			
 			};
 			
 			
