@@ -217,8 +217,8 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		} else {
 			
 			airbus.mes.stationtracker.GroupingBoxingManager.showInitial = true;
-			airbus.mes.stationtracker.ModelManager.loadStationTracker("I");
-			
+			GroupingBoxingManager.parseOperation(GroupingBoxingManager.group, GroupingBoxingManager.box);
+			airbus.mes.stationtracker.oView.getController().changeShift();
 		}
 	},
 	

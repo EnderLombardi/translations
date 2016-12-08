@@ -33,7 +33,7 @@
 								</HBox>
 								<HBox justifyContent="SpaceBetween">
 									<Text id="timeRange"
-										text="{parts:['operationDetailModel>/Rowsets/Rowset/0/Row/0/original_start_time' ,'operationDetailModel>/Rowsets/Rowset/0/Row/0/original_end_time'],formatter:'airbus.mes.operationdetail.Formatter.displayOriginalPlan'}"
+										text="{parts:['operationDetailModel>/Rowsets/Rowset/0/Row/0/reschedule_start_time' ,'operationDetailModel>/Rowsets/Rowset/0/Row/0/reschedule_end_time'],formatter:'airbus.mes.operationdetail.Formatter.displayOriginalPlan'}"
 										class="subText sapUiSmallMarginEnd"></Text>
 									<Text id="taskId"
 										text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/CPP_CLUSTER}"
@@ -57,7 +57,7 @@
 							<VBox>
 								<Label text="Start:" />
 								<Text
-									text="{= ${operationDetailModel>/Rowsets/Rowset/0/Row/0/planned_start_time} === 'TimeUnavailable' ? ${i18n>notStarted} : ${operationDetailModel>/Rowsets/Rowset/0/Row/0/planned_start_time} }" />
+									text="Not Started" />
 								<Label type="space"></Label>
 								<Label text="Time spent" />
 								<Text
@@ -75,7 +75,7 @@
 							<VBox>
 								<Label text="End:" />
 								<Text
-									text="{= ${operationDetailModel>/Rowsets/Rowset/0/Row/0/planned_start_time} === 'TimeUnavailable' ? ${i18n>notStarted} : ${operationDetailModel>/Rowsets/Rowset/0/Row/0/planned_start_time} }" />
+									text="Not Started" />
 								<Label type="space"></Label>
 								<Label text="Original plan:" />
 								<Text

@@ -146,16 +146,16 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
         aModelI = [];
         console.log("no Initial operation load");
         }
-		if ( airbus.mes.stationtracker.GroupingBoxingManager.showInitial ) {
+		//if ( airbus.mes.stationtracker.GroupingBoxingManager.showInitial ) {
 			
 			
 			this.computeOperationHierarchy(aModelI,sGroup,sBoxing,"I");
 			this.computeOperationHierarchy(aModel,sGroup,sBoxing);
 			
-		} else {
+		//} else {
 			
-			this.computeOperationHierarchy(aModel,sGroup,sBoxing);
-		}
+		//	this.computeOperationHierarchy(aModel,sGroup,sBoxing);
+		//}
 		
 	},
 	
@@ -310,6 +310,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 					//"initial" : sInitial,	
 			};
 			
+			
 			oHierachy[ssGroup][ssAvLine][ssBox].push(oOperation);
 			
 			if ( oFormatter.jsDateFromDayTimeStr(el.END_TIME) < new Date() ) {		
@@ -352,8 +353,8 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 						
 				//Creation of avl line of the current group
 				var fIndex = aElements2.indexOf(oRecheduleGroup);
-				
-				if ( key1.slice(0,2) === "I_" ) {
+			
+				if ( key1.slice(0,2) === "I_" &&  airbus.mes.stationtracker.GroupingBoxingManager.showInitial ) {
 					
 					var oInitialGroup = {
 							"group" : key,
@@ -373,8 +374,10 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 						console.log( "no avlLine initial corresponding to RESCHEDULED AVLlINE,avline inserted first");
 						aElements2[fGroupIndex].children.splice(0, 0, oInitialGroup );
 					}
-				} else {
+				} 
 				
+				
+				if ( key1.slice(0,2) != "I_" ) {
 				
 				var ochild = {
 						"group" : key,
@@ -456,7 +459,8 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 						
 					} );
 					
-					if (  key1.slice(0,2) === "I_" ) {
+					if (  key1.slice(0,2) === "I_" &&  airbus.mes.stationtracker.GroupingBoxingManager.showInitial ) {
+						
 						var oOperationInitial = {
 								
 								"sSfcStep" : sSfcStep,
@@ -481,7 +485,10 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 						
 						aBox.push(oOperationInitial);
 						
-					} else {
+					} 
+					
+					if  ( key1.slice(0,2) != "I_" )
+					{
 					
 						var oOperationRescheduling = {
 								

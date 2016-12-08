@@ -873,13 +873,23 @@ airbus.mes.stationtracker.ModelManager = {
 
 		// Check if there is only one operation on the worklist
 		// If yes, open the operation list
-		var aModel = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy[scheduler
-				.getEvent(id).group][scheduler.getEvent(id).avlLine][scheduler
-				.getEvent(id).box];
+		var aModel = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy[scheduler.getEvent(id).group][scheduler.getEvent(id).avlLine][scheduler.getEvent(id).box];
+		//Search avlDate and use it in operation Detail	
+		if ( airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy[scheduler.getEvent(id).group].hasOwnProperty(["I_" + scheduler.getEvent(id).avlLine] )) {
+			
+			if ( airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy[scheduler.getEvent(id).group]["I_" + scheduler.getEvent(id).avlLine].hasOwnProperty([scheduler.getEvent(id).box]) ) {
 
+				var sAvlStart = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy[scheduler.getEvent(id).group]["I_" + scheduler.getEvent(id).avlLine][scheduler.getEvent(id).box][0].START_TIME;
+				var sAvlEnd = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy[scheduler.getEvent(id).group]["I_" + scheduler.getEvent(id).avlLine][scheduler.getEvent(id).box][0].END_TIME;		
+				
+			}
+			
+		}
+		
+		
 		if (aModel.length === 1) {
 
-			airbus.mes.stationtracker.ModelManager.openOperationDetailPopup(aModel);
+			airbus.mes.stationtracker.ModelManager.openOperationDetailPopup(aModel,sAvlStart,sAvlEnd);
 			return;
 		}
 
@@ -967,7 +977,7 @@ airbus.mes.stationtracker.ModelManager = {
 	/***************************************************************************
 	 * open operation detail popup containing progress slider
 	 **************************************************************************/
-	openOperationDetailPopup : function(aModel) {
+	openOperationDetailPopup : function(aModel,sAvlStart,sAvlEnd) {
 		if (airbus.mes.stationtracker.operationDetailPopup === undefined) {
 
 			airbus.mes.stationtracker.operationDetailPopup = sap.ui
@@ -1028,10 +1038,10 @@ airbus.mes.stationtracker.ModelManager = {
 						"progress" : parseInt(progress, 10),
 						"progress_new" : parseInt(progress, 10),
 						"time_spent" : airbus.mes.stationtracker.util.Formatter.msToTime(aModel[0].PROGRESS),
-						"planned_start_time" : "TimeUnavailable",
-						"planned_end_time" : "TimeUnavailable",
-						"original_start_time" : aModel[0].START_TIME,
-						"original_end_time" : aModel[0].END_TIME,
+						"reschedule_start_time" :  aModel[0].START_TIME,
+						"reschedule_end_time" :  aModel[0].END_TIME,
+						"original_start_time" : sAvlStart,
+						"original_end_time" : sAvlEnd,
 						"cpp_cluster" : aModel[0].CPP_CLUSTER,
 						"work_package" : aModel[0].WORK_PACKAGE,
 						"erp_system" : aModel[0].ERP_SYSTEM,
