@@ -92,7 +92,6 @@ sap.ui
 //                            Define visibility for header sections
                             $(".opDetailNavToolbar > ul > li ~ li").css("display", "inline-block");
 
-
                         } else {
 //                            Define visibility for header sections
                             $(".opDetailNavToolbar > ul > li ~ li").css("display", "none");
