@@ -242,7 +242,7 @@ sap.ui
                             break;
 
                             case "touchngo":
-                         
+
                                 var sWorkOrder = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].wo_no;
                                 var operationId = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_no;
                                 var splitOpeId = operationId.split("-");
@@ -262,7 +262,7 @@ sap.ui
                                         tAndGoLink = "qea";
                                 }
 
-                                var oLink = "touchngo" + this.tAndGoLink + "://openpage/operation?workorder=" + sWorkOrder + "&operation=" + splitOpeId[3];
+                                var oLink = "touchngo" + tAndGoLink + "://openpage/operation?workorder=" + sWorkOrder + "&operation=" + splitOpeId[3];
                                 window.open(oLink, "_blank");
                                 break;
 
