@@ -244,43 +244,27 @@ sap.ui
 						/***************************************************
 						 * Show/ Hide Footer Buttons
 						 */
-						switch(this.nav.getCurrentPage().sId){
-						case "idStatusView":
-							// Hide buttons
-							sap.ui.getCore().byId("operationDetailPopup--btnPause").setVisible(false);
-							sap.ui.getCore().byId("operationDetailPopup--btnActivate").setVisible(false);
-							sap.ui.getCore().byId("operationDetailPopup--btnConfirm").setVisible(false);
-							sap.ui.getCore().byId("operationDetailPopup--btnComplete").setVisible(false);
+						//case "idStatusView":
+						// Hide buttons
+						sap.ui.getCore().byId("operationDetailPopup--btnPause").setVisible(false);
+						sap.ui.getCore().byId("operationDetailPopup--btnActivate").setVisible(false);
+						sap.ui.getCore().byId("operationDetailPopup--btnConfirm").setVisible(false);
+						sap.ui.getCore().byId("operationDetailPopup--btnComplete").setVisible(false);
 							
-							break;
-							
-						case "ViewDisruptionView":
-							// Hide buttons
-							sap.ui.getCore().byId("operationDetailPopup--reportDisruption").setVisible(false);
-							
-							break;
+						//Case "ViewDisruptionView":
+						// Hide buttons
+						sap.ui.getCore().byId("operationDetailPopup--reportDisruption").setVisible(false);
 						
 						
-						case "createDisruptionView":
-							// Hide buttons
-							sap.ui.getCore().byId("operationDetailPopup--btnCreateDisruption").setVisible(false);
-							sap.ui.getCore().byId("operationDetailPopup--btnUpdateDisruption").setVisible(false);
-							sap.ui.getCore().byId("operationDetailPopup--btnCancelDisruption").setVisible(false);
+						//case "createDisruptionView":
+						// Hide buttons
+						sap.ui.getCore().byId("operationDetailPopup--btnCreateDisruption").setVisible(false);
+						sap.ui.getCore().byId("operationDetailPopup--btnUpdateDisruption").setVisible(false);
+						sap.ui.getCore().byId("operationDetailPopup--btnCancelDisruption").setVisible(false);
 						
-							break;
-						
-						case "reschedulePage--reschedulePage":
-							
-							 sap.ui.getCore().byId("operationDetailPopup--btnReschedule").setVisible(false); 
-							
-							break;
-							
-							
-							
-						default:
-							break;
-						}
-						
+						//case "reschedulePage--reschedulePage":
+						// Hide buttons
+						sap.ui.getCore().byId("operationDetailPopup--btnReschedule").setVisible(false); 						
 					},
 
 					renderViews : function(oEvent) {
