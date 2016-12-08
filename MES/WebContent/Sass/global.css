@@ -3251,13 +3251,12 @@ Old global.css
 .station5FacHeight {
   height: 100% !important; }
 
+.factoryStation5 .sapMFlexItem {
+  width: 100%; }
 .factoryStation5 .sapMFlexItem:nth-child(1) {
-  height: 85%;
-  width: 100%; }
-
+  height: 85%; }
 .factoryStation5 .sapMFlexItem:nth-child(2) {
-  height: 15%;
-  width: 100%; }
+  height: 15%; }
 
 #idMainView--lineTrackerName {
   font-size: 1.2rem;
@@ -3479,7 +3478,6 @@ Old global.css
 /*user affectation HBox class to display contents in proper way*/
 .displayUsersAffectationBox .sapMFlexItem:nth-child(1) {
   width: 100%; }
-
 .displayUsersAffectationBox .sapMFlexItem:nth-child(2) {
   width: 10%; }
 
@@ -3487,26 +3485,10 @@ Old global.css
 #idMainView--IconTabsPages {
   height: 3rem;
   margin: 0; }
-
 #idMainView--IconTabsPages .sapMSegBBtnDis {
   height: 3rem;
   border: 0;
   line-height: 3rem; }
-
-#idMainView .sapMSegBBtn.sapMSegBBtnMixed .sapUiIcon {
-  display: inline-block;
-  vertical-align: top;
-  padding: 0.250rem 0.25rem 0.250rem 0;
-  color: #0D5D76; }
-
-#idMainView .sapMSegBBtnFocusable.sapMSegBBtnSel .sapUiIcon {
-  color: #ffffff; }
-
-#idMainView--IconTabsPages .sapMSegBBtnFocusable.sapMSegBBtnSel {
-  background-color: #74D2E7;
-  color: white;
-  font-weight: bold; }
-
 #idMainView--IconTabsPages .sapMSegBBtnFocusable {
   border: none;
   height: 3rem;
@@ -3516,6 +3498,18 @@ Old global.css
   border: none;
   color: #0D5D76;
   background-color: transparent; }
+#idMainView--IconTabsPages .sapMSegBBtnFocusable.sapMSegBBtnSel {
+  background-color: #74D2E7;
+  color: white;
+  font-weight: bold; }
+#idMainView--IconTabsPages .sapMSegBBtnFocusable.sapMSegBBtnSel .sapUiIcon {
+  color: #ffffff; }
+
+#idMainView .sapMSegBBtn.sapMSegBBtnMixed .sapUiIcon {
+  display: inline-block;
+  vertical-align: top;
+  padding: 0.250rem 0.25rem 0.250rem 0;
+  color: #0D5D76; }
 
 /******************
 Old bcrystal.css
@@ -4039,14 +4033,19 @@ label.teamLabel {
   min-height: auto; }
 
 /* idFactoryView */
-#idFactoryView--VboxLeft {
-  background-color: #e9fbfd; }
-
 #idFactoryView {
   background-color: #fff;
   height: 100% !important; }
-
-#idFactoryView .transferIsle {
+#idFactoryView > .factHBox {
+  margin: 0;
+  height: 100% !important; }
+#idFactoryView > .factHBox > #idFactoryView--VboxLeft {
+  background-color: #e9fbfd; }
+#idFactoryView > .factHBox > #idFactoryView--VboxLeft .sapMVBox > .sapMFlexItem {
+  width: 100%; }
+#idFactoryView > .factHBox > #idFactoryView--VboxLeft .sapMVBox > .sapMFlexItem > .factory_lineButton {
+  padding: 0; }
+#idFactoryView > .factHBox .transferIsle {
   width: 100%;
   background-color: #f5f5f5;
   color: #c0c0c0;
@@ -4056,26 +4055,20 @@ label.teamLabel {
   font-size: 2vh;
   margin-top: 0;
   margin-bottom: 0; }
-
-#idFactoryView--factoryHBox {
-  margin: 0;
-  height: 100% !important; }
-
-#idFactoryView--VboxLeft .sapMVBox > .sapMFlexItem {
-  width: 100%; }
-
-#idMainView--lineTrackerToolbar {
-  border: 0; }
-
-#idFactoryView--factoryHBox .stationBoxHeader {
+#idFactoryView > .factHBox .stationBoxHeader {
   height: 35px;
   font-size: 1.5vh;
   background: #eaeaea;
   line-height: 2.5rem;
   font-weight: normal; }
-
-#idFactoryView--factoryHBox .structureStationBox {
+#idFactoryView > .factHBox .structureStationBox {
   padding: 0; }
+#idFactoryView > .factHBox fieldset {
+  border: 1px solid #0D5D76;
+  color: #0D5D76; }
+
+#idMainView--lineTrackerToolbar {
+  border: 0; }
 
 .stationBoxBody > [src$="red_new.png"] + div {
   background: #000 !important; }
@@ -4083,9 +4076,6 @@ label.teamLabel {
 .adjustPulseSelect button {
   height: auto;
   border: 0; }
-
-.factHBox .factory_lineButton {
-  padding: 0; }
 
 .adjustPulseSelect button.myPulseButton {
   padding: 0;
@@ -4159,10 +4149,6 @@ label.teamLabel {
 
 .lineTrackerSubheader .sapMBtn:hover > .sapMBtnTransparent.sapMBtnHoverable span, .lineTrackerSubheade .sapMToggleBtnPressed.sapMBtnHoverable .sapMBtnIcon:hover, .sap-desktop .lineTrackerSubheader button > .sapMBtnTransparent.sapMToggleBtnPressed {
   background-color: rgba(0, 86, 112, 0.2); }
-
-#idFactoryView--factoryHBox fieldset {
-  border: 1px solid #0D5D76;
-  color: #0D5D76; }
 
 .lineTrackerSubheader .sapMBarChild:nth-child(5) {
   margin: 0 0 0 0.25rem !important; }

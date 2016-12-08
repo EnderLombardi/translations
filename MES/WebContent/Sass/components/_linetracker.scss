@@ -169,14 +169,16 @@ Old global.css
 	height: 100% !important;
 }
 
-.factoryStation5 .sapMFlexItem:nth-child(1) {
-	height: 85%;
-	width: 100%;
-}
-
-.factoryStation5 .sapMFlexItem:nth-child(2) {
-	height: 15%;
-	width: 100%;
+.factoryStation5 {
+	.sapMFlexItem {
+		width: 100%;
+		&:nth-child(1) {
+			height: 85%;
+		}
+		&:nth-child(2) {
+			height: 15%;
+		}
+	}
 }
 
 #idMainView--lineTrackerName {
@@ -447,53 +449,52 @@ Old global.css
     -webkit-animation-duration: 1s; 
 }
 /*user affectation HBox class to display contents in proper way*/
-.displayUsersAffectationBox .sapMFlexItem:nth-child(1){
-	width:100%;	
-}
-.displayUsersAffectationBox .sapMFlexItem:nth-child(2){
-	width:10%;
+.displayUsersAffectationBox {
+	.sapMFlexItem {
+		&:nth-child(1){
+			width:100%;	
+		}
+		&:nth-child(2){
+			width:10%;
+		}
+	}
 }
 
 /* subheader and segmented buttons */
-
 #idMainView--IconTabsPages {
 	height: 3rem;
 	margin: 0;
+	.sapMSegBBtnDis {
+		height: 3rem;
+		border:0;
+		line-height: 3rem;
+	}
+	.sapMSegBBtnFocusable {
+		border: none;
+		height: 3rem;
+		line-height: 3rem;
+		display: inline-block;
+
+		vertical-align: top;
+		border: none;
+		color: #0D5D76;
+		background-color: transparent;
+		&.sapMSegBBtnSel{
+			background-color: #74D2E7;
+			color: white;
+			font-weight: bold;
+			.sapUiIcon {
+				color: #ffffff;
+			}
+		}
+	}
 }
-
-
-#idMainView--IconTabsPages .sapMSegBBtnDis {
-	height: 3rem;
-	border:0;
-	line-height: 3rem;
-}
-
 
 #idMainView .sapMSegBBtn.sapMSegBBtnMixed .sapUiIcon {
     display: inline-block;
     vertical-align: top;
     padding: 0.250rem 0.25rem 0.250rem 0;
     color: #0D5D76;
-}
-#idMainView .sapMSegBBtnFocusable.sapMSegBBtnSel .sapUiIcon {
-    color: #ffffff;
-}
-#idMainView--IconTabsPages .sapMSegBBtnFocusable.sapMSegBBtnSel {
-    background-color: #74D2E7;
-    color: white;
-    font-weight: bold;
-}
-
-#idMainView--IconTabsPages .sapMSegBBtnFocusable {
-    border: none;
-    height: 3rem;
-    line-height: 3rem;
-    display: inline-block;
-
-    vertical-align: top;
-    border: none;
-    color: #0D5D76;
-    background-color: transparent;
 }
 
 /******************
@@ -1121,57 +1122,61 @@ white-space: nowrap !important;
     min-height: auto;
 }
 /* idFactoryView */
-#idFactoryView--VboxLeft {
-    background-color: #e9fbfd;	
-}
-
 #idFactoryView {
 	background-color:#fff;
 	height:100%!important;
+	>.factHBox  {
+		margin: 0;
+		height: 100%!important;
+		>#idFactoryView--VboxLeft {
+			background-color: #e9fbfd;	
+			.sapMVBox{
+				>.sapMFlexItem {
+					width:100%;
+					>.factory_lineButton {
+						padding:0;
+					}
+				}
+			}
+		}
+		.transferIsle {
+			width: 100%;
+			background-color: #f5f5f5;
+			color:#c0c0c0;
+			height: 6%;
+			justify-content: space-around;
+			align-items: center;
+			font-size: 2vh;
+			margin-top: 0;
+			margin-bottom: 0;
+		}
+		.stationBoxHeader {
+			height: 35px;
+			font-size: 1.5vh;
+			background: #eaeaea;
+			line-height: 2.5rem;
+			font-weight: normal;
+		}
+		.structureStationBox {
+			padding:0;
+		}
+		fieldset {
+			border: 1px solid #0D5D76;
+			color: #0D5D76;
+		}
+	}
 }
 
-#idFactoryView  .transferIsle {
-    width: 100%;
-    background-color: #f5f5f5;
-    color:#c0c0c0;
-    height: 6%;
-    justify-content: space-around;
-    align-items: center;
-    font-size: 2vh;
-    margin-top: 0;
-    margin-bottom: 0;
-}
-
-#idFactoryView--factoryHBox {
-    margin: 0;
-    height: 100%!important;
-}
-#idFactoryView--VboxLeft .sapMVBox > .sapMFlexItem {
-	width:100%;
-}
+////////////////////////////////////
 #idMainView--lineTrackerToolbar {
 	border:0;
 }
-#idFactoryView--factoryHBox .stationBoxHeader {
-    height: 35px;
-    font-size: 1.5vh;
-    background: #eaeaea;
-    line-height: 2.5rem;
-    font-weight: normal;
-}
-#idFactoryView--factoryHBox .structureStationBox {
-    padding:0;
-}
-
 .stationBoxBody>[src$="red_new.png"] + div  {
 	background:#000!important;
 }
 .adjustPulseSelect button {
 	height:auto;
 	border:0;
-}
-.factHBox .factory_lineButton {
-	padding:0;
 }
 
 .adjustPulseSelect button.myPulseButton {
@@ -1252,12 +1257,6 @@ white-space: nowrap !important;
  .lineTrackerSubheade .sapMToggleBtnPressed.sapMBtnHoverable .sapMBtnIcon:hover,
 .sap-desktop .lineTrackerSubheader button>.sapMBtnTransparent.sapMToggleBtnPressed {
     background-color: rgba(0, 86, 112, 0.20);
-}
-    
-#idFactoryView--factoryHBox fieldset {
-    border: 1px solid #0D5D76;
-    color: #0D5D76;
-    
 }
 
 .lineTrackerSubheader .sapMBarChild:nth-child(5) {
