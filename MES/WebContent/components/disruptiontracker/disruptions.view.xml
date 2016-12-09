@@ -80,9 +80,6 @@
 				<Column>
 					<Text text="{disruptiontrackerI18n>operation}" />
 				</Column>
-		<!-- 		<Column>
-					<Text text="{disruptiontrackerI18n>oldgravity}" />
-				</Column> -->
 				<Column>
 					<Text text="{disruptiontrackerI18n>gravity}" />
 				</Column>
@@ -130,11 +127,7 @@
 			<items>
 				<ColumnListItem type="Navigation" press="onTableClick">
 					<cells>
-						<Text text="{disruptionsTrackerModel>WorkOrder} / {path: 'disruptionsTrackerModel>Operation', formatter: 'airbus.mes.disruptiontracker.Formatter.formatOperation'}" />
-						<!-- <ObjectStatus class="sapUiSmallMarginBottom"
-							text="{parts: [ {path: 'disruptionsTrackerModel>Status'}, {path: 'disruptionsTrackerModel>Gravity'}, {path: 'disruptionsTrackerModel>Severity'} ], formatter: 'airbus.mes.disruptiontracker.Formatter.setText'}"
-							state="{parts: [ {path: 'disruptionsTrackerModel>Status'}, {path: 'disruptionsTrackerModel>Gravity'}, {path: 'disruptionsTrackerModel>Severity'} ], formatter: 'airbus.mes.disruptiontracker.Formatter.setState'}"
-							icon="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setIcon'}" /> -->
+						<Text text="{disruptionsTrackerModel>WorkOrder} / {path: 'disruptionsTrackerModel>Operation', formatter: 'airbus.mes.disruptiontracker.Formatter.setOperationText'}" />
 						<HBox>
 							<core:Icon src="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setIcon'}" color="{parts: [ {path: 'disruptionsTrackerModel>Status'}, {path: 'disruptionsTrackerModel>Gravity'}, {path: 'disruptionsTrackerModel>Severity'} ], formatter: 'airbus.mes.disruptiontracker.Formatter.setGravityColor'}" class="sapUiSmallMarginEnd" />
 							<Text text="{parts: [ {path: 'disruptionsTrackerModel>Status'}, {path: 'disruptionsTrackerModel>Gravity'}, {path: 'disruptionsTrackerModel>Severity'} ], formatter: 'airbus.mes.disruptiontracker.Formatter.setText'}" />

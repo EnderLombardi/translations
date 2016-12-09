@@ -18,26 +18,6 @@ airbus.mes.disruptiontracker.Formatter = {
 			return "";
 	},
 
-	/*
-	 * setState : function(status, gravity, escalation) {
-	 * 
-	 * if(status == "CLOSED") return "Success";
-	 * 
-	 * else if(status == "SOLVED") {
-	 * 
-	 * if(escalation == 2 || escalation == 3) return "Error";
-	 * 
-	 * else if(gravity == 3) return "Warning"; } else if(escalation == 2 ||
-	 * escalation == 3) return "Error";
-	 * 
-	 * else if(gravity == 3) return "Warning";
-	 * 
-	 * else if(gravity == 1 || gravity == 2) return "Success";
-	 * 
-	 * else return "None";
-	 *  },
-	 */
-
 	setGravityColor : function(sStatus, iGravity, sEscalation) {
 
 		switch (iGravity) {
@@ -182,5 +162,10 @@ airbus.mes.disruptiontracker.Formatter = {
 			return "Final Escalation";
 		else
 			return "-----";
+	},
+
+	setOperationText : function (operation) {
+		var operationText = operation.substring(operation.length-6, operation.length-2);
+		return operationText;
 	}
 };
