@@ -84,6 +84,9 @@ airbus.mes.shell.ModelManager = {
 			var toXml = function(v, name, ind) {
 				var m;
 				var xml = "";
+				if (v == undefined) {
+					v = "";
+				}
 				if (v instanceof Array) {
 					for (var i = 0, n = v.length; i < n; i++)
 						xml += ind + toXml(v[i], name, ind + "\t") + "\n";
