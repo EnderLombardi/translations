@@ -40,6 +40,7 @@ airbus.mes.stationtracker.ModelManager = {
               core.setModel(new sap.ui.model.json.JSONModel(), "KPIresolutionEfficiency"); // KPI Resolution Staffing
               core.setModel(new sap.ui.model.json.JSONModel(), "KPIdisruption"); // KPI Resolution Staffing
               core.setModel(new sap.ui.model.json.JSONModel(), "KPIchartTaktAdherence"); // KPI Resolution Staffing
+             // core.setModel(new sap.ui.model.json.JSONModel(), "spentTimedataModel"); // to store and get spent time
 
 
            this.settings = airbus.mes.settings.ModelManager;
@@ -993,7 +994,14 @@ airbus.mes.stationtracker.ModelManager = {
 					.addDependent(airbus.mes.stationtracker.operationDetailPopup);
 
 		}
-
+		//spent time calculation
+		var operation = aModel[0].OPERATION_BO.split(",")[1];
+		var order = aModel[0].SHOP_ORDER_BO.split(",")[1];
+		var spentTimeInMs = 0;
+		//TODO Exception to display to UI
+		if(operation && order){
+			spentTimeInMs  = airbus.mes.stationtracker.ModelManager.getSpentTimePerOperation(operation,order);
+		}
 		// calculate status of operation
 		var sStatus;
 		if (aModel[0].status == "0")
@@ -1214,6 +1222,41 @@ airbus.mes.stationtracker.ModelManager = {
 		
 		}
 		
+	},
+	getSpentTimePerOperation : function(operation, order){
+		//var oViewModel = sap.ui.getCore().getModel("spentTimedataModel");
+		var spentTime =0;
+		jQuery.ajax({
+			type : 'post',
+			url : this.urlModel.getProperty("urlGetTimeSpentPerOperation"),
+			contentType : 'application/json',
+			async : false,
+			data : JSON.stringify({
+				"site" : airbus.mes.settings.ModelManager.site,
+				"order" : order,
+				"operation" : operation,
+			}),
+
+			success : function(data) {
+				if(typeof data == "string"){
+					data = JSON.parse(data);
+				}
+				if(data.success){
+					spentTime =  data.spentTime;
+				}
+				//TODO show message toast that service failed in case of error
+				else {
+					return 0;
+				}
+			},
+
+			error : function(error, jQXHR) {
+				console.log(error);
+				return 0;
+
+			}
+		});
+		return spentTime; 
 	}
 	
 };
