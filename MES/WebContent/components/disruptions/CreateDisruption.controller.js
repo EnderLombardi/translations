@@ -489,9 +489,8 @@ sap.ui
 								+ " " + oView.byId("expectedTime").getValue()).toISOString();
 						var sComment = oView.byId("comment").getValue()
 						var iGravity = oView.byId("gravity").getSelectedKey()
-						var dPromisedTime = new Date(oView.byId("promisedDate")
-								.getValue()
-								+ " " + oView.byId("promisedTime").getValue()).toISOString();
+						var dPromisedTime = oView.byId("promisedDate").getValue() === "" ? "" : new Date(oView.byId("promisedDate").getValue()
+																							+ " " + oView.byId("promisedTime").getValue()).toISOString();
 						// call update service
 						airbus.mes.disruptions.ModelManager.updateDisruption(
 								sMessageRef, sReason, sResponsibleGroup,
