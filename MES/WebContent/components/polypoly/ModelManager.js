@@ -273,6 +273,13 @@ airbus.mes.polypoly.ModelManager = {
 		//sap.ui.getCore().getModel("mTableModel").loadData(mTableModel);
 		airbus.mes.polypoly.oView.getController().clearFilters();
 		
+		if ( airbus.mes.polypoly.oView.byId("oTablePolypoly").getBinding("rows") != undefined ) {
+			
+			sap.ui.getCore().byId("polypoly--polypolySearchField").setValue(airbus.mes.polypoly.PolypolyManager.getValueSelected);
+			airbus.mes.polypoly.oView.getController().onRPSearch();
+					
+			}
+		
 	},
 	
 	

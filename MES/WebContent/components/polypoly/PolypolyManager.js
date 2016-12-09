@@ -4,9 +4,11 @@ jQuery.sap.declare("airbus.mes.polypoly.PolypolyManager")
 
 airbus.mes.polypoly.PolypolyManager = {
 	
+	
 	globalContext : {
 //		tabSelected : undefined,
 		bEditable : undefined,
+		
 	},
 
 	userComptencyContext : {
@@ -31,7 +33,9 @@ airbus.mes.polypoly.PolypolyManager = {
 		endLevel : undefined,
 		sTechName : undefined,
 	},
-
+	
+	
+	getValueSelected : "",
 	urlModel : undefined,
 	oViewController : undefined,
 	polypolyIndex : undefined,
@@ -144,6 +148,7 @@ airbus.mes.polypoly.PolypolyManager = {
 
 		var oMiiRows = oMiiData.Rowsets.Rowset[0].Row;
 		var oMiiColumns = oMiiData.Rowsets.Rowset[1].Row;
+		
 
 		// Creation de la table des ressourcePools
 		var ressourcePools = new Object();
@@ -172,8 +177,7 @@ airbus.mes.polypoly.PolypolyManager = {
 //		ressourcePoolsmodel.setData({
 			rp : aRessourcePools
 		});
-
-
+			
 		var oTableRows = {
 			"rows" : [ {
 				"ressourcepool" : "",

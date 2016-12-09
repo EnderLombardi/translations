@@ -714,7 +714,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 			}
 		}while(!bFound)
 			
-		console.log(iHeight + "px : " + iLines + " lines!")
+		//console.log(iHeight + "px : " + iLines + " lines!")
 		return iLines
 	},
 	
@@ -801,8 +801,8 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 						return (sText || "").toUpperCase()
 						.indexOf(value.toUpperCase()) > -1;
 					}) ]
-		}
-		;
+		};
+
 //		sap.ui.getCore().byId("polypoly").byId("polypolySearchField").getBinding("suggestionItems").filter(filters);
 //		sap.ui.getCore().byId("polypoly").byId("polypolySearchField").suggest();
 //		sap.ui.getCore().byId("polypoly").getController().onRPSearch(oEvt);
@@ -818,19 +818,24 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 		 * sap.ui.getCore().byId("rp_id").filter(item.getText()); }
 		 * else { sap.ui.getCore().byId("rp_id").filter(""); }
 		 */
-
-		var value = oEvt.getSource().getValue();
+		
+		//if no values in the TextField check value before refresh if exists
+		if(oEvt != undefined){
+			var value = oEvt.getSource().getValue();
+		} else {
+			var value = airbus.mes.polypoly.PolypolyManager.getValueSelected;
+		}
+		
 		var filterLabels = new sap.ui.model.Filter("type", "EQ", "LABEL_RP");
 		var filterUA = new sap.ui.model.Filter("type", "Contains", "UA_");
 		var aFilters = [filterLabels, filterUA];
 		if (value && value.length > 0) {
-
 			var filters = new sap.ui.model.Filter("ressourcepoolId", "Contains", value);
 			if ( airbus.mes.stationtracker.AssignmentManager.polypolyAffectation ) {
 				aFilters.push(filters);
 				airbus.mes.polypoly.oView.byId("oTablePolypoly").getBinding("rows").filter(aFilters);
 			}else{
-				airbus.mes.polypoly.oView.byId("oTablePolypoly").getBinding("rows").filter(filters)
+				airbus.mes.polypoly.oView.byId("oTablePolypoly").getBinding("rows").filter(filters);
 			}
 
 		} else {
@@ -869,6 +874,11 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 
 	colDialog : undefined,
 	openColumnPopup : function(oEvt) {
+		
+		// Store value filter and reuse after create/erase column
+		airbus.mes.polypoly.PolypolyManager.getValueSelected = sap.ui.getCore().byId("polypoly--polypolySearchField").getValue();
+		
+		
 		sap.ui.getCore().getModel("columnModel").setData();
 		var that = this;
 
@@ -948,7 +958,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 	},
 	
 	//----------------------
-	//get new colomun data
+	//get new column data
 	insertColumnPopup: function() {
 		var reg = new RegExp('[A-Z0-9\_-]*');
 		var sTechname = sap.ui.getCore().getModel("columnModel").oData.techname;
