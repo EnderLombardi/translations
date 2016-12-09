@@ -1016,9 +1016,10 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 	            airbus.mes.polypoly.confirmErasePopup = sap.ui.xmlfragment("confirmErase","airbus.mes.polypoly.confirmErase", airbus.mes.polypoly.oView.getController());
 	            airbus.mes.polypoly.confirmErasePopup.addStyleClass("alignTextLeft");
 	            airbus.mes.polypoly.oView.addDependent(airbus.mes.polypoly.confirmErasePopup);
-	            airbus.mes.polypoly.confirmErasePopup.open();
 	        }
-	        
+
+            airbus.mes.polypoly.confirmErasePopup.open();
+
 	    // create new column
 		} else {
 			this.insertColumnPopup();
