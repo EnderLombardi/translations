@@ -946,8 +946,10 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 		var binding = table.getBinding("rows");
 		binding.filter(aFilters);
 	},
-
-	onSaveColumnPopup : function() {
+	
+	//----------------------
+	//get new colomun data
+	insertColumnPopup: function() {
 		var reg = new RegExp('[A-Z0-9\_-]*');
 		var sTechname = sap.ui.getCore().getModel("columnModel").oData.techname;
 		sTechname=sTechname.match(reg)[0];
@@ -977,7 +979,52 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 			sap.m.MessageToast.show(airbus.mes.polypoly.oView.getController().getI18n("TooManyQA"));
 		}
 	},
+	
+	//----------------------
+	// confirm pop up erase
+	onConfirmErase : function (){
+		this.insertColumnPopup();
+		airbus.mes.polypoly.confirmErasePopup.close(); ;
+	},
+	
+	//-------------------
+	// cancel popup erase
+	onCancelErase : function (){
+		airbus.mes.polypoly.confirmErasePopup.close(); ;
+	},
 
+	//-------------------
+	// when sauve new column
+	onSaveColumnPopup : function() {
+		
+		var reg = new RegExp('[A-Z0-9\_-]*');
+		var sTechname = sap.ui.getCore().getModel("columnModel").oData.techname;
+		sTechname=sTechname.match(reg)[0];
+
+		// get name from model
+		var technicalNameTab = [];
+		var technicalNameVal = sap.ui.getCore().getModel("mii").getData().Rowsets.Rowset[1].Row;
+		for (var i = 0; i < technicalNameVal.length;i++) {
+			technicalNameTab[i] = technicalNameVal[i].technicalName ; 
+		}
+		// if the name is already exist show msg box
+		if (technicalNameTab.indexOf(sTechname) > -1){
+			
+			//open pop up for confirm action
+	        if ( airbus.mes.polypoly.confirmErasePopup === undefined ) {
+
+	            airbus.mes.polypoly.confirmErasePopup = sap.ui.xmlfragment("confirmErase","airbus.mes.polypoly.confirmErase", airbus.mes.polypoly.oView.getController());
+	            airbus.mes.polypoly.confirmErasePopup.addStyleClass("alignTextLeft");
+	            airbus.mes.polypoly.oView.addDependent(airbus.mes.polypoly.confirmErasePopup);
+	            airbus.mes.polypoly.confirmErasePopup.open();
+	        }
+	        
+	    // create new column
+		} else {
+			this.insertColumnPopup();
+		}
+	},
+	
 	onCancelColumnPopup : function() {
 		sap.ui.getCore().byId("columnPopupDialog").close();
 	},
