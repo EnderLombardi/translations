@@ -61,7 +61,7 @@
 								<Label type="space"></Label>
 								<Label text="Time spent" />
 								<Text
-									text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/time_spent}" />
+									text="{path :'operationDetailModel>/Rowsets/Rowset/0/Row/0/time_spent', formatter : 'airbus.mes.stationtracker.util.Formatter.msToTime'}" />
 								<Label type="space"></Label>
 								<Label type="space"></Label>
 								<Label text="Material description : " />

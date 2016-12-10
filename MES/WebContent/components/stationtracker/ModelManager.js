@@ -1034,7 +1034,7 @@ airbus.mes.stationtracker.ModelManager = {
 						"realStatus" :  aModel[0].status,
 						"progress" : parseInt(progress, 10),
 						"progress_new" : parseInt(progress, 10),
-						"time_spent" : airbus.mes.stationtracker.util.Formatter.msToTime(aModel[0].PROGRESS),
+						"time_spent" : spentTimeInMs,
 						"reschedule_start_time" :  aModel[0].START_TIME,
 						"reschedule_end_time" :  aModel[0].END_TIME,
 						"original_start_time" : sAvlStart,
@@ -1231,11 +1231,8 @@ airbus.mes.stationtracker.ModelManager = {
 				}
 				if(data.success){
 					spentTime =  data.spentTime;
-				}
-				//TODO show message toast that service failed in case of error
-				else {
+				} else
 					return 0;
-				}
 			},
 
 			error : function(error, jQXHR) {

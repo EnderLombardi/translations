@@ -133,7 +133,9 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
 					airbus.mes.operationdetail.ModelManager.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
 					flagSuccess = true;
 				}
-
+				//update spent time on pause of operation
+				oView.getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].time_spent = airbus.mes.stationtracker.ModelManager.getSpentTimePerOperation(data.Rowsets.Rowset[0].Row[0].operation_no, data.Rowsets.Rowset[0].Row[0].wo_no);
+				oView.getModel("operationDetailModel").refresh();
 			}
 		});
 				
