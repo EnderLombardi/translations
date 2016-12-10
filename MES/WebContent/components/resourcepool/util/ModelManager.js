@@ -71,6 +71,7 @@ airbus.mes.resourcepool.util.ModelManager = {
 			sap.ui.getCore().getModel("ResourcePoolDetailModel").refresh();
 			sap.ui.getCore().byId("resourcePool--resourcePoolName").setText();
 			airbus.mes.resourcepool.util.ModelManager.resourceName = undefined;
+			airbus.mes.resourcepool.util.ModelManager.resourceId = undefined;
 			airbus.mes.resourcepool.util.ModelManager.goBack=true;
 		}
 	},

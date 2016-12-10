@@ -187,7 +187,7 @@ sap.ui
 										aError.push(item);
 									} else if(oUser.loanedToPool == "" && oUser.assignedToRPName != airbus.mes.resourcepool.util.ModelManager.resourceName){
 										if(oUser.assignedToRPName!="") {
-											oUser.loanedToPool=airbus.mes.resourcepool.util.ModelManager.resourceId;
+											oUser.loanedToPool= sap.ui.getCore().getModel("ResourcePoolDetailModel").oData.Rowsets.Rowset[0].Row[0].id;
 											oUser.loanedToRPName = airbus.mes.resourcepool.util.ModelManager.resourceName;
 										}
 										sap.ui.getCore().getModel("ResourcePoolDetailModel").getProperty("/Rowsets/Rowset/1/Row/").push(oUser);
@@ -1429,7 +1429,7 @@ sap.ui
 							return;
 						airbus.mes.resourcepool.util.ModelManager.resourceName = resourcePool;
 						airbus.mes.resourcepool.util.ModelManager.resourceDescription = description;
-
+//						airbus.mes.resourcepool.util.ModelManager.resourceId = resourcePool;
 						/*
 						 * call updateResource() method from
 						 * airbus.mes.resourcepool.util.ModelManager.
@@ -1479,6 +1479,7 @@ sap.ui
 									.getValue()) {
 								airbus.mes.resourcepool.util.ModelManager.resourceName = undefined;
 								airbus.mes.resourcepool.util.ModelManager.resourceDescription = undefined;
+								airbus.mes.resourcepool.util.ModelManager.Id = undefined;
 								this.getView().byId("resourcePoolName").setText("");
 							}
 						}
