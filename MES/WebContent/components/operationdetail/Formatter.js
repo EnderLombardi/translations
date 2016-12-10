@@ -83,10 +83,29 @@ airbus.mes.operationdetail.Formatter = {
 			var newStartTime = startTime.replace("T", " ");
 			var newEndTime = endTime.replace("T", " ");
 			return newStartTime + " - " + newEndTime;
+		} else {
+			
+			return "-";
+			
 		}
 
 			
 	},
+	
+	displayValueOrDash : function( sDate ) {
+		
+		if ( sDate != undefined && sDate != "" ) {
+			
+			return sDate;
+			
+		} else {
+			
+			return "-";
+			
+		}
+		
+	},
+		
 	checkOperationStartEndDate:function(startTime, endTime,endDate){
 		if (endDate === undefined || endDate === 'TimeUnavailable'){
 			var newStartTime = startTime.replace("T", " ");

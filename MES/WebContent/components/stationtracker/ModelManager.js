@@ -40,7 +40,7 @@ airbus.mes.stationtracker.ModelManager = {
               core.setModel(new sap.ui.model.json.JSONModel(), "KPIresolutionEfficiency"); // KPI Resolution Staffing
               core.setModel(new sap.ui.model.json.JSONModel(), "KPIdisruption"); // KPI Resolution Staffing
               core.setModel(new sap.ui.model.json.JSONModel(), "KPIchartTaktAdherence"); // KPI Resolution Staffing
-             // core.setModel(new sap.ui.model.json.JSONModel(), "spentTimedataModel"); // to store and get spent time
+              core.setModel(new sap.ui.model.json.JSONModel(), "spentTimedataModel"); // to store and get spent time
 
 
            this.settings = airbus.mes.settings.ModelManager;
@@ -92,32 +92,20 @@ airbus.mes.stationtracker.ModelManager = {
 
 	},
 
-	setLineAssignment : function(sSite, sStation, sMSN, sUserID, sShiftName,
-			sDay, sLine, sSkill, sModeAssignment, bQACheck) {
-		var seturlLineAssignment = this.urlModel
-				.getProperty('urlsetlineassignment');
-		seturlLineAssignment = this.replaceURI(seturlLineAssignment, "$site",
-				sSite);
-		seturlLineAssignment = this.replaceURI(seturlLineAssignment,
-				"$station", sStation);
-		seturlLineAssignment = this.replaceURI(seturlLineAssignment, "$msn",
-				sMSN);
-		seturlLineAssignment = this.replaceURI(seturlLineAssignment, "$userid",
-				sUserID);
-		seturlLineAssignment = this.replaceURI(seturlLineAssignment,
-				"$shiftName", sShiftName);
-		seturlLineAssignment = this.replaceURI(seturlLineAssignment, "$day",
-				sDay);
-		seturlLineAssignment = this.replaceURI(seturlLineAssignment, "$line",
-				sLine);
-		seturlLineAssignment = this.replaceURI(seturlLineAssignment, "$skill",
-				sSkill);
+	setLineAssignment : function(sSite, sStation, sMSN, sUserID, sShiftName,sDay, sLine, sSkill, sModeAssignment, bQACheck) {
+		var seturlLineAssignment = this.urlModel.getProperty('urlsetlineassignment');
+		seturlLineAssignment = this.replaceURI(seturlLineAssignment, "$site", sSite);
+		seturlLineAssignment = this.replaceURI(seturlLineAssignment,"$station", sStation);
+		seturlLineAssignment = this.replaceURI(seturlLineAssignment, "$msn", sMSN);
+		seturlLineAssignment = this.replaceURI(seturlLineAssignment, "$userid",	sUserID);
+		seturlLineAssignment = this.replaceURI(seturlLineAssignment,"$shiftName", sShiftName);
+		seturlLineAssignment = this.replaceURI(seturlLineAssignment, "$day", sDay);
+		seturlLineAssignment = this.replaceURI(seturlLineAssignment, "$line", sLine);
+		seturlLineAssignment = this.replaceURI(seturlLineAssignment, "$skill", sSkill);
 		// seturlLineAssignment = this.replaceURI(seturlLineAssignment,
 		// "$myuserid", sMyUserID);
-		seturlLineAssignment = this.replaceURI(seturlLineAssignment, "$mode",
-				sModeAssignment);
-		seturlLineAssignment = this.replaceURI(seturlLineAssignment,
-				"$qacheck", bQACheck);
+		seturlLineAssignment = this.replaceURI(seturlLineAssignment, "$mode", sModeAssignment);
+		seturlLineAssignment = this.replaceURI(seturlLineAssignment, "$qacheck", bQACheck);
 
 		$
 				.ajax({
@@ -1035,7 +1023,11 @@ airbus.mes.stationtracker.ModelManager = {
 						"sfc" : aModel[0].SFC,
 						"sfc_step_ref" : aModel[0].SFC_STEP_REF,
 						"operation_bo" : aModel[0].OPERATION_BO,
+<<<<<<< Upstream, based on origin/MESv1.0.2
 						"operation_id" : aModel[0].OPERATION_ID,
+=======
+						"operationId" :  aModel[0].OPERATION_ID,
+>>>>>>> 5830e85 [OPERATION] 192 [polypoly] 160
 						"operation_no" : aModel[0].OPERATION_BO.split(",")[1],
 						"operation_desc" : aModel[0].OPERATION_DESCRIPTION,
 						"material_description" : aModel[0].WORKORDER_DESCRIPTION,

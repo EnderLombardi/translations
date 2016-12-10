@@ -780,6 +780,13 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 		this.filterUA();
 		this.hideContent(aControlsId);
 		this.clearFilters();
+		
+		if ( airbus.mes.polypoly.oView.byId("oTablePolypoly").getBinding("rows") != undefined ) {
+			
+			sap.ui.getCore().byId("polypoly--polypolySearchField").setValue(airbus.mes.polypoly.PolypolyManager.getValueSelected);
+			airbus.mes.polypoly.oView.getController().onRPSearch();
+					
+			}
 	},
 
 	hideContent : function(aControlsId){
@@ -791,7 +798,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 		airbus.mes.polypoly.oView.rerender();
 	},
 
-	onRPSuggest : function(oEvt) {
+		onRPSuggest : function(oEvt) {
 		var value = oEvt.getParameter("suggestValue");
 		var filters = [];
 		if (value) {
@@ -822,6 +829,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 		//if no values in the TextField check value before refresh if exists
 		if(oEvt != undefined){
 			var value = oEvt.getSource().getValue();
+			airbus.mes.polypoly.PolypolyManager.getValueSelected = value;
 		} else {
 			var value = airbus.mes.polypoly.PolypolyManager.getValueSelected;
 		}
@@ -875,8 +883,8 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 	colDialog : undefined,
 	openColumnPopup : function(oEvt) {
 		
-		// Store value filter and reuse after create/erase column
-		airbus.mes.polypoly.PolypolyManager.getValueSelected = sap.ui.getCore().byId("polypoly--polypolySearchField").getValue();
+//		// Store value filter and reuse after create/erase column
+//		airbus.mes.polypoly.PolypolyManager.getValueSelected = sap.ui.getCore().byId("polypoly--polypolySearchField").getValue();
 		
 		
 		sap.ui.getCore().getModel("columnModel").setData();
