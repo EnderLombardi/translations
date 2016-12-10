@@ -58,7 +58,7 @@
 					<ToolbarSpacer />
 
  					 <Button id="gotoDisruptionKpi" icon="sap-icon://area-chart"
-						text="{disruptiontrackerI18n>disruptionKPI}" press="onPressDisruptionKPI" /> 
+						text="{disruptiontrackerI18n>disruptionKPI}" press="onPressDisruptionKPI"  visible="false"/> 
 				</Toolbar>
 
 			</content>
