@@ -58,7 +58,6 @@
 								<Label text="Start:" />
 								<Text
 									text=" - " />
-									text="{parts:['operationDetailModel>/Rowsets/Rowset/0/Row/0/reschedule_start_time'],formatter:'airbus.mes.operationdetail.Formatter.displayValueOrDash'}" />
 								<Label type="space"></Label>
 								<Label text="Time spent" />
 								<Text
@@ -77,7 +76,6 @@
 								<Label text="End:" />
 								<Text
 									text=" - " />
-									text="{parts:['operationDetailModel>/Rowsets/Rowset/0/Row/0/reschedule_start_time'],formatter:'airbus.mes.operationdetail.Formatter.displayValueOrDash'}" />
 								<Label type="space"></Label>
 								<Label text="Original plan:" />
 								<Text
