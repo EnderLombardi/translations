@@ -559,7 +559,7 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
 		// Operation is not started
 		if (  sPreviousStarted === "false" ) {
 			
-			this.setProgressScreenBtn( true, true );
+			this.setProgressScreenBtn( false, true );
 						
 		}
 		
