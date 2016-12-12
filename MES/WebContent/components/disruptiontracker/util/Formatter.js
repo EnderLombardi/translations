@@ -4,6 +4,26 @@ jQuery.sap.declare("airbus.mes.disruptiontracker.Formatter");
 
 airbus.mes.disruptiontracker.Formatter = {
 
+	getConfigTimeUnit : function() {
+		
+		var timeUnit = airbus.mes.settings.AppConfManager._getConfiguration("MES_TIME_UNIT");
+		
+		if (timeUnit == "H")
+			return "Hr";
+
+		else if (timeUnit == "IM")
+			return "IM";
+
+		else if (timeUnit == "M")
+			return "Min";
+
+		else if (timeUnit == "D")
+			return "Days";
+		
+		return;
+		
+	},
+
 	setText : function(status, gravity, escalation) {
 
 		if (status == "CLOSED") {
@@ -22,30 +42,18 @@ airbus.mes.disruptiontracker.Formatter = {
 
 		switch (iGravity) {
 		case "1":
-			return airbus.mes.settings.AppConfManager
-					._getConfiguration("MES_COLOR_GRAVITY1");
-			break;
+			return airbus.mes.settings.AppConfManager._getConfiguration("MES_COLOR_GRAVITY1");
 		case "2":
 			if (airbus.mes.settings.AppConfManager
 					._getConfiguration("MES_COLOR_GRAVITY2") === "Amber")
 				return "#FFC200";
 
-			return airbus.mes.settings.AppConfManager
-					._getConfiguration("MES_COLOR_GRAVITY2");
-			break;
-
+			return airbus.mes.settings.AppConfManager._getConfiguration("MES_COLOR_GRAVITY2");
 		case "3":
-			/*
-			 * if(escalationLevel>1) return "red"; else return "orange";
-			 */
-			return airbus.mes.settings.AppConfManager
-					._getConfiguration("MES_COLOR_GRAVITY3");
-			break;
+			return airbus.mes.settings.AppConfManager._getConfiguration("MES_COLOR_GRAVITY3");
 		default:
 			return "";
-			break;
 		}
-
 	},
 
 	setIcon : function(status) {
@@ -151,6 +159,15 @@ airbus.mes.disruptiontracker.Formatter = {
 
 	},
 
+	removeDecimal : function(num) {
+		var iNum = parseInt(num);
+		
+		if (num-iNum == 0)
+			return iNum;
+		
+		return num;
+	},
+
 	setEscalationText : function(escalationLevel) {
 		if (escalationLevel == 1)
 			return "Not Escalated";
@@ -167,5 +184,35 @@ airbus.mes.disruptiontracker.Formatter = {
 	setOperationText : function (operation) {
 		var operationText = operation.substring(operation.length-6, operation.length-2);
 		return operationText;
+	},
+
+	setTimeLostValue : function(timeLost) {
+		debugger;
+		var timeUnit = airbus.mes.disruptiontracker.Formatter.getConfigTimeUnit();
+		
+		if (timeLost != "") {
+			return airbus.mes.disruptiontracker.Formatter.timeMillisecondsToConfig(timeLost) + " " + timeUnit;
+		}
+		
+		return 0 + " " + timeUnit;
+	},
+
+	timeMillisecondsToConfig : function (time) {
+		
+		var timeUnit = airbus.mes.settings.AppConfManager._getConfiguration("MES_TIME_UNIT");
+		
+		if (timeUnit == "H")
+			time = (time / (60 * 60 * 1000)).toFixed(2);
+			
+		else if (timeUnit == "IM")
+			time = ((time * 100) / (60 * 60 * 1000)).toFixed(2);
+		
+		else if (timeUnit == "M")
+			time = (time / (60 * 1000)).toFixed(2);
+		
+		else if (timeUnit == "D")
+			time = (time / (24 * 60 * 60 * 1000)).toFixed(2);
+				
+		return airbus.mes.disruptiontracker.Formatter.removeDecimal(time);
 	}
 };
