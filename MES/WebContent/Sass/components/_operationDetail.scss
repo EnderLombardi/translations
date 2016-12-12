@@ -136,7 +136,25 @@
         }
     }
 }
-
+#ViewDisruptionView{
+    header{
+        &.sapMPanelWrappingDivTb{
+            .sapMPanelExpandableIcon{
+                &:focus{
+                    &::after{
+                        outline: none;
+                        border: none;
+                    }
+                }
+            }
+            .sapUiIcon{
+                &:focus{
+                    outline: none;
+                }
+            }
+        }
+    }
+}
 // Navigation Bar
 .opDetailNavToolbar{
     background:#fff;

@@ -32,6 +32,16 @@
         }
     }
 }
+section{
+    #ViewDisruptionView{
+        .sapMLIBFocusable{
+            &:focus{
+                outline: none;
+            }
+        }
+    }
+}
+
 
 // Disruption Screen
 .disruptionBottomBar{

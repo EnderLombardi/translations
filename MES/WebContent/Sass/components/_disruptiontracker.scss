@@ -120,6 +120,17 @@ td{
         border:none;
     }
 }
+#disruptiontrackerView{
+    table{
+        tr{
+            &.sapMListTblRow{
+                &:focus{
+                    outline: none;
+                }
+            }
+        }
+    }
+}
 #disrptTrackerSettings-dialog{
     background: $white-two;
     border: none;
