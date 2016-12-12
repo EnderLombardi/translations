@@ -329,7 +329,7 @@
 							</f:formContainers>
 						</f:Form>
 
-						<Text text="{i18nModel>status} : {operationDisruptionsModel>Status}"
+						<Text text="{i18nModel>status} : {path: 'operationDisruptionsModel>Status', formatter: 'airbus.mes.disruptions.Formatter.setDisruptionStatus'}"
 							class="sapUiMediumMarginBegin statusText" />
 
 						<VBox
@@ -350,10 +350,10 @@
 									class="sapUiSmallMarginBeginEnd sapUiTinyMarginTopBottom msgHeaderText">
 									<items>
 										<Text
-											text="From : {path: 'operationDisruptionsModel>UserFullName', formatter: 'airbus.mes.disruptions.Formatter.textCaseFormat'}"></Text>
+											text="{i18nModel>from} : {path: 'operationDisruptionsModel>UserFullName', formatter: 'airbus.mes.disruptions.Formatter.textCaseFormat'}"></Text>
 										<Text text="|" class="sapUiSmallMarginBeginEnd"></Text>
 										<Text
-											text="Action : {path: 'operationDisruptionsModel>Action', formatter: 'airbus.mes.disruptions.Formatter.textCaseFormat'}"></Text>
+											text="{i18nModel>action} : {path: 'operationDisruptionsModel>Action', formatter: 'airbus.mes.disruptions.Formatter.textCaseFormat'}"></Text>
 									</items>
 								</HBox>
 

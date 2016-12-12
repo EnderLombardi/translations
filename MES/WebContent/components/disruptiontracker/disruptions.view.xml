@@ -132,7 +132,7 @@
 							<core:Icon src="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setIcon'}" color="{parts: [ {path: 'disruptionsTrackerModel>Status'}, {path: 'disruptionsTrackerModel>Gravity'}, {path: 'disruptionsTrackerModel>Severity'} ], formatter: 'airbus.mes.disruptiontracker.Formatter.setGravityColor'}" class="sapUiSmallMarginEnd" />
 							<Text text="{parts: [ {path: 'disruptionsTrackerModel>Status'}, {path: 'disruptionsTrackerModel>Gravity'}, {path: 'disruptionsTrackerModel>Severity'} ], formatter: 'airbus.mes.disruptiontracker.Formatter.setText'}" />
 						</HBox>	
-						<Text text="{disruptionsTrackerModel>Status}" />
+						<Text text="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setDisruptionTrackerStatus'}" />
 						<Text text="{disruptionsTrackerModel>Category}" />
 						<Text text="{disruptionsTrackerModel>Reason}" />
 						<Text text="{disruptionsTrackerModel>OriginatorGroupDesc}" />

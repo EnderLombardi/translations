@@ -1,7 +1,7 @@
 <core:FragmentDefinition xmlns:core="sap.ui.core"
 	xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout">
 	<Dialog  id="partialConfirmDialogue" contentHeight="40%" contentWidth="60%"
-		title="Reason Code ">
+		title="{i18n>reasonCode}">
 		<content>
 			<HBox justifyContent="SpaceBetween">
 
@@ -50,20 +50,20 @@
 				layout="ResponsiveGridLayout" labelSpanL="2" labelSpanM="2"
 				labelSpanS="2" columnsL="1" columnsM="1" class="sapUiLargeMarginTop">
 				<f:content>
-					<Label text="Reason Code" />
+					<Label text="{i18n>reasonCode}" />
 					<Select change="onSelectionReason" id="reasonCodeSelectBox" forceSelection="false"
 						items="{reasonCodeModel>/Rowsets/Rowset/0/Row}">
 						<core:Item key="{reasonCodeModel>REASON_CODE}" text="{reasonCodeModel>DESCRIPTION}" />
 					</Select>
-					<Label text="Comment" />
+					<Label text="{i18n>comment}" />
 					<TextArea id="reasonCodeComments" />
 				</f:content>
 			</f:SimpleForm>
 		</content>
 		<buttons>
-			<Button id="submit" text="Submit" press="onSubmitReasonCode"
+			<Button id="submit" text="{i18n>submit}" press="onSubmitReasonCode"
 				type="Accept" />
-			<Button id="cancel" text="Cancel" press="onCancelReasonCode" />
+			<Button id="cancel" text="{i18n>cancel}" press="onCancelReasonCode" />
 		</buttons>
 	</Dialog>
 </core:FragmentDefinition>

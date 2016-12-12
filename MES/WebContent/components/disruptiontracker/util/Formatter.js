@@ -27,13 +27,13 @@ airbus.mes.disruptiontracker.Formatter = {
 	setText : function(status, gravity, escalation) {
 
 		if (status == "CLOSED") {
-			return "Solved";
+			return airbus.mes.disruptiontracker.oView.getModel("disruptiontrackerI18n").getProperty("solved");
 		} else if (gravity == 3 || escalation == 2 || escalation == 3)
-			return "Blocked";
+			return airbus.mes.disruptiontracker.oView.getModel("disruptiontrackerI18n").getProperty("blocked");
 		else if (gravity == 1)
-			return "Not Blocked";
+			return airbus.mes.disruptiontracker.oView.getModel("disruptiontrackerI18n").getProperty("not_Blocked");
 		else if (gravity == 2)
-			return "Disturbed";
+			return airbus.mes.disruptiontracker.oView.getModel("disruptiontrackerI18n").getProperty("disturbed");
 		else
 			return "";
 	},
@@ -170,13 +170,13 @@ airbus.mes.disruptiontracker.Formatter = {
 
 	setEscalationText : function(escalationLevel) {
 		if (escalationLevel == 1)
-			return "Not Escalated";
+			return airbus.mes.disruptiontracker.oView.getModel("disruptiontrackerI18n").getProperty("not_Escalated");
 
 		else if (escalationLevel == 2)
-			return "First Escalation";
+			return airbus.mes.disruptiontracker.oView.getModel("disruptiontrackerI18n").getProperty("first_Escalated");
 
 		else if (escalationLevel == 3)
-			return "Final Escalation";
+			return airbus.mes.disruptiontracker.oView.getModel("disruptiontrackerI18n").getProperty("final_Escalated");
 		else
 			return "-----";
 	},
@@ -213,5 +213,8 @@ airbus.mes.disruptiontracker.Formatter = {
 			time = (time / (24 * 60 * 60 * 1000)).toFixed(2);
 				
 		return airbus.mes.disruptiontracker.Formatter.removeDecimal(time);
+	},
+	setDisruptionTrackerStatus : function(status){
+		return airbus.mes.disruptiontracker.oView.getModel("disruptiontrackerI18n").getProperty(status);
 	}
 };

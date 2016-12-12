@@ -12,13 +12,18 @@ sap.ui.controller("airbus.mes.disruptiontracker.kpi.disruptionKPIChart", {
 	onInit : function() {	
 
 		window.onresize = this.resize;
-		
+		  // Set Model (i18n) for Frame Titles
+		var i18nModel = new sap.ui.model.resource.ResourceModel({
+	        bundleUrl : "../components/disruptiontracker/kpi/i18n/i18n.properties"
+	     });
+		this.oView.setModel(i18nModel, "i18n"); 		
+		airbus.mes.disruptiontracker.kpi.oView = this.oView 
 //     Title For Category
 		var vizframe1 = this.getView().byId("vizFrame");
 		vizframe1.setVizProperties({
 			title : { 
 				visible : true, 
-				text : 'Lost Time (minutes) per Category'
+				text : airbus.mes.disruptiontracker.kpi.oView.getModel("i18n").getProperty("frame1Title")
 			},
 			
 			general: {
@@ -51,7 +56,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.kpi.disruptionKPIChart", {
 		vizframe2.setVizProperties({
 			title : { 
 				visible : true, 
-				text : 'Lost Time (minutes) per Reason'
+				text : airbus.mes.disruptiontracker.kpi.oView.getModel("i18n").getProperty("frame2Title")
 			},
 			
 			general: {
@@ -84,7 +89,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.kpi.disruptionKPIChart", {
 		vizframe3.setVizProperties({
 			title : { 
 				visible : true, 
-				text : 'Lost Time (minutes) per Operation'
+				text : airbus.mes.disruptiontracker.kpi.oView.getModel("i18n").getProperty("frame3Title")
 			},
 			general: {
 				layout: {
@@ -98,7 +103,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.kpi.disruptionKPIChart", {
 		vizframe4.setVizProperties({
 			title : { 
 				visible : true, 
-				text : 'Lost Time (minutes) per MSN'
+				text : airbus.mes.disruptiontracker.kpi.oView.getModel("i18n").getProperty("frame4Title")
 			},
 			general: {
 				layout: {

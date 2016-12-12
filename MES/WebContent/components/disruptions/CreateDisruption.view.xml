@@ -74,7 +74,7 @@
 								<f:FormElement>
 									<f:label>
 
-										<Label required="true" text="{i18nModel>Reason}">
+										<Label required="true" text="{i18nModel>reason}">
 											<layoutData>
 												<l:GridData span="L2 M3 S12" />
 											</layoutData>
@@ -143,7 +143,7 @@
 
 								<f:FormElement>
 									<f:label>
-										<Label text="{i18nModel>Status}">
+										<Label text="{i18nModel>status}">
 											<layoutData>
 												<l:GridData span="L2 M3 S12" linebreak="true" />
 											</layoutData>
@@ -340,7 +340,7 @@
 
 								<f:FormElement>
 									<f:label>
-										<Label text="{i18nModel>Material}">
+										<Label text="{i18nModel>stMaterial}">
 											<layoutData>
 												<l:GridData span="L2 M3 S12" linebreak="true" />
 											</layoutData>

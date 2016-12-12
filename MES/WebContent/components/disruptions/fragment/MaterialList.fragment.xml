@@ -14,7 +14,7 @@
 		<Label text="Quantity"/> <Input type="Number" width="80%"/> </VBox> </items> 
 		</HBox> </l:content> </l:Grid> </CustomListItem> </items> </SelectDialog> -->
 
-	<Dialog id="materialListSelectDialog" title="Select Material"
+	<Dialog id="materialListSelectDialog" title="{i18nModel>select_Material}"
 		verticalScrolling="true" horizontalScrolling="false">
 		<content>
 			<f:SimpleForm backgroundDesign="Solid" class="formBackgroundColor"
@@ -59,7 +59,7 @@
 										</Title>
 										<!-- <Text text="{MaterialListModel>MATNR}" visible="false"/> -->
 										<VBox width="20%">
-											<Label text="Quantity" />
+											<Label text="{i18nModel>Quantity}" />
 											<Input type="Number" width="80%"  value="1" class="inputQty" />
 										</VBox>
 									</items>

@@ -16,7 +16,7 @@
 									text="OP {operationDetailModel>/Rowsets/Rowset/0/Row/0/operation_id} - {operationDetailModel>/Rowsets/Rowset/0/Row/0/operation_desc}" />
 
 								<HBox justifyContent="SpaceBetween">
-									<Text id="switchStatusLabel" text="Read-Mode" class="ExecutionModeText" />
+									<Text id="switchStatusLabel" text="{i18n>read-Mode}" class="ExecutionModeText" />
 									<Switch id="switchOperationModeBtn" customTextOn=" "
 										customTextOff=" " state="false" class="switchExecutionButton"
 										change="switchMode" />
@@ -55,47 +55,54 @@
 						emptySpanM="0" columnsL="4" columnsM="4">
 						<f:content>
 							<VBox>
-								<Label text="{i18n>textStart}" />
-								<Text  text=" - " />
+								<Label text="{i18n>start}:" />
+								<Text
+									text=" {= ${operationDetailModel>/Rowsets/Rowset/0/Row/0/planned_start_time} === 'TimeUnavailable' ? ${i18n>notStarted} : ${operationDetailModel>/Rowsets/Rowset/0/Row/0/planned_start_time} } " />
 								<Label type="space"></Label>
-								<Label text="{i18n>textTimeSpent}" />
-								<Text  text="{path :'operationDetailModel>/Rowsets/Rowset/0/Row/0/time_spent', formatter : 'airbus.mes.stationtracker.util.Formatter.msToTime'}" />
+								<Label text="{i18n>timeSpent}" />
+								<Text
+									text="{path :'operationDetailModel>/Rowsets/Rowset/0/Row/0/time_spent', formatter : 'airbus.mes.stationtracker.util.Formatter.msToTime'}" />
 								<Label type="space"></Label>
 								<Label type="space"></Label>
-								<Label text="{i18n>textMaterialdescription}" />
-								<Text  text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/material_description}" />
+								<Label text="{i18n>materialDes} : " />
+								<Text
+									text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/material_description}" />
 								<Label type="space" />
-								<Label text="{i18n>textNumberEmployees}" />
-								<Text  text=" - " />
+								<Label text="{i18n>noOfEmp} : " />
+								<Text text=" - " />
 								<Label type="space"></Label>
 							</VBox>
 							<VBox>
-								<Label text="{i18n>textEnd}" />
-								<Text  text=" - " />
+								<Label text="{i18n>end}:" />
+								<Text
+									text="{= ${operationDetailModel>/Rowsets/Rowset/0/Row/0/planned_start_time} === 'TimeUnavailable' ? ${i18n>notStarted} : ${operationDetailModel>/Rowsets/Rowset/0/Row/0/planned_start_time} }" />
 								<Label type="space"></Label>
-								<Label text="{i18n>textOriginalPlan}" />
-								<Text  text="{parts:['operationDetailModel>/Rowsets/Rowset/0/Row/0/original_start_time' ,'operationDetailModel>/Rowsets/Rowset/0/Row/0/original_end_time'],formatter:'airbus.mes.operationdetail.Formatter.displayOriginalPlan'}" />
+								<Label text="{i18n>original_Plan}:" />
+								<Text
+									text="{parts:['operationDetailModel>/Rowsets/Rowset/0/Row/0/original_start_time' ,'operationDetailModel>/Rowsets/Rowset/0/Row/0/original_end_time'],formatter:'airbus.mes.operationdetail.Formatter.displayOriginalPlan'}" />
 								<Label type="space"></Label>
-								<Label text="{i18n>textUserStatus}" />
-								<Text  text=" - " />
+								<Label text="{i18n>user_Status}:" />
+								<Text text=" - " />
 								<Label type="space" />
-								<Label text="{i18n>textCPPCluster}" />
-								<Text  text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/cpp_cluster}" />
+								<Label text="{i18n>CPP_Cluster}:" />
+								<Text text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/cpp_cluster}" />
 							</VBox>
 							<VBox>
-								<Label text="{i18n>textWorkCenter}" />
-								<Text  text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/workcenter}" />
+								<Label text="{i18n>work_Center}:" />
+								<Text
+									text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/workcenter}" />
 								<Label type="space"></Label>
-								<Label text="{i18n>textWorkPackage}" />
-								<Text  text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/work_package}" />
+								<Label text="{i18n>work_Package}:" />
+								<Text
+									text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/work_package}" />
 								<Label type="space"></Label>
 								<Label type="space" />
 								<!-- <Label text="ACPnG" /> <Text text="28/08/2016" /> <Label type="space"></Label> -->
-								<Label text="{i18n>textBundle}" />
-								<Text  text=" - " />
+								<Label text="{i18n>bundle}" />
+								<Text text=" - " />
 								<Label type="space" />
-								<Label text=" {i18n>textSystemStatus}" />
-								<Text  text=" - " />
+								<Label text=" {i18n>system_status}:" />
+								<Text text=" - " />
 							</VBox>
 							<!-- <VBox> <Label text="Activity:" /> <Text text="MEC" /> <Label 
 								type="space"></Label> <Label text="N. employees" /> <Text text="1" /> <Label 

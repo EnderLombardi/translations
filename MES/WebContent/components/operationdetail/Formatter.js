@@ -11,18 +11,23 @@ airbus.mes.operationdetail.Formatter = {
 	setSliderStatus : function(status, progress) {
 		switch (status) {
 		case airbus.mes.operationdetail.Formatter.status.completed:
-			return "Confirmed";
+			return airbus.mes.operationdetail.oView.getModel("i18n").getProperty("confirmed");
 
 		case airbus.mes.operationdetail.Formatter.status.active:
-			return "In Progress";
+			return airbus.mes.operationdetail.oView.getModel("i18n").getProperty("in_progress");
 
 		case airbus.mes.operationdetail.Formatter.status.paused:
-			return "Paused " + String(progress).split(".")[0] + "%";
+
+			return airbus.mes.operationdetail.oView.getModel("i18n").getProperty("paused") + String(progress).split(".")[0] + "%";
 			
+			if (progress == "0.0" || progress == "0" || progress == 0)
+				return airbus.mes.operationdetail.oView.getModel("i18n").getProperty("notStarted");
+			else
+				return airbus.mes.operationdetail.oView.getModel("i18n").getProperty("paused") + String(progress).split(".")[0] + "%";
 		case airbus.mes.operationdetail.Formatter.status.blocked:
-			return "Blocked";
+			return airbus.mes.operationdetail.oView.getModel("i18n").getProperty("blocked");
 		default:
-			return "Not Started";
+			return airbus.mes.operationdetail.oView.getModel("i18n").getProperty("notStarted");
 		}
 	},
 
