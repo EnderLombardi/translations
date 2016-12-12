@@ -3687,10 +3687,10 @@ old CUSTOMCSS
   height: 40px; }
 
 html[data-sap-ui-browser*="ie"] .sapUiBody {
-  scrollbar-face-color: #bfbfbf; }
+  scrollbar-face-color: #999999; }
 
 .sap-desktop ::-webkit-scrollbar-thumb {
-  background-color: #bfbfbf; }
+  background-color: #999999; }
 
 .sapMPIBarBlue {
   background: -moz-linear-gradient(top, #008cda 0, #006ca7 100%) !important;
