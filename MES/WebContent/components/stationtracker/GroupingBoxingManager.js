@@ -170,6 +170,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 			var ssAvLine;
 			var ssGroup;
 			var oShift;
+			var sIdOpe;
 			
 			if ( sGroup === "AVL_LINE") {				
 			// permit to create only one folder when avl Line is selected.	
@@ -178,7 +179,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 			// otherwise create dynamic group.	
 				ssGroup = el[sGroup];
 			}
-			
+					
 			// permit to create initial AVL line
 			if (sInitial) {
 				ssAvLine = "I_" +  el.AVL_LINE 	+ "_" + el.SKILLS;
@@ -194,7 +195,21 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 				oShift = "";
 			}
 						
-			var ssBox = el[sBoxing] + "_"  + el["WORKORDER_ID"] + "_" + oShift.shiftID;
+			
+			// Permit to define the Box in the hierarchy in boxing = operation we want one box = one operation
+			if ( sBoxing === "OPERATION_ID") {
+				// Permit when boxing in operation to create one box for one operation : 
+				//the couple GROUPING WORKORDER_ID + BOXING OPERATION_ID is unique 
+				// in avl Line 
+					sIdOpe = "WORKORDER_ID";
+					
+				} else {
+				// Permit when boxing to create one box for several operation
+					sIdOpe  = sBoxing;
+					
+				}
+			// This is the name of the box where will be put all operation
+			var ssBox = el[sBoxing] + "_"  + el[sIdOpe] + "_" + oShift.shiftID;
 						
 			if ( !oHierachy[ssGroup] ) {
 				oHierachy[ssGroup] = {};
@@ -298,6 +313,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 					"ERP_SYSTEM" : el.ERP_SYSTEM,
 					"PAUSED" : el.PAUSED,
 					"NUMBER_OF_EMPLOYEES" : el.NUMBER_OF_EMPLOYEES
+					"SFC_STEP_REF" : el.SFC_STEP_REF
 					
 			};
 			
