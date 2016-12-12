@@ -1018,9 +1018,11 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 
 		// get name from model
 		var technicalNameTab = [];
-		var technicalNameVal = sap.ui.getCore().getModel("mii").getData().Rowsets.Rowset[1].Row;
-		for (var i = 0; i < technicalNameVal.length;i++) {
-			technicalNameTab[i] = technicalNameVal[i].technicalName ; 
+		if(sap.ui.getCore().getModel("mii").getData().Rowsets.Rowset[1].Row != undefined){
+			var technicalNameVal = sap.ui.getCore().getModel("mii").getData().Rowsets.Rowset[1].Row;
+			for (var i = 0; i < technicalNameVal.length;i++) {
+				technicalNameTab[i] = technicalNameVal[i].technicalName ; 
+			}
 		}
 		// if the name is already exist show msg box
 		if (technicalNameTab.indexOf(sTechname) > -1 && airbus.mes.polypoly.PolypolyManager.internalContext.saveContext == "CREATE"){
