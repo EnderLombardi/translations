@@ -299,7 +299,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 										$("div[class='dhx_cal_header']").append(("<div class='dhx_cal_next_button' Style='float:right; width:30px;'></div>"));
 										$("div[class='dhx_cal_next_button']").click(function() {
 											scheduler._click.dhx_cal_next_button();
-											//airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(airbus.mes.stationtracker.ShiftManager.current_shift.shiftID);
+											airbus.mes.stationtracker.ShiftManager.selectFirstShift = true;
 											airbus.mes.stationtracker.ModelManager.selectMyShift();
 										});
 									}
@@ -308,7 +308,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",	{
 										$("div[class='dhx_cal_header']").append(("<div class='dhx_cal_prev_button' Style='float:right; width:30px;'></div>"));
 										$("div[class='dhx_cal_prev_button']").click(function() {
 											scheduler._click.dhx_cal_prev_button();
-											//airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(airbus.mes.stationtracker.ShiftManager.current_shift.shiftID);
+											airbus.mes.stationtracker.ShiftManager.selectFirstShift = true;
 											airbus.mes.stationtracker.ModelManager.selectMyShift();
 										});
 									}

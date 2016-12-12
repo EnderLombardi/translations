@@ -207,18 +207,21 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 		airbus.mes.stationtracker.oView.byId("stationtracker").setBusy(true);
 		var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
 		
-		if (airbus.mes.stationtracker.GroupingBoxingManager.showInitial) {
-
+		if ( airbus.mes.stationtracker.GroupingBoxingManager.showInitial ) {
+			
+			// Hide initial
 			airbus.mes.stationtracker.GroupingBoxingManager.showInitial = false;
 			GroupingBoxingManager.parseOperation(GroupingBoxingManager.group, GroupingBoxingManager.box);
-			airbus.mes.stationtracker.oView.getController().changeShift();
-			
+		
+
 			
 		} else {
 			
+			// Show initial
 			airbus.mes.stationtracker.GroupingBoxingManager.showInitial = true;
 			GroupingBoxingManager.parseOperation(GroupingBoxingManager.group, GroupingBoxingManager.box);
 			airbus.mes.stationtracker.oView.getController().changeShift();
+
 		}
 	},
 	
@@ -599,8 +602,16 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
      * 
      ****************************************************************************/
 	changeShift : function() {
-			
-		var sPath = airbus.mes.stationtracker.oView.byId("selectShift").getSelectedIndex();
+		
+		if ( airbus.mes.stationtracker.ShiftManager.selectFirstShift ) {
+			//Select the first shift
+			var sPath = 0;
+		
+		} else {
+			//Select previous shift
+			var sPath = airbus.mes.stationtracker.oView.byId("selectShift").getSelectedIndex();
+	
+		}
 		var oModel = airbus.mes.stationtracker.oView.getModel("stationTrackerShift").getProperty("/" + sPath);
 	
 		airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftName = oModel.shiftName;

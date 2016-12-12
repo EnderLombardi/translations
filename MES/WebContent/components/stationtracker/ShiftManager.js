@@ -13,6 +13,7 @@ airbus.mes.stationtracker.ShiftManager = {
 	//Variables for shift combobox Day/Shit view
 	BoxSelected : 0,
 	ShiftSelected : {},
+	selectFirstShift : false,
 	//Array where is stock Id of marker display on the gantt
 	ShiftMarkerID :[],
 	
