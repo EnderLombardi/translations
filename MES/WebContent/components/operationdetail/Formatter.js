@@ -17,10 +17,8 @@ airbus.mes.operationdetail.Formatter = {
 			return "In Progress";
 
 		case airbus.mes.operationdetail.Formatter.status.paused:
-			if (progress == "0.0" || progress == "0" || progress == 0)
-				return "Not Started";
-			else
-				return "Paused " + String(progress).split(".")[0] + "%";
+			return "Paused " + String(progress).split(".")[0] + "%";
+			
 		case airbus.mes.operationdetail.Formatter.status.blocked:
 			return "Blocked";
 		default:
