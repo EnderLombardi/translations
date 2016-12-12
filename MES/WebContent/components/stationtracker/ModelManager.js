@@ -200,7 +200,7 @@ airbus.mes.stationtracker.ModelManager = {
 						geturlstationtracker,
 						"$user",
 						airbus.mes.stationtracker.AssignmentManager.userSelected);
-		console.log(geturlstationtracker);
+		//console.log(geturlstationtracker);
 		var oViewModel;
 		switch (sType) {
 		case "R":

@@ -55,54 +55,47 @@
 						emptySpanM="0" columnsL="4" columnsM="4">
 						<f:content>
 							<VBox>
-								<Label text="Start:" />
-								<Text
-									text=" - " />
+								<Label text="{i18n>textStart}" />
+								<Text  text=" - " />
 								<Label type="space"></Label>
-								<Label text="Time spent" />
-								<Text
-									text="{path :'operationDetailModel>/Rowsets/Rowset/0/Row/0/time_spent', formatter : 'airbus.mes.stationtracker.util.Formatter.msToTime'}" />
+								<Label text="{i18n>textTimeSpent}" />
+								<Text  text="{path :'operationDetailModel>/Rowsets/Rowset/0/Row/0/time_spent', formatter : 'airbus.mes.stationtracker.util.Formatter.msToTime'}" />
 								<Label type="space"></Label>
 								<Label type="space"></Label>
-								<Label text="Material description : " />
-								<Text
-									text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/material_description}" />
+								<Label text="{i18n>textMaterialdescription}" />
+								<Text  text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/material_description}" />
 								<Label type="space" />
-								<Label text="Number of employees : " />
-								<Text text=" - " />
+								<Label text="{i18n>textNumberEmployees}" />
+								<Text  text=" - " />
 								<Label type="space"></Label>
 							</VBox>
 							<VBox>
-								<Label text="End:" />
-								<Text
-									text=" - " />
+								<Label text="{i18n>textEnd}" />
+								<Text  text=" - " />
 								<Label type="space"></Label>
-								<Label text="Original plan:" />
-								<Text
-									text="{parts:['operationDetailModel>/Rowsets/Rowset/0/Row/0/original_start_time' ,'operationDetailModel>/Rowsets/Rowset/0/Row/0/original_end_time'],formatter:'airbus.mes.operationdetail.Formatter.displayOriginalPlan'}" />
+								<Label text="{i18n>textOriginalPlan}" />
+								<Text  text="{parts:['operationDetailModel>/Rowsets/Rowset/0/Row/0/original_start_time' ,'operationDetailModel>/Rowsets/Rowset/0/Row/0/original_end_time'],formatter:'airbus.mes.operationdetail.Formatter.displayOriginalPlan'}" />
 								<Label type="space"></Label>
-								<Label text="User status:" />
-								<Text text=" - " />
+								<Label text="{i18n>textUserStatus}" />
+								<Text  text=" - " />
 								<Label type="space" />
-								<Label text="CPP Cluster:" />
-								<Text text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/cpp_cluster}" />
+								<Label text="{i18n>textCPPCluster}" />
+								<Text  text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/cpp_cluster}" />
 							</VBox>
 							<VBox>
-								<Label text="Work Center:" />
-								<Text
-									text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/workcenter}" />
+								<Label text="{i18n>textWorkCenter}" />
+								<Text  text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/workcenter}" />
 								<Label type="space"></Label>
-								<Label text="Work Package:" />
-								<Text
-									text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/work_package}" />
+								<Label text="{i18n>textWorkPackage}" />
+								<Text  text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/work_package}" />
 								<Label type="space"></Label>
 								<Label type="space" />
 								<!-- <Label text="ACPnG" /> <Text text="28/08/2016" /> <Label type="space"></Label> -->
-								<Label text="Bundle" />
-								<Text text=" - " />
+								<Label text="{i18n>textBundle}" />
+								<Text  text=" - " />
 								<Label type="space" />
-								<Label text=" System status:" />
-								<Text text=" - " />
+								<Label text=" {i18n>textSystemStatus}" />
+								<Text  text=" - " />
 							</VBox>
 							<!-- <VBox> <Label text="Activity:" /> <Text text="MEC" /> <Label 
 								type="space"></Label> <Label text="N. employees" /> <Text text="1" /> <Label 

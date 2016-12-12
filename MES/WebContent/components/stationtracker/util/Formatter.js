@@ -200,7 +200,6 @@ airbus.mes.stationtracker.util.Formatter = {
 				var sOSW = airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("Osw");
 				var sUNPD = airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("Unplanned");
 				
-				
 				var html = "";
 				var sDivForLeftDisplay = '<div  class="trackerBox">';
 				var sDivForLeftDisplayInitial = '<div class="tracker-item-initial" >';
@@ -319,7 +318,7 @@ airbus.mes.stationtracker.util.Formatter = {
 //						sRightIcon = '<i class="fa fa-exclamation-triangle triangleIcon"></i>';
 						sRightIcon = '<i class="fa fa-play rightIcon petrol"></i>';
 						if ( oBox.rmaStatus === 1 ){	//rma
-							sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon"></i>';
+							sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon petrol"></i>';
 						}
 						if (oBox.OSW === 3){ //OSW
 							sLeftIcon3 = '<i class="fa fa-refresh oswIcon petrol-back dandelion"><b style="padding-left:1px">'+sOSW+'</b></i>';
