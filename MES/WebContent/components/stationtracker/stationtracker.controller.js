@@ -1071,6 +1071,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
             var dStartDate = airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy[sDate][sDateId][0].StartDate;
 
             scheduler.updateView(dStartDate);
+            airbus.mes.stationtracker.ShiftManager.selectFirstShift = true;
             airbus.mes.stationtracker.ModelManager.selectMyShift();
         }
     },
