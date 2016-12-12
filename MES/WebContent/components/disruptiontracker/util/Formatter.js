@@ -187,7 +187,6 @@ airbus.mes.disruptiontracker.Formatter = {
 	},
 
 	setTimeLostValue : function(timeLost) {
-		debugger;
 		var timeUnit = airbus.mes.disruptiontracker.Formatter.getConfigTimeUnit();
 		
 		if (timeLost != "") {
