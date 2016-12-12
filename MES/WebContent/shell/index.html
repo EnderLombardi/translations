@@ -48,6 +48,7 @@
                             "../components/settings");
                     jQuery.sap.registerModulePath("airbus.mes.homepage",
                             "../components/homepage");
+                    bBatch1 = true;
 
                     if (window.location.hostname === "localhost"
                             && window.location.search != "?url_config=local"
@@ -62,6 +63,8 @@
                             })
                         });
                         oCompCont.placeAt("content");
+
+                        disableEnable();
 
                     } else {
                         //        Case of airbus connection
@@ -102,6 +105,40 @@
                         // Check user settings and if not defined then navigate to Settings screen
                         airbus.mes.settings.ModelManager
                                 .checkDisplayFirstSetting();
+
+                        disableEnable();
+
+                    }
+                    function disableEnable(){
+                        // batch 1 set to true
+                        var windowLocation = window.location.hostname;
+                        var getLocationForBatch = window.location.search;
+                        if(windowLocation == "localhost"){
+                            bBatch1 = false;
+                        }else{
+                            if(windowLocation = "dmi"){
+                                bBatch1 = false;
+                            }else{
+                                if(windowLocation == "imi"){
+                                    bBatch1 = false;
+                                }else{
+                                    bBatch1 = true;
+                                }
+                            }
+                        }
+
+                        // Only called on reload
+                        if(window.performance){
+                            if(performance.navigation.type  == 1 ){
+                                if(getLocationForBatch.search("batch1") > 0){
+                                    bBatch1 = true;
+                                }else{
+                                    if(getLocationForBatch.search("batch2") > 0){
+                                        bBatch1 = false;
+                                    }
+                                }
+                            }
+                        }
 
                     }
                 });

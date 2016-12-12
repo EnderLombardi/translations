@@ -42,6 +42,13 @@ sap.ui.controller("airbus.mes.settings.Settings",
 
             onAfterRendering : function() {
                 this.byId("vbi").zoomToRegions([ "FR", "GB", "ES", "DE" ]);
+
+                if(bBatch1 = true){
+                    airbus.mes.settings.oView.byId("currMSN").setVisible(false);
+                }
+
+
+
             },
 
             onInit : function() {
@@ -352,7 +359,7 @@ sap.ui.controller("airbus.mes.settings.Settings",
                 airbus.mes.settings.ModelManager.lineDesc = oModel.Rowsets.Rowset[0].Row[0].lineDescription
                 airbus.mes.settings.ModelManager.programDesc = oModel.Rowsets.Rowset[0].Row[0].programDescription;
                 airbus.mes.settings.ModelManager.stationDesc = oModel.Rowsets.Rowset[0].Row[0].stationDescription;
-                
+
 
                 // Replace with current new element in UI
                 if (airbus.mes.settings.ModelManager.site) {
@@ -417,7 +424,7 @@ sap.ui.controller("airbus.mes.settings.Settings",
                                 break;
                             }
 
-                        } 
+                        }
 
                         this.setEnabledCombobox(true, true, true, true);
                 } else {
