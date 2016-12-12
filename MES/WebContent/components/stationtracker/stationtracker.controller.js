@@ -206,32 +206,6 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
      * hierarchy of operation and display in grey initial operation
      *
      ****************************************************************************/
-<<<<<<< refs/remotes/origin/MESv1.0.2
-	onInitialPlanPress : function() {
-		
-		airbus.mes.stationtracker.oView.byId("stationtracker").setBusy(true);
-		var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
-		
-		if ( airbus.mes.stationtracker.GroupingBoxingManager.showInitial ) {
-			
-			// Hide initial
-			airbus.mes.stationtracker.GroupingBoxingManager.showInitial = false;
-			GroupingBoxingManager.parseOperation(GroupingBoxingManager.group, GroupingBoxingManager.box);
-		
-
-			
-		} else {
-			
-			// Show initial
-			airbus.mes.stationtracker.GroupingBoxingManager.showInitial = true;
-			GroupingBoxingManager.parseOperation(GroupingBoxingManager.group, GroupingBoxingManager.box);
-			airbus.mes.stationtracker.oView.getController().changeShift();
-
-		}
-	},
-	
-	/***************************************************************************
-=======
     onInitialPlanPress : function() {
 
         airbus.mes.stationtracker.oView.byId("stationtracker").setBusy(true);
@@ -629,71 +603,6 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
      * in the gantt
      *
      ****************************************************************************/
-<<<<<<< refs/remotes/origin/MESv1.0.2
-	changeShift : function() {
-		
-		if ( airbus.mes.stationtracker.ShiftManager.selectFirstShift ) {
-			//Select the first shift
-			var sPath = 0;
-		
-		} else {
-			//Select previous shift
-			var sPath = airbus.mes.stationtracker.oView.byId("selectShift").getSelectedIndex();
-	
-		}
-		var oModel = airbus.mes.stationtracker.oView.getModel("stationTrackerShift").getProperty("/" + sPath);
-	
-		airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftName = oModel.shiftName;
-		airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftID = oModel.shiftID;
-		airbus.mes.stationtracker.ShiftManager.ShiftSelected.day = oModel.day;
-
-		if ( airbus.mes.stationtracker.ShiftManager.dayDisplay ) {
-				
-		var intervals = airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy[airbus.mes.stationtracker.ShiftManager.current_day][airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftID];
-				
-		
-		airbus.mes.stationtracker.ShiftManager.ShiftSelected.StartDate = intervals[0].StartDate;
-		airbus.mes.stationtracker.ShiftManager.ShiftSelected.EndDate = intervals[intervals.length - 1].EndDate;
-		// remove previous marker
-		airbus.mes.stationtracker.ShiftManager.ShiftMarkerID.forEach(function(el){
-				
-			scheduler.deleteMarkedTimespan(el);
-		
-		});
-		
-		airbus.mes.stationtracker.ShiftManager.ShiftMarkerID.push(scheduler.addMarkedTimespan({  
-			//get startdate of first shift maybe need to get only the shift day before the current to avoid issue perf?
-			start_date: airbus.mes.stationtracker.ShiftManager.shifts[0].StartDate,
-			end_date: airbus.mes.stationtracker.ShiftManager.ShiftSelected.StartDate,
-			css:   "shiftCss",
-			
-		}));
-		
-		airbus.mes.stationtracker.ShiftManager.ShiftMarkerID.push(scheduler.addMarkedTimespan({  
-
-			start_date: airbus.mes.stationtracker.ShiftManager.ShiftSelected.EndDate,
-			//get enddate of last shift maybe need to get only the shift day before the current to avoid issue perf?
-			end_date: airbus.mes.stationtracker.ShiftManager.shifts[airbus.mes.stationtracker.ShiftManager.shifts.length-1].EndDate,
-			css:   "shiftCss",
-			
-		}));
-		
-			scheduler.updateView();
-		}
-		
-		// this is permit to display same shift when clicking from day to shift display.
-		if ( airbus.mes.stationtracker.ShiftManager.shiftDisplay ) {
-			
-			scheduler.updateView(airbus.mes.stationtracker.ShiftManager.ShiftSelected.StartDate);
-			airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftID);
-		}	
-		
-//		Relaunch service to for KPI header
-		airbus.mes.stationtracker.ModelManager.loadKPIshiftStaffing();
-	},
-	
-	/***************************************************************************
-=======
     changeShift : function() {
 
         var sPath = airbus.mes.stationtracker.oView.byId("selectShift").getSelectedIndex();
