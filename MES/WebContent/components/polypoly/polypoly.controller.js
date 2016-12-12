@@ -825,11 +825,8 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 		 * sap.ui.getCore().byId("rp_id").filter(item.getText()); }
 		 * else { sap.ui.getCore().byId("rp_id").filter(""); }
 		 */
-<<<<<<< MESv1.0.2
-		
-=======
+
 		var value = oEvt.getSource().getValue();
->>>>>>> 56e7efa [polypoly][Defect ID : 226] - Correct erase column confirmation behavior Will no longer trigger on UPDATE mode. See : 	[Defect ID : 164] - add pop up to confirm erase column
 		//if no values in the TextField check value before refresh if exists
 		if(oEvt != undefined){
 			var value = oEvt.getSource().getValue();
@@ -837,10 +834,6 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 		} else {
 			var value = airbus.mes.polypoly.PolypolyManager.getValueSelected;
 		}
-<<<<<<< MESv1.0.2
-		
-=======
->>>>>>> 56e7efa [polypoly][Defect ID : 226] - Correct erase column confirmation behavior Will no longer trigger on UPDATE mode. See : 	[Defect ID : 164] - add pop up to confirm erase column
 		var filterLabels = new sap.ui.model.Filter("type", "EQ", "LABEL_RP");
 		var filterUA = new sap.ui.model.Filter("type", "Contains", "UA_");
 		var aFilters = [filterLabels, filterUA];
@@ -889,18 +882,8 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 
 	colDialog : undefined,
 	openColumnPopup : function(oEvt) {
-<<<<<<< MESv1.0.2
-		
-=======
->>>>>>> 56e7efa [polypoly][Defect ID : 226] - Correct erase column confirmation behavior Will no longer trigger on UPDATE mode. See : 	[Defect ID : 164] - add pop up to confirm erase column
 //		// Store value filter and reuse after create/erase column
 //		airbus.mes.polypoly.PolypolyManager.getValueSelected = sap.ui.getCore().byId("polypoly--polypolySearchField").getValue();
-<<<<<<< MESv1.0.2
-		
-		
-=======
-
->>>>>>> 56e7efa [polypoly][Defect ID : 226] - Correct erase column confirmation behavior Will no longer trigger on UPDATE mode. See : 	[Defect ID : 164] - add pop up to confirm erase column
 		sap.ui.getCore().getModel("columnModel").setData();
 		var that = this;
 
