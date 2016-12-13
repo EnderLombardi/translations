@@ -27,8 +27,7 @@ jQuery.sap.declare("airbus.mes.stationtracker.Component");
 sap.ui.core.UIComponent.extend("airbus.mes.stationtracker.Component", {
     metadata : {
         properties : {},
-        includes : ["./css/disruptionNotification.css"
-        ]
+        //includes : []
     // array of css and/or javascript files that should be used in the component
 
     }
@@ -60,7 +59,7 @@ airbus.mes.stationtracker.Component.prototype.createContent = function() {
         this.oView.byId("stationtracker").setBusyIndicatorDelay(0);
         this.oView.byId("oswButton").setBusyIndicatorDelay(0);
         this.oView.byId("unplannedButton").setBusyIndicatorDelay(0);
-        
+
         airbus.mes.stationtracker.oView = this.oView;
 
         this.oView.setModel(new sap.ui.model.json.JSONModel(),"productionGroupDisplay");
