@@ -446,10 +446,11 @@ airbus.mes.stationtracker.util.Formatter = {
 			     * @param {oSection} Object wich represent the current Row
 			----------------------------------------------------------------------------*/
 			YdisplayRules : function ( oSection ) {
-
+				var html;
+				
 				if (oSection.initial != undefined ) {
 
-					var html = '<span  style="float: right;margin-right: 5px;" >' + oSection.initial
+					html = '<span  style="float: right;margin-right: 5px;" >' + oSection.initial
 							+ '</span>';
 					return html;
 				}
@@ -457,7 +458,7 @@ airbus.mes.stationtracker.util.Formatter = {
 				//** folder row **/
 				if (oSection.children != undefined) {
 
-					var html = '<div><span id= folder_' +oSection.key
+					html = '<div><span id= folder_' +oSection.key
 							+ ' class="' + airbus.mes.stationtracker.util.Formatter.openFolder(oSection.open) + '"></span><div title='
 							+ airbus.mes.stationtracker.util.Formatter.spaceInsecable(oSection.label) + ' class="ylabelfolder">' + oSection.label
 							+ '</div><span id= add_' + oSection.key
@@ -495,7 +496,7 @@ airbus.mes.stationtracker.util.Formatter = {
 					
 					if ( oSection.rescheduled ) {
 						//XX TODO POSTION OF THIS.
-						var html = sNotConfirmedOpLS + '<div>';
+						html = sNotConfirmedOpLS + '<div>';
 						//Correction by NJA		
 						if(airbus.mes.settings.AppConfManager.getConfiguration("MES_PHOTO_DISPLAY")){ // Check if user image to be displayed  or not
 
@@ -522,22 +523,28 @@ airbus.mes.stationtracker.util.Formatter = {
 									+ oCurrentAffectedUser.firstName + " " + oCurrentAffectedUser.lastName + '</span>';
 							}
 
-						html += '<span  class="yMoreLabel" >'
-								+ sSpanWarn
-								+ '<span title=' +  airbus.mes.stationtracker.util.Formatter.computeDelay( fProgress,fDuration ) 
-								+ '>' 
-								+ airbus.mes.stationtracker.util.Formatter.computeDelay( fProgress,fDuration )
-								+ '</span>' 
-								+ '</span>';
+						html += airbus.mes.stationtracker.util.Formatter.createDelaySpan( fProgress,fDuration,sSpanWarn );
 						
+						
+						
+						html += '<br><span>' +  oSection.avlLine.split("_")[1] + " - "  + oSection.avlLine.split("_")[0] + '</span></br>';
+							
 						return html + '</div>';
 
 					}
 					
 				} else {
 					//** no user affected **/
-					var html = '<div><i class="fa fa-pencil ylabelEditIcon"></i><span class="ylabel">'
+					html = '<div><i class="fa fa-pencil ylabelEditIcon"></i><span class="ylabel">'
 						+ airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("SelectOperator") + '</span></div>';
+					
+					var oHierarchyDelay =airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchyDelay;					
+					var fProgress = oHierarchyDelay[oSection.group][oSection.avlLine].progress;
+					var fDuration =	oHierarchyDelay[oSection.group][oSection.avlLine].duration;
+					var sSpanWarn = "";
+					
+					html += airbus.mes.stationtracker.util.Formatter.createDelaySpan( fProgress,fDuration,sSpanWarn );
+					
 					return html;
 			
 			
@@ -545,8 +552,16 @@ airbus.mes.stationtracker.util.Formatter = {
 	
 			} else {
 				//** no user affected **/
-				var html = '<div><i class="fa  fa-pencil ylabelEditIcon"></i><span class="ylabel">'
+				html = '<div><i class="fa  fa-pencil ylabelEditIcon"></i><span class="ylabel">'
 					+ airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("SelectOperator") + '</span></div>';
+
+				var oHierarchyDelay =airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchyDelay;
+				var fProgress = oHierarchyDelay[oSection.group][oSection.avlLine].progress;
+				var fDuration =	oHierarchyDelay[oSection.group][oSection.avlLine].duration;
+				var sSpanWarn = "";
+				
+				html += airbus.mes.stationtracker.util.Formatter.createDelaySpan( fProgress,fDuration,sSpanWarn );
+				
 				return html;
 				}
 			},
@@ -732,8 +747,13 @@ airbus.mes.stationtracker.util.Formatter = {
 
 			     computeDelay : function( fProgress,fDuration ) {
 
+                    var sBlank = "";
+                    if(fProgress === undefined || fDuration === undefined ){
+                        return sBlank;
+                    }
+	                    
                      //sec Gap
-                     var sGap = Math.round((fProgress - fDuration))/1000/60/60;
+                    var sGap = Math.round((fProgress - fDuration))/1000/60/60;
 					var sGapHour = parseInt(sGap, 10);
 					//Transfomr in hour
 					var sGapMin = Math.abs(Math.round((sGap - sGapHour)*60));
@@ -756,6 +776,20 @@ airbus.mes.stationtracker.util.Formatter = {
                     	total = inTakt + outTakt + notAck;
                     	return total;
                     	
+                    },
+                    createDelaySpan : function(fProgress,fDuration,sSpanWarn){
+						var html = "";
+						if(sSpanWarn === undefined){
+							sSpanWarn = "";
+						}
+                    	return html += '<span  class="yMoreLabel" >'
+							+ sSpanWarn
+							+ '<span title=' +  airbus.mes.stationtracker.util.Formatter.computeDelay( fProgress,fDuration ) 
+							+ '>' 
+							+ airbus.mes.stationtracker.util.Formatter.computeDelay( fProgress,fDuration )
+							+ '</span>' 
+							+ '</span>';
                     }
+                    
 };
 
