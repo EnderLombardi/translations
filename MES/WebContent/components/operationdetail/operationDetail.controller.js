@@ -242,13 +242,16 @@ sap.ui
 
                             airbus.mes.stationtracker.ReschedulePopover.setModel(oModel,"RescheduleModel");
                             airbus.mes.stationtracker.ReschedulePopover.getModel()
-                            if (sap.ui.getCore().byId("operationDetailsView--switchOperationModeBtn").getState() === true) {
-
-                                sap.ui.getCore().byId("operationDetailPopup--btnReschedule").setVisible(true);
-                            } else  { sap.ui.getCore().byId("operationDetailPopup--btnReschedule").setVisible(false); }
-
+                           
                             this.nav.to(airbus.mes.stationtracker.ReschedulePopover.getId());
 
+                            if (sap.ui.getCore().byId("operationDetailsView--switchOperationModeBtn").getState() === true) {
+
+								sap.ui.getCore().byId("operationDetailPopup--btnReschedule").setVisible(true);
+							} else {
+								sap.ui.getCore().byId("operationDetailPopup--btnReschedule").setVisible(false);
+							}
+                            
                             break;
 
                             case "touchngo":

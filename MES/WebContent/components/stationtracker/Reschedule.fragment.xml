@@ -11,7 +11,7 @@
 					<Label text="{i18nModel>Date}"></Label>
 					<DatePicker id="datePicker" valueFormat="yyyy-MM-dd"
 						displayFormat="long"
-						dateValue="{path : 'RescheduleModel>/0/original_start_time' , formatter : 'airbus.mes.stationtracker.util.Formatter.date2jsDate' }">
+						dateValue="{path : 'RescheduleModel>/0/reschedule_start_time' , formatter : 'airbus.mes.stationtracker.util.Formatter.date2jsDate' }">
 					</DatePicker>
 				</VBox>
 				<VBox>
@@ -19,7 +19,7 @@
 					<Label text="{i18nModel>Time}"></Label>
 					<TimePicker id="hourPicker" displayFormat="HH:mm:ss"
 						valueFormat="HH:mm:ss"
-						dateValue="{path : 'RescheduleModel>/0/original_start_time' , formatter : 'airbus.mes.stationtracker.util.Formatter.date2jsDate' }">
+						dateValue="{path : 'RescheduleModel>/0/reschedule_end_time' , formatter : 'airbus.mes.stationtracker.util.Formatter.date2jsDate' }">
 					</TimePicker>
 				</VBox>
 
