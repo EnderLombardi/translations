@@ -133,13 +133,47 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",    {
 //                                    // false cancels the operation
 //                                }));
 
-                        /**
-                         * This event permit to cancel the drag and drop of Initial operation and when
-                         * the boxing value selected != operation_Id
-                         *
-                         * @param {STRING} id, the Id of the box selected in gantt
-                         * @return {boolean} true if not dragable, false to permit drag & drop
-                         */
+							//use it to get the object of the dragged event
+						    scheduler.InitialPosition = {
+						    		"start_date" : scheduler.getEvent(id).start_date,
+						    		"skill" : scheduler.getEvent(id).avlLine.split("_")[1],
+						    		"avlLine" : scheduler.getEvent(id).avlLine.split("_")[0],
+						    		"sSfcStep" :  scheduler.getEvent(id).sSfcStep,
+						    		"ProdGroup" : scheduler.getEvent(id).ProdGroup,
+						    }
+						    
+						    // cant reschedule on batch 1
+						    if ( bBatch1 ) {
+						    	
+						    	return false;
+						    	
+						    }
+							
+							if (this.getEvent(id).type === "I" ) {
+								
+								return false;
+								
+							} else if ( airbus.mes.stationtracker.GroupingBoxingManager.box === "OPERATION_ID") {
+								
+								return true;
+							} else {
+								
+								return false;
+							}
+			
+						}));
+						
+						/**
+					     * After drag & drop check the initial Date and compare with the new date if
+					     * it is different it call the rescheduling request to MII
+					     *
+					     * @param {STRING} id, the Id of the box selected in gantt
+					     */ 
+						
+						scheduler.eventId.push(scheduler.attachEvent("onDragEnd", function rescheduling(id, mode, e){
+							//Filled on event onBeforeDrag
+							var oInitial = scheduler.InitialPosition;
+							var oFinal = scheduler.getEvent(id); 
 
                         scheduler.eventId.push(scheduler.attachEvent("onBeforeDrag",function blockReadonly(id) {
 
