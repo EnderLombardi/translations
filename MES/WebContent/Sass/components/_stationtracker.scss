@@ -9,6 +9,9 @@ TABLE
             @extend %ylabelfolder;
         }
     }
+    &>div{
+        padding-left: 10px !important;
+    }
 }
 
 /********************
@@ -587,9 +590,9 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
     }
     .yMoreLabel{
         position: absolute;
-        line-height: 30px;
-        right: 5px;
+        right: 2px;
         color: #8db9ca;
+        top: 19px;
         .fa-pencil{
             width: 30px;
             text-align: center;
