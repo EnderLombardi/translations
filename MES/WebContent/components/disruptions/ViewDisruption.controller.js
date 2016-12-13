@@ -823,7 +823,7 @@ sap.ui
 							if (time == "")
 								time = "00:00:00";
 
-							var dateTime = new Date(date + " " + time).toISOString();
+							var dateTime = new Date(date + " " + time).toISOString().substring(0,19);
 
 							var msgRef = sap.ui.getCore().byId(
 									"disruptionAckSpathMsgRef").getText();
