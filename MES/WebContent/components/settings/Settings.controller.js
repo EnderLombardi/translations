@@ -42,7 +42,8 @@ sap.ui.controller("airbus.mes.settings.Settings",
 
             onAfterRendering : function() {
                 this.byId("vbi").zoomToRegions([ "FR", "GB", "ES", "DE" ]);
-                if(bBatch1 = true){
+                
+                if ( bBatch1 ) {
                     airbus.mes.settings.oView.byId("currMSN").setVisible(false);
                 }
             },
@@ -398,7 +399,7 @@ sap.ui.controller("airbus.mes.settings.Settings",
 
                             this.getView().getController().onSelectionChange("selectStation");
                             airbus.mes.settings.ModelManager.msn = this.getView().byId("selectMSN").getValue();
-                            this.getView().byId("currMSN").setSelected(false);
+                            this.getView().byId("currMSN").setSelected(true);
                             // When current msn is selected we save in user setting "" for the value msn
                             // To redisplay the real value of ms we reuse currentMsnValue variable wich is set during the filtering of combobox STATION.
                             airbus.mes.shell.oView.byId("labelMSN").setText(airbus.mes.shell.oView.getModel("ShellI18n").getProperty(
