@@ -21,9 +21,21 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
      * @memberOf components.stationtracker.stationtracker
      */
         onBeforeRendering: function() {
-                if(bBatch1 == true){
+        	
+                if ( bBatch1 ) {
+                	
                     airbus.mes.stationtracker.oView.byId("unplannedButton").setVisible(false);
                     airbus.mes.stationtracker.oView.byId("oswButton").setVisible(false);
+                    airbus.mes.stationtracker.oView.byId("kpi_header").setExpanded(false);
+                    airbus.mes.stationtracker.oView.byId("hideKPI").setEnabled(false);
+
+                } else {
+                	
+                	 airbus.mes.stationtracker.oView.byId("unplannedButton").setVisible(true);
+                     airbus.mes.stationtracker.oView.byId("oswButton").setVisible(true);
+                     airbus.mes.stationtracker.oView.byId("kpi_header").setExpanded(true);
+                     airbus.mes.stationtracker.oView.byId("hideKPI").setEnabled(true);
+                     
                 }
         },
 

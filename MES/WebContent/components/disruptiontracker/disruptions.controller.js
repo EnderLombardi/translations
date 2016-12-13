@@ -27,13 +27,20 @@ sap.ui
 					 * @memberOf table.table
 					 */
 					onAfterRendering : function() {
-						var oSorter = new sap.ui.model.Sorter("OpeningTime",
-								true);
+						var oSorter = new sap.ui.model.Sorter("OpeningTime", true);
 
 						// sorting based on opening time
-						this.getView().byId(
-								"disruptiontrackerView--disruptionsTable")
-								.getBinding("items").sort(oSorter);
+						this.getView().byId("disruptiontrackerView--disruptionsTable").getBinding("items").sort(oSorter);
+						
+						if ( bBatch1 ) {
+
+							airbus.mes.disruptiontracker.oView.byId("gotoDisruptionKpi").setVisible(false);
+							
+						} else {
+							
+							airbus.mes.disruptiontracker.oView.byId("gotoDisruptionKpi").setVisible(true);
+							
+						}
 					},
 
 					/**

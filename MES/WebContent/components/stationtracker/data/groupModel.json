@@ -56,7 +56,7 @@
 					"key": "WORK_PACKAGE"					
 				}, {
 					"Value": "BoxingAVLFamily",
-					"key": "FAMILY"					
+					"key": "FAMILY_AVL_GROUPING"					
 				}],				
 				"Status": [{
 					"Value": "StatusAll"

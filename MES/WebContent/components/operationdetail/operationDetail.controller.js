@@ -67,7 +67,17 @@ sap.ui
                      * @memberOf components.operationdetail.operationDetail
                      */
                     onAfterRendering : function() {
-                        this.disruptionsFlag = false;
+                       
+                    	if ( bBatch1 ) {
+                    		
+                    		airbus.mes.operationdetail.oView.byId("idReschedule").setEnabled(false);
+                    		
+                    	} else {
+                    		
+                    		airbus.mes.operationdetail.oView.byId("idReschedule").setEnabled(true);
+                    	}
+                    	                    	
+                    	this.disruptionsFlag = false;
                         this.disruptionsCustomDataFlag = false;
 
                         // Navigation to Status every time pop-up is opened

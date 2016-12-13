@@ -30,11 +30,11 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 	if(oModelShift.getProperty("/Rowsets/Rowset/0/Row")){              
 		
 		oModelShift = sap.ui.getCore().getModel("shiftsModel").oData.Rowsets.Rowset[0].Row;
-		oModelShift.forEach(function(el) {
-		
-				el.day = el.day.replace(/-/g,"");
-			
-		})
+//		oModelShift.forEach(function(el) {
+//		
+//				el.day = el.day.replace(/-/g,"");
+//			
+//		})
 	
     } else  { 	
     console.log("no shift Data for station tracker");

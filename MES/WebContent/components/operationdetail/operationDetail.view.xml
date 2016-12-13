@@ -119,7 +119,7 @@
 						<SegmentedButtonItem id="idDisruption" text="{i18n>Disruption}"
 							key="disruption" press="openPage" enabled="true" />
 						 <SegmentedButtonItem id="idReschedule" text="{i18n>Reschedule}"
-							key="reschedule" press="openPage"  enabled="false" visible="false" />
+							key="reschedule" press="openPage" visible="false" />
 						<SegmentedButtonItem id="idtouchngo" text="{i18n>Touchngo}" visible="false" key="touchngo" press="openPage" />
 					</items>
 				</SegmentedButton>
