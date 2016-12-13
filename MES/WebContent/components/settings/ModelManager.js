@@ -13,8 +13,8 @@ airbus.mes.settings.ModelManager = {
 	taktStart : undefined,
 	taktEnd : undefined,
 	taktDuration : undefined,
-	// If batch 1 dont use auto msn
-	currentMsnSelected :  bBatch1 ? false : true ,
+
+	currentMsnSelected : false,
 	currentMsnValue : "",
 	core : undefined,
 	urlModel : undefined,

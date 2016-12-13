@@ -42,11 +42,8 @@ sap.ui.controller("airbus.mes.settings.Settings",
 
             onAfterRendering : function() {
                 this.byId("vbi").zoomToRegions([ "FR", "GB", "ES", "DE" ]);
-
-                if( bBatch1 ) {
-                	
+                if(bBatch1 = true){
                     airbus.mes.settings.oView.byId("currMSN").setVisible(false);
-                
                 }
             },
 

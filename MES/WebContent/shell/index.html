@@ -127,7 +127,9 @@
                             }
                         }
 
-    
+                        // Only called on reload
+                        if(window.performance){
+                            if(performance.navigation.type  == 1 ){
                                 if(getLocationForBatch.search("batch1") > 0){
                                     bBatch1 = true;
                                 }else{
@@ -135,7 +137,8 @@
                                         bBatch1 = false;
                                     }
                                 }
-                           
+                            }
+                        }
 
                     }
                 });
