@@ -28,7 +28,7 @@
 						<content>
 							<HBox height="inherit" class="stationTilesHbox">
 								<items>
-									<custom:customStationBox class="stationStationBox"
+									<custom:customStationBox 
 										press= "onStationPress" height="100%"
 										heading="Station {parts:[{path:'newStationModel>Line'},{path:'newStationModel>Station'}] , formatter:'airbus.mes.linetracker.util.Formatter.stationName'}"
 										state="Error" msn="{newStationModel>MSN}" hand="{newStationModel>HAND}"

@@ -8,7 +8,7 @@
 		<items>
 			<VBox class="productionTile">
 				<items>
-					<custom:customStationBox heading="Station {newProductionModel>Station}" class="productionStationBox"
+					<custom:customStationBox heading="Station {newProductionModel>Station}"
 						stationHeadColor="{path:'newProductionModel>Conveyor_Status' , formatter:'airbus.mes.linetracker.util.Formatter.stationColor'}"
 						 msn="{newProductionModel>MSN}" press="onStationSelect" hand="{newProductionModel>HAND}"
 						 taktResourceStatus="{newProductionModel>TAKT_STATUS}" >

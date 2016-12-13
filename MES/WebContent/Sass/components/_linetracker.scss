@@ -2,8 +2,170 @@
 LINETRACKER
 *******************/
 
-/* Production line Box CSS */
-.productionTile>div {
+	/******************
+	FACTORY VIEW
+	*******************/
+
+#idFactoryView {
+	background-color:#fff;
+	height:100%!important;
+	>.factHBox  {
+		margin: 0;
+		height: 100%!important;
+		>#idFactoryView--VboxLeft {
+			background-color: #e9fbfd;	
+			.sapMVBox{
+				>.sapMFlexItem {
+					width:100%;
+					>.factory_lineButton {
+						padding:0;
+					}
+				}
+			}
+		}
+		.transferIsle {
+			width: 100%;
+			background-color: #f5f5f5;
+			color:#c0c0c0;
+			height: 6%;
+			justify-content: space-around;
+			align-items: center;
+			font-size: 2vh;
+			margin-top: 0;
+			margin-bottom: 0;
+		}
+		.stationBoxHeader {
+			height: 35px;
+			font-size: 1.5vh;
+			background: #eaeaea;
+			line-height: 2.5rem;
+			font-weight: normal;
+		}
+		.structureStationBox {
+			padding:0;
+		}
+		fieldset {
+			border: 1px solid #0D5D76;
+			color: #0D5D76;
+		}
+	}
+}
+
+
+//factory_lineButton
+.factory_lineButton {
+	height: 100%;
+	color: #007cc0;
+	background-color: #ddeff1;
+	.sapMFocusable {
+		background: #d5f1f8;
+		color: #0D5D76;
+		font-weight: bold;
+		border: 0;
+		text-shadow:none;
+    }
+	>span {
+		font-size: 120%;
+	}
+	&:hover {
+		.sapMFocusable {
+			background-color: rgba(222,222,222,0.5);
+		}
+	}
+	&:focus {
+		.sapMFocusable {
+			background-color: rgba(222,222,222,0.5);
+		}
+	}
+}
+
+//pulse select line
+.adjustPulseSelect {
+	.sapMFlexItem:nth-child(1){
+		width: 160%;
+	}
+	.sapMFlexItem:nth-child(2) { //
+		width: 40%;
+	}
+	button {
+		height:auto;
+		border:0;
+		&.myPulseButton {
+			padding: 0;
+			height: 1.9rem;
+			&.sapMBtnDisabled {
+				text-shadow: none;
+				cursor: default;
+				opacity: 0.5;
+				background:#ebeff4;
+			}
+			&.sapMBtnInverted {
+				background:#84bd00;
+				> div.sapMBtnReject {
+					color: #ffffff;
+				}
+			}
+		}
+		> div.sapMBtnReject  {
+			background:transparent;
+			border:0;
+			color: #0D5D76;
+			height: 1.9rem;
+			> span  {
+				height: 1.9rem;
+				line-height: 1.9rem;
+			}
+		}
+	}
+	>.sapMFlexItem{
+		>.sapMSlt.sapMSltDefault {
+			margin:0;
+			border:0;
+		}
+	}
+}
+
+//Production Line5
+.productionLine5{
+	>div {
+		height: 100% !important;
+		width: 100% !important;
+		>fieldset{
+			>.productionLine5Station{
+				>.factoryStation5 {
+					height: 100% !important;
+					width: 14%;
+					.sapMFlexItem {
+						width: 100%;
+						&:nth-child(1) {
+							height: 85%;
+						}
+						&:nth-child(2) {
+							height: 15%;
+							>.factoryButton {
+								height: 100%;
+								min-height: 1.8rem;
+								>div {
+									height: 100%;
+									>span {
+										font-size: 2vh !important;
+										line-height: 110% !important;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+	/******************
+	PRODUCTION LINE
+	*******************/
+
+.productionTile>div {	
 	&:nth-child(1){
 		height: 33.3333333%;
 	}
@@ -65,10 +227,17 @@ LINETRACKER
 			}
 		}
 	}
+	>.structureStationBox {
+		width: 100%;
+	}
 }
 
-////////////////////////
+	/******************
+	STATION DETAIL
+	*******************/
 
+
+////////////////////////
 .redBackground {
 	background-color: $cherry-red;
 }
@@ -148,38 +317,11 @@ Old global.css
 .lineTrackerSubheader{
 	background-color: #d5f1f8 
 }
- .noContentPadding .sapMDialogScrollCont{
-	padding: 0rem !important;
+ .noContentPadding {
+	 .sapMDialogScrollCont{
+		padding: 0rem !important;
+	}
  }
-
-.factoryButton {
-	height: 100%;
-	min-height: 1.8rem;
-	>div {
-		height: 100%;
-		>span {
-			font-size: 2vh !important;
-			line-height: 110% !important;
-		}
-	}
-}
-
-/* Factory station5 height adjust  */
-.station5FacHeight {
-	height: 100% !important;
-}
-
-.factoryStation5 {
-	.sapMFlexItem {
-		width: 100%;
-		&:nth-child(1) {
-			height: 85%;
-		}
-		&:nth-child(2) {
-			height: 15%;
-		}
-	}
-}
 
 #idMainView--lineTrackerName {
 	font-size: 1.2rem;
@@ -214,25 +356,6 @@ Old global.css
 	}
 }
 
-.stationTilesHbox>div {
-	height: 100%;
-	width: 100%;
-}
-
-.factoryButton>span {
-	font-size: 2vh;
-}
-
-.productionLine5>div {
-	height: 100% !important;
-	width: 100% !important;
-}
-
-.productionLine5Station>div {
-	height: 100% !important;
-	width: 14%;
-}
-
 .productionLine1>div {
 	height: 100% !important;
 	width: 100% !important;
@@ -248,35 +371,11 @@ Old global.css
 	width: 100% !important;
 }
 
-.station5Border {
-	border-style: groove;
-}
-
 .factHBox {
 	width: 100% !important;
 	height: 98% !important;
 	margin-top: 2%;
 	justify-content: space-around;
-}
-/*alignment of pulse button and drop down*/
-.adjustPulseSelect {
-	.sapMFlexItem:nth-child(1){
-		width: 160%;
-	}
-	.sapMFlexItem:nth-child(2) { //
-		width: 40%;
-	}
-}
-
-.transferIsle {
-	width: 100%;
-	background-color: #add8e6;
-	height: 6%;
-	justify-content: space-around;
-	align-items: center;
-	font-size: 2vh;
-	margin-top: 0.5%;
-	margin-bottom: 0.5%;
 }
 
 .factStationBoxImg {
@@ -301,12 +400,8 @@ Old global.css
 		& .sapMFlexItem {
 			border-right:1px solid #ccc;
 		}
-	}
-}
 
-.productionStationBox {
-	width: 100%;
-	height: 100%;
+	}
 }
 
 .productionView>.sapUIView {
@@ -341,42 +436,8 @@ Old global.css
 	}
 }
 
-.factory_lineButton {
-	height: 100%;
-	color: #007cc0;
-	background-color: #ddeff1;
-	.sapMFocusable {
-		background: #d5f1f8;
-		color: #0D5D76;
-		font-weight: bold;
-		border: 0;
-		text-shadow:none;
-    }
-	>span {
-		font-size: 120%;
-	}
-	&:hover {
-		.sapMFocusable {
-			background-color: rgba(222,222,222,0.5);
-		}
-	}
-	&:focus {
-		.sapMFocusable {
-			background-color: rgba(222,222,222,0.5);
-		}
-	}
-}
-
 .tiPanel {
 	margin-top: 2% !important;
-}
-
-.factory_minHeight {
-	min-height: 6.5rem;
-}
-
-.TransferIsleHbox {
-	min-height: 10rem;
 }
 
 .myShell>.sapUiUx3ShellHeader>.sapUiUx3ShellHeaderTitleLeft>img {
@@ -943,7 +1004,6 @@ z-index :0 !important;
 .titlestyle5 h5 {
 	white-space: nowrap !important;
 	overflow: visible !important;
-	text-aligh: right !important;
 }
 
 .titlestyle52 h5 {
@@ -952,41 +1012,59 @@ white-space: nowrap !important;
  }
 
 .titlestyle51 header {
-
-	text-align: left !important; }
+	text-align: left !important; 
+}
 	
 .loading5 td {
  background-color : #e5e5e5 !important;
 }
-.factHBox .stationBoxLower {
-    border: none;
+
+.factHBox {
+	.stationBoxLower {
+		border: none;
+	}
+	.sapMHBox {
+		>.sapMFlexItem {
+			border-left:1px solid #ccc;
+			&:last-child {
+				border:none;
+			}
+		}
+	}
+	.factStationBoxImg {
+		height: auto;
+		width: auto;
+		max-height: 100%;
+		max-width: 100%;
+		margin: 0px;
+		box-sizing: border-box;
+	}
+	.factStationBoxText {
+		font-size:1.5vh;
+		color:#e0e0e0;
+	}
+	.boldFont {
+		font-size: 1.5vh;
+	}
+	.stationBoxBody {
+		padding: 0.5rem 0.5rem 0 0.5rem;
+		width: 50%;
+	}
+	.stationBoxBodyTop {
+		height: 5px;
+		margin: 0;
+	}
+	.structureStationBox {
+		min-height: auto;
+	}
+	.sapMBarChild {
+		font-weight: bold;
+		vertical-align: middle;
+		font-size: 17px;
+	}
 }
 
-.factHBox .sapMHBox > .sapMFlexItem {
-	border-left:1px solid #ccc;
-}
-.factHBox .sapMHBox>.sapMFlexItem:last-child {
-	border:none;
-}
-.factHBox .factStationBoxImg {
-    height: auto;
-    width: auto;
-    max-height: 100%;
-    max-width: 100%;
-    margin: 0px;
-    box-sizing: border-box;
-}
-.factHBox .factStationBoxText {
-	font-size:1.5vh;
-	color:#e0e0e0;
-}
-.factHBox .boldFont {
-    font-size: 1.5vh;
-}
-.factHBox .stationBoxBody {
-	padding: 0.5rem 0.5rem 0 0.5rem;
-    width: 50%;
-}
+////////////////////////////////////
 #idMainView--lineTrackerSubheader {
 	box-shadow: 0px 2px 15px -5px #0F2D65;
     border: none;
@@ -994,108 +1072,12 @@ white-space: nowrap !important;
     position: relative;
     z-index: 10;
 }
-.factHBox .stationBoxBodyTop {
-    height: 5px;
-    margin: 0;
-}
-.factHBox .structureStationBox {
-    min-height: auto;
-}
 
-.factHBox .sapMBarChild {
-	font-weight: bold;
-	vertical-align: middle;
-	font-size: 17px;
-}
-
-/* idFactoryView */
-#idFactoryView {
-	background-color:#fff;
-	height:100%!important;
-	>.factHBox  {
-		margin: 0;
-		height: 100%!important;
-		>#idFactoryView--VboxLeft {
-			background-color: #e9fbfd;	
-			.sapMVBox{
-				>.sapMFlexItem {
-					width:100%;
-					>.factory_lineButton {
-						padding:0;
-					}
-				}
-			}
-		}
-		.transferIsle {
-			width: 100%;
-			background-color: #f5f5f5;
-			color:#c0c0c0;
-			height: 6%;
-			justify-content: space-around;
-			align-items: center;
-			font-size: 2vh;
-			margin-top: 0;
-			margin-bottom: 0;
-		}
-		.stationBoxHeader {
-			height: 35px;
-			font-size: 1.5vh;
-			background: #eaeaea;
-			line-height: 2.5rem;
-			font-weight: normal;
-		}
-		.structureStationBox {
-			padding:0;
-		}
-		fieldset {
-			border: 1px solid #0D5D76;
-			color: #0D5D76;
-		}
-	}
-}
-
-////////////////////////////////////
 #idMainView--lineTrackerToolbar {
 	border:0;
 }
 .stationBoxBody>[src$="red_new.png"] + div  {
 	background:#000!important;
-}
-.adjustPulseSelect button {
-	height:auto;
-	border:0;
-}
-
-.adjustPulseSelect button.myPulseButton {
-	padding: 0;
-	height: 1.9rem;
-}
-.adjustPulseSelect button > div.sapMBtnReject  {
-	background:transparent;
-	border:0;
-	color: #0D5D76;
-	height: 1.9rem;
-}
-.adjustPulseSelect button > div.sapMBtnReject > span  {
-	height: 1.9rem;
-	line-height: 1.9rem;
-}
-
-.adjustPulseSelect button.myPulseButton.sapMBtnDisabled {
-    text-shadow: none;
-    cursor: default;
-    opacity: 0.5;
-    background:#ebeff4;
-}
-.adjustPulseSelect button.myPulseButton.sapMBtnInverted {
-    background:#84bd00;
-}
-.adjustPulseSelect button.myPulseButton.sapMBtnInverted > div.sapMBtnReject {
-    color: #ffffff;
-}
-.adjustPulseSelect>.sapMFlexItem>.sapMSlt.sapMSltDefault {
-	margin:0;
-	border:0;
 }
 .sap-desktop .lineTrackerSubheader button>.sapMBtnTransparent {
     border-radius:0;
@@ -1239,18 +1221,9 @@ old STATIONDETAIL
 	padding: 0;
 }
 
-
-.stationTilesHbox > div {
-	border-right:1px solid #ccc;
-}
-.stationTilesHbox > div:last-child {
-	border-right:none;
-}
-
-
 /* ID STATION VIEW */
 #idStationView {
-	.sationDetailBox {
+	.structureStationBox {
 		justify-content: center;
 	    -webkit-display: -webkit-box;
 	    -webkit-display: -webkit-flex;
@@ -1263,6 +1236,13 @@ old STATIONDETAIL
 	}	
 	.stationTilesHbox {
 		border:1px solid $cool-grey;
+		>div {
+			height: 100%;
+			width: 100%;
+			&:last-child {
+				border-right:none;
+			}
+		}
 	}	
 			
 }
@@ -1270,6 +1250,10 @@ old STATIONDETAIL
 /*******************
 QUARANTINE USELESS CODE
 ********************/
+// .factory_minHeight {
+// 	min-height: 6.5rem;
+// }
+
 // .filterbar {
 // 	height: auto !important;
 // 	padding: 0 .5rem;

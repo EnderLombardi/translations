@@ -89,7 +89,7 @@ sap.ui.core.Control.extend("airbus.mes.linetracker.customControl.customStationBo
 										 * r.write(";");
 										 */
 		r.writeControlData(t);
-		r.addClass("structureStationBox sationDetailBox");
+		r.addClass("structureStationBox");
 		r.writeClasses();
 		r.write('>');
 		r.write("<div");
