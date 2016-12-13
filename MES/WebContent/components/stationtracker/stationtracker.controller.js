@@ -21,9 +21,13 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
      * @memberOf components.stationtracker.stationtracker
      */
         onBeforeRendering: function() {
-                if(bBatch1 == true){
+                if ( bBatch1 ) {
+
                     airbus.mes.stationtracker.oView.byId("unplannedButton").setVisible(false);
                     airbus.mes.stationtracker.oView.byId("oswButton").setVisible(false);
+                    airbus.mes.stationtracker.oView.byId("kpi_header").setExpanded(false);
+                    airbus.mes.stationtracker.oView.byId("hideKPI").setVisible(false);
+
                 }
         },
 
@@ -211,27 +215,25 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
         airbus.mes.stationtracker.oView.byId("stationtracker").setBusy(true);
         var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
 
-        if (airbus.mes.stationtracker.GroupingBoxingManager.showInitial) {
+        if ( airbus.mes.stationtracker.GroupingBoxingManager.showInitial ) {
 
+            // Hide initial
             airbus.mes.stationtracker.GroupingBoxingManager.showInitial = false;
             GroupingBoxingManager.parseOperation(GroupingBoxingManager.group, GroupingBoxingManager.box);
-            airbus.mes.stationtracker.oView.getController().changeShift();
+
 
 
         } else {
 
+            // Show initial
             airbus.mes.stationtracker.GroupingBoxingManager.showInitial = true;
             GroupingBoxingManager.parseOperation(GroupingBoxingManager.group, GroupingBoxingManager.box);
             airbus.mes.stationtracker.oView.getController().changeShift();
+
         }
     },
 
-    /***************************************************************************
->>>>>>> [batch1 - batch2 button] hide
-     * Display a border blue on operation in gantt wich has the attribute CPP_CLUSTER
-     * fullfil
-     *
-     ****************************************************************************/
+
     onCPPress : function() {
 
         if (airbus.mes.stationtracker.AssignmentManager.CpPress === false) {
@@ -658,7 +660,6 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
     },
 
     /***************************************************************************
->>>>>>> [batch1 - batch2 button] hide
      * Re apply the sorter on the model of the worklist to group operation
      * in worklist popup
      *
