@@ -65,11 +65,10 @@
 								<Label type="space"></Label>
 								<Label type="space"></Label>
 								<Label text="{i18n>materialDes} : " />
-								<Text
-									text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/material_description}" />
+								<Text  text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/material_description}" />
 								<Label type="space" />
 								<Label text="{i18n>noOfEmp} : " />
-								<Text text=" - " />
+								<Text text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/noOfEmp}" />
 								<Label type="space"></Label>
 							</VBox>
 							<VBox>
