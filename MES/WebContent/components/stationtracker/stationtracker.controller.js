@@ -22,7 +22,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
      */
         onBeforeRendering: function() {
                 if ( bBatch1 ) {
-                	
+
                     airbus.mes.stationtracker.oView.byId("unplannedButton").setVisible(false);
                     airbus.mes.stationtracker.oView.byId("oswButton").setVisible(false);
                     airbus.mes.stationtracker.oView.byId("kpi_header").setExpanded(false);
@@ -210,29 +210,29 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
      * hierarchy of operation and display in grey initial operation
      *
      ****************************************************************************/
-	onInitialPlanPress : function() {
-		
-		airbus.mes.stationtracker.oView.byId("stationtracker").setBusy(true);
-		var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
-		
-		if ( airbus.mes.stationtracker.GroupingBoxingManager.showInitial ) {
-			
-			// Hide initial
-			airbus.mes.stationtracker.GroupingBoxingManager.showInitial = false;
-			GroupingBoxingManager.parseOperation(GroupingBoxingManager.group, GroupingBoxingManager.box);
-		
+    onInitialPlanPress : function() {
 
-			
-		} else {
-			
-			// Show initial
-			airbus.mes.stationtracker.GroupingBoxingManager.showInitial = true;
-			GroupingBoxingManager.parseOperation(GroupingBoxingManager.group, GroupingBoxingManager.box);
-			airbus.mes.stationtracker.oView.getController().changeShift();
+        airbus.mes.stationtracker.oView.byId("stationtracker").setBusy(true);
+        var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
 
-		}
-	},
-	
+        if ( airbus.mes.stationtracker.GroupingBoxingManager.showInitial ) {
+
+            // Hide initial
+            airbus.mes.stationtracker.GroupingBoxingManager.showInitial = false;
+            GroupingBoxingManager.parseOperation(GroupingBoxingManager.group, GroupingBoxingManager.box);
+
+
+
+        } else {
+
+            // Show initial
+            airbus.mes.stationtracker.GroupingBoxingManager.showInitial = true;
+            GroupingBoxingManager.parseOperation(GroupingBoxingManager.group, GroupingBoxingManager.box);
+            airbus.mes.stationtracker.oView.getController().changeShift();
+
+        }
+    },
+
 
     onCPPress : function() {
 
@@ -610,34 +610,6 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
         var sPath = airbus.mes.stationtracker.oView.byId("selectShift").getSelectedIndex();
         var oModel = airbus.mes.stationtracker.oView.getModel("stationTrackerShift").getProperty("/" + sPath);
 
-			start_date: airbus.mes.stationtracker.ShiftManager.ShiftSelected.EndDate,
-			//get enddate of last shift maybe need to get only the shift day before the current to avoid issue perf?
-			end_date: airbus.mes.stationtracker.ShiftManager.shifts[airbus.mes.stationtracker.ShiftManager.shifts.length-1].EndDate,
-			css:   "shiftCss",
-			
-		}));
-		
-			scheduler.updateView();
-		}
-		
-		// this is permit to display same shift when clicking from day to shift display.
-		if ( airbus.mes.stationtracker.ShiftManager.shiftDisplay ) {
-			
-			scheduler.updateView(airbus.mes.stationtracker.ShiftManager.ShiftSelected.StartDate);
-			airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftID);
-		}	
-		
-//		Relaunch service to for KPI header
-		airbus.mes.stationtracker.ModelManager.loadKPIshiftStaffing();
-	},
-	
-	/***************************************************************************
-=======
-    changeShift : function() {
-
-        var sPath = airbus.mes.stationtracker.oView.byId("selectShift").getSelectedIndex();
-        var oModel = airbus.mes.stationtracker.oView.getModel("stationTrackerShift").getProperty("/" + sPath);
-
         airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftName = oModel.shiftName;
         airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftID = oModel.shiftID;
         airbus.mes.stationtracker.ShiftManager.ShiftSelected.day = oModel.day;
@@ -688,7 +660,6 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
     },
 
     /***************************************************************************
->>>>>>> [batch1 - batch2 button] hide
      * Re apply the sorter on the model of the worklist to group operation
      * in worklist popup
      *
