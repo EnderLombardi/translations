@@ -206,32 +206,30 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
      * hierarchy of operation and display in grey initial operation
      *
      ****************************************************************************/
-    onInitialPlanPress : function() {
+	onInitialPlanPress : function() {
+		
+		airbus.mes.stationtracker.oView.byId("stationtracker").setBusy(true);
+		var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
+		
+		if ( airbus.mes.stationtracker.GroupingBoxingManager.showInitial ) {
+			
+			// Hide initial
+			airbus.mes.stationtracker.GroupingBoxingManager.showInitial = false;
+			GroupingBoxingManager.parseOperation(GroupingBoxingManager.group, GroupingBoxingManager.box);
+		
 
-        airbus.mes.stationtracker.oView.byId("stationtracker").setBusy(true);
-        var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
+			
+		} else {
+			
+			// Show initial
+			airbus.mes.stationtracker.GroupingBoxingManager.showInitial = true;
+			GroupingBoxingManager.parseOperation(GroupingBoxingManager.group, GroupingBoxingManager.box);
+			airbus.mes.stationtracker.oView.getController().changeShift();
 
-        if (airbus.mes.stationtracker.GroupingBoxingManager.showInitial) {
+		}
+	},
+	
 
-            airbus.mes.stationtracker.GroupingBoxingManager.showInitial = false;
-            GroupingBoxingManager.parseOperation(GroupingBoxingManager.group, GroupingBoxingManager.box);
-            airbus.mes.stationtracker.oView.getController().changeShift();
-
-
-        } else {
-
-            airbus.mes.stationtracker.GroupingBoxingManager.showInitial = true;
-            GroupingBoxingManager.parseOperation(GroupingBoxingManager.group, GroupingBoxingManager.box);
-            airbus.mes.stationtracker.oView.getController().changeShift();
-        }
-    },
-
-    /***************************************************************************
->>>>>>> [batch1 - batch2 button] hide
-     * Display a border blue on operation in gantt wich has the attribute CPP_CLUSTER
-     * fullfil
-     *
-     ****************************************************************************/
     onCPPress : function() {
 
         if (airbus.mes.stationtracker.AssignmentManager.CpPress === false) {
@@ -603,6 +601,34 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
      * in the gantt
      *
      ****************************************************************************/
+    changeShift : function() {
+
+        var sPath = airbus.mes.stationtracker.oView.byId("selectShift").getSelectedIndex();
+        var oModel = airbus.mes.stationtracker.oView.getModel("stationTrackerShift").getProperty("/" + sPath);
+
+			start_date: airbus.mes.stationtracker.ShiftManager.ShiftSelected.EndDate,
+			//get enddate of last shift maybe need to get only the shift day before the current to avoid issue perf?
+			end_date: airbus.mes.stationtracker.ShiftManager.shifts[airbus.mes.stationtracker.ShiftManager.shifts.length-1].EndDate,
+			css:   "shiftCss",
+			
+		}));
+		
+			scheduler.updateView();
+		}
+		
+		// this is permit to display same shift when clicking from day to shift display.
+		if ( airbus.mes.stationtracker.ShiftManager.shiftDisplay ) {
+			
+			scheduler.updateView(airbus.mes.stationtracker.ShiftManager.ShiftSelected.StartDate);
+			airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftID);
+		}	
+		
+//		Relaunch service to for KPI header
+		airbus.mes.stationtracker.ModelManager.loadKPIshiftStaffing();
+	},
+	
+	/***************************************************************************
+=======
     changeShift : function() {
 
         var sPath = airbus.mes.stationtracker.oView.byId("selectShift").getSelectedIndex();
@@ -1041,7 +1067,6 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
             var dStartDate = airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy[sDate][sDateId][0].StartDate;
 
             scheduler.updateView(dStartDate);
-            airbus.mes.stationtracker.ShiftManager.selectFirstShift = true;
             airbus.mes.stationtracker.ModelManager.selectMyShift();
         }
     },

@@ -42,9 +42,13 @@ sap.ui.controller("airbus.mes.settings.Settings",
 
             onAfterRendering : function() {
                 this.byId("vbi").zoomToRegions([ "FR", "GB", "ES", "DE" ]);
+
                 if(bBatch1 = true){
                     airbus.mes.settings.oView.byId("currMSN").setVisible(false);
                 }
+
+
+
             },
 
             onInit : function() {
@@ -514,7 +518,7 @@ sap.ui.controller("airbus.mes.settings.Settings",
                     airbus.mes.settings.ModelManager.taktDuration = aModel.Takt_Duration;
                     //Description update
                     airbus.mes.settings.ModelManager.siteDesc = airbus.mes.settings.ModelManager.siteDesc;
-                   airbus.mes.settings.ModelManager.lineDesc = aModel.lineDescription
+                    airbus.mes.settings.ModelManager.lineDesc = aModel.lineDescription
                     airbus.mes.settings.ModelManager.programDesc = aModel.programDescription;
                     airbus.mes.settings.ModelManager.stationDesc = aModel.stationDescription;
 
