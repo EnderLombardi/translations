@@ -1228,7 +1228,7 @@ airbus.mes.stationtracker.ModelManager = {
 			},
 
 			error : function(error, jQXHR) {
-				console.log(error);
+				//console.log(error);
 				return 0;
 
 			}
