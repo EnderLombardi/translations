@@ -136,3 +136,140 @@
 	</Page>
 </core:View>
 
+<core:View xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form" xmlns:html="http://www.w3.org/1999/xhtml"
+	controllerName="airbus.mes.operationdetail.operationDetail">
+	<Page showHeader="false" height="100%" enableScrolling="false"
+		class="WhiteBG">
+
+		<content>
+			<Panel expandable="true" expanded="false" width="auto"
+				stretchContentHeight="true" id="operationDetailPanel"
+				class="operationDetailHeadPanel sapUiSmallMarginTop sapUiSmallMarginBeginEnd">
+				<headerToolbar>
+					<Toolbar height="7rem" class="ML-05">
+						<VBox width="100%">
+							<HBox height="30%" justifyContent="SpaceBetween">
+								<Text id="operationName" class="mainText"
+									text="OP {operationDetailModel>/Rowsets/Rowset/0/Row/0/operation_id} - {operationDetailModel>/Rowsets/Rowset/0/Row/0/operation_desc}" />
+
+								<HBox justifyContent="SpaceBetween">
+									<Text id="switchStatusLabel" text="{i18n>read-Mode}" class="ExecutionModeText" />
+									<Switch id="switchOperationModeBtn" customTextOn=" "
+										customTextOff=" " state="false" class="switchExecutionButton"
+										change="switchMode" />
+								</HBox>
+
+							</HBox>
+							<HBox justifyContent="SpaceBetween" width="100%">
+								<HBox justifyContent="SpaceBetween">
+
+									<Text text="{i18n>workOrder}" class="subText sapUiSmallMarginEnd"></Text>
+									<Text id="workOrder"
+										text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/wo_no} - {operationDetailModel>/Rowsets/Rowset/0/Row/0/material_description}"
+										class="subText"></Text>
+								</HBox>
+								<HBox justifyContent="SpaceBetween">
+									<Text id="timeRange"
+										text="{parts:['operationDetailModel>/Rowsets/Rowset/0/Row/0/reschedule_start_time' ,'operationDetailModel>/Rowsets/Rowset/0/Row/0/reschedule_end_time'],formatter:'airbus.mes.operationdetail.Formatter.displayOriginalPlan'}"
+										class="subText sapUiSmallMarginEnd"></Text>
+									<Text id="taskId"
+										text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/CPP_CLUSTER}"
+										class="subText sapUiSmallMarginEnd"></Text>
+									<Button id="opDetailExpandButton" type="Transparent"
+										iconFirst="false" text="{i18n>showMore}" icon="sap-icon://navigation-down-arrow"
+										press="expandOperationDetailPanel" class="expandButton"></Button>
+									<Button id="opDetailCloseButton" type="Transparent"
+										iconFirst="false" text="{i18n>showLess}" icon="sap-icon://navigation-up-arrow"
+										visible="false" press="expandOperationDetailPanel" class="closeButton"></Button>
+								</HBox>
+							</HBox>
+						</VBox>
+					</Toolbar>
+				</headerToolbar>
+				<content>
+					<f:SimpleForm id="operationDetailForm" class="operationDetailForm"
+						labelSpanL="1" labelSpanM="2" adjustLabelSpan="false" emptySpanL="0"
+						emptySpanM="0" columnsL="4" columnsM="4">
+						<f:content>
+							<VBox>
+								<Label text="{i18n>start}:" />
+								<Text
+									text=" {= ${operationDetailModel>/Rowsets/Rowset/0/Row/0/planned_start_time} === 'TimeUnavailable' ? ${i18n>notStarted} : ${operationDetailModel>/Rowsets/Rowset/0/Row/0/planned_start_time} } " />
+								<Label type="space"></Label>
+								<Label text="{i18n>timeSpent}" />
+								<Text
+									text="{path :'operationDetailModel>/Rowsets/Rowset/0/Row/0/time_spent', formatter : 'airbus.mes.stationtracker.util.Formatter.msToTime'}" />
+								<Label type="space"></Label>
+								<Label type="space"></Label>
+								<Label text="{i18n>materialDes} : " />
+								<Text  text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/material_description}" />
+								<Label type="space" />
+								<Label text="{i18n>noOfEmp} : " />
+								<Text text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/noOfEmp}" />
+								<Label type="space"></Label>
+							</VBox>
+							<VBox>
+								<Label text="{i18n>end}:" />
+								<Text
+									text="{= ${operationDetailModel>/Rowsets/Rowset/0/Row/0/planned_start_time} === 'TimeUnavailable' ? ${i18n>notStarted} : ${operationDetailModel>/Rowsets/Rowset/0/Row/0/planned_start_time} }" />
+								<Label type="space"></Label>
+								<Label text="{i18n>original_Plan}:" />
+								<Text
+									text="{parts:['operationDetailModel>/Rowsets/Rowset/0/Row/0/original_start_time' ,'operationDetailModel>/Rowsets/Rowset/0/Row/0/original_end_time'],formatter:'airbus.mes.operationdetail.Formatter.displayOriginalPlan'}" />
+								<Label type="space"></Label>
+								<Label text="{i18n>user_Status}:" />
+								<Text text=" - " />
+								<Label type="space" />
+								<Label text="{i18n>CPP_Cluster}:" />
+								<Text text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/cpp_cluster}" />
+							</VBox>
+							<VBox>
+								<Label text="{i18n>work_Center}:" />
+								<Text
+									text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/workcenter}" />
+								<Label type="space"></Label>
+								<Label text="{i18n>work_Package}:" />
+								<Text
+									text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/work_package}" />
+								<Label type="space"></Label>
+								<Label type="space" />
+								<!-- <Label text="ACPnG" /> <Text text="28/08/2016" /> <Label type="space"></Label> -->
+								<Label text="{i18n>bundle}" />
+								<Text text=" - " />
+								<Label type="space" />
+								<Label text=" {i18n>system_status}:" />
+								<Text text=" - " />
+							</VBox>
+							<!-- <VBox> <Label text="Activity:" /> <Text text="MEC" /> <Label 
+								type="space"></Label> <Label text="N. employees" /> <Text text="1" /> <Label 
+								type="space"></Label> <Label text="Work package" /> <Text text=" - " /> </VBox> -->
+						</f:content>
+					</f:SimpleForm>
+				</content>
+			</Panel>
+
+			<Toolbar class="opDetailNavToolbar">
+				<SegmentedButton id="opDetailSegmentButtons" class="opDetailNav" width="500px">
+					<items>
+						<SegmentedButtonItem id="idStatus" text="{i18n>Status}"
+							key="status" press="openPage" />
+						<SegmentedButtonItem id="idDisruption" text="{i18n>Disruption}"
+							key="disruption" press="openPage" enabled="true" />
+						 <SegmentedButtonItem id="idReschedule" text="{i18n>Reschedule}"
+							key="reschedule" press="openPage"  enabled="false" visible="false" />
+						<SegmentedButtonItem id="idtouchngo" text="{i18n>Touchngo}" visible="false" key="touchngo" press="openPage" />
+					</items>
+				</SegmentedButton>
+			</Toolbar>
+
+			<NavContainer id="operDetailNavContainer" class="navContAutoHeight"
+				height="auto" autoFocus="false" navigate="onNavigate" afterNavigate="renderViews">
+				<pages>
+
+				</pages>
+			</NavContainer>
+
+		</content>
+	</Page>
+</core:View>
