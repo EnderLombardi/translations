@@ -60,9 +60,7 @@ airbus.mes.disruptiontracker.Formatter = {
 
 		if (status == "CLOSED")
 			return "sap-icon://sys-enter-2";
-
 		else {
-
 			return "sap-icon://alert";
 		}
 
@@ -76,13 +74,10 @@ airbus.mes.disruptiontracker.Formatter = {
      
 	
 	formatOpeningTime : function(openDate, closureDate) {
-
-		openDate = airbus.mes.disruptiontracker.Formatter.isoDateconvert(openDate);
 		
 		if (closureDate == undefined || closureDate == "")
 			return 0;
 		
-		closureDate = airbus.mes.disruptiontracker.Formatter.isoDateconvert(closureDate);
 		var reggie = /(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})/;
 		var aOpenDate = reggie.exec(openDate);
 		var oOpenDate = new Date((+aOpenDate[1]), (+aOpenDate[2]) - 1, // Careful month starts at 0!
@@ -93,70 +88,31 @@ airbus.mes.disruptiontracker.Formatter = {
 		(+aClosureDate[3]), (+aClosureDate[4]), (+aClosureDate[5]),
 				(+aClosureDate[6]));
 
-		var unit = airbus.mes.settings.AppConfManager
-				._getConfiguration("MES_TIME_UNIT");
+		var unit = airbus.mes.settings.AppConfManager._getConfiguration("MES_TIME_UNIT");
 
 		var openingTime;
 
-		if (unit == "HR")
+		if (unit === "H")
 			openingTime = (Math.round((oClosureDate - oOpenDate)
 					/ (1000 * 60 * 60) * 100) / 100)
 					+ " Hr";
 
-		else if (unit == "IM")
+		else if (unit === "IM")
 			openingTime = (Math.round((oClosureDate - oOpenDate) * 100
 					/ (1000 * 60 * 60) * 100) / 100)
 					+ " IM";
 
-		else if (unit == "M")
+		else if (unit === "M")
 			openingTime = (Math.round((oClosureDate - oOpenDate) / (1000 * 60)
 					* 100) / 100)
 					+ " Min";
 
-		else if (unit == "D")
+		else if (unit === "D")
 			openingTime = (Math.round((oClosureDate - oOpenDate)
 					/ (1000 * 60 * 60 * 24) * 100) / 100)
 					+ " Days";
 
 		return openingTime;
-	},
-
-	// ISO date conversion to local time 
-	isoDateconvert : function(date) {
-		
-		if(date == undefined || date == "")
-			return;
-		
-		var date = new Date(date)
-		var dd = date.getDate();
-
-		if (dd < 10) {
-			dd = "0" + dd
-		}
-
-		var mm = date.getMonth() + 1; // month is returned in 0-11, so adding
-										// 1
-		if (mm < 10) {
-			mm = "0" + mm
-		}
-
-		var yyyy = date.getFullYear();
-
-		var HH = date.getHours();
-		if (HH < 10) {
-			HH = "0" + HH
-		}
-		var min = date.getMinutes();
-		if (min < 10) {
-			min = "0" + min
-		}
-		var ss = date.getSeconds();
-		if (ss < 10) {
-			ss = "0" + ss
-		}
-
-		return (yyyy + "-" + mm + "-" + dd + " " + HH + ":" + min + ":" + ss)
-
 	},
 
 	removeDecimal : function(num) {

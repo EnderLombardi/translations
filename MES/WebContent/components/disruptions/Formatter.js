@@ -89,7 +89,6 @@ airbus.mes.disruptions.Formatter = {
 
 			return (month + ' ' + dd + ',' + yyyy);
 		} else {
-			datetime = airbus.mes.disruptions.Formatter.isoDateconvert(datetime);
 			return datetime.split(" ")[0];
 		}
 
@@ -105,8 +104,6 @@ airbus.mes.disruptions.Formatter = {
 
 			return (HH + ":" + mm + ":" + ss);
 		} else {
-			
-			datetime = airbus.mes.disruptions.Formatter.isoDateconvert(datetime);
 			return datetime.split(" ")[1];
 
 		}
@@ -252,8 +249,6 @@ airbus.mes.disruptions.Formatter = {
 	setEmptyPromisedDateTimeText : function(dateTime) {
 		if(dateTime == "")
 			return "--:--:--";
-		
-		dateTime = airbus.mes.disruptions.Formatter.isoDateconvert(dateTime);
 		return dateTime;
 	},
 	
@@ -308,13 +303,10 @@ airbus.mes.disruptions.Formatter = {
 	},
 	
 	formatOpeningTime : function(openDate, closureDate) {
-
-		openDate = airbus.mes.disruptions.Formatter.isoDateconvert(openDate);
 		
 		if (closureDate == undefined || closureDate == "")
 			return 0;
 		
-		closureDate = airbus.mes.disruptions.Formatter.isoDateconvert(closureDate);
 		var reggie = /(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})/;
 		var aOpenDate = reggie.exec(openDate);
 		var oOpenDate = new Date((+aOpenDate[1]), (+aOpenDate[2]) - 1, // Careful,
@@ -332,58 +324,23 @@ airbus.mes.disruptions.Formatter = {
 		(+aClosureDate[3]), (+aClosureDate[4]), (+aClosureDate[5]),
 				(+aClosureDate[6]));
 
-		var unit = airbus.mes.settings.AppConfManager
-				._getConfiguration("MES_TIME_UNIT");
+		var unit = airbus.mes.settings.AppConfManager._getConfiguration("MES_TIME_UNIT");
 
 		var openingTime;
 
 		if (unit == "H")
 			openingTime = airbus.mes.disruptions.Formatter.removeDecimal( ((oClosureDate - oOpenDate) / (1000 * 60 * 60)).toFixed(2) ) + " Hr";
 
-
-
 		else if (unit == "IM")
 			openingTime = airbus.mes.disruptions.Formatter.removeDecimal( ((oClosureDate - oOpenDate) * 100 / (1000 * 60 * 60)).toFixed(2) ) + " IM";
-
-
 
 		else if (unit == "M")
 			openingTime = airbus.mes.disruptions.Formatter.removeDecimal( ((oClosureDate - oOpenDate) / (1000 * 60)).toFixed(2) ) + " Min";
 
-
-
 		else if (unit == "D")
 			openingTime = airbus.mes.disruptions.Formatter.removeDecimal( ((oClosureDate - oOpenDate) / (1000 * 60 * 60 * 24)).toFixed(2) ) + " Days";
 
-
 		return openingTime;
-	},
-
-	
-  isoDateconvert : function(date) {
-		
-		if(date == undefined || date == "")
-			return "";
-		
-		var date = new Date(date)
-		var dd = date.getDate();
-		
-		if (dd < 10) { dd = "0" + dd }
-		
-		var mm = date.getMonth()+1; //month is returned in 0-11, so adding 1
-		if (mm < 10) { mm = "0" + mm }
-		
-		var yyyy = date.getFullYear();
-		
-		var HH = date.getHours();
-		if (HH < 10) { HH = "0" + HH }
-		var min = date.getMinutes();
-		if (min < 10) { min = "0" + min }
-		var ss = date.getSeconds();
-		if (ss < 10) { ss = "0" + ss }
-		
-		return (yyyy + "-" + mm + "-" + dd + " " + HH + ":" + min + ":" + ss)
-		
 	},
 	
 	timeToMilliseconds : function (time) {

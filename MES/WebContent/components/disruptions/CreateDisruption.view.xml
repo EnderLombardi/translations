@@ -230,10 +230,6 @@
 									</f:fields>
 								</f:FormElement>
 
-								<!-- <f:FormElement> <f:label> <Label text="{i18nModel>Time}"> <layoutData> 
-									<l:GridData span="L2 M6 S12" linebreak="true" /> </layoutData> </Label> </f:label> 
-									<f:fields> </f:fields> </f:FormElement> -->
-
 								<f:FormElement>
 									<f:label>
 										<Label required="true" text="{i18nModel>Expected}">
@@ -245,7 +241,8 @@
 									<f:fields>
 										<DatePicker id="expectedDate" valueFormat="yyyy-MM-dd"
 											displayFormat="long"
-											value="{path: 'DisruptionDetailModel>/RequiredFixBy', formatter: 'airbus.mes.disruptions.Formatter.getDate'}" change="onExpectedDateChange">
+											value="{path: 'DisruptionDetailModel>/RequiredFixBy', formatter: 'airbus.mes.disruptions.Formatter.getDate'}" 
+											change="onExpectedDateChange">
 											<layoutData>
 												<l:GridData span="L2 M5 S6" />
 											</layoutData>
@@ -254,7 +251,8 @@
 										</DatePicker>
 										<TimePicker id="expectedTime" displayFormat="HH:mm:ss"
 											valueFormat="HH:mm:ss"
-											value="{path: 'DisruptionDetailModel>/RequiredFixBy', formatter: 'airbus.mes.disruptions.Formatter.getTime'}" change="onExpectedDateChange">
+											value="{path: 'DisruptionDetailModel>/RequiredFixBy', formatter: 'airbus.mes.disruptions.Formatter.getTime'}" 
+											change="onExpectedDateChange">
 											<layoutData>
 												<l:GridData span="L1 M4 S6" />
 											</layoutData>
@@ -291,11 +289,6 @@
 									</f:fields>
 								</f:FormElement>
 
-
-
-								<!-- <f:FormElement> <f:label> <Label text="{i18nModel>Time}"> <layoutData> 
-									<l:GridData span="L1 M6 S12" /> </layoutData> </Label> </f:label> <f:fields> 
-									</f:fields> </f:FormElement> -->
 
 								<f:FormElement>
 									<f:label>
