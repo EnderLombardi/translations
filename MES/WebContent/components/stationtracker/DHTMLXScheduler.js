@@ -193,7 +193,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",    {
 //                                airbus.mes.stationtracker.ModelManager.sendRescheduleRequest(false,oFinal,oInitial);
 //                            }
                             return false
-                            console.log("end of drag");
+                           // console.log("end of drag");
 
                         }));
 
