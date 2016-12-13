@@ -826,7 +826,6 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 		 * else { sap.ui.getCore().byId("rp_id").filter(""); }
 		 */
 
-		var value = oEvt.getSource().getValue();
 		//if no values in the TextField check value before refresh if exists
 		if(oEvt != undefined){
 			var value = oEvt.getSource().getValue();
