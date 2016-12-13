@@ -305,8 +305,7 @@ sap.ui
 										"value" : "SFCBO:"
 												+ airbus.mes.settings.ModelManager.site
 												+ ","
-												+ sap.ui
-														.getCore()
+												+ sap.ui.getCore()
 														.getModel(
 																"operationDetailModel")
 														.getProperty(
@@ -337,11 +336,7 @@ sap.ui
 									},
 									{
 										"attribute" : "REQD_FIX_BY",
-										"value" : new Date(oView.byId("expectedDate")
-												.getValue()
-												+ " "
-												+ oView.byId("expectedTime")
-														.getValue()) //.toISOString().substring(0,19)
+										"value" : oView.byId("expectedDate").getValue() + " " + oView.byId("expectedTime").getValue()
 									},
 									{
 										"attribute" : "GRAVITY",
@@ -484,13 +479,11 @@ sap.ui
 						var sRootCause = oView.byId("selectRootCause")
 								.getSelectedKey();
 						var iTimeLost = airbus.mes.disruptions.Formatter.timeToMilliseconds(oView.byId("timeLost").getValue());
-						var dFixedByTime = new Date(oView.byId("expectedDate")
-								.getValue()
-								+ " " + oView.byId("expectedTime").getValue()); //.toISOString().substring(0,19);
+						var dFixedByTime = oView.byId("expectedDate").getValue() + " " + oView.byId("expectedTime").getValue();
 						var sComment = oView.byId("comment").getValue()
 						var iGravity = oView.byId("gravity").getSelectedKey()
-						var dPromisedTime = oView.byId("promisedDate").getValue() === "" ? "" : new Date(oView.byId("promisedDate").getValue()
-																							+ " " + oView.byId("promisedTime").getValue()); //.toISOString().substring(0,19);
+						var dPromisedTime = oView.byId("promisedDate").getValue() === "" ? "" : oView.byId("promisedDate").getValue()
+																						+ " " + oView.byId("promisedTime").getValue();
 						// call update service
 						airbus.mes.disruptions.ModelManager.updateDisruption(
 								sMessageRef, sReason, sResponsibleGroup,
