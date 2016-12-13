@@ -312,7 +312,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 					"OSW" : el.OSW,
 					"ERP_SYSTEM" : el.ERP_SYSTEM,
 					"PAUSED" : el.PAUSED,
-					"NUMBER_OF_EMPLOYEES" : el.NUMBER_OF_EMPLOYEES
+					"NUMBER_OF_EMPLOYEES" : el.NUMBER_OF_EMPLOYEES,
 					"SFC_STEP_REF" : el.SFC_STEP_REF
 					
 			};
