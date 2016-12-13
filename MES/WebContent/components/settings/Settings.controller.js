@@ -514,7 +514,7 @@ sap.ui.controller("airbus.mes.settings.Settings",
                     airbus.mes.settings.ModelManager.taktDuration = aModel.Takt_Duration;
                     //Description update
                     airbus.mes.settings.ModelManager.siteDesc = airbus.mes.settings.ModelManager.siteDesc;
-                    airbus.mes.settings.ModelManager.lineDesc = aModel.lineDescription
+                   airbus.mes.settings.ModelManager.lineDesc = aModel.lineDescription
                     airbus.mes.settings.ModelManager.programDesc = aModel.programDescription;
                     airbus.mes.settings.ModelManager.stationDesc = aModel.stationDescription;
 
