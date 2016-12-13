@@ -67,6 +67,13 @@ sap.ui
                      * @memberOf components.operationdetail.operationDetail
                      */
                     onAfterRendering : function() {
+                    	
+                    	if ( bBatch1 ) {
+                    		
+                    		airbus.mes.operationdetail.oView.byId("idReschedule").setEnabled(false);
+                    		
+                    	}
+                    	
                         this.disruptionsFlag = false;
                         this.disruptionsCustomDataFlag = false;
 
