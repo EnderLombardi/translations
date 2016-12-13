@@ -904,8 +904,7 @@ airbus.mes.stationtracker.ModelManager = {
 				});
 
 		if (aModel && aModel.length > 0 && aModel) {
-			aModel = airbus.mes.stationtracker.util.Formatter
-					.sortWorkList(aModel);
+			aModel = airbus.mes.stationtracker.util.Formatter.sortWorkList(aModel);
 		}
 
 		// Manage model on worklist
@@ -915,8 +914,8 @@ airbus.mes.stationtracker.ModelManager = {
 					// elOverallModel.STATE =???
 					// elOverallModel.andons = ???
 					fNumberEl = fNumberEl + 1;
-					fAllDuration = fAllDuration + elModel.DURATION;
-					fAllProgress = fAllProgress + elModel.PROGRESS;
+					fAllDuration = parseFloat(fAllDuration) + parseFloat(elModel.DURATION);
+					fAllProgress = parseFloat(fAllProgress) + parseFloat(elModel.PROGRESS);
 
 					elOverallModel.WORKORDER_ID = elModel.WORKORDER_ID;
 					elOverallModel.WORKORDER_DESCRIPTION = elModel.WORKORDER_DESCRIPTION;
