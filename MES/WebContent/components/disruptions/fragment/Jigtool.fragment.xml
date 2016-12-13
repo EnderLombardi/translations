@@ -46,7 +46,7 @@
 											</layoutData>
 										</Title>
 										<VBox width="20%">
-											<Label text="Quantity" />
+											<Label text="{i18nModel>Quantity}" />
 											<Input type="Number" width="80%" value="1" class="inputQty" />
 										</VBox>
 									</items>

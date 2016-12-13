@@ -1576,7 +1576,8 @@ OTHER
   font-size: smaller !important; }
 
 #operationDetailPopup--operationDetailPopUp-scrollCont {
-  padding: 0rem !important; }
+  padding: 0rem !important;
+  height: 101%; }
 
 #mes .ClassOperationDetailPopUp .sapMInputBaseInner {
   width: 35vw; }
@@ -2140,8 +2141,8 @@ html.sap-desktop .sapMBtnTransparent > .sapMBtnIcon {
 DISRUPTIONTRACKER
 *************************/
 .sapMDialog > .sapMDialogSection {
-  width: 101%;
-  max-width: 101%; }
+  width: 100%;
+  max-width: 100%; }
 
 .disruptions table th,
 td {
@@ -2977,7 +2978,7 @@ button[id^="polypoly"].sapMBtn:hover > div[id^="polypoly"].sapMBtnHoverable, htm
 .ClassOperationDetailPopUp .sapMPageBusyCoversAll {
   background: #f5f5f5 !important; }
   .ClassOperationDetailPopUp .sapMPageBusyCoversAll > section {
-    overflow-y: scroll !important; }
+    overflow: auto !important; }
 
 #mes .sapMDialog:not(.theme-disabled) header {
   box-shadow: 0 0 5px #333;
@@ -3686,10 +3687,10 @@ old CUSTOMCSS
   height: 40px; }
 
 html[data-sap-ui-browser*="ie"] .sapUiBody {
-  scrollbar-face-color: #bfbfbf; }
+  scrollbar-face-color: #999999; }
 
 .sap-desktop ::-webkit-scrollbar-thumb {
-  background-color: #bfbfbf; }
+  background-color: #999999; }
 
 .sapMPIBarBlue {
   background: -moz-linear-gradient(top, #008cda 0, #006ca7 100%) !important;

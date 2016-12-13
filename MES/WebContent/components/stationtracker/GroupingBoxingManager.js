@@ -296,7 +296,8 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 					"DISRUPTION" : el.DISRUPTION,
 					"OSW" : el.OSW,
 					"ERP_SYSTEM" : el.ERP_SYSTEM,
-					"PAUSED" : el.PAUSED
+					"PAUSED" : el.PAUSED,
+					"NUMBER_OF_EMPLOYEES" : el.NUMBER_OF_EMPLOYEES
 					
 			};
 			
@@ -477,8 +478,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 						
 					} 
 					
-					if  ( key1.slice(0,2) != "I_" )
-					{
+					if  ( key1.slice(0,2) != "I_" ) {
 					
 						var oOperationRescheduling = {
 								
@@ -554,7 +554,10 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 		scheduler.deleteMarkedTimespan();
 		// Display all marker
 	    airbus.mes.stationtracker.ShiftManager.addMarkedShifts();
-	    scheduler.xy.scroll_width=20;
+		// Update combobox of shift and display the selection of shift
+		airbus.mes.stationtracker.ModelManager.selectMyShift();
+	   
+		scheduler.xy.scroll_width=20;
 	    airbus.mes.stationtracker.oView.byId("stationtracker").setBusy(false);
 	    scheduler.parse(aBox,"json");
 	}

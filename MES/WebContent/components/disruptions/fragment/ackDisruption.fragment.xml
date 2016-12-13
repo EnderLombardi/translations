@@ -7,13 +7,13 @@
 			<HBox justifyContent="Center">
 				<VBox>
 					<HBox alignItems="Center" width="100%">
-						<Label text="Promised Date"></Label>
+						<Label text="{i18nModel>promised_Date}"></Label>
 						<DatePicker id="disruptionAckDate" valueFormat="yyyy-MM-dd"
 							placeholder="yyyy-mm-dd" displayFormat="yyyy-MM-dd" class="sapUiSmallMarginBegin"
 							width="100%" />
 					</HBox>
 					<HBox alignItems="Center" width="100%">
-						<Label text="Promised Time"></Label>
+						<Label text="{i18nModel>promised_Time}"></Label>
 						<TimePicker id="disruptionAckTime" valueFormat="HH:mm:ss"
 							displayFormat="HH:mm:ss" placeholder="HH:mm:ss" class="sapUiSmallMarginBegin"
 							width="100%" />

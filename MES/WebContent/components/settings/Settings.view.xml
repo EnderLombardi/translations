@@ -1,113 +1,113 @@
 <core:View controllerName="airbus.mes.settings.Settings"
-	xmlns="sap.m" xmlns:vbm="sap.ui.vbm" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
-	xmlns:core="sap.ui.core">
-	<Page class="classSettingPage">
-		<customHeader>
-			<Bar class="pageHeader">
-				<contentMiddle>
-					<Title text="{i18n>Title}" />
-				</contentMiddle>
-			</Bar>
-		</customHeader>
-		<subHeader>
-			<Bar id="settingsSubHeader">
-				<contentLeft>
-					<Button id="navBack" type="Transparent" text="{i18n>Back}"
-						press="onPress" icon="sap-icon://arrow-left" height="100%" />
-				</contentLeft>
-				<contentRight>
-					<Button id="navConfirm" type="Transparent" text="{i18n>Confirm}"
-						press="onConfirm" iconFirst="false" icon="sap-icon://arrow-right"
-						height="100%" />
-				</contentRight>
-			</Bar>
-		</subHeader>
-		<l:Splitter width="100%" height="100%">
-			<List headerText="{i18n>Program}" items="{path: 'program>/ProgramCollection'}"
-				width="auto" class="sapUiTinyMargin classListProgram" id="headTextProgram">
-				<CustomListItem icon="{program>picture}" id="customListHeadTextProgram">
-					<HBox>
-						<RadioButton
-							enabled="{ path : 'program>prog', formatter : 'airbus.mes.settings.util.Formatter.enabledProgram' }"
-							select="onProgramSelect" class="classListProgramRadioBtn" text="{program>prog}" />
-						<Image src="{program>picture}" width="75%" press ="onImagePress" />
-					</HBox>
-				</CustomListItem>
-				<layoutData>
-					<l:SplitterLayoutData size="25%" resizable="true" />
-				</layoutData>
-			</List>
+    xmlns="sap.m" xmlns:vbm="sap.ui.vbm" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core">
+    <Page class="classSettingPage">
+        <customHeader>
+            <Bar class="pageHeader">
+                <contentMiddle>
+                    <Title text="{i18n>Title}" />
+                </contentMiddle>
+            </Bar>
+        </customHeader>
+        <subHeader>
+            <Bar id="settingsSubHeader">
+                <contentLeft>
+                    <Button id="navBack" type="Transparent" text="{i18n>Back}"
+                        press="onPress" icon="sap-icon://arrow-left" height="100%" />
+                </contentLeft>
+                <contentRight>
+                    <Button id="navConfirm" type="Transparent" text="{i18n>Confirm}"
+                        press="onConfirm" iconFirst="false" icon="sap-icon://arrow-right"
+                        height="100%" />
+                </contentRight>
+            </Bar>
+        </subHeader>
+        <l:Splitter width="100%" height="100%">
+            <List headerText="{i18n>Program}" items="{path: 'program>/ProgramCollection'}"
+                width="auto" class="sapUiTinyMargin classListProgram" id="headTextProgram">
+                <CustomListItem icon="{program>picture}" id="customListHeadTextProgram">
+                    <HBox>
+                        <RadioButton
+                            enabled="{ path : 'program>prog', formatter : 'airbus.mes.settings.util.Formatter.enabledProgram' }"
+                            select="onProgramSelect" class="classListProgramRadioBtn" text="{program>prog}" />
+                        <Image src="{program>picture}" width="75%" press ="onImagePress" />
+                    </HBox>
+                </CustomListItem>
+                <layoutData>
+                    <l:SplitterLayoutData size="25%" resizable="true" />
+                </layoutData>
+            </List>
 
-			<VBox class="classSelectListBox">
-				<Bar class="sapMListHdr">
-					<contentLeft>
-						<Label text="{i18n>Site}"></Label>
-					</contentLeft>
-				</Bar>
-				<SelectList items="{path: 'site>/SiteCollection'}" width="100%"
-					class="sapUiTinyMargin classSelectList" id="headTextPlant"
-					itemPress="onPressSite">
-					<core:Item text="{site>Site}" key="{site>Site}"
-						enabled="{ path : 'site>Site', formatter : 'airbus.mes.settings.util.Formatter.enabledSite' }" />
+            <VBox class="classSelectListBox">
+                <Bar class="sapMListHdr">
+                    <contentLeft>
+                        <Label text="{i18n>Site}"></Label>
+                    </contentLeft>
+                </Bar>
+                <SelectList items="{path: 'site>/SiteCollection'}" width="100%"
+                    class="sapUiTinyMargin classSelectList" id="headTextPlant"
+                    itemPress="onPressSite">
+                    <core:Item text="{site>Site}" key="{site>Site}"
+                        enabled="{ path : 'site>Site', formatter : 'airbus.mes.settings.util.Formatter.enabledSite' }" />
 
-					<layoutData>
-						<l:SplitterLayoutData size="20%" resizable="true" />
-					</layoutData>
-				</SelectList>
-			</VBox>
-			<vbm:AnalyticMap id="vbi" width="100%" height="100%"
-				regions="{region>/Regions}" regionClick="onRegionClick">
-				<vbm:regions>
-					<vbm:Region code="{region>code}" color="{region>color}"
-						tooltip="{region>country}" />
-				</vbm:regions>
-				<vbm:Spots items="{region>/Spots}" click="onClickItem"
-					contextMenu="onContextMenuItem">
-					<vbm:Spot position="{region>pos}" tooltip="{region>tooltip}"
-						type="{region>type}" text="{region>text}" click="onClickSpot"
-						contextMenu="onContextMenuSpot" />
-				</vbm:Spots>
-			</vbm:AnalyticMap>
+                    <layoutData>
+                        <l:SplitterLayoutData size="20%" resizable="true" />
+                    </layoutData>
+                </SelectList>
+            </VBox>
+            <vbm:AnalyticMap id="vbi" width="100%" height="100%"
+                regions="{region>/Regions}" regionClick="onRegionClick">
+                <vbm:regions>
+                    <vbm:Region code="{region>code}" color="{region>color}"
+                        tooltip="{region>country}" />
+                </vbm:regions>
+                <vbm:Spots items="{region>/Spots}" click="onClickItem"
+                    contextMenu="onContextMenuItem">
+                    <vbm:Spot position="{region>pos}" tooltip="{region>tooltip}"
+                        type="{region>type}" text="{region>text}" click="onClickSpot"
+                        contextMenu="onContextMenuSpot" />
+                </vbm:Spots>
+            </vbm:AnalyticMap>
 
-			<VBox class="sapUiTinyMargin classOtherSetting">
-				<f:SimpleForm id="headTextForm" minWidth="1024"
-					visible="true" maxContainerCols="2" editable="true" layout="ResponsiveGridLayout"
-					labelSpanL="3" labelSpanM="3" emptySpanL="4" emptySpanM="4"
-					columnsL="1" columnsM="1" class="editableForm" title="{i18n>OtherSettings}">
-					<f:content>
-						<Label id="lblLine" text="{i18n>Line}" design="Bold" />
-						<ComboBox id="selectLine" items="{plantModel>/Rowsets/Rowset/0/Row}"
-							visible="true" selectionChange="onSelectionChange" class="customComboBox">
-							<items>
-								<core:Item key="{plantModel>line}" text="{plantModel>lineDescription}" />
-							</items>
-						</ComboBox>
-						<Label id="lblStation" text="{i18n>Station}" design="Bold" />
-						<ComboBox id="selectStation" items="{plantModel>/Rowsets/Rowset/0/Row}"
-							visible="true" selectionChange="onSelectionChange" class="customComboBox">
-							<items>
-								<core:Item key="{plantModel>station}" text="{plantModel>stationDescription}" />
-							</items>
-						</ComboBox>
-						<Label id="lblMSN" text="{i18n>MSN}" design="Bold" />
-						<ComboBox id="selectMSN" items="{plantModel>/Rowsets/Rowset/0/Row}"
-							visible="true" selectionChange="onSelectionChange" enabled="false">
-							<items>
-								<core:Item key="{plantModel>msn}" text="{plantModel>msn}" />
-							</items>
-						</ComboBox>
-						<CheckBox id="currMSN" visible="false" selected="false" text="{i18n>CurrentMSN}"
-							style="font-weight: bold;" select="selectCurrentMsn"/>
-					</f:content>
-				</f:SimpleForm>
-				<layoutData>
-					<l:SplitterLayoutData size="30%" resizable="true" />
-				</layoutData>
-			</VBox>
+            <VBox class="sapUiTinyMargin classOtherSetting">
+                <f:SimpleForm id="headTextForm" minWidth="1024"
+                    visible="true" maxContainerCols="2" editable="true" layout="ResponsiveGridLayout"
+                    labelSpanL="3" labelSpanM="3" emptySpanL="4" emptySpanM="4"
+                    columnsL="1" columnsM="1" class="editableForm" title="{i18n>OtherSettings}">
+                    <f:content>
+                        <Label id="lblLine" text="{i18n>Line}" design="Bold" />
+                        <ComboBox id="selectLine" items="{plantModel>/Rowsets/Rowset/0/Row}"
+                            visible="true" selectionChange="onSelectionChange" class="customComboBox">
+                            <items>
+                                <core:Item key="{plantModel>line}" text="{plantModel>lineDescription}" />
+                            </items>
+                        </ComboBox>
+                        <Label id="lblStation" text="{i18n>Station}" design="Bold" />
+                        <ComboBox id="selectStation" items="{plantModel>/Rowsets/Rowset/0/Row}"
+                            visible="true" selectionChange="onSelectionChange" class="customComboBox">
+                            <items>
+                                <core:Item key="{plantModel>station}" text="{plantModel>stationDescription}" />
+                            </items>
+                        </ComboBox>
+                        <Label id="lblMSN" text="{i18n>MSN}" design="Bold" />
+                        <ComboBox id="selectMSN" items="{plantModel>/Rowsets/Rowset/0/Row}"
+                            visible="true" selectionChange="onSelectionChange" enabled="false">
+                            <items>
+                                <core:Item key="{plantModel>msn}" text="{plantModel>msn}" />
+                            </items>
+                        </ComboBox>
+                        <CheckBox id="currMSN" selected="false" text="{i18n>CurrentMSN}"
+                            style="font-weight: bold;" select="selectCurrentMsn"/>
+                    </f:content>
+                </f:SimpleForm>
+                <layoutData>
+                    <l:SplitterLayoutData size="30%" resizable="true" />
+                </layoutData>
+            </VBox>
 
-		</l:Splitter>
+        </l:Splitter>
 
-	</Page>
+    </Page>
 
 
 </core:View>

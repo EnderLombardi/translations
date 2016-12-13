@@ -239,18 +239,19 @@ sap.ui.controller(
 
 					loadStationTrackerGantKPI : function() {
 						var oModule = airbus.mes.stationtracker.ModelManager;
-						airbus.mes.stationtracker.ShiftManager.updateShift = false;
+					
 						// ** asynchrone call **//
 						oModule.loadRessourcePool();
 						oModule.loadStationTracker("I");
 						oModule.loadStationTracker("U");
 						oModule.loadStationTracker("O");
+						airbus.mes.stationtracker.ShiftManager.updateShift = false;
 						oModule.loadStationTracker("R");
 						oModule.loadProductionGroup();
 						oModule.loadFilterUnplanned();
 						oModule.loadKPI();
 						oModule.getPhStation();
-
+					
 						// oModule.loadKPIextraWork();
 					},
 

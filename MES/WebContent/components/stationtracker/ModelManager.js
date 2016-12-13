@@ -200,7 +200,7 @@ airbus.mes.stationtracker.ModelManager = {
 						geturlstationtracker,
 						"$user",
 						airbus.mes.stationtracker.AssignmentManager.userSelected);
-		console.log(geturlstationtracker);
+		//console.log(geturlstationtracker);
 		var oViewModel;
 		switch (sType) {
 		case "R":
@@ -698,22 +698,20 @@ airbus.mes.stationtracker.ModelManager = {
 		oView.getModel("stationTrackerShift").refresh();
 
 		if (airbus.mes.stationtracker.ShiftManager.dayDisplay) {
-			 // update or not shift selection 
-			if ( airbus.mes.stationtracker.ShiftManager.updateShift ) {
 			
-			airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftName = airbus.mes.stationtracker.ShiftManager.current_shift.shiftName;
-			airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftID = airbus.mes.stationtracker.ShiftManager.current_shift.shiftID;
-			airbus.mes.stationtracker.ShiftManager.ShiftSelected.day = airbus.mes.stationtracker.ShiftManager.current_shift.day;
-			airbus.mes.stationtracker.ShiftManager.ShiftSelected.StartDate = airbus.mes.stationtracker.ShiftManager.current_shift.StartDate;
-
-			airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftID);
-			airbus.mes.stationtracker.oView.byId("selectShift").fireChange(0);
-			
-			} else {
+			if ( airbus.mes.stationtracker.ShiftManager.selectFirstShift ) {
 				
+				//when using Arrow in gantt we select the first shift of the day
 				airbus.mes.stationtracker.oView.byId("selectShift").fireChange(0);
-				airbus.mes.stationtracker.ShiftManager.updateShift = true;
+				airbus.mes.stationtracker.ShiftManager.selectFirstShift = false;
+
+			} else {
+				// Select the previous shift selected
+				airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftID);
+				airbus.mes.stationtracker.oView.byId("selectShift").fireChange(0);
+				
 			}
+
 		}
 
 		if (airbus.mes.stationtracker.ShiftManager.shiftDisplay) {
@@ -723,12 +721,8 @@ airbus.mes.stationtracker.ModelManager = {
 			airbus.mes.stationtracker.ShiftManager.ShiftSelected.day = airbus.mes.stationtracker.ShiftManager.current_shift.day;
 			airbus.mes.stationtracker.ShiftManager.ShiftSelected.StartDate = airbus.mes.stationtracker.ShiftManager.current_shift.StartDate;
 
-			airbus.mes.stationtracker.oView
-					.byId("selectShift")
-					.setSelectedKey(
-							airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftID);
-			scheduler
-					.updateView(airbus.mes.stationtracker.ShiftManager.ShiftSelected.StartDate);
+			airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(	airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftID);
+			scheduler.updateView(airbus.mes.stationtracker.ShiftManager.ShiftSelected.StartDate);
 
 		}
 
@@ -748,11 +742,9 @@ airbus.mes.stationtracker.ModelManager = {
 		var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
 
 		GroupingBoxingManager.parseOperation(GroupingBoxingManager.group,GroupingBoxingManager.box);
-
-		airbus.mes.stationtracker.ModelManager.selectMyShift();
-
-	},
 	
+	},
+		
 	onStationTrackerLoadInitial : function() {
 
 		var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
@@ -1043,7 +1035,8 @@ airbus.mes.stationtracker.ModelManager = {
 						"work_package" : aModel[0].WORK_PACKAGE,
 						"erp_system" : aModel[0].ERP_SYSTEM,
 						"previously_start" : aModel[0].PREVIOUSLY_STARTED,
-						"paused" : aModel[0].PAUSED 
+						"paused" : aModel[0].PAUSED, 
+						"noOfEmp" : aModel[0].NUMBER_OF_EMPLOYEES
 					} ]
 				} ]
 			}

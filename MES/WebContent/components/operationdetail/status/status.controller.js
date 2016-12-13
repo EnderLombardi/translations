@@ -571,7 +571,8 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
 		// Operation is complete
 		if ( sStatus === "0" ) {
 			
-			this.setProgressScreenBtn( true, false );
+//			No action available on complete status
+			this.setProgressScreenBtn( false, false );
 						
 		}
 		

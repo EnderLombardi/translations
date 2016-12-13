@@ -471,6 +471,11 @@ airbus.mes.disruptions.Formatter = {
 			return iNum;
 		
 		return num;
+	},
+	
+	setDisruptionStatus : function(status){
+		return airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty(status);
 	}
+
 
 };

@@ -44,11 +44,11 @@
 				key="{disruptiontrackerI18n>escalationLevel}" multiSelect="false">
 				<items>
 					<ViewSettingsItem 
-						text="{disruptiontrackerI18n>escalation.notEscalated}" key="1" />
+						text="{disruptiontrackerI18n>not_Escalated}" key="1" />
 					<ViewSettingsItem
-						text="{disruptiontrackerI18n>escalation.firstEscalation}" key="2" />
+						text="{disruptiontrackerI18n>first_Escalated}" key="2" />
 					<ViewSettingsItem
-						text="{disruptiontrackerI18n>escalation.finalEscalation}" key="3" />
+						text="{disruptiontrackerI18n>final_Escalated}" key="3" />
 						<ViewSettingsItem
 						text="{disruptiontrackerI18n>All}" key=" " />
 				</items>
@@ -56,9 +56,9 @@
 			<ViewSettingsFilterItem id="gravityFilter" text="{disruptiontrackerI18n>gravity}"
 				key="{disruptionsTrackerModel>Gravity}" multiSelect="false">
 				<items>
-					<ViewSettingsItem text="{disruptiontrackerI18n>gravity.notBlocked}" key="1" />
-					<ViewSettingsItem text="{disruptiontrackerI18n>gravity.disturbed}" key="2" />
-					<ViewSettingsItem text="{disruptiontrackerI18n>gravity.blocked}" key="3" />
+					<ViewSettingsItem text="{disruptiontrackerI18n>not_Blocked}" key="1" />
+					<ViewSettingsItem text="{disruptiontrackerI18n>disturbed}" key="2" />
+					<ViewSettingsItem text="{disruptiontrackerI18n>blocked}" key="3" />
 					<ViewSettingsItem text="{disruptiontrackerI18n>All}" key=" " />
 				</items>
 			</ViewSettingsFilterItem>

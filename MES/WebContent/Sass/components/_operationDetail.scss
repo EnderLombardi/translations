@@ -243,7 +243,8 @@
     .sapMPageBusyCoversAll{
         background: #f5f5f5 !important;
         &>section{
-            overflow-y: scroll!important;
+            //overflow-y: scroll!important;
+            overflow: auto !important;
         }
     }
 }
