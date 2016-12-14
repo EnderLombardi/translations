@@ -300,8 +300,7 @@ airbus.mes.disruptions.ModelManager = {
 	createDisruption : function(messageHandle, messageType, messageSubject,
 			messageBody, payloadData) {
 
-		jQuery
-				.ajax({
+		jQuery.ajax({
 					async : true,
 					cache : false,
 					url : this.getURLCreateDisruption(),
@@ -684,8 +683,7 @@ airbus.mes.disruptions.ModelManager = {
 		var sMessageError = i18nModel.getProperty("tryAgain");
 		var flagSuccess;
 
-		jQuery
-				.ajax({
+		jQuery.ajax({
 					url : this.getUrlToMarkSolvedDisruption(),
 					data : {
 						"Param.1" : airbus.mes.settings.ModelManager.site,

@@ -14,6 +14,7 @@ airbus.mes.settings.ModelManager = {
 	taktEnd : undefined,
 	taktDuration : undefined,
 
+	plantModelSaved : undefined,
 	currentMsnSelected : bBatch1 ? false : true,
 	currentMsnValue : "",
 	core : undefined,
@@ -32,8 +33,10 @@ airbus.mes.settings.ModelManager = {
 		core.setModel(new sap.ui.model.json.JSONModel(), "program");
 		core.setModel(new sap.ui.model.json.JSONModel(), "site");
 
-		core.getModel("userSettingModel").attachRequestCompleted(
-				airbus.mes.settings.ModelManager.onUserSettingLoad);
+		core.getModel("userSettingModel").attachRequestCompleted(airbus.mes.settings.ModelManager.onUserSettingLoad);
+		core.getModel("plantModel").attachRequestCompleted(airbus.mes.settings.ModelManager.onPLantModelLoad);
+
+		
 		// core.setModel(new sap.ui.model.json.JSONModel(), "langModel");
 		// core.setModel(new sap.ui.model.json.JSONModel(), "userSettingModel");
 
@@ -252,8 +255,7 @@ airbus.mes.settings.ModelManager = {
 		var oUserSettingModel = new sap.ui.model.json.JSONModel();
 		oUserSettingModel.loadData(urlUserSetting, null, false);
 
-		return oUserSettingModel
-				.getProperty("/Rowsets/Rowset/0/Row/0/language");
+		return oUserSettingModel.getProperty("/Rowsets/Rowset/0/Row/0/language");
 
 	},
 
@@ -305,6 +307,69 @@ airbus.mes.settings.ModelManager = {
 
 		}
 
+	},
+	
+	saveSettingIsCorrect : function() {
+		
+		 var oModelSetting = sap.ui.getCore().getModel("userSettingModel");
+		 var aModel = airbus.mes.settings.ModelManager.plantModelSaved;
+		 var aModelSetting = [];
+					 
+		 if (oModelSetting.getProperty("/Rowsets/Rowset/0/Row/0")) {              
+				
+			 aModelSetting = sap.ui.getCore().getModel("userSettingModel").oData.Rowsets.Rowset[0].Row[0];
+			 
+			 if ( aModelSetting.msn === "---" ) {
+		
+				 aModel = aModel.filter(function (el) {
+		               return el.program ===  aModelSetting.program &&
+		                      el.line === aModelSetting.line &&
+		                      el.station === aModelSetting.station &&
+		                      el.Current_MSN === "true"
+		             });
+				 
+				 
+			 } else {
+				 
+				 aModel = aModel.filter(function (el) {
+		               return el.program ===  aModelSetting.program &&
+		                      el.line === aModelSetting.line &&
+		                      el.station === aModelSetting.station &&
+		                      el.msn === aModelSetting.msn
+		             });				 
+			 }
+				
+	        } else  {
+	        console.log("no model userSaveSetting load");
+	     }
+		 
+		 if ( aModel.length === 0 ) {
+			 
+			 console.log("USEr Save setting dont match with plant = need to resave");
+			 return false;
+			 
+		 } else {
+			 
+			 console.log("user setting match with the plant = he can back");
+			 return true;
+		 } 
+		
+	},
+	
+	onPLantModelLoad : function () {
+		
+		 var oModel = sap.ui.getCore().getModel("plantModel");
+		
+		 if (oModel.getProperty("/Rowsets/Rowset/0/Row")) {              
+				
+			 airbus.mes.settings.ModelManager.plantModelSaved = sap.ui.getCore().getModel("plantModel").oData.Rowsets.Rowset[0].Row;
+				
+	        } else  {
+	        airbus.mes.settings.ModelManager.plantModelSaved = [];
+	        console.log("no plantModelLoad");
+	     }
+		
 	}
+	
 
 };

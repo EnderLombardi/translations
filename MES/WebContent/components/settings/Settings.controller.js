@@ -120,7 +120,7 @@ sap.ui.controller("airbus.mes.settings.Settings",
                               return el.program ===  airbus.mes.settings.ModelManager.program &&
                                         el.line === airbus.mes.settings.oView.byId("selectLine").getSelectedKey() &&
                                      el.station === airbus.mes.settings.oView.byId("selectStation").getSelectedKey() &&
-                                     el.Current_MSN != "---"
+                                     el.Current_MSN === "true"
                             });
                         if ( oModel.length > 0 ) {
 
@@ -395,12 +395,12 @@ sap.ui.controller("airbus.mes.settings.Settings",
                         this.getView().byId("selectStation").setSelectedKey(airbus.mes.settings.ModelManager.station);
 
                         if ( airbus.mes.settings.ModelManager.msn != "---" ){
-                            this.getView().getController().onSelectionChange("selectStation");
 
+                        	airbus.mes.settings.ModelManager.currentMsnSelected = false;
+                        	this.getView().getController().onSelectionChange("selectStation");
                             this.getView().byId("selectMSN").setSelectedKey(airbus.mes.settings.ModelManager.msn);
                             this.getView().byId("currMSN").setSelected(false);
-                            airbus.mes.settings.ModelManager.currentMsnSelected = false;
-
+                            
                         } else {
 
                             this.getView().getController().onSelectionChange("selectStation");
@@ -447,7 +447,7 @@ sap.ui.controller("airbus.mes.settings.Settings",
                     this.getView().getController().onSelectionChange("selectStation");
                 }
 
-                if ( airbus.mes.settings.oView.byId("selectStation").getValue() !== "" ) {
+                if ( airbus.mes.settings.oView.byId("selectStation").getValue() != "" ) {
 
                 this.getView().byId("selectMSN").setEnabled(!fSelected);
 
@@ -471,7 +471,7 @@ sap.ui.controller("airbus.mes.settings.Settings",
                 ///////////////////////////////////////////////////////////////////////////////////////////////////
                 //
                 airbus.mes.settings.oView.byId("navBack").setEnabled(true);
-                $( '#' + airbus.mes.shell.oView.byId("logo").sId).click(airbus.mes.shell.oView.getController().goToHome);
+                //$( '#' + airbus.mes.shell.oView.byId("logo").sId).click(airbus.mes.shell.oView.getController().goToHome);
                 //
                 ///////////////////////////////////////////////////////////////////////////////////////////////////
 

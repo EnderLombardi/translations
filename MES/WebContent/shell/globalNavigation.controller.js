@@ -102,7 +102,7 @@ sap.ui.controller(
 					 */
 					onAfterRendering : function() {
 						
-		                $( '#' + airbus.mes.shell.oView.byId("logo").sId).click(airbus.mes.shell.oView.getController().goToHome);
+		               // $( '#' + airbus.mes.shell.oView.byId("logo").sId).click(airbus.mes.shell.oView.getController().goToHome);
 
 						
 					},
@@ -180,7 +180,7 @@ sap.ui.controller(
 					},
 					
 					renderViews : function() {
-						
+															
 						switch (nav.getCurrentPage().getId()) {
 						case "homePageView":
 							airbus.mes.shell.oView.byId('refreshTime').setVisible(false);
