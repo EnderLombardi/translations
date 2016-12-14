@@ -544,7 +544,7 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
 		var aModel = airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0];
 		var sPreviousStarted = aModel.previously_start;
 		var sStatus = aModel.realStatus;
-		var sProgress = aModel.progress;
+		//var sProgress = aModel.progress;
 		var sPaused = aModel.paused;
 		
 		// Operation is started

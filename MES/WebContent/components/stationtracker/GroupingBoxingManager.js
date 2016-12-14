@@ -313,7 +313,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 					"ERP_SYSTEM" : el.ERP_SYSTEM,
 					"PAUSED" : el.PAUSED,
 					"NUMBER_OF_EMPLOYEES" : el.NUMBER_OF_EMPLOYEES,
-					"SFC_STEP_REF" : el.SFC_STEP_REF
+					//"SFC_STEP_REF" : el.SFC_STEP_REF
 					
 			};
 			
@@ -488,7 +488,18 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 								"progress" : fProgress.toString(),
 								"start_date" : new Date(Math.min.apply(null,aStartDateRescheduling)),
 								"end_date" : oFormatter.sizeMin(new Date(Math.max.apply(null,aEndDateRescheduling)),new Date(Math.min.apply(null,aStartDateRescheduling))),
-							};
+								//-------------------------------------------
+								"ProdGroup" : sProdGroup,	
+								"criticalPath": fCriticalPath,
+								"state" : sStatus,
+								//"isUnplanned" :  Math.max.apply(null,aUnplanned),
+								//"andon" : Math.max.apply(null,aAndons),
+								//"blocked" : Math.max.apply(null,aDisruptions),
+								//"status" : Math.max.apply(null,aStatus),
+								//"OSW" : Math.max.apply(null,aOSW),
+								//------------------------------------------------
+						
+						};
 						
 						aBox.push(oOperationInitial);
 						
