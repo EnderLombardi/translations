@@ -227,8 +227,14 @@ airbus.mes.operationdetail.ModelManager = {
 		}  else if (data.Rowsets.Rowset != undefined) {
 			// [0].Row[0].Message != undefined
 			if (data.Rowsets.Rowset[0].Row[0].Message_Type != undefined) {
-//				Message is not a message ID, getProperty returns directly Message
-				airbus.mes.operationdetail.ModelManager.messageShow(airbus.mes.operationdetail.oView.getModel("i18n").getProperty(data.Rowsets.Rowset[0].Row[0].Message));
+//				Check if message is in Message or Message_ID
+				if( data.Rowsets.Rowset[0].Row[0].Message_ID !== undefined ) {
+					sMessage = data.Rowsets.Rowset[0].Row[0].Message_ID;
+				} else {
+					sMessage = data.Rowsets.Rowset[0].Row[0].Message;
+				}
+				
+				airbus.mes.operationdetail.ModelManager.messageShow(airbus.mes.operationdetail.oView.getModel("i18n").getProperty(sMessage));
 				if (data.Rowsets.Rowset[0].Row[0].Message_Type == "S"){
 					flagSuccess = true;
 				} else {
