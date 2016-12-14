@@ -833,7 +833,12 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
 #stationTrackerView--stationtracker .ylabel {
   white-space: nowrap;
   color: #0D5D76;
-  vertical-align: middle; }
+  vertical-align: middle;
+  text-overflow: ellipsis;
+  display: inline-block;
+  overflow: hidden;
+  max-width: 80px;
+  height: 15px; }
 #stationTrackerView--stationtracker .ylabelUserImage {
   background-color: #d5f1f8;
   border-radius: 999px; }
@@ -841,10 +846,16 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
   position: absolute;
   right: 2px;
   color: #8db9ca;
-  top: 19px; }
+  top: 10px; }
   #stationTrackerView--stationtracker .yMoreLabel .fa-pencil {
     width: 30px;
     text-align: center; }
+#stationTrackerView--stationtracker .ylabelAvlLineSection {
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 75px;
+  margin-left: 10px; }
 #stationTrackerView--stationtracker .tracker-item-initial .fa-exclamation-triangle {
   color: #BBBCBC !important; }
 #stationTrackerView--stationtracker .shiftCss {

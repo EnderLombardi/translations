@@ -576,6 +576,11 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
         white-space: nowrap;
         color: #0D5D76;
         vertical-align: middle;
+        text-overflow: ellipsis;
+        display: inline-block;
+        overflow: hidden;
+        max-width: 80px;
+        height: 15px;
     }
     .ylabelEditIcon{
         @extend %stationViewYlabelIconAndImage;
@@ -592,11 +597,18 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
         position: absolute;
         right: 2px;
         color: #8db9ca;
-        top: 19px;
+        top: 10px;
         .fa-pencil{
             width: 30px;
             text-align: center;
         }
+    }
+    .ylabelAvlLineSection{
+        display: inline-block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 75px;
+        margin-left: 10px;
     }
     .tracker-item-initial{
         @extend %tracker-item-initial;
