@@ -188,6 +188,17 @@ airbus.mes.polypoly.ModelManager = {
 	// PBA ADD LOADING MODEL FOR POLYPOLY replace the getPolypolyModel place in polypolymanager
 	
 	getPolyPolyModel : function (sSite, sStation) {
+		var urlgetqalist = this.urlModel.getProperty("urlgetqalist");
+		urlgetqalist = urlgetqalist.replace("$site", sSite);
+		
+		//Handle User & Password
+		urlgetqalist = this.handleUserConnection(urlgetqalist); //FIXME
+		
+		sap.ui.getCore().getModel("listQA").loadData(urlgetqalist,null,true);
+		
+		airbus.mes.polypoly.ModelManager.getPolyStation(sSite, sStation);
+		
+		//
 		
 		var urlgetpolypoly = this.urlModel.getProperty("urlgetpolypoly");
 
@@ -198,17 +209,9 @@ airbus.mes.polypoly.ModelManager = {
 		urlgetpolypoly = this.handleUserConnection(urlgetpolypoly);
 		
 		// Rename this model
-		sap.ui.getCore().getModel("mii").loadData(urlgetpolypoly,null,false);
+		sap.ui.getCore().getModel("mii").loadData(urlgetpolypoly,null,true);
 		
-		var urlgetqalist = this.urlModel.getProperty("urlgetqalist");
-		urlgetqalist = urlgetqalist.replace("$site", sSite);
-		
-		//Handle User & Password
-		urlgetqalist = this.handleUserConnection(urlgetqalist); //FIXME
-		
-		sap.ui.getCore().getModel("listQA").loadData(urlgetqalist,null,false);
-		
-		airbus.mes.polypoly.ModelManager.getPolyStation(sSite, sStation);
+
 		
 	},
 	

@@ -741,9 +741,9 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 
 		if(bAssign){
 			aListRows = aListRows.filter(function(el){
-				return el.type == "UA_P" || el.type == "UA_A"
+				return el.type == "UA_P" || el.type == "UA_A" || el.type == "LABEL_RP"
 			});
-			oNumberRows = Math.min(oNumberRows, aListRows.length + 1);
+			oNumberRows = Math.min(oNumberRows, aListRows.length);
 		}else{
 			oNumberRows = Math.min(oNumberRows, aListRows.length);
 		}
