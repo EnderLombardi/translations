@@ -974,7 +974,7 @@ airbus.mes.stationtracker.ModelManager = {
 			sStatus = "NOT_STARTED";
 		else if (aModel[0].status === "4" || aModel[0].status === "5"
 				|| aModel[0].status === "6" || aModel[0].status === "7")	
-			sStatus = airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("StatusBlocked");
+			sStatus = "Blocked";
 
 		// progress calculation
 		var progress;

@@ -2,37 +2,32 @@
 jQuery.sap.declare("airbus.mes.operationdetail.Formatter");
 
 airbus.mes.operationdetail.Formatter = {
-	
-	status:{
-					'completed': 'COMPLETED', 
-					'paused': 'IN_QUEUE',
-					'active': 'IN_WORK',
-					'notStarted': 'NOT_STARTED',
-					'blocked':'Blocked'
-				},
+		status:{'completed': 'COMPLETED', 
+			'paused': 'IN_QUEUE',
+			'active': 'IN_WORK',
+			'notStarted': 'NOT_STARTED',
+			'blocked':'Blocked'},
 			
 	setSliderStatus : function(status, progress) {
 		switch (status) {
-		
-				case airbus.mes.operationdetail.Formatter.status.completed:
-					return airbus.mes.operationdetail.oView.getModel("i18n").getProperty("confirmed");
-		
-				case airbus.mes.operationdetail.Formatter.status.active:
-					return airbus.mes.operationdetail.oView.getModel("i18n").getProperty("in_progress");
-		
-				case airbus.mes.operationdetail.Formatter.status.paused:
-					return airbus.mes.operationdetail.oView.getModel("i18n").getProperty("paused") + String(progress).split(".")[0] + "%";
-					
-					if (progress == "0.0" || progress == "0" || progress == 0)
-						return airbus.mes.operationdetail.oView.getModel("i18n").getProperty("notStarted");
-					else
-						return airbus.mes.operationdetail.oView.getModel("i18n").getProperty("paused") + String(progress).split(".")[0] + "%";
-				
-				case airbus.mes.operationdetail.Formatter.status.blocked:
-					return airbus.mes.operationdetail.oView.getModel("i18n").getProperty("blocked");
-				
-				default:
-					return airbus.mes.operationdetail.oView.getModel("i18n").getProperty("notStarted");
+		case airbus.mes.operationdetail.Formatter.status.completed:
+			return airbus.mes.operationdetail.oView.getModel("i18n").getProperty("confirmed");
+
+		case airbus.mes.operationdetail.Formatter.status.active:
+			return airbus.mes.operationdetail.oView.getModel("i18n").getProperty("in_progress");
+
+		case airbus.mes.operationdetail.Formatter.status.paused:
+
+			return airbus.mes.operationdetail.oView.getModel("i18n").getProperty("paused") + String(progress).split(".")[0] + "%";
+			
+			if (progress == "0.0" || progress == "0" || progress == 0)
+				return airbus.mes.operationdetail.oView.getModel("i18n").getProperty("notStarted");
+			else
+				return airbus.mes.operationdetail.oView.getModel("i18n").getProperty("paused") + String(progress).split(".")[0] + "%";
+		case airbus.mes.operationdetail.Formatter.status.blocked:
+			return airbus.mes.operationdetail.oView.getModel("i18n").getProperty("blocked");
+		default:
+			return airbus.mes.operationdetail.oView.getModel("i18n").getProperty("notStarted");
 		}
 	},
 
@@ -55,8 +50,10 @@ airbus.mes.operationdetail.Formatter = {
 			return "0%";
 		} else if (String(progress) == "100") {
 			return progress + "%";
+
 		} else {
 			return progress + "%";
+
 		}
 	},
 
@@ -78,7 +75,9 @@ airbus.mes.operationdetail.Formatter = {
 		} else {
 			this.addStyleClass("dynProgressSlider");
 			return (100 - parseInt(progress,10)) + "%";
+
 		}
+
 	},
 
 	
@@ -88,17 +87,26 @@ airbus.mes.operationdetail.Formatter = {
 			var newEndTime = endTime.replace("T", " ");
 			return newStartTime + " - " + newEndTime;
 		} else {
+			
 			return "-";
+			
 		}
+
+			
 	},
 	
 	displayValueOrDash : function( sDate ) {
 		
 		if ( sDate != undefined && sDate != "" ) {
-			return sDate;	
-		} else {	
-			return "-";	
+			
+			return sDate;
+			
+		} else {
+			
+			return "-";
+			
 		}
+		
 	},
 		
 	checkOperationStartEndDate:function(startTime, endTime,endDate){
@@ -125,4 +133,5 @@ airbus.mes.operationdetail.Formatter = {
 		} else
 			return false;
 	}
+
 };
