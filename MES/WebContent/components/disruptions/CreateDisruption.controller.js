@@ -345,8 +345,7 @@ sap.ui
 									},
 									{
 										"attribute" : "STATUS",
-										"value" : oView.getModel("i18nModel")
-												.getProperty("Pending")
+										"value" : airbus.mes.disruptions.Formatter.status.pending
 									},
 									{
 										"attribute" : "ROOT_CAUSE",
