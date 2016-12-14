@@ -97,7 +97,7 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
 					.renderStationTracker();*/
 
 			// update operationDetailsModel
-			sap.ui.getCore().getModel("operationDetailModel").setProperty("/Rowsets/Rowset/0/Row/0/status", "IN_WORK")
+			sap.ui.getCore().getModel("operationDetailModel").setProperty("/Rowsets/Rowset/0/Row/0/status", "IN_WORK");
 			sap.ui.getCore().getModel("operationDetailModel").refresh();
 
 			// Refresh Station tracker Gantt Chart
@@ -105,6 +105,7 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
 					.renderStationTracker();*/
 
 		}
+		return flagSuccess;
 	},
 	pauseOperation : function() {
 		var oView = airbus.mes.operationdetail.status.oView;

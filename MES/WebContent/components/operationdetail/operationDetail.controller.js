@@ -125,14 +125,20 @@ sap.ui
                      */
                     switchMode : function(oEvent) {
                         var oSwitchButton = oEvent.getSource();
-                        oSwitchButton.setEnabled(false);
                         if (oSwitchButton.getState() == true) {
                             this.getView().byId("switchStatusLabel").setText(this.getView().getModel("i18n").getProperty("Execution"));
 
-//                            Define visibility for header sections
-                            $(".opDetailNavToolbar > ul > li ~ li").css("display", "inline-block");
 //                          when the operation goes on execution mode, it is too activate
-                            airbus.mes.operationdetail.status.oView.getController().activateOperation();
+                            var bResult = airbus.mes.operationdetail.status.oView.getController().activateOperation();
+                            if(bResult){
+//                              Define visibility for header sections
+                                $(".opDetailNavToolbar > ul > li ~ li").css("display", "inline-block");
+                            	oSwitchButton.setEnabled(false);
+                            }else {
+                                $(".opDetailNavToolbar > ul > li ~ li").css("display", "none");
+                            	oSwitchButton.setEnabled(true);
+                            	oSwitchButton.setState(false);
+                            }
 
                         } else {
                             this.getView().byId("switchStatusLabel").setText(this.getView().getModel("i18n").getProperty("ReadOnly"));
