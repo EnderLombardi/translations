@@ -574,6 +574,7 @@ airbus.mes.stationtracker.util.Formatter = {
 				return html;
 				}
 			},
+			
 			/*
 		     * Sort worklist according to business rule.
 		     * 
@@ -583,79 +584,149 @@ airbus.mes.stationtracker.util.Formatter = {
 		     * order. Within one group of operations belonging to the same WO,
 		     * operations shall be sorted by ascending operation number.
 		     * 
+		     * UPDATE : order operations in oWorkList by start-time
 		      * @param oWorkList
 		     */
 		     sortWorkList : function(oWorkList) {
-		           var oWL2 = [];
+		         /*  var oWL2 = [];
 		           var oWOList = [];
-		           var i;
+		           var i;*/
 
 		           // Sort by WO number (to group operations with same WO)
 		           // Also group by operation, because the sort order is kept for
 		           // operations
-		           oWorkList.sort(this.fieldComparator([ 'shopOrder',
-		                         'operationID' ]));
+		           oWorkList.sort(this.fieldComparator([ 'START_TIME' ]));
 
-		           // Constitute a table of WO groups with operations associated
-		           // The group object has template bellow.
-		           var currentWO = {
-				           shopOrder : undefined,
-		                  dynamicStartDate : undefined,
-		                  scheduledStartDate : undefined,
-		                  operationsID : [],
-		           };
-
-		           for (i = 0; i < oWorkList.length; i++) {
-		                  if (currentWO.shopOrder !== oWorkList[i].shopOrder) {
-
-		                         if (currentWO.operationsID.length > 0) {
-		                                oWOList.push(currentWO);
-		                         }
-
-		                         currentWO = {
-				                         shopkOrder : oWorkList[i].shopOrder,
-		                                startDate : oWorkList[i].startDate,
-//		                                scheduledStartDate : oWorkList[i].start,
-		                                operationsID : [ oWorkList[i] ],
-		                         };
-
-		                  } else {
-
-		                         if (oWorkList[i].startDate < currentWO.startDate) {
-		                                currentWO.startDate = oWorkList[i].startDate;
-		                         }
-
-//		                         if (oWorkList[i].start < currentWO.scheduledStartDate) {
-//		                                currentWO.scheduledStartDate = oWorkList[i].start;
+//		           // Constitute a table of WO groups with operations associated
+//		           // The group object has template bellow.
+//		           var currentWO = {
+//				          
+//		        		  shopOrder : undefined,
+//		                  dynamicStartDate : undefined,
+//		                  scheduledStartDate : undefined,
+//		                  operationsID : [],
+//		           };
+//
+//		           for (i = 0; i < oWorkList.length; i++) {
+//		                  if (currentWO.shopOrder !== oWorkList[i].shopOrder) {
+//
+//		                         if (currentWO.operationsID.length > 0) {
+//		                                oWOList.push(currentWO);
 //		                         }
-
-		                         currentWO.operationsID.push(oWorkList[i]);
-
-		                  }
-		           }
-
-		           oWOList.push(currentWO);
-
-		           // Sort each groups (Work Orders)
-		           // The operations inside each groups should still be in the same order
-		           // (ascending order preserved)
-		           oWOList.sort(this.fieldComparator([ 'startDate', 'workOrder' ]));
-
-		           // Flatten worklist (take operations of each groups)
-		           oWL2 = oWOList.reduce(function(prev, curr) {
-		                  return prev.concat(curr.operationsID);
-		           }, []);
+//
+//		                         currentWO = {
+//				                         shopkOrder : oWorkList[i].shopOrder,
+//		                                startDate : oWorkList[i].startDate,
+////		                                scheduledStartDate : oWorkList[i].start,
+//		                                operationsID : [ oWorkList[i] ],
+//		                         };
+//
+//		                  } else {
+//
+//		                         if (oWorkList[i].startDate < currentWO.startDate) {
+//		                                currentWO.startDate = oWorkList[i].startDate;
+//		                         }
+//
+////		                         if (oWorkList[i].start < currentWO.scheduledStartDate) {
+////		                                currentWO.scheduledStartDate = oWorkList[i].start;
+////		                         }
+//
+//		                         currentWO.operationsID.push(oWorkList[i]);
+//
+//		                  }
+//		           }
+//
+//		           oWOList.push(currentWO);
+//
+//		           // Sort each groups (Work Orders)
+//		           // The operations inside each groups should still be in the same order
+//		           // (ascending order preserved)
+//		           oWOList.sort(this.fieldComparator([ 'startDate', 'workOrder' ]));
+//
+//		           // Flatten worklist (take operations of each groups)
+//		           oWL2 = oWOList.reduce(function(prev, curr) {
+//		                  return prev.concat(curr.operationsID);
+//		           }, []);
 
 		           // Keep the index, for stable sorting on WorkList screen (as sorter is
 		           // also used for grouping)
-		           oWL2.forEach(function(el, i) {
+		           /*oWorkList.forEach(function(el, i) {
 		                  el.index = i;
-		           });
+		           });*/
 
-		           return oWL2;
+		           return oWorkList;
 		     },
+		     
 
 		//////////////////////////////////////
+		
+		/*
+		     * Sort worklist according to business rule.
+		     * Rules in details :
+		     	The groups should be sorted by rescheduled start date/time of the earliest operation within the group. 
+				The operations within one group should also be sorted by rescheduled starting date/time. 
+		     * @param pathSorter : attribute to sort the worklist (workorder_id for example)
+		     * @param aModel (optional) : data source of worklist. 
+		 */  
+		    sortWorklistAndBind : function(pathSorter, aModel) {
+	    	
+	    	// sort worklist according start_time
+	    	airbus.mes.stationtracker.worklistPopover.aModel = airbus.mes.stationtracker.util.Formatter.sortWorkList(aModel);
+	    	
+	    	
+	    	// get workorder_id without duplicate, to make easier the comparator during ordering
+			airbus.mes.stationtracker.worklistPopover.groupedWorkList =
+				aModel.reduce(function(acc, obj) {
+					var d1 = obj.START_TIME; 
+					var d2 = acc[obj[pathSorter].toUpperCase()];
+					if (d2 === undefined) {
+						acc[obj[pathSorter].toUpperCase()] = d1;
+					} else if (d1 < d2) {
+						acc[obj[pathSorter].toUpperCase()] = d1;
+					}
+					return acc ; //array(key : value of pathSorter ; value : the earlier start-time
+				}, {});
+			
+			sap.ui.getCore().byId("worklistPopover--myList").bindAggregation('items', {
+				path : "WorkListModel>/",
+				template : sap.ui.getCore().byId("worklistPopover--sorterList"),
+				sorter :  [
+			
+				           new sap.ui.model.Sorter({
+								path : pathSorter,
+								group :  function(oContext) {
+										 var v = oContext.getProperty(pathSorter);
+						            	
+										 return { key: v, text: v };
+						        },
+								descending : false,
+								comparator : function(a, b) {
+									var earlierDateA = airbus.mes.stationtracker.worklistPopover.groupedWorkList[a];
+									var earlierDateB = airbus.mes.stationtracker.worklistPopover.groupedWorkList[b];
+									
+									
+									if (earlierDateA < earlierDateB) { 	
+										return -1;
+									} 
+									
+									if (earlierDateA > earlierDateB ) { 
+										return 1;
+									} 
+									
+									if ( earlierDateA === earlierDateB ) { //as worklist is already sorted, when 2 operations belong the same group, order is ok
+										return 0; 
+									}
+
+								}
+							}) 
+					       	
+						
+				         ]
+							
+			});	
+
+
+	    },
 
 		/**
 		     * Returns a comparator function on the provided fields, in the provided

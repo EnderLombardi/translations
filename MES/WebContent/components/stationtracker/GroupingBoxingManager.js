@@ -210,6 +210,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 				}
 			// This is the name of the box where will be put all operation
 			var ssBox = el[sBoxing] + "_"  + el[sIdOpe] + "_" + oShift.shiftID;
+
 						
 			if ( !oHierachy[ssGroup] ) {
 				oHierachy[ssGroup] = {};
@@ -314,7 +315,8 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 					"PAUSED" : el.PAUSED,
 					"NUMBER_OF_EMPLOYEES" : el.NUMBER_OF_EMPLOYEES,
 					//"SFC_STEP_REF" : el.SFC_STEP_REF
-					
+					"FAMILY_AVL_GROUPING" : el.FAMILY_AVL_GROUPING
+										
 			};
 			
 			
@@ -506,6 +508,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 					} 
 					
 					if  ( key1.slice(0,2) != "I_" ) {
+
 					
 						var oOperationRescheduling = {
 								

@@ -18,7 +18,9 @@
 			
 			<VBox>
 				<HBox>
-					<Select class="sapUiTinyMarginBeginEnd comboBoxStyle"
+					<Select 
+							class="sapUiTinyMarginBeginEnd comboBoxStyle"
+							id = "selectGroupingWorklist"
 						    items="{groupModel>/Rowsets/Rowset/0/Row/GroupingWorklist}"
 						    change="changeGroupWorkList"
 						    visible="true">

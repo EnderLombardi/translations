@@ -677,22 +677,12 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
      * @param {oEvent} Object wich represent the event on press from "TeamButton"
      * button
      ****************************************************************************/
-    changeGroupWorkList : function(oEvent) {
-        // TOSEE if we can get ID by better way
-        sap.ui.getCore().byId("worklistPopover--myList").bindAggregation('items', {
-            path : "WorkListModel>/",
-            template : sap.ui.getCore().byId("worklistPopover--sorterList"),
-            sorter : [ new sap.ui.model.Sorter({
-                // Change this value dynamic
-                path : oEvent.getSource().getSelectedKey(), //oEvt.getSource().getSelectedKey();
-                descending : false,
-                group : true,
-            }), new sap.ui.model.Sorter({
-                path : 'index',
-                descending : false
-            }) ]
-        });
-    },
+	changeGroupWorkList : function(oEvent) {
+
+		var aModel = airbus.mes.stationtracker.worklistPopover.aModel;
+		airbus.mes.stationtracker.util.Formatter.sortWorklistAndBind(oEvent.getSource().getSelectedKey(),aModel);
+	
+	},
 
     /***************************************************************************
      * Re apply the sorter on the model of the osw and unplanned to group operation

@@ -883,29 +883,16 @@ airbus.mes.stationtracker.ModelManager = {
 
 		airbus.mes.stationtracker.worklistPopover.OSW = false;
 		airbus.mes.stationtracker.worklistPopover.unPlanned = false;
-		// Keep the array list of operation to ease the click action on the
-		// operation
-		airbus.mes.stationtracker.worklistPopover.aModel = aModel;
 
-		sap.ui.getCore().byId("worklistPopover--myList").bindAggregation(
-				'items',
-				{
-					path : "WorkListModel>/",
-					template : sap.ui.getCore().byId("worklistPopover--sorterList"),
-					sorter : [ new sap.ui.model.Sorter({
-						// Change this value dynamic
-						path : 'WORKORDER_ID',
-						descending : false,
-						group : true,
-					}), new sap.ui.model.Sorter({
-						path : 'index',
-						descending : false
-					}) ]
-				});
-
-		if (aModel && aModel.length > 0 && aModel) {
+		aModel = airbus.mes.stationtracker.util.Formatter.sortWorkList(aModel);
+		airbus.mes.stationtracker.util.Formatter.sortWorklistAndBind("WORKORDER_ID", aModel);
+		sap.ui.getCore().byId("worklistPopover--selectGroupingWorklist").setSelectedKey(0);
+		
+		/*if (aModel && aModel.length > 0 && aModel) {
+			
 			aModel = airbus.mes.stationtracker.util.Formatter.sortWorkList(aModel);
-		}
+		
+		}*/
 
 		// Manage model on worklist
 		// Overall progress model
@@ -927,21 +914,15 @@ airbus.mes.stationtracker.ModelManager = {
 		elOverallModel.PROGRESS = Math.floor(fAllProgress / fNumberEl);
 		aOverallModel.push(elOverallModel);
 
-		airbus.mes.stationtracker.worklistPopover.setModel(
-				new sap.ui.model.json.JSONModel(aOverallModel),
-				"WorkListOverallModel");
-		airbus.mes.stationtracker.worklistPopover.getModel(
-				"WorkListOverallModel").refresh(true);
+		airbus.mes.stationtracker.worklistPopover.setModel(	new sap.ui.model.json.JSONModel(aOverallModel),	"WorkListOverallModel");
+		airbus.mes.stationtracker.worklistPopover.getModel("WorkListOverallModel").refresh(true);
 
 		// Operation model
-		airbus.mes.stationtracker.worklistPopover.setModel(
-				new sap.ui.model.json.JSONModel(aModel), "WorkListModel");
-		airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel")
-				.refresh(true);
+		airbus.mes.stationtracker.worklistPopover.setModel(	new sap.ui.model.json.JSONModel(aModel), "WorkListModel");
+		airbus.mes.stationtracker.worklistPopover.getModel("WorkListModel").refresh(true);
 
 		// Overall Progress is only display on worklist
-		sap.ui.getCore().byId("worklistPopover--overallProgress").setVisible(
-				true);
+		sap.ui.getCore().byId("worklistPopover--overallProgress").setVisible(true);
 
 		// delay because addDependent will do a async rerendering and the
 		// popover will immediately close without it
