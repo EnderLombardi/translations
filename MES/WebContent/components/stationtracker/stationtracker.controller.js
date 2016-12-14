@@ -323,7 +323,10 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
         //Changed the data of the worklist by unplannned model
         airbus.mes.stationtracker.ImportOswUnplannedPopover.setModel(new sap.ui.model.json.JSONModel(oModel.oData.Rowsets.Rowset[0].Row),"WorkListModel");
         airbus.mes.stationtracker.ImportOswUnplannedPopover.getModel("WorkListModel").refresh(true);
-
+        
+        //reset name pop up
+        sap.ui.getCore().byId("ImportOswUnplannedPopover--filterStatus").setSelectedKey("StatusAll");
+        
         // delay because addDependent will do a async rerendering and the popover will immediately close without it
         jQuery.sap.delayedCall(0, this, function () {
             airbus.mes.stationtracker.ImportOswUnplannedPopover.open();
@@ -385,6 +388,10 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
         binding.filter(Filter);
 
         airbus.mes.stationtracker.ModelManager.onPhStationLoad();
+        
+        //reset name pop up
+        sap.ui.getCore().byId("ImportOswUnplannedPopover--filterStatus").setSelectedKey("StatusAll");
+        
         // delay because addDependent will do a async rerendering and the popover will immediately close without it
         jQuery.sap.delayedCall(0, this, function () {
             airbus.mes.stationtracker.ImportOswUnplannedPopover.open();
@@ -818,6 +825,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
                   }, 0);
            };
      },
+     
      /**
       * Filter the worklistPopover on the status
       *
@@ -825,13 +833,11 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
       */
      onChangeFilter : function(oEvent){
          var aMyFilter = [];
-         var sStatus;
 
         // Check the current value of the filter status
         if (oEvent.getSource().getSelectedKey() === "StatusAll") {
             // if status ALL, we have to remove all filter
             sap.ui.getCore().byId("worklistPopover--myList").getBinding("items").filter();
-    //TODO update status
         } else {
             // we apply the a filter
             switch (oEvent.getSource().getSelectedKey()) {
@@ -855,12 +861,10 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
             	break;
             default:
             }
-//            var oFilterStatus = new sap.ui.model.Filter("status","EQ",sStatus);
-//             aMyFilter.push(oFilterStatus);
              sap.ui.getCore().byId("worklistPopover--myList").getBinding("items").filter(new sap.ui.model.Filter(aMyFilter, false));
          }
-
      },
+     
      /**
       * Filter the ImportOswUnplannedPopover on the status
       *
@@ -873,9 +877,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
         // Check the current value of the filter status
         if (oEvent.getSource().getSelectedKey() === "StatusAll") {
             // if status ALL, we have to remove all filter
-            sap.ui.getCore().byId("ImportOswUnplannedPopover--myList")
-                    .getBinding("items").filter();
-
+            sap.ui.getCore().byId("ImportOswUnplannedPopover--myList").getBinding("items").filter();
         } else {
             // we apply the a filter
             switch (oEvent.getSource().getSelectedKey()) {
@@ -896,10 +898,6 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
          }
 
      },
-
-
-
-
 
      ClosePolyPoly : function(oEvent) {
 

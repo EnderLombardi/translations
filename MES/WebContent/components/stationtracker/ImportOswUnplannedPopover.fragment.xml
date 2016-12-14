@@ -27,7 +27,8 @@
 						<core:ListItem key="{groupModel>key}" text="{ path : 'groupModel>Value' , formatter : '.getI18nValue' }" />				
 					</Select>
 					
-					<Select class="sapUiTinyMarginBeginEnd comboBoxStyle"
+					<Select id="filterStatus"
+							class="sapUiTinyMarginBeginEnd comboBoxStyle"
 						    items="{groupModel>/Rowsets/Rowset/0/Row/Status}"
 						    change="onChangeFilterOSWUnplanned"
 					        visible="true">						
@@ -52,6 +53,7 @@
 											rmastatus="{WorkListModel>RMA_STATUS_COLOR}"
 											osw="{WorkListModel>EXECUTION_STATION_SOURCE}"
 											status="{WorkListModel>STATE}"
+											prevstarted = "{WorkListModel>PREVIOUSLY_STARTED}"
 											skill="{WorkListModel>SKILLS}"
 											displayValue="{ parts: [ 'WorkListModel>WORKORDER_ID','WorkListModel>WORKORDER_DESCRIPTION' ], formatter: 'airbus.mes.stationtracker.util.Formatter.titleWorklist'}"
 											displayValue2="{ parts: [ 'WorkListModel>OPERATION_ID','WorkListModel>OPERATION_DESCRIPTION','WorkListModel>PROGRESS','WorkListModel>DURATION' ], formatter: 'airbus.mes.stationtracker.util.Formatter.displayValueIM'}"
