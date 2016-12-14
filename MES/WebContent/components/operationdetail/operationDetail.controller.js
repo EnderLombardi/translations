@@ -261,7 +261,7 @@ sap.ui
                             break;
 
                             case "touchngo":
-
+                            	var selectedSegmentedButton = sap.ui.getCore().byId("operationDetailsView--opDetailSegmentButtons").getSelectedButton();
                                 var sWorkOrder = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].wo_no;
                                 var operationId = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_no;
                                 var erpSystem = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].erp_system.toLowerCase();
@@ -285,7 +285,11 @@ sap.ui
 
                                 var oLink = "touchngo" + erpSystem + "://openpage/operation?workorder=" + sWorkOrder + "&operation=" + splitOpeId[3];
                                 window.open(oLink, "_blank");
-                                break;
+                                settimeout(function(){
+                                	sap.ui.getCore().byId("operationDetailsView--opDetailSegmentButtons").setSelectedButton(selectedSegmentedButton);
+                                }, 2000);
+
+                                break;                                
 
                             default:
                             break;
