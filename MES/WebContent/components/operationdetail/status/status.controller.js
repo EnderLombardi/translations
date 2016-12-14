@@ -183,7 +183,7 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
 	completeOperation : function(oEvent) {
 
 		var oView = airbus.mes.operationdetail.status.oView;
-
+		
 		// Click on Complete
 		oView.getController().operationStatus = "X";
 		oView.getController().Mode = "Complete";
@@ -356,6 +356,7 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
 
 	onOKConfirmation : function(oEvent) {
 
+		var sMessageSuccess = "";
 		var oView = airbus.mes.operationdetail.status.oView;
 
 		var uID = sap.ui.getCore().byId("UIDForConfirmation").getValue();
@@ -369,7 +370,11 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
 		var pin = sap.ui.getCore().byId("pinForConfirmation").getValue();
 		var user = sap.ui.getCore().byId("userNameForConfirmation").getValue();
 		var pass = sap.ui.getCore().byId("passwordForConfirmation").getValue();
-		var sMessageSuccess = oView.getModel("i18n").getProperty("SuccessfulConfirmation");
+		if(oView._reasonCodeDialog) {
+			sMessageSuccess = oView.getModel("i18n").getProperty("Partial_Confirmation_Done");
+		} else {
+			sMessageSuccess = oView.getModel("i18n").getProperty("SuccessfulConfirmation");
+		}	
 		var sWo = airbus.mes.operationdetail.status.oView.getModel("operationDetailModel").getProperty(
 				"/Rowsets/Rowset/0/Row/0/wo_no");
 		var sMessageError = oView.getModel("i18n").getProperty("ErrorDuringConfirmation");
@@ -397,9 +402,10 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
 					.getController().Mode, ID, pin, sMessageError, sMessageSuccess, sWo);
 
 			// Close reason code dialog
-			if (oView._reasonCodeDialog)
+			if (oView._reasonCodeDialog) {
 				oView._reasonCodeDialog.close();
-
+			}
+				
 			// Close confirmation dialogue
 			oView._oUserConfirmationDialog.close();
 

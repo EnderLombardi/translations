@@ -210,6 +210,7 @@ airbus.mes.operationdetail.ModelManager = {
 	},
 	ajaxMsgHandler : function(data, Message) {
 		var flagSuccess;
+		var sMessage = "";
 
 		if (data.Rowsets.FatalError != undefined) {
 			
@@ -226,11 +227,11 @@ airbus.mes.operationdetail.ModelManager = {
 		}  else if (data.Rowsets.Rowset != undefined) {
 			// [0].Row[0].Message != undefined
 			if (data.Rowsets.Rowset[0].Row[0].Message_Type != undefined) {
+//				Message is not a message ID, getProperty returns directly Message
+				airbus.mes.operationdetail.ModelManager.messageShow(airbus.mes.operationdetail.oView.getModel("i18n").getProperty(data.Rowsets.Rowset[0].Row[0].Message));
 				if (data.Rowsets.Rowset[0].Row[0].Message_Type == "S"){
-					airbus.mes.operationdetail.ModelManager.messageShow(data.Rowsets.Rowset[0].Row[0].Message);	
 					flagSuccess = true;
 				} else {
-					airbus.mes.operationdetail.ModelManager.messageShow(data.Rowsets.Rowset[0].Row[0].Message);	
 					flagSuccess = false;
 				}
 
