@@ -835,20 +835,29 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
         } else {
             // we apply the a filter
             switch (oEvent.getSource().getSelectedKey()) {
+            case "StatusBlocked":
+            	aMyFilter.push(new sap.ui.model.Filter("status","EQ","5"));
+            	aMyFilter.push(new sap.ui.model.Filter("status","EQ","6"));
+            	aMyFilter.push(new sap.ui.model.Filter("status","EQ","7"));
+            	aMyFilter.push(new sap.ui.model.Filter("status","EQ","4"));
+            	break;
+            case "StatusPaused":
+            	aMyFilter.push(new sap.ui.model.Filter("status","EQ","3"));
+            	break;
             case "StatusStarted":
-                sStatus = "2";
-                break;
+            	aMyFilter.push(new sap.ui.model.Filter("status","EQ","2"));      
+            	break;
             case "StatusNotStarted":
-                sStatus = "1";
+            	aMyFilter.push(new sap.ui.model.Filter("status","EQ","1"));
                 break;
             case "StatusConfirmed":
-                sStatus = "0";
-                break;
+            	aMyFilter.push(new sap.ui.model.Filter("status","EQ","0"));
+            	break;
             default:
             }
-            var oFilterStatus = new sap.ui.model.Filter("status","EQ",sStatus);
-             aMyFilter.push(oFilterStatus);
-             sap.ui.getCore().byId("worklistPopover--myList").getBinding("items").filter(new sap.ui.model.Filter(aMyFilter, true));
+//            var oFilterStatus = new sap.ui.model.Filter("status","EQ",sStatus);
+//             aMyFilter.push(oFilterStatus);
+             sap.ui.getCore().byId("worklistPopover--myList").getBinding("items").filter(new sap.ui.model.Filter(aMyFilter, false));
          }
 
      },

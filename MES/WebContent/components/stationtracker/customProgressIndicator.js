@@ -97,6 +97,11 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 				type : 'string',
 				group : 'Appearance',
 				defaultValue : ''
+			},
+			prevstarted: {
+				type : 'string',
+				group : 'Appearance',
+				defaultValue : ''
 			}
 		}
 	},
@@ -124,8 +129,9 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 		var DispValue2 = c.getDisplayValue2();
 		var ShowValue = c.getShowValue();
 		var paused = c.getPaused();
-		var progress = c.getProgress();
+//		var progress = c.getProgress();
 		var rmastatus = c.getRmastatus();
+		var prevstarted = c.getPrevstarted();
 //		var skill = c.getSkill();
 		var osw = c.getOsw();
 //		var S = c.getState();	not used
@@ -175,7 +181,8 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 					// Operation is not started
 							//sStatus = "1";
 							// Operation is pause	
-							if ( paused === "---" && progress != "0" ) {
+							//if ( paused === "---" && progress != "0" ) {
+							if ( paused === "---" && prevstarted === "true" ) {
 								//sStatus = "3";
 								sRightIcon = '<i class="fa fa-pause rightIcon"></i>';
 							}	
