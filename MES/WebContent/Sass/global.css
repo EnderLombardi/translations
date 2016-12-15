@@ -831,6 +831,13 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
   overflow: visible; }
 #stationTrackerView--stationtracker .dhx_matrix_line {
   overflow: visible; }
+#stationTrackerView--stationtracker .avlLine {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: absolute;
+  max-width: 50px;
+  margin-left: 40px;
+  white-space: nowrap; }
 #stationTrackerView--stationtracker .ylabel {
   white-space: nowrap;
   color: #0D5D76;

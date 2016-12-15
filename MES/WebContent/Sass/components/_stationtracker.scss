@@ -573,14 +573,22 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
     .dhx_matrix_line {
         overflow:visible;
     }
+    .avlLine{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        position: absolute;
+        max-width: 50px;
+        margin-left: 40px;
+        white-space: nowrap; 
+    }
     .ylabel{
         white-space: nowrap;
         color: #0D5D76;
         vertical-align: middle;
         text-overflow: ellipsis;
         display: inline-block;
-        overflow: hidden;
-        max-width: 80px;
+        overflow: hidden ;
+        max-width: 80px; 
         height: 15px;
     }
     .ylabelEditIcon{

@@ -503,6 +503,9 @@ airbus.mes.stationtracker.util.Formatter = {
 						//XX TODO POSTION OF THIS.
 						html = sNotConfirmedOpLS + '<div>';
 						//Correction by NJA		
+
+						html += '<br><span class="avlLine">' +  oSection.avlLine.split("_")[1] + " - "  + oSection.avlLine.split("_")[0] + '</span></br>';
+						
 						if(airbus.mes.settings.AppConfManager.getConfiguration("MES_PHOTO_DISPLAY")){ // Check if user image to be displayed  or not
 
 
@@ -531,9 +534,6 @@ airbus.mes.stationtracker.util.Formatter = {
 						// TOBE not finished 213 215
 						html += airbus.mes.stationtracker.util.Formatter.createDelaySpan( fProgress,fDuration,sSpanWarn );
 					
-						html += '<br><span>' +  oSection.avlLine.split("_")[1] + " - "  + oSection.avlLine.split("_")[0] + '</span></br>';
-						
-							
 						return html + '</div>';
 
 					}
