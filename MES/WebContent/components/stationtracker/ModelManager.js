@@ -172,8 +172,7 @@ airbus.mes.stationtracker.ModelManager = {
 			// oModel.oData.Rowsets.Rowset[0].Row = [];
 			console.log("no affectationModel load");
 		}
-		airbus.mes.stationtracker.AssignmentManager
-				.computeAffectationHierarchy();
+		airbus.mes.stationtracker.AssignmentManager.computeAffectationHierarchy();
 
 	},
 

@@ -528,11 +528,11 @@ airbus.mes.stationtracker.util.Formatter = {
 									+ oCurrentAffectedUser.firstName + " " + oCurrentAffectedUser.lastName + '</span>';
 							}
 
-						/* TOBE not finished 213 215
+						// TOBE not finished 213 215
 						html += airbus.mes.stationtracker.util.Formatter.createDelaySpan( fProgress,fDuration,sSpanWarn );
 					
 						html += '<br><span>' +  oSection.avlLine.split("_")[1] + " - "  + oSection.avlLine.split("_")[0] + '</span></br>';
-						*/
+						
 							
 						return html + '</div>';
 
@@ -543,14 +543,14 @@ airbus.mes.stationtracker.util.Formatter = {
 					html = '<div><i class="fa fa-pencil ylabelEditIcon"></i><span class="ylabel">'
 						+ airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("SelectOperator") + '</span></div>';
 
-					/* TOBE not finished 213 215
+					// TOBE not finished 213 215
 					var oHierarchyDelay =airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchyDelay;					
 					var fProgress = oHierarchyDelay[oSection.group][oSection.avlLine].progress;
 					var fDuration =	oHierarchyDelay[oSection.group][oSection.avlLine].duration;
 					var sSpanWarn = "";
 					
 					html += airbus.mes.stationtracker.util.Formatter.createDelaySpan( fProgress,fDuration,sSpanWarn );
-					*/
+					
 					
 					return html;
 			
@@ -562,14 +562,14 @@ airbus.mes.stationtracker.util.Formatter = {
 				html = '<div><i class="fa  fa-pencil ylabelEditIcon"></i><span class="ylabel">'
 					+ airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("SelectOperator") + '</span></div>';
 
-				/* TOBE not finished 213 215
+				//TOBE not finished 213 215
 				var oHierarchyDelay =airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchyDelay;
 				var fProgress = oHierarchyDelay[oSection.group][oSection.avlLine].progress;
 				var fDuration =	oHierarchyDelay[oSection.group][oSection.avlLine].duration;
 				var sSpanWarn = "";
 				
 				html += airbus.mes.stationtracker.util.Formatter.createDelaySpan( fProgress,fDuration,sSpanWarn );
-				*/
+				
 				
 				return html;
 				}
