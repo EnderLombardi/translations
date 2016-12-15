@@ -17,10 +17,6 @@ sap.ui.core.UIComponent.extend("airbus.mes.polypoly.Component", {
 
 airbus.mes.polypoly.Component.prototype.createContent = function() {
 
-//    var oModel = new sap.ui.model.json.JSONModel();
-//    this.setModel(oModel, "buttonUrl");
-//    oModel.loadData("../components/homepage/data/url.json", null, false);
-
     if (airbus.mes.polypoly.oView === undefined) {
         //    View on XML
         airbus.mes.polypoly.ModelManager.init(this);
@@ -39,27 +35,9 @@ airbus.mes.polypoly.Component.prototype.createContent = function() {
 //            bundleLocale : "en" automatic defined by parameter sap-language
          });
 
-        //Bind model
-//        var oData = sap.ui.getCore().getModel("mii").getData().Rowsets;
-//        if (oData.Rowset && oData.Rowset.length > 0 && oData.Rowset[0].Row) {
-//            var oMiiData = sap.ui.getCore().getModel("mii").getData();
-//            var oTableData = airbus.mes.polypoly.PolypolyManager.createTableData(oMiiData);
-//            var mTableModel = new sap.ui.model.json.JSONModel(oTableData);
-//            sap.ui.getCore().setModel(mTableModel, "mTableModel");
-//            airbus.mes.polypoly.PolypolyManager.internalContext.oModel = mTableModel;
-//        }
-//        else {
-//            var mTableModel = new sap.ui.model.json.JSONModel();
-//
-//            }
+        this.oView.setBusyIndicatorDelay(0);
 
-//        sap.ui.getCore().byId("polypoly").setModel(sap.ui.getCore().getModel("mTableModel"));
-//        var i18nModel = new sap.ui.model.resource.ResourceModel({
-//            bundleUrl : "../components/homepage/i18n/i18n.properties",
-////            bundleLocale : "en" automatic defined by parameter sap-language
-//         });
 
-//        this.oView.setModel(i18nModel, "i18n");
         this.oView.setModel(sap.ui.getCore().getModel("rpModel"), "rpModel");
         this.oView.setModel(sap.ui.getCore().getModel("columnModel"), "columnModel");
         this.oView.setModel(sap.ui.getCore().getModel("listQA"), "listQA");

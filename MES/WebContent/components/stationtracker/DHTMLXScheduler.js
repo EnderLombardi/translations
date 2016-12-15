@@ -245,8 +245,16 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",    {
                                         }
                                     }
                                     //load model of polypoly
-//                                    airbus.mes.polypoly.ModelManager.getPolyPolyModel("CHES", "1L"); //FIXME When Settings ready
                                     airbus.mes.polypoly.ModelManager.getPolyPolyModel(airbus.mes.stationtracker.ModelManager.settings.site, airbus.mes.stationtracker.ModelManager.settings.station);
+                                    
+                                    //setTimeout : setBusy is effective because of this trick
+                                    setTimeout(function() {
+                                        airbus.mes.polypoly.oView.setBusy(true);
+                                    }, 0);
+
+                                    //open the pop-up
+                                    airbus.mes.stationtracker.oPopoverPolypoly.open();
+
                                     // set polypoly in non-editable mode
                                     airbus.mes.polypoly.PolypolyManager.globalContext.bEditable = !airbus.mes.stationtracker.AssignmentManager.polypolyAffectation;
 
@@ -271,8 +279,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",    {
                                         if(myButton.getVisible()){
                                             myButton.setVisible(false);
                                         }
-                                    }
-                                    airbus.mes.stationtracker.oPopoverPolypoly.open();
+                                    }                         
                                     // Permit to display or not polypoly affectation or polypoly simple
                                     airbus.mes.polypoly.oView.getController().initiatePolypoly();
 

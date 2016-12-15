@@ -233,30 +233,6 @@ airbus.mes.polypoly.ModelManager = {
 	},
 	
 	onPolyPolyModelLoaded : function(oResponse) {
-//		oResponse = oResponse.getSource().getData().Rowsets.Rowset[0].Row[0];
-//		if(oResponse.hasOwnProperty("Message_Type")){
-//		if(oResponse.Message_Type == "E"){
-//		sap.ui.getCore().getModel("mii").oData.Rowsets.Rowset[0].Row = {};
-//		}
-//		}
-
-//		var oData = sap.ui.getCore().getModel("mii").getData().Rowsets;
-//		if (oData.Rowset && oData.Rowset.length > 0 && oData.Rowset[0].Row && !oData.Rowset[0].Row[0].hasOwnProperty("Message_Type")) {
-//			var oMiiData = sap.ui.getCore().getModel("mii").getData();
-//			var oTableData = airbus.mes.polypoly.PolypolyManager.createTableData(oMiiData);
-//			var mTableModel = new sap.ui.model.json.JSONModel(oTableData);
-//			airbus.mes.polypoly.PolypolyManager.internalContext.oModel = mTableModel;
-//
-//			var oQATableData = airbus.mes.polypoly.PolypolyManager.createQATableData(oMiiData);
-//			var mQATableModel = new sap.ui.model.json.JSONModel(oQATableData);
-//			airbus.mes.polypoly.PolypolyManager.internalContext.oModelQA = mQATableModel;
-//			// ????? 
-//			sap.ui.getCore().byId("polypoly").setModel(mTableModel);
-//			//sap.ui.getCore().getModel("mTableModel").loadData(mTableModel);
-//
-//		}else{
-//			var mTableModel = new sap.ui.model.json.JSONModel();
-//		}
 		
 		var oData = sap.ui.getCore().getModel("mii").getData().Rowsets;
 		if (oData.Rowset && oData.Rowset.length > 0 && oData.Rowset[0].Row && !oData.Rowset[0].Row[0].hasOwnProperty("Message_Type")) {
@@ -276,13 +252,15 @@ airbus.mes.polypoly.ModelManager = {
 		//sap.ui.getCore().getModel("mTableModel").loadData(mTableModel);
 		airbus.mes.polypoly.oView.getController().clearFilters();
 		
-		if ( airbus.mes.polypoly.oView.byId("oTablePolypoly").getBinding("rows") != undefined ) {
-			
+		if (airbus.mes.polypoly.oView.byId("oTablePolypoly").getBinding("rows") != undefined) {		
 			sap.ui.getCore().byId("polypoly--polypolySearchField").setValue(airbus.mes.polypoly.PolypolyManager.getValueSelected);
 			airbus.mes.polypoly.oView.getController().onRPSearch();
-					
-			}
-		
+		}
+
+		//setTimeout : setBusy is effective because of this trick
+		setTimeout(function() {
+			airbus.mes.polypoly.oView.setBusy(false);
+		}, 0);
 	},
 	
 	
