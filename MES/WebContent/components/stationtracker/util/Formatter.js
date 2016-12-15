@@ -452,6 +452,10 @@ airbus.mes.stationtracker.util.Formatter = {
 			----------------------------------------------------------------------------*/
 			YdisplayRules : function ( oSection ) {
 				var html = "";
+				var oHierarchyDelay;
+				var fProgress;
+				var fDuration;
+				var sSpanWarn;
 				
 				if (oSection.initial != undefined ) {
 
@@ -481,10 +485,10 @@ airbus.mes.stationtracker.util.Formatter = {
 	
 					// See SD there is only one user affected for the couple of shift id + avlLine
 					var oCurrentAffectedUser = airbus.mes.stationtracker.AssignmentManager.affectationHierarchy[oSection.avlLine][sshiftID][0];
-					var oHierarchyDelay =airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchyDelay;
-					var fProgress = oHierarchyDelay[oSection.group][oSection.avlLine].progress;
-					var fDuration =	oHierarchyDelay[oSection.group][oSection.avlLine].duration;
-					var sSpanWarn = "";
+					oHierarchyDelay =airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchyDelay;
+					fProgress = oHierarchyDelay[oSection.group][oSection.avlLine].progress;
+					fDuration =	oHierarchyDelay[oSection.group][oSection.avlLine].duration;
+					sSpanWarn = "";
 					var sNotConfirmedOpLS = "";
 					var bNotConfirmedOpLS = airbus.mes.stationtracker.ShiftManager.noTotalConfLastShift( oSection );
 					
@@ -507,7 +511,6 @@ airbus.mes.stationtracker.util.Formatter = {
 
 
 							var imgId = sap.ui.getCore().byId("stationTrackerView").createId("folder_" + oSection.key + "Image--"+ oCurrentAffectedUser.picture);
-//							var imgId = sap.ui.getCore().byId("stationTrackerView").createId("Image--"+ Math.floor((Math.random() * 10000000000) + 1) + "--"+ oCurrentAffectedUser.picture);
 							
 							html += '<img  onerror = "airbus.mes.shell.UserImageManager.getErrorUserImage(this)" id="' + imgId +'" src=' + airbus.mes.shell.UserImageManager.getUserImage(imgId, oCurrentAffectedUser.picture) + ' class="ylabelUserImage"/>'		// To display User Image
 						}						
@@ -548,10 +551,10 @@ airbus.mes.stationtracker.util.Formatter = {
 							 '<br><span class="ylabel">'
 						+ airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("SelectOperator") + '</span></br></div>';
 
-					var oHierarchyDelay =airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchyDelay;
-					var fProgress = oHierarchyDelay[oSection.group][oSection.avlLine].progress;
-					var fDuration =	oHierarchyDelay[oSection.group][oSection.avlLine].duration;
-					var sSpanWarn = "";
+					oHierarchyDelay = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchyDelay;
+					fProgress = oHierarchyDelay[oSection.group][oSection.avlLine].progress;
+					fDuration =	oHierarchyDelay[oSection.group][oSection.avlLine].duration;
+					sSpanWarn = "";
 					
 					html += airbus.mes.stationtracker.util.Formatter.createDelaySpan( fProgress,fDuration,sSpanWarn );
 					
@@ -581,6 +584,10 @@ airbus.mes.stationtracker.util.Formatter = {
 				
 				return html + '</div>';
 				}
+				
+//				default mode
+				html = "";
+				return html;
 			},
 			
 			/*
