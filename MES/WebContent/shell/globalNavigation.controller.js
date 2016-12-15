@@ -225,6 +225,8 @@ sap.ui.controller(
 						// Dont reaload station tracker on disruptionTrackerView
 						if (  nav.getCurrentPage().getId() != "disruptiontrackerView" ) {
 						
+							
+							
 						airbus.mes.stationtracker.oView.byId("stationtracker").setBusy(true);
 						airbus.mes.stationtracker.ShiftManager.updateShift = false;
 						var oModule = airbus.mes.stationtracker.ModelManager;

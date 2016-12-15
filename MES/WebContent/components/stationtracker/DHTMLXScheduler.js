@@ -58,7 +58,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",    {
                             y_property:    "section_id",
                             render:"tree",
                             folder_dy: 25,
-                            dy: 36,
+                            dy: 70,
 
                         });
 
