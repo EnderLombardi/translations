@@ -721,8 +721,7 @@ sap.ui
 								.getModel("i18nModel");
 
 						// Call Add comment Service
-						airbus.mes.disruptions.ModelManager.addComment(
-								oComment, i18nModel);
+						airbus.mes.disruptions.ModelManager.addComment(oComment, i18nModel);
 
 						this.getView().byId(
 								this.getView().sId + "--commentArea-"

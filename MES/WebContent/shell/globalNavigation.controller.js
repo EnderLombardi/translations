@@ -221,6 +221,10 @@ sap.ui.controller(
 					 * and compute shift hierarchy.
 					 */
 					renderStationTracker : function() {
+						
+						// Dont reaload station tracker on disruptionTrackerView
+						if (  nav.getCurrentPage().getId() != "disruptiontrackerView" ) {
+						
 						airbus.mes.stationtracker.oView.byId("stationtracker").setBusy(true);
 						airbus.mes.stationtracker.ShiftManager.updateShift = false;
 						var oModule = airbus.mes.stationtracker.ModelManager;
@@ -235,6 +239,7 @@ sap.ui.controller(
 						// ** asynchrone call **//
 						airbus.mes.shell.oView.oController.loadStationTrackerGantKPI();
 						
+						}
 					},
 
 					loadStationTrackerGantKPI : function() {
