@@ -247,10 +247,8 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",    {
                                     //load model of polypoly
                                     airbus.mes.polypoly.ModelManager.getPolyPolyModel(airbus.mes.stationtracker.ModelManager.settings.site, airbus.mes.stationtracker.ModelManager.settings.station);
                                     
-                                    //setTimeout : setBusy is effective because of this trick
-                                    setTimeout(function() {
-                                        airbus.mes.polypoly.oView.setBusy(true);
-                                    }, 0);
+                                    airbus.mes.shell.busyManager.setBusy_Polypoly();
+		                            airbus.mes.shell.busyManager.avoidInfiniteBusy_Polypoly();
 
                                     //open the pop-up
                                     airbus.mes.stationtracker.oPopoverPolypoly.open();

@@ -26,20 +26,5 @@
 			</HBox>
 
 		</VBox>
-		<!-- <footer>
-			<Bar id="operationStatusFooter" class="operationDetailFooter">
-				<contentRight>
-					<Button id="btnPause" text="{i18n>pause}" icon="sap-icon://media-pause"
-						press="pauseOperation" />
-					<Button id="btnConfirm" text="{i18n>confirm}" icon="sap-icon://history"
-						press="confirmOperation" />
-					<Button id="btnActivate" text="{i18n>activate}" press="activateOperation" />
-					<Button id="btnComplete" text="{i18n>complete}" icon="sap-icon://accept"
-						press="confirmOperation" />
-					<Button id="btnClose" text="{i18n>close}" icon="sap-icon://decline"
-						press="onCloseOperationDetailPopup" />
-				</contentRight>
-			</Bar>
-		</footer> -->
 	</Page>
 </core:View>
