@@ -731,7 +731,9 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
   overflow: visible; }
 
 #stationTrackerView--stationtracker .offtime {
-  background-image: url("../components/stationtracker/css/img/fat_lines.png"); }
+  background-image: url("../components/stationtracker/css/img/fat_lines.png");
+  height: 70px !important;
+  max-height: 70px; }
 #stationTrackerView--stationtracker .dhx_cal_data {
   overflow-y: scroll;
   bottom: 0;
@@ -754,7 +756,9 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
 #stationTrackerView--stationtracker .dhx_matrix_scell.item {
   border-bottom: solid 1px #d5f1f8;
   color: #0D5D76;
-  background-color: #EAFBFD; }
+  background-color: #EAFBFD;
+  height: 70px !important;
+  min-height: 70px; }
   #stationTrackerView--stationtracker .dhx_matrix_scell.item.initial {
     cursor: default; }
 #stationTrackerView--stationtracker .dhx_matrix_cell {
@@ -806,6 +810,7 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
 #stationTrackerView--stationtracker .dhx_row_folder .dhx_marked_timespan.shiftCss, #stationTrackerView--stationtracker .dhx_row_folder .dhx_marked_timespan.offtime {
   display: none; }
 #stationTrackerView--stationtracker .dhx_row_folder .dhx_marked_timespan.dhx_matrix_now_time {
+  min-height: 70px;
   border-left-color: purple;
   opacity: 1; }
 #stationTrackerView--stationtracker .dhx_row_folder .dhx_matrix_cell, #stationTrackerView--stationtracker .dhx_row_folder .dhx_marked_timespan.shiftCss {
@@ -815,17 +820,24 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
 #stationTrackerView--stationtracker .dhx_row_folder .folderAxisColor {
   background-color: #ECEEEF !important; }
 #stationTrackerView--stationtracker .dhx_row_item .dhx_marked_timespan.begin_shifht {
+  min-height: 70px;
   background-color: blue; }
 #stationTrackerView--stationtracker .dhx_row_item .dhx_marked_timespan.taktMarker {
   background-color: green; }
+#stationTrackerView--stationtracker .dhx_row_item .dhx_marked_timespan.dhx_matrix_now_time {
+  min-height: 70px; }
+#stationTrackerView--stationtracker .dhx_row_item .dhx_marked_timespan.offtime {
+  min-height: 70px; }
 #stationTrackerView--stationtracker .dhx_row_item .dhx_scell_name {
   white-space: nowrap;
   padding: 0px; }
-#stationTrackerView--stationtracker .dhx_data_table.folder td {
-  border-bottom: 2px solid #dddddd;
-  background-color: #ECEEEF; }
-#stationTrackerView--stationtracker .dhx_data_table .dhx_matrix_cell {
-  background-color: white; }
+#stationTrackerView--stationtracker .dhx_data_table {
+  min-height: 70px; }
+  #stationTrackerView--stationtracker .dhx_data_table.folder td {
+    border-bottom: 2px solid #dddddd;
+    background-color: #ECEEEF; }
+  #stationTrackerView--stationtracker .dhx_data_table .dhx_matrix_cell {
+    background-color: white; }
 #stationTrackerView--stationtracker .dhx_data_table {
   overflow: visible; }
 #stationTrackerView--stationtracker .dhx_matrix_line {

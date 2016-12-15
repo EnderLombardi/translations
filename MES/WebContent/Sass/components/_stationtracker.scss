@@ -399,6 +399,8 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
     }
     .offtime{
         background-image: url("../components/stationtracker/css/img/fat_lines.png");
+        height: 70px !important;
+        max-height: 70px;
     }
     .dhx_cal_data{
         overflow-y: scroll;
@@ -434,6 +436,8 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
             border-bottom: solid 1px $duck-egg-blue;
             color: #0D5D76;
             background-color: #EAFBFD;
+            height: 70px !important;
+            min-height: 70px;
             @extend %dhxItemFolder;
             &.initial{
                 cursor: default;
@@ -528,6 +532,7 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
                 display: none;
             }
             &.dhx_matrix_now_time{
+                min-height: 70px;
                 border-left-color: purple;
                 opacity: 1;
             }
@@ -544,12 +549,19 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
     .dhx_row_item{
         .dhx_marked_timespan{
             &.begin_shifht{
+                min-height: 70px;
                 @extend %timeSpanWidth;
                 background-color: blue;
             }
             &.taktMarker{
                 @extend %timeSpanWidth;
                 background-color: green;
+            }
+            &.dhx_matrix_now_time{
+                min-height: 70px;
+            }
+            &.offtime{
+                min-height: 70px;
             }
         }
         .dhx_scell_name{
@@ -558,6 +570,7 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
         }
     }
     .dhx_data_table{
+        min-height: 70px;
         &.folder td{
             border-bottom: 2px solid #dddddd;
             background-color: #ECEEEF;
