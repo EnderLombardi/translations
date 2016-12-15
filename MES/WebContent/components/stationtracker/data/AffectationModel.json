@@ -98,10 +98,10 @@
                   "lastName": "DANEL",
                   "picture": "---",
                   "avlLine": "2",
-                  "shiftName": "UserShiftBO:FNZ1,MORNING",
+                  "shiftName": "UserShiftBO:FNZ1,AFTERNOON",
                   "shiftID": "UserShiftBO:FNZ1,S0",
-                  "day": "20161117",
-                  "warn": "false",
+                  "day": "20161213",
+                  "warn": "true",
                   "skills": "MECA-F-NZ"
                },
                { 

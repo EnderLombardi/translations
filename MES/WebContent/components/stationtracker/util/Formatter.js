@@ -512,7 +512,7 @@ airbus.mes.stationtracker.util.Formatter = {
 							html += '<img  onerror = "airbus.mes.shell.UserImageManager.getErrorUserImage(this)" id="' + imgId +'" src=' + airbus.mes.shell.UserImageManager.getUserImage(imgId, oCurrentAffectedUser.picture) + ' class="ylabelUserImage"/>'		// To display User Image
 						}						
 
-						html += '<div><span class="avlLine">' +  oSection.avlLine.split("_")[1] + " - "  + oSection.avlLine.split("_")[0] + '</span>';
+						html += '<div><span class="avlLine" title="' +  oSection.avlLine.split("_")[1] + " - "  + oSection.avlLine.split("_")[0] +  '">' +  oSection.avlLine.split("_")[1] + " - "  + oSection.avlLine.split("_")[0] + '</span>';
 						
 
 
@@ -544,7 +544,7 @@ airbus.mes.stationtracker.util.Formatter = {
 					
 					html += '<i class="fa  fa-pencil ylabelEditIcon"></i>';
 									
-					html += '<div class="yText">' + '<span class="avlLine">' +  oSection.avlLine.split("_")[1] + " - "  + oSection.avlLine.split("_")[0] + '</span>' + 
+					html += '<div class="yText">' + '<span class="avlLine" title="' +  oSection.avlLine.split("_")[1] + " - "  + oSection.avlLine.split("_")[0] +  '">' +  oSection.avlLine.split("_")[1] + " - "  + oSection.avlLine.split("_")[0] + '</span>' + 
 							 '<br><span class="ylabel">'
 						+ airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("SelectOperator") + '</span></br></div>';
 
@@ -567,7 +567,7 @@ airbus.mes.stationtracker.util.Formatter = {
 				
 				html += '<i class="fa  fa-pencil ylabelEditIcon"></i>';
 								
-				html += '<div class="yText">' + '<span class="avlLine">' +  oSection.avlLine.split("_")[1] + " - "  + oSection.avlLine.split("_")[0] + '</span>' + 
+				html += '<div class="yText">' + '<span class="avlLine" title="' +  oSection.avlLine.split("_")[1] + " - "  + oSection.avlLine.split("_")[0] +  '">' +  oSection.avlLine.split("_")[1] + " - "  + oSection.avlLine.split("_")[0] + '</span>' + 
 						 '<br><span class="ylabel">'
 					+ airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("SelectOperator") + '</span></br></div>';
 
