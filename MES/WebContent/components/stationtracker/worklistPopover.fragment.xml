@@ -26,8 +26,13 @@
 						    visible="true">
 						<core:ListItem key="{groupModel>key}" text="{ path : 'groupModel>Value' , formatter : '.getI18nValue' }" />				
 					</Select>
+<<<<<<< Upstream, based on origin/MESv1.0.2
 					<Select id="filterStatus"
 							class="sapUiTinyMarginBeginEnd comboBoxStyle"
+=======
+					<Select class="sapUiTinyMarginBeginEnd comboBoxStyle"
+							id = "selectStatus"
+>>>>>>> 5c22e6d marie test
 						    items="{groupModel>/Rowsets/Rowset/0/Row/Status}"
 						    change="onChangeFilter"
 					        visible="true">						
