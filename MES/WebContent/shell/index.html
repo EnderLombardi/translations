@@ -108,13 +108,14 @@
                         // batch 1 set to true
                         var windowLocation = window.location.hostname;
                         var getLocationForBatch = window.location.search;
-                        if(windowLocation == "localhost"){
+                        
+                        if(windowLocation === "localhost"){
                             bBatch1 = false;
                         }else{
-                            if(windowLocation = "dmi"){
+                            if(windowLocation === "dmi"){
                                 bBatch1 = false;
                             }else{
-                                if(windowLocation == "imi"){
+                                if(windowLocation === "imi"){
                                     bBatch1 = false;
                                 }else{
                                     bBatch1 = true;
