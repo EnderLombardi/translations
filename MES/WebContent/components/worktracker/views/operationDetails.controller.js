@@ -351,7 +351,7 @@ sap.ui
 						} else {
 							sap.ui.getCore().byId("msgstrpConfirm").setVisible(
 									false);
-							var sfc = airbus.mes.worktracker.util.ModelManager.sfc;
+
 							var percent;
 							if (this.operationStatus == "X")
 								percent = "100"

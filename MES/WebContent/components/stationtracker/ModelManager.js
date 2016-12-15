@@ -1046,7 +1046,7 @@ airbus.mes.stationtracker.ModelManager = {
 			airbus.mes.operationdetail.oView.byId("switchOperationModeBtn").setEnabled(true);			
 			airbus.mes.operationdetail.oView.byId("switchStatusLabel").setText(airbus.mes.operationdetail.oView.getModel("i18n").getProperty("ReadOnly"));
 			//Set no Button activate
-			airbus.mes.operationdetail.status.oView.getController().setProgressScreenBtn(false,false);
+			airbus.mes.operationdetail.status.oView.getController().setProgressScreenBtn(false,false, false);
 		}
 		// Pause the Refresh timer till the Pop-Up is opened
 		//airbus.mes.shell.AutoRefreshManager.pauseRefresh();
