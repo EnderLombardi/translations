@@ -48,6 +48,10 @@ airbus.mes.shell.util.navFunctions = {
 			}
 		}
 
+		setTimeout(function() {
+			airbus.mes.polypoly.oView.setBusy(true);
+		}, 0);
+
 		airbus.mes.polypoly.PolypolyManager.globalContext.bEditable = !airbus.mes.stationtracker.AssignmentManager.polypolyAffectation;
 
 		if (!nav.getPage("polypolyPage")) {
