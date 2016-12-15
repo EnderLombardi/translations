@@ -519,7 +519,7 @@ airbus.mes.stationtracker.util.Formatter = {
 						
 
 
-						if(airbus.mes.settings.AppConfManager.getConfiguration("MES_PHOTO_NAME")){ // Check if user image to be displayed  or not
+						if ( airbus.mes.settings.AppConfManager.getConfiguration("MES_PHOTO_NAME") ) { // Check if user image to be displayed  or not
 
 
 							html +=  '<br><span class="ylabelUser" title='
