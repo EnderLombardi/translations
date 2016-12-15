@@ -581,9 +581,16 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
     }
     
     .avlLine{
-        overflow: hidden;
-        text-overflow: ellipsis;
-        max-width: 50px;
+    	overflow: hidden;
+    	text-overflow: ellipsis;
+    max-width: 50px;
+   	 white-space: nowrap;
+    white-space: nowrap;
+    color: #0D5D76;
+    vertical-align: middle;
+    text-overflow: ellipsis;
+    display: inline-block;
+    overflow: hidden;
     }
     
     .ylabel{

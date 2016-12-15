@@ -380,9 +380,9 @@ STATION TRACKER
   position: absolute;
   width: 5px;
   background: #ee373d;
-  left: -20px;
-  top: -2px;
-  height: 35px; }
+  left: -10px;
+  top: -500px;
+  height: 1000px; }
 
 /**********************
 SETTINGS
@@ -839,7 +839,14 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
 #stationTrackerView--stationtracker .avlLine {
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 50px; }
+  max-width: 50px;
+  white-space: nowrap;
+  white-space: nowrap;
+  color: #0D5D76;
+  vertical-align: middle;
+  text-overflow: ellipsis;
+  display: inline-block;
+  overflow: hidden; }
 #stationTrackerView--stationtracker .ylabel {
   white-space: nowrap;
   color: #0D5D76;
