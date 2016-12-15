@@ -451,7 +451,7 @@ airbus.mes.stationtracker.util.Formatter = {
 			     * @param {oSection} Object wich represent the current Row
 			----------------------------------------------------------------------------*/
 			YdisplayRules : function ( oSection ) {
-				var html;
+				var html = "";
 				
 				if (oSection.initial != undefined ) {
 
@@ -502,10 +502,7 @@ airbus.mes.stationtracker.util.Formatter = {
 					if ( oSection.rescheduled ) {
 						//XX TODO POSTION OF THIS.
 						html = sNotConfirmedOpLS + '<div>';
-						//Correction by NJA		
 
-						html += '<br><span class="avlLine">' +  oSection.avlLine.split("_")[1] + " - "  + oSection.avlLine.split("_")[0] + '</span></br>';
-						
 						if(airbus.mes.settings.AppConfManager.getConfiguration("MES_PHOTO_DISPLAY")){ // Check if user image to be displayed  or not
 
 
@@ -513,25 +510,28 @@ airbus.mes.stationtracker.util.Formatter = {
 //							var imgId = sap.ui.getCore().byId("stationTrackerView").createId("Image--"+ Math.floor((Math.random() * 10000000000) + 1) + "--"+ oCurrentAffectedUser.picture);
 							
 							html += '<img  onerror = "airbus.mes.shell.UserImageManager.getErrorUserImage(this)" id="' + imgId +'" src=' + airbus.mes.shell.UserImageManager.getUserImage(imgId, oCurrentAffectedUser.picture) + ' class="ylabelUserImage"/>'		// To display User Image
-						}
+						}						
+
+						html += '<div><span class="avlLine">' +  oSection.avlLine.split("_")[1] + " - "  + oSection.avlLine.split("_")[0] + '</span>';
+						
+
 
 						if(airbus.mes.settings.AppConfManager.getConfiguration("MES_PHOTO_NAME")){ // Check if user image to be displayed  or not
 
 
-						html +=  '<span class="ylabelUser" title='
-								+ airbus.mes.stationtracker.util.Formatter.spaceInsecable(oCurrentAffectedUser.firstName + " " + oCurrentAffectedUser.lastName) + '>'
-								+ oCurrentAffectedUser.firstName + " " + oCurrentAffectedUser.lastName + '</span>';
+							html +=  '<br><span class="ylabelUser" title='
+									+ airbus.mes.stationtracker.util.Formatter.spaceInsecable(oCurrentAffectedUser.firstName + " " + oCurrentAffectedUser.lastName) + '>'
+									+ oCurrentAffectedUser.firstName + " " + oCurrentAffectedUser.lastName + '</span>';
 						}
 						// value used in localhost
 						if(airbus.mes.settings.AppConfManager.getConfiguration("MES_PHOTO_NAME") === undefined ){ 
 
 
-							html +=  '<span class="ylabelUser" title='
+							html +=  '<br><span class="ylabelUser" title='
 									+ airbus.mes.stationtracker.util.Formatter.spaceInsecable(oCurrentAffectedUser.firstName + " " + oCurrentAffectedUser.lastName) + '>'
 									+ oCurrentAffectedUser.firstName + " " + oCurrentAffectedUser.lastName + '</span>';
 							}
 
-						// TOBE not finished 213 215
 						html += airbus.mes.stationtracker.util.Formatter.createDelaySpan( fProgress,fDuration,sSpanWarn );
 					
 						return html + '</div>';
@@ -540,11 +540,15 @@ airbus.mes.stationtracker.util.Formatter = {
 					
 				} else {
 					//** no user affected **/
-					html = '<div><i class="fa fa-pencil ylabelEditIcon"></i><span class="ylabel">'
-						+ airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("SelectOperator") + '</span></div>';
+					html = '<div>';
+					
+					html += '<i class="fa  fa-pencil ylabelEditIcon"></i>';
+									
+					html += '<div class="yText">' + '<span class="avlLine">' +  oSection.avlLine.split("_")[1] + " - "  + oSection.avlLine.split("_")[0] + '</span>' + 
+							 '<br><span class="ylabel">'
+						+ airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("SelectOperator") + '</span></br></div>';
 
-					// TOBE not finished 213 215
-					var oHierarchyDelay =airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchyDelay;					
+					var oHierarchyDelay =airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchyDelay;
 					var fProgress = oHierarchyDelay[oSection.group][oSection.avlLine].progress;
 					var fDuration =	oHierarchyDelay[oSection.group][oSection.avlLine].duration;
 					var sSpanWarn = "";
@@ -552,17 +556,21 @@ airbus.mes.stationtracker.util.Formatter = {
 					html += airbus.mes.stationtracker.util.Formatter.createDelaySpan( fProgress,fDuration,sSpanWarn );
 					
 					
-					return html;
-			
+					return html + '</div>';
 			
 					}
 	
 			} else {
 				//** no user affected **/
-				html = '<div><i class="fa  fa-pencil ylabelEditIcon"></i><span class="ylabel">'
-					+ airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("SelectOperator") + '</span></div>';
 
-				//TOBE not finished 213 215
+				html = '<div>';
+				
+				html += '<i class="fa  fa-pencil ylabelEditIcon"></i>';
+								
+				html += '<div class="yText">' + '<span class="avlLine">' +  oSection.avlLine.split("_")[1] + " - "  + oSection.avlLine.split("_")[0] + '</span>' + 
+						 '<br><span class="ylabel">'
+					+ airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("SelectOperator") + '</span></br></div>';
+
 				var oHierarchyDelay =airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchyDelay;
 				var fProgress = oHierarchyDelay[oSection.group][oSection.avlLine].progress;
 				var fDuration =	oHierarchyDelay[oSection.group][oSection.avlLine].duration;
@@ -571,7 +579,7 @@ airbus.mes.stationtracker.util.Formatter = {
 				html += airbus.mes.stationtracker.util.Formatter.createDelaySpan( fProgress,fDuration,sSpanWarn );
 				
 				
-				return html;
+				return html + '</div>';
 				}
 			},
 			

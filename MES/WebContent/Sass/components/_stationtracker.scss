@@ -449,6 +449,7 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
     .dhx_matrix_scell div {
         text-align: left;
         white-space: nowrap;
+        margin-top:2px;
     }
     .dhx_cal_event{
         border: none;
@@ -573,14 +574,18 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
     .dhx_matrix_line {
         overflow:visible;
     }
+    .yText{
+	    width: 100px;
+	    float: left;
+	    height: 40px;
+    }
+    
     .avlLine{
         overflow: hidden;
         text-overflow: ellipsis;
-        position: absolute;
         max-width: 50px;
-        margin-left: 40px;
-        white-space: nowrap; 
     }
+    
     .ylabel{
         white-space: nowrap;
         color: #0D5D76;
@@ -589,18 +594,22 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
         display: inline-block;
         overflow: hidden ;
         max-width: 80px; 
-        height: 15px;
+        height: 15px; 
     }
     .ylabelEditIcon{
         @extend %stationViewYlabelIconAndImage;
+        float: left;
     }
     .ylabelUserImage{
         @extend %stationViewYlabelIconAndImage;
         background-color: $duck-egg-blue;
         border-radius: 999px;
-    }
+        float: left;
+	    margin-right:10px;
+	    }
     .ylabelUser{
         @extend %stationViewYlabelUser;
+	    margin-left: 0px;
     }
     .yMoreLabel{
         position: absolute;

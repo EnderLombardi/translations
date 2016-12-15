@@ -88,12 +88,21 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
 
 			// Refresh User Operation Model and Operation Detail
 			airbus.mes.shell.oView.getController().renderStationTracker();
+
 			
 			oView.byId("operationStatus").setText(oView.getModel("i18n").getProperty("in_progress"));
+
+			// Re-Render Station Tracker
+			/*airbus.mes.shell.oView.getController()
+					.renderStationTracker();*/
 
 			// update operationDetailsModel
 			sap.ui.getCore().getModel("operationDetailModel").setProperty("/Rowsets/Rowset/0/Row/0/status", "IN_WORK");
 			sap.ui.getCore().getModel("operationDetailModel").refresh();
+
+			// Refresh Station tracker Gantt Chart
+			/*airbus.mes.shell.oView.getController()
+					.renderStationTracker();*/
 
 		}
 		return flagSuccess;
@@ -133,13 +142,16 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
 			
 			// Refresh User Operation Model and Operation Detail
 			airbus.mes.shell.oView.getController().renderStationTracker();
-			
 			//update spent time on pause of operation
 			oView.getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].time_spent = airbus.mes.stationtracker.ModelManager.getSpentTimePerOperation(data.operation_no, data.wo_no);
 			oView.getModel("operationDetailModel").refresh();
 			
 			//oView.byId("btnActivate").setType("Accept");
 			oView.byId("operationStatus").setText(oView.getModel("i18n").getProperty("paused"));
+
+			// Re-Render Station Tracker
+			/*airbus.mes.shell.oView.getController()
+					.renderStationTracker();*/
 
 			// update operationDetailsModel
 			sap.ui.getCore().getModel("operationDetailModel").setProperty("/Rowsets/Rowset/0/Row/0/status", "IN_QUEUE")
@@ -165,13 +177,7 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
 
 			oView.addDependent(oView._reasonCodeDialog);
 		}
-		
-		//[Defect 289] Clear Select and Text Field on opening of Popup
-		sap.ui.getCore().byId("reasonCodeSelectBox").clearSelection();
-		sap.ui.getCore().byId("reasonCodeComments").setValue();
-		
 		oView._reasonCodeDialog.open();
-		
 
 	},
 
@@ -371,7 +377,7 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
 			sMessageSuccess = oView.getModel("i18n").getProperty("SuccessfulConfirmation");
 		}	
 		var sWo = airbus.mes.operationdetail.status.oView.getModel("operationDetailModel").getProperty(
-				"/Rowsets/Rowset/0/Row/0/wo_no");
+				"/Rowsets/Rowset/0/Row/0/wo_no");Blocked
 		var sMessageError = oView.getModel("i18n").getProperty("ErrorDuringConfirmation");
 
 		if ((user == "" || pass == "") && (ID == "")) {
@@ -409,8 +415,7 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
 				var data = oView.getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0];
 				oView.getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].time_spent = airbus.mes.stationtracker.ModelManager.getSpentTimePerOperation(data.operation_no, data.wo_no);
 				oView.getModel("operationDetailModel").refresh();
-				
-				// Refresh stationtracker
+				// Refresh User Operation Model and Operation Detail
 				airbus.mes.shell.oView.getController().renderStationTracker();
 
 				// update operationDetailsModel
@@ -467,6 +472,7 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
 	onCancelReasonCode : function() {
 
 		var oView = airbus.mes.operationdetail.status.oView;
+
 		sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].progress_new = sap.ui
 				.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].progress;
 		sap.ui.getCore().getModel("operationDetailModel").refresh();
