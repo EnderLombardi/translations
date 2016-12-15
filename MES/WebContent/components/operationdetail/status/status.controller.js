@@ -177,6 +177,11 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
 
 			oView.addDependent(oView._reasonCodeDialog);
 		}
+		
+		//[Defect 289] Clear Select and Text Field on opening of Popup
+		sap.ui.getCore().byId("reasonCodeSelectBox").clearSelection();
+		sap.ui.getCore().byId("reasonCodeComments").setValue();
+		
 		oView._reasonCodeDialog.open();
 
 	},
