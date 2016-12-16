@@ -3,8 +3,7 @@
 jQuery.sap.declare("airbus.mes.worktracker.util.Formatter");
 
 airbus.mes.worktracker.util.Formatter = {
-	monthNames : [ "January", "February", "March", "April", "May", "June",
-			"July", "August", "September", "October", "November", "December" ],
+	monthNames : [ "January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December" ],
 			
 	status:{'completed': 'COMPLETED', 
 			'paused': 'IN_QUEUE',
@@ -37,6 +36,7 @@ airbus.mes.worktracker.util.Formatter = {
 				return "Not Started "
 		}
 	},
+	
 	setSliderStatus: function(status, progress){
 		switch (status) {
 			case airbus.mes.worktracker.util.Formatter.status.completed:
@@ -54,6 +54,7 @@ airbus.mes.worktracker.util.Formatter = {
 				return "Not Started";
 		}
 	},
+	
 	setOprtnIcon : function(status, progress) {
 		this.getParent().getParent().removeStyleClass("listColorBlue");
 		this.getParent().getParent().removeStyleClass("listColorRed");
@@ -209,7 +210,7 @@ airbus.mes.worktracker.util.Formatter = {
 			this.setVisible(false);
 			this.setProperty("max",0);
 			this.setProperty("value",0);
-			return "0%";
+			return " 0%";
 		} else if (String(progress) == "100") {
 			this.setProperty("max",100);
 			this.setProperty("value",100);
@@ -236,10 +237,10 @@ airbus.mes.worktracker.util.Formatter = {
 			this.removeStyleClass("dynProgressSlider");
 			this.setProperty("min", 0);
 			this.setProperty("value", 0);
-			return "100%";
+			return " 100%";
 		} else if (String(progress) == "100") {
 			this.setVisible(false);
-			return "0%";
+			return " 0%";
 		} else {
 			this.addStyleClass("dynProgressSlider");
 			this.setProperty("min", parseInt(progress,10));

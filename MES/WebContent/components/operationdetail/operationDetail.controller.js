@@ -17,28 +17,23 @@ sap.ui
                      * @memberOf components.operationdetail.operationDetail
                      */
                     onInit : function() {
-                        this.nav = this.getView()
-                                .byId("operDetailNavContainer");
-                        if (airbus.mes.operationdetail.status === undefined
-                                || airbus.mes.operationdetail.status.oView === undefined) {
+                        this.nav = this.getView().byId("operDetailNavContainer");
+                        if (airbus.mes.operationdetail.status === undefined || airbus.mes.operationdetail.status.oView === undefined) {
                             sap.ui.getCore().createComponent({
-                                name : "airbus.mes.operationdetail.status",
+                            	name : "airbus.mes.operationdetail.status",
                             });
-                            this.nav
-                                    .addPage(airbus.mes.operationdetail.status.oView);
+                            this.nav.addPage(airbus.mes.operationdetail.status.oView);
                         }
                     },
+                    
                     expandOperationDetailPanel : function(oEvent) {
-                        var toggleButton = this.getView().byId(
-                                "opDetailExpandButton");
+                        var toggleButton = this.getView().byId("opDetailExpandButton");
                         toggleButton.setVisible(!toggleButton.getVisible());
 
-                        var toggleButton2 = this.getView().byId(
-                                "opDetailCloseButton");
+                        var toggleButton2 = this.getView().byId("opDetailCloseButton");
                         toggleButton2.setVisible(!toggleButton2.getVisible());
 
-                        this.getView().byId("operationDetailPanel")
-                                .setExpanded(!toggleButton.getVisible());
+                        this.getView().byId("operationDetailPanel").setExpanded(!toggleButton.getVisible());
                     },
 
 //                    onCloseOperationDetailPopup : function() {
@@ -81,27 +76,20 @@ sap.ui
                         this.disruptionsCustomDataFlag = false;
 
                         // Navigation to Status every time pop-up is opened
-                        this.nav.to(airbus.mes.operationdetail.status.oView
-                                .getId());
-                        this.getView().byId("opDetailSegmentButtons")
-                                .setSelectedButton(
-                                        this.getView().byId(
-                                                "opDetailSegmentButtons")
-                                                .getButtons()[0].sId);
+                        this.nav.to(airbus.mes.operationdetail.status.oView.getId());
+                        this.getView().byId("opDetailSegmentButtons").setSelectedButton(
+                        this.getView().byId("opDetailSegmentButtons").getButtons()[0].sId);
 
                         // Collapse Operation Detail panel and show Expand
                         // button
-                        this.getView().byId("opDetailExpandButton").setVisible(
-                                true);
-                        this.getView().byId("opDetailCloseButton").setVisible(
-                                false);
-                        this.getView().byId("operationDetailPanel")
-                                .setExpanded(false);
+                        this.getView().byId("opDetailExpandButton").setVisible(true);
+                        this.getView().byId("opDetailCloseButton").setVisible(false);
+                        this.getView().byId("operationDetailPanel").setExpanded(false);
+                       
                         var oSwitchButton = this.getView().byId("switchOperationModeBtn");
                         if (oSwitchButton.getState() == true) {
-//                            Define visibility for header sections
+//                          Define visibility for header sections
                             $(".opDetailNavToolbar > ul > li ~ li").css("display", "inline-block");
-
                         } else {
 //                            Define visibility for header sections
                             $(".opDetailNavToolbar > ul > li ~ li").css("display", "none");
@@ -182,29 +170,27 @@ sap.ui
                     openPage : function(oEvent) {
                         var sItemKey = oEvent.getSource().getKey();
 
-                        switch (sItemKey) {
-
-                        case "status":
-                            if (airbus.mes.operationdetail.status === undefined    || airbus.mes.operationdetail.status.oView === undefined) {
-                                sap.ui.getCore().createComponent({ name : "airbus.mes.operationdetail.status",    });
+                     switch (sItemKey) {
+                     case "status":
+                            if (airbus.mes.operationdetail.status === undefined || airbus.mes.operationdetail.status.oView === undefined) {
+                                sap.ui.getCore().createComponent({ name : "airbus.mes.operationdetail.status"});
                                 this.nav.addPage(airbus.mes.operationdetail.status.oView);
                             }
-
+                            
+                            
                             this.nav.to(airbus.mes.operationdetail.status.oView.getId());
 
                             airbus.mes.operationdetail.status.oView.oController.operationIsActive();
                             airbus.mes.operationdetail.status.oView.oController.setOperationActionButtons();                            
 
-                            break;
-                        case "disruption":
+                     break;
+                     case "disruption":
                             airbus.mes.shell.util.navFunctions.disruptionsDetail(this.nav,
                                     sap.ui.getCore().byId("operationDetailPopup--reportDisruption"), // Report Disruption Button
                                     sap.ui.getCore().byId("operationDetailPopup--btnCreateDisruption"), // Create Button
                                     sap.ui.getCore().byId("operationDetailPopup--btnUpdateDisruption"), // Update Button
-                                    sap.ui.getCore().byId("operationDetailPopup--btnCancelDisruption")    // Cancel Button
-                        );
-
-
+                                    sap.ui.getCore().byId("operationDetailPopup--btnCancelDisruption")  // Cancel Button
+                            );
 
                             /***************************************************
                              * Load Disruption Data
@@ -216,18 +202,16 @@ sap.ui
                                 this.disruptionsFlag = true;
                             }
 
-
                             /** Navigate **/
                             this.nav.to(airbus.mes.disruptions.oView.viewDisruption.getId());
 
-                            break;
-
-                            case "reschedule":
+                      break;
+                      case "reschedule":
 
                             // var aGroup = [];
 
-//                            // Check if we are on operation grouping
-//                            // SD-PPC-ST-386
+//                            Check if we are on operation grouping
+//                            SD-PPC-ST-386
 //                            if (airbus.mes.stationtracker.GroupingBoxingManager.box !== 'OPERATION_ID') {
 //                                return;
 //                            }
@@ -258,9 +242,8 @@ sap.ui
 								sap.ui.getCore().byId("operationDetailPopup--btnReschedule").setVisible(false);
 							}
                             
-                            break;
-
-                            case "touchngo":
+                        break;
+                        case "touchngo":
                             	var selectedSegmentedButton = sap.ui.getCore().byId("operationDetailsView--opDetailSegmentButtons").getSelectedButton();
                                 var sWorkOrder = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].wo_no;
                                 var operationId = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_no;
@@ -289,7 +272,7 @@ sap.ui
                                 	sap.ui.getCore().byId("operationDetailsView--opDetailSegmentButtons").setSelectedButton(selectedSegmentedButton);
                                 }, 2000);
 
-                                break;                                
+                            break;                                
 
                             default:
                             break;

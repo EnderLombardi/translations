@@ -3,22 +3,20 @@
 jQuery.sap.declare("airbus.mes.disruptions.Formatter");
 
 airbus.mes.disruptions.Formatter = {
-	monthNames : [ "January", "February", "March", "April", "May", "June",
-			"July", "August", "September", "October", "November", "December" ],
+	monthNames : [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ],
 
 	status : {
-		"pending" : "Pending",
-		"closed" : "Closed",
+		"pending" 	: "Pending",
+		"closed" 	: "Closed",
 		"acknowledged" : "Acknowledged",
-		"solved" : "Solved",
-		"rejected" : "Rejected",
-		"deleted" : "Deleted"
+		"solved" 	: "Solved",
+		"rejected" 	: "Rejected",
+		"deleted" 	: "Deleted"
 	},
 
 	defaultDateConversion : function(defaultDate, defaultTime) {
 
-		return defaultDate.getFullYear() + "-" + defaultDate.getMonth() + "-"
-				+ defaultDate.getDate();
+		return defaultDate.getFullYear() + "-" + defaultDate.getMonth() + "-" + defaultDate.getDate();
 	},
 	
 	setDisruptionTitle : function(iGravity, escalationLevel){

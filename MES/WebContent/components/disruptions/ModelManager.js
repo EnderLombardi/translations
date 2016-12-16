@@ -1002,9 +1002,7 @@ airbus.mes.disruptions.ModelManager = {
 			return;
 		
 		var sStatus = null;
-		
 		var modelRefresh = false;
-		
 		
 		// Check if any blocking disruption still open (not closed)
 		for(var i = 0; i < aDisruption.length; i++){

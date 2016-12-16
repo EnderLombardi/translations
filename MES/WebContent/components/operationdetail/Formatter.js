@@ -2,11 +2,13 @@
 jQuery.sap.declare("airbus.mes.operationdetail.Formatter");
 
 airbus.mes.operationdetail.Formatter = {
-		status:{'completed': 'COMPLETED', 
-			'paused': 'IN_QUEUE',
-			'active': 'IN_WORK',
+		
+	status:{'completed'	: 'COMPLETED', 
+			'paused'	: 'IN_QUEUE',
+			'active'	: 'IN_WORK',
 			'notStarted': 'NOT_STARTED',
-			'blocked':'Blocked'},
+			'blocked'	: 'Blocked'
+			},
 			
 	setSliderStatus : function(status, progress) {
 		switch (status) {
@@ -24,8 +26,10 @@ airbus.mes.operationdetail.Formatter = {
 				return airbus.mes.operationdetail.oView.getModel("i18n").getProperty("notStarted");
 			else
 				return airbus.mes.operationdetail.oView.getModel("i18n").getProperty("paused") + String(progress).split(".")[0] + "%";
+			
 		case airbus.mes.operationdetail.Formatter.status.blocked:
 			return airbus.mes.operationdetail.oView.getModel("i18n").getProperty("blocked");
+			
 		default:
 			return airbus.mes.operationdetail.oView.getModel("i18n").getProperty("notStarted");
 		}
@@ -44,16 +48,13 @@ airbus.mes.operationdetail.Formatter = {
 			this.removeStyleClass("sliderCompletedColor");
 			this.addStyleClass("sliderBlockedColor");
 		}
-
 		if (progress == "0.0" || progress == "0" || progress == 0) {
 			this.setVisible(false);
-			return "0%";
+			return " 0%";
 		} else if (String(progress) == "100") {
 			return progress + "%";
-
 		} else {
 			return progress + "%";
-
 		}
 	},
 
@@ -65,19 +66,16 @@ airbus.mes.operationdetail.Formatter = {
 		this.removeStyleClass("dynProgressSlider");
 		this.setVisible(true);
 
-		if (progress == "0.0" || progress == "0" || progress == 0
-				|| progress == NaN) {
+		if (progress == "0.0" || progress == "0" || progress == 0 || progress == NaN) {
 			this.removeStyleClass("dynProgressSlider");
-			return "100%";
+			return " 100%";
 		} else if (String(progress) == "100") {
 			this.setVisible(false);
-			return "0%";
+			return " 0%";
 		} else {
 			this.addStyleClass("dynProgressSlider");
 			return (100 - parseInt(progress,10)) + "%";
-
 		}
-
 	},
 
 	
@@ -87,26 +85,16 @@ airbus.mes.operationdetail.Formatter = {
 			var newEndTime = endTime.replace("T", " ");
 			return newStartTime + " - " + newEndTime;
 		} else {
-			
-			return "-";
-			
-		}
-
-			
+			return "-";			
+		}			
 	},
 	
 	displayValueOrDash : function( sDate ) {
-		
 		if ( sDate != undefined && sDate != "" ) {
-			
 			return sDate;
-			
 		} else {
-			
 			return "-";
-			
 		}
-		
 	},
 		
 	checkOperationStartEndDate:function(startTime, endTime,endDate){
@@ -114,24 +102,23 @@ airbus.mes.operationdetail.Formatter = {
 			var newStartTime = startTime.replace("T", " ");
 			var newEndTime = endTime.replace("T", " ");
 			return newStartTime + " - " + newEndTime;
-		
 		} else 
 			return endDate;
-	},
+		},
+		
 	displayBadge : function(){
 		return airbus.mes.settings.AppConfManager.getConfiguration("MES_BADGE_ACTIVE");
 	},
+	
 	displayPin : function(){
 		return airbus.mes.settings.AppConfManager.getConfiguration("MES_BADGE_PIN");
 	},
+	
 	displaySeperator : function() {
-		if (airbus.mes.settings.AppConfManager
-				.getConfiguration("MES_BADGE_ACTIVE")
-				|| airbus.mes.settings.AppConfManager
-						.getConfiguration("MES_BADGE_PIN")) {
+		if (airbus.mes.settings.AppConfManager.getConfiguration("MES_BADGE_ACTIVE")
+				|| airbus.mes.settings.AppConfManager.getConfiguration("MES_BADGE_PIN")) {
 			return true;
 		} else
 			return false;
 	}
-
 };

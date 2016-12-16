@@ -6,10 +6,13 @@
 		<VBox justifyContent="SpaceBetween" class="sapUiSmallMarginBeginEnd">
 			<HBox justifyContent="Center" class="sapUiSmallMarginTopBottom">
 				<items>
-					<Title id="operationStatus" clas="sapUiSmallMarginTop"
-						text="{parts: ['operationDetailModel>/Rowsets/Rowset/0/Row/0/status', 
-				'operationDetailModel>/Rowsets/Rowset/0/Row/0/progress'], formatter:'airbus.mes.operationdetail.Formatter.setSliderStatus'}"
-						level="H1" titleStyle="H1" />
+					<Title 	id="operationStatus" 
+							class="sapUiSmallMarginTop"
+							text="{parts: ['operationDetailModel>/Rowsets/Rowset/0/Row/0/status', 
+								 'operationDetailModel>/Rowsets/Rowset/0/Row/0/progress'],
+				 				 formatter:'airbus.mes.operationdetail.Formatter.setSliderStatus'}"
+							level="H1" 
+							titleStyle="H1" />
 				</items>
 			</HBox>
 			<Text text="{i18n>progress}: {operationDetailModel>/Rowsets/Rowset/0/Row/0/progress}%">
