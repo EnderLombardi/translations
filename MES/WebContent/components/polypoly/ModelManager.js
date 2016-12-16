@@ -257,7 +257,7 @@ airbus.mes.polypoly.ModelManager = {
 			airbus.mes.polypoly.oView.getController().onRPSearch();
 		}
 
-		airbus.mes.shell.busyManager.unsetBusy_Polypoly();
+		airbus.mes.shell.busyManager.unsetBusy(airbus.mes.polypoly.oView);
 	},
 	
 	

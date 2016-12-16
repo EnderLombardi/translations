@@ -50,6 +50,10 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
 	activateOperation : function() {
 
 		var oView = airbus.mes.operationdetail.status.oView;
+
+		//active busy
+		airbus.mes.shell.busyManager.setBusy(airbus.mes.stationtracker.oView, "stationtracker");
+
 		var data = oView.getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0];
 		var sMessageSuccess = oView.getModel("i18n").getProperty("SuccessfulActivation");
 		var sMessageError = oView.getModel("i18n").getProperty("UnsuccessfulActivation");
@@ -96,10 +100,17 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
 			// Refresh Station tracker Gantt Chart
 			/*airbus.mes.shell.oView.getController().renderStationTracker();*/
 		}
+		else {
+			airbus.mes.shell.busyManager.unsetBusy(airbus.mes.stationtracker.oView, "stationtracker");
+		}
 		return flagSuccess;
 	},
 	
 	pauseOperation : function() {
+
+		//active busy
+		airbus.mes.shell.busyManager.setBusy(airbus.mes.stationtracker.oView, "stationtracker");
+
 		var oView = airbus.mes.operationdetail.status.oView;
 
 		var data = oView.getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0];
@@ -137,21 +148,23 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
 			oView.getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].time_spent = airbus.mes.stationtracker.ModelManager.getSpentTimePerOperation(data.operation_no, data.wo_no);
 			oView.getModel("operationDetailModel").refresh();
 			
-			//oView.byId("btnActivate").setType("Accept");
 			oView.byId("operationStatus").setText(oView.getModel("i18n").getProperty("paused"));
-
-			// Re-Render Station Tracker
-			/*airbus.mes.shell.oView.getController().renderStationTracker();*/
 
 			// update operationDetailsModel
 			sap.ui.getCore().getModel("operationDetailModel").setProperty("/Rowsets/Rowset/0/Row/0/status", "IN_QUEUE")
 			sap.ui.getCore().getModel("operationDetailModel").refresh();
+		}
+		else {
+			airbus.mes.shell.busyManager.unsetBusy(airbus.mes.stationtracker.oView, "stationtracker");
 		}
 	},
 
 	confirmOperation : function(oEvent) {
 
 		var oView = airbus.mes.operationdetail.status.oView;
+
+		//active busy
+		airbus.mes.shell.busyManager.setBusy(airbus.mes.stationtracker.oView, "stationtracker");
 
 		// click on confirm
 		oView.getController().operationStatus = "C";
@@ -335,78 +348,94 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
 
 	onOKConfirmation : function(oEvent) {
 
-		var sMessageSuccess = "";
-		var oView = airbus.mes.operationdetail.status.oView;
+		//active busy
+		sap.ui.getCore().byId("partial").setBusyIndicatorDelay(0);
+		sap.ui.getCore().byId("operationDetailPopup--operationDetailPopUp").setBusyIndicatorDelay(0);
 
-		var uID = sap.ui.getCore().byId("UIDForConfirmation").getValue();
-		var bID = sap.ui.getCore().byId("badgeIDForConfirmation").getValue();
-		var ID;
-		if (bID != "") {
-			ID = bID;
-		} else {
-			ID = uID;
-		}
-		var pin = sap.ui.getCore().byId("pinForConfirmation").getValue();
-		var user = sap.ui.getCore().byId("userNameForConfirmation").getValue();
-		var pass = sap.ui.getCore().byId("passwordForConfirmation").getValue();
-		if(oView._reasonCodeDialog) {
-			sMessageSuccess = oView.getModel("i18n").getProperty("Partial_Confirmation_Done");
-		} else {
-			sMessageSuccess = oView.getModel("i18n").getProperty("SuccessfulConfirmation");
-		}	
-		var sWo = airbus.mes.operationdetail.status.oView.getModel("operationDetailModel").getProperty(
-				"/Rowsets/Rowset/0/Row/0/wo_no");
-		var sMessageError = oView.getModel("i18n").getProperty("ErrorDuringConfirmation");
+		airbus.mes.shell.busyManager.setBusy(sap.ui.getCore(), "partial");
+		airbus.mes.shell.busyManager.setBusy(sap.ui.getCore(), "operationDetailPopup--operationDetailPopUp");
 
-		if ((user == "" || pass == "") && (ID == "")) {
-			sap.ui.getCore().byId("msgstrpConfirm").setVisible(true);
-			sap.ui.getCore().byId("msgstrpConfirm").setType("Error");
-			sap.ui.getCore().byId("msgstrpConfirm")
-					.setText(oView.getModel("i18n").getProperty("CompulsaryCredentials"));
-		} else {
-			sap.ui.getCore().byId("msgstrpConfirm").setVisible(false);
-			var percent;
-
-			if (oView.getController().operationStatus == "X") {
-				percent = 100;
+		//setTimeout of 1ms because the setBusy begin after if we don't use this trick
+		setTimeout(function() {
+			var sMessageSuccess = "";
+			var oView = airbus.mes.operationdetail.status.oView;
+			
+			var uID = sap.ui.getCore().byId("UIDForConfirmation").getValue();
+			var bID = sap.ui.getCore().byId("badgeIDForConfirmation").getValue();
+			var ID;
+			if (bID != "") {
+				ID = bID;
 			} else {
-				percent = sap.ui.getCore().byId("progressSlider").getValue();
+				ID = uID;
 			}
-			//
-			// Call service for Operation Confirmation
-			var flagSuccess = airbus.mes.operationdetail.ModelManager.confirmOperation(user, pass, oView
-					.getController().operationStatus, percent, oView.getModel("operationDetailModel").getProperty(
-					"/Rowsets/Rowset/0/Row/0/sfc_step_ref"), oView.getController().reasonCodeText, oView
-					.getController().Mode, ID, pin, sMessageError, sMessageSuccess, sWo);
+			var pin = sap.ui.getCore().byId("pinForConfirmation").getValue();
+			var user = sap.ui.getCore().byId("userNameForConfirmation").getValue();
+			var pass = sap.ui.getCore().byId("passwordForConfirmation").getValue();
+			if(oView._reasonCodeDialog) {
+				sMessageSuccess = oView.getModel("i18n").getProperty("Partial_Confirmation_Done");
+			} else {
+				sMessageSuccess = oView.getModel("i18n").getProperty("SuccessfulConfirmation");
+			}	
+			var sWo = airbus.mes.operationdetail.status.oView.getModel("operationDetailModel").getProperty(
+					"/Rowsets/Rowset/0/Row/0/wo_no");
+			var sMessageError = oView.getModel("i18n").getProperty("ErrorDuringConfirmation");
 
-			// Close reason code dialog
-			if (oView._reasonCodeDialog) {
-				oView._reasonCodeDialog.close();
-			}
-				
-			// Close confirmation dialogue
-			oView._oUserConfirmationDialog.close();
+			if ((user == "" || pass == "") && (ID == "")) {
+				sap.ui.getCore().byId("msgstrpConfirm").setVisible(true);
+				sap.ui.getCore().byId("msgstrpConfirm").setType("Error");
+				sap.ui.getCore().byId("msgstrpConfirm")
+						.setText(oView.getModel("i18n").getProperty("CompulsaryCredentials"));
 
-			if (flagSuccess === true) {
-				//update spent time on success of confirmation
-				var data = oView.getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0];
-				oView.getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].time_spent = airbus.mes.stationtracker.ModelManager.getSpentTimePerOperation(data.operation_no, data.wo_no);
-				oView.getModel("operationDetailModel").refresh();
-				// Refresh User Operation Model and Operation Detail
-				airbus.mes.shell.oView.getController().renderStationTracker();
+				airbus.mes.shell.busyManager.unsetBusy(sap.ui.getCore(), "partial");
+				airbus.mes.shell.busyManager.unsetBusy(sap.ui.getCore(), "operationDetailPopup--operationDetailPopUp");
+			} else {
+				sap.ui.getCore().byId("msgstrpConfirm").setVisible(false);
+				var percent;
 
-				// update operationDetailsModel
 				if (oView.getController().operationStatus == "X") {
-					sap.ui.getCore().getModel("operationDetailModel").setProperty("/Rowsets/Rowset/0/Row/0/status",
-							"COMPLETED");
-					oView.getController().setProgressScreenBtn(false, false, false);
+					percent = 100;
+				} else {
+					percent = sap.ui.getCore().byId("progressSlider").getValue();
 				}
+				
+				// Call service for Operation Confirmation
+				var flagSuccess = airbus.mes.operationdetail.ModelManager.confirmOperation(user, pass, oView
+						.getController().operationStatus, percent, oView.getModel("operationDetailModel").getProperty(
+						"/Rowsets/Rowset/0/Row/0/sfc_step_ref"), oView.getController().reasonCodeText, oView
+						.getController().Mode, ID, pin, sMessageError, sMessageSuccess, sWo);
 
-				sap.ui.getCore().getModel("operationDetailModel").setProperty("/Rowsets/Rowset/0/Row/0/progress",
-						percent)
-				sap.ui.getCore().getModel("operationDetailModel").refresh();
+				// Close reason code dialog
+				if (oView._reasonCodeDialog) {
+					oView._reasonCodeDialog.close();
+				}
+					
+				// Close confirmation dialogue
+				oView._oUserConfirmationDialog.close();
+
+				airbus.mes.shell.busyManager.unsetBusy(sap.ui.getCore(), "partial");
+				airbus.mes.shell.busyManager.unsetBusy(sap.ui.getCore(), "operationDetailPopup--operationDetailPopUp");
+
+				if (flagSuccess === true) {
+					//update spent time on success of confirmation
+					var data = oView.getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0];
+					oView.getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].time_spent = airbus.mes.stationtracker.ModelManager.getSpentTimePerOperation(data.operation_no, data.wo_no);
+					oView.getModel("operationDetailModel").refresh();
+					// Refresh User Operation Model and Operation Detail
+					airbus.mes.shell.oView.getController().renderStationTracker();
+
+					// update operationDetailsModel
+					if (oView.getController().operationStatus == "X") {
+						sap.ui.getCore().getModel("operationDetailModel").setProperty("/Rowsets/Rowset/0/Row/0/status",
+								"COMPLETED");
+						oView.getController().setProgressScreenBtn(false, false, false);
+					}
+
+					sap.ui.getCore().getModel("operationDetailModel").setProperty("/Rowsets/Rowset/0/Row/0/progress",
+							percent)
+					sap.ui.getCore().getModel("operationDetailModel").refresh();
+				}
 			}
-		}
+		}, 1);
 	},
 
 	/***********************************************************

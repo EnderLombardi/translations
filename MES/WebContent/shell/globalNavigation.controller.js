@@ -225,22 +225,21 @@ sap.ui.controller(
 						// Dont reaload station tracker on disruptionTrackerView
 						if (  nav.getCurrentPage().getId() != "disruptiontrackerView" ) {
 						
-							
-							
-						airbus.mes.stationtracker.oView.byId("stationtracker").setBusy(true);
-						airbus.mes.stationtracker.ShiftManager.updateShift = false;
-						var oModule = airbus.mes.stationtracker.ModelManager;
-						airbus.mes.shell.oView.getController().setInformationVisibility(true);
+							//active busy
+							airbus.mes.shell.busyManager.setBusy(airbus.mes.stationtracker.oView, "stationtracker");
 
-						// ** synchrone call **//
-						oModule.loadShifts();
-						oModule.loadAffectation();
-						airbus.mes.stationtracker.ShiftManager.init(airbus.mes.stationtracker.GroupingBoxingManager.shiftNoBreakHierarchy);
-						airbus.mes.stationtracker.AssignmentManager.computeAffectationHierarchy();
+							airbus.mes.stationtracker.ShiftManager.updateShift = false;
+							var oModule = airbus.mes.stationtracker.ModelManager;
+							airbus.mes.shell.oView.getController().setInformationVisibility(true);
 
-						// ** asynchrone call **//
-						airbus.mes.shell.oView.oController.loadStationTrackerGantKPI();
-						
+							// ** synchrone call **//
+							oModule.loadShifts();
+							oModule.loadAffectation();
+							airbus.mes.stationtracker.ShiftManager.init(airbus.mes.stationtracker.GroupingBoxingManager.shiftNoBreakHierarchy);
+							airbus.mes.stationtracker.AssignmentManager.computeAffectationHierarchy();
+
+							// ** asynchrone call **//
+							airbus.mes.shell.oView.oController.loadStationTrackerGantKPI();
 						}
 					},
 
@@ -258,8 +257,6 @@ sap.ui.controller(
 						oModule.loadFilterUnplanned();
 						oModule.loadKPI();
 						oModule.getPhStation();
-					
-						// oModule.loadKPIextraWork();
 					},
 
 					setInformationVisibility : function(bSet) {
@@ -369,7 +366,6 @@ sap.ui.controller(
 							sap.ui.getCore().byId("msgstrpMyProfile").setVisible(false);
 							if (data.Message) {
 								type = data.Message.split(":")[0];
-								// id = data.Message.split(":")[1];
 
 								if (type == "UID") {
 									sap.ui.getCore().byId("uIdMyProfile").setValue(data.Message);

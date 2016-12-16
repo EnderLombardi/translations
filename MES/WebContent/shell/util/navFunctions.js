@@ -48,8 +48,7 @@ airbus.mes.shell.util.navFunctions = {
 			}
 		}
 
-		airbus.mes.shell.busyManager.setBusy_Polypoly();
-		airbus.mes.shell.busyManager.avoidInfiniteBusy_Polypoly();
+		airbus.mes.shell.busyManager.setBusy(airbus.mes.polypoly.oView);
 
 		airbus.mes.polypoly.PolypolyManager.globalContext.bEditable = !airbus.mes.stationtracker.AssignmentManager.polypolyAffectation;
 

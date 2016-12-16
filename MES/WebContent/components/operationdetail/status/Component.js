@@ -18,8 +18,6 @@ airbus.mes.operationdetail.status.Component.prototype.createContent = function()
 
 
 	if (airbus.mes.operationdetail.status.oView === undefined) {
-		//		Initialization
-		//airbus.mes.operationdetail.ModelManager.init(sap.ui.getCore()); 
 		
 		// View on XML
 		this.oView = sap.ui.view({
