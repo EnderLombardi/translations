@@ -62,10 +62,12 @@ sap.ui
 						} else {
 //							Check status of operation - If Complete
 							
-							var aModel = airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0];
-							var sStatus = aModel.realStatus;
+//							var aModel = airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0];
+//							var sStatus = aModel.realStatus;
+							var sStatus = sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/status");
+							
 							// if operation is not complete complete, we can create a disruption
-							if ( sStatus !== "0" ) {
+							if ( sStatus !== "COMPLETED" ) {
 								sap.ui.getCore().byId("operationDetailPopup--reportDisruption").setVisible(true);
 							}							
 						}
