@@ -66,6 +66,28 @@ POLYPOLY
         border: 2px solid #ebeff4;
     }
 }
+div{
+    &.sapMBtnInner{
+        &.sapMBtnEmphasized{
+            background-color: transparent;
+        }
+    }
+}
+.sapMFooter-CTX{
+    .sapMBtn{
+        &:hover{
+            &>.sapMBtnHoverable{
+                    &.sapMBtnEmphasized{
+                        &:not(.sapMBtnActive){
+                            background-color: rgba(234,234,234,0.1);
+                            border-color: transparent;
+                    }
+                }
+            }
+        }
+    }
+}
+
 .sapUiTableColHdrScr{
     .sapUiTableColHdr{
         &:nth-child(2){

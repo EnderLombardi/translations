@@ -15,8 +15,10 @@ airbus.mes.operationdetail.Formatter = {
 		case airbus.mes.operationdetail.Formatter.status.completed:
 			return airbus.mes.operationdetail.oView.getModel("i18n").getProperty("confirmed");
 
-		case airbus.mes.operationdetail.Formatter.status.active:
-			return airbus.mes.operationdetail.oView.getModel("i18n").getProperty("in_progress");
+    setSliderStatus : function(status, progress) {
+        switch (status) {
+        case airbus.mes.operationdetail.Formatter.status.completed:
+            return airbus.mes.operationdetail.oView.getModel("i18n").getProperty("confirmed");
 
 		case airbus.mes.operationdetail.Formatter.status.paused:
 
@@ -35,13 +37,9 @@ airbus.mes.operationdetail.Formatter = {
 		}
 	},
 
-	sliderStatusFirst : function(status, progress) {
-		if (typeof progress == "undefined")
-			return;
+        case airbus.mes.operationdetail.Formatter.status.paused:
 
-		this.removeStyleClass("dynProgressSlider");
-		this.setVisible(true);
-		this.removeStyleClass("sliderBlockedColor");
+            return airbus.mes.operationdetail.oView.getModel("i18n").getProperty("paused") + " " + String(progress).split(".")[0] + "%";
 
 		//to manage blocked status for next version
 		if (status == "B") {
@@ -58,13 +56,17 @@ airbus.mes.operationdetail.Formatter = {
 		}
 	},
 
-	sliderStatus : function(status, progress) {
+        if (progress == "0.0" || progress == "0" || progress == 0) {
+            this.setVisible(false);
+            return "0%";
+        } else if (String(progress) == "100") {
+            return progress + "%";
 
-		if (typeof progress == "undefined")
-			return;
+        } else {
+            return progress + "%";
 
-		this.removeStyleClass("dynProgressSlider");
-		this.setVisible(true);
+        }
+    },
 
 		if (progress == "0.0" || progress == "0" || progress == 0 || progress == NaN) {
 			this.removeStyleClass("dynProgressSlider");

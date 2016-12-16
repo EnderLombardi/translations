@@ -268,9 +268,18 @@ html{
                 color:$white-two;
             }
         }
+        .sapMIBar-CTX{
+            &.sapMFooter-CTX{
+                :not(.sapMBtnDisabled){
+                    &>.sapMBtnActive{
+                        border-color: transparent;
+                        background-color: rgba(234,234,234,0.1);
+                    }
+                }
+            }
+        }
     }
 }
-
 .customComboBox {
     button {
         border: 1px solid $ligth-grey;
@@ -291,8 +300,8 @@ html{
 
 // MyProfile css
 .myProfileButton:hover {
-    > div { 
-	    background: rgba(234,234,234,0.1) !important;
+    > div {
+        background: rgba(234,234,234,0.1) !important;
     }
 }
 
@@ -314,7 +323,7 @@ html{
 #settingsView--settingsSubHeader {
     background-color: $duck-egg-blue;
     > div {
-        > button {      
+        > button {
             & >.sapMBtnActive {
                 background-color: $twilight-blue;
                 @include backgroundColorTransition(0.2s);

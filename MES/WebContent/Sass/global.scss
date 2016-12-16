@@ -340,6 +340,13 @@ FORM
    }
 
 }
+#scanButtonMyProfile #scanButtonMyProfile-inner,
+#scanButton #scanButton-inner,
+#badgeMngMyProfile-cont .sapMBtnInner.sapMBtnEmphasized{
+        background-color: rgba(0, 32, 91, 0.94);
+        border-color: transparent;
+
+}
 
 /*************
 Datepicker
