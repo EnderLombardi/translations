@@ -705,8 +705,11 @@ airbus.mes.stationtracker.ModelManager = {
 				airbus.mes.stationtracker.ShiftManager.selectFirstShift = false;
 
 			} else {
+				
 				// Select the previous shift selected
-				airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftID);
+				airbus.mes.stationtracker.oView.byId("selectShift").setSelectedIndex(airbus.mes.stationtracker.ShiftManager.sIndexCombobox);
+				airbus.mes.stationtracker.oView.byId("selectShift").rerender();
+				//airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftID);				airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftID);
 				airbus.mes.stationtracker.oView.byId("selectShift").fireChange(0);
 				
 			}

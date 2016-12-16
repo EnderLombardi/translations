@@ -626,6 +626,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
     changeShift : function() {
 
         var sPath = airbus.mes.stationtracker.oView.byId("selectShift").getSelectedIndex();
+        airbus.mes.stationtracker.ShiftManager.sIndexCombobox = sPath;
         var oModel = airbus.mes.stationtracker.oView.getModel("stationTrackerShift").getProperty("/" + sPath);
 
         airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftName = oModel.shiftName;
