@@ -1003,7 +1003,7 @@ airbus.mes.disruptions.ModelManager = {
 		
 		// Check if any blocking disruption still open (not closed)
 		for(var i = 0; i < aDisruption.length; i++){
-			if (aDisruption[i].Gravity == 3 && aDisruption[i].Status != airbus.mes.disruptions.Formatter.status.closed) {
+			if (aDisruption[i].Gravity == 3 && !airbus.mes.disruptions.Formatter.isStatusFinal(aDisruption[i].Status)) {
 				sStatus = airbus.mes.operationdetail.Formatter.status.blocked;
 				break;
 			}

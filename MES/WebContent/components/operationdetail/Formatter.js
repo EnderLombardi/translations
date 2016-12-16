@@ -25,7 +25,7 @@ airbus.mes.operationdetail.Formatter = {
 			if (progress == "0.0" || progress == "0" || progress == 0)
 				return airbus.mes.operationdetail.oView.getModel("i18n").getProperty("notStarted");
 			else
-				return airbus.mes.operationdetail.oView.getModel("i18n").getProperty("paused") + String(progress).split(".")[0] + "%";
+				return airbus.mes.operationdetail.oView.getModel("i18n").getProperty("paused") + " " + String(progress).split(".")[0] + "%";
 			
 		case airbus.mes.operationdetail.Formatter.status.blocked:
 			return airbus.mes.operationdetail.oView.getModel("i18n").getProperty("blocked");
