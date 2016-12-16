@@ -995,12 +995,12 @@ airbus.mes.disruptions.ModelManager = {
 	// Change text of status in progress tab if any blocking disruption still open (not closed)
 	checkDisruptionStatus : function(operationDisruptionsModel) {
 		var aDisruption = operationDisruptionsModel.getProperty("/Rowsets/Rowset/0/Row");
-		if(aDisruption === undefined)
-			return;
-		
 		var sStatus = null;
-		var modelRefresh = false;
 		
+		if(aDisruption === undefined) {
+			return;
+		}
+
 		// Check if any blocking disruption still open (not closed)
 		for(var i = 0; i < aDisruption.length; i++){
 			if (aDisruption[i].Gravity == 3 && !airbus.mes.disruptions.Formatter.isStatusFinal(aDisruption[i].Status)) {
@@ -1012,16 +1012,27 @@ airbus.mes.disruptions.ModelManager = {
 		// Set status = blocking
 		if(sStatus != null){
 			sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].status = sStatus;
-			modelRefresh = true;
 		} else if(sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].status == airbus.mes.operationdetail.Formatter.status.blocked) {
 			// Set status = In Progess if blocked earlier	
-			sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].status =  airbus.mes.operationdetail.Formatter.status.active;
-			modelRefresh = true;
+			
+//			Set the previous status
+			sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].status = airbus.mes.stationtracker.GroupingBoxingManager.computeStatus(sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].state,
+																													sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].paused, 
+																													sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].previously_start );
+			
+			// calculate status of operation
+			var sStatus;
+			if (sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].status == "0")
+				sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].status = "COMPLETED";
+			else if (sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].status == "2")
+				sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].status = "IN_WORK";
+			else if (sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].status === "3")
+				sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].status = "IN_QUEUE";
+			else if (sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].status === "1")
+				sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].status = "NOT_STARTED";
 		}
-	
+			
 		// Refresh model
-		if(modelRefresh == true){
-			sap.ui.getCore().getModel("operationDetailModel").refresh();
-		}
+		sap.ui.getCore().getModel("operationDetailModel").refresh();
 	}
 };

@@ -230,24 +230,9 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 			var fOSW = "0";
 			var fRMA = "0";
 			var sUnplanned = "0";
-
 			
-			// Operation is active	
-			if (  el.PAUSED === "false") {
-				sStatus = "2";
-			}		
-			// Operation is not started
-			if ( el.PAUSED === "---" ) {
-				sStatus = "1";
-				// Operation is pause	
-				if ( el.PAUSED === "---" && el.PREVIOUSLY_STARTED === "true" ) {
-						sStatus = "3";
-					}	
-			}				
-			// Operation Completed
-			if ( el.STATE === "C" ) {
-				sStatus = "0";
-			}
+			sStatus = airbus.mes.stationtracker.GroupingBoxingManager.computeStatus(el.STATE, el.PAUSED, el.PREVIOUSLY_STARTED );
+			
 			//Opened Blocking and Escalated disruption
 			if ( el.DISRUPTION === "D1") {
 				sStatus = "4";
@@ -590,6 +575,27 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 		scheduler.xy.scroll_width=20;
 	    airbus.mes.stationtracker.oView.byId("stationtracker").setBusy(false);
 	    scheduler.parse(aBox,"json");
+	},
+	computeStatus : function(sState, sPaused, sPreviouslyStarted){
+		var sStatus = "";
+		
+		// Operation is active	
+		if (  sPaused === "false") {
+			sStatus = "2";
+		}		
+		// Operation is not started
+		if ( sPaused === "---" ) {
+			sStatus = "1";
+			// Operation is pause	
+			if ( sPaused === "---" && sPreviouslyStarted === "true" ) {
+					sStatus = "3";
+				}	
+		}				
+		// Operation Completed
+		if ( sState === "C" ) {
+			sStatus = "0";
+		}
+		return sStatus;
 	}
 	
 };

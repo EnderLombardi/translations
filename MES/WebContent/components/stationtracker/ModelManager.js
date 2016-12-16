@@ -1013,6 +1013,7 @@ airbus.mes.stationtracker.ModelManager = {
 						"cpp_cluster" : aModel[0].CPP_CLUSTER,
 						"work_package" : aModel[0].WORK_PACKAGE,
 						"erp_system" : aModel[0].ERP_SYSTEM,
+						"state" : aModel[0].STATE,
 						"previously_start" : aModel[0].PREVIOUSLY_STARTED,
 						"paused" : aModel[0].PAUSED, 
 						"noOfEmp" : aModel[0].NUMBER_OF_EMPLOYEES
