@@ -445,4 +445,12 @@ RESSOURCEPOOL
     }
 }
 
+#searchResourcePool--searchForm--Layout {
+    .sapMBtnReject {
+        background-color: rgb(204, 25, 25);
+        &:hover:not(.sapMBtnActive) {
+            background-color:#b51616;
+        }
+    }
+}
 
