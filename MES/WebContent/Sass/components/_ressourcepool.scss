@@ -37,7 +37,7 @@ RESSOURCEPOOL
         @include ylabelUserImage();
     }
     .fixDsiplayRpImg{
-        width:98%;
+        width:100%;
         .sapUiHLayoutChildWrapper{
             &::nth-child(1){
                 width: auto;
@@ -120,13 +120,23 @@ RESSOURCEPOOL
     }
 }
 .floatRight{
-    margin: .5rem 1rem 0 0;
+    margin: .5rem 1rem 0px 0;
     float: right !important;
     color: #666666;
+    white-space: nowrap;
+    vertical-align: middle;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin-left: 60px;
+    max-width: 60px;
 }
 .customlistTitle{
     font-size: 1rem;
     margin-top: .5rem;
+    min-width: 160px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 160px;
     margin-botton: .5rem;
 }
 .listItemDescrption{

@@ -153,10 +153,10 @@ STATIONTRACKER
     background: $background;
 }
 @mixin animbackground($animation...){
-	    background-size: 56px 56px;
-	    -webkit-animation: $animation;
-	    -moz-animation: $animation;
-	    animation :$animation;
+        background-size: 56px 56px;
+        -webkit-animation: $animation;
+        -moz-animation: $animation;
+        animation :$animation;
 }
 @mixin keyframes($animationName) {
     @-webkit-keyframes #{$animationName} {
@@ -173,7 +173,7 @@ STATIONTRACKER
     }
 }
 @mixin wordwrap {
-	text-overflow: ellipsis;
+    text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
 }

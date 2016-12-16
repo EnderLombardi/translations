@@ -575,16 +575,16 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
         overflow:visible;
     }
     .yText{
-	    width: 100px;
-	    float: left;
-	    height: 40px;
+        width: 100px;
+        float: left;
+        height: 40px;
     }
-    
+
     .avlLine{
-    	overflow: hidden;
-    	text-overflow: ellipsis;
-    max-width: 50px;
-   	 white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    max-width: 130px;
+        white-space: nowrap;
     white-space: nowrap;
     color: #0D5D76;
     vertical-align: middle;
@@ -592,7 +592,7 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
     display: inline-block;
     overflow: hidden;
     }
-    
+
     .ylabel{
         white-space: nowrap;
         color: #0D5D76;
@@ -600,8 +600,8 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
         text-overflow: ellipsis;
         display: inline-block;
         overflow: hidden ;
-        max-width: 80px; 
-        height: 15px; 
+        max-width: 80px;
+        height: 15px;
     }
     .ylabelEditIcon{
         @extend %stationViewYlabelIconAndImage;
@@ -612,11 +612,12 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
         background-color: $duck-egg-blue;
         border-radius: 999px;
         float: left;
-	    margin-right:10px;
-	    }
+        margin-right:10px;
+        }
     .ylabelUser{
         @extend %stationViewYlabelUser;
-	    margin-left: 0px;
+        margin-left: 0px;
+        max-width: 130px;
     }
     .yMoreLabel{
         position: absolute;
@@ -1602,13 +1603,13 @@ OTHER
     padding: 0rem !important;
     height: 101%;
 }
-#mes{
-    .ClassOperationDetailPopUp{
-        .sapMInputBaseInner{
-            width: 35vw;
-        }
-    }
-}
+//#mes{
+//    .ClassOperationDetailPopUp{
+//        .sapMInputBaseInner{
+//            width: 35vw;
+//        }
+//    }
+//}
 
 .dhx_marked_timespan, .dhx_matrix_now_time {
     border-left-color: purple !important;

@@ -839,7 +839,7 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
 #stationTrackerView--stationtracker .avlLine {
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 50px;
+  max-width: 130px;
   white-space: nowrap;
   white-space: nowrap;
   color: #0D5D76;
@@ -864,7 +864,8 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
   float: left;
   margin-right: 10px; }
 #stationTrackerView--stationtracker .ylabelUser {
-  margin-left: 0px; }
+  margin-left: 0px;
+  max-width: 130px; }
 #stationTrackerView--stationtracker .yMoreLabel {
   position: absolute;
   right: 2px;
@@ -1615,9 +1616,6 @@ OTHER
   padding: 0rem !important;
   height: 101%; }
 
-#mes .ClassOperationDetailPopUp .sapMInputBaseInner {
-  width: 35vw; }
-
 .dhx_marked_timespan, .dhx_matrix_now_time {
   border-left-color: purple !important;
   opacity: 1;
@@ -2310,7 +2308,7 @@ RESSOURCEPOOL
   background-color: #D5F1F8;
   border-radius: 999px; }
 #idUsersView .fixDsiplayRpImg {
-  width: 98%; }
+  width: 100%; }
   #idUsersView .fixDsiplayRpImg .sapUiHLayoutChildWrapper::nth-child(1) {
     width: auto;
     margin: 1%; }
@@ -2375,13 +2373,23 @@ RESSOURCEPOOL
     color: #434343; }
 
 .floatRight {
-  margin: .5rem 1rem 0 0;
+  margin: .5rem 1rem 0px 0;
   float: right !important;
-  color: #666666; }
+  color: #666666;
+  white-space: nowrap;
+  vertical-align: middle;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin-left: 60px;
+  max-width: 60px; }
 
 .customlistTitle {
   font-size: 1rem;
   margin-top: .5rem;
+  min-width: 160px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 160px;
   margin-botton: .5rem; }
 
 .listItemDescrption {
