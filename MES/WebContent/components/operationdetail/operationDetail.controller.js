@@ -177,11 +177,11 @@ sap.ui
                                 this.nav.addPage(airbus.mes.operationdetail.status.oView);
                             }
                             
-                            
-                            this.nav.to(airbus.mes.operationdetail.status.oView.getId());
+                             this.nav.to(airbus.mes.operationdetail.status.oView.getId());
 
                             airbus.mes.operationdetail.status.oView.oController.operationIsActive();
-                            airbus.mes.operationdetail.status.oView.oController.setOperationActionButtons();                            
+                            airbus.mes.operationdetail.status.oView.oController.setOperationActionButtons(); 
+                            airbus.mes.disruptions.ModelManager.checkDisruptionStatus(airbus.mes.disruptions.oView.viewDisruption.getModel("operationDisruptionsModel"));
 
                      break;
                      case "disruption":

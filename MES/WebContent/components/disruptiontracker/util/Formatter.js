@@ -44,10 +44,8 @@ airbus.mes.disruptiontracker.Formatter = {
 		case "1":
 			return airbus.mes.settings.AppConfManager._getConfiguration("MES_COLOR_GRAVITY1");
 		case "2":
-			if (airbus.mes.settings.AppConfManager
-					._getConfiguration("MES_COLOR_GRAVITY2") === "Amber")
+			if (airbus.mes.settings.AppConfManager._getConfiguration("MES_COLOR_GRAVITY2") === "Amber")
 				return "#FFC200";
-
 			return airbus.mes.settings.AppConfManager._getConfiguration("MES_COLOR_GRAVITY2");
 		case "3":
 			return airbus.mes.settings.AppConfManager._getConfiguration("MES_COLOR_GRAVITY3");

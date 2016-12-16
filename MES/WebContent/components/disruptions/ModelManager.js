@@ -986,12 +986,9 @@ airbus.mes.disruptions.ModelManager = {
 				});
 
 		if ( flagSuccess ) {
-
 			//Refresh station tracker
-			airbus.mes.shell.oView.getController().renderStationTracker();
-			
-		}
-		
+			airbus.mes.shell.oView.getController().renderStationTracker();	
+		}	
 		return flagSuccess
 	},
 	
@@ -1019,9 +1016,7 @@ airbus.mes.disruptions.ModelManager = {
 		} else if(sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].status == airbus.mes.operationdetail.Formatter.status.blocked) {
 			// Set status = In Progess if blocked earlier	
 			sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].status =  airbus.mes.operationdetail.Formatter.status.active;
-				
-				modelRefresh = true;
-			
+			modelRefresh = true;
 		}
 	
 		// Refresh model
