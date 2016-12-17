@@ -471,7 +471,7 @@ airbus.mes.stationtracker.util.Formatter = {
 							+ ' class="' + airbus.mes.stationtracker.util.Formatter.openFolder(oSection.open) + '"></span><div title='
 							+ airbus.mes.stationtracker.util.Formatter.spaceInsecable(oSection.label) + ' class="ylabelfolder">' + oSection.label
 							+ '</div><span id= add_' + oSection.key
-							+ ' class="fa fa-plus custom" onclick="airbus.mes.stationtracker.AssignmentManager.newLine(\''
+							+ ' style="color: grey;" class="fa fa-plus custom" onclick="airbus.mes.stationtracker.AssignmentManager.newLine(\''
 							+ oSection.key + '\')"></span></div>';
 					return html;
 				}
