@@ -292,7 +292,7 @@
 										
 										<f:FormElement>
 											<f:label>
-												<Label class="detailLabels" text="{i18nModel>stjigtool}">
+												<Label class="detailLabels" text="{i18nModel>Jigtool}">
 													<layoutData>
 														<l:GridData span="L3 M3 S12" />
 													</layoutData>
