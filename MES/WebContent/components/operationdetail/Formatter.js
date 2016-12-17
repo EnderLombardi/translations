@@ -50,7 +50,7 @@ airbus.mes.operationdetail.Formatter = {
         }
         if (progress == "0.0" || progress == "0" || progress == 0) {
             this.setVisible(false);
-            return " 0%";
+            return "0%";
         } else if (String(progress) == "100") {
             return progress + "%";
         } else {
@@ -68,10 +68,10 @@ airbus.mes.operationdetail.Formatter = {
 
         if (progress == "0.0" || progress == "0" || progress == 0 || progress == NaN) {
             this.removeStyleClass("dynProgressSlider");
-            return " 100%";
+            return "100%";
         } else if (String(progress) == "100") {
             this.setVisible(false);
-            return " 0%";
+            return "0%";
         } else {
             this.addStyleClass("dynProgressSlider");
             return (100 - parseInt(progress,10)) + "%";
