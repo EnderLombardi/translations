@@ -2594,10 +2594,10 @@ POLYPOLY
 
 .sapMFlexItem > [id^="__select"] {
   border: 2px solid #ebeff4; }
-
+/*
 div.sapMBtnInner.sapMBtnEmphasized {
   background-color: transparent; }
-
+*/
 .sapMFooter-CTX .sapMBtn:hover > .sapMBtnHoverable.sapMBtnEmphasized:not(.sapMBtnActive) {
   background-color: rgba(234, 234, 234, 0.1);
   border-color: transparent; }
@@ -3033,9 +3033,10 @@ html.sap-desktop .operationDetailHeadPanel .opDetailNavToolbar .sapMSegBBtnFocus
 .sliderBlockedColor .sapMSliderProgress {
   background-color: darkorange !important; }
 
+/*
 div.sapMBtnInner.sapMBtnReject, div.sapMBtnInner.sapMBtnAccept {
   background-color: transparent; }
-
+*/
 .sapMFooter-CTX .sapMBtn:hover > .sapMBtnHoverable.sapMBtnAccept:not(.sapMBtnActive), .sapMFooter-CTX .sapMBtn:hover > .sapMBtnHoverable.sapMBtnReject:not(.sapMBtnActive), :not(.sapMBtnDisabled) > div.sapMBtnInner.sapMBtnAccept.sapMBtnActive, :not(.sapMBtnDisabled) > div.sapMBtnInner.sapMBtnReject.sapMBtnActive {
   border-color: transparent;
   background-color: rgba(234, 234, 234, 0.1); }
