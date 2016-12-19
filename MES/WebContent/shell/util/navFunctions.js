@@ -3,6 +3,12 @@
 jQuery.sap.declare("airbus.mes.shell.util.Functions");
 
 airbus.mes.shell.util.navFunctions = {
+		
+	disruptionButtons:{
+		create: undefined,
+		update:undefined,
+		cancel:undefined		
+	},
 
 	stationTracker : function() {
 
@@ -141,6 +147,11 @@ airbus.mes.shell.util.navFunctions = {
 			cancelButton.detachPress(airbus.mes.disruptions.oView.createDisruption.oController.onCancelCreateDisruption);
 			cancelButton.attachPress(airbus.mes.disruptions.oView.createDisruption.oController.onCancelCreateDisruption);
 		}
+		
+		
+		airbus.mes.shell.util.navFunctions.disruptionButtons.create = createButton;
+		airbus.mes.shell.util.navFunctions.disruptionButtons.update = updateButton;
+		airbus.mes.shell.util.navFunctions.disruptionButtons.cancel = cancelButton;
 	},
 
 	disruptionTracker : function() {

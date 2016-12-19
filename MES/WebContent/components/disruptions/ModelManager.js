@@ -300,6 +300,9 @@ airbus.mes.disruptions.ModelManager = {
 	createDisruption : function(messageHandle, messageType, messageSubject,
 			messageBody, payloadData) {
 
+		airbus.mes.shell.util.navFunctions.disruptionButtons.create.setEnabled(false);
+		airbus.mes.shell.util.navFunctions.disruptionButtons.cancel.setEnabled(false);
+		
 		jQuery.ajax({
 					async : true,
 					cache : false,
@@ -359,6 +362,10 @@ airbus.mes.disruptions.ModelManager = {
 						}
 						
 
+						airbus.mes.shell.util.navFunctions.disruptionButtons.create.setEnabled(true);
+						airbus.mes.shell.util.navFunctions.disruptionButtons.cancel.setEnabled(true);
+						
+
 					},
 
 					error : function() {
@@ -369,6 +376,10 @@ airbus.mes.disruptions.ModelManager = {
 								.messageShow(airbus.mes.operationdetail.createDisruption.oView
 										.getModel("i18nModel").getProperty(
 												"DisruptionNotSaved"));
+						
+
+						airbus.mes.shell.util.navFunctions.disruptionButtons.create.setEnabled(true);
+						airbus.mes.shell.util.navFunctions.disruptionButtons.cancel.setEnabled(true);
 
 					}
 
@@ -398,6 +409,10 @@ airbus.mes.disruptions.ModelManager = {
 
 	updateDisruption : function(sMessageRef, sReason, sResponsibleGroup,
 			sRootCause, iTimeLost, dFixedByTime, sComment, iGravity,dPromisedDate) {
+		
+
+		airbus.mes.shell.util.navFunctions.disruptionButtons.update.setEnabled(false);
+		airbus.mes.shell.util.navFunctions.disruptionButtons.cancel.setEnabled(false);
 
 		jQuery
 				.ajax({
@@ -476,6 +491,9 @@ airbus.mes.disruptions.ModelManager = {
 								airbus.mes.shell.ModelManager.messageShow(data.Rowsets.FatalError);
 							
 						}
+						
+						airbus.mes.shell.util.navFunctions.disruptionButtons.update.setEnabled(true);
+						airbus.mes.shell.util.navFunctions.disruptionButtons.cancel.setEnabled(true);
 
 					},
 
@@ -487,6 +505,9 @@ airbus.mes.disruptions.ModelManager = {
 								.messageShow(airbus.mes.operationdetail.createDisruption.oView
 										.getModel("i18nModel").getProperty(
 												"DisruptionNotSaved"));
+						
+						airbus.mes.shell.util.navFunctions.disruptionButtons.update.setEnabled(true);
+						airbus.mes.shell.util.navFunctions.disruptionButtons.cancel.setEnabled(true);
 
 					}
 
