@@ -348,14 +348,16 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
 
 	onOKConfirmation : function(oEvent) {
 
-		//active busy
+		//set the BusyIndicatorDelay to 0 ms (by default it's 500 ms)
 		sap.ui.getCore().byId("partial").setBusyIndicatorDelay(0);
 		sap.ui.getCore().byId("operationDetailPopup--operationDetailPopUp").setBusyIndicatorDelay(0);
 
+		//active busy
 		airbus.mes.shell.busyManager.setBusy(sap.ui.getCore(), "partial");
 		airbus.mes.shell.busyManager.setBusy(sap.ui.getCore(), "operationDetailPopup--operationDetailPopUp");
 
-		//setTimeout of 1ms because the setBusy begin after if we don't use this trick
+		//IMPORTANT
+		//setTimeout of 1ms because the setBusy begins after if we don't use this trick
 		setTimeout(function() {
 			var sMessageSuccess = "";
 			var oView = airbus.mes.operationdetail.status.oView;
@@ -386,6 +388,7 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
 				sap.ui.getCore().byId("msgstrpConfirm")
 						.setText(oView.getModel("i18n").getProperty("CompulsaryCredentials"));
 
+				//unactive busyIndicator
 				airbus.mes.shell.busyManager.unsetBusy(sap.ui.getCore(), "partial");
 				airbus.mes.shell.busyManager.unsetBusy(sap.ui.getCore(), "operationDetailPopup--operationDetailPopUp");
 			} else {
@@ -412,6 +415,7 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
 				// Close confirmation dialogue
 				oView._oUserConfirmationDialog.close();
 
+				//unactive busyIndicator
 				airbus.mes.shell.busyManager.unsetBusy(sap.ui.getCore(), "partial");
 				airbus.mes.shell.busyManager.unsetBusy(sap.ui.getCore(), "operationDetailPopup--operationDetailPopUp");
 

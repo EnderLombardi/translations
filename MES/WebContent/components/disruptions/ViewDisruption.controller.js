@@ -186,64 +186,91 @@ sap.ui
 					 */
 					onAcceptCloseDisruption : function(oEvent) {
 
+						//set busyIndicator delay to 0 ms instead of 500ms
+						if (sap.ui.getCore().byId("operationDetailPopup--operationDetailPopUp").getBusyIndicatorDelay() !== 0) {
+							sap.ui.getCore().byId("operationDetailPopup--operationDetailPopUp").setBusyIndicatorDelay(0);
+						}
+
+						//close the dialog box 
 						this._closeDialog.close();
 
-						var timeLost = sap.ui.getCore().byId(
-								"closeDisruption-timeLost");
-						var comment = sap.ui.getCore().byId(
-								"closeDisruptionComments");
-						var msgRef = sap.ui.getCore().byId(
-								"closeDisruption-msgRef");
+						//_this created to keep this model in the "setTimeout operations" bellow
+						var _this= this;
 
-						var timeLostValue = airbus.mes.disruptions.Formatter.timeToMilliseconds(timeLost.getValue());
-						var commentValue = comment.getValue();
-						var msgRefValue = msgRef.getText();
+						//two timeout chained to active setBusy & to be sure the setBusy is launched before the next operations
+						//don't work without this trick (or sometimes but don't 100% effective)
+						setTimeout(function() {
 
-						var i18nModel = airbus.mes.disruptions.oView.viewDisruption
-								.getModel("i18nModel");
+							//setBusy on the operationdetail pop-up
+							sap.ui.getCore().byId("operationDetailPopup--operationDetailPopUp").setBusy(true);
 
-						// Call Close Disruption Service
-						var isSuccess = airbus.mes.disruptions.ModelManager
-								.closeDisruption(msgRefValue, commentValue,
-										timeLostValue, i18nModel);
+							setTimeout(function() {
+								var timeLost = sap.ui.getCore().byId(
+										"closeDisruption-timeLost");
+								var comment = sap.ui.getCore().byId(
+										"closeDisruptionComments");
+								var msgRef = sap.ui.getCore().byId(
+										"closeDisruption-msgRef");
 
-						if (isSuccess) {
-							
-							var operationDisruptionsModel = this.getView().getModel("operationDisruptionsModel");
-							
-							var sPath = sap.ui.getCore().byId(
-									"closeDisruption-sPath").getText();
-							
-							operationDisruptionsModel.getProperty(sPath).Status = airbus.mes.disruptions.Formatter.status.closed;
-							
-							operationDisruptionsModel.getProperty(sPath).TimeLost = timeLostValue;
-							
-							
-							// Set Closure date
-							var date = new Date();							
-							operationDisruptionsModel.getProperty(sPath).ClosureDate = 
-								date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate()+" "+date.getHours()+":"+date.getMinutes()+":"+date.getSeconds();
-							
-							var currDate = new Date();
-							var date = currDate.getFullYear() + "-" + currDate.getMonth() + "-" + currDate.getDate();
-							
-							var oComment = {
-									"Action" : this.getView().getModel("i18nModel").getProperty("close"),
-									"Comments" : commentValue,
-									"Counter" : "",
-									"Date" : date,
-									"MessageRef" : msgRefValue,
-									"UserFullName" : ( sap.ui.getCore().getModel("userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/first_name").toLowerCase() + " " +
-											   sap.ui.getCore().getModel("userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/last_name").toLowerCase() )
-							};
-							
-							operationDisruptionsModel.getProperty("/Rowsets/Rowset/1/Row").push(oComment);
-							
-							operationDisruptionsModel.refresh();
-							
-							if (nav.getCurrentPage().sId == "stationTrackerView")
-								airbus.mes.disruptions.ModelManager.checkDisruptionStatus(operationDisruptionsModel);
-						}
+								var timeLostValue = airbus.mes.disruptions.Formatter.timeToMilliseconds(timeLost.getValue());
+								var commentValue = comment.getValue();
+								var msgRefValue = msgRef.getText();
+
+								var i18nModel = airbus.mes.disruptions.oView.viewDisruption
+										.getModel("i18nModel");
+
+								// Call Close Disruption Service
+								var isSuccess = airbus.mes.disruptions.ModelManager
+										.closeDisruption(msgRefValue, commentValue,
+												timeLostValue, i18nModel);
+
+								if (isSuccess) {
+									
+									var operationDisruptionsModel = _this.getView().getModel("operationDisruptionsModel");
+									
+									var sPath = sap.ui.getCore().byId(
+											"closeDisruption-sPath").getText();
+									
+									operationDisruptionsModel.getProperty(sPath).Status = airbus.mes.disruptions.Formatter.status.closed;
+									
+									operationDisruptionsModel.getProperty(sPath).TimeLost = timeLostValue;
+									
+									
+									// Set Closure date
+									var date = new Date();							
+									operationDisruptionsModel.getProperty(sPath).ClosureDate = 
+										date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate()+" "+date.getHours()+":"+date.getMinutes()+":"+date.getSeconds();
+									
+									var currDate = new Date();
+									var date = currDate.getFullYear() + "-" + currDate.getMonth() + "-" + currDate.getDate();
+									
+									var oComment = {
+											"Action" : _this.getView().getModel("i18nModel").getProperty("close"),
+											"Comments" : commentValue,
+											"Counter" : "",
+											"Date" : date,
+											"MessageRef" : msgRefValue,
+											"UserFullName" : ( sap.ui.getCore().getModel("userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/first_name").toLowerCase() + " " +
+													sap.ui.getCore().getModel("userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/last_name").toLowerCase() )
+									};
+									
+									operationDisruptionsModel.getProperty("/Rowsets/Rowset/1/Row").push(oComment);
+									//stop the setBusy
+									airbus.mes.shell.busyManager.unsetBusy(sap.ui.getCore(), "operationDetailPopup--operationDetailPopUp");
+									
+									//refresh the view
+									operationDisruptionsModel.refresh();
+									
+									if (nav.getCurrentPage().sId == "stationTrackerView"){
+										airbus.mes.disruptions.ModelManager.checkDisruptionStatus(operationDisruptionsModel);
+									}
+								}
+								else {
+									//stop the setBusy
+									airbus.mes.shell.busyManager.unsetBusy(sap.ui.getCore(), "operationDetailPopup--operationDetailPopUp");
+								}
+							}, 0);
+						}, 0);
 					},
 
 					/***********************************************************

@@ -388,12 +388,5 @@
 
 			</items>
 		</FlexBox>
-		<!-- <footer> <Bar design="" class="createDisruptionFooter"> <contentRight> 
-			<Button id="btnCreateDisruption" text="{i18nModel>create}" type="Accept" 
-			press="onCreateDisruption" /> <Button id="btnUpdateDisruption" text="{i18nModel>update}" 
-			type="Accept" press="onUpdateDisruption" /> <Button id="btnCancelDisruption" 
-			text="{i18nModel>cancel}" type="Reject" press="onCancelCreateDisruption" 
-			/> <Button id="btnCloseDisruption" text="{i18nModel>close}" icon="sap-icon://decline" 
-			press="onCloseCreateDisruption" /> </contentRight> </Bar> </footer> -->
 	</Page>
 </core:View>
