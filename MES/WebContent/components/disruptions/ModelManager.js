@@ -932,7 +932,7 @@ airbus.mes.disruptions.ModelManager = {
 	},
 	
 	/***************************************************************************
-	 * Get URL to Reject Disruption
+	 * Get URL to Refuse Disruption
 	 **************************************************************************/
 	getUrlToRefuseDisruption : function() {
 		var urlToDisruptionComment = this.urlModel
@@ -953,9 +953,9 @@ airbus.mes.disruptions.ModelManager = {
 					async : false,
 					data : {
 						"Param.1" : airbus.mes.settings.ModelManager.site,
-						"Param.2" : comment,
-						"Param.3" : sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"),
-						"Param.4" : msgref
+						"Param.2" : msgref,
+						"Param.3" : comment,
+						"Param.4" : sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user")
 					},
 					error : function(xhr, status, error) {
 						airbus.mes.shell.ModelManager

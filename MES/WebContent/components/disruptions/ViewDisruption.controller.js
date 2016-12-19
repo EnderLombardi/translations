@@ -529,7 +529,7 @@ sap.ui
 					/***********************************************************
 					 * Refuse the Disruption
 					 */
-					onRefuseDisruption : function() {
+					onRefuseDisruption : function(oEvt) {
 						if (nav.getCurrentPage().sId == "stationTrackerView" && 
 								sap.ui.getCore().byId("operationDetailsView--switchOperationModeBtn").getState() == false) {
 

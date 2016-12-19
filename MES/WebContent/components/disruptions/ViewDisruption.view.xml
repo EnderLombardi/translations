@@ -409,9 +409,9 @@
 								visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>ResponsibleFlag'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setMarkSolvedButtonVisibility'}"
 								press="onMarkSolvedDisruption" design="Transparent"/>
 								
-							<!-- <Button text="{i18nModel>refuse}" type="Reject"
+<!--  						  	<Button text="{i18nModel>refuse}" type="Reject"
 								visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>ResponsibleFlag'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setRefuseButtonVisibility'}"
-								press="onRefuseDisruption" design="Transparent"/> -->
+								press="onRefuseDisruption" design="Transparent"/>  -->
 
 						</Toolbar>
 					</Panel>
