@@ -268,16 +268,6 @@ html{
                 color:$white-two;
             }
         }
-        .sapMIBar-CTX{
-            &.sapMFooter-CTX{
-                :not(.sapMBtnDisabled){
-                    &>.sapMBtnActive{
-                        border-color: transparent;
-                        background-color: rgba(234,234,234,0.1);
-                    }
-                }
-            }
-        }
     }
 }
 .customComboBox {
@@ -299,12 +289,6 @@ html{
 }
 
 // MyProfile css
-.myProfileButton:hover {
-    > div {
-        background: rgba(234,234,234,0.1) !important;
-    }
-}
-
 #badgeMngMyProfile-header {
     box-shadow: 0 0 5px #333 !important;
     background-color: #fff !important;
