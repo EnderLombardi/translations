@@ -246,7 +246,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",    {
                                     }
                                     //load model of polypoly
                                     airbus.mes.polypoly.ModelManager.getPolyPolyModel(airbus.mes.stationtracker.ModelManager.settings.site, airbus.mes.stationtracker.ModelManager.settings.station);
-                                    
+
                                     //active busy
                                     airbus.mes.shell.busyManager.setBusy(airbus.mes.polypoly.oView);
 

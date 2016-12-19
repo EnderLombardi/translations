@@ -21,6 +21,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 //		airbus.mes.polypoly.oView.removeContent(a);
 //		airbus.mes.polypoly.oView.rerender();
 //		}
+		
 	},
 //	onAfterRendering : function() {
 //	var oData = sap.ui.getCore().getModel("mii").getData().Rowsets;
@@ -45,47 +46,6 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 		sap.ui.getCore().byId("oTableQA").setVisibleRowCount(airbus.mes.polypoly.PolypolyManager.internalContext.iLinesQA);
 		airbus.mes.polypoly.QADialog.open();
 	},
-
-	onClickQAPopup : function(){
-		airbus.mes.polypoly.QADialog.close();
-	},
-
-	createColumnQA : function(sId, oContext) {
-//		var that = this;
-		var aMultiLabels = [];
-
-		aMultiLabels.push(new sap.m.Label({
-			text : oContext.getProperty("techname"),
-			design : "Bold",
-			tooltip : oContext.getProperty("techname"),
-		}));
-		aMultiLabels.push(new sap.m.Label({
-			text : oContext.getProperty("name"),
-			design : "Bold",
-			tooltip : oContext.getProperty("name"),
-		}));
-
-		var oColumn = new sap.ui.table.Column(
-				{
-					id : sId,
-					hAlign : "Center",
-					width : "7rem",
-					multiLabels : [ aMultiLabels ],
-					template : new sap.m.Text({
-						text : {
-							parts : [ oContext
-							          .getProperty("techname") ],
-							          formatter : function(text) {
-							        	  return text;
-							          }
-						},
-					})
-				});
-
-		;
-		return oColumn
-	},
-
 
 	createColumn : function(sId, oContext) {
 		var that = this;
@@ -751,42 +711,72 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 	},
 	
 	filterUA : function() {
+		//test
+		//console.log("==0== :" + sap.ui.getCore().byId("typeRow"))
+		
+		//get lines
 		if (sap.ui.getCore().byId("typeRow") /*&& sap.ui.getCore().byId("FilterClockedUsers")*/){
 			var filterLabels = new sap.ui.model.Filter("type", "EQ", "LABEL_RP");
 			var filterUA = new sap.ui.model.Filter("type", "Contains", "UA_");
 			var aFilters = [filterLabels, filterUA];
-//			if(sap.ui.getCore().byId("FilterClockedUsers").getSelected())
-//			filterUA = new sap.ui.model.Filter("type", "EQ", "UA_CI","UA_NCD");
-//			else
 
-//			if ( airbus.mes.stationtracker.AssignmentManager.polypolyAffectation ) {
 			if (nav.getCurrentPage().getId()!="polypolyPage"){
 				airbus.mes.polypoly.oView.byId("oTablePolypoly").getBinding("rows").filter(aFilters);
 				airbus.mes.polypoly.oView.byId("oTablePolypoly").setFixedRowCount(0);
-//				airbus.mes.polypoly.oView.byId("oTablePolypoly").setVisibleRowCount(15); //FIXME : Depends on PopUp size small = 8
 				airbus.mes.polypoly.oView.getController().setRowCountVisible(true);
 
 			} else {
 				airbus.mes.polypoly.oView.byId("oTablePolypoly").getBinding("rows").filter();
 				airbus.mes.polypoly.oView.byId("oTablePolypoly").setFixedRowCount(3);
-//				airbus.mes.polypoly.oView.byId("oTablePolypoly").setVisibleRowCount(13);
 				airbus.mes.polypoly.oView.getController().setRowCountVisible(false);
 			}
 		}
 	},
+	
+	clearFilters : function() {
+		
+		//test
+		//console.log("==1== :" + sap.ui.getCore().byId("typeRow"))
+		
+		if (sap.ui.getCore().byId("typeRow")) {
+			sap.ui.getCore().byId("typeRow").filter("");
+		}
+		if (sap.ui.getCore().byId("rp_id")) {
+			sap.ui.getCore().byId("rp_id").filter("");
+		}
+		if (airbus.mes.polypoly.oView.byId("oTablePolypoly").getBinding("rows")) {
+			var filterLabels = new sap.ui.model.Filter("type", "EQ", "LABEL_RP");
+			var filterUA = new sap.ui.model.Filter("type", "Contains", "UA_");
+			var aFilters = [filterLabels, filterUA];
+			if ( airbus.mes.stationtracker.AssignmentManager.polypolyAffectation ) {
+				airbus.mes.polypoly.oView.byId("oTablePolypoly").getBinding("rows").filter(aFilters);
+			}else{
+				airbus.mes.polypoly.oView.byId("oTablePolypoly").getBinding("rows").filter()
+			}
+			airbus.mes.polypoly.oView.byId("polypolySearchField").setValue();
+		}
+		
+		//test
+		//console.log("==2== :" + sap.ui.getCore().byId("typeRow"))
+	},
 
 	initiatePolypoly : function(){
+		
+		//test
+		//console.log("Start :" + sap.ui.getCore().byId("typeRow"))
+				
 		var aControlsId = ["AddPolypoly"];
 		this.filterUA();
 		this.hideContent(aControlsId);
 		this.clearFilters();
 		
 		if ( airbus.mes.polypoly.oView.byId("oTablePolypoly").getBinding("rows") != undefined ) {
-			
 			sap.ui.getCore().byId("polypoly--polypolySearchField").setValue(airbus.mes.polypoly.PolypolyManager.getValueSelected);
-			airbus.mes.polypoly.oView.getController().onRPSearch();
-					
+			airbus.mes.polypoly.oView.getController().onRPSearch();		
 			}
+		
+		//test	
+		//console.log("Final :" + sap.ui.getCore().byId("typeRow"))
 	},
 
 	hideContent : function(aControlsId){
@@ -798,7 +788,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 		airbus.mes.polypoly.oView.rerender();
 	},
 
-		onRPSuggest : function(oEvt) {
+	onRPSuggest : function(oEvt) {
 		var value = oEvt.getParameter("suggestValue");
 		var filters = [];
 		if (value) {
@@ -810,9 +800,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 					}) ]
 		};
 
-//		sap.ui.getCore().byId("polypoly").byId("polypolySearchField").getBinding("suggestionItems").filter(filters);
-//		sap.ui.getCore().byId("polypoly").byId("polypolySearchField").suggest();
-//		sap.ui.getCore().byId("polypoly").getController().onRPSearch(oEvt);
+
 		airbus.mes.polypoly.oView.byId("polypolySearchField").getBinding("suggestionItems").filter(filters);
 		airbus.mes.polypoly.oView.byId("polypolySearchField").suggest();
 		airbus.mes.polypoly.oView.getController().onRPSearch(oEvt);
@@ -844,7 +832,6 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 			}else{
 				airbus.mes.polypoly.oView.byId("oTablePolypoly").getBinding("rows").filter(filters);
 			}
-
 		} else {
 			if ( airbus.mes.stationtracker.AssignmentManager.polypolyAffectation ) {
 				airbus.mes.polypoly.oView.byId("oTablePolypoly").getBinding("rows").filter(aFilters);
@@ -852,31 +839,6 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 				airbus.mes.polypoly.oView.byId("oTablePolypoly").getBinding("rows").filter()
 			}
 		}
-	},
-
-
-	clearFilters : function() {
-		if (sap.ui.getCore().byId("typeRow")) {
-			sap.ui.getCore().byId("typeRow").filter("");
-		}
-		if (sap.ui.getCore().byId("rp_id")) {
-			sap.ui.getCore().byId("rp_id").filter("");
-		}
-		if (airbus.mes.polypoly.oView.byId("oTablePolypoly").getBinding("rows")) {
-			var filterLabels = new sap.ui.model.Filter("type", "EQ", "LABEL_RP");
-			var filterUA = new sap.ui.model.Filter("type", "Contains", "UA_");
-			var aFilters = [filterLabels, filterUA];
-			if ( airbus.mes.stationtracker.AssignmentManager.polypolyAffectation ) {
-				airbus.mes.polypoly.oView.byId("oTablePolypoly").getBinding("rows").filter(aFilters);
-			}else{
-				airbus.mes.polypoly.oView.byId("oTablePolypoly").getBinding("rows").filter()
-			}
-			airbus.mes.polypoly.oView.byId("polypolySearchField").setValue();
-		}
-//		var oView = sap.ui.getCore().byId("polypoly");
-//		var oTable = airbus.mes.polypoly.oView.byId("oTablePolypoly");
-//		oTable.setFixedRowCount(2);
-//		oTable.setVisibleRowCount(10);
 	},
 
 	colDialog : undefined,
@@ -1246,16 +1208,12 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 	 * @memberOf polypoly.main
 	 */
 	onAfterRendering : function() {
-//		sap.ui.getCore().byId(
-//		"polypolyView--stationSelectPolyPoly")
-//		.setSelectedKey(airbus.mes.polypoly.ModelManager.station_number);
-//		sap.ui.getCore().byId(
-//		"polypolyView--lineSelectPolyPoly")
-//		.setSelectedKey(airbus.mes.polypoly.ModelManager.line_number);
-		
+//		sap.ui.getCore().byId("polypolyView--stationSelectPolyPoly").setSelectedKey(airbus.mes.polypoly.ModelManager.station_number);
+//		sap.ui.getCore().byId("polypolyView--lineSelectPolyPoly").setSelectedKey(airbus.mes.polypoly.ModelManager.line_number);
 		
 		//track width, set to window width
 		var height = $(window).height(); 
+		
 		$(window).on("resize", function() {
 			// do nothing if the width is the same
 			if ($(window).height()==height) return; 
@@ -1277,6 +1235,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
 //		line_number, station,
 //		airbus.mes.polypoly.ModelManager.site);
 	},
+	
 //	setVisible: function(){
 //	return  airbus.mes.polypoly.PolypolyManager.globalContext.tabSelected == "polypoly" ? true:false;
 //	},

@@ -198,8 +198,6 @@ airbus.mes.polypoly.ModelManager = {
 		
 		airbus.mes.polypoly.ModelManager.getPolyStation(sSite, sStation);
 		
-		//
-		
 		var urlgetpolypoly = this.urlModel.getProperty("urlgetpolypoly");
 
 		urlgetpolypoly = urlgetpolypoly.replace("$station", sStation);
@@ -210,9 +208,6 @@ airbus.mes.polypoly.ModelManager = {
 		
 		// Rename this model
 		sap.ui.getCore().getModel("mii").loadData(urlgetpolypoly,null,true);
-		
-
-		
 	},
 	
 	getPolyStation : function(sSite, sStation) {
@@ -247,15 +242,24 @@ airbus.mes.polypoly.ModelManager = {
 		}
 		airbus.mes.polypoly.PolypolyManager.internalContext.oModel = mTableModel;
 		airbus.mes.polypoly.PolypolyManager.internalContext.oModelQA = mQATableModel;
+		
+		
 		// ????? 
 		sap.ui.getCore().byId("polypoly").setModel(mTableModel);
-		//sap.ui.getCore().getModel("mTableModel").loadData(mTableModel);
-		airbus.mes.polypoly.oView.getController().clearFilters();
 		
-		if (airbus.mes.polypoly.oView.byId("oTablePolypoly").getBinding("rows") != undefined) {		
-			sap.ui.getCore().byId("polypoly--polypolySearchField").setValue(airbus.mes.polypoly.PolypolyManager.getValueSelected);
-			airbus.mes.polypoly.oView.getController().onRPSearch();
-		}
+		//defect 325
+		// TODO : new call, confirm if is correct, consequences two calls every time
+		airbus.mes.polypoly.oView.getController().initiatePolypoly();
+		//
+		// duplicate with initiatePolypoly();
+		//
+		//sap.ui.getCore().getModel("mTableModel").loadData(mTableModel);
+		//airbus.mes.polypoly.oView.getController().clearFilters();
+		//if (airbus.mes.polypoly.oView.byId("oTablePolypoly").getBinding("rows") != undefined) {		
+		//	sap.ui.getCore().byId("polypoly--polypolySearchField").setValue(airbus.mes.polypoly.PolypolyManager.getValueSelected);
+		//	airbus.mes.polypoly.oView.getController().onRPSearch();
+		//}
+		// *****
 
 		airbus.mes.shell.busyManager.unsetBusy(airbus.mes.polypoly.oView);
 	},
@@ -263,8 +267,7 @@ airbus.mes.polypoly.ModelManager = {
 	
 	loadStationListModel : function() {
 		sap.ui.getCore().getModel("stationList").setData(this.StationList);
-	},
+	}
 
 };
 airbus.mes.polypoly.ModelManager.init(sap.ui.getCore());
-

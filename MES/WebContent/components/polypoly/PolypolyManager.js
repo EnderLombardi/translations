@@ -4,7 +4,6 @@ jQuery.sap.declare("airbus.mes.polypoly.PolypolyManager")
 
 airbus.mes.polypoly.PolypolyManager = {
 	
-	
 	globalContext : {
 //		tabSelected : undefined,
 		bEditable : undefined,
@@ -16,7 +15,6 @@ airbus.mes.polypoly.PolypolyManager = {
 		columnIndex : undefined,
 		newLevel : undefined,
 	},
-	
 	
 	internalContext : {
 		oModel : undefined,
@@ -34,13 +32,12 @@ airbus.mes.polypoly.PolypolyManager = {
 		sTechName : undefined,
 	},
 	
-	
 	getValueSelected : "",
 	urlModel : undefined,
 	oViewController : undefined,
 	polypolyIndex : undefined,
 	queryParams : jQuery.sap.getUriParameters(),
-
+	
 	init : function(core) {
 		var dest = undefined;
 		switch (window.location.hostname) {
@@ -803,4 +800,5 @@ airbus.mes.polypoly.PolypolyManager = {
 
 };
 airbus.mes.polypoly.PolypolyManager.init(sap.ui.getCore());
+
 //PolypolyManager.init(sap.ui.getCore());
