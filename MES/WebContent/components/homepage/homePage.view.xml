@@ -14,14 +14,11 @@
 					<content>
 						<VBox width="auto" 
 						justifyContent="SpaceBetween" class="tileBox" >
-
-										<VBox>
-										<Text text="{ path : '1TileLineHome>text' , formatter : '.getI18nValue' }" class="headerTileText" />
-
-										<Text text="{ path : '1TileLineHome>sub' , formatter : '.getI18nValue' }" class="CustomTileText" />
-										</VBox>
-										<core:Icon src="{1TileLineHome>icon}" class="IconTile"></core:Icon>
-
+							<VBox>
+								<Text text="{ path : '1TileLineHome>text' , formatter : '.getI18nValue' }" class="headerTileText" />
+								<Text text="{ path : '1TileLineHome>sub' , formatter : '.getI18nValue' }" class="CustomTileText" />
+							</VBox>
+							<core:Icon src="{1TileLineHome>icon}" class="IconTile"></core:Icon>
 						</VBox>
 					</content>
 				</CustomTile>

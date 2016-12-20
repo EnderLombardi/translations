@@ -211,6 +211,16 @@ sap.ui.controller(
 							break;
 						case "resourcePool":
 							airbus.mes.resourcepool.util.ModelManager.askResourcePool();
+							airbus.mes.shell.oView.byId("homeButton").setVisible(true);
+							airbus.mes.shell.oView.byId("SelectLanguage").setVisible(false);
+							break;
+						case "idMainView":
+							airbus.mes.shell.oView.byId("homeButton").setVisible(true);
+							airbus.mes.shell.oView.byId("SelectLanguage").setVisible(false);
+							break;
+						case "polypolyPage":
+							airbus.mes.shell.oView.byId("homeButton").setVisible(true);
+							airbus.mes.shell.oView.byId("SelectLanguage").setVisible(false);
 							break;
 						default:
 						}
