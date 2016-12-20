@@ -1,16 +1,16 @@
 <core:FragmentDefinition xmlns="sap.m"
-	xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout"
-	xmlns:u="sap.ui.unified">
-	<Dialog id="confirmErase" title="{PolypolyI18n>EraseTitle}"
-		stretchOnPhone="true" state="Warning" type="Message">
-		<beginButton>
-			<Button text="{PolypolyI18n>Yes}" press="onConfirmErase" />
-		</beginButton>
-		<endButton>
-			<Button text="{PolypolyI18n>No}" press="onCancelErase" type="Reject"/>
-		</endButton>
-		<content>
-			<Text text="{PolypolyI18n>EraseConfirm}" />
-		</content>
-	</Dialog>
+    xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout"
+    xmlns:u="sap.ui.unified">
+    <Dialog id="confirmErase" title="{PolypolyI18n>EraseTitle}"
+        stretchOnPhone="true" state="Warning" type="Message">
+        <beginButton>
+            <Button text="{PolypolyI18n>Yes}" press="onConfirmErase" />
+        </beginButton>
+        <endButton>
+            <Button text="{PolypolyI18n>No}" press="onCancelErase" type="Transparent"/>
+        </endButton>
+        <content>
+            <Text text="{PolypolyI18n>EraseConfirm}" />
+        </content>
+    </Dialog>
 </core:FragmentDefinition>

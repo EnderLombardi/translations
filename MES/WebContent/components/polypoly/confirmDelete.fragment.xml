@@ -1,16 +1,16 @@
 <core:FragmentDefinition xmlns="sap.m"
-	xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout"
-	xmlns:u="sap.ui.unified">
-	<Dialog id="confirmDeleteDialog" title="{PolypolyI18n>DeleteColumn}"
-		stretchOnPhone="true" state="Warning" type="Message">
-		<beginButton>
-			<Button text="{PolypolyI18n>Yes}" press="onConfirmDelete" />
-		</beginButton>
-		<endButton>
-			<Button text="{PolypolyI18n>No}" press="onCancelDelete" type="Reject"/>
-		</endButton>
-		<content>
-			<Text text="{PolypolyI18n>DeleteColumnConfirm}" />
-		</content>
-	</Dialog>
+    xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout"
+    xmlns:u="sap.ui.unified">
+    <Dialog id="confirmDeleteDialog" title="{PolypolyI18n>DeleteColumn}"
+        stretchOnPhone="true" state="Warning" type="Message">
+        <beginButton>
+            <Button text="{PolypolyI18n>Yes}" press="onConfirmDelete" />
+        </beginButton>
+        <endButton>
+            <Button text="{PolypolyI18n>No}" press="onCancelDelete" type="Transparent"/>
+        </endButton>
+        <content>
+            <Text text="{PolypolyI18n>DeleteColumnConfirm}" />
+        </content>
+    </Dialog>
 </core:FragmentDefinition>
