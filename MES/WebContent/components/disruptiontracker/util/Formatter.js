@@ -179,7 +179,7 @@ airbus.mes.disruptiontracker.Formatter = {
 	 *function to conver milliseconds to minutes devide by 60000 */
 	msToMinutesConverter : function(ms){
 		if(ms!='' || ms!=undefined){
-			return ms/60000;
+			return Math.round(ms/60000);
 		}
 		return 0;
 	}
