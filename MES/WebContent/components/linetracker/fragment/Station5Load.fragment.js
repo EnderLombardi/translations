@@ -12,7 +12,7 @@ sap.ui.jsfragment("airbus.mes.linetracker.Station5Load", {
 	var oSearchMSN = new sap.m.SearchField({
 		search : function(oEvent) {
 			var searchValue = this.getValue();
-		}
+				}
 	});
 	var oAffectation = new sap.m.Text({
 		text : "{MSN}",

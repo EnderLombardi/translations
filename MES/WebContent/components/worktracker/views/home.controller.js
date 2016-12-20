@@ -46,16 +46,14 @@ sap.ui.controller("airbus.mes.worktracker.views.home", {
 		
 	},
 	
-	showActivityLog : function(oEvent)
-	{
+	showActivityLog : function(oEvent){
 		if(this.getView().byId("customNav").getState() == false)
 			this.getView().byId("customNav").openNavigation();
 		else
 			this.getView().byId("customNav").closeNavigation();
 	},
 	
-	openOperation : function(oEvent)
-	{
+	openOperation : function(oEvent){
 		var sPath = oEvent.getSource().getBindingContext("userOperationsModel").sPath;
 		var aPath = sPath.split("/");
 		var path = aPath.pop();
@@ -74,7 +72,7 @@ sap.ui.controller("airbus.mes.worktracker.views.home", {
 	
 	toggleChangeOptrPopOver: function(oEvent){			
 		// create popover
-		if (! this.oPopover) {
+		if (!this.oPopover) {
 			this.oPopover = sap.ui.xmlfragment("airbus.mes.worktracker.fragments.ChangeOptrPopOver", this);
 			this.oPopover.setModel(this.getView().getModel("operatorsModel"));
 			this.getView().addDependent(this.oPopover);
@@ -157,11 +155,11 @@ sap.ui.controller("airbus.mes.worktracker.views.home", {
 	 * 
 	 * @memberOf worktracker.views.home
 	 */
-	onExit : function() {
-		if (this.oPopover) {
-			this.oPopover.destroy();
-		}
-	},
+//	onExit : function() {
+//		if (this.oPopover) {
+//			this.oPopover.destroy();
+//		}
+//	},
 
 	/*onSelectionStation : function(oEvt) {
 		// LoadOperators Model Data based on Station selected

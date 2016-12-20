@@ -116,7 +116,7 @@ airbus.mes.disruptiontracker.Formatter = {
 	},
 
 	removeDecimal : function(num) {
-		var iNum = parseInt(num);
+		var iNum = parseInt(num,10);
 		
 		if (num-iNum == 0)
 			return iNum;

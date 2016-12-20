@@ -89,7 +89,6 @@ airbus.mes.shell.util.navFunctions = {
 		// //FIXME When Settings ready
 		airbus.mes.polypoly.ModelManager.getPolyPolyModel(airbus.mes.settings.ModelManager.site, airbus.mes.settings.ModelManager.station);
 
-		//Does not work the first time....why ?? 
 		airbus.mes.polypoly.oView.getController().initiatePolypoly();
 	},
 

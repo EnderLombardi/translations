@@ -35,7 +35,7 @@ sap.ui.jsfragment("airbus.mes.linetracker.popoverMenu", {
 
 					}
 				});
-				var andon = new sap.m.Button({
+				/*var andon = new sap.m.Button({
 					text : airbus.mes.linetracker.util.ModelManager.i18nModel.getProperty("Andon"),//-vaibhav
 					//text : "Andon",//+vaibhav
 					width : "100%",
@@ -45,7 +45,7 @@ sap.ui.jsfragment("airbus.mes.linetracker.popoverMenu", {
 						return false;
 						//Controller.andonFragment(oEvt);
 					}
-				});
+				});*/
 
 				var touchngo = new sap.m.Button({
 					text : airbus.mes.linetracker.util.ModelManager.i18nModel.getProperty("TouchnGo"),//-vaibhav

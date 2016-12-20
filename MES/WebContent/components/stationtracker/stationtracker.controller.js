@@ -886,14 +886,14 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
       */
      onChangeFilterOSWUnplanned : function(oEvent){
          var aMyFilter = [];
-         var sStatus;
+         //var sStatus;
 
         // Check the current value of the filter status
         if (oEvent.getSource().getSelectedKey() === "StatusAll") {
             // if status ALL, we have to remove all filter
             sap.ui.getCore().byId("ImportOswUnplannedPopover--myList").getBinding("items").filter();
         } else {
-        	// we apply the a filter this filter is apply dirrectly on mii service
+        	// we apply the a filter this filter is apply directly on mii service
             switch (oEvent.getSource().getSelectedKey()) {
             case "StatusBlocked":
             	aMyFilter.push(new sap.ui.model.Filter("DISRUPTION","EQ","D4"));
@@ -923,11 +923,6 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
             	break;
             default:
             }
-            
-            
-            
-            
-            
              sap.ui.getCore().byId("ImportOswUnplannedPopover--myList").getBinding("items").filter(new sap.ui.model.Filter(aMyFilter, false));
          }
 
@@ -941,8 +936,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
     },
 
     getI18nValue : function(sKey) {
-        return this.getView().getModel("StationTrackerI18n")
-                .getProperty(sKey);
+        return this.getView().getModel("StationTrackerI18n").getProperty(sKey);
     },
 
     selectUser : function(oEvt) {

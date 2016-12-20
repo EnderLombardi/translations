@@ -99,8 +99,7 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
 
 			// Refresh Station tracker Gantt Chart
 			/*airbus.mes.shell.oView.getController().renderStationTracker();*/
-		}
-		else {
+		} else {
 			airbus.mes.shell.busyManager.unsetBusy(airbus.mes.stationtracker.oView, "stationtracker");
 		}
 		return flagSuccess;
@@ -153,8 +152,7 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
 			// update operationDetailsModel
 			sap.ui.getCore().getModel("operationDetailModel").setProperty("/Rowsets/Rowset/0/Row/0/status", "IN_QUEUE")
 			sap.ui.getCore().getModel("operationDetailModel").refresh();
-		}
-		else {
+		} else {
 			airbus.mes.shell.busyManager.unsetBusy(airbus.mes.stationtracker.oView, "stationtracker");
 		}
 	},

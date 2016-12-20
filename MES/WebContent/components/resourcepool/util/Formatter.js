@@ -58,7 +58,7 @@ airbus.mes.resourcepool.util.Formatter = {
 	},
 
 	userAlreadyAssigned : function(loanedRP_Name, assignedTo) {
-		var that=this.getParent().getParent();
+		var that = this.getParent().getParent();
 		that.removeStyleClass("yellowColor");
 		that.removeStyleClass("loanColor");
 		that.removeStyleClass("blueBorderChange");
@@ -85,7 +85,7 @@ airbus.mes.resourcepool.util.Formatter = {
 	},
 
 	assignedToSelf : function(loanedRP_Name, assignedTo) {
-		var that=this.getParent().getParent();
+		var that = this.getParent().getParent();
 		that.removeStyleClass("blueBorderChange");
 		if (assignedTo == "---" || assignedTo == ""){
 			that.addStyleClass("blueBorderChange");
