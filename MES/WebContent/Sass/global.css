@@ -446,6 +446,8 @@ WORK LIST POP OVER
       color: rgba(0, 86, 112, 0.94); }
   .classWorklistPopover .fa.oswIcon2 b {
     font-family: arial; }
+  .classWorklistPopover .fa.fa-exclamation-triangle.triangleIcon.petrol {
+    color: rgba(0, 86, 112, 0.94); }
 .classWorklistPopover .sapMPIText3 {
   position: absolute;
   display: block;

@@ -61,6 +61,14 @@ WORK LIST POP OVER
                 font-family: arial;
             }
         }
+        &.fa-exclamation-triangle {
+        	&.triangleIcon{
+        		&.petrol{
+                	color:$petrol;
+           		}
+        	}
+        }
+       
     }
     .sapMPIText3 {
         position: absolute;
@@ -154,7 +162,7 @@ BOX MANAGEMENT
             &.petrol {
                 color:$petrol;
             }
-        }
+        } 
         &.triangleIcon {
             padding-left: 6px;
             float: left;

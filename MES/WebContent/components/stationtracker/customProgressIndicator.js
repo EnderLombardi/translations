@@ -159,7 +159,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 										
 						// condition design for worklist pop up
 						if ( rmastatus != "---" ){	//rma
-							sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon dandelion"></i>';
+							sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon "></i>';
 						}
 						if (osw[0] === "3" ){ //OSW
 							sLeftIcon2 = '<i class="fa fa-refresh oswIcon dandelion-back "><b style="padding-left:1px">'+sOSW+'</b></i>';
@@ -198,14 +198,14 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 							r.addStyle('background-color','#fbec00');
 							r.addStyle('color','rgba(0, 86, 112, 0.94)');
 							sRightIcon = '<i class="fa fa-stop rightIcon petrol" ></i>';
-							if ( rmastatus === 1 ){	//rma
+							if ( rmastatus === 1 || rmastatus != "---" ){	//rma
 								sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon petrol"></i>';
 							}
 							if (osw[0] === "3" ){ //OSW
-								sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 petrol-back dandelion"><b style="padding-left:1px">'+sOSW+'</b></i>';
+								sLeftIcon2 = '<i class="fa fa-refresh oswIcon petrol-back "><b style="padding-left:1px">'+sOSW+'</b></i>';
 							}
 							if (osw[0] === "1" || sUnplanend === "1" ){ //unplanned
-								sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 petrol-back dandelion"><b style="padding-left:1px">'+sUNPD+'</b></i>';
+								sLeftIcon2 = '<i class="fa fa-refresh oswIcon petrol-back "><b style="padding-left:1px">'+sUNPD+'</b></i>';
 							}
 							//}
 							break;
@@ -231,14 +231,14 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 							//sStatus = "6";
 							r.addStyle('background', 'repeating-linear-gradient(135deg, #ffbf00, #ffbf00 10px, #fbec00 10px, #fbec00 20px)');
 							sRightIcon = '<i class="fa fa-play rightIcon petrol"></i>';
-							if ( rmastatus === 1 ){	//rma
+							if ( rmastatus === 1 || rmastatus != "---" ){	//rma
 								sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon petrol"></i>';
 							}
 							if (osw[0] === "3" ){ //OSW
-								sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 petrol-back dandelion"><b style="padding-left:1px">'+sOSW+'</b></i>';
+								sLeftIcon2 = '<i class="fa fa-refresh oswIcon petrol-back "><b style="padding-left:1px">'+sOSW+'</b></i>';
 							}
 							if (osw[0] === "1"  || sUnplanend === "1" ){ //unplanned
-								sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 petrol-back dandelion"><b style="padding-left:1px">'+sUNPD+'</b></i>';
+								sLeftIcon2 = '<i class="fa fa-refresh oswIcon petrol-back "><b style="padding-left:1px">'+sUNPD+'</b></i>';
 							}
 							break;
 					case "D4" :

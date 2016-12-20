@@ -295,10 +295,10 @@ airbus.mes.stationtracker.util.Formatter = {
 							sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon petrol"></i>';
 						}
 						if (oBox.OSW === 3){ //OSW
-							sLeftIcon2 = '<i class="fa fa-refresh oswIcon petrol-back dandelion"><b style="padding-left:1px">'+sOSW+'</b></i>';
+							sLeftIcon2 = '<i class="fa fa-refresh oswIcon petrol-back "><b style="padding-left:1px">'+sOSW+'</b></i>';
 						}
 						if (oBox.isUnplanned === 1){ //Unplanned
-							sLeftIcon3 = '<i class="fa fa-refresh oswIcon petrol-back dandelion"><b style="padding-left:1px">'+sUNPD+'</b></i>';
+							sLeftIcon3 = '<i class="fa fa-refresh oswIcon petrol-back "><b style="padding-left:1px">'+sUNPD+'</b></i>';
 						}
 						break;
 
@@ -326,11 +326,11 @@ airbus.mes.stationtracker.util.Formatter = {
 							sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon petrol"></i>';
 						}
 						if (oBox.OSW === 3){ //OSW
-							sLeftIcon3 = '<i class="fa fa-refresh oswIcon petrol-back dandelion"><b style="padding-left:1px">'+sOSW+'</b></i>';
+							sLeftIcon3 = '<i class="fa fa-refresh oswIcon petrol-back "><b style="padding-left:1px">'+sOSW+'</b></i>';
 						}
 						
 						if (oBox.isUnplanned === 1){ //Unplanned
-							sLeftIcon3 = '<i class="fa fa-refresh oswIcon petrol-back dandelion"><b style="padding-left:1px">'+sUNPD+'</b></i>';
+							sLeftIcon3 = '<i class="fa fa-refresh oswIcon petrol-back "><b style="padding-left:1px">'+sUNPD+'</b></i>';
 						}
 						break;
 					
