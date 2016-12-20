@@ -2305,14 +2305,17 @@ RESSOURCEPOOL
   text-align: center;
   color: #0D5D76;
   background-color: #D5F1F8;
-  border-radius: 999px; }
+  border-radius: 999px;
+  margin-right: 0.8125rem; }
 #idUsersView .fixDsiplayRpImg {
   width: 100%; }
-  #idUsersView .fixDsiplayRpImg .sapUiHLayoutChildWrapper::nth-child(1) {
-    width: auto;
-    margin: 1%; }
-  #idUsersView .fixDsiplayRpImg .sapUiHLayoutChildWrapper::nth-child(2) {
-    width: 90%; }
+  #idUsersView .fixDsiplayRpImg .sapUiHLayoutChildWrapper {
+    vertical-align: middle; }
+    #idUsersView .fixDsiplayRpImg .sapUiHLayoutChildWrapper::nth-child(1) {
+      width: auto;
+      margin: 1%; }
+    #idUsersView .fixDsiplayRpImg .sapUiHLayoutChildWrapper::nth-child(2) {
+      width: 90%; }
 
 #idWorkCenterView .fixHboxItemDisplay .sapMFlexItem {
   width: 100%;
@@ -2380,16 +2383,16 @@ RESSOURCEPOOL
   text-overflow: ellipsis;
   overflow: hidden;
   margin-left: 60px;
-  max-width: 60px; }
+  max-width: 80px; }
 
 .customlistTitle {
   font-size: 1rem;
   margin-top: .5rem;
-  min-width: 160px;
+  margin-top: 18px;
+  width: 160px;
   text-overflow: ellipsis;
   overflow: hidden;
-  width: 160px;
-  margin-bottom: .5rem; }
+  width: 160px; }
 
 .listItemDescrption {
   margin-top: .5rem;

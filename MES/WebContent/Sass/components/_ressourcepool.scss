@@ -39,6 +39,7 @@ RESSOURCEPOOL
     .fixDsiplayRpImg{
         width:100%;
         .sapUiHLayoutChildWrapper{
+        	vertical-align: middle;
             &::nth-child(1){
                 width: auto;
                 margin:1%;
@@ -128,16 +129,16 @@ RESSOURCEPOOL
     text-overflow: ellipsis;
     overflow: hidden;
     margin-left: 60px;
-    max-width: 60px;
+    max-width: 80px;
 }
 .customlistTitle{
     font-size: 1rem;
     margin-top: .5rem;
-    min-width: 160px;
+    margin-top: 18px;
+    width: 160px;
     text-overflow: ellipsis;
     overflow: hidden;
     width: 160px;
-    margin-bottom: .5rem;
 }
 .listItemDescrption{
     margin-top: .5rem;
