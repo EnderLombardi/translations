@@ -1,59 +1,59 @@
 <core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
-	xmlns="sap.m" xmlns:viz="sap.viz.ui5.controls" xmlns:viz.data="sap.viz.ui5.data"
-	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:custom="airbus.mes.linetracker.customControl"
-	xmlns:l="sap.ui.layout" controllerName="airbus.mes.linetracker.ProductionLineView"
-	xmlns:html="http://www.w3.org/1999/xhtml">
-	<FlexBox id="productionVBox" class="prductionMainBox" fitContainer="true" direction="RowReverse"
-		items="{newProductionModel>/}">
-		<items>
-			<VBox class="productionTile">
-				<items>
-					<custom:customStationBox heading="Station {newProductionModel>Station}"
-						stationHeadColor="{path:'newProductionModel>Conveyor_Status' , formatter:'airbus.mes.linetracker.util.Formatter.stationColor'}"
-						 msn="{newProductionModel>MSN}" press="onStationSelect" hand="{newProductionModel>HAND}"
-						 taktResourceStatus="{newProductionModel>TAKT_STATUS}" >
-						<Image class="productionImgStation"
-							src="{path:'newProductionModel>TAKT_STATUS' , formatter:'airbus.mes.linetracker.util.Formatter.imageFormatter'}">
-						</Image>
-					</custom:customStationBox>
-					<Panel headerText="{newProductionModel>ImageName}" expanded="true"
-						expandable="false" width="100%" height="100%" class="panelHeader">
-						<content>
-							<Image src="{newProductionModel>Image}" width="100%" height="95%" />
-						</content>
-					</Panel>
-					<custom:customProductionBox progress="{newProductionModel>Progress}" class="productionProductionBox"
-						takt="{newProductionModel>Takt}" stv="{newProductionModel>STV}"
-						taktTime="{newProductionModel>TaktTime}" open="{newProductionModel>Andon_raised}"
-						escalated="{newProductionModel>Andon_escalated}" openStatus="{newProductionModel>Andon_rai_stat}"
-						escalatedStatus="{newProductionModel>Andon_esc_stat}" lineNumber="{newProductionModel>Line}"
-						width="100%" height="100%">
-						<custom:content>
-							<viz:VizFrame height="100%" width="100%" vizType='donut' legendVisible="false" >
-								<viz:dataset>
-									<viz.data:FlattenedDataset data="{newProductionModel>Donut}">
-										<viz.data:dimensions>
-											<viz.data:DimensionDefinition
-												name="Name" value="{name}" />
-										</viz.data:dimensions>
-										<viz.data:measures>
-											<viz.data:MeasureDefinition name="Value"
-												value="{value}" />
-										</viz.data:measures>
-									</viz.data:FlattenedDataset>
-								</viz:dataset>
-								<viz:feeds>
-									<viz.feeds:FeedItem uid="size" type="Measure"
-										values="Value" />
-									<viz.feeds:FeedItem uid="color" type="Dimension"
-										values="Name" />
-								</viz:feeds>
+    xmlns="sap.m" xmlns:viz="sap.viz.ui5.controls" xmlns:viz.data="sap.viz.ui5.data"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:custom="airbus.mes.linetracker.customControl"
+    xmlns:l="sap.ui.layout" controllerName="airbus.mes.linetracker.ProductionLineView"
+    xmlns:html="http://www.w3.org/1999/xhtml">
+    <FlexBox id="productionVBox" class="prductionMainBox" fitContainer="true" direction="RowReverse"
+        items="{newProductionModel>/}">
+        <items>
+            <VBox class="productionTile">
+                <items>
+                    <custom:customStationBox heading="{linetrackerI18n>Station} {newProductionModel>Station}"
+                        stationHeadColor="{path:'newProductionModel>Conveyor_Status' , formatter:'airbus.mes.linetracker.util.Formatter.stationColor'}"
+                         msn="{newProductionModel>MSN}" press="onStationSelect" hand="{newProductionModel>HAND}"
+                         taktResourceStatus="{newProductionModel>TAKT_STATUS}" >
+                        <Image class="productionImgStation"
+                            src="{path:'newProductionModel>TAKT_STATUS' , formatter:'airbus.mes.linetracker.util.Formatter.imageFormatter'}">
+                        </Image>
+                    </custom:customStationBox>
+                    <Panel headerText="{newProductionModel>ImageName}" expanded="true"
+                        expandable="false" width="100%" height="100%" class="panelHeader">
+                        <content>
+                            <Image src="{newProductionModel>Image}" width="100%" height="95%" />
+                        </content>
+                    </Panel>
+                    <custom:customProductionBox progress="{newProductionModel>Progress}" progressLabel="{linetrackerI18n>progress}" class="productionProductionBox"
+                        takt="{newProductionModel>Takt}" taktLabel="{linetrackerI18n>takt}" stv="{newProductionModel>STV}" stvLabel="{linetrackerI18n>totalTime}"
+                        taktTime="{newProductionModel>TaktTime}" taktTimeLabel="{linetrackerI18n>taktTimeLabel}" openLabel="{linetrackerI18n>openLabel}" open="{newProductionModel>Andon_raised}"
+                        escalated="{newProductionModel>Andon_escalated}" andonLabel="{linetrackerI18n>andonLabel}" escalatedLabel="{linetrackerI18n>escalatedLabel}" openStatus="{newProductionModel>Andon_rai_stat}"
+                        escalatedStatus="{newProductionModel>Andon_esc_stat}" lineNumber="{newProductionModel>Line}"
+                        width="100%" height="100%">
+                        <custom:content>
+                            <viz:VizFrame height="100%" width="100%" vizType='donut' legendVisible="false" >
+                                <viz:dataset>
+                                    <viz.data:FlattenedDataset data="{newProductionModel>Donut}">
+                                        <viz.data:dimensions>
+                                            <viz.data:DimensionDefinition
+                                                name="Name" value="{name}" />
+                                        </viz.data:dimensions>
+                                        <viz.data:measures>
+                                            <viz.data:MeasureDefinition name="Value"
+                                                value="{value}" />
+                                        </viz.data:measures>
+                                    </viz.data:FlattenedDataset>
+                                </viz:dataset>
+                                <viz:feeds>
+                                    <viz.feeds:FeedItem uid="size" type="Measure"
+                                        values="Value" />
+                                    <viz.feeds:FeedItem uid="color" type="Dimension"
+                                        values="Name" />
+                                </viz:feeds>
 
-							</viz:VizFrame>
-						</custom:content>
-					</custom:customProductionBox>
-				</items>
-			</VBox>
-		</items>
-	</FlexBox>
+                            </viz:VizFrame>
+                        </custom:content>
+                    </custom:customProductionBox>
+                </items>
+            </VBox>
+        </items>
+    </FlexBox>
 </core:View>
