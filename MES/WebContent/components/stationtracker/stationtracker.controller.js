@@ -912,6 +912,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
                 aMyFilter.push(new sap.ui.model.Filter("DISRUPTION","NE","D3"));
                 aMyFilter.push(new sap.ui.model.Filter("DISRUPTION","NE","D2"));
                 aMyFilter.push(new sap.ui.model.Filter("DISRUPTION","NE","D1"));
+                aMyFilter.push(new sap.ui.model.Filter("STATE","NE","C"));
                 // User AND filter
                 sap.ui.getCore().byId("ImportOswUnplannedPopover--myList").getBinding("items").filter(new sap.ui.model.Filter(aMyFilter, true));
                 return;
