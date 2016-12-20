@@ -9,8 +9,7 @@ airbus.mes.shell.busyManager =  {
             setTimeout(function() { //setTimeout is a trick to permit setBusy to be effective, without it's not working
                 if (!id){
 			        view.setBusy(true);
-                }
-                else {
+                } else {
                     view.byId(id).setBusy(true);
                 }
 		    }, 0);
@@ -20,8 +19,7 @@ airbus.mes.shell.busyManager =  {
             setTimeout(function() {
 			    if (!id){
 			        view.setBusy(false);
-                }
-                else {
+                } else {
                     view.byId(id).setBusy(false);
                 }
 		    }, 0);

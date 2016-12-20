@@ -9,11 +9,11 @@ sap.ui.jsfragment("airbus.mes.linetracker.Station5Load", {
 	// Local Station 5 global temporary Model
 	var tModel = new sap.ui.model.json.JSONModel();
 	// Search the MSN
-	var oSearchMSN = new sap.m.SearchField({
-		search : function(oEvent) {
-			var searchValue = this.getValue();
-				}
-	});
+//	var oSearchMSN = new sap.m.SearchField({
+//		search : function(oEvent) {
+//			var searchValue = this.getValue();
+//				}
+//	});
 	var oAffectation = new sap.m.Text({
 		text : "{MSN}",
 	});

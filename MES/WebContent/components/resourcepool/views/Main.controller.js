@@ -1192,13 +1192,8 @@ sap.ui
 							}
 
 							return 0;
-						}
-
-						/*
-						 * if 1 is returned, means resource pool does not
-						 * exists, create new one by calling createResource()
-						 */
-						else if (anyError == 1) var error = airbus.mes.resourcepool.util.ModelManager.createResource(resourcePool, description);
+						} else if (anyError == 1) var error = airbus.mes.resourcepool.util.ModelManager.createResource(resourcePool, description);
+						// if 1 is returned, means resource pool does not exists, create new one by calling createResource()
 						/* if creation is successful return 0 */
 						if (error == 0)
 							return 0;

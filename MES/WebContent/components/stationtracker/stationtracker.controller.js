@@ -595,9 +595,6 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 
     },
 
-    /**
-     *
-     */
     onUnplannedSelectAll : function(oEvent) {
         var oList = airbus.mes.stationtracker.ImportOswUnplannedPopover.getContent()[0].getItems()[1];
         if (oEvent.getParameter("selected")){
@@ -607,9 +604,6 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
                 elt.setSelected(false);
             })
         }
-
-
-
     },
 
     onUnplannedClose : function(oEvent) {
@@ -678,14 +672,14 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
         airbus.mes.stationtracker.ModelManager.loadKPIshiftStaffing();
     },
 
-    /***************************************************************************
->>>>>>> [batch1 - batch2 button] hide
+    /**
+	 * [batch1 - batch2 button] hide
      * Re apply the sorter on the model of the worklist to group operation
      * in worklist popup
      *
      * @param {oEvent} Object wich represent the event on press from "TeamButton"
      * button
-     ****************************************************************************/
+     */
 	changeGroupWorkList : function(oEvent) {
 
 		var aModel = airbus.mes.stationtracker.worklistPopover.aModel;
@@ -818,7 +812,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
      * Returns a comparator function on the provided fields, in the provided
      * order of priority, to be used for example by an Array.sort() function.
      *
-      * @param {Array} fields, Array of object
+     * @param {Array} fields, Array of object
      * @returns {Function} comparator
      */
      fieldComparator : function(fields) {
@@ -856,23 +850,23 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
             // we apply the a filter
             switch (oEvent.getSource().getSelectedKey()) {
             case "StatusBlocked":
-            	aMyFilter.push(new sap.ui.model.Filter("status","EQ","5"));
-            	aMyFilter.push(new sap.ui.model.Filter("status","EQ","6"));
-            	aMyFilter.push(new sap.ui.model.Filter("status","EQ","7"));
-            	aMyFilter.push(new sap.ui.model.Filter("status","EQ","4"));
-            	break;
+                aMyFilter.push(new sap.ui.model.Filter("status","EQ","5"));
+                aMyFilter.push(new sap.ui.model.Filter("status","EQ","6"));
+                aMyFilter.push(new sap.ui.model.Filter("status","EQ","7"));
+                aMyFilter.push(new sap.ui.model.Filter("status","EQ","4"));
+                break;
             case "StatusPaused":
-            	aMyFilter.push(new sap.ui.model.Filter("status","EQ","3"));
-            	break;
+                aMyFilter.push(new sap.ui.model.Filter("status","EQ","3"));
+                break;
             case "StatusStarted":
-            	aMyFilter.push(new sap.ui.model.Filter("status","EQ","2"));      
-            	break;
+                aMyFilter.push(new sap.ui.model.Filter("status","EQ","2"));      
+                break;
             case "StatusNotStarted":
-            	aMyFilter.push(new sap.ui.model.Filter("status","EQ","1"));
+                aMyFilter.push(new sap.ui.model.Filter("status","EQ","1"));
                 break;
             case "StatusConfirmed":
-            	aMyFilter.push(new sap.ui.model.Filter("status","EQ","0"));
-            	break;
+                aMyFilter.push(new sap.ui.model.Filter("status","EQ","0"));
+                break;
             default:
             }
              sap.ui.getCore().byId("worklistPopover--myList").getBinding("items").filter(new sap.ui.model.Filter(aMyFilter, false));
@@ -893,34 +887,38 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
             // if status ALL, we have to remove all filter
             sap.ui.getCore().byId("ImportOswUnplannedPopover--myList").getBinding("items").filter();
         } else {
-        	// we apply the a filter this filter is apply directly on mii service
+            // we apply the a filter this filter is apply directly on mii service
             switch (oEvent.getSource().getSelectedKey()) {
             case "StatusBlocked":
-            	aMyFilter.push(new sap.ui.model.Filter("DISRUPTION","EQ","D4"));
-            	aMyFilter.push(new sap.ui.model.Filter("DISRUPTION","EQ","D3"));
-            	aMyFilter.push(new sap.ui.model.Filter("DISRUPTION","EQ","D2"));
-            	aMyFilter.push(new sap.ui.model.Filter("DISRUPTION","EQ","D1"));
-            	break;
+                aMyFilter.push(new sap.ui.model.Filter("DISRUPTION","EQ","D4"));
+                aMyFilter.push(new sap.ui.model.Filter("DISRUPTION","EQ","D3"));
+                aMyFilter.push(new sap.ui.model.Filter("DISRUPTION","EQ","D2"));
+                aMyFilter.push(new sap.ui.model.Filter("DISRUPTION","EQ","D1"));
+                break;
             case "StatusPaused":
-            	aMyFilter.push(new sap.ui.model.Filter("PAUSED","EQ","---"));
-            	aMyFilter.push(new sap.ui.model.Filter("PREVIOUSLY_STARTED","EQ","true"));
-            	// Use AND filter
+                aMyFilter.push(new sap.ui.model.Filter("PAUSED","EQ","---"));
+                aMyFilter.push(new sap.ui.model.Filter("PREVIOUSLY_STARTED","EQ","true"));
+                // Use AND filter
                 sap.ui.getCore().byId("ImportOswUnplannedPopover--myList").getBinding("items").filter(new sap.ui.model.Filter(aMyFilter, true));
                 return;
-            	break;
+                break;
             case "StatusStarted":
-            	aMyFilter.push(new sap.ui.model.Filter("PAUSED","EQ","false"));
-            	break;
+                aMyFilter.push(new sap.ui.model.Filter("PAUSED","EQ","false"));
+                break;
             case "StatusNotStarted":
-            	aMyFilter.push(new sap.ui.model.Filter("PAUSED","EQ","---"));
-            	aMyFilter.push(new sap.ui.model.Filter("PREVIOUSLY_STARTED","NE","true"));
-            	// User AND filter
+                aMyFilter.push(new sap.ui.model.Filter("PAUSED","EQ","---"));
+                aMyFilter.push(new sap.ui.model.Filter("PREVIOUSLY_STARTED","NE","true"));
+                aMyFilter.push(new sap.ui.model.Filter("DISRUPTION","NE","D4"));
+                aMyFilter.push(new sap.ui.model.Filter("DISRUPTION","NE","D3"));
+                aMyFilter.push(new sap.ui.model.Filter("DISRUPTION","NE","D2"));
+                aMyFilter.push(new sap.ui.model.Filter("DISRUPTION","NE","D1"));
+                // User AND filter
                 sap.ui.getCore().byId("ImportOswUnplannedPopover--myList").getBinding("items").filter(new sap.ui.model.Filter(aMyFilter, true));
                 return;
-            	break;
+                break;
             case "StatusConfirmed":
-            	aMyFilter.push(new sap.ui.model.Filter("STATE","EQ","C"));
-            	break;
+                aMyFilter.push(new sap.ui.model.Filter("STATE","EQ","C"));
+                break;
             default:
             }
              sap.ui.getCore().byId("ImportOswUnplannedPopover--myList").getBinding("items").filter(new sap.ui.model.Filter(aMyFilter, false));
