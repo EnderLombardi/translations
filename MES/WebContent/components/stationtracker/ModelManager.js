@@ -745,7 +745,7 @@ airbus.mes.stationtracker.ModelManager = {
 
 		GroupingBoxingManager.parseOperation(GroupingBoxingManager.group,GroupingBoxingManager.box);
 
-		airbus.mes.shell.busyManager.unsetBusy(airbus.mes.stationtracker.oView);
+		airbus.mes.shell.busyManager.unsetBusy(airbus.mes.stationtracker.oView, "stationtracker");
 	
 	},
 		
