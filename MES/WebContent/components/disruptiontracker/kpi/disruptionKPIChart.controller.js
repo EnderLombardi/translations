@@ -26,7 +26,13 @@ sap.ui.controller("airbus.mes.disruptiontracker.kpi.disruptionKPIChart", {
 				text : airbus.mes.disruptiontracker.kpi.oView.getModel("i18n").getProperty("frame1Title")
 			},
 			
-			general: {
+			plotArea: {
+                dataLabel: {
+                    visible: true
+                }
+            },
+            
+            general: {
 				layout: {
 					padding : 2
 				}
@@ -59,7 +65,13 @@ sap.ui.controller("airbus.mes.disruptiontracker.kpi.disruptionKPIChart", {
 				text : airbus.mes.disruptiontracker.kpi.oView.getModel("i18n").getProperty("frame2Title")
 			},
 			
-			general: {
+			plotArea: {
+                dataLabel: {
+                    visible: true
+                }
+            },
+            
+            general: {
 				layout: {
 					padding : 2
 				}
@@ -91,7 +103,13 @@ sap.ui.controller("airbus.mes.disruptiontracker.kpi.disruptionKPIChart", {
 				visible : true, 
 				text : airbus.mes.disruptiontracker.kpi.oView.getModel("i18n").getProperty("frame3Title")
 			},
-			general: {
+			plotArea: {
+                dataLabel: {
+                    visible: true
+                }
+            },
+            
+            general: {
 				layout: {
 					padding : 2
 				}
@@ -105,7 +123,13 @@ sap.ui.controller("airbus.mes.disruptiontracker.kpi.disruptionKPIChart", {
 				visible : true, 
 				text : airbus.mes.disruptiontracker.kpi.oView.getModel("i18n").getProperty("frame4Title")
 			},
-			general: {
+			plotArea: {
+                dataLabel: {
+                    visible: true
+                }
+            },
+            
+            general: {
 				layout: {
 					padding : 2
 				}
