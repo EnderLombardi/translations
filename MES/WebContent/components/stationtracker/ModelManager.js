@@ -395,7 +395,8 @@ airbus.mes.stationtracker.ModelManager = {
 				.replaceURI(geturlressourcepool, "$site", oData.site);
 		geturlressourcepool = airbus.mes.stationtracker.ModelManager
 				.replaceURI(geturlressourcepool, "$station", oData.station);
-
+		geturlressourcepool = airbus.mes.stationtracker.ModelManager
+		.replaceURI(geturlressourcepool, "$msn", oData.msn);
 		oViewModel.loadData(geturlressourcepool, null, true);
 
 	},
@@ -403,20 +404,29 @@ airbus.mes.stationtracker.ModelManager = {
 
 		// var oViewModel = sap.ui.getCore().getModel("ressourcePoolModel"); Not
 		// used
+		
 		var aModel = sap.ui.getCore().getModel("ressourcePoolModel");
-
+		
 		if (aModel.getProperty("/Rowsets/Rowset/0/Row")) {
 
 			aModel.oData.Rowsets.Rowset[0].Row.unshift({
-				"FNAME" : "All User",
-				"USER_ID" : "ALL",
+				"firstName" : "All User",
+				"user" : "ALL",
 			});
+
+			aModel.oData.Rowsets.Rowset[0].Row = aModel.oData.Rowsets.Rowset[0].Row.reduce(function(field, e1){  
+				var matches = field.filter(function(e2){return e1.user === e2.user}); 
+				if (matches.length === 0){ 
+					field.push(e1);  
+				}return field;
+			}, []);
 
 			sap.ui.getCore().getModel("ressourcePoolModel").refresh(true);
 
 		} else {
 			console.log("NO user in ressource pool");
 		}
+
 	},
 	loadProductionGroup : function() {
 
