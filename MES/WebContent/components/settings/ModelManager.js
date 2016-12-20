@@ -281,7 +281,11 @@ airbus.mes.settings.ModelManager = {
 					sSapLanguage);
 
 		}
-
+		
+/* the listbox has to be compliant with the language selected */		
+		if (sSaveLanguage === undefined){
+			sSaveLanguage = sSapLanguage;
+		}
 		for (var i = 0; i < aItems.length; i++) {
 			if (aItems[i].getKey() === sSaveLanguage) {
 				airbus.mes.shell.oView.byId("SelectLanguage")
