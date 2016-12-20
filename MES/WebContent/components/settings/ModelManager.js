@@ -283,7 +283,7 @@ airbus.mes.settings.ModelManager = {
 		}
 		
 /* the listbox has to be compliant with the language selected */		
-		if (sSaveLanguage === undefined){
+		if (sSaveLanguage === undefined || sSaveLanguage === "") {
 			sSaveLanguage = sSapLanguage;
 		}
 		for (var i = 0; i < aItems.length; i++) {
