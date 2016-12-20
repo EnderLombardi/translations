@@ -62,13 +62,13 @@ WORK LIST POP OVER
             }
         }
         &.fa-exclamation-triangle {
-        	&.triangleIcon{
-        		&.petrol{
-                	color:$petrol;
-           		}
-        	}
+            &.triangleIcon{
+                &.petrol{
+                    color:$petrol;
+                   }
+            }
         }
-       
+
     }
     .sapMPIText3 {
         position: absolute;
@@ -162,7 +162,7 @@ BOX MANAGEMENT
             &.petrol {
                 color:$petrol;
             }
-        } 
+        }
         &.triangleIcon {
             padding-left: 6px;
             float: left;
@@ -719,7 +719,7 @@ WORKLIST
     }
     &.sapUiRespGridVSpace1{
         &>div{
-            margin-botton: 0px !important;
+            margin-bottom: 0px !important;
         }
     }
 }
