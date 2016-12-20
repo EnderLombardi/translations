@@ -122,7 +122,7 @@ BOX MANAGEMENT
     text-overflow: ellipsis;
     .trackerText{
         @extend %trackerText;
-        max-width:calc(100% - 70px);
+        max-width: calc(100% - 20px);
         white-space: nowrap;
         color: white;
         overflow: hidden;
@@ -130,7 +130,6 @@ BOX MANAGEMENT
 
     .trackerTextBlock{
         @extend %trackerText;
-        max-width:40%;
         white-space: nowrap;
         color: $petrol;
     }
@@ -179,14 +178,6 @@ BOX MANAGEMENT
             min-width: 45px;
             & b {
                 font-family: arial;
-            }
-            &+.trackerText {
-                //max-width: calc(100% - 100px);
-                max-width: 40%;
-            }
-            &+.oswIcon+.trackerText {
-                //max-width: calc(100% - 170px);
-                max-width: 40%;
             }
             &.cherry-red {
                 color: $cherry-red;
