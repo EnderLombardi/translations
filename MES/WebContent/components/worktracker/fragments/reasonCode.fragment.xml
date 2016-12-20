@@ -8,21 +8,21 @@
 				labelSpanL="1" labelSpanM="2" emptySpanL="0" emptySpanM="0"
 				columnsL="1" columnsM="1" validateFieldGroup="onValidatereason">
 				<f:content> 
-							<Label text="Reason Code" />
+							<Label text="{i18n>reasonCode}" />
 							<Select forceSelection="true" change="onSelectionReason" id="reasonCodeSelectBox"
 								items="{reasonCodeModel>/Rowsets/Rowset/0/Row}">
 								<core:Item key="{reasonCodeModel>REASON_CODE}" text="{reasonCodeModel>DESCRIPTION}" />
 							</Select>
 
-						<Label text="Comment"/>
+						<Label text="{i18n>comment}"/>
 						<TextArea id="reasonCodeComments"/>
 				</f:content>
 			</f:SimpleForm>
 		</content>
 		<buttons>
-			<Button id="submit" text="Submit" press="onSubmitReasonCode"
+			<Button id="submit" text="{i18n>submit}" press="onSubmitReasonCode"
 				type="Accept" />
-			<Button id="cancel" text="Cancel" press="onCancelReasonCode" />
+			<Button id="cancel" text="{i18n>cancel}" press="onCancelReasonCode" />
 		</buttons>
 	</Dialog>
 </core:FragmentDefinition>

@@ -14,10 +14,10 @@
 						<!-- displayFormat="long" change="filterOperationList" class="sapUiSmallMarginBottom" 
 							/> -->
 						<Select forceSelection="true" maxWidth="100%" change="filterOperStatus">
-							<core:Item key="All Status" text="All Status" />
-							<core:Item key="NOT_STARTED" text="Not Started" />
-							<core:Item key="IN_WORK" text="In Progress" />
-							<core:Item key="IN_QUEUE" text="Paused" />
+							<core:Item key="All Status" text="{i18n>allStatus}" />
+							<core:Item key="NOT_STARTED" text="{i18n>notStarted}" />
+							<core:Item key="IN_WORK" text="{i18n>in_progress}" />
+							<core:Item key="IN_QUEUE" text="{i18n>paused}" />
 						</Select>
 						<HBox alignItems="End" justifyContent="SpaceBetween">
 							<items>

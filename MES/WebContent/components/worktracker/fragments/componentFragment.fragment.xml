@@ -13,13 +13,13 @@
 			<table:toolbar>
 			<Toolbar>
 				
-						<Title text="Components" level="H5" titleStyle="H5" />
+						<Title text="{i18n>components}" level="H5" titleStyle="H5" />
 						<ToolbarSpacer />
 						<Select selectedKey="OrderBy">
-							<core:Item key="orderBy" text="Order By" />
+							<core:Item key="orderBy" text="{i18n>orderBy}" />
 						</Select>
 						<Select selectedKey="groupBy">
-							<core:Item key="groupBy" text="group By" />
+							<core:Item key="groupBy" text="{i18n>groupBy}" />
 						</Select>
 					
 			</Toolbar>

@@ -98,7 +98,7 @@
 
 								<f:FormElement>
 									<f:label>
-										<Label required="true" text="{i18nModel>ResponsibleSupport}">
+										<Label required="true" text="{i18nModel>resGroup}">
 											<layoutData>
 												<l:GridData span="L2 M3 S12" linebreak="true" />
 											</layoutData>
@@ -213,7 +213,7 @@
 										</Label>
 									</f:label>
 									<f:fields>
-										<DatePicker enabled="false" id="openDate"
+										<DatePicker enabled="false" id="OpenDate"
 											displayFormat="long"
 											value="{path: 'DisruptionDetailModel>/OpeningTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}">
 											<layoutData>
@@ -373,7 +373,7 @@
 											</layoutData>
 										</Label>
 									</f:label>
-									<TextArea placeholder="{i18nModel>AddCommentBox}" id="comment"
+									<TextArea placeholder="{i18nModel>AddComment}" id="comment"
 										valueLiveUpdate="true" rows="10" value="">
 										<layoutData>
 											<l:GridData span="L8 M9 S11" />

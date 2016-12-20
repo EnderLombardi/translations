@@ -9,11 +9,11 @@
 				columnsL="1" columnsM="1" validateFieldGroup="onValidateFieldGroup">
 				<f:content>
 					<Text text="{i18n>partialConfirmation}" />
-					<Label text="Username" required="true" />
-					<Input value="{userName}" id="usernameConfirm" placeholder="Enter username" />
-					<Label text="Password" required="true" />
+					<Label text="{i18n>username}" required="true" />
+					<Input value="{userName}" id="usernameConfirm" placeholder="{i18n>EnterUsername}" />
+					<Label text="{i18n>password}" required="true" />
 					<Input type="Password" value="{password}" id="passwordConfirm"
-						placeholder="Enter password">
+						placeholder="{i18n>EnterPassword}">
 					</Input>
 				</f:content>
 			</f:SimpleForm>
@@ -25,10 +25,10 @@
 			</HBox>
 		</content>
 		<beginButton>
-			<Button text="Cancel" press="onCancelConfirmation" />
+			<Button text="{i18n>cancel}" press="onCancelConfirmation" />
 		</beginButton>
 		<endButton>
-			<Button type="Emphasized" text="OK" press="onPartialConfirmation" />
+			<Button type="Emphasized" text="{i18n>ok}" press="onPartialConfirmation" />
 		</endButton>
 	</Dialog>
 </core:FragmentDefinition>

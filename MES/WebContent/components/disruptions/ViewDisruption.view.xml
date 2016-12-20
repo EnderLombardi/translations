@@ -89,7 +89,7 @@
 
 										<f:FormElement>
 											<f:label>
-												<Label class="detailLabels" text="{i18nModel>rootCause}">
+												<Label class="detailLabels" text="{i18nModel>RootCause}">
 													<layoutData>
 														<l:GridData span="L3 M3 S12" />
 													</layoutData>
@@ -108,7 +108,7 @@
 
 										<f:FormElement>
 											<f:label>
-												<Label class="detailLabels" text="{i18nModel>origGrpDesc}">
+												<Label class="detailLabels" text="{i18nModel>OriginatorGroup}">
 													<layoutData>
 														<l:GridData span="L3 M3 S12" />
 													</layoutData>
@@ -185,7 +185,7 @@
 
 										<f:FormElement>
 											<f:label>
-												<Label class="detailLabels" text="{i18nModel>openDate}">
+												<Label class="detailLabels" text="{i18nModel>OpenDate}">
 													<layoutData>
 														<l:GridData span="L3 M3 S12" />
 													</layoutData>
@@ -240,7 +240,7 @@
 
 										<f:FormElement>
 											<f:label>
-												<Label class="detailLabels" text="{i18nModel>timeLost}">
+												<Label class="detailLabels" text="{i18nModel>TimeLost}">
 													<layoutData>
 														<l:GridData span="L3 M3 S12" />
 													</layoutData>
@@ -366,7 +366,7 @@
 						<Panel id="commentBox" visible="false">
 
 							<VBox width="79%">
-								<TextArea id="commentArea" placeholder="{i18nModel>addCommentPlaceholder}"
+								<TextArea id="commentArea" placeholder="{i18nModel>addComment}"
 									width="100%" />
 
 								<HBox>
@@ -374,7 +374,7 @@
 										press="submitComment" class="sapUiSmallMarginEnd buttonAccept"
 										width="12rem" />
 
-									<Button text="{i18nModel>cancelComment}" type="Reject"
+									<Button text="{i18nModel>cancel}" type="Reject"
 										press="hideCommentBox" class="sapUiSmallMarginEnd buttonReject"
 										width="12rem" />
 								</HBox>

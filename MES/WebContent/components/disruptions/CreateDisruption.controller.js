@@ -236,7 +236,7 @@ sap.ui
 						if (validationFlag == false){
 							airbus.mes.shell.ModelManager.messageShow(oView
 									.getModel("i18nModel").getProperty(
-											"CorrectExpectedDate"));
+											"CompulsaryExpectedDateTime"));
 							return;
 						}
 						
@@ -439,7 +439,7 @@ sap.ui
 						var oView = airbus.mes.disruptions.oView.createDisruption;
 						
 						var expectedTime = oView.byId("expectedTime").getValue();
-						var openDate = oView.byId("openDate").getValue();
+						var openDate = oView.byId("OpenDate").getValue();
 						var openTime = oView.byId("openTime").getValue();
 						var expectedDate = oView.byId("expectedDate").getValue();
 						  if (expectedTime == "") {
@@ -855,7 +855,7 @@ sap.ui
 																					items : [
 																							new sap.m.Label(
 																									{
-																										text : "Quantity"
+																										text : this.getView().getModel("i18nModel").getProperty("Quantity")
 																									}),
 																							new sap.m.Input(
 																									{
@@ -1017,7 +1017,7 @@ sap.ui
 																					items : [
 																							new sap.m.Label(
 																									{
-																										text : "Quantity"
+																										text : this.getView().getModel("i18nModel").getProperty("Quantity")
 																									}),
 																							new sap.m.Input(
 																									{

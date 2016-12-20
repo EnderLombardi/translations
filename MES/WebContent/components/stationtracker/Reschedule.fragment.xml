@@ -25,7 +25,7 @@
 
 			</HBox>
 		</content>
-		<!-- <buttons> <Button text="{StationTrackerI18n>ReschedulePopupConfirm}" 
+		<!-- <buttons> <Button text="{StationTrackerI18n>confirm}" 
 			type="Transparent" icon="sap-icon://forward" class="sapUiTinyMarginBeginEnd 
 			pageHeaderDialog" press="onRescheduleConfirm" > </Button> <Button text="{StationTrackerI18n>Close}" 
 			type="Transparent" icon="sap-icon://decline" class="sapUiTinyMarginBeginEnd" 

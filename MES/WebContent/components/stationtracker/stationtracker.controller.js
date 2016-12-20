@@ -317,7 +317,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
         });
         sap.ui.getCore().byId("ImportOswUnplannedPopover--filterPhStation").setVisible(false);
         airbus.mes.stationtracker.CheckQa = "UNPLANNED";
-        sap.ui.getCore().byId("ImportOswUnplannedPopover--LabelTitle").setText(airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("WorklistHeaderUnplanned"));
+        sap.ui.getCore().byId("ImportOswUnplannedPopover--LabelTitle").setText(airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("UnplannedActivities"));
         var oModel = sap.ui.getCore().getModel("unPlannedModel");
 
         //Changed the data of the worklist by unplannned model

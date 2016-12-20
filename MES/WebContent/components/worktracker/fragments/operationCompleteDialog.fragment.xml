@@ -10,12 +10,12 @@
 				validateFieldGroup="onValidateFieldGroup">
 				<f:content>
 				<Text text="{i18n>fullConfirmation}" />
-					<Label text="Username" required="true" />
+					<Label text="{i18n>username}" required="true" />
 					<Input  value="{userName}"
-						id="usernameComplete" placeholder="Enter username"/>
-					<Label text="Password" required="true"/>
+						id="usernameComplete" placeholder="{i18n>EnterUsername}"/>
+					<Label text="{i18n>password}" required="true"/>
 					<Input  type="Password" value="{password}"
-						id="passwordComplete" placeholder="Enter password">
+						id="passwordComplete" placeholder="{i18n>EnterPassword}">
 					</Input>					     
 			</f:content>
 		</f:SimpleForm>
@@ -29,10 +29,10 @@
 			</MessageStrip>
 		</content>		
 		<beginButton>
-			<Button text="Cancel" press="onCancelFullConfirmation"/>
+			<Button text="{i18n>cancel}" press="onCancelFullConfirmation"/>
 		</beginButton>
 		<endButton>
-			<Button type="Emphasized" text="OK" press="onFullConfirmation"/>
+			<Button type="Emphasized" text="{i18n>ok}" press="onFullConfirmation"/>
 		</endButton>
 	</Dialog>
 </core:FragmentDefinition>

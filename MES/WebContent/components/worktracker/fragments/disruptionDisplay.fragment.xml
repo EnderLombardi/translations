@@ -2,11 +2,11 @@
 	xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
 	<Panel class="disruptionPanel sapUiSmallMargin" id="disruptionsHeader">
 		<Toolbar>
-			<Title text="Disruptions" titleStyle="H4" width="100%" />
-			<Button text="Create new Disruption" icon="sap-icon://sort"
+			<Title text="{i18n>disruptions}" titleStyle="H4" width="100%" />
+			<Button text="{i18n>createDisruptions}" icon="sap-icon://sort"
 				press="onCreateDisruption" />
 		</Toolbar>
-		<List id="disrptlist" noDataText="No Disruptions Found" items="{disruptionModel>/Disruption}">
+		<List id="disrptlist" noDataText="{i18n>notFound}" items="{disruptionModel>/Disruption}">
 			<CustomListItem>
 				<Panel expandable="true" expanded="false" class="barColor"
 					expand="handleDisruptionPanelExpand">
@@ -14,8 +14,8 @@
 						<Toolbar>
 							<Title text="Luca A. has created a Disruption" class="panelTitleText" />
 							<ToolbarSpacer />
-							<Button class="decoratePanelBtn" text="Delete" icon="sap-icon://delete" />
-							<Button class="decoratePanelBtn" text="Edit" icon="sap-icon://edit" />
+							<Button class="decoratePanelBtn" text="{i18n>delete}" icon="sap-icon://delete" />
+							<Button class="decoratePanelBtn" text="{i18n>edit}" icon="sap-icon://edit" />
 						</Toolbar>
 					</headerToolbar>
 
@@ -30,7 +30,7 @@
 
 									<f:FormElement>
 										<f:label>
-											<Label text="Gravity">
+											<Label text="{i18n>gravity}">
 												<layoutData>
 													<l:GridData span="L2 M2 S12" />
 												</layoutData>
@@ -46,7 +46,7 @@
 									</f:FormElement>
 									<f:FormElement>
 										<f:label>
-											<Label text="Date">
+											<Label text="{i18n>date}">
 												<layoutData>
 													<l:GridData span="L2 M2 S12" />
 												</layoutData>
@@ -64,7 +64,7 @@
 
 									<f:FormElement>
 										<f:label>
-											<Label text="Problem">
+											<Label text="{i18n>problem}">
 												<layoutData>
 													<l:GridData span="L2 M2 S12" linebreak="true" />
 												</layoutData>
@@ -80,7 +80,7 @@
 									</f:FormElement>
 									<f:FormElement>
 										<f:label>
-											<Label text="Expected">
+											<Label text="{i18n>expected}">
 												<layoutData>
 													<l:GridData span="L2 M2 S12" />
 												</layoutData>
@@ -97,7 +97,7 @@
 
 									<f:FormElement>
 										<f:label>
-											<Label text="Nature">
+											<Label text="{i18n>nature}">
 												<layoutData>
 													<l:GridData span="L2 M2 S12" linebreak="true" />
 												</layoutData>
@@ -113,7 +113,7 @@
 									</f:FormElement>
 									<f:FormElement>
 										<f:label>
-											<Label text="Help">
+											<Label text="{i18n>help}">
 												<layoutData>
 													<l:GridData span="L2 M2 S12" />
 												</layoutData>
@@ -148,7 +148,7 @@
 
 									<f:FormElement>
 										<f:label>
-											<Label text="Status">
+											<Label text="{i18n>status}">
 												<layoutData>
 													<l:GridData span="L2 M2 S12" />
 												</layoutData>
@@ -171,7 +171,7 @@
 											</Label>
 										</f:label>
 										<f:fields>
-											<TextArea placeholder="Add Comments.." icon="sap-icon://sort"
+											<TextArea placeholder="{i18n>addComment}" icon="sap-icon://sort"
 												visible="{ parts: [ 'disruptionModel>commentVisible'], formatter : 'airbus.mes.worktracker.util.Formatter.showComment' }">
 												<layoutData>
 													<l:GridData span="L10 M10 S12" />
@@ -188,7 +188,7 @@
 											</Label>
 										</f:label>
 										<f:fields>
-											<Button text="Add Comment"
+											<Button text="{i18n>addComment}"
 												visible="{ parts: [ 'disruptionModel>Status' ], formatter : 'airbus.mes.worktracker.util.Formatter.setVisibility' }"
 												press="showCommentBox">
 												<layoutData>

@@ -29,7 +29,7 @@
 						</Select>
 						
 						<ToolbarSpacer />
-						<Button id="TeamButton" text="{StationTrackerI18n>ButtonTeam}"
+						<Button id="TeamButton" text="{StationTrackerI18n>Team}"
 							type="Transparent"
 							class="iconbuttonTeam"
 							icon="sap-icon://group" press="onTeamPress" />
@@ -180,7 +180,7 @@
 						</VBox>
 
 						<VBox id="boxOpenDisruptions" width="22%" class="contentHeaderCont kpiBoxes">
-							<Label text="{StationTrackerI18n>DISRUPTION/ANDON}"
+							<Label text="{StationTrackerI18n>disruptions/andon}"
 								class="whiteTextHeader" />
 							<HBox class="kpiBodyWithoutMargin">
 								<VBox width="25%" justifyContent="SpaceAround" class="openDisruptionTotal">
@@ -198,7 +198,7 @@
 									<Label text="{StationTrackerI18n>DisruptionDetails}"
 										class="kpiName" design="Bold" />
 									<Label text="{StationTrackerI18n>DisruptionsNC}"/>
-									<Label text="{StationTrackerI18n>DisruptionsMissing}"/>
+									<Label text="{StationTrackerI18n>missingParts}"/>
 									<Label text="{StationTrackerI18n>DisruptionsTools}"/>
 									<Label text="{StationTrackerI18n>DisruptionFTE}"/>
 									<Label text="{StationTrackerI18n>DisruptionOther}"/>
@@ -343,7 +343,7 @@
 					<Button id="oswButton" text="{StationTrackerI18n>ButtonOutstandingWork}"
 						type="Transparent" icon="sap-icon://cause" class="sapUiTinyMarginBeginEnd"
 						press="onOSWPress"></Button>
-					<Button id="unplannedButton" text="{StationTrackerI18n>ButtonUnplanned}" type="Transparent"
+					<Button id="unplannedButton" text="{StationTrackerI18n>UnplannedActivities}" type="Transparent"
 						icon="sap-icon://inspect" class="sapUiTinyMarginBeginEnd" press="onUnplannedPress"></Button>
 					<ToggleButton text="{StationTrackerI18n>ButtonInitial}" type="Transparent"
 						icon="sap-icon://past" class="sapUiTinyMarginBeginEnd" press="onInitialPlanPress" />

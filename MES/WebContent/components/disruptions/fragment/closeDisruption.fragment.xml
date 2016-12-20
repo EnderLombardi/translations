@@ -8,7 +8,7 @@
 				labelSpanL="1" labelSpanM="2" labelSpanS="2" columnsL="1" columnsM="1"
 				class="sapUiMediumMarginTop">
 				<f:content>
-					<Label text="{i18nModel>timeLost}">
+					<Label text="{i18nModel>TimeLost}">
 					<layoutData>
 						<l:GridData span="L2 M2 S12" />
 					</layoutData>

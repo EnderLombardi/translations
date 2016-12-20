@@ -11,7 +11,7 @@
 
 								<f:FormElement>
 
-									<Title text=" Create Disruptions" titleStyle="H4">
+									<Title text=" {i18n>createDisruptions}" titleStyle="H4">
 										<layoutData>
 											<l:GridData span="L3 M6 S12" linebreak="true" />
 										</layoutData>
@@ -22,7 +22,7 @@
 
 								<f:FormElement>
 									<f:label>
-										<Label text="Gravity">
+										<Label text="{i18n>gravity}">
 											<layoutData>
 												<l:GridData span="L2 M6 S12" linebreak="true" />
 											</layoutData>
@@ -31,9 +31,9 @@
 									<f:fields>
 										<Select id="Gravity" selectedKey="Blocked">
 											<items>
-												<core:Item text="Blocked" key="blocked" />
-												<core:Item text="Blocked" key="blocked" />
-												<core:Item text="Blocked" key="blocked" />
+												<core:Item text="{i18n>blocked}" key="blocked" />
+												<core:Item text="{i18n>blocked}" key="blocked" />
+												<core:Item text="{i18n>blocked}" key="blocked" />
 											</items>
 											<layoutData>
 												<l:GridData span="L2 M6 S12" />
@@ -45,7 +45,7 @@
 
 								<f:FormElement>
 									<f:label>
-										<Label text="Object">
+										<Label text="{i18n>object}">
 											<layoutData>
 												<l:GridData span="L2 M6 S12" linebreak="true" />
 											</layoutData>
@@ -54,9 +54,9 @@
 									<f:fields>
 										<Select id="Object" selectedKey="Assembly">
 											<items>
-												<core:Item text="Assembly" key="Assembly" />
-												<core:Item text="Assembly" key="Assembly" />
-												<core:Item text="Assembly" key="Assembly" />
+												<core:Item text="{i18n>assembly}" key="Assembly" />
+												<core:Item text="{i18n>assembly}" key="Assembly" />
+												<core:Item text="{i18n>assembly}" key="Assembly" />
 											</items>
 											<layoutData>
 												<l:GridData span="L2 M6 S12" />
@@ -76,9 +76,9 @@
 									<f:fields>
 										<Select id="Nature" selectedKey="Non Confirm">
 											<items>
-												<core:Item text="Non Confirm" key="Confirm" />
-												<core:Item text="Confirm" key="Confirm" />
-												<core:Item text="Confirm" key="Confirm" />
+												<core:Item text="{i18n>nonConfirm}" key="Confirm" />
+												<core:Item text="{i18n>confirm}" key="Confirm" />
+												<core:Item text="{i18n>confirm}" key="Confirm" />
 											</items>
 											<layoutData>
 												<l:GridData span="L2 M6 S12" />
@@ -90,7 +90,7 @@
 
 								<f:FormElement>
 									<f:label>
-										<Label text="Help">
+										<Label text="{i18n>help}">
 											<layoutData>
 												<l:GridData span="L2 M6 S12" linebreak="true" />
 											</layoutData>
@@ -99,9 +99,9 @@
 									<f:fields>
 										<Select id="Help" selectedKey="Logistic Support">
 											<items>
-												<core:Item text="Logistic Support" key="Logistic Support" />
-												<core:Item text="Support" key="Support" />
-												<core:Item text="Support" key="Support" />
+												<core:Item text="{i18n>logisticSupport}" key="Logistic Support" />
+												<core:Item text="{i18n>support}" key="Support" />
+												<core:Item text="{i18n>support}" key="Support" />
 											</items>
 											<layoutData>
 												<l:GridData span="L2 M6 S12" />
@@ -112,7 +112,7 @@
 
 								<f:FormElement>
 									<f:label>
-										<Label text="Open Date">
+										<Label text="{i18n>openDate}">
 											<layoutData>
 												<l:GridData span="L2 M6 S12" linebreak="true" />
 											</layoutData>
@@ -129,7 +129,7 @@
 
 								<f:FormElement>
 									<f:label>
-										<Label text="Time">
+										<Label text="{i18n>time}">
 											<layoutData>
 												<l:GridData span="L2 M6 S12" />
 											</layoutData>
@@ -146,7 +146,7 @@
 
 								<f:FormElement>
 									<f:label>
-										<Label text="Expected">
+										<Label text="{i18n>expected}">
 											<layoutData>
 												<l:GridData span="L2 M6 S12" linebreak="true" />
 											</layoutData>
@@ -163,7 +163,7 @@
 
 								<f:FormElement>
 									<f:label>
-										<Label text="Time">
+										<Label text="{i18n>time}">
 											<layoutData>
 												<l:GridData span="L2 M6 S12" />
 											</layoutData>
@@ -203,7 +203,7 @@
 											</layoutData>
 										</Label>
 									</f:label>
-									<TextArea placeholder="Add comment.."  icon="sap-icon://sort" id="addMessage" valueLiveUpdate="true">
+									<TextArea placeholder="{i18n>addComment}"  icon="sap-icon://sort" id="addMessage" valueLiveUpdate="true">
 										<layoutData>
 											<l:GridData span="L6 M6 S12" />
 										</layoutData>
@@ -219,12 +219,12 @@
 										</Label>
 									</f:label>
 									<f:fields>
-										<Button text="Cancel" press="onCancelCreateDisruption">
+										<Button text="{i18n>cancel}" press="onCancelCreateDisruption">
 											<layoutData>
 												<l:GridData span="L2 M2 S12" />
 											</layoutData>
 										</Button>
-										<Button text="Create" class="btnColor" press="onCreateDisrupt">
+										<Button text="{i18n>create}" class="btnColor" press="onCreateDisrupt">
 											<layoutData>
 												<l:GridData span="L2 M2 S12" />
 											</layoutData>

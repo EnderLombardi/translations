@@ -13,44 +13,44 @@
 			<table:toolbar>
 			<Toolbar>
 				
-						<Title text="Disruptions" level="H5" titleStyle="H5" />
+						<Title text="{i18n>disruptions}" level="H5" titleStyle="H5" />
 						<ToolbarSpacer />
 						<Select selectedKey="OrderBy">
-							<core:Item key="orderBy" text="Order By" />
+							<core:Item key="orderBy" text="{i18n>orderBy}" />
 						</Select>
 						<Select selectedKey="groupBy">
-							<core:Item key="groupBy" text="group By" />
+							<core:Item key="groupBy" text="{i18n>groupBy}" />
 						</Select>
 					
 			</Toolbar>
 		</table:toolbar>
 		<table:columns>
 			<table:Column width="11rem">
-				<Label text="Disruption1" />
+				<Label text="{i18n>disruption1}" />
 				<table:template>
 					<Label text="{tableModel>col1}" />
 				</table:template>
 			</table:Column>
 			<table:Column width="11rem">
-				<Label text="Disruption2" />
+				<Label text="{i18n>disruption2}" />
 				<table:template>
 					<Label text="{tableModel>col2}" />
 				</table:template>
 			</table:Column>
 			<table:Column width="11rem">
-				<Label text="Disruption3" />
+				<Label text="{i18n>disruption3}" />
 				<table:template>
 					<Label text="{tableModel>col3}" />
 				</table:template>
 			</table:Column>
 			<table:Column width="11rem">
-				<Label text="Disruption4" />
+				<Label text="{i18n>disruption4}" />
 				<table:template>
 					<Label text="{tableModel>col4}" />
 				</table:template>
 			</table:Column>
 			<table:Column width="11rem">
-				<Label text="Disruption5" />
+				<Label text="{i18n>disruption5}" />
 				<table:template>
 					<Label text="{tableModel>col5}" />
 				</table:template>

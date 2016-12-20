@@ -73,10 +73,10 @@
 						emptySpanM="0" columnsL="4" columnsM="4">
 						<f:content>
 							<VBox>
-								<Label text="Start:" />
+								<Label text="{i18n>start}" />
 								<Text text="{operationDetailModel>/schedule/planned_start_time}" />
 								<Label type="space"></Label>
-								<Label text="Time spent" />
+								<Label text="{i18n>timeSpent}" />
 								<Text text="{operationDetailModel>/schedule/time_spent}" />
 								<Label type="space"></Label>
 								<!-- <Label text="System status: " />
@@ -84,17 +84,17 @@
 								<Label type="space"></Label> -->
 							</VBox>
 							<VBox>
-								<Label text="End:" />
+								<Label text="{i18n>end}" />
 								<Text text="{operationDetailModel>/schedule/planned_end_time}" />
 								<Label type="space"></Label>
-								<Label text="Original plan:" />
+								<Label text="{i18n>originalPlan}" />
 								<Text text="{operationDetailModel>/schedule/original_start_time} - {operationDetailModel>/schedule/original_end_time}" />
 								<Label type="space"></Label>
 								<!-- <Label text="User status:" />
 								<Text text="   -   " /> -->
 							</VBox>
 							<VBox>
-								<Label text="Work Center:" />
+								<Label text="{i18n>workCenter}" />
 								<Text text="{operationDetailModel>/schedule/wo_no}" />
 								<Label type="space"></Label>
 								<!-- <Label text="ACPnG" />
@@ -116,7 +116,7 @@
 						</f:content>
 					</f:SimpleForm>
 					<Button id="opDetailCloseButton" type="Transparent"
-						iconFirst="false" text="Show less info" icon="sap-icon://navigation-up-arrow"
+						iconFirst="false" text="{i18n>showLess}" icon="sap-icon://navigation-up-arrow"
 						press="expandOperationDetailPanel" class="closeButton"></Button>
 				</content>
 			</Panel>
@@ -126,7 +126,7 @@
 				class="operationNavBar sapUiResponsiveContentPadding">
 				<items>
 					<IconTabFilter icon="sap-icon://kpi-corporate-performance"
-						text="Progress"><!-- time-account -->
+						text="{i18n>progress}"><!-- time-account -->
 						<core:Fragment type="XML"
 							fragmentName="airbus.mes.worktracker.fragments.progressSlider" />
 					</IconTabFilter>

@@ -3,7 +3,7 @@
 	<Popover class="sapUiContentPadding" showHeader="false"
 		placement="Bottom" contentWidth="40%" contentHeight="75%">
 		<content>
-			<Button id="messages-markAllRead" type="Transparent" text="Mark all read"
+			<Button id="messages-markAllRead" type="Transparent" text="{i18n>markAllRead}"
 				press="messages_markAllRad"
 				class="floatRight sapUiSmallMarginBeginEnd sapUiSmallMarginTopBottom" />
 			<VBox>

@@ -16,7 +16,7 @@
 					<Text id="operatorFullName"
 						text="{ parts: [ 'currentOperatorModel>/fname', 'currentOperatorModel>/lname'], formatter: 'airbus.mes.worktracker.util.Formatter.getFullName' }"
 						class="text" />
-					<custom:ClickText text="Change operator" id="changeOperator"
+					<custom:ClickText text="{i18n>changeOperator}" id="changeOperator"
 						class="subText pointer" press="toggleChangeOptrPopOver" />
 				</VBox>
 

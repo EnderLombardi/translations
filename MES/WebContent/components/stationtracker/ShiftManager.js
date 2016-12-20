@@ -207,7 +207,7 @@ airbus.mes.stationtracker.ShiftManager = {
 				if ( a >= this.shifts.length) {
 					dhtmlx.message({
 						id: "lastShiftDHTMLX",
-						text: "Last Shift Reached",
+						text: airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("LastShiftReached"),
 						expire: 2000
 					});
 					return date;
@@ -216,7 +216,7 @@ airbus.mes.stationtracker.ShiftManager = {
 				if (a < 0) {
 					dhtmlx.message({
 						id: "firstShiftDHTMLX",
-						text: "First Shift Reached",
+						text: airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("FirstShiftReached"),
 						expire: 2000
 					});
 					return date;
@@ -245,7 +245,7 @@ airbus.mes.stationtracker.ShiftManager = {
 		if (c + step >= this.shifts.length) {
 			dhtmlx.message({
 				id: "lastShiftDHTMLX",
-				text: "Last Shift Reached",
+				text: airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("LastShiftReached"),
 				expire: 2000
 			});
 			return date;
@@ -253,7 +253,7 @@ airbus.mes.stationtracker.ShiftManager = {
 		if (c + step < 0) {
 			dhtmlx.message({
 				id: "firstShiftDHTMLX",
-				text: "First Shift Reached",
+				text: airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("FirstShiftReached"),
 				expire: 2000
 			});
 			return date;
@@ -293,7 +293,7 @@ airbus.mes.stationtracker.ShiftManager = {
 		var c = this.closestShift(date) - 1;
 
 		if (c < 0) {
-			dhtmlx.message({ id: "firstShiftDHTMLX", text: "First Shift Reached", expire: 2000 });
+			dhtmlx.message({ id: "firstShiftDHTMLX", text: airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("FirstShiftReached"), expire: 2000 });
 			return (this.shifts[0].StartDate); // take first shift
 		}
 

@@ -90,7 +90,7 @@
 					</items>
 				</VBox>
 				<Panel class="panelBorder" expanded="true" expandable="false"
-					id="assignedUsersPanel" width="100%" height="95%" headerText="Assigned Users">
+					id="assignedUsersPanel" width="100%" height="95%" headerText="{i18nModel>AssignedUsers}">
 					<headerToolbar>
 
 						<Toolbar>

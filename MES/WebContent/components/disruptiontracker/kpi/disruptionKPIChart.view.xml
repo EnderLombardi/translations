@@ -7,7 +7,7 @@
 	<Page showHeader="false" class="disruptionKPI">
 		<Bar id="disruptionKPITitleSubheader" class="pageHeader">
 			<contentLeft>
-				<Button id="navBack" icon="sap-icon://arrow-left" text="Back"
+				<Button id="navBack" icon="sap-icon://arrow-left" text="{i18n>back}"
 					press="onNavBack" type="Transparent" />
 			</contentLeft>
 			<contentMiddle>
