@@ -1105,7 +1105,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
     onCloseOperationDetailPopup : function(oEvent) {
 
         // Close expanded disruption panel
-        if ( airbus.mes.disruptions != undefined && airbus.mes.disruptions.oView.viewDisruption != undefined) {
+    	if ( airbus.mes.disruptions != undefined && airbus.mes.disruptions.oView != undefined) {
 
             var expandedDisruptionPanelId = airbus.mes.disruptions.oView.viewDisruption.getController().expandedDisruptionPanel;
 
