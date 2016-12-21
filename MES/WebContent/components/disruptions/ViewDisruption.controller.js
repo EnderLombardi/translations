@@ -1066,10 +1066,6 @@ sap.ui
 						// clear disruptionDetailModel if edit is loaded before ReportDisruption
 						sap.ui.getCore().getModel("DisruptionDetailModel").setData();
 
-
-						// Clear disruptionDetailModel if edit is loaded before ReportDisruption
-						sap.ui.getCore().getModel("DisruptionDetailModel").setData();
-
 						oOperDetailNavContainer.to(airbus.mes.disruptions.oView.createDisruption.getId());
 						
 						
