@@ -80,7 +80,7 @@
 								<viz.data:dimensions>
 									<viz.data:DimensionDefinition
 										axis="1" name="{i18n>Operation}"
-										value="{TimeLostperAttribute>name}" />
+										value="{ path: 'TimeLostperAttribute>name' , formatter: 'airbus.mes.disruptiontracker.Formatter.formatOperation'}" />
 								</viz.data:dimensions>
 								<viz.data:measures>
 									<viz.data:MeasureDefinition name="{i18n>TimeLost}"
