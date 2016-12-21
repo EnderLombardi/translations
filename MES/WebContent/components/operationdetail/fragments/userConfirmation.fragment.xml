@@ -3,7 +3,7 @@
     <Dialog title="{i18n>userConfirmation}" type="Message" id="partial" width="70% !important" >
             <content>
             <HBox justifyContent="End">
-                <Button id="scanButton" icon="sap-icon://business-card" text="{i18n>scan}" type="Transparent" press="onScanConfirmation" visible="{path:'i18n>' , formatter:'airbus.mes.operationdetail.Formatter.displayBadge'}"/>
+                <Button id="scanButton" icon="sap-icon://business-card" text="{i18n>scan}" type="Emphasized" press="onScanConfirmation" visible="{path:'i18n>' , formatter:'airbus.mes.operationdetail.Formatter.displayBadge'}"/>
             </HBox>
             <HBox height="35px" class="messageHBox">
                 <MessageStrip id="msgstrpConfirm" visible="false"
