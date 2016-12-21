@@ -8,7 +8,7 @@ airbus.mes.operationdetail.Formatter = {
             'active'    : 'IN_WORK',
             'notStarted': 'NOT_STARTED',
             'blocked'    : 'Blocked'
-           },
+    },
 
     setSliderStatus : function(status, progress) {
         switch (status) {

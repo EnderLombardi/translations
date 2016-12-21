@@ -13,6 +13,13 @@ airbus.mes.disruptions.Formatter = {
 		"rejected" 	: "Rejected",
 		"deleted" 	: "Deleted"
 	},
+	
+	opStatus:{'completed'    : 'COMPLETED',
+	        'paused'    : 'IN_QUEUE',
+	        'active'    : 'IN_WORK',
+	        'notStarted': 'NOT_STARTED',
+	        'blocked'    : 'Blocked'
+	},
 
 	defaultDateConversion : function(defaultDate, defaultTime) {
 
@@ -187,7 +194,7 @@ airbus.mes.disruptions.Formatter = {
 
 	setAddCommentButtonVisibility : function(originatorFlag, responsibleFlag, status) {
 
-		if (originatorFlag == "X" && responsibleFlag != "X" && status == airbus.mes.disruptions.Formatter.status.acknowledged)
+		if (originatorFlag == "X" && status == airbus.mes.disruptions.Formatter.status.acknowledged)
 			return false;
 		
 		else if (originatorFlag != "X" && responsibleFlag != "X")

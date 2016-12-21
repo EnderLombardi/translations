@@ -1025,7 +1025,7 @@ airbus.mes.disruptions.ModelManager = {
 		// Check if any blocking disruption still open (not closed)
 		for(var i = 0; i < aDisruption.length; i++){
 			if (aDisruption[i].Gravity == 3 && !airbus.mes.disruptions.Formatter.isStatusFinal(aDisruption[i].Status)) {
-				sStatus = airbus.mes.operationdetail.Formatter.status.blocked;
+				sStatus = airbus.mes.disruptions.Formatter.opStatus.blocked;
 				break;
 			}
 		}
@@ -1044,13 +1044,13 @@ airbus.mes.disruptions.ModelManager = {
 			// calculate status of operation
 			var sStatus;
 			if (sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].status == "0")
-				sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].status = "COMPLETED";
+				sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].status = airbus.mes.disruptions.Formatter.opStatus.completed;
 			else if (sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].status == "2")
-				sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].status = "IN_WORK";
+				sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].status = airbus.mes.disruptions.Formatter.opStatus.active;
 			else if (sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].status === "3")
-				sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].status = "IN_QUEUE";
+				sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].status = airbus.mes.disruptions.Formatter.opStatus.paused;
 			else if (sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].status === "1")
-				sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].status = "NOT_STARTED";
+				sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].status = airbus.mes.disruptions.Formatter.opStatus.notStarted;
 		}
 			
 		// Refresh model
