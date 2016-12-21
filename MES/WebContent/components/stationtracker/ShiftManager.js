@@ -523,8 +523,7 @@ airbus.mes.stationtracker.ShiftManager = {
 		if (this.shifts.length === 0)
 			return; // do nothing
 		
-		var d1, d2, d3, d4,  d6, d7;
-//		var d5; not used
+		var d1, d2, d3, d4, d6, d7, d8, d9;
 		
 		d2 = aShiftBreak[0].StartDate;
 		d1 = scheduler.date.copy(d2);
@@ -533,50 +532,78 @@ airbus.mes.stationtracker.ShiftManager = {
 
 		scheduler.addMarkedTimespan({
 			start_date : d1,
-			end_date : d2,
 			css : "offtime"
 		});
 
+		// pause time
 		for (var index = 0; index < aShiftBreak.length - 1; ++index) {
+			// Display the border of the start pause of the shift
 			d1 = aShiftBreak[index].EndDate;
+			// Display the border of the end pause of the shift
 			d2 = aShiftBreak[index + 1].StartDate;
 			scheduler.addMarkedTimespan({
 				start_date : d1,
 				end_date : d2,
 				css : "offtime"
 			});
-			
 		}
 	
+		// start and end of shift
 		for (var index = 0; index < this.shifts.length - 1; ++index) {
 			
+			// Display the border of the start shift
 			d3 = this.shifts[index].StartDate;
 			d4 = scheduler.date.copy(d3);
+			// +5 for see the border (Two different dates)
 			d4.setMinutes(d4.getMinutes() + 5);
 			scheduler.addMarkedTimespan({
 				start_date : d3,
 				end_date : d4,
 				css : "begin_shifht"
 			});
+			
+			if (index > 0){
+				// If different date show border of the start shift
+				//current shift
+				d8 =  this.shifts[index].EndDate;
+				//next shift
+				d9 = this.shifts[index+1].StartDate;
+				console.log("d8 :"+  (d8.getTime() + 1000) +" ou " + d8);
+				console.log("d9 :"+  d9.getTime() +" ou " + d9);
+				if((d8.getTime() + 1000) != d9.getTime()){
+					scheduler.addMarkedTimespan({
+						start_date : d8,
+						end_date : d9,
+						css : "end_shifht"
+					});
+				}
+			}
 		}
-
-		d1 = aShiftBreak[aShiftBreak.length - 1].EndDate;
-		d2 = scheduler.date.copy(d1);
-		d2.setMinutes(d2.getMinutes() + scheduler.matrix.timeline.x_size
-				* scheduler.matrix.timeline.x_step);
-		scheduler.addMarkedTimespan({
-			start_date : d1,
-			end_date : d2,
-			css : "offtime"
-		});
-		d3 = this.shifts[this.shifts.length - 1].StartDate;
-		d4 = scheduler.date.copy(d3);
-		d4.setMinutes(d4.getMinutes() + 5);
-		scheduler.addMarkedTimespan({
-			start_date : d3,
-			end_date : d4,
-			css : "begin_shifht"
-		});
+		
+		
+		
+		
+		//A quoi sert ce code ??
+		//
+		//		d1 = aShiftBreak[aShiftBreak.length - 1].EndDate;
+		//		
+		//		d2 = scheduler.date.copy(d1);
+		//		d2.setMinutes(d2.getMinutes() + scheduler.matrix.timeline.x_size * scheduler.matrix.timeline.x_step);
+		//		scheduler.addMarkedTimespan({
+		//			start_date : d1,
+		//			end_date : d2,
+		//			css : "offtime"
+		//		});
+		//		
+		//		d3 = this.shifts[this.shifts.length - 1].StartDate;
+		//		d4 = scheduler.date.copy(d3);
+		//		d4.setMinutes(d4.getMinutes() + 5);
+		//		scheduler.addMarkedTimespan({
+		//			start_date : d3,
+		//			end_date : d4,
+		//			css : "begin_shifht"
+		//		});
+		
 		// Add maker for takt time
 		var d6 = airbus.mes.stationtracker.util.Formatter.jsDateFromDayTimeStr(airbus.mes.stationtracker.ModelManager.settings.taktStart);
 		d6.setMinutes(d6.getMinutes() + 5);
@@ -595,7 +622,6 @@ airbus.mes.stationtracker.ShiftManager = {
 			end_date : d7,
 			css : "taktMarker"
 		});
-
 	},
 	
 	/**

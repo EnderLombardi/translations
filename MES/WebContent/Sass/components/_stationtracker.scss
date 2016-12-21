@@ -519,6 +519,12 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
             &.begin_shifht{
                 @extend %timeSpanWidth;
                 background-color: blue;
+               
+            }
+             &.end_shifht{
+                @extend %timeSpanWidth;
+                background-color: #0f2d65;
+                 margin-left:-5px;
             }
             &.taktMarker{
                 @extend %timeSpanWidth;
@@ -547,6 +553,11 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
             &.begin_shifht{
                 @extend %timeSpanWidth;
                 background-color: blue;
+            }
+             &.end_shifht{
+                @extend %timeSpanWidth;
+                background-color: #0f2d65;
+                margin-left: -5px;
             }
             &.taktMarker{
                 @extend %timeSpanWidth;
