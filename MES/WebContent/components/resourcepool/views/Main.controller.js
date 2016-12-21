@@ -1456,29 +1456,29 @@ sap.ui
 					
 					deleteResourcePool : function() {
 						/* call deleteResource() from ModelManager */
-						var anyError = airbus.mes.resourcepool.util.ModelManager
-								.deleteResource(sap.ui.getCore().byId(
-										"searchResourcePool--resourcePool")
-										.getValue());
+						airbus.mes.resourcepool.util.ModelManager.resourceName = sap.ui.getCore().byId("searchResourcePool--resourcePool").getValue();
+						var anyError = airbus.mes.resourcepool.util.ModelManager.deleteResource(airbus.mes.resourcepool.util.ModelManager.resourceName);
+
 						airbus.mes.resourcepool.deleteTeam.close();
 						
-						if (anyError == 0) {
+						if (anyError === 0) {
 							var oButton = sap.ui.getCore().byId("searchResourcePool--createOrDeleteButton");
 							oButton.setIcon("sap-icon://create");
 							oButton.setTooltip("create");
-						
 
-							if (airbus.mes.resourcepool.util.ModelManager.resourceName == sap.ui
+							if (airbus.mes.resourcepool.util.ModelManager.resourceName === sap.ui
 									.getCore().byId(
 											"searchResourcePool--resourcePool")
 									.getValue()) {
 								airbus.mes.resourcepool.util.ModelManager.resourceName = undefined;
 								airbus.mes.resourcepool.util.ModelManager.resourceDescription = undefined;
 								airbus.mes.resourcepool.util.ModelManager.Id = undefined;
-								this.getView().byId("resourcePoolName").setText("");
+								
+								sap.ui.getCore().byId("searchResourcePool--resourcePool").setValue("");
+								sap.ui.getCore().byId("searchResourcePool--description").setValue("");
+
 							}
 						}
-
 					},
 
 					/***********************************************************
@@ -1487,6 +1487,7 @@ sap.ui
 					
 					deleteDialogueClose : function() {
 						airbus.mes.resourcepool.deleteTeam.close();
+						
 					},
 
 					/***********************************************************

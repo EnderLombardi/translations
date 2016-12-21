@@ -318,8 +318,8 @@ airbus.mes.resourcepool.util.ModelManager = {
 			cache : false,
 			type : 'POST',
 			data : {
-				"Param.1" : name,
-				"Param.2" : airbus.mes.settings.ModelManager.site,
+				"Param.1" : airbus.mes.settings.ModelManager.site,
+				"Param.2" : airbus.mes.resourcepool.util.ModelManager.resourceName,
 			},
 			success : function(data, textStatus, jqXHR) {
 				var message = airbus.mes.resourcepool.oView.getModel(
