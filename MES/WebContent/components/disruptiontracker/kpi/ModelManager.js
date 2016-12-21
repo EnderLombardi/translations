@@ -4,7 +4,7 @@ airbus.mes.disruptiontracker.kpi.ModelManager = {
 	urlModel : undefined,
 	queryParams : jQuery.sap.getUriParameters(),
 	
-	sStaion: "",
+	//sStaion: "",
 
 	init : function(core) {
 		core.setModel(new sap.ui.model.json.JSONModel(), "TimeLostperAttribute");

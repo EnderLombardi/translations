@@ -257,7 +257,7 @@ airbus.mes.shell.util.navFunctions = {
 		msnBox.setSelectedKey("");
 	},
 
-	disruptionKPI : function(pStation) {
+	disruptionKPI : function() {
 		if (airbus.mes.disruptiontracker === undefined) {
 			jQuery.sap.registerModulePath("airbus.mes.disruptiontracker", "../components/disruptiontracker");
 		}
@@ -268,8 +268,6 @@ airbus.mes.shell.util.navFunctions = {
 				nav.addPage(airbus.mes.disruptiontracker.kpi.oView);
 		}
 
-		// Set station
-		airbus.mes.disruptiontracker.kpi.ModelManager.sStation = pStation;
 		airbus.mes.disruptiontracker.kpi.ModelManager.loadDisruptionKPIModel();
 		nav.to(airbus.mes.disruptiontracker.kpi.oView.getId());
 	},

@@ -283,11 +283,12 @@ sap.ui
 					 * Call Disruption KPI charts
 					 */
 					onPressDisruptionKPI : function(oEvent) {
-						var sStation = this.getView().byId("stationComboBox")
+						airbus.mes.shell.util.navFunctions.disruptionKPI();
+						/*var sStation = this.getView().byId("stationComboBox")
 								.getSelectedKey();
 						// sap.ui.core.BusyIndicator.show(0);
 						airbus.mes.shell.util.navFunctions
-								.disruptionKPI(sStation);
+								.disruptionKPI(sStation);*/
 						// airbus.mes.disruptiontracker.kpi.ModelManager.loadDisruptionKPIModel(sStation);
 
 					},

@@ -326,6 +326,11 @@ sap.ui.controller("airbus.mes.settings.Settings",
                 case "disruptiontracker":
                     airbus.mes.shell.util.navFunctions.disruptionTracker();
                     break;
+                
+                case "disruptionKPI":
+                    airbus.mes.shell.util.navFunctions.disruptionKPI();
+                    break;
+                    
                 case "polypoly":
                     nav.back();
                     break;
@@ -575,6 +580,11 @@ sap.ui.controller("airbus.mes.settings.Settings",
                 /** Disruption Tracker **/
                 case "disruptiontracker":
                     airbus.mes.shell.util.navFunctions.disruptionTracker();
+                    break;
+
+                /** Disruption Tracker KPI **/
+                case "disruptionKPI":
+                    airbus.mes.shell.util.navFunctions.disruptionKPI();
                     break;
 
                 /** PolyPoly **/

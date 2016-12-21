@@ -29,7 +29,7 @@
 										axis="1" name="{i18n>Category}" value="{TimeLostperAttribute>name}" />
 								</viz.data:dimensions>
 								<viz.data:measures>
-									<viz.data:MeasureDefinition name="Time Lost"
+									<viz.data:MeasureDefinition name="{i18n>TimeLost}"
 										value="{path: 'TimeLostperAttribute>value' , formatter: 'airbus.mes.disruptiontracker.Formatter.msToMinutesConverter'}" />
 								</viz.data:measures>
 							</viz.data:FlattenedDataset>
@@ -56,7 +56,7 @@
 										axis="1" name="{i18n>Reason}" value="{TimeLostperAttribute>name}" />
 								</viz.data:dimensions>
 								<viz.data:measures>
-									<viz.data:MeasureDefinition name="Time Lost"
+									<viz.data:MeasureDefinition name="{i18n>TimeLost}"
 										value="{path: 'TimeLostperAttribute>value' , formatter: 'airbus.mes.disruptiontracker.Formatter.msToMinutesConverter'}" />
 								</viz.data:measures>
 							</viz.data:FlattenedDataset>
