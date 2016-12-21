@@ -199,7 +199,7 @@ airbus.mes.stationtracker.ModelManager = {
 						geturlstationtracker,
 						"$user",
 						airbus.mes.stationtracker.AssignmentManager.userSelected);
-		//console.log(geturlstationtracker);
+		console.log(geturlstationtracker);
 		var oViewModel;
 		switch (sType) {
 		case "R":
@@ -401,19 +401,16 @@ airbus.mes.stationtracker.ModelManager = {
 
 	},
 	onRessourcePoolLoad : function() {
-
-		// var oViewModel = sap.ui.getCore().getModel("ressourcePoolModel"); Not
-		// used
 		
 		var aModel = sap.ui.getCore().getModel("ressourcePoolModel");
 		
 		if (aModel.getProperty("/Rowsets/Rowset/0/Row")) {
-
+			
 			aModel.oData.Rowsets.Rowset[0].Row.unshift({
 				"firstName" : "All User",
 				"user" : "ALL",
 			});
-
+			
 			aModel.oData.Rowsets.Rowset[0].Row = aModel.oData.Rowsets.Rowset[0].Row.reduce(function(field, e1){  
 				var matches = field.filter(function(e2){return e1.user === e2.user}); 
 				if (matches.length === 0){ 

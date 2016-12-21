@@ -939,22 +939,24 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
     },
 
     selectUser : function(oEvt) {
-
+    	
 //        not used
 //        var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
         var oSelected = oEvt.getSource().getSelectedItem().mProperties;
+        console.log(oSelected.key);
         airbus.mes.stationtracker.oView.byId("stationtracker").setBusy(true);
-
+        
         if (oSelected.key != "ALL") {
 
             airbus.mes.stationtracker.AssignmentManager.userSelected = oSelected.key;
             airbus.mes.shell.oView.getController().loadStationTrackerGantKPI();
-
+          
+           
         } else {
 
             airbus.mes.stationtracker.AssignmentManager.userSelected = "%";
             airbus.mes.shell.oView.getController().loadStationTrackerGantKPI();
-
+        
         }
 
     },

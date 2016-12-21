@@ -255,7 +255,7 @@ sap.ui.controller(
 
 					loadStationTrackerGantKPI : function() {
 						var oModule = airbus.mes.stationtracker.ModelManager;
-					
+						console.log("LOADGANTKPI");
 						// ** asynchrone call **//
 						oModule.loadRessourcePool();
 						oModule.loadStationTracker("I");
