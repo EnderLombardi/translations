@@ -178,6 +178,10 @@ sap.ui
 						sap.ui.getCore().byId("closeDisruptionComments")
 								.setValue("");
 
+						
+						//give the id of add comment button to hide it if operation closed
+						this._closeDialog.mProperties.disruptionId = this.getView().sId + "--addComment-"+ this.getView().sId + "--disrptlist-"+ listnum;
+
 						this._closeDialog.open();
 					},
 
@@ -190,6 +194,14 @@ sap.ui
 						if (sap.ui.getCore().byId("operationDetailPopup--operationDetailPopUp").getBusyIndicatorDelay() !== 0) {
 							sap.ui.getCore().byId("operationDetailPopup--operationDetailPopUp").setBusyIndicatorDelay(0);
 						}
+
+						//hide add comment button
+						this.oView.byId(this._closeDialog.mProperties.disruptionId).setVisible(false);
+
+						//hide escalate button
+						var escalateBtnId = this._closeDialog.mProperties.disruptionId.substring(0,20) + "escalateBtn" + 
+							this._closeDialog.mProperties.disruptionId.substring(30, this._closeDialog.mProperties.disruptionId.length);
+						this.oView.byId(escalateBtnId).setVisible(false);
 
 						//close the dialog box 
 						this._closeDialog.close();
@@ -226,20 +238,27 @@ sap.ui
 
 								if (isSuccess) {
 									
-									var operationDisruptionsModel = _this.getView().getModel("operationDisruptionsModel");
-									
-									var sPath = sap.ui.getCore().byId(
-											"closeDisruption-sPath").getText();
+									var operationDisruptionsModel = _this.getView().getModel("operationDisruptionsModel");	
+									var sPath = sap.ui.getCore().byId("closeDisruption-sPath").getText();
 									
 									operationDisruptionsModel.getProperty(sPath).Status = airbus.mes.disruptions.Formatter.status.closed;
-									
 									operationDisruptionsModel.getProperty(sPath).TimeLost = timeLostValue;
 									
-									
 									// Set Closure date
-									var date = new Date();							
+									var date = new Date();
+
+									//avoid to get only one number on one number<10 (example => 14:05:04 instead of 14:5:4)
+									var closureDateTab = [date.getMonth()+1, date.getDate(), date.getHours(), date.getMinutes(), date.getSeconds()];
+									for (var i=0; i < closureDateTab.length; i++) {
+										if (closureDateTab[i]<10) {
+											closureDateTab[i] = "0" + closureDateTab[i];
+										}
+									}
+
+									//closuredate model
 									operationDisruptionsModel.getProperty(sPath).ClosureDate = 
-										date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate()+" "+date.getHours()+":"+date.getMinutes()+":"+date.getSeconds();
+										date.getFullYear() + "-" + closureDateTab[0] + "-" + closureDateTab[1] + " " + 
+										closureDateTab[2] + "-" + closureDateTab[3] + "-" + closureDateTab[4];
 									
 									var currDate = new Date();
 									var date = currDate.getFullYear() + "-" + currDate.getMonth() + "-" + currDate.getDate();
@@ -255,17 +274,21 @@ sap.ui
 									};
 									
 									operationDisruptionsModel.getProperty("/Rowsets/Rowset/1/Row").push(oComment);
-									//stop the setBusy
+
+									//load again disruptions
+									var operationBO = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_bo;
+                                	var sSfcStepRef = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].sfc_step_ref;
+                                	airbus.mes.disruptions.ModelManager.loadDisruptionsByOperation(operationBO,sSfcStepRef);
+
+									// //stop the setBusy
 									airbus.mes.shell.busyManager.unsetBusy(sap.ui.getCore(), "operationDetailPopup--operationDetailPopUp");
-									
-									//refresh the view
+
 									operationDisruptionsModel.refresh();
 									
 									if (nav.getCurrentPage().sId == "stationTrackerView"){
 										airbus.mes.disruptions.ModelManager.checkDisruptionStatus(operationDisruptionsModel);
 									}
-								}
-								else {
+								} else {
 									//stop the setBusy
 									airbus.mes.shell.busyManager.unsetBusy(sap.ui.getCore(), "operationDetailPopup--operationDetailPopUp");
 								}
@@ -412,8 +435,7 @@ sap.ui
 							var operationDisruptionsModel = airbus.mes.disruptions.oView.viewDisruption
 									.getModel("operationDisruptionsModel");
 
-							var sPath = sap.ui.getCore().byId(
-									"disruptionCommentSpath").getText();
+							var sPath = sap.ui.getCore().byId("disruptionCommentSpath").getText();
 
 							operationDisruptionsModel.getProperty(sPath).Status = airbus.mes.disruptions.Formatter.status.deleted;
 							
@@ -472,20 +494,6 @@ sap.ui
 						submitCommentId.setVisible(true);
 						//*********************************************************
 						
-//						var status = oEvt.getSource().getBindingContext(
-//								"operationDisruptionsModel")
-//								.getObject("Status");
-
-						/*if (status == airbus.mes.disruptions.Formatter.status.pending) {
-
-							sap.m.MessageBox
-									.error(airbus.mes.disruptions.oView.viewDisruption
-											.getModel("i18nModel").getProperty(
-													"disruptionNotAckError"));
-							return;
-
-						}*/
-
 						var title = airbus.mes.disruptions.oView.viewDisruption
 								.getModel("i18nModel").getProperty(
 										"rejectDisruption");
@@ -526,8 +534,7 @@ sap.ui
 						airbus.mes.disruptions.__enterCommentDialogue.close();
 
 						if (isSuccess) {
-							var sPath = sap.ui.getCore().byId(
-									"disruptionCommentSpath").getText();
+							var sPath = sap.ui.getCore().byId("disruptionCommentSpath").getText();
 
 							var operationDisruptionsModel = airbus.mes.disruptions.oView.viewDisruption
 									.getModel("operationDisruptionsModel");
