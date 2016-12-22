@@ -912,14 +912,6 @@ airbus.mes.stationtracker.ModelManager = {
 
         sap.ui.getCore().byId("worklistPopover--selectStatus").setSelectedKey(0);
 
-
-		
-		/*if (aModel && aModel.length > 0 && aModel) {
-			
-			aModel = airbus.mes.stationtracker.util.Formatter.sortWorkList(aModel);
-		
-		}*/
-
 		// Manage model on worklist
 		// Overall progress model
 		aModel.forEach(function(elModel) {
@@ -956,127 +948,142 @@ airbus.mes.stationtracker.ModelManager = {
 
 	},
 
+	/***************************************************************************
+	 * open work list popover
+	 **************************************************************************/
 	OpenWorkList : function(id) {
-	
-			airbus.mes.stationtracker.ModelManager.openWorkListPopover(id);
-	
+		airbus.mes.stationtracker.ModelManager.openWorkListPopover(id);
 	},
+
 	/***************************************************************************
 	 * open operation detail popup containing progress slider
 	 **************************************************************************/
 	openOperationDetailPopup : function(aModel,sAvlStart,sAvlEnd) {
 		
-		if (airbus.mes.stationtracker.operationDetailPopup === undefined) {
+		//two timeout chained to active setBusy & to be sure the setBusy is launched before the next operations
+		//don't work without this trick (or sometimes but don't 100% effective)
+		setTimeout(function() {
 
-			airbus.mes.stationtracker.operationDetailPopup = sap.ui.xmlfragment("operationDetailPopup", "airbus.mes.stationtracker.fragments.operationDetailPopup", airbus.mes.stationtracker.oView.getController());
-			airbus.mes.stationtracker.operationDetailPopup.setModel(sap.ui.getCore().getModel("operationDetailModel"),"operationDetailModel");
-			airbus.mes.stationtracker.oView.addDependent(airbus.mes.stationtracker.operationDetailPopup);
-
-		}		
-		//spent time calculation
-		var operation = aModel[0].OPERATION_BO.split(",")[1];
-		var order = aModel[0].SHOP_ORDER_BO.split(",")[1];
-		var spentTimeInMs = 0;
-		//TODO Exception to display to UI
-		if(operation && order){
-			spentTimeInMs  = airbus.mes.stationtracker.ModelManager.getSpentTimePerOperation(operation,order);
-		}
-		// calculate status of operation
-		var sStatus;
-		if (aModel[0].status == "0")
-			sStatus = "COMPLETED";
-		else if (aModel[0].status == "2")
-			sStatus = "IN_WORK";
-		else if (aModel[0].status === "3")
-			sStatus = "IN_QUEUE";
-		else if (aModel[0].status === "1")
-			sStatus = "NOT_STARTED";
-		else if (aModel[0].status === "4" || aModel[0].status === "5"
-				|| aModel[0].status === "6" || aModel[0].status === "7")	
-			sStatus = "Blocked";
-
-		// progress calculation
-		var progress;
-		if (sStatus == "COMPLETED")
-			progress = 100;
-		else if (parseInt(aModel[0].DURATION, 10) === 0)
-			progress = 0;
-		else
-			progress = aModel[0].PROGRESS / parseInt(aModel[0].DURATION, 10)
-					* 100;
-		var oOperModel = {
-			"Rowsets" : {
-				"Rowset" : [ {
-					"Row" : [ {
-						"prodGroup" : aModel[0].PROD_GROUP,
-						"skills" : aModel[0].SKILLS,
-						"avlLine" : aModel[0].AVL_LINE,
-						"sfc" : aModel[0].SFC,
-						"sfc_step_ref" : aModel[0].SFC_STEP_REF,
-						"operation_bo" : aModel[0].OPERATION_BO,
-						"operation_id" : aModel[0].OPERATION_ID,
-						"operation_no" : aModel[0].OPERATION_BO.split(",")[1],
-						"operation_desc" : aModel[0].OPERATION_DESCRIPTION,
-						"material_description" : aModel[0].WORKORDER_DESCRIPTION,
-						"operation_revision" : aModel[0].SFC_STEP_REF.split(",")[5],
-						"wo_no" : aModel[0].SHOP_ORDER_BO.split(",")[1],
-						"workcenter" : aModel[0].PP_STATION.split(",")[1],
-						"status" : sStatus,
-						"realStatus" :  aModel[0].status,
-						"progress" : parseInt(progress, 10),
-						"progress_new" : parseInt(progress, 10),
-						"time_spent" : spentTimeInMs,
-						"reschedule_start_time" :  aModel[0].START_TIME,
-						"reschedule_end_time" :  aModel[0].END_TIME,
-						"original_start_time" : sAvlStart,
-						"original_end_time" : sAvlEnd,
-						"cpp_cluster" : aModel[0].CPP_CLUSTER,
-						"work_package" : aModel[0].WORK_PACKAGE,
-						"erp_system" : aModel[0].ERP_SYSTEM,
-						"state" : aModel[0].STATE,
-						"previously_start" : aModel[0].PREVIOUSLY_STARTED,
-						"paused" : aModel[0].PAUSED, 
-						"noOfEmp" : aModel[0].NUMBER_OF_EMPLOYEES
-					} ]
-				} ]
+			//set busyIndicator delay to 0 ms instead of 500ms
+			if (airbus.mes.stationtracker.oView.byId("stationtracker").getBusyIndicatorDelay() !== 0) {
+				airbus.mes.stationtracker.oView.byId("stationtracker").setBusyIndicatorDelay(0);
 			}
-		};
+			airbus.mes.stationtracker.oView.byId("stationtracker").setBusy(true);
 
-		if (airbus.mes.operationdetail === undefined) {
-			jQuery.sap.registerModulePath("airbus.mes.operationdetail",
-					"../components/operationdetail");
-			this.oOperationDetailComp = sap.ui.getCore().createComponent({
-				name : "airbus.mes.operationdetail",
-				id : "operationDetailComponent"
-			});
-			airbus.mes.operationdetail.oView = this.oOperationDetailComp.oView;
-			airbus.mes.operationdetail.parentId = airbus.mes.stationtracker.operationDetailPopup.sId;
-		}
-		airbus.mes.stationtracker.operationDetailPopup.open();
-		airbus.mes.operationdetail.oView.placeAt(airbus.mes.stationtracker.operationDetailPopup.sId	+ "-scrollCont");
+			setTimeout(function() {
+				if (airbus.mes.stationtracker.operationDetailPopup === undefined) {
+					airbus.mes.stationtracker.operationDetailPopup = sap.ui.xmlfragment("operationDetailPopup", "airbus.mes.stationtracker.fragments.operationDetailPopup", airbus.mes.stationtracker.oView.getController());
+					airbus.mes.stationtracker.operationDetailPopup.setModel(sap.ui.getCore().getModel("operationDetailModel"),"operationDetailModel");
+					airbus.mes.stationtracker.oView.addDependent(airbus.mes.stationtracker.operationDetailPopup);
+				}		
 
-		airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").setData(oOperModel);
-		airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").refresh();
-		sap.ui.getCore().getModel("operationDetailModel").setData(oOperModel);
-		sap.ui.getCore().getModel("operationDetailModel").refresh();
+				//spent time calculation
+				var operation = aModel[0].OPERATION_BO.split(",")[1];
+				var order = aModel[0].SHOP_ORDER_BO.split(",")[1];
+				var spentTimeInMs = 0;
 
-//		If previously_started is true, the operation has to be on execution mode
-		if( aModel[0].PREVIOUSLY_STARTED === "true" ){
-			airbus.mes.operationdetail.oView.byId("switchOperationModeBtn").setState(true);
-			airbus.mes.operationdetail.oView.byId("switchOperationModeBtn").setEnabled(false);
-			airbus.mes.operationdetail.oView.byId("switchStatusLabel").setText(airbus.mes.operationdetail.oView.getModel("i18n").getProperty("Execution"));
-			// Permit to know if the operation is active pause or not started
-			airbus.mes.operationdetail.status.oView.getController().operationIsActive();
-		} else {
-			airbus.mes.operationdetail.oView.byId("switchOperationModeBtn").setState(false);
-			airbus.mes.operationdetail.oView.byId("switchOperationModeBtn").setEnabled(true);			
-			airbus.mes.operationdetail.oView.byId("switchStatusLabel").setText(airbus.mes.operationdetail.oView.getModel("i18n").getProperty("ReadOnly"));
-			//Set no Button activate
-			airbus.mes.operationdetail.status.oView.getController().setProgressScreenBtn(false,false, false);
-		}
-		// Pause the Refresh timer till the Pop-Up is opened
-		//airbus.mes.shell.AutoRefreshManager.pauseRefresh();
+				//TODO Exception to display to UI
+				if(operation && order){
+					spentTimeInMs  = airbus.mes.stationtracker.ModelManager.getSpentTimePerOperation(operation,order);
+				}
 
+				// calculate status of operation
+				var sStatus;
+				if (aModel[0].status == "0")
+					sStatus = "COMPLETED";
+				else if (aModel[0].status == "2")
+					sStatus = "IN_WORK";
+				else if (aModel[0].status === "3")
+					sStatus = "IN_QUEUE";
+				else if (aModel[0].status === "1")
+					sStatus = "NOT_STARTED";
+				else if (aModel[0].status === "4" || aModel[0].status === "5"
+						|| aModel[0].status === "6" || aModel[0].status === "7")	
+					sStatus = "Blocked";
+
+				// progress calculation
+				var progress;
+				if (sStatus == "COMPLETED")
+					progress = 100;
+				else if (parseInt(aModel[0].DURATION, 10) === 0)
+					progress = 0;
+				else
+					progress = aModel[0].PROGRESS / parseInt(aModel[0].DURATION, 10)
+							* 100;
+				var oOperModel = {
+					"Rowsets" : {
+						"Rowset" : [ {
+							"Row" : [ {
+								"prodGroup" : aModel[0].PROD_GROUP,
+								"skills" : aModel[0].SKILLS,
+								"avlLine" : aModel[0].AVL_LINE,
+								"sfc" : aModel[0].SFC,
+								"sfc_step_ref" : aModel[0].SFC_STEP_REF,
+								"operation_bo" : aModel[0].OPERATION_BO,
+								"operation_id" : aModel[0].OPERATION_ID,
+								"operation_no" : aModel[0].OPERATION_BO.split(",")[1],
+								"operation_desc" : aModel[0].OPERATION_DESCRIPTION,
+								"material_description" : aModel[0].WORKORDER_DESCRIPTION,
+								"operation_revision" : aModel[0].SFC_STEP_REF.split(",")[5],
+								"wo_no" : aModel[0].SHOP_ORDER_BO.split(",")[1],
+								"workcenter" : aModel[0].PP_STATION.split(",")[1],
+								"status" : sStatus,
+								"realStatus" :  aModel[0].status,
+								"progress" : parseInt(progress, 10),
+								"progress_new" : parseInt(progress, 10),
+								"time_spent" : spentTimeInMs,
+								"reschedule_start_time" :  aModel[0].START_TIME,
+								"reschedule_end_time" :  aModel[0].END_TIME,
+								"original_start_time" : sAvlStart,
+								"original_end_time" : sAvlEnd,
+								"cpp_cluster" : aModel[0].CPP_CLUSTER,
+								"work_package" : aModel[0].WORK_PACKAGE,
+								"erp_system" : aModel[0].ERP_SYSTEM,
+								"state" : aModel[0].STATE,
+								"previously_start" : aModel[0].PREVIOUSLY_STARTED,
+								"paused" : aModel[0].PAUSED, 
+								"noOfEmp" : aModel[0].NUMBER_OF_EMPLOYEES
+							} ]
+						} ]
+					}
+				};
+
+				if (airbus.mes.operationdetail === undefined) {
+					jQuery.sap.registerModulePath("airbus.mes.operationdetail",
+							"../components/operationdetail");
+					this.oOperationDetailComp = sap.ui.getCore().createComponent({
+						name : "airbus.mes.operationdetail",
+						id : "operationDetailComponent"
+					});
+					airbus.mes.operationdetail.oView = this.oOperationDetailComp.oView;
+					airbus.mes.operationdetail.parentId = airbus.mes.stationtracker.operationDetailPopup.sId;
+				}
+				airbus.mes.stationtracker.operationDetailPopup.open();
+				airbus.mes.operationdetail.oView.placeAt(airbus.mes.stationtracker.operationDetailPopup.sId	+ "-scrollCont");
+
+				airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").setData(oOperModel);
+				airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").refresh();
+				sap.ui.getCore().getModel("operationDetailModel").setData(oOperModel);
+				sap.ui.getCore().getModel("operationDetailModel").refresh();
+
+		//		If previously_started is true, the operation has to be on execution mode
+				if( aModel[0].PREVIOUSLY_STARTED === "true" ){
+					airbus.mes.operationdetail.oView.byId("switchOperationModeBtn").setState(true);
+					airbus.mes.operationdetail.oView.byId("switchOperationModeBtn").setEnabled(false);
+					airbus.mes.operationdetail.oView.byId("switchStatusLabel").setText(airbus.mes.operationdetail.oView.getModel("i18n").getProperty("Execution"));
+					// Permit to know if the operation is active pause or not started
+					airbus.mes.operationdetail.status.oView.getController().operationIsActive();
+				} else {
+					airbus.mes.operationdetail.oView.byId("switchOperationModeBtn").setState(false);
+					airbus.mes.operationdetail.oView.byId("switchOperationModeBtn").setEnabled(true);			
+					airbus.mes.operationdetail.oView.byId("switchStatusLabel").setText(airbus.mes.operationdetail.oView.getModel("i18n").getProperty("ReadOnly"));
+					//Set no Button activate
+					airbus.mes.operationdetail.status.oView.getController().setProgressScreenBtn(false,false, false);
+				}
+
+				airbus.mes.shell.busyManager.unsetBusy(airbus.mes.stationtracker.oView, "stationtracker");
+			}, 0);
+		}, 0);
 	},
 	OpenReschedule : function(id) {
 
