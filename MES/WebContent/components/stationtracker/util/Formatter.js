@@ -216,6 +216,7 @@ airbus.mes.stationtracker.util.Formatter = {
 				var sColorProgress = "";
 				var sText = "";
 				var trackerTextClass = "";
+				var boxDisplayManager = airbus.mes.stationtracker.util.BoxDisplayManager;
 				var sProgress = airbus.mes.stationtracker.util.Formatter.percentValue(oBox.progress,oBox.totalDuration);
 				// Text to display different case regarding box selected
 				switch (airbus.mes.stationtracker.GroupingBoxingManager.box) {
@@ -242,26 +243,26 @@ airbus.mes.stationtracker.util.Formatter = {
 
 			
 				if ( oBox.rmaStatus === 1 ){ //rma
-					sLeftIcon = airbus.mes.stationtracker.util.BoxDisplayManager.leftTriangleIcon_Dandelion;
+					sLeftIcon = boxDisplayManager.leftTriangleIcon_Dandelion;
 				}
 				if (oBox.OSW === 3){ //OSW
-					sLeftIcon2 = airbus.mes.stationtracker.util.BoxDisplayManager.leftOswIcon_Constructor(sOSW);
+					sLeftIcon2 = boxDisplayManager.leftOswIcon_Constructor(sOSW);
 				}
 				if (oBox.isUnplanned === 1){ //Unplanned
-					sLeftIcon3 = airbus.mes.stationtracker.util.BoxDisplayManager.leftOswIcon_Constructor(sUNPD);
+					sLeftIcon3 = boxDisplayManager.leftOswIcon_Constructor(sUNPD);
 				}
 				switch ( oBox.status ) {
 				// box is active
 					case 2 :
-						sColorProgress = airbus.mes.stationtracker.util.BoxDisplayManager.colorProgress_Constructor("dark-lime-green-back", sProgress);
+						sColorProgress = boxDisplayManager.colorProgress_Constructor("dark-lime-green-back", sProgress);
 
-						sRightIcon = airbus.mes.stationtracker.util.BoxDisplayManager.rightIcon_Constructor("fa-play");
+						sRightIcon = boxDisplayManager.rightIcon_Constructor("fa-play");
 					break;
 				// box is paused
 					case 3 :
-						sColorProgress = airbus.mes.stationtracker.util.BoxDisplayManager.colorProgress_Constructor("dark-lime-green-back", sProgress);
+						sColorProgress = boxDisplayManager.colorProgress_Constructor("dark-lime-green-back", sProgress);
 
-						sRightIcon = airbus.mes.stationtracker.util.BoxDisplayManager.rightIcon_Constructor("fa-pause");
+						sRightIcon = boxDisplayManager.rightIcon_Constructor("fa-pause");
 						break;
 				// box not started
 					case 1 :
@@ -269,90 +270,90 @@ airbus.mes.stationtracker.util.Formatter = {
 						break;
 				// box Completed
 					case 0 :
-						sColorProgress = airbus.mes.stationtracker.util.BoxDisplayManager.colorProgress_Constructor("teal-blue-back");
+						sColorProgress = boxDisplayManager.colorProgress_Constructor("teal-blue-back");
 
-						sRightIcon = airbus.mes.stationtracker.util.BoxDisplayManager.rightIcon_Constructor("fa-check");
+						sRightIcon = boxDisplayManager.rightIcon_Constructor("fa-check");
 
 						if ( oBox.rmaStatus === 1 ){	//rma
-							sLeftIcon = airbus.mes.stationtracker.util.BoxDisplayManager.leftTriangleIcon;
+							sLeftIcon = boxDisplayManager.leftTriangleIcon;
 						}
 						if (oBox.OSW === 3){ //OSW
-							sLeftIcon2 = airbus.mes.stationtracker.util.BoxDisplayManager.leftOswIcon_TealBlueWhite_Constructor(sOSW);
+							sLeftIcon2 = boxDisplayManager.leftOswIcon_TealBlueWhite_Constructor(sOSW);
 						}
 						if (oBox.isUnplanned === 1){ //Unplanned
-							sLeftIcon3 = airbus.mes.stationtracker.util.BoxDisplayManager.leftOswIcon_TealBlueWhite_Constructor(sUNPD);
+							sLeftIcon3 = boxDisplayManager.leftOswIcon_TealBlueWhite_Constructor(sUNPD);
 						}
 					break;	
 
 					// Opened Blocking and disruption
 					case 4 :
-						sColorProgress = airbus.mes.stationtracker.util.BoxDisplayManager.colorProgress_OpenBlocked;
-						sRightIcon = airbus.mes.stationtracker.util.BoxDisplayManager.rightIcon_Constructor("fa-stop", "petrol");
+						sColorProgress = boxDisplayManager.colorProgress_OpenBlocked;
+						sRightIcon = boxDisplayManager.rightIcon_Constructor("fa-stop", "petrol");
 
 						if ( oBox.rmaStatus === 1 ){	//rma
-							sLeftIcon = airbus.mes.stationtracker.util.BoxDisplayManager.leftTriangleIcon_Petrol;
+							sLeftIcon = boxDisplayManager.leftTriangleIcon_Petrol;
 						}
 						if (oBox.OSW === 3){ //OSW
-							sLeftIcon2 = airbus.mes.stationtracker.util.BoxDisplayManager.leftOswIcon_Dandelion_Constructor(sOSW);
+							sLeftIcon2 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sOSW);
 						}
 						if (oBox.isUnplanned === 1){ //Unplanned
-							sLeftIcon3 = airbus.mes.stationtracker.util.BoxDisplayManager.leftOswIcon_Dandelion_Constructor(sUNPD);
+							sLeftIcon3 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sUNPD);
 						}
 						break;
 
 					// Opened Blocking disruption
 					case 5 :
-						sColorProgress = airbus.mes.stationtracker.util.BoxDisplayManager.colorProgress_Escalated;
-						sRightIcon = airbus.mes.stationtracker.util.BoxDisplayManager.rightIcon_Constructor("fa-stop");
+						sColorProgress = boxDisplayManager.colorProgress_Escalated;
+						sRightIcon = boxDisplayManager.rightIcon_Constructor("fa-stop");
 
 						if ( oBox.rmaStatus === 1 ){	//rma
-							sLeftIcon = airbus.mes.stationtracker.util.BoxDisplayManager.leftTriangleIcon;
+							sLeftIcon = boxDisplayManager.leftTriangleIcon;
 						}
 						if (oBox.OSW === 3){ //OSW
-							sLeftIcon2 = airbus.mes.stationtracker.util.BoxDisplayManager.leftOswIcon_Dandelion_Constructor(sOSW);
+							sLeftIcon2 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sOSW);
 						}
 						if (oBox.isUnplanned === 1){ //Unplanned
-							sLeftIcon3 = airbus.mes.stationtracker.util.BoxDisplayManager.leftOswIcon_Dandelion_Constructor(sUNPD);
+							sLeftIcon3 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sUNPD);
 						}
 						break;
 					
 					// Solved Blocking
 					case 6 :
-						sColorProgress = airbus.mes.stationtracker.util.BoxDisplayManager.colorProgress_SolvedBlocked;
-						sRightIcon = airbus.mes.stationtracker.util.BoxDisplayManager.rightIcon_Constructor("fa-play", "petrol");
+						sColorProgress = boxDisplayManager.colorProgress_SolvedBlocked;
+						sRightIcon = boxDisplayManager.rightIcon_Constructor("fa-play", "petrol");
 
 						if ( oBox.rmaStatus === 1 ){	//rma
-							sLeftIcon = airbus.mes.stationtracker.util.BoxDisplayManager.leftTriangleIcon_Petrol;
+							sLeftIcon = boxDisplayManager.leftTriangleIcon_Petrol;
 						}
 						if (oBox.OSW === 3){ //OSW
-							sLeftIcon2 = airbus.mes.stationtracker.util.BoxDisplayManager.leftOswIcon_Dandelion_Constructor(sOSW);
+							sLeftIcon2 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sOSW);
 						}
 						
 						if (oBox.isUnplanned === 1){ //Unplanned
-							sLeftIcon3 = airbus.mes.stationtracker.util.BoxDisplayManager.leftOswIcon_Dandelion_Constructor(sUNPD);
+							sLeftIcon3 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sUNPD);
 						}
 						break;
 					
 					// Solved Blocking and escalated = andon solved
 					case 7 :
-						sColorProgress = airbus.mes.stationtracker.util.BoxDisplayManager.colorProgress_SolvedBlockedExcalated;
-						sRightIcon = airbus.mes.stationtracker.util.BoxDisplayManager.rightIcon_Constructor("fa-play");
+						sColorProgress = boxDisplayManager.colorProgress_SolvedBlockedExcalated;
+						sRightIcon = boxDisplayManager.rightIcon_Constructor("fa-play");
 
 						if ( oBox.rmaStatus === 1 ){ //rma
-							sLeftIcon = airbus.mes.stationtracker.util.BoxDisplayManager.leftTriangleIcon;
+							sLeftIcon = boxDisplayManager.leftTriangleIcon;
 						}
 						if (oBox.OSW === 3){ //OSW
-							sLeftIcon2 = airbus.mes.stationtracker.util.BoxDisplayManager.leftOswIcon_Dandelion_Constructor(sOSW);
+							sLeftIcon2 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sOSW);
 						}				
 						if (oBox.isUnplanned === 1){ //Unplanned
-							sLeftIcon3 = airbus.mes.stationtracker.util.BoxDisplayManager.leftOswIcon_Dandelion_Constructor(sUNPD);
+							sLeftIcon3 = boxDisplayManager.leftOswIcon_Dandelion_Constructor(sUNPD);
 						}
 						break;
 					default : 		
 				}
 
 				//
-				var widthUnavailableForText = airbus.mes.stationtracker.util.BoxDisplayManager.getWidthUnavailableForText(sLeftIcon, sLeftIcon2, sLeftIcon3, sRightIcon);
+				var widthUnavailableForText = boxDisplayManager.getWidthUnavailableForText(sLeftIcon, sLeftIcon2, sLeftIcon3, sRightIcon);
 
 				//description text + progress in IM (industrial minutes)
 				var sSpanText = '<span class=" '+ trackerTextClass + 
@@ -538,7 +539,7 @@ airbus.mes.stationtracker.util.Formatter = {
 							+ '</span></br></div>';
 
 					oHierarchyDelay = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchyDelay;
-					console.log(oHierarchyDelay);
+					//console.log(oHierarchyDelay);
 					
 					//---------------------------------------------------------------------------
 					//fProgress = oHierarchyDelay[oSection.group][oSection.avlLine].progress;

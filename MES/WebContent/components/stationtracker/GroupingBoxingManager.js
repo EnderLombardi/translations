@@ -129,25 +129,20 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 		var aModelI = sap.ui.getCore().getModel("stationTrackerIModel");
 		
 		// check if model full or not
-		if (aModel.getProperty("/Rowsets/Rowset/0/Row")) {              
-			
-			aModel = sap.ui.getCore().getModel("stationTrackerRModel").oData.Rowsets.Rowset[0].Row;
-			
+		if (aModel.getProperty("/Rowsets/Rowset/0/Row")) {              	
+			aModel = sap.ui.getCore().getModel("stationTrackerRModel").oData.Rowsets.Rowset[0].Row;	
         } else  {
-        aModel = [];
-        console.log("no Rescheduled operation load");
+        	aModel = [];
+        	console.log("no Rescheduled operation load");
         }
 		
 		if(aModelI.getProperty("/Rowsets/Rowset/0/Row")){              
-			
 			aModelI = sap.ui.getCore().getModel("stationTrackerIModel").oData.Rowsets.Rowset[0].Row;
-			
         } else  {	
-        aModelI = [];
-        console.log("no Initial operation load");
+        	aModelI = [];
+        	console.log("no Initial operation load");
         }
 		//if ( airbus.mes.stationtracker.GroupingBoxingManager.showInitial ) {
-			
 			
 			this.computeOperationHierarchy(aModelI,sGroup,sBoxing,"I");
 			this.computeOperationHierarchy(aModel,sGroup,sBoxing);

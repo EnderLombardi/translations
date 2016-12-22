@@ -1,6 +1,7 @@
 "use strict";
 
 jQuery.sap.declare("airbus.mes.stationtracker.customProgressIndicator");
+jQuery.sap.require("airbus.mes.stationtracker.util.BoxDisplayManager");
 
 sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", {
 	metadata : {
@@ -140,6 +141,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 		var sRightIcon = "";	
 		var sLeftIcon = "";
 		var sLeftIcon2 = "";
+		var boxDisplayManager = airbus.mes.stationtracker.util.BoxDisplayManager;
 		
 		r.write('<div');
 				r.writeControlData(c);
@@ -159,10 +161,10 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 										
 						// condition design for worklist pop up
 						if ( rmastatus != "---" ){	//rma
-							sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon "></i>';
+							sLeftIcon = boxDisplayManager.leftTriangleIcon;
 						}
 						if (osw[0] === "3" ){ //OSW
-							sLeftIcon2 = '<i class="fa fa-refresh oswIcon dandelion-back "><b style="padding-left:1px">'+sOSW+'</b></i>';
+							sLeftIcon2 = boxDisplayManager.leftOswIcon_Constructor(sOSW);
 						}
 						
 						// Operation is active	
