@@ -562,14 +562,15 @@ airbus.mes.stationtracker.ShiftManager = {
 				css : "begin_shifht"
 			});
 			
+			//after the first step
 			if (index > 0){
 				// If different date show border of the start shift
-				//current shift
+				//EndDate of current shift
 				d8 =  this.shifts[index].EndDate;
-				//next shift
+				//StartDate of next shift
 				d9 = this.shifts[index+1].StartDate;
-				console.log("d8 :"+  (d8.getTime() + 1000) +" ou " + d8);
-				console.log("d9 :"+  d9.getTime() +" ou " + d9);
+				//console.log("d8 :"+  (d8.getTime() + 1000) +" ou " + d8);
+				//console.log("d9 :"+  d9.getTime() +" ou " + d9);
 				if((d8.getTime() + 1000) != d9.getTime()){
 					scheduler.addMarkedTimespan({
 						start_date : d8,
