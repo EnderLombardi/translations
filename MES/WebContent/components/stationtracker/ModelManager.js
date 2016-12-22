@@ -910,7 +910,7 @@ airbus.mes.stationtracker.ModelManager = {
 		airbus.mes.stationtracker.util.Formatter.sortWorklistAndBind("WORKORDER_ID", aModel);
 		sap.ui.getCore().byId("worklistPopover--selectGroupingWorklist").setSelectedKey(0);
 
-        sap.ui.getCore().byId("worklistPopover--filterStatus").setSelectedKey(0);
+        sap.ui.getCore().byId("worklistPopover--selectStatus").setSelectedKey(0);
 
 
 		
