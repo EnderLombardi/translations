@@ -161,10 +161,10 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 										
 						// condition design for worklist pop up
 						if ( rmastatus != "---" ){	//rma
-							sLeftIcon = boxDisplayManager.leftTriangleIcon;
+							sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon "></i>';
 						}
 						if (osw[0] === "3" ){ //OSW
-							sLeftIcon2 = boxDisplayManager.leftOswIcon_Constructor(sOSW);
+							sLeftIcon2 = '<i class="fa fa-refresh oswIcon dandelion-back "><b style="padding-left:1px">'+sOSW+'</b></i>';
 						}
 						
 						// Operation is active	

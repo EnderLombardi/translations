@@ -32,6 +32,19 @@ airbus.mes.stationtracker.util.BoxDisplayManager = {
     //		RIGHT ICON
     //---------------------
 		    
+		    rightOswIcon: '<i class="fa fa-refresh oswIcon2"><b style="padding-left:1px max-width:80px">',
+		    rightOswIcon_Dandelion: '<i class="fa fa-refresh oswIcon2 dandelion"><b style="padding-left:1px">',
+		    rightPaused : '<i class="fa fa-play rightIcon"></i>',
+		    rightPaused_Petrol : '<i class="fa fa-stop rightIcon petrol" ></i>',
+		    
+		    rightOswIcon_Constructor: function(elt) {
+		        return airbus.mes.stationtracker.util.BoxDisplayManager.rightOswIcon + elt + '</b></i>';
+		    },
+		
+		    rightOswIcon_Dandelion_Constructor: function(elt) {
+		        return airbus.mes.stationtracker.util.BoxDisplayManager.rightOswIcon_Dandelion + elt + '</b></i>';
+		    },
+		    
 		    rightIcon_Constructor: function(fa_status, color) {
 		        if (color) {   
 		            return '<i class="fa ' + fa_status + ' rightIcon ' + color +'"></i>';
