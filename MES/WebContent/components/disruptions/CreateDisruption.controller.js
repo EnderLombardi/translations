@@ -73,10 +73,6 @@ sap.ui
 					onInit : function() {
 
 						this.addParent(this.selectTree, undefined);
-						/*
-						 * this.ModelManager.loadDisruptionCustomData();
-						 * this.ModelManager.loadDisruptionCategory();
-						 */
 
 						this.getView().byId("selectreason").setSelectedKey();
 						this.getView().byId("selectRootCause").setSelectedKey();
@@ -86,17 +82,6 @@ sap.ui
 								.setSelectedKey();
 						this.setEnabledSelectBox(true, false, false, false);
 						this.getView().byId("timeLost").setPlaceholder(airbus.mes.disruptions.Formatter.getConfigTimeFullUnit());
-
-						// this.filterField(this.selectTree);
-
-						// this.addParent(this.selectTree, undefined);
-						// this.ModelManager = airbus.mes.settings.ModelManager;
-
-						/*
-						 * this.getView().core.setModel(new
-						 * sap.ui.model.json.JSONModel(),
-						 * "disruptionCustomData");
-						 */
 
 					},
 
@@ -762,16 +747,15 @@ sap.ui
 								.setSelectedKey();
 						this.getView().byId("selectRootCause").setSelectedKey();
 						this.getView().byId("gravity").setSelectedKey();
-						/*
-						 * this.getView().byId("expectedDate").setValue();
-						 * this.getView().byId("expectedTime").setValue();
-						 */
 						this.getView().byId("timeLost").setValue();
 						this.getView().byId("comment").setValue();
 						this.getView().byId("description").setValue();
 
 						this.getView().byId("materials").destroyTokens();
 						this.getView().byId("jigtools").destroyTokens();
+
+						//hide the setBusyIndicator launched in stationtracker ModelManager
+						airbus.mes.shell.busyManager.unsetBusy(sap.ui.getCore(), "createDisruptionView");
 
 					},
 

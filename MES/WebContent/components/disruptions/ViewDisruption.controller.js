@@ -1063,28 +1063,41 @@ sap.ui
 
 					onReportDisruption : function(oEvent) {
 						
-						// Close expanded disruption panel
-						if(this.expandedDisruptionPanel)
-							sap.ui.getCore().byId(this.expandedDisruptionPanel).setExpanded(false);
-						
-						var oOperDetailNavContainer = sap.ui.getCore().byId(
-								"operationDetailsView--operDetailNavContainer");
-						
-						// clear disruptionDetailModel if edit is loaded before ReportDisruption
-						sap.ui.getCore().getModel("DisruptionDetailModel").setData();
+						//two timeout chained to active setBusy & to be sure the setBusy is launched before the next operations
+						//don't work without this trick (or sometimes but don't 100% effective)
+						setTimeout(function() {
 
-						oOperDetailNavContainer.to(airbus.mes.disruptions.oView.createDisruption.getId());
-						
-						
-						//destroying Material List dialog which might have already loaded and will show inconsistent data otherwise
-						if(sap.ui.getCore().byId("createDisruptionView").oController._materialListDialog){
-							sap.ui.getCore().byId("createDisruptionView").oController._materialListDialog.destroy(false);
-							sap.ui.getCore().byId("createDisruptionView").oController._materialListDialog = undefined;
-						}
-						if(sap.ui.getCore().byId("createDisruptionView").oController.jigToolSelectDialog){
-							sap.ui.getCore().byId("createDisruptionView").oController.jigToolSelectDialog.destroy(false);
-							sap.ui.getCore().byId("createDisruptionView").oController.jigToolSelectDialog = undefined;
-						}
+							//set busyIndicator delay to 0 ms instead of 500ms
+							if (sap.ui.getCore().byId("createDisruptionView").getBusyIndicatorDelay() !== 0) {
+								sap.ui.getCore().byId("createDisruptionView").setBusyIndicatorDelay(0);
+							}
+							sap.ui.getCore().byId("createDisruptionView").setBusy(true);
+
+							setTimeout(function() {
+								// Close expanded disruption panel
+								if(this.expandedDisruptionPanel)
+									sap.ui.getCore().byId(this.expandedDisruptionPanel).setExpanded(false);
+								
+								var oOperDetailNavContainer = sap.ui.getCore().byId(
+										"operationDetailsView--operDetailNavContainer");
+								
+								// clear disruptionDetailModel if edit is loaded before ReportDisruption
+								sap.ui.getCore().getModel("DisruptionDetailModel").setData();
+
+								oOperDetailNavContainer.to(airbus.mes.disruptions.oView.createDisruption.getId());
+								
+								
+								//destroying Material List dialog which might have already loaded and will show inconsistent data otherwise
+								if(sap.ui.getCore().byId("createDisruptionView").oController._materialListDialog){
+									sap.ui.getCore().byId("createDisruptionView").oController._materialListDialog.destroy(false);
+									sap.ui.getCore().byId("createDisruptionView").oController._materialListDialog = undefined;
+								}
+								if(sap.ui.getCore().byId("createDisruptionView").oController.jigToolSelectDialog){
+									sap.ui.getCore().byId("createDisruptionView").oController.jigToolSelectDialog.destroy(false);
+									sap.ui.getCore().byId("createDisruptionView").oController.jigToolSelectDialog = undefined;
+								}
+							}, 0);
+						}, 0);
 					},
 
 					/***********************************************************
