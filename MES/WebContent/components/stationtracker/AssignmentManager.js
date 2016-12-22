@@ -100,18 +100,18 @@ airbus.mes.stationtracker.AssignmentManager = {
 	 *	action attach to + button on scheduler 
 	 */
 	newLine : function(sKey) {
-////			TODO : only 9 numbers (INTEGER --> 9 numbers)
-////			Define an unique identifier for the AVL Line by the difference in milliseconde between the 01/01/2016 and the current date
-////		    at 03/01/2020, value will be more than 9 numbers
-//			var sAVLKey = Math.floor((new Date() - new Date("2016-11-01")) /100)
-//
-//			airbus.mes.stationtracker.AssignmentManager.bOpen = true;
-//			scheduler.addSection({
-//				key: "R_" + sAVLKey.toString() + "_unplanned" , 
-//				rescheduled:"R" , 
-//				name:"Select Operator",
-//				avlLine: sAVLKey.toString() + "_unplanned",
-//				}, sKey );   
+//			TODO : only 9 numbers (INTEGER --> 9 numbers)
+//			Define an unique identifier for the AVL Line by the difference in milliseconde between the 01/01/2016 and the current date
+//		    at 03/01/2020, value will be more than 9 numbers
+			var sAVLKey = Math.floor((new Date() - new Date("2016-11-01")) /100)
+
+			airbus.mes.stationtracker.AssignmentManager.bOpen = true;
+			scheduler.addSection({
+				key: "R_" + sAVLKey.toString() + "_unplanned" , 
+				rescheduled:"R" , 
+				name:"Select Operator",
+				avlLine: sAVLKey.toString() + "_unplanned",
+				}, sKey );   
 		
 	},
 	

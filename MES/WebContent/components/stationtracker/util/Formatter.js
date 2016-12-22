@@ -438,8 +438,7 @@ airbus.mes.stationtracker.util.Formatter = {
 				
 				if (oSection.initial != undefined ) {
 
-					html = '<span  style="float: right;margin-right: 5px;" >' + oSection.initial
-							+ '</span>';
+					html = '<span  style="float: right;margin-right: 5px;" >' + oSection.initial + '</span>';
 					return html;
 				}
 				
@@ -450,7 +449,8 @@ airbus.mes.stationtracker.util.Formatter = {
 							+ ' class="' + airbus.mes.stationtracker.util.Formatter.openFolder(oSection.open) + '"></span><div title='
 							+ airbus.mes.stationtracker.util.Formatter.spaceInsecable(oSection.label) + ' class="ylabelfolder">' + oSection.label
 							+ '</div><span id= add_' + oSection.key
-							+ ' style="color: grey;" class="fa fa-plus custom" onclick="airbus.mes.stationtracker.AssignmentManager.newLine(\''
+							+ ' class="fa fa-plus custom" onclick="airbus.mes.stationtracker.AssignmentManager.newLine(\''
+							//+ ' style="color: grey;" class="fa fa-plus custom" onclick="airbus.mes.stationtracker.AssignmentManager.newLine(\''
 							+ oSection.key + '\')"></span></div>';
 					return html;
 				}
@@ -526,16 +526,29 @@ airbus.mes.stationtracker.util.Formatter = {
 					
 					html += '<i class="fa  fa-pencil ylabelEditIcon"></i>';
 									
-					html += '<div class="yText">' + '<span class="avlLine" title="' +  oSection.avlLine.split("_")[1] + " - "  + oSection.avlLine.split("_")[0] +  '">' +  oSection.avlLine.split("_")[1] + " - "  + oSection.avlLine.split("_")[0] + '</span>' + 
-							 '<br><span class="ylabel">'
-						+ airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("SelectOperator") + '</span></br></div>';
+					html += '<div class="yText">' 
+							+ '<span class="avlLine" title="' 
+							+  oSection.avlLine.split("_")[1] 
+								+ " - "  + oSection.avlLine.split("_")[0] 
+								+  '">' +  oSection.avlLine.split("_")[1] 
+								+ " - "  + oSection.avlLine.split("_")[0] 
+							+ '</span>' 
+							+ '<br><span class="ylabel">' 
+							+ airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("SelectOperator") 
+							+ '</span></br></div>';
 
 					oHierarchyDelay = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchyDelay;
-					fProgress = oHierarchyDelay[oSection.group][oSection.avlLine].progress;
-					fDuration =	oHierarchyDelay[oSection.group][oSection.avlLine].duration;
+					console.log(oHierarchyDelay);
+					
+					//---------------------------------------------------------------------------
+					//fProgress = oHierarchyDelay[oSection.group][oSection.avlLine].progress;
+					//fDuration =	oHierarchyDelay[oSection.group][oSection.avlLine].duration;
+					//---------------------------------------------------------------------------
+					
 					sSpanWarn = "";
 					
-					html += airbus.mes.stationtracker.util.Formatter.createDelaySpan( fProgress,fDuration,sSpanWarn );
+					//html += airbus.mes.stationtracker.util.Formatter.createDelaySpan( fProgress,fDuration,sSpanWarn );
+					html += airbus.mes.stationtracker.util.Formatter.createDelaySpan( "1","1",sSpanWarn );
 					
 					
 					return html + '</div>';
@@ -549,16 +562,27 @@ airbus.mes.stationtracker.util.Formatter = {
 				
 				html += '<i class="fa  fa-pencil ylabelEditIcon"></i>';
 								
-				html += '<div class="yText">' + '<span class="avlLine" title="' +  oSection.avlLine.split("_")[1] + " - "  + oSection.avlLine.split("_")[0] +  '">' +  oSection.avlLine.split("_")[1] + " - "  + oSection.avlLine.split("_")[0] + '</span>' + 
-						 '<br><span class="ylabel">'
-					+ airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("SelectOperator") + '</span></br></div>';
+				html += '<div class="yText">' 
+						+ '<span class="avlLine" title="' 
+						+  oSection.avlLine.split("_")[1] 
+							+ " - "  + oSection.avlLine.split("_")[0] 
+							+  '">' +  oSection.avlLine.split("_")[1] 
+							+ " - "  + oSection.avlLine.split("_")[0] 
+						+ '</span>' 
+						+ '<br><span class="ylabel">' 
+						+ airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("SelectOperator") 
+						+ '</span></br></div>';
 
-				var oHierarchyDelay =airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchyDelay;
-				var fProgress = oHierarchyDelay[oSection.group][oSection.avlLine].progress;
-				var fDuration =	oHierarchyDelay[oSection.group][oSection.avlLine].duration;
-				var sSpanWarn = "";
+				oHierarchyDelay =airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchyDelay;
 				
-				html += airbus.mes.stationtracker.util.Formatter.createDelaySpan( fProgress,fDuration,sSpanWarn );
+				//---------------------------------------------------------------------------
+				//fProgress = oHierarchyDelay[oSection.group][oSection.avlLine].progress;
+				//fDuration =	oHierarchyDelay[oSection.group][oSection.avlLine].duration;
+				//---------------------------------------------------------------------------
+				
+				sSpanWarn = "";
+				
+				html += airbus.mes.stationtracker.util.Formatter.createDelaySpan( "1","1",sSpanWarn );
 				
 				
 				return html + '</div>';
