@@ -36,23 +36,7 @@ sap.ui
                         this.getView().byId("operationDetailPanel").setExpanded(!toggleButton.getVisible());
                     },
 
-//                    onCloseOperationDetailPopup : function() {
-//
-//                        airbus.mes.stationtracker.operationDetailPopup.close();
-//                        airbus.mes.shell.oView.oController
-//                                .renderStationTracker();
-//                    },
 
-                    /**
-                     * Similar to onBeforeRendering, but this hook is invoked
-                     * before the controller's View is re-rendered (NOT before
-                     * the first rendering! onInit() is used for that one!).
-                     *
-                     * @memberOf components.operationdetail.operationDetail
-                     */
-                    //onBeforeRendering : function() {/
-                    //
-                    //},
                     /**
                      * Called when the View has been rendered (so its HTML is
                      * part of the document). Post-rendering manipulations of
@@ -63,12 +47,9 @@ sap.ui
                      */
                     onAfterRendering : function() {
                        
-                    	if ( bBatch1 ) {
-                    		
+                    	if ( bBatch1 ) {	
                     		airbus.mes.operationdetail.oView.byId("idReschedule").setEnabled(false);
-                    		
                     	} else {
-                    		
                     		airbus.mes.operationdetail.oView.byId("idReschedule").setEnabled(true);
                     	}
                     	                    	
@@ -208,14 +189,6 @@ sap.ui
                       break;
                       case "reschedule":
 
-                            // var aGroup = [];
-
-//                            Check if we are on operation grouping
-//                            SD-PPC-ST-386
-//                            if (airbus.mes.stationtracker.GroupingBoxingManager.box !== 'OPERATION_ID') {
-//                                return;
-//                            }
-
                             var aModel = [sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0]];
 
                             if (airbus.mes.stationtracker.ReschedulePopover === undefined) {
@@ -250,21 +223,6 @@ sap.ui
                                 var erpSystem = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].erp_system.toLowerCase();
                                 console.log(erpSystem);
                                 var splitOpeId = operationId.split("-");
-//                                var tAndGoLink = "";
-
-//                                switch (window.location.hostname) {
-//                                    case "p1iswde0.eu.airbus.corp":
-//                                        tAndGoLink = "pea";
-//                                        break;
-//                                    case "imiswde0.eu.airbus.corp":
-//                                        tAndGoLink = "iea";
-//                                        break;
-//                                    case "dmiswde0.eu.airbus.corp":
-//                                        tAndGoLink = "dea";
-//                                        break;
-//                                    case "qmiswde0.eu.airbus.corp":
-//                                        tAndGoLink = "qea";
-//                                }
 
                                 var oLink = "touchngo" + erpSystem + "://openpage/operation?workorder=" + sWorkOrder + "&operation=" + splitOpeId[3];
                                 window.open(oLink, "_blank");
@@ -358,8 +316,6 @@ sap.ui
                                 this.disruptionsCustomDataFlag = true;
                             } else
                                 airbus.mes.disruptions.oView.createDisruption.oController.setDataForEditDisruption();
-
-
                             break;
 
                         default:

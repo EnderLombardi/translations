@@ -497,17 +497,6 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
 
 	},
 
-	/**
-	 * Called when the View has been rendered (so its HTML is
-	 * part of the document). Post-rendering manipulations of
-	 * the HTML could be done here. This hook is the same one
-	 * that SAPUI5 controls get after being rendered.
-	 * 
-	 * @memberOf components.operationdetail.status.status
-	 */
-	onAfterRendering : function() {
-	},
-
 	setOperationActionButtons : function() {
 		this.getView().byId("blockedText").setVisible(false);
 		this.getView().byId("goToDisruption").setVisible(false);	
@@ -585,14 +574,4 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
 			this.setProgressScreenBtn( false, false, true );			
 		}
 	}	
-
-/**
- * Called when the Controller is destroyed. Use this one to free
- * resources and finalize activities.
- * 
- * @memberOf components.operationdetail.status.status
- */
-// onExit: function() {
-//
-// }
 });
