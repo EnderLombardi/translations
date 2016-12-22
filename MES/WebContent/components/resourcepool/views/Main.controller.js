@@ -581,7 +581,6 @@ sap.ui
 
                         if(airbus.mes.resourcepool.SaveChanges != undefined){
                             airbus.mes.resourcepool.SaveChanges.close();
-                            nav.back();
                         }
                     },
 
@@ -712,6 +711,8 @@ sap.ui
 //                        app.removePage("idMainView"); //
 //                        sap.ui.getCore().byId("idMainView").destroy();
                         var close = this.afterDialogCancel();
+                        var loadPage = this.loadMainPage();
+                        loadPage;
                         close;
                     },
 
@@ -857,37 +858,53 @@ sap.ui
                      * Open Search Resource Pool Dialogue
                      **********************************************************/
                     openSelectResourcePool : function(oEvent) {
-                        if (airbus.mes.resourcepool.searchResourcePool === undefined) {
 
-                            airbus.mes.resourcepool.searchResourcePool = sap.ui
+                        if(airbus.mes.resourcepool.util.ModelManager.anyChangesFlag){
+                            if (airbus.mes.resourcepool.SaveChanges === undefined) {
+
+                                airbus.mes.resourcepool.SaveChanges = sap.ui
                                     .xmlfragment(
-                                            "searchResourcePool",
-                                            "airbus.mes.resourcepool.views.Search",
-                                            airbus.mes.resourcepool.oView
-                                                    .getController());
-                            airbus.mes.resourcepool.oView
-                                    .addDependent(airbus.mes.resourcepool.searchResourcePool);
-                        }
+                                    "SaveChanges",
+                                    "airbus.mes.resourcepool.views.SaveChanges",
+                                    airbus.mes.resourcepool.oView
+                                    .getController());
+                                airbus.mes.resourcepool.oView
+                                    .addDependent(airbus.mes.resourcepool.SaveChanges);
+                            }
+                            airbus.mes.resourcepool.SaveChanges.open();
+                        }else{
+                            if (airbus.mes.resourcepool.searchResourcePool === undefined) {
 
-                        sap.ui
-                                .getCore()
-                                .byId("searchResourcePool--site")
-                                .setText(airbus.mes.resourcepool.util.ModelManager.site);
-                        sap.ui
-                                .getCore()
-                                .byId("searchResourcePool--resourcePool")
-                                .setValue();
-                        sap.ui
-                                .getCore()
-                                .byId("searchResourcePool--description")
-                                .setValue();
-                        /* Attach focus out event to resource pool field */
-                        var oInputResource = sap.ui.getCore().byId(
-                                "searchResourcePool--resourcePool");
-                        oInputResource.attachBrowserEvent("focusout",
-                                this.onFocusOutOfResourcePool, this);
-                        airbus.mes.resourcepool.util.ModelManager.loadModelValueHelp();
-                        airbus.mes.resourcepool.searchResourcePool.open();
+                                airbus.mes.resourcepool.searchResourcePool = sap.ui
+                                        .xmlfragment(
+                                                "searchResourcePool",
+                                                "airbus.mes.resourcepool.views.Search",
+                                                airbus.mes.resourcepool.oView
+                                                        .getController());
+                                airbus.mes.resourcepool.oView
+                                        .addDependent(airbus.mes.resourcepool.searchResourcePool);
+                            }
+
+                            sap.ui
+                                    .getCore()
+                                    .byId("searchResourcePool--site")
+                                    .setText(airbus.mes.resourcepool.util.ModelManager.site);
+                            sap.ui
+                                    .getCore()
+                                    .byId("searchResourcePool--resourcePool")
+                                    .setValue();
+                            sap.ui
+                                    .getCore()
+                                    .byId("searchResourcePool--description")
+                                    .setValue();
+                            /* Attach focus out event to resource pool field */
+                            var oInputResource = sap.ui.getCore().byId(
+                                    "searchResourcePool--resourcePool");
+                            oInputResource.attachBrowserEvent("focusout",
+                                    this.onFocusOutOfResourcePool, this);
+                            airbus.mes.resourcepool.util.ModelManager.loadModelValueHelp();
+                            airbus.mes.resourcepool.searchResourcePool.open();
+                        }
                     },
 
                     cancelForm : function(oEvt) {
