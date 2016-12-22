@@ -713,6 +713,7 @@ sap.ui
                         var close = this.afterDialogCancel();
                         var loadPage = this.loadMainPage();
                         loadPage;
+                        airbus.mes.resourcepool.util.ModelManager.anyChangesFlag = false;
                         close;
                     },
 
