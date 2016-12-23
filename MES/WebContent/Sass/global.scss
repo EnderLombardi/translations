@@ -141,7 +141,7 @@ html
     }
     .Subheader{
         &:not(.theme-disabled){
-            button{
+            button:not(.sapMBtnDisabled){
                 padding:0;
                 &:hover{
                     background-color: $petrol-20;

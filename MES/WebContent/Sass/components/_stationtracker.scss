@@ -1019,7 +1019,7 @@ STATION TRACKER TOOLBAR
     .sapMBtnContent{
         color: #0D5D76;
     }
-    .sapMBtn:hover{
+    .sapMBtn:hover:not(.sapMBtnDisabled){
         background-color: $petrol-20;
         &>.sapMBtnTransparent{
             &.sapMBtnHoverable{
