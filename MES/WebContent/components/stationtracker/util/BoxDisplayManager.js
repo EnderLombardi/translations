@@ -34,8 +34,14 @@ airbus.mes.stationtracker.util.BoxDisplayManager = {
 		    
 		    rightOswIcon: '<i class="fa fa-refresh oswIcon2"><b style="padding-left:1px max-width:80px">',
 		    rightOswIcon_Dandelion: '<i class="fa fa-refresh oswIcon2 dandelion"><b style="padding-left:1px">',
-		    rightPaused : '<i class="fa fa-play rightIcon"></i>',
-		    rightPaused_Petrol : '<i class="fa fa-stop rightIcon petrol" ></i>',
+		    rightOswIcon_TealBlueWhite: '<i class="fa fa-refresh oswIcon2 teal-blue white"><b style="padding-left:1px">',
+		    rightPaused : '<i class="fa fa-pause rightIcon"></i>',
+		    rightPaused_Petrol : '<i class="fa fa-pause rightIcon petrol" ></i>',
+		    rightPlay : '<i class="fa fa-play rightIcon"></i>',
+		    rightPlay_Petrol : '<i class="fa fa-play rightIcon petrol"></i>',
+		    rightStop : '<i class="fa fa-stop rightIcon" ></i>',
+		    rightStop_Petrol :'<i class="fa fa-stop rightIcon petrol" ></i>',
+		    rightCheck : '<i class="fa fa-check rightIcon"></i>',
 		    
 		    rightOswIcon_Constructor: function(elt) {
 		        return airbus.mes.stationtracker.util.BoxDisplayManager.rightOswIcon + elt + '</b></i>';
@@ -43,6 +49,10 @@ airbus.mes.stationtracker.util.BoxDisplayManager = {
 		
 		    rightOswIcon_Dandelion_Constructor: function(elt) {
 		        return airbus.mes.stationtracker.util.BoxDisplayManager.rightOswIcon_Dandelion + elt + '</b></i>';
+		    },
+		    
+		    rightOswIcon_TealBlueWhite_Constructor: function(elt) {
+		        return airbus.mes.stationtracker.util.BoxDisplayManager.rightOswIcon_TealBlueWhite + elt + '</b></i>';
 		    },
 		    
 		    rightIcon_Constructor: function(fa_status, color) {

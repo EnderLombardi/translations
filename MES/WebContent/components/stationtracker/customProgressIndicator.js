@@ -113,7 +113,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
  
 	renderer : function(r, c) {
 		
-		// gloabal name 
+		// global name 
 		var sOSW = airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("Osw");
 		var sUNPD = airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("Unplanned");
 		
@@ -141,6 +141,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 		var sRightIcon = "";	
 		var sLeftIcon = "";
 		var sLeftIcon2 = "";
+		var sLeftIcon3 = "";
 		var boxDisplayManager = airbus.mes.stationtracker.util.BoxDisplayManager;
 		
 		r.write('<div');
@@ -161,10 +162,10 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 										
 						// condition design for worklist pop up
 						if ( rmastatus != "---" ){	//rma
-							sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon "></i>';
+							sLeftIcon = boxDisplayManager.leftTriangleIcon;
 						}
 						if (osw[0] === "3" ){ //OSW
-							sLeftIcon2 = '<i class="fa fa-refresh oswIcon dandelion-back "><b style="padding-left:1px">'+sOSW+'</b></i>';
+							sLeftIcon2 = boxDisplayManager.leftOswIcon_Constructor(sOSW);
 						}
 						
 						// Operation is active	
@@ -175,94 +176,87 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 				
 				switch ( paused ) {
 					case "false" :
-					// Operation is active
-							//sStatus = "2";
-							sRightIcon = '<i class="fa fa-play rightIcon"></i>';
-							break;
+					// Operation is active sStatus = "2";
+							sRightIcon = boxDisplayManager.rightPlay;
+					break;
 					case "---" :				
-					// Operation is not started
-							//sStatus = "1";
-							// Operation is pause	
-							//if ( paused === "---" && progress != "0" ) {
+					// Operation is not started sStatus = "1" Operation is pause	
+							//if ( paused === "---" && progress != "0" ) sStatus = "3";
 							if ( paused === "---" && prevstarted === "true" ) {
-								//sStatus = "3";
-								sRightIcon = '<i class="fa fa-pause rightIcon"></i>';
+								sRightIcon = boxDisplayManager.rightPaused;
 							}	
-							break;
+					break;
 					default :
 				}
 											
 				switch ( DisruptionStatus ) {		
 					case "D1" :
-					// Opened Blocking and disruption
-							//if ( Status === "D1") {
-							//sStatus = "4";
+					// Opened Blocking and disruption ( Status === "D1") sStatus = "4";
 							r.addStyle('background-color','#fbec00');
 							r.addStyle('color','rgba(0, 86, 112, 0.94)');
-							sRightIcon = '<i class="fa fa-stop rightIcon petrol" ></i>';
+							sRightIcon = boxDisplayManager.rightStop_Petrol;
+							
 							if ( rmastatus === 1 || rmastatus != "---" ){	//rma
-								sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon petrol"></i>';
+								sLeftIcon = boxDisplayManager.leftTriangleIcon_Petrol;
 							}
 							if (osw[0] === "3" ){ //OSW
-								sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 petrol-back dandelion"><b style="padding-left:1px">'+sOSW+'</b></i>';
+								//sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 petrol-back dandelion"><b style="padding-left:1px">'+sOSW+'</b></i>';
+								sLeftIcon2 = boxDisplayManager.rightOswIcon_Dandelion_Constructor(sOSW);
 							}
 							if (osw[0] === "1" || sUnplanned === "1" ){ //unplanned
-								sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 petrol-back dandelion"><b style="padding-left:1px">'+sUNPD+'</b></i>';
+								//sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 petrol-back dandelion"><b style="padding-left:1px">'+sUNPD+'</b></i>';
+								sLeftIcon3 = boxDisplayManager.rightOswIcon_Dandelion_Constructor(sUNPD);
 							}
 							//}
-							break;
+					break;
 					case "D2" :
-					// Opened Blocking disruption
-							//if ( Status === "D2") {
-							//sStatus = "5";
+					// Opened Blocking disruption ( Status === "D2") sStatus = "5";
 							r.addStyle('background-color','#e4002b');
-							sRightIcon = '<i class="fa fa-stop rightIcon " ></i>';
+							sRightIcon = boxDisplayManager.rightStop;
+							
 							if ( rmastatus === 1 ){	//rma
-								sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon petrol"></i>';
+								sLeftIcon = boxDisplayManager.leftTriangleIcon_Petrol;
 							}
 							if (osw[0] === "3" ){ //OSW
-								sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 petrol-back dandelion"><b style="padding-left:1px">'+sOSW+'</b></i>';
+								sLeftIcon2 = boxDisplayManager.rightOswIcon_Dandelion_Constructor(sOSW);
 							}
-							if (osw[0] === "1"  || sUnplanned === "1" ){ //unplanned
-								sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 petrol-back dandelion"><b style="padding-left:1px">'+sUNPD+'</b></i>';
+							if (osw[0] === "1" || sUnplanned === "1" ){ //unplanned
+								sLeftIcon3 = boxDisplayManager.rightOswIcon_Dandelion_Constructor(sUNPD);
 							}
-							break;
+					break;
 					case "D3" :
-					//Solved Blocking and Escalated disruption
-							//if ( Status === "D3") {
-							//sStatus = "6";
+					//Solved Blocking and Escalated disruption ( Status === "D3") sStatus = "6";
 							r.addStyle('background', 'repeating-linear-gradient(135deg, #ffbf00, #ffbf00 10px, #fbec00 10px, #fbec00 20px)');
-							sRightIcon = '<i class="fa fa-play rightIcon petrol"></i>';
+							sRightIcon = boxDisplayManager.rightPlay_Petrol;
+							
 							if ( rmastatus === 1 || rmastatus != "---" ){	//rma
-								sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon petrol"></i>';
+								sLeftIcon = boxDisplayManager.leftTriangleIcon_Petrol;
 							}
 							if (osw[0] === "3" ){ //OSW
-								sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 petrol-back dandelion"><b style="padding-left:1px">'+sOSW+'</b></i>';
+								sLeftIcon2 = boxDisplayManager.rightOswIcon_Dandelion_Constructor(sOSW);
 							}
-							if (osw[0] === "1"  || sUnplanned === "1" ){ //unplanned
-								sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 petrol-back dandelion"><b style="padding-left:1px">'+sUNPD+'</b></i>';
+							if (osw[0] === "1" || sUnplanned === "1" ){ //unplanned
+								sLeftIcon3 = boxDisplayManager.rightOswIcon_Dandelion_Constructor(sUNPD);
 							}
-							break;
+					break;
 					case "D4" :
-					//Solved Blocking disruption
-							//if ( Status === "D4") {
-							//sStatus = "7";
+					//Solved Blocking disruption ( Status === "D4") sStatus = "7";
 							r.addStyle('background', 'repeating-linear-gradient(135deg, #e4002b, #e4002b 10px, #9e001e 10px, #9e001e 20px)');
-							sRightIcon = '<i class="fa fa-play rightIcon "></i>';
+							sRightIcon = boxDisplayManager.rightPlay;
+							
 							if ( rmastatus === 1 ){	//rma
-								sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon petrol"></i>';
+								sLeftIcon = boxDisplayManager.leftTriangleIcon_Petrol;
 							}
 							if (osw[0] === "3" ){ //OSW
-								sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 petrol-back dandelion"><b style="padding-left:1px">'+sOSW+'</b></i>';
+								sLeftIcon2 = boxDisplayManager.rightOswIcon_Dandelion_Constructor(sOSW);
 							}
-							if (osw[0] === "1"  || sUnplanned === "1" ){ //unplanned
-								sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 petrol-back dandelion"><b style="padding-left:1px">'+sUNPD+'</b></i>';
+							if (osw[0] === "1" || sUnplanned === "1" ){ //unplanned
+								sLeftIcon3 = boxDisplayManager.rightOswIcon_Dandelion_Constructor(sUNPD);
 							}
-							break;
+					break;
 					/*case "B" :
 					//andon
-							//if ( Status === "B") {
-							//sStatus = "99";
+							//if ( Status === "B") sStatus = "99";
 							r.addStyle('background-color','#e4002b');
 							sRightIcon = '<i class="fa fa-stop rightIcon"></i>';
 							if ( rmastatus === 1 ){	//rma
@@ -283,25 +277,27 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 					
 					//sStatus = "0";
 					r.addStyle('background-color','#0085ad');
-					sRightIcon = '<i class="fa fa-check rightIcon"></i>';
+					sRightIcon = boxDisplayManager.rightCheck;
+					
 					if ( rmastatus === 1 ){	//rma
-						sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon"></i>';
+						sLeftIcon = boxDisplayManager.leftTriangleIcon;
 					}
 					if (osw[0] === "3" ){ //OSW
-						sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 teal-blue white"><b style="padding-left:1px">'+sOSW+'</b></i>';
+						sLeftIcon2 = boxDisplayManager.rightOswIcon_TealBlueWhite_Constructor(sOSW);
 					}
-					if (osw[0] === "1"  || sUnplanned === "1" ){ //unplanned
-						sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 petrol-back dandelion"><b style="padding-left:1px">'+sUNPD+'</b></i>';
+					if (osw[0] === "1" || sUnplanned === "1" ){ //unplanned
+						sLeftIcon3 = boxDisplayManager.rightOswIcon_Dandelion_Constructor(sUNPD);
 					}
+					
 				}
 						
 				//rma
 				if ( rmastatus === 1 ){	
-					sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon dandelion"></i>';
+					sLeftIcon =  boxDisplayManager.leftTriangleIcon_Dandelion;
 				}
 				//OSW
 				if (osw[0] === "3" ){ 
-					sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 dandelion-back "><b style="padding-left:1px">'+sOSW+'</b></i>';
+					sLeftIcon2 = boxDisplayManager.rightOswIcon_Dandelion_Constructor(sOSW);
 				} else {
 					r.addClass('sapMPIBarGreen');
 					r.writeClasses();
@@ -309,7 +305,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 				}
 				//unplanned
 				if (osw[0] === "1"  || sUnplanned === "1" ){
-						sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 petrol-back dandelion"><b style="padding-left:1px">'+sUNPD+'</b></i>';
+					sLeftIcon3 = boxDisplayManager.rightOswIcon_Dandelion_Constructor(sUNPD);
 				}
 				
 				//------------------------------------------------------------
@@ -353,6 +349,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 								r.write(">");
 								r.write(sLeftIcon);
 								r.write(sLeftIcon2);
+								r.write(sLeftIcon3);
 								r.write(sRightIcon);
 						r.write("</span>");
 					} 

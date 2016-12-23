@@ -9,7 +9,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
      * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
      * @memberOf components.stationtracker.stationtracker
      */
-        onInit: function() {
+    onInit: function() {
             //if the page is not busy
             if (airbus.mes.shell.oView.byId('refreshTime').setBusyIndicatorDelay(0)){
                 airbus.mes.shell.oView.byId('refreshTime').setEnabled(true);
@@ -20,7 +20,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
      * (NOT before the first rendering! onInit() is used for that one!).
      * @memberOf components.stationtracker.stationtracker
      */
-        onBeforeRendering: function() {
+    onBeforeRendering: function() {
         	
                 if ( bBatch1 ) {
                 	
@@ -186,7 +186,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
     },
 
     /***************************************************************************
-      * Display the scheduler in view mode "Day" all shift of the day are represented
+     * Display the scheduler in view mode "Day" all shift of the day are represented
      * and the step of scheduler is set to 60min
      *
      ****************************************************************************/
@@ -239,7 +239,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
     },
 
     /***************************************************************************
->>>>>>> [batch1 - batch2 button] hide
+	 * [batch1 - batch2 button] hide
      * Display a border blue on operation in gantt wich has the attribute CPP_CLUSTER
      * fullfil
      *
@@ -277,6 +277,8 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 
         }
     },
+    
+    
     onPolypolyOpen: function(oEvent) {
 
         airbus.mes.shell.util.navFunctions.polypoly();
@@ -672,15 +674,15 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
         airbus.mes.stationtracker.ModelManager.loadKPIshiftStaffing();
     },
 
-    /**
-	 * [batch1 - batch2 button] hide
+    /***************************************************************************
+     * [batch1 - batch2 button] hide
      * Re apply the sorter on the model of the worklist to group operation
      * in worklist popup
      *
      * @param {oEvent} Object wich represent the event on press from "TeamButton"
      * button
-     */
-	changeGroupWorkList : function(oEvent) {
+     ****************************************************************************/
+     changeGroupWorkList : function(oEvent) {
 
 		var aModel = airbus.mes.stationtracker.worklistPopover.aModel;
 		airbus.mes.stationtracker.util.Formatter.sortWorklistAndBind(oEvent.getSource().getSelectedKey(),aModel);
