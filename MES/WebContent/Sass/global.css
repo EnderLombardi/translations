@@ -879,6 +879,8 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
 div#iconTabBar--header {
   background-color: #E0F2F4; }
 
+.dhx_cal_event_line .trackerBoxtooltiptext {
+  min-width: 300px; }
 .dhx_cal_event_line:hover .trackerBoxtooltiptext {
   display: inline;
   position: absolute;

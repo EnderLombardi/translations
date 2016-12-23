@@ -681,6 +681,7 @@ div{
 .dhx_cal_event_line{
     .trackerBoxtooltiptext{
         @extend %trackerBoxTooltip;
+        min-width: 300px;
     }
     &:hover{
         .trackerBoxtooltiptext{

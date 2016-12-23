@@ -222,7 +222,8 @@ airbus.mes.stationtracker.util.Formatter = {
 				switch (airbus.mes.stationtracker.GroupingBoxingManager.box) {
 		
 				case "OPERATION_ID":
-					sText = oBox.operationDescription + " - " + oBox.shopOrder + " - " + oBox.operationId;
+					//sText = oBox.operationDescription + " - " + oBox.shopOrder + " - " + oBox.operationId;
+					sText = oBox.shopOrder + " - " + oBox.operationId;
 					break;
 	
 				case "WORKORDER_ID":
@@ -354,7 +355,7 @@ airbus.mes.stationtracker.util.Formatter = {
 
 				//
 				var widthUnavailableForText = boxDisplayManager.getWidthUnavailableForText(sLeftIcon, sLeftIcon2, sLeftIcon3, sRightIcon);
-
+			
 				//description text + progress in IM (industrial minutes)
 				var sSpanText = '<span class=" '+ trackerTextClass + 
 					' "style="float: left; overflow: hidden;text-overflow: ellipsis;' + 
