@@ -1,7 +1,7 @@
 "use strict";
 //jQuery.sap.require("airbus.mes.operationDetail.Control.PhysicalStation.css");
 sap.ui.core.Control.extend(
-		"customtable.PhysicalStation.control.PhysicalStationBox", {
+		"airbus.mes.linetracker.PhysicalStation.control.PhysicalStationBox", {
             metadata : {
                 properties : {                                              
                        "station" : "",

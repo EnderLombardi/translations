@@ -1,17 +1,17 @@
 "use strict";
 
 //jQuery.sap.require("badgemanagement.Coordinates")
-sap.ui.core.Control.extend("customtable.KPICharts.TaktAdherenceAreaChart", {
+sap.ui.core.Control.extend("airbus.mes.linetracker.KPICharts.TaktAdherenceAreaChart", {
 	metadata : {
 		aggregations : {
 			"data" : {
-				type : "customtable.KPICharts.Coordinates",
+				type : "airbus.mes.linetracker.KPICharts.Coordinates",
 //				multiple : false,
 				singularName : "data",
 //				bindable: "bindable"
 			},
 			"realData" : {
-				type : "customtable.KPICharts.Coordinates",
+				type : "airbus.mes.linetracker.KPICharts.Coordinates",
 //				multiple : false,
 				singularName : "realData",
 //				bindable: "bindable"

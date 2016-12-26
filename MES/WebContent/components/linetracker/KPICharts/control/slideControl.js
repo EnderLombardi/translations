@@ -1,5 +1,5 @@
 "use strict";
-sap.ui.core.Control.extend("customtable.KPICharts.control.slideControl", {
+sap.ui.core.Control.extend("airbus.mes.linetracker.KPICharts.control.slideControl", {
 	metadata : {
 		properties : {
 

@@ -1,8 +1,8 @@
 "use strict";
 jQuery.sap.require("sap.ui.core.format.DateFormat");
-jQuery.sap.declare("customtable.KPICharts.util.Formatter");
+jQuery.sap.declare("airbus.mes.linetracker.KPICharts.util.Formatter");
 
-customtable.KPICharts.util.Formatter = {
+airbus.mes.linetracker.KPICharts.util.Formatter = {
 		
 		dateToStringFormat : function(sDate){
 			var oDate = new Date(sDate);
@@ -45,8 +45,8 @@ customtable.KPICharts.util.Formatter = {
 
 		sizeMin : function(sEndDate, sStartDate) {
 		
-			var oUtil = customtable.KPICharts.util.Formatter;
-			var oShiftManager = customtable.KPICharts.ShiftManager;
+			var oUtil = airbus.mes.linetracker.KPICharts.util.Formatter;
+			var oShiftManager = airbus.mes.linetracker.KPICharts.ShiftManager;
 			var dEndDate = sEndDate;
 			var dStartDate = sStartDate;
 		
@@ -164,22 +164,22 @@ customtable.KPICharts.util.Formatter = {
 				return ((sDuration * 100 * 0.001)/3600).toFixed(0);
 			},
 			isCheckboxVisible : function(sString) {
-				if( customtable.KPICharts.worklistPopover.unPlanned === true ){
+				if( airbus.mes.linetracker.KPICharts.worklistPopover.unPlanned === true ){
 					return true;
 				} else {
 					return false;
 				};
 			},
 			setmodeList : function() {
-				if( customtable.KPICharts.worklistPopover.unPlanned === true ){
+				if( airbus.mes.linetracker.KPICharts.worklistPopover.unPlanned === true ){
 					return "MultiSelect";
 				} else {
 					return "None";
 				};				
 			},
 			isDayTimeline : function() {
-				if(customtable.KPICharts.ShiftManager.dayDisplay) {
-					return customtable.KPICharts.ShiftManager.dayDisplay;
+				if(airbus.mes.linetracker.KPICharts.ShiftManager.dayDisplay) {
+					return airbus.mes.linetracker.KPICharts.ShiftManager.dayDisplay;
 
 				} else {
 				
@@ -197,8 +197,8 @@ customtable.KPICharts.util.Formatter = {
 			BoxDisplay : function( oBox ) {
 				
 				// gloabal name
-				var sOSW = customtable.KPICharts.oView.getModel("StationTrackerI18n").getProperty("Osw");
-				var sUNPD = customtable.KPICharts.oView.getModel("StationTrackerI18n").getProperty("Unplanned");
+				var sOSW = airbus.mes.linetracker.KPICharts.oView.getModel("StationTrackerI18n").getProperty("Osw");
+				var sUNPD = airbus.mes.linetracker.KPICharts.oView.getModel("StationTrackerI18n").getProperty("Unplanned");
 				
 				
 				var html = "";
@@ -211,9 +211,9 @@ customtable.KPICharts.util.Formatter = {
 				var sColorProgress = "";
 				var sText = "";
 				var trackerTextClass = "";
-				var sProgress = customtable.KPICharts.util.Formatter.percentValue(oBox.progress,oBox.totalDuration);
+				var sProgress = airbus.mes.linetracker.KPICharts.util.Formatter.percentValue(oBox.progress,oBox.totalDuration);
 				// Text to display different case regarding box selected
-				switch (customtable.KPICharts.GroupingBoxingManager.box) {
+				switch (airbus.mes.linetracker.KPICharts.GroupingBoxingManager.box) {
 		
 				case "OPERATION_ID":
 					sText = oBox.operationDescription + " - " + oBox.shopOrder + " - " + oBox.operationId;
@@ -240,9 +240,9 @@ customtable.KPICharts.util.Formatter = {
 				
 				var sSpanText = '<span class=" '+ trackerTextClass+' ">' + sText + '</span>';
 				var sProgressText = '<span  class=" '+ trackerTextClass+' " style="float: right; overflow: hidden; text-overflow: ellipsis; max-width:40%; white-space: nowrap; padding-left:10px; padding-right:10px;"> ['+
-				customtable.KPICharts.util.Formatter.totalDurationToIM(oBox.progress) +'/'+ 
-				customtable.KPICharts.util.Formatter.totalDurationToIM(oBox.totalDuration) +' IM]</span>';
-				customtable.KPICharts.util.Formatter.totalDurationToIM(oBox.totalDuration) +'</span>';	
+				airbus.mes.linetracker.KPICharts.util.Formatter.totalDurationToIM(oBox.progress) +'/'+ 
+				airbus.mes.linetracker.KPICharts.util.Formatter.totalDurationToIM(oBox.totalDuration) +' IM]</span>';
+				airbus.mes.linetracker.KPICharts.util.Formatter.totalDurationToIM(oBox.totalDuration) +'</span>';	
 				if ( oBox.rmaStatus === 1 ){	//rma
 					sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon dandelion"></i>';
 				}
@@ -460,29 +460,29 @@ customtable.KPICharts.util.Formatter = {
 				if (oSection.children != undefined) {
 
 					var html = '<div><span id= folder_' +oSection.key
-							+ ' class="' + customtable.KPICharts.util.Formatter.openFolder(oSection.open) + '"></span><div title='
-							+ customtable.KPICharts.util.Formatter.spaceInsecable(oSection.label) + ' class="ylabelfolder">' + oSection.label
+							+ ' class="' + airbus.mes.linetracker.KPICharts.util.Formatter.openFolder(oSection.open) + '"></span><div title='
+							+ airbus.mes.linetracker.KPICharts.util.Formatter.spaceInsecable(oSection.label) + ' class="ylabelfolder">' + oSection.label
 							+ '</div><span id= add_' + oSection.key
-							+ ' class="fa fa-plus custom" onclick="customtable.KPICharts.AssignmentManager.newLine(\''
+							+ ' class="fa fa-plus custom" onclick="airbus.mes.linetracker.KPICharts.AssignmentManager.newLine(\''
 							+ oSection.key + '\')"></span></div>';
 					return html;
 				}
 				
 				// user affected 
-				var sshiftID = customtable.KPICharts.ShiftManager.ShiftSelected.shiftID;
+				var sshiftID = airbus.mes.linetracker.KPICharts.ShiftManager.ShiftSelected.shiftID;
 								
-				if (customtable.KPICharts.AssignmentManager.affectationHierarchy[oSection.avlLine]) {
+				if (airbus.mes.linetracker.KPICharts.AssignmentManager.affectationHierarchy[oSection.avlLine]) {
 
-				if (customtable.KPICharts.AssignmentManager.affectationHierarchy[oSection.avlLine][sshiftID]) {
+				if (airbus.mes.linetracker.KPICharts.AssignmentManager.affectationHierarchy[oSection.avlLine][sshiftID]) {
 	
 					// See SD there is only one user affected for the couple of shift id + avlLine
-					var oCurrentAffectedUser = customtable.KPICharts.AssignmentManager.affectationHierarchy[oSection.avlLine][sshiftID][0];
-					var oHierarchyDelay =customtable.KPICharts.GroupingBoxingManager.operationHierarchyDelay;
+					var oCurrentAffectedUser = airbus.mes.linetracker.KPICharts.AssignmentManager.affectationHierarchy[oSection.avlLine][sshiftID][0];
+					var oHierarchyDelay =airbus.mes.linetracker.KPICharts.GroupingBoxingManager.operationHierarchyDelay;
 					var fProgress = oHierarchyDelay[oSection.group][oSection.avlLine].progress;
 					var fDuration =	oHierarchyDelay[oSection.group][oSection.avlLine].duration;
 					var sSpanWarn = "";
 					var sNotConfirmedOpLS = "";
-					var bNotConfirmedOpLS = customtable.KPICharts.ShiftManager.noTotalConfLastShift( oSection );
+					var bNotConfirmedOpLS = airbus.mes.linetracker.KPICharts.ShiftManager.noTotalConfLastShift( oSection );
 					
 					if ( bNotConfirmedOpLS ) {
 						
@@ -491,7 +491,7 @@ customtable.KPICharts.util.Formatter = {
 					
 					if ( oCurrentAffectedUser.warn === "true" ) {
 						
-						sSpanWarn = '<span class="fa fa-exclamation-triangle" style="padding-right: 5px;" onclick="customtable.KPICharts.oView.getController().onCheckQA()"></span>';
+						sSpanWarn = '<span class="fa fa-exclamation-triangle" style="padding-right: 5px;" onclick="airbus.mes.linetracker.KPICharts.oView.getController().onCheckQA()"></span>';
 						
 					}
 					
@@ -512,7 +512,7 @@ customtable.KPICharts.util.Formatter = {
 
 
 						html +=  '<span class="ylabelUser" title='
-								+ customtable.KPICharts.util.Formatter.spaceInsecable(oCurrentAffectedUser.firstName + " " + oCurrentAffectedUser.lastName) + '>'
+								+ airbus.mes.linetracker.KPICharts.util.Formatter.spaceInsecable(oCurrentAffectedUser.firstName + " " + oCurrentAffectedUser.lastName) + '>'
 								+ oCurrentAffectedUser.firstName + " " + oCurrentAffectedUser.lastName + '</span>';
 						}
 						// value used in localhost
@@ -520,15 +520,15 @@ customtable.KPICharts.util.Formatter = {
 
 
 							html +=  '<span class="ylabelUser" title='
-									+ customtable.KPICharts.util.Formatter.spaceInsecable(oCurrentAffectedUser.firstName + " " + oCurrentAffectedUser.lastName) + '>'
+									+ airbus.mes.linetracker.KPICharts.util.Formatter.spaceInsecable(oCurrentAffectedUser.firstName + " " + oCurrentAffectedUser.lastName) + '>'
 									+ oCurrentAffectedUser.firstName + " " + oCurrentAffectedUser.lastName + '</span>';
 							}
 
 						html += '<span  class="yMoreLabel" >'
 								+ sSpanWarn
-								+ '<span title=' +  customtable.KPICharts.util.Formatter.computeDelay( fProgress,fDuration ) 
+								+ '<span title=' +  airbus.mes.linetracker.KPICharts.util.Formatter.computeDelay( fProgress,fDuration ) 
 								+ '>' 
-								+ customtable.KPICharts.util.Formatter.computeDelay( fProgress,fDuration )
+								+ airbus.mes.linetracker.KPICharts.util.Formatter.computeDelay( fProgress,fDuration )
 								+ '</span>' 
 								+ '</span>';
 						
@@ -539,7 +539,7 @@ customtable.KPICharts.util.Formatter = {
 				} else {
 					//** no user affected **/
 					var html = '<div><i class="fa fa-pencil ylabelEditIcon"></i><span class="ylabel">'
-						+ customtable.KPICharts.oView.getModel("StationTrackerI18n").getProperty("SelectOperator") + '</span></div>';
+						+ airbus.mes.linetracker.KPICharts.oView.getModel("StationTrackerI18n").getProperty("SelectOperator") + '</span></div>';
 					return html;
 			
 			
@@ -548,7 +548,7 @@ customtable.KPICharts.util.Formatter = {
 			} else {
 				//** no user affected **/
 				var html = '<div><i class="fa  fa-pencil ylabelEditIcon"></i><span class="ylabel">'
-					+ customtable.KPICharts.oView.getModel("StationTrackerI18n").getProperty("SelectOperator") + '</span></div>';
+					+ airbus.mes.linetracker.KPICharts.oView.getModel("StationTrackerI18n").getProperty("SelectOperator") + '</span></div>';
 				return html;
 				}
 			},

@@ -1,5 +1,7 @@
 "use strict";
-
+jQuery.sap.registerModulePath("airbus.mes.d3", "../lib/d3");
+jQuery.sap.require("airbus.mes.d3.d3_3_5_17_min");
+jQuery.sap.require("airbus.mes.linetracker.KPICharts.util.Formatter");
 jQuery.sap.require("sap.ui.core.UIComponent");
 jQuery.sap.require("sap.ui.base.Event");
 jQuery.sap.require("airbus.mes.linetracker.util.ModelManager");
@@ -40,7 +42,14 @@ airbus.mes.linetracker.Component.prototype.createContent = function() {
             viewName : "airbus.mes.linetracker.MainView",
             type : "XML",
         })*/
-
+    	
+    	this.oView = sap.ui.view({
+    		id:"idStationDetail1", 
+    		viewName:"airbus.mes.linetracker.StationDetail", 
+//    		type:sap.ui.core.mvc.ViewType.XML
+    		type : "XML"	
+    	}); 
+    	
         var i18nModel = new sap.ui.model.resource.ResourceModel({
             bundleUrl : "../components/linetracker/i18n/i18n.properties",
          });

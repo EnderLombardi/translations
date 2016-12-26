@@ -1,6 +1,6 @@
 <core:FragmentDefinition xmlns:core="sap.ui.core"
        xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml"
-       xmlns:micro="sap.suite.ui.microchart" xmlns:custom="customtable.KPICharts">
+       xmlns:micro="sap.suite.ui.microchart" xmlns:custom="airbus.mes.linetracker.KPICharts">
        <Page title="STATION 10">
                      <headerContent>
 						<Button icon="sap-icon://arrow-bottom" tooltip="Hide KPI" press="hideKPISlide"/>
@@ -34,8 +34,8 @@
 
                                                        <layout:Grid class="" defaultSpan="L6 M6 S6">
                                                               <layout:content>
-                                                                     <Label text="{path:'KPIchartTaktAdherence>/plannedStart', formatter:'customtable.KPICharts.util.Formatter.dateToStringFormat'}" class=" whiteText" />
-                                                                     <Label text="{path:'KPIchartTaktAdherence>/endOfAssembly', formatter:'customtable.KPICharts.util.Formatter.dateToStringFormat'}" class=" whiteText KPITaktChartRightText" />
+                                                                     <Label text="{path:'KPIchartTaktAdherence>/plannedStart', formatter:'airbus.mes.linetracker.KPICharts.util.Formatter.dateToStringFormat'}" class=" whiteText" />
+                                                                     <Label text="{path:'KPIchartTaktAdherence>/endOfAssembly', formatter:'airbus.mes.linetracker.KPICharts.util.Formatter.dateToStringFormat'}" class=" whiteText KPITaktChartRightText" />
                                                               </layout:content>
                                                        </layout:Grid>
                                                 </VBox>
@@ -60,9 +60,9 @@
                                                                                          </layoutData>
                                                                                   </Label>
                                                                                   <core:Icon
-                                                                                         src="{path:'KPItaktAdherence>/trendUI', formatter:'customtable.KPICharts.util.Formatter.KPIiconTrendSrc'}"
+                                                                                         src="{path:'KPItaktAdherence>/trendUI', formatter:'airbus.mes.linetracker.KPICharts.util.Formatter.KPIiconTrendSrc'}"
                                                                                          class="TrendGreen takt_kpi_value takt_kpi_trend_value"
-                                                                                         color="{path:'KPItaktAdherence>/trendUI', formatter:'customtable.KPICharts.util.Formatter.KPIiconTrendColor'}" />
+                                                                                         color="{path:'KPItaktAdherence>/trendUI', formatter:'airbus.mes.linetracker.KPICharts.util.Formatter.KPIiconTrendColor'}" />
 
                                                                                   <Label text="{kpiI18n>DeltaVsSLB}" class="whiteText takt_kpi_name">
                                                                                          <layoutData>
@@ -122,15 +122,15 @@
                                                 <micro:data>
                                                        <micro:ComparisonMicroChartData
                                                               title="{kpiI18n>TaktSLB}"
-                                                              value="{path:'KPItaktEfficiency>/slbEffectiveCapacityUI', formatter:'customtable.KPICharts.util.Formatter.stringToInt'}"
+                                                              value="{path:'KPItaktEfficiency>/slbEffectiveCapacityUI', formatter:'airbus.mes.linetracker.KPICharts.util.Formatter.stringToInt'}"
                                                               displayValue="{KPItaktEfficiency>/slbEffectiveCapacityUI}%" />
                                                        <micro:ComparisonMicroChartData
                                                               title="{kpiI18n>WhiteSpaces}"
-                                                              value="{path:'KPItaktEfficiency>/slbWhiteSpaceUI', formatter:'customtable.KPICharts.util.Formatter.stringToInt'}"
+                                                              value="{path:'KPItaktEfficiency>/slbWhiteSpaceUI', formatter:'airbus.mes.linetracker.KPICharts.util.Formatter.stringToInt'}"
                                                               displayValue="{KPItaktEfficiency>/slbWhiteSpaceUI}%" />
                                                        <micro:ComparisonMicroChartData
                                                               title="{kpiI18n>RedSpaces}"
-                                                              value="{path:'KPItaktEfficiency>/slbRedSpacesUI', formatter:'customtable.KPICharts.util.Formatter.stringToInt'}"
+                                                              value="{path:'KPItaktEfficiency>/slbRedSpacesUI', formatter:'airbus.mes.linetracker.KPICharts.util.Formatter.stringToInt'}"
                                                               displayValue="{KPItaktEfficiency>/slbRedSpacesUI}%" />
                                                        <micro:ComparisonMicroChartData
                                                               id="hiddenRefBarSBL" title="{kpiI18n>RedSpaces}"
@@ -215,20 +215,20 @@
                                                 <micro:data>
                                                        <micro:ComparisonMicroChartData
 
-                                                              title="{kpiI18n>PromisedInTakt}" value="{path:'KPIresolutionEfficiency>/promisedInTaktUI', formatter:'customtable.KPICharts.util.Formatter.stringToInt'}" 
+                                                              title="{kpiI18n>PromisedInTakt}" value="{path:'KPIresolutionEfficiency>/promisedInTaktUI', formatter:'airbus.mes.linetracker.KPICharts.util.Formatter.stringToInt'}" 
                                                               displayValue="{KPIresolutionEfficiency>/promisedInTaktUI}"/>
                                                        <micro:ComparisonMicroChartData
                                                              title="{kpiI18n>PromisedOutTakt}" 
-                                                              value="{path:'KPIresolutionEfficiency>/promisedOutOfTaktUI', formatter:'customtable.KPICharts.util.Formatter.stringToInt'}"
+                                                              value="{path:'KPIresolutionEfficiency>/promisedOutOfTaktUI', formatter:'airbus.mes.linetracker.KPICharts.util.Formatter.stringToInt'}"
                                                                             displayValue="{KPIresolutionEfficiency>/promisedOutOfTaktUI}"/>
                                                        <micro:ComparisonMicroChartData
                                                               title="{kpiI18n>NotAcknowledged}"
-                                                              value="{path:'KPIresolutionEfficiency>/notAcknowledgedUI', formatter:'customtable.KPICharts.util.Formatter.stringToInt'}"
+                                                              value="{path:'KPIresolutionEfficiency>/notAcknowledgedUI', formatter:'airbus.mes.linetracker.KPICharts.util.Formatter.stringToInt'}"
                                                                             displayValue="{KPIresolutionEfficiency>/notAcknowledgedUI}"/>
                                                        <micro:ComparisonMicroChartData
                                                               id="hiddenRefBarResolution" title="{kpiI18n>RedSpaces}"
                                                               visible="false"
-                                                              value="{path:'KPIresolutionEfficiency>/totalUI', formatter:'customtable.KPICharts.util.Formatter.stringToInt'}" />
+                                                              value="{path:'KPIresolutionEfficiency>/totalUI', formatter:'airbus.mes.linetracker.KPICharts.util.Formatter.stringToInt'}" />
 
                                                 </micro:data>
                                          </micro:ComparisonMicroChart>
@@ -255,8 +255,8 @@
                                   <VBox width="100%" justifyContent="SpaceAround">
                                          <micro:DeltaMicroChart width="100%"
                                                 id="shifStaffingHeader" isResponsive="true"
-                                                value1="{path:'KPIshiftStaffing>/neededFteUI', formatter:'customtable.KPICharts.util.Formatter.stringToInt'}"
-                                                value2="{path:'KPIshiftStaffing>/allocatedFteUI', formatter:'customtable.KPICharts.util.Formatter.stringToInt'}"
+                                                value1="{path:'KPIshiftStaffing>/neededFteUI', formatter:'airbus.mes.linetracker.KPICharts.util.Formatter.stringToInt'}"
+                                                value2="{path:'KPIshiftStaffing>/allocatedFteUI', formatter:'airbus.mes.linetracker.KPICharts.util.Formatter.stringToInt'}"
                                                 title1="{kpiI18n>NeedFTE}" title2="{kpiI18n>AllocatedFTE}"
                                                 displayValue1="{KPIshiftStaffing>/neededFteUI}" displayValue2="{KPIshiftStaffing>/allocatedFteUI}"
                                                 deltaDisplayValue="{KPIshiftStaffing>/notAllocatedFteUI}" class="kpiDeltaMicroChart" />

@@ -1,9 +1,9 @@
-<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:control="customtable.KPICharts.control"
-	xmlns:l="sap.ui.layout" xmlns="sap.m" controllerName="customtable.customtable.StationDetail" xmlns:custom="customtable.customtable"
-	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:controlPhStation="customtable.PhysicalStation.control" >
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:control="airbus.mes.linetracker.KPICharts.control"
+	xmlns:l="sap.ui.layout" xmlns="sap.m" controllerName="airbus.mes.linetracker.StationDetail" xmlns:custom="airbus.mes.linetracker"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:controlPhStation="airbus.mes.linetracker.PhysicalStation.control" >
 	<Page showTitle="false" enableScrolling="true" class="customTable">
 		<content>
-
+<!-- 	<HBox id="staionHbox" height="100%"> -->
 			<Table items="{dataModel>/list}">
 				<headerToolbar>
 					<Toolbar class="toolbar">
@@ -140,10 +140,10 @@
 			
 			<control:slideControl id="idSlideControl">
 			<control:slideContent>
-				<core:Fragment fragmentName="customtable.KPICharts.KPIs" type="XML" />
+				<core:Fragment fragmentName="airbus.mes.linetracker.KPICharts.KPIs" type="XML" />
 			</control:slideContent>
 		</control:slideControl>
-
+<!-- 	 </HBox> -->
 		</content>
 	</Page>
 </core:View>
