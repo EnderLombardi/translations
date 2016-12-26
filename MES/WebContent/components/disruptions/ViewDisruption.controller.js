@@ -281,17 +281,18 @@ sap.ui
                                 	airbus.mes.disruptions.ModelManager.loadDisruptionsByOperation(operationBO,sSfcStepRef);
 
 									// //stop the setBusy
-									airbus.mes.shell.busyManager.unsetBusy(sap.ui.getCore(), "operationDetailPopup--operationDetailPopUp");
+									//airbus.mes.shell.busyManager.unsetBusy(sap.ui.getCore(), "operationDetailPopup--operationDetailPopUp");
 
 									operationDisruptionsModel.refresh();
 									
 									if (nav.getCurrentPage().sId == "stationTrackerView"){
 										airbus.mes.disruptions.ModelManager.checkDisruptionStatus(operationDisruptionsModel);
 									}
-								} else {
-									//stop the setBusy
-									airbus.mes.shell.busyManager.unsetBusy(sap.ui.getCore(), "operationDetailPopup--operationDetailPopUp");
 								}
+								//else {
+									//stop the setBusy
+								//	airbus.mes.shell.busyManager.unsetBusy(sap.ui.getCore(), "operationDetailPopup--operationDetailPopUp");
+								//}
 							//}, 0);
 						//}, 0);
 					},
