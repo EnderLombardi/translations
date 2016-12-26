@@ -1,0 +1,50 @@
+{"list": [
+	{
+		"station" : "Station 50",
+		"planned" : 10,
+		"confirmed" : 40,
+		"trend" : "up",
+		"trendColor" : "Green",
+		"date"	: "03 JUL 2016 11:00",
+		"cycleTime" : "2",
+		"workContent" : "24",
+		"disruption" : "5",
+		"andon" : "1"
+	},
+	{
+		"station" : "Station 35",
+		"planned" : 50,
+		"confirmed" : 40,
+		"trend" : "down",
+		"trendColor" : "Red",
+		"date"	: "02 JUL 2016 16:00",
+		"cycleTime" : "-1.5",
+		"workContent" : "1",
+		"disruption" : "6",
+		"andon" : "2"
+	},
+	{
+		"station" : "Station 35",
+		"planned" : 70,
+		"confirmed" : 100,
+		"trend" : "up",
+		"trendColor" : "Green",
+		"date"	: "02 JUL 2016 16:00",
+		"cycleTime" : "-1.5",
+		"workContent" : "1",
+		"disruption" : "-",
+		"andon" : "-"
+	},
+	{
+		"station" : "Station 35",
+		"planned" : 80,
+		"confirmed" : 80,
+		"trend" : "up",
+		"trendColor" : "Green",
+		"date"	: "02 JUL 2016 16:00",
+		"cycleTime" : "-1.5",
+		"workContent" : "1",
+		"disruption" : "1",
+		"andon" : "-"
+	}]
+}

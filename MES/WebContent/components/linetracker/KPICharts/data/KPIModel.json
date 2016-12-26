@@ -1,0 +1,105 @@
+{  
+   "Rowsets":{  
+      "DateCreated":"2016-07-13T10:26:38",
+      "Version":"15.1 SP1 Patch 0 (Jan 21, 2016)",
+      "StartDate":"2016-07-13T09:26:38+0200",
+      "EndDate":"2016-07-13T10:26:38+0200",
+      "CachedTime":"",
+      "Rowset":[  
+         {  
+            "Columns":{  
+               "Column":[  
+
+               ]
+            },
+            "Row":  
+               {  
+                  "TaktAdherence":{  
+                     "Planned":"80%",
+                     "Real":"60%",
+                     "RemainingTime":"20:30:12"
+                  },
+                  "ProgressStatus":{  
+                     "OPDone":"20%",
+                     "OPLate":"20%",
+                     "OPAhead":"20%"
+                  },
+                  "ExtraWork":{  
+                     "Ops":"10",
+                     "Hrs":"35"
+                  },
+                  "EfficiencyFactors":{  
+                     "Labour":"85%",
+                     "DeltaVsSLB":"-32 Hrs",
+                     "DeltaVsSoA":"-4 Hrs",
+                     "CycleTime":"26 Hrs",
+                     "WorkContent":"130 Hrs"                    
+                  },
+                  "DisruptionStatus":{
+                  
+                  	"NCWhite" : "3",
+                  	"NCRed":"3", 
+                  	"TotalDisruption":"13",
+                  	"TotalAndon":"5",
+                  	"NCDisruption":"3",
+                  	"NCAndon":"1",
+                  	"MissingDisruption":"6",
+                  	"MissingAndon":"2",
+                  	"JTDisruption":"6",
+                  	"JTAndon":"-",
+                  	"FTEDisruption":"1",
+                  	"FTEAndon":"1",
+                  	"OtherDisruption":"-",
+                  	"OtherAndon":"-",
+                    "Closed":"3",
+                    "Opened":"5",
+                    "-":"-"
+                  },
+                  "ChartTakt":{
+                  	"data":[
+                  	{
+                  	"x":0,
+                  	"y":5
+                  	},
+                  	{
+                  	"x":1,
+                  	"y":15
+                  	},
+                  	{
+                  	"x":2,
+                  	"y":20
+                  	},
+                  	{
+                  	"x":3,
+                  	"y":35
+                  	},
+                  	{
+                  	"x":4,
+                  	"y":40
+                  	}
+                  	],
+                  	"realData":[
+                  	{
+                  	"x":0,
+                  	"y":0
+                  	},
+                  	{
+                  	"x":1,
+                  	"y":20
+                  	},
+                  	{
+                  	"x":2,
+                  	"y":20
+                  	},
+                  	{
+                  	"x":3,
+                  	"y":25
+                  	}
+                  	]
+                  }
+               }
+            
+         }
+      ]
+   }
+}

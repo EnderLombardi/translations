@@ -1,0 +1,25 @@
+{ "Rowsets" : { 
+	"DateCreated" : "2016-11-23T16:20:43", "Version" : "15.1 SP2 Patch 13 (Oct 6, 2016)", "StartDate" : "2016-11-23T15:20:43+0100", "EndDate" : "2016-11-23T16:20:43+0100", "CachedTime" : "", 
+	"Rowset" : [ 
+	{ "Columns" : { 
+		"Column" : [ 
+		{ "Name" : "totalDisruption", "SourceColumn" : "totalDisruption", "Description" : "totalDisruption", "SQLDataType" : 4, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "totalAndon", "SourceColumn" : "totalAndon", "Description" : "totalAndon", "SQLDataType" : 4, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "NC", "SourceColumn" : "NC", "Description" : "NC", "SQLDataType" : 4, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "NC_escalated", "SourceColumn" : "NC_escalated", "Description" : "NC_escalated", "SQLDataType" : 4, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "MissingParts", "SourceColumn" : "MissingParts", "Description" : "MissingParts", "SQLDataType" : 4, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "MissingParts_escalated", "SourceColumn" : "MissingParts_escalated", "Description" : "MissingParts_escalated", "SQLDataType" : 4, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "Jnt", "SourceColumn" : "Jnt", "Description" : "Jnt", "SQLDataType" : 4, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "Jnt_escalated", "SourceColumn" : "Jnt_escalated", "Description" : "Jnt_escalated", "SQLDataType" : 4, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "FTE", "SourceColumn" : "FTE", "Description" : "FTE", "SQLDataType" : 4, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "FTE_escalated", "SourceColumn" : "FTE_escalated", "Description" : "FTE_escalated", "SQLDataType" : 4, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "Other", "SourceColumn" : "Other", "Description" : "Other", "SQLDataType" : 4, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "Other_escalated", "SourceColumn" : "Other_escalated", "Description" : "Other_escalated", "SQLDataType" : 4, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "InTakt", "SourceColumn" : "InTakt", "Description" : "InTakt", "SQLDataType" : 4, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "OutTakt", "SourceColumn" : "OutTakt", "Description" : "OutTakt", "SQLDataType" : 4, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "NotAcknowledged", "SourceColumn" : "NotAcknowledged", "Description" : "NotAcknowledged", "SQLDataType" : 4, "MinRange" : 1.0, "MaxRange" : 1.0 } ] }, 
+	"Row" : [ 
+		{ "totalDisruption" : 70, "totalAndon" : 6, "NC" : 1, "NC_escalated" : 2, "MissingParts" : 0, "MissingParts_escalated" : 1, "Jnt" : 0, "Jnt_escalated" : 0, "FTE" : 0, "FTE_escalated" : 0, "Other" : 69, "Other_escalated" : 3, "InTakt" : 1, "OutTakt" : 5, "NotAcknowledged" : 0 } ]
+		 } ]
+	 }
+ }

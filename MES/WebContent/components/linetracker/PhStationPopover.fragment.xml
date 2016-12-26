@@ -1,0 +1,30 @@
+<core:FragmentDefinition
+       xmlns="sap.m"
+       xmlns:core="sap.ui.core">
+       <Popover
+              title=""
+              class="sapUiContentPadding"
+              placement="Bottom"
+                     >
+              <footer>
+                     <Toolbar>
+                           <ToolbarSpacer/>
+                           
+                           <core:Icon src="sap-icon://alert" class="sapUiSmallMarginBegin"/>
+                           <Button
+                                  id="reportDisruption"
+                                  text="{i18n>reportDisruption}"
+                                  press="handleEmailPress" />
+                                  
+                                  
+                     </Toolbar>
+              </footer>
+              <VBox>
+              <Button text="{i18n>stationTracker}" type="Transparent" />
+              <Button text="{i18n>stationKPIHeader}" type="Transparent" />
+              <Button text="{i18n>disruption_AndonTracker}" type="Transparent" />
+              <Button text="{i18n>stationHandover}" type="Transparent" />
+              </VBox>
+       
+       </Popover>
+</core:FragmentDefinition>

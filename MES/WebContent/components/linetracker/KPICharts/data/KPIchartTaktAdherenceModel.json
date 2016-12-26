@@ -1,0 +1,37 @@
+{
+	"planUI" : "40",
+	"actualUI" : "25",
+	"plannedStart" : "25 JUN - 7:00",
+	"endOfAssembly" : "02 JUL - 16:00",
+	"plannedHoursToBeConfirmed" : [{
+			"x" : 0,
+			"y" : 5
+		}, {
+			"x" : 1,
+			"y" : 15
+		}, {
+			"x" : 2,
+			"y" : 20
+		}, {
+			"x" : 3,
+			"y" : 35
+		}, {
+			"x" : 4,
+			"y" : 40
+		}
+	],
+	"realHoursConfirmed" : [{
+			"x" : 0,
+			"y" : 0
+		}, {
+			"x" : 1,
+			"y" : 20
+		}, {
+			"x" : 2,
+			"y" : 20
+		}, {
+			"x" : 3,
+			"y" : 25
+		}
+	]
+}

@@ -1,0 +1,28 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<Dialog id="editStation" title="{i18n>editStation}" icon="sap-icon://edit">
+
+		<content>
+		<VBox>
+		<Label/>
+		<Label text="{i18n>program}"></Label>
+		<Select width= "22rem"/>
+		<Label/>
+		<Label text="{i18n>line}"></Label>
+		<Select width= "22rem"/>
+		<Label/>
+		<Label text="{i18n>station}"></Label>
+		<Select width= "22rem"/>
+		<Label/>
+        </VBox>
+		</content>
+		
+		<buttons>
+		<Button text="{i18n>ok}" 
+				press="onOk" />
+		<Button text="{i18n>cancel}" 
+				press="onCancel" />
+	    
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

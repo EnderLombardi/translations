@@ -1,0 +1,52 @@
+.ParentDiv {
+	background-color: #bcf6ff;
+	min-width: 12rem;
+	height: 3rem;
+	float: left;
+	display: flex;
+}
+
+.ActionDiv {
+	float: left;
+	width: 13%;
+	align-self: center;
+	padding-left: 1%;
+}
+
+.labelDiv {
+	float: left;
+	width: 30%;
+	align-self: center;
+}
+
+.StationLabel {
+	font-size: small;
+	color: rgb(67, 100, 113);
+	font-family: sans-serif;
+	font-weight: bolder;
+}
+
+
+.MSNlabel {
+	font-size: x-small;
+	font-family: sans-serif;
+	color: #5cabb7;
+}
+
+.blankDiv {
+	float: left;
+	width: 3%
+}
+
+.imageDiv {
+	float: left;
+	width: 30%;
+}
+
+.detailDiv {
+	float: left;
+	width: 23%;
+	align-self: center;
+	
+	display: flex;
+}

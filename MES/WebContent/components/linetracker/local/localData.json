@@ -1,0 +1,18 @@
+{ 
+   "Data": [ {   
+     "Time": "08:00 - 08:45", 
+     "Task": "010  - Prise en main", 
+     "Value1": "V1235678", 
+     "Fuel": "Fuel"   
+     }, {     
+    "Time": "09:00 - 09:45", 
+     "Task": "020  - Prise en main", 
+     "Value1": "V1235678", 
+     "Fuel": "Fuel"     
+     }, { 
+    "Time": "10:00 - 10:45", 
+     "Task": "030  - Etichaniette", 
+     "Value1": "V1235678", 
+     "Fuel": "Fuel" 
+     
+     } ] }

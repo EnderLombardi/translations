@@ -1,0 +1,17 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<Dialog id="saveVariant" icon="sap-icon://save">
+
+		<content>
+		<Label text="{i18n>saveText}"></Label>
+        
+		</content>
+		
+		<buttons>
+	    <Button text="{i18n>confirm}" 
+				press="onConfirm" />
+		<Button text="{i18n>cancel}" 
+				press="onCancel" />
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>
