@@ -191,9 +191,9 @@ sap.ui
 					onAcceptCloseDisruption : function(oEvent) {
 
 						//set busyIndicator delay to 0 ms instead of 500ms
-						if (sap.ui.getCore().byId("operationDetailPopup--operationDetailPopUp").getBusyIndicatorDelay() !== 0) {
-							sap.ui.getCore().byId("operationDetailPopup--operationDetailPopUp").setBusyIndicatorDelay(0);
-						}
+						//if (sap.ui.getCore().byId("operationDetailPopup--operationDetailPopUp").getBusyIndicatorDelay() !== 0) {
+						//	sap.ui.getCore().byId("operationDetailPopup--operationDetailPopUp").setBusyIndicatorDelay(0);
+						//}
 
 						//hide add comment button
 						this.oView.byId(this._closeDialog.mProperties.disruptionId).setVisible(false);
@@ -207,16 +207,16 @@ sap.ui
 						this._closeDialog.close();
 
 						//_this created to keep this model in the "setTimeout operations" bellow
-						var _this= this;
+						//var _this= this;
 
 						//two timeout chained to active setBusy & to be sure the setBusy is launched before the next operations
 						//don't work without this trick (or sometimes but don't 100% effective)
-						setTimeout(function() {
+						//setTimeout(function() {
 
 							//setBusy on the operationdetail pop-up
-							sap.ui.getCore().byId("operationDetailPopup--operationDetailPopUp").setBusy(true);
+							//sap.ui.getCore().byId("operationDetailPopup--operationDetailPopUp").setBusy(true);
 
-							setTimeout(function() {
+							//setTimeout(function() {
 								var timeLost = sap.ui.getCore().byId(
 										"closeDisruption-timeLost");
 								var comment = sap.ui.getCore().byId(
@@ -238,7 +238,7 @@ sap.ui
 
 								if (isSuccess) {
 									
-									var operationDisruptionsModel = _this.getView().getModel("operationDisruptionsModel");	
+									var operationDisruptionsModel = this.getView().getModel("operationDisruptionsModel");	
 									var sPath = sap.ui.getCore().byId("closeDisruption-sPath").getText();
 									
 									operationDisruptionsModel.getProperty(sPath).Status = airbus.mes.disruptions.Formatter.status.closed;
@@ -264,7 +264,7 @@ sap.ui
 									var date = currDate.getFullYear() + "-" + currDate.getMonth() + "-" + currDate.getDate();
 									
 									var oComment = {
-											"Action" : _this.getView().getModel("i18nModel").getProperty("close"),
+											"Action" : this.getView().getModel("i18nModel").getProperty("close"),
 											"Comments" : commentValue,
 											"Counter" : "",
 											"Date" : date,
@@ -292,8 +292,8 @@ sap.ui
 									//stop the setBusy
 									airbus.mes.shell.busyManager.unsetBusy(sap.ui.getCore(), "operationDetailPopup--operationDetailPopUp");
 								}
-							}, 0);
-						}, 0);
+							//}, 0);
+						//}, 0);
 					},
 
 					/***********************************************************
