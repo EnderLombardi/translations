@@ -1064,7 +1064,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 
                 sMounth = "0" + sMounth
 
-                }
+            }
             sDay = dDataSelected.getDate();
 
             if ( sDay < 10 ) {
@@ -1089,9 +1089,11 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
             var sDateId = Object.keys( airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy[sDate] )[0];
             var dStartDate = airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy[sDate][sDateId][0].StartDate;
 
+            airbus.mes.stationtracker.ShiftManager.changeShift = false; //Airbus Defect #262 - Shift selection is not kept when changing date
             scheduler.updateView(dStartDate);
-            airbus.mes.stationtracker.ShiftManager.selectFirstShift = true;
+            //airbus.mes.stationtracker.ShiftManager.selectFirstShift = true; //Airbus Defect #262 - Shift selection is not kept when changing date
             airbus.mes.stationtracker.ModelManager.selectMyShift();
+            airbus.mes.stationtracker.ShiftManager.changeShift = true; //Airbus Defect #262 - Shift selection is not kept when changing date
         }
     },
 

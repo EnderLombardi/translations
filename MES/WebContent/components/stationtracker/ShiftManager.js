@@ -32,6 +32,7 @@ airbus.mes.stationtracker.ShiftManager = {
 	OperationAvlDoublon : {},
 	swiping : false,
 	NumberDelayedBox : undefined,
+	changeShift: true, //Airbus Defect #262 - Shift selection is not kept when changing date
 	
 	
 	/** Variable to permit apply the round minutes for the axis of gantt chart */
@@ -99,6 +100,8 @@ airbus.mes.stationtracker.ShiftManager = {
 	 * @returns {Number}
 	 */
 	closestShift : function(date) {
+		
+		var iMed;
 
 		if (this.shifts.length === 0)
 			return -1;
@@ -126,15 +129,26 @@ airbus.mes.stationtracker.ShiftManager = {
 					iMin = iMed + 1;
 				}
 			} else if (dPrev === undefined) {
-				return iMed;
+				break;
 			} else if (date < dPrev) {
 				iMax = iMed - 1;
 			} else {
-				return iMed;
-			}			
-			
+				break;
+			}
 		}
 		
+		//Airbus Defect #262 - Shift selection is not kept when changing date
+		if(!airbus.mes.stationtracker.ShiftManager.changeShift){
+			for(var i = iMed;; i++){
+				if(this.shifts[i].EndDate >= date && this.shifts[i].shiftName == airbus.mes.stationtracker.ShiftManager.current_shift.shiftName)
+				{ iMed = i;	break; }
+				else if(this.shifts[i].EndDate < date)
+					break;
+			}
+		}
+		// End of Airbus Defect #262
+		
+		return iMed;
 	},
 
 	/**
@@ -357,6 +371,7 @@ airbus.mes.stationtracker.ShiftManager = {
 		// Recalculate X_SIZE to display X Intervals
 		// /////////////////////////////////////////////////
 		scheduler.xy.scroll_width=20;
+		
 		var c = this.closestShift(new Date(date));
 		if ( c === -1 ){ return date; }
 		this.current_shift = this.shifts[c];
