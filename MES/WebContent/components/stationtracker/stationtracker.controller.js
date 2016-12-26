@@ -1054,9 +1054,6 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 //            If we are out of range, we display a message and don't close the date picker
             sap.m.MessageToast.show("Selected date out of range");
         } else {
-//            We feed the scheduler with the new selected date
-            airbus.mes.stationtracker.oView.getController().updateDateLabel(airbus.mes.stationtracker.oView.oCalendar);
-            airbus.mes.stationtracker.datePicker.close();
             // Reselect the date in shift hierarchy to select the good date
             var dDataSelected = airbus.mes.stationtracker.oView.oCalendar.getSelectedDates()[0].getStartDate();
             var sYear = dDataSelected.getFullYear();
@@ -1077,6 +1074,18 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
             }
             // Search in the shift hierarshy the first date of first shift of the current date
             var sDate = sYear.toString() + sMounth.toString()  + sDay.toString();
+            if(airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy[sDate] === undefined){
+                sap.m.MessageToast.show(airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("noShiftExist"));            	
+            	return;
+            }
+            	
+            
+
+            // We feed the scheduler with the new selected date
+            airbus.mes.stationtracker.oView.getController().updateDateLabel(airbus.mes.stationtracker.oView.oCalendar);
+            airbus.mes.stationtracker.datePicker.close();
+            	
+            	
             var sDateId = Object.keys( airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy[sDate] )[0];
             var dStartDate = airbus.mes.stationtracker.GroupingBoxingManager.shiftHierarchy[sDate][sDateId][0].StartDate;
 
