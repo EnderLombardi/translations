@@ -47,13 +47,13 @@ TASK ADHERENCE
   text-align: right !important;
   width: 100%; }
 
-#idStationDetail1--takt_adherence_adherence_value {
+#idLinetracker1--takt_adherence_adherence_value {
   font-size: 15px; }
 
 /*************
 ARE CHART
 **************/
-svg#idStationDetail1--takt_adherence_area_chart {
+svg#idLinetracker1--takt_adherence_area_chart {
   border: none; }
 
 .classTaktAdherenceAreaChart div:nth-child(2) {
@@ -80,74 +80,74 @@ svg#idStationDetail1--takt_adherence_area_chart {
   top: 10px;
   left: 0; }
 
-#idStationDetail1--takt_adherence_area_chart .yaxis {
+#idLinetracker1--takt_adherence_area_chart .yaxis {
 /*   fill: white; */
   font-size: 7px; }
-#idStationDetail1--takt_adherence_area_chart .yaxelabel {
+#idLinetracker1--takt_adherence_area_chart .yaxelabel {
 /*   fill: white; */
   font-size: 7px;
   margin-bottom: 2px; }
-#idStationDetail1--takt_adherence_area_chart .axis path,
-#idStationDetail1--takt_adherence_area_chart .axis line {
+#idLinetracker1--takt_adherence_area_chart .axis path,
+#idLinetracker1--takt_adherence_area_chart .axis line {
   fill: none;
   stroke: grey;
   shape-rendering: crispEdges; }
-#idStationDetail1--takt_adherence_area_chart .area {
+#idLinetracker1--takt_adherence_area_chart .area {
   fill: #E5002B; }
-#idStationDetail1--takt_adherence_area_chart .line {
+#idLinetracker1--takt_adherence_area_chart .line {
   fill: none;
   stroke: #0D2C63;
   stroke-width: 2; }
-#idStationDetail1--takt_adherence_area_chart .realLine {
+#idLinetracker1--takt_adherence_area_chart .realLine {
   fill: none;
   stroke: white;
   stroke-width: 2; }
-#idStationDetail1--takt_adherence_area_chart .estimateLine {
+#idLinetracker1--takt_adherence_area_chart .estimateLine {
   fill: none;
   stroke: white;
   stroke-width: 1;
   stroke-dasharray: 10; }
-#idStationDetail1--takt_adherence_area_chart .ygrid .tick {
+#idLinetracker1--takt_adherence_area_chart .ygrid .tick {
   stroke: rgba(109, 147, 194, 0.39);
   opacity: 0.7; }
-#idStationDetail1--takt_adherence_area_chart .ygrid path {
+#idLinetracker1--takt_adherence_area_chart .ygrid path {
   stroke-width: 0; }
 
 /*******************************
 BOX RESOLUTION EFFICIENCY
 ********************************/
-#idStationDetail1--boxResolutionEfficiency .boxResolutionEfficiencyGoodValue {
+#idLinetracker1--boxResolutionEfficiency .boxResolutionEfficiencyGoodValue {
   color: #84bd00; }
-#idStationDetail1--boxResolutionEfficiency .boxResolutionEfficiencyBadValue {
+#idLinetracker1--boxResolutionEfficiency .boxResolutionEfficiencyBadValue {
   color: #fe5000; }
 
-#idStationDetail1--boxSLBEfficiecy_chart-chart-item-3,
-#idStationDetail1--boxResolutionEfficiecy_chart-chart-item-3 {
+#idLinetracker1--boxSLBEfficiecy_chart-chart-item-3,
+#idLinetracker1--boxResolutionEfficiecy_chart-chart-item-3 {
   opacity: 0; }
   
 /*******************************
 SHIFT STAFFING
 ********************************/
-#idStationDetail1--shifStaffingHeader-dmc-chart .Left {
+#idLinetracker1--shifStaffingHeader-dmc-chart .Left {
   background-color: #84bd00; }
 
-#idStationDetail1--shifStaffingHeader .sapSuiteDmcTitle,
-#idStationDetail1--shifStaffingHeader .sapSuiteDmcLbls {
+#idLinetracker1--shifStaffingHeader .sapSuiteDmcTitle,
+#idLinetracker1--shifStaffingHeader .sapSuiteDmcLbls {
   font-size: 0.8vw; }
-#idStationDetail1--shifStaffingHeader .sapSuiteDmcCnt {
+#idLinetracker1--shifStaffingHeader .sapSuiteDmcCnt {
   right: 2rem; }
-/* #idStationDetail1--shifStaffingHeader .sapSuiteDmcDelta { */
+/* #idLinetracker1--shifStaffingHeader .sapSuiteDmcDelta { */
 /*   color: white;  */
 /*   } */
-#idStationDetail1--shifStaffingHeader .sapSuiteDmcBarDeltaInt {
+#idLinetracker1--shifStaffingHeader .sapSuiteDmcBarDeltaInt {
   background: #fe5000; }
-#idStationDetail1--shifStaffingHeader .sapSuiteDmcBarDeltaStripe {
+#idLinetracker1--shifStaffingHeader .sapSuiteDmcBarDeltaStripe {
   background-color: #74D2E7; }
 
 /*******************************
 BOX RESOLUTION EFFICIENCY
 ********************************/
-#idStationDetail1--boxResolutionEfficiency{
+#idLinetracker1--boxResolutionEfficiency{
     .boxResolutionEfficiencyGoodValue{
         color: $dark-lime-green;
     }
@@ -155,17 +155,17 @@ BOX RESOLUTION EFFICIENCY
         color: $blood-orange;
     }
 }
-#idStationDetail1--boxSLBEfficiecy_chart-chart-item-3,
-#idStationDetail1--boxResolutionEfficiecy_chart-chart-item-3 {
+#idLinetracker1--boxSLBEfficiecy_chart-chart-item-3,
+#idLinetracker1--boxResolutionEfficiecy_chart-chart-item-3 {
     opacity: 0;
 }
 /*******************************
 SHIFT STAFFING
 ********************************/
-#idStationDetail1--shifStaffingHeader-dmc-chart .Left {
+#idLinetracker1--shifStaffingHeader-dmc-chart .Left {
     background-color: $dark-lime-green;
 }
-#idStationDetail1--shifStaffingHeader{
+#idLinetracker1--shifStaffingHeader{
     .sapSuiteDmcTitle,
     .sapSuiteDmcLbls{
         font-size: 0.8vw;

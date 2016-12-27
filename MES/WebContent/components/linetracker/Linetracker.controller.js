@@ -1,11 +1,11 @@
 "use strict";
 
-sap.ui.controller("airbus.mes.linetracker.StationDetail", {
+sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 
 /**
 * Called when a controller is instantiated and its View controls (if available) are already created.
 * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
-* @memberOf coustomtable.StationDetail
+* @memberOf coustomtable.Linetracker
 */
 	onInit: function() {
 		
@@ -15,7 +15,7 @@ sap.ui.controller("airbus.mes.linetracker.StationDetail", {
 /**
 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
 * (NOT before the first rendering! onInit() is used for that one!).
-* @memberOf coustomtable.StationDetail
+* @memberOf coustomtable.Linetracker
 */
 //	onBeforeRendering: function() {
 //
@@ -24,7 +24,7 @@ sap.ui.controller("airbus.mes.linetracker.StationDetail", {
 /**
 * Called when the View has been rendered (so its HTML is part of the document). Post-rendering manipulations of the HTML could be done here.
 * This hook is the same one that SAPUI5 controls get after being rendered.
-* @memberOf coustomtable.StationDetail
+* @memberOf coustomtable.Linetracker
 */
 //	onAfterRendering: function() {
 //
@@ -32,7 +32,7 @@ sap.ui.controller("airbus.mes.linetracker.StationDetail", {
 
 /**
 * Called when the Controller is destroyed. Use this one to free resources and finalize activities.
-* @memberOf coustomtable.StationDetail
+* @memberOf coustomtable.Linetracker
 */
 //	onExit: function() {
 //
@@ -50,9 +50,9 @@ sap.ui.controller("airbus.mes.linetracker.StationDetail", {
 				"workContent" : "5"
 			};
 		
-		this.getView().getModel("stationDataModel").getProperty("/list").push(stationRow);
+		this.getView().getModel("dataModel").getProperty("/list").push(stationRow);
 		
-		this.getView().getModel("stationDataModel").refresh();
+		this.getView().getModel("dataModel").refresh();
 	},
 	
 	onSaveVariant : function() {
@@ -166,19 +166,19 @@ sap.ui.controller("airbus.mes.linetracker.StationDetail", {
 	},
 
 	displayKPIBelow : function(evt) {
-		var state = sap.ui.getCore().byId("idStationDetail1--idSlideControl").getState();
+		var state = sap.ui.getCore().byId("idLinetracker1--idSlideControl").getState();
 		if (state == true) {
-			sap.ui.getCore().byId("idStationDetail1--idSlideControl").closeNavigation();
+			sap.ui.getCore().byId("idLinetracker1--idSlideControl").closeNavigation();
 			
 		} else
-			sap.ui.getCore().byId("idStationDetail1--idSlideControl").openNavigation();
+			sap.ui.getCore().byId("idLinetracker1--idSlideControl").openNavigation();
 
 	},
 	
 	hideKPISlide : function(evt) {
-		var state = sap.ui.getCore().byId("idStationDetail1--idSlideControl").getState();
+		var state = sap.ui.getCore().byId("idLinetracker1--idSlideControl").getState();
 		if (state == true) {
-			sap.ui.getCore().byId("idStationDetail1--idSlideControl").closeNavigation();
+			sap.ui.getCore().byId("idLinetracker1--idSlideControl").closeNavigation();
 			
 		}
 	},

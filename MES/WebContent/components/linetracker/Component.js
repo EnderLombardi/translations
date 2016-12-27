@@ -52,8 +52,8 @@ airbus.mes.linetracker.Component.prototype.createContent = function() {
         })*/
     	
     	this.oView = sap.ui.view({
-    		id:"idStationDetail1", 
-    		viewName:"airbus.mes.linetracker.StationDetail", 
+    		id:"idLinetracker1", 
+    		viewName:"airbus.mes.linetracker.Linetracker", 
 //    		type:sap.ui.core.mvc.ViewType.XML
     		type : "XML"	
     	}); 

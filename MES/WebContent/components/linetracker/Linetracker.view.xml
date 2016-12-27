@@ -1,50 +1,62 @@
 <core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:control="airbus.mes.linetracker.KPICharts.control"
-	xmlns:l="sap.ui.layout" xmlns="sap.m" controllerName="airbus.mes.linetracker.StationDetail" xmlns:custom="airbus.mes.linetracker"
+	xmlns:l="sap.ui.layout" xmlns="sap.m" controllerName="airbus.mes.linetracker.Linetracker" xmlns:custom="airbus.mes.linetracker"
 	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:controlPhStation="airbus.mes.linetracker.PhysicalStation.control" >
 	<Page showTitle="false" enableScrolling="true" class="customTable">
 		<content>
-
+<!-- 	<HBox id="staionHbox" height="100%"> -->
 			<Table items="{stationDataModel>/list}">
 				<headerToolbar>
 					<Toolbar class="toolbar">
 						<Title text="{i18n>taktAdherence}" level="H2" />
 						<ToolbarSpacer />
 						<Button text="KPI Charts" press="displayKPIBelow" class="sapUiLargeMarginEnd" />
-						<Text text="{i18n>forcastEndOfAssembly}" width="9.5%" class="headerColumnText sapUiTinyMarginBottom" />
-						<Text text="{i18n>remainingToDo}" width="9.7%" class="headerColumnText sapUiTinyMarginBottom" />
-						<Text text="{i18n>openDisruptionAndon}" width="9.7%" class="headerColumnText sapUiTinyMarginBottom" />
+						<Text text="{i18n>forcastEndOfAssembly}" width="9.7%" class="headerColumnText sapUiTinyMarginBottom" />
+						<Text text="{i18n>remainingToDo}" width="12.85%" class="headerColumnText sapUiTinyMarginBottom" />
+						<Text text="{i18n>openDisruptionAndon}" width="12.85%" class="headerColumnText sapUiTinyMarginBottom" />
 					</Toolbar>
 				</headerToolbar>
 
 				<columns>
-					<Column width="20%">						
-						<OverflowToolbar class="sapUiMediumMarginBegin">
-							<Button icon="sap-icon://add" text="Station" press="onAddStation" type="Emphasized" class="stationBtns sapUiTinyMarginEnd"  tooltip="Add Station" >
-								<layoutData>
-									<OverflowToolbarLayoutData/>
-								</layoutData>
-							</Button>
-							<Button icon="sap-icon://save" press="onSaveVariant" type="Accept" class="stationBtns" tooltip="Save Variant" >
-								<layoutData>
-									<OverflowToolbarLayoutData/>
-								</layoutData>
-							</Button>
+					<Column width="30%" enableScrolling="false">
+						<!-- <FlexBox wrap="Wrap">
+							<HBox>
+							<Button icon="sap-icon://add" text="Station" press="onAddStation" type="Emphasized" width="8.5rem" class="stationBtns sapUiTinyMarginEnd" />
+							<core:Icon src="sap-icon://save" color="#007833" press="onSaveVariant" class="stationBtns sapUiSmallMarginEnd" />
+							</HBox>
+							<HBox>
 							<Input type="Text" placeholder="{i18n>selectLine}" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="handleValueHelp" 
-								class="stationBtns sapUiTinyMarginEnd" width="8rem" >
+								class="stationBtns sapUiTinyMarginEnd" width="8.5rem" />
+							<core:Icon src="sap-icon://create" press="onCreateModifyLine" class="stationBtns" />
+							</HBox>
+						</FlexBox> -->
+						
+						<OverflowToolbar>
+							<Button icon="sap-icon://add" text="Station" press="onAddStation" type="Emphasized" width="7.5rem" class="stationBtns" >
+								<layoutData>
+									<OverflowToolbarLayoutData/>
+								</layoutData>
+							</Button>
+							<Button icon="sap-icon://save" press="onSaveVariant" type="Transparent" class="stationBtns" >
+								<layoutData>
+									<OverflowToolbarLayoutData/>
+								</layoutData>
+							</Button>
+							<!-- <core:Icon src="sap-icon://save" color="#007833" press="onSaveVariant" class="stationBtns sapUiSmallMarginEnd" /> -->
+							<Input type="Text" placeholder="{i18n>selectLine}" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="handleValueHelp" 
+								class="stationBtns" width="8.5rem" >
 								<layoutData>
 									<OverflowToolbarLayoutData priority="NeverOverflow"/>
 								</layoutData>
 							</Input>
 							<!-- <core:Icon src="sap-icon://create" press="onCreateModifyLine" class="stationBtns" /> -->
-							<Button icon="sap-icon://create" press="onCreateModifyLine" class="stationBtns" tooltip="Create/Modify Line" type="Emphasized" >
+							<Button icon="sap-icon://create" press="onCreateModifyLine" type="Transparent" class="stationBtns" >
 								<layoutData>
-									<OverflowToolbarLayoutData />
+									<OverflowToolbarLayoutData/>
 								</layoutData>
 							</Button>
 						</OverflowToolbar>
 					</Column>
-					
-					<Column width="50%">
+					<Column width="46%">
 						<FlexBox height="2.5rem" alignItems="Center"
 							justifyContent="SpaceAround">
 							<Text text="10%" />
@@ -59,22 +71,22 @@
 							<Text text="100%" />
 						</FlexBox>
 					</Column>
-					<Column width="5%">
+					<Column width="6%">
 						<Text text="{i18n>trend}" class="taktHeading" />
 					</Column>
-					<Column width="5%">
+					<Column width="6%">
 						<Text text="{i18n>date}" class="taktHeading" />
 					</Column>
-					<Column width="5%">
+					<Column width="8%">
 						<Text text="{i18n>cycleTime}" class="taktHeading" />
 					</Column>
-					<Column width="5%">
+					<Column width="8%">
 						<Text text="{i18n>workContent}" class="taktHeading" />
 					</Column>
-					<Column width="5%">
+					<Column width="8%">
 						<Text text="{i18n>openDisruptions}" class="taktHeading" />
 					</Column>
-					<Column width="5%">
+					<Column width="8%">
 						<Text text="{i18n>openANDON}" class="taktHeading" />
 					</Column>
 				</columns>
@@ -83,7 +95,7 @@
 						<cells>
 							<Panel>
 								<content>
-									<HBox alignItems="Center" justifyContent="Center">
+									<HBox alignItems="Center">
 									
 										<controlPhStation:PhysicalStationBox color="#bcf6ff" actionIconColor="black" station="Station 30" msn="MSN 1274">
 											<controlPhStation:actionIconButton>
@@ -95,11 +107,15 @@
 											</controlPhStation:image>
 											
 											<controlPhStation:detailIconButton>
-												<Button icon="sap-icon://vertical-grip" press="openStationPopover" type="Transparent" width="100%" tooltip="More..."/>
+												<Button icon="sap-icon://vertical-grip" press="openStationPopover" type="Transparent" width="100%"/>
+												<!-- <core:Icon src="sap-icon://vertical-grip" press="openStationPopover"></core:Icon> -->
 											</controlPhStation:detailIconButton>
 
 										</controlPhStation:PhysicalStationBox>
-																				
+										
+										<!-- <Button text="{stationDataModel>station}" press="handlePopoverPress" class="sapUiSmallMarginEnd" /> -->
+										
+										
 									</HBox>
 								</content>
 							</Panel>
@@ -127,7 +143,7 @@
 				<core:Fragment fragmentName="airbus.mes.linetracker.KPICharts.KPIs" type="XML" />
 			</control:slideContent>
 		</control:slideControl>
-
+<!-- 	 </HBox> -->
 		</content>
 	</Page>
 </core:View>

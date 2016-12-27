@@ -63,8 +63,8 @@ sap.ui.core.Control.extend("airbus.mes.linetracker.KPICharts.TaktAdherenceAreaCh
 			{ x: 3, y: 25, },
 		];
 
-		var parent = $("#idStationDetail1--chartId");
-		var chart = $("#idStationDetail1--takt_adherence_area_chart"),
+		var parent = $("#idLinetracker1--chartId");
+		var chart = $("#idLinetracker1--takt_adherence_area_chart"),
 			aspect = 0.3,
 			container = chart.parent();
 		
