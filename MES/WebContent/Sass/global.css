@@ -2323,7 +2323,7 @@ RESSOURCEPOOL
   border-radius: 999px;
   margin-right: 0.8125rem; }
 #idUsersView .fixDsiplayRpImg {
-  width: 98%; }
+  width: 100%; }
   #idUsersView .fixDsiplayRpImg .sapUiHLayoutChildWrapper {
     vertical-align: middle; }
     #idUsersView .fixDsiplayRpImg .sapUiHLayoutChildWrapper::nth-child(1) {

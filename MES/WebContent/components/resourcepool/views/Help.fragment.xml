@@ -1,63 +1,63 @@
 <core:FragmentDefinition xmlns="sap.m"
-	xmlns:core="sap.ui.core" xmlns:html="http://www.w3.org/1999/xhtml">
-	<Dialog title="{i18nModel>Help}" icon="sap-icon://sys-help" type="Default Message"  
-		afterClose="afterHelpOK" class="helpDialogue">
-		<content>
-			<VBox>
-				<Text text="{i18nModel>searchBox}" class="fontWeight700" />
-				<Text text="{i18nModel>Search}" />
-				<Text text=""/>
-				<Text text="{i18nModel>UserSearch}" />
-				<VBox renderType="List">
-					<items>
-						<Text text="{i18nModel>Firstname}" />
-						<Text text="{i18nModel>Lastname}" />
-						<Text text="{i18nModel>UserID}" />
-						<Text text="{i18nModel>ERPID}" />
-						<Text text="{i18nModel>Personalnum}" />
-					</items>
-				</VBox>
-				<Text text="{i18nModel>WCSearch}" />
-				<VBox renderType="List">
-					<items>
-						<Text text="{i18nModel>WCname}" />
-						<Text text="{i18nModel>Description}" />
-					</items>
-	
-				</VBox>
-			</VBox>
-			<VBox>
-				<Text text="{i18nModel>assLoanedRP}" class="fontWeight700" />
-				<Text text="{i18nModel>assLoanedMess}" />
-				<VBox renderType="List">
-					<items>
-						<Text text="{i18nModel>assLoanedMess1}" />
-						<Text text="{i18nModel>assLoanedMess2}" />
-						<Text text="{i18nModel>assLoanedMess3}" />
-					</items>
-	
-				</VBox>
-			</VBox>
-			<VBox>
-				<Text text="{i18nModel>userAvailabilityColor}" class="fontWeight700" />
-				<Text text="{i18nModel>userColorcodeMess}" />
-				<Text text=""/>
-				<VBox>
-					<items>
-						<Text class="yellowColor padding8" text="{i18nModel>userColorcodeMess1}" />
-						<Text class="loanColor padding8" text="{i18nModel>userColorcodeMess2}" />
-					</items>
-	
-				</VBox>
-			</VBox>
-			<!-- <html:div> {i18nModel} Use Search Fields to search for Users 
-				or WorkCenters. <br/> Available Users or Assigned Users could be searched 
-				using: <html:ul> <html:li>First Name </html:li> <html:li>Last Name </html:li> 
-				<html:li>ERP User ID </html:li> </html:ul> </html:div> -->
+    xmlns:core="sap.ui.core" xmlns:html="http://www.w3.org/1999/xhtml">
+    <Dialog title="{i18nModel>Help}" icon="sap-icon://sys-help" type="Default Message"
+        afterClose="afterHelpOK" class="helpDialogue">
+        <content>
+            <VBox>
+                <Text text="{i18nModel>searchBox}" class="fontWeight700" />
+                <Text text="{i18nModel>Search}" />
+                <Text text=""/>
+                <Text text="{i18nModel>UserSearch}" />
+                <VBox renderType="List">
+                    <items>
+                        <Text text="{i18nModel>Firstname}" />
+                        <Text text="{i18nModel>Lastname}" />
+                        <Text text="{i18nModel>UserID}" />
+                        <Text text="{i18nModel>ERPID}" />
+                        <Text text="{i18nModel>Personalnum}" />
+                    </items>
+                </VBox>
+                <Text text="{i18nModel>WCSearch}" />
+                <VBox renderType="List">
+                    <items>
+                        <Text text="{i18nModel>WCname}" />
+                        <Text text="{i18nModel>Description}" />
+                    </items>
 
-		</content>
-		<buttons>
-			<Button icon="sap-icon://decline" text="{i18nModel>CloseButton}" press="afterHelpOK" />
-		</buttons>
-	</Dialog>
+                </VBox>
+            </VBox>
+            <VBox>
+                <Text text="{i18nModel>assLoanedRP}" class="fontWeight700" />
+                <Text text="{i18nModel>assLoanedMess}" />
+                <VBox renderType="List">
+                    <items>
+                        <Text text="{i18nModel>assLoanedMess1}" />
+                        <Text text="{i18nModel>assLoanedMess2}" />
+                        <Text text="{i18nModel>assLoanedMess3}" />
+                    </items>
+
+                </VBox>
+            </VBox>
+            <VBox>
+                <Text text="{i18nModel>userAvailabilityColor}" class="fontWeight700" />
+                <Text text="{i18nModel>userColorcodeMess}" />
+                <Text text=""/>
+                <VBox>
+                    <items>
+                        <Text class="padding8" text="{i18nModel>userColorcodeMess1}" />
+                        <Text class="padding8" text="{i18nModel>userColorcodeMess2}" />
+                    </items>
+
+                </VBox>
+            </VBox>
+            <!-- <html:div> {i18nModel} Use Search Fields to search for Users
+                or WorkCenters. <br/> Available Users or Assigned Users could be searched
+                using: <html:ul> <html:li>First Name </html:li> <html:li>Last Name </html:li>
+                <html:li>ERP User ID </html:li> </html:ul> </html:div> -->
+
+        </content>
+        <buttons>
+            <Button icon="sap-icon://decline" text="{i18nModel>CloseButton}" press="afterHelpOK" />
+        </buttons>
+    </Dialog>
 </core:FragmentDefinition>
