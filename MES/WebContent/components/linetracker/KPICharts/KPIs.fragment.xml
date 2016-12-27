@@ -3,10 +3,10 @@
        xmlns:micro="sap.suite.ui.microchart" xmlns:custom="airbus.mes.linetracker.KPICharts">
        <Page id="linetrackerStationKPI" width="100%">
                      <customHeader>
-                     <Toolbar class="topPageHeader">
+                     <Toolbar>
                      <Button icon="sap-icon://arrow-bottom" tooltip="Hide KPI" press="hideKPISlide"/>
                       <ToolbarSpacer />
-                      <Label text="STATION 10" class="pageTitle"/>
+                      <Label text="STATION 10" class="KPIheaderTitle"/>
                       <ToolbarSpacer />
                       </Toolbar>
                      </customHeader>
