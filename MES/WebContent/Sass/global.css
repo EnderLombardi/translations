@@ -2281,6 +2281,9 @@ td {
 .classDisruptionDetailPopUp .sapMPageBusyCoversAll > section {
   overflow-y: scroll !important; }
 
+#disruptiontrackerView--disruptionsTable #disruptiontrackerView--disruptionsTable-tblBody tr td {
+  text-align: justify !important; }
+
 /********************
 RESSOURCEPOOL
 *********************/
