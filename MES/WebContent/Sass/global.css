@@ -2248,6 +2248,15 @@ td {
   background: transparent;
   border: none; }
 
+#disruptiontrackerView--onDisruptionTableSettings.sapMBtn:hover {
+  background-color: rgba(0, 86, 112, 0.2); }
+#disruptiontrackerView--onDisruptionTableSettings.sapMBtn span {
+  color: #0D5D76; }
+#disruptiontrackerView--onDisruptionTableSettings.sapMBtn:hover > .sapMBtnHoverable, #disruptiontrackerView--onDisruptionTableSettings.sapMBtn > .sapMBtnHoverable {
+  background-color: transparent;
+  background: transparent;
+  border: none; }
+
 #disruptiontrackerView table tr.sapMListTblRow:focus {
   outline: none; }
 

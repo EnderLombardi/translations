@@ -120,6 +120,21 @@ td{
         border:none;
     }
 }
+#disruptiontrackerView--onDisruptionTableSettings{
+    &.sapMBtn{
+        &:hover{
+            background-color: $petrol-20;
+        }
+        span{
+            color: #0D5D76;
+        }
+    }
+    @at-root #disruptiontrackerView--onDisruptionTableSettings.sapMBtn:hover>.sapMBtnHoverable, #disruptiontrackerView--onDisruptionTableSettings.sapMBtn>.sapMBtnHoverable {
+        background-color: transparent;
+        background: transparent;
+        border:none;
+    }
+}
 #disruptiontrackerView{
     table{
         tr{
