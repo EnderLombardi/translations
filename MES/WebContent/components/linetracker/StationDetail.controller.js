@@ -50,9 +50,9 @@ sap.ui.controller("airbus.mes.linetracker.StationDetail", {
 				"workContent" : "5"
 			};
 		
-		this.getView().getModel("dataModel").getProperty("/list").push(stationRow);
+		this.getView().getModel("stationDataModel").getProperty("/list").push(stationRow);
 		
-		this.getView().getModel("dataModel").refresh();
+		this.getView().getModel("stationDataModel").refresh();
 	},
 	
 	onSaveVariant : function() {
