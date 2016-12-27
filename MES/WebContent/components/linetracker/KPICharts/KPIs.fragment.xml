@@ -1,10 +1,16 @@
 <core:FragmentDefinition xmlns:core="sap.ui.core"
        xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml"
        xmlns:micro="sap.suite.ui.microchart" xmlns:custom="airbus.mes.linetracker.KPICharts">
-       <Page title="STATION 10">
-                     <headerContent>
-						<Button icon="sap-icon://arrow-bottom" tooltip="Hide KPI" press="hideKPISlide"/>
-		   			</headerContent>
+       <Page id="linetrackerStationKPI">
+                     <customHeader>
+                     <Toolbar class="topPageHeader">
+                     <Button icon="sap-icon://arrow-bottom" tooltip="Hide KPI" press="hideKPISlide"/>
+                      <ToolbarSpacer />
+                      <Label text="STATION 10" class="pageTitle"/>
+                      <ToolbarSpacer />
+                      </Toolbar>
+                     </customHeader>
+						
                      <HBox id="kpiHeaderContent" class="classKpiHeaderContent" width="100%">
 
                            <HBox justifyContent="SpaceAround" id="boxTaktAdherence" width="32%"

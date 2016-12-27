@@ -9,6 +9,10 @@
 	border-left: 2px solid #60B5CD !important;
 }
 
+.customTable table tr th div {
+	border: none !important;
+}
+
 .customTable table tr th span {
     text-align: center !important;
 }
@@ -44,6 +48,10 @@
 	background-color: #D5F1F8 !important;
 }
 
+/* .customTable table tr th:nth-child(1) {
+	width: 22vw !important;
+} */
+
 .customTable table tr td:nth-child(5) > span {
 	font-size: 1.5rem !important;
 	color: #5B707E !important;
@@ -75,10 +83,10 @@
 	font-size: 1rem !important;
 }
 
-.customTable .stationBtns div {
+/* .customTable .stationBtns div {
 	padding-left: 0 !important;
 	padding-right: 0 !important;
-}
+} */
 
 .customTable .sapMBtnInner {
 	height: 2rem !important;
@@ -91,7 +99,7 @@
 
 .customTable .stationBtns .sapMBtnIcon {
 	line-height: 2rem !important;
-    font-size: 2rem !important;
+    font-size: 1.3rem !important;
 }
 
 .customTable .stationBtns input {
@@ -108,6 +116,14 @@
     line-height: 2rem !important;
 }
 
+.customTable .stationBtns:nth-child(2) {
+	margin-right: 0.5rem !important;
+}
+
+.stationBtns.sapMBtn>.sapMBtnInner {
+    text-align: center !important;
+}
+
 .dialogForm .sapMFlexItem:nth-child(2) {
 	width: 100% !important;
 }
@@ -119,3 +135,4 @@
 .customTable .stationPopoverBtns div span {
 	background-color: #FFFFFF; !important;
 }
+

@@ -166,27 +166,19 @@ sap.ui.controller("airbus.mes.linetracker.StationDetail", {
 	},
 
 	displayKPIBelow : function(evt) {
-		state = sap.ui.getCore()
-		.byId("idStationDetail1--idSlideControl").getState();
+		var state = sap.ui.getCore().byId("idStationDetail1--idSlideControl").getState();
 		if (state == true) {
-			sap.ui.getCore()
-			.byId("idStationDetail1--idSlideControl")
-			.closeNavigation();
+			sap.ui.getCore().byId("idStationDetail1--idSlideControl").closeNavigation();
 			
 		} else
-			sap.ui.getCore()
-			.byId("idStationDetail1--idSlideControl")
-			.openNavigation();
+			sap.ui.getCore().byId("idStationDetail1--idSlideControl").openNavigation();
 
 	},
 	
 	hideKPISlide : function(evt) {
-		state = sap.ui.getCore()
-		.byId("idStationDetail1--idSlideControl").getState();
+		var state = sap.ui.getCore().byId("idStationDetail1--idSlideControl").getState();
 		if (state == true) {
-			sap.ui.getCore()
-			.byId("idStationDetail1--idSlideControl")
-			.closeNavigation();
+			sap.ui.getCore().byId("idStationDetail1--idSlideControl").closeNavigation();
 			
 		}
 	},

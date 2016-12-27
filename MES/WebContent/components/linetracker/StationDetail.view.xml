@@ -4,7 +4,7 @@
 	<Page showTitle="false" enableScrolling="true" class="customTable">
 		<content>
 <!-- 	<HBox id="staionHbox" height="100%"> -->
-			<Table items="{dataModel>/list}">
+			<Table items="{stationDataModel>/list}">
 				<headerToolbar>
 					<Toolbar class="toolbar">
 						<Title text="{i18n>taktAdherence}" level="H2" />
@@ -113,25 +113,25 @@
 
 										</controlPhStation:PhysicalStationBox>
 										
-										<!-- <Button text="{dataModel>station}" press="handlePopoverPress" class="sapUiSmallMarginEnd" /> -->
+										<!-- <Button text="{stationDataModel>station}" press="handlePopoverPress" class="sapUiSmallMarginEnd" /> -->
 										
 										
 									</HBox>
 								</content>
 							</Panel>
-							<custom:customProgressBar planned="{dataModel>planned}" confirmed="{dataModel>confirmed}" class="progressBar"/>
+							<custom:customProgressBar planned="{stationDataModel>planned}" confirmed="{stationDataModel>confirmed}" class="progressBar"/>
 
-							<core:Icon src="sap-icon://{dataModel>trend}" color="{dataModel>trendColor}" />
+							<core:Icon src="sap-icon://{stationDataModel>trend}" color="{stationDataModel>trendColor}" />
 
-							<Text text="{dataModel>date}" />
+							<Text text="{stationDataModel>date}" />
 
-							<Text text="{dataModel>cycleTime}" />
+							<Text text="{stationDataModel>cycleTime}" />
 
-							<Text text="{dataModel>workContent}" />
+							<Text text="{stationDataModel>workContent}" />
 
-							<Text text="{dataModel>disruption}" />
+							<Text text="{stationDataModel>disruption}" />
 
-							<Text text="{dataModel>andon}" />
+							<Text text="{stationDataModel>andon}" />
 						</cells>
 					</ColumnListItem>
 				</items>
