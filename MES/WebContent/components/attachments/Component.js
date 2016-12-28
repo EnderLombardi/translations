@@ -1,7 +1,7 @@
 "use strict";
 jQuery.sap.registerModulePath("airbus.mes.attachments", "../components/attachments");
 //jQuery.sap.require("airbus.mes.operationdetail.status.Formatter");
-//jQuery.sap.require("airbus.mes.operationdetail.ModelManager");
+jQuery.sap.require("airbus.mes.attachments.ModelManager");
 
 
 jQuery.sap.declare("airbus.mes.attachments.Component");
@@ -19,6 +19,9 @@ airbus.mes.attachments.Component.prototype.createContent = function() {
 
 	if (airbus.mes.attachments.oView === undefined) {
 		
+        // Initialize ModelManager and load needed file
+        airbus.mes.attachments.ModelManager.init(sap.ui.getCore());
+        
 		// View on XML
 		this.oView = sap.ui.view({
 			id : "idDisruptionAttachment",
@@ -33,7 +36,7 @@ airbus.mes.attachments.Component.prototype.createContent = function() {
 	     });
 		
 		this.oView.setModel(i18nModel, "i18n");		
-		
+		this.oView.setModel(sap.ui.getCore().getModel("attachDisruption"),    "attachDisruption");
 
 
 		return this.oView;

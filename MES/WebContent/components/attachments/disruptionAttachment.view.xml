@@ -24,7 +24,7 @@
 	</HBox>
 
 	<List noDataText="Labels"
-		class="disruptionDetail sapUiSmallMarginBottom" items="{path: '/Rowsets/Rowset/0/Row/'}">
+		class="disruptionDetail sapUiSmallMarginBottom" items="{path: 'attachDisruption>/Rowsets/Rowset/0/Row/'}">
 
 		<CustomListItem>
 
@@ -32,7 +32,7 @@
 				expand="handleDisruptionPanelExpand">
 				<headerToolbar>
 					<Toolbar>
-						<Title text="{wo_no}-{op_no}-{dis_no}-{dis_des}-{gravity}-{status}" />
+						<Title text="{attachDisruption>wo_no}-{attachDisruption>op_no}-{attachDisruption>dis_no}-{attachDisruption>dis_des}-{attachDisruption>gravity}-{attachDisruption>status}" />
 					</Toolbar>
 				</headerToolbar>
 				<List items="{path: 'Row1/'}">
