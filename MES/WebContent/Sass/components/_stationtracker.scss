@@ -519,7 +519,7 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
             &.begin_shifht{
                 @extend %timeSpanWidth;
                 background-color: blue;
-               
+
             }
              &.end_shifht{
                 @extend %timeSpanWidth;
@@ -665,6 +665,9 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
             color: black;
             border: 2px solid $twilight-blue;
         }
+    }
+    .customTable table tr th, td{
+        border-left: none !important;
     }
 }
 .dhx_event_resize_start{

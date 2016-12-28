@@ -895,6 +895,8 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
     background-color: #767879;
     color: black;
     border: 2px solid #74d2e7; }
+#stationTrackerView--stationtracker .customTable table tr th, #stationTrackerView--stationtracker td {
+  border-left: none !important; }
 
 .dhx_event_resize_start {
   background-image: none; }
