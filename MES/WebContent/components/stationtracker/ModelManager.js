@@ -870,6 +870,7 @@ airbus.mes.stationtracker.ModelManager = {
 		// var elModel; not used
 		var elOverallModel = {};
 		var aOverallModel = [];
+		var oEvent = scheduler.getEvent(id);
 		var fAllDuration = 0;
 		var fAllProgress = 0;
 		var fNumberEl = 0;
@@ -921,15 +922,47 @@ airbus.mes.stationtracker.ModelManager = {
 					fNumberEl = fNumberEl + 1;
 					fAllDuration = parseFloat(fAllDuration) + parseFloat(elModel.DURATION);
 					fAllProgress = parseFloat(fAllProgress) + parseFloat(elModel.PROGRESS);
-
 					elOverallModel.WORKORDER_ID = elModel.WORKORDER_ID;
 					elOverallModel.WORKORDER_DESCRIPTION = elModel.WORKORDER_DESCRIPTION;
-				});
+				
+		});
 
 		elOverallModel.OPERATION_ID = "";
 		elOverallModel.OPERATION_DESCRIPTION = "";
 		elOverallModel.DURATION = Math.floor(fAllDuration / fNumberEl);
 		elOverallModel.PROGRESS = Math.floor(fAllProgress / fNumberEl);
+		elOverallModel.ISUNPLANNED = oEvent.isUnplanned;
+		elOverallModel.RMA_STATUS_COLOR = oEvent.rmaStatus;
+		elOverallModel.EXECUTION_STATION_SOURCE = oEvent.OSW;
+
+		switch(oEvent.status) {
+	    case 0:
+	    	elOverallModel.STATE = "C"; 
+	    	break;
+	    case 1:
+	    	elOverallModel.PAUSED = "---"; 
+	    	break;
+	    case 2:
+	    	elOverallModel.PAUSED = "false"; 
+	    	break;
+	    case 3:
+		   	elOverallModel.PAUSED = "---";
+		   	elOverallModel.PREVIOUSLY_STARTED = "true";
+		   	break;
+	    case 4:
+	    	elOverallModel.DISRUPTION = "D1"; 
+	    	break;
+	    case 5:
+	    	elOverallModel.DISRUPTION = "D2"; 
+	    	break;
+	    case 6:
+	    	elOverallModel.DISRUPTION = "D3"; 
+	    	break;
+	    case 7:
+	    	elOverallModel.DISRUPTION = "D4"; 
+	    	break;
+		}
+			
 		aOverallModel.push(elOverallModel);
 
 		airbus.mes.stationtracker.worklistPopover.setModel(	new sap.ui.model.json.JSONModel(aOverallModel),	"WorkListOverallModel");

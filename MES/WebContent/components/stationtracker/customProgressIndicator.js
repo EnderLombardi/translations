@@ -178,6 +178,9 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 					case "false" :
 					// Operation is active sStatus = "2";
 							sRightIcon = boxDisplayManager.rightPlay;
+							r.addClass('sapMPIBarGreen');
+							r.writeClasses();
+							r.writeAttribute('style', 'width:' + PercValue + '%');
 					break;
 					case "---" :				
 					// Operation is not started sStatus = "1" Operation is pause	
@@ -187,6 +190,19 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 							}	
 					break;
 					default :
+				}
+				
+				//rma
+				if ( rmastatus === "1" ){	
+					sLeftIcon =  boxDisplayManager.leftTriangleIcon_Dandelion;
+				}
+				//OSW
+				if (osw[0] === "3" ){ 
+					sLeftIcon2 = boxDisplayManager.rightOswIcon_Dandelion_Constructor(sOSW);
+				} 
+				//unplanned
+				if (osw[0] === "1"  || sUnplanned === "1" ){
+					sLeftIcon3 = boxDisplayManager.rightOswIcon_Dandelion_Constructor(sUNPD);
 				}
 											
 				switch ( DisruptionStatus ) {		
@@ -215,7 +231,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 							sRightIcon = boxDisplayManager.rightStop;
 							
 							if ( rmastatus === 1 ){	//rma
-								sLeftIcon = boxDisplayManager.leftTriangleIcon_Petrol;
+								sLeftIcon = boxDisplayManager.leftTriangleIcon;
 							}
 							if (osw[0] === "3" ){ //OSW
 								sLeftIcon2 = boxDisplayManager.rightOswIcon_Dandelion_Constructor(sOSW);
@@ -245,7 +261,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 							sRightIcon = boxDisplayManager.rightPlay;
 							
 							if ( rmastatus === 1 ){	//rma
-								sLeftIcon = boxDisplayManager.leftTriangleIcon_Petrol;
+								sLeftIcon = boxDisplayManager.leftTriangleIcon;
 							}
 							if (osw[0] === "3" ){ //OSW
 								sLeftIcon2 = boxDisplayManager.rightOswIcon_Dandelion_Constructor(sOSW);
@@ -271,7 +287,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 							break;*/
 					default:		
 				}
-				
+					
 				// Operation Completed
 				if (Status === "C") {
 					
@@ -289,23 +305,6 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 						sLeftIcon3 = boxDisplayManager.rightOswIcon_Dandelion_Constructor(sUNPD);
 					}
 					
-				}
-						
-				//rma
-				if ( rmastatus === 1 ){	
-					sLeftIcon =  boxDisplayManager.leftTriangleIcon_Dandelion;
-				}
-				//OSW
-				if (osw[0] === "3" ){ 
-					sLeftIcon2 = boxDisplayManager.rightOswIcon_Dandelion_Constructor(sOSW);
-				} else {
-					r.addClass('sapMPIBarGreen');
-					r.writeClasses();
-					r.writeAttribute('style', 'width:' + PercValue + '%');
-				}
-				//unplanned
-				if (osw[0] === "1"  || sUnplanned === "1" ){
-					sLeftIcon3 = boxDisplayManager.rightOswIcon_Dandelion_Constructor(sUNPD);
 				}
 				
 				//------------------------------------------------------------
