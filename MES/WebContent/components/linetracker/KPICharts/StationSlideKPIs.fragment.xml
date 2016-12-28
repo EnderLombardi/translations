@@ -1,0 +1,293 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core"
+       xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml"
+       xmlns:micro="sap.suite.ui.microchart" xmlns:custom="airbus.mes.linetracker.KPICharts">
+       <Page width="100%">
+
+                     <customHeader>
+                     <Toolbar>
+                     <Button icon="sap-icon://arrow-bottom" tooltip="Hide KPI" press="hideKPISlide"/>
+                      <ToolbarSpacer />
+                      <Label text="STATION 10" class="KPIheaderTitle"/>
+                      <ToolbarSpacer />
+                      </Toolbar>
+                     </customHeader>
+					<!-- <HBox>
+					<Toolbar>
+                     <Button icon="sap-icon://arrow-bottom" tooltip="Hide KPI" press="hideKPISlide"/>
+                      <ToolbarSpacer />
+                      <Label text="STATION 10" class="KPIheaderTitle"/>
+                      <ToolbarSpacer />
+                      </Toolbar>
+					</HBox> -->
+                     <HBox class="classKpiHeaderContent" width="100%">
+
+                           <HBox justifyContent="SpaceAround" width="32%"
+                                  class="contentHeaderCont">
+                                  <HBox>
+                                         <VBox justifyContent="SpaceAround" width="50%" margin-left="10rem">
+                                                <VBox class="chartColumn">
+                                                       <layout:Grid class="" defaultSpan="L6 M6 S12">
+                                                              <layout:content>
+                                                                     <Label text="{kpiI18n>Plan}{KPIchartTaktAdherence>/planUI}" class="KpiMediumText KPITaktChartBlueText" />
+                                                                     <Label text="{kpiI18n>Actual}{KPIchartTaktAdherence>/actualUI}"
+                                                                           class="KpiMediumText whiteText KPITaktChartRightText" />
+                                                              </layout:content>
+                                                       </layout:Grid>
+                                                       <custom:TaktAdherenceAreaChart
+                                                       data="{KPI>/Rowsets/Rowset/0/Row/ChartTakt/data}"
+                                                       realData="{KPI>/Rowsets/Rowset/0/Row/ChartTakt/realData}">
+                                                       <custom:data>
+                                                       <custom:Coordinates x="{KPI>x}" y="{KPI>y}"></custom:Coordinates>
+                                                       </custom:data>
+                                                       <custom:realData>
+                                                       <custom:Coordinates x="{KPI>x}" y="{KPI>y}"></custom:Coordinates>
+                                                       </custom:realData>
+                                                       </custom:TaktAdherenceAreaChart> 
+                                                       <Label text="{kpiI18n>PlannedStart} / {kpiI18n>EndOfAssembly}" class=" whiteText" />
+
+                                                       <layout:Grid class="" defaultSpan="L6 M6 S6">
+                                                              <layout:content>
+                                                                     <Label text="{path:'KPIchartTaktAdherence>/plannedStart', formatter:'airbus.mes.linetracker.KPICharts.util.Formatter.dateToStringFormat'}" class=" whiteText" />
+                                                                     <Label text="{path:'KPIchartTaktAdherence>/endOfAssembly', formatter:'airbus.mes.linetracker.KPICharts.util.Formatter.dateToStringFormat'}" class=" whiteText KPITaktChartRightText" />
+                                                              </layout:content>
+                                                       </layout:Grid>
+                                                </VBox>
+                                         </VBox>
+                                         <VBox width="50%">
+                                                <Label text="{kpiI18n>TaktAdherence}" design="Bold"
+                                                       width="100%" class="whiteTextHeader sapUiSmallMarginTop" />
+                                                <VBox justifyContent="SpaceAround" height="100%">
+                                                       <HBox class="sapUiSmallMarginBottom">
+                                                              <VBox width="31%">
+                                                                     <Label text="{kpiI18n>Adherence}" class=" whiteText" />
+                                                                     <Label text="{KPItaktAdherence>/taktAdherenceUI}%"
+                                                                           class="sapUiSmallMarginTop kpiValue  whiteText" height="100%" />
+                                                              </VBox>
+                                                              <VBox width="69%">
+                                                                     <layout:Grid class="taktAdherenceTrend"
+                                                                           defaultSpan="L4 M4 S4">
+                                                                           <layout:content>
+                                                                                   <Label text="{kpiI18n>Trend}" class=" whiteText takt_kpi_name takt_kpi_trend ">
+                                                                                         <layoutData>
+                                                                                                <layout:GridData span="L8 M8 S8" />
+                                                                                         </layoutData>
+                                                                                  </Label>
+                                                                                  <core:Icon
+                                                                                         src="{path:'KPItaktAdherence>/trendUI', formatter:'airbus.mes.linetracker.KPICharts.util.Formatter.KPIiconTrendSrc'}"
+                                                                                         class="TrendGreen takt_kpi_value takt_kpi_trend_value"
+                                                                                         color="{path:'KPItaktAdherence>/trendUI', formatter:'airbus.mes.linetracker.KPICharts.util.Formatter.KPIiconTrendColor'}" />
+
+                                                                                  <Label text="{kpiI18n>DeltaVsSLB}" class="whiteText takt_kpi_name">
+                                                                                         <layoutData>
+                                                                                                <layout:GridData span="L8 M8 S8" />
+                                                                                         </layoutData>
+                                                                                  </Label>
+                                                                                  <Label text="{KPItaktAdherence>/deltaVsSLBUI} Hrs"
+                                                                                         class="whiteText takt_kpi_value" />
+
+                                                                                  <Label text="{kpiI18n>DeltaVsSoA}" class="whiteText takt_kpi_name">
+                                                                                         <layoutData>
+                                                                                                <layout:GridData span="L8 M8 S8" />
+                                                                                         </layoutData>
+                                                                                  </Label>
+                                                                                  <Label text="{KPItaktAdherence>/deltaVsSoAUI} Hrs"
+                                                                                         class="whiteText takt_kpi_value" />
+
+                                                                                  <Label text="{kpiI18n>CycleTime}" class="whiteText takt_kpi_name">
+                                                                                         <layoutData>
+                                                                                                <layout:GridData span="L8 M8 S8" />
+                                                                                         </layoutData>
+                                                                                  </Label>
+                                                                                  <Label text="{KPItaktAdherence>/cycleTimeUI} Hrs"
+                                                                                         class="whiteText takt_kpi_value" />
+
+                                                                                  <Label text="{kpiI18n>WorkContent}" class="whiteText takt_kpi_name">
+                                                                                         <layoutData>
+                                                                                                <layout:GridData span="L8 M8 S8" />
+                                                                                         </layoutData>
+                                                                                  </Label>
+                                                                                  <Label text="{KPItaktAdherence>/workContentUI} Hrs"
+                                                                                         class="whiteText takt_kpi_value" />
+                                                                           </layout:content>
+                                                                     </layout:Grid>
+                                                              </VBox>
+                                                       </HBox>
+                                                </VBox>
+                                         </VBox>
+                                  </HBox>
+                           </HBox>
+
+                           <VBox wrap="Wrap" width="7%"
+                                  class="contentHeaderCont kpiBoxes ">
+                                  <Label text="{kpiI18n>LabourEfficiency}" design="Bold"
+                                         width="100%" class="whiteTextHeader" />
+                                  <Label text="{KPItaktEfficiency>/labourEfficiencyUI}%" 
+                                         class="kpiValue labourEfficiencyBody" />
+                           </VBox>
+
+                           <VBox width="10%" alignItems="Center"
+                                  class="contentHeaderCont kpiBoxes">
+                                  <Label text="{kpiI18n>SLBEFFICIENCY}" design="Bold"
+                                         class="whiteTextHeader" />
+                                  <VBox class="efficiencyChartContainer" width="100%">
+                                         <micro:ComparisonMicroChart size="L" width="100%" colorPalette="#84bd00, #f5f5f5, #fe5000" class="kpiBody">
+                                                <micro:data>
+                                                       <micro:ComparisonMicroChartData
+                                                              title="{kpiI18n>TaktSLB}"
+                                                              value="{path:'KPItaktEfficiency>/slbEffectiveCapacityUI', formatter:'airbus.mes.linetracker.KPICharts.util.Formatter.stringToInt'}"
+                                                              displayValue="{KPItaktEfficiency>/slbEffectiveCapacityUI}%" />
+                                                       <micro:ComparisonMicroChartData
+                                                              title="{kpiI18n>WhiteSpaces}"
+                                                              value="{path:'KPItaktEfficiency>/slbWhiteSpaceUI', formatter:'airbus.mes.linetracker.KPICharts.util.Formatter.stringToInt'}"
+                                                              displayValue="{KPItaktEfficiency>/slbWhiteSpaceUI}%" />
+                                                       <micro:ComparisonMicroChartData
+                                                              title="{kpiI18n>RedSpaces}"
+                                                              value="{path:'KPItaktEfficiency>/slbRedSpacesUI', formatter:'airbus.mes.linetracker.KPICharts.util.Formatter.stringToInt'}"
+                                                              displayValue="{KPItaktEfficiency>/slbRedSpacesUI}%" />
+                                                       <micro:ComparisonMicroChartData
+                                                              title="{kpiI18n>RedSpaces}"
+                                                              value="100" visible="false" />
+                                                </micro:data>
+                                         </micro:ComparisonMicroChart>
+                                  </VBox>
+                           </VBox>
+
+                           <VBox width="22%" class="contentHeaderCont">
+                                  <Label text="{kpiI18n>disruptions/andon}" design="Bold"
+                                         width="100%" class="whiteTextHeader sapUiSmallMarginTopBottom" />
+                                  <HBox height="65%">
+                                         <VBox width="25%" justifyContent="SpaceAround" class="classOpenDisruptionTotal">
+                                                <Label text="{kpiI18n>DisruptionTotal}" class=" whiteText kpiName"
+                                                       design="Bold" />
+                                                <Label text="{kpiI18n>Disruption}" class=" whiteText kpiName" />
+                                                <Label
+                                                       text="{KPIdisruption>/disruptionTotalUI}"
+                                                       class=" whiteText kpiValue" design="Bold" />
+                                                <Label text="{kpiI18n>Andon}" class=" redText kpiErrorValue"
+                                                       design="Bold" />
+                                                <Label text="{KPIdisruption>/andonTotalUI}"
+                                                       class="redText kpiValue kpiErrorValue" design="Bold" />
+                                         </VBox>
+                                         <VBox width="35%" class="classOpenDisruptionDetail"
+                                                justifyContent="SpaceAround">
+                                                <Label text="{kpiI18n>DisruptionDetails}" class="disruptionText"
+                                                       design="Bold" />
+                                                <Label text="{kpiI18n>DisruptionsNC}" class="disruptionText" />
+                                                <Label text="{kpiI18n>DisruptionsMissing}"
+                                                       class="disruptionText" />
+                                                <Label text="{kpiI18n>DisruptionsTools}" class="disruptionText" />
+                                                <Label text="{kpiI18n>DisruptionFTE}" class="disruptionText" />
+                                                <Label text="{kpiI18n>DisruptionOther}" class="disruptionText" />
+                                         </VBox>
+                                         <VBox alignItems="Center" width="20%" justifyContent="SpaceAround"
+                                                class="classOpenDisruptionDisruption">
+                                                <Label text="{kpiI18n>Disruption}" class="whiteText" />
+                                                <Label text="{KPIdisruption>/disruptionNCUI}"
+                                                       class=" whiteText" />
+                                                <Label
+                                                       text="{KPIdisruption>/disruptionMissingPartsUI}"
+                                                       class="whiteText" />
+                                                <Label text="{KPIdisruption>/disruptionMissingJTUI}"
+                                                       class=" whiteText" />
+                                                <Label text="{KPIdisruption>/disruptionMissingFTEUI}"
+                                                       class=" whiteText" />
+                                                <Label text="{KPIdisruption>/disruptionOtherUI}"
+                                                       class=" whiteText" />
+                                         </VBox>
+                                         <VBox alignItems="Center" width="15%" justifyContent="SpaceAround"
+                                                class="classOpenDisruptionAndon">
+                                                <Label text="{kpiI18n>Andon}" class="redText kpiErrorValue" />
+                                                <Label
+                                                       text="{KPIdisruption>/andonNCUI}"
+                                                       class=" redText kpiErrorValue" />
+                                                <Label
+                                                       text="{KPIdisruption>/andonMissingPartsUI}"
+                                                       class=" redText kpiErrorValue" />
+                                                <Label
+                                                       text="{KPIdisruption>/andonMissingJTUI}"
+                                                       class=" redText kpiErrorValue" />
+                                                <Label
+                                                       text="{KPIdisruption>/andonMissingFTEUI}"
+                                                       class="redText kpiErrorValue" />
+                                                <Label
+                                                       text="{KPIdisruption>/andonOtherUI}"
+                                                       class="redText kpiErrorValu" />
+                                         </VBox>
+                                  </HBox>
+                           </VBox> 
+
+                           <VBox width="11%" alignItems="Center"
+                                  class="contentHeaderCont kpiBoxes">
+                                  <Label text="{kpiI18n>ResolutionEfficiency}"
+                                         design="Bold" class="whiteTextHeader" />
+                                  <VBox class="efficiencyChartContainer" width="100%">
+                                         <micro:ComparisonMicroChart size="L" width="100%"
+                                                colorPalette="#84bd00,#fe5000,#fe5000,#0F2D65" class="kpiBody">
+                                                <micro:data>
+                                                       <micro:ComparisonMicroChartData
+                                                              title="{kpiI18n>PromisedInTakt}" value="{path:'KPIresolutionEfficiency>/promisedInTaktUI', formatter:'airbus.mes.linetracker.KPICharts.util.Formatter.stringToInt'}" 
+                                                              displayValue="{KPIresolutionEfficiency>/promisedInTaktUI}"/>
+                                                       <micro:ComparisonMicroChartData
+                                                              title="{kpiI18n>PromisedOutTakt}" 
+                                                              value="{path:'KPIresolutionEfficiency>/promisedOutOfTaktUI', formatter:'airbus.mes.linetracker.KPICharts.util.Formatter.stringToInt'}"
+                                                                            displayValue="{KPIresolutionEfficiency>/promisedOutOfTaktUI}"/>
+                                                       <micro:ComparisonMicroChartData
+                                                              title="{kpiI18n>NotAcknowledged}"
+                                                              value="{path:'KPIresolutionEfficiency>/notAcknowledgedUI', formatter:'airbus.mes.linetracker.KPICharts.util.Formatter.stringToInt'}"
+                                                                            displayValue="{KPIresolutionEfficiency>/notAcknowledgedUI}"/>
+                                                       <micro:ComparisonMicroChartData
+                                                              title="{kpiI18n>RedSpaces}"
+                                                              visible="false"
+                                                              value="{path:'KPIresolutionEfficiency>/totalUI', formatter:'airbus.mes.linetracker.KPICharts.util.Formatter.stringToInt'}" />
+
+                                                </micro:data>
+                                         </micro:ComparisonMicroChart>
+                                  </VBox>
+                           </VBox>
+                           
+                           <VBox wrap="Wrap" width="6%"
+                                  class="contentHeaderCont kpiBoxes kpiBoxExtraWork">
+                                  <Label text="{kpiI18n>ExtraWork}" design="Bold"
+                                         width="100%" class="whiteTextHeader " />
+                                  <Label text="{kpiI18n>Operations}" width="100%"
+                                         class="kpiName" />
+                                  <Label text="{KPIextraWork>/operationsUI}" class="kpiValue"
+                                         design="Bold" />
+                                  <Label text="{kpiI18n>Hrs}" width="100%" class="kpiName" />
+                                  <Label text="{KPIextraWork>/hoursUI}" class="kpiValue"
+                                         design="Bold" />
+                           </VBox>
+
+                           <!-- <VBox wrap="Wrap" width="8%"
+                                  class="contentHeaderCont kpiBoxes kpiBoxExtraWork">
+                                  <Label text="{kpiI18n>OpenAnomalies}" design="Bold"
+                                         width="100%" class="whiteTextHeader " />
+                                  <Label text="{kpiI18n>openReservation}" width="100%"
+                                         class="kpiName" />
+                                  <Label text="{kpiI18n>missingPart}" width="100%"
+                                         class="kpiName" />
+                                  <Label text="{KPIopenAnomalies>/openReservationUI}" class="kpiValue"
+                                         design="Bold" />
+                                  <Label text="{kpiI18n>concessions}" width="100%" class="kpiName" />
+                                  <Label text="{KPIopenAnomalies>/concessionsUI}" class="kpiValue"
+                                         design="Bold" />
+                           </VBox> -->
+
+                           <VBox wrap="Wrap" width="12%" alignItems="Center"
+                                  class="contentHeaderCont kpiBoxes">
+                                  <Label text="{kpiI18n>ShiftSTAFFING}" size="L"
+                                         design="Bold" width="100%" class="whiteTextHeader" />
+                                  <VBox width="100%" justifyContent="SpaceAround">
+                                         <micro:DeltaMicroChart width="100%"
+                                                isResponsive="true"
+                                                value1="{path:'KPIshiftStaffing>/neededFteUI', formatter:'airbus.mes.linetracker.KPICharts.util.Formatter.stringToInt'}"
+                                                value2="{path:'KPIshiftStaffing>/allocatedFteUI', formatter:'airbus.mes.linetracker.KPICharts.util.Formatter.stringToInt'}"
+                                                title1="{kpiI18n>NeedFTE}" title2="{kpiI18n>AllocatedFTE}"
+                                                displayValue1="{KPIshiftStaffing>/neededFteUI}" displayValue2="{KPIshiftStaffing>/allocatedFteUI}"
+                                                deltaDisplayValue="{KPIshiftStaffing>/notAllocatedFteUI}" class="kpiDeltaMicroChart" />
+                                  </VBox>
+                           </VBox>
+                     </HBox>
+
+       </Page>
+</core:FragmentDefinition>
