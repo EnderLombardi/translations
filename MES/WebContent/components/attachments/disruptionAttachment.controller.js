@@ -7,7 +7,7 @@ sap.ui.define([
 
 	return Controller.extend("airbus.mes.attachments.disruptionAttachment", {
 		onInit: function(){
-//			var x = this.getView().byId("idPanel");
+			var x = this.getView().byId("idPanel");
 			var oModel = new sap.ui.model.json.JSONModel("local/DisruptionList.json");
 			sap.ui.getCore().setModel(oModel);	
 		},

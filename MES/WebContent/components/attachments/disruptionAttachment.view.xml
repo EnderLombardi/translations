@@ -5,15 +5,14 @@
 	<Toolbar>
 	<Button icon="sap-icon://nav-back" press="onNavPress" />
 	<ToolbarSpacer></ToolbarSpacer>
-		<Select selectedKey="{/Rowsets/Rowset/0/Select/1/Name}"
+		<Select selectedKey="{/Rowsets/Rowset/0/Select/0/Name}"
 			items="{
 						path: '/Rowsets/Rowset/0/Select/'
 					}">
-			<core:Item text="{Name}" />
+			<core:Item key="{Name}" text="{Name}" />
 		</Select>
 		
-
-			<CheckBox text="Select All" />
+		<CheckBox text="Select All" />
 	</Toolbar>
 
 	<HBox>
@@ -24,7 +23,7 @@
 
 	</HBox>
 
-	<List id="List123" noDataText="Labels"
+	<List noDataText="Labels"
 		class="disruptionDetail sapUiSmallMarginBottom" items="{path: '/Rowsets/Rowset/0/Row/'}">
 
 		<CustomListItem>
@@ -33,9 +32,7 @@
 				expand="handleDisruptionPanelExpand">
 				<headerToolbar>
 					<Toolbar>
-						<Title text="{Text}" />
-						<ToolbarSpacer />
-						<Title text="{Count}" />
+						<Title text="{wo_no}-{op_no}-{dis_no}-{dis_des}-{gravity}-{status}" />
 					</Toolbar>
 				</headerToolbar>
 				<List items="{path: 'Row1/'}">

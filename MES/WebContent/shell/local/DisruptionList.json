@@ -11,7 +11,7 @@
 			},
 			"Row": [
 			{
-				"Text": "ABC","Count":"3",
+				"wo_no":"26557","op_no":"50002137-1-0-0010","dis_no":"0030","dis_des":"test 06 MJ","gravity":"2","status":"InProgress",
 				"Row1":[ {
 					"Text1": "New010"
 				},
@@ -20,7 +20,7 @@
 				}]
 			},
 			{
-				"Text": "SAQ","Count":"2",
+				"wo_no":"26557","op_no":"50002137-1-0-0010","dis_no":"0040","dis_des":"test 06 MK","gravity":"3","status":"Blocked",
 				"Row1":[ {
 					"Text1": "New0130"
 				},
@@ -30,7 +30,7 @@
 				
 			},
 			{
-				"Text": "QWE", "Count":"2",
+				"wo_no" : "26557","op_no":"50002137-1-0-0010","dis_no":"0050","dis_des":"test 06 ML","gravity":"4","status":"InProgress",
 				"Row1":[ {
 					"Text1": "New0106"
 				},
@@ -39,7 +39,7 @@
 				}]
 			},
 			{
-				"Text": "EWR","Count":"4",
+				"wo_no":"26567","op_no":"50002137-1-0-0010","dis_no":"0060","dis_des":"test 06 MM","gravity":"5","status":"Paused",
 				"Row1":[ {
 					"Text1": "New0103"
 				},
@@ -48,7 +48,7 @@
 				}]
 			},
 			{
-				"Text": "TYE","Count":"6",
+				"wo_no":"26567","op_no":"50002137-1-0-0010","dis_no":"0070","dis_des":"test 06 MN","gravity":"6","status":"InProgress",
 				"Row1":[ {
 					"Text1": "New0110"
 				},
@@ -57,10 +57,9 @@
 				}]
 			}],
 			"Select" : [
-				{"Name": "Select1"},
-				{"Name": "Select2"},
-				{"Name": "Select3"},
-				{"Name": "Select4"}
+				{"Name": "Current Disruption"},
+				{"Name": "Current Operation"},
+				{"Name": "Current Work Order"}
 				]
 		}]
 	}
