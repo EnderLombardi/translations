@@ -2285,6 +2285,7 @@ td {
   text-align: justify !important; }
 
 #disruptionDetail {
+  overflow: auto;
   background-color: #E9EEF3; }
   #disruptionDetail .sapMFlexBox.sapMFlexBoxAlignContentStretch.sapMFlexBoxAlignItemsStretch.sapMFlexBoxJustifyStart.sapMFlexBoxWrapNoWrap.sapMFlexItem.sapMHBox {
     background-color: #E9EEF3; }
