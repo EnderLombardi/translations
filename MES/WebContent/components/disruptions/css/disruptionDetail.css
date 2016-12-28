@@ -1,0 +1,27 @@
+.titleToolbar {
+	background-color: #E7ECF2;
+}
+
+.GenricBgColor {
+	background-color: white;
+}
+
+.setImage {
+	border-radius: 23px !important;
+}
+
+.btnRadius .sapMBtnInner {
+	border-radius: 2.125rem !important;
+}
+
+.iconInTextarea {
+	padding-top: 0.45rem !important;
+	z-index: 7777 !important;
+	position: absolute !important;
+	padding-right: 3rem !important;
+}
+.setMinWidth{
+	    min-width: 250px !important;
+}
+
+

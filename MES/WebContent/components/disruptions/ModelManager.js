@@ -56,9 +56,14 @@ airbus.mes.disruptions.ModelManager = {
 				}
 			}
 		}
-
+		// create Model For setting fields of form editable
+		this.core.setModel(new sap.ui.model.json.JSONModel(),
+		"setEditable");
+		core.getModel("setEditable").setData({"editable":false});
+		
 		this.core.setModel(new sap.ui.model.json.JSONModel(),
 				"disruptionCustomData");
+		
 
 		this.core.setModel(new sap.ui.model.json.JSONModel(),
 				"disruptionCategoryModel");

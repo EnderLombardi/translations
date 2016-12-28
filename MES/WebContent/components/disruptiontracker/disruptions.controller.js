@@ -303,7 +303,7 @@ sap.ui
 					onTableClick : function(oEvt) {
 
 						// create Pop-Up as a fragment
-						if (airbus.mes.disruptiontracker.detailPopUp === undefined) {
+						/*if (airbus.mes.disruptiontracker.detailPopUp === undefined) {
 
 							airbus.mes.disruptiontracker.detailPopUp = sap.ui
 									.xmlfragment(
@@ -315,15 +315,22 @@ sap.ui
 							airbus.mes.disruptiontracker.oView
 									.addDependent(airbus.mes.disruptiontracker.detailPopUp);
 						}
-
+*/
 						// Add View Disruptions view to pop-up navigation
 						// container
-						this.nav = sap.ui
+						/*this.nav = sap.ui
 								.getCore()
 								.byId(
-										"disruptionDetailPopup--disruptDetailNavContainer");
-
+										"disruptionDetailPopup--disruptDetailNavContainer");*/
+						/**
+						 * MES V1.5
+						 * add pages to global navigation container and display disruption Detail page in this nav container
+						 */
 						airbus.mes.shell.util.navFunctions
+						.disruptionsDetail(sap.ui.getCore().byId("globalNavView--navCont"),0,0,0,0);
+						
+
+						/*airbus.mes.shell.util.navFunctions
 								.disruptionsDetail(
 										this.nav,
 										0, // Report Disruption Button
@@ -338,7 +345,7 @@ sap.ui
 												.byId(
 														"disruptionDetailPopup--btnCancelDisruption") // Cancel
 								// Button
-								);
+								);*/
 
 						var disruptionData = {
 							"Rowsets" : {
@@ -372,16 +379,27 @@ sap.ui
 
 						this.disruptionsCustomDataFlag = false;
 
-						airbus.mes.disruptiontracker.detailPopUp.open();
+						//airbus.mes.disruptiontracker.detailPopUp.open();
 
 						// Set Expanded by Default
-						sap.ui.getCore().byId("ViewDisruptionView")
+						/*sap.ui.getCore().byId("ViewDisruptionView")
 								.getContent()[0].getContent()[1].getItems()[0]
-								.getContent()[0].setExpandable(false);
+								.getContent()[0].setExpandable(false);*/
 
-						this.nav.to(airbus.mes.disruptions.oView.viewDisruption
-								.getId());
-
+						/*this.nav.to(airbus.mes.disruptions.oView.viewDisruption
+								.getId());*/
+						
+						/**
+						 * MES V1.5
+						 * Navigate to disruption Detail Page
+						 */
+						var oModel = sap.ui.getCore().getModel("DisruptionDetailModel");
+						//set the data in disruption Detail Model
+						oModel.setData(sap.ui.getCore().getModel("operationDisruptionsModel").oData.Rowsets.Rowset[0].Row[0]);						
+						sap.ui.getCore().byId("globalNavView--navCont").to(airbus.mes.disruptions.oView.disruptionDetail
+								.getId())
+						this.setDataForDisruptionDetail();
+								
 						// Pause the Refresh timer till the Pop-Up is opened
 						// airbus.mes.shell.AutoRefreshManager.pauseRefresh();
 						// this.getView().byId('refreshTime').setVisible(false);
@@ -458,6 +476,18 @@ sap.ui
 								airbus.mes.disruptions.oView.createDisruption.oController
 										.setDataForEditDisruption();
 							}
+						}
+					},
+					/***
+					 * set the data in disruption detail page call set data for edit disruption function
+					 */
+					setDataForDisruptionDetail:function(){
+						if (!this.disruptionsCustomDataFlag) {
+							airbus.mes.disruptions.ModelManager.loadData();
+							this.disruptionsCustomDataFlag = true;
+						} else {
+							airbus.mes.disruptions.oView.createDisruption.oController
+									.setDataForEditDisruption();
 						}
 					}
 				});

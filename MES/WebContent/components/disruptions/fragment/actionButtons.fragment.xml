@@ -1,0 +1,39 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+
+	<f:SimpleForm id="S" layout="ResponsiveGridLayout">
+		<f:content>
+			<core:Title text="" />
+			<Label text="" />
+			<Button text="{i18nModel>escalate}" type="Reject" width="100%"
+				class="btnRadius">
+				<layoutData>
+					<l:GridData span="L12 M12 S12" />
+				</layoutData>
+			</Button>
+			<Button text="{i18nModel>update}" type="Emphasized" width="100%"
+				class="btnRadius">
+				<layoutData>
+					<l:GridData span="L12 M12 S12" />
+				</layoutData>
+			</Button>
+
+			<Button text="{i18nModel>reportNC}" type="Emphasized" width="100%"
+				class="btnRadius">
+				<layoutData>
+					<l:GridData span="L12 M12 S12" />
+				</layoutData>
+			</Button>
+			<Button text="{i18nModel>edit}" type="Emphasized"
+				
+				press="onEditDisruption"  
+				class="btnRadius" >
+				<layoutData>
+					<l:GridData span="L12 M12 S12" />
+				</layoutData>
+				</Button>
+		</f:content>
+	</f:SimpleForm>
+
+
+</core:FragmentDefinition>

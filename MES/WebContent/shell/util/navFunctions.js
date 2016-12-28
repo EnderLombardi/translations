@@ -3,6 +3,8 @@
 jQuery.sap.declare("airbus.mes.shell.util.Functions");
 
 airbus.mes.shell.util.navFunctions = {
+		
+	queryParams : jQuery.sap.getUriParameters(),
 
     disruptionButtons:{
         create: undefined,
@@ -121,6 +123,7 @@ airbus.mes.shell.util.navFunctions = {
         if (container.getPage("ViewDisruptionView") == null) {
             container.addPage(airbus.mes.disruptions.oView.viewDisruption);
             container.addPage(airbus.mes.disruptions.oView.createDisruption);
+            container.addPage(airbus.mes.disruptions.oView.disruptionDetail);// add new page disruption detail in nav container MES V1.5
         }
 
         // Set click event on report disruption button
@@ -151,45 +154,56 @@ airbus.mes.shell.util.navFunctions = {
         airbus.mes.shell.util.navFunctions.disruptionButtons.cancel = cancelButton;
     },
 
-    disruptionTracker : function() {
+	    disruptionTracker : function() {
 
-        if (airbus.mes.disruptiontracker === undefined || airbus.mes.disruptiontracker.oView === undefined) {
+		
 
-            jQuery.sap.registerModulePath("airbus.mes.disruptiontracker","../components/disruptiontracker");
-            sap.ui.getCore().createComponent({name : "airbus.mes.disruptiontracker",});
-            nav.addPage(airbus.mes.disruptiontracker.oView);
-        }
+			if (airbus.mes.disruptiontracker === undefined
+					|| airbus.mes.disruptiontracker.oView === undefined) {
 
-        if (nav.getPreviousPage() != undefined && nav.getPreviousPage().sId == "stationTrackerView") {
+				jQuery.sap.registerModulePath("airbus.mes.disruptiontracker",
+						"../components/disruptiontracker");
+				sap.ui.getCore().createComponent({
+					name : "airbus.mes.disruptiontracker",
+				});
+				nav.addPage(airbus.mes.disruptiontracker.oView);
+			}
 
-            airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.station = airbus.mes.settings.ModelManager.station;
-            airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.msn = airbus.mes.settings.ModelManager.msn;
+			if (nav.getPreviousPage() != undefined
+					&& nav.getPreviousPage().sId == "stationTrackerView") {
 
-        } else if (airbus.mes.stationtracker != undefined && airbus.mes.stationtracker.ModelManager.showDisrupionBtnClicked == true) {
+				airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.station = airbus.mes.settings.ModelManager.station;
+				airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.msn = airbus.mes.settings.ModelManager.msn;
 
-            airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.station = airbus.mes.settings.ModelManager.station;
-            airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.msn = airbus.mes.settings.ModelManager.msn;
-            airbus.mes.stationtracker.ModelManager.showDisrupionBtnClicked = false;
+			} else if (airbus.mes.stationtracker != undefined
+					&& airbus.mes.stationtracker.ModelManager.showDisrupionBtnClicked == true) {
 
-        } else {
+				airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.station = airbus.mes.settings.ModelManager.station;
+				airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.msn = airbus.mes.settings.ModelManager.msn;
+				airbus.mes.stationtracker.ModelManager.showDisrupionBtnClicked = false;
 
-            airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.station = airbus.mes.settings.ModelManager.station;
-            airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.msn = "";
-        }
+			} else {
 
-        airbus.mes.shell.util.navFunctions.renderDisruptionTracker();
+				airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.station = airbus.mes.settings.ModelManager.station;
+				airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.msn = "";
+			}
 
+			airbus.mes.shell.util.navFunctions.renderDisruptionTracker();
 
-        // Load data
-        airbus.mes.disruptiontracker.ModelManager.loadDisruptionTrackerModel();
+			// Load data
+			airbus.mes.disruptiontracker.ModelManager
+					.loadDisruptionTrackerModel();
 
-        // Navigate
-        nav.to(airbus.mes.disruptiontracker.oView.getId());
-    },
+			// Navigate
+			nav.to(airbus.mes.disruptiontracker.oView.getId());
+		
+	},
 
     /***************************************************************************
-     * Render disruption Tracker
-     */
+	 * Render disruption Tracker
+	 */
+    
+
     renderDisruptionTracker : function() {
 
         /*********** Filter for Station **************/
@@ -254,7 +268,7 @@ airbus.mes.shell.util.navFunctions = {
         msnBox.insertItem(msnItemAll,0);
         msnBox.setSelectedKey("");
     },
-
+    
     disruptionKPI : function() {
         if (airbus.mes.disruptiontracker === undefined) {
             jQuery.sap.registerModulePath("airbus.mes.disruptiontracker", "../components/disruptiontracker");
