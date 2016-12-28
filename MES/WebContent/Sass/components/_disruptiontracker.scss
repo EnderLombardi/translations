@@ -182,3 +182,37 @@ td{
         }
     }
 }
+
+//DISRUPTION DETAIL
+#disruptionDetail{
+    .sapMFlexBox.sapMFlexBoxAlignContentStretch.sapMFlexBoxAlignItemsStretch.sapMFlexBoxJustifyStart.sapMFlexBoxWrapNoWrap.sapMFlexItem.sapMHBox{
+        background-color: #E9EEF3;
+
+    }
+    .sapUiFormTitle{
+        background-color: transparent;
+    }
+    .sapUiFormM .sapUiFormContainerTitle>.sapUiFormTitle {
+        height: 2rem;
+        line-height: 2rem;
+    }
+    .sapMSlt>.sapMSltLabel,
+    .sapMSlt, .sapMSltArrow {
+        line-height: 2.5rem;
+        height: 2.5rem;
+    }
+    background-color: #E9EEF3;
+    .sapUiFormContainerTitle{
+        background-color: #E9EEF3;
+    }
+    .sapUiFormResGrid.sapUiFormBackgrTranslucent>div{
+        background-color: #E9EEF3;
+    }
+    .titleToolbar{
+        background-color: rgba(191, 198, 206, 0.59);
+    }
+    .sapUiForm .sapUiFormTitle{
+        font-weight: bold;
+        line-height: 4rem;
+    }
+}

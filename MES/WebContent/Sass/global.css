@@ -2284,6 +2284,29 @@ td {
 #disruptiontrackerView--disruptionsTable #disruptiontrackerView--disruptionsTable-tblBody tr td {
   text-align: justify !important; }
 
+#disruptionDetail {
+  background-color: #E9EEF3; }
+  #disruptionDetail .sapMFlexBox.sapMFlexBoxAlignContentStretch.sapMFlexBoxAlignItemsStretch.sapMFlexBoxJustifyStart.sapMFlexBoxWrapNoWrap.sapMFlexItem.sapMHBox {
+    background-color: #E9EEF3; }
+  #disruptionDetail .sapUiFormTitle {
+    background-color: transparent; }
+  #disruptionDetail .sapUiFormM .sapUiFormContainerTitle > .sapUiFormTitle {
+    height: 2rem;
+    line-height: 2rem; }
+  #disruptionDetail .sapMSlt > .sapMSltLabel,
+  #disruptionDetail .sapMSlt, #disruptionDetail .sapMSltArrow {
+    line-height: 2.5rem;
+    height: 2.5rem; }
+  #disruptionDetail .sapUiFormContainerTitle {
+    background-color: #E9EEF3; }
+  #disruptionDetail .sapUiFormResGrid.sapUiFormBackgrTranslucent > div {
+    background-color: #E9EEF3; }
+  #disruptionDetail .titleToolbar {
+    background-color: rgba(191, 198, 206, 0.59); }
+  #disruptionDetail .sapUiForm .sapUiFormTitle {
+    font-weight: bold;
+    line-height: 4rem; }
+
 /********************
 RESSOURCEPOOL
 *********************/

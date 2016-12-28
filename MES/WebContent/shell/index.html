@@ -32,7 +32,7 @@
 <!--  src="../resources/sap-ui-core.js" -->
     <!-- src="https://sapui5.netweaver.ondemand.com/1.36.11/resources/sap-ui-core.js" -->
     <script
-        src="../resources/sap-ui-core.js"
+        src="https://sapui5.netweaver.ondemand.com/1.36.11/resources/sap-ui-core.js"
         id="sap-ui-bootstrap" data-sap-ui-libs="sap.m, sap.ui.table"
         data-sap-ui-theme="sap_bluecrystal"
         data-sap-ui-xx-bindingSyntax="complex">
@@ -108,7 +108,7 @@
                         // batch 1 set to true
                         var windowLocation = window.location.hostname;
                         var getLocationForBatch = window.location.search;
-                        
+
                         if(windowLocation === "localhost"){
                             bBatch1 = false;
                         }else{
@@ -122,7 +122,7 @@
                                 }
                             }
                         }
-                   
+
                         if(getLocationForBatch.search("batch1") > 0){
                             bBatch1 = true;
                         }else{
@@ -130,7 +130,7 @@
                                 bBatch1 = false;
                             }
                         }
-                    
+
                     }
                 });
     </script>
