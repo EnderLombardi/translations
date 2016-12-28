@@ -115,7 +115,7 @@
 						<cells>
 							<controlPhStation:PhysicalStationBox
 								color="#bcf6ff" actionIconColor="black" station="Station 30"
-								msn="MSN 1274">
+								msn="MSN 1274" press="testPress">
 								<controlPhStation:actionIconButton>
 									<core:Icon src="sap-icon://refresh" />
 								</controlPhStation:actionIconButton>

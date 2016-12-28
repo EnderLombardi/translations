@@ -212,6 +212,10 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	       jQuery.sap.delayedCall(0, this, function () {
 	              this.oPopover.openBy(oButton);
 	       });
+     },
+     
+     testPress: function () {
+    	 alert("Control clicked!")
      }
 
 
