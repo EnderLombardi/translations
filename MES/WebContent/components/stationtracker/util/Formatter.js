@@ -542,17 +542,26 @@ airbus.mes.stationtracker.util.Formatter = {
 					oHierarchyDelay = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchyDelay;
 					//console.log(oHierarchyDelay);
 					
-					//---------------------------------------------------------------------------
-					//fProgress = oHierarchyDelay[oSection.group][oSection.avlLine].progress;
-					//fDuration =	oHierarchyDelay[oSection.group][oSection.avlLine].duration;
-					//---------------------------------------------------------------------------
-					
+					if ( oHierarchyDelay[oSection.group] != undefined ){
+						// Check if the avl exist in the model from mii it check if the avl is not a avlLine just creatd by a user
+						if ( oHierarchyDelay[oSection.group][oSection.avlLine] != undefined ) {
+							
+							fProgress = oHierarchyDelay[oSection.group][oSection.avlLine].progress;
+							fDuration =	oHierarchyDelay[oSection.group][oSection.avlLine].duration;
+							
+						} else  {
+							
+							fProgress = 0;
+							fDuration = 0;
+							
+						}
+						
+					}
+			
 					sSpanWarn = "";
 					
-					//html += airbus.mes.stationtracker.util.Formatter.createDelaySpan( fProgress,fDuration,sSpanWarn );
-					html += airbus.mes.stationtracker.util.Formatter.createDelaySpan( "1","1",sSpanWarn );
-					
-					
+					html += airbus.mes.stationtracker.util.Formatter.createDelaySpan( fProgress,fDuration,sSpanWarn );
+				
 					return html + '</div>';
 			
 					}
@@ -577,17 +586,27 @@ airbus.mes.stationtracker.util.Formatter = {
 
 				oHierarchyDelay =airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchyDelay;
 				
-				//---------------------------------------------------------------------------
-				//fProgress = oHierarchyDelay[oSection.group][oSection.avlLine].progress;
-				//fDuration =	oHierarchyDelay[oSection.group][oSection.avlLine].duration;
-				//---------------------------------------------------------------------------
+				if ( oHierarchyDelay[oSection.group] != undefined ){
+					// Check if the avl exist in the model from mii it check if the avl is not a avlLine just creatd by a user
+					if ( oHierarchyDelay[oSection.group][oSection.avlLine] != undefined ) {
+						
+						fProgress = oHierarchyDelay[oSection.group][oSection.avlLine].progress;
+						fDuration =	oHierarchyDelay[oSection.group][oSection.avlLine].duration;
+						
+					} else  {
+						
+						fProgress = 0;
+						fDuration = 0;
+						
+					}
+					
+				}
 				
 				sSpanWarn = "";
 				
-				html += airbus.mes.stationtracker.util.Formatter.createDelaySpan( "1","1",sSpanWarn );
-				
-				
+				html += airbus.mes.stationtracker.util.Formatter.createDelaySpan( fProgress,fDuration,sSpanWarn );
 				return html + '</div>';
+				
 				}
 				
 //				default mode
