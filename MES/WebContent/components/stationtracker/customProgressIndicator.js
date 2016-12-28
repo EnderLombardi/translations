@@ -295,7 +295,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 					r.addStyle('background-color','#0085ad');
 					sRightIcon = boxDisplayManager.rightCheck;
 					
-					if ( rmastatus === 1 ){	//rma
+					if ( rmastatus === "1" ){	//rma
 						sLeftIcon = boxDisplayManager.leftTriangleIcon;
 					}
 					if (osw[0] === "3" ){ //OSW

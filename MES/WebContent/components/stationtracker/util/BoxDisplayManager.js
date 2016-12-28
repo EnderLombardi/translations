@@ -13,7 +13,7 @@ airbus.mes.stationtracker.util.BoxDisplayManager = {
 		    leftTriangleIcon_Petrol: '<i class="fa fa-exclamation-triangle triangleIcon petrol"></i>',
 		
 		    leftOswIcon: '<i class="fa fa-refresh oswIcon"><b style="padding-left:1px max-width:80px">',
-		    leftOswIcon_Dandelion: '<i class="fa fa-refresh oswIcon dandelion"><b style="padding-left:1px">',
+		    leftOswIcon_Dandelion: '<i class="fa fa-refresh oswIcon"><b style="padding-left:1px">',
 		    leftOswIcon_TealBlueWhite: '<i class="fa fa-refresh oswIcon teal-blue white">',
 		
 		    leftOswIcon_Constructor: function(elt) {
@@ -33,7 +33,7 @@ airbus.mes.stationtracker.util.BoxDisplayManager = {
     //---------------------
 		    
 		    rightOswIcon: '<i class="fa fa-refresh oswIcon2"><b style="padding-left:1px max-width:80px">',
-		    rightOswIcon_Dandelion: '<i class="fa fa-refresh oswIcon2 dandelion"><b style="padding-left:1px">',
+		    rightOswIcon_Dandelion: '<i class="fa fa-refresh oswIcon2"><b style="padding-left:1px">',
 		    rightOswIcon_TealBlueWhite: '<i class="fa fa-refresh oswIcon2 teal-blue white"><b style="padding-left:1px">',
 		    rightPaused : '<i class="fa fa-pause rightIcon"></i>',
 		    rightPaused_Petrol : '<i class="fa fa-pause rightIcon petrol" ></i>',
