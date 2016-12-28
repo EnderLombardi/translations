@@ -55,6 +55,9 @@ WORK LIST POP OVER
                 color:$petrol;
             }
         }
+        &.dandelion{
+            color: $dandelion;
+        }
         &.oswIcon2 {
             @extend %oswIcon2;
             & b {

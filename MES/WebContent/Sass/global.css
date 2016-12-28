@@ -444,6 +444,8 @@ WORK LIST POP OVER
     float: right; }
     .classWorklistPopover .fa.rightIcon.petrol {
       color: rgba(0, 86, 112, 0.94); }
+  .classWorklistPopover .fa.dandelion {
+    color: #fbec00; }
   .classWorklistPopover .fa.oswIcon2 b {
     font-family: arial; }
   .classWorklistPopover .fa.fa-exclamation-triangle.triangleIcon.petrol {
