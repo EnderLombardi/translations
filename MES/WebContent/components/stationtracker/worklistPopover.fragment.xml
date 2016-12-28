@@ -1,41 +1,40 @@
 <core:FragmentDefinition xmlns:core="sap.ui.core"
 	xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:custom="airbus.mes.stationtracker"
 	xmlns:html="http://www.w3.org/1999/xhtml">
-	<Dialog title="Unplanned activities" class="pageHeaderDialog classWorklistPopover" showHeader="false">
-		
+	<Dialog title="Unplanned activities" class="pageHeaderDialog classWorklistPopover"
+		showHeader="false">
+
 		<content>
 			<VBox class="sapMFooter-CTX classWorklistPopoverHeader">
-					<custom:customProgressIndicator
-					id="overallProgress" 
-					visible="false"
-					width="auto" state="sap.ui.core.ValueState.Success" status="{WorkListOverallModel>STATE}"
-					isAndon="{WorkListOverallModel>andons}"
+				<custom:customProgressIndicator id="overallProgress"
+					visible="false" width="auto" state="sap.ui.core.ValueState.Success"
+					unplanned="{WorkListOverallModel>/0/>ISUNPLANNED}" disruption="{WorkListOverallModel>/0/DISRUPTION}"
+					paused="{WorkListOverallModel>/0/PAUSED}" progress="{WorkListOverallModel>/0/PROGRESS}"
+					rmastatus="{WorkListOverallModel>/0/RMA_STATUS_COLOR}" osw="{WorkListOverallModel>/0/EXECUTION_STATION_SOURCE}"
+					status="{WorkListOverallModel>/0/STATE}" prevstarted="{WorkListOverallModel>/0/PREVIOUSLY_STARTED}"
 					displayValue="{ parts: [ 'WorkListOverallModel>/0/WORKORDER_ID','WorkListOverallModel>/0/WORKORDER_DESCRIPTION' ], formatter: 'airbus.mes.stationtracker.util.Formatter.titleWorklist'}"
 					displayValue2="{ parts: [ 'WorkListOverallModel>/0/OPERATION_ID','WorkListOverallModel>/0/OPERATION_DESCRIPTION','WorkListOverallModel>/0/PROGRESS','WorkListOverallModel>/0/DURATION' ], formatter: 'airbus.mes.stationtracker.util.Formatter.displayValueIM'}"
 					percentValue="{ parts: [ 'WorkListOverallModel>/0/PROGRESS','WorkListOverallModel>/0/DURATION' ], formatter: 'airbus.mes.stationtracker.util.Formatter.percentValue'}">
-					</custom:customProgressIndicator>
+				</custom:customProgressIndicator>
 			</VBox>
-			
+
 			<VBox>
 				<HBox>
-					<Select 
-							class="sapUiTinyMarginBeginEnd comboBoxStyle"
-							id = "selectGroupingWorklist"
-						    items="{groupModel>/Rowsets/Rowset/0/Row/GroupingWorklist}"
-						    change="changeGroupWorkList"
-						    visible="true">
-						<core:ListItem key="{groupModel>key}" text="{ path : 'groupModel>Value' , formatter : '.getI18nValue' }" />				
+					<Select class="sapUiTinyMarginBeginEnd comboBoxStyle" id="selectGroupingWorklist"
+						items="{groupModel>/Rowsets/Rowset/0/Row/GroupingWorklist}"
+						change="changeGroupWorkList" visible="true">
+						<core:ListItem key="{groupModel>key}"
+							text="{ path : 'groupModel>Value' , formatter : '.getI18nValue' }" />
 					</Select>
-					<Select class="sapUiTinyMarginBeginEnd comboBoxStyle"
-							id = "selectStatus"
-						    items="{groupModel>/Rowsets/Rowset/0/Row/Status}"
-						    change="onChangeFilter"
-					        visible="true">						
-						<core:ListItem key="{groupModel>Value}" text="{ path : 'groupModel>Value' , formatter : '.getI18nValue' }" />					
+					<Select class="sapUiTinyMarginBeginEnd comboBoxStyle" id="selectStatus"
+						items="{groupModel>/Rowsets/Rowset/0/Row/Status}" change="onChangeFilter"
+						visible="true">
+						<core:ListItem key="{groupModel>Value}"
+							text="{ path : 'groupModel>Value' , formatter : '.getI18nValue' }" />
 					</Select>
-			</HBox>
-			
-			<List id="myList" growing="true" growingThreshold="20"
+				</HBox>
+
+				<List id="myList" growing="true" growingThreshold="20"
 					growingScrollToLoad="true" items="{ path: 'WorkListModel>/' }"
 					selectionChange="onSelectionChange"
 					mode="{ path : 'WorkListModel>andons' , formatter: 'airbus.mes.stationtracker.util.Formatter.setmodeList'}"
@@ -46,17 +45,11 @@
 								<HBox>
 									<items>
 										<custom:customProgressIndicator
-											width="auto" 
-											state="sap.ui.core.ValueState.Success" 
-											click="operationWorkListClick"
-											unplanned="{WorkListModel>ISUNPLANNED}"
-											disruption="{WorkListModel>DISRUPTION}"
-											paused="{WorkListModel>PAUSED}"
-											progress="{WorkListModel>PROGRESS}"
-											rmastatus="{WorkListModel>RMA_STATUS_COLOR}"
-											osw="{WorkListModel>EXECUTION_STATION_SOURCE}"
-											status="{WorkListModel>STATE}"
-											prevstarted = "{WorkListModel>PREVIOUSLY_STARTED}"
+											width="auto" state="sap.ui.core.ValueState.Success" click="operationWorkListClick"
+											unplanned="{WorkListModel>ISUNPLANNED}" disruption="{WorkListModel>DISRUPTION}"
+											paused="{WorkListModel>PAUSED}" progress="{WorkListModel>PROGRESS}"
+											rmastatus="{WorkListModel>RMA_STATUS_COLOR}" osw="{WorkListModel>EXECUTION_STATION_SOURCE}"
+											status="{WorkListModel>STATE}" prevstarted="{WorkListModel>PREVIOUSLY_STARTED}"
 											displayValue="{ parts: [ 'WorkListModel>WORKORDER_ID','WorkListModel>WORKORDER_DESCRIPTION' ], formatter: 'airbus.mes.stationtracker.util.Formatter.titleWorklist'}"
 											displayValue2="{ parts: [ 'WorkListModel>OPERATION_ID','WorkListModel>OPERATION_DESCRIPTION','WorkListModel>PROGRESS','WorkListModel>DURATION' ], formatter: 'airbus.mes.stationtracker.util.Formatter.displayValueIM'}"
 											percentValue="{ parts: [ 'WorkListModel>PROGRESS','WorkListModel>DURATION' ], formatter: 'airbus.mes.stationtracker.util.Formatter.percentValue'}">
@@ -73,12 +66,13 @@
 			</VBox>
 		</content>
 		<buttons>
-			<Button text="{StationTrackerI18n>WorklistButtonImport}" type="Transparent" icon="sap-icon://forward"
-				class="sapUiTinyMarginBeginEnd pageHeaderDialog" press="onUnplannedImport"
+			<Button text="{StationTrackerI18n>WorklistButtonImport}" type="Transparent"
+				icon="sap-icon://forward" class="sapUiTinyMarginBeginEnd pageHeaderDialog"
+				press="onUnplannedImport"
 				visible="{ path : 'WorkListModel>andons' , formatter: 'airbus.mes.stationtracker.util.Formatter.isCheckboxVisible'}">
 			</Button>
-			<Button text="{StationTrackerI18n>Close}" type="Transparent" icon="sap-icon://decline"
-				class="sapUiTinyMarginBeginEnd" press="onUnplannedClose">
+			<Button text="{StationTrackerI18n>Close}" type="Transparent"
+				icon="sap-icon://decline" class="sapUiTinyMarginBeginEnd" press="onUnplannedClose">
 			</Button>
 		</buttons>
 	</Dialog>
