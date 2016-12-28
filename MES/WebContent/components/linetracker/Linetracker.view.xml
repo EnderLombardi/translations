@@ -113,33 +113,26 @@
 				<items>
 					<ColumnListItem>
 						<cells>
-							<Panel>
-								<content>
-									<HBox alignItems="Center" justifyContent="Center">
+							<controlPhStation:PhysicalStationBox
+								color="#bcf6ff" actionIconColor="black" station="Station 30"
+								msn="MSN 1274">
+								<controlPhStation:actionIconButton>
+									<core:Icon src="sap-icon://refresh" />
+								</controlPhStation:actionIconButton>
 
-										<controlPhStation:PhysicalStationBox
-											color="#bcf6ff" actionIconColor="black" station="Station 30"
-											msn="MSN 1274">
-											<controlPhStation:actionIconButton>
-												<core:Icon src="sap-icon://refresh" />
-											</controlPhStation:actionIconButton>
+								<controlPhStation:image>
+									<Image
+										src="http://www.look4travel.com.au/flight_specials/lufthansa-logo.jpg"
+										width="100%" height="100%" />
+								</controlPhStation:image>
 
-											<controlPhStation:image>
-												<Image
-													src="http://www.look4travel.com.au/flight_specials/lufthansa-logo.jpg"
-													width="100%" height="100%" />
-											</controlPhStation:image>
+								<controlPhStation:detailIconButton>
+									<Button icon="sap-icon://vertical-grip" press="openStationPopover"
+										type="Transparent" width="100%" tooltip="More..." />
+								</controlPhStation:detailIconButton>
 
-											<controlPhStation:detailIconButton>
-												<Button icon="sap-icon://vertical-grip" press="openStationPopover"
-													type="Transparent" width="100%" tooltip="More..." />
-											</controlPhStation:detailIconButton>
+							</controlPhStation:PhysicalStationBox>
 
-										</controlPhStation:PhysicalStationBox>
-
-									</HBox>
-								</content>
-							</Panel>
 							<custom:customProgressBar planned="{stationDataModel>planned}"
 								confirmed="{stationDataModel>confirmed}" class="progressBar" />
 
