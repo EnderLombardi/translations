@@ -5,14 +5,14 @@
 	<Toolbar>
 	<Button icon="sap-icon://nav-back" press="onNavPress" />
 	<ToolbarSpacer></ToolbarSpacer>
-		<Select selectedKey="{/Rowsets/Rowset/0/Select/0/Name}"
+		<Select selectedKey="{attachDisruption>/Rowsets/Rowset/0/Select/0/Name}"
 			items="{
-						path: '/Rowsets/Rowset/0/Select/'
+						path: 'attachDisruption>/Rowsets/Rowset/0/Select/'
 					}">
-			<core:Item key="{Name}" text="{Name}" />
+			<core:Item key="{attachDisruption>Name}" text="{attachDisruption>Name}" />
 		</Select>
 		
-		<CheckBox text="Select All" />
+		<CheckBox text="{i18n>SelectAll}" />
 	</Toolbar>
 
 	<HBox>
@@ -23,7 +23,7 @@
 
 	</HBox>
 
-	<List noDataText="Labels"
+	<List noDataText="{i18n>NoData}"
 		class="disruptionDetail sapUiSmallMarginBottom" items="{path: 'attachDisruption>/Rowsets/Rowset/0/Row/'}">
 
 		<CustomListItem>
@@ -37,7 +37,11 @@
 				</headerToolbar>
 				<List items="{path: 'Row1/'}">
 					<CustomListItem>
-						<CheckBox text="{Text1}" />
+			<HBox>
+		<html:iframe
+    	src="{attachDisruption>PDFUrl}" />
+				</HBox>	
+			
 					</CustomListItem>
 				</List>
 			</Panel>
@@ -46,4 +50,5 @@
 
 
 	</List>
+
 </mvc:View>

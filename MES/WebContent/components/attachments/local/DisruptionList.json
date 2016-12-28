@@ -11,50 +11,27 @@
 			},
 			"Row": [
 			{
-				"wo_no":"26557","op_no":"50002137-1-0-0010","dis_no":"0030","dis_des":"test 06 MJ","gravity":"2","status":"InProgress",
+				"PDFUrl": "http://www.pdf995.com/samples/pdf.pdf","wo_no":"26557","op_no":"50002137-1-0-0010","dis_no":"0030","dis_des":"test 06 MJ","gravity":"2","status":"InProgress",
 				"Row1":[ {
-					"Text1": "New010"
-				},
-				{
-					"Text1": "New013210"
+					"PDFUrl": "http://www.pdf995.com/samples/pdf.pdf"
 				}]
 			},
 			{
 				"wo_no":"26557","op_no":"50002137-1-0-0010","dis_no":"0040","dis_des":"test 06 MK","gravity":"3","status":"Blocked",
-				"Row1":[ {
-					"Text1": "New0130"
-				},
-				{
-					"Text1": "New012150"
-				}]
+				"Row1":[]
 				
 			},
 			{
 				"wo_no" : "26557","op_no":"50002137-1-0-0010","dis_no":"0050","dis_des":"test 06 ML","gravity":"4","status":"InProgress",
-				"Row1":[ {
-					"Text1": "New0106"
-				},
-				{
-					"Text1": "New016210"
-				}]
+				"Row1":[]
 			},
 			{
 				"wo_no":"26567","op_no":"50002137-1-0-0010","dis_no":"0060","dis_des":"test 06 MM","gravity":"5","status":"Paused",
-				"Row1":[ {
-					"Text1": "New0103"
-				},
-				{
-					"Text1": "New012120"
-				}]
+				"Row1":[]
 			},
 			{
 				"wo_no":"26567","op_no":"50002137-1-0-0010","dis_no":"0070","dis_des":"test 06 MN","gravity":"6","status":"InProgress",
-				"Row1":[ {
-					"Text1": "New0110"
-				},
-				{
-					"Text1": "New012610"
-				}]
+				"Row1":[]
 			}],
 			"Select" : [
 				{"Name": "Current Disruption"},
