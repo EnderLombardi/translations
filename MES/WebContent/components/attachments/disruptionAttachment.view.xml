@@ -1,0 +1,52 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" controllerName="airbus.mes.attachments.disruptionAttachment"
+	xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml">
+
+	<Toolbar>
+	<Button icon="sap-icon://nav-back" press="onNavPress" />
+	<ToolbarSpacer></ToolbarSpacer>
+		<Select selectedKey="{/Rowsets/Rowset/0/Select/1/Name}"
+			items="{
+						path: '/Rowsets/Rowset/0/Select/'
+					}">
+			<core:Item text="{Name}" />
+		</Select>
+		
+
+			<CheckBox text="Select All" />
+	</Toolbar>
+
+	<HBox>
+		<Toolbar>
+			
+			<Label text="{i18n>ListDisruption}"></Label>
+		</Toolbar>
+
+	</HBox>
+
+	<List id="List123" noDataText="Labels"
+		class="disruptionDetail sapUiSmallMarginBottom" items="{path: '/Rowsets/Rowset/0/Row/'}">
+
+		<CustomListItem>
+
+			<Panel expandable="true" expanded="false" class="disruptionExpandablePanel"
+				expand="handleDisruptionPanelExpand">
+				<headerToolbar>
+					<Toolbar>
+						<Title text="{Text}" />
+						<ToolbarSpacer />
+						<Title text="{Count}" />
+					</Toolbar>
+				</headerToolbar>
+				<List items="{path: 'Row1/'}">
+					<CustomListItem>
+						<CheckBox text="{Text1}" />
+					</CustomListItem>
+				</List>
+			</Panel>
+		</CustomListItem>
+
+
+
+	</List>
+</mvc:View>

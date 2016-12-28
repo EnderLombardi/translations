@@ -100,6 +100,17 @@ sap.ui
 								});
 
 					},
+					
+					/***********************************************************
+					 * Open Attachment View, on click of attachment in the disruption pop up
+					 */
+					onAttachDisruption : function(oEvt) {
+						this.nav = this.getView().oParent;
+						jQuery.sap.registerModulePath("airbus.mes.attachments","../components/attachments");
+						sap.ui.getCore().createComponent({ name : "airbus.mes.attachments"});
+						this.nav.addPage(airbus.mes.attachments.oView);
+						this.nav.to(airbus.mes.attachments.oView.getId());
+					},
 
 					/***********************************************************
 					 * Open Pop-Up to ask Time Lost while Closing the Disruption

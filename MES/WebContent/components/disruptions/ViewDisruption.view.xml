@@ -25,7 +25,10 @@
 									text="{i18nModel>closureDate} : {operationDisruptionsModel>ClosureDate}"
 									visible="{path: 'operationDisruptionsModel>Status', formatter: 'airbus.mes.disruptions.Formatter.setClosureDateVisibility'}"
 									class="msgHeaderText" />
-
+								
+								<Button text="{i18nModel>Attachment}" type="Accept"
+									design="Transparent" icon="sap-icon://attachment" press="onAttachDisruption" class="disruptionTitleBarButtons"/>
+								
 								<Button text="{i18nModel>close}" type="Accept"
 									visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setCloseButtonVisibility'}"
 									design="Transparent" icon="sap-icon://accept" press="onCloseDisruption" class="disruptionTitleBarButtons"/>
