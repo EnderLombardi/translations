@@ -5,14 +5,13 @@
 		id="valueHelpDialog"
 		title="{i18n>selectLine}"
 		class="sapUiPopupWithPadding"
-		items="{path : 'listModel>/list',
-				sorter: { path : 'class' }
-				}"
+		items="{lineVariantModel>/variantNameList}"
 		search="_handleValueHelpSearch"
-		confirm="_handleValueHelpClose"
+		liveChange="_handleValueHelpSearch"
+		confirm="handleSelectedLineValueHelp"
 		cancel="_handleValueHelpClose">
 		<StandardListItem
-			title="site"
-			description="key" />
+			title="{lineVariantModel>variantName}"
+			description="{lineVariantModel>Description}" />
 	</SelectDialog>
 </core:FragmentDefinition>

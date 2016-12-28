@@ -64,6 +64,7 @@ airbus.mes.linetracker.Component.prototype.createContent = function() {
         this.oView.setModel(sap.ui.getCore().getModel("stationDataModel"), "stationDataModel");
         this.oView.setModel(i18nModel, "i18n");
         this.oView.setModel(sap.ui.getCore().getModel("kpiI18n"), "kpiI18n");
+        this.oView.setModel(sap.ui.getCore().getModel("lineVariantModel"), "lineVariantModel");
         this.oView.setModel(sap.ui.getCore().getModel("KPItaktAdherence"), "KPItaktAdherence");
         this.oView.setModel(sap.ui.getCore().getModel("KPIshiftStaffing"), "KPIshiftStaffing");
         this.oView.setModel(sap.ui.getCore().getModel("KPIextraWork"), "KPIextraWork");

@@ -16,14 +16,14 @@
              <Button id="hideKPI" enabled="true" icon="sap-icon://hide"
 							text="Hide KPIs" press="hideKPI"/>
 	</HBox>
-	<HBox>
-		<core:Fragment fragmentName="airbus.mes.linetracker.KPICharts.KPIs" type="XML" />
-	</HBox>
+<!-- 	<HBox> -->
+<!-- 		<core:Fragment fragmentName="airbus.mes.linetracker.KPICharts.KPIs" type="XML" /> -->
+<!-- 	</HBox> -->
 	</VBox>
 	</Toolbar >
 	</customHeader>
-
-		<content id="id123" class="lineTrackerContent">
+		<core:Fragment fragmentName="airbus.mes.linetracker.KPICharts.KPIs" type="XML" />
+		<content>
 
 			<Table items="{stationDataModel>/list}" >
 				<headerToolbar>
@@ -58,7 +58,7 @@
 									<OverflowToolbarLayoutData />
 								</layoutData>
 							</Button>
-							<Input type="Text" placeholder="{i18n>selectLine}"
+							<Input id="selectLine" type="Text" placeholder="{i18n>selectLine}"
 								showValueHelp="true" valueHelpOnly="true" valueHelpRequest="handleValueHelp"
 								class="stationBtns sapUiTinyMarginEnd" width="8rem">
 								<layoutData>

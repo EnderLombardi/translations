@@ -19,7 +19,11 @@ airbus.mes.linetracker.util.ModelManager = {
 					bundleUrl : "../components/linetracker/KPICharts/i18n/i18n.properties",
 				});
 		core.setModel(i18nModel, "kpiI18n");
-
+		
+		//Line Variant Model
+		sap.ui.getCore().setModel(new sap.ui.model.json.JSONModel(),"lineVariantModel");
+		sap.ui.getCore().getModel("lineVariantModel").loadData("../components/linetracker/local/lineDataModel.json",null, false);
+		
 		//Takt Efficiency
 		sap.ui.getCore().setModel(new sap.ui.model.json.JSONModel(),"KPItaktEfficiency");
 		sap.ui.getCore().getModel("KPItaktEfficiency").loadData("../components/linetracker/KPICharts/data/KPItaktEfficiencyModel.json",null, false);

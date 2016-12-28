@@ -1,27 +1,10 @@
 <core:FragmentDefinition xmlns:core="sap.ui.core"
        xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml"
        xmlns:micro="sap.suite.ui.microchart" xmlns:custom="airbus.mes.linetracker.KPICharts">
-<!--        <Page width="100%"> -->
 
-                    <!--  <customHeader>
-                     <Toolbar>
-                     <Button icon="sap-icon://arrow-bottom" tooltip="Hide KPI" press="hideKPISlide"/>
-                      <ToolbarSpacer />
-                      <Label text="STATION 10" class="KPIheaderTitle"/>
-                      <ToolbarSpacer />
-                      </Toolbar>
-                     </customHeader> -->
-					<!-- <HBox>
-					<Toolbar>
-                     <Button icon="sap-icon://arrow-bottom" tooltip="Hide KPI" press="hideKPISlide"/>
-                      <ToolbarSpacer />
-                      <Label text="STATION 10" class="KPIheaderTitle"/>
-                      <ToolbarSpacer />
-                      </Toolbar>
-					</HBox> -->
                      <HBox class="classKpiHeaderContent" width="100%">
 
-                           <HBox justifyContent="SpaceAround" width="25%"
+                           <HBox justifyContent="SpaceAround" width="28%"
                                   class="contentHeaderCont">
                                   <HBox>
                                          <VBox justifyContent="SpaceAround" width="50%" margin-left="10rem">
@@ -117,7 +100,7 @@
                                   </HBox>
                            </HBox>
 
-                           <VBox wrap="Wrap" width="6%"
+                           <VBox wrap="Wrap" width="7%"
                                   class="contentHeaderCont kpiBoxes ">
                                   <Label text="{kpiI18n>LabourEfficiency}" design="Bold"
                                          width="100%" class="whiteTextHeader" />
@@ -152,7 +135,7 @@
                                   </VBox>
                            </VBox>
 
-                           <VBox width="18%" class="contentHeaderCont">
+                           <VBox width="20%" class="contentHeaderCont">
                                   <Label text="{kpiI18n>disruptions/andon}" design="Bold"
                                          width="100%" class="whiteTextHeader sapUiSmallMarginTopBottom" />
                                   <HBox height="65%">
@@ -245,19 +228,6 @@
                                   </VBox>
                            </VBox>
                            
-                           <VBox wrap="Wrap" width="6%"
-                                  class="contentHeaderCont kpiBoxes kpiBoxExtraWork">
-                                  <Label text="{kpiI18n>ExtraWork}" design="Bold"
-                                         width="100%" class="whiteTextHeader " />
-                                  <Label text="{kpiI18n>Operations}" width="100%"
-                                         class="kpiName" />
-                                  <Label text="{KPIextraWork>/operationsUI}" class="kpiValue"
-                                         design="Bold" />
-                                  <Label text="{kpiI18n>Hrs}" width="100%" class="kpiName" />
-                                  <Label text="{KPIextraWork>/hoursUI}" class="kpiValue"
-                                         design="Bold" />
-                           </VBox>
-
                            <VBox wrap="Wrap" width="8%"
                                   class="contentHeaderCont kpiBoxes kpiBoxExtraWork">
                                   <Label text="{kpiI18n>OpenAnomalies}" design="Bold"
@@ -272,6 +242,19 @@
                                   <Label text="{KPIopenAnomalies>/concessionsUI}" class="kpiValue"
                                          design="Bold" />
                            </VBox>
+                           
+                           <VBox wrap="Wrap" width="6%"
+                                  class="contentHeaderCont kpiBoxes kpiBoxExtraWork">
+                                  <Label text="{kpiI18n>ExtraWork}" design="Bold"
+                                         width="100%" class="whiteTextHeader " />
+                                  <Label text="{kpiI18n>Operations}" width="100%"
+                                         class="kpiName" />
+                                  <Label text="{KPIextraWork>/operationsUI}" class="kpiValue"
+                                         design="Bold" />
+                                  <Label text="{kpiI18n>Hrs}" width="100%" class="kpiName" />
+                                  <Label text="{KPIextraWork>/hoursUI}" class="kpiValue"
+                                         design="Bold" />
+                           </VBox>                           
 
                            <VBox wrap="Wrap" width="10%" alignItems="Center"
                                   class="contentHeaderCont kpiBoxes">
@@ -289,5 +272,4 @@
                            </VBox>
                      </HBox>
 
-<!--        </Page> -->
 </core:FragmentDefinition>

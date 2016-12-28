@@ -37,7 +37,10 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 //	onExit: function() {
 //
 //	}
-	
+/**
+ * To Add the Station in Line Tracker Station List
+ * 
+ */
 	onAddStation : function() {
 		var stationRow = {
 				"station" : "Station 10",
@@ -139,7 +142,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 		// create value help dialog
 		if (!this._valueHelpDialog) {
 			this._valueHelpDialog = sap.ui.xmlfragment(
-				"airbus.mes.linetracker.Dialog", this);
+				"airbus.mes.linetracker.LineVariantDialog", this);
 			this.getView().addDependent(this._valueHelpDialog);
 		}
 
@@ -149,21 +152,34 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 
 	_handleValueHelpSearch : function (evt) {
 		var sValue = evt.getParameter("value");
-		var oFilter = new Filter(
-			"site",
-			sap.ui.model.FilterOperator.Contains, sValue
-		);
+		var oFilter = new sap.ui.model.Filter("variantName",
+			sap.ui.model.FilterOperator.Contains, 
+			sValue);
 		evt.getSource().getBinding("items").filter([oFilter]);
 	},
-
-	_handleValueHelpClose : function (evt) {
+	
+	/*
+	 * fill select line field with selected value help variant name 
+	 * @param oEvt
+	 * @returns Selected Line Variant name for the Select Line field
+	 */
+	handleSelectedLineValueHelp:function(oEvt){
+		var oSelectedItem = oEvt.getParameter("selectedItem");
+		if (oSelectedItem) {
+			var selectLine = this.getView().byId("selectLine");
+			selectLine.setValue(oSelectedItem.getTitle());
+		}
+	},
+	
+	
+	/*_handleValueHelpClose : function (evt) {
 		var oSelectedItem = evt.getParameter("selectedItem");
 		if (oSelectedItem) {
 			var productInput = this.getView().byId(this.inputId);
 			productInput.setValue(oSelectedItem.getTitle());
 		}
 		evt.getSource().getBinding("items").filter([]);
-	},
+	},*/
 
 	displayKPIBelow : function(evt) {
 		var state = sap.ui.getCore().byId("idLinetracker1--idSlideControl").getState();

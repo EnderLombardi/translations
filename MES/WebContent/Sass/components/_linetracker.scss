@@ -8,13 +8,7 @@ Linetracker View (Custom Table)
 .customTable .lineTrackerContent{
     margin-top: 12rem;
 }
-/*
-#__page3-cont{
 
-}
-#__page4-cont{
-	margin-top: 12rem;
-}*/
 
 .customTable .toolbar {
 	background-color: #D5F1F8 !important;
@@ -267,6 +261,10 @@ KPI Charts
 /******************************
   Header
 ******************************/
+
+.KPIlinetrackerHeader{
+	margin-left:0rem;
+}
 /* 
 #idLinetracker1--linetrackerStationKPI{
     background: #fff !important;
