@@ -20,12 +20,12 @@ sap.ui.core.UIComponent.extend("airbus.mes.linetracker.Component", {
 //            buttonAction : "string"
         	 
         },
-        includes : [ "../linetracker/css/KPICharts.css",
+        /*includes : [ "../linetracker/css/KPICharts.css",
                      "../linetracker/css/customProgress.css",
                      "../linetracker/css/font-awesome.min.css",
                      "../linetracker/css/style.css",
                      "../linetracker/css/PhysicalStation.css"
-                    ]
+                    ]*/
     }
 
 });
@@ -72,7 +72,7 @@ airbus.mes.linetracker.Component.prototype.createContent = function() {
         this.oView.setModel(sap.ui.getCore().getModel("KPIdisruption"), "KPIdisruption");
         this.oView.setModel(sap.ui.getCore().getModel("KPIresolutionEfficiency"), "KPIresolutionEfficiency");
         this.oView.setModel(sap.ui.getCore().getModel("KPItaktEfficiency"), "KPItaktEfficiency");
-        
+        this.oView.setModel(sap.ui.getCore().getModel("KPIopenAnomalies"), "KPIopenAnomalies");
         airbus.mes.linetracker.oView = this.oView;
 
         return this.oView;

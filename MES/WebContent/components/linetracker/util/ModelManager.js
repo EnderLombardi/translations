@@ -44,11 +44,13 @@ airbus.mes.linetracker.util.ModelManager = {
         sap.ui.getCore().setModel(new sap.ui.model.json.JSONModel(),"KPIdisruption");
         sap.ui.getCore().getModel("KPIdisruption").loadData("../components/linetracker/KPICharts/data/KPIdisruptionModel.json",null, false);
         
-      //KPI Resolution Efficiency Model
+      //KPI Resolution Efficiency Model 
 		sap.ui.getCore().setModel(new sap.ui.model.json.JSONModel(),"KPIresolutionEfficiency");
 		sap.ui.getCore().getModel("KPIresolutionEfficiency").loadData("../components/linetracker/KPICharts/data/KPIresolutionEfficiencyModel.json",null, false);
 
-       
+		//KPI Open Anomalies Model
+		sap.ui.getCore().setModel(new sap.ui.model.json.JSONModel(),"KPIopenAnomalies");
+		sap.ui.getCore().getModel("KPIopenAnomalies").loadData("../components/linetracker/KPICharts/data/KPIopenAnomaliesModel.json",null, false);
 
 
     },

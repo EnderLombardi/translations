@@ -2,14 +2,34 @@
 	xmlns:control="airbus.mes.linetracker.KPICharts.control" xmlns:l="sap.ui.layout"
 	xmlns="sap.m" controllerName="airbus.mes.linetracker.Linetracker"
 	xmlns:custom="airbus.mes.linetracker" xmlns:html="http://www.w3.org/1999/xhtml"
-	xmlns:controlPhStation="airbus.mes.linetracker.PhysicalStation.control">
-	<Page showTitle="false" enableScrolling="true" class="customTable">
-		<content>
-			<Table items="{stationDataModel>/list}">
+	xmlns:controlPhStation="airbus.mes.linetracker.PhysicalStation.control"
+	xmlns:tnt="sap.tnt" >
+	<Page showTitle="false" class="customTable">
+	<customHeader class="pageHeader kpiPageHeader contentNoPad" >
+	<Toolbar id="kpiHeaderToolbar" class="classKpiheaderToolbar" height="15rem">
+	<VBox>
+	<HBox>
+			<Text text="{i18n>lineTrackerTitle}" />
+             <Button id="dateButton" icon="sap-icon://appointment"
+							press="datePick" class="classDateButton" />
+			 <ToolbarSpacer />
+             <Button id="hideKPI" enabled="true" icon="sap-icon://hide"
+							text="Hide KPIs" press="hideKPI"/>
+	</HBox>
+	<HBox>
+		<core:Fragment fragmentName="airbus.mes.linetracker.KPICharts.KPIs" type="XML" />
+	</HBox>
+	</VBox>
+	</Toolbar >
+	</customHeader>
+
+		<content id="id123" class="lineTrackerContent">
+
+			<Table items="{stationDataModel>/list}" >
 				<headerToolbar>
 					<Toolbar class="toolbar">
 						<Title text="{i18n>taktAdherence}" level="H2" />
-						<ToolbarSpacer />
+						<ToolbarSpacer/>
 
 						<Button text="KPI Charts" press="displayKPIBelow" class="sapUiLargeMarginEnd" />
 						<Text text="{i18n>forcastEndOfAssembly}" width="9.5%"
@@ -144,15 +164,22 @@
 				</items>
 			</Table>
 
-
 			<control:slideControl id="idSlideControl">
-				<control:slideContent>
-					<core:Fragment fragmentName="airbus.mes.linetracker.KPICharts.KPIs"
+					
+				<control:slideContent>	
+					<tnt:ToolHeader>
+					<Toolbar>
+                     <Button icon="sap-icon://arrow-bottom" tooltip="Hide KPI" press="hideKPISlide"/>
+                      <ToolbarSpacer />
+                      <Label text="STATION 10" class="KPIheaderTitle"/>
+                      <ToolbarSpacer />
+                      </Toolbar>
+					</tnt:ToolHeader>				
+					<core:Fragment fragmentName="airbus.mes.linetracker.KPICharts.StationSlideKPIs"
 						type="XML" />
 				</control:slideContent>
 			</control:slideControl>
-
-
 		</content>
+
 	</Page>
 </core:View>
