@@ -50,5 +50,8 @@
 
 
 	</List>
-
+<HBox>
+		<html:iframe
+    	src="{attachDisruption>/Rowsets/Rowset/0/Row/0/PDFUrl}" />
+				</HBox>	
 </mvc:View>
