@@ -1,44 +1,44 @@
 <core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
-	xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
-	controllerName="airbus.mes.disruptions.disruptionDetail" xmlns:html="http://www.w3.org/1999/xhtml">
-	<Page enableScrolling="false" class="GenricBgColor" height="100%"
-		width="100%">
+    xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+    controllerName="airbus.mes.disruptions.disruptionDetail" xmlns:html="http://www.w3.org/1999/xhtml">
+    <Page enableScrolling="false" class="GenricBgColor" height="100%"
+        width="100%">
 
-		<content>
-			<FlexBox height="100%" width="100%">
+        <content>
+            <FlexBox height="100%" width="100%">
 
-				<VBox height="100%" width="100%">
-					<Bar class="titleToolbar">
-						
-						<contentLeft>
-							<Button id="navBack" icon="sap-icon://arrow-left" text="{i18nModel>back}"
-								press="onNavBack"  />
-						</contentLeft>
-						<contentMiddle>
-							<Text text="operation20-work order10004567-924er Halter C-Brackets incl. Massen " class="textSize" />
-						</contentMiddle>
-					</Bar>
+                <VBox height="100%" width="100%">
+                    <Bar class="titleToolbar">
 
-					<HBox width="100%" height="100%">
-						<core:Fragment fragmentName="airbus.mes.disruptions.fragment.disruptionSummary"
-							type="XML">
-						</core:Fragment>
+                        <contentLeft>
+                            <Button id="navBack" icon="sap-icon://arrow-left" text="{i18nModel>back}"
+                                press="onNavBack"  />
+                        </contentLeft>
+                        <contentMiddle>
+                            <Text text="operation20-work order10004567-924er -" class="textSize" /><Text text="Halter C-Brackets incl. Massen " class="textSize" />
+                        </contentMiddle>
+                    </Bar>
 
-						<core:Fragment fragmentName="airbus.mes.disruptions.fragment.disruptionData"
-							type="XML">
-						</core:Fragment>
+                    <HBox width="100%" height="100%">
+                        <core:Fragment fragmentName="airbus.mes.disruptions.fragment.disruptionSummary"
+                            type="XML">
+                        </core:Fragment>
 
-
-						<core:Fragment fragmentName="airbus.mes.disruptions.fragment.actionButtons"
-							type="XML">
-						</core:Fragment>
-					</HBox>
+                        <core:Fragment fragmentName="airbus.mes.disruptions.fragment.disruptionData"
+                            type="XML">
+                        </core:Fragment>
 
 
+                        <core:Fragment fragmentName="airbus.mes.disruptions.fragment.actionButtons"
+                            type="XML">
+                        </core:Fragment>
+                    </HBox>
 
-				</VBox>
 
-			</FlexBox>
-		</content>
-	</Page>
+
+                </VBox>
+
+            </FlexBox>
+        </content>
+    </Page>
 </core:View>

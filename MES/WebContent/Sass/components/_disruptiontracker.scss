@@ -216,4 +216,12 @@ td{
         font-weight: bold;
         line-height: 4rem;
     }
+    .sapMFlexItem{
+        .textSize{
+            &:nth-child(1){
+                font-weight: bold;
+                color: black;
+            }
+        }
+    }
 }
