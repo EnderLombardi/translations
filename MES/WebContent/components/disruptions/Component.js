@@ -20,6 +20,7 @@ airbus.mes.disruptions.Component.prototype.createContent = function() {
     if (airbus.mes.disruptions.oView === undefined) {
 //        Initialization
         airbus.mes.disruptions.ModelManager.init(sap.ui.getCore());
+      
 
         this.oView = {};
 

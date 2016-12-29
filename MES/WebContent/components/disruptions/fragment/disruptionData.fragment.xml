@@ -8,6 +8,8 @@
 			<f:content>
 
 				<core:Title text="" />
+				<Label text="{i18nModel>Description}" />
+				<Input id="description" maxLength="40" enabled="{setEditable>/editable}" />
 				<Label text="{i18nModel>5Mclass}" />
 				<Select id="5Mclass" enabled="{setEditable>/editable}"
 					change="onSelectionChange" forceSelection="false">
@@ -52,12 +54,11 @@
 					tokenChange="onJigToolTokenChange" liveChange="onJigToolTokenChange"
 					enabled="{setEditable>/editable}" />
 				<Label text="{i18nModel>issuerGroup}" />
-				<Select id="selectOriginator" selectedKey=""
-											forceSelection="false" items="{disruptionCustomData>/Rowsets/Rowset/0/Row}" enabled="{setEditable>/editable}">
-											<items>
-												<core:Item text="{disruptionCustomData>group_desc}"
-													key="{disruptionCustomData>group_name}" />
-											</items>
+				<Select id="selectOriginator" selectedKey="" forceSelection="false"
+					items="{disruptionCustomData>/Rowsets/Rowset/0/Row}" enabled="{setEditable>/editable}">
+					<items>
+						<core:Item text="{disruptionCustomData>group_desc}" key="{disruptionCustomData>group_name}" />
+					</items>
 				</Select>
 
 
@@ -76,7 +77,7 @@
 				</Select>
 				<Label text="{i18nModel>openDate}" />
 				<DatePicker enabled="false" id="OpenDate" displayFormat="short"
-					value="{path: 'DisruptionDetailModel>/OpeningTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}" >
+					value="{path: 'DisruptionDetailModel>/OpeningTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}">
 					<layoutData>
 						<l:GridData span="L7 M7 S7" />
 					</layoutData>
@@ -90,7 +91,8 @@
 				</TimePicker>
 
 				<Label text="{i18nModel>TimeLost}" />
-				<Input placeholder="" id="timeLost" type="Number" value="" enabled="{setEditable>/editable}">
+				<Input placeholder="" id="timeLost" type="Number" value=""
+					enabled="{setEditable>/editable}">
 				</Input>
 
 
@@ -124,7 +126,7 @@
 				</TimePicker>
 			</f:content>
 		</f:SimpleForm>
-		
+
 		<f:SimpleForm id="Execution" editable="true"
 			layout="ResponsiveGridLayout" title="Execution" labelSpanL="12"
 			labelSpanM="12" width="100%" adjustLabelSpan="false" emptySpanL="0"
@@ -132,30 +134,32 @@
 			<f:content>
 				<core:Title text="" />
 				<Label text="{i18nModel>status}" />
-				<Select enabled="{setEditable>/editable}">
+				<Select enabled="false" id="status" >
 					<items>
-						<core:Item text="{i18nModel>Pending}" key="{i18nModel>Pending}"/>
-						<core:Item text="{i18nModel>acknowledge}" key="{i18nModel>acknowledge}"/>
-						<core:Item text="{i18nModel>Closed}" key="{i18nModel>Closed}"/>
+						<core:Item text="{i18nModel>Pending}" key="{i18nModel>Pending}" />
+						<core:Item text="{i18nModel>acknowledge}" key="{i18nModel>acknowledge}" />
+						<core:Item text="{i18nModel>Closed}" key="{i18nModel>Closed}" />
 					</items>
 				</Select>
-				<Label text="{i18nModel>commitedResolutionDate}" />
-				<DatePicker id="promisedDate"  valueFormat="yyyy-MM-dd"
-											displayFormat="short"
-											value="{path: 'DisruptionDetailModel>/PromisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}" enabled="{setEditable>/editable}">
+				<Label text="{i18nModel>commitedResolutionDate}" id="promisedDateLabel" />
+				<DatePicker id="promisedDate" valueFormat="yyyy-MM-dd"
+					displayFormat="short"
+					value="{path: 'DisruptionDetailModel>/PromisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}"
+					enabled="{setEditable>/editable}">
 					<layoutData>
 						<l:GridData span="L7 M7 S7" />
 					</layoutData>
 				</DatePicker>
 				<TimePicker id="promisedTime" displayFormat="HH:mm"
-											valueFormat="HH:mm:ss"
-											value="{path: 'DisruptionDetailModel>/PromisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}" enabled="{setEditable>/editable}">
+					valueFormat="HH:mm:ss"
+					value="{path: 'DisruptionDetailModel>/PromisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}"
+					enabled="{setEditable>/editable}">
 					<layoutData>
 						<l:GridData span="L5 M5 S5" />
 					</layoutData>
 				</TimePicker>
-				
-				
+
+
 				<core:Title text="" />
 				<Label text="{i18nModel>Gravity}" />
 				<Select id="severity" selectedKey="1" enabled="{setEditable>/editable}">
@@ -165,40 +169,44 @@
 						<core:Item text="{i18nModel>Blocked}" key="3" />
 					</items>
 				</Select>
-				<Label text="{i18nModel>EsclationLevel}" enabled="{setEditable>/editable}"/>
-				<Select>
+				<Label text="{i18nModel>EsclationLevel}" />
+				<Select id="esclationLevel" enabled="{setEditable>/editable}"
+					selectedKey="">
 					<items>
-						<core:Item text="2" />
+						<core:Item text="{i18nModel>NotEscalated}" key="1" />
+						<core:Item text="{i18nModel>FirstEscalation}" key="2" />
+						<core:Item text="{i18nModel>FinalEscalation}" key="3" />
 					</items>
 				</Select>
-				
-				
-				
+
+
+
 				<core:Title text="" />
 				<Label text="{i18nModel>resolverGroup}" />
-				<Select id="selectResponsible"
-											items="{disruptionCategoryModel>/Rowsets/Rowset/0/Row}"
-											change="onSelectionChange" forceSelection="false" enabled="{setEditable>/editable}">
-											<items>
-												<core:Item text="{disruptionCategoryModel>ResponsibleGroupDesc}"
-													key="{disruptionCategoryModel>ResponsibleGroup}" />
-											</items>
+				<Select id="selectResponsible" items="{disruptionCategoryModel>/Rowsets/Rowset/0/Row}"
+					change="onSelectionChange" forceSelection="false" enabled="{setEditable>/editable}">
+					<items>
+						<core:Item text="{disruptionCategoryModel>ResponsibleGroupDesc}"
+							key="{disruptionCategoryModel>ResponsibleGroup}" />
+					</items>
 				</Select>
 				<Label text="{i18nModel>dateOfEsclation}" />
-				<DatePicker displayFormat="short">
+				<DatePicker displayFormat="short"
+					value="{path: 'DisruptionDetailModel>/EscalationDateTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}">
 					<layoutData>
 						<l:GridData span="L7 M7 S7" />
 					</layoutData>
 				</DatePicker>
-				<TimePicker value="19:15" valueFormat="HH:mm"
+				<TimePicker  valueFormat="HH:mm"
+					value="{path: 'DisruptionDetailModel>/EscalationDateTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}"
 					displayFormat="HH:mm">
 					<layoutData>
 						<l:GridData span="L5 M5 S5" />
 					</layoutData>
 				</TimePicker>
-				
-				
-				
+
+
+
 				<core:Title text="" />
 				<Label text="{i18nModel>Resolver}" />
 				<Select enabled="{setEditable>/editable}">
@@ -207,15 +215,14 @@
 					</items>
 				</Select>
 				<Label text="{i18nModel>rootCause}" />
-				<Select id="selectRootCause" selectedKey=""
-											forceSelection="false" items="{disruptionCustomData>/Rowsets/Rowset/1/Row}"
-											change="onSelectionChange" enabled="{setEditable>/editable}">
-											<items>
-												<core:Item text="{disruptionCustomData>RootCause}"
-													key="{disruptionCustomData>RootCause}" />
-											</items>
+				<Select id="selectRootCause" selectedKey="" forceSelection="false"
+					items="{disruptionCustomData>/Rowsets/Rowset/1/Row}" change="onSelectionChange"
+					enabled="{setEditable>/editable}">
+					<items>
+						<core:Item text="{disruptionCustomData>RootCause}" key="{disruptionCustomData>RootCause}" />
+					</items>
 				</Select>
-				
+
 				<!-- <core:Title text="" /> <Label text="{i18nModel>dateOfEsclation}" 
 					/> <DatePicker displayFormat="short"> <layoutData> <l:GridData span="L7 M7 
 					S7" /> </layoutData> </DatePicker> <TimePicker value="19:15" valueFormat="HH:mm" 
@@ -233,11 +240,19 @@
 						class="sapUiSmallMarginEnd" />
 					<core:Icon src="sap-icon://camera" width="1rem" />
 				</HBox>
-				<TextArea width="100%" height="100%">
+				<TextArea width="100%" height="100%" id="comment">
 					<layoutData>
 						<l:GridData span="L12 M12 S12" />
 					</layoutData>
 				</TextArea>
+				<!-- this handle will be hidden in the UI -->
+				<Select id="handle" selectedKey="" forceSelection="false"
+					items="{disruptionCustomData>/Rowsets/Rowset/1/Row}" change="onSelectionChange"
+					visible="false">
+					<items>
+						<core:Item text="{disruptionCustomData>Handle}" key="{disruptionCustomData>Handle}" />
+					</items>
+				</Select>
 
 			</f:content>
 

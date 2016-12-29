@@ -81,7 +81,9 @@ sap.ui
 						this.getView().byId("selectOriginator")
 								.setSelectedKey();
 						this.setEnabledSelectBox(true, false, false, false);
-						this.getView().byId("timeLost").setPlaceholder(airbus.mes.disruptions.Formatter.getConfigTimeFullUnit());
+						this.getView().byId("timeLost").setPlaceholder(
+								airbus.mes.disruptions.Formatter
+										.getConfigTimeFullUnit());
 
 					},
 
@@ -217,26 +219,27 @@ sap.ui
 					onCreateDisruption : function() {
 
 						var oView = airbus.mes.disruptions.oView.createDisruption;
-						var validationFlag = oView.getController().checkExpectedDate();
-						if (validationFlag == false){
+						var validationFlag = oView.getController()
+								.checkExpectedDate();
+						if (validationFlag == false) {
 							airbus.mes.shell.ModelManager.messageShow(oView
 									.getModel("i18nModel").getProperty(
 											"CompulsaryExpectedDateTime"));
 							return;
 						}
-						
+
 						var sJigtools = oView.getController()
 								.getSelectedJIgTool();
-						if(sJigtools == undefined){
+						if (sJigtools == undefined) {
 							sJigtools = ""
-						}	
-						
+						}
+
 						var sMaterials = oView.getController()
 								.getSelectedMaterials();
-						if(sMaterials == undefined){
+						if (sMaterials == undefined) {
 							sMaterials = ""
 						}
-						
+
 						var oController = oView.getController();
 
 						// some mandatory fields need to be filled before
@@ -248,8 +251,8 @@ sap.ui
 
 						var sCategory = oView.byId("selectCategory")
 								.getSelectedKey();
-//						var sRootCause = oView.byId("selectRootCause")
-//								.getSelectedKey();
+						// var sRootCause = oView.byId("selectRootCause")
+						// .getSelectedKey();
 						var sComment = oView.byId("comment").getValue();
 
 						// forcefully set handle as the first item in the list
@@ -290,7 +293,8 @@ sap.ui
 										"value" : "SFCBO:"
 												+ airbus.mes.settings.ModelManager.site
 												+ ","
-												+ sap.ui.getCore()
+												+ sap.ui
+														.getCore()
 														.getModel(
 																"operationDetailModel")
 														.getProperty(
@@ -317,11 +321,17 @@ sap.ui
 									},
 									{
 										"attribute" : "TIME_LOST",
-										"value" : airbus.mes.disruptions.Formatter.timeToMilliseconds(oView.byId("timeLost").getValue())
+										"value" : airbus.mes.disruptions.Formatter
+												.timeToMilliseconds(oView.byId(
+														"timeLost").getValue())
 									},
 									{
 										"attribute" : "REQD_FIX_BY",
-										"value" : oView.byId("expectedDate").getValue() + " " + oView.byId("expectedTime").getValue()
+										"value" : oView.byId("expectedDate")
+												.getValue()
+												+ " "
+												+ oView.byId("expectedTime")
+														.getValue()
 									},
 									{
 										"attribute" : "GRAVITY",
@@ -359,25 +369,26 @@ sap.ui
 												+ airbus.mes.settings.ModelManager.site
 												+ ","
 												+ airbus.mes.settings.ModelManager.station
-									}, {
+									},
+									{
 										"attribute" : "MATERIALS",
 										"value" : sMaterials
-									}, {
+									},
+									{
 										"attribute" : "JIG_TOOLS",
 										"value" : sJigtools
-									}, {
-										"attribute" : "ISSUER",     //V1.5
-										"value" : oView.byId("selectIssuer")
-										          .getSelectedKey()
+									},
+									{
+										"attribute" : "ISSUER", // V1.5
+										"value" : oView.byId("selectIssuer").getSelectedKey()
 									}, {
 										"attribute" : "5M-CATEGORY",     //V1.5
-										"value" : oView.byId("selectCategoryClass")
-										          .getSelectedKey()
+										"value" : oView.byId("selectCategoryClass").getSelectedKey()
 									}, {
 										"attribute" : "RESOLVER",     //V1.5
 										"value" : oView.byId("selectResolver")
 										          .getSelectedKey()
-									} ]
+										          }]
 
 						}
 						aModelData.push(oJson);
@@ -432,29 +443,33 @@ sap.ui
 							return true;
 						}
 					},
-					checkExpectedDate:function(){
+					checkExpectedDate : function() {
 						var oView = airbus.mes.disruptions.oView.createDisruption;
-						
-						var expectedTime = oView.byId("expectedTime").getValue();
+
+						var expectedTime = oView.byId("expectedTime")
+								.getValue();
 						var openDate = oView.byId("OpenDate").getValue();
 						var openTime = oView.byId("openTime").getValue();
-						var expectedDate = oView.byId("expectedDate").getValue();
-						  if (expectedTime == "") {
+						var expectedDate = oView.byId("expectedDate")
+								.getValue();
+						if (expectedTime == "") {
 							var openDateTime = new Date(openDate);
 							var expectedDateTime = new Date(expectedDate);
 
 						} else {
-							var openDateTime = new Date(openDate + " "+ openTime);
-							var expectedDateTime = new Date(expectedDate + " "+ expectedTime);
+							var openDateTime = new Date(openDate + " "
+									+ openTime);
+							var expectedDateTime = new Date(expectedDate + " "
+									+ expectedTime);
 						}
 
 						if (openDateTime > expectedDateTime) {
-							
+
 							var flagProceed = false;
-							
+
 						}
 						return flagProceed;
-						
+
 					},
 
 					/***********************************************************
@@ -474,12 +489,18 @@ sap.ui
 								.getSelectedKey();
 						var sRootCause = oView.byId("selectRootCause")
 								.getSelectedKey();
-						var iTimeLost = airbus.mes.disruptions.Formatter.timeToMilliseconds(oView.byId("timeLost").getValue());
-						var dFixedByTime = oView.byId("expectedDate").getValue() + " " + oView.byId("expectedTime").getValue();
+						var iTimeLost = airbus.mes.disruptions.Formatter
+								.timeToMilliseconds(oView.byId("timeLost")
+										.getValue());
+						var dFixedByTime = oView.byId("expectedDate")
+								.getValue()
+								+ " " + oView.byId("expectedTime").getValue();
 						var sComment = oView.byId("comment").getValue()
 						var iGravity = oView.byId("gravity").getSelectedKey()
-						var dPromisedTime = oView.byId("promisedDate").getValue() === "" ? "" : oView.byId("promisedDate").getValue()
-																						+ " " + oView.byId("promisedTime").getValue();
+						var dPromisedTime = oView.byId("promisedDate")
+								.getValue() === "" ? "" : oView.byId(
+								"promisedDate").getValue()
+								+ " " + oView.byId("promisedTime").getValue();
 						// call update service
 						airbus.mes.disruptions.ModelManager.updateDisruption(
 								sMessageRef, sReason, sResponsibleGroup,
@@ -494,142 +515,181 @@ sap.ui
 						 */
 						try {
 							this.resetAllFields();
-							if (sap.ui.getCore().getModel("DisruptionDetailModel")
-									.getData() != undefined) {
+							if (sap.ui.getCore().getModel(
+									"DisruptionDetailModel").getData() != undefined) {
 
 								// fill select boxes on CreateDisruptionView for
 								// edit screen
-								var oModel = sap.ui.getCore().getModel("DisruptionDetailModel");
+								var oModel = sap.ui.getCore().getModel(
+										"DisruptionDetailModel");
 
-								this.getView().byId("selectCategory")
-									.setSelectedKey(
-											oModel.getProperty("/MessageType"));
-								// forced fireChange event on Category to get a	
+								this
+										.getView()
+										.byId("selectCategory")
+										.setSelectedKey(
+												oModel
+														.getProperty("/MessageType"));
+								// forced fireChange event on Category to get a
 								// good list in Responsible Group.
-								this.getView().byId("selectCategory").fireChange(
-									this.getView().byId("selectCategory")
-											.getSelectedItem());
+								this.getView().byId("selectCategory")
+										.fireChange(
+												this.getView().byId(
+														"selectCategory")
+														.getSelectedItem());
 								this
-									.getView()
-									.byId("selectResponsible")
-									.setSelectedKey(
-											oModel
-													.getProperty("/ResponsibleGroup"));
-								this.getView().byId("selectreason").setSelectedKey(
-									oModel.getProperty("/Reason"));
+										.getView()
+										.byId("selectResponsible")
+										.setSelectedKey(
+												oModel
+														.getProperty("/ResponsibleGroup"));
+								this.getView().byId("selectreason")
+										.setSelectedKey(
+												oModel.getProperty("/Reason"));
 								this
-									.getView()
-									.byId("selectOriginator")
-									.setSelectedKey(
-											oModel
-													.getProperty("/OriginatorGroup"));
-								this.getView().byId("selectRootCause")
-									.setSelectedKey(
-											oModel.getProperty("/RootCause"));
+										.getView()
+										.byId("selectOriginator")
+										.setSelectedKey(
+												oModel
+														.getProperty("/OriginatorGroup"));
+								this
+										.getView()
+										.byId("selectRootCause")
+										.setSelectedKey(
+												oModel
+														.getProperty("/RootCause"));
 
 								this.getView().byId("gravity").setSelectedKey(
-									oModel.getProperty("/Gravity"));
+										oModel.getProperty("/Gravity"));
 
-								this.getView().byId("timeLost").setValue(airbus.mes.disruptions.Formatter.timeMillisecondsToConfig(
-										oModel.getProperty("/TimeLost")));
+								this
+										.getView()
+										.byId("timeLost")
+										.setValue(
+												airbus.mes.disruptions.Formatter
+														.timeMillisecondsToConfig(oModel
+																.getProperty("/TimeLost")));
 								this.getView().byId("status").setValue(
-									oModel.getProperty("/Status"));
+										oModel.getProperty("/Status"));
 								this.getView().byId("description").setValue(
-									oModel.getProperty("/Description"));
+										oModel.getProperty("/Description"));
 
 								this.getView().byId("comment").setValue();
-								
+								/**
+								 * set data for additional fields MES V1.5
+								 */
+								if (sap.ui.getCore().getModel("device").oData.system.desktop == true) {
+									this
+											.getView()
+											.byId("esclationLevel")
+											.setValue(
+													oModel
+															.getProperty("/EscalationLevel"));
+								}
+								// *****************************************
+
 								var oMatInp = this.getView().byId("materials");
 								var oJiginp = this.getView().byId("jigtools");
-								
-								var aMatArray = oModel.oData.Materials.split(",");
-								var aJigArray = oModel.oData.JigTools.split(",");
-								
+
+								var aMatArray = oModel.oData.Materials
+										.split(",");
+								var aJigArray = oModel.oData.JigTools
+										.split(",");
+
 								var aMatTokens = [];
 								var aJigTokens = [];
-								
-								
-								for (var i in aMatArray) {
-	
-									if(aMatArray[i] !== ""){
-	
+
+								for ( var i in aMatArray) {
+
+									if (aMatArray[i] !== "") {
+
 										var loMatToken = new sap.m.Token({
 											text : aMatArray[i],
 											editable : false,
 										});
-	
+
 										aMatTokens.push(loMatToken)
-	
-									}							
+
+									}
 								}
-								
+
 								oMatInp.setTokens(aMatTokens);
 								this._materialListDialog.close();
-								
-								for (var j in aJigArray) {
-	
+
+								for ( var j in aJigArray) {
+
 									if (aJigArray[j] != "") {
 										var loJigToken = new sap.m.Token({
 											text : aJigArray[j],
 											editable : false,
 										});
-	
+
 										aJigTokens.push(loJigToken)
-	
+
 									}
 								}
-								
+
 								oJiginp.setTokens(aJigTokens);
 								this.jigToolSelectDialog.close();
-							
-								
+
 								this.initializeTree();
 
 								// Disable/Enable inputs according to
 								// Originator/Resolution Group
 								var origFlag = sap.ui.getCore().getModel(
-									"DisruptionDetailModel").getData().OriginatorFlag;
+										"DisruptionDetailModel").getData().OriginatorFlag;
 
 								var resFlag = sap.ui.getCore().getModel(
-									"DisruptionDetailModel").getData().ResponsibleFlag;
+										"DisruptionDetailModel").getData().ResponsibleFlag;
 
 								if (origFlag != "X" && resFlag == "X") {
 									this.resolutionGroupSettings();
 								} else
-								this.originatorGroupSettings();
+									this.originatorGroupSettings();
 
 							} else {
 
-								// expected date and time are not cleared in reset
+								// expected date and time are not cleared in
+								// reset
 								// all fields as formatter has to be applied
 								this.getView().byId("expectedDate").setValue();
 								this.getView().byId("expectedTime").setValue();
 
 								this.initializeTree();
-								
-								if (this.getView().byId("selectOriginator").getItems().length == 1)
+
+								if (this.getView().byId("selectOriginator")
+										.getItems().length == 1)
 									this.getView().byId("selectOriginator")
-										.setSelectedKey(
-												this.getView().byId(
-														"selectOriginator")
-														.getItemAt(0).getKey());
+											.setSelectedKey(
+													this.getView().byId(
+															"selectOriginator")
+															.getItemAt(0)
+															.getKey());
 
 								// Enable fields for creation
 								this.createDisruptionSettings();
 
 							}
-						} catch(err) {
-							sap.m.MessageToast.show(
-									airbus.mes.disruptions.oView.viewDisruption.
-										getModel("i18nModel").getProperty("error"));
-							
-							if(nav.getCurrentPage().getId() == "stationTrackerView") {
-								sap.ui.getCore().byId("operationDetailsView--operDetailNavContainer").back();
-							} else if(nav.getCurrentPage().getId() == "disruptiontrackerView") {
-								sap.ui.getCore().byId("disruptionDetailPopup--disruptDetailNavContainer").back();
+						} catch (err) {
+							sap.m.MessageToast
+									.show(airbus.mes.disruptions.oView.viewDisruption
+											.getModel("i18nModel").getProperty(
+													"error"));
+
+							if (nav.getCurrentPage().getId() == "stationTrackerView") {
+								sap.ui
+										.getCore()
+										.byId(
+												"operationDetailsView--operDetailNavContainer")
+										.back();
+							} else if (nav.getCurrentPage().getId() == "disruptiontrackerView") {
+								sap.ui
+										.getCore()
+										.byId(
+												"disruptionDetailPopup--disruptDetailNavContainer")
+										.back();
 							}
 						}
-						
+
 					},
 
 					setEnabledSelectBox : function(fCategory, fReason,
@@ -733,16 +793,20 @@ sap.ui
 					onCancelCreateDisruption : function() {
 
 						var currentPage = nav.getCurrentPage().getId();
-						
-						var oOperDetailNavContainer;
-						
-						if(currentPage == "stationTrackerView")
-							oOperDetailNavContainer = sap.ui.getCore().byId("operationDetailsView--operDetailNavContainer");
 
-						
-						else if(currentPage == "disruptiontrackerView")
-							oOperDetailNavContainer = sap.ui.getCore().byId("disruptionDetailPopup--disruptDetailNavContainer");
-						
+						var oOperDetailNavContainer;
+
+						if (currentPage == "stationTrackerView")
+							oOperDetailNavContainer = sap.ui
+									.getCore()
+									.byId(
+											"operationDetailsView--operDetailNavContainer");
+
+						else if (currentPage == "disruptiontrackerView")
+							oOperDetailNavContainer = sap.ui
+									.getCore()
+									.byId(
+											"disruptionDetailPopup--disruptDetailNavContainer");
 
 						oOperDetailNavContainer.back();
 					},
@@ -766,8 +830,10 @@ sap.ui
 						this.getView().byId("materials").destroyTokens();
 						this.getView().byId("jigtools").destroyTokens();
 
-						//hide the setBusyIndicator launched in stationtracker ModelManager
-						airbus.mes.shell.busyManager.unsetBusy(sap.ui.getCore(), "createDisruptionView");
+						// hide the setBusyIndicator launched in stationtracker
+						// ModelManager
+						airbus.mes.shell.busyManager.unsetBusy(
+								sap.ui.getCore(), "createDisruptionView");
 
 					},
 
@@ -797,9 +863,9 @@ sap.ui
 					 */
 					addNewMaterialToList : function() {
 
-//						var oModelData = sap.ui.getCore().getModel(
-//								"MaterialListModel").getProperty(
-//								"/MaterialList");
+						// var oModelData = sap.ui.getCore().getModel(
+						// "MaterialListModel").getProperty(
+						// "/MaterialList");
 
 						if (sap.ui.getCore().byId("customMaterial").getValue() != "") {
 
@@ -851,7 +917,12 @@ sap.ui
 																					items : [
 																							new sap.m.Label(
 																									{
-																										text : this.getView().getModel("i18nModel").getProperty("Quantity")
+																										text : this
+																												.getView()
+																												.getModel(
+																														"i18nModel")
+																												.getProperty(
+																														"Quantity")
 																									}),
 																							new sap.m.Input(
 																									{
@@ -978,9 +1049,9 @@ sap.ui
 					 */
 					addNewJigToolToList : function() {
 
-//						var oModelData = sap.ui.getCore().getModel(
-//								"MaterialListModel").getProperty(
-//								"/MaterialList");
+						// var oModelData = sap.ui.getCore().getModel(
+						// "MaterialListModel").getProperty(
+						// "/MaterialList");
 
 						if (sap.ui.getCore().byId("customJigTool").getValue() != "") {
 
@@ -1013,7 +1084,12 @@ sap.ui
 																					items : [
 																							new sap.m.Label(
 																									{
-																										text : this.getView().getModel("i18nModel").getProperty("Quantity")
+																										text : this
+																												.getView()
+																												.getModel(
+																														"i18nModel")
+																												.getProperty(
+																														"Quantity")
 																									}),
 																							new sap.m.Input(
 																									{
@@ -1114,13 +1190,137 @@ sap.ui
 					onJigToolTokenChange : function() {
 						this.onJigToolValueHelpRequest();
 					},
+					onNavBack : function() {
+						sap.ui.getCore().byId("globalNavView--navCont").back();
+					},
 
-				/**
-				 * Called when the Controller is destroyed. Use this one to free
-				 * resources and finalize activities.
-				 * 
-				 * @memberOf airbus.mes.components.disruptions.CreateDisruption
-				 */
+					/**
+					 * Called when the Controller is destroyed. Use this one to
+					 * free resources and finalize activities.
+					 * 
+					 * @memberOf airbus.mes.components.disruptions.CreateDisruption
+					 */
+					/**
+					 * 
+					 * MES V1.5 initially all fields will be non editable
+					 */
+					setDisruptionDetailData : function() {
+
+						try {
+							this.resetAllFields();
+							
+							if (sap.ui.getCore().getModel(
+									"DisruptionDetailModel").getData() != undefined) {
+
+								// fill select boxes on CreateDisruptionView for
+								// edit screen
+								var oModel = sap.ui.getCore().getModel(
+										"DisruptionDetailModel");
+
+								this.getView()
+										.byId("selectCategory")
+										.setSelectedKey(
+												oModel.getProperty("/MessageType"));
+
+								this.getView()
+										.byId("selectResponsible")
+										.setSelectedKey(
+												oModel.getProperty("/ResponsibleGroup"));
+
+								this.getView().byId("selectreason")
+										.setSelectedKey(
+												oModel.getProperty("/Reason"));
+
+								this.getView()
+										.byId("selectOriginator")
+										.setSelectedKey(
+												oModel.getProperty("/OriginatorGroup"));
+
+								this.getView()
+										.byId("selectRootCause")
+										.setSelectedKey(
+												oModel.getProperty("/RootCause"));
+
+								this.getView().byId("gravity").setSelectedKey(
+										oModel.getProperty("/Gravity"));
+
+								this.getView()
+										.byId("timeLost")
+										.setValue(
+												airbus.mes.disruptions.Formatter
+														.timeMillisecondsToConfig(oModel
+																.getProperty("/TimeLost")));
+
+								this.getView().byId("status").setValue(
+										oModel.getProperty("/Status"));
+
+								this.getView().byId("description").setValue(
+										oModel.getProperty("/Description"));
+
+								this.getView().byId("comment").setValue();
+
+								this.getView().byId("esclationLevel").setValue(
+										oModel.getProperty("/EscalationLevel"));
+
+								// *****************************************
+
+								var oMatInp = this.getView().byId("materials");
+								var oJiginp = this.getView().byId("jigtools");
+
+								var aMatArray = oModel.oData.Materials
+										.split(",");
+								var aJigArray = oModel.oData.JigTools
+										.split(",");
+
+								var aMatTokens = [];
+								var aJigTokens = [];
+
+								for ( var i in aMatArray) {
+
+									if (aMatArray[i] !== "") {
+
+										var loMatToken = new sap.m.Token({
+											text : aMatArray[i],
+											editable : false,
+										});
+
+										aMatTokens.push(loMatToken)
+
+									}
+								}
+
+								oMatInp.setTokens(aMatTokens);
+								this._materialListDialog.close();
+
+								for ( var j in aJigArray) {
+
+									if (aJigArray[j] != "") {
+										var loJigToken = new sap.m.Token({
+											text : aJigArray[j],
+											editable : false,
+										});
+
+										aJigTokens.push(loJigToken)
+
+									}
+								}
+
+								oJiginp.setTokens(aJigTokens);
+								this.jigToolSelectDialog.close();
+
+							}
+						} catch (err) {
+							sap.m.MessageToast
+									.show(airbus.mes.disruptions.oView.viewDisruption
+											.getModel("i18nModel").getProperty(
+													"error"));
+
+							if (nav.getCurrentPage().getId() == "disruptionDetail") {								
+										nav.back();
+							} 
+						}
+
+					}
 				/*
 				 * onExit: function() { }
 				 */
