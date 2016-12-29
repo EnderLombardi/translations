@@ -395,7 +395,7 @@ sap.ui
 						 */
 						var oModel = sap.ui.getCore().getModel("DisruptionDetailModel");
 						//set the data in disruption Detail Model
-						oModel.setData(sap.ui.getCore().getModel("operationDisruptionsModel").oData.Rowsets.Rowset[0].Row[0]);						
+						oModel.setData(airbus.mes.disruptions.oView.viewDisruption.getModel("operationDisruptionsModel").oData.Rowsets.Rowset[0].Row[0]);						
 						sap.ui.getCore().byId("globalNavView--navCont").to(airbus.mes.disruptions.oView.disruptionDetail
 								.getId())
 						this.setDataForDisruptionDetail();
