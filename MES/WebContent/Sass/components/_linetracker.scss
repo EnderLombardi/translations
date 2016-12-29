@@ -2,133 +2,133 @@
 LINETRACKER
 *******************/
 /************************
-Linetracker View (Custom Table)
+Linetracker View (Main Table)
 *************************/
 
-.customTable .lineTrackerContent{
+.classLineTrackerTable .lineTrackerContent{
     margin-top: 12rem;
 }
 
 
-.customTable .toolbar {
+.classLineTrackerTable .toolbar {
 	background-color: #D5F1F8 !important;
 	border: none !important;
 	height: auto !important;
 }
-.customTable table tr th,td{
+.classLineTrackerTable table tr th,td{
     text-align: center !important;
 	vertical-align: middle !important;
 	border-left: 2px solid #60B5CD !important;
 }
 
-.customTable table tr th div {
+.classLineTrackerTable table tr th div {
 	border: none !important;
 }
 
-.customTable table tr th span {
+.classLineTrackerTable table tr th span {
     text-align: center !important;
 }
 
-.customTable table tr th,td span, .headerColumnText {
+.classLineTrackerTable table tr th,td span, .headerColumnText {
     text-align: center !important;
 }
 
-.customTable .taktHeading {
+.classLineTrackerTable .taktHeading {
 	color: #75ACC1 !important;
 	font-size: 1vw !important;
 }
 
-.customTable table tr th:nth-child(1), td:nth-child(2), th:nth-child(2) {
+.classLineTrackerTable table tr th:nth-child(1), td:nth-child(2), th:nth-child(2) {
 	background-color: #FFFFFF !important;
 }
 
-.customTable table tr td:nth-child(2), th:nth-child(2) {
+.classLineTrackerTable table tr td:nth-child(2), th:nth-child(2) {
 	background-image: url("grid.svg");
 	vertical-align: middle !important;
 }
 
-.customTable table tr th:nth-child(2) .sapMFlexItem {
+.classLineTrackerTable table tr th:nth-child(2) .sapMFlexItem {
 	width: 100% !important;
 }
 
-.customTable .sapMListTblCell{
+.classLineTrackerTable .sapMListTblCell{
 	padding: 0rem 0rem !important;
 	
 }
 
-.customTable table tr th:nth-child(n+3) {
+.classLineTrackerTable table tr th:nth-child(n+3) {
 	background-color: #D5F1F8 !important;
 }
 
-/* .customTable table tr th:nth-child(1) {
+/* .classLineTrackerTable table tr th:nth-child(1) {
 	width: 22vw !important;
 } */
 
-.customTable table tr td:nth-child(5) > span {
+.classLineTrackerTable table tr td:nth-child(5) > span {
 	font-size: 1.5rem !important;
 	color: #5B707E !important;
 }
 
-.customTable table tr td:nth-child(6) > span {
+.classLineTrackerTable table tr td:nth-child(6) > span {
 	font-size: 1.5rem !important;
 	color: #FE5102 !important;
 }
 
-.customTable table tr td:nth-child(7) > span {
+.classLineTrackerTable table tr td:nth-child(7) > span {
 	font-size: 1.5rem !important;
 	color: #5B707E !important;
 }
 
-.customTable table tr td:nth-child(8) > span {
+.classLineTrackerTable table tr td:nth-child(8) > span {
 	font-size: 1.5rem !important;
 	color: #FE5102 !important;
 }
 
-.customTable .stationBtns {
+.classLineTrackerTable .stationBtns {
 	height: 2rem !important;
     font-size: 2rem !important;
 	margin-left: 0 !important;
 	margin-right: 0 !important;
 }
 
-.customTable .stationBtns:nth-child(1) span {
+.classLineTrackerTable .stationBtns:nth-child(1) span {
 	font-size: 1rem !important;
 }
 
-/* .customTable .stationBtns div {
+/* .classLineTrackerTable .stationBtns div {
 	padding-left: 0 !important;
 	padding-right: 0 !important;
 } */
 
-.customTable .sapMBtnInner {
+.classLineTrackerTable .sapMBtnInner {
 	height: 2rem !important;
     font-size: 1rem !important;
 }
 
-.customTable .stationBtns .sapMBtnContent {
+.classLineTrackerTable .stationBtns .sapMBtnContent {
 	line-height: 2rem !important;
 }
 
-.customTable .stationBtns .sapMBtnIcon {
+.classLineTrackerTable .stationBtns .sapMBtnIcon {
 	line-height: 2rem !important;
     font-size: 1.3rem !important;
 }
 
-.customTable .stationBtns input {
+.classLineTrackerTable .stationBtns input {
 	height: 2rem !important;
     font-size: 1rem !important;
 }
 
-.customTable .stationBtns .sapMInputValHelp {
+.classLineTrackerTable .stationBtns .sapMInputValHelp {
 	height: 1.9rem !important;
 }
 
-.customTable .stationBtns .sapMInputValHelpInner {
+.classLineTrackerTable .stationBtns .sapMInputValHelpInner {
 	height: 1.9rem !important;
     line-height: 2rem !important;
 }
 
-.customTable .stationBtns:nth-child(2) {
+.classLineTrackerTable .stationBtns:nth-child(2) {
 	margin-right: 0.5rem !important;
 }
 
@@ -140,11 +140,11 @@ Linetracker View (Custom Table)
 	width: 100% !important;
 }
 
-.customTable .progressBar {
+.classLineTrackerTable .progressBar {
 	margin-left: 0.15rem !important;
 }
 
-.customTable .stationPopoverBtns div span {
+.classLineTrackerTable .stationPopoverBtns div span {
 	background-color: #FFFFFF !important;
 }
 
@@ -329,7 +329,7 @@ TASK ADHERENCE
   font-size: 15px; }
 */
 /*************
-ARE CHART
+ARE CHART for Header of Line Tracker
 **************/
 svg#idStationDetail1--takt_adherence_area_chart {
   border: none; }
@@ -389,6 +389,69 @@ svg#idStationDetail1--takt_adherence_area_chart {
   stroke: rgba(109, 147, 194, 0.39);
   opacity: 0.7; }
 #idStationDetail1--takt_adherence_area_chart .ygrid path {
+  stroke-width: 0; }
+
+/*************
+ARE CHART  for Station specific(below slide)
+**************/
+svg#idStationDetail1--station_takt_adherence_area_chart{
+  border: none; }
+
+.classTaktAdherenceAreaChart div:nth-child(2) {
+  position: absolute;
+  top: 0;
+  left: 20px; }
+.classTaktAdherenceAreaChart div:nth-child(3) {
+  position: absolute;
+  top: 0;
+  right: 15px; }
+
+.takt_adherence_area_chart_svg-container {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
+  /* aspect ratio */
+  vertical-align: top;
+  overflow: hidden; }
+
+.takt_adherence_area_chart_svg-content-responsive {
+  display: inline-block;
+  position: absolute;
+  top: 10px;
+  left: 0; }
+
+#idStationDetail1--station_takt_adherence_area_chart .yaxis {
+/*   fill: white; */
+  font-size: 7px; }
+#idStationDetail1--station_takt_adherence_area_chart .yaxelabel {
+/*   fill: white; */
+  font-size: 7px;
+  margin-bottom: 2px; }
+#idStationDetail1--station_takt_adherence_area_chart .axis path,
+#idStationDetail1--station_takt_adherence_area_chart .axis line {
+  fill: none;
+  stroke: grey;
+  shape-rendering: crispEdges; }
+#idStationDetail1--station_takt_adherence_area_chart .area {
+  fill: #E5002B; }
+#idStationDetail1--station_takt_adherence_area_chart .line {
+  fill: none;
+  stroke: #0D2C63;
+  stroke-width: 2; }
+#idStationDetail1--station_takt_adherence_area_chart .realLine {
+  fill: none;
+  stroke: white;
+  stroke-width: 2; }
+#idStationDetail1--station_takt_adherence_area_chart .estimateLine {
+  fill: none;
+  stroke: white;
+  stroke-width: 1;
+  stroke-dasharray: 10; }
+#idStationDetail1--station_takt_adherence_area_chart .ygrid .tick {
+  stroke: rgba(109, 147, 194, 0.39);
+  opacity: 0.7; }
+#idStationDetail1--station_takt_adherence_area_chart .ygrid path {
   stroke-width: 0; }
 
 /*******************************

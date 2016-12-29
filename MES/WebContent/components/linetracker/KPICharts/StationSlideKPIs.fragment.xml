@@ -7,7 +7,7 @@
                      <Toolbar>
                      <Button icon="sap-icon://arrow-bottom" tooltip="Hide KPI" press="hideKPISlide"/>
                       <ToolbarSpacer />
-                      <Label text="STATION 10" class="KPIheaderTitle"/>
+                      <Label text="STATION 30" class="KPIheaderTitle"/>
                       <ToolbarSpacer />
                       </Toolbar>
                      </customHeader>
@@ -34,6 +34,7 @@
                                                               </layout:content>
                                                        </layout:Grid>
                                                        <custom:TaktAdherenceAreaChart
+                                                       id="station_takt_adherence_area_chart"
                                                        data="{KPI>/Rowsets/Rowset/0/Row/ChartTakt/data}"
                                                        realData="{KPI>/Rowsets/Rowset/0/Row/ChartTakt/realData}">
                                                        <custom:data>
@@ -152,7 +153,7 @@
                                   </VBox>
                            </VBox>
 
-                           <VBox width="22%" class="contentHeaderCont">
+                           <VBox width="20%" class="contentHeaderCont">
                                   <Label text="{kpiI18n>disruptions/andon}" design="Bold"
                                          width="100%" class="whiteTextHeader sapUiSmallMarginTopBottom" />
                                   <HBox height="65%">
@@ -245,6 +246,21 @@
                                   </VBox>
                            </VBox>
                            
+                           <VBox wrap="Wrap" width="8%"
+                                  class="contentHeaderCont kpiBoxes kpiBoxExtraWork">
+                                  <Label text="{kpiI18n>OpenAnomalies}" design="Bold"
+                                         width="100%" class="whiteTextHeader " />
+                                  <Label text="{kpiI18n>openReservation}" width="100%"
+                                         class="kpiName" />
+                                  <Label text="{kpiI18n>missingPart}" width="100%"
+                                         class="kpiName" />
+                                  <Label text="{KPIopenAnomalies>/openReservationUI}" class="kpiValue"
+                                         design="Bold" />
+                                  <Label text="{kpiI18n>concessions}" width="100%" class="kpiName" />
+                                  <Label text="{KPIopenAnomalies>/concessionsUI}" class="kpiValue"
+                                         design="Bold" />
+                           </VBox>
+                           
                            <VBox wrap="Wrap" width="6%"
                                   class="contentHeaderCont kpiBoxes kpiBoxExtraWork">
                                   <Label text="{kpiI18n>ExtraWork}" design="Bold"
@@ -258,22 +274,7 @@
                                          design="Bold" />
                            </VBox>
 
-                           <!-- <VBox wrap="Wrap" width="8%"
-                                  class="contentHeaderCont kpiBoxes kpiBoxExtraWork">
-                                  <Label text="{kpiI18n>OpenAnomalies}" design="Bold"
-                                         width="100%" class="whiteTextHeader " />
-                                  <Label text="{kpiI18n>openReservation}" width="100%"
-                                         class="kpiName" />
-                                  <Label text="{kpiI18n>missingPart}" width="100%"
-                                         class="kpiName" />
-                                  <Label text="{KPIopenAnomalies>/openReservationUI}" class="kpiValue"
-                                         design="Bold" />
-                                  <Label text="{kpiI18n>concessions}" width="100%" class="kpiName" />
-                                  <Label text="{KPIopenAnomalies>/concessionsUI}" class="kpiValue"
-                                         design="Bold" />
-                           </VBox> -->
-
-                           <VBox wrap="Wrap" width="12%" alignItems="Center"
+                           <VBox wrap="Wrap" width="10%" alignItems="Center"
                                   class="contentHeaderCont kpiBoxes">
                                   <Label text="{kpiI18n>ShiftSTAFFING}" size="L"
                                          design="Bold" width="100%" class="whiteTextHeader" />

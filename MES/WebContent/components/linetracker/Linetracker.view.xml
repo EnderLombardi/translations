@@ -4,28 +4,30 @@
 	xmlns:custom="airbus.mes.linetracker" xmlns:html="http://www.w3.org/1999/xhtml"
 	xmlns:controlPhStation="airbus.mes.linetracker.PhysicalStation.control"
 	xmlns:tnt="sap.tnt" >
-	<Page showTitle="false" class="customTable">
-	<customHeader class="pageHeader kpiPageHeader contentNoPad" >
-	<Toolbar id="kpiHeaderToolbar" class="classKpiheaderToolbar" height="15rem">
-	<VBox>
-	<HBox>
+	<Page showTitle="false" class="classLineTrackerTable">
+
+
+
+
+	<customHeader>
+	<Toolbar  class="pageHeader kpiPageHeader contentNoPad">
 			<Text text="{i18n>lineTrackerTitle}" />
              <Button id="dateButton" icon="sap-icon://appointment"
 							press="datePick" class="classDateButton" />
 			 <ToolbarSpacer />
              <Button id="hideKPI" enabled="true" icon="sap-icon://hide"
 							text="Hide KPIs" press="hideKPI"/>
-	</HBox>
-<!-- 	<HBox> -->
-<!-- 		<core:Fragment fragmentName="airbus.mes.linetracker.KPICharts.KPIs" type="XML" /> -->
-<!-- 	</HBox> -->
-	</VBox>
+
+
+
+
+
 	</Toolbar >
 	</customHeader>
-		<core:Fragment fragmentName="airbus.mes.linetracker.KPICharts.KPIs" type="XML" />
+		<core:Fragment fragmentName="airbus.mes.linetracker.KPICharts.KPIs" type="XML" height="10rem"/>
 		<content>
 
-			<Table items="{stationDataModel>/list}" >
+			<Table id="linetrackerTable" items="{stationDataModel>/list}" >
 				<headerToolbar>
 					<Toolbar class="toolbar">
 						<Title text="{i18n>taktAdherence}" level="H2" />
@@ -113,27 +115,45 @@
 				<items>
 					<ColumnListItem>
 						<cells>
-							<controlPhStation:PhysicalStationBox
-								color="#bcf6ff" actionIconColor="black" station="Station 30"
-								msn="MSN 1274" press="testPress">
-								<controlPhStation:actionIconButton>
-									<core:Icon src="sap-icon://refresh" />
-								</controlPhStation:actionIconButton>
 
-								<controlPhStation:image>
-									<Image
-										src="http://www.look4travel.com.au/flight_specials/lufthansa-logo.jpg"
-										width="100%" height="100%" />
-								</controlPhStation:image>
 
-								<controlPhStation:detailIconButton>
-									<Button icon="sap-icon://vertical-grip" press="openStationPopover"
-										type="Transparent" width="100%" tooltip="More..." />
-								</controlPhStation:detailIconButton>
 
-							</controlPhStation:PhysicalStationBox>
 
-							<custom:customProgressBar planned="{stationDataModel>planned}"
+
+
+							<Panel>
+								<content>
+									<HBox alignItems="Center" justifyContent="Center">
+
+										<controlPhStation:PhysicalStationBox
+
+
+
+											color="#bcf6ff" actionIconColor="black" station="Station 30"
+											msn="MSN 1274">
+											<controlPhStation:actionIconButton>
+												<core:Icon src="sap-icon://refresh" />
+											</controlPhStation:actionIconButton>
+
+											<controlPhStation:image>
+
+
+												<Image
+													src="http://www.look4travel.com.au/flight_specials/lufthansa-logo.jpg"
+													width="100%" height="100%" />
+											</controlPhStation:image>
+
+											<controlPhStation:detailIconButton>
+												<Button icon="sap-icon://vertical-grip" press="openStationPopover"
+													type="Transparent" width="100%" tooltip="More..." />
+											</controlPhStation:detailIconButton>
+
+										</controlPhStation:PhysicalStationBox>
+
+									</HBox>
+								</content>
+							</Panel>
+							<custom:linetrackerProgressBar planned="{stationDataModel>planned}"
 								confirmed="{stationDataModel>confirmed}" class="progressBar" />
 
 

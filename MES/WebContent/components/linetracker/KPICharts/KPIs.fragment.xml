@@ -2,7 +2,7 @@
        xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml"
        xmlns:micro="sap.suite.ui.microchart" xmlns:custom="airbus.mes.linetracker.KPICharts">
 
-                     <HBox class="classKpiHeaderContent" width="100%">
+                     <HBox id="kpiHeaderContent" class="classKpiHeaderContent" width="100%">
 
                            <HBox justifyContent="SpaceAround" width="28%"
                                   class="contentHeaderCont">
@@ -17,6 +17,7 @@
                                                               </layout:content>
                                                        </layout:Grid>
                                                        <custom:TaktAdherenceAreaChart
+                                                       id="takt_adherence_area_chart"
                                                        data="{KPI>/Rowsets/Rowset/0/Row/ChartTakt/data}"
                                                        realData="{KPI>/Rowsets/Rowset/0/Row/ChartTakt/realData}">
                                                        <custom:data>

@@ -1,5 +1,5 @@
 "use strict";
-sap.ui.core.Control.extend("airbus.mes.linetracker.customProgressBar", {
+sap.ui.core.Control.extend("airbus.mes.linetracker.linetrackerProgressBar", {
 	metadata : {
 		properties : {
 			"confirmed" : "",
