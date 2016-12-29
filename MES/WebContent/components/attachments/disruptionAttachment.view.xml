@@ -3,15 +3,11 @@
 	xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml">
 
 	<Toolbar>
-<<<<<<< Upstream, based on origin/MESv1.5
+
 		<Button icon="sap-icon://nav-back" press="onNavPress" />
-		<ToolbarSpacer />
-		<Select selectedKey="{attachDisruption>/Rowsets/Rowset/0/Select/0/Name}"
-=======
-	<Button icon="sap-icon://nav-back" press="onNavPress" />
-	<ToolbarSpacer></ToolbarSpacer>
-		<Select change="onFilterChange" selectedKey="{attachDisruption>/Rowsets/Rowset/0/Select/0/Name}"
->>>>>>> 4bba2f9 [Attachment]:Disruption
+		<ToolbarSpacer></ToolbarSpacer>
+		<Select change="onFilterChange"
+			selectedKey="{attachDisruption>/Rowsets/Rowset/0/Select/0/Name}"
 			items="{
 						path: 'attachDisruption>/Rowsets/Rowset/0/Select/'
 					}">
@@ -44,35 +40,22 @@
 				</headerToolbar>
 				<List items="{path: 'attachDisruption>Row1/'}">
 					<CustomListItem>
-<<<<<<< Upstream, based on origin/MESv1.5
-						<HBox>
-							<html:iframe src="{attachDisruption>PDFUrl}" />
-						</HBox>
 
-=======
-			<Panel expandable="false">
-				<headerToolbar>
-					<Toolbar>
-						<Title text="Title: {attachDisruption>Title} Type: {attachDisruption>Type}" />
-					</Toolbar>
-				</headerToolbar>
-				</Panel>
-			
->>>>>>> 4bba2f9 [Attachment]:Disruption
+						<Panel expandable="false">
+							<headerToolbar>
+								<Toolbar>
+									<Title
+										text="Title: {attachDisruption>Title} Type: {attachDisruption>Type}" />
+								</Toolbar>
+							</headerToolbar>
+						</Panel>
+
 					</CustomListItem>
 				</List>
 			</Panel>
 		</CustomListItem>
 
-
-
-<<<<<<< Upstream, based on origin/MESv1.5
 	</List>
 
-	<HBox>
-		<html:iframe src="{attachDisruption>/Rowsets/Rowset/0/Row/0/PDFUrl}" />
-	</HBox>
-=======
-	</List>
->>>>>>> 4bba2f9 [Attachment]:Disruption
+</List>
 </mvc:View>
