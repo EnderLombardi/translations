@@ -329,9 +329,9 @@ TASK ADHERENCE
   font-size: 15px; }
 */
 /*************
-ARE CHART for Header of Line Tracker
+ARE CHART for Header KPI of Line Tracker
 **************/
-svg#idStationDetail1--takt_adherence_area_chart {
+svg#idLinetracker1--takt_adherence_area_chart {
   border: none; }
 
 .classTaktAdherenceAreaChart div:nth-child(2) {
@@ -358,43 +358,43 @@ svg#idStationDetail1--takt_adherence_area_chart {
   top: 10px;
   left: 0; }
 
-#idStationDetail1--takt_adherence_area_chart .yaxis {
-/*   fill: white; */
+#idLinetracker1--takt_adherence_area_chart .yaxis {
+  fill: white; 
   font-size: 7px; }
-#idStationDetail1--takt_adherence_area_chart .yaxelabel {
-/*   fill: white; */
+#idLinetracker1--takt_adherence_area_chart .yaxelabel {
+  fill: white; 
   font-size: 7px;
   margin-bottom: 2px; }
-#idStationDetail1--takt_adherence_area_chart .axis path,
-#idStationDetail1--takt_adherence_area_chart .axis line {
+#idLinetracker1--takt_adherence_area_chart .axis path,
+#idLinetracker1--takt_adherence_area_chart .axis line {
   fill: none;
   stroke: grey;
   shape-rendering: crispEdges; }
-#idStationDetail1--takt_adherence_area_chart .area {
+#idLinetracker1--takt_adherence_area_chart .area {
   fill: #E5002B; }
-#idStationDetail1--takt_adherence_area_chart .line {
+#idLinetracker1--takt_adherence_area_chart .line {
   fill: none;
   stroke: #0D2C63;
   stroke-width: 2; }
-#idStationDetail1--takt_adherence_area_chart .realLine {
+#idLinetracker1--takt_adherence_area_chart .realLine {
   fill: none;
   stroke: white;
   stroke-width: 2; }
-#idStationDetail1--takt_adherence_area_chart .estimateLine {
+#idLinetracker1--takt_adherence_area_chart .estimateLine {
   fill: none;
   stroke: white;
   stroke-width: 1;
   stroke-dasharray: 10; }
-#idStationDetail1--takt_adherence_area_chart .ygrid .tick {
+#idLinetracker1--takt_adherence_area_chart .ygrid .tick {
   stroke: rgba(109, 147, 194, 0.39);
   opacity: 0.7; }
-#idStationDetail1--takt_adherence_area_chart .ygrid path {
+#idLinetracker1--takt_adherence_area_chart .ygrid path {
   stroke-width: 0; }
 
 /*************
 ARE CHART  for Station specific(below slide)
 **************/
-svg#idStationDetail1--station_takt_adherence_area_chart{
+svg#idLinetracker1--station_takt_adherence_area_chart{
   border: none; }
 
 .classTaktAdherenceAreaChart div:nth-child(2) {
@@ -406,7 +406,7 @@ svg#idStationDetail1--station_takt_adherence_area_chart{
   top: 0;
   right: 15px; }
 
-.takt_adherence_area_chart_svg-container {
+.station_takt_adherence_area_chart_svg-container {
   display: inline-block;
   position: relative;
   width: 100%;
@@ -415,43 +415,43 @@ svg#idStationDetail1--station_takt_adherence_area_chart{
   vertical-align: top;
   overflow: hidden; }
 
-.takt_adherence_area_chart_svg-content-responsive {
+.station_takt_adherence_area_chart_svg-content-responsive {
   display: inline-block;
   position: absolute;
   top: 10px;
   left: 0; }
 
-#idStationDetail1--station_takt_adherence_area_chart .yaxis {
+#idLinetracker1--station_takt_adherence_area_chart .yaxis {
 /*   fill: white; */
   font-size: 7px; }
-#idStationDetail1--station_takt_adherence_area_chart .yaxelabel {
+#idLinetracker1--station_takt_adherence_area_chart .yaxelabel {
 /*   fill: white; */
   font-size: 7px;
   margin-bottom: 2px; }
-#idStationDetail1--station_takt_adherence_area_chart .axis path,
-#idStationDetail1--station_takt_adherence_area_chart .axis line {
+#idLinetracker1--station_takt_adherence_area_chart .axis path,
+#idLinetracker1--station_takt_adherence_area_chart .axis line {
   fill: none;
   stroke: grey;
   shape-rendering: crispEdges; }
-#idStationDetail1--station_takt_adherence_area_chart .area {
+#idLinetracker1--station_takt_adherence_area_chart .area {
   fill: #E5002B; }
-#idStationDetail1--station_takt_adherence_area_chart .line {
+#idLinetracker1--station_takt_adherence_area_chart .line {
   fill: none;
   stroke: #0D2C63;
   stroke-width: 2; }
-#idStationDetail1--station_takt_adherence_area_chart .realLine {
+#idLinetracker1--station_takt_adherence_area_chart .realLine {
   fill: none;
   stroke: white;
   stroke-width: 2; }
-#idStationDetail1--station_takt_adherence_area_chart .estimateLine {
+#idLinetracker1--station_takt_adherence_area_chart .estimateLine {
   fill: none;
   stroke: white;
   stroke-width: 1;
   stroke-dasharray: 10; }
-#idStationDetail1--station_takt_adherence_area_chart .ygrid .tick {
+#idLinetracker1--station_takt_adherence_area_chart .ygrid .tick {
   stroke: rgba(109, 147, 194, 0.39);
   opacity: 0.7; }
-#idStationDetail1--station_takt_adherence_area_chart .ygrid path {
+#idLinetracker1--station_takt_adherence_area_chart .ygrid path {
   stroke-width: 0; }
 
 /*******************************

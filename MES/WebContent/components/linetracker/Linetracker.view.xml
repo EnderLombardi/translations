@@ -3,12 +3,8 @@
 	xmlns="sap.m" controllerName="airbus.mes.linetracker.Linetracker"
 	xmlns:custom="airbus.mes.linetracker" xmlns:html="http://www.w3.org/1999/xhtml"
 	xmlns:controlPhStation="airbus.mes.linetracker.PhysicalStation.control"
-	xmlns:tnt="sap.tnt" >
+	xmlns:uiTable="sap.ui.table" xmlns:tnt="sap.tnt" >
 	<Page showTitle="false" class="classLineTrackerTable">
-
-
-
-
 	<customHeader>
 	<Toolbar  class="pageHeader kpiPageHeader contentNoPad">
 			<Text text="{i18n>lineTrackerTitle}" />
@@ -17,18 +13,17 @@
 			 <ToolbarSpacer />
              <Button id="hideKPI" enabled="true" icon="sap-icon://hide"
 							text="Hide KPIs" press="hideKPI"/>
-
-
-
-
-
 	</Toolbar >
 	</customHeader>
 		<core:Fragment fragmentName="airbus.mes.linetracker.KPICharts.KPIs" type="XML" height="10rem"/>
 		<content>
 
-			<Table id="linetrackerTable" items="{stationDataModel>/list}" >
-				<headerToolbar>
+			<uiTable:Table 			
+			id="linetrackerTable" 
+			rows="{stationDataModel>/list}"
+			visibleRowCount=" ">
+			<uiTable:toolbar>			
+
 					<Toolbar class="toolbar">
 						<Title text="{i18n>taktAdherence}" level="H2" />
 						<ToolbarSpacer/>
@@ -41,12 +36,12 @@
 						<Text text="{i18n>openDisruptionAndon}" width="9.7%"
 							class="headerColumnText sapUiTinyMarginBottom" />
 					</Toolbar>
-
-				</headerToolbar>
-
-				<columns>
-					<Column width="20%">
-						<OverflowToolbar class="sapUiMediumMarginBegin">
+			</uiTable:toolbar>
+	
+			<uiTable:columns>
+			
+				<uiTable:Column width="20%">
+					<OverflowToolbar class="sapUiMediumMarginBegin">
 							<Button icon="sap-icon://add" text="Station" press="onAddStation"
 								type="Emphasized" class="stationBtns sapUiTinyMarginEnd"
 								tooltip="Add Station">
@@ -76,52 +71,10 @@
 								</layoutData>
 							</Button>
 						</OverflowToolbar>
-					</Column>
-
-					<Column width="50%">
-						<FlexBox height="2.5rem" alignItems="Center"
-							justifyContent="SpaceAround">
-							<Text text="10%" />
-							<Text text="20%" />
-							<Text text="30%" />
-							<Text text="40%" />
-							<Text text="50%" />
-							<Text text="60%" />
-							<Text text="70%" />
-							<Text text="80%" />
-							<Text text="90%" />
-							<Text text="100%" />
-						</FlexBox>
-					</Column>
-					<Column width="5%">
-						<Text text="{i18n>trend}" class="taktHeading" />
-					</Column>
-					<Column width="5%">
-						<Text text="{i18n>date}" class="taktHeading" />
-					</Column>
-					<Column width="5%">
-						<Text text="{i18n>cycleTime}" class="taktHeading" />
-					</Column>
-					<Column width="5%">
-						<Text text="{i18n>workContent}" class="taktHeading" />
-					</Column>
-					<Column width="5%">
-						<Text text="{i18n>openDisruptions}" class="taktHeading" />
-					</Column>
-					<Column width="5%">
-						<Text text="{i18n>openANDON}" class="taktHeading" />
-					</Column>
-				</columns>
-				<items>
-					<ColumnListItem>
-						<cells>
-
-									<HBox alignItems="Center" justifyContent="Center">
+					<uiTable:template>
+						<HBox alignItems="Center" justifyContent="Center">
 
 										<controlPhStation:PhysicalStationBox
-
-
-
 											color="#bcf6ff" actionIconColor="black" station="Station 30"
 											msn="MSN 1274" press="testPress">
 											<controlPhStation:actionIconButton>
@@ -143,30 +96,85 @@
 
 										</controlPhStation:PhysicalStationBox>
 
-									</HBox>
+									</HBox>				
+					</uiTable:template>
+				</uiTable:Column>
+				
+				<uiTable:Column width="44%">
+					<FlexBox height="2.5rem" alignItems="Center"
+							justifyContent="SpaceAround">
+							<Text text="0%" />
+							<Text text="10%" />
+							<Text text="20%" />
+							<Text text="30%" />
+							<Text text="40%" />
+							<Text text="50%" />
+							<Text text="60%" />
+							<Text text="70%" />
+							<Text text="80%" />
+							<Text text="90%" />
+							<Text text="100%" />
+						</FlexBox>
+
+					<uiTable:template>
 							<custom:linetrackerProgressBar planned="{stationDataModel>planned}"
-								confirmed="{stationDataModel>confirmed}" class="progressBar" />
+								confirmed="{stationDataModel>confirmed}" class="progressBar" />		
+					</uiTable:template>
+					
+				</uiTable:Column>
+				
+				<uiTable:Column width="6%">
+					<Text text="{i18n>trend}" class="taktHeading" />
+					<uiTable:template>
+						<core:Icon src="sap-icon://{stationDataModel>trend}"
+								color="{stationDataModel>trendColor}" />						
+					</uiTable:template>					
+				</uiTable:Column>
+				
+				<uiTable:Column width="6%">
+					<Text text="{i18n>date}" class="taktHeading" />
+					<uiTable:template>
+						<Text text="{stationDataModel>date}" />						
+					</uiTable:template>
+					
+				</uiTable:Column>
+				
+				<uiTable:Column width="6%">
+					<Text text="{i18n>cycleTime}" class="taktHeading" />
 
-
-							<core:Icon src="sap-icon://{stationDataModel>trend}"
-								color="{stationDataModel>trendColor}" />
-
-
-
-							<Text text="{stationDataModel>date}" />
-
-
-							<Text text="{stationDataModel>cycleTime}" />
-
-							<Text text="{stationDataModel>workContent}" />
-
-							<Text text="{stationDataModel>disruption}" />
-
-							<Text text="{stationDataModel>andon}" />
-						</cells>
-					</ColumnListItem>
-				</items>
-			</Table>
+					<uiTable:template>
+						<Text text="{stationDataModel>cycleTime}" />						
+					</uiTable:template>
+					
+				</uiTable:Column>
+				
+				<uiTable:Column width="6%">
+					<Text text="{i18n>workContent}" class="taktHeading" />	
+					<uiTable:template>
+						<Text text="{stationDataModel>workContent}" />					
+					</uiTable:template>
+					
+				</uiTable:Column>
+				
+				<uiTable:Column width="6%">
+					<Text text="{i18n>openDisruptions}" class="taktHeading" />	
+					<uiTable:template>
+						<Text text="{stationDataModel>disruption}" />					
+					</uiTable:template>
+					
+				</uiTable:Column>
+				
+				<uiTable:Column width="6%">
+					<Text text="{i18n>openANDON}" class="taktHeading" />
+					<uiTable:template>
+						<Text text="{stationDataModel>andon}" />						
+					</uiTable:template>
+					
+				</uiTable:Column>			
+				
+			</uiTable:columns>
+				
+			</uiTable:Table>
 
 			<control:slideControl id="idSlideControl">
 					

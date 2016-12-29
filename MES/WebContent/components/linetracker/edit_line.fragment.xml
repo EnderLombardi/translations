@@ -5,7 +5,7 @@
 		<content>
 			<HBox alignItems="Center" class="dialogForm">
 				<Label text="{i18n>name}" width="6rem"></Label>
-				<Select
+				<Select id="selectOfModifyField"
 					forceSelection="false"
 					selectedKey="{/lineVariantModel/Name}"
 					items="{path: 'lineVariantModel>/variantNameList'}"  width="100%" >

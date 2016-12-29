@@ -53,11 +53,14 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 				"workContent" : "5"
 			};
 		
-		this.getView().getModel("dataModel").getProperty("/list").push(stationRow);
+		this.getView().getModel("stationDataModel").getProperty("/list").push(stationRow);
 		
-		this.getView().getModel("dataModel").refresh();
+		this.getView().getModel("stationDataModel").refresh();
 	},
 	
+	/*
+	 * Save Station List in Line Variant list
+	 */
 	onSaveVariant : function() {
 
 		if (!this.oSaveDialog) {
@@ -72,7 +75,11 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 		this.oSaveDialog.open();
 
 	},
-		
+	
+	/*
+	 * Delete/Save Variants in Line Variant List
+	 */
+	
 	onCreateModifyLine : function() {
 
 		if (!this.oAddLineDialog) {
@@ -81,6 +88,8 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 			
 			this.getView().addDependent(
 					this.oAddLineDialog);
+//			var lineVariantName = this.getView().byId("selectLine").getValue();
+			
 			
 		}
 	
