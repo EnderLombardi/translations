@@ -3,28 +3,29 @@
 	xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml">
 
 	<Toolbar>
-	<Button icon="sap-icon://nav-back" press="onNavPress" />
-	<ToolbarSpacer></ToolbarSpacer>
+		<Button icon="sap-icon://nav-back" press="onNavPress" />
+		<ToolbarSpacer />
 		<Select selectedKey="{attachDisruption>/Rowsets/Rowset/0/Select/0/Name}"
 			items="{
 						path: 'attachDisruption>/Rowsets/Rowset/0/Select/'
 					}">
 			<core:Item key="{attachDisruption>Name}" text="{attachDisruption>Name}" />
 		</Select>
-		
+
 		<CheckBox text="{i18n>SelectAll}" />
+		<ToolbarSpacer width="1rem" />
 	</Toolbar>
 
 	<HBox>
 		<Toolbar>
-			
+
 			<Label text="{i18n>ListDisruption}"></Label>
 		</Toolbar>
 
 	</HBox>
 
-	<List noDataText="{i18n>NoData}"
-		class="disruptionDetail sapUiSmallMarginBottom" items="{path: 'attachDisruption>/Rowsets/Rowset/0/Row/'}">
+	<List noDataText="{i18n>NoData}" class="disruptionDetail sapUiSmallMarginBottom"
+		items="{path: 'attachDisruption>/Rowsets/Rowset/0/Row/'}">
 
 		<CustomListItem>
 
@@ -32,16 +33,16 @@
 				expand="handleDisruptionPanelExpand">
 				<headerToolbar>
 					<Toolbar>
-						<Title text="{attachDisruption>wo_no}-{attachDisruption>op_no}-{attachDisruption>dis_no}-{attachDisruption>dis_des}-{attachDisruption>gravity}-{attachDisruption>status}" />
+						<Title
+							text="{attachDisruption>wo_no}-{attachDisruption>op_no}-{attachDisruption>dis_no}-{attachDisruption>dis_des}-{attachDisruption>gravity}-{attachDisruption>status}" />
 					</Toolbar>
 				</headerToolbar>
 				<List items="{path: 'Row1/'}">
 					<CustomListItem>
-			<HBox>
-		<html:iframe
-    	src="{attachDisruption>PDFUrl}" />
-				</HBox>	
-			
+						<HBox>
+							<html:iframe src="{attachDisruption>PDFUrl}" />
+						</HBox>
+
 					</CustomListItem>
 				</List>
 			</Panel>
@@ -50,8 +51,8 @@
 
 
 	</List>
-<HBox>
-		<html:iframe
-    	src="{attachDisruption>/Rowsets/Rowset/0/Row/0/PDFUrl}" />
-				</HBox>	
+
+	<HBox>
+		<html:iframe src="{attachDisruption>/Rowsets/Rowset/0/Row/0/PDFUrl}" />
+	</HBox>
 </mvc:View>
