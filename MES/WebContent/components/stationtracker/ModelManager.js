@@ -319,7 +319,7 @@ airbus.mes.stationtracker.ModelManager = {
 							var checkQAModel = new sap.ui.model.json.JSONModel();
 							checkQAModel.setData(data.Rowsets.Rowset[1]);
 							//Permit to display button ok and cancel
-							airbus.mes.stationtracker.AssignmentManager.checkQA = true;
+							airbus.mes.stationtracker.AssignmentManager.checkQA = false;
 							airbus.mes.stationtracker.oView.getController().openCheckQAPopup(checkQAModel);
 						} else if (data.Rowsets.Rowset[0].Row[0].message == "S") {
 							airbus.mes.shell.oView.getController().renderStationTracker();
@@ -849,7 +849,9 @@ airbus.mes.stationtracker.ModelManager = {
 						var checkQAModel = new sap.ui.model.json.JSONModel();
 						checkQAModel.setData(data.Rowsets.Rowset[1]);
 						//Permit to display button ok and cancel
-						airbus.mes.stationtracker.AssignmentManager.checkQA = true;
+						airbus.mes.stationtracker.AssignmentManager.checkQA = false;
+						//Permit to relaunch rescheduling after the check Qa
+						airbus.mes.stationtracker.CheckQa = "RESCHEDULING";
 						airbus.mes.stationtracker.oView.getController().openCheckQAPopup(checkQAModel);
 					} else if (data.Rowsets.Rowset[0].Row[0].message == "S") {
 						airbus.mes.shell.oView.getController().renderStationTracker();
