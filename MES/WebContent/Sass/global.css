@@ -3292,116 +3292,91 @@ LINETRACKER
 /************************
 Linetracker View (Main Table)
 *************************/
-.classLineTrackerTable .lineTrackerContent {
-  margin-top: 12rem; }
-
-.classLineTrackerTable .toolbar {
-  background-color: #D5F1F8 !important;
-  border: none !important;
-  height: auto !important; }
-
-.classLineTrackerTable table tr th, td {
-  text-align: center !important;
-  vertical-align: middle !important;
-  border-left: 2px solid #60B5CD !important; }
-
-.classLineTrackerTable table tr th div {
-  border: none !important; }
-
-.classLineTrackerTable table tr th span {
-  text-align: center !important; }
-
-.classLineTrackerTable table tr th, td span, .headerColumnText {
-  text-align: center !important; }
-
-.classLineTrackerTable .taktHeading {
-  color: #75ACC1 !important;
-  font-size: 1vw !important; }
-
-.classLineTrackerTable table tr th:nth-child(1), td:nth-child(2), th:nth-child(2) {
-  background-color: #FFFFFF !important; }
-
-.classLineTrackerTable table tr td:nth-child(2), th:nth-child(2) {
-  background-image: url("grid.svg");
-  vertical-align: middle !important; }
-
-.classLineTrackerTable table tr th:nth-child(2) .sapMFlexItem {
-  width: 100% !important; }
-
-.classLineTrackerTable .sapMListTblCell {
-  padding: 0rem 0rem !important; }
-
-.classLineTrackerTable table tr th:nth-child(n+3) {
-  background-color: #D5F1F8 !important; }
-
-/* .classLineTrackerTable table tr th:nth-child(1) {
-	width: 22vw !important;
-} */
-.classLineTrackerTable table tr td:nth-child(5) > span {
-  font-size: 1.5rem !important;
-  color: #5B707E !important; }
-
-.classLineTrackerTable table tr td:nth-child(6) > span {
-  font-size: 1.5rem !important;
-  color: #FE5102 !important; }
-
-.classLineTrackerTable table tr td:nth-child(7) > span {
-  font-size: 1.5rem !important;
-  color: #5B707E !important; }
-
-.classLineTrackerTable table tr td:nth-child(8) > span {
-  font-size: 1.5rem !important;
-  color: #FE5102 !important; }
-
-.classLineTrackerTable .stationBtns {
-  height: 2rem !important;
-  font-size: 2rem !important;
-  margin-left: 0 !important;
-  margin-right: 0 !important; }
-
-.classLineTrackerTable .stationBtns:nth-child(1) span {
-  font-size: 1rem !important; }
-
-/* .classLineTrackerTable .stationBtns div {
-	padding-left: 0 !important;
-	padding-right: 0 !important;
-} */
-.classLineTrackerTable .sapMBtnInner {
-  height: 2rem !important;
-  font-size: 1rem !important; }
-
-.classLineTrackerTable .stationBtns .sapMBtnContent {
-  line-height: 2rem !important; }
-
-.classLineTrackerTable .stationBtns .sapMBtnIcon {
-  line-height: 2rem !important;
-  font-size: 1.3rem !important; }
-
-.classLineTrackerTable .stationBtns input {
-  height: 2rem !important;
-  font-size: 1rem !important; }
-
-.classLineTrackerTable .stationBtns .sapMInputValHelp {
-  height: 1.9rem !important; }
-
-.classLineTrackerTable .stationBtns .sapMInputValHelpInner {
-  height: 1.9rem !important;
-  line-height: 2rem !important; }
-
-.classLineTrackerTable .stationBtns:nth-child(2) {
-  margin-right: 0.5rem !important; }
+#idLinetracker1 {
+  /* .classLineTrackerTable table tr th:nth-child(1) {
+      width: 22vw !important;
+  } */
+  /* .classLineTrackerTable .stationBtns div {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+  } */ }
+  #idLinetracker1 .classLineTrackerTable .lineTrackerContent {
+    margin-top: 12rem; }
+  #idLinetracker1 .classLineTrackerTable .toolbar {
+    background-color: #D5F1F8 !important;
+    border: none !important;
+    height: auto !important; }
+  #idLinetracker1 .classLineTrackerTable table tr th, #idLinetracker1 td {
+    text-align: center !important;
+    vertical-align: middle !important;
+    border-left: 2px solid #60B5CD !important; }
+  #idLinetracker1 .classLineTrackerTable table tr th div {
+    border: none !important; }
+  #idLinetracker1 .classLineTrackerTable table tr th span {
+    text-align: center !important; }
+  #idLinetracker1 .classLineTrackerTable table tr th, #idLinetracker1 td span, #idLinetracker1 .headerColumnText {
+    text-align: center !important; }
+  #idLinetracker1 .classLineTrackerTable .taktHeading {
+    color: #75ACC1 !important;
+    font-size: 1vw !important; }
+  #idLinetracker1 .classLineTrackerTable table tr th:nth-child(1), #idLinetracker1 td:nth-child(2), #idLinetracker1 th:nth-child(2) {
+    background-color: #FFFFFF !important; }
+  #idLinetracker1 .classLineTrackerTable table tr td:nth-child(2), #idLinetracker1 th:nth-child(2) {
+    background-image: url("grid.svg");
+    vertical-align: middle !important; }
+  #idLinetracker1 .classLineTrackerTable table tr th:nth-child(2) .sapMFlexItem {
+    width: 100% !important; }
+  #idLinetracker1 .classLineTrackerTable .sapMListTblCell {
+    padding: 0rem 0rem !important; }
+  #idLinetracker1 .classLineTrackerTable table tr th:nth-child(n+3) {
+    background-color: #D5F1F8 !important; }
+  #idLinetracker1 .classLineTrackerTable table tr td:nth-child(5) > span {
+    font-size: 1.5rem !important;
+    color: #5B707E !important; }
+  #idLinetracker1 .classLineTrackerTable table tr td:nth-child(6) > span {
+    font-size: 1.5rem !important;
+    color: #FE5102 !important; }
+  #idLinetracker1 .classLineTrackerTable table tr td:nth-child(7) > span {
+    font-size: 1.5rem !important;
+    color: #5B707E !important; }
+  #idLinetracker1 .classLineTrackerTable table tr td:nth-child(8) > span {
+    font-size: 1.5rem !important;
+    color: #FE5102 !important; }
+  #idLinetracker1 .classLineTrackerTable .stationBtns {
+    height: 2rem !important;
+    font-size: 2rem !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important; }
+  #idLinetracker1 .classLineTrackerTable .stationBtns:nth-child(1) span {
+    font-size: 1rem !important; }
+  #idLinetracker1 .classLineTrackerTable .sapMBtnInner {
+    height: 2rem !important;
+    font-size: 1rem !important; }
+  #idLinetracker1 .classLineTrackerTable .stationBtns .sapMBtnContent {
+    line-height: 2rem !important; }
+  #idLinetracker1 .classLineTrackerTable .stationBtns .sapMBtnIcon {
+    line-height: 2rem !important;
+    font-size: 1.3rem !important; }
+  #idLinetracker1 .classLineTrackerTable .stationBtns input {
+    height: 2rem !important;
+    font-size: 1rem !important; }
+  #idLinetracker1 .classLineTrackerTable .stationBtns .sapMInputValHelp {
+    height: 1.9rem !important; }
+  #idLinetracker1 .classLineTrackerTable .stationBtns .sapMInputValHelpInner {
+    height: 1.9rem !important;
+    line-height: 2rem !important; }
+  #idLinetracker1 .classLineTrackerTable .stationBtns:nth-child(2) {
+    margin-right: 0.5rem !important; }
+  #idLinetracker1 .classLineTrackerTable .progressBar {
+    margin-left: 0.15rem !important; }
+  #idLinetracker1 .classLineTrackerTable .stationPopoverBtns div span {
+    background-color: #FFFFFF !important; }
 
 .stationBtns.sapMBtn > .sapMBtnInner {
   text-align: center !important; }
 
 .dialogForm .sapMFlexItem:nth-child(2) {
   width: 100% !important; }
-
-.classLineTrackerTable .progressBar {
-  margin-left: 0.15rem !important; }
-
-.classLineTrackerTable .stationPopoverBtns div span {
-  background-color: #FFFFFF !important; }
 
 /**************************
 Custom Progress Bar
@@ -3501,12 +3476,12 @@ KPI Charts
 .KPIlinetrackerHeader {
   margin-left: 0rem; }
 
-/* 
+/*
 #idLinetracker1--linetrackerStationKPI{
     background: #fff !important;
 }
 #idLinetracker1--__toolbar3.headerTitle{
-	 background: #fff !important;
+     background: #fff !important;
 } */
 .KPIheaderTitle {
   font-size: 1.35rem; }
