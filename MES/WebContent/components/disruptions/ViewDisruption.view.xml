@@ -127,6 +127,25 @@
 												</Text>
 											</f:fields>
 										</f:FormElement>
+										
+										<f:FormElement>
+											<f:label>
+												<Label class="detailLabels" text="{i18nModel>Issuer}">
+													<layoutData>
+														<l:GridData span="L3 M3 S12" />
+													</layoutData>
+												</Label>
+											</f:label>
+											<f:fields>
+
+												<Text text="{operationDisruptionsModel>OriginatorGroupDesc}">
+
+													<layoutData>
+														<l:GridData span="L3 M3 S12" />
+													</layoutData>
+												</Text>
+											</f:fields>
+										</f:FormElement>
 
 										<f:FormElement>
 											<f:label>

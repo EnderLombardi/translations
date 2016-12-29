@@ -3,14 +3,16 @@
 	xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml">
 
 	<Page enableScrolling="false" showHeader="false" height="100%">
-	
-		
+
+
 		<FlexBox width="100%" height="100%" justifyContent="Center"
 			backgroundDesign="Transparent" direction="Column">
 			<items>
-			
-				<Label id="disruptLabel" class="sapUiMediumMarginBeginEnd sapUiMediumMarginTop sapUiSmallMarginBottom" text="{i18nModel>Disruption}"></Label>
-							
+
+				<Label id="disruptLabel"
+					class="sapUiMediumMarginBeginEnd sapUiMediumMarginTop sapUiSmallMarginBottom"
+					text="{i18nModel>Disruption}"></Label>
+
 				<f:Form id="createDisruptionForm" editable="true"
 					backgroundDesign="Transparent" class="sapUiSmallMargin" visible="true">
 					<f:layout>
@@ -47,6 +49,36 @@
 										</Input>
 									</f:fields>
 								</f:FormElement>
+
+
+<!--                            SD-SP1604983-CDP-010 -->
+								<f:FormElement>
+									<f:label>
+										<Label required="true" text="{i18nModel>CategoryClass}">
+											<layoutData>
+												<l:GridData span="L2 M3 S12" linebreak="true" />
+											</layoutData>
+										</Label>
+									</f:label>
+									<f:fields>
+										<Select id="selectCategoryClass"											
+											change="" forceSelection="false">
+											<items>
+												<core:Item text="{i18nModel>5Mclass_01}" key="{i18nModel>5Mclass_01}" />
+												<core:Item text="{i18nModel>5Mclass_02}" key="{i18nModel>5Mclass_02}" />
+												<core:Item text="{i18nModel>5Mclass_03}" key="{i18nModel>5Mclass_03}" />
+												<core:Item text="{i18nModel>5Mclass_04}" key="{i18nModel>5Mclass_04}" />
+												<core:Item text="{i18nModel>5Mclass_05}" key="{i18nModel>5Mclass_05}" />
+												<core:Item text="{i18nModel>5Mclass_06}" key="{i18nModel>5Mclass_06}" />
+												<core:Item text="{i18nModel>5Mclass_07}" key="{i18nModel>5Mclass_07}" />
+											</items>
+											<layoutData>
+												<l:GridData span="L3 M9 S12" />
+											</layoutData>
+										</Select>
+									</f:fields>
+								</f:FormElement>
+								                      		
 
 								<f:FormElement>
 									<f:label>
@@ -95,6 +127,30 @@
 										</Select>
 									</f:fields>
 								</f:FormElement>
+								
+								
+								<f:FormElement>
+									<f:label>
+										<Label required="true" text="{i18nModel>Issuer}">
+											<layoutData>
+												<l:GridData span="L2 M3 S12" linebreak="true" />
+											</layoutData>
+										</Label>
+									</f:label>
+									<f:fields>
+										<Select id="selectIssuer"
+											items="{ path : 'ressourcePoolModel>/Rowsets/Rowset/0/Row' }"
+											forceSelection="false">
+											<items>
+												<core:Item key="{ressourcePoolModel>user}" text="{ressourcePoolModel>lastName} {ressourcePoolModel>firstName}" />
+											</items>
+											<layoutData>
+												<l:GridData span="L3 M9 S12" />
+											</layoutData>
+										</Select>
+									</f:fields>
+								</f:FormElement>
+								
 
 								<f:FormElement>
 									<f:label>
@@ -140,6 +196,8 @@
 										</Select>
 									</f:fields>
 								</f:FormElement>
+
+
 
 								<f:FormElement>
 									<f:label>
@@ -241,17 +299,17 @@
 									<f:fields>
 										<DatePicker id="expectedDate" valueFormat="yyyy-MM-dd"
 											displayFormat="long"
-											value="{path: 'DisruptionDetailModel>/RequiredFixBy', formatter: 'airbus.mes.disruptions.Formatter.getDate'}" 
+											value="{path: 'DisruptionDetailModel>/RequiredFixBy', formatter: 'airbus.mes.disruptions.Formatter.getDate'}"
 											change="onExpectedDateChange">
 											<layoutData>
 												<l:GridData span="L2 M5 S6" />
 											</layoutData>
-											
-											
+
+
 										</DatePicker>
 										<TimePicker id="expectedTime" displayFormat="HH:mm:ss"
 											valueFormat="HH:mm:ss"
-											value="{path: 'DisruptionDetailModel>/RequiredFixBy', formatter: 'airbus.mes.disruptions.Formatter.getTime'}" 
+											value="{path: 'DisruptionDetailModel>/RequiredFixBy', formatter: 'airbus.mes.disruptions.Formatter.getTime'}"
 											change="onExpectedDateChange">
 											<layoutData>
 												<l:GridData span="L1 M4 S6" />
@@ -259,25 +317,26 @@
 										</TimePicker>
 									</f:fields>
 								</f:FormElement>
-								
+
 								<f:FormElement>
 									<f:label>
-										<Label id="promisedDateLabel" required="true" text="{i18nModel>promisedDateTime}">
+										<Label id="promisedDateLabel" required="true"
+											text="{i18nModel>promisedDateTime}">
 											<layoutData>
-												<l:GridData span="L2 M3 S12" linebreak="true"/>
+												<l:GridData span="L2 M3 S12" linebreak="true" />
 											</layoutData>
 										</Label>
 									</f:label>
 									<f:fields>
-									
-										<DatePicker id="promisedDate"  valueFormat="yyyy-MM-dd"
+
+										<DatePicker id="promisedDate" valueFormat="yyyy-MM-dd"
 											displayFormat="long"
 											value="{path: 'DisruptionDetailModel>/PromisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}">
 											<layoutData>
 												<l:GridData span="L2 M5 S6" />
 											</layoutData>
-											
-											
+
+
 										</DatePicker>
 										<TimePicker id="promisedTime" displayFormat="HH:mm:ss"
 											valueFormat="HH:mm:ss"
@@ -299,8 +358,7 @@
 										</Label>
 									</f:label>
 									<f:fields>
-										<Input placeholder="" id="timeLost" type="Number"
-											value="">
+										<Input placeholder="" id="timeLost" type="Number" value="">
 											<layoutData>
 												<l:GridData span="L3 M9 S12" />
 											</layoutData>
@@ -340,14 +398,16 @@
 										</Label>
 									</f:label>
 									<f:fields>
-										<MultiInput id="materials" valueHelpRequest="onMaterialValueHelpRequest" tokenChange="onMaterialTokenChange" liveChange="onMaterialTokenChange" enabled="false">
+										<MultiInput id="materials" valueHelpRequest="onMaterialValueHelpRequest"
+											tokenChange="onMaterialTokenChange" liveChange="onMaterialTokenChange"
+											enabled="false">
 											<layoutData>
 												<l:GridData span="L3 M9 S12" />
 											</layoutData>
 										</MultiInput>
 									</f:fields>
 								</f:FormElement>
-								
+
 								<f:FormElement>
 									<f:label>
 										<Label text="{i18nModel>Jigtool}">
@@ -357,7 +417,9 @@
 										</Label>
 									</f:label>
 									<f:fields>
-										<MultiInput id="jigtools" valueHelpRequest="onJigToolValueHelpRequest" tokenChange="onJigToolTokenChange" liveChange="onJigToolTokenChange" enabled="false">
+										<MultiInput id="jigtools" valueHelpRequest="onJigToolValueHelpRequest"
+											tokenChange="onJigToolTokenChange" liveChange="onJigToolTokenChange"
+											enabled="false">
 											<layoutData>
 												<l:GridData span="L3 M9 S12" />
 											</layoutData>

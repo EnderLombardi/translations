@@ -1095,6 +1095,12 @@ sap.ui
 								
 								// clear disruptionDetailModel if edit is loaded before ReportDisruption
 								sap.ui.getCore().getModel("DisruptionDetailModel").setData();
+								// V1.5
+								// SD-SP1604983-CDP-010  
+								// SD-SP1604983-DDR-005
+								sap.ui.getCore().byId("createDisruptionView--selectIssuer").setSelectedKey(sap.ui.getCore().getModel(
+								"userSettingModel").getProperty(
+								"/Rowsets/Rowset/0/Row/0/user"))
 
 								oOperDetailNavContainer.to(airbus.mes.disruptions.oView.createDisruption.getId());
 								
