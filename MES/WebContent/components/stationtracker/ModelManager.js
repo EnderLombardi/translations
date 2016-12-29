@@ -831,8 +831,8 @@ airbus.mes.stationtracker.ModelManager = {
 //				"Param.9" : oFinal.section_id.split("_")[2],
 				"Param.8" : line,
 				"Param.9" : skill,
-				"Param.10" : oInitial.avlLine,
-				"Param.11" : oInitial.skill,
+				"Param.10" : oInitial.section_id.split("_")[1],
+				"Param.11" : oInitial.section_id.split("_")[2],
 
 			},
 			
