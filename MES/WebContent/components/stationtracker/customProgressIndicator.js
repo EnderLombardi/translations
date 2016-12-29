@@ -212,7 +212,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 							r.addStyle('color','rgba(0, 86, 112, 0.94)');
 							sRightIcon = boxDisplayManager.rightStop_Petrol;
 							
-							if ( rmastatus === 1 || rmastatus != "---" ){	//rma
+							if ( rmastatus === "1" || rmastatus != "---" ){	//rma
 								sLeftIcon = boxDisplayManager.leftTriangleIcon_Petrol;
 							}
 							if (osw[0] === "3" ){ //OSW
@@ -230,7 +230,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 							r.addStyle('background-color','#e4002b');
 							sRightIcon = boxDisplayManager.rightStop;
 							
-							if ( rmastatus === 1 ){	//rma
+							if ( rmastatus === "1" ){	//rma
 								sLeftIcon = boxDisplayManager.leftTriangleIcon;
 							}
 							if (osw[0] === "3" ){ //OSW
@@ -245,7 +245,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 							r.addStyle('background', 'repeating-linear-gradient(135deg, #ffbf00, #ffbf00 10px, #fbec00 10px, #fbec00 20px)');
 							sRightIcon = boxDisplayManager.rightPlay_Petrol;
 							
-							if ( rmastatus === 1 || rmastatus != "---" ){	//rma
+							if ( rmastatus === "1" || rmastatus != "---" ){	//rma
 								sLeftIcon = boxDisplayManager.leftTriangleIcon_Petrol;
 							}
 							if (osw[0] === "3" ){ //OSW
@@ -260,7 +260,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 							r.addStyle('background', 'repeating-linear-gradient(135deg, #e4002b, #e4002b 10px, #9e001e 10px, #9e001e 20px)');
 							sRightIcon = boxDisplayManager.rightPlay;
 							
-							if ( rmastatus === 1 ){	//rma
+							if ( rmastatus === "1" ){	//rma
 								sLeftIcon = boxDisplayManager.leftTriangleIcon;
 							}
 							if (osw[0] === "3" ){ //OSW
@@ -293,6 +293,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 					
 					//sStatus = "0";
 					r.addStyle('background-color','#0085ad');
+					PercValue = 0;
 					sRightIcon = boxDisplayManager.rightCheck;
 					
 					if ( rmastatus === "1" ){	//rma
