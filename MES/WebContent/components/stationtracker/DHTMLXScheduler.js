@@ -109,14 +109,35 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",    {
                             if (ev.section_id.slice(0, 2) === "I_") {
                                 return false;
                             }
-                           
+                            
+                            // Get Value of groupind of new operation
+                            var aNewGroup = ev.section_id.split("_");
+                            var fLenght = aNewGroup.length - 2;
+                            var sNewGroup = "";
+                            
+                            for ( var i = 0;  i < fLenght  ; i++) {
+                            	
+                            	sNewGroup += aNewGroup[i];
+                            	
+                            }
+                            // Get Value of grouping of initial operation
+                            var aInitialGroup = oInitial.section_id.split("_");
+                            var fLenghtI = aInitialGroup.length - 2;
+                            var sInitialGroup = "";
+                            
+                            for ( var i = 0;  i < fLenghtI  ; i++) {
+                            	
+                            	sInitialGroup += aInitialGroup[i];
+                            	
+                            }                           
+                            
                             // Check if the grouping of operation is different
-                            if (  original.section_id.split("_")[0] != ev.section_id.split("_")[0] ) {
+                            if (  sInitialGroup != sNewGroup ) {
                             	
                             	return false;
                             	
                             }
-                            
+                                                   
                           //We check only the first start date because the duration of the operation cannot changed
                             if( original.start_date.getTime() === ev.start_date.getTime() ) {
                             //date aren't change , nothing to do

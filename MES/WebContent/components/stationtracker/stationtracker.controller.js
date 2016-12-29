@@ -512,6 +512,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
                 "avlLine" : oModel.avlLine,
                 "sSfcStep" :  oModel.sfc_step_ref,
                 "ProdGroup" : oModel.prodGroup,
+                "section_id" : "_" + oModel.avlLine + "_" + oModel.skills,
         };
 
         var oFinal = {

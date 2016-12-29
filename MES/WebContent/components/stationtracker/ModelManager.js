@@ -807,15 +807,29 @@ airbus.mes.stationtracker.ModelManager = {
 		var urlReschedulingService = this.urlModel.getProperty("urlReschedulingService");
 		var oData = airbus.mes.stationtracker.ModelManager.settings;
 		var splitId;
+		var splitIdI;
 		var lengthId;
+		var lengthIdI;
 		var line;
 		var skill;
+		var lineI;
+		var skillI;
+		
 		splitId = oFinal.section_id.split("_");
 		lengthId = splitId.length;
 		if (lengthId > 1){
 			line = splitId[lengthId - 2];
 			skill = splitId[lengthId - 1]
 		} 
+		
+		splitIdI = oInitial.section_id.split("_");
+		lengthIdI = splitIdI.length;
+		if (lengthIdI > 1){
+			lineI = splitIdI[lengthIdI - 2];
+			skillI = splitIdI[lengthIdI - 1]
+		} 
+		
+		
 		jQuery.ajax({
 			async : false ,
 			url : urlReschedulingService,
@@ -827,13 +841,10 @@ airbus.mes.stationtracker.ModelManager = {
 				"Param.5" : oData.msn, 
 				"Param.6" : airbus.mes.stationtracker.util.Formatter.dDate2sDate(oFinal.start_date),
 				"Param.7" : oInitial.sSfcStep,
-//				"Param.8" : oFinal.section_id.split("_")[1],
-//				"Param.9" : oFinal.section_id.split("_")[2],
 				"Param.8" : line,
 				"Param.9" : skill,
-				"Param.10" : oInitial.section_id.split("_")[1],
-				"Param.11" : oInitial.section_id.split("_")[2],
-
+				"Param.10" : lineI,
+				"Param.11" : skillI,
 			},
 			
 			success : function(data, textStatus, jqXHR) {

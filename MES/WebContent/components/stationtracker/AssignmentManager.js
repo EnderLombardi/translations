@@ -107,7 +107,7 @@ airbus.mes.stationtracker.AssignmentManager = {
 
 			airbus.mes.stationtracker.AssignmentManager.bOpen = true;
 			scheduler.addSection({
-				key: "R_" + sAVLKey.toString() + "_unplanned" , 
+				key: sKey + "_" + sAVLKey.toString() + "_unplanned" , 
 				rescheduled:"R" , 
 				name:"Select Operator",
 				avlLine: sAVLKey.toString() + "_unplanned",
