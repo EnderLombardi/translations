@@ -389,23 +389,6 @@
 										</TextArea>
 									</HBox>
 								</f:FormElement>
-								<f:SimpleForm id="Des_sol" editable="true"
-									layout="ResponsiveGridLayout" title="{i18nModel>description_solution}"
-									labelSpanL="12" labelSpanM="12" width="100%" adjustLabelSpan="false"
-									emptySpanL="0" emptySpanM="0" columnsL="1" columnsM="1">
-									<f:content>
-										<HBox justifyContent="End" class="iconInTextarea">
-											<core:Icon src="sap-icon://attachment" width="1rem"
-												class="sapUiSmallMarginEnd" />
-											<core:Icon src="sap-icon://camera" width="1rem" />
-										</HBox>
-										<TextArea width="100%" height="100%">
-											<layoutData>
-												<l:GridData span="L12 M12 S12" />
-											</layoutData>
-										</TextArea>
-									</f:content>
-								</f:SimpleForm>
 
 							</f:formElements>
 						</f:FormContainer>
