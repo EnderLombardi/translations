@@ -507,7 +507,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
         var oModel = airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0];
 
         var oInitial = {
-                "start_date" : oModel.original_start_time.replace(" ","T"),
+                "start_date" : oModel.reschedule_start_time.replace(" ","T"),
                 "skill" : oModel.skills,
                 "avlLine" : oModel.avlLine,
                 "sSfcStep" :  oModel.sfc_step_ref,

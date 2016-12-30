@@ -137,20 +137,12 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",    {
                             	return false;
                             	
                             }
-                                                   
-                          //We check only the first start date because the duration of the operation cannot changed
-                            if( original.start_date.getTime() === ev.start_date.getTime() ) {
-                            //date aren't change , nothing to do
-                            	return true;
-                            } else {
+                           
                                 //Store oFinal and oInitial value in case of check qa is not successfull
                                 airbus.mes.stationtracker.oFinal = oFinal;
                                 airbus.mes.stationtracker.oInitial = oInitial;
                                 airbus.mes.stationtracker.ModelManager.sendRescheduleRequest(false,oFinal,oInitial);
                                 return true;
-                            }
-                            
-                            
                         }));
 
                         /**
