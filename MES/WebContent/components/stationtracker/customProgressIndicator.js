@@ -174,6 +174,8 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 				// condition design for worklist pop up
 				//------------------------------------------
 				
+				
+						
 				switch ( paused ) {
 					case "false" :
 					// Operation is active sStatus = "2";
@@ -185,8 +187,11 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 					case "---" :				
 					// Operation is not started sStatus = "1" Operation is pause	
 							//if ( paused === "---" && progress != "0" ) sStatus = "3";
-							if ( paused === "---" && prevstarted === "true" ) {
+							if ( paused === "---" && prevstarted === "true" && Status != "C" ) {
 								sRightIcon = boxDisplayManager.rightPaused;
+								r.addClass('sapMPIBarGreen');
+								r.writeClasses();
+								r.writeAttribute('style', 'width:' + PercValue + '%');
 							}	
 					break;
 					default :
@@ -310,7 +315,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 				
 				//------------------------------------------------------------
 
-						r.write('>');
+				r.write('>');
 				r.write('</div>');
 				r.write('<div');
 						r.addClass('sapMPIBar');
