@@ -42,7 +42,8 @@
 			
 				<uiTable:Column width="20%">
 					<OverflowToolbar class="sapUiMediumMarginBegin">
-							<Button icon="sap-icon://add" text="Station" press="onAddStation"
+							<Button id="linetrackerAddStation" icon="sap-icon://add" text="{i18n>_station}"
+								press="onEditStation"
 								type="Emphasized" class="stationBtns sapUiTinyMarginEnd"
 								tooltip="Add Station">
 								<layoutData>
@@ -74,9 +75,9 @@
 					<uiTable:template>
 						<HBox alignItems="Center" justifyContent="Center">
 
-										<controlPhStation:PhysicalStationBox
+										<controlPhStation:PhysicalStationBox id="linetrackerEditStation"
 											color="#bcf6ff" actionIconColor="black" station="Station 30"
-											msn="MSN 1274" press="testPress">
+											msn="MSN 1274" press="onEditStation">
 											<controlPhStation:actionIconButton>
 												<core:Icon src="sap-icon://refresh" />
 											</controlPhStation:actionIconButton>
@@ -103,7 +104,6 @@
 				<uiTable:Column width="44%">
 					<FlexBox height="2.5rem" alignItems="Center"
 							justifyContent="SpaceAround">
-							<Text text="0%" />
 							<Text text="10%" />
 							<Text text="20%" />
 							<Text text="30%" />

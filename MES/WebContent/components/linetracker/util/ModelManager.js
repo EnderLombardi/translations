@@ -18,6 +18,7 @@ airbus.mes.linetracker.util.ModelManager = {
     	core.setModel(new sap.ui.model.json.JSONModel(), "KPIextraWork"); // KPI Open Anomalies model
     	core.setModel(new sap.ui.model.json.JSONModel(), "KPIshiftStaffing"); // KPI Shift Staffing model
     	
+    	
     	//Not Used
     	core.setModel(new sap.ui.model.json.JSONModel(), "KPI"); // KPI Data for All model 
     	
@@ -41,7 +42,9 @@ airbus.mes.linetracker.util.ModelManager = {
 					bundleUrl : "../components/linetracker/config/url_config.properties",
 					bundleLocale : dest
 				});
-
+		
+		core.getModel("stationDataModel").loadData(this.urlModel.getProperty("urlstationData"),null,false);
+		
 		if (dest === "sopra") {
 
 			var oModel = this.urlModel._oResourceBundle.aPropertyFiles[0].mProperties;

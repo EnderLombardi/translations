@@ -2,12 +2,51 @@
 sap.ui.core.Control.extend("airbus.mes.linetracker.linetrackerProgressBar", {
 	metadata : {
 		properties : {
-			"confirmed" : "",
-			"planned" : ""
+			confirmed : {
+				type : "float",
+				defaultValue : "0"
+					
+			},
+			planned : {
+				type : "float",
+				defaultValue : "0"
+			}
 
 		}
 	},
+	
+	init:function(){
+//		airbus.mes.linetracker.util.ModelManager.loadStationDataModel();
+		/*var oViewModel = sap.ui.getCore().getModel("stationDataModel");
+//		airbus.mes.linetracker.oView.byId("linetrackerTable").setBusy(true); 
+		jQuery.ajax({
+			type : 'post',
+			url : this.urlModel.getProperty("urlstationData"),
+			contentType : 'application/json',
+			data : JSON.stringify({
+				"site" : airbus.mes.settings.ModelManager.site,
+				"station" : airbus.mes.settings.ModelManager.station,
+				"msn" : airbus.mes.settings.ModelManager.msn
+			}),
+
+			success : function(data) {
+				if(typeof data == "string"){
+					data = JSON.parse(data);
+				}
+				oViewModel.setData(data);
+//				airbus.mes.linetracker.oView.byId("linetrackerTable").setBusy(false);
+			},
+
+			error : function(error, jQXHR) {
+				console.log(error);
+//				airbus.mes.linetracker.oView.byId("linetrackerTable").setBusy(false);
+			}
+		});*/
+		
+	},
+	
 	renderer : function(oRm, oControl) {
+		
 		oRm.write("<div ");
 		oRm.addClass("progress");
 		oRm.writeClasses();

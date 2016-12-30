@@ -5,7 +5,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 /**
 * Called when a controller is instantiated and its View controls (if available) are already created.
 * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
-* @memberOf coustomtable.Linetracker
+* @memberOf classLineTrackerTable.Linetracker
 */
 	onInit: function() {
 		
@@ -15,7 +15,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 /**
 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
 * (NOT before the first rendering! onInit() is used for that one!).
-* @memberOf coustomtable.Linetracker
+* @memberOf classLineTrackerTable.Linetracker
 */
 //	onBeforeRendering: function() {
 //
@@ -24,7 +24,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 /**
 * Called when the View has been rendered (so its HTML is part of the document). Post-rendering manipulations of the HTML could be done here.
 * This hook is the same one that SAPUI5 controls get after being rendered.
-* @memberOf coustomtable.Linetracker
+* @memberOf classLineTrackerTable.Linetracker
 */
 //	onAfterRendering: function() {
 //
@@ -32,13 +32,14 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 
 /**
 * Called when the Controller is destroyed. Use this one to free resources and finalize activities.
-* @memberOf coustomtable.Linetracker
+* @memberOf classLineTrackerTable.Linetracker
 */
 //	onExit: function() {
 //
 //	}
 /**
- * To Add the Station in Line Tracker Station List
+ * Called when +Station button clicked in line tracker 
+ * To Add Station in Line Tracker Station List
  * 
  */
 	onAddStation : function() {
@@ -58,9 +59,9 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 		this.getView().getModel("stationDataModel").refresh();
 	},
 	
-	/*
-	 * Save Station List in Line Variant list
-	 */
+/**
+ * Called when save button is clicked to save(Global) the modified variant line
+*/
 	onSaveVariant : function() {
 
 		if (!this.oSaveDialog) {
@@ -76,10 +77,10 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 
 	},
 	
-	/*
-	 * Delete/Save Variants in Line Variant List
-	 */
-	
+/**
+* To create new line or to modify name or description of existing(selected) line
+* 
+*/	
 	onCreateModifyLine : function() {
 
 		if (!this.oAddLineDialog) {
@@ -87,15 +88,22 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 			this.oAddLineDialog = sap.ui.xmlfragment("airbus.mes.linetracker.edit_line", this);
 			
 			this.getView().addDependent(
-					this.oAddLineDialog);
-//			var lineVariantName = this.getView().byId("selectLine").getValue();
-			
+					this.oAddLineDialog);		
 			
 		}
 	
 		this.oAddLineDialog.open();
-
+		var lineVariantName = this.getView().byId("selectLine").getValue();
+		var variantDes = this.getView().byId("selectLine").getValue();
+		sap.ui.getCore().byId("variantName").setValue(lineVariantName);
+		sap.ui.getCore().byId("variantDescription").setValue(variantDes);
 	},
+	
+	/**
+	 * Called when detailed button clicked
+	 * 
+	 * @param oEvent
+	 */
 	
 	openStationPopover : function(oEvent) {
 		
@@ -111,19 +119,41 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 		this.oStationPopover.openBy(oEvent.getSource());
 	},
 	
+	/**	
+	 * BR NO: SD-PPC-LT-090
+	 * Add New Station/Edit Station in Line Tracker table display
+	 * @param oEvent
+	 */
 	onEditStation : function(oEvent) {
 		
+
 		if (!this.oEditStation) {
-			// create dialog via fragment factory
+			// create dialog via fragment factory  
+		
 			this.oEditStation = sap.ui.xmlfragment("airbus.mes.linetracker.Edit_station", this);
 			
 			this.getView().addDependent(
 					this.oEditStation);
 			
 		}
-	
-		this.oEditStation.open();
+		
+		this.oEditStation.open();	
+		
+		var pressedBtnId = oEvent.getSource().sId;
+		if(pressedBtnId == "idLinetracker1--linetrackerAddStation"){
+			sap.ui.getCore().byId("editStation").setTitle(this.oView.getModel("i18n").getProperty("addStation"));
+			sap.ui.getCore().byId("editStation").setIcon("sap-icon://add");
+		}else{
+			sap.ui.getCore().byId("editStation").setTitle(this.oView.getModel("i18n").getProperty('editStation'));
+			sap.ui.getCore().byId("editStation").setIcon("sap-icon://edit");
+		}
+		
 	},
+	
+	/**
+	 * Called when cancel button clicked on Edit_station/edit_line fragments
+	 * @param evt
+	 */
 	
 	onCancel : function(evt) {
 		
@@ -145,6 +175,10 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 		
 	},
 	
+	/**
+	 * Called when variant value help request
+	 * @param oEvent
+	 */
 	handleValueHelp : function (oEvent) {
 		this.inputId = oEvent.getSource().getId();
 		
@@ -159,6 +193,11 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 		this._valueHelpDialog.open();
 	},
 
+	/**
+	 * Called when search on variant name in value help popup 
+	 * @param evt used to get search field value to the search filter
+	 * @returns matched variant name
+	 */
 	_handleValueHelpSearch : function (evt) {
 		var sValue = evt.getParameter("value");
 		var oFilter = new sap.ui.model.Filter("variantName",
@@ -167,9 +206,9 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 		evt.getSource().getBinding("items").filter([oFilter]);
 	},
 	
-	/*
+	/**
 	 * fill select line field with selected value help variant name 
-	 * @param oEvt
+	 * @param oEvt used to get selected 
 	 * @returns Selected Line Variant name for the Select Line field
 	 */
 	handleSelectedLineValueHelp:function(oEvt){
@@ -190,6 +229,9 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 		evt.getSource().getBinding("items").filter([]);
 	},*/
 
+	/**
+	 * To display KPI charts below
+	 */
 	displayKPIBelow : function(evt) {
 		var state = sap.ui.getCore().byId("idLinetracker1--idSlideControl").getState();
 		if (state == true) {
@@ -199,6 +241,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 			sap.ui.getCore().byId("idLinetracker1--idSlideControl").openNavigation();
 
 	},
+	
 	
 	hideKPISlide : function(evt) {
 		var state = sap.ui.getCore().byId("idLinetracker1--idSlideControl").getState();
@@ -223,9 +266,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	       });
      },
      
-     testPress: function () {
-    	 alert("Control clicked!")
-     }
+
 
 
 });

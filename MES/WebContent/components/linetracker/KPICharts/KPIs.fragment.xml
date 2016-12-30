@@ -2,7 +2,7 @@
        xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml"
        xmlns:micro="sap.suite.ui.microchart" xmlns:custom="airbus.mes.linetracker.KPICharts">
 
-                     <HBox  class="classKpiHeaderContent" width="100%">
+                     <HBox id="kpiHeaderContent" class="classKpiHeaderContent" width="100%">
 
                            <HBox justifyContent="SpaceAround" width="28%"
                                   class="contentHeaderCont">
@@ -11,7 +11,7 @@
                                                 <VBox class="chartColumn">
                                                        <layout:Grid class="" defaultSpan="L6 M6 S12">
                                                               <layout:content>
-                                                                     <Label text="{kpiI18n>Plan}{KPIchartTaktAdherence>/planUI}" class="KpiMediumText KPITaktChartBlueText" />
+                                                                     <Label text="{kpiI18n>Plan}{KPIchartTaktAdherence>/planUI}" class="KpiMediumText" />
                                                                      <Label text="{kpiI18n>Actual}{KPIchartTaktAdherence>/actualUI}"
                                                                            class="KpiMediumText whiteText KPITaktChartRightText" />
                                                               </layout:content>

@@ -1,6 +1,6 @@
 <core:FragmentDefinition xmlns="sap.m"
 	xmlns:core="sap.ui.core">
-	<Dialog id="editStation" title="{i18n>editStation}" icon="sap-icon://edit">
+	<Dialog id="editStation" title="" icon="">
 
 		<content>
 		<VBox>
