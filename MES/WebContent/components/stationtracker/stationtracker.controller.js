@@ -525,6 +525,9 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
                 "ProdGroup" : oModel.prodGroup,
                 };
 
+        //Store oFinal and oInitial value in case of check qa is not successfull
+        airbus.mes.stationtracker.oFinal = oFinal;
+        airbus.mes.stationtracker.oInitial = oInitial;
         airbus.mes.stationtracker.ModelManager.sendRescheduleRequest(false,oFinal,oInitial);
         //Close Popup
         this.onCloseDialog(oEvent);
@@ -1152,15 +1155,20 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
         switch(airbus.mes.stationtracker.CheckQa) {
         case "UNPLANNED":
             var oModel = airbus.mes.stationtracker.ImportOswUnplannedPopover;
-               airbus.mes.stationtracker.ModelManager.setOSW(oModel.aSFC_Step,"",true,false);
+            airbus.mes.stationtracker.ModelManager.setOSW(oModel.aSFC_Step,"",true,false);
+            this.onCloseDialog(oEvent);
             break;
         case "OSW":
             var oModel = airbus.mes.stationtracker.ImportOswUnplannedPopover;
-               airbus.mes.stationtracker.ModelManager.setOSW(oModel.aSFC_Step,oModel.sProdGroup,true,true);
+            airbus.mes.stationtracker.ModelManager.setOSW(oModel.aSFC_Step,oModel.sProdGroup,true,true);
+            this.onCloseDialog(oEvent);
             break;
         case "RESCHEDULING":
             var oModel = airbus.mes.stationtracker;
-            airbus.mes.stationtracker.ModelManager.sendRescheduleRequest(true,oModel.oFinal,oModel.oInitial)
+            airbus.mes.stationtracker.ModelManager.sendRescheduleRequest(true,oModel.oFinal,oModel.oInitial);
+        	airbus.mes.shell.oView.getController().renderStationTracker();
+            this.onCloseDialog(oEvent);
+            break;
         default:
             airbus.mes.stationtracker.AssignmentManager.handleLineAssignment("S", true);
             this.onCloseDialog(oEvent);
@@ -1205,6 +1213,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
     },
 
     onCancelCheckQA : function(oEvent){
+    	
         this.onCloseDialog(oEvent);
         //Render station tracker if cancel is selected => replace the operation at the previous place
         if (  airbus.mes.stationtracker.CheckQa === "RESCHEDULING" ) {
