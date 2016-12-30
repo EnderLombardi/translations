@@ -1,6 +1,7 @@
 <core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m" controllerName="airbus.mes.disruptions.CreateDisruption"
-	xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml">
+	xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:u="sap.ui.unified"
+	xmlns:html="http://www.w3.org/1999/xhtml">
 
 	<Page enableScrolling="false" showHeader="false" height="100%">
 
@@ -435,21 +436,27 @@
 											</layoutData>
 										</Label>
 									</f:label>
-									<HBox justifyContent="End" class="iconInTextarea">
+
+									<TextArea placeholder="{i18nModel>AddComment}" id="comment"
+										valueLiveUpdate="true" rows="10" value="">
 										<layoutData>
-											<l:GridData span="L12 M12 S12" />
+											<l:GridData span="XL7 L7 M6 S12" />
 										</layoutData>
-										<core:Icon src="sap-icon://attachment" width="1rem"
-											class="sapUiSmallMarginEnd" />
-										<core:Icon src="sap-icon://camera" width="1rem" />
+									</TextArea>
+
+									<VBox alignItems="Center" >
+										<layoutData>
+											<l:GridData span="XL1 L1 M2 S12" />
+										</layoutData>
+										<HBox width="100%" justifyContent="End">
+											<Button type="Transparent" icon="sap-icon://attachment" 
+												press="" class="sapUiSmallMarginEnd attachIcon" width="2rem" />
+											<Button type="Transparent"  icon="sap-icon://camera" 
+												press="" class="attachIcon" width="2rem" />
+										</HBox>
 										
-										<TextArea placeholder="{i18nModel>AddComment}" id="comment"
-											valueLiveUpdate="true" rows="10" value="">
-											<layoutData>
-												<l:GridData span="L8 M9 S11" />
-											</layoutData>
-										</TextArea>
-									</HBox>
+										<Link text="0 Attachments" press="handleLinkPress" />
+									</VBox>
 								</f:FormElement>
 
 							</f:formElements>
