@@ -79,13 +79,37 @@
 										</Select>
 									</f:fields>
 								</f:FormElement>
+								
+								
+								
+								<f:FormElement>
+									<f:label>
+										<Label required="true" text="{i18nModel>Issuer}">
+											<layoutData>
+												<l:GridData span="L2 M3 S12" />
+											</layoutData>
+										</Label>
+									</f:label>
+									<f:fields>
+										<ComboBox id="selectIssuer"
+											items="{ path : 'ressourcePoolModel>/Rowsets/Rowset/0/Row' }"
+											forceSelection="false">
+											<items>
+												<core:Item key="{ressourcePoolModel>user}" text="{ressourcePoolModel>lastName} {ressourcePoolModel>firstName}" />
+											</items>
+											<layoutData>
+												<l:GridData span="L3 M9 S12" />
+											</layoutData>
+										</ComboBox>
+									</f:fields>
+								</f:FormElement>
 								                      		
 
 								<f:FormElement>
 									<f:label>
 										<Label required="true" text="{i18nModel>Category}">
 											<layoutData>
-												<l:GridData span="L2 M3 S12" linebreak="true" />
+												<l:GridData span="L2 M3 S12"  linebreak="true" />
 											</layoutData>
 										</Label>
 									</f:label>
@@ -103,79 +127,8 @@
 										</Select>
 									</f:fields>
 								</f:FormElement>
-
-								<f:FormElement>
-									<f:label>
-
-										<Label required="true" text="{i18nModel>reason}">
-											<layoutData>
-												<l:GridData span="L2 M3 S12" />
-											</layoutData>
-										</Label>
-									</f:label>
-									<f:fields>
-										<Select id="selectreason"
-											items="{disruptionCustomData>/Rowsets/Rowset/1/Row}" change="onSelectionChange"
-											forceSelection="false">
-											<items>
-												<core:Item text="{disruptionCustomData>Reason}"
-													key="{disruptionCustomData>Reason}" />
-											</items>
-											<layoutData>
-												<l:GridData span="L3 M9 S12" />
-											</layoutData>
-
-										</Select>
-									</f:fields>
-								</f:FormElement>
 								
 								
-								<f:FormElement>
-									<f:label>
-										<Label required="true" text="{i18nModel>Issuer}">
-											<layoutData>
-												<l:GridData span="L2 M3 S12" linebreak="true" />
-											</layoutData>
-										</Label>
-									</f:label>
-									<f:fields>
-										<Select id="selectIssuer"
-											items="{ path : 'ressourcePoolModel>/Rowsets/Rowset/0/Row' }"
-											forceSelection="false">
-											<items>
-												<core:Item key="{ressourcePoolModel>user}" text="{ressourcePoolModel>lastName} {ressourcePoolModel>firstName}" />
-											</items>
-											<layoutData>
-												<l:GridData span="L3 M9 S12" />
-											</layoutData>
-										</Select>
-									</f:fields>
-								</f:FormElement>
-								
-
-								<f:FormElement>
-									<f:label>
-										<Label required="true" text="{i18nModel>resGroup}">
-											<layoutData>
-												<l:GridData span="L2 M3 S12" linebreak="true" />
-											</layoutData>
-										</Label>
-									</f:label>
-									<f:fields>
-										<Select id="selectResponsible"
-											items="{disruptionCategoryModel>/Rowsets/Rowset/0/Row}"
-											change="onSelectionChange" forceSelection="false">
-											<items>
-												<core:Item text="{disruptionCategoryModel>ResponsibleGroupDesc}"
-													key="{disruptionCategoryModel>ResponsibleGroup}" />
-											</items>
-											<layoutData>
-												<l:GridData span="L3 M9 S12" />
-											</layoutData>
-										</Select>
-									</f:fields>
-								</f:FormElement>
-
 								<f:FormElement>
 									<f:label>
 										<Label required="true" text="{i18nModel>OriginatorGroup}">
@@ -197,8 +150,58 @@
 										</Select>
 									</f:fields>
 								</f:FormElement>
+																																		
 
+								<f:FormElement>
+									<f:label>
 
+										<Label required="true" text="{i18nModel>reason}">
+											<layoutData>
+												<l:GridData span="L2 M3 S12" linebreak="true"/>
+											</layoutData>
+										</Label>
+									</f:label>
+									<f:fields>
+										<Select id="selectreason"
+											items="{disruptionCustomData>/Rowsets/Rowset/1/Row}" change="onSelectionChange"
+											forceSelection="false">
+											<items>
+												<core:Item text="{disruptionCustomData>Reason}"
+													key="{disruptionCustomData>Reason}" />
+											</items>
+											<layoutData>
+												<l:GridData span="L3 M9 S12" />
+											</layoutData>
+										</Select>
+									</f:fields>
+								</f:FormElement>
+								
+								
+								
+								<f:FormElement>
+									<f:label>
+										<Label required="true" text="{i18nModel>resGroup}">
+											<layoutData>
+												<l:GridData span="L2 M3 S12" />
+											</layoutData>
+										</Label>
+									</f:label>
+									<f:fields>
+										<Select id="selectResponsible"
+											items="{disruptionCategoryModel>/Rowsets/Rowset/0/Row}"
+											change="onSelectionChange" forceSelection="false">
+											<items>
+												<core:Item text="{disruptionCategoryModel>ResponsibleGroupDesc}"
+													key="{disruptionCategoryModel>ResponsibleGroup}" />
+											</items>
+											<layoutData>
+												<l:GridData span="L3 M9 S12" />
+											</layoutData>
+										</Select>
+									</f:fields>
+								</f:FormElement>
+								
+						
 
 								<f:FormElement>
 									<f:label>
@@ -216,12 +219,38 @@
 										</Input>
 									</f:fields>
 								</f:FormElement>
+								
+								
+								<f:FormElement>
+									<f:label>
+										<Label text="{i18nModel>Resolver}">
+											<layoutData>
+												<l:GridData span="L2 M3 S12" />
+											</layoutData>
+										</Label>
+									</f:label>
+									<f:fields>
+										<Select id="selectResolver"
+											items="{ path : 'ressourcePoolModel>/Rowsets/Rowset/0/Row' }" 
+											forceSelection="false">
+											<items>
+												<core:Item text="{ressourcePoolModel>lastName} {ressourcePoolModel>firstName}" 
+													key="{ressourcePoolModel>user}" />
+											</items>
+											<layoutData>
+												<l:GridData span="L3 M9 S12" />
+											</layoutData>
+
+										</Select>
+									</f:fields>
+								</f:FormElement>
+								
 
 								<f:FormElement>
 									<f:label>
 										<Label required="true" text="{i18nModel>gravity}">
 											<layoutData>
-												<l:GridData span="L2 M3 S12" />
+												<l:GridData span="L2 M3 S12" linebreak="true"/>
 											</layoutData>
 										</Label>
 									</f:label>

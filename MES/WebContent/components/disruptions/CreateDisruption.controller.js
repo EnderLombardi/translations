@@ -365,6 +365,10 @@ sap.ui
 									}, {
 										"attribute" : "JIG_TOOLS",
 										"value" : sJigtools
+									}, {
+										"attribute" : "ISSUER",     //V1.5
+										"value" : oView.byId("selectIssuer")
+										          .getSelectedKey()
 									} ]
 
 						}
