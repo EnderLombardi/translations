@@ -7,7 +7,7 @@ sap.ui.define([
 ], function(Controller,JSONModel,Filter,FilterOperator) {
 	
 
-	return Controller.extend("airbus.mes.attachments.disruptionAttachment", {
+	return Controller.extend("airbus.mes.disruptions.attachments.disruptionAttachment", {
 		
 		onFilterChange: function(oEvent){
 			var loValue = oEvent.getSource().getSelectedKey();

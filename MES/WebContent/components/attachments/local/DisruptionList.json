@@ -9,84 +9,30 @@
 			"Columns": {
 				"Column": []
 			},
-			"Row": [{
-				"wo_no": "26557",
-				"op_no": "50002137-1-0-0010",
-				"dis_no": "0030",
-				"dis_des": "test 06 MJ",
-				"gravity": "2",
-				"status": "InProgress",
-				"Row1": [{
-					"Type": "Pdf",
-					"Title": "PDF1",
-					"PDFUrl": "http:\/\/www.pdf995.com\/samples\/pdf.pdf"
-				}]
-			}, {
-				"wo_no": "26557",
-				"op_no": "50002137-1-0-0010",
-				"dis_no": "0040",
-				"dis_des": "test 06 MK",
-				"gravity": "3",
-				"status": "Blocked",
-				"Row1": [{
-					"Type": "Pdf",
-					"Title": "PDF2",
-					"PDFUrl": "http://www.pdf995.com/samples/pdf.pdf"
-				}]
-
-			}, {
-				"wo_no": "26557",
-				"op_no": "50002137-1-0-0010",
-				"dis_no": "0050",
-				"dis_des": "test 06 ML",
-				"gravity": "4",
-				"status": "InProgress",
-				"Row1": [{
-					"Type": "video",
-					"Title": "PDF3",
-					"PDFUrl": "http://www.pdf995.com/samples/pdf.pdf"
-				}]
-			}, {
-				"wo_no": "26567",
-				"op_no": "50002137-1-0-0010",
-				"dis_no": "0060",
-				"dis_des": "test 06 MM",
-				"gravity": "5",
-				"status": "Paused",
-				"Row1": [{
-					"Type": "Pdf",
-					"Title": "PDF4",
-					"PDFUrl": "http://www.pdf995.com/samples/pdf.pdf"
-				}]
-			}, {
-				"wo_no": "26567",
-				"op_no": "50002137-1-0-0010",
-				"dis_no": "0070",
-				"dis_des": "test 06 MN",
-				"gravity": "6",
-				"status": "InProgress",
-				"Row1": [{
-					"Type": "Pdf",
-					"Title": "PDF5",
-					"PDFUrl": "http://www.pdf995.com/samples/pdf.pdf"
-				}]
-			}],
-			"Select": [{
-				"Name": "Current Disruption"
-			}, {
-				"Name": "Current Operation"
-			}, {
-				"Name": "Current Work Order"
-			}]
+			"Row": [
+				{"wo_no":"26547", "op_no":"50002137-1-0-0010","dis_no":"DP030","dis_des":"test 06 MJ","gravity":"2","status":"InProgress","File":[
+					{"type":"Pdf", "name":"ABC.pdf"}]},
+				{"wo_no":"26547", "op_no":"50002137-1-0-0010","dis_no":"DP031","dis_des":"test 06 mj","gravity":"3","status":"Paused","File":[
+					{"type":"video", "name":"ABC.mp4"}]},
+				{"wo_no":"26547", "op_no":"50002137-1-0-0010","dis_no":"DP032","dis_des":"test 04 MJ","gravity":"4","status":"InProgress","File":[
+					{"type":"doc", "name":"ABC.doc"}]},
+					
+					{"wo_no":"26547", "op_no":"50002137-1-0-0011","dis_no":"DP042","dis_des":"Test 03 MJ","gravity":"5","status":"InProgress","File":[
+					{"type":"Text", "name":"ABC.txt"}]},
+					{"wo_no":"26547", "op_no":"50002137-1-0-0011","dis_no":"DP042","dis_des":"Test 02 MJ","gravity":"6","status":"inWork","File":[
+					{"type":"mp3", "name":"ABC.mp3"}]},
+					{"wo_no":"26547", "op_no":"50002137-1-0-0011","dis_no":"DP042","dis_des":"test 01 MJ","gravity":"7","status":"in process","File":[
+					{"type":"pdf", "name":"ABC.pdf"}]},
+					{"wo_no":"26547", "op_no":"50002137-1-0-0011","dis_no":"DP042","dis_des":"For Testing in DMI","gravity":"8","status":"in process","File":[
+					{"type":"pdf", "name":"ABC.pdf"}]}
+												
+						
+			
+			],
+			"Select": [
+				{"Name":"Current Work Order", "key":"Current Work Order"},
+				{"Name":"Current Operation", "key":"Current Operation"},
+				{"Name":"Current Disruption", "key":"Current Disruption"}]
 		}]
 	}
-
-
-
-
-
-
-
-
-
 }

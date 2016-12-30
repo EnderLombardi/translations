@@ -1,0 +1,47 @@
+ var a1a2m1m2m3Model = {
+                data:[
+                    {Region: "Asia", Company: "FJ", Revenue: 10, Measure: 110, Population: 1200},
+                    {Region: "Asia", Company: "KI", Revenue: 5, Measure: 180, Population: 1900},
+                    {Region: "Asia", Company: "LA", Revenue: 17, Measure: 105, Population: 1680},
+                    {Region: "Europe", Company: "FJ", Revenue: 2, Measure: 130, Population: 1003},
+                    {Region: "Europe", Company: "KI", Revenue: 22, Measure: 80, Population: 1312},
+                    {Region: "Europe", Company: "LA", Revenue: 24, Measure: 40, Population: 1453},
+                    {Region: "Africa", Company: "FJ", Revenue: 37, Measure:88, Population: 1335},
+                    {Region: "Africa", Company: "KI", Revenue: 15, Measure: 55, Population: 1859},
+                    {Region: "Africa", Company: "LA", Revenue: 44, Measure:140, Population: 1879}
+                ]
+              };
+-----------------------------------------
+
+var a1a2m1m2Data = {
+                  dimensions : [
+                      {axis : 1, name: "Region", value: "{Region}"},
+                      {axis : 2, name: "Company", value: "{Company}"},
+                  ],
+                  measures : [
+                      {group: 1, name : "Revenue", value : "{Revenue}"},
+                      {group: 2, name : "Measure", value : "{Measure}"}
+                  ],
+                  data : {
+                    path : "/data"
+                  }
+                };
+-----------------------------------------
+            var oDataset = new sap.viz.core.FlattenedDataset(a1a2m1m2Data);
+            var oModel = new sap.ui.model.json.JSONModel(a1a2m1m2m3Model);
+            oDataset.setModel(oModel);
+
+-----------------------------------------
+oDualChart = new sap.viz.ui5.DualCombination(
+            		  {
+                          id: "dualcombination",
+            			  width : "80%",
+                          height : "400px",
+                          title: {
+                            visible : true,
+                            text : 'Profit & Measure By Region & Company'
+                          },
+                          dataset: oDataset
+                        }	  
+              );
+-----------------------------------------

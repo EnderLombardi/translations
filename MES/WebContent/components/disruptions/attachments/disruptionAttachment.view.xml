@@ -1,5 +1,5 @@
 <mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
-	xmlns="sap.m" controllerName="airbus.mes.attachments.disruptionAttachment"
+	xmlns="sap.m" controllerName="airbus.mes.disruptions.attachments.disruptionAttachment"
 	xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml">
 
 	<Toolbar>
@@ -9,16 +9,16 @@
 			items="{
 						path: 'attachDisruption>/Rowsets/Rowset/0/Select/'
 					}">
-			<core:Item key="{attachDisruption>Name}" text="{attachDisruption>Name}" />
+			<core:Item key="{attachDisruption>key}" text="{attachDisruption>key}" />
 		</Select>
 		
-		<CheckBox id = "idCheckBox" text="{i18n>SelectAll}" select="onSelectAll" />
+		<CheckBox id = "idCheckBox" text="{i18n>SelectAll}" select="onSelectAll" class="sapUiSmallMarginEnd" />
 	</Toolbar>
 
 	<HBox>
 		<Toolbar>
 			
-			<Label text="{i18n>ListDisruption}"></Label>
+			<Label text="{i18n>ListDisruption}" class="sapUiSmallMargin"></Label>
 		</Toolbar>
 
 	</HBox>
@@ -32,14 +32,16 @@
  				<headerToolbar> 
  					<Toolbar> 
  						<Title text="{attachDisruption>wo_no}-{attachDisruption>op_no}-{attachDisruption>dis_no}-{attachDisruption>dis_des}-{attachDisruption>gravity}-{attachDisruption>status}" /> 
- 					</Toolbar> 
+ 					    <ToolbarSpacer></ToolbarSpacer>
+ 					    <Title text="{attachDisruption>Count}"/>
+ 					</Toolbar> 								
  				</headerToolbar> 
  				<List items="{path: 'attachDisruption>File/'}"> 
  					<CustomListItem> 
- 			<Panel expandable="false"> 
+ 			<Panel expandable="false" backgroundDesign = "Transparent" class="disruptionExpandablePanel"> 
  				<headerToolbar> 
  					<Toolbar> 
- 						<Title text="Title: {attachDisruption>name} Type: {attachDisruption>type}" /> 
+ 						<Link target="_blank" text="Title: {attachDisruption>name} Type: {attachDisruption>type}" href = "{attachDisruption>src}"/> 
  					</Toolbar> 
  				</headerToolbar> 
  				</Panel> 
