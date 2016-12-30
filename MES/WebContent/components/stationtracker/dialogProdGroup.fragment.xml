@@ -10,7 +10,7 @@
 		</buttons>
 		<content>
 
-			<Select width="100%" change="selectdDialogProdGroup" items="{ path : 'productionGroupModel>/Rowsets/Rowset/0/Row' }">
+			<Select id="selectProdGroup" width="100%" change="selectdDialogProdGroup" items="{ path : 'productionGroupModel>/Rowsets/Rowset/0/Row' }">
 				<core:Item key="{productionGroupModel>PROD_GROUP}" text="{productionGroupModel>PROD_GROUP}" />
 			</Select>
 
