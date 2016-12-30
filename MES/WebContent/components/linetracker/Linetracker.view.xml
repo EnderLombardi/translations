@@ -4,24 +4,34 @@
 	xmlns:custom="airbus.mes.linetracker" xmlns:html="http://www.w3.org/1999/xhtml"
 	xmlns:controlPhStation="airbus.mes.linetracker.PhysicalStation.control"
 	xmlns:uiTable="sap.ui.table" xmlns:tnt="sap.tnt" >
-	<Page showTitle="false" class="classLineTrackerTable">
+	<Page showTitle="false" showHeader="false"  class="classLineTrackerTable">
 	<customHeader>
-	<Toolbar  class="pageHeader kpiPageHeader contentNoPad">
+	<!-- <Toolbar  class="pageHeader kpiPageHeader contentNoPad">
 			<Text text="{i18n>lineTrackerTitle}" />
              <Button id="dateButton" icon="sap-icon://appointment"
 							press="datePick" class="classDateButton" />
 			 <ToolbarSpacer />
              <Button id="hideKPI" enabled="true" icon="sap-icon://hide"
-							text="Hide KPIs" press="hideKPI"/>
-	</Toolbar >
+							text="{i18n>hideKPI}" press="hideKPI"/>
+	</Toolbar > -->
 	</customHeader>
+		<VBox>
+		<Toolbar  class="pageHeader kpiPageHeader contentNoPad" height="4rem">
+			<Text text="{i18n>lineTrackerTitle}" />
+             <Button id="dateButton" icon="sap-icon://appointment"
+							press="datePick" class="classDateButton" />
+			 <ToolbarSpacer />
+             <Button id="hideKPI" enabled="true" icon="sap-icon://hide"
+							text="{i18n>hideKPI}" press="hideKPI"/>
+		</Toolbar >
 		<core:Fragment fragmentName="airbus.mes.linetracker.KPICharts.KPIs" type="XML" height="10rem"/>
+		</VBox>
 		<content>
-
+		
 			<uiTable:Table 			
 			id="linetrackerTable" 
 			rows="{stationDataModel>/list}"
-			visibleRowCount=" ">
+			visibleRowCount="5">
 			<uiTable:toolbar>			
 
 					<Toolbar class="toolbar">
@@ -76,7 +86,7 @@
 						<HBox alignItems="Center" justifyContent="Center">
 
 										<controlPhStation:PhysicalStationBox id="linetrackerEditStation"
-											color="#bcf6ff" actionIconColor="black" station="Station 30"
+											color="#bcf6ff" actionIconColor="black" station="{stationDataModel>planned}"
 											msn="MSN 1274" press="onEditStation">
 											<controlPhStation:actionIconButton>
 												<core:Icon src="sap-icon://refresh" />

@@ -12,7 +12,7 @@
 		"andon" : "1"
 	},
 	{
-		"station" : "Station 35",
+		"station" : "Station 10",
 		"planned" : 50,
 		"confirmed" : 40,
 		"trend" : "down",
@@ -24,7 +24,7 @@
 		"andon" : "2"
 	},
 	{
-		"station" : "Station 35",
+		"station" : "Station 20",
 		"planned" : 70,
 		"confirmed" : 100,
 		"trend" : "up",
@@ -36,11 +36,71 @@
 		"andon" : "-"
 	},
 	{
-		"station" : "Station 35",
+		"station" : "Station 15",
 		"planned" : 80,
 		"confirmed" : 80,
 		"trend" : "up",
 		"trendColor" : "Green",
+		"date"	: "02 JUL 2016 16:00",
+		"cycleTime" : "-1.5",
+		"workContent" : "1",
+		"disruption" : "1",
+		"andon" : "-"
+	},
+	{
+		"station" : "Station 21",
+		"planned" : 80,
+		"confirmed" : 80,
+		"trend" : "up",
+		"trendColor" : "Green",
+		"date"	: "02 JUL 2016 16:00",
+		"cycleTime" : "-1.5",
+		"workContent" : "1",
+		"disruption" : "1",
+		"andon" : "-"
+	},
+	{
+		"station" : "Station 32",
+		"planned" : 90,
+		"confirmed" : 80,
+		"trend" : "up",
+		"trendColor" : "Green",
+		"date"	: "02 JUL 2016 16:00",
+		"cycleTime" : "-1.5",
+		"workContent" : "1",
+		"disruption" : "1",
+		"andon" : "-"
+	},
+	{
+		"station" : "Station 33",
+		"planned" : 70,
+		"confirmed" : 80,
+		"trend" : "up",
+		"trendColor" : "Green",
+		"date"	: "02 JUL 2016 16:00",
+		"cycleTime" : "-1.5",
+		"workContent" : "1",
+		"disruption" : "1",
+		"andon" : "-"
+	},
+	{
+		"station" : "Station 25",
+		"planned" : 70,
+		"confirmed" : 60,
+		"trend" : "up",
+		"trendColor" : "Red",
+		"date"	: "02 JUL 2016 16:00",
+		"cycleTime" : "-1.5",
+		"workContent" : "1",
+		"disruption" : "1",
+		"andon" : "-"
+	},
+	{
+		"station" : "Station 27",
+		"planned" : 70,
+		"confirmed" : 60,
+		"trend" : "up",
+		"trendColor" : "Red",
 		"date"	: "02 JUL 2016 16:00",
 		"cycleTime" : "-1.5",
 		"workContent" : "1",
