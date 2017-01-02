@@ -43,7 +43,7 @@ sap.ui.core.Control.extend(
 				var msn = oControl.getMsn();
 				oRm.write("<div");
 				oRm.writeControlData(oControl);
-				//oRm.addStyle("background-color", oControl.getColor());
+//				oRm.addStyle("background-color", oControl.getColor());
 				// oRm.writeStyles();
 				oRm.addClass("ParentDiv")
 				oRm.writeClasses();
@@ -93,13 +93,15 @@ sap.ui.core.Control.extend(
 				oRm.renderControl(oControl.getAggregation("image"));
 				oRm.write("</div>");
 
-				oRm.write("<div");
+				
+				oRm.write(" </div>");
+				/*oRm.write("<div");
 				oRm.addClass("detailDiv");
 				oRm.writeClasses();
 				oRm.write(">");
 
-				oRm.renderControl(oControl.getAggregation("detailIconButton"));
-				oRm.write("</div> </div>");
+				oRm.renderControl(oControl.getAggregation("detailIconButton")); 
+				oRm.write(" </div>");*/
 			},
 
 			onclick : function(evt) { // is called when the Control's area is clicked - no event registration required

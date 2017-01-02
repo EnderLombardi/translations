@@ -9,6 +9,7 @@ jQuery.sap.require("airbus.mes.linetracker.util.Formatter");
 jQuery.sap.require("airbus.mes.linetracker.util.RoleManager");
 // Declare the current Component
 jQuery.sap.declare("airbus.mes.linetracker.Component");
+jQuery.sap.require("airbus.mes.linetracker.linetrackerProgressBar");
 
 // Extend current Component
 sap.ui.core.UIComponent.extend("airbus.mes.linetracker.Component", {
@@ -83,6 +84,8 @@ airbus.mes.linetracker.Component.prototype.createContent = function() {
         this.oView.setModel(sap.ui.getCore().getModel("KPIresolutionEfficiency"), "KPIresolutionEfficiency");
         this.oView.setModel(sap.ui.getCore().getModel("KPItaktEfficiency"), "KPItaktEfficiency");
         this.oView.setModel(sap.ui.getCore().getModel("KPIopenAnomalies"), "KPIopenAnomalies");
+        
+        this.oView.setModel(sap.ui.getCore().getModel("plantModel"), "plantModel");
         airbus.mes.linetracker.oView = this.oView;
 
         return this.oView;

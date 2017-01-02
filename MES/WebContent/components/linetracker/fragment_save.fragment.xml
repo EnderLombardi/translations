@@ -3,8 +3,7 @@
 	<Dialog id="saveVariant" icon="sap-icon://save">
 
 		<content>
-		<Label text="{i18n>saveText}"></Label>
-        
+		<Label text="{i18n>saveText}"></Label>        
 		</content>
 		
 		<buttons>

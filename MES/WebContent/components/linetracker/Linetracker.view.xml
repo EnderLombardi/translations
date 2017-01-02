@@ -3,42 +3,50 @@
 	xmlns="sap.m" controllerName="airbus.mes.linetracker.Linetracker"
 	xmlns:custom="airbus.mes.linetracker" xmlns:html="http://www.w3.org/1999/xhtml"
 	xmlns:controlPhStation="airbus.mes.linetracker.PhysicalStation.control"
-	xmlns:uiTable="sap.ui.table" xmlns:tnt="sap.tnt" >
-	<Page showTitle="false" showHeader="false"  class="classLineTrackerTable">
+	xmlns:uiTable="sap.ui.table" >
+	<Page showTitle="false"  class="classLineTrackerTable" enableScrolling="false">
 	<customHeader>
-	<!-- <Toolbar  class="pageHeader kpiPageHeader contentNoPad">
-			<Text text="{i18n>lineTrackerTitle}" />
-             <Button id="dateButton" icon="sap-icon://appointment"
-							press="datePick" class="classDateButton" />
+	<Toolbar  class="pageHeader kpiPageHeader contentNoPad">
+			<HBox>
+			<Title text="{i18n>lineTrackerTitle}" level="H2" />
+			</HBox>
+<!-- 			<Text text="{i18n>lineTrackerTitle}" /> -->
+			<core:Icon
+			src="sap-icon://appointment"
+			class="size5"
+			color="#FFE3E7">
+			</core:Icon>
+<!--              <Button id="dateButton" icon="sap-icon://appointment" -->
+<!-- 							press="datePick" class="classDateButton" /> -->
 			 <ToolbarSpacer />
+			 <Label id="dateLabel" text="" class="classDateLabel" ></Label>
              <Button id="hideKPI" enabled="true" icon="sap-icon://hide"
 							text="{i18n>hideKPI}" press="hideKPI"/>
-	</Toolbar > -->
+	</Toolbar>
 	</customHeader>
 		<VBox>
-		<Toolbar  class="pageHeader kpiPageHeader contentNoPad" height="4rem">
+	<!-- 	<Toolbar  class="pageHeader kpiPageHeader contentNoPad" height="4rem">
 			<Text text="{i18n>lineTrackerTitle}" />
              <Button id="dateButton" icon="sap-icon://appointment"
 							press="datePick" class="classDateButton" />
 			 <ToolbarSpacer />
              <Button id="hideKPI" enabled="true" icon="sap-icon://hide"
 							text="{i18n>hideKPI}" press="hideKPI"/>
-		</Toolbar >
+		</Toolbar > -->
 		<core:Fragment fragmentName="airbus.mes.linetracker.KPICharts.KPIs" type="XML" height="10rem"/>
 		</VBox>
-		<content>
-		
+		<content>		
 			<uiTable:Table 			
 			id="linetrackerTable" 
-			rows="{stationDataModel>/list}"
-			visibleRowCount="7">
-			<uiTable:toolbar>			
+			rows="{stationDataModel>/list}" visibleRowCount="6" 
+			enableColumnReordering="false">
+			<uiTable:toolbar >			
 
 					<Toolbar class="toolbar">
 						<Title text="{i18n>taktAdherence}" level="H2" />
 						<ToolbarSpacer/>
 
-						<Button text="KPI Charts" press="displayKPIBelow" class="sapUiLargeMarginEnd" />
+<!-- 						<Button text="KPI Charts" class="sapUiLargeMarginEnd" /> -->
 						<Text text="{i18n>forcastEndOfAssembly}" width="9.5%"
 							class="headerColumnText sapUiTinyMarginBottom" />
 						<Text text="{i18n>remainingToDo}" width="9.7%"
@@ -55,13 +63,13 @@
 							<Button id="linetrackerAddStation" icon="sap-icon://add" text="{i18n>_station}"
 								press="onEditStation"
 								type="Emphasized" class="stationBtns sapUiTinyMarginEnd"
-								tooltip="Add Station">
+								tooltip="{i18n>addStation}">
 								<layoutData>
 									<OverflowToolbarLayoutData />
 								</layoutData>
 							</Button>
 							<Button icon="sap-icon://save" press="onSaveVariant" type="Accept"
-								class="stationBtns" tooltip="Save Variant">
+								class="stationBtns" tooltip="{i18n>saveVariant}">
 								<layoutData>
 									<OverflowToolbarLayoutData />
 								</layoutData>
@@ -75,8 +83,8 @@
 							</Input>
 							<!-- <core:Icon src="sap-icon://create" press="onCreateModifyLine" 
 								class="stationBtns" /> -->
-							<Button icon="sap-icon://create" press="onCreateModifyLine"
-								class="stationBtns" tooltip="Create/Modify Line" type="Emphasized">
+							<Button icon="sap-icon://edit" press="onCreateModifyLine"
+								class="stationBtns" tooltip="{i18n>modifyLine}" type="Emphasized">
 								<layoutData>
 									<OverflowToolbarLayoutData />
 								</layoutData>
@@ -87,7 +95,7 @@
 
 										<controlPhStation:PhysicalStationBox id="linetrackerEditStation"
 											color="#bcf6ff" actionIconColor="black" station="{stationDataModel>station}"
-											msn="MSN 1274" press="onEditStation">
+											msn="MSN 1274"  press="handlePopoverPress" width="80%">
 											<controlPhStation:actionIconButton>
 												<core:Icon src="sap-icon://refresh" />
 											</controlPhStation:actionIconButton>
@@ -101,11 +109,12 @@
 											</controlPhStation:image>
 
 											<controlPhStation:detailIconButton>
-												<Button icon="sap-icon://vertical-grip" press="openStationPopover"
-													type="Transparent" width="100%" tooltip="More..." />
+												
 											</controlPhStation:detailIconButton>
 
 										</controlPhStation:PhysicalStationBox>
+										<Button icon="sap-icon://vertical-grip" press="openStationPopover" class=""
+												type="Transparent" width="20%" tooltip="{i18n>moreInfo}"/>
 
 									</HBox>				
 					</uiTable:template>
@@ -189,14 +198,6 @@
 			<control:slideControl id="idSlideControl">
 					
 				<control:slideContent>	
-					<tnt:ToolHeader>
-					<Toolbar>
-                     <Button icon="sap-icon://arrow-bottom" tooltip="Hide KPI" press="hideKPISlide"/>
-                      <ToolbarSpacer />
-                      <Label text="STATION 10" class="KPIheaderTitle"/>
-                      <ToolbarSpacer />
-                      </Toolbar>
-					</tnt:ToolHeader>				
 					<core:Fragment fragmentName="airbus.mes.linetracker.KPICharts.StationSlideKPIs"
 						type="XML" />
 				</control:slideContent>

@@ -9,7 +9,7 @@
 		enableScrolling="false" >
 		<content>
 			<VBox alignItems="Center">
-				<Button icon="sap-icon://delete" type="Transparent" class="stationPopoverBtns" width="30%" />
+				<Button icon="sap-icon://delete" type="Transparent" class="stationPopoverBtns" width="30%" press="onDeleteStation" />
 				<Button icon="sap-icon://edit" type="Transparent" class="stationPopoverBtns" width="30%" press="onEditStation" />
 			</VBox>
 		</content>

@@ -6,13 +6,31 @@
 		<VBox>
 		<Label/>
 		<Label text="{i18n>program}"></Label>
-		<Select width= "22rem"/>
+<!-- 		<Select width= "22rem"/> -->
+		<ComboBox id="selectProgram" items="{plantModel>/Rowsets/Rowset/0/Row}"
+              visible="true" selectionChange="onSelectionChange" class="customComboBox">
+                         <items>
+                            <core:Item key="{plantModel>program}" text="{plantModel>program}" />
+                         </items>
+        </ComboBox>
 		<Label/>
 		<Label text="{i18n>line}"></Label>
-		<Select width= "22rem"/>
+<!-- 		<Select width= "22rem"/> -->
+		<ComboBox id="selectLine" items="{plantModel>/Rowsets/Rowset/0/Row}"
+              visible="true" selectionChange="onSelectionChange" class="customComboBox">
+                         <items>
+                            <core:Item key="{plantModel>line}" text="{plantModel>line}" />
+                         </items>
+        </ComboBox>
 		<Label/>
 		<Label text="{i18n>station}"></Label>
-		<Select width= "22rem"/>
+<!-- 		<Select width= "22rem"/> -->
+		<ComboBox id="selectStation" items="{plantModel>/Rowsets/Rowset/0/Row}"
+              visible="true" selectionChange="onSelectionChange" class="customComboBox">
+                         <items>
+                            <core:Item key="{plantModel>station}" text="{plantModel>station}" />
+                         </items>
+        </ComboBox>
 		<Label/>
         </VBox>
 		</content>

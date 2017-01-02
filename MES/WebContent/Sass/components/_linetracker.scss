@@ -13,7 +13,7 @@ Linetracker View (Main Table)
     .classLineTrackerTable .toolbar {
         background-color: #D5F1F8 !important;
         border: none !important;
-        height: auto !important;
+      /*  height: auto !important;*/
     }
     .classLineTrackerTable table tr th,td{
         text-align: center !important;
@@ -204,7 +204,7 @@ Physical Station
 ********************************/
 .ParentDiv {
     background-color: #bcf6ff;
-    min-width: 12rem;
+    min-width: 10rem;
     height: 3rem;
     float: left;
     display: flex;
@@ -212,14 +212,14 @@ Physical Station
 
 .ActionDiv {
     float: left;
-    width: 13%;
+    width: 17%;
     align-self: center;
     padding-left: 1%;
 }
 
 .labelDiv {
     float: left;
-    width: 30%;
+    width: 40%;
     align-self: center;
 }
 
@@ -239,12 +239,12 @@ Physical Station
 
 .blankDiv {
     float: left;
-    width: 3%
+    width: 8%
 }
 
 .imageDiv {
     float: left;
-    width: 30%;
+    width: 35%;
 }
 
 .detailDiv {

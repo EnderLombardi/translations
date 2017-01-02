@@ -17,7 +17,7 @@ airbus.mes.linetracker.util.ModelManager = {
     	core.setModel(new sap.ui.model.json.JSONModel(), "KPIopenAnomalies"); // KPI Open Anomalies model
     	core.setModel(new sap.ui.model.json.JSONModel(), "KPIextraWork"); // KPI Open Anomalies model
     	core.setModel(new sap.ui.model.json.JSONModel(), "KPIshiftStaffing"); // KPI Shift Staffing model
-    	
+    	core.setModel(new sap.ui.model.json.JSONModel(), "plantModel"); // KPI Shift Staffing model
     	
     	//Not Used
     	core.setModel(new sap.ui.model.json.JSONModel(), "KPI"); // KPI Data for All model 
@@ -68,6 +68,7 @@ airbus.mes.linetracker.util.ModelManager = {
 		this.loadKPIextraWork();
 		this.loadKPIshiftStaffing();
 		this.loadKPI(); //Not Used 
+		this.loadPlantModel();
 
     },
     
@@ -408,6 +409,32 @@ airbus.mes.linetracker.util.ModelManager = {
 //				airbus.mes.linetracker.oView.byId("linetrackerTable").setBusy(false);
 			}
 		});
+    },
+    
+    loadPlantModel : function(){
+    	var oViewModel = sap.ui.getCore().getModel("plantModel");
+		jQuery.ajax({
+			type : 'post',
+			url : this.urlModel.getProperty("urlPlantData"),
+			contentType : 'application/json',
+			data : JSON.stringify({
+				"site" : airbus.mes.settings.ModelManager.site,
+				"station" : airbus.mes.settings.ModelManager.station,
+				"msn" : airbus.mes.settings.ModelManager.msn
+			}),
+
+			success : function(data) {
+				if(typeof data == "string"){
+					data = JSON.parse(data);
+				}
+				oViewModel.setData(data);
+			},
+
+			error : function(error, jQXHR) {
+				console.log(error);
+			}
+		});
+    	
     }
     
     

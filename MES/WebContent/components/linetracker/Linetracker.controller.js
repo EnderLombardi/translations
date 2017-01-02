@@ -1,6 +1,8 @@
 "use strict";
 
 sap.ui.controller("airbus.mes.linetracker.Linetracker", {
+	
+
 
 /**
 * Called when a controller is instantiated and its View controls (if available) are already created.
@@ -9,6 +11,9 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 */
 	onInit: function() {
 		
+//	var date = new Date();
+	
+//	this.addParent(this.selectTree, undefined);
 
 	},
 
@@ -169,6 +174,9 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 									
 			case "editStation" : this.oEditStation.close();
 			break;
+			
+			case "deleteStation" : this.oDeleteDialog.close();
+			break;
 									
 			default : return;
 		}
@@ -230,15 +238,18 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	},*/
 
 	/**
-	 * To display KPI charts below
+	 * To display Station KPI Header slide
+	 * @param: evt
 	 */
-	displayKPIBelow : function(evt) {
+	displayStationKPIHeader : function(evt) {
 		var state = sap.ui.getCore().byId("idLinetracker1--idSlideControl").getState();
 		if (state == true) {
 			sap.ui.getCore().byId("idLinetracker1--idSlideControl").closeNavigation();
 			
 		} else
 			sap.ui.getCore().byId("idLinetracker1--idSlideControl").openNavigation();
+		
+		 this.oPopover.close();
 
 	},
 	
@@ -251,6 +262,11 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 		}
 	},
 	
+	/**
+	 * To Display Popup of Station KPI header, Station Tracker, Disruption ANDON
+	 *  @param oEvent
+	 */
+
 	handlePopoverPress: function (oEvent) {
 	       if (!this.oPopover) {
 	              this.oPopover = sap.ui.xmlfragment("airbus.mes.linetracker.PhStationPopover", this);
@@ -266,6 +282,151 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	       });
      },
      
+     /**
+      * To Delete the Station from Line
+      * @param oEvent
+      */
+     
+     onDeleteStation: function (oEvent) {
+    	if (!this.oDeleteDialog) {
+    	 this.oDeleteDialog = sap.ui.xmlfragment("airbus.mes.linetracker.deleteStation", this);
+ 		 this.getView().addDependent(
+ 		 this.oDeleteDialog);
+ 		}
+ 		this.oDeleteDialog.open();
+   },
+  
+   /**
+    * To navigate to Station Tracker from Line Trakcer
+    */
+  gotoStationTracker:function(){
+	  airbus.mes.shell.util.navFunctions.stationTracker();
+  },
+  
+  /**
+   * To navigate to Disruption & Andon Tracker from Line Tracker
+   */
+  gotoDisruption_AndonTracker:function(){
+	  airbus.mes.shell.util.navFunctions.disruptionTracker();
+  },
+  
+  
+//Tree to define the hierarchy between select box Line, Station and MSN
+  selectTree : {
+      id : "headTextProgram",
+      type : "select",
+      path : "program",
+      attr : "program",
+      childs : [ {
+          id : "selectLine",
+          type : "select",
+          path : "line",
+          attr : "line",
+          childs : [ {
+              id : "selectStation",
+              type : "select",
+              path : "station",
+              attr : "station",
+             /* childs : [ {
+                  id : "selectMSN",
+                  type : "select",
+                  path : "msn",
+                  currentmsn : "Current_MSN",
+
+                  childs : []
+              },
+              {
+                  id : "Return",
+                  type : "Return",
+                  childs : []
+              }]*/
+          }
+              ]
+      } ]
+  },
+  
+/*  
+//For hierachy of combobox
+  addParent : function(oTree, oParent) {
+      var that = this;
+      oTree.parent = oParent;
+      oTree.childs.forEach(function(oElement) {
+          that.addParent(oElement, oTree);
+      });
+  },
+  
+  findElement : function(oTree, sId) {
+      if (oTree.id == sId) {
+          return oTree;
+      } else {
+          var oElement;
+          for (var i = 0; i < oTree.childs.length; i++) {
+              oElement = this.findElement(oTree.childs[i],
+                      sId);
+              if (oElement) {
+                  return oElement;
+              }
+          }
+      }
+  },
+*/
+  /**
+   * Called when selecting from combobox in Add Station Popup
+   */
+  
+ /* onSelectionChange : function(){
+	  var that = this;
+
+      if (oEvt.getSource != undefined ) {
+
+          var id = oEvt.getSource().getId().split("--")[1];
+
+      } else {
+          // Used when this function is call to set usersetting data.
+          var id = oEvt;
+      }
+
+      this.findElement(this.selectTree, id).childs
+              .forEach(function(oElement) {
+                  that.clearField(oElement);
+                  that.filterField(oElement);
+              });
+
+      switch(id) {
+      case "selectLine":
+          this.setEnabledCombobox(true, true, true, false);
+          break;
+      case "selectStation":
+//    	  if ( airbus.mes.lintracker.ModelManager.currentMsnSelected ) {
+          if ( airbus.mes.lintracker.ModelManager.currentMsnSelected ) {
+         
+//              var sCurrentMsn = "";
+              if ( sap.ui.getCore().getModel("plantModel").getProperty("/Rowsets/Rowset/0/Row") != undefined ) {
+              var oModel = sap.ui.getCore().getModel("plantModel").getProperty("/Rowsets/Rowset/0/Row");
+              // Find automatically the msn with the flag Current MSN different of "---"
+              oModel = oModel.filter(function (el) {
+                    return el.program ===  airbus.mes.lintracker.ModelManager.program &&
+                              el.line === airbus.mes.lintracker.oView.byId("selectLine").getSelectedKey() &&
+                           el.station === airbus.mes.lintracker.oView.byId("selectStation").getSelectedKey() 
+//                           && el.Current_MSN === "true"
+                  });
+              if ( oModel.length > 0 ) {
+
+                  // This is need to reset the previous current msn value when we reload the applicatoin
+//                  airbus.mes.settings.ModelManager.currentMsnValue = oModel[0].msn;
+//                  airbus.mes.settings.oView.byId("selectMSN").setValue( oModel[0].msn );
+
+              }
+              }
+          }
+          this.setEnabledCombobox(true, true, true, true);
+          break;
+      default:
+          this.setEnabledCombobox(true, true, true, true);
+
+  }
+  },
+*/
 
 
 

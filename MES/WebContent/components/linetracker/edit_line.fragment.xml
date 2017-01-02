@@ -16,7 +16,7 @@
 
 			<HBox alignItems="Center" class="dialogForm">
 				<Label text="{i18n>description}" width="6rem"></Label>
-				<Input id="variantDescription" text="{lineVariantModel>Description}" editable="false"/>
+				<Input id="variantDescription" text="{lineVariantModel>Description}"/>
 			</HBox>
 		</content>
 

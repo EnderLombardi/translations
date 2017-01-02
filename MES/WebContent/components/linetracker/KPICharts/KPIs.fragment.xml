@@ -128,9 +128,7 @@
                                                               title="{kpiI18n>RedSpaces}"
                                                               value="{path:'KPItaktEfficiency>/slbRedSpacesUI', formatter:'airbus.mes.linetracker.KPICharts.util.Formatter.stringToInt'}"
                                                               displayValue="{KPItaktEfficiency>/slbRedSpacesUI}%" />
-                                                       <micro:ComparisonMicroChartData
-                                                              title="{kpiI18n>RedSpaces}"
-                                                              value="100" visible="false" />
+                                                       
                                                 </micro:data>
                                          </micro:ComparisonMicroChart>
                                   </VBox>
@@ -219,11 +217,6 @@
                                                               title="{kpiI18n>NotAcknowledged}"
                                                               value="{path:'KPIresolutionEfficiency>/notAcknowledgedUI', formatter:'airbus.mes.linetracker.KPICharts.util.Formatter.stringToInt'}"
                                                                             displayValue="{KPIresolutionEfficiency>/notAcknowledgedUI}"/>
-                                                       <micro:ComparisonMicroChartData
-                                                              title="{kpiI18n>RedSpaces}"
-                                                              visible="false"
-                                                              value="{path:'KPIresolutionEfficiency>/totalUI', formatter:'airbus.mes.linetracker.KPICharts.util.Formatter.stringToInt'}" />
-
                                                 </micro:data>
                                          </micro:ComparisonMicroChart>
                                   </VBox>
@@ -268,7 +261,7 @@
                                                 value2="{path:'KPIshiftStaffing>/allocatedFteUI', formatter:'airbus.mes.linetracker.KPICharts.util.Formatter.stringToInt'}"
                                                 title1="{kpiI18n>NeedFTE}" title2="{kpiI18n>AllocatedFTE}"
                                                 displayValue1="{KPIshiftStaffing>/neededFteUI}" displayValue2="{KPIshiftStaffing>/allocatedFteUI}"
-                                                deltaDisplayValue="{KPIshiftStaffing>/notAllocatedFteUI}" class="kpiDeltaMicroChart" />
+                                                deltaDisplayValue="{KPIshiftStaffing>/notAllocatedFteUI}" class="kpiDeltaMicroChart whiteText" />
                                   </VBox>
                            </VBox>
                      </HBox>
