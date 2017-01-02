@@ -1095,12 +1095,29 @@ sap.ui
 								
 								// clear disruptionDetailModel if edit is loaded before ReportDisruption
 								sap.ui.getCore().getModel("DisruptionDetailModel").setData();
-								// V1.5
+								
+								// V1.5 [BEG]
 								// SD-SP1604983-CDP-010  
 								// SD-SP1604983-DDR-005
-								sap.ui.getCore().byId("createDisruptionView--selectIssuer").setSelectedKey(sap.ui.getCore().getModel(
-								"userSettingModel").getProperty(
-								"/Rowsets/Rowset/0/Row/0/user"))
+								//To fill initially logged in user in issuer field
+																
+								 var sUserId = sap.ui.getCore().getModel(
+								"userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/user_id")
+								
+								var sUserName = (sap.ui.getCore().getModel("userDetailModel").getProperty(
+								"/Rowsets/Rowset/0/Row/0/last_name")+" "+sap.ui.getCore().getModel("userDetailModel").getProperty(
+								"/Rowsets/Rowset/0/Row/0/first_name"))
+								
+								var oItem = new sap.ui.core.Item({key: sUserId ,text: sUserName})
+								
+								 
+								 if (sap.ui.getCore().byId("createDisruptionView--selectIssuer").getSelectedKey()=="") {	
+									 sap.ui.getCore().byId("createDisruptionView--selectIssuer").addItem(oItem)
+									}
+								 sap.ui.getCore().byId("createDisruptionView--selectIssuer").setSelectedItem(oItem)
+								 
+								
+								// V1.5 [END]
 
 								oOperDetailNavContainer.to(airbus.mes.disruptions.oView.createDisruption.getId());
 								
