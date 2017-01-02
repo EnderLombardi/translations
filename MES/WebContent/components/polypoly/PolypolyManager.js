@@ -33,6 +33,7 @@ airbus.mes.polypoly.PolypolyManager = {
 	},
 	
 	getValueSelected : "",
+	firstVisibleRow : 0,
 	urlModel : undefined,
 	oViewController : undefined,
 	polypolyIndex : undefined,

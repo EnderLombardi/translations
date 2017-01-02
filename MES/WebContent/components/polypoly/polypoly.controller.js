@@ -46,6 +46,46 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
         sap.ui.getCore().byId("oTableQA").setVisibleRowCount(airbus.mes.polypoly.PolypolyManager.internalContext.iLinesQA);
         airbus.mes.polypoly.QADialog.open();
     },
+    
+    onClickQAPopup : function(){
+    	airbus.mes.polypoly.QADialog.close();
+    },
+
+    createColumnQA : function(sId, oContext) {
+//   	var that = this;
+    	var aMultiLabels = [];
+
+   		aMultiLabels.push(new sap.m.Label({
+    		text : oContext.getProperty("techname"),
+    		design : "Bold",
+    		tooltip : oContext.getProperty("techname"),
+    	}));
+    	aMultiLabels.push(new sap.m.Label({
+    		text : oContext.getProperty("name"),
+    		design : "Bold",
+    		tooltip : oContext.getProperty("name"),
+    	}));
+
+    	var oColumn = new sap.ui.table.Column(
+    			{
+    				id : sId,
+    				hAlign : "Center",
+    				width : "7rem",
+    				multiLabels : [ aMultiLabels ],
+    				template : new sap.m.Text({
+    					text : {
+    						parts : [ oContext
+    						          .getProperty("techname") ],
+    						          formatter : function(text) {
+    						        	  return text;
+    						          }
+    					},
+    				})
+    			});
+
+    	;
+    	return oColumn
+    },
 
     createColumn : function(sId, oContext) {
         var that = this;
@@ -626,6 +666,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
         airbus.mes.polypoly.PolypolyManager.userComptencyContext.newLevel = oEvt
         .getSource().getParent().getItems().indexOf(
                 oEvt.getSource());
+        airbus.mes.polypoly.PolypolyManager.firstVisibleRow = airbus.mes.polypoly.oView.byId("oTablePolypoly").getFirstVisibleRow();
         airbus.mes.polypoly.PolypolyManager.updateLevelInit();
     },
 

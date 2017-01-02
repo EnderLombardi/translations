@@ -260,7 +260,10 @@ airbus.mes.polypoly.ModelManager = {
 		//	airbus.mes.polypoly.oView.getController().onRPSearch();
 		//}
 		// *****
-
+		
+		//Set Scroll bar at previous level - Stored in polypoly.controller.onChangeClick() and reset in navFunctions.polypoly()
+		airbus.mes.polypoly.oView.byId("oTablePolypoly").setFirstVisibleRow(airbus.mes.polypoly.PolypolyManager.firstVisibleRow);
+		
 		airbus.mes.shell.busyManager.unsetBusy(airbus.mes.polypoly.oView);
 	},
 	
