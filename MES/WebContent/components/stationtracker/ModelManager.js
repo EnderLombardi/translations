@@ -859,8 +859,8 @@ airbus.mes.stationtracker.ModelManager = {
 					if (data.Rowsets.Rowset[0].Row[0].message == "W") {
 						var checkQAModel = new sap.ui.model.json.JSONModel();
 						checkQAModel.setData(data.Rowsets.Rowset[1]);
-						//Permit to display button ok and cancel
-						airbus.mes.stationtracker.AssignmentManager.checkQA = false;
+						//Permit to display button ok
+						airbus.mes.stationtracker.AssignmentManager.checkQA = true;
 						//Permit to relaunch rescheduling after the check Qa
 						airbus.mes.stationtracker.CheckQa = "RESCHEDULING";
 						airbus.mes.stationtracker.oView.getController().openCheckQAPopup(checkQAModel);
