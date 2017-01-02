@@ -106,10 +106,16 @@ sap.ui
 					 */
 					onAttachDisruption : function(oEvt) {
 						this.nav = this.getView().oParent;
+						var loPath =  oEvt.oSource.oPropagatedProperties.oBindingContexts.operationDisruptionsModel.sPath;
+						var lolength = loPath.length;
+						var loIndex = loPath.slice(lolength -1);
+						
+						var loDisDescription = oEvt.oSource.oPropagatedProperties.oBindingContexts.operationDisruptionsModel.oModel.oData.Rowsets.Rowset[0].Row[loIndex].Description;
+						
 						jQuery.sap.registerModulePath("airbus.mes.disruptions.attachments","../components/disruptions/attachments");
 						sap.ui.getCore().createComponent({ name : "airbus.mes.disruptions.attachments"});
 						this.nav.addPage(airbus.mes.disruptions.attachments.oView);
-						this.nav.to(airbus.mes.disruptions.attachments.oView.getId());
+						this.nav.to(airbus.mes.disruptions.attachments.oView.getId(),{Desc:loDisDescription});
 					},
 
 					/***********************************************************

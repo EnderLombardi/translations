@@ -31,7 +31,7 @@
  			<Panel expandable="true"> 
  				<headerToolbar> 
  					<Toolbar> 
- 						<Title text="{attachDisruption>wo_no}-{attachDisruption>op_no}-{attachDisruption>dis_no}-{attachDisruption>dis_des}-{attachDisruption>gravity}-{attachDisruption>status}" /> 
+ 						<Title text="{attachDisruption>wo_no}-{attachDisruption>op_no}-{attachDisruption>dis_no}-{attachDisruption>dis_des}-{path: 'attachDisruption>gravity', formatter: 'airbus.mes.disruptions.attachments.Formatter.setGravityTexts'}-{path: 'attachDisruption>status', formatter: 'airbus.mes.disruptions.attachments.Formatter.setDisruptionStatuses'}" /> 
  					    <ToolbarSpacer></ToolbarSpacer>
  					    <Title text="{attachDisruption>Count}"/>
  					</Toolbar> 								

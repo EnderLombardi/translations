@@ -4,11 +4,37 @@ sap.ui.define([
 	'sap/ui/model/json/JSONModel',
 	"sap/ui/model/Filter",
 	"sap/ui/model/FilterOperator",
-], function(Controller,JSONModel,Filter,FilterOperator) {
+	"airbus/mes/disruptions/attachments/Formatter"
+], function(Controller,JSONModel,Filter,FilterOperator,Formatter) {
 	
 
 	return Controller.extend("airbus.mes.disruptions.attachments.disruptionAttachment", {
+		formatter:Formatter,
+
+
 		
+		onBeforeRendering: function(oEvt){
+			var aFilter = [];
+			var that = this;
+			this.getView().addEventDelegate({
+				onAfterShow: function(evt) {
+				      var oCurrDisVal = evt.data.Desc;
+				      
+				      var oList = that.getView().byId("idList");
+						var oBinding = oList.getBinding("items");
+//						var oCurrDisVal = sap.ui.getCore().getModel("operationDisruptionsModel").oData.Rowsets.Rowset[0].Row[0].Description;
+							aFilter.push(new Filter("dis_des", FilterOperator.Contains, oCurrDisVal));	
+							
+						oBinding.filter(aFilter);
+				      // ...now retrieve the data element with the given ID and update the page UI
+				   },
+				   
+				});
+
+		      
+//			var idToRetrieve = evt.data.Desc;
+			
+		},
 		onFilterChange: function(oEvent){
 			var loValue = oEvent.getSource().getSelectedKey();
 			

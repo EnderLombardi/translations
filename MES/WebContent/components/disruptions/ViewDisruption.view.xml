@@ -81,7 +81,7 @@
 											<f:fields>
 
 												<Text
-													text="{path: 'operationDisruptionsModel>Gravity', formatter: 'airbus.mes.disruptions.Formatter.setGravityText'}">
+													text="{path: 'operationDisruptionsModel>gravity', formatter: 'airbus.mes.disruptions.Formatter.setGravityText'}">
 													<layoutData>
 														<l:GridData span="L3 M3 S12" />
 													</layoutData>
