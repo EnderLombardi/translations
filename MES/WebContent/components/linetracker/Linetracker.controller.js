@@ -94,9 +94,9 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	
 		this.oAddLineDialog.open();
 		var lineVariantName = this.getView().byId("selectLine").getValue();
-		var variantDes = this.getView().byId("selectLine").getValue();
+//		var variantDes = this.getView().byId("selectLine").getValue();
 		sap.ui.getCore().byId("variantName").setValue(lineVariantName);
-		sap.ui.getCore().byId("variantDescription").setValue(variantDes);
+//		sap.ui.getCore().byId("variantDescription").setValue(variantDes);
 	},
 	
 	/**

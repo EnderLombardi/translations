@@ -31,7 +31,7 @@
 			<uiTable:Table 			
 			id="linetrackerTable" 
 			rows="{stationDataModel>/list}"
-			visibleRowCount="5">
+			visibleRowCount="7">
 			<uiTable:toolbar>			
 
 					<Toolbar class="toolbar">
@@ -86,7 +86,7 @@
 						<HBox alignItems="Center" justifyContent="Center">
 
 										<controlPhStation:PhysicalStationBox id="linetrackerEditStation"
-											color="#bcf6ff" actionIconColor="black" station="{stationDataModel>planned}"
+											color="#bcf6ff" actionIconColor="black" station="{stationDataModel>station}"
 											msn="MSN 1274" press="onEditStation">
 											<controlPhStation:actionIconButton>
 												<core:Icon src="sap-icon://refresh" />
