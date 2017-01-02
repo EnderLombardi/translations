@@ -1231,12 +1231,12 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
     onCancelCheckQA : function(oEvent){
     	
         this.onCloseDialog(oEvent);
-        //Render station tracker if cancel is selected => replace the operation at the previous place
-        if (  airbus.mes.stationtracker.CheckQa === "RESCHEDULING" ) {
-        	
-        	airbus.mes.shell.oView.getController().renderStationTracker();
-        	
-        }
+//        //Render station tracker if cancel is selected => replace the operation at the previous place
+//        if (  airbus.mes.stationtracker.CheckQa === "RESCHEDULING" ) {
+//        	
+//        	airbus.mes.shell.oView.getController().renderStationTracker();
+//        	
+//        }
     },
 
     deleteLineAssignment : function(){

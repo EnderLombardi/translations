@@ -864,6 +864,7 @@ airbus.mes.stationtracker.ModelManager = {
 						//Permit to relaunch rescheduling after the check Qa
 						airbus.mes.stationtracker.CheckQa = "RESCHEDULING";
 						airbus.mes.stationtracker.oView.getController().openCheckQAPopup(checkQAModel);
+						airbus.mes.shell.oView.getController().renderStationTracker();
 					} else if (data.Rowsets.Rowset[0].Row[0].message == "S") {
 						airbus.mes.shell.oView.getController().renderStationTracker();
 					}
