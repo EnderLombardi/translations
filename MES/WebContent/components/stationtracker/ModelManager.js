@@ -936,15 +936,33 @@ airbus.mes.stationtracker.ModelManager = {
 					fNumberEl = fNumberEl + 1;
 					fAllDuration = parseFloat(fAllDuration) + parseFloat(elModel.DURATION);
 					fAllProgress = parseFloat(fAllProgress) + parseFloat(elModel.PROGRESS);
-					elOverallModel.WORKORDER_ID = elModel.WORKORDER_ID;
-					elOverallModel.WORKORDER_DESCRIPTION = elModel.WORKORDER_DESCRIPTION;
-				
+									
 		});
 
+		// Text to display different case regarding box selected
+		switch (airbus.mes.stationtracker.GroupingBoxingManager.box) {
+
+		case "OPERATION_ID":
+			//sText = oBox.operationDescription + " - " + oBox.shopOrder + " - " + oBox.operationId;
+			elOverallModel.WORKORDER_ID =  oEvent.operationId;
+			elOverallModel.WORKORDER_DESCRIPTION = oEvent.operationDescription;
+			break;
+
+		case "WORKORDER_ID":
+			elOverallModel.WORKORDER_ID = oEvent.shopOrderDescription;
+			elOverallModel.WORKORDER_DESCRIPTION = oEvent.shopOrder;
+			break;
+		default:
+			elOverallModel.WORKORDER_ID  = oEvent.realValueBox;
+			elOverallModel.WORKORDER_DESCRIPTION = "";
+			break;
+
+		}	
+		
 		elOverallModel.OPERATION_ID = "";
 		elOverallModel.OPERATION_DESCRIPTION = "";
-		elOverallModel.DURATION = Math.floor(fAllDuration / fNumberEl);
-		elOverallModel.PROGRESS = Math.floor(fAllProgress / fNumberEl);
+		elOverallModel.DURATION = fAllDuration.toFixed(0);
+		elOverallModel.PROGRESS = fAllProgress.toFixed(0);
 		elOverallModel.ISUNPLANNED = oEvent.isUnplanned;
 		elOverallModel.RMA_STATUS_COLOR = oEvent.rmaStatus;
 		elOverallModel.EXECUTION_STATION_SOURCE = oEvent.OSW;

@@ -223,7 +223,7 @@ airbus.mes.stationtracker.util.Formatter = {
 		
 				case "OPERATION_ID":
 					//sText = oBox.operationDescription + " - " + oBox.shopOrder + " - " + oBox.operationId;
-					sText = oBox.shopOrder + " - " + oBox.operationId;
+					sText = oBox.operationDescription + " - " + oBox.operationId;
 					break;
 	
 				case "WORKORDER_ID":
@@ -392,12 +392,19 @@ airbus.mes.stationtracker.util.Formatter = {
 			
 			
 			titleWorklist : function(workOrder, workOrderDescritpion) {
+				if ( workOrderDescritpion != "" ) {
+					
 				return workOrder + " - " + workOrderDescritpion;
+				
+				} else {
+					
+					return workOrder;
+				}
 			},
 
 			displayValueIM : function(operation, operationDescription,	progress, duration) {
-				progress = ((progress * 100 * 0.001)/3600).toFixed(4);
-				duration = ((duration * 100 * 0.001)/3600).toFixed(4);
+				progress = ((progress * 100 * 0.001)/3600).toFixed(0);
+				duration = ((duration * 100 * 0.001)/3600).toFixed(0);
 				
 				if(operation === "") {
 //					Case of Overall progress
