@@ -36,13 +36,15 @@
  					    <Title text="{attachDisruption>Count}"/>
  					</Toolbar> 								
  				</headerToolbar> 
- 				<List items="{path: 'attachDisruption>File/'}"> 
+ 				<List id = "idListItems" items="{path: 'attachDisruption>File/'}"> 
  					<CustomListItem> 
  			<Panel expandable="false" backgroundDesign = "Transparent" class="disruptionExpandablePanel"> 
  				<headerToolbar> 
  					<Toolbar> 
  						<Link target="_blank" text="Title: {attachDisruption>name} Type: {attachDisruption>type}" href = "{attachDisruption>src}"/> 
- 					</Toolbar> 
+ 					<ToolbarSpacer/> 					
+ 					<Button icon="sap-icon://delete" press="onPressDelete" />
+ 					</Toolbar>
  				</headerToolbar> 
  				</Panel> 
 			
