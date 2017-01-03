@@ -2,7 +2,7 @@
        xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml"
        xmlns:micro="sap.suite.ui.microchart" xmlns:custom="airbus.mes.linetracker.KPICharts">
 
-                     <HBox id="kpiHeaderContent" class="classKpiHeaderContent" width="100%">
+                     <HBox id="lt_kpiHeaderContent" class="classKpiHeaderContent" width="100%">
 
                            <HBox justifyContent="SpaceAround" width="28%"
                                   class="contentHeaderCont">
@@ -11,7 +11,7 @@
                                                 <VBox class="chartColumn">
                                                        <layout:Grid class="" defaultSpan="L6 M6 S12">
                                                               <layout:content>
-                                                                     <Label text="{kpiI18n>Plan}{KPIchartTaktAdherence>/planUI}" class="KpiMediumText" />
+                                                                     <Label text="{kpiI18n>Plan}{KPIchartTaktAdherence>/planUI}" class="KPITaktChartBlueText" />
                                                                      <Label text="{kpiI18n>Actual}{KPIchartTaktAdherence>/actualUI}"
                                                                            class="KpiMediumText whiteText KPITaktChartRightText" />
                                                               </layout:content>
@@ -250,13 +250,13 @@
                                          design="Bold" />
                            </VBox>                           
 
-                           <VBox wrap="Wrap" width="10%" alignItems="Center"
+                           <VBox id="boxShiftStaffing" wrap="Wrap" width="10%" alignItems="Center"
                                   class="contentHeaderCont kpiBoxes">
                                   <Label text="{kpiI18n>ShiftSTAFFING}" size="L"
                                          design="Bold" width="100%" class="whiteTextHeader" />
                                   <VBox width="100%" justifyContent="SpaceAround">
                                          <micro:DeltaMicroChart width="100%"
-                                                isResponsive="true"
+                                                id="shifStaffingHeader"  isResponsive="true"
                                                 value1="{path:'KPIshiftStaffing>/neededFteUI', formatter:'airbus.mes.linetracker.KPICharts.util.Formatter.stringToInt'}"
                                                 value2="{path:'KPIshiftStaffing>/allocatedFteUI', formatter:'airbus.mes.linetracker.KPICharts.util.Formatter.stringToInt'}"
                                                 title1="{kpiI18n>NeedFTE}" title2="{kpiI18n>AllocatedFTE}"

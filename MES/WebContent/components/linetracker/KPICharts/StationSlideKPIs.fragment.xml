@@ -265,7 +265,7 @@
                                          design="Bold" width="100%" class="whiteTextHeader" />
                                   <VBox width="100%" justifyContent="SpaceAround">
                                          <micro:DeltaMicroChart width="100%"
-                                                isResponsive="true"
+                                                id="StationshifStaffingHeader" isResponsive="true"
                                                 value1="{path:'KPIshiftStaffing>/neededFteUI', formatter:'airbus.mes.linetracker.KPICharts.util.Formatter.stringToInt'}"
                                                 value2="{path:'KPIshiftStaffing>/allocatedFteUI', formatter:'airbus.mes.linetracker.KPICharts.util.Formatter.stringToInt'}"
                                                 title1="{kpiI18n>NeedFTE}" title2="{kpiI18n>AllocatedFTE}"

@@ -42,6 +42,43 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 //	onExit: function() {
 //
 //	}
+	/**
+	 * To hide Header KPI
+	 */
+	hideKPI: function(){
+		
+		 var oPanel = airbus.mes.linetracker.oView.byId("linetrackerHeaderKPI");
+		 
+		 var bIsExpanded = oPanel.getExpanded();
+
+	        if ( bIsExpanded ) {
+	            airbus.mes.linetracker.oView.byId("hideKPI").setIcon("sap-icon://show");
+	            airbus.mes.linetracker.oView.byId("hideKPI").setText(airbus.mes.linetracker.oView.getController().getI18nValue("ShowKPIS"));
+	        } else {
+	            airbus.mes.linetracker.oView.byId("hideKPI").setIcon("sap-icon://hide");
+	            airbus.mes.linetracker.oView.byId("hideKPI").setText(airbus.mes.linetracker.oView.getController().getI18nValue("HideKPIS"));
+	        }
+
+	        oPanel.setExpanded(!bIsExpanded);
+	       /* var hbhgt = hbox.getHeight();
+
+	        if ( hbhgt == "0rem" ) {
+	        	hbox.setHeight("10rem");
+	            airbus.mes.linetracker.oView.byId("hideKPI").setIcon("sap-icon://show");
+	            airbus.mes.linetracker.oView.byId("hideKPI").setText(airbus.mes.linetracker.oView.getController().getI18nValue("ShowKPIS"));
+	        } else {
+	        	hbox.setHeight("0rem");
+	            airbus.mes.linetracker.oView.byId("hideKPI").setIcon("sap-icon://hide");
+	            airbus.mes.linetracker.oView.byId("hideKPI").setText(airbus.mes.linetracker.oView.getController().getI18nValue("HideKPIS"));
+	        }*/
+
+	       
+		
+	},
+	
+	getI18nValue : function(sKey) {
+        return this.getView().getModel("i18n").getProperty(sKey);
+    },
 /**
  * Called when +Station button clicked in line tracker 
  * To Add Station in Line Tracker Station List

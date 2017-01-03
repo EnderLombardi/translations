@@ -1,0 +1,14 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<Dialog id="deleteStation" title="{i18n>warning}" icon="sap-icon://warning" state="Warning">
+
+		<Label text="{i18n>deleteStation}"></Label>
+		
+		<buttons>
+	    <Button text="{i18n>confirm}" 
+				press="onConfirm" />
+		<Button text="{i18n>cancel}" 
+				press="onCancel" />
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

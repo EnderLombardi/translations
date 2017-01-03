@@ -4,53 +4,61 @@
 	xmlns:custom="airbus.mes.linetracker" xmlns:html="http://www.w3.org/1999/xhtml"
 	xmlns:controlPhStation="airbus.mes.linetracker.PhysicalStation.control"
 	xmlns:uiTable="sap.ui.table" >
-	<Page showTitle="false"  class="classLineTrackerTable" enableScrolling="false">
+	<Page showTitle="false"  class="classLineTrackerTable" enableScrolling="false" showHeader="false">
 	<customHeader>
-	<Toolbar  class="pageHeader kpiPageHeader contentNoPad">
+	<!-- <Toolbar  class="pageHeader kpiPageHeader contentNoPad">
 			<HBox>
-			<Title text="{i18n>lineTrackerTitle}" level="H2" />
+			<Title text="{i18n>lineTrackerTitle}" level="H2" class="lineTrackerTitle"/>
 			</HBox>
-<!-- 			<Text text="{i18n>lineTrackerTitle}" /> -->
+			<Text text="{i18n>lineTrackerTitle}" />
 			<core:Icon
 			src="sap-icon://appointment"
 			class="size5"
 			color="#FFE3E7">
 			</core:Icon>
-<!--              <Button id="dateButton" icon="sap-icon://appointment" -->
-<!-- 							press="datePick" class="classDateButton" /> -->
-			 <ToolbarSpacer />
-			 <Label id="dateLabel" text="" class="classDateLabel" ></Label>
-             <Button id="hideKPI" enabled="true" icon="sap-icon://hide"
-							text="{i18n>hideKPI}" press="hideKPI"/>
-	</Toolbar>
-	</customHeader>
-		<VBox>
-	<!-- 	<Toolbar  class="pageHeader kpiPageHeader contentNoPad" height="4rem">
-			<Text text="{i18n>lineTrackerTitle}" />
              <Button id="dateButton" icon="sap-icon://appointment"
 							press="datePick" class="classDateButton" />
 			 <ToolbarSpacer />
+			 <Label id="dateLabel" text="" class="classDateLabel" ></Label>
              <Button id="hideKPI" enabled="true" icon="sap-icon://hide"
-							text="{i18n>hideKPI}" press="hideKPI"/>
-		</Toolbar > -->
+							text="{i18n>hideKPI}" press="hideKPI" />
+	</Toolbar> -->
+	</customHeader>
+		<Panel id="linetrackerHeaderKPI" expandable="true" expanded="true" image=""
+				expandAnimation="false" class="pageHeader kpiPageHeader contentNoPad">
+		<headerToolbar>
+		<Toolbar>
+			<Title text="{i18n>lineTrackerTitle}" level="H2" class="lineTrackerTitle"/>
+			<core:Icon
+			src="sap-icon://appointment"
+			class="size5"
+			color="#FFE3E7">
+			</core:Icon>
+			 <ToolbarSpacer />
+			 <Label id="dateLabel" text="" class="classDateLabel" ></Label>
+             <Button id="hideKPI" enabled="true" icon="sap-icon://hide"
+							text="{i18n>hideKPI}" press="hideKPI" />
+	</Toolbar>
+		</headerToolbar>
+		<VBox>		
 		<core:Fragment fragmentName="airbus.mes.linetracker.KPICharts.KPIs" type="XML" height="10rem"/>
 		</VBox>
+		</Panel>
 		<content>		
 			<uiTable:Table 			
 			id="linetrackerTable" 
-			rows="{stationDataModel>/list}" visibleRowCount="6" 
+			rows="{stationDataModel>/list}" visibleRowCount="8" 
 			enableColumnReordering="false">
-			<uiTable:toolbar >			
-
+			<uiTable:toolbar >
 					<Toolbar class="toolbar">
 						<Title text="{i18n>taktAdherence}" level="H2" />
-						<ToolbarSpacer/>
-
-<!-- 						<Button text="KPI Charts" class="sapUiLargeMarginEnd" /> -->
+						<ToolbarSpacer width="58%"/>
 						<Text text="{i18n>forcastEndOfAssembly}" width="9.5%"
 							class="headerColumnText sapUiTinyMarginBottom" />
+						<ToolbarSpacer width="1%"/>
 						<Text text="{i18n>remainingToDo}" width="9.7%"
 							class="headerColumnText sapUiTinyMarginBottom" />
+						<ToolbarSpacer width="2%"/>
 						<Text text="{i18n>openDisruptionAndon}" width="9.7%"
 							class="headerColumnText sapUiTinyMarginBottom" />
 					</Toolbar>
@@ -113,7 +121,7 @@
 											</controlPhStation:detailIconButton>
 
 										</controlPhStation:PhysicalStationBox>
-										<Button icon="sap-icon://vertical-grip" press="openStationPopover" class=""
+										<Button icon="sap-icon://vertical-grip" press="openStationPopover" class="moreButton"
 												type="Transparent" width="20%" tooltip="{i18n>moreInfo}"/>
 
 									</HBox>				

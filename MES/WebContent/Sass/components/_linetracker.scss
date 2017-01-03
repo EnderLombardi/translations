@@ -1,10 +1,32 @@
 /******************
 LINETRACKER
 *******************/
+/****************************
+LineTracker Header
+****************************/
+	
+.lineTrackerTitle{
+	margin: 1rem !important;
+    font-style: italic;
+    font-weight: 500;
+    font-stretch: extra-condensed;
+    font-size: 1.2rem !important;
+    color: #74d2e7 !important;
+    font-family: Arial,Helvetica,sans-serif;
+    }
+
+#idLinetracker1--linetrackerHeaderKPI-CollapsedImg{
+    visibility: hidden;
+}
+
 /************************
 Linetracker View (Main Table)
 *************************/
 #idLinetracker1{
+	.classLineTrackerTable .moreButton{
+		background-color: #bcf6ff !important;
+		width: 100% !important;
+	}
     .classLineTrackerTable .lineTrackerContent{
         margin-top: 12rem;
     }
@@ -42,7 +64,12 @@ Linetracker View (Main Table)
         background-color: #FFFFFF !important;
     }
 
-    .classLineTrackerTable table tr td:nth-child(2), th:nth-child(2) {
+    .classLineTrackerTable table tr td:nth-child(3) {
+        background-image: url("grid.svg");
+        vertical-align: middle !important;
+    }
+    
+    .classLineTrackerTable table tr th:nth-child(3) {
         background-image: url("grid.svg");
         vertical-align: middle !important;
     }
@@ -86,7 +113,7 @@ Linetracker View (Main Table)
 
     .classLineTrackerTable .stationBtns {
         height: 2rem !important;
-        font-size: 2rem !important;
+       /*  font-size: 2rem !important; */
         margin-left: 0 !important;
         margin-right: 0 !important;
     }
@@ -154,10 +181,10 @@ Custom Progress Bar
 .progress {
        height: 36px;
        overflow: hidden;
-       /* background-color: #f5f5f5; */
-/*        -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1);
+       /* background-color: #f5f5f5; 
+       -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1);
        box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1)
- */
+*/
  }
 
 .progress i {
@@ -325,7 +352,7 @@ TASK ADHERENCE
   text-align: right !important;
   width: 100%; }
 /*
-#idStationDetail1--takt_adherence_adherence_value {
+#idLinetracker1--takt_adherence_adherence_value {
   font-size: 15px; }
 */
 /*************
@@ -457,38 +484,38 @@ svg#idLinetracker1--station_takt_adherence_area_chart{
 /*******************************
 BOX RESOLUTION EFFICIENCY
 ********************************/
-#idStationDetail1--boxResolutionEfficiency .boxResolutionEfficiencyGoodValue {
+#idLinetracker1--boxResolutionEfficiency .boxResolutionEfficiencyGoodValue {
   color: #84bd00; }
-#idStationDetail1--boxResolutionEfficiency .boxResolutionEfficiencyBadValue {
+#idLinetracker1--boxResolutionEfficiency .boxResolutionEfficiencyBadValue {
   color: #fe5000; }
 
-#idStationDetail1--boxSLBEfficiecy_chart-chart-item-3,
-#idStationDetail1--boxResolutionEfficiecy_chart-chart-item-3 {
+#idLinetracker1--boxSLBEfficiecy_chart-chart-item-3,
+#idLinetracker1--boxResolutionEfficiecy_chart-chart-item-3 {
   opacity: 0; }
 
 /*******************************
 SHIFT STAFFING
 ********************************/
-#idStationDetail1--shifStaffingHeader-dmc-chart .Left {
+#idLinetracker1--shifStaffingHeader-dmc-chart .Left {
   background-color: #84bd00; }
 
-#idStationDetail1--shifStaffingHeader .sapSuiteDmcTitle,
-#idStationDetail1--shifStaffingHeader .sapSuiteDmcLbls {
+#idLinetracker1--shifStaffingHeader .sapSuiteDmcTitle,
+#idLinetracker1--shifStaffingHeader .sapSuiteDmcLbls {
   font-size: 0.8vw; }
-#idStationDetail1--shifStaffingHeader .sapSuiteDmcCnt {
+#idLinetracker1--shifStaffingHeader .sapSuiteDmcCnt {
   right: 2rem; }
-/* #idStationDetail1--shifStaffingHeader .sapSuiteDmcDelta { */
-/*   color: white;  */
-/*   } */
-#idStationDetail1--shifStaffingHeader .sapSuiteDmcBarDeltaInt {
+#idLinetracker1--shifStaffingHeader .sapSuiteDmcDelta {
+   color: white;  
+   }
+#idLinetracker1--shifStaffingHeader .sapSuiteDmcBarDeltaInt {
   background: #fe5000; }
-#idStationDetail1--shifStaffingHeader .sapSuiteDmcBarDeltaStripe {
+#idLinetracker1--shifStaffingHeader .sapSuiteDmcBarDeltaStripe {
   background-color: #74D2E7; }
 
 /*******************************
 BOX RESOLUTION EFFICIENCY
 ********************************/
-#idStationDetail1--boxResolutionEfficiency{
+#idLinetracker1--boxResolutionEfficiency{
     .boxResolutionEfficiencyGoodValue{
         color: $dark-lime-green;
     }
@@ -496,17 +523,18 @@ BOX RESOLUTION EFFICIENCY
         color: $blood-orange;
     }
 }
-#idStationDetail1--boxSLBEfficiecy_chart-chart-item-3,
-#idStationDetail1--boxResolutionEfficiecy_chart-chart-item-3 {
+#idLinetracker1--boxSLBEfficiecy_chart-chart-item-3,
+#idLinetracker1--boxResolutionEfficiecy_chart-chart-item-3 {
     opacity: 0;
 }
 /*******************************
 SHIFT STAFFING
 ********************************/
-#idStationDetail1--shifStaffingHeader-dmc-chart .Left {
+
+#idLinetracker1--shifStaffingHeader-dmc-chart .Left {
     background-color: $dark-lime-green;
 }
-#idStationDetail1--shifStaffingHeader{
+#idLinetracker1--shifStaffingHeader{
     .sapSuiteDmcTitle,
     .sapSuiteDmcLbls{
         font-size: 0.8vw;
@@ -537,7 +565,7 @@ KPI Header Content
   overflow-y: hidden; }
   .classKpiHeaderContent .contentHeaderCont {
     white-space: normal;
-/*     background-color: #0f2d65; */
+    background-color: #0f2d65;
     border-right: solid 1px #74d2e7;
     margin: 0px !important;
     border-bottom: none;
@@ -557,15 +585,16 @@ KPI Header Content
   .classKpiHeaderContent .whiteTextHeader {
     white-space: normal;
     text-align: center !important;
-/*     color: #ffffff; */
+    color: #ffffff;
     width: 100%;
     font-size: 1vw; }
   .classKpiHeaderContent .sapSuiteCmpChartItemTitle, .classKpiHeaderContent .sapSuiteCmpChartItemValue,
   .classKpiHeaderContent label {
-/*     color: #ffffff; */
+    color: #ffffff;
     font-size: 0.8vw; }
 }
  /*KPI boxes*/
+ 
 .kpiBoxes > .sapMFlexItem:first-child {
   height: 50px; }
   .kpiBoxes > .sapMFlexItem:first-child .sapMLabel {
@@ -583,6 +612,7 @@ KPI Header Content
     max-height: 144px; }
 
  /*general kpi*/
+ 
 .kpiBoxExtraWork .sapMFlexItem {
   width: 100% !important;
   line-height: normal;
@@ -647,7 +677,7 @@ KPI Header Content
 
 .whiteText {
   text-align: center !important;
-/*   color: #ffffff; */
+  color: #ffffff;
   width: 100%; }
 
 .redText {

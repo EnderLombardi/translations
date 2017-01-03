@@ -7,30 +7,30 @@
 		<Label/>
 		<Label text="{i18n>program}"></Label>
 <!-- 		<Select width= "22rem"/> -->
-		<ComboBox id="selectProgram" items="{plantModel>/Rowsets/Rowset/0/Row}"
-              visible="true" selectionChange="onSelectionChange" class="customComboBox">
+		<Select id="selectProgram" items="{plantModel>/Rowsets/Rowset/0/Row}"
+              visible="true" selectionChange="onSelectionChange" class="customComboBox" width= "22rem">
                          <items>
                             <core:Item key="{plantModel>program}" text="{plantModel>program}" />
                          </items>
-        </ComboBox>
+        </Select>
 		<Label/>
 		<Label text="{i18n>line}"></Label>
 <!-- 		<Select width= "22rem"/> -->
-		<ComboBox id="selectLine" items="{plantModel>/Rowsets/Rowset/0/Row}"
-              visible="true" selectionChange="onSelectionChange" class="customComboBox">
+		<Select id="selectLine" items="{plantModel>/Rowsets/Rowset/0/Row}"
+              visible="true" selectionChange="onSelectionChange" class="customComboBox" width= "22rem">
                          <items>
                             <core:Item key="{plantModel>line}" text="{plantModel>line}" />
                          </items>
-        </ComboBox>
+        </Select>
 		<Label/>
 		<Label text="{i18n>station}"></Label>
 <!-- 		<Select width= "22rem"/> -->
-		<ComboBox id="selectStation" items="{plantModel>/Rowsets/Rowset/0/Row}"
-              visible="true" selectionChange="onSelectionChange" class="customComboBox">
+		<Select id="selectStation" items="{plantModel>/Rowsets/Rowset/0/Row}"
+              visible="true" selectionChange="onSelectionChange" class="customComboBox" width= "22rem">
                          <items>
                             <core:Item key="{plantModel>station}" text="{plantModel>station}" />
                          </items>
-        </ComboBox>
+        </Select>
 		<Label/>
         </VBox>
 		</content>

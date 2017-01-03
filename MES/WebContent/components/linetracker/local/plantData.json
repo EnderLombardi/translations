@@ -1,0 +1,31 @@
+{ "Rowsets" : { 
+	"DateCreated" : "2017-01-02T12:53:31", "Version" : "15.1 SP2 Patch 13 (Oct 6, 2016)", "StartDate" : "2017-01-02T11:53:30+0100", "EndDate" : "2017-01-02T12:53:30+0100", "CachedTime" : "", 
+	"Rowset" : [ 
+	{ "Columns" : { 
+		"Column" : [ 
+		{ "Name" : "program", "SourceColumn" : "program", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "line", "SourceColumn" : "line", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "station", "SourceColumn" : "station", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "msn", "SourceColumn" : "msn", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "Current_MSN", "SourceColumn" : "Current_MSN", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "Takt_Duration", "SourceColumn" : "Takt_Duration", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "Takt_Start", "SourceColumn" : "Takt_Start", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "Takt_End", "SourceColumn" : "Takt_End", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "programDescription", "SourceColumn" : "programDescription", "Description" : "workCenter Description", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "lineDescription", "SourceColumn" : "lineDescription", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "stationDescription", "SourceColumn" : "stationDescription", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 } ] }, 
+	"Row" : [ 
+		{ "program" : "A330", "line" : "A330_LINE_GROUP_1", "station" : "PHYS_ST_IP3", "msn" : "00240", "Current_MSN" : "true", "Takt_Duration" : "123456", "Takt_Start" : "2016-11-09T16:38:35", "Takt_End" : "2016-11-24T22:38:35", "programDescription" : "A330", "lineDescription" : "A330 Line Group 1", "stationDescription" : "IP3" }, 
+		{ "program" : "A330", "line" : "A330_LINE_GROUP_1", "station" : "PHYS_ST_IP3", "msn" : "01240", "Current_MSN" : "true", "Takt_Duration" : "7", "Takt_Start" : "2016-12-01T11:15:00", "Takt_End" : "2016-12-12T11:15:00", "programDescription" : "A330", "lineDescription" : "A330 Line Group 1", "stationDescription" : "IP3" }, 
+		{ "program" : "A330", "line" : "A330_LINE_GROUP_1", "station" : "PHYS_ST_IP4", "msn" : "01240", "Current_MSN" : "true", "Takt_Duration" : "7", "Takt_Start" : "2016-12-12T11:15:00", "Takt_End" : "2017-12-02T15:15:00", "programDescription" : "A330", "lineDescription" : "A330 Line Group 1", "stationDescription" : "IP4 Physical Station" }, 
+		{ "program" : "A330", "line" : "A330_LINE_GROUP_1", "station" : "PHYS_ST_IP4", "msn" : "00571", "Current_MSN" : "true", "Takt_Duration" : "51", "Takt_Start" : "2016-12-01T16:08:27", "Takt_End" : "2017-10-15T16:35:27", "programDescription" : "A330", "lineDescription" : "A330 Line Group 1", "stationDescription" : "IP4 Physical Station" }, 
+		{ "program" : "A330", "line" : "A330_LINE_GROUP_1", "station" : "PHYS_ST_IP2", "msn" : "---", "Current_MSN" : "---", "Takt_Duration" : "---", "Takt_Start" : "---", "Takt_End" : "---", "programDescription" : "A330", "lineDescription" : "A330 Line Group 1", "stationDescription" : "IP2 Physical Station" }, 
+		{ "program" : "CHES_BUILDING_1", "line" : "CHES_LG_2", "station" : "CHES_LG_2_L1", "msn" : "---", "Current_MSN" : "---", "Takt_Duration" : "---", "Takt_Start" : "---", "Takt_End" : "---", "programDescription" : "CHES_BUILDING_1", "lineDescription" : "CHES_LG_2", "stationDescription" : "CHES_LG_2_L1" }, 
+		{ "program" : "CHES_BUILDING_1", "line" : "CHES_LG_2", "station" : "CHES_LG_2_L2", "msn" : "---", "Current_MSN" : "---", "Takt_Duration" : "---", "Takt_Start" : "---", "Takt_End" : "---", "programDescription" : "CHES_BUILDING_1", "lineDescription" : "CHES_LG_2", "stationDescription" : "CHES_LG_2_L2" }, 
+		{ "program" : "CHES_BUILDING_1", "line" : "CHES_LG_2", "station" : "CHES_LG_2_L3", "msn" : "---", "Current_MSN" : "---", "Takt_Duration" : "---", "Takt_Start" : "---", "Takt_End" : "---", "programDescription" : "CHES_BUILDING_1", "lineDescription" : "CHES_LG_2", "stationDescription" : "CHES_LG_2_L3" }, 
+		{ "program" : "CHES_BUILDING_1", "line" : "CHES_LG_3", "station" : "CHES_LG_3_L1", "msn" : "---", "Current_MSN" : "---", "Takt_Duration" : "---", "Takt_Start" : "---", "Takt_End" : "---", "programDescription" : "CHES_BUILDING_1", "lineDescription" : "CHES_LG_3", "stationDescription" : "CHES_LG_3_L1" }, 
+		{ "program" : "CHES_BUILDING_1", "line" : "CHES_LG_3", "station" : "CHES_LG_3_L2", "msn" : "---", "Current_MSN" : "---", "Takt_Duration" : "---", "Takt_Start" : "---", "Takt_End" : "---", "programDescription" : "CHES_BUILDING_1", "lineDescription" : "CHES_LG_3", "stationDescription" : "CHES_LG_1_L1" }, 
+		{ "program" : "CHES_BUILDING_1", "line" : "CHES_LG_3", "station" : "CHES_LG_3_L3", "msn" : "---", "Current_MSN" : "---", "Takt_Duration" : "---", "Takt_Start" : "---", "Takt_End" : "---", "programDescription" : "CHES_BUILDING_1", "lineDescription" : "CHES_LG_3", "stationDescription" : "CHES_LG_1_L1" } ]
+		 } ]
+	 }
+ }
