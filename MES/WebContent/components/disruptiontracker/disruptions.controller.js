@@ -362,8 +362,7 @@ sap.ui
                         /*airbus.mes.disruptions.oView.viewDisruption.getModel(
                                 "operationDisruptionsModel").setData(
                                 disruptionData);*/
-                        sap.ui.getCore().getModel("operationDisruptionsModel").setData(disruptionData);
-                        this.disruptionsCustomDataFlag = false;
+                        
 
 
                         if (sap.ui.Device.system.desktop) {
@@ -375,6 +374,8 @@ sap.ui
                             /**
                              * MES V1.5 Navigate to disruption Detail Page
                              */
+                            sap.ui.getCore().getModel("operationDisruptionsModel").setData(disruptionData);
+                            this.disruptionsCustomDataFlag = false;
                             var oModel = sap.ui.getCore().getModel(
                                     "DisruptionDetailModel");
                             // set the data in disruption Detail Model
@@ -435,6 +436,8 @@ sap.ui
                                                             "disruptionDetailPopup--btnCancelDisruption") // Cancel
                                     // Button
                                     );
+                            sap.ui.getCore().getModel("operationDisruptionsModel").setData(disruptionData);
+                            this.disruptionsCustomDataFlag = false;
 
                             airbus.mes.disruptiontracker.detailPopUp.open();
 
