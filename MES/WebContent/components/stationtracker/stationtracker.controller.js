@@ -210,7 +210,8 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
         airbus.mes.stationtracker.oView.byId("buttonViewMode").setSelectedKey("day");
 
         airbus.mes.stationtracker.oView.byId("selectShift").setEnabled(true);
-        airbus.mes.stationtracker.ModelManager.selectMyShift();
+        //Use Previous Shift selection
+        airbus.mes.stationtracker.oView.byId("selectShift").fireChange(0);
     },
 
     /***************************************************************************
@@ -1170,17 +1171,20 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
         // special case for polypoly
         switch(airbus.mes.stationtracker.CheckQa) {
         case "UNPLANNED":
-            var oModel = airbus.mes.stationtracker.ImportOswUnplannedPopover;
+            airbus.mes.stationtracker.CheckQa === "";
+        	var oModel = airbus.mes.stationtracker.ImportOswUnplannedPopover;
             airbus.mes.stationtracker.ModelManager.setOSW(oModel.aSFC_Step,"",true,false);
             this.onCloseDialog(oEvent);
             break;
         case "OSW":
-            var oModel = airbus.mes.stationtracker.ImportOswUnplannedPopover;
+            airbus.mes.stationtracker.CheckQa === "";
+        	var oModel = airbus.mes.stationtracker.ImportOswUnplannedPopover;
             airbus.mes.stationtracker.ModelManager.setOSW(oModel.aSFC_Step,oModel.sProdGroup,true,true);
             this.onCloseDialog(oEvent);
             break;
         case "RESCHEDULING":
-            var oModel = airbus.mes.stationtracker;
+            airbus.mes.stationtracker.CheckQa === "";
+        	var oModel = airbus.mes.stationtracker;
             airbus.mes.stationtracker.ModelManager.sendRescheduleRequest(true,oModel.oFinal,oModel.oInitial);
         	airbus.mes.shell.oView.getController().renderStationTracker();
             this.onCloseDialog(oEvent);
