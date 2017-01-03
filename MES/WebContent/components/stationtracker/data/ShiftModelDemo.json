@@ -13,30 +13,6 @@
 [
   {
     "shiftName": "MORNING",
-    "shiftID": "2016-10-01MORNING",
-    "day": "20161001",
-    "beginDateTime": "2016-10-01 03:00:00",
-    "endDateTime": "2016-10-01 10:00:00",
-    "": ""
-  },
-  {
-    "shiftName": "AFTERNOON",
-    "shiftID": "2016-10-01AFTERNOON",
-    "day": "20161001",
-    "beginDateTime": "2016-10-01 10:15:00",
-    "endDateTime": "2016-10-01 17:30:00",
-    "": ""
-  },
-  {
-    "shiftName": "NIGHT",
-    "shiftID": "2016-10-01NIGHT",
-    "day": "20161001",
-    "beginDateTime": "2016-10-01 18:00:00",
-    "endDateTime": "2016-10-02 02:00:00",
-    "": ""
-  },
-  {
-    "shiftName": "MORNING",
     "shiftID": "2016-10-02MORNING",
     "day": "20161002",
     "beginDateTime": "2016-10-02 03:00:00",
@@ -2217,6 +2193,126 @@
     "day": "20161231",
     "beginDateTime": "2016-12-31 18:00:00",
     "endDateTime": "2017-01-01 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2017-01-01MORNING",
+    "day": "20170101",
+    "beginDateTime": "2017-01-01 03:00:00",
+    "endDateTime": "2017-01-01 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2017-01-01AFTERNOON",
+    "day": "20170101",
+    "beginDateTime": "2017-01-01 10:15:00",
+    "endDateTime": "2017-01-01 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2017-01-01NIGHT",
+    "day": "20170101",
+    "beginDateTime": "2017-01-01 18:00:00",
+    "endDateTime": "2017-01-01 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2017-01-02MORNING",
+    "day": "20170102",
+    "beginDateTime": "2017-01-02 03:00:00",
+    "endDateTime": "2017-01-02 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2017-01-02AFTERNOON",
+    "day": "20170102",
+    "beginDateTime": "2017-01-02 10:15:00",
+    "endDateTime": "2017-01-02 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2017-01-02NIGHT",
+    "day": "20170102",
+    "beginDateTime": "2017-01-02 18:00:00",
+    "endDateTime": "2017-01-02 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2017-01-03MORNING",
+    "day": "20170103",
+    "beginDateTime": "2017-01-03 03:00:00",
+    "endDateTime": "2017-01-03 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2017-01-03AFTERNOON",
+    "day": "20170103",
+    "beginDateTime": "2017-01-03 10:15:00",
+    "endDateTime": "2017-01-03 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2017-01-03NIGHT",
+    "day": "20170103",
+    "beginDateTime": "2017-01-03 18:00:00",
+    "endDateTime": "2017-01-03 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2017-01-04MORNING",
+    "day": "20170104",
+    "beginDateTime": "2017-01-04 03:00:00",
+    "endDateTime": "2017-01-04 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2017-01-04AFTERNOON",
+    "day": "20170104",
+    "beginDateTime": "2017-01-04 10:15:00",
+    "endDateTime": "2017-01-04 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2017-01-04NIGHT",
+    "day": "20170104",
+    "beginDateTime": "2017-01-04 18:00:00",
+    "endDateTime": "2017-01-04 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2017-01-05MORNING",
+    "day": "20170105",
+    "beginDateTime": "2017-01-05 03:00:00",
+    "endDateTime": "2017-01-05 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2017-01-05AFTERNOON",
+    "day": "20170105",
+    "beginDateTime": "2017-01-05 10:15:00",
+    "endDateTime": "2017-01-05 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2017-01-05NIGHT",
+    "day": "20170105",
+    "beginDateTime": "2017-01-05 18:00:00",
+    "endDateTime": "2017-01-05 02:00:00",
     "": ""
   }
 ]
