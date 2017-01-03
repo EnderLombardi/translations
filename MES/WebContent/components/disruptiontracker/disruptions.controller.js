@@ -366,7 +366,7 @@ sap.ui
                         this.disruptionsCustomDataFlag = false;
 
 
-                        if (sap.ui.getCore().getModel("device").oData.system.desktop == true) {
+                        if (sap.ui.Device.system.desktop) {
                             airbus.mes.shell.util.navFunctions
                                     .disruptionsDetail(sap.ui.getCore().byId(
                                             "globalNavView--navCont"), 0, 0, 0,
