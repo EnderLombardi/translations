@@ -129,51 +129,51 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.TaktAdherenceAreaChart", {
 
 		//axes
 		var x = d3.scale.linear()
-			.domain([0, d3.max(maxData, function (d) { return d.x; })])
-			.range([0, width]);
+						.domain([0, d3.max(maxData, function (d) { return d.x; })])
+						.range([0, width]);
 
 		var y = d3.scale.linear()
-			.domain([0, d3.max(maxData, function (d) { return d.y; })])
-			.range([height, 0]);
+						.domain([0, d3.max(maxData, function (d) { return d.y; })])
+						.range([height, 0]);
 
 		var yAxis = d3.svg.axis()
-			.scale(y)
-			.orient("left");
+					.scale(y)
+					.orient("left");
 
 		//area
 		var area = d3.svg.area()
-			.x(function (d) { return x(d.x); })
-			.y0(height)
-			.y1(function (d) { return y(d.y); });
+						.x(function (d) { return x(d.x); })
+						.y0(height)
+						.y1(function (d) { return y(d.y); });
 		//line
 		var line = d3.svg.line()
-			.x(function (d) { return x(d.x); })
-			.y(function (d) { return y(d.y); });
+						.x(function (d) { return x(d.x); })
+						.y(function (d) { return y(d.y); });
 
 		var svg = d3.select("svg.takt_adherence_area_chart")
-			.attr("width", contWidth)
-			.attr("height", contHeight)
-			.attr("viewBox", "0 0 " + contWidth + " " + contHeight)
-			.append("g")
-			.attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-			.attr("width", width)
-			.attr("height", height);
+					.attr("width", contWidth)
+					.attr("height", contHeight)
+					.attr("viewBox", "0 0 " + contWidth + " " + contHeight)
+					.append("g")
+					.attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+					.attr("width", width)
+					.attr("height", height);
 
 		var groupe = svg.append("g")
-			.attr("width", width)
-			.attr("height", height);
+						.attr("width", width)
+						.attr("height", height);
 		//background
 		var rectangle = groupe.append("rect") //FIXME : ESLint (Not used) but needed
-			.attr("x", 0)
-			.attr("y", 0)
-			.attr("width", width)
-			.attr("height", height)
-			.style('fill', '#84BD00');
+								.attr("x", 0)
+								.attr("y", 0)
+								.attr("width", width)
+								.attr("height", height)
+								.style('fill', '#84BD00');
 		//add area to svg
 		groupe.append("path")
-			.datum(data)
-			.attr("class", "area")
-			.attr("d", area);
+				.datum(data)
+				.attr("class", "area")
+				.attr("d", area);
 		//add y axis
 		svg.append("g")
 			.attr("class", "yaxis y axis")
@@ -182,8 +182,8 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.TaktAdherenceAreaChart", {
 		svg.append("g")
 			.attr("class", "ygrid")
 			.call(makeYaxis()
-				.tickSize(-width, 0, 0)
-				.tickFormat("")
+					.tickSize(-width, 0, 0)
+					.tickFormat("")
 			);
 		//y axe label
 		svg.append("text")
