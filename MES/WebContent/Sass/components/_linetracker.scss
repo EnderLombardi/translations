@@ -4,9 +4,9 @@ LINETRACKER
 /****************************
 LineTracker Header
 ****************************/
-	
+
 .lineTrackerTitle{
-	margin: 1rem !important;
+    margin: 1rem !important;
     font-style: italic;
     font-weight: 500;
     font-stretch: extra-condensed;
@@ -23,10 +23,13 @@ LineTracker Header
 Linetracker View (Main Table)
 *************************/
 #idLinetracker1{
-	.classLineTrackerTable .moreButton{
-		background-color: #bcf6ff !important;
-		width: 100% !important;
-	}
+    .classLineTrackerTable .moreButton{
+        background-color: #EAFBFD !important;
+        width: 100% !important;
+        .sapMBtnTransparent > .sapMBtnIcon{
+            color: #666666
+        }
+    }
     .classLineTrackerTable .lineTrackerContent{
         margin-top: 12rem;
     }
@@ -61,14 +64,14 @@ Linetracker View (Main Table)
     }
 
     .classLineTrackerTable table tr th:nth-child(1), td:nth-child(2), th:nth-child(2) {
-        background-color: #FFFFFF !important;
+        background-color: #EAFBFD !important;
     }
 
     .classLineTrackerTable table tr td:nth-child(3) {
         background-image: url("grid.svg");
         vertical-align: middle !important;
     }
-    
+
     .classLineTrackerTable table tr th:nth-child(3) {
         background-image: url("grid.svg");
         vertical-align: middle !important;
@@ -128,7 +131,7 @@ Linetracker View (Main Table)
     } */
 
     .classLineTrackerTable .sapMBtnInner {
-        height: 2rem !important;
+       // height: 2rem !important;
         font-size: 1rem !important;
     }
 
@@ -175,13 +178,31 @@ Linetracker View (Main Table)
     width: 100% !important;
 }
 
+#sapContentPopUpLinetracker{
+    #sapContentPopUpLinetracker-intHeader{
+        background-color: #D8D8D8;
+    }
+    #sapContentPopUpLinetracker-cont{
+        background-color: #FFFFFF;
+        .sapMBtnContent{
+            color: #807F7F;
+            font-weight: 600;
+        }
+    }
+}
+header#sapContentPopUpLinetracker-intHeader + div#sapContentPopUpLinetracker-cont + footer{
+    background-color: #363535;
+    .sapMBtnContent{
+        font-weight: 600;
+    }
+}
 /**************************
 Custom Progress Bar
 *************************/
 .progress {
        height: 36px;
        overflow: hidden;
-       /* background-color: #f5f5f5; 
+       /* background-color: #f5f5f5;
        -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1);
        box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1)
 */
@@ -230,7 +251,7 @@ Custom Progress Bar
 Physical Station
 ********************************/
 .ParentDiv {
-    background-color: #bcf6ff;
+    background-color: #EAFBFD;
     min-width: 10rem;
     height: 3rem;
     float: left;
@@ -386,10 +407,10 @@ svg#idLinetracker1--takt_adherence_area_chart {
   left: 0; }
 
 #idLinetracker1--takt_adherence_area_chart .yaxis {
-  fill: white; 
+  fill: white;
   font-size: 7px; }
 #idLinetracker1--takt_adherence_area_chart .yaxelabel {
-  fill: white; 
+  fill: white;
   font-size: 7px;
   margin-bottom: 2px; }
 #idLinetracker1--takt_adherence_area_chart .axis path,
@@ -505,7 +526,7 @@ SHIFT STAFFING
 #idLinetracker1--shifStaffingHeader .sapSuiteDmcCnt {
   right: 2rem; }
 #idLinetracker1--shifStaffingHeader .sapSuiteDmcDelta {
-   color: white;  
+   color: white;
    }
 #idLinetracker1--shifStaffingHeader .sapSuiteDmcBarDeltaInt {
   background: #fe5000; }
@@ -594,7 +615,7 @@ KPI Header Content
     font-size: 0.8vw; }
 }
  /*KPI boxes*/
- 
+
 .kpiBoxes > .sapMFlexItem:first-child {
   height: 50px; }
   .kpiBoxes > .sapMFlexItem:first-child .sapMLabel {
@@ -612,7 +633,7 @@ KPI Header Content
     max-height: 144px; }
 
  /*general kpi*/
- 
+
 .kpiBoxExtraWork .sapMFlexItem {
   width: 100% !important;
   line-height: normal;

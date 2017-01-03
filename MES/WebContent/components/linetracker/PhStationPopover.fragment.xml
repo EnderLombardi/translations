@@ -1,7 +1,7 @@
 <core:FragmentDefinition
        xmlns="sap.m"
        xmlns:core="sap.ui.core">
-       <Popover class="sapUiContentPadding"
+       <Popover id="sapContentPopUpLinetracker" class="sapUiContentPadding"
               placement="Bottom">
              <VBox>
               <Button text="{i18n>stationTracker}" type="Transparent" press="gotoStationTracker"/>
@@ -9,13 +9,13 @@
               <Button text="{i18n>disruption_AndonTracker}" type="Transparent" press="gotoDisruption_AndonTracker"/>
               <Button text="{i18n>stationHandover}" type="Transparent" />
               </VBox>
-       	 <footer>
+            <footer>
              <Toolbar>
 <!--                <ToolbarSpacer/> -->
                    <core:Icon src="sap-icon://alert" class="sapUiSmallMarginBegin"/>
                        <Button id="reportDisruption"
                                text="{i18n>reportDisruption}"
-                               press="handleEmailPress" />             
+                               press="handleEmailPress" />
              </Toolbar>
          </footer>
        </Popover>

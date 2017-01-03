@@ -3319,8 +3319,10 @@ Linetracker View (Main Table)
       padding-right: 0 !important;
   } */ }
   #idLinetracker1 .classLineTrackerTable .moreButton {
-    background-color: #bcf6ff !important;
+    background-color: #EAFBFD !important;
     width: 100% !important; }
+    #idLinetracker1 .classLineTrackerTable .moreButton .sapMBtnTransparent > .sapMBtnIcon {
+      color: #666666; }
   #idLinetracker1 .classLineTrackerTable .lineTrackerContent {
     margin-top: 12rem; }
   #idLinetracker1 .classLineTrackerTable .toolbar {
@@ -3341,7 +3343,7 @@ Linetracker View (Main Table)
     color: #75ACC1 !important;
     font-size: 1vw !important; }
   #idLinetracker1 .classLineTrackerTable table tr th:nth-child(1), #idLinetracker1 td:nth-child(2), #idLinetracker1 th:nth-child(2) {
-    background-color: #FFFFFF !important; }
+    background-color: #EAFBFD !important; }
   #idLinetracker1 .classLineTrackerTable table tr td:nth-child(3) {
     background-image: url("grid.svg");
     vertical-align: middle !important; }
@@ -3374,7 +3376,6 @@ Linetracker View (Main Table)
   #idLinetracker1 .classLineTrackerTable .stationBtns:nth-child(1) span {
     font-size: 1rem !important; }
   #idLinetracker1 .classLineTrackerTable .sapMBtnInner {
-    height: 2rem !important;
     font-size: 1rem !important; }
   #idLinetracker1 .classLineTrackerTable .stationBtns .sapMBtnContent {
     line-height: 2rem !important; }
@@ -3402,13 +3403,26 @@ Linetracker View (Main Table)
 .dialogForm .sapMFlexItem:nth-child(2) {
   width: 100% !important; }
 
+#sapContentPopUpLinetracker #sapContentPopUpLinetracker-intHeader {
+  background-color: #D8D8D8; }
+#sapContentPopUpLinetracker #sapContentPopUpLinetracker-cont {
+  background-color: #FFFFFF; }
+  #sapContentPopUpLinetracker #sapContentPopUpLinetracker-cont .sapMBtnContent {
+    color: #807F7F;
+    font-weight: 600; }
+
+header#sapContentPopUpLinetracker-intHeader + div#sapContentPopUpLinetracker-cont + footer {
+  background-color: #363535; }
+  header#sapContentPopUpLinetracker-intHeader + div#sapContentPopUpLinetracker-cont + footer .sapMBtnContent {
+    font-weight: 600; }
+
 /**************************
 Custom Progress Bar
 *************************/
 .progress {
   height: 36px;
   overflow: hidden;
-       /* background-color: #f5f5f5; 
+       /* background-color: #f5f5f5;
        -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1);
        box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1)
 */ }
@@ -3449,7 +3463,7 @@ Custom Progress Bar
 Physical Station
 ********************************/
 .ParentDiv {
-  background-color: #bcf6ff;
+  background-color: #EAFBFD;
   min-width: 10rem;
   height: 3rem;
   float: left;
