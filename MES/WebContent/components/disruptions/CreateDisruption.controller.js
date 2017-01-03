@@ -377,18 +377,18 @@ sap.ui
 									{
 										"attribute" : "JIG_TOOLS",
 										"value" : sJigtools
-									}/*,
+									},
 									{
 										"attribute" : "ISSUER", // V1.5
 										"value" : oView.byId("selectIssuer").getSelectedKey()
 									}, {
-										"attribute" : "5M-CATEGORY",     //V1.5
+										"attribute" : "FIVEM_CATEGORY",     //V1.5
 										"value" : oView.byId("selectCategoryClass").getSelectedKey()
 									}, {
 										"attribute" : "RESOLVER",     //V1.5
 										"value" : oView.byId("selectResolver")
 										          .getSelectedKey()
-										          }*/]
+										          }]
 
 						}
 						aModelData.push(oJson); 
