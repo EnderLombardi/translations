@@ -1325,6 +1325,57 @@ sap.ui
 					onEditDisruption:function(){
 						debugger;
 						this.setDataForEditDisruption();
+					},
+					
+					handleUploadComplete: function(){
+
+						var oFileUploader = this.getView().byId("fileUploader");
+						if(!oFileUploader.getValue()) {
+							MessageToast.show("Choose a file first");
+							return;
+						}
+						oFileUploader.upload();
+					
+						var sResponse = oEvent.getParameter("response");
+						if (sResponse) {
+							var sMsg = "";
+							var m = /^\[(\d\d\d)\]:(.*)$/.exec(sResponse);
+							if (m[1] == "200") {
+								sMsg = "Return Code: " + m[1] + "\n" + m[2], "SUCCESS", "Upload Success";
+								oEvent.getSource().setValue("");
+							} else {
+								sMsg = "Return Code: " + m[1] + "\n" + m[2], "ERROR", "Upload Error";
+							}
+
+							MessageToast.show(sMsg);
+						}
+					},
+					
+					onUploadStart: function(){
+						MessageToast.show(sMsg);
+					},
+					
+					onCameraPress: function(){
+						
+					},
+					handleLinkPress: function(oEvent){
+//						 this._Dialog = sap.ui.xmlfragment("airbus.mes.disruptions.Dialog",
+//	                                this);
+//	                this._Dialog.open();
+	                
+	    			if (! this._oPopover) {
+	    				this._oPopover = sap.ui.xmlfragment("airbus.mes.disruptions.Dialog");
+	    				this.getView().addDependent(this._oPopover);
+	    			}
+	     
+	    			// delay because addDependent will do a async rerendering and the popover will immediately close without it
+	    			var oButton = oEvent.getSource();
+	    			jQuery.sap.delayedCall(0, this, function () {
+	    				this._oPopover.openBy(oButton);
+	    			});
+					},
+					onPressDelete: function(){
+						this.getView().byId("idAttachmentTable");
 					}
 				/*
 				 * onExit: function() { }

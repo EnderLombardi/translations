@@ -1,0 +1,39 @@
+{
+	"items": [{
+
+		"Title": "Landscape",
+		"type": "landscape.jpg",
+		"icon": "sap-icon://camera"
+	}, {
+
+		"Title": "Text File",
+		"type": "NewDoc.txt",
+		"icon": "sap-icon://document-text"
+
+	}, {
+
+		"Title": "Wor Document",
+		"type": "Abc.doc",
+		"icon": "sap-icon://doc-attachment"
+
+	}, {
+
+		"Title": "Sample",
+		"type": "new.gif",
+		"icon": "sap-icon://camera"
+
+	}, {
+
+		"Title": "PDF file",
+		"type": "NewDoc.pdf",
+		"icon": "sap-icon://pdf-attachment"
+
+	}, {
+
+		"Title": "New Excel",
+		"type": "Random.xlsx",
+		"icon": "sap-icon://excel-attachment"
+
+
+	}]
+}

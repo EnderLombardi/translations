@@ -1,0 +1,65 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core">
+	<Popover
+		showHeader="false"
+		placement="Left" >
+		
+		<Table 
+		id="idAttachmentTable"
+		inset="false"
+		items="{
+ 			path: 'AttachmentList>/items' 
+ 			}"
+ 		backgroundDesign="Solid"	> 
+		<columns>
+		<Column
+			hAlign="Center"
+				width="2em">
+				<Text text="Icon" />
+			</Column>
+			<Column
+			hAlign="Center"
+				width="8em">
+				<Text text="Title" />
+			</Column>
+			<Column
+			hAlign="Center"
+				width="8em"
+				minScreenWidth="Tablet"
+				demandPopin="true">
+				<Text text="Type" />
+			</Column>
+			<Column
+				hAlign="Center">
+				<Text text="" />
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem>
+				<cells>
+					<core:Icon size="2em" src="{AttachmentList>icon}"/>
+					<ObjectIdentifier
+						text="{AttachmentList>Title}"/>
+					<Text
+						text="{AttachmentList>type}" />
+					<Button icon="sap-icon://sys-cancel" press="onPressDelete"></Button>	
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+<!-- 	<List -->
+<!-- 		id="idAttachmentList" -->
+<!-- 		headerText="Attachments" -->
+<!-- 		items="{ -->
+<!-- 		path: 'AttachmentList>/items'  		}"> -->
+<!-- 		<items> -->
+<!-- 			<StandardListItem -->
+<!-- 				title="{AttachmentList>fileName}" -->
+<!-- 				description="{AttachmentList>text}" -->
+<!-- 				icon="" -->
+<!-- 				iconDensityAware="false" -->
+<!-- 				iconInset="false" /> -->
+<!-- 		</items> -->
+<!-- 	</List> -->
+	</Popover>
+</core:FragmentDefinition>

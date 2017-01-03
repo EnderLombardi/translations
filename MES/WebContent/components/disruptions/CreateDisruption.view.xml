@@ -52,7 +52,7 @@
 								</f:FormElement>
 
 
-<!--                            SD-SP1604983-CDP-010 -->
+								<!-- SD-SP1604983-CDP-010 -->
 								<f:FormElement>
 									<f:label>
 										<Label required="true" text="{i18nModel>CategoryClass}">
@@ -62,8 +62,8 @@
 										</Label>
 									</f:label>
 									<f:fields>
-										<Select id="selectCategoryClass"											
-											change="" forceSelection="false">
+										<Select id="selectCategoryClass" change=""
+											forceSelection="false">
 											<items>
 												<core:Item text="{i18nModel>5Mclass_01}" key="{i18nModel>5Mclass_01}" />
 												<core:Item text="{i18nModel>5Mclass_02}" key="{i18nModel>5Mclass_02}" />
@@ -79,9 +79,9 @@
 										</Select>
 									</f:fields>
 								</f:FormElement>
-								
-								
-								
+
+
+
 								<f:FormElement>
 									<f:label>
 										<Label required="true" text="{i18nModel>Issuer}">
@@ -95,7 +95,8 @@
 											items="{ path : 'ressourcePoolModel>/Rowsets/Rowset/0/Row' }"
 											forceSelection="false">
 											<items>
-												<core:Item key="{ressourcePoolModel>user}" text="{ressourcePoolModel>lastName} {ressourcePoolModel>firstName}" />
+												<core:Item key="{ressourcePoolModel>user}"
+													text="{ressourcePoolModel>lastName} {ressourcePoolModel>firstName}" />
 											</items>
 											<layoutData>
 												<l:GridData span="L3 M9 S12" />
@@ -103,13 +104,13 @@
 										</ComboBox>
 									</f:fields>
 								</f:FormElement>
-								                      		
+
 
 								<f:FormElement>
 									<f:label>
 										<Label required="true" text="{i18nModel>Category}">
 											<layoutData>
-												<l:GridData span="L2 M3 S12"  linebreak="true" />
+												<l:GridData span="L2 M3 S12" linebreak="true" />
 											</layoutData>
 										</Label>
 									</f:label>
@@ -127,8 +128,8 @@
 										</Select>
 									</f:fields>
 								</f:FormElement>
-								
-								
+
+
 								<f:FormElement>
 									<f:label>
 										<Label required="true" text="{i18nModel>OriginatorGroup}">
@@ -150,14 +151,14 @@
 										</Select>
 									</f:fields>
 								</f:FormElement>
-																																		
+
 
 								<f:FormElement>
 									<f:label>
 
 										<Label required="true" text="{i18nModel>reason}">
 											<layoutData>
-												<l:GridData span="L2 M3 S12" linebreak="true"/>
+												<l:GridData span="L2 M3 S12" linebreak="true" />
 											</layoutData>
 										</Label>
 									</f:label>
@@ -175,9 +176,9 @@
 										</Select>
 									</f:fields>
 								</f:FormElement>
-								
-								
-								
+
+
+
 								<f:FormElement>
 									<f:label>
 										<Label required="true" text="{i18nModel>resGroup}">
@@ -200,8 +201,8 @@
 										</Select>
 									</f:fields>
 								</f:FormElement>
-								
-						
+
+
 
 								<f:FormElement>
 									<f:label>
@@ -219,8 +220,8 @@
 										</Input>
 									</f:fields>
 								</f:FormElement>
-								
-								
+
+
 								<f:FormElement>
 									<f:label>
 										<Label text="{i18nModel>Resolver}">
@@ -231,10 +232,11 @@
 									</f:label>
 									<f:fields>
 										<Select id="selectResolver"
-											items="{ path : 'ressourcePoolModel>/Rowsets/Rowset/0/Row' }" 
+											items="{ path : 'ressourcePoolModel>/Rowsets/Rowset/0/Row' }"
 											forceSelection="false">
 											<items>
-												<core:Item text="{ressourcePoolModel>lastName} {ressourcePoolModel>firstName}" 
+												<core:Item
+													text="{ressourcePoolModel>lastName} {ressourcePoolModel>firstName}"
 													key="{ressourcePoolModel>user}" />
 											</items>
 											<layoutData>
@@ -244,13 +246,13 @@
 										</Select>
 									</f:fields>
 								</f:FormElement>
-								
+
 
 								<f:FormElement>
 									<f:label>
 										<Label required="true" text="{i18nModel>gravity}">
 											<layoutData>
-												<l:GridData span="L2 M3 S12" linebreak="true"/>
+												<l:GridData span="L2 M3 S12" linebreak="true" />
 											</layoutData>
 										</Label>
 									</f:label>
@@ -473,17 +475,48 @@
 										</layoutData>
 									</TextArea>
 
-									<VBox alignItems="Center" >
+									<VBox alignItems="Center">
 										<layoutData>
 											<l:GridData span="XL1 L1 M2 S12" />
 										</layoutData>
 										<HBox width="100%" justifyContent="End">
-											<Button type="Transparent" icon="sap-icon://attachment" 
-												press="" class="sapUiSmallMarginEnd attachIcon" width="2rem" />
-											<Button type="Transparent"  icon="sap-icon://camera" 
-												press="" class="attachIcon" width="2rem" />
+
+											<u:FileUploader id="idfileUploader"
+												name="myFileUpload"
+												uploadUrl="upload/" 
+												tooltip="Upload your file to the local server"
+												placeholder="Choose a file for Upload..."
+												icon="sap-icon://attachment"
+												uploadComplete="handleUploadComplete"
+												uploadStart="onUploadStart"
+												change="handleValueChange"
+												buttonOnly="true"
+												typeMissmatch="handleTypeMissmatch"
+												style="Emphasized"
+												iconOnly="true"
+												fileType="txt,jpg">
+<!-- 												<u:parameters> -->
+<!-- 													<u:FileUploaderParameter name="param1" -->
+<!-- 														value="Foo" /> -->
+<!-- 													<u:FileUploaderParameter name="param2" -->
+<!-- 														value="bar" /> -->
+<!-- 												</u:parameters> -->
+<!-- 												<u:headerParameters> -->
+<!-- 													<u:FileUploaderParameter name="headerParam1" -->
+<!-- 														value="Foo" /> -->
+<!-- 													<u:FileUploaderParameter name="headerParam2" -->
+<!-- 														value="bar" /> -->
+<!-- 												</u:headerParameters> -->
+											
+											</u:FileUploader>
+
+<!-- 											<Button type="Transparent" icon="sap-icon://attachment" -->
+<!-- 												press="onPressAttachment" class="sapUiSmallMarginEnd attachIcon" -->
+<!-- 												width="2rem" /> -->
+											<Button type="Transparent" icon="sap-icon://camera"
+												press="onCameraPress" class="attachIcon" width="2rem" />
 										</HBox>
-										
+
 										<Link text="0 Attachments" press="handleLinkPress" />
 									</VBox>
 								</f:FormElement>
