@@ -377,7 +377,7 @@ sap.ui
 									{
 										"attribute" : "JIG_TOOLS",
 										"value" : sJigtools
-									},
+									}/*,
 									{
 										"attribute" : "ISSUER", // V1.5
 										"value" : oView.byId("selectIssuer").getSelectedKey()
@@ -388,7 +388,7 @@ sap.ui
 										"attribute" : "RESOLVER",     //V1.5
 										"value" : oView.byId("selectResolver")
 										          .getSelectedKey()
-										          }]
+										          }*/]
 
 						}
 						aModelData.push(oJson);
@@ -1203,6 +1203,7 @@ sap.ui
 					/**
 					 * 
 					 * MES V1.5 initially all fields will be non editable
+					 * [Begin]
 					 */
 					setDisruptionDetailData : function() {
 
@@ -1320,6 +1321,10 @@ sap.ui
 							} 
 						}
 
+					},
+					onEditDisruption:function(){
+						debugger;
+						this.setDataForEditDisruption();
 					}
 				/*
 				 * onExit: function() { }

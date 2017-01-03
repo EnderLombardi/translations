@@ -156,10 +156,9 @@ airbus.mes.disruptions.ModelManager = {
 		 * V1.5
 		 */
 		if (sap.ui.getCore().getModel("device").oData.system.desktop == true) {
-			airbus.mes.disruptions.oView.disruptionDetail.oController
-					.setDataForEditDisruption();
-			//airbus.mes.disruptions.oView.disruptionDetail.oController
-			//.setDisruptionDetailData();
+	/*		airbus.mes.disruptions.oView.disruptionDetail.oController
+					.setDataForEditDisruption();*/
+			airbus.mes.disruptions.oView.disruptionDetail.oController.setDisruptionDetailData();
 		} else {
 			airbus.mes.disruptions.oView.createDisruption.oController
 					.setDataForEditDisruption();

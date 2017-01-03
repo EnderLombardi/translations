@@ -192,12 +192,12 @@
 				</Select>
 				<Label text="{i18nModel>dateOfEsclation}" />
 				<DatePicker displayFormat="short"
-					value="{path: 'DisruptionDetailModel>/EscalationDateTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}">
+					value="{path: 'DisruptionDetailModel>/EscalationDateTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}" enabled="{setEditable>/editable}" >
 					<layoutData>
 						<l:GridData span="L7 M7 S7" />
 					</layoutData>
 				</DatePicker>
-				<TimePicker  valueFormat="HH:mm"
+				<TimePicker  valueFormat="HH:mm" enabled="{setEditable>/editable}"
 					value="{path: 'DisruptionDetailModel>/EscalationDateTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}"
 					displayFormat="HH:mm">
 					<layoutData>
