@@ -391,7 +391,7 @@ sap.ui
 										          }*/]
 
 						}
-						aModelData.push(oJson);
+						aModelData.push(oJson); 
 
 						var sDescription = oView.byId("description").getValue();
 						// message subject is passed as description because
