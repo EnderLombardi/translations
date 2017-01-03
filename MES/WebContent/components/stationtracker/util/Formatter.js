@@ -915,6 +915,9 @@ airbus.mes.stationtracker.util.Formatter = {
 							+ airbus.mes.stationtracker.util.Formatter.computeDelay( fProgress,fDuration )
 							+ '</span>' 
 							+ '</span>';
+                    },
+                    sumKPI : function(value1, value2, value3) {
+                    	return parseFloat(value1) + parseFloat(value2) + parseFloat(value3);
                     }
                     
 };
