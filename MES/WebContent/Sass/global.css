@@ -3332,7 +3332,8 @@ Linetracker View (Main Table)
   #idLinetracker1 .classLineTrackerTable table tr th, #idLinetracker1 td {
     text-align: center !important;
     vertical-align: middle !important;
-    border-left: 2px solid #60B5CD !important; }
+    border-left: 1px solid rgba(50, 131, 154, 0.33);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.18); }
   #idLinetracker1 .classLineTrackerTable table tr th div {
     border: none !important; }
   #idLinetracker1 .classLineTrackerTable table tr th span {
@@ -3341,7 +3342,9 @@ Linetracker View (Main Table)
     text-align: center !important; }
   #idLinetracker1 .classLineTrackerTable .taktHeading {
     color: #75ACC1 !important;
-    font-size: 1vw !important; }
+    font-size: 1vw !important;
+    width: 100%;
+    text-align: center !important; }
   #idLinetracker1 .classLineTrackerTable table tr th:nth-child(1), #idLinetracker1 td:nth-child(2), #idLinetracker1 th:nth-child(2) {
     background-color: #EAFBFD !important; }
   #idLinetracker1 .classLineTrackerTable table tr td:nth-child(3) {
@@ -3396,6 +3399,12 @@ Linetracker View (Main Table)
     margin-left: 0.15rem !important; }
   #idLinetracker1 .classLineTrackerTable .stationPopoverBtns div span {
     background-color: #FFFFFF !important; }
+  #idLinetracker1 .sapUiTableColHdrScr .sapUiTableColHdr #idLinetracker1--lineTrackerTrendBorder {
+    border-left: 1px solid rgba(0, 0, 0, 0.42); }
+    #idLinetracker1 .sapUiTableColHdrScr .sapUiTableColHdr #idLinetracker1--lineTrackerTrendBorder + div + div {
+      border-right: 1px solid rgba(0, 0, 0, 0.42); }
+      #idLinetracker1 .sapUiTableColHdrScr .sapUiTableColHdr #idLinetracker1--lineTrackerTrendBorder + div + div + div + div + div + div {
+        border-right: 1px solid rgba(0, 0, 0, 0.42); }
 
 .stationBtns.sapMBtn > .sapMBtnInner {
   text-align: center !important; }

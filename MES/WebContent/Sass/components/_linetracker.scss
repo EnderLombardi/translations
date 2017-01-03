@@ -43,7 +43,8 @@ Linetracker View (Main Table)
     .classLineTrackerTable table tr th,td{
         text-align: center !important;
         vertical-align: middle !important;
-        border-left: 2px solid #60B5CD !important;
+        border-left: 1px solid rgba(50, 131, 154, 0.33);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.18);
     }
 
     .classLineTrackerTable table tr th div {
@@ -61,6 +62,8 @@ Linetracker View (Main Table)
     .classLineTrackerTable .taktHeading {
         color: #75ACC1 !important;
         font-size: 1vw !important;
+        width: 100%;
+        text-align: center !important;
     }
 
     .classLineTrackerTable table tr th:nth-child(1), td:nth-child(2), th:nth-child(2) {
@@ -167,6 +170,21 @@ Linetracker View (Main Table)
 
     .classLineTrackerTable .stationPopoverBtns div span {
         background-color: #FFFFFF !important;
+    }
+    .sapUiTableColHdrScr{
+        .sapUiTableColHdr{
+            #idLinetracker1--lineTrackerTrendBorder{
+                border-left: 1px solid rgba(0, 0, 0, 0.42);
+                &+ div{
+                    &+ div{
+                        border-right: 1px solid rgba(0, 0, 0, 0.42);
+                        &+ div + div + div + div {
+                            border-right: 1px solid rgba(0, 0, 0, 0.42);
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
