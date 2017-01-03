@@ -8,6 +8,8 @@
     <customHeader>
     <!-- <Toolbar  class="pageHeader kpiPageHeader contentNoPad">
             <HBox>
+
+
             <Title text="{i18n>lineTrackerTitle}" level="H2" class="lineTrackerTitle"/>
             </HBox>
             <Text text="{i18n>lineTrackerTitle}" />
@@ -34,8 +36,11 @@
             class="size5"
             color="#FFE3E7">
             </core:Icon>
-             <ToolbarSpacer />
+            
+
              <Label id="dateLabel" text="" class="classDateLabel" ></Label>
+			 <ToolbarSpacer />
+
              <Button id="hideKPI" enabled="true" icon="sap-icon://hide"
                             text="{i18n>hideKPI}" press="hideKPI" />
     </Toolbar>
@@ -100,34 +105,25 @@
                         </OverflowToolbar>
                     <uiTable:template>
                         <HBox alignItems="Center" justifyContent="Center">
-
                                         <controlPhStation:PhysicalStationBox id="linetrackerEditStation"
                                             color="#bcf6ff" actionIconColor="black" station="{stationDataModel>station}"
                                             msn="MSN 1274"  press="handlePopoverPress" width="80%">
                                             <controlPhStation:actionIconButton>
                                                 <core:Icon src="sap-icon://refresh" />
                                             </controlPhStation:actionIconButton>
-
                                             <controlPhStation:image>
-
-
                                                 <Image
                                                     src="http://www.look4travel.com.au/flight_specials/lufthansa-logo.jpg"
                                                     width="100%" height="100%" />
                                             </controlPhStation:image>
-
                                             <controlPhStation:detailIconButton>
-
                                             </controlPhStation:detailIconButton>
-
                                         </controlPhStation:PhysicalStationBox>
                                         <Button icon="sap-icon://vertical-grip" press="openStationPopover" class="moreButton"
                                                 type="Transparent" width="20%" tooltip="{i18n>moreInfo}"/>
-
                                     </HBox>
                     </uiTable:template>
                 </uiTable:Column>
-
                 <uiTable:Column width="44%">
                     <FlexBox id="linetrackerTablePercentage" height="2.5rem" alignItems="Center"
                             justifyContent="SpaceAround">
@@ -142,14 +138,12 @@
                             <Text text="90%" />
                             <Text text="100%" />
                         </FlexBox>
-
                     <uiTable:template>
                             <custom:linetrackerProgressBar planned="{stationDataModel>planned}"
                                 confirmed="{stationDataModel>confirmed}" class="progressBar" />
                     </uiTable:template>
 
                 </uiTable:Column>
-
                 <uiTable:Column width="6%" id="lineTrackerTrendBorder">
                     <Text text="{i18n>trend}" class="taktHeading" />
                     <uiTable:template>
@@ -157,15 +151,12 @@
                                 color="{stationDataModel>trendColor}" />
                     </uiTable:template>
                 </uiTable:Column>
-
                 <uiTable:Column width="6%">
                     <Text text="{i18n>date}" class="taktHeading" />
                     <uiTable:template>
                         <Text class="dateTableLinetracker" text="{stationDataModel>date}" />
                     </uiTable:template>
-
                 </uiTable:Column>
-
                 <uiTable:Column width="6%">
                     <Text text="{i18n>cycleTime}" class="taktHeading" />
 
@@ -181,6 +172,7 @@
                         <Text class="fontTableLinetracker" text="{stationDataModel>workContent}" />
                     </uiTable:template>
 
+
                 </uiTable:Column>
 
                 <uiTable:Column width="6%">
@@ -188,7 +180,6 @@
                     <uiTable:template>
                         <Text class="fontTableLinetracker" text="{stationDataModel>disruption}" />
                     </uiTable:template>
-
                 </uiTable:Column>
 
                 <uiTable:Column width="6%">
@@ -196,21 +187,17 @@
                     <uiTable:template>
                         <Text class="fontTableLinetracker" text="{stationDataModel>andon}" />
                     </uiTable:template>
-
                 </uiTable:Column>
 
             </uiTable:columns>
-
             </uiTable:Table>
 
             <control:slideControl id="idSlideControl">
-
                 <control:slideContent>
                     <core:Fragment fragmentName="airbus.mes.linetracker.KPICharts.StationSlideKPIs"
                         type="XML" />
                 </control:slideContent>
             </control:slideControl>
         </content>
-
     </Page>
 </core:View>
