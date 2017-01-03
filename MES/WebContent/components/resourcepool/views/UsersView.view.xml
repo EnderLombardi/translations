@@ -13,8 +13,6 @@
 								<contentMiddle>
 									<Text class="sapMPanelHdr panelHeaderCustomStyle" text="{i18nModel>AvailableUsers}" />
 								</contentMiddle>
-								<!-- <contentRight> <CheckBox select="onSelectAll" text="{i18nModel>SelectAll}" 
-									/> </contentRight> -->
 							</Bar>
 						</Toolbar>
 					</headerToolbar>
@@ -98,8 +96,6 @@
 								<contentMiddle>
 									<Text class="sapMPanelHdr panelHeaderCustomStyle" text="{i18nModel>AssignedUsers}" />
 								</contentMiddle>
-								<!-- <contentRight> <CheckBox select="onSelectAll" text="{i18nModel>SelectAll}" 
-									/> </contentRight> -->
 							</Bar>
 						</Toolbar>
 					</headerToolbar>
@@ -110,7 +106,6 @@
 									enabled="{path:'i18nModel>ResourcePool',formatter:'airbus.mes.resourcepool.util.Formatter.isEnabled'}" />
 								<SearchField id="searchAssignedUsers" liveChange="onSearchUsers"
 									width="100%" />
-
 							</content>
 						</Toolbar>
 					</infoToolbar>
@@ -122,11 +117,6 @@
 								growingScrollToLoad="true" growing="true" growingThreshold="1000"
 								noDataText="{i18nModel>NoUserAssigned}">
 
-
-								<!-- <StandardListItem title="{parts: ['ResourcePoolDetailModel>FNAME', 
-									'ResourcePoolDetailModel>LNAME'], formatter:'airbus.mes.resourcepool.util.Formatter.nameFormatter'}" 
-									description="{ResourcePoolDetailModel>USER_ID}" info="{parts: ['ResourcePoolDetailModel>LOANED_RP_NAME', 
-									'ResourcePoolDetailModel>NAME'], formatter:'airbus.mes.resourcepool.util.Formatter.assignedToSelf'}"> -->
 								<CustomListItem>
 									<content>
 										<ui:HorizontalLayout class="fixDsiplayRpImg">
