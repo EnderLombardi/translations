@@ -28,9 +28,6 @@ sap.ui.core.UIComponent.extend("airbus.mes.homepage.Component", {
  */
 airbus.mes.homepage.Component.prototype.createContent = function() {
 
-	// MES V1.5 set Device Model to check Device Type
-	sap.ui.getCore().setModel(new sap.ui.model.json.JSONModel(sap.ui.Device),
-			"device");
 	// get tiles of the homepage view
 	var oModel1 = new sap.ui.model.json.JSONModel();
 	oModel1.loadData("../components/homepage/data/1TileLineHome.json", null,

@@ -161,7 +161,7 @@ airbus.mes.disruptions.ModelManager = {
 		 * call setdataForEditDisruptionFunction usin DisruptionDetail view MES
 		 * V1.5
 		 */
-		if (sap.ui.getCore().getModel("device").oData.system.desktop == true) {
+		if (sap.ui.Device.system.desktop) {
 	/*		airbus.mes.disruptions.oView.disruptionDetail.oController
 					.setDataForEditDisruption();*/
 			airbus.mes.disruptions.oView.disruptionDetail.oController.setDisruptionDetailData();
