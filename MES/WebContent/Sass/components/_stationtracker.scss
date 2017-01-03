@@ -945,21 +945,6 @@ svg{
     }
 }
 /*******************************
-BOX RESOLUTION EFFICIENCY
-********************************/
-#stationTrackerView--boxResolutionEfficiency{
-    .boxResolutionEfficiencyGoodValue{
-        color: $dark-lime-green;
-    }
-    .boxResolutionEfficiencyBadValue {
-        color: $blood-orange;
-    }
-}
-#stationTrackerView--boxSLBEfficiecy_chart-chart-item-3,
-#stationTrackerView--boxResolutionEfficiecy_chart-chart-item-3 {
-    opacity: 0;
-}
-/*******************************
 SHIFT STAFFING
 ********************************/
 #stationTrackerView--shifStaffingHeader-dmc-chart .Left {
