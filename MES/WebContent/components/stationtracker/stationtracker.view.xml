@@ -169,11 +169,6 @@
 											title="{StationTrackerI18n>RedSpaces}"
 											value="{path:'KPItaktEfficiency>/slbRedSpacesUI', formatter:'airbus.mes.stationtracker.util.Formatter.stringToInt'}"
 											displayValue="{KPItaktEfficiency>/slbRedSpacesUI}%"/>
-										<micro:ComparisonMicroChartData
-											id="hiddenRefBarSBL"
-											title="{StationTrackerI18n>RedSpaces}"
-											value="100"
-											visible="false" />
 									</micro:data>
 								</micro:ComparisonMicroChart>
 							</VBox>
@@ -253,11 +248,6 @@
 											title="{StationTrackerI18n>NotAcknowledged}"
 											value="{path:'KPIresolutionEfficiency>/notAcknowledgedUI', formatter:'airbus.mes.stationtracker.util.Formatter.stringToInt'}"
 											displayValue="{KPIresolutionEfficiency>/notAcknowledgedUI}"/>
-										<micro:ComparisonMicroChartData
-											id="hiddenRefBarResolution"
-											title="{StationTrackerI18n>RedSpaces}"
-											visible="false"
-											value="{path:'KPIresolutionEfficiency>/totalUI', formatter:'airbus.mes.stationtracker.util.Formatter.stringToInt'}" />
 									</micro:data>
 								</micro:ComparisonMicroChart>
 							</VBox>
