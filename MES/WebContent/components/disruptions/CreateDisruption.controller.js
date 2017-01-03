@@ -380,18 +380,23 @@ sap.ui
 									},
 									{
 										"attribute" : "ISSUER", // V1.5
-										"value" : oView.byId("selectIssuer").getSelectedKey()
-									}, {
-										"attribute" : "FIVEM_CATEGORY",     //V1.5
-										"value" : oView.byId("selectCategoryClass").getSelectedKey()
-									}, {
-										"attribute" : "RESOLVER",     //V1.5
+										"value" : oView.byId("selectIssuer")
+												.getSelectedKey()
+									},
+									{
+										"attribute" : "FIVEM_CATEGORY", // V1.5
+										"value" : oView.byId(
+												"selectCategoryClass")
+												.getSelectedKey()
+									},
+									{
+										"attribute" : "RESOLVER", // V1.5
 										"value" : oView.byId("selectResolver")
-										          .getSelectedKey()
-										          }]
+												.getSelectedKey()
+									} ]
 
 						}
-						aModelData.push(oJson); 
+						aModelData.push(oJson);
 
 						var sDescription = oView.byId("description").getValue();
 						// message subject is passed as description because
@@ -1209,7 +1214,7 @@ sap.ui
 
 						try {
 							this.resetAllFields();
-							
+
 							if (sap.ui.getCore().getModel(
 									"DisruptionDetailModel").getData() != undefined) {
 
@@ -1218,34 +1223,43 @@ sap.ui
 								var oModel = sap.ui.getCore().getModel(
 										"DisruptionDetailModel");
 
-								this.getView()
+								this
+										.getView()
 										.byId("selectCategory")
 										.setSelectedKey(
-												oModel.getProperty("/MessageType"));
+												oModel
+														.getProperty("/MessageType"));
 
-								this.getView()
+								this
+										.getView()
 										.byId("selectResponsible")
 										.setSelectedKey(
-												oModel.getProperty("/ResponsibleGroup"));
+												oModel
+														.getProperty("/ResponsibleGroup"));
 
 								this.getView().byId("selectreason")
 										.setSelectedKey(
 												oModel.getProperty("/Reason"));
 
-								this.getView()
+								this
+										.getView()
 										.byId("selectOriginator")
 										.setSelectedKey(
-												oModel.getProperty("/OriginatorGroup"));
+												oModel
+														.getProperty("/OriginatorGroup"));
 
-								this.getView()
+								this
+										.getView()
 										.byId("selectRootCause")
 										.setSelectedKey(
-												oModel.getProperty("/RootCause"));
+												oModel
+														.getProperty("/RootCause"));
 
 								this.getView().byId("gravity").setSelectedKey(
 										oModel.getProperty("/Gravity"));
 
-								this.getView()
+								this
+										.getView()
 										.byId("timeLost")
 										.setValue(
 												airbus.mes.disruptions.Formatter
@@ -1316,66 +1330,93 @@ sap.ui
 											.getModel("i18nModel").getProperty(
 													"error"));
 
-							if (nav.getCurrentPage().getId() == "disruptionDetail") {								
-										nav.back();
-							} 
+							if (nav.getCurrentPage().getId() == "disruptionDetail") {
+								nav.back();
+							}
 						}
 
 					},
-					onEditDisruption:function(){
-						debugger;
+					onEditDisruption : function() {
 						this.setDataForEditDisruption();
 					},
-					
-					handleUploadComplete: function(){
 
-						var oFileUploader = this.getView().byId("fileUploader");
-						if(!oFileUploader.getValue()) {
-							MessageToast.show("Choose a file first");
-							return;
-						}
+					handleUploadComplete : function(loValue) {},
+					
+					handleValueChange: function(oEvt){
+//						this.getView().byId("idfileUploader").attachPress(this.onUploadStart());
+//						this.getView().byId("idfileUploader");
+//						this.getView().byId("idfileUploader").attachPress(this.onUploadStart());
+						var that = this;
+						var dialog = new sap.m.Dialog({
+							content:[ new sap.m.Label({
+								text:"Enter the Title"
+							}),
+							new sap.m.Input("idTitleInput",{
+								
+							})
+							],
+							beginButton: new sap.m.Button({
+								text: 'oK',
+								press: function () {
+									var loValue = sap.ui.getCore().byId("idTitleInput").getValue();
+									dialog.close();
+									that.getView().byId("idfileUploader").attachPress(that.onUploadStart(loValue));
+									
+								}
+							})
+//							afterClose: function() {
+//								dialog.destroy();
+//							}
+						});
+			 
+						//to get access to the global model
+						this.getView().addDependent(dialog);
+						dialog.open();
+					},
+					onChange: function(){
+						this.getView().byId("idfileUploader").fireUploadComplete();
+					},
+					
+
+					onUploadStart : function(loValue) {
+						var oFileUploader = this.getView().byId("idfileUploader");
+//						if (!oFileUploader.getValue()) {
+//							return;
+//						}
 						oFileUploader.upload();
-					
-						var sResponse = oEvent.getParameter("response");
-						if (sResponse) {
-							var sMsg = "";
-							var m = /^\[(\d\d\d)\]:(.*)$/.exec(sResponse);
-							if (m[1] == "200") {
-								sMsg = "Return Code: " + m[1] + "\n" + m[2], "SUCCESS", "Upload Success";
-								oEvent.getSource().setValue("");
-							} else {
-								sMsg = "Return Code: " + m[1] + "\n" + m[2], "ERROR", "Upload Error";
-							}
 
-							MessageToast.show(sMsg);
+					},
+
+					onCameraPress : function() {
+
+					},
+					handleLinkPress : function(oEvent) {
+						var _self = this;
+						if (!this._oPopover) {
+							this._oPopover = sap.ui
+									.xmlfragment(
+											"airbus.mes.disruptions.Dialog",
+											airbus.mes.disruptions.oView.createDisruption
+													.getController());
+							this.getView().addDependent(this._oPopover);
 						}
+						var oButton = oEvent.getSource();
+						jQuery.sap.delayedCall(0, this, function() {
+							this._oPopover.openBy(oButton);
+						});
 					},
-					
-					onUploadStart: function(){
-						MessageToast.show(sMsg);
-					},
-					
-					onCameraPress: function(){
-						
-					},
-					handleLinkPress: function(oEvent){
-//						 this._Dialog = sap.ui.xmlfragment("airbus.mes.disruptions.Dialog",
-//	                                this);
-//	                this._Dialog.open();
-	                
-	    			if (! this._oPopover) {
-	    				this._oPopover = sap.ui.xmlfragment("airbus.mes.disruptions.Dialog");
-	    				this.getView().addDependent(this._oPopover);
-	    			}
-	     
-	    			// delay because addDependent will do a async rerendering and the popover will immediately close without it
-	    			var oButton = oEvent.getSource();
-	    			jQuery.sap.delayedCall(0, this, function () {
-	    				this._oPopover.openBy(oButton);
-	    			});
-					},
-					onPressDelete: function(){
+
+					onPressDeleteButton : function(oEvent) {
 						this.getView().byId("idAttachmentTable");
+						var loPath = oEvent.oSource.oPropagatedProperties.oBindingContexts.AttachmentList.sPath;
+						var loLength = loPath.length;
+						var loIndex = loPath.slice(loLength - 1);
+
+						var oModel = sap.ui.getCore()
+								.getModel("AttachmentList")
+						var oData = oModel.getData();
+						var removed = oData.items.splice(loIndex, 1);
+						oModel.setData(oData);
 					}
 				/*
 				 * onExit: function() { }

@@ -495,21 +495,12 @@
 												style="Emphasized"
 												iconOnly="true"
 												fileType="txt,jpg">
-<!-- 												<u:parameters> -->
-<!-- 													<u:FileUploaderParameter name="param1" -->
-<!-- 														value="Foo" /> -->
-<!-- 													<u:FileUploaderParameter name="param2" -->
-<!-- 														value="bar" /> -->
-<!-- 												</u:parameters> -->
-<!-- 												<u:headerParameters> -->
-<!-- 													<u:FileUploaderParameter name="headerParam1" -->
-<!-- 														value="Foo" /> -->
-<!-- 													<u:FileUploaderParameter name="headerParam2" -->
-<!-- 														value="bar" /> -->
-<!-- 												</u:headerParameters> -->
 											
 											</u:FileUploader>
-
+<!-- 													<Button -->
+<!-- 			text="Upload File" -->
+<!-- 			press="handleUploadPress" -->
+<!-- 			visible="false"/> -->
 <!-- 											<Button type="Transparent" icon="sap-icon://attachment" -->
 <!-- 												press="onPressAttachment" class="sapUiSmallMarginEnd attachIcon" -->
 <!-- 												width="2rem" /> -->
