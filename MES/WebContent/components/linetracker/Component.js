@@ -90,4 +90,6 @@ airbus.mes.linetracker.Component.prototype.createContent = function() {
     } else {
         return airbus.mes.linetracker.oView;
     }
+    
+    sap.ui.getCore().byId("idLinetracker1--linetrackerTable").rerender();
 };
