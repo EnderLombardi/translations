@@ -24,7 +24,7 @@
 								<content>
 									<CheckBox id="allAvailableWC" select="onSelectAllWC"
 										enabled="{path:'i18nModel>ResourcePool',formatter:'airbus.mes.resourcepool.util.Formatter.isEnabled'}" />
-									<SearchField id="searchAvailableWC" liveChange="onSearchAvailableWC"
+									<SearchField id="searchAvailableWC" liveChange="onSearchAvailableWC" placeholder="{i18nModel>searchBox}"
 										width="100%" />
 								</content>
 							</Toolbar>
@@ -44,8 +44,8 @@
 					</Panel>
 					<VBox class="shiftButtons" justifyContent="Center" alignItems="Center">
 						<items>
-							<Button icon="sap-icon://navigation-right-arrow" press="assignWorkCenter" />
-							<Button icon="sap-icon://navigation-left-arrow" press="unassignWorkCenter" />
+							<Button icon="sap-icon://navigation-right-arrow" press="assignWorkCenter"  tooltip="{i18nModel>Assign}" />
+							<Button icon="sap-icon://navigation-left-arrow" press="unassignWorkCenter"  tooltip="{i18nModel>Remove}" />
 
 						</items>
 					</VBox>
@@ -66,7 +66,7 @@
 								<content>
 									<CheckBox id="allAssignedWC" select="onSelectAllWC"
 										enabled="{path:'ResourcePoolDetailModel>',formatter:'airbus.mes.resourcepool.util.Formatter.isEnabled'}" />
-									<SearchField id="searchAssignedWC" liveChange="onSearchAssignedWC"
+									<SearchField id="searchAssignedWC" liveChange="onSearchAssignedWC" placeholder="{i18nModel>searchBox}"
 										width="100%" />
 								</content>
 							</Toolbar>
