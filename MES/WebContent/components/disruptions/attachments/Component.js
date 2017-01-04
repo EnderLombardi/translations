@@ -24,7 +24,7 @@ airbus.mes.disruptions.attachments.Component.prototype.createContent = function(
         
 		// View on XML
 		this.oView = sap.ui.view({
-			id : "idDisruptionAttachment",
+			id : "DisruptionAttachmentView",
 			viewName : "airbus.mes.disruptions.attachments.disruptionAttachment",
 			type : "XML",
 			height:"auto"

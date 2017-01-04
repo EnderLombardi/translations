@@ -1,6 +1,7 @@
 <mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m" controllerName="airbus.mes.disruptions.attachments.disruptionAttachment"
-	xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml">
+	xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:cData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" >
 
 	<Toolbar>
 	<Button icon="sap-icon://nav-back" press="onNavPress" />
@@ -41,7 +42,7 @@
 <!--  			<Panel expandable="false" backgroundDesign = "Transparent" class="disruptionExpandablePanel">  -->
 <!--  				<headerToolbar>  -->
  					<Toolbar> 
- 						<Link target="_blank" text="Title: {attachDisruption>name} Type: {attachDisruption>type}" href = "{attachDisruption>src}"/> 
+ 						<Link text="Title: {attachDisruption>name} Type: {attachDisruption>type}" press="openDocument" cData:url="{attachDisruption>src}" /> 
  					<ToolbarSpacer/> 					
  					<Button icon="sap-icon://delete" press="onPressDelete" />
  					</Toolbar>

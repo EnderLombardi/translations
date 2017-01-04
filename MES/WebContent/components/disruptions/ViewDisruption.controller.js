@@ -100,23 +100,6 @@ sap.ui
 								});
 
 					},
-					
-					/***********************************************************
-					 * Open Attachment View, on click of attachment in the disruption pop up
-					 */
-					onAttachDisruption : function(oEvt) {
-						this.nav = this.getView().oParent;
-						var loPath =  oEvt.oSource.oPropagatedProperties.oBindingContexts.operationDisruptionsModel.sPath;
-						var lolength = loPath.length;
-						var loIndex = loPath.slice(lolength -1);
-						
-						var loDisDescription = oEvt.oSource.oPropagatedProperties.oBindingContexts.operationDisruptionsModel.oModel.oData.Rowsets.Rowset[0].Row[loIndex].Description;
-						
-						jQuery.sap.registerModulePath("airbus.mes.disruptions.attachments","../components/disruptions/attachments");
-						sap.ui.getCore().createComponent({ name : "airbus.mes.disruptions.attachments"});
-						this.nav.addPage(airbus.mes.disruptions.attachments.oView);
-						this.nav.to(airbus.mes.disruptions.attachments.oView.getId(),{Desc:loDisDescription});
-					},
 
 					/***********************************************************
 					 * Open Pop-Up to ask Time Lost while Closing the Disruption
@@ -1158,21 +1141,8 @@ sap.ui
 							if(this.expandedDisruptionPanel)
 								sap.ui.getCore().byId(this.expandedDisruptionPanel).setExpanded(false);
 							
-							var oOperDetailNavContainer;
-
 							// Navigate to Edit Screen
-							if (nav.getCurrentPage().sId == "stationTrackerView")
-								oOperDetailNavContainer = sap.ui
-										.getCore()
-										.byId(
-												"operationDetailsView--operDetailNavContainer");
-							else if (nav.getCurrentPage().sId == "disruptiontrackerView")
-								oOperDetailNavContainer = sap.ui
-										.getCore()
-										.byId(
-												"disruptionDetailPopup--disruptDetailNavContainer");
-
-							oOperDetailNavContainer.to(airbus.mes.disruptions.oView.createDisruption.getId());
+							this.getView().oParent.to(airbus.mes.disruptions.oView.createDisruption.getId());
 
 							// fill model DisruptionDetailModel to show data on
 							// edit screen
@@ -1191,6 +1161,21 @@ sap.ui
 							
 						}
 
-					}
+					},
+					
+
+					
+					/***********************************************************
+					 * Open Attachment linked to a disruptions
+					 */
+					viewAttachments : function(oEvt) {
+						var sPath =  oEvt.oSource.oPropagatedProperties.oBindingContexts.operationDisruptionsModel.sPath;
+						var length = sPath.length;
+						var index = sPath.slice(length -1);
+						
+						var disruptionDesc = oEvt.oSource.oPropagatedProperties.oBindingContexts.operationDisruptionsModel.oModel.oData.Rowsets.Rowset[0].Row[index].Description;
+						
+						airbus.mes.shell.util.navFunctions.disruptionAttachment(this.getView().oParent, disruptionDesc);
+					},
 
 				});

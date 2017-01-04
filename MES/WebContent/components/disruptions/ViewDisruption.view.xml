@@ -22,7 +22,7 @@
 								<ToolbarSpacer />
 								
 								<Button text="{i18nModel>Attachment}" type="Accept"
-									design="Transparent" icon="sap-icon://attachment" press="onAttachDisruption" class="disruptionTitleBarButtons"/>
+									design="Transparent" icon="sap-icon://attachment" press="viewAttachments" class="disruptionTitleBarButtons"/>
 
 								<Text
 									text="{i18nModel>closureDate} : {operationDisruptionsModel>ClosureDate}"

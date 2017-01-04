@@ -84,6 +84,30 @@ sap.ui.define([
 			aFilter.push(new Filter("wo_no", FilterOperator.Contains, oCurrWo_noVal));
 			oBinding.filter(aFilter);
 		},
+		
+		
+		/***************************************
+		 * Open document in MES Document Viewer
+		 */
+		openDocument: function(oEvent){
+			var url = oEvent.getSource().getCustomData().getValue();
+			
+			$("#sap-ui-blocklayer-popup").css('zIndex', '-1')
+			$("#"+this.getView().getParent().sId).css('display', 'none');
+			
+			airbus.mes.shell.util.navFunctions.docViewer(url, airbus.mes.disruptions.attachments.oView.oController.onMESDocViewerClose);
+		},
+		
+		/******************************************
+		 * To be executed when the document viewer is closed
+		 * In order to re-appear the pop-up
+		 */
+		onMESDocViewerClose: function(){
+			$("#sap-ui-blocklayer-popup").css('zIndex', '38')
+			$("#"+this.getView().getParent().sId).css('display', 'block');
+		},
+		
+		
 		onPressDelete: function(oEvt){
 			 var loPath = oEvt.oSource.oPropagatedProperties.oBindingContexts.attachDisruption.sPath;
 			 var loLength = loPath.length;
