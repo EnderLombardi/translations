@@ -56,20 +56,20 @@
                 </items>
             </SegmentedButton>
             <ToolbarSpacer />
-            <Text id="refresh" text="{linetrackerI18n>autoRefresh}n" visible="false" />
+            <Text id="refresh" text="{linetrackerI18n>autoRefresh}" visible="false" />
             <Text id="Slideshow" text="{linetrackerI18n>showSlide}" visible="false" />
             <ToggleButton pressed="false" type="Transparent" id="refreshbutton"
-                icon="sap-icon://refresh" press="airbus.mes.linetracker.util.ModelManager.launchrefresh" />
+                icon="sap-icon://refresh" press="airbus.mes.linetracker.util.ModelManager.launchrefresh" tooltip="{linetrackerI18n>refresh}"/>
             <Button id="Andon" type="Transparent" tooltip="Andon"
                 icon="sap-icon://marketing-campaign" press="airbus.mes.linetracker.util.ModelManager.onAndonClick" />
             <ToggleButton id="swapStationButton" type="Transparent"
                 class="#idMainViewswapStationButton rotated-icon" press="airbus.mes.linetracker.util.ModelManager.onSwap"
-                icon="sap-icon://sort" />
+                icon="sap-icon://sort" tooltip="{linetrackerI18n>sorter}" />
             <Slider id="refreshSlider" visible="false" value="30" width="50%"
                 class="refreshSlider" />
-            <Button id="diaporama" type="Transparent" tooltip="Diaporama"
+            <Button id="diaporama" type="Transparent" tooltip="{linetrackerI18n>showSlide}"
                 icon="sap-icon://play" press="airbus.mes.linetracker.util.ModelManager.launchdiaporama" />
-            <Button id="customize" type="Transparent" icon="sap-icon://settings"
+            <Button id="customize" type="Transparent" icon="sap-icon://settings" tooltip="{linetrackerI18n>settings}"
                 press="airbus.mes.linetracker.util.ModelManager.launchCusto"
                     visible="{path:'linetrackerI18n>OK',formatter:'airbus.mes.linetracker.util.Formatter.showCusto'}" />
         </content>

@@ -9,7 +9,7 @@
         <buttons>
             <Button id="btnPause" text="{StationTrackerI18n>pause}" icon="sap-icon://media-pause" press="pauseOperation" visible="false" />
             <Button id="btnConfirm" text="{StationTrackerI18n>confirm}" icon="sap-icon://history" press="confirmOperation" visible="false" />
-            <Button id="btnActivate" text="{StationTrackerI18n>activate}" press="activateOperation" visible="false" />
+            <Button id="btnActivate" text="{StationTrackerI18n>activate}" icon="sap-icon://accept" press="activateOperation" visible="false" />
             <Button id="btnComplete" text="{StationTrackerI18n>complete}" icon="sap-icon://accept" press="confirmOperation" visible="false" />
 
             <Button id="btnCreateDisruption" text="{StationTrackerI18n>create}" icon="sap-icon://add" type="Transparent" press="onCreateDisruption" visible="false" />

@@ -11,7 +11,7 @@
 				expandAnimation="false" class="pageHeader kpiPageHeader contentNoPad">
 				<headerToolbar>
 					<Toolbar id="kpiHeaderToolbar" class="classKpiheaderToolbar">
-						<Button id="dateButton" icon="sap-icon://appointment" type="Transparent"
+						<Button id="dateButton" icon="sap-icon://appointment" type="Transparent" tooltip="{StationTrackerI18n>Calendar}"
 							press="datePick" class="classDateButton" />
 						<Label id="dateLabel" text="" class="classDateLabel" />
 						<Select id="selectShift"
@@ -97,8 +97,8 @@
 																<layout:GridData span="L8 M8 S8" />
 															</layoutData>
 														</Label>
-														<core:Icon src="{path:'KPItaktAdherence>/trendUI', formatter:'airbus.mes.stationtracker.util.Formatter.KPIiconTrendSrc'}"
-															class="TrendGreen taktKpiValue takt_kpi_trend_value" color="{path:'KPItaktAdherence>/trendUI', formatter:'airbus.mes.stationtracker.util.Formatter.KPIiconTrendColor'}"/>
+														<core:Icon src="{path:'KPItaktAdherence>/trendUI', formatter:'airbus.mes.stationtracker.util.Formatter.KPIiconTrendSrc'}" 
+															class="TrendGreen taktKpiValue takt_kpi_trend_value" tooltip=" " color="{path:'KPItaktAdherence>/trendUI', formatter:'airbus.mes.stationtracker.util.Formatter.KPIiconTrendColor'}"/>
 
 														<Label text="{StationTrackerI18n>DeltaVsSLB}" class="whiteText taktKpiName">
 															<layoutData>

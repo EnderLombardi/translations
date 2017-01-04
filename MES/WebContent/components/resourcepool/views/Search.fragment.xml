@@ -68,7 +68,7 @@
 								</layoutData>
 							</Input>
 							<Button icon="sap-icon://save" id="saveButtonforRPDesc"
-								tooltip="{i18nModel>Save}"
+								tooltip="{i18nModel>SaveButton}"
 								enabled="{path:'i18nModel>ResourcePool',formatter:'airbus.mes.resourcepool.util.Formatter.isEnabled'}"
 								press="updateResource" class="iconMiddle">
 								<layoutData>
