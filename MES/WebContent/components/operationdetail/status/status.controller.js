@@ -581,8 +581,8 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
 						
 			break;
 		case "false":
-
-			this.setProgressScreenBtn( false, true, false );	
+			
+			this.setProgressScreenBtn( false, false, false );	
 			break;			
 		default :
 		
