@@ -484,16 +484,14 @@
 											<u:FileUploader id="idfileUploader"
 												name="myFileUpload"
 												uploadUrl="upload/" 
-												tooltip="Upload your file to the local server"
-												placeholder="Choose a file for Upload..."
+												tooltip="{i18nModel>attachFile}"
 												icon="sap-icon://attachment"
-												uploadComplete="handleUploadComplete"
+												uploadComplete="onUploadComplete"
 												uploadStart="onUploadStart"
-												change="handleValueChange"
+												change="onFileSelect"
 												buttonOnly="true"
-												typeMissmatch="handleTypeMissmatch"
-												iconOnly="true"
-												fileType="txt,jpg,pdf,png,doc,gif,ppt">
+												typeMissmatch="onTypeMissmatch"
+												iconOnly="true">
 											
 											</u:FileUploader>
 <!-- 													<Button -->
@@ -507,7 +505,8 @@
 												press="onCameraPress" class="attachIcon" width="2rem" />
 										</HBox>
 
-										<Link text="Attachments" press="handleLinkPress" />
+										<Link text="{path: 'AttachmentList>/RowCount' , formatter: 'airbus.mes.disruptions.Formatter.setNumberofAttachment'}" press="showAttachedDocsList"  wrapping="true"/>
+										
 									</VBox>
 								</f:FormElement>
 

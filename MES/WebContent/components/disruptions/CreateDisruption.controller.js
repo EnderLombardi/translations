@@ -84,7 +84,12 @@ sap.ui
 						this.getView().byId("timeLost").setPlaceholder(
 								airbus.mes.disruptions.Formatter
 										.getConfigTimeFullUnit());
+					},
+					
+					onBeforeRendering : function(){
 
+						var oFileUploader = this.getView().byId("idfileUploader");
+						oFileUploader.setFileType(["txt","jpg","pdf","png","doc","gif","ppt"]);
 					},
 
 					initializeTree : function() {
@@ -1340,7 +1345,7 @@ sap.ui
 						this.setDataForEditDisruption();
 					},
 
-					handleUploadComplete : function(loValue) {
+					onUploadComplete : function(loValue) {
 						var oFileUploader = this.getView().byId("idfileUploader");
 						
 						var oModel = sap.ui.getCore().getModel("AttachmentList");
@@ -1369,7 +1374,7 @@ sap.ui
 						loAttachmentHeader.setText("Attachments ("+loLength+")");
 					},
 					
-					handleValueChange: function(oEvt){
+					onFileSelect: function(oEvt){
 						var that = this;
 						var dialog = new sap.m.Dialog({
 							content:[ new sap.m.Label({
@@ -1409,7 +1414,7 @@ sap.ui
 					onCameraPress : function() {
 
 					},
-					handleLinkPress : function(oEvent) {
+					showAttachedDocsList : function(oEvent) {
 						var _self = this;
 						if (!this._oPopover) {
 							this._oPopover = sap.ui
@@ -1425,22 +1430,29 @@ sap.ui
 						});
 						var loAttachmentHeader = sap.ui.getCore().byId("idAttachmentHeader");
 						var loModel = sap.ui.getCore().getModel("AttachmentList");
-						var loLength = loModel.getData().items.length;
+						var loLength = loModel.oData.items.length;
 						loAttachmentHeader.setText("Attachments ("+loLength+")");
 						
 					},
 
 					onPressDeleteButton : function(oEvent) {
 						this.getView().byId("idAttachmentTable");
-						var loPath = oEvent.oSource.oPropagatedProperties.oBindingContexts.AttachmentList.sPath;
-						var loLength = loPath.length;
-						var loIndex = loPath.slice(loLength - 1);
+						var sPath = oEvent.mParameters.listItem.oBindingContexts.AttachmentList.sPath;
+						var iLength = sPath.length;
+						var iIndex = sPath.slice(iLength - 1);
 
 						var oModel = sap.ui.getCore()
 								.getModel("AttachmentList")
-						var oData = oModel.getData();
-						var removed = oData.items.splice(loIndex, 1);
+//						var oData = oModel.oData.Rowsets.Rowset[0];
+//						var removed = oData.Row.splice(iIndex, 1);
+//						oModel.setData(oData);
+//						oModel.refresh();
+						
+						var oData = oModel.oData;
+						var removed = oData.items.splice(iIndex, 1);
 						oModel.setData(oData);
+						var loAttachmentHeader = sap.ui.getCore().byId("idAttachmentHeader");
+						oModel.refresh();
 					}
 				/*
 				 * onExit: function() { }

@@ -449,5 +449,9 @@ airbus.mes.disruptions.Formatter = {
 		} else {
 			return false;
 		}
+	},
+	setNumberofAttachment : function(number) {
+		var sValue = number + "\n" + " Attachments";
+		return sValue;
 	}
 };
