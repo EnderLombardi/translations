@@ -312,23 +312,12 @@ airbus.mes.shell.util.navFunctions = {
     	// Set function to be executed on closing the document viewer (Not mandatory - can be undefined or empty as well)
     	airbus.mes.docviewer.ModelManager.onCloseFunction = closeFunction;
     	
+
+    	// Set File URL
+    	airbus.mes.docviewer.ModelManager.fileURL = fileURL;
     	
     	// Navigate to the view
     	nav.to(airbus.mes.docviewer.oView.getId());
-    	
-    	
-    	// Set the Viewer Element in Model Manager   	
-    	airbus.mes.docviewer.ModelManager.oViewerElement = 
-    		airbus.mes.docviewer.oView.byId('pdfViewer');
-		
-		// Get ID of the HBox where PDFTron will be placed
-    	airbus.mes.docviewer.ModelManager.sViewerElementId = 
-    		document.getElementById(airbus.mes.docviewer.ModelManager.oViewerElement.sId);
-    	
-
-    	// Finally open the document viewer with the document URL
-    	airbus.mes.docviewer.ModelManager.openDocument(fileURL);
-    	
     },
 
     worktracker : function() {

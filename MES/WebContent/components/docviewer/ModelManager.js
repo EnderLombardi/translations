@@ -51,8 +51,11 @@ airbus.mes.docviewer.ModelManager = {
 
 	},
 	
-	
-	openDocument: function(fileURL){
+
+	/********************************
+	 * Open file 
+	 */
+	openDocumentByURL: function(){
 		// Firstly - Empty the container
 		this.oViewerElement.removeAllItems()
 		

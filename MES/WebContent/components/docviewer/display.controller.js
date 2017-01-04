@@ -34,8 +34,19 @@ sap.ui.controller("airbus.mes.docviewer.display", {
 	 * 
 	 * @memberOf components.docviewer.display
 	 */
-	 //onAfterRendering : function() {
-	 //},
+	 onAfterRendering : function() {
+		
+	    	// Set the Viewer Element in Model Manager   	
+	    	airbus.mes.docviewer.ModelManager.oContainer = this.getView().byId('pdfViewer');
+			
+			// Get ID of the HBox where PDFTron will be placed
+	    	airbus.mes.docviewer.ModelManager.oViewerElement = 
+	    		document.getElementById(airbus.mes.docviewer.ModelManager.oContainer.sId);
+	    	
+
+	    	// Finally open the document viewer with the document URL
+	    	airbus.mes.docviewer.ModelManager.openDocumentByURL();
+	 },
 	
 	 
 	 savePdf: function(){
