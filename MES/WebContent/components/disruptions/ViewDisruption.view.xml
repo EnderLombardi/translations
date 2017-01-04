@@ -51,6 +51,44 @@
 							<f:formContainers>
 								<f:FormContainer ariaLabelledBy="Title2">
 									<f:formElements>
+									
+<!-- 									MES V1.5 [Beg] -->
+									    <f:FormElement>
+											<f:label>
+												<Label class="detailLabels" text="{i18nModel>CategoryClass}">
+													<layoutData>
+														<l:GridData span="L3 M3 S12" />
+													</layoutData>
+												</Label>
+											</f:label>
+											<f:fields>
+
+												<Text text="{path: 'operationDisruptionsModel>FiveM_Category'}">
+													<layoutData>
+														<l:GridData span="L3 M3 S12" />
+													</layoutData>
+												</Text>
+											</f:fields>
+										</f:FormElement>
+										
+										<f:FormElement>
+											<f:label>
+												<Label class="detailLabels" text="{i18nModel>Issuer}">
+													<layoutData>
+														<l:GridData span="L3 M3 S12" />
+													</layoutData>
+												</Label>
+											</f:label>
+											<f:fields>
+
+												<Text text="{path: 'operationDisruptionsModel>Issuer'}">
+													<layoutData>
+														<l:GridData span="L3 M3 S12" />
+													</layoutData>
+												</Text>
+											</f:fields>
+										</f:FormElement>
+<!-- 									MES V1.5 [End] -->
 
 										<f:FormElement>
 											<f:label>
@@ -69,46 +107,8 @@
 												</Text>
 											</f:fields>
 										</f:FormElement>
-
-										<f:FormElement>
-											<f:label>
-												<Label class="detailLabels" text="{i18nModel>gravity}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
-												</Label>
-											</f:label>
-											<f:fields>
-
-												<Text
-													text="{path: 'operationDisruptionsModel>gravity', formatter: 'airbus.mes.disruptions.Formatter.setGravityText'}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
-												</Text>
-											</f:fields>
-										</f:FormElement>
-
-
-										<f:FormElement>
-											<f:label>
-												<Label class="detailLabels" text="{i18nModel>RootCause}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
-												</Label>
-											</f:label>
-											<f:fields>
-
-												<Text text="{operationDisruptionsModel>RootCause}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
-												</Text>
-											</f:fields>
-										</f:FormElement>
-
-
+										
+										
 										<f:FormElement>
 											<f:label>
 												<Label class="detailLabels" text="{i18nModel>OriginatorGroup}">
@@ -128,25 +128,8 @@
 											</f:fields>
 										</f:FormElement>
 										
-										<f:FormElement>
-											<f:label>
-												<Label class="detailLabels" text="{i18nModel>Issuer}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
-												</Label>
-											</f:label>
-											<f:fields>
-
-												<Text text="{operationDisruptionsModel>OriginatorGroupDesc}">
-
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
-												</Text>
-											</f:fields>
-										</f:FormElement>
-
+										
+										
 										<f:FormElement>
 											<f:label>
 												<Label class="detailLabels" text="{i18nModel>reason}">
@@ -164,8 +147,8 @@
 												</Text>
 											</f:fields>
 										</f:FormElement>
-
-
+										
+										
 										<f:FormElement>
 											<f:label>
 												<Label class="detailLabels" text="{i18nModel>resGroup}">
@@ -183,6 +166,71 @@
 												</Text>
 											</f:fields>
 										</f:FormElement>
+																				
+
+										<f:FormElement>
+											<f:label>
+												<Label class="detailLabels" text="{i18nModel>gravity}">
+													<layoutData>
+														<l:GridData span="L3 M3 S12" />
+													</layoutData>
+												</Label>
+											</f:label>
+											<f:fields>
+
+												<Text
+													text="{path: 'operationDisruptionsModel>gravity', formatter: 'airbus.mes.disruptions.Formatter.setGravityText'}">
+													<layoutData>
+														<l:GridData span="L3 M3 S12" />
+													</layoutData>
+												</Text>
+											</f:fields>
+										</f:FormElement>
+										
+		
+		<!-- 						MES V1.5 [BEG] -->								
+										<f:FormElement>
+											<f:label>
+												<Label class="detailLabels" text="{i18nModel>Resolver}">
+													<layoutData>
+														<l:GridData span="L3 M3 S12" />
+													</layoutData>
+												</Label>
+											</f:label>
+											<f:fields>
+
+												<Text text="{path: 'operationDisruptionsModel>Resolver'}">
+													<layoutData>
+														<l:GridData span="L3 M3 S12" />
+													</layoutData>
+												</Text>
+											</f:fields>
+										</f:FormElement>
+<!-- 									MES V1.5 [End] -->
+
+
+<!--                                       [Del] V1.5 Beg -->
+
+										<f:FormElement>
+											<f:label>
+												<Label class="detailLabels" text="{i18nModel>RootCause}">
+													<layoutData>
+														<l:GridData span="L3 M3 S12" />
+													</layoutData>
+												</Label>
+											</f:label>
+											<f:fields>
+
+												<Text text="{operationDisruptionsModel>RootCause}">
+													<layoutData>
+														<l:GridData span="L3 M3 S12" />
+													</layoutData>
+												</Text>
+											</f:fields>
+										</f:FormElement>
+
+<!--                                       [Del] V1.5 END -->
+																																			
 
 										<f:FormElement>
 											<f:label>
