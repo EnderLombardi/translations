@@ -1,35 +1,5 @@
 "use strict";
-/*if (!Array.prototype.includes) {
-    Array.prototype.includes = function(searchElement  , fromIndex ) {
-        var O = Object(this);
-        var len = parseInt(O.length, 10) || 0;
-        if (len === 0) {
-            return false;
-        }
-        var n = parseInt(arguments[1], 10) || 0;
-        var k;
-        if (n >= 0) {
-            k = n;
-        } else {
-            k = len + n;
-            if (k < 0) {
-                k = 0;
-            }
-        }
-        var currentElement;
-        while (k < len) {
-            currentElement = O[k];
-            if (searchElement === currentElement
-                    || (searchElement !== searchElement && currentElement !== currentElement)) { // NaN
-                                                                                                    // !==
-                                                                                                    // NaN
-                return true;
-            }
-            k++;
-        }
-        return false;
-    };
-}*/
+
 jQuery.sap.declare("airbus.mes.linetracker.util.Formatter");
 airbus.mes.linetracker.util.Formatter = {
 
@@ -42,7 +12,7 @@ airbus.mes.linetracker.util.Formatter = {
         if (taktStatus === "GOOD")
             return "../components/linetracker/images/green.png"
         else if (taktStatus === "BAD")
-            return "../components/linetracker/images/red_new.png"
+            return "../components/linetracker/images/red.png"
         else
             return "../components/linetracker/images/grey.png"
     },
@@ -82,7 +52,7 @@ airbus.mes.linetracker.util.Formatter = {
         if (taktStatus === "OK")
             return "../components/linetracker/images/green.png"
         else if (taktStatus === "KO")
-            return "../components/linetracker/images/red_new.png"
+            return "../components/linetracker/images/red.png"
         else
             return "../components/linetracker/images/grey.png"
     },
