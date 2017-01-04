@@ -1,0 +1,100 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:form="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns="sap.m"
+	controllerName="airbus.mes.resourcepool.views.Search" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="Resource Pool Maintenance" enableScrolling="false">
+
+		<customHeader>
+			<Bar>
+				<contentLeft>
+					<Image src="images/Airbus.jpg" height="60%" />
+				</contentLeft>
+				<contentMiddle>
+					<Title text="{i18nModel>MasterTitle}" titleStyle="H3" />
+				</contentMiddle>
+				<contentRight>
+					<Button id="logout" icon="sap-icon://log" press="onLogout"/>
+				</contentRight>
+			</Bar>
+		</customHeader>
+		<content>
+			<FlexBox width="100%" height="100%" justifyContent="Center"
+				alignItems="Center" direction="Column">
+				<items>
+					<!-- <Panel expanded="true" expandable="false" width="60em" > <content> -->
+					<form:SimpleForm maxContainerCols="1" class="myForm"
+						editable="true" id="searchForm" height="inherit">
+						<form:content>
+							<Label text="{i18nModel>Site}" required="true">
+								<layoutData>
+									<l:ResponsiveFlowLayoutData weight="1" />
+								</layoutData>
+							</Label>
+							<Text id="site" text="CHES">
+								<layoutData>
+									<l:ResponsiveFlowLayoutData weight="3" />
+								</layoutData>
+							</Text>
+							<Label text="{i18nModel>ResourcePool}" required="true">
+								<layoutData>
+									<l:ResponsiveFlowLayoutData weight="5" />
+								</layoutData>
+							</Label>
+							<Input id="resourcePool" showValueHelp="true"
+								liveChange="upperCaseConversion" valueHelpRequest="showValueHelp"
+								submit="onFocusOutOfResourcePool">
+								<layoutData>
+									<l:ResponsiveFlowLayoutData weight="11" />
+								</layoutData>
+							</Input>
+							<Button id="createOrDeleteButton" icon="sap-icon://create"
+								enabled="{path:'i18nModel>ResourcePool',formatter:'util.Formatter.isEnabled'}"
+								press="createOrDeleteResource" class="iconMiddle">
+								<layoutData>
+									<l:ResponsiveFlowLayoutData weight="4" />
+								</layoutData>
+							</Button>
+							<Label text="{i18nModel>Description}" required="true">
+								<layoutData>
+									<l:ResponsiveFlowLayoutData weight="5" />
+								</layoutData>
+							</Label>
+							<Input id="description" value="" editable="{path:'i18nModel>ResourcePool',formatter:'util.Formatter.isEditable'}">
+								<layoutData>
+									<l:ResponsiveFlowLayoutData weight="11" />
+								</layoutData>
+							</Input>
+							<Button icon="sap-icon://save"
+								tooltip="{i18nModel>Save}"
+								enabled="{path:'i18nModel>ResourcePool',formatter:'util.Formatter.isEnabled'}"
+								press="updateResource" class="iconMiddle">
+								<layoutData>
+									<l:ResponsiveFlowLayoutData weight="4" />
+								</layoutData>
+							</Button>
+							<Label text="">
+								<layoutData>
+									<l:ResponsiveFlowLayoutData weight="1" />
+								</layoutData>
+							</Label>
+							<Button text="{i18nModel>Submit}" type="Accept"
+								enabled="true" tap="submitForm">
+								<layoutData>
+									<l:ResponsiveFlowLayoutData weight="25" />
+								</layoutData>
+							</Button>
+
+							<MessageStrip id="messageBox" class="messageStrip"
+								showIcon="true" showCloseButton="true" visible="false" width="100%">
+								<layoutData>
+									<l:ResponsiveFlowLayoutData weight="4" />
+								</layoutData>
+							</MessageStrip>
+						</form:content>
+					</form:SimpleForm>
+
+					<!-- </content> </Panel> -->
+				</items>
+			</FlexBox>
+		</content>
+	</Page>
+</core:View>
