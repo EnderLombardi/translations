@@ -11,7 +11,8 @@
 			},
 			"Row": [
 				{"wo_no":"26547", "op_no":"50002137-1-0-0010","dis_no":"030","dis_des":"test cla","gravity":"1","status":"pending","Count":"2","File":[
-					{"type":"txt", "name":"Disruption.Txt", "src" : "Files/New Text Document.txt"},
+					{"type":"txt", "name":"Disruption.pdf", "src" : "Files/sample.pdf"},
+					{"type":"txt", "name":"Disruption.avi", "src" : "Files/sample.avi"},
 					{"type":"doc", "name":"Disruption.Doc", "src" : "Files/Business Plan Agenda.doc"}]},
 					
 				{"wo_no":"26547", "op_no":"50002137-1-0-0010","dis_no":"031","dis_des":"Piyush","gravity":"2","status":"closed","Count":"2","File":[

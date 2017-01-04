@@ -90,10 +90,16 @@ sap.ui.define([
 		 * Open document in MES Document Viewer
 		 */
 		openDocument: function(oEvent){
-			var url = oEvent.getSource().getCustomData().getValue();
+			var url = oEvent.getSource().getCustomData()[0].getValue();
 			
 			$("#sap-ui-blocklayer-popup").css('zIndex', '-1')
-			$("#"+this.getView().getParent().sId).css('display', 'none');
+			
+			switch(nav.getCurrentPage().sId){
+			case "stationTrackerView":
+				$("#operationDetailPopup--operationDetailPopUp").css('display', 'none');
+			case "disruptiontrackerView":
+				$("#").css('display', 'none');
+			}
 			
 			airbus.mes.shell.util.navFunctions.docViewer(url, airbus.mes.disruptions.attachments.oView.oController.onMESDocViewerClose);
 		},
