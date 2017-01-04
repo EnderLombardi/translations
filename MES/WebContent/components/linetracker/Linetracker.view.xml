@@ -129,7 +129,7 @@
                 </uiTable:Column>
 
                 <uiTable:Column width="44%">
-                    <FlexBox height="2.5rem" alignItems="Center"
+                    <FlexBox id="linetrackerTablePercentage" height="2.5rem" alignItems="Center"
                             justifyContent="SpaceAround">
                             <Text text="10%" />
                             <Text text="20%" />
