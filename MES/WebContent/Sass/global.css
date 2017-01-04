@@ -1389,12 +1389,13 @@ Linetracker View (Main Table)
 #idLinetracker1 .classLineTrackerTable .stationBtns:nth-child(2) { margin-right: 0.5rem !important; }
 #idLinetracker1 .classLineTrackerTable .progressBar { margin-left: 0.15rem !important; }
 #idLinetracker1 .classLineTrackerTable .stationPopoverBtns div span { background-color: #FFFFFF !important; }
-#idLinetracker1 .sapUiTableColHdrScr .sapUiTableColHdr #idLinetracker1--lineTrackerTrendBorder { border-left: 1px solid rgba(0, 0, 0, 0.42); background-color: #D5F1F8; }
-#idLinetracker1 .sapUiTableColHdrScr .sapUiTableColHdr #idLinetracker1--lineTrackerTrendBorder + div + div { border-right: 1px solid rgba(0, 0, 0, 0.42); background-color: #D5F1F8; }
+#idLinetracker1 .sapUiTableColHdrScr .sapUiTableColHdr #idLinetracker1--lineTrackerTrendBorder { border-left: 1px solid #60B5CD; background-color: #D5F1F8; }
+#idLinetracker1 .sapUiTableColHdrScr .sapUiTableColHdr #idLinetracker1--lineTrackerTrendBorder + div + div { border-right: 1px solid #60B5CD; background-color: #D5F1F8; }
 #idLinetracker1 .sapUiTableColHdrScr .sapUiTableColHdr #idLinetracker1--lineTrackerTrendBorder + div + div + div + div { background-color: #D5F1F8; }
-#idLinetracker1 .sapUiTableColHdrScr .sapUiTableColHdr #idLinetracker1--lineTrackerTrendBorder + div + div + div + div + div + div { border-right: 1px solid rgba(0, 0, 0, 0.42); background-color: #D5F1F8; }
+#idLinetracker1 .sapUiTableColHdrScr .sapUiTableColHdr #idLinetracker1--lineTrackerTrendBorder + div + div + div + div + div + div { border-right: 1px solid #60B5CD; background-color: #D5F1F8; }
 #idLinetracker1 .sapUiTableColHdrScr .sapUiTableColHdr #idLinetracker1--lineTrackerTrendBorder + div + div + div + div + div + div + div + div { background-color: #D5F1F8; }
 #idLinetracker1 .sapUiTableColHdrScr .sapUiTableColHdr #idLinetracker1--lineTrackerTrendBorder + div + div + div + div + div + div + div + div + div + div { background-color: #D5F1F8; }
+#idLinetracker1 .headerTextTableLinetracker { color: #1A6980; font-weight: 600; }
 #idLinetracker1 .sapUiTableCnt { border-top: transparent; }
 #idLinetracker1 .sapMIBar .sapMTB .sapMTB-Transparent-CTX .sapMTBInactive .sapMTBNewFlex { padding-left: 0; margin-left: 0; }
 #idLinetracker1 .lineTrackerTitle { margin: 1rem !important; font-style: normal; font-weight: 500; font-stretch: condensed; font-size: 1.2rem !important; color: #74d2e7 !important; font-family: Arial,Helvetica,sans-serif; }

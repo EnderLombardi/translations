@@ -164,17 +164,17 @@ Linetracker View (Main Table)
     .sapUiTableColHdrScr{
         .sapUiTableColHdr{
             #idLinetracker1--lineTrackerTrendBorder{
-                border-left: 1px solid rgba(0, 0, 0, 0.42);
+                border-left: 1px solid #60B5CD;
                 background-color: #D5F1F8;
                 &+ div{
                     &+ div{
-                        border-right: 1px solid rgba(0, 0, 0, 0.42);
+                        border-right: 1px solid #60B5CD;
                         background-color: #D5F1F8;
                         &+div + div{
                             background-color: #D5F1F8;
                         }
                         &+ div + div + div + div {
-                            border-right: 1px solid rgba(0, 0, 0, 0.42);
+                            border-right: 1px solid #60B5CD;
                             background-color: #D5F1F8;
                             &+div + div {
                                 background-color: #D5F1F8;
@@ -187,6 +187,10 @@ Linetracker View (Main Table)
                 }
             }
         }
+    }
+    .headerTextTableLinetracker{
+        color: #1A6980;
+        font-weight: 600;
     }
     .sapUiTableCnt{
         border-top: transparent;
