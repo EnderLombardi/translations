@@ -1,0 +1,15 @@
+{
+	"id": "airbus.mes.settings.SettingsScreenComponent",
+    "name": "airbus.mes.settings.SettingsScreenComponent",
+    "version": "0.1.0",
+    "description": "Settings Screen Component",
+    "keywords": [
+        "view" 
+    ],
+    "dependencies": {
+	    "libs": {
+	        "sap.ui.core.UIComponent": {},
+	        "sap.ui.base.Event":{}
+	    }
+    }
+}

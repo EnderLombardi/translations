@@ -284,6 +284,22 @@ airbus.mes.shell.util.navFunctions = {
         airbus.mes.disruptiontracker.kpi.ModelManager.loadDisruptionKPIModel();
         nav.to(airbus.mes.disruptiontracker.kpi.oView.getId());
     },
+    
+
+    docViewer: function(fileURL){
+    	if (airbus.mes.disruptiontracker === undefined
+				|| airbus.mes.disruptiontracker.oView === undefined) {
+
+			jQuery.sap.registerModulePath("airbus.mes.docviewer", "../components/docviewer");
+			sap.ui.getCore().createComponent({
+				name : "airbus.mes.docviewer",
+			});
+			nav.addPage(airbus.mes.docviewer.oView);
+		}
+
+    	PDFTron.WebViewer.Options({initialDoc: fileURL});
+		
+    },
 
     worktracker : function() {
 
@@ -378,4 +394,5 @@ airbus.mes.shell.util.navFunctions = {
         // Navigate
         nav.to(airbus.mes.worktracker.detail.oView.getId());
     }
+    
 };
