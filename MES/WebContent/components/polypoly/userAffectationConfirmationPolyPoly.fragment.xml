@@ -5,8 +5,8 @@
 			<Text id="messageAffectConfirmPolyPoly" text=""></Text>
 		</content>
 		<buttons>
-			<Button text="{PolypolyI18n>Confirm}" press="afterConfirmPress" />
-			<Button text="{PolypolyI18n>Cancel}" press="onCancel" />
+			<Button text="{PolypolyI18n>Confirm}" press="afterConfirmPress" icon="sap-icon://accept" />
+			<Button text="{PolypolyI18n>Cancel}" press="onCancel" icon="sap-icon://decline" />
 		</buttons>
 	</Dialog>
 </core:FragmentDefinition>

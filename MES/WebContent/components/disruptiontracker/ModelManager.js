@@ -69,5 +69,6 @@ airbus.mes.disruptiontracker.ModelManager = {
 			// Set Col Span
 			noDataRow.colSpan = colCount - 1;
 		}
+		
 	}
 }

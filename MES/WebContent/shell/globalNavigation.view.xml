@@ -14,7 +14,7 @@
 								<Label text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/lineDescription', formatter : 'airbus.mes.shell.util.Formatter.stationTrackerLine' }" class="pageWelcome sapUiTinyMarginBeginEnd" />					
 					       	<ToolbarSpacer />	                   
 							<Button id="refreshTime"  icon="sap-icon://refresh" press="refreshbtn" text="" visible="false" enabled="false" type="Transparent"></Button> 
-							<Button id="localDELog" press="logOut" text="Remove Cookie" type="Transparent"></Button>                         
+							<Button id="localDELog" press="logOut" text="{ShellI18n>Cookie}" type="Transparent"></Button>                         
                          	 <Select id="SelectLanguage" class="sapUiTinyMarginBeginEnd" change="onChangeLanguage"> 
 	                           		<core:Item text="English" key="en"/>
 	                           		<core:Item text="Deutsch" key="de"/>
@@ -22,10 +22,11 @@
 	                        	   <core:Item text="Spanish" key="sp"/>                                                      
                            	</Select>
                            	<Button id="informationButton" icon="sap-icon://message-information" type="Transparent" press="onInformation" visible="false"  class="whiteColor whiteButton" />
-                           	<Button id="homeButton" icon="sap-icon://home" type="Transparent" press="goToHome" visible="false"  class="whiteColor whiteButton" />
+                           	<Button id="homeButton" icon="sap-icon://home" type="Transparent" tooltip="{ShellI18n>Home}" press="goToHome" visible="false"  class="whiteColor whiteButton" />
                           	<!--  <Button id="myProfile" icon="sap-icon://account" type="Transparent" press="goToMyProfile" visible="true"/> -->
                             <Button id="settingsButton"
                                    type="Transparent" 
+                                   tooltip="{ShellI18n>Settings}"
                                    icon="sap-icon://action-settings" 
                                    class="whiteColor whiteButton" 
                                    press="openSettingPopup"></Button>

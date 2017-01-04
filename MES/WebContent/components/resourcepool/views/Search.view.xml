@@ -64,6 +64,7 @@
 								</layoutData>
 							</Input>
 							<Button icon="sap-icon://save"
+								tooltip="{i18nModel>Save}"
 								enabled="{path:'i18nModel>ResourcePool',formatter:'util.Formatter.isEnabled'}"
 								press="updateResource" class="iconMiddle">
 								<layoutData>

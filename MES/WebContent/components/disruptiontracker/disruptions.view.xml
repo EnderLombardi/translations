@@ -55,7 +55,7 @@
                     </ComboBox>
                     <!-- <SearchField width="13rem" placeholder="{disruptiontrackerI18n>search}" /> -->
                     <ToolbarSpacer />
-                    <Button id="onDisruptionTableSettings" type="Transparent" press="onDisruptionTableSettings" icon="sap-icon://drop-down-list" />
+                    <Button id="onDisruptionTableSettings" type="Transparent" press="onDisruptionTableSettings" icon="sap-icon://drop-down-list" tooltip="{disruptiontrackerI18n>disruptionFilter}"/>
 
                       <Button id="gotoDisruptionKpi" icon="sap-icon://area-chart"
                         text="{disruptiontrackerI18n>disruptionKPI}" press="onPressDisruptionKPI"  visible="false"/>
@@ -124,8 +124,8 @@
                     <cells>
                         <Text text="{disruptionsTrackerModel>WorkOrder} / {path: 'disruptionsTrackerModel>Operation', formatter: 'airbus.mes.disruptiontracker.Formatter.setOperationText'}" />
                         <HBox>
-                            <core:Icon src="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setIcon'}" color="{parts: [ {path: 'disruptionsTrackerModel>Status'}, {path: 'disruptionsTrackerModel>Gravity'}, {path: 'disruptionsTrackerModel>Severity'} ], formatter: 'airbus.mes.disruptiontracker.Formatter.setGravityColor'}" class="sapUiSmallMarginEnd" />
-                            <Text text="{parts: [ {path: 'disruptionsTrackerModel>Status'}, {path: 'disruptionsTrackerModel>Gravity'}, {path: 'disruptionsTrackerModel>Severity'} ], formatter: 'airbus.mes.disruptiontracker.Formatter.setText'}" />
+                            <core:Icon src="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setIcon'}" color="{parts: [ {path: 'disruptionsTrackerModel>Status'}, {path: 'disruptionsTrackerModel>Gravity'}, {path: 'disruptionsTrackerModel>gravity'} ], formatter: 'airbus.mes.disruptiontracker.Formatter.setGravityColor'}" class="sapUiSmallMarginEnd" />
+                            <Text text="{parts: [ {path: 'disruptionsTrackerModel>Status'}, {path: 'disruptionsTrackerModel>Gravity'}, {path: 'disruptionsTrackerModel>gravity'} ], formatter: 'airbus.mes.disruptiontracker.Formatter.setText'}" />
                         </HBox>
                         <Text text="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setDisruptionTrackerStatus'}" />
                         <Text text="{disruptionsTrackerModel>Category}" />

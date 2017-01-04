@@ -841,7 +841,7 @@ sap.ui
                                     "searchResourcePool--description")
                                     .setValue("");
                             oButton.setIcon("sap-icon://create");
-                            oButton.setTooltip("create");
+                            oButton.setTooltip(airbus.mes.resourcepool.oView.getModel("i18nModel").getProperty("CreateTeamButton"));
                             if(airbus.mes.resourcepool.util.Formatter.isEnabled)
                                 oSaveButton.setEnabled(false);
                             return;
@@ -898,7 +898,7 @@ sap.ui
                                     "searchResourcePool--description")
                                     .setValue("");
                             oButton.setIcon("sap-icon://create");
-                            oButton.setTooltip("create");
+                            oButton.setTooltip(airbus.mes.resourcepool.oView.getModel("i18nModel").getProperty("CreateTeamButton"));
                             if(airbus.mes.resourcepool.util.Formatter.isEnabled)
                                 oSaveButton.setEnabled(false);
                             return false;
@@ -911,7 +911,7 @@ sap.ui
                                     "searchResourcePool--description")
                                     .setValue(value);
                             oButton.setIcon("sap-icon://delete");
-                            oButton.setTooltip("delete");
+                            oButton.setTooltip(airbus.mes.resourcepool.oView.getModel("i18nModel").getProperty("DeleteButton"));
                             if(airbus.mes.resourcepool.util.Formatter.isEnabled)
                                 oSaveButton.setEnabled(true);
                             return true;
@@ -995,10 +995,10 @@ sap.ui
                         /* set create or delete buton based on some conditions */
                         if (!oResourcePool) {
                             oButton.setIcon("sap-icon://create");
-                            oButton.setTooltip("create");
+                            oButton.setTooltip(airbus.mes.resourcepool.oView.getModel("i18nModel").getProperty("CreateTeamButton"));
                         } else {
                             oButton.setIcon("sap-icon://delete");
-                            oButton.setTooltip("delete");
+                            oButton.setTooltip(airbus.mes.resourcepool.oView.getModel("i18nModel").getProperty("DeleteButton"));
                         }
                         /* clear search filter for each case */
                         oEvt.getSource().getBinding("items").filter([]);
@@ -1055,7 +1055,7 @@ sap.ui
                             /* if no error is returned, set button to delete */
                             if (anyError == 0) {
                                 oButton.setIcon("sap-icon://delete");
-                                oButton.setTooltip("delete");
+                                oButton.setTooltip(airbus.mes.resourcepool.oView.getModel("i18nModel").getProperty("DeleteButton"));
                             }
                             /* if delete button is clicked */
                         } else if (oEvent.getSource().getIcon() === "sap-icon://delete") {
@@ -1349,7 +1349,7 @@ sap.ui
                         if (anyError == 0) {
                             var oButton = sap.ui.getCore().byId("searchResourcePool--createOrDeleteButton");
                             oButton.setIcon("sap-icon://create");
-                            oButton.setTooltip("create");
+                            oButton.setTooltip(airbus.mes.resourcepool.oView.getModel("i18nModel").getProperty("CreateTeamButton"));
 
                             if (airbus.mes.resourcepool.util.ModelManager.resourceName == sap.ui
                                     .getCore().byId("searchResourcePool--resourcePool").getValue()) {

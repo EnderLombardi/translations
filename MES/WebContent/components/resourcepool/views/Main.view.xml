@@ -152,10 +152,10 @@
                     <ToolbarSpacer />
 
                     <Button icon="sap-icon://save" press="saveChangesToResourcePool"
-                        type="Transparent" class="sapUiSmallMarginBegin"
+                        type="Transparent" class="sapUiSmallMarginBegin" tooltip="{i18nModel>SaveButton}"
                         enabled="{path:'i18nModel>AvailableUsers',formatter:'airbus.mes.resourcepool.util.Formatter.saveAllowed'}" />
                     <Button icon="sap-icon://sys-help" press="showHelp" type="Transparent"
-                        class="sapUiSmallMarginBegin" />
+                        class="sapUiSmallMarginBegin" tooltip="{i18nModel>Help}"/>
                 </content>
             </Toolbar>
             <NavContainer id="MainViewNavContainer" height="95%" class="WhiteBG" afterNavigate="afterNavigate">

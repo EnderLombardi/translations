@@ -3,7 +3,7 @@
 	xmlns:u="sap.ui.unified" xmlns:table="sap.ui.table">
 	<Dialog id="infoUpdate12" stretchOnPhone="false" showHeader="true" title="{infoModel>/name}">
 		<buttons>
-			<Button text="{PolypolyI18n>OK}" press="onClickInfoUpdate12" />
+			<Button text="{PolypolyI18n>OK}" press="onClickInfoUpdate12" icon="sap-icon://accept" />
 		</buttons>
 		<content>
 			<VBox alignItems="Center">

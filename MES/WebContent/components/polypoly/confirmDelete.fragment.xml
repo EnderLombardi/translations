@@ -4,10 +4,10 @@
     <Dialog id="confirmDeleteDialog" title="{PolypolyI18n>DeleteColumn}"
         stretchOnPhone="true" state="Warning" type="Message">
         <beginButton>
-            <Button text="{PolypolyI18n>Yes}" press="onConfirmDelete" />
+            <Button text="{PolypolyI18n>Yes}" press="onConfirmDelete" icon="sap-icon://accept" />
         </beginButton>
         <endButton>
-            <Button text="{PolypolyI18n>No}" press="onCancelDelete" type="Transparent"/>
+            <Button text="{PolypolyI18n>No}" press="onCancelDelete" type="Transparent" icon="sap-icon://decline" />
         </endButton>
         <content>
             <Text text="{PolypolyI18n>DeleteColumnConfirm}" />

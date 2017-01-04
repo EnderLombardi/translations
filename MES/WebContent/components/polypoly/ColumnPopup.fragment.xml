@@ -5,7 +5,7 @@
         <buttons>
             <Button text="{PolypolyI18n>Save}" press="onSaveColumnPopup"
                 type="Transparent" icon="sap-icon://save" />
-            <Button text="{PolypolyI18n>Cancel}" press="onCancelColumnPopup" />
+            <Button text="{PolypolyI18n>Cancel}" press="onCancelColumnPopup" icon="sap-icon://decline"/>
         </buttons>
         <content>
             <f:SimpleForm maxContainerCols="1" editable="true"
@@ -28,7 +28,7 @@
                     <Label class="" text="{PolypolyI18n>QualityAuthorisation}" />
                     <VBox>
                         <items>
-                            <SearchField id="searchField" liveChange="onSearch"
+                            <SearchField id="searchField" liveChange="onSearch" placeholder="{PolypolyI18n>Search}"
                                 width="100%" />
                             <table:Table rows="{ path: 'columnModel>/qa' }" id="oQATable"
                                 selectionMode="None" selectionBehavior="RowSelector"

@@ -4,10 +4,10 @@
     <Dialog id="confirmErase" title="{PolypolyI18n>EraseTitle}"
         stretchOnPhone="true" state="Warning" type="Message">
         <beginButton>
-            <Button text="{PolypolyI18n>Yes}" press="onConfirmErase" />
+            <Button text="{PolypolyI18n>Yes}" press="onConfirmErase" icon="sap-icon://accept" />
         </beginButton>
         <endButton>
-            <Button text="{PolypolyI18n>No}" press="onCancelErase" type="Transparent"/>
+            <Button text="{PolypolyI18n>No}" press="onCancelErase" type="Transparent" icon="sap-icon://decline" />
         </endButton>
         <content>
             <Text text="{PolypolyI18n>EraseConfirm}" />

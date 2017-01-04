@@ -26,7 +26,7 @@
 					<Label class="QA-text-style" text = "Side 4"/>
 					<ToolbarSpacer />
 					<SearchField id="polypolySearchField" width="20%"
-						placeholder="Resource Pool" enableSuggestions="true" suggest="onRPSuggest"
+						placeholder="{PolypolyI18n>ResourcePool}" enableSuggestions="true" suggest="onRPSuggest"
 						liveChange="onRPSuggest" search="onRPSearch" suggestionItems="{rpModel>/rp}">
 						<suggestionItems>
 							<SuggestionItem text="{rpModel>rp_id}"

@@ -21,7 +21,7 @@
 							<content>
 								<CheckBox id="allAvailableUsers" select="onSelectAllUsers"
 									enabled="{path:'i18nModel>ResourcePool',formatter:'airbus.mes.resourcepool.util.Formatter.isEnabled'}" />
-								<SearchField id="searchAvailableUsers" liveChange="onSearchUsers"
+								<SearchField id="searchAvailableUsers" liveChange="onSearchUsers" placeholder="{i18nModel>searchBox}"
 									width="100%" />
 							</content>
 						</Toolbar>
@@ -83,8 +83,8 @@
 				</Panel>
 				<VBox class="shiftButtons" justifyContent="Center" alignItems="Center">
 					<items>
-						<Button icon="sap-icon://navigation-right-arrow" press="assignUsers" />
-						<Button icon="sap-icon://navigation-left-arrow" press="unassignUsers" />
+						<Button icon="sap-icon://navigation-right-arrow" press="assignUsers" tooltip="{i18nModel>Assign}" />
+						<Button icon="sap-icon://navigation-left-arrow" press="unassignUsers" tooltip="{i18nModel>Remove}" />
 					</items>
 				</VBox>
 				<Panel class="panelBorder" expanded="true" expandable="false"
@@ -104,7 +104,7 @@
 							<content>
 								<CheckBox id="allAssignedUsers" select="onSelectAllUsers"
 									enabled="{path:'i18nModel>ResourcePool',formatter:'airbus.mes.resourcepool.util.Formatter.isEnabled'}" />
-								<SearchField id="searchAssignedUsers" liveChange="onSearchUsers"
+								<SearchField id="searchAssignedUsers" liveChange="onSearchUsers" placeholder="{i18nModel>searchBox}"
 									width="100%" />
 							</content>
 						</Toolbar>

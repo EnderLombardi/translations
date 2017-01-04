@@ -1,6 +1,6 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
 	<SelectDialog id="selectDialog" noDataText="{i18nModel>NoData}" title="{i18nModel>ValueHelpTitle}"
-		search="onSearch" liveChange="onSearch" confirm="handleSelectedValue" cancel="handleCloseValueHelp"
+		search="onSearch" liveChange="onSearch" confirm="handleSelectedValue" cancel="handleCloseValueHelp" 
 		items="{ValueHelpModel>/Rowsets/Rowset/0/Row}">
 		<StandardListItem title="{ValueHelpModel>NAME}" description="{ValueHelpModel>DESCRIPTION}" tooltip="{ValueHelpModel>ID}"
 			type="Active" />

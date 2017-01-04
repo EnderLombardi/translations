@@ -79,7 +79,7 @@
 								data="{TimeLostperAttribute>/operation}">
 								<viz.data:dimensions>
 									<viz.data:DimensionDefinition
-										axis="1" name="{i18n>Operation}"
+										axis="1" name="{i18n>operation}"
 										value="{ path: 'TimeLostperAttribute>name' , formatter: 'airbus.mes.disruptiontracker.Formatter.formatOperation'}" />
 								</viz.data:dimensions>
 								<viz.data:measures>
@@ -90,7 +90,7 @@
 						</viz:dataset>
 						<viz:feeds>
 							<viz.feeds:FeedItem uid="axisLabels" type="Dimension"
-								values="{i18n>Operation}" />
+								values="{i18n>operation}" />
 							<viz.feeds:FeedItem id='valueAxisFeed3' uid="primaryValues"
 								type="Measure" values="{i18n>TimeLost}" />
 						</viz:feeds>

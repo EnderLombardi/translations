@@ -3,8 +3,8 @@
 	xmlns:u="sap.ui.unified" xmlns:table="sap.ui.table">
 	<Dialog id="infoUpdate23" stretchOnPhone="true" state="Warning" title="Warning">
 		<buttons>
-			<Button text="{PolypolyI18n>Continue}" press="onContinueInfoUpdate23" />
-			<Button text="{PolypolyI18n>Cancel}" press="onCancelInfoUpdate23" />
+			<Button text="{PolypolyI18n>Continue}" press="onContinueInfoUpdate23" icon="sap-icon://accept" />
+			<Button text="{PolypolyI18n>Cancel}" press="onCancelInfoUpdate23" icon="sap-icon://decline" />
 		</buttons>
 		<content>
 			<VBox alignItems="Center">
