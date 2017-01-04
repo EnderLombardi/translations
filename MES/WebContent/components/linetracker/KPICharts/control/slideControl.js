@@ -79,7 +79,7 @@ sap.ui.core.Control.extend("airbus.mes.linetracker.KPICharts.control.slideContro
 	openNavigation : function(oEvent) {
 
 		//document.getElementById("main").style.width = "80%";
-		this.setNavSize("30%");
+		this.setNavSize("26%");
 		this.setState(true);
 		//$("#blackOverlay").removeClass("hide");
 	},
