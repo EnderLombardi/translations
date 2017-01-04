@@ -358,12 +358,15 @@ sap.ui
                             if (el.MessageRef == sCurrMessageRef)
                                 disruptionData.Rowsets.Rowset[1].Row.push(el);
                         });
-                        //TODO for check if it works on setting model in core
+                        
                         /*airbus.mes.disruptions.oView.viewDisruption.getModel(
                                 "operationDisruptionsModel").setData(
                                 disruptionData);*/
                         
-
+                        /**
+                         * MES V1.5 Navigate to disruption Detail Page
+                         * [Begin]
+                         */
 
                         if (sap.ui.Device.system.desktop) {
                             airbus.mes.shell.util.navFunctions
@@ -371,9 +374,7 @@ sap.ui
                                             "globalNavView--navCont"), 0, 0, 0,
                                             0);
 
-                            /**
-                             * MES V1.5 Navigate to disruption Detail Page
-                             */
+                         
                             sap.ui.getCore().getModel("operationDisruptionsModel").setData(disruptionData);
                             this.disruptionsCustomDataFlag = false;
                             var oModel = sap.ui.getCore().getModel(
@@ -396,6 +397,7 @@ sap.ui
                             airbus.mes.shell.oView.byId('refreshTime')
                                     .setVisible(false); // ++ MJ
                             this.setDataForViewDisruptionDetail();
+                            /***********************MES V1.5 [End]*********************/
 
                         } else {
 

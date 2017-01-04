@@ -9,9 +9,9 @@
 
 				<core:Title text="" />
 				<Label text="{i18nModel>Description}" />
-				<Input id="description" maxLength="40" enabled="{setEditable>/editable}" />
+				<Input id="description" maxLength="40" enabled="false" />
 				<Label text="{i18nModel>5Mclass}" />
-				<Select id="5Mclass" enabled="{setEditable>/editable}"
+				<Select id="5Mclass" enabled="false"
 					change="onSelectionChange" forceSelection="false">
 					<items>
 						<core:Item text="{i18nModel>5Mclass_01}" key="{i18nModel>5Mclass_01}" />
@@ -26,10 +26,10 @@
 				<Label text="{i18nModel>stMaterial}" />
 				<MultiInput id="materials" valueHelpRequest="onMaterialValueHelpRequest"
 					tokenChange="onMaterialTokenChange" liveChange="onMaterialTokenChange"
-					enabled="{setEditable>/editable}">
+					enabled="false">
 				</MultiInput>
 				<Label text="{i18nModel>issuer}" />
-				<Select enabled="{setEditable>/editable}">
+				<Select enabled="false">
 					<items>
 						<core:Item text="vinay" />
 					</items>
@@ -41,7 +41,7 @@
 
 				<core:Title text="" />
 				<Label text="{i18nModel>category}" />
-				<Select id="selectCategory" enabled="{setEditable>/editable}"
+				<Select id="selectCategory" enabled="false"
 					items="{disruptionCategoryModel>/Rowsets/Rowset/1/Row}" change="onSelectionChange"
 					forceSelection="false">
 					<items>
@@ -52,10 +52,10 @@
 				<Label text="{i18nModel>Jigtool}" />
 				<MultiInput id="jigtools" valueHelpRequest="onJigToolValueHelpRequest"
 					tokenChange="onJigToolTokenChange" liveChange="onJigToolTokenChange"
-					enabled="{setEditable>/editable}" />
+					enabled="false" />
 				<Label text="{i18nModel>issuerGroup}" />
 				<Select id="selectOriginator" selectedKey="" forceSelection="false"
-					items="{disruptionCustomData>/Rowsets/Rowset/0/Row}" enabled="{setEditable>/editable}">
+					items="{disruptionCustomData>/Rowsets/Rowset/0/Row}" enabled="false">
 					<items>
 						<core:Item text="{disruptionCustomData>group_desc}" key="{disruptionCustomData>group_name}" />
 					</items>
@@ -70,7 +70,7 @@
 				<core:Title text="" />
 				<Label text="{i18nModel>reason}" />
 				<Select id="selectreason" items="{disruptionCustomData>/Rowsets/Rowset/1/Row}"
-					change="onSelectionChange" forceSelection="false" enabled="{setEditable>/editable}">
+					change="onSelectionChange" forceSelection="false" enabled="false">
 					<items>
 						<core:Item text="{disruptionCustomData>Reason}" key="{disruptionCustomData>Reason}" />
 					</items>
@@ -92,7 +92,7 @@
 
 				<Label text="{i18nModel>TimeLost}" />
 				<Input placeholder="" id="timeLost" type="Number" value=""
-					enabled="{setEditable>/editable}">
+					enabled="false">
 				</Input>
 
 
@@ -100,7 +100,7 @@
 
 				<core:Title text="" />
 				<Label text="{i18nModel>processSeverity}" />
-				<Select id="gravity" selectedKey="1" enabled="{setEditable>/editable}">
+				<Select id="gravity" selectedKey="1" enabled="false">
 					<items>
 						<core:Item text="{i18nModel>NotBlocked}" key="1" />
 						<core:Item text="{i18nModel>Disturbed}" key="2" />
@@ -111,7 +111,7 @@
 				</Label>
 				<DatePicker id="expectedDate" displayFormat="short"
 					value="{path: 'DisruptionDetailModel>/RequiredFixBy', formatter: 'airbus.mes.disruptions.Formatter.getDate'}"
-					change="onExpectedDateChange" enabled="{setEditable>/editable}">
+					change="onExpectedDateChange" enabled="false">
 					<layoutData>
 						<l:GridData span="L7 M7 S7" />
 					</layoutData>
@@ -119,7 +119,7 @@
 				<TimePicker id="expectedTime" displayFormat="HH:mm"
 					valueFormat="HH:mm"
 					value="{path: 'DisruptionDetailModel>/RequiredFixBy', formatter: 'airbus.mes.disruptions.Formatter.getTime'}"
-					change="onExpectedDateChange" enabled="{setEditable>/editable}">
+					change="onExpectedDateChange" enabled="false">
 					<layoutData>
 						<l:GridData span="L5 M5 S5" />
 					</layoutData>
@@ -145,7 +145,7 @@
 				<DatePicker id="promisedDate" valueFormat="yyyy-MM-dd"
 					displayFormat="short"
 					value="{path: 'DisruptionDetailModel>/PromisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}"
-					enabled="{setEditable>/editable}">
+					enabled="false">
 					<layoutData>
 						<l:GridData span="L7 M7 S7" />
 					</layoutData>
@@ -153,7 +153,7 @@
 				<TimePicker id="promisedTime" displayFormat="HH:mm"
 					valueFormat="HH:mm:ss"
 					value="{path: 'DisruptionDetailModel>/PromisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}"
-					enabled="{setEditable>/editable}">
+					enabled="false">
 					<layoutData>
 						<l:GridData span="L5 M5 S5" />
 					</layoutData>
@@ -162,7 +162,7 @@
 
 				<core:Title text="" />
 				<Label text="{i18nModel>Gravity}" />
-				<Select id="severity" selectedKey="1" enabled="{setEditable>/editable}">
+				<Select id="severity" selectedKey="1" enabled="false">
 					<items>
 						<core:Item text="{i18nModel>NotBlocked}" key="1" />
 						<core:Item text="{i18nModel>Disturbed}" key="2" />
@@ -170,7 +170,7 @@
 					</items>
 				</Select>
 				<Label text="{i18nModel>EsclationLevel}" />
-				<Select id="esclationLevel" enabled="{setEditable>/editable}"
+				<Select id="esclationLevel" enabled="false"
 					selectedKey="">
 					<items>
 						<core:Item text="{i18nModel>NotEscalated}" key="1" />
@@ -184,7 +184,7 @@
 				<core:Title text="" />
 				<Label text="{i18nModel>resolverGroup}" />
 				<Select id="selectResponsible" items="{disruptionCategoryModel>/Rowsets/Rowset/0/Row}"
-					change="onSelectionChange" forceSelection="false" enabled="{setEditable>/editable}">
+					change="onSelectionChange" forceSelection="false" enabled="false">
 					<items>
 						<core:Item text="{disruptionCategoryModel>ResponsibleGroupDesc}"
 							key="{disruptionCategoryModel>ResponsibleGroup}" />
@@ -192,12 +192,12 @@
 				</Select>
 				<Label text="{i18nModel>dateOfEsclation}" />
 				<DatePicker displayFormat="short"
-					value="{path: 'DisruptionDetailModel>/EscalationDateTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}" enabled="{setEditable>/editable}" >
+					value="{path: 'DisruptionDetailModel>/EscalationDateTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}" enabled="false" >
 					<layoutData>
 						<l:GridData span="L7 M7 S7" />
 					</layoutData>
 				</DatePicker>
-				<TimePicker  valueFormat="HH:mm" enabled="{setEditable>/editable}"
+				<TimePicker  valueFormat="HH:mm" enabled="false"
 					value="{path: 'DisruptionDetailModel>/EscalationDateTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}"
 					displayFormat="HH:mm">
 					<layoutData>
@@ -209,7 +209,7 @@
 
 				<core:Title text="" />
 				<Label text="{i18nModel>Resolver}" />
-				<Select enabled="{setEditable>/editable}">
+				<Select enabled="false">
 					<items>
 						<core:Item text="J.carter" />
 					</items>
@@ -217,7 +217,7 @@
 				<Label text="{i18nModel>rootCause}" />
 				<Select id="selectRootCause" selectedKey="" forceSelection="false"
 					items="{disruptionCustomData>/Rowsets/Rowset/1/Row}" change="onSelectionChange"
-					enabled="{setEditable>/editable}">
+					enabled="false">
 					<items>
 						<core:Item text="{disruptionCustomData>RootCause}" key="{disruptionCustomData>RootCause}" />
 					</items>
