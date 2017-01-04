@@ -58,6 +58,10 @@ sap.ui
 
                         // Navigation to Status every time pop-up is opened
                         this.nav.to(airbus.mes.operationdetail.status.oView.getId());
+                        
+                        // Set button 
+                        airbus.mes.operationdetail.status.oView.oController.operationIsActive();
+                        
                         this.getView().byId("opDetailSegmentButtons").setSelectedButton(
                         this.getView().byId("opDetailSegmentButtons").getButtons()[0].sId);
 
@@ -66,7 +70,7 @@ sap.ui
                         this.getView().byId("opDetailExpandButton").setVisible(true);
                         this.getView().byId("opDetailCloseButton").setVisible(false);
                         this.getView().byId("operationDetailPanel").setExpanded(false);
-                       
+                        
                         var oSwitchButton = this.getView().byId("switchOperationModeBtn");
                         if (oSwitchButton.getState() == true) {
 //                          Define visibility for header sections
@@ -265,6 +269,7 @@ sap.ui
                         //case "reschedulePage--reschedulePage":
                         // Hide buttons
                         sap.ui.getCore().byId("operationDetailPopup--btnReschedule").setVisible(false);
+                        
                     },
 
                     renderViews : function(oEvent) {

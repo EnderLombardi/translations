@@ -544,24 +544,52 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
 		var aModel = airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0];
 		var sPreviousStarted = aModel.previously_start;
 		var sStatus = aModel.realStatus;
-		//var sProgress = aModel.progress;
 		var sPaused = aModel.paused;
 		
-		// Operation is started
-		if ( sPreviousStarted === "true" ) {
-			this.setProgressScreenBtn( true, false, true );				
-		}
 		
-		// Operation is paused
-		if ( sPaused === "---" && sPreviousStarted === "true" ) {
-			this.setProgressScreenBtn( false, true, false );
-		}
+//		// Operation is started
+//		if ( sPreviousStarted === "true" ) {
+//			this.setProgressScreenBtn( true, false, true );				
+//		}
+//		
+//		// Operation is paused
+//		if ( sPaused === "---" && sPreviousStarted === "true" ) {
+//			this.setProgressScreenBtn( false, true, false );
+//		}
+//		
+//		// Operation is not started
+//		if (  sPreviousStarted === "false" ) {	
+//			this.setProgressScreenBtn( false, true, false );				
+//		}
 		
-		// Operation is not started
-		if (  sPreviousStarted === "false" ) {	
-			this.setProgressScreenBtn( false, true, false );				
-		}
+		switch	(sPreviousStarted) {
 		
+		case "true":
+			
+			switch	(sPaused) {
+			
+			case "---":
+				// Operation is paused				
+				this.setProgressScreenBtn( false, true, false );
+				break;
+				
+			default :
+				// Operation is started				
+				this.setProgressScreenBtn( true, false, true );		
+				break;						
+			}
+						
+			break;
+		case "false":
+
+			this.setProgressScreenBtn( false, true, false );	
+			break;			
+		default :
+		
+
+			break;			
+		}
+
 		// Operation is complete
 		if ( sStatus === "0" ) {	
 			//No action available on complete status
