@@ -4,12 +4,16 @@ jQuery.sap.declare("airbus.mes.docviewer.ModelManager")
 
 airbus.mes.docviewer.ModelManager = {
 	
-	oViewerElement: undefined,
-	sViewerElementId: undefined,
+	oContainer: undefined,		// UI5 Object where PDF Tron is placed
+	oViewerElement: undefined, // Object containing DOM element where PDF Tron is placed
 	
-	WebViewer: undefined,
+	WebViewer: undefined,  // Object for PDF Tron Web Viewer
 
 	onCloseFunction : undefined,
+	
+	/******** Variables for Data/ File Path ******/
+	fileURL: undefined,
+	/*********************************************/
 
 	init : function(core) {
 
@@ -51,19 +55,18 @@ airbus.mes.docviewer.ModelManager = {
 
 	},
 	
-
 	/********************************
-	 * Open file 
+	 * Open PDF via URL
 	 */
 	openDocumentByURL: function(){
 		// Firstly - Empty the container
-		this.oViewerElement.removeAllItems()
+		airbus.mes.docviewer.ModelManager.oContainer.removeAllItems()
 		
 		 // Initialize PDF Tron
         airbus.mes.docviewer.ModelManager.WebViewer = new PDFTron.WebViewer({
             type: "html5",
             path: "../lib/pdftron",
-            initialDoc: fileURL,
+            initialDoc: airbus.mes.docviewer.ModelManager.fileURL,
             documentType: "pdf",
             config: "../components/docviewer/config.js",
             serverUrl: "http://localhost/",
@@ -71,8 +74,7 @@ airbus.mes.docviewer.ModelManager = {
             enableAnnotations: true,
             streaming: false,
             useDownloader: false
-        }, this.sViewerElementId);
-		
+        }, airbus.mes.docviewer.ModelManager.oViewerElement);
 		
 	}
 };
