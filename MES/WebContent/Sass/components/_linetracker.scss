@@ -5,16 +5,6 @@ LINETRACKER
 LineTracker Header
 ****************************/
 
-.lineTrackerTitle{
-    margin: 1rem !important;
-    font-style: italic;
-    font-weight: 500;
-    font-stretch: extra-condensed;
-    font-size: 1.2rem !important;
-    color: #74d2e7 !important;
-    font-family: Arial,Helvetica,sans-serif;
-    }
-
 #idLinetracker1--linetrackerHeaderKPI-CollapsedImg{
     visibility: hidden;
 }
@@ -60,7 +50,7 @@ Linetracker View (Main Table)
     }
 
     .classLineTrackerTable .taktHeading {
-        color: #75ACC1 !important;
+        color: #a9cdd8!important;
         font-size: 1vw !important;
         width: 100%;
         text-align: center !important;
@@ -175,17 +165,47 @@ Linetracker View (Main Table)
         .sapUiTableColHdr{
             #idLinetracker1--lineTrackerTrendBorder{
                 border-left: 1px solid rgba(0, 0, 0, 0.42);
+                background-color: #D5F1F8;
                 &+ div{
                     &+ div{
                         border-right: 1px solid rgba(0, 0, 0, 0.42);
+                        background-color: #D5F1F8;
+                        &+div + div{
+                            background-color: #D5F1F8;
+                        }
                         &+ div + div + div + div {
                             border-right: 1px solid rgba(0, 0, 0, 0.42);
+                            background-color: #D5F1F8;
+                            &+div + div {
+                                background-color: #D5F1F8;
+                                &+div + div {
+                                    background-color: #D5F1F8;
+                                }
+                            }
                         }
                     }
                 }
             }
         }
     }
+    .sapUiTableCnt{
+        border-top: transparent;
+    }
+    .sapMIBar .sapMTB .sapMTB-Transparent-CTX .sapMTBInactive .sapMTBNewFlex{
+        padding-left: 0;
+        margin-left: 0;
+
+    }
+    .lineTrackerTitle{
+        margin: 1rem !important;
+        font-style: normal;
+        font-weight: 500;
+        font-stretch: condensed;
+        font-size: 1.2rem !important;
+        color: #74d2e7 !important;
+        font-family: Arial,Helvetica,sans-serif;
+    }
+
 }
 
 .stationBtns.sapMBtn>.sapMBtnInner {
