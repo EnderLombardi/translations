@@ -5,12 +5,12 @@
 	<Toolbar>
 	<Button icon="sap-icon://nav-back" press="onNavPress" />
 	<ToolbarSpacer></ToolbarSpacer>
-		<Select change="onFilterChange" selectedKey="{attachDisruption>/Rowsets/Rowset/0/Select/0/Name}"
-			items="{
-						path: 'attachDisruption>/Rowsets/Rowset/0/Select/'
-					}">
-			<core:Item key="{attachDisruption>key}" text="{attachDisruption>key}" />
-		</Select>
+<!-- 		<Select change="onFilterChange" selectedKey="{attachDisruption>/Rowsets/Rowset/0/Select/0/Name}" -->
+<!-- 			items="{ -->
+<!-- 						path: 'attachDisruption>/Rowsets/Rowset/0/Select/' -->
+<!-- 					}"> -->
+<!-- 			<core:Item key="{attachDisruption>key}" text="{attachDisruption>key}" /> -->
+<!-- 		</Select> -->
 		
 		<CheckBox id = "idCheckBox" text="{i18n>SelectAll}" select="onSelectAll" class="sapUiSmallMarginEnd" />
 	</Toolbar>
