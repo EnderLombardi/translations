@@ -63,7 +63,7 @@
 											</f:label>
 											<f:fields>
 
-												<Text text="{path: 'operationDisruptionsModel>FiveM_Category'}">
+												<Text text="{path: 'operationDisruptionsModel>Fivem_Category'}">
 													<layoutData>
 														<l:GridData span="L3 M3 S12" />
 													</layoutData>

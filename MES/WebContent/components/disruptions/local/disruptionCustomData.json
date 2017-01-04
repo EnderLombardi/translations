@@ -1,0 +1,35 @@
+{ "Rowsets" : { 
+	"DateCreated" : "2017-01-04T12:10:49", "Version" : "15.1 SP2 Patch 13 (Oct 6, 2016)", "StartDate" : "2017-01-04T11:10:49+0100", "EndDate" : "2017-01-04T12:10:49+0100", "CachedTime" : "", 
+	"Rowset" : [ 
+	{ "Columns" : { 
+		"Column" : [ 
+		{ "Name" : "group_name", "SourceColumn" : "group_name", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "group_desc", "SourceColumn" : "group_desc", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 } ] }, 
+	"Row" : [ 
+		{ "group_name" : "ADMINISTRATORS", "group_desc" : "Administrators" }, 
+		{ "group_name" : "LOGISTIC_SUPPORT", "group_desc" : "Logistic Support" }, 
+		{ "group_name" : "OPERATORS", "group_desc" : "Production Operators" } ]
+		 }, 	{ "Columns" : { 
+		"Column" : [ 
+		{ "Name" : "Site", "SourceColumn" : "Site", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "Station", "SourceColumn" : "Station", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "MessageType", "SourceColumn" : "MessageType", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "Category", "SourceColumn" : "Category", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "Reason", "SourceColumn" : "Reason", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "RootCause", "SourceColumn" : "RootCause", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "Handle", "SourceColumn" : "Handle", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 } ] }, 
+	"Row" : [ 
+		{ "Site" : "FNZ1", "Station" : "PHYS_ST_IP4", "FivemCategory" : "Machine", "MessageType" : "DISRUPT_ASSEMBLY", "Category" : "Assembly", "Reason" : "broken", "RootCause" : "Test Claire", "Handle" : "FNZ1,PHYS_ST_IP4,DISRUPT_ASSEMBLY,broken" }, 
+		{ "Site" : "FNZ1", "Station" : "PHYS_ST_IP4", "FivemCategory" : "Scheduling", "MessageType" : "DISRUPT_WORK_ORDER_OPERATION", "Category" : "Work Order-Operation", "Reason" : "Missing", "RootCause" : "For Testing 06", "Handle" : "FNZ1,PHYS_ST_IP4,DISRUPT_WORK_ORDER_OPERATION,Missing" }, 
+		{ "Site" : "FNZ1", "Station" : "PHYS_ST_IP4", "FivemCategory" : "Material", "MessageType" : "DISRUPT_PART", "Category" : "Part", "Reason" : "Missing", "RootCause" : "Test Dhirendra", "Handle" : "FNZ1,PHYS_ST_IP4,DISRUPT_PART,Missing" }, 
+		{ "Site" : "FNZ1", "Station" : "PHYS_ST_IP4", "FivemCategory" : "Material", "MessageType" : "DISRUPT_DRAWING", "Category" : "Drawing", "Reason" : "broken", "RootCause" : "Test Claire", "Handle" : "FNZ1,PHYS_ST_IP4,DISRUPT_DRAWING,broken" }, 
+		{ "Site" : "FNZ1", "Station" : "PHYS_ST_IP4", "FivemCategory" : "Material", "MessageType" : "DISRUPT_INFRASTRUCTURE", "Category" : "Infrastructure", "Reason" : "Missing", "RootCause" : "For Testing 06", "Handle" : "FNZ1,PHYS_ST_IP4,DISRUPT_INFRASTRUCTURE,Missing" }, 
+		{ "Site" : "FNZ1", "Station" : "PHYS_ST_IP4", "FivemCategory" : "Method", "MessageType" : "DISRUPT_INSPECTION", "Category" : "Inspection", "Reason" : "Missing", "RootCause" : "Test Dhirendra", "Handle" : "FNZ1,PHYS_ST_IP4,DISRUPT_INSPECTION,Missing" }, 
+		{ "Site" : "FNZ1", "Station" : "PHYS_ST_IP4", "FivemCategory" : "Material", "MessageType" : "DISRUPT_JIG_TOOL", "Category" : "JIG-Tool", "Reason" : "broken", "RootCause" : "Test Claire", "Handle" : "FNZ1,PHYS_ST_IP4,DISRUPT_JIG_TOOL,broken" }, 
+		{ "Site" : "FNZ1", "Station" : "PHYS_ST_IP4", "FivemCategory" : "Others", "MessageType" : "DISRUPT_OTHER", "Category" : "Other", "Reason" : "Missing", "RootCause" : "For Testing 06", "Handle" : "FNZ1,PHYS_ST_IP4,DISRUPT_OTHER,Missing" }, 
+		{ "Site" : "FNZ1", "Station" : "PHYS_ST_IP4", "FivemCategory" : "Material", "MessageType" : "DISRUPT_SUPPORT", "Category" : "Support", "Reason" : "Missing", "RootCause" : "Test Dhirendra", "Handle" : "FNZ1,PHYS_ST_IP4,DISRUPT_SUPPORT,Missing" }, 
+		{ "Site" : "FNZ1", "Station" : "PHYS_ST_IP4", "FivemCategory" : "Material", "MessageType" : "DISRUPT_0111", "Category" : "Support", "Reason" : "Missing", "RootCause" : "Test Dhirendra", "Handle" : "FNZ1,PHYS_ST_IP4,DISRUPT_0111,Missing" }, 
+		{ "Site" : "FNZ1", "Station" : "PHYS_ST_IP4", "FivemCategory" : "Material", "MessageType" : "DISRUPT_0112", "Category" : "Support", "Reason" : "Missing", "RootCause" : "Test Dhirendra", "Handle" : "FNZ1,PHYS_ST_IP4,DISRUPT_0112,Missing" } ]
+		 } ]
+	 }
+ }

@@ -62,8 +62,8 @@
 										</Label>
 									</f:label>
 									<f:fields>
-										<Select id="selectCategoryClass" change=""
-											forceSelection="false">
+										<Select id="selectFivemCategory"  selectedKey=""
+											forceSelection="false" change="onSelectionChange">
 											<items>
 												<core:Item text="{i18nModel>5Mclass_01}" key="{i18nModel>5Mclass_01}" />
 												<core:Item text="{i18nModel>5Mclass_02}" key="{i18nModel>5Mclass_02}" />
@@ -91,7 +91,7 @@
 										</Label>
 									</f:label>
 									<f:fields>
-										<ComboBox id="selectIssuer"
+										<ComboBox id="selectIssuer" 
 											items="{ path : 'ressourcePoolModel>/Rowsets/Rowset/0/Row' }"
 											forceSelection="false">
 											<items>
