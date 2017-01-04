@@ -8,7 +8,7 @@ jQuery.sap.declare("airbus.mes.disruptions.Component");
 sap.ui.core.UIComponent.extend("airbus.mes.disruptions.Component", {
     metadata : {
         properties : {},
-        includes : [ "./css/disruptionDetail.css"]
+        includes : [ "../../Sass/global.css"]
     // array of css and/or javascript files that should be used in the component
 
     }
@@ -20,7 +20,7 @@ airbus.mes.disruptions.Component.prototype.createContent = function() {
     if (airbus.mes.disruptions.oView === undefined) {
 //        Initialization
         airbus.mes.disruptions.ModelManager.init(sap.ui.getCore());
-      
+
 
         this.oView = {};
 
@@ -58,13 +58,13 @@ airbus.mes.disruptions.Component.prototype.createContent = function() {
 
         // Model for Disruptions details
         this.oView.viewDisruption.setModel(sap.ui.getCore().getModel("operationDisruptionsModel"),"operationDisruptionsModel");
-        
+
         //Model for custom data of create disruption
         this.oView.createDisruption.setModel(sap.ui.getCore().getModel("disruptionCustomData"),"disruptionCustomData");
-        
+
         //Model for Issuer of create disruption - V1.5
         this.oView.createDisruption.setModel(sap.ui.getCore().getModel("ressourcePoolModel"),"ressourcePoolModel");
-       
+
 
         //Model for custom data of edit disruption
         this.oView.createDisruption.setModel(sap.ui.getCore().getModel("DisruptionDetailModel"),"DisruptionDetailModel");
@@ -77,23 +77,23 @@ airbus.mes.disruptions.Component.prototype.createContent = function() {
 
         //Model for disruptionCategoryModel
         this.oView.createDisruption.setModel(sap.ui.getCore().getModel("disruptionCategoryModel"),"disruptionCategoryModel");
-        
+
         /******
-         * 
+         *
          * set models on disruption Detail Page MES V1.5
          */
         //Model for enabling to create and edit disruption
         this.oView.disruptionDetail.setModel(sap.ui.getCore().getModel("setEditable"),"setEditable");
-        
+
         // Model for Disruptions details
         this.oView.disruptionDetail.setModel(sap.ui.getCore().getModel("operationDisruptionsModel"),"operationDisruptionsModel");
-        
+
         //Model for custom data of create disruption
         this.oView.disruptionDetail.setModel(sap.ui.getCore().getModel("disruptionCustomData"),"disruptionCustomData");
-        
+
         //Model for custom data of edit disruption
         this.oView.disruptionDetail.setModel(sap.ui.getCore().getModel("DisruptionDetailModel"),"DisruptionDetailModel");
-        
+
         //Model for Material List
         this.oView.disruptionDetail.setModel(sap.ui.getCore().getModel("MaterialListModel"),"MaterialListModel");
 

@@ -19,13 +19,9 @@ sap.ui.core.UIComponent.extend("airbus.mes.linetracker.Component", {
         properties : {
 //            textButtonTo : "string",
 //            buttonAction : "string"
-        	 
+
         },
-        /*includes : [ "../linetracker/css/KPICharts.css",
-                     "../linetracker/css/customProgress.css",
-                     "../linetracker/css/font-awesome.min.css",
-                     "../linetracker/css/style.css",
-                     "../linetracker/css/PhysicalStation.css"
+        /*includes : [
                     ]*/
     }
 
@@ -33,9 +29,9 @@ sap.ui.core.UIComponent.extend("airbus.mes.linetracker.Component", {
 
 // override the createContent function to return user interface
 airbus.mes.linetracker.Component.prototype.createContent = function() {
-	
+
     if (airbus.mes.linetracker.oView === undefined) {
-    	airbus.mes.linetracker.util.ModelManager.init(sap.ui.getCore());
+        airbus.mes.linetracker.util.ModelManager.init(sap.ui.getCore());
        /* airbus.mes.linetracker.util.RoleManager.init(this);
         airbus.mes.linetracker.util.ModelManager.init(this);*/
         /*this.factoryView = sap.ui.view({
@@ -51,27 +47,27 @@ airbus.mes.linetracker.Component.prototype.createContent = function() {
             viewName : "airbus.mes.linetracker.MainView",
             type : "XML",
         })*/
-    	
-    	this.oView = sap.ui.view({
-    		id:"idLinetracker1", 
-    		viewName:"airbus.mes.linetracker.Linetracker", 
-//    		type:sap.ui.core.mvc.ViewType.XML
-    		type : "XML"	
-    	}); 
-    	
-    	//Line Tracker Model
+
+        this.oView = sap.ui.view({
+            id:"idLinetracker1",
+            viewName:"airbus.mes.linetracker.Linetracker",
+//            type:sap.ui.core.mvc.ViewType.XML
+            type : "XML"
+        });
+
+        //Line Tracker Model
         var i18nModel = new sap.ui.model.resource.ResourceModel({
             bundleUrl : "../components/linetracker/i18n/i18n.properties",
          });
         this.oView.setModel(i18nModel, "i18n");
-        
-		// KPICharts model
-		var i18nModel = new sap.ui.model.resource.ResourceModel(
-				{
-					bundleUrl : "../components/linetracker/KPICharts/i18n/i18n.properties",
-				});
-		this.oView.setModel(i18nModel, "kpiI18n");
-        
+
+        // KPICharts model
+        var i18nModel = new sap.ui.model.resource.ResourceModel(
+                {
+                    bundleUrl : "../components/linetracker/KPICharts/i18n/i18n.properties",
+                });
+        this.oView.setModel(i18nModel, "kpiI18n");
+
         this.oView.setModel(sap.ui.getCore().getModel("stationDataModel"), "stationDataModel");
 //        this.oView.setModel(sap.ui.getCore().getModel("kpiI18n"), "kpiI18n");
         this.oView.setModel(sap.ui.getCore().getModel("lineVariantModel"), "lineVariantModel");
@@ -84,7 +80,7 @@ airbus.mes.linetracker.Component.prototype.createContent = function() {
         this.oView.setModel(sap.ui.getCore().getModel("KPIresolutionEfficiency"), "KPIresolutionEfficiency");
         this.oView.setModel(sap.ui.getCore().getModel("KPItaktEfficiency"), "KPItaktEfficiency");
         this.oView.setModel(sap.ui.getCore().getModel("KPIopenAnomalies"), "KPIopenAnomalies");
-        
+
         this.oView.setModel(sap.ui.getCore().getModel("plantModel"), "plantModel");
         airbus.mes.linetracker.oView = this.oView;
 
