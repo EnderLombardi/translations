@@ -450,8 +450,8 @@ airbus.mes.disruptions.Formatter = {
 			return false;
 		}
 	},
-	setNumberofAttachment : function(number) {
+	/*setNumberofAttachment : function(number) {
 		var sValue = number + "\n" + " Attachments";
 		return sValue;
-	}
+	}*/
 };

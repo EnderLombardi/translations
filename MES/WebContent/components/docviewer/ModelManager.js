@@ -1,8 +1,13 @@
 "use strict";
 
-jQuery.sap.declare("airbus.mes.disruptions.ModelManager")
+jQuery.sap.declare("airbus.mes.docviewer.ModelManager")
 
 airbus.mes.docviewer.ModelManager = {
+	
+	oViewerElement: undefined,
+	sViewerElementId: undefined,
+	
+	WebViewer: undefined,
 
 	onCloseFunction : undefined,
 
@@ -44,5 +49,27 @@ airbus.mes.docviewer.ModelManager = {
 			}
 		}
 
+	},
+	
+	
+	openDocument: function(fileURL){
+		// Firstly - Empty the container
+		this.oViewerElement.removeAllItems()
+		
+		 // Initialize PDF Tron
+        airbus.mes.docviewer.ModelManager.WebViewer = new PDFTron.WebViewer({
+            type: "html5",
+            path: "../lib/pdftron",
+            initialDoc: fileURL,
+            documentType: "pdf",
+            config: "../components/docviewer/config.js",
+            serverUrl: "http://localhost/",
+            documentId: "webviewer_developer_guide",
+            enableAnnotations: true,
+            streaming: false,
+            useDownloader: false
+        }, this.sViewerElementId);
+		
+		
 	}
 };

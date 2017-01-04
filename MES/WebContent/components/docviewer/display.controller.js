@@ -1,9 +1,9 @@
 /**
- * @fileOverview Define the pdftron controller.
+ * @fileOverview Define the docviewer controller.
  * @version 1.0.0
  */
 "use strict";
-sap.ui.controller("airbus.mes.pdftron.pdftron", {
+sap.ui.controller("airbus.mes.docviewer.display", {
 
 	/**
 	 * Called when a controller is instantiated and its View controls (if
@@ -11,7 +11,7 @@ sap.ui.controller("airbus.mes.pdftron.pdftron", {
 	 * is displayed, to bind event handlers and do other one-time
 	 * initialization.
 	 * 
-	 * @memberOf components.globalnav.globalNavigation
+	 * @memberOf components.docviewer.display
 	 */
 	 //onInit : function() {
 	 //},
@@ -22,7 +22,7 @@ sap.ui.controller("airbus.mes.pdftron.pdftron", {
 	 * View is re-rendered (NOT before the first rendering! onInit() is used for
 	 * that one!).
 	 * 
-	 * @memberOf components.globalnav.globalNavigation
+	 * @memberOf components.docviewer.display
 	 */
 	// onBeforeRendering: function() {
 	// },
@@ -32,24 +32,10 @@ sap.ui.controller("airbus.mes.pdftron.pdftron", {
 	 * Post-rendering manipulations of the HTML could be done here. This hook is the
 	 * same one that SAPUI5 controls get after being rendered.
 	 * 
-	 * @memberOf components.globalnav.globalNavigation
+	 * @memberOf components.docviewer.display
 	 */
-	 onAfterRendering : function() {
-		var viewId = this.getView().sId;
-		var viewerElement = document.getElementById(viewId+'pdfViewer');
-        var myWebViewer = new PDFTron.WebViewer({
-            type: "html5",
-            path: "../lib/pdftron",
-            //initialDoc: "../pdf/text.txt",
-            documentType: "pdf",
-            config: "../components/pdftron/config.js",
-            serverUrl: "http://localhost/",
-            documentId: "webviewer_developer_guide",
-            enableAnnotations: true,
-            streaming: false,
-            useDownloader: false
-        }, viewerElement);
-	 },
+	 //onAfterRendering : function() {
+	 //},
 	
 	 
 	 savePdf: function(){
@@ -80,7 +66,7 @@ sap.ui.controller("airbus.mes.pdftron.pdftron", {
 	 * Called when the Controller is destroyed. Use this one to free resources and
 	 * finalize activities.
 	 * 
-	 * @memberOf components.globalnav.globalNavigation
+	 * @memberOf components.docviewer.display
 	 */
 	// onExit: function() {
 	// }

@@ -11,43 +11,43 @@
 			},
 			"Row": [
 				{"wo_no":"26547", "op_no":"50002137-1-0-0010","dis_no":"030","dis_des":"test cla","gravity":"1","status":"pending","Count":"2","File":[
-					{"type":"txt", "name":"Disruption.pdf", "src" : "Files/sample.pdf"},
-					{"type":"txt", "name":"Disruption.avi", "src" : "Files/sample.avi"},
-					{"type":"doc", "name":"Disruption.Doc", "src" : "Files/Business Plan Agenda.doc"}]},
+					{"type":"txt", "name":"Disruption.pdf", "src" : "../components/disruptions/attachments/Files/sample.pdf"},
+					{"type":"txt", "name":"Disruption.avi", "src" : "../components/disruptions/attachments/Files/sample.avi"},
+					{"type":"doc", "name":"Disruption.Doc", "src" : "../components/disruptions/attachments/Files/Business Plan Agenda.doc"}]},
 					
 				{"wo_no":"26547", "op_no":"50002137-1-0-0010","dis_no":"031","dis_des":"Piyush","gravity":"2","status":"closed","Count":"2","File":[
-					{"type":"doc", "name":"New Disruption.Doc", "src" : "Files/Business Plan Agenda.doc"},
-					{"type":"docs", "name":"Disruption.docs", "src" : "Files/easychair.docx"}]},
+					{"type":"doc", "name":"New Disruption.Doc", "src" : "../components/disruptions/attachments/Files/Business Plan Agenda.doc"},
+					{"type":"docs", "name":"Disruption.docs", "src" : "../components/disruptions/attachments/Files/easychair.docx"}]},
 					
 				{"wo_no":"26547", "op_no":"50002137-1-0-0010","dis_no":"032","dis_des":"D1312-1508","gravity":"3","status":"acknowledged","Count":"2","File":[
-					{"type":"xlsx", "name":"Disruption.Xlsx", "src" : "Files/Business Plan Agenda.xls"},
-					{"type":"rtf", "name":"Disruption.rtf", "src" : "Files/sample.rtf"}]},
+					{"type":"xlsx", "name":"Disruption.Xlsx", "src" : "../components/disruptions/attachments/Files/Business Plan Agenda.xls"},
+					{"type":"rtf", "name":"Disruption.rtf", "src" : "../components/disruptions/attachments/Files/sample.rtf"}]},
 					
 				{"wo_no":"26547", "op_no":"50002137-1-0-0011","dis_no":"042","dis_des":"Test 03 MJ","gravity":"2","status":"solved","Count":"3","File":[
-					{"type":"csv", "name":"Disruption.csv", "src" : "Files/sample.csv"},
-					{"type":"ppt", "name":"Disruption.ppt", "src" : "Files/Third Quarter Results.ppt"},
-					{"type":"pptx", "name":"Disruption.pptx", "src" : "Files/Third Quarter Results.ppt"}]},
+					{"type":"csv", "name":"Disruption.csv", "src" : "../components/disruptions/attachments/Files/sample.csv"},
+					{"type":"ppt", "name":"Disruption.ppt", "src" : "../components/disruptions/attachments/Files/Third Quarter Results.ppt"},
+					{"type":"pptx", "name":"Disruption.pptx", "src" : "../components/disruptions/attachments/Files/Third Quarter Results.ppt"}]},
 					
 				{"wo_no":"26547", "op_no":"50002137-1-0-0011","dis_no":"043","dis_des":"Test 02 MJ","gravity":"1","status":"rejected","Count":"3","File":[
-					{"type":"xps", "name":"Disruption.xps", "src" : "Files/s"},
-					{"type":"jpg", "name":"Disruption.jpg", "src" : "Files/landscape.jpg"},
-					{"type":"png", "name":"Disruption.png", "src" : "Files/sample.png"}]},
+					{"type":"xps", "name":"Disruption.xps", "src" : "../components/disruptions/attachments/Files/s"},
+					{"type":"jpg", "name":"Disruption.jpg", "src" : "../components/disruptions/attachments/Files/landscape.jpg"},
+					{"type":"png", "name":"Disruption.png", "src" : "../components/disruptions/attachments/Files/sample.png"}]},
 					
 				{"wo_no":"26547", "op_no":"50002137-1-0-0011","dis_no":"044","dis_des":"test 01 MJ","gravity":"2","status":"deleted","Count":"4","File":[
-					{"type":"gif", "name":"Disruption.gif", "src" : "Files/sample.gif"},
-					{"type":"tiff", "name":"Disruption.tiff", "src" : "Files/sample.tiff"},
-					{"type":"bmp", "name":"Disruption.bmp", "src" : "Files/sample.jpg"},
-					{"type":"pdf", "name":"Disruption.pdf", "src" : "Files/sample.pdf"}]},
+					{"type":"gif", "name":"Disruption.gif", "src" : "../components/disruptions/attachments/Files/sample.gif"},
+					{"type":"tiff", "name":"Disruption.tiff", "src" : "../components/disruptions/attachments/Files/sample.tiff"},
+					{"type":"bmp", "name":"Disruption.bmp", "src" : "../components/disruptions/attachments/Files/sample.jpg"},
+					{"type":"pdf", "name":"Disruption.pdf", "src" : "../components/disruptions/attachments/Files/sample.pdf"}]},
 					
 				{"wo_no":"26547", "op_no":"50002137-1-0-0011","dis_no":"045","dis_des":"For Testing in DMI","gravity":"3","status":"acknowledged","Count":"3","File":[
-					{"type":"Mp4", "name":"Disruption.Mp4", "src" : "Files/samplevideo.mp4"},
-					{"type":"wav", "name":"Disruption.Wav", "src" : "Files/sample wav.wav"},
-					{"type":"zip", "name":"Disruption.zip", "src" : "Files/sap.m.sample.Tree.zip"}]},
+					{"type":"Mp4", "name":"Disruption.Mp4", "src" : "../components/disruptions/attachments/Files/samplevideo.mp4"},
+					{"type":"wav", "name":"Disruption.Wav", "src" : "../components/disruptions/attachments/Files/sample wav.wav"},
+					{"type":"zip", "name":"Disruption.zip", "src" : "../components/disruptions/attachments/Files/sap.m.sample.Tree.zip"}]},
 					
 				{"wo_no":"26547", "op_no":"50002137-1-0-0011","dis_no":"046","dis_des":"For Testing in DMI","gravity":"1","status":"closed","Count":"3","File":[
-					{"type":"Tar", "name":"Disruption.tar", "src" : "Files/s"},
-					{"type":"7z", "name":"Disruption.7z", "src" : "Files/s"},
-					{"type":"Gz", "name":"Disruption.Gz", "src" : "Files/s"}]}								
+					{"type":"Tar", "name":"Disruption.tar", "src" : "../components/disruptions/attachments/Files/s"},
+					{"type":"7z", "name":"Disruption.7z", "src" : "../components/disruptions/attachments/Files/s"},
+					{"type":"Gz", "name":"Disruption.Gz", "src" : "../components/disruptions/attachments/Files/s"}]}								
 						
 			
 			],

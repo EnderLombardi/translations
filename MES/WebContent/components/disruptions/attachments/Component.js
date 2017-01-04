@@ -35,7 +35,7 @@ airbus.mes.disruptions.attachments.Component.prototype.createContent = function(
 	        bundleUrl : "../components/disruptions/attachments/i18n/i18n.properties",
 	     });
 		
-		this.oView.setModel(i18nModel, "i18n");		
+		this.oView.setModel(i18nModel, "i18nModel");		
 		this.oView.setModel(sap.ui.getCore().getModel("attachDisruption"),    "attachDisruption");
 
 

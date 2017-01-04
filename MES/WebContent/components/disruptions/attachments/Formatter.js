@@ -19,13 +19,13 @@ airbus.mes.disruptions.attachments.Formatter = {
 		
 		switch(gravity) {
 		case "1":
-			property = airbus.mes.disruptions.attachments.oView.getModel("i18n").getProperty("NotBlocked");
+			property = airbus.mes.disruptions.attachments.oView.getModel("i18nModel").getProperty("NotBlocked");
 			break;
 		case "2":
-			property = airbus.mes.disruptions.attachments.oView.getModel("i18n").getProperty("Disturbed");
+			property = airbus.mes.disruptions.attachments.oView.getModel("i18nModel").getProperty("Disturbed");
 			break;
 		case "3":
-			property = airbus.mes.disruptions.attachments.oView.getModel("i18n").getProperty("Blocked");
+			property = airbus.mes.disruptions.attachments.oView.getModel("i18nModel").getProperty("Blocked");
 			break;
 		default:
 			break;
@@ -36,7 +36,7 @@ airbus.mes.disruptions.attachments.Formatter = {
 
 	
 	setDisruptionStatuses : function(status){
-		return airbus.mes.disruptions.attachments.oView.getModel("i18n").getProperty(status);
+		return airbus.mes.disruptions.attachments.oView.getModel("i18nModel").getProperty(status);
 	},
 	isStatusFinal : function(status) {
 		if( status === airbus.mes.disruptions.Formatter.status.closed 

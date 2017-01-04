@@ -501,11 +501,10 @@
 <!-- 											<Button type="Transparent" icon="sap-icon://attachment" -->
 <!-- 												press="onPressAttachment" class="sapUiSmallMarginEnd attachIcon" -->
 <!-- 												width="2rem" /> -->
-											<Button type="Transparent" icon="sap-icon://camera"
-												press="onCameraPress" class="attachIcon" width="2rem" />
+											<Button type="Transparent" icon="sap-icon://camera" press="onCameraPress" width="2rem" />
 										</HBox>
 
-										<Link text="{path: 'AttachmentList>/RowCount' , formatter: 'airbus.mes.disruptions.Formatter.setNumberofAttachment'}" press="showAttachedDocsList"  wrapping="true"/>
+										<Link text="{AttachmentList>/RowCount} {i18nModel>Attachment}" press="showAttachedDocsList"  wrapping="true"/>
 										
 									</VBox>
 								</f:FormElement>

@@ -19,7 +19,7 @@ sap.ui.core.UIComponent.extend("airbus.mes.docviewer.Component", {
     metadata : {
         properties : {},
         includes : [ "../../lib/pdftron/WebViewer.min.js",
-                     "../lib/pdftron/html5/ControlUtils.js" ]
+                     "../../lib/pdftron/html5/ControlUtils.js" ]
     },
 });
 
@@ -30,6 +30,10 @@ sap.ui.core.UIComponent.extend("airbus.mes.docviewer.Component", {
 airbus.mes.docviewer.Component.prototype.createContent = function() {
 
     if (airbus.mes.docviewer.oView === undefined) {
+    	//    Initialization
+        airbus.mes.disruptions.ModelManager.init(sap.ui.getCore());
+    	
+    	
         //    View on XML
         this.oView = sap.ui.view({
             id : "docviewerView",

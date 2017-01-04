@@ -56,7 +56,7 @@
 				<CustomListItem>
 			<HBox>
 				<core:Icon  size="2em" src="{AttachmentList>icon}" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" />
-				<VBox  class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" >
+				<VBox  class="sapUiSmallMarginBeginEnd sapUiSmallMarginTopBottom" >
 					<Link text="{AttachmentList>Title}"/>
 					<Label text="{AttachmentList>type}"/>
 				</VBox>

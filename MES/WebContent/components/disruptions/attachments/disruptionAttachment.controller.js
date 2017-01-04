@@ -92,25 +92,38 @@ sap.ui.define([
 		openDocument: function(oEvent){
 			var url = oEvent.getSource().getCustomData()[0].getValue();
 			
-			$("#sap-ui-blocklayer-popup").css('zIndex', '-1')
 			
+			// Hide backdrop
+			$("#sap-ui-blocklayer-popup").css('zIndex', '-1');
+			
+			
+			// Hide Pop-Up
 			switch(nav.getCurrentPage().sId){
 			case "stationTrackerView":
 				$("#operationDetailPopup--operationDetailPopUp").css('display', 'none');
+				break;
 			case "disruptiontrackerView":
-				$("#").css('display', 'none');
+				$("#disruptionDetailPopup--disruptionDetailPopUp").css('display', 'none');
 			}
 			
+			// Open Document viewer
 			airbus.mes.shell.util.navFunctions.docViewer(url, airbus.mes.disruptions.attachments.oView.oController.onMESDocViewerClose);
 		},
 		
 		/******************************************
 		 * To be executed when the document viewer is closed
-		 * In order to re-appear the pop-up
+		 * In order to re-appear the ackdrop and pop-up
 		 */
 		onMESDocViewerClose: function(){
-			$("#sap-ui-blocklayer-popup").css('zIndex', '38')
-			$("#"+this.getView().getParent().sId).css('display', 'block');
+			$("#sap-ui-blocklayer-popup").css('zIndex', '38');
+			
+			switch(nav.getCurrentPage().sId){
+			case "stationTrackerView":
+				$("#operationDetailPopup--operationDetailPopUp").css('display', 'block');
+				break;
+			case "disruptiontrackerView":
+				$("#disruptionDetailPopup--disruptionDetailPopUp").css('display', 'block');
+			}
 		},
 		
 		
