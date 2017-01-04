@@ -4,7 +4,7 @@
     <!-- <Page title="Title"> <content> -->
     <!-- <ux:Shell id="myShell" applyContentPadding="false" showFeederTool="false"
         showSearchTool="false" worksetItemSelected="worksetItemSelected" showTools="false"
-        showPane="false" fullHeightContent="true" appIcon="/images/Airbus.jpg"
+        showPane="false" fullHeightContent="true" appIcon="../images/Airbus.jpg"
         shellHeaderType="BrandOnly" appTitle="" appIconTooltip="Airbus Factory, Broughton"
         class="myShell" logout="airbus.mes.linetracker.util.ModelManager.logOut">
         <ux:headerItems> <common:TextView id="refresh" text="Refresh Auto : On" visible="false"
