@@ -3,7 +3,11 @@
 	<Popover
 		showHeader="false"
 		placement="Right" >
-		
+		<subHeader>
+		<Toolbar>
+		<Text id="idAttachmentHeader" class="sapUiSmallMargin" text="Attachments"/>
+		</Toolbar>
+		</subHeader>
 		<Table 
 		id="idAttachmentTable"
 		inset="false"

@@ -492,9 +492,8 @@
 												change="handleValueChange"
 												buttonOnly="true"
 												typeMissmatch="handleTypeMissmatch"
-												style="Emphasized"
 												iconOnly="true"
-												fileType="txt,jpg">
+												fileType="txt,jpg,pdf,png,doc,gif,ppt">
 											
 											</u:FileUploader>
 <!-- 													<Button -->
@@ -508,7 +507,7 @@
 												press="onCameraPress" class="attachIcon" width="2rem" />
 										</HBox>
 
-										<Link text="0 Attachments" press="handleLinkPress" />
+										<Link text="Attachments" press="handleLinkPress" />
 									</VBox>
 								</f:FormElement>
 

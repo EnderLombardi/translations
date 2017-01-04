@@ -1340,12 +1340,36 @@ sap.ui
 						this.setDataForEditDisruption();
 					},
 
-					handleUploadComplete : function(loValue) {},
+					handleUploadComplete : function(loValue) {
+						var oFileUploader = this.getView().byId("idfileUploader");
+						
+						var oModel = sap.ui.getCore().getModel("AttachmentList");
+						var oData = oModel.getData();
+						var loName = oFileUploader.oFilePath._lastValue;
+						var loType = oFileUploader.oFilePath._lastValue.split(".")[1];
+						if(loType === 'png' || loType === 'jpg'){var loIcon = "sap-icon://camera"}
+						if(loType === 'txt'){var loIcon = "sap-icon://document-text"}
+						if(loType === 'doc' || loType === 'docs'){var loIcon = "sap-icon://doc-attachment"}
+						if(loType === 'pdf'){var loIcon = "sap-icon://pdf-attachment"}
+						if(loType === 'xlsx'){var loIcon = "sap-icon://excel-attachment"}
+						if(loType === 'pptx' || loType === 'ppt'){var loIcon = "sap-icon://ppt-attachment"}
+						
+						else {var loIcon = "sap-icon://document-text"}
+						oData.items.unshift({"Title":"File","type":loName,"icon":loIcon});
+//					    var oTable = sap.ui.getCore().byId("idAttachmentTable");
+					    oModel.setData(oData);
+					    
+//					    var loLink = this.getView().byId("idLink");
+//					    var loCount = oModel.getData().items.length;
+//					    loLink.setText(loCount + " Attachments");
+					    
+						var loAttachmentHeader = sap.ui.getCore().byId("idAttachmentHeader");
+						var loModel = sap.ui.getCore().getModel("AttachmentList");
+						var loLength = loModel.getData().items.length;
+						loAttachmentHeader.setText("Attachments ("+loLength+")");
+					},
 					
 					handleValueChange: function(oEvt){
-//						this.getView().byId("idfileUploader").attachPress(this.onUploadStart());
-//						this.getView().byId("idfileUploader");
-//						this.getView().byId("idfileUploader").attachPress(this.onUploadStart());
 						var that = this;
 						var dialog = new sap.m.Dialog({
 							content:[ new sap.m.Label({
@@ -1358,32 +1382,27 @@ sap.ui
 							beginButton: new sap.m.Button({
 								text: 'oK',
 								press: function () {
-									var loValue = sap.ui.getCore().byId("idTitleInput").getValue();
+//									var loValue = sap.ui.getCore().byId("idTitleInput").getValue();
 									dialog.close();
-									that.getView().byId("idfileUploader").attachPress(that.onUploadStart(loValue));
+									var oFileUploader = that.getView().byId("idfileUploader");
+									oFileUploader.upload();
+//									that.getView().byId("idfileUploader").attachPress(that.onUploadStart(loValue));
 									
 								}
-							})
-//							afterClose: function() {
-//								dialog.destroy();
-//							}
+							}),
+							afterClose: function() {
+								dialog.destroy();
+//								sap.ui.getCore().byId("idTitleInput").destroy();
+							}
 						});
 			 
 						//to get access to the global model
 						this.getView().addDependent(dialog);
 						dialog.open();
 					},
-					onChange: function(){
-						this.getView().byId("idfileUploader").fireUploadComplete();
-					},
 					
 
 					onUploadStart : function(loValue) {
-						var oFileUploader = this.getView().byId("idfileUploader");
-//						if (!oFileUploader.getValue()) {
-//							return;
-//						}
-						oFileUploader.upload();
 
 					},
 
@@ -1404,6 +1423,11 @@ sap.ui
 						jQuery.sap.delayedCall(0, this, function() {
 							this._oPopover.openBy(oButton);
 						});
+						var loAttachmentHeader = sap.ui.getCore().byId("idAttachmentHeader");
+						var loModel = sap.ui.getCore().getModel("AttachmentList");
+						var loLength = loModel.getData().items.length;
+						loAttachmentHeader.setText("Attachments ("+loLength+")");
+						
 					},
 
 					onPressDeleteButton : function(oEvent) {
