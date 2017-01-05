@@ -195,7 +195,7 @@ Linetracker View (Main Table)
     .headerTextTableLinetracker{
         color: #1A6980;
         font-weight: 600;
-        font-size: 1rem;
+        font-size: 1.1em;
         font-stretch: condensed;
     }
     .sapUiTableCnt{
@@ -214,6 +214,23 @@ Linetracker View (Main Table)
         font-size: 1.2rem !important;
         color: #74d2e7 !important;
         font-family: Arial,Helvetica,sans-serif;
+    }
+    span{
+        &.sapUiIcon{
+            &.trendIconLinetracker{
+                font-size: 2em;
+                padding: 15px;
+            }
+        }
+        &.dateTableLinetracker{
+            color: #5F7381;
+            font-stretch: semi-condensed;
+            font-size: 1em;
+        }
+        &.fontTableLinetracker{
+            font-size: 2em;
+            color: #5F7381;
+        }
     }
 
 }
@@ -263,19 +280,19 @@ Custom Progress Bar
 }
 
 .progress-bar-success {
-       background-color: #5cb85c !important;
+    background-color: #84BD00 !important;
 }
 
 .progress-bar-warning {
-       background-color: #d9534f !important;
+    background-color: #E4002B !important;
 }
 
 .progress-bar-grey {
-       background-color: grey !important;
+    background-color: #7F7F7F !important;
 }
 
 .progress-bar-verticalDiv {
-       background-color: Black !important;
+    background-color: #3F3F3F !important;
 }
 
 

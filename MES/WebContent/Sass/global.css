@@ -1396,10 +1396,13 @@ Linetracker View (Main Table)
 #idLinetracker1 .sapUiTableColHdrScr .sapUiTableColHdr #idLinetracker1--lineTrackerTrendBorder + div + div + div + div + div + div + div + div { background-color: #D5F1F8; }
 #idLinetracker1 .sapUiTableColHdrScr .sapUiTableColHdr #idLinetracker1--lineTrackerTrendBorder + div + div + div + div + div + div + div + div + div + div { background-color: #D5F1F8; }
 #idLinetracker1 #idLinetracker1--linetrackerTablePercentage { font-weight: 600; }
-#idLinetracker1 .headerTextTableLinetracker { color: #1A6980; font-weight: 600; font-size: 1rem; font-stretch: condensed; }
+#idLinetracker1 .headerTextTableLinetracker { color: #1A6980; font-weight: 600; font-size: 1.1em; font-stretch: condensed; }
 #idLinetracker1 .sapUiTableCnt { border-top: transparent; }
 #idLinetracker1 .sapMIBar .sapMTB .sapMTB-Transparent-CTX .sapMTBInactive .sapMTBNewFlex { padding-left: 0; margin-left: 0; }
 #idLinetracker1 .lineTrackerTitle { margin: 1rem !important; font-style: normal; font-weight: 500; font-stretch: condensed; font-size: 1.2rem !important; color: #74d2e7 !important; font-family: Arial,Helvetica,sans-serif; }
+#idLinetracker1 span.sapUiIcon.trendIconLinetracker { font-size: 2em; padding: 15px; }
+#idLinetracker1 span.dateTableLinetracker { color: #5F7381; font-stretch: semi-condensed; font-size: 1em; }
+#idLinetracker1 span.fontTableLinetracker { font-size: 2em; color: #5F7381; }
 
 .stationBtns.sapMBtn > .sapMBtnInner { text-align: center !important; }
 
@@ -1420,13 +1423,13 @@ Custom Progress Bar
 
 .progress i { float: right; margin-top: 0.7rem; margin-right: 0.4rem; }
 
-.progress-bar-success { background-color: #5cb85c !important; }
+.progress-bar-success { background-color: #84BD00 !important; }
 
-.progress-bar-warning { background-color: #d9534f !important; }
+.progress-bar-warning { background-color: #E4002B !important; }
 
-.progress-bar-grey { background-color: grey !important; }
+.progress-bar-grey { background-color: #7F7F7F !important; }
 
-.progress-bar-verticalDiv { background-color: Black !important; }
+.progress-bar-verticalDiv { background-color: #3F3F3F !important; }
 
 .progress-bar { float: left; width: 0; height: 100%; font-size: 12px; line-height: 20px; color: #fff; text-align: center; background-color: #337ab7; -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15); box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15); -webkit-transition: width .6s ease; -o-transition: width .6s ease; transition: width 0.6s ease; }
 

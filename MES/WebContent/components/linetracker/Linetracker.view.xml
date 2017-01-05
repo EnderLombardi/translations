@@ -153,7 +153,7 @@
                 <uiTable:Column width="6%" id="lineTrackerTrendBorder">
                     <Text text="{i18n>trend}" class="taktHeading" />
                     <uiTable:template>
-                        <core:Icon src="sap-icon://{stationDataModel>trend}"
+                        <core:Icon class="trendIconLinetracker" src="sap-icon://{stationDataModel>trend}"
                                 color="{stationDataModel>trendColor}" />
                     </uiTable:template>
                 </uiTable:Column>
@@ -161,7 +161,7 @@
                 <uiTable:Column width="6%">
                     <Text text="{i18n>date}" class="taktHeading" />
                     <uiTable:template>
-                        <Text text="{stationDataModel>date}" />
+                        <Text class="dateTableLinetracker" text="{stationDataModel>date}" />
                     </uiTable:template>
 
                 </uiTable:Column>
@@ -170,7 +170,7 @@
                     <Text text="{i18n>cycleTime}" class="taktHeading" />
 
                     <uiTable:template>
-                        <Text text="{stationDataModel>cycleTime}" />
+                        <Text class="fontTableLinetracker" text="{stationDataModel>cycleTime}" />
                     </uiTable:template>
 
                 </uiTable:Column>
@@ -178,7 +178,7 @@
                 <uiTable:Column width="6%">
                     <Text text="{i18n>workContent}" class="taktHeading" />
                     <uiTable:template>
-                        <Text text="{stationDataModel>workContent}" />
+                        <Text class="fontTableLinetracker" text="{stationDataModel>workContent}" />
                     </uiTable:template>
 
                 </uiTable:Column>
@@ -186,7 +186,7 @@
                 <uiTable:Column width="6%">
                     <Text text="{i18n>openDisruptions}" class="taktHeading" />
                     <uiTable:template>
-                        <Text text="{stationDataModel>disruption}" />
+                        <Text class="fontTableLinetracker" text="{stationDataModel>disruption}" />
                     </uiTable:template>
 
                 </uiTable:Column>
@@ -194,7 +194,7 @@
                 <uiTable:Column width="6%">
                     <Text text="{i18n>openANDON}" class="taktHeading" />
                     <uiTable:template>
-                        <Text text="{stationDataModel>andon}" />
+                        <Text class="fontTableLinetracker" text="{stationDataModel>andon}" />
                     </uiTable:template>
 
                 </uiTable:Column>
