@@ -238,7 +238,7 @@ Linetracker View (Main Table)
         &.sapUiIcon{
             &.trendIconLinetracker{
                 font-size: 2em;
-                padding: 15px;
+                margin-bottom: 10px;
             }
         }
         &.dateTableLinetracker{
@@ -307,7 +307,7 @@ Custom Progress Bar
 }
 
 .progress-bar-grey {
-    background-color: #7F7F7F !important;
+    background-color: rgba(127, 127, 127, 0.69) !important;
 }
 
 .progress-bar-verticalDiv {
