@@ -9,7 +9,7 @@ jQuery.sap.require("airbus.mes.linetracker.util.Formatter");
 jQuery.sap.require("airbus.mes.linetracker.util.RoleManager");
 // Declare the current Component
 jQuery.sap.declare("airbus.mes.linetracker.Component");
-jQuery.sap.require("airbus.mes.linetracker.linetrackerProgressBar");
+jQuery.sap.require("airbus.mes.linetracker.control.linetrackerProgressBar");
 
 // Extend current Component
 sap.ui.core.UIComponent.extend("airbus.mes.linetracker.Component", {

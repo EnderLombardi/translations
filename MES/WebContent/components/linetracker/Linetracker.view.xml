@@ -1,7 +1,7 @@
 <core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
     xmlns:control="airbus.mes.linetracker.KPICharts.control" xmlns:l="sap.ui.layout"
     xmlns="sap.m" controllerName="airbus.mes.linetracker.Linetracker"
-    xmlns:custom="airbus.mes.linetracker" xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:custom="airbus.mes.linetracker.control" xmlns:html="http://www.w3.org/1999/xhtml"
     xmlns:controlPhStation="airbus.mes.linetracker.PhysicalStation.control"
     xmlns:uiTable="sap.ui.table">
     <Page showTitle="false" class="classLineTrackerTable"

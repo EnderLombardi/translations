@@ -99,6 +99,7 @@ airbus.mes.linetracker.util.ModelManager = {
 				//oViewModel.setData([]);
 				oViewModel.setData(data);
 				//oViewModel.refresh();
+				//this is required to scroll the Linetracker table. Don't remove/comment
 				sap.ui.getCore().byId("idLinetracker1--linetrackerTable").rerender();
 //				sap.ui.getCore().byId("idLinetracker1--linetrackerTable").getRows().forEach(function(row){row.rerender();});
 //				airbus.mes.linetracker.oView.byId("idLinetracker1--linetrackerTable").setBusy(false);
