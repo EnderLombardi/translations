@@ -1405,7 +1405,7 @@ Linetracker View (Main Table)
 #idLinetracker1 .headerTextTableLinetracker { color: #1A6980; font-weight: 600; font-size: 1.1em; font-stretch: condensed; }
 #idLinetracker1 .sapUiTableCnt { border-top: transparent; }
 #idLinetracker1 .sapMIBar .sapMTB .sapMTB-Transparent-CTX .sapMTBInactive .sapMTBNewFlex { padding-left: 0; margin-left: 0; }
-#idLinetracker1 .lineTrackerTitle { margin: 1rem !important; font-style: normal; font-weight: 500; font-size: 1.2rem !important; color: #74d2e7 !important; font-family: Arial,Helvetica,sans-serif; text-shadow: none; font-style: italic; border-right: 1px solid #326D98; padding: 15px; }
+#idLinetracker1 .lineTrackerTitle { margin: 1rem !important; font-style: normal; font-weight: 500; font-size: 1rem !important; color: #74d2e7 !important; font-family: Arial,Helvetica,sans-serif; text-shadow: none; font-style: italic; border-right: 1px solid #326D98; padding: 15px; }
 #idLinetracker1 span.sapUiIcon.trendIconLinetracker { font-size: 2em; margin-bottom: 10px; }
 #idLinetracker1 span.dateTableLinetracker { color: #5F7381; font-stretch: semi-condensed; font-size: 1em; }
 #idLinetracker1 span.fontTableLinetracker { font-size: 2em; color: #5F7381; }
