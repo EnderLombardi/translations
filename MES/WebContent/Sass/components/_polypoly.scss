@@ -505,3 +505,8 @@ button[id^="polypoly"].sapMBtn:hover> div[id^="polypoly"].sapMBtnHoverable{
 #confirmDeleteDialog-footer{
     background-color:$teal-blue-hover;
 }
+#polypoly{
+    #polypoly--oTablePolypoly-selall {
+        width: 0;
+    }
+}
