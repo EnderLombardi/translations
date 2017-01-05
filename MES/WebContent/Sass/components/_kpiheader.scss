@@ -27,7 +27,8 @@ $kpi-box-header-height: 195px;
         background-color: $silver-15;
     }
     .kpiValue {
-        font-size: 1.6vw;
+       /* font-size: 1.6vw; */
+        font-size: 1vw; 
         width: 100%;
         text-align: center !important;
     }
