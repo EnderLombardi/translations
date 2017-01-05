@@ -1355,13 +1355,13 @@ LineTracker Header
 ****************************/
 #idLinetracker1--linetrackerHeaderKPI-CollapsedImg { visibility: hidden; }
 
-#idLinetracker1--linetracker_dateLabel { color: #ffffff !important; font-size: 1.2rem !important; }
+#idLinetracker1--linetracker_dateLabel { color: #ffffff !important; padding: 15px; border-right: 1px solid #326D98; text-shadow: none; font-size: 1.1rem !important; }
 
-#idLinetracker1--linetracker_timeLabel { color: #ffffff !important; font-size: 1.1rem !important; }
+#idLinetracker1--linetracker_timeLabel { color: #ffffff !important; margin-top: 2px; text-shadow: none; font-size: 1.1rem !important; }
 
 .headerIcons { color: #FFFFFF; font-size: 1.5rem; }
 
-#idLinetracker1--hideKPI-content, #idLinetracker1--hideKPI-img { color: #74d2e7 !important; }
+#idLinetracker1--hideKPI-content, #idLinetracker1--hideKPI-img { color: #74d2e7 !important; text-shadow: none; }
 
 /************************
 Linetracker View (Main Table)
@@ -1369,6 +1369,8 @@ Linetracker View (Main Table)
 #idLinetracker1 { /* .classLineTrackerTable table tr th:nth-child(1) { width: 22vw !important;
 } */ /* .classLineTrackerTable .stationBtns div { padding-left: 0 !important; padding-right: 0 !important;
 } */ }
+#idLinetracker1 header.sapMPanelWrappingDivTbExpanded div.sapMIBar.sapMTB.sapMTB-Transparent-CTX.sapMTBInactive.sapMTBNewFlex { margin-left: 0rem; }
+#idLinetracker1 header.sapMPanelWrappingDivTbExpanded div.sapMIBar.sapMTB.sapMTB-Transparent-CTX.sapMTBInactive.sapMTBNewFlex h2 { margin-left: -2px !important; }
 #idLinetracker1 .classLineTrackerTable .moreButton { background-color: #EAFBFD !important; width: 100% !important; }
 #idLinetracker1 .classLineTrackerTable .moreButton .sapMBtnTransparent > .sapMBtnIcon { color: #666666; }
 #idLinetracker1 .classLineTrackerTable .lineTrackerContent { margin-top: 12rem; }
@@ -1403,7 +1405,7 @@ Linetracker View (Main Table)
 #idLinetracker1 .headerTextTableLinetracker { color: #1A6980; font-weight: 600; font-size: 1.1em; font-stretch: condensed; }
 #idLinetracker1 .sapUiTableCnt { border-top: transparent; }
 #idLinetracker1 .sapMIBar .sapMTB .sapMTB-Transparent-CTX .sapMTBInactive .sapMTBNewFlex { padding-left: 0; margin-left: 0; }
-#idLinetracker1 .lineTrackerTitle { margin: 1rem !important; font-style: normal; font-weight: 500; font-stretch: condensed; font-size: 1.2rem !important; color: #74d2e7 !important; font-family: Arial,Helvetica,sans-serif; }
+#idLinetracker1 .lineTrackerTitle { margin: 1rem !important; font-style: normal; font-weight: 500; font-size: 1.2rem !important; color: #74d2e7 !important; font-family: Arial,Helvetica,sans-serif; text-shadow: none; font-style: italic; border-right: 1px solid #326D98; padding: 15px; }
 #idLinetracker1 span.sapUiIcon.trendIconLinetracker { font-size: 2em; margin-bottom: 10px; }
 #idLinetracker1 span.dateTableLinetracker { color: #5F7381; font-stretch: semi-condensed; font-size: 1em; }
 #idLinetracker1 span.fontTableLinetracker { font-size: 2em; color: #5F7381; }

@@ -11,11 +11,16 @@ LineTracker Header
 
 #idLinetracker1--linetracker_dateLabel{
     color: #ffffff !important;
-    font-size: 1.2rem !important;
+    padding: 15px;
+    border-right: 1px solid #326D98;
+    text-shadow: none;
+    font-size: 1.1rem !important;
 }
 
 #idLinetracker1--linetracker_timeLabel{
     color: #ffffff !important;
+    margin-top: 2px;
+    text-shadow: none;
     font-size: 1.1rem !important;
 }
 
@@ -26,12 +31,21 @@ LineTracker Header
 
 #idLinetracker1--hideKPI-content, #idLinetracker1--hideKPI-img{
     color: #74d2e7 !important;
+    text-shadow: none;
 }
 
 /************************
 Linetracker View (Main Table)
 *************************/
 #idLinetracker1{
+    header.sapMPanelWrappingDivTbExpanded{
+        div.sapMIBar.sapMTB.sapMTB-Transparent-CTX.sapMTBInactive.sapMTBNewFlex{
+            margin-left: 0rem;
+            h2{
+                margin-left: -2px !important;
+            }
+        }
+    }
     .classLineTrackerTable .moreButton{
         background-color: #EAFBFD !important;
         width: 100% !important;
@@ -202,10 +216,13 @@ Linetracker View (Main Table)
         margin: 1rem !important;
         font-style: normal;
         font-weight: 500;
-        font-stretch: condensed;
         font-size: 1.2rem !important;
         color: #74d2e7 !important;
         font-family: Arial,Helvetica,sans-serif;
+        text-shadow: none;
+        font-style: italic;
+        border-right: 1px solid #326D98;
+        padding: 15px;
     }
     span{
         &.sapUiIcon{
