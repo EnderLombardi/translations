@@ -23,7 +23,9 @@ airbus.mes.linetracker.util.ModelManager = {
     	//sap.ui.getCore().getModel("stationDataModel").attachRequestCompleted(airbus.mes.linetracker.util.ModelManager.renderControls);
     	//Not Used
     	core.setModel(new sap.ui.model.json.JSONModel(), "KPI"); // KPI Data for All model 
-    	
+
+    	airbus.mes.linetracker.util.ModelManager.site = airbus.mes.settings.ModelManager.site;
+
 		var dest;
 
 		switch (window.location.hostname) {
