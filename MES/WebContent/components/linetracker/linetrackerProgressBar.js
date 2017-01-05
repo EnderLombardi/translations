@@ -18,6 +18,7 @@ sap.ui.core.Control.extend("airbus.mes.linetracker.linetrackerProgressBar", {
 	renderer : function(oRm, oControl) {
 		
 		oRm.write("<div ");
+		oRm.writeControlData(oControl);
 		oRm.addClass("progress");
 		oRm.writeClasses();
 		oRm.write(">");
