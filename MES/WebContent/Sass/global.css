@@ -3105,3 +3105,8 @@ FROM HOMEPAGE
 ********************/
 
 /*# sourceMappingURL=global.css.map */
+
+.attachIcon span{
+    color: #000 !important;
+    font-size: 1rem !important;
+}

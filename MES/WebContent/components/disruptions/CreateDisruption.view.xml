@@ -481,19 +481,19 @@
 										</layoutData>
 										<HBox width="100%" justifyContent="End">
 
-											<u:FileUploader id="idfileUploader" name="myFileUpload"
-												uploadUrl="upload/" tooltip="{i18nModel>attachFile}" icon="sap-icon://attachment"
-												uploadComplete="onUploadComplete" uploadStart="onUploadStart"
-												change="onFileSelect" buttonOnly="true" typeMissmatch="onTypeMissmatch"
+											<u:FileUploader id="idfileUploader" name="{i18nModel>myFileUpload}"
+												uploadUrl="{i18nModel>uploadURL}" tooltip="{i18nModel>attachFile}" icon="sap-icon://attachment"
+												uploadComplete="airbus.mes.disruptions.AttachmentManager.onUploadComplete" class="attachIcon"
+												change="airbus.mes.disruptions.AttachmentManager.onFileSelect" buttonOnly="true"
 												iconOnly="true" style="Transparent" fileType="{path:'AttachmentList>/FileType/0/key', formatter: 'airbus.mes.disruptions.Formatter.setFileType'}">
 
 											</u:FileUploader>
 											<Button type="Transparent" icon="sap-icon://camera"
-												press="onCameraPress" width="2rem" />
+												 width="2rem" class="attachIcon"/>
 										</HBox>
 
 										<Link id="idAttachmentLink" text="{AttachmentList>/RowCount} {i18nModel>Attachment}"
-											press="showAttachedDocsList" wrapping="false" />
+											press="airbus.mes.disruptions.AttachmentManager.showAttachedDocsList" wrapping="true" />
 
 									</VBox>
 								</f:FormElement>

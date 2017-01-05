@@ -1,18 +1,9 @@
 "use strict";
-sap.ui.define([
-               "sap/ui/core/mvc/Controller",
-               'sap/ui/model/json/JSONModel',
-               "sap/ui/model/Filter",
-               "sap/ui/model/FilterOperator",
-               "airbus/mes/disruptions/attachments/Formatter"
-               ], function(Controller,JSONModel,Filter,FilterOperator,Formatter) {
 
-
-	return Controller.extend("airbus.mes.disruptions.attachments.disruptionAttachment", {
-		formatter:Formatter,
-
-
-
+sap.ui
+.controller(
+	"airbus.mes.disruptions.attachments.disruptionAttachment",
+	{
 //		onBeforeRendering: function(oEvt){
 //			var aFilter = [];
 //			var that = this;
@@ -22,7 +13,7 @@ sap.ui.define([
 //					var oCurrDisVal = evt.data.Desc;
 //					var oList = that.getView().byId("idList");
 //					var oBinding = oList.getBinding("items");
-//					aFilter.push(new Filter("dis_des", FilterOperator.Contains, oCurrDisVal));	
+//					aFilter.push(new sap.ui.model.Filter("dis_des", sap.ui.model.FilterOperator.Contains, oCurrDisVal));	
 //
 //					oBinding.filter(aFilter);
 //				},
@@ -60,13 +51,13 @@ sap.ui.define([
 //			var oList = this.getView().byId("idList");
 //			var oBinding = oList.getBinding("items");
 //			if(oCurrop_noVal){
-//				aFilter.push(new Filter("op_no", FilterOperator.Contains, oCurrop_noVal));
+//				aFilter.push(new sap.ui.model.Filter("op_no", sap.ui.model.FilterOperator.Contains, oCurrop_noVal));
 //			}
 //			if(oCurrWo_noVal){
-//				aFilter.push(new Filter("wo_no", FilterOperator.Contains, oCurrWo_noVal));
+//				aFilter.push(new sap.ui.model.Filter("wo_no", sap.ui.model.FilterOperator.Contains, oCurrWo_noVal));
 //			}
 //			if(oCurrDisVal){
-//				aFilter.push(new Filter("dis_des", FilterOperator.Contains, oCurrDisVal));	
+//				aFilter.push(new sap.ui.model.Filter("dis_des", sap.ui.model.FilterOperator.Contains, oCurrDisVal));	
 //			}
 //			oBinding.filter(aFilter);
 //
@@ -80,7 +71,7 @@ sap.ui.define([
 			var oCurrWo_noVal = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].wo_no;	
 			var oList = this.getView().byId("idList");
 			var oBinding = oList.getBinding("items");
-			aFilter.push(new Filter("wo_no", FilterOperator.Contains, oCurrWo_noVal));
+			aFilter.push(new sap.ui.model.Filter("wo_no", sap.ui.model.FilterOperator.Contains, oCurrWo_noVal));
 			oBinding.filter(aFilter);
 		},
 
@@ -137,6 +128,4 @@ sap.ui.define([
 			this.nav = this.getView().oParent;
 			this.nav.back();
 		}
-
 	});
-});

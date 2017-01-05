@@ -1,6 +1,6 @@
 "use strict";
 jQuery.sap.registerModulePath("airbus.mes.disruptions.attachments", "../components/disruptions/attachments");
-//jQuery.sap.require("airbus.mes.operationdetail.status.Formatter");
+jQuery.sap.require("airbus.mes.disruptions.attachments.Formatter");
 jQuery.sap.require("airbus.mes.disruptions.attachments.ModelManager");
 
 
