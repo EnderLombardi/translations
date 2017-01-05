@@ -450,6 +450,9 @@ airbus.mes.disruptions.Formatter = {
 			return false;
 		}
 	},
+	setFileType: function(){
+		return airbus.mes.settings.AppConfManager.getConfiguration("AIRBUS_ALLOWED_FILE_TYPES");
+	}
 	/*setNumberofAttachment : function(number) {
 		var sValue = number + "\n" + " Attachments";
 		return sValue;

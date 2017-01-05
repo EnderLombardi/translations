@@ -28,6 +28,6 @@
 		"value": "POLY_IP"
 	}, {
 		"key": "AIRBUS_ALLOWED_FILE_TYPES",
-		"value": "txt,jpg,pdf,png,doc,gif,ppt"
+		"value": ["txt", "jpg", "pdf", "png", "doc", "gif", "ppt"]
 	}]
 }

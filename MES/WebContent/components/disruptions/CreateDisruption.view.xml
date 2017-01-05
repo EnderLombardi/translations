@@ -62,7 +62,7 @@
 										</Label>
 									</f:label>
 									<f:fields>
-										<Select id="selectFivemCategory"  selectedKey=""
+										<Select id="selectFivemCategory" selectedKey=""
 											forceSelection="false" change="onSelectionChange">
 											<items>
 												<core:Item text="{i18nModel>5Mclass_01}" key="{i18nModel>5Mclass_01}" />
@@ -91,7 +91,7 @@
 										</Label>
 									</f:label>
 									<f:fields>
-										<ComboBox id="selectIssuer" 
+										<ComboBox id="selectIssuer"
 											items="{ path : 'ressourcePoolModel>/Rowsets/Rowset/0/Row' }"
 											forceSelection="false">
 											<items>
@@ -481,32 +481,20 @@
 										</layoutData>
 										<HBox width="100%" justifyContent="End">
 
-											<u:FileUploader id="idfileUploader"
-												name="myFileUpload"
-												uploadUrl="upload/" 
-												tooltip="{i18nModel>attachFile}"
-												icon="sap-icon://attachment"
-												uploadComplete="onUploadComplete"
-												uploadStart="onUploadStart"
-												change="onFileSelect"
-												buttonOnly="true"
-												typeMissmatch="onTypeMissmatch"
-												iconOnly="true"
-												style="Transparent">
-											
+											<u:FileUploader id="idfileUploader" name="myFileUpload"
+												uploadUrl="upload/" tooltip="{i18nModel>attachFile}" icon="sap-icon://attachment"
+												uploadComplete="onUploadComplete" uploadStart="onUploadStart"
+												change="onFileSelect" buttonOnly="true" typeMissmatch="onTypeMissmatch"
+												iconOnly="true" style="Transparent" fileType="{path:'AttachmentList>/FileType/0/key', formatter: 'airbus.mes.disruptions.Formatter.setFileType'}">
+
 											</u:FileUploader>
-<!-- 													<Button -->
-<!-- 			text="Upload File" -->
-<!-- 			press="handleUploadPress" -->
-<!-- 			visible="false"/> -->
-<!-- 											<Button type="Transparent" icon="sap-icon://attachment" -->
-<!-- 												press="onPressAttachment" class="sapUiSmallMarginEnd attachIcon" -->
-<!-- 												width="2rem" /> -->
-											<Button type="Transparent" icon="sap-icon://camera" press="onCameraPress" width="2rem" />
+											<Button type="Transparent" icon="sap-icon://camera"
+												press="onCameraPress" width="2rem" />
 										</HBox>
 
-										<Link text="{AttachmentList>/RowCount} {i18nModel>Attachment}" press="showAttachedDocsList"  wrapping="true"/>
-										
+										<Link id="idAttachmentLink" text="{AttachmentList>/RowCount} {i18nModel>Attachment}"
+											press="showAttachedDocsList" wrapping="false" />
+
 									</VBox>
 								</f:FormElement>
 
