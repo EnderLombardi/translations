@@ -1251,7 +1251,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
     onAfterRendering : function() {
 //        sap.ui.getCore().byId("polypolyView--stationSelectPolyPoly").setSelectedKey(airbus.mes.polypoly.ModelManager.station_number);
 //        sap.ui.getCore().byId("polypolyView--lineSelectPolyPoly").setSelectedKey(airbus.mes.polypoly.ModelManager.line_number);
-        $("#polypolyPage #polypolytitle").text(airbus.mes.polypoly.oView.getModel("PolypolyI18n").getProperty("polypoly"));
+        $("#polypolyPage #polypolytitle").text(airbus.mes.polypoly.oView.getModel("PolypolyI18n").getProperty("polypolyMatrix"));
         $("#polypolyPage header").children("div").find("span").next().text(airbus.mes.polypoly.oView.getModel("PolypolyI18n").getProperty("back"));
         //track width, set to window width
         var height = $(window).height();
