@@ -34,44 +34,9 @@ sap.ui.controller("airbus.mes.docviewer.display", {
 	 * 
 	 * @memberOf components.docviewer.display
 	 */
-	 onAfterRendering : function() {
-		
-    	// Set the Viewer Element in Model Manager   	
-		 airbus.mes.docviewer.ModelManager.oContainer = this.getView().byId('pdfViewer');
-		
-		// Get ID of the HBox where PDFTron will be placed
-    	airbus.mes.docviewer.ModelManager.oViewerElement = 
-    		document.getElementById(airbus.mes.docviewer.ModelManager.oContainer.sId);
-    	
-
-    	// Finally open the document viewer with the document URL
-    	airbus.mes.docviewer.ModelManager.openDocumentByURL();
-	 },
-	
-	 
-	 savePdf: function(){
-		 // Create an AJAX request to the server, with the data being the command
-		 // string returned by AnnotationManager.getAnnotCommand()
-
-		 if (readerControl.serverUrl == null) {
-			 console.warn("Not configured for server-side annotation saving.");
-			 return;
-		 }
-		 var am = readerControl.docViewer.getAnnotationManager();
-		 var xfdfString = am.getAnnotCommand();
-		 $.ajax({
-			 	type: 'POST',
-		 		url: readerControl.serverUrl + '?did=' + readerControl.docId,
-		 		data: xfdfString,
-		 		success: function(data){
-		 			//Annotations were successfully uploaded to server
-		 		},
-		 		error: function(jqXHR, textStatus, errorThrown) {
-		 			console.warn("Failed to send annotations to server. " + textStatus);
-		 		},
-		 		dataType: 'xml'
-		 });
-	 },
+	 //onAfterRendering : function() {
+	 //
+	 //},
 	 
 	/**
 	 * Called when the Controller is destroyed. Use this one to free resources and
@@ -81,4 +46,16 @@ sap.ui.controller("airbus.mes.docviewer.display", {
 	 */
 	// onExit: function() {
 	// }
+	
+	onCloseDocument: function(){
+		
+		// Call closing function, if any required
+		if(airbus.mes.docviewer.ModelManager.onCloseFunction != undefined && airbus.mes.docviewer.ModelManager.onCloseFunction != "")
+			airbus.mes.docviewer.ModelManager.onCloseFunction();
+		
+		// Go Back
+		nav.back();
+		
+	}
+	
 });

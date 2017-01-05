@@ -31,7 +31,7 @@ airbus.mes.docviewer.Component.prototype.createContent = function() {
 
     if (airbus.mes.docviewer.oView === undefined) {
     	//    Initialization
-        airbus.mes.disruptions.ModelManager.init(sap.ui.getCore());
+        airbus.mes.docviewer.ModelManager.init(sap.ui.getCore());
     	
     	
         //    View on XML
@@ -42,13 +42,14 @@ airbus.mes.docviewer.Component.prototype.createContent = function() {
             height : "100%"
 
         }).addStyleClass("absolutePosition");
-        airbus.mes.docviewer.oView = this.oView;
 
         var i18nModel = new sap.ui.model.resource.ResourceModel({
             bundleUrl : "../components/docviewer/i18n/i18n.properties"
-         });
+        });
+        
+        this.oView.setModel(i18nModel, "i18nModel");
 
-
+        airbus.mes.docviewer.oView = this.oView;
         return this.oView;
 
     } else {

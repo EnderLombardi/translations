@@ -4,15 +4,14 @@ jQuery.sap.declare("airbus.mes.docviewer.ModelManager")
 
 airbus.mes.docviewer.ModelManager = {
 	
-	oContainer: undefined,		// UI5 Object where PDF Tron is placed
-	oViewerElement: undefined, // Object containing DOM element where PDF Tron is placed
+	queryParams: jQuery.sap.getUriParameters(),
 	
 	WebViewer: undefined,  // Object for PDF Tron Web Viewer
 
-	onCloseFunction : undefined,
+	onCloseFunction : undefined, // Function to be called while closing the PDF Tron (Document Viewer)
 	
 	/******** Variables for Data/ File Path ******/
-	fileURL: undefined,
+	//fileURL: undefined,
 	/*********************************************/
 
 	init : function(core) {
@@ -58,23 +57,54 @@ airbus.mes.docviewer.ModelManager = {
 	/********************************
 	 * Open PDF via URL
 	 */
-	openDocumentByURL: function(){
+	openDocumentByURL: function(fileURL){
+		
+		var oViewerElement = document.getElementById("docviewerView--pdfViewer");
+		
 		// Firstly - Empty the container
-		airbus.mes.docviewer.ModelManager.oContainer.removeAllItems()
+		oViewerElement.innerHTML = ""
 		
 		 // Initialize PDF Tron
         airbus.mes.docviewer.ModelManager.WebViewer = new PDFTron.WebViewer({
             type: "html5",
             path: "../lib/pdftron",
-            initialDoc: airbus.mes.docviewer.ModelManager.fileURL,
+            initialDoc: fileURL,
             documentType: "pdf",
             config: "../components/docviewer/config.js",
             serverUrl: "http://localhost/",
-            documentId: "webviewer_developer_guide",
+            documentId: "mes_document_viewer",
+            custom: JSON.stringify({
+            	'save' :  airbus.mes.docviewer.ModelManager.save,
+            	'close': airbus.mes.docviewer.ModelManager.onCloseFunction}),
             enableAnnotations: true,
             streaming: false,
             useDownloader: false
-        }, airbus.mes.docviewer.ModelManager.oViewerElement);
+        }, oViewerElement);
 		
-	}
+	},
+	
+	
+	save: function(){
+		// Create an AJAX request to the server, with the data being the command
+		// string returned by AnnotationManager.getAnnotCommand()
+
+		if (readerControl.serverUrl == null) {
+			console.warn("Not configured for server-side annotation saving.");
+			return;
+		}
+		var am = readerControl.docViewer.getAnnotationManager();
+		var xfdfString = am.getAnnotCommand();
+		$.ajax({
+			type: 'POST',
+		 	url: readerControl.serverUrl + '?did=' + readerControl.docId,
+		 	data: xfdfString,
+		 	success: function(data){
+		 		//Annotations were successfully uploaded to server
+		 	},
+		 	error: function(jqXHR, textStatus, errorThrown) {
+		 		console.warn("Failed to send annotations to server. " + textStatus);
+		 	},
+		 	dataType: 'xml'
+		});
+	 },
 };

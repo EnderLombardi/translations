@@ -1,8 +1,8 @@
 {
-	"id": "airbus.mes.settings.SettingsScreenComponent",
-    "name": "airbus.mes.settings.SettingsScreenComponent",
+	"id": "airbus.mes.documentviewer.MESDocumentViewerComponent",
+    "name": "airbus.mes.documentviewer.MESDocumentViewerComponent",
     "version": "0.1.0",
-    "description": "Settings Screen Component",
+    "description": "MES Document Viewer",
     "keywords": [
         "view" 
     ],

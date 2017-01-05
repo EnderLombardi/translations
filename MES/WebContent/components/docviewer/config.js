@@ -6,31 +6,57 @@
 */
 
 "use strict";
+
 (function() {
+	
+	var custom = JSON.parse(window.ControlUtils.getCustomData());
+	
     //=========================================================
     // Load a custom script for the "about" page
     //=========================================================
     $.extend(ReaderControl.config, {
-        customScript : 'defaultScriptExtension.js',
-        ui:{
-            hideInfo : true
-        }
+        customScript : 'defaultScriptExtension.js'
     });
     
-    //=========================================================
-    // Add Save button to the toolbar
-    //=========================================================
-    var rightAlignedElements = $('#control .right-aligned');
-    var container = $('<div>').addClass('group');
-    rightAlignedElements.append(container);
+    $(document).on('documentLoaded', function() {
+    	//========================================================
+    	// Add button to the Tool Bar
+    	//=========================================================
+    	var container = $('<div>').addClass('group');
+    	
+    	// Save Button
+    	var saveButton = $('<span>').attr({
+    		'id': 'saveDocumentButton',
+    		'class': 'glyphicons floppy_save'
+    	}).on('click', custom.close());
 
-    var saveButton = $('<span>').attr({
-        'id': 'saveButton',
-        'class': 'glyphicons disk_save'
-    })
-    .on('click', airbus.mes.pdftron.oView.oController.savePdf);
+    	container.append(saveButton);
+    	
+    	
+    	// Close Button
+    	var closeButton = $('<span>').attr({
+    		'id': 'closeDocumentButton',
+    		'class': 'glyphicons remove'
+    	}).on('click', function(){
+    		if(custom.close != undefined && custom.close != "")
+    			custom.close();
+    	});
 
-    container.append(saveButton);
+    	container.append(closeButton);
+    	
+    	
+    	$('#control .right-aligned').append(container);
+    	
+    	
+    	
+
+    	//========================================================
+    	// Hide Info button
+    	//=========================================================
+        $( "#control .right-aligned .group:has(#optionsButton)" ).hide();
+    });
+    
+    
     
     
 

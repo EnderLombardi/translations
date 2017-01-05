@@ -1,6 +1,21 @@
 <core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m" controllerName="airbus.mes.docviewer.display" xmlns:html="http://www.w3.org/1999/xhtml">
-	<Page title="MES" enableScrolling="false" showHeader="false" class="GenricBgColor">
+	<Page title="MES Document Viewer" enableScrolling="false" showHeader="false" class="GenricBgColor">
+		<subHeader>
+            <Bar class="pageHeader">
+                <contentLeft>
+                    <Button id="navBack" icon="sap-icon://arrow-left" text="{i18nModel>navBarBack}" press="onCloseDocument" type="Transparent"/>
+                </contentLeft>
+                <contentMiddle>
+                    <Label id="docHeaderInfo" text="" />
+                </contentMiddle>
+                <contentRight>
+                    <Button text="{i18nModel>save}" type="Transparent"
+                        class="tiffanyColor subHeaderButtonColor sapUiSmallMarginBegin"
+                        icon="sap-icon://save" press="saveDocument" />
+                </contentRight>
+            </Bar>
+        </subHeader>
 		<content>
 			<HBox id="pdfViewer" height="100%" width="100%"></HBox>
 		</content>
