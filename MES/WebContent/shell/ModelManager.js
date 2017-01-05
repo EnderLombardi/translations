@@ -255,8 +255,13 @@ airbus.mes.shell.ModelManager = {
 		 // websocket is closed.
 		  console.log("Connection is closed..."); 
 		},
-		
-		createJsonModel : function( oController,aName) {
+		/**
+	     * Permit to create new sap ui5 json model
+	     *
+	     * @param{OBEJCT} oController, Object used in parameter in all ModelManager
+	     * @param{ARRAY} aName, Array of all id of your model
+	     */
+		createJsonModel : function(oController,aName) {
 			
 			aName.forEach(function(el){
 			

@@ -93,21 +93,20 @@ airbus.mes.polypoly.ModelManager = {
 
 		// Initialization of all models
 		/* Station Selection on PolyPolyscreen */
-		core.setModel(new sap.ui.model.json.JSONModel(), "stationList");
-		core.setModel(new sap.ui.model.json.JSONModel(),"mTableModel");
-		core.setModel(new sap.ui.model.json.JSONModel(),"mQATableModel");
-		// this model seems to be the main model to create polypoly
-		core.setModel(new sap.ui.model.json.JSONModel(),"mii");
+		airbus.mes.shell.ModelManager.createJsonModel(core,["stationList",
+		                                                    "mTableModel",
+		                                                    "mQATableModel",
+		                                                    "mii",
+		                                                    "listQA", 
+		                                                    "columnModel",
+		                                                    "rpModel",
+		                                                    "affectationModel",
+		                                                    ]);
 		
+		core.setModel(new sap.ui.model.json.JSONModel("../components/polypoly/model/needlevels.json"), "needlevels");
+	
 		// attach event on end of loading model
 		core.getModel("mii").attachRequestCompleted(airbus.mes.polypoly.ModelManager.onPolyPolyModelLoaded);
-				
-		core.setModel(new sap.ui.model.json.JSONModel(), "listQA");
-		core.setModel(new sap.ui.model.json.JSONModel(), "columnModel");
-		core.setModel(new sap.ui.model.json.JSONModel(), "rpModel");
-		core.setModel(new sap.ui.model.json.JSONModel("../components/polypoly/model/needlevels.json"), "needlevels");
-		core.setModel(new sap.ui.model.json.JSONModel(), "affectationModel");
-		
 		
 		var dest;
 
