@@ -15,7 +15,7 @@ LineTracker Header
 }
 
 #idLinetracker1--linetracker_timeLabel{
-	color: #ffffff !important;
+    color: #ffffff !important;
     font-size: 1.1rem !important;
 }
 
@@ -25,7 +25,7 @@ LineTracker Header
 }
 
 #idLinetracker1--hideKPI-content, #idLinetracker1--hideKPI-img{
-	color: #74d2e7 !important;
+    color: #74d2e7 !important;
 }
 
 /************************
@@ -181,33 +181,33 @@ Linetracker View (Main Table)
     .classLineTrackerTable .stationPopoverBtns div span {
         background-color: #FFFFFF !important;
     }
-    .sapUiTableColHdrScr{
-        .sapUiTableColHdr{
-            #idLinetracker1--lineTrackerTrendBorder{
-                border-left: 1px solid #60B5CD;
-                background-color: #D5F1F8;
-                &+ div{
-                    &+ div{
-                        border-right: 1px solid #60B5CD;
-                        background-color: #D5F1F8;
-                        &+div + div{
-                            background-color: #D5F1F8;
-                        }
-                        &+ div + div + div + div {
-                            border-right: 1px solid #60B5CD;
-                            background-color: #D5F1F8;
-                            &+div + div {
-                                background-color: #D5F1F8;
-                                &+div + div {
-                                    background-color: #D5F1F8;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
+//    .sapUiTableColHdrScr{
+//        .sapUiTableColHdr{
+//            #idLinetracker1--lineTrackerTrendBorder{
+//                border-left: 1px solid #60B5CD;
+//                background-color: #D5F1F8;
+//                &+ div{
+//                    &+ div{
+//                        border-right: 1px solid #60B5CD;
+//                        background-color: #D5F1F8;
+//                        &+div + div{
+//                            background-color: #D5F1F8;
+//                        }
+//                        &+ div + div + div + div {
+//                            border-right: 1px solid #60B5CD;
+//                            background-color: #D5F1F8;
+//                            &+div + div {
+//                                background-color: #D5F1F8;
+//                                &+div + div {
+//                                    background-color: #D5F1F8;
+//                                }
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//    }
     #idLinetracker1--linetrackerTablePercentage{
         font-weight: 600;
     }
@@ -853,5 +853,5 @@ KPI Header Content
 Physical Station Popover
 ****************************/
 .popOverbgColor{
-background-color: #f7f7f7 !important; 
+background-color: #f7f7f7 !important;
 }
