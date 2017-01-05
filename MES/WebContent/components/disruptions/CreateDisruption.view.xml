@@ -491,7 +491,8 @@
 												change="onFileSelect"
 												buttonOnly="true"
 												typeMissmatch="onTypeMissmatch"
-												iconOnly="true">
+												iconOnly="true"
+												style="Transparent">
 											
 											</u:FileUploader>
 <!-- 													<Button -->
