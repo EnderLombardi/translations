@@ -9,9 +9,7 @@ jQuery.sap.declare("airbus.mes.disruptions.Component");
 sap.ui.core.UIComponent.extend("airbus.mes.disruptions.Component", {
     metadata : {
         properties : {},
-        includes : [ "../../Sass/global.css"]
-    // array of css and/or javascript files that should be used in the component
-
+        //global.css already included in components\settings\manifest.json so no need to include it here
     }
 
 });

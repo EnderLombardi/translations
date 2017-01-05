@@ -9,8 +9,7 @@ jQuery.sap.declare("airbus.mes.operationdetail.status.Component");
 sap.ui.core.UIComponent.extend("airbus.mes.operationdetail.status.Component", {
     metadata : {
         properties : {},
-        includes : [ "../../../Sass/global.css" ]
-
+        //global.css already included in components\settings\manifest.json so no need to include it here
     }
 });
 

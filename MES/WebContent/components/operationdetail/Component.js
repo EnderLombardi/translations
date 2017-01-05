@@ -2,7 +2,7 @@
 jQuery.sap.registerModulePath("airbus.mes.operationdetail", "../components/operationdetail");
 jQuery.sap.require("airbus.mes.operationdetail.Formatter");
 jQuery.sap.require("airbus.mes.operationdetail.ModelManager");
-jQuery.sap.includeStyleSheet("../Sass/global.css");
+//jQuery.sap.includeStyleSheet("../Sass/global.css");
 
 
 jQuery.sap.declare("airbus.mes.operationdetail.Component");
@@ -10,8 +10,7 @@ jQuery.sap.declare("airbus.mes.operationdetail.Component");
 sap.ui.core.UIComponent.extend("airbus.mes.operationdetail.Component", {
     metadata : {
         properties : {},
-        // includes : ["" ]
-
+        //global.css already included in components\settings\manifest.json so no need to include it here
     }
 });
 
