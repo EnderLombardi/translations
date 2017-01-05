@@ -42,9 +42,9 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 * @memberOf classLineTrackerTable.Linetracker
 */
 	onAfterRendering: function() {
-		sap.ui.getCore().byId("idLinetracker1--linetrackerTable").attachBrowserEvent("onscroll",function(){
-			sap.ui.getCore().byId("idLinetracker1--linetrackerTable").rerender();
-			})
+//		sap.ui.getCore().byId("idLinetracker1--linetrackerTable").attachBrowserEvent("onscroll",function(){
+//			sap.ui.getCore().byId("idLinetracker1--linetrackerTable").rerender();
+//			})
 	},
 
 /**
@@ -83,7 +83,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
  * To Add Station in Line Tracker Station List
  * 
  */
-	onAddStation : function() {
+	/*onAddStation : function() {
 		var stationRow = {
 				"station" : "Station 10",
 				"planned" : 20,
@@ -98,7 +98,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 		this.getView().getModel("stationDataModel").getProperty("/list").push(stationRow);
 		
 		this.getView().getModel("stationDataModel").refresh();
-	},
+	},*/
 	
 /**
  * BR: SD-PPC-LT-100
@@ -177,8 +177,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 			this.getView().addDependent(
 					this.oEditStation);
 			
-		}
-		
+		}	
 		
 		
 		this.filterField(this.selectTree);
@@ -195,6 +194,8 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 			sap.ui.getCore().byId("selectProgram").setValue(sap.ui.getCore().getModel('stationDataModel').oData[length-1].program);
 			sap.ui.getCore().byId("selectLine").setValue(sap.ui.getCore().getModel('stationDataModel').oData[length-1].line);
 			sap.ui.getCore().byId("selectStation").setValue(sap.ui.getCore().getModel('stationDataModel').oData[length-1].station);
+			
+						
 		}else{
 			sap.ui.getCore().byId("editStation").setTitle(this.oView.getModel("i18n").getProperty('editStation'));
 			sap.ui.getCore().byId("editStation").setIcon("sap-icon://edit");
@@ -290,15 +291,6 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 		}
 	},
 	
-	
-	/*_handleValueHelpClose : function (evt) {
-		var oSelectedItem = evt.getParameter("selectedItem");
-		if (oSelectedItem) {
-			var productInput = this.getView().byId(this.inputId);
-			productInput.setValue(oSelectedItem.getTitle());
-		}
-		evt.getSource().getBinding("items").filter([]);
-	},*/
 
 	/**
 	 * To display Station KPI Header slide
