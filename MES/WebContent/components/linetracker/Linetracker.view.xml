@@ -39,10 +39,10 @@
                         <ToolbarSpacer width="58%" />
                         <Text text="{i18n>forcastEndOfAssembly}" width="9.5%"
                               class="headerColumnText headerTextTableLinetracker sapUiTinyMarginBottom" />
-                        <ToolbarSpacer width="1%" />
+                        <ToolbarSpacer width="2%" />
                         <Text text="{i18n>remainingToDo}" width="9.7%"
                               class="headerColumnText headerTextTableLinetracker sapUiTinyMarginBottom" />
-                        <ToolbarSpacer width="1.5%" />
+                        <ToolbarSpacer width="2%" />
                         <Text text="{i18n>openDisruptionAndon}" width="9.7%"
                               class="headerColumnText headerTextTableLinetracker sapUiTinyMarginBottom" />
                     </Toolbar>
