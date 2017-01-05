@@ -15,35 +15,34 @@ airbus.mes.stationtracker.ModelManager = {
        settings : undefined,
        showDisrupionBtnClicked : false, // button Disruption on Station Tracker clicked
        init : function(core) {
-
-
-              core.setModel(new sap.ui.model.json.JSONModel(), "operationDetailModel");// Model having operation detail
-              core.setModel(new sap.ui.model.json.JSONModel(), "WorkListModel");
-              core.setModel(new sap.ui.model.json.JSONModel(), "stationTrackerRModel"); // Station tracker model  // reschedule line
-              core.setModel(new sap.ui.model.json.JSONModel(), "stationTrackerIModel"); // Station tracker model// initial line
-              core.setModel(new sap.ui.model.json.JSONModel(), "shiftsModel"); // Shifts// model
-              core.setModel(new sap.ui.model.json.JSONModel(), "affectationModel");
-              core.setModel(new sap.ui.model.json.JSONModel(), "unPlannedModel"); // Unplanned// // model
-              core.setModel(new sap.ui.model.json.JSONModel(), "groupModel"); // Unplanned      // Filter// Model
-              core.setModel(new sap.ui.model.json.JSONModel(), "OSWModel"); // OutStanding// Work      // model
-              core.setModel(new sap.ui.model.json.JSONModel(), "stationTrackerShift"); // Shifts// for/ station// tracker
-              core.setModel(new sap.ui.model.json.JSONModel(), "KPI"); // KPI
-              core.setModel(new sap.ui.model.json.JSONModel(), "productionGroupModel"); // production Group model
-              core.setModel(new sap.ui.model.json.JSONModel(), "ressourcePoolModel"); // Resource// poolModel
-              core.setModel(new sap.ui.model.json.JSONModel(), "groupModel"); // Unplanned// Filter// Model
-              core.setModel(new sap.ui.model.json.JSONModel(), "KPIextraWork"); // KPI Extra Work
-              core.setModel(new sap.ui.model.json.JSONModel(), "KPItaktAdherence"); // KPI Takt Adherence
-              core.setModel(new sap.ui.model.json.JSONModel(), "phStationSelected"); // physical station Selected for Osw
-      
-              core.setModel(new sap.ui.model.json.JSONModel(), "KPIshiftStaffing"); // KPI Shift Staffing
-              core.setModel(new sap.ui.model.json.JSONModel(), "KPItaktEfficiency"); // KPI Shift Staffing
-              core.setModel(new sap.ui.model.json.JSONModel(), "KPIresolutionEfficiency"); // KPI Resolution Staffing
-              core.setModel(new sap.ui.model.json.JSONModel(), "KPIdisruption"); // KPI Resolution Staffing
-              core.setModel(new sap.ui.model.json.JSONModel(), "KPIchartTaktAdherence"); // KPI Resolution Staffing
-              core.setModel(new sap.ui.model.json.JSONModel(), "spentTimedataModel"); // to store and get spent time
-
-
-           this.settings = airbus.mes.settings.ModelManager;
+    	  
+    	   var aModel = ["operationDetailModel", // Model having operation detail
+    	                 "WorkListModel",
+    	                 "stationTrackerRModel", // Station tracker model  // reschedule line
+    	                 "stationTrackerIModel",  // Station tracker model// initial line
+    	                 "shiftsModel", // Shifts// model
+    	                 "affectationModel",
+    	                 "unPlannedModel", // Unplanned// // model
+    	                 "groupModel",  // Unplanned      // Filter// Model
+    	                 "OSWModel", // OutStanding// Work      // model
+    	                 "stationTrackerShift", // Shifts// for/ station// tracker
+    	                 "KPI", // KPI
+    	                 "productionGroupModel", // production Group model
+    	                 "ressourcePoolModel", // Resource// poolModel
+    	                 "groupModel",   // Unplanned// Filter// Model
+    	                 "KPIextraWork", // KPI Extra Work
+    	                 "KPItaktAdherence", // KPI Takt Adherence
+    	                 "phStationSelected", // physical station Selected for Osw
+    	                 "KPIshiftStaffing", // KPI Shift Staffing
+    	                 "KPItaktEfficiency", // KPI Shift Staffing
+    	                 "KPIresolutionEfficiency", // KPI Shift Staffing
+    	                 "KPIdisruption", // KPI Resolution Staffing
+    	                 "KPIchartTaktAdherence", // KPI Resolution Staffing
+    	                 "spentTimedataModel", // KPI Resolution Staffing
+    	                 ]
+    	   
+    	   airbus.mes.shell.ModelManager.createJsonModel(core,aModel);
+    	   this.settings = airbus.mes.settings.ModelManager;
            
            core.getModel("stationTrackerRModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onStationTrackerLoad);
            core.getModel("stationTrackerIModel").attachRequestCompleted( airbus.mes.stationtracker.ModelManager.onStationTrackerLoadInitial);

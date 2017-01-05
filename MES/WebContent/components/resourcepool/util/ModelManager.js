@@ -16,8 +16,9 @@ airbus.mes.resourcepool.util.ModelManager = {
     queryParams : jQuery.sap.getUriParameters(),
 
     init : function(core) {
-        core.setModel(new sap.ui.model.json.JSONModel(), "ValueHelpModel");
-        core.setModel(new sap.ui.model.json.JSONModel(), "ResourcePoolDetailModel");
+        
+		airbus.mes.shell.ModelManager.createJsonModel(core,["ValueHelpModel","ResourcePoolDetailModel"]);
+
         var dest;
 
         switch (window.location.hostname) {

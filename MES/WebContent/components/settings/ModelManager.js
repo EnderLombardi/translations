@@ -27,18 +27,11 @@ airbus.mes.settings.ModelManager = {
 	init : function(core) {
 
 		this.core = core;
-
-		core.setModel(new sap.ui.model.json.JSONModel(), "plantModel");
-		core.setModel(new sap.ui.model.json.JSONModel(), "siteModel");
-		core.setModel(new sap.ui.model.json.JSONModel(), "program");
-		core.setModel(new sap.ui.model.json.JSONModel(), "site");
+	
+		airbus.mes.shell.ModelManager.createJsonModel(core,["plantModel","siteModel","program","site"]);
 
 		core.getModel("userSettingModel").attachRequestCompleted(airbus.mes.settings.ModelManager.onUserSettingLoad);
 		core.getModel("plantModel").attachRequestCompleted(airbus.mes.settings.ModelManager.onPLantModelLoad);
-
-		
-		// core.setModel(new sap.ui.model.json.JSONModel(), "langModel");
-		// core.setModel(new sap.ui.model.json.JSONModel(), "userSettingModel");
 
 		var dest;
 

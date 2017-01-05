@@ -7,11 +7,9 @@ airbus.mes.shell.ModelManager = {
 		i18nModel: undefined,
 				
 		init : function(core) {
-			
-			core.setModel(new sap.ui.model.json.JSONModel(),"userDetailModel");	
-			core.setModel(new sap.ui.model.json.JSONModel(),"userSettingModel");
-			
-		
+
+			airbus.mes.shell.ModelManager.createJsonModel(core,["userDetailModel","userSettingModel"]);
+
 			var dest;
 
 			switch (window.location.hostname) {
@@ -256,5 +254,17 @@ airbus.mes.shell.ModelManager = {
 		brOnClose : function(){ 
 		 // websocket is closed.
 		  console.log("Connection is closed..."); 
+		},
+		
+		createJsonModel : function( oController,aName) {
+			
+			aName.forEach(function(el){
+			
+				var oModel = new sap.ui.model.json.JSONModel();
+				oModel.setSizeLimit(10000);
+				oController.setModel(oModel,el);	
+							
+			})
+				
 		}
 }

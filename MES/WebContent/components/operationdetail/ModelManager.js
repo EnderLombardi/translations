@@ -52,7 +52,8 @@ airbus.mes.operationdetail.ModelManager = {
 			}
 		}
 
-		this.core.setModel(new sap.ui.model.json.JSONModel(), "reasonCodeModel");
+		airbus.mes.shell.ModelManager.createJsonModel(core,["reasonCodeModel"]);
+
 
 	},
 

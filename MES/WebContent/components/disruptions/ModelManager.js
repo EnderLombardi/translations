@@ -12,17 +12,15 @@ airbus.mes.disruptions.ModelManager = {
 
 		this.core = core;
 
-		core.setModel(new sap.ui.model.json.JSONModel(),
-				"operationDisruptionsModel");
+		airbus.mes.shell.ModelManager.createJsonModel(core,["operationDisruptionsModel",
+		                                                    "DisruptionDetailModel",
+		                                                    "disruptionCustomData",
+		                                                    "disruptionCategoryModel",
+		                                                    "MaterialListModel", // Material List Model
+		                                                    "JigtoolListModel", // Jigtool List Model
+		                                                    ]);
 
-		sap.ui
-				.getCore()
-				.getModel("operationDisruptionsModel")
-				.attachRequestCompleted(
-						airbus.mes.disruptions.ModelManager.onOperationDisruptionsLoad);
-
-		core.setModel(new sap.ui.model.json.JSONModel(),
-				"DisruptionDetailModel");
+		sap.ui.getCore().getModel("operationDisruptionsModel").attachRequestCompleted(airbus.mes.disruptions.ModelManager.onOperationDisruptionsLoad);
 
 		var dest;
 
@@ -56,31 +54,7 @@ airbus.mes.disruptions.ModelManager = {
 				}
 			}
 		}
-		// create Model For setting fields of form editable
-		this.core.setModel(new sap.ui.model.json.JSONModel(), "setEditable");
-		core.getModel("setEditable").setData({
-			"editable" : false
-		});
 
-		this.core.setModel(new sap.ui.model.json.JSONModel(),
-				"disruptionCustomData");
-
-		this.core.setModel(new sap.ui.model.json.JSONModel(),
-				"disruptionCategoryModel");
-
-		// Material List Model
-		this.core.setModel(new sap.ui.model.json.JSONModel(),
-				"MaterialListModel");
-
-		// Jigtool List Model
-		this.core.setModel(new sap.ui.model.json.JSONModel(),
-				"JigtoolListModel");
-		
-		this.core.setModel(new sap.ui.model.json.JSONModel(),
-		"AttachmentList");
-		
-		
-		
 		sap.ui
 				.getCore()
 				.getModel("disruptionCustomData")

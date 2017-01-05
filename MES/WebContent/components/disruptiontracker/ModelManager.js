@@ -4,7 +4,8 @@ airbus.mes.disruptiontracker.ModelManager = {
 	oDisruptionFilter: {},
 
 	init : function(core) {
-		core.setModel(new sap.ui.model.json.JSONModel(), "disruptionsTrackerModel");//Model having disruptions tracker data
+		//Model having disruptions tracker data
+		airbus.mes.shell.ModelManager.createJsonModel(core,["disruptionsTrackerModel"]);
 		core.getModel("disruptionsTrackerModel").attachRequestCompleted(airbus.mes.disruptiontracker.ModelManager.onDisruptionsLoad);
 	},
 	
