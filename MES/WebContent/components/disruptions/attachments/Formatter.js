@@ -37,15 +37,5 @@ airbus.mes.disruptions.attachments.Formatter = {
 	
 	setDisruptionStatuses : function(status){
 		return airbus.mes.disruptions.attachments.oView.getModel("i18nModel").getProperty(status);
-	},
-	isStatusFinal : function(status) {
-		if( status === airbus.mes.disruptions.Formatter.status.closed 
-	    ||  status === airbus.mes.disruptions.Formatter.status.solved
-	    ||  status === airbus.mes.disruptions.Formatter.status.rejected 
-	    ||  status === airbus.mes.disruptions.Formatter.status.deleted	){
-			return true;
-		} else {
-			return false;
-		}
 	}
 };

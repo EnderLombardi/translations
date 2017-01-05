@@ -2,7 +2,8 @@
 	xmlns:core="sap.ui.core">
 	<Popover showHeader="false" placement="Left" contentHeight="400px">
 		<List id="idAttachmentTable" headerText="Attachments" mode="Delete"
-			delete="onPressDeleteButton" items="{
+			delete="airbus.mes.disruptions.AttachmentManager.onPressDeleteButton"
+			items="{
 		 path: 'AttachmentList>/items' }">
 			<headerToolbar>
 				<Toolbar>

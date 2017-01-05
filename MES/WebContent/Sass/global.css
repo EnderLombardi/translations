@@ -3290,6 +3290,21 @@ LineTracker Header
 #idLinetracker1--linetrackerHeaderKPI-CollapsedImg {
   visibility: hidden; }
 
+#idLinetracker1--linetracker_dateLabel {
+  color: #ffffff !important;
+  font-size: 1.2rem !important; }
+
+#idLinetracker1--linetracker_timeLabel {
+  color: #ffffff !important;
+  font-size: 1.1rem !important; }
+
+.headerIcons {
+  color: #FFFFFF;
+  font-size: 1.5rem; }
+
+#idLinetracker1--hideKPI-content, #idLinetracker1--hideKPI-img {
+  color: #74d2e7 !important; }
+
 /************************
 Linetracker View (Main Table)
 *************************/
@@ -3420,7 +3435,7 @@ Linetracker View (Main Table)
   font-family: Arial,Helvetica,sans-serif; }
 #idLinetracker1 span.sapUiIcon.trendIconLinetracker {
   font-size: 2em;
-  padding: 15px; }
+  margin-bottom: 10px; }
 #idLinetracker1 span.dateTableLinetracker {
   color: #5F7381;
   font-stretch: semi-condensed;
@@ -3471,7 +3486,7 @@ Custom Progress Bar
   background-color: #E4002B !important; }
 
 .progress-bar-grey {
-  background-color: #7F7F7F !important; }
+  background-color: rgba(127, 127, 127, 0.69) !important; }
 
 .progress-bar-verticalDiv {
   background-color: #3F3F3F !important; }
@@ -3546,13 +3561,6 @@ KPI Charts
 .KPIlinetrackerHeader {
   margin-left: 0rem; }
 
-/*
-#idLinetracker1--linetrackerStationKPI{
-    background: #fff !important;
-}
-#idLinetracker1--__toolbar3.headerTitle{
-     background: #fff !important;
-} */
 .KPIheaderTitle {
   font-size: 1.35rem; }
 
@@ -3801,9 +3809,9 @@ BOX RESOLUTION EFFICIENCY
   opacity: 0; }
 
 /*******************************
-SHIFT STAFFING
+SHIFT STAFFING for Station KPI
 ********************************/
-#idLinetracker1--shifStaffingHeader-dmc-chart .Left {
+#idLinetracker1--stationshifStaffingHeader-dmc-chart .Left {
   background-color: #84bd00; }
 
 #idLinetracker1--shifStaffingHeader .sapSuiteDmcTitle, #idLinetracker1--shifStaffingHeader .sapSuiteDmcLbls {
@@ -3817,61 +3825,66 @@ SHIFT STAFFING
 #idLinetracker1--shifStaffingHeader .sapSuiteDmcBarDeltaStripe {
   background-color: #74D2E7; }
 
+/************************
+Station header KPI Styles
+*************************/
 /********************
 KPI Header Content
 *********************/
-/*KPI header*/
-#idLinetracker1--linetrackerStationKPI .classKpiHeaderContent {
+/*KPI header
+#idLinetracker1--linetrackerStationKPI{
+.classKpiHeaderContent {
   height: 195px;
   overflow-y: hidden; }
-#idLinetracker1--linetrackerStationKPI .classKpiHeaderContent .contentHeaderCont {
-  white-space: normal;
-  background-color: #0f2d65;
-  border-right: solid 1px #74d2e7;
-  margin: 0px !important;
-  border-bottom: none;
-  border-top: solid 1px #74d2e7;
-  padding: 0 5px; }
-#idLinetracker1--linetrackerStationKPI .classKpiHeaderContent .contentHeaderCont:last-child {
-  border-right: none !important; }
-#idLinetracker1--linetrackerStationKPI .classKpiHeaderContent .sapSuiteCmpChartBarNoValue {
-  background-color: rgba(187, 188, 188, 0.15); }
-#idLinetracker1--linetrackerStationKPI .classKpiHeaderContent .kpiValue {
-  font-size: 1.6vw;
-  width: 100%;
-  text-align: center !important; }
-#idLinetracker1--linetrackerStationKPI .classKpiHeaderContent .kpiName {
-  text-align: center !important;
-  width: 100%; }
-#idLinetracker1--linetrackerStationKPI .classKpiHeaderContent .whiteTextHeader {
-  white-space: normal;
-  text-align: center !important;
-  color: #ffffff;
-  width: 100%;
-  font-size: 1vw; }
-#idLinetracker1--linetrackerStationKPI .classKpiHeaderContent .sapSuiteCmpChartItemTitle, #idLinetracker1--linetrackerStationKPI .classKpiHeaderContent .sapSuiteCmpChartItemValue, #idLinetracker1--linetrackerStationKPI .classKpiHeaderContent label {
-  color: #ffffff;
-  font-size: 0.8vw; }
+  .classKpiHeaderContent .contentHeaderCont {
+    white-space: normal;
+    background-color: #0f2d65;
+    border-right: solid 1px #74d2e7;
+    margin: 0px !important;
+    border-bottom: none;
+    border-top: solid 1px #74d2e7;
+    padding: 0 5px; }
+  .classKpiHeaderContent .contentHeaderCont:last-child {
+    border-right: none !important; }
+  .classKpiHeaderContent .sapSuiteCmpChartBarNoValue {
+    background-color: rgba(187, 188, 188, 0.15); }
+  .classKpiHeaderContent .kpiValue {
+    font-size: 1.6vw;
+    width: 100%;
+    text-align: center !important; }
+  .classKpiHeaderContent .kpiName {
+    text-align: center !important;
+    width: 100%; }
+  .classKpiHeaderContent .whiteTextHeader {
+    white-space: normal;
+    text-align: center !important;
+    color: #ffffff;
+    width: 100%;
+    font-size: 1vw; }
+  .classKpiHeaderContent .sapSuiteCmpChartItemTitle, .classKpiHeaderContent .sapSuiteCmpChartItemValue,
+  .classKpiHeaderContent label {
+    color: #ffffff;
+    font-size: 0.8vw; }
+}
+*/
+ /*KPI boxes
 
-/*KPI boxes*/
 .kpiBoxes > .sapMFlexItem:first-child {
   height: 50px; }
-
-.kpiBoxes > .sapMFlexItem:first-child .sapMLabel {
-  display: inline-block;
-  vertical-align: middle !important;
-  max-width: 100% !important;
-  max-height: 50px; }
+  .kpiBoxes > .sapMFlexItem:first-child .sapMLabel {
+    display: inline-block;
+    vertical-align: middle !important;
+    max-width: 100% !important;
+    max-height: 50px; }
 
 .labourEfficiencyBox .sapMFlexItem:nth-child(2) {
   height: 144px;
   display: inline-block;
   vertical-align: middle !important; }
-
-.labourEfficiencyBox .sapMFlexItem:nth-child(2) .sapMLabel {
-  vertical-align: super !important;
-  max-height: 144px; }
-
+  .labourEfficiencyBox .sapMFlexItem:nth-child(2) .sapMLabel {
+    vertical-align: super !important;
+    max-height: 144px; }
+*/
 /*general kpi*/
 .kpiBoxExtraWork .sapMFlexItem {
   width: 100% !important;
@@ -4024,6 +4037,12 @@ KPI Header Content
   max-width: 100% !important;
   vertical-align: middle !important;
   max-height: 25px; }
+
+/***************************
+Physical Station Popover
+****************************/
+.popOverbgColor {
+  background-color: #f7f7f7 !important; }
 
 /*!
 *  Font Awesome 4.5.0 by @davegandy - http://fontawesome.io - @fontawesome

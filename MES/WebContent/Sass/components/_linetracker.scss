@@ -9,6 +9,25 @@ LineTracker Header
     visibility: hidden;
 }
 
+#idLinetracker1--linetracker_dateLabel{
+    color: #ffffff !important;
+    font-size: 1.2rem !important;
+}
+
+#idLinetracker1--linetracker_timeLabel{
+	color: #ffffff !important;
+    font-size: 1.1rem !important;
+}
+
+.headerIcons{
+    color: #FFFFFF;
+    font-size: 1.5rem;
+}
+
+#idLinetracker1--hideKPI-content, #idLinetracker1--hideKPI-img{
+	color: #74d2e7 !important;
+}
+
 /************************
 Linetracker View (Main Table)
 *************************/
@@ -219,7 +238,7 @@ Linetracker View (Main Table)
         &.sapUiIcon{
             &.trendIconLinetracker{
                 font-size: 2em;
-                padding: 15px;
+                margin-bottom: 10px;
             }
         }
         &.dateTableLinetracker{
@@ -288,7 +307,7 @@ Custom Progress Bar
 }
 
 .progress-bar-grey {
-    background-color: #7F7F7F !important;
+    background-color: rgba(127, 127, 127, 0.69) !important;
 }
 
 .progress-bar-verticalDiv {
@@ -378,13 +397,7 @@ KPI Charts
 .KPIlinetrackerHeader{
     margin-left:0rem;
 }
-/*
-#idLinetracker1--linetrackerStationKPI{
-    background: #fff !important;
-}
-#idLinetracker1--__toolbar3.headerTitle{
-     background: #fff !important;
-} */
+
 .KPIheaderTitle{
      font-size: 1.35rem;
 }
@@ -614,10 +627,10 @@ BOX RESOLUTION EFFICIENCY
     opacity: 0;
 }
 /*******************************
-SHIFT STAFFING
+SHIFT STAFFING for Station KPI
 ********************************/
 
-#idLinetracker1--shifStaffingHeader-dmc-chart .Left {
+#idLinetracker1--stationshifStaffingHeader-dmc-chart .Left {
     background-color: $dark-lime-green;
 }
 #idLinetracker1--shifStaffingHeader{
@@ -640,11 +653,15 @@ SHIFT STAFFING
 
 }
 
+/************************
+Station header KPI Styles
+*************************/
+
 
 /********************
 KPI Header Content
 *********************/
-/*KPI header*/
+/*KPI header
 #idLinetracker1--linetrackerStationKPI{
 .classKpiHeaderContent {
   height: 195px;
@@ -679,7 +696,9 @@ KPI Header Content
     color: #ffffff;
     font-size: 0.8vw; }
 }
- /*KPI boxes*/
+*/
+
+ /*KPI boxes
 
 .kpiBoxes > .sapMFlexItem:first-child {
   height: 50px; }
@@ -696,7 +715,7 @@ KPI Header Content
   .labourEfficiencyBox .sapMFlexItem:nth-child(2) .sapMLabel {
     vertical-align: super !important;
     max-height: 144px; }
-
+*/
  /*general kpi*/
 
 .kpiBoxExtraWork .sapMFlexItem {
@@ -829,3 +848,10 @@ KPI Header Content
   vertical-align: middle !important;
   max-height: 25px; }
 
+
+/***************************
+Physical Station Popover
+****************************/
+.popOverbgColor{
+background-color: #f7f7f7 !important; 
+}

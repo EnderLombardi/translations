@@ -12,7 +12,7 @@
                       </Toolbar>
                      </customHeader>
 
-                     <HBox class="" width="100%">
+                     <HBox id="linetrackerStationKPI" class="classKpiHeaderContent" width="100%">
 
                            <HBox justifyContent="SpaceAround" width="32%"
                                   class="contentHeaderCont">
@@ -265,7 +265,7 @@
                                          design="Bold" width="100%" class="whiteTextHeader" />
                                   <VBox width="100%" justifyContent="SpaceAround">
                                          <micro:DeltaMicroChart width="100%"
-                                                id="StationshifStaffingHeader" isResponsive="true"
+                                                id="stationshifStaffingHeader" isResponsive="true"
                                                 value1="{path:'KPIshiftStaffing>/neededFteUI', formatter:'airbus.mes.linetracker.KPICharts.util.Formatter.stringToInt'}"
                                                 value2="{path:'KPIshiftStaffing>/allocatedFteUI', formatter:'airbus.mes.linetracker.KPICharts.util.Formatter.stringToInt'}"
                                                 title1="{kpiI18n>NeedFTE}" title2="{kpiI18n>AllocatedFTE}"

@@ -452,6 +452,16 @@ airbus.mes.disruptions.Formatter = {
 	},
 	setFileType: function(){
 		return airbus.mes.settings.AppConfManager.getConfiguration("AIRBUS_ALLOWED_FILE_TYPES");
+	},
+	getFileIcon: function(sType){
+		if(sType === 'png' || sType === 'jpg'){var sIcon = "sap-icon://camera"}
+		else if(sType === 'txt'){var sIcon = "sap-icon://document-text"}
+		else if(sType === 'doc' || sType === 'docs'){var sIcon = "sap-icon://doc-attachment"}
+		else if(sType === 'pdf'){var sIcon = "sap-icon://pdf-attachment"}
+		else if(sType === 'xlsx'){var sIcon = "sap-icon://excel-attachment"}
+		else if(sType === 'pptx' || sType === 'ppt'){var sIcon = "sap-icon://ppt-attachment"}
+		else {var sIcon = "sap-icon://document-text"}
+		return sIcon;
 	}
 	/*setNumberofAttachment : function(number) {
 		var sValue = number + "\n" + " Attachments";

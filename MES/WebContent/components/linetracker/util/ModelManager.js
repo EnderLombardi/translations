@@ -4,6 +4,8 @@ jQuery.sap.declare("airbus.mes.linetracker.util.ModelManager");
 
 airbus.mes.linetracker.util.ModelManager = {
 		urlModel : undefined,
+		site : undefined,
+		program:undefined,
 		queryParams : jQuery.sap.getUriParameters(),
 		
     init : function(core) {
@@ -17,11 +19,13 @@ airbus.mes.linetracker.util.ModelManager = {
     	core.setModel(new sap.ui.model.json.JSONModel(), "KPIopenAnomalies"); // KPI Open Anomalies model
     	core.setModel(new sap.ui.model.json.JSONModel(), "KPIextraWork"); // KPI Open Anomalies model
     	core.setModel(new sap.ui.model.json.JSONModel(), "KPIshiftStaffing"); // KPI Shift Staffing model
-    	core.setModel(new sap.ui.model.json.JSONModel(), "plantModel"); // KPI Shift Staffing model
-    	
+    	//core.setModel(new sap.ui.model.json.JSONModel(), "plantModel"); // KPI Shift Staffing model
+    	//sap.ui.getCore().getModel("stationDataModel").attachRequestCompleted(airbus.mes.linetracker.util.ModelManager.renderControls);
     	//Not Used
     	core.setModel(new sap.ui.model.json.JSONModel(), "KPI"); // KPI Data for All model 
-    	
+
+    	airbus.mes.linetracker.util.ModelManager.site = airbus.mes.settings.ModelManager.site;
+
 		var dest;
 
 		switch (window.location.hostname) {
@@ -69,9 +73,8 @@ airbus.mes.linetracker.util.ModelManager = {
 		this.loadKPIshiftStaffing();
 		this.loadKPI(); //Not Used 
 		this.loadPlantModel();
-
+		
     },
-    
     /*
      * Load Station Details in line tracker
      */
@@ -82,6 +85,7 @@ airbus.mes.linetracker.util.ModelManager = {
 			type : 'post',
 			url : this.urlModel.getProperty("urlstationData"),
 			contentType : 'application/json',
+			cache: false,
 			data : JSON.stringify({
 				"site" : airbus.mes.settings.ModelManager.site,
 				"station" : airbus.mes.settings.ModelManager.station,
@@ -92,7 +96,11 @@ airbus.mes.linetracker.util.ModelManager = {
 				if(typeof data == "string"){
 					data = JSON.parse(data);
 				}
+				//oViewModel.setData([]);
 				oViewModel.setData(data);
+				//oViewModel.refresh();
+				sap.ui.getCore().byId("idLinetracker1--linetrackerTable").rerender();
+//				sap.ui.getCore().byId("idLinetracker1--linetrackerTable").getRows().forEach(function(row){row.rerender();});
 //				airbus.mes.linetracker.oView.byId("linetrackerTable").setBusy(false);
 			},
 
@@ -435,9 +443,7 @@ airbus.mes.linetracker.util.ModelManager = {
 			}
 		});
     	
-    }
-    
-    
+    }    
 
 };
 
