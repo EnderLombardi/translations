@@ -10,6 +10,11 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 */
 	onInit: function() {
 		
+		//if the page is not busy
+        if (airbus.mes.shell.oView.byId('refreshTime').setBusyIndicatorDelay(0)){
+            airbus.mes.shell.oView.byId('refreshTime').setEnabled(true);
+        }
+		
 	//Date in Header	
 	var oDate = new Date();
 	var oDateFormat = sap.ui.core.format.DateFormat.getInstance({pattern: "dd MMMM yyyy"}); //Returns a DateFormat instance for date

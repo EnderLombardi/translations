@@ -89,7 +89,7 @@
 
                                 <controlPhStation:PhysicalStationBox
                                     id="linetrackerEditStation" color="#bcf6ff" actionIconColor="black"
-                                    station="{stationDataModel>station}" msn="{stationDataModel>msn}"
+                                    station="{stationDataModel>stationName}" msn="{stationDataModel>msn}"
                                     press="handlePopoverPress" width="80%">
                                     <controlPhStation:actionIconButton>
                                         <core:Icon src="sap-icon://refresh" />

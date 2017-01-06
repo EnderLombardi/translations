@@ -49,5 +49,13 @@ airbus.mes.shell.AutoRefreshConfig =  {
 				"area" : function() {
 							return airbus.mes.disruptiontracker.kpi.ModelManager.loadDisruptionKPIModel();
 							}
-			}		
+			},
+			
+			idLinetracker1 : {
+				"timer":180 , 
+				"useraction" : false ,
+				"area" : function() {
+							return airbus.mes.linetracker.oView.getController().renderStationTracker() 
+							}
+			}
 }

@@ -228,6 +228,15 @@ sap.ui.controller(
                                 }
                                 
                                 break;
+                            case "idLinetracker1":
+//                                airbus.mes.linetracker.kpi.ModelManager.loadDisruptionKPIModel();
+                                airbus.mes.shell.AutoRefreshManager.clearInterval();
+                                //refresh
+                                if ( bBatch1==false ) {
+                                    	airbus.mes.shell.AutoRefreshManager.setInterval("idLinetracker1");
+                                }
+                                
+                                break;
                             default:
                             }
                     },
@@ -284,6 +293,16 @@ sap.ui.controller(
                             airbus.mes.shell.oView.byId("SelectLanguage").setVisible(false);
                             break;
                         case "polypolyPage":
+                            airbus.mes.shell.oView.byId("homeButton").setVisible(true);
+                            airbus.mes.shell.oView.byId("SelectLanguage").setVisible(false);
+                            break;
+                            
+                        case "idLinetracker1":
+                        	//refresh
+                        	if ( bBatch1==false ) {
+                        		airbus.mes.shell.AutoRefreshManager.setInterval("idLinetracker1");
+                            	airbus.mes.shell.oView.byId('refreshTime').setVisible(true);
+                        	}
                             airbus.mes.shell.oView.byId("homeButton").setVisible(true);
                             airbus.mes.shell.oView.byId("SelectLanguage").setVisible(false);
                             break;

@@ -91,7 +91,7 @@ airbus.mes.linetracker.util.ModelManager = {
      */
     loadStationDataModel: function(){
 		var oViewModel = sap.ui.getCore().getModel("stationDataModel");
-//		airbus.mes.linetracker.oView.byId("idLinetracker1--linetrackerTable").setBusy(true); 
+//		airbus.mes.linetracker.oView.byId("linetrackerTable").setBusy(true); 
 		jQuery.ajax({
 			type : 'post',
 			url : this.urlModel.getProperty("urlstationData"),
@@ -110,11 +110,13 @@ airbus.mes.linetracker.util.ModelManager = {
 				oViewModel.setData(data);
 				//this is required to scroll the Linetracker table. Don't remove/comment
 				sap.ui.getCore().byId("idLinetracker1--linetrackerTable").rerender();
+//				airbus.mes.linetracker.oView.byId("linetrackerTable").setBusy(false);
 //				airbus.mes.linetracker.oView.byId("idLinetracker1--linetrackerTable").setBusy(false);
 			},
 
 			error : function(error, jQXHR) {
 				console.log(error);
+//				airbus.mes.linetracker.oView.byId("linetrackerTable").setBusy(false);
 //				airbus.mes.linetracker.oView.byId("idLinetracker1--linetrackerTable").setBusy(false);
 			}
 		});
