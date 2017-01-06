@@ -27,7 +27,7 @@ airbus.mes.disruptiontracker.kpi.Component.prototype.createContent = function() 
         })
 
         var i18nModel = new sap.ui.model.resource.ResourceModel({
-            bundleUrl : "../components/disruptiontracker/kpi/i18n/i18n.properties"
+            bundleName : "airbus.mes.disruptiontracker.kpi.i18n.i18n"
          });
         this.oView.setModel(i18nModel, "i18n");
         airbus.mes.disruptiontracker.kpi.oView = this.oView

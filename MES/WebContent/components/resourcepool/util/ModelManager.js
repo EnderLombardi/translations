@@ -35,7 +35,7 @@ airbus.mes.resourcepool.util.ModelManager = {
         }
 
         this.urlModel = new sap.ui.model.resource.ResourceModel({
-            bundleUrl : "../components/resourcepool/config/url_config.properties",
+            bundleName : "airbus.mes.resourcepool.config.url_config",
             bundleLocale : dest
 
         });

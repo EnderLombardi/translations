@@ -57,7 +57,7 @@ airbus.mes.linetracker.Component.prototype.createContent = function() {
 
         //Line Tracker Model
         var i18nModel = new sap.ui.model.resource.ResourceModel({
-            bundleUrl : "../components/linetracker/i18n/i18n.properties",
+            bundleName : "airbus.mes.linetracker.i18n.i18n",
          });
         this.oView.setModel(i18nModel, "i18n");
 

@@ -14,7 +14,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.kpi.disruptionKPIChart", {
 		window.onresize = this.resize;
 		  // Set Model (i18n) for Frame Titles
 		var i18nModel = new sap.ui.model.resource.ResourceModel({
-	        bundleUrl : "../components/disruptiontracker/kpi/i18n/i18n.properties"
+	        bundleName : "airbus.mes.disruptiontracker.kpi.i18n.i18n"
 	     });
 		this.oView.setModel(i18nModel, "i18n"); 		
 		airbus.mes.disruptiontracker.kpi.oView = this.oView 

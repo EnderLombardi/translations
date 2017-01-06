@@ -9,12 +9,11 @@ sap.ui.controller("airbus.mes.worktracker.views.home", {
 	onInit: function() {
 		
 		// Set i18n Model
-	  	var i18nModel = new sap.ui.model.resource.ResourceModel({
-	    	bundleUrl : "worktracker/i18n/i18n.properties",
-	    	bundleLocale : sap.ui.getCore().getConfiguration().getLanguage()
-	  	});
-	  	this.getView().setModel(i18nModel, "i18n");
-	  	  	
+		var i18nModel = new sap.ui.model.resource.ResourceModel({
+			bundleName : "airbus.mes.worktracker.i18n.i18n"
+		});
+		this.getView().setModel(i18nModel, "i18n");
+
 	},
 	
 	showGridView: function(oEvent){

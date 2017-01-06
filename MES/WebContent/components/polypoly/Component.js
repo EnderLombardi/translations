@@ -31,8 +31,7 @@ airbus.mes.polypoly.Component.prototype.createContent = function() {
         airbus.mes.polypoly.oView = this.oView;
 
         var i18nModel = new sap.ui.model.resource.ResourceModel({
-            bundleUrl : "../components/polypoly/i18n/i18n.properties",
-//            bundleLocale : "en" automatic defined by parameter sap-language
+            bundleName : "airbus.mes.polypoly.i18n.i18n",
          });
 
         this.oView.setBusyIndicatorDelay(0);

@@ -29,7 +29,7 @@ airbus.mes.shell.ModelManager = {
 			}
 					
 			this.urlModel = new sap.ui.model.resource.ResourceModel({
-				bundleUrl : "../shell/config/url_config.properties",
+				bundleName : "airbus.mes.shell.config.url_config",
 				bundleLocale : dest
 			});
 			
@@ -49,13 +49,13 @@ airbus.mes.shell.ModelManager = {
 			//this.loadUserSettings();
 			
 			var i18nModel = new sap.ui.model.resource.ResourceModel({
-	            bundleUrl : "./i18n/i18n.properties",
+				bundleName : "airbus.mes.shell.i18n.i18n",
 	         });
 			
 			core.setModel(i18nModel, "ShellI18n");
 			
 			var MIIi18nModel = new sap.ui.model.resource.ResourceModel({
-	            bundleUrl : "./i18n/mii_i18n.properties",
+				bundleName : "airbus.mes.shell.i18n.mii_i18n",
 	         });
 			core.setModel(MIIi18nModel, "miiI18n");
 		},

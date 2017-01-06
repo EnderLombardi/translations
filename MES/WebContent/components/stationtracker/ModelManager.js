@@ -69,11 +69,10 @@ airbus.mes.stationtracker.ModelManager = {
 			dest = this.queryParams.get("url_config");
 		}
 
-		this.urlModel = new sap.ui.model.resource.ResourceModel(
-				{
-					bundleUrl : "../components/stationtracker/config/url_config.properties",
-					bundleLocale : dest
-				});
+		this.urlModel = new sap.ui.model.resource.ResourceModel({
+			bundleName : "airbus.mes.stationtracker.config.url_config",
+			bundleLocale : dest
+		});
 
 		if (dest === "sopra") {
 

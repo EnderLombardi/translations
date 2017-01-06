@@ -34,7 +34,7 @@ airbus.mes.worktracker.util.ModelManager = {
 		}
 
 		this.urlModel = new sap.ui.model.resource.ResourceModel({
-			bundleUrl : "../components/worktracker/config/url_config.properties",
+			bundleName : "airbus.mes.worktracker.config.url_config",
 			bundleLocale : dest
 		});
 		 

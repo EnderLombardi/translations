@@ -56,7 +56,7 @@ airbus.mes.resourcepool.Component.prototype.createContent = function() {
 
 
         var i18nModel = new sap.ui.model.resource.ResourceModel({
-            bundleUrl : "../components/resourcepool/i18n/i18n.properties",
+            bundleName : "airbus.mes.resourcepool.i18n.i18n",
          });
 
         // Local Model

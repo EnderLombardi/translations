@@ -33,7 +33,7 @@ airbus.mes.worktracker.Component.prototype.createContent = function() {
 		})
 		
 		var i18nModel = new sap.ui.model.resource.ResourceModel({
-	        bundleUrl : "../components/worktracker/i18n/i18n.properties",
+	        bundleName : "airbus.mes.worktracker.i18n.i18n",
 	     });
 		this.oView.setModel(i18nModel, "i18n");
 

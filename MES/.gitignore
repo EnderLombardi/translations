@@ -3,3 +3,4 @@
 /.sass-cache
 /Sass/.sass-cache
 /WebContent/.sass-cache
+node_modules/

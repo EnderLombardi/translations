@@ -30,7 +30,7 @@ airbus.mes.operationdetail.Component.prototype.createContent = function() {
         })
 
         var i18nModel = new sap.ui.model.resource.ResourceModel({
-            bundleUrl : "../components/operationdetail/i18n/i18n.properties",
+            bundleName : "airbus.mes.operationdetail.i18n.i18n",
          });
 
         this.oView.setModel(i18nModel, "i18n");

@@ -45,7 +45,7 @@ airbus.mes.disruptions.Component.prototype.createContent = function() {
         })
 
         var i18nModel = new sap.ui.model.resource.ResourceModel({
-            bundleUrl : "../components/disruptions/i18n/i18n.properties"
+            bundleName : "airbus.mes.disruptions.i18n.i18n"
         });
 
 

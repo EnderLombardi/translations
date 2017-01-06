@@ -37,11 +37,10 @@ airbus.mes.disruptions.ModelManager = {
 			dest = this.queryParams.get("url_config");
 		}
 
-		this.urlModel = new sap.ui.model.resource.ResourceModel(
-				{
-					bundleUrl : "../components/disruptions/config/url_config.properties",
-					bundleLocale : dest
-				});
+		this.urlModel = new sap.ui.model.resource.ResourceModel({
+			bundleName : "airbus.mes.disruptions.config.url_config",
+			bundleLocale : dest
+		});
 
 		if (dest === "sopra") {
 

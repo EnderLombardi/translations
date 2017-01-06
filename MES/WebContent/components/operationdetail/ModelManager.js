@@ -37,7 +37,7 @@ airbus.mes.operationdetail.ModelManager = {
 		}
 
 		this.urlModel = new sap.ui.model.resource.ResourceModel({
-			bundleUrl : "../components/operationdetail/config/url_config.properties",
+			bundleName : "airbus.mes.operationdetail.config.url_config",
 			bundleLocale : dest
 		});
 		

@@ -38,9 +38,7 @@ sap.ui.core.UIComponent.extend("airbus.mes.settings.Component", {
 		//this.oView.setModel(oModel3, "region");
 
 		var i18nModel = new sap.ui.model.resource.ResourceModel({
-			bundleUrl : "../components/settings/i18n/i18n.properties",
-		// bundleLocale : "en" automatic defined by
-		// parameter sap-language
+			bundleName : "airbus.mes.settings.i18n.i18n"
 		});
 
 		this.oView.setModel(i18nModel, "i18n");

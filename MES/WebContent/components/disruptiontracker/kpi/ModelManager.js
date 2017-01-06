@@ -13,7 +13,9 @@ airbus.mes.disruptiontracker.kpi.ModelManager = {
 			airbus.mes.disruptiontracker.kpi.oView.setBusy(false); 
 		});*/
 		
-	    core.setModel(new sap.ui.model.resource.ResourceModel({bundleName:"airbus.mes.disruptiontracker.kpi.i18n.i18n",bundleLocale:"en"}),"i18n");
+	    core.setModel(new sap.ui.model.resource.ResourceModel({
+			bundleName:"airbus.mes.disruptiontracker.kpi.i18n.i18n"
+		}), "i18n");
 
 		var dest;
 
@@ -30,11 +32,10 @@ airbus.mes.disruptiontracker.kpi.ModelManager = {
 			dest = this.queryParams.get("url_config");
 		}
 
-		this.urlModel = new sap.ui.model.resource.ResourceModel(
-				{
-					bundleUrl : "../components/disruptiontracker/kpi/config/url_config.properties",
-					bundleLocale : dest
-				});
+		this.urlModel = new sap.ui.model.resource.ResourceModel({
+			bundleName : "airbus.mes.disruptiontracker.kpi.config.url_config",
+			bundleLocale : dest
+		});
 
 		if (dest === "sopra") {
 

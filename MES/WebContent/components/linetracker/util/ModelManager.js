@@ -65,6 +65,7 @@ airbus.mes.linetracker.util.ModelManager = {
 
 			var oModel = this.urlModel._oResourceBundle.aPropertyFiles[0].mProperties;
 
+<<<<<<< MESv1.5
 			for ( var prop in oModel) {
 				if (oModel[prop].slice(-5) != ".json") {
 					oModel[prop] += "&j_user=" + Cookies.getJSON("login").user
@@ -85,6 +86,39 @@ airbus.mes.linetracker.util.ModelManager = {
 		this.loadKPIshiftStaffing();
 		this.loadPlantModel();
 		
+=======
+            break;
+        }
+
+        if (this.queryParams.get("url_config")) {
+            dest = this.queryParams.get("url_config");
+        }
+
+        this.urlModel = new sap.ui.model.resource.ResourceModel({
+            bundleName : "airbus.mes.linetracker.config.url_config",
+            bundleLocale : dest
+        });
+
+        if (  dest === "sopra" ) {
+
+            var oModel = this.urlModel._oResourceBundle.aPropertyFiles[0].mProperties;
+
+            for (var prop in oModel) {
+                if (oModel[prop].slice(-5) != ".json" ) {
+                oModel[prop] += "&j_user=" + Cookies.getJSON("login").user + "&j_password="  + Cookies.getJSON("login").mdp;
+                }
+            }
+        }
+//        this.i18nModel = new sap.ui.model.resource.ResourceModel({
+//            bundleName : "airbus.mes.i18n.messageBundle",
+//            bundleLocale : sap.ui.getCore().getConfiguration().getLanguage()
+//        });
+        this.loadPulseModel();
+        this.loadModelFactoryModel();
+        this.loadModelColorPaletteModel(); // Load Color Palettes
+        //core.setModel(this.i18nModel, "messageBundle");
+
+>>>>>>> 5af72a6 [MES] Component-preload - begining of implementation.
     },
     /**
      * Load Station Details in line tracker
