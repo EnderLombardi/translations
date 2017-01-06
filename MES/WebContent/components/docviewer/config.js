@@ -42,7 +42,7 @@
     			custom.close();
     	});
 
-    	container.append(closeButton);*/
+    	container.append(closeButton);
     	
     	// Toggle Annotations Button
     	var toogleAnnotButton = $('<span>').attr({
@@ -53,7 +53,7 @@
     		alert();
     	});
 
-    	container.append(toogleAnnotButton);
+    	container.append(toogleAnnotButton);*/
     	
     	
     	$('#control .right-aligned').append(container);

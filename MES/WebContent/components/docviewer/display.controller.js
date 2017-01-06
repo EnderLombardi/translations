@@ -47,6 +47,9 @@ sap.ui.controller("airbus.mes.docviewer.display", {
 	// onExit: function() {
 	// }
 	
+	/********************
+	 * Close PDF Viewer
+	 */
 	onCloseDocument: function(){
 		
 		// Call closing function, if any required
@@ -55,6 +58,48 @@ sap.ui.controller("airbus.mes.docviewer.display", {
 		
 		// Go Back
 		nav.back();
+		
+	},
+	
+	
+	/**********************
+	 * Hide annotations
+	 */
+	hideAnnotations: function(){
+		
+		// Access Annotation Manager of PDF TRON
+		// Reader control is a PDF Tron's Object
+		var annotManager = readerControl.docViewer.getAnnotationManager();
+		
+		
+		var annotations = annotManager.getAnnotationsList();
+		 
+        // hide annotations
+        annotManager.hideAnnotations(annotations);
+        
+        this.getView().byId("hideAnnotationsButton").setVisible(false);
+        this.getView().byId("showAnnotationsButton").setVisible(true);
+		
+	},
+	
+	
+	/**********************
+	 * Show annotations
+	 */
+	showAnnotations: function(){
+		
+		// Access Annotation Manager of PDF TRON
+		// Reader control is a PDF Tron's Object
+		var annotManager = readerControl.docViewer.getAnnotationManager();
+		
+		
+		var annotations = annotManager.getAnnotationsList();
+		 
+        // hide annotations
+        annotManager.showAnnotations(annotations);
+        
+        this.getView().byId("hideAnnotationsButton").setVisible(true);
+        this.getView().byId("showAnnotationsButton").setVisible(false);
 		
 	}
 	

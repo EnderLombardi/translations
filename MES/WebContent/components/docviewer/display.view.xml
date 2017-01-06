@@ -17,7 +17,17 @@
 						class="tiffanyColor subHeaderButtonColor sapUiSmallMarginBegin"
 						icon="sap-icon://save" press="saveDocument" />
 
-					<Text text="|" class="sapUiTinyMarginBeginEnd" />
+					<Text text="|" class="sapUiTinyMarginBegin" />
+					
+					<Button id="hideAnnotationsButton" text="{i18nModel>hideAnnotations}" type="Transparent"
+						class="tiffanyColor subHeaderButtonColor sapUiSmallMarginBegin"
+						icon="sap-icon://comment" press="hideAnnotations" />
+					<Button id="showAnnotationsButton" text="{i18nModel>showAnnotations}" type="Transparent"
+						class="tiffanyColor subHeaderButtonColor sapUiSmallMarginBegin"
+						icon="sap-icon://comment" press="showAnnotations" visible="false" />
+					
+					
+					<Text text="|" class="sapUiTinyMarginBegin" />
 
 					<Button type="Transparent"
 						class="tiffanyColor subHeaderButtonColor sapUiSmallMarginBegin"
