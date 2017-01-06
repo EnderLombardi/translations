@@ -35,7 +35,7 @@
                 visibleRowCount="5" enableColumnReordering="false" threshold="20">
                 <uiTable:toolbar>
                     <Toolbar class="toolbar">
-                        <Title text="{i18n>taktAdherence}" level="H2" />
+                        <Title class="taktAdherenceLinetrackerTitle" text="{i18n>taktAdherence}" level="H2" />
                         <ToolbarSpacer width="58%" />
                         <Text text="{i18n>forcastEndOfAssembly}" width="9.5%"
                               class="headerColumnText headerTextTableLinetracker sapUiTinyMarginBottom" />

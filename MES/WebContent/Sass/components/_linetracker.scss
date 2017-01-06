@@ -8,11 +8,18 @@ LineTracker Header
 #idLinetracker1--linetrackerHeaderKPI-CollapsedImg{
     visibility: hidden;
 }
+#idLinetracker1--linetrackerHeaderKPI{
+    header{
+        &.sapMPanelWrappingDivTb{
+            border-bottom: none;
+        }
+    }
+}
 
 #idLinetracker1--linetracker_dateLabel{
     color: #ffffff !important;
     padding: 15px;
-    border-right: 1px solid #326D98;
+    border-right: 2px solid #326D98;
     text-shadow: none;
     font-size: 1.1rem !important;
 }
@@ -221,8 +228,8 @@ Linetracker View (Main Table)
         font-family: Arial,Helvetica,sans-serif;
         text-shadow: none;
         font-style: italic;
-        border-right: 1px solid #326D98;
-        padding: 15px;
+        border-right: 2px solid #326D98;
+        padding: 16px;
     }
     span{
         &.sapUiIcon{
@@ -239,6 +246,12 @@ Linetracker View (Main Table)
         &.fontTableLinetracker{
             font-size: 2em;
             color: #5F7381;
+        }
+    }
+    h2{
+        &.taktAdherenceLinetrackerTitle{
+            color: #5D7381;
+            font-style: italic;
         }
     }
 
