@@ -9,7 +9,7 @@ airbus.mes.shell.AutoRefreshConfig =  {
 			"addtime" : 60
 			},
 		
-		//Automatic app refresh
+		/*//Automatic app refresh
 		mesRefreshActive : { 
 				"value" : true 
 			},
@@ -17,7 +17,7 @@ airbus.mes.shell.AutoRefreshConfig =  {
 		// If not specified automatic refresh time
 		base : {
 					"timer":180 
-			},
+			},*/
 		
 		////////////////////////////////////////////////////////////////////////	
 		//  base : {														  //
@@ -28,7 +28,7 @@ airbus.mes.shell.AutoRefreshConfig =  {
 		////////////////////////////////////////////////////////////////////////
 
 		stationTrackerView : { 
-				"timer":180 , 
+				"timer":undefined, 
 				"useraction" : true,
 				"area" : function() {
 							return airbus.mes.shell.oView.getController().renderStationTracker() 
@@ -36,7 +36,7 @@ airbus.mes.shell.AutoRefreshConfig =  {
 			},
 
 		disruptiontrackerView : { 
-				"timer":180 , 
+				"timer":undefined, 
 				"useraction" : true ,
 				"area" : function() {
 							return airbus.mes.disruptiontracker.ModelManager.loadDisruptionTrackerModel();
@@ -44,7 +44,7 @@ airbus.mes.shell.AutoRefreshConfig =  {
 			},
 			
 		disruptionKPIView : {
-				"timer":120 , 
+				"timer":undefined, 
 				"useraction" : false ,
 				"area" : function() {
 							return airbus.mes.disruptiontracker.kpi.ModelManager.loadDisruptionKPIModel();

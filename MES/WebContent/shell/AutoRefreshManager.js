@@ -3,6 +3,8 @@
 jQuery.sap.declare("airbus.mes.shell.AutoRefreshManager");
 
 airbus.mes.shell.AutoRefreshManager =  {
+
+	   defaultKey : "MES_REFRESH_DEF_VAL",
        
        autoRefresh: undefined,
        
@@ -21,7 +23,6 @@ airbus.mes.shell.AutoRefreshManager =  {
        nowDate : undefined,
        addtime : 0,
        timer : 0,
-       defaultKey : "MES_REFRESH_DEF_VAL",
        
        /**
        *  Set Refresh Interval based on configuration
@@ -32,33 +33,47 @@ airbus.mes.shell.AutoRefreshManager =  {
              //shortcut
              var config = airbus.mes.shell.AutoRefreshConfig;
              var sVal = airbus.mes.shell.AutoRefreshManager;
-             
-             //if autorefresh disable
-             if(config.mesRefreshActive.value = false){
+
+
+             //if auto refresh disable
+             if(!airbus.mes.settings.AppConfManager._getConfiguration("MES_REFRESH_ACTIVE")){
                     airbus.mes.shell.AutoRefreshManager.clearInterval();
-                    return
+                    return;
              }
              
              //get view name
              if(!viewName){
                     viewName = nav.getCurrentPage().getId();
              }
-             sVal.viewName = viewName;
+             this.viewName = viewName;
              
              //get refresh time config for this.viewname else default time
-             if(config[sVal.viewName].timer){
-                 sVal.refreshInterval = config[sVal.viewName].timer; 
-             } else {
-                 sVal.refreshInterval = config.base.timer ;
+             var refreshConfigKey;
+             switch(this.viewName){
+             case "stationTrackerView":
+            	 refreshConfigKey = "REFRESH_STATION_TRACKER_"+airbus.mes.settings.ModelManager.station;
+            	 break;
+                 
+             case "disruptiontrackerView":
+            	 refreshConfigKey = "REFRESH_DISRUPTION_TRACKER_"+airbus.mes.settings.ModelManager.station;
+            	 break;
+            	 
+             case "disruptionKPIView":
+            	 refreshConfigKey = "REFRESH_DISRUPTION_KPI_"+airbus.mes.settings.ModelManager.station;
+            	 break;
+            	 
              }
+             this.refreshInterval = config[sVal.viewName].timer = 
+            	 parseInt(airbus.mes.settings.AppConfManager.getConfiguration(refreshConfigKey, this.defaultKey))
+              
              
              // init function
              airbus.mes.shell.AutoRefreshManager.lastRefreshTimefct();
              airbus.mes.shell.AutoRefreshManager.dateNow();
-             airbus.mes.shell.AutoRefreshManager.setupCtrl(); // mousse & keyboard event
+             airbus.mes.shell.AutoRefreshManager.setupCtrl(); // Mouse & keyboard event
              
              // Button refresh
-             sVal.autoRefresh = window.setInterval(function refreshTime(){
+             this.autoRefresh = window.setInterval(function refreshTime(){
                     
                     //Difference in second between the two dates
                     sVal.timer=Math.floor((sVal.dateNow()-sVal.lastRefreshTime2)/1000);
@@ -83,7 +98,7 @@ airbus.mes.shell.AutoRefreshManager =  {
                     if(sVal.timer%sVal.refreshInterval == 0 && sVal.timer !=0) {
                            //change last Refresh Time 
                            sVal.lastRefreshTimefct();
-                                  //refresh zone if existe
+                                  //refresh zone if exist
                                   if(config[sVal.viewName].area){
                                 	  	console.log("========== refresh ==========");
                                         config[sVal.viewName].area();
