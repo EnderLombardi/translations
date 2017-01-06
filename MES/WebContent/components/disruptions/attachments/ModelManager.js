@@ -8,8 +8,10 @@ airbus.mes.disruptions.attachments.ModelManager = {
 				
 		init : function(core) {
 			
-			core.setModel(new sap.ui.model.json.JSONModel(),"attachDisruption");
-			
+	    	   var aModel = ["attachDisruption"]; // Model having list of attachments for disruptions
+	    	                 
+	    	   
+	    	   airbus.mes.shell.ModelManager.createJsonModel(core,aModel);
 		
 			var dest;
 
