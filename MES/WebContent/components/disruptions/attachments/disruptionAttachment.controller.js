@@ -102,7 +102,7 @@ sap.ui
 
 		/******************************************
 		 * To be executed when the document viewer is closed
-		 * In order to re-appear the ackdrop and pop-up
+		 * In order to re-appear the backdrop and pop-up
 		 */
 		onMESDocViewerClose: function(){
 			$("#sap-ui-blocklayer-popup").css('zIndex', '38');

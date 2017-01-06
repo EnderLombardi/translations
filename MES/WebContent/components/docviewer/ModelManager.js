@@ -73,9 +73,9 @@ airbus.mes.docviewer.ModelManager = {
             config: "../components/docviewer/config.js",
             serverUrl: "http://localhost/",
             documentId: "mes_document_viewer",
-            custom: JSON.stringify({
+            /*custom: JSON.stringify({
             	'save' :  airbus.mes.docviewer.ModelManager.save,
-            	'close': airbus.mes.docviewer.ModelManager.onCloseFunction}),
+            	'close': airbus.mes.docviewer.ModelManager.onCloseFunction}),*/
             enableAnnotations: true,
             streaming: false,
             useDownloader: false

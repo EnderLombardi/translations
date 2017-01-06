@@ -24,7 +24,7 @@
     	//=========================================================
     	var container = $('<div>').addClass('group');
     	
-    	// Save Button
+    	/*// Save Button
     	var saveButton = $('<span>').attr({
     		'id': 'saveDocumentButton',
     		'class': 'glyphicons floppy_save'
@@ -42,7 +42,18 @@
     			custom.close();
     	});
 
-    	container.append(closeButton);
+    	container.append(closeButton);*/
+    	
+    	// Toggle Annotations Button
+    	var toogleAnnotButton = $('<span>').attr({
+    		'id': 'toggleAnnotButton'
+    	})
+    	.text("Hide Annotations")
+    	.on('click', function(){
+    		alert();
+    	});
+
+    	container.append(toogleAnnotButton);
     	
     	
     	$('#control .right-aligned').append(container);

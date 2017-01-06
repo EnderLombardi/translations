@@ -10,8 +10,8 @@
 				"Column": []
 			},
 			"Row": [
-				{"wo_no":"26547", "op_no":"50002137-1-0-0010","dis_no":"030","dis_des":"test cla","gravity":"1","status":"pending","Count":"2","File":[
-					{"type":"txt", "name":"Disruption.pdf", "src" : "../components/disruptions/attachments/Files/sample.pdf"},
+				{"wo_no":"26547", "wo_desc":"WO Desc", "op_desc":"OP Desc", "op_no":"50002137-1-0-0010","dis_no":"030","dis_des":"test cla","gravity":"1","status":"pending","Count":"2","File":[
+					{"title":"Sample Document", "type":"PDF", "name":"Disruption.pdf", "src" : "../components/disruptions/attachments/Files/sample.pdf"},
 					{"type":"txt", "name":"Disruption.avi", "src" : "../components/disruptions/attachments/Files/sample.avi"},
 					{"type":"doc", "name":"Disruption.Doc", "src" : "../components/disruptions/attachments/Files/Business Plan Agenda.doc"}]},
 					
