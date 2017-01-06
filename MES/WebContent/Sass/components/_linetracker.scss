@@ -254,6 +254,18 @@ Linetracker View (Main Table)
             font-style: italic;
         }
     }
+    #idLinetracker1--linetrackerTable{
+        div{
+            &:nth-child(2){
+                div{
+                    &+ div + div.sapUiTableCol{
+                        background-color: #D5F1F8;
+                        border-left: 1px solid #dddddd;
+                    }
+                }
+            }
+        }
+    }
 
 }
 
