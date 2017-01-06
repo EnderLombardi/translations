@@ -70,6 +70,16 @@ RESSOURCEPOOL
                 display: inline-block;
             }
         }
+        #idWorkCenterView--searchAvailableWC-search {
+            &.sapMSFBA{
+                background-color: rgba(0, 0, 0, 0);//avoid to have blue background-color from the library
+            }
+        }
+        #idWorkCenterView--searchAssignedWC-search {
+            &.sapMSFBA{
+                background-color: rgba(0, 0, 0, 0);//avoid to have blue background-color from the library
+            }
+        }
     }
 }
 .colorSelect{

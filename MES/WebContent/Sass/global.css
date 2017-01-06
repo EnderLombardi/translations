@@ -2358,6 +2358,10 @@ RESSOURCEPOOL
   word-break: break-word; }
 #idWorkCenterView .fixHboxItemDisplay .sapMFlexItem span {
   display: inline-block; }
+#idWorkCenterView .fixHboxItemDisplay #idWorkCenterView--searchAvailableWC-search.sapMSFBA {
+  background-color: transparent; }
+#idWorkCenterView .fixHboxItemDisplay #idWorkCenterView--searchAssignedWC-search.sapMSFBA {
+  background-color: transparent; }
 
 .colorSelect {
   background-color: green; }

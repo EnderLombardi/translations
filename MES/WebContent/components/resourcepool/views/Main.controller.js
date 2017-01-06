@@ -63,13 +63,13 @@ sap.ui
                      * @memberOf resource_pool.Main
                      */
                     onAfterRendering : function() { 
-                        //hide keyboard when ENTER key touched on searchAvailableUsers
-                        var searchAvailableUsers = this.getView().byId("idUsersView--searchAvailableUsers");
-                        airbus.mes.resourcepool.keyboardResourcepoolManager.hideKeyboard(searchAvailableUsers);
+                        //hide keyboard when ENTER key touched on search fields
+                        airbus.mes.resourcepool.keyboardResourcepoolManager.hideKeyboard(this.getView().byId("idUsersView--searchAvailableUsers"));
+                        airbus.mes.resourcepool.keyboardResourcepoolManager.hideKeyboard(this.getView().byId("idUsersView--searchAssignedUsers"));
 
                         //hide keyboard when ENTER key touched on searchAssignedUsers
-                        var searchAssignedUsers = this.getView().byId("idUsersView--searchAssignedUsers");
-                        airbus.mes.resourcepool.keyboardResourcepoolManager.hideKeyboard(searchAssignedUsers);
+                        airbus.mes.resourcepool.keyboardResourcepoolManager.hideKeyboard(this.getView().byId("idWorkCenterView--searchAvailableWC"));
+                        airbus.mes.resourcepool.keyboardResourcepoolManager.hideKeyboard(this.getView().byId("idWorkCenterView--searchAssignedWC"));
                     },
                     
 
