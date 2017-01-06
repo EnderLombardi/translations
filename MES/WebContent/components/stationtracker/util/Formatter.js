@@ -6,8 +6,10 @@ jQuery.sap.declare("airbus.mes.stationtracker.util.Formatter");
 airbus.mes.stationtracker.util.Formatter = {
 		
 		dateToStringFormat : function(sDate){
+		    // Date send by MII are UTC date
 			var oDate = new Date(sDate);
 			var oFormat = sap.ui.core.format.DateFormat.getInstance({
+				UTC : true,
 				pattern : "dd MMM - HH:mm",
 				calendarType : sap.ui.core.CalendarType.Gregorian
 			});
