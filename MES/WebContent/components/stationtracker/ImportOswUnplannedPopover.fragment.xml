@@ -1,7 +1,7 @@
 <core:FragmentDefinition xmlns:core="sap.ui.core"
 	xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:custom="airbus.mes.stationtracker"
 	xmlns:html="http://www.w3.org/1999/xhtml">
-	<Dialog title="Unplanned activities" class="pageHeaderDialog classWorklistPopover oswPopover">
+	<Dialog title="Unplanned activities" class="pageHeaderDialog classWorklistPopover oswPopover"   verticalScrolling="true">
 		<customHeader>
 			<Toolbar>
 				<ToolbarSpacer />
@@ -10,7 +10,9 @@
 			</Toolbar>
 		</customHeader>
 		<content>
+
 			<VBox>
+
 				<HBox>
 					<!--  <ToggleButton id="SelectAllUnpd" text="{StationTrackerI18n>WorklistSelectAll}" enabled="true" pressed="false" press="onUnplannedSelectAll" class="sapUiTinyMarginBeginEnd" type="Transparent"/> -->
 					<CheckBox id="SelectAllUnpd" selected="false" select ="onUnplannedSelectAll" class="sapUiTinyMarginBeginEnd" /> 
@@ -35,10 +37,15 @@
 						<core:ListItem key="{groupModel>Value}" text="{ path : 'groupModel>Value' , formatter : '.getI18nValue' }" />					
 					</Select>			
 				</HBox>
+
 				<List id="myList" 
 					items="{ path: 'WorkListModel>/' }"
 					mode="MultiSelect"
-					includeItemInSelection="true">
+					includeItemInSelection="true"  
+					growing="true"
+					growingThreshold="50000"
+					growingScrollToLoad="false"
+					enableBusyIndicator="true">
 					<items>
 						<InputListItem id="sorterList">
 							<content>
@@ -68,6 +75,7 @@
 						</InputListItem>
 					</items>
 				</List>
+
 			</VBox>
 		</content>
 		<buttons>
