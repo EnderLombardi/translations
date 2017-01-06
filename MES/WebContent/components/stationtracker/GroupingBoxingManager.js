@@ -405,7 +405,9 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 					var sShopOrder = "";
 					var sSfcStep = "";
 					var sProdGroup = "";
-										
+					var sPaused = "";
+					var sPreviouslyStarted = "";
+					
 					oModel[key][key1][key2].forEach( function( el ) { 
 						
 						//Store in array value needed to be compare in case of boxing
@@ -431,6 +433,8 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 						sStatus = el.STATE;
 						sSfcStep = el.SFC_STEP_REF;
 						sProdGroup = el.PROD_GROUP;
+						sPaused = el.PAUSED;
+						sPreviouslyStarted = el.PREVIOUSLY_STARTED;
 						
 						if ( sBox === oGroupingBoxingManager.specialGroup) {
 							
@@ -474,6 +478,8 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 								"ProdGroup" : sProdGroup,	
 								"criticalPath": fCriticalPath,
 								"state" : sStatus,
+								"paused" : sPaused,
+								"previouslyStarted" : sPreviouslyStarted							
 								//"isUnplanned" :  Math.max.apply(null,aUnplanned),
 								//"andon" : Math.max.apply(null,aAndons),
 								//"blocked" : Math.max.apply(null,aDisruptions),
@@ -519,6 +525,8 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 							"progress" : fProgress.toString(),
 							"start_date" : new Date(Math.min.apply(null,aStartDateRescheduling)),
 							"end_date" :  oFormatter.sizeMin(new Date(Math.max.apply(null,aEndDateRescheduling)),new Date(Math.min.apply(null,aStartDateRescheduling))),
+							"paused" : sPaused,
+							"previouslyStarted" : sPreviouslyStarted		
 						};
 					
 					aBox.push(oOperationRescheduling);

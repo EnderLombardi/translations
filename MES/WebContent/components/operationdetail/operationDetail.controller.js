@@ -52,7 +52,7 @@ sap.ui
                     	} else {
                     		airbus.mes.operationdetail.oView.byId("idReschedule").setEnabled(true);
                     	}
-                    	                    	
+
                     	this.disruptionsFlag = false;
                         this.disruptionsCustomDataFlag = false;
 
@@ -79,7 +79,6 @@ sap.ui
 //                            Define visibility for header sections
                             $(".opDetailNavToolbar > ul > li ~ li").css("display", "none");
                         }
-
 
                         /****** hide buttons *********/
                         sap.ui.getCore().byId("operationDetailPopup--reportDisruption").setVisible(false);

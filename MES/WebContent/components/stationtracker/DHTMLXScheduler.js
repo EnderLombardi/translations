@@ -2,9 +2,11 @@
 
 sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",    {
 
-//                    Define if it is a simple click or a double click. Used on event onDblClick and onClick
+//                  Define if it is a simple click or a double click. Used on event onDblClick and onClick
                     byPassOnClick: "boolean",
-
+//                  Define if it is a simple click or a drag and drop. Used on event onBeforeDrag and onClick
+                    byPassOnDrag: "boolean",
+                    
                     renderer : function(oRm, oControl) {
 
                         oRm.write("<div ");
@@ -156,20 +158,48 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",    {
 
                         scheduler.eventId.push(scheduler.attachEvent("onBeforeDrag",function blockReadonly(id) {
 
+                        	var that = this;
+                        	this.byPassOnDrag = false;
+                        	
                         	// permit to dont reschedule
                             if ( bBatch1 ) {
                                 return false;
                             }
 
+                            // cannot reschedule an initial operation                            
                             if (this.getEvent(id).type === "I" ) {
 
                                 return false;
 
+                                
                             } else if ( airbus.mes.stationtracker.GroupingBoxingManager.box === "OPERATION_ID") {
 
-                                return true;
-                            } else {
+                            	if (this.getEvent(id)) {
 
+                        		
+                            		if (airbus.mes.stationtracker.GroupingBoxingManager.computeStatus(this.getEvent(id).state, this.getEvent(id).paused, this.getEvent(id).previouslyStarted) === "0" ) {
+                                   		// if current operation is complete, cannot reschedule the operation
+                                        setTimeout(function() {
+
+                                            //If the bypass variable has been set on true to the double click action
+//                                              we don't perform the simple click action
+                                              if (!that.byPassOnDrag) {
+                                       			sap.m.MessageToast.show(airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("ForbiddenReschedule"), {
+                                    				duration : 3000});
+                                              }
+                                        	}
+                                         , 200)                            			
+                           			
+                            			return false;			
+                            		} else {
+                            			return true;
+                            		};
+                            	} else {
+                                    return true;                            		
+                            	}
+
+                            } else {
+                            	// cannot reschedule if grouping is not operation	
                                 return false;
                             }
 
@@ -326,8 +356,10 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",    {
                         scheduler.eventId.push ( scheduler.attachEvent("onClick", function(id) {
 
                               var that = this;
-
-//                              Need to define a time out to differenciate simple click and double click
+                              
+                              this.byPassOnDrag = true;
+                              
+//                            Need to define a time out to differenciate drag and drop, simple click and double click
                               setTimeout(function() {
 
                                   //If the bypass variable has been set on true to the double click action
@@ -340,7 +372,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",    {
                                         }
                                   }, 200)
 
-//                              Reinitiate the bypass variable
+//                            Reinitiate the bypass variable
                               this.byPassOnClick = false;
                         }));
 
