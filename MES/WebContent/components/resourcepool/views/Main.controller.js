@@ -63,31 +63,13 @@ sap.ui
                      * @memberOf resource_pool.Main
                      */
                     onAfterRendering : function() { 
-
                         //hide keyboard when ENTER key touched on searchAvailableUsers
                         var searchAvailableUsers = this.getView().byId("idUsersView--searchAvailableUsers");
-                        if (searchAvailableUsers && document.activeElement) {
-                            searchAvailableUsers.onsapenter = (function(oEvt) { //onsapenter is a function when ENTER key is touched
-                                //lose focus on the active element so hide keyboard
-                                document.activeElement.blur(); 
-
-                                //remove class sapMSFBA on the search icon
-                                $('#idUsersView--searchAvailableUsers-search')[0].removeClass('sapMSFBA');
-                            });
-                        }
+                        airbus.mes.resourcepool.keyboardResourcepoolManager.hideKeyboard(searchAvailableUsers);
 
                         //hide keyboard when ENTER key touched on searchAssignedUsers
                         var searchAssignedUsers = this.getView().byId("idUsersView--searchAssignedUsers");
-                        if (searchAssignedUsers && document.activeElement) {
-                            searchAssignedUsers.onsapenter = (function(oEvt) { //onsapenter is a function when ENTER key is touched
-                                //lose focus on the active element so hide keyboard
-                                document.activeElement.blur(); 
-
-                                //remove class sapMSFBA on the search icon
-                                $('#idUsersView--searchAssignedUsers-search')[0].removeClass('sapMSFBA');
-                            });
-                        }
-
+                        airbus.mes.resourcepool.keyboardResourcepoolManager.hideKeyboard(searchAssignedUsers);
                     },
                     
 

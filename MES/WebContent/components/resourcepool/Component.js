@@ -2,6 +2,7 @@
 jQuery.sap.require("sap.ui.core.UIComponent");
 jQuery.sap.require("airbus.mes.resourcepool.util.ModelManager");
 jQuery.sap.require("airbus.mes.resourcepool.util.Formatter");
+jQuery.sap.require("airbus.mes.resourcepool.util.keyboardResourcepoolManager");
 
 sap.ui.core.UIComponent.extend("airbus.mes.resourcepool.Component", {
     metadata : {

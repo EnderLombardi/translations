@@ -32,6 +32,16 @@ RESSOURCEPOOL
                 display: inline-block;
             }
         }
+        #idUsersView--searchAvailableUsers-search {
+            &.sapMSFBA{
+                background-color: rgba(0, 0, 0, 0);//avoid to have blue background-color from the library
+            }
+        }
+        #idUsersView--searchAssignedUsers-search {
+            &.sapMSFBA{
+                background-color: rgba(0, 0, 0, 0);//avoid to have blue background-color from the library
+            }
+        }
     }
     .ylabelUserImage{
         @include ylabelUserImage();
