@@ -182,7 +182,7 @@ sap.ui.controller(
                             textButtonTo = "Go to Polypoly";
                             airbus.mes.settings.GlobalFunction.navigateTo(textButtonTo, "polypoly");
                             break;
-                        case "idMainView":
+                        case "idLinetracker1":
                             textButtonTo = "Go to LineTracker";
                             airbus.mes.settings.GlobalFunction.navigateTo(textButtonTo, "back");
                             break;
@@ -229,6 +229,7 @@ sap.ui.controller(
                                 
                                 break;
                             case "idLinetracker1":
+//                            	this.renderLineTracker();
 //                                airbus.mes.linetracker.kpi.ModelManager.loadDisruptionKPIModel();
                                 airbus.mes.shell.AutoRefreshManager.clearInterval();
                                 //refresh
@@ -298,6 +299,7 @@ sap.ui.controller(
                             break;
                             
                         case "idLinetracker1":
+                        	this.renderLineTracker();
                         	//refresh
                         	if ( bBatch1==false ) {
                         		airbus.mes.shell.AutoRefreshManager.setInterval("idLinetracker1");
@@ -616,6 +618,34 @@ sap.ui.controller(
                         Cookies.remove("login");
                         window.location = window.location.origin + window.location.pathname;
 
+                    },
+                    
+                    /**
+                     * Render for LineTracker
+                     */
+                    renderLineTracker : function(){
+                    	if (  nav.getCurrentPage().getId() == "idLinetracker1" ) {
+
+                            //active busy
+                            airbus.mes.shell.busyManager.setBusy(airbus.mes.linetracker.oView, "linetracker");
+
+//                            airbus.mes.stationtracker.ShiftManager.updateShift = false;
+//                            var oModule = airbus.mes.linetracker.ModelManager;
+                            airbus.mes.shell.oView.getController().setInformationVisibility(true);
+
+                            // ** synchrone call **//
+//                            oModule.loadShifts();
+//                            oModule.loadAffectation();
+//                            airbus.mes.stationtracker.ShiftManager.init(airbus.mes.stationtracker.GroupingBoxingManager.shiftNoBreakHierarchy);
+//                            airbus.mes.stationtracker.AssignmentManager.computeAffectationHierarchy();
+
+                            // ** asynchrone call **//
+                            airbus.mes.shell.oView.oController.loadLineTrackerKPI();
+                        }
+                    },
+                    
+                    loadLineTrackerKPI: function(){
+                    	airbus.mes.linetracker.util.ModelManager.loadLinetrackerKPI();
                     }
                 });
 

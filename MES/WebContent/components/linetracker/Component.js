@@ -62,11 +62,11 @@ airbus.mes.linetracker.Component.prototype.createContent = function() {
         this.oView.setModel(i18nModel, "i18n");
 
         // KPICharts model
-        var i18nModel = new sap.ui.model.resource.ResourceModel(
+        var KPIi18nModel = new sap.ui.model.resource.ResourceModel(
                 {
                     bundleUrl : "../components/linetracker/KPICharts/i18n/i18n.properties",
                 });
-        this.oView.setModel(i18nModel, "kpiI18n");
+        this.oView.setModel(KPIi18nModel, "kpiI18n");
 
         this.oView.setModel(sap.ui.getCore().getModel("stationDataModel"), "stationDataModel");
 //        this.oView.setModel(sap.ui.getCore().getModel("kpiI18n"), "kpiI18n");
