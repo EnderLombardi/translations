@@ -237,7 +237,7 @@ sap.ui
 
                                 var oLink = "touchngo" + erpSystem + "://openpage/operation?workorder=" + sWorkOrder + "&operation=" + splitOpeId[3];
                                 window.open(oLink, "_blank");
-                                settimeout(function(){
+                                setTimeout(function(){
                                 	sap.ui.getCore().byId("operationDetailsView--opDetailSegmentButtons").setSelectedButton(selectedSegmentedButton);
                                 }, 2000);
 

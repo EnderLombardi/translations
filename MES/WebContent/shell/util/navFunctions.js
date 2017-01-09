@@ -119,7 +119,7 @@ airbus.mes.shell.util.navFunctions = {
         if (airbus.mes.disruptions === undefined || airbus.mes.disruptions.oView === undefined) {
 
             jQuery.sap.registerModulePath("airbus.mes.disruptions","../components/disruptions");
-            sap.ui.getCore().createComponent({name : "airbus.mes.disruptions",});
+            sap.ui.getCore().createComponent({name : "airbus.mes.disruptions"});
         }
         if (container.getPage("ViewDisruptionView") == null) {
             container.addPage(airbus.mes.disruptions.oView.viewDisruption);
