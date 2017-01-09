@@ -385,7 +385,7 @@ sap.ui
 									{
 										"attribute" : "FIVEM_CATEGORY", // V1.5
 										"value" : oView.byId(
-												"selectCategoryClass")
+												"selectFivemCategory")
 												.getSelectedKey()
 									},
 									{
