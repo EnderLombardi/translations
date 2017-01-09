@@ -53,11 +53,11 @@ airbus.mes.linetracker.util.ModelManager = {
 			dest = this.queryParams.get("url_config");
 		}
 
-		this.urlModel = new sap.ui.model.resource.ResourceModel(
-				{
-					bundleUrl : "../components/linetracker/config/url_config.properties",
-					bundleLocale : dest
-				});
+
+        this.urlModel = new sap.ui.model.resource.ResourceModel({
+            bundleName : "airbus.mes.linetracker.config.url_config",
+            bundleLocale : dest
+        });
 		
 		core.getModel("stationDataModel").loadData(this.urlModel.getProperty("urlstationData"),null,false);
 		
