@@ -89,7 +89,7 @@
                             <VBox>
                                 <Label text="{i18n>work_Center} :" />
                                 <Text
-                                    text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/workcenter}" />
+                                    text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/work_center}" />
                                 <Label type="space"></Label>
                                 <Label text="{i18n>work_Package} :" />
                                 <Text
