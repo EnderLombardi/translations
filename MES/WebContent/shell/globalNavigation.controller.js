@@ -258,7 +258,12 @@ sap.ui.controller(
                             this.renderStationTracker();
                             //Permit to display graph called twice with after rendering but it permit to
                             // display it correctly
-                            airbus.mes.shell.ModelManager.loadGragph();
+                            if ($("#stationTrackerView--takt_adherence_area_chart > g") != undefined ) {
+                            	//remove previous
+                            	$("#stationTrackerView--takt_adherence_area_chart > g")[0].remove();
+                            	
+                            }                         
+                            airbus.mes.stationtracker.GraphManager.loadGragph();
                             //refresh
                             if ( bBatch1==false ) {
                                 airbus.mes.shell.AutoRefreshManager.setInterval("stationTrackerView");
