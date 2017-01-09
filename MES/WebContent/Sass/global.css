@@ -6455,3 +6455,11 @@ FROM HOMEPAGE
 ********************/
 
 /*# sourceMappingURL=global.css.map */
+
+/*******************
+For attachment buttons
+********************/
+.attachIcon span{
+    color: #000 !important;
+    font-size: 1rem !important;
+} 

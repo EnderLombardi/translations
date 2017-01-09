@@ -11,7 +11,7 @@ airbus.mes.disruptions.ModelManager = {
 	init : function(core) {
 
 		this.core = core;
-
+		core.setModel(new sap.ui.model.json.JSONModel(), "AttachmentList");
 		airbus.mes.shell.ModelManager.createJsonModel(core,["operationDisruptionsModel",
 		                                                    "DisruptionDetailModel",
 		                                                    "disruptionCustomData",
