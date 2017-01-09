@@ -281,7 +281,11 @@ airbus.mes.stationtracker.ModelManager = {
 		
 		aItem.forEach(function(el){			
 			sXmlByRow += airbus.mes.stationtracker.util.Formatter.json2xml({Row : {
-				sfcStepBO : [el]
+				sfcStepBO : [el.sfcStepBO],
+				Previous_Skill : [el.Previous_Skill],
+				Previous_Line : [el.Previous_Line],
+				Skill : [el.Skill],
+				Line : [el.Line],
 			},})
 		})
 		
