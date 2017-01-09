@@ -172,7 +172,8 @@ airbus.mes.disruptions.Formatter = {
 
 	setRejectButtonVisibility : function(originatorFlag, responsibleFlag, status) {
 
-		if (responsibleFlag == "X" && originatorFlag != "X") {
+		//if (responsibleFlag == "X" && originatorFlag != "X") {
+		if (responsibleFlag == "X") {
 
 			if (status == airbus.mes.disruptions.Formatter.status.rejected) {
 
@@ -209,7 +210,8 @@ airbus.mes.disruptions.Formatter = {
 
 	setAcknowledgeButtonVisibility : function(originatorFlag, responsibleFlag, status) {
 
-		if (originatorFlag != "X" && responsibleFlag == "X") {
+		//if (originatorFlag != "X" && responsibleFlag == "X") {
+		if (responsibleFlag == "X") {
 
 			if (status == airbus.mes.disruptions.Formatter.status.pending) {
 
@@ -222,17 +224,18 @@ airbus.mes.disruptions.Formatter = {
 
 	setEscalateButtonVisibility : function(originatorFlag, escalation, status) {
 
-	if (status == airbus.mes.disruptions.Formatter.status.solved || status == airbus.mes.disruptions.Formatter.status.deleted || status == airbus.mes.disruptions.Formatter.status.closed) {
-		return false;
-	} else if (originatorFlag == "X" && escalation < 3)
-		return true;
-		else
+		if (status == airbus.mes.disruptions.Formatter.status.solved || status == airbus.mes.disruptions.Formatter.status.deleted || status == airbus.mes.disruptions.Formatter.status.closed) {
 			return false;
+		} else if (originatorFlag == "X" && escalation < 3)
+			return true;
+			else
+				return false;
 	},
 
 	setMarkSolvedButtonVisibility : function(originatorFlag, responsibleFlag, status) {
 
-		if (originatorFlag != "X" && responsibleFlag == "X") {
+		//if (originatorFlag != "X" && responsibleFlag == "X") {
+		if (responsibleFlag == "X") {
 
 			if (status == airbus.mes.disruptions.Formatter.status.acknowledged) {
 
@@ -244,7 +247,8 @@ airbus.mes.disruptions.Formatter = {
 	},
 	
 	setRefuseButtonVisibility : function(originatorFlag, responsibleFlag, status) {
-		if (originatorFlag == "X" && responsibleFlag != "X" && status == airbus.mes.disruptions.Formatter.status.solved)
+		//if (originatorFlag == "X" && responsibleFlag != "X" && status == airbus.mes.disruptions.Formatter.status.solved)
+		if (originatorFlag == "X" && status == airbus.mes.disruptions.Formatter.status.solved)
 			return true;
 
 		return false;

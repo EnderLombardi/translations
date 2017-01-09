@@ -1020,6 +1020,15 @@ airbus.mes.disruptions.ModelManager = {
 	},
 
 	/***************************************************************************
+	 * Get URL to Delete/ Revoke Disruption
+	 **************************************************************************/
+	getUrlDeleteDisruption: function(){
+		var urlToDisruptionComment = this.urlModel.getProperty("urlDeleteDisruption");
+		return urlToDisruptionComment;
+	},
+	
+	
+	/***************************************************************************
 	 * Get URL to Refuse Disruption
 	 **************************************************************************/
 	getUrlToRefuseDisruption : function() {

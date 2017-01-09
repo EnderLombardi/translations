@@ -412,6 +412,8 @@ sap.ui
 					 * Confirming Delete Disruption
 					 */
 					onConfirmDelete : function(oEvent) {
+						
+						airbus.mes.disruptions.oView.Viewdisruptions.setBusy(true);						
 
 						var i18nModel = airbus.mes.disruptions.oView.viewDisruption
 								.getModel("i18nModel");
@@ -422,43 +424,71 @@ sap.ui
 						var msgRef = sap.ui.getCore().byId(
 								"disruptionCommentMsgRef").getText();
 
-						var sMessage = i18nModel.getProperty("successDelete");
+						var sMessageSuccess = i18nModel.getProperty("successDelete");
+						var sMessageError = i18nModel.getProperty("tryAgain");
 
-						// Call Disruption Service
-						var isSuccess = airbus.mes.disruptions.ModelManager
-								.rejectDisruption(comment, msgRef, sMessage,
-										i18nModel);
+						// Call Revoke Disruption Service
+						jQuery.ajax({
+							url : airbus.mes.disruptions.ModelManager.getUrlDeleteDisruption(),
+							data : {
+								"Param.1" : airbus.mes.settings.ModelManager.site,
+								"Param.2" : sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"),
+								"Param.3" : msgRef,
+								"Param.4" : comment
+							},
+							error : function(xhr, status, error) {
+								airbus.mes.disruptions.oView.Viewdisruptions.setBusy(false);
+								airbus.mes.shell.ModelManager.messageShow(sMessageError);
+							},
+							success : function(result, status, xhr) {
 
-						airbus.mes.disruptions.__enterCommentDialogue.close();
+								airbus.mes.disruptions.__enterCommentDialogue.close();
+								airbus.mes.disruptions.oView.Viewdisruptions.setBusy(false);
+								
+								if (result.Rowsets.Rowset[0].Row[0].Message_Type != undefined
+										&& result.Rowsets.Rowset[0].Row[0].Message_Type == "E") { // Error
+									airbus.mes.shell.ModelManager.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
 
-						if (isSuccess) {
+								} else { // Success
+									airbus.mes.shell.ModelManager.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
+									
+									var operationDisruptionsModel = airbus.mes.disruptions.oView.viewDisruption.getModel("operationDisruptionsModel");
 
-							var operationDisruptionsModel = airbus.mes.disruptions.oView.viewDisruption
-									.getModel("operationDisruptionsModel");
+									var sPath = sap.ui.getCore().byId("disruptionCommentSpath").getText();
 
-							var sPath = sap.ui.getCore().byId("disruptionCommentSpath").getText();
-
-							operationDisruptionsModel.getProperty(sPath).Status = airbus.mes.disruptions.Formatter.status.deleted;
+									operationDisruptionsModel.getProperty(sPath).Status = airbus.mes.disruptions.Formatter.status.deleted;
 							
-							var currDate = new Date();
-							var date = currDate.getFullYear() + "-" + currDate.getMonth() + "-" + currDate.getDate();
+									var currDate = new Date();
+									var date = currDate.getFullYear() + "-" + currDate.getMonth() + "-" + currDate.getDate();
 							
-							var oComment = {
-									"Action" : airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("delete"),
-									"Comments" : comment,
-									"Counter" : "",
-									"Date" : date,
-									"MessageRef" : msgRef,
-									"UserFullName" : ( sap.ui.getCore().getModel("userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/first_name").toLowerCase() + " " +
-											   sap.ui.getCore().getModel("userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/last_name").toLowerCase() )
-							};
-							operationDisruptionsModel.getProperty("/Rowsets/Rowset/1/Row").push(oComment);
+									var oComment = {
+										"Action" : airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("delete"),
+										"Comments" : comment,
+										"Counter" : "",
+										"Date" : date,
+										"MessageRef" : msgRef,
+										"UserFullName" : ( sap.ui.getCore().getModel("userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/first_name").toLowerCase() + " " +
+											   			sap.ui.getCore().getModel("userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/last_name").toLowerCase() )
+									};
+									operationDisruptionsModel.getProperty("/Rowsets/Rowset/1/Row").push(oComment);
 
-							operationDisruptionsModel.refresh();
+									operationDisruptionsModel.refresh();
 
-							if (nav.getCurrentPage().sId == "stationTrackerView")
-								airbus.mes.disruptions.ModelManager.checkDisruptionStatus(operationDisruptionsModel);
-						}
+									if (nav.getCurrentPage().sId == "stationTrackerView"){
+										airbus.mes.disruptions.ModelManager.checkDisruptionStatus(operationDisruptionsModel);
+										
+										//Refresh station tracker
+										airbus.mes.shell.oView.getController().renderStationTracker();
+									}
+									
+								
+									else if(nav.getCurrentPage().getId() == "disruptiontrackerView")
+										airbus.mes.disruptiontracker.oView.getController().disruptionTrackerRefresh = true;
+									
+								}
+
+							}
+						});
 
 					},
 
