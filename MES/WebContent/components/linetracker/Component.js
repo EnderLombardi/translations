@@ -82,6 +82,8 @@ airbus.mes.linetracker.Component.prototype.createContent = function() {
         this.oView.setModel(sap.ui.getCore().getModel("KPIopenAnomalies"), "KPIopenAnomalies");
 
         this.oView.setModel(sap.ui.getCore().getModel("plantModel"), "plantModel");
+        this.oView.setModel(sap.ui.getCore().getModel("airlineLogoModel"), "airlineLogoModel");
+        
         airbus.mes.linetracker.oView = this.oView;
 
         return this.oView;

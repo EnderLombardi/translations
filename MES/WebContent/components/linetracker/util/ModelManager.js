@@ -19,22 +19,12 @@ airbus.mes.linetracker.util.ModelManager = {
     	               "KPIresolutionEfficiency", //Model for KPI Resolution Efficiency
     	               "KPIopenAnomalies",		//Model for Open Anomalies
     	               "KPIextraWork",			//Model for KPI Extra Work
-    	               "KPIshiftStaffing"		//Model for KPI Shift Staffing    	              
+    	               "KPIshiftStaffing",		//Model for KPI Shift Staffing    	 
+    	               "airlineLogoModel"		//Model for Airline Logo
     	              ]
     	airbus.mes.shell.ModelManager.createJsonModel(core,aModel);
-
-    	/*core.setModel(new sap.ui.model.json.JSONModel(), "stationDataModel"); // Station model
-    	core.setModel(new sap.ui.model.json.JSONModel(), "lineVariantModel"); // Line Variant Data model
-    	core.setModel(new sap.ui.model.json.JSONModel(), "KPIchartTaktAdherence"); // KPI Chart Takt Adherence model
-    	core.setModel(new sap.ui.model.json.JSONModel(), "KPItaktAdherence"); // KPI Takt Adherence model
-    	core.setModel(new sap.ui.model.json.JSONModel(), "KPItaktEfficiency"); // KPI Takt Efficiency model
-    	core.setModel(new sap.ui.model.json.JSONModel(), "KPIdisruption"); // KPI Disruptions/Andon model
-    	core.setModel(new sap.ui.model.json.JSONModel(), "KPIresolutionEfficiency"); // KPI Resolution Efficiency model
-    	core.setModel(new sap.ui.model.json.JSONModel(), "KPIopenAnomalies"); // KPI Open Anomalies model
-    	core.setModel(new sap.ui.model.json.JSONModel(), "KPIextraWork"); // KPI Open Anomalies model
-    	core.setModel(new sap.ui.model.json.JSONModel(), "KPIshiftStaffing"); // KPI Shift Staffing model
-*/    	//core.setModel(new sap.ui.model.json.JSONModel(), "plantModel"); 
-    	//sap.ui.getCore().getModel("stationDataModel").attachRequestCompleted(airbus.mes.linetracker.util.ModelManager.renderControls);
+    	//Airline Logo Model
+    	sap.ui.getCore().getModel("airlineLogoModel").attachRequestCompleted(airbus.mes.linetracker.util.ModelManager.loadFlightLogo);
 
     	airbus.mes.linetracker.util.ModelManager.site = airbus.mes.settings.ModelManager.site;
 
@@ -77,6 +67,7 @@ airbus.mes.linetracker.util.ModelManager = {
 		this.loadLineVariantModel();
 		
 		this.loadPlantModel();
+		this.loadFlightLogo();
 		
     },
     
@@ -441,6 +432,36 @@ airbus.mes.linetracker.util.ModelManager = {
     } ,
     getCurrentDateFormatted : function(){
         return (new Date()).toISOString().slice(0,10).replace(/-/g,"");
+    },
+    
+    loadFlightLogo:function(){
+    	var oViewModel = sap.ui.getCore().getModel("airlineLogoModel");    	
+    	var url=this.urlModel.getProperty("urlAirline_logo");
+    	url=url.replace("$TF", "V");
+    	url=url.replace("$Application_ID", "000000000030");    	
+    	url=url.replace("$msn", "00002");
+    	jQuery.ajax({
+    		async : false,
+			type : 'post',
+			url : url,
+			contentType : 'application/json',
+			data : JSON.stringify({
+//				"param.1" : "V",
+//				"param.2" : "000000000030",
+//				"param.3" : "00002"
+			}),
+
+			success : function(data) {
+				if(typeof data == "string"){
+					data = JSON.parse(data);
+				}
+				oViewModel.setData(data);
+			},
+
+			error : function(error, jQXHR) {
+				console.log(error);
+			}
+		});
     }
 
 
