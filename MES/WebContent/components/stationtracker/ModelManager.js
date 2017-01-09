@@ -304,11 +304,9 @@ airbus.mes.stationtracker.ModelManager = {
 		geturlsetosw = airbus.mes.stationtracker.ModelManager.replaceURI(geturlsetosw, "$sXml", sXml);
 		
 		$.ajax({
-			async : false,
+			
 			url : geturlsetosw,
-			contentType : 'application/json',
-		
-				success : function(data, textStatus, jqXHR) {
+			success : function(data, textStatus, jqXHR) {
 					// Handle Local url_config
 					if (typeof data == "string") {
 						data = JSON.parse(data);
