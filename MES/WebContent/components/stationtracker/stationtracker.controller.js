@@ -550,8 +550,8 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
             if (airbus.mes.stationtracker.CheckQa === "UNPLANNED") {
                 var aPath = oList.getSelectedContextPaths();
                 var aSFC_Step = [];
-               	var sNewSkill = "1";
-                var sNewAvl = "Unplanned";
+               	var sNewSkill = "Unplanned";
+                var sNewAvl = "1";
                 	        
                 //Prepare data for the update query for MII
                 aPath.forEach(function(el) {
@@ -559,8 +559,8 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
                     aSFC_Step.push(
                     	{
                     		"sfcStepBO" : airbus.mes.stationtracker.ImportOswUnplannedPopover.getModel("WorkListModel").getProperty(el).SFC_STEP_REF,
-                    		"Previous_Skill" : airbus.mes.stationtracker.ImportOswUnplannedPopover.getModel("WorkListModel").getProperty(el).AVL_LINE,
-                    		"Previous_Line" : airbus.mes.stationtracker.ImportOswUnplannedPopover.getModel("WorkListModel").getProperty(el).SKILLS,
+                    		"Previous_Skill" : airbus.mes.stationtracker.ImportOswUnplannedPopover.getModel("WorkListModel").getProperty(el).SKILLS,
+                    		"Previous_Line" : airbus.mes.stationtracker.ImportOswUnplannedPopover.getModel("WorkListModel").getProperty(el).AVL_LINE,
                     		"Skill" : sNewSkill,
                     		"Line" : sNewAvl,
                     	}
@@ -615,21 +615,21 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
         var oList = airbus.mes.stationtracker.ImportOswUnplannedPopover.getContent()[0].getItems()[1];
         var aPath = oList.getSelectedContextPaths();
         var aSFC_Step = [];
-       	var sNewSkill = "1";
-      	var sNewAvl = "Osw";
+       	var sNewSkill = "Osw";
+      	var sNewAvl = "1";
          //Prepare data for the update query for MII
         aPath.forEach(function(el) {
 
             aSFC_Step.push(
             	{
             		"sfcStepBO" : airbus.mes.stationtracker.ImportOswUnplannedPopover.getModel("WorkListModel").getProperty(el).SFC_STEP_REF,
-            		"Previous_Skill" : airbus.mes.stationtracker.ImportOswUnplannedPopover.getModel("WorkListModel").getProperty(el).AVL_LINE,
-            		"Previous_Line" : airbus.mes.stationtracker.ImportOswUnplannedPopover.getModel("WorkListModel").getProperty(el).SKILLS,
+            		"Previous_Skill" : airbus.mes.stationtracker.ImportOswUnplannedPopover.getModel("WorkListModel").getProperty(el).SKILLS,
+            		"Previous_Line" : airbus.mes.stationtracker.ImportOswUnplannedPopover.getModel("WorkListModel").getProperty(el).AVL_LINE,
             		"Skill" : sNewSkill,
             		"Line" : sNewAvl,
             	}
             );
-
+            
         });
 
         //store sfcstep and prodgroup if Qa check is not succesfull

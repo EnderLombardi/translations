@@ -256,6 +256,9 @@ sap.ui.controller(
                             break;
                         case "stationTrackerView":
                             this.renderStationTracker();
+                            //Permit to display graph called twice with after rendering but it permit to
+                            // display it correctly
+                            airbus.mes.shell.ModelManager.loadGragph();
                             //refresh
                             if ( bBatch1==false ) {
                                 airbus.mes.shell.AutoRefreshManager.setInterval("stationTrackerView");
