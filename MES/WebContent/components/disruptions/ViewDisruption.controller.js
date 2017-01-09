@@ -413,19 +413,13 @@ sap.ui
 					 */
 					onConfirmDelete : function(oEvent) {
 						
-						airbus.mes.disruptions.oView.Viewdisruptions.setBusy(true);						
-
-						var i18nModel = airbus.mes.disruptions.oView.viewDisruption
-								.getModel("i18nModel");
+						airbus.mes.disruptions.oView.viewDisruption.setBusy(true);						
 
 						var comment = sap.ui.getCore().byId(
 								"disruptionCommentBox").getValue();
 
 						var msgRef = sap.ui.getCore().byId(
 								"disruptionCommentMsgRef").getText();
-
-						var sMessageSuccess = i18nModel.getProperty("successDelete");
-						var sMessageError = i18nModel.getProperty("tryAgain");
 
 						// Call Revoke Disruption Service
 						jQuery.ajax({
@@ -438,19 +432,32 @@ sap.ui
 							},
 							error : function(xhr, status, error) {
 								airbus.mes.disruptions.oView.Viewdisruptions.setBusy(false);
+
+								var i18nModel = airbus.mes.disruptions.oView.viewDisruption
+										.getModel("i18nModel");
+		
+								var sMessageError = i18nModel.getProperty("tryAgain");
+
 								airbus.mes.shell.ModelManager.messageShow(sMessageError);
 							},
 							success : function(result, status, xhr) {
 
 								airbus.mes.disruptions.__enterCommentDialogue.close();
-								airbus.mes.disruptions.oView.Viewdisruptions.setBusy(false);
+								airbus.mes.disruptions.oView.viewDisruption.setBusy(false);
 								
 								if (result.Rowsets.Rowset[0].Row[0].Message_Type != undefined
 										&& result.Rowsets.Rowset[0].Row[0].Message_Type == "E") { // Error
 									airbus.mes.shell.ModelManager.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
 
 								} else { // Success
-									airbus.mes.shell.ModelManager.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
+									if (result.Rowsets.Rowset[0].Row[0].Message_Type === undefined){
+										var i18nModel = airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel");
+
+										var sMessageSuccess = i18nModel.getProperty("successDelete");
+										airbus.mes.shell.ModelManager.messageShow(sMessageSuccess);
+									} else{
+										airbus.mes.shell.ModelManager.messageShow(result.Rowsets.Rowset[0].Row[0].Message);
+									}
 									
 									var operationDisruptionsModel = airbus.mes.disruptions.oView.viewDisruption.getModel("operationDisruptionsModel");
 
