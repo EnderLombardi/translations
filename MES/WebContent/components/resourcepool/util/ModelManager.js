@@ -13,11 +13,12 @@ airbus.mes.resourcepool.util.ModelManager = {
     date : undefined,
     currentView : undefined,
     anyChangesFlag : false,
+    anyTrigerButtonBack : false,
     queryParams : jQuery.sap.getUriParameters(),
 
     init : function(core) {
-        
-		airbus.mes.shell.ModelManager.createJsonModel(core,["ValueHelpModel","ResourcePoolDetailModel"]);
+
+        airbus.mes.shell.ModelManager.createJsonModel(core,["ValueHelpModel","ResourcePoolDetailModel"]);
 
         var dest;
 

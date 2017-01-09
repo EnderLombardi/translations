@@ -62,7 +62,7 @@ sap.ui
                      *
                      * @memberOf resource_pool.Main
                      */
-                    onAfterRendering : function() { 
+                    onAfterRendering : function() {
                         //hide keyboard when ENTER key touched on search fields
                         airbus.mes.resourcepool.keyboardResourcepoolManager.hideKeyboard(this.getView().byId("idUsersView--searchAvailableUsers"));
                         airbus.mes.resourcepool.keyboardResourcepoolManager.hideKeyboard(this.getView().byId("idUsersView--searchAssignedUsers"));
@@ -71,7 +71,7 @@ sap.ui
                         airbus.mes.resourcepool.keyboardResourcepoolManager.hideKeyboard(this.getView().byId("idWorkCenterView--searchAvailableWC"));
                         airbus.mes.resourcepool.keyboardResourcepoolManager.hideKeyboard(this.getView().byId("idWorkCenterView--searchAssignedWC"));
                     },
-                    
+
 
                     /***********************************************************
                      * Load Views according to segmented button selected
@@ -587,6 +587,10 @@ sap.ui
                         if(airbus.mes.resourcepool.SaveChanges != undefined){
                             airbus.mes.resourcepool.SaveChanges.close();
                         }
+                        if(airbus.mes.resourcepool.util.ModelManager.anyTrigerButtonBack){
+                            nav.back();
+                            airbus.mes.resourcepool.util.ModelManager.anyTrigerButtonBack = false;
+                        }
                     },
 
                     /**
@@ -594,11 +598,14 @@ sap.ui
                      * Centers***************
                      */
                     afterDialogClose : function() {
-                        var close = this.afterDialogCancel();
                         var loadPage = this.loadMainPage();
-                        loadPage;
+                        airbus.mes.resourcepool.SaveChanges.close();
                         airbus.mes.resourcepool.util.ModelManager.anyChangesFlag = false;
-                        close;
+                        loadPage;
+                        if(airbus.mes.resourcepool.util.ModelManager.anyTrigerButtonBack){
+                            nav.back();
+                            airbus.mes.resourcepool.util.ModelManager.anyTrigerButtonBack = false;
+                        }
                     },
 
                     afterDialogCancel : function() {
@@ -614,8 +621,11 @@ sap.ui
                                 .addDependent(airbus.mes.resourcepool.SaveChanges);
                         }
                         airbus.mes.resourcepool.SaveChanges.close();
+                        if(airbus.mes.resourcepool.util.ModelManager.anyTrigerButtonBack){
+                            airbus.mes.resourcepool.util.ModelManager.anyTrigerButtonBack = false;
+                        }
                     },
-                    
+
                     onSearchUsers : function(oEvt) {
 
                         // add filter for search
@@ -1465,6 +1475,7 @@ sap.ui
                     },
 
                     onNavBack : function(oEvent) {
+                        airbus.mes.resourcepool.util.ModelManager.anyTrigerButtonBack = true;
                         if(airbus.mes.resourcepool.util.ModelManager.anyChangesFlag){
                             if (airbus.mes.resourcepool.SaveChanges === undefined) {
 

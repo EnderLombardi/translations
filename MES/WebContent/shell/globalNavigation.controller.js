@@ -23,6 +23,7 @@ sap.ui.controller(
                         // resourcePool check changes
                         switch(nav.getCurrentPage().getId()){
                             case "resourcePool":
+                                airbus.mes.resourcepool.util.ModelManager.anyTrigerButtonBack = true;
                                 if(airbus.mes.resourcepool.util.ModelManager.anyChangesFlag){
                                     if (airbus.mes.resourcepool.SaveChanges === undefined) {
 
@@ -204,11 +205,11 @@ sap.ui.controller(
                             case "stationTrackerView":
                                 this.renderStationTracker();
                                 airbus.mes.shell.AutoRefreshManager.clearInterval();
-                                
+
                                 if ( bBatch1==false ) {
-                                	airbus.mes.shell.AutoRefreshManager.setInterval("stationTrackerView");
+                                    airbus.mes.shell.AutoRefreshManager.setInterval("stationTrackerView");
                                 }
-                                
+
                                 break;
                             case "disruptiontrackerView":
                                 airbus.mes.disruptiontracker.ModelManager.loadDisruptionTrackerModel();
@@ -217,16 +218,16 @@ sap.ui.controller(
                                 if ( bBatch1==false ) {
                                 airbus.mes.shell.AutoRefreshManager.setInterval("disruptiontrackerView");
                                 }
-                                
+
                                 break;
                             case "disruptionKPIView":
                                 airbus.mes.disruptiontracker.kpi.ModelManager.loadDisruptionKPIModel();
                                 airbus.mes.shell.AutoRefreshManager.clearInterval();
                                 //refresh
                                 if ( bBatch1==false ) {
-                                    	airbus.mes.shell.AutoRefreshManager.setInterval("disruptionKPIView");
+                                        airbus.mes.shell.AutoRefreshManager.setInterval("disruptionKPIView");
                                 }
-                                
+
                                 break;
                             case "idLinetracker1":
 //                            	this.renderLineTracker();
@@ -257,30 +258,30 @@ sap.ui.controller(
                             this.renderStationTracker();
                             //refresh
                             if ( bBatch1==false ) {
-                            	airbus.mes.shell.AutoRefreshManager.setInterval("stationTrackerView");
-	                            airbus.mes.shell.oView.byId('refreshTime').setVisible(true);
+                                airbus.mes.shell.AutoRefreshManager.setInterval("stationTrackerView");
+                                airbus.mes.shell.oView.byId('refreshTime').setVisible(true);
                             }
-                            	
+
                             airbus.mes.shell.oView.byId("homeButton").setVisible(true);
                             airbus.mes.shell.oView.byId("SelectLanguage").setVisible(false);
                             break;
                         case "disruptiontrackerView":
-                        	//refresh
-                        	if ( bBatch1==false ) {
-                        		airbus.mes.shell.AutoRefreshManager.setInterval("disruptiontrackerView");
-                            	airbus.mes.shell.oView.byId('refreshTime').setVisible(true);
-                        	}	
-                        		
+                            //refresh
+                            if ( bBatch1==false ) {
+                                airbus.mes.shell.AutoRefreshManager.setInterval("disruptiontrackerView");
+                                airbus.mes.shell.oView.byId('refreshTime').setVisible(true);
+                            }
+
                             airbus.mes.shell.oView.byId("homeButton").setVisible(true);
                             airbus.mes.shell.oView.byId("SelectLanguage").setVisible(false);
                             break;
                         case "disruptionKPIView":
-                        	//refresh
-                        	if ( bBatch1==false ) {
-                        		airbus.mes.shell.AutoRefreshManager.setInterval("disruptionKPIView");
-                            	airbus.mes.shell.oView.byId('refreshTime').setVisible(true);
-                        	}
-                        	
+                            //refresh
+                            if ( bBatch1==false ) {
+                                airbus.mes.shell.AutoRefreshManager.setInterval("disruptionKPIView");
+                                airbus.mes.shell.oView.byId('refreshTime').setVisible(true);
+                            }
+
                             airbus.mes.shell.oView.byId("homeButton").setVisible(true);
                             airbus.mes.shell.oView.byId("SelectLanguage").setVisible(false);
                             break;
