@@ -751,30 +751,30 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
         airbus.mes.polypoly.oView.byId("oTablePolypoly").setVisibleRowCount(oNumberRows);
     },
 
-    filterUA : function() {
+    setModePoly : function() {
         //test
         //console.log("==0== :" + sap.ui.getCore().byId("typeRow"))
 
         //get lines
         if (sap.ui.getCore().byId("typeRow") /*&& sap.ui.getCore().byId("FilterClockedUsers")*/){
-            var filterLabels = new sap.ui.model.Filter("type", "EQ", "LABEL_RP");
-            var filterUA = new sap.ui.model.Filter("type", "Contains", "UA_");
-            var aFilters = [filterLabels, filterUA];
+//            var filterLabels = new sap.ui.model.Filter("type", "EQ", "LABEL_RP");
+//            var filterUA = new sap.ui.model.Filter("type", "Contains", "UA_");
+//            var aFilters = [filterLabels, filterUA];
 
             if (nav.getCurrentPage().getId()!="polypolyPage"){
-                airbus.mes.polypoly.oView.byId("oTablePolypoly").getBinding("rows").filter(aFilters);
+//                airbus.mes.polypoly.oView.byId("oTablePolypoly").getBinding("rows").filter(aFilters);
                 airbus.mes.polypoly.oView.byId("oTablePolypoly").setFixedRowCount(0);
                 airbus.mes.polypoly.oView.getController().setRowCountVisible(true);
 
             } else {
-                airbus.mes.polypoly.oView.byId("oTablePolypoly").getBinding("rows").filter();
+//                airbus.mes.polypoly.oView.byId("oTablePolypoly").getBinding("rows").filter();
                 airbus.mes.polypoly.oView.byId("oTablePolypoly").setFixedRowCount(3);
                 airbus.mes.polypoly.oView.getController().setRowCountVisible(false);
             }
         }
     },
 
-    clearFilters : function() {
+    setPolyFilters : function() {
 
         //test
         //console.log("==1== :" + sap.ui.getCore().byId("typeRow"))
@@ -807,9 +807,9 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
         //console.log("Start :" + sap.ui.getCore().byId("typeRow"))
 
         var aControlsId = ["AddPolypoly"];
-        this.filterUA();
+        this.setModePoly();
         this.hideContent(aControlsId);
-        this.clearFilters();
+        this.setPolyFilters();
 
         if ( airbus.mes.polypoly.oView.byId("oTablePolypoly").getBinding("rows") != undefined ) {
             sap.ui.getCore().byId("polypoly--polypolySearchField").setValue(airbus.mes.polypoly.PolypolyManager.getValueSelected);
