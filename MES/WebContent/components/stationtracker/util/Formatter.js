@@ -452,7 +452,7 @@ airbus.mes.stationtracker.util.Formatter = {
 					html = '<span  style="float: right;margin-right: 5px;" >' + oSection.initial + '</span>';
 					return html;
 				}
-				
+								
 				//** folder row **/
 				if (oSection.children != undefined) {
 
@@ -468,9 +468,17 @@ airbus.mes.stationtracker.util.Formatter = {
 				
 				// user affected 
 				var sshiftID = airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftID;
-								
+				// Check if there is one operation not totally confirmed in previous shift
+				var sNotConfirmedOpLS = "";
+				var bNotConfirmedOpLS = airbus.mes.stationtracker.ShiftManager.noTotalConfLastShift( oSection );
+				
+				if ( bNotConfirmedOpLS ) {
+					
+					sNotConfirmedOpLS = '<span class="classNotConfirmedOperation"></span>';
+				}				
+				
 				if (airbus.mes.stationtracker.AssignmentManager.affectationHierarchy[oSection.avlLine]) {
-
+										
 				if (airbus.mes.stationtracker.AssignmentManager.affectationHierarchy[oSection.avlLine][sshiftID]) {
 	
 					// See SD there is only one user affected for the couple of shift id + avlLine
@@ -479,14 +487,7 @@ airbus.mes.stationtracker.util.Formatter = {
 					fProgress = oHierarchyDelay[oSection.group][oSection.avlLine].progress;
 					fDuration =	oHierarchyDelay[oSection.group][oSection.avlLine].duration;
 					sSpanWarn = "";
-					var sNotConfirmedOpLS = "";
-					var bNotConfirmedOpLS = airbus.mes.stationtracker.ShiftManager.noTotalConfLastShift( oSection );
-					
-					if ( bNotConfirmedOpLS ) {
-						
-						sNotConfirmedOpLS = '<span class="classNotConfirmedOperation"></span>';
-					}
-					
+										
 					if ( oCurrentAffectedUser.warn === "true" ) {
 						
 						sSpanWarn = '<span class="fa fa-exclamation-triangle" style="padding-right: 5px;" onclick="airbus.mes.stationtracker.oView.getController().onCheckQA()"></span>';
@@ -533,7 +534,7 @@ airbus.mes.stationtracker.util.Formatter = {
 					
 				} else {
 					//** no user affected **/
-					html = '<div>';
+					html = sNotConfirmedOpLS + '<div>';
 					
 					html += '<i class="fa  fa-pencil ylabelEditIcon"></i>';
 									
@@ -578,7 +579,7 @@ airbus.mes.stationtracker.util.Formatter = {
 			} else {
 				//** no user affected **/
 
-				html = '<div>';
+				html = sNotConfirmedOpLS + '<div>';
 				
 				html += '<i class="fa  fa-pencil ylabelEditIcon"></i>';
 								
