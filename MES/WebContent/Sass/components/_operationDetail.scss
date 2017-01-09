@@ -162,11 +162,11 @@
     ul{
         &.opDetailNav{
             margin-left: 0;
-            li{
+            li {
                 border: 0px !important;
             }
             li ~ li{
-                display: none;
+                //display: none;
             }
         }
     }

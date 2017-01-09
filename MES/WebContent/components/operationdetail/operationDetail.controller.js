@@ -47,7 +47,15 @@ sap.ui
                      */
                     onAfterRendering : function() {
                        
+                       var oModel = [sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0]];
+
                     	if ( bBatch1 ) {	
+                    		airbus.mes.operationdetail.oView.byId("idReschedule").setEnabled(false);
+                    	} else {
+                    		airbus.mes.operationdetail.oView.byId("idReschedule").setEnabled(true);
+                    	}
+
+                        if ( airbus.mes.stationtracker.GroupingBoxingManager.computeStatus(oModel[0].state, oModel[0].paused, oModel[0].previously_start ) === "0"  ) {	
                     		airbus.mes.operationdetail.oView.byId("idReschedule").setEnabled(false);
                     	} else {
                     		airbus.mes.operationdetail.oView.byId("idReschedule").setEnabled(true);
