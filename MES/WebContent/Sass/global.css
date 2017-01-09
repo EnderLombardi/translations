@@ -3589,9 +3589,9 @@ Physical Station
 
 .ActionDiv {
   float: left;
-  width: 17%;
+  width: 10%;
   align-self: center;
-  padding-left: 1%; }
+  margin-left: -20%; }
 
 .labelDiv {
   float: left;
