@@ -5,7 +5,18 @@ STATIONTRACKER
 /*********************
 GLOBAL
 *********************/
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
   margin: 0;
   padding: 0;
   border: 0;
@@ -212,7 +223,8 @@ STATION TRACKER
   background-color: #F5F5F5;
   overflow: hidden; }
 
-#stationTrackerView--buttonViewMode .sapMSegBBtnFocusable, #stationTrackerView--buttonViewMode .sapMSegBBtnDis {
+#stationTrackerView--buttonViewMode .sapMSegBBtnFocusable,
+#stationTrackerView--buttonViewMode .sapMSegBBtnDis {
   height: 3rem;
   border: none;
   border-right: 1px solid #8db9ca;
@@ -427,18 +439,18 @@ WORK LIST POP OVER
   height: 20px;
   color: #ffffff;
   overflow: hidden; }
-.classWorklistPopover .fa.rightIcon {
-  padding-left: 6px;
-  padding-right: 6px;
-  float: right; }
-.classWorklistPopover .fa.rightIcon.petrol {
-  color: rgba(0, 86, 112, 0.94); }
-.classWorklistPopover .fa.dandelion {
-  color: #fbec00; }
-.classWorklistPopover .fa.oswIcon2 b {
-  font-family: arial; }
-.classWorklistPopover .fa.fa-exclamation-triangle.triangleIcon.petrol {
-  color: rgba(0, 86, 112, 0.94); }
+  .classWorklistPopover .fa.rightIcon {
+    padding-left: 6px;
+    padding-right: 6px;
+    float: right; }
+    .classWorklistPopover .fa.rightIcon.petrol {
+      color: rgba(0, 86, 112, 0.94); }
+  .classWorklistPopover .fa.dandelion {
+    color: #fbec00; }
+  .classWorklistPopover .fa.oswIcon2 b {
+    font-family: arial; }
+  .classWorklistPopover .fa.fa-exclamation-triangle.triangleIcon.petrol {
+    color: rgba(0, 86, 112, 0.94); }
 .classWorklistPopover .sapMPIText3 {
   position: absolute;
   display: block;
@@ -479,66 +491,66 @@ BOX MANAGEMENT
   left: 0px;
   overflow: hidden;
   text-overflow: ellipsis; }
-.trackerBox .trackerText {
-  max-width: calc(100% - 20px);
-  white-space: nowrap;
-  color: white;
-  overflow: hidden; }
-.trackerBox .trackerTextBlock {
-  white-space: nowrap;
-  color: rgba(0, 86, 112, 0.94); }
-.trackerBox .colorProgress {
-  height: inherit;
-  position: absolute;
-  z-index: 0;
-  left: 0px;
-  overflow: hidden; }
-.trackerBox .openBlockedEscalated {
-  height: inherit;
-  width: 100%;
-  background-color: #e4002b; }
-.trackerBox .openBlocked {
-  height: inherit;
-  width: 100%;
-  background-color: #fbec00; }
-.trackerBox .fa {
-  height: 24px; }
-.trackerBox .fa.rightIcon {
-  padding-right: 6px;
-  float: right; }
-.trackerBox .fa.rightIcon.petrol {
-  color: rgba(0, 86, 112, 0.94); }
-.trackerBox .fa.triangleIcon {
-  padding-left: 6px;
-  float: left; }
-.trackerBox .fa.oswIcon {
-  line-height: 14px;
-  height: auto;
-  float: left;
-  margin-left: 6px;
-  background-color: #fbec00;
-  margin-bottom: 10px;
-  min-width: 45px; }
-.trackerBox .fa.oswIcon b {
-  font-family: arial; }
-.trackerBox .fa.oswIcon.cherry-red {
-  color: #e4002b; }
-.trackerBox .dandelion {
-  color: #fbec00; }
-.trackerBox .dandelion-back {
-  background-color: #fbec00; }
-.trackerBox .teal-blue {
-  color: #0085ad; }
-.trackerBox .petrol {
-  color: rgba(0, 86, 112, 0.94); }
-.trackerBox .petrol-back {
-  background-color: rgba(0, 86, 112, 0.94); }
-.trackerBox .cherry-red-back {
-  background-color: #e4002b; }
-.trackerBox .dark-lime-green-back {
-  background-color: #84bd00; }
-.trackerBox .teal-blue-back {
-  background-color: #0085ad; }
+  .trackerBox .trackerText {
+    max-width: calc(100% - 20px);
+    white-space: nowrap;
+    color: white;
+    overflow: hidden; }
+  .trackerBox .trackerTextBlock {
+    white-space: nowrap;
+    color: rgba(0, 86, 112, 0.94); }
+  .trackerBox .colorProgress {
+    height: inherit;
+    position: absolute;
+    z-index: 0;
+    left: 0px;
+    overflow: hidden; }
+  .trackerBox .openBlockedEscalated {
+    height: inherit;
+    width: 100%;
+    background-color: #e4002b; }
+  .trackerBox .openBlocked {
+    height: inherit;
+    width: 100%;
+    background-color: #fbec00; }
+  .trackerBox .fa {
+    height: 24px; }
+    .trackerBox .fa.rightIcon {
+      padding-right: 6px;
+      float: right; }
+      .trackerBox .fa.rightIcon.petrol {
+        color: rgba(0, 86, 112, 0.94); }
+    .trackerBox .fa.triangleIcon {
+      padding-left: 6px;
+      float: left; }
+    .trackerBox .fa.oswIcon {
+      line-height: 14px;
+      height: auto;
+      float: left;
+      margin-left: 6px;
+      background-color: #fbec00;
+      margin-bottom: 10px;
+      min-width: 45px; }
+      .trackerBox .fa.oswIcon b {
+        font-family: arial; }
+      .trackerBox .fa.oswIcon.cherry-red {
+        color: #e4002b; }
+  .trackerBox .dandelion {
+    color: #fbec00; }
+  .trackerBox .dandelion-back {
+    background-color: #fbec00; }
+  .trackerBox .teal-blue {
+    color: #0085ad; }
+  .trackerBox .petrol {
+    color: rgba(0, 86, 112, 0.94); }
+  .trackerBox .petrol-back {
+    background-color: rgba(0, 86, 112, 0.94); }
+  .trackerBox .cherry-red-back {
+    background-color: #e4002b; }
+  .trackerBox .dark-lime-green-back {
+    background-color: #84bd00; }
+  .trackerBox .teal-blue-back {
+    background-color: #0085ad; }
 
 .trackerBox:hover .dark-lime-green-back {
   -webkit-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out;
@@ -625,9 +637,9 @@ BOX MANAGEMENT
 
 .grey {
   background-color: #97999b; }
-.grey:hover {
-  background-color: #767879;
-  color: black; }
+  .grey:hover {
+    background-color: #767879;
+    color: black; }
 
 .trackerTextBlack {
   color: #000; }
@@ -656,47 +668,60 @@ KPI HEADER
 
 #stationTrackerView--kpiHeaderToolbar {
   margin-left: 0; }
-#stationTrackerView--kpiHeaderToolbar .sapMBtnContent, #stationTrackerView--kpiHeaderToolbar .sapMSltLabel, #stationTrackerView--kpiHeaderToolbar .sapMInputBaseInner, #stationTrackerView--kpiHeaderToolbar .sapMSltArrow {
-  color: #F5F5F5;
-  font-size: 12px; }
+  #stationTrackerView--kpiHeaderToolbar .sapMBtnContent,
+  #stationTrackerView--kpiHeaderToolbar .sapMSltLabel,
+  #stationTrackerView--kpiHeaderToolbar .sapMInputBaseInner,
+  #stationTrackerView--kpiHeaderToolbar .sapMSltArrow {
+    color: #F5F5F5;
+    font-size: 12px; }
 
 #stationTrackerView--kpi_header-CollapsedImg {
   right: 0;
   color: #74d2e7;
   display: none; }
 
-#stationTrackerView--ProductionButton, #stationTrackerView--DisruptionButton {
+#stationTrackerView--ProductionButton,
+#stationTrackerView--DisruptionButton {
   border-right: solid 1px #74d2e7;
   margin-right: 0; }
 
 #stationTrackerView--DatePicker {
   border-right: solid 1px #74d2e7;
   margin-right: 0; }
-#stationTrackerView--DatePicker .sapMInputValHelp {
-  right: auto;
-  left: 0; }
-#stationTrackerView--DatePicker .sapMInputValHelpInner {
-  color: #F5F5F5;
-  font-size: 24px; }
+  #stationTrackerView--DatePicker .sapMInputValHelp {
+    right: auto;
+    left: 0; }
+  #stationTrackerView--DatePicker .sapMInputValHelpInner {
+    color: #F5F5F5;
+    font-size: 24px; }
 
 #stationTrackerView--selectShift {
   border-left: solid 1px #74d2e7 !important;
   opacity: 1; }
-#stationTrackerView--selectShift.sapMSltDisabled .sapMSltLabel, #stationTrackerView--selectShift.sapMSltDisabled .sapMSltArrow {
-  opacity: 0.5; }
+  #stationTrackerView--selectShift.sapMSltDisabled .sapMSltLabel, #stationTrackerView--selectShift.sapMSltDisabled .sapMSltArrow {
+    opacity: 0.5; }
 
-#stationTrackerView--selectShift-label, #stationTrackerView--selectShift-arrow, #stationTrackerView--selectUser-label, #stationTrackerView--selectUser-arrow {
+#stationTrackerView--selectShift-label,
+#stationTrackerView--selectShift-arrow,
+#stationTrackerView--selectUser-label,
+#stationTrackerView--selectUser-arrow {
   top: 0;
   bottom: 0;
   line-height: 3rem; }
 
-#stationTrackerView--ProductionButton-inner:hover, #stationTrackerView--ProductionButton:hover #stationTrackerView--ProductionButton-inner, #stationTrackerView--DisruptionButton-inner:hover, #stationTrackerView--DisruptionButton:hover #stationTrackerView--DisruptionButton-inner {
+#stationTrackerView--ProductionButton-inner:hover,
+#stationTrackerView--ProductionButton:hover #stationTrackerView--ProductionButton-inner,
+#stationTrackerView--DisruptionButton-inner:hover,
+#stationTrackerView--DisruptionButton:hover #stationTrackerView--DisruptionButton-inner {
   background-color: transparent; }
 
 #stationTrackerView--hideKPI > div {
   width: 125px; }
 
-#stationTrackerView--TeamButton-img, #stationTrackerView--TeamButton-content, #stationTrackerView--hideKPI-img, #stationTrackerView--hideKPI-content {
+#stationTrackerView--TeamButton-img,
+#stationTrackerView--TeamButton-content,
+#stationTrackerView--hideKPI-img,
+#stationTrackerView--hideKPI-content {
   color: #74d2e7 !important; }
 
 /******************************************
@@ -730,44 +755,45 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
   border-bottom: solid 1px #d5f1f8;
   color: #0D5D76;
   background-color: #EAFBFD; }
-#stationTrackerView--stationtracker .dhx_matrix_scell.item.initial {
-  cursor: default; }
+  #stationTrackerView--stationtracker .dhx_matrix_scell.item.initial {
+    cursor: default; }
 #stationTrackerView--stationtracker .dhx_matrix_cell {
   background-color: #F3F5F6;
   border-bottom: 1px solid #dddddd;
   border-right: 1px solid #dddddd; }
-#stationTrackerView--stationtracker .dhx_matrix_cell div, #stationTrackerView--stationtracker .dhx_matrix_scell div {
+#stationTrackerView--stationtracker .dhx_matrix_cell div,
+#stationTrackerView--stationtracker .dhx_matrix_scell div {
   text-align: left;
   white-space: nowrap;
   margin-top: 2px; }
 #stationTrackerView--stationtracker .dhx_cal_event {
   border: none;
   overflow: visible; }
-#stationTrackerView--stationtracker .dhx_cal_event.late div {
-  border-color: Red;
-  border-width: 2px;
-  min-width: 40px !important; }
-#stationTrackerView--stationtracker .dhx_cal_event.min-width div {
-  min-width: 40px !important; }
-#stationTrackerView--stationtracker .dhx_cal_event.lateI div {
-  border-color: red;
-  border-width: 2px;
-  background-color: #969696; }
+  #stationTrackerView--stationtracker .dhx_cal_event.late div {
+    border-color: Red;
+    border-width: 2px;
+    min-width: 40px !important; }
+  #stationTrackerView--stationtracker .dhx_cal_event.min-width div {
+    min-width: 40px !important; }
+  #stationTrackerView--stationtracker .dhx_cal_event.lateI div {
+    border-color: red;
+    border-width: 2px;
+    background-color: #969696; }
 #stationTrackerView--stationtracker .dhx_cal_event_line {
   border: none;
   overflow: visible; }
-#stationTrackerView--stationtracker .dhx_cal_event_line.late {
-  border-color: Red;
-  border-width: 2px;
-  min-width: 40px !important; }
-#stationTrackerView--stationtracker .dhx_cal_event_line.min-width {
-  min-width: 40px !important; }
-#stationTrackerView--stationtracker .dhx_cal_event_line.lateI {
-  border-color: red;
-  border-width: 2px;
-  background-color: #969696; }
-#stationTrackerView--stationtracker .dhx_cal_event_line .dhx_event_resize {
-  background-image: none; }
+  #stationTrackerView--stationtracker .dhx_cal_event_line.late {
+    border-color: Red;
+    border-width: 2px;
+    min-width: 40px !important; }
+  #stationTrackerView--stationtracker .dhx_cal_event_line.min-width {
+    min-width: 40px !important; }
+  #stationTrackerView--stationtracker .dhx_cal_event_line.lateI {
+    border-color: red;
+    border-width: 2px;
+    background-color: #969696; }
+  #stationTrackerView--stationtracker .dhx_cal_event_line .dhx_event_resize {
+    background-image: none; }
 #stationTrackerView--stationtracker .dhx_scell_name {
   float: none;
   text-align: left;
@@ -851,9 +877,9 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
   right: 2px;
   color: #8db9ca;
   top: 2px; }
-#stationTrackerView--stationtracker .yMoreLabel .fa-pencil {
-  width: 30px;
-  text-align: center; }
+  #stationTrackerView--stationtracker .yMoreLabel .fa-pencil {
+    width: 30px;
+    text-align: center; }
 #stationTrackerView--stationtracker .ylabelAvlLineSection {
   display: inline-block;
   overflow: hidden;
@@ -868,10 +894,10 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
 #stationTrackerView--stationtracker .operationCP {
   background-color: #97999b;
   border: 2px solid #0D2C63; }
-#stationTrackerView--stationtracker .operationCP:hover {
-  background-color: #767879;
-  color: black;
-  border: 2px solid #74d2e7; }
+  #stationTrackerView--stationtracker .operationCP:hover {
+    background-color: #767879;
+    color: black;
+    border: 2px solid #74d2e7; }
 #stationTrackerView--stationtracker .customTable table tr th, #stationTrackerView--stationtracker td {
   border-left: none !important; }
 
@@ -981,12 +1007,12 @@ TASK ADHERENCE
 .taktAdherenceTrend {
   height: 100%;
   padding-right: 0 !important; }
-.taktAdherenceTrend.sapUiRespGrid.sapUiRespGridHSpace1 > div {
-  margin: 0 0.5rem 0 0;
-  line-height: 1rem; }
-.taktAdherenceTrend.sapUiRespGrid.sapUiRespGridHSpace1 > .sapUiRespGridSpanL4 {
-  margin: 0;
-  width: auto; }
+  .taktAdherenceTrend.sapUiRespGrid.sapUiRespGridHSpace1 > div {
+    margin: 0 0.5rem 0 0;
+    line-height: 1rem; }
+  .taktAdherenceTrend.sapUiRespGrid.sapUiRespGridHSpace1 > .sapUiRespGridSpanL4 {
+    margin: 0;
+    width: auto; }
 
 .classKpiHeaderContent .taktAdherenceTrend .TrendGree {
   margin-bottom: 0.5rem; }
@@ -1050,7 +1076,8 @@ svg#stationTrackerView--takt_adherence_area_chart {
   fill: white;
   font-size: 7px;
   margin-bottom: 2px; }
-#stationTrackerView--takt_adherence_area_chart .axis path, #stationTrackerView--takt_adherence_area_chart .axis line {
+#stationTrackerView--takt_adherence_area_chart .axis path,
+#stationTrackerView--takt_adherence_area_chart .axis line {
   fill: none;
   stroke: grey;
   shape-rendering: crispEdges; }
@@ -1081,7 +1108,8 @@ SHIFT STAFFING
 #stationTrackerView--shifStaffingHeader-dmc-chart .Left {
   background-color: #84bd00; }
 
-#stationTrackerView--shifStaffingHeader .sapSuiteDmcTitle, #stationTrackerView--shifStaffingHeader .sapSuiteDmcLbls {
+#stationTrackerView--shifStaffingHeader .sapSuiteDmcTitle,
+#stationTrackerView--shifStaffingHeader .sapSuiteDmcLbls {
   font-size: 0.8vw; }
 #stationTrackerView--shifStaffingHeader .sapSuiteDmcCnt {
   right: 2rem; }
@@ -1098,28 +1126,30 @@ STATION TRACKER TOOLBAR
 #stationTrackerView--buttonViewMode {
   height: 3rem;
   margin: 0; }
-#stationTrackerView--buttonViewMode .sapMSegBBtnFocusable.sapMSegBBtnSel {
-  background-color: #74D2E7;
-  color: white; }
+  #stationTrackerView--buttonViewMode .sapMSegBBtnFocusable.sapMSegBBtnSel {
+    background-color: #74D2E7;
+    color: white; }
 
 #stationTrackerView--toolbarstationtracker {
   background-color: #d5f1f8 !important; }
-#stationTrackerView--toolbarstationtracker label {
-  color: #0D5D76;
-  padding: 0 0 0 0.625rem; }
-#stationTrackerView--toolbarstationtracker .comboBoxStyle label, #stationTrackerView--toolbarstationtracker .comboBoxStyle .sapMSltArrow {
-  background-color: transparent;
-  color: #0D5D76;
-  height: 3rem;
-  line-height: 3rem; }
-#stationTrackerView--toolbarstationtracker .comboBoxStyle.sapMSltPressed .sapMSltArrow {
-  background-color: #74D2E7; }
-#stationTrackerView--toolbarstationtracker .sapMBtnIconLeft, #stationTrackerView--toolbarstationtracker .sapMBtnContent {
-  color: #0D5D76; }
-#stationTrackerView--toolbarstationtracker .sapMBtn:hover:not(.sapMBtnDisabled) {
-  background-color: rgba(0, 86, 112, 0.2); }
-#stationTrackerView--toolbarstationtracker .sapMBtn:hover:not(.sapMBtnDisabled) > .sapMBtnTransparent.sapMBtnHoverable {
-  background-color: transparent; }
+  #stationTrackerView--toolbarstationtracker label {
+    color: #0D5D76;
+    padding: 0 0 0 0.625rem; }
+  #stationTrackerView--toolbarstationtracker .comboBoxStyle label,
+  #stationTrackerView--toolbarstationtracker .comboBoxStyle .sapMSltArrow {
+    background-color: transparent;
+    color: #0D5D76;
+    height: 3rem;
+    line-height: 3rem; }
+  #stationTrackerView--toolbarstationtracker .comboBoxStyle.sapMSltPressed .sapMSltArrow {
+    background-color: #74D2E7; }
+  #stationTrackerView--toolbarstationtracker .sapMBtnIconLeft,
+  #stationTrackerView--toolbarstationtracker .sapMBtnContent {
+    color: #0D5D76; }
+  #stationTrackerView--toolbarstationtracker .sapMBtn:hover:not(.sapMBtnDisabled) {
+    background-color: rgba(0, 86, 112, 0.2); }
+    #stationTrackerView--toolbarstationtracker .sapMBtn:hover:not(.sapMBtnDisabled) > .sapMBtnTransparent.sapMBtnHoverable {
+      background-color: transparent; }
 
 .sapMPopoverScroll .sapMSelectListItemBaseSelected {
   background-color: #d5f1f8 !important; }
@@ -1132,14 +1162,14 @@ POP UP POLYPOLY
   border: none;
   border-radius: 0;
   box-shadow: 0 0 5px #333; }
-#pop-up-polypoly .sapUiTableColHdrScr .sapUiTableColHdr:nth-child(2) .sapMLabel {
-  border: none;
-  color: #468497;
-  font-size: 0.7rem; }
-#pop-up-polypoly .sapUiTableColHdrScr .sapUiTableColHdr:nth-child(1) .sapMLabel {
-  color: #468497;
-  font-size: 0.975rem;
-  padding-top: 4px; }
+  #pop-up-polypoly .sapUiTableColHdrScr .sapUiTableColHdr:nth-child(2) .sapMLabel {
+    border: none;
+    color: #468497;
+    font-size: 0.7rem; }
+  #pop-up-polypoly .sapUiTableColHdrScr .sapUiTableColHdr:nth-child(1) .sapMLabel {
+    color: #468497;
+    font-size: 0.975rem;
+    padding-top: 4px; }
 
 #pop-up-polypoly-header-BarPH {
   background: #d4f1f7; }
@@ -1164,8 +1194,8 @@ DATE PICKER
 ***********************/
 .sap-desktop .classDateButton .sapMBtnTransparent {
   border: none; }
-.sap-desktop .classDateButton .sapMBtnTransparent > .sapMBtnIcon {
-  color: #ffffff; }
+  .sap-desktop .classDateButton .sapMBtnTransparent > .sapMBtnIcon {
+    color: #ffffff; }
 .sap-desktop .classDatePickerPop .sapMIBar.sapMHeader-CTX {
   background: #d4f1f7;
   border: none;
@@ -1175,20 +1205,20 @@ DATE PICKER
   border-bottom-color: #d4f1f7; }
 .sap-desktop .classDatePickerPop .sapMBtn {
   background-color: #74d2e7; }
-.sap-desktop .classDatePickerPop .sapMBtn:hover > .sapMBtnHoverable, .sap-desktop .classDatePickerPop .sapMBtn > .sapMBtnHoverable {
-  background-color: transparent;
-  background: transparent;
-  border: none;
-  color: whitesmoke;
-  font-weight: 400; }
-.sap-desktop .classDatePickerPop .sapMBtn:hover {
-  background-color: rgba(0, 86, 112, 0.2); }
+  .sap-desktop .classDatePickerPop .sapMBtn:hover > .sapMBtnHoverable, .sap-desktop .classDatePickerPop .sapMBtn > .sapMBtnHoverable {
+    background-color: transparent;
+    background: transparent;
+    border: none;
+    color: whitesmoke;
+    font-weight: 400; }
+  .sap-desktop .classDatePickerPop .sapMBtn:hover {
+    background-color: rgba(0, 86, 112, 0.2); }
 
 .classDatePickerButton {
   color: #ffffff;
   text-shadow: none; }
-.classDatePickerButton.sapMBarChild.sapMBtn.sapMBtnBase {
-  margin: 0 auto; }
+  .classDatePickerButton.sapMBarChild.sapMBtn.sapMBtnBase {
+    margin: 0 auto; }
 
 .sapMTB-Transparent-CTX .classDateButton + .sapMLabel {
   text-shadow: none;
@@ -1221,8 +1251,8 @@ PRODUCTION GROUP POPOVER
   color: rgba(0, 32, 91, 0.94); }
 #mes .MyproductionGroupPopover .sapMCbBg {
   border: solid 0.125rem #74d2e7; }
-#mes .MyproductionGroupPopover .sapMCbBg:hover {
-  border-color: rgba(0, 32, 91, 0.94); }
+  #mes .MyproductionGroupPopover .sapMCbBg:hover {
+    border-color: rgba(0, 32, 91, 0.94); }
 #mes .ClassProductionButton {
   margin-left: 0;
   max-width: 30vw; }
@@ -1457,7 +1487,8 @@ OTHER
 .partialConfHeader .sapUxAPObjectPageHeaderIdentifier {
   background-color: #0085ad !important; }
 
-.whitePartialConfHeader .sapUxAPObjectPageHeaderIdentifierTitle, .whitePartialConfHeader2 .sapUxAPObjectPageHeaderIdentifierDescription {
+.whitePartialConfHeader .sapUxAPObjectPageHeaderIdentifierTitle,
+.whitePartialConfHeader2 .sapUxAPObjectPageHeaderIdentifierDescription {
   color: white !important; }
 
 .lockCss .sapUxAPObjectPageHeaderLockBtn .sapMBtnTransparent > .sapMBtnIcon {
@@ -1590,23 +1621,23 @@ OTHER
 
 #stationTrackerView--toolbarstationtracker-popover-scroll {
   color: #000000; }
-#stationTrackerView--toolbarstationtracker-popover-scroll > button > div {
-  color: inherit !important; }
-#stationTrackerView--toolbarstationtracker-popover-scroll > button > div.sapMToggleBtnPressed {
-  background-color: #005483 !important; }
-#stationTrackerView--toolbarstationtracker-popover-scroll > button > div.sapMToggleBtnPressed:hover {
-  opacity: 0.8; }
-#stationTrackerView--toolbarstationtracker-popover-scroll > button > div.sapMToggleBtnPressed > * {
-  color: #ffffff !important;
-  background-color: #005483 !important; }
-#stationTrackerView--toolbarstationtracker-popover-scroll > button:hover > div:not(.sapMToggleBtnPressed) {
-  background-color: rgba(222, 222, 222, 0.5); }
+  #stationTrackerView--toolbarstationtracker-popover-scroll > button > div {
+    color: inherit !important; }
+    #stationTrackerView--toolbarstationtracker-popover-scroll > button > div.sapMToggleBtnPressed {
+      background-color: #005483 !important; }
+      #stationTrackerView--toolbarstationtracker-popover-scroll > button > div.sapMToggleBtnPressed:hover {
+        opacity: 0.8; }
+      #stationTrackerView--toolbarstationtracker-popover-scroll > button > div.sapMToggleBtnPressed > * {
+        color: #ffffff !important;
+        background-color: #005483 !important; }
+  #stationTrackerView--toolbarstationtracker-popover-scroll > button:hover > div:not(.sapMToggleBtnPressed) {
+    background-color: rgba(222, 222, 222, 0.5); }
 
 #ImportOswUnplannedPopover--SelectAllUnpd-inner.sapMToggleBtnPressed {
   color: #ffffff !important;
   background-color: #005483 !important; }
-#ImportOswUnplannedPopover--SelectAllUnpd-inner.sapMToggleBtnPressed:hover {
-  opacity: 0.8; }
+  #ImportOswUnplannedPopover--SelectAllUnpd-inner.sapMToggleBtnPressed:hover {
+    opacity: 0.8; }
 
 .sidenav {
   height: 0;
@@ -1671,8 +1702,8 @@ OTHER
 /* oswPopover */
 .oswPopover .sapUiTinyMarginBeginEnd[role="checkbox"] {
   margin: 0 !important; }
-.oswPopover .sapUiTinyMarginBeginEnd[role="checkbox"] .sapMCbBg {
-  top: 0.5125rem; }
+  .oswPopover .sapUiTinyMarginBeginEnd[role="checkbox"] .sapMCbBg {
+    top: 0.5125rem; }
 .oswPopover .sapUiSizeCompact .sapMTokenizer .sapMToken {
   margin-top: 0.23rem; }
 
@@ -1683,54 +1714,55 @@ KPI Header Content
 .classKpiHeaderContent {
   height: 195px;
   overflow-y: hidden; }
-.classKpiHeaderContent .contentHeaderCont {
-  white-space: normal;
-  background-color: #0f2d65;
-  border-right: solid 1px #74d2e7;
-  margin: 0px !important;
-  border-bottom: none;
-  border-top: solid 1px #74d2e7;
-  padding: 0 5px; }
-.classKpiHeaderContent .contentHeaderCont:last-child {
-  border-right: none !important; }
-.classKpiHeaderContent .sapSuiteCpMCChartBarNoValue {
-  background-color: rgba(187, 188, 188, 0.15); }
-.classKpiHeaderContent .sapSuiteCmpChartBarNoValue {
-  background-color: rgba(187, 188, 188, 0.15); }
-.classKpiHeaderContent .kpiValue {
-  /* font-size: 1.6vw; */
-  font-size: 1vw;
-  width: 100%;
-  text-align: center !important; }
-.classKpiHeaderContent .kpiName {
-  text-align: center !important;
-  width: 100%; }
-.classKpiHeaderContent .whiteTextHeader {
-  white-space: normal;
-  text-align: center !important;
-  color: #ffffff;
-  width: 100%;
-  font-size: 1vw; }
-.classKpiHeaderContent .sapSuiteCmpChartItemTitle, .classKpiHeaderContent .sapSuiteCmpChartItemValue, .classKpiHeaderContent .sapSuiteCpMCChartItemTitle, .classKpiHeaderContent .sapSuiteCpMCChartItemValue, .classKpiHeaderContent label {
-  color: #ffffff;
-  font-size: 0.78vw; }
+  .classKpiHeaderContent .contentHeaderCont {
+    white-space: normal;
+    background-color: #0f2d65;
+    border-right: solid 1px #74d2e7;
+    margin: 0px !important;
+    border-bottom: none;
+    border-top: solid 1px #74d2e7;
+    padding: 0 5px; }
+  .classKpiHeaderContent .contentHeaderCont:last-child {
+    border-right: none !important; }
+  .classKpiHeaderContent .sapSuiteCpMCChartBarNoValue {
+    background-color: rgba(187, 188, 188, 0.15); }
+  .classKpiHeaderContent .sapSuiteCmpChartBarNoValue {
+    background-color: rgba(187, 188, 188, 0.15); }
+  .classKpiHeaderContent .kpiValue {
+    /* font-size: 1.6vw; */
+    font-size: 1vw;
+    width: 100%;
+    text-align: center !important; }
+  .classKpiHeaderContent .kpiName {
+    text-align: center !important;
+    width: 100%; }
+  .classKpiHeaderContent .whiteTextHeader {
+    white-space: normal;
+    text-align: center !important;
+    color: #ffffff;
+    width: 100%;
+    font-size: 1vw; }
+  .classKpiHeaderContent .sapSuiteCmpChartItemTitle, .classKpiHeaderContent .sapSuiteCmpChartItemValue, .classKpiHeaderContent .sapSuiteCpMCChartItemTitle, .classKpiHeaderContent .sapSuiteCpMCChartItemValue,
+  .classKpiHeaderContent label {
+    color: #ffffff;
+    font-size: 0.78vw; }
 
 /*KPI boxes*/
 .kpiBoxes > .sapMFlexItem:first-child {
   height: 50px; }
-.kpiBoxes > .sapMFlexItem:first-child .sapMLabel {
-  display: inline-block;
-  vertical-align: middle !important;
-  max-width: 100% !important;
-  max-height: 50px; }
+  .kpiBoxes > .sapMFlexItem:first-child .sapMLabel {
+    display: inline-block;
+    vertical-align: middle !important;
+    max-width: 100% !important;
+    max-height: 50px; }
 
 .labourEfficiencyBox .sapMFlexItem:nth-child(2) {
   height: 144px;
   display: inline-block;
   vertical-align: middle !important; }
-.labourEfficiencyBox .sapMFlexItem:nth-child(2) .sapMLabel {
-  vertical-align: super !important;
-  max-height: 144px; }
+  .labourEfficiencyBox .sapMFlexItem:nth-child(2) .sapMLabel {
+    vertical-align: super !important;
+    max-height: 144px; }
 
 /*general kpi*/
 .kpiBoxExtraWork .sapMFlexItem {
@@ -1738,16 +1770,16 @@ KPI Header Content
   line-height: normal;
   display: inline-block;
   vertical-align: middle !important; }
-.kpiBoxExtraWork .sapMFlexItem .sapMLabel {
-  display: inline-block;
-  max-width: 100% !important;
-  vertical-align: middle !important; }
+  .kpiBoxExtraWork .sapMFlexItem .sapMLabel {
+    display: inline-block;
+    max-width: 100% !important;
+    vertical-align: middle !important; }
 .kpiBoxExtraWork .sapMFlexItem:nth-child(2), .kpiBoxExtraWork .sapMFlexItem:nth-child(4) {
   height: 30px; }
-.kpiBoxExtraWork .sapMFlexItem:nth-child(2) .sapMLabel, .kpiBoxExtraWork .sapMFlexItem:nth-child(4) .sapMLabel {
-  vertical-align: sub !important;
-  max-height: 30px;
-  font-size: 0.9vw; }
+  .kpiBoxExtraWork .sapMFlexItem:nth-child(2) .sapMLabel, .kpiBoxExtraWork .sapMFlexItem:nth-child(4) .sapMLabel {
+    vertical-align: sub !important;
+    max-height: 30px;
+    font-size: 0.9vw; }
 .kpiBoxExtraWork .sapMFlexItem:nth-child(3) .sapMLabel, .kpiBoxExtraWork .sapMFlexItem:nth-child(5) .sapMLabel {
   vertical-align: top !important;
   max-height: 42px; }
@@ -1768,29 +1800,29 @@ KPI Header Content
 .openDisruptionTotal {
   justify-content: inherit !important;
   padding-right: 5px; }
-.openDisruptionTotal .sapMFlexItem {
-  width: 100% !important;
-  line-height: normal;
-  display: inline-block;
-  vertical-align: middle !important; }
-.openDisruptionTotal .sapMFlexItem .sapMLabel {
-  display: inline-block;
-  max-width: 100% !important;
-  vertical-align: middle !important; }
-.openDisruptionTotal .sapMFlexItem:nth-child(1) {
-  height: 25px; }
-.openDisruptionTotal .sapMFlexItem:nth-child(1) .sapMLabel {
-  vertical-align: middle !important;
-  max-height: 25px;
-  font-size: 0.9vw; }
-.openDisruptionTotal .sapMFlexItem:nth-child(2), .openDisruptionTotal .sapMFlexItem:nth-child(4) {
-  height: 20px; }
-.openDisruptionTotal .sapMFlexItem:nth-child(2) .sapMLabel, .openDisruptionTotal .sapMFlexItem:nth-child(4) .sapMLabel {
-  vertical-align: middle !important;
-  max-height: 20px; }
-.openDisruptionTotal .sapMFlexItem:nth-child(3) .sapMLabel, .openDisruptionTotal .sapMFlexItem:nth-child(5) .sapMLabel {
-  vertical-align: top !important;
-  max-height: 30px; }
+  .openDisruptionTotal .sapMFlexItem {
+    width: 100% !important;
+    line-height: normal;
+    display: inline-block;
+    vertical-align: middle !important; }
+    .openDisruptionTotal .sapMFlexItem .sapMLabel {
+      display: inline-block;
+      max-width: 100% !important;
+      vertical-align: middle !important; }
+  .openDisruptionTotal .sapMFlexItem:nth-child(1) {
+    height: 25px; }
+    .openDisruptionTotal .sapMFlexItem:nth-child(1) .sapMLabel {
+      vertical-align: middle !important;
+      max-height: 25px;
+      font-size: 0.9vw; }
+  .openDisruptionTotal .sapMFlexItem:nth-child(2), .openDisruptionTotal .sapMFlexItem:nth-child(4) {
+    height: 20px; }
+    .openDisruptionTotal .sapMFlexItem:nth-child(2) .sapMLabel, .openDisruptionTotal .sapMFlexItem:nth-child(4) .sapMLabel {
+      vertical-align: middle !important;
+      max-height: 20px; }
+  .openDisruptionTotal .sapMFlexItem:nth-child(3) .sapMLabel, .openDisruptionTotal .sapMFlexItem:nth-child(5) .sapMLabel {
+    vertical-align: top !important;
+    max-height: 30px; }
 
 .openDisruptionDetail, .openDisruptionValues {
   padding-right: 5px; }
@@ -1801,16 +1833,16 @@ KPI Header Content
   display: inline-block;
   vertical-align: middle !important;
   height: 23px; }
-.openDisruptionDetail .sapMFlexItem .sapMLabel, .openDisruptionValues .sapMFlexItem .sapMLabel, .openDisruptionAndon .sapMFlexItem .sapMLabel {
-  display: inline-block;
-  max-width: 100% !important;
-  vertical-align: middle !important;
-  max-height: 23px; }
+  .openDisruptionDetail .sapMFlexItem .sapMLabel, .openDisruptionValues .sapMFlexItem .sapMLabel, .openDisruptionAndon .sapMFlexItem .sapMLabel {
+    display: inline-block;
+    max-width: 100% !important;
+    vertical-align: middle !important;
+    max-height: 23px; }
 .openDisruptionDetail .sapMFlexItem:nth-child(1), .openDisruptionValues .sapMFlexItem:nth-child(1), .openDisruptionAndon .sapMFlexItem:nth-child(1) {
   height: 25px; }
-.openDisruptionDetail .sapMFlexItem:nth-child(1) .sapMLabel, .openDisruptionValues .sapMFlexItem:nth-child(1) .sapMLabel, .openDisruptionAndon .sapMFlexItem:nth-child(1) .sapMLabel {
-  max-height: 25px;
-  font-size: 0.9vw; }
+  .openDisruptionDetail .sapMFlexItem:nth-child(1) .sapMLabel, .openDisruptionValues .sapMFlexItem:nth-child(1) .sapMLabel, .openDisruptionAndon .sapMFlexItem:nth-child(1) .sapMLabel {
+    max-height: 25px;
+    font-size: 0.9vw; }
 
 .taktAdherenceTrendBox > .sapMFlexItem {
   height: 100%; }
@@ -1827,59 +1859,59 @@ KPI Header Content
 
 .chartColumn {
   height: 100%; }
-.chartColumn > .sapMFlexItem:nth-child(1) {
-  height: 25px; }
-.chartColumn > .sapMFlexItem:nth-child(1) > .sapUiRespGrid {
-  width: 100%;
-  height: 100%;
-  padding: 0; }
-.chartColumn > .sapMFlexItem:nth-child(1) > .sapUiRespGrid > div {
-  margin: 0 2%;
-  width: 46% !important;
-  line-height: normal;
-  display: inline-block;
-  vertical-align: middle !important;
-  height: 25px; }
-.chartColumn > .sapMFlexItem:nth-child(1) > .sapUiRespGrid > div:nth-child(1) {
-  text-align: -webkit-right !important; }
-.chartColumn > .sapMFlexItem:nth-child(1) > .sapUiRespGrid > div:nth-child(2) {
-  text-align: -webkit-left !important; }
-.chartColumn > .sapMFlexItem:nth-child(1) > .sapUiRespGrid > div .sapMLabel {
-  display: inline-block;
-  max-width: 100% !important;
-  vertical-align: middle !important;
-  max-height: 25px; }
-.chartColumn > .sapMFlexItem:nth-child(2) {
-  height: 119px; }
-.chartColumn > .sapMFlexItem:nth-child(3) {
-  height: 25px;
-  width: 100% !important;
-  line-height: normal;
-  display: inline-block;
-  vertical-align: middle !important; }
-.chartColumn > .sapMFlexItem:nth-child(3) .sapMLabel {
-  display: inline-block;
-  max-width: 100% !important;
-  vertical-align: bottom !important;
-  max-height: 25px; }
-.chartColumn > .sapMFlexItem:nth-child(4) {
-  height: 25px; }
-.chartColumn > .sapMFlexItem:nth-child(4) > .sapUiRespGrid {
-  width: 100%;
-  height: 100%;
-  padding: 0; }
-.chartColumn > .sapMFlexItem:nth-child(4) > .sapUiRespGrid > div {
-  margin: 0;
-  width: 50% !important;
-  line-height: normal;
-  display: inline-block;
-  vertical-align: middle !important;
-  height: 25px; }
-.chartColumn > .sapMFlexItem:nth-child(4) > .sapUiRespGrid > div .sapMLabel {
-  display: inline-block;
-  max-width: 100% !important;
-  vertical-align: middle !important;
-  max-height: 25px; }
+  .chartColumn > .sapMFlexItem:nth-child(1) {
+    height: 25px; }
+    .chartColumn > .sapMFlexItem:nth-child(1) > .sapUiRespGrid {
+      width: 100%;
+      height: 100%;
+      padding: 0; }
+      .chartColumn > .sapMFlexItem:nth-child(1) > .sapUiRespGrid > div {
+        margin: 0 2%;
+        width: 46% !important;
+        line-height: normal;
+        display: inline-block;
+        vertical-align: middle !important;
+        height: 25px; }
+        .chartColumn > .sapMFlexItem:nth-child(1) > .sapUiRespGrid > div:nth-child(1) {
+          text-align: -webkit-right !important; }
+        .chartColumn > .sapMFlexItem:nth-child(1) > .sapUiRespGrid > div:nth-child(2) {
+          text-align: -webkit-left !important; }
+        .chartColumn > .sapMFlexItem:nth-child(1) > .sapUiRespGrid > div .sapMLabel {
+          display: inline-block;
+          max-width: 100% !important;
+          vertical-align: middle !important;
+          max-height: 25px; }
+  .chartColumn > .sapMFlexItem:nth-child(2) {
+    height: 119px; }
+  .chartColumn > .sapMFlexItem:nth-child(3) {
+    height: 25px;
+    width: 100% !important;
+    line-height: normal;
+    display: inline-block;
+    vertical-align: middle !important; }
+    .chartColumn > .sapMFlexItem:nth-child(3) .sapMLabel {
+      display: inline-block;
+      max-width: 100% !important;
+      vertical-align: bottom !important;
+      max-height: 25px; }
+  .chartColumn > .sapMFlexItem:nth-child(4) {
+    height: 25px; }
+    .chartColumn > .sapMFlexItem:nth-child(4) > .sapUiRespGrid {
+      width: 100%;
+      height: 100%;
+      padding: 0; }
+      .chartColumn > .sapMFlexItem:nth-child(4) > .sapUiRespGrid > div {
+        margin: 0;
+        width: 50% !important;
+        line-height: normal;
+        display: inline-block;
+        vertical-align: middle !important;
+        height: 25px; }
+        .chartColumn > .sapMFlexItem:nth-child(4) > .sapUiRespGrid > div .sapMLabel {
+          display: inline-block;
+          max-width: 100% !important;
+          vertical-align: middle !important;
+          max-height: 25px; }
 
 #teamPopoverID-intHeader {
   background-color: #2c2a29 !important;
@@ -1888,44 +1920,45 @@ KPI Header Content
 .customListItem {
   background-color: #2c2a29 !important;
   border-bottom-color: #2c2a29; }
-.customListItem > div > button > div > span {
-  color: #ffffff !important; }
-.customListItem > div > button:nth-child(2) {
-  border-bottom: solid 1px #ffffff;
-  border-top: solid 1px #ffffff; }
+  .customListItem > div > button > div > span {
+    color: #ffffff !important; }
+  .customListItem > div > button:nth-child(2) {
+    border-bottom: solid 1px #ffffff;
+    border-top: solid 1px #ffffff; }
 
 /*******************************
 BOX RESOLUTION EFFICIENCY
 ********************************/
 #stationTrackerView--boxSLBEfficiecy .sapSuiteCpMCVerticalAlignmentContainer > .sapSuiteCpMCChartItem {
   padding-bottom: 2px; }
-#stationTrackerView--boxSLBEfficiecy .sapSuiteCpMCVerticalAlignmentContainer > .sapSuiteCpMCChartItem > .sapSuiteCpMCChartItemHeader {
-  margin: 0; }
-#stationTrackerView--boxSLBEfficiecy .sapSuiteCpMCVerticalAlignmentContainer > .sapSuiteCpMCChartItem > .sapSuiteCpMCChartBar {
-  margin: 0;
-  height: 0.95rem; }
-#stationTrackerView--boxSLBEfficiecy .sapSuiteCpMCVerticalAlignmentContainer > .sapSuiteCpMCChartItem > .sapSuiteCpMCChartBar > div {
-  max-height: 0.75rem;
-  min-height: 0.375rem;
-  width: 100%;
-  height: 15.75%; }
+  #stationTrackerView--boxSLBEfficiecy .sapSuiteCpMCVerticalAlignmentContainer > .sapSuiteCpMCChartItem > .sapSuiteCpMCChartItemHeader {
+    margin: 0; }
+  #stationTrackerView--boxSLBEfficiecy .sapSuiteCpMCVerticalAlignmentContainer > .sapSuiteCpMCChartItem > .sapSuiteCpMCChartBar {
+    margin: 0;
+    height: 0.95rem; }
+    #stationTrackerView--boxSLBEfficiecy .sapSuiteCpMCVerticalAlignmentContainer > .sapSuiteCpMCChartItem > .sapSuiteCpMCChartBar > div {
+      max-height: 0.75rem;
+      min-height: 0.375rem;
+      width: 100%;
+      height: 15.75%; }
 
 #stationTrackerView--boxResolutionEfficiency .sapSuiteCpMCVerticalAlignmentContainer > .sapSuiteCpMCChartItem {
   padding-bottom: 2px; }
-#stationTrackerView--boxResolutionEfficiency .sapSuiteCpMCVerticalAlignmentContainer > .sapSuiteCpMCChartItem > .sapSuiteCpMCChartItemHeader {
-  margin: 0; }
-#stationTrackerView--boxResolutionEfficiency .sapSuiteCpMCVerticalAlignmentContainer > .sapSuiteCpMCChartItem > .sapSuiteCpMCChartItemValue {
-  margin-left: 0;
-  margin-right: 0; }
-#stationTrackerView--boxResolutionEfficiency .sapSuiteCpMCVerticalAlignmentContainer > .sapSuiteCpMCChartItem > .sapSuiteCpMCChartBar {
-  margin-left: 0;
-  margin-right: 0; }
+  #stationTrackerView--boxResolutionEfficiency .sapSuiteCpMCVerticalAlignmentContainer > .sapSuiteCpMCChartItem > .sapSuiteCpMCChartItemHeader {
+    margin: 0; }
+  #stationTrackerView--boxResolutionEfficiency .sapSuiteCpMCVerticalAlignmentContainer > .sapSuiteCpMCChartItem > .sapSuiteCpMCChartItemValue {
+    margin-left: 0;
+    margin-right: 0; }
+  #stationTrackerView--boxResolutionEfficiency .sapSuiteCpMCVerticalAlignmentContainer > .sapSuiteCpMCChartItem > .sapSuiteCpMCChartBar {
+    margin-left: 0;
+    margin-right: 0; }
 #stationTrackerView--boxResolutionEfficiency .boxResolutionEfficiencyGoodValue {
   color: #84bd00; }
 #stationTrackerView--boxResolutionEfficiency .boxResolutionEfficiencyBadValue {
   color: #fe5000; }
 
-#stationTrackerView--boxSLBEfficiecy_chart-chart-item-3, #stationTrackerView--boxResolutionEfficiecy_chart-chart-item-3 {
+#stationTrackerView--boxSLBEfficiecy_chart-chart-item-3,
+#stationTrackerView--boxResolutionEfficiecy_chart-chart-item-3 {
   opacity: 0; }
 
 .kpiBoxes > .sapMFlexItem:not(.taktAdherenceBox):before, .openDisruptionTotal > .sapMFlexItem:nth-child(2):before, .openDisruptionTotal .sapMFlexItem:nth-child(4):before, .chartColumn > .sapMFlexItem:nth-child(1) > .sapUiRespGrid > div:before, .chartColumn > .sapMFlexItem:nth-child(4) > .sapUiRespGrid > div:before {
@@ -1978,23 +2011,23 @@ BOX RESOLUTION EFFICIENCY
   border-bottom: 0;
   margin-top: 0.8rem !important;
   margin-left: 0.8rem !important; }
-.classListProgram .sapMLIBContent .sapMHBox .sapMFlexItem:nth-child(2):before {
-  content: ' ';
-  display: inline-block;
-  vertical-align: middle;
-  height: 100%; }
-.classListProgram .sapMLIBContent div > div:nth-child(2) {
-  text-align: center; }
-.classListProgram .sapMLIBContent div > div:nth-child(2) img {
-  display: inline-block;
-  vertical-align: middle; }
+  .classListProgram .sapMLIBContent .sapMHBox .sapMFlexItem:nth-child(2):before {
+    content: ' ';
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%; }
+  .classListProgram .sapMLIBContent div > div:nth-child(2) {
+    text-align: center; }
+    .classListProgram .sapMLIBContent div > div:nth-child(2) img {
+      display: inline-block;
+      vertical-align: middle; }
 
 .classListProgramRadioBtn .sapMRbB {
   display: inline-block;
   vertical-align: middle;
   height: 100%; }
-.classListProgramRadioBtn .sapMRbB .sapMRbBOut {
-  border: 2px solid #74d2e7; }
+  .classListProgramRadioBtn .sapMRbB .sapMRbBOut {
+    border: 2px solid #74d2e7; }
 .classListProgramRadioBtn label {
   display: inline-block;
   vertical-align: middle; }
@@ -2002,30 +2035,33 @@ BOX RESOLUTION EFFICIENCY
 .classOtherSetting {
   border: 1px solid #e5e5e5;
   margin-top: 0.8rem !important; }
-.classOtherSetting .sapUiFormTitle, .classListProgram .sapMListHdr, .classSelectListBox .sapMListHdr {
-  text-shadow: none; }
-.classOtherSetting .sapUiFormTitle, .classListProgram .sapMListHdr {
-  border-bottom: 1px solid #e5e5e5; }
-.classOtherSetting label {
-  color: rgba(0, 86, 112, 0.94); }
-.classOtherSetting .sapUiFormM .sapUiFormResGridCont {
-  padding: 0.6rem !important; }
+  .classOtherSetting .sapUiFormTitle,
+  .classListProgram .sapMListHdr,
+  .classSelectListBox .sapMListHdr {
+    text-shadow: none; }
+    .classOtherSetting .sapUiFormTitle,
+    .classListProgram .sapMListHdr {
+      border-bottom: 1px solid #e5e5e5; }
+  .classOtherSetting label {
+    color: rgba(0, 86, 112, 0.94); }
+  .classOtherSetting .sapUiFormM .sapUiFormResGridCont {
+    padding: 0.6rem !important; }
 
 .classSelectListBox {
   margin-top: 0.8rem;
   border: 1px solid #e5e5e5;
   border-right: none; }
-.classSelectListBox .sapMListHdr {
-  border: none; }
+  .classSelectListBox .sapMListHdr {
+    border: none; }
 
 .classSelectList {
   max-width: 100%;
   margin: 0 !important;
   border: none; }
-.classSelectList > li {
-  border-bottom: 1px solid #e5e5e5; }
-.classSelectList > li:last-child {
-  border-bottom: none; }
+  .classSelectList > li {
+    border-bottom: 1px solid #e5e5e5; }
+    .classSelectList > li:last-child {
+      border-bottom: none; }
 
 .pageWelcome {
   font-family: "Arial", Sans-serif !important;
@@ -2046,8 +2082,8 @@ BOX RESOLUTION EFFICIENCY
 
 .sapUiFormTitle {
   background-color: #d5f1f8; }
-.sapUiFormTitle .sapUiFormTitle {
-  color: white; }
+  .sapUiFormTitle .sapUiFormTitle {
+    color: white; }
 
 .sapMPageHeader::before {
   border-top: 0rem solid #92C0E4; }
@@ -2067,8 +2103,8 @@ BOX RESOLUTION EFFICIENCY
 
 [id^="settingsView--headText"] {
   color: rgba(0, 86, 112, 0.94); }
-[id^="settingsView--headText"] > .sapUiForm .sapUiFormTitle {
-  color: rgba(0, 86, 112, 0.94); }
+  [id^="settingsView--headText"] > .sapUiForm .sapUiFormTitle {
+    color: rgba(0, 86, 112, 0.94); }
 
 [id^="settingsView--nav"] > .sapMBtnIcon {
   color: rgba(0, 86, 112, 0.94) !important; }
@@ -2136,37 +2172,37 @@ html.sap-desktop .sapMBtnTransparent > .sapMBtnIcon {
 
 #settingsView--settingsSubHeader {
   background-color: #d5f1f8; }
-#settingsView--settingsSubHeader > div > button > .sapMBtnActive {
-  background-color: #74d2e7;
-  -webkit-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out;
-  -moz-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out;
-  transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; }
-#settingsView--settingsSubHeader > div > button:hover > div:not(.sapMBtnActive) {
-  background-color: rgba(0, 86, 112, 0.2);
-  -webkit-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out;
-  -moz-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out;
-  transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; }
+  #settingsView--settingsSubHeader > div > button > .sapMBtnActive {
+    background-color: #74d2e7;
+    -webkit-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out;
+    -moz-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out;
+    transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; }
+  #settingsView--settingsSubHeader > div > button:hover > div:not(.sapMBtnActive) {
+    background-color: rgba(0, 86, 112, 0.2);
+    -webkit-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out;
+    -moz-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out;
+    transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; }
 
 #settingsView--headTextProgram-listUl > li .classListProgramRadioBtn {
   padding: 12px 0 12px 12px;
   height: 3rem; }
-#settingsView--headTextProgram-listUl > li .classListProgramRadioBtn > div {
-  padding: 0;
-  padding-right: 5px; }
-#settingsView--headTextProgram-listUl > li .classListProgramRadioBtn > label {
-  margin-left: 0;
-  padding-left: .8125rem;
-  text-align: left;
-  padding-right: .8125rem; }
-#settingsView--headTextProgram-listUl > li .classListProgramRadioBtn:not(.sapMRbDis):hover > * {
-  background-color: #f0f0f0;
-  -webkit-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out;
-  -moz-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out;
-  transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; }
-#settingsView--headTextProgram-listUl > li .classListProgramRadioBtn.sapMRbBTouched > * {
-  background-color: #007cc0 !important; }
-#settingsView--headTextProgram-listUl > li .classListProgramRadioBtn.sapMRbBTouched > label {
-  color: #ffffff; }
+  #settingsView--headTextProgram-listUl > li .classListProgramRadioBtn > div {
+    padding: 0;
+    padding-right: 5px; }
+  #settingsView--headTextProgram-listUl > li .classListProgramRadioBtn > label {
+    margin-left: 0;
+    padding-left: .8125rem;
+    text-align: left;
+    padding-right: .8125rem; }
+  #settingsView--headTextProgram-listUl > li .classListProgramRadioBtn:not(.sapMRbDis):hover > * {
+    background-color: #f0f0f0;
+    -webkit-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out;
+    -moz-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out;
+    transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; }
+  #settingsView--headTextProgram-listUl > li .classListProgramRadioBtn.sapMRbBTouched > * {
+    background-color: #007cc0 !important; }
+  #settingsView--headTextProgram-listUl > li .classListProgramRadioBtn.sapMRbBTouched > label {
+    color: #ffffff; }
 
 /************************
 DISRUPTIONTRACKER
@@ -2175,7 +2211,8 @@ DISRUPTIONTRACKER
   width: 100%;
   max-width: 100%; }
 
-.disruptions table th, td {
+.disruptions table th,
+td {
   text-align: center !important; }
 
 .disruptions table td {
@@ -2196,38 +2233,41 @@ DISRUPTIONTRACKER
   display: none !important; }
 .disruptions .pageHeader {
   border-top: 0.6rem solid #ffffff; }
-.disruptions .sapMPanel, .sapMPage > .sapMPageHeader + section {
+.disruptions .sapMPanel,
+.sapMPage > .sapMPageHeader + section {
   background-color: #ffffff !important; }
 .disruptions .sapMPanelContent:not(.sapMPanelBGTransparent) {
   border-bottom: 0 !important;
   background-color: #e9fbfd; }
-.disruptions .sapMComboBoxTextField, .disruptions .sapMSFF {
+.disruptions .sapMComboBoxTextField,
+.disruptions .sapMSFF {
   border: 1px solid #74D2E7; }
 .disruptions .sapMSFF {
   border-radius: 3em;
   border: 2px solid #74D2E7;
   color: #74D2E7;
   overflow: hidden; }
-.disruptions .sapMSFF .sapMSFB.sapMSFS {
-  color: #74D2E7; }
+  .disruptions .sapMSFF .sapMSFB.sapMSFS {
+    color: #74D2E7; }
 .disruptions .disruptionsTable {
   width: auto !important;
   margin: 0.7rem 0.7rem 0 0.7rem; }
 .disruptions header {
   z-index: 10;
   box-shadow: 0px 2px 15px -5px #0f2d65; }
-.disruptions header .headerText {
-  text-shadow: none; }
+  .disruptions header .headerText {
+    text-shadow: none; }
 .disruptions .sapMTB {
   border-bottom: none !important; }
 .disruptions .sapMIBar.sapMSubHeader-CTX {
   color: white !important;
   background: #0f2d65 !important;
   color: #ffffff !important; }
-.disruptions .sapMIBar.sapMSubHeader-CTX .headerText {
-  font-size: 1.2rem !important; }
+  .disruptions .sapMIBar.sapMSubHeader-CTX .headerText {
+    font-size: 1.2rem !important; }
 
-#disruptiontrackerView--navBack .sapMBtnIcon, #disruptiontrackerView--navBack .sapMBtnContent {
+#disruptiontrackerView--navBack .sapMBtnIcon,
+#disruptiontrackerView--navBack .sapMBtnContent {
   color: white; }
 
 #disruptiontrackerView--gotoDisruptionKpi.sapMBtn:hover {
@@ -2256,8 +2296,8 @@ DISRUPTIONTRACKER
   border: none;
   border-radius: 0;
   box-shadow: 0 0 5px #333; }
-#disrptTrackerSettings-dialog header {
-  background: #d4f1f7; }
+  #disrptTrackerSettings-dialog header {
+    background: #d4f1f7; }
 
 #disrptTrackerSettings-title {
   color: #434343; }
@@ -2278,28 +2318,29 @@ DISRUPTIONTRACKER
 #disruptionDetail {
   overflow: auto;
   background-color: #E9EEF3; }
-#disruptionDetail .sapMFlexBox.sapMFlexBoxAlignContentStretch.sapMFlexBoxAlignItemsStretch.sapMFlexBoxJustifyStart.sapMFlexBoxWrapNoWrap.sapMFlexItem.sapMHBox {
-  background-color: #E9EEF3; }
-#disruptionDetail .sapUiFormTitle {
-  background-color: transparent; }
-#disruptionDetail .sapUiFormM .sapUiFormContainerTitle > .sapUiFormTitle {
-  height: 2rem;
-  line-height: 2rem; }
-#disruptionDetail .sapMSlt > .sapMSltLabel, #disruptionDetail .sapMSlt, #disruptionDetail .sapMSltArrow {
-  line-height: 2.5rem;
-  height: 2.5rem; }
-#disruptionDetail .sapUiFormContainerTitle {
-  background-color: #E9EEF3; }
-#disruptionDetail .sapUiFormResGrid.sapUiFormBackgrTranslucent > div {
-  background-color: #E9EEF3; }
-#disruptionDetail .titleToolbar {
-  background-color: rgba(191, 198, 206, 0.59); }
-#disruptionDetail .sapUiForm .sapUiFormTitle {
-  font-weight: bold;
-  line-height: 4rem; }
-#disruptionDetail .sapMFlexItem .textSize:nth-child(1) {
-  font-weight: bold;
-  color: black; }
+  #disruptionDetail .sapMFlexBox.sapMFlexBoxAlignContentStretch.sapMFlexBoxAlignItemsStretch.sapMFlexBoxJustifyStart.sapMFlexBoxWrapNoWrap.sapMFlexItem.sapMHBox {
+    background-color: #E9EEF3; }
+  #disruptionDetail .sapUiFormTitle {
+    background-color: transparent; }
+  #disruptionDetail .sapUiFormM .sapUiFormContainerTitle > .sapUiFormTitle {
+    height: 2rem;
+    line-height: 2rem; }
+  #disruptionDetail .sapMSlt > .sapMSltLabel,
+  #disruptionDetail .sapMSlt, #disruptionDetail .sapMSltArrow {
+    line-height: 2.5rem;
+    height: 2.5rem; }
+  #disruptionDetail .sapUiFormContainerTitle {
+    background-color: #E9EEF3; }
+  #disruptionDetail .sapUiFormResGrid.sapUiFormBackgrTranslucent > div {
+    background-color: #E9EEF3; }
+  #disruptionDetail .titleToolbar {
+    background-color: rgba(191, 198, 206, 0.59); }
+  #disruptionDetail .sapUiForm .sapUiFormTitle {
+    font-weight: bold;
+    line-height: 4rem; }
+  #disruptionDetail .sapMFlexItem .textSize:nth-child(1) {
+    font-weight: bold;
+    color: black; }
 
 /********************
 RESSOURCEPOOL
@@ -2314,19 +2355,20 @@ RESSOURCEPOOL
 
 .myForm {
   width: 40em !important; }
-@media screen and (max-width: 500px) {
-  .myForm {
-    width: 15em !important; } }
+  @media screen and (max-width: 500px) {
+    .myForm {
+      width: 15em !important; } }
 
-#resourcePool--navBack .sapMBtnIcon, #resourcePool--navBack .sapMBtnContent {
+#resourcePool--navBack .sapMBtnIcon,
+#resourcePool--navBack .sapMBtnContent {
   color: white; }
 
 #idUsersView .fixHboxItemDisplay .sapMFlexItem {
   width: 100%;
   word-break: break-all;
   word-break: break-word; }
-#idUsersView .fixHboxItemDisplay .sapMFlexItem span {
-  display: inline-block; }
+  #idUsersView .fixHboxItemDisplay .sapMFlexItem span {
+    display: inline-block; }
 #idUsersView .fixHboxItemDisplay #idUsersView--searchAvailableUsers-search.sapMSFBA {
   background-color: transparent; }
 #idUsersView .fixHboxItemDisplay #idUsersView--searchAssignedUsers-search.sapMSFBA {
@@ -2344,20 +2386,20 @@ RESSOURCEPOOL
   margin-right: 0.8125rem; }
 #idUsersView .fixDsiplayRpImg {
   width: 100%; }
-#idUsersView .fixDsiplayRpImg .sapUiHLayoutChildWrapper {
-  vertical-align: middle; }
-#idUsersView .fixDsiplayRpImg .sapUiHLayoutChildWrapper::nth-child(1) {
-  width: auto;
-  margin: 1%; }
-#idUsersView .fixDsiplayRpImg .sapUiHLayoutChildWrapper::nth-child(2) {
-  width: 90%; }
+  #idUsersView .fixDsiplayRpImg .sapUiHLayoutChildWrapper {
+    vertical-align: middle; }
+    #idUsersView .fixDsiplayRpImg .sapUiHLayoutChildWrapper::nth-child(1) {
+      width: auto;
+      margin: 1%; }
+    #idUsersView .fixDsiplayRpImg .sapUiHLayoutChildWrapper::nth-child(2) {
+      width: 90%; }
 
 #idWorkCenterView .fixHboxItemDisplay .sapMFlexItem {
   width: 100%;
   word-break: break-all;
   word-break: break-word; }
-#idWorkCenterView .fixHboxItemDisplay .sapMFlexItem span {
-  display: inline-block; }
+  #idWorkCenterView .fixHboxItemDisplay .sapMFlexItem span {
+    display: inline-block; }
 #idWorkCenterView .fixHboxItemDisplay #idWorkCenterView--searchAvailableWC-search.sapMSFBA {
   background-color: transparent; }
 #idWorkCenterView .fixHboxItemDisplay #idWorkCenterView--searchAssignedWC-search.sapMSFBA {
@@ -2410,8 +2452,8 @@ RESSOURCEPOOL
   border: none;
   border-radius: 0;
   box-shadow: 0 0 5px #333; }
-.helpDialogue .sapMDialogTitle {
-  color: #434343; }
+  .helpDialogue .sapMDialogTitle {
+    color: #434343; }
 
 .floatRight {
   margin: .5rem 1rem 0px 0;
@@ -2501,38 +2543,38 @@ RESSOURCEPOOL
 
 #resourcePool .sapMPageWithSubHeader > section {
   top: calc(3rem + 5px); }
-#resourcePool .sapMPageWithSubHeader > section .resourcePoolSubheader li {
-  height: 3rem;
-  line-height: 3rem;
-  display: inline-block;
-  font-size: 1.075rem;
-  vertical-align: top;
-  border: none;
-  color: #0D5D76;
-  background-color: transparent; }
-#resourcePool .sapMPageWithSubHeader > section .resourcePoolSubheader li:hover {
-  background-color: rgba(0, 86, 112, 0.2); }
-#resourcePool .sapMPageWithSubHeader > section .resourcePoolSubheader li > span {
-  display: inline-block;
-  vertical-align: top;
-  padding: 0.250rem 0.25rem 0.250rem 0;
-  color: #0D5D76; }
-#resourcePool .sapMPageWithSubHeader > section .resourcePoolSubheader li.sapMSegBBtn.sapMSegBBtnFocusable.sapMSegBBtnMixed.sapMSegBBtnSel > span {
-  color: #ffffff; }
-#resourcePool .sapMPageWithSubHeader > section .resourcePoolSubheader li.sapMSegBBtn.sapMSegBBtnFocusable.sapMSegBBtnSel {
-  background-color: #74D2E7;
-  color: white; }
-#resourcePool .sapMPageWithSubHeader > section .resourcePoolSubheader ul {
-  height: 3rem;
-  margin: 0; }
+  #resourcePool .sapMPageWithSubHeader > section .resourcePoolSubheader li {
+    height: 3rem;
+    line-height: 3rem;
+    display: inline-block;
+    font-size: 1.075rem;
+    vertical-align: top;
+    border: none;
+    color: #0D5D76;
+    background-color: transparent; }
+    #resourcePool .sapMPageWithSubHeader > section .resourcePoolSubheader li:hover {
+      background-color: rgba(0, 86, 112, 0.2); }
+    #resourcePool .sapMPageWithSubHeader > section .resourcePoolSubheader li > span {
+      display: inline-block;
+      vertical-align: top;
+      padding: 0.250rem 0.25rem 0.250rem 0;
+      color: #0D5D76; }
+    #resourcePool .sapMPageWithSubHeader > section .resourcePoolSubheader li.sapMSegBBtn.sapMSegBBtnFocusable.sapMSegBBtnMixed.sapMSegBBtnSel > span {
+      color: #ffffff; }
+    #resourcePool .sapMPageWithSubHeader > section .resourcePoolSubheader li.sapMSegBBtn.sapMSegBBtnFocusable.sapMSegBBtnSel {
+      background-color: #74D2E7;
+      color: white; }
+  #resourcePool .sapMPageWithSubHeader > section .resourcePoolSubheader ul {
+    height: 3rem;
+    margin: 0; }
 #resourcePool .sapMIBar.sapMHeader-CTX {
   margin: 0;
   background-color: #d5f1f8;
   text-align: left; }
-#resourcePool .sapMIBar.sapMHeader-CTX span {
-  float: left;
-  color: #0D5D76;
-  text-shadow: none; }
+  #resourcePool .sapMIBar.sapMHeader-CTX span {
+    float: left;
+    color: #0D5D76;
+    text-shadow: none; }
 #resourcePool section[role^="form"] {
   border: 1px solid #e5e5e5; }
 #resourcePool .sapMNavItem {
@@ -2568,11 +2610,14 @@ RESSOURCEPOOL
   border: 2px solid #74D2E7;
   color: #74D2E7;
   overflow: hidden; }
-#resourcePool .sapMSFF input, #resourcePool .sapMSFF .sapMSFB.sapMSFS {
+#resourcePool .sapMSFF input,
+#resourcePool .sapMSFF .sapMSFB.sapMSFS {
   color: #74D2E7; }
 #resourcePool .sapMBarChild.sapMCb .sapMCbBg {
   border: solid 0.125rem #74D2E7; }
-#resourcePool .sapMIBar.sapMTB.sapMTB-Info-CTX.sapMTB > *, #resourcePool .sapMIBar.sapMTB.sapMTB-Info-CTX.sapMTB > :first-child, #resourcePool .sapMIBar.sapMTB.sapMTB-Info-CTX.sapMTB > :last-child {
+#resourcePool .sapMIBar.sapMTB.sapMTB-Info-CTX.sapMTB > *,
+#resourcePool .sapMIBar.sapMTB.sapMTB-Info-CTX.sapMTB > :first-child,
+#resourcePool .sapMIBar.sapMTB.sapMTB-Info-CTX.sapMTB > :last-child {
   margin: 0 0 0 1px;
   border: 0; }
 #resourcePool .sapMTB-Info-CTX.sapMTB {
@@ -2603,12 +2648,12 @@ RESSOURCEPOOL
   border: none;
   border-radius: 0;
   box-shadow: 0 0 5px #333; }
-.deleteConfirmation.sapMMessageDialog.sapMPopup-CTX > header.sapMDialogTitle {
-  background: #d4f1f7;
-  box-shadow: 0 0 5px #333;
-  overflow: visible; }
-.deleteConfirmation .sapMDialogTitle {
-  color: #434343; }
+  .deleteConfirmation.sapMMessageDialog.sapMPopup-CTX > header.sapMDialogTitle {
+    background: #d4f1f7;
+    box-shadow: 0 0 5px #333;
+    overflow: visible; }
+  .deleteConfirmation .sapMDialogTitle {
+    color: #434343; }
 
 .sap-desktop .deleteConfirmation .sapMIBar.sapMFooter-CTX {
   background-color: #0f2d65; }
@@ -2623,19 +2668,19 @@ RESSOURCEPOOL
   border: 0;
   height: 3rem;
   padding: 0 0.25rem; }
-.sap-desktop #resourcePool .resourcePoolSubheader button > .sapMBtnTransparent > .sapMBtnIcon {
-  color: #0D5D76;
-  line-height: 3rem;
-  max-height: 3rem;
-  display: block; }
+  .sap-desktop #resourcePool .resourcePoolSubheader button > .sapMBtnTransparent > .sapMBtnIcon {
+    color: #0D5D76;
+    line-height: 3rem;
+    max-height: 3rem;
+    display: block; }
 .sap-desktop #resourcePool button {
   padding: 0;
   margin: 0 0.25rem !important; }
 
 #searchResourcePool--searchForm--Layout .sapMBtnReject {
   background-color: #cc1919; }
-#searchResourcePool--searchForm--Layout .sapMBtnReject:hover:not(.sapMBtnActive) {
-  background-color: #b51616; }
+  #searchResourcePool--searchForm--Layout .sapMBtnReject:hover:not(.sapMBtnActive) {
+    background-color: #b51616; }
 
 /******************
 POLYPOLY
@@ -2649,23 +2694,29 @@ POLYPOLY
 .sapUiTableCCnt .sapUiTableCtrlScr, .sapUiTableColHdrCnt .sapUiTableColHdrScr, [id^="polypoly"] {
   margin: 0; }
 
-[id^="polypoly--oTablePolypoly-table"] .sapUiTableCol, .sapUiTableTr > td, [id^="polypoly--oTablePolypoly-table"] .sapUiTableTr > td, #polypoly--oTablePolypoly.sapUiTable > div.sapUiTableCnt, #polypoly--oTablePolypoly.sapUiTable > div.sapUiTableCnt .sapUiTableColHdrCnt {
+[id^="polypoly--oTablePolypoly-table"] .sapUiTableCol,
+.sapUiTableTr > td,
+[id^="polypoly--oTablePolypoly-table"] .sapUiTableTr > td,
+#polypoly--oTablePolypoly.sapUiTable > div.sapUiTableCnt,
+#polypoly--oTablePolypoly.sapUiTable > div.sapUiTableCnt .sapUiTableColHdrCnt {
   border: none;
   outline: 1px dotted transparent; }
 
-[id^="polypoly--oTablePolypoly-table"] tr, .sapUiTableCnt .sapUiTableColHdrCnt {
+[id^="polypoly--oTablePolypoly-table"] tr,
+.sapUiTableCnt .sapUiTableColHdrCnt {
   background-color: #ffffff;
   -webkit-transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out;
   -moz-transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out;
   -o-transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out;
   -ms-transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out;
   transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out; }
-[id^="polypoly--oTablePolypoly-table-fixed"] tr:nth-child(1) {
-  background-color: #f5f5f5; }
-[id^="polypoly--oTablePolypoly-table-fixed"] td:nth-child(2), [id^="polypoly--oTablePolypoly-table-fixed"] td:nth-child(3) {
-  background-color: #e9fbfd; }
+  [id^="polypoly--oTablePolypoly-table-fixed"] tr:nth-child(1) {
+    background-color: #f5f5f5; }
+  [id^="polypoly--oTablePolypoly-table-fixed"] td:nth-child(2), [id^="polypoly--oTablePolypoly-table-fixed"] td:nth-child(3) {
+    background-color: #e9fbfd; }
 
-.sapUiTableCtrlFixed [id^="polypoly--oTablePolypoly-table-fixed"] .sapUiTableTr:not(.sapUiTableGroupHeader) > td:last-child, .sapUiTableCtrlFixed [id^="polypoly--oTablePolypoly-table-fixed"] [id^="polypoly--oTablePolypoly-rows"] td:nth-child(3) {
+.sapUiTableCtrlFixed [id^="polypoly--oTablePolypoly-table-fixed"] .sapUiTableTr:not(.sapUiTableGroupHeader) > td:last-child,
+.sapUiTableCtrlFixed [id^="polypoly--oTablePolypoly-table-fixed"] [id^="polypoly--oTablePolypoly-rows"] td:nth-child(3) {
   border-right: 2px solid #ffffff; }
 
 .sapUiTable .sapUiTableCtrl [id^="polypoly--oTablePolypoly-rows"].sapUiTableRowHvr > td {
@@ -2701,12 +2752,12 @@ div[id^="polypoly--oTablePolypoly"] {
   position: relative;
   padding-top: 0;
   padding-bottom: 0; }
-[id^="polypoly--oTablePolypoly-table"] td div.sapUiTableCell {
-  top: 0;
-  right: 0;
-  left: 0;
-  Bottom: 0;
-  padding: 0; }
+  [id^="polypoly--oTablePolypoly-table"] td div.sapUiTableCell {
+    top: 0;
+    right: 0;
+    left: 0;
+    Bottom: 0;
+    padding: 0; }
 [id^="polypoly--oTablePolypoly-table"] div[data-category^="LABEL"] {
   height: 30px; }
 [id^="polypoly--oTablePolypoly-table"] div.sapMFlexBox {
@@ -2732,18 +2783,18 @@ div[id^="polypoly--oTablePolypoly"] .sapUiTableColRowHdr {
   border-right: 3px solid #ffffff; }
 [id^="polypoly--oTablePolypoly-table-fixed"] td {
   position: relative; }
-[id^="polypoly--oTablePolypoly-table-fixed"] td:nth-child(2) div.sapMFlexBox {
-  padding-left: 10px; }
-[id^="polypoly--oTablePolypoly-table-fixed"] td:nth-child(2) div.sapMFlexBox .sapMImg {
-  border-radius: 50%;
-  vertical-align: middle; }
-[id^="polypoly--oTablePolypoly-table-fixed"] td:nth-child(2) div.sapMFlexBox .sapMFlexItem:nth-child(2) {
-  padding-left: 0;
-  width: 100%; }
-[id^="polypoly--oTablePolypoly-table-fixed"] td:nth-child(2) div.sapMFlexBox .sapMFlexItem:nth-child(2) span {
-  font-weight: bold;
-  font-size: 0.775rem;
-  width: 100%; }
+  [id^="polypoly--oTablePolypoly-table-fixed"] td:nth-child(2) div.sapMFlexBox {
+    padding-left: 10px; }
+    [id^="polypoly--oTablePolypoly-table-fixed"] td:nth-child(2) div.sapMFlexBox .sapMImg {
+      border-radius: 50%;
+      vertical-align: middle; }
+    [id^="polypoly--oTablePolypoly-table-fixed"] td:nth-child(2) div.sapMFlexBox .sapMFlexItem:nth-child(2) {
+      padding-left: 0;
+      width: 100%; }
+      [id^="polypoly--oTablePolypoly-table-fixed"] td:nth-child(2) div.sapMFlexBox .sapMFlexItem:nth-child(2) span {
+        font-weight: bold;
+        font-size: 0.775rem;
+        width: 100%; }
 [id^="polypoly--oTablePolypoly-table-fixed"] div.sapMFlexBox {
   align-items: center; }
 [id^="polypoly--oTablePolypoly-table-fixed"] div[data-category^="LABEL"] {
@@ -2754,8 +2805,8 @@ div[id^="polypoly--oTablePolypoly"] .sapUiTableColRowHdr {
 
 #polypoly--oTablePolypoly {
   background-color: #ffffff; }
-#polypoly--oTablePolypoly.sapUiTableRSel .sapUiTableTr > td.sapUiTableTdFirst > .sapUiTableCell {
-  padding: 0; }
+  #polypoly--oTablePolypoly.sapUiTableRSel .sapUiTableTr > td.sapUiTableTdFirst > .sapUiTableCell {
+    padding: 0; }
 
 [id^="polypoly--oTablePolypoly-table-fixrow"] div[data-category^="LABEL"] {
   background-color: #f5f5f5; }
@@ -2775,10 +2826,10 @@ button[id^="polypoly"] .sapMBtnContent, button[id^="polypoly"] .sapMBtnText > .s
 
 .button[id^="polypoly"].sapMBtn:hover {
   background-color: rgba(0, 86, 112, 0.2); }
-.button[id^="polypoly"].sapMBtn:hover > .sapMBtnHoverable {
-  background-color: transparent;
-  border-color: transparent;
-  outline: 1px dotted transparent; }
+  .button[id^="polypoly"].sapMBtn:hover > .sapMBtnHoverable {
+    background-color: transparent;
+    border-color: transparent;
+    outline: 1px dotted transparent; }
 
 button[id^="polypoly"].sapMBtn:hover > div[id^="polypoly"].sapMBtnHoverable, html.sap-desktop button[id^="polypoly"].sapMBtn:focus > div[id^="polypoly"].sapMBtnHoverable.sapMFocusable {
   background-color: transparent;
@@ -2819,10 +2870,12 @@ button[id^="polypoly"].sapMBtn:hover > div[id^="polypoly"].sapMBtnHoverable, htm
 .sap-desktop .classPolypolyPage .sapMBtnTransparent > .sapMBtnIcon {
   color: #ffffff; }
 
-.classPolypolyPage form.sapMSFF:hover, .classPolypolyPage form.sapMSFF:focus {
+.classPolypolyPage form.sapMSFF:hover,
+.classPolypolyPage form.sapMSFF:focus {
   border-color: #0D5D76; }
 
-.classPolypolyPage .sapMTB-Transparent-CTX .sapMLabel, .classPolypolyPage .sapMBtnInner {
+.classPolypolyPage .sapMTB-Transparent-CTX .sapMLabel,
+.classPolypolyPage .sapMBtnInner {
   text-shadow: none; }
 
 #columnPopupDialog {
@@ -2830,20 +2883,20 @@ button[id^="polypoly"].sapMBtn:hover > div[id^="polypoly"].sapMBtnHoverable, htm
   border: none;
   border-radius: 0;
   box-shadow: 0 0 5px #333; }
-#columnPopupDialog .sapMSlt > .sapMSltLabel {
-  line-height: 1.8rem;
-  border: none;
-  height: 2.5rem; }
-#columnPopupDialog .sapMCb {
-  width: 100%; }
-#columnPopupDialog .sapUiTableColHdrScr .sapUiTableColHdr:nth-child(2) .sapMLabel {
-  border: none;
-  color: #468497;
-  font-size: 0.7rem; }
-#columnPopupDialog .sapUiTableColHdrScr .sapUiTableColHdr:nth-child(1) .sapMLabel {
-  color: #468497;
-  font-size: 0.975rem;
-  padding-top: 4px; }
+  #columnPopupDialog .sapMSlt > .sapMSltLabel {
+    line-height: 1.8rem;
+    border: none;
+    height: 2.5rem; }
+  #columnPopupDialog .sapMCb {
+    width: 100%; }
+  #columnPopupDialog .sapUiTableColHdrScr .sapUiTableColHdr:nth-child(2) .sapMLabel {
+    border: none;
+    color: #468497;
+    font-size: 0.7rem; }
+  #columnPopupDialog .sapUiTableColHdrScr .sapUiTableColHdr:nth-child(1) .sapMLabel {
+    color: #468497;
+    font-size: 0.975rem;
+    padding-top: 4px; }
 
 #columnPopupDialog-header {
   background: #d4f1f7;
@@ -2859,7 +2912,8 @@ button[id^="polypoly"].sapMBtn:hover > div[id^="polypoly"].sapMBtnHoverable, htm
   background-color: #0f2d65; }
 
 /* Pop-up QA */
-#oQADialog, #infoUpdate12 {
+#oQADialog,
+#infoUpdate12 {
   background: #ffffff;
   border: none;
   border-radius: 0;
@@ -2888,7 +2942,8 @@ button[id^="polypoly"].sapMBtn:hover > div[id^="polypoly"].sapMBtnHoverable, htm
 #oQADialog .sapUiTableHSb {
   padding-left: 0 !important; }
 
-#oQADialog .sapUiTableColHdrCnt > div:nth-child(1), #oQADialog .sapUiTableCCnt > div:nth-child(1) {
+#oQADialog .sapUiTableColHdrCnt > div:nth-child(1),
+#oQADialog .sapUiTableCCnt > div:nth-child(1) {
   display: none; }
 
 #oQADialog-cont {
@@ -2925,77 +2980,77 @@ button[id^="polypoly"].sapMBtn:hover > div[id^="polypoly"].sapMBtnHoverable, htm
 .operationDetailHeadPanel {
   overflow: visible;
   z-index: 1001; }
-.operationDetailHeadPanel .sapMPageBusyCoversAll > section .sapMIBar.sapMTB {
-  margin: 0 !important;
-  height: auto !important; }
-.operationDetailHeadPanel .ExecutionModeText {
-  font-style: italic;
-  color: #0085ad;
-  margin-right: 10px; }
-.operationDetailHeadPanel .sapMPanelExpandableIcon {
-  display: none; }
-.operationDetailHeadPanel .mainText {
-  font-size: 1.2rem !important;
-  color: rgba(0, 86, 112, 0.94) !important;
-  font-weight: 700 !important; }
-.operationDetailHeadPanel .sapMPanelBGTranslucent, .operationDetailHeadPanel .operationDetailForm .sapUiRLContainer {
-  background: transparent !important;
-  border-bottom: 0px !important; }
-.operationDetailHeadPanel .switchExecutionButton .sapMSwtHandle {
-  width: 0.8rem;
-  height: 0.8rem;
-  left: 3rem; }
-.operationDetailHeadPanel .switchExecutionButton .sapMSwt {
-  height: 1rem !important;
-  background: rgba(0, 86, 112, 0.94);
-  border-color: rgba(0, 86, 112, 0.94); }
-.operationDetailHeadPanel .switchExecutionButton .sapMSwtOff:not(.sapMSwtAcceptReject) {
-  background: #ffffff;
-  border-color: #bfbfbf; }
-.operationDetailHeadPanel .ExecutionModeText, .operationDetailHeadPanel .switchExecutionButton {
-  padding: 0; }
-.operationDetailHeadPanel.sapMPanel .sapMPanelWrappingDivTb .sapMIBar.sapMTB > :first-child {
-  margin-right: 0; }
-.operationDetailHeadPanel.sapMPanel .sapMPanelWrappingDivTb .sapMIBar.sapMTB > :first-child div:nth-child(2) .subText {
-  font-size: 1rem !important;
-  line-height: 3rem; }
-.operationDetailHeadPanel.sapMPanel .sapMPanelWrappingDivTb .sapMIBar.sapMTB > :first-child div:nth-child(2), .operationDetailHeadPanel.sapMPanel .sapMPanelWrappingDivTb .sapMIBar.sapMTB > :first-child div:nth-child(2) div:nth-child(2) {
-  align-items: center; }
-.operationDetailHeadPanel .sapMPanelWrappingDivTb {
-  margin: -1rem -1rem 0 -1rem;
-  padding: 1rem 1rem 0 1rem;
-  background: #fff;
-  border-bottom: none; }
-.operationDetailHeadPanel .sapMBtn.closeButton span {
-  color: rgba(0, 86, 112, 0.94); }
-.operationDetailHeadPanel .sapMBtn.expandButton span {
-  color: rgba(0, 86, 112, 0.94); }
-.operationDetailHeadPanel + .opDetailNavToolbar {
-  background: #fff;
-  box-shadow: 0px 5px 5px -5px #434343;
-  border-top: 2px solid #ccc;
-  z-index: 1000;
-  position: relative;
-  border: 0;
-  height: auto; }
-.operationDetailHeadPanel + .opDetailNavToolbar .sapMSegBBtn {
-  position: relative;
-  color: #333333; }
-.operationDetailHeadPanel + .opDetailNavToolbar .sapMSegBBtn.sapMSegBBtnSel {
-  color: rgba(0, 86, 112, 0.94);
-  background: transparent;
-  font-weight: bold; }
-.operationDetailHeadPanel + .opDetailNavToolbar .sapMSegBBtn.sapMSegBBtnSel:after {
-  content: "";
-  height: 4px;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: #fe5000; }
-html.sap-desktop .operationDetailHeadPanel .opDetailNavToolbar .sapMSegBBtnFocusable:hover {
-  background: rgba(0, 86, 112, 0.2);
-  color: rgba(0, 86, 112, 0.94); }
+  .operationDetailHeadPanel .sapMPageBusyCoversAll > section .sapMIBar.sapMTB {
+    margin: 0 !important;
+    height: auto !important; }
+  .operationDetailHeadPanel .ExecutionModeText {
+    font-style: italic;
+    color: #0085ad;
+    margin-right: 10px; }
+  .operationDetailHeadPanel .sapMPanelExpandableIcon {
+    display: none; }
+  .operationDetailHeadPanel .mainText {
+    font-size: 1.2rem !important;
+    color: rgba(0, 86, 112, 0.94) !important;
+    font-weight: 700 !important; }
+  .operationDetailHeadPanel .sapMPanelBGTranslucent, .operationDetailHeadPanel .operationDetailForm .sapUiRLContainer {
+    background: transparent !important;
+    border-bottom: 0px !important; }
+  .operationDetailHeadPanel .switchExecutionButton .sapMSwtHandle {
+    width: 0.8rem;
+    height: 0.8rem;
+    left: 3rem; }
+  .operationDetailHeadPanel .switchExecutionButton .sapMSwt {
+    height: 1rem !important;
+    background: rgba(0, 86, 112, 0.94);
+    border-color: rgba(0, 86, 112, 0.94); }
+  .operationDetailHeadPanel .switchExecutionButton .sapMSwtOff:not(.sapMSwtAcceptReject) {
+    background: #ffffff;
+    border-color: #bfbfbf; }
+  .operationDetailHeadPanel .ExecutionModeText, .operationDetailHeadPanel .switchExecutionButton {
+    padding: 0; }
+  .operationDetailHeadPanel.sapMPanel .sapMPanelWrappingDivTb .sapMIBar.sapMTB > :first-child {
+    margin-right: 0; }
+  .operationDetailHeadPanel.sapMPanel .sapMPanelWrappingDivTb .sapMIBar.sapMTB > :first-child div:nth-child(2) .subText {
+    font-size: 1rem !important;
+    line-height: 3rem; }
+  .operationDetailHeadPanel.sapMPanel .sapMPanelWrappingDivTb .sapMIBar.sapMTB > :first-child div:nth-child(2), .operationDetailHeadPanel.sapMPanel .sapMPanelWrappingDivTb .sapMIBar.sapMTB > :first-child div:nth-child(2) div:nth-child(2) {
+    align-items: center; }
+  .operationDetailHeadPanel .sapMPanelWrappingDivTb {
+    margin: -1rem -1rem 0 -1rem;
+    padding: 1rem 1rem 0 1rem;
+    background: #fff;
+    border-bottom: none; }
+  .operationDetailHeadPanel .sapMBtn.closeButton span {
+    color: rgba(0, 86, 112, 0.94); }
+  .operationDetailHeadPanel .sapMBtn.expandButton span {
+    color: rgba(0, 86, 112, 0.94); }
+  .operationDetailHeadPanel + .opDetailNavToolbar {
+    background: #fff;
+    box-shadow: 0px 5px 5px -5px #434343;
+    border-top: 2px solid #ccc;
+    z-index: 1000;
+    position: relative;
+    border: 0;
+    height: auto; }
+    .operationDetailHeadPanel + .opDetailNavToolbar .sapMSegBBtn {
+      position: relative;
+      color: #333333; }
+    .operationDetailHeadPanel + .opDetailNavToolbar .sapMSegBBtn.sapMSegBBtnSel {
+      color: rgba(0, 86, 112, 0.94);
+      background: transparent;
+      font-weight: bold; }
+      .operationDetailHeadPanel + .opDetailNavToolbar .sapMSegBBtn.sapMSegBBtnSel:after {
+        content: "";
+        height: 4px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: #fe5000; }
+  html.sap-desktop .operationDetailHeadPanel .opDetailNavToolbar .sapMSegBBtnFocusable:hover {
+    background: rgba(0, 86, 112, 0.2);
+    color: rgba(0, 86, 112, 0.94); }
 
 #ViewDisruptionView header.sapMPanelWrappingDivTb .sapMPanelExpandableIcon:focus::after {
   outline: none;
@@ -3006,10 +3061,10 @@ html.sap-desktop .operationDetailHeadPanel .opDetailNavToolbar .sapMSegBBtnFocus
 .opDetailNavToolbar {
   background: #fff;
   box-shadow: 0px 5px 15px -5px #0f2d65; }
-.opDetailNavToolbar ul.opDetailNav {
-  margin-left: 0; }
-.opDetailNavToolbar ul.opDetailNav li {
-  border: 0px !important; }
+  .opDetailNavToolbar ul.opDetailNav {
+    margin-left: 0; }
+    .opDetailNavToolbar ul.opDetailNav li {
+      border: 0px !important; }
 
 .operationNavBar .countText {
   background: #007cc0 !important;
@@ -3024,8 +3079,8 @@ html.sap-desktop .operationDetailHeadPanel .opDetailNavToolbar .sapMSegBBtnFocus
   position: fixed;
   bottom: 0px;
   background: #607381 !important; }
-.operationDetailFooter .sapMBtnContent, .operationDetailFooter .sapMBtnIcon {
-  color: #ffffff !important; }
+  .operationDetailFooter .sapMBtnContent, .operationDetailFooter .sapMBtnIcon {
+    color: #ffffff !important; }
 
 .switchExecutionButton .sapMSwtHandle {
   width: 1rem;
@@ -3055,8 +3110,8 @@ html.sap-desktop .operationDetailHeadPanel .opDetailNavToolbar .sapMSegBBtnFocus
 
 .ClassOperationDetailPopUp .sapMPageBusyCoversAll {
   background: #f5f5f5 !important; }
-.ClassOperationDetailPopUp .sapMPageBusyCoversAll > section {
-  overflow: auto !important; }
+  .ClassOperationDetailPopUp .sapMPageBusyCoversAll > section {
+    overflow: auto !important; }
 
 #mes .sapMDialog:not(.theme-disabled) header {
   box-shadow: 0 0 5px #333;
@@ -3068,21 +3123,21 @@ html.sap-desktop .operationDetailHeadPanel .opDetailNavToolbar .sapMSegBBtnFocus
   border: none;
   border-radius: 0;
   box-shadow: 0 0 5px #333; }
-#mes .sapMDialog.ClassOperationDetailPopUp footer {
-  background-color: #0f2d65; }
+  #mes .sapMDialog.ClassOperationDetailPopUp footer {
+    background-color: #0f2d65; }
 
 .proressSliderGrid .sapUiRespGridSpanL8:nth-child(2) {
   overflow: visible !important; }
 
 .sliderDisplayStyle {
   height: 4rem !important; }
-.sliderDisplayStyle .sapMSliderHandle {
-  height: 2.8rem !important;
-  top: -0.93125rem !important;
-  width: 1.75rem !important;
-  margin-left: -1rem !important; }
-.sliderDisplayStyle .sapMSliderInner, .sliderDisplayStyle .sapMSliderProgress {
-  height: 1.1875rem !important; }
+  .sliderDisplayStyle .sapMSliderHandle {
+    height: 2.8rem !important;
+    top: -0.93125rem !important;
+    width: 1.75rem !important;
+    margin-left: -1rem !important; }
+  .sliderDisplayStyle .sapMSliderInner, .sliderDisplayStyle .sapMSliderProgress {
+    height: 1.1875rem !important; }
 
 .ML-05 {
   margin-left: 0.5rem !important;
@@ -3090,18 +3145,18 @@ html.sap-desktop .operationDetailHeadPanel .opDetailNavToolbar .sapMSegBBtnFocus
 
 .progressSlider {
   display: block !important; }
-.progressSlider .comfirmedProgressSlider {
-  float: left !important; }
-.progressSlider .dynProgressSlider {
-  margin-left: -2.1rem !important; }
+  .progressSlider .comfirmedProgressSlider {
+    float: left !important; }
+  .progressSlider .dynProgressSlider {
+    margin-left: -2.1rem !important; }
 
 .sliderInprogressColor .sapMSliderProgress {
   background-color: lime !important; }
 
 .sliderCompletedColor {
   opacity: 1 !important; }
-.sliderCompletedColor .sapMSliderProgress {
-  background-color: #007cc0 !important; }
+  .sliderCompletedColor .sapMSliderProgress {
+    background-color: #007cc0 !important; }
 
 .sliderBlockedColor .sapMSliderProgress {
   background-color: darkorange !important; }
@@ -3118,8 +3173,8 @@ html.sap-desktop .operationDetailHeadPanel .opDetailNavToolbar .sapMSegBBtnFocus
   color: #cc1919 !important;
   border-color: transparent !important;
   text-shadow: none !important; }
-.disruptionTitleBarButtons > .sapMBtnReject > .sapMBtnIcon {
-  color: #cc1919 !important; }
+  .disruptionTitleBarButtons > .sapMBtnReject > .sapMBtnIcon {
+    color: #cc1919 !important; }
 .disruptionTitleBarButtons:hover {
   background: rgba(0, 86, 112, 0.2) !important; }
 .disruptionTitleBarButtons > .sapMBtnEmphasized {
@@ -3127,15 +3182,15 @@ html.sap-desktop .operationDetailHeadPanel .opDetailNavToolbar .sapMSegBBtnFocus
   color: #008bc7 !important;
   border-color: transparent !important;
   text-shadow: none !important; }
-.disruptionTitleBarButtons > .sapMBtnEmphasized > .sapMBtnIcon {
-  color: #008bc7 !important; }
+  .disruptionTitleBarButtons > .sapMBtnEmphasized > .sapMBtnIcon {
+    color: #008bc7 !important; }
 .disruptionTitleBarButtons > .sapMBtnAccept {
   background-color: transparent !important;
   color: #005f28 !important;
   border-color: transparent !important;
   text-shadow: none !important; }
-.disruptionTitleBarButtons > .sapMBtnAccept > .sapMBtnIcon {
-  color: #005f28 !important; }
+  .disruptionTitleBarButtons > .sapMBtnAccept > .sapMBtnIcon {
+    color: #005f28 !important; }
 
 section #ViewDisruptionView .sapMLIBFocusable:focus {
   outline: none; }
@@ -3143,8 +3198,8 @@ section #ViewDisruptionView .sapMLIBFocusable:focus {
 .disruptionBottomBar {
   border-bottom: none !important;
   margin: 0.5rem !important; }
-.disruptionBottomBar > .sapMBtn > .sapMBtnText {
-  border-radius: 1.5rem; }
+  .disruptionBottomBar > .sapMBtn > .sapMBtnText {
+    border-radius: 1.5rem; }
 
 label #ViewDisruptionView--disruptLabel {
   font-size: 1.2rem !important;
@@ -3152,8 +3207,8 @@ label #ViewDisruptionView--disruptLabel {
 
 .disruptionDetail .disruptionExpandablePanel .sapMPanelBGTranslucent {
   background-color: #F5F5F5 !important; }
-.disruptionDetail .disruptionExpandablePanel .sapMPanelBGTranslucent .sapMPanelContent {
-  margin-left: 0 !important; }
+  .disruptionDetail .disruptionExpandablePanel .sapMPanelBGTranslucent .sapMPanelContent {
+    margin-left: 0 !important; }
 .disruptionDetail .detailLabels {
   overflow: visible !important; }
 .disruptionDetail .formoperationDisruptionsModel > div > div {
@@ -3230,15 +3285,15 @@ label #ViewDisruptionView--disruptLabel {
   position: fixed;
   bottom: 0px;
   background: #607381 !important; }
-.viewDisruptionFooter .sapMBtnContent, .operationDetailFooter .sapMBtnIcon {
-  color: #fff !important; }
+  .viewDisruptionFooter .sapMBtnContent, .operationDetailFooter .sapMBtnIcon {
+    color: #fff !important; }
 
 .createDisruptionFooter {
   position: fixed;
   bottom: 0px;
   background: #607381 !important; }
-.createDisruptionFooter .sapMBtnContent, .createDisruptionFooter .sapMBtnIcon {
-  color: #fff !important; }
+  .createDisruptionFooter .sapMBtnContent, .createDisruptionFooter .sapMBtnIcon {
+    color: #fff !important; }
 
 .inputQty .sapMInputBaseInner {
   line-height: 1.9rem !important;
@@ -3284,9 +3339,9 @@ label#createDisruptionView--disruptLabel {
   background: #0F2D65 !important;
   height: 3rem !important;
   line-height: 3rem !important; }
-.disruptionKPI .pageHeader label {
-  font-size: 1.2rem;
-  color: white; }
+  .disruptionKPI .pageHeader label {
+    font-size: 1.2rem;
+    color: white; }
 
 /******************
 LINETRACKER
@@ -3332,131 +3387,131 @@ Linetracker View (Main Table)
       padding-left: 0 !important;
       padding-right: 0 !important;
   } */ }
-#idLinetracker1 header.sapMPanelWrappingDivTbExpanded div.sapMIBar.sapMTB.sapMTB-Transparent-CTX.sapMTBInactive.sapMTBNewFlex {
-  margin-left: 0rem; }
-#idLinetracker1 header.sapMPanelWrappingDivTbExpanded div.sapMIBar.sapMTB.sapMTB-Transparent-CTX.sapMTBInactive.sapMTBNewFlex h2 {
-  margin-left: -2px !important; }
-#idLinetracker1 .classLineTrackerTable .moreButton {
-  background-color: #EAFBFD !important;
-  width: 100% !important; }
-#idLinetracker1 .classLineTrackerTable .moreButton .sapMBtnTransparent > .sapMBtnIcon {
-  color: #666666; }
-#idLinetracker1 .classLineTrackerTable .lineTrackerContent {
-  margin-top: 12rem; }
-#idLinetracker1 .classLineTrackerTable .toolbar {
-  background-color: #D5F1F8 !important;
-  border: none !important;
-  /*  height: auto !important;*/ }
-#idLinetracker1 .classLineTrackerTable table tr th, #idLinetracker1 td {
-  text-align: center !important;
-  vertical-align: middle !important;
-  border-left: 1px solid rgba(50, 131, 154, 0.33);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.18); }
-#idLinetracker1 .classLineTrackerTable table tr th div {
-  border: none !important; }
-#idLinetracker1 .classLineTrackerTable table tr th span {
-  text-align: center !important; }
-#idLinetracker1 .classLineTrackerTable table tr th, #idLinetracker1 td span, #idLinetracker1 .headerColumnText {
-  text-align: center !important; }
-#idLinetracker1 .classLineTrackerTable .taktHeading {
-  color: #a9cdd8 !important;
-  font-size: 1rem !important;
-  width: 100%;
-  font-weight: 500;
-  text-align: center !important; }
-#idLinetracker1 .classLineTrackerTable table tr th:nth-child(1), #idLinetracker1 td:nth-child(2), #idLinetracker1 th:nth-child(2) {
-  background-color: #EAFBFD !important; }
-#idLinetracker1 .classLineTrackerTable table tr td:nth-child(3) {
-  background-image: url("grid.svg");
-  vertical-align: middle !important; }
-#idLinetracker1 .classLineTrackerTable table tr th:nth-child(3) {
-  background-image: url("grid.svg");
-  vertical-align: middle !important; }
-#idLinetracker1 .classLineTrackerTable table tr th:nth-child(2) .sapMFlexItem {
-  width: 100% !important; }
-#idLinetracker1 .classLineTrackerTable .sapMListTblCell {
-  padding: 0rem 0rem !important; }
-#idLinetracker1 .classLineTrackerTable table tr th:nth-child(n+3) {
-  background-color: #D5F1F8 !important; }
-#idLinetracker1 .classLineTrackerTable table tr td:nth-child(5) > span {
-  font-size: 1.5rem !important;
-  color: #5B707E !important; }
-#idLinetracker1 .classLineTrackerTable table tr td:nth-child(6) > span {
-  font-size: 1.5rem !important;
-  color: #FE5102 !important; }
-#idLinetracker1 .classLineTrackerTable table tr td:nth-child(7) > span {
-  font-size: 1.5rem !important;
-  color: #5B707E !important; }
-#idLinetracker1 .classLineTrackerTable table tr td:nth-child(8) > span {
-  font-size: 1.5rem !important;
-  color: #FE5102 !important; }
-#idLinetracker1 .classLineTrackerTable .stationBtns {
-  height: 2rem !important;
-  /*  font-size: 2rem !important; */
-  margin-left: 0 !important;
-  margin-right: 0 !important; }
-#idLinetracker1 .classLineTrackerTable .stationBtns:nth-child(1) span {
-  font-size: 1rem !important; }
-#idLinetracker1 .classLineTrackerTable .sapMBtnInner {
-  font-size: 1rem !important; }
-#idLinetracker1 .classLineTrackerTable .stationBtns .sapMBtnContent {
-  line-height: 2rem !important; }
-#idLinetracker1 .classLineTrackerTable .stationBtns .sapMBtnIcon {
-  line-height: 2rem !important;
-  font-size: 1.3rem !important; }
-#idLinetracker1 .classLineTrackerTable .stationBtns input {
-  height: 2rem !important;
-  font-size: 1rem !important; }
-#idLinetracker1 .classLineTrackerTable .stationBtns .sapMInputValHelp {
-  height: 1.9rem !important; }
-#idLinetracker1 .classLineTrackerTable .stationBtns .sapMInputValHelpInner {
-  height: 1.9rem !important;
-  line-height: 2rem !important; }
-#idLinetracker1 .classLineTrackerTable .stationBtns:nth-child(2) {
-  margin-right: 0.5rem !important; }
-#idLinetracker1 .classLineTrackerTable .progressBar {
-  margin-left: 0.15rem !important; }
-#idLinetracker1 .classLineTrackerTable .stationPopoverBtns div span {
-  background-color: #FFFFFF !important; }
-#idLinetracker1 #idLinetracker1--linetrackerTablePercentage {
-  font-weight: 600; }
-#idLinetracker1 .headerTextTableLinetracker {
-  color: #1A6980;
-  font-weight: 600;
-  font-size: 1.1em;
-  font-stretch: condensed; }
-#idLinetracker1 .sapUiTableCnt {
-  border-top: transparent; }
-#idLinetracker1 .sapMIBar .sapMTB .sapMTB-Transparent-CTX .sapMTBInactive .sapMTBNewFlex {
-  padding-left: 0;
-  margin-left: 0; }
-#idLinetracker1 .lineTrackerTitle {
-  margin: 1rem !important;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 1rem !important;
-  color: #74d2e7 !important;
-  font-family: Arial,Helvetica,sans-serif;
-  text-shadow: none;
-  font-style: italic;
-  border-right: 2px solid #326D98;
-  padding: 16px; }
-#idLinetracker1 span.sapUiIcon.trendIconLinetracker {
-  font-size: 2em;
-  margin-bottom: 10px; }
-#idLinetracker1 span.dateTableLinetracker {
-  color: #5F7381;
-  font-stretch: semi-condensed;
-  font-size: 1em; }
-#idLinetracker1 span.fontTableLinetracker {
-  font-size: 2em;
-  color: #5F7381; }
-#idLinetracker1 h2.taktAdherenceLinetrackerTitle {
-  color: #5D7381;
-  font-style: italic; }
-#idLinetracker1 #idLinetracker1--linetrackerTable div:nth-child(2) div + div + div.sapUiTableCol {
-  background-color: #D5F1F8;
-  border-left: 1px solid #dddddd; }
+  #idLinetracker1 header.sapMPanelWrappingDivTbExpanded div.sapMIBar.sapMTB.sapMTB-Transparent-CTX.sapMTBInactive.sapMTBNewFlex {
+    margin-left: 0rem; }
+    #idLinetracker1 header.sapMPanelWrappingDivTbExpanded div.sapMIBar.sapMTB.sapMTB-Transparent-CTX.sapMTBInactive.sapMTBNewFlex h2 {
+      margin-left: -2px !important; }
+  #idLinetracker1 .classLineTrackerTable .moreButton {
+    background-color: #EAFBFD !important;
+    width: 100% !important; }
+    #idLinetracker1 .classLineTrackerTable .moreButton .sapMBtnTransparent > .sapMBtnIcon {
+      color: #666666; }
+  #idLinetracker1 .classLineTrackerTable .lineTrackerContent {
+    margin-top: 12rem; }
+  #idLinetracker1 .classLineTrackerTable .toolbar {
+    background-color: #D5F1F8 !important;
+    border: none !important;
+    /*  height: auto !important;*/ }
+  #idLinetracker1 .classLineTrackerTable table tr th, #idLinetracker1 td {
+    text-align: center !important;
+    vertical-align: middle !important;
+    border-left: 1px solid rgba(50, 131, 154, 0.33);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.18); }
+  #idLinetracker1 .classLineTrackerTable table tr th div {
+    border: none !important; }
+  #idLinetracker1 .classLineTrackerTable table tr th span {
+    text-align: center !important; }
+  #idLinetracker1 .classLineTrackerTable table tr th, #idLinetracker1 td span, #idLinetracker1 .headerColumnText {
+    text-align: center !important; }
+  #idLinetracker1 .classLineTrackerTable .taktHeading {
+    color: #a9cdd8 !important;
+    font-size: 1rem !important;
+    width: 100%;
+    font-weight: 500;
+    text-align: center !important; }
+  #idLinetracker1 .classLineTrackerTable table tr th:nth-child(1), #idLinetracker1 td:nth-child(2), #idLinetracker1 th:nth-child(2) {
+    background-color: #EAFBFD !important; }
+  #idLinetracker1 .classLineTrackerTable table tr td:nth-child(3) {
+    background-image: url("grid.svg");
+    vertical-align: middle !important; }
+  #idLinetracker1 .classLineTrackerTable table tr th:nth-child(3) {
+    background-image: url("grid.svg");
+    vertical-align: middle !important; }
+  #idLinetracker1 .classLineTrackerTable table tr th:nth-child(2) .sapMFlexItem {
+    width: 100% !important; }
+  #idLinetracker1 .classLineTrackerTable .sapMListTblCell {
+    padding: 0rem 0rem !important; }
+  #idLinetracker1 .classLineTrackerTable table tr th:nth-child(n+3) {
+    background-color: #D5F1F8 !important; }
+  #idLinetracker1 .classLineTrackerTable table tr td:nth-child(5) > span {
+    font-size: 1.5rem !important;
+    color: #5B707E !important; }
+  #idLinetracker1 .classLineTrackerTable table tr td:nth-child(6) > span {
+    font-size: 1.5rem !important;
+    color: #FE5102 !important; }
+  #idLinetracker1 .classLineTrackerTable table tr td:nth-child(7) > span {
+    font-size: 1.5rem !important;
+    color: #5B707E !important; }
+  #idLinetracker1 .classLineTrackerTable table tr td:nth-child(8) > span {
+    font-size: 1.5rem !important;
+    color: #FE5102 !important; }
+  #idLinetracker1 .classLineTrackerTable .stationBtns {
+    height: 2rem !important;
+    /*  font-size: 2rem !important; */
+    margin-left: 0 !important;
+    margin-right: 0 !important; }
+  #idLinetracker1 .classLineTrackerTable .stationBtns:nth-child(1) span {
+    font-size: 1rem !important; }
+  #idLinetracker1 .classLineTrackerTable .sapMBtnInner {
+    font-size: 1rem !important; }
+  #idLinetracker1 .classLineTrackerTable .stationBtns .sapMBtnContent {
+    line-height: 2rem !important; }
+  #idLinetracker1 .classLineTrackerTable .stationBtns .sapMBtnIcon {
+    line-height: 2rem !important;
+    font-size: 1.3rem !important; }
+  #idLinetracker1 .classLineTrackerTable .stationBtns input {
+    height: 2rem !important;
+    font-size: 1rem !important; }
+  #idLinetracker1 .classLineTrackerTable .stationBtns .sapMInputValHelp {
+    height: 1.9rem !important; }
+  #idLinetracker1 .classLineTrackerTable .stationBtns .sapMInputValHelpInner {
+    height: 1.9rem !important;
+    line-height: 2rem !important; }
+  #idLinetracker1 .classLineTrackerTable .stationBtns:nth-child(2) {
+    margin-right: 0.5rem !important; }
+  #idLinetracker1 .classLineTrackerTable .progressBar {
+    margin-left: 0.15rem !important; }
+  #idLinetracker1 .classLineTrackerTable .stationPopoverBtns div span {
+    background-color: #FFFFFF !important; }
+  #idLinetracker1 #idLinetracker1--linetrackerTablePercentage {
+    font-weight: 600; }
+  #idLinetracker1 .headerTextTableLinetracker {
+    color: #1A6980;
+    font-weight: 600;
+    font-size: 1.1em;
+    font-stretch: condensed; }
+  #idLinetracker1 .sapUiTableCnt {
+    border-top: transparent; }
+  #idLinetracker1 .sapMIBar .sapMTB .sapMTB-Transparent-CTX .sapMTBInactive .sapMTBNewFlex {
+    padding-left: 0;
+    margin-left: 0; }
+  #idLinetracker1 .lineTrackerTitle {
+    margin: 1rem !important;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1rem !important;
+    color: #74d2e7 !important;
+    font-family: Arial,Helvetica,sans-serif;
+    text-shadow: none;
+    font-style: italic;
+    border-right: 2px solid #326D98;
+    padding: 16px; }
+  #idLinetracker1 span.sapUiIcon.trendIconLinetracker {
+    font-size: 2em;
+    margin-bottom: 10px; }
+  #idLinetracker1 span.dateTableLinetracker {
+    color: #5F7381;
+    font-stretch: semi-condensed;
+    font-size: 1em; }
+  #idLinetracker1 span.fontTableLinetracker {
+    font-size: 2em;
+    color: #5F7381; }
+  #idLinetracker1 h2.taktAdherenceLinetrackerTitle {
+    color: #5D7381;
+    font-style: italic; }
+  #idLinetracker1 #idLinetracker1--linetrackerTable div:nth-child(2) div + div + div.sapUiTableCol {
+    background-color: #D5F1F8;
+    border-left: 1px solid #dddddd; }
 
 .stationBtns.sapMBtn > .sapMBtnInner {
   text-align: center !important; }
@@ -3468,14 +3523,14 @@ Linetracker View (Main Table)
   background-color: #D8D8D8; }
 #sapContentPopUpLinetracker #sapContentPopUpLinetracker-cont {
   background-color: #FFFFFF; }
-#sapContentPopUpLinetracker #sapContentPopUpLinetracker-cont .sapMBtnContent {
-  color: #807F7F;
-  font-weight: 600; }
+  #sapContentPopUpLinetracker #sapContentPopUpLinetracker-cont .sapMBtnContent {
+    color: #807F7F;
+    font-weight: 600; }
 
 header#sapContentPopUpLinetracker-intHeader + div#sapContentPopUpLinetracker-cont + footer {
   background-color: #363535; }
-header#sapContentPopUpLinetracker-intHeader + div#sapContentPopUpLinetracker-cont + footer .sapMBtnContent {
-  font-weight: 600; }
+  header#sapContentPopUpLinetracker-intHeader + div#sapContentPopUpLinetracker-cont + footer .sapMBtnContent {
+    font-weight: 600; }
 
 /**************************
 Custom Progress Bar
@@ -3676,7 +3731,8 @@ svg#idLinetracker1--takt_adherence_area_chart {
   font-size: 7px;
   margin-bottom: 2px; }
 
-#idLinetracker1--takt_adherence_area_chart .axis path, #idLinetracker1--takt_adherence_area_chart .axis line {
+#idLinetracker1--takt_adherence_area_chart .axis path,
+#idLinetracker1--takt_adherence_area_chart .axis line {
   fill: none;
   stroke: grey;
   shape-rendering: crispEdges; }
@@ -3747,7 +3803,8 @@ svg#idLinetracker1--station_takt_adherence_area_chart {
   font-size: 7px;
   margin-bottom: 2px; }
 
-#idLinetracker1--station_takt_adherence_area_chart .axis path, #idLinetracker1--station_takt_adherence_area_chart .axis line {
+#idLinetracker1--station_takt_adherence_area_chart .axis path,
+#idLinetracker1--station_takt_adherence_area_chart .axis line {
   fill: none;
   stroke: grey;
   shape-rendering: crispEdges; }
@@ -3787,7 +3844,8 @@ BOX RESOLUTION EFFICIENCY
 #idLinetracker1--boxResolutionEfficiency .boxResolutionEfficiencyBadValue {
   color: #fe5000; }
 
-#idLinetracker1--boxSLBEfficiecy_chart-chart-item-3, #idLinetracker1--boxResolutionEfficiecy_chart-chart-item-3 {
+#idLinetracker1--boxSLBEfficiecy_chart-chart-item-3,
+#idLinetracker1--boxResolutionEfficiecy_chart-chart-item-3 {
   opacity: 0; }
 
 /*******************************
@@ -3796,7 +3854,8 @@ SHIFT STAFFING
 #idLinetracker1--shifStaffingHeader-dmc-chart .Left {
   background-color: #84bd00; }
 
-#idLinetracker1--shifStaffingHeader .sapSuiteDmcTitle, #idLinetracker1--shifStaffingHeader .sapSuiteDmcLbls {
+#idLinetracker1--shifStaffingHeader .sapSuiteDmcTitle,
+#idLinetracker1--shifStaffingHeader .sapSuiteDmcLbls {
   font-size: 0.8vw; }
 
 #idLinetracker1--shifStaffingHeader .sapSuiteDmcCnt {
@@ -3819,7 +3878,8 @@ BOX RESOLUTION EFFICIENCY
 #idLinetracker1--boxResolutionEfficiency .boxResolutionEfficiencyBadValue {
   color: #fe5000; }
 
-#idLinetracker1--boxSLBEfficiecy_chart-chart-item-3, #idLinetracker1--boxResolutionEfficiecy_chart-chart-item-3 {
+#idLinetracker1--boxSLBEfficiecy_chart-chart-item-3,
+#idLinetracker1--boxResolutionEfficiecy_chart-chart-item-3 {
   opacity: 0; }
 
 /*******************************
@@ -3828,7 +3888,8 @@ SHIFT STAFFING for Station KPI
 #idLinetracker1--stationshifStaffingHeader-dmc-chart .Left {
   background-color: #84bd00; }
 
-#idLinetracker1--shifStaffingHeader .sapSuiteDmcTitle, #idLinetracker1--shifStaffingHeader .sapSuiteDmcLbls {
+#idLinetracker1--shifStaffingHeader .sapSuiteDmcTitle,
+#idLinetracker1--shifStaffingHeader .sapSuiteDmcLbls {
   font-size: 0.8vw; }
 #idLinetracker1--shifStaffingHeader .sapSuiteDmcCnt {
   right: 2rem; }
@@ -4196,7 +4257,11 @@ Physical Station Popover
   -ms-transform: scale(1, -1);
   transform: scale(1, -1); }
 
-:root .fa-rotate-90, :root .fa-rotate-180, :root .fa-rotate-270, :root .fa-flip-horizontal, :root .fa-flip-vertical {
+:root .fa-rotate-90,
+:root .fa-rotate-180,
+:root .fa-rotate-270,
+:root .fa-flip-horizontal,
+:root .fa-flip-vertical {
   filter: none; }
 
 .fa-stack {
@@ -4207,7 +4272,8 @@ Physical Station Popover
   line-height: 2em;
   vertical-align: middle; }
 
-.fa-stack-1x, .fa-stack-2x {
+.fa-stack-1x,
+.fa-stack-2x {
   position: absolute;
   left: 0;
   width: 100%;
@@ -4261,7 +4327,9 @@ Physical Station Popover
 .fa-check:before {
   content: ""; }
 
-.fa-remove:before, .fa-close:before, .fa-times:before {
+.fa-remove:before,
+.fa-close:before,
+.fa-times:before {
   content: ""; }
 
 .fa-search-plus:before {
@@ -4276,7 +4344,8 @@ Physical Station Popover
 .fa-signal:before {
   content: ""; }
 
-.fa-gear:before, .fa-cog:before {
+.fa-gear:before,
+.fa-cog:before {
   content: ""; }
 
 .fa-trash-o:before {
@@ -4309,7 +4378,8 @@ Physical Station Popover
 .fa-play-circle-o:before {
   content: ""; }
 
-.fa-rotate-right:before, .fa-repeat:before {
+.fa-rotate-right:before,
+.fa-repeat:before {
   content: ""; }
 
 .fa-refresh:before {
@@ -4390,7 +4460,8 @@ Physical Station Popover
 .fa-list:before {
   content: ""; }
 
-.fa-dedent:before, .fa-outdent:before {
+.fa-dedent:before,
+.fa-outdent:before {
   content: ""; }
 
 .fa-indent:before {
@@ -4399,7 +4470,9 @@ Physical Station Popover
 .fa-video-camera:before {
   content: ""; }
 
-.fa-photo:before, .fa-image:before, .fa-picture-o:before {
+.fa-photo:before,
+.fa-image:before,
+.fa-picture-o:before {
   content: ""; }
 
 .fa-pencil:before {
@@ -4414,7 +4487,8 @@ Physical Station Popover
 .fa-tint:before {
   content: ""; }
 
-.fa-edit:before, .fa-pencil-square-o:before {
+.fa-edit:before,
+.fa-pencil-square-o:before {
   content: ""; }
 
 .fa-share-square-o:before {
@@ -4504,7 +4578,8 @@ Physical Station Popover
 .fa-arrow-down:before {
   content: ""; }
 
-.fa-mail-forward:before, .fa-share:before {
+.fa-mail-forward:before,
+.fa-share:before {
   content: ""; }
 
 .fa-expand:before {
@@ -4540,7 +4615,8 @@ Physical Station Popover
 .fa-eye-slash:before {
   content: ""; }
 
-.fa-warning:before, .fa-exclamation-triangle:before {
+.fa-warning:before,
+.fa-exclamation-triangle:before {
   content: ""; }
 
 .fa-plane:before {
@@ -4582,7 +4658,8 @@ Physical Station Popover
 .fa-arrows-h:before {
   content: ""; }
 
-.fa-bar-chart-o:before, .fa-bar-chart:before {
+.fa-bar-chart-o:before,
+.fa-bar-chart:before {
   content: ""; }
 
 .fa-twitter-square:before {
@@ -4597,7 +4674,8 @@ Physical Station Popover
 .fa-key:before {
   content: ""; }
 
-.fa-gears:before, .fa-cogs:before {
+.fa-gears:before,
+.fa-cogs:before {
   content: ""; }
 
 .fa-comments:before {
@@ -4657,7 +4735,8 @@ Physical Station Popover
 .fa-twitter:before {
   content: ""; }
 
-.fa-facebook-f:before, .fa-facebook:before {
+.fa-facebook-f:before,
+.fa-facebook:before {
   content: ""; }
 
 .fa-github:before {
@@ -4669,7 +4748,8 @@ Physical Station Popover
 .fa-credit-card:before {
   content: ""; }
 
-.fa-feed:before, .fa-rss:before {
+.fa-feed:before,
+.fa-rss:before {
   content: ""; }
 
 .fa-hdd-o:before {
@@ -4726,10 +4806,12 @@ Physical Station Popover
 .fa-arrows-alt:before {
   content: ""; }
 
-.fa-group:before, .fa-users:before {
+.fa-group:before,
+.fa-users:before {
   content: ""; }
 
-.fa-chain:before, .fa-link:before {
+.fa-chain:before,
+.fa-link:before {
   content: ""; }
 
 .fa-cloud:before {
@@ -4738,22 +4820,27 @@ Physical Station Popover
 .fa-flask:before {
   content: ""; }
 
-.fa-cut:before, .fa-scissors:before {
+.fa-cut:before,
+.fa-scissors:before {
   content: ""; }
 
-.fa-copy:before, .fa-files-o:before {
+.fa-copy:before,
+.fa-files-o:before {
   content: ""; }
 
 .fa-paperclip:before {
   content: ""; }
 
-.fa-save:before, .fa-floppy-o:before {
+.fa-save:before,
+.fa-floppy-o:before {
   content: ""; }
 
 .fa-square:before {
   content: ""; }
 
-.fa-navicon:before, .fa-reorder:before, .fa-bars:before {
+.fa-navicon:before,
+.fa-reorder:before,
+.fa-bars:before {
   content: ""; }
 
 .fa-list-ul:before {
@@ -4807,13 +4894,16 @@ Physical Station Popover
 .fa-columns:before {
   content: ""; }
 
-.fa-unsorted:before, .fa-sort:before {
+.fa-unsorted:before,
+.fa-sort:before {
   content: ""; }
 
-.fa-sort-down:before, .fa-sort-desc:before {
+.fa-sort-down:before,
+.fa-sort-desc:before {
   content: ""; }
 
-.fa-sort-up:before, .fa-sort-asc:before {
+.fa-sort-up:before,
+.fa-sort-asc:before {
   content: ""; }
 
 .fa-envelope:before {
@@ -4822,13 +4912,16 @@ Physical Station Popover
 .fa-linkedin:before {
   content: ""; }
 
-.fa-rotate-left:before, .fa-undo:before {
+.fa-rotate-left:before,
+.fa-undo:before {
   content: ""; }
 
-.fa-legal:before, .fa-gavel:before {
+.fa-legal:before,
+.fa-gavel:before {
   content: ""; }
 
-.fa-dashboard:before, .fa-tachometer:before {
+.fa-dashboard:before,
+.fa-tachometer:before {
   content: ""; }
 
 .fa-comment-o:before {
@@ -4837,7 +4930,8 @@ Physical Station Popover
 .fa-comments-o:before {
   content: ""; }
 
-.fa-flash:before, .fa-bolt:before {
+.fa-flash:before,
+.fa-bolt:before {
   content: ""; }
 
 .fa-sitemap:before {
@@ -4846,7 +4940,8 @@ Physical Station Popover
 .fa-umbrella:before {
   content: ""; }
 
-.fa-paste:before, .fa-clipboard:before {
+.fa-paste:before,
+.fa-clipboard:before {
   content: ""; }
 
 .fa-lightbulb-o:before {
@@ -4939,7 +5034,8 @@ Physical Station Popover
 .fa-tablet:before {
   content: ""; }
 
-.fa-mobile-phone:before, .fa-mobile:before {
+.fa-mobile-phone:before,
+.fa-mobile:before {
   content: ""; }
 
 .fa-circle-o:before {
@@ -4957,7 +5053,8 @@ Physical Station Popover
 .fa-circle:before {
   content: ""; }
 
-.fa-mail-reply:before, .fa-reply:before {
+.fa-mail-reply:before,
+.fa-reply:before {
   content: ""; }
 
 .fa-github-alt:before {
@@ -4996,10 +5093,13 @@ Physical Station Popover
 .fa-code:before {
   content: ""; }
 
-.fa-mail-reply-all:before, .fa-reply-all:before {
+.fa-mail-reply-all:before,
+.fa-reply-all:before {
   content: ""; }
 
-.fa-star-half-empty:before, .fa-star-half-full:before, .fa-star-half-o:before {
+.fa-star-half-empty:before,
+.fa-star-half-full:before,
+.fa-star-half-o:before {
   content: ""; }
 
 .fa-location-arrow:before {
@@ -5011,7 +5111,8 @@ Physical Station Popover
 .fa-code-fork:before {
   content: ""; }
 
-.fa-unlink:before, .fa-chain-broken:before {
+.fa-unlink:before,
+.fa-chain-broken:before {
   content: ""; }
 
 .fa-question:before {
@@ -5125,37 +5226,50 @@ Physical Station Popover
 .fa-compass:before {
   content: ""; }
 
-.fa-toggle-down:before, .fa-caret-square-o-down:before {
+.fa-toggle-down:before,
+.fa-caret-square-o-down:before {
   content: ""; }
 
-.fa-toggle-up:before, .fa-caret-square-o-up:before {
+.fa-toggle-up:before,
+.fa-caret-square-o-up:before {
   content: ""; }
 
-.fa-toggle-right:before, .fa-caret-square-o-right:before {
+.fa-toggle-right:before,
+.fa-caret-square-o-right:before {
   content: ""; }
 
-.fa-euro:before, .fa-eur:before {
+.fa-euro:before,
+.fa-eur:before {
   content: ""; }
 
 .fa-gbp:before {
   content: ""; }
 
-.fa-dollar:before, .fa-usd:before {
+.fa-dollar:before,
+.fa-usd:before {
   content: ""; }
 
-.fa-rupee:before, .fa-inr:before {
+.fa-rupee:before,
+.fa-inr:before {
   content: ""; }
 
-.fa-cny:before, .fa-rmb:before, .fa-yen:before, .fa-jpy:before {
+.fa-cny:before,
+.fa-rmb:before,
+.fa-yen:before,
+.fa-jpy:before {
   content: ""; }
 
-.fa-ruble:before, .fa-rouble:before, .fa-rub:before {
+.fa-ruble:before,
+.fa-rouble:before,
+.fa-rub:before {
   content: ""; }
 
-.fa-won:before, .fa-krw:before {
+.fa-won:before,
+.fa-krw:before {
   content: ""; }
 
-.fa-bitcoin:before, .fa-btc:before {
+.fa-bitcoin:before,
+.fa-btc:before {
   content: ""; }
 
 .fa-file:before {
@@ -5272,7 +5386,8 @@ Physical Station Popover
 .fa-male:before {
   content: ""; }
 
-.fa-gittip:before, .fa-gratipay:before {
+.fa-gittip:before,
+.fa-gratipay:before {
   content: ""; }
 
 .fa-sun-o:before {
@@ -5308,7 +5423,8 @@ Physical Station Popover
 .fa-arrow-circle-o-left:before {
   content: ""; }
 
-.fa-toggle-left:before, .fa-caret-square-o-left:before {
+.fa-toggle-left:before,
+.fa-caret-square-o-left:before {
   content: ""; }
 
 .fa-dot-circle-o:before {
@@ -5320,7 +5436,8 @@ Physical Station Popover
 .fa-vimeo-square:before {
   content: ""; }
 
-.fa-turkish-lira:before, .fa-try:before {
+.fa-turkish-lira:before,
+.fa-try:before {
   content: ""; }
 
 .fa-plus-square-o:before {
@@ -5341,10 +5458,13 @@ Physical Station Popover
 .fa-openid:before {
   content: ""; }
 
-.fa-institution:before, .fa-bank:before, .fa-university:before {
+.fa-institution:before,
+.fa-bank:before,
+.fa-university:before {
   content: ""; }
 
-.fa-mortar-board:before, .fa-graduation-cap:before {
+.fa-mortar-board:before,
+.fa-graduation-cap:before {
   content: ""; }
 
 .fa-yahoo:before {
@@ -5422,10 +5542,12 @@ Physical Station Popover
 .fa-recycle:before {
   content: ""; }
 
-.fa-automobile:before, .fa-car:before {
+.fa-automobile:before,
+.fa-car:before {
   content: ""; }
 
-.fa-cab:before, .fa-taxi:before {
+.fa-cab:before,
+.fa-taxi:before {
   content: ""; }
 
 .fa-tree:before {
@@ -5455,16 +5577,21 @@ Physical Station Popover
 .fa-file-powerpoint-o:before {
   content: ""; }
 
-.fa-file-photo-o:before, .fa-file-picture-o:before, .fa-file-image-o:before {
+.fa-file-photo-o:before,
+.fa-file-picture-o:before,
+.fa-file-image-o:before {
   content: ""; }
 
-.fa-file-zip-o:before, .fa-file-archive-o:before {
+.fa-file-zip-o:before,
+.fa-file-archive-o:before {
   content: ""; }
 
-.fa-file-sound-o:before, .fa-file-audio-o:before {
+.fa-file-sound-o:before,
+.fa-file-audio-o:before {
   content: ""; }
 
-.fa-file-movie-o:before, .fa-file-video-o:before {
+.fa-file-movie-o:before,
+.fa-file-video-o:before {
   content: ""; }
 
 .fa-file-code-o:before {
@@ -5479,16 +5606,22 @@ Physical Station Popover
 .fa-jsfiddle:before {
   content: ""; }
 
-.fa-life-bouy:before, .fa-life-buoy:before, .fa-life-saver:before, .fa-support:before, .fa-life-ring:before {
+.fa-life-bouy:before,
+.fa-life-buoy:before,
+.fa-life-saver:before,
+.fa-support:before,
+.fa-life-ring:before {
   content: ""; }
 
 .fa-circle-o-notch:before {
   content: ""; }
 
-.fa-ra:before, .fa-rebel:before {
+.fa-ra:before,
+.fa-rebel:before {
   content: ""; }
 
-.fa-ge:before, .fa-empire:before {
+.fa-ge:before,
+.fa-empire:before {
   content: ""; }
 
 .fa-git-square:before {
@@ -5497,7 +5630,9 @@ Physical Station Popover
 .fa-git:before {
   content: ""; }
 
-.fa-y-combinator-square:before, .fa-yc-square:before, .fa-hacker-news:before {
+.fa-y-combinator-square:before,
+.fa-yc-square:before,
+.fa-hacker-news:before {
   content: ""; }
 
 .fa-tencent-weibo:before {
@@ -5506,13 +5641,16 @@ Physical Station Popover
 .fa-qq:before {
   content: ""; }
 
-.fa-wechat:before, .fa-weixin:before {
+.fa-wechat:before,
+.fa-weixin:before {
   content: ""; }
 
-.fa-send:before, .fa-paper-plane:before {
+.fa-send:before,
+.fa-paper-plane:before {
   content: ""; }
 
-.fa-send-o:before, .fa-paper-plane-o:before {
+.fa-send-o:before,
+.fa-paper-plane-o:before {
   content: ""; }
 
 .fa-history:before {
@@ -5539,7 +5677,8 @@ Physical Station Popover
 .fa-bomb:before {
   content: ""; }
 
-.fa-soccer-ball-o:before, .fa-futbol-o:before {
+.fa-soccer-ball-o:before,
+.fa-futbol-o:before {
   content: ""; }
 
 .fa-tty:before {
@@ -5653,7 +5792,9 @@ Physical Station Popover
 .fa-cc:before {
   content: ""; }
 
-.fa-shekel:before, .fa-sheqel:before, .fa-ils:before {
+.fa-shekel:before,
+.fa-sheqel:before,
+.fa-ils:before {
   content: ""; }
 
 .fa-meanpath:before {
@@ -5719,7 +5860,8 @@ Physical Station Popover
 .fa-mercury:before {
   content: ""; }
 
-.fa-intersex:before, .fa-transgender:before {
+.fa-intersex:before,
+.fa-transgender:before {
   content: ""; }
 
 .fa-transgender-alt:before {
@@ -5767,7 +5909,8 @@ Physical Station Popover
 .fa-user-times:before {
   content: ""; }
 
-.fa-hotel:before, .fa-bed:before {
+.fa-hotel:before,
+.fa-bed:before {
   content: ""; }
 
 .fa-viacoin:before {
@@ -5782,7 +5925,8 @@ Physical Station Popover
 .fa-medium:before {
   content: ""; }
 
-.fa-yc:before, .fa-y-combinator:before {
+.fa-yc:before,
+.fa-y-combinator:before {
   content: ""; }
 
 .fa-optin-monster:before {
@@ -5794,19 +5938,24 @@ Physical Station Popover
 .fa-expeditedssl:before {
   content: ""; }
 
-.fa-battery-4:before, .fa-battery-full:before {
+.fa-battery-4:before,
+.fa-battery-full:before {
   content: ""; }
 
-.fa-battery-3:before, .fa-battery-three-quarters:before {
+.fa-battery-3:before,
+.fa-battery-three-quarters:before {
   content: ""; }
 
-.fa-battery-2:before, .fa-battery-half:before {
+.fa-battery-2:before,
+.fa-battery-half:before {
   content: ""; }
 
-.fa-battery-1:before, .fa-battery-quarter:before {
+.fa-battery-1:before,
+.fa-battery-quarter:before {
   content: ""; }
 
-.fa-battery-0:before, .fa-battery-empty:before {
+.fa-battery-0:before,
+.fa-battery-empty:before {
   content: ""; }
 
 .fa-mouse-pointer:before {
@@ -5842,22 +5991,27 @@ Physical Station Popover
 .fa-hourglass-o:before {
   content: ""; }
 
-.fa-hourglass-1:before, .fa-hourglass-start:before {
+.fa-hourglass-1:before,
+.fa-hourglass-start:before {
   content: ""; }
 
-.fa-hourglass-2:before, .fa-hourglass-half:before {
+.fa-hourglass-2:before,
+.fa-hourglass-half:before {
   content: ""; }
 
-.fa-hourglass-3:before, .fa-hourglass-end:before {
+.fa-hourglass-3:before,
+.fa-hourglass-end:before {
   content: ""; }
 
 .fa-hourglass:before {
   content: ""; }
 
-.fa-hand-grab-o:before, .fa-hand-rock-o:before {
+.fa-hand-grab-o:before,
+.fa-hand-rock-o:before {
   content: ""; }
 
-.fa-hand-stop-o:before, .fa-hand-paper-o:before {
+.fa-hand-stop-o:before,
+.fa-hand-paper-o:before {
   content: ""; }
 
 .fa-hand-scissors-o:before {
@@ -5920,7 +6074,8 @@ Physical Station Popover
 .fa-internet-explorer:before {
   content: ""; }
 
-.fa-tv:before, .fa-television:before {
+.fa-tv:before,
+.fa-television:before {
   content: ""; }
 
 .fa-contao:before {
@@ -6040,17 +6195,19 @@ Physical Station Popover
 /*************
 GENERALE RULES
 **************/
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
   display: block; }
-body {
-  line-height: 1; }
-ol, ul {
-  list-style: none; }
-blockquote, q {
-  quotes: none; }
-blockquote:before, blockquote:after, q:before, q:after {
-  content: '';
-  content: none; }
+  body {
+    line-height: 1; }
+    ol, ul {
+      list-style: none; }
+      blockquote, q {
+        quotes: none; }
+        blockquote:before, blockquote:after,
+        q:before, q:after {
+          content: '';
+          content: none; }
 
 /*************************************
 Remember to highlight inserts somehow!
@@ -6084,7 +6241,8 @@ html {
 #mes #content #globalNavView #globalNavView--refreshTime-img {
   color: #74d2e7;
   text-shadow: none; }
-#mes #content #globalNavView .sapMBtn:hover > #globalNavView--refreshTime, #mes #content #globalNavView .sapMBtn:hover > #globalNavView--localDELog {
+#mes #content #globalNavView .sapMBtn:hover > #globalNavView--refreshTime,
+#mes #content #globalNavView .sapMBtn:hover > #globalNavView--localDELog {
   background-color: rgba(255, 255, 255, 0.2); }
 #mes #sap-ui-static .sapMPopover:not(.informationColor):not(#stationTrackerView--toolbarstationtracker-popover) {
   background-color: #2c2a29;
@@ -6094,14 +6252,16 @@ html {
   border: none;
   border-radius: 0;
   box-shadow: 0 0 5px #333; }
-#mes .sapMDialog:not(.theme-disabled) header {
-  box-shadow: 0 0 5px #333;
-  overflow: visible;
-  background-color: #d4f1f7;
-  color: #434343; }
-#mes .sapMDialog:not(.theme-disabled) footer {
-  background-color: #0f2d65; }
-#mes .sapMToggleBtnPressed, #mes .sapMIBar-CTX .sapMToggleBtnPressed, #mes .sapMTB-Transparent-CTX .sapMBtnInner.sapMToggleBtnPressed {
+  #mes .sapMDialog:not(.theme-disabled) header {
+    box-shadow: 0 0 5px #333;
+    overflow: visible;
+    background-color: #d4f1f7;
+    color: #434343; }
+  #mes .sapMDialog:not(.theme-disabled) footer {
+    background-color: #0f2d65; }
+#mes .sapMToggleBtnPressed,
+#mes .sapMIBar-CTX .sapMToggleBtnPressed,
+#mes .sapMTB-Transparent-CTX .sapMBtnInner.sapMToggleBtnPressed {
   background-image: none;
   background-color: transparent;
   border-color: transparent;
@@ -6109,28 +6269,29 @@ html {
   text-shadow: none; }
 #mes .Subheader:not(.theme-disabled) button:not(.sapMBtnDisabled) {
   padding: 0; }
-#mes .Subheader:not(.theme-disabled) button:not(.sapMBtnDisabled):hover {
-  background-color: rgba(0, 86, 112, 0.2); }
-#mes .Subheader:not(.theme-disabled) button:not(.sapMBtnDisabled):hover > div.sapMBtnActive {
-  color: #ffffff;
-  background-color: #74D2E7; }
-#mes .Subheader:not(.theme-disabled) button:not(.sapMBtnDisabled) span:hover {
-  background-color: transparent; }
-#mes .Subheader:not(.theme-disabled) button:not(.sapMBtnDisabled) > div {
-  border-radius: 0;
-  border: 0;
-  height: 3rem; }
-#mes .Subheader:not(.theme-disabled) button:not(.sapMBtnDisabled) > div > span {
-  line-height: 3rem;
-  max-height: 3rem; }
+  #mes .Subheader:not(.theme-disabled) button:not(.sapMBtnDisabled):hover {
+    background-color: rgba(0, 86, 112, 0.2); }
+    #mes .Subheader:not(.theme-disabled) button:not(.sapMBtnDisabled):hover > div.sapMBtnActive {
+      color: #ffffff;
+      background-color: #74D2E7; }
+  #mes .Subheader:not(.theme-disabled) button:not(.sapMBtnDisabled) span:hover {
+    background-color: transparent; }
+  #mes .Subheader:not(.theme-disabled) button:not(.sapMBtnDisabled) > div {
+    border-radius: 0;
+    border: 0;
+    height: 3rem; }
+    #mes .Subheader:not(.theme-disabled) button:not(.sapMBtnDisabled) > div > span {
+      line-height: 3rem;
+      max-height: 3rem; }
 #mes .Subheader:not(.theme-disabled) button[aria-pressed^="true"] {
   background-color: #74D2E7; }
-#mes .Subheader:not(.theme-disabled) button[aria-pressed^="true"]:hover {
-  background-color: #49a4bc; }
-#mes .Subheader:not(.theme-disabled) button[aria-pressed^="true"] span {
-  color: #ffffff; }
+  #mes .Subheader:not(.theme-disabled) button[aria-pressed^="true"]:hover {
+    background-color: #49a4bc; }
+  #mes .Subheader:not(.theme-disabled) button[aria-pressed^="true"] span {
+    color: #ffffff; }
 
-.sapMNav.navContAutoHeight .sapMNavItem, .sapMNav.navContAutoHeight .sapMPage > section {
+.sapMNav.navContAutoHeight .sapMNavItem,
+.sapMNav.navContAutoHeight .sapMPage > section {
   position: relative; }
 
 .sapUiBody.content {
@@ -6178,7 +6339,8 @@ html {
 #globalNavView header .pageHeader label[id^="__label"].pageTitle {
   font-size: 1.3rem;
   text-transform: uppercase; }
-#globalNavView--SelectLanguage span, #globalNavView--SelectLanguage label, #globalNavView #globalNavView--informationButton-inner #globalNavView--informationButton-img, #globalNavView #globalNavView--homeButton-inner #globalNavView--homeButton-img {
+#globalNavView--SelectLanguage span, #globalNavView--SelectLanguage label, #globalNavView #globalNavView--informationButton-inner #globalNavView--informationButton-img,
+#globalNavView #globalNavView--homeButton-inner #globalNavView--homeButton-img {
   color: #74d2e7; }
 
 #globalNavView--SelectLanguage {
@@ -6190,12 +6352,12 @@ html {
   margin-right: 0;
   padding: 0.250rem;
   color: #ffffff; }
-#globalNavView--settingsButton.sapMBtn:hover {
-  background-color: rgba(255, 255, 255, 0.2); }
-#globalNavView--settingsButton.sapMBtn:hover > .sapMBtnHoverable {
-  background-color: transparent;
-  border-color: transparent;
-  outline: 1px dotted transparent; }
+  #globalNavView--settingsButton.sapMBtn:hover {
+    background-color: rgba(255, 255, 255, 0.2); }
+    #globalNavView--settingsButton.sapMBtn:hover > .sapMBtnHoverable {
+      background-color: transparent;
+      border-color: transparent;
+      outline: 1px dotted transparent; }
 
 .WhiteBG {
   background-color: #fff !important; }
@@ -6237,12 +6399,12 @@ FORM
 #mes .oswPopover .sapMComboBoxTextField {
   line-height: 1.9rem;
   height: 1.9rem; }
-#mes .oswPopover .sapMComboBoxTextField .sapMInputBaseInner {
-  border: 0px solid #ccc;
-  line-height: 1.9rem;
-  height: 1.9rem !important; }
-#mes .oswPopover .sapMComboBoxTextField button {
-  line-height: 1.9rem; }
+  #mes .oswPopover .sapMComboBoxTextField .sapMInputBaseInner {
+    border: 0px solid #ccc;
+    line-height: 1.9rem;
+    height: 1.9rem !important; }
+  #mes .oswPopover .sapMComboBoxTextField button {
+    line-height: 1.9rem; }
 
 /*************
 Datepicker
@@ -6275,8 +6437,8 @@ Pop up
   background-color: #3F4F54; }
 #mes .blackButton > div {
   color: #ffffff; }
-#mes .blackButton > div .sapMBtnIcon {
-  color: #74d2e7; }
+  #mes .blackButton > div .sapMBtnIcon {
+    color: #74d2e7; }
 #mes #popupSettingsButton {
   border-bottom: solid 1px #979797; }
 
