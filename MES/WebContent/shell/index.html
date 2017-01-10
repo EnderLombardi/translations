@@ -1,139 +1,138 @@
 <!DOCTYPE html>
 <html id="mes">
 <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv='Content-Type' content='text/html;charset=UTF-8' />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv='Content-Type' content='text/html;charset=UTF-8' />
 
-    <link rel="stylesheet" href="../lib/dhtmlxscheduler/dhtmlxscheduler.css"
-        type="text/css" title="no title">
-   <link rel='stylesheet' type='text/css'
-        href='../lib/dhtmlxscheduler/dhtmlxscheduler_flat.css'>
-         <!-- 
-             global.css already included in components\settings\manifest.json so no need to include it here 
-         -->
-
-    <script type="text/javascript" src="../lib/js-cookie.js"></script>
+<!--<link rel="stylesheet" href="../Sass/global.css">-->
+<link rel="stylesheet" href="../lib/dhtmlxscheduler/dhtmlxscheduler.css"
+	type="text/css" title="no title">
+<link rel='stylesheet' type='text/css'
+	href='../lib/dhtmlxscheduler/dhtmlxscheduler_flat.css'>
+<link rel="stylesheet" href="../Sass/global.css">
+<script type="text/javascript" src="../lib/js-cookie.js"></script>
 
 </head>
-
+<!-- <body class="sapUiBody" role="application">
+    <div id="content"></div>
+</body> -->
 <body class="sapUiBody" id="content"
-    style="background: #002C63; margin: 0;">
-    <div id="welcome_airbus" style="height: 100vh; display: flex;">
-        <div style="margin: auto;">
-            <img src="../images/Airbus-xl.png"
-                style="display: block; width: 40vw; height: auto; margin: auto; transform: translateY(2vh);" />
-            <img src="../images/ajax_loader_metal_512.gif"
-                style="display: block; width: auto; height: 8vh; margin: 0 auto; transform: translateY(12vh);" />
-        </div>
-    </div>
-    <!--
-        src="https://sapui5.netweaver.ondemand.com/1.36.11/resources/sap-ui-core.js"
-        For people who are not using eclipse.
-    -->
-    <script
-        src="../resources/sap-ui-core.js"
-        id="sap-ui-bootstrap" data-sap-ui-libs="sap.m, sap.ui.table"
-        data-sap-ui-theme="sap_bluecrystal"
-        data-sap-ui-xx-bindingSyntax="complex">
+	style="background: #002C63; margin: 0;">
+	<div id="welcome_airbus" style="height: 100vh; display: flex;">
+		<div style="margin: auto;">
+			<img src="../images/Airbus-xl.png"
+				style="display: block; width: 40vw; height: auto; margin: auto; transform: translateY(2vh);" />
+			<img src="../images/ajax_loader_metal_512.gif"
+				style="display: block; width: auto; height: 8vh; margin: 0 auto; transform: translateY(12vh);" />
+		</div>
+	</div>
 
-    </script>
+	<!-- src="https://sapui5.netweaver.ondemand.com/1.36.11/resources/sap-ui-core.js" -->
+	<script
+		src="https://sapui5.netweaver.ondemand.com/1.36.11/resources/sap-ui-core.js"
+		id="sap-ui-bootstrap" data-sap-ui-libs="sap.m, sap.ui.table"
+		data-sap-ui-theme="sap_bluecrystal"
+		data-sap-ui-xx-bindingSyntax="complex">
+		
+	</script>
 
-    <script>
-        sap.ui.getCore().attachInit(
-                function() {
+	<script>
+		sap.ui.getCore().attachInit(function() {
 
-                    jQuery.sap.registerModulePath("airbus.mes.shell", "./");
-                    jQuery.sap.registerModulePath("airbus.mes.settings",
-                            "../components/settings");
-                    jQuery.sap.registerModulePath("airbus.mes.homepage",
-                            "../components/homepage");
-                    bBatch1 = true;
-                    disableEnable();
+			jQuery.sap.registerModulePath("airbus.mes.shell", "./");
+			jQuery.sap.registerModulePath("airbus.mes.settings", "../components/settings");
+			jQuery.sap.registerModulePath("airbus.mes.homepage", "../components/homepage");
+			jQuery.sap.registerModulePath("airbus.mes.dhtmlx", "../lib/dhtmlxscheduler");
+			jQuery.sap.registerModulePath("airbus.mes.d3", "../lib/d3");
+			bBatch1 = true;
+			disableEnable();
 
-                    if (window.location.hostname === "localhost"
-                            && window.location.search != "?url_config=local"
-                            && Cookies.getJSON("login") === undefined) {
-                        //        Case of localhost connection, need to define login pass
-                        jQuery.sap.registerModulePath("airbus.mes.login",
-                                "../components/login");
+			if (window.location.hostname === "localhost" && window.location.search != "?url_config=local" && Cookies.getJSON("login") === undefined) {
+				//        Case of localhost connection, need to define login pass
+				jQuery.sap.registerModulePath("airbus.mes.login", "../components/login");
 
-                        oCompCont = new sap.ui.core.ComponentContainer({
-                            component : sap.ui.getCore().createComponent({
-                                name : "airbus.mes.login", // root component folder is resources
-                            })
-                        });
-                        oCompCont.placeAt("content");
+				oCompCont = new sap.ui.core.ComponentContainer({
+					component : sap.ui.getCore().createComponent({
+						name : "airbus.mes.login", // root component folder is resources
+					})
+				});
+				oCompCont.placeAt("content");
 
-                    } else {
-                        //        Case of airbus connection
+			} else {
+				//        Case of airbus connection
 
-                        // Create a Ui container
-                        oCompCont = new sap.ui.core.ComponentContainer({
-                            component : sap.ui.getCore().createComponent({
-                                name : "airbus.mes.shell", // root component folder is resources
-                                propagateModel : true,
-                            })
-                        });
+				// Create a Ui container
+				oCompCont = new sap.ui.core.ComponentContainer({
+					component : sap.ui.getCore().createComponent({
+						name : "airbus.mes.shell", // root component folder is resources
+						propagateModel : true,
+					})
+				});
 
-                        oComp1 = sap.ui.getCore().createComponent({
-                            name : "airbus.mes.homepage", // root component folder is resources
-                        });
+				oComp1 = sap.ui.getCore().createComponent({
+					name : "airbus.mes.homepage", // root component folder is resources
+				});
 
-                        airbus.mes.component = airbus.mes.component || {};
+				airbus.mes.component = airbus.mes.component || {};
 
-                        airbus.mes.component.settings = sap.ui.getCore()
-                                .createComponent({
-                                    name : "airbus.mes.settings", // root component folder is resources
-                                });
+				airbus.mes.component.settings = sap.ui.getCore().createComponent({
+					name : "airbus.mes.settings", // root component folder is resources
+				});
 
-                        nav = airbus.mes.shell.oView.byId("navCont");
+				nav = airbus.mes.shell.oView.byId("navCont");
 
-                        nav.addPage(airbus.mes.homepage.oView);
-                        airbus.mes.homepage.oView.placeAt(nav);
+				nav.addPage(airbus.mes.homepage.oView);
+				airbus.mes.homepage.oView.placeAt(nav);
 
-                        // place this Ui Container with the Component inside into UI Area
-                        oCompCont.placeAt("content");
-                        // remove splash color & style
-                        document.body.style = {};
+				// place this Ui Container with the Component inside into UI Area
+				oCompCont.placeAt("content");
+				// remove splash color & style
+				document.body.style = {};
 
-                        // Load User and Application Settings
-                        airbus.mes.settings.ModelManager.loadUserSettingsModel();
+				// Load User and Application Settings
+				airbus.mes.settings.ModelManager.loadUserSettingsModel();
 
-                        // Check user settings and if not defined then navigate to Settings screen
-                        airbus.mes.settings.ModelManager.checkDisplayFirstSetting();
+				// Check user settings and if not defined then navigate to Settings screen
+				airbus.mes.settings.ModelManager.checkDisplayFirstSetting();
 
-                    }
-                    function disableEnable(){
-                        // batch 1 set to true
-                        var windowLocation = window.location.hostname;
-                        var getLocationForBatch = window.location.search;
+			}
+			function disableEnable() {
+				// batch 1 set to true
+				var windowLocation = window.location.hostname;
+				var getLocationForBatch = window.location.search;
 
-                if (windowLocation === "localhost") {
-                    bBatch1 = false;
-                } else {
-                    if (windowLocation === "dmiswde0.eu.airbus.corp") {
-                        bBatch1 = false;
-                    } else {
-                        if (windowLocation === "imiswde0.eu.airbus.corp") {
-                            bBatch1 = false;
-                        } else {
-                            bBatch1 = true;
-                        }
-                    }
-                }
+				if (windowLocation === "localhost") {
+					bBatch1 = false;
+				} else {
+					if (windowLocation === "dmiswde0.eu.airbus.corp") {
+						bBatch1 = false;
+					} else {
+						if (windowLocation === "imiswde0.eu.airbus.corp") {
+							bBatch1 = false;
+						} else {
+							bBatch1 = true;
+						}
+					}
+				}
 
-                if (getLocationForBatch.search("batch1") > 0) {
-                    bBatch1 = true;
-                } else {
-                    if (getLocationForBatch.search("batch2") > 0) {
-                        bBatch1 = false;
-                    }
-                }
+				if (getLocationForBatch.search("batch1") > 0) {
+					bBatch1 = true;
+				} else {
+					if (getLocationForBatch.search("batch2") > 0) {
+						bBatch1 = false;
+					}
+				}
 
-            }
-        });
+			}
+		});
 
-</script>
+		//hide virtual keyboard if ENTER touched
+		// sap.ui.getCore().byId("idUsersView--searchAvailableUsers")._inputElement.onsapenter(function (e) {
+		//     if (e.which === 13 && document.activeElement) { //touche ENTER
+		//         document.activeElement.blur(); //lose focus on the active element so hide keyboard
+		//     }
+		// });
+	</script>
 
 
 </body>
