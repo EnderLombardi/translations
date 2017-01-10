@@ -731,6 +731,16 @@ airbus.mes.stationtracker.ShiftManager = {
 			
 		}
 	},
+	
+	/**
+	 * Add update of shift selection when swiping in scheduler of the initial event of scheduler
+	 */
+	next : function(e, t) {
+		
+        scheduler.setCurrentView(scheduler.date.add(scheduler.date[scheduler._mode + "_start"](scheduler._date), t || 1, scheduler._mode));
+        airbus.mes.stationtracker.ModelManager.selectMyShift();
+        
+    },
 	/**
 	 * 
 	 * 
