@@ -8,7 +8,8 @@ var ui5preload = require('gulp-ui5-preload');
 var clean = require('gulp-clean');
 
 var src = './WebContent';
-var dest = './WebContent/build';
+var rootdest = './WebContent/build';
+var dest = rootdest + '/current';
 
 // Shell 
 gulp.task('ui5preload_shell', ['clean'], function() {
@@ -180,15 +181,13 @@ gulp.task('ui5preload_worktracker', ['clean'], function() {
      });	 	 
 
  gulp.task('copy_index', ['clean'], function () {
-	return gulp.src(['./shell/index.html'], { cwd: src })
+	return gulp.src(['./shell/index_airbus.html'], { cwd: src })
 		.pipe(gulp.dest(dest + '/shell'));
  });
  
  gulp.task('copy', ['clean'], function () {
 	return gulp.src([
 		'./components/homepage/css/margin.css',
-		'./images/**',
-		'./lib/**',
 		'./Sass/global.css',
 		'./Sass/*.png',
 		'./components/homepage/data/1TileLineHome.json',
@@ -203,20 +202,27 @@ gulp.task('ui5preload_worktracker', ['clean'], function() {
 		'./components/stationtracker/data/KPIModel.json',
 		'./components/disruptions/local/Jigtool_Server.json',
 		'./components/disruptions/local/MaterialList_Server.json',
-	//	'./shell/**/*.json',
-	//	'./components/**/*.json'
+		'./shell/**/*.json',
+		'./components/**/*.json'
 	], { cwd: src, cwdbase: true })
 		.pipe(gulp.dest(dest));
  });
+
+ gulp.task('copy_res', ['clean'], function () {
+	return gulp.src([
+		'./images/**',
+		'./lib/**'
+	], { cwd: src, cwdbase: true })
+		.pipe(gulp.dest(rootdest));
+ });
  
  gulp.task('clean', function () {
-	return gulp.src(dest, { read: false })
+	return gulp.src(rootdest, { read: false })
 		.pipe(clean());
  });
  
-
 // Tasks
-gulp.task('build', ['copy_index', 'copy',
+gulp.task('build', ['copy_index', 'copy', 'copy_res',
 					  'ui5preload_shell', 'ui5preload_disruption', 'ui5preload_disruptiontracker', 'ui5preload_disruptionkpi', 'ui5preload_homepage',
 					  'ui5preload_linetracker', 'ui5preload_login', 'ui5preload_operationdetail', 'ui5preload_polypoly', 'ui5preload_resourcepool',
 					  'ui5preload_settings', 'ui5preload_stationtracker', 'ui5preload_worktracker']);	 

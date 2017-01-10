@@ -32,6 +32,7 @@ airbus.mes.shell.ModelManager = {
 				bundleName : "airbus.mes.shell.config.url_config",
 				bundleLocale : dest
 			});
+			core.setModel(this.urlModel, "urlModel");
 			
 			if (  dest === "sopra" ) {
 
