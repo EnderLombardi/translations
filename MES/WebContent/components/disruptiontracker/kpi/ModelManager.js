@@ -7,8 +7,8 @@ airbus.mes.disruptiontracker.kpi.ModelManager = {
 	//sStaion: "",
 
 	init : function(core) {
-		core.setModel(new sap.ui.model.json.JSONModel(), "TimeLostperAttribute");
-		
+//		core.setModel(new sap.ui.model.json.JSONModel(), "TimeLostperAttribute");
+		 airbus.mes.shell.ModelManager.createJsonModel(core,["TimeLostperAttribute"]);
 	/*	core.getModel("TimeLostperAttribute").attachRequestCompleted(function(){
 			airbus.mes.disruptiontracker.kpi.oView.setBusy(false); 
 		});*/
