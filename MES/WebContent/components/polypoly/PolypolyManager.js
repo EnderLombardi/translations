@@ -143,6 +143,23 @@ airbus.mes.polypoly.PolypolyManager = {
 	
 	
 	createTableData : function(oMiiData) {
+		
+		//Sort all the rows by Ressource Pool then by full Name
+		oMiiData.Rowsets.Rowset[0].Row.sort(function(a,b){
+			if(a.RP_ID < b.RP_ID){
+				return -1
+			}else if(a.RP_ID > b.RP_ID){
+				return 1
+			}else{
+				if(a.longName < b.longName){
+					return -1
+				}else if(a.longName > b.longName){
+					return 1
+				}else{
+					return 0
+				}
+			}
+		});
 
 		var oMiiRows = oMiiData.Rowsets.Rowset[0].Row;
 		var oMiiColumns = oMiiData.Rowsets.Rowset[1].Row;
