@@ -1,8 +1,8 @@
 <core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
-    xmlns:control="airbus.mes.linetracker.KPICharts.control" xmlns:l="sap.ui.layout"
+    xmlns:KPIcontrol="airbus.mes.linetracker.KPICharts.control" xmlns:l="sap.ui.layout"
     xmlns="sap.m" controllerName="airbus.mes.linetracker.Linetracker"
-    xmlns:custom="airbus.mes.linetracker.control" xmlns:html="http://www.w3.org/1999/xhtml"
-    xmlns:controlPhStation="airbus.mes.linetracker.PhysicalStation.control"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:control="airbus.mes.linetracker.control"
     xmlns:uiTable="sap.ui.table">
     <Page showTitle="false" class="classLineTrackerTable"
         enableScrolling="false" showHeader="false">
@@ -87,26 +87,26 @@
                             <HBox alignItems="Center" justifyContent="Center">
 
 
-                                <controlPhStation:PhysicalStationBox
+                                <control:PhysicalStationBox
                                     id="linetrackerEditStation" color="#bcf6ff" actionIconColor="black"
                                     station="{stationDataModel>stationName}" msn="{stationDataModel>msn}"
                                     press="handlePopoverPress" width="80%">
-                                    <controlPhStation:actionIconButton>
+                                    <control:actionIconButton>
                                         <core:Icon press=" " src="{ parts :[{path:'stationDataModel>msn'},{path:'stationDataModel>date'}], formatter : 'airbus.mes.linetracker.util.Formatter.getActionIcon' }" />
-                                    </controlPhStation:actionIconButton>
-                                    <controlPhStation:image>
+                                    </control:actionIconButton>
+                                    <control:image>
                                         <Image width="100%" height="100%"
                                             visible="{ path : 'airlineLogoModel>Rowsets/Rowset/0/Row/0/airline_logo_url', formatter : 'airbus.mes.linetracker.util.Formatter.displayFlightImage' }"
                                             error="{ path : 'airlineLogoModel>Rowsets/Rowset/0/Row/0/airline_logo_url', formatter : 'airbus.mes.linetracker.util.Formatter.getErrorFlightImage' }"
-                                            src="{ path : 'airlineLogoModel>Rowsets/Rowset/0/Row/0/airline_logo_url', formatter : 'airbus.mes.linetracker.util.Formatter.selectImageToDisplay' }"></Image>
+                                            src="{ path : 'airlineLogoModel>Rowsets/Rowset/0/Row/0/msn', formatter : 'airbus.mes.linetracker.util.Formatter.selectImageToDisplay' }"></Image>
 
-                                    </controlPhStation:image>
+                                    </control:image>
 
-                                    <controlPhStation:detailIconButton>
+                                    <control:detailIconButton>
 
-                                    </controlPhStation:detailIconButton>
+                                    </control:detailIconButton>
 
-                                </controlPhStation:PhysicalStationBox>
+                                </control:PhysicalStationBox>
                                 <Button icon="sap-icon://vertical-grip" press="openStationPopover"
                                     class="moreButton" type="Transparent" width="20%" tooltip="{i18n>moreInfo}" />
 
@@ -130,10 +130,10 @@
 
                         </FlexBox>
                         <uiTable:template>
-                            <custom:linetrackerProgressBar
+                            <control:linetrackerProgressBar
                                 planned="{stationDataModel>plannedProgress}" confirmed="{stationDataModel>actualProgress}"
                                 class="progressBar">
-                            </custom:linetrackerProgressBar>
+                            </control:linetrackerProgressBar>
 
                         </uiTable:template>
 
@@ -189,14 +189,13 @@
                     </uiTable:Column>
                 </uiTable:columns>
             </uiTable:Table>
-            <control:slideControl id="idSlideControl">
+            <KPIcontrol:slideControl id="idSlideControl">
 
-                <control:slideContent>
+                <KPIcontrol:slideContent>
                     <core:Fragment fragmentName="airbus.mes.linetracker.KPICharts.StationSlideKPIs"
-
                         type="XML" />
-                </control:slideContent>
-            </control:slideControl>
+                </KPIcontrol:slideContent>
+            </KPIcontrol:slideControl>
         </content>
 
     </Page>

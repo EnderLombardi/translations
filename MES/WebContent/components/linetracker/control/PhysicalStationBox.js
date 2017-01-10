@@ -1,7 +1,7 @@
 "use strict";
-//jQuery.sap.require("airbus.mes.operationDetail.Control.PhysicalStation.css");
+
 sap.ui.core.Control.extend(
-		"airbus.mes.linetracker.PhysicalStation.control.PhysicalStationBox", {
+		"airbus.mes.linetracker.control.PhysicalStationBox", {
 			metadata : {
 				properties : {
 					"station" : "",
@@ -39,12 +39,9 @@ sap.ui.core.Control.extend(
 			},
 			renderer : function(oRm, oControl) {
 
-				/* var image =  oControl.getImage();*/
 				var msn = oControl.getMsn();
 				oRm.write("<div");
 				oRm.writeControlData(oControl);
-//				oRm.addStyle("background-color", oControl.getColor());
-				// oRm.writeStyles();
 				oRm.addClass("ParentDiv")
 				oRm.writeClasses();
 				oRm.write(">");
@@ -92,16 +89,9 @@ sap.ui.core.Control.extend(
 
 				oRm.renderControl(oControl.getAggregation("image"));
 				oRm.write("</div>");
-
 				
 				oRm.write(" </div>");
-				/*oRm.write("<div");
-				oRm.addClass("detailDiv");
-				oRm.writeClasses();
-				oRm.write(">");
 
-				oRm.renderControl(oControl.getAggregation("detailIconButton")); 
-				oRm.write(" </div>");*/
 			},
 
 			onclick : function(evt) { // is called when the Control's area is clicked - no event registration required

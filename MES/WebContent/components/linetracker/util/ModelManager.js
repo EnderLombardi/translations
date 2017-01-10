@@ -107,14 +107,10 @@ airbus.mes.linetracker.util.ModelManager = {
 				oViewModel.setData(data);
 				//this is required to scroll the Linetracker table. Don't remove/comment
 				sap.ui.getCore().byId("idLinetracker1--linetrackerTable").rerender();
-//				airbus.mes.linetracker.oView.byId("linetrackerTable").setBusy(false);
-//				airbus.mes.linetracker.oView.byId("idLinetracker1--linetrackerTable").setBusy(false);
 			},
 
 			error : function(error, jQXHR) {
 				console.log(error);
-//				airbus.mes.linetracker.oView.byId("linetrackerTable").setBusy(false);
-//				airbus.mes.linetracker.oView.byId("idLinetracker1--linetrackerTable").setBusy(false);
 			}
 		});
     },
@@ -430,10 +426,18 @@ airbus.mes.linetracker.util.ModelManager = {
 			}
 		});
     } ,
+    
+    /** 
+     * Get current system data
+     */
     getCurrentDateFormatted : function(){
         return (new Date()).toISOString().slice(0,10).replace(/-/g,"");
     },
     
+    /**
+     * Load Airline Logo Model
+     */
+    //TODO $TF, $Application_ID and $msn values to be changed
     loadFlightLogo:function(){
     	var oViewModel = sap.ui.getCore().getModel("airlineLogoModel");    	
     	var url=this.urlModel.getProperty("urlAirline_logo");

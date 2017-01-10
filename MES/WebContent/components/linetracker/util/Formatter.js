@@ -3,8 +3,12 @@
 jQuery.sap.declare("airbus.mes.linetracker.util.Formatter");
 airbus.mes.linetracker.util.Formatter = {
 	
-	selectImageToDisplay : function(airline_logo_url){
-        var src = airbus.mes.linetracker.util.Formatter.getAirlineImage(this.sId, airline_logo_url);
+	/**
+	 * To select Airline logo
+	 * @Param msn
+	 */
+	selectImageToDisplay : function(msn){
+        var src = airbus.mes.linetracker.util.Formatter.getAirlineImage(this.sId, msn);
         return src;
     },
     
@@ -12,9 +16,9 @@ airbus.mes.linetracker.util.Formatter = {
     	 return airbus.mes.settings.AppConfManager.getConfiguration("MES_PHOTO_DISPLAY");
     },
 	
-    getAirlineImage:function(imageId, airline_logo_url){
+    getAirlineImage:function(imageId, msn){
 //	   var urlFlightImage = airbus.mes.linetracker.util.ModelManager.urlModel.getProperty("urlAirline_logo");
-    	var urlFlightImage = sap.ui.getCore().getModel("airlineLogoModel").oData["Rowsets"].Rowset[0].Row[0].airline_logo_url1;
+    	var urlFlightImage = sap.ui.getCore().getModel("airlineLogoModel").oData["Rowsets"].Rowset[0].Row[0].airline_logo_url;
 //	   urlFlightImage = urlFlightImage.replace("$username", username.toUpperCase());
 //	   urlFlightImage = urlFlightImage.replace("$TF", "V");
 //	   urlFlightImage = urlFlightImage.replace("$Application_ID", "000000000030");
@@ -50,7 +54,12 @@ airbus.mes.linetracker.util.Formatter = {
 			return "#97999b"
 		}
 	},
-	
+	/**
+	 * BR:SD-PPC-ST-1910
+	 * Set the progress Icon of Station based on MSN,Completion Data and Actual Start Date
+	 * @param msn, completion_date_time and Actual_date_time
+	 * @param return Icon
+	 */
 	getActionIcon: function(msn, date){
 		if(msn == ""){
 			return "sap-icon://border";

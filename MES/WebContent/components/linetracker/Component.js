@@ -17,12 +17,8 @@ sap.ui.core.UIComponent.extend("airbus.mes.linetracker.Component", {
     metadata : {
 
         properties : {
-//            textButtonTo : "string",
-//            buttonAction : "string"
 
         },
-        /*includes : [
-                    ]*/
     }
 
 });
@@ -32,26 +28,10 @@ airbus.mes.linetracker.Component.prototype.createContent = function() {
 
     if (airbus.mes.linetracker.oView === undefined) {
         airbus.mes.linetracker.util.ModelManager.init(sap.ui.getCore());
-       /* airbus.mes.linetracker.util.RoleManager.init(this);
-        airbus.mes.linetracker.util.ModelManager.init(this);*/
-        /*this.factoryView = sap.ui.view({
-            id : "idFactoryView",
-            viewName : "airbus.mes.linetracker.FactoryView",
-            type : sap.ui.core.mvc.ViewType.XML,
-            height : "98%",
-            width: "100%"
-        });
-        this.factoryView.setModel(sap.ui.getCore().getModel("newFactoryModel"),    "newFactoryModel");
-        this.oView = sap.ui.view({
-            id : "idMainView",
-            viewName : "airbus.mes.linetracker.MainView",
-            type : "XML",
-        })*/
 
         this.oView = sap.ui.view({
             id:"idLinetracker1",
             viewName:"airbus.mes.linetracker.Linetracker",
-//            type:sap.ui.core.mvc.ViewType.XML
             type : "XML"
         });
 
