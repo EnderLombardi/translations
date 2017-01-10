@@ -137,33 +137,33 @@ airbus.mes.stationtracker.ShiftManager = {
 			}
 		}
 		
-		//Airbus Defect #262 - Shift selection is not kept when changing date
-		if(!airbus.mes.stationtracker.ShiftManager.changeShift){
-			var flag = false;
-
-			/********
-			 * First search in backward direction
-			 * because there is a possibility that Dichomatic search result in Shift other than first shift of the day
-			 */
-			for(var i = iMed;; i--){
-				if(this.shifts[i].EndDate >= date && this.shifts[i].shiftName == airbus.mes.stationtracker.ShiftManager.current_shift.shiftName)
-				{ iMed = i; flag= true;	break; }
-				else if(this.shifts[i].EndDate < date)
-					break;
-			}
-			
-			/********
-			 * Then search in forward direction
-			 */
-			if(!flag)
-			for(var i = iMed;; i++){
-				if(this.shifts[i].EndDate >= date && this.shifts[i].shiftName == airbus.mes.stationtracker.ShiftManager.current_shift.shiftName)
-				{ iMed = i;	break; }
-				else if(this.shifts[i].EndDate < date)
-					break;
-			}
-		}
-		// End of Airbus Defect #262
+//		//Airbus Defect #262 - Shift selection is not kept when changing date
+//		if(!airbus.mes.stationtracker.ShiftManager.changeShift){
+//			var flag = false;
+//
+//			/********
+//			 * First search in backward direction
+//			 * because there is a possibility that Dichomatic search result in Shift other than first shift of the day
+//			 */
+//			for(var i = iMed;; i--){
+//				if(this.shifts[i].EndDate >= date && this.shifts[i].shiftName == airbus.mes.stationtracker.ShiftManager.current_shift.shiftName)
+//				{ iMed = i; flag= true;	break; }
+//				else if(this.shifts[i].EndDate < date)
+//					break;
+//			}
+//			
+//			/********
+//			 * Then search in forward direction
+//			 */
+//			if(!flag)
+//			for(var i = iMed;; i++){
+//				if(this.shifts[i].EndDate >= date && this.shifts[i].shiftName == airbus.mes.stationtracker.ShiftManager.current_shift.shiftName)
+//				{ iMed = i;	break; }
+//				else if(this.shifts[i].EndDate < date)
+//					break;
+//			}
+//		}
+//		// End of Airbus Defect #262
 		
 		return iMed;
 	},
