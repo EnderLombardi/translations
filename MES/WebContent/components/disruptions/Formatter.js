@@ -170,7 +170,7 @@ airbus.mes.disruptions.Formatter = {
 		return false;
 	},
 
-	setRejectButtonVisibility : function(originatorFlag, responsibleFlag, status) {
+	setRejectButtonVisibility : function(responsibleFlag, status) {
 
 		//if (responsibleFlag == "X" && originatorFlag != "X") {
 		if (responsibleFlag == "X") {
@@ -208,7 +208,7 @@ airbus.mes.disruptions.Formatter = {
 			return true;
 	},
 
-	setAcknowledgeButtonVisibility : function(originatorFlag, responsibleFlag, status) {
+	setAcknowledgeButtonVisibility : function(responsibleFlag, status) {
 
 		//if (originatorFlag != "X" && responsibleFlag == "X") {
 		if (responsibleFlag == "X") {
@@ -232,7 +232,7 @@ airbus.mes.disruptions.Formatter = {
 				return false;
 	},
 
-	setMarkSolvedButtonVisibility : function(originatorFlag, responsibleFlag, status) {
+	setMarkSolvedButtonVisibility : function(responsibleFlag, status) {
 
 		//if (originatorFlag != "X" && responsibleFlag == "X") {
 		if (responsibleFlag == "X") {
@@ -246,7 +246,7 @@ airbus.mes.disruptions.Formatter = {
 		return false;
 	},
 	
-	setRefuseButtonVisibility : function(originatorFlag, responsibleFlag, status) {
+	setRefuseButtonVisibility : function(originatorFlag, status) {
 		//if (originatorFlag == "X" && responsibleFlag != "X" && status == airbus.mes.disruptions.Formatter.status.solved)
 		if (originatorFlag == "X" && status == airbus.mes.disruptions.Formatter.status.solved)
 			return true;
