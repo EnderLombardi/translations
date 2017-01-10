@@ -686,15 +686,20 @@ airbus.mes.stationtracker.ShiftManager = {
 		if ( fIndexShift != -1 && fIndexShift != 0 ) {
 						
 			var oPreviousShift = airbus.mes.stationtracker.ShiftManager.shifts[fIndexShift -1] ;
-			var oOperation = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy[oSection.group][oSection.avlLine];	
+			// Check if the avl to parse exist , when we add new avl Line by press + it not exist in the airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy 
+			if ( airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy[oSection.group] != undefined ) {
 				
-				for ( var aBox in oOperation ) {
+				if ( airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy[oSection.group][oSection.avlLine] != undefined ) {
 					
-					if ( bResult ) {
-						
-						return true;
-						
-					} 
+					var oOperation = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy[oSection.group][oSection.avlLine];			
+	
+					for ( var aBox in oOperation ) {
+					
+						if ( bResult ) {
+							
+							return true;
+							
+						} 
 							
 					var aOpration = oOperation[aBox];
 					//Parse all opration in corresponding group avlLine return true if one is not completed
@@ -722,6 +727,9 @@ airbus.mes.stationtracker.ShiftManager = {
 		}
 		// First shift reach no operation before the shift selected
 		return false;
+			}
+			
+		}
 	},
 	/**
 	 * 
