@@ -1,0 +1,42 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<Dialog id="editStation" title="" icon="">
+		<content>
+			<VBox>
+				<Label />
+				<Label text="{i18n>program}"></Label>
+				<Select id="selectProgram" items="{plantModel>/Rowsets/Rowset/0/Row}"
+					visible="true" change="onSelectionChange" class="customComboBox"
+					width="22rem">
+					<items>
+						<core:Item key="{plantModel>program}" text="{plantModel>programDescription}" />
+					</items>
+				</Select>
+				<Label />
+				<Label text="{i18n>line}"></Label>
+				<Select id="selectLine" items="{plantModel>/Rowsets/Rowset/0/Row}"
+					visible="true" change="onSelectionChange" class="customComboBox"
+					width="22rem">
+					<items>
+						<core:Item key="{plantModel>line}" text="{plantModel>lineDescription}" />
+					</items>
+				</Select>
+				<Label />
+				<Label text="{i18n>station}"></Label>
+				<Select id="selectStation" items="{plantModel>/Rowsets/Rowset/0/Row}"
+					visible="true" change="onSelectionChange" class="customComboBox"
+					width="22rem">
+					<items>
+						<core:Item key="{plantModel>station}" text="{plantModel>stationDescription}" />
+					</items>
+				</Select>
+				<Label />
+			</VBox>
+		</content>
+		<buttons>
+			<Button text="{i18n>ok}" press="onOk" />
+			<Button text="{i18n>cancel}" press="onCancel" />
+
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

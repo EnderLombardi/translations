@@ -1,6 +1,6 @@
 "use strict";
 
-sap.ui.core.Element.extend("airbus.mes.linetracker.KPICharts.Coordinates", {
+sap.ui.core.Element.extend("airbus.mes.linetracker.kpicharts.Coordinates", {
 	metadata : { // meta
 		properties : { // prop
 			"x" : {
