@@ -1,202 +1,203 @@
 <core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
-    xmlns:KPIcontrol="airbus.mes.linetracker.KPICharts.control" xmlns:l="sap.ui.layout"
-    xmlns="sap.m" controllerName="airbus.mes.linetracker.Linetracker"
-    xmlns:html="http://www.w3.org/1999/xhtml"
-    xmlns:control="airbus.mes.linetracker.control"
-    xmlns:uiTable="sap.ui.table">
-    <Page showTitle="false" class="classLineTrackerTable"
-        enableScrolling="false" showHeader="false">
-        <content>
-            <Panel id="linetrackerHeaderKPI" expandable="true" expanded="true"
-                image="" expandAnimation="false" class="pageHeader kpiPageHeader contentNoPad">
-                <headerToolbar>
-                    <Toolbar>
-                        <Title text="{i18n>lineTrackerTitle}" level="H2"
-                            class="lineTrackerTitle" />
-                        <core:Icon src="sap-icon://appointment" class="headerIcons"
-                            color="#FFFFFF">
-                        </core:Icon>
-                        <Label id="linetracker_dateLabel" text="" class="classDateLabel"></Label>
-                        <core:Icon src="sap-icon://history" class="headerIcons"
-                            color="#FFFFFF">
-                        </core:Icon>
-                        <Label id="linetracker_timeLabel" text=""></Label>
-                        <ToolbarSpacer />
-                        <Button id="hideKPI" enabled="true" icon="sap-icon://hide"
-                            text="{i18n>hideKPI}" press="hideKPI" class="blueText" />
-                    </Toolbar>
-                </headerToolbar>
-                <VBox>
-                    <core:Fragment fragmentName="airbus.mes.linetracker.KPICharts.KPIs"
-                        type="XML" height="10rem" />
-                </VBox>
-            </Panel>
-            <uiTable:Table id="linetrackerTable" rows="{stationDataModel>/}"
-                visibleRowCount="8" enableColumnReordering="false" threshold="20">
-                <uiTable:toolbar>
-                    <Toolbar class="toolbar">
-                        <Title class="taktAdherenceLinetrackerTitle" text="{i18n>taktAdherence}" level="H2" />
-                        <ToolbarSpacer width="58%" />
-                        <Text text="{i18n>forcastEndOfAssembly}" width="9.5%"
-                              class="headerColumnText headerTextTableLinetracker sapUiTinyMarginBottom" />
-                        <ToolbarSpacer width="2%" />
-                        <Text text="{i18n>remainingToDo}" width="9.7%"
-                              class="headerColumnText headerTextTableLinetracker sapUiTinyMarginBottom" />
-                        <ToolbarSpacer width="2%" />
-                        <Text text="{i18n>openDisruptionAndon}" width="9.7%"
-                              class="headerColumnText headerTextTableLinetracker sapUiTinyMarginBottom" />
-                    </Toolbar>
-                </uiTable:toolbar>
-                <uiTable:columns>
+	xmlns:KPIcontrol="airbus.mes.linetracker.kpicharts.control" xmlns:l="sap.ui.layout"
+	xmlns="sap.m" controllerName="airbus.mes.linetracker.Linetracker"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:control="airbus.mes.linetracker.control"
+	xmlns:uiTable="sap.ui.table">
+	<Page showTitle="false" class="classLineTrackerTable"
+		enableScrolling="false" showHeader="false">
+		<content>
+			<Panel id="linetrackerHeaderKPI" expandable="true" expanded="true"
+				image="" expandAnimation="false" class="pageHeader kpiPageHeader contentNoPad">
+				<headerToolbar>
+					<Toolbar>
+						<Title text="{i18n>lineTrackerTitle}" level="H2"
+							class="lineTrackerTitle" />
+						<core:Icon src="sap-icon://appointment" class="headerIcons"
+							color="#FFFFFF">
+						</core:Icon>
+						<Label id="linetracker_dateLabel" text="" class="classDateLabel"></Label>
+						<core:Icon src="sap-icon://history" class="headerIcons"
+							color="#FFFFFF">
+						</core:Icon>
+						<Label id="linetracker_timeLabel" text=""></Label>
+						<ToolbarSpacer />
+						<Button id="hideKPI" enabled="true" icon="sap-icon://hide"
+							text="{i18n>hideKPI}" press="hideKPI" class="blueText" />
+					</Toolbar>
+				</headerToolbar>
+				<VBox>
+					<core:Fragment fragmentName="airbus.mes.linetracker.kpicharts.KPIs"
+						type="XML" height="10rem" />
+				</VBox>
+			</Panel>
+			<uiTable:Table id="linetrackerTable" rows="{stationDataModel>/}"
+				visibleRowCount="8" enableColumnReordering="false" threshold="20">
+				<uiTable:toolbar>
+					<Toolbar class="toolbar">
+						<Title class="taktAdherenceLinetrackerTitle" text="{i18n>taktAdherence}"
+							level="H2" />
+						<ToolbarSpacer width="58%" />
+						<Text text="{i18n>forcastEndOfAssembly}" width="9.5%"
+							class="headerColumnText headerTextTableLinetracker sapUiTinyMarginBottom" />
+						<ToolbarSpacer width="2%" />
+						<Text text="{i18n>remainingToDo}" width="9.7%"
+							class="headerColumnText headerTextTableLinetracker sapUiTinyMarginBottom" />
+						<ToolbarSpacer width="2%" />
+						<Text text="{i18n>openDisruptionAndon}" width="9.7%"
+							class="headerColumnText headerTextTableLinetracker sapUiTinyMarginBottom" />
+					</Toolbar>
+				</uiTable:toolbar>
+				<uiTable:columns>
 
-                    <uiTable:Column width="20%" resizable="false">
-                        <OverflowToolbar class="sapUiMediumMarginBegin">
-                            <Button id="linetrackerAddStation" icon="sap-icon://add"
-                                text="{i18n>_station}" press="onEditStation" type="Emphasized"
-                                class="stationBtns sapUiTinyMarginEnd" tooltip="{i18n>addStation}">
-                                <layoutData>
-                                    <OverflowToolbarLayoutData />
-                                </layoutData>
-                            </Button>
-                            <Button icon="sap-icon://save" press="onSaveVariant" type="Accept"
-                                class="stationBtns" tooltip="{i18n>saveVariant}">
+					<uiTable:Column width="20%" resizable="false">
+						<OverflowToolbar class="sapUiMediumMarginBegin">
+							<Button id="linetrackerAddStation" icon="sap-icon://add"
+								text="{i18n>_station}" press="onEditStation" type="Emphasized"
+								class="stationBtns sapUiTinyMarginEnd" tooltip="{i18n>addStation}">
+								<layoutData>
+									<OverflowToolbarLayoutData />
+								</layoutData>
+							</Button>
+							<Button icon="sap-icon://save" press="onSaveVariant" type="Accept"
+								class="stationBtns" tooltip="{i18n>saveVariant}">
 
-                                <layoutData>
-                                    <OverflowToolbarLayoutData />
+								<layoutData>
+									<OverflowToolbarLayoutData />
 
-                                </layoutData>
-                            </Button>
-                            <Input id="selectLine" type="Text" placeholder="{i18n>selectLine}"
-                                showValueHelp="true" valueHelpOnly="true" valueHelpRequest="handleValueHelp"
-                                class="stationBtns sapUiTinyMarginEnd" width="8rem">
+								</layoutData>
+							</Button>
+							<Input id="selectLine" type="Text" placeholder="{i18n>selectLine}"
+								showValueHelp="true" valueHelpOnly="true" valueHelpRequest="handleValueHelp"
+								class="stationBtns sapUiTinyMarginEnd" width="8rem">
 
-                                <layoutData>
-                                    <OverflowToolbarLayoutData priority="NeverOverflow" />
+								<layoutData>
+									<OverflowToolbarLayoutData priority="NeverOverflow" />
 
-                                </layoutData>
-                            </Input>
-                            <Button icon="sap-icon://edit" press="onCreateModifyLine"
-                                class="stationBtns" tooltip="{i18n>modifyLine}" type="Emphasized">
+								</layoutData>
+							</Input>
+							<Button icon="sap-icon://edit" press="onCreateModifyLine"
+								class="stationBtns" tooltip="{i18n>modifyLine}" type="Emphasized">
 
-                                <layoutData>
-                                    <OverflowToolbarLayoutData />
-                                </layoutData>
-                            </Button>
-                        </OverflowToolbar>
-                        <uiTable:template>
-                            <HBox alignItems="Center" justifyContent="Center">
+								<layoutData>
+									<OverflowToolbarLayoutData />
+								</layoutData>
+							</Button>
+						</OverflowToolbar>
+						<uiTable:template>
+							<HBox alignItems="Center" justifyContent="Center">
 
 
-                                <control:PhysicalStationBox
-                                    id="linetrackerEditStation" color="#bcf6ff" actionIconColor="black"
-                                    station="{stationDataModel>stationName}" msn="{stationDataModel>msn}"
-                                    press="handlePopoverPress" width="80%">
-                                    <control:actionIconButton>
-                                        <core:Icon press=" " src="{ parts :[{path:'stationDataModel>msn'},{path:'stationDataModel>date'}], formatter : 'airbus.mes.linetracker.util.Formatter.getActionIcon' }" />
-                                    </control:actionIconButton>
-                                    <control:image>
-                                        <Image width="100%" height="100%"
-                                            visible="{ path : 'airlineLogoModel>Rowsets/Rowset/0/Row/0/airline_logo_url', formatter : 'airbus.mes.linetracker.util.Formatter.displayFlightImage' }"
-                                            error="{ path : 'airlineLogoModel>Rowsets/Rowset/0/Row/0/airline_logo_url', formatter : 'airbus.mes.linetracker.util.Formatter.getErrorFlightImage' }"
-                                            src="{ path : 'airlineLogoModel>Rowsets/Rowset/0/Row/0/msn', formatter : 'airbus.mes.linetracker.util.Formatter.selectImageToDisplay' }"></Image>
+								<control:PhysicalStationBox id="linetrackerEditStation"
+									color="#bcf6ff" actionIconColor="black"
+									station="{stationDataModel>stationName}" msn="{stationDataModel>msn}"
+									press="handlePopoverPress" width="80%">
+									<control:actionIconButton>
+										<core:Icon press=" "
+											src="{ parts :[{path:'stationDataModel>msn'},{path:'stationDataModel>date'}], formatter : 'airbus.mes.linetracker.util.Formatter.getActionIcon' }" />
+									</control:actionIconButton>
+									<control:image>
+										<Image width="100%" height="100%"
+											visible="{ path : 'airlineLogoModel>Rowsets/Rowset/0/Row/0/airline_logo_url', formatter : 'airbus.mes.linetracker.util.Formatter.displayFlightImage' }"
+											error="{ path : 'airlineLogoModel>Rowsets/Rowset/0/Row/0/airline_logo_url', formatter : 'airbus.mes.linetracker.util.Formatter.getErrorFlightImage' }"
+											src="{ path : 'airlineLogoModel>Rowsets/Rowset/0/Row/0/msn', formatter : 'airbus.mes.linetracker.util.Formatter.selectImageToDisplay' }"></Image>
 
-                                    </control:image>
+									</control:image>
 
-                                    <control:detailIconButton>
+									<control:detailIconButton>
 
-                                    </control:detailIconButton>
+									</control:detailIconButton>
 
-                                </control:PhysicalStationBox>
-                                <Button icon="sap-icon://vertical-grip" press="openStationPopover"
-                                    class="moreButton" type="Transparent" width="20%" tooltip="{i18n>moreInfo}" />
+								</control:PhysicalStationBox>
+								<Button icon="sap-icon://vertical-grip" press="openStationPopover"
+									class="moreButton" type="Transparent" width="20%" tooltip="{i18n>moreInfo}" />
 
-                            </HBox>
-                        </uiTable:template>
-                    </uiTable:Column>
+							</HBox>
+						</uiTable:template>
+					</uiTable:Column>
 
-                    <uiTable:Column width="44%">
-                        <FlexBox height="2.5rem" alignItems="Center"
-                            justifyContent="SpaceAround">
-                            <Text text="10%" />
-                            <Text text="20%" />
-                            <Text text="30%" />
-                            <Text text="40%" />
-                            <Text text="50%" />
-                            <Text text="60%" />
-                            <Text text="70%" />
-                            <Text text="80%" />
-                            <Text text="90%" />
-                            <Text text="100%" />
+					<uiTable:Column width="44%">
+						<FlexBox height="2.5rem" alignItems="Center"
+							justifyContent="SpaceAround">
+							<Text text="10%" />
+							<Text text="20%" />
+							<Text text="30%" />
+							<Text text="40%" />
+							<Text text="50%" />
+							<Text text="60%" />
+							<Text text="70%" />
+							<Text text="80%" />
+							<Text text="90%" />
+							<Text text="100%" />
 
-                        </FlexBox>
-                        <uiTable:template>
-                            <control:linetrackerProgressBar
-                                planned="{stationDataModel>plannedProgress}" confirmed="{stationDataModel>actualProgress}"
-                                class="progressBar">
-                            </control:linetrackerProgressBar>
+						</FlexBox>
+						<uiTable:template>
+							<control:linetrackerProgressBar
+								planned="{stationDataModel>plannedProgress}" confirmed="{stationDataModel>actualProgress}"
+								class="progressBar">
+							</control:linetrackerProgressBar>
 
-                        </uiTable:template>
+						</uiTable:template>
 
-                    </uiTable:Column>
+					</uiTable:Column>
 
-                    <uiTable:Column width="6%" resizable="false">
-                        <Text text="{i18n>trend}" class="taktHeading" />
-                        <uiTable:template>
+					<uiTable:Column width="6%" resizable="false">
+						<Text text="{i18n>trend}" class="taktHeading" />
+						<uiTable:template>
 
-                            <core:Icon class="trendIconLinetracker"
-                                src="{path:'stationDataModel>trend', formatter:'airbus.mes.linetracker.util.Formatter.stationIconTrendSrc'}"
-                                tooltip=" "
-                                color="{path:'stationDataModel>trend', formatter:'airbus.mes.linetracker.util.Formatter.stationIconTrendColor'}" />
-                        </uiTable:template>
-                    </uiTable:Column>
+							<core:Icon class="trendIconLinetracker"
+								src="{path:'stationDataModel>trend', formatter:'airbus.mes.linetracker.util.Formatter.stationIconTrendSrc'}"
+								tooltip=" "
+								color="{path:'stationDataModel>trend', formatter:'airbus.mes.linetracker.util.Formatter.stationIconTrendColor'}" />
+						</uiTable:template>
+					</uiTable:Column>
 
-                    <uiTable:Column width="6%" resizable="false">
-                        <Text text="{i18n>date}" class="taktHeading" />
-                        <uiTable:template>
-                            <Text class="dateTableLinetracker" text="{stationDataModel>date}" />
-                        </uiTable:template>
+					<uiTable:Column width="6%" resizable="false">
+						<Text text="{i18n>date}" class="taktHeading" />
+						<uiTable:template>
+							<Text class="dateTableLinetracker" text="{stationDataModel>date}" />
+						</uiTable:template>
 
-                    </uiTable:Column>
+					</uiTable:Column>
 
-                    <uiTable:Column width="6%" resizable="false">
-                        <Text text="{i18n>cycleTime}" class="taktHeading" />
+					<uiTable:Column width="6%" resizable="false">
+						<Text text="{i18n>cycleTime}" class="taktHeading" />
 
-                        <uiTable:template>
-                            <Text class="fontTableLinetracker" text="{stationDataModel>cycleTime}" />
-                        </uiTable:template>
+						<uiTable:template>
+							<Text class="fontTableLinetracker" text="{stationDataModel>cycleTime}" />
+						</uiTable:template>
 
-                    </uiTable:Column>
+					</uiTable:Column>
 
-                    <uiTable:Column width="6%" resizable="false">
-                        <Text text="{i18n>workContent}" class="taktHeading" />
-                        <uiTable:template>
-                            <Text class="fontTableLinetracker" text="{stationDataModel>workContent}" />
-                        </uiTable:template>
+					<uiTable:Column width="6%" resizable="false">
+						<Text text="{i18n>workContent}" class="taktHeading" />
+						<uiTable:template>
+							<Text class="fontTableLinetracker" text="{stationDataModel>workContent}" />
+						</uiTable:template>
 
-                    </uiTable:Column>
+					</uiTable:Column>
 
-                    <uiTable:Column width="6%" resizable="false">
-                        <Text text="{i18n>openDisruptions}" class="taktHeading" />
-                        <uiTable:template>
-                            <Text class="fontTableLinetracker" text="{stationDataModel>openDisruption}" />
-                        </uiTable:template>
-                    </uiTable:Column>
-                    <uiTable:Column width="6%" resizable="false">
-                        <Text text="{i18n>openANDON}" class="taktHeading" />
-                        <uiTable:template>
-                            <Text class="fontTableLinetracker" text="{stationDataModel>openAndon}" />
-                        </uiTable:template>
-                    </uiTable:Column>
-                </uiTable:columns>
-            </uiTable:Table>
-            <KPIcontrol:slideControl id="idSlideControl">
+					<uiTable:Column width="6%" resizable="false">
+						<Text text="{i18n>openDisruptions}" class="taktHeading" />
+						<uiTable:template>
+							<Text class="fontTableLinetracker" text="{stationDataModel>openDisruption}" />
+						</uiTable:template>
+					</uiTable:Column>
+					<uiTable:Column width="6%" resizable="false">
+						<Text text="{i18n>openANDON}" class="taktHeading" />
+						<uiTable:template>
+							<Text class="fontTableLinetracker" text="{stationDataModel>openAndon}" />
+						</uiTable:template>
+					</uiTable:Column>
+				</uiTable:columns>
+			</uiTable:Table>
+			<KPIcontrol:slideControl id="idSlideControl">
 
-                <KPIcontrol:slideContent>
-                    <core:Fragment fragmentName="airbus.mes.linetracker.KPICharts.StationSlideKPIs"
-                        type="XML" />
-                </KPIcontrol:slideContent>
-            </KPIcontrol:slideControl>
-        </content>
+				<KPIcontrol:slideContent>
+					<core:Fragment fragmentName="airbus.mes.linetracker.kpicharts.StationSlideKPIs"
+						type="XML" />
+				</KPIcontrol:slideContent>
+			</KPIcontrol:slideControl>
+		</content>
 
-    </Page>
+	</Page>
 </core:View>

@@ -162,6 +162,18 @@ airbus.mes.polypoly.PolypolyManager = {
 		});
 
 		var oMiiRows = oMiiData.Rowsets.Rowset[0].Row;
+		
+		// tri par ordre alphabétique (defect #424) 
+		oMiiRows.sort(function tri(a,b)	{
+			if( a.longName >= b.longName) 
+				return 1;
+			else
+				return -1;
+		});
+		
+		console.log(oMiiRows);
+		
+		
 		var oMiiColumns = oMiiData.Rowsets.Rowset[1].Row;
 		
 

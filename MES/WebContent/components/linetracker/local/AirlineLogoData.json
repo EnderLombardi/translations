@@ -1,0 +1,11 @@
+{ "Rowsets" : { 
+	"DateCreated" : "2017-01-10T13:48:31", "Version" : "15.1 SP2 Patch 13 (Oct 6, 2016)", "StartDate" : "2017-01-10T12:48:31+0100", "EndDate" : "2017-01-10T13:48:31+0100", "CachedTime" : "", 
+	"Rowset" : [ 
+	{ "Columns" : { 
+		"Column" : [ 
+		{ "Name" : "airline_logo_url", "SourceColumn" : "airline_logo_url", "Description" : "Logo of the Airline ", "SQLDataType" : 1, "MinRange" : 255.0, "MaxRange" : 255.0 } ] }, 
+	"Row" : [ 
+		{ "airline_logo_url" : "http://deaswde0.eu.airbus.corp:8176/sap/bc/bsp/sap/zcommon_logo/Airlines/AIB.png" } ]
+		 } ]
+	 }
+ }

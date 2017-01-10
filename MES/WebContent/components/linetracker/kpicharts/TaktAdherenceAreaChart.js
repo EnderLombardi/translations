@@ -1,17 +1,16 @@
 "use strict";
 
-//jQuery.sap.require("badgemanagement.Coordinates")
-sap.ui.core.Control.extend("airbus.mes.linetracker.KPICharts.StationTaktAdherenceAreaChart", {
+sap.ui.core.Control.extend("airbus.mes.linetracker.kpicharts.TaktAdherenceAreaChart", {
 	metadata: {
 		aggregations: {
 			"data": {
-				type: "airbus.mes.linetracker.KPICharts.Coordinates",
+				type: "airbus.mes.linetracker.kpicharts.Coordinates",
 				//				multiple : false,
 				singularName: "data",
 				//				bindable: "bindable"
 			},
 			"realData": {
-				type: "airbus.mes.linetracker.KPICharts.Coordinates",
+				type: "airbus.mes.linetracker.kpicharts.Coordinates",
 				//				multiple : false,
 				singularName: "realData",
 				//				bindable: "bindable"
@@ -41,7 +40,7 @@ sap.ui.core.Control.extend("airbus.mes.linetracker.KPICharts.StationTaktAdherenc
 			return { x: c.getX(), y: c.getY() }
 		}
 
-		var oCtrl = airbus.mes.stationtracker.oView.byId("idLinetracker1--station_takt_adherence_area_chart");
+		var oCtrl = airbus.mes.stationtracker.oView.byId("idLinetracker1--takt_adherence_area_chart");
 		var data = oCtrl.getData().map(bindingToArray);
 		var realData = oCtrl.getRealData().map(bindingToArray);
 		var bDisplayCircles = true;

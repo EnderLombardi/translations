@@ -4,8 +4,10 @@ jQuery.sap.declare("airbus.mes.linetracker.util.Formatter");
 airbus.mes.linetracker.util.Formatter = {
 	
 	/**
+	 * BR: 
 	 * To select Airline logo
-	 * @Param msn
+	 * @param {string} :msn
+	 * @Returns Image Url
 	 */
 	selectImageToDisplay : function(msn){
         var src = airbus.mes.linetracker.util.Formatter.getAirlineImage(this.sId, msn);
@@ -16,6 +18,7 @@ airbus.mes.linetracker.util.Formatter = {
     	 return airbus.mes.settings.AppConfManager.getConfiguration("MES_PHOTO_DISPLAY");
     },
 	
+    
     getAirlineImage:function(imageId, msn){
 //	   var urlFlightImage = airbus.mes.linetracker.util.ModelManager.urlModel.getProperty("urlAirline_logo");
     	var urlFlightImage = sap.ui.getCore().getModel("airlineLogoModel").oData["Rowsets"].Rowset[0].Row[0].airline_logo_url;
@@ -28,6 +31,10 @@ airbus.mes.linetracker.util.Formatter = {
 
 		return urlFlightImage;    	
     },
+    /**
+     * Get Error Airline Logo 
+     * Default Logo will be placed
+     */
     getErrorFlightImage: function(img){
 			if(this.setSrc)
 				this.setSrc ( "../images_locale/lufthansa-logo.jpg");
