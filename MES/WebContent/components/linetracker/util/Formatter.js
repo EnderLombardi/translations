@@ -14,7 +14,7 @@ airbus.mes.linetracker.util.Formatter = {
 	
     getAirlineImage:function(imageId, airline_logo_url){
 //	   var urlFlightImage = airbus.mes.linetracker.util.ModelManager.urlModel.getProperty("urlAirline_logo");
-    	var urlFlightImage = sap.ui.getCore().getModel("airlineLogoModel").oData["Rowsets"].Rowset[0].Row[0].airline_logo_url;
+    	var urlFlightImage = sap.ui.getCore().getModel("airlineLogoModel").oData["Rowsets"].Rowset[0].Row[0].airline_logo_url1;
 //	   urlFlightImage = urlFlightImage.replace("$username", username.toUpperCase());
 //	   urlFlightImage = urlFlightImage.replace("$TF", "V");
 //	   urlFlightImage = urlFlightImage.replace("$Application_ID", "000000000030");
@@ -49,5 +49,18 @@ airbus.mes.linetracker.util.Formatter = {
 		}else{
 			return "#97999b"
 		}
+	},
+	
+	getActionIcon: function(msn, date){
+		if(msn == ""){
+			return "sap-icon://border";
+		}else if(msn != "" && date == ""){
+			return "sap-icon://accept";
+		}else if(msn != "" && date != "" ){
+			return "sap-icon://media-play";
+		}else{
+			return "sap-icon://media-pause";
+		}
+		
 	}
 }
