@@ -2,6 +2,7 @@
 
 sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
 
+
 	/**
 	 * Called when a controller is instantiated and its View controls (if
 	 * available) are already created. Can be used to modify the View before it
@@ -64,10 +65,11 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
 			childs : []
 		} ]
 	},
-
+	
 	onInit : function() {
-
+	
 		this.addParent(this.selectTree, undefined);
+
 
 		this.getView().byId("selectreason").setSelectedKey();
 		this.getView().byId("selectRootCause").setSelectedKey();
@@ -77,6 +79,19 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
 			this.setEnabledSelectBox(true, false, false, false);
 		}
 		this.getView().byId("timeLost").setPlaceholder(airbus.mes.disruptions.Formatter.getConfigTimeFullUnit());
+
+						this.addParent(this.selectTree, undefined);
+
+						this.getView().byId("selectreason").setSelectedKey();
+						this.getView().byId("selectRootCause").setSelectedKey();
+						this.getView().byId("selectResponsible")
+								.setSelectedKey();
+						this.getView().byId("selectOriginator")
+								.setSelectedKey();
+						this.setEnabledSelectBox(true, false, false, false);
+						this.getView().byId("timeLost").setPlaceholder(
+								airbus.mes.disruptions.Formatter
+										.getConfigTimeFullUnit());
 
 	},
 
