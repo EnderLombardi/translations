@@ -68,7 +68,7 @@
 							</Button> -->
 							<Input id="selectLine" type="Text" placeholder="{i18n>selectLine}"
 								showValueHelp="true" valueHelpOnly="true" valueHelpRequest="handleValueHelp"
-								class="stationBtns sapUiTinyMarginEnd" width="8rem">
+								class="stationBtns sapUiTinyMarginEnd">
 
 								<layoutData>
 									<OverflowToolbarLayoutData priority="NeverOverflow" />
