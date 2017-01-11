@@ -469,18 +469,18 @@ airbus.mes.stationtracker.ShiftManager = {
 				}
 			}
 			
-			/** Permit to know how many time is hidden by the ignore timeline and add timeline.x_size necessary to display real axis 
-			    lenght of a day */
-			var fTotalMS = 0;
-			
-			for ( var i = b; i < a -2; i += 1) {
-					
-				fTotalMS += this.shifts[i+2].StartDate - this.shifts[i + 1].EndDate;
-				
-			}
+//			/** Permit to know how many time is hidden by the ignore timeline and add timeline.x_size necessary to display real axis 
+//			    lenght of a day */
+//			var fTotalMS = 0;
+//			
+//			for ( var i = b; i < a -2; i += 1) {
+//					
+//				fTotalMS += this.shifts[i+2].StartDate - this.shifts[i + 1].EndDate;
+//				
+//			}
 			/**Compute the number of 1hour step needed to display all the time between start and day of the current day */ 
 		    scheduler.matrix.timeline.x_size += Math.ceil((new Date(fEndDate) - new Date(fStartDate))/1000/60/60);
-		    scheduler.matrix.timeline.x_size += Math.ceil(fTotalMS/1000/60/60);
+		   // scheduler.matrix.timeline.x_size += Math.ceil(fTotalMS/1000/60/60);
 
 			return new Date (new Date ( fStartDate ).setMinutes(0));
 		    
