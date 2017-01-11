@@ -1016,7 +1016,7 @@ sap.ui
 							var date = currDate.getFullYear() + "-" + currDate.getMonth() + "-" + currDate.getDate();
 							
 							var oComment = {
-									"Action" : i18nModel.getProperty("markSolved"),
+									"Action" : i18nModel.getProperty("solve"),
 									"Comments" : comment,
 									"Counter" : "",
 									"Date" : date,

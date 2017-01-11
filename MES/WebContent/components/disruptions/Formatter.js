@@ -264,6 +264,9 @@ airbus.mes.disruptions.Formatter = {
 		text = text.toLowerCase();
 		return text;
 	},
+	formatCommentAction: function(action){
+		return airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty(action.toLowerCase()).toLowerCase();
+	},
 	
 	setClosureDateVisibility : function(status) {
 		if (status == airbus.mes.disruptions.Formatter.status.closed)
