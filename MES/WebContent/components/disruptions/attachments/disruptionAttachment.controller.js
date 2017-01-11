@@ -116,7 +116,9 @@ sap.ui
 			}
 		},
 
-
+		/***************************************
+		 * when user deletes the attachment from the disruption 
+		 */
 		onPressDelete: function(oEvt){
 			var sPath = oEvt.oSource.oPropagatedProperties.oBindingContexts.attachDisruption.sPath;
 			var iLength = sPath.length;
@@ -130,7 +132,9 @@ sap.ui
 			this.getView().byId("DisruptionAttachmentView--idAttachmentCount-DisruptionAttachmentView--idList-"+iRowIndex).setText(iCount);
 		},
 
-
+		/***************************************
+		 * when user navigates back from the attachment screen
+		 */
 		onNavPress: function(){
 			this.nav = this.getView().oParent;
 			this.nav.back();
