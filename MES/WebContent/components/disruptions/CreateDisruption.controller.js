@@ -70,7 +70,6 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
 	
 		this.addParent(this.selectTree, undefined);
 
-
 		this.getView().byId("selectreason").setSelectedKey();
 		this.getView().byId("selectRootCause").setSelectedKey();
 		this.getView().byId("selectResponsible").setSelectedKey();
@@ -81,7 +80,8 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
 		this.getView().byId("timeLost").setPlaceholder(airbus.mes.disruptions.Formatter.getConfigTimeFullUnit());
 
 						this.addParent(this.selectTree, undefined);
-
+						
+						this.getView().byId("selectCategory").setSelectedKey();
 						this.getView().byId("selectreason").setSelectedKey();
 						this.getView().byId("selectRootCause").setSelectedKey();
 						this.getView().byId("selectResponsible")
