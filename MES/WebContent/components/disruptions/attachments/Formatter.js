@@ -37,5 +37,12 @@ airbus.mes.disruptions.attachments.Formatter = {
 	
 	setDisruptionStatuses : function(status){
 		return airbus.mes.disruptions.attachments.oView.getModel("i18nModel").getProperty(status);
+	},
+	setCount : function(){
+		var oModel = sap.ui.getCore().getModel("attachDisruption");
+		var sPath = this.oPropagatedProperties.oBindingContexts.attachDisruption.sPath;
+		var iRowIndex = sPath.split("/")[5];
+		var iCount = oModel.oData.Rowsets.Rowset[0].Row[iRowIndex].File.length;
+		return iCount;
 	}
 };

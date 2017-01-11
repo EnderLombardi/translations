@@ -118,9 +118,16 @@ sap.ui
 
 
 		onPressDelete: function(oEvt){
-			var loPath = oEvt.oSource.oPropagatedProperties.oBindingContexts.attachDisruption.sPath;
-			var loLength = loPath.length;
-			var loindex = loPath.slice(loLength-1);
+			var sPath = oEvt.oSource.oPropagatedProperties.oBindingContexts.attachDisruption.sPath;
+			var iLength = sPath.length;
+			var loindex = sPath.slice(iLength-1);
+			var iRowIndex = sPath.split("/")[5];
+			var oModel = sap.ui.getCore().getModel("attachDisruption")
+			var oData = oModel.oData.Rowsets.Rowset[0].Row[iRowIndex];
+			oData.File.splice(loindex, 1);
+			oModel.refresh();
+			var iCount = oModel.oData.Rowsets.Rowset[0].Row[iRowIndex].File.length;
+			this.getView().byId("DisruptionAttachmentView--idAttachmentCount-DisruptionAttachmentView--idList-"+iRowIndex).setText(iCount);
 		},
 
 

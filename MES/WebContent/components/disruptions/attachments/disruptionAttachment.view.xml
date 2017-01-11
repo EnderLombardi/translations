@@ -34,7 +34,7 @@
  					<Toolbar> 
  						<Title text="{attachDisruption>wo_no}-{attachDisruption>op_no}-{attachDisruption>dis_no}-{attachDisruption>dis_des}-{path: 'attachDisruption>gravity', formatter: 'airbus.mes.disruptions.attachments.Formatter.setGravityTexts'}-{path: 'attachDisruption>status', formatter: 'airbus.mes.disruptions.attachments.Formatter.setDisruptionStatuses'}" /> 
  					    <ToolbarSpacer></ToolbarSpacer>
- 					    <Title text="{attachDisruption>Count}"/>
+ 					    <Title id="idAttachmentCount" text="{path: 'attachDisruption>wo_no', formatter: 'airbus.mes.disruptions.attachments.Formatter.setCount'}"/>
  					</Toolbar> 								
  				</headerToolbar> 
  				<List id = "idListItems" items="{path: 'attachDisruption>File/'}"> 
