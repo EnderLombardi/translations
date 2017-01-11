@@ -491,12 +491,6 @@
 			</List>
 		</content>
 
-		<!-- <footer> <Bar design="Footer" class="viewDisruptionFooter"> <contentLeft> 
-			<Button id="reportDisruption" text="{i18nModel>reportDisruption}" press="onReportDisruption" 
-			icon="sap-icon://add" /> </contentLeft> <contentRight> <Button id="btnClose" 
-			text="{i18nModel>close}" icon="sap-icon://decline" press="onCloseOperationDetailPopup" 
-			/> </contentRight> </Bar> </footer> -->
-
 	</Page>
 </core:View>
 

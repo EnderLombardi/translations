@@ -186,12 +186,7 @@
 											</layoutData>
 										</Label>
 									</f:label>
-									<f:fields>	
-<!-- 									<HBox class="iconTextBox"> -->
-<!-- 										<core:Icon src="sap-icon://attachment" width="1rem" class="sapUiSmallMarginEnd"/> -->
-<!-- 										<core:Icon src="sap-icon://camera" width="1rem" /> -->
-<!-- 										</HBox> -->
-																		
+									<f:fields>															
 								</f:fields>
 								</f:FormElement>
 

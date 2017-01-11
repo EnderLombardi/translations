@@ -236,4 +236,3 @@ airbus.mes.worktracker.util.ModelManager = {
 
 	}
 };
-//airbus.mes.worktracker.util.ModelManager.init(sap.ui.getCore());

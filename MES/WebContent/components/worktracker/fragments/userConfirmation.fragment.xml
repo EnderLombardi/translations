@@ -2,18 +2,6 @@
 	xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form">
 	<Dialog title="{i18n>userConfirmation}" type="Message" id="partial">
 		<content>
-			<!-- <f:SimpleForm id="partialConfirm" minWidth="1024" maxContainerCols="2" 
-				editable="true" layout="ResponsiveGridLayout" labelSpanL="1" labelSpanM="2" 
-				emptySpanL="0" emptySpanM="0" columnsL="1" columnsM="1" validateFieldGroup="onValidateFieldGroup"> 
-				<f:content> <Text text="{i18n>partialConfirmation}" /> <Label text="Username" 
-				required="true" /> <Input value="{userName}" id="usernameConfirm" placeholder="Enter 
-				username" /> <Button icon="sap-icon://business-card"></Button> <Label text="Password" 
-				required="true" /> <Input type="Password" value="{password}" id="passwordConfirm" 
-				placeholder="Enter password"> </Input> </f:content> </f:SimpleForm> <HBox 
-				height="35px" width="100%"> <MessageStrip id="msgstrpConfirm" visible="false" 
-				width="100%" class="sapUiSmallMarginBeginEnd" showIcon="true" showCloseButton="true"> 
-				</MessageStrip> </HBox> </content> -->
-
 			<HBox justifyContent="SpaceAround">
 
 				<VBox class="sapUiSmallMarginEnd" width="100%" justifyContent="Center">
@@ -21,29 +9,17 @@
 				editable="true" layout="ResponsiveGridLayout" labelSpanL="1" labelSpanM="1" 
 				emptySpanL="0" emptySpanM="0" columnsL="3" columnsM="3"> 
 				<f:content>
-					<!-- <HBox class="sapUiSmallMarginEnd" justifyContent="SpaceAround"> -->
 						<Label text="{i18n>username}" required="true" />
 						<Input id="userNameForConfirmation" type="Text" placeholder="{i18n>username}"
 							liveChange="usernameLive" />
-				<!-- 	</HBox> -->
-	<!-- <HBox class="sapUiSmallMarginEnd" justifyContent="SpaceAround"> -->
+
 						<Label text="{i18n>password}" required="true" />
 						<Input id="passwordForConfirmation" type="Password" placeholder="{i18n>password}"
 							liveChange="passwordLive" />
-					<!-- </HBox> -->
-<!-- 					<HBox justifyContent="SpaceBetween">
-						<Label text="Or badge" class="sapUiSmallMarginEnd sapUiSmallMarginTop" />
-						<Button icon="sap-icon://business-card" type="Emphasized" />
-					</HBox> -->
+
 					</f:content>
 					</f:SimpleForm>
 				</VBox>
-				<!-- <VBox>
-					<HBox justifyContent="SpaceBetween">
-						<Label text="Or" class="sapUiSmallMarginEnd sapUiSmallMarginTop" />
-						<Button class="badgeButton" text="Badge" icon="sap-icon://business-card" type="Emphasized" />
-					</HBox>
-				</VBox> -->
 
 			</HBox>
 			<HBox 

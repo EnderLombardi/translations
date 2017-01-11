@@ -44,9 +44,6 @@ sap.ui.core.Control.extend("airbus.mes.worktracker.custom.CustomSideNavigation",
 
 		r.write("<div");
 		r.writeControlData(t);
-		/*
-		 * r.addClass("sideNavigation"); r.writeClasses();
-		 */
 		r.write('>');
 		
 		r.write("<div id='blackOverlay' onClick=''></div>")
@@ -79,14 +76,11 @@ sap.ui.core.Control.extend("airbus.mes.worktracker.custom.CustomSideNavigation",
 
 	openNavigation : function(oEvent) {
 
-		//document.getElementById("main").style.width = "80%";
 		this.setNavSize("300px");
 		this.setState(true);
-		//$("#blackOverlay").removeClass("hide");
 	},
 
 	closeNavigation : function(oEvent) {
-		//document.getElementById("main").style.width = "100%";
 		this.setNavSize("0");
 		this.setState(false);
 	}

@@ -6,16 +6,6 @@
 		<content>
 			<Text text="" id="date" class="subText" />
 			<Toolbar>
-<!-- 				<Select forceSelection="false" selectedKey="S10" -->
-<!-- 					change="onSelectionStation" -->
-<!-- 					items="{ -->
-<!--  						path: 'stationModel>/stations',  -->
- 						
-<!-- 						sorter: { path: 'station' } -->
-<!--  					}"> -->
-<!-- 					<core:Item key="{stationModel>key}" text="{stationModel>station}" /> -->
-<!-- 				</Select> -->
-
 				<SearchField liveChange="onSearch" title="search by name"
 					width="75%" />
 			</Toolbar>

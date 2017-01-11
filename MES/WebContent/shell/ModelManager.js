@@ -181,13 +181,10 @@ airbus.mes.shell.ModelManager = {
 			var wsUrl; 
 				
 			if(location.protocal = "https:"){
-				//wsUrl = "wss://" + this.urlModel.getProperty("badgeReader");
 				wsUrl = "wss://" + this.urlModel.getProperty("badgeReader");
 			} else {
 				wsUrl = "ws://" + this.urlModel.getProperty("badgeReader");
 			}
-			/*if(window.location.hostname =="localhost"  || window.location.hostname =="wsapbpc01.ptx.fr.sopra")
-				wsUrl = "ws://localhost.eu.airbus.corp:754/TouchNTag";*/
 			this.badgeReader = new WebSocket(wsUrl);
 			
 			this.badgeReader.onopen = this.brOnOpen;
@@ -249,7 +246,6 @@ airbus.mes.shell.ModelManager = {
 			airbus.mes.shell.ModelManager.badgeReader =undefined;
 			if(airbus.mes.shell.ModelManager.brResponseError)
 				airbus.mes.shell.ModelManager.brResponseError();	
-		   //alert("Error has occured In Badge Reader Connection");
 		},
 
 		brOnClose : function(){ 

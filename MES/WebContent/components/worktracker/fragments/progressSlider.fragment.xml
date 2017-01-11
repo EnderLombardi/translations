@@ -63,10 +63,4 @@
 		</Toolbar>
 		</l:Grid>
 	</VBox>
-
-<!-- 	<VBox class="sapUiMediumMarginTop"> -->
-<!-- 		<Title titleStyle="H3" level="H2" text="Activity" /> -->
-<!-- 		<Text text="- Users  have not activated this operation" -->
-<!-- 			textAlign="Right"></Text> -->
-<!-- 	</VBox> -->
 </core:FragmentDefinition>
