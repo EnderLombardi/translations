@@ -405,12 +405,13 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
 	setDataForEditDisruption : function() {
 
 		airbus.mes.disruptions.oView.viewDisruption.setBusy(true); // Set Busy
-																	// Indicator
-																	// true
+		// Indicator
+		// true
 
 		/***********************************************************************
 		 * Pre-fill fields in update request
 		 */
+
 		try {
 			this.resetAllFields();
 			if (sap.ui.getCore().getModel("DisruptionDetailModel").getData() != undefined) {
@@ -425,7 +426,6 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
 				// good list in Responsible Group.
 				// this.onSelectionChange("selectCategory");
 				this.getView().byId("selectCategory").fireChange(this.getView().byId("selectCategory").getSelectedItem());
-
 				this.getView().byId("selectResponsible").setSelectedKey(oModel.getProperty("/ResponsibleGroup"));
 				this.getView().byId("selectreason").setSelectedKey(oModel.getProperty("/Reason"));
 				this.getView().byId("selectOriginator").setSelectedKey(oModel.getProperty("/OriginatorGroup"));
@@ -529,8 +529,8 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
 		}
 
 		airbus.mes.disruptions.oView.viewDisruption.setBusy(false); // Set Busy
-																	// Indicator
-																	// false
+		// Indicator
+		// false
 	},
 
 	setEnabledSelectBox : function(fCategory, fReason, fResponsible, fRootCause) {
