@@ -85,6 +85,7 @@ airbus.mes.linetracker.util.ModelManager = {
 
 	},
 	/**
+	 * BR:SD-PPC-LT-070
 	 * Load Station Details in line tracker
 	 */
 	loadStationDataModel : function() {
@@ -118,6 +119,7 @@ airbus.mes.linetracker.util.ModelManager = {
 	},
 
 	/**
+	 * BR:SD-PPC-LT-100
 	 * Load Line variant names for value help
 	 */
 	loadLineVariantModel : function() {
@@ -149,6 +151,7 @@ airbus.mes.linetracker.util.ModelManager = {
 	},
 
 	/**
+	 * BR:SD-PPC-LT-270
 	 * Load KPI Chart Takt Adherence Model
 	 */
 	loadKPIChartTaktAdherence : function() {
@@ -180,6 +183,7 @@ airbus.mes.linetracker.util.ModelManager = {
 	},
 
 	/**
+	 * BR:SD-PPC-LT-270
 	 * Load KPI Takt Adherence Model
 	 */
 	loadKPItaktAdherence : function() {
@@ -211,6 +215,7 @@ airbus.mes.linetracker.util.ModelManager = {
 	},
 
 	/**
+	 * BR:SD-PPC-LT-270
 	 * Load KPI Takt Efficiency Model
 	 */
 	loadKPItaktEfficiency : function() {
@@ -243,6 +248,7 @@ airbus.mes.linetracker.util.ModelManager = {
 	},
 
 	/**
+	 * BR:SD-PPC-LT-270
 	 * Load KPI Disruption/Andon Model
 	 */
 	loadKPIdisruption : function() {
@@ -274,6 +280,7 @@ airbus.mes.linetracker.util.ModelManager = {
 	},
 
 	/**
+	 * BR:SD-PPC-LT-270
 	 * Load KPI Resolution Efficiency Model
 	 */
 	loadKPIresolutionEfficiency : function() {
@@ -305,6 +312,7 @@ airbus.mes.linetracker.util.ModelManager = {
 	},
 
 	/**
+	 * BR:SD-PPC-LT-270
 	 * Load Open Anomalies Model
 	 */
 	loadKPIopenAnomalies : function() {
@@ -336,6 +344,7 @@ airbus.mes.linetracker.util.ModelManager = {
 	},
 
 	/**
+	 * BR:SD-PPC-LT-270
 	 * Load Extra Work Model
 	 */
 	loadKPIextraWork : function() {
@@ -367,6 +376,7 @@ airbus.mes.linetracker.util.ModelManager = {
 	},
 
 	/**
+	 * BR:SD-PPC-LT-270
 	 * Load KPI shift Staffing Model data
 	 */
 	loadKPIshiftStaffing : function() {
@@ -438,6 +448,7 @@ airbus.mes.linetracker.util.ModelManager = {
 	},
 
 	/**
+	 * BR: SD-PPC-LT-110
 	 * Load Airline Logo Model
 	 */
 	// TODO $TF, $Application_ID and $msn values to be changed

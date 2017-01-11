@@ -55,11 +55,9 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	 * 
 	 * @memberOf classLineTrackerTable.Linetracker
 	 */
-	onAfterRendering : function() {
-		// sap.ui.getCore().byId("idLinetracker1--linetrackerTable").attachBrowserEvent("onscroll",function(){
-		// sap.ui.getCore().byId("idLinetracker1--linetrackerTable").rerender();
-		// })
-	},
+	//onAfterRendering : function() {
+	//	
+	//},
 
 	/**
 	 * Called when the Controller is destroyed. Use this one to free resources
@@ -71,6 +69,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	//
 	// }
 	/**
+	 * BR:SD-PPC-LT-270
 	 * To hide Header KPI
 	 */
 	hideKPI : function() {
@@ -90,27 +89,18 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 		oPanel.setExpanded(!bIsExpanded);
 
 	},
-
+	/**
+	 * BR:SD-PPC-LT-270
+	 * @param sKey
+	 * @returns
+	 */
 	getI18nValue : function(sKey) {
 		return this.getView().getModel("i18n").getProperty(sKey);
 	},
-	/**
-	 * Called when +Station button clicked in line tracker To Add Station in
-	 * Line Tracker Station List
-	 * 
-	 */
-	/*
-	 * onAddStation : function() { var stationRow = { "station" : "Station 10",
-	 * "planned" : 20, "confirmed" : 30, "trend" : "down", "trendColor" : "Red",
-	 * "date" : "02 JUL 2016 16:00", "cycleTime" : "3.5", "workContent" : "5" };
-	 * 
-	 * this.getView().getModel("stationDataModel").getProperty("/list").push(stationRow);
-	 * 
-	 * this.getView().getModel("stationDataModel").refresh(); },
-	 */
 
 	/**
-	 * BR: SD-PPC-LT-100 Called when save button is clicked to save(Global) the
+	 * BR: SD-PPC-LT-100 
+	 * Called when save button is clicked to save(Global) the
 	 * modified variant line
 	 */
 	onSaveVariant : function() {
@@ -127,31 +117,27 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 
 	},
 
-	/**
+	/** 
+	 * BR:SD-PPC-LT-100
 	 * To create new line or to modify name or description of existing(selected)
 	 * line
-	 * 
 	 */
 	onCreateModifyLine : function() {
 
 		if (!this.oAddLineDialog) {
 			// create dialog via fragment factory
 			this.oAddLineDialog = sap.ui.xmlfragment("airbus.mes.linetracker.fragments.editLine", this);
-
 			this.getView().addDependent(this.oAddLineDialog);
-
 		}
-
 		this.oAddLineDialog.open();
 		var lineVariantName = this.getView().byId("selectLine").getValue();
-		// var variantDes = this.getView().byId("selectLine").getValue();
 		sap.ui.getCore().byId("variantName").setValue(lineVariantName);
-		// sap.ui.getCore().byId("variantDescription").setValue(variantDes);
+
 	},
 
 	/**
+	 * BR:SD-PPC-LT-260
 	 * Called when detailed button clicked
-	 * 
 	 * @param oEvent
 	 */
 
@@ -169,8 +155,8 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	},
 
 	/**
-	 * BR NO: SD-PPC-LT-090 Add New Station/Edit Station in Line Tracker table
-	 * display
+	 * BR NO: SD-PPC-LT-090 
+	 * Add New Station/Edit Station in Line Tracker table display
 	 * 
 	 * @param oEvent
 	 */
@@ -223,7 +209,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	},
 
 	/**
-	 * Called when cancel button clicked on editStation/editLine fragments
+	 * Called when cancel button clicked on editStation/editLine/deleteStation/saveVariant fragments
 	 * 
 	 * @param evt
 	 */
@@ -257,8 +243,8 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	},
 
 	/**
+	 * BR:SD-PPC-LT-100
 	 * Called when variant value help request
-	 * 
 	 * @param oEvent
 	 */
 	handleValueHelp : function(oEvent) {
@@ -275,10 +261,9 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	},
 
 	/**
+	 * BR:SD-PPC-LT-100
 	 * Called when search on variant name in value help popup
-	 * 
-	 * @param evt
-	 *            used to get search field value to the search filter
+	 * @param evt  used to get search field value to the search filter
 	 * @returns matched variant name
 	 */
 	handleValueHelpSearch : function(evt) {
@@ -288,6 +273,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	},
 
 	/**
+	 * BR:SD-PPC-LT-100
 	 * fill select line field with selected value help variant name
 	 * 
 	 * @param oEvt
@@ -303,6 +289,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	},
 
 	/**
+	 *  BR:SD-PPC-LT-260
 	 * To display Station KPI Header slide
 	 * @Param {Object}:evt
 	 */
@@ -317,7 +304,11 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 		this.oPopover.close();
 
 	},
-
+	/**
+	 * BR:SD-PPC-LT-260
+	 * To close the Station KPI slide
+	 * @param evt
+	 */
 	hideKPISlide : function(evt) {
 		var state = sap.ui.getCore().byId("idLinetracker1--idSlideControl").getState();
 		if (state == true) {
@@ -327,6 +318,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	},
 
 	/**
+	 * BR:SD-PPC-LT-260
 	 * To Display Popup of Station KPI header, Station Tracker, Disruption ANDON
 	 * 
 	 * @param oEvent
@@ -348,8 +340,8 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	},
 
 	/**
+	 * BR : SD-PPC-LT-240
 	 * To Delete the Station from Line
-	 * 
 	 * @param oEvent
 	 */
 
@@ -362,20 +354,25 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	},
 
 	/**
-	 * To navigate to Station Tracker from Line Trakcer
+	 * BR:SD-PPC-LT-260
+	 * To navigate to Station Tracker from Line Tracker
 	 */
 	gotoStationTracker : function() {
 		airbus.mes.shell.util.navFunctions.stationTracker();
 	},
 
 	/**
+	 * BR:SD-PPC-LT-260
 	 * To navigate to Disruption & Andon Tracker from Line Tracker
 	 */
 	gotoDisruptionAndonTracker : function() {
 		airbus.mes.shell.util.navFunctions.disruptionTracker();
 	},
 
-	// Tree to define the hierarchy for Program, Line and Station select boxes
+	/**
+	 * BR:SD-PPC-LT-090
+	 * Tree to define the hierarchy for Program, Line and Station select boxes
+	 */
 	selectTree : {
 		id : "selectProgram",
 		type : "select",
@@ -399,8 +396,10 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 			} ]
 		} ]
 	},
-
-	// For hierachy of select
+	/**
+	 * BR:SD-PPC-LT-090
+	 * For hierachy of select
+	 */
 	addParent : function(oTree, oParent) {
 		var that = this;
 		oTree.parent = oParent;
@@ -409,6 +408,10 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 		});
 	},
 
+	/**
+	 * BR:SD-PPC-LT-090
+	 * To find the element on selecting the option
+	 */
 	findElement : function(oTree, sId) {
 		if (oTree.id == sId) {
 			return oTree;
@@ -423,9 +426,10 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 			return "";
 		}
 	},
-
-     // clear other select boxes after changing
-	// the item of one select *****
+	/**
+	 * BR:SD-PPC-LT-090
+	 * clear other select boxes after changing the item of one select
+	 */
 	clearField : function(oTree) {
 		var that = this;
 		if (oTree.type == "select") {
@@ -433,22 +437,10 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 		}
 		oTree.childs.forEach(that.clearField.bind(that));
 	},
-
-	// Called when select Program in edit/modify station popup
-	onProgramSelect : function() {
-		var that = this;
-		var sProgram = "selectProgram";
-		this.findElement(this.selectTree, sProgram).childs.forEach(function(oElement) {
-			that.clearField(oElement);
-			that.filterField(oElement);
-		});
-
-		this.setEnabledSelect(true, true, false, false);
-
-	},
-
-	// Filter tree
-
+	/**
+	 * BR:SD-PPC-LT-090
+	 * Filter tree
+	 */
 	filterField : function(oTree) {
 		if (oTree.type == "Return") {
 			return;
@@ -487,20 +479,23 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 			that.filterField(oElement);
 		});
 	},
-	// Set the Selected value
+	/**
+	 * BR:SD-PPC-LT-090
+	 * Set the Selected value
+	 */
 	setEnabledSelect : function(fProgram, fLine, fStation, fMsn) {
 		sap.ui.getCore().byId("selectLine").setEnabled(fLine);
 		sap.ui.getCore().byId("selectStation").setEnabled(fStation);
 	},
 
 	/**
+	 * BR: SD-PPC-LT-090
 	 * Called when selecting Program, Line and Station from select in Add/Modify
 	 * Station Popup
 	 */
-
 	onSelectionChange : function(oEvt) {
 		var that = this;
-		var id
+		var id;
 		if (oEvt.getSource()) {
 
 			id = oEvt.getSource().getId().split("--")[0];
