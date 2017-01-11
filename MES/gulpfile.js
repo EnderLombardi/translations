@@ -5,11 +5,15 @@ var ui5preload = require('gulp-ui5-preload');
 //var uglify = require('gulp-uglify');
 //var prettydata = require('gulp-pretty-data');
 //var gulpif = require('gulp-if');
+var pushMii = require('./src/gulp-push-mii')
 var clean = require('gulp-clean');
+var rename = require("gulp-rename");
 
 var src = './WebContent';
 var rootdest = './WebContent/build';
 var dest = rootdest + '/current';
+
+var pushServiceUrl = "https://dmiswde0.eu.airbus.corp/XMII/Illuminator?QueryTemplate=TEST_DBA%2FCreateFile&j_user=S00DB44&j_password=start101";
 
 // Shell 
 gulp.task('ui5preload_shell', ['clean'], function() {
@@ -180,12 +184,24 @@ gulp.task('ui5preload_worktracker', ['clean'], function() {
           .pipe(gulp.dest(dest + '/components/worktracker'));
      });	 	 
 
- gulp.task('copy_index', ['clean'], function () {
+
+
+gulp.task('copy_index', ['clean'], function () {
 	return gulp.src(['./shell/index_airbus.html'], { cwd: src })
+		.pipe(rename('index.html'))
 		.pipe(gulp.dest(dest + '/shell'));
- });
+});
  
- gulp.task('copy', ['clean'], function () {
+gulp.task('push', ['build'], function () {
+	return gulp.src(['./components/**/*.+(json|properties|css|js)'], { cwd: dest })
+		.pipe(pushMii({
+			url: pushServiceUrl,
+			root: dest,
+			remotePath: 'WEB://TEST_DBA',
+		}));
+});
+
+gulp.task('copy', ['clean'], function () {
 	return gulp.src([
 		'./components/homepage/css/margin.css',
 		'./Sass/global.css',
@@ -202,24 +218,24 @@ gulp.task('ui5preload_worktracker', ['clean'], function() {
 		'./components/stationtracker/data/KPIModel.json',
 		'./components/disruptions/local/Jigtool_Server.json',
 		'./components/disruptions/local/MaterialList_Server.json',
-		'./shell/**/*.json',
-		'./components/**/*.json'
+//		'./shell/**/*.json',
+//		'./components/**/*.json'
 	], { cwd: src, cwdbase: true })
 		.pipe(gulp.dest(dest));
- });
+});
 
- gulp.task('copy_res', ['clean'], function () {
+gulp.task('copy_res', ['clean'], function () {
 	return gulp.src([
 		'./images/**',
 		'./lib/**'
 	], { cwd: src, cwdbase: true })
 		.pipe(gulp.dest(rootdest));
- });
+});
  
- gulp.task('clean', function () {
+gulp.task('clean', function () {
 	return gulp.src(rootdest, { read: false })
 		.pipe(clean());
- });
+});
  
 // Tasks
 gulp.task('build', ['copy_index', 'copy', 'copy_res',
