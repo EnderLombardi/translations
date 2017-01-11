@@ -50,11 +50,6 @@
 
                 </VBox>
             </VBox>
-            <!-- <html:div> {i18nModel} Use Search Fields to search for Users
-                or WorkCenters. <br/> Available Users or Assigned Users could be searched
-                using: <html:ul> <html:li>First Name </html:li> <html:li>Last Name </html:li>
-                <html:li>ERP User ID </html:li> </html:ul> </html:div> -->
-
         </content>
         <buttons>
             <Button icon="sap-icon://decline" text="{i18nModel>CloseButton}" press="afterHelpOK" />

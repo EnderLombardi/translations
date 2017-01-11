@@ -9,19 +9,17 @@
 				<DatePicker value="2014-09-20" valueFormat="yyyy-MM-dd"
 					displayFormat="long" change="handleChange" class="sapUiSmallMarginBottom" />
 			</Toolbar>
-			</table:toolbar>
-			<table:toolbar>
+		</table:toolbar>
+		<table:toolbar>
 			<Toolbar>
-				
-						<Title text="{i18n>disruptions}" level="H5" titleStyle="H5" />
-						<ToolbarSpacer />
-						<Select selectedKey="OrderBy">
-							<core:Item key="orderBy" text="{i18n>orderBy}" />
-						</Select>
-						<Select selectedKey="groupBy">
-							<core:Item key="groupBy" text="{i18n>groupBy}" />
-						</Select>
-					
+				<Title text="{i18n>disruptions}" level="H5" titleStyle="H5" />
+				<ToolbarSpacer />
+				<Select selectedKey="OrderBy">
+					<core:Item key="orderBy" text="{i18n>orderBy}" />
+				</Select>
+				<Select selectedKey="groupBy">
+					<core:Item key="groupBy" text="{i18n>groupBy}" />
+				</Select>
 			</Toolbar>
 		</table:toolbar>
 		<table:columns>
@@ -57,22 +55,4 @@
 			</table:Column>
 		</table:columns>
 	</table:Table>
-
-
-	<!-- <Table id="shiftTable" inset="false" mode="None" selectionChange="onSelectionChange"> 
-		<columns> <Column > <Text text="Shift Name" /> </Column> <Column minScreenWidth="Tablet" 
-		demandPopin="true"> <Text text="Shift Begin" /> </Column> <Column minScreenWidth="Tablet" 
-		demandPopin="true" hAlign="Right"> <Text text="Shift End" /> </Column> <Column 
-		minScreenWidth="Tablet" demandPopin="true" hAlign="Center"> <Text text="Assign" 
-		/> </Column> </columns> <items> <ColumnListItem> <cells> <ObjectIdentifier 
-		text="AvailableShiftModelNAME" /> <Text text="AvailableShiftModelSHIFT_BEGIN" 
-		/> <Text text="asfgdggfgg" /> </cells> </ColumnListItem> </items> </Table> -->
-
-
-
-
-
-
-
-
 </core:FragmentDefinition>
