@@ -4,8 +4,8 @@
 		placement="Bottom">
 		<VBox>
 			<Button text="{i18n>stationTracker}" type="Transparent" press="gotoStationTracker" />
-			<Button text="{i18n>stationKPIHeader}" type="Transparent"
-				press="displayStationKPIHeader" />
+			<!-- <Button text="{i18n>stationKPIHeader}" type="Transparent"
+				press="displayStationKPIHeader" /> -->
 			<Button text="{i18n>disruption_AndonTracker}" type="Transparent"
 				press="gotoDisruptionAndonTracker" />
 			<Button text="{i18n>stationHandover}" type="Transparent" />

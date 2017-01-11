@@ -21,17 +21,17 @@
 						</core:Icon>
 						<Label id="linetracker_timeLabel" text=""></Label>
 						<ToolbarSpacer />
-						<Button id="hideKPI" enabled="true" icon="sap-icon://hide"
-							text="{i18n>hideKPI}" press="hideKPI" class="blueText" />
+						<!-- <Button id="hideKPI" enabled="true" icon="sap-icon://hide"
+							text="{i18n>hideKPI}" press="hideKPI" class="blueText" /> -->
 					</Toolbar>
 				</headerToolbar>
-				<VBox>
+				<!-- <VBox>
 					<core:Fragment fragmentName="airbus.mes.linetracker.kpicharts.KPIs"
 						type="XML" height="10rem" />
-				</VBox>
+				</VBox> -->
 			</Panel>
 			<uiTable:Table id="linetrackerTable" rows="{stationDataModel>/}"
-				visibleRowCount="8" enableColumnReordering="false" threshold="20">
+				visibleRowCount="12" enableColumnReordering="false" threshold="20">
 				<uiTable:toolbar>
 					<Toolbar class="toolbar">
 						<Title class="taktAdherenceLinetrackerTitle" text="{i18n>taktAdherence}"
@@ -51,7 +51,7 @@
 
 					<uiTable:Column width="20%" resizable="false">
 						<OverflowToolbar class="sapUiMediumMarginBegin">
-							<Button id="linetrackerAddStation" icon="sap-icon://add"
+							<!-- <Button id="linetrackerAddStation" icon="sap-icon://add"
 								text="{i18n>_station}" press="onEditStation" type="Emphasized"
 								class="stationBtns sapUiTinyMarginEnd" tooltip="{i18n>addStation}">
 								<layoutData>
@@ -65,7 +65,7 @@
 									<OverflowToolbarLayoutData />
 
 								</layoutData>
-							</Button>
+							</Button> -->
 							<Input id="selectLine" type="Text" placeholder="{i18n>selectLine}"
 								showValueHelp="true" valueHelpOnly="true" valueHelpRequest="handleValueHelp"
 								class="stationBtns sapUiTinyMarginEnd" width="8rem">
@@ -75,13 +75,13 @@
 
 								</layoutData>
 							</Input>
-							<Button icon="sap-icon://edit" press="onCreateModifyLine"
+							<!-- <Button icon="sap-icon://edit" press="onCreateModifyLine"
 								class="stationBtns" tooltip="{i18n>modifyLine}" type="Emphasized">
 
 								<layoutData>
 									<OverflowToolbarLayoutData />
 								</layoutData>
-							</Button>
+							</Button> -->
 						</OverflowToolbar>
 						<uiTable:template>
 							<HBox alignItems="Center" justifyContent="Center">
@@ -108,8 +108,8 @@
 									</control:detailIconButton>
 
 								</control:PhysicalStationBox>
-								<Button icon="sap-icon://vertical-grip" press="openStationPopover"
-									class="moreButton" type="Transparent" width="20%" tooltip="{i18n>moreInfo}" />
+								<!-- <Button icon="sap-icon://vertical-grip" press="openStationPopover"
+									class="moreButton" type="Transparent" width="20%" tooltip="{i18n>moreInfo}" /> -->
 
 							</HBox>
 						</uiTable:template>
