@@ -91,10 +91,36 @@ RESSOURCEPOOL
     *border-style: 1px solid #c0c0c0 !important;
 }
 
+//buttons in the center of resourcepool
 .shiftButtons{
     width: auto !important;
     margin: 2%;
+    >div {
+        >button{
+            &:hover {
+                >div {
+                    background-color: $sapui-hover-grey !important;
+                    >span {
+                        color: $white-two;
+                    }
+                }
+            }
+        }
+        &:first-child{
+            span {
+                margin-top: 1px;
+                margin-left: 2px;
+            }
+        }
+        &:nth-child(2){
+            span {
+                margin-top: 1px;
+                margin-right: 2px;
+            }
+        }
+    }
 }
+
 .messageStrip{
     span{
         display: inline !important;
