@@ -1945,6 +1945,10 @@ BOX RESOLUTION EFFICIENCY
   color: white !important;
   background: #0f2d65 !important;
   border: 0; }
+.topPageHeader > img#globalNavView--logo {
+  margin-right: 0; }
+.topPageHeader > label.pageTitle {
+  margin-left: 0; }
 
 .pageHeader {
   color: white !important;
@@ -1960,10 +1964,12 @@ BOX RESOLUTION EFFICIENCY
 .sapMPage > .sapMPageHeader + .sapMPageSubHeader + section {
   background-color: white; }
 
+#globalNavView > .sapMPage > .sapMPageHeader > label.unshrinkable {
+  flex-shrink: 0; }
+
 .pageTitle {
-  min-width: 130px;
   font-family: "Arial", Sans-serif !important;
-  font-size: 24px;
+  font-size: 17px;
   font-weight: normal;
   font-style: normal;
   font-stretch: normal;
@@ -2025,7 +2031,7 @@ BOX RESOLUTION EFFICIENCY
 
 .pageWelcome {
   font-family: "Arial", Sans-serif !important;
-  font-size: 24px;
+  font-size: 17px;
   font-weight: normal;
   font-style: normal;
   font-stretch: normal;
@@ -6094,7 +6100,11 @@ html {
   -moz-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out;
   transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; }
 
-#mes #content #globalNavView #globalNavView--refreshTime-inner, #mes #content #globalNavView #globalNavView--localDELog-inner {
+#mes #content #globalNavView #globalNavView--refreshTime-inner {
+  color: #74d2e7 !important;
+  text-shadow: none;
+  font-size: 12px; }
+#mes #content #globalNavView #globalNavView--localDELog-inner {
   color: #74d2e7 !important;
   text-shadow: none; }
 #mes #content #globalNavView #globalNavView--refreshTime-img {
@@ -6199,7 +6209,15 @@ html {
 
 #globalNavView--SelectLanguage {
   background: #0f2d65 !important;
-  border: 0; }
+  border: 0;
+  margin-left: 0 !important;
+  margin-right: 0 !important; }
+#globalNavView--SelectLanguage > label {
+  padding-right: 2rem; }
+#globalNavView--SelectLanguage > span#globalNavView--SelectLanguage-arrow {
+  width: 1.8rem; }
+#globalNavView--SelectLanguage > select {
+  padding-right: 2rem; }
 
 #globalNavView--settingsButton {
   background-color: #74d2e7;

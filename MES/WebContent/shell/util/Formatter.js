@@ -23,9 +23,7 @@ airbus.mes.shell.util.Formatter = {
 		if (sStation === "") {
 			return "";
 		} else {
-			return airbus.mes.shell.oView.getModel("ShellI18n").getProperty(
-					"Station")
-					+ " " + sStation;
+			return sStation;
 		}
 	},
 	stationTrackerMsn : function(sMsn) {
@@ -43,18 +41,14 @@ airbus.mes.shell.util.Formatter = {
 		if (sPlant === "") {
 			return "";
 		} else {
-			return airbus.mes.shell.oView.getModel("ShellI18n").getProperty(
-					"Plant")
-					+ " " + sPlant;
+			return sPlant;
 		}
 	},
 	stationTrackerLine : function(sLine) {
 		if (sLine === "") {
 			return "";
 		} else {
-			return airbus.mes.shell.oView.getModel("ShellI18n").getProperty(
-					"Line")
-					+ " " + sLine;
+			return sLine;
 		}
 	},
 	
@@ -104,5 +98,5 @@ airbus.mes.shell.util.Formatter = {
 	displayPin : function(){
 		return airbus.mes.settings.AppConfManager.getConfiguration("MES_BADGE_PIN");
 	}
-	
+
 };

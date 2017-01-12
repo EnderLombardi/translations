@@ -92,7 +92,12 @@ html
 #mes{
     #content{
         #globalNavView{
-            #globalNavView--refreshTime-inner, #globalNavView--localDELog-inner{
+            #globalNavView--refreshTime-inner {
+                color: #74d2e7 !important;
+                text-shadow: none;
+                font-size: 12px;
+            } 
+            #globalNavView--localDELog-inner{
                 color: #74d2e7 !important;
                 text-shadow: none;
             }
@@ -263,6 +268,17 @@ html
 #globalNavView--SelectLanguage {
     background: $teal-blue-hover !important;
     border: 0;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    >label {
+        padding-right: 2rem;
+    }
+    >span#globalNavView--SelectLanguage-arrow {
+        width: 1.8rem;
+    }
+    >select {
+        padding-right: 2rem;
+    }
 }
 
 #globalNavView--settingsButton {

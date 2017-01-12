@@ -15,6 +15,12 @@
     color: white !important;
     background: $teal-blue-hover ! important;
     border: 0;
+    >img#globalNavView--logo {
+        margin-right: 0;
+    }
+    >label.pageTitle {
+        margin-left: 0;
+    }
 }
 .pageHeader {
     color: white !important;
@@ -48,9 +54,17 @@
         }
     }
 }
+#globalNavView {
+    >.sapMPage {
+        >.sapMPageHeader {
+            >label.unshrinkable {
+                flex-shrink: 0;
+            }
+        }
+    }
+}
 .pageTitle{
-    min-width: 130px;
-    @include textHeader(24px, $white-two !important);
+    @include textHeader(17px, $white-two !important);
 }
 .classListProgram{
     border: 1px solid #e5e5e5;
@@ -143,7 +157,7 @@
     }
 }
 .pageWelcome{
-    @include textHeader(24px, $white-two !important);
+    @include textHeader(17px, $white-two !important);
 }
 .sapMListHdr{
     background-color: $duck-egg-blue;

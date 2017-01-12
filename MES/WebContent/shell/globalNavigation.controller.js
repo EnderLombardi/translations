@@ -533,10 +533,7 @@ sap.ui.controller(
                         }
 
                         // Open a web socket connection
-                        // if(!airbus.mes.shell.ModelManager.badgeReader){
-                        airbus.mes.shell.ModelManager.connectBadgeReader(
-                                callBackFn, response, error);
-                        // }
+                        airbus.mes.shell.ModelManager.connectBadgeReader(callBackFn, response, error);
 
                         sap.ui.getCore().byId("msgstrpMyProfile").setType("Information");
                         sap.ui.getCore().byId("msgstrpMyProfile").setText(
@@ -641,8 +638,6 @@ sap.ui.controller(
                             //active busy
                             airbus.mes.shell.busyManager.setBusy(airbus.mes.linetracker.oView, "linetracker");
 
-//                            airbus.mes.stationtracker.ShiftManager.updateShift = false;
-//                            var oModule = airbus.mes.linetracker.ModelManager;
                             airbus.mes.shell.oView.getController().setInformationVisibility(true);
 
                             // ** synchrone call **//
