@@ -2,7 +2,6 @@
 jQuery.sap.registerModulePath("airbus.mes.operationdetail", "../components/operationdetail");
 jQuery.sap.require("airbus.mes.operationdetail.Formatter");
 jQuery.sap.require("airbus.mes.operationdetail.ModelManager");
-//jQuery.sap.includeStyleSheet("../Sass/global.css");
 
 
 jQuery.sap.declare("airbus.mes.operationdetail.Component");
