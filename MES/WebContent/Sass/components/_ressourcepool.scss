@@ -33,13 +33,19 @@ RESSOURCEPOOL
             }
         }
         #idUsersView--searchAvailableUsers-search {
+            &:hover {
+                background-color: rgba(0, 0, 0, 0);
+            }
             &.sapMSFBA{
-                background-color: rgba(0, 0, 0, 0);//avoid to have blue background-color from the library
+                background-color: rgba(0, 0, 0, 0) !important;//avoid to have blue background-color from the library
             }
         }
         #idUsersView--searchAssignedUsers-search {
+            &:hover {
+                background-color: rgba(0, 0, 0, 0);
+            }
             &.sapMSFBA{
-                background-color: rgba(0, 0, 0, 0);//avoid to have blue background-color from the library
+                background-color: rgba(0, 0, 0, 0) !important;//avoid to have blue background-color from the library
             }
         }
     }
@@ -71,13 +77,19 @@ RESSOURCEPOOL
             }
         }
         #idWorkCenterView--searchAvailableWC-search {
+            &:hover {
+                background-color: rgba(0, 0, 0, 0);
+            }
             &.sapMSFBA{
-                background-color: rgba(0, 0, 0, 0);//avoid to have blue background-color from the library
+                background-color: rgba(0, 0, 0, 0)b !important;//avoid to have blue background-color from the library
             }
         }
         #idWorkCenterView--searchAssignedWC-search {
+            &:hover {
+                background-color: rgba(0, 0, 0, 0);
+            }
             &.sapMSFBA{
-                background-color: rgba(0, 0, 0, 0);//avoid to have blue background-color from the library
+                background-color: rgba(0, 0, 0, 0) !important;//avoid to have blue background-color from the library
             }
         }
     }
@@ -392,7 +404,9 @@ RESSOURCEPOOL
     .sapMBarChild{
         &.sapMCb{
             .sapMCbBg{
-                border: solid 0.125rem #74D2E7;
+                &:not(:hover) {
+                    border: solid 0.125rem #74D2E7;
+                }
             }
         }
     }
@@ -471,6 +485,11 @@ RESSOURCEPOOL
     #resourcePool{
         .resourcePoolSubheader{
             button{
+                &:hover {
+                    >.sapMBtnTransparent{
+                        background-color: $petrol-20;
+                    }
+                }
                 &>.sapMBtnTransparent{
                     &>.sapMBtnIcon{
                         color: #0D5D76;
