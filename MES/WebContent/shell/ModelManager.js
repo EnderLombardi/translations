@@ -32,7 +32,6 @@ airbus.mes.shell.ModelManager = {
 				bundleName : "airbus.mes.shell.config.url_config",
 				bundleLocale : dest
 			});
-			core.setModel(this.urlModel, "urlModel");
 			
 			if (  dest === "sopra" ) {
 
@@ -60,7 +59,12 @@ airbus.mes.shell.ModelManager = {
 	         });
 			core.setModel(MIIi18nModel, "miiI18n");
 		},
-				
+		
+		getResourceUrl: function(urlId) {
+			var resourceUrl = sap.ui.getCore().getModel("ResourceUrl");
+			return resourceUrl.getProperty(urlId);
+		},
+		
 		loadUserDetail : function() {
 			
 			var oViewModel = sap.ui.getCore().getModel("userDetailModel");

@@ -77,7 +77,7 @@
 
 .PanelbgImg {
     background-color: white;
-    background-image: url(../../../images/dottedCarbon.png);
+    background-image: url(../images/dottedCarbon.png);
     opacity: 3%;
     /* background-size: contain; */
     display: block;

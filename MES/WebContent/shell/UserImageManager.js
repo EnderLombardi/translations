@@ -21,9 +21,9 @@ airbus.mes.shell.UserImageManager =  {
 	getErrorUserImage: function(img){
 
 		if(this.setSrc)
-			this.setSrc ( "../images_locale/user.png");
+			this.setSrc(airbus.mes.shell.ModelManager.getResourceUrl("no-user.img"));
 		else
-			img.src =  "../images_locale/user.png";
+			img.src = airbus.mes.shell.ModelManager.getResourceUrl("no-user.img");
 	}
 
 }

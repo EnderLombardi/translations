@@ -10,7 +10,7 @@ var clean = require('gulp-clean');
 var rename = require("gulp-rename");
 
 var src = './WebContent';
-var rootdest = './WebContent/build';
+var rootdest = './build';
 var dest = rootdest + '/current';
 
 var pushServiceUrl = "https://dmiswde0.eu.airbus.corp/XMII/Illuminator?QueryTemplate=TEST_DBA%2FCreateFile&j_user=S00DB44&j_password=start101";
@@ -187,9 +187,9 @@ gulp.task('ui5preload_worktracker', ['clean'], function() {
 
 
 gulp.task('copy_index', ['clean'], function () {
-	return gulp.src(['./shell/index_airbus.html'], { cwd: src })
-		.pipe(rename('index.html'))
-		.pipe(gulp.dest(dest + '/shell'));
+	return gulp.src('./shell/index_airbus.html', { cwd: src })
+		.pipe(rename('./shell/index.html'))
+		.pipe(gulp.dest(dest));
 });
  
 gulp.task('push', ['build'], function () {
@@ -203,10 +203,12 @@ gulp.task('push', ['build'], function () {
 
 gulp.task('copy', ['clean'], function () {
 	return gulp.src([
+		'./shell/config/res_config_prod.properties',
 		'./components/homepage/css/margin.css',
 		'./Sass/global.css',
 		'./Sass/*.png',
 		'./components/homepage/data/1TileLineHome.json',
+		'./components/homepage/images/**',
 		'./components/settings/model/**',
 		'./components/settings/data/program.json',
 		'./components/settings/icon/**',

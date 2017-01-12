@@ -26,7 +26,7 @@
 
 	<!-- src="https://sapui5.netweaver.ondemand.com/1.36.11/resources/sap-ui-core.js" -->
 	<script
-		src="/sapui5/resources/sap-ui-core.js"
+		src="https://sapui5.netweaver.ondemand.com/1.36.11/resources/sap-ui-core.js"
 		id="sap-ui-bootstrap" data-sap-ui-libs="sap.m, sap.ui.table"
 		data-sap-ui-theme="sap_bluecrystal"
 		data-sap-ui-xx-bindingSyntax="complex">
@@ -37,11 +37,17 @@
 		sap.ui.getCore().attachInit(function() {
 
 			jQuery.sap.registerModulePath("airbus.mes.shell", "./");
+
+			sap.ui.getCore().setModel(new sap.ui.model.resource.ResourceModel({
+				bundleName : "airbus.mes.shell.config.res_config",
+				bundleLocale : "prod"
+			}), "ResourceUrl");
+			
 			jQuery.sap.registerModulePath("airbus.mes.settings", "../components/settings");
 			jQuery.sap.registerModulePath("airbus.mes.homepage", "../components/homepage");
 			jQuery.sap.registerModulePath("airbus.mes.dhtmlx", "../../lib/dhtmlxscheduler");
 			jQuery.sap.registerModulePath("airbus.mes.d3", "../../lib/d3");
-
+			
 			bBatch1 = true;
 			disableEnable();
 
@@ -66,7 +72,7 @@
 						propagateModel : true,
 					})
 				});
-
+				
 				oComp1 = sap.ui.getCore().createComponent({
 					name : "airbus.mes.homepage", // root component folder is resources
 				});

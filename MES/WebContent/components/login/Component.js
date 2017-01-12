@@ -25,6 +25,7 @@ airbus.mes.login.Component.prototype.createContent = function() {
 			height:"100%"	
 		}).addStyleClass("absolutePosition");
 		airbus.mes.login.oView = this.oView;
+		this.oView.setModel(sap.ui.getCore().getModel("ResourceUrl"), "ResourceUrl");
 	}
 	return this.oView;
 };

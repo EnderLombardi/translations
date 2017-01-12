@@ -3,7 +3,7 @@
 	<Page title="Login">	
 		<content>
 			<Panel width="450px">	
-				<Image src="../images/Airbus-xl.png" width="90%" display="block" class="sapUiSmallMargin sapThemeHighlight-asColor"/>		
+				<Image src="{ResourceUrl>airbus.big-logo}" width="90%" display="block" class="sapUiSmallMargin sapThemeHighlight-asColor"/>		
 				<Text text="Login" class="sapUiSmallMargin sapThemeHighlight-asColor "/>
 				<Input id="login" placeholder="Login" width="98%"/>
 				<Text text="Password" class="sapUiSmallMargin sapThemeHighlight-asColor "/>

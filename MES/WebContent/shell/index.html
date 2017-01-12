@@ -40,6 +40,12 @@
 		sap.ui.getCore().attachInit(function() {
 
 			jQuery.sap.registerModulePath("airbus.mes.shell", "./");
+			
+			sap.ui.getCore().setModel(new sap.ui.model.resource.ResourceModel({
+				bundleName : "airbus.mes.shell.config.res_config",
+				bundleLocale : "dev"
+			}), "ResourceUrl");
+			
 			jQuery.sap.registerModulePath("airbus.mes.settings", "../components/settings");
 			jQuery.sap.registerModulePath("airbus.mes.homepage", "../components/homepage");
 			jQuery.sap.registerModulePath("airbus.mes.dhtmlx", "../lib/dhtmlxscheduler");
