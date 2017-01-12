@@ -48,9 +48,21 @@ module.exports = function (options) {
 			// assemble remote path = to + relative root + file name
 			var destPath = options.remotePath + '/' + relPath + path.basename(filePath);
 			
+			var type = fileExt.search(/^(json|properties|js)$/) < 0 ? 'BIN' : 'TXT';
+			var content;
+			if (type === 'BIN') {
+				content = fs.readFileSync(filePath).toString('base64');
+			} else {
+				content = fs.readFileSync(filePath, { encoding: 'utf-8' });
+			}
+			
 			var formData = options.data || {};
-			formData['Param.2'] = fs.readFileSync(filePath, { encoding: 'utf-8' });
+			formData['Param.2'] = content;
 			formData['Param.1'] = destPath;
+			formData['Param.3'] = type;
+			console.log(filePath);
+			console.log(fileExt);
+			console.log(formData['Param.3']);
 			
 			if (options.timeout) {
 				reqData['timeout'] = options.timeout;

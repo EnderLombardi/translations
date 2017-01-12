@@ -193,11 +193,11 @@ gulp.task('copy_index', ['clean'], function () {
 });
  
 gulp.task('push', ['build'], function () {
-	return gulp.src(['./components/**/*.+(json|properties|css|js)'], { cwd: dest })
+	return gulp.src(['./**'], { cwd: dest }) // .+(json|properties|css|js)
 		.pipe(pushMii({
 			url: pushServiceUrl,
 			root: dest,
-			remotePath: 'WEB://TEST_DBA',
+			remotePath: 'WEB://TEST_DBA/mes/current',
 		}));
 });
 
