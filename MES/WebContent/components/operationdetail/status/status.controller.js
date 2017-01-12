@@ -161,9 +161,6 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
 
 		var oView = airbus.mes.operationdetail.status.oView;
 
-		//active busy
-		airbus.mes.shell.busyManager.setBusy(airbus.mes.stationtracker.oView, "stationtracker");
-
 		// click on confirm
 		oView.getController().operationStatus = "C";
 		oView.getController().Mode = "EarnedStandards";
