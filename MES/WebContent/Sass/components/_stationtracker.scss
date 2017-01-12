@@ -1135,14 +1135,6 @@ PRODUCTION GROUP POPOVER
         height: inherit;
         border-bottom: none;
     }
-    span{
-        &.sapMPopoverArr{
-            display: none !important;
-        }
-        &.sapMPopoverArrUp{
-            display: none !important;
-        }
-    }
     .MyproductionGroupPopover {
         .sapMSLITitleOnly {
         font-size: 0.875rem;
