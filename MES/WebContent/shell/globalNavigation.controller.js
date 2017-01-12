@@ -430,6 +430,7 @@ sap.ui.controller(
                             console.log("callback entry \n");
                             console.log("connected");
                             if (airbus.mes.shell.ModelManager.badgeReader.readyState == 1) {
+                				airbus.mes.shell.ModelManager.brOpen();
                                 airbus.mes.shell.ModelManager.brStartReading();
                                 sap.ui.getCore().byId("msgstrpMyProfile").setText(
                                                 sap.ui.getCore().getModel("ShellI18n").getProperty("ConenctionOpened")
@@ -444,14 +445,13 @@ sap.ui.controller(
                                                             );
                                             if (i < 0) {
                                                 clearInterval(timer);
-                                                airbus.mes.shell.ModelManager.brStopReading();
+                        						airbus.mes.shell.ModelManager.brStopReading();
+                        						airbus.mes.shell.ModelManager.badgeReader.close();
                                                 sap.ui.getCore().byId("scanButtonMyProfile").setEnabled(true);
                                                 sap.ui.getCore().byId("msgstrpMyProfile").setType("Warning");
                                                 sap.ui.getCore().byId("msgstrpMyProfile").setText(
                                                                 sap.ui.getCore().getModel("ShellI18n").getProperty("timeout")
                                                                 );
-                                                airbus.mes.shell.ModelManager.brStopReading();
-                                                airbus.mes.shell.ModelManager.badgeReader.close();
                                                 setTimeout(function() {
                                                     sap.ui.getCore().byId("msgstrpMyProfile").setVisible(false);
                                                 }, 2000)
@@ -468,25 +468,29 @@ sap.ui.controller(
                             sap.ui.getCore().byId("scanButtonMyProfile").setEnabled(true);
                             sap.ui.getCore().byId("msgstrpMyProfile").setVisible(false);
                             if (data.Message) {
-                                type = data.Message.split(":")[0];
+                            	var idType = data.Message.split(":")[0];
 
-                                if (type == "UID") {
+                				switch (idType){
+                				
+                				case "UID":
                                     sap.ui.getCore().byId("uIdMyProfile").setValue(data.Message);
                                     sap.ui.getCore().byId("msgstrpMyProfile").setType("Success");
                                     sap.ui.getCore().byId("msgstrpMyProfile").setText(
                                                     sap.ui.getCore().getModel("ShellI18n").getProperty("ScannedSuccessfully")
                                                     );
                                     sap.ui.getCore().byId("msgstrpMyProfile").setVisible(true);
-
-                                } else if (type == "BID") {
+                					break;
+                					
+                				case "BID":
                                     sap.ui.getCore().byId("badgeIdMyProfile").setValue(data.Message);
                                     sap.ui.getCore().byId("msgstrpMyProfile").setType("Success");
                                     sap.ui.getCore().byId("msgstrpMyProfile").setText(
                                                     sap.ui.getCore().getModel("ShellI18n").getProperty("ScannedSuccessfully")
                                                     );
                                     sap.ui.getCore().byId("msgstrpMyProfile").setVisible(true);
-
-                                } else {
+                					break;
+                					
+                				default:
                                     sap.ui.getCore().byId("msgstrpMyProfile").setVisible(true);
                                     sap.ui.getCore().byId("msgstrpMyProfile").setText(
                                                     sap.ui.getCore().getModel("ShellI18n").getProperty("ErrorScanning")
@@ -506,7 +510,8 @@ sap.ui.controller(
                                 sap.ui.getCore().byId("msgstrpMyProfile").setText("");
                             }, 2000);
 
-                            airbus.mes.shell.ModelManager.badgeReader.close();
+    						airbus.mes.shell.ModelManager.brStopReading();
+    						airbus.mes.shell.ModelManager.badgeReader.close();
                             sap.ui.getCore().byId("scanButtonMyProfile").setEnabled(true);
                         }
                         var error = function() {

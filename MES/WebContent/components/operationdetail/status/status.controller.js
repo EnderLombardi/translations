@@ -246,6 +246,7 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
 			console.log("callback entry \n");
 			console.log("connected");
 			if (airbus.mes.shell.ModelManager.badgeReader.readyState == 1) {
+				airbus.mes.shell.ModelManager.brOpen();
 				airbus.mes.shell.ModelManager.brStartReading();
 				sap.ui.getCore().byId("msgstrpConfirm").setText(
 						sap.ui.getCore().getModel("ShellI18n").getProperty("ConenctionOpened"));
@@ -258,12 +259,11 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
 					if (i < 0) {
 						clearInterval(timer);
 						airbus.mes.shell.ModelManager.brStopReading();
+						airbus.mes.shell.ModelManager.badgeReader.close();
 						sap.ui.getCore().byId("scanButton").setEnabled(true);
 						sap.ui.getCore().byId("msgstrpConfirm").setType("Warning");
 						sap.ui.getCore().byId("msgstrpConfirm").setText(
 								sap.ui.getCore().getModel("ShellI18n").getProperty("timeout"));
-						airbus.mes.shell.ModelManager.brStopReading();
-						airbus.mes.shell.ModelManager.badgeReader.close();
 						setTimeout(function() {
 							sap.ui.getCore().byId("msgstrpConfirm").setVisible(false);
 						}, 2000)
@@ -277,21 +277,27 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
 			sap.ui.getCore().byId("scanButton").setEnabled(true);
 			sap.ui.getCore().byId("msgstrpConfirm").setVisible(false);
 			if (data.Message) {
-				type = data.Message.split(":")[0];
+				var idType = data.Message.split(":")[0];
 
-				if (type == "UID") {
+				switch (idType){
+				
+				case "UID":
 					sap.ui.getCore().byId("UIDForConfirmation").setValue(data.Message);
 					sap.ui.getCore().byId("msgstrpConfirm").setType("Success");
 					sap.ui.getCore().byId("msgstrpConfirm").setText(
 							sap.ui.getCore().getModel("ShellI18n").getProperty("ScannedSuccessfully"));
 					sap.ui.getCore().byId("msgstrpConfirm").setVisible(true);
-				} else if (type == "BID") {
+					break;
+					
+				case "BID":
 					sap.ui.getCore().byId("badgeIDForConfirmation").setValue(data.Message);
 					sap.ui.getCore().byId("msgstrpConfirm").setType("Success");
 					sap.ui.getCore().byId("msgstrpConfirm").setText(
 							sap.ui.getCore().getModel("ShellI18n").getProperty("ScannedSuccessfully"));
 					sap.ui.getCore().byId("msgstrpConfirm").setVisible(true);
-				} else {
+					break;
+					
+				default:
 					sap.ui.getCore().byId("msgstrpConfirm").setVisible(true);
 					sap.ui.getCore().byId("msgstrpConfirm").setText(
 							sap.ui.getCore().getModel("ShellI18n").getProperty("ErrorScanning"));
@@ -307,6 +313,7 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
 				sap.ui.getCore().byId("msgstrpConfirm").setVisible(false);
 				sap.ui.getCore().byId("msgstrpConfirm").setText("");
 			}, 2000);
+			airbus.mes.shell.ModelManager.brStopReading();
 			airbus.mes.shell.ModelManager.badgeReader.close();
 			sap.ui.getCore().byId("scanButton").setEnabled(true);
 		}

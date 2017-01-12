@@ -217,11 +217,11 @@ airbus.mes.shell.ModelManager = {
 		},
 
 		brOnMessage : function (evt){ 
-		 var scanData = JSON.parse(evt.data);	
-		console.log(scanData);
+			var scanData = JSON.parse(evt.data);	
+			console.log(scanData);
 
-		if(airbus.mes.shell.ModelManager.brResponseMessage && scanData.Message)
-			airbus.mes.shell.ModelManager.brResponseMessage(scanData);	
+			if(airbus.mes.shell.ModelManager.brResponseMessage && scanData.Message)
+				airbus.mes.shell.ModelManager.brResponseMessage(scanData);	
 
 		},
 		
