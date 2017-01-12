@@ -23,14 +23,6 @@ airbus.mes.worktracker.util.Formatter = {
 			case airbus.mes.worktracker.util.Formatter.status.paused:
 				this.getParent().getParent().addStyleClass("listColorGreen");
 				return "Paused "+String(progress).split(".")[0]+"%";
-				/*if(parseInt(progress) == 0){
-					this.getParent().getParent().addStyleClass("listColorGrey");
-					return "Not Started ";
-				}
-				else{
-					this.getParent().getParent().addStyleClass("listColorGreen");
-					return "Paused "+String(progress).split(".")[0]+"%";
-				}*/
 			default:
 				this.getParent().getParent().addStyleClass("listColorGrey");
 				return "Not Started "
@@ -79,14 +71,7 @@ airbus.mes.worktracker.util.Formatter = {
 			case airbus.mes.worktracker.util.Formatter.status.paused:
 				this.getParent().getParent().addStyleClass("listColorGreen");
 				return "";
-				/*switch(parseInt(progress)){
-					case 0:
-						this.getParent().getParent().addStyleClass("listColorGrey");
-						return "";
-					default:
-						this.getParent().getParent().addStyleClass("listColorGreen");
-						return "";
-				}*/
+
 			default:
 				this.getParent().getParent().addStyleClass("listColorGrey");
 				return "";
@@ -206,7 +191,6 @@ airbus.mes.worktracker.util.Formatter = {
 		
 		
 		if(progress == "0.0" || progress == "0" || progress == 0){
-			//this.addStyleClass("displaySliderNone");
 			this.setVisible(false);
 			this.setProperty("max",0);
 			this.setProperty("value",0);

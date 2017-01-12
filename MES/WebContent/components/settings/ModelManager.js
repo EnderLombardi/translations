@@ -230,9 +230,6 @@ airbus.mes.settings.ModelManager = {
 			},
 			success : function(result, status, xhr) {
 
-				// Refresh label in header.
-				// airbus.mes.settings.ModelManager.loadUserSettingsModel();
-
 			}
 		});
 
@@ -295,11 +292,7 @@ airbus.mes.settings.ModelManager = {
 		if (oModel.getProperty("/Rowsets/Rowset/0/Row")) {
 
 			if (airbus.mes.shell.oView.byId("labelMSN").getText() === "") {
-
 				airbus.mes.shell.oView.getController().navigate();
-				// nav.addPage(airbus.mes.settings.oView);
-				// nav.to(airbus.mes.settings.oView.getId());
-
 			}
 
 		}

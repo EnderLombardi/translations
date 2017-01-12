@@ -112,7 +112,6 @@ sap.ui.controller("airbus.mes.settings.Settings",
 
                     if ( airbus.mes.settings.ModelManager.currentMsnSelected ) {
 
-//                        var sCurrentMsn = "";
                         if ( sap.ui.getCore().getModel("plantModel").getProperty("/Rowsets/Rowset/0/Row") != undefined ) {
                         var oModel = sap.ui.getCore().getModel("plantModel").getProperty("/Rowsets/Rowset/0/Row");
                         // Find automatically the msn with the flag Current MSN different of "---"
@@ -235,11 +234,8 @@ sap.ui.controller("airbus.mes.settings.Settings",
                 this.getView().byId("selectLine").setEnabled(fLine);
                 this.getView().byId("selectStation").setEnabled(fStation);
                 if ( !airbus.mes.settings.ModelManager.currentMsnSelected ) {
-
-                this.getView().byId("selectMSN").setEnabled(fMsn);
-
-            }
-//                settingsView--selectLine
+                    this.getView().byId("selectMSN").setEnabled(fMsn);
+                }
             },
             /**
              * Load plant model when selected a Site and User select a site on the table and the map is zoomed
@@ -271,12 +267,10 @@ sap.ui.controller("airbus.mes.settings.Settings",
                     if (spot === site) {
 
                         var splitter = oData.Spots[i].pos.split(";");
-                        //sap.m.MessageToast.show(site);
                         this.byId("vbi").zoomToGeoPosition(splitter[0],    splitter[1], 6);
                     }
                 }
 
-                //airbus.mes.settings.ModelManager.site = this.getView().byId("ComboBoxPlant").getValue();
                 airbus.mes.settings.ModelManager.loadPlantModel();
                 // Delete value of other combobox
                 this.getView().byId("headTextProgram").getItems().forEach(function(el){
@@ -307,8 +301,6 @@ sap.ui.controller("airbus.mes.settings.Settings",
 
             // User clicks on a button
             onPress : function(evt) {
-                // var context = evt.getSource().getBindingContext();
-                // nav.to("Detail", context);
                 // Active settings button during leaving settings screen
                 if (airbus.mes.shell != undefined) {
                     sap.ui.getCore().byId("popupSettingsButton").setEnabled(true);
@@ -371,7 +363,6 @@ sap.ui.controller("airbus.mes.settings.Settings",
 
                 // Replace with current new element in UI
                 if (airbus.mes.settings.ModelManager.site) {
-                    //airbus.mes.settings.ModelManager.loadPlantModel();
 
                     //Select site
                     var oModel = sap.ui.getCore().getModel("siteModel").getProperty("/Rowsets/Rowset/0/Row");
@@ -422,14 +413,10 @@ sap.ui.controller("airbus.mes.settings.Settings",
                             airbus.mes.shell.oView.getController().navigate();
                             //if !localhost stop user on setting
                             switch (window.location.hostname) {
-                            case "localhost":
-         //                       airbus.mes.settings.oView.byId("navBack").setEnabled(true);
-        //                        $( '#' + airbus.mes.shell.oView.byId("logo").sId).unbind();
-                                break;
-                            default:
-           //                     airbus.mes.settings.oView.byId("navBack").setEnabled(false);
-          //                      $( '#' + airbus.mes.shell.oView.byId("logo").sId).unbind();
-                                break;
+                                case "localhost":
+                                    break;
+                                default:
+                                    break;
                             }
 
                         }
@@ -473,12 +460,7 @@ sap.ui.controller("airbus.mes.settings.Settings",
                     return;
                 }
 
-                ///////////////////////////////////////////////////////////////////////////////////////////////////
-                //
                 airbus.mes.settings.oView.byId("navBack").setEnabled(true);
-                //$( '#' + airbus.mes.shell.oView.byId("logo").sId).click(airbus.mes.shell.oView.getController().goToHome);
-                //
-                ///////////////////////////////////////////////////////////////////////////////////////////////////
 
                 this.navigate(oEvent);
 
@@ -548,7 +530,7 @@ sap.ui.controller("airbus.mes.settings.Settings",
                     airbus.mes.shell.oView.byId("labelMSN").setText(airbus.mes.shell.oView.getModel("ShellI18n").getProperty(
                     "MSN") + " " + airbus.mes.settings.ModelManager.msn);
 
-//                    Update settings on others components
+                    //Update settings on others components
                     if(airbus.mes.stationtracker !== undefined) {
                         airbus.mes.stationtracker.ModelManager.settings = airbus.mes.settings.ModelManager;
                     }

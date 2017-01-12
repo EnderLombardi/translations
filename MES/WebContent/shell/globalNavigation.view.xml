@@ -23,14 +23,12 @@
                            	</Select>
                            	<Button id="informationButton" icon="sap-icon://message-information" type="Transparent" press="onInformation" visible="false"  class="whiteColor whiteButton" />
                            	<Button id="homeButton" icon="sap-icon://home" type="Transparent" tooltip="{ShellI18n>Home}" press="goToHome" visible="false"  class="whiteColor whiteButton" />
-                          	<!--  <Button id="myProfile" icon="sap-icon://account" type="Transparent" press="goToMyProfile" visible="true"/> -->
                             <Button id="settingsButton"
                                    type="Transparent" 
                                    tooltip="{ShellI18n>Settings}"
                                    icon="sap-icon://action-settings" 
                                    class="whiteColor whiteButton" 
                                    press="openSettingPopup"></Button>
-                            <!-- enabled="{ path : './', formatter : 'airbus.mes.shell.util.Formatter.checkCurrentView' }" -->
                    </content>
              </Toolbar>
 		</customHeader>

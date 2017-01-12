@@ -27,11 +27,6 @@ airbus.mes.worktracker.detail.Component.prototype.createContent = function() {
 	        bundleName : "airbus.mes.worktracker.i18n.i18n",
 	    });
 		this.oView.setModel(i18nModel, "i18n");
-
-		/*this.oView.setModel(sap.ui.getCore().getModel("currentOperatorModel"), "currentOperatorModel");
-		this.oView.setModel(sap.ui.getCore().getModel("userOperationsModel"), "userOperationsModel");
-		this.oView.setModel(sap.ui.getCore().getModel("UserListModel"), "UserListModel");
-		this.oView.setModel(sap.ui.getCore().getModel("reasonCodeModel"), "reasonCodeModel");*/
 		
 		airbus.mes.worktracker.detail.oView = this.oView;
 		return this.oView;

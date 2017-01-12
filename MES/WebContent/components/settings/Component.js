@@ -35,7 +35,6 @@ sap.ui.core.UIComponent.extend("airbus.mes.settings.Component", {
 		oModel3.loadData(this.getMetadata().getManifestEntry("sap.app").dataSources["dataMock_region"].uri, null,false);
 
 		this.oView.setModel(oModel3, "region");
-		//this.oView.setModel(oModel3, "region");
 
 		var i18nModel = new sap.ui.model.resource.ResourceModel({
 			bundleName : "airbus.mes.settings.i18n.i18n"

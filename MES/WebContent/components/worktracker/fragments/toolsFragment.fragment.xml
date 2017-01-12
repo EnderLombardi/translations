@@ -12,16 +12,14 @@
 			</table:toolbar>
 			<table:toolbar>
 			<Toolbar>
-				
-						<Title text="{i18n>tools}" level="H5" titleStyle="H5" />
-						<ToolbarSpacer />
-						<Select selectedKey="OrderBy" class="selectBox">
-							<core:Item key="orderBy" text="{i18n>orderBy}" />
-						</Select>
-						<Select selectedKey="groupBy" class="selectBox">
-							<core:Item key="groupBy" text="{i18n>groupBy}" />
-						</Select>
-					
+				<Title text="{i18n>tools}" level="H5" titleStyle="H5" />
+				<ToolbarSpacer />
+				<Select selectedKey="OrderBy" class="selectBox">
+					<core:Item key="orderBy" text="{i18n>orderBy}" />
+				</Select>
+				<Select selectedKey="groupBy" class="selectBox">
+					<core:Item key="groupBy" text="{i18n>groupBy}" />
+				</Select>	
 			</Toolbar>
 		</table:toolbar>
 		<table:columns>

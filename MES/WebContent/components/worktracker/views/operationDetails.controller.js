@@ -184,8 +184,6 @@ sap.ui
 						airbus.mes.worktracker.util.ModelManager
 								.loadUserOperationsModel();
 
-						// this.refreshOperationData();
-
 						if (FlagSuccess == true) {
 							this.setProgressScreenBtn(true, true, false);
 							this.getView().byId("progressSlider").setEnabled(

@@ -230,8 +230,6 @@ sap.ui.controller(
 
                                 break;
                             case "idLinetracker1":
-//                            	this.renderLineTracker();
-//                                airbus.mes.linetracker.kpi.ModelManager.loadDisruptionKPIModel();
                                 airbus.mes.shell.AutoRefreshManager.clearInterval();
                                 //refresh
                                 if ( bBatch1==false ) {
