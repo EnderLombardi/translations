@@ -60,9 +60,6 @@ module.exports = function (options) {
 			formData['Param.2'] = content;
 			formData['Param.1'] = destPath;
 			formData['Param.3'] = type;
-			console.log(filePath);
-			console.log(fileExt);
-			console.log(formData['Param.3']);
 			
 			if (options.timeout) {
 				reqData['timeout'] = options.timeout;

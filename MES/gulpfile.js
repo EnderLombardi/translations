@@ -8,12 +8,22 @@ var ui5preload = require('gulp-ui5-preload');
 var pushMii = require('./src/gulp-push-mii')
 var clean = require('gulp-clean');
 var rename = require("gulp-rename");
+var fs = require("fs");
+
+var pkg = JSON.parse(fs.readFileSync('./package.json', 'utf-8'));
+var version = {};
+[version.major, version.minor, version.batch] = pkg.version.split('-')[0].split('.').map(n => parseInt(n));
+version.patch = parseInt(pkg.version.split('-')[1]);
+version.toString = function () {
+	return [version.major, version.minor, [version.batch, version.patch].map(n => ""+n).join('-')].map(n => ""+n).join('.');
+}
 
 var src = './WebContent';
 var rootdest = './build';
 var dest = rootdest + '/current';
 
 var pushServiceUrl = "https://dmiswde0.eu.airbus.corp/XMII/Illuminator?QueryTemplate=TEST_DBA%2FCreateFile&j_user=S00DB44&j_password=start101";
+var rootRemotePath = "WEB://XX_MOD1684_MES_Temp/ui/mes";
 
 // Shell 
 gulp.task('ui5preload_shell', ['clean'], function() {
@@ -182,23 +192,12 @@ gulp.task('ui5preload_worktracker', ['clean'], function() {
 //          .pipe(gulpif('**/*.xml',prettydata({type:'minify'}))) // only pass .xml to prettydata  
           .pipe(ui5preload({base:'./WebContent/components/worktracker/', namespace:'airbus.mes.worktracker'}))
           .pipe(gulp.dest(dest + '/components/worktracker'));
-     });	 	 
-
-
+});
 
 gulp.task('copy_index', ['clean'], function () {
 	return gulp.src('./shell/index_airbus.html', { cwd: src })
 		.pipe(rename('./shell/index.html'))
 		.pipe(gulp.dest(dest));
-});
- 
-gulp.task('push', ['build'], function () {
-	return gulp.src(['./**'], { cwd: dest }) // .+(json|properties|css|js)
-		.pipe(pushMii({
-			url: pushServiceUrl,
-			root: dest,
-			remotePath: 'WEB://TEST_DBA/mes/current',
-		}));
 });
 
 gulp.task('copy', ['clean'], function () {
@@ -238,7 +237,48 @@ gulp.task('clean', function () {
 	return gulp.src(rootdest, { read: false })
 		.pipe(clean());
 });
- 
+
+
+// Push (to current)
+
+gulp.task('push', ['build'], function () {
+	return gulp.src(['./**'], { cwd: dest }) // .+(json|properties|css|js)
+		.pipe(pushMii({
+			url: pushServiceUrl,
+			root: dest,
+			remotePath: rootRemotePath + '/current',
+		}));
+});
+
+gulp.task('push_res', ['build'], function () {
+	return gulp.src(['./**', '!./current/**'], { cwd: rootdest }) // .+(json|properties|css|js)
+		.pipe(pushMii({
+			url: pushServiceUrl,
+			root: rootdest,
+			remotePath: rootRemotePath,
+		}));
+});
+
+// Bump and push to vX.Y.Z-P
+gulp.task('bump_ver', function () {
+	// Increase patch number
+	version.patch = version.patch + 1;
+	console.log("Bump version: " + pkg.version + " => " + version.toString());
+	// Regenerate version text
+	pkg.version = version.toString();
+	// Regenerate package.json
+	fs.writeFileSync('./package.json', JSON.stringify(pkg, null, 2)+'\n')
+});
+
+gulp.task('bump', ['bump_ver', 'build'], function () {
+	return gulp.src(['./**'], { cwd: dest }) // .+(json|properties|css|js)
+	.pipe(pushMii({
+		url: pushServiceUrl,
+		root: dest,
+		remotePath: rootRemotePath + '/v' + version.toString(),
+	}));
+});
+
 // Tasks
 gulp.task('build', ['copy_index', 'copy', 'copy_res',
 					  'ui5preload_shell', 'ui5preload_disruption', 'ui5preload_disruptiontracker', 'ui5preload_disruptionkpi', 'ui5preload_homepage',
