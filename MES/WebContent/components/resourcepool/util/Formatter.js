@@ -71,7 +71,7 @@ airbus.mes.resourcepool.util.Formatter = {
                 that.addStyleClass("yellowColor");
             else
                 that.addStyleClass("blueBorderChange");
-            return "Assigned : "+ assignedTo;
+            return airbus.mes.resourcepool.oView.getModel("i18nModel").getProperty("assignedTo") + " " + assignedTo;
         }
 
         // User is assigned as well as loaned
@@ -79,7 +79,8 @@ airbus.mes.resourcepool.util.Formatter = {
             that.addStyleClass("loanColor");
         if(airbus.mes.resourcepool.util.ModelManager.resourceName ==assignedTo || airbus.mes.resourcepool.util.ModelManager.resourceName == loanedRP_Name)
             that.addStyleClass("blueBorderChange");
-        return "Assigned : " + assignedTo + "\n" +"Loaned : "+ loanedRP_Name;
+        return airbus.mes.resourcepool.oView.getModel("i18nModel").getProperty("assignedTo") + " " + assignedTo +
+        "\n" + airbus.mes.resourcepool.oView.getModel("i18nModel").getProperty("loanedTo") + " " + loanedRP_Name;
 
 
     },
@@ -93,11 +94,12 @@ airbus.mes.resourcepool.util.Formatter = {
         } else if (loanedRP_Name == "---" || loanedRP_Name == ""){
             if(airbus.mes.resourcepool.util.ModelManager.resourceName !=assignedTo)
                 that.addStyleClass("blueBorderChange");
-            return "Assigned : "+assignedTo;
+            return airbus.mes.resourcepool.oView.getModel("i18nModel").getProperty("assigned") + " "+assignedTo;
         }
         if(airbus.mes.resourcepool.util.ModelManager.resourceName !=assignedTo && airbus.mes.resourcepool.util.ModelManager.resourceName != loanedRP_Name)
             that.addStyleClass("blueBorderChange");
-        return "Assigned : "+assignedTo + "\n" +"Loaned : "+ loanedRP_Name;
+        return airbus.mes.resourcepool.oView.getModel("i18nModel").getProperty("assigned") + " "+assignedTo + 
+        "\n" +  airbus.mes.resourcepool.oView.getModel("i18nModel").getProperty("loaned") + " "+ loanedRP_Name;
     },
 
     isEnabled : function() {
