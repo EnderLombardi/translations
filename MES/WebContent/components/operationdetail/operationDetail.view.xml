@@ -112,10 +112,12 @@
             </Panel>
 
             <Toolbar class="opDetailNavToolbar">
-                <SegmentedButton id="opDetailSegmentButtons" class="opDetailNav" width="500px">
+                <SegmentedButton id="opDetailSegmentButtons" class="opDetailNav" width="1000px">
                     <items>
                         <SegmentedButtonItem id="idStatus" text="{i18n>Status}"
                             key="status" press="openPage" />
+                        <SegmentedButtonItem id="idCheckList" text="{i18n>CheckListAndRecords}"
+                            key="checkList" press="openPage" />
                         <SegmentedButtonItem id="idDisruption" text="{i18n>Disruption}"
                             key="disruption" press="openPage"  />
                          <SegmentedButtonItem id="idReschedule" text="{i18n>Reschedule}"

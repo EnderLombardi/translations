@@ -54,6 +54,12 @@ airbus.mes.disruptions.AttachmentManager = {
 					oFileUploader.upload();
 				}
 			}),
+			endButton : new sap.m.Button({
+				text : '{i18nModel>cancel}',
+				press : function(){
+					dialog.close();
+				}
+			}),
 			afterClose : function() {
 				dialog.destroy();
 			}

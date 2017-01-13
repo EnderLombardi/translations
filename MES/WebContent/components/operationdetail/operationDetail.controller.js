@@ -176,6 +176,14 @@ sap.ui
                             airbus.mes.disruptions.ModelManager.checkDisruptionStatus(airbus.mes.disruptions.oView.viewDisruption.getModel("operationDisruptionsModel"));
 
                      break;
+                     case "checkList":
+                    	 if (airbus.mes.operationdetail.QDC === undefined || airbus.mes.operationdetail.QDC.oView === undefined) {
+                    	 sap.ui.getCore().createComponent({ name : "airbus.mes.operationdetail.QDC"});
+                    	  this.nav.addPage(airbus.mes.operationdetail.QDC.oView);
+                    	 }
+                          this.nav.to(airbus.mes.operationdetail.QDC.oView.getId());
+
+                  break;
                      case "disruption":
                             airbus.mes.shell.util.navFunctions.disruptionsDetail(this.nav,
                                     sap.ui.getCore().byId("operationDetailPopup--reportDisruption"), // Report Disruption Button
