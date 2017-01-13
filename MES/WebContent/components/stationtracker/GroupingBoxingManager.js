@@ -295,7 +295,8 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 					"PAUSED" : el.PAUSED,
 					"NUMBER_OF_EMPLOYEES" : el.NUMBER_OF_EMPLOYEES,
 					//"SFC_STEP_REF" : el.SFC_STEP_REF
-					"FAMILY_AVL_GROUPING" : el.FAMILY_AVL_GROUPING
+					"FAMILY_AVL_GROUPING" : el.FAMILY_AVL_GROUPING,
+					"FAMILY_AVL_BOXING" : el.FAMILY_AVL_BOXING
 										
 			};
 			
