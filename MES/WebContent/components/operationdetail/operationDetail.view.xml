@@ -121,6 +121,7 @@
                          <SegmentedButtonItem id="idReschedule" text="{i18n>Reschedule}"
                             key="reschedule" press="openPage"  />
                         <SegmentedButtonItem id="idtouchngo" text="{i18n>Touchngo}" key="touchngo" press="openPage" />
+                        <SegmentedButtonItem id="idJignTools" text="{i18n>JignTools}" key="jigntools" press="openPage" />
                     </items>
                 </SegmentedButton>
             </Toolbar>

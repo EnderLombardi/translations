@@ -153,7 +153,17 @@ airbus.mes.shell.util.navFunctions = {
         airbus.mes.shell.util.navFunctions.disruptionButtons.cancel = cancelButton;
     },
     
+    jigToolsDetail : function(container) {
 
+        if (airbus.mes.jigtools === undefined || airbus.mes.jigtools.oView === undefined) {
+
+            jQuery.sap.registerModulePath("airbus.mes.jigtools","../components/jigtools");
+            sap.ui.getCore().createComponent({name : "airbus.mes.jigtools"});
+        }
+        if (container.getPage("jigtoolsView") === null) {
+            container.addPage(airbus.mes.jigtools.oView);
+        }
+    },
     disruptionAttachment : function(container, disruptionDesc) {
 
         if (airbus.mes.disruptions.attachments === undefined || airbus.mes.disruptions.attachments.oView === undefined) {

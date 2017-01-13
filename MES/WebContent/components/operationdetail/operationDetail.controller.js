@@ -242,9 +242,28 @@ sap.ui
                                 }, 2000);
 
                             break;                                
+                        case "jigntools":
+                            airbus.mes.shell.util.navFunctions.jigToolsDetail(this.nav);
 
-                            default:
+	                        /***************************************************
+	                         * Load Data
+	                         **************************************************/
+	//                        if (!this.disruptionsFlag) {
+//                            var operationBO = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_bo;
+//                            var sSfcStepRef = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].sfc_step_ref;
+//                            airbus.mes.disruptions.ModelManager.loadDisruptionsByOperation(operationBO,sSfcStepRef);
+//                            this.disruptionsFlag = true;
+//                        }
+
+                            /** Navigate **/
+                            this.nav.to(airbus.mes.jigtools.oView.getId());                    	
+                        	
+                        	
+                        	break;
+                        	
+                         default:
                             break;
+
                         }
                     },
 
