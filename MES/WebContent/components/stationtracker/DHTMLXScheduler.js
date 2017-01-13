@@ -314,7 +314,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",    {
                                 /* Create arrow to change shift/day */
                                     if ($("div[class='dhx_cal_next_button']").length === 0) {
                                         $("div[class='dhx_cal_header']").append(("<div class='dhx_cal_next_button' Style='float:right; width:30px;'></div>"));
-                                        $("div[class='dhx_cal_next_button']").click(function() {
+                                        $("div[class='dhx_cal_next_button']").tap(function() {
                                             scheduler._click.dhx_cal_next_button();
                                             //airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(airbus.mes.stationtracker.ShiftManager.current_shift.shiftID);
                                         });
@@ -322,7 +322,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",    {
 
                                     if ($("div[class='dhx_cal_prev_button']").length === 0) {
                                         $("div[class='dhx_cal_header']").append(("<div class='dhx_cal_prev_button' Style='float:right; width:30px;'></div>"));
-                                        $("div[class='dhx_cal_prev_button']").click(function() {
+                                        $("div[class='dhx_cal_prev_button']").tap(function() {
                                             scheduler._click.dhx_cal_prev_button();
                                             //airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(airbus.mes.stationtracker.ShiftManager.current_shift.shiftID);
                                         });
