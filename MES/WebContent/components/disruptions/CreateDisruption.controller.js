@@ -535,17 +535,17 @@ sap.ui
 								var oModel = sap.ui.getCore().getModel(
 										"DisruptionDetailModel");
 
-								this
-										.getView()
-										.byId("selectCategory")
-										.setSelectedKey(
-												oModel
-														.getProperty("/MessageType"));
-								// forced fireChange event on Category to get a
+
+								this.getView().byId("selectCategory")
+									.setSelectedKey(
+											oModel.getProperty("/MessageType"));
+								
+								// forced fireChange event on Category to get a	
 								// good list in Responsible Group.
-								this.onSelectionChange("selectCategory");
-								//this.getView().byId("selectCategory").fireChange(
-								//	"selectCategory");
+								//this.onSelectionChange("selectCategory");
+								this.getView().byId("selectCategory").fireChange(
+									this.getView().byId("selectCategory").getSelectedItem());
+								
 								this
 										.getView()
 										.byId("selectResponsible")
@@ -623,7 +623,7 @@ sap.ui
 								}
 
 								oMatInp.setTokens(aMatTokens);
-								//this._materialListDialog.close();
+								this._materialListDialog.close();
 								
 								for (var j in aJigArray) {
 	
@@ -639,7 +639,7 @@ sap.ui
 								}
 
 								oJiginp.setTokens(aJigTokens);
-								//this.jigToolSelectDialog.close();
+								this.jigToolSelectDialog.close();
 							
 								
 								this.initializeTree();
