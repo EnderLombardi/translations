@@ -473,7 +473,7 @@ sap.ui.controller(
                 				switch (idType){
                 				
                 				case "UID":
-                                    sap.ui.getCore().byId("uIdMyProfile").setValue(data.Message);
+                                    sap.ui.getCore().byId("uIdMyProfile").setValue(data.Message.split(":")[1]);
                                     sap.ui.getCore().byId("msgstrpMyProfile").setType("Success");
                                     sap.ui.getCore().byId("msgstrpMyProfile").setText(
                                                     sap.ui.getCore().getModel("ShellI18n").getProperty("ScannedSuccessfully")
@@ -482,7 +482,7 @@ sap.ui.controller(
                 					break;
                 					
                 				case "BID":
-                                    sap.ui.getCore().byId("badgeIdMyProfile").setValue(data.Message);
+                                    sap.ui.getCore().byId("badgeIdMyProfile").setValue(data.Message.split(":")[1]);
                                     sap.ui.getCore().byId("msgstrpMyProfile").setType("Success");
                                     sap.ui.getCore().byId("msgstrpMyProfile").setText(
                                                     sap.ui.getCore().getModel("ShellI18n").getProperty("ScannedSuccessfully")

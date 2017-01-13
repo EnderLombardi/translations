@@ -38,7 +38,7 @@ sap.ui
 							path : "Reason",
 							attr : "Reason",
 							/*
-							 * childs : [ { id : "selectResponsible", type :
+							 * ! : [ { id : "selectResponsible", type :
 							 * "select", path : "ResponsibleGroup", attr :
 							 * "ResponsibleGroup",
 							 */
@@ -116,9 +116,17 @@ sap.ui
 					// *******************
 					onSelectionChange : function(oEvt) {
 						var that = this;
-						var id = oEvt.getSource().getId().split("--")[1];
-						this.findElement(this.selectTree, oEvt.getSource()
-								.getId().split("--")[1]).childs
+						if ( oEvt === "selectCategory" || oEvt === "selectreason" ){
+							
+							var id = oEvt
+							
+						} else {
+							
+							var id = oEvt.getSource().getId().split("--")[1];
+							
+						}
+						
+						this.findElement(this.selectTree, id).childs
 								.forEach(function(oElement) {
 									that.clearField(oElement);
 									that.filterField(oElement);
@@ -535,11 +543,9 @@ sap.ui
 														.getProperty("/MessageType"));
 								// forced fireChange event on Category to get a
 								// good list in Responsible Group.
-								this.getView().byId("selectCategory")
-										.fireChange(
-												this.getView().byId(
-														"selectCategory")
-														.getSelectedItem());
+								this.onSelectionChange("selectCategory");
+								//this.getView().byId("selectCategory").fireChange(
+								//	"selectCategory");
 								this
 										.getView()
 										.byId("selectResponsible")
@@ -617,10 +623,17 @@ sap.ui
 								}
 
 								oMatInp.setTokens(aMatTokens);
+<<<<<<< MESv1.5
 								this._materialListDialog.close();
 
 								for ( var j in aJigArray) {
 
+=======
+								//this._materialListDialog.close();
+								
+								for (var j in aJigArray) {
+	
+>>>>>>> 6feefe1 Badge reader: Airbus Defect #360
 									if (aJigArray[j] != "") {
 										var loJigToken = new sap.m.Token({
 											text : aJigArray[j],
@@ -633,8 +646,14 @@ sap.ui
 								}
 
 								oJiginp.setTokens(aJigTokens);
+<<<<<<< MESv1.5
 								this.jigToolSelectDialog.close();
 
+=======
+								//this.jigToolSelectDialog.close();
+							
+								
+>>>>>>> 6feefe1 Badge reader: Airbus Defect #360
 								this.initializeTree();
 
 								// Disable/Enable inputs according to

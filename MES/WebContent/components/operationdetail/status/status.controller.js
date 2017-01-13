@@ -282,7 +282,7 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
 				switch (idType){
 				
 				case "UID":
-					sap.ui.getCore().byId("UIDForConfirmation").setValue(data.Message);
+					sap.ui.getCore().byId("UIDForConfirmation").setValue(data.Message.replace(":", ""));
 					sap.ui.getCore().byId("msgstrpConfirm").setType("Success");
 					sap.ui.getCore().byId("msgstrpConfirm").setText(
 							sap.ui.getCore().getModel("ShellI18n").getProperty("ScannedSuccessfully"));
@@ -290,7 +290,7 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
 					break;
 					
 				case "BID":
-					sap.ui.getCore().byId("badgeIDForConfirmation").setValue(data.Message);
+					sap.ui.getCore().byId("badgeIDForConfirmation").setValue(data.Message.replace(":", ""));
 					sap.ui.getCore().byId("msgstrpConfirm").setType("Success");
 					sap.ui.getCore().byId("msgstrpConfirm").setText(
 							sap.ui.getCore().getModel("ShellI18n").getProperty("ScannedSuccessfully"));
