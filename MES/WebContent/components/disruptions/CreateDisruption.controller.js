@@ -38,7 +38,7 @@ sap.ui
 							path : "Reason",
 							attr : "Reason",
 							/*
-							 * ! : [ { id : "selectResponsible", type :
+							 * childs : [ { id : "selectResponsible", type :
 							 * "select", path : "ResponsibleGroup", attr :
 							 * "ResponsibleGroup",
 							 */
@@ -623,17 +623,10 @@ sap.ui
 								}
 
 								oMatInp.setTokens(aMatTokens);
-<<<<<<< MESv1.5
-								this._materialListDialog.close();
-
-								for ( var j in aJigArray) {
-
-=======
 								//this._materialListDialog.close();
 								
 								for (var j in aJigArray) {
 	
->>>>>>> 6feefe1 Badge reader: Airbus Defect #360
 									if (aJigArray[j] != "") {
 										var loJigToken = new sap.m.Token({
 											text : aJigArray[j],
@@ -646,14 +639,9 @@ sap.ui
 								}
 
 								oJiginp.setTokens(aJigTokens);
-<<<<<<< MESv1.5
-								this.jigToolSelectDialog.close();
-
-=======
 								//this.jigToolSelectDialog.close();
 							
 								
->>>>>>> 6feefe1 Badge reader: Airbus Defect #360
 								this.initializeTree();
 
 								// Disable/Enable inputs according to

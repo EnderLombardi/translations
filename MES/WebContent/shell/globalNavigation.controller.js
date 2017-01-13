@@ -550,6 +550,8 @@ sap.ui.controller(
                         var user = sap.ui.getCore().getElementById("userNameMyProfile").getValue();
                         var pass = sap.ui.getCore().getElementById("passwordMyProfile").getValue();
                         var pinCode = sap.ui.getCore().getElementById("pinCodeMyProfile").getValue();
+                        if(pinCode == "")
+                        	pinCode = "0000"; // Set Pin Code default to 0
 
                         if (user == "" || pass == "") {
                             sap.ui.getCore().byId("msgstrpMyProfile").setVisible(true);
