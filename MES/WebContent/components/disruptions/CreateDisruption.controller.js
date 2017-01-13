@@ -522,6 +522,9 @@ sap.ui
 					},
 
 					setDataForEditDisruption : function() {
+						
+						airbus.mes.disruptions.oView.viewDisruption.setBusy(true); // Set Busy Indicator true
+						
 						/*******************************************************
 						 * Pre-fill fields in update request
 						 */
@@ -700,7 +703,8 @@ sap.ui
 										.back();
 							}
 						}
-
+						
+						airbus.mes.disruptions.oView.viewDisruption.setBusy(false); // Set Busy Indicator false
 					},
 
 					setEnabledSelectBox : function(fCategory, fReason,

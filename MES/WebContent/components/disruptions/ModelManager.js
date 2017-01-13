@@ -88,9 +88,9 @@ airbus.mes.disruptions.ModelManager = {
 	 **************************************************************************/
 	loadDisruptionCustomData : function() {
 		var oModel = sap.ui.getCore().getModel("disruptionCustomData");
-		oModel.loadData(this.getDisruptionCustomData());
+		oModel.loadData(this.getDisruptionCustomDataURL());
 	},
-	getDisruptionCustomData : function() {
+	getDisruptionCustomDataURL : function() {
 		var urlCustomData = this.urlModel.getProperty("urlCustomData");
 		urlCustomData = airbus.mes.shell.ModelManager.replaceURI(urlCustomData,
 				"$site", airbus.mes.settings.ModelManager.site);
@@ -115,9 +115,9 @@ airbus.mes.disruptions.ModelManager = {
 	 **************************************************************************/
 	loadDisruptionCategory : function() {
 		var oModel = sap.ui.getCore().getModel("disruptionCategoryModel");
-		oModel.loadData(this.getDisruptionCategory());
+		oModel.loadData(this.getDisruptionCategoryURL());
 	},
-	getDisruptionCategory : function() {
+	getDisruptionCategoryURL : function() {
 		var urlCustomCategory = this.urlModel.getProperty("urlCustomCategory");
 		urlCustomCategory = airbus.mes.shell.ModelManager.replaceURI(
 				urlCustomCategory, "$site",
