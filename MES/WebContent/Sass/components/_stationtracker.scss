@@ -1222,7 +1222,7 @@ FROM CUSTOM CSS
     @include sapMPIBarType2(#005524, #003c19);
 }
 .sapMPIBarGrey{
-    @include sapMPIBarType1(#008cda, #006ca7, #d8d8d8 !important);
+    @include sapMPIBarType1(#008cda, #006ca7, #97999b !important);
 }
 .orange {
     color: orange;
