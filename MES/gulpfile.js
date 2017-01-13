@@ -22,7 +22,11 @@ var src = './WebContent';
 var rootdest = './build';
 var dest = rootdest + '/current';
 
-var pushServiceUrl = "https://dmiswde0.eu.airbus.corp/XMII/Illuminator?QueryTemplate=TEST_DBA%2FCreateFile&j_user=S00DB44&j_password=start101";
+var miiHost = 'http://swinsapdi01.ptx.fr.sopra:50000'; // 'https://dmiswde0.eu.airbus.corp';
+var miiUser = 'S00DB44';
+var miiPassword = 'start000'; //'start101';
+var miiTransaction = 'XX_MOD1684_MES_Temp%2FTools%2FCreateFile';
+var pushServiceUrl = `${ miiHost }/XMII/Illuminator?QueryTemplate=${ miiTransaction }&j_user=${ miiUser }&j_password=${ miiPassword }`;
 var rootRemotePath = "WEB://XX_MOD1684_MES_Temp/ui/mes";
 
 // Shell 
