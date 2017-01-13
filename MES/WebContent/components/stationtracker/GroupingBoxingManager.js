@@ -512,7 +512,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 							"state" : sStatus,
 							"totalDuration" : fDuration.toString(), 
 							// This is the real value of boxing 
-							"realValueBox" : key2.split("_")[0],
+							"realValueBox" : oModel[key][key1][key2][0][sBox],
 							"box" : key2,
 							"avlLine" : key1,
 							"group" : key,
