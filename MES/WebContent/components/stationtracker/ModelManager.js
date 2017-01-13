@@ -889,25 +889,22 @@ airbus.mes.stationtracker.ModelManager = {
 		var fAllDuration = 0;
 		var fAllProgress = 0;
 		var fNumberEl = 0;
-
+		var oHierarchy = airbus.mes.stationtracker.GroupingBoxingManager.operationDateIHierarchy;
 		// Check if there is only one operation on the worklist
 		// If yes, open the operation list
 		var aModel = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy[scheduler.getEvent(id).group][scheduler.getEvent(id).avlLine][scheduler.getEvent(id).box];
-		//Search avlDate and use it in operation Detail	
-		if ( airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy[scheduler.getEvent(id).group].hasOwnProperty(["I_" + scheduler.getEvent(id).avlLine] )) {
-			
-			if ( airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy[scheduler.getEvent(id).group]["I_" + scheduler.getEvent(id).avlLine].hasOwnProperty([scheduler.getEvent(id).box]) ) {
-
-				var sAvlStart = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy[scheduler.getEvent(id).group]["I_" + scheduler.getEvent(id).avlLine][scheduler.getEvent(id).box][0].START_TIME;
-				var sAvlEnd = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy[scheduler.getEvent(id).group]["I_" + scheduler.getEvent(id).avlLine][scheduler.getEvent(id).box][0].END_TIME;		
-				
-			}
-			
-		}
-		
 		
 		if (aModel.length === 1) {
-
+			//Get avlDate initial of operation
+			var sId = aModel[0].OPERATION_ID + aModel[0].WORKORDER_ID;
+			
+			if ( oHierarchy[sId] != undefined ){
+				
+				var sAvlStart = oHierarchy[sId].startI
+				var sAvlEnd = oHierarchy[sId].endI		
+								
+			}
+			
 			airbus.mes.stationtracker.ModelManager.openOperationDetailPopup(aModel,sAvlStart,sAvlEnd);
 			return;
 		}

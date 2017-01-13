@@ -3,7 +3,9 @@
 jQuery.sap.declare("airbus.mes.stationtracker.GroupingBoxingManager")
 airbus.mes.stationtracker.GroupingBoxingManager	 = {
 	
+	constante :  "*@#&~^",
 	operationHierarchyDelay : {},
+	operationDateIHierarchy : {},
 	operationHierarchy : {},
 	shiftHierarchy : {},
 	shiftNoBreakHierarchy: [],
@@ -159,13 +161,22 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 		var oHierachy = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy;
 		var oHierarchyDelay = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchyDelay;
 		var oFormatter = airbus.mes.stationtracker.util.Formatter;
-
+		var oHierarchyI = airbus.mes.stationtracker.GroupingBoxingManager.operationDateIHierarchy;
+		var sCstSplit = airbus.mes.stationtracker.GroupingBoxingManager.constante;
+		
 		oModel.forEach(function(el){
 			
 			var ssAvLine;
 			var ssGroup;
 			var oShift;
 			var sIdOpe;
+			var sID = el.OPERATION_ID + el.WORKORDER_ID;
+			
+			//Create operationDateIHierarch permit to store on one operation the date rescheduled and initial
+			if ( !oHierarchyI[sID] ){
+				
+				oHierarchyI[sID] = {};
+			}
 			
 			if ( sGroup === "AVL_LINE") {				
 			// permit to create only one folder when avl Line is selected.	
@@ -178,8 +189,13 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 			// permit to create initial AVL line
 			if (sInitial) {
 				ssAvLine = "I_" +  el.AVL_LINE 	+ "_" + el.SKILLS;
+				oHierarchyI[sID].startI = el.START_TIME;
+				oHierarchyI[sID].endI = el.END_TIME;				
+
 			} else {
 				ssAvLine = el.AVL_LINE + "_" + el.SKILLS;
+				oHierarchyI[sID].start = el.START_TIME;
+				oHierarchyI[sID].end = el.END_TIME;				
 			}
 					
 			//permit to DO THE boxing on the only corresponding shift selected in day mode
@@ -204,7 +220,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 					
 				}
 			// This is the name of the box where will be put all operation
-			var ssBox = el[sBoxing] + "_"  + el[sIdOpe] + "_" + oShift.shiftID;
+			var ssBox = el[sBoxing] + sCstSplit  + el[sIdOpe] + sCstSplit + oShift.shiftID;
 
 						
 			if ( !oHierachy[ssGroup] ) {
@@ -306,7 +322,8 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 			if ( oFormatter.jsDateFromDayTimeStr(el.END_TIME) < new Date() ) {		
 				oHierarchyDelay[ssGroup][ssAvLine].duration += parseFloat(el.DURATION);
 			}
-			oHierarchyDelay[ssGroup][ssAvLine].progress += parseFloat(el.PROGRESS);	
+			oHierarchyDelay[ssGroup][ssAvLine].progress += parseFloat(el.PROGRESS);
+						
 		});
 	},
 	
@@ -314,7 +331,8 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 //		var t0 = performance.now();	not used
 		var oGroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
 		var oFormatter = airbus.mes.stationtracker.util.Formatter;
-		
+		var sCstSplit = airbus.mes.stationtracker.GroupingBoxingManager.constante;
+
 		oGroupingBoxingManager.groupingBoxing(sGroup,sBox);
 		
 	    //var oModelAffectation = sap.ui.getCore().getModel("affectationModel");
@@ -464,7 +482,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 //								"rmaStatus" : Math.max.apply(null,aRMAStatus),
 								"shopOrderDescription" : sShopOrderDescription,
 								// This is the real value of boxing 
-								"realValueBox" : key2.split("_")[0],
+								"realValueBox" : key2.split(sCstSplit)[0],
 								"box" : key2,
 								"group" : key,
 								"avlLine" : key1,
@@ -513,7 +531,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 							"state" : sStatus,
 							"totalDuration" : fDuration.toString(), 
 							// This is the real value of boxing 
-							"realValueBox" : oModel[key][key1][key2][0][sBox],
+							"realValueBox" : key2.split(sCstSplit)[0],
 							"box" : key2,
 							"avlLine" : key1,
 							"group" : key,
