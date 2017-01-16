@@ -84,7 +84,7 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
               this.addParent(this.selectTree, undefined);
 
               this.getView().byId("selectreason").setSelectedKey();
-              this.getView().byId("selectRootCause").setSelectedKey();
+             // this.getView().byId("selectRootCause").setSelectedKey();
               this.getView().byId("selectResponsible").setSelectedKey();
               this.getView().byId("selectOriginator").setSelectedKey();
               if (!sap.ui.Device.system.desktop) {
@@ -310,10 +310,10 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
                            }, {
                                   "attribute" : "STATUS",
                                   "value" : airbus.mes.disruptions.Formatter.status.pending
-                           }, {
+                           }, /*{
                                   "attribute" : "ROOT_CAUSE",
                                   "value" : oView.byId("selectRootCause").getSelectedKey()
-                           }, {
+                           },*/ {
                                   "attribute" : "MSN",
                                   "value" : airbus.mes.settings.ModelManager.msn
                            }, {
@@ -412,7 +412,7 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
               var sMessageRef = sap.ui.getCore().getModel("DisruptionDetailModel").getProperty("/MessageRef")
               var sReason = oView.byId("selectreason").getSelectedKey();
               var sResponsibleGroup = oView.byId("selectResponsible").getSelectedKey();
-              var sRootCause = oView.byId("selectRootCause").getSelectedKey();
+              // var sRootCause = oView.byId("selectRootCause").getSelectedKey(); // [MES V1.5] root cause removed
               var iTimeLost = airbus.mes.disruptions.Formatter.timeToMilliseconds(oView.byId("timeLost").getValue());
               var dFixedByTime = oView.byId("expectedDate").getValue() + " " + oView.byId("expectedTime").getValue();
               var sComment = oView.byId("comment").getValue()
@@ -420,8 +420,8 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
               var dPromisedTime = oView.byId("promisedDate").getValue() === "" ? "" : oView.byId("promisedDate").getValue() + " "
                      + oView.byId("promisedTime").getValue();
               // call update service
-              airbus.mes.disruptions.ModelManager.updateDisruption(sMessageRef, sReason, sResponsibleGroup, sRootCause, iTimeLost, dFixedByTime, sComment, iGravity,
-                     dPromisedTime);
+              airbus.mes.disruptions.ModelManager.updateDisruption(sMessageRef, sReason, sResponsibleGroup, iTimeLost, dFixedByTime, sComment, iGravity,
+                     dPromisedTime);//[MES V1.5]root cause removed
 
        },
 
@@ -452,7 +452,7 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
                             this.getView().byId("selectResponsible").setSelectedKey(oModel.getProperty("/ResponsibleGroup"));
                             this.getView().byId("selectreason").setSelectedKey(oModel.getProperty("/Reason"));
                             this.getView().byId("selectOriginator").setSelectedKey(oModel.getProperty("/OriginatorGroup"));
-                            this.getView().byId("selectRootCause").setSelectedKey(oModel.getProperty("/RootCause"));
+                            //this.getView().byId("selectRootCause").setSelectedKey(oModel.getProperty("/RootCause")); // [MES V1.5] root cause removed
 
                            this.getView().byId("gravity").setSelectedKey(oModel.getProperty("/Gravity"));
 
@@ -557,9 +557,10 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
        },
 
        setEnabledSelectBox : function(fCategory, fReason, fResponsible, fRootCause) {
+    	 //MES V1.5 root cause removed
               this.getView().byId("selectCategory").setEnabled(fCategory);
               this.getView().byId("selectreason").setEnabled(fReason);
-              this.getView().byId("selectRootCause").setEnabled(fRootCause);
+             // this.getView().byId("selectRootCause").setEnabled(fRootCause);
               this.getView().byId("selectResponsible").setEnabled(fResponsible);
 
        },
@@ -665,7 +666,7 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
               this.getView().byId("selectreason").setSelectedKey();
               this.getView().byId("selectResponsible").setSelectedKey();
               this.getView().byId("selectOriginator").setSelectedKey();
-              this.getView().byId("selectRootCause").setSelectedKey();
+              //this.getView().byId("selectRootCause").setSelectedKey(); // MES V1.5 root cause Removed
               this.getView().byId("gravity").setSelectedKey();
               this.getView().byId("timeLost").setValue();
               this.getView().byId("comment").setValue();
@@ -949,7 +950,7 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
 
                             this.getView().byId("selectOriginator").setSelectedKey(oModel.getProperty("/OriginatorGroup"));
 
-                            this.getView().byId("selectRootCause").setSelectedKey(oModel.getProperty("/RootCause"));
+                            //this.getView().byId("selectRootCause").setSelectedKey(oModel.getProperty("/RootCause")); // MES V1.5 root cause Removed
 
                            this.getView().byId("gravity").setSelectedKey(oModel.getProperty("/Gravity"));
 
