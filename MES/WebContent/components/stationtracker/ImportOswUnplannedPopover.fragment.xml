@@ -12,10 +12,8 @@
 		<content>
 
 			<VBox>
-
 				<HBox>
-					<!--  <ToggleButton id="SelectAllUnpd" text="{StationTrackerI18n>WorklistSelectAll}" enabled="true" pressed="false" press="onUnplannedSelectAll" class="sapUiTinyMarginBeginEnd" type="Transparent"/> -->
-					<CheckBox id="SelectAllUnpd" selected="false" select ="onUnplannedSelectAll" class="sapUiTinyMarginBeginEnd" /> 
+					<CheckBox id="SelectAllUnpd" selected="false" select="onUnplannedSelectAll" class="sapUiTinyMarginBeginEnd" /> 
 						<MultiComboBox id="filterPhStation" items="{WorkListModel>/}" placeholder="{StationTrackerI18n>PhStation}"
 						selectionFinish="filterPhStation" visible="false" class="sapUiSizeCompact" width="20rem">
 						<core:Item key="{WorkListModel>WORK_CENTER}" text="{WorkListModel>DESCRIPTION}"/> 
@@ -75,7 +73,6 @@
 						</InputListItem>
 					</items>
 				</List>
-
 			</VBox>
 		</content>
 		<buttons>
@@ -84,8 +81,7 @@
 				visible="true">
 			</Button>
 			<Button text="{StationTrackerI18n>Close}" type="Transparent" icon="sap-icon://decline"
-				class="sapUiTinyMarginBeginEnd" press="onCloseDialog"
-			>
+				class="sapUiTinyMarginBeginEnd" press="onCloseImportOswUnplannedPopoverDialog">
 			</Button>
 		</buttons>
 	</Dialog>

@@ -130,12 +130,9 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 		var DispValue2 = c.getDisplayValue2();
 		var ShowValue = c.getShowValue();
 		var paused = c.getPaused();
-//		var progress = c.getProgress();
 		var rmastatus = c.getRmastatus();
 		var prevstarted = c.getPrevstarted();
-//		var skill = c.getSkill();
 		var osw = c.getOsw();
-//		var S = c.getState();	not used
 		var W = c.getWidth();
 		var H = c.getHeight();
 		var sRightIcon = "";	
@@ -186,7 +183,6 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 					break;
 					case "---" :				
 					// Operation is not started sStatus = "1" Operation is pause	
-							//if ( paused === "---" && progress != "0" ) sStatus = "3";
 							if ( paused === "---" && prevstarted === "true" && Status != "C" ) {
 								sRightIcon = boxDisplayManager.rightPaused;
 								r.addClass('sapMPIBarGreen');
@@ -202,13 +198,16 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 					sLeftIcon =  boxDisplayManager.leftTriangleIcon_Dandelion;
 				}
 				//OSW
-				if (osw[0] === "3" ){ 
+				if (osw[0] === "3" || airbus.mes.stationtracker.CheckQa === "OSW"){ 
 					sLeftIcon2 = boxDisplayManager.rightOswIcon_Dandelion_Constructor(sOSW);
 				} 
 				//unplanned
 				if (osw[0] === "1"  || sUnplanned === "1" ){
 					sLeftIcon3 = boxDisplayManager.rightOswIcon_Dandelion_Constructor(sUNPD);
-				}
+				} 
+				 //{ if it's not unplanned it's osw because this code is only used for osw and unplanned pop-up
+				//	sLeftIcon2 = boxDisplayManager.rightOswIcon_Dandelion_Constructor(sOSW);
+				//}
 											
 				switch ( DisruptionStatus ) {		
 					case "D1" :
@@ -221,11 +220,9 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 								sLeftIcon = boxDisplayManager.leftTriangleIcon_Petrol;
 							}
 							if (osw[0] === "3" ){ //OSW
-								//sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 petrol-back dandelion"><b style="padding-left:1px">'+sOSW+'</b></i>';
 								sLeftIcon2 = boxDisplayManager.rightOswIcon_Dandelion_Constructor(sOSW);
 							}
 							if (osw[0] === "1" || sUnplanned === "1" ){ //unplanned
-								//sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 petrol-back dandelion"><b style="padding-left:1px">'+sUNPD+'</b></i>';
 								sLeftIcon3 = boxDisplayManager.rightOswIcon_Dandelion_Constructor(sUNPD);
 							}
 							//}
@@ -275,28 +272,12 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.customProgressIndicator", 
 								sLeftIcon3 = boxDisplayManager.rightOswIcon_Dandelion_Constructor(sUNPD);
 							}
 					break;
-					/*case "B" :
-					//andon
-							//if ( Status === "B") sStatus = "99";
-							r.addStyle('background-color','#e4002b');
-							sRightIcon = '<i class="fa fa-stop rightIcon"></i>';
-							if ( rmastatus === 1 ){	//rma
-								sLeftIcon = '<i class="fa fa-exclamation-triangle triangleIcon"></i>';
-							}
-							if (osw[0] === "3" ){ //OSW
-								sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 cherry-red white"><b style="padding-left:1px">'+sOSW+'</b></i>';
-							}
-							if (osw[0] === "1" ){ //unplanned
-								sLeftIcon2 = '<i class="fa fa-refresh oswIcon2 cherry-red white"><b style="padding-left:1px">'+sUNPD+'</b></i>';
-							}
-							break;*/
 					default:		
 				}
 					
 				// Operation Completed
 				if (Status === "C") {
 					
-					//sStatus = "0";
 					r.addStyle('background-color','#0085ad');
 					PercValue = 0;
 					sRightIcon = boxDisplayManager.rightCheck;

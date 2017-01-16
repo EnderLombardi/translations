@@ -344,8 +344,6 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
     onOSWPress : function() {
 
         if ( airbus.mes.stationtracker.ImportOswUnplannedPopover === undefined ) {
-//            not used
-//            var oView = airbus.mes.stationtracker.oView;
 
             airbus.mes.stationtracker.ImportOswUnplannedPopover = sap.ui.xmlfragment("ImportOswUnplannedPopover","airbus.mes.stationtracker.ImportOswUnplannedPopover", airbus.mes.stationtracker.oView.getController());
             airbus.mes.stationtracker.ImportOswUnplannedPopover.addStyleClass("alignTextLeft");
@@ -414,8 +412,6 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
         // show loading on gantt
         airbus.mes.stationtracker.oView.byId("stationtracker").setBusy(true);
 //        Filter the stationtracker model with current production group
-//        not used
-//        var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
         var sProdGroup = airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("ProductionGroup") + " : ";
         var sProdGroupMii = "";
 
@@ -654,7 +650,6 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
     },
 
     onUnplannedClose : function(oEvent) {
-
         airbus.mes.stationtracker.worklistPopover.close();
 
     },
@@ -1158,6 +1153,11 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
         oEvent.getSource().getParent().close();
     },
 
+    onCloseImportOswUnplannedPopoverDialog : function(oEvent) {
+        airbus.mes.stationtracker.CheckQa ="";
+        oEvent.getSource().getParent().close();
+    },
+
 
     /******************************************
      * Operation Detail Pop-Up Close functions
@@ -1257,14 +1257,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
     },
 
     onCancelCheckQA : function(oEvent){
-    	
         this.onCloseDialog(oEvent);
-//        //Render station tracker if cancel is selected => replace the operation at the previous place
-//        if (  airbus.mes.stationtracker.CheckQa === "RESCHEDULING" ) {
-//        	
-//        	airbus.mes.shell.oView.getController().renderStationTracker();
-//        	
-//        }
     },
 
     deleteLineAssignment : function(){
@@ -1282,7 +1275,6 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
         var oList = oEvt.getSource();
         var oInfoToolbar = sap.ui.getCore().byId("productionGroupPopover--idInfoToolbar");
         var oLabel  =  oInfoToolbar.getContent()[0];
-        //alert("oInfoToolbar : " + oInfoToolbar)
         var aContexts = oList.getSelectedContexts(true);
         // update UI
         var bSelected = (aContexts && aContexts.length > 0);
@@ -1323,8 +1315,6 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
         binding.filter(Filter);
 
         airbus.mes.stationtracker.ModelManager.savePhStation(aValueSelected);
-
-
     }
 
 });
