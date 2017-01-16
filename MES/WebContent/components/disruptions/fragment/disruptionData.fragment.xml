@@ -235,6 +235,8 @@
 						<core:Item text="{disruptionCustomData>Handle}" key="{disruptionCustomData>Handle}" />
 					</items>
 				</Select>
+				<Input id="description" maxLength="40" visible="false" />
+									
 
 			</f:content>
 
