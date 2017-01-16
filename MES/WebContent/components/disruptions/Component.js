@@ -2,15 +2,14 @@
 jQuery.sap.require("sap.ui.core.UIComponent");
 jQuery.sap.require("airbus.mes.disruptions.ModelManager");
 jQuery.sap.require("airbus.mes.disruptions.Formatter");
+jQuery.sap.require("airbus.mes.disruptions.AttachmentManager");
 
 jQuery.sap.declare("airbus.mes.disruptions.Component");
 
 sap.ui.core.UIComponent.extend("airbus.mes.disruptions.Component", {
     metadata : {
         properties : {},
-        //includes : [ " " ]
-    // array of css and/or javascript files that should be used in the component
-
+        //global.css already included in components\settings\manifest.json so no need to include it here
     }
 
 });
@@ -38,6 +37,12 @@ airbus.mes.disruptions.Component.prototype.createContent = function() {
             type : "XML",
             height:"100%"
         })
+       this.oView.disruptionDetail = sap.ui.view({
+            id : "disruptionDetail",
+            viewName : "airbus.mes.disruptions.disruptionDetail",
+            type : "XML",
+            height:"100%"
+        })
 
         var i18nModel = new sap.ui.model.resource.ResourceModel({
             bundleName : "airbus.mes.disruptions.i18n.i18n"
@@ -46,6 +51,7 @@ airbus.mes.disruptions.Component.prototype.createContent = function() {
 
         this.oView.viewDisruption.setModel(i18nModel, "i18nModel");
         this.oView.createDisruption.setModel(i18nModel, "i18nModel");
+        this.oView.disruptionDetail.setModel(i18nModel, "i18nModel");
 
         airbus.mes.disruptions.oView = this.oView
 
@@ -54,6 +60,9 @@ airbus.mes.disruptions.Component.prototype.createContent = function() {
 
         //Model for custom data of create disruption
         this.oView.createDisruption.setModel(sap.ui.getCore().getModel("disruptionCustomData"),"disruptionCustomData");
+
+        //Model for Issuer of create disruption - V1.5
+        this.oView.createDisruption.setModel(sap.ui.getCore().getModel("ressourcePoolModel"),"ressourcePoolModel");
 
 
         //Model for custom data of edit disruption
@@ -68,9 +77,34 @@ airbus.mes.disruptions.Component.prototype.createContent = function() {
         //Model for disruptionCategoryModel
         this.oView.createDisruption.setModel(sap.ui.getCore().getModel("disruptionCategoryModel"),"disruptionCategoryModel");
 
-        return this.oView;
+        /******
+         *
+         * set models on disruption Detail Page MES V1.5
+         */
+        //Model for enabling to create and edit disruption
+        this.oView.disruptionDetail.setModel(sap.ui.getCore().getModel("setEditable"),"setEditable");
+
+        // Model for Disruptions details
+        this.oView.disruptionDetail.setModel(sap.ui.getCore().getModel("operationDisruptionsModel"),"operationDisruptionsModel");
+
+        //Model for custom data of create disruption
+        this.oView.disruptionDetail.setModel(sap.ui.getCore().getModel("disruptionCustomData"),"disruptionCustomData");
+
+        //Model for custom data of edit disruption
+        this.oView.disruptionDetail.setModel(sap.ui.getCore().getModel("DisruptionDetailModel"),"DisruptionDetailModel");
+
+        //Model for Material List
+        this.oView.disruptionDetail.setModel(sap.ui.getCore().getModel("MaterialListModel"),"MaterialListModel");
+
+        //Model for JigTool List
+        this.oView.disruptionDetail.setModel(sap.ui.getCore().getModel("JigtoolListModel"),"JigtoolListModel");
+
+        //Model for disruptionCategoryModel
+        this.oView.disruptionDetail.setModel(sap.ui.getCore().getModel("disruptionCategoryModel"),"disruptionCategoryModel");
+
+        return this.oView.viewDisruption;
 
     } else {
-    	return airbus.mes.disruptions.oView;
+        return airbus.mes.disruptions.oView;
     }
 };
