@@ -59,6 +59,9 @@
                     <TextArea id="reasonCodeComments" />
                 </f:content>
             </f:SimpleForm>
+            <HBox>
+                <CheckBox id="confirmTimeWorked" text="Confirm time worked" selected="false" enabled="true" />
+            </HBox>
         </content>
         <buttons>
             <Button id="submit" text="{i18n>submit}" press="onSubmitReasonCode"
