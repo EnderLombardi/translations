@@ -47,9 +47,8 @@ WORK LIST POP OVER
         height:20px;
         color: $white-two;
         overflow: hidden;
+        padding-right: 6px;
         &.rightIcon {
-            padding-left: 6px;
-            padding-right: 6px;
             float: right;
             &.petrol {
                 color:$petrol;
@@ -57,9 +56,11 @@ WORK LIST POP OVER
         }
         &.dandelion{
             color: $dandelion;
+            padding-right: 6px;
         }
         &.oswIcon2 {
             @extend %oswIcon2;
+            padding-right: 6px;
             & b {
                 font-family: arial;
             }
@@ -68,7 +69,7 @@ WORK LIST POP OVER
             &.triangleIcon{
                 &.petrol{
                     color:$petrol;
-                   }
+                }
             }
         }
 

@@ -426,15 +426,17 @@ WORK LIST POP OVER
   line-height: 20px;
   height: 20px;
   color: #ffffff;
-  overflow: hidden; }
+  overflow: hidden;
+  padding-right: 6px; }
 .classWorklistPopover .fa.rightIcon {
-  padding-left: 6px;
-  padding-right: 6px;
   float: right; }
 .classWorklistPopover .fa.rightIcon.petrol {
   color: rgba(0, 86, 112, 0.94); }
 .classWorklistPopover .fa.dandelion {
-  color: #fbec00; }
+  color: #fbec00;
+  padding-right: 6px; }
+.classWorklistPopover .fa.oswIcon2 {
+  padding-right: 6px; }
 .classWorklistPopover .fa.oswIcon2 b {
   font-family: arial; }
 .classWorklistPopover .fa.fa-exclamation-triangle.triangleIcon.petrol {
