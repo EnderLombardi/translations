@@ -663,6 +663,7 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
        * Reset all the fields of Form create disruption
        */
        resetAllFields : function() {
+    	   this.getView().byId("selectFivemCategory").setSelectedKey();
               this.getView().byId("selectCategory").setSelectedKey();
               this.getView().byId("selectreason").setSelectedKey();
               this.getView().byId("selectResponsible").setSelectedKey();
