@@ -8,7 +8,7 @@
 			<VBox class="sapMFooter-CTX classWorklistPopoverHeader">
 				<custom:customProgressIndicator id="overallProgress"
 					visible="false" width="auto" state="sap.ui.core.ValueState.Success"
-					unplanned="{WorkListOverallModel>/0/>ISUNPLANNED}" disruption="{WorkListOverallModel>/0/DISRUPTION}"
+					unplanned="{WorkListOverallModel>/0/ISUNPLANNED}" disruption="{WorkListOverallModel>/0/DISRUPTION}"
 					paused="{WorkListOverallModel>/0/PAUSED}" progress="{WorkListOverallModel>/0/PROGRESS}"
 					rmastatus="{WorkListOverallModel>/0/RMA_STATUS_COLOR}" osw="{WorkListOverallModel>/0/EXECUTION_STATION_SOURCE}"
 					status="{WorkListOverallModel>/0/STATE}" prevstarted="{WorkListOverallModel>/0/PREVIOUSLY_STARTED}"
