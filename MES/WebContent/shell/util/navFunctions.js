@@ -106,7 +106,7 @@ airbus.mes.shell.util.navFunctions = {
         if (airbus.mes.linetracker === undefined) {
 
             jQuery.sap.registerModulePath("airbus.mes.linetracker","../components/linetracker");
-            sap.ui.getCore().createComponent({ name : "airbus.mes.linetracker", });
+            sap.ui.getCore().createComponent({ name : "airbus.mes.linetracker"});
             nav.addPage(airbus.mes.linetracker.oView);
         }
         nav.to(airbus.mes.linetracker.oView.getId());
