@@ -322,6 +322,8 @@ airbus.mes.stationtracker.ModelManager = {
 							airbus.mes.stationtracker.AssignmentManager.checkQA = false;
 							airbus.mes.stationtracker.oView.getController().openCheckQAPopup(checkQAModel);
 						} else if (data.Rowsets.Rowset[0].Row[0].message == "S") {
+							// reuse default value of CheckQa permit to add user when checkQa is use
+					        airbus.mes.stationtracker.CheckQa = "";
 							airbus.mes.shell.oView.getController().renderStationTracker();
 							airbus.mes.stationtracker.ImportOswUnplannedPopover.close();
 							 if ( airbus.mes.stationtracker.dialogProdGroup != undefined ) { airbus.mes.stationtracker.dialogProdGroup.close(); }

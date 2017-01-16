@@ -567,7 +567,8 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
                     );
 
                 });
-
+                //store sfcstep and prodgroup if Qa check is not succesfull
+                airbus.mes.stationtracker.ImportOswUnplannedPopover.aSFC_Step = aSFC_Step;
                 airbus.mes.stationtracker.ModelManager.setOSW(aSFC_Step, "", false, false);
 
             } else {
