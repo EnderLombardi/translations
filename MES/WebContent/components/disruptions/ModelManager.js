@@ -7,6 +7,8 @@ airbus.mes.disruptions.ModelManager = {
 	createEditFlag : false,
 	urlModel : undefined,
 	queryParams : jQuery.sap.getUriParameters(),
+	
+	customDataLoaded: 0,
 
 	init : function(core) {
 
@@ -73,9 +75,19 @@ airbus.mes.disruptions.ModelManager = {
 
 	loadData : function() {
 
-		airbus.mes.disruptions.oView.viewDisruption.setBusy(true); // Set Busy
-																	// Indicator
-		// true
+		// Set Busy Indicator
+		switch (nav.getCurrentPage().getId()) {
+		
+		case "stationTrackerView":
+			sap.ui.getCore().byId("operationDetailPopup--operationDetailPopUp").setBusy(true)
+			break;
+		case "disruptiontrackerView":
+			sap.ui.getCore().byId("disruptionDetailPopup--disruptionDetailPopUp").setBusy(true)
+			break;
+		}
+		
+		airbus.mes.disruptions.ModelManager.customDataLoaded = 0; // Important
+
 		this.loadDisruptionCategory();
 		this.loadDisruptionCustomData();
 		this.loadMaterialList();
@@ -104,10 +116,33 @@ airbus.mes.disruptions.ModelManager = {
 	 * After Custom data for disruption is loaded
 	 **************************************************************************/
 	onDisruptionCustomDataLoad : function() {
+		airbus.mes.disruptions.ModelManager.customDataLoaded++;
+		if(airbus.mes.disruptions.ModelManager.customDataLoaded==2){
 
-		airbus.mes.disruptions.oView.viewDisruption.setBusy(false); // Set Busy
-																	// Indicator
-																	// false
+
+			/**
+			 * call setdataForEditDisruptionFunction using DisruptionDetail view MES
+			 * V1.5
+			 */
+			if (sap.ui.Device.system.desktop) {
+				airbus.mes.disruptions.oView.disruptionDetail.oController.setDisruptionDetailData();
+			}
+			else{
+				airbus.mes.disruptions.oView.createDisruption.oController.setDataForEditDisruption();
+			}
+			
+
+			// Un-Set Busy Indicator
+			switch (nav.getCurrentPage().getId()) {
+			
+			case "stationTrackerView":
+				sap.ui.getCore().byId("operationDetailPopup--operationDetailPopUp").setBusy(false)
+				break;
+			case "disruptiontrackerView":
+				sap.ui.getCore().byId("disruptionDetailPopup--disruptionDetailPopUp").setBusy(false)
+				break;
+			}
+		}
 	},
 
 	/***************************************************************************
@@ -130,17 +165,33 @@ airbus.mes.disruptions.ModelManager = {
 	},
 
 	onLoadDisruptionCategory : function() {
-		/**
-		 * call setdataForEditDisruptionFunction usin DisruptionDetail view MES
-		 * V1.5
-		 */
-		if (sap.ui.Device.system.desktop) {
-	/*		airbus.mes.disruptions.oView.disruptionDetail.oController
-					.setDataForEditDisruption();*/
-			airbus.mes.disruptions.oView.disruptionDetail.oController.setDisruptionDetailData();
-		} else {
-			airbus.mes.disruptions.oView.createDisruption.oController
-					.setDataForEditDisruption();
+
+		airbus.mes.disruptions.ModelManager.customDataLoaded++;
+		if(airbus.mes.disruptions.ModelManager.customDataLoaded==2){
+			
+			
+			/**
+			 * call setdataForEditDisruptionFunction using DisruptionDetail view MES
+			 * V1.5
+			 */
+			if (sap.ui.Device.system.desktop) {
+				airbus.mes.disruptions.oView.disruptionDetail.oController.setDisruptionDetailData();
+			}
+			else{
+				airbus.mes.disruptions.oView.createDisruption.oController.setDataForEditDisruption();
+			}
+			
+
+			// Un-Set Busy Indicator
+			switch (nav.getCurrentPage().getId()) {
+			
+			case "stationTrackerView":
+				sap.ui.getCore().byId("operationDetailPopup--operationDetailPopUp").setBusy(false)
+				break;
+			case "disruptiontrackerView":
+				sap.ui.getCore().byId("disruptionDetailPopup--disruptionDetailPopUp").setBusy(false)
+				break;
+			}
 		}
 	},
 

@@ -68,9 +68,9 @@ airbus.mes.disruptions.Component.prototype.createContent = function() {
         //Model for disruptionCategoryModel
         this.oView.createDisruption.setModel(sap.ui.getCore().getModel("disruptionCategoryModel"),"disruptionCategoryModel");
 
-        return this.oView.viewDisruption;
+        return this.oView;
 
     } else {
-    	return airbus.mes.disruptions.oView.viewDisruption;
+    	return airbus.mes.disruptions.oView;
     }
 };

@@ -39,6 +39,7 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
 				type : "select",
 				path : "Reason",
 				attr : "Reason",
+				
 				/*
 				 * childs : [ { id : "selectResponsible", type :
 				 * "select", path : "ResponsibleGroup", attr :
@@ -427,7 +428,7 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
 
        setDataForEditDisruption : function() {
 
-              airbus.mes.disruptions.oView.viewDisruption.setBusy(true); // Set Busy
+              //airbus.mes.disruptions.oView.viewDisruption.setBusy(true); // Set Busy
                                                                                                                      // Indicator
                                                                                                                      // true
 
@@ -551,7 +552,7 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
                      }
               }
 
-              airbus.mes.disruptions.oView.viewDisruption.setBusy(false); // Set Busy
+             //airbus.mes.disruptions.oView.viewDisruption.setBusy(false); // Set Busy
                                                                                                                      // Indicator
                                                                                                                      // false
        },
