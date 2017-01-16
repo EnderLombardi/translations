@@ -24,47 +24,61 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
        // onBeforeRendering: function() {
        //
        // },
-       selectTree : {
-              id : "selectCategory",
-              type : "select",
-              path : "MessageType",
-              attr : "MessageType",
-              childs : [ {
-                     id : "selectreason",
-                     type : "select",
-                     path : "Reason",
-                     attr : "Reason",
-                     /*
-                     * childs : [ { id : "selectResponsible", type : "select", path :
-                     * "ResponsibleGroup", attr : "ResponsibleGroup",
-                     */
-                     childs : [ {
-                           id : "selectRootCause",
-                           type : "select",
-                           path : "RootCause",
-                           attr : "RootCause",
-                           childs : [ {
-                                  id : "handle",
-                                  type : "select",
-                                  path : "Handle",
-                                  attr : "Handle",
-                                  childs : []
-                           }, {
-                                  id : "Return",
-                                  type : "Return",
-                                  childs : []
-                           } ]
-                     }, ]
-              /* } ] */
-              }, {
-                     id : "selectResponsible",
-                     type : "select",
-                     path : "ResponsibleGroup",
-                     attr : "ResponsibleGroup",
-                     childs : []
-              } ]
-       },
+	selectTree : {
+		id : "selectFivemCategory",
+		type : "select",
+		path : "FivemCategory",
+		attr : "FivemCategory",
+		childs : [ {
+			id : "selectCategory",
+			type : "select",
+			path : "MessageType",
+			attr : "MessageType",
+			childs : [ {
+				id : "selectreason",
+				type : "select",
+				path : "Reason",
+				attr : "Reason",
+				/*
+				 * childs : [ { id : "selectResponsible", type :
+				 * "select", path : "ResponsibleGroup", attr :
+				 * "ResponsibleGroup",
+				 */
+				childs : [ {
+					id : "selectRootCause",
+					type : "select",
+					path : "RootCause",
+					attr : "RootCause",
+					childs : [ {
+						id : "handle",
+						type : "select",
+						path : "Handle",
+						attr : "Handle",
+						childs : []
+					}, {
+						id : "Return",
+						type : "Return",
+						childs : []
+					} ]
+				}]
 
+			}, {
+				id : "selectResponsible",
+				type : "select",
+				path : "ResponsibleGroup",
+				attr : "ResponsibleGroup",
+				childs : [ {
+					id : "selectResolver",
+					type : "select",
+					path : "UserID",
+					attr : "UserID",
+					childs : []
+				}
+				          ]
+			} ]
+		} ]
+		},
+		
        onInit : function() {
 
               this.addParent(this.selectTree, undefined);
@@ -157,6 +171,15 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
                      }
                      ;
                      oElement = oElement.parent;
+                        //Condition is put as Responsible group is only related to category directly and not
+						// 5 M category which is the parent of category
+						if (oElement != undefined){
+						if (oTree.id == "selectResponsible" && oElement.id == "selectFivemCategory")
+						oElement=undefined;
+						
+						if (oTree.id == "selectResolver" && oElement.id == "selectCategory")
+							oElement=undefined;
+						}
               }
               ;
               var temp = [];

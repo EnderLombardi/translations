@@ -228,12 +228,12 @@
 									</f:label>
 									<f:fields>
 										<Select id="selectResolver"
-											items="{ path : 'ressourcePoolModel>/Rowsets/Rowset/0/Row' }"
+											items="{ path : 'disruptionCustomData>/Rowsets/Rowset/3/Row' }"
 											forceSelection="false">
 											<items>
 												<core:Item
-													text="{ressourcePoolModel>lastName} {ressourcePoolModel>firstName}"
-													key="{ressourcePoolModel>user}" />
+													text="{disruptionCustomData>Name}"
+													key="{disruptionCustomData>UserID}" />
 											</items>
 											<layoutData>
 												<l:GridData span="L3 M9 S12" />
