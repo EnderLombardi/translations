@@ -64,7 +64,7 @@
 									<f:fields>
 										<Select id="selectFivemCategory" selectedKey=""
 											forceSelection="false" change="onSelectionChange"
-											items="{disruptionCustomData>/Rowsets/Rowset/1/Row}"    >
+											items="{disruptionCustomData>/Rowsets/Rowset/1/Row}">
 											<items>
 												<core:Item text="{disruptionCustomData>FivemCategory}" key="{disruptionCustomData>FivemCategory}" />
 												

@@ -9,7 +9,7 @@
 
 				<core:Title text="" />
 				<Label text="{i18nModel>5Mclass}" />
-				<Select id="5Mclass" enabled="false" change="onSelectionChange"
+				<Select id="selectFivemCategory" enabled="false" change="onSelectionChange"
 					forceSelection="false">
 					<items>
 						<core:Item text="{i18nModel>5Mclass_01}" key="{i18nModel>5Mclass_01}" />
