@@ -237,52 +237,16 @@ sap.ui
 							},
 							success : function(result, status, xhr) {
 								if (result.Rowsets.Rowset[0].Row[0].Message_Type != undefined &&
-										result.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
-									airbus.mes.shell.ModelManager
-											.messageShow(result.Rowsets.Rowset[0].Row[0].Message)
-									flagSuccess = false;
+									
+									result.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
+									airbus.mes.shell.ModelManager.messageShow(result.Rowsets.Rowset[0].Row[0].Message)
+
 								} else {
 									var message = airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("successClosed");
 									airbus.mes.shell.ModelManager.messageShow(message);
 									
-									/*var operationDisruptionsModel = this.getView().getModel("operationDisruptionsModel");	
-									var sPath = sap.ui.getCore().byId("closeDisruption-sPath").getText();
-									
-									operationDisruptionsModel.getProperty(sPath).Status = airbus.mes.disruptions.Formatter.status.closed;
-									operationDisruptionsModel.getProperty(sPath).TimeLost = timeLostValue;
-									
-									// Set Closure date
-									var date = new Date();
-
-									//avoid to get only one number on one number<10 (example => 14:05:04 instead of 14:5:4)
-									var closureDateTab = [date.getMonth()+1, date.getDate(), date.getHours(), date.getMinutes(), date.getSeconds()];
-									for (var i=0; i < closureDateTab.length; i++) {
-										if (closureDateTab[i]<10) {
-											closureDateTab[i] = "0" + closureDateTab[i];
-										}
-									}
-
-									//Update closure date in Model
-									operationDisruptionsModel.getProperty(sPath).ClosureDate = 
-										date.getFullYear() + "-" + closureDateTab[0] + "-" + closureDateTab[1] + " " + 
-										closureDateTab[2] + "-" + closureDateTab[3] + "-" + closureDateTab[4];
-									
-									var currDate = new Date();
-									var date = currDate.getFullYear() + "-" + currDate.getMonth() + "-" + currDate.getDate();
-									
-									var oComment = {
-											"Action" : this.getView().getModel("i18nModel").getProperty("close"),
-											"Comments" : commentValue,
-											"Counter" : "",
-											"Date" : date,
-											"MessageRef" : msgRefValue,
-											"UserFullName" : ( sap.ui.getCore().getModel("userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/first_name").toLowerCase() + " " +
-													sap.ui.getCore().getModel("userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/last_name").toLowerCase() )
-									};
-									
-									operationDisruptionsModel.getProperty("/Rowsets/Rowset/1/Row").push(oComment);
-									operationDisruptionsModel.refresh();*/
-									
+									var operationDisruptionsModel =  airbus.mes.disruptions.oView.viewDisruption.getModel("operationDisruptionsModel");	
+								
 									airbus.mes.operationdetail.oView.setBusy(false);
 
 									//load again disruptions data
@@ -292,6 +256,7 @@ sap.ui
 
 									
 									if (nav.getCurrentPage().sId == "stationTrackerView"){
+										
 										airbus.mes.disruptions.ModelManager.checkDisruptionStatus(operationDisruptionsModel);
 										
 										//Refresh station tracker

@@ -883,6 +883,7 @@ airbus.mes.disruptions.ModelManager = {
 	addComment : function(oComment, i18nModel) {
 		var sMessageSuccess = i18nModel.getProperty("commentSuccessful");
 		var sMessageError = i18nModel.getProperty("tryAgain");
+		var flagSuccess;
 
 		jQuery
 				.ajax({
