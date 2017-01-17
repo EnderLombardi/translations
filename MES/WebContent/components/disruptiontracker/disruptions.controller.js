@@ -174,8 +174,8 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 
 		oBinding.filter(aFilters);
 		airbus.mes.disruptiontracker.ModelManager.fixNoDataRow();// Remove
-																	// last
-																	// column
+		// last
+		// column
 
 	},
 
@@ -302,7 +302,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 			// this.getView().byId('refreshTime').setVisible(false);
 			// --commented by MJ
 			airbus.mes.shell.oView.byId('refreshTime').setVisible(false); // ++
-																			// MJ
+			// MJ
 			this.setDataForViewDisruptionDetail();
 			/** *********************MES V1.5 [End]******************** */
 
@@ -322,8 +322,8 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 			this.nav = sap.ui.getCore().byId("disruptionDetailPopup--disruptDetailNavContainer");
 
 			airbus.mes.shell.util.navFunctions.disruptionsDetail(this.nav, 0, // Report
-																				// Disruption
-																				// Button
+			// Disruption
+			// Button
 			0, // Create Button
 			sap.ui.getCore().byId("disruptionDetailPopup--btnUpdateDisruption"), // Update
 			// Button
@@ -345,7 +345,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 			// this.getView().byId('refreshTime').setVisible(false);
 			// --commented by MJ
 			airbus.mes.shell.oView.byId('refreshTime').setVisible(false); // ++
-																			// MJ
+			// MJ
 			// this.getView().byId('refreshTime').setVisible(false);
 
 		}
@@ -416,23 +416,58 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 	/**
 	 * [MES V1.5] [Beg]SD-SP1604983-DT-040 search disruption on basis of work
 	 * order/operation
+	 * 
+	 * @param {object}
+	 *            oEvt take control as an object
 	 */
-	onSearchDisruption : function() {
+	onSearchDisruption : function(oEvt) {
+		var sQuery = oEvt.getSource().getValue();
+		var oBinding = this.getView().byId("disruptionsTable").getBinding("items");
+		var aFilters = [];
+		var filter1 = new sap.ui.model.Filter("Operation", sap.ui.model.FilterOperator.Contains, sQuery)
+		aFilters.push(filter1);
+		oBinding.filter(new sap.ui.model.Filter(aFilters, false), "Control");
 
 	},
+	/**
+	 * search disruption on basis of work order/operation
+	 * 
+	 * @param {object}
+	 *            oEvt take control as an object
+	 */
 	onDisruptionSuggestions : function(oEvt) {
 		var oSF = this.getView().byId("disruptionSearchField");
-		var value = event.getParameter("suggestValue");
-		var filters = [];
+		var value = oEvt.getParameter("suggestValue");
+		var aTemp = [];
 		if (value) {
-			filters = [ new sap.ui.model.Filter([ new sap.ui.model.Filter("Operation", function(sText) {
-				return (sText || "").toUpperCase().indexOf(value.toUpperCase()) > -1;
-			}), new sap.ui.model.Filter("Status", function(sDes) {
-				return (sDes || "").toUpperCase().indexOf(value.toUpperCase()) > -1;
-			}) ], false) ];
+			oSF.getBinding("suggestionItems").filter(new sap.ui.model.Filter({
+				path : "Operation",
+				test : function(sText) {
+					if (((sText || "").toUpperCase().indexOf(value.toUpperCase()) > -1) && (aTemp.indexOf(sText) == -1) ) {
+							aTemp.push(sText);
+							return true;
+						} else {
+							return false;
+						}
+				
+				}
+			}));
 		}
-		oSF.getBinding("suggestionItems").filter(filters);
+		if (!value) {
+			oSF.getBinding("suggestionItems").filter(new sap.ui.model.Filter({
+				path : "Operation",
+				test : function(sText) {
+					if (aTemp.indexOf(sText) == -1) {
+						aTemp.push(sText);
+						return true;
+					} else {
+						return false;
+					}
+				}
+			}));
+		}
 		oSF.suggest();
+		this.onSearchDisruption(oEvt);
 
 	}
 });

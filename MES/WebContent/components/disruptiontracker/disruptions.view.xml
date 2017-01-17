@@ -61,19 +61,21 @@
 					<!-- <SearchField width="13rem" placeholder="{disruptiontrackerI18n>search}" 
 						/> -->
 					<ToolbarSpacer />
+					
 					<!--[MES V1.5] [Beg]SD-SP1604983-DT-040 -->
 					<SearchField id="disruptionSearchField" width="50%" placeholder="search for..."
 						enableSuggestions="true" search="onSearchDisruption" suggest="onDisruptionSuggestions"
 						suggestionItems="{
 					path: 'disruptionsTrackerModel>/Rowsets/Rowset/0/Row',
-					sorter: { path: 'Operation' }
+					sorter: { path: 'disruptionsTrackerModel>Operation' }
 				}">
 						<suggestionItems>
-							<SuggestionItem text="{Operation}"
-								description="{path:'Operation'} {path:'Status'}" key="{Operation}" />
+							<SuggestionItem text="{disruptionsTrackerModel>Operation}"
+								 key="{disruptionsTrackerModel>Operation}" />
 						</suggestionItems>
 					</SearchField>
 					<!--[MES V1.5] [End]SD-SP1604983-DT-040 -->
+					
 					<Button id="onDisruptionTableSettings" type="Transparent"
 						press="onDisruptionTableSettings" icon="sap-icon://drop-down-list"
 						tooltip="{disruptiontrackerI18n>disruptionFilter}" />
@@ -90,7 +92,7 @@
 
 		<Table id="disruptionsTable" class="disruptionsTable sapUiSmallMarginBottom"
 			items="{ path: 'disruptionsTrackerModel>/Rowsets/Rowset/0/Row' }"
-			growing="true" growingThreshold="50">
+			growing="true" growingThreshold="50" >
 			<headerToolbar>
 
 			</headerToolbar>
