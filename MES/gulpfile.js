@@ -4,8 +4,9 @@ var gulp = require('gulp');
 var ui5preload = require('gulp-ui5-preload');
 //var uglify = require('gulp-uglify');
 //var prettydata = require('gulp-pretty-data');
-//var gulpif = require('gulp-if');
-var pushMii = require('./src/gulp-push-mii')
+var gulpif = require('gulp-if');
+var escapeProperties = require('./src/gulp-escape-characters');
+var pushMii = require('./src/gulp-push-mii');
 var clean = require('gulp-clean');
 var rename = require("gulp-rename");
 var fs = require("fs");
@@ -37,7 +38,8 @@ gulp.task('ui5preload_shell', ['clean'], function() {
                     '!./shell/dist/**'
                   ], { cwd: src })
 //          .pipe(gulpif('**/*.js',uglify()))    //only pass .js files to uglify 
-//          .pipe(gulpif('**/*.xml',prettydata({type:'minify'}))) // only pass .xml to prettydata  
+//          .pipe(gulpif('**/*.xml',prettydata({type:'minify'}))) // only pass .xml to prettydata
+          .pipe(gulpif('**/i18n/*.properties', escapeProperties({ type: "properties" })))
           .pipe(ui5preload({base:'./WebContent/shell/', namespace:'airbus.mes.shell'}))
           .pipe(gulp.dest(dest + '/shell'));
      });
@@ -51,6 +53,7 @@ gulp.task('ui5preload_disruption', ['clean'], function() {
                   ])
 //          .pipe(gulpif('**/*.js',uglify()))    //only pass .js files to uglify 
 //          .pipe(gulpif('**/*.xml',prettydata({type:'minify'}))) // only pass .xml to prettydata  
+          .pipe(gulpif('**/i18n/*.properties', escapeProperties({ type: "properties" })))
           .pipe(ui5preload({base:'./WebContent/components/disruptions/', namespace:'airbus.mes.disruptions'}))
           .pipe(gulp.dest(dest + '/components/disruptions'));
      });
@@ -64,6 +67,7 @@ gulp.task('ui5preload_disruptiontracker', ['clean'], function() {
                   ])
 //          .pipe(gulpif('**/*.js',uglify()))    //only pass .js files to uglify 
 //          .pipe(gulpif('**/*.xml',prettydata({type:'minify'}))) // only pass .xml to prettydata  
+          .pipe(gulpif('**/i18n/*.properties', escapeProperties({ type: "properties" })))
           .pipe(ui5preload({base:'./WebContent/components/disruptiontracker/', namespace:'airbus.mes.disruptiontracker'}))
           .pipe(gulp.dest(dest + '/components/disruptiontracker'));
      });
@@ -77,6 +81,7 @@ gulp.task('ui5preload_disruptionkpi', ['clean'], function() {
                   ])
 //          .pipe(gulpif('**/*.js',uglify()))    //only pass .js files to uglify 
 //          .pipe(gulpif('**/*.xml',prettydata({type:'minify'}))) // only pass .xml to prettydata  
+          .pipe(gulpif('**/i18n/*.properties', escapeProperties({ type: "properties" })))
           .pipe(ui5preload({base:'./WebContent/components/disruptiontracker/kpi', namespace:'airbus.mes.disruptiontracker.kpi'}))
           .pipe(gulp.dest(dest + '/components/disruptiontracker/kpi'));
      });
@@ -90,6 +95,7 @@ gulp.task('ui5preload_homepage', ['clean'], function() {
                   ])
 //          .pipe(gulpif('**/*.js',uglify()))    //only pass .js files to uglify 
 //          .pipe(gulpif('**/*.xml',prettydata({type:'minify'}))) // only pass .xml to prettydata  
+          .pipe(gulpif('**/i18n/*.properties', escapeProperties({ type: "properties" })))
           .pipe(ui5preload({base:'./WebContent/components/homepage/', namespace:'airbus.mes.homepage'}))
           .pipe(gulp.dest(dest + '/components/homepage'));
      });
@@ -103,6 +109,7 @@ gulp.task('ui5preload_linetracker', ['clean'], function() {
                   ])
 //          .pipe(gulpif('**/*.js',uglify()))    //only pass .js files to uglify 
 //          .pipe(gulpif('**/*.xml',prettydata({type:'minify'}))) // only pass .xml to prettydata  
+          .pipe(gulpif('**/i18n/*.properties', escapeProperties({ type: "properties" })))
           .pipe(ui5preload({base:'./WebContent/components/linetracker/',namespace:'airbus.mes.linetracker'}))
           .pipe(gulp.dest(dest + '/components/linetracker'));
      });	 
@@ -116,6 +123,7 @@ gulp.task('ui5preload_login', ['clean'], function() {
                   ])
 //          .pipe(gulpif('**/*.js',uglify()))    //only pass .js files to uglify 
 //          .pipe(gulpif('**/*.xml',prettydata({type:'minify'}))) // only pass .xml to prettydata  
+          .pipe(gulpif('**/i18n/*.properties', escapeProperties({ type: "properties" })))
           .pipe(ui5preload({base:'./WebContent/components/login/', namespace:'airbus.mes.login'}))
           .pipe(gulp.dest(dest + '/components/login'));
      });	 
@@ -129,6 +137,7 @@ gulp.task('ui5preload_operationdetail', ['clean'], function() {
                   ])
 //          .pipe(gulpif('**/*.js',uglify()))    //only pass .js files to uglify 
 //          .pipe(gulpif('**/*.xml',prettydata({type:'minify'}))) // only pass .xml to prettydata  
+          .pipe(gulpif('**/i18n/*.properties', escapeProperties({ type: "properties" })))
           .pipe(ui5preload({base:'./WebContent/components/operationdetail/', namespace:'airbus.mes.operationdetail'}))
           .pipe(gulp.dest(dest + '/components/operationdetail'));
      });	 	 
@@ -142,6 +151,7 @@ gulp.task('ui5preload_polypoly', ['clean'], function() {
                   ])
 //          .pipe(gulpif('**/*.js',uglify()))    //only pass .js files to uglify 
 //          .pipe(gulpif('**/*.xml',prettydata({type:'minify'}))) // only pass .xml to prettydata  
+          .pipe(gulpif('**/i18n/*.properties', escapeProperties({ type: "properties" })))
           .pipe(ui5preload({base:'./WebContent/components/polypoly/',namespace:'airbus.mes.polypoly'}))
           .pipe(gulp.dest(dest + '/components/polypoly'));
      });
@@ -155,6 +165,7 @@ gulp.task('ui5preload_resourcepool', ['clean'], function() {
                   ])
 //          .pipe(gulpif('**/*.js',uglify()))    //only pass .js files to uglify 
 //          .pipe(gulpif('**/*.xml',prettydata({type:'minify'}))) // only pass .xml to prettydata  
+          .pipe(gulpif('**/i18n/*.properties', escapeProperties({ type: "properties" })))
           .pipe(ui5preload({base:'./WebContent/components/resourcepool/', namespace:'airbus.mes.resourcepool'}))
           .pipe(gulp.dest(dest + '/components/resourcepool'));
      });	 	 
@@ -168,6 +179,7 @@ gulp.task('ui5preload_settings', ['clean'], function() {
                   ])
 //          .pipe(gulpif('**/*.js',uglify()))    //only pass .js files to uglify 
 //          .pipe(gulpif('**/*.xml',prettydata({type:'minify'}))) // only pass .xml to prettydata  
+          .pipe(gulpif('**/i18n/*.properties', escapeProperties({ type: "properties" })))
           .pipe(ui5preload({base:'./WebContent/components/settings/', namespace:'airbus.mes.settings'}))
           .pipe(gulp.dest(dest + '/components/settings'));
      }); 
@@ -181,6 +193,7 @@ gulp.task('ui5preload_stationtracker', ['clean'], function() {
                   ])
 //          .pipe(gulpif('**/*.js',uglify()))    //only pass .js files to uglify 
 //          .pipe(gulpif('**/*.xml',prettydata({type:'minify'}))) // only pass .xml to prettydata  
+          .pipe(gulpif('**/i18n/*.properties', escapeProperties({ type: "properties" })))
           .pipe(ui5preload({base:'./WebContent/components/stationtracker/', namespace:'airbus.mes.stationtracker'}))
           .pipe(gulp.dest(dest + '/components/stationtracker'));
      });
@@ -194,6 +207,7 @@ gulp.task('ui5preload_worktracker', ['clean'], function() {
                   ])
 //          .pipe(gulpif('**/*.js',uglify()))    //only pass .js files to uglify 
 //          .pipe(gulpif('**/*.xml',prettydata({type:'minify'}))) // only pass .xml to prettydata  
+          .pipe(gulpif('**/i18n/*.properties', escapeProperties({ type: "properties" })))
           .pipe(ui5preload({base:'./WebContent/components/worktracker/', namespace:'airbus.mes.worktracker'}))
           .pipe(gulp.dest(dest + '/components/worktracker'));
 });
