@@ -12,6 +12,7 @@ airbus.mes.operationdetail.ModelManager = {
     },
     badgeReader:undefined,
     statusCheckBoxReasonCode:false,
+    durationNeededForCalc: undefined,
     brOnMessageCallBack:function (data) {},
     queryParams : jQuery.sap.getUriParameters(),
 
@@ -87,7 +88,9 @@ airbus.mes.operationdetail.ModelManager = {
      **************************************************************************/
     loadReasonCodeModel : function() {
         var oModel = sap.ui.getCore().getModel("reasonCodeModel");
-        oModel.loadData(this.getReasonCodesURL(), null, false);
+        if(this.getReasonCodesURL() != undefined){
+            oModel.loadData(this.getReasonCodesURL(), null, false);
+        }
     },
     getReasonCodesURL : function() {
         var urlReasonCodes = this.urlModel.getProperty("getReasonCodes");

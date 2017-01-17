@@ -36,12 +36,20 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
 
     addProgress : function() {
         sap.ui.getCore().byId("progressSlider").stepUp(1);
+        var progress = sap.ui.getCore().byId("progressSlider").getValue();
+        sap.ui.getCore().byId("imTextArea").setValue(airbus.mes.operationdetail.Formatter.convertProgressBarToImField(progress));
     },
 
     reduceProgress : function() {
         sap.ui.getCore().byId("progressSlider").stepDown(1);
+        var progress = sap.ui.getCore().byId("progressSlider").getValue();
+        sap.ui.getCore().byId("imTextArea").setValue(airbus.mes.operationdetail.Formatter.convertProgressBarToImField(progress));
     },
-
+    liveChangeIm : function(){
+        sap.ui.getCore().byId("imTextArea").attachLiveChange(function() {
+            console.log("1");
+        });
+    },
     /***********************************************************
      *
      * activate pause or confirm operation
@@ -160,27 +168,29 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
     confirmOperation : function(oEvent) {
 
         var oView = airbus.mes.operationdetail.status.oView;
-
+        var oModel = [sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0]];
+        airbus.mes.operationdetail.ModelManager.durationNeededForCalc = oModel[0].duration;
         // click on confirm
         oView.getController().operationStatus = "C";
         oView.getController().Mode = "EarnedStandards";
 
-        airbus.mes.operationdetail.ModelManager.loadReasonCodeModel();
+        //airbus.mes.operationdetail.ModelManager.loadReasonCodeModel();
         if (!oView._reasonCodeDialog) {
             oView._reasonCodeDialog = sap.ui.xmlfragment("airbus.mes.operationdetail.fragments.reasonCode", oView.getController());
             oView.addDependent(oView._reasonCodeDialog);
         }
-
         //[Defect 289] Clear Select and Text Field on opening of Popup
         sap.ui.getCore().byId("reasonCodeSelectBox").clearSelection();
         sap.ui.getCore().byId("reasonCodeComments").setValue();
         sap.ui.getCore().byId("confirmTimeWorked").setSelected(false);
         airbus.mes.operationdetail.ModelManager.statusCheckBoxReasonCode = false;
+        if(oModel[0].progres != 0 || oModel[0].progres != undefined){
+            var im  = airbus.mes.operationdetail.Formatter.convertProgressBarToImField(oModel[0].progress);
+            sap.ui.getCore().byId("imTextArea").setValue(im);
+        }
 //        $("#confirmTimeWorked-CB").attr("checked")
-
         oView._reasonCodeDialog.open();
     },
-
     completeOperation : function(oEvent) {
 
         var oView = airbus.mes.operationdetail.status.oView;

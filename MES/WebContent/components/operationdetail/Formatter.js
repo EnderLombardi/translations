@@ -38,7 +38,6 @@ airbus.mes.operationdetail.Formatter = {
     sliderStatusFirst : function(status, progress) {
         if (typeof progress == "undefined")
             return;
-
         this.removeStyleClass("dynProgressSlider");
         this.setVisible(true);
         this.removeStyleClass("sliderBlockedColor");
@@ -59,7 +58,6 @@ airbus.mes.operationdetail.Formatter = {
     },
 
     sliderStatus : function(status, progress) {
-
         if (typeof progress == "undefined")
             return;
 
@@ -120,5 +118,25 @@ airbus.mes.operationdetail.Formatter = {
             return true;
         } else
             return false;
+    },
+    convertMStoIM : function(){
+        var duration = airbus.mes.operationdetail.ModelManager.durationNeededForCalc;
+        var convert = ((duration * 100 * 0.001)/3600).toFixed(0);
+        return parseInt(convert);
+    },
+    convertProgressBarToImField : function(progress){
+        var duration = airbus.mes.operationdetail.Formatter.convertMStoIM();
+        var result = (duration * (progress / 100)).toFixed(0);
+        return result;
+    },
+    convertImFieldToProgressBar : function(im){
+        var duration = airbus.mes.operationdetail.Formatter.convertMStoIM();
+        var result = (im * 100 / duration).toFixed(0);
+        return result;
+    },
+    onChangeFieldIm : function(){
+        sap.ui.getCore().byId("imTextArea").on("keyup", function(){
+            console.log("toto");
+        })
     }
 };

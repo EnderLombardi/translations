@@ -20,12 +20,12 @@ sap.ui
                         this.nav = this.getView().byId("operDetailNavContainer");
                         if (airbus.mes.operationdetail.status === undefined || airbus.mes.operationdetail.status.oView === undefined) {
                             sap.ui.getCore().createComponent({
-                            	name : "airbus.mes.operationdetail.status",
+                                name : "airbus.mes.operationdetail.status",
                             });
                             this.nav.addPage(airbus.mes.operationdetail.status.oView);
                         }
                     },
-                    
+
                     expandOperationDetailPanel : function(oEvent) {
                         var toggleButton = this.getView().byId("opDetailExpandButton");
                         toggleButton.setVisible(!toggleButton.getVisible());
@@ -46,30 +46,29 @@ sap.ui
                      * @memberOf components.operationdetail.operationDetail
                      */
                     onAfterRendering : function() {
-                       
+
                        var oModel = [sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0]];
 
-                    	if ( bBatch1 ) {	
-                    		airbus.mes.operationdetail.oView.byId("idReschedule").setEnabled(false);
-                    	} else {
-                    		airbus.mes.operationdetail.oView.byId("idReschedule").setEnabled(true);
-                    	}
+                        if ( bBatch1 ) {
+                            airbus.mes.operationdetail.oView.byId("idReschedule").setEnabled(false);
+                        } else {
+                            airbus.mes.operationdetail.oView.byId("idReschedule").setEnabled(true);
+                        }
 
-                        if ( airbus.mes.stationtracker.GroupingBoxingManager.computeStatus(oModel[0].state, oModel[0].paused, oModel[0].previously_start ) === "0"  ) {	
-                    		airbus.mes.operationdetail.oView.byId("idReschedule").setEnabled(false);
-                    	} else {
-                    		airbus.mes.operationdetail.oView.byId("idReschedule").setEnabled(true);
-                    	}
+                        if ( airbus.mes.stationtracker.GroupingBoxingManager.computeStatus(oModel[0].state, oModel[0].paused, oModel[0].previously_start ) === "0"  ) {
+                            airbus.mes.operationdetail.oView.byId("idReschedule").setEnabled(false);
+                        } else {
+                            airbus.mes.operationdetail.oView.byId("idReschedule").setEnabled(true);
+                        }
 
-                    	this.disruptionsFlag = false;
+                        this.disruptionsFlag = false;
                         this.disruptionsCustomDataFlag = false;
-
                         // Navigation to Status every time pop-up is opened
                         this.nav.to(airbus.mes.operationdetail.status.oView.getId());
-                        
-                        // Set button 
+
+                        // Set button
                         airbus.mes.operationdetail.status.oView.oController.operationIsActive();
-                        
+
                         this.getView().byId("opDetailSegmentButtons").setSelectedButton(
                         this.getView().byId("opDetailSegmentButtons").getButtons()[0].sId);
 
@@ -78,7 +77,7 @@ sap.ui
                         this.getView().byId("opDetailExpandButton").setVisible(true);
                         this.getView().byId("opDetailCloseButton").setVisible(false);
                         this.getView().byId("operationDetailPanel").setExpanded(false);
-                        
+
                         var oSwitchButton = this.getView().byId("switchOperationModeBtn");
                         if (oSwitchButton.getState() == true) {
 //                          Define visibility for header sections
@@ -87,7 +86,6 @@ sap.ui
 //                            Define visibility for header sections
                             $(".opDetailNavToolbar > ul > li ~ li").css("display", "none");
                         }
-
                         /****** hide buttons *********/
                         sap.ui.getCore().byId("operationDetailPopup--reportDisruption").setVisible(false);
                         sap.ui.getCore().byId("operationDetailPopup--btnCreateDisruption").setVisible(false);
@@ -113,11 +111,11 @@ sap.ui
                             if(bResult){
 //                              Define visibility for header sections
                                 $(".opDetailNavToolbar > ul > li ~ li").css("display", "inline-block");
-                            	oSwitchButton.setEnabled(false);
+                                oSwitchButton.setEnabled(false);
                             }else {
                                 $(".opDetailNavToolbar > ul > li ~ li").css("display", "none");
-                            	oSwitchButton.setEnabled(true);
-                            	oSwitchButton.setState(false);
+                                oSwitchButton.setEnabled(true);
+                                oSwitchButton.setState(false);
                             }
 
                         } else {
@@ -168,19 +166,19 @@ sap.ui
                                 sap.ui.getCore().createComponent({ name : "airbus.mes.operationdetail.status"});
                                 this.nav.addPage(airbus.mes.operationdetail.status.oView);
                             }
-                            
+
                              this.nav.to(airbus.mes.operationdetail.status.oView.getId());
 
                             airbus.mes.operationdetail.status.oView.oController.operationIsActive();
-                            airbus.mes.operationdetail.status.oView.oController.setOperationActionButtons(); 
+                            airbus.mes.operationdetail.status.oView.oController.setOperationActionButtons();
                             airbus.mes.disruptions.ModelManager.checkDisruptionStatus(airbus.mes.disruptions.oView.viewDisruption.getModel("operationDisruptionsModel"));
 
                      break;
                      case "checkList":
-                    	 if (airbus.mes.operationdetail.QDC === undefined || airbus.mes.operationdetail.QDC.oView === undefined) {
-                    	 sap.ui.getCore().createComponent({ name : "airbus.mes.operationdetail.QDC"});
-                    	  this.nav.addPage(airbus.mes.operationdetail.QDC.oView);
-                    	 }
+                         if (airbus.mes.operationdetail.QDC === undefined || airbus.mes.operationdetail.QDC.oView === undefined) {
+                         sap.ui.getCore().createComponent({ name : "airbus.mes.operationdetail.QDC"});
+                          this.nav.addPage(airbus.mes.operationdetail.QDC.oView);
+                         }
                           this.nav.to(airbus.mes.operationdetail.QDC.oView.getId());
 
                   break;
@@ -224,19 +222,19 @@ sap.ui
 
                             airbus.mes.stationtracker.ReschedulePopover.setModel(oModel,"RescheduleModel");
                             airbus.mes.stationtracker.ReschedulePopover.getModel()
-                           
+
                             this.nav.to(airbus.mes.stationtracker.ReschedulePopover.getId());
 
                             if (sap.ui.getCore().byId("operationDetailsView--switchOperationModeBtn").getState() === true) {
 
-								sap.ui.getCore().byId("operationDetailPopup--btnReschedule").setVisible(true);
-							} else {
-								sap.ui.getCore().byId("operationDetailPopup--btnReschedule").setVisible(false);
-							}
-                            
+                                sap.ui.getCore().byId("operationDetailPopup--btnReschedule").setVisible(true);
+                            } else {
+                                sap.ui.getCore().byId("operationDetailPopup--btnReschedule").setVisible(false);
+                            }
+
                         break;
                         case "touchngo":
-                            	var selectedSegmentedButton = sap.ui.getCore().byId("operationDetailsView--opDetailSegmentButtons").getSelectedButton();
+                                var selectedSegmentedButton = sap.ui.getCore().byId("operationDetailsView--opDetailSegmentButtons").getSelectedButton();
                                 var sWorkOrder = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].wo_no;
                                 var operationId = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_no;
                                 var erpSystem = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].erp_system.toLowerCase();
@@ -246,17 +244,17 @@ sap.ui
                                 var oLink = "touchngo" + erpSystem + "://openpage/operation?workorder=" + sWorkOrder + "&operation=" + splitOpeId[3];
                                 window.open(oLink, "_blank");
                                 setTimeout(function(){
-                                	sap.ui.getCore().byId("operationDetailsView--opDetailSegmentButtons").setSelectedButton(selectedSegmentedButton);
+                                    sap.ui.getCore().byId("operationDetailsView--opDetailSegmentButtons").setSelectedButton(selectedSegmentedButton);
                                 }, 2000);
 
-                            break;                                
+                            break;
                         case "jigntools":
                             airbus.mes.shell.util.navFunctions.jigToolsDetail(this.nav);
 
-	                        /***************************************************
-	                         * Load Data
-	                         **************************************************/
-	//                        if (!this.disruptionsFlag) {
+                            /***************************************************
+                             * Load Data
+                             **************************************************/
+    //                        if (!this.disruptionsFlag) {
 //                            var operationBO = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_bo;
 //                            var sSfcStepRef = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].sfc_step_ref;
 //                            airbus.mes.disruptions.ModelManager.loadDisruptionsByOperation(operationBO,sSfcStepRef);
@@ -264,11 +262,11 @@ sap.ui
 //                        }
 
                             /** Navigate **/
-                            this.nav.to(airbus.mes.jigtools.oView.getId());                    	
-                        	
-                        	
-                        	break;
-                        	
+                            this.nav.to(airbus.mes.jigtools.oView.getId());
+
+
+                            break;
+
                          default:
                             break;
 
@@ -303,7 +301,7 @@ sap.ui
                         //case "reschedulePage--reschedulePage":
                         // Hide buttons
                         sap.ui.getCore().byId("operationDetailPopup--btnReschedule").setVisible(false);
-                        
+
                     },
 
                     renderViews : function(oEvent) {
