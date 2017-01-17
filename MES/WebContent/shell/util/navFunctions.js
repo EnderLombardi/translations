@@ -12,6 +12,19 @@ airbus.mes.shell.util.navFunctions = {
         cancel:undefined
     },
 
+    calendar : function() {
+    	
+    	 if (airbus.mes.calendar === undefined) {
+
+             jQuery.sap.registerModulePath("airbus.mes.calendar","../components/calendar");
+             sap.ui.getCore().createComponent({name : "airbus.mes.calendar",});
+             nav.addPage(airbus.mes.calendar.oView);
+         }
+
+         nav.to(airbus.mes.stationtracker.oView.getId());    	
+    	
+    },
+    
     stationTracker : function() {
 
         if (airbus.mes.stationtracker === undefined) {

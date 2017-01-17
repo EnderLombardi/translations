@@ -6,7 +6,7 @@
 		"icon": "calendar",
 		"app":"",
 		"url": "/MES/WebContent/components/stationtracker/index.html",
-		"enable": "false"
+		"enable": "true"
 	},{
 
 		"text": "TeamCompetencies",

@@ -78,6 +78,9 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 				//airbus.mes.shell.util.navFunctions.polypoly();
 				airbus.mes.shell.util.navFunctions.docViewer("../components/disruptions/attachments/Files/sample.pdf", undefined);
 				break;
+			case "TeamAvailability":
+				airbus.mes.shell.util.navFunctions.calendar();
+				break;
 			default:
 				break;
 			}
