@@ -40,6 +40,7 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
 				path : "Reason",
 				attr : "Reason",
 				
+
 				/*
 				 * childs : [ { id : "selectResponsible", type :
 				 * "select", path : "ResponsibleGroup", attr :
