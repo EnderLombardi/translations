@@ -3,6 +3,11 @@
 	xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml"
 	xmlns:cData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" >
 
+	<Page enableScrolling="false" showHeader="false">
+	<content>
+		
+	<Text id="jigToollabel" class="jigToolListlabel" text="{i18nJigstoolsModel>JigTool}" />
+	
 	<VBox id="jigToolcheck" class="jigToolListcheck">
  			<RadioButtonGroup columns="2" >
 				<buttons>
@@ -12,9 +17,7 @@
 			</RadioButtonGroup>
 	</VBox>
 
- 	<Text id="jigToollabel" class="jigToolListlabel" text="{i18nJigstoolsModel>JigTool}" />
- 	
- 	<Table 	id="jigToolList" 
+	<Table 	id="jigToolList" 
  			class="jigToolListtable"
 			items="{path: 'jigToolsWorkOrderDetail>/Rowsets/Rowset/0/Row/'}">
 			
@@ -63,5 +66,8 @@
 
 		</Table>
 
+	</content>
+
+	</Page>
 </mvc:View>
 

@@ -1,3 +1,9 @@
+#ViewDisruptionView--disrptlist{ 
+	width:95% !important;
+	margin: 0 auto;
+	padding:0 auto;
+}
+ 
 .classFormHint{
     font-size: 80% !important;
     font-style: italic !important;
@@ -53,12 +59,13 @@ section{
         }
     }
 }
-label{
-    #ViewDisruptionView--disruptLabel{
-        font-size: 1.2rem !important;
+
+    #ViewDisruptionView--disruptLabel.sapUiSmallMargin{
         font-weight: bold;
-    }
-}
+    	padding: 0;
+   		margin: 25px 0 25px 2.5% !important;
+    } 
+
 .disruptionDetail{
     .disruptionExpandablePanel{
         .sapMPanelBGTranslucent{
