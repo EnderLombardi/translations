@@ -119,24 +119,38 @@ airbus.mes.operationdetail.Formatter = {
         } else
             return false;
     },
+    //convert the duration in milliseconde from the json in IM
     convertMStoIM : function(){
         var duration = airbus.mes.operationdetail.ModelManager.durationNeededForCalc;
         var convert = ((duration * 100 * 0.001)/3600).toFixed(0);
         return parseInt(convert);
     },
+    //convert value from the progress bar in IM
     convertProgressBarToImField : function(progress){
         var duration = airbus.mes.operationdetail.Formatter.convertMStoIM();
         var result = (duration * (progress / 100)).toFixed(0);
         return result;
     },
+    // convert Value from IM Input in value % value for the progress bar
     convertImFieldToProgressBar : function(im){
         var duration = airbus.mes.operationdetail.Formatter.convertMStoIM();
         var result = (im * 100 / duration).toFixed(0);
         return result;
     },
-    onChangeFieldIm : function(){
-        sap.ui.getCore().byId("imTextArea").on("keyup", function(){
-            console.log("toto");
-        })
-    }
+    //Progress bar syncronised with the IM Input for changes.
+    // and verification on the input type.
+    liveChangeIm : function(){
+        var duration = airbus.mes.operationdetail.Formatter.convertMStoIM();
+        sap.ui.getCore().byId("imTextArea").attachLiveChange(function() {
+            var value = sap.ui.getCore().byId("imTextArea").getValue();
+            value = value.replace(/[^0-9]+/g, '');
+            sap.ui.getCore().byId("imTextArea").setValue(value);
+            if(sap.ui.getCore().byId("imTextArea").getValue() > duration){
+                sap.ui.getCore().byId("imTextArea").setValue(duration);
+                $("#progressSlider-progress").width(airbus.mes.operationdetail.Formatter.convertImFieldToProgressBar(duration) + "%");
+            }else{
+                $("#progressSlider-progress").width(airbus.mes.operationdetail.Formatter.convertImFieldToProgressBar(sap.ui.getCore().byId("imTextArea").getValue()) + "%");
+            }
+        });
+    },
 };

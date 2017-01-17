@@ -45,11 +45,6 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
         var progress = sap.ui.getCore().byId("progressSlider").getValue();
         sap.ui.getCore().byId("imTextArea").setValue(airbus.mes.operationdetail.Formatter.convertProgressBarToImField(progress));
     },
-    liveChangeIm : function(){
-        sap.ui.getCore().byId("imTextArea").attachLiveChange(function() {
-            console.log("1");
-        });
-    },
     /***********************************************************
      *
      * activate pause or confirm operation
@@ -188,6 +183,7 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
             var im  = airbus.mes.operationdetail.Formatter.convertProgressBarToImField(oModel[0].progress);
             sap.ui.getCore().byId("imTextArea").setValue(im);
         }
+        airbus.mes.operationdetail.Formatter.liveChangeIm();
 //        $("#confirmTimeWorked-CB").attr("checked")
         oView._reasonCodeDialog.open();
     },
