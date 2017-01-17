@@ -10,7 +10,7 @@ airbus.mes.calendar.ModelManager = {
        init : function(core) {
     	  
     	   var aModel = ["testModel"]
-    	   
+    	   airbus.mes.calendar.test = core;
     	   airbus.mes.shell.ModelManager.createJsonModel(core,aModel);
     	   this.settings = airbus.mes.settings.ModelManager;
            
@@ -32,7 +32,7 @@ airbus.mes.calendar.ModelManager = {
 		}
 
 		this.urlModel = new sap.ui.model.resource.ResourceModel({
-			bundleName : "airbus.mes.stationtracker.config.url_config",
+			bundleName : "airbus.mes.calendar.config.url_config",
 			bundleLocale : dest
 		});
 
@@ -48,6 +48,15 @@ airbus.mes.calendar.ModelManager = {
 			}
 		}
 
+		//this.loadExample();
+
+	},
+	
+	loadExample : function() {
+
+		var geturlAffectation = this.urlModel.getProperty('urlaffectation');
+		var oViewModel = airbus.mes.calendar.test.getModel("testModel");
+		oViewModel.loadData(geturlAffectation, null, false);
 
 	},
 

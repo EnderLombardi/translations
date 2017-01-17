@@ -23,11 +23,11 @@ metadata : {
 	},
 	
 	
-	init: function() {
-		// set the device model
-		airbus.mes.calendar.ModelManager.init(this);
-		
-	},
+//	init: function() {
+//		// set the device model
+//		airbus.mes.calendar.ModelManager.init(this);
+//		
+//	},
 	
 	
 });
@@ -37,6 +37,8 @@ airbus.mes.calendar.Component.prototype.createContent = function() {
 	   airbus.mes.calendar.isDisplay = true;
 
 	    if (airbus.mes.calendar.oView === undefined) {
+
+			airbus.mes.calendar.ModelManager.init(this);
 
 	    	// View on XML
 	        this.oView = sap.ui.view({

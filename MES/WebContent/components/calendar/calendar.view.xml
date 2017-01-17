@@ -3,7 +3,8 @@
 	<Page title="Login">
 
 
-
+	<Text text="{testModel>/Rowsets/Rowset/0/Row/0/avlLine}"	
+	></Text>
 
 
 	</Page>

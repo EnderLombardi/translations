@@ -21,7 +21,7 @@ airbus.mes.shell.util.navFunctions = {
              nav.addPage(airbus.mes.calendar.oView);
          }
 
-         nav.to(airbus.mes.stationtracker.oView.getId());    	
+         nav.to(airbus.mes.calendar.oView.getId());    	
     	
     },
     
