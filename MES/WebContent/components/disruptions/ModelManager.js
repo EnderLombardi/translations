@@ -79,9 +79,11 @@ airbus.mes.disruptions.ModelManager = {
 		switch (nav.getCurrentPage().getId()) {
 		
 		case "stationTrackerView":
+			sap.ui.getCore().byId("operationDetailPopup--operationDetailPopUp").setBusyIndicatorDelay(0);
 			sap.ui.getCore().byId("operationDetailPopup--operationDetailPopUp").setBusy(true)
 			break;
 		case "disruptiontrackerView":
+			sap.ui.getCore().byId("disruptionDetailPopup--disruptionDetailPopUp").setBusyIndicatorDelay(0);
 			sap.ui.getCore().byId("disruptionDetailPopup--disruptionDetailPopUp").setBusy(true)
 			break;
 		}
