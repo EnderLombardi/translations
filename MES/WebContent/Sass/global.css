@@ -6061,6 +6061,40 @@ Physical Station Popover
 .fa-percent:before {
   content: ""; }
 
+#jigtoolsView--jigToolList.jigToolListtable {
+  width: 95% !important;
+  margin: 0 auto;
+  padding: 0 auto; }
+#jigtoolsView--jigToolList.jigToolListtable > table {
+  border: solid 1px #97999b; }
+#jigtoolsView--jigToolList.jigToolListtable > table > thead > tr > th {
+  background-color: #0085ad;
+  border-right: 1px solid white; }
+#jigtoolsView--jigToolList.jigToolListtable > table > thead > tr > th > span {
+  color: white; }
+#jigtoolsView--jigToolList.jigToolListtable > table > tbody tr:nth-child(even) {
+  background: #fff; }
+#jigtoolsView--jigToolList.jigToolListtable > table > tbody tr:nth-child(odd) {
+  background: #fcfcfc; }
+#jigtoolsView--jigToolList.jigToolListtable > table > tbody tr:hover {
+  background-color: #efefef; }
+#jigtoolsView--jigToolList.jigToolListtable > table > tbody > tr > td {
+  text-align: left !important;
+  border-left: 1px solid #767879; }
+
+#jigtoolsView--jigToolcheck.jigToolListcheck {
+  width: 50%;
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 20px; }
+
+#jigtoolsView--jigToollabel.jigToolListlabel {
+  padding: 0;
+  margin: 0 0 15px 46px;
+  font-weight: bold; }
+
 /*************
 GENERALE RULES
 **************/

@@ -1,0 +1,67 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" controllerName="airbus.mes.jigtools.controller.jigtools"
+	xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:cData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" >
+
+	<VBox id="jigToolcheck" class="jigToolListcheck">
+ 			<RadioButtonGroup columns="2" >
+				<buttons>
+					<RadioButton id="workOrderButton" text="{i18nJigstoolsModel>JigToolOperation}" select="onSelectLevel" />
+					<RadioButton id="operationButton" text="{i18nJigstoolsModel>JigToolWorkOrder}" select="onSelectLevel"/>
+				</buttons>
+			</RadioButtonGroup>
+	</VBox>
+
+ 	<Text id="jigToollabel" class="jigToolListlabel" text="{i18nJigstoolsModel>JigTool}" />
+ 	
+ 	<Table 	id="jigToolList" 
+ 			class="jigToolListtable"
+			items="{path: 'jigToolsWorkOrderDetail>/Rowsets/Rowset/0/Row/'}">
+			
+			<headerToolbar>
+					<!-- Search and sort item
+						 <OverflowToolbar id="otbSubheader">
+                        <ToolbarSpacer/>
+                        <SearchField id="maxPrice" liveChange="onFilter">
+                            <layoutData><OverflowToolbarLayoutData minWidth="200px" maxWidth="300px" shrinkable="true"/></layoutData>
+                        </SearchField>
+                        <Button text="Reset" type="" press="onReset"/>
+                        <OverflowToolbarButton type="" text="Sort" icon="sap-icon://sort" press="onSort"/>
+                        <OverflowToolbarButton type="" text="Group" icon="sap-icon://group-2" press="onGroup"/>
+                    </OverflowToolbar> -->
+			</headerToolbar>
+			
+			<columns>
+				<Column>
+					<Text text="{i18nJigstoolsModel>materialNumber}" />
+				</Column>
+				<Column>
+					<Text text="{i18nJigstoolsModel>warehouse}" />
+				</Column>
+				<Column>
+					<Text text="{i18nJigstoolsModel>category}" />
+				</Column>
+				<Column>
+					<Text text="{i18nJigstoolsModel>description}" />
+				</Column>
+				<Column>
+					<Text text="{i18nJigstoolsModel>quantity}" />
+				</Column>
+			</columns>
+
+			<items>
+				<ColumnListItem>
+					<cells>
+						<Text text="{jigToolsWorkOrderDetail>materialNumber}" />
+						<Text text="{jigToolsWorkOrderDetail>warehouse}" />
+						<Text text="{jigToolsWorkOrderDetail>category}" />
+						<Text text="{jigToolsWorkOrderDetail>description}" />
+						<Text text="{jigToolsWorkOrderDetail>quantity}" />
+					</cells>
+				</ColumnListItem>
+			</items>
+
+		</Table>
+
+</mvc:View>
+

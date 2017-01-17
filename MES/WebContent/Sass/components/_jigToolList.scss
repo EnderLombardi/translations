@@ -1,0 +1,51 @@
+//id jigToolList
+//class jigToolListtable
+
+#jigtoolsView--jigToolList.jigToolListtable{
+	width:95% !important;
+	margin: 0 auto;
+	padding:0 auto;
+	>table {
+		border: solid 1px $cool-grey;
+		>thead {
+			>tr {
+				>th {
+					background-color : $teal-blue;
+					border-right:1px solid white;
+					>span{
+						color: white;
+					}
+				}
+			}
+		}
+		>tbody {
+				tr:nth-child(even) {background: #fff}
+				tr:nth-child(odd) {background: #fcfcfc}
+				tr:hover{background-color: #efefef}
+				>tr{
+					>td{
+						text-align:left !important;
+						border-left:1px solid $cool-grey-hover;
+						>span{
+							//margin-left:-100px;
+						}	
+					}
+				}
+		}
+	}
+}
+	
+#jigtoolsView--jigToolcheck.jigToolListcheck {
+	width: 50%;
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+#jigtoolsView--jigToollabel.jigToolListlabel {
+    padding: 0;
+    margin: 0 0 15px 46px;
+    font-weight: bold;
+}

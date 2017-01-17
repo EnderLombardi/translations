@@ -1,0 +1,117 @@
+{
+	"Rowsets": {
+		"DateCreated": "2016-11-17T17:38:56",
+		"Version": "15.1 SP2 Patch 13 (Oct 6, 2016)",
+		"StartDate": "2016-11-17T16:38:56+0100",
+		"EndDate": "2016-11-17T17:38:56+0100",
+		"CachedTime": "",
+		"Rowset": [{
+			"Columns": {
+				"Column": [{
+					"Name": "user",
+					"SourceColumn": "user",
+					"Description": "",
+					"SQLDataType": 1,
+					"MinRange": 1,
+					"MaxRange": 1
+				}, {
+					"Name": "firstName",
+					"SourceColumn": "firstName",
+					"Description": "",
+					"SQLDataType": 1,
+					"MinRange": 1,
+					"MaxRange": 1
+				}, {
+					"Name": "lastName",
+					"SourceColumn": "lastName",
+					"Description": "",
+					"SQLDataType": 1,
+					"MinRange": 1,
+					"MaxRange": 1
+				}, {
+					"Name": "picture",
+					"SourceColumn": "picture",
+					"Description": "",
+					"SQLDataType": 1,
+					"MinRange": 1,
+					"MaxRange": 1
+				}, {
+					"Name": "avlLine",
+					"SourceColumn": "avlLine",
+					"Description": "",
+					"SQLDataType": 1,
+					"MinRange": 1,
+					"MaxRange": 1
+				}, {
+					"Name": "shiftName",
+					"SourceColumn": "shiftName",
+					"Description": "",
+					"SQLDataType": 1,
+					"MinRange": 1,
+					"MaxRange": 1
+				}, {
+					"Name": "shiftID",
+					"SourceColumn": "shiftID",
+					"Description": "",
+					"SQLDataType": 1,
+					"MinRange": 1,
+					"MaxRange": 1
+				}, {
+					"Name": "day",
+					"SourceColumn": "day",
+					"Description": "",
+					"SQLDataType": 1,
+					"MinRange": 1,
+					"MaxRange": 1
+				}, {
+					"Name": "warn",
+					"SourceColumn": "warn",
+					"Description": "",
+					"SQLDataType": 1,
+					"MinRange": 1,
+					"MaxRange": 1
+				}, {
+					"Name": "skills",
+					"SourceColumn": "skills",
+					"Description": "",
+					"SQLDataType": 1,
+					"MinRange": 1,
+					"MaxRange": 1
+				}]
+			},
+			"Row": [{
+				"workOrder": "wo1",
+				"operation": "operation1",
+				"materialNumber": "operation1 material number1 ",
+				"warehouse": "warehouse",
+				"category": "production resource category",
+				"description": "tool description",
+				"quantity": "quantity"
+			}, {
+				"workOrder": "wo1",
+				"operation": "operation1",
+				"materialNumber": "operation1 material number2 ",
+				"warehouse": "warehouse",
+				"category": "production resource category",
+				"description": "tool description",
+				"quantity": "quantity"
+			}, {
+				"workOrder": "wo1",
+				"operation": "operation2",
+				"materialNumber": "operation2 material number3 ",
+				"warehouse": "warehouse",
+				"category": "production resource category",
+				"description": "tool description",
+				"quantity": "quantity"
+			}, {
+				"workOrder": "wo1",
+				"operation": "operation2",
+				"materialNumber": "operation2 material number4",
+				"warehouse": "warehouse",
+				"category": "production resource category",
+				"description": "tool description",
+				"quantity": "quantity"
+			}]
+		}]
+	}
+}
