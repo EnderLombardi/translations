@@ -1,7 +1,7 @@
 <core:FragmentDefinition xmlns="sap.m"
 	xmlns:core="sap.ui.core">
 	<Popover id="stationPopover" class="popOverbgColor sapUiPopupWithPadding"
-		placement="Bottom" showHeader="false" enableScrolling="false">
+		placement="VerticalPreferredBottom" showHeader="false" enableScrolling="false">
 		<content>
 			<VBox alignItems="Center">
 				<Button icon="sap-icon://edit" type="Transparent" class="stationPopoverBtns"

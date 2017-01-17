@@ -537,5 +537,12 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 
 		}
 	},
+	openTaktActionPopover : function(oEvt){
+		if (!this.oTaktActionPopover) {
+			this.oTaktActionPopover = sap.ui.xmlfragment("airbus.mes.linetracker.fragments.taktOperation", this);
+			this.getView().addDependent(this.oTaktActionPopover);
+		}
+		this.oTaktActionPopover.openBy(oEvt.getSource());
+	}
 
 });

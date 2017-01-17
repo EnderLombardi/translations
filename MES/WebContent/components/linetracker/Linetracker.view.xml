@@ -86,15 +86,17 @@
 						<uiTable:template>
 							<HBox alignItems="Center" justifyContent="Center">
 
-
+<core:Icon press="openTaktActionPopover"
+											src="{ parts :[{path:'stationDataModel>msn'},{path:'stationDataModel>date'}], formatter : 'airbus.mes.linetracker.util.Formatter.getActionIcon' }" />
 								<control:PhysicalStationBox id="linetrackerEditStation"
 									color="#bcf6ff" actionIconColor="black"
 									station="{stationDataModel>stationName}" msn="{stationDataModel>msn}"
 									press="handlePopoverPress" width="80%">
-									<control:actionIconButton>
+									
+<!-- 									<control:actionIconButton>
 										<core:Icon press=" "
 											src="{ parts :[{path:'stationDataModel>msn'},{path:'stationDataModel>date'}], formatter : 'airbus.mes.linetracker.util.Formatter.getActionIcon' }" />
-									</control:actionIconButton>
+									</control:actionIconButton> -->
 									<control:image>
 										<Image width="100%" height="100%"
 											visible="{ path : 'airlineLogoModel>Rowsets/Rowset/0/Row/0/airline_logo_url', formatter : 'airbus.mes.linetracker.util.Formatter.displayFlightImage' }"

@@ -46,13 +46,13 @@ sap.ui.core.Control.extend(
 				oRm.writeClasses();
 				oRm.write(">");
 
-				oRm.write("<div");
+				/*oRm.write("<div");
 				oRm.addClass("ActionDiv");
 				oRm.writeClasses();
 				oRm.write(">");
 
 				oRm.renderControl(oControl.getAggregation("actionIconButton"));
-				oRm.write("</div>");
+				oRm.write("</div>");*/
 
 				oRm.write("<div");
 				oRm.addClass("labelDiv");
