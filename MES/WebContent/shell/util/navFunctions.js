@@ -165,6 +165,17 @@ airbus.mes.shell.util.navFunctions = {
         airbus.mes.shell.util.navFunctions.disruptionButtons.update = updateButton;
         airbus.mes.shell.util.navFunctions.disruptionButtons.cancel = cancelButton;
     },
+    displayOpeAttachments: function(container) {
+
+        if (airbus.mes.displayOpeAttachments === undefined || airbus.mes.displayOpeAttachments.oView === undefined) {
+
+            jQuery.sap.registerModulePath("airbus.mes.displayOpeAttachments","../components/displayOpeAttachments");
+            sap.ui.getCore().createComponent({name : "airbus.mes.displayOpeAttachments"});
+        }
+        if (container.getPage("displayOpeAttachmentsView") === null) {
+            container.addPage(airbus.mes.displayOpeAttachments.oView);
+        }
+    },
     
     jigToolsDetail : function(container) {
 

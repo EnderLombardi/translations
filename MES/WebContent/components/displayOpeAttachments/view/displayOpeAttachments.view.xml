@@ -1,0 +1,17 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" controllerName="airbus.mes.displayOpeAttachments.controller.displayOpeAttachments"
+	xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:cData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" >
+
+	<!--TO DO
+	<VBox id="displayOpeAttachmentsCheck" class="">
+ 			<RadioButtonGroup columns="2" >
+				<buttons>
+					<RadioButton id="workOrderButton" text="" select="onSelectLevel" />
+					<RadioButton id="operationButton" text="" select="onSelectLevel"/>
+				</buttons>
+			</RadioButtonGroup>
+	</VBox>-->
+
+</mvc:View>
+

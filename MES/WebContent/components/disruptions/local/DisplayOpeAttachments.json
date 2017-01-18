@@ -1,0 +1,42 @@
+{
+  "SOI": [
+    {
+      "Item_nr": "10",
+      "Doc_nr": "Xx",
+      "Doc_description": "Xxx",
+      "Doc_type": "Xxx",
+      "Description_type": "xxx",
+      "Doc_part": "xxx",
+      "Doc_version": "1"
+    },
+    {
+      "Item_nr": "20",
+      "Doc_nr": "Yy",
+      "Doc_description": "Yyy",
+      "Doc_type": "Yyy",
+      "Description_type": "yyy",
+      "Doc_part": "yyy",
+      "Doc_version": "1"
+    }
+  ],
+  "AIPI": [
+    {
+      "Item_nr": "10",
+      "Doc_nr": "Xx",
+      "Doc_description": "Xxx",
+      "Doc_type": "Xxx",
+      "Description_type": "xxx",
+      "Doc_part": "xxx",
+      "Doc_version": "1"
+    },
+    {
+      "Item_nr": "20",
+      "Doc_nr": "Yy",
+      "Doc_description": "Yyy",
+      "Doc_type": "Yyy",
+      "Description_type": "yyy",
+      "Doc_part": "yyy",
+      "Doc_version": "1"
+    }
+  ]
+}

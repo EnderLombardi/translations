@@ -221,8 +221,8 @@ sap.ui
                             oModel.setData(aModel);
 
                             airbus.mes.stationtracker.ReschedulePopover.setModel(oModel,"RescheduleModel");
-                            airbus.mes.stationtracker.ReschedulePopover.getModel()
-
+                            airbus.mes.stationtracker.ReschedulePopover.getModel();
+                           
                             this.nav.to(airbus.mes.stationtracker.ReschedulePopover.getId());
 
                             if (sap.ui.getCore().byId("operationDetailsView--switchOperationModeBtn").getState() === true) {
@@ -263,6 +263,24 @@ sap.ui
 
                             /** Navigate **/
                             this.nav.to(airbus.mes.jigtools.oView.getId());
+
+
+                            break;
+                        case "displayOpeAttachments":
+                            airbus.mes.shell.util.navFunctions.displayOpeAttachments(this.nav);
+
+                            /***************************************************
+                             * Load Data
+                             **************************************************/
+    //                        if (!this.disruptionsFlag) {
+//                            var operationBO = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_bo;
+//                            var sSfcStepRef = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].sfc_step_ref;
+//                            airbus.mes.disruptions.ModelManager.loadDisruptionsByOperation(operationBO,sSfcStepRef);
+//                            this.disruptionsFlag = true;
+//                        }
+
+                            /** Navigate **/
+                            this.nav.to(airbus.mes.displayOpeAttachments.oView.getId());
 
 
                             break;

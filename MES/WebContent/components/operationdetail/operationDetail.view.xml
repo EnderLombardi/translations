@@ -96,16 +96,12 @@
                                     text="{operationDetailModel>/Rowsets/Rowset/0/Row/0/work_package}" />
                                 <Label type="space"></Label>
                                 <Label type="space" />
-                                <!-- <Label text="ACPnG" /> <Text text="28/08/2016" /> <Label type="space"></Label> -->
                                 <Label text="{i18n>bundle} :" />
                                 <Text text=" - " />
                                 <Label type="space" />
                                 <Label text=" {i18n>system_status} :" />
                                 <Text text=" - " />
                             </VBox>
-                            <!-- <VBox> <Label text="Activity:" /> <Text text="MEC" /> <Label
-                                type="space"></Label> <Label text="N. employees" /> <Text text="1" /> <Label
-                                type="space"></Label> <Label text="Work package" /> <Text text=" - " /> </VBox> -->
                         </f:content>
                     </f:SimpleForm>
                 </content>
@@ -120,10 +116,11 @@
                             key="checkList" press="openPage" />
                         <SegmentedButtonItem id="idDisruption" text="{i18n>Disruption}"
                             key="disruption" press="openPage"  />
+                        <SegmentedButtonItem id="idDisplayOpeAttachments" text="{i18n>Documents}" key="displayOpeAttachments" press="openPage" />
                          <SegmentedButtonItem id="idReschedule" text="{i18n>Reschedule}"
                             key="reschedule" press="openPage"  />
                         <SegmentedButtonItem id="idtouchngo" text="{i18n>Touchngo}" key="touchngo" press="openPage" />
-                        <SegmentedButtonItem id="idJignTools" text="{i18n>JignTools}" key="jigntools" press="openPage" />
+                        <SegmentedButtonItem id="idJignTools" text="{i18n>JignTools}" key="jigntools" press="openPage" />              
                     </items>
                 </SegmentedButton>
             </Toolbar>
