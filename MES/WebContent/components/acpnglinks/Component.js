@@ -20,7 +20,7 @@ airbus.mes.acpnglinks.Component.prototype.createContent = function() {
 	if (airbus.mes.acpnglinks.oView === undefined) {
 		
         // Initialize ModelManager and load needed file
-        airbus.mes.acpnglinks.util.ModelManager.init(sap.ui.getCore());
+        airbus.mes.acpnglinks.model.ModelManager.init(sap.ui.getCore());
         
 		// View on XML
 		this.oView = sap.ui.view({

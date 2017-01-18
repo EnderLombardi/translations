@@ -1,7 +1,31 @@
 <mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m" controllerName="airbus.mes.acpnglinks.controller.acpnglinks"
 	xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml"
-	xmlns:cData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" >
-
+	xmlns:tab="sap.ui.table">
+	<Page showHeader="false" height="100%">
+		<content>
+			<tab:TreeTable rows="{acpnglinksModel>/root}" class="sapUiLargeMargin"> 
+				<tab:toolbar> 
+					<Toolbar> 
+						<Title text="ACPNG Links" />
+					 </Toolbar> 
+				</tab:toolbar> 
+				<tab:columns> 
+					<tab:Column> 
+						<Label text="column1" /> 
+						<tab:template> 
+							<Text text="{acpnglinksModel>name}" class="AllignItem" /> 
+						</tab:template> 
+					</tab:Column> 
+					<tab:Column> 
+						<Label text="column2" />
+						<tab:template> 
+							<Label text="{acpnglinksModel>description}" class="AllignItem" /> 
+						</tab:template> 
+					</tab:Column> 
+				</tab:columns>
+			</tab:TreeTable>
+		</content>
+	</Page>
 </mvc:View>
 

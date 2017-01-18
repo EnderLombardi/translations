@@ -1,7 +1,7 @@
 "use strict";
-jQuery.sap.declare("airbus.mes.acpnglinks.util.ModelManager")
+jQuery.sap.declare("airbus.mes.acpnglinks.model.ModelManager")
 
-airbus.mes.acpnglinks.util.ModelManager = {
+airbus.mes.acpnglinks.model.ModelManager = {
 
 	urlModel : undefined,
 	brOnMessageCallBack:function (data) {},
