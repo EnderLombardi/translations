@@ -74,7 +74,7 @@ airbus.mes.disruptions.AttachmentManager = {
 	 * Displays a popover when the user click on the attachments link
 	 **************************************************************************/
 	showAttachedDocsList : function(oEvent) {
-		var _self = this;
+		//var _self = this;
 		if (!this._oPopover) {
 			this._oPopover = sap.ui.xmlfragment("airbus.mes.disruptions.fragment.AttachmentPopover", airbus.mes.disruptions.oView.createDisruption
 				.getController());
@@ -103,12 +103,12 @@ airbus.mes.disruptions.AttachmentManager = {
 		// calculating the index of the selected list item
 		var sPath = oEvent.mParameters.listItem.oBindingContexts.AttachmentList.sPath;
 		var iLength = sPath.length;
-		var iIndex = sPath.slice(iLength - 1);
+		//var iIndex = sPath.slice(iLength - 1);
 		// Removing the selected list item from the model based on the index
 		// calculated
 		var oModel = sap.ui.getCore().getModel("AttachmentList")
 		var oData = oModel.oData;
-		var removed = oData.items.splice(iIndex, 1);
+		//var removed = oData.items.splice(iIndex, 1);
 		oModel.setData(oData);
 		oModel.refresh();
 

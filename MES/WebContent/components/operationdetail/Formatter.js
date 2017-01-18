@@ -123,7 +123,7 @@ airbus.mes.operationdetail.Formatter = {
     convertMStoIM : function(){
         var duration = airbus.mes.operationdetail.ModelManager.durationNeededForCalc;
         var convert = ((duration * 100 * 0.001)/3600).toFixed(0);
-        return parseInt(convert);
+        return parseInt(convert,10);
     },
     //convert value from the progress bar in IM
     convertProgressBarToImField : function(progress){

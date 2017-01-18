@@ -128,8 +128,7 @@ airbus.mes.disruptions.ModelManager = {
 			 */
 			if (sap.ui.Device.system.desktop) {
 				airbus.mes.disruptions.oView.disruptionDetail.oController.setDisruptionDetailData();
-			}
-			else{
+			}else{
 				airbus.mes.disruptions.oView.createDisruption.oController.setDataForEditDisruption();
 			}
 			
@@ -178,8 +177,7 @@ airbus.mes.disruptions.ModelManager = {
 			 */
 			if (sap.ui.Device.system.desktop) {
 				airbus.mes.disruptions.oView.disruptionDetail.oController.setDisruptionDetailData();
-			}
-			else{
+			}else{
 				airbus.mes.disruptions.oView.createDisruption.oController.setDataForEditDisruption();
 			}
 			
@@ -883,7 +881,7 @@ airbus.mes.disruptions.ModelManager = {
 	addComment : function(oComment, i18nModel) {
 		var sMessageSuccess = i18nModel.getProperty("commentSuccessful");
 		var sMessageError = i18nModel.getProperty("tryAgain");
-		var flagSuccess;
+		//var flagSuccess;
 
 		jQuery
 				.ajax({
@@ -966,8 +964,7 @@ airbus.mes.disruptions.ModelManager = {
 						"Param.5" : timeLost
 					},
 					error : function(xhr, status, error) {
-						airbus.mes.shell.ModelManager
-								.messageShow(sMessageError);
+						airbus.mes.shell.ModelManager.messageShow(sMessageError);
 						flagSuccess = false
 
 					},

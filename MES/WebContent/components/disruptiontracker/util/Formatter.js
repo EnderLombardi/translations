@@ -68,12 +68,10 @@ airbus.mes.disruptiontracker.Formatter = {
 		if (operation != undefined && operation != ""){
 			if(operation.indexOf("OperationBO:") !=-1){
 				return operation.split(",")[1];
-			}
-			else{
+			} else {
 				return operation;
 			}
-		}
-		else
+		} else
 			return "";
 
 	},

@@ -9,7 +9,7 @@
 
 (function() {
 	
-	var custom = JSON.parse(window.ControlUtils.getCustomData());
+	//var custom = JSON.parse(window.ControlUtils.getCustomData());
 	
     //=========================================================
     // Load a custom script for the "about" page
