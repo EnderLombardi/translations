@@ -48,22 +48,10 @@ airbus.mes.operationdetail.QDC.ModelManager = {
 			}
 							
 			// TODO DEPLACE this in shell controller and when service is ok remove all of this function
-			this.QDCDATA();		
-			//this.loadUserSettings();
-			
-//			var i18nModel = new sap.ui.model.resource.ResourceModel({
-//	            bundleUrl : "./i18n/i18n.properties",
-//	         });
-//			
-//			core.setModel(i18nModel, "ShellI18n");
-			
-//			var MIIi18nModel = new sap.ui.model.resource.ResourceModel({
-//	            bundleUrl : "./i18n/mii_i18n.properties",
-//	         });
-//			core.setModel(MIIi18nModel, "miiI18n");
+			this.loadQDCModel();	
 		},
 		
-		QDCDATA : function() {
+		loadQDCModel: function() {
 			
 			var oViewModel = sap.ui.getCore().getModel("QDCModel");
 			oViewModel.loadData(this.urlModel.getProperty("QDCModelData"), null, false);
