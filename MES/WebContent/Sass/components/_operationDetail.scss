@@ -322,7 +322,9 @@
         background-color: darkorange !important;
     }
 }
-
+.AllignItem{
+	Display:flex; 
+}
 /* tab - Statut - */
 #idStatusView--StatutLabel.StatutLabel{
 	    font-weight: bold;

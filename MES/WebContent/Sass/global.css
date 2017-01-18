@@ -3193,6 +3193,9 @@ button[id^="polypoly"].sapMBtn:hover > div[id^="polypoly"].sapMBtnHoverable, htm
 .sliderBlockedColor .sapMSliderProgress {
   background-color: darkorange !important; }
 
+.AllignItem {
+  Display: flex; }
+
 /* tab - Statut - */
 #idStatusView--StatutLabel.StatutLabel {
   font-weight: bold;
@@ -3397,6 +3400,10 @@ label#createDisruptionView--disruptLabel {
   .disruptionKPI .pageHeader label {
     font-size: 1.2rem;
     color: white; }
+
+.attachIcon span {
+  color: #000 !important;
+  font-size: 1rem !important; }
 
 /******************
 LINETRACKER
