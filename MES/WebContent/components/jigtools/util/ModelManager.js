@@ -10,6 +10,11 @@ airbus.mes.jigtools.util.ModelManager = {
 		'user_id' : undefined,
 		'image' : undefined
 	},
+	
+	// variable for filter
+	productionOrder : "P",
+	operation : "O",
+	
 	badgeReader:undefined,
 	brOnMessageCallBack:function (data) {},
 	queryParams : jQuery.sap.getUriParameters(),
@@ -41,7 +46,7 @@ airbus.mes.jigtools.util.ModelManager = {
 			bundleLocale : dest
 		});
 		
-		if (  dest === "sopra" ) {
+		if ( dest === "sopra" ) {
 
 			var oModel = this.urlModel._oResourceBundle.aPropertyFiles[0].mProperties;
 				
@@ -52,21 +57,25 @@ airbus.mes.jigtools.util.ModelManager = {
 			}
 		}
 		
-//		"jigToolsConfigModel", 
+		//"jigToolsConfigModel", 
 		airbus.mes.shell.ModelManager.createJsonModel(core,["jigToolsWorkOrderDetail"]);
 		this.loadjigToolsWorkOrderDetail();
 	},
 
-
+	//load
 	loadjigToolsWorkOrderDetail : function() {
 		var oModel = sap.ui.getCore().getModel("jigToolsWorkOrderDetail");
 		oModel.loadData(this.getjigToolsWorkOrderDetail(), null, false);
 	},
 	
+	//get 
 	getjigToolsWorkOrderDetail : function() {
 		var url = this.urlModel.getProperty("jigToolsWorkOrderDetail");
 		url = airbus.mes.shell.ModelManager.replaceURI(url, "$site", airbus.mes.settings.ModelManager.site);
 		return url;
 	},
+	
+
+
 	
 };

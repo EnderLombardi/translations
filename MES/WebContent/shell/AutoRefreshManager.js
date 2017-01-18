@@ -49,18 +49,21 @@ airbus.mes.shell.AutoRefreshManager =  {
              
              //get refresh time config for this.viewname else default time
              var refreshConfigKey;
-             switch(this.viewName){
-             case "stationTrackerView":
-            	 refreshConfigKey = "REFRESH_STATION_TRACKER_"+airbus.mes.settings.ModelManager.station;
-            	 break;
-                 
-             case "disruptiontrackerView":
-            	 refreshConfigKey = "REFRESH_DISRUPTION_TRACKER_"+airbus.mes.settings.ModelManager.station;
-            	 break;
-            	 
-             case "disruptionKPIView":
-            	 refreshConfigKey = "REFRESH_DISRUPTION_KPI_"+airbus.mes.settings.ModelManager.station;
-            	 break;
+             switch (this.viewName) {
+
+	             case "stationTrackerView":
+	            	 refreshConfigKey = "REFRESH_STATION_TRACKER_"+airbus.mes.settings.ModelManager.station;
+	            	 break;
+	                 
+	             case "disruptiontrackerView":
+	            	 refreshConfigKey = "REFRESH_DISRUPTION_TRACKER_"+airbus.mes.settings.ModelManager.station;
+	            	 break;
+	                 	 
+	             case "disruptionKPIView":
+	            	 refreshConfigKey = "REFRESH_DISRUPTION_KPI_"+airbus.mes.settings.ModelManager.station;
+	            	 break;
+	            	 
+	             default:
             	 
              }
              this.refreshInterval = config[sVal.viewName].timer = 

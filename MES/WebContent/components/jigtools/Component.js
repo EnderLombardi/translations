@@ -1,11 +1,7 @@
 "use strict";
 
 jQuery.sap.registerModulePath("airbus.mes.jigtools", "../components/jigtools");
-
-//jQuery.sap.require("airbus.mes.jigtools.util.Formatter");
 jQuery.sap.require("airbus.mes.jigtools.util.ModelManager");
-
-
 jQuery.sap.declare("airbus.mes.jigtools.Component");
 
 sap.ui.core.UIComponent.extend("airbus.mes.jigtools.Component", {
@@ -16,7 +12,7 @@ sap.ui.core.UIComponent.extend("airbus.mes.jigtools.Component", {
 
 airbus.mes.jigtools.Component.prototype.createContent = function() {
 
-//	Set current work Order and operation
+	//Set current work Order and operation
     airbus.mes.jigtools.workOrder = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].wo_no;
     airbus.mes.jigtools.operation = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_no;
 
@@ -34,17 +30,14 @@ airbus.mes.jigtools.Component.prototype.createContent = function() {
 		})
 		airbus.mes.jigtools.oView = this.oView;
 
-		var i18nModel = new sap.ui.model.resource.ResourceModel({
-			bundleName : "airbus.mes.jigtools.i18n.i18n"
-	     });
-		
+		var i18nModel = new sap.ui.model.resource.ResourceModel({ bundleName : "airbus.mes.jigtools.i18n.i18n" });
 		this.oView.setModel(i18nModel, "i18nJigstoolsModel");		
-//		this.oView.setModel(sap.ui.getCore().getModel("attachDisruption"),    "attachDisruption");
-
+		
 		return this.oView;
+		
 	} else {
 		
 		return airbus.mes.jigstools.oView;
+		
 	}
-
 };
