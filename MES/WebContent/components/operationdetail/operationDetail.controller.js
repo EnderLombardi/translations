@@ -266,6 +266,7 @@ sap.ui
 
 
                             break;
+<<<<<<< Upstream, based on origin/MESv1.5
                         case "displayOpeAttachments":
                             airbus.mes.shell.util.navFunctions.displayOpeAttachments(this.nav);
 
@@ -285,6 +286,13 @@ sap.ui
 
                             break;
 
+=======
+                        case "ACPnGLinks":
+                        	 airbus.mes.shell.util.navFunctions.acpnglinksDetail(this.nav);
+                        	 this.nav.to(airbus.mes.acpnglinks.oView.getId());
+                        	break;
+                        	
+>>>>>>> 78a7a2b [acpnglinks] creation
                          default:
                             break;
 

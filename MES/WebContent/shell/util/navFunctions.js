@@ -188,6 +188,17 @@ airbus.mes.shell.util.navFunctions = {
             container.addPage(airbus.mes.jigtools.oView);
         }
     },
+    acpnglinksDetail : function(container) {
+
+        if (airbus.mes.acpnglinks === undefined || airbus.mes.acpnglinks.oView === undefined) {
+
+            jQuery.sap.registerModulePath("airbus.mes.acpnglinks","../components/acpnglinks");
+            sap.ui.getCore().createComponent({name : "airbus.mes.acpnglinks"});
+        }
+        if (container.getPage("acpnglinksView") === null) {
+            container.addPage(airbus.mes.acpnglinks.oView);
+        }
+    },
     disruptionAttachment : function(container, disruptionDesc) {
 
         if (airbus.mes.disruptions.attachments === undefined || airbus.mes.disruptions.attachments.oView === undefined) {

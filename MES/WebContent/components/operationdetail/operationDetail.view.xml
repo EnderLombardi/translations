@@ -108,7 +108,7 @@
             </Panel>
 
             <Toolbar class="opDetailNavToolbar">
-                <SegmentedButton id="opDetailSegmentButtons" class="opDetailNav" width="1200px">
+                <SegmentedButton id="opDetailSegmentButtons" class="opDetailNav" width="1000px">
                     <items>
                         <SegmentedButtonItem id="idStatus" text="{i18n>Status}"
                             key="status" press="openPage" />
@@ -120,7 +120,8 @@
                          <SegmentedButtonItem id="idReschedule" text="{i18n>Reschedule}"
                             key="reschedule" press="openPage"  />
                         <SegmentedButtonItem id="idtouchngo" text="{i18n>Touchngo}" key="touchngo" press="openPage" />
-                        <SegmentedButtonItem id="idJignTools" text="{i18n>JignTools}" key="jigntools" press="openPage" />              
+                        <SegmentedButtonItem id="idJignTools" text="{i18n>JignTools}" key="jigntools" press="openPage" />
+                        <SegmentedButtonItem id="idACPnGLinks" text="{i18n>ACPnGLinks}" key="ACPnGLinks" press="openPage" />
                     </items>
                 </SegmentedButton>
             </Toolbar>
