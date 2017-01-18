@@ -426,6 +426,8 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		var aFilters = [];
 		var filter1 = new sap.ui.model.Filter("Operation", sap.ui.model.FilterOperator.Contains, sQuery)
 		aFilters.push(filter1);
+		var filter2 = new sap.ui.model.Filter("WorkOrder", sap.ui.model.FilterOperator.Contains, sQuery)
+		aFilters.push(filter2);
 		oBinding.filter(new sap.ui.model.Filter(aFilters, false), "Control");
 
 	},
@@ -435,7 +437,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 	 * @param {object}
 	 *            oEvt take control as an object
 	 */
-	onDisruptionSuggestions : function(oEvt) {
+	/*onDisruptionSuggestions : function(oEvt) {
 		var oSF = this.getView().byId("disruptionSearchField");
 		var value = oEvt.getParameter("suggestValue");
 		var aTemp = [];
@@ -469,5 +471,5 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		oSF.suggest();
 		this.onSearchDisruption(oEvt);
 
-	}
+	}*/
 });

@@ -64,15 +64,11 @@
 					
 					<!--[MES V1.5] [Beg]SD-SP1604983-DT-040 -->
 					<SearchField id="disruptionSearchField" width="50%" placeholder="search for..."
-						enableSuggestions="true" search="onSearchDisruption" suggest="onDisruptionSuggestions"
-						suggestionItems="{
-					path: 'disruptionsTrackerModel>/Rowsets/Rowset/0/Row',
-					sorter: { path: 'disruptionsTrackerModel>Operation' }
-				}">
-						<suggestionItems>
+						enableSuggestions="true" search="onSearchDisruption" suggest="onDisruptionSuggestions">
+						<!-- <suggestionItems>
 							<SuggestionItem text="{disruptionsTrackerModel>Operation}"
 								 key="{disruptionsTrackerModel>Operation}" />
-						</suggestionItems>
+						</suggestionItems> -->
 					</SearchField>
 					<!--[MES V1.5] [End]SD-SP1604983-DT-040 -->
 					
