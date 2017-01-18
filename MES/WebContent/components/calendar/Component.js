@@ -1,9 +1,9 @@
 "use strict";
-
 jQuery.sap.require("sap.ui.core.UIComponent");
 jQuery.sap.require("airbus.mes.calendar.util.Formatter");
-//jQuery.sap.require("airbus.mes.calendar.ShiftManager");
-jQuery.sap.require("airbus.mes.calendar.ModelManager");
+jQuery.sap.require("airbus.mes.calendar.util.GroupingBoxingManager");
+jQuery.sap.require("airbus.mes.calendar.util.ShiftManager");
+jQuery.sap.require("airbus.mes.calendar.util.ModelManager");
 
 jQuery.sap.require("airbus.mes.dhtmlx.dhtmlxscheduler");
 jQuery.sap.require("airbus.mes.dhtmlx.ext.dhtmlxscheduler_limit");
@@ -38,15 +38,13 @@ airbus.mes.calendar.Component.prototype.createContent = function() {
 
 	    if (airbus.mes.calendar.oView === undefined) {
 
-			airbus.mes.calendar.ModelManager.init(this);
-
 	    	// View on XML
 	        this.oView = sap.ui.view({
 	            id : "calendar",
-	            viewName : "airbus.mes.calendar.calendar",
+	            viewName : "airbus.mes.calendar.view.calendar",
 	            type : "XML",
 	        });
-
+	        
 	        var i18nModel = new sap.ui.model.resource.ResourceModel({
 	            bundleName : "airbus.mes.calendar.i18n.i18n"
 	         });
@@ -54,8 +52,12 @@ airbus.mes.calendar.Component.prototype.createContent = function() {
 	        // Set instant display for busy indicator
 	        this.oView.setBusyIndicatorDelay(0);
 
-	        airbus.mes.calendar.oView = this.oView;
-
+	    	airbus.mes.calendar.component = this;
+	    	airbus.mes.calendar.oView = this.oView;
+	    	//Bind directly on the view avoid to set in the model in the core
+	    	airbus.mes.calendar.util.ModelManager.init(airbus.mes.calendar.oView);
+	    	
+	    	window.calendar = Scheduler.getSchedulerInstance();
 	        return this.oView;
 	    } else {
 	        return airbus.mes.calendar.oView;

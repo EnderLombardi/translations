@@ -1,8 +1,8 @@
 "use strict";
-jQuery.sap.declare("airbus.mes.stationtracker.util.BoxDisplayManager");
+jQuery.sap.declare("airbus.mes.calendar.util.BoxDisplayManager");
 //Stationtracker box display
 
-airbus.mes.stationtracker.util.BoxDisplayManager = {
+airbus.mes.calendar.util.BoxDisplayManager = {
 
     //---------------------
 	//      LEFT ICON

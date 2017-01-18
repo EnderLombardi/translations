@@ -1,0 +1,73 @@
+<core:View xmlns:core="sap.ui.core" xmlns="sap.m"
+	xmlns:suite="sap.suite.ui.commons" controllerName="airbus.mes.calendar.controller.calendar"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:custom="airbus.mes.calendar.util"
+	xmlns:layout="sap.ui.layout" xmlns:micro="sap.suite.ui.microchart"
+	xmlns:uni="sap.ui.unified">
+
+	<Page title="Station Tracker" height="100%" showHeader="false"
+		enableScrolling="false " class="GenricBgColor">
+
+		<Toolbar id="kpiHeaderToolbar" class="classKpiheaderToolbar">
+			<Label text="{calendarI18n>teamavaibility}" class="classDateLabel" />
+			<Button id="calendardateButton" icon="sap-icon://appointment"
+				type="Transparent" tooltip="{calendarI18n>Calendar}" press="datePick"
+				class="classDateButton" />
+		</Toolbar>
+
+
+
+		<content width="100%" height="100%">
+			<OverflowToolbar id="toolbarstationtracker" class="Subheader"
+				width="100%">
+				<content>
+					<SegmentedButton id="buttonViewMode">
+						<layoutData>
+							<OverflowToolbarLayoutData priority="NeverOverflow" />
+						</layoutData>
+						<items>
+							<SegmentedButtonItem text="{calendarI18n>ButtonShift}"
+								press="onShiftPress" key="shift" />
+							<SegmentedButtonItem text="{calendarI18n>ButtonDay}"
+								press="onDayPress" key="day" />
+							<SegmentedButtonItem text="{calendarI18n>ButtonTakt}"
+								press="" key="takt" enabled="false" />
+						</items>
+					</SegmentedButton>
+			
+
+					<Label text="{calendarI18n>teamavaibility}" class="classDateLabel" />
+
+				<Button id="calendarAbsence" type="Transparent" enabled="true"
+						icon="sap-icon://color-fill" text="{calendarI18n>calendarAbsence}" />
+				
+				<Button id="calendarDiversion" type="Transparent" enabled="true"
+						icon="sap-icon://color-fill" text="{calendarI18n>calendarDiversion}" />
+				
+				<Button id="calendarLoaned" type="Transparent" enabled="true"
+						icon="sap-icon://color-fill" text="{calendarI18n>calendarLoaned}" />
+						
+
+					<ToolbarSpacer />
+
+					<Select id="calendarRessource" class="sapUiTinyMarginBeginEnd comboBoxStyle"
+						items="{groupModel>/Rowsets/Rowset/0/Row/Grouping}" change="changeGroup">
+						<core:ListItem key="{groupModel>key}"
+							text="{ path : 'groupModel>Value' , formatter : '.getI18nValue' }" />
+					</Select>
+
+					<Button id="calendarCapacity" type="Transparent" enabled="true"
+						icon="sap-icon://hide" text="{calendarI18n>showCapacity}" press="hideKPI" />
+
+				</content>
+			</OverflowToolbar>
+
+			<custom:DHTMLXScheduler id="calendar"></custom:DHTMLXScheduler>
+
+
+
+
+			<Text text="{testModel>/Rowsets/Rowset/0/Row/0/avlLine}"></Text>
+
+		</content>
+	</Page>
+</core:View>

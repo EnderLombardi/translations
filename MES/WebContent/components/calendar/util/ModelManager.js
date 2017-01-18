@@ -1,7 +1,7 @@
 "use strict";
-jQuery.sap.declare("airbus.mes.calendar.ModelManager");
+jQuery.sap.declare("airbus.mes.calendar.util.ModelManager");
 
-airbus.mes.calendar.ModelManager = {
+airbus.mes.calendar.util.ModelManager = {
        urlModel : undefined,
        queryParams : jQuery.sap.getUriParameters(),
        i18nModel : undefined,
@@ -10,11 +10,9 @@ airbus.mes.calendar.ModelManager = {
        init : function(core) {
     	  
     	   var aModel = ["testModel"]
-    	   airbus.mes.calendar.test = core;
     	   airbus.mes.shell.ModelManager.createJsonModel(core,aModel);
-    	   this.settings = airbus.mes.settings.ModelManager;
            
-          // core.getModel("stationTrackerRModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onStationTrackerLoad);
+    	   core.getModel("testModel").attachRequestCompleted(airbus.mes.calendar.util.ModelManager.toto);
         
     	var dest;
 
@@ -55,10 +53,16 @@ airbus.mes.calendar.ModelManager = {
 	loadExample : function() {
 
 		var geturlAffectation = this.urlModel.getProperty('urlaffectation');
-		var oViewModel = airbus.mes.calendar.test.getModel("testModel");
+		var oViewModel = airbus.mes.calendar.oView.getModel("testModel");
 		oViewModel.loadData(geturlAffectation, null, false);
 
 	},
+	
+	toto : function() {
+		
+		
+		
+	}
 
 
 	
