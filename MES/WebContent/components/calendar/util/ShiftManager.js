@@ -670,68 +670,6 @@ airbus.mes.calendar.util.ShiftManager = {
 		
 	},
 	
-
-	/**
-	 * Search in last shift if there is an operation not confirmed return true if result
-	 * 
-	 * @param {OBJECT} oSection, AVL line wich is currently rendering
-	 */
-	noTotalConfLastShift : function (oSection) {
-		
-		var oShift = airbus.mes.stationtracker.ShiftManager.ShiftSelected;
-		var fIndexShift = airbus.mes.stationtracker.ShiftManager.closestShift(oShift.StartDate);
-		var bResult = false;
-		
-		// Selectet only previous shift
-		if ( fIndexShift != -1 && fIndexShift != 0 ) {
-						
-			var oPreviousShift = airbus.mes.stationtracker.ShiftManager.shifts[fIndexShift -1] ;
-			// Check if the avl to parse exist , when we add new avl Line by press + it not exist in the airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy 
-			if ( airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy[oSection.group] != undefined ) {
-				
-				if ( airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy[oSection.group][oSection.avlLine] != undefined ) {
-					
-					var oOperation = airbus.mes.stationtracker.GroupingBoxingManager.operationHierarchy[oSection.group][oSection.avlLine];			
-	
-					for ( var aBox in oOperation ) {
-					
-						if ( bResult ) {
-							
-							return true;
-							
-						} 
-							
-					var aOpration = oOperation[aBox];
-					//Parse all opration in corresponding group avlLine return true if one is not completed
-					aOpration.forEach(function(el,index){
-						// check if operation start date is less than the end date of prevous shift.
-						if ( airbus.mes.stationtracker.util.Formatter.jsDateFromDayTimeStr(aOpration[index].START_TIME) <  oPreviousShift.EndDate ) {
-						
-							if ( el.STATE != "C" )
-						
-							return bResult = true;	
-							
-						
-						}
-													
-					})	
-					
-				}
-				if ( bResult ) {
-					
-					return true;
-				} 
-			// All operation are completed
-			return false;
-				
-		}
-		// First shift reach no operation before the shift selected
-		return false;
-			}
-			
-		}
-	},
-	
 	/**
 	 * Add update of shift selection when swiping in calendar of the initial event of calendar
 	 */

@@ -81,132 +81,8 @@ sap.ui.core.Control.extend("airbus.mes.calendar.util.DHTMLXScheduler",    {
                         /**                                                                    **/
                         /************************************************************************/
                         /************************************************************************/
-
-//                        calendar.eventId.push ( calendar.attachEvent("onEventDrag", function SchedStartChange(ev, mode, e) {
-//                            if ( this.getEvent(ev).start_date.getTime() >= calendar._max_date  ){
-//                                console.log("yes");
-//                                }
-//                        }));
-
-
-                        /**
-                         * After drag & drop check the initial Date and compare with the new date if
-                         * it is different it call the rescheduling request to MII
-                         *
-                         * @param {OBJECT} ev, event new object
-                         * @param {OBJECT} original, event previous object
-                         * @param {Boolean} is_new, if is created event
-                         */
+                   
                         
-                        calendar.eventId.push(calendar.attachEvent("onBeforeEventChanged", function(ev, e, is_new,original) {
-
-                        	//Filled on event onBeforeDrag
-                			var oInitial = original;
-                    		var oFinal = ev;
-                        	
-                            if (is_new) {
-                                return false;
-                            }
-
-                            if (ev.section_id.slice(0, 2) === "I_") {
-                                return false;
-                            }
-                            
-                            // Get Value of groupind of new operation
-                            var aNewGroup = ev.section_id.split("_");
-                            var fLenght = aNewGroup.length - 2;
-                            var sNewGroup = "";
-                            
-                            for ( var i = 0;  i < fLenght  ; i++) {
-                            	
-                            	sNewGroup += aNewGroup[i];
-                            	
-                            }
-                            // Get Value of grouping of initial operation
-                            var aInitialGroup = oInitial.section_id.split("_");
-                            var fLenghtI = aInitialGroup.length - 2;
-                            var sInitialGroup = "";
-                            
-                            for ( var i = 0;  i < fLenghtI  ; i++) {
-                            	
-                            	sInitialGroup += aInitialGroup[i];
-                            	
-                            }                           
-                            
-                            // Check if the grouping of operation is different
-                            if (  sInitialGroup != sNewGroup ) {
-                            	
-                            	return false;
-                            	
-                            }
-                           
-                                //Store oFinal and oInitial value in case of check qa is not successfull
-                                airbus.mes.stationtracker.oFinal = oFinal;
-                                airbus.mes.stationtracker.oInitial = oInitial;
-                                airbus.mes.stationtracker.ModelManager.sendRecalendarequest(false,oFinal,oInitial);
-                                return true;
-                        }));
-
-                        /**
-                         * This event permit to cancel the drag and drop of Initial operation and when
-                         * the boxing value selected != operation_Id
-                         *
-                         * @param {STRING} id, the Id of the box selected in gantt
-                         * @return {boolean} true if not dragable, false to permit drag & drop
-                         */
-
-                        calendar.eventId.push(calendar.attachEvent("onBeforeDrag",function blockReadonly(id) {
-
-                        	var that = this;
-                        	this.byPassOnDrag = false;
-                        	
-                        	// permit to dont reschedule
-                            if ( bBatch1 ) {
-                            	calendar._drag_mode = ""
-                                return false;
-                            }
-
-                            // cannot reschedule an initial operation                            
-                            if (this.getEvent(id).type === "I" ) {
-
-                            	calendar._drag_mode = ""
-                                return false;
-
-                                
-                            } else if ( airbus.mes.calendar.util.GroupingBoxingManager.box === "OPERATION_ID") {
-
-                            	if (this.getEvent(id)) {
-
-                        		
-                            		if (airbus.mes.calendar.util.GroupingBoxingManager.computeStatus(this.getEvent(id).state, this.getEvent(id).paused, this.getEvent(id).previouslyStarted) === "0" ) {
-                                   		// if current operation is complete, cannot reschedule the operation
-                                        setTimeout(function() {
-
-                                            //If the bypass variable has been set on true to the double click action
-//                                              we don't perform the simple click action
-                                              if (!that.byPassOnDrag) {
-                                       			sap.m.MessageToast.show(airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("ForbiddenReschedule"), {
-                                    				duration : 3000});
-                                              }
-                                        	}
-                                         , 200)                            			
-                                         calendar._drag_mode = ""
-                            			return false;			
-                            		} else {
-                            			return true;
-                            		};
-                            	} else {
-                                    return true;                            		
-                            	}
-
-                            } else {
-                            	// cannot reschedule if grouping is not operation	
-                            	calendar._drag_mode = ""
-                            	return false;
-                            }
-
-                        }));
-
                         /**
                          * ??????????
                          *
@@ -220,82 +96,6 @@ sap.ui.core.Control.extend("airbus.mes.calendar.util.DHTMLXScheduler",    {
                             ShiftManager.adjustcalendarXStart(new Date());
 
                             return true;
-
-                        }));
-
-                        /**
-                         * Open PolyPoly fragment in affectation mode
-                         *
-                         * @param {STRING} id, the Id of the box selected in gantt
-                         * @param {OBJECT}    section a data object of the clicked cell
-                         * @param {Event} e    a native event object
-                         */
-
-                        calendar.eventId.push (calendar.attachEvent("onYScaleClick", function(index, section, e) {
-
-                            if (airbus.mes.stationtracker.AssignmentManager.bOpen && section.children != undefined) {
-
-                                calendar.openSection(section.key);
-                                airbus.mes.stationtracker.AssignmentManager.bOpen = false;
-                            }
-
-                            if (section.rescheduled && !section.children) {
-                                jQuery.sap.registerModulePath("airbus.mes.polypoly","../components/polypoly");
-                                airbus.mes.stationtracker.AssignmentManager.polypolyAffectation = true;
-                                airbus.mes.stationtracker.AssignmentManager.polypolyAssignment.selectedLine = section;
-                                airbus.mes.stationtracker.AssignmentManager.polypolyAssignment.selectedShift = airbus.mes.calendar.util.ShiftManager.ShiftSelected;
-
-                                if(!airbus.mes.stationtracker.AssignmentManager.checkQA){
-                                    if (!airbus.mes.stationtracker.oPopoverPolypoly) {
-                                        airbus.mes.stationtracker.oPopoverPolypoly = sap.ui.xmlfragment("airbus.mes.stationtracker.polypolyFragment", airbus.mes.stationtracker.oView.getController());
-
-                                        if(airbus.mes.polypoly == undefined){
-                                            sap.ui.getCore().createComponent({
-                                                name : "airbus.mes.polypoly", // root component folder is resources
-                                            });
-                                        }
-                                    }
-                                    //load model of polypoly
-                                    airbus.mes.polypoly.ModelManager.getPolyPolyModel(airbus.mes.stationtracker.ModelManager.settings.site, airbus.mes.stationtracker.ModelManager.settings.station);
-
-                                    //active busy
-                                    airbus.mes.shell.busyManager.setBusy(airbus.mes.polypoly.oView);
-
-                                    //open the pop-up
-                                    airbus.mes.stationtracker.oPopoverPolypoly.open();
-
-                                    // set polypoly in non-editable mode
-                                    airbus.mes.polypoly.PolypolyManager.globalContext.bEditable = !airbus.mes.stationtracker.AssignmentManager.polypolyAffectation;
-
-                                    // place this Ui Container with the Component inside into UI Area
-                                    airbus.mes.stationtracker.oPopoverPolypoly.addContent(airbus.mes.polypoly.oView);
-                                    airbus.mes.stationtracker.oPopoverPolypoly.setModel(airbus.mes.stationtracker.oView.getModel("StationTrackerI18n"),"StationTrackerI18n");
-
-                                    var myButton = airbus.mes.stationtracker.oPopoverPolypoly.getButtons().find(function(el){
-                                        return el.sId == "deleteLineAssignmentButton";
-                                    });
-                                    if (airbus.mes.stationtracker.AssignmentManager.affectationHierarchy[section.avlLine]) {
-                                        if (airbus.mes.stationtracker.AssignmentManager.affectationHierarchy[section.avlLine][airbus.mes.calendar.util.ShiftManager.ShiftSelected.shiftID]){
-                                            if(!myButton.getVisible()){
-                                                myButton.setVisible(true);
-                                            }
-                                        }else{
-                                            if(myButton.getVisible()){
-                                                myButton.setVisible(false);
-                                            }
-                                        }
-                                    }else{
-                                        if(myButton.getVisible()){
-                                            myButton.setVisible(false);
-                                        }
-                                    }                         
-                                    // Permit to display or not polypoly affectation or polypoly simple
-                                    airbus.mes.polypoly.oView.getController().initiatePolypoly();
-
-                                }else{
-                                    airbus.mes.stationtracker.AssignmentManager.handleLineAssignment("W", false);
-                                }
-                            }
 
                         }));
 
@@ -356,10 +156,7 @@ sap.ui.core.Control.extend("airbus.mes.calendar.util.DHTMLXScheduler",    {
                          */
 
                         calendar.eventId.push ( calendar.attachEvent("onClick", function(id,e) {
-                        		
-                             airbus.mes.stationtracker.ModelManager.OpenWorkList(id);
-                             calendar._drag_mode = ""
-                             return false;
+                        	
 
                         }));
 
@@ -372,7 +169,7 @@ sap.ui.core.Control.extend("airbus.mes.calendar.util.DHTMLXScheduler",    {
                         /************************************************************************/
 
                         calendar.templates.timeline_scale_label = function(key, label, section) {
-                            return airbus.mes.stationtracker.util.Formatter.YdisplayRules(section);
+                            return airbus.mes.calendar.util.Formatter.YdisplayRules(section);
                         };
 
                         calendar.templates.timeline_scaley_class = function(key, label, section) {
@@ -396,7 +193,7 @@ sap.ui.core.Control.extend("airbus.mes.calendar.util.DHTMLXScheduler",    {
                         };
 
                         calendar.templates.event_bar_text = function(start, end, event) {
-                            return airbus.mes.stationtracker.util.Formatter.BoxDisplay(event);
+                            return airbus.mes.calendar.util.Formatter.BoxDisplay(event);
                         };
 
                         /* custom initial */

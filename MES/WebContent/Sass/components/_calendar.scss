@@ -1,0 +1,1720 @@
+/********************
+TABLE
+*********************/
+.dhx_matrix_scell{
+
+    &.folder {
+        max-width:199px;
+        .ylabelfolder {
+            @extend %ylabelfolder;
+        }
+    }
+    &>div{
+        padding-left: 10px !important;
+    }
+}
+
+/********************
+TOOLBAR
+*********************/
+#mes .sapMPopover{
+    .sapMBtnIcon {
+        color: $petrol;
+    }
+}
+
+.sapMPIText1{
+    @extend %sapMPIText;
+    padding-left: 8px;
+    margin-top: -2.2rem;
+    width: 98.9% !important;
+}
+.sapMPIText2{
+    @extend %sapMPIText;
+    margin-top: -1.1rem;
+    width: 100% !important;
+}
+
+
+/********************
+WORK LIST POP OVER
+*********************/
+.classWorklistPopover {
+    .fa {
+        position: relative;
+        z-index: 1;
+        line-height: 20px;
+        height:20px;
+        color: $white-two;
+        overflow: hidden;
+        padding-right: 6px;
+        &.rightIcon {
+            float: right;
+            &.petrol {
+                color:$petrol;
+            }
+        }
+        &.dandelion{
+            color: $dandelion;
+            padding-right: 6px;
+        }
+        &.oswIcon2 {
+            @extend %oswIcon2;
+            padding-right: 6px;
+            & b {
+                font-family: arial;
+            }
+        }
+        &.fa-exclamation-triangle {
+            &.triangleIcon{
+                &.petrol{
+                    color:$petrol;
+                }
+            }
+        }
+
+    }
+    .sapMPIText3 {
+        position: absolute;
+        display: block;
+        right: 0px;
+        height: 20px;
+        margin-right: 6px;
+        top: 50%;
+        margin-top: calc(-20px/2);
+        width: auto;
+    }
+    header.sapMIBar.sapMHeader-CTX {
+        background: #d4f1f7;
+        box-shadow: 0 0 5px #333;
+        z-index: 1000;
+    }
+    header.sapMIBar.sapMHeader-CTX label {
+        color: #434343;
+        font-size: 1rem;
+    }
+}
+#mes{
+    .sapMDialog{
+        &:not(.theme-disabled){
+            .classWorklistPopoverHeader{
+                box-shadow: 0 0 5px #333;
+                overflow: visible;
+                background-color: #d4f1f7;
+                color: #434343;
+                margin: -1rem -1rem 1rem -1rem;
+                padding: 1rem;
+            }
+        }
+    }
+}
+/********************
+SCHEDULAR TASK STYLE
+*********************/
+
+/********************
+BOX MANAGEMENT
+*********************/
+.trackerBox{
+    width:100%;
+    height:inherit;
+    position:absolute;
+    z-index: 1;
+    line-height: 23px;
+    left: 0px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    .trackerText{
+        @extend %trackerText;
+        max-width: calc(100% - 20px);
+        white-space: nowrap;
+        color: white;
+        overflow: hidden;
+    }
+
+    .trackerTextBlock{
+        @extend %trackerText;
+        white-space: nowrap;
+        color: $petrol;
+    }
+    .colorProgress{
+        height: inherit;
+        position: absolute;
+        z-index: 0;
+        left: 0px;
+        overflow: hidden;
+    }
+    .openBlockedEscalated{
+        height: inherit;
+        width:100%;
+        background-color:$cherry-red;
+    }
+
+   .openBlocked{
+        height: inherit;
+        width:100%;
+        background-color:$dandelion;
+    }
+
+    .fa {
+        @extend %icon;
+        height:24px;
+        &.rightIcon {
+            padding-right: 6px;
+            float: right;
+            &.petrol {
+                color:$petrol;
+            }
+        }
+        &.triangleIcon {
+            padding-left: 6px;
+            float: left;
+        }
+        &.oswIcon {
+            @extend %oswIcon;
+            line-height: 14px;
+            height: auto;
+            float: left;
+            margin-left: 6px;
+            background-color: $dandelion;
+            margin-bottom: 10px;
+            // prevent design to beark on resize
+            min-width: 45px;
+            & b {
+                font-family: arial;
+            }
+            &.cherry-red {
+                color: $cherry-red;
+            }
+        }
+    }
+    .dandelion {
+        color: $dandelion;
+    }
+    .dandelion-back {
+        background-color: $dandelion;
+    }
+    .teal-blue {
+        color: $teal-blue;
+    }
+    .petrol {
+        color: $petrol;
+    }
+    .petrol-back {
+        background-color: $petrol;
+    }
+    .cherry-red-back {
+        background-color: $cherry-red;
+    }
+    .dark-lime-green-back {
+        background-color: $dark-lime-green;
+    }
+    .teal-blue-back {
+        background-color: $teal-blue;
+    }
+
+}
+.trackerBox:hover{
+    .dark-lime-green-back{
+        @include backgroundColorTransition(0.2s);
+        background-color:$dark-lime-green-hover !important;
+    }
+    .teal-blue-back{
+        @include backgroundColorTransition(0.2s);
+        background-color:$teal-blue-hover !important;
+    }
+    .cherry-red-back{
+        @include backgroundColorTransition(0.2s);
+        background-color:$cherry-red-hover !important;
+    }
+    .openBlockedEscalated{
+        @include backgroundColorTransition(0.2s);
+        background-color:$cherry-red-hover !important;
+    }
+    .openBlocked{
+        @include backgroundColorTransition(0.2s);
+        background-color:$dandelion-hover !important;
+    }
+    .solvedBlocked{
+        @include gradient(repeating-linear-gradient(135deg, #fbec00, #fbec00 10px, #ffbf00 10px, #ffbf00 20px));
+        @include animbackground(slide 20s infinite linear forwards);
+        @include keyframes(slide) {
+            0%{background-position:0% 0%}
+            100%{background-position:100% 0%}
+        };
+        @include transition(background,0.2s);
+    }
+
+   .solvedBlockedExcalated{
+            @include gradient(repeating-linear-gradient(135deg, #9e001e, #9e001e 10px, #e4002b 10px, #e4002b 20px));
+        @include animbackground(slide 20s infinite linear forwards);
+        @include keyframes(slide) {
+        0%{background-position:0% 0%}
+        100%{background-position:100% 0%}
+        };
+    }
+}
+.grey2 {
+    background-color: #dddddd;
+}
+
+.grey{
+    background-color: $cool-grey;
+    &:hover{
+        background-color: $cool-grey-hover;
+        color: black;
+    }
+}
+
+.trackerTextBlack{
+    color: #000;
+}
+
+.solvedBlockedExcalated{
+    @include trackerSolvedBlock(repeating-linear-gradient(135deg, #e4002b, #e4002b 10px, #9e001e 10px, #9e001e 20px));
+    background-position: 14px 0;
+    background-size: 56px 56px;
+}
+
+.solvedBlocked{
+    @include trackerSolvedBlock(repeating-linear-gradient(135deg, #ffbf00, #ffbf00 10px, #fbec00 10px, #fbec00 20px));
+    background-position: 14px 0;
+    background-size: 56px 56px;
+}
+
+
+/***********************
+KPI HEADER
+************************/
+#calendar--kpi_header{
+    .hiddenRefBar{
+        display: none;
+    }
+    .sapMPanelWrappingDivTb{
+        border-bottom: none;
+    }
+    .sapMPanelExpandableIcon{
+        @extend %sapMPanelExpandableIcon;
+    }
+    .sapMPanelExpandableIconExpanded{
+        @extend %sapMPanelExpandableIconExpanded;
+    }
+}
+.kpiPageHeader{
+    @extend %kpiPageHeader;
+}
+
+#calendar--kpiHeaderToolbar{
+    margin-left: 0;
+    .sapMBtnContent,
+    .sapMSltLabel,
+    .sapMInputBaseInner,
+    .sapMSltArrow{
+        color: #F5F5F5;
+        font-size: 12px;
+    }
+}
+
+#calendar--kpi_header-CollapsedImg {
+    right: 0;
+    color: #74d2e7;
+    display: none;
+}
+
+#calendar--ProductionButton,
+#calendar--DisruptionButton {
+    border-right: solid 1px #74d2e7;
+    margin-right: 0;
+}
+
+#calendar--DatePicker-inner {
+    @extend %datePickerInner;
+}
+
+#calendar--DatePicker{
+    border-right: solid 1px #74d2e7;
+    margin-right: 0;
+    .sapMInputValHelp{
+        right: auto;
+        left: 0;
+    }
+    .sapMInputValHelpInner {
+        color: #F5F5F5;
+        font-size: 24px;
+    }
+}
+#calendar--selectShift {
+    border-left: solid 1px #74d2e7 !important;
+    opacity: 1;
+    @extend %stationTrackerViewShiftAndUser;
+    &.sapMSltDisabled {
+        .sapMSltLabel, .sapMSltArrow{
+            opacity: 0.5;
+        }
+    }
+}
+#calendar--selectUser {
+    @extend %stationTrackerViewShiftAndUser;
+}
+#calendar--selectShift-label,
+#calendar--selectShift-arrow,
+#calendar--selectUser-label,
+#calendar--selectUser-arrow {
+    top: 0;
+    bottom: 0;
+    line-height: 3rem;
+}
+#calendar--ProductionButton-inner:hover,
+#calendar--ProductionButton:hover #calendar--ProductionButton-inner,
+#calendar--DisruptionButton-inner:hover,
+#calendar--DisruptionButton:hover #calendar--DisruptionButton-inner {
+    background-color: transparent;
+}
+
+#calendar--hideKPI {
+    >div {
+        width: 125px;
+    }
+}
+
+#calendar--TeamButton-img,
+#calendar--TeamButton-content,
+#calendar--hideKPI-img,
+#calendar--hideKPI-content {
+    color: #74d2e7 !important;
+}
+
+/******************************************
+STATIONTRACKERVIEW ID AND DHX AND CONTENT
+******************************************/
+#calendar{
+    .dhx_matrix_scell div{
+        overflow: visible;
+    }
+}
+#calendar--calendar{
+    @extend %stationTrackerView;
+    .customHour{
+        @extend %stationTrackerViewCustomHour;
+    }
+    .customHour:before{
+        @extend %customHourBefore;
+    }
+    .offtime{
+        background-image: url("../components/stationtracker/css/img/fat_lines.png");
+    }
+    .dhx_cal_data{
+        overflow-y: scroll;
+        bottom: 0;
+        height: auto !important;
+        border-top: solid 1px #979797;
+    }
+    .dhx_cal_header {
+        border: none;
+        width: 100% !important;
+    }
+    .dhx_cal_next_button{
+        @extend %dhxtButton;
+        right: 0px;
+    }
+    .dhx_cal_prev_button{
+        @extend %dhxtButton;
+        right: 30px;
+    }
+    .dhx_cal_next_button:before {
+        content: "\f105";
+    }
+    .dhx_cal_prev_button:before {
+        content: "\f104";
+    }
+    .dhx_matrix_scell{
+        &.folder{
+            background-color: $duck-egg-blue;
+            border-bottom: solid 1px #EAFCFE;
+            @extend %dhxItemFolder;
+        }
+        &.item{
+            border-bottom: solid 1px $duck-egg-blue;
+            color: #0D5D76;
+            background-color: #EAFBFD;
+            @extend %dhxItemFolder;
+            &.initial{
+                cursor: default;
+            }
+        }
+    }
+    .dhx_matrix_cell{
+        background-color: #F3F5F6;
+        border-bottom: 1px solid #dddddd;
+        border-right: 1px solid #dddddd;
+    }
+    .dhx_matrix_cell div,
+    .dhx_matrix_scell div {
+        text-align: left;
+        white-space: nowrap;
+        margin-top:2px;
+    }
+    .dhx_cal_event{
+        border: none;
+        overflow: visible;
+        &.late{
+            div{
+                border-color: Red;
+                border-width: 2px;
+                min-width: 40px !important;
+            }
+        }
+        &.min-width{
+            div{
+                min-width: 40px !important;
+            }
+        }
+        &.lateI{
+            div{
+                border-color: red;
+                border-width: 2px;
+                background-color: #969696;
+            }
+        }
+    }
+    .dhx_cal_event_line {
+        border: none;
+        overflow: visible;
+        &.late{
+            border-color: Red;
+            border-width: 2px;
+            min-width: 40px !important;
+        }
+        &.min-width{
+            min-width: 40px !important;
+        }
+        &.lateI{
+            border-color: red;
+            border-width: 2px;
+            background-color: #969696;
+        }
+        .dhx_event_resize{
+            background-image: none;
+        }
+    }
+    .dhx_scell_name {
+        float: none;
+        text-align: left;
+        position: relative;
+    }
+    .dhx_row_folder{
+        .dhx_matrix_scell{
+            &.folder{
+                background-color: white;
+            }
+        }
+        .dhx_scell_name{
+            .fa-chevron-down{
+                @extend %faChevronRight;
+            }
+            .fa-chevron-right{
+                @extend %faChevronRight;
+            }
+            .fa-plus{
+                @extend %faChevron;
+            }
+        }
+        .dhx_marked_timespan{
+            &.begin_shifht{
+                @extend %timeSpanWidth;
+                background-color: blue;
+
+            }
+             &.end_shifht{
+                @extend %timeSpanWidth;
+                background-color: #0f2d65;
+                 margin-left:-5px;
+            }
+            &.taktMarker{
+                @extend %timeSpanWidth;
+                background-color: green;
+            }
+            &.shiftCss,&.offtime{
+                display: none;
+            }
+            &.dhx_matrix_now_time{
+                min-height: 70px;
+                border-left-color: purple;
+                opacity: 1;
+            }
+        }
+        .dhx_matrix_cell, .dhx_marked_timespan.shiftCss{
+            border-right: none;
+            border-bottom: none;
+            background-color: #ECEEEF ! important;
+        }
+        .folderAxisColor{
+            background-color: #ECEEEF ! important;
+        }
+    }
+    .dhx_row_item{
+        .dhx_marked_timespan{
+            &.begin_shifht{
+                @extend %timeSpanWidth;
+                background-color: blue;
+            }
+             &.end_shifht{
+                @extend %timeSpanWidth;
+                background-color: #0f2d65;
+                margin-left: -5px;
+            }
+            &.taktMarker{
+                @extend %timeSpanWidth;
+                background-color: green;
+            }
+        }
+        .dhx_scell_name{
+            white-space: nowrap;
+            padding: 0px;
+        }
+    }
+    .dhx_data_table{
+        &.folder td{
+            border-bottom: 2px solid #dddddd;
+            background-color: #ECEEEF;
+        }
+        .dhx_matrix_cell{
+            background-color: white;
+        }
+    }
+    .dhx_data_table {
+        overflow:visible;
+    }
+    .dhx_matrix_line {
+        overflow:visible;
+    }
+    .yText{
+        width: 100px;
+        float: left;
+        height: 40px;
+    }
+
+    .avlLine{
+        overflow: hidden;
+        text-overflow: ellipsis;
+    max-width: 120px;
+        white-space: nowrap;
+    white-space: nowrap;
+    color: #0D5D76;
+    vertical-align: middle;
+    text-overflow: ellipsis;
+    display: inline-block;
+    overflow: hidden;
+    }
+
+    .ylabel{
+        white-space: nowrap;
+        color: #0D5D76;
+        vertical-align: middle;
+        text-overflow: ellipsis;
+        display: inline-block;
+        overflow: hidden ;
+        max-width: 80px;
+        height: 15px;
+    }
+    .ylabelEditIcon{
+        @extend %stationViewYlabelIconAndImage;
+        float: left;
+    }
+    .ylabelUserImage{
+        @extend %stationViewYlabelIconAndImage;
+        background-color: $duck-egg-blue;
+        border-radius: 999px;
+        float: left;
+        margin-right:10px;
+        }
+    .ylabelUser{
+        @extend %stationViewYlabelUser;
+        margin-left: 0px;
+        max-width: 130px;
+    }
+    .yMoreLabel{
+        position: absolute;
+        right: 2px;
+        color: #8db9ca;
+        top: 2px;
+        .fa-pencil{
+            width: 30px;
+            text-align: center;
+        }
+    }
+    .ylabelAvlLineSection{
+        display: inline-block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 75px;
+        margin-left: 10px;
+    }
+    .tracker-item-initial{
+        @extend %tracker-item-initial;
+        .fa-exclamation-triangle{
+            color: #BBBCBC !important;
+        }
+    }
+    .shiftCss{
+        background-color: #DDDDDD;
+        opacity: 0.8;
+    }
+
+    .operationCP{
+        background-color: $cool-grey;
+        border: 2px solid #0D2C63;
+        &:hover{
+            background-color: $cool-grey-hover;
+            color: black;
+            border: 2px solid $twilight-blue;
+        }
+    }
+    .customTable table tr th, td{
+        border-left: none !important;
+    }
+}
+.dhx_event_resize_start{
+    background-image: none;
+}
+.dhx_event_resize_end{
+    background-image: none;
+}
+div{
+    &#iconTabBar--header{
+        background-color: #E0F2F4;
+    }
+}
+.dhx_cal_event_line{
+    .trackerBoxtooltiptext{
+        @extend %trackerBoxTooltip;
+        min-width: 300px;
+    }
+    &:hover{
+        .trackerBoxtooltiptext{
+            display: inline;
+            position: absolute;
+            margin-top: -30px;
+            margin-left: -210px;
+            z-index: 99;
+        }
+        div{
+            background: none;
+        }
+    }
+    div{
+        &:not(.trackerBox){
+            overflow: visible;
+        }
+    }
+}
+.test{
+    background: red !important;
+}
+.ganttBar{
+    height: 2rem !important;
+}
+/***********************
+WORKLIST
+************************/
+.sapMILIDiv{
+    text-align: left !important;
+    margin-left: 0px !important;
+}
+.sapUiRespGrid{
+    &.sapUiRespGridHSpace1{
+        &>div{
+            margin-bottom: 0px !important;
+        }
+    }
+    &.sapUiRespGridVSpace1{
+        &>div{
+            margin-bottom: 0px !important;
+        }
+    }
+}
+button{
+    &.menuBtn{
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+    &.textRed{
+        div{
+            &.sapMBtnInner{
+                color: #FF0000;
+                font-weight: bold;
+            }
+        }
+    }
+}
+.allowWrapping{
+    flex-wrap: wrap;
+}
+label{
+    &.teamLabel{
+        font-size: 2rem;
+        font-weight: bold;
+    }
+}
+.Save_reschedule{
+    @extend %Save_reschedule;
+}
+
+.ComboBoxProdGroup{
+    width: 50% !important;
+}
+.ComboBoxInitial{
+    width: 18% !important;
+}
+.ComboBoxProdGroupMobile{
+    width: 90% !important;
+}
+.setFullResponsiveWidth{
+    width: 100% !important;
+}
+.topMargin{
+    margin-top: 1.2em;
+}
+.shrinkArea{
+    padding: 0rem !important;
+}
+.sapUiFormM{
+    .sapUiFormResGridCont{
+        padding: 0rem !important;
+    }
+}
+.fullWidth{
+    width: 100%;
+}
+.homeHeaderBox{
+    background-color: $white-two;
+}
+.DialogWidth{
+    width: 50%;
+}
+.noBorderToolbar{
+    background-color: $white-two !important;
+    box-shadow: none !important;
+    border: 0px !important;
+    border-bottom: 0px !important;
+}
+.customTileBox{
+    padding: 0.5rem;
+    height: 10.5rem;
+}
+.textInfoGreen{
+    color: green;
+}
+.textInfoRed{
+    color: red;
+}
+.classNotConfirmedOperation{
+    @extend %classNotConfirmedOperation;
+}
+/***********************
+TASK ADHERENCE
+************************/
+.taktAdherenceTrend{
+    height: 100%;
+    padding-right: 0 !important;
+    &.sapUiRespGrid{
+        &.sapUiRespGridHSpace1{
+            &>div{
+                margin: 0 0.5rem 0 0;
+                line-height: 1rem;
+            }
+            &>.sapUiRespGridSpanL4{
+                margin: 0;
+                width: auto;
+            }
+        }
+    }
+}
+.classKpiHeaderContent{
+    .taktAdherenceTrend{
+        .TrendGree{
+            margin-bottom: 0.5rem;
+        }
+        .TrendRed{
+            margin-bottom: 0.5rem;
+        }
+        .taktKpiName{
+            &.takt_kpi_trend{
+                font-size: 1vw;
+            }
+        }
+    }
+    .taktKpiName{
+        height: 25px;
+        text-align: right !important;
+        font-size: 0.85vw;
+        vertical-align: middle;
+        display: baseline;
+    }
+    .taktKpiValue{
+        height: 25px;
+        display: inline-block;
+        vertical-align: baseline;
+    }
+    .KPITaktChartBlueText{
+        color: #74d2e7;
+    }
+    .KPITaktChartRightText{
+        text-align: right ! important;
+        width: 100%;
+    }
+}
+#calendar--takt_adherence_adherence_value {
+    font-size: 15px;
+}
+
+/*************
+ARE CHART
+**************/
+svg{
+    &#calendar--takt_adherence_area_chart{
+        border: none;
+    }
+}
+.classTaktAdherenceAreaChart{
+    div{
+        &:nth-child(2){
+            position: absolute;
+            top: 0;
+            left: 20px;
+        }
+        &:nth-child(3){
+            position: absolute;
+            top: 0;
+            right: 15px;
+        }
+    }
+}
+.takt_adherence_area_chart_svg-container{
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    /* aspect ratio */
+    vertical-align: top;
+    overflow: hidden;
+}
+.takt_adherence_area_chart_svg-content-responsive {
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    left: 0;
+}
+
+#calendar--takt_adherence_area_chart{
+    .yaxis{
+        @include fillChart(white);
+        font-size: 7px;
+    }
+    .yaxelabel{
+        @include fillChart(white);
+        font-size: 7px;
+        margin-bottom: 2px;
+    }
+    .axis path,
+    .axis line{
+        @include fillChart(none);
+        stroke: grey;
+        shape-rendering: crispEdges;
+    }
+    .area{
+        fill: #E5002B;
+    }
+    .line{
+        @include fillChartStroke(none, #0D2C63, 2);
+    }
+    .realLine {
+        @include fillChartStroke(none, white, 2);
+    }
+    .estimateLine {
+        @include fillChartStroke(none, white, 1);
+        stroke-dasharray: 10;
+    }
+    .ygrid{
+        .tick{
+            stroke: rgba(109, 147, 194, 0.39);
+            opacity: 0.7;
+        }
+        path{
+            stroke-width: 0;
+        }
+    }
+}
+/*******************************
+SHIFT STAFFING
+********************************/
+#calendar--shifStaffingHeader-dmc-chart .Left {
+    background-color: $dark-lime-green;
+}
+#calendar--shifStaffingHeader{
+    .sapSuiteDmcTitle,
+    .sapSuiteDmcLbls{
+        font-size: 0.8vw;
+    }
+    .sapSuiteDmcCnt {
+        right: 2rem;
+    }
+    .sapSuiteDmcDelta {
+        color: white;
+    }
+    .sapSuiteDmcBarDeltaInt {
+        background: $blood-orange;
+    }
+    .sapSuiteDmcBarDeltaStripe {
+        background-color: #74D2E7;
+    }
+
+}
+/***********************************
+STATION TRACKER TOOLBAR
+************************************/
+#calendar--buttonViewMode {
+    height: 3rem;
+    margin: 0;
+    .sapMSegBBtnFocusable,
+    .sapMSegBBtnDis{
+        @extend %sapMsegStationTracker;
+    }
+    .sapMSegBBtnFocusable{
+        &.sapMSegBBtnSel{
+            background-color: #74D2E7;
+            color: white;
+        }
+    }
+}
+#calendar--toolbarstationtracker{
+    background-color: $duck-egg-blue !important;
+    label{
+        color: #0D5D76;
+        padding: 0 0 0 0.625rem;
+    }
+    .comboBoxStyle{
+        @extend %comboBoxStyleStationTracker;
+        label,
+        .sapMSltArrow{
+            background-color: transparent;
+            color: #0D5D76;
+            height: 3rem;
+            line-height: 3rem;
+        }
+        &.sapMSltPressed{
+            .sapMSltArrow{
+                background-color: #74D2E7;
+            }
+        }
+    }
+    .sapMBtnIconLeft,
+    .sapMBtnContent{
+        color: #0D5D76;
+    }
+    .sapMBtn:hover:not(.sapMBtnDisabled){
+        background-color: $petrol-20;
+        &>.sapMBtnTransparent{
+            &.sapMBtnHoverable{
+                background-color: transparent;
+            }
+        }
+    }
+}
+.sapMPopoverScroll{
+    .sapMSelectListItemBaseSelected{
+        background-color: $duck-egg-blue !important;
+    }
+}
+/********************************
+POP UP POLYPOLY
+*********************************/
+#pop-up-polypoly{
+    background: $white-two;
+    border: none;
+    border-radius: 0;
+    box-shadow: 0 0 5px #333;
+    .sapUiTableColHdrScr{
+        .sapUiTableColHdr:nth-child(2){
+            .sapMLabel{
+                border: none;
+                color: #468497;
+                font-size: 0.7rem;
+            }
+        }
+        .sapUiTableColHdr:nth-child(1){
+            .sapMLabel{
+                color: #468497;
+                font-size: 0.975rem;
+                padding-top: 4px;
+            }
+        }
+    }
+}
+#pop-up-polypoly-header-BarPH{
+    background: #d4f1f7;
+}
+#pop-up-polypoly-header{
+    box-shadow: 0 0 5px #333;
+}
+#pop-up-polypoly-title{
+    color: #434343;
+}
+#pop-up-polypoly-scrollCont{
+    padding: 0;
+}
+#pop-up-polypoly-cont{
+    border-top: 3px solid $white-two;
+}
+#pop-up-polypoly-footer{
+    background-color: $teal-blue-hover;
+}
+/**********************
+DATE PICKER
+***********************/
+.sap-desktop{
+    .classDateButton{
+        .sapMBtnTransparent{
+            border: none;
+            &>.sapMBtnIcon{
+                color: $white-two;
+            }
+        }
+    }
+    .classDatePickerPop{
+        .sapMIBar{
+            &.sapMHeader-CTX{
+                background: #d4f1f7;
+                border: none;
+                z-index: 9;
+                position: relative;
+            }
+        }
+        .sapMPopoverArrUp{
+            &:after{
+                border-bottom-color: #d4f1f7;
+            }
+        }
+        .sapMBtn {
+            background-color: $twilight-blue;
+            &:hover>.sapMBtnHoverable,
+            &>.sapMBtnHoverable {
+                background-color: transparent;
+                background: transparent;
+                border: none;
+                color: whitesmoke;
+                font-weight: 400;
+            }
+            &:hover{
+                background-color: $petrol-20;
+            }
+        }
+    }
+}
+.classDatePickerButton{
+    color: $white-two;
+    text-shadow: none;
+    &.sapMBarChild{
+        &.sapMBtn{
+            &.sapMBtnBase{
+                margin: 0 auto;
+            }
+        }
+    }
+}
+.sapMTB-Transparent-CTX .classDateButton+.sapMLabel {
+    text-shadow: none;
+    color: $white-two;
+}
+/************************
+PRODUCTION GROUP POPOVER
+*************************/
+#mes{
+    .MyproductionGroupPopoverList{
+        font-size: 0.875rem;
+        margin: 0;
+        height: inherit;
+        border-bottom: none;
+    }
+    .MyproductionGroupPopover {
+        .sapMSLITitleOnly {
+        font-size: 0.875rem;
+        color: #333333;
+        line-height:1rem;
+        }
+        .sapMSLIIconThumb>.sapMLIBContent {
+        padding: 0.5rem 0 0.5rem 0;
+        }
+    .sapMTB-Info-CTX.sapMTB {
+        background: $twilight-blue;
+        border-bottom: 1px solid $white-two;
+    }
+    .sapMLIB.sapMLIBSelected {
+        background: $duck-egg-blue;
+    }
+
+    .sapMCbBg.sapMCbMarkChecked:before {
+        color: $navy-blue;
+    }
+    .sapMCbBg {
+        border: solid 0.125rem $twilight-blue;
+        &:hover {
+            border-color:$navy-blue;
+        }
+    }
+}
+    .ClassProductionButton {
+        margin-left: 0;
+        max-width: 30vw;
+    }
+    .sapMPopover {
+        border: none;
+        box-shadow: 0 0.0625rem 0.1875rem rgba(0,0,0,0.5);
+        margin-left: -5px;
+        margin-top: -1px;
+    }
+}
+
+/****************************
+TOOLTIP TEXT
+****************************/
+.sapMPIAndon{
+    background: #DB5550 !important;
+}
+.sapMPITextRight {
+    color: white;
+    display: block;
+    float: left;
+    padding-left: 0.5rem;
+}
+.gray_section {
+    background-color: grey;
+}
+.sapMPIText3 {
+    float: right;
+    margin-top: -29px;
+    margin-right: 8px;
+    width: 24px;
+    height: 24px;
+}
+
+/****************************
+FROM CUSTOM CSS
+*****************************/
+.sapMPIBarYellow{
+    @include sapMPIBarType3(#f1c40f, #f39c12, #00923e);
+}
+.sapMPIBarBlue{
+    @include sapMPIBarType2(#008cda, #006ca7);
+}
+.sapMPIBarGreen{
+    @include sapMPIBarType1(#00923e, #005f28, #7ED320 !important);
+}
+.sapMPIBarRed{
+    @include sapMPIBarType2(#e31c1c, #b51616);
+}
+.sapMPIBarOrange{
+    @include sapMPIBarType2(#eb5200, #b84000);
+}
+.sapMPIBarDarkGrey{
+    @include sapMPIBarType2(#616161, #4d4d4d);
+}
+.sapMPIBarDarkGreen{
+    @include sapMPIBarType2(#005524, #003c19);
+}
+.sapMPIBarGrey{
+    @include sapMPIBarType1(#008cda, #006ca7, #97999b !important);
+}
+.orange {
+    color: orange;
+}
+.contentNoPad .sapMPanelContent {
+    padding: 0rem;
+    background-color: $teal-blue-hover;
+    border-bottom: 1px solid $white-two;
+}
+.overallProgresstitle{
+    span{
+        @extend %overallProgresstitleSpan;
+    }
+}
+.triangle{
+    @extend %triangle;
+}
+#hammer_swipe{
+    @extend %hammer_swipe;
+}
+
+.sectionusers{
+    button{
+        padding: 0;
+    }
+}
+.operatorList{
+    .sapMListHdr{
+        text-align: left;
+        font-size: small;
+        font-weight: bold;
+        border-bottom: 0px;
+    }
+}
+.initialCell{
+    background-color: rgba(255, 255, 204, 0.5);
+}
+.margin{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.borderCell{
+    background-color: rgba(242, 180, 87, 0.2);
+}
+.borderX{
+    border-left: none !important;
+    border-right: none !important;
+    background-color: rgba(242, 180, 87, 0.2);
+}
+
+.borderY{
+    border-top: none !important;
+    border-bottom: none !important;
+}
+.boxColor{
+    background-color: #ecf0f1;
+    margin: 1px;
+    border: 1px solid #bdc3c7;
+}
+.boxColorInitial{
+    background-color: transparent;
+    margin: 1px;
+    border: 1px solid #bdc3c7;
+}
+.user{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.task{
+    height: 50px !important;
+}
+
+.padding{
+    padding: 5px;
+}
+.one_line{
+    white-space: nowrap;
+    overflow: hidden;
+    padding-top: 5px;
+    padding-left: 5px;
+    text-align: left !important;
+}
+.progressIndicator{
+    padding: 0px;
+    margin: 0px;
+    height: 1.5rem;
+}
+.spTitle{
+    font-size: 20px;
+}
+.commentConfirmCss{
+    border-right: 1px solid black;
+    padding-right: 17px;
+}
+div{
+    &#SPStatusInd{
+        &.progressBarOP{
+            &.sapMBarChild{
+                &.sapMPI{
+                    border: none;
+                }
+            }
+        }
+    }
+}
+.pageHeaderDialog{
+    &.sapMDialog{
+        &>footer{
+            background-color: $navy-blue !important;
+        }
+    }
+}
+.noFooterDialog{
+    .sapMDialogStretchContent{
+        height: 100% !important;
+    }
+}
+.closeWorklistCss{
+    .sapUxAPObjectPageHeaderActionButtonHideText{
+        .sapMBtnInner{
+            &.sapMBtnIconFirst{
+                color: white;
+                padding-left: 0rem;
+            }
+        }
+    }
+}
+
+.toolbarSeparatorWhite{
+    background: white !important;
+}
+.italicText{
+    font-style: italic;
+}
+.smallIconButton{
+    .sapMBtnIcon{
+        width: 10%;
+    }
+}
+#operationDetailPopup--operationDetailPopUp-scrollCont{
+    padding: 0rem !important;
+}
+.initialSection{
+    background-color: gray;
+    color: white;
+}
+.scalebar{
+    background-color: white;
+    color: black;
+    text-align: left;
+}
+.upperCaseConversion{
+    input{
+        text-transform: uppercase;
+    }
+}
+/************************
+OTHER
+*************************/
+#team-popover{
+    button{
+        display: block;
+        width: 100%;
+    }
+}
+.yHrLabel{
+    @extend %yHrLabel;
+}
+.ylabelUser{
+    @extend %ylabelUser;
+}
+.div{
+    &.Left{
+        &.sapSuiteDmcBarInternal{
+            background: #006CA7;
+        }
+    }
+}
+.selectBoxStation{
+    height: 30px;
+    padding-left: 10px;
+    width: 100px;
+    position: relative;
+}
+
+.marginLeft0 {
+    margin-left: 0 !important;
+}
+.partialConfirmCss{
+    .sapUxAPObjectPageSectionTitle{
+        color: #006CA7 !important;
+        border-bottom: 0px solid #999999 !important;
+    }
+}
+.partialConfirmCss2{
+    .sapUxAPObjectPageSectionHeader{
+        border-bottom: 0px solid #f2f2f2 !important;
+    }
+}
+.partialConfirmCss3{
+    .sapUxAPObjectPageSectionHeader{
+        height: 0rem;
+    }
+}
+.partialConfHeader{
+    .sapUxAPObjectPageHeaderIdentifier{
+        background-color: $teal-blue !important;
+    }
+}
+.whitePartialConfHeader .sapUxAPObjectPageHeaderIdentifierTitle,
+.whitePartialConfHeader2 .sapUxAPObjectPageHeaderIdentifierDescription{
+    color: white !important;
+}
+.lockCss{
+    .sapUxAPObjectPageHeaderLockBtn{
+        .sapMBtnTransparent{
+            &>.sapMBtnIcon{
+                color: #ED8E01;
+            }
+        }
+    }
+}
+.ylabel{
+    &:hover{
+        .tolltip{
+            visibility: visible;
+        }
+    }
+}
+.tooltip{
+    @extend %tooltip;
+}
+.dhx_scell_expand{
+    @extend %dhx_scell_expand;
+}
+.dhx_cal_date{
+    visibility: hidden;
+    z-index: -1;
+}
+.otherStations{
+    @include background(#515456);
+}
+.Blue{
+    @include  background(#006CA7 !important);
+    z-index: 1 !important;
+}
+.white{
+    @include background(white !important);
+}
+.centerItems{
+    &.NS{
+        &.sapSuiteHdrCellNorth{
+            text-align: center !important;
+        }
+    }
+}
+.whiteTextButton{
+    .sapMBtnTransparent{
+        color: white !important;
+        text-align: left;
+    }
+}
+.blackTextButton{
+    .sapMBtnTransparent{
+        color: black !important;
+        text-align: left;
+    }
+}
+.blackTextButton2{
+    .sapMBtn{
+        border-bottom-style: inset;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+    }
+    .sapMBtnIcon{
+        width: 3rem;
+        font-size: 1rem;
+    }
+    .sapMBtnContent{
+        padding-left: 9px;
+    }
+}
+.alignTextLeft{
+    .sapMIBar-CTX{
+        .sapMTitle{
+            @include font("Verdana", bold);
+            padding-right: 75%;
+        }
+    }
+}
+.hachure{
+    background-image: url("../../components/stationtracker/css/img/fat_lines.png");
+}
+.panelContent{
+    .sapMPanelContent{
+        padding: 0rem;
+        background-color: #CCE6EE;
+    }
+}
+.panelContentList{
+    .sapMListBGSolid{
+        .sapMLIB{
+            background-color: #CCE6EE;
+        }
+    }
+}
+.textBlackPanel{
+    .sapMTB-Transparent-CTX{
+        .sapMLabel{
+            color: black;
+        }
+    }
+}
+.pageStation{
+    background: #006CA7 !important;
+}
+.pageWelcome2{
+    @include font("Arial" !important, bold, 14px !important);
+    text-align: center !important;
+    color: white !important;
+}
+.stationTitle{
+    color: #006CA7 !important;
+    @include font("Arial" !important, 400, 24px !important);
+}
+.blueTitle{
+    color: #006CA7;
+}
+.stationWelcome{
+    color: #006CA7 !important;
+    @include font("Arial" !important, 400, 14px !important);
+}
+.pageUsername{
+    @include font("Arial" !important, 400, 14px);
+    color: white !important;
+}
+.greenBottom{
+    box-shadow: 0 5px 0 green;
+}
+.redBottom{
+    color: red;
+    box-shadow: 0 5px 0 red;
+}
+.rond{
+    @extend %rond;
+}
+.duck-egg-blue{
+    background-color: $duck-egg-blue !important;
+}
+.eventOrange{
+    background-color: #F9DAAB;
+    color: black;
+}
+.Hour{
+    background-color: grey;
+    opacity: 0.5;
+    filter: alpha(opacity=25);
+}
+.buttonNotif{
+    .sapMBtnContent{
+        color: orange;
+        font-weight: Bold;
+        padding-top: 10px !important;
+    }
+}
+.notifDetails{
+    font-size: smaller !important;
+}
+#operationDetailPopup--operationDetailPopUp-scrollCont {
+    padding: 0rem !important;
+    height: 101%;
+}
+//#mes{
+//    .ClassOperationDetailPopUp{
+//        .sapMInputBaseInner{
+//            width: 35vw;
+//        }
+//    }
+//}
+
+.dhx_marked_timespan, .dhx_matrix_now_time {
+    border-left-color: purple !important;
+    opacity: 1;
+    border-width: 3px !important;
+}
+
+#calendar--toolbarstationtracker-popover-scroll {
+    color: #000000;
+    >button{
+        >div {
+            color:inherit !important;
+            &.sapMToggleBtnPressed {
+                background-color: $sapui-petrol !important;
+                &:hover {
+                    opacity: 0.8;
+                }
+                >* {
+                    color: $white-two !important;
+                    background-color: $sapui-petrol !important;
+                }
+            }
+        }
+        &:hover {
+            >div:not(.sapMToggleBtnPressed) {
+                background-color: rgba(222,222,222,0.5);
+            }
+        }
+    }
+}
+
+#ImportOswUnplannedPopover--SelectAllUnpd-inner {
+    &.sapMToggleBtnPressed {
+        color: $white-two !important;
+        background-color: $sapui-petrol !important;
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+}
+
+// Disruption Box
+.sidenav{
+    @include sidenav();
+}
+#main{
+    transition: margin-right .5s;
+}
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+.sidebarContentMargin{
+    margin:0 1rem 1rem 1rem;
+}
+.slidingUpDownPanel{
+    height: 100%; /* height - change this with JavaScript*/
+    width: 100%; /*100% Full-width */
+    position: fixed; /* Stay in place */
+    z-index: 101;/* Stay on top */
+    overflow-y: hidden; /* Disable horizontal scroll */
+    display:none;
+}
+#calendar--disruptNotifications{
+    &>.sapMFlexItem{
+        width:100% !important;
+        height:100% !important;
+    }
+}
+.wrap{
+    .sapMLabel{
+        white-space: normal !important;
+    }
+}
+.disruptionTextSize{
+    .sapSuiteCmpChartItemTitle{
+        font-size: 0.8vw !important;
+        padding-right: 2vw;
+        padding-bottom: 0.25vw;
+    }
+}
+.spaceBetweenCharts{
+    .sapSuiteCmpChartItem{
+        &.Normal{
+            &.Auto{
+                margin-top: 0.5rem !important;
+            }
+        }
+    }
+}
+
+/* oswPopover */
+.oswPopover {
+    .sapUiTinyMarginBeginEnd[role="checkbox"]{
+        margin:0!important;
+        .sapMCbBg{
+            top: 0.5125rem;
+        }
+    }
+    .sapUiSizeCompact .sapMTokenizer .sapMToken {
+            margin-top: 0.23rem;
+    }
+}
+
+/*********
+reschedule
+**********/
+#reschedulePage--rescheduleLabel.rescheduleLabel {
+	     font-weight: bold;
+    	padding: 0;
+   		margin: 25px 0 25px 2.5% !important;
+	
+}

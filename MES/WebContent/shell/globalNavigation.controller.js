@@ -187,6 +187,11 @@ sap.ui.controller(
                             textButtonTo = "Go to LineTracker";
                             airbus.mes.settings.GlobalFunction.navigateTo(textButtonTo, "back");
                             break;
+                        case "calendar":
+                        	 textButtonTo = "Go to Calendar Tracker";
+                             airbus.mes.settings.GlobalFunction.navigateTo(textButtonTo, "back");
+                          
+                            break;
                         default:
                         }
                     },
@@ -237,7 +242,12 @@ sap.ui.controller(
                                 }
                                 
                                 break;
-                            default:
+                            case "calendar":
+                            	this.renderCalendarTracker();
+                              
+                                break;
+                                
+                               default:
                             }
                     },
 
@@ -315,10 +325,37 @@ sap.ui.controller(
                             airbus.mes.shell.oView.byId("homeButton").setVisible(true);
                             airbus.mes.shell.oView.byId("SelectLanguage").setVisible(false);
                             break;
+                        case "calendar":
+                        	this.renderCalendarTracker();
+                          
+                        	 airbus.mes.shell.oView.byId("homeButton").setVisible(true);
+                             airbus.mes.shell.oView.byId("SelectLanguage").setVisible(false);
+                            break;
                         default:
                         }
                     },
 
+                    /**
+                     * Render Calendar Tracker and reload all model reload shift
+                     * and compute shift hierarchy.
+                     */
+                    renderCalendarTracker : function() {
+                    	//active busy
+                        airbus.mes.shell.busyManager.setBusy(airbus.mes.calendar.oView);
+
+                        airbus.mes.calendar.util.ShiftManager.updateShift = false;
+                        var oModule = airbus.mes.calendar.util.ModelManager;
+                        airbus.mes.shell.oView.getController().setInformationVisibility(true);
+                      
+                        // ** synchrone call **//
+                        oModule.loadShifts();
+                        airbus.mes.calendar.util.ShiftManager.init(airbus.mes.calendar.util.GroupingBoxingManager.shiftNoBreakHierarchy);
+
+                        // ** asynchrone call **//
+                        oModule.loadCalendarTracker();
+                        
+                    },
+                    
                     /**
                      * RenderStation Tracker and reload all model reload shift
                      * and compute shift hierarchy.

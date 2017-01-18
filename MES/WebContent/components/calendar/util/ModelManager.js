@@ -9,11 +9,14 @@ airbus.mes.calendar.util.ModelManager = {
        
        init : function(core) {
     	  
-    	   var aModel = ["testModel"]
+    	   var aModel = ["testModel" ,"calendarshiftsModel","calendarTracker"]
     	   airbus.mes.shell.ModelManager.createJsonModel(core,aModel);
            
     	   core.getModel("testModel").attachRequestCompleted(airbus.mes.calendar.util.ModelManager.toto);
-        
+           core.getModel("calendarshiftsModel").attachRequestCompleted(airbus.mes.calendar.util.ModelManager.onShiftsLoad);
+           core.getModel("calendarTracker").attachRequestCompleted(airbus.mes.calendar.util.ModelManager.onCalendarTrackerLoad);
+    	   
+    	   
     	var dest;
 
 		switch (window.location.hostname) {
@@ -50,20 +53,70 @@ airbus.mes.calendar.util.ModelManager = {
 
 	},
 	
-	loadExample : function() {
-
-		var geturlAffectation = this.urlModel.getProperty('urlaffectation');
-		var oViewModel = airbus.mes.calendar.oView.getModel("testModel");
-		oViewModel.loadData(geturlAffectation, null, false);
-
+	/* *********************************************************************** *
+	 *  Replace URL Parameters                                                 *
+	 * *********************************************************************** */
+	replaceURI : function(sURI, sFrom, sTo) {
+		return sURI.replace(sFrom, encodeURIComponent(sTo));
 	},
 	
-	toto : function() {
-		
-		
-		
-	}
+	 loadShifts : function() {
 
+	        var oViewModelshift = airbus.mes.calendar.oView.getModel("calendarshiftsModel");
+	        var getUrlShifts = this.urlModel.getProperty("urlshifts");
+	        var oData = airbus.mes.settings.ModelManager;
+	        var reqResult = "";
+	        getUrlShifts = airbus.mes.calendar.util.ModelManager.replaceURI(getUrlShifts, "$site", oData.site);
+	        getUrlShifts = airbus.mes.calendar.util.ModelManager.replaceURI(getUrlShifts, "$station", oData.station);
+	        getUrlShifts = airbus.mes.calendar.util.ModelManager.replaceURI(getUrlShifts, "$msn", oData.msn);
 
-	
+	        oViewModelshift.loadData(getUrlShifts, null, false);
+
+	        reqResult = airbus.mes.shell.util.Formatter.getMiiMessageType(oViewModelshift.oData);
+
+	        switch (reqResult) {
+	        case "S":
+	            break;
+	        case "E":
+	            sap.m.MessageToast.show("Error : " + airbus.mes.shell.util.Formatter.getMiiTextFromData(oViewModelshift.oData));
+	            break;
+	        default:
+	        }
+
+	    },
+	    
+	    onShiftsLoad : function() {
+
+	        var GroupingBoxingManager = airbus.mes.calendar.util.GroupingBoxingManager;
+	        GroupingBoxingManager.parseShift();
+	    },
+	  	  	    
+	    loadCalendarTracker : function() {
+
+	        var oData = airbus.mes.settings.ModelManager;
+	        var oViewModel = airbus.mes.calendar.oView.getModel("calendarTracker");
+	        var geturlcalendartracker = this.urlModel.getProperty('urlCalendaroperation');
+
+	        geturlcalendartracker = airbus.mes.calendar.util.ModelManager.replaceURI(geturlcalendartracker, "$site", oData.site);
+	        geturlcalendartracker = airbus.mes.calendar.util.ModelManager.replaceURI(geturlcalendartracker, "$station", oData.station);
+	        geturlcalendartracker = airbus.mes.calendar.util.ModelManager.replaceURI(geturlcalendartracker, "$msn", oData.msn);
+	        geturlcalendartracker = airbus.mes.calendar.util.ModelManager.replaceURI(geturlcalendartracker, "$productionGroup", oData.prodGroup);
+	       // geturlcalendartracker = airbus.mes.calendar.util.ModelManager.replaceURI(geturlcalendartracker, "$user", airbus.mes.calendar.util.AssignmentManager.userSelected);
+	        //console.log(geturlcalendartracker);
+	     	
+	        oViewModel.loadData(geturlcalendartracker, null, true);
+
+	    },
+	    
+	    onCalendarTrackerLoad : function() {
+
+	        var GroupingBoxingManager = airbus.mes.calendar.util.GroupingBoxingManager;
+
+	        GroupingBoxingManager.computeCalendarHierarchy();
+
+	        airbus.mes.shell.busyManager.unsetBusy(airbus.mes.calendar.oView);
+
+	    },
+	    
+	  
 };

@@ -55,17 +55,17 @@ STATION TRACKER
   font-size: 100%;
   word-break: break-all; }
 
-#stationTrackerView--kpi_header .sapMPanelExpandableIcon {
+#stationTrackerView--kpi_header .sapMPanelExpandableIcon, #calendar--kpi_header .sapMPanelExpandableIcon {
   -webkit-transform: translateY(-50%) rotate(180deg);
   -ms-transform: translateY(-50%) rotate(180deg);
   transform: translateY(-50%) rotate(180deg); }
 
-#stationTrackerView--kpi_header .sapMPanelExpandableIconExpanded {
+#stationTrackerView--kpi_header .sapMPanelExpandableIconExpanded, #calendar--kpi_header .sapMPanelExpandableIconExpanded {
   -webkit-transform: translateY(-50%) rotate(90deg);
   -ms-transform: translateY(-50%) rotate(90deg);
   transform: translateY(-50%) rotate(90deg); }
 
-#stationTrackerView--DatePicker-inner {
+#stationTrackerView--DatePicker-inner, #calendar--DatePicker-inner {
   border: none;
   background-color: transparent;
   color: #F5F5F5;
@@ -74,7 +74,7 @@ STATION TRACKER
   padding-left: 2.375rem;
   padding-right: 0; }
 
-#stationTrackerView--selectShift, #stationTrackerView--selectUser {
+#stationTrackerView--selectShift, #stationTrackerView--selectUser, #calendar--selectShift, #calendar--selectUser {
   color: #F5F5F5;
   font-size: 16px;
   width: auto;
@@ -88,7 +88,7 @@ STATION TRACKER
   background: #0f2d65 !important;
   border: 0; }
 
-#stationTrackerView--stationtracker {
+#stationTrackerView--stationtracker, #calendar--calendar {
   width: auto;
   height: auto !important;
   position: absolute;
@@ -97,7 +97,7 @@ STATION TRACKER
   left: 0;
   right: 0; }
 
-#stationTrackerView--stationtracker .customHour {
+#stationTrackerView--stationtracker .customHour, #calendar--calendar .customHour {
   text-align: left;
   text-indent: -15px;
   border-left: none !important;
@@ -106,7 +106,7 @@ STATION TRACKER
   font-size: 14px;
   line-height: 25px; }
 
-#stationTrackerView--stationtracker .customHour:before {
+#stationTrackerView--stationtracker .customHour:before, #calendar--calendar .customHour:before {
   content: '';
   display: block;
   position: absolute;
@@ -115,7 +115,7 @@ STATION TRACKER
   height: 7px;
   background-color: #5e696e; }
 
-#stationTrackerView--stationtracker .dhx_cal_next_button, #stationTrackerView--stationtracker .dhx_cal_prev_button {
+#stationTrackerView--stationtracker .dhx_cal_next_button, #stationTrackerView--stationtracker .dhx_cal_prev_button, #calendar--calendar .dhx_cal_next_button, #calendar--calendar .dhx_cal_prev_button {
   position: absolute;
   width: auto;
   color: #52aec8;
@@ -130,28 +130,28 @@ STATION TRACKER
   font-size: 30px;
   float: none !important; }
 
-#stationTrackerView--stationtracker .dhx_matrix_scell.folder, #stationTrackerView--stationtracker .dhx_matrix_scell.item {
+#stationTrackerView--stationtracker .dhx_matrix_scell.folder, #stationTrackerView--stationtracker .dhx_matrix_scell.item, #calendar--calendar .dhx_matrix_scell.folder, #calendar--calendar .dhx_matrix_scell.item {
   border-right: solid 3px white;
   cursor: pointer; }
 
-#stationTrackerView--stationtracker .dhx_row_folder .dhx_scell_name .fa-plus {
+#stationTrackerView--stationtracker .dhx_row_folder .dhx_scell_name .fa-plus, #calendar--calendar .dhx_row_folder .dhx_scell_name .fa-plus {
   position: absolute;
   left: 0;
   margin-left: 10px;
   margin-right: 10px;
   color: #0F5F78; }
 
-#stationTrackerView--stationtracker .dhx_row_folder .dhx_scell_name .fa-chevron-down, #stationTrackerView--stationtracker .dhx_row_folder .dhx_scell_name .fa-chevron-right {
+#stationTrackerView--stationtracker .dhx_row_folder .dhx_scell_name .fa-chevron-down, #stationTrackerView--stationtracker .dhx_row_folder .dhx_scell_name .fa-chevron-right, #calendar--calendar .dhx_row_folder .dhx_scell_name .fa-chevron-down, #calendar--calendar .dhx_row_folder .dhx_scell_name .fa-chevron-right {
   position: absolute;
   right: 0;
   margin-left: 10px;
   margin-right: 10px;
   color: #0F5F78; }
 
-#stationTrackerView--stationtracker .dhx_row_folder .dhx_marked_timespan.begin_shifht, #stationTrackerView--stationtracker .dhx_row_folder .dhx_marked_timespan.end_shifht, #stationTrackerView--stationtracker .dhx_row_folder .dhx_marked_timespan.taktMarker, #stationTrackerView--stationtracker .dhx_row_item .dhx_marked_timespan.begin_shifht, #stationTrackerView--stationtracker .dhx_row_item .dhx_marked_timespan.end_shifht, #stationTrackerView--stationtracker .dhx_row_item .dhx_marked_timespan.taktMarker {
+#stationTrackerView--stationtracker .dhx_row_folder .dhx_marked_timespan.begin_shifht, #stationTrackerView--stationtracker .dhx_row_folder .dhx_marked_timespan.end_shifht, #stationTrackerView--stationtracker .dhx_row_folder .dhx_marked_timespan.taktMarker, #stationTrackerView--stationtracker .dhx_row_item .dhx_marked_timespan.begin_shifht, #stationTrackerView--stationtracker .dhx_row_item .dhx_marked_timespan.end_shifht, #stationTrackerView--stationtracker .dhx_row_item .dhx_marked_timespan.taktMarker, #calendar--calendar .dhx_row_folder .dhx_marked_timespan.begin_shifht, #calendar--calendar .dhx_row_folder .dhx_marked_timespan.end_shifht, #calendar--calendar .dhx_row_folder .dhx_marked_timespan.taktMarker, #calendar--calendar .dhx_row_item .dhx_marked_timespan.begin_shifht, #calendar--calendar .dhx_row_item .dhx_marked_timespan.end_shifht, #calendar--calendar .dhx_row_item .dhx_marked_timespan.taktMarker {
   width: 3px !important; }
 
-#stationTrackerView--stationtracker .ylabelEditIcon, #stationTrackerView--stationtracker .ylabelUserImage {
+#stationTrackerView--stationtracker .ylabelEditIcon, #stationTrackerView--stationtracker .ylabelUserImage, #calendar--calendar .ylabelEditIcon, #calendar--calendar .ylabelUserImage {
   width: 30px;
   height: 30px;
   line-height: 30px;
@@ -160,7 +160,7 @@ STATION TRACKER
   text-align: center;
   color: #0D5D76; }
 
-#stationTrackerView--stationtracker .ylabelUser {
+#stationTrackerView--stationtracker .ylabelUser, #calendar--calendar .ylabelUser {
   vertical-align: middle;
   margin-left: 10px;
   color: #0D5D76;
@@ -195,7 +195,7 @@ STATION TRACKER
   font-stretch: normal;
   color: rgba(0, 86, 112, 0.94); }
 
-#stationTrackerView--stationtracker .tracker-item-initial {
+#stationTrackerView--stationtracker .tracker-item-initial, #calendar--calendar .tracker-item-initial {
   color: #BBBCBC;
   padding-left: 10px;
   width: 100%;
@@ -212,7 +212,7 @@ STATION TRACKER
   background-color: #F5F5F5;
   overflow: hidden; }
 
-#stationTrackerView--buttonViewMode .sapMSegBBtnFocusable, #stationTrackerView--buttonViewMode .sapMSegBBtnDis {
+#stationTrackerView--buttonViewMode .sapMSegBBtnFocusable, #stationTrackerView--buttonViewMode .sapMSegBBtnDis, #calendar--buttonViewMode .sapMSegBBtnFocusable, #calendar--buttonViewMode .sapMSegBBtnDis {
   height: 3rem;
   border: none;
   border-right: 1px solid #8db9ca;
@@ -221,7 +221,7 @@ STATION TRACKER
   text-transform: uppercase;
   line-height: 3rem; }
 
-#stationTrackerView--toolbarstationtracker .comboBoxStyle {
+#stationTrackerView--toolbarstationtracker .comboBoxStyle, #calendar--toolbarstationtracker .comboBoxStyle {
   width: auto;
   max-width: 100%;
   background-color: transparent;
@@ -6074,6 +6074,1294 @@ Physical Station Popover
   text-align: center; }
 
 #jigtoolsView--jigToollabel.jigToolListlabel, #displayOpeAttachmentsView--DOAlabel.DOAlabel {
+  font-weight: bold;
+  padding: 0;
+  margin: 25px 0 25px 2.5% !important; }
+
+/********************
+TABLE
+*********************/
+.dhx_matrix_scell.folder {
+  max-width: 199px; }
+.dhx_matrix_scell > div {
+  padding-left: 10px !important; }
+
+/********************
+TOOLBAR
+*********************/
+#mes .sapMPopover .sapMBtnIcon {
+  color: rgba(0, 86, 112, 0.94); }
+
+.sapMPIText1 {
+  padding-left: 8px;
+  margin-top: -2.2rem;
+  width: 98.9% !important; }
+
+.sapMPIText2 {
+  margin-top: -1.1rem;
+  width: 100% !important; }
+
+/********************
+WORK LIST POP OVER
+*********************/
+.classWorklistPopover .fa {
+  position: relative;
+  z-index: 1;
+  line-height: 20px;
+  height: 20px;
+  color: #ffffff;
+  overflow: hidden;
+  padding-right: 6px; }
+.classWorklistPopover .fa.rightIcon {
+  float: right; }
+.classWorklistPopover .fa.rightIcon.petrol {
+  color: rgba(0, 86, 112, 0.94); }
+.classWorklistPopover .fa.dandelion {
+  color: #fbec00;
+  padding-right: 6px; }
+.classWorklistPopover .fa.oswIcon2 {
+  padding-right: 6px; }
+.classWorklistPopover .fa.oswIcon2 b {
+  font-family: arial; }
+.classWorklistPopover .fa.fa-exclamation-triangle.triangleIcon.petrol {
+  color: rgba(0, 86, 112, 0.94); }
+.classWorklistPopover .sapMPIText3 {
+  position: absolute;
+  display: block;
+  right: 0px;
+  height: 20px;
+  margin-right: 6px;
+  top: 50%;
+  margin-top: calc(-20px/2);
+  width: auto; }
+.classWorklistPopover header.sapMIBar.sapMHeader-CTX {
+  background: #d4f1f7;
+  box-shadow: 0 0 5px #333;
+  z-index: 1000; }
+.classWorklistPopover header.sapMIBar.sapMHeader-CTX label {
+  color: #434343;
+  font-size: 1rem; }
+
+#mes .sapMDialog:not(.theme-disabled) .classWorklistPopoverHeader {
+  box-shadow: 0 0 5px #333;
+  overflow: visible;
+  background-color: #d4f1f7;
+  color: #434343;
+  margin: -1rem -1rem 1rem -1rem;
+  padding: 1rem; }
+
+/********************
+SCHEDULAR TASK STYLE
+*********************/
+/********************
+BOX MANAGEMENT
+*********************/
+.trackerBox {
+  width: 100%;
+  height: inherit;
+  position: absolute;
+  z-index: 1;
+  line-height: 23px;
+  left: 0px;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+.trackerBox .trackerText {
+  max-width: calc(100% - 20px);
+  white-space: nowrap;
+  color: white;
+  overflow: hidden; }
+.trackerBox .trackerTextBlock {
+  white-space: nowrap;
+  color: rgba(0, 86, 112, 0.94); }
+.trackerBox .colorProgress {
+  height: inherit;
+  position: absolute;
+  z-index: 0;
+  left: 0px;
+  overflow: hidden; }
+.trackerBox .openBlockedEscalated {
+  height: inherit;
+  width: 100%;
+  background-color: #e4002b; }
+.trackerBox .openBlocked {
+  height: inherit;
+  width: 100%;
+  background-color: #fbec00; }
+.trackerBox .fa {
+  height: 24px; }
+.trackerBox .fa.rightIcon {
+  padding-right: 6px;
+  float: right; }
+.trackerBox .fa.rightIcon.petrol {
+  color: rgba(0, 86, 112, 0.94); }
+.trackerBox .fa.triangleIcon {
+  padding-left: 6px;
+  float: left; }
+.trackerBox .fa.oswIcon {
+  line-height: 14px;
+  height: auto;
+  float: left;
+  margin-left: 6px;
+  background-color: #fbec00;
+  margin-bottom: 10px;
+  min-width: 45px; }
+.trackerBox .fa.oswIcon b {
+  font-family: arial; }
+.trackerBox .fa.oswIcon.cherry-red {
+  color: #e4002b; }
+.trackerBox .dandelion {
+  color: #fbec00; }
+.trackerBox .dandelion-back {
+  background-color: #fbec00; }
+.trackerBox .teal-blue {
+  color: #0085ad; }
+.trackerBox .petrol {
+  color: rgba(0, 86, 112, 0.94); }
+.trackerBox .petrol-back {
+  background-color: rgba(0, 86, 112, 0.94); }
+.trackerBox .cherry-red-back {
+  background-color: #e4002b; }
+.trackerBox .dark-lime-green-back {
+  background-color: #84bd00; }
+.trackerBox .teal-blue-back {
+  background-color: #0085ad; }
+
+.trackerBox:hover .dark-lime-green-back {
+  -webkit-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out;
+  -moz-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out;
+  background-color: #536f12 !important; }
+.trackerBox:hover .teal-blue-back {
+  -webkit-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out;
+  -moz-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out;
+  background-color: #0f2d65 !important; }
+.trackerBox:hover .cherry-red-back {
+  -webkit-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out;
+  -moz-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out;
+  background-color: #9e001e !important; }
+.trackerBox:hover .openBlockedEscalated {
+  -webkit-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out;
+  -moz-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out;
+  background-color: #9e001e !important; }
+.trackerBox:hover .openBlocked {
+  -webkit-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out;
+  -moz-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out;
+  background-color: #ffbf00 !important; }
+.trackerBox:hover .solvedBlocked {
+  background: repeating-linear-gradient(135deg, #fbec00, #fbec00 10px, #ffbf00 10px, #ffbf00 20px);
+  background-size: 56px 56px;
+  -webkit-animation: slide 20s infinite linear forwards;
+  -moz-animation: slide 20s infinite linear forwards;
+  animation: slide 20s infinite linear forwards;
+  -webkit-transition: background 0.2s ease-in-out;
+  -moz-transition: background 0.2s ease-in-out;
+  transition: background 0.2s ease-in-out; }
+@-webkit-keyframes slide {
+  0% {
+    background-position: 0% 0%; }
+  100% {
+    background-position: 100% 0%; } }
+@-moz-keyframes slide {
+  0% {
+    background-position: 0% 0%; }
+  100% {
+    background-position: 100% 0%; } }
+@-o-keyframes slide {
+  0% {
+    background-position: 0% 0%; }
+  100% {
+    background-position: 100% 0%; } }
+@keyframes slide {
+  0% {
+    background-position: 0% 0%; }
+  100% {
+    background-position: 100% 0%; } }
+.trackerBox:hover .solvedBlockedExcalated {
+  background: repeating-linear-gradient(135deg, #9e001e, #9e001e 10px, #e4002b 10px, #e4002b 20px);
+  background-size: 56px 56px;
+  -webkit-animation: slide 20s infinite linear forwards;
+  -moz-animation: slide 20s infinite linear forwards;
+  animation: slide 20s infinite linear forwards; }
+@-webkit-keyframes slide {
+  0% {
+    background-position: 0% 0%; }
+  100% {
+    background-position: 100% 0%; } }
+@-moz-keyframes slide {
+  0% {
+    background-position: 0% 0%; }
+  100% {
+    background-position: 100% 0%; } }
+@-o-keyframes slide {
+  0% {
+    background-position: 0% 0%; }
+  100% {
+    background-position: 100% 0%; } }
+@keyframes slide {
+  0% {
+    background-position: 0% 0%; }
+  100% {
+    background-position: 100% 0%; } }
+.grey2 {
+  background-color: #dddddd; }
+
+.grey {
+  background-color: #97999b; }
+.grey:hover {
+  background-color: #767879;
+  color: black; }
+
+.trackerTextBlack {
+  color: #000; }
+
+.solvedBlockedExcalated {
+  height: inherit;
+  width: 100%;
+  background: repeating-linear-gradient(135deg, #e4002b, #e4002b 10px, #9e001e 10px, #9e001e 20px);
+  background-position: 14px 0;
+  background-size: 56px 56px; }
+
+.solvedBlocked {
+  height: inherit;
+  width: 100%;
+  background: repeating-linear-gradient(135deg, #ffbf00, #ffbf00 10px, #fbec00 10px, #fbec00 20px);
+  background-position: 14px 0;
+  background-size: 56px 56px; }
+
+/***********************
+KPI HEADER
+************************/
+#calendar--kpi_header .hiddenRefBar {
+  display: none; }
+#calendar--kpi_header .sapMPanelWrappingDivTb {
+  border-bottom: none; }
+
+#calendar--kpiHeaderToolbar {
+  margin-left: 0; }
+#calendar--kpiHeaderToolbar .sapMBtnContent, #calendar--kpiHeaderToolbar .sapMSltLabel, #calendar--kpiHeaderToolbar .sapMInputBaseInner, #calendar--kpiHeaderToolbar .sapMSltArrow {
+  color: #F5F5F5;
+  font-size: 12px; }
+
+#calendar--kpi_header-CollapsedImg {
+  right: 0;
+  color: #74d2e7;
+  display: none; }
+
+#calendar--ProductionButton, #calendar--DisruptionButton {
+  border-right: solid 1px #74d2e7;
+  margin-right: 0; }
+
+#calendar--DatePicker {
+  border-right: solid 1px #74d2e7;
+  margin-right: 0; }
+#calendar--DatePicker .sapMInputValHelp {
+  right: auto;
+  left: 0; }
+#calendar--DatePicker .sapMInputValHelpInner {
+  color: #F5F5F5;
+  font-size: 24px; }
+
+#calendar--selectShift {
+  border-left: solid 1px #74d2e7 !important;
+  opacity: 1; }
+#calendar--selectShift.sapMSltDisabled .sapMSltLabel, #calendar--selectShift.sapMSltDisabled .sapMSltArrow {
+  opacity: 0.5; }
+
+#calendar--selectShift-label, #calendar--selectShift-arrow, #calendar--selectUser-label, #calendar--selectUser-arrow {
+  top: 0;
+  bottom: 0;
+  line-height: 3rem; }
+
+#calendar--ProductionButton-inner:hover, #calendar--ProductionButton:hover #calendar--ProductionButton-inner, #calendar--DisruptionButton-inner:hover, #calendar--DisruptionButton:hover #calendar--DisruptionButton-inner {
+  background-color: transparent; }
+
+#calendar--hideKPI > div {
+  width: 125px; }
+
+#calendar--TeamButton-img, #calendar--TeamButton-content, #calendar--hideKPI-img, #calendar--hideKPI-content {
+  color: #74d2e7 !important; }
+
+/******************************************
+STATIONTRACKERVIEW ID AND DHX AND CONTENT
+******************************************/
+#calendar .dhx_matrix_scell div {
+  overflow: visible; }
+
+#calendar--calendar .offtime {
+  background-image: url("../components/stationtracker/css/img/fat_lines.png"); }
+#calendar--calendar .dhx_cal_data {
+  overflow-y: scroll;
+  bottom: 0;
+  height: auto !important;
+  border-top: solid 1px #979797; }
+#calendar--calendar .dhx_cal_header {
+  border: none;
+  width: 100% !important; }
+#calendar--calendar .dhx_cal_next_button {
+  right: 0px; }
+#calendar--calendar .dhx_cal_prev_button {
+  right: 30px; }
+#calendar--calendar .dhx_cal_next_button:before {
+  content: "\f105"; }
+#calendar--calendar .dhx_cal_prev_button:before {
+  content: "\f104"; }
+#calendar--calendar .dhx_matrix_scell.folder {
+  background-color: #d5f1f8;
+  border-bottom: solid 1px #EAFCFE; }
+#calendar--calendar .dhx_matrix_scell.item {
+  border-bottom: solid 1px #d5f1f8;
+  color: #0D5D76;
+  background-color: #EAFBFD; }
+#calendar--calendar .dhx_matrix_scell.item.initial {
+  cursor: default; }
+#calendar--calendar .dhx_matrix_cell {
+  background-color: #F3F5F6;
+  border-bottom: 1px solid #dddddd;
+  border-right: 1px solid #dddddd; }
+#calendar--calendar .dhx_matrix_cell div, #calendar--calendar .dhx_matrix_scell div {
+  text-align: left;
+  white-space: nowrap;
+  margin-top: 2px; }
+#calendar--calendar .dhx_cal_event {
+  border: none;
+  overflow: visible; }
+#calendar--calendar .dhx_cal_event.late div {
+  border-color: Red;
+  border-width: 2px;
+  min-width: 40px !important; }
+#calendar--calendar .dhx_cal_event.min-width div {
+  min-width: 40px !important; }
+#calendar--calendar .dhx_cal_event.lateI div {
+  border-color: red;
+  border-width: 2px;
+  background-color: #969696; }
+#calendar--calendar .dhx_cal_event_line {
+  border: none;
+  overflow: visible; }
+#calendar--calendar .dhx_cal_event_line.late {
+  border-color: Red;
+  border-width: 2px;
+  min-width: 40px !important; }
+#calendar--calendar .dhx_cal_event_line.min-width {
+  min-width: 40px !important; }
+#calendar--calendar .dhx_cal_event_line.lateI {
+  border-color: red;
+  border-width: 2px;
+  background-color: #969696; }
+#calendar--calendar .dhx_cal_event_line .dhx_event_resize {
+  background-image: none; }
+#calendar--calendar .dhx_scell_name {
+  float: none;
+  text-align: left;
+  position: relative; }
+#calendar--calendar .dhx_row_folder .dhx_matrix_scell.folder {
+  background-color: white; }
+#calendar--calendar .dhx_row_folder .dhx_marked_timespan.begin_shifht {
+  background-color: blue; }
+#calendar--calendar .dhx_row_folder .dhx_marked_timespan.end_shifht {
+  background-color: #0f2d65;
+  margin-left: -5px; }
+#calendar--calendar .dhx_row_folder .dhx_marked_timespan.taktMarker {
+  background-color: green; }
+#calendar--calendar .dhx_row_folder .dhx_marked_timespan.shiftCss, #calendar--calendar .dhx_row_folder .dhx_marked_timespan.offtime {
+  display: none; }
+#calendar--calendar .dhx_row_folder .dhx_marked_timespan.dhx_matrix_now_time {
+  min-height: 70px;
+  border-left-color: purple;
+  opacity: 1; }
+#calendar--calendar .dhx_row_folder .dhx_matrix_cell, #calendar--calendar .dhx_row_folder .dhx_marked_timespan.shiftCss {
+  border-right: none;
+  border-bottom: none;
+  background-color: #ECEEEF !important; }
+#calendar--calendar .dhx_row_folder .folderAxisColor {
+  background-color: #ECEEEF !important; }
+#calendar--calendar .dhx_row_item .dhx_marked_timespan.begin_shifht {
+  background-color: blue; }
+#calendar--calendar .dhx_row_item .dhx_marked_timespan.end_shifht {
+  background-color: #0f2d65;
+  margin-left: -5px; }
+#calendar--calendar .dhx_row_item .dhx_marked_timespan.taktMarker {
+  background-color: green; }
+#calendar--calendar .dhx_row_item .dhx_scell_name {
+  white-space: nowrap;
+  padding: 0px; }
+#calendar--calendar .dhx_data_table.folder td {
+  border-bottom: 2px solid #dddddd;
+  background-color: #ECEEEF; }
+#calendar--calendar .dhx_data_table .dhx_matrix_cell {
+  background-color: white; }
+#calendar--calendar .dhx_data_table {
+  overflow: visible; }
+#calendar--calendar .dhx_matrix_line {
+  overflow: visible; }
+#calendar--calendar .yText {
+  width: 100px;
+  float: left;
+  height: 40px; }
+#calendar--calendar .avlLine {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 120px;
+  white-space: nowrap;
+  white-space: nowrap;
+  color: #0D5D76;
+  vertical-align: middle;
+  text-overflow: ellipsis;
+  display: inline-block;
+  overflow: hidden; }
+#calendar--calendar .ylabel {
+  white-space: nowrap;
+  color: #0D5D76;
+  vertical-align: middle;
+  text-overflow: ellipsis;
+  display: inline-block;
+  overflow: hidden;
+  max-width: 80px;
+  height: 15px; }
+#calendar--calendar .ylabelEditIcon {
+  float: left; }
+#calendar--calendar .ylabelUserImage {
+  background-color: #d5f1f8;
+  border-radius: 999px;
+  float: left;
+  margin-right: 10px; }
+#calendar--calendar .ylabelUser {
+  margin-left: 0px;
+  max-width: 130px; }
+#calendar--calendar .yMoreLabel {
+  position: absolute;
+  right: 2px;
+  color: #8db9ca;
+  top: 2px; }
+#calendar--calendar .yMoreLabel .fa-pencil {
+  width: 30px;
+  text-align: center; }
+#calendar--calendar .ylabelAvlLineSection {
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 75px;
+  margin-left: 10px; }
+#calendar--calendar .tracker-item-initial .fa-exclamation-triangle {
+  color: #BBBCBC !important; }
+#calendar--calendar .shiftCss {
+  background-color: #DDDDDD;
+  opacity: 0.8; }
+#calendar--calendar .operationCP {
+  background-color: #97999b;
+  border: 2px solid #0D2C63; }
+#calendar--calendar .operationCP:hover {
+  background-color: #767879;
+  color: black;
+  border: 2px solid #74d2e7; }
+#calendar--calendar .customTable table tr th, #calendar--calendar td {
+  border-left: none !important; }
+
+.dhx_event_resize_start {
+  background-image: none; }
+
+.dhx_event_resize_end {
+  background-image: none; }
+
+div#iconTabBar--header {
+  background-color: #E0F2F4; }
+
+.dhx_cal_event_line .trackerBoxtooltiptext {
+  min-width: 300px; }
+.dhx_cal_event_line:hover .trackerBoxtooltiptext {
+  display: inline;
+  position: absolute;
+  margin-top: -30px;
+  margin-left: -210px;
+  z-index: 99; }
+.dhx_cal_event_line:hover div {
+  background: none; }
+.dhx_cal_event_line div:not(.trackerBox) {
+  overflow: visible; }
+
+.test {
+  background: red !important; }
+
+.ganttBar {
+  height: 2rem !important; }
+
+/***********************
+WORKLIST
+************************/
+.sapMILIDiv {
+  text-align: left !important;
+  margin-left: 0px !important; }
+
+.sapUiRespGrid.sapUiRespGridHSpace1 > div {
+  margin-bottom: 0px !important; }
+.sapUiRespGrid.sapUiRespGridVSpace1 > div {
+  margin-bottom: 0px !important; }
+
+button.menuBtn {
+  margin-right: 10px;
+  margin-left: 10px; }
+button.textRed div.sapMBtnInner {
+  color: #FF0000;
+  font-weight: bold; }
+
+.allowWrapping {
+  flex-wrap: wrap; }
+
+label.teamLabel {
+  font-size: 2rem;
+  font-weight: bold; }
+
+.ComboBoxProdGroup {
+  width: 50% !important; }
+
+.ComboBoxInitial {
+  width: 18% !important; }
+
+.ComboBoxProdGroupMobile {
+  width: 90% !important; }
+
+.setFullResponsiveWidth {
+  width: 100% !important; }
+
+.topMargin {
+  margin-top: 1.2em; }
+
+.shrinkArea {
+  padding: 0rem !important; }
+
+.sapUiFormM .sapUiFormResGridCont {
+  padding: 0rem !important; }
+
+.fullWidth {
+  width: 100%; }
+
+.homeHeaderBox {
+  background-color: #ffffff; }
+
+.DialogWidth {
+  width: 50%; }
+
+.noBorderToolbar {
+  background-color: #ffffff !important;
+  box-shadow: none !important;
+  border: 0px !important;
+  border-bottom: 0px !important; }
+
+.customTileBox {
+  padding: 0.5rem;
+  height: 10.5rem; }
+
+.textInfoGreen {
+  color: green; }
+
+.textInfoRed {
+  color: red; }
+
+/***********************
+TASK ADHERENCE
+************************/
+.taktAdherenceTrend {
+  height: 100%;
+  padding-right: 0 !important; }
+.taktAdherenceTrend.sapUiRespGrid.sapUiRespGridHSpace1 > div {
+  margin: 0 0.5rem 0 0;
+  line-height: 1rem; }
+.taktAdherenceTrend.sapUiRespGrid.sapUiRespGridHSpace1 > .sapUiRespGridSpanL4 {
+  margin: 0;
+  width: auto; }
+
+.classKpiHeaderContent .taktAdherenceTrend .TrendGree {
+  margin-bottom: 0.5rem; }
+.classKpiHeaderContent .taktAdherenceTrend .TrendRed {
+  margin-bottom: 0.5rem; }
+.classKpiHeaderContent .taktAdherenceTrend .taktKpiName.takt_kpi_trend {
+  font-size: 1vw; }
+.classKpiHeaderContent .taktKpiName {
+  height: 25px;
+  text-align: right !important;
+  font-size: 0.85vw;
+  vertical-align: middle;
+  display: baseline; }
+.classKpiHeaderContent .taktKpiValue {
+  height: 25px;
+  display: inline-block;
+  vertical-align: baseline; }
+.classKpiHeaderContent .KPITaktChartBlueText {
+  color: #74d2e7; }
+.classKpiHeaderContent .KPITaktChartRightText {
+  text-align: right !important;
+  width: 100%; }
+
+#calendar--takt_adherence_adherence_value {
+  font-size: 15px; }
+
+/*************
+ARE CHART
+**************/
+svg#calendar--takt_adherence_area_chart {
+  border: none; }
+
+.classTaktAdherenceAreaChart div:nth-child(2) {
+  position: absolute;
+  top: 0;
+  left: 20px; }
+.classTaktAdherenceAreaChart div:nth-child(3) {
+  position: absolute;
+  top: 0;
+  right: 15px; }
+
+.takt_adherence_area_chart_svg-container {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
+  /* aspect ratio */
+  vertical-align: top;
+  overflow: hidden; }
+
+.takt_adherence_area_chart_svg-content-responsive {
+  display: inline-block;
+  position: absolute;
+  top: 10px;
+  left: 0; }
+
+#calendar--takt_adherence_area_chart .yaxis {
+  fill: white;
+  font-size: 7px; }
+#calendar--takt_adherence_area_chart .yaxelabel {
+  fill: white;
+  font-size: 7px;
+  margin-bottom: 2px; }
+#calendar--takt_adherence_area_chart .axis path, #calendar--takt_adherence_area_chart .axis line {
+  fill: none;
+  stroke: grey;
+  shape-rendering: crispEdges; }
+#calendar--takt_adherence_area_chart .area {
+  fill: #E5002B; }
+#calendar--takt_adherence_area_chart .line {
+  fill: none;
+  stroke: #0D2C63;
+  stroke-width: 2; }
+#calendar--takt_adherence_area_chart .realLine {
+  fill: none;
+  stroke: white;
+  stroke-width: 2; }
+#calendar--takt_adherence_area_chart .estimateLine {
+  fill: none;
+  stroke: white;
+  stroke-width: 1;
+  stroke-dasharray: 10; }
+#calendar--takt_adherence_area_chart .ygrid .tick {
+  stroke: rgba(109, 147, 194, 0.39);
+  opacity: 0.7; }
+#calendar--takt_adherence_area_chart .ygrid path {
+  stroke-width: 0; }
+
+/*******************************
+SHIFT STAFFING
+********************************/
+#calendar--shifStaffingHeader-dmc-chart .Left {
+  background-color: #84bd00; }
+
+#calendar--shifStaffingHeader .sapSuiteDmcTitle, #calendar--shifStaffingHeader .sapSuiteDmcLbls {
+  font-size: 0.8vw; }
+#calendar--shifStaffingHeader .sapSuiteDmcCnt {
+  right: 2rem; }
+#calendar--shifStaffingHeader .sapSuiteDmcDelta {
+  color: white; }
+#calendar--shifStaffingHeader .sapSuiteDmcBarDeltaInt {
+  background: #fe5000; }
+#calendar--shifStaffingHeader .sapSuiteDmcBarDeltaStripe {
+  background-color: #74D2E7; }
+
+/***********************************
+STATION TRACKER TOOLBAR
+************************************/
+#calendar--buttonViewMode {
+  height: 3rem;
+  margin: 0; }
+#calendar--buttonViewMode .sapMSegBBtnFocusable.sapMSegBBtnSel {
+  background-color: #74D2E7;
+  color: white; }
+
+#calendar--toolbarstationtracker {
+  background-color: #d5f1f8 !important; }
+#calendar--toolbarstationtracker label {
+  color: #0D5D76;
+  padding: 0 0 0 0.625rem; }
+#calendar--toolbarstationtracker .comboBoxStyle label, #calendar--toolbarstationtracker .comboBoxStyle .sapMSltArrow {
+  background-color: transparent;
+  color: #0D5D76;
+  height: 3rem;
+  line-height: 3rem; }
+#calendar--toolbarstationtracker .comboBoxStyle.sapMSltPressed .sapMSltArrow {
+  background-color: #74D2E7; }
+#calendar--toolbarstationtracker .sapMBtnIconLeft, #calendar--toolbarstationtracker .sapMBtnContent {
+  color: #0D5D76; }
+#calendar--toolbarstationtracker .sapMBtn:hover:not(.sapMBtnDisabled) {
+  background-color: rgba(0, 86, 112, 0.2); }
+#calendar--toolbarstationtracker .sapMBtn:hover:not(.sapMBtnDisabled) > .sapMBtnTransparent.sapMBtnHoverable {
+  background-color: transparent; }
+
+.sapMPopoverScroll .sapMSelectListItemBaseSelected {
+  background-color: #d5f1f8 !important; }
+
+/********************************
+POP UP POLYPOLY
+*********************************/
+#pop-up-polypoly {
+  background: #ffffff;
+  border: none;
+  border-radius: 0;
+  box-shadow: 0 0 5px #333; }
+#pop-up-polypoly .sapUiTableColHdrScr .sapUiTableColHdr:nth-child(2) .sapMLabel {
+  border: none;
+  color: #468497;
+  font-size: 0.7rem; }
+#pop-up-polypoly .sapUiTableColHdrScr .sapUiTableColHdr:nth-child(1) .sapMLabel {
+  color: #468497;
+  font-size: 0.975rem;
+  padding-top: 4px; }
+
+#pop-up-polypoly-header-BarPH {
+  background: #d4f1f7; }
+
+#pop-up-polypoly-header {
+  box-shadow: 0 0 5px #333; }
+
+#pop-up-polypoly-title {
+  color: #434343; }
+
+#pop-up-polypoly-scrollCont {
+  padding: 0; }
+
+#pop-up-polypoly-cont {
+  border-top: 3px solid #ffffff; }
+
+#pop-up-polypoly-footer {
+  background-color: #0f2d65; }
+
+/**********************
+DATE PICKER
+***********************/
+.sap-desktop .classDateButton .sapMBtnTransparent {
+  border: none; }
+.sap-desktop .classDateButton .sapMBtnTransparent > .sapMBtnIcon {
+  color: #ffffff; }
+.sap-desktop .classDatePickerPop .sapMIBar.sapMHeader-CTX {
+  background: #d4f1f7;
+  border: none;
+  z-index: 9;
+  position: relative; }
+.sap-desktop .classDatePickerPop .sapMPopoverArrUp:after {
+  border-bottom-color: #d4f1f7; }
+.sap-desktop .classDatePickerPop .sapMBtn {
+  background-color: #74d2e7; }
+.sap-desktop .classDatePickerPop .sapMBtn:hover > .sapMBtnHoverable, .sap-desktop .classDatePickerPop .sapMBtn > .sapMBtnHoverable {
+  background-color: transparent;
+  background: transparent;
+  border: none;
+  color: whitesmoke;
+  font-weight: 400; }
+.sap-desktop .classDatePickerPop .sapMBtn:hover {
+  background-color: rgba(0, 86, 112, 0.2); }
+
+.classDatePickerButton {
+  color: #ffffff;
+  text-shadow: none; }
+.classDatePickerButton.sapMBarChild.sapMBtn.sapMBtnBase {
+  margin: 0 auto; }
+
+.sapMTB-Transparent-CTX .classDateButton + .sapMLabel {
+  text-shadow: none;
+  color: #ffffff; }
+
+/************************
+PRODUCTION GROUP POPOVER
+*************************/
+#mes .MyproductionGroupPopoverList {
+  font-size: 0.875rem;
+  margin: 0;
+  height: inherit;
+  border-bottom: none; }
+#mes .MyproductionGroupPopover .sapMSLITitleOnly {
+  font-size: 0.875rem;
+  color: #333333;
+  line-height: 1rem; }
+#mes .MyproductionGroupPopover .sapMSLIIconThumb > .sapMLIBContent {
+  padding: 0.5rem 0 0.5rem 0; }
+#mes .MyproductionGroupPopover .sapMTB-Info-CTX.sapMTB {
+  background: #74d2e7;
+  border-bottom: 1px solid #ffffff; }
+#mes .MyproductionGroupPopover .sapMLIB.sapMLIBSelected {
+  background: #d5f1f8; }
+#mes .MyproductionGroupPopover .sapMCbBg.sapMCbMarkChecked:before {
+  color: rgba(0, 32, 91, 0.94); }
+#mes .MyproductionGroupPopover .sapMCbBg {
+  border: solid 0.125rem #74d2e7; }
+#mes .MyproductionGroupPopover .sapMCbBg:hover {
+  border-color: rgba(0, 32, 91, 0.94); }
+#mes .ClassProductionButton {
+  margin-left: 0;
+  max-width: 30vw; }
+#mes .sapMPopover {
+  border: none;
+  box-shadow: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.5);
+  margin-left: -5px;
+  margin-top: -1px; }
+
+/****************************
+TOOLTIP TEXT
+****************************/
+.sapMPIAndon {
+  background: #DB5550 !important; }
+
+.sapMPITextRight {
+  color: white;
+  display: block;
+  float: left;
+  padding-left: 0.5rem; }
+
+.gray_section {
+  background-color: grey; }
+
+.sapMPIText3 {
+  float: right;
+  margin-top: -29px;
+  margin-right: 8px;
+  width: 24px;
+  height: 24px; }
+
+/****************************
+FROM CUSTOM CSS
+*****************************/
+.sapMPIBarYellow {
+  background: -moz-linear-gradient(top, #f1c40f 0, #f39c12 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f1c40f), color-stop(100%, #f39c12));
+  background: -webkit-linear-gradient(top, #00923e 0, #f39c12 100%);
+  background: -ms-linear-gradient(top, #f1c40f 0, #f39c12 100%);
+  background: linear-gradient(to bottom, #f1c40f 0, #f39c12 100%);
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#f1c40f, endColorstr=#f39c12), GradientType=0); }
+
+.sapMPIBarBlue {
+  background: -moz-linear-gradient(top, #008cda 0, #006ca7 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #008cda), color-stop(100%, #006ca7));
+  background: -webkit-linear-gradient(top, #008cda 0, #006ca7 100%);
+  background: -ms-linear-gradient(top, #008cda 0, #006ca7 100%);
+  background: linear-gradient(to bottom, #008cda 0, #006ca7 100%);
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#008cda, endColorstr=#006ca7), GradientType=0); }
+
+.sapMPIBarGreen {
+  background: #7ED320 !important;
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#00923e, endColorstr=#005f28), GradientType=0); }
+
+.sapMPIBarRed {
+  background: -moz-linear-gradient(top, #e31c1c 0, #b51616 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e31c1c), color-stop(100%, #b51616));
+  background: -webkit-linear-gradient(top, #e31c1c 0, #b51616 100%);
+  background: -ms-linear-gradient(top, #e31c1c 0, #b51616 100%);
+  background: linear-gradient(to bottom, #e31c1c 0, #b51616 100%);
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#e31c1c, endColorstr=#b51616), GradientType=0); }
+
+.sapMPIBarOrange {
+  background: -moz-linear-gradient(top, #eb5200 0, #b84000 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #eb5200), color-stop(100%, #b84000));
+  background: -webkit-linear-gradient(top, #eb5200 0, #b84000 100%);
+  background: -ms-linear-gradient(top, #eb5200 0, #b84000 100%);
+  background: linear-gradient(to bottom, #eb5200 0, #b84000 100%);
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#eb5200, endColorstr=#b84000), GradientType=0); }
+
+.sapMPIBarDarkGrey {
+  background: -moz-linear-gradient(top, #616161 0, #4d4d4d 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #616161), color-stop(100%, #4d4d4d));
+  background: -webkit-linear-gradient(top, #616161 0, #4d4d4d 100%);
+  background: -ms-linear-gradient(top, #616161 0, #4d4d4d 100%);
+  background: linear-gradient(to bottom, #616161 0, #4d4d4d 100%);
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#616161, endColorstr=#4d4d4d), GradientType=0); }
+
+.sapMPIBarDarkGreen {
+  background: -moz-linear-gradient(top, #005524 0, #003c19 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #005524), color-stop(100%, #003c19));
+  background: -webkit-linear-gradient(top, #005524 0, #003c19 100%);
+  background: -ms-linear-gradient(top, #005524 0, #003c19 100%);
+  background: linear-gradient(to bottom, #005524 0, #003c19 100%);
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#005524, endColorstr=#003c19), GradientType=0); }
+
+.sapMPIBarGrey {
+  background: #97999b !important;
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#008cda, endColorstr=#006ca7), GradientType=0); }
+
+.orange {
+  color: orange; }
+
+.contentNoPad .sapMPanelContent {
+  padding: 0rem;
+  background-color: #0f2d65;
+  border-bottom: 1px solid #ffffff; }
+
+.sectionusers button {
+  padding: 0; }
+
+.operatorList .sapMListHdr {
+  text-align: left;
+  font-size: small;
+  font-weight: bold;
+  border-bottom: 0px; }
+
+.initialCell {
+  background-color: rgba(255, 255, 204, 0.5); }
+
+.margin {
+  margin-left: 5px;
+  margin-right: 5px; }
+
+.borderCell {
+  background-color: rgba(242, 180, 87, 0.2); }
+
+.borderX {
+  border-left: none !important;
+  border-right: none !important;
+  background-color: rgba(242, 180, 87, 0.2); }
+
+.borderY {
+  border-top: none !important;
+  border-bottom: none !important; }
+
+.boxColor {
+  background-color: #ecf0f1;
+  margin: 1px;
+  border: 1px solid #bdc3c7; }
+
+.boxColorInitial {
+  background-color: transparent;
+  margin: 1px;
+  border: 1px solid #bdc3c7; }
+
+.user {
+  margin-left: 5px;
+  margin-right: 5px; }
+
+.task {
+  height: 50px !important; }
+
+.padding {
+  padding: 5px; }
+
+.one_line {
+  white-space: nowrap;
+  overflow: hidden;
+  padding-top: 5px;
+  padding-left: 5px;
+  text-align: left !important; }
+
+.progressIndicator {
+  padding: 0px;
+  margin: 0px;
+  height: 1.5rem; }
+
+.spTitle {
+  font-size: 20px; }
+
+.commentConfirmCss {
+  border-right: 1px solid black;
+  padding-right: 17px; }
+
+div#SPStatusInd.progressBarOP.sapMBarChild.sapMPI {
+  border: none; }
+
+.pageHeaderDialog.sapMDialog > footer {
+  background-color: rgba(0, 32, 91, 0.94) !important; }
+
+.noFooterDialog .sapMDialogStretchContent {
+  height: 100% !important; }
+
+.closeWorklistCss .sapUxAPObjectPageHeaderActionButtonHideText .sapMBtnInner.sapMBtnIconFirst {
+  color: white;
+  padding-left: 0rem; }
+
+.toolbarSeparatorWhite {
+  background: white !important; }
+
+.italicText {
+  font-style: italic; }
+
+.smallIconButton .sapMBtnIcon {
+  width: 10%; }
+
+#operationDetailPopup--operationDetailPopUp-scrollCont {
+  padding: 0rem !important; }
+
+.initialSection {
+  background-color: gray;
+  color: white; }
+
+.scalebar {
+  background-color: white;
+  color: black;
+  text-align: left; }
+
+.upperCaseConversion input {
+  text-transform: uppercase; }
+
+/************************
+OTHER
+*************************/
+#team-popover button {
+  display: block;
+  width: 100%; }
+
+.div.Left.sapSuiteDmcBarInternal {
+  background: #006CA7; }
+
+.selectBoxStation {
+  height: 30px;
+  padding-left: 10px;
+  width: 100px;
+  position: relative; }
+
+.marginLeft0 {
+  margin-left: 0 !important; }
+
+.partialConfirmCss .sapUxAPObjectPageSectionTitle {
+  color: #006CA7 !important;
+  border-bottom: 0px solid #999999 !important; }
+
+.partialConfirmCss2 .sapUxAPObjectPageSectionHeader {
+  border-bottom: 0px solid #f2f2f2 !important; }
+
+.partialConfirmCss3 .sapUxAPObjectPageSectionHeader {
+  height: 0rem; }
+
+.partialConfHeader .sapUxAPObjectPageHeaderIdentifier {
+  background-color: #0085ad !important; }
+
+.whitePartialConfHeader .sapUxAPObjectPageHeaderIdentifierTitle, .whitePartialConfHeader2 .sapUxAPObjectPageHeaderIdentifierDescription {
+  color: white !important; }
+
+.lockCss .sapUxAPObjectPageHeaderLockBtn .sapMBtnTransparent > .sapMBtnIcon {
+  color: #ED8E01; }
+
+.ylabel:hover .tolltip {
+  visibility: visible; }
+
+.dhx_cal_date {
+  visibility: hidden;
+  z-index: -1; }
+
+.otherStations {
+  background-color: #515456; }
+
+.Blue {
+  background-color: #006CA7 !important;
+  z-index: 1 !important; }
+
+.white {
+  background-color: white !important; }
+
+.centerItems.NS.sapSuiteHdrCellNorth {
+  text-align: center !important; }
+
+.whiteTextButton .sapMBtnTransparent {
+  color: white !important;
+  text-align: left; }
+
+.blackTextButton .sapMBtnTransparent {
+  color: black !important;
+  text-align: left; }
+
+.blackTextButton2 .sapMBtn {
+  border-bottom-style: inset;
+  border-top: none;
+  border-left: none;
+  border-right: none; }
+.blackTextButton2 .sapMBtnIcon {
+  width: 3rem;
+  font-size: 1rem; }
+.blackTextButton2 .sapMBtnContent {
+  padding-left: 9px; }
+
+.alignTextLeft .sapMIBar-CTX .sapMTitle {
+  font-family: "Verdana";
+  font-weight: bold;
+  font-size: medium;
+  padding-right: 75%; }
+
+.hachure {
+  background-image: url("../../components/stationtracker/css/img/fat_lines.png"); }
+
+.panelContent .sapMPanelContent {
+  padding: 0rem;
+  background-color: #CCE6EE; }
+
+.panelContentList .sapMListBGSolid .sapMLIB {
+  background-color: #CCE6EE; }
+
+.textBlackPanel .sapMTB-Transparent-CTX .sapMLabel {
+  color: black; }
+
+.pageStation {
+  background: #006CA7 !important; }
+
+.pageWelcome2 {
+  font-family: "Arial" !important;
+  font-weight: bold;
+  font-size: 14px !important;
+  text-align: center !important;
+  color: white !important; }
+
+.stationTitle {
+  color: #006CA7 !important;
+  font-family: "Arial" !important;
+  font-weight: 400;
+  font-size: 24px !important; }
+
+.blueTitle {
+  color: #006CA7; }
+
+.stationWelcome {
+  color: #006CA7 !important;
+  font-family: "Arial" !important;
+  font-weight: 400;
+  font-size: 14px !important; }
+
+.pageUsername {
+  font-family: "Arial" !important;
+  font-weight: 400;
+  font-size: 14px;
+  color: white !important; }
+
+.greenBottom {
+  box-shadow: 0 5px 0 green; }
+
+.redBottom {
+  color: red;
+  box-shadow: 0 5px 0 red; }
+
+.duck-egg-blue {
+  background-color: #d5f1f8 !important; }
+
+.eventOrange {
+  background-color: #F9DAAB;
+  color: black; }
+
+.Hour {
+  background-color: grey;
+  opacity: 0.5;
+  filter: alpha(opacity=25); }
+
+.buttonNotif .sapMBtnContent {
+  color: orange;
+  font-weight: Bold;
+  padding-top: 10px !important; }
+
+.notifDetails {
+  font-size: smaller !important; }
+
+#operationDetailPopup--operationDetailPopUp-scrollCont {
+  padding: 0rem !important;
+  height: 101%; }
+
+.dhx_marked_timespan, .dhx_matrix_now_time {
+  border-left-color: purple !important;
+  opacity: 1;
+  border-width: 3px !important; }
+
+#calendar--toolbarstationtracker-popover-scroll {
+  color: #000000; }
+#calendar--toolbarstationtracker-popover-scroll > button > div {
+  color: inherit !important; }
+#calendar--toolbarstationtracker-popover-scroll > button > div.sapMToggleBtnPressed {
+  background-color: #005483 !important; }
+#calendar--toolbarstationtracker-popover-scroll > button > div.sapMToggleBtnPressed:hover {
+  opacity: 0.8; }
+#calendar--toolbarstationtracker-popover-scroll > button > div.sapMToggleBtnPressed > * {
+  color: #ffffff !important;
+  background-color: #005483 !important; }
+#calendar--toolbarstationtracker-popover-scroll > button:hover > div:not(.sapMToggleBtnPressed) {
+  background-color: rgba(222, 222, 222, 0.5); }
+
+#ImportOswUnplannedPopover--SelectAllUnpd-inner.sapMToggleBtnPressed {
+  color: #ffffff !important;
+  background-color: #005483 !important; }
+#ImportOswUnplannedPopover--SelectAllUnpd-inner.sapMToggleBtnPressed:hover {
+  opacity: 0.8; }
+
+.sidenav {
+  height: 0;
+  /* height - change this with JavaScript*/
+  width: 100%;
+  /*100% Full-width */
+  position: fixed;
+  /* Stay in place */
+  z-index: 101;
+  /* Stay on top */
+  bottom: 0;
+  left: 0;
+  background-color: #4a4b4b;
+  /* Black*/
+  overflow-y: hidden;
+  /* Disable horizontal scroll */
+  margin-top: -1rem !important;
+  transition: 0.10s;
+  transition-delay: 1s;
+  /*transition effect to slide in the sidenav */ }
+
+#main {
+  transition: margin-right .5s; }
+
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px; }
+
+  .sidenav a {
+    font-size: 18px; } }
+.sidebarContentMargin {
+  margin: 0 1rem 1rem 1rem; }
+
+.slidingUpDownPanel {
+  height: 100%;
+  /* height - change this with JavaScript*/
+  width: 100%;
+  /*100% Full-width */
+  position: fixed;
+  /* Stay in place */
+  z-index: 101;
+  /* Stay on top */
+  overflow-y: hidden;
+  /* Disable horizontal scroll */
+  display: none; }
+
+#calendar--disruptNotifications > .sapMFlexItem {
+  width: 100% !important;
+  height: 100% !important; }
+
+.wrap .sapMLabel {
+  white-space: normal !important; }
+
+.disruptionTextSize .sapSuiteCmpChartItemTitle {
+  font-size: 0.8vw !important;
+  padding-right: 2vw;
+  padding-bottom: 0.25vw; }
+
+.spaceBetweenCharts .sapSuiteCmpChartItem.Normal.Auto {
+  margin-top: 0.5rem !important; }
+
+/* oswPopover */
+.oswPopover .sapUiTinyMarginBeginEnd[role="checkbox"] {
+  margin: 0 !important; }
+.oswPopover .sapUiTinyMarginBeginEnd[role="checkbox"] .sapMCbBg {
+  top: 0.5125rem; }
+.oswPopover .sapUiSizeCompact .sapMTokenizer .sapMToken {
+  margin-top: 0.23rem; }
+
+/*********
+reschedule
+**********/
+#reschedulePage--rescheduleLabel.rescheduleLabel {
   font-weight: bold;
   padding: 0;
   margin: 25px 0 25px 2.5% !important; }
