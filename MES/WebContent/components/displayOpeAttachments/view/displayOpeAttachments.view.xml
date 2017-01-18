@@ -1,17 +1,81 @@
-<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
-	xmlns="sap.m" controllerName="airbus.mes.displayOpeAttachments.controller.displayOpeAttachments"
-	xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml"
-	xmlns:cData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" >
+<mvc:View 
+	controllerName="airbus.mes.displayOpeAttachments.controller.displayOpeAttachments"
+	xmlns="sap.ui.table"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:m="sap.m"
+    xmlns:u="sap.ui.unified"
+    xmlns:core="sap.ui.core">
 
-	<!--TO DO
-	<VBox id="displayOpeAttachmentsCheck" class="">
- 			<RadioButtonGroup columns="2" >
-				<buttons>
-					<RadioButton id="workOrderButton" text="" select="onSelectLevel" />
-					<RadioButton id="operationButton" text="" select="onSelectLevel"/>
-				</buttons>
-			</RadioButtonGroup>
-	</VBox>-->
+	<m:Page showHeader="false" enableScrolling="false">
+
+        <m:Text id="DOAlabel" class="DOAlabel" text="{i18nDisplayOpeAttachmentsModel>Documents}" />
+
+        <m:VBox id="displayOpeAttachmentsCheck" class="DOACheck">
+            <m:RadioButtonGroup columns="2" >
+                <m:buttons>
+                    <m:RadioButton id="workOrderButton" text="{i18nDisplayOpeAttachmentsModel>JigToolOperation}" select="onSelectLevel" />
+                    <m:RadioButton id="operationButton" text="{i18nDisplayOpeAttachmentsModel>JigToolWorkOrder}" select="onSelectLevel"/>
+                </m:buttons>
+            </m:RadioButtonGroup>
+        </m:VBox>
+
+        <m:content>
+            <TreeTable
+                    id="TreeTableBasic"
+                    rows="{path:'displayOpeAttachmentsWorkOrderDetail>/catalog/clothing', parameters: {arrayNames:['documents']}}"
+                    selectionMode="MultiToggle"
+                    enableSelectAll="false"
+                    ariaLabelledBy="title">
+                <columns>
+                    <Column width="13rem">
+                        <m:Label text="{i18nDisplayOpeAttachmentsModel>doc_type}"/>
+                        <template>
+                            <m:Text text="{displayOpeAttachmentsWorkOrderDetail>doc_type}"/>
+                        </template>
+                    </Column>
+                    <Column width="9rem">
+                        <m:Label text="{i18nDisplayOpeAttachmentsModel>doc_type_description}"/>
+                        <template>
+                            <m:Text text="{displayOpeAttachmentsWorkOrderDetail>doc_type_description}"/>
+                        </template>
+                    </Column>
+                    <Column width="11rem">
+                        <m:Label text="{i18nDisplayOpeAttachmentsModel>item_nr}"/>
+                        <template>
+                            <m:Text text="{displayOpeAttachmentsWorkOrderDetail>item_nr}"/>
+                        </template>
+                    </Column>
+                </columns>
+                <columns>
+                    <Column width="13rem">
+                        <m:Label text="{i18nDisplayOpeAttachmentsModel>doc_nr}"/>
+                        <template>
+                            <m:Text text="{displayOpeAttachmentsWorkOrderDetail>doc_nr}"/>
+                        </template>
+                    </Column>
+                    <Column width="9rem">
+                        <m:Label text="{i18nDisplayOpeAttachmentsModel>doc_description}"/>
+                        <template>
+                            <m:Text text="{displayOpeAttachmentsWorkOrderDetail>doc_description}"/>
+                        </template>
+                    </Column>
+                    <Column width="11rem">
+                        <m:Label text="{i18nDisplayOpeAttachmentsModel>doc_part}"/>
+                        <template>
+                            <m:Text text="{displayOpeAttachmentsWorkOrderDetail>doc_part}"/>
+                        </template>
+                    </Column>
+                    <Column width="11rem">
+                        <m:Label text="{i18nDisplayOpeAttachmentsModel>doc_version}"/>
+                        <template>
+                            <m:Text text="{displayOpeAttachmentsWorkOrderDetail>doc_version}"/>
+                        </template>
+                    </Column>
+                </columns>
+            </TreeTable>
+        </m:content>
+    </m:Page>
+
 
 </mvc:View>
 

@@ -7,6 +7,8 @@ airbus.mes.displayOpeAttachments.util.ModelManager = {
 	queryParams: jQuery.sap.getUriParameters(),
 
 	init: function (core) {
+
+		this.core = core;
 		var dest;
 
 		switch (window.location.hostname) {
@@ -39,6 +41,20 @@ airbus.mes.displayOpeAttachments.util.ModelManager = {
 				}
 			}
 		}
+
+		airbus.mes.shell.ModelManager.createJsonModel(core, ["displayOpeAttachmentsWorkOrderDetail"]);
+		this.loadDOADetail();
 	},
 
+	loadDOADetail : function() {
+		var oModel = sap.ui.getCore().getModel("displayOpeAttachmentsWorkOrderDetail");
+		oModel.loadData(this.getDOADetail(), null, false);
+	},
+	
+	getDOADetail : function() {
+		var url = this.urlModel.getProperty("displayOpeAttachmentsWorkOrderDetail");
+		url = airbus.mes.shell.ModelManager.replaceURI(url, "$site", airbus.mes.settings.ModelManager.site);
+		return url;
+	},
+	
 };

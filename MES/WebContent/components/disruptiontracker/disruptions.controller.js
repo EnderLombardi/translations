@@ -278,11 +278,6 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 				disruptionData.Rowsets.Rowset[1].Row.push(el);
 		});
 
-		/*
-		 * airbus.mes.disruptions.oView.viewDisruption.getModel(
-		 * "operationDisruptionsModel").setData( disruptionData);
-		 */
-
 		/**
 		 * MES V1.5 Navigate to disruption Detail Page [Begin]
 		 */
