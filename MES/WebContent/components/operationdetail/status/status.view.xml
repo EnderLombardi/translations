@@ -3,7 +3,9 @@
 	xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:html="http://www.w3.org/1999/xhtml">
 	<Page showHeader="false" enableScrolling="false" class="sapUiSmallMarginBeginEnd">
 		
-		<VBox justifyContent="SpaceBetween" class="sapUiSmallMarginBeginEnd">
+		<Text id="StatutLabel" class="StatutLabel" text="{i18n>Statut}" />
+		
+		<VBox justifyContent="SpaceBetween" class="sapUiSmallMarginBeginEnd" id="Statutprogress">
 			<HBox justifyContent="Center" class="sapUiSmallMarginTopBottom">
 				<items>
 					<Title 	id="operationStatus" 
@@ -15,7 +17,7 @@
 							titleStyle="H1" />
 				</items>
 			</HBox>
-			<Text text="{i18n>progress}: {operationDetailModel>/Rowsets/Rowset/0/Row/0/progress}%">
+			<Text id="progressLabel" class="progressLabel" text="{i18n>progress}: {operationDetailModel>/Rowsets/Rowset/0/Row/0/progress}%">
 			</Text>
 
 			<Slider id="progressSliderDisplay" max="100" min="0"

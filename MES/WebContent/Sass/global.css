@@ -3193,6 +3193,20 @@ button[id^="polypoly"].sapMBtn:hover > div[id^="polypoly"].sapMBtnHoverable, htm
 .sliderBlockedColor .sapMSliderProgress {
   background-color: darkorange !important; }
 
+/* tab - Statut - */
+#idStatusView--StatutLabel.StatutLabel {
+  font-weight: bold;
+  padding: 0;
+  margin: 25px 0 25px 2.5% !important; }
+
+#idStatusView--Statutprogress {
+  width: 95% !important;
+  margin: 0 auto;
+  padding: 0 auto; }
+
+#idStatusView--progressLabel.progressLabel {
+  margin-left: 20px; }
+
 #ViewDisruptionView--disrptlist {
   width: 95% !important;
   margin: 0 auto;
@@ -3202,7 +3216,10 @@ button[id^="polypoly"].sapMBtn:hover > div[id^="polypoly"].sapMBtnHoverable, htm
   font-size: 80% !important;
   font-style: italic !important; }
 
-.disruptionExpandablePanel > .sapMPanelContent {
+#ViewDisruptionView--disrptlist .disrptlistdesc {
+  font-size: 1rem !important;
+  text-transform: capitalize; }
+#ViewDisruptionView--disrptlist > .sapMPanelContent {
   padding: 0 1rem; }
 
 .disruptionTitleBarButtons > .sapMBtnReject {
@@ -6259,9 +6276,6 @@ Physical Station Popover
   margin-bottom: 20px; }
 
 #jigtoolsView--jigToollabel.jigToolListlabel {
-  padding: 0;
-  margin: 0 0 15px 2.5%;
-  font-weight: bold;
   font-weight: bold;
   padding: 0;
   margin: 25px 0 25px 2.5% !important; }

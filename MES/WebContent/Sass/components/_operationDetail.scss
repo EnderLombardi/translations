@@ -323,3 +323,23 @@
     }
 }
 
+/* tab - Statut - */
+#idStatusView--StatutLabel.StatutLabel{
+	    font-weight: bold;
+    	padding: 0;
+   		margin: 25px 0 25px 2.5% !important;
+}
+
+#idStatusView--Statutprogress{
+	width:95% !important;
+	margin: 0 auto;
+	padding:0 auto;
+}
+
+#idStatusView--progressLabel.progressLabel{
+	margin-left:20px; //to change by % when progress bar is set
+}
+
+#idStatusView--progressSliderDisplay{
+  // to do	
+}

@@ -4,11 +4,17 @@
 	padding:0 auto;
 }
  
+
 .classFormHint{
     font-size: 80% !important;
     font-style: italic !important;
 }
-.disruptionExpandablePanel{
+
+#ViewDisruptionView--disrptlist{
+	.disrptlistdesc{
+					font-size:1rem !important;
+					text-transform: capitalize;
+				}
     &>.sapMPanelContent{
         padding: 0 1rem;
     }
