@@ -1,12 +1,12 @@
 <core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m" controllerName="airbus.mes.operationdetail.status.status"
 	xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:html="http://www.w3.org/1999/xhtml">
-	<Page showHeader="false" enableScrolling="false" class="sapUiSmallMarginBeginEnd">
+	<Page showHeader="false" enableScrolling="false" >
 		
 		<Text id="StatutLabel" class="StatutLabel" text="{i18n>Statut}" />
 		
-		<VBox justifyContent="SpaceBetween" class="sapUiSmallMarginBeginEnd" id="Statutprogress">
-			<HBox justifyContent="Center" class="sapUiSmallMarginTopBottom">
+		<VBox justifyContent="SpaceBetween"  id="Statutprogress">
+			<HBox justifyContent="Center" >
 				<items>
 					<Title 	id="operationStatus" 
 							class="sapUiSmallMarginTop"

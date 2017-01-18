@@ -5,9 +5,9 @@
 		class="pageHeaderDialog classWorklistPopover">
 		<content>
 		
-		<Text id="rescheduleLabel" class="rescheduleLabel" text="{i18nModel>Reschedule}" />
+		<!-- <Text id="rescheduleLabel" class="rescheduleLabel" text="{i18nModel>Reschedule}" /> -->
 		
-			<HBox class="sapUiMediumMarginTop" justifyContent="Center" >
+			<HBox id="reschedulefield" class="sapUiMediumMarginTop" justifyContent="Center" >
 
 				<VBox class="sapUiMediumMarginEnd" >
 

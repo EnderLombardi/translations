@@ -3,12 +3,14 @@
 	controllerName="airbus.mes.operationdetail.QDC.Checklist">
 	<Page showHeader="false" height="100%">
 		<content>
-			<tab:TreeTable rows="{QDCModel>/root}" class="sapUiLargeMargin">
-				<tab:toolbar>
+		
+		<VBox id="Checklist" class="Checklist">
+			<tab:TreeTable rows="{QDCModel>/root}">
+				<!-- <tab:toolbar>
 					<Toolbar>
 						<Title text="{i18n>CheckListAndRecords}" />
 					</Toolbar>
-				</tab:toolbar>
+				</tab:toolbar> -->
 				<tab:columns>
 					<tab:Column>
 						<Label text="{i18n>PointofAttention}" />
@@ -24,9 +26,10 @@
 					</tab:Column>
 				</tab:columns>
 			</tab:TreeTable>
-			<HBox justifyContent="End" class="sapUiLargeMargin">
-				<Button text="Confirm"></Button>
+			<HBox justifyContent="End" >
+				<Button text="Confirm" class="ConfirmChecklist"></Button>
 			</HBox>
+		</VBox>
 
 		</content>
 	</Page>

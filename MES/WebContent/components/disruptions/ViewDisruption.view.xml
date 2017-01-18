@@ -4,7 +4,7 @@
 	<Page enableScrolling="false" showHeader="false">
 		<content>
 
-		<Text id="disruptLabel" class="sapUiSmallMargin" text="{i18nModel>Disruptions}" />
+		<!-- <Text id="disruptLabel" class="sapUiSmallMargin" text="{i18nModel>Disruptions}" /> -->
 
 			<List id="disrptlist" noDataText="{i18nModel>noDisruptions}"
 				class="disruptionDetail sapUiSmallMarginBottom" items="{path: 'operationDisruptionsModel>/Rowsets/Rowset/0/Row'}">

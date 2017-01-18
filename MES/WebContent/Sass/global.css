@@ -1682,6 +1682,11 @@ reschedule
   padding: 0;
   margin: 25px 0 25px 2.5% !important; }
 
+#reschedulePage--reschedulefield.sapUiMediumMarginTop {
+  width: 95% !important;
+  margin: 50px auto !important;
+  padding: 0; }
+
 /********************
 KPI Header Content
 *********************/
@@ -3145,20 +3150,29 @@ html.sap-desktop .operationDetailHeadPanel .opDetailNavToolbar .sapMSegBBtnFocus
 #idStatusView--StatutLabel.StatutLabel {
   font-weight: bold;
   padding: 0;
-  margin: 25px 0 25px 2.5% !important; }
+  margin: 25px 0 25px 2.5% !important;
+  display: none; }
 
 #idStatusView--Statutprogress {
   width: 95% !important;
-  margin: 0 auto;
-  padding: 0 auto; }
+  margin: 50px auto;
+  padding: 0; }
 
 #idStatusView--progressLabel.progressLabel {
   margin-left: 20px; }
 
+#idCheckListView--Checklist.Checklist {
+  width: 95% !important;
+  margin: 50px auto !important;
+  padding: 0; }
+
+.ConfirmChecklist {
+  margin-top: 20px; }
+
 #ViewDisruptionView--disrptlist {
   width: 95% !important;
-  margin: 0 auto;
-  padding: 0 auto; }
+  margin: 50px auto !important;
+  padding: 0; }
 
 .classFormHint {
   font-size: 80% !important;
@@ -6055,10 +6069,9 @@ Physical Station Popover
 
 #jigtoolsView--jigToolcheck.jigToolListcheck, #displayOpeAttachmentsView--displayOpeAttachmentsCheck.DOACheck {
   width: 50%;
-  margin: 0 auto;
+  margin: 50px auto;
   padding: 0;
-  text-align: center;
-  margin-bottom: 20px; }
+  text-align: center; }
 
 #jigtoolsView--jigToollabel.jigToolListlabel, #displayOpeAttachmentsView--DOAlabel.DOAlabel {
   font-weight: bold;

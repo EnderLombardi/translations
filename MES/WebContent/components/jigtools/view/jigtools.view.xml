@@ -6,7 +6,7 @@
 	<Page enableScrolling="false" showHeader="false">
 	<content>
 		
-	<Text id="jigToollabel" class="jigToolListlabel" text="{i18nJigstoolsModel>JigTool}" />
+	<!-- <Text id="jigToollabel" class="jigToolListlabel" text="{i18nJigstoolsModel>JigTool}" /> -->
 	
 	<VBox id="jigToolcheck" class="jigToolListcheck">
  			<RadioButtonGroup columns="2" >

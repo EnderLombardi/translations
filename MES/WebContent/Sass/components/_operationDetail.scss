@@ -330,12 +330,13 @@
 	    font-weight: bold;
     	padding: 0;
    		margin: 25px 0 25px 2.5% !important;
+   		display:none;
 }
 
 #idStatusView--Statutprogress{
 	width:95% !important;
-	margin: 0 auto;
-	padding:0 auto;
+	margin: 50px auto;
+	padding:0;
 }
 
 #idStatusView--progressLabel.progressLabel{
@@ -344,4 +345,16 @@
 
 #idStatusView--progressSliderDisplay{
   // to do	
+}
+
+
+//CheckList and Records
+#idCheckListView--Checklist.Checklist{
+	width:95% !important;
+	margin: 50px auto !important;
+	padding:0;
+}
+
+.ConfirmChecklist{
+	margin-top:20px;
 }
