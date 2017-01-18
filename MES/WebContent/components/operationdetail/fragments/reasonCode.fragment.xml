@@ -10,7 +10,7 @@
 
 
                 <Text
-                    text="{i18n>progress}: {operationDetailModel>/Rowsets/Rowset/0/Row/0/progress_new}%"></Text>
+                    id="progressTextDynamic" text="{i18n>progress}: {operationDetailModel>/Rowsets/Rowset/0/Row/0/progress_new}%"></Text>
 
             </HBox>
             <HBox class="sapUiSmallMarginTop">

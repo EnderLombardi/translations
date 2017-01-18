@@ -161,7 +161,7 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
     },
 
     confirmOperation : function(oEvent) {
-
+        oEvent.reset();
         var oView = airbus.mes.operationdetail.status.oView;
         var oModel = [sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0]];
         airbus.mes.operationdetail.ModelManager.durationNeededForCalc = oModel[0].duration;
@@ -179,11 +179,12 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
         sap.ui.getCore().byId("reasonCodeComments").setValue();
         sap.ui.getCore().byId("confirmTimeWorked").setSelected(false);
         airbus.mes.operationdetail.ModelManager.statusCheckBoxReasonCode = false;
-        if(oModel[0].progres != 0 || oModel[0].progres != undefined){
+        if(oModel[0].progres != 0 || oModel[0].progres != "0"){
             var im  = airbus.mes.operationdetail.Formatter.convertProgressBarToImField(oModel[0].progress);
             sap.ui.getCore().byId("imTextArea").setValue(im);
         }
-        airbus.mes.operationdetail.Formatter.liveChangeIm();
+        airbus.mes.operationdetail.Formatter.liveChangeIm(oEvent);
+        airbus.mes.operationdetail.Formatter.liveChangeProgressBar();
 //        $("#confirmTimeWorked-CB").attr("checked")
         oView._reasonCodeDialog.open();
     },
