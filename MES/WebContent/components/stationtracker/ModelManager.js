@@ -39,6 +39,7 @@ airbus.mes.stationtracker.ModelManager = {
                          "KPIdisruption", // KPI Resolution Staffing
                          "KPIchartTaktAdherence", // KPI Resolution Staffing
                          "spentTimedataModel", // KPI Resolution Staffing
+    	                 "taktModel",			// Start and End date for takt                         
                          ]
 
            airbus.mes.shell.ModelManager.createJsonModel(core,aModel);
@@ -52,7 +53,7 @@ airbus.mes.stationtracker.ModelManager = {
            core.getModel("OSWModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onOWSLoad);
            core.getModel("ressourcePoolModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onRessourcePoolLoad);
            core.getModel("phStationSelected").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onPhStationLoad);
-
+           core.getModel("taktModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onTaktLoad);          
 
         var dest;
 
@@ -1277,6 +1278,44 @@ airbus.mes.stationtracker.ModelManager = {
         }
 
     },
+	getTakt : function() {
+		var oModel = sap.ui.getCore().getModel("taktModel");
+		var url = this.urlModel.getProperty("urltakt");
+		
+		var oData = airbus.mes.stationtracker.ModelManager.settings;		
+		
+		url = airbus.mes.stationtracker.ModelManager.replaceURI(url, "$site", oData.site);
+		url = airbus.mes.stationtracker.ModelManager.replaceURI(url, "$station", oData.station);
+		url = airbus.mes.stationtracker.ModelManager.replaceURI(url, "$msn", oData.msn);
+		
+		
+		oModel.loadData(url, null, true);
+	},
+	onTaktLoad : function() {
+
+		var aModel = sap.ui.getCore().getModel("taktModel").getData();
+		
+//		TOBE remove after date changed		
+		var date = aModel.Rowsets.Rowset[0].Row[0].START_TIME;
+		var aDate = date.split( " ");
+		var aDate1 = aDate[0].split("/")
+		
+//        airbus.mes.settings.ModelManager.taktStart = aModel.Rowsets.Rowset[0].Row[0].START_TIME;
+		airbus.mes.settings.ModelManager.taktStart = aDate1[2].concat("-", aDate1[1], "-", aDate1[0], " ", aDate[1]);
+
+//		TOBE remove after date changed
+		var date = aModel.Rowsets.Rowset[0].Row[0].END_TIME;
+		var aDate = date.split( " ");
+		var aDate1 = aDate[0].split("/")
+		
+//        airbus.mes.settings.ModelManager.taktEnd = aModel.Rowsets.Rowset[0].Row[0].END_TIME;
+		airbus.mes.settings.ModelManager.taktEnd = aDate1[2].concat("-", aDate1[1], "-", aDate1[0], " ", aDate[1]);
+		
+        airbus.mes.settings.ModelManager.taktDuration = aModel.Rowsets.Rowset[0].Row[0].DURATION;
+        airbus.mes.stationtracker.ModelManager.settings.taktStart = airbus.mes.settings.ModelManager.taktStart
+        airbus.mes.stationtracker.ModelManager.settings.taktEnd = airbus.mes.settings.ModelManager.taktEnd
+        airbus.mes.stationtracker.ModelManager.settings.taktDuration = aModel.Rowsets.Rowset[0].Row[0].DURATION;     
+	},    
     getSpentTimePerOperation : function(operation, order){
         //var oViewModel = sap.ui.getCore().getModel("spentTimedataModel");
         var spentTime =0;

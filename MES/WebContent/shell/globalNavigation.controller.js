@@ -360,6 +360,8 @@ sap.ui.controller(
                         oModule.loadFilterUnplanned();
                         oModule.loadKPI();
                         oModule.getPhStation();
+                        
+                        oModule.getTakt();                        
                     },
 
                     setInformationVisibility : function(bSet) {
