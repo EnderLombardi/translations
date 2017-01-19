@@ -207,7 +207,44 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
             sap.ui.getCore().byId("pinForConfirmation").setVisible(true);
         }
 
+        jQuery.ajax({
+            url : airbus.mes.operationdetail.ModelManager.getUrlConfirmationCheckList(),
+            async : false,
+            error : function(xhr, status, error) {
+                airbus.mes.operationdetail.ModelManager.messageShow(sMessageError);
+            },
+            success : function(result, status, xhr) {
+                var jsonRead = result.Rowsets.Rowset[0].Row[0];
+                console.log(jsonRead);
+                if(jsonRead.QAWA === "true" || jsonRead.QAWA === true){
+                    sap.ui.getCore().byId("qawa").setProperty("icon", "sap-icon://accept");
+                }else{
+                    sap.ui.getCore().byId("qawa").setProperty("icon", "sap-icon://decline");
+                }
+                if(jsonRead.inspectionStatus === "true" || jsonRead.inspectionStatus === true){
+                    sap.ui.getCore().byId("inspectionStatus").setProperty("icon", "sap-icon://accept");
+                }else{
+                    sap.ui.getCore().byId("inspectionStatus").setProperty("icon", "sap-icon://decline");
+                }
+                if(jsonRead.noMissingsParts === "true" || jsonRead.noMissingsParts === true){
+                    sap.ui.getCore().byId("noMissingsParts").setProperty("icon", "sap-icon://accept");
+                }else{
+                    sap.ui.getCore().byId("noMissingsParts").setProperty("icon", "sap-icon://decline");
+                }
+                if(jsonRead.noOpenNC === "true" || jsonRead.noOpenNC === true){
+                    sap.ui.getCore().byId("noOpenNC").setProperty("icon", "sap-icon://accept");
+                }else{
+                    sap.ui.getCore().byId("noOpenNC").setProperty("icon", "sap-icon://decline");
+                }
+                if(jsonRead.serialNumberRecorded === "true" || jsonRead.serialNumberRecorded === true){
+                    sap.ui.getCore().byId("serialNumberRecorded").setProperty("icon", "sap-icon://accept");
+                }else{
+                    sap.ui.getCore().byId("serialNumberRecorded").setProperty("icon", "sap-icon://decline");
+                }
+            }
+        });
         oView._oUserConfirmationDialog.open();
+        oView._oUserConfirmationDialog.setProperty("contentWidth", "40%");
         sap.ui.getCore().byId("msgstrpConfirm").setVisible(false);
         sap.ui.getCore().byId("UIDForConfirmation").setValue("");
         sap.ui.getCore().byId("badgeIDForConfirmation").setValue("");

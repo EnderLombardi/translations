@@ -222,7 +222,7 @@ sap.ui
 
                             airbus.mes.stationtracker.ReschedulePopover.setModel(oModel,"RescheduleModel");
                             airbus.mes.stationtracker.ReschedulePopover.getModel();
-                           
+
                             this.nav.to(airbus.mes.stationtracker.ReschedulePopover.getId());
 
                             if (sap.ui.getCore().byId("operationDetailsView--switchOperationModeBtn").getState() === true) {
@@ -286,10 +286,10 @@ sap.ui
                             break;
 
                         case "ACPnGLinks":
-                        	 airbus.mes.shell.util.navFunctions.acpnglinksDetail(this.nav);
-                        	 this.nav.to(airbus.mes.acpnglinks.oView.getId());
-                        	break;
-                        	
+                             airbus.mes.shell.util.navFunctions.acpnglinksDetail(this.nav);
+                             this.nav.to(airbus.mes.acpnglinks.oView.getId());
+                            break;
+
                          default:
                             break;
 

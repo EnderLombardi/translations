@@ -13,8 +13,9 @@ airbus.mes.operationdetail.ModelManager = {
     badgeReader: undefined,
     statusCheckBoxReasonCode: false,
     durationNeededForCalc: undefined,
-    brOnMessageCallBack: function (data) { },
-    queryParams: jQuery.sap.getUriParameters(),
+    jsonConfirmationCheckList: undefined,
+    brOnMessageCallBack:function (data) {},
+    queryParams : jQuery.sap.getUriParameters(),
 
     init: function (core) {
 
@@ -116,6 +117,11 @@ airbus.mes.operationdetail.ModelManager = {
             .replaceURI(urlStartOperation, "$resource", "DEFAULT");
 
         return urlStartOperation;
+    },
+    getUrlConfirmationCheckList : function(){
+        var urlConfirmationCheckList = this.urlModel.getProperty("confirmationCheckList");
+
+        return urlConfirmationCheckList;
     },
 
     /***************************************************************************

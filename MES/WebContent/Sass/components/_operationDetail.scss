@@ -136,6 +136,49 @@
         }
     }
 }
+#confirmationCheckList{
+    position: absolute;
+    top: 30%;
+    display: inline-block;
+    .sapMBtnTransparent > .sapMBtnIcon{
+        color: black;
+    }
+    div#qawa-inner:hover {
+        background-color: transparent;
+        cursor: default;
+    }
+    div#inspectionStatus-inner:hover {
+        background-color: transparent;
+        cursor: default;
+    }
+    div#noMissingsParts-inner:hover {
+        background-color: transparent;
+        cursor: default;
+    }
+    div#noOpenNC-inner:hover {
+        background-color: transparent;
+        cursor: default;
+    }
+    div#serialNumberRecorded-inner:hover {
+        background-color: transparent;
+        cursor: default;
+    }
+    button#qawa:hover {
+        cursor: default;
+    }
+    button#inspectionStatus:hover {
+        cursor: default;
+    }
+    button#noMissingsParts:hover {
+        cursor: default;
+    }
+    button#noOpenNC:hover {
+        cursor: default;
+    }
+    button#serialNumberRecorded:hover {
+        cursor: default;
+    }
+}
 #ViewDisruptionView{
     header{
         &.sapMPanelWrappingDivTb{
@@ -323,7 +366,7 @@
     }
 }
 .AllignItem{
-	Display:flex; 
+    Display:flex;
 }
 /* tab - Statut - */
 #idStatusView--StatutLabel.StatutLabel{
@@ -340,11 +383,11 @@
 }
 
 #idStatusView--progressLabel.progressLabel{
-	margin-left:20px; //to change by % when progress bar is set
+    margin-left:20px; //to change by % when progress bar is set
 }
 
 #idStatusView--progressSliderDisplay{
-  // to do	
+  // to do
 }
 
 
