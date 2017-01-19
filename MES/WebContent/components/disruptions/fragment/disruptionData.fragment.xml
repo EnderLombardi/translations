@@ -172,8 +172,8 @@
 
 
 				<core:Title text="" />
-				<Label text="{i18nModel>EsclationLevel}" />
-				<Select id="esclationLevel" enabled="false" selectedKey="">
+				<Label text="{i18nModel>EscalationLevel}" />
+				<Select id="escalationLevel" enabled="false" selectedKey="">
 					<items>
 						<core:Item text="{i18nModel>NotEscalated}" key="1" />
 						<core:Item text="{i18nModel>FirstEscalation}" key="2" />
@@ -185,7 +185,7 @@
 
 				<core:Title text="" />
 
-				<Label text="{i18nModel>dateOfEsclation}" />
+				<Label text="{i18nModel>dateOfEscalation}" />
 				<DatePicker displayFormat="short"
 					value="{path: 'DisruptionDetailModel>/EscalationDateTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}"
 					enabled="false">

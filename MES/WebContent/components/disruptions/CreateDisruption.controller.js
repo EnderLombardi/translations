@@ -469,7 +469,7 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
                            * set data for additional fields MES V1.5
                            */
                            if (sap.ui.Device.system.desktop) {
-                                  this.getView().byId("esclationLevel").setValue(oModel.getProperty("/EscalationLevel"));
+                                  this.getView().byId("escalationLevel").setValue(oModel.getProperty("/EscalationLevel"));
                            }
                            // *****************************************
 
@@ -967,7 +967,7 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
 
                            this.getView().byId("comment").setValue();
 
-                            this.getView().byId("esclationLevel").setValue(oModel.getProperty("/EscalationLevel"));
+                            this.getView().byId("escalationLevel").setValue(oModel.getProperty("/EscalationLevel"));
 
                            // *****************************************
 
