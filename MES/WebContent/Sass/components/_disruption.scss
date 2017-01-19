@@ -25,9 +25,11 @@
     &>.sapMBtnReject{
         @include  disruptionBackground(#cc1919);
         &>.sapMBtnIcon{
-            color: #cc1919 !important;
+            color: #cc1919 !important
+            ;
         }
     }
+   
     &:hover{
         background: $petrol-20 !important;
     }

@@ -1,6 +1,10 @@
-<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
-	xmlns="sap.m" controllerName="airbus.mes.jigtools.controller.jigtools"
-	xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml"
+<mvc:View 
+	xmlns:core="sap.ui.core" 
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" 
+	controllerName="airbus.mes.jigtools.controller.jigtools"
+	xmlns:f="sap.ui.layout.form" 
+	xmlns:l="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml"
 	xmlns:cData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" >
 
 	<Page enableScrolling="false" showHeader="false">

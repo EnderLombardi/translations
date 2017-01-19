@@ -25,21 +25,21 @@
 				>tr{
 					>td{
 						text-align:left !important;
-						border-left:1px solid $cool-grey-hover;
+						border-left:1px solid $cool-grey-hover ;
 					}
 				}
 		}
 	}
 }
 	
-#jigtoolsView--jigToolcheck.jigToolListcheck,  #displayOpeAttachmentsView--displayOpeAttachmentsCheck.DOACheck{
+#jigtoolsView--jigToolcheck.jigToolListcheck{
 	width: 50%;
     margin: 50px auto;
     padding: 0;
     text-align: center;
 }
 
-#jigtoolsView--jigToollabel.jigToolListlabel,  #displayOpeAttachmentsView--DOAlabel.DOAlabel {
+#jigtoolsView--jigToollabel.jigToolListlabel{
         font-weight: bold;
     	padding: 0;
    		margin: 25px 0 25px 2.5% !important;
