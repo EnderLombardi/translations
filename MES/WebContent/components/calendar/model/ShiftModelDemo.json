@@ -1,0 +1,2323 @@
+{ "Rowsets" : { 
+       "DateCreated" : "2016-07-13T10:26:38", "Version" : "15.1 SP1 Patch 0 (Jan 21, 2016)", "StartDate" : "2016-07-13T09:26:38+0200", "EndDate" : "2016-07-13T10:26:38+0200", "CachedTime" : "", 
+       "Rowset" : [ 
+       { "Columns" : { 
+             "Column" : [ 
+             { "Name" : "shiftName", "SourceColumn" : "shiftName", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+             { "Name" : "shiftID", "SourceColumn" : "shiftID", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 },        
+             { "Name" : "day", "SourceColumn" : "day", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+             { "Name" : "beginDateTime", "SourceColumn" : "beginDateTime", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+             { "Name" : "endDateTime", "SourceColumn" : "endDateTime", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 } ] }, 
+       "Row" :
+       
+[
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-10-02MORNING",
+    "day": "20161002",
+    "beginDateTime": "2016-10-02 03:00:00",
+    "endDateTime": "2016-10-02 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-10-02AFTERNOON",
+    "day": "20161002",
+    "beginDateTime": "2016-10-02 10:15:00",
+    "endDateTime": "2016-10-02 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-10-02NIGHT",
+    "day": "20161002",
+    "beginDateTime": "2016-10-02 18:00:00",
+    "endDateTime": "2016-10-03 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-10-03MORNING",
+    "day": "20161003",
+    "beginDateTime": "2016-10-03 03:00:00",
+    "endDateTime": "2016-10-03 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-10-03AFTERNOON",
+    "day": "20161003",
+    "beginDateTime": "2016-10-03 10:15:00",
+    "endDateTime": "2016-10-03 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-10-03NIGHT",
+    "day": "20161003",
+    "beginDateTime": "2016-10-03 18:00:00",
+    "endDateTime": "2016-10-04 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-10-04MORNING",
+    "day": "20161004",
+    "beginDateTime": "2016-10-04 03:00:00",
+    "endDateTime": "2016-10-04 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-10-04AFTERNOON",
+    "day": "20161004",
+    "beginDateTime": "2016-10-04 10:15:00",
+    "endDateTime": "2016-10-04 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-10-04NIGHT",
+    "day": "20161004",
+    "beginDateTime": "2016-10-04 18:00:00",
+    "endDateTime": "2016-10-05 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-10-05MORNING",
+    "day": "20161005",
+    "beginDateTime": "2016-10-05 03:00:00",
+    "endDateTime": "2016-10-05 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-10-05AFTERNOON",
+    "day": "20161005",
+    "beginDateTime": "2016-10-05 10:15:00",
+    "endDateTime": "2016-10-05 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-10-05NIGHT",
+    "day": "20161005",
+    "beginDateTime": "2016-10-05 18:00:00",
+    "endDateTime": "2016-10-06 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-10-06MORNING",
+    "day": "20161006",
+    "beginDateTime": "2016-10-06 03:00:00",
+    "endDateTime": "2016-10-06 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-10-06AFTERNOON",
+    "day": "20161006",
+    "beginDateTime": "2016-10-06 10:15:00",
+    "endDateTime": "2016-10-06 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-10-06NIGHT",
+    "day": "20161006",
+    "beginDateTime": "2016-10-06 18:00:00",
+    "endDateTime": "2016-10-07 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-10-07MORNING",
+    "day": "20161007",
+    "beginDateTime": "2016-10-07 03:00:00",
+    "endDateTime": "2016-10-07 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-10-07AFTERNOON",
+    "day": "20161007",
+    "beginDateTime": "2016-10-07 10:15:00",
+    "endDateTime": "2016-10-07 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-10-07NIGHT",
+    "day": "20161007",
+    "beginDateTime": "2016-10-07 18:00:00",
+    "endDateTime": "2016-10-08 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-10-08MORNING",
+    "day": "20161008",
+    "beginDateTime": "2016-10-08 03:00:00",
+    "endDateTime": "2016-10-08 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-10-08AFTERNOON",
+    "day": "20161008",
+    "beginDateTime": "2016-10-08 10:15:00",
+    "endDateTime": "2016-10-08 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-10-08NIGHT",
+    "day": "20161008",
+    "beginDateTime": "2016-10-08 18:00:00",
+    "endDateTime": "2016-10-09 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-10-09MORNING",
+    "day": "20161009",
+    "beginDateTime": "2016-10-09 03:00:00",
+    "endDateTime": "2016-10-09 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-10-09AFTERNOON",
+    "day": "20161009",
+    "beginDateTime": "2016-10-09 10:15:00",
+    "endDateTime": "2016-10-09 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-10-09NIGHT",
+    "day": "20161009",
+    "beginDateTime": "2016-10-09 18:00:00",
+    "endDateTime": "2016-10-10 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-10-10MORNING",
+    "day": "20161010",
+    "beginDateTime": "2016-10-10 03:00:00",
+    "endDateTime": "2016-10-10 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-10-10AFTERNOON",
+    "day": "20161010",
+    "beginDateTime": "2016-10-10 10:15:00",
+    "endDateTime": "2016-10-10 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-10-10NIGHT",
+    "day": "20161010",
+    "beginDateTime": "2016-10-10 18:00:00",
+    "endDateTime": "2016-10-11 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-10-11MORNING",
+    "day": "20161011",
+    "beginDateTime": "2016-10-11 03:00:00",
+    "endDateTime": "2016-10-11 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-10-11AFTERNOON",
+    "day": "20161011",
+    "beginDateTime": "2016-10-11 10:15:00",
+    "endDateTime": "2016-10-11 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-10-11NIGHT",
+    "day": "20161011",
+    "beginDateTime": "2016-10-11 18:00:00",
+    "endDateTime": "2016-10-12 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-10-12MORNING",
+    "day": "20161012",
+    "beginDateTime": "2016-10-12 03:00:00",
+    "endDateTime": "2016-10-12 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-10-12AFTERNOON",
+    "day": "20161012",
+    "beginDateTime": "2016-10-12 10:15:00",
+    "endDateTime": "2016-10-12 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-10-12NIGHT",
+    "day": "20161012",
+    "beginDateTime": "2016-10-12 18:00:00",
+    "endDateTime": "2016-10-13 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-10-13MORNING",
+    "day": "20161013",
+    "beginDateTime": "2016-10-13 03:00:00",
+    "endDateTime": "2016-10-13 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-10-13AFTERNOON",
+    "day": "20161013",
+    "beginDateTime": "2016-10-13 10:15:00",
+    "endDateTime": "2016-10-13 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-10-13NIGHT",
+    "day": "20161013",
+    "beginDateTime": "2016-10-13 18:00:00",
+    "endDateTime": "2016-10-14 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-10-14MORNING",
+    "day": "20161014",
+    "beginDateTime": "2016-10-14 03:00:00",
+    "endDateTime": "2016-10-14 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-10-14AFTERNOON",
+    "day": "20161014",
+    "beginDateTime": "2016-10-14 10:15:00",
+    "endDateTime": "2016-10-14 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-10-14NIGHT",
+    "day": "20161014",
+    "beginDateTime": "2016-10-14 18:00:00",
+    "endDateTime": "2016-10-15 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-10-15MORNING",
+    "day": "20161015",
+    "beginDateTime": "2016-10-15 03:00:00",
+    "endDateTime": "2016-10-15 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-10-15AFTERNOON",
+    "day": "20161015",
+    "beginDateTime": "2016-10-15 10:15:00",
+    "endDateTime": "2016-10-15 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-10-15NIGHT",
+    "day": "20161015",
+    "beginDateTime": "2016-10-15 18:00:00",
+    "endDateTime": "2016-10-16 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-10-16MORNING",
+    "day": "20161016",
+    "beginDateTime": "2016-10-16 03:00:00",
+    "endDateTime": "2016-10-16 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-10-16AFTERNOON",
+    "day": "20161016",
+    "beginDateTime": "2016-10-16 10:15:00",
+    "endDateTime": "2016-10-16 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-10-16NIGHT",
+    "day": "20161016",
+    "beginDateTime": "2016-10-16 18:00:00",
+    "endDateTime": "2016-10-17 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-10-17MORNING",
+    "day": "20161017",
+    "beginDateTime": "2016-10-17 03:00:00",
+    "endDateTime": "2016-10-17 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-10-17AFTERNOON",
+    "day": "20161017",
+    "beginDateTime": "2016-10-17 10:15:00",
+    "endDateTime": "2016-10-17 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-10-17NIGHT",
+    "day": "20161017",
+    "beginDateTime": "2016-10-17 18:00:00",
+    "endDateTime": "2016-10-18 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-10-18MORNING",
+    "day": "20161018",
+    "beginDateTime": "2016-10-18 03:00:00",
+    "endDateTime": "2016-10-18 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-10-18AFTERNOON",
+    "day": "20161018",
+    "beginDateTime": "2016-10-18 10:15:00",
+    "endDateTime": "2016-10-18 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-10-18NIGHT",
+    "day": "20161018",
+    "beginDateTime": "2016-10-18 18:00:00",
+    "endDateTime": "2016-10-19 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-10-19MORNING",
+    "day": "20161019",
+    "beginDateTime": "2016-10-19 03:00:00",
+    "endDateTime": "2016-10-19 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-10-19AFTERNOON",
+    "day": "20161019",
+    "beginDateTime": "2016-10-19 10:15:00",
+    "endDateTime": "2016-10-19 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-10-19NIGHT",
+    "day": "20161019",
+    "beginDateTime": "2016-10-19 18:00:00",
+    "endDateTime": "2016-10-20 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-10-20MORNING",
+    "day": "20161020",
+    "beginDateTime": "2016-10-20 03:00:00",
+    "endDateTime": "2016-10-20 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-10-20AFTERNOON",
+    "day": "20161020",
+    "beginDateTime": "2016-10-20 10:15:00",
+    "endDateTime": "2016-10-20 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-10-20NIGHT",
+    "day": "20161020",
+    "beginDateTime": "2016-10-20 18:00:00",
+    "endDateTime": "2016-10-21 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-10-21MORNING",
+    "day": "20161021",
+    "beginDateTime": "2016-10-21 03:00:00",
+    "endDateTime": "2016-10-21 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-10-21AFTERNOON",
+    "day": "20161021",
+    "beginDateTime": "2016-10-21 10:15:00",
+    "endDateTime": "2016-10-21 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-10-21NIGHT",
+    "day": "20161021",
+    "beginDateTime": "20161021 18:00:00",
+    "endDateTime": "2016-10-22 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-10-22MORNING",
+    "day": "20161022",
+    "beginDateTime": "2016-10-22 03:00:00",
+    "endDateTime": "2016-10-22 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-10-22AFTERNOON",
+    "day": "20161022",
+    "beginDateTime": "2016-10-22 10:15:00",
+    "endDateTime": "2016-10-22 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-10-22NIGHT",
+    "day": "20161022",
+    "beginDateTime": "2016-10-22 18:00:00",
+    "endDateTime": "2016-10-23 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-10-23MORNING",
+    "day": "20161023",
+    "beginDateTime": "2016-10-23 03:00:00",
+    "endDateTime": "2016-10-23 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-10-23AFTERNOON",
+    "day": "20161023",
+    "beginDateTime": "2016-10-23 10:15:00",
+    "endDateTime": "2016-10-23 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-10-23NIGHT",
+    "day": "20161023",
+    "beginDateTime": "2016-10-23 18:00:00",
+    "endDateTime": "2016-10-24 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-10-24MORNING",
+    "day": "20161024",
+    "beginDateTime": "2016-10-24 03:00:00",
+    "endDateTime": "2016-10-24 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-10-24AFTERNOON",
+    "day": "20161024",
+    "beginDateTime": "2016-10-24 10:15:00",
+    "endDateTime": "2016-10-24 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-10-24NIGHT",
+    "day": "20161024",
+    "beginDateTime": "2016-10-24 18:00:00",
+    "endDateTime": "2016-10-25 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-10-25MORNING",
+    "day": "20161025",
+    "beginDateTime": "2016-10-25 03:00:00",
+    "endDateTime": "2016-10-25 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-10-25AFTERNOON",
+    "day": "20161025",
+    "beginDateTime": "2016-10-25 10:15:00",
+    "endDateTime": "2016-10-25 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-10-25NIGHT",
+    "day": "20161025",
+    "beginDateTime": "2016-10-25 18:00:00",
+    "endDateTime": "2016-10-26 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-10-26MORNING",
+    "day": "20161026",
+    "beginDateTime": "2016-10-26 03:00:00",
+    "endDateTime": "2016-10-26 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-10-26AFTERNOON",
+    "day": "20161026",
+    "beginDateTime": "2016-10-26 10:15:00",
+    "endDateTime": "2016-10-26 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-10-26NIGHT",
+    "day": "20161026",
+    "beginDateTime": "2016-10-26 18:00:00",
+    "endDateTime": "2016-10-27 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-10-27MORNING",
+    "day": "20161027",
+    "beginDateTime": "2016-10-27 03:00:00",
+    "endDateTime": "2016-10-27 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-10-27AFTERNOON",
+    "day": "20161027",
+    "beginDateTime": "2016-10-27 10:15:00",
+    "endDateTime": "2016-10-27 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-10-27NIGHT",
+    "day": "20161027",
+    "beginDateTime": "2016-10-27 18:00:00",
+    "endDateTime": "2016-10-28 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-10-28MORNING",
+    "day": "20161028",
+    "beginDateTime": "2016-10-28 03:00:00",
+    "endDateTime": "2016-10-28 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-10-28AFTERNOON",
+    "day": "20161028",
+    "beginDateTime": "2016-10-28 10:15:00",
+    "endDateTime": "2016-10-28 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-10-28NIGHT",
+    "day": "20161028",
+    "beginDateTime": "2016-10-28 18:00:00",
+    "endDateTime": "2016-10-29 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-10-29MORNING",
+    "day": "20161029",
+    "beginDateTime": "2016-10-29 03:00:00",
+    "endDateTime": "2016-10-29 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-10-29AFTERNOON",
+    "day": "20161029",
+    "beginDateTime": "2016-10-29 10:15:00",
+    "endDateTime": "2016-10-29 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-10-29NIGHT",
+    "day": "20161029",
+    "beginDateTime": "2016-10-29 18:00:00",
+    "endDateTime": "2016-10-30 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-10-30MORNING",
+    "day": "20161030",
+    "beginDateTime": "2016-10-30 03:00:00",
+    "endDateTime": "2016-10-30 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-10-30AFTERNOON",
+    "day": "20161030",
+    "beginDateTime": "2016-10-30 10:15:00",
+    "endDateTime": "2016-10-30 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-10-30NIGHT",
+    "day": "20161030",
+    "beginDateTime": "2016-10-30 18:00:00",
+    "endDateTime": "2016-10-31 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-10-31MORNING",
+    "day": "20161031",
+    "beginDateTime": "2016-10-31 03:00:00",
+    "endDateTime": "2016-10-31 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-10-31AFTERNOON",
+    "day": "20161031",
+    "beginDateTime": "2016-10-31 10:15:00",
+    "endDateTime": "2016-10-31 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-10-31NIGHT",
+    "day": "20161031",
+    "beginDateTime": "2016-10-31 18:00:00",
+    "endDateTime": "2016-11-01 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-11-01MORNING",
+    "day": "20161101",
+    "beginDateTime": "2016-11-01 03:00:00",
+    "endDateTime": "2016-11-01 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-11-01AFTERNOON",
+    "day": "20161101",
+    "beginDateTime": "2016-11-01 10:15:00",
+    "endDateTime": "2016-11-01 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-11-01NIGHT",
+    "day": "20161101",
+    "beginDateTime": "2016-11-01 18:00:00",
+    "endDateTime": "2016-11-02 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-11-02MORNING",
+    "day": "20161102",
+    "beginDateTime": "2016-11-02 03:00:00",
+    "endDateTime": "2016-11-02 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-11-02AFTERNOON",
+    "day": "20161102",
+    "beginDateTime": "2016-11-02 10:15:00",
+    "endDateTime": "2016-11-02 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-11-02NIGHT",
+    "day": "20161102",
+    "beginDateTime": "2016-11-02 18:00:00",
+    "endDateTime": "2016-11-03 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-11-03MORNING",
+    "day": "20161103",
+    "beginDateTime": "2016-11-03 03:00:00",
+    "endDateTime": "2016-11-03 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-11-03AFTERNOON",
+    "day": "20161103",
+    "beginDateTime": "2016-11-03 10:15:00",
+    "endDateTime": "2016-11-03 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-11-03NIGHT",
+    "day": "20161103",
+    "beginDateTime": "2016-11-03 18:00:00",
+    "endDateTime": "2016-11-04 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-11-04MORNING",
+    "day": "20161104",
+    "beginDateTime": "2016-11-04 03:00:00",
+    "endDateTime": "2016-11-04 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-11-04AFTERNOON",
+    "day": "20161104",
+    "beginDateTime": "2016-11-04 10:15:00",
+    "endDateTime": "2016-11-04 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-11-04NIGHT",
+    "day": "20161104",
+    "beginDateTime": "2016-11-04 18:00:00",
+    "endDateTime": "2016-11-05 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-11-05MORNING",
+    "day": "20161105",
+    "beginDateTime": "2016-11-05 03:00:00",
+    "endDateTime": "2016-11-05 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-11-05AFTERNOON",
+    "day": "20161105",
+    "beginDateTime": "2016-11-05 10:15:00",
+    "endDateTime": "2016-11-05 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-11-05NIGHT",
+    "day": "20161105",
+    "beginDateTime": "2016-11-05 18:00:00",
+    "endDateTime": "2016-11-06 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-11-06MORNING",
+    "day": "20161106",
+    "beginDateTime": "2016-11-06 03:00:00",
+    "endDateTime": "2016-11-06 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-11-06AFTERNOON",
+    "day": "20161106",
+    "beginDateTime": "2016-11-06 10:15:00",
+    "endDateTime": "2016-11-06 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-11-06NIGHT",
+    "day": "20161106",
+    "beginDateTime": "2016-11-06 18:00:00",
+    "endDateTime": "2016-11-07 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-11-07MORNING",
+    "day": "20161107",
+    "beginDateTime": "2016-11-07 03:00:00",
+    "endDateTime": "2016-11-07 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-11-07AFTERNOON",
+    "day": "20161107",
+    "beginDateTime": "2016-11-07 10:15:00",
+    "endDateTime": "2016-11-07 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-11-07NIGHT",
+    "day": "20161107",
+    "beginDateTime": "2016-11-07 18:00:00",
+    "endDateTime": "2016-11-08 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-11-08MORNING",
+    "day": "20161108",
+    "beginDateTime": "2016-11-08 03:00:00",
+    "endDateTime": "2016-11-08 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-11-08AFTERNOON",
+    "day": "20161108",
+    "beginDateTime": "2016-11-08 10:15:00",
+    "endDateTime": "2016-11-08 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-11-08NIGHT",
+    "day": "20161108",
+    "beginDateTime": "2016-11-08 18:00:00",
+    "endDateTime": "2016-11-09 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-11-09MORNING",
+    "day": "20161109",
+    "beginDateTime": "2016-11-09 03:00:00",
+    "endDateTime": "2016-11-09 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-11-09AFTERNOON",
+    "day": "20161109",
+    "beginDateTime": "2016-11-09 10:15:00",
+    "endDateTime": "2016-11-09 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-11-09NIGHT",
+    "day": "20161109",
+    "beginDateTime": "2016-11-09 18:00:00",
+    "endDateTime": "2016-11-10 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-11-10MORNING",
+    "day": "20161110",
+    "beginDateTime": "2016-11-10 03:00:00",
+    "endDateTime": "2016-11-10 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-11-10AFTERNOON",
+    "day": "20161110",
+    "beginDateTime": "2016-11-10 10:15:00",
+    "endDateTime": "2016-11-10 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-11-10NIGHT",
+    "day": "20161110",
+    "beginDateTime": "2016-11-10 18:00:00",
+    "endDateTime": "2016-11-11 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-11-11MORNING",
+    "day": "20161111",
+    "beginDateTime": "2016-11-11 03:00:00",
+    "endDateTime": "2016-11-11 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-11-11AFTERNOON",
+    "day": "20161111",
+    "beginDateTime": "2016-11-11 10:15:00",
+    "endDateTime": "2016-11-11 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-11-11NIGHT",
+    "day": "20161111",
+    "beginDateTime": "2016-11-11 18:00:00",
+    "endDateTime": "2016-11-12 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-11-12MORNING",
+    "day": "20161112",
+    "beginDateTime": "2016-11-12 03:00:00",
+    "endDateTime": "2016-11-12 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-11-12AFTERNOON",
+    "day": "20161112",
+    "beginDateTime": "2016-11-12 10:15:00",
+    "endDateTime": "2016-11-12 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-11-12NIGHT",
+    "day": "20161112",
+    "beginDateTime": "2016-11-12 18:00:00",
+    "endDateTime": "2016-11-13 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-11-13MORNING",
+    "day": "20161113",
+    "beginDateTime": "2016-11-13 03:00:00",
+    "endDateTime": "2016-11-13 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-11-13AFTERNOON",
+    "day": "20161113",
+    "beginDateTime": "2016-11-13 10:15:00",
+    "endDateTime": "2016-11-13 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-11-13NIGHT",
+    "day": "20161113",
+    "beginDateTime": "2016-11-13 18:00:00",
+    "endDateTime": "2016-11-14 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-11-14MORNING",
+    "day": "20161114",
+    "beginDateTime": "2016-11-14 03:00:00",
+    "endDateTime": "2016-11-14 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-11-14AFTERNOON",
+    "day": "20161114",
+    "beginDateTime": "2016-11-14 10:15:00",
+    "endDateTime": "2016-11-14 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-11-14NIGHT",
+    "day": "20161114",
+    "beginDateTime": "2016-11-14 18:00:00",
+    "endDateTime": "2016-11-15 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-11-15MORNING",
+    "day": "20161115",
+    "beginDateTime": "2016-11-15 03:00:00",
+    "endDateTime": "2016-11-15 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-11-15AFTERNOON",
+    "day": "20161115",
+    "beginDateTime": "2016-11-15 10:15:00",
+    "endDateTime": "2016-11-15 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-11-15NIGHT",
+    "day": "20161115",
+    "beginDateTime": "2016-11-15 18:00:00",
+    "endDateTime": "2016-11-16 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-11-16MORNING",
+    "day": "20161116",
+    "beginDateTime": "2016-11-16 03:00:00",
+    "endDateTime": "2016-11-16 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-11-16AFTERNOON",
+    "day": "20161116",
+    "beginDateTime": "2016-11-16 10:15:00",
+    "endDateTime": "2016-11-16 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-11-16NIGHT",
+    "day": "20161116",
+    "beginDateTime": "2016-11-16 18:00:00",
+    "endDateTime": "2016-11-17 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-11-17MORNING",
+    "day": "20161117",
+    "beginDateTime": "2016-11-17 03:00:00",
+    "endDateTime": "2016-11-17 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-11-17AFTERNOON",
+    "day": "20161117",
+    "beginDateTime": "2016-11-17 10:15:00",
+    "endDateTime": "2016-11-17 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-11-17NIGHT",
+    "day": "20161117",
+    "beginDateTime": "2016-11-17 18:00:00",
+    "endDateTime": "2016-11-18 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-11-18MORNING",
+    "day": "20161118",
+    "beginDateTime": "2016-11-18 03:00:00",
+    "endDateTime": "2016-11-18 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-11-18AFTERNOON",
+    "day": "20161118",
+    "beginDateTime": "2016-11-18 10:15:00",
+    "endDateTime": "2016-11-18 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-11-18NIGHT",
+    "day": "20161118",
+    "beginDateTime": "2016-11-18 18:00:00",
+    "endDateTime": "2016-11-19 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-11-19MORNING",
+    "day": "20161119",
+    "beginDateTime": "2016-11-19 03:00:00",
+    "endDateTime": "2016-11-19 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-11-19AFTERNOON",
+    "day": "20161119",
+    "beginDateTime": "2016-11-19 10:15:00",
+    "endDateTime": "2016-11-19 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-11-19NIGHT",
+    "day": "20161119",
+    "beginDateTime": "2016-11-19 18:00:00",
+    "endDateTime": "2016-11-20 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-11-20MORNING",
+    "day": "20161120",
+    "beginDateTime": "2016-11-20 03:00:00",
+    "endDateTime": "2016-11-20 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-11-20AFTERNOON",
+    "day": "20161120",
+    "beginDateTime": "2016-11-20 10:15:00",
+    "endDateTime": "2016-11-20 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-11-20NIGHT",
+    "day": "20161120",
+    "beginDateTime": "2016-11-20 18:00:00",
+    "endDateTime": "2016-11-21 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-11-21MORNING",
+    "day": "20161121",
+    "beginDateTime": "2016-11-21 03:00:00",
+    "endDateTime": "2016-11-21 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-11-21AFTERNOON",
+    "day": "20161121",
+    "beginDateTime": "2016-11-21 10:15:00",
+    "endDateTime": "2016-11-21 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-11-21NIGHT",
+    "day": "20161121",
+    "beginDateTime": "2016-11-21 18:00:00",
+    "endDateTime": "2016-11-22 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-11-22MORNING",
+    "day": "20161122",
+    "beginDateTime": "2016-11-22 03:00:00",
+    "endDateTime": "2016-11-22 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-11-22AFTERNOON",
+    "day": "20161122",
+    "beginDateTime": "2016-11-22 10:15:00",
+    "endDateTime": "2016-11-22 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-11-22NIGHT",
+    "day": "20161122",
+    "beginDateTime": "2016-11-22 18:00:00",
+    "endDateTime": "2016-11-23 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-11-23MORNING",
+    "day": "20161123",
+    "beginDateTime": "2016-11-23 03:00:00",
+    "endDateTime": "2016-11-23 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-11-23AFTERNOON",
+    "day": "20161123",
+    "beginDateTime": "2016-11-23 10:15:00",
+    "endDateTime": "2016-11-23 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-11-23NIGHT",
+    "day": "20161123",
+    "beginDateTime": "2016-11-23 18:00:00",
+    "endDateTime": "2016-11-24 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-11-24MORNING",
+    "day": "20161124",
+    "beginDateTime": "2016-11-24 03:00:00",
+    "endDateTime": "2016-11-24 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-11-24AFTERNOON",
+    "day": "20161124",
+    "beginDateTime": "2016-11-24 10:15:00",
+    "endDateTime": "2016-11-24 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-11-24NIGHT",
+    "day": "20161124",
+    "beginDateTime": "2016-11-24 18:00:00",
+    "endDateTime": "2016-11-25 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-11-25MORNING",
+    "day": "20161125",
+    "beginDateTime": "2016-11-25 03:00:00",
+    "endDateTime": "2016-11-25 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-11-25AFTERNOON",
+    "day": "20161125",
+    "beginDateTime": "2016-11-25 10:15:00",
+    "endDateTime": "2016-11-25 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-11-25NIGHT",
+    "day": "20161125",
+    "beginDateTime": "2016-11-25 18:00:00",
+    "endDateTime": "2016-11-26 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-11-26MORNING",
+    "day": "20161126",
+    "beginDateTime": "2016-11-26 03:00:00",
+    "endDateTime": "2016-11-26 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-11-26AFTERNOON",
+    "day": "20161126",
+    "beginDateTime": "2016-11-26 10:15:00",
+    "endDateTime": "2016-11-26 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-11-26NIGHT",
+    "day": "20161126",
+    "beginDateTime": "2016-11-26 18:00:00",
+    "endDateTime": "2016-11-27 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-11-27MORNING",
+    "day": "20161127",
+    "beginDateTime": "2016-11-27 03:00:00",
+    "endDateTime": "2016-11-27 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-11-27AFTERNOON",
+    "day": "20161127",
+    "beginDateTime": "2016-11-27 10:15:00",
+    "endDateTime": "2016-11-27 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-11-27NIGHT",
+    "day": "20161127",
+    "beginDateTime": "2016-11-27 18:00:00",
+    "endDateTime": "2016-11-28 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-11-28MORNING",
+    "day": "20161128",
+    "beginDateTime": "2016-11-28 03:00:00",
+    "endDateTime": "2016-11-28 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-11-28AFTERNOON",
+    "day": "20161128",
+    "beginDateTime": "2016-11-28 10:15:00",
+    "endDateTime": "2016-11-28 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-11-28NIGHT",
+    "day": "20161128",
+    "beginDateTime": "2016-11-28 18:00:00",
+    "endDateTime": "2016-11-29 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-11-29MORNING",
+    "day": "20161129",
+    "beginDateTime": "2016-11-29 03:00:00",
+    "endDateTime": "2016-11-29 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-11-29AFTERNOON",
+    "day": "20161129",
+    "beginDateTime": "2016-11-29 10:15:00",
+    "endDateTime": "2016-11-29 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-11-29NIGHT",
+    "day": "20161129",
+    "beginDateTime": "2016-11-29 18:00:00",
+    "endDateTime": "2016-11-30 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-11-30MORNING",
+    "day": "20161130",
+    "beginDateTime": "2016-11-30 03:00:00",
+    "endDateTime": "2016-11-30 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-11-30AFTERNOON",
+    "day": "20161130",
+    "beginDateTime": "2016-11-30 10:15:00",
+    "endDateTime": "2016-11-30 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-11-30NIGHT",
+    "day": "20161130",
+    "beginDateTime": "2016-11-30 18:00:00",
+    "endDateTime": "2016-12-01 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-12-01MORNING",
+    "day": "20161201",
+    "beginDateTime": "2016-12-01 03:00:00",
+    "endDateTime": "2016-12-01 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-12-01AFTERNOON",
+    "day": "20161201",
+    "beginDateTime": "2016-12-01 10:15:00",
+    "endDateTime": "2016-12-01 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-12-01NIGHT",
+    "day": "20161201",
+    "beginDateTime": "2016-12-01 18:00:00",
+    "endDateTime": "2016-12-02 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-12-02MORNING",
+    "day": "20161202",
+    "beginDateTime": "2016-12-02 03:00:00",
+    "endDateTime": "2016-12-02 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-12-02AFTERNOON",
+    "day": "20161202",
+    "beginDateTime": "2016-12-02 10:15:00",
+    "endDateTime": "2016-12-02 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-12-02NIGHT",
+    "day": "20161202",
+    "beginDateTime": "2016-12-02 18:00:00",
+    "endDateTime": "2016-12-03 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-12-03MORNING",
+    "day": "20161203",
+    "beginDateTime": "2016-12-03 03:00:00",
+    "endDateTime": "2016-12-03 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-12-03AFTERNOON",
+    "day": "20161203",
+    "beginDateTime": "2016-12-03 10:15:00",
+    "endDateTime": "2016-12-03 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-12-03NIGHT",
+    "day": "20161203",
+    "beginDateTime": "2016-12-03 18:00:00",
+    "endDateTime": "2016-12-04 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-12-04MORNING",
+    "day": "20161204",
+    "beginDateTime": "2016-12-04 03:00:00",
+    "endDateTime": "2016-12-04 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-12-04AFTERNOON",
+    "day": "20161204",
+    "beginDateTime": "2016-12-04 10:15:00",
+    "endDateTime": "2016-12-04 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-12-04NIGHT",
+    "day": "20161204",
+    "beginDateTime": "2016-12-04 18:00:00",
+    "endDateTime": "2016-12-05 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-12-05MORNING",
+    "day": "20161205",
+    "beginDateTime": "2016-12-05 03:00:00",
+    "endDateTime": "2016-12-05 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-12-05AFTERNOON",
+    "day": "20161205",
+    "beginDateTime": "2016-12-05 10:15:00",
+    "endDateTime": "2016-12-05 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-12-05NIGHT",
+    "day": "20161205",
+    "beginDateTime": "2016-12-05 18:00:00",
+    "endDateTime": "2016-12-06 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-12-06MORNING",
+    "day": "20161206",
+    "beginDateTime": "2016-12-06 03:00:00",
+    "endDateTime": "2016-12-06 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-12-06AFTERNOON",
+    "day": "20161206",
+    "beginDateTime": "2016-12-06 10:15:00",
+    "endDateTime": "2016-12-06 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-12-06NIGHT",
+    "day": "20161206",
+    "beginDateTime": "2016-12-06 18:00:00",
+    "endDateTime": "2016-12-07 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-12-07MORNING",
+    "day": "20161207",
+    "beginDateTime": "2016-12-07 03:00:00",
+    "endDateTime": "2016-12-07 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-12-07AFTERNOON",
+    "day": "20161207",
+    "beginDateTime": "2016-12-07 10:15:00",
+    "endDateTime": "2016-12-07 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-12-07NIGHT",
+    "day": "20161207",
+    "beginDateTime": "2016-12-07 18:00:00",
+    "endDateTime": "2016-12-08 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-12-08MORNING",
+    "day": "20161208",
+    "beginDateTime": "2016-12-08 03:00:00",
+    "endDateTime": "2016-12-08 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-12-08AFTERNOON",
+    "day": "20161208",
+    "beginDateTime": "2016-12-08 10:15:00",
+    "endDateTime": "2016-12-08 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-12-08NIGHT",
+    "day": "20161208",
+    "beginDateTime": "2016-12-08 18:00:00",
+    "endDateTime": "2016-12-09 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-12-09MORNING",
+    "day": "20161209",
+    "beginDateTime": "2016-12-09 03:00:00",
+    "endDateTime": "2016-12-09 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-12-09AFTERNOON",
+    "day": "20161209",
+    "beginDateTime": "2016-12-09 10:15:00",
+    "endDateTime": "2016-12-09 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-12-09NIGHT",
+    "day": "20161209",
+    "beginDateTime": "2016-12-09 18:00:00",
+    "endDateTime": "2016-12-10 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-12-10MORNING",
+    "day": "20161210",
+    "beginDateTime": "2016-12-10 03:00:00",
+    "endDateTime": "2016-12-10 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-12-10AFTERNOON",
+    "day": "20161210",
+    "beginDateTime": "2016-12-10 10:15:00",
+    "endDateTime": "2016-12-10 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-12-10NIGHT",
+    "day": "20161210",
+    "beginDateTime": "2016-12-10 18:00:00",
+    "endDateTime": "2016-12-11 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-12-11MORNING",
+    "day": "20161211",
+    "beginDateTime": "2016-12-11 03:00:00",
+    "endDateTime": "2016-12-11 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-12-11AFTERNOON",
+    "day": "20161211",
+    "beginDateTime": "2016-12-11 10:15:00",
+    "endDateTime": "2016-12-11 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-12-11NIGHT",
+    "day": "20161211",
+    "beginDateTime": "2016-12-11 18:00:00",
+    "endDateTime": "2016-12-12 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-12-12MORNING",
+    "day": "20161212",
+    "beginDateTime": "2016-12-12 03:00:00",
+    "endDateTime": "2016-12-12 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-12-12AFTERNOON",
+    "day": "20161212",
+    "beginDateTime": "2016-12-12 10:15:00",
+    "endDateTime": "2016-12-12 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-12-12NIGHT",
+    "day": "20161212",
+    "beginDateTime": "2016-12-12 18:00:00",
+    "endDateTime": "2016-12-13 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-12-13MORNING",
+    "day": "20161213",
+    "beginDateTime": "2016-12-13 03:00:00",
+    "endDateTime": "2016-12-13 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-12-13AFTERNOON",
+    "day": "20161213",
+    "beginDateTime": "2016-12-13 10:15:00",
+    "endDateTime": "2016-12-13 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-12-13NIGHT",
+    "day": "20161213",
+    "beginDateTime": "2016-12-13 18:00:00",
+    "endDateTime": "2016-12-14 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-12-14MORNING",
+    "day": "20161214",
+    "beginDateTime": "2016-12-14 03:00:00",
+    "endDateTime": "2016-12-14 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-12-14AFTERNOON",
+    "day": "20161214",
+    "beginDateTime": "2016-12-14 10:15:00",
+    "endDateTime": "2016-12-14 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-12-14NIGHT",
+    "day": "20161214",
+    "beginDateTime": "2016-12-14 18:00:00",
+    "endDateTime": "2016-12-15 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-12-15MORNING",
+    "day": "20161215",
+    "beginDateTime": "2016-12-15 03:00:00",
+    "endDateTime": "2016-12-15 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-12-15AFTERNOON",
+    "day": "20161215",
+    "beginDateTime": "2016-12-15 10:15:00",
+    "endDateTime": "2016-12-15 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-12-15NIGHT",
+    "day": "20161215",
+    "beginDateTime": "2016-12-15 18:00:00",
+    "endDateTime": "2016-12-16 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-12-16MORNING",
+    "day": "20161216",
+    "beginDateTime": "2016-12-16 03:00:00",
+    "endDateTime": "2016-12-16 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-12-16AFTERNOON",
+    "day": "20161216",
+    "beginDateTime": "2016-12-16 10:15:00",
+    "endDateTime": "2016-12-16 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-12-16NIGHT",
+    "day": "20161216",
+    "beginDateTime": "2016-12-16 18:00:00",
+    "endDateTime": "2016-12-17 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-12-17MORNING",
+    "day": "20161217",
+    "beginDateTime": "2016-12-17 03:00:00",
+    "endDateTime": "2016-12-17 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-12-17AFTERNOON",
+    "day": "20161217",
+    "beginDateTime": "2016-12-17 10:15:00",
+    "endDateTime": "2016-12-17 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-12-17NIGHT",
+    "day": "20161217",
+    "beginDateTime": "2016-12-17 18:00:00",
+    "endDateTime": "2016-12-18 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-12-18MORNING",
+    "day": "20161218",
+    "beginDateTime": "2016-12-18 03:00:00",
+    "endDateTime": "2016-12-18 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-12-18AFTERNOON",
+    "day": "20161218",
+    "beginDateTime": "2016-12-18 10:15:00",
+    "endDateTime": "2016-12-18 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-12-18NIGHT",
+    "day": "20161218",
+    "beginDateTime": "2016-12-18 18:00:00",
+    "endDateTime": "2016-12-19 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-12-19MORNING",
+    "day": "20161219",
+    "beginDateTime": "2016-12-19 03:00:00",
+    "endDateTime": "2016-12-19 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-12-19AFTERNOON",
+    "day": "20161219",
+    "beginDateTime": "2016-12-19 10:15:00",
+    "endDateTime": "2016-12-19 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-12-19NIGHT",
+    "day": "20161219",
+    "beginDateTime": "2016-12-19 18:00:00",
+    "endDateTime": "2016-12-20 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-12-20MORNING",
+    "day": "20161220",
+    "beginDateTime": "2016-12-20 03:00:00",
+    "endDateTime": "2016-12-20 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-12-20AFTERNOON",
+    "day": "20161220",
+    "beginDateTime": "2016-12-20 10:15:00",
+    "endDateTime": "2016-12-20 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-12-20NIGHT",
+    "day": "20161220",
+    "beginDateTime": "2016-12-20 18:00:00",
+    "endDateTime": "2016-12-21 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-12-21MORNING",
+    "day": "20161221",
+    "beginDateTime": "2016-12-21 03:00:00",
+    "endDateTime": "2016-12-21 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-12-21AFTERNOON",
+    "day": "20161221",
+    "beginDateTime": "2016-12-21 10:15:00",
+    "endDateTime": "2016-12-21 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-12-21NIGHT",
+    "day": "20161221",
+    "beginDateTime": "2016-12-21 18:00:00",
+    "endDateTime": "2016-12-22 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-12-22MORNING",
+    "day": "20161222",
+    "beginDateTime": "2016-12-22 03:00:00",
+    "endDateTime": "2016-12-22 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-12-22AFTERNOON",
+    "day": "20161222",
+    "beginDateTime": "2016-12-22 10:15:00",
+    "endDateTime": "2016-12-22 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-12-22NIGHT",
+    "day": "20161222",
+    "beginDateTime": "2016-12-22 18:00:00",
+    "endDateTime": "2016-12-23 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-12-23MORNING",
+    "day": "20161223",
+    "beginDateTime": "2016-12-23 03:00:00",
+    "endDateTime": "2016-12-23 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-12-23AFTERNOON",
+    "day": "20161223",
+    "beginDateTime": "2016-12-23 10:15:00",
+    "endDateTime": "2016-12-23 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-12-23NIGHT",
+    "day": "20161223",
+    "beginDateTime": "2016-12-23 18:00:00",
+    "endDateTime": "2016-12-24 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-12-24MORNING",
+    "day": "20161224",
+    "beginDateTime": "2016-12-24 03:00:00",
+    "endDateTime": "2016-12-24 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-12-24AFTERNOON",
+    "day": "20161224",
+    "beginDateTime": "2016-12-24 10:15:00",
+    "endDateTime": "2016-12-24 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-12-24NIGHT",
+    "day": "20161224",
+    "beginDateTime": "2016-12-24 18:00:00",
+    "endDateTime": "2016-12-25 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-12-25MORNING",
+    "day": "20161225",
+    "beginDateTime": "2016-12-25 03:00:00",
+    "endDateTime": "2016-12-25 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-12-25AFTERNOON",
+    "day": "20161225",
+    "beginDateTime": "2016-12-25 10:15:00",
+    "endDateTime": "2016-12-25 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-12-25NIGHT",
+    "day": "20161225",
+    "beginDateTime": "2016-12-25 18:00:00",
+    "endDateTime": "2016-12-26 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-12-26MORNING",
+    "day": "20161226",
+    "beginDateTime": "2016-12-26 03:00:00",
+    "endDateTime": "2016-12-26 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-12-26AFTERNOON",
+    "day": "20161226",
+    "beginDateTime": "2016-12-26 10:15:00",
+    "endDateTime": "2016-12-26 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-12-26NIGHT",
+    "day": "20161226",
+    "beginDateTime": "2016-12-26 18:00:00",
+    "endDateTime": "2016-12-27 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-12-27MORNING",
+    "day": "20161227",
+    "beginDateTime": "2016-12-27 03:00:00",
+    "endDateTime": "2016-12-27 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-12-27AFTERNOON",
+    "day": "20161227",
+    "beginDateTime": "2016-12-27 10:15:00",
+    "endDateTime": "2016-12-27 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-12-27NIGHT",
+    "day": "20161227",
+    "beginDateTime": "2016-12-27 18:00:00",
+    "endDateTime": "2016-12-28 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-12-28MORNING",
+    "day": "20161228",
+    "beginDateTime": "2016-12-28 03:00:00",
+    "endDateTime": "2016-12-28 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-12-28AFTERNOON",
+    "day": "20161228",
+    "beginDateTime": "2016-12-28 10:15:00",
+    "endDateTime": "2016-12-28 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-12-28NIGHT",
+    "day": "20161228",
+    "beginDateTime": "2016-12-28 18:00:00",
+    "endDateTime": "2016-12-29 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-12-29MORNING",
+    "day": "20161229",
+    "beginDateTime": "2016-12-29 03:00:00",
+    "endDateTime": "2016-12-29 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-12-29AFTERNOON",
+    "day": "20161229",
+    "beginDateTime": "2016-12-29 10:15:00",
+    "endDateTime": "2016-12-29 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-12-29NIGHT",
+    "day": "20161229",
+    "beginDateTime": "2016-12-29 18:00:00",
+    "endDateTime": "2016-12-30 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-12-30MORNING",
+    "day": "20161230",
+    "beginDateTime": "2016-12-30 03:00:00",
+    "endDateTime": "2016-12-30 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-12-30AFTERNOON",
+    "day": "20161230",
+    "beginDateTime": "2016-12-30 10:15:00",
+    "endDateTime": "2016-12-30 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-12-30NIGHT",
+    "day": "20161230",
+    "beginDateTime": "2016-12-30 18:00:00",
+    "endDateTime": "2016-12-31 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2016-12-31MORNING",
+    "day": "20161231",
+    "beginDateTime": "2016-12-31 03:00:00",
+    "endDateTime": "2016-12-31 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2016-12-31AFTERNOON",
+    "day": "20161231",
+    "beginDateTime": "2016-12-31 10:15:00",
+    "endDateTime": "2016-12-31 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2016-12-31NIGHT",
+    "day": "20161231",
+    "beginDateTime": "2016-12-31 18:00:00",
+    "endDateTime": "2017-01-01 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2017-01-01MORNING",
+    "day": "20170101",
+    "beginDateTime": "2017-01-01 03:00:00",
+    "endDateTime": "2017-01-01 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2017-01-01AFTERNOON",
+    "day": "20170101",
+    "beginDateTime": "2017-01-01 10:15:00",
+    "endDateTime": "2017-01-01 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2017-01-01NIGHT",
+    "day": "20170101",
+    "beginDateTime": "2017-01-01 18:00:00",
+    "endDateTime": "2017-01-02 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2017-01-02MORNING",
+    "day": "20170102",
+    "beginDateTime": "2017-01-02 03:00:00",
+    "endDateTime": "2017-01-02 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2017-01-02AFTERNOON",
+    "day": "20170102",
+    "beginDateTime": "2017-01-02 10:15:00",
+    "endDateTime": "2017-01-02 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2017-01-02NIGHT",
+    "day": "20170102",
+    "beginDateTime": "2017-01-02 18:00:00",
+    "endDateTime": "2017-01-03 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2017-01-03MORNING",
+    "day": "20170103",
+    "beginDateTime": "2017-01-03 03:00:00",
+    "endDateTime": "2017-01-03 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2017-01-03AFTERNOON",
+    "day": "20170103",
+    "beginDateTime": "2017-01-03 10:15:00",
+    "endDateTime": "2017-01-03 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2017-01-03NIGHT",
+    "day": "20170103",
+    "beginDateTime": "2017-01-03 18:00:00",
+    "endDateTime": "2017-01-04 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2017-01-04MORNING",
+    "day": "20170104",
+    "beginDateTime": "2017-01-04 03:00:00",
+    "endDateTime": "2017-01-04 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2017-01-04AFTERNOON",
+    "day": "20170104",
+    "beginDateTime": "2017-01-04 10:15:00",
+    "endDateTime": "2017-01-04 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2017-01-04NIGHT",
+    "day": "20170104",
+    "beginDateTime": "2017-01-04 18:00:00",
+    "endDateTime": "2017-01-05 02:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "MORNING",
+    "shiftID": "2017-01-05MORNING",
+    "day": "20170105",
+    "beginDateTime": "2017-01-05 03:00:00",
+    "endDateTime": "2017-01-05 10:00:00",
+    "": ""
+  },
+  {
+    "shiftName": "AFTERNOON",
+    "shiftID": "2017-01-05AFTERNOON",
+    "day": "20170105",
+    "beginDateTime": "2017-01-05 10:15:00",
+    "endDateTime": "2017-01-05 17:30:00",
+    "": ""
+  },
+  {
+    "shiftName": "NIGHT",
+    "shiftID": "2017-01-05NIGHT",
+    "day": "20170105",
+    "beginDateTime": "2017-01-05 18:00:00",
+    "endDateTime": "2017-01-05 02:00:00",
+    "": ""
+  }
+]
+       
+                   } ]
+       }
+}
+

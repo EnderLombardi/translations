@@ -138,7 +138,7 @@ airbus.mes.calendar.util.ShiftManager = {
 		}
 		
 //		//Airbus Defect #262 - Shift selection is not kept when changing date
-//		if(!airbus.mes.stationtracker.ShiftManager.changeShift){
+//		if(!airbus.mes.calendar.util.ShiftManager.changeShift){
 //			var flag = false;
 //
 //			/********
@@ -146,7 +146,7 @@ airbus.mes.calendar.util.ShiftManager = {
 //			 * because there is a possibility that Dichomatic search result in Shift other than first shift of the day
 //			 */
 //			for(var i = iMed;; i--){
-//				if(this.shifts[i].EndDate >= date && this.shifts[i].shiftName == airbus.mes.stationtracker.ShiftManager.current_shift.shiftName)
+//				if(this.shifts[i].EndDate >= date && this.shifts[i].shiftName == airbus.mes.calendar.util.ShiftManager.current_shift.shiftName)
 //				{ iMed = i; flag= true;	break; }
 //				else if(this.shifts[i].EndDate < date)
 //					break;
@@ -157,7 +157,7 @@ airbus.mes.calendar.util.ShiftManager = {
 //			 */
 //			if(!flag)
 //			for(var i = iMed;; i++){
-//				if(this.shifts[i].EndDate >= date && this.shifts[i].shiftName == airbus.mes.stationtracker.ShiftManager.current_shift.shiftName)
+//				if(this.shifts[i].EndDate >= date && this.shifts[i].shiftName == airbus.mes.calendar.util.ShiftManager.current_shift.shiftName)
 //				{ iMed = i;	break; }
 //				else if(this.shifts[i].EndDate < date)
 //					break;
@@ -225,7 +225,7 @@ airbus.mes.calendar.util.ShiftManager = {
 		if (this.shifts.length === 0)
 		return calendar.date.add_timeline_old(date, step, mode);
 
-		var c = this.closestShift(airbus.mes.stationtracker.ShiftManager.currentShiftStart);
+		var c = this.closestShift(airbus.mes.calendar.util.ShiftManager.currentShiftStart);
 
 		if ( this.dayDisplay ) {
 		
@@ -676,7 +676,6 @@ airbus.mes.calendar.util.ShiftManager = {
 	next : function(e, t) {
 		
         calendar.setCurrentView(calendar.date.add(calendar.date[calendar._mode + "_start"](calendar._date), t || 1, calendar._mode));
-        airbus.mes.stationtracker.ModelManager.selectMyShift();
         
     },
 	/**

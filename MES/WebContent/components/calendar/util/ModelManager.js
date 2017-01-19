@@ -9,12 +9,12 @@ airbus.mes.calendar.util.ModelManager = {
        
        init : function(core) {
     	  
-    	   var aModel = ["testModel" ,"calendarshiftsModel","calendarTracker"]
+    	   var aModel = ["testModel" ,"calendarshiftsModel","calendarTrackerModel"]
     	   airbus.mes.shell.ModelManager.createJsonModel(core,aModel);
            
     	   core.getModel("testModel").attachRequestCompleted(airbus.mes.calendar.util.ModelManager.toto);
            core.getModel("calendarshiftsModel").attachRequestCompleted(airbus.mes.calendar.util.ModelManager.onShiftsLoad);
-           core.getModel("calendarTracker").attachRequestCompleted(airbus.mes.calendar.util.ModelManager.onCalendarTrackerLoad);
+           core.getModel("calendarTrackerModel").attachRequestCompleted(airbus.mes.calendar.util.ModelManager.onCalendarTrackerLoad);
     	   
     	   
     	var dest;
@@ -94,7 +94,7 @@ airbus.mes.calendar.util.ModelManager = {
 	    loadCalendarTracker : function() {
 
 	        var oData = airbus.mes.settings.ModelManager;
-	        var oViewModel = airbus.mes.calendar.oView.getModel("calendarTracker");
+	        var oViewModel = airbus.mes.calendar.oView.getModel("calendarTrackerModel");
 	        var geturlcalendartracker = this.urlModel.getProperty('urlCalendaroperation');
 
 	        geturlcalendartracker = airbus.mes.calendar.util.ModelManager.replaceURI(geturlcalendartracker, "$site", oData.site);

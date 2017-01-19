@@ -6,7 +6,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",    {
                     byPassOnClick: "boolean",
 //                  Define if it is a simple click or a drag and drop. Used on event onBeforeDrag and onClick
                     byPassOnDrag: "boolean",
-                    
+                    id:"",
                     renderer : function(oRm, oControl) {
 
                         oRm.write("<div ");
@@ -99,11 +99,10 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",    {
                          */
                         
                         scheduler.eventId.push(scheduler.attachEvent("onBeforeEventChanged", function(ev, e, is_new,original) {
-
                         	//Filled on event onBeforeDrag
-                			var oInitial = original;
+                        	var oInitial = original;
                     		var oFinal = ev;
-                        	
+                    		
                             if (is_new) {
                                 return false;
                             }
@@ -114,6 +113,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",    {
                             
                             // Get Value of groupind of new operation
                             var aNewGroup = ev.section_id.split("_");
+                            var sNewAvlLine=aNewGroup[aNewGroup.length-1] + aNewGroup[aNewGroup.length-2];                  
                             var fLenght = aNewGroup.length - 2;
                             var sNewGroup = "";
                             
@@ -124,6 +124,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",    {
                             }
                             // Get Value of grouping of initial operation
                             var aInitialGroup = oInitial.section_id.split("_");
+                            var sInitialAvlLine=aInitialGroup[aInitialGroup.length-1] + aInitialGroup[aInitialGroup.length-2]; 
                             var fLenghtI = aInitialGroup.length - 2;
                             var sInitialGroup = "";
                             
@@ -139,6 +140,15 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",    {
                             	return false;
                             	
                             }
+                            
+                          //To avoid call rescheduling when drag and drop check if moved the operation if not we dont launch the drag
+                    		if ( sInitialAvlLine === sNewAvlLine && oInitial.start_date - oFinal.start_date === 0) {
+                    			
+                    			  airbus.mes.stationtracker.ModelManager.OpenWorkList(this.id);
+                                  scheduler._drag_mode = ""
+                                  return false;
+                    			
+                    		}
                            
                                 //Store oFinal and oInitial value in case of check qa is not successfull
                                 airbus.mes.stationtracker.oFinal = oFinal;
@@ -156,10 +166,11 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",    {
                          */
 
                         scheduler.eventId.push(scheduler.attachEvent("onBeforeDrag",function blockReadonly(id) {
+                        	console.log(scheduler._drag_mode);
 
                         	var that = this;
                         	this.byPassOnDrag = false;
-                        	
+                        	this.id = id;
                         	// permit to dont reschedule
                             if ( bBatch1 ) {
                             	scheduler._drag_mode = ""
@@ -232,6 +243,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",    {
                          */
 
                         scheduler.eventId.push (scheduler.attachEvent("onYScaleClick", function(index, section, e) {
+                        	console.log("click");
 
                             if (airbus.mes.stationtracker.AssignmentManager.bOpen && section.children != undefined) {
 
@@ -356,7 +368,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",    {
                          */
 
                         scheduler.eventId.push ( scheduler.attachEvent("onClick", function(id,e) {
-                        		
+
                              airbus.mes.stationtracker.ModelManager.OpenWorkList(id);
                              scheduler._drag_mode = ""
                              return false;

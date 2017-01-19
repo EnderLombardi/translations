@@ -4,8 +4,6 @@ jQuery.sap.declare("airbus.mes.calendar.util.GroupingBoxingManager")
 airbus.mes.calendar.util.GroupingBoxingManager	 = {
 	
 	constante :  "*@#&~^",
-	operationHierarchyDelay : {},
-	operationDateIHierarchy : {},
 	operationHierarchy : {},
 	shiftHierarchy : {},
 	shiftNoBreakHierarchy: [],
@@ -121,14 +119,104 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 	computeCalendarHierarchy : function() {
 		
 		var oHierachy = airbus.mes.calendar.util.GroupingBoxingManager.operationHierarchy;
-		var oHierarchyDelay = airbus.mes.calendar.util.GroupingBoxingManager.operationHierarchyDelay;
 		var oFormatter = airbus.mes.calendar.util.Formatter;
-		var oHierarchyI = airbus.mes.calendar.util.GroupingBoxingManager.operationDateIHierarchy;
 		var sCstSplit = airbus.mes.calendar.util.GroupingBoxingManager.constante;
-		
+		var oModel =  airbus.mes.calendar.oView.getModel("calendarTrackerModel");
 		//===============
-		//Configuration
+		// check if model full or not
 		//===============	
+		if (oModel.getProperty("/Response")) {              	
+			oModel = oModel.oData.Response;	
+        } else  {
+        	oModel = [];
+        	console.log("no Holidays operation load");
+        }		
+		//===============
+		//Compute hierarchy by group and user		
+		//===============	
+		oModel.forEach(function(el){
+	
+			// Home based
+			if ( el.LOANED_FROM === "null" && el.LOADED_TO === "null" ) {
+				
+				var sName = airbus.mes.calendar.oView.getModel("calendarI18n").getProperty("HomeBased");
+				
+			} else {
+				// LOANED_FROM 
+				if ( el.LOANED_FROM === "true" ) {
+					
+					var sName = airbus.mes.calendar.oView.getModel("calendarI18n").getProperty("LoanedFrom");
+				// LOADED_TO 	
+				} else {
+					
+					var sName = airbus.mes.calendar.oView.getModel("calendarI18n").getProperty("LoadedTo");
+		
+				}
+			}
+				
+			if ( !oHierachy[sName] ) {
+				
+				oHierachy[sName] = {};
+			}
+			if ( !oHierachy[sName][el.USER + sCstSplit + el.FIRST_NAME + sCstSplit +  el.LAST_NAME ] ) {
+				
+				oHierachy[sName][ el.USER + sCstSplit + el.FIRST_NAME + sCstSplit +  el.LAST_NAME ] = [];
+			}
+			
+			oHierachy[sName][ el.USER + sCstSplit + el.FIRST_NAME + sCstSplit +  el.LAST_NAME ].push(el);
+					
+		})
+		//===============
+		//Compute aElements2 creation of group	
+		//===============	
+		Object.keys(oModel).forEach(function(group,index) { 
+		
+			var oGroup = {
+					
+					"key": airbus.mes.stationtracker.AssignmentManager.idName(key),
+					"label" : group,
+					"children":[],
+			}
+			
+			aElements2.push(oGroup);
+			
+			//===============
+			//Compute aElements2 creation of line	
+			//===============
+			Object.keys(oModel[group]).forEach(function(line,index) {
+							
+				var oLine = {
+					"group" : group,
+					"avlLine" : line,
+					"key": airbus.mes.stationtracker.AssignmentManager.idName(line)
+				};
+				
+				aElements2[index].children.push(oLine);
+				//===============
+				//Compute aBox creation of box	
+				//===============		
+				oModel[group][line].forEach( function(el) {
+				
+					var oBox = {
+					
+						"key" : line,
+						"start_date" : new Date(oFormatter.jsDateFromDayTimeStr(el.START_DATE_TIME)),
+						"end_date" : new Date(oFormatter.jsDateFromDayTimeStr(el.END_DATE_TIME)),
+				
+					};
+					
+					aBox.push(oBox)
+				
+				});
+		
+		});
+
+		
+		
+		
+		
+		
+		
 		
 		var aElements2 = [ // original hierarhical array to display
 			{key:10, label:"Web Testing Dep.", open: true, children: [
