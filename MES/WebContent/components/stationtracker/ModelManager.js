@@ -1295,27 +1295,37 @@ airbus.mes.stationtracker.ModelManager = {
 	onTaktLoad : function() {
 
 		var aModel = sap.ui.getCore().getModel("taktModel").getData();
-		
-//		TOBE remove after date changed		
+
 		var date = aModel.Rowsets.Rowset[0].Row[0].START_TIME;
 		var aDate = date.split( " ");
-		var aDate1 = aDate[0].split("/")
 		
-//        airbus.mes.settings.ModelManager.taktStart = aModel.Rowsets.Rowset[0].Row[0].START_TIME;
-		airbus.mes.settings.ModelManager.taktStart = aDate1[2].concat("-", aDate1[1], "-", aDate1[0], " ", aDate[1]);
+		if( aDate[0].split("/").length > 1 ) {
+//			If date format is DD/MM/YYYY
+	//		TOBE remove after date changed		
 
-//		TOBE remove after date changed
-		var date = aModel.Rowsets.Rowset[0].Row[0].END_TIME;
-		var aDate = date.split( " ");
-		var aDate1 = aDate[0].split("/")
+			var aDate1 = aDate[0].split("/")
+			
+	//        airbus.mes.settings.ModelManager.taktStart = aModel.Rowsets.Rowset[0].Row[0].START_TIME;
+			airbus.mes.settings.ModelManager.taktStart = aDate1[2].concat("-", aDate1[1], "-", aDate1[0], " ", aDate[1]);
+	
+	//		TOBE remove after date changed
+			var date = aModel.Rowsets.Rowset[0].Row[0].END_TIME;
+			var aDate = date.split( " ");
+			var aDate1 = aDate[0].split("/")
+			
+	//        airbus.mes.settings.ModelManager.taktEnd = aModel.Rowsets.Rowset[0].Row[0].END_TIME;
+			airbus.mes.settings.ModelManager.taktEnd = aDate1[2].concat("-", aDate1[1], "-", aDate1[0], " ", aDate[1]);
 		
-//        airbus.mes.settings.ModelManager.taktEnd = aModel.Rowsets.Rowset[0].Row[0].END_TIME;
-		airbus.mes.settings.ModelManager.taktEnd = aDate1[2].concat("-", aDate1[1], "-", aDate1[0], " ", aDate[1]);
+		} else {
+//			If date format is YYYY-MM-DD
+	        airbus.mes.settings.ModelManager.taktStart = aModel.Rowsets.Rowset[0].Row[0].START_TIME;
+	        airbus.mes.settings.ModelManager.taktEnd = aModel.Rowsets.Rowset[0].Row[0].END_TIME;
+		}
 		
         airbus.mes.settings.ModelManager.taktDuration = aModel.Rowsets.Rowset[0].Row[0].DURATION;
         airbus.mes.stationtracker.ModelManager.settings.taktStart = airbus.mes.settings.ModelManager.taktStart
         airbus.mes.stationtracker.ModelManager.settings.taktEnd = airbus.mes.settings.ModelManager.taktEnd
-        airbus.mes.stationtracker.ModelManager.settings.taktDuration = aModel.Rowsets.Rowset[0].Row[0].DURATION;     
+        airbus.mes.stationtracker.ModelManager.settings.taktDuration = aModel.Rowsets.Rowset[0].Row[0].DURATION;      
 	},    
     getSpentTimePerOperation : function(operation, order){
         //var oViewModel = sap.ui.getCore().getModel("spentTimedataModel");
