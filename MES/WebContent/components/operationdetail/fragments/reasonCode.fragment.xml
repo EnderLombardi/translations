@@ -62,7 +62,7 @@
                 </f:content>
             </f:SimpleForm>
             <HBox>
-                <CheckBox id="confirmTimeWorked" text="Confirm time worked" selected="false" enabled="true" />
+                <CheckBox id="confirmTimeWorked" text="{i18n>Statistical confirmation}" selected="false" enabled="true" />
             </HBox>
         </content>
         <buttons>

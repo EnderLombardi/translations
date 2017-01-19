@@ -213,5 +213,5 @@ airbus.mes.operationdetail.Formatter = {
                 sap.ui.getCore().byId("imTextArea").setValue(duration);
             });
         }
-    },
+    }
 };

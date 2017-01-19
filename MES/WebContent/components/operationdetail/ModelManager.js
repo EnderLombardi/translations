@@ -123,7 +123,21 @@ airbus.mes.operationdetail.ModelManager = {
 
         return urlConfirmationCheckList;
     },
+    getDataConfirmationCheckList : function(){
+        var getData;
+        jQuery.ajax({
+            url : airbus.mes.operationdetail.ModelManager.getUrlConfirmationCheckList(),
+            async : false,
+            error : function(xhr, status, error) {
+                airbus.mes.operationdetail.ModelManager.messageShow(sMessageError);
+            },
+            success : function(result, status, xhr) {
+                getData = result.Rowsets.Rowset[0].Row[0];
 
+            }
+        });
+        return getData;
+    },
     /***************************************************************************
      * Get URL for Pause Operation
      **************************************************************************/
