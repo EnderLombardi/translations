@@ -4,27 +4,121 @@
 	xmlns:tab="sap.ui.table">
 	<Page showHeader="false" height="100%">
 		<content>
-			<tab:TreeTable rows="{acpnglinksModel>/root}" class="sapUiLargeMargin"> 
-				<tab:toolbar> 
-					<Toolbar> 
-						<Title text="ACPNG Links" />
-					 </Toolbar> 
-				</tab:toolbar> 
+		<VBox id="ACPnGLinks" class="Checklist">
+			<tab:TreeTable rows="{acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Row/}" > 
 				<tab:columns> 
-					<tab:Column> 
-						<Label text="column1" /> 
+					<tab:Column visible="true" > 
+						<Label text="Type" /> 
 						<tab:template> 
-							<Text text="{acpnglinksModel>name}" class="AllignItem" /> 
+							<Text text="{acpnglinksWorkOrderDetail>Type}" class="AllignItem" /> 
 						</tab:template> 
 					</tab:Column> 
-					<tab:Column> 
-						<Label text="column2" />
+					<tab:Column visible="true" > 
+						<Label text="Reference" />
 						<tab:template> 
-							<Label text="{acpnglinksModel>description}" class="AllignItem" /> 
+							<Label text="{acpnglinksWorkOrderDetail>Ref}" class="AllignItem" /> 
+						</tab:template> 
+					 </tab:Column> 
+					<tab:Column visible="true"  sortProperty= "Review_end" > 
+						<Label text="ACPnG review end date" />
+						<tab:template> 
+							<Label text="{acpnglinksWorkOrderDetail>Review_end}" class="AllignItem" /> 
 						</tab:template> 
 					</tab:Column> 
+					<tab:Column visible="true" > 
+						<Label text="Note" />
+						<tab:template> 
+							<Label text="{acpnglinksWorkOrderDetail>Note}" class="AllignItem" /> 
+						</tab:template> 
+					</tab:Column> 
+					<tab:Column visible="true"> 
+						<Label text="Family target" />
+						<tab:template> 
+							<Label text="{acpnglinksWorkOrderDetail>Family_traget}" class="AllignItem" /> 
+						</tab:template> 
+					</tab:Column> 
+<!--
+					<tab:Column visible="true"> 
+						<Label text="STV" />
+						<tab:template> 
+							<Label text="{acpnglinksWorkOrderDetail>description}" class="AllignItem" /> 
+						</tab:template> 
+					</tab:Column> 
+					<tab:Column visible="true"> 
+						<Label text="ACP workstation" />
+						<tab:template> 
+							<Label text="{acpnglinksWorkOrderDetail>description}" class="AllignItem" /> 
+						</tab:template> 
+					</tab:Column> 
+					<tab:Column visible="true"> 
+						<Label text="CA" />
+						<tab:template> 
+							<Label text="{acpnglinksWorkOrderDetail>description}" class="AllignItem" /> 
+						</tab:template> 
+					</tab:Column> 
+					<tab:Column visible="true"> 
+						<Label text="Father link" />
+						<tab:template> 
+							<Label text="{acpnglinksWorkOrderDetail>description}" class="AllignItem" /> 
+						</tab:template> 
+					</tab:Column> 
+					<tab:Column visible="true"> 
+						<Label text="Blocking reason" />
+						<tab:template> 
+							<Label text="{acpnglinksWorkOrderDetail>description}" class="AllignItem" /> 
+						</tab:template> 
+					</tab:Column> 
+					<tab:Column visible="true"> 
+						<Label text="User status" />
+						<tab:template> 
+							<Label text="{acpnglinksWorkOrderDetail>description}" class="AllignItem" /> 
+						</tab:template> 
+					</tab:Column> 
+					<tab:Column visible="true"> 
+						<Label text="ACPnG execution station" />
+						<tab:template> 
+							<Label text="{acpnglinksWorkOrderDetail>description}" class="AllignItem" /> 
+						</tab:template> 
+					</tab:Column> 
+					<tab:Column visible="true" > 
+						<Label text="Origin workstation" />
+						<tab:template> 
+							<Label text="{acpnglinksWorkOrderDetail>description}" class="AllignItem" /> 
+						</tab:template> 
+					</tab:Column> 
+					<tab:Column visible="true"> 
+						<Label text="TDL" />
+						<tab:template> 
+							<Label text="{acpnglinksWorkOrderDetail>description}" class="AllignItem" /> 
+						</tab:template> 
+					</tab:Column> 
+					<tab:Column visible="true">  
+						<Label text="Upper family" />
+						<tab:template> 
+							<Label text="{acpnglinksWorkOrderDetail>description}" class="AllignItem" /> 
+						</tab:template> 
+					</tab:Column> 					
+					<tab:Column visible="true"> 
+						<Label text="Zoning" />
+						<tab:template> 
+							<Label text="{acpnglinksWorkOrderDetail>description}" class="AllignItem" /> 
+						</tab:template> 
+					</tab:Column>
+					<tab:Column visible="true"> 
+						<Label text="Material description" />
+						<tab:template> 
+							<Label text="{acpnglinksWorkOrderDetail>description}" class="AllignItem" /> 
+						</tab:template> 
+					</tab:Column>
+					<tab:Column visible="true"> 
+						<Label text="ATA/SUB-ATA" />
+						<tab:template> 
+							<Label text="{acpnglinksWorkOrderDetail>description}" class="AllignItem" /> 
+						</tab:template> 
+					</tab:Column> 	 	 					 -->
 				</tab:columns>
 			</tab:TreeTable>
+		</VBox>
 		</content>
 	</Page>
 </mvc:View>

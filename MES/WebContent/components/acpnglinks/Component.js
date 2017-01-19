@@ -36,7 +36,6 @@ airbus.mes.acpnglinks.Component.prototype.createContent = function() {
 	     });
 		
 		this.oView.setModel(i18nModel, "i18nacpnglinksModel");		
-//		this.oView.setModel(sap.ui.getCore().getModel("attachDisruption"),    "attachDisruption");
 
 		return this.oView;
 	} else {

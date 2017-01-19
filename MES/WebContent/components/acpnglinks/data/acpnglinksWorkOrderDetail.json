@@ -1,61 +1,250 @@
 {
-				"root":{
-					"name": "root",
-					"description": "root description",
-					"checked": "false",
-					"0": {
-						"name": "item1",
-		    			"description": "item1 description",
-		    			"checked": "true",
-						"0": {
-							"name": "subitem1-1",
-		        			"description": "subitem1-1 description",
-		        			"checked": "true",
-							"0": {
-								"name": "subsubitem1-1-1",
-				        			"description": "subsubitem1-1-1 description",
-				        			"checked": "true"
-							},
-							"1": {
-								"name": "subsubitem1-1-2",
-				        			"description": "subsubitem1-1-2 description",
-				        			"checked": "true"
-							}
-						},
-						"1": {
-							"name": "subitem1-2",
-		        			"description": "subitem1-2 description",
-				        		"checked": "true",
-							"0": {
-								"name": "subsubitem1-2-1",
-				        			"description": "subsubitem1-2-1 description",
-				        			"checked": "true"
-							}
-						}
-
-					},
-					"1":{
-						"name": "item2",
-		    			"description": "item2 description",
-		    			"checked": "true",
-						"0": {
-							"name": "subitem2-1",
-		        			"description": "subitem2-1 description",
-		        			"checked": "true"
-						}
-					},
-					"2":{
-						"name": "item3",
-		    			"description": "item3 description",
-		    			"checked": "true",
-		    			"0": {
-							"name": "subitem3-1",
-		        			"description": "subitem3-1 description",
-		        			"checked": "true"
-						}
-					}
-
-				}
+	"Rowsets": {
+		"DateCreated": "2017-01-19T09:06:44",
+		"Version": "15.1 SP2 Patch 13 (Oct 6, 2016)",
+		"StartDate": "2017-01-19T08:06:44+0100",
+		"EndDate": "2017-01-19T09:06:44+0100",
+		"CachedTime": "",
+		"Rowset": [{
+			"Columns": {
+				"Column": [{
+					"Name": "Type",
+					"SourceColumn": "Type",
+					"Description": "",
+					"SQLDataType": 1,
+					"MinRange": 1.0,
+					"MaxRange": 1.0
+				}, {
+					"Name": "Ref",
+					"SourceColumn": "Ref",
+					"Description": "",
+					"SQLDataType": 1,
+					"MinRange": 1.0,
+					"MaxRange": 1.0
+				}, {
+					"Name": "Review_end",
+					"SourceColumn": "Review_end",
+					"Description": "",
+					"SQLDataType": 1,
+					"MinRange": 1.0,
+					"MaxRange": 1.0
+				}, {
+					"Name": "Note",
+					"SourceColumn": "Note",
+					"Description": "",
+					"SQLDataType": 1,
+					"MinRange": 1.0,
+					"MaxRange": 1.0
+				}, {
+					"Name": "Family_traget",
+					"SourceColumn": "Family_traget",
+					"Description": "",
+					"SQLDataType": 1,
+					"MinRange": 1.0,
+					"MaxRange": 1.0
+				}, {
+					"Name": "Confirmed_time",
+					"SourceColumn": "Confirmed_time",
+					"Description": "",
+					"SQLDataType": 1,
+					"MinRange": 1.0,
+					"MaxRange": 1.0
+				}, {
+					"Name": "STV",
+					"SourceColumn": "STV",
+					"Description": "",
+					"SQLDataType": 1,
+					"MinRange": 1.0,
+					"MaxRange": 1.0
+				}, {
+					"Name": "ACP_workstation",
+					"SourceColumn": "ACP_workstation",
+					"Description": "",
+					"SQLDataType": 1,
+					"MinRange": 1.0,
+					"MaxRange": 1.0
+				}, {
+					"Name": "CA",
+					"SourceColumn": "CA",
+					"Description": "",
+					"SQLDataType": 1,
+					"MinRange": 1.0,
+					"MaxRange": 1.0
+				}, {
+					"Name": "Father_link",
+					"SourceColumn": "Father_link",
+					"Description": "",
+					"SQLDataType": 1,
+					"MinRange": 1.0,
+					"MaxRange": 1.0
+				}, {
+					"Name": "Blocking_reason",
+					"SourceColumn": "Blocking_reason",
+					"Description": "",
+					"SQLDataType": 1,
+					"MinRange": 1.0,
+					"MaxRange": 1.0
+				}, {
+					"Name": "User_status",
+					"SourceColumn": "User_status",
+					"Description": "",
+					"SQLDataType": 1,
+					"MinRange": 1.0,
+					"MaxRange": 1.0
+				}, {
+					"Name": "Execution_station",
+					"SourceColumn": "Execution_station",
+					"Description": "",
+					"SQLDataType": 1,
+					"MinRange": 1.0,
+					"MaxRange": 1.0
+				}, {
+					"Name": "Origin_workstation",
+					"SourceColumn": "Origin_workstation",
+					"Description": "",
+					"SQLDataType": 1,
+					"MinRange": 1.0,
+					"MaxRange": 1.0
+				}, {
+					"Name": "TDL",
+					"SourceColumn": "TDL",
+					"Description": "",
+					"SQLDataType": 1,
+					"MinRange": 1.0,
+					"MaxRange": 1.0
+				}, {
+					"Name": "Upper_family",
+					"SourceColumn": "Upper_family",
+					"Description": "",
+					"SQLDataType": 1,
+					"MinRange": 1.0,
+					"MaxRange": 1.0
+				}, {
+					"Name": "Zoning",
+					"SourceColumn": "Zoning",
+					"Description": "",
+					"SQLDataType": 1,
+					"MinRange": 1.0,
+					"MaxRange": 1.0
+				}, {
+					"Name": "Material_description",
+					"SourceColumn": "Material_description",
+					"Description": "",
+					"SQLDataType": 1,
+					"MinRange": 1.0,
+					"MaxRange": 1.0
+				}, {
+					"Name": "ATA",
+					"SourceColumn": "ATA",
+					"Description": "",
+					"SQLDataType": 1,
+					"MinRange": 1.0,
+					"MaxRange": 1.0
+				}, {
+					"Name": "Father_Type",
+					"SourceColumn": "Father_Type",
+					"Description": "",
+					"SQLDataType": 1,
+					"MinRange": 1.0,
+					"MaxRange": 1.0
+				}, {
+					"Name": "Father_ID",
+					"SourceColumn": "Father_ID",
+					"Description": "",
+					"SQLDataType": 1,
+					"MinRange": 1.0,
+					"MaxRange": 1.0
+				}]
+			},
+			"Row": [{
+				"Type": "SO1",
+				"Ref": "10003242224",
+				"Review_end": "28/11/2016",
+				"Note": "",
+				"Family_traget": "FAL-PYLON RH",
+				"Confirmed_time": "83",
+				"STV": "",
+				"ACP_workstation": "",
+				"CA": "WA999",
+				"Father_link": "",
+				"Blocking_reason": "NDC",
+				"User_status": "OW00 SFBL SFFI",
+				"Execution_station": "",
+				"Origin_workstation": "V1040A-J",
+				"TDL": "W2.1",
+				"Upper_family": "",
+				"Zoning": "P8",
+				"Material_description": "INST-FWD PWRF",
+				"ATA": "5720",
+				"Father_Type": "",
+				"Father_ID": ""
+			}, {
+				"Type": "NC",
+				"Ref": "6789685",
+				"Review_end": "",
+				"Note": "",
+				"Family_traget": "",
+				"Confirmed_time": "",
+				"STV": "",
+				"ACP_workstation": "",
+				"CA": "",
+				"Father_link": "",
+				"Blocking_reason": "",
+				"User_status": "",
+				"Execution_station": "",
+				"Origin_workstation": "",
+				"TDL": "",
+				"Upper_family": "",
+				"Zoning": "",
+				"Material_description": "Broken bracket",
+				"ATA": "",
+				"Father_Type": "SO1",
+				"Father_ID": "10003242224"
+			}, {
+				"Type": "SO3",
+				"Ref": "10003678688",
+				"Review_end": "28/11/2016",
+				"Note": "",
+				"Family_traget": "FAL-CARGO",
+				"Confirmed_time": "54",
+				"STV": "",
+				"ACP_workstation": "",
+				"CA": "WA999",
+				"Father_link": "",
+				"Blocking_reason": "SHOR",
+				"User_status": "OW00 SFFI",
+				"Execution_station": "",
+				"Origin_workstation": "V1040A-J",
+				"TDL": "W2.1",
+				"Upper_family": "",
+				"Zoning": "P8",
+				"Material_description": "INST-CLS",
+				"ATA": "5720",
+				"Father_Type": "",
+				"Father_ID": ""
+			}, {
+				"Type": "NC",
+				"Ref": "10003678688",
+				"Review_end": "28/11/2016",
+				"Note": "",
+				"Family_traget": "FAL-CARGO",
+				"Confirmed_time": "54",
+				"STV": "",
+				"ACP_workstation": "",
+				"CA": "WA999",
+				"Father_link": "",
+				"Blocking_reason": "SHOR",
+				"User_status": "OW00 SFFI",
+				"Execution_station": "",
+				"Origin_workstation": "V1040A-J",
+				"TDL": "W2.1",
+				"Upper_family": "",
+				"Zoning": "P8",
+				"Material_description": "INST-CLS",
+				"ATA": "5720",
+				"Father_Type": "",
+				"Father_ID": ""
+			}]
+		}]
+	}
 }
-		
-       
