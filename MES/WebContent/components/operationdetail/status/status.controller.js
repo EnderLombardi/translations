@@ -271,7 +271,7 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
         this.nav.to(airbus.mes.disruptions.oView.viewDisruption.getId());
 
         sap.ui.getCore().byId("operationDetailsView--opDetailSegmentButtons").setSelectedButton(
-                sap.ui.getCore().byId("operationDetailsView--opDetailSegmentButtons").getButtons()[1].sId);
+                sap.ui.getCore().byId("operationDetailsView--opDetailSegmentButtons").getButtons()[2].sId);
 
     },
 

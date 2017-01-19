@@ -33,7 +33,7 @@ airbus.mes.shell.util.navFunctions = {
             sap.ui.getCore().createComponent({name : "airbus.mes.stationtracker",});
             nav.addPage(airbus.mes.stationtracker.oView);
         }
-
+        alert("pouet");
         nav.to(airbus.mes.stationtracker.oView.getId());
 
     },

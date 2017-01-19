@@ -6,7 +6,7 @@
     xmlns:u="sap.ui.unified"
     xmlns:core="sap.ui.core">
 
-	<m:Page showHeader="false" enableScrolling="false">
+	<m:Page showHeader="false" enableScrolling="false" height="100%">
 
 
        <!--  <m:Text id="DOAlabel" class="DOAlabel" text="{i18nDisplayOpeAttachmentsModel>Documents}" /> -->
