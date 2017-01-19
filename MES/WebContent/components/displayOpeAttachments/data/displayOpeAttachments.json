@@ -1,99 +1,95 @@
 {
-    "catalog": {
-        "clothing": {
+    "documents": [
+        {
+            "doc_type": "SOI",
+            "doc_type_description": "desc of SOI",
             "documents": [
                 {
                     "doc_type": "SOI",
                     "doc_type_description": "desc of SOI",
-                    "documents": [
-                        {
-                            "doc_type": "SOI",
-                            "doc_type_description": "desc of SOI",
-                            "item_nr": "10",
-                            "doc_nr":"5402",
-                            "doc_description":"pdf",
-                            "doc_part":"DOKTL_3",
-                            "doc_version":"V.1"
-                        },
-                        {
-                            "doc_type": "SOI",
-                            "doc_type_description": "desc of SOI",
-                            "item_nr": "20",
-                            "doc_nr":"102",
-                            "doc_description":"excel",
-                            "doc_part":"DOKTL_4",
-                            "doc_version":"V.1"
-                        },
-                        {
-                            "doc_type": "SOI",
-                            "doc_type_description": "desc of SOI",
-                            "item_nr": "30",
-                            "doc_nr":"45587854",
-                            "doc_description":"word",
-                            "doc_part":"DOKTL_1",
-                            "doc_version":"V.8"
-                        },
-                        {
-                            "doc_type": "SOI",
-                            "doc_type_description": "desc of SOI",
-                            "item_nr": "30",
-                            "doc_nr":"45587854",
-                            "doc_description":"word",
-                            "doc_part":"DOKTL_1",
-                            "doc_version":"V.9"
-                        }
-                    ]
+                    "item_nr": "10",
+                    "doc_nr": "5402",
+                    "doc_description": "pdf",
+                    "doc_part": "DOKTL_3",
+                    "doc_version": "V.1"
                 },
                 {
-                    "doc_type": "AIPI",
+                    "doc_type": "SOI",
+                    "doc_type_description": "desc of SOI",
+                    "item_nr": "20",
+                    "doc_nr": "102",
+                    "doc_description": "excel",
+                    "doc_part": "DOKTL_4",
+                    "doc_version": "V.1"
+                },
+                {
+                    "doc_type": "SOI",
+                    "doc_type_description": "desc of SOI",
+                    "item_nr": "30",
+                    "doc_nr": "45587854",
+                    "doc_description": "word",
+                    "doc_part": "DOKTL_1",
+                    "doc_version": "V.8"
+                },
+                {
+                    "doc_type": "SOI",
+                    "doc_type_description": "desc of SOI",
+                    "item_nr": "30",
+                    "doc_nr": "45587854",
+                    "doc_description": "word",
+                    "doc_part": "DOKTL_1",
+                    "doc_version": "V.9"
+                }
+            ]
+        },
+        {
+            "doc_type": "AIPI",
+            "doc_type_description": "desc of AIPI",
+            "documents": [
+                {
                     "doc_type_description": "desc of AIPI",
-                    "documents": [
-                        {
-                            "doc_type_description": "desc of AIPI",
-                            "item_nr": "10",
-                            "doc_nr":"5402",
-                            "doc_description":"pdf",
-                            "doc_part":"DOKTL_3",
-                            "doc_version":"V.1"
-                        },
-                        {
-                            "doc_type_description": "desc of AIPI",
-                            "item_nr": "30",
-                            "doc_nr":"45587854",
-                            "doc_description":"word",
-                            "doc_part":"DOKTL_1",
-                            "doc_version":"V.9"
-                        }
-                    ]
+                    "item_nr": "10",
+                    "doc_nr": "5402",
+                    "doc_description": "pdf",
+                    "doc_part": "DOKTL_3",
+                    "doc_version": "V.1"
                 },
                 {
-                    "doc_type": "MINI",
-                    "doc_type_description": "desc of MINI",
-                    "documents": [
-                        {
-                            "item_nr": "10",
-                            "doc_nr":"5402",
-                            "doc_description":"pdf",
-                            "doc_part":"DOKTL_3",
-                            "doc_version":"V.1"
-                        },
-                        {
-                            "item_nr": "20",
-                            "doc_nr":"102",
-                            "doc_description":"excel",
-                            "doc_part":"DOKTL_4",
-                            "doc_version":"V.1"
-                        },
-                        {
-                            "item_nr": "30",
-                            "doc_nr":"45587854",
-                            "doc_description":"word",
-                            "doc_part":"DOKTL_1",
-                            "doc_version":"V.8"
-                        }
-                    ]
+                    "doc_type_description": "desc of AIPI",
+                    "item_nr": "30",
+                    "doc_nr": "45587854",
+                    "doc_description": "word",
+                    "doc_part": "DOKTL_1",
+                    "doc_version": "V.9"
+                }
+            ]
+        },
+        {
+            "doc_type": "MINI",
+            "doc_type_description": "desc of MINI",
+            "documents": [
+                {
+                    "item_nr": "10",
+                    "doc_nr": "5402",
+                    "doc_description": "pdf",
+                    "doc_part": "DOKTL_3",
+                    "doc_version": "V.1"
+                },
+                {
+                    "item_nr": "20",
+                    "doc_nr": "102",
+                    "doc_description": "excel",
+                    "doc_part": "DOKTL_4",
+                    "doc_version": "V.1"
+                },
+                {
+                    "item_nr": "30",
+                    "doc_nr": "45587854",
+                    "doc_description": "word",
+                    "doc_part": "DOKTL_1",
+                    "doc_version": "V.8"
                 }
             ]
         }
-    }
+    ]
 }

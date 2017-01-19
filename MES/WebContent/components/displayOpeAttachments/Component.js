@@ -13,7 +13,9 @@ sap.ui.core.UIComponent.extend("airbus.mes.displayOpeAttachments.Component", {
 
 airbus.mes.displayOpeAttachments.Component.prototype.createContent = function () {
 
-	// TO DO : Set current work Order and operation
+	//Set current work Order and operation
+    airbus.mes.displayOpeAttachments.productionOrder = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].wo_no;
+    airbus.mes.displayOpeAttachments.operation = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_no;
 
 	if (airbus.mes.displayOpeAttachments.oView === undefined) {
 

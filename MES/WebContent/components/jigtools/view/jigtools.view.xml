@@ -9,10 +9,10 @@
 	<!-- <Text id="jigToollabel" class="jigToolListlabel" text="{i18nJigstoolsModel>JigTool}" /> -->
 	
 	<VBox id="jigToolcheck" class="jigToolListcheck">
- 			<RadioButtonGroup columns="2" >
+ 			<RadioButtonGroup columns="2" select="onSelectLevel">
 				<buttons>
-					<RadioButton id="workOrderButton" text="{i18nJigstoolsModel>JigToolOperation}" select="onSelectLevel" />
-					<RadioButton id="operationButton" text="{i18nJigstoolsModel>JigToolWorkOrder}" select="onSelectLevel"/>
+					<RadioButton id="operationButton" text="{i18nJigstoolsModel>JigToolOperation}"/>
+					<RadioButton id="workOrderButton" text="{i18nJigstoolsModel>JigToolWorkOrder}"/>
 				</buttons>
 			</RadioButtonGroup>
 	</VBox>

@@ -8,23 +8,20 @@
 
 	<m:Page showHeader="false" enableScrolling="false">
 
-        <m:Text id="DOAlabel" class="DOAlabel" text="{i18nDisplayOpeAttachmentsModel>Documents}" />
-
         <m:VBox id="displayOpeAttachmentsCheck" class="DOACheck">
-            <m:RadioButtonGroup columns="2" >
+            <m:RadioButtonGroup columns="2" select="onSelectLevel">
                 <m:buttons>
-                    <m:RadioButton id="workOrderButton" text="{i18nDisplayOpeAttachmentsModel>JigToolOperation}" select="onSelectLevel" />
-                    <m:RadioButton id="operationButton" text="{i18nDisplayOpeAttachmentsModel>JigToolWorkOrder}" select="onSelectLevel"/>
+                    <m:RadioButton id="workOrderButton" text="{i18nDisplayOpeAttachmentsModel>DOA_displayForOperation}"/>
+                    <m:RadioButton id="operationButton" text="{i18nDisplayOpeAttachmentsModel>DOA_displayForWO}"/>
                 </m:buttons>
             </m:RadioButtonGroup>
         </m:VBox>
 
         <m:content>
             <TreeTable
-                    id="TreeTableBasic"
-                    rows="{path:'displayOpeAttachmentsWorkOrderDetail>/catalog/clothing', parameters: {arrayNames:['documents']}}"
-                    selectionMode="MultiToggle"
-                    enableSelectAll="false"
+                    id="DOATable"
+                    class="DOATable" 
+                    rows="{path:'displayOpeAttachmentsWorkOrderDetail>/', parameters: {arrayNames:['documents']}}"
                     ariaLabelledBy="title">
                 <columns>
                     <Column width="13rem">
