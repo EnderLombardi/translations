@@ -9,7 +9,7 @@
                <Button type="Transparent" icon="" class="" id="noOpenNC" text="{i18n>openNcExist}"/>
                <Button type="Transparent" icon="" class="" id="serialNumberRecorded" text="{i18n>inspectionStatus}"/>
            </HBox>
-            <HBox justifyContent="Center">
+            <HBox id="scanButtonEnd" justifyContent="Center">
                 <Button id="scanButton" icon="sap-icon://business-card" text="{i18n>scan}" type="Emphasized" press="onScanConfirmation" visible="{path:'i18n>' , formatter:'airbus.mes.operationdetail.Formatter.displayBadge'}"/>
             </HBox>
             <HBox height="35px" class="messageHBox">
@@ -18,7 +18,7 @@
                     showCloseButton="true">
                 </MessageStrip>
             </HBox>
-            <HBox  width="100%" justifyContent="Center">
+                <HBox  width="100%" id="partialConfirmForm" justifyContent="Center">
                 <f:SimpleForm id="partialConfirm" minWidth="1024"
                     maxContainerCols="3" editable="true" layout="ResponsiveGridLayout"
                     labelSpanL="1" labelSpanM="2" emptySpanL="0" emptySpanM="0"

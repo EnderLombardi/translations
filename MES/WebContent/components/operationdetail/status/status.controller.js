@@ -191,7 +191,7 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
     completeOperation : function(oEvent) {
 
         var oView = airbus.mes.operationdetail.status.oView;
-
+        var dataConfirm = airbus.mes.operationdetail.ModelManager.jsonConfirmationCheckList;
         // Click on Complete
         oView.getController().operationStatus = "X";
         oView.getController().Mode = "Complete";
@@ -207,44 +207,62 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
             sap.ui.getCore().byId("pinForConfirmation").setVisible(true);
         }
 
-        jQuery.ajax({
-            url : airbus.mes.operationdetail.ModelManager.getUrlConfirmationCheckList(),
-            async : false,
-            error : function(xhr, status, error) {
-                airbus.mes.operationdetail.ModelManager.messageShow(sMessageError);
-            },
-            success : function(result, status, xhr) {
-                var jsonRead = result.Rowsets.Rowset[0].Row[0];
-                console.log(jsonRead);
-                if(jsonRead.QAWA === "true" || jsonRead.QAWA === true){
-                    sap.ui.getCore().byId("qawa").setProperty("icon", "sap-icon://accept");
-                }else{
-                    sap.ui.getCore().byId("qawa").setProperty("icon", "sap-icon://decline");
-                }
-                if(jsonRead.inspectionStatus === "true" || jsonRead.inspectionStatus === true){
-                    sap.ui.getCore().byId("inspectionStatus").setProperty("icon", "sap-icon://accept");
-                }else{
-                    sap.ui.getCore().byId("inspectionStatus").setProperty("icon", "sap-icon://decline");
-                }
-                if(jsonRead.noMissingsParts === "true" || jsonRead.noMissingsParts === true){
-                    sap.ui.getCore().byId("noMissingsParts").setProperty("icon", "sap-icon://accept");
-                }else{
-                    sap.ui.getCore().byId("noMissingsParts").setProperty("icon", "sap-icon://decline");
-                }
-                if(jsonRead.noOpenNC === "true" || jsonRead.noOpenNC === true){
-                    sap.ui.getCore().byId("noOpenNC").setProperty("icon", "sap-icon://accept");
-                }else{
-                    sap.ui.getCore().byId("noOpenNC").setProperty("icon", "sap-icon://decline");
-                }
-                if(jsonRead.serialNumberRecorded === "true" || jsonRead.serialNumberRecorded === true){
-                    sap.ui.getCore().byId("serialNumberRecorded").setProperty("icon", "sap-icon://accept");
-                }else{
-                    sap.ui.getCore().byId("serialNumberRecorded").setProperty("icon", "sap-icon://decline");
-                }
-            }
-        });
+        if(dataConfirm.QAWA === "true" || dataConfirm.QAWA === true){
+            sap.ui.getCore().byId("qawa").setProperty("icon", "sap-icon://accept");
+        }else{
+            sap.ui.getCore().byId("qawa").setProperty("icon", "sap-icon://decline");
+        }
+        if(dataConfirm.inspectionStatus === "true" || dataConfirm.inspectionStatus === true){
+            sap.ui.getCore().byId("inspectionStatus").setProperty("icon", "sap-icon://accept");
+        }else{
+            sap.ui.getCore().byId("inspectionStatus").setProperty("icon", "sap-icon://decline");
+        }
+        if(dataConfirm.noMissingsParts === "true" || dataConfirm.noMissingsParts === true){
+            sap.ui.getCore().byId("noMissingsParts").setProperty("icon", "sap-icon://accept");
+        }else{
+            sap.ui.getCore().byId("noMissingsParts").setProperty("icon", "sap-icon://decline");
+        }
+        if(dataConfirm.noOpenNC === "true" || dataConfirm.noOpenNC === true){
+            sap.ui.getCore().byId("noOpenNC").setProperty("icon", "sap-icon://accept");
+        }else{
+            sap.ui.getCore().byId("noOpenNC").setProperty("icon", "sap-icon://decline");
+        }
+        if(dataConfirm.serialNumberRecorded === "true" || dataConfirm.serialNumberRecorded === true){
+            sap.ui.getCore().byId("serialNumberRecorded").setProperty("icon", "sap-icon://accept");
+        }else{
+            sap.ui.getCore().byId("serialNumberRecorded").setProperty("icon", "sap-icon://decline");
+        }
+
         oView._oUserConfirmationDialog.open();
-        oView._oUserConfirmationDialog.setProperty("contentWidth", "40%");
+        if(dataConfirm.QAWA === "true" || dataConfirm.QAWA === true){
+                       sap.ui.getCore().byId("qawa")._image.setProperty("color", "green");
+        }else{
+                        sap.ui.getCore().byId("qawa")._image.setProperty("color", "red");
+        }
+        if(dataConfirm.inspectionStatus === "true" || dataConfirm.inspectionStatus === true){
+                        sap.ui.getCore().byId("inspectionStatus")._image.setProperty("color", "green");
+        }else{
+                        sap.ui.getCore().byId("inspectionStatus")._image.setProperty("color", "red");
+        }
+        if(dataConfirm.noMissingsParts === "true" || dataConfirm.noMissingsParts === true){
+                        sap.ui.getCore().byId("noMissingsParts")._image.setProperty("color", "green");
+        }else{
+                        sap.ui.getCore().byId("noMissingsParts")._image.setProperty("color", "red");
+        }
+        if(dataConfirm.noOpenNC === "true" || dataConfirm.noOpenNC === true){
+                        sap.ui.getCore().byId("noOpenNC")._image.setProperty("color", "green");
+        }else{
+                        sap.ui.getCore().byId("noOpenNC")._image.setProperty("color", "red");
+        }
+        if(dataConfirm.serialNumberRecorded === "true" || dataConfirm.serialNumberRecorded === true){
+                        sap.ui.getCore().byId("serialNumberRecorded")._image.setProperty("color", "green");
+        }else{
+                        sap.ui.getCore().byId("serialNumberRecorded")._image.setProperty("color", "red");
+        }
+        sap.ui.getCore().byId("scanButtonEnd").setProperty("justifyContent", "End");
+        sap.ui.getCore().byId("partialConfirmForm").setProperty("justifyContent", "End");
+        oView._oUserConfirmationDialog.setProperty("contentWidth", "34%");
+        sap.ui.getCore().byId("confirmationCheckList").setVisible(true);
         sap.ui.getCore().byId("msgstrpConfirm").setVisible(false);
         sap.ui.getCore().byId("UIDForConfirmation").setValue("");
         sap.ui.getCore().byId("badgeIDForConfirmation").setValue("");
@@ -521,7 +539,11 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
         }else{
             airbus.mes.operationdetail.ModelManager.statusCheckBoxReasonCode = false;
         }
+        sap.ui.getCore().byId("confirmationCheckList").setVisible(false);
         oView._oUserConfirmationDialog.open();
+        oView._oUserConfirmationDialog.setProperty("contentWidth", "20%");
+        sap.ui.getCore().byId("scanButtonEnd").setProperty("justifyContent", "Center");
+        sap.ui.getCore().byId("partialConfirmForm").setProperty("justifyContent", "Center");
         sap.ui.getCore().byId("msgstrpConfirm").setVisible(false);
         sap.ui.getCore().byId("UIDForConfirmation").setValue("");
         sap.ui.getCore().byId("badgeIDForConfirmation").setValue("");

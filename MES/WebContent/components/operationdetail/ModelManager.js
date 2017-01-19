@@ -136,7 +136,8 @@ airbus.mes.operationdetail.ModelManager = {
 
             }
         });
-        return getData;
+        airbus.mes.operationdetail.ModelManager.jsonConfirmationCheckList = getData;
+        return airbus.mes.operationdetail.ModelManager.jsonConfirmationCheckList;
     },
     /***************************************************************************
      * Get URL for Pause Operation

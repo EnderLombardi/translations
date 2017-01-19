@@ -92,7 +92,7 @@ sap.ui
                         sap.ui.getCore().byId("operationDetailPopup--btnUpdateDisruption").setVisible(false);
                         sap.ui.getCore().byId("operationDetailPopup--btnCancelDisruption").setVisible(false);
                         sap.ui.getCore().byId("operationDetailPopup--btnReschedule").setVisible(false);
-
+                        airbus.mes.operationdetail.ModelManager.getDataConfirmationCheckList();
                     },
 
                     /***********************************************************
