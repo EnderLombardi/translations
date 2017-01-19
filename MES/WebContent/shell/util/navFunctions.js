@@ -3,8 +3,8 @@
 jQuery.sap.declare("airbus.mes.shell.util.Functions");
 
 airbus.mes.shell.util.navFunctions = {
-		
-	queryParams : jQuery.sap.getUriParameters(),
+
+    queryParams : jQuery.sap.getUriParameters(),
 
     disruptionButtons:{
         create: undefined,
@@ -13,18 +13,18 @@ airbus.mes.shell.util.navFunctions = {
     },
 
     calendar : function() {
-    	
-    	 if (airbus.mes.calendar === undefined) {
+
+         if (airbus.mes.calendar === undefined) {
 
              jQuery.sap.registerModulePath("airbus.mes.calendar","../components/calendar");
              sap.ui.getCore().createComponent({name : "airbus.mes.calendar",});
              nav.addPage(airbus.mes.calendar.oView);
          }
 
-         nav.to(airbus.mes.calendar.oView.getId());    	
-    	
+         nav.to(airbus.mes.calendar.oView.getId());
+
     },
-    
+
     stationTracker : function() {
 
         if (airbus.mes.stationtracker === undefined) {
@@ -33,7 +33,8 @@ airbus.mes.shell.util.navFunctions = {
             sap.ui.getCore().createComponent({name : "airbus.mes.stationtracker",});
             nav.addPage(airbus.mes.stationtracker.oView);
         }
-        alert("pouet");
+//        for Arnaud Bonvilla
+//        alert("pouet");
         nav.to(airbus.mes.stationtracker.oView.getId());
 
     },
@@ -176,7 +177,7 @@ airbus.mes.shell.util.navFunctions = {
             container.addPage(airbus.mes.displayOpeAttachments.oView);
         }
     },
-    
+
     jigToolsDetail : function(container) {
 
         if (airbus.mes.jigtools === undefined || airbus.mes.jigtools.oView === undefined) {
@@ -203,62 +204,62 @@ airbus.mes.shell.util.navFunctions = {
 
         if (airbus.mes.disruptions.attachments === undefined || airbus.mes.disruptions.attachments.oView === undefined) {
 
-        	jQuery.sap.registerModulePath("airbus.mes.disruptions.attachments","../components/disruptions/attachments");
-			sap.ui.getCore().createComponent({ name : "airbus.mes.disruptions.attachments"});
-			container.addPage(airbus.mes.disruptions.attachments.oView);
+            jQuery.sap.registerModulePath("airbus.mes.disruptions.attachments","../components/disruptions/attachments");
+            sap.ui.getCore().createComponent({ name : "airbus.mes.disruptions.attachments"});
+            container.addPage(airbus.mes.disruptions.attachments.oView);
         }
         if (container.getPage("DisruptionAttachmentView") == null) {
             container.addPage(airbus.mes.disruptions.attachments.oView);
         }
-		container.to(airbus.mes.disruptions.attachments.oView.getId(),{Desc:disruptionDesc});
+        container.to(airbus.mes.disruptions.attachments.oView.getId(),{Desc:disruptionDesc});
 
     },
 
     disruptionTracker : function() {
-		if (airbus.mes.disruptiontracker === undefined
-				|| airbus.mes.disruptiontracker.oView === undefined) {
+        if (airbus.mes.disruptiontracker === undefined
+                || airbus.mes.disruptiontracker.oView === undefined) {
 
-			jQuery.sap.registerModulePath("airbus.mes.disruptiontracker",
-					"../components/disruptiontracker");
-			sap.ui.getCore().createComponent({
-				name : "airbus.mes.disruptiontracker",
-			});
-			nav.addPage(airbus.mes.disruptiontracker.oView);
-		}
+            jQuery.sap.registerModulePath("airbus.mes.disruptiontracker",
+                    "../components/disruptiontracker");
+            sap.ui.getCore().createComponent({
+                name : "airbus.mes.disruptiontracker",
+            });
+            nav.addPage(airbus.mes.disruptiontracker.oView);
+        }
 
-		if (nav.getPreviousPage() != undefined
-				&& nav.getPreviousPage().sId == "stationTrackerView") {
+        if (nav.getPreviousPage() != undefined
+                && nav.getPreviousPage().sId == "stationTrackerView") {
 
-			airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.station = airbus.mes.settings.ModelManager.station;
-			airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.msn = airbus.mes.settings.ModelManager.msn;
+            airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.station = airbus.mes.settings.ModelManager.station;
+            airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.msn = airbus.mes.settings.ModelManager.msn;
 
-		} else if (airbus.mes.stationtracker != undefined
-				&& airbus.mes.stationtracker.ModelManager.showDisrupionBtnClicked == true) {
+        } else if (airbus.mes.stationtracker != undefined
+                && airbus.mes.stationtracker.ModelManager.showDisrupionBtnClicked == true) {
 
-			airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.station = airbus.mes.settings.ModelManager.station;
-			airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.msn = airbus.mes.settings.ModelManager.msn;
-			airbus.mes.stationtracker.ModelManager.showDisrupionBtnClicked = false;
+            airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.station = airbus.mes.settings.ModelManager.station;
+            airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.msn = airbus.mes.settings.ModelManager.msn;
+            airbus.mes.stationtracker.ModelManager.showDisrupionBtnClicked = false;
 
-		} else {
+        } else {
 
-			airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.station = airbus.mes.settings.ModelManager.station;
-			airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.msn = "";
-		}
+            airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.station = airbus.mes.settings.ModelManager.station;
+            airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.msn = "";
+        }
 
-		airbus.mes.shell.util.navFunctions.renderDisruptionTracker();
+        airbus.mes.shell.util.navFunctions.renderDisruptionTracker();
 
-		// Load data
-		airbus.mes.disruptiontracker.ModelManager
-				.loadDisruptionTrackerModel();
+        // Load data
+        airbus.mes.disruptiontracker.ModelManager
+                .loadDisruptionTrackerModel();
 
-		// Navigate
-		nav.to(airbus.mes.disruptiontracker.oView.getId());
-		
-	},
+        // Navigate
+        nav.to(airbus.mes.disruptiontracker.oView.getId());
+
+    },
 
     /***************************************************************************
-	 * Render disruption Tracker
-	 */
+     * Render disruption Tracker
+     */
     renderDisruptionTracker : function() {
 
         /*********** Filter for Station **************/
@@ -323,7 +324,7 @@ airbus.mes.shell.util.navFunctions = {
         msnBox.insertItem(msnItemAll,0);
         msnBox.setSelectedKey("");
     },
-    
+
     disruptionKPI : function() {
         if (airbus.mes.disruptiontracker === undefined) {
             jQuery.sap.registerModulePath("airbus.mes.disruptiontracker", "../components/disruptiontracker");
@@ -338,33 +339,33 @@ airbus.mes.shell.util.navFunctions = {
         airbus.mes.disruptiontracker.kpi.ModelManager.loadDisruptionKPIModel();
         nav.to(airbus.mes.disruptiontracker.kpi.oView.getId());
     },
-    
+
     /************************
-     * Open MES Document Viewer 
+     * Open MES Document Viewer
      */
     docViewer: function(fileURL, closeFunction){
-    	if (airbus.mes.docviewer === undefined || airbus.mes.docviewer.oView === undefined) {
+        if (airbus.mes.docviewer === undefined || airbus.mes.docviewer.oView === undefined) {
 
-			jQuery.sap.registerModulePath("airbus.mes.docviewer", "../components/docviewer");
-			sap.ui.getCore().createComponent({
-				name : "airbus.mes.docviewer",
-			});
-			nav.addPage(airbus.mes.docviewer.oView);
-		}
-    	    	
-    	// Set function to be executed on closing the document viewer (Not mandatory - can be undefined or empty as well)
-    	airbus.mes.docviewer.ModelManager.onCloseFunction = closeFunction;
-    	
-    	
-    	// Navigate to the view
-    	nav.to(airbus.mes.docviewer.oView.getId());
-    	
-    	
-		// Get ID of the HBox where PDFTron will be placed
-	   	airbus.mes.docviewer.ModelManager.oViewerElement = document.getElementById("docviewerView--pdfViewer");
-    	
-    	// Finally open the document viewer with the document URL
-    	airbus.mes.docviewer.ModelManager.openDocumentByURL(fileURL);
+            jQuery.sap.registerModulePath("airbus.mes.docviewer", "../components/docviewer");
+            sap.ui.getCore().createComponent({
+                name : "airbus.mes.docviewer",
+            });
+            nav.addPage(airbus.mes.docviewer.oView);
+        }
+
+        // Set function to be executed on closing the document viewer (Not mandatory - can be undefined or empty as well)
+        airbus.mes.docviewer.ModelManager.onCloseFunction = closeFunction;
+
+
+        // Navigate to the view
+        nav.to(airbus.mes.docviewer.oView.getId());
+
+
+        // Get ID of the HBox where PDFTron will be placed
+           airbus.mes.docviewer.ModelManager.oViewerElement = document.getElementById("docviewerView--pdfViewer");
+
+        // Finally open the document viewer with the document URL
+        airbus.mes.docviewer.ModelManager.openDocumentByURL(fileURL);
     },
 
     worktracker : function() {
@@ -460,5 +461,5 @@ airbus.mes.shell.util.navFunctions = {
         // Navigate
         nav.to(airbus.mes.worktracker.detail.oView.getId());
     }
-    
+
 };
