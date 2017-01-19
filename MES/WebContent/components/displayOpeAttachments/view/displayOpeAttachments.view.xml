@@ -20,18 +20,12 @@
             </m:RadioButtonGroup>
         </m:VBox>
 
-        <m:content >
+        <m:content>
             <TreeTable
                     id="DOATable"
                     class="DOATable" 
                     rows="{path:'displayOpeAttachmentsWorkOrderDetail>/', parameters: {arrayNames:['documents']}}"
-                    ariaLabelledBy="title">
-                <columns>
-                    id="DOATable"
-                    class="DOATable"
-                    rows="{path:'displayOpeAttachmentsWorkOrderDetail>/catalog/clothing', parameters: {arrayNames:['documents']}}"
-                    selectionMode="MultiToggle"
-                    enableSelectAll="false">
+                    ariaLabelledBy="title" >
                 <columns >
                     <Column width="13rem">
                         <m:Label class="DisOpAttLabel" text="{i18nDisplayOpeAttachmentsModel>doc_type}"/>
