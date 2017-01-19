@@ -16,6 +16,7 @@ $kpi-box-header-height: 195px;
         border-bottom: none;
         border-top: solid 1px $tiffany-blue;
         padding: 0 5px;
+        display:block;
     }
     .contentHeaderCont:last-child {
         border-right: none !important;
@@ -74,7 +75,7 @@ $kpi-box-extrawork-percent-height:42px;
 .labourEfficiencyBox {
     .sapMFlexItem:nth-child(2) {
         height: $kpi-box-body-height;
-        display: inline-block;
+        display: block;
         vertical-align: middle !important;
         .sapMLabel {
             vertical-align: super !important;
