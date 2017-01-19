@@ -1109,7 +1109,8 @@ airbus.mes.stationtracker.ModelManager = {
                                 "previously_start" : aModel[0].PREVIOUSLY_STARTED,
                                 "paused" : aModel[0].PAUSED,
                                 "noOfEmp" : aModel[0].NUMBER_OF_EMPLOYEES,
-                                "duration": aModel[0].DURATION
+                                "duration": aModel[0].DURATION, 
+                                "routerStepBo": aModel[0].ROUTERSTEPBO,
                             } ]
                         } ]
                     }

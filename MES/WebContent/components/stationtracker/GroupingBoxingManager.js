@@ -312,7 +312,8 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 					"NUMBER_OF_EMPLOYEES" : el.NUMBER_OF_EMPLOYEES,
 					//"SFC_STEP_REF" : el.SFC_STEP_REF
 					"FAMILY_AVL_GROUPING" : el.FAMILY_AVL_GROUPING,
-					"FAMILY_AVL_BOXING" : el.FAMILY_AVL_BOXING
+					"FAMILY_AVL_BOXING" : el.FAMILY_AVL_BOXING,
+					"ROUTERSTEPBO" : el.ROUTERSTEPBO
 										
 			};
 			
@@ -426,6 +427,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 					var sProdGroup = "";
 					var sPaused = "";
 					var sPreviouslyStarted = "";
+					var sRouterStepBo = "";
 					
 					oModel[key][key1][key2].forEach( function( el ) { 
 						
@@ -454,6 +456,8 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 						sProdGroup = el.PROD_GROUP;
 						sPaused = el.PAUSED;
 						sPreviouslyStarted = el.PREVIOUSLY_STARTED;
+						
+						sRouterStepBo = el.ROUTERSTEPBO;
 						
 						if ( sBox === oGroupingBoxingManager.specialGroup) {
 							
@@ -498,7 +502,8 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 								"criticalPath": fCriticalPath,
 								"state" : sStatus,
 								"paused" : sPaused,
-								"previouslyStarted" : sPreviouslyStarted							
+								"previouslyStarted" : sPreviouslyStarted,
+								"routerStepBo": sRouterStepBo,
 								//"isUnplanned" :  Math.max.apply(null,aUnplanned),
 								//"andon" : Math.max.apply(null,aAndons),
 								//"blocked" : Math.max.apply(null,aDisruptions),
@@ -545,7 +550,8 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 							"start_date" : new Date(Math.min.apply(null,aStartDateRescheduling)),
 							"end_date" :  oFormatter.sizeMin(new Date(Math.max.apply(null,aEndDateRescheduling)),new Date(Math.min.apply(null,aStartDateRescheduling))),
 							"paused" : sPaused,
-							"previouslyStarted" : sPreviouslyStarted		
+							"previouslyStarted" : sPreviouslyStarted,
+							"routerStepBo": sRouterStepBo,							
 						};
 					
 					aBox.push(oOperationRescheduling);
