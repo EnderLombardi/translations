@@ -618,43 +618,45 @@ sap.ui.controller(
                             if (pass != "" || pass != undefined) {
                                 sap.ui.getCore().getElementById("passwordMyProfile").setValueState(sap.ui.core.ValueState.None);
                             };
-                            var sMessageError = sap.ui.getCore().getModel("ShellI18n").getProperty("errorMsgwhileSavingProfile");
-                            var sMessageSuccess = sap.ui.getCore().getModel("ShellI18n").getProperty("successMsgwhileSavingProfile");
+                            
+                            
                             // Call service for Save My Profile
-                            jQuery
-                                    .ajax({
-                                        url : airbus.mes.shell.ModelManager
-                                                .getMyProfileUrl(badgeID, user,
-                                                        pass, pinCode, uID),
-                                        async : false,
-                                        error : function(xhr, status, error) {
-                                            airbus.mes.shell.ModelManager
-                                                    .messageShow(sMessageError);
-                                            flag_success = false
+                			sap.ui.getCore().byId("badgeMngMyProfile").setBusyIndicatorDelay(0);
+                            sap.ui.getCore().byId("badgeMngMyProfile").setBusy(true);
+                            
+                            jQuery.ajax({
+                                url : airbus.mes.shell.ModelManager
+                                        .getMyProfileUrl(badgeID, user, pass, pinCode, uID),
+                                async : true,
+                                error : function(xhr, status, error) {
 
-                                        },
-                                        success : function(result, status, xhr) {
-                                            if (result.Rowsets.Rowset[0].Row[0].Message_Type === undefined) {
-                                                airbus.mes.shell.ModelManager
-                                                        .messageShow(sMessageSuccess);
-                                                flag_success = true;
-                                            } else if (result.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
-                                                airbus.mes.shell.ModelManager
-                                                        .messageShow(result.Rowsets.Rowset[0].Row[0].Message)
-                                                flag_success = false;
-                                            } else {
-                                                airbus.mes.shell.ModelManager
-                                                        .messageShow(result.Rowsets.Rowset[0].Row[0].Message);
-                                                flag_success = true;
-                                            }
+                                    sap.ui.getCore().byId("badgeMngMyProfile").setBusy(false);
+                                    
+                                    var sMessageError = sap.ui.getCore().getModel("ShellI18n").getProperty("errorMsgwhileSavingProfile");
+                                    
+                                	airbus.mes.shell.ModelManager.messageShow(sMessageError);
 
-                                        }
-                                    });
-                            if (flag_success === true) {
-                                this._myProfileDailog.close();
-                            } else {
-                                airbus.mes.shell.ModelManager.messageShow(sMessageSuccess);
-                            }
+                                },
+                                success : function(result, status, xhr) {
+                                	
+                                    sap.ui.getCore().byId("badgeMngMyProfile").setBusy(false);
+                                	                               	
+                                	if (result.Rowsets.Rowset[0].Row[0].Message_Type != undefined &&
+                                    		result.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
+                                        airbus.mes.shell.ModelManager
+                                                .messageShow(result.Rowsets.Rowset[0].Row[0].Message)
+
+                                    } else {
+
+                                    	airbus.mes.shell.oView.oController.myProfileDailog.close();
+                                    	
+                                    	var sMessageSuccess = sap.ui.getCore().getModel("ShellI18n").getProperty("successMsgwhileSavingProfile");
+                                        
+                                    	airbus.mes.shell.ModelManager.messageShow(sMessageSuccess);
+                                    }
+
+                                }
+                            });
                         }
 
                     },
