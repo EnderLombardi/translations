@@ -4,10 +4,28 @@ sap.ui.controller("airbus.mes.jigtools.controller.jigtools", {
 
 	// Get setting from ME/MII and select the good button between operation and work order
 	onAfterRendering: function () {
+	},
+	
+	checkSettingJigsTools: function () {
 
-		//will be the configuration received in AppConfManager
-		//var sSet = airbus.mes.settings.AppConfManager.getConfiguration("VIEW_ATTACHED_TOOL");
-		var sSet = "P";
+		// confirm if we have already check the ME settings
+		
+		if (airbus.mes.shell.util.navFunctions.jigsAndTools.configME === undefined){
+			
+			//will be the configuration received in AppConfManager
+			
+			//var sSet = airbus.mes.settings.AppConfManager.getConfiguration("VIEW_ATTACHED_TOOL");
+			var sSet = "P";
+			
+			//Add value to global variable
+			airbus.mes.shell.util.navFunctions.jigsAndTools.configME = sSet;
+			
+		} else {
+			
+			// set the global variable
+			var sSet = airbus.mes.shell.util.navFunctions.jigsAndTools.configME;
+		}
+		
 		switch (sSet) {
 			case "O"://operation
 				sap.ui.getCore().byId("jigtoolsView--operationButton").setSelected(true);

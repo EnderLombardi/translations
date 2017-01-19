@@ -459,9 +459,12 @@ sap.ui.controller("airbus.mes.settings.Settings",
                     airbus.mes.settings.ModelManager.messageShow(this.getView().getModel("i18n").getProperty("SelectMSN"));
                     return;
                 }
-
+                
+                //initialize jigs & Tools to force refresh when confirm settings
+                airbus.mes.shell.util.navFunctions.jigsAndTools.configME = undefined;
+                
                 airbus.mes.settings.oView.byId("navBack").setEnabled(true);
-
+           
                 this.navigate(oEvent);
 
             },

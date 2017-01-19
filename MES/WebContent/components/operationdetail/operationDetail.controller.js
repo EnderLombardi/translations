@@ -377,8 +377,10 @@ sap.ui
                             } else
                                 airbus.mes.disruptions.oView.createDisruption.oController.setDataForEditDisruption();
                             break;
-
-                        default:
+                        case "jigtoolsView":
+                            airbus.mes.jigtools.oView.oController.checkSettingJigsTools();
+                            break;
+                         default:
 
 
                         };

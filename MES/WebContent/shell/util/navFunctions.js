@@ -6,6 +6,10 @@ airbus.mes.shell.util.navFunctions = {
 
     queryParams : jQuery.sap.getUriParameters(),
 
+    jigsAndTools:{
+        configME : undefined,
+    },
+    
     disruptionButtons:{
         create: undefined,
         update:undefined,
@@ -33,8 +37,10 @@ airbus.mes.shell.util.navFunctions = {
             sap.ui.getCore().createComponent({name : "airbus.mes.stationtracker",});
             nav.addPage(airbus.mes.stationtracker.oView);
         }
-//        for Arnaud Bonvilla
-//        alert("pouet");
+        
+        //initialize jigs & Tools to force refresh when go to station Tracker
+        airbus.mes.shell.util.navFunctions.jigsAndTools.configME = undefined;
+        
         nav.to(airbus.mes.stationtracker.oView.getId());
 
     },
