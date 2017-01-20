@@ -3615,6 +3615,18 @@ reschedule
 
 #displayOpeAttachmentsView--DOAlabel.DOAlabel { font-weight: bold; padding: 0; margin: 25px 0 25px 2.5% !important; }
 
+#ncdisplayView--ncDisplay.ncDisplayTable { width: 95% !important; margin: 0 auto; padding: 0 auto; }
+#ncdisplayView--ncDisplay.ncDisplayTable > table { border: solid 1px #97999b; }
+#ncdisplayView--ncDisplay.ncDisplayTable > table > thead > tr > th { background-color: #0085ad; border-right: 1px solid white; }
+#ncdisplayView--ncDisplay.ncDisplayTable > table > thead > tr > th > span { color: white; }
+#ncdisplayView--ncDisplay.ncDisplayTable > table > tbody tr:nth-child(even) { background: #fff; }
+#ncdisplayView--ncDisplay.ncDisplayTable > table > tbody tr:nth-child(odd) { background: #fcfcfc; }
+#ncdisplayView--ncDisplay.ncDisplayTable > table > tbody tr:hover { background-color: #efefef; }
+#ncdisplayView--ncDisplay.ncDisplayTable > table > tbody > tr > td { text-align: left !important; border-left: 1px solid #767879; }
+
+#ncdisplayView--ncDisplayCheck.ncDisplayListcheck { width: 30%; margin: 50px auto 10px auto; padding: 0; text-align: center; }
+#ncdisplayView--ncDisplayCheck.ncDisplayListcheck .sapMRbGCol { display: inline-flex; }
+
 /*************
 GENERALE RULES
 **************/

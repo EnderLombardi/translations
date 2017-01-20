@@ -249,6 +249,7 @@ sap.ui
 
                             break;
                         case "jigntools":
+                             console.log(this.nav);
                             airbus.mes.shell.util.navFunctions.jigToolsDetail(this.nav);
 
                             /***************************************************
@@ -288,6 +289,11 @@ sap.ui
                         case "ACPnGLinks":
                              airbus.mes.shell.util.navFunctions.acpnglinksDetail(this.nav);
                              this.nav.to(airbus.mes.acpnglinks.oView.getId());
+                            break;
+
+                         case "ncDisplay":
+                             airbus.mes.shell.util.navFunctions.ncDisplayLink(this.nav);
+                             this.nav.to(airbus.mes.ncdisplay.oView.getId());
                             break;
 
                          default:

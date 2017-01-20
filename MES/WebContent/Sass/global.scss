@@ -19,6 +19,7 @@
 @import 'components/_jigToolList.scss';
 @import 'components/_calendar.scss';
 @import 'components/_dispOpeAttachments.scss';
+@import 'components/_ncDisplay.scss';
 
 // ============== Components ===============
 
@@ -99,7 +100,7 @@ html
                 color: #74d2e7 !important;
                 text-shadow: none;
                 font-size: 12px;
-            } 
+            }
             #globalNavView--localDELog-inner{
                 color: #74d2e7 !important;
                 text-shadow: none;

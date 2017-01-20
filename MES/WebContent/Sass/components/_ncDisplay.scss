@@ -1,0 +1,39 @@
+#ncdisplayView--ncDisplay.ncDisplayTable{
+    width:95% !important;
+    margin: 0 auto;
+    padding:0 auto;
+    >table {
+        border: solid 1px $cool-grey;
+        >thead {
+            >tr {
+                >th {
+                    background-color : $teal-blue;
+                    border-right:1px solid white;
+                    >span{
+                        color: white;
+                    }
+                }
+            }
+        }
+        >tbody {
+            tr:nth-child(even) {background: #fff}
+            tr:nth-child(odd) {background: #fcfcfc}
+            tr:hover{background-color: #efefef }
+            >tr{
+                >td{
+                    text-align:left !important;
+                    border-left:1px solid $cool-grey-hover;
+                }
+            }
+        }
+    }
+}
+#ncdisplayView--ncDisplayCheck.ncDisplayListcheck{
+    width: 30%;
+    margin: 50px auto 10px auto;
+    padding: 0;
+    text-align: center;
+    .sapMRbGCol{
+        display: inline-flex;
+    }
+}

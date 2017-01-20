@@ -9,7 +9,7 @@ airbus.mes.shell.util.navFunctions = {
     jigsAndTools:{
         configME : undefined,
     },
-    
+
     disruptionButtons:{
         create: undefined,
         update:undefined,
@@ -37,10 +37,10 @@ airbus.mes.shell.util.navFunctions = {
             sap.ui.getCore().createComponent({name : "airbus.mes.stationtracker",});
             nav.addPage(airbus.mes.stationtracker.oView);
         }
-        
+
         //initialize jigs & Tools to force refresh when go to station Tracker
         airbus.mes.shell.util.navFunctions.jigsAndTools.configME = undefined;
-        
+
         nav.to(airbus.mes.stationtracker.oView.getId());
 
     },
@@ -204,6 +204,17 @@ airbus.mes.shell.util.navFunctions = {
         }
         if (container.getPage("acpnglinksView") === null) {
             container.addPage(airbus.mes.acpnglinks.oView);
+        }
+    },
+    ncDisplayLink : function(container) {
+
+        if (airbus.mes.ncdisplay === undefined || airbus.mes.ncdisplay.oView === undefined) {
+
+            jQuery.sap.registerModulePath("airbus.mes.ncdisplay","../components/ncdisplay");
+            sap.ui.getCore().createComponent({name : "airbus.mes.ncdisplay"});
+        }
+        if (container.getPage("ncdisplayView") === null) {
+            container.addPage(airbus.mes.ncdisplay.oView);
         }
     },
     disruptionAttachment : function(container, disruptionDesc) {

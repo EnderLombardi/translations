@@ -122,6 +122,7 @@
                         <SegmentedButtonItem id="idtouchngo" text="{i18n>Touchngo}" key="touchngo" press="openPage" />
                         <SegmentedButtonItem id="idJignTools" text="{i18n>JignTools}" key="jigntools" press="openPage" />
                         <SegmentedButtonItem id="idACPnGLinks" text="{i18n>ACPnGLinks}" key="ACPnGLinks" press="openPage" />
+                        <SegmentedButtonItem id="idNCDisplay" text="{i18n>ncDisplay}" key="ncDisplay" press="openPage" />
                     </items>
                 </SegmentedButton>
             </Toolbar>
