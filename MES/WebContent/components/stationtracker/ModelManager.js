@@ -1100,7 +1100,7 @@ airbus.mes.stationtracker.ModelManager = {
                                 "material_description" : aModel[0].WORKORDER_DESCRIPTION,
                                 "operation_revision" : aModel[0].SFC_STEP_REF.split(",")[5],
                                 "wo_no" : aModel[0].SHOP_ORDER_BO.split(",")[1],
-                                "workcenter" : aModel[0].PP_STATION.split(",")[1],
+                                "workcenter" : aModel[0].WORK_CENTER,
                                 "status" : sStatus,
                                 "realStatus" :  aModel[0].status,
                                 "progress" : parseInt(progress, 10),

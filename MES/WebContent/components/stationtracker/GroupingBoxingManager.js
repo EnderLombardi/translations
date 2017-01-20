@@ -302,6 +302,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 					"SFC_STEP_REF":el.SFC_STEP_REF,
 					"SHOP_ORDER_BO":el.SHOP_ORDER_BO,
 					"PP_STATION":el.PP_STATION,
+					"WORK_CENTER" : el.WORK_CENTER,
 					"OPERATION_BO": el.OPERATION_BO,
 					"SKILLS" : el.SKILLS,
 					"PREVIOUSLY_STARTED" : el.PREVIOUSLY_STARTED,
