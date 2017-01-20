@@ -36,8 +36,8 @@
 					"MinRange": 1.0,
 					"MaxRange": 1.0
 				}, {
-					"Name": "Family_traget",
-					"SourceColumn": "Family_traget",
+					"Name": "Family_target",
+					"SourceColumn": "Family_target",
 					"Description": "",
 					"SQLDataType": 1,
 					"MinRange": 1.0,
@@ -161,7 +161,7 @@
 				"Ref": "10003242224",
 				"Review_end": "28/11/2016",
 				"Note": "",
-				"Family_traget": "FAL-PYLON RH",
+				"Family_target": "FAL-PYLON RH",
 				"Confirmed_time": "83",
 				"STV": "",
 				"ACP_workstation": "",
@@ -183,7 +183,7 @@
 				"Ref": "6789685",
 				"Review_end": "",
 				"Note": "",
-				"Family_traget": "",
+				"Family_target": "",
 				"Confirmed_time": "",
 				"STV": "",
 				"ACP_workstation": "",
@@ -205,7 +205,7 @@
 				"Ref": "10003678688",
 				"Review_end": "28/11/2016",
 				"Note": "",
-				"Family_traget": "FAL-CARGO",
+				"Family_target": "FAL-CARGO",
 				"Confirmed_time": "54",
 				"STV": "",
 				"ACP_workstation": "",
@@ -220,14 +220,14 @@
 				"Zoning": "P8",
 				"Material_description": "INST-CLS",
 				"ATA": "5720",
-				"Father_Type": "",
-				"Father_ID": ""
+				"Father_Type": "NC",
+				"Father_ID": "6789685"
 			}, {
 				"Type": "NC",
 				"Ref": "10003678688",
 				"Review_end": "28/11/2016",
 				"Note": "",
-				"Family_traget": "FAL-CARGO",
+				"Family_target": "FAL-CARGO",
 				"Confirmed_time": "54",
 				"STV": "",
 				"ACP_workstation": "",
@@ -242,8 +242,8 @@
 				"Zoning": "P8",
 				"Material_description": "INST-CLS",
 				"ATA": "5720",
-				"Father_Type": "",
-				"Father_ID": ""
+				"Father_Type": "SO1",
+				"Father_ID": "10003242224"
 			}]
 		}]
 	}

@@ -54,7 +54,8 @@ airbus.mes.acpnglinks.model.ModelManager = {
 	loadacpnglinksWorkOrderDetail : function() {
 		var oModel = sap.ui.getCore().getModel("acpnglinksWorkOrderDetail");
 		oModel.loadData(this.getacpnglinksWorkOrderDetail(), null, false);
-		var test = this.transformTreeData(oModel.oData.Rowsets.Rowset[0].Row);
+		var transformedModel = this.transformTreeData(oModel.oData.Rowsets.Rowset[0].Row);
+		oModel.oData.Rowsets.Rowset[0].Row = transformedModel;
 	},
 	
 	getacpnglinksWorkOrderDetail : function() {
@@ -74,7 +75,27 @@ airbus.mes.acpnglinks.model.ModelManager = {
 			for (var i = 0; i < nodesIn.length; i++) {
 				var nodeIn = nodesIn[i];
 				nodeOut = {
-					current : nodesIn,
+					Type : nodeIn.Type,
+					Ref : nodeIn.Ref,
+					Review_end : nodeIn.Review_end,
+					Note : nodeIn.Note,
+					Family_target : nodeIn.Family_target,
+					Confirmed_time : nodeIn.Confirmed_time,
+					STV : nodeIn.STV,
+					ACP_workstation : nodeIn.ACP_workstation,
+					CA : nodeIn.CA,
+					Father_link : nodeIn.Father_link,
+					Blocking_reason : nodeIn.Blocking_reason,
+				    User_status : nodeIn.User_status,
+					Execution_station : nodeIn.Execution_station,
+					Origin_workstation : nodeIn.Origin_workstation,
+					TDL : nodeIn.TDL,
+					Upper_family : nodeIn.Upper_family,
+					Zoning : nodeIn.Zoning,
+					Material_description : nodeIn.Material_description,
+					ATA : nodeIn.ATA,
+					Father_Type : nodeIn.Father_Type,
+					Father_ID : nodeIn.Father_ID,
 					children : []
 				}
 				parentId = nodeIn.Father_ID;
@@ -90,8 +111,7 @@ airbus.mes.acpnglinks.model.ModelManager = {
 					nodes.push(nodeOut);
 				}
 	
-				// add the node to the node map, which is a simple
-				// 1-level list of all nodes
+				// add the node to the node map
 				nodeMap[nodeOut.Ref] = nodeOut;
 			}
 		}

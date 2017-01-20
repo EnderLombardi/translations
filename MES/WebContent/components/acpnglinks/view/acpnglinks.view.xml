@@ -5,15 +5,15 @@
 	<Page showHeader="false" height="100%">
 		<content>
 		<VBox id="ACPnGLinks" class="Checklist">
-			<tab:TreeTable rows="{acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Row/}" > 
+			<tab:TreeTable id="ACPnGTreeTable" rows="{ 	 >/Rowsets/Rowset/0/Row/}"  cellClick="OnSelectionChange"> 
 				<tab:columns> 
-					<tab:Column visible="true" > 
+					<tab:Column visible="true" sortProperty= "Type" > 
 						<Label text="Type" /> 
 						<tab:template> 
 							<Text text="{acpnglinksWorkOrderDetail>Type}" class="AllignItem" /> 
 						</tab:template> 
 					</tab:Column> 
-					<tab:Column visible="true" > 
+					<tab:Column visible="true" sortProperty= "Ref" > 
 						<Label text="Reference" />
 						<tab:template> 
 							<Label text="{acpnglinksWorkOrderDetail>Ref}" class="AllignItem" /> 
@@ -25,16 +25,16 @@
 							<Label text="{acpnglinksWorkOrderDetail>Review_end}" class="AllignItem" /> 
 						</tab:template> 
 					</tab:Column> 
-					<tab:Column visible="true" > 
+					<tab:Column visible="true" sortProperty= "Note" > 
 						<Label text="Note" />
 						<tab:template> 
 							<Label text="{acpnglinksWorkOrderDetail>Note}" class="AllignItem" /> 
 						</tab:template> 
 					</tab:Column> 
-					<tab:Column visible="true"> 
+					<tab:Column visible="true" sortProperty= "Family_target" > 
 						<Label text="Family target" />
 						<tab:template> 
-							<Label text="{acpnglinksWorkOrderDetail>Family_traget}" class="AllignItem" /> 
+							<Label text="{acpnglinksWorkOrderDetail>Family_target}" class="AllignItem" /> 
 						</tab:template> 
 					</tab:Column> 
 <!--
