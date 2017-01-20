@@ -163,6 +163,9 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 		var oFormatter = airbus.mes.stationtracker.util.Formatter;
 		var oHierarchyI = airbus.mes.stationtracker.GroupingBoxingManager.operationDateIHierarchy;
 		var sCstSplit = airbus.mes.stationtracker.GroupingBoxingManager.constante;
+		var sTaktStart = new Date(airbus.mes.settings.ModelManager.taktStart);
+		var sTaktEnd = new Date(airbus.mes.settings.ModelManager.taktEnd);
+
 		
 		oModel.forEach(function(el){
 			
@@ -320,12 +323,17 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 			
 			
 			oHierachy[ssGroup][ssAvLine][ssBox].push(oOperation);
-			
-			if ( oFormatter.jsDateFromDayTimeStr(el.END_TIME) < new Date() ) {		
-				oHierarchyDelay[ssGroup][ssAvLine].duration += parseFloat(el.DURATION);
+			// User to comput delay of operation take only operation wiwh are contain in the takt
+			// Check if we have takt time
+			if ( sTaktStart instanceof Date  && sTaktEnd instanceof Date ) {
+				if ( new Date(el.START_TIME) >=  sTaktStart &&  new Date(el.START_TIME) <  sTaktEnd ) {
+					if ( oFormatter.jsDateFromDayTimeStr(el.END_TIME) < new Date() ) {		
+						oHierarchyDelay[ssGroup][ssAvLine].duration += parseFloat(el.DURATION);
+					}
+					oHierarchyDelay[ssGroup][ssAvLine].progress += parseFloat(el.PROGRESS);
+								
+				}
 			}
-			oHierarchyDelay[ssGroup][ssAvLine].progress += parseFloat(el.PROGRESS);
-						
 		});
 	},
 	

@@ -145,6 +145,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",    {
                     		if ( sInitialAvlLine === sNewAvlLine && oInitial.start_date - oFinal.start_date === 0) {
                     			
                     			  airbus.mes.stationtracker.ModelManager.OpenWorkList(this.id);
+                    			  delete ev._move_delta
                                   scheduler._drag_mode = ""
                                   return false;
                     			
