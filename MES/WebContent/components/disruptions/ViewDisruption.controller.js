@@ -209,8 +209,8 @@ sap.ui
 						// Get values for Ajax Call
 						var oMsgRef = sap.ui.getCore().byId(
 								"closeDisruption-msgRef");
-						var oComment = sap.ui.getCore().byId(
-								"closeDisruptionComments");
+						var oComment = airbus.mes.disruptions.Formatter.actions.close +
+									   sap.ui.getCore().byId("closeDisruptionComments");
 						
 						var oTimeLost = sap.ui.getCore().byId(
 								"closeDisruption-timeLost");
@@ -393,8 +393,8 @@ sap.ui
 						
 						airbus.mes.disruptions.oView.viewDisruption.setBusy(true);						
 
-						var comment = sap.ui.getCore().byId(
-								"disruptionCommentBox").getValue();
+						var comment = airbus.mes.disruptions.Formatter.actions.del +
+									  sap.ui.getCore().byId("disruptionCommentBox").getValue();
 
 						var msgRef = sap.ui.getCore().byId(
 								"disruptionCommentMsgRef").getText();
@@ -448,7 +448,8 @@ sap.ui
 							
 									var oComment = {
 										"Action" : airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("delete"),
-										"Comments" : sap.ui.getCore().byId("disruptionCommentBox").getValue(),
+										"Comments" : airbus.mes.disruptions.Formatter.actions.del + 
+													 sap.ui.getCore().byId("disruptionCommentBox").getValue(),
 										"Counter" : "",
 										"Date" : date,
 										"MessageRef" : sap.ui.getCore().byId("disruptionCommentMsgRef").getText(),
@@ -529,8 +530,9 @@ sap.ui
 						var i18nModel = airbus.mes.disruptions.oView.viewDisruption
 								.getModel("i18nModel");
 
-						var comment = sap.ui.getCore().byId(
-								"disruptionCommentBox").getValue();
+						var comment = airbus.mes.disruptions.Formatter.actions.reject +
+									  sap.ui.getCore().byId("disruptionCommentBox").getValue();
+						
 						var msgRef = sap.ui.getCore().byId(
 								"disruptionCommentMsgRef").getText();
 						var sStatus = sap.ui.getCore().byId(
@@ -628,8 +630,9 @@ sap.ui
 						var i18nModel = airbus.mes.disruptions.oView.viewDisruption
 								.getModel("i18nModel");
 
-						var comment = sap.ui.getCore().byId(
-								"disruptionCommentBox").getValue();
+						var comment = airbus.mes.disruptions.Formatter.actions.refuse +
+									  sap.ui.getCore().byId("disruptionCommentBox").getValue();
+						
 						var msgRef = sap.ui.getCore().byId(
 								"disruptionCommentMsgRef").getText();
 						var sMessage = i18nModel.getProperty("successRefuse");
@@ -752,10 +755,10 @@ sap.ui
 						var listnum = path.split("-");
 						listnum = listnum[listnum.length - 1];
 
-						var sComment = this.getView().byId(
-								this.getView().sId + "--commentArea-"
-										+ this.getView().sId + "--disrptlist-"
-										+ listnum).getValue();
+						var sComment = airbus.mes.disruptions.Formatter.actions.comment +
+									   this.getView().byId(this.getView().sId + "--commentArea-"
+										   	+ this.getView().sId + "--disrptlist-"
+										   	+ listnum).getValue();
 						
 						var currDate = new Date();
 						var date = currDate.getFullYear() + "-" + currDate.getMonth() + "-" + currDate.getDate();
@@ -880,8 +883,8 @@ sap.ui
 							var msgRef = sap.ui.getCore().byId(
 									"disruptionAckSpathMsgRef").getText();
 
-							var comment = sap.ui.getCore().byId(
-									"disruptionAckComment").getValue();
+							var comment = airbus.mes.disruptions.Formatter.actions.acknowledge +
+										  sap.ui.getCore().byId("disruptionAckComment").getValue();
 
 							var i18nModel = airbus.mes.disruptions.oView.viewDisruption
 									.getModel("i18nModel");
@@ -973,8 +976,8 @@ sap.ui
 						var msgRef = sap.ui.getCore().byId(
 								"disruptionCommentMsgRef").getText();
 
-						var comment = sap.ui.getCore().byId(
-								"disruptionCommentBox").getValue();
+						var comment = airbus.mes.disruptions.Formatter.actions.solve +
+									  sap.ui.getCore().byId("disruptionCommentBox").getValue();
 
 						var i18nModel = sap.ui.getCore().byId("ViewDisruptionView").getModel("i18nModel");
 

@@ -14,6 +14,18 @@ airbus.mes.disruptions.Formatter = {
 		"deleted" 	: "Deleted"
 	},
 	
+	actions: {
+		"close"			: "close$$",
+		"del"			: "delete$$",
+		"reject"    	: "reject$$",
+		"refuse"    	: "refuse$$",
+		"comment"  		: "comment$$",
+		"acknowledge"   : "acknowledge$$",
+		"solve"  		: "solve$$",
+		"edit"  		: "edit$$",
+		"create"  		: "create$$",
+	},
+	
 	opStatus:{'completed'    : 'COMPLETED',
 	        'paused'    : 'IN_QUEUE',
 	        'active'    : 'IN_WORK',
@@ -264,8 +276,12 @@ airbus.mes.disruptions.Formatter = {
 		text = text.toLowerCase();
 		return text;
 	},
-	formatCommentAction: function(action){
-		return airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty(action.toLowerCase()).toLowerCase();
+	formatCommentAction: function(comment){
+		var sAction = comment.split("&&")[0].toLowerCase();
+		return airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty(sAction).toLowerCase();
+	},
+	formatComment: function(comment){
+		return comment.split("&&")[1];
 	},
 	
 	setClosureDateVisibility : function(status) {

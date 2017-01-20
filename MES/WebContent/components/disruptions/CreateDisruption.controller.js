@@ -39,10 +39,6 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
 				type : "select",
 				path : "Reason",
 				attr : "Reason",
-				
-
-
-
 				/*
 				 * childs : [ { id : "selectResponsible", type :
 				 * "select", path : "ResponsibleGroup", attr :
@@ -265,7 +261,8 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
               var sCategory = oView.byId("selectCategory").getSelectedKey();
               // var sRootCause = oView.byId("selectRootCause")
               // .getSelectedKey();
-              var sComment = oView.byId("comment").getValue();
+              var sComment = airbus.mes.disruptions.Formatter.actions.create +
+			   				 oView.byId("comment").getValue();
 
               // forcefully set handle as the first item in the list
               // after selecting Category, Reason, Responsible and
@@ -419,8 +416,9 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
               // var sRootCause = oView.byId("selectRootCause").getSelectedKey(); // [MES V1.5] root cause removed
               var iTimeLost = airbus.mes.disruptions.Formatter.timeToMilliseconds(oView.byId("timeLost").getValue());
               var dFixedByTime = oView.byId("expectedDate").getValue() + " " + oView.byId("expectedTime").getValue();
-              var sComment = oView.byId("comment").getValue()
-              var iGravity = oView.byId("gravity").getSelectedKey()
+              var sComment = airbus.mes.disruptions.Formatter.actions.edit +
+              				 oView.byId("comment").getValue();
+              var iGravity = oView.byId("gravity").getSelectedKey();
               var dPromisedTime = oView.byId("promisedDate").getValue() === "" ? "" : oView.byId("promisedDate").getValue() + " "
                      + oView.byId("promisedTime").getValue();
               // call update service
