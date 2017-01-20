@@ -5,7 +5,7 @@
 		<Toolbar class="toolBarBottom">
 			<Button id="scanButtonMyProfile" icon="sap-icon://business-card" text="{ShellI18n>scan}" type="Emphasized" press="onScanMyProfile" visible="{path:'ShellI18n>' , formatter:'airbus.mes.shell.util.Formatter.displayBadge'}"/>
 			<ToolbarSpacer/>
-			<Button icon="sap-icon://edit" text="{ShellI18n>edit}" type="Emphasized" press="onEditMyProfile"/>
+			<Button id="editMyProfile" icon="sap-icon://edit" text="{ShellI18n>edit}" type="Emphasized" press="onEditMyProfile"/>
 		</Toolbar>
 		<content>		
 			<HBox height="3rem" class="messageHBox">

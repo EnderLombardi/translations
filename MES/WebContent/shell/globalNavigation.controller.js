@@ -455,6 +455,14 @@ sap.ui.controller(
                     onCancelMyProfile : function() {
                         sap.ui.getCore().getElementById("userNameMyProfile").setValueState(sap.ui.core.ValueState.None);
                         sap.ui.getCore().getElementById("passwordMyProfile").setValueState(sap.ui.core.ValueState.None);
+                        
+                        
+                        // Reset Fields Edit Mode
+                        sap.ui.getCore().byId("uIdMyProfile").setEditable(false);
+                    	sap.ui.getCore().byId("badgeIdMyProfile").setEditable(false);
+                    	sap.ui.getCore().byId("editMyProfile").setVisible(true);
+                    	
+                    	
                         this.myProfileDailog.close();
                     },
 
@@ -654,12 +662,28 @@ sap.ui.controller(
                                         
                                     	airbus.mes.shell.ModelManager.messageShow(sMessageSuccess);
                                     }
+                                	
+                                	
+                                	// Reset Fields edit mode
+                                	sap.ui.getCore().byId("uIdMyProfile").setEditable(false);
+                                	sap.ui.getCore().byId("badgeIdMyProfile").setEditable(false);
+                                	sap.ui.getCore().byId("editMyProfile").setVisible(true);
 
                                 }
                             });
                         }
 
                     },
+                    
+                    
+                    onEditMyProfile: function(){
+                    	sap.ui.getCore().byId("uIdMyProfile").setEditable(true);
+                    	sap.ui.getCore().byId("badgeIdMyProfile").setEditable(true);
+                    	sap.ui.getCore().byId("editMyProfile").setVisible(false);
+                    	
+                    },                    
+                    
+                    
                     openSettingPopup : function() {
 
                         airbus.mes.shell.settingPopup.openBy(this.getView().byId("settingsButton"));
