@@ -291,6 +291,7 @@ sap.ui.controller("airbus.mes.settings.Settings",
             onClickSpot : function(e) {
                 sap.m.MessageToast
                         .show("onClickSpot " + e.getParameter("text"));
+                
             },
 
             // User clicks on any position on the map
@@ -338,7 +339,12 @@ sap.ui.controller("airbus.mes.settings.Settings",
                 var oButton = oEvent.getSource().getParent().getAggregation(
                         "items")[0];
                 // Set the selected attribute
-                oButton.setSelected(true);
+                if(oButton.getEnabled() === true ) {
+                    oButton.setSelected(true);             
+                    // Fire event to refilter plant
+                    airbus.mes.settings.oView.getController().onProgramSelect();
+                }
+
             },
             /**
              * Get data from usersetting and reuse previous settings input.
