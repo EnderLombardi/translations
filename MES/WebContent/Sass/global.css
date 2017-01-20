@@ -3624,7 +3624,7 @@ reschedule
 #ncdisplayView--ncDisplay.ncDisplayTable > table > tbody tr:hover { background-color: #efefef; }
 #ncdisplayView--ncDisplay.ncDisplayTable > table > tbody > tr > td { text-align: left !important; border-left: 1px solid #767879; }
 
-#ncdisplayView--ncDisplayCheck.ncDisplayListcheck { width: 30%; margin: 50px auto 10px auto; padding: 0; text-align: center; }
+#ncdisplayView--ncDisplayCheck.ncDisplayListcheck { width: 50%; margin: 50px auto 10px auto; padding: 0; text-align: center; }
 #ncdisplayView--ncDisplayCheck.ncDisplayListcheck .sapMRbGCol { display: inline-flex; }
 
 /*************
