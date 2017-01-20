@@ -1015,7 +1015,7 @@ airbus.mes.disruptions.ModelManager = {
 	/***************************************************************************
 	 * Reject Disruption Service
 	 **************************************************************************/
-	rejectDisruption : function(comment, msgref, sMessageSuccess, i18nModel) {
+	rejectDisruption : function(comment, msgref, sStatus, sMessageSuccess, i18nModel) {
 		var sMessageError = i18nModel.getProperty("tryAgain");
 		var flagSuccess;
 
@@ -1029,7 +1029,8 @@ airbus.mes.disruptions.ModelManager = {
 								"userSettingModel").getProperty(
 								"/Rowsets/Rowset/0/Row/0/user"),
 						"Param.3" : msgref,
-						"Param.4" : comment
+						"Param.4" : comment,
+						"Param.5" : sStatus
 					},
 					error : function(xhr, status, error) {
 						airbus.mes.shell.ModelManager

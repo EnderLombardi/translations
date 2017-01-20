@@ -282,8 +282,7 @@ sap.ui
 					/***********************************************************
 					 * Open the Enter Comment Pop-Up
 					 */					
-					onOpenDisruptionComment : function(title, msgRef, sPath,
-							okEvent) {
+					onOpenDisruptionComment : function(title, msgRef, sPath, okEvent, sStatus) {
 						// Call Disruption Comment Pop-up fragment
 						if (!airbus.mes.disruptions.__enterCommentDialogue) {
 							airbus.mes.disruptions.__enterCommentDialogue = sap.ui
@@ -302,8 +301,13 @@ sap.ui
 								.setText(msgRef);
 						sap.ui.getCore().byId("disruptionCommentSpath")
 								.setText(sPath);
-						sap.ui.getCore().byId("disruptionCommentBox").setValue(
-								"");
+						
+						if(sStatus == undefined)
+							sStatus = "";
+						sap.ui.getCore().byId("disruptionCommentStatus")
+								.setText(sStatus);
+						sap.ui.getCore().byId("disruptionCommentBox").setValue("");
+						
 						
 						sap.ui.getCore().byId("disruptionCommentOK")
 						.detachPress(this.pressEvent);
@@ -444,10 +448,10 @@ sap.ui
 							
 									var oComment = {
 										"Action" : airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("delete"),
-										"Comments" : comment,
+										"Comments" : sap.ui.getCore().byId("disruptionCommentBox").getValue(),
 										"Counter" : "",
 										"Date" : date,
-										"MessageRef" : msgRef,
+										"MessageRef" : sap.ui.getCore().byId("disruptionCommentMsgRef").getText(),
 										"UserFullName" : ( sap.ui.getCore().getModel("userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/first_name").toLowerCase() + " " +
 											   			sap.ui.getCore().getModel("userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/last_name").toLowerCase() )
 									};
@@ -507,16 +511,14 @@ sap.ui
 						//*********************************************************
 						
 						var title = airbus.mes.disruptions.oView.viewDisruption
-								.getModel("i18nModel").getProperty(
-										"rejectDisruption");
+								.getModel("i18nModel").getProperty("rejectDisruption");
 						var msgRef = oEvt.getSource().getBindingContext(
-								"operationDisruptionsModel").getObject(
-								"MessageRef");
-						var sPath = oEvt.getSource().getBindingContext(
-								"operationDisruptionsModel").sPath;
+								"operationDisruptionsModel").getObject("MessageRef");
+						var sPath = oEvt.getSource().getBindingContext("operationDisruptionsModel").sPath;
+						var sStatus = oEvt.getSource().getBindingContext(
+								"operationDisruptionsModel").getObject("Status");
 
-						this.onOpenDisruptionComment(title, msgRef, sPath,
-								this.onConfirmRejection);
+						this.onOpenDisruptionComment(title, msgRef, sPath, this.onConfirmRejection, sStatus);
 
 					},
 
@@ -531,6 +533,8 @@ sap.ui
 								"disruptionCommentBox").getValue();
 						var msgRef = sap.ui.getCore().byId(
 								"disruptionCommentMsgRef").getText();
+						var sStatus = sap.ui.getCore().byId(
+								"disruptionCommentStatus").getText();
 						var sMessage = i18nModel.getProperty("successReject");
 						
 						if(comment == "") {
@@ -540,7 +544,7 @@ sap.ui
 
 						// Call Disruption Service
 						var isSuccess = airbus.mes.disruptions.ModelManager
-								.rejectDisruption(comment, msgRef, sMessage,
+								.rejectDisruption(comment, msgRef, sStatus, sMessage,
 										i18nModel);
 
 						airbus.mes.disruptions.__enterCommentDialogue.close();

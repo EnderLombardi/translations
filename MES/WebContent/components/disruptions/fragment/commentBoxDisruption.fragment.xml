@@ -12,6 +12,7 @@
 
             <core:InvisibleText id="disruptionCommentMsgRef" text="" />
             <core:InvisibleText id="disruptionCommentSpath" text="" />
+            <core:InvisibleText id="disruptionCommentStatus" text="" />
 
         </content>
 
