@@ -33,9 +33,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",    {
                         scheduler.config.xml_date="%Y-%m-%d %H:%i";
                         scheduler.config.markedCells = 0;
                         scheduler.config.mark_now = true;
-                        scheduler.config.drag_create = false;
-                        // cant drag & drop verticaly if set to force
-                        scheduler.config.touch = "force";
+                        scheduler.config.drag_create = false;    
                         scheduler.config.details_on_create = false;
                         scheduler.config.details_on_dblclick = false;
                         scheduler.config.preserve_length = true;
@@ -43,6 +41,16 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",    {
                         scheduler.eventId = scheduler.eventId || [];
                         scheduler.eventId.forEach(function(el) { scheduler.detachEvent(el); });
                         scheduler.eventId = [];
+                        
+                        //Permit to know on wich device we are => on destop you can drag scroll when rescheduling on touchpad not
+                        try { 
+                        	document.createEvent("TouchEvent");
+                            // cant drag & drop verticaly if set to force
+                        	scheduler.config.touch = "force";  
+                        	console.log("you are on touchpad")
+                        	} catch (e) {
+                        	console.log("you are on destop")
+                        	}        
 
                         scheduler.createTimelineView({
                             section_autoheight: false,
