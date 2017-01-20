@@ -1314,7 +1314,7 @@ airbus.mes.stationtracker.ModelManager = {
 			var aDate1 = aDate[0].split("/")
 			
 	//        airbus.mes.settings.ModelManager.taktStart = aModel.Rowsets.Rowset[0].Row[0].START_TIME;
-			airbus.mes.settings.ModelManager.taktStart = aDate1[2].concat("-", aDate1[1], "-", aDate1[0], " ", aDate[1]);
+			airbus.mes.settings.ModelManager.taktStart = aDate1[2].concat("-", aDate1[0], "-", aDate1[1], " ", aDate[1]);
 	
 	//		TOBE remove after date changed
 			var date = aModel.Rowsets.Rowset[0].Row[0].END_TIME;
@@ -1322,7 +1322,7 @@ airbus.mes.stationtracker.ModelManager = {
 			var aDate1 = aDate[0].split("/")
 			
 	//        airbus.mes.settings.ModelManager.taktEnd = aModel.Rowsets.Rowset[0].Row[0].END_TIME;
-			airbus.mes.settings.ModelManager.taktEnd = aDate1[2].concat("-", aDate1[1], "-", aDate1[0], " ", aDate[1]);
+			airbus.mes.settings.ModelManager.taktEnd = aDate1[2].concat("-", aDate1[0], "-", aDate1[1], " ", aDate[1]);
 		
 		} else {
 //			If date format is YYYY-MM-DD

@@ -387,6 +387,8 @@ sap.ui.controller(
                         var oModule = airbus.mes.stationtracker.ModelManager;
                         console.log("LOADGANTKPI");
                         // ** asynchrone call **//
+                        oModule.getTakt();                                
+                        
                         oModule.loadRessourcePool();
                         oModule.loadStationTracker("I");
                         oModule.loadStationTracker("U");
@@ -397,8 +399,6 @@ sap.ui.controller(
                         oModule.loadFilterUnplanned();
                         oModule.loadKPI();
                         oModule.getPhStation();
-                        
-                        oModule.getTakt();                        
                     },
 
                     setInformationVisibility : function(bSet) {
