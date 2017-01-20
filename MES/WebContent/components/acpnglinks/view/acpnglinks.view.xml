@@ -5,7 +5,7 @@
 	<Page showHeader="false" height="100%">
 		<content>
 		<VBox id="ACPnGLinks" class="Checklist">
-			<tab:TreeTable id="ACPnGTreeTable" rows="{ 	 >/Rowsets/Rowset/0/Row/}"  cellClick="OnSelectionChange"> 
+			<tab:TreeTable id="ACPnGTreeTable" rows="{acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Row/}"  cellClick="OnSelectionChange"> 
 				<tab:columns> 
 					<tab:Column visible="true" sortProperty= "Type" > 
 						<Label text="Type" /> 
