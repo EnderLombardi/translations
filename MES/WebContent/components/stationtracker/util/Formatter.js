@@ -388,7 +388,10 @@ airbus.mes.stationtracker.util.Formatter = {
             						'<span class="tooltipTextTrackerBox2" data-text="'+
             					    sText + ' - ['+
             	                    airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.progress) +'/'+
-            	                    airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.totalDuration) +' IM]"></span></div>';
+            	                    airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.totalDuration) +' IM]">' +
+            	                    sText + ' - ['+
+            	                    airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.progress) +'/'+
+            	                    airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.totalDuration) +' IM]</span></div>';
 				
 				
 				html +=tooltipTextForBox;
