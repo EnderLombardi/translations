@@ -422,7 +422,7 @@
 											text="{i18nModel>from} : {path: 'operationDisruptionsModel>UserFullName', formatter: 'airbus.mes.disruptions.Formatter.textCaseFormat'}"></Text>
 										<Text text="|" class="sapUiSmallMarginBeginEnd"></Text>
 										<Text
-											text="{i18nModel>action} : {path: 'operationDisruptionsModel>Comments', formatter: 'airbus.mes.disruptions.Formatter.formatCommentAction'}"></Text>
+											text="{i18nModel>action} : {parts: [ {path: 'operationDisruptionsModel>Action'}, {path: 'operationDisruptionsModel>Comments'}], formatter: 'airbus.mes.disruptions.Formatter.formatCommentAction'}"></Text>
 									</items>
 								</HBox>
 
