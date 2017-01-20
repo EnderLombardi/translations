@@ -165,6 +165,7 @@ airbus.mes.operationdetail.Formatter = {
                 // dynamic conversion based on the IM input
                 var dynamicCoversion = airbus.mes.operationdetail.Formatter.convertImFieldToProgressBar(sap.ui.getCore().byId("imTextArea").getValue()) + "%";
 
+                //if the value the user input is higher than the durantion we reset it
                 if(sap.ui.getCore().byId("imTextArea").getValue() >= duration){
                     sap.ui.getCore().byId("imTextArea").setValue(duration);
                     $("#progressSlider-progress").width(convertedDuration);
@@ -196,6 +197,7 @@ airbus.mes.operationdetail.Formatter = {
             });
         }
     },
+    //Change the progress bar value and visual if the value from im field change
     liveChangeProgressBar : function(){
         var duration = airbus.mes.operationdetail.Formatter.convertMStoIM();
         if(duration != "0" || duration != 0){
@@ -213,5 +215,34 @@ airbus.mes.operationdetail.Formatter = {
                 sap.ui.getCore().byId("imTextArea").setValue(duration);
             });
         }
+    },
+    //Set dynamycly the SAP Icon for the user checklist
+    setIconTypeConfirmation : function(){
+        var jsonModel = airbus.mes.operationdetail.ModelManager.jsonConfirmationCheckList;
+        var checkList = sap.ui.getCore().byId("confirmationCheckList").getItems();
+
+        $(checkList).each(function(i) {
+            var id = checkList[i].sId;
+            if(jsonModel[id] === true || jsonModel[id] === "true"){
+                sap.ui.getCore().byId(id).setProperty("icon", "sap-icon://accept");
+            }else{
+                sap.ui.getCore().byId(id).setProperty("icon", "sap-icon://decline");
+            }
+        });
+    },
+    //Set dynamycly the SAP Icon color for user checklist
+    setIconColor : function(){
+        var checkList = sap.ui.getCore().byId("confirmationCheckList").getItems();
+        $(checkList).each(function(i) {
+            var id = checkList[i].sId;
+            var element = sap.ui.getCore().byId(id).getProperty("icon");
+
+            if(element == "sap-icon://accept"){
+                sap.ui.getCore().byId(id)._image.setProperty("color", "green");
+            }else{
+                sap.ui.getCore().byId(id)._image.setProperty("color", "red");
+            }
+
+        });
     }
 };
