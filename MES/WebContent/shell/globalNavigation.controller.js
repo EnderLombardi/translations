@@ -458,8 +458,8 @@ sap.ui.controller(
                         
                         
                         // Reset Fields Edit Mode
-                        sap.ui.getCore().byId("uIdMyProfile").setEditable(false);
-                    	sap.ui.getCore().byId("badgeIdMyProfile").setEditable(false);
+                        sap.ui.getCore().byId("uIdMyProfile").setEnabled(false);
+                    	sap.ui.getCore().byId("badgeIdMyProfile").setEnabled(false);
                     	sap.ui.getCore().byId("editMyProfile").setVisible(true);
                     	
                     	
@@ -665,8 +665,8 @@ sap.ui.controller(
                                 	
                                 	
                                 	// Reset Fields edit mode
-                                	sap.ui.getCore().byId("uIdMyProfile").setEditable(false);
-                                	sap.ui.getCore().byId("badgeIdMyProfile").setEditable(false);
+                                	sap.ui.getCore().byId("uIdMyProfile").setEnabled(false);
+                                	sap.ui.getCore().byId("badgeIdMyProfile").setEnabled(false);
                                 	sap.ui.getCore().byId("editMyProfile").setVisible(true);
 
                                 }
@@ -677,8 +677,8 @@ sap.ui.controller(
                     
                     
                     onEditMyProfile: function(){
-                    	sap.ui.getCore().byId("uIdMyProfile").setEditable(true);
-                    	sap.ui.getCore().byId("badgeIdMyProfile").setEditable(true);
+                    	sap.ui.getCore().byId("uIdMyProfile").setEnabled(true);
+                    	sap.ui.getCore().byId("badgeIdMyProfile").setEnabled(true);
                     	sap.ui.getCore().byId("editMyProfile").setVisible(false);
                     	
                     },                    
