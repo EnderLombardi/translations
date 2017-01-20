@@ -359,13 +359,14 @@ airbus.mes.stationtracker.util.Formatter = {
 				var widthUnavailableForText = boxDisplayManager.getWidthUnavailableForText(sLeftIcon, sLeftIcon2, sLeftIcon3, sRightIcon);
 			
 				//description text + progress in IM (industrial minutes)
-				var sSpanText = '<span class=" '+ trackerTextClass + 
-					' "style="float: left; overflow: hidden;text-overflow: ellipsis;' + 
-					 'white-space: nowrap; margin-left:5px; margin-right:5px;' + 
-					 'max-width:calc(100% - ' + widthUnavailableForText + 'px);padding-left: 0px;">' +
-					 sText + ' - ['+
-					airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.progress) +'/'+ 
-					airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.totalDuration) +' IM]</span>';
+				var sSpanText = '<span class=" '+ trackerTextClass +
+                ' "style="float: left; overflow: hidden;text-overflow: ellipsis;' +
+                 'white-space: nowrap; margin-left:5px; margin-right:5px;' +
+                 'max-width:calc(100% - ' + widthUnavailableForText + 'px);padding-left: 0px;">' +
+                 sText + ' - ['+
+                airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.progress) +'/'+
+                airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.totalDuration) +' IM]</span>';
+
 				
 				//construction of the html
 				if ( oBox.type === "I" ) {				
@@ -387,10 +388,9 @@ airbus.mes.stationtracker.util.Formatter = {
             						'<span class="tooltipTextTrackerBox2" data-text="'+
             					    sText + ' - ['+
             	                    airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.progress) +'/'+
-            	                    airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.totalDuration) +' IM]">' +
-            	                    sText + ' - ['+
-            	                    airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.progress) +'/'+
-            	                    airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.totalDuration) +' IM]</span></div>';
+            	                    airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.totalDuration) +' IM]"></span></div>';
+				
+				
 				html +=tooltipTextForBox;
 				return html;
 			},
