@@ -270,8 +270,10 @@ sap.ui.controller(
                             	//remove previous
                             	$("#stationTrackerView--takt_adherence_area_chart > g")[0].remove();
                             	
-                            }                         
-                            airbus.mes.stationtracker.GraphManager.loadGragph();
+                            }
+                            debugger;                         
+                            airbus.mes.stationtracker.GraphManager.loadGraph();
+                            
                             //refresh
                             if ( bBatch1==false ) {
                                 airbus.mes.shell.AutoRefreshManager.setInterval("stationTrackerView");
