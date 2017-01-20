@@ -1242,7 +1242,7 @@ html.sap-desktop .operationDetailHeadPanel .opDetailNavToolbar .sapMSegBBtnFocus
 #confirmationCheckList div#noMissingsParts-inner:hover { background-color: transparent; cursor: default; }
 #confirmationCheckList div#noOpenNC-inner:hover { background-color: transparent; cursor: default; }
 #confirmationCheckList div#serialNumberRecorded-inner:hover { background-color: transparent; cursor: default; }
-#confirmationCheckList button#QAWA:hover { cursor: default; }
+#confirmationCheckList button#QAWA:hover { cursor: default; font-size: default; }
 #confirmationCheckList button#inspectionStatus:hover { cursor: default; }
 #confirmationCheckList button#noMissingsParts:hover { cursor: default; }
 #confirmationCheckList button#noOpenNC:hover { cursor: default; }
