@@ -374,7 +374,24 @@ airbus.mes.stationtracker.util.Formatter = {
 				} else {
 					html = sDivForLeftDisplay + sLeftIcon + sRightIcon + sLeftIcon2 + sLeftIcon3 + sSpanText + sColorProgress + '</div>' ;
 				}
-				html += '<span class="trackerBoxtooltiptext">'+ sSpanText +'</span>' ;		
+				//html += '<span class="trackerBoxtooltiptext">'+ sSpanText +'</span>' ;	
+				
+				/* var tooltipTextForBox = '<span class="tooltipTextTrackerBox"style="float: left; overflow: hidden;' +
+                'white-space: nowrap; margin-left:5px; margin-right:5px;' +
+                'padding-left: 0px;">' +
+                sText + ' - ['+
+                airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.progress) +'/'+
+                airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.totalDuration) +' IM]</span>';*/
+           
+				var tooltipTextForBox = '<div class="tooltipTextTrackerBox1"> ' +
+            						'<span class="tooltipTextTrackerBox2" data-text="'+
+            					    sText + ' - ['+
+            	                    airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.progress) +'/'+
+            	                    airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.totalDuration) +' IM]">' +
+            	                    sText + ' - ['+
+            	                    airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.progress) +'/'+
+            	                    airbus.mes.stationtracker.util.Formatter.totalDurationToIM(oBox.totalDuration) +' IM]</span></div>';
+				html +=tooltipTextForBox;
 				return html;
 			},
 			

@@ -1,3 +1,27 @@
+/************************************
+Défilement text tooltip
+************************************/
+@-webkit-keyframes marqueelike {
+0%, 100% {margin-left:0;}
+99.99% {margin-left:-100%;}
+ }
+@-moz-keyframes marqueelike {
+	0%, 100% {margin-left:0;}
+	99.99% {margin-left:-100%;}
+ }
+@-o-keyframes marqueelike {
+	0%, 100% {margin-left:0;}
+	99.99% {margin-left:-100%;}
+ }
+@-ms-keyframes marqueelike {
+	0%, 100% {margin-left:0;}
+	99.99% {margin-left:-100%;}
+ }
+@keyframes marqueelike {
+	0%, 100% {margin-left:0;}
+	99.99% {margin-left:-100%;}
+ }
+
 /********************
 TABLE
 *********************/
@@ -686,18 +710,74 @@ div{
     }
 }
 .dhx_cal_event_line{
+	
     .trackerBoxtooltiptext{
         @extend %trackerBoxTooltip;
-        min-width: 300px;
     }
     &:hover{
-        .trackerBoxtooltiptext{
-            display: inline;
-            position: absolute;
-            margin-top: -30px;
-            margin-left: -210px;
+	 .trackerBoxtooltiptext{	
+		display: block !important;
+	}
+       /* .trackerBoxtooltiptext{
+        	border : 1px green solid;
             z-index: 99;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            position: absolute;
+            display: block;
+            margin-top: -30px;
+            -webkit-animation:linear marqueelike 10s infinite ;
+			-moz-animation:linear marqueelike 10s infinite ;
+			-o-animation:linear marqueelike 10s infinite ;
+			-ms-animation:linear marqueelike 10s infinite ;
+			animation:linear marqueelike 10s infinite ;
+
         }
+       
+       .trackerBoxtooltiptext:after {
+			content:attr(data-text);
+			position:absolute;
+			white-space:nowrap;
+			padding-left:10px;
+		}*/
+		
+		.tooltipTextTrackerBox1 {
+				z-index: 99;
+	            top: 50%;
+	            left: 50%;
+	            transform: translate(-50%, -170%);
+	            position: absolute;
+	            display: block;
+				overflow: hidden;
+				table-layout: fixed;
+				width: 200px;
+    			border-radius: 5px;
+			}
+			.tooltipTextTrackerBox2 {
+				display:block;
+				-webkit-animation:linear marqueelike 10s infinite ;
+				-moz-animation:linear marqueelike 10s infinite ;
+				-o-animation:linear marqueelike 10s infinite ;
+				-ms-animation:linear marqueelike 10s infinite ;
+				animation:linear marqueelike 10s infinite ;
+				margin-left:-100%;
+				padding:0 5px;
+				text-align:left;
+				height:20px;
+				background-color: black;
+    			color: #fff !important;
+    			
+			}
+			
+			
+			.tooltipTextTrackerBox2:after {
+				content:attr(data-text);
+				position:absolute;
+				white-space:nowrap;
+				padding-left:10px;
+			}
+
         div{
             background: none;
         }
