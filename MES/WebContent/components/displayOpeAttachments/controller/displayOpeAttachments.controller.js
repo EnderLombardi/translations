@@ -18,40 +18,11 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 			default: //if Null
 				break;
 		}
-		this.filterDOA(sSet);
 	},
 
     //get user action on the checkbox field
     onSelectLevel: function (oEvent) {
 
-        var sId = oEvent.mParameters.selectedIndex;
-        switch (sId) {
-            case 0:
-                this.filterDOA(airbus.mes.displayOpeAttachments.util.ModelManager.operation);
-                break;
-            case 1:
-                this.filterDOA(airbus.mes.displayOpeAttachments.util.ModelManager.workOrder);
-                break;
-            default:
-                break;
-        }
     },
-
-    //table filter 
-    filterDOA: function (sScope) {
-        switch (sScope) {
-            case airbus.mes.displayOpeAttachments.util.ModelManager.operation:
-                //todo
-                //sap.ui.getCore().byId("displayOpeAttachmentsView--DOATable").getBinding("items").filter(new sap.ui.model.Filter("operation", "EQ", "operation2"));
-                break;
-
-            case airbus.mes.displayOpeAttachments.util.ModelManager.workOrder:
-                //todo
-                //sap.ui.getCore().byId("displayOpeAttachmentsView--DOATable").getBinding("items").filter();
-                break;
-            default:
-                break;
-        }
-    }
 
 });

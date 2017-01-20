@@ -42,18 +42,21 @@ airbus.mes.displayOpeAttachments.util.ModelManager = {
 			}
 		}
 
-		airbus.mes.shell.ModelManager.createJsonModel(core, ["displayOpeAttachmentsWorkOrderDetail"]);
+		airbus.mes.shell.ModelManager.createJsonModel(core, ["getOpeAttachments"]);
 		this.loadDOADetail();
 	},
 
 	loadDOADetail : function() {
-		var oModel = sap.ui.getCore().getModel("displayOpeAttachmentsWorkOrderDetail");
+		var oModel = sap.ui.getCore().getModel("getOpeAttachments");
 		oModel.loadData(this.getDOADetail(), null, false);
 	},
 	
 	getDOADetail : function() {
-		var url = this.urlModel.getProperty("displayOpeAttachmentsWorkOrderDetail");
-		url = airbus.mes.shell.ModelManager.replaceURI(url, "$site", airbus.mes.settings.ModelManager.site);
+		var url = this.urlModel.getProperty("getOpeAttachments");
+		url = airbus.mes.shell.ModelManager.replaceURI(url, "$ShopOrderBO", airbus.mes.stationtracker.ModelManager.stationInProgress.ShopOrderBO);
+		//url = airbus.mes.shell.ModelManager.replaceURI(url, "$RouterBO", airbus.mes.settings.ModelManager.site);
+		url = airbus.mes.shell.ModelManager.replaceURI(url, "$RouterStepBO", airbus.mes.stationtracker.ModelManager.stationInProgress.RouterStepBO);
+		//url = airbus.mes.shell.ModelManager.replaceURI(url, "$Site", airbus.mes.settings.ModelManager.site);
 		return url;
 	},
 	

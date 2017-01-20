@@ -10,6 +10,10 @@ airbus.mes.stationtracker.ModelManager = {
        operationType : undefined,
 
        firstTime : undefined,
+       stationInProgress: {
+           ShopOrderBO: undefined,
+           RouterStepBO: undefined
+       },
 
 //     parameters from the settings component
        settings : undefined,
@@ -1048,6 +1052,10 @@ airbus.mes.stationtracker.ModelManager = {
                 var order = aModel[0].SHOP_ORDER_BO.split(",")[1];
                 var spentTimeInMs = 0;
 
+                //informations for Document request
+                airbus.mes.stationtracker.ModelManager.stationInProgress.ShopOrderBO = aModel[0].SHOP_ORDER_BO;
+                airbus.mes.stationtracker.ModelManager.stationInProgress.RouterStepBO = aModel[0].ROUTERSTEPBO;//not working for the moment
+
                 //TODO Exception to display to UI
                 if(operation && order){
                     spentTimeInMs  = airbus.mes.stationtracker.ModelManager.getSpentTimePerOperation(operation,order);
@@ -1328,7 +1336,6 @@ airbus.mes.stationtracker.ModelManager = {
         airbus.mes.stationtracker.ModelManager.settings.taktDuration = aModel.Rowsets.Rowset[0].Row[0].DURATION;      
 	},    
     getSpentTimePerOperation : function(operation, order){
-        //var oViewModel = sap.ui.getCore().getModel("spentTimedataModel");
         var spentTime =0;
         jQuery.ajax({
             type : 'post',
@@ -1352,9 +1359,7 @@ airbus.mes.stationtracker.ModelManager = {
             },
 
             error : function(error, jQXHR) {
-                //console.log(error);
                 return 0;
-
             }
         });
         return spentTime;

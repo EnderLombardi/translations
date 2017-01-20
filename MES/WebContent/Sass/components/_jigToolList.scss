@@ -1,7 +1,7 @@
 //id jigToolList
 //class jigToolListtable
 
-#jigtoolsView--jigToolList.jigToolListtable, #displayOpeAttachmentsView--DOATable{
+#jigtoolsView--jigToolList.jigToolListtable{
 	width:95% !important;
 	margin: 0 auto;
 	padding:0 auto;
@@ -25,7 +25,7 @@
 				>tr{
 					>td{
 						text-align:left !important;
-						border-left:1px solid $cool-grey-hover ;
+						border-left:1px solid $cool-grey-hover;
 					}
 				}
 		}   
@@ -34,7 +34,7 @@
 	
 #jigtoolsView--jigToolcheck.jigToolListcheck{
 	width: 50%;
-    margin: 50px auto;
+    margin: 50px auto 10px auto;
     padding: 0;
     text-align: center;
 }

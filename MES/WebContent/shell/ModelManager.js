@@ -45,8 +45,7 @@ airbus.mes.shell.ModelManager = {
 			}
 							
 			// TODO DEPLACE this in shell controller and when service is ok remove all of this function
-			this.loadUserDetail();		
-			//this.loadUserSettings();
+			this.loadUserDetail();
 			
 			var i18nModel = new sap.ui.model.resource.ResourceModel({
 				bundleName : "airbus.mes.shell.i18n.i18n",

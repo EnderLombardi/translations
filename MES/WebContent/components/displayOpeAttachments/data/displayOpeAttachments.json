@@ -1,95 +1,63 @@
 {
-    "documents": [
-        {
-            "doc_type": "SOI",
-            "doc_type_description": "desc of SOI",
-            "documents": [
-                {
-                    "doc_type": "SOI",
-                    "doc_type_description": "desc of SOI",
-                    "item_nr": "10",
-                    "doc_nr": "5402",
-                    "doc_description": "pdf",
-                    "doc_part": "DOKTL_3",
-                    "doc_version": "V.1"
+    "Rowsets": {
+        "DateCreated": "2017-01-19T17:38:56",
+        "Version": "15.1 SP2 Patch 13 (Oct 6, 2016)",
+        "StartDate": "2016-11-17T16:38:56+0100",
+        "EndDate": "2016-11-17T17:38:56+0100",
+        "CachedTime": "",
+        "Rowset": [
+            {
+                "Columns": {
+                    "Column": [
+                        {
+                            "Name": "workInstruction",
+                            "SourceColumn": "workInstruction",
+                            "Description": "",
+                            "SQLDataType": 1,
+                            "MinRange": 1,
+                            "MaxRange": 1
+                        },
+                        {
+                            "Name": "revision",
+                            "SourceColumn": "revision",
+                            "Description": "",
+                            "SQLDataType": 1,
+                            "MinRange": 1,
+                            "MaxRange": 1
+                        },
+                        {
+                            "Name": "descriptionWI",
+                            "SourceColumn": "descriptionWI",
+                            "Description": "",
+                            "SQLDataType": 1,
+                            "MinRange": 1,
+                            "MaxRange": 1
+                        },
+                        {
+                            "Name": "URL",
+                            "SourceColumn": "URL",
+                            "Description": "",
+                            "SQLDataType": 1,
+                            "MinRange": 1,
+                            "MaxRange": 1
+                        }
+                    ]
                 },
-                {
-                    "doc_type": "SOI",
-                    "doc_type_description": "desc of SOI",
-                    "item_nr": "20",
-                    "doc_nr": "102",
-                    "doc_description": "excel",
-                    "doc_part": "DOKTL_4",
-                    "doc_version": "V.1"
-                },
-                {
-                    "doc_type": "SOI",
-                    "doc_type_description": "desc of SOI",
-                    "item_nr": "30",
-                    "doc_nr": "45587854",
-                    "doc_description": "word",
-                    "doc_part": "DOKTL_1",
-                    "doc_version": "V.8"
-                },
-                {
-                    "doc_type": "SOI",
-                    "doc_type_description": "desc of SOI",
-                    "item_nr": "30",
-                    "doc_nr": "45587854",
-                    "doc_description": "word",
-                    "doc_part": "DOKTL_1",
-                    "doc_version": "V.9"
-                }
-            ]
-        },
-        {
-            "doc_type": "AIPI",
-            "doc_type_description": "desc of AIPI",
-            "documents": [
-                {
-                    "doc_type_description": "desc of AIPI",
-                    "item_nr": "10",
-                    "doc_nr": "5402",
-                    "doc_description": "pdf",
-                    "doc_part": "DOKTL_3",
-                    "doc_version": "V.1"
-                },
-                {
-                    "doc_type_description": "desc of AIPI",
-                    "item_nr": "30",
-                    "doc_nr": "45587854",
-                    "doc_description": "word",
-                    "doc_part": "DOKTL_1",
-                    "doc_version": "V.9"
-                }
-            ]
-        },
-        {
-            "doc_type": "MINI",
-            "doc_type_description": "desc of MINI",
-            "documents": [
-                {
-                    "item_nr": "10",
-                    "doc_nr": "5402",
-                    "doc_description": "pdf",
-                    "doc_part": "DOKTL_3",
-                    "doc_version": "V.1"
-                },
-                {
-                    "item_nr": "20",
-                    "doc_nr": "102",
-                    "doc_description": "excel",
-                    "doc_part": "DOKTL_4",
-                    "doc_version": "V.1"
-                },
-                {
-                    "item_nr": "30",
-                    "doc_nr": "45587854",
-                    "doc_description": "word",
-                    "doc_part": "DOKTL_1",
-                    "doc_version": "V.8"
-                }
-            ]
-        }
-    ]
+                "Row": [
+                    {
+                        "workInstruction": "AOT-102156432-P1-Filename",
+                        "revision": "A",
+                        "descriptionWI": "Page one of Airbus Open Transmission Win",
+                        "URL": "http://doc.content.airbus.corp/102156432.pdf"
+                    },
+                    {
+                        "workInstruction": "AOT-102156432-P1-Filename",
+                        "revision": "A",
+                        "descriptionWI": "Page one of Airbus Open Transmission Win",
+                        "URL": "http://doc.content.airbus.corp/102156432.pdf"
+                    }
+                ]
+            }
+        ]
+    }
 }

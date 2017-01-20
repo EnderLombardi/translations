@@ -1,0 +1,174 @@
+{
+    "Rowsets": {
+        "DateCreated": "2017-01-19T17:38:56",
+        "Version": "15.1 SP2 Patch 13 (Oct 6, 2016)",
+        "StartDate": "2016-11-17T16:38:56+0100",
+        "EndDate": "2016-11-17T17:38:56+0100",
+        "CachedTime": "",
+        "Rowset": [
+            {
+                "Columns": {
+                    "Column": [
+                        {
+                            "Name": "documents",
+                            "SourceColumn": "documents",
+                            "Description": "",
+                            "SQLDataType": 1,
+                            "MinRange": 1,
+                            "MaxRange": 1
+                        },
+                        {
+                            "Name": "doc_type",
+                            "SourceColumn": "doc_type",
+                            "Description": "",
+                            "SQLDataType": 1,
+                            "MinRange": 1,
+                            "MaxRange": 1
+                        },
+                        {
+                            "Name": "doc_type_description",
+                            "SourceColumn": "doc_type_description",
+                            "Description": "",
+                            "SQLDataType": 1,
+                            "MinRange": 1,
+                            "MaxRange": 1
+                        },
+                        {
+                            "Name": "item_nr",
+                            "SourceColumn": "item_nr",
+                            "Description": "",
+                            "SQLDataType": 1,
+                            "MinRange": 1,
+                            "MaxRange": 1
+                        },
+                        {
+                            "Name": "doc_nr",
+                            "SourceColumn": "doc_nr",
+                            "Description": "",
+                            "SQLDataType": 1,
+                            "MinRange": 1,
+                            "MaxRange": 1
+                        },
+                        {
+                            "Name": "doc_description",
+                            "SourceColumn": "doc_description",
+                            "Description": "",
+                            "SQLDataType": 1,
+                            "MinRange": 1,
+                            "MaxRange": 1
+                        },
+                        {
+                            "Name": "doc_part",
+                            "SourceColumn": "doc_part",
+                            "Description": "",
+                            "SQLDataType": 1,
+                            "MinRange": 1,
+                            "MaxRange": 1
+                        },
+                        {
+                            "Name": "doc_version",
+                            "SourceColumn": "doc_version",
+                            "Description": "",
+                            "SQLDataType": 1,
+                            "MinRange": 1,
+                            "MaxRange": 1
+                        }
+                    ]
+                },
+                "Row": [
+                    {
+                        "doc_type": "SOI",
+                        "doc_type_description": "desc of SOI",
+                        "documents": [
+                            {
+                                "doc_type": "SOI",
+                                "doc_type_description": "desc of SOI",
+                                "item_nr": "10",
+                                "doc_nr": "5402",
+                                "doc_description": "pdf",
+                                "doc_part": "DOKTL_3",
+                                "doc_version": "V.1"
+                            },
+                            {
+                                "doc_type": "SOI",
+                                "doc_type_description": "desc of SOI",
+                                "item_nr": "20",
+                                "doc_nr": "102",
+                                "doc_description": "excel",
+                                "doc_part": "DOKTL_4",
+                                "doc_version": "V.1"
+                            },
+                            {
+                                "doc_type": "SOI",
+                                "doc_type_description": "desc of SOI",
+                                "item_nr": "30",
+                                "doc_nr": "45587854",
+                                "doc_description": "word",
+                                "doc_part": "DOKTL_1",
+                                "doc_version": "V.8"
+                            },
+                            {
+                                "doc_type": "SOI",
+                                "doc_type_description": "desc of SOI",
+                                "item_nr": "30",
+                                "doc_nr": "45587854",
+                                "doc_description": "word",
+                                "doc_part": "DOKTL_1",
+                                "doc_version": "V.9"
+                            }
+                        ]
+                    },
+                    {
+                        "doc_type": "AIPI",
+                        "doc_type_description": "desc of AIPI",
+                        "documents": [
+                            {
+                                "doc_type_description": "desc of AIPI",
+                                "item_nr": "10",
+                                "doc_nr": "5402",
+                                "doc_description": "pdf",
+                                "doc_part": "DOKTL_3",
+                                "doc_version": "V.1"
+                            },
+                            {
+                                "doc_type_description": "desc of AIPI",
+                                "item_nr": "30",
+                                "doc_nr": "45587854",
+                                "doc_description": "word",
+                                "doc_part": "DOKTL_1",
+                                "doc_version": "V.9"
+                            }
+                        ]
+                    },
+                    {
+                        "doc_type": "MINI",
+                        "doc_type_description": "desc of MINI",
+                        "documents": [
+                            {
+                                "item_nr": "10",
+                                "doc_nr": "5402",
+                                "doc_description": "pdf",
+                                "doc_part": "DOKTL_3",
+                                "doc_version": "V.1"
+                            },
+                            {
+                                "item_nr": "20",
+                                "doc_nr": "102",
+                                "doc_description": "excel",
+                                "doc_part": "DOKTL_4",
+                                "doc_version": "V.1"
+                            },
+                            {
+                                "item_nr": "30",
+                                "doc_nr": "45587854",
+                                "doc_description": "word",
+                                "doc_part": "DOKTL_1",
+                                "doc_version": "V.8"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}
