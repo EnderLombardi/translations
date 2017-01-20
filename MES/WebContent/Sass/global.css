@@ -1235,18 +1235,20 @@ html.sap-desktop .operationDetailHeadPanel .opDetailNavToolbar .sapMSegBBtnFocus
 #reasonCode { margin-top: 0px !important; }
 #reasonCode #imTextArea { margin-bottom: 2rem; }
 
-#confirmationCheckList { position: absolute; top: 30%; display: inline-block; }
+#confirmationCheckList { position: absolute; top: 30%; display: inline-block; width: 35%; border-right: 1px rgba(15, 45, 100, 0.15) solid; }
 #confirmationCheckList .sapMBtnTransparent > .sapMBtnIcon { color: black; }
 #confirmationCheckList div#QAWA-inner:hover { background-color: transparent; cursor: default; }
 #confirmationCheckList div#inspectionStatus-inner:hover { background-color: transparent; cursor: default; }
 #confirmationCheckList div#noMissingsParts-inner:hover { background-color: transparent; cursor: default; }
 #confirmationCheckList div#noOpenNC-inner:hover { background-color: transparent; cursor: default; }
 #confirmationCheckList div#serialNumberRecorded-inner:hover { background-color: transparent; cursor: default; }
-#confirmationCheckList button#QAWA:hover { cursor: default; font-size: default; }
-#confirmationCheckList button#inspectionStatus:hover { cursor: default; }
-#confirmationCheckList button#noMissingsParts:hover { cursor: default; }
-#confirmationCheckList button#noOpenNC:hover { cursor: default; }
-#confirmationCheckList button#serialNumberRecorded:hover { cursor: default; }
+#confirmationCheckList button#QAWA:hover { background-color: transparent; cursor: default; }
+#confirmationCheckList button#inspectionStatus:hover { background-color: transparent; cursor: default; }
+#confirmationCheckList button#noMissingsParts:hover { background-color: transparent; cursor: default; }
+#confirmationCheckList button#noOpenNC:hover { background-color: transparent; cursor: default; }
+#confirmationCheckList button#serialNumberRecorded:hover { background-color: transparent; cursor: default; }
+#confirmationCheckList .sapMBtn:hover > .sapMBtnTransparent.sapMBtnHoverable { background-color: transparent; }
+#confirmationCheckList :not(.sapMBtnDisabled) > .sapMBtnInner.sapMBtnActive { color: #00679e; }
 
 #ViewDisruptionView header.sapMPanelWrappingDivTb .sapMPanelExpandableIcon:focus::after { outline: none; border: none; }
 #ViewDisruptionView header.sapMPanelWrappingDivTb .sapUiIcon:focus { outline: none; }

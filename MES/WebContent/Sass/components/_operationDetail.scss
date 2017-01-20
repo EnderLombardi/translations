@@ -146,6 +146,8 @@
     position: absolute;
     top: 30%;
     display: inline-block;
+    width: 35%;
+    border-right: 1px rgba(15, 45, 100, 0.15) solid;
     .sapMBtnTransparent > .sapMBtnIcon{
         color: black;
     }
@@ -170,20 +172,30 @@
         cursor: default;
     }
     button#QAWA:hover {
+        background-color: transparent;
         cursor: default;
-        font-size: default;
     }
     button#inspectionStatus:hover {
+        background-color: transparent;
         cursor: default;
     }
     button#noMissingsParts:hover {
+        background-color: transparent;
         cursor: default;
     }
     button#noOpenNC:hover {
+        background-color: transparent;
         cursor: default;
     }
     button#serialNumberRecorded:hover {
+        background-color: transparent;
         cursor: default;
+    }
+    .sapMBtn:hover>.sapMBtnTransparent.sapMBtnHoverable {
+        background-color: transparent;
+    }
+    :not(.sapMBtnDisabled)>.sapMBtnInner.sapMBtnActive{
+        color: #00679e;
     }
 }
 #ViewDisruptionView{
