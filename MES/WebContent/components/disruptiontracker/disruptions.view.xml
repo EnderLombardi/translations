@@ -86,10 +86,16 @@
 		</Panel>
 
 
-		<Table id="disruptionsTable" class="disruptionsTable sapUiSmallMarginBottom"
+		<Table id="disruptionsTable" class="disruptionsTable sapUiSmallMarginBottom"  mode="MultiSelect"   
 			items="{ path: 'disruptionsTrackerModel>/Rowsets/Rowset/0/Row' }"
 			growing="true" growingThreshold="50" >
 			<headerToolbar>
+			<Toolbar>
+                    <Button
+                        text="{disruptiontrackerI18n>ExporttoExcel}"
+                        icon="sap-icon://excel-attachment"
+                        press="handleSelectedRowExcelExport" />                 
+                </Toolbar>
 
 			</headerToolbar>
 			<columns>
