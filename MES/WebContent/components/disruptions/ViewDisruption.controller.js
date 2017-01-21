@@ -207,10 +207,9 @@ sap.ui
 						
 						
 						// Get values for Ajax Call
-						var oMsgRef = sap.ui.getCore().byId(
-								"closeDisruption-msgRef");
-						var oComment = airbus.mes.disruptions.Formatter.actions.close +
-									   sap.ui.getCore().byId("closeDisruptionComments");
+						var sMsgRef = sap.ui.getCore().byId("closeDisruption-msgRef").getText();
+						var sComment = airbus.mes.disruptions.Formatter.actions.close +
+									   sap.ui.getCore().byId("closeDisruptionComments").getValue();
 						
 						var oTimeLost = sap.ui.getCore().byId(
 								"closeDisruption-timeLost");
@@ -226,16 +225,20 @@ sap.ui
 								"Param.2" : sap.ui.getCore().getModel(
 										"userSettingModel").getProperty(
 										"/Rowsets/Rowset/0/Row/0/user"),
-								"Param.3" : oMsgRef.getText(),
-								"Param.4" : oComment.getValue(),
+								"Param.3" : sMsgRef,
+								"Param.4" : sComment,
 								"Param.5" : timeLostValue
 							},
 							error : function(xhr, status, error) {
+								airbus.mes.operationdetail.oView.setBusy(false);
 								var message = airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("tryAgain");
 								airbus.mes.shell.ModelManager.messageShow(message);
 
 							},
 							success : function(result, status, xhr) {
+
+								airbus.mes.operationdetail.oView.setBusy(false);
+								
 								if (result.Rowsets.Rowset[0].Row[0].Message_Type != undefined &&
 									
 									result.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
@@ -245,9 +248,7 @@ sap.ui
 									var message = airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("successClosed");
 									airbus.mes.shell.ModelManager.messageShow(message);
 									
-									var operationDisruptionsModel =  airbus.mes.disruptions.oView.viewDisruption.getModel("operationDisruptionsModel");	
-								
-									airbus.mes.operationdetail.oView.setBusy(false);
+									var operationDisruptionsModel =  airbus.mes.disruptions.oView.viewDisruption.getModel("operationDisruptionsModel");
 
 									//load again disruptions data
 									var operationBO = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_bo;
