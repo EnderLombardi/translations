@@ -907,6 +907,9 @@ airbus.mes.stationtracker.util.Formatter = {
 					//Transfomr in hour
 					var sGapMin = Math.abs(Math.round((sGap - sGapHour)*60));
 					
+//                  Conversion from minutes to industrial minutes
+                    sGapMin = Math.round( ( sGapMin / 3 ) * 5 );					
+					
 					if ( sGapMin < 10 ){
 						sGapMin = "0" + sGapMin;
 					}
