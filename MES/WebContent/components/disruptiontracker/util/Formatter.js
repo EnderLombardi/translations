@@ -175,7 +175,7 @@ airbus.mes.disruptiontracker.Formatter = {
 		return airbus.mes.disruptiontracker.Formatter.removeDecimal(time);
 	},
 	setDisruptionTrackerStatus : function(status){
-		return airbus.mes.disruptiontracker.oView.getModel("disruptiontrackerI18n").getProperty(status);
+		return airbus.mes.disruptiontracker.oView.getModel("disruptiontrackerI18n").getProperty("status."+status.toLowerCase());
 	},
 	/**
 	 *@param milli seconds
