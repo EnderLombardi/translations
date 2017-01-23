@@ -110,20 +110,16 @@
             <Toolbar id="opDetailNavToolbar" class="opDetailNavToolbar">
                 <SegmentedButton id="opDetailSegmentButtons" class="opDetailNav" width="1000px">
                     <items>
-                        <SegmentedButtonItem id="idStatus" text="{i18n>Status}"
-                            key="status" press="openPage" />
-                        <SegmentedButtonItem id="idCheckList" text="{i18n>CheckListAndRecords}"
-                            key="checkList" press="openPage" />
-                        <SegmentedButtonItem id="idDisruption" text="{i18n>Disruption}"
-                            key="disruption" press="openPage"  />
-                        <SegmentedButtonItem id="idDisplayOpeAttachments" text="{i18n>Documents}" key="displayOpeAttachments" press="openPage" />
-                         <SegmentedButtonItem id="idReschedule" text="{i18n>Reschedule}"
-                            key="reschedule" press="openPage"  />
-                        <SegmentedButtonItem id="idtouchngo" text="{i18n>Touchngo}" key="touchngo" press="openPage" />
-                        <SegmentedButtonItem id="idJignTools" text="{i18n>JignTools}" key="jigntools" press="openPage" />
-                        <SegmentedButtonItem id="idComponents" text="{i18n>Components}" key="components" press="openPage" />
-                        <SegmentedButtonItem id="idACPnGLinks" text="{i18n>ACPnGLinks}" key="ACPnGLinks" press="openPage" />
-                        <SegmentedButtonItem id="idNCDisplay" text="{i18n>ncDisplay}" key="ncDisplay" press="openPage" />
+                        <SegmentedButtonItem id="idStatus" text="{i18n>Status}" tooltip="{i18n>Status}" key="status" press="openPage" />
+                        <SegmentedButtonItem id="idCheckList" text="{i18n>CheckListAndRecords}" tooltip="{i18n>CheckListAndRecords}" key="checkList" press="openPage" />
+                        <SegmentedButtonItem id="idDisruption" text="{i18n>Disruption}" tooltip="{i18n>Disruption}" key="disruption" press="openPage"  />
+                        <SegmentedButtonItem id="idDisplayOpeAttachments" text="{i18n>Documents}" tooltip="{i18n>Documents}" key="displayOpeAttachments" press="openPage" />
+                         <SegmentedButtonItem id="idReschedule" text="{i18n>Reschedule}" tooltip="{i18n>Reschedule}" key="reschedule" press="openPage"  />
+                        <SegmentedButtonItem id="idtouchngo" text="{i18n>Touchngo}" tooltip="{i18n>Touchngo}" key="touchngo" press="openPage" />
+                        <SegmentedButtonItem id="idJignTools" text="{i18n>JignTools}" tooltip="{i18n>JignTools}" key="jigntools" press="openPage" />
+                        <SegmentedButtonItem id="idComponents" text="{i18n>Components}" tooltip="{i18n>Components}" key="components" press="openPage" />
+                        <SegmentedButtonItem id="idACPnGLinks" text="{i18n>ACPnGLinks}" tooltip="{i18n>ACPnGLinks}" key="ACPnGLinks" press="openPage" />
+                        <SegmentedButtonItem id="idNCDisplay" text="{i18n>ncDisplay}" tooltip="{i18n>ncDisplay}" key="ncDisplay" press="openPage" />
                     </items>
                 </SegmentedButton>
             </Toolbar>
