@@ -6303,7 +6303,7 @@ Physical Station Popover
 #jigtoolsView--jigToolList.jigToolListtable {
   width: 95% !important;
   margin: 0 auto;
-  padding: 0 auto; }
+  padding: 0; }
   #jigtoolsView--jigToolList.jigToolListtable > table {
     border: solid 1px #97999b; }
     #jigtoolsView--jigToolList.jigToolListtable > table > thead > tr > th {
@@ -7680,7 +7680,7 @@ reschedule
 #ncdisplayView--ncDisplay.ncDisplayTable {
   width: 95% !important;
   margin: 0 auto;
-  padding: 0 auto; }
+  padding: 0; }
   #ncdisplayView--ncDisplay.ncDisplayTable > table {
     border: solid 1px #97999b; }
     #ncdisplayView--ncDisplay.ncDisplayTable > table > thead > tr > th {
@@ -7772,7 +7772,7 @@ reschedule
 #componentsView--ComponentsList.ComponentsList {
   width: 95% !important;
   margin: 0 auto;
-  padding: 0 auto; }
+  padding: 0; }
   #componentsView--ComponentsList.ComponentsList > table {
     border: solid 1px #97999b; }
     #componentsView--ComponentsList.ComponentsList > table > thead > tr > th {
