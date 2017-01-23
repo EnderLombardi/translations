@@ -4,9 +4,7 @@ sap.ui.controller("airbus.mes.calendar.controller.calendar", {
 	
 	onAfterRendering : function() {
 		
-		var jqToolbar = $(airbus.mes.calendar.oView.byId('toolbarcalendar').getDomRef());
-        var jqStationTracker = $(airbus.mes.calendar.oView.byId('calendar').getDomRef());
-        jqStationTracker.css('top', jqToolbar.offset().top);
+		
 		
 	},
 	

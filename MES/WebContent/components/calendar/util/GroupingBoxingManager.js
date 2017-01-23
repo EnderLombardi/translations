@@ -160,12 +160,12 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 				
 				oHierachy[sName] = {};
 			}
-			if ( !oHierachy[sName][el.USER + sCstSplit + el.FIRST_NAME + sCstSplit +  el.LAST_NAME ] ) {
+			if ( !oHierachy[sName][el.USER + sCstSplit + el.FIRST_NAME + sCstSplit +  el.LAST_NAME + sCstSplit + sName ] ) {
 				
-				oHierachy[sName][ el.USER + sCstSplit + el.FIRST_NAME + sCstSplit +  el.LAST_NAME ] = [];
+				oHierachy[sName][ el.USER + sCstSplit + el.FIRST_NAME + sCstSplit +  el.LAST_NAME + sCstSplit + sName ] = [];
 			}
 			
-			oHierachy[sName][ el.USER + sCstSplit + el.FIRST_NAME + sCstSplit +  el.LAST_NAME ].push(el);
+			oHierachy[sName][ el.USER + sCstSplit + el.FIRST_NAME + sCstSplit +  el.LAST_NAME + sCstSplit + sName].push(el);
 					
 		})
 		//===============
@@ -186,8 +186,13 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 			//Compute aElements2 creation of line	
 			//===============
 			Object.keys(oHierachy[group]).forEach(function(line,index2) {
-							
+				
+				var aData = line.split(sCstSplit);				
+				
 				var oLine = {
+					"lastName" : aData[2],
+					"firstName" : aData[1],
+					"ng" : aData[0],
 					"group" : group,
 					"avlLine" : line,
 					"key": airbus.mes.calendar.util.Formatter.idName(line)
@@ -200,11 +205,12 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 				oHierachy[group][line].forEach( function(el) {
 				
 					var oBox = {
-					
-						"key" : line,
+						"loaned" : el.LOANED,
+						"diversion" : el.DIVERSION,
+						"validated" : el.VALIDATED,
+						"section_id" : airbus.mes.calendar.util.Formatter.idName(line),
 						"start_date" : new Date(oFormatter.jsDateFromDayTimeStr(el.START_DATE_TIME)),
 						"end_date" : new Date(oFormatter.jsDateFromDayTimeStr(el.END_DATE_TIME)),
-				
 					};
 					
 					aBox.push(oBox)
@@ -290,6 +296,7 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 		calendar.xy.scroll_width=20;
         airbus.mes.shell.busyManager.unsetBusy(airbus.mes.calendar.oView);
 	    calendar.parse(aBox,"json");
-	},
+	    calendar.openAllSections();
+	   },
 	
 };

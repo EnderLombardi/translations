@@ -2,11 +2,6 @@
 
 sap.ui.core.Control.extend("airbus.mes.calendar.util.DHTMLXScheduler",    {
 
-//                  Define if it is a simple click or a double click. Used on event onDblClick and onClick
-                    byPassOnClick: "boolean",
-//                  Define if it is a simple click or a drag and drop. Used on event onBeforeDrag and onClick
-                    byPassOnDrag: "boolean",
-                    
                     renderer : function(oRm, oControl) {
 
                         oRm.write("<div ");
@@ -34,6 +29,8 @@ sap.ui.core.Control.extend("airbus.mes.calendar.util.DHTMLXScheduler",    {
                         calendar.config.markedCells = 0;
                         calendar.config.mark_now = true;
                         calendar.config.drag_create = false;
+                        // no drag and drop calendar
+                        calendar.drag_move = false;
                         // cant drag & drop verticaly if set to force
                         calendar.config.touch = "force";
                         calendar.config.details_on_create = false;
@@ -82,23 +79,6 @@ sap.ui.core.Control.extend("airbus.mes.calendar.util.DHTMLXScheduler",    {
                         /************************************************************************/
                         /************************************************************************/
                    
-                        
-                        /**
-                         * ??????????
-                         *
-                         * @param {oEvent} Object wich represent the event on press from "TeamButton"
-                         */
-
-                        calendar.eventId.push(calendar.attachEvent("onBeforeTodayDisplayed", function() {
-
-                            ShiftManager.step = 0;
-                            ShiftManager.current_Date = new Date().toISOString().slice(0, 10);
-                            ShiftManager.adjustcalendarXStart(new Date());
-
-                            return true;
-
-                        }));
-
                         /**
                          * Permit to replace the default arrow to change the day in calendar change the icon
                          * display on the collapse open folder
@@ -112,20 +92,18 @@ sap.ui.core.Control.extend("airbus.mes.calendar.util.DHTMLXScheduler",    {
                                     }
 
                                 /* Create arrow to change shift/day */
-                                    if ($("div[class='dhx_cal_next_button']").length === 0) {
+                                    if ($("#calendar--calendar")[0].children[1].children.length <= 2) {
                                         $("div[class='dhx_cal_header']").append(("<div class='dhx_cal_next_button' Style='float:right; width:30px;'></div>"));
                                         $("div[class='dhx_cal_next_button']").tap(function() {
                                             calendar._click.dhx_cal_next_button();
                                     		airbus.mes.calendar.oView.getController().UpdateDateSwipe();		    
                                         });
-                                    }
-
-                                    if ($("div[class='dhx_cal_prev_button']").length === 0) {
                                         $("div[class='dhx_cal_header']").append(("<div class='dhx_cal_prev_button' Style='float:right; width:30px;'></div>"));
                                         $("div[class='dhx_cal_prev_button']").tap(function() {
                                             calendar._click.dhx_cal_prev_button();
                                     		airbus.mes.calendar.oView.getController().UpdateDateSwipe();		
                                         });
+                                           
                                     }
 
                                     }));
@@ -135,19 +113,18 @@ sap.ui.core.Control.extend("airbus.mes.calendar.util.DHTMLXScheduler",    {
                          *
                          * @param {STRING} id, the Id of the box selected in gantt
                          */
-                        
-                        calendar.attachEvent("onBeforeLightbox", function (id){
-                            //any custom logic here
-                            return true;
-                        });
-
                         calendar.eventId.push( calendar.attachEvent("onBeforeLightbox", function(id) {
                         	// Close default dialog of calendar after double click
                         	calendar._drag_mode = ""
                             return false;
 
                         }));
-
+                        /**
+                         * Dismiss drag & drop
+                         */
+                        calendar.eventId.push( calendar.attachEvent("onBeforeDrag", function (id, mode, e){
+                            return false;
+                        }));
                         /**
                          * Manage the simple click it open the operationInfo popup if boxing is
                          * operation otherwise it open worklist dialog
@@ -155,10 +132,10 @@ sap.ui.core.Control.extend("airbus.mes.calendar.util.DHTMLXScheduler",    {
                          * @param {STRING} id, the Id of the box selected in gantt
                          */
 
-                        calendar.eventId.push ( calendar.attachEvent("onClick", function(id,e) {
-                        	
-
-                        }));
+//                        calendar.eventId.push ( calendar.attachEvent("onClick", function(id,e) {
+//                        	
+//
+//                        }));
 
                         /************************************************************************/
                         /************************************************************************/
@@ -167,24 +144,23 @@ sap.ui.core.Control.extend("airbus.mes.calendar.util.DHTMLXScheduler",    {
                         /**                                                                    **/
                         /************************************************************************/
                         /************************************************************************/
-
+                        //Custom display of Y axis
                         calendar.templates.timeline_scale_label = function(key, label, section) {
                             return airbus.mes.calendar.util.Formatter.YdisplayRules(section);
                         };
 
-                        calendar.templates.timeline_scaley_class = function(key, label, section) {
-                            if (section.initial != undefined) {
-                                return "initial";
-                            }
-
-                            if (section.rescheduled != undefined) {
-                                return "lineYaxis";
-                            }
-                        };
-
                         /*      Custom progress background display  */
                         calendar.templates.event_class = function(start, end, event) {
-                            return "grey";
+                        	
+                        	if ( event.validated === "true" ) {
+                        		// absence validated
+                        		return "grey";
+                        		
+                        	} else {
+                        		// absence pending
+                        		return "black";
+                          	}
+                        	
                         };
 
                         /*      Custom Hour display display  */
@@ -192,18 +168,8 @@ sap.ui.core.Control.extend("airbus.mes.calendar.util.DHTMLXScheduler",    {
                             return "customHour";
                         };
 
-                        calendar.templates.event_bar_text = function(start, end, event) {
-                            return airbus.mes.calendar.util.Formatter.BoxDisplay(event);
-                        };
+                      
 
-                        /* custom initial */
-                        calendar.templates.timeline_cell_class = function(evs, date, section) {
-                            if (section.initial != undefined) {
-                                return "initial";
-                            }
-                            if (section.children != undefined) {
-                                return "folderAxisColor";
-                            }
-                        };
+
                     },
                 });

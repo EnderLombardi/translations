@@ -356,6 +356,11 @@ sap.ui.controller(
                         // ** asynchrone call **//
                         oModule.loadCalendarTracker();
                         
+                        // **Calculation of hiehgt of scheduler** //
+                        var jqToolbar = $(airbus.mes.calendar.oView.byId('toolbarcalendar').getDomRef());
+                        var jqStationTracker = $(airbus.mes.calendar.oView.byId('calendar').getDomRef());
+                        jqStationTracker.css('top', jqToolbar.offset().top);
+                        
                     },
                     
                     /**
