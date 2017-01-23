@@ -18,8 +18,8 @@ airbus.mes.stationtracker.GraphManager = {
 		var data = oCtrl.getData().map(bindingToArray);
 
 		for (var i = 0; i < data.length; i++) {
-			data[i].x = parseInt(data[i].x);
-			data[i].y = parseInt(data[i].y);
+			data[i].x = parseFloat(data[i].x);
+			data[i].y = parseFloat(data[i].y);
 		}
 
 		var realData = oCtrl.getRealData().map(bindingToArray);
