@@ -274,7 +274,7 @@ sap.ui
                           /** Navigate **/
                            this.nav.to(airbus.mes.components.oView.getId());
 
-                           break;                            
+                           break;
                         case "displayOpeAttachments":
                             airbus.mes.shell.util.navFunctions.displayOpeAttachments(this.nav);
 
@@ -396,9 +396,10 @@ sap.ui
                             break;
                         case "ncdisplayView":
                                 airbus.mes.ncdisplay.oView.oController.defaultSelectNcDisplay();
+                                break;
                         case "componentsView":
                             airbus.mes.components.oView.oController.checkSettingComponents();
-                            break;     
+                            break;
                          default:
 
 
