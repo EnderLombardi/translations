@@ -1,7 +1,6 @@
 "use strict";
 
 jQuery.sap.registerModulePath("airbus.mes.ncdisplay", "../components/ncdisplay");
-//jQuery.sap.require("airbus.mes.acpnglinks.util.Formatter");
 jQuery.sap.require("airbus.mes.ncdisplay.util.ModelManager");
 jQuery.sap.declare("airbus.mes.ncdisplay.Component");
 
@@ -13,14 +12,10 @@ sap.ui.core.UIComponent.extend("airbus.mes.ncdisplay.Component", {
 
 airbus.mes.ncdisplay.Component.prototype.createContent = function() {
 
-    //    Set current work Order and operation
-    //    airbus.mes.acpnglinks.workOrder = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].wo_no;
-    //    airbus.mes.acpnglinks.operation = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_no;
-
     if (airbus.mes.ncdisplay.oView === undefined) {
 
         // Initialize ModelManager and load needed file
-        airbus.mes.ncdisplay.model.ModelManager.init(sap.ui.getCore());
+        airbus.mes.ncdisplay.util.ModelManager.init(sap.ui.getCore());
 
         // View on XML
         this.oView = sap.ui.view({

@@ -386,6 +386,8 @@ sap.ui
                         case "jigtoolsView":
                             airbus.mes.jigtools.oView.oController.checkSettingJigsTools();
                             break;
+                        case "ncdisplayView":
+                                airbus.mes.ncdisplay.oView.oController.defaultSelectNcDisplay();
                          default:
 
 

@@ -1,11 +1,15 @@
 "use strict";
-jQuery.sap.declare("airbus.mes.ncdisplay.model.ModelManager")
+jQuery.sap.declare("airbus.mes.ncdisplay.util.ModelManager")
 
-airbus.mes.ncdisplay.model.ModelManager = {
+airbus.mes.ncdisplay.util.ModelManager = {
 
     urlModel : undefined,
     brOnMessageCallBack:function (data) {},
     queryParams : jQuery.sap.getUriParameters(),
+
+    // variable for filter
+    productionOrder : "P",
+    operation : "O",
 
     init : function(core) {
 
@@ -45,5 +49,21 @@ airbus.mes.ncdisplay.model.ModelManager = {
             }
         }
 
+        airbus.mes.shell.ModelManager.createJsonModel(core,["ncdisplaydata"]);
+        this.loadNcDisplayData();
+        console.log(this.loadNcDisplayData());
+
+    },
+    //load
+    loadNcDisplayData : function() {
+        var oModel = sap.ui.getCore().getModel("ncdisplaydata");
+        oModel.loadData(this.getNcDisplayData(), null, false);
+    },
+
+    //get
+    getNcDisplayData : function() {
+        var url = this.urlModel.getProperty("ncdisplaydata");
+        url = airbus.mes.shell.ModelManager.replaceURI(url, "$site", airbus.mes.settings.ModelManager.site);
+        return url;
     },
 }
