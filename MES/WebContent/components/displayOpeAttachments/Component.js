@@ -1,7 +1,10 @@
 "use strict";
 
 jQuery.sap.registerModulePath("airbus.mes.displayOpeAttachments", "../components/displayOpeAttachments");
+
 jQuery.sap.require("airbus.mes.displayOpeAttachments.util.ModelManager");
+jQuery.sap.require("airbus.mes.displayOpeAttachments.util.Formatter");
+jQuery.sap.require("airbus.mes.settings.AppConfManager");
 
 jQuery.sap.declare("airbus.mes.displayOpeAttachments.Component");
 

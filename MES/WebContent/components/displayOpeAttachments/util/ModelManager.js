@@ -49,6 +49,11 @@ airbus.mes.displayOpeAttachments.util.ModelManager = {
 	loadDOADetail : function() {
 		var oModel = sap.ui.getCore().getModel("getOpeAttachments");
 		oModel.loadData(this.getDOADetail(), null, false);
+
+		var row = oModel.oData.Rowsets.Rowset[0].Row;
+		airbus.mes.displayOpeAttachments.util.Formatter.extractWorkinstruction(row);//create dokar, doknr & doktl using workInstruction
+		airbus.mes.displayOpeAttachments.util.Formatter.sortByDocType(row);//sort the documents by doc type
+		oModel.oData.Rowsets.Rowset[0].Row = airbus.mes.displayOpeAttachments.util.Formatter.addDocTypeHierarchy(row);//create a parent object by foc type
 	},
 	
 	getDOADetail : function() {
