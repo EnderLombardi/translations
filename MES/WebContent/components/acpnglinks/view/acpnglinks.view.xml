@@ -2,37 +2,38 @@
 	xmlns="sap.m" controllerName="airbus.mes.acpnglinks.controller.acpnglinks"
 	xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml"
 	xmlns:tab="sap.ui.table">
-	<Page showHeader="false" height="100%">
+	<Page showHeader="false" height="100%" enableScrolling="false">
 		<content>
-		<VBox id="ACPnGLinks" class="Checklist">
-			<tab:TreeTable id="ACPnGTreeTable" rows="{acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Row/}"  cellClick="OnSelectionChange"> 
+		
+		<VBox id="ACPnGLinks" class="ACPnGLinkslist">
+			<tab:TreeTable id="ACPnGTreeTable" class="ACPnGTreeTable" rows="{acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Row/}"  cellClick="OnSelectionChange"> 
 				<tab:columns> 
 					<tab:Column visible="true" sortProperty= "Type" > 
-						<Label text="Type" /> 
+						<Label class="ACPnGtLabel" text="Type" /> 
 						<tab:template> 
 							<Text text="{acpnglinksWorkOrderDetail>Type}" class="AllignItem" /> 
 						</tab:template> 
 					</tab:Column> 
 					<tab:Column visible="true" sortProperty= "Ref" > 
-						<Label text="Reference" />
+						<Label class="ACPnGtLabel" text="Reference" />
 						<tab:template> 
 							<Label text="{acpnglinksWorkOrderDetail>Ref}" class="AllignItem" /> 
 						</tab:template> 
 					 </tab:Column> 
 					<tab:Column visible="true"  sortProperty= "Review_end" > 
-						<Label text="ACPnG review end date" />
+						<Label class="ACPnGtLabel" text="ACPnG review end date" />
 						<tab:template> 
 							<Label text="{acpnglinksWorkOrderDetail>Review_end}" class="AllignItem" /> 
 						</tab:template> 
 					</tab:Column> 
 					<tab:Column visible="true" sortProperty= "Note" > 
-						<Label text="Note" />
+						<Label class="ACPnGtLabel" text="Note" />
 						<tab:template> 
 							<Label text="{acpnglinksWorkOrderDetail>Note}" class="AllignItem" /> 
 						</tab:template> 
 					</tab:Column> 
 					<tab:Column visible="true" sortProperty= "Family_target" > 
-						<Label text="Family target" />
+						<Label class="ACPnGtLabel" text="Family target" />
 						<tab:template> 
 							<Label text="{acpnglinksWorkOrderDetail>Family_target}" class="AllignItem" /> 
 						</tab:template> 
@@ -119,6 +120,7 @@
 				</tab:columns>
 			</tab:TreeTable>
 		</VBox>
+		
 		</content>
 	</Page>
 </mvc:View>

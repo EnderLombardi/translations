@@ -1,10 +1,11 @@
-#displayOpeAttachmentsView--DOATable{
-	width:95% !important;
-	margin: 0 auto;
-	padding:0;
-	height:550px;
-	.sapUiTableCnt{
-		    height: 500px;
+#acpnglinksView--ACPnGLinks{
+    width:95% !important;
+    margin: 50px auto;
+    padding:0 auto;
+    border: solid 1px $cool-grey;
+    //height:640px;
+    .sapUiTableCnt{
+		    //height: 630px;
 		    .sapUiTableColHdrCnt{
 		    	height:46px !important;
 				.sapUiTableColHdrScr {
@@ -18,13 +19,13 @@
 		}
 }
 
-.DisOpAttLabel{
+.ACPnGtLabel{
 	color:white;
 	padding-top: 8px;
     padding-left: inherit;
 }
 
-#acpnglinksView--ACPnGTreeTable-table{
+#acpnglinksView--ACPnGLinks-table{
 	>tbody {
 				tr:nth-child(even) {background: #fff}
 				tr:nth-child(odd) {background: #fcfcfc}
@@ -40,16 +41,5 @@
 		}
 }		
 
-#acpnglinksView--ACPnGTreeTable-table.DOACheck{
-	width: 50%;
-    margin: 50px auto 10px auto;
-    padding: 0;
-    text-align: center;
-}
 
-#displayOpeAttachmentsView--DOAlabel.DOAlabel {
-        font-weight: bold;
-    	padding: 0;
-   		margin: 25px 0 25px 2.5% !important;
-}
 
