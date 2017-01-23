@@ -23,9 +23,10 @@ sap.ui.controller("airbus.mes.ncdisplay.controller.ncdisplay", {
 
     //table filter
     filterNcDisplay: function (sScope) {
+        var idOpe = airbus.mes.ncdisplay.util.ModelManager.operationData;
         switch (sScope) {
             case airbus.mes.ncdisplay.util.ModelManager.operation:
-                sap.ui.getCore().byId("ncdisplayView--ncDisplay").getBinding("items").filter(new sap.ui.model.Filter("type", "NE", "WO"));
+                sap.ui.getCore().byId("ncdisplayView--ncDisplay").getBinding("items").filter(new sap.ui.model.Filter("idOpe", "EQ", idOpe[0].operation_id));
                 break;
             case airbus.mes.ncdisplay.util.ModelManager.workOrder:
                 sap.ui.getCore().byId("ncdisplayView--ncDisplay").getBinding("items").filter();

@@ -10,6 +10,7 @@ airbus.mes.ncdisplay.util.ModelManager = {
     // variable for filter
     productionOrder : "P",
     operation : "O",
+    operationData: undefined,
 
     init : function(core) {
 
@@ -51,7 +52,7 @@ airbus.mes.ncdisplay.util.ModelManager = {
 
         airbus.mes.shell.ModelManager.createJsonModel(core,["ncdisplaydata"]);
         this.loadNcDisplayData();
-        console.log(this.loadNcDisplayData());
+        airbus.mes.ncdisplay.util.ModelManager.operationData = this.getOperationData();
 
     },
     //load
@@ -66,4 +67,10 @@ airbus.mes.ncdisplay.util.ModelManager = {
         url = airbus.mes.shell.ModelManager.replaceURI(url, "$site", airbus.mes.settings.ModelManager.site);
         return url;
     },
+
+    getOperationData: function(){
+        var oModel = [sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0]];
+        return oModel;
+    }
+
 }
