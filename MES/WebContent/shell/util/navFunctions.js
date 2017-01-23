@@ -10,6 +10,10 @@ airbus.mes.shell.util.navFunctions = {
         configME : undefined,
     },
 
+    components:{
+        configME : undefined,
+    },
+    
     disruptionButtons:{
         create: undefined,
         update:undefined,
@@ -195,6 +199,17 @@ airbus.mes.shell.util.navFunctions = {
             container.addPage(airbus.mes.jigtools.oView);
         }
     },
+    componentsDetail : function(container) {
+
+        if (airbus.mes.components === undefined || airbus.mes.components.oView === undefined) {
+
+            jQuery.sap.registerModulePath("airbus.mes.components","../components/components");
+            sap.ui.getCore().createComponent({name : "airbus.mes.components"});
+        }
+        if (container.getPage("componentsView") === null) {
+            container.addPage(airbus.mes.components.oView);
+        }
+    },    
     acpnglinksDetail : function(container) {
 
         if (airbus.mes.acpnglinks === undefined || airbus.mes.acpnglinks.oView === undefined) {
