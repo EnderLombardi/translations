@@ -7,12 +7,12 @@
 	xmlns:l="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml"
 	xmlns:cData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" >
 
-	<Page enableScrolling="false" showHeader="false">
+	<Page enableScrolling="false" showHeader="false" height="100%">
 	<content>
 		
 	<!-- <Text id="jigToollabel" class="jigToolListlabel" text="{i18nJigstoolsModel>JigTool}" /> -->
 	
-	<VBox id="componentscheck" class="componentscheck">
+	<VBox id="ComponentsCheck" class="ComponentsCheck">
  			<RadioButtonGroup columns="2" select="onSelectLevel">
 				<buttons>
 					<RadioButton id="operationButton" text="{i18nComponentsModel>componentOperation}"/>
@@ -21,8 +21,7 @@
 			</RadioButtonGroup>
 	</VBox>
 
-	<Table 	id="componentsList" 
- 			class="componentsListtable"
+	<Table 	id="ComponentsList" class="ComponentsList"
 			items="{path: 'componentsWorkOrderDetail>/Rowsets/Rowset/0/Row/'}">
 			
 			<headerToolbar>

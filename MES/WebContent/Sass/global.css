@@ -2383,6 +2383,33 @@ td {
 #disruptiontrackerView--disruptionsTable #disruptiontrackerView--disruptionsTable-tblBody tr td {
   text-align: justify !important; }
 
+#disruptionDetail {
+  overflow: auto;
+  background-color: #E9EEF3; }
+  #disruptionDetail .sapMFlexBox.sapMFlexBoxAlignContentStretch.sapMFlexBoxAlignItemsStretch.sapMFlexBoxJustifyStart.sapMFlexBoxWrapNoWrap.sapMFlexItem.sapMHBox {
+    background-color: #E9EEF3; }
+  #disruptionDetail .sapUiFormTitle {
+    background-color: transparent; }
+  #disruptionDetail .sapUiFormM .sapUiFormContainerTitle > .sapUiFormTitle {
+    height: 2rem;
+    line-height: 2rem; }
+  #disruptionDetail .sapMSlt > .sapMSltLabel,
+  #disruptionDetail .sapMSlt, #disruptionDetail .sapMSltArrow {
+    line-height: 2.5rem;
+    height: 2.5rem; }
+  #disruptionDetail .sapUiFormContainerTitle {
+    background-color: #E9EEF3; }
+  #disruptionDetail .sapUiFormResGrid.sapUiFormBackgrTranslucent > div {
+    background-color: #E9EEF3; }
+  #disruptionDetail .titleToolbar {
+    background-color: rgba(191, 198, 206, 0.59); }
+  #disruptionDetail .sapUiForm .sapUiFormTitle {
+    font-weight: bold;
+    line-height: 4rem; }
+  #disruptionDetail .sapMFlexItem .textSize:nth-child(1) {
+    font-weight: bold;
+    color: black; }
+
 /********************
 RESSOURCEPOOL
 *********************/
@@ -7697,15 +7724,15 @@ reschedule
   padding-top: 8px;
   padding-left: inherit; }
 
-#acpnglinksView--ACPnGLinks-table > tbody tr:nth-child(even) {
+#acpnglinksView--ACPnGTreeTable-table > tbody tr:nth-child(even) {
   background: #fff; }
-#acpnglinksView--ACPnGLinks-table > tbody tr:nth-child(odd) {
+#acpnglinksView--ACPnGTreeTable-table > tbody tr:nth-child(odd) {
   background: #fcfcfc; }
-#acpnglinksView--ACPnGLinks-table > tbody tr:hover {
+#acpnglinksView--ACPnGTreeTable-table > tbody tr:hover {
   background-color: #efefef; }
-#acpnglinksView--ACPnGLinks-table > tbody > tr {
+#acpnglinksView--ACPnGTreeTable-table > tbody > tr {
   height: 46px; }
-  #acpnglinksView--ACPnGLinks-table > tbody > tr > td {
+  #acpnglinksView--ACPnGTreeTable-table > tbody > tr > td {
     text-align: left !important;
     border-left: 1px solid #767879;
     border-top: 1px solid #e5e5e5; }
@@ -7741,6 +7768,38 @@ reschedule
     text-align: left !important;
     border-left: 1px solid #767879;
     border-top: 1px solid #e5e5e5; }
+
+#componentsView--ComponentsList.ComponentsList {
+  width: 95% !important;
+  margin: 0 auto;
+  padding: 0 auto; }
+  #componentsView--ComponentsList.ComponentsList > table {
+    border: solid 1px #97999b; }
+    #componentsView--ComponentsList.ComponentsList > table > thead > tr > th {
+      background-color: #0085ad;
+      border-right: 1px solid white; }
+      #componentsView--ComponentsList.ComponentsList > table > thead > tr > th > span {
+        color: white; }
+    #componentsView--ComponentsList.ComponentsList > table > tbody tr:nth-child(even) {
+      background: #fff; }
+    #componentsView--ComponentsList.ComponentsList > table > tbody tr:nth-child(odd) {
+      background: #fcfcfc; }
+    #componentsView--ComponentsList.ComponentsList > table > tbody tr:hover {
+      background-color: #efefef; }
+    #componentsView--ComponentsList.ComponentsList > table > tbody > tr > td {
+      text-align: left !important;
+      border-left: 1px solid #767879; }
+
+#componentsView--ComponentsCheck.ComponentsCheck {
+  width: 50%;
+  margin: 50px auto 10px auto;
+  padding: 0;
+  text-align: center; }
+
+#componentsView--ComponentsCheck.jigToolListlabel {
+  font-weight: bold;
+  padding: 0;
+  margin: 25px 0 25px 2.5% !important; }
 
 /*************
 GENERALE RULES
