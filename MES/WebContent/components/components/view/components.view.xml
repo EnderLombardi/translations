@@ -15,7 +15,7 @@
 	<VBox id="ComponentsCheck" class="ComponentsCheck">
  			<RadioButtonGroup columns="2" select="onSelectLevel">
 				<buttons>
-					<RadioButton id="operationButton" text="{i18nComponentsModel>componentOperation}"/>
+					<RadioButton id="operationButton" text="{i18nComponentsModel>componentsOperation}"/>
 					<RadioButton id="workOrderButton" text="{i18nComponentsModel>componentsWorkOrder}"/>
 				</buttons>
 			</RadioButtonGroup>

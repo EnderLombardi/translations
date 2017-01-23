@@ -57,25 +57,21 @@ airbus.mes.components.util.ModelManager = {
 			}
 		}
 		
-		//"jigToolsConfigModel", 
+		//"componentsConfigModel", 
 		airbus.mes.shell.ModelManager.createJsonModel(core,["componentsWorkOrderDetail"]);
-		this.loadjigToolsWorkOrderDetail();
+		this.loadcomponentsWorkOrderDetail();
 	},
 
 	//load
-	loadjigToolsWorkOrderDetail : function() {
+	loadcomponentsWorkOrderDetail : function() {
 		var oModel = sap.ui.getCore().getModel("componentsWorkOrderDetail");
-		oModel.loadData(this.getjigToolsWorkOrderDetail(), null, false);
+		oModel.loadData(this.getcomponentsWorkOrderDetail(), null, false);
 	},
 	
 	//get 
-	getjigToolsWorkOrderDetail : function() {
+	getcomponentsWorkOrderDetail : function() {
 		var url = this.urlModel.getProperty("componentsWorkOrderDetail");
 		url = airbus.mes.shell.ModelManager.replaceURI(url, "$site", airbus.mes.settings.ModelManager.site);
 		return url;
 	},
-	
-
-
-	
 };
