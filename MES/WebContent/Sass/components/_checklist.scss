@@ -1,10 +1,11 @@
-#acpnglinksView--ACPnGLinks{
+#idCheckListView--TabChecklist{
     width:95% !important;
     margin: 50px auto;
     padding:0 ;
-    border: solid 1px $cool-grey;
+   
     //height:640px;
     .sapUiTableCnt{
+    		 border: solid 1px $cool-grey;
 		    //height: 630px;
 		    .sapUiTableColHdrCnt{
 		    	height:46px !important;
@@ -19,13 +20,13 @@
 		}
 }
 
-.ACPnGtLabel{
+.TabChecklistLabel{
 	color:white;
 	padding-top: 8px;
     padding-left: inherit;
 }
 
-#acpnglinksView--ACPnGLinks-table{
+#idCheckListView--TabChecklistTable-table{
 	>tbody {
 				tr:nth-child(even) {background: #fff}
 				tr:nth-child(odd) {background: #fcfcfc}

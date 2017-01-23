@@ -1,11 +1,17 @@
-<core:View xmlns="sap.m" xmlns:core="sap.ui.core"
-	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:tab="sap.ui.table"
-	controllerName="airbus.mes.operationdetail.QDC.Checklist">
-	<Page showHeader="false" height="100%">
+<core:View 
+	xmlns="sap.m" 
+	xmlns:core="sap.ui.core"
+	xmlns:html="http://www.w3.org/1999/xhtml" 
+	xmlns:tab="sap.ui.table"
+	controllerName="airbus.mes.operationdetail.QDC.Checklist" >
+
+	
+	
+	<Page showHeader="false" height="100%" enableScrolling="false">
 		<content>
 		
-		<VBox id="Checklist" class="Checklist">
-			<tab:TreeTable rows="{QDCModel>/root}">
+		<VBox id="TabChecklist" class="TabChecklist">
+			<tab:TreeTable rows="{QDCModel>/root}" id="TabChecklistTable" class="TabChecklistTable">
 				<!-- <tab:toolbar>
 					<Toolbar>
 						<Title text="{i18n>CheckListAndRecords}" />
@@ -13,13 +19,13 @@
 				</tab:toolbar> -->
 				<tab:columns>
 					<tab:Column>
-						<Label text="{i18n>PointofAttention}" />
+						<Label class="TabChecklistLabel" text="{i18n>PointofAttention}" />
 						<tab:template>
 							<Text text="{QDCModel>name}" class="AllignItem" />
 						</tab:template>
 					</tab:Column>
 					<tab:Column>
-						<Label text="{i18n>record}" />
+						<Label class="TabChecklistLabel" text="{i18n>record}" />
 						<tab:template>
 							<Label text="{QDCModel>description}" class="AllignItem" />
 						</tab:template>
@@ -29,6 +35,7 @@
 			<HBox justifyContent="End" >
 				<Button text="Confirm" class="ConfirmChecklist"></Button>
 			</HBox>
+			
 		</VBox>
 
 		</content>
