@@ -116,7 +116,7 @@ sap.ui.core.Control.extend("airbus.mes.calendar.util.DHTMLXScheduler",    {
                                         $("div[class='dhx_cal_header']").append(("<div class='dhx_cal_next_button' Style='float:right; width:30px;'></div>"));
                                         $("div[class='dhx_cal_next_button']").tap(function() {
                                             calendar._click.dhx_cal_next_button();
-                                            //airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(airbus.mes.calendar.util.ShiftManager.current_shift.shiftID);
+                                    		airbus.mes.calendar.oView.getController().UpdateDateSwipe();		    
                                         });
                                     }
 
@@ -124,7 +124,7 @@ sap.ui.core.Control.extend("airbus.mes.calendar.util.DHTMLXScheduler",    {
                                         $("div[class='dhx_cal_header']").append(("<div class='dhx_cal_prev_button' Style='float:right; width:30px;'></div>"));
                                         $("div[class='dhx_cal_prev_button']").tap(function() {
                                             calendar._click.dhx_cal_prev_button();
-                                            //airbus.mes.stationtracker.oView.byId("selectShift").setSelectedKey(airbus.mes.calendar.util.ShiftManager.current_shift.shiftID);
+                                    		airbus.mes.calendar.oView.getController().UpdateDateSwipe();		
                                         });
                                     }
 

@@ -122,6 +122,8 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 		var oFormatter = airbus.mes.calendar.util.Formatter;
 		var sCstSplit = airbus.mes.calendar.util.GroupingBoxingManager.constante;
 		var oModel =  airbus.mes.calendar.oView.getModel("calendarTrackerModel");
+		var aElements2 = [];
+		var aBox = [];
 		//===============
 		// check if model full or not
 		//===============	
@@ -169,11 +171,11 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 		//===============
 		//Compute aElements2 creation of group	
 		//===============	
-		Object.keys(oModel).forEach(function(group,index) { 
+		Object.keys(oHierachy).forEach(function(group,index1) { 
 		
 			var oGroup = {
 					
-					"key": airbus.mes.stationtracker.AssignmentManager.idName(key),
+					"key": airbus.mes.calendar.util.Formatter.idName(group),
 					"label" : group,
 					"children":[],
 			}
@@ -183,19 +185,19 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 			//===============
 			//Compute aElements2 creation of line	
 			//===============
-			Object.keys(oModel[group]).forEach(function(line,index) {
+			Object.keys(oHierachy[group]).forEach(function(line,index2) {
 							
 				var oLine = {
 					"group" : group,
 					"avlLine" : line,
-					"key": airbus.mes.stationtracker.AssignmentManager.idName(line)
+					"key": airbus.mes.calendar.util.Formatter.idName(line)
 				};
 				
-				aElements2[index].children.push(oLine);
+				aElements2[index1].children.push(oLine);
 				//===============
 				//Compute aBox creation of box	
 				//===============		
-				oModel[group][line].forEach( function(el) {
+				oHierachy[group][line].forEach( function(el) {
 				
 					var oBox = {
 					
@@ -209,6 +211,8 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 				
 				});
 		
+			});
+	
 		});
 
 		
@@ -218,40 +222,40 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 		
 		
 		
-		var aElements2 = [ // original hierarhical array to display
-			{key:10, label:"Web Testing Dep.", open: true, children: [
-				{key:20, label:"Elizabeth Taylor"},
-				{key:30, label:"Managers",  children: [
-					{key:40, label:"John Williams"},
-					{key:50, label:"David Miller"}
-				]},
-				{key:60, label:"Linda Brown"},
-				{key:70, label:"George Lucas"}
-			]},
-			{key:110, label:"Human Relations Dep.", open:true, children: [
-				{key:80, label:"Kate Moss"},
-				{key:90, label:"Dian Fossey"}
-			]}
-		];
+//		var aElements2 = [ // original hierarhical array to display
+//			{key:10, label:"Web Testing Dep.", open: true, children: [
+//				{key:20, label:"Elizabeth Taylor"},
+//				{key:30, label:"Managers",  children: [
+//					{key:40, label:"John Williams"},
+//					{key:50, label:"David Miller"}
+//				]},
+//				{key:60, label:"Linda Brown"},
+//				{key:70, label:"George Lucas"}
+//			]},
+//			{key:110, label:"Human Relations Dep.", open:true, children: [
+//				{key:80, label:"Kate Moss"},
+//				{key:90, label:"Dian Fossey"}
+//			]}
+//		];
 		
-	var aBox  = [
-			{ start_date: "2014-06-30 09:00", end_date: "2014-06-30 12:00", text:"Task A-12458", section_id:20},
-			{ start_date: "2014-06-30 10:00", end_date: "2014-06-30 16:00", text:"Task A-89411", section_id:20},
-			{ start_date: "2014-06-30 10:00", end_date: "2014-06-30 14:00", text:"Task A-64168", section_id:20},
-			{ start_date: "2014-06-30 16:00", end_date: "2014-06-30 17:00", text:"Task A-46598", section_id:20},
-			
-			{ start_date: "2014-06-30 12:00", end_date: "2014-06-30 20:00", text:"Task B-48865", section_id:40},
-			{ start_date: "2014-06-30 14:00", end_date: "2014-06-30 16:00", text:"Task B-44864", section_id:40},
-			{ start_date: "2014-06-30 16:30", end_date: "2014-06-30 18:00", text:"Task B-46558", section_id:40},
-			{ start_date: "2014-06-30 18:30", end_date: "2014-06-30 20:00", text:"Task B-45564", section_id:40},
-			
-			{ start_date: "2014-06-30 08:00", end_date: "2014-06-30 12:00", text:"Task C-32421", section_id:50},
-			{ start_date: "2014-06-30 14:30", end_date: "2014-06-30 16:45", text:"Task C-14244", section_id:50},
-			
-			{ start_date: "2014-06-30 09:20", end_date: "2014-06-30 12:20", text:"Task D-52688", section_id:60},
-			{ start_date: "2014-06-30 11:40", end_date: "2014-06-30 16:30", text:"Task D-46588", section_id:60},
-			{ start_date: "2014-06-30 12:00", end_date: "2014-06-30 18:00", text:"Task D-12458", section_id:60}
-		];
+//	var aBox  = [
+//			{ start_date: "2014-06-30 09:00", end_date: "2014-06-30 12:00", text:"Task A-12458", section_id:20},
+//			{ start_date: "2014-06-30 10:00", end_date: "2014-06-30 16:00", text:"Task A-89411", section_id:20},
+//			{ start_date: "2014-06-30 10:00", end_date: "2014-06-30 14:00", text:"Task A-64168", section_id:20},
+//			{ start_date: "2014-06-30 16:00", end_date: "2014-06-30 17:00", text:"Task A-46598", section_id:20},
+//			
+//			{ start_date: "2014-06-30 12:00", end_date: "2014-06-30 20:00", text:"Task B-48865", section_id:40},
+//			{ start_date: "2014-06-30 14:00", end_date: "2014-06-30 16:00", text:"Task B-44864", section_id:40},
+//			{ start_date: "2014-06-30 16:30", end_date: "2014-06-30 18:00", text:"Task B-46558", section_id:40},
+//			{ start_date: "2014-06-30 18:30", end_date: "2014-06-30 20:00", text:"Task B-45564", section_id:40},
+//			
+//			{ start_date: "2014-06-30 08:00", end_date: "2014-06-30 12:00", text:"Task C-32421", section_id:50},
+//			{ start_date: "2014-06-30 14:30", end_date: "2014-06-30 16:45", text:"Task C-14244", section_id:50},
+//			
+//			{ start_date: "2014-06-30 09:20", end_date: "2014-06-30 12:20", text:"Task D-52688", section_id:60},
+//			{ start_date: "2014-06-30 11:40", end_date: "2014-06-30 16:30", text:"Task D-46588", section_id:60},
+//			{ start_date: "2014-06-30 12:00", end_date: "2014-06-30 18:00", text:"Task D-12458", section_id:60}
+//		];
 		
 		
 		calendar.matrix['timeline'].y_unit_original = aElements2;
@@ -277,17 +281,12 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 		
 		} else {
 			
-			calendar.init(airbus.mes.calendar.oView.byId("calendar").getId(), ShiftManager.shifts[ShiftManager.shifts.length -1 ].StartDate , "timeline");
+			calendar.init(airbus.mes.calendar.oView.byId("calendar").getId(), ShiftManager.shifts[ShiftManager.shifts.length - 1 ].StartDate , "timeline");
 			
 		}
 		
 		calendar.clearAll();
-		//calendar.deleteMarkedTimespan();
-		// Display all marker
-		//ShiftManager.addMarkedShifts();
-		// Update combobox of shift and display the selection of shift
-		//airbus.mes.stationtracker.ModelManager.selectMyShift();
-	   
+		airbus.mes.calendar.oView.getController().UpdateDateSwipe();		
 		calendar.xy.scroll_width=20;
         airbus.mes.shell.busyManager.unsetBusy(airbus.mes.calendar.oView);
 	    calendar.parse(aBox,"json");

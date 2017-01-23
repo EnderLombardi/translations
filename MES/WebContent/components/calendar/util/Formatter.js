@@ -457,11 +457,10 @@ airbus.mes.calendar.util.Formatter = {
 				}
 				
 				if(airbus.mes.settings.AppConfManager.getConfiguration("MES_PHOTO_DISPLAY")){ // Check if user image to be displayed  or not
-
-
-					//var imgId = 
 					
-					//html += '<img  onerror = "airbus.mes.shell.UserImageManager.getErrorUserImage(this)" id="' + imgId +'" src=' + airbus.mes.shell.UserImageManager.getUserImage(imgId, oCurrentAffectedUser.picture) + ' class="ylabelUserImage"/>'		// To display User Image
+					var imgId = 
+					
+					html += '<img  onerror = "airbus.mes.shell.UserImageManager.getErrorUserImage(this)" id="' + imgId +'" src=' + airbus.mes.shell.UserImageManager.getUserImage(imgId, oCurrentAffectedUser.picture) + ' class="ylabelUserImage"/>'		// To display User Image
 				}						
 
 				html += '<div><span class="avlLine" title="toto">tutututuozor</span>';
@@ -783,7 +782,28 @@ airbus.mes.calendar.util.Formatter = {
                     },
                     sumKPI : function(value1, value2, value3) {
                     	return parseFloat(value1) + parseFloat(value2) + parseFloat(value3);
-                    }
+                    },
+                    
+                    /** Replace all space in string by "_" in order to create good id for scheduler key
+        		     * 
+        		     * @param {String} sText, String to convert
+        		     * @returns {String} 
+        		     */
+                    idName : function(sText){
+           			 
+           			 var sTextF="";
+           			 var aText=sText.split(new RegExp("[ ]+", "g"));    // Récupère tous les mots dans un tableau : texte_decoup
+           			 
+           			 for (var i=0; i < aText.length; i++) {
+           				 if ( aText.length - 1=== i ){
+           					 sTextF += aText[i];  // le + " " NE FONCTIONNE PAS. IDEM AVEC String.fromCharCode(32) 
+           					 } else {
+           						 sTextF += aText[i] + "_";
+           					}
+           			    }
+           			    
+           			    return sTextF;
+           			},
                     
 };
 

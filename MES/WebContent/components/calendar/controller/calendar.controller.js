@@ -65,29 +65,37 @@ sap.ui.controller("airbus.mes.calendar.controller.calendar", {
     },
 	
 	 datePick : function() {
-	        if(airbus.mes.calendar.datePicker === undefined){
-	            airbus.mes.calendar.datePicker = sap.ui.xmlfragment("calendardatePickerFragment","airbus.mes.calendar.fragments.datePickerFragment", airbus.mes.calendar.oView.getController());
-	            airbus.mes.calendar.oView.addDependent(airbus.mes.calendar.datePicker);
+	        if(airbus.mes.calendar.oView.datePicker === undefined){
+	            airbus.mes.calendar.oView.datePicker = sap.ui.xmlfragment("calendardatePickerFragment","airbus.mes.calendar.fragments.datePickerFragment", airbus.mes.calendar.oView.getController());
+	            airbus.mes.calendar.oView.addDependent(airbus.mes.calendar.oView.datePicker);
 	        }
-	        airbus.mes.calendar.datePicker.openBy(airbus.mes.calendar.oView.byId("calendardateButton"));
+	        airbus.mes.calendar.oView.datePicker.openBy(airbus.mes.calendar.oView.byId("calendardateButton"));
+	        
+	        airbus.mes.calendar.oView.oCalendar = airbus.mes.calendar.oView.datePicker.getContent()[0];
 	    },
 	    
 	    onSelectToday : function(){
-	        airbus.mes.calendar.datePicker.removeAllSelectedDates();
-	        airbus.mes.calendar.datePicker.displayDate(new Date());
-	        airbus.mes.calendar.datePicker.addSelectedDate(new sap.ui.unified.DateRange({startDate: new Date()}));
+	        airbus.mes.calendar.oView.oCalendar.removeAllSelectedDates();
+	        airbus.mes.calendar.oView.oCalendar.displayDate(new Date());
+	        airbus.mes.calendar.oView.oCalendar.addSelectedDate(new sap.ui.unified.DateRange({startDate: new Date()}));
 	        airbus.mes.calendar.oView.getController().dateSelected();
 	    },
-
+	    /***************************************************************************
+	     * Update the scheduler view When selected a new Date in the Date picker check also
+	     * if the date selected is not in the shift hierarchy it display no shift exist
+	     * 
+	     * @returns {Obejct} Message Toast
+	     *
+	     ****************************************************************************/
 	    dateSelected : function(){
 //	        Check if current selected date corresponds to range of shift date
-	        var dSeletectedDate = airbus.mes.calendar.datePicker.getSelectedDates()[0].getStartDate();
+	        var dSeletectedDate = airbus.mes.calendar.oView.oCalendar.getSelectedDates()[0].getStartDate();
 	        if(dSeletectedDate < airbus.mes.calendar.util.GroupingBoxingManager.minDate || dSeletectedDate > airbus.mes.calendar.util.GroupingBoxingManager.maxDate ) {
 //	            If we are out of range, we display a message and don't close the date picker
-	            sap.m.MessageToast.show("Selected date out of range");
+	        	sap.m.MessageToast.show(airbus.mes.calendar.oView.getModel("StationTrackerI18n").getProperty("noShiftExist"));
 	        } else {
 	            // Reselect the date in shift hierarchy to select the good date
-	            var dDataSelected = airbus.mes.calendar.datePicker.getSelectedDates()[0].getStartDate();
+	            var dDataSelected = airbus.mes.calendar.oView.oCalendar.getSelectedDates()[0].getStartDate();
 	            var sYear = dDataSelected.getFullYear();
 	            var sMounth = dDataSelected.getMonth() + 1;
 	            var sDay = dDataSelected.getDate();
@@ -110,23 +118,44 @@ sap.ui.controller("airbus.mes.calendar.controller.calendar", {
 	                sap.m.MessageToast.show(airbus.mes.calendar.oView.getModel("StationTrackerI18n").getProperty("noShiftExist"));            	
 	            	return;
 	            }
-	            	
-	            
-
+	    
 	            // We feed the calendar with the new selected date
-	            airbus.mes.calendar.oView.getController().updateDateLabel(airbus.mes.calendar.datePicker);
-	            airbus.mes.calendar.datePicker.close();
-	            	
-	            	
+	            airbus.mes.calendar.oView.getController().updateDateLabel(airbus.mes.calendar.oView.oCalendar);
+	            airbus.mes.calendar.oView.datePicker.close();
+	            		            	
 	            var sDateId = Object.keys( airbus.mes.calendar.util.GroupingBoxingManager.shiftHierarchy[sDate] )[0];
 	            var dStartDate = airbus.mes.calendar.util.GroupingBoxingManager.shiftHierarchy[sDate][sDateId][0].StartDate;
 
-	            airbus.mes.calendar.util.ShiftManager.changeShift = false; //Airbus Defect #262 - Shift selection is not kept when changing date
 	            calendar.updateView(dStartDate);
-	            //airbus.mes.calendar.util.ShiftManager.selectFirstShift = true; //Airbus Defect #262 - Shift selection is not kept when changing date
-	            airbus.mes.calendar.util.ModelManager.selectMyShift();
-	            airbus.mes.calendar.util.ShiftManager.changeShift = true; //Airbus Defect #262 - Shift selection is not kept when changing date
 	        }
 	    },
+	    /***************************************************************************
+	     * Update the value of date in top of calendar View when picking new date
+	     * in date picker fragment 
+	     *
+	     ****************************************************************************/
+	    updateDateLabel : function(oCalendar){
+	        var oFormatddMMyyy = sap.ui.core.format.DateFormat.getInstance({pattern: "dd MMM yyyy", calendarType: sap.ui.core.CalendarType.Gregorian});
+	        var oText = airbus.mes.calendar.oView.byId("dateLabel");
+	        var aSelectedDates = oCalendar.getSelectedDates();
+	        var oDate;
+	        if (aSelectedDates.length > 0 ) {
+	            oDate = aSelectedDates[0].getStartDate();
+	            oText.setText(oFormatddMMyyy.format(oDate));
+	        } else {
+	            oText.setValue("No Date Selected");
+	        }
+	    },
+	    /***************************************************************************
+	     * Update the value of date in top of calendar View when picking
+	     * swiping in gantt or on the first display
+	     ****************************************************************************/
+	    UpdateDateSwipe : function() {
+	    	var oDate = new Date($("div[class='dhx_cal_date']").contents()[0].data.split("-")[0]);
+	    	var oFormatddMMyyy = sap.ui.core.format.DateFormat.getInstance({pattern : "dd MMM yyyy",calendarType : sap.ui.core.CalendarType.Gregorian
+	     });
+	     var oText = airbus.mes.calendar.oView.byId("dateLabel");
+	     oText.setText(oFormatddMMyyy.format(oDate));	
+	    } 
 	
 });
