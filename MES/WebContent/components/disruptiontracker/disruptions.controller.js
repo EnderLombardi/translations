@@ -12,7 +12,11 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 	disruptionTrackerRefresh : false,
 	disruptionsCustomDataFlag : undefined,
 	mFilterParams : undefined,
-	onInit : function() {
+	onInit : function() { 
+		//if the page is not busy
+        if (airbus.mes.shell.oView.byId('refreshTime').setBusyIndicatorDelay(0)){
+            airbus.mes.shell.oView.byId('refreshTime').setEnabled(true);
+        }
 	},
 
 	/**
@@ -339,7 +343,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 			// airbus.mes.shell.AutoRefreshManager.pauseRefresh();
 			// this.getView().byId('refreshTime').setVisible(false);
 			// --commented by MJ
-			airbus.mes.shell.oView.byId('refreshTime').setVisible(false); // ++
+			//airbus.mes.shell.oView.byId('refreshTime').setVisible(false); // ++
 			// MJ
 			// this.getView().byId('refreshTime').setVisible(false);
 
