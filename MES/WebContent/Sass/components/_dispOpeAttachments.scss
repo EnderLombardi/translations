@@ -24,7 +24,7 @@
     padding-left: inherit;
 }
 
-#acpnglinksView--ACPnGTreeTable-table{
+#displayOpeAttachmentsView--DOATable-table{
 	>tbody {
 				tr:nth-child(even) {background: #fff}
 				tr:nth-child(odd) {background: #fcfcfc}
@@ -34,22 +34,16 @@
 					>td{
 						text-align:left !important;
 						border-left:1px solid $cool-grey-hover;
-						    border-top: 1px solid #e5e5e5
 					}
 				}
 		}
 }		
 
-#acpnglinksView--ACPnGTreeTable-table.DOACheck{
+#displayOpeAttachmentsView--displayOpeAttachmentsCheck{
 	width: 50%;
     margin: 50px auto 10px auto;
     padding: 0;
     text-align: center;
 }
 
-#displayOpeAttachmentsView--DOAlabel.DOAlabel {
-        font-weight: bold;
-    	padding: 0;
-   		margin: 25px 0 25px 2.5% !important;
-}
 

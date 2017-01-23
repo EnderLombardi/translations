@@ -7659,29 +7659,23 @@ reschedule
   padding-top: 8px;
   padding-left: inherit; }
 
-#acpnglinksView--ACPnGTreeTable-table > tbody tr:nth-child(even) {
+#displayOpeAttachmentsView--DOATable-table > tbody tr:nth-child(even) {
   background: #fff; }
-#acpnglinksView--ACPnGTreeTable-table > tbody tr:nth-child(odd) {
+#displayOpeAttachmentsView--DOATable-table > tbody tr:nth-child(odd) {
   background: #fcfcfc; }
-#acpnglinksView--ACPnGTreeTable-table > tbody tr:hover {
+#displayOpeAttachmentsView--DOATable-table > tbody tr:hover {
   background-color: #efefef; }
-#acpnglinksView--ACPnGTreeTable-table > tbody > tr {
+#displayOpeAttachmentsView--DOATable-table > tbody > tr {
   height: 46px; }
-  #acpnglinksView--ACPnGTreeTable-table > tbody > tr > td {
+  #displayOpeAttachmentsView--DOATable-table > tbody > tr > td {
     text-align: left !important;
-    border-left: 1px solid #767879;
-    border-top: 1px solid #e5e5e5; }
+    border-left: 1px solid #767879; }
 
-#acpnglinksView--ACPnGTreeTable-table.DOACheck {
+#displayOpeAttachmentsView--displayOpeAttachmentsCheck {
   width: 50%;
   margin: 50px auto 10px auto;
   padding: 0;
   text-align: center; }
-
-#displayOpeAttachmentsView--DOAlabel.DOAlabel {
-  font-weight: bold;
-  padding: 0;
-  margin: 25px 0 25px 2.5% !important; }
 
 #ncdisplayView--ncDisplay.ncDisplayTable {
   width: 95% !important;
