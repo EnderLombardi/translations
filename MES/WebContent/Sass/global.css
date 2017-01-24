@@ -404,7 +404,7 @@ SETTINGS
   padding: 0 1rem; }
 
 /************************************
-D├⌐filement text tooltip
+D├®filement text tooltip
 ************************************/
 @-webkit-keyframes marqueelike {
   0%, 100% {
@@ -2407,7 +2407,6 @@ td {
   #disruptionDetail .sapMFlexItem .textSize:nth-child(1) {
     font-weight: bold;
     color: black; }
-<<<<<<< Upstream, based on origin/MESv1.5
   #disruptionDetail .attachmentIcon {
     margin-top: 0.5rem !important;
     z-index: 2 !important;
@@ -2415,8 +2414,6 @@ td {
     right: 1rem !important; }
   #disruptionDetail .setMinWidth {
     min-width: 200px !important; }
-=======
->>>>>>> cfc432f [work Tracker] - split screen + css
 
 /********************
 RESSOURCEPOOL
