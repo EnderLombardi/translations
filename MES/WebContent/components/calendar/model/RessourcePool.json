@@ -1,0 +1,59 @@
+{  
+   "Rowsets":{  
+      "DateCreated":"2016-10-06T09:55:46",
+      "Version":"15.1 SP2 Patch 5 (Jul 20, 2016)",
+      "StartDate":"2016-10-06T08:55:46+0200",
+      "EndDate":"2016-10-06T09:55:46+0200",
+      "CachedTime":"",
+      "Rowset":[  
+         {  
+            "Columns":{  
+               "Column":[  
+                  {  
+                     "Name":"RESSOURCE_ID",
+                     "SourceColumn":"RESSOURCE_ID",
+                     "Description":"WorkCenter PP Station",
+                     "SQLDataType":1,
+                     "MinRange":1.0,
+                     "MaxRange":1.0
+                  },
+                  {  
+                     "Name":"RESSOURCE_DESC",
+                     "SourceColumn":"RESSOURCE_DESC",
+                     "Description":"Production Group",
+                     "SQLDataType":1,
+                     "MinRange":1.0,
+                     "MaxRange":1.0
+                  }
+               ]
+            },
+            "Row":[  
+               {  
+                  "RESSOURCE_ID":"PP_ST_2",
+                  "RESSOURCE_DESC":"TC_IP1lonnnngggggggggggggggggggg"
+               },
+               {  
+                  "RESSOURCE_ID":"PP_ST_1",
+                  "RESSOURCE_DESC":"TC_IP2"
+               },
+               {  
+                  "RESSOURCE_ID":"PP_ST_3",
+                  "RESSOURCE_DESC":"TC_IP3"
+               },
+               {  
+                  "RESSOURCE_ID":"PP_ST_3",
+                  "RESSOURCE_DESC":"TC_IP4"
+               },
+               {  
+                  "RESSOURCE_ID":"PP_ST_3",
+                  "RESSOURCE_DESC":"PA_IP1"
+               },
+               {  
+                  "RESSOURCE_ID":"PP_ST_3",
+                  "RESSOURCE_DESC":"TC_IP2"
+               }
+            ]
+         }
+      ]
+   }
+}

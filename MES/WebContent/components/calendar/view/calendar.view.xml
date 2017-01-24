@@ -51,9 +51,9 @@
 					<ToolbarSpacer />
 
 					<Select id="calendarRessource" class="sapUiTinyMarginBeginEnd comboBoxStyle"
-						items="{groupModel>/Rowsets/Rowset/0/Row/Grouping}" change="changeGroup">
-						<core:ListItem key="{groupModel>key}"
-							text="{ path : 'groupModel>Value' , formatter : '.getI18nValue' }" />
+						items="{ressourcePoolModel>/Rowsets/Rowset/0/Row}" change="filterByRessourcePool">
+						<core:ListItem key="{ressourcePoolModel>RESSOURCE_ID}"
+							text="{ressourcePoolModel>RESSOURCE_DESC}" />
 					</Select>
 
 					<Button id="calendarCapacity" type="Transparent" enabled="true"

@@ -9,14 +9,14 @@ airbus.mes.calendar.util.ModelManager = {
        
        init : function(core) {
     	  
-    	   var aModel = ["testModel" ,"calendarshiftsModel","calendarTrackerModel"]
+    	   var aModel = ["ressourcePoolModel" ,"calendarshiftsModel","calendarTrackerModel"]
     	   airbus.mes.shell.ModelManager.createJsonModel(core,aModel);
            
-    	   core.getModel("testModel").attachRequestCompleted(airbus.mes.calendar.util.ModelManager.toto);
+    	   //core.getModel("testModel").attachRequestCompleted(airbus.mes.calendar.util.ModelManager.toto);
            core.getModel("calendarshiftsModel").attachRequestCompleted(airbus.mes.calendar.util.ModelManager.onShiftsLoad);
            core.getModel("calendarTrackerModel").attachRequestCompleted(airbus.mes.calendar.util.ModelManager.onCalendarTrackerLoad);
-    	   
-    	   
+           core.getModel("ressourcePoolModel").attachRequestCompleted(airbus.mes.calendar.util.ModelManager.onRessourcePoolLoad);
+                
     	var dest;
 
 		switch (window.location.hostname) {
@@ -49,7 +49,7 @@ airbus.mes.calendar.util.ModelManager = {
 			}
 		}
 
-		//this.loadExample();
+		this.loadRessourcePool();
 
 	},
 	
@@ -115,6 +115,42 @@ airbus.mes.calendar.util.ModelManager = {
 	        GroupingBoxingManager.computeCalendarHierarchy();
 
 	        airbus.mes.shell.busyManager.unsetBusy(airbus.mes.calendar.oView);
+
+	    },
+	    
+	    loadRessourcePool : function() {
+
+	        var oData = airbus.mes.settings.ModelManager;
+	        var oViewModel = airbus.mes.calendar.oView.getModel("ressourcePoolModel");
+	        var geturlRessourcePool = this.urlModel.getProperty('urlRessourcePoolModel');
+	        
+	        oViewModel.loadData(geturlRessourcePool, null, true);
+	    	
+	    },
+	    
+	    onRessourcePoolLoad : function() {
+
+	        var aModel = airbus.mes.calendar.oView.getModel("ressourcePoolModel");
+
+	        if (aModel.getProperty("/Rowsets/Rowset/0/Row")) {
+
+	            aModel.oData.Rowsets.Rowset[0].Row.unshift({
+	                "RESSOURCE_ID" : "ALL",
+	                "RESSOURCE_DESC" : "ALL",
+	            });
+
+	            aModel.oData.Rowsets.Rowset[0].Row = aModel.oData.Rowsets.Rowset[0].Row.reduce(function(field, e1){
+	                var matches = field.filter(function(e2){return e1.RESSOURCE_ID === e2.RESSOURCE_ID});
+	                if (matches.length === 0){
+	                    field.push(e1);
+	                }return field;
+	            }, []);
+
+	            airbus.mes.calendar.oView.getModel("ressourcePoolModel").refresh(true);
+
+	        } else {
+	            console.log("NO ressource pool load");
+	        }
 
 	    },
 	    

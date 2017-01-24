@@ -124,6 +124,10 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 		var oModel =  airbus.mes.calendar.oView.getModel("calendarTrackerModel");
 		var aElements2 = [];
 		var aBox = [];
+		var sPoolId = airbus.mes.calendar.oView.byId("calendarRessource").getSelectedKey();
+		
+		// Erase hierarchy
+		oHierachy = {};
 		//===============
 		// check if model full or not
 		//===============	
@@ -137,36 +141,38 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 		//Compute hierarchy by group and user		
 		//===============	
 		oModel.forEach(function(el){
-	
-			// Home based
-			if ( el.LOANED_FROM === "null" && el.LOADED_TO === "null" ) {
-				
-				var sName = airbus.mes.calendar.oView.getModel("calendarI18n").getProperty("HomeBased");
-				
-			} else {
-				// LOANED_FROM 
-				if ( el.LOANED_FROM === "true" ) {
+			// Filtering on ressource POOL
+			if ( el.RESOURCE_POOLS === sPoolId || sPoolId === "ALL" ) {
+				// Home based
+				if ( el.LOANED_FROM === "null" && el.LOADED_TO === "null" ) {
 					
-					var sName = airbus.mes.calendar.oView.getModel("calendarI18n").getProperty("LoanedFrom");
-				// LOADED_TO 	
+					var sName = airbus.mes.calendar.oView.getModel("calendarI18n").getProperty("HomeBased");
+					
 				} else {
-					
-					var sName = airbus.mes.calendar.oView.getModel("calendarI18n").getProperty("LoadedTo");
-		
-				}
-			}
-				
-			if ( !oHierachy[sName] ) {
-				
-				oHierachy[sName] = {};
-			}
-			if ( !oHierachy[sName][el.USER + sCstSplit + el.FIRST_NAME + sCstSplit +  el.LAST_NAME + sCstSplit + sName ] ) {
-				
-				oHierachy[sName][ el.USER + sCstSplit + el.FIRST_NAME + sCstSplit +  el.LAST_NAME + sCstSplit + sName ] = [];
-			}
+					// LOANED_FROM 
+					if ( el.LOANED_FROM === "true" ) {
+						
+						var sName = airbus.mes.calendar.oView.getModel("calendarI18n").getProperty("LoanedFrom");
+					// LOADED_TO 	
+					} else {
+						
+						var sName = airbus.mes.calendar.oView.getModel("calendarI18n").getProperty("LoadedTo");
 			
-			oHierachy[sName][ el.USER + sCstSplit + el.FIRST_NAME + sCstSplit +  el.LAST_NAME + sCstSplit + sName].push(el);
+					}
+				}
 					
+				if ( !oHierachy[sName] ) {
+					
+					oHierachy[sName] = {};
+				}
+				if ( !oHierachy[sName][el.USER + sCstSplit + el.FIRST_NAME + sCstSplit +  el.LAST_NAME + sCstSplit + sName ] ) {
+					
+					oHierachy[sName][ el.USER + sCstSplit + el.FIRST_NAME + sCstSplit +  el.LAST_NAME + sCstSplit + sName ] = [];
+				}
+				
+				oHierachy[sName][ el.USER + sCstSplit + el.FIRST_NAME + sCstSplit +  el.LAST_NAME + sCstSplit + sName].push(el);
+					
+			}
 		})
 		//===============
 		//Compute aElements2 creation of group	

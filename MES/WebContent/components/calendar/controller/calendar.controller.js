@@ -154,6 +154,15 @@ sap.ui.controller("airbus.mes.calendar.controller.calendar", {
 	     });
 	     var oText = airbus.mes.calendar.oView.byId("dateLabel");
 	     oText.setText(oFormatddMMyyy.format(oDate));	
-	    } 
+	    }, 
+	    /***************************************************************************
+	     * Filter the calendar by ressource Pool
+	     *
+	     ****************************************************************************/
+	    filterByRessourcePool : function(oEvt) {
+	    	
+	    	airbus.mes.calendar.util.GroupingBoxingManager.computeCalendarHierarchy();
+	    	
+	    }
 	
 });
