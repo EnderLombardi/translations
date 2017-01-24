@@ -3,12 +3,15 @@
 
 airbus.mes.displayOpeAttachments.util.Formatter = {
 
-    //create dokar, doknr & doktl using workInstruction
+    //create dokar, dokarOrDoknr & doktl using workInstruction
     extractWorkinstruction: function (row) {
         for (var i = 0; i < row.length; i += 1) {
-            row[i].dokar = row[i].workInstruction.split("-")[0];
-            row[i].doknr = row[i].workInstruction.split("-")[1];
+            row[i].dokar = row[i].workInstruction.split("-")[0];//needed to sort
+            row[i].dokarOrDoknr = row[i].workInstruction.split("-")[1];//field that will contain dokar or doknr in the tree table
             row[i].doktl = row[i].workInstruction.split("-")[2];
+            row[i].fileName = row[i].workInstruction.split("-")[3];
+
+            row[i].description = row[i].descriptionWI;//we create one attribute description for both description of doc type and document
         }
     },
 
@@ -30,13 +33,13 @@ airbus.mes.displayOpeAttachments.util.Formatter = {
 
     addDocTypeHierarchy: function (row) {
 
-        //create docType & docTypeDesc, arrays with different values of dokar & doc type description
+        //create docType & docTypeDesc, arrays with different values of dokarOrDoknr & doc type description
         var flags = [], docType = [], docTypeDesc = [], changeDocumentTypeArray = [];
         for (var i = 0; i < row.length; i++) {
             if (flags[row[i].dokar]) continue;
             flags[row[i].dokar] = true;
             docType.push(row[i].dokar);
-            //docTypeDesc.push(row[i].doc_type_description); TODO : get the doc type description
+            docTypeDesc.push(row[i].docTypeDescription);
             changeDocumentTypeArray.push(i);//index of the change of doc type (in the array sorted by doc type)
         }
 
@@ -64,8 +67,8 @@ airbus.mes.displayOpeAttachments.util.Formatter = {
 
             //we fill the object
             var obj = {
-                dokar: docType[j] + " : " + nbOfDoc + " " + documentLabel,
-                //doc_type_description: docTypeDesc[j], TODO : get the doc type description
+                dokarOrDoknr: docType[j] + " : " + nbOfDoc + " " + documentLabel,
+                description: docTypeDesc[j],
                 documents: [] //array that will contain the several informations for each document
             };
 
@@ -76,7 +79,6 @@ airbus.mes.displayOpeAttachments.util.Formatter = {
         var index = 0;
         for (var k=0; k < row.length; k++) {
 
-            row[k].dokar = ""; //we delete this value so it won't be displayed in the treetable (so the user don't see x times the same information)
             //TODO : same thing to do with document description
             newRow[index].documents.push(row[k]);
 

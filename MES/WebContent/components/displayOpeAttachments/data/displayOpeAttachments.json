@@ -46,42 +46,49 @@
                 "Row": [
                     {
                         "workInstruction": "AOT-902156999-M5-myGantt",
+                        "docTypeDescription": "AOT : description",
                         "revision": "A",
                         "descriptionWI": "Page one of Airbus Gantt",
                         "URL": "http://doc.content.airbus.corp/902156999.pdf"
                     },
                     {
                         "workInstruction": "SOI-123456789-P1-myForecast",
+                        "docTypeDescription": "Description of SOI",
                         "revision": "A",
                         "descriptionWI": "Forecast of new project",
                         "URL": "http://doc.content.airbus.corp/102156432.pdf"
                     },
                     {
                         "workInstruction": "SOI-123123456-P1-myForecastv2",
+                        "docTypeDescription": "Description of SOI",
                         "revision": "B",
                         "descriptionWI": "Forecast of new project",
                         "URL": "http://doc.content.airbus.corp/102156789.pdf"
                     },
                     {
                         "workInstruction": "AOT-901234599-M5-shift",
+                        "docTypeDescription": "AOT : description",
                         "revision": "O",
                         "descriptionWI": "A shift",
                         "URL": "http://doc.content.airbus.corp/198156432.pdf"
                     },
                     {
                         "workInstruction": "AOT-901234599-M5-shift",
+                        "docTypeDescription": "AOT : description",
                         "revision": "P",
                         "descriptionWI": "A shift",
                         "URL": "http://doc.content.airbus.corp/198156433.pdf"
                     },
                     {
                         "workInstruction": "AOT-457823456-M5-myTab",
+                        "docTypeDescription": "AOT : description",
                         "revision": "A",
                         "descriptionWI": "Tab",
                         "URL": "http://doc.content.airbus.corp/102457789.pdf"
                     },
                     {
                         "workInstruction": "AIPI-157898456-P2-myTextFile",
+                        "docTypeDescription": "AIPI files are : description",
                         "revision": "B",
                         "descriptionWI": "It's a text file",
                         "URL": "http://doc.content.airbus.corp/147856789.pdf"

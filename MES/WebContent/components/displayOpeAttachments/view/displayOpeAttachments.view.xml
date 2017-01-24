@@ -24,69 +24,38 @@
                     rows="{getOpeAttachments>/Rowsets/Rowset/0/Row}"
                     ariaLabelledBy="title">
                 <columns>
-                    <Column width="11rem">
-                        <m:Label class="DisOpAttLabel" text="{i18nDisplayOpeAttachmentsModel>doc_type}"/>
+                    <Column width="20%">
+                        <m:Label class="DisOpAttLabel" text="{i18nDisplayOpeAttachmentsModel>Documents}"/>
                         <template>
-                            <m:Text text="{getOpeAttachments>dokar}"/>
+                            <m:Text text="{getOpeAttachments>dokarOrDoknr}"/>
                         </template>
                     </Column>
-
-                    <!--no information for the moment
-                    <Column width="9rem">
-                        <m:Label class="DisOpAttLabel" text="{i18nDisplayOpeAttachmentsModel>doc_type_description}"/>
-                        <template>
-                            <m:Text text="{getOpeAttachments>doc_type_description}"/>
-                        </template>
-                    </Column>-->
-
-                    <!--to be deleted if confirmed by airbus
-                    <Column width="11rem">
-                        <m:Label class="DisOpAttLabel" text="{i18nDisplayOpeAttachmentsModel>item_nr}"/>
-                        <template>
-                            <m:Text text="{getOpeAttachments>item_nr}"/>
-                        </template>
-                    </Column>-->
-
-                </columns>
-                <columns>
-                    <Column width="13rem">
-                        <m:Label class="DisOpAttLabel" text="{i18nDisplayOpeAttachmentsModel>doc_nr}"/>
-                        <template>
-                            <m:Text text="{getOpeAttachments>doknr}"/>
-                        </template>
-                    </Column>
-                    <Column width="17rem">
+                    <Column width="45%">
                         <m:Label class="DisOpAttLabel" text="{i18nDisplayOpeAttachmentsModel>doc_description}"/>
                         <template>
-                            <m:Text text="{getOpeAttachments>descriptionWI}"/>
+                            <m:Text text="{getOpeAttachments>description}"/>
                         </template>
                     </Column>
-                    <Column width="5rem">
+                    <Column width="15%">
+                        <m:Label class="DisOpAttLabel" text="{i18nDisplayOpeAttachmentsModel>file_name}"/>
+                        <template>
+                            <m:Text text="{getOpeAttachments>fileName}"/>
+                        </template>
+                    </Column>
+                    <Column width="10%">
                         <m:Label class="DisOpAttLabel" text="{i18nDisplayOpeAttachmentsModel>doc_part}"/>
                         <template>
                             <m:Text text="{getOpeAttachments>doktl}"/>
                         </template>
                     </Column>
-                    <Column width="5rem">
+                    <Column width="10%">
                         <m:Label class="DisOpAttLabel" text="{i18nDisplayOpeAttachmentsModel>doc_version}"/>
                         <template>
                             <m:Text text="{getOpeAttachments>revision}"/>
                         </template>
-                    </Column>
-                    
-                    <!--file name ? will be present or not ?
-                    <Column width="11rem">
-                        <m:Label class="DisOpAttLabel" text="{i18nDisplayOpeAttachmentsModel>file_name}"/> TO ADD IN i18n if used
-                        <template>
-                            <m:Text text="{getOpeAttachments>workInstruction}"/>
-                        </template>
-                    </Column>-->
-
+                    </Column>                 
                 </columns>
             </TreeTable>
         </m:content>
     </m:Page>
-
-
 </mvc:View>
-
