@@ -217,7 +217,7 @@
 			labelSpanL="12" labelSpanM="12" width="100%" adjustLabelSpan="false"
 			emptySpanL="0" emptySpanM="0" columnsL="1" columnsM="1">
 			<f:content>
-				<HBox justifyContent="End" class="iconInTextarea">
+				<HBox justifyContent="End" class="attachmentIcon">
 					<core:Icon src="sap-icon://attachment" width="1rem"
 						class="sapUiSmallMarginEnd" />
 					<core:Icon src="sap-icon://camera" width="1rem" />
