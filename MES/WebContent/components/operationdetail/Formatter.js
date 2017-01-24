@@ -119,6 +119,7 @@ airbus.mes.operationdetail.Formatter = {
         } else
             return false;
     },
+
     //convert the duration in milliseconde from the json in IM
     convertMStoIM : function(){
         var duration = airbus.mes.operationdetail.ModelManager.durationNeededForCalc;
@@ -244,5 +245,15 @@ airbus.mes.operationdetail.Formatter = {
             }
 
         });
+    },
+    
+    goToDisrptionVisibility: function(status){
+    	
+    	if(status == airbus.mes.operationdetail.Formatter.status.blocked)
+    		return true;
+    	else
+    		return false;
+    	
     }
+    
 };

@@ -67,7 +67,7 @@ sap.ui
             this.nav.to(airbus.mes.operationdetail.status.oView.getId());
 
             // Set button
-            airbus.mes.operationdetail.status.oView.oController.operationIsActive();
+            airbus.mes.operationdetail.status.oView.oController.setOperationActionButtons();
 
             this.getView().byId("opDetailSegmentButtons").setSelectedButton(
                 this.getView().byId("opDetailSegmentButtons").getButtons()[0].sId);
@@ -112,6 +112,13 @@ sap.ui
                     //Define visibility for header sections
                     $(".opDetailNavToolbar > ul > li ~ li").css("display", "inline-block");
                     oSwitchButton.setEnabled(false);
+                    
+                    /**
+                     * set the buttons according to the status of operation mode
+                     */
+                    airbus.mes.operationdetail.status.oView.oController.setOperationActionButtons();
+                    
+                    
                 } else {
                     $(".opDetailNavToolbar > ul > li ~ li").css("display", "none");
                     oSwitchButton.setEnabled(true);
@@ -122,33 +129,6 @@ sap.ui
                 this.getView().byId("switchStatusLabel").setText(this.getView().getModel("i18n").getProperty("ReadOnly"));
                 //Define visibility for header sections
                 $(".opDetailNavToolbar > ul > li ~ li").css("display", "none");
-            }
-
-            /**
-             * ***set the buttons according to the status of
-             * operation mode *****
-             */
-            switch (this.nav.getCurrentPage().getId()) {
-
-                case "idStatusView":
-                    airbus.mes.operationdetail.status.oView.oController.setOperationActionButtons();
-                    break;
-
-                case "ViewDisruptionView":
-                    airbus.mes.disruptions.oView.viewDisruption.oController.turnOnOffButtons();
-                    break;
-
-                case "createDisruptionView":
-                    airbus.mes.disruptions.oView.createDisruption.oController.onCancelCreateDisruption();
-                    break;
-                case "reschedulePage--reschedulePage":
-                    if (sap.ui.getCore().byId("operationDetailsView--switchOperationModeBtn").getState() === true) {
-
-                        sap.ui.getCore().byId("operationDetailPopup--btnReschedule").setVisible(true);
-                    } else { sap.ui.getCore().byId("operationDetailPopup--btnReschedule").setVisible(false); }
-                    break;
-                default:
-                    break;
             }
 
         },
@@ -168,11 +148,9 @@ sap.ui
 
                     this.nav.to(airbus.mes.operationdetail.status.oView.getId());
 
-                    airbus.mes.operationdetail.status.oView.oController.operationIsActive();
                     airbus.mes.operationdetail.status.oView.oController.setOperationActionButtons();
-                    airbus.mes.disruptions.ModelManager.checkDisruptionStatus(airbus.mes.disruptions.oView.viewDisruption.getModel("operationDisruptionsModel"));
-
                     break;
+                    
                 case "checkList":
                     if (airbus.mes.operationdetail.QDC === undefined || airbus.mes.operationdetail.QDC.oView === undefined) {
                         sap.ui.getCore().createComponent({ name: "airbus.mes.operationdetail.QDC" });
@@ -315,11 +293,6 @@ sap.ui
              * Load Data
              */
             switch (this.nav.getCurrentPage().sId) {
-
-                case "idStatusView":
-                    /** Set buttons visibility ****/
-                    airbus.mes.operationdetail.status.oView.oController.setOperationActionButtons();
-                    break;
 
                 case "ViewDisruptionView":
                     /** Set buttons visibility ****/

@@ -26,8 +26,8 @@
 				enabled="false">
 			</Slider>
 			<HBox class="sapUiMediumMarginTop" alignItems="Center" justifyContent="Center">
-				<Text id="blockedText" text="{i18n>blockedText}" visible="false"  textAlign="Center" />
-				<Button id="goToDisruption" text="{i18n>goToDisruption}" type="Transparent" visible="false" press="onPressGotoDisruptios"/>
+				<Text id="blockedText" text="{i18n>blockedText}"  visible="{path :'operationDetailModel>/Rowsets/Rowset/0/Row/0/status', formatter : 'airbus.mes.operationdetail.Formatter.goToDisrptionVisibility'}"  textAlign="Center" />
+				<Button id="goToDisruption" text="{i18n>goToDisruption}" type="Transparent"  visible="{path :'operationDetailModel>/Rowsets/Rowset/0/Row/0/status', formatter : 'airbus.mes.operationdetail.Formatter.goToDisrptionVisibility'}"  press="onPressGotoDisruptios"/>
 			</HBox>
 
 		</VBox>

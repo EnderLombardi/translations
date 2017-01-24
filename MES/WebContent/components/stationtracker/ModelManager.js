@@ -1051,21 +1051,24 @@ airbus.mes.stationtracker.ModelManager = {
                     airbus.mes.stationtracker.operationDetailPopup.setModel(sap.ui.getCore().getModel("operationDetailModel"),"operationDetailModel");
                     airbus.mes.stationtracker.oView.addDependent(airbus.mes.stationtracker.operationDetailPopup);
                 }
-
+                
                 //spent time calculation
                 var operation = aModel[0].OPERATION_BO.split(",")[1];
                 var order = aModel[0].SHOP_ORDER_BO.split(",")[1];
                 var spentTimeInMs = 0;
 
-                //informations for Document request
-                airbus.mes.stationtracker.ModelManager.stationInProgress.ShopOrderBO = aModel[0].SHOP_ORDER_BO;
-                airbus.mes.stationtracker.ModelManager.stationInProgress.RouterStepBO = aModel[0].ROUTERSTEPBO;//not working for the moment
 
                 //TODO Exception to display to UI
                 if(operation && order){
                     spentTimeInMs  = airbus.mes.stationtracker.ModelManager.getSpentTimePerOperation(operation,order);
                 }
 
+
+                //informations for Document request
+                airbus.mes.stationtracker.ModelManager.stationInProgress.ShopOrderBO = aModel[0].SHOP_ORDER_BO;
+                airbus.mes.stationtracker.ModelManager.stationInProgress.RouterStepBO = aModel[0].ROUTERSTEPBO;//not working for the moment
+                
+                
                 // calculate status of operation
                 var sStatus;
                 if (aModel[0].status == "0")
@@ -1079,6 +1082,7 @@ airbus.mes.stationtracker.ModelManager = {
                 else if (aModel[0].status === "4" || aModel[0].status === "5"
                         || aModel[0].status === "6" || aModel[0].status === "7")
                     sStatus = "Blocked";
+
 
                 // progress calculation
                 var progress;
@@ -1147,20 +1151,22 @@ airbus.mes.stationtracker.ModelManager = {
                 sap.ui.getCore().getModel("operationDetailModel").setData(oOperModel);
                 sap.ui.getCore().getModel("operationDetailModel").refresh();
 
-        //        If previously_started is true, the operation has to be on execution mode
-                if( aModel[0].PREVIOUSLY_STARTED === "true" ){
-                    airbus.mes.operationdetail.oView.byId("switchOperationModeBtn").setState(true);
-                    airbus.mes.operationdetail.oView.byId("switchOperationModeBtn").setEnabled(false);
-                    airbus.mes.operationdetail.oView.byId("switchStatusLabel").setText(airbus.mes.operationdetail.oView.getModel("i18n").getProperty("Execution"));
-                    // Permit to know if the operation is active pause or not started
-                    airbus.mes.operationdetail.status.oView.getController().operationIsActive();
-                } else {
-                    airbus.mes.operationdetail.oView.byId("switchOperationModeBtn").setState(false);
-                    airbus.mes.operationdetail.oView.byId("switchOperationModeBtn").setEnabled(true);
-                    airbus.mes.operationdetail.oView.byId("switchStatusLabel").setText(airbus.mes.operationdetail.oView.getModel("i18n").getProperty("ReadOnly"));
-                    //Set no Button activate
-                    airbus.mes.operationdetail.status.oView.getController().setProgressScreenBtn(false,false, false);
-                }
+                // If previously_started is true, the operation has to be on execution mode
+				if( aModel[0].PREVIOUSLY_STARTED === "true" ){
+					airbus.mes.operationdetail.oView.byId("switchOperationModeBtn").setState(true);
+					airbus.mes.operationdetail.oView.byId("switchOperationModeBtn").setEnabled(false);
+					airbus.mes.operationdetail.oView.byId("switchStatusLabel").setText(airbus.mes.operationdetail.oView.getModel("i18n").getProperty("Execution"));
+				} else {
+					airbus.mes.operationdetail.oView.byId("switchOperationModeBtn").setState(false);
+					airbus.mes.operationdetail.oView.byId("switchOperationModeBtn").setEnabled(true);			
+					airbus.mes.operationdetail.oView.byId("switchStatusLabel").setText(airbus.mes.operationdetail.oView.getModel("i18n").getProperty("ReadOnly"));
+				}
+				
+				
+				// Ooen Pop-up and place status view inside it
+				airbus.mes.stationtracker.operationDetailPopup.open();
+				airbus.mes.operationdetail.oView.placeAt(airbus.mes.stationtracker.operationDetailPopup.sId	+ "-scrollCont");
+				
 
                 airbus.mes.shell.busyManager.unsetBusy(airbus.mes.stationtracker.oView, "stationtracker");
             }, 0);
