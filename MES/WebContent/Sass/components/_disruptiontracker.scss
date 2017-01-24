@@ -224,4 +224,13 @@ td{
             }
         }
     }
+    .attachmentIcon{
+    		margin-top: 0.5rem !important;
+    		z-index: 2 !important;
+   			Position: absolute !important;
+    		right: 1rem !important;
+    }
+    .setMinWidth{
+    	min-width: 200px !important;
+    }
 }

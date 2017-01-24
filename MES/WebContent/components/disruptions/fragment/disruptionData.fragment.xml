@@ -4,7 +4,7 @@
 		<f:SimpleForm id="SimpleFormChange480_12120" editable="false"
 			minWidth="800" layout="ResponsiveGridLayout" title="Operator Data"
 			labelSpanL="12" labelSpanM="12" width="100%" adjustLabelSpan="false"
-			columnsL="4" columnsM="4" columnsS="4">
+			columnsL="4" columnsM="2" columnsS="1">
 			<f:content>
 
 				<core:Title text="" />
@@ -141,7 +141,7 @@
 		<f:SimpleForm id="Execution" editable="true"
 			layout="ResponsiveGridLayout" title="Execution" labelSpanL="12"
 			labelSpanM="12" width="100%" adjustLabelSpan="false" emptySpanL="0"
-			emptySpanM="0" columnsL="4" columnsM="4" columnsS="5">
+			emptySpanM="0" columnsL="4" columnsM="2" columnsS="1">
 			<f:content>
 				<core:Title text="" />
 				<Label text="{i18nModel>status}" />
