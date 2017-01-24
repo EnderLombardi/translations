@@ -273,27 +273,13 @@ sap.ui
 
                           /** Navigate **/
                            this.nav.to(airbus.mes.components.oView.getId());
-
                            break;
                         case "displayOpeAttachments":
                             airbus.mes.shell.util.navFunctions.displayOpeAttachments(this.nav);
 
-                            /***************************************************
-                             * Load Data
-                             **************************************************/
-    //                        if (!this.disruptionsFlag) {
-//                            var operationBO = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_bo;
-//                            var sSfcStepRef = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].sfc_step_ref;
-//                            airbus.mes.disruptions.ModelManager.loadDisruptionsByOperation(operationBO,sSfcStepRef);
-//                            this.disruptionsFlag = true;
-//                        }
-
                             /** Navigate **/
                             this.nav.to(airbus.mes.displayOpeAttachments.oView.getId());
-
-
                             break;
-
                         case "ACPnGLinks":
                              airbus.mes.shell.util.navFunctions.acpnglinksDetail(this.nav);
                              this.nav.to(airbus.mes.acpnglinks.oView.getId());
@@ -393,6 +379,9 @@ sap.ui
                             break;
                         case "jigtoolsView":
                             airbus.mes.jigtools.oView.oController.checkSettingJigsTools();
+                            break;
+                        case "displayOpeAttachmentsView":
+                            airbus.mes.displayOpeAttachments.oView.oController.renderDOA();
                             break;
                         case "ncdisplayView":
                                 airbus.mes.ncdisplay.oView.oController.defaultSelectNcDisplay();

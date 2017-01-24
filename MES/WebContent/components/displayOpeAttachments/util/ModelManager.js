@@ -5,10 +5,13 @@ airbus.mes.displayOpeAttachments.util.ModelManager = {
 
 	urlModel: undefined,
 	queryParams: jQuery.sap.getUriParameters(),
+	i18nModel: undefined,
 
 	init: function (core) {
 
-		this.core = core;
+		var aModel = ["getOpeAttachments"];
+		airbus.mes.shell.ModelManager.createJsonModel(core, aModel);
+
 		var dest;
 
 		switch (window.location.hostname) {
@@ -42,27 +45,35 @@ airbus.mes.displayOpeAttachments.util.ModelManager = {
 			}
 		}
 
-		airbus.mes.shell.ModelManager.createJsonModel(core, ["getOpeAttachments"]);
-		this.loadDOADetail();
+		var oModule = airbus.mes.displayOpeAttachments.util.ModelManager;
+		oModule.loadDOADetail();
 	},
 
-	loadDOADetail : function() {
-		var oModel = sap.ui.getCore().getModel("getOpeAttachments");
-		oModel.loadData(this.getDOADetail(), null, false);
+	/* *********************************************************************** *
+	 *  Replace URL Parameters                                                 *
+	 * *********************************************************************** */
+	replaceURI : function(sURI, sFrom, sTo) {
+		return sURI.replace(sFrom, encodeURIComponent(sTo));
+	},
 
-		var row = oModel.oData.Rowsets.Rowset[0].Row;
+	loadDOADetail: function () {
+		var oViewModel = airbus.mes.displayOpeAttachments.oView.getModel("getOpeAttachments");
+		oViewModel.loadData(this.getDOADetail(), null, false);
+
+		var row = oViewModel.oData.Rowsets.Rowset[0].Row;
 		airbus.mes.displayOpeAttachments.util.Formatter.extractWorkinstruction(row);//create dokar, doknr & doktl using workInstruction
 		airbus.mes.displayOpeAttachments.util.Formatter.sortByDocType(row);//sort the documents by doc type
-		oModel.oData.Rowsets.Rowset[0].Row = airbus.mes.displayOpeAttachments.util.Formatter.addDocTypeHierarchy(row);//create a parent object by foc type
+		oViewModel.oData.Rowsets.Rowset[0].Row = airbus.mes.displayOpeAttachments.util.Formatter.addDocTypeHierarchy(row);//create a parent object by foc type
+		oViewModel.refresh(true);//refresh the model
 	},
-	
-	getDOADetail : function() {
+
+	getDOADetail: function () {
 		var url = this.urlModel.getProperty("getOpeAttachments");
-		url = airbus.mes.shell.ModelManager.replaceURI(url, "$ShopOrderBO", airbus.mes.stationtracker.ModelManager.stationInProgress.ShopOrderBO);
-		//url = airbus.mes.shell.ModelManager.replaceURI(url, "$RouterBO", airbus.mes.settings.ModelManager.site);
-		url = airbus.mes.shell.ModelManager.replaceURI(url, "$RouterStepBO", airbus.mes.stationtracker.ModelManager.stationInProgress.RouterStepBO);
-		//url = airbus.mes.shell.ModelManager.replaceURI(url, "$Site", airbus.mes.settings.ModelManager.site);
+		//iftoad : durl = airbus.mes.displayOpeAttachments.ModelManager.replaceURI(url, "$ShopOrderBO", airbus.mes.stationtracker.ModelManager.stationInProgress.ShopOrderBO);
+			//url = airbus.mes.displayOpeAttachments.ModelManager.replaceURI(url, "$RouterBO", airbus.mes.settings.ModelManager.site);
+		//iftoadd : url = airbus.mes.displayOpeAttachments.ModelManager.replaceURI(url, "$RouterStepBO", airbus.mes.stationtracker.ModelManager.stationInProgress.RouterStepBO);
+			//url = airbus.mes.displayOpeAttachments.ModelManager.replaceURI(url, "$Site", airbus.mes.settings.ModelManager.site);
 		return url;
 	},
-	
+
 };

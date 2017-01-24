@@ -2,10 +2,10 @@
 
 sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachments", {
 
-    // Get setting from ME/MII and select the good button between operation and work order
+	// Get setting from ME/MII and select the good button between operation and work order
 	onAfterRendering: function () {
 
-		//will be the configuration received in AppConfManager
+		//todo :will be the configuration received in AppConfManager
 		//var sSet = airbus.mes.settings.AppConfManager.getConfiguration("VIEW_ATTACHED_TOOL");
 		var sSet = "P";
 		switch (sSet) {
@@ -20,9 +20,9 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 		}
 	},
 
-    //get user action on the checkbox field
-    onSelectLevel: function (oEvent) {
+	//todo : get user action on the checkbox field
+	onSelectLevel: function (oEvent) {
 
-    },
+	},
 
 });

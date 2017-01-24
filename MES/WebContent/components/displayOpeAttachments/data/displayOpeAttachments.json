@@ -63,6 +63,18 @@
                         "URL": "http://doc.content.airbus.corp/102156789.pdf"
                     },
                     {
+                        "workInstruction": "AOT-901234599-M5-shift",
+                        "revision": "O",
+                        "descriptionWI": "A shift",
+                        "URL": "http://doc.content.airbus.corp/198156432.pdf"
+                    },
+                    {
+                        "workInstruction": "AOT-901234599-M5-shift",
+                        "revision": "P",
+                        "descriptionWI": "A shift",
+                        "URL": "http://doc.content.airbus.corp/198156433.pdf"
+                    },
+                    {
                         "workInstruction": "AOT-457823456-M5-myTab",
                         "revision": "A",
                         "descriptionWI": "Tab",

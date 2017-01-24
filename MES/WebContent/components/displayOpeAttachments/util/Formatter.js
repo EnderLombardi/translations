@@ -44,6 +44,7 @@ airbus.mes.displayOpeAttachments.util.Formatter = {
         //create a new Row to have the good format 
         var newRow = [];
         var nbOfDoc = 0;
+        var documentLabel;
 
         for (var j = 0; j < docType.length; j++) { //for each doc type we will create an object
 
@@ -51,13 +52,19 @@ airbus.mes.displayOpeAttachments.util.Formatter = {
             if (j !== docType.length -1){
                 nbOfDoc = changeDocumentTypeArray[j+1] - changeDocumentTypeArray[j];//difference between next value of change and actual
             } else  {
-                nbOfDoc = docType.length + 1 - changeDocumentTypeArray[j];//difference between last element of the array and last value of change
+                nbOfDoc = row.length - changeDocumentTypeArray[j];//difference between last element of the array and last value of change
             }
             
-            debugger;
+            //singular/plural for number of documents
+            if (nbOfDoc > 1) {
+                documentLabel = airbus.mes.displayOpeAttachments.oView.getModel("i18nDisplayOpeAttachmentsModel").getProperty("documents");
+            } else {
+                documentLabel = airbus.mes.displayOpeAttachments.oView.getModel("i18nDisplayOpeAttachmentsModel").getProperty("document");
+            }
+
             //we fill the object
             var obj = {
-                dokar: docType[j] + " : " + nbOfDoc + " documents" , //TODO : add this from i18n and manage singular/plurial
+                dokar: docType[j] + " : " + nbOfDoc + " " + documentLabel,
                 //doc_type_description: docTypeDesc[j], TODO : get the doc type description
                 documents: [] //array that will contain the several informations for each document
             };
@@ -79,10 +86,6 @@ airbus.mes.displayOpeAttachments.util.Formatter = {
         }
 
         return newRow;
-    },
-
-    displayDocNumber: function () {
-
     },
 
 };

@@ -21,7 +21,7 @@
             <TreeTable
                     id="DOATable"
                     class="DOATable" 
-                    rows="{path:'getOpeAttachments>/Rowsets/Rowset/0/Row/', parameters: {arrayNames:['documents']}}"
+                    rows="{getOpeAttachments>/Rowsets/Rowset/0/Row}"
                     ariaLabelledBy="title">
                 <columns>
                     <Column width="13rem">
