@@ -71,6 +71,30 @@ airbus.mes.ncdisplay.util.ModelManager = {
     getOperationData: function(){
         var oModel = [sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0]];
         return oModel;
+    },
+
+    getItemsTable : function(){
+        var oTable = sap.ui.getCore().byId("ncdisplayView--ncDisplay");
+        var itemsArray = oTable.getItems();
+        $.each(itemsArray, function(i){
+            var items = itemsArray[i].findElements('cells')[1];
+            if(items.getProperty("text") === "NC"){
+                items.getParent().setProperty('type', 'Active');
+                console.log(items.getParent());
+//                items.getParent().attachEvent(items.getParent().getId(), function(oEvnt){
+//                    oEvnt.getSource();
+//                    console.log("work ?");
+//                })
+            }
+        });
+    },
+
+    openNcDisplayPopUp : function(){
+        if (airbus.mes.ncdisplay.ncdisplayPopUp === undefined) {
+            airbus.mes.ncdisplay.ncdisplayPopUp = sap.ui.xmlfragment("ncdisplayPopUp", "airbus.mes.ncdisplay.fragments.ncdisplayPopUp", airbus.mes.ncdisplay.oView.getController());
+            airbus.mes.ncdisplay.oView.addDependent(airbus.mes.ncdisplay.ncdisplayPopUp);
+        }
+        airbus.mes.ncdisplay.ncdisplayPopUp.open();
     }
 
 }

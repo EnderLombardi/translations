@@ -1,8 +1,13 @@
 "use strict";
 sap.ui.controller("airbus.mes.ncdisplay.controller.ncdisplay", {
 
+    onAfterRendering: function(){
+//        airbus.mes.ncdisplay.util.ModelManager.getItemsTable();
+    },
+
     defaultSelectNcDisplay: function () {
-        this.filterNcDisplay(airbus.mes.ncdisplay.util.ModelManager.operation);
+        this.filterNcDisplay(airbus.mes.ncdisplay.util.ModelManager.workOrder);
+        sap.ui.getCore().byId("ncdisplayView--ncDisplayOrder").setSelected(true);
     },
 
     //get user action on the checkbox field
@@ -34,5 +39,17 @@ sap.ui.controller("airbus.mes.ncdisplay.controller.ncdisplay", {
             default:
                 break;
         }
+    },
+
+    onLineClick: function(oEvent){
+        var cellText = oEvent.getParameter("listItem").getCells()[1].getProperty("text");
+        if(cellText === "NC" || cellText === "PNC" || cellText === "IR"){
+            console.log("THIS ONE !");
+            airbus.mes.ncdisplay.util.ModelManager.openNcDisplayPopUp();
+        }
+    },
+
+    closePopUp: function(){
+        airbus.mes.ncdisplay.ncdisplayPopUp.close();
     }
 });

@@ -1,0 +1,17 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" controllerName="airbus.mes.ncdisplay.controller.ncdisplay">
+
+    <Dialog id="ncDisplayPopUp" class="ncDisplayPopUp" contentWidth="40%"
+            contentHeight="40%" verticalScrolling="false" showHeader="false">
+        <content>
+            <HBox>
+                <Text text="toto" />
+
+            </HBox>
+        </content>
+        <beginButton>
+            <Button id="btnCloseNcDisplay" text="Close" press="closePopUp" visible="true" />
+
+        </beginButton>
+    </Dialog>
+
+</core:FragmentDefinition>
