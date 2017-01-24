@@ -346,7 +346,7 @@ airbus.mes.disruptions.ModelManager = {
 	},
 
 	createDisruption : function(messageHandle, messageType, messageSubject,
-			messageBody, payloadData) {
+			messageBody, payloadData ) {
 
 		airbus.mes.shell.util.navFunctions.disruptionButtons.create
 				.setEnabled(false);
@@ -371,7 +371,9 @@ airbus.mes.disruptions.ModelManager = {
 						"Param.6" : airbus.mes.shell.ModelManager.json2xml({
 							payloadAttributelist : payloadData
 						}),
-						"Param.7" : messageHandle
+						"Param.7" : messageHandle,
+						// gravity
+						"Param.8" : payloadData[0].payload[8].value
 
 					},
 					success : function(data, textStatus, jqXHR) {
