@@ -3,11 +3,16 @@
 jQuery.sap.require("sap.ui.core.format.DateFormat");
 jQuery.sap.declare("airbus.mes.stationtracker.ModelManager");
 airbus.mes.stationtracker.ModelManager = {
-       urlModel : undefined,
+       
+	
+		urlModel : undefined,
        queryParams : jQuery.sap.getUriParameters(),
 
        i18nModel : undefined,
        operationType : undefined,
+       
+       //stationtracker or Worktracker
+       splitMode : undefined,
 
        firstTime : undefined,
        stationInProgress: {

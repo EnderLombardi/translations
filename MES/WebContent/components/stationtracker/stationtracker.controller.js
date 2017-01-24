@@ -45,7 +45,8 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
      * @memberOf components.stationtracker.stationtracker
      */
     onAfterRendering : function() {
-
+    	
+    	/* for show the splitter with work station
         // Capture the open/close panel event
         airbus.mes.stationtracker.oView.byId('kpi_header').attachExpand(resizeGantt);
         // First run on init
@@ -76,7 +77,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
                     airbus.mes.polypoly.oView.getController().setRowCountVisible(true);
                 }
             }
-        }).trigger("resize");
+        }).trigger("resize");*/
 
     },
 

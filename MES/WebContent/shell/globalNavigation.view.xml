@@ -1,40 +1,41 @@
-<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:cData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
-		controllerName="airbus.mes.shell.globalNavigation" xmlns:html="http://www.w3.org/1999/xhtml">
-	<Page title="MES" enableScrolling="false">
-		<customHeader>
-			<Toolbar class="topPageHeader">
-                  <content>	
-                           <Image id="logo" src="{ResourceUrl>airbus.logo}" width="auto" height="1.3rem" press="goToHome"/>
-                           <ToolbarSeparator />
-                           <Label text="MES - AOS" class="pageTitle unshrinkable" style="margin-left:0"/>
-                           <ToolbarSpacer />
-       							<Label text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/stationDescription', formatter : 'airbus.mes.shell.util.Formatter.stationTrackerStation' }" class="pageTitle titleStation sapUiTinyMarginBeginEnd unshrinkable" />
-								<Label id="labelMSN" text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/msn', formatter : 'airbus.mes.shell.util.Formatter.stationTrackerMsn' }" class="pageWelcome sapUiTinyMarginBeginEnd unshrinkable" /> 
-								<Label text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/siteDescription', formatter : 'airbus.mes.shell.util.Formatter.stationTrackerPlant' }" class="pageWelcome sapUiTinyMarginBeginEnd unshrinkable" />
-								<Label text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/lineDescription', formatter : 'airbus.mes.shell.util.Formatter.stationTrackerLine' }" class="pageWelcome sapUiTinyMarginBeginEnd" />
-					       	<ToolbarSpacer />	                   
-							<Button id="refreshTime"  icon="sap-icon://refresh" press="refreshbtn" text="" visible="false" enabled="false" type="Transparent"></Button>
-							<Button id="localDELog" press="logOut" text="{ShellI18n>Cookie}" type="Transparent"></Button>                      
-                         	 <Select id="SelectLanguage" class="sapUiTinyMarginBeginEnd" change="onChangeLanguage"> 
-	                           		<core:Item text="English" key="en"/>
-	                           		<core:Item text="Deutsch" key="de"/>
-	                           		<core:Item text="Français" key="fr"/>
-	                        	   <core:Item text="Spanish" key="sp"/>                                                      
-                           	</Select>
-                           	<Button id="informationButton" icon="sap-icon://message-information" type="Transparent" press="onInformation" visible="false"  class="whiteColor whiteButton" />
-                           	<Button id="homeButton" icon="sap-icon://home" type="Transparent" tooltip="{ShellI18n>Home}" press="goToHome" visible="false"  class="whiteColor whiteButton" />
-                            <Button id="settingsButton"
-                                   type="Transparent" 
-                                   tooltip="{ShellI18n>Settings}"
-                                   icon="sap-icon://action-settings" 
-                                   class="whiteColor whiteButton" 
-                                   press="openSettingPopup"></Button>
-                   </content>
-             </Toolbar>
-		</customHeader>
-
-		<content width="100%" height="100%">
-				<NavContainer id="navCont" height="100%" navigate="onNavigate" afterNavigate="renderViews"></NavContainer>								
-		</content>
-	</Page>
+<core:View xmlns:core="sap.ui.core" 
+		xmlns:mvc="sap.ui.core.mvc" 
+		xmlns="sap.m" 
+		xmlns:cData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+		controllerName="airbus.mes.shell.globalNavigation" 
+		xmlns:html="http://www.w3.org/1999/xhtml">
+		
+			<Page title="MES" enableScrolling="false">
+				<customHeader>
+					<Toolbar class="topPageHeader">
+		                  <content>	
+		                           <Image id="logo" src="{ResourceUrl>airbus.logo}" width="auto" height="1.3rem" press="goToHome"/>
+		                           <ToolbarSeparator />
+		                           		<Label text="MES - AOS" class="pageTitle unshrinkable" style="margin-left:0"/>
+		                           <ToolbarSpacer />
+		       							<Label 					text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/stationDescription', formatter : 'airbus.mes.shell.util.Formatter.stationTrackerStation' }" class="pageTitle titleStation sapUiTinyMarginBeginEnd unshrinkable" />
+										<Label id="labelMSN" 	text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/msn', formatter : 'airbus.mes.shell.util.Formatter.stationTrackerMsn' }" class="pageWelcome sapUiTinyMarginBeginEnd unshrinkable" /> 
+										<Label 					text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/siteDescription', formatter : 'airbus.mes.shell.util.Formatter.stationTrackerPlant' }" class="pageWelcome sapUiTinyMarginBeginEnd unshrinkable" />
+										<Label 					text="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/lineDescription', formatter : 'airbus.mes.shell.util.Formatter.stationTrackerLine' }" class="pageWelcome sapUiTinyMarginBeginEnd" />
+							       	<ToolbarSpacer />	                   
+									<Button id="refreshTime"  		type="Transparent"									icon="sap-icon://refresh" press="refreshbtn" text="" visible="false" enabled="false" ></Button>
+									<Button id="localDELog" press="logOut" text="{ShellI18n>Cookie}" type="Transparent"></Button>                      
+		                         	<Select id="SelectLanguage" class="sapUiTinyMarginBeginEnd" change="onChangeLanguage"> 
+			                           	<core:Item text="English" key="en"/>
+			                           	<core:Item text="Deutsch" key="de"/>
+			                           	<core:Item text="Français" key="fr"/>
+			                        	<core:Item text="Spanish" key="sp"/>                                                      
+		                           	</Select>
+		                           	<Button id="informationButton" 	type="Transparent"  								icon="sap-icon://message-information" press="onInformation" visible="false"  class="whiteColor whiteButton" />
+		                           	<Button id="homeButton" 		type="Transparent" tooltip="{ShellI18n>Home}" 		icon="sap-icon://home"  press="goToHome" visible="false"  class="whiteColor whiteButton" />
+		                            <Button id="settingsButton" 	type="Transparent" tooltip="{ShellI18n>Settings}" 	icon="sap-icon://action-settings" class="whiteColor whiteButton" press="openSettingPopup"></Button>
+		                   </content>
+		             </Toolbar>
+				</customHeader>
+		
+				<content width="100%" height="100%">
+						<NavContainer id="navCont" height="100%" navigate="onNavigate" afterNavigate="renderViews"></NavContainer>								
+				</content>
+			</Page>
+			
 </core:View>

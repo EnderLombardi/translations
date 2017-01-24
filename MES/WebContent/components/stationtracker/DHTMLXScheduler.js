@@ -11,7 +11,10 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",    {
 
                         oRm.write("<div ");
                         oRm.writeControlData(oControl);
-                        oRm.write(" class='dhx_cal_container'  style='width:100%; height:71%;'>");
+                        // without splitter
+                        //oRm.write(" class='dhx_cal_container'  style='width:100%; height:71%;'>");
+                        // with splitter
+                        oRm.write(" class='dhx_cal_container'  style='width:100%; height:inherit;'>");
                         oRm.write("    <div class='dhx_cal_navline'style=''>");
                         oRm.write("        <div class='dhx_cal_date' Style='font-weight:bold; text-align:left; padding-left: 1.5%;'></div>");
                         oRm.write("    </div>");

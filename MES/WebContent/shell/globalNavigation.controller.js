@@ -389,6 +389,36 @@ sap.ui.controller(
                             airbus.mes.shell.oView.oController.loadStationTrackerGantKPI();
                         }
                     },
+                    
+                   
+                    renderWorkTracker : function() {
+                        
+                    	//get spliter
+                    	 var oSpliter = airbus.mes.stationtracker.oView.byId("splitWorkTra");
+                    	 
+                    	//if already existe remove content
+                    	if (airbus.mes.stationtracker.oView.byId("splitWorkTra").getContentAreas().length > 1) {
+                    		oSpliter.removeContentArea(1)
+                    		console.log("-1");
+                    	}
+                    	 
+                    	//get fragment 
+                         if(airbus.mes.stationtracker.splitterWorkTracker === undefined){
+                                airbus.mes.stationtracker.splitterWorkTracker = sap.ui.xmlfragment("spliterWorkTracker","airbus.mes.stationtracker.splitterWorkTracker", airbus.mes.stationtracker.oView.getController());
+                                airbus.mes.stationtracker.oView.addDependent(airbus.mes.stationtracker.splitterWorkTracker);
+                                }
+                    	
+                    	console.log("LOADSPLITTERWT");
+                         
+                        //Add content
+                        oSpliter.addContentArea(airbus.mes.stationtracker.splitterWorkTracker);
+                        console.log("+1");
+                         
+                        //refresh area
+                         scheduler.updateView();
+                        
+
+                    },
 
                     loadStationTrackerGantKPI : function() {
                         var oModule = airbus.mes.stationtracker.ModelManager;

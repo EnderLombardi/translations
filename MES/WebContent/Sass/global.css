@@ -101,8 +101,6 @@ STATION TRACKER
 
 #stationTrackerView--stationtracker, #calendar--calendar {
   width: auto;
-  height: auto !important;
-  position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
@@ -2409,6 +2407,7 @@ td {
   #disruptionDetail .sapMFlexItem .textSize:nth-child(1) {
     font-weight: bold;
     color: black; }
+<<<<<<< Upstream, based on origin/MESv1.5
   #disruptionDetail .attachmentIcon {
     margin-top: 0.5rem !important;
     z-index: 2 !important;
@@ -2416,6 +2415,8 @@ td {
     right: 1rem !important; }
   #disruptionDetail .setMinWidth {
     min-width: 200px !important; }
+=======
+>>>>>>> cfc432f [work Tracker] - split screen + css
 
 /********************
 RESSOURCEPOOL
