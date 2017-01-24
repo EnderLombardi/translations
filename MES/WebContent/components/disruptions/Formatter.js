@@ -13,17 +13,19 @@ airbus.mes.disruptions.Formatter = {
 		"rejected" 	: "Rejected",
 		"deleted" 	: "Deleted"
 	},
+		
+	/* For ui5-preload gulp task, we need to escape '$' characters */
 	
 	actions: {
-		"close"			: "close$$$",
-		"del"			: "delete$$$",
-		"reject"    	: "reject$$$",
-		"refuse"    	: "refuse$$$",
-		"comment"  		: "comment$$$",
-		"acknowledge"   : "acknowledge$$$",
-		"solve"  		: "solve$$$",
-		"edit"  		: "edit$$$",
-		"create"  		: "create$$$",
+		"close"			: "close\$\$",
+		"del"			: "delete\$\$",
+		"reject"    	: "reject\$\$",
+		"refuse"    	: "refuse\$\$",
+		"comment"  		: "comment\$\$",
+		"acknowledge"   : "acknowledge\$\$",
+		"solve"  		: "solve\$\$",
+		"edit"  		: "edit\$\$",
+		"create"  		: "create\$\$",
 	},
 	
 	opStatus:{'completed'    : 'COMPLETED',
@@ -278,16 +280,16 @@ airbus.mes.disruptions.Formatter = {
 	},
 	formatCommentAction: function(action, comment){
 		
-		if(comment.indexOf("$$$") > -1){
-			action = comment.split("$$$")[0];
+		if(comment.indexOf("\$\$") > -1){
+			action = comment.split("\$\$")[0];
 		}
 		
 		return airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty(action.toLowerCase()).toLowerCase();
 	},
 	formatComment: function(comment){
 
-		if(comment.indexOf("$$$") > -1){
-			return comment.split("$$$")[1];
+		if(comment.indexOf("\$\$") > -1){
+			return comment.split("\$\$")[1];
 		}
 		else{
 			return comment;
