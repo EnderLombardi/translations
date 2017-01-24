@@ -1,0 +1,110 @@
+{
+    "Rowsets": {
+        "DateCreated": "2017-01-19T17:38:56",
+        "Version": "15.1 SP2 Patch 13 (Oct 6, 2016)",
+        "StartDate": "2016-11-17T16:38:56+0100",
+        "EndDate": "2016-11-17T17:38:56+0100",
+        "CachedTime": "",
+        "Rowset": [
+            {
+                "Columns": {
+                    "Column": [
+                        {
+                            "Name": "workInstruction",
+                            "SourceColumn": "workInstruction",
+                            "Description": "",
+                            "SQLDataType": 1,
+                            "MinRange": 1,
+                            "MaxRange": 1
+                        },
+                        {
+                            "Name": "revision",
+                            "SourceColumn": "revision",
+                            "Description": "",
+                            "SQLDataType": 1,
+                            "MinRange": 1,
+                            "MaxRange": 1
+                        },
+                        {
+                            "Name": "descriptionWI",
+                            "SourceColumn": "descriptionWI",
+                            "Description": "",
+                            "SQLDataType": 1,
+                            "MinRange": 1,
+                            "MaxRange": 1
+                        },
+                        {
+                            "Name": "URL",
+                            "SourceColumn": "URL",
+                            "Description": "",
+                            "SQLDataType": 1,
+                            "MinRange": 1,
+                            "MaxRange": 1
+                        }
+                    ]
+                },
+                "Row": [
+                    {
+                        "workInstruction": "AOT-902156999-M5-myGantt",
+                        "revision": "A",
+                        "descriptionWI": "Page one of Airbus Gantt",
+                        "URL": "http://doc.content.airbus.corp/902156999.pdf"
+                    },
+                    {
+                        "workInstruction": "SOI-123456789-P1-myForecast",
+                        "revision": "A",
+                        "descriptionWI": "Forecast of new project",
+                        "URL": "http://doc.content.airbus.corp/102156432.pdf"
+                    },
+                    {
+                        "workInstruction": "SOI-123123456-P1-myForecastv2",
+                        "revision": "B",
+                        "descriptionWI": "Forecast of new project",
+                        "URL": "http://doc.content.airbus.corp/102156789.pdf"
+                    },
+                    {
+                        "workInstruction": "AOT-901234599-M5-shift",
+                        "revision": "O",
+                        "descriptionWI": "A shift",
+                        "URL": "http://doc.content.airbus.corp/198156432.pdf"
+                    },
+                    {
+                        "workInstruction": "AOT-901234599-M5-shift",
+                        "revision": "P",
+                        "descriptionWI": "A shift",
+                        "URL": "http://doc.content.airbus.corp/198156433.pdf"
+                    },
+                    {
+                        "workInstruction": "AOT-457823456-M5-myTab",
+                        "revision": "A",
+                        "descriptionWI": "Tab",
+                        "URL": "http://doc.content.airbus.corp/102457789.pdf"
+                    },
+                    {
+                        "workInstruction": "AIPI-157898456-P2-myTextFile",
+                        "revision": "B",
+                        "descriptionWI": "It's a text file",
+                        "URL": "http://doc.content.airbus.corp/147856789.pdf"
+                    },                    {
+                        "workInstruction": "SOI-901234599-M2-chart",
+                        "revision": "A",
+                        "descriptionWI": "Big chart",
+                        "URL": "http://doc.content.airbus.corp/191256433.pdf"
+                    },
+                    {
+                        "workInstruction": "AOT-457823456-M5-picture",
+                        "revision": "A",
+                        "descriptionWI": "Picture of Saint-Nazaire",
+                        "URL": "http://doc.content.airbus.corp/667667789.pdf"
+                    },
+                    {
+                        "workInstruction": "AIPI-157898456-P1-bigPicture",
+                        "revision": "A",
+                        "descriptionWI": "High quality picture of the plant",
+                        "URL": "http://doc.content.airbus.corp/147811189.pdf"
+                    }
+                ]
+            }
+        ]
+    }
+}

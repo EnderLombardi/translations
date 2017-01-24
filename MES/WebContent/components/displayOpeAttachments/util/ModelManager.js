@@ -6,6 +6,9 @@ airbus.mes.displayOpeAttachments.util.ModelManager = {
 	urlModel: undefined,
 	queryParams: jQuery.sap.getUriParameters(),
 	i18nModel: undefined,
+	//todo :will be the configuration received in AppConfManager
+	//sSet : airbus.mes.settings.AppConfManager.getConfiguration("VIEW_ATTACHED_TOOL");
+	sSet : "O",
 
 	init: function (core) {
 
@@ -45,6 +48,7 @@ airbus.mes.displayOpeAttachments.util.ModelManager = {
 			}
 		}
 
+		//load data in the model at the init of the component
 		var oModule = airbus.mes.displayOpeAttachments.util.ModelManager;
 		oModule.loadDOADetail();
 	},
@@ -52,10 +56,12 @@ airbus.mes.displayOpeAttachments.util.ModelManager = {
 	/* *********************************************************************** *
 	 *  Replace URL Parameters                                                 *
 	 * *********************************************************************** */
+	//replace URL with parameter
 	replaceURI : function(sURI, sFrom, sTo) {
 		return sURI.replace(sFrom, encodeURIComponent(sTo));
 	},
 
+	//request + loadData + formatter on response + model refresh
 	loadDOADetail: function () {
 		var oViewModel = airbus.mes.displayOpeAttachments.oView.getModel("getOpeAttachments");
 		oViewModel.loadData(this.getDOADetail(), null, false);
@@ -67,12 +73,24 @@ airbus.mes.displayOpeAttachments.util.ModelManager = {
 		oViewModel.refresh(true);//refresh the model
 	},
 
-	getDOADetail: function () {
+	//replace the url with the several parameters needed
+	getDOADetail: function (paramArray) {
 		var url = this.urlModel.getProperty("getOpeAttachments");
-		//iftoad : durl = airbus.mes.displayOpeAttachments.ModelManager.replaceURI(url, "$ShopOrderBO", airbus.mes.stationtracker.ModelManager.stationInProgress.ShopOrderBO);
-			//url = airbus.mes.displayOpeAttachments.ModelManager.replaceURI(url, "$RouterBO", airbus.mes.settings.ModelManager.site);
-		//iftoadd : url = airbus.mes.displayOpeAttachments.ModelManager.replaceURI(url, "$RouterStepBO", airbus.mes.stationtracker.ModelManager.stationInProgress.RouterStepBO);
-			//url = airbus.mes.displayOpeAttachments.ModelManager.replaceURI(url, "$Site", airbus.mes.settings.ModelManager.site);
+		var urlConfig = this.queryParams.get("url_config");
+		var set = airbus.mes.displayOpeAttachments.util.ModelManager.sSet;
+
+		//local config to change between operation and work order
+		if (urlConfig === "sopra" && set === "O"){
+			url = "../components/displayOpeAttachments/data/displayOpeAttachments.json";
+		} else if (urlConfig === "sopra" && set === "P") {
+			url = "../components/displayOpeAttachments/data/displayOpeAttachments_wo.json";
+		}
+		
+		//replace the urls
+		//iftoadd : url = airbus.mes.displayOpeAttachments.ModelManager.replaceURI(url, "$ShopOrderBO", paramArray[0]);
+			//url = airbus.mes.displayOpeAttachments.ModelManager.replaceURI(url, "$RouterBO", paramArray[1]);
+		//iftoadd : url = airbus.mes.displayOpeAttachments.ModelManager.replaceURI(url, "$RouterStepBO", paramArray[2]);
+			//url = airbus.mes.displayOpeAttachments.ModelManager.replaceURI(url, "$Site", paramArray[3]);
 		return url;
 	},
 

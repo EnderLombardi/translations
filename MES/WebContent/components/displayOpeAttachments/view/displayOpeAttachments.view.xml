@@ -24,7 +24,7 @@
                     rows="{getOpeAttachments>/Rowsets/Rowset/0/Row}"
                     ariaLabelledBy="title">
                 <columns>
-                    <Column width="13rem">
+                    <Column width="11rem">
                         <m:Label class="DisOpAttLabel" text="{i18nDisplayOpeAttachmentsModel>doc_type}"/>
                         <template>
                             <m:Text text="{getOpeAttachments>dokar}"/>
@@ -55,19 +55,19 @@
                             <m:Text text="{getOpeAttachments>doknr}"/>
                         </template>
                     </Column>
-                    <Column width="9rem">
+                    <Column width="17rem">
                         <m:Label class="DisOpAttLabel" text="{i18nDisplayOpeAttachmentsModel>doc_description}"/>
                         <template>
                             <m:Text text="{getOpeAttachments>descriptionWI}"/>
                         </template>
                     </Column>
-                    <Column width="11rem">
+                    <Column width="5rem">
                         <m:Label class="DisOpAttLabel" text="{i18nDisplayOpeAttachmentsModel>doc_part}"/>
                         <template>
                             <m:Text text="{getOpeAttachments>doktl}"/>
                         </template>
                     </Column>
-                    <Column width="11rem">
+                    <Column width="5rem">
                         <m:Label class="DisOpAttLabel" text="{i18nDisplayOpeAttachmentsModel>doc_version}"/>
                         <template>
                             <m:Text text="{getOpeAttachments>revision}"/>
