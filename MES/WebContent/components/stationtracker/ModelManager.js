@@ -11,9 +11,6 @@ airbus.mes.stationtracker.ModelManager = {
        i18nModel : undefined,
        operationType : undefined,
        
-       //stationtracker or Worktracker
-       splitMode : undefined,
-
        firstTime : undefined,
        stationInProgress: {
            ShopOrderBO: undefined,

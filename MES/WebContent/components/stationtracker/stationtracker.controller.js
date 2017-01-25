@@ -993,12 +993,22 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 
             airbus.mes.stationtracker.AssignmentManager.userSelected = oSelected.key;
             airbus.mes.shell.oView.getController().loadStationTrackerGantKPI();
+            
+            if (airbus.mes.shell.util.navFunctions.splitMode == "StationTracker"){
+            //show split screen if select user
+            airbus.mes.shell.oView.oController.renderWorkTracker();
+            }
           
            
         } else {
 
             airbus.mes.stationtracker.AssignmentManager.userSelected = "%";
             airbus.mes.shell.oView.getController().loadStationTrackerGantKPI();
+           
+            if (airbus.mes.shell.util.navFunctions.splitMode == "StationTracker"){
+            	 //hide split screen if select user
+                airbus.mes.stationtracker.oView.byId("splitWorkTra").removeContentArea(1);
+             }
         
         }
 

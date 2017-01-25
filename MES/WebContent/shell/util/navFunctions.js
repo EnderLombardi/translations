@@ -5,6 +5,9 @@ jQuery.sap.declare("airbus.mes.shell.util.Functions");
 airbus.mes.shell.util.navFunctions = {
 
     queryParams : jQuery.sap.getUriParameters(),
+    
+    //StationTracker or Worktracker
+    splitMode : undefined,
 
     jigsAndTools:{
         configME : undefined,
@@ -48,6 +51,7 @@ airbus.mes.shell.util.navFunctions = {
         nav.to(airbus.mes.stationtracker.oView.getId());
 
     },
+  
 
     polypoly : function() {
 
@@ -176,6 +180,7 @@ airbus.mes.shell.util.navFunctions = {
         airbus.mes.shell.util.navFunctions.disruptionButtons.update = updateButton;
         airbus.mes.shell.util.navFunctions.disruptionButtons.cancel = cancelButton;
     },
+    
     displayOpeAttachments: function(container) {
 
         if (airbus.mes.displayOpeAttachments === undefined || airbus.mes.displayOpeAttachments.oView === undefined) {
@@ -199,6 +204,7 @@ airbus.mes.shell.util.navFunctions = {
             container.addPage(airbus.mes.jigtools.oView);
         }
     },
+    
     componentsDetail : function(container) {
 
         if (airbus.mes.components === undefined || airbus.mes.components.oView === undefined) {
@@ -209,7 +215,8 @@ airbus.mes.shell.util.navFunctions = {
         if (container.getPage("componentsView") === null) {
             container.addPage(airbus.mes.components.oView);
         }
-    },    
+    },   
+    
     acpnglinksDetail : function(container) {
 
         if (airbus.mes.acpnglinks === undefined || airbus.mes.acpnglinks.oView === undefined) {
@@ -221,6 +228,7 @@ airbus.mes.shell.util.navFunctions = {
             container.addPage(airbus.mes.acpnglinks.oView);
         }
     },
+    
     ncDisplayLink : function(container) {
 
         if (airbus.mes.ncdisplay === undefined || airbus.mes.ncdisplay.oView === undefined) {
@@ -232,6 +240,7 @@ airbus.mes.shell.util.navFunctions = {
             container.addPage(airbus.mes.ncdisplay.oView);
         }
     },
+    
     disruptionAttachment : function(container, disruptionDesc) {
 
         if (airbus.mes.disruptions.attachments === undefined || airbus.mes.disruptions.attachments.oView === undefined) {

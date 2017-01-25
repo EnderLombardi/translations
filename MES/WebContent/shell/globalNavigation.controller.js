@@ -272,6 +272,7 @@ sap.ui.controller(
                             	$("#stationTrackerView--takt_adherence_area_chart > g")[0].remove();
                             	
                             }                    
+                            
                             airbus.mes.stationtracker.GraphManager.loadGraph();
                             
                             //refresh
@@ -378,6 +379,17 @@ sap.ui.controller(
                             airbus.mes.stationtracker.ShiftManager.updateShift = false;
                             var oModule = airbus.mes.stationtracker.ModelManager;
                             airbus.mes.shell.oView.getController().setInformationVisibility(true);
+                            
+                          //show split worktracker
+                            var MyModele = airbus.mes.shell.util.navFunctions.splitMode;
+                            if (MyModele == "WorkTracker"){
+                            	airbus.mes.shell.oView.oController.renderWorkTracker();
+                            } else if (MyModele == "StationTracker"){
+                            	//if already exist remove content
+                            	if (airbus.mes.stationtracker.oView.byId("splitWorkTra").getContentAreas().length > 1) {
+                            		airbus.mes.stationtracker.oView.byId("splitWorkTra").removeContentArea(1)
+                            	}
+                            }
 
                             // ** synchrone call **//
                             oModule.loadShifts();
@@ -387,6 +399,7 @@ sap.ui.controller(
 
                             // ** asynchrone call **//
                             airbus.mes.shell.oView.oController.loadStationTrackerGantKPI();
+                            
                         }
                     },
                     
@@ -396,12 +409,12 @@ sap.ui.controller(
                     	//get spliter
                     	 var oSpliter = airbus.mes.stationtracker.oView.byId("splitWorkTra");
                     	 
-                    	//if already existe remove content
+                    	//if already exist remove content
                     	if (airbus.mes.stationtracker.oView.byId("splitWorkTra").getContentAreas().length > 1) {
                     		oSpliter.removeContentArea(1)
-                    		console.log("-1");
+
                     	}
-                    	 
+                    	
                     	//get fragment 
                          if(airbus.mes.stationtracker.splitterWorkTracker === undefined){
                                 airbus.mes.stationtracker.splitterWorkTracker = sap.ui.xmlfragment("spliterWorkTracker","airbus.mes.stationtracker.splitterWorkTracker", airbus.mes.stationtracker.oView.getController());
@@ -412,11 +425,9 @@ sap.ui.controller(
                          
                         //Add content
                         oSpliter.addContentArea(airbus.mes.stationtracker.splitterWorkTracker);
-                        console.log("+1");
                          
                         //refresh area
                          scheduler.updateView();
-                        
 
                     },
 

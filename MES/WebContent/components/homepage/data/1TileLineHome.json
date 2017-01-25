@@ -45,7 +45,7 @@
 		"sub" : "",
 		"icon": "employee",
 		"app":"",
-		"url": "/MES/WebContent/components/stationtracker/index.html",
+		"url": "/MES/WebContent/components/WorkerTracker/index.html",
 		"enable": "true"
 	}, {
 		"text": "DisruptionAndon",
