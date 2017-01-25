@@ -526,7 +526,7 @@ airbus.mes.disruptions.ModelManager = {
 		airbus.mes.shell.util.navFunctions.disruptionButtons.cancel.setEnabled(false);
 		
 		
-		airbus.mes.disruptions.ModelManager.gravity_temp = payloadData[0].payload[8].value; // Store gravity to access in ajax response
+		airbus.mes.disruptions.ModelManager.gravity_temp = dPromisedDate; // Store gravity to access in ajax response
 
 		jQuery
 				.ajax({
