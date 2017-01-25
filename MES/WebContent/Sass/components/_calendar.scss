@@ -223,7 +223,7 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
                 display: none;
             }
             &.dhx_matrix_now_time{
-                min-height: 70px;
+                min-height: 30px;
                 border-left-color: purple;
                 opacity: 1;
             }
@@ -239,7 +239,7 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
     }
     .dhx_row_item{
         .dhx_marked_timespan{
-            &.begin_shifht{
+            &.begin_shifht{ 
                 @extend %timeSpanWidth;
                 background-color: blue;
             }

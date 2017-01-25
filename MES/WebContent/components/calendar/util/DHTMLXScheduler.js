@@ -55,7 +55,7 @@ sap.ui.core.Control.extend("airbus.mes.calendar.util.DHTMLXScheduler",    {
                             y_property:    "section_id",
                             render:"tree",
                             folder_dy: 25,
-                            dy: 48,
+                            dy: 45,
 
                         });
 

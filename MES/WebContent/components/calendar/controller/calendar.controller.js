@@ -90,7 +90,7 @@ sap.ui.controller("airbus.mes.calendar.controller.calendar", {
 	        var dSeletectedDate = airbus.mes.calendar.oView.oCalendar.getSelectedDates()[0].getStartDate();
 	        if(dSeletectedDate < airbus.mes.calendar.util.GroupingBoxingManager.minDate || dSeletectedDate > airbus.mes.calendar.util.GroupingBoxingManager.maxDate ) {
 //	            If we are out of range, we display a message and don't close the date picker
-	        	sap.m.MessageToast.show(airbus.mes.calendar.oView.getModel("StationTrackerI18n").getProperty("noShiftExist"));
+	        	sap.m.MessageToast.show(airbus.mes.calendar.oView.getModel("calendarI18n").getProperty("noShiftExist"));
 	        } else {
 	            // Reselect the date in shift hierarchy to select the good date
 	            var dDataSelected = airbus.mes.calendar.oView.oCalendar.getSelectedDates()[0].getStartDate();
@@ -149,7 +149,7 @@ sap.ui.controller("airbus.mes.calendar.controller.calendar", {
 	     * swiping in gantt or on the first display
 	     ****************************************************************************/
 	    UpdateDateSwipe : function() {
-	    	var oDate = new Date($("div[class='dhx_cal_date']").contents()[0].data.split("-")[0]);
+	    	var oDate = new Date($("#calendar--calendar")[0].children[0].children[0].textContent.split("-")[0]);
 	    	var oFormatddMMyyy = sap.ui.core.format.DateFormat.getInstance({pattern : "dd MMM yyyy",calendarType : sap.ui.core.CalendarType.Gregorian
 	     });
 	     var oText = airbus.mes.calendar.oView.byId("dateLabel");
