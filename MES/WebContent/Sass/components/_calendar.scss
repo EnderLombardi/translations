@@ -64,6 +64,7 @@ STATIONTRACKERVIEW ID AND DHX AND CONTENT
     }
 }
 #calendar--calendar{
+    top:0px !important;
     @extend %stationTrackerView;
     .customHour{
         @extend %stationTrackerViewCustomHour;
@@ -416,11 +417,7 @@ STATION TRACKER TOOLBAR
 }
 #calendar--toolbarcalendar{
     background-color: $duck-egg-blue !important;
-    label{
-        color: #0D5D76;
-        padding: 0 0 0 0.625rem;
-    }
-    .comboBoxStyle{
+     .comboBoxStyle{
         @extend %comboBoxStyleStationTracker;
         label,
         .sapMSltArrow{
@@ -435,34 +432,30 @@ STATION TRACKER TOOLBAR
             }
         }
     }
+    .initialFont{
+        font-style: initial;       
+    }
+    
     .sapMBtnIconLeft,
     .sapMBtnContent{
         color: #0D5D76;
     }
-    #calendar--calendarAbsence:hover{
-        background-color: transparent !important;
-        cursor: default !important;
-    }
     #calendar--calendarAbsence{
-        .sapMBtnCustomIcon{
             color:$cool-grey-hover;        
-        }
     }
+     
     #calendar--calendarDiversion{
-        .sapMBtnCustomIcon{
             color:$teal-blue;        
-        }
     }
     #calendar--calendarLoaned{
-        .sapMBtnCustomIcon{
             color:$dandelion;        
-        }
     }
     >label {
         color: $cool-grey-hover;
         text-shadow: none;
         font-style: italic;
     }
+        
 }
 .sapMPopoverScroll{
     .sapMSelectListItemBaseSelected{

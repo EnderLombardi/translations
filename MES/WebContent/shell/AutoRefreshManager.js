@@ -62,12 +62,13 @@ airbus.mes.shell.AutoRefreshManager =  {
 	             case "disruptionKPIView":
 	            	 refreshConfigKey = "REFRESH_DISRUPTION_KPI_"+airbus.mes.settings.ModelManager.station;
 	            	 break;
-	            	 
+	             case "calendar" :
+            	 	refreshConfigKey = "REFRESH_CALENDAR_TRACKER_"+airbus.mes.settings.ModelManager.station;
+	             	break;
 	             default:
             	 
              }
-             this.refreshInterval = config[sVal.viewName].timer = 
-            	 parseInt(airbus.mes.settings.AppConfManager.getConfiguration(refreshConfigKey, this.defaultKey))
+             this.refreshInterval = config[sVal.viewName].timer = parseInt(airbus.mes.settings.AppConfManager.getConfiguration(refreshConfigKey, this.defaultKey))
               
              
              // init function

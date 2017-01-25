@@ -32,6 +32,8 @@ airbus.mes.shell.util.navFunctions = {
              nav.addPage(airbus.mes.calendar.oView);
          }
 
+         airbus.mes.shell.util.navFunctions.jigsAndTools.configME = undefined;
+         
          nav.to(airbus.mes.calendar.oView.getId());
 
     },

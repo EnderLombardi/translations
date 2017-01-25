@@ -38,14 +38,15 @@
 
 					<Label text="{calendarI18n>teamavaibility}" class="classDateLabel" />
 
-				<Button id="calendarAbsence" type="Transparent" enabled="true"
-						icon="sap-icon://color-fill" text="{calendarI18n>calendarAbsence}" />
+				<core:Icon id="calendarAbsence" src="sap-icon://color-fill"/>
+				<Label id="calendarAbsenceLabel" text="{calendarI18n>calendarAbsence}" class="initialFont" />
 				
-				<Button id="calendarDiversion" type="Transparent" enabled="true"
-						icon="sap-icon://color-fill" text="{calendarI18n>calendarDiversion}" />
+				<core:Icon id="calendarDiversion" src="sap-icon://color-fill"/>
+				<Label id="calendarDiversionLabel" text="{calendarI18n>calendarDiversion}" class="initialFont" />
 				
-				<Button id="calendarLoaned" type="Transparent" enabled="true"
-					 icon="sap-icon://color-fill" text="{calendarI18n>calendarLoaned}" />
+				<core:Icon id="calendarLoaned" src="sap-icon://color-fill" />
+				<Label id="calendarLoanedLabel" text="{calendarI18n>calendarLoaned}" class="initialFont" />
+
 						
 
 					<ToolbarSpacer />

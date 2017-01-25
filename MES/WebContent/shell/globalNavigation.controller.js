@@ -244,7 +244,11 @@ sap.ui.controller(
                                 break;
                             case "calendar":
                             	this.renderCalendarTracker();
-                              
+                            	//refresh
+                                airbus.mes.shell.AutoRefreshManager.clearInterval();
+                                if ( bBatch1==false ) {
+                                    	airbus.mes.shell.AutoRefreshManager.setInterval("renderCalendarTracker");
+                                }
                                 break;
                                 
                                default:
@@ -330,9 +334,17 @@ sap.ui.controller(
                             break;
                         case "calendar":
                         	this.renderCalendarTracker();
-                          
+
+                        	//refresh
+                            if ( bBatch1==false ) {
+                                airbus.mes.shell.AutoRefreshManager.setInterval("calendar");
+                                airbus.mes.shell.oView.byId('refreshTime').setVisible(true);
+                            }
+                        	
                         	 airbus.mes.shell.oView.byId("homeButton").setVisible(true);
                              airbus.mes.shell.oView.byId("SelectLanguage").setVisible(false);
+                             airbus.mes.shell.oView.byId('refreshTime').setVisible(true);
+
                             break;
                         default:
                         }

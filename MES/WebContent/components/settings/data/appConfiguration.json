@@ -45,6 +45,9 @@
 		"key": "POLYGROUP_PHYS_ST_IP2",
 		"value": "POLY_IP"
 	}, {
+		"key": "REFRESH_CALENDAR_TRACKER_ST_IP3",
+		"value": "600"
+	},	{
 		"key": "AIRBUS_ALLOWED_FILE_TYPES",
 		"value": ["txt", "jpg", "pdf", "png", "doc", "gif", "ppt"]
 	}]

@@ -2,11 +2,12 @@
 
 sap.ui.controller("airbus.mes.calendar.controller.calendar", {
 	
-	onAfterRendering : function() {
-		
-		
-		
-	},
+    onInit: function() {
+        //if the page is not busy
+        if (airbus.mes.shell.oView.byId('refreshTime').setBusyIndicatorDelay(0)){
+            airbus.mes.shell.oView.byId('refreshTime').setEnabled(true);
+        }
+    },
 	
 	
 	 /***************************************************************************

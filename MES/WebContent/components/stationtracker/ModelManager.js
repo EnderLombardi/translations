@@ -733,7 +733,7 @@ airbus.mes.stationtracker.ModelManager = {
 
         }
 
-        if (airbus.mes.stationtracker.ShiftManager.shiftDisplay) {
+        if (airbus.mes.stationtracker.ShiftManager.shiftDisplay &&  airbus.mes.stationtracker.ShiftManager.current_shift!= undefined ) {
 
             airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftName = airbus.mes.stationtracker.ShiftManager.current_shift.shiftName;
             airbus.mes.stationtracker.ShiftManager.ShiftSelected.shiftID = airbus.mes.stationtracker.ShiftManager.current_shift.shiftID;
