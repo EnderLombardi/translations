@@ -25,16 +25,15 @@
 			items="{path: 'componentsWorkOrderDetail>/Rowsets/Rowset/0/Row/'}">
 			
 			<headerToolbar>
-					<!-- Search and sort item
-						 <OverflowToolbar id="otbSubheader">
-                        <ToolbarSpacer/>
-                        <SearchField id="maxPrice" liveChange="onFilter">
+					<!-- Search and sort item  -->
+						<OverflowToolbar id="otbSubheader">
+						<Button id="idFilterComponent"
+							text="{i18nComponentsModel>SelectFilter}"
+							type="Transparent" class="ClassProductionButton whiteColor whiteButton" press="onSelectFilter"/>	
+                        <SearchField id="idSearchComponent" liveChange="onFilterComponent">
                             <layoutData><OverflowToolbarLayoutData minWidth="200px" maxWidth="300px" shrinkable="true"/></layoutData>
                         </SearchField>
-                        <Button text="Reset" type="" press="onReset"/>
-                        <OverflowToolbarButton type="" text="Sort" icon="sap-icon://sort" press="onSort"/>
-                        <OverflowToolbarButton type="" text="Group" icon="sap-icon://group-2" press="onGroup"/>
-                    </OverflowToolbar> -->
+                        </OverflowToolbar>
 			</headerToolbar>
 			
 			<columns>

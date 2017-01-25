@@ -3,6 +3,7 @@
 jQuery.sap.registerModulePath("airbus.mes.components", "../components/components");
 jQuery.sap.require("airbus.mes.components.util.ModelManager");
 jQuery.sap.declare("airbus.mes.components.Component");
+jQuery.sap.require("airbus.mes.components.util.Formatter");
 
 sap.ui.core.UIComponent.extend("airbus.mes.components.Component", {
 	metadata : {

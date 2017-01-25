@@ -1,0 +1,51 @@
+{  
+   "Rowsets":{  
+      "DateCreated":"2016-10-06T09:55:46",
+      "Version":"15.1 SP2 Patch 5 (Jul 20, 2016)",
+      "StartDate":"2016-10-06T08:55:46+0200",
+      "EndDate":"2016-10-06T09:55:46+0200",
+      "CachedTime":"",
+      "Rowset":[  
+         {  
+            "Columns":{  
+               "Column":[  
+                  {  
+                     "Name":"PP_STATION",
+                     "SourceColumn":"PP_STATION",
+                     "Description":"WorkCenter PP Station",
+                     "SQLDataType":1,
+                     "MinRange":1.0,
+                     "MaxRange":1.0
+                  },
+                  {  
+                     "Name":"PROD_GROUP",
+                     "SourceColumn":"PROD_GROUP",
+                     "Description":"Production Group",
+                     "SQLDataType":1,
+                     "MinRange":1.0,
+                     "MaxRange":1.0
+                  }
+               ]
+            },
+            "Row":[  
+               {  
+                  "filter":"PP_ST_2",
+                  "filter_key":"BulkMaterial"
+               },
+               {  
+                  "filter":"PP_ST_1",
+                  "filter_key":"Kanban"
+               },
+               {  
+                  "filter":"PP_ST_3",
+                  "filter_key":"Available"
+               },
+               {  
+                  "filter":"PP_ST_3",
+                  "filter_key":"MissingPart"
+               }
+            ]
+         }
+      ]
+   }
+}

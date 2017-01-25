@@ -58,8 +58,9 @@ airbus.mes.components.util.ModelManager = {
 		}
 		
 		//"componentsConfigModel", 
-		airbus.mes.shell.ModelManager.createJsonModel(core,["componentsWorkOrderDetail"]);
+		airbus.mes.shell.ModelManager.createJsonModel(core,["componentsWorkOrderDetail", "selectFilterModel"]);
 		this.loadcomponentsWorkOrderDetail();
+		this.loadselectFilterModel();
 	},
 
 	//load
@@ -74,4 +75,9 @@ airbus.mes.components.util.ModelManager = {
 		url = airbus.mes.shell.ModelManager.replaceURI(url, "$site", airbus.mes.settings.ModelManager.site);
 		return url;
 	},
+	loadselectFilterModel : function() {
+		var oModel = sap.ui.getCore().getModel("selectFilterModel");
+		var url = this.urlModel.getProperty("selectFilterModel");
+		oModel.loadData(url, null, false);
+	}
 };
