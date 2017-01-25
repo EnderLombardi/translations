@@ -62,6 +62,14 @@
 		"app":"",
 		"url": "/MES/WebContent/components/stationtracker/index.html",
 		"enable": "false"
+	},
+	 {
+		"text": "StationHandover",
+		"sub": "",
+		"icon": "product",
+		"app":"",
+		"url": "/MES/WebContent/components/stationtracker/index.html",
+		"enable": "true"
 	}
 	]
 }

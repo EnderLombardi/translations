@@ -1,0 +1,11 @@
+<core:View xmlns:core="sap.ui.core" xmlns="sap.m"
+	xmlns:suite="sap.suite.ui.commons" controllerName="airbus.mes.stationHandover.controller.stationHandover"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:custom="airbus.mes.stationHandover.util"
+	xmlns:layout="sap.ui.layout" xmlns:micro="sap.suite.ui.microchart"
+	xmlns:uni="sap.ui.unified">
+
+	<Page title="toto" height="100%" showHeader="false"
+		enableScrolling="false " class="GenricBgColor">
+
+	</Page>
+</core:View>

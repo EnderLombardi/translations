@@ -22,6 +22,22 @@ airbus.mes.shell.util.navFunctions = {
         update:undefined,
         cancel:undefined
     },
+    
+    stationHandover : function() {
+    	
+    	 if (airbus.mes.stationHandover === undefined) {
+
+             jQuery.sap.registerModulePath("airbus.mes.stationHandover","../components/stationHandover");
+             sap.ui.getCore().createComponent({name : "airbus.mes.stationHandover",});
+             nav.addPage(airbus.mes.stationHandover.oView);
+         }
+
+         airbus.mes.shell.util.navFunctions.jigsAndTools.configME = undefined;
+         
+         nav.to(airbus.mes.stationHandover.oView.getId());
+
+    	
+    },
 
     calendar : function() {
 

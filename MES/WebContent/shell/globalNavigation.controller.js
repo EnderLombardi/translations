@@ -346,10 +346,31 @@ sap.ui.controller(
                              airbus.mes.shell.oView.byId('refreshTime').setVisible(true);
 
                             break;
+                        case "stationHandoverView":
+                        	this.stationHandover();
+
+                        	//TO DOrefresh
+//                            if ( bBatch1==false ) {
+//                                airbus.mes.shell.AutoRefreshManager.setInterval("calendar");
+//                                airbus.mes.shell.oView.byId('refreshTime').setVisible(true);
+//                            }
+                        	
+                        	 airbus.mes.shell.oView.byId("homeButton").setVisible(true);
+                             airbus.mes.shell.oView.byId("SelectLanguage").setVisible(false);
+                             airbus.mes.shell.oView.byId('refreshTime').setVisible(true);
+                            break;
                         default:
                         }
                     },
 
+                    /**
+                     * Render stationHandover reload all model
+                     * 
+                     */
+                    stationHandover : function() {
+                    	
+                    	
+                    },
                     /**
                      * Render Calendar Tracker and reload all model reload shift
                      * and compute shift hierarchy.

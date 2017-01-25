@@ -51,6 +51,9 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 			case "TeamAvailability":
 				airbus.mes.shell.util.navFunctions.calendar();
 				break;
+			case "StationHandover":
+				airbus.mes.shell.util.navFunctions.stationHandover();
+				break;
 			default:
 				break;
 			}
