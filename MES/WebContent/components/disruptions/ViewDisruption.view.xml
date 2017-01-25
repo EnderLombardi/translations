@@ -407,7 +407,7 @@
 							<Text
 								class="sapUiSmallMarginBeginEnd sapUiTinyMarginTopBottom msgHeaderText"
 								text="{i18nModel>solution}"></Text>
-							<Text text="{operationDisruptionsModel>Solution}"
+							<Text text="{path: 'operationDisruptionsModel>Solution', formatter: 'airbus.mes.disruptions.Formatter.formatComment'}"
 								class="sapUiSmallMarginBegin  sapUiSmallMarginEnd sapUiSmallMarginBottom"></Text>
 						</VBox>
 
