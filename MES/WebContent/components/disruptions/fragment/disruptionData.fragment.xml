@@ -8,18 +8,16 @@
 			<f:content>
 
 				<core:Title text="" />
+				<!-- 5Mclass is removed according to SD-SP1604983-DT-Detail-010 
+				     it's invisible here not removed to avoid conflicts with disruption create page -->
 				<Label text="{i18nModel>5Mclass}" />
-				<Select id="selectFivemCategory" enabled="false" change="onSelectionChange"
-					forceSelection="false">
-					<items>
-						<core:Item text="{i18nModel>5Mclass_01}" key="{i18nModel>5Mclass_01}" />
-						<core:Item text="{i18nModel>5Mclass_02}" key="{i18nModel>5Mclass_02}" />
-						<core:Item text="{i18nModel>5Mclass_03}" key="{i18nModel>5Mclass_03}" />
-						<core:Item text="{i18nModel>5Mclass_04}" key="{i18nModel>5Mclass_04}" />
-						<core:Item text="{i18nModel>5Mclass_05}" key="{i18nModel>5Mclass_05}" />
-						<core:Item text="{i18nModel>5Mclass_06}" key="{i18nModel>5Mclass_06}" />
-						<core:Item text="{i18nModel>5Mclass_07}" key="{i18nModel>5Mclass_07}" />
-					</items>
+				<Select id="selectFivemCategory" selectedKey=""
+											forceSelection="false" change="onSelectionChange"
+											items="{disruptionCustomData>/Rowsets/Rowset/1/Row}" visible="false">
+											<items>
+												<core:Item text="{disruptionCustomData>FivemCategory}" key="{disruptionCustomData>FivemCategory}" />
+												
+											</items>
 				</Select>
 				<Label text="{i18nModel>openDate}" />
 				<DatePicker enabled="false" id="OpenDate" displayFormat="short"
