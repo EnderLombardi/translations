@@ -180,7 +180,7 @@
 														<micro:ComparisonMicroChartData
 															id="hiddenRefBarSBL"
 															title="{StationTrackerI18n>Sum}"
-															displayValue="100%"
+															value="100%"
 															visible="false" />
 													</micro:data>
 												</micro:ComparisonMicroChart>
