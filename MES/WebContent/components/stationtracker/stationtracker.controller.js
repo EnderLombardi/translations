@@ -1000,6 +1000,17 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
             }
           
            
+        } else if (oSelected.key === "---") {
+
+            airbus.mes.stationtracker.AssignmentManager.userSelected = oSelected.key;
+            airbus.mes.shell.oView.getController().loadStationTrackerGantKPI();
+            
+            if (airbus.mes.shell.util.navFunctions.splitMode == "StationTracker"){
+           	 //hide split screen if select user
+               airbus.mes.stationtracker.oView.byId("splitWorkTra").removeContentArea(1);
+            }
+          
+           
         } else {
 
             airbus.mes.stationtracker.AssignmentManager.userSelected = "%";
@@ -1008,9 +1019,12 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
             if (airbus.mes.shell.util.navFunctions.splitMode == "StationTracker"){
             	 //hide split screen if select user
                 airbus.mes.stationtracker.oView.byId("splitWorkTra").removeContentArea(1);
+                
              }
         
         }
+      //force gantt 100% height
+        $("#stationTrackerView--splitWorkTra").children().css('height', '100%');
 
     },
     showDisruption : function(oEvent){

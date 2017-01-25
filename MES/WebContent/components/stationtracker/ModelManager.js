@@ -416,6 +416,11 @@ airbus.mes.stationtracker.ModelManager = {
         if (aModel.getProperty("/Rowsets/Rowset/0/Row")) {
 
             aModel.oData.Rowsets.Rowset[0].Row.unshift({
+                "firstName" : "No Users",
+                "user" : "No",
+            });
+        	
+        	aModel.oData.Rowsets.Rowset[0].Row.unshift({
                 "firstName" : "All Users",
                 "user" : "ALL",
             });
