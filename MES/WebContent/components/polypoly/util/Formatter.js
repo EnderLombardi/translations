@@ -11,8 +11,8 @@ airbus.mes.polypoly.util.Formatter = {
 		
 		techNameFormat : function(){
 			var stationMII = airbus.mes.polypoly.ModelManager.stationMII;
-			var nMaxLength = 13;
-			var sMask = stationMII + "_";
+			var nMaxLength = 16;
+			var sMask = stationMII;
 			var nDispLen = nMaxLength - stationMII.length;
 			for(var i = 0; i<nDispLen;i++){
 				sMask = sMask.concat("*");
