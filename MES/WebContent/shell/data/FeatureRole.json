@@ -1,0 +1,18 @@
+{ "Rowsets" : { 
+	"DateCreated" : "2017-01-24T14:25:59", "Version" : "15.1 SP2 Patch 13 (Oct 6, 2016)", "StartDate" : "2017-01-24T13:25:58+0100", "EndDate" : "2017-01-24T14:25:58+0100", "CachedTime" : "", 
+	"Rowset" : [ 
+	{ "Columns" : { 
+		"Column" : [ 
+		{ "Name" : "Feature", "SourceColumn" : "Feature", "Description" : "Feature", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "Roles", "SourceColumn" : "Roles", "Description" : "Roles", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 } ] }, 
+	"Row" : [ 
+		{ "Feature" : "HOMESCREEN", "Feature_Description" : "Click on screen to open","Authenticate" : "", "Roles" : "MII_MOD1684_PGL" }, 
+		{ "Feature" : "HOMESCREEN", "Feature_Description" : "Click on screen to open","Authenticate" : "","Roles" : "MII_MOD1684_UNITMANAGER" }, 
+		{ "Feature" : "HOMESCREEN", "Feature_Description" : "Click on screen to open","Authenticate" : "","Roles" : "MII_MOD1684_HOPLANT" }, 
+		{ "Feature" : "HOMESCREEN", "Feature_Description" : "Click on screen to open","Authenticate" : "","Roles" : "MII_MOD1684_QLTY" }, 
+		{ "Feature" : "HOMESCREEN", "Feature_Description" : "Click on screen to open","Authenticate" : "","Roles" : "MII_MOD1684_ADM" }, 
+		{ "Feature" : "HOMESCREEN", "Feature_Description" : "Click on screen to open","Authenticate" : "","Roles" : "MII_MOD1684_OPERATOR" }, 
+		{ "Feature" : "HOMESCREEN", "Feature_Description" : "Click on screen to open","Authenticate" : "","Roles" : "MII_MOD1684_1STLINEMANAGER" } ]
+		 } ]
+	 }
+ }

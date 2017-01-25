@@ -8,7 +8,7 @@ airbus.mes.shell.ModelManager = {
 				
 		init : function(core) {
 
-			airbus.mes.shell.ModelManager.createJsonModel(core,["userDetailModel","userSettingModel"]);
+			airbus.mes.shell.ModelManager.createJsonModel(core,["userDetailModel","userSettingModel","FeatureRoleModel"]);
 
 			var dest;
 
@@ -57,6 +57,8 @@ airbus.mes.shell.ModelManager = {
 				bundleName : "airbus.mes.shell.i18n.mii_i18n",
 	         });
 			core.setModel(MIIi18nModel, "miiI18n");
+			
+			this.loadFeatureRoleModel();
 		},
 		
 		getResourceUrl: function(urlId) {
@@ -76,11 +78,21 @@ airbus.mes.shell.ModelManager = {
 			var rep = jQuery.ajax({
 				async : false,
 				url : this.urlModel.getProperty('urlgetroles'),
-				type : 'GET',
+				type : 'POST',
 			});
 
 			return JSON.parse(rep.responseText);
 		},
+		
+	    getRolesForFeature : function() {
+	        var rep = jQuery.ajax({
+	            async : false,
+	            url : this.urlModel.getProperty('urlgetrolesfromfeature'),
+	            type : 'POST',///
+	            /////
+	        });   	
+	        return rep.responseJSON;
+	    },
 
 		json2xml : function(o, tab) {
 			var toXml = function(v, name, ind) {
@@ -271,5 +283,10 @@ airbus.mes.shell.ModelManager = {
 							
 			})
 				
+		},
+		
+		loadFeatureRoleModel : function(){
+			var oViewModel = sap.ui.getCore().getModel("FeatureRoleModel");
+			oViewModel.loadData(this.urlModel.getProperty("FeatureRoleModelurl"), null, false);
 		}
 }
