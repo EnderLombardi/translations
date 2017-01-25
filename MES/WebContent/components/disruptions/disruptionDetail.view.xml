@@ -2,25 +2,28 @@
 	xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
 	controllerName="airbus.mes.disruptions.CreateDisruption" xmlns:html="http://www.w3.org/1999/xhtml">
 	<Page enableScrolling="true" class="GenricBgColor" height="100%"
-		width="100%">
-
+	width="100%" showHeader="false">
+	<subHeader>
+	<Bar class="pageSubHeader">
+				<contentLeft>
+					<Button id="navBack" icon="sap-icon://arrow-left" text="{i18nModel>back}"
+						press="onNavBack" type="Transparent" />
+				</contentLeft>
+				</Bar>
+	</subHeader>
 
         <content>
-            <FlexBox height="100%" width="100%">
+            <FlexBox alignItems="Center" justifyContent="Center">
 
-                <VBox height="100%" width="100%">
+                <VBox class="sapUiMediumMargin">
                     <Bar class="titleToolbar">
 
-                        <contentLeft>
-                            <Button id="navBack" icon="sap-icon://arrow-left" text="{i18nModel>back}"
-                                press="onNavBack"  />
-                        </contentLeft>
                         <contentMiddle>
                             <Text text="operation20-work order10004567-924er -" class="textSize" /><Text text="Halter C-Brackets incl. Massen " class="textSize" />
                         </contentMiddle>
                     </Bar>
 
-                    <HBox width="100%" height="100%">
+                    <HBox >
                         <core:Fragment fragmentName="airbus.mes.disruptions.fragment.disruptionSummary"
                             type="XML">
                         </core:Fragment>

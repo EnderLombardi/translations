@@ -404,7 +404,7 @@ SETTINGS
   padding: 0 1rem; }
 
 /************************************
-D├®filement text tooltip
+D├⌐filement text tooltip
 ************************************/
 @-webkit-keyframes marqueelike {
   0%, 100% {
@@ -2414,6 +2414,11 @@ td {
     right: 1rem !important; }
   #disruptionDetail .setMinWidth {
     min-width: 200px !important; }
+  #disruptionDetail .pageSubHeader {
+    background: #0f2d65 !important;
+    border-top: 0.6rem solid #ffffff !important; }
+  #disruptionDetail .GenricBgColor {
+    background-color: #FFFFFF !important; }
 
 /********************
 RESSOURCEPOOL
