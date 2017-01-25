@@ -2311,8 +2311,8 @@
     "shiftName": "NIGHT",
     "shiftID": "2017-01-05NIGHT",
     "day": "20170105",
-    "beginDateTime": "2017-01-05 02:00:00",
-    "endDateTime": "2017-01-05 18:00:00",
+    "beginDateTime": "2017-01-05 17:30:00",
+    "endDateTime": "2017-01-05 23:00:00",
     "": ""
   }
 ]
