@@ -190,9 +190,12 @@ sap.ui.controller(
                         case "calendar":
                         	 textButtonTo = "Go to Calendar Tracker";
                              airbus.mes.settings.GlobalFunction.navigateTo(textButtonTo, "back");
-                          
                             break;
-                        default:
+                        case "stationHandoverView":
+                       	 	textButtonTo = "Go to Calendar Tracker";
+                       	 	airbus.mes.settings.GlobalFunction.navigateTo(textButtonTo, "back");
+                           break;
+                         default:
                         }
                     },
 

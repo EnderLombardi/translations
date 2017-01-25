@@ -7,8 +7,7 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 //        if (airbus.mes.shell.oView.byId('refreshTime').setBusyIndicatorDelay(0)){
 //            airbus.mes.shell.oView.byId('refreshTime').setEnabled(true);
 //        }
-    	alert("Dont Press");
-    	this.onInit();
+    
     },
 	
 	

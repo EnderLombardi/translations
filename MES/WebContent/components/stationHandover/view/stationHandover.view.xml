@@ -1,11 +1,48 @@
-<core:View xmlns:core="sap.ui.core" xmlns="sap.m"
-	xmlns:suite="sap.suite.ui.commons" controllerName="airbus.mes.stationHandover.controller.stationHandover"
-	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:custom="airbus.mes.stationHandover.util"
-	xmlns:layout="sap.ui.layout" xmlns:micro="sap.suite.ui.microchart"
-	xmlns:uni="sap.ui.unified">
+<core:View controllerName="airbus.mes.stationHandover.controller.stationHandover"
+	xmlns="sap.ui.table" xmlns:mvc="sap.ui.core.mvc" xmlns:m="sap.m"
+	xmlns:u="sap.ui.unified" xmlns:core="sap.ui.core">
 
-	<Page title="toto" height="100%" showHeader="false"
-		enableScrolling="false " class="GenricBgColor">
-
-	</Page>
+	<m:Page showHeader="false" enableScrolling="false" height="100%">
+		<m:content>
+			<TreeTable id="DOATable" class="DOATable"
+				rows="{getOpeAttachments>/Rowsets/Rowset/0/Row}" ariaLabelledBy="title">
+				<columns>
+					<Column width="20%">
+						<m:Label class="DisOpAttLabel"
+							text="{stationHandoverI18n>Select}" />
+						<template>
+							<m:Text text="{getOpeAttachments>dokarOrDoknr}" />
+						</template>
+					</Column>
+					<Column width="45%">
+						<m:Label class="DisOpAttLabel"
+							text="{stationHandoverI18n>doc_description}" />
+						<template>
+							<m:Text text="{getOpeAttachments>description}" />
+						</template>
+					</Column>
+					<Column width="15%">
+						<m:Label class="DisOpAttLabel"
+							text="{stationHandoverI18n>file_name}" />
+						<template>
+							<m:Text text="{getOpeAttachments>fileName}" />
+						</template>
+					</Column>
+					<Column width="10%">
+						<m:Label class="DisOpAttLabel" text="{stationHandoverI18n>doc_part}" />
+						<template>
+							<m:Text text="{getOpeAttachments>doktl}" />
+						</template>
+					</Column>
+					<Column width="10%">
+						<m:Label class="DisOpAttLabel"
+							text="{stationHandoverI18n>doc_version}" />
+						<template>
+							<m:Text text="{getOpeAttachments>revision}" />
+						</template>
+					</Column>
+				</columns>
+			</TreeTable>
+		</m:content>
+	</m:Page>
 </core:View>
