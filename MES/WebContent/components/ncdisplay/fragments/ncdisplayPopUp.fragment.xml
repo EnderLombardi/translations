@@ -4,7 +4,7 @@
             contentHeight="40%" verticalScrolling="false" showHeader="false">
         <content>
             <HBox>
-                <Text text="toto" />
+                <Text text="example data" />
 
             </HBox>
         </content>

@@ -44,7 +44,6 @@ sap.ui.controller("airbus.mes.ncdisplay.controller.ncdisplay", {
     onLineClick: function(oEvent){
         var cellText = oEvent.getParameter("listItem").getCells()[1].getProperty("text");
         if(cellText === "NC" || cellText === "PNC" || cellText === "IR"){
-            console.log("THIS ONE !");
             airbus.mes.ncdisplay.util.ModelManager.openNcDisplayPopUp();
         }
     },
