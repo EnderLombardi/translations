@@ -219,7 +219,6 @@ sap.ui
 						// Call Close Disruption Service
 						jQuery.ajax({
 							url : airbus.mes.disruptions.ModelManager.getUrlToCloseDisruption(),
-							async : false,
 							data : {
 								"Param.1" : airbus.mes.settings.ModelManager.site,
 								"Param.2" : sap.ui.getCore().getModel(
