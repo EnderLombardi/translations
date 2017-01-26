@@ -466,7 +466,7 @@ sap.ui.controller(
                         oSpliter.addContentArea(airbus.mes.stationtracker.splitterWorkTracker);
                          
                         //refresh area
-                         scheduler.updateView();
+                        //scheduler.updateView();
 
                     },
 

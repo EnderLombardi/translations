@@ -98,7 +98,19 @@ html
 }
 #mes{
     #content{
-        #globalNavView{
+    	.sapUiComponentContainer{
+			#login{	
+				.sapMPage{
+					section{
+						#login--logblock{
+							margin: 3% auto !important;
+						}
+					}
+				}
+			}
+		}
+
+	  #globalNavView{
             #globalNavView--refreshTime-inner {
                 color: #74d2e7 !important;
                 text-shadow: none;
@@ -191,6 +203,7 @@ html
             }
         }
     }
+ 
 }
 
 .sapMNav.navContAutoHeight .sapMNavItem,
@@ -247,6 +260,9 @@ html
 .viewOpacity{
     opacity:0.5 !important;
 }
+
+
+
 
 // GLOBAL VIEW NAV
 #globalNavView{

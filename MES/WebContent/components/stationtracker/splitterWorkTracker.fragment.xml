@@ -3,8 +3,8 @@
 	xmlns:u="sap.ui.unified" xmlns:table="sap.ui.table">
 
 			<Table 	id="splitWorTra" 
- 					class="splitWorTra"
-					items="">
+ 					class="splitWorTra" 
+ 					items="{path: 'SplitDetailModel>/Rowsets/Rowset/0/Row'}" >
 					
 			<columns>
 				<Column>
@@ -30,27 +30,15 @@
 			<items>
 				<ColumnListItem>
 					<cells>
-						<Text text="aa" />
-						<Text text="bb" />
-						<Text text="cc" />
-						<Text text="dd" />
-						<Text text="ee" />
-						<Text text="ee" />
-					</cells>
-				</ColumnListItem>
-				<ColumnListItem>
-					<cells>
-						<Text text="aa" />
-						<Text text="bb" />
-						<Text text="cc" />
-						<Text text="dd" />
-						<Text text="ee" />
-						<Text text="ee" />
+						<Text key="{SplitDetailModel>StartEnd}" text="{SplitDetailModel>StartEnd}" />
+						<Text key="{SplitDetailModel>Odescription}" text="{SplitDetailModel>Odescription}" />
+						<Text key="{SplitDetailModel>WOdescription}" text="{SplitDetailModel>WOdescription}" />
+						<Text key="{SplitDetailModel>Wcenter}" 		text="{SplitDetailModel>Wcenter}" />
+						<Text key="{SplitDetailModel>Competency}" 	text="{SplitDetailModel>Competency}" />
+						<Text key="{SplitDetailModel>Pstation}" 	text="{SplitDetailModel>Pstation}" />
+						
 					</cells>
 				</ColumnListItem>
 			</items>
-
 		</Table>
-
-
 </core:FragmentDefinition>

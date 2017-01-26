@@ -46,7 +46,8 @@ airbus.mes.stationtracker.ModelManager = {
                          "KPIdisruption", // KPI Resolution Staffing
                          "KPIchartTaktAdherence", // KPI Resolution Staffing
                          "spentTimedataModel", // KPI Resolution Staffing
-    	                 "taktModel",			// Start and End date for takt                         
+                         "taktModel",			// Start and End date for takt  
+                         "SplitDetailModel", // Model for Split Model
                          ]
 
            airbus.mes.shell.ModelManager.createJsonModel(core,aModel);
@@ -95,6 +96,7 @@ airbus.mes.stationtracker.ModelManager = {
         }
 
         this.loadFilterUnplanned();
+        this.loadSplitModel();
 
     },
 
@@ -1355,7 +1357,8 @@ airbus.mes.stationtracker.ModelManager = {
         airbus.mes.stationtracker.ModelManager.settings.taktStart = airbus.mes.settings.ModelManager.taktStart
         airbus.mes.stationtracker.ModelManager.settings.taktEnd = airbus.mes.settings.ModelManager.taktEnd
         airbus.mes.stationtracker.ModelManager.settings.taktDuration = aModel.Rowsets.Rowset[0].Row[0].DURATION;      
-	},    
+	}, 
+	
     getSpentTimePerOperation : function(operation, order){
         var spentTime =0;
         jQuery.ajax({
@@ -1384,6 +1387,31 @@ airbus.mes.stationtracker.ModelManager = {
             }
         });
         return spentTime;
-    }
+    },
+    
+    loadSplitModel : function() {
+		var oViewModel = sap.ui.getCore().getModel("SplitDetailModel");
+		jQuery.ajax({
+			type : 'post',
+			url : this.urlModel.getProperty("urlSplitData"),
+			contentType : 'application/json',
+			data : JSON.stringify({
+				"site" : airbus.mes.settings.ModelManager.site,
+				"station" : airbus.mes.settings.ModelManager.station,
+				"msn" : airbus.mes.settings.ModelManager.msn
+			}),
+
+			success : function(data) {
+				if (typeof data == "string") {
+					data = JSON.parse(data);
+				}
+				oViewModel.setData(data);
+			},
+
+			error : function(error, jQXHR) {
+				jQuery.sap.log.info(error);
+			}
+		});
+	}
 
 };

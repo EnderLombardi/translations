@@ -1,8 +1,8 @@
 <core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:cData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
 		   controllerName="airbus.mes.login.login" xmlns:html="http://www.w3.org/1999/xhtml">
 	<Page title="Login">	
-		<content>
-			<Panel width="450px">	
+		<content >
+			<Panel width="450px" id="logblock" class="logblock">	
 				<Image src="{ResourceUrl>airbus.big-logo}" width="90%" display="block" class="sapUiSmallMargin sapThemeHighlight-asColor"/>		
 				<Text text="Login" class="sapUiSmallMargin sapThemeHighlight-asColor "/>
 				<Input id="login" placeholder="Login" width="98%"/>
