@@ -96,9 +96,10 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
             // Re-Render Station Tracker
             /*airbus.mes.shell.oView.getController().renderStationTracker();*/
 
-            // update operationDetailsModel
-            sap.ui.getCore().getModel("operationDetailModel").setProperty("/Rowsets/Rowset/0/Row/0/status", "IN_WORK");
-            sap.ui.getCore().getModel("operationDetailModel").refresh();
+			// update operationDetailsModel
+			sap.ui.getCore().getModel("operationDetailModel").setProperty("/Rowsets/Rowset/0/Row/0/status", "IN_WORK");
+			sap.ui.getCore().getModel("operationDetailModel").setProperty("/Rowsets/Rowset/0/Row/0/paused", "false");
+			sap.ui.getCore().getModel("operationDetailModel").refresh();
 
             // Refresh Station tracker Gantt Chart
             /*airbus.mes.shell.oView.getController().renderStationTracker();*/
@@ -154,6 +155,7 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
 
             // update operationDetailsModel
             sap.ui.getCore().getModel("operationDetailModel").setProperty("/Rowsets/Rowset/0/Row/0/status", "IN_QUEUE")
+			sap.ui.getCore().getModel("operationDetailModel").setProperty("/Rowsets/Rowset/0/Row/0/paused", "---");
             sap.ui.getCore().getModel("operationDetailModel").refresh();
         } else {
             airbus.mes.shell.busyManager.unsetBusy(airbus.mes.stationtracker.oView, "stationtracker");
