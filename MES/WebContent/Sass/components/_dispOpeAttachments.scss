@@ -4,18 +4,18 @@
 	padding:0;
 	height:550px;
 	.sapUiTableCnt{
-		    height: 500px;
-		    .sapUiTableColHdrCnt{
-		    	height:46px !important;
-				.sapUiTableColHdrScr {
-						border: solid 1px $cool-grey;
-						background-color : $teal-blue;
-						.sapUiTableCol{
-							border-right:1px solid white;
-						}		
-				}
+		height: 500px;
+		.sapUiTableColHdrCnt{
+			height:46px !important;
+			.sapUiTableColHdrScr {
+				border: solid 1px $cool-grey;
+				background-color : $teal-blue;
+				.sapUiTableCol{
+					border-right:1px solid white;
+				}		
 			}
 		}
+	}
 }
 
 .DisOpAttLabel{
@@ -26,17 +26,17 @@
 
 #displayOpeAttachmentsView--DOATable-table{
 	>tbody {
-				tr:nth-child(even) {background: #fff}
-				tr:nth-child(odd) {background: #fcfcfc}
-				tr:hover{background-color: #efefef}
-				>tr{
-					height : 46px;
-					>td{
-						text-align:left !important;
-						border-left:1px solid $cool-grey-hover;
-					}
-				}
+		tr:nth-child(even) {background: #fff}
+		tr:nth-child(odd) {background: #fcfcfc}
+		tr:hover{background-color: #efefef}
+		>tr{
+			height : 46px;
+			>td{
+				text-align:left !important;
+				border-left:1px solid $cool-grey-hover;
+			}
 		}
+	}
 }		
 
 #displayOpeAttachmentsView--displayOpeAttachmentsCheck{
@@ -46,4 +46,16 @@
     text-align: center;
 }
 
-
+.document {
+	>td:nth-child(2) {
+		>div {
+			>span:nth-child(2){
+				color: $petrol;
+				text-decoration: underline;
+			}
+		}
+		&:hover {
+			background-color: red;
+		}
+	}
+}

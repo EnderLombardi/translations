@@ -6,9 +6,11 @@ airbus.mes.displayOpeAttachments.util.ModelManager = {
 	urlModel: undefined,
 	queryParams: jQuery.sap.getUriParameters(),
 	i18nModel: undefined,
+	treeTableArray: [],
+
 	//todo :will be the configuration received in AppConfManager
 	//sSet : airbus.mes.settings.AppConfManager.getConfiguration("VIEW_ATTACHED_TOOL");
-	sSet : "O",
+	sSet: "O",
 
 	init: function (core) {
 
@@ -51,13 +53,14 @@ airbus.mes.displayOpeAttachments.util.ModelManager = {
 		//load data in the model at the init of the component
 		var oModule = airbus.mes.displayOpeAttachments.util.ModelManager;
 		oModule.loadDOADetail();
+		oModule.createTreeTableArray();
 	},
 
 	/* *********************************************************************** *
 	 *  Replace URL Parameters                                                 *
 	 * *********************************************************************** */
 	//replace URL with parameter
-	replaceURI : function(sURI, sFrom, sTo) {
+	replaceURI: function (sURI, sFrom, sTo) {
 		return sURI.replace(sFrom, encodeURIComponent(sTo));
 	},
 
@@ -80,18 +83,52 @@ airbus.mes.displayOpeAttachments.util.ModelManager = {
 		var set = airbus.mes.displayOpeAttachments.util.ModelManager.sSet;
 
 		//local config to change between operation and work order
-		if (urlConfig === "sopra" && set === "O"){
+		if (urlConfig === "sopra" && set === "O") {
 			url = "../components/displayOpeAttachments/data/displayOpeAttachments.json";
 		} else if (urlConfig === "sopra" && set === "P") {
 			url = "../components/displayOpeAttachments/data/displayOpeAttachments_wo.json";
 		}
-		
-		//replace the urls
+
+		//TODO : replace the urls
 		//iftoadd : url = airbus.mes.displayOpeAttachments.ModelManager.replaceURI(url, "$ShopOrderBO", paramArray[0]);
-			//url = airbus.mes.displayOpeAttachments.ModelManager.replaceURI(url, "$RouterBO", paramArray[1]);
+		//url = airbus.mes.displayOpeAttachments.ModelManager.replaceURI(url, "$RouterBO", paramArray[1]);
 		//iftoadd : url = airbus.mes.displayOpeAttachments.ModelManager.replaceURI(url, "$RouterStepBO", paramArray[2]);
-			//url = airbus.mes.displayOpeAttachments.ModelManager.replaceURI(url, "$Site", paramArray[3]);
+		//url = airbus.mes.displayOpeAttachments.ModelManager.replaceURI(url, "$Site", paramArray[3]);
 		return url;
+	},
+
+	//create an array which will be used to handle documents downloadable or not (for css and url binding)
+	createTreeTableArray: function () {
+		debugger;
+		var oViewModelRow = airbus.mes.displayOpeAttachments.oView.getModel("getOpeAttachments").oData.Rowsets.Rowset[0].Row;
+		var i;
+		this.treeTableArray = [];//we reset the tab to handle onSelectLevel case (change between operation and wo mode)
+		var treeTableArray = this.treeTableArray;
+
+		for (i = 0; i < oViewModelRow.length; i++) {
+			treeTableArray.push(this.addObjDocType(i));
+
+			for (var j = 0; j < oViewModelRow[i].documents.length; j++) {
+				treeTableArray.push(this.addObjDoc());
+			}
+		}
+	},
+
+	//create an object doc type for createTreeTableArray
+	addObjDocType: function (i) {
+		var objDocType = {};
+		objDocType.isDocType = true;
+		objDocType.isOpened = false;
+		objDocType.position = i;
+		return objDocType;
+	},
+
+	//create an object document for createTreeTableArray
+	addObjDoc: function () {
+		var document = {};
+		document.isDocType = false;
+		document.position = null;
+		return document;
 	},
 
 };

@@ -142,7 +142,6 @@ dhtmlXTooltip.delay = function(method, object, params, delay) {
 dhtmlXTooltip.isTooltip = function(node) {
 	var res = false;
 	if (node.className.split(" ")[0] == "dhtmlXTooltip") {
-		//debugger;
 	}
 	while (node && !res) {
 		res = (node.className == this.tooltip.className);

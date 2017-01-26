@@ -52,12 +52,12 @@ airbus.mes.displayOpeAttachments.util.Formatter = {
         for (var j = 0; j < docType.length; j++) { //for each doc type we will create an object
 
             //we need to calculate the number of each document for each doc type to display it
-            if (j !== docType.length -1){
-                nbOfDoc = changeDocumentTypeArray[j+1] - changeDocumentTypeArray[j];//difference between next value of change and actual
-            } else  {
+            if (j !== docType.length - 1) {
+                nbOfDoc = changeDocumentTypeArray[j + 1] - changeDocumentTypeArray[j];//difference between next value of change and actual
+            } else {
                 nbOfDoc = row.length - changeDocumentTypeArray[j];//difference between last element of the array and last value of change
             }
-            
+
             //singular/plural for number of documents
             if (nbOfDoc > 1) {
                 documentLabel = airbus.mes.displayOpeAttachments.oView.getModel("i18nDisplayOpeAttachmentsModel").getProperty("documents");
@@ -77,12 +77,12 @@ airbus.mes.displayOpeAttachments.util.Formatter = {
 
         //we need now to push each documents at the right place in newRow
         var index = 0;
-        for (var k=0; k < row.length; k++) {
+        for (var k = 0; k < row.length; k++) {
 
             //TODO : same thing to do with document description
             newRow[index].documents.push(row[k]);
 
-            if (k+1 === changeDocumentTypeArray[index+1]) { //check if we have to change of object filled
+            if (k + 1 === changeDocumentTypeArray[index + 1]) { //check if we have to change of object filled
                 index++;//
             }
         }

@@ -6558,6 +6558,12 @@ DATE PICKER
   padding: 0;
   text-align: center; }
 
+.document > td:nth-child(2) > div > span:nth-child(2) {
+  color: rgba(0, 86, 112, 0.94);
+  text-decoration: underline; }
+.document > td:nth-child(2):hover {
+  background-color: red; }
+
 #ncdisplayView--ncDisplay.ncDisplayTable {
   width: 95% !important;
   margin: 0 auto;
