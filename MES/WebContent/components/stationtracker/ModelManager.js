@@ -10,6 +10,7 @@ airbus.mes.stationtracker.ModelManager = {
 
        i18nModel : undefined,
        operationType : undefined,
+       fIsLoad : 0,
        
        firstTime : undefined,
        stationInProgress: {
@@ -764,19 +765,27 @@ airbus.mes.stationtracker.ModelManager = {
 
         var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
 
-        GroupingBoxingManager.parseOperation(GroupingBoxingManager.group,GroupingBoxingManager.box);
-
-        airbus.mes.shell.busyManager.unsetBusy(airbus.mes.stationtracker.oView, "stationtracker");
+        airbus.mes.stationtracker.ModelManager.fIsLoad ++;
+		// initial model and rescheduled model are load in same time it permit to redenrer stationtracker only one time
+		// when both are finish
+		if ( airbus.mes.stationtracker.ModelManager.fIsLoad > 1 ) {
+			airbus.mes.stationtracker.ModelManager.fIsLoad = 0;
+			GroupingBoxingManager.parseOperation(GroupingBoxingManager.group,GroupingBoxingManager.box);
+		}
 
     },
 
     onStationTrackerLoadInitial : function() {
 
         var GroupingBoxingManager = airbus.mes.stationtracker.GroupingBoxingManager;
-
-        GroupingBoxingManager.parseOperation(GroupingBoxingManager.group,GroupingBoxingManager.box);
-
-    },
+        airbus.mes.stationtracker.ModelManager.fIsLoad ++;
+		// initial model and rescheduled model are load in same time it permit to redenrer stationtracker only one time
+		// when both are finish
+		if ( airbus.mes.stationtracker.ModelManager.fIsLoad > 1 ) {
+			airbus.mes.stationtracker.ModelManager.fIsLoad = 0;
+			GroupingBoxingManager.parseOperation(GroupingBoxingManager.group,GroupingBoxingManager.box);
+		}
+	},
 
     loadShifts : function() {
 

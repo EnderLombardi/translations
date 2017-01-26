@@ -610,8 +610,8 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 		airbus.mes.stationtracker.ModelManager.selectMyShift();
 	   
 		scheduler.xy.scroll_width=20;
-	    airbus.mes.stationtracker.oView.byId("stationtracker").setBusy(false);
 	    scheduler.parse(aBox,"json");
+	    airbus.mes.shell.busyManager.unsetBusy(airbus.mes.stationtracker.oView, "stationtracker");
 	},
 	computeStatus : function(sState, sPaused, sPreviouslyStarted){
 		var sStatus = "";
