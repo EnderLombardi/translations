@@ -4,9 +4,16 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 
 	//handle the tree table on click
 	onToggleTreeTable: function (oEvent) {
-
 		//initial var
 		var treeTableArray = airbus.mes.displayOpeAttachments.util.ModelManager.treeTableArray;
+
+		this.updateTreeTableArray(oEvent, treeTableArray);
+		this.updateLayouting(treeTableArray);
+	},
+
+	//UPDATE ARRAY PART
+	updateTreeTableArray: function (oEvent, treeTableArray) {
+		//var linked to the event
 		var iRowIndex = oEvent.getParameter("rowIndex");//row index (sapui5)
 		var bExpanded = oEvent.getParameter("expanded");//expanding (true) or collapsing (false)
 
@@ -14,7 +21,6 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 		var arrayIndex = this.findSelectedDocType(treeTableArray, iRowIndex);//index in the array
 		var lastPosition = treeTableArray[arrayIndex].position;//position of the node collapsed/expanded in the array
 
-		//UPDATE ARRAY PART
 		//first we changed the isOpened boolean
 		treeTableArray[arrayIndex].isOpened = !treeTableArray[arrayIndex].isOpened; //isOpened boolean changed because of the click 
 
@@ -37,8 +43,14 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 				treeTableArray[i].position = lastPosition;
 			}
 		}
+	},
 
-		//CSS PART
+	collapseAllNodes: function() {
+		airbus.mes.displayOpeAttachments.oView.byId("DOATable").collapseAll();
+	},
+
+	//CSS PART
+	updateLayouting: function (treeTableArray) {
 		//we add and remove class for the rows displayed
 		var doaTable = $("#displayOpeAttachmentsView--DOATable-table").children("tbody").children();
 		var positionMax;
@@ -48,7 +60,7 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 				this.selectTreeTableRow(positionMax).addClass("document");
 			} else if (treeTableArray[j].position !== null && treeTableArray[j].isDocType) {
 				this.selectTreeTableRow(positionMax).removeClass("document");
-			} 
+			}
 		}
 
 		//we remove document class on rows with no data inside
@@ -61,7 +73,7 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 	},
 
 	//select in jquery the html row for a tree table
-	selectTreeTableRow: function(i) {
+	selectTreeTableRow: function (i) {
 		return $("#displayOpeAttachmentsView--DOATable-table").children("tbody").children(":nth-child(" + i + ")");
 	},
 
@@ -82,6 +94,7 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 		}
 	},
 
+	////////////////////////////////////////////////////////////////////////
 
 	//todo : get user action on the checkbox field
 	onSelectLevel: function (oEvent) {
@@ -117,7 +130,8 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 		var oModule = airbus.mes.displayOpeAttachments.util.ModelManager;
 		oModule.loadDOADetail();
 		oModule.createTreeTableArray();
-		this.onToggleTreeTable();
+		this.collapseAllNodes();
+		this.updateLayouting(oModule.treeTableArray);
 	},
 
 });

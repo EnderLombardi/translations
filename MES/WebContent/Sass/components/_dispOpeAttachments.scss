@@ -55,7 +55,11 @@
 			}
 		}
 		&:hover {
-			background-color: red;
+			background-color: $sapui-grey-hover !important;
+			cursor : pointer;
+			span {
+				cursor : pointer;
+			}
 		}
 	}
 }
