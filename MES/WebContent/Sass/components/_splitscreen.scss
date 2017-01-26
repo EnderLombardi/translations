@@ -1,0 +1,25 @@
+#spliterWorkTracker--splitWorTra.splitWorTra{
+	width:95% !important;
+	margin: 20px auto;
+	padding:0 ;
+	>table {
+		>thead {
+			>tr {
+				>th {
+					border-bottom:1px solid black;
+				}
+			}
+		}
+		>tbody {
+				tr:nth-child(even) {background: transparent}
+				tr:nth-child(odd) {background: transparent}
+				tr:hover{background-color: #efefef }
+				>tr{
+					>td{
+						text-align:left !important;
+						border-bottom: 1p solid #f7f7f7;
+					}
+				}
+		}   
+	}
+}

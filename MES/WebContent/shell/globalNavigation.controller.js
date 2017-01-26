@@ -445,8 +445,9 @@ sap.ui.controller(
                     	//if already exist remove content
                     	if (airbus.mes.stationtracker.oView.byId("splitWorkTra").getContentAreas().length > 1) {
                     		oSpliter.removeContentArea(1);
+                    		
                     		//force gantt 100% height
-                    		$("#stationTrackerView--splitWorkTra").children().css('height', '100%');
+                    		//$("#stationTrackerView--splitWorkTra").children().css('height', '100%');
 
                     	}
                     	

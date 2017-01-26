@@ -3,24 +3,27 @@
 	xmlns:u="sap.ui.unified" xmlns:table="sap.ui.table">
 
 			<Table 	id="splitWorTra" 
- 			class="splitWorTra"
-			items="">
+ 					class="splitWorTra"
+					items="">
 					
 			<columns>
 				<Column>
-					<Text text="test1" />
+					<Text text="Start - End Time" />
 				</Column>
 				<Column>
-					<Text text="test11" />
+					<Text text="Operation description" />
 				</Column>
 				<Column>
-					<Text text="test111" />
+					<Text text="Work order description" />
 				</Column>
 				<Column>
-					<Text text="test1111" />
+					<Text text="Work center" />
 				</Column>
 				<Column>
-					<Text text="test11111" />
+					<Text text="Competency" />
+				</Column>
+				<Column>
+					<Text text="Physical station " />
 				</Column>
 			</columns>
 
@@ -31,6 +34,17 @@
 						<Text text="bb" />
 						<Text text="cc" />
 						<Text text="dd" />
+						<Text text="ee" />
+						<Text text="ee" />
+					</cells>
+				</ColumnListItem>
+				<ColumnListItem>
+					<cells>
+						<Text text="aa" />
+						<Text text="bb" />
+						<Text text="cc" />
+						<Text text="dd" />
+						<Text text="ee" />
 						<Text text="ee" />
 					</cells>
 				</ColumnListItem>

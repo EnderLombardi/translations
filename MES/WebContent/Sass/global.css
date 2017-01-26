@@ -6841,6 +6841,22 @@ DATE PICKER
   padding: 0;
   margin: 25px 0 25px 2.5% !important; }
 
+#spliterWorkTracker--splitWorTra.splitWorTra {
+  width: 95% !important;
+  margin: 20px auto;
+  padding: 0; }
+  #spliterWorkTracker--splitWorTra.splitWorTra > table > thead > tr > th {
+    border-bottom: 1px solid black; }
+  #spliterWorkTracker--splitWorTra.splitWorTra > table > tbody tr:nth-child(even) {
+    background: transparent; }
+  #spliterWorkTracker--splitWorTra.splitWorTra > table > tbody tr:nth-child(odd) {
+    background: transparent; }
+  #spliterWorkTracker--splitWorTra.splitWorTra > table > tbody tr:hover {
+    background-color: #efefef; }
+  #spliterWorkTracker--splitWorTra.splitWorTra > table > tbody > tr > td {
+    text-align: left !important;
+    border-bottom: 1p solid #f7f7f7; }
+
 /*************
 GENERALE RULES
 **************/
