@@ -183,11 +183,6 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",    {
                         	var that = this;
                         	this.byPassOnDrag = false;
                         	this.id = id;
-                        	// permit to dont reschedule
-                            if ( bBatch1 ) {
-                            	scheduler._drag_mode = ""
-                                return false;
-                            }
 
                             // cannot reschedule an initial operation                            
                             if (this.getEvent(id).type === "I" ) {

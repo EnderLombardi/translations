@@ -4,8 +4,8 @@ sap.ui.controller("airbus.mes.login.login", {
 	
 	onAfterRendering : function() {		
 		if ( Cookies.getJSON("login") != undefined ) {
-			airbus.mes.login.oView.byId("user").setValue(Cookies.getJSON("login").user);
-			airbus.mes.login.oView.byId("mdp").setValue(Cookies.getJSON("login").mdp);
+			airbus.mes.login.oView.byId("login").setValue(Cookies.getJSON("login").user);
+			airbus.mes.login.oView.byId("password").setValue(Cookies.getJSON("login").mdp);
 		}	
 	},
 	

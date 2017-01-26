@@ -32,15 +32,9 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		// sorting based on opening time
 		this.getView().byId("disruptiontrackerView--disruptionsTable").getBinding("items").sort(oSorter);
 
-		if (bBatch1) {
+		airbus.mes.disruptiontracker.oView.byId("gotoDisruptionKpi").setVisible(true);
 
-			airbus.mes.disruptiontracker.oView.byId("gotoDisruptionKpi").setVisible(false);
 
-		} else {
-
-			airbus.mes.disruptiontracker.oView.byId("gotoDisruptionKpi").setVisible(true);
-
-		}
 	},
 
 	/**

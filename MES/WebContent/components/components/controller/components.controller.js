@@ -18,7 +18,7 @@ sap.ui.controller("airbus.mes.components.controller.components", {
 
 		// confirm if we have already check the ME settings
 		
-		if (airbus.mes.shell.util.navFunctions.jigsAndTools.configME === undefined){
+		if (airbus.mes.shell.util.navFunctions.components.configME === undefined){
 			
 			//will be the configuration received in AppConfManager
 			
@@ -36,10 +36,10 @@ sap.ui.controller("airbus.mes.components.controller.components", {
 		
 		switch (sSet) {
 			case "O"://operation
-				sap.ui.getCore().byId("componentsView--operationButton").setSelected(true);
+				this.getView().byId("operationButton").setSelected(true);
 				break;
 			case "P"://work order
-				sap.ui.getCore().byId("componentsiew--workOrderButton").setSelected(true);
+				this.getView().byId("workOrderButton").setSelected(true);
 				break;
 			default: //if Null
 				break;
@@ -155,11 +155,12 @@ sap.ui.controller("airbus.mes.components.controller.components", {
 						break;
 						
 					case airbus.mes.components.util.Formatter.translateFilter("Available") :
-						aFilters.push(that.addFilter("freestockKanbanBulkMaterial", "K"));					
+						
+						aFilters.push(new sap.ui.model.Filter("shortage", sap.ui.model.FilterOperator.EQ, "0"));					
 						break;
 						
 					case airbus.mes.components.util.Formatter.translateFilter("MissingPart") :
-						aFilters.push(that.addFilter("freestockKanbanBulkMaterial", "K"));					
+						aFilters.push(new sap.ui.model.Filter("shortage", sap.ui.model.FilterOperator.NE, "0"));					
 						break;					
 					
 					default:
