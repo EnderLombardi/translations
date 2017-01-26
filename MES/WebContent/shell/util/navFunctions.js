@@ -3,8 +3,6 @@
 jQuery.sap.declare("airbus.mes.shell.util.Functions");
 
 airbus.mes.shell.util.navFunctions = {
-
-    queryParams : jQuery.sap.getUriParameters(),
     
     //StationTracker or Worktracker
     splitMode : undefined,

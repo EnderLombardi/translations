@@ -2,52 +2,15 @@
 jQuery.sap.declare("airbus.mes.disruptiontracker.kpi.ModelManager")
 airbus.mes.disruptiontracker.kpi.ModelManager = {
 	urlModel : undefined,
-	queryParams : jQuery.sap.getUriParameters(),
 	
 	//sStaion: "",
 
 	init : function(core) {
-//		core.setModel(new sap.ui.model.json.JSONModel(), "TimeLostperAttribute");
+
 		 airbus.mes.shell.ModelManager.createJsonModel(core,["TimeLostperAttribute"]);
-	/*	core.getModel("TimeLostperAttribute").attachRequestCompleted(function(){
-			airbus.mes.disruptiontracker.kpi.oView.setBusy(false); 
-		});*/
 		
-	    core.setModel(new sap.ui.model.resource.ResourceModel({
-			bundleName:"airbus.mes.disruptiontracker.kpi.i18n.i18n"
-		}), "i18n");
-
-		var dest;
-
-		switch (window.location.hostname) {
-		case "localhost":
-			dest = "local";
-			break;
-		default:
-			dest = "airbus";
-			break;
-		}
-		
-		if (this.queryParams.get("url_config")) {
-			dest = this.queryParams.get("url_config");
-		}
-
-		this.urlModel = new sap.ui.model.resource.ResourceModel({
-			bundleName : "airbus.mes.disruptiontracker.kpi.config.url_config",
-			bundleLocale : dest
-		});
-
-		if (dest === "sopra") {
-
-			var oModel = this.urlModel._oResourceBundle.aPropertyFiles[0].mProperties;
-
-			for ( var prop in oModel) {
-				if (oModel[prop].slice(-5) != ".json") {
-					oModel[prop] += "&j_user=" + Cookies.getJSON("login").user
-							+ "&j_password=" + Cookies.getJSON("login").mdp;
-				}
-			}
-		}
+	    // Handle URL Model
+		this.urlModel = airbus.mes.shell.ModelManager.urlHandler("airbus.mes.disruptiontracker.kpi.config.url_config");
 	},
 	
 	/*getKPIData : function() {

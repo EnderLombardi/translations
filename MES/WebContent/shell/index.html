@@ -50,7 +50,7 @@
 			bBatch1 = true;
 			disableEnable();
 
-			if (window.location.hostname === "localhost" && window.location.search != "?url_config=local" && Cookies.getJSON("login") === undefined) {
+			if (window.location.hostname === "localhost" && window.location.search != "?url_config=local" && (sessionStorage.loginType === undefined || sessionStorage.loginType == "") ) {
 				//        Case of localhost connection, need to define login pass
 				jQuery.sap.registerModulePath("airbus.mes.login", "../components/login");
 

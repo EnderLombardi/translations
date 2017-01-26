@@ -12,42 +12,13 @@ airbus.mes.worktracker.util.ModelManager = {
 		'image' : undefined
 	},
 
-	queryParams : jQuery.sap.getUriParameters(),
 
 	init : function(core) {
 
 		this.core = core;
-
-		var dest;
-
-		switch (window.location.hostname) {
-		case "localhost":
-			dest = "local";
-			break;
-		default:
-			dest = "airbus";
-			break;
-		}
-
-		if (this.queryParams.get("url_config")) {
-			dest = this.queryParams.get("url_config");
-		}
-
-		this.urlModel = new sap.ui.model.resource.ResourceModel({
-			bundleName : "airbus.mes.worktracker.config.url_config",
-			bundleLocale : dest
-		});
-		 
-        if (  dest === "sopra" ) {
-
-			var oModel = this.urlModel._oResourceBundle.aPropertyFiles[0].mProperties;
-				
-			for (var prop in oModel) {
-				if (oModel[prop].slice(-5) != ".json" ) {
-				oModel[prop] += "&j_user=" + Cookies.getJSON("login").user + "&j_password="  + Cookies.getJSON("login").mdp; 
-				}
-			}
-		}
+		
+		// Handle URL Model
+		this.urlModel = airbus.mes.shell.ModelManager.urlHandler("airbus.mes.worktracker.config.url_config");
 		
 		this.core.setModel(new sap.ui.model.json.JSONModel(), "currentOperatorModel");
 		this.core.setModel(new sap.ui.model.json.JSONModel(), "userOperationsModel");

@@ -9,25 +9,10 @@ airbus.mes.shell.RoleManager = {
 	userProfile : {},
 	userRoles : [],
 	flag : [],
-	queryParams : jQuery.sap.getUriParameters(),
 
 	// check if the current user has the right role to execute the action define
 	// in ROLES array
 	isAllowed : function(role) {
-		var dest = "";
-		switch (window.location.hostname) {
-		case "localhost":
-			dest = "local";
-			break;
-		default:
-			dest = "airbus";
-			break;
-		}
-		if (this.queryParams.get("url_config")) {
-			dest = this.queryParams.get("url_config");
-		}
-		if (dest == "local")
-			return true;
 
 		var UserRoles = airbus.mes.shell.RoleManager.userProfile.IllumLoginRoles;
 		var FeatureRole = role;

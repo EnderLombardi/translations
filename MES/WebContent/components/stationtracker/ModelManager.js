@@ -6,7 +6,7 @@ airbus.mes.stationtracker.ModelManager = {
        
 	
 		urlModel : undefined,
-       queryParams : jQuery.sap.getUriParameters(),
+       //queryParams : jQuery.sap.getUriParameters(),
 
        i18nModel : undefined,
        operationType : undefined,
@@ -62,41 +62,13 @@ airbus.mes.stationtracker.ModelManager = {
            core.getModel("ressourcePoolModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onRessourcePoolLoad);
            core.getModel("phStationSelected").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onPhStationLoad);
            core.getModel("taktModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onTaktLoad);          
-
-        var dest;
-
-        switch (window.location.hostname) {
-        case "localhost":
-            dest = "sopra";
-            break;
-        default:
-            dest = "airbus";
-            break;
-        }
-
-        if (this.queryParams.get("url_config")) {
-            dest = this.queryParams.get("url_config");
-        }
-
-        this.urlModel = new sap.ui.model.resource.ResourceModel({
-            bundleName : "airbus.mes.stationtracker.config.url_config",
-            bundleLocale : dest
-        });
-
-        if (dest === "sopra") {
-
-            var oModel = this.urlModel._oResourceBundle.aPropertyFiles[0].mProperties;
-
-            for ( var prop in oModel) {
-                if (oModel[prop].slice(-5) != ".json") {
-                    oModel[prop] += "&j_user=" + Cookies.getJSON("login").user
-                            + "&j_password=" + Cookies.getJSON("login").mdp;
-                }
-            }
-        }
-
-        this.loadFilterUnplanned();
-        this.loadSplitModel();
+        
+	        // Handle URL Model
+			this.urlModel = airbus.mes.shell.ModelManager.urlHandler("airbus.mes.stationtracker.config.url_config");
+			
+			// Load Data
+	        this.loadFilterUnplanned();
+	        this.loadSplitModel();
 
     },
 

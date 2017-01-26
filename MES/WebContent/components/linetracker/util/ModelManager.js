@@ -6,7 +6,6 @@ airbus.mes.linetracker.util.ModelManager = {
 	urlModel : undefined,
 	site : undefined,
 	program : undefined,
-	queryParams : jQuery.sap.getUriParameters(),
 
 	init : function(core) {
 
@@ -27,42 +26,11 @@ airbus.mes.linetracker.util.ModelManager = {
 		sap.ui.getCore().getModel("airlineLogoModel").attachRequestCompleted(airbus.mes.linetracker.util.ModelManager.loadFlightLogo);
 
 		airbus.mes.linetracker.util.ModelManager.site = airbus.mes.settings.ModelManager.site;
-
-		var dest;
-
-		switch (window.location.hostname) {
-		case "localhost":
-			dest = "sopra";
-			break;
-//		case "wsapbpc01.ptx.fr.sopra":
-//			dest = "sopra";
-//			break;
-		default:
-			dest = "airbus";
-			break;
-		}
-
-		if (this.queryParams.get("url_config")) {
-			dest = this.queryParams.get("url_config");
-		}
-
-		this.urlModel = new sap.ui.model.resource.ResourceModel({
-			bundleName : "airbus.mes.linetracker.config.url_config",
-			bundleLocale : dest
-		});
-
+		
+	    // Handle URL Model
+		this.urlModel = airbus.mes.shell.ModelManager.urlHandler("airbus.mes.linetracker.config.url_config");
+		
 		core.getModel("stationDataModel").loadData(this.urlModel.getProperty("urlstationData"), null, false);
-
-		if (dest === "sopra") {
-
-			var oModel = this.urlModel._oResourceBundle.aPropertyFiles[0].mProperties;
-
-			for ( var prop in oModel) {
-				if (oModel[prop].slice(-5) != ".json") {
-					oModel[prop] += "&j_user=" + Cookies.getJSON("login").user + "&j_password=" + Cookies.getJSON("login").mdp;
-				}
-			}
-		}
 
 		this.loadStationDataModel();
 		this.loadLineVariantModel();

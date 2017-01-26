@@ -80,8 +80,6 @@ airbus.mes.polypoly.ModelManager = {
 	/** I18N Model. Resource where to get internationalized strings. */
 	i18nModel : undefined,
 	maxModelSize : 1000000,
-	/** URL parameters. */
-	queryParams : jQuery.sap.getUriParameters(),
 	qaAdmin : undefined,
 	gantColorPalette : {},
 	/* to show takt time in line View */
@@ -107,45 +105,9 @@ airbus.mes.polypoly.ModelManager = {
 	
 		// attach event on end of loading model
 		core.getModel("mii").attachRequestCompleted(airbus.mes.polypoly.ModelManager.onPolyPolyModelLoaded);
-		
-		var dest;
 
-		switch (window.location.hostname) {
-		case "localhost":
-			// dest = "sopra";
-			dest = "local";
-			break;
-		case "wsapbpc01.ptx.fr.sopra":
-			dest = "sopra";
-			break;
-		default:
-			dest = "airbus";
-
-			break;
-		}
-
-		this.queryParams.get("QaAdmin") == 'T' ? this.qaAdmin = true
-				: this.qaAdmin = undefined;
-
-		if (this.queryParams.get("url_config")) {
-			dest = this.queryParams.get("url_config");
-		}
-			
-		this.urlModel = new sap.ui.model.resource.ResourceModel({
-			bundleName : "airbus.mes.polypoly.config.url_config",
-			bundleLocale : dest
-		});
-		
-		if (  dest === "sopra" ) {
-
-			var oModel = this.urlModel._oResourceBundle.aPropertyFiles[0].mProperties;
-				
-			for (var prop in oModel) {
-				if (oModel[prop].slice(-5) != ".json" ) {
-				oModel[prop] += "&j_user=" + Cookies.getJSON("login").user + "&j_password="  + Cookies.getJSON("login").mdp; 
-				}
-			}
-		}
+        // Handle URL Model
+		this.urlModel = airbus.mes.shell.ModelManager.urlHandler("airbus.mes.polypoly.config.url_config");
 
 	},
 

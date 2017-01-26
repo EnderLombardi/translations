@@ -3,7 +3,6 @@ jQuery.sap.declare("airbus.mes.calendar.util.ModelManager");
 
 airbus.mes.calendar.util.ModelManager = {
        urlModel : undefined,
-       queryParams : jQuery.sap.getUriParameters(),
        i18nModel : undefined,
 
        
@@ -16,40 +15,12 @@ airbus.mes.calendar.util.ModelManager = {
            core.getModel("calendarshiftsModel").attachRequestCompleted(airbus.mes.calendar.util.ModelManager.onShiftsLoad);
            core.getModel("calendarTrackerModel").attachRequestCompleted(airbus.mes.calendar.util.ModelManager.onCalendarTrackerLoad);
            core.getModel("ressourcePoolModel").attachRequestCompleted(airbus.mes.calendar.util.ModelManager.onRessourcePoolLoad);
-                
-    	var dest;
 
-		switch (window.location.hostname) {
-		case "localhost":
-			dest = "sopra";
-			break;
-		default:
-			dest = "airbus";
-			break;
-		}
-
-		if (this.queryParams.get("url_config")) {
-			dest = this.queryParams.get("url_config");
-		}
-
-		this.urlModel = new sap.ui.model.resource.ResourceModel({
-			bundleName : "airbus.mes.calendar.config.url_config",
-			bundleLocale : dest
-		});
-
-		if (dest === "sopra") {
-
-			var oModel = this.urlModel._oResourceBundle.aPropertyFiles[0].mProperties;
-
-			for ( var prop in oModel) {
-				if (oModel[prop].slice(-5) != ".json") {
-					oModel[prop] += "&j_user=" + Cookies.getJSON("login").user
-							+ "&j_password=" + Cookies.getJSON("login").mdp;
-				}
-			}
-		}
-
-		this.loadRessourcePool();
+		
+			// Handle URL Model
+			this.urlModel = airbus.mes.shell.ModelManager.urlHandler("airbus.mes.calendar.config.url_config");
+	
+			this.loadRessourcePool();
 
 	},
 	

@@ -4,8 +4,6 @@ jQuery.sap.declare("airbus.mes.docviewer.ModelManager")
 
 airbus.mes.docviewer.ModelManager = {
 	
-	queryParams: jQuery.sap.getUriParameters(),
-	
 	WebViewer: undefined,  // Object for PDF Tron Web Viewer
 
 	onCloseFunction : undefined, // Function to be called while closing the PDF Tron (Document Viewer)
@@ -20,38 +18,9 @@ airbus.mes.docviewer.ModelManager = {
 
 		core.setModel(new sap.ui.model.json.JSONModel(), "documentsModel");
 
-		var dest;
-
-		switch (window.location.hostname) {
-		case "localhost":
-			dest = "local";
-			break;
-		default:
-			dest = "airbus";
-			break;
-		}
-
-		if (this.queryParams.get("url_config")) {
-			dest = this.queryParams.get("url_config");
-		}
-
-		this.urlModel = new sap.ui.model.resource.ResourceModel({
-			bundleUrl : "../components/docviewer/config/url_config.properties",
-			bundleLocale : dest
-		});
-
-		if (dest === "sopra") {
-
-			var oModel = this.urlModel._oResourceBundle.aPropertyFiles[0].mProperties;
-
-			for ( var prop in oModel) {
-				if (oModel[prop].slice(-5) != ".json") {
-					oModel[prop] += "&j_user=" + Cookies.getJSON("login").user
-							+ "&j_password=" + Cookies.getJSON("login").mdp;
-				}
-			}
-		}
-
+		// Handle URL Model
+		this.urlModel = airbus.mes.shell.ModelManager.urlHandler("airbus.mes.docviewer.config.url_config");
+		
 	},
 	
 	/********************************
@@ -63,10 +32,18 @@ airbus.mes.docviewer.ModelManager = {
 		
 		// Firstly - Empty the container
 		oViewerElement.innerHTML = ""
+			
+		// Set device type
+			var deviceType = "html5";
+		if (sap.ui.Device.system.phone) {
+			deviceType = "html5mobile";
+		}
+			
+		
 		
 		 // Initialize PDF Tron
         airbus.mes.docviewer.ModelManager.WebViewer = new PDFTron.WebViewer({
-            type: "html5",
+            type: deviceType,
             path: "../lib/pdftron",
             initialDoc: fileURL,
             documentType: "pdf",

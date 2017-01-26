@@ -4,45 +4,17 @@ airbus.mes.shell.ModelManager = {
 		urlModel : undefined,
 		queryParams : jQuery.sap.getUriParameters(),
 		
-		i18nModel: undefined,
+		i18nModel: undefined,	
+		
 				
 		init : function(core) {
 
 			airbus.mes.shell.ModelManager.createJsonModel(core,["userDetailModel","userSettingModel","FeatureRoleModel"]);
 
-			var dest;
-
-			switch (window.location.hostname) {
-			case "localhost":
-				dest = "local";
-				break;
-			case "wsapbpc01.ptx.fr.sopra":
-				dest = "sopra";
-				break;
-			default:
-				dest = "airbus";
-				break;
-			}
-
-			if (this.queryParams.get("url_config")) {
-				dest = this.queryParams.get("url_config");
-			}
-					
-			this.urlModel = new sap.ui.model.resource.ResourceModel({
-				bundleName : "airbus.mes.shell.config.url_config",
-				bundleLocale : dest
-			});
 			
-			if (  dest === "sopra" ) {
-
-				var oModel = airbus.mes.shell.ModelManager.urlModel._oResourceBundle.aPropertyFiles[0].mProperties;
-					
-				for (var prop in oModel) {
-					if (oModel[prop].slice(-5) != ".json" ) {
-					oModel[prop] += "&j_user=" + Cookies.getJSON("login").user + "&j_password="  + Cookies.getJSON("login").mdp; 
-					}
-				}
-			}
+			// Handle URL Model
+			this.urlModel = airbus.mes.shell.ModelManager.urlHandler("airbus.mes.shell.config.url_config");
+			
 							
 			// TODO DEPLACE this in shell controller and when service is ok remove all of this function
 			this.loadUserDetail();
@@ -60,6 +32,61 @@ airbus.mes.shell.ModelManager = {
 			
 			this.loadFeatureRoleModel();
 		},
+		
+		
+		urlHandler: function(bundleName){
+
+			var dest;
+
+			switch (window.location.hostname) {
+			case "localhost":
+				dest = "sopra";
+				break;
+			default:
+				dest = "airbus";
+				break;
+			}
+			
+			if (this.queryParams.get("url_config")) {
+				dest = this.queryParams.get("url_config");
+				
+			}
+
+			var urlModel = new sap.ui.model.resource.ResourceModel({
+				bundleName : bundleName,
+				bundleLocale : dest
+			});
+
+			if (dest === "sopra") {
+
+				// Get Login Type
+				var sopraHostURL = "http://swinsapdi01.ptx.fr.sopra:50000";
+				var dmiHostURL   = "https://dmiswde0.eu.airbus.corp"
+					
+				var destHostURL     = sopraHostURL;
+				var replaceHostURL  = dmiHostURL;
+				if(sessionStorage.loginType === "dmi"){
+					destHostURL     = dmiHostURL;
+					replaceHostURL  = sopraHostURL;
+				}
+					
+				
+				var oModel = urlModel._oResourceBundle.aPropertyFiles[0].mProperties;
+
+				for ( var prop in oModel) {
+					oModel[prop] = oModel[prop].replace(replaceHostURL, destHostURL);
+					
+					if (oModel[prop].slice(-5) != ".json") {
+						oModel[prop] += "&j_user=" + Cookies.getJSON("login").user
+								+ "&j_password=" + Cookies.getJSON("login").mdp;
+					}
+				}
+			}
+			
+			return urlModel;
+			
+		},
+		
 		
 		getResourceUrl: function(urlId) {
 			var resourceUrl = sap.ui.getCore().getModel("ResourceUrl");
