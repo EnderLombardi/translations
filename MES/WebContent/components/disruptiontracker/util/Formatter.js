@@ -186,6 +186,18 @@ airbus.mes.disruptiontracker.Formatter = {
 			return Math.round(ms/60000);
 		}
 		return 0;
-	}
+	},
 	
+	/**
+	 * Set Roles for type of Table Column
+	 */
+	setType : function(){
+		var Flag = airbus.mes.shell.RoleManager.isAllowed(airbus.mes.shell.RoleManager.parseRoleValue("DISRUPTION_DISRUPTION_LIST"), 'V');
+		if(Flag === true){
+			return "Navigation"
+		}
+		else if(Flag === false){
+			return "Inactive"
+		}
+	}
 };

@@ -104,18 +104,12 @@ airbus.mes.shell.RoleManager = {
 		var sRoles = sap.ui.getCore().getModel("AllRolesModel").oData.Rowsets.Rowset[0].Row;
 
 		for (var i = 0; i < sRoles.length; i++) {
-			// airbus.mes.shell.RoleManager.userRoles[0] =
-			// airbus.mes.shell.RoleManager.userRoles[0]
-			// +"'"+sRoles[i].Roles+"',";
 			if(sRoles[i].Feature === sFeature){
 				airbus.mes.shell.RoleManager.userRoles[i] = sRoles[i].Roles;
 			}
 		}
-		// var sRole = airbus.mes.shell.RoleManager.userRoles[0];
-		// var Role = sRole.split("undefined")[1];
-		// var iLength = Role.length;
-		// var arr = [Role.substring(0,iLength-1)];
-
+		// Roles hardcoded for particular features so that everyone has access to every feature. Has to be removed.
+		airbus.mes.shell.RoleManager.userRoles.push("SAP_XMII_User","Everyone");
 		return airbus.mes.shell.RoleManager.userRoles;
 	}
 

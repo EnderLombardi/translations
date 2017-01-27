@@ -147,7 +147,7 @@
 			</columns>
 
 			<items>
-				<ColumnListItem type="Navigation" press="onTableClick">
+				<ColumnListItem type="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setType'}" press="onTableClick">
 					<cells>
 						<Text
 							text="{disruptionsTrackerModel>WorkOrder} / {path: 'disruptionsTrackerModel>Operation', formatter: 'airbus.mes.disruptiontracker.Formatter.setOperationText'}" />
