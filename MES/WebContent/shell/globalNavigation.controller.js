@@ -214,44 +214,40 @@ sap.ui.controller(
                                 this.renderStationTracker();
                                 airbus.mes.shell.AutoRefreshManager.clearInterval();
 
-                                if ( bBatch1==false ) {
-                                    airbus.mes.shell.AutoRefreshManager.setInterval("stationTrackerView");
-                                }
+                                airbus.mes.shell.AutoRefreshManager.setInterval("stationTrackerView");
+
 
                                 break;
                             case "disruptiontrackerView":
                                 airbus.mes.disruptiontracker.ModelManager.loadDisruptionTrackerModel();
                                 airbus.mes.shell.AutoRefreshManager.clearInterval();
                                 //refresh
-                                if ( bBatch1==false ) {
-                                airbus.mes.shell.AutoRefreshManager.setInterval("disruptiontrackerView");
-                                }
 
+                                airbus.mes.shell.AutoRefreshManager.setInterval("disruptiontrackerView");
+ 
                                 break;
                             case "disruptionKPIView":
                                 airbus.mes.disruptiontracker.kpi.ModelManager.loadDisruptionKPIModel();
                                 airbus.mes.shell.AutoRefreshManager.clearInterval();
                                 //refresh
-                                if ( bBatch1==false ) {
-                                        airbus.mes.shell.AutoRefreshManager.setInterval("disruptionKPIView");
-                                }
+                                
+                                airbus.mes.shell.AutoRefreshManager.setInterval("disruptionKPIView");
 
                                 break;
                             case "idLinetracker1":
                                 airbus.mes.shell.AutoRefreshManager.clearInterval();
                                 //refresh
-                                if ( bBatch1==false ) {
-                                    	airbus.mes.shell.AutoRefreshManager.setInterval("idLinetracker1");
-                                }
+
+                                airbus.mes.shell.AutoRefreshManager.setInterval("idLinetracker1");
                                 
                                 break;
                             case "calendar":
                             	this.renderCalendarTracker();
                             	//refresh
                                 airbus.mes.shell.AutoRefreshManager.clearInterval();
-                                if ( bBatch1==false ) {
-                                    	airbus.mes.shell.AutoRefreshManager.setInterval("renderCalendarTracker");
-                                }
+
+                                airbus.mes.shell.AutoRefreshManager.setInterval("renderCalendarTracker");
+
                                 break;
                                 
                                default:
@@ -283,30 +279,26 @@ sap.ui.controller(
                             airbus.mes.stationtracker.GraphManager.loadGraph();
                             
                             //refresh
-                            if ( bBatch1==false ) {
-                                airbus.mes.shell.AutoRefreshManager.setInterval("stationTrackerView");
-                                airbus.mes.shell.oView.byId('refreshTime').setVisible(true);
-                            }
+                            airbus.mes.shell.AutoRefreshManager.setInterval("stationTrackerView");
+                            airbus.mes.shell.oView.byId('refreshTime').setVisible(true);
 
                             airbus.mes.shell.oView.byId("homeButton").setVisible(true);
                             airbus.mes.shell.oView.byId("SelectLanguage").setVisible(false);
                             break;
                         case "disruptiontrackerView":
                             //refresh
-                            if ( bBatch1==false ) {
-                                airbus.mes.shell.AutoRefreshManager.setInterval("disruptiontrackerView");
-                                airbus.mes.shell.oView.byId('refreshTime').setVisible(true);
-                            }
+
+                             airbus.mes.shell.AutoRefreshManager.setInterval("disruptiontrackerView");
+                             airbus.mes.shell.oView.byId('refreshTime').setVisible(true);
 
                             airbus.mes.shell.oView.byId("homeButton").setVisible(true);
                             airbus.mes.shell.oView.byId("SelectLanguage").setVisible(false);
                             break;
                         case "disruptionKPIView":
                             //refresh
-                            if ( bBatch1==false ) {
-                                airbus.mes.shell.AutoRefreshManager.setInterval("disruptionKPIView");
-                                airbus.mes.shell.oView.byId('refreshTime').setVisible(true);
-                            }
+
+                            airbus.mes.shell.AutoRefreshManager.setInterval("disruptionKPIView");
+                            airbus.mes.shell.oView.byId('refreshTime').setVisible(true);
 
                             airbus.mes.shell.oView.byId("homeButton").setVisible(true);
                             airbus.mes.shell.oView.byId("SelectLanguage").setVisible(false);
@@ -328,10 +320,10 @@ sap.ui.controller(
                         case "idLinetracker1":
                         	this.renderLineTracker();
                         	//refresh
-                        	if ( bBatch1==false ) {
-                        		airbus.mes.shell.AutoRefreshManager.setInterval("idLinetracker1");
-                            	airbus.mes.shell.oView.byId('refreshTime').setVisible(true);
-                        	}
+
+                        	airbus.mes.shell.AutoRefreshManager.setInterval("idLinetracker1");
+                            airbus.mes.shell.oView.byId('refreshTime').setVisible(true);
+
                             airbus.mes.shell.oView.byId("homeButton").setVisible(true);
                             airbus.mes.shell.oView.byId("SelectLanguage").setVisible(false);
                             break;
@@ -339,10 +331,8 @@ sap.ui.controller(
                         	this.renderCalendarTracker();
 
                         	//refresh
-                            if ( bBatch1==false ) {
-                                airbus.mes.shell.AutoRefreshManager.setInterval("calendar");
-                                airbus.mes.shell.oView.byId('refreshTime').setVisible(true);
-                            }
+                            airbus.mes.shell.AutoRefreshManager.setInterval("calendar");
+                            airbus.mes.shell.oView.byId('refreshTime').setVisible(true);
                         	
                         	 airbus.mes.shell.oView.byId("homeButton").setVisible(true);
                              airbus.mes.shell.oView.byId("SelectLanguage").setVisible(false);
@@ -353,10 +343,8 @@ sap.ui.controller(
                         	this.stationHandover();
 
                         	//TO DOrefresh
-//                            if ( bBatch1==false ) {
-//                                airbus.mes.shell.AutoRefreshManager.setInterval("calendar");
-//                                airbus.mes.shell.oView.byId('refreshTime').setVisible(true);
-//                            }
+//                          airbus.mes.shell.AutoRefreshManager.setInterval("calendar");
+//                          airbus.mes.shell.oView.byId('refreshTime').setVisible(true);
                         	
                         	 airbus.mes.shell.oView.byId("homeButton").setVisible(true);
                              airbus.mes.shell.oView.byId("SelectLanguage").setVisible(false);

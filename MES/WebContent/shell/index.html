@@ -47,8 +47,6 @@
 			jQuery.sap.registerModulePath("airbus.mes.homepage", "../components/homepage");
 			jQuery.sap.registerModulePath("airbus.mes.dhtmlx", "../lib/dhtmlxscheduler");
 			jQuery.sap.registerModulePath("airbus.mes.d3", "../lib/d3");
-			bBatch1 = true;
-			disableEnable();
 
 			if (window.location.hostname === "localhost" && window.location.search != "?url_config=local" && (sessionStorage.loginType === undefined || sessionStorage.loginType == "") ) {
 				//        Case of localhost connection, need to define login pass
@@ -102,34 +100,7 @@
 				airbus.mes.settings.ModelManager.checkDisplayFirstSetting();
 
 			}
-			function disableEnable() {
-				// batch 1 set to true
-				var windowLocation = window.location.hostname;
-				var getLocationForBatch = window.location.search;
 
-				if (windowLocation === "localhost") {
-					bBatch1 = false;
-				} else {
-					if (windowLocation === "dmiswde0.eu.airbus.corp") {
-						bBatch1 = false;
-					} else {
-						if (windowLocation === "imiswde0.eu.airbus.corp") {
-							bBatch1 = false;
-						} else {
-							bBatch1 = true;
-						}
-					}
-				}
-
-				if (getLocationForBatch.search("batch1") > 0) {
-					bBatch1 = true;
-				} else {
-					if (getLocationForBatch.search("batch2") > 0) {
-						bBatch1 = false;
-					}
-				}
-
-			}
 		});
 	</script>
 
