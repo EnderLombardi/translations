@@ -7,7 +7,8 @@ airbus.mes.calendar.util.ShiftManager = {
 	firstTimelineStart : undefined,
 	updateShift : true,
 	
-	dayDisplay : undefined,
+	dayDisplay : false,
+	taktDisplay : false,
 	shiftDisplay :true,
 	fSwipe: false,
 	//Variables for shift combobox Day/Shit view
@@ -687,7 +688,7 @@ airbus.mes.calendar.util.ShiftManager = {
 	 */
 	next : function(e, t) {
 		
-		if ( airbus.mes.calendar.util.ShiftManager.taktDisplay ) {
+		if ( !airbus.mes.calendar.util.ShiftManager.taktDisplay ) {
 
         calendar.setCurrentView(calendar.date.add(calendar.date[calendar._mode + "_start"](calendar._date), t || 1, calendar._mode));
 

@@ -22,6 +22,7 @@ sap.ui.controller("airbus.mes.calendar.controller.calendar", {
 
         airbus.mes.calendar.util.ShiftManager.shiftDisplay = true;
         airbus.mes.calendar.util.ShiftManager.dayDisplay = false;
+        airbus.mes.calendar.util.ShiftManager.taktDisplay = false;
 
         calendar.matrix['timeline'].x_unit = 'minute';
         calendar.matrix['timeline'].x_step = 30;
@@ -48,6 +49,8 @@ sap.ui.controller("airbus.mes.calendar.controller.calendar", {
 
         airbus.mes.calendar.util.ShiftManager.shiftDisplay = false;
         airbus.mes.calendar.util.ShiftManager.dayDisplay = true;
+        airbus.mes.calendar.util.ShiftManager.taktDisplay = false;
+
 
         calendar.matrix['timeline'].x_unit = 'minute';
         calendar.matrix['timeline'].x_step = 60;
@@ -197,12 +200,15 @@ sap.ui.controller("airbus.mes.calendar.controller.calendar", {
 	     * swiping in gantt or on the first display
 	     ****************************************************************************/
 	    UpdateDateSwipe : function() {
+			if ( !airbus.mes.calendar.util.ShiftManager.taktDisplay ) {
+
 	    	var oDate = new Date($("#calendar--calendar")[0].children[0].children[0].textContent.split("-")[0]);
 	    	var oFormatddMMyyy = sap.ui.core.format.DateFormat.getInstance({pattern : "dd MMM yyyy",calendarType : sap.ui.core.CalendarType.Gregorian
 	     });
 	     var oText = airbus.mes.calendar.oView.byId("dateLabel");
 	     oText.setText(oFormatddMMyyy.format(oDate));	
-	    }, 
+			}
+		}, 
 	    /***************************************************************************
 	     * Filter the calendar by ressource Pool
 	     *
