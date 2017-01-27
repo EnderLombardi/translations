@@ -80,8 +80,6 @@
 				}
 
 				function setHeightAndOverflow() {
-					// need to update width because it will be incorrect for percentage widths
-					$clone.css('width', $textarea.width());
 					var cloneHeight = $clone.height();
 					var overflow = 'hidden';
 					var height = hasBoxModel ? cloneHeight + lineHeight + heightCompensation : cloneHeight + lineHeight;
@@ -92,25 +90,14 @@
 					else if (height < minheight) {
 						height = minheight;
 					}
-
-					if (parseFloat($textarea.css('height')) !== height) {
+					if ($textarea.height() !== height) {
 						$textarea.css({'overflow': overflow, 'height': height + 'px'});
-						$textarea.trigger('heightChanged');
 					}
 				}
 
 				// Update textarea size on keyup, change, cut and paste
-				function update() {
+				$textarea.bind('keyup change cut paste', function(){
 					updateHeight();
-					$textarea.trigger('update');
-				}
-
-				$textarea.bind('keyup change cut paste', function(e) {
-					if (e.type === 'paste') {
-						setTimeout(update, 0);
-					} else {
-						update();
-					}
 				});
 
 				/* this isn't necessary since our popups stay the same size regardless of the window size */

@@ -1,4 +1,4 @@
-/*global FastClick */
+/*global FastClick, Android */
 (function(exports) {
     "use strict";
 
@@ -6,29 +6,17 @@
 
     var Text = XODText;
     var Tools = Tools;
-    var ToolMode = exports.PDFTron.WebViewer.ToolMode;
-    var colorTypes = {
-        color: 'StrokeColor',
-        fillColor: 'FillColor',
-        textColor: 'TextColor'
-    };
-    var selectedColorPicker = colorTypes.color;
-    var isRemovingColors = false;
-    var editMode = window.ControlUtils.editMode;
-    var currentEditMode = editMode.basic;
-    var userPrefs = window.ControlUtils.userPreferences;
-
-    exports.ReaderControl = function(options) {
-        exports.BaseReaderControl.call(this, options);
-
+    
+    var ReaderControl = function(enableAnnotations, enableOffline) {
         var me = this;
-
+        me.auto = false;
+        
         var userAgent = window.navigator.userAgent;
         me.isAndroid = userAgent.indexOf('Android') > -1;
         me.androidBrowser = me.isAndroid && userAgent.indexOf('Chrome') === -1 && userAgent.indexOf('Firefox') === -1;
         var uiWebView = userAgent.indexOf('UIWebView') > -1;
         var isIOS = navigator.userAgent.match(/(iPad|iPhone|iPod)/i);
-
+        
         if (window.opera || me.androidBrowser || exports.utils.ie === 10 || exports.utils.ie === 11 || isIOS) {
             // certain browsers have issues with css transforms for one reason or another so we just fall back to using top and left
             // IE10/11 seem to have some issues with after swiping pages, sometimes just in metro mode
@@ -49,35 +37,52 @@
             for (var i = 0; i < togGroup.length; i++) {
                 FastClick.attach(togGroup[i]);
             }
-
+            
         } else if (uiWebView) {
             FastClick.attach(document.getElementById('pageHeader'));
         }
-
-        if (!me.isAndroid) {
-            // currently Android doesn't support printing
-            $('#printButton').show();
-        }
-
+        
         exports.CoreControls.SetCanvasMode(exports.CoreControls.CanvasMode.ViewportCanvas);
-        me.docViewer.setViewportRenderMode(false);
-
-        Annotations.ControlHandle.selectionAccuracyPadding = 10; //make it easier to select control handles
-        Annotations.SelectionAlgorithm.canvasVisibilityPadding = 20;
+        
+        me.docViewer = new exports.CoreControls.DocumentViewer();
+        
+        me.enableOffline = enableOffline ? true : false;
+        
+        me.enableAnnotations = enableAnnotations ? true : false;
+        
+        Annotations.ControlHandle.selectionAccuracyPadding = 10;  //make it easier to select control handles
+        Annotations.SelectionAlgorithm.canvasVisibilityPadding = 30;
         Annotations.SelectionModel.selectionAccuracyPadding = 10;
         Annotations.ControlHandle.handleWidth = 16;
 
-        this.pageDisplayModes = {
+        // whether we're editing stroke or fill color currently
+        me.editColorMode = null;
+        me.colorEditing = {
+            Stroke: "stroke",
+            Fill: "fill"
+        };
+
+        me.docViewer.SetOptions({
+            enableAnnotations: this.enableAnnotations
+        });
+
+        me.pageDisplayModes = {
             Single: 0,
             Double: 1
         };
-        this.pageDisplay = this.pageDisplayModes.Double;
-        this.isCoverMode = false;
-
-        me.isCopySupported = (window.utils.ie || window.chrome) ? true : false;
-
-        this.touchedPoint = null;
-
+        me.pageDisplay = me.pageDisplayModes.Double;
+        
+        me.doc_id = null;
+        me.server_url = null;
+        me.currUser = '';
+        
+        if (!_.isUndefined(ReaderControl.config) && !_.isUndefined(ReaderControl.config.defaultUser)) {
+            me.currUser = ReaderControl.config.defaultUser;
+        }
+        
+        this.isAdmin = false;
+        this.readOnly = false;
+        
         me.$viewerPage = $('#viewerPage');
         me.$viewer = $('#viewer');
         me.$slider = $('#slider');
@@ -93,15 +98,7 @@
         me.$menuWrapper = $('#menuWrapper'); /*top menu bar*/
         me.$bookmarkView = $("#bookmarkView");
         me.$bookmarkList = $('#bookmarkList');
-        me.$pageHeader = $('#pageHeader');
-        me.$printPopup = $('#printPopup').popup({
-            afterclose: function() {
-                $('#printPageNumberInput').val('');
-                me.cancelPrintJob();
-            }
-        }).trigger('create');
-        me.$printPageNumberInput = me.$printPopup.find('#printPageNumberInput');
-
+        
         me.$clipboard = $('#clipboard');
         me.$clipboardWrapper = $('#clipboardWrapper');
         me.$searchInput = $('#searchInput');
@@ -112,38 +109,25 @@
         me.$annotCreateButton = $('#annotCreateButton');
         me.$annotCreateMenuContext = $('#annotCreateMenuContext');
         me.$annotEditPopup = $('#annotEditPopup');
-        me.$annotEditPopup.popup({
-            'tolerance': '0,2'
-        }).trigger('create');
-        me.$addNewColor = me.$annotEditPopup.find('#addNewColor');
+        me.$annotEditPopup.popup({'tolerance': 0});
         me.$annotEditButtons = me.$annotEditPopup.find('#annotEditButtons');
-        me.$annotQuickMenu = $('#annotQuickMenuPopup');
-        me.$annotQuickMenu.popup({
-            'tolerance': '0,2'
+        me.$thicknessSlider = $("#thicknessSlider");
+        me.$thicknessSlider.slider({
+            min: 1,
+            max: 5,
+            animate: true
         });
-        // this helps to fix an issue where the tap hold menu closes after releasing the hold on iOS
-        $('#annotQuickMenuPopup-screen').addClass('needsclick');
-        me.$annotQuickMenuButtons = me.$annotQuickMenu.find('#annotQuickMenuButtons');
-        me.$annotQuickMenuGrid = me.$annotQuickMenu.find('#annotQuickMenuGrid');
-        me.$signaturePopup = $('#signaturePopup').popup().trigger('create');
-        me.$signatureSelectionContainer = me.$annotEditPopup.find('#signatureSelectionContainer').controlgroup();
-
-        me.$textSelectionContainer = me.$annotEditPopup.find('#textSelectionContainer').controlgroup();
-
-        me.$thicknessSlider = $("#thicknessSlider").slider();
-        me.$opacitySlider = $('#opacitySlider').slider();
-        me.$fontSizeSlider = $('#fontSizeSlider').slider();
         me.$annotList = $('#annotList');
         me.$noAnnotations = $('<li class="noannotations"></li>');
 
         me.$noAnnotations.attr('data-i18n', "mobile.annotations.noAnnotations").i18n()
-            .appendTo(me.$annotList);
-
+                .appendTo(me.$annotList);
+        
         me.$annotList.listview({
-            autodividers: true,
-            autodividersSelector: function(li) {
+          autodividers: true,
+          autodividersSelector: function ( li ) {
                 var mode = me.$annotList.attr('data-mode');
-                if (mode === "thread") {
+                if (mode === "thread"){
                     return i18n.t("mobile.annotations.threadedViewTitle");
                 }
                 if (mode === "single") {
@@ -151,57 +135,58 @@
                     return null;
                 }
                 var pagenumber = $(li).data('pagenumber');
-                if (typeof pagenumber !== 'undefined') {
-                    return i18n.t("annotations.pageNumber", {
-                        number: pagenumber
-                    });
+                if(typeof pagenumber !== 'undefined'){
+                    return i18n.t("annotations.pageNumber", {number : pagenumber });
                     //return "Page " + pagenumber;
                 }
                 return null;
-
-            }
+                
+          }
         });
-        $('.showAllAnnotButton').hide().click(function() {
+        $('.showAllAnnotButton').hide().click(function(){
             me.viewAnnotsListMode();
         });
-
-        var stickyNoteTool = this.toolModeMap[ToolMode.AnnotationCreateSticky];
-        stickyNoteTool.on('annotationAdded', function(e, annotation) {
-            // switch the tool mode first because that will deselect all annotations
-            me.setToolMode(ToolMode.AnnotationEdit);
-            me.annotationManager.selectAnnotation(annotation);
-
-            me.showAnnotationEditPopup();
-        });
-
+        
         // mapping between button ids and their associated tool modes
+        var Tools = exports.Tools;
         me.buttonIdsToToolModes = {
-            'editAnnotButton': this.toolModeMap[ToolMode.AnnotationEdit],
-            'createStickyButton': this.toolModeMap[ToolMode.AnnotationCreateSticky],
-            'createHighlightButton': this.toolModeMap[ToolMode.AnnotationCreateTextHighlight],
-            'createUnderlineButton': this.toolModeMap[ToolMode.AnnotationCreateTextUnderline],
-            'createStrikeoutButton': this.toolModeMap[ToolMode.AnnotationCreateTextStrikeout],
-            'createSquigglyButton': this.toolModeMap['AnnotationCreateTextSquiggly'],
-            'createSignatureButton': this.toolModeMap['AnnotationCreateSignature'],
-            'createFreetextButton': this.toolModeMap[ToolMode.AnnotationCreateFreeText],
-            'createRectangleButton': this.toolModeMap[ToolMode.AnnotationCreateRectangle],
-            'createEllipseButton': this.toolModeMap[ToolMode.AnnotationCreateEllipse],
-            'createLineButton': this.toolModeMap[ToolMode.AnnotationCreateLine],
-            'createArrowButton': this.toolModeMap['AnnotationCreateArrow'],
-            'createFreehandButton': this.toolModeMap[ToolMode.AnnotationCreateFreeHand],
-            'textSelectButton': this.toolModeMap[ToolMode.TextSelect]
+            'editAnnotButton': Tools.AnnotationEditTool,
+            'createStickyButton': Tools.MobileStickyCreateTool,
+            'createHighlightButton': Tools.TextHighlightCreateTool,
+            'createUnderlineButton': Tools.TextUnderlineCreateTool,
+            'createStrikeoutButton': Tools.TextStrikeoutCreateTool,
+            'createFreetextButton': Tools.FreeTextCreateTool,
+            'createRectangleButton': Tools.RectangleCreateTool,
+            'createEllipseButton': Tools.EllipseCreateTool,
+            'createLineButton': Tools.LineCreateTool,
+            'createFreehandButton': Tools.FreeHandCreateTool
         };
-
-        var throttledSelect = _.throttle(window.Tools.TextTool.prototype.select, 50);
-        window.Tools.TextTool.prototype.select = function() {
-            throttledSelect.apply(this, arguments);
-        };
-
+        
+        var ToolMode = exports.PDFTron.WebViewer.ToolMode;  
+        this.toolModeMap = {};
+        this.toolModeMap[ToolMode.Pan] = Tools.PanTool;
+        this.toolModeMap[ToolMode.PanAndAnnotationEdit] = Tools.PanEditTool; //new 1.8?
+        this.toolModeMap[ToolMode.TextSelect] = Tools.TextSelectTool;
+        this.toolModeMap[ToolMode.AnnotationEdit] = Tools.AnnotationEditTool;
+        this.toolModeMap[ToolMode.AnnotationCreateEllipse] = Tools.EllipseCreateTool;
+        this.toolModeMap[ToolMode.AnnotationCreateFreeHand] = Tools.FreeHandCreateTool;
+        this.toolModeMap[ToolMode.AnnotationCreateLine] = Tools.LineCreateTool;
+        this.toolModeMap[ToolMode.AnnotationCreateRectangle] = Tools.RectangleCreateTool;
+        this.toolModeMap[ToolMode.AnnotationCreateSticky] = Tools.StickyCreateTool;
+        this.toolModeMap[ToolMode.AnnotationCreateTextHighlight] = Tools.TextHighlightCreateTool;
+        this.toolModeMap[ToolMode.AnnotationCreateTextStrikeout] = Tools.TextStrikeoutCreateTool;
+        this.toolModeMap[ToolMode.AnnotationCreateTextUnderline] = Tools.TextUnderlineCreateTool;
+        this.toolModeMap[ToolMode.AnnotationCreatePolyline] = Tools.PolylineCreateTool;
+        this.toolModeMap[ToolMode.AnnotationCreatePolygon] = Tools.PolygonCreateTool;
+        this.toolModeMap[ToolMode.AnnotationCreateCallout] = Tools.CalloutCreateTool;
+        this.toolModeMap[ToolMode.AnnotationCreateFreeText] = Tools.FreeTextCreateTool;
+        this.toolModeMap[ToolMode.AnnotationCreateCustom] = Tools.AnnotationEditTool; //no tools for this
+        
         me.doc = null;
         me.nPages = null;
         me.hasThumbs = false;
         me.eventsBound = false;
-
+        
         me.offsetSwipe = 0; /* number of swipes done before a render */
         me.vWOffset = 0; /* fixed position of viewer wrapper */
         me.vwxPos = 0; /* current position of viewer wrapper with scrolling */
@@ -211,10 +196,10 @@
         me.currentPageMinZoom = null;
         me.currentPageMaxZoom = null;
         me.minZooms = [];
-
+        
         me.zoomedWrapper = null;
         me.transformOffset = null;
-
+        
         me.pagesRendering = [];
         me.snapComplete = false;
 
@@ -222,11 +207,11 @@
         me.isPinching = false;
         me.recentlyZoomed = false;
         me.shouldRerender = false;
-        me.lastRequestedThumbnail = null;
-
+        me.lastRequestedThumbnail = 0;
+        
         me.lastWidth = window.innerWidth;
         me.lastHeight = window.innerHeight;
-
+        
         me.distRatio = 1;
         me.oldScale = 1;
         me.newScale = 1;
@@ -244,113 +229,93 @@
         me.c = null; /* current page wrapper */
         me.n = null; /* next page wrapper */
         me.p = null; /* prev page wrapper */
-
+        
         me.rerenderPages = null;
 
         me.nPagesPerWrapper = 1;
-
+        
+        me.mousePt1 = null;
+        me.mousePt2 = null;
+        
+        me.textSelect = false;
         me.searchMode = null;
         me.annotMode = false;
-        me.setToolbarContext("top");
-
+        me.toolbarContext = "top";
+        me.defaultToolMode = exports.Tools.PanEditTool;
+        me.docViewer.on('documentLoaded', _(this.onDocumentLoaded).bind(this));
+        
         me.docViewer.on('displayPageLocation', function(e, pageNumber, vpos, hpos) {
             /*jshint unused: false */
-
+            
             // clear the timeout so that if there's a pending swipe it will be cancelled
             clearTimeout(me.swipeTimeout);
             me.offsetSwipe = 0;
-
+            
             me.setCurrentPage(parseInt(pageNumber, 10) - 1);
         });
 
         me.docViewer.on('changePage', function(e, pageNumber) {
             me.setCurrentPage(parseInt(pageNumber, 10) - 1);
         });
-
-        me.docViewer.on('linkReady', function(e, link) {
-            var $link = $(link);
-
-            if (exports.utils.ie) {
-            // IE will trigger link tap events too often so this is a workaround to stop that
-                $link.on('tap', function(e) {
-                    e.stopImmediatePropagation();
-                });
-            }
-
-            $link.addClass('unselectable');
-        });
-
+        
         me.docViewer.on('pageNumberUpdated', function(e, pageNumber) {
             me.$slider.val(pageNumber).slider("refresh");
             me.fireEvent('pageChanged', {
-                pageNumber: pageNumber
+                pageNumber : pageNumber
             });
         });
         me.docViewer.on('toolModeUpdated', function(e, newToolMode, oldToolMode) {
-            var allButtons = me.$annotCreateMenuContext.find('a');
-            allButtons.removeClass('active');
-
-            var toolName = '';
-            for (var key in me.toolModeMap) {
-                if (newToolMode === me.toolModeMap[key]) {
-                    toolName = key;
-                    break;
-                }
-            }
-
-            if (toolName) {
-                me.$annotCreateMenuContext.find("[data-toolmode=" + toolName + "]").addClass('active');
-            }
-
             me.fireEvent('toolModeChanged', [newToolMode, oldToolMode]);
         });
-
+        
         me.docViewer.on('textSelected', function(e, quads, text) {
             me.$clipboard.val(text);
             if (text.length > 0) {
                 me.$clipboardWrapper.show();
-            } else {
+            } else{
                 me.$clipboardWrapper.hide();
             }
         });
-
+        
         $(me.docViewer.el).css('cursor', 'default');
+        
+        me.docViewer.on('notify', exports.ControlUtils.getNotifyFunction);
 
-        me.initUI();
+        me.initUi();
         me.initViewer();
     };
-
-    exports.ReaderControl.prototype = {
-
+    
+    ReaderControl.prototype = {
+    
         onDocumentLoaded: function() {
+            
             var me = this;
-            me.doc = me.docViewer.getDocument();
-
-            exports.BaseReaderControl.prototype.onDocumentLoaded.call(this);
-
+            
             // set the tool mode after the document has loaded because setting the tool mode will cause a call to
-            // deselectAllAnnotations which will get the visible pages which needs to have ReaderControl defined
-            me.docViewer.setToolMode(me.defaultToolMode);
-
+            // DeselectAllAnnotations which will get the visible pages which needs to have ReaderControl defined
+            me.docViewer.SetToolMode(me.defaultToolMode);
+    
             if (!me.eventsBound) {
                 me.eventsBound = true;
 
                 me.bindEvents();
             }
-
-            me.nPages = me.docViewer.getPageCount();
+            
+            me.nPages = me.docViewer.GetPageCount();
             me.currentPageIndex = 0;
 
             me.setPageMode();
-
+            
             var position = (exports.innerWidth - me.$preview.width()) / 2;
             me.$preview.css("left", position + "px");
 
             me.$slider.attr("max", me.nPages);
 
-            me.margin = me.docViewer.getMargin();
+            me.margin = me.docViewer.GetMargin();
 
-            me.hasThumbs = me.doc.includesThumbnails();
+            me.doc = me.docViewer.GetDocument();
+
+            me.hasThumbs = me.doc.IncludesThumbnails();
             if (!me.hasThumbs) {
                 // just show the page number when using the slider if there are no thumbnails
                 me.$preview.css('height', 'auto');
@@ -361,38 +326,36 @@
 
             me.updateCurrentZooms(me.currentPageIndex);
 
-            var page = me.doc.getPageInfo(me.currentPageIndex);
-            var pageZoom = me.docViewer.getPageZoom(me.currentPageIndex);
-
+            var page = me.doc.GetPageInfo(me.currentPageIndex);
+            var pageZoom = me.docViewer.GetPageZoom(me.currentPageIndex);
+ 
             me.$viewer.css("width", (page.width * pageZoom) + "px");
             me.$viewer.css("height", (page.height * pageZoom) + "px");
-
-            me.currentPageIndex = me.docViewer.getCurrentPage() - 1;
+            
+            me.currentPageIndex = me.docViewer.GetCurrentPage() - 1;
+    
             me.setCurrentPage(me.currentPageIndex);
-
+    
             me.$viewer.css("visibility", "visible");
-
+            
             me.initBookmarkView();
+            
+            me.annotationManager = me.docViewer.GetAnnotationManager();
+            me.annotationManager.defaultStrokeThickness = 3;
 
-            me.annotationManager = me.docViewer.getAnnotationManager();
-            me.toolModeMap[ToolMode.AnnotationCreateRectangle].defaults.StrokeThickness = 3;
-            me.toolModeMap[ToolMode.AnnotationCreateEllipse].defaults.StrokeThickness = 3;
-            me.toolModeMap[ToolMode.AnnotationCreateLine].defaults.StrokeThickness = 3;
-            me.toolModeMap['AnnotationCreateArrow'].defaults.StrokeThickness = 3;
-
-            me.annotationManager.disableDefaultStickyNotes();
-            me.annotationManager.disableFreeTextEditing();
+            me.annotationManager.DisableDefaultStickyNotes();
+            me.annotationManager.DisableFreeTextEditing();
 
             if (me.enableAnnotations) {
 
                 me.annotationManager.on('annotationSelected', function(e, annotations, action) {
-                    var am = me.docViewer.getAnnotationManager();
-                    var selected = am.getSelectedAnnotations();
+                    var am = me.docViewer.GetAnnotationManager();
+                    var selected = am.GetSelectedAnnotations();
 
                     var enableAnnotationMode = true;
 
-                    var currentToolMode = me.docViewer.getToolMode();
-                    if (currentToolMode === me.toolModeMap[ToolMode.Pan]) {
+                    var currentToolMode = me.docViewer.GetToolMode();
+                    if (currentToolMode === exports.Tools.PanEditTool) {
                         // if pan tool is on then enable if there are selected annotations
                         enableAnnotationMode = (selected.length > 0);
                     }
@@ -430,14 +393,11 @@
                     var annotation;
                     for (var i = 0; i < annotations.length; ++i) {
                         annotation = annotations[i];
-                        if (!annotation.Listable) {
-                            continue;
-                        }
 
                         if (action === "add") {
                             me.$noAnnotations.hide();
                             var container = me.createAnnotationListItem(annotation);
-                            if (annotation.isReply() || annotation.Hidden) {
+                            if (annotation.isReply()) {
                                 container.addClass('annotlist-hidden');
                             }
                         } else if (action === "delete") {
@@ -447,36 +407,46 @@
                             annotation.getReplies().forEach(function(annotReply) {
                                 me.getAnnotationNoteContainer(annotReply).removeClass('annotlist-hidden');
                             });
-                            if (me.annotationManager.getAnnotationsList().length > 0) {
+                            if (me.annotationManager.GetAnnotationsList().length > 0) {
                                 me.$noAnnotations.hide();
                             } else {
                                 me.$noAnnotations.show();
                             }
 
-                            // if the annotation that was deleted is currently being viewed as a thread
+                            // if the annotation that was deleted is currently being viewed as a thread 
                             // then we should return to the list view
                             if (me.threadAnnot === annotation) {
                                 me.viewAnnotsListMode();
                             }
+                        }
+
+                        if (e.imported) {
+                            continue;
+                        }
+
+                        if (action === "add") {
+                            // sticky note annotations should show the note right away after they're created
+                            // however only if the create menu is visible because we don't want to show the note if we just loaded from xfdf
+                            if (annotation instanceof Annotations.StickyAnnotation && me.$annotCreateMenuContext.is(":visible")) {
+                                // switch the tool mode first because that will deselect all annotations
+                                me.docViewer.SetToolMode(exports.Tools.AnnotationEditTool);
+                                me.annotationManager.SelectAnnotation(annotation);
+
+                                // highlight the annotation edit button
+                                var createButtons = $('#annotCreateMenuContext a');
+                                createButtons.removeClass('active');
+
+                                me.$annotCreateMenuContext.find('#editAnnotButton').addClass('active');
+
+                                me.showAnnotationEditPopup();
+                            }
+
                         }
                     }
 
                     if (me.$annotList.hasClass('ui-listview')) {
                         me.refreshAnnotationList();
                     }
-                });
-
-                me.annotationManager.on('annotationHidden', function(e, annotations, hidden) {
-                    annotations.forEach(function(annot) {
-                        var noteElement = me.$annotList.find('li[data-id="' + annot.Id + '"]');
-                        if (hidden) {
-                            noteElement.addClass('annotlist-hidden');
-                        } else {
-                            noteElement.removeClass('annotlist-hidden');
-                        }
-                    });
-
-                    me.refreshAnnotationList();
                 });
 
                 me.annotationManager.on('addReply', function(e, annotation, parent, root) {
@@ -505,14 +475,55 @@
                 $('#annotListButton').show();
                 $('.annotBookmarkToggleGroup').show();
 
-                me.$annotList.empty();
-                me.$noAnnotations.appendTo(me.$annotList).show();
-                me.refreshAnnotationList();
-
                 // update control group with new buttons
                 me.$defaultMenuContext.controlgroup();
+                
+                me.annotationManager.SetCurrentUser(me.currUser);
+                me.annotationManager.SetIsAdminUser(me.isAdmin);
+                me.annotationManager.SetReadOnly(me.readOnly);
+                
+                var noServerURL = _.isUndefined(me.server_url) || _.isNull(me.server_url);
+                if (noServerURL && !_.isUndefined(ReaderControl.config) && !_.isUndefined(ReaderControl.config.serverURL)) {
+                    me.server_url = ReaderControl.config.serverURL;
+                }
+                if (me.server_url !== null) {
+                    var doc_id_query = {};
+                    if (this.doc_id !== null && this.doc_id.length > 0) {
+                        doc_id_query = {
+                            did: this.doc_id
+                        };
+                    }
+                    
+                    $.ajax({
+                        url: me.server_url,
+                        cache: false,
+                        data: doc_id_query,
+                        success: function(data) {
+                            if (!_.isNull(data) && !_.isUndefined(data)) {
+                                me.annotationManager.externalAnnotsExist = true;
+                                me.annotationManager.ImportAnnotationsAsync(data);
+                            }
+                        },
+                        error: function(jqXHR, textStatus, errorThrown) {
+                            /*jshint unused:false */
+                            console.warn("Annotations could not be loaded from the server.");
+                            me.annotationManager.externalAnnotsExist = false;
+                        },
+                        dataType: 'xml'
+                    });
+                }
             }
-
+            
+            if (me.enableOffline) {
+                if (me.startOffline) {
+                    me.offlineReady();
+                } else {
+                    me.doc.InitOfflineDB(function() {
+                        me.offlineReady();
+                    });
+                }
+            }
+            
             me.fireEvent('documentLoaded');
         },
 
@@ -520,53 +531,51 @@
             var me = this;
 
             me.$viewerPage.bind('swipeleft swiperight', _(this.onSwipe).bind(this));
-
+            
             me.$slider.on('slidestart', _(this.onSliderStart).bind(this));
             me.$slider.on('change', _(this.onSliderMove).bind(this));
             me.$slider.on('slidestop', _(this.onSliderEnd).bind(this));
-
+            
             // The following three events handle pinch: touchstart, touchmove, and touchend.
             me.$viewerPage.bind('touchstart', _(this.onTouchStart).bind(this));
             me.$viewerPage.bind('touchmove', _(this.onTouchMove).bind(this));
             me.$viewerPage.bind('touchend', _(this.onTouchEnd).bind(this));
-
+            
             $(window).bind('resize', _(this.onResize).bind(this));
-
+            
             //$(window.top).bind('orientationchange', _(this.onOrientationChange).bind(this));
             //window.top cannot be accessed if this page is in an iframe, where window.top is from another origin
             //note: if window !== window.top, then orientation change is not detected, and the viewer's viewport will be incorrect
             $(window).bind('orientationchange', _(this.onOrientationChange).bind(this));
-
+        
             me.$wrapper.bind('vmousedown', _(this.onToolMouseDown).bind(this));
             me.$wrapper.bind('vmouseup', _(this.onToolMouseUp).bind(this));
-
-            me.$wrapper.bind('contextmenu MSHoldVisual', function(e) {
-                e.preventDefault();
-            });
+            me.$wrapper.bind('vmousemove', _(this.onToolMouseMove).bind(this));
+            
             me.$wrapper.bind('taphold', _(this.onTapHold).bind(this));
             // Tap event for handling left/right navigation and menu toggling
             // bind to wrapper because we want to be able to stop the propagation of the event if there is a tap swipe
             // if we bind to viewerPage the menus will already have been hidden before we can stop the event from bubbling
             me.$wrapper.bind('tap', _(this.onTap).bind(this));
 
-            var throttledDoubleTap = _.throttle(_(this.onDoubleTap).bind(this), 100, {trailing: false});
-            me.$wrapper.bind('dblclick', throttledDoubleTap);
-            if (!exports.utils.ie && !exports.utils.isEdge) {
-                me.$wrapper.bind('doubletap', throttledDoubleTap);
-            }
+            me.$wrapper.bind('dblclick', _(this.onDoubleTap).bind(this));
 
+            if (!exports.utils.ie) {
+                me.$wrapper.bind('doubletap', _(this.onDoubleTap).bind(this));
+            }
+            
             // do not use vclick, which triggers event on content underneath menu
             me.$bookmarkList.on('click', 'a', _(this.onBookmarkSelect).bind(this));
-
+            
             // used to fix issue with links not being "active" right away after tap swiping
             // because of the tricky interactions between jquery mobile's touch and click event handling
             // can be removed if link clicking is handled in touch events
             $.vmouse.resetTimerDuration = 400;
-
+            
             // used to fix issue with the annotation popup menu and _handleDocumentFocusIn in IE going into an infinite loop
             // see https://github.com/jquery/jquery-mobile/issues/5814 for a similar issue
             if (exports.utils.ie) {
-                $('body').on('blur', function(e) {
+                $('body').on('blur', function (e) {
                     e.stopImmediatePropagation();
                     e.preventDefault();
                 });
@@ -611,7 +620,7 @@
                 var newRatio = $(this).prop('checked') ? 2 : 1;
 
                 window.utils.setCanvasMultiplier(newRatio);
-                me.docViewer.removeContent();
+                me.docViewer.RemoveContent();
                 me.setCurrentPage(me.currentPageIndex);
             });
 
@@ -619,14 +628,14 @@
             $('#cbShowAnnotations').on('checkboxradiocreate', function() {
                 $(this).prop('checked', true);
             });
-
-            $('.goToAnnotationPanelButton').on('click', function() {
+           
+            $('.goToAnnotationPanelButton').on('click', function(){
                 me.changeVisiblePage('annotationDialog');
             });
-            $('.goToBookmarkPanelButton').on('click', function() {
+             $('.goToBookmarkPanelButton').on('click', function(){
                 me.changeVisiblePage('bookmarkDialog');
             });
-
+            
             me.$customDialogs = $('.custom-dialog');
 
             me.$customDialogs.on('pagecreate', function() {
@@ -675,91 +684,36 @@
                     e.preventDefault();
                 }
             };
-
-            $('#printButton').on('click', function() {
-                me.$printPopup.popup('open', {
-                    y: 0
-                });
-            });
-
-            $('#printCancelButton').on('click', function() {
-                if (me.preparingForPrint) {
-                    me.cancelPrintJob();
-                } else {
-                    me.$printPopup.popup('close');
-                }
-            });
-
-            function printPages() {
-                var orientation;
-                if ($('#printAuto').prop('checked')) {
-                    orientation = me.pageOrientations.Auto;
-                } else if ($('#printPortrait').prop('checked')) {
-                    orientation = me.pageOrientations.Portrait;
-                } else if ($('#printLandscape').prop('checked')) {
-                    orientation = me.pageOrientations.Landscape;
-                }
-
-                me.startPrintJob($('#printPageNumberInput').val(), orientation, false, function() {
-                    window.print();
-                });
-
-                if (me.preparingForPrint) {
-                    var printSlider = me.$printPopup.find('.progress-bar');
-                    printSlider.show();
-                    printSlider.find('.ui-slider-bg').addClass('ui-btn-active');
-                }
-            }
-
-            $('#printForm').submit(function() {
-                printPages();
-                return false;
-            });
-
-            $('#pageNumberPrintButton').on('click', printPages);
-
-            $(document).on('printProgressChanged', function(e, pageNum, totalPages) {
-                var fractionDone = pageNum / totalPages;
-                me.$printPopup.find('#print-progress').val(fractionDone * 100).slider('refresh');
-
-                var progressLabel = me.$printPopup.find('.progress-label');
-                progressLabel.attr('data-i18n', 'print.preparingPages')
-                .data('i18n-options', {
-                    "current": pageNum,
-                    "total": totalPages
-                })
-                .i18n();
-            });
-
+            
             $('#searchButton').click(function() {
                 me.$defaultMenuContext.hide();
                 me.$searchMenuContext.fadeIn('fast');
                 me.$searchInput.focus();
-                me.setToolbarContext("search");
+                me.toolbarContext = "search";
                 me.setMenuTapToggle(false);
             });
-
+            
             $('#searchCancelButton').click(function() {
                 me.$searchMenuContext.hide();
                 me.$defaultMenuContext.fadeIn('fast');
-                me.setToolbarContext("top");
+                me.toolbarContext = "top";
                 me.setMenuTapToggle(true);
             });
-
+    
             $('#searchRightButton').click(function() {
                 var searchterm = me.$searchInput.val();
                 me.searchText(searchterm);
             });
-
+            
             $('#searchLeftButton').click(function() {
                 var searchterm = me.$searchInput.val();
                 me.searchText(searchterm, me.docViewer.SearchMode.e_page_stop | me.docViewer.SearchMode.e_highlight | me.docViewer.SearchMode.e_search_up);
             });
-
+            
             $('#cbShowAnnotations').change(function() {
-                me.annotationManager.toggleAnnotations();
+                me.annotationManager.ToggleAnnotations();
             });
-
+            
             $('#saveAnnotationsBtn').click(function() {
                 //---------------------------
                 // Save annotations
@@ -767,17 +721,27 @@
                 // You'll need server-side communication here
 
                 // 1) local saving
-                //var xfdfString = me.annotationManager.exportAnnotations();
+                //var xfdfString = me.annotationManager.ExportAnnotations();
                 //var uriContent = "data:text/xml," + encodeURIComponent(xfdfString);
                 //newWindow=window.open(uriContent, 'XFDF Document');
 
                 // 2) saving to server (simple)
-                me.exportAnnotations({
-                    start: function() {
-                        $.mobile.loading('show', {
-                            text: i18n.t('annotations.savingAnnotations'),
-                            textVisible: true
-                        });
+                if (me.server_url === null) {
+                    console.warn("Server URL not defined; not configured for server-side annotation saving.");
+                    return;
+                }
+
+                $.mobile.loading('show', {
+                    text: i18n.t('annotations.savingAnnotations'),
+                    textVisible: true
+                });
+
+                var xfdfString = me.annotationManager.ExportAnnotations();
+                $.ajax({
+                    type: 'POST',
+                    url: me.server_url + '?did=' + me.doc_id,
+                    data: {
+                        'data':xfdfString
                     },
                     success: function(data) {
                         /*jshint unused:false */
@@ -801,17 +765,18 @@
                         setTimeout(function() {
                             $.mobile.loading('hide');
                         }, 1000);
+                        
                     }
                 });
 
-                // 3) saving to server with the command structure (avoid conflicts)
-                // NOT IMPLEMENTED
+            // 3) saving to server with the command structure (avoid conflicts)
+            // NOT IMPLEMENTED
             });
-
+            
             function showAnnotations() {
-                if (me.annotationManager.getMarkupOff()) {
+                if (me.annotationManager.GetMarkupOff()) {
                     // make sure to show all annotations when going into create mode
-                    me.annotationManager.toggleAnnotations();
+                    me.annotationManager.ToggleAnnotations();
                     $('#cbShowAnnotations').prop('checked', true).checkboxradio('refresh');
                 }
             }
@@ -820,80 +785,97 @@
                 showAnnotations();
             });
 
-            me.$annotCreateButton.on('click', function() {
+            $('#annotCreateButton').click(function() {
                 showAnnotations();
-
-                me.endAnnotationQuickMode();
-
+                
                 me.$defaultMenuContext.hide();
-
+                
                 if (me.readOnly) {
                     me.$annotCreateMenuContext.find('a').hide();
                     me.$annotCreateMenuContext.find('#editAnnotButton').show();
                     me.$annotCreateMenuContext.find('#textSelectButton').show();
                     me.$annotCreateMenuContext.find('#annotCreateCancelButton').show();
                 }
-
+                
                 me.$annotCreateMenuContext.fadeIn('fast');
-                me.setToolbarContext("tools");
+                me.toolbarContext = "tools";
                 me.setMenuTapToggle(false);
             });
-
+            
             $('#annotCreateCancelButton').click(function() {
-                me.docViewer.clearSelection();
-                me.annotationManager.deselectAllAnnotations();
-
+                me.textSelect = false;
+                me.docViewer.ClearSelection();
+                me.annotationManager.DeselectAllAnnotations();
+                
                 me.$defaultMenuContext.fadeIn('fast');
                 me.$annotCreateMenuContext.hide();
-                me.setToolbarContext("top");
+                me.toolbarContext = "top";
                 me.setMenuTapToggle(true);
             });
-
-            me.$annotCreateMenuContext.on('click', function(e) {
+            
+            me.$annotCreateMenuContext.click(function(e) {
                 var $buttonPressed = $(e.target).closest('a');
                 var buttonId = $buttonPressed.attr('id');
-
+                
                 // simulate toggling: if a tool is already selected, de-select and switch to PanEdit mode.
                 if ($buttonPressed.hasClass('active')) {
-                    me.docViewer.setToolMode(me.defaultToolMode);
+                    me.docViewer.SetToolMode(me.defaultToolMode);
                     me.annotMode = false;
+                    me.textSelect = false;
+                    $buttonPressed.removeClass('active');
                     return;
                 }
 
+                // first deselect all the buttons
+                var allButtons = $('#annotCreateMenuContext a');
+                allButtons.removeClass('active');
+                
                 var toolMode = me.buttonIdsToToolModes[buttonId];
-
+                
                 if (!_.isUndefined(toolMode)) {
                     // anything other than the cancel button is pressed
-                    me.docViewer.setToolMode(toolMode);
+                    $buttonPressed.addClass('active');
+                    me.docViewer.SetToolMode(toolMode);
                     me.annotMode = true;
                 }
-
+                    
                 if (buttonId === 'annotCreateCancelButton') {
-                    me.docViewer.setToolMode(me.defaultToolMode);
+                    me.docViewer.SetToolMode(me.defaultToolMode);
                     me.annotMode = false;
                     me.$defaultMenuContext.show();
-                    me.setToolbarContext("top");
+                    me.toolbarContext = "top";
                     me.$annotCreateMenuContext.hide();
-
-                } else if (buttonId === 'textSelectButton') {
-                    if (me.docViewer.getToolMode() !== me.toolModeMap[ToolMode.TextSelect]) {
-                        me.setToolMode(ToolMode.TextSelect);
-                    } else {
-                        me.docViewer.clearSelection();
-                    }
                 }
-
+                
+                if (buttonId === 'textSelectButton') {
+                    me.textSelect = !me.textSelect;
+                    
+                    if (me.textSelect) {
+                        // set pan tool here because we are doing our own custom text selection that is rate limited
+                        me.docViewer.SetToolMode(exports.Tools.PanTool);
+                        me.annotMode = false;
+                        $buttonPressed.addClass('active');
+                    } else {
+                        me.docViewer.ClearSelection();
+                    }
+                } else {
+                    me.textSelect = false;
+                }
+                
+                me.docViewer.SetOptions({
+                    annotMode: me.annotMode
+                });
                 me.closeEditPopup();
             });
-
+            
             me.$annotEditPopup.find('#editDoneButton').click(function() {
-                me.annotationManager.deselectAllAnnotations();
+                me.annotationManager.DeselectAllAnnotations();
                 me.closeEditPopup();
             });
-
+            
             me.$annotEditPopup.find('#editDeleteButton').click(function() {
                 me.deleteSelectedAnnotations();
-                if (me.docViewer.getToolMode() === me.toolModeMap[ToolMode.Pan]) {
+                if (me.docViewer.GetToolMode() === exports.Tools.PanEditTool) {
                     //deleting selected annotation does not trigger a deselect event
                     //(deselect event turns annotMode off), so we do this explicitly here.
                     me.annotMode = false;
@@ -903,16 +885,16 @@
                     me.setMenuTapToggle(true);
                 }
             });
-
+            
             //Annotation Note Button
             me.$annotEditPopup.find('#editNoteButton').click(function() {
-                var selected = me.annotationManager.getSelectedAnnotations();
+                var selected = me.annotationManager.GetSelectedAnnotations();
                 if (!selected || selected.length < 1) {
                     return;
                 }
                 var annotation = selected[0];
                 var editable = me.mayEditAnnotation(annotation);
-
+                
                 if (annotation.getReplies().length === 0 && editable) {
                     // if there are no replies then just edit the note directly
                     me.viewAnnotsSingleMode(annotation, "thread");
@@ -920,597 +902,100 @@
                     me.viewAnnotsThreadMode(annotation, "thread");
                 }
             });
-
-            function createColorElement(color) {
-                var $li = $('<li class="light" data-color="' + color + '"></li>');
-                var $colorSquare = $('<div>');
-                if (color === 'transparent') {
-                    $colorSquare.addClass('color-transparent');
-                } else {
-                    $colorSquare.css('background', color);
-                }
-                $li.append($colorSquare);
-                return $li;
-            }
-
-            me.$annotEditPopup.find('#editStyleButton').on('click', function() {
-                var selectedAnnotations = me.annotationManager.getSelectedAnnotations();
-                if (selectedAnnotations.length === 1) {
-                    var annotation = selectedAnnotations[0];
-
-                    var $colorButtonContainer = me.$annotEditPopup.find('#colorType').show();
-                    var $colorButtons = $colorButtonContainer.find('.colorButton').show();
-
-                    var numberOfColors = 0;
-
-                    if (_.isNull(annotation.TextColor) || _.isUndefined(annotation.TextColor)) {
-                        me.$annotEditPopup.find('#textColorButton').hide();
-                    } else {
-                        selectTab(colorTypes.textColor);
-                        numberOfColors++;
-                    }
-
-                    // hide the buttons that aren't applicable for the selected annotation
-                    if (_.isNull(annotation.FillColor) || _.isUndefined(annotation.FillColor)) {
-                        me.$annotEditPopup.find('#fillColorButton').hide();
-                    } else {
-                        selectTab(colorTypes.fillColor);
-                        numberOfColors++;
-                    }
-
-                    if (_.isNull(annotation.StrokeColor) || _.isUndefined(annotation.StrokeColor)) {
-                        me.$annotEditPopup.find('#colorButton').hide();
-                    } else {
-                        selectTab(colorTypes.color);
-                        numberOfColors++;
-                    }
-
-                    if (_.isNull(annotation.StrokeThickness) || _.isUndefined(annotation.StrokeThickness)) {
-                        me.$annotEditPopup.find('.thicknessPicker').hide();
-                    } else {
-                        me.$annotEditPopup.find('.thicknessPicker').show();
-                        thicknessManager.update(annotation.StrokeThickness, false);
-                    }
-
-                    if (annotation instanceof Annotations.TextHighlightAnnotation) {
-                        me.$annotEditPopup.find('.opacityPicker').hide();
-                        $annotPreviewCanvas.hide();
-                    } else {
-                        me.$annotEditPopup.find('.opacityPicker').show();
-                        opacityManager.update(annotation.Opacity * 100, false);
-                        $annotPreviewCanvas.show();
-                    }
-
-                    if (annotation.FontSize) {
-                        me.$annotEditPopup.find('.fontSizePicker').show();
-                        fontSizeManager.update(parseFloat(annotation.FontSize), false);
-                    } else {
-                        me.$annotEditPopup.find('.fontSizePicker').hide();
-                    }
-
-                    me.$annotEditButtons.hide();
-                    me.$annotEditPopup.find('#annotEditProperties').show();
-
-                    if (numberOfColors <= 1) {
-                        $colorButtonContainer.hide();
-                    } else if (numberOfColors === 2) {
-                        $colorButtons.css('width', '50%');
-                    } else if (numberOfColors === 3) {
-                        $colorButtons.css('width', '33%');
-                    }
-
-                    window.ControlUtils.updateAnnotPreview(annotation);
-                    setEditMode(userPrefs.getDefaultToolEditingMode(annotation));
-                    me.setEditPopupLocation(annotation);
-                }
-            });
-
-            var $basicColorPicker = me.$annotEditPopup.find('#basicProperties .colorPicker');
-            var $advancedColorPicker = me.$annotEditPopup.find('#advancedProperties .colorPicker');
-            var $addNewColorPicker = me.$annotEditPopup.find('#addNewColor .colorPicker');
-            var advancedColors = userPrefs.getAdvancedToolColors();
-            advancedColors.forEach(function(color) {
-                var $li = createColorElement(color);
-                $addNewColorPicker.append($li);
-                $advancedColorPicker.append($li.clone());
-            });
-
-            $advancedColorPicker.append(createColorElement('transparent'));
-
-            var $addColorButton = me.$annotEditPopup.find('#addColorButton');
-            $addColorButton.on('click', function(e) {
-                e.stopImmediatePropagation();
-
-                $selectAddColor.addClass('disabled');
-                deselectColor($addNewColorPicker);
-                me.$annotEditPopup.find('#annotEditProperties').hide();
-                me.$addNewColor.show();
-            });
-
-            me.$addNewColor.find('#cancelAddColor').on('click', function() {
-                leaveAdvancedColorMenu();
-            });
-
-            var $selectAddColor = me.$addNewColor.find('#selectAddColor');
-            $selectAddColor.on('click', function() {
-                if (!$(this).hasClass('disabled')) {
-                    var annot = window.ControlUtils.getSelectedAnnotation();
-                    var selectedColor = $addNewColorPicker.find('.color-selected').parent().attr('data-color');
-                    userPrefs.addToolColor(annot, selectedColorPicker, selectedColor);
-                    selectTab(selectedColorPicker);
-                    colorSelectedHandler($basicColorPicker.find('li[data-color="' + selectedColor + '"]'), $basicColorPicker);
-                    leaveAdvancedColorMenu();
-                    me.setEditPopupLocation(annot);
-                }
-            });
-
-            $addNewColorPicker.on('click', 'li', function() {
-                deselectColor($addNewColorPicker);
-                selectColor($(this));
-
-                $selectAddColor.removeClass('disabled');
-            });
-
-            var $removeColorButton = me.$annotEditPopup.find('#removeColorButton');
-            $removeColorButton.on('click', function(e) {
-                e.stopImmediatePropagation();
-
-                removingColors(!isRemovingColors);
-            });
-
-            function removingColors(isRemoving) {
-                isRemovingColors = isRemoving;
-
-                if (isRemovingColors) {
-                    $removeColorButton.addClass('removing');
-
-                    $basicColorPicker.find('li').each(function(i, element) {
-                        var color = element.getAttribute('data-color');
-
-                        if (color !== null && color !== 'transparent') {
-                            var $element = $(element);
-                            $element.find('div.color-selected').remove();
-                            $element.prepend('<div class="color-removing"></div>');
-                        }
-                    });
-                } else {
-                    $removeColorButton.removeClass('removing');
-                    $basicColorPicker.find('div.color-removing').remove();
-                    selectTab(selectedColorPicker);
-                }
-            }
-
-            function colorSelectedHandler($element, $colorPicker) {
-                var annotation = window.ControlUtils.getSelectedAnnotation();
-                if (!annotation) {
-                    return;
-                }
-
-                var color = me.colorHexToRGB($element.attr('data-color'));
-                if (color) {
-                    var annotationProperty = selectedColorPicker;
-
-                    if (isRemovingColors) {
-                        var colorName = me.colorToHex(color);
-                        if (colorName !== 'transparent') {
-                            userPrefs.removeToolColor(annotation, annotationProperty, colorName);
-                            $element.remove();
-                        }
-
-                    } else {
-                        deselectColor($colorPicker);
-                        selectColor($element);
-
-                        annotation[selectedColorPicker] = color;
-
-                        me.annotationManager.updateAnnotation(annotation);
-                        me.annotationManager.trigger('annotationChanged', [
-                            [annotation], 'modify'
-                        ]);
-                        me.fireEvent('defaultToolValueChanged', [annotation, annotationProperty, color]);
-                        window.ControlUtils.updateAnnotPreview(annotation);
-                    }
-                }
-            }
-
-            function selectColor($li) {
-                $li.prepend('<div class="color-selected"></div>');
-            }
-
-            function deselectColor($colorPicker) {
-                $colorPicker.find('div.color-selected').remove();
-            }
-
-            function setColor(color, $colorPicker) {
-                var colorName = me.colorToHex(color);
-                deselectColor($colorPicker);
-                selectColor($colorPicker.find('li[data-color="' + colorName + '"]'));
-            }
-
-            function leaveAdvancedColorMenu() {
-                me.$addNewColor.hide();
-                me.$annotEditPopup.find('#annotEditProperties').show();
-            }
-
-            function selectTab(colorType) {
-                var annot = window.ControlUtils.getSelectedAnnotation();
-                if (!annot) {
-                    return;
-                }
-                var $tab, colors;
-                var toolColors = userPrefs.getToolColors(annot);
-                selectedColorPicker = colorType;
-
-                if (colorType === colorTypes.color) {
-                    $tab = me.$annotEditPopup.find('#colorButton');
-                    colors = toolColors.colors;
-                } else if (colorType === colorTypes.fillColor) {
-                    $tab = me.$annotEditPopup.find('#fillColorButton');
-                    colors = toolColors.fillColors;
-                } else if (colorType === colorTypes.textColor) {
-                    $tab = me.$annotEditPopup.find('#textColorButton');
-                    colors = toolColors.textColors;
-                }
-
-                $removeColorButton.removeClass('removing');
-                isRemovingColors = false;
-
-                me.$annotEditPopup.find('.colorButton').removeClass('active');
-                $tab.addClass('active');
-                setTransparentColorVisibility();
-
-                var $colorMenu = me.$annotEditPopup.find('#colorMenu');
-                $colorMenu.find('[data-color]').remove();
-
-                $basicColorPicker.find('[data-color]').remove();
-                colors.forEach(function(color) {
-                    $addColorButton.before(createColorElement(color));
-                });
-
-                var color = annot[colorType];
-                setColor(color, $basicColorPicker);
-                setColor(color, $advancedColorPicker);
-
-                me.setEditPopupLocation(annot);
-            }
-
-            me.$annotEditPopup.find('#colorButton').on('click', function() {
-                selectTab(colorTypes.color);
-            });
-
-            me.$annotEditPopup.find('#fillColorButton').on('click', function() {
-                selectTab(colorTypes.fillColor);
-            });
-
-            me.$annotEditPopup.find('#textColorButton').on('click', function() {
-                selectTab(colorTypes.textColor);
-            });
-
-            $basicColorPicker.on('click', 'li', function() {
-                colorSelectedHandler($(this), $basicColorPicker);
-            });
-
-            $advancedColorPicker.on('click', 'li', function() {
-                colorSelectedHandler($(this), $advancedColorPicker);
-            });
-
-            var MobilePropertyManager = function() {
-                window.ControlUtils.PropertyManager.apply(this, arguments);
-            };
-
-            MobilePropertyManager.prototype = $.extend({}, window.ControlUtils.PropertyManager.prototype, {
-                update: function(value) {
-                    window.ControlUtils.PropertyManager.prototype.update.apply(this, arguments);
-                    this.$slider.val(parseFloat(value)).slider('refresh');
-                    this.$radioContainer.find('[data-value]').checkboxradio('refresh');
-                    this.$slider.closest('table').find('.propertyValue').text(Math.round(value) + this.displayUnit);
-                }
-            });
-
-            var annotPreviewCanvas = document.getElementById('annotPreviewCanvas');
-            var $annotPreviewCanvas = $(annotPreviewCanvas);
-            window.ControlUtils.setPreviewCanvas(annotPreviewCanvas, annotPreviewCanvas.width, annotPreviewCanvas.height);
-
-            var $basicProperties = me.$annotEditPopup.find('#basicProperties');
-            var $advancedProperties = me.$annotEditPopup.find('#advancedProperties');
-
-            var thicknessManager = new MobilePropertyManager('StrokeThickness', me.$thicknessSlider, $basicProperties.find('#thicknessRadio'));
-            thicknessManager.setDisplayUnit('pt');
-            me.$thicknessSlider.change(function() {
-                var selectedAnnotations = me.annotationManager.getSelectedAnnotations();
-                if (selectedAnnotations.length <= 0) {
-                    return;
-                }
-                var annotation = selectedAnnotations[0];
-
-                thicknessManager.update(me.$thicknessSlider[0].value);
-                me.fireEvent('defaultToolValueChanged', [annotation, 'StrokeThickness', annotation.StrokeThickness]);
-            });
-
-            var opacityManager = new MobilePropertyManager('Opacity', me.$opacitySlider, $basicProperties.find('#opacityRadio'));
-            opacityManager.setDisplayUnit('%');
-            opacityManager.setAnnotationPropertyModifier(function(value) {
-                return value / 100;
-            });
-
-            me.$opacitySlider.change(function() {
-                var selectedAnnotations = me.annotationManager.getSelectedAnnotations();
-                if (selectedAnnotations.length <= 0) {
-                    return;
-                }
-                var annotation = selectedAnnotations[0];
-
-                opacityManager.update(me.$opacitySlider[0].value);
-                me.fireEvent('defaultToolValueChanged', [annotation, 'Opacity', annotation.Opacity]);
-            });
-
-            var fontSizeManager = new MobilePropertyManager('FontSize', me.$fontSizeSlider, $basicProperties.find('#fontSizeRadio'));
-            fontSizeManager.setAnnotationPropertyModifier(function(value) {
-                return value + 'pt';
-            });
-
-            me.$fontSizeSlider.change(function() {
-                var selectedAnnotations = me.annotationManager.getSelectedAnnotations();
-                if (selectedAnnotations.length <= 0) {
-                    return;
-                }
-                var annotation = selectedAnnotations[0];
-
-                fontSizeManager.update(me.$fontSizeSlider[0].value);
-                me.fireEvent('defaultToolValueChanged', [annotation, 'FontSize', annotation.FontSize]);
-            });
-
-            var $propertySliders = me.$thicknessSlider
-                .add(me.$opacitySlider)
-                .add(me.$fontSizeSlider);
-
-            $propertySliders.on('slidestop', function() {
-                var selectedAnnotations = me.annotationManager.getSelectedAnnotations();
-                if (selectedAnnotations.length <= 0) {
-                    return;
-                }
-                var annotation = selectedAnnotations[0];
-
-                me.annotationManager.trigger('annotationChanged', [
-                    [annotation], 'modify'
-                ]);
-            });
-
-            function setEditMode(mode) {
-                currentEditMode = mode;
-                selectTab(selectedColorPicker);
-
-                if (currentEditMode === editMode.basic) {
-                    $basicPropertyEdit.addClass('ui-btn-active');
-                    $basicProperties.show();
-                    $advancedPropertyEdit.removeClass('ui-btn-active');
-                    $advancedProperties.hide();
-                    $annotPreviewCanvas.parent().insertBefore($basicProperties.find('#basicPropertyContainer'));
-                } else if (currentEditMode === editMode.advanced) {
-                    $advancedPropertyEdit.addClass('ui-btn-active');
-                    $advancedProperties.show();
-                    $basicPropertyEdit.removeClass('ui-btn-active');
-                    $basicProperties.hide();
-                    $annotPreviewCanvas.parent().insertBefore($advancedProperties.find('#advancedPropertyContainer'));
-                }
-
-                me.setEditPopupLocation(window.ControlUtils.getSelectedAnnotation());
-            }
-
-            // hide or show the transparent color box depending on which color tab is selected
-            // it should only be shown for fill color
-            function setTransparentColorVisibility() {
-                var transparentColorBox = $advancedColorPicker.find('[data-color="transparent"]');
-                if (selectedColorPicker === colorTypes.fillColor) {
-                    transparentColorBox.show();
-                } else {
-                    transparentColorBox.hide();
-                }
-            }
-
-            var $basicPropertyEdit = me.$annotEditPopup.find('#basicPropertyEdit');
-            $basicPropertyEdit.on('click', function() {
-                setEditMode(editMode.basic);
-                userPrefs.setDefaultToolEditingMode(window.ControlUtils.getSelectedAnnotation(), editMode.basic);
-            });
-
-            var $advancedPropertyEdit = me.$annotEditPopup.find('#advancedPropertyEdit');
-            $advancedPropertyEdit.on('click', function() {
-                setEditMode(editMode.advanced);
-                userPrefs.setDefaultToolEditingMode(window.ControlUtils.getSelectedAnnotation(), editMode.advanced);
-                setTransparentColorVisibility();
-            });
-
-            me.$annotQuickMenu.on('click', function(e) {
-                var $button = $(e.target).closest('a');
-
-                if ($button.length > 0) {
-                    var toolMode = $button.data('toolmode');
-                    me.setToolMode(toolMode);
-                    me.annotMode = true;
-                    me.annotQuickCreate = true;
-
-                    me.$annotQuickMenu.popup('close');
-
-                    var annotManager = me.docViewer.getAnnotationManager();
-                    annotManager.on('annotationChanged.quickMenu', function(e, annotations, action) {
-                        // this is looking for the first annotation that is added by the user
-                        // so that it can automatically switch back to pan mode
-                        if (!e.imported && action === "add") {
-                            setTimeout(function() {
-                                me.endAnnotationQuickMode();
-                                annotManager.selectAnnotation(annotations[0]);
-                                me.showAnnotationEditPopup();
-                            }, 0);
-                        }
-                    });
-                }
-            });
-
-            me.$signaturePopup.popup({
-                beforeposition: function() {
-                    var multiplier = window.utils.getCanvasMultiplier();
-                    var width = window.innerWidth * 0.9;
-                    var height = window.innerHeight * 0.85;
-
-                    $signatureCanvas.attr({
-                        width: width * multiplier,
-                        height: height * multiplier
-                    })
-                    .css({
-                        width: width,
-                        height: height
-                    });
-                },
-                afteropen: function() {
-                    signatureTool.openSignature();
-                },
-                afterclose: function() {
-                    signatureTool.clearSignatureCanvas();
-                }
-            });
-
-            me.$signaturePopup.find('#signatureCancelButton').on('click', function() {
-                me.$signaturePopup.popup('close');
-            });
-
-            me.$signaturePopup.find('#signatureClearButton').on('click', function() {
-                signatureTool.clearSignatureCanvas();
-            });
-
-            me.$signaturePopup.find('#signatureAddButton').on('click', function() {
-                var makeDefault = $makeDefaultCheckbox.prop('checked');
-
-                var added = signatureTool.addSignature(makeDefault);
-                if (added) {
-                    me.$signaturePopup.popup('close');
-                }
-            });
-
-            $('#mySignatureButton').on('click', function() {
-                signatureTool.addDefaultSignature();
-                me.closeEditPopup();
-            });
-
-            $('#newSignatureButton').on('click', function() {
-                me.closeEditPopup();
-                openSignaturePopup();
-            });
-
-            function openSignaturePopup() {
-                $makeDefaultCheckbox.prop('checked', false).checkboxradio('refresh');
-                me.$signaturePopup.popup('open');
-            }
-
-            var $makeDefaultCheckbox = $('#makeDefaultSignature');
-
-            var signatureTool = readerControl.toolModeMap['AnnotationCreateSignature'];
-            signatureTool.on('locationSelected', function(e, pageLocation) {
-                if (signatureTool.hasDefaultSignature()) {
-                    me.$annotEditButtons.hide();
-                    me.$signatureSelectionContainer.show();
-                    me.$annotEditPopup.popup('option', 'arrow', 'b');
-
-                    var displayMode = readerControl.docViewer.getDisplayModeManager().getDisplayMode();
-                    var location = displayMode.pageToWindow({
-                        x: pageLocation.x,
-                        y: pageLocation.y
-                    }, pageLocation.pageIndex);
-
-                    me.$annotEditPopup.popup('close');
-                    me.$annotEditPopup.popup('open', {
-                        x: location.x,
-                        y: location.y
-                    });
-                } else {
-                    openSignaturePopup();
-                }
-            });
-
-            var $signatureCanvas = me.$signaturePopup.find('#signatureCanvas');
-            signatureTool.setSignatureCanvas($signatureCanvas);
-
-            var verticalOffset = 30;
-            var currentQuads = null;
-
-            var $copyButton = me.$textSelectionContainer.find('#copyButton');
-            if (!me.isCopySupported) {
-                $copyButton.hide();
-                me.$textSelectionContainer.controlgroup();
-            }
-
-            $copyButton.on('click', function() {
-                me.copyButtonHandler();
-                me.closeEditPopup();
-            });
-
-            var textSelectTool = readerControl.toolModeMap['TextSelect'];
-            textSelectTool.on('selectionComplete', function(e, startLocation, allQuads) {
-                if (me.docViewer.getAnnotationManager().getReadOnly() || !readerControl.enableAnnotations) {
-                    if (!me.isCopySupported) {
-                        return;
-                    }
-
-                    $copyButton.siblings().hide();
-                    me.$textSelectionContainer.controlgroup();
-                }
-
+            
+            me.$annotEditPopup.find('#editStrokeColorButton').click(function() {
                 me.$annotEditButtons.hide();
-                me.$textSelectionContainer.show();
-                me.$annotEditPopup.popup('option', 'arrow', 'b');
+                var colorMenu = me.$annotEditPopup.find('#colorMenu');
+                me.editColorMode = me.colorEditing.Stroke;
+                
+                var annotation = me.annotationManager.GetSelectedAnnotations()[0];
+                var strokeColor = annotation.StrokeColor;
+                var strokeColorName = me.colorRGBtoName(strokeColor.R, strokeColor.G, strokeColor.B, strokeColor.A);
 
-                currentQuads = allQuads;
-                var quad = startLocation.quad;
+                // don't allow a transparent stroke color
+                colorMenu.find('li[data-color="transparent"]').hide();
 
-                var pageLocation = {
-                    x: (quad.x1 + quad.x3) / 2,
-                    y: quad.y1,
-                    pageIndex: startLocation.pageIndex
-                };
+                colorMenu.find('li').removeClass('ui-selected');
+                colorMenu.find('li[data-color="' + strokeColorName + '"]').addClass('ui-selected');
+                colorMenu.show();
+                
+                me.setEditPopupLocation(annotation);
+            });
+            
+            me.$annotEditPopup.find('#editFillColorButton').click(function() {
+                me.$annotEditButtons.hide();
+                var colorMenu = me.$annotEditPopup.find('#colorMenu');
+                me.editColorMode = me.colorEditing.Fill;
+                
+                var annotation = me.annotationManager.GetSelectedAnnotations()[0];
+                var fillColor = annotation.FillColor;
+                var fillColorName = me.colorRGBtoName(fillColor.R, fillColor.G, fillColor.B, fillColor.A);
 
-                var displayMode = readerControl.docViewer.getDisplayModeManager().getDisplayMode();
-                var location = displayMode.pageToWindow({
-                    x: pageLocation.x,
-                    y: pageLocation.y
-                }, pageLocation.pageIndex);
-
-                me.$annotEditPopup.popup('close');
-                me.$annotEditPopup.popup('open', {
-                    x: location.x,
-                    y: location.y - verticalOffset
-                });
+                colorMenu.find('li[data-color="transparent"]').show();
+                colorMenu.find('li').removeClass('ui-selected');
+                colorMenu.find('li[data-color="' + fillColorName + '"]').addClass('ui-selected');
+                colorMenu.show();
+                
+                me.setEditPopupLocation(annotation);
+            });
+            
+            me.$annotEditPopup.find('.colorPicker').click(function(e) {
+                var selectedAnnotations = me.annotationManager.GetSelectedAnnotations();
+                if (selectedAnnotations.length <= 0) {
+                    return;
+                }
+                var annotation = selectedAnnotations[0];
+                
+                var $li = $(e.target).closest('li');
+                
+                if ($li.length > 0) {
+                    $(this).find('li').removeClass('ui-selected');
+                    $li.addClass('ui-selected');
+                    
+                    var color = me.colorNameToRGB($li.attr('data-color'));
+                    if (color) {
+                        if (me.editColorMode === me.colorEditing.Stroke) {
+                            annotation.StrokeColor = color;
+                        } else if (me.editColorMode === me.colorEditing.Fill) {
+                            annotation.FillColor = color;
+                        }
+                        
+                        me.annotationManager.UpdateAnnotation(annotation);
+                        me.annotationManager.trigger('annotationChanged', [[annotation], 'modify']);
+                    }
+                }
             });
 
-            function handleAnnotationCreate(buttonId, annotConstructor, annotTool) {
-                /*jshint newcap:false */
-                var am = readerControl.docViewer.getAnnotationManager();
+            me.$annotEditPopup.find('#colorDoneButton').click(function() {
+                me.closeEditPopup();
+            });
+            
+            me.$annotEditPopup.find('#editThicknessButton').click(function() {
+                var annotation = me.annotationManager.GetSelectedAnnotations()[0];
+                
+                me.$annotEditButtons.hide();
+                me.$thicknessSlider.val(annotation.StrokeThickness).slider("refresh");
+                $("#thicknessMenu").show();
+                
+                me.setEditPopupLocation(annotation);
+            });
+            
+            me.$annotEditPopup.find('#thicknessDoneButton').click(function() {
+                me.closeEditPopup();
+            });
+            
+            me.$thicknessSlider.change(function() {
+                var selectedAnnotations = me.annotationManager.GetSelectedAnnotations();
+                if (selectedAnnotations.length <= 0) {
+                    return;
+                }
+                var annotation = selectedAnnotations[0];
+                
+                annotation.StrokeThickness = me.$thicknessSlider[0].value;
+                me.annotationManager.UpdateAnnotation(annotation);
+                me.annotationManager.trigger('annotationChanged', [[annotation], 'modify']);
+            });
 
-                me.$textSelectionContainer.find('#' + buttonId).on('click', function() {
-                    for (var page in currentQuads) {
-                        if (currentQuads.hasOwnProperty(page)) {
-                            var pageIndex = parseInt(page, 10);
-                            var pageQuads = currentQuads[pageIndex];
-                            var textAnnot = new annotConstructor();
-                            textAnnot.PageNumber = pageIndex + 1;
-                            textAnnot.Quads = pageQuads;
-                            textAnnot.Author = readerControl.getAnnotationUser();
-                            textAnnot.StrokeColor = annotTool.defaults.StrokeColor;
-                            if (window.Tools.TextAnnotationCreateTool.AUTO_SET_TEXT) {
-                                textAnnot.setContents(readerControl.docViewer.getSelectedText());
-                            }
-                            am.addAnnotation(textAnnot);
-                        }
-                    }
-
-                    readerControl.docViewer.clearSelection();
-                    me.closeEditPopup();
-                });
-            }
-
-            handleAnnotationCreate('selectHighlightButton', Annotations.TextHighlightAnnotation, readerControl.toolModeMap['AnnotationCreateTextHighlight']);
-            handleAnnotationCreate('selectStrikeoutButton', Annotations.TextStrikeoutAnnotation, readerControl.toolModeMap['AnnotationCreateTextStrikeout']);
-            handleAnnotationCreate('selectUnderlineButton', Annotations.TextUnderlineAnnotation, readerControl.toolModeMap['AnnotationCreateTextUnderline']);
-            handleAnnotationCreate('selectSquigglyButton', Annotations.TextSquigglyAnnotation, readerControl.toolModeMap['AnnotationCreateTextSquiggly']);
 
             me.$pageIndicator.on('click', function() {
                 me.$goToPagePopup.popup('open', {
@@ -1520,9 +1005,9 @@
             });
 
             function goToPage() {
-                var pageNum = parseInt(me.$pageNumberInput.val(), 10) || me.docViewer.getCurrentPage();
+                var pageNum = parseInt(me.$pageNumberInput.val(), 10) || me.docViewer.GetCurrentPage();
                 me.$pageNumberInput.val('');
-                var maxPage = me.docViewer.getPageCount();
+                var maxPage = me.docViewer.GetPageCount();
                 pageNum = pageNum > maxPage ? maxPage : pageNum;
 
                 // close popup before going to the page so that the virtual keyboard is hidden and the window size is correct
@@ -1539,35 +1024,22 @@
                 return false;
             });
 
-            if (me.isAndroid) {
-                // this is a hacky workaround for issues with submitting an number input field on android
-                // instead of a "go" or "submit" button there is a "next" button, so this will go to the off screen field and then submit the form
-                // we also can't include this for other browsers because on the ipad the off screen field causes the menu animation to be jittery
-                var numFix = $('<input data-role="none" type="text" style="margin-left:-9999px;position:absolute"/>');
-                var numSubmit = $('<input data-role="none" style="height: 0px; width: 0px; border: none; padding: 0px;position: absolute" tabindex="999" type="submit" />');
-                numFix.focus(function() {
-                    $('#goToPageForm').submit();
-                });
-
-                $('#goToPageForm').append(numFix, numSubmit);
-            }
-
 
             var $searchForm = $(me.$searchInput.get(0).form);
-
+            
             $searchForm.click(function() {
                 // focus the search input box if the form was clicked
                 // handles the case were the search icon image is clicked instead of the input
                 me.$searchInput.focus();
             });
-
+            
             $searchForm.submit(function() {
                 var searchterm = me.$searchInput.val();
                 try {
                     me.searchText(searchterm);
                     me.$searchInput.blur();
-                } catch (ex) {
-                    //console.log(ex.message);
+                } catch(ex) {
+                //console.log(ex.message);
                 } finally {
                     return false;
                 }
@@ -1575,71 +1047,105 @@
 
         },
 
-        initUI: function() {
-            // Used to disables all dragging.
-            // We don't know why, so now it doesn't.
-            // exports.ondragstart = function() {
-            //     return false;
-            // };
-
+        initUi: function() {
+            // Disables all dragging.
+            exports.ondragstart = function() {
+                return false;
+            };
+        
+            // Disables all selection.
+            exports.onload = function() {
+                disableSelection(document.body);
+            };
+            
+            function disableSelection(target) {
+                if (typeof target.onselectstart !== "undefined") {//IE
+                    target.onselectstart = function() {
+                        return false;
+                    };
+                } else if (typeof target.style.MozUserSelect !== "undefined") {//Firefox
+                    target.style.MozUserSelect = "none";
+                } else {//All other ie: Opera
+                    target.onmousedown = function() {
+                        return false;
+                    };
+                }
+                target.style.cursor = "default";
+            }
+            
+            $('.colorPicker li').each(function() {
+                var color = $(this).attr('data-color');
+                var $colorSquare = $("<div/>");
+                if (color === "transparent") {
+                    $colorSquare.addClass("color-transparent");
+                } else {
+                    $colorSquare.css('background-color', color);
+                }
+                $(this).append($colorSquare);
+            });
+            
             // don't allow editing of input directly
             this.$pageIndicator.prop('readonly', true);
 
             // so we can interact with annotations right away even when the edit popup is visible
             $('#annotEditPopup-screen').remove();
         },
-
+    
         initViewer: function() {
             var me = this;
-
+    
             me.displayMode = new exports.CoreControls.DisplayMode(me.docViewer, exports.CoreControls.DisplayModes.Custom);
             // override the necessary display mode functions
             $.extend(me.displayMode, {
-                // Due to the differences between the way page offsets are measured in mobile, these are modified copies of the real functions
-                // TODO: unify the page offsets so this is no longer necessary
-                windowToPage: function(windowPt, pageIndex) {
-                    var zoom = me.docViewer.getPageZoom(pageIndex);
-                    var pageTransform = me.displayMode.getPageTransform(pageIndex);
+                WindowToPage: function(windowPt, pageIndex) {
+                    var pageTransform = me.displayMode.GetPageTransform(pageIndex);
 
-                    var scaledPagePt = new Text.Point2D();
-                    scaledPagePt.x = windowPt.x - pageTransform.x;
-                    scaledPagePt.y = windowPt.y - pageTransform.y;
+                    var scaledPagePt = {
+                        x: windowPt.x - pageTransform.x,
+                        y: windowPt.y - pageTransform.y
+                    };
 
-                    var mTransform = exports.GetPageMatrix(zoom, me.docViewer.getCompleteRotation(pageIndex + 1), {width: me.docViewer.getPageWidth(pageIndex), height: me.docViewer.getPageHeight(pageIndex)}, 0, false);
-                    mTransform = mTransform.inverse();
+                    var zoom = me.docViewer.GetPageZoom(pageIndex);
 
-                    var pt = mTransform.mult(scaledPagePt);
-
+                    var pt = {
+                        x: scaledPagePt.x / zoom,
+                        y: scaledPagePt.y / zoom
+                    };
+                
                     return {
                         "pageIndex": pageIndex,
                         x: pt.x,
                         y: pt.y
                     };
                 },
-                pageToWindow: function(pt, pageIndex) {
-                    var zoom = me.docViewer.getPageZoom(pageIndex);
-                    var pageTransform = me.displayMode.getPageTransform(pageIndex);
-
-                    var mTransform = exports.GetPageMatrix(zoom, me.docViewer.getCompleteRotation(pageIndex + 1), {width: me.docViewer.getPageWidth(pageIndex), height: me.docViewer.getPageHeight(pageIndex)}, 0, false);
-                    pt = mTransform.mult(pt);
-
+                
+                PageToWindow: function(pagePt, pageIndex) {
+                    var zoom = me.docViewer.GetPageZoom(pageIndex);
+                    
+                    pagePt.x = pagePt.x * zoom;
+                    pagePt.y = pagePt.y * zoom;
+                    
+                    var pageTransform = me.displayMode.GetPageTransform(pageIndex);
+                    
+                    var cX = pagePt.x + pageTransform.x;
+                    var cY = pagePt.y + pageTransform.y;
+                    
                     return {
-                        "pageIndex": pageIndex,
-                        x: pt.x + pageTransform.x,
-                        y: pt.y + pageTransform.y
+                        x: cX,
+                        y: cY
                     };
                 },
-
-                getSelectedPages: function(mousePt1, mousePt2) {
+                
+                GetSelectedPages: function(mousePt1, mousePt2) {
                     var firstPageIndex = null;
                     var lastPageIndex = null;
-
+                    
                     me.forEachPageInWrapper(me.currentPageIndex, function(idx) {
-                        var pageTransform = me.displayMode.getPageTransform(idx);
-
-                        var page = me.doc.getPageInfo(idx);
-                        var pageZoom = me.docViewer.getPageZoom(idx);
-
+                        var pageTransform = me.displayMode.GetPageTransform(idx);
+                        
+                        var page = me.doc.GetPageInfo(idx);
+                        var pageZoom = me.docViewer.GetPageZoom(idx);
+                        
                         var pageRect = {
                             x1: pageTransform.x,
                             y1: pageTransform.y,
@@ -1651,7 +1157,7 @@
                             && mousePt1.x >= pageRect.x1
                             && mousePt1.y <= pageRect.y2
                             && mousePt1.y >= pageRect.y1) {
-
+                            
                             firstPageIndex = idx;
                         }
 
@@ -1659,58 +1165,58 @@
                             && mousePt2.x >= pageRect.x1
                             && mousePt2.y <= pageRect.y2
                             && mousePt2.y >= pageRect.y1) {
-
+                            
                             lastPageIndex = idx;
                         }
                     });
-
+                    
                     return {
                         first: firstPageIndex,
                         last: lastPageIndex
                     };
                 },
-
-                getVisiblePages: function() {
+                
+                GetVisiblePages: function() {
                     var pageIndexes = [];
                     var adjustedPageIndex = me.adjustedPageIndex(me.currentPageIndex);
-
+                    
                     var addPage = function(i) {
                         pageIndexes.push(i);
                     };
-
-                    me.forEachPageInWrapper(adjustedPageIndex, addPage, true);
+                    
+                    me.forEachPageInWrapper(adjustedPageIndex, addPage);
                     // get pages in next wrapper
                     if (adjustedPageIndex + me.nPagesPerWrapper < me.nPages) {
-                        me.forEachPageInWrapper(adjustedPageIndex + me.nPagesPerWrapper, addPage, true);
+                        me.forEachPageInWrapper(adjustedPageIndex + me.nPagesPerWrapper, addPage);
                     }
                     // get pages in previous wrapper
                     if (adjustedPageIndex - 1 >= 0) {
-                        me.forEachPageInWrapper(adjustedPageIndex - 1, addPage, true);
+                        me.forEachPageInWrapper(adjustedPageIndex - 1, addPage);
                     }
-
+                    
                     return pageIndexes;
                 },
-
-                getPageTransform: function(pageIndex) {
+                
+                GetPageTransform: function(pageIndex) {
                     var pageData = me.getPageData(pageIndex);
-
+                    
                     if (me.transformOffset !== null) {
                         // these values are the coordinates for the pagewrapper
                         // note that the pagewrapper may be larger than the pages!
                         var left = me.transformOffset.left;
                         var top = me.transformOffset.top;
-
+                        
                         // the leftmost page's x offset which we want to use for calculating the snap location
                         var leftMostX = pageData.x - pageData.xShift;
-
+                        
                         // calculate the snap location for the zoomed in page or pages
                         // adds the pagewrapper coordinates and the page's offset from the wrapper edge
                         var pt = me.getSnapLocation(left + leftMostX, top + pageData.y, pageData.totalWidth, pageData.maxHeight);
-
+                        
                         pageData.x = pt.left + me.vWOffset + pageData.xShift;
                         pageData.y = pt.top;
                     }
-
+                    
                     return {
                         x: pageData.x,
                         y: pageData.y,
@@ -1718,38 +1224,40 @@
                         height: pageData.fitHeight
                     };
                 },
-
-                getPageOffset: function(pageIndex) {
+                
+                GetPageOffset: function(pageIndex) {
                     var pageData = me.getPageData(pageIndex);
-
+                    
                     return {
                         x: pageData.x,
                         y: pageData.y
                     };
                 }
             });
-
-            me.docViewer.getDisplayModeManager().setDisplayMode(me.displayMode);
+            
+            me.docViewer.GetDisplayModeManager().SetDisplayMode(me.displayMode);
             me.docViewer.defaults.DisplayMode = me.displayMode;
 
             var fitMode = me.docViewer.FitMode.FitPage;
-            me.docViewer.setFitMode(fitMode);
+            me.docViewer.SetFitMode(fitMode);
             me.docViewer.defaults.FitMode = fitMode;
 
             exports.CoreControls.SetCachingLevel(2);
             exports.CoreControls.SetPreRenderLevel(0);
-            me.docViewer.setMargin(0);
-
+            me.docViewer.SetMargin(0);
+            
             me.docViewer.on('pageComplete', function(e, pageIndex, canvas) {
+                var $pageContainer = $('#pageContainer' + pageIndex);
+                $pageContainer.removeClass('loading');
+                
                 me.canvasToAppend = canvas;
 
                 var idx = me.pagesRendering.indexOf(pageIndex);
                 if (idx > -1) {
                     me.pagesRendering.splice(idx, 1);
                 }
-
+                
                 if (!me.rerenderPages) {
-                    var $pageContainer = $('#pageContainer' + pageIndex);
                     me.appendCanvas($pageContainer.parent(), pageIndex);
                 } else if (!me.pagesRendering.length && me.rerenderPages && me.snapComplete) {
                     me.rerenderPages();
@@ -1764,66 +1272,57 @@
                         }
                     });
                 }
-
+                
                 me.fireEvent("pageCompleted", [pageIndex + 1]);
             });
         },
-
-        cancelPrintJob: function() {
-            CoreControls.SetCanvasMode(CoreControls.CanvasMode.ViewportCanvas);
-            this.docViewer.setPagesPerCanvas(this.nPagesPerWrapper, this.isCoverMode);
-            this.$printPopup.find('#print-progress').val(0).slider('refresh')
-                .closest('.progress-bar').hide();
-            this.$printPopup.find('.progress-label').text('');
-            this.endPrintJob();
-        },
-
+        
         offlineReady: function() {
             var me = this;
-
+            
             $('#offlineOptions').show();
-            var $enableOfflineCheckbox = $('#cbEnableOfflineMode').checkboxradio();
-
+            var $enableOfflineCheckbox = $('#cbEnableOfflineMode');
+            
             me.$defaultMenuContext.trigger('create');
             me.$defaultMenuContext.controlgroup();
-
+            
             $enableOfflineCheckbox.change(function() {
-                var offlineEnabled = !me.doc.getOfflineModeEnabled();
-                me.doc.setOfflineModeEnabled(offlineEnabled);
+                var offlineEnabled = !me.doc.GetOfflineModeEnabled();
+                me.doc.SetOfflineModeEnabled(offlineEnabled);
             });
 
-            if (me.doc.getOfflineModeEnabled()) {
+            if (me.doc.GetOfflineModeEnabled()) {
                 toggleOfflineCheckbox(true);
             }
 
             function toggleOfflineCheckbox(offlineEnabled) {
                 $enableOfflineCheckbox.prop('checked', offlineEnabled).checkboxradio('refresh');
             }
-
+            
             $('#offlineDownloadBtn').click(function() {
                 var $this = $(this);
-
+                
                 var progressSlider = $('#optionsDialog').find('.progress-bar');
                 progressSlider.show();
                 // add the active class explicitly so that the bar displays
                 progressSlider.find('.ui-slider-bg').addClass('ui-btn-active');
 
                 var isDownloading = $this.data('downloading');
-
+                
                 if (isDownloading) {
                     $this.data('downloading', false);
-                    me.doc.cancelOfflineModeDownload();
+                    me.doc.CancelOfflineModeDownload();
                 } else {
                     $this.data('downloading', true);
                     $this.attr('data-i18n', '[value]offline.cancelDownload').i18n().button('refresh');
-
-                    me.doc.storeOffline(function() {
+                    
+                    me.doc.StoreOffline(function() {
                         $this.data('downloading', false);
                         $this.attr('data-i18n', '[value]offline.downloadOfflineViewing').i18n().button('refresh');
                         progressSlider.hide();
                         $('#download-progress').val(0).slider('refresh');
-
-                        if (me.doc.isDownloaded()) {
+                        
+                        if (me.doc.IsDownloaded()) {
                             $enableOfflineCheckbox.checkboxradio('enable');
                         }
                     }, function(fractionDone) {
@@ -1831,53 +1330,25 @@
                     });
                 }
             });
-
-            if (!me.doc.isDownloaded()) {
+            
+            if (!me.doc.IsDownloaded()) {
                 $enableOfflineCheckbox.attr('disabled', true);
             }
         },
-
+        
         // calls the given function on each page index in the wrapper of the passed in page index
-        forEachPageInWrapper: function(pageIndex, func, normalOrder) {
-            // if normal order is passed then it will override the right to left mode settings
+        forEachPageInWrapper: function(pageIndex, func) {
             var me = this;
-            var rightToLeft = me.docViewer.getRightToLeftPages();
             var adjustedIndex = me.adjustedPageIndex(pageIndex);
-
-            var i, idx;
-            if (rightToLeft && !normalOrder) {
-                for (i = me.nPagesPerWrapper - 1; i >= 0; --i) {
-                    idx = adjustedIndex + i;
-                    if (idx >= me.nPages || idx < 0) {
-                        continue;
-                    }
-                    func(idx);
+            for (var i = 0; i < me.nPagesPerWrapper; i++) {
+                var idx = adjustedIndex + i;
+                if (idx >= me.nPages) {
+                    break;
                 }
-            } else {
-                for (i = 0; i < me.nPagesPerWrapper; ++i) {
-                    idx = adjustedIndex + i;
-                    if (idx >= me.nPages) {
-                        break;
-                    } else if (idx < 0) {
-                        continue;
-                    }
-                    func(idx);
-                }
+                func(idx);
             }
         },
-
-        endAnnotationQuickMode: function() {
-            this.annotMode = false;
-            this.annotQuickCreate = false;
-            this.setToolMode(ToolMode.Pan);
-            this.docViewer.getAnnotationManager().off('annotationChanged.quickMenu');
-        },
-
-        setToolbarContext: function(context) {
-            this.toolbarContext = context;
-            this.$pageHeader.attr('data-context', context);
-        },
-
+        
         changeVisiblePage: function(pageId) {
             $.mobile.changePage('#' + pageId, {
                 transition: 'none',
@@ -1889,13 +1360,13 @@
         setMenuTapToggle: function(value) {
             this.$fixedToolbars.toolbar('option', 'tapToggle', value);
         },
-
+        
         reshowMenu: function() {
             if (this.$fixedToolbars.hasClass('ui-fixed-hidden')) {
                 this.$fixedToolbars.toolbar('show');
             }
         },
-
+        
         setPageMode: function() {
             if (this.pageDisplay === this.pageDisplayModes.Single) {
                 // always one page shown
@@ -1908,62 +1379,62 @@
                     this.nPagesPerWrapper = 1;
                 }
             }
-
-            this.docViewer.setPagesPerCanvas(this.nPagesPerWrapper, this.isCoverMode);
+            
+            this.docViewer.SetPagesPerCanvas(this.nPagesPerWrapper);
         },
-
+        
         updateCurrentZooms: function(pageIndex) {
             var me = this;
-
-            var pageZoom = me.docViewer.getPageZoom(pageIndex);
+        
+            var pageZoom = me.docViewer.GetPageZoom(pageIndex);
             me.currentPageZoom = pageZoom;
             me.currentPageMinZoom = me.minZooms[pageIndex];
-
+            
             var zoomApprox = window.devicePixelRatio > 1 ? 5 : 5;
-
+            
             me.currentPageMaxZoom = me.currentPageMinZoom * zoomApprox;
         },
 
         setMinZooms: function() {
             var me = this;
-
+        
             for (var i = 0; i < me.nPages; i++) {
                 var pageIndex = i;
                 var pageZoom = me.getFitPageZoom(pageIndex);
-                me.docViewer.setPageZoom(pageIndex, pageZoom);
+                me.docViewer.SetPageZoom(pageIndex, pageZoom);
                 me.minZooms[i] = pageZoom;
             }
         },
 
         setCurrentToMinZoom: function() {
             var me = this;
-
+            
             me.forEachPageInWrapper(me.currentPageIndex, function(i) {
-                me.docViewer.setPageZoom(i, me.minZooms[i]);
+                me.docViewer.SetPageZoom(i, me.minZooms[i]);
             });
         },
-
+        
         clearPages: function($wrapper) {
-            // remove the links and widgets
-            $wrapper.find('[id^=pageWidgetContainer]').detach();
+            // remove everything besides the canvases, pagecontainers and thumbnails (eg links, widgets)
+            $wrapper.find('*').not('canvas, [id^=pageContainer], img').remove();
         },
-
+        
         appendCanvas: function(container, pageIndex) {
             var me = this;
-
+            
             // look for canvas with class that starts with canvas
             var oldCanvas = container.find("[class^='canvas'], [class*=' canvas']");
-
+            
             if (oldCanvas.length > 0) {
                 oldCanvas = oldCanvas[0];
             } else {
                 oldCanvas = null;
             }
-
+            
+            // return if this is the final page
             var finalPageInWrapper = Math.min((me.adjustedPageIndex(pageIndex) + me.nPagesPerWrapper - 1), me.nPages - 1) === pageIndex;
-
+            
             if (finalPageInWrapper || !me.isZoomedIn()) {
-                $(me.canvasToAppend).css('position', 'absolute');
                 container.append(me.canvasToAppend);
                 if (oldCanvas === me.canvasToAppend) {
                     oldCanvas = null;
@@ -1972,7 +1443,7 @@
                     $(oldCanvas).remove();
                 }
                 if (finalPageInWrapper) {
-                    me.docViewer.returnCanvas(pageIndex, oldCanvas);
+                    me.docViewer.ReturnCanvas(pageIndex, oldCanvas);
                 }
             }
         },
@@ -1981,42 +1452,42 @@
             var me = this;
 
             var pageIndex = me.wrapperToPage(wrapperIndex);
-
+            
             var $pageWrapper = $("<div style=\"top:0px; z-index:0; background-color: #929292;\" class=\"pageContainer\"></div>");
             $pageWrapper.attr("id", "pageWrapper" + wrapperIndex);
-
+        
             var maxHeight = 0;
             me.forEachPageInWrapper(pageIndex, function(pageToAdd) {
-                var pageTransform = me.displayMode.getPageTransform(pageToAdd);
-
+                var pageTransform = me.displayMode.GetPageTransform(pageToAdd);
+                
                 var width = Math.ceil(pageTransform.width);
-
+                
                 var pc = $("<div style=\"position: absolute; float: left; z-index: 0; background-color: white \" class=\"pageContainer\"></div>");
                 pc.attr("id", "pageContainer" + pageToAdd).width(width).height(pageTransform.height);
                 pc.addClass("loading");
-
+                
                 me.transform(pc, pageTransform.x, pageTransform.y);
-
+                
                 $pageWrapper.append(pc);
-
+                
                 if (pageTransform.height > maxHeight) {
                     maxHeight = pageTransform.height;
                 }
             });
-
+            
             $pageWrapper.width(window.innerWidth);
             $pageWrapper.height(window.innerHeight);
-
+            
             var left = -me.vWOffset + offset;
             var top = 0;
-
+            
             me.transform($pageWrapper, left, top);
-
+            
             /*
-             * $e is the jquery object for the wrapper.
-             * tX is the translated x position.
-             * tY is the translated y position.
-             */
+            * $e is the jquery object for the wrapper.
+            * tX is the translated x position.
+            * tY is the translated y position.
+            */
             return {
                 $e: $pageWrapper,
                 tX: left,
@@ -2024,14 +1495,14 @@
                 i: wrapperIndex
             };
         },
-
+        
         getFitPageZoom: function(pageIndex) {
             var me = this;
-
+        
             var width = 0;
             var height = 0;
             me.forEachPageInWrapper(pageIndex, function(idx) {
-                var page = me.doc.getPageInfo(idx);
+                var page = me.doc.GetPageInfo(idx);
                 height = page.height > height ? page.height : height;
                 width += page.width;
             });
@@ -2049,106 +1520,101 @@
 
             me.pagesRendering = [];
             me.rerenderPages = null;
-
+            
             me.snapComplete = false;
             me.zoomedWrapper = null;
-
+            
             me.newScale = 1;
             me.oldScale = 1;
         },
-
+    
         unZoomWrapper: function() {
             var me = this;
 
             if (me.zoomedWrapper) {
                 me.setCurrentToMinZoom();
-
+            
                 me.clearTransform(me.zoomedWrapper.$e.find('canvas'));
                 me.zoomedWrapper.$e.remove();
-
+                
                 var wi = me.pageToWrapper(me.currentPageIndex);
                 me.c = me.createPageWrapper(wi, 0);
 
                 me.$viewer.append(me.c.$e);
-
+                
                 me.zoomAbort();
             }
         },
-
+        
         addPages: function(vis, wrapperIndex) {
             var me = this;
-
+            
             var startIdx = me.wrapperToPage(wrapperIndex);
             me.forEachPageInWrapper(startIdx, function(pageToAdd) {
                 vis.push(pageToAdd);
-            }, true);
+            });
         },
-
+        
         pageToWrapper: function(pageIndex) {
-            if (this.isCoverMode && this.nPagesPerWrapper > 1) {
-                return (pageIndex === 0) ? 0 : Math.floor((pageIndex + 1) / this.nPagesPerWrapper);
-            } else {
-                return Math.floor(pageIndex / this.nPagesPerWrapper);
-            }
+            var me = this;
+            return Math.floor(pageIndex / me.nPagesPerWrapper);
         },
-
+        
         wrapperToPage: function(wrapperIndex) {
-            if (this.isCoverMode && this.nPagesPerWrapper > 1) {
-                return (wrapperIndex === 0) ? -1 : wrapperIndex * this.nPagesPerWrapper - 1;
-            } else {
-                return wrapperIndex * this.nPagesPerWrapper;
-            }
+            var me = this;
+            return wrapperIndex * me.nPagesPerWrapper;
         },
-
+    
         // gets the page index of the first page in the wrapper that the passed in page index is a part of
         adjustedPageIndex: function(pageIndex) {
-            var wrapperIndex = this.pageToWrapper(pageIndex);
-            return this.wrapperToPage(wrapperIndex);
+            var me = this;
+            var wrapperIndex = me.pageToWrapper(pageIndex);
+            return me.wrapperToPage(wrapperIndex);
         },
-
+        
         numberOfWrappers: function() {
-            var offset = (this.isCoverMode && this.nPagesPerWrapper > 1) ? 1 : 0;
-            return Math.ceil((this.nPages + offset) / this.nPagesPerWrapper);
+            var me = this;
+            return Math.ceil(me.nPages / me.nPagesPerWrapper);
         },
-
+        
         getPageData: function(pageIndex) {
             var me = this;
-
+            
             var fitZoom = me.getFitPageZoom(pageIndex);
             var totalWidth = 0;
             var maxHeight = 0;
             var xShift = 0;
             var width, height;
-
+            
             // get the fit page zoom width and height of the pages
             me.forEachPageInWrapper(pageIndex, function(i) {
-                var page = me.doc.getPageInfo(i);
+                var page = me.doc.GetPageInfo(i);
                 var pageWidth = page.width * fitZoom;
                 var pageHeight = page.height * fitZoom;
-
+                
                 if (pageIndex === i) {
                     xShift = totalWidth;
                     width = pageWidth;
                     height = pageHeight;
                 }
-
+                
                 totalWidth += pageWidth;
-
+                
                 if (pageHeight > maxHeight) {
                     maxHeight = pageHeight;
                 }
             });
-
+            
             var snapLocation = me.getSnapLocation(0, 0, totalWidth, maxHeight);
-
+            
             // get the offset to the page for fit page zoom
             var x = snapLocation.left + me.vWOffset + xShift;
-
+            
             var y = snapLocation.top;
-
+            
             // amount of scaling done by zooming
-            var relativeScale = me.docViewer.getPageZoom(pageIndex) / fitZoom;
-
+            var relativeScale = me.docViewer.GetPageZoom(pageIndex) / fitZoom;
+            
             return {
                 // the offset from the edge of the page wrapper increases depending on how much the page scale has increased
                 x: x * relativeScale,
@@ -2163,16 +1629,16 @@
                 fitHeight: height
             };
         },
-
+    
         setCurrentPage: function(pageIndex) {
             var me = this;
-
+            
             me.transformOffset = null;
             // clear any transforms on the canvases
             if (me.c) {
                 me.clearTransform(me.c.$e.find('canvas'));
             }
-
+            
             me.setCurrentToMinZoom();
             if (me.zoomedWrapper) {
                 me.zoomAbort();
@@ -2187,95 +1653,88 @@
             me.updateCurrentZooms(me.currentPageIndex);
 
             var wrapperIndex = me.pageToWrapper(pageIndex);
-
-            me.docViewer.removeContent();
+ 
+            me.docViewer.RemoveContent();
 
             var vis = [];
 
             me.addPages(vis, wrapperIndex);
-
+            
             me.c = me.createPageWrapper(wrapperIndex, 0);
             me.$viewer.append(me.c.$e);
-
-            var forwardDirection = me.docViewer.getRightToLeftPages() ? -1 : 1;
-
+            
             // if there should be a next page
             if (wrapperIndex < me.numberOfWrappers() - 1) {
                 var nextWrapperIndex = wrapperIndex + 1;
-
+            
                 me.addPages(vis, nextWrapperIndex);
-
-                me.n = me.createPageWrapper(nextWrapperIndex, forwardDirection * exports.innerWidth);
+            
+                me.n = me.createPageWrapper(nextWrapperIndex, exports.innerWidth);
                 me.$viewer.append(me.n.$e);
-
+            
             } else {
                 me.n = null;
             }
-
+            
             // if there should be a previous page
             if (wrapperIndex > 0) {
                 var prevWrapperIndex = wrapperIndex - 1;
-
-                me.addPages(vis, prevWrapperIndex);
-
-                me.p = me.createPageWrapper(prevWrapperIndex, -1 * forwardDirection * exports.innerWidth);
+                
+                me.addPages(vis,prevWrapperIndex);
+            
+                me.p = me.createPageWrapper(prevWrapperIndex, -exports.innerWidth);
                 me.$viewer.append(me.p.$e);
-
+         
             } else {
                 me.p = null;
             }
-
-            me.docViewer.updateView(vis, pageIndex);
-
+            
+            me.docViewer.UpdateView(vis, pageIndex);
+   
             me.$slider.val((pageIndex + 1)).slider("refresh");
         },
-
+        
         cancelPageRenders: function() {
             var me = this;
-
+            
             if (me.rerenderPages !== null) {
                 me.rerenderPages = null;
-
+                
                 me.forEachPageInWrapper(me.currentPageIndex, function(i) {
-                    me.docViewer.stopPageRender(i);
+                    me.docViewer.StopPageRender(i);
                 });
             }
         },
-
+        
         onSwipe: function(evt) {
             var me = this;
-
-            if (me.isInToolbar(evt.target) || me.isSliding || me.annotMode || me.isPinching || me.isZoomedIn() || me.recentlyZoomed || me.isWidgetTargetType(evt.target.type)) {
+            
+            if (me.isInToolbar(evt.target) || me.isSliding || me.textSelect || me.annotMode || me.isPinching || me.isZoomedIn() || me.recentlyZoomed || me.isWidgetTargetType(evt.target.type)) {
                 return;
             }
-
-            var rightToLeft = me.docViewer.getRightToLeftPages();
-            var forwardDirection = rightToLeft ? -1 : 1;
-            var forwardSwipe = rightToLeft ? 'swiperight' : 'swipeleft';
-            var backwardSwipe = rightToLeft ? 'swipeleft' : 'swiperight';
-
+            
             var direction;
-            if (evt.type === backwardSwipe && me.p) {
+            if (evt.type === 'swiperight' && me.p) {
                 direction = -1;
                 me.offsetSwipe--;
-            } else if (evt.type === forwardSwipe && me.n) {
+            } else if (evt.type === 'swipeleft' && me.n) {
                 direction = 1;
                 me.offsetSwipe++;
             } else {
                 return;
             }
-
+            
             me.unZoomWrapper();
-
-            var currentPageIndex = me.docViewer.getCurrentPage() - 1;
+            
+            var currentPageIndex = me.docViewer.GetCurrentPage() - 1;
             var wrapperIndex = me.pageToWrapper(currentPageIndex) + me.offsetSwipe;
-            var pageIndex = Math.max(0, me.wrapperToPage(wrapperIndex));
+            var pageIndex = me.wrapperToPage(wrapperIndex);
             me.currentPageIndex = pageIndex;
             me.updateCurrentZooms(me.currentPageIndex);
-
+        
             var wpToRemove = null;
             var tmpWp = me.c;
-
+        
             if (direction === 1) {
                 me.c = me.n;
                 wpToRemove = me.p;
@@ -2284,31 +1743,31 @@
                 wpToRemove = me.n;
             }
 
-            me.vWOffset = me.vWOffset + -1 * forwardDirection * direction * exports.innerWidth;
+            me.vWOffset = me.vWOffset - direction * exports.innerWidth;
             me.$viewerWrapper.stop();
             me.$viewerWrapper.addClass('animated');
 
             me.transform(me.$viewerWrapper, me.vWOffset, 0);
-
+            
             me.vwxPos = me.vWOffset;
-
+            
             var nextWrapperIndex = wrapperIndex + direction;
             var prevWrapperIndex = wrapperIndex - direction;
-
+            
             // Remove the previous page.
             if (wpToRemove) {
-                wpToRemove.$e.detach();
-
+                wpToRemove.$e.remove();
+            
                 // if a page is being removed then we should notify document viewer the visible pages have changed
                 // but we also don't want to rerender yet
-                me.docViewer.updateVisiblePages();
+                me.docViewer.UpdateVisiblePages();
             }
 
             var wpToAdd = null;
-
+            
             // Append the next page.
             if (nextWrapperIndex >= 0 && nextWrapperIndex < me.numberOfWrappers()) {
-                var offset = forwardDirection * direction * exports.innerWidth;
+                var offset = direction * exports.innerWidth;
                 wpToAdd = me.createPageWrapper(nextWrapperIndex, offset);
             }
 
@@ -2327,49 +1786,49 @@
                     me.$viewer.prepend(me.p.$e);
                 }
             }
-
+            
             me.$slider.val(pageIndex + 1).slider("refresh");
-
+            
             clearTimeout(me.swipeTimeout);
             me.swipeTimeout = setTimeout(function() {
 
                 me.offsetSwipe = 0;
-
+                
                 var vis = [];
                 me.addPages(vis, wrapperIndex);
-
+                         
                 if (nextWrapperIndex >= 0 && nextWrapperIndex < me.numberOfWrappers()) {
                     me.addPages(vis, nextWrapperIndex);
                 }
-
+                
                 if (prevWrapperIndex >= 0 && prevWrapperIndex < me.numberOfWrappers()) {
                     me.addPages(vis, prevWrapperIndex);
                 }
 
-                me.docViewer.updateView(vis, pageIndex);
+                me.docViewer.UpdateView(vis, pageIndex);
             }, 250);
         },
-
+        
         onSliderStart: function() {
             var me = this;
-
+        
             me.isSliding = true;
             if (me.nPages !== 1) {
                 me.$preview.css("opacity", "1");
                 me.$preview.css("z-index", "9999");
             }
         },
-
+        
         onSliderMove: function() {
             var me = this;
-
+            
             if (me.isSliding === false) {
                 return;
             }
-
+        
             var pageNumber = me.$slider.get(0).value;
             var div = $('#textdiv');
-
+            
             div.attr('data-i18n', 'mobile.thumbnailPageNumber');
             // need to use the data function instead of .attr('data-i18n-options') or else it will be cached and won't update
             div.data('i18n-options', {
@@ -2381,20 +1840,20 @@
             if (!me.hasThumbs) {
                 return;
             }
-
+        
             clearTimeout(me.getThumbnailTimeout);
-
+            
             me.getThumbnailTimeout = setTimeout(function() {
-
+        
                 var pageIndex = me.$slider.get(0).value - 1;
-
+            
                 var thumbContainer = me.$thumbContainer.get(0);
 
                 // try to cancel the last requested thumbnail
-                if (me.lastRequestedThumbnail) {
-                    me.doc.cancelLoadThumbnail(me.lastRequestedThumbnail);
-                }
-                me.lastRequestedThumbnail = me.doc.loadThumbnailAsync(pageIndex, function(thumb) {
+                me.doc.CancelThumbnailRequest(me.lastRequestedThumbnail, 'thumbview');
+                me.lastRequestedThumbnail = pageIndex;
+
+                me.doc.LoadThumbnailAsync(pageIndex, function(thumb) {
                     var ratio, width, height;
 
                     if (thumb.width > thumb.height) {
@@ -2409,36 +1868,36 @@
 
                     thumb.style.width = width + "px";
                     thumb.style.height = height + "px";
-
+                
                     while (thumbContainer.hasChildNodes()) {
                         thumbContainer.removeChild(thumbContainer.firstChild);
                     }
-
+                
                     me.$thumbContainer.css("width", width + "px");
                     me.$thumbContainer.css("height", height + "px");
-
+                
                     me.$preview.css("width", width + "px");
                     me.$preview.css("height", height + 17 + "px");
 
                     me.$thumbContainer.prepend(thumb);
-                    me.lastRequestedThumbnail = null;
-                });
+
+                }, 'thumbview');
             }, 15);
         },
-
+        
         onSliderEnd: function() {
             var me = this;
-
+        
             if (!me.isSliding) {
                 return;
             }
             me.isSliding = false;
 
             var pageNumber = me.$slider.get(0).value;
-            if (pageNumber !== me.docViewer.getCurrentPage()) {
+            if (pageNumber !== me.docViewer.GetCurrentPage()) {
                 me.setCurrentPage(pageNumber - 1);
             }
-
+        
             me.$preview.css("opacity", "0");
             me.$preview.css("z-index", "0");
             me.$slider.slider("refresh");
@@ -2449,16 +1908,11 @@
             var defaultWidth = exports.innerWidth / 4;
             return (defaultWidth > 80) ? 80 : defaultWidth;
         },
-
+        
         onTap: function(evt) {
             var me = this;
-            if (me.annotQuickCreate) {
-                me.endAnnotationQuickMode();
-            }
-
-            me.showAnnotationEditPopup();
-
-            if (evt.target.type === 'text' || evt.target.type === 'number') {
+            
+            if (evt.target.type === 'text' || evt.target.type === 'number' ) {
                 // these are text inputs, don't do anything
                 return true;
             }
@@ -2468,13 +1922,13 @@
 
             var hotspotWidth = me.getTapHotSpotWidth();
             var menuBarBufferHeight = 40;
-
+            
             // don't check for hotspot tapping if we're in annotation mode because the triggered swipe is going to be blocked anyway
             // also if we return false it will stop the event from propagating to the click handler on the stroke color picker
             if (!this.annotMode) {
                 //hotspot tapping
                 if (pageY > menuBarBufferHeight) {
-
+                
                     if (pageX < hotspotWidth) {
                         me.$wrapper.trigger('swiperight');
                         return false; //prevent event bubbling
@@ -2483,17 +1937,17 @@
                         return false; //prevent event bubbling
                     }
                 }
-            } else if (me.$annotCreateMenuContext.is(":visible")) {
-                //always show menu when in annot mode with the annot toolbar shown
+            }else  {             
+                //always show menu when in annot mode
                 me.reshowMenu();
             }
 
             return true;
         },
-
+        
         onDoubleTap: function(evt) {
             var me = this;
-
+            
             var touchLocation;
             if (evt.originalEvent.changedTouches) {
                 touchLocation = {
@@ -2506,32 +1960,32 @@
                     y: evt.originalEvent.clientY
                 };
             }
-
+            
             var hotspotWidth = me.getTapHotSpotWidth();
             if (touchLocation.x < hotspotWidth || (exports.innerWidth - touchLocation.x) < hotspotWidth) {
                 //we are tap swiping so don't try to zoom into the page
                 return;
             }
-
+            
             if (me.offsetSwipe !== 0) {
                 // if we are swiping quickly it's possible to trigger a double tap
                 // so we should return here if the user is swiping
                 return;
             }
-
+            
             me.newScale = 1;
             me.oldScale = 1;
             var DOUBLE_TAP_ZOOM_SCALE = 3;
-
-            var originalPageZoom = me.docViewer.getPageZoom(me.currentPageIndex);
+            
+            var originalPageZoom = me.docViewer.GetPageZoom(me.currentPageIndex);
             var newPageZoom = DOUBLE_TAP_ZOOM_SCALE * me.getFitPageZoom(me.currentPageIndex);
-
+            
             // if we should zoom in
             if (originalPageZoom < newPageZoom) {
                 var offset = me.c.$e.offset();
                 var width = me.c.$e.width();
                 var height = me.c.$e.height();
-
+                
                 // calculate the location of the touch event on the page where (0,0) is at the center of the page
                 var touchLocX = (touchLocation.x - offset.left) - width / 2;
                 var touchLocY = (touchLocation.y - offset.top) - height / 2;
@@ -2542,10 +1996,10 @@
                 // under the touch location after it has been zoomed
                 var offsetX = touchLocX - scaledLocX;
                 var offsetY = touchLocY - scaledLocY;
-
+                
                 me.c.tX += offsetX;
                 me.c.tY += offsetY;
-
+                
                 // don't want to animate this zoom
                 me.setZoomLevel(newPageZoom, false);
             } else {
@@ -2554,72 +2008,56 @@
             // don't let the second tap be triggered
             evt.stopImmediatePropagation();
         },
-
+        
         isWidgetTargetType: function(type) {
             return type === "textarea" || type === "checkbox" || type === "button" || type === "submit";
         },
-
+        
         isInToolbar: function(ele) {
             return $(ele).closest('#pageHeader, #pageFooter').length > 0;
         },
-
+        
         isZoomedIn: function() {
-            var currentZoom = this.docViewer.getPageZoom(this.currentPageIndex);
-            var fitPageZoom = this.minZooms[this.currentPageIndex];
-            return currentZoom > fitPageZoom && !fCmp(currentZoom, fitPageZoom);
+            return this.docViewer.GetPageZoom(this.currentPageIndex) > this.minZooms[this.currentPageIndex];
         },
 
         // if these are different then the page is being scrolled horizontally
         isPageScrolled: function() {
             return this.vwxPos !== this.vWOffset;
         },
-
+        
         onTapHold: function() {
-            if (this.docViewer.getToolMode() === this.toolModeMap[ToolMode.Pan] && !this.isReadOnly() && this.enableAnnotations) {
-                if (window.innerWidth <= 640) {
-                    this.$annotQuickMenuButtons.hide();
-                    this.$annotQuickMenuGrid.show();
-                } else {
-                    this.$annotQuickMenuButtons.show().controlgroup();
-                    this.$annotQuickMenuGrid.hide();
-                }
-
-                this.$annotQuickMenu.popup('open', this.touchedPoint);
+            if (!_.isUndefined(exports._trnDebugMode) && exports._trnDebugMode === true) {
+                server.capture();
             }
         },
-
+        
         // innerWidth and innerHeight can be incorrect when resize event is hit.
         // Always correct in orientationChange event but orientationChange event almost
-        // always has incorrect values for innerWidth and innerHeight on some Android devices
-        // Resize event seems to always have correct values
+        // always has incorrect values for innerWidth and innerHeight on the Xoom (Android).
+        // Resize event seems to always have correct values on Xoom.
         onResize: function() {
-            // close the popups so they aren't out of position
-            this.closeEditPopup();
-            this.$annotQuickMenu.popup('close');
-            this.$signaturePopup.popup('close');
-
             var me = this;
             var screenWidth = exports.innerWidth;
             var screenHeight = exports.innerHeight;
 
             var heightChanged = screenHeight !== me.lastHeight;
             var widthChanged = screenWidth !== me.lastWidth;
-
+            
             // if the height has gotten smaller and the width hasn't changed then we can assume that the virtual keyboard
             // being shown has caused the resize. In this case if we are in the main menu then we should not perform a resize
-            // so that the form inputs can be used. We do want to resize if we are searching as this will cause issues with the placement of the page
-            var allowHeightChangeResize = me.$defaultMenuContext.css('display') !== 'none' || me.$annotCreateMenuContext.css('display') !== 'none';
-
-            if ((screenHeight < me.lastHeight) && !widthChanged && allowHeightChangeResize) {
+            // so that the form inputs can be used. We do want to resize if we are searching or if entering text in a note
+            // as this will cause issues with the placement of the page
+            if ((screenHeight < me.lastHeight) && !widthChanged && $('#defaultMenuContext').css('display') !== 'none') {
                 me.lastHeight = screenHeight;
                 return;
             }
-
+            
             // only continue if the dimensions have changed since the last resize
             // opera mobile often seems to report the same dimensions on an orientation change so just always redraw
             // also if MobileReaderControl is iframed, we need to redraw
             var dimensionsChanged = widthChanged || heightChanged;
-            if (!dimensionsChanged && !window.opera) {
+            if (!dimensionsChanged  && !window.opera) {
                 return;
             }
 
@@ -2628,33 +2066,33 @@
 
             me.lastWidth = screenWidth;
             me.lastHeight = screenHeight;
-
+            
             clearTimeout(me.swipeTimeout);
-
+ 
             me.setPageMode();
             me.setMinZooms();
             me.updateCurrentZooms(me.currentPageIndex);
-
+        
             var position = (exports.innerWidth - me.$preview.width()) / 2;
             me.$preview.css("left", position + "px");
             me.setCurrentPage(me.currentPageIndex);
-
+            
             // sometimes the fixed menu doesn't get reshown when changing orientations and a note is open
             // so we should show the menu if it's hidden
             if (me.annotMode) {
                 me.reshowMenu();
             }
         },
-
+        
         onOrientationChange: function(evt) {
             // on the initial load if there is an orientation change it seems like there is no resize event
             // triggered, causing the page to be displayed incorrectly so we manually call it here
             this.onResize(evt);
         },
-
+        
         restartTouchTimeout: function() {
             var me = this;
-
+            
             clearTimeout(me.touchTimeout);
             me.touchTimeout = setTimeout(_(me.onTouchEnd).bind(me), 1000, {
                 originalEvent: {
@@ -2669,45 +2107,45 @@
             me.restartTouchTimeout();
             me.docViewer.trigger("PAUSE");
             me.c.$e.removeClass('animated');
-
+    
             // Only pinch if dealing with two or more fingers
             if (evt.originalEvent.touches.length > 1) {
                 if (me.isPageScrolled()) {
                     return;
                 }
                 me.isPinching = true;
-
+     
                 var touch0 = evt.originalEvent.touches[0];
                 var touch1 = evt.originalEvent.touches[1];
-
+            
                 var x1 = touch1.clientX;
                 var y1 = touch1.clientY;
                 var x0 = touch0.clientX;
                 var y0 = touch0.clientY;
-
+            
                 me.oldPinchCenter.x = (x0 + x1) / 2;
                 me.oldPinchCenter.y = (y0 + y1) / 2;
-
+            
                 me.oldDist = Math.sqrt((x0 - x1) * (x0 - x1) + (y0 - y1) * (y0 - y1));
-
+            
             } else if (evt.originalEvent.touches.length === 1) {
                 me.oldTouch.x = evt.originalEvent.touches[0].clientX;
                 me.oldTouch.y = evt.originalEvent.touches[0].clientY;
             }
         },
-
+        
         transform: function($e, x, y, scale) {
             var me = this;
-
+            
             // css doesn't support exponential notation so set to zero if we're sufficiently close
             if (fCmp(x, 0)) {
                 x = 0;
             }
-
+            
             if (fCmp(y, 0)) {
                 y = 0;
             }
-
+        
             if (me.useTransformFallback) {
                 // some older browsers don't support css transforms or there are issues with them so revert to setting coordinates
                 $e.css('top', y);
@@ -2719,13 +2157,13 @@
             } else {
                 var _2dstr = 'translate(' + x + 'px,' + y + 'px)';
                 var _3dstr = 'translate3d(' + x + 'px,' + y + 'px, 0px)';
-
+                
                 if (!_.isUndefined(scale)) {
                     var scaleStr = ' scale(' + scale + ')';
                     _2dstr += scaleStr;
                     _3dstr += scaleStr;
                 }
-
+                
                 if (me.androidBrowser) {
                     //see http://code.google.com/p/android/issues/detail?id=31862
                     $e.css('transform', _3dstr);
@@ -2743,7 +2181,7 @@
                 'top': ''
             });
         },
-
+    
         onTouchMove: function(evt) {
             var me = this;
 
@@ -2752,38 +2190,38 @@
             var touch0;
             var touch1;
             // don't pan in annotation create mode
-            if (me.isInToolbar(evt.target) || me.isSliding || me.annotMode || me.isWidgetTargetType(evt.target.type)) {
+            if (me.isInToolbar(evt.target) || me.isSliding || me.textSelect || me.annotMode || me.isWidgetTargetType(evt.target.type)) {
                 return;
             }
-
+            
             var width = me.c.$e.width();
             var height = me.c.$e.height();
-
+        
             if (evt.originalEvent.touches.length === 1 && !me.isPinching) {
                 touch0 = evt.originalEvent.touches[0];
                 me.$viewerWrapper.removeClass('animated');
                 var scrollX = me.oldTouch.x - touch0.clientX;
                 var scrollY = me.oldTouch.y - touch0.clientY;
-
+                                
                 if (!me.isZoomedIn()) {
                     // Perform horizontal scrolling.
-
+                    
                     me.vwxPos = me.vwxPos - scrollX;
                     me.transform(me.$viewerWrapper, me.vwxPos, 0);
                 } else {
                     // Scrolled the zoomed in wrapper.
-
+                
                     me.c.tY = me.c.tY - scrollY;
                     me.c.tX = me.c.tX - scrollX;
                     me.transform(me.c.$e, me.c.tX, me.c.tY, me.newScale);
-
+                    
                     me.shouldRerender = true;
                     me.cancelPageRenders();
                 }
-
+            
                 me.oldTouch.x = touch0.clientX;
                 me.oldTouch.y = touch0.clientY;
-
+                
             } else if (evt.originalEvent.touches.length > 1) {
                 if (me.isPageScrolled()) {
                     return;
@@ -2791,24 +2229,24 @@
 
                 touch0 = evt.originalEvent.touches[0];
                 touch1 = evt.originalEvent.touches[1];
-
+                
                 var x1 = touch1.clientX;
                 var y1 = touch1.clientY;
                 var x0 = touch0.clientX;
                 var y0 = touch0.clientY;
-
+            
                 me.newDist = Math.sqrt((x0 - x1) * (x0 - x1) + (y0 - y1) * (y0 - y1));
                 me.distRatio = me.newDist / me.oldDist;
-
+                
                 // Find pinch center after each touch me.vWOffset event with two fingers
                 var newPinchCenter = {
                     x: (x0 + x1) / 2,
                     y: (y0 + y1) / 2
                 };
-
+                
                 me.newScale = me.distRatio * me.oldScale;
                 var actualZoom = me.newScale * me.currentPageZoom;
-
+                
                 if (actualZoom > me.currentPageMaxZoom) {
                     me.newScale = me.currentPageMaxZoom / parseFloat(me.currentPageZoom);
                 }
@@ -2816,7 +2254,7 @@
                 // Relative to viewport.
                 var pcMidX = me.c.tX + me.vWOffset + width / 2;
                 var pcMidY = me.c.tY + height / 2;
-
+            
                 var pcCenter = {
                     x: pcMidX,
                     y: pcMidY
@@ -2824,7 +2262,7 @@
 
                 var scX = pcCenter.x - (me.newScale / me.oldScale) * (pcCenter.x - me.oldPinchCenter.x);
                 var scY = pcCenter.y - (me.newScale / me.oldScale) * (pcCenter.y - me.oldPinchCenter.y);
-
+                
                 var scaledOldPinchCenter = {
                     x: scX,
                     y: scY
@@ -2837,13 +2275,13 @@
                 me.c.tY = me.c.tY + offsetY;
 
                 me.transform(me.c.$e, me.c.tX, me.c.tY, me.newScale);
-
+                
                 // Update old values
                 me.oldScale = me.newScale;
                 me.oldDist = me.newDist;
                 me.oldPinchCenter.x = newPinchCenter.x;
                 me.oldPinchCenter.y = newPinchCenter.y;
-
+                
                 me.shouldRerender = true;
                 me.cancelPageRenders();
             }
@@ -2851,13 +2289,13 @@
 
         onTouchEnd: function(evt, animate) {
             var me = this;
-
+            
             if (evt.originalEvent.touches.length === 0) {
                 clearTimeout(me.touchTimeout);
-
+                
                 var newPageZoom = me.newScale * me.currentPageZoom;
                 var smallerThanPage = false;
-
+                
                 // New zoom is less than fit page zoom.
                 // So, floor it at fit page zoom.
                 if (newPageZoom < me.currentPageMinZoom) {
@@ -2866,9 +2304,9 @@
                     me.oldScale = me.newScale;
                     smallerThanPage = true;
                 }
-
+                
                 me.startRerender(newPageZoom);
-
+                
                 if (_.isUndefined(animate)) {
                     animate = true;
                 }
@@ -2877,7 +2315,7 @@
                 if (me.shouldRerender) {
                     me.clearPages(me.c.$e);
                     var zoomedPages = me.getVisibleZoomedPages();
-                    var visiblePages = me.displayMode.getVisiblePages();
+                    var visiblePages = me.displayMode.GetVisiblePages();
 
                     // check if we can skip rendering any of the pages because they aren't visible
                     if (zoomedPages.length < me.nPagesPerWrapper) {
@@ -2890,18 +2328,18 @@
                                 }
                             }
                         });
-
+                        
                         me.pagesRendering = zoomedPages;
                     }
                     // it's important that we have the current page(s) at the beginning of the visible pages array
                     // because these are the ones we want to render first
-                    me.docViewer.updateView(visiblePages);
+                    me.docViewer.UpdateView(visiblePages);
                 }
-
+                
                 var vwLeft = me.vwxPos;
 
                 var wrapperIndex = me.pageToWrapper(me.currentPageIndex);
-
+                
                 // Swipe when scrolling too far to one side.
                 if (-vwLeft + me.vWOffset > exports.innerWidth / 2 && wrapperIndex < me.numberOfWrappers() - 1) {
                     me.$wrapper.trigger('swipeleft');
@@ -2925,82 +2363,78 @@
                 me.docViewer.trigger("RESUME");
             }
         },
-
+        
         startRerender: function(newPageZoom) {
             var me = this;
 
             if (me.shouldRerender) {
                 me.pagesRendering = [];
                 me.forEachPageInWrapper(me.currentPageIndex, function(idx) {
-                    me.docViewer.setPageZoom(idx, newPageZoom);
+                    me.docViewer.SetPageZoom(idx, newPageZoom);
                     me.pagesRendering.push(idx);
                 });
-
+                
                 me.c.$e.find('.auxiliary').hide();
-
+                
                 me.rerenderPages = function() {
                     me.rerenderPages = null;
-
-                    if (fCmp(newPageZoom, me.currentPageMinZoom)) {
+                    
+                    if (newPageZoom === me.currentPageMinZoom) {
                         me.zoomedWrapper = null;
                         me.transformOffset = null;
                     }
-
+                    
                     me.c.$e.removeClass("animated");
-
+                    
                     var prevWidth = parseFloat(me.c.$e[0].style.width);
                     var prevHeight = parseFloat(me.c.$e[0].style.height);
-
+                    
                     var left = me.c.tX - (me.newScale * prevWidth) / 2 + prevWidth / 2;
                     var top = me.c.tY - (me.newScale * prevHeight) / 2 + prevHeight / 2;
-
+                    
                     // translate and resize the pagewrapper
                     me.c.tX = left;
                     me.c.tY = top;
                     me.transform(me.c.$e, left, top, 1);
-
+                    
                     me.c.$e.width(prevWidth * me.newScale);
                     me.c.$e.height(prevHeight * me.newScale);
-
-                    var pageIndexes = [];
+                    
+                    var pageIndex;
                     me.c.$e.find('[id^=pageContainer]').each(function() {
                         var width = parseFloat(this.style.width);
                         var height = parseFloat(this.style.height);
-
+                        
                         var $this = $(this);
                         // ids are of the form pageContainer# so we want to slice off the number to get the page index
-                        var pageIndex = parseInt($this.attr('id').slice('pageContainer'.length), 10);
-                        pageIndexes.push(pageIndex);
-
+                        pageIndex = parseInt($this.attr('id').slice('pageContainer'.length), 10);
+                        
                         $this.width(width * me.newScale).height(height * me.newScale);
                         $this.find('img').width(width * me.newScale).height(height * me.newScale);
-
+                        
                         var pageData = me.getPageData(pageIndex);
                         me.transform($this, pageData.x, pageData.y);
                     });
-
+                    
                     // translate the canvas to the edge of the viewport
                     me.transform(me.c.$e.find('canvas'), -left - me.vWOffset, -top);
                     me.transform($(me.canvasToAppend), -left - me.vWOffset, -top);
-
-                    var sortedPages = pageIndexes.sort(function(a, b) { return a - b; });
-                    var lastPage = sortedPages[sortedPages.length - 1];
-
-                    me.appendCanvas(me.c.$e, lastPage);
+                    
+                    me.appendCanvas(me.c.$e, pageIndex);
                     me.c.$e.find('.auxiliary').show();
-
-
+                    
+                    
                     me.currentPageZoom = newPageZoom;
                     me.newScale = 1;
                     me.oldScale = me.newScale;
                     me.snapComplete = false;
                     me.shouldRerender = false;
                 };
-
-                if (!fCmp(newPageZoom, me.currentPageMinZoom)) {
+                
+                if (newPageZoom !== me.currentPageMinZoom) {
                     me.zoomedWrapper = me.c;
                 }
-
+                
                 me.recentlyZoomed = true;
                 clearTimeout(me.zoomTimeout);
                 me.zoomTimeout = setTimeout(function() {
@@ -3008,11 +2442,11 @@
                 }, 500);
             }
         },
-
+        
         getSnapLocation: function(left, top, width, height) {
             var me = this;
             var offset = -me.vWOffset;
-
+            
             // Snap to bottom.
             if (top < 0 && top + height <= exports.innerHeight) {
                 // Line up pc with the bottom of the viewport.
@@ -3046,7 +2480,7 @@
                 left: left
             };
         },
-
+        
         snapBack: function(smallerThanPage, animate) {
             // on iOS when the virtual keyboard if we select a form field and the virtual keyboard becomes visible it can scroll the page
             // in this case we don't want to snap back
@@ -3060,7 +2494,7 @@
             if (isScrolled || (this.isAndroid && $(document.activeElement).is('textarea, input'))) {
                 return;
             }
-
+            
             var me = this;
             var width = parseFloat(me.c.$e.get(0).style.width);
             var height = parseFloat(me.c.$e.get(0).style.height);
@@ -3073,28 +2507,21 @@
 
             width *= me.newScale;
             height *= me.newScale;
-
-            var firstPageInWrapper = Math.max(0, me.adjustedPageIndex(me.currentPageIndex));
-            if (me.docViewer.getRightToLeftPages()) {
-                if (!me.isCoverMode || firstPageInWrapper > 0) {
-                    firstPageInWrapper = Math.min(firstPageInWrapper + me.nPagesPerWrapper - 1, me.nPages - 1);
-                }
-            }
-
-            var pageData = me.getPageData(firstPageInWrapper);
+            
+            var pageData = me.getPageData(me.adjustedPageIndex(me.currentPageIndex));
 
             // use the x and y offsets of the page relative to the wrapper to calculate where the page would snap to if
             // it was not inside the wrapper
             var pt = me.getSnapLocation(left + pageData.x, top + pageData.y, pageData.totalWidth, pageData.maxHeight);
-
+            
             // after getting where the page would snap to we need to subtract the page offsets so that we get the location that
             // the wrapper needs to be at
             pt.left -= pageData.x;
             pt.top -= pageData.y;
-
+            
             var oldtX = me.c.tX;
             var oldtY = me.c.tY;
-
+            
             me.c.tX = pt.left + (me.newScale * owidth) / 2 - owidth / 2;
             me.c.tY = pt.top + (me.newScale * oheight) / 2 - oheight / 2;
 
@@ -3114,94 +2541,94 @@
                 // TODO: feature detection for correct transition event
                 me.c.$e.get(0).addEventListener('webkitTransitionEnd', animEnd, false);
                 me.c.$e.get(0).addEventListener('transitionend', animEnd, false);
-
+                
                 me.c.$e.addClass('animated');
             }
-
+            
             me.transform(me.c.$e, me.c.tX, me.c.tY, me.newScale);
-
+            
             me.transformOffset = {
                 left: left,
                 top: top
             };
         },
-
+        
         getVisibleZoomedPages: function() {
             var me = this;
-
+            
             var pageIndexes = [];
             var page;
-
+            
             var viewportTop = exports.pageYOffset;
             var viewportBottom = viewportTop + exports.innerHeight;
             var viewportLeft = exports.pageXOffset;
             var viewportRight = viewportLeft + exports.innerWidth;
-
+            
             me.forEachPageInWrapper(me.currentPageIndex, function(pageIndex) {
-                page = me.doc.getPageInfo(pageIndex);
-
-                var pt1 = me.displayMode.pageToWindow({
+                page = me.doc.GetPageInfo(pageIndex);
+                
+                var pt1 = me.displayMode.PageToWindow({
                     x: 0,
                     y: 0
                 }, pageIndex);
-                var pt2 = me.displayMode.pageToWindow({
+                var pt2 = me.displayMode.PageToWindow({
                     x: page.width,
                     y: page.height
                 }, pageIndex);
-
+                
                 if ((pt1.x < pt2.x ? pt1.x: pt2.x) <= viewportRight
                     && (pt1.x < pt2.x ? pt2.x: pt1.x) >= viewportLeft
                     && (pt1.y < pt2.y ? pt1.y: pt2.y) <= viewportBottom
                     && (pt1.y < pt2.y ? pt2.y: pt1.y) >= viewportTop) {
                     pageIndexes.push(pageIndex);
                 }
-            }, true);
+            });
             return pageIndexes;
         },
-
+        
         searchText: function(pattern, searchUp) {
 
             var pageResults = [];
-
+            
             var me = this;
             if (pattern !== '') {
                 var mode = me.docViewer.SearchMode.e_page_stop | me.docViewer.SearchMode.e_highlight;
                 if (searchUp) {
                     mode = mode | me.docViewer.SearchMode.e_search_up;
                 }
-
-                me.docViewer.textSearchInit(pattern, mode, false,
+                
+                me.docViewer.TextSearchInit(pattern, mode, false,
                     // onSearchCallback
                     function(result) {
                         if (result.resultCode === Text.ResultCode.e_found) {
                             pageResults.push(result.page_num);
 
-                            me.docViewer.displaySearchResult(result, _(me.jumpToFound).bind(me));
+                            me.docViewer.DisplaySearchResult(result, _(me.jumpToFound).bind(me));
                         } else if (result.resultCode === Text.ResultCode.e_done) {
                             alert(i18n.t("endOfDocument"));
                         }
                     });
             }
         },
-
+        
         fullSearch: function(pattern, searchUp) {
             var me = this;
-
+            
             var pageResults = [];
             if (pattern !== '') {
                 var mode = me.docViewer.SearchMode.e_page_stop | me.docViewer.SearchMode.e_highlight;
                 if (searchUp) {
                     mode = mode | me.docViewer.SearchMode.e_search_up;
                 }
-
-                me.docViewer.textSearchInit(pattern, mode, true,
+                
+                me.docViewer.TextSearchInit(pattern, mode, true,
                     // onSearchCallback
                     function(result) {
                         if (result.resultCode === Text.ResultCode.e_found) {
                             var pageIndex = result.page_num;
                             pageResults.push(result.page_num);
 
-                            me.docViewer.displaySearchResult(result, function() {
+                            me.docViewer.DisplaySearchResult(result, function() {
                                 me.jumpToFound(pageIndex, result.quads);
                             });
                         } else if (result.resultCode === Text.ResultCode.e_done) {
@@ -3210,21 +2637,43 @@
                     });
             }
         },
+    
+        select: function() {
+            var me = this;
+            if (me.mousePt1 === null || me.mousePt2 === null) {
+                return;
+            }
+    
+            var windowPt1 = this.mousePt1;
+            var windowPt2 = this.mousePt2;
+        
+            var selectedPages = me.displayMode.GetSelectedPages(windowPt1, windowPt2);
+            var firstPage = selectedPages.first;
+            var lastPage = selectedPages.last;
+            if (firstPage === null || lastPage === null) {
+                return;
+            }
+
+            var pagePt1 = me.displayMode.WindowToPage(windowPt1, firstPage);
+            var pagePt2 = me.displayMode.WindowToPage(windowPt2, lastPage);
+
+            me.docViewer.Select(pagePt1, pagePt2);
+        },
 
         jumpToFound: function(pageIndex, quads) {
             var me = this;
-
+            
             if (me.currentPageIndex !== pageIndex) {
                 me.setCurrentPage(pageIndex);
             }
-
+            
             // don't align if we're at fit page zoom
             if (me.currentPageZoom === me.getFitPageZoom(me.currentPageIndex)) {
                 return;
             }
-
+            
             if (quads.length > 0) {
-                var firstPoints = quads[0].getPoints();
+                var firstPoints = quads[0].GetPoints();
                 // x4y4 is top-left
                 // x2y2 is bot-right
                 var quadsTop = firstPoints.y4;
@@ -3232,8 +2681,8 @@
                 var quadsBot = firstPoints.y2;
                 var quadsRight = firstPoints.x2;
                 for (var i = 1; i < quads.length; i++) {
-                    var points = quads[i].getPoints();
-
+                    var points = quads[i].GetPoints();
+                    
                     if (points.x4 < quadsLeft) {
                         quadsLeft = points.x4;
                     }
@@ -3252,23 +2701,23 @@
                 var viewportBottom = viewportTop + document.documentElement.clientHeight;
                 var viewportLeft = exports.pageXOffset;
                 var viewportRight = viewportLeft + document.documentElement.clientWidth;
-
-                var wPt1 = this.displayMode.pageToWindow({
+                
+                var wPt1 = this.displayMode.PageToWindow({
                     x: quadsLeft,
                     y: quadsTop
                 }, pageIndex);
-                var wPt2 = this.displayMode.pageToWindow({
+                var wPt2 = this.displayMode.PageToWindow({
                     x: quadsRight,
                     y: quadsBot
                 }, pageIndex);
 
                 var topLeftPt = {
-                    x: (wPt1.x < wPt2.x ? wPt1.x : wPt2.x),
-                    y: (wPt1.y < wPt2.y ? wPt1.y : wPt2.y)
+                    x: (wPt1.x < wPt2.x ? wPt1.x: wPt2.x),
+                    y: (wPt1.y < wPt2.y ? wPt1.y: wPt2.y)
                 };
                 var botRightPt = {
-                    x: (wPt1.x > wPt2.x ? wPt1.x : wPt2.x),
-                    y: (wPt1.y > wPt2.y ? wPt1.y : wPt2.y)
+                    x: (wPt1.x > wPt2.x ? wPt1.x: wPt2.x),
+                    y: (wPt1.y > wPt2.y ? wPt1.y: wPt2.y)
                 };
 
                 // Check that all quads are entirely visible.
@@ -3276,16 +2725,16 @@
                     // Quad not visible.
                     var pageQuadWidth = botRightPt.x - topLeftPt.x;
                     var pageQuadHeight = botRightPt.y - topLeftPt.y;
-
+                    
                     var cLeft = me.c.tX;
                     var cTop = me.c.tY;
-
+                    
                     var left = cLeft - topLeftPt.x + parseInt(exports.innerWidth / 2, 10) - pageQuadWidth / 2;
                     var top = cTop - topLeftPt.y + parseInt(exports.innerHeight / 2, 10) - pageQuadHeight / 2;
 
                     var width = me.c.$e.width();
                     var height = me.c.$e.height();
-
+                    
                     var offset = -me.vWOffset;
 
                     // If pc leaves greyspace.
@@ -3305,13 +2754,13 @@
                         // Line up pc with the left of the viewport.
                         left = offset;
                     }
-
+                    
                     me.c.tX = left;
                     me.c.tY = top;
-
+                    
                     me.shouldRerender = true;
                     me.cancelPageRenders();
-
+                    
                     // simulate the touch end event so that the page will be rerendered
                     me.onTouchEnd({
                         originalEvent: {
@@ -3322,20 +2771,20 @@
             }
         },
 
-        onBookmarkSelect: function(evt) {
+        onBookmarkSelect:function(evt) {
             var me = this;
-
+            
             var pageData = evt.currentTarget.getAttribute("data-bookmark-page");
             if (pageData !== null) {
                 // for now check if the page data is a number otherwise assume it's a link
-                // should switch to using displayBookmark instead
+                // should switch to using DisplayBookmark instead
                 var pageNum = parseInt(pageData, 10);
                 if (!isNaN(pageNum)) {
                     me.setCurrentPage(pageNum - 1);
                 } else {
                     window.open(pageData);
                 }
-
+                
             } else {
                 //no page number was selected, probably a navigation event
                 var bookmarkLevel = evt.currentTarget.getAttribute("data-bookmark-level");
@@ -3344,75 +2793,102 @@
                 $bookmarkList.listview("refresh");
             }
         },
-
+        
         onToolMouseDown: function(evt) {
-            this.closeEditPopup();
+            var me = this;
 
-            this.touchedPoint = {
+            me.closeEditPopup();
+
+            if (!me.textSelect) {
+                return;
+            }
+            me.mousePt1 = {
                 x: evt.pageX,
                 y: evt.pageY
             };
-
-            if (this.docViewer.getToolMode() !== this.toolModeMap[ToolMode.TextSelect]) {
-                return;
-            }
-
+            me.mousePt2 = {
+                x: evt.pageX,
+                y: evt.pageY
+            };
+  
+            clearInterval(me.selectInterval);
+            me.docViewer.ClearSelection();
+            me.selectInterval = setInterval(_(me.select).bind(me), 50);
+            
             // in iOS jquery mobile will hide the header and footer when the keyboard is open
             // if we're in annotation mode then tap toggling is disabled so we need to reshow
             // the bars if we're in text select mode and we have touched the page
-            this.reshowMenu();
-
+            me.reshowMenu();
+            
             return false;
         },
-
+        
         onToolMouseUp: function(evt) {
-            this.showAnnotationEditPopup(evt);
+            var me = this;
+            me.showAnnotationEditPopup(evt);
 
-            if (this.docViewer.getToolMode() !== this.toolModeMap[ToolMode.TextSelect]) {
+            if (!me.textSelect) {
                 return;
             }
+            me.mousePt2 = {
+                x:evt.pageX,
+                y:evt.pageY
+            };
 
+            // Make sure to grab everything the user wanted to select.
+            me.select();
+            clearInterval(me.selectInterval);
+            
             //select clipboard
-            var clipboard = this.$clipboard.get(0);
+            var clipboard = me.$clipboard.get(0);
             clipboard.focus();
             clipboard.selectionStart = 0;
-            clipboard.setSelectionRange(0, this.$clipboard.get(0).value.length);
+            clipboard.setSelectionRange(0, me.$clipboard.get(0).value.length);
         },
-
-        setTextareaReadonly: function($textarea, readonly) {
-            $textarea.prop('readonly', readonly);
+        
+        onToolMouseMove: function(evt) {
+            var me = this;
+        
+            if (!me.textSelect) {
+                return;
+            }
+        
+            me.mousePt2 = {
+                x: evt.pageX,
+                y: evt.pageY
+            };
         },
-
+    
         showAnnotationList: function() {
             var me = this;
-
+      
             var $annotContainer = $('.annotContainer');
             $annotContainer.find(".annotlist-editButton").show();
             $annotContainer.find(".annotlist-replyButton").show();
             $annotContainer.find(".annotlist-deleteButton").hide();
             $annotContainer.find(".annotlist-doneButton").hide();
             $annotContainer.find(".annotlist-viewButton").show();
-
-
+          
+            
             this.$annotList.children('li').each(function() {
                 var $this = $(this);
                 // make sure all note text is shown but disabled
                 $this.show();
                 var $annotContainer = $this.find('.annotContainer');
                 $annotContainer.attr('data-mode', 'list').show();
-
-                var $textarea = $annotContainer.find('textarea');
-                $textarea.removeClass('ui-focus').hide();
-
-                me.setTextareaReadonly($textarea, true);
+                
+                $annotContainer.find('textarea')
+                    .removeClass('ui-focus')
+                    .textinput('option', 'disabled', true)
+                    .hide();
             });
-
-            if (me.annotationManager.getAnnotationsList().length > 0) {
+            
+            if (me.annotationManager.GetAnnotationsList().length > 0) {
                 me.$noAnnotations.hide();
             } else {
                 me.$noAnnotations.show();
             }
-
+            
             this.$annotList.attr('data-last-mode', 'list');
             this.refreshAnnotationList();
         },
@@ -3445,8 +2921,8 @@
                 var mode = me.$annotList.attr('data-mode');
                 if (mode !== "single") {
                     if ($(e.target).hasClass("jumpToPage")) {
-                        me.annotationManager.deselectAllAnnotations();
-                        me.annotationManager.selectAnnotation(annotation);
+                        me.annotationManager.DeselectAllAnnotations();
+                        me.annotationManager.SelectAnnotation(annotation);
 
                         me.changeVisiblePage('viewerPage');
                         me.showAnnotationEditPopup();
@@ -3457,36 +2933,30 @@
 
             $li.data('pagenumber', annotation.PageNumber);
             var isReply = root ? true : false;
-
+            
             var message = "<div class='annotContainer'>";
             var subject = annotation.Subject;
             if (subject === 'Sticky') {
                 subject = "Comment";
             }
-            message += "<a class='subject jumpToPage'>" + subject + "</a>";
+            message += "<a class='subject jumpToPage'>" + subject  + "</a>";
             message += "</div>";
-
+            
             var $annotContainer = $(message);
             $annotContainer.attr('data-mode', 'list'); //default to list mode
-
+            
             var mode = me.$annotList.attr('data-mode');
             if (mode === "single") {
                 $annotContainer.hide();
             }
-
+            
             //shared buttons
-            var $doneButton = $('<a class="noteButton annotlist-doneButton">(<span data-i18n="annotationPopup.buttonDone"></span>)</a>');
+            var $doneButton = $('<a class="noteButton annotlist-doneButton">(<span data-i18n="mobile.annotationPopup.buttonDone"></span>)</a>');
             $doneButton.hide();
             $annotContainer.append($doneButton);
 
             $doneButton.on('click', function(e) {
                 e.stopImmediatePropagation();
-                me.annotationManager.setNoteContents(annotation, $comment.val());
-
-                if (annotation instanceof Annotations.FreeTextAnnotation) {
-                    me.annotationManager.drawAnnotationsFromList([annotation]);
-                }
-
                 var returnMode = me.$annotList.attr('data-return-mode');
                 if (returnMode === "thread") {
                     if (annotation) {
@@ -3497,10 +2967,10 @@
                 me.viewAnnotsListMode();
             });
 
-
+                
             var editable = me.mayEditAnnotation(annotation);
             if (editable) {
-                var $deleteButton = $('<a class="noteButton annotlist-deleteButton">(<span class="needsclick" data-i18n="annotationPopup.buttonDelete"></span>)</a>');
+                var $deleteButton = $('<a class="noteButton annotlist-deleteButton">(<span class="needsclick" data-i18n="mobile.annotationPopup.buttonDelete"></span>)</a>');
                 $deleteButton.hide();
                 $annotContainer.append($deleteButton);
 
@@ -3522,11 +2992,11 @@
                         //deleting the root
                         me.viewAnnotsListMode();
                     }
-                    me.annotationManager.deleteAnnotation(annotation);
+                    me.annotationManager.DeleteAnnotation(annotation);
                 });
 
 
-                var $editButton = $('<a class="noteButton annotlist-editButton">(<span data-i18n="annotationPopup.buttonEdit"></span>)</a>');
+                var $editButton = $('<a class="noteButton annotlist-editButton">(<span data-i18n="mobile.annotationPopup.buttonEdit"></span>)</a>');
                 $annotContainer.append($editButton);
 
                 $editButton.on('click', function(e) {
@@ -3534,11 +3004,11 @@
                     me.viewAnnotsSingleMode(annotation);
                 });
             } else {
-
+          
                 $annotContainer.append($doneButton);
                 //read only
-                var $viewButton = $('<a class="noteButton annotlist-viewButton">(<span data-i18n="annotationPopup.buttonView"></span>)</a>');
-
+                var $viewButton = $('<a class="noteButton annotlist-viewButton">(<span data-i18n="mobile.annotationPopup.buttonView"></span>)</a>');
+                
                 $annotContainer.append($viewButton);
                 $viewButton.on('click', function(e) {
                     e.stopImmediatePropagation();
@@ -3548,53 +3018,53 @@
 
             // can't reply in readonly mode
             if (!me.isReadOnly()) {
-                var $replyButton = $('<a class="noteButton annotlist-replyButton">(<span data-i18n="annotationPopup.buttonReply"></span>)</a>');
+                var $replyButton = $('<a class="noteButton annotlist-replyButton">(<span data-i18n="mobile.annotationPopup.buttonReply"></span>)</a>');
                 $annotContainer.append($replyButton);
 
                 $replyButton.on('click', function(e) {
                     e.stopImmediatePropagation();
                     var annotReply = me.annotationManager.createAnnotationReply(annotation);
+                    var root = me.annotationManager.getRootAnnotation(annotation);
+                    me.createAnnotationListItem(annotReply, annotation, root);
+                    me.refreshAnnotationList();
                     me.viewAnnotsSingleMode(annotReply);
                 });
             }
-
+            
             //add created date
             $("<div class='lastmodified'></div>").appendTo($annotContainer);
-
-            var $comment = $('<textarea>').addClass("comment-text");
-            me.setTextareaReadonly($comment, true);
-
+            
+            var $comment = $('<textarea>').prop('disabled', true).addClass("comment-text");
+            
             $comment.textinput();
             $comment.on('keyup', function() {
                 // throttle the change event for text modifications
                 clearTimeout(me.noteModifyTimeout);
                 me.noteModifyTimeout = setTimeout(function() {
-                    me.annotationManager.setNoteContents(annotation, $comment.val());
+                    me.annotationManager.SetNoteContents(annotation, $comment.val());
 
                     if (annotation instanceof Annotations.FreeTextAnnotation) {
-                        me.annotationManager.drawAnnotationsFromList([annotation]);
+                        me.annotationManager.DrawAnnotationsFromList([annotation]);
                     }
                 }, 500);
             });
 
             $comment.hide();
             var $commentContent = $('<div class="comment-content">');
-
+            
             $commentContent.append('<span class="annot-type-image"></span>');
-
-            var authorText = annotation.Author ? annotation.Author + ": " : "";
-            $commentContent.append("<span class='author'>" + authorText + "</span>");
+            $commentContent.append("<span class='author'>" + annotation.Author + ": </span>" );
             $commentContent.append('<span class="comment-text"></span>');
             $commentContent.append($comment);
             $annotContainer.append($commentContent);
-
+            
             $annotContainer.i18n();
 
             if (isReply) {
                 $annotContainer.addClass('reply');
-            }
+            } 
             $li.append($annotContainer);
-
+             
             //append in order of page number
             var lastElement = null;
             var $allitems = parentContainer.find('li');
@@ -3632,15 +3102,14 @@
             $annotContainer.find('textarea.comment-text').val(commentString);
             $annotContainer.find('.lastmodified').text("Created: " + annotation.DateCreated.toLocaleString());
         },
-        refreshAnnotationList: function() {
+        refreshAnnotationList: function () {
             this.$annotList.listview('refresh');
         },
         viewAnnotsListMode: function() {
             var me = this;
-            this.threadAnnot = null;
             this.$annotList.attr('data-mode', 'list');
             this.$annotList.attr('data-return-mode', 'list');
-
+            
             $('.showAllAnnotButton').hide();
             var $annotContainer = $('.annotContainer');
             $annotContainer.find(".annotlist-editButton").show();
@@ -3648,34 +3117,33 @@
             $annotContainer.find(".annotlist-deleteButton").hide();
             $annotContainer.find(".annotlist-doneButton").hide();
             $annotContainer.find(".annotlist-viewButton").show();
-
+          
             this.$annotList.children('li').each(function() {
                 var $this = $(this);
                 // make sure all note text is shown but disabled
                 $this.show();
                 var $annotContainer = $this.find('.annotContainer');
                 $annotContainer.attr('data-mode', 'list').show();
-
-                var $textarea = $annotContainer.find('textarea');
-                $textarea.removeClass('ui-focus').hide();
-
-                me.setTextareaReadonly($textarea, true);
+                
+                $annotContainer.find('textarea')
+                    .removeClass('ui-focus')
+                    .textinput('option', 'disabled', true)
+                    .hide();
             });
-
-
-            if (this.annotationManager.getAnnotationsList().length > 0) {
-                this.$noAnnotations.hide();
+            
+            
+            if (me.annotationManager.GetAnnotationsList().length > 0) {
+                me.$noAnnotations.hide();
             } else {
-                this.$noAnnotations.show();
+                me.$noAnnotations.show();
             }
-
+            
             this.$annotList.attr('data-last-mode', 'list');
             this.refreshAnnotationList();
         },
-
-        viewAnnotsThreadMode: function(annotation) {
+        viewAnnotsThreadMode: function(annotation){            
             var me = this;
-
+            
             this.$annotList.attr('data-mode', 'thread');
             this.$annotList.attr('data-return-mode', 'thread');
             $('.showAllAnnotButton').show();
@@ -3685,44 +3153,43 @@
             $annotContainer.find(".annotlist-deleteButton").hide();
             $annotContainer.find(".annotlist-doneButton").hide();
             $annotContainer.find(".annotlist-viewButton").show();
-
+           
             var rootAnnot = me.annotationManager.getRootAnnotation(annotation);
-            this.threadAnnot = rootAnnot;
             //var item = this.getAnnotationNoteContainer(rootAnnot);
             this.$annotList.children('li').each(function() {
                 var $this = $(this);
                 var annot_id = $this.attr('data-id');
-
-                if (rootAnnot.Id === annot_id) {
+                 
+                if(rootAnnot.Id === annot_id){
                     //this is the thread we want.
                     // make sure all note text is shown but disabled
                     $this.show();
                     var $annotContainer = $this.find('.annotContainer');
                     $annotContainer.attr('data-mode', 'thread').show();
-
-                    var $textarea = $annotContainer.find('textarea');
-                    $textarea.removeClass('ui-focus').hide();
-
-                    me.setTextareaReadonly($textarea, true);
-                } else {
+                    $annotContainer.find('textarea')
+                    .removeClass('ui-focus')
+                    .textinput('option', 'disabled', true)
+                    .hide();
+                }else{
                     //we want to hide these;
                     $this.hide();
                 }
+                
             });
-
-            if (me.annotationManager.getAnnotationsList().length > 0) {
+            
+            
+            if (me.annotationManager.GetAnnotationsList().length > 0) {
                 me.$noAnnotations.hide();
             } else {
                 me.$noAnnotations.show();
             }
+            
             this.$annotList.attr('data-last-mode', 'thread');
             this.refreshAnnotationList();
             this.changeVisiblePage('annotationDialog');
 
         },
-
         viewAnnotsSingleMode: function(annotation, returnMode) {
-            this.threadAnnot = null;
             $('.showAllAnnotButton').hide();
             this.$annotList.attr('data-mode', 'single');
             if (returnMode) {
@@ -3731,10 +3198,11 @@
             var rootAnnot = this.annotationManager.getRootAnnotation(annotation);
             this.editAnnotationNote(annotation, rootAnnot);
         },
-
+        
+        
         editAnnotationNote: function(annotation, root) {
             var me = this;
-
+            
             root = root || annotation;
             // hide every annotation but current one so that touch events won't mistakenly go to the wrong textarea
             var item = me.getAnnotationNoteContainer(annotation, root);
@@ -3748,24 +3216,25 @@
             rootItem.find('.annotContainer').not(annotContainer).hide();
             var $textarea = annotContainer.find('textarea.comment-text');
             $textarea.show();
-
+            
             annotContainer.attr('data-mode', 'single');
-
+           
             var $editButton = annotContainer.children('.annotlist-editButton');
             var $doneButton = annotContainer.children('.annotlist-doneButton');
             var $deleteButton = annotContainer.children('.annotlist-deleteButton');
             var $replyButton = annotContainer.children('.annotlist-replyButton');
-
+                
             if (me.mayEditAnnotation(annotation)) {
-
+                
                 //can edit
                 annotContainer.addClass('edit')
-                    .removeClass('view');
-
+                        .removeClass('view');
+                
                 // enable the textarea
-                me.setTextareaReadonly($textarea, false);
-                $textarea.textinput('option', 'autogrow', true).textinput("refresh");
-
+                
+                $textarea.textinput('option', 'disabled', false);
+                $textarea.textinput('option', 'autogrow', true).textinput( "refresh" );
+                
                 $editButton.hide();
                 $doneButton.show();
                 $deleteButton.show();
@@ -3774,25 +3243,30 @@
                 // after clicking edit wait until the comment loses focus and then reshow the annotation list
                 $textarea.on('blur', function() {
                     $textarea.off('blur');
-                    $(this).closest(".annotContainer").children(".annotlist-doneButton").click();
+                    //$textarea.siblings('span.comment-text').text($textarea.val());
                     me.refreshAnnotationItem(annotation, $textarea.closest('li'));
-
+                    //me.showAnnotationList();
+                    //$(this).closest('li').find('.annotlist-doneButton').click();
+                    $(this).closest(".annotContainer").children(".annotlist-doneButton").click();
+//                    $editButton.show();
+//                    $replyButton.show();
+//                    $doneButton.hide();
                     // scroll last edited annotation to the top
                     $('#annotationDialog .ui-content').scrollTop(rootItem.position().top);
                 });
-            } else {
+            }else{
                 //no edit
                 annotContainer.addClass('view')
-                    .removeClass('edit');
-
+                        .removeClass('edit');
+                
                 $doneButton.show();
                 $deleteButton.show();
                 $replyButton.hide();
                 var $viewButton = annotContainer.children('.annotlist-viewButton');
                 $viewButton.hide();
-
-                me.setTextareaReadonly($textarea, true);
-                $textarea.textinput('option', 'autogrow', true).textinput("refresh");
+                
+                $textarea.textinput('option', 'disabled', true);
+                $textarea.textinput('option', 'autogrow', true).textinput( "refresh" );
             }
 
             me.changeVisiblePage('annotationDialog');
@@ -3807,30 +3281,37 @@
                 $textarea.focus();
             }
         },
-
+    
         showAnnotationEditPopup: function(evt) {
             var me = this;
-
-            var selectedAnnotations = me.annotationManager.getSelectedAnnotations();
+            
+            var selectedAnnotations = me.annotationManager.GetSelectedAnnotations();
             if (selectedAnnotations.length === 1) {
                 var annotation = selectedAnnotations[0];
-
+                
                 if (!me.mayEditAnnotation(annotation)) {
                     me.$annotEditButtons.find('a').hide();
                     me.$annotEditButtons.find('#editDoneButton').show();
                     me.$annotEditButtons.find('#editNoteButton').show();
-
+                    
                 } else {
                     // reshow all the buttons
                     me.$annotEditButtons.find('a').show();
-
-                    if (annotation instanceof Annotations.StampAnnotation) {
-                        me.$annotEditButtons.find('#editStyleButton').hide();
+                    
+                    // hide the buttons that aren't applicable for the selected annotation
+                    if (_.isNull(annotation.StrokeColor) || _.isUndefined(annotation.StrokeColor)) {
+                        me.$annotEditPopup.find('#editStrokeColorButton').hide();
+                    }
+                    if (_.isNull(annotation.FillColor) || _.isUndefined(annotation.FillColor)) {
+                        me.$annotEditPopup.find('#editFillColorButton').hide();
+                    }
+                    if (_.isNull(annotation.StrokeThickness) || _.isUndefined(annotation.StrokeThickness)) {
+                        me.$annotEditPopup.find('#editThicknessButton').hide();
                     }
                 }
-
+                
                 me.$annotEditButtons.controlgroup();
-
+                
                 me.setEditPopupLocation(annotation);
 
                 // so the event won't close the popup right away
@@ -3838,216 +3319,338 @@
                     evt.preventDefault();
                 }
             } else if (selectedAnnotations.length > 1) {
-                me.$annotEditButtons.find('a').hide();
-                me.$annotEditButtons.find('#editDoneButton').show();
-
-                var someEditable = false;
-                // find out if at least one of the selected annotations is editable
-                for (var i = 0; i < selectedAnnotations.length; ++i) {
-                    if (me.mayEditAnnotation(selectedAnnotations[i])) {
-                        someEditable = true;
-                        break;
-                    }
+                if (!me.mayEditAnnotation(selectedAnnotations[0])) {
+                    me.$annotEditButtons.find('a').hide();
+                    me.$annotEditButtons.find('#editDoneButton').show();
+                } else {
+                    me.$annotEditPopup.find('#editNoteButton').hide();
+                    me.$annotEditPopup.find('#editStrokeColorButton').hide();
+                    me.$annotEditPopup.find('#editFillColorButton').hide();
+                    me.$annotEditPopup.find('#editThicknessButton').hide();
                 }
-
-                if (someEditable) {
-                    me.$annotEditButtons.find('#editDeleteButton').show();
-                }
-
+                
                 me.$annotEditButtons.controlgroup();
-
+                
                 me.setEditPopupLocation(selectedAnnotations[0]);
             }
         },
-
+        
         setEditPopupLocation: function(annotation) {
             var me = this;
-
-            var annotPageNumber = annotation.getPageNumber() - 1;
+            
+            var annotPageNumber = annotation.GetPageNumber() - 1;
             var verticalOffset = 20;
-
-            var pageX = annotation.getX() + (annotation.getWidth() / 2);
-            var pageY = annotation.getY() - verticalOffset;
+            
+            var pageX = annotation.GetX() + (annotation.GetWidth() / 2);
+            var pageY = annotation.GetY() - verticalOffset;
 
             // convert to window coordinates
-            var location = me.displayMode.pageToWindow({
+            var location = me.displayMode.PageToWindow({
                 x: pageX,
                 y: pageY
             }, annotPageNumber);
-
+            
             // remove this class because jQuery mobile adds it and it sets the height and width to 1px which messes up the height calculation
             me.$annotEditPopup.parent().removeClass('ui-popup-truncate');
 
             var height = me.$annotEditPopup.height();
-
+            
             // if it's too close to the top
             if (location.y < height) {
-                var newPageY = annotation.getY() + annotation.getHeight() + verticalOffset;
-
+                var newPageY = annotation.GetY() + annotation.GetHeight() + verticalOffset;
+                
                 // show it below the annotation
-                var newLocation = me.displayMode.pageToWindow({
+                var newLocation = me.displayMode.PageToWindow({
                     x: 0,
                     y: newPageY
                 }, annotPageNumber);
-
-                location.y = newLocation.y;
-
-                me.$annotEditPopup.popup('option', 'arrow', 't');
+                
+                location.y = newLocation.y + (height / 2);
             } else {
-                me.$annotEditPopup.popup('option', 'arrow', 'b');
+                // show it above the annotation
+                location.y -= height / 2;
             }
-
+            
             // seems like we need to close before opening because if the popup was already opened the position doesn't seem to change
             me.$annotEditPopup.popup('close');
             me.$annotEditPopup.popup('open', {
                 x: location.x,
                 y: location.y
             });
-        },
 
+            // this is a workaround for the issue on Android where the menu can wrap onto two lines
+            // adjusting one pixel to the left seems to fix this issue
+            me.$annotEditPopup.parent().css('left', '-=1');
+        },
+        
         closeEditPopup: function() {
             this.$annotEditPopup.popup('close');
             this.$annotEditButtons.show();
-            // hide the properties
-            this.$annotEditPopup.find('#annotEditProperties').hide();
-            this.$addNewColor.hide();
-            this.$signatureSelectionContainer.hide();
-            this.$textSelectionContainer.hide();
+            // hide all other menus
+            this.$annotEditPopup.find('#colorMenu').hide();
+            this.$annotEditPopup.find('#thicknessMenu').hide();
         },
-
+        
         deleteSelectedAnnotations: function() {
-            this.annotationManager.deleteAnnotations(this.annotationManager.getSelectedAnnotations());
+            var selectedAnnots = this.annotationManager.GetSelectedAnnotations();
+            
+            for (var i = 0; i < selectedAnnots.length; i++) {
+                this.annotationManager.DeleteAnnotation(selectedAnnots[i]);
+            }
+            
             this.closeEditPopup();
         },
-
+        
         mayEditAnnotation: function(annotation) {
-            return this.annotationManager.canModify(annotation);
+            return this.annotationManager.CanModify(annotation);
         },
-
+    
         createBookmarkList: function(level) {
             var me = this;
-            me.doc.getBookmarks().then(function(bookmarks){
-                var $bookmarkList = me.$bookmarkList;
-
-                var bookmarkString = '';
-                if (bookmarks === null || bookmarks.length < 1) {
-
-                    bookmarkString = '<li data-i18n="mobile.bookmarks.noBookmarks"></li>';
-                    $bookmarkList.html(bookmarkString);
-                    $bookmarkList.i18n();
-                    $bookmarkList.listview();
-                    $bookmarkList.listview('refresh');
-                    return;
-                }
-
-                if (_.isUndefined(level) || level === "") {
-                    //Top level
-                    level = "";
-                } else {
-                    //not top level
-                    var lvlArray = level.split(",");
-
-                    for (var i = 0; i < lvlArray.length; i++) {
-                        var levelIndex = lvlArray[i];
-                        bookmarks = bookmarks[levelIndex].getChildren();
-                    }
-
-                    lvlArray.pop();
-                    var levelString = (lvlArray > 1 ? lvlArray.join(',') : lvlArray.toString());
-                    bookmarkString += '<li data-role="list-divider" class="ui-icon-arrow-u" data-theme="a" style="-webkit-transform: translateZ(0)"><a data-bookmark-level="' + levelString + '" data-i18n="mobile.bookmarks.upOneLevel"></a></li>';
-
-                    if (lvlArray !== null) {
-                        level = level + ",";
-                    }
-                }
-
-                for (var j = 0; j < bookmarks.length; j++) {
-                    var bm = bookmarks[j];
-                    var pageData = bm.getPageNumber() ? bm.getPageNumber() : bm.getURL();
-
-                    var childCount = bm.getChildren().length;
-                    var liContent = ('<span>' + bm.getName() + '</span>');
-                    if (childCount > 0) {
-                        liContent = '<a href="#viewerPage" class="unselectable" data-bookmark-page="' + pageData + '">' + liContent +
-                            '</a><a data-shadow="false" data-theme="a" data-bookmark-level="' + level + j + '"></a>';
-                    } else {
-                        liContent = '<a href="#viewerPage" class="unselectable" data-transition="none" data-bookmark-page="' + pageData + '">' + liContent + '</a>';
-                    }
-
-                    var newLiString = '<li style="-webkit-transform: translateZ(0)" data-icon="false" class="bookmark-item"  data-pagenumber="' + pageData + '">' + liContent + '</li>';
-                    bookmarkString += newLiString;
-                }
-
+            var bookmarks = me.doc.GetBookmarks();
+            var $bookmarkList = me.$bookmarkList;
+            
+            var bookmarkString = '';
+            if (bookmarks === null || bookmarks.length < 1) {
+                
+                bookmarkString = '<li data-i18n="mobile.bookmarks.noBookmarks"></li>';
                 $bookmarkList.html(bookmarkString);
                 $bookmarkList.i18n();
-                $bookmarkList.listview();
-                $bookmarkList.listview('refresh');
-            });
+                return;
+            }
+            
+            if (_.isUndefined(level) || level === "") {
+                //Top level
+                level = "";
+            } else {
+                //not top level
+                var lvlArray = level.split(",");
+                
+                for (var i = 0; i < lvlArray.length; i++) {
+                    var levelIndex = lvlArray[i];
+                    bookmarks = bookmarks[levelIndex].children;
+                }
+                
+                lvlArray.pop();
+                var levelString = (lvlArray > 1 ? lvlArray.join(',') : lvlArray.toString());
+                bookmarkString += '<li data-role="list-divider" class="ui-icon-arrow-u" data-theme="a" style="-webkit-transform: translateZ(0)"><a data-bookmark-level="' + levelString + '" data-i18n="mobile.bookmarks.upOneLevel"></a></li>';
+               
+                if (lvlArray !== null) {
+                    level = level + ",";
+                }
+            }
+
+            for (var j = 0; j < bookmarks.length; j++) {
+                var bm = bookmarks[j];
+                var pageData = bm.GetPageNumber() ? bm.GetPageNumber() : bm.GetURL();
+
+                var childCount = bm.children.length;
+                var liContent = ('<span>'+ bm.name + '</span>');
+                if (childCount > 0) {
+                    liContent = '<a href="#viewerPage" data-bookmark-page="' + pageData + '">' + liContent +
+                    '</a><a data-shadow="false" data-theme="a" data-bookmark-level="'+ level + j + '"></a>';
+                } else {
+                    liContent = '<a href="#viewerPage" data-transition="none" data-bookmark-page="' + pageData + '">' + liContent + '</a>';
+                }
+                
+                var newLiString = '<li style="-webkit-transform: translateZ(0)" data-icon="false" class="bookmark-item"  data-pagenumber="' + pageData + '">' + liContent + '</li>';
+                bookmarkString += newLiString;
+            }
+
+            $bookmarkList.html(bookmarkString);
+            $bookmarkList.i18n();
         },
 
         initBookmarkView: function() {
             var me = this;
             me.createBookmarkList();
         },
-
-        colorToHex: function(color) {
-            var colorName = color.toHexString();
-            if (!colorName) {
-                colorName = 'transparent';
-            }
-            return colorName;
+       
+        fireEvent: function(type, data) {
+            $(document).trigger(type, data);
         },
+        
+        colorRGBtoName: function(r, g, b, a) {
+            if (a === 0) {
+                return "transparent";
+            }
 
-        colorHexToRGB: function(hexString) {
-            if (hexString === 'transparent') {
-                return new Annotations.Color(255, 255, 255, 0);
+            if (r === 255 && g === 0 && b === 0) {
+                return "red";
+            } else if (r === 255 && g === 128 && b === 64) {
+                return "orange";
+            } else if (r === 255 && g === 255 && b === 0) {
+                return "yellow";
+            } else if (r === 50 && g === 205 && b === 50) {
+                return "lightgreen";
+            } else if (r === 0 && g === 128 && b === 0) {
+                return "green";
+            } else if (r === 0 && g === 0 && b === 255) {
+                return "blue";
+            } else if (r === 0 && g === 0 && b === 0) {
+                return "black";
+            } else if (r === 255 && g === 255 && b === 255) {
+                return "white";
             } else {
-                return new Annotations.Color(hexString);
+                return "";
             }
         },
 
+        colorNameToRGB: function(name) {
+     
+            switch(name) {
+                case "red":
+                    return new Annotations.Color(255, 0, 0);
+                case "orange":
+                    return new Annotations.Color(255, 128, 64);
+                case "yellow":
+                    return new Annotations.Color(255, 255, 0);
+                case "lightgreen":
+                    return new Annotations.Color(50, 205, 50);
+                case "green":
+                    return new Annotations.Color(0,128, 0);
+                case "blue":
+                    return new Annotations.Color(0, 0, 255);
+                case "black":
+                    return new Annotations.Color(0, 0, 0);
+                case "white":
+                    return new Annotations.Color(255, 255, 255);
+                case "transparent":
+                    return new Annotations.Color(255, 255, 255, 0);
+                default:
+                    return null;
+            }
+        },
+        
+        // Example of how to define a decryption function
+        // Pass the function as the third parameter to the part retriever
+        // e.g. partRetriever = new window.CoreControls.PartRetrievers.HttpPartRetriever(doc, true, decrypt);
+        /*var decrypt = function(data) {
+
+            var arr = new Array(1024);
+            var j = 0;
+            var responseString = "";
+
+            while (j < data.length) {
+                
+                for (var k = 0; k < 1024 && j < data.length; ++k) {
+                    arr[k] = data.charCodeAt(j) ^ 0x4B;
+                    ++j;
+                }
+                responseString += String.fromCharCode.apply(null, arr.slice(0, k));
+            }
+            return responseString;
+        }*/
+    
+        // Example of how to use the built in decryption function for AES
+        // Pass the function as the third parameter to the part retriever and pass an options object as the fourth parameter
+        // e.g. var decrypt = window.CoreControls.Encryption.Decrypt;
+        // new window.CoreControls.PartRetrievers.HttpPartRetriever(doc, true, decrypt, {p: "password", type: "aes"});
+    
         // JavaScript wrapper (WebViewer.js) function definitions
+        loadDocument: function(doc, streaming, decrypt, decryptOptions) {
+            var queryParams = window.ControlUtils.getQueryStringMap(!exports.utils.ieWebViewLocal);
+            var path = queryParams.getString('p');
+
+            window.readerControl.startOffline = queryParams.getBoolean('startOffline', false);
+            var partRetriever;
+            try {
+                var cacheHinting = exports.CoreControls.PartRetrievers.CacheHinting;
+                
+                if (window.readerControl.startOffline) {
+                    partRetriever = new exports.CoreControls.PartRetrievers.WebDBPartRetriever();
+                } else if (window.utils.ieWebViewLocal) {
+                    partRetriever = new exports.CoreControls.PartRetrievers.WinRTPartRetriever(doc, cacheHinting.CACHE, decrypt, decryptOptions);
+                } else if (doc.indexOf("iosrange://") === 0) {
+                    partRetriever = new exports.CoreControls.PartRetrievers.IOSPartRetriever(doc, cacheHinting.CACHE, decrypt, decryptOptions);
+                } else if (doc.indexOf("content://") === 0 ) {
+                    partRetriever = new exports.CoreControls.PartRetrievers.AndroidContentPartRetriever(doc, cacheHinting.CACHE, decrypt, decryptOptions);
+                } else if (path !== null) {
+                    partRetriever = new exports.CoreControls.PartRetrievers.ExternalHttpPartRetriever(doc, path);
+                } else if (streaming === true) {
+                    partRetriever = new exports.CoreControls.PartRetrievers.StreamingPartRetriever(doc, cacheHinting.CACHE, decrypt, decryptOptions);
+                } else {
+                    partRetriever = new exports.CoreControls.PartRetrievers.HttpPartRetriever(doc, cacheHinting.CACHE, decrypt, decryptOptions);
+                }
+            } catch(err) {
+                alert(err.message);
+            }
+
+            var me = this;
+            partRetriever.SetErrorCallback(function(err) {
+                me.fireEvent('error', [err, 'xodLoad']);
+            });
+
+            this.docViewer.LoadAsync(partRetriever, window.readerControl.doc_id);
+        },
+
+        getDocumentViewer: function() {
+            return this.docViewer;
+        },
+        
+        getCurrentPageNumber: function() {
+            return this.docViewer.GetCurrentPage();
+        },
+        
         setCurrentPageNumber: function(pageNumber) {
             this.setCurrentPage(pageNumber - 1);
+        },
+        
+        getPageCount: function() {
+            return this.docViewer.GetPageCount();
         },
 
         goToFirstPage: function() {
             this.setCurrentPage(0);
         },
-
+        
         goToLastPage: function() {
-            var i = this.docViewer.getPageCount() - 1;
+            var i = this.docViewer.GetPageCount() - 1;
             if (i <= 0) {
                 return;
             }
             this.setCurrentPage(i);
         },
-
+        
         goToNextPage: function() {
-            var i = this.docViewer.getCurrentPage();
-            if (i >= this.docViewer.getPageCount()) {
+            var i = this.docViewer.GetCurrentPage();
+            if (i >= this.docViewer.GetPageCount()) {
                 return;
             }
             this.setCurrentPage(i);
         },
-
+        
         goToPrevPage: function() {
-            var i = this.docViewer.getCurrentPage() - 2;
+            var i = this.docViewer.GetCurrentPage() - 2;
             if (i < 0) {
                 return;
             }
             this.setCurrentPage(i);
         },
-
+        
         getZoomLevel: function() {
             return this.currentPageZoom;
         },
-
+        getToolMode: function() {
+            var tool = this.docViewer.GetToolMode();
+            for (var key in this.toolModeMap) {
+                if (tool === this.toolModeMap[key]) {
+                    return key;
+                }
+            }
+            return null;
+        },
+        setToolMode: function(toolMode) {
+            var tool = this.toolModeMap[toolMode];
+            if (tool) {
+                this.docViewer.SetToolMode(tool);
+            }
+        },
         setZoomLevel: function(zoomLevel, animate) {
             // simulate the end of a pinch zoom action
             this.newScale = zoomLevel / this.currentPageZoom;
             this.shouldRerender = true;
-
+            
             if (animate) {
                 this.c.$e.addClass('animated');
             }
@@ -4058,27 +3661,146 @@
                 }
             }, animate);
         },
-
-        setLayoutMode: function(layoutMode) {
-            this.isCoverMode = layoutMode === exports.CoreControls.DisplayModes.Cover;
-            this.docViewer.setPagesPerCanvas(this.nPagesPerWrapper, this.isCoverMode);
-            if (this.docViewer.getDocument()) {
-                this.docViewer.removeContent();
-                this.setCurrentPage(this.currentPageIndex);
-            }
+        setAnnotationUser: function(username) {
+            var am = this.docViewer.GetAnnotationManager();
+            this.currUser = username;
+            am.SetCurrentUser(this.currUser);
+        },
+        getAnnotationUser: function() {
+            var am = this.docViewer.GetAnnotationManager();
+            return am.SetCurrentUser();
+        },
+        setAdminUser: function(isAdmin) {
+            var am = this.docViewer.GetAnnotationManager();
+            this.isAdmin = isAdmin;
+            am.SetIsAdminUser(this.isAdmin);
+        },
+        isAdminUser: function() {
+            var am = this.docViewer.GetAnnotationManager();
+            return am.GetIsAdminUser();
+        },
+        setReadOnly: function(isReadOnly) {
+            var am = this.docViewer.GetAnnotationManager();
+            this.readOnly = isReadOnly;
+            am.SetReadOnly(this.readOnly);
+        },
+        isReadOnly: function() {
+            var am = this.docViewer.GetAnnotationManager();
+            return am.GetReadOnly();
         }
     };
-
-    exports.ReaderControl.prototype = $.extend({}, exports.BaseReaderControl.prototype, exports.ReaderControl.prototype);
+    
+    exports.ReaderControl = ReaderControl;
+    
+    exports.ReaderControl.prototype = $.extend(new exports.WebViewerInterface(), exports.ReaderControl.prototype);
 })(window);
 
 $(function() {
-    $(document).one('viewerLoaded', function() {
-        // initially hidden
-        $('#ui-display').show();
+    $(window).on('hashchange', function() {        
+        window.location.reload();
     });
 
-    window.ControlUtils.initialize(function() {
-        alert(i18n.t("mobile.unsupportedBrowser"));
+    window.ControlUtils.i18nInit(function() {
+        if (!window.CanvasRenderingContext2D) {
+            alert(i18n.t("mobile.unsupportedBrowser"));
+        }
     });
+    
+    // parse the query string
+    var queryParams = window.ControlUtils.getQueryStringMap(!window.utils.ieWebViewLocal);
+    var configScript = queryParams.getString('config');
+    var xdomainUrls = queryParams.getString('xdomain_urls');
+
+    if (xdomainUrls !== null) {
+        window.ControlUtils.initXdomain(xdomainUrls);
+    }
+    
+    function initializeReaderControl() {
+        var annotationsEnabled = queryParams.getBoolean('a', false);
+        var offlineEnabled = queryParams.getBoolean('offline', false);
+        
+        // Create an instance of ReaderControl on load.
+        window.readerControl = new ReaderControl(annotationsEnabled, offlineEnabled);
+    
+        var doc = queryParams.getString('d');
+        if (typeof Android !== "undefined" && typeof Android.getXodContentUri !== "undefined") {
+            doc = Android.getXodContentUri();
+        }
+    
+        var doc_id = queryParams.getString('did');
+        if (doc_id !== null) {
+            window.readerControl.doc_id = doc_id;
+        }
+    
+        var server_url = queryParams.getString('server_url');
+        if (server_url !== null) {
+            window.readerControl.server_url = server_url;
+        }
+    
+        var user = queryParams.getString('user');
+        if (user !== null) {
+            window.readerControl.currUser = user;
+        }
+    
+        var admin = queryParams.getBoolean('admin');
+        if (admin !== null) {
+            window.readerControl.isAdmin = admin;
+        }
+    
+        var readOnly = queryParams.getBoolean('readonly');
+        if (readOnly !== null) {
+            window.readerControl.readOnly = readOnly;
+        }
+    
+        var streaming = queryParams.getBoolean('streaming', false);
+        
+        var auto_load = queryParams.getBoolean('auto_load', true);
+        
+        window.readerControl.fireEvent("viewerLoaded");
+        
+        // auto loading may be set to false by webviewer if it wants to trigger the loading itself at a later time
+        if (doc === null || auto_load === false) {
+            return;
+        }
+        
+        if (queryParams.getBoolean('startOffline')) {
+            $.ajaxSetup ({
+                cache: true
+            });
+
+            window.readerControl.loadDocument(doc, false);
+        } else {
+            window.ControlUtils.byteRangeCheck(function(status) {
+                // if the range header is supported then we will receive a status of 206
+                if (status === 200) {
+                    streaming = true;
+                    console.warn('HTTP range requests not supported. Switching to streaming mode.');
+                }
+                window.readerControl.loadDocument(doc, streaming);
+            
+            }, function() {
+                // some browsers that don't support the range header will return an error
+                streaming = true;
+                window.readerControl.loadDocument(doc, streaming);
+            });
+        }
+    }
+    if (configScript !== null && configScript.length > 0) {
+        //override script path found, prepare ajax script injection
+        $.getScript(configScript)
+        .done(function(script, textStatus) {
+            /*jshint unused:false */
+            //override script successfully loaded
+            initializeReaderControl();
+        })
+        .fail(function(jqxhr, settings, exception) {
+            /*jshint unused:false */
+            console.warn("Config script could not be loaded. The default configuration will be used.");
+            initializeReaderControl();
+        });
+    } else {
+        //no override script path, use default
+        initializeReaderControl();
+    }
+
 });

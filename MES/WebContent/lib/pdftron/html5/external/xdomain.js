@@ -587,7 +587,7 @@ initSlave = function() {
           headers: xhook.headers(xhr.getAllResponseHeaders())
         };
 
-        if (typeof xhr.responseBody !== "undefined" && xhr.responseBody !== null && window.VBArray) {
+        if (typeof xhr.responseBody !== "undefined" && window.VBArray) {
             resp.responseBody = new window.VBArray(xhr.responseBody).toArray();
         }
 

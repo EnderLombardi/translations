@@ -65,10 +65,6 @@
          */
         AnnotationCreatePolygon: "AnnotationCreatePolygon",
         /**
-         * @name PDFTron.WebViewer.ToolMode.AnnotationCreatePolygonCloud
-         */
-        AnnotationCreatePolygonCloud: "AnnotationCreatePolygonCloud",
-        /**
          * @name PDFTron.WebViewer.ToolMode.AnnotationCreateCallout
          */
         AnnotationCreateCallout: "AnnotationCreateCallout",
@@ -283,6 +279,22 @@
          *                      values in one string. i.e. "CaseSensitive,WholeWord"
          */
         searchText: function(pattern, searchMode) {
+            unsupportedFunction();
+        },
+        /**
+         * Registers a callback when the document's page number is changed. (Silverlight only)
+         * @deprecated Deprecated since 1.3.2
+         * @param callback the JavaScript function to invoke when the document page number is changed
+         */
+        setOnPageChangeCallback: function(callback) {
+            unsupportedFunction();
+        },
+        /**
+         * Registers a callback when the document's zoom level is changed. (Silverlight only)
+         * @deprecated Deprecated since 1.3.2
+         * @param callback  the JavaScript function to invoke when the document zoom level is changed
+         */
+        setOnPageZoomCallback: function(callback) {
             unsupportedFunction();
         }
     };

@@ -34,6 +34,32 @@
             "wholeWordOnly": "Mots entier seulement",
             "caseSensitive": "Case sensible",
             "noResults": "Aucun résultat n'a été trouvé."
+        },
+        "annotations": "Annotations",
+        "annotationTab": {
+            "buttonHide": "Cacher",
+            "buttonShow": "Montrer",
+            "buttonSave": "Sauvegarder",
+            "toggleAnnotations": "Alterner les annotations",
+            "saveAnnotations": "Sauvegarder les annotations",
+
+            
+            "tooltips": {
+                "edit": "Modifier les Annotations",
+                "stickyNote": "Papillon Adhésif",
+                "highlight": "Surligner",
+                "underline": "Souligner",
+                "strikeout": "Rayer",
+                "rectangle": "Rectangle",
+                "ellipse": "Ellipse",
+                "line": "Ligne",
+                "freeHand": "Main Levée"
+            },
+            
+            "fill": "Remplir",
+            "stroke": "Tracer",
+            "thickness": "Épaisseur",
+            "setAsDefault": "Choisir comme valeur par défaut"
         }
     },
     
@@ -56,32 +82,6 @@
             "ellipse": "Ellipse",
             "line": "Ligne",
             "freeHand": "Main Levée"
-        },
-
-        "properties": {
-            "fill": "Remplir",
-            "stroke": "Tracer",
-            "thickness": "Épaisseur"
-        },
-
-        "annotations": "Annotations",
-        "buttonHide": "Cacher",
-        "buttonShow": "Montrer",
-        "buttonSave": "Sauvegarder",
-        "toggleAnnotations": "Alterner les annotations",
-        "saveAnnotations": "Sauvegarder les annotations",
-
-        
-        "tooltips": {
-            "edit": "Modifier les Annotations",
-            "stickyNote": "Papillon Adhésif",
-            "highlight": "Surligner",
-            "underline": "Souligner",
-            "strikeout": "Rayer",
-            "rectangle": "Rectangle",
-            "ellipse": "Ellipse",
-            "line": "Ligne",
-            "freeHand": "Main Levée"
         }
     },
     
@@ -96,17 +96,17 @@
         "cancelDownload": "Annuler le téléchargement"
     },
     
-    "annotationPopup": {
-        "buttonDone": "Complété",
-        "buttonDelete": "Supprimer",
-        "buttonNote": "Note",
-        "buttonStroke": "Couleur du Trait",
-        "buttonFill": "Couleur de Remplissage",
-        "buttonThickness": "Épaisseur",
-        "buttonSave": "Sauvegarder"
-    },
-    
     "mobile": {
+        "annotationPopup": {
+            "buttonDone": "Complété",
+            "buttonDelete": "Supprimer",
+            "buttonNote": "Note",
+            "buttonStroke": "Couleur du Trait",
+            "buttonFill": "Couleur de Remplissage",
+            "buttonThickness": "Épaisseur",
+            "buttonSave": "Sauvegarder"
+        },
+        
         "bookmarks": {
             "bookmarks": "Signets",
             "noBookmarks": "Ce document ne contient pas de signets.",

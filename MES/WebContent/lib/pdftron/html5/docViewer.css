@@ -1,4 +1,4 @@
-/* http://meyerweb.com/eric/tools/css/reset/
+/* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
 */
@@ -12,8 +12,8 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
     margin: 0;
@@ -28,9 +28,13 @@ time, mark, audio, video {
     user-select:none;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
+article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
     display: block;
+}
+body {
+/* line-height: 1; */
+/* background-color: #929292;*/
 }
 ol, ul {
     list-style: none;
@@ -50,14 +54,6 @@ table {
 textarea {
     overflow-y: auto;
 }
-/*
-Get rid of x button in input fields in IE
-http://stackoverflow.com/questions/14007655/remove-ie10s-clear-field-x-button-on-certain-inputs
-*/
-input[type=text]::-ms-clear {
-    width: 0;
-    height: 0;
-}
 
 #viewer{
     margin-left: auto;
@@ -69,7 +65,6 @@ input[type=text]::-ms-clear {
     position : relative;
     background-color: white;
     clear: both;
-    z-index: 1;
 
     box-shadow: 0px 2px 8px #000;
     -moz-box-shadow: 0px 2px 8px #000;
@@ -84,14 +79,14 @@ input[type=text]::-ms-clear {
     background-color: rgba(255, 0, 255, 0); /* for IE*/
 }
 .pageContainer span.link:active{
-    border: 2px solid #33CCFF;
+    border: 2px solid #33CCFF;   
 }
 
 /* annotation styles */
 .popup {
     position: absolute;
     width: 150px;
-    padding-bottom: 5px;
+    padding-bottom: 5px;    
     cursor: move;
     z-index: 9999;
 
@@ -105,8 +100,8 @@ input[type=text]::-ms-clear {
     padding: 2px 4px 0 4px;
 }
 .popup-minimize-button {
-    position: absolute;
-    right: 0px;
+    position: absolute; 
+    right: 0px; 
     top: 0px;
     cursor: pointer;
 }
@@ -156,7 +151,7 @@ textarea.freetext {
     cursor: text;
     outline: none;
     border: 0;
-    padding: 0;
+    padding: 0 3px;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
