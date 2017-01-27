@@ -28,7 +28,7 @@
 						<items>
 							<SegmentedButtonItem text="{calendarI18n>ButtonShift}"	press="onShiftPress" key="shift" />
 							<SegmentedButtonItem text="{calendarI18n>ButtonDay}"	press="onDayPress" key="day" />
-							<SegmentedButtonItem text="{calendarI18n>ButtonTAKT}"	press="" key="takt" />
+							<SegmentedButtonItem text="{calendarI18n>ButtonTAKT}"	press="onTaktPress" key="takt" />
 						</items>
 					</SegmentedButton>
 			

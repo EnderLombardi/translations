@@ -65,7 +65,51 @@ sap.ui.controller("airbus.mes.calendar.controller.calendar", {
        
         calendar.updateView();
     },
-	
+    
+    /***************************************************************************
+     * Display the calendar in view mode "Takt" all shift of the day are represented
+     * and the step of calendar is set to 60min if takt < one day and step is
+     * one day if takt is over one day
+     *
+     ****************************************************************************/
+    onTaktPress : function() {
+
+        airbus.mes.calendar.util.ShiftManager.shiftDisplay = false;
+        airbus.mes.calendar.util.ShiftManager.dayDisplay = false;
+        airbus.mes.calendar.util.ShiftManager.taktDisplay = true;
+        
+        var sTime = airbus.mes.calendar.util.Formatter.jsDateFromDayTimeStr(airbus.mes.settings.ModelManager.taktEnd) - airbus.mes.calendar.util.Formatter.jsDateFromDayTimeStr(airbus.mes.settings.ModelManager.takStart)
+       
+        // Takt is over one day
+        if ( Math.abs(sTime) > 86400000 ) {
+        	
+        	calendar.matrix['timeline'].x_unit = 'day';
+            calendar.matrix['timeline'].x_step = 1;
+            calendar.matrix['timeline'].x_date = "%d/%m/%Y";
+        		
+        } else {
+        	 
+            calendar.matrix['timeline'].x_unit = 'minute';
+            calendar.matrix['timeline'].x_step = 60;
+            calendar.matrix['timeline'].x_date = '%H:%i';
+
+        }
+
+        calendar.templates.timeline_scale_date = function(date) {
+            var func = calendar.date.date_to_str(calendar.matrix['timeline'].x_date);
+            return func(date);
+        };
+        calendar.config.preserve_length = true;
+
+        // Need this to update selected view and dont brake the behaviour of overflowtoolbar not needed if use Toolbar
+        airbus.mes.calendar.oView.byId("buttonViewMode").rerender();
+        airbus.mes.calendar.oView.byId("buttonViewMode").setSelectedKey("takt");
+       
+        calendar.updateView();
+        
+
+    },
+    
 	 datePick : function() {
 	        if(airbus.mes.calendar.oView.datePicker === undefined){
 	            airbus.mes.calendar.oView.datePicker = sap.ui.xmlfragment("calendardatePickerFragment","airbus.mes.calendar.fragments.datePickerFragment", airbus.mes.calendar.oView.getController());

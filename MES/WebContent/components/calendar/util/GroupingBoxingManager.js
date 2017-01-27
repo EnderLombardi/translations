@@ -298,7 +298,9 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 		}
 		
 		calendar.clearAll();
-		airbus.mes.calendar.oView.getController().UpdateDateSwipe();		
+		calendar.deleteMarkedTimespan();
+		// Display all marker
+	    airbus.mes.calendar.util.ShiftManager.addMarkedShifts();
 		calendar.xy.scroll_width=20;
         airbus.mes.shell.busyManager.unsetBusy(airbus.mes.calendar.oView);
 	    calendar.parse(aBox,"json");

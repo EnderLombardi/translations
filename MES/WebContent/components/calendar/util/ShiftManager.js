@@ -221,7 +221,7 @@ airbus.mes.calendar.util.ShiftManager = {
 	timelineAddStep : function(date, step, mode) {
 		
 		
-//		var oFormatter = airbus.mes.stationtracker.util.Formatter;	not used
+//		var oFormatter = airbus.mes.calendar.util.util.Formatter;	not used
 		if (this.shifts.length === 0)
 		return calendar.date.add_timeline_old(date, step, mode);
 
@@ -486,6 +486,18 @@ airbus.mes.calendar.util.ShiftManager = {
 		    
 			}
 		
+
+		if ( airbus.mes.calendar.util.ShiftManager.taktDisplay ) {
+			
+			var dEndDate=airbus.mes.calendar.util.Formatter.jsDateFromDayTimeStr(airbus.mes.settings.ModelManager.taktEnd);
+			var dStartDate=airbus.mes.calendar.util.Formatter.jsDateFromDayTimeStr(airbus.mes.settings.ModelManager.taktStart);
+				
+				
+			calendar.matrix.timeline.x_size += Math.ceil((dEndDate - dStartDate)/1000/60/60/24);
+			return dStartDate;
+
+		}
+		
 	},
 
 	/**
@@ -550,7 +562,7 @@ airbus.mes.calendar.util.ShiftManager = {
 	 */
 	addMarkedShifts : function() {
 
-		var aShiftBreak = airbus.mes.stationtracker.GroupingBoxingManager.shiftBreakHierarchy;
+		var aShiftBreak = airbus.mes.calendar.util.GroupingBoxingManager.shiftBreakHierarchy;
 		
 		if (this.shifts.length === 0)
 			return; // do nothing
@@ -638,20 +650,20 @@ airbus.mes.calendar.util.ShiftManager = {
 		//		});
 		
 		// Add maker for takt time
-		var d6 = airbus.mes.stationtracker.util.Formatter.jsDateFromDayTimeStr(airbus.mes.stationtracker.ModelManager.settings.taktStart);
+		var d6 = airbus.mes.calendar.util.Formatter.jsDateFromDayTimeStr(airbus.mes.settings.ModelManager.taktStart);
 		d6.setMinutes(d6.getMinutes() + 5);
 		
 		calendar.addMarkedTimespan({
-			start_date : airbus.mes.stationtracker.util.Formatter.jsDateFromDayTimeStr(airbus.mes.stationtracker.ModelManager.settings.taktStart),
+			start_date : airbus.mes.calendar.util.Formatter.jsDateFromDayTimeStr(airbus.mes.settings.ModelManager.taktStart),
 			end_date : d6,
 			css : "taktMarker"
 		});
 		
-		var d7 = airbus.mes.stationtracker.util.Formatter.jsDateFromDayTimeStr(airbus.mes.stationtracker.ModelManager.settings.taktEnd);
+		var d7 = airbus.mes.calendar.util.Formatter.jsDateFromDayTimeStr(airbus.mes.settings.ModelManager.taktEnd);
 		d7.setMinutes(d7.getMinutes() + 5);
 		
 		calendar.addMarkedTimespan({
-			start_date : airbus.mes.stationtracker.util.Formatter.jsDateFromDayTimeStr(airbus.mes.stationtracker.ModelManager.settings.taktEnd),
+			start_date : airbus.mes.calendar.util.Formatter.jsDateFromDayTimeStr(airbus.mes.settings.ModelManager.taktEnd),
 			end_date : d7,
 			css : "taktMarker"
 		});
@@ -675,8 +687,11 @@ airbus.mes.calendar.util.ShiftManager = {
 	 */
 	next : function(e, t) {
 		
+		if ( airbus.mes.calendar.util.ShiftManager.taktDisplay ) {
+
         calendar.setCurrentView(calendar.date.add(calendar.date[calendar._mode + "_start"](calendar._date), t || 1, calendar._mode));
-        
+
+		}
     },
 	/**
 	 * 
@@ -686,9 +701,9 @@ airbus.mes.calendar.util.ShiftManager = {
 	// Swipe function 
 	timelineSwip : function (side) {
 //		XXX : keep needed later
-//		var oFormatter = airbus.mes.stationtracker.util.Formatter;
+//		var oFormatter = airbus.mes.calendar.util.util.Formatter;
 		
-//		var oFormatter = airbus.mes.stationtracker.util.Formatter;
+//		var oFormatter = airbus.mes.calendar.util.util.Formatter;
 //		
 //		this.step = -1;
 //		var step;

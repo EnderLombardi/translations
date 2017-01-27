@@ -13,7 +13,6 @@ airbus.mes.settings.ModelManager = {
 	taktStart : undefined,
 	taktEnd : undefined,
 	taktDuration : undefined,
-
 	plantModelSaved : undefined,
 	currentMsnSelected : false, //bBatch1 ? false : true
 	currentMsnValue : "",

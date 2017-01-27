@@ -246,7 +246,7 @@ sap.ui.controller(
                             	//refresh
                                 airbus.mes.shell.AutoRefreshManager.clearInterval();
 
-                                airbus.mes.shell.AutoRefreshManager.setInterval("renderCalendarTracker");
+                               // airbus.mes.shell.AutoRefreshManager.setInterval("renderCalendarTracker");
 
                                 break;
                                 
@@ -331,7 +331,7 @@ sap.ui.controller(
                         	this.renderCalendarTracker();
 
                         	//refresh
-                            airbus.mes.shell.AutoRefreshManager.setInterval("calendar");
+                           // airbus.mes.shell.AutoRefreshManager.setInterval("calendar");
                             airbus.mes.shell.oView.byId('refreshTime').setVisible(true);
                         	
                         	 airbus.mes.shell.oView.byId("homeButton").setVisible(true);
