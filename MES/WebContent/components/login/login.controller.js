@@ -25,7 +25,8 @@ sap.ui.controller("airbus.mes.login.login", {
 				if ( result.Rowsets != undefined ) {
 					Cookies.set("login",{user:sUser,mdp:sPass}, { expires: 50 });
 					sessionStorage.setItem("loginType", "sopra");
-					window.location.href =  window.location.origin + window.location.pathname + "?url_config=sopra"				
+					//window.location.href =  window.location.origin + window.location.pathname + "?url_config=sopra"
+					location.reload();
 				} 
 				
 				if ( result.search("unexpected problem has occurred") > 0 ) {
@@ -33,7 +34,8 @@ sap.ui.controller("airbus.mes.login.login", {
 				} else {
 					Cookies.set("login",{user:sUser,mdp:sPass}, { expires: 50 });
 					sessionStorage.setItem("loginType", "dmi");
-					window.location.href =  window.location.origin + window.location.pathname + "?url_config=sopra"
+					//window.location.href =  window.location.origin + window.location.pathname + "?url_config=sopra"
+					location.reload();
 				}
 			} 			
 		});
@@ -55,7 +57,8 @@ sap.ui.controller("airbus.mes.login.login", {
 				if ( result.Rowsets != undefined ) {
 					Cookies.set("login",{user:sUser,mdp:sPass}, { expires: 50 });
 					sessionStorage.setItem("loginType", "dmi");
-					window.location.href =  window.location.origin + window.location.pathname				
+					//window.location.href =  window.location.origin + window.location.pathname
+					location.reload();
 				} 
 				
 				if ( result.search("unexpected problem has occurred") > 0 ) {
@@ -63,7 +66,8 @@ sap.ui.controller("airbus.mes.login.login", {
 				} else {
 					Cookies.set("login",{user:sUser,mdp:sPass}, { expires: 50 });
 					sessionStorage.setItem("loginType", "dmi");
-					window.location.href =  window.location.origin + window.location.pathname
+					//window.location.href =  window.location.origin + window.location.pathname
+					location.reload();
 				}
 			} 			
 		});
