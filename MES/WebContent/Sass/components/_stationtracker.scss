@@ -48,15 +48,16 @@ TOOLBAR
 }
 
 .sapMPIText1{
-    @extend %sapMPIText;
-    padding-left: 8px;
-    margin-top: -2.2rem;
-    width: 98.9% !important;
+	@extend %sapMPIText;
+    padding: 4px 0 0 8px;
+    position: absolute;
+    height: 45%;
+    width:100% !important;
 }
 .sapMPIText2{
     @extend %sapMPIText;
-    margin-top: -1.1rem;
-    width: 100% !important;
+    margin: 20px 0 0 8px;
+    position: absolute;
 }
 
 

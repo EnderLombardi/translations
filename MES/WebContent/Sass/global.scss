@@ -93,6 +93,8 @@ html
 #mes{
     .sapMPI{
         margin: 1.25rem 0;
+        padding : 0px;
+        border : none;
     }
     *:hover {
         @include backgroundColorTransition(0.2s);

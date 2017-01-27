@@ -433,13 +433,14 @@ TOOLBAR
   color: rgba(0, 86, 112, 0.94); }
 
 .sapMPIText1 {
-  padding-left: 8px;
-  margin-top: -2.2rem;
-  width: 98.9% !important; }
+  padding: 4px 0 0 8px;
+  position: absolute;
+  height: 45%;
+  width: 100% !important; }
 
 .sapMPIText2 {
-  margin-top: -1.1rem;
-  width: 100% !important; }
+  margin: 20px 0 0 8px;
+  position: absolute; }
 
 /********************
 WORK LIST POP OVER
@@ -6564,8 +6565,8 @@ DATE PICKER
 .document > td:nth-child(2):hover {
   background-color: rgba(196, 196, 196, 0.5) !important;
   cursor: pointer; }
-.document > td:nth-child(2):hover span {
-  cursor: pointer; }
+  .document > td:nth-child(2):hover span {
+    cursor: pointer; }
 
 #ncdisplayView--ncDisplay.ncDisplayTable {
   width: 95% !important;
@@ -6784,7 +6785,9 @@ html {
   /* Disable any special actions on tap/touch */ }
 
 #mes .sapMPI {
-  margin: 1.25rem 0; }
+  margin: 1.25rem 0;
+  padding: 0px;
+  border: none; }
 #mes *:hover {
   -webkit-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out;
   -moz-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out;
