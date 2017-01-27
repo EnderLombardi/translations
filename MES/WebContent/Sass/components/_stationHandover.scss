@@ -1,3 +1,31 @@
+#stationHandoverView--kpiHeaderToolbar {
+    > label {
+    color: #74d2e7;
+    text-shadow: none;
+    font-style: italic;
+    padding: 1rem;
+    }
+    .comboStationHandover{
+    color: #F5F5F5;
+    font-size: 16px;
+    width: auto;
+    height: 3rem;
+    margin: 0;
+    max-width: 100%;
+    line-height: 3rem;
+    text-transform: capitalize;
+    margin-right: 0px !important;
+    border-right: solid 1px #74d2e7 !important;
+    background: #0f2d65 !important;
+    border: 0;
+    border-left: solid 1px #74d2e7 !important;
+    opacity: 1;  
+    }
+    .sapMSltLabel{
+            line-height: 3rem;   
+        }
+}
+
 #stationHandoverView--searchHandover {
     .sapMSFF{
         border-radius: 3em;
@@ -30,21 +58,20 @@
                     margin-left : 25px !important;
                 }
      
+     .DisOpAttLabelHandOver{
+	color:$cool-black;
 }
-
-.DisOpAttLabel{
-	color:white;
-	padding-top: 8px;
-    padding-left: inherit;
+     
+     
 }
-
 #stationHandoverView--TreeTableBasic{
-		    height: 500px;
+    height: 50%;
 		    .sapUiTableColHdrCnt{
 		    	height:46px !important;
 				.sapUiTableColHdrScr {
 						border: solid 1px $cool-grey;
-						background-color : $teal-blue;
+						background-color : #e6ecf2;
+                        box-shadow: 0 -2px 4px 0 rgba(0, 0, 0, 0.5);
 						.sapUiTableCol{
 							border-right:1px solid white;
 						}		
@@ -58,9 +85,11 @@
         }
         
     }
-    #stationHandoverView--TreeTableBasic-sapUiTableRowHdrScr {
-        
+    
+    #stationHandoverView--TreeTableBasic-sapUiTableRowHdrScr { 
         display :block;
         z-index : 0;
     }
+
+    
 		}

@@ -1006,25 +1006,37 @@ svg{
 /*******************************
 SHIFT STAFFING
 ********************************/
-#stationTrackerView--shifStaffingHeader-dmc-chart .Left {
+#stationTrackerView--shifStaffingHeader-dmc-chart .sapSuiteDMCBar1  {
     background-color: $dark-lime-green;
 }
+#stationTrackerView--shifStaffingHeader-dmc-bar-delta {
+    
+    max-width: calc(100% - 3px);
+    .sapSuiteDMCBarDeltaInt {        
+         background: $blood-orange;
+    }
+    .sapSuiteDMCBarDeltaStripe  {
+         background-color: #74D2E7 !important;
+    }
+    
+}
+
 #stationTrackerView--shifStaffingHeader{
     .sapSuiteDmcTitle,
     .sapSuiteDmcLbls{
         font-size: 0.8vw;
     }
-    .sapSuiteDmcCnt {
+    .sapSuiteDMCCnt {
         right: 2rem;
     }
-    .sapSuiteDmcDelta {
+    .sapSuiteDMCSemanticColorNeutral {
         color: white;
     }
-    .sapSuiteDmcBarDeltaInt {
-        background: $blood-orange;
+    .sapSuiteDMCDirectionLeft {
+        background-color: #84bd00;
     }
-    .sapSuiteDmcBarDeltaStripe {
-        background-color: #74D2E7;
+    .sapSuiteDMCDirectionLeft  {
+        background-color: #84bd00;
     }
 
 }

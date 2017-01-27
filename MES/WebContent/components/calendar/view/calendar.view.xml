@@ -13,7 +13,6 @@
 			<Button id="calendardateButton" icon="sap-icon://appointment"
 				type="Transparent" tooltip="{calendarI18n>Calendar}" press="datePick"/>
 			<Label id="dateLabel" text="" class="classDateLabel" />
-		
 		</Toolbar>
 
 		<content width="100%" height="100%">

@@ -1156,20 +1156,27 @@ svg#stationTrackerView--takt_adherence_area_chart {
 /*******************************
 SHIFT STAFFING
 ********************************/
-#stationTrackerView--shifStaffingHeader-dmc-chart .Left {
+#stationTrackerView--shifStaffingHeader-dmc-chart .sapSuiteDMCBar1 {
   background-color: #84bd00; }
+
+#stationTrackerView--shifStaffingHeader-dmc-bar-delta {
+  max-width: calc(100% - 3px); }
+#stationTrackerView--shifStaffingHeader-dmc-bar-delta .sapSuiteDMCBarDeltaInt {
+  background: #fe5000; }
+#stationTrackerView--shifStaffingHeader-dmc-bar-delta .sapSuiteDMCBarDeltaStripe {
+  background-color: #74D2E7 !important; }
 
 #stationTrackerView--shifStaffingHeader .sapSuiteDmcTitle,
 #stationTrackerView--shifStaffingHeader .sapSuiteDmcLbls {
   font-size: 0.8vw; }
-#stationTrackerView--shifStaffingHeader .sapSuiteDmcCnt {
+#stationTrackerView--shifStaffingHeader .sapSuiteDMCCnt {
   right: 2rem; }
-#stationTrackerView--shifStaffingHeader .sapSuiteDmcDelta {
+#stationTrackerView--shifStaffingHeader .sapSuiteDMCSemanticColorNeutral {
   color: white; }
-#stationTrackerView--shifStaffingHeader .sapSuiteDmcBarDeltaInt {
-  background: #fe5000; }
-#stationTrackerView--shifStaffingHeader .sapSuiteDmcBarDeltaStripe {
-  background-color: #74D2E7; }
+#stationTrackerView--shifStaffingHeader .sapSuiteDMCDirectionLeft {
+  background-color: #84bd00; }
+#stationTrackerView--shifStaffingHeader .sapSuiteDMCDirectionLeft {
+  background-color: #84bd00; }
 
 /***********************************
 STATION TRACKER TOOLBAR
@@ -6912,6 +6919,29 @@ DATE PICKER
     text-align: left !important;
     border-bottom: 1p solid #f7f7f7; }
 
+#stationHandoverView--kpiHeaderToolbar > label {
+  color: #74d2e7;
+  text-shadow: none;
+  font-style: italic;
+  padding: 1rem; }
+#stationHandoverView--kpiHeaderToolbar .comboStationHandover {
+  color: #F5F5F5;
+  font-size: 16px;
+  width: auto;
+  height: 3rem;
+  margin: 0;
+  max-width: 100%;
+  line-height: 3rem;
+  text-transform: capitalize;
+  margin-right: 0px !important;
+  border-right: solid 1px #74d2e7 !important;
+  background: #0f2d65 !important;
+  border: 0;
+  border-left: solid 1px #74d2e7 !important;
+  opacity: 1; }
+#stationHandoverView--kpiHeaderToolbar .sapMSltLabel {
+  line-height: 3rem; }
+
 #stationHandoverView--searchHandover .sapMSFF {
   border-radius: 3em;
   border: 2px solid #74D2E7;
@@ -6933,13 +6963,11 @@ DATE PICKER
     border-left: 1px solid #767879; }
 #stationHandoverView--TreeTableBasic-table .sapUiTableCtrlScr {
   margin-left: 25px !important; }
-
-.DisOpAttLabel {
-  color: white;
-  padding-top: 8px;
-  padding-left: inherit; }
+#stationHandoverView--TreeTableBasic-table .DisOpAttLabelHandOver {
+  color: rgba(45, 41, 39, 0.94); }
 
 #stationHandoverView--TreeTableBasic {
+<<<<<<< Upstream, based on origin/MESv1.5
   height: 500px; }
   #stationHandoverView--TreeTableBasic .sapUiTableColHdrCnt {
     height: 46px !important; }
@@ -6953,6 +6981,22 @@ DATE PICKER
   #stationHandoverView--TreeTableBasic #stationHandoverView--TreeTableBasic-sapUiTableRowHdrScr {
     display: block;
     z-index: 0; }
+=======
+  height: 50%; }
+#stationHandoverView--TreeTableBasic .sapUiTableColHdrCnt {
+  height: 46px !important; }
+#stationHandoverView--TreeTableBasic .sapUiTableColHdrCnt .sapUiTableColHdrScr {
+  border: solid 1px #97999b;
+  background-color: #e6ecf2;
+  box-shadow: 0 -2px 4px 0 rgba(0, 0, 0, 0.5); }
+#stationHandoverView--TreeTableBasic .sapUiTableColHdrCnt .sapUiTableColHdrScr .sapUiTableCol {
+  border-right: 1px solid white; }
+#stationHandoverView--TreeTableBasic .sapUiTableCCnt .sapUiTableCtrlScr {
+  margin-left: 3rem; }
+#stationHandoverView--TreeTableBasic #stationHandoverView--TreeTableBasic-sapUiTableRowHdrScr {
+  display: block;
+  z-index: 0; }
+>>>>>>> e16d131 [stationHandover]
 
 /*************
 GENERALE RULES

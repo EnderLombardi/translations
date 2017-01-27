@@ -287,11 +287,11 @@
 				
 										<VBox id="boxShiftStaffing" wrap="Wrap" width="10%"
 											alignItems="Center" class="contentHeaderCont kpiBoxes">
-											<Label text="{StationTrackerI18n>ShiftSTAFFING}" size="L"
+											<Label text="{StationTrackerI18n>ShiftSTAFFING}"
 												width="100%" class="whiteTextHeader" />
 											<VBox width="100%" justifyContent="SpaceAround">
-												<micro:DeltaMicroChart width="100%"
-													id="shifStaffingHeader" isResponsive="true"
+												<micro:DeltaMicroChart 
+													id="shifStaffingHeader" size="L"
 													value1="{path:'KPIshiftStaffing>/neededFteUI', formatter:'airbus.mes.stationtracker.util.Formatter.stringToInt'}"
 													value2="{path:'KPIshiftStaffing>/allocatedFteUI', formatter:'airbus.mes.stationtracker.util.Formatter.stringToInt'}"
 													title1="{StationTrackerI18n>NeedFTE}"

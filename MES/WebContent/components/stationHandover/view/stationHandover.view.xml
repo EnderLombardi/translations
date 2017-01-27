@@ -2,14 +2,34 @@
 	xmlns="sap.ui.table" xmlns:mvc="sap.ui.core.mvc" xmlns:m="sap.m"
 	xmlns:u="sap.ui.unified" xmlns:core="sap.ui.core">
 
-	<m:Page showHeader="false" enableScrolling="false" height="100%" class="sapUiSizeCozy">
+	<m:Page showHeader="false" enableScrolling="false" height="100%"
+		class="sapUiSizeCozy">
 		<m:content>
+
+			<m:Toolbar id="kpiHeaderToolbar"
+				class="classKpiheaderToolbar pageHeader kpiPageHeader contentNoPad">
+				<m:Label id="stationHandover" text="{stationHandoverI18n>stationHandover}"
+					class="classDateLabel" />
+				<m:Select id="selectStationHandover" class="comboStationHandover"
+					change="changeShift" items="{ path : 'stationTrackerShift>/' }">
+					<core:Item key="{stationTrackerShift>shiftID}" text="{stationTrackerShift>shiftName}" />
+				</m:Select>
+				<m:Select id="selectMsnHandover" class="comboStationHandover"
+					change="changeShift"
+					items="{ path : 'stationTrackerShift>/' , sorter : {
+            path : 'ProductName' , descending : 'false'            
+         } }">
+					<core:Item key="{stationTrackerShift>shiftID}" text="{stationTrackerShift>shiftName}" />
+				</m:Select>
+
+			</m:Toolbar>
+
 			<TreeTable id="TreeTableBasic"
 				rows="{path:'testModel>/catalog/clothing', parameters: {arrayNames:['categories']}}"
-				selectionBehavior=""
-                    selectionMode="MultiToggle"
-                    enableSelectAll="true">
+				selectionMode="MultiToggle" enableSelectAll="true"
+				visibleRowCountMode="Auto">
 				<extension>
+
 					<m:OverflowToolbar>
 						<m:SearchField width="10%" id="searchHandover" />
 						<m:Select id="selectHandover" change="changeShift"
@@ -20,165 +40,160 @@
 							selected="true" />
 						<m:CheckBox text="{stationHandoverI18n>ShowInsertedLines}"
 							selected="true" />
-
-						<m:ToolbarSpacer />
-						<m:Button text="Collapse all" press="onCollapseAll" />
-						<m:Button text="{stationHandoverI18n>Insert}" press="onExpandFirstLevel" />
 					</m:OverflowToolbar>
+
 				</extension>
-
-
 				<columns>
 					<Column width="9rem">
-						<m:Label class="DisOpAttLabel" text="{stationHandoverI18n>Select}" />
+						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>Select}" />
 						<template>
 							<m:Text text="{testModel>name}" />
 						</template>
 					</Column>
 					<Column width="9rem">
-						<m:Label class="DisOpAttLabel" text="{stationHandoverI18n>Blocked}" />
+						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>Blocked}" />
 						<template>
 							<u:Currency value="{testModel>amount}" currency="{testModel>currency}" />
 						</template>
 					</Column>
 					<Column width="9rem">
-						<m:Label class="DisOpAttLabel" text="{stationHandoverI18n>Type}" />
+						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>Type}" />
 						<template>
-														<u:Currency value="{testModel>amount}" currency="{testModel>currency}" />
+							<u:Currency value="{testModel>amount}" currency="{testModel>currency}" />
 						</template>
 					</Column>
 					<Column width="9rem">
-						<m:Label class="DisOpAttLabel" text="{stationHandoverI18n>Description}" />
+						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>Description}" />
 						<template>
-														<u:Currency value="{testModel>amount}" currency="{testModel>currency}" />
+							<u:Currency value="{testModel>amount}" currency="{testModel>currency}" />
 						</template>
 					</Column>
 					<Column width="9rem">
-						<m:Label class="DisOpAttLabel"
+						<m:Label class="DisOpAttLabelHandOver"
 							text="{stationHandoverI18n>FrozenTrackingTemplate}" />
 						<template>
-														<u:Currency value="{testModel>amount}" currency="{testModel>currency}" />
+							<u:Currency value="{testModel>amount}" currency="{testModel>currency}" />
 						</template>
 					</Column>
 					<Column width="9rem">
-						<m:Label class="DisOpAttLabel"
+						<m:Label class="DisOpAttLabelHandOver"
 							text="{stationHandoverI18n>FrozenListOFittedHandover}" />
 						<template>
-														<u:Currency value="{testModel>amount}" currency="{testModel>currency}" />
+							<u:Currency value="{testModel>amount}" currency="{testModel>currency}" />
 						</template>
 					</Column>
 					<Column width="9rem">
-						<m:Label class="DisOpAttLabel" text="{stationHandoverI18n>RemainingTime}" />
+						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>RemainingTime}" />
 						<template>
-														<u:Currency value="{testModel>amount}" currency="{testModel>currency}" />
+							<u:Currency value="{testModel>amount}" currency="{testModel>currency}" />
 						</template>
 					</Column>
 					<Column width="9rem">
-						<m:Label class="DisOpAttLabel" text="{stationHandoverI18n>Confirmation}" />
+						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>Confirmation}" />
 						<template>
-														<u:Currency value="{testModel>amount}" currency="{testModel>currency}" />
+							<u:Currency value="{testModel>amount}" currency="{testModel>currency}" />
 						</template>
 					</Column>
 					<Column width="9rem">
-						<m:Label class="DisOpAttLabel" text="{stationHandoverI18n>UserStatus}" />
+						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>UserStatus}" />
 						<template>
-														<u:Currency value="{testModel>amount}" currency="{testModel>currency}" />
+							<u:Currency value="{testModel>amount}" currency="{testModel>currency}" />
 						</template>
 					</Column>
 					<Column width="9rem">
-						<m:Label class="DisOpAttLabel" text="{stationHandoverI18n>Competence}" />
+						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>Competence}" />
 						<template>
-														<u:Currency value="{testModel>amount}" currency="{testModel>currency}" />
+							<u:Currency value="{testModel>amount}" currency="{testModel>currency}" />
 						</template>
 					</Column>
 					<Column width="9rem">
-						<m:Label class="DisOpAttLabel" text="{stationHandoverI18n>ReviewedEndDate}" />
+						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>ReviewedEndDate}" />
 						<template>
-														<u:Currency value="{testModel>amount}" currency="{testModel>currency}" />
+							<u:Currency value="{testModel>amount}" currency="{testModel>currency}" />
 						</template>
 					</Column>
 					<Column width="9rem">
-						<m:Label class="DisOpAttLabel" text="{stationHandoverI18n>FamilyTarget}" />
+						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>FamilyTarget}" />
 						<template>
-														<u:Currency value="{testModel>amount}" currency="{testModel>currency}" />
+							<u:Currency value="{testModel>amount}" currency="{testModel>currency}" />
 						</template>
 					</Column>
 					<Column width="9rem">
-						<m:Label class="DisOpAttLabel" text="{stationHandoverI18n>BlockingReason}" />
+						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>BlockingReason}" />
 						<template>
-														<u:Currency value="{testModel>amount}" currency="{testModel>currency}" />
+							<u:Currency value="{testModel>amount}" currency="{testModel>currency}" />
 						</template>
 					</Column>
 					<Column width="9rem">
-						<m:Label class="DisOpAttLabel" text="{stationHandoverI18n>CA}" />
+						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>CA}" />
 						<template>
-														<u:Currency value="{testModel>amount}" currency="{testModel>currency}" />
+							<u:Currency value="{testModel>amount}" currency="{testModel>currency}" />
 						</template>
 					</Column>
 					<Column width="9rem">
-						<m:Label class="DisOpAttLabel" text="{stationHandoverI18n>TDL}" />
+						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>TDL}" />
 						<template>
-														<u:Currency value="{testModel>amount}" currency="{testModel>currency}" />
+							<u:Currency value="{testModel>amount}" currency="{testModel>currency}" />
 						</template>
 					</Column>
 					<Column width="9rem">
-						<m:Label class="DisOpAttLabel" text="{stationHandoverI18n>Zoning}" />
+						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>Zoning}" />
 						<template>
-														<u:Currency value="{testModel>amount}" currency="{testModel>currency}" />
+							<u:Currency value="{testModel>amount}" currency="{testModel>currency}" />
 						</template>
 					</Column>
 					<Column width="9rem">
-						<m:Label class="DisOpAttLabel" text="{stationHandoverI18n>ATA/subATA}" />
+						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>ATA/subATA}" />
 						<template>
-														<u:Currency value="{testModel>amount}" currency="{testModel>currency}" />
+							<u:Currency value="{testModel>amount}" currency="{testModel>currency}" />
 						</template>
 					</Column>
 					<Column width="9rem">
-						<m:Label class="DisOpAttLabel" text="{stationHandoverI18n>WorkPackage}" />
+						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>WorkPackage}" />
 						<template>
-														<u:Currency value="{testModel>amount}" currency="{testModel>currency}" />
+							<u:Currency value="{testModel>amount}" currency="{testModel>currency}" />
 						</template>
 					</Column>
 					<Column width="9rem">
-						<m:Label class="DisOpAttLabel" text="{stationHandoverI18n>Note}" />
+						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>Note}" />
 						<template>
-														<u:Currency value="{testModel>amount}" currency="{testModel>currency}" />
+							<u:Currency value="{testModel>amount}" currency="{testModel>currency}" />
 						</template>
 					</Column>
 					<Column width="9rem">
-						<m:Label class="DisOpAttLabel" text="{stationHandoverI18n>ACPWorkstation}" />
+						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>ACPWorkstation}" />
 						<template>
-														<u:Currency value="{testModel>amount}" currency="{testModel>currency}" />
+							<u:Currency value="{testModel>amount}" currency="{testModel>currency}" />
 						</template>
 					</Column>
 					<Column width="9rem">
-						<m:Label class="DisOpAttLabel" text="{stationHandoverI18n>FatherLink}" />
+						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>FatherLink}" />
 						<template>
-														<u:Currency value="{testModel>amount}" currency="{testModel>currency}" />
+							<u:Currency value="{testModel>amount}" currency="{testModel>currency}" />
 						</template>
 					</Column>
 					<Column width="9rem">
-						<m:Label class="DisOpAttLabel" text="{stationHandoverI18n>ExecStation}" />
+						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>ExecStation}" />
 						<template>
-														<u:Currency value="{testModel>amount}" currency="{testModel>currency}" />
+							<u:Currency value="{testModel>amount}" currency="{testModel>currency}" />
 						</template>
 					</Column>
 					<Column width="9rem">
-						<m:Label class="DisOpAttLabel" text="{stationHandoverI18n>OriginWorkstation}" />
+						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>OriginWorkstation}" />
 						<template>
-														<u:Currency value="{testModel>amount}" currency="{testModel>currency}" />
+							<u:Currency value="{testModel>amount}" currency="{testModel>currency}" />
 						</template>
 					</Column>
 					<Column width="9rem">
-						<m:Label class="DisOpAttLabel" text="{stationHandoverI18n>UpperFamily}" />
+						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>UpperFamily}" />
 						<template>
-														<u:Currency value="{testModel>amount}" currency="{testModel>currency}" />
+							<u:Currency value="{testModel>amount}" currency="{testModel>currency}" />
 						</template>
 					</Column>
 					<Column width="9rem">
-						<m:Label class="DisOpAttLabel" text="{stationHandoverI18n>MaterialDescription}" />
+						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>MaterialDescription}" />
 						<template>
-														<u:Currency value="{testModel>amount}" currency="{testModel>currency}" />
+							<u:Currency value="{testModel>amount}" currency="{testModel>currency}" />
 						</template>
 					</Column>
 
