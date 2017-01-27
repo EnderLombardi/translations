@@ -117,6 +117,7 @@ sap.ui
                     $(".opDetailNavToolbar > ul > li ~ li").css("display", "none");
                     oSwitchButton.setEnabled(true);
                     oSwitchButton.setState(false);
+                    this.getView().byId("switchStatusLabel").setText(this.getView().getModel("i18n").getProperty("ReadOnly"));
                 }
 
             } else {
