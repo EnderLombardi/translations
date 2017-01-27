@@ -8,7 +8,10 @@ sap.ui.controller("airbus.mes.calendar.controller.calendar", {
             airbus.mes.shell.oView.byId('refreshTime').setEnabled(true);
         }
     },
-	
+    
+    onBackPress : function(){
+        nav.back();
+    },
 	
 	 /***************************************************************************
      * Display the calendar in view mode "Shift" only on shift is represented

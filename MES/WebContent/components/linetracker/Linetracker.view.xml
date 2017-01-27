@@ -10,33 +10,23 @@
 				image="" expandAnimation="false" class="pageHeader kpiPageHeader contentNoPad">
 				<headerToolbar>
 					<Toolbar>
-						<Title text="{i18n>lineTrackerTitle}" level="H2"
-							class="lineTrackerTitle" />
-						<core:Icon src="sap-icon://appointment" class="headerIcons"
-							color="#FFFFFF">
-						</core:Icon>
+						<Title text="{i18n>lineTrackerTitle}" 	class="lineTrackerTitle" />
+						<core:Icon src="sap-icon://appointment" class="headerIcons" color="#FFFFFF"></core:Icon>
 						<Label id="linetracker_dateLabel" text="" class="classDateLabel"></Label>
-						<core:Icon src="sap-icon://history" class="headerIcons"
-							color="#FFFFFF">
-						</core:Icon>
+						<core:Icon src="sap-icon://history" class="headerIcons"	color="#FFFFFF"></core:Icon>
 						<Label id="linetracker_timeLabel" text=""></Label>
 						<ToolbarSpacer />
-						<!-- <Button id="hideKPI" enabled="true" icon="sap-icon://hide"
-							text="{i18n>hideKPI}" press="hideKPI" class="blueText" /> -->
 					</Toolbar>
 				</headerToolbar>
-				<!-- <VBox>
-					<core:Fragment fragmentName="airbus.mes.linetracker.kpicharts.KPIs"
-						type="XML" height="10rem" />
-				</VBox> -->
 			</Panel>
 			<uiTable:Table id="linetrackerTable" rows="{stationDataModel>/}"
 				visibleRowCount="12" enableColumnReordering="false" threshold="20">
 				<uiTable:toolbar>
 					<Toolbar class="toolbar">
+						<Button id="navBack" icon="sap-icon://arrow-left" press="onBackPress" type="Transparent"/>
 						<Title class="taktAdherenceLinetrackerTitle" text="{i18n>taktAdherence}"
 							level="H2" />
-						<ToolbarSpacer width="58%" />
+						<ToolbarSpacer width="54%" />
 						<Text text="{i18n>forcastEndOfAssembly}" width="9.5%"
 							class="headerColumnText headerTextTableLinetracker sapUiTinyMarginBottom" />
 						<ToolbarSpacer width="2%" />
@@ -98,7 +88,7 @@
 											src="{ parts :[{path:'stationDataModel>msn'},{path:'stationDataModel>date'}], formatter : 'airbus.mes.linetracker.util.Formatter.getActionIcon' }" />
 									</control:actionIconButton> -->
 									<control:image>
-										<Image width="100%" height="100%"
+										<Image width="100%"
 											visible="{ path : 'airlineLogoModel>Rowsets/Rowset/0/Row/0/airline_logo_url', formatter : 'airbus.mes.linetracker.util.Formatter.displayFlightImage' }"
 											error="{ path : 'airlineLogoModel>Rowsets/Rowset/0/Row/0/airline_logo_url', formatter : 'airbus.mes.linetracker.util.Formatter.getErrorFlightImage' }"
 											src="{ path : 'airlineLogoModel>Rowsets/Rowset/0/Row/0/msn', formatter : 'airbus.mes.linetracker.util.Formatter.selectImageToDisplay' }"></Image>

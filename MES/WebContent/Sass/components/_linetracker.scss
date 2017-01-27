@@ -21,7 +21,6 @@ LineTracker Header
     padding: 15px;
     border-right: 2px solid #326D98;
     text-shadow: none;
-    font-size: 1.1rem !important;
 }
 
 #idLinetracker1--linetracker_timeLabel{
@@ -40,6 +39,9 @@ LineTracker Header
     color: #74d2e7 !important;
     text-shadow: none;
 }
+#idLinetracker1 .sapMBtnTransparent > .sapMBtnIcon {
+    color: #0D5D76 !important;
+   }
 
 /************************
 Linetracker View (Main Table)
@@ -68,6 +70,7 @@ Linetracker View (Main Table)
     .classLineTrackerTable .toolbar {
         background-color: #D5F1F8 !important;
         border: none !important;
+        padding: 0;
       /*  height: auto !important;*/
     }
     .classLineTrackerTable table tr th,td{
@@ -187,6 +190,7 @@ Linetracker View (Main Table)
     }
     .classLineTrackerTable .progressBar {
         margin-left: 0.15rem !important;
+        margin-top: 5px;
     }
 
     .classLineTrackerTable .stationPopoverBtns div span {
@@ -220,11 +224,12 @@ Linetracker View (Main Table)
         font-style: italic;
         border-right: 2px solid #326D98;
         padding: 16px;
+        width:140px;
     }
     span{
         &.sapUiIcon{
             &.trendIconLinetracker{
-                font-size: 2em;
+                font-size: 1.5em;
                 margin-bottom: 10px;
             }
         }
@@ -234,16 +239,24 @@ Linetracker View (Main Table)
             font-size: 1em;
         }
         &.fontTableLinetracker{
-            font-size: 2em;
+            font-size: 1.4em;
             color: #5F7381;
         }
     }
-    h2{
-        &.taktAdherenceLinetrackerTitle{
-            color: #5D7381;
-            font-style: italic;
+    .taktAdherenceLinetrackerTitle{
+            height: 3rem;
+		    border: none;
+		    border-right: 1px solid #8db9ca;
+		    border-left: 1px solid #8db9ca;
+		    background-color: transparent;
+		    color: #0D5D76;
+		    text-transform: uppercase;
+		    line-height: 3rem;
+		    font-size: 0.75em;
+    		text-shadow: none;
+    		        width: 163px !important;
+    	padding: 0 25px !important;
         }
-    }
     #idLinetracker1--linetrackerTable{
         div{
             &:nth-child(2){
@@ -319,7 +332,7 @@ Custom Progress Bar
 .progress-bar {
        float: left;
        width: 0;
-       height: 100%;
+       height: 80%;
        font-size: 12px;
        line-height: 20px;
        color: #fff;
@@ -379,6 +392,7 @@ Physical Station
 .imageDiv {
     float: left;
     width: 35%;
+    padding: 8px;
 }
 
 .detailDiv {

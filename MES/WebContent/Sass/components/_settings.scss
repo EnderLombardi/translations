@@ -17,6 +17,7 @@
     border: 0;
     >img#globalNavView--logo {
         margin-right: 0;
+        padding: 0 20px;
     }
     >label.pageTitle {
         margin-left: 0;
@@ -26,6 +27,7 @@
     color: white !important;
     background: $teal-blue-hover ! important;
     border: 0;
+    height: 57px;
 }
 .classSettingPage{
     .pageHeader{
@@ -59,7 +61,11 @@
         >.sapMPageHeader {
             >label.unshrinkable {
                 flex-shrink: 0;
+                #__label0{
+           		    padding: 0 0 0 20px;
+           		}
             }
+           	
         }
     }
 }

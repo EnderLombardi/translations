@@ -2,6 +2,16 @@
 POLYPOLY
 *******************/
 
+#polypoly--polypolyHeaderToolbar{
+	>label{
+color: #74d2e7;
+		    text-shadow: none;
+		    font-style: italic;
+		    padding: 15px 30px;
+		    border-right:  solid 1px #74d2e7;
+		    }
+}
+
 // Default Focus
 .noRows.sapUiTableColRowHdr{
     @at-root &, .sapUiTableColHdr .sapUiTableTr>td{

@@ -37,6 +37,10 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 		this.addParent(this.selectTree, undefined);
 
 	},
+	
+    onBackPress : function(){
+        nav.back();
+    },
 
 	/**
 	 * Similar to onAfterRendering, but this hook is invoked before the

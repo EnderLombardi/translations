@@ -2,19 +2,24 @@
 /********************
 Tcalendar--kpiHeaderToolbar
 *********************/
+#calendar--calendardateButton-inner{
+padding: 0px 30px;	
+}
+
 #calendar--kpiHeaderToolbar{
     >label {
-        color: #74d2e7;
-        text-shadow: none;
-        font-style: italic;
+            color: #74d2e7;
+		    text-shadow: none;
+		    padding: 0px 30px;
     }
     #calendar--calendardateButton {
         border-left:  solid 1px #74d2e7;
     }
     #calendar--dateLabel {
         border-right:  solid 1px #74d2e7;
-        padding: 20px;
-        color:white;   
+        padding: 18px 35px 17px 20px;
+	    color: white;
+	    margin-left: -50px;  
     }         
 }
 
@@ -455,6 +460,10 @@ STATION TRACKER TOOLBAR
         text-shadow: none;
         font-style: italic;
     }
+   #__label5{
+   	margin-left: 25px;
+   }
+   
         
 }
 .sapMPopoverScroll{
