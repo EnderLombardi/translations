@@ -6,29 +6,30 @@
 		class="sapUiSizeCozy">
 		<m:content>
 
-			<m:Toolbar id="kpiHeaderToolbar"
-				class="classKpiheaderToolbar pageHeader kpiPageHeader contentNoPad">
-				<m:Label id="stationHandover" text="{stationHandoverI18n>stationHandover}"
-					class="classDateLabel" />
-				<m:Select id="selectStationHandover" class="comboStationHandover"
-					change="changeShift" items="{ path : 'stationTrackerShift>/' }">
-					<core:Item key="{stationTrackerShift>shiftID}" text="{stationTrackerShift>shiftName}" />
-				</m:Select>
-				<m:Select id="selectMsnHandover" class="comboStationHandover"
-					change="changeShift"
-					items="{ path : 'stationTrackerShift>/' , sorter : {
-            path : 'ProductName' , descending : 'false'            
-         } }">
-					<core:Item key="{stationTrackerShift>shiftID}" text="{stationTrackerShift>shiftName}" />
-				</m:Select>
 
-			</m:Toolbar>
 
 			<TreeTable id="TreeTableBasic"
 				rows="{path:'testModel>/catalog/clothing', parameters: {arrayNames:['categories']}}"
 				selectionMode="MultiToggle" enableSelectAll="true"
 				visibleRowCountMode="Auto">
 				<extension>
+					<m:Toolbar id="kpiHeaderToolbar"
+						class="classKpiheaderToolbar pageHeader kpiPageHeader contentNoPad">
+						<m:Label id="stationHandover" text="{stationHandoverI18n>stationHandover}"
+							class="classDateLabel" />
+						<m:Select id="selectStationHandover" class="comboStationHandover"
+							change="changeShift" items="{ path : 'stationTrackerShift>/' }">
+							<core:Item key="{stationTrackerShift>shiftID}" text="{stationTrackerShift>shiftName}" />
+						</m:Select>
+						<m:Select id="selectMsnHandover" class="comboStationHandover"
+							change="changeShift"
+							items="{ path : 'stationTrackerShift>/' , sorter : {
+            path : 'ProductName' , descending : 'false'            
+         } }">
+							<core:Item key="{stationTrackerShift>shiftID}" text="{stationTrackerShift>shiftName}" />
+						</m:Select>
+
+					</m:Toolbar>
 
 					<m:OverflowToolbar>
 						<m:SearchField width="10%" id="searchHandover" />

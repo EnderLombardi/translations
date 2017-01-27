@@ -65,8 +65,20 @@ sap.ui.controller("airbus.mes.calendar.controller.calendar", {
         // Need this to update selected view and dont brake the behaviour of overflowtoolbar not needed if use Toolbar
         airbus.mes.calendar.oView.byId("buttonViewMode").rerender();
         airbus.mes.calendar.oView.byId("buttonViewMode").setSelectedKey("day");
-       
-        calendar.updateView();
+        
+        if ( airbus.mes.calendar.util.ShiftManager.shiftIdSelected === "ALL" ) {
+        	
+            calendar.updateView();
+        	
+        } else  {
+        	
+        	airbus.mes.calendar.util.GroupingBoxingManager.parseShift();
+	    	airbus.mes.calendar.util.ShiftManager.init(airbus.mes.calendar.util.GroupingBoxingManager.shiftNoBreakHierarchy);
+	    	airbus.mes.calendar.util.GroupingBoxingManager.computeCalendarHierarchy();
+        	
+        }
+        
+        
     },
     
     /***************************************************************************
@@ -108,7 +120,17 @@ sap.ui.controller("airbus.mes.calendar.controller.calendar", {
         airbus.mes.calendar.oView.byId("buttonViewMode").rerender();
         airbus.mes.calendar.oView.byId("buttonViewMode").setSelectedKey("takt");
        
-        calendar.updateView();
+        if ( airbus.mes.calendar.util.ShiftManager.shiftIdSelected === "ALL" ) {
+        	
+            calendar.updateView();
+        	
+        } else  {
+        	
+        	airbus.mes.calendar.util.GroupingBoxingManager.parseShift();
+	    	airbus.mes.calendar.util.ShiftManager.init(airbus.mes.calendar.util.GroupingBoxingManager.shiftNoBreakHierarchy);
+	    	airbus.mes.calendar.util.GroupingBoxingManager.computeCalendarHierarchy();
+        	
+        }
         
 
     },
@@ -214,7 +236,10 @@ sap.ui.controller("airbus.mes.calendar.controller.calendar", {
 	     *
 	     ****************************************************************************/
 	    filterByRessourcePool : function(oEvt) {
-	    	
+	    		    	
+	    	airbus.mes.calendar.util.ShiftManager.shiftIdSelected = oEvt.getSource().getSelectedKey();
+	    	airbus.mes.calendar.util.GroupingBoxingManager.parseShift();
+	    	airbus.mes.calendar.util.ShiftManager.init(airbus.mes.calendar.util.GroupingBoxingManager.shiftNoBreakHierarchy);
 	    	airbus.mes.calendar.util.GroupingBoxingManager.computeCalendarHierarchy();
 	    	
 	    }

@@ -18,7 +18,7 @@ airbus.mes.calendar.util.ShiftManager = {
 	//Array where is stock Id of marker display on the gantt
 	ShiftMarkerID :[],
 	
-
+	shiftIdSelected : undefined,
 	sIndexCombobox : 0,
 	current_shift : undefined,
 	currentShiftStart : undefined,
@@ -239,7 +239,7 @@ airbus.mes.calendar.util.ShiftManager = {
 				if ( a >= this.shifts.length) {
 					dhtmlx.message({
 						id: "lastShiftDHTMLX",
-						text: airbus.mes.calendar.oView.getModel("StationTrackerI18n").getProperty("LastShiftReached"),
+						text: airbus.mes.calendar.oView.getModel("calendarI18n").getProperty("LastShiftReached"),
 						expire: 2000
 					});
 					return date;
@@ -248,7 +248,7 @@ airbus.mes.calendar.util.ShiftManager = {
 				if (a < 0) {
 					dhtmlx.message({
 						id: "firstShiftDHTMLX",
-						text: airbus.mes.calendar.oView.getModel("StationTrackerI18n").getProperty("FirstShiftReached"),
+						text: airbus.mes.calendar.oView.getModel("calendarI18n").getProperty("FirstShiftReached"),
 						expire: 2000
 					});
 					return date;
@@ -277,7 +277,7 @@ airbus.mes.calendar.util.ShiftManager = {
 		if (c + step >= this.shifts.length) {
 			dhtmlx.message({
 				id: "lastShiftDHTMLX",
-				text: airbus.mes.calendar.oView.getModel("StationTrackerI18n").getProperty("LastShiftReached"),
+				text: airbus.mes.calendar.oView.getModel("calendarI18n").getProperty("LastShiftReached"),
 				expire: 2000
 			});
 			return date;
@@ -285,7 +285,7 @@ airbus.mes.calendar.util.ShiftManager = {
 		if (c + step < 0) {
 			dhtmlx.message({
 				id: "firstShiftDHTMLX",
-				text: airbus.mes.calendar.oView.getModel("StationTrackerI18n").getProperty("FirstShiftReached"),
+				text: airbus.mes.calendar.oView.getModel("calendarI18n").getProperty("FirstShiftReached"),
 				expire: 2000
 			});
 			return date;
@@ -325,7 +325,7 @@ airbus.mes.calendar.util.ShiftManager = {
 		var c = this.closestShift(date) - 1;
 
 		if (c < 0) {
-			dhtmlx.message({ id: "firstShiftDHTMLX", text: airbus.mes.calendar.oView.getModel("StationTrackerI18n").getProperty("FirstShiftReached"), expire: 2000 });
+			dhtmlx.message({ id: "firstShiftDHTMLX", text: airbus.mes.calendar.oView.getModel("calendarI18n").getProperty("FirstShiftReached"), expire: 2000 });
 			return (this.shifts[0].StartDate); // take first shift
 		}
 

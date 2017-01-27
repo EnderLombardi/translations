@@ -38,6 +38,10 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 	
 	oModelShift.forEach(function(el) {
 		
+		if ( airbus.mes.calendar.util.ShiftManager.shiftIdSelected === "ALL" || airbus.mes.calendar.util.ShiftManager.shiftIdSelected === el.poolId 
+			|| airbus.mes.calendar.util.ShiftManager.dayDisplay || airbus.mes.calendar.util.ShiftManager.takDisplay ) {
+
+		
 		if ( !oHierachy[el.day] ) {
 			
 			oHierachy[el.day] = {};
@@ -56,7 +60,10 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 		oHierachy[el.day][el.shiftName + el.day].push(oShift);
 		aShiftBreak.push(oShift);
 		
+		}
+	
 	});
+
 	// Shift Model (without breaks)
 	var oHierachy2 = airbus.mes.calendar.util.GroupingBoxingManager.shiftNoBreakHierarchy = [];
 	
@@ -142,7 +149,7 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 		//===============	
 		oModel.forEach(function(el){
 			// Filtering on ressource POOL
-			if ( el.RESOURCE_POOLS === sPoolId || sPoolId === "ALL" ) {
+			//if ( el.RESOURCE_POOLS === sPoolId || sPoolId === "ALL" ) {
 				// Home based
 				if ( el.LOANED_FROM === "null" && el.LOADED_TO === "null" ) {
 					
@@ -172,7 +179,7 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 				
 				oHierachy[sName][ el.USER + sCstSplit + el.FIRST_NAME + sCstSplit +  el.LAST_NAME + sCstSplit + sName].push(el);
 					
-			}
+			//}
 		})
 		//===============
 		//Compute aElements2 creation of group	
