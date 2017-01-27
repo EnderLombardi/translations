@@ -9,10 +9,25 @@ airbus.mes.shell.RoleManager = {
 	userProfile : {},
 	userRoles : [],
 	flag : [],
+	queryParams : jQuery.sap.getUriParameters(),
 
 	// check if the current user has the right role to execute the action define
 	// in ROLES array
-	isAllowed : function(role) {
+	isAllowed : function(role,oCheck) {
+		var dest = "";
+		switch (window.location.hostname) {
+		case "localhost":
+			dest = "local";
+			break;
+		default:
+			dest = "airbus";
+			break;
+		}
+		if (this.queryParams.get("url_config")) {
+			dest = this.queryParams.get("url_config");
+		}
+		if (dest == "local")
+			return true;
 
 		var UserRoles = airbus.mes.shell.RoleManager.userProfile.IllumLoginRoles;
 		var FeatureRole = role;
@@ -32,12 +47,30 @@ airbus.mes.shell.RoleManager = {
 
 		if (airbus.mes.shell.RoleManager.flag.indexOf("true") >= 0) {
 			var oModel = sap.ui.getCore().getModel("FeatureRoleModel");
-			var sAuth = oModel.oData.Rowsets.Rowset[0].Row[i-1];
+			var sAuth = oModel.oData.Rowsets.Rowset[0].Row[i-1].Authenticate;
+			if (oCheck === 'A'){
 			if (sAuth === 'X')
 				{
 				//login popup
+                if (!this.myProfileDailog) {
+                    this.myProfileDailog = sap.ui.xmlfragment("airbus.mes.shell.myProfile", this);
+                    this.getView().addDependent(this._myProfileDialog);
+                }
+
+                this.myProfileDailog.open();
+                sap.ui.getCore().getElementById("msgstrpMyProfile").setVisible(false);
+                sap.ui.getCore().byId("uIdMyProfile").setValue("");
+                sap.ui.getCore().byId("badgeIdMyProfile").setValue("");
+                sap.ui.getCore().byId("userNameMyProfile").setValue("");
+                sap.ui.getCore().byId("passwordMyProfile").setValue("");
+                sap.ui.getCore().byId("pinCodeMyProfile").setValue("");
+                return true;
 				}
 			else {
+				return true;
+			}
+		}
+			else if (oCheck === 'V'){
 				return true;
 			}
 					
@@ -66,14 +99,17 @@ airbus.mes.shell.RoleManager = {
 
 	},
 	// getting all the Roles based on the feature
-	parseRoleValue : function() {
-		var sRoles = airbus.mes.shell.ModelManager.getRolesForFeature().Rowsets.Rowset[0].Row;
+	parseRoleValue : function(sFeature) {
+//		var sRoles = airbus.mes.shell.ModelManager.getRolesForFeature().Rowsets.Rowset[0].Row;
+		var sRoles = sap.ui.getCore().getModel("AllRolesModel").oData.id.Rowsets.Rowset[0].Row;
 
 		for (var i = 0; i < sRoles.length; i++) {
 			// airbus.mes.shell.RoleManager.userRoles[0] =
 			// airbus.mes.shell.RoleManager.userRoles[0]
 			// +"'"+sRoles[i].Roles+"',";
-			airbus.mes.shell.RoleManager.userRoles[i] = sRoles[i].Roles;
+			if(sRoles[i].Feature === sFeature){
+				airbus.mes.shell.RoleManager.userRoles[i] = sRoles[i].Roles;
+			}
 		}
 		// var sRole = airbus.mes.shell.RoleManager.userRoles[0];
 		// var Role = sRole.split("undefined")[1];
