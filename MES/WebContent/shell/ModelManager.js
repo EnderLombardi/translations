@@ -117,8 +117,12 @@ airbus.mes.shell.ModelManager = {
 	            url : this.urlModel.getProperty('urlgetrolesfromfeature'),
 	            type : 'POST',///
 	            /////
-	        });   	
+	        });   
+			var oModel=new sap.ui.model.json.JSONModel();
+			oModel.setData(rep.responseJSON);
+			sap.ui.getCore().setModel(oModel,"AllRolesModel");
 	        return rep.responseJSON;
+	        
 	    },
 
 		json2xml : function(o, tab) {

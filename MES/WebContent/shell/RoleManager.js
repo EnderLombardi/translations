@@ -14,20 +14,20 @@ airbus.mes.shell.RoleManager = {
 	// check if the current user has the right role to execute the action define
 	// in ROLES array
 	isAllowed : function(role,oCheck) {
-		var dest = "";
-		switch (window.location.hostname) {
-		case "localhost":
-			dest = "local";
-			break;
-		default:
-			dest = "airbus";
-			break;
-		}
-		if (this.queryParams.get("url_config")) {
-			dest = this.queryParams.get("url_config");
-		}
-		if (dest == "local")
-			return true;
+//		var dest = "";
+//		switch (window.location.hostname) {
+//		case "localhost":
+//			dest = "local";
+//			break;
+//		default:
+//			dest = "airbus";
+//			break;
+//		}
+//		if (this.queryParams.get("url_config")) {
+//			dest = this.queryParams.get("url_config");
+//		}
+//		if (dest == "local")
+//			return true;
 
 		var UserRoles = airbus.mes.shell.RoleManager.userProfile.IllumLoginRoles;
 		var FeatureRole = role;
@@ -46,9 +46,9 @@ airbus.mes.shell.RoleManager = {
 		}
 
 		if (airbus.mes.shell.RoleManager.flag.indexOf("true") >= 0) {
-			var oModel = sap.ui.getCore().getModel("FeatureRoleModel");
-			var sAuth = oModel.oData.Rowsets.Rowset[0].Row[i-1].Authenticate;
 			if (oCheck === 'A'){
+				var oModel = sap.ui.getCore().getModel("FeatureRoleModel");
+				var sAuth = oModel.oData.Rowsets.Rowset[0].Row[i-1].Authenticate;
 			if (sAuth === 'X')
 				{
 				//login popup
@@ -101,7 +101,7 @@ airbus.mes.shell.RoleManager = {
 	// getting all the Roles based on the feature
 	parseRoleValue : function(sFeature) {
 //		var sRoles = airbus.mes.shell.ModelManager.getRolesForFeature().Rowsets.Rowset[0].Row;
-		var sRoles = sap.ui.getCore().getModel("AllRolesModel").oData.id.Rowsets.Rowset[0].Row;
+		var sRoles = sap.ui.getCore().getModel("AllRolesModel").oData.Rowsets.Rowset[0].Row;
 
 		for (var i = 0; i < sRoles.length; i++) {
 			// airbus.mes.shell.RoleManager.userRoles[0] =
