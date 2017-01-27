@@ -20,10 +20,11 @@
         <m:content>
             <TreeTable
                     id="DOATable"
-                    class="DOATable" 
+                    class="DOATable"
                     rows="{getOpeAttachments>/Rowsets/Rowset/0/Row}"
                     ariaLabelledBy="title"
-                    toggleOpenState="onToggleTreeTable">
+                    toggleOpenState="onToggleTreeTable"
+                    selectionMode="None">
                 <columns>
                     <Column width="20%">
                         <m:Label class="DisOpAttLabel" text="{i18nDisplayOpeAttachmentsModel>Documents}"/>

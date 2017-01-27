@@ -8,7 +8,7 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 		var treeTableArray = airbus.mes.displayOpeAttachments.util.ModelManager.treeTableArray;
 
 		this.updateTreeTableArray(oEvent, treeTableArray);
-		this.updateLayouting(treeTableArray);
+		this.updateTreeTableView(treeTableArray);
 	},
 
 	//UPDATE ARRAY PART
@@ -45,21 +45,30 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 		}
 	},
 
-	collapseAllNodes: function() {
+	collapseAllNodes: function () {
 		airbus.mes.displayOpeAttachments.oView.byId("DOATable").collapseAll();
 	},
 
 	//CSS PART
-	updateLayouting: function (treeTableArray) {
+	updateTreeTableView: function (treeTableArray) {
 		//we add and remove class for the rows displayed
 		var doaTable = $("#displayOpeAttachmentsView--DOATable-table").children("tbody").children();
-		var positionMax;
+		var positionMax, events;
 		for (var j = 0; j < doaTable.length; j++) {
 			positionMax = treeTableArray[j].position + 1;
+			events = $._data(this.selectTreeTableRow(positionMax)[0], 'events');//events list of the row
 			if (treeTableArray[j].position !== null && !treeTableArray[j].isDocType) {
 				this.selectTreeTableRow(positionMax).addClass("document");
+
+				if (!events.click) {
+					this.selectTreeTableRow(positionMax).on("click", this.openDocumentPopup);//we attach event
+				}
 			} else if (treeTableArray[j].position !== null && treeTableArray[j].isDocType) {
 				this.selectTreeTableRow(positionMax).removeClass("document");
+
+				if (events.click) {
+					this.selectTreeTableRow(positionMax).off("click", this.openDocumentPopup);//we remove event
+				}
 			}
 		}
 
@@ -68,8 +77,30 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 		while (treeTableArray[k].position === null) {
 			rowIndex = treeTableArray[k].position + 1;
 			this.selectTreeTableRow(rowIndex).removeClass("document");
+
+			events = $._data(this.selectTreeTableRow(positionMax)[0], 'events');//events list of the row
+			if (events.click) {
+				this.selectTreeTableRow(positionMax).off("click", this.openDocumentPopup);//we remove event
+			}
 			k--;
 		}
+	},
+
+	//open the choice popup
+	openDocumentPopup: function () {
+		if (!airbus.mes.displayOpeAttachments.doaPopup) {
+            airbus.mes.displayOpeAttachments.doaPopup = sap.ui.xmlfragment("airbus.mes.displayOpeAttachments.view.doaPopup", this);
+        }
+
+		airbus.mes.displayOpeAttachments.doaPopup.setModel(airbus.mes.displayOpeAttachments.oView.getModel("getOpeAttachments"), "getOpeAttachments");
+		airbus.mes.displayOpeAttachments.doaPopup.setModel(airbus.mes.displayOpeAttachments.oView.getModel("i18nDisplayOpeAttachmentsModel"),"i18nDisplayOpeAttachmentsModel");
+		
+		airbus.mes.displayOpeAttachments.doaPopup.open();
+	},
+
+	//close the choice popup
+	closeDocumentPopup: function () {
+		airbus.mes.displayOpeAttachments.doaPopup.close();
 	},
 
 	//select in jquery the html row for a tree table
@@ -131,7 +162,7 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 		oModule.loadDOADetail();
 		oModule.createTreeTableArray();
 		this.collapseAllNodes();
-		this.updateLayouting(oModule.treeTableArray);
+		this.updateTreeTableView(oModule.treeTableArray);
 	},
 
 });

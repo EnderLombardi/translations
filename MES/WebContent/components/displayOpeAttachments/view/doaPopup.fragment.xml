@@ -1,0 +1,14 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Dialog id="doaPopup" stretchOnPhone="false" showHeader="true" title="{i18nDisplayOpeAttachmentsModel>Documents}">
+		<content>
+			<HBox>
+				<Button id="downloadDocument" text="{i18nDisplayOpeAttachmentsModel>Download}" icon="sap-icon://download"/>
+				<Button id="openDocument" text="{i18nDisplayOpeAttachmentsModel>Open}" icon="sap-icon://vds-file"/>
+			</HBox>
+		</content>
+		<buttons>
+			<Button id="cancelButton" text="{i18nDisplayOpeAttachmentsModel>Cancel}" 
+				press="airbus.mes.displayOpeAttachments.oView.oController.closeDocumentPopup" icon="sap-icon://decline"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

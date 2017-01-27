@@ -47,7 +47,7 @@
 }
 
 .document {
-	>td:nth-child(2) {
+	>td:nth-child(1) {
 		>div {
 			>span:nth-child(2){
 				color: $petrol;
@@ -60,6 +60,15 @@
 			span {
 				cursor : pointer;
 			}
+		}
+	}
+}
+
+#doaPopup-scrollCont {
+	>div.sapMFlexBox {
+		justify-content: center;
+		>div {
+			margin:0 10px;
 		}
 	}
 }
