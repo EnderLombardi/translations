@@ -1,0 +1,26 @@
+{ "Rowsets" : { 
+	"DateCreated" : "2017-01-19T20:26:15", "Version" : "15.1 SP2 Patch 13 (Oct 6, 2016)", "StartDate" : "2017-01-19T19:26:15+0100", "EndDate" : "2017-01-19T20:26:15+0100", "CachedTime" : "", 
+	"Rowset" : [ 
+	{ "Columns" : { 
+		"Column" : [ 
+		{ "Name" : "REASON", "SourceColumn" : "REASON", "Description" : "REASON", "SQLDataType" : -9, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "ROOT_CAUSE", "SourceColumn" : "ROOT_CAUSE", "Description" : "ROOT_CAUSE", "SQLDataType" : -9, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "HANDLE", "SourceColumn" : "HANDLE", "Description" : "HANDLE", "SQLDataType" : -9, "MinRange" : 1.0, "MaxRange" : 1.0 } ] }, 
+	"Row" : [ 
+		{ "REASON" : "0911-Manquant / Absent / Non Disponible", "ROOT_CAUSE" : "01-Matériel (Production)", "HANDLE" : "FNZ1,PA_IP1-2,DISRUPT-0111,0911-Manquant / Absent / Non Disponible" }, 
+		{ "REASON" : "0914-Non Conforme", "ROOT_CAUSE" : "01-Matériel (Production)", "HANDLE" : "FNZ1,PA_IP1-2,DISRUPT-0111,0914-Non Conforme" }, 
+		{ "REASON" : "0915-Cassé / Endommagé  / Inutilisable", "ROOT_CAUSE" : "01-Matériel (Production)", "HANDLE" : "FNZ1,PA_IP1-2,DISRUPT-0111,0915-Cassé / Endommagé  / Inutilisable" }, 
+		{ "REASON" : "0926-Mauvaise Identification", "ROOT_CAUSE" : "01-Matériel (Production)", "HANDLE" : "FNZ1,PA_IP1-2,DISRUPT-0111,0926-Mauvaise Identification" } ]
+		 }, 	{ "Columns" : { 
+		"Column" : [ 
+		{ "Name" : "ResponsibleGroup", "SourceColumn" : "ResponsibleGroup", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "ResponsibleGroupDesc", "SourceColumn" : "ResponsibleGroupDesc", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 } ] }, 
+	"Row" : [ 
+		{ "ResponsibleGroup" : "QUALITY_SUPPORT", "ResponsibleGroupDesc" : "Quality Support" }, 
+		{ "ResponsibleGroup" : "MANUF_ENG_SUPPORT", "ResponsibleGroupDesc" : "Manuf. Eng. Support" }, 
+		{ "ResponsibleGroup" : "LINE_MANAGER", "ResponsibleGroupDesc" : "Line Manager" }, 
+		{ "ResponsibleGroup" : "TEAM_LEADER", "ResponsibleGroupDesc" : "Team Leader" }, 
+		{ "ResponsibleGroup" : "LOGISTIC_SUPPORT", "ResponsibleGroupDesc" : "Logistic Support" } ]
+		 } ]
+	 }
+ }

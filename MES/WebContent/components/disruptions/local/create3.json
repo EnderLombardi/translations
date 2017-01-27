@@ -1,0 +1,48 @@
+{ "Rowsets" : { 
+	"DateCreated" : "2017-01-27T12:14:08", "Version" : "15.1 SP3 Patch 0 (7 nov. 2016)", "StartDate" : "2017-01-27T11:14:05+0100", "EndDate" : "2017-01-27T12:14:05+0100", "CachedTime" : "", 
+	"Rowset" : [ 
+	{ "Columns" : { 
+		"Column" : [ 
+		{ "Name" : "UserID", "SourceColumn" : "UserID", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "Name", "SourceColumn" : "Name", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 } ] }, 
+	"Row" : [ 
+		{ "UserID" : "NG66BD9", "Name" : "KAMAL Anant" }, 
+		{ "UserID" : "NG66F29", "Name" : "STATKEVICH EVGENY" }, 
+		{ "UserID" : "NG66F2C", "Name" : "TOLSTYKH DMITRY" }, 
+		{ "UserID" : "NG67B32", "Name" : "ESTHEVENET Sebastien" }, 
+		{ "UserID" : "NG67B3D", "Name" : "BONVILA Arnaud" }, 
+		{ "UserID" : "NG67B40", "Name" : "GOMEZ Andre" }, 
+		{ "UserID" : "NG68728", "Name" : "THOMAS Sanjo" }, 
+		{ "UserID" : "S007C96", "Name" : "DANEL Cedric" }, 
+		{ "UserID" : "S00A9EB", "Name" : "SINHA Ashish Kumar" }, 
+		{ "UserID" : "S00DB44", "Name" : "BARRAUD Delphin" }, 
+		{ "UserID" : "ST27164", "Name" : "BAVIERE Pascal" }, 
+		{ "UserID" : "NG004BDE", "Name" : "MISHRA Dhirendra Nath" }, 
+		{ "UserID" : "SAPSUPPORT", "Name" : "Support Sap" }, 
+		{ "UserID" : "NG5E821", "Name" : "MAHHOU Mehdi" }, 
+		{ "UserID" : "AFERRAND", "Name" : "FERRAND Alexis" }, 
+		{ "UserID" : "NG000431E", "Name" : "BETEILLE Frederic" }, 
+		{ "UserID" : "NG000524", "Name" : "PALLAM REDDY Srikanth" }, 
+		{ "UserID" : "NG000A82", "Name" : "LE BAIL Vincent" }, 
+		{ "UserID" : "SITE_ADMIN", "Name" : " " }, 
+		{ "UserID" : "NG1FCF2", "Name" : "CABANDE Arnaud" }, 
+		{ "UserID" : "NG2E2AD", "Name" : "LAPEYRE Claire" }, 
+		{ "UserID" : "NG34DF3", "Name" : "SINGHANIA Ambika" }, 
+		{ "UserID" : "NG42E7A", "Name" : " " }, 
+		{ "UserID" : "NG43F36", "Name" : "FERRAND Alexis" }, 
+		{ "UserID" : "NG55033", "Name" : "MARTINS David" }, 
+		{ "UserID" : "NG55E40", "Name" : "METE Marie" }, 
+		{ "UserID" : "NG55E48", "Name" : "FONTENEAU Guillaume" }, 
+		{ "UserID" : "NG560DB", "Name" : "BARILLON Pierre" }, 
+		{ "UserID" : "NG56D2A", "Name" : "MISHRA Vaibhav" }, 
+		{ "UserID" : "NG5A903", "Name" : "MAJJI Siva Krishna" }, 
+		{ "UserID" : "NG5B8F3", "Name" : "LIENARD Mickael" }, 
+		{ "UserID" : "NG5E7C1", "Name" : "JANVIER Nicolas" }, 
+		{ "UserID" : "NG62E1B", "Name" : "DUREUIL Alexis" }, 
+		{ "UserID" : "NG630BF", "Name" : "SINGH Vinay" }, 
+		{ "UserID" : "NG2EAF7", "Name" : "BERTOLINO Raphaël" }, 
+		{ "UserID" : "NG55D87", "Name" : "HORTAULT Mélanie" }, 
+		{ "UserID" : "NG66BDC", "Name" : "PAHUJA Chirag" } ]
+		 } ]
+	 }
+ }

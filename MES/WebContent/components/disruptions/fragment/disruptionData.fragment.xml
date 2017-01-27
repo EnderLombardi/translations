@@ -101,7 +101,7 @@
 					enabled="false">
 				</MultiInput>
 				<Label text="{i18nModel>resolverGroup}" />
-				<Select id="selectResponsible" items="{disruptionCategoryModel>/Rowsets/Rowset/0/Row}"
+				<Select id="selectResponsibleGrp" items="{disruptionCategoryModel>/Rowsets/Rowset/0/Row}"
 					change="onSelectionChange" forceSelection="false" enabled="false">
 					<items>
 						<core:Item text="{disruptionCategoryModel>ResponsibleGroupDesc}"

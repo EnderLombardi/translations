@@ -55,7 +55,7 @@
 								<!-- SD-SP1604983-CDP-010 -->
 								<f:FormElement>
 									<f:label>
-										<Label required="true" text="{i18nModel>CategoryClass}">
+										<Label text="{i18nModel>CategoryClass}">
 											<layoutData>
 												<l:GridData span="L2 M3 S12" linebreak="true" />
 											</layoutData>
@@ -64,9 +64,9 @@
 									<f:fields>
 										<Select id="selectFivemCategory" selectedKey=""
 											forceSelection="false" change="onSelectionChange"
-											items="{disruptionCustomData>/Rowsets/Rowset/1/Row}">
+											items="{disruptionResolverModel>/Rowsets/Rowset/2/Row}">
 											<items>
-												<core:Item text="{disruptionCustomData>FivemCategory}" key="{disruptionCustomData>FivemCategory}" />
+												<core:Item text="{disruptionResolverModel>CATEGORY_CLASS}" key="{disruptionResolverModel>CATEGORY_CLASS}" />
 												
 											</items>
 											<layoutData>
@@ -78,7 +78,7 @@
 
 
 
-								<f:FormElement>
+								<!-- <f:FormElement>
 									<f:label>
 										<Label required="true" text="{i18nModel>Issuer}">
 											<layoutData>
@@ -99,47 +99,26 @@
 											</layoutData>
 										</ComboBox>
 									</f:fields>
-								</f:FormElement>
+								</f:FormElement> -->
 
+
+								
 
 								<f:FormElement>
 									<f:label>
 										<Label required="true" text="{i18nModel>Category}">
-											<layoutData>
-												<l:GridData span="L2 M3 S12" linebreak="true" />
-											</layoutData>
-										</Label>
-									</f:label>
-									<f:fields>
-										<Select id="selectCategory"
-											items="{disruptionCustomData>/Rowsets/Rowset/1/Row}"
-											change="onSelectionChange" forceSelection="false">
-											<items>
-												<core:Item text="{disruptionCustomData>Category}"
-													key="{disruptionCustomData>MessageType}" />
-											</items>
-											<layoutData>
-												<l:GridData span="L3 M9 S12" />
-											</layoutData>
-										</Select>
-									</f:fields>
-								</f:FormElement>
-
-
-								<f:FormElement>
-									<f:label>
-										<Label required="true" text="{i18nModel>OriginatorGroup}">
 											<layoutData>
 												<l:GridData span="L2 M3 S12" />
 											</layoutData>
 										</Label>
 									</f:label>
 									<f:fields>
-										<Select id="selectOriginator" selectedKey=""
-											forceSelection="false" items="{disruptionCustomData>/Rowsets/Rowset/0/Row}">
+										<Select id="selectCategory"
+											items="{disruptionCategoryModel>/Rowsets/Rowset/0/Row}"
+											change="onSelectionChange" forceSelection="false">
 											<items>
-												<core:Item text="{disruptionCustomData>group_desc}"
-													key="{disruptionCustomData>group_name}" />
+												<core:Item text="{disruptionCategoryModel>DESCRIPTION}"
+													key="{disruptionCategoryModel>MESSAGE_TYPE}" />
 											</items>
 											<layoutData>
 												<l:GridData span="L3 M9 S12" />
@@ -147,7 +126,6 @@
 										</Select>
 									</f:fields>
 								</f:FormElement>
-
 
 								<f:FormElement>
 									<f:label>
@@ -160,36 +138,33 @@
 									</f:label>
 									<f:fields>
 										<Select id="selectreason"
-											items="{disruptionCustomData>/Rowsets/Rowset/1/Row}" change="onSelectionChange"
-											forceSelection="false">
+											items="{disruptionRsnRespGrp>/Rowsets/Rowset/0/Row}"  forceSelection="false">
 											<items>
-												<core:Item text="{disruptionCustomData>Reason}"
-													key="{disruptionCustomData>Reason}" />
+												<core:Item text="{disruptionRsnRespGrp>REASON}"
+													key="{disruptionRsnRespGrp>REASON}" />
 											</items>
 											<layoutData>
 												<l:GridData span="L3 M9 S12" />
 											</layoutData>
+
 										</Select>
 									</f:fields>
 								</f:FormElement>
 
-
-
 								<f:FormElement>
 									<f:label>
-										<Label required="true" text="{i18nModel>resGroup}">
+										<Label required="true" text="{i18nModel>OriginatorGroup}">
 											<layoutData>
 												<l:GridData span="L2 M3 S12" />
 											</layoutData>
 										</Label>
 									</f:label>
 									<f:fields>
-										<Select id="selectResponsible"
-											items="{disruptionCustomData>/Rowsets/Rowset/2/Row}"
-											change="onSelectionChange" forceSelection="false">
+										<Select id="selectOriginator" selectedKey=""
+											forceSelection="false" items="{disruptionCategoryModel>/Rowsets/Rowset/1/Row}">
 											<items>
-												<core:Item text="{disruptionCustomData>ResponsibleGroupDesc}"
-													key="{disruptionCustomData>ResponsibleGroup}" />
+												<core:Item text="{disruptionCategoryModel>group_desc}"
+													key="{disruptionCategoryModel>group_name}" />
 											</items>
 											<layoutData>
 												<l:GridData span="L3 M9 S12" />
@@ -198,22 +173,26 @@
 									</f:fields>
 								</f:FormElement>
 
-
-
 								<f:FormElement>
 									<f:label>
-										<Label text="{i18nModel>status}">
+										<Label required="true" text="{i18nModel>resGroup}">
 											<layoutData>
 												<l:GridData span="L2 M3 S12" linebreak="true" />
 											</layoutData>
 										</Label>
 									</f:label>
 									<f:fields>
-										<Input id="status" value="{i18nModel>Pending}" enabled="false">
+										<Select id="selectResponsibleGrp"
+											items="{disruptionRsnRespGrp>/Rowsets/Rowset/1/Row}"
+											change="onSelectionChange" forceSelection="false">
+											<items>
+												<core:Item text="{disruptionRsnRespGrp>ResponsibleGroupDesc}"
+													key="{disruptionRsnRespGrp>ResponsibleGroup}" />
+											</items>
 											<layoutData>
 												<l:GridData span="L3 M9 S12" />
 											</layoutData>
-										</Input>
+										</Select>
 									</f:fields>
 								</f:FormElement>
 
@@ -228,12 +207,12 @@
 									</f:label>
 									<f:fields>
 										<Select id="selectResolver"
-											items="{ path : 'disruptionCustomData>/Rowsets/Rowset/3/Row' }"
+											items="{ path : 'disruptionResolverModel>/Rowsets/Rowset/0/Row' }"
 											forceSelection="false">
 											<items>
 												<core:Item
-													text="{disruptionCustomData>Name}"
-													key="{disruptionCustomData>UserID}" />
+													text="{disruptionResolverModel>Name}"
+													key="{disruptionResolverModel>UserID}" />
 											</items>
 											<layoutData>
 												<l:GridData span="L3 M9 S12" />
@@ -266,27 +245,22 @@
 										</Select>
 									</f:fields>
 								</f:FormElement>
-								<!-- this handle will be hidden in the UI -->
-								<f:FormElement visible="false">
+
+
+								<f:FormElement>
 									<f:label>
-										<Label text="">
+										<Label text="{i18nModel>status}">
 											<layoutData>
-												<l:GridData span="L2 M3 S12" linebreak="true" />
+												<l:GridData span="L2 M3 S12" />
 											</layoutData>
 										</Label>
 									</f:label>
 									<f:fields>
-
-										<Select id="handle" selectedKey="" forceSelection="false"
-											items="{disruptionCustomData>/Rowsets/Rowset/1/Row}" change="onSelectionChange">
-											<items>
-												<core:Item text="{disruptionCustomData>Handle}"
-													key="{disruptionCustomData>Handle}" />
-											</items>
+										<Input id="status" value="{i18nModel>Pending}" enabled="false">
 											<layoutData>
-												<l:GridData span="L9 M9 S12" />
+												<l:GridData span="L3 M9 S12" />
 											</layoutData>
-										</Select>
+										</Input>
 									</f:fields>
 								</f:FormElement>
 
@@ -346,6 +320,24 @@
 									</f:fields>
 								</f:FormElement>
 
+
+								<f:FormElement>
+									<f:label>
+										<Label text="{i18nModel>TimeLost}">
+											<layoutData>
+												<l:GridData span="L2 M3 S12" linebreak="true" />
+											</layoutData>
+										</Label>
+									</f:label>
+									<f:fields>
+										<Input placeholder="" id="timeLost" type="Number" value="">
+											<layoutData>
+												<l:GridData span="L3 M9 S12" />
+											</layoutData>
+										</Input>
+									</f:fields>
+								</f:FormElement>
+
 								<f:FormElement>
 									<f:label>
 										<Label id="promisedDateLabel" required="true"
@@ -376,25 +368,7 @@
 									</f:fields>
 								</f:FormElement>
 
-
-								<f:FormElement>
-									<f:label>
-										<Label text="{i18nModel>TimeLost}">
-											<layoutData>
-												<l:GridData span="L2 M3 S12" linebreak="true" />
-											</layoutData>
-										</Label>
-									</f:label>
-									<f:fields>
-										<Input placeholder="" id="timeLost" type="Number" value="">
-											<layoutData>
-												<l:GridData span="L3 M9 S12" />
-											</layoutData>
-										</Input>
-									</f:fields>
-								</f:FormElement>
-
-								<f:FormElement>
+								<!-- <f:FormElement>
 									<f:label>
 										<Label text="{i18nModel>RootCause}">
 											<layoutData>
@@ -415,7 +389,7 @@
 											</layoutData>
 										</Select>
 									</f:fields>
-								</f:FormElement>
+								</f:FormElement> -->
 
 								<f:FormElement>
 									<f:label>

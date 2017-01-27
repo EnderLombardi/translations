@@ -10,7 +10,6 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 	 * @memberOf table.table
 	 */
 	disruptionTrackerRefresh : false,
-	disruptionsCustomDataFlag : undefined,
 	mFilterParams : undefined,
 	onInit : function() { 
 		//if the page is not busy
@@ -281,22 +280,19 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		 */
 
 		if (sap.ui.Device.system.desktop) {
-			airbus.mes.shell.util.navFunctions.disruptionsDetail(sap.ui.getCore().byId("globalNavView--navCont"), 0, 0, 0, 0);
+			airbus.mes.shell.util.navFunctions.disruptionsDetail(nav, 0, 0, 0, 0);
 
 			sap.ui.getCore().getModel("operationDisruptionsModel").setData(disruptionData);
-			this.disruptionsCustomDataFlag = false;
 			var oModel = sap.ui.getCore().getModel("DisruptionDetailModel");
 			// set the data in disruption Detail Model
 			oModel.setData(sap.ui.getCore().getModel("operationDisruptionsModel").oData.Rowsets.Rowset[0].Row[0]);
-			sap.ui.getCore().byId("globalNavView--navCont").to(airbus.mes.disruptions.oView.disruptionDetail.getId())
+			nav.to(airbus.mes.disruptions.oView.disruptionDetail.getId())
 
 			// Pause the Refresh timer till the Pop-Up is opened
 			// airbus.mes.shell.AutoRefreshManager.pauseRefresh();
 			// this.getView().byId('refreshTime').setVisible(false);
-			// --commented by MJ
-			airbus.mes.shell.oView.byId('refreshTime').setVisible(false); // ++
-			// MJ
-			this.setDataForViewDisruptionDetail();
+//			airbus.mes.shell.oView.byId('refreshTime').setVisible(false); 
+//			this.setDataForViewDisruptionDetail();
 			/** *********************MES V1.5 [End]******************** */
 
 		} else {
@@ -324,7 +320,6 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 			// Button
 			);
 			sap.ui.getCore().getModel("operationDisruptionsModel").setData(disruptionData);
-			this.disruptionsCustomDataFlag = false;
 
 			airbus.mes.disruptiontracker.detailPopUp.open();
 
@@ -381,31 +376,21 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		if (this.nav.getCurrentPage().sId == "createDisruptionView") {
 			sap.ui.getCore().byId("disruptionDetailPopup--btnUpdateDisruption").setVisible(true);
 			sap.ui.getCore().byId("disruptionDetailPopup--btnCancelDisruption").setVisible(true);
-
-			/*******************************************************************
-			 * Load Disruption Custom Data
-			 ******************************************************************/
-			if (!this.disruptionsCustomDataFlag) {
-				airbus.mes.disruptions.ModelManager.loadData();
-				this.disruptionsCustomDataFlag = true;
-			} else {
-				airbus.mes.disruptions.oView.createDisruption.oController.setDataForEditDisruption();
-			}
 		}
 	},
-	/***************************************************************************
-	 * set the data in disruption detail page call set data for edit disruption
-	 * function MESV 1.5
-	 */
-	setDataForViewDisruptionDetail : function() {
-
-		if (!this.disruptionsCustomDataFlag) {
-			airbus.mes.disruptions.ModelManager.loadData();
-			this.disruptionsCustomDataFlag = true;
-		} else {
-			airbus.mes.disruptions.oView.createDisruption.oController.setDataForEditDisruption();
-		}
-	},
+//	/***************************************************************************
+//	 * set the data in disruption detail page call set data for edit disruption
+//	 * function MESV 1.5
+//	 */
+//	setDataForViewDisruptionDetail : function() {
+//
+//		if (!this.disruptionsCustomDataFlag) {
+//			airbus.mes.disruptions.ModelManager.loadData();
+//			this.disruptionsCustomDataFlag = true;
+//		} else {
+//			airbus.mes.disruptions.oView.createDisruption.oController.setDataForEditDisruption();
+//		}
+//	},
 	/**
 	 * [MES V1.5] [Beg]SD-SP1604983-DT-040 search disruption on basis of work
 	 * order/operation

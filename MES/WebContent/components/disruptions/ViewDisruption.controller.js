@@ -59,19 +59,11 @@ sap.ui
 					 * Turn buttons on off based on execution mode
 					 */
 					turnOnOffButtons : function() {
-						if (sap.ui.getCore().byId("operationDetailsView--switchOperationModeBtn").getState() == false) {
-							sap.ui.getCore().byId("operationDetailPopup--reportDisruption").setVisible(false);
-						} else {
-//							Check status of operation - If Complete
-							
-//							var aModel = airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0];
-//							var sStatus = aModel.realStatus;
-							var sStatus = sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/status");
-							
-							// if operation is not complete complete, we can create a disruption
-							if ( sStatus !== "COMPLETED" ) {
-								sap.ui.getCore().byId("operationDetailPopup--reportDisruption").setVisible(true);
-							}							
+						// Check status of operation - If Complete						
+						// if operation is not complete complete, we can create a disruption
+						var sStatus = sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/status");
+						if ( sStatus !== airbus.mes.disruptions.Formatter.opStatus.completed ) {
+							sap.ui.getCore().byId("operationDetailPopup--reportDisruption").setVisible(true);
 						}
 					},
 
@@ -107,16 +99,6 @@ sap.ui
 					 * Open Pop-Up to ask Time Lost while Closing the Disruption
 					 */
 					onCloseDisruption : function(oEvt) {
-
-						if (nav.getCurrentPage().sId == "stationTrackerView" && 
-								sap.ui.getCore().byId("operationDetailsView--switchOperationModeBtn").getState() == false) {
-
-							sap.m.MessageBox.error(this.getView().getModel(
-									"i18nModel").getProperty("readModeError"));
-							
-							return;
-
-						}
 						
 						//Close panel
 						oEvt.getSource().getParent().getParent().setExpanded(false);
@@ -332,16 +314,6 @@ sap.ui
 					 * Delete the Disruption
 					 */
 					onDeleteDisruption : function(oEvt) {
-
-						if (nav.getCurrentPage().sId == "stationTrackerView" && 
-								sap.ui.getCore().byId("operationDetailsView--switchOperationModeBtn").getState() == false) {
-
-							sap.m.MessageBox.error(this.getView().getModel(
-									"i18nModel").getProperty("readModeError"));
-							
-							return;
-
-						}
 						
 						// Close Comment Box if open
 						var path = oEvt.getSource().sId;
@@ -482,16 +454,6 @@ sap.ui
 					 * Reject the Disruption
 					 */
 					onRejectDisruption : function(oEvt) {
-
-						if (nav.getCurrentPage().sId == "stationTrackerView" && 
-								sap.ui.getCore().byId("operationDetailsView--switchOperationModeBtn").getState() == false) {
-
-							sap.m.MessageBox.error(this.getView().getModel(
-									"i18nModel").getProperty("readModeError"));
-							
-							return;
-
-						}
 						
 						// Close Comment Box if open
 						var path = oEvt.getSource().sId;
@@ -582,15 +544,6 @@ sap.ui
 					 * Refuse the Disruption
 					 */
 					onRefuseDisruption : function(oEvt) {
-						if (nav.getCurrentPage().sId == "stationTrackerView" && 
-								sap.ui.getCore().byId("operationDetailsView--switchOperationModeBtn").getState() == false) {
-
-							sap.m.MessageBox.error(this.getView().getModel(
-									"i18nModel").getProperty("readModeError"));
-							
-							return;
-
-						}
 						
 						// Close Comment Box if open
 						var path = oEvt.getSource().sId;
@@ -681,16 +634,6 @@ sap.ui
 					 * Show Comment Box to Add Comments
 					 */
 					showCommentBox : function(oEvt) {
-
-						if (nav.getCurrentPage().sId == "stationTrackerView" && 
-								sap.ui.getCore().byId("operationDetailsView--switchOperationModeBtn").getState() == false) {
-
-							sap.m.MessageBox.error(this.getView().getModel(
-									"i18nModel").getProperty("readModeError"));
-							
-							return;
-
-						}
 						
 						var path = oEvt.getSource().sId;
 						var listnum = path.split("-");
@@ -789,16 +732,6 @@ sap.ui
 					 * When Acknowledge Button is Pressed
 					 */
 					onAckDisruption : function(oEvt) {
-
-						if (nav.getCurrentPage().sId == "stationTrackerView" && 
-								sap.ui.getCore().byId("operationDetailsView--switchOperationModeBtn").getState() == false) {
-
-							sap.m.MessageBox.error(this.getView().getModel(
-									"i18nModel").getProperty("readModeError"));
-							
-							return;
-
-						}
 						
 						// Close Comment Box if open
 						var path = oEvt.getSource().sId;
@@ -944,16 +877,6 @@ sap.ui
 					},
 
 					onMarkSolvedDisruption : function(oEvt) {
-
-						if (nav.getCurrentPage().sId == "stationTrackerView" && 
-								sap.ui.getCore().byId("operationDetailsView--switchOperationModeBtn").getState() == false) {
-
-							sap.m.MessageBox.error(this.getView().getModel(
-									"i18nModel").getProperty("readModeError"));
-							
-							return;
-
-						}
 						
 						var title = this.getView().getModel("i18nModel")
 								.getProperty("markSolvedDisruption");
@@ -1040,16 +963,6 @@ sap.ui
 					 * When Comment is Submitted to Escalate Disruption
 					 */
 					onEscalateDisruption : function(oEvent) {
-
-						if (nav.getCurrentPage().sId == "stationTrackerView" && 
-								sap.ui.getCore().byId("operationDetailsView--switchOperationModeBtn").getState() == false) {
-
-							sap.m.MessageBox.error(this.getView().getModel(
-									"i18nModel").getProperty("readModeError"));
-							
-							return;
-
-						}
 						
 						var msgRef = oEvent.getSource().getBindingContext(
 								"operationDisruptionsModel").getObject(
@@ -1081,103 +994,81 @@ sap.ui
 					},
 
 					onReportDisruption : function(oEvent) {
+						// Load create view data and Set view mode = Create
+						airbus.mes.disruptions.ModelManager.loadData("Create");
 						
-						//two timeout chained to active setBusy & to be sure the setBusy is launched before the next operations
-						//don't work without this trick (or sometimes but don't 100% effective)
-						setTimeout(function() {
-
-							//set busyIndicator delay to 0 ms instead of 500ms
-							if (sap.ui.getCore().byId("createDisruptionView").getBusyIndicatorDelay() !== 0) {
-								sap.ui.getCore().byId("createDisruptionView").setBusyIndicatorDelay(0);
-							}
-							sap.ui.getCore().byId("createDisruptionView").setBusy(true);
-
-							setTimeout(function() {
-								// Close expanded disruption panel
-								if(this.expandedDisruptionPanel)
-									sap.ui.getCore().byId(this.expandedDisruptionPanel).setExpanded(false);
-								
-								var oOperDetailNavContainer = sap.ui.getCore().byId(
-										"operationDetailsView--operDetailNavContainer");
-								
-								// clear disruptionDetailModel if edit is loaded before ReportDisruption
-								sap.ui.getCore().getModel("DisruptionDetailModel").setData();
-								
-								// V1.5 [BEG]
-								// SD-SP1604983-CDP-010  
-								// SD-SP1604983-DDR-005
-								//To fill initially logged in user in issuer field
-																
-								 var sUserId = sap.ui.getCore().getModel(
-								"userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/user_id")
-								
-								var sUserName = (sap.ui.getCore().getModel("userDetailModel").getProperty(
-								"/Rowsets/Rowset/0/Row/0/last_name")+" "+sap.ui.getCore().getModel("userDetailModel").getProperty(
-								"/Rowsets/Rowset/0/Row/0/first_name"))
-								
-								var oItem = new sap.ui.core.Item({key: sUserId ,text: sUserName})
-								
-								 
-								 if (sap.ui.getCore().byId("createDisruptionView--selectIssuer").getSelectedKey()=="") {	
-									 sap.ui.getCore().byId("createDisruptionView--selectIssuer").addItem(oItem)
-									}
-								 sap.ui.getCore().byId("createDisruptionView--selectIssuer").setSelectedItem(oItem)
-								 
-								
-								// V1.5 [END]
-
-								oOperDetailNavContainer.to(airbus.mes.disruptions.oView.createDisruption.getId());
-								
-								
-								//destroying Material List dialog which might have already loaded and will show inconsistent data otherwise
-								if(sap.ui.getCore().byId("createDisruptionView").oController._materialListDialog){
-									sap.ui.getCore().byId("createDisruptionView").oController._materialListDialog.destroy(false);
-									sap.ui.getCore().byId("createDisruptionView").oController._materialListDialog = undefined;
-								}
-								if(sap.ui.getCore().byId("createDisruptionView").oController.jigToolSelectDialog){
-									sap.ui.getCore().byId("createDisruptionView").oController.jigToolSelectDialog.destroy(false);
-									sap.ui.getCore().byId("createDisruptionView").oController.jigToolSelectDialog = undefined;
-								}
-							}, 0);
-						}, 0);
+						
+						// Close expanded disruption panel
+						if(this.expandedDisruptionPanel)
+							sap.ui.getCore().byId(this.expandedDisruptionPanel).setExpanded(false);
+						
+						var oOperDetailNavContainer = sap.ui.getCore().byId("operationDetailsView--operDetailNavContainer");
+						oOperDetailNavContainer.to(airbus.mes.disruptions.oView.createDisruption.getId());
+						
+						// clear disruptionDetailModel if edit is loaded before ReportDisruption
+						sap.ui.getCore().getModel("DisruptionDetailModel").setData();
+						
+						/*// V1.5 [BEG] -- no more required in v1.5
+						// SD-SP1604983-CDP-010 and SD-SP1604983-DDR-005
+						//To fill initially logged in user in issuer field	
+						 var sUserId = sap.ui.getCore().getModel("userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/user_id")
+						
+						var sUserName = (sap.ui.getCore().getModel("userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/last_name")
+										+" "
+										+sap.ui.getCore().getModel("userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/first_name"))
+						
+						var oItem = new sap.ui.core.Item({key: sUserId ,text: sUserName});
+						
+						 
+						 if (sap.ui.getCore().byId("createDisruptionView--selectIssuer").getSelectedKey()=="") {	
+							 sap.ui.getCore().byId("createDisruptionView--selectIssuer").addItem(oItem)
+						 }
+						 sap.ui.getCore().byId("createDisruptionView--selectIssuer").setSelectedItem(oItem)
+						// V1.5 [END]*/						
+						
+						
+						//destroying Material List dialog which might have already loaded and will show inconsistent data otherwise
+						if(sap.ui.getCore().byId("createDisruptionView").oController._materialListDialog){
+							sap.ui.getCore().byId("createDisruptionView").oController._materialListDialog.destroy(false);
+							sap.ui.getCore().byId("createDisruptionView").oController._materialListDialog = undefined;
+						}
+						if(sap.ui.getCore().byId("createDisruptionView").oController.jigToolSelectDialog){
+							sap.ui.getCore().byId("createDisruptionView").oController.jigToolSelectDialog.destroy(false);
+							sap.ui.getCore().byId("createDisruptionView").oController.jigToolSelectDialog = undefined;
+						}
 					},
 
 					/***********************************************************
 					 * Edit Disruption
 					 */
 					onEditDisruption : function(oEvent) {
+						
+						// Fill model DisruptionDetailModel to show data on
+						// edit screen
+						var oModel = sap.ui.getCore().getModel("DisruptionDetailModel");
+						var oModelView = airbus.mes.disruptions.oView.createDisruption.getModel("DisruptionDetailModel");
 
-						if (nav.getCurrentPage().sId == "stationTrackerView" && 
-								sap.ui.getCore().byId("operationDetailsView--switchOperationModeBtn").getState() == false) {
+						// set the data for this new model from the already loaded model
+						var oBindingContext = oEvent.getSource().getBindingContext("operationDisruptionsModel");
+						
+						// reset in the model of the view CreateDisruption correct data in order to reset correct date value
+						oModelView.setData(oBindingContext.getProperty(oBindingContext.sPath));
+						oModel.setData(oBindingContext.getProperty(oBindingContext.sPath));
+						oModel.refresh();
+						oModelView.refresh(true);					
+						
+						
+						
+						// Load create view data and Set view mode = Edit
+						airbus.mes.disruptions.ModelManager.loadData("Edit");
+												
 
-							sap.m.MessageBox.error(this.getView().getModel(
-									"i18nModel").getProperty("readModeError"));
+						// Close expanded disruption panel
+						if(this.expandedDisruptionPanel)
+							sap.ui.getCore().byId(this.expandedDisruptionPanel).setExpanded(false);
 
-						} else {
-							
-							// Close expanded disruption panel
-							if(this.expandedDisruptionPanel)
-								sap.ui.getCore().byId(this.expandedDisruptionPanel).setExpanded(false);
-							
-							// Navigate to Edit Screen
-							this.getView().oParent.to(airbus.mes.disruptions.oView.createDisruption.getId());
-
-							// fill model DisruptionDetailModel to show data on
-							// edit screen
-							var oModel = sap.ui.getCore().getModel(
-									"DisruptionDetailModel");
-
-							// set the data for this new model from the already
-							// loaded model
-							var oBindingContext = oEvent.getSource()
-									.getBindingContext(
-											"operationDisruptionsModel");
-
-							oModel.setData(oBindingContext
-									.getProperty(oBindingContext.sPath));
-							oModel.refresh();
-							
-						}
+						// Navigate to Edit Screen
+						this.getView().oParent.to(airbus.mes.disruptions.oView.createDisruption.getId());
 
 					},
 					

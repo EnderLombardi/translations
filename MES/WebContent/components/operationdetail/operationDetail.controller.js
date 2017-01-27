@@ -6,7 +6,6 @@ sap.ui
         reasonCodeText: undefined,
         operationStatus: undefined,
         disruptionsFlag: false,
-        disruptionsCustomDataFlag: undefined,
 
         /**
          * Called when a controller is instantiated and its View
@@ -56,7 +55,7 @@ sap.ui
             }
 
             this.disruptionsFlag = false;
-            this.disruptionsCustomDataFlag = false;
+
             // Navigation to Status every time pop-up is opened
             this.nav.to(airbus.mes.operationdetail.status.oView.getId());
 
@@ -317,16 +316,8 @@ sap.ui
                         sap.ui.getCore().byId("createDisruptionView--status").setValue(this.getView().getModel("i18n").getProperty("Pending"));
                     }
 
-                    /***************************************************
-                     * Load Disruption Custom Data
-                     **************************************************/
-                    if (!this.disruptionsCustomDataFlag) {
-
-                        airbus.mes.disruptions.ModelManager.loadData();
-                        this.disruptionsCustomDataFlag = true;
-                    } else
-                        airbus.mes.disruptions.oView.createDisruption.oController.setDataForEditDisruption();
                     break;
+                    
                 case "jigtoolsView":
                     airbus.mes.jigtools.oView.oController.checkSettingJigsTools();
                     break;

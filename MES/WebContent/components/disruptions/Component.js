@@ -58,9 +58,6 @@ airbus.mes.disruptions.Component.prototype.createContent = function() {
         // Model for Disruptions details
         this.oView.viewDisruption.setModel(sap.ui.getCore().getModel("operationDisruptionsModel"),"operationDisruptionsModel");
 
-        //Model for custom data of create disruption
-        this.oView.createDisruption.setModel(sap.ui.getCore().getModel("disruptionCustomData"),"disruptionCustomData");
-
         //Model for Issuer of create disruption - V1.5
         this.oView.createDisruption.setModel(sap.ui.getCore().getModel("ressourcePoolModel"),"ressourcePoolModel");
 
@@ -73,9 +70,15 @@ airbus.mes.disruptions.Component.prototype.createContent = function() {
 
         //Model for JigTool List
         this.oView.createDisruption.setModel(sap.ui.getCore().getModel("JigtoolListModel"),"JigtoolListModel");
-
+      
         //Model for disruptionCategoryModel
         this.oView.createDisruption.setModel(sap.ui.getCore().getModel("disruptionCategoryModel"),"disruptionCategoryModel");
+          
+        //Model for disruption reason and responsible group
+        this.oView.createDisruption.setModel(sap.ui.getCore().getModel("disruptionRsnRespGrp"),"disruptionRsnRespGrp");
+          
+        //Model for disruption resolver names
+        this.oView.createDisruption.setModel(sap.ui.getCore().getModel("disruptionResolverModel"),"disruptionResolverModel");
 
         /******
          *
@@ -87,9 +90,6 @@ airbus.mes.disruptions.Component.prototype.createContent = function() {
         // Model for Disruptions details
         this.oView.disruptionDetail.setModel(sap.ui.getCore().getModel("operationDisruptionsModel"),"operationDisruptionsModel");
 
-        //Model for custom data of create disruption
-        this.oView.disruptionDetail.setModel(sap.ui.getCore().getModel("disruptionCustomData"),"disruptionCustomData");
-
         //Model for custom data of edit disruption
         this.oView.disruptionDetail.setModel(sap.ui.getCore().getModel("DisruptionDetailModel"),"DisruptionDetailModel");
 
@@ -98,9 +98,15 @@ airbus.mes.disruptions.Component.prototype.createContent = function() {
 
         //Model for JigTool List
         this.oView.disruptionDetail.setModel(sap.ui.getCore().getModel("JigtoolListModel"),"JigtoolListModel");
-
+      
         //Model for disruptionCategoryModel
         this.oView.disruptionDetail.setModel(sap.ui.getCore().getModel("disruptionCategoryModel"),"disruptionCategoryModel");
+          
+        //Model for disruption reason and responsible group
+        this.oView.disruptionDetail.setModel(sap.ui.getCore().getModel("disruptionRsnRespGrp"),"disruptionRsnRespGrp");
+          
+        //Model for disruption resolver names
+        this.oView.disruptionDetail.setModel(sap.ui.getCore().getModel("disruptionResolverModel"),"disruptionResolverModel");
 
         return this.oView.viewDisruption;
 

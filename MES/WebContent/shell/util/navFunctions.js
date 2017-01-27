@@ -251,7 +251,9 @@ airbus.mes.shell.util.navFunctions = {
         if (container.getPage("DisruptionAttachmentView") == null) {
             container.addPage(airbus.mes.disruptions.attachments.oView);
         }
-        container.to(airbus.mes.disruptions.attachments.oView.getId(), { Desc: disruptionDesc });
+        container.to(airbus.mes.disruptions.attachments.oView.getId(),{Desc:disruptionDesc});
+        
+        airbus.mes.disruptions.ModelManager.AttachmentListModel();
     },
 
     disruptionTracker: function () {

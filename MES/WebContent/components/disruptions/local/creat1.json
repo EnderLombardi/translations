@@ -1,0 +1,74 @@
+{ "Rowsets" : { 
+	"DateCreated" : "2017-01-27T12:17:19", "Version" : "15.1 SP3 Patch 0 (7 nov. 2016)", "StartDate" : "2017-01-27T11:17:16+0100", "EndDate" : "2017-01-27T12:17:16+0100", "CachedTime" : "", 
+	"Rowset" : [ 
+	{ "Columns" : { 
+		"Column" : [ 
+		{ "Name" : "MESSAGE_TYPE", "SourceColumn" : "MESSAGE_TYPE", "Description" : "MESSAGE_TYPE", "SQLDataType" : -9, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "DESCRIPTION", "SourceColumn" : "DESCRIPTION", "Description" : "DESCRIPTION", "SQLDataType" : -9, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "CATEGORY_CLASS", "SourceColumn" : "CATEGORY_CLASS", "Description" : "CATEGORY_CLASS", "SQLDataType" : -9, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "HANDLE", "SourceColumn" : "HANDLE", "Description" : "HANDLE", "SQLDataType" : -9, "MinRange" : 1.0, "MaxRange" : 1.0 } ] }, 
+	"Row" : [ 
+		{ "MESSAGE_TYPE" : "DISRUPT-0111", "DESCRIPTION" : "DISRUPT-0111", "CATEGORY_CLASS" : "01-Matériel (Production)", "HANDLE" : "MessageTypeBO:FNZ1,DISRUPT-0111" }, 
+		{ "MESSAGE_TYPE" : "DISRUPT-0112", "DESCRIPTION" : "DISRUPT-0112", "CATEGORY_CLASS" : "01-Matériel (Production)", "HANDLE" : "MessageTypeBO:FNZ1,DISRUPT-0112" }, 
+		{ "MESSAGE_TYPE" : "DISRUPT-0113", "DESCRIPTION" : "DISRUPT-0113", "CATEGORY_CLASS" : "01-Matériel (Production)", "HANDLE" : "MessageTypeBO:FNZ1,DISRUPT-0113" }, 
+		{ "MESSAGE_TYPE" : "DISRUPT-0114", "DESCRIPTION" : "DISRUPT-0114", "CATEGORY_CLASS" : "01-Matériel (Production)", "HANDLE" : "MessageTypeBO:FNZ1,DISRUPT-0114" }, 
+		{ "MESSAGE_TYPE" : "DISRUPT-0115", "DESCRIPTION" : "DISRUPT-0115", "CATEGORY_CLASS" : "01-Matériel (Production)", "HANDLE" : "MessageTypeBO:FNZ1,DISRUPT-0115" }, 
+		{ "MESSAGE_TYPE" : "DISRUPT-0116", "DESCRIPTION" : "DISRUPT-0116", "CATEGORY_CLASS" : "01-Matériel (Production)", "HANDLE" : "MessageTypeBO:FNZ1,DISRUPT-0116" }, 
+		{ "MESSAGE_TYPE" : "DISRUPT-0117", "DESCRIPTION" : "DISRUPT-0117", "CATEGORY_CLASS" : "01-Matériel (Production)", "HANDLE" : "MessageTypeBO:FNZ1,DISRUPT-0117" }, 
+		{ "MESSAGE_TYPE" : "DISRUPT-0211", "DESCRIPTION" : "DISRUPT-0211", "CATEGORY_CLASS" : "02-Méthodes", "HANDLE" : "MessageTypeBO:FNZ1,DISRUPT-0211" }, 
+		{ "MESSAGE_TYPE" : "DISRUPT-0212", "DESCRIPTION" : "DISRUPT-0212", "CATEGORY_CLASS" : "02-Méthodes", "HANDLE" : "MessageTypeBO:FNZ1,DISRUPT-0212" }, 
+		{ "MESSAGE_TYPE" : "DISRUPT-0214", "DESCRIPTION" : "DISRUPT-0214", "CATEGORY_CLASS" : "02-Méthodes", "HANDLE" : "MessageTypeBO:FNZ1,DISRUPT-0214" }, 
+		{ "MESSAGE_TYPE" : "DISRUPT-0215", "DESCRIPTION" : "DISRUPT-0215", "CATEGORY_CLASS" : "02-Méthodes", "HANDLE" : "MessageTypeBO:FNZ1,DISRUPT-0215" }, 
+		{ "MESSAGE_TYPE" : "DISRUPT-0216", "DESCRIPTION" : "DISRUPT-0216", "CATEGORY_CLASS" : "02-Méthodes", "HANDLE" : "MessageTypeBO:FNZ1,DISRUPT-0216" }, 
+		{ "MESSAGE_TYPE" : "DISRUPT-0219", "DESCRIPTION" : "DISRUPT-0219", "CATEGORY_CLASS" : "02-Méthodes", "HANDLE" : "MessageTypeBO:FNZ1,DISRUPT-0219" }, 
+		{ "MESSAGE_TYPE" : "DISRUPT-0311", "DESCRIPTION" : "DISRUPT-0311", "CATEGORY_CLASS" : "03-Moyens", "HANDLE" : "MessageTypeBO:FNZ1,DISRUPT-0311" }, 
+		{ "MESSAGE_TYPE" : "DISRUPT-0312", "DESCRIPTION" : "DISRUPT-0312", "CATEGORY_CLASS" : "03-Moyens", "HANDLE" : "MessageTypeBO:FNZ1,DISRUPT-0312" }, 
+		{ "MESSAGE_TYPE" : "DISRUPT-0318", "DESCRIPTION" : "DISRUPT-0318", "CATEGORY_CLASS" : "03-Moyens", "HANDLE" : "MessageTypeBO:FNZ1,DISRUPT-0318" }, 
+		{ "MESSAGE_TYPE" : "DISRUPT-0319", "DESCRIPTION" : "DISRUPT-0319", "CATEGORY_CLASS" : "03-Moyens", "HANDLE" : "MessageTypeBO:FNZ1,DISRUPT-0319" }, 
+		{ "MESSAGE_TYPE" : "DISRUPT-0321", "DESCRIPTION" : "DISRUPT-0321", "CATEGORY_CLASS" : "03-Moyens", "HANDLE" : "MessageTypeBO:FNZ1,DISRUPT-0321" }, 
+		{ "MESSAGE_TYPE" : "DISRUPT-0322", "DESCRIPTION" : "DISRUPT-0322", "CATEGORY_CLASS" : "03-Moyens", "HANDLE" : "MessageTypeBO:FNZ1,DISRUPT-0322" }, 
+		{ "MESSAGE_TYPE" : "DISRUPT-0415", "DESCRIPTION" : "DISRUPT-0415", "CATEGORY_CLASS" : "04-Main d'Œuvre", "HANDLE" : "MessageTypeBO:FNZ1,DISRUPT-0415" }, 
+		{ "MESSAGE_TYPE" : "DISRUPT-0416", "DESCRIPTION" : "DISRUPT-0416", "CATEGORY_CLASS" : "04-Main d'Œuvre", "HANDLE" : "MessageTypeBO:FNZ1,DISRUPT-0416" }, 
+		{ "MESSAGE_TYPE" : "DISRUPT-0417", "DESCRIPTION" : "DISRUPT-0417", "CATEGORY_CLASS" : "04-Main d'Œuvre", "HANDLE" : "MessageTypeBO:FNZ1,DISRUPT-0417" }, 
+		{ "MESSAGE_TYPE" : "DISRUPT-0418", "DESCRIPTION" : "DISRUPT-0418", "CATEGORY_CLASS" : "04-Main d'Œuvre", "HANDLE" : "MessageTypeBO:FNZ1,DISRUPT-0418" }, 
+		{ "MESSAGE_TYPE" : "DISRUPT-0419", "DESCRIPTION" : "DISRUPT-0419", "CATEGORY_CLASS" : "04-Main d'Œuvre", "HANDLE" : "MessageTypeBO:FNZ1,DISRUPT-0419" }, 
+		{ "MESSAGE_TYPE" : "DISRUPT-0421", "DESCRIPTION" : "DISRUPT-0421", "CATEGORY_CLASS" : "04-Main d'Œuvre", "HANDLE" : "MessageTypeBO:FNZ1,DISRUPT-0421" }, 
+		{ "MESSAGE_TYPE" : "DISRUPT-0422", "DESCRIPTION" : "DISRUPT-0422", "CATEGORY_CLASS" : "04-Main d'Œuvre", "HANDLE" : "MessageTypeBO:FNZ1,DISRUPT-0422" }, 
+		{ "MESSAGE_TYPE" : "DISRUPT-0511", "DESCRIPTION" : "DISRUPT-0511", "CATEGORY_CLASS" : "05-Millieu", "HANDLE" : "MessageTypeBO:FNZ1,DISRUPT-0511" }, 
+		{ "MESSAGE_TYPE" : "DISRUPT-0512", "DESCRIPTION" : "DISRUPT-0512", "CATEGORY_CLASS" : "05-Millieu", "HANDLE" : "MessageTypeBO:FNZ1,DISRUPT-0512" }, 
+		{ "MESSAGE_TYPE" : "DISRUPT-0513", "DESCRIPTION" : "DISRUPT-0513", "CATEGORY_CLASS" : "05-Millieu", "HANDLE" : "MessageTypeBO:FNZ1,DISRUPT-0513" }, 
+		{ "MESSAGE_TYPE" : "DISRUPT-0514", "DESCRIPTION" : "DISRUPT-0514", "CATEGORY_CLASS" : "05-Millieu", "HANDLE" : "MessageTypeBO:FNZ1,DISRUPT-0514" }, 
+		{ "MESSAGE_TYPE" : "DISRUPT-0515", "DESCRIPTION" : "DISRUPT-0515", "CATEGORY_CLASS" : "05-Millieu", "HANDLE" : "MessageTypeBO:FNZ1,DISRUPT-0515" }, 
+		{ "MESSAGE_TYPE" : "DISRUPT-0517", "DESCRIPTION" : "DISRUPT-0517", "CATEGORY_CLASS" : "05-Millieu", "HANDLE" : "MessageTypeBO:FNZ1,DISRUPT-0517" }, 
+		{ "MESSAGE_TYPE" : "DISRUPT-0518", "DESCRIPTION" : "DISRUPT-0518", "CATEGORY_CLASS" : "05-Millieu", "HANDLE" : "MessageTypeBO:FNZ1,DISRUPT-0518" }, 
+		{ "MESSAGE_TYPE" : "DISRUPT-0519", "DESCRIPTION" : "DISRUPT-0519", "CATEGORY_CLASS" : "05-Millieu", "HANDLE" : "MessageTypeBO:FNZ1,DISRUPT-0519" }, 
+		{ "MESSAGE_TYPE" : "DISRUPT-0521", "DESCRIPTION" : "DISRUPT-0521", "CATEGORY_CLASS" : "05-Millieu", "HANDLE" : "MessageTypeBO:FNZ1,DISRUPT-0521" }, 
+		{ "MESSAGE_TYPE" : "DISRUPT-0323", "DESCRIPTION" : "0323", "CATEGORY_CLASS" : "03-Moyens", "HANDLE" : "MessageTypeBO:FNZ1,DISRUPT-0323" }, 
+		{ "MESSAGE_TYPE" : "DISRUPT-0411", "DESCRIPTION" : "0411", "CATEGORY_CLASS" : "04-Main d'Œuvre", "HANDLE" : "MessageTypeBO:FNZ1,DISRUPT-0411" }, 
+		{ "MESSAGE_TYPE" : "DISRUPT-0412", "DESCRIPTION" : "0412", "CATEGORY_CLASS" : "04-Main d'Œuvre", "HANDLE" : "MessageTypeBO:FNZ1,DISRUPT-0412" }, 
+		{ "MESSAGE_TYPE" : "DISRUPT-0413", "DESCRIPTION" : "0413", "CATEGORY_CLASS" : "04-Main d'Œuvre", "HANDLE" : "MessageTypeBO:FNZ1,DISRUPT-0413" }, 
+		{ "MESSAGE_TYPE" : "DISRUPT-0414", "DESCRIPTION" : "0414", "CATEGORY_CLASS" : "04-Main d'Œuvre", "HANDLE" : "MessageTypeBO:FNZ1,DISRUPT-0414" } ]
+		 }, 	{ "Columns" : { 
+		"Column" : [ 
+		{ "Name" : "group_name", "SourceColumn" : "group_name", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
+		{ "Name" : "group_desc", "SourceColumn" : "group_desc", "Description" : "", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 } ] }, 
+	"Row" : [ 
+		{ "group_name" : "LINE_MANAGER", "group_desc" : "Line Manager" }, 
+		{ "group_name" : "LOGISTIC_SUPPORT", "group_desc" : "Logistic Support" }, 
+		{ "group_name" : "TEAM_LEADER", "group_desc" : "Team Leader" }, 
+		{ "group_name" : "MANUF_ENG_SUPPORT", "group_desc" : "Manuf. Eng. Support" }, 
+		{ "group_name" : "QUALITY_SUPPORT", "group_desc" : "Quality Support" }, 
+		{ "group_name" : "SHIFT_MANAGEMENT", "group_desc" : "SHIFT_MANAGEMENT" }, 
+		{ "group_name" : "SHIFT_SUPERVISOR", "group_desc" : "SHIFT_MANAGEMENT" } ]
+		 }, 	{ "Columns" : { 
+		"Column" : [ 
+		{ "Name" : "CATEGORY_CLASS", "SourceColumn" : "CATEGORY_CLASS", "Description" : "CATEGORY_CLASS", "SQLDataType" : -9, "MinRange" : 1.0, "MaxRange" : 1.0 } ] }, 
+	"Row" : [ 
+		{ "CATEGORY_CLASS" : "01-Matériel (Production)" }, 
+		{ "CATEGORY_CLASS" : "02-Méthodes" }, 
+		{ "CATEGORY_CLASS" : "03-Moyens" }, 
+		{ "CATEGORY_CLASS" : "04-Main d'Œuvre" }, 
+		{ "CATEGORY_CLASS" : "05-Millieu" } ]
+		 } ]
+	 }
+ }
