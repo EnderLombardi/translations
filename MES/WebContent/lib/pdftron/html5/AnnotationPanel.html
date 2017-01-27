@@ -1,0 +1,194 @@
+<style>
+    .annotationPanel h3, .annotationPanel h4, .annotationPanel ul{
+        margin: 0;
+    }   
+
+    #annotationList { 
+        list-style-type: none; margin: 0; padding: 0; 
+        height:100%;
+    }
+    #annotationList li { 
+        border: none !important;
+    }
+
+    .annotListItem{
+        padding: 5px 3px;
+        border-style: solid;
+        border-color: silver;
+        border-width: 0 0 1px 0 !important;
+        cursor:pointer;
+    }
+    .annotListItem .subject{
+        min-width:120px;
+        display : inline-block;
+        font-weight: bold;
+    }
+    .annotListItem .page{
+        display : inline-block;
+        float: right;
+    }
+    .annotListItem .comment{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-style: italic;
+    }
+    .annotListItem .author{
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    #toolModePicker{
+        padding:5px;
+    }
+    #toolModePicker.icon-picker{
+        text-align: left;
+        padding: 5px 0px;
+    }
+    #toolModePicker li{
+        display: inline-block;
+        border: 1px solid #aaa;
+        margin: 2px 0px;
+    }
+    #toolModePicker li img{
+        width:22px;
+        height:22px;
+        padding: 2px 4px;
+        cursor: pointer;
+    }
+    #toolModePicker li.image-icon {
+        padding: 0px;
+    }
+    #toolModePicker li.image-icon:hover {
+        background: rgba(39,124,168,0.2);
+    }
+    .colorPicker{
+        border: 1px dimgray solid;
+        background:white;
+        padding:1px 0;
+        line-height: 0;
+        cursor: pointer;
+    }
+    .colorPicker li{
+        display: inline-block;
+        list-style-type: none;
+        padding: 2px;
+        border: none !important;
+    }
+    .colorPicker li div{
+        width: 10px;
+        height: 10px;
+        border: 1px dimgray solid;
+    }
+    #annotationListHeader{
+        border-style: solid;
+        border-color: silver;
+        border-width: 1px 1px 0px 1px;
+        background-color: #eee;
+        background: -webkit-gradient(linear, left bottom, left top, color-stop(0.0, #ddd), color-stop(1.0, #fff));
+        background: -webkit-linear-gradient(center bottom, #ddd 0%, #fff 100%);
+        background: -moz-linear-gradient(center bottom, #ddd 0%, #fff 100%);
+        background: -ms-linear-gradient(center bottom, #ddd 0%, #fff 100%);
+        background: -o-linear-gradient(center bottom, #ddd 0%, #fff 100%);
+    }
+    #annotationProperties{
+        padding: 0 0 12px 0;
+    }
+    #annotationProperties h4{
+        margin-top:5px;
+    }
+    #thicknessSlider{
+        margin: 2px 5px;
+    }
+    #thicknessSlider .ui-slider-handle{
+        text-decoration: none;
+        text-align: center;
+        color: #666;
+    }
+    #annotationProperties button{
+        width:100%;
+        margin: 4px 0;
+    }
+    #annotationListScroll {
+        border: 1px solid silver;
+        overflow-y: auto; 
+        overflow-x: hidden;
+    }
+
+    /* JQUERY UI STYLE OVERRIDES */
+    .ui-tabs .ui-tabs-nav li.ui-tabs-selected a{
+        cursor:pointer;
+    }
+</style>
+<script type="text/javascript" src="AnnotationPanel.js"></script>
+<div class="annotationPanel tab-panel-stretch">
+    <div id="annot-head" class="tab-panel-item-fixed">
+        <ul id="toolModePicker" class="icon-picker">
+            <li id="annot-button-edit" data-toolmode="AnnotationEdit" data-i18n="[title]sidepanel.annotationTab.tooltips.edit" class="glyphicons customicons multiselect"></li>
+            <li  id="annot-button-sticky" data-toolmode="AnnotationCreateSticky" data-i18n="[title]sidepanel.annotationTab.tooltips.stickyNote" class="glyphicons comments"></li>
+            <li  id="annot-button-highlight" data-toolmode="AnnotationCreateTextHighlight" data-i18n="[title]sidepanel.annotationTab.tooltips.highlight" class="glyphicons customicons text_highlight"></li>
+            <li id="annot-button-underline" data-toolmode="AnnotationCreateTextUnderline" data-i18n="[title]sidepanel.annotationTab.tooltips.underline" class="glyphicons text_underline"></li>
+            <li id="annot-button-strikeout" data-toolmode="AnnotationCreateTextStrikeout" data-i18n="[title]sidepanel.annotationTab.tooltips.strikeout" class="glyphicons text_strike"></li>
+            <li  id="annot-button-rectangle" data-toolmode="AnnotationCreateRectangle" data-i18n="[title]sidepanel.annotationTab.tooltips.rectangle" class="glyphicons vector_path_square"></li>
+            <li  id="annot-button-ellipse" data-toolmode="AnnotationCreateEllipse" data-i18n="[title]sidepanel.annotationTab.tooltips.ellipse" class="glyphicons vector_path_circle"></li>
+            <li  id="annot-button-line" data-toolmode="AnnotationCreateLine" data-i18n="[title]sidepanel.annotationTab.tooltips.line" class="glyphicons vector_path_line"></li>
+            <li id="annot-button-freehand" data-toolmode="AnnotationCreateFreeHand" data-i18n="[title]sidepanel.annotationTab.tooltips.freeHand" class="glyphicons brush"></li>
+            <li id="annot-button-polyline" data-toolmode="AnnotationCreatePolyline" data-i18n="[title]sidepanel.annotationTab.tooltips.polyline" class="glyphicons customicons vector_path_polyline"></li> 
+            <li id="annot-button-polygon" data-toolmode="AnnotationCreatePolygon" data-i18n="[title]sidepanel.annotationTab.tooltips.polygon" class="glyphicons vector_path_polygon"></li>  
+            <li id="annot-button-callout" data-toolmode="AnnotationCreateCallout" data-i18n="[title]sidepanel.annotationTab.tooltips.callout" class="glyphicons customicons callout"></li> 
+            <li id="annot-button-freetext" data-toolmode="AnnotationCreateFreeText" data-i18n="[title]sidepanel.annotationTab.tooltips.freetext" class="glyphicons customicons text_ibeam"></li>
+        </ul>
+    </div>
+<!--    <div id="annot-content">-->
+        <div id="annotationListHeader" class="tab-panel-item-fixed">
+            <button type="button" id="toggleAnnotationsButton" style="float:left" data-i18n="sidepanel.annotationTab.buttonHide;[title]sidepanel.annotationTab.toggleAnnotations"></button>
+            <button type="button" id="saveAnnotationsButton" style="float:right" data-i18n="sidepanel.annotationTab.buttonSave;[title]sidepanel.annotationTab.saveAnnotations"></button>
+            <!-- comment out filter box for now
+            <input id="filterBox" title="Filter" class="ui-ele toolbar-input-text" type=text name=filter style="width: 80px; margin-right:2px;" />
+            <span class="ui-ele ui-label" style="vertical-align:middle">Filter:</span> -->
+            <div style="clear:both;"></div>
+        </div>
+        <div id="annotationListScroll" class="tab-panel-item-stretch" >
+            <ul id="annotationList">
+            </ul>
+        </div>
+
+<!--    </div>-->
+    <div id="annot-foot" class="tab-panel-item-fixed">
+        <div id="annotationProperties" style="display:none">
+            <div id="fillColorPicker">
+                <h4 data-i18n="sidepanel.annotationTab.fill"></h4>
+                <ul class="colorPicker">
+                    <li data-color="red"></li>
+                    <li data-color="orange"></li>
+                    <li data-color="yellow"></li>
+                    <li data-color="lightgreen"></li>
+                    <li data-color="green"></li>
+                    <li data-color="blue"></li>
+                    <li data-color="black"></li>
+                    <li data-color="white"></li>
+                    <li data-color="transparent"></li>
+                </ul>
+            </div>
+            <div id="strokeColorPicker">
+                <h4 data-i18n="sidepanel.annotationTab.stroke"></h4>
+                <ul class="colorPicker">
+                    <li data-color="red"></li>
+                    <li data-color="orange"></li>
+                    <li data-color="yellow"></li>
+                    <li data-color="lightgreen"></li>
+                    <li data-color="green"></li>
+                    <li data-color="blue"></li>
+                    <li data-color="black"></li>
+                    <li data-color="white"></li>
+                </ul>
+            </div>
+            <div id="thicknessPicker">
+                <h4 data-i18n="sidepanel.annotationTab.thickness"></h4>
+                <div id="thicknessSlider"></div>  
+            </div>
+            <button type="button" id="defaultButton" data-i18n="sidepanel.annotationTab.setAsDefault"></button>
+        </div>
+    </div>
+</div>
+
