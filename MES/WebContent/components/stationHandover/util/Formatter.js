@@ -4,6 +4,11 @@ jQuery.sap.declare("airbus.mes.stationHandover.util.Formatter");
 
 airbus.mes.stationHandover.util.Formatter = {
 		
+	isBlocked : function(oEvt) {
+		
+		var oEvt
+		
+	}
 
 };
 
