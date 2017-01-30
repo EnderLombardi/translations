@@ -2325,8 +2325,12 @@ td {
   background-color: #ffffff !important; }
 .disruptions .sapMPanelContent:not(.sapMPanelBGTransparent) {
   border-bottom: 0 !important;
+<<<<<<< Upstream, based on origin/MESv1.5
   background-color: #e9fbfd;
   padding: 0; }
+=======
+  background-color: #e9fbfd; }
+>>>>>>> 83c7bfe [acpnglinks] work on new view to select coumns
 .disruptions .sapMComboBoxTextField,
 .disruptions .sapMSFF {
   border: 1px solid #74D2E7; }
@@ -2354,6 +2358,7 @@ td {
   .disruptions .sapMIBar.sapMSubHeader-CTX .headerText {
     font-size: 1.2rem !important; }
 
+<<<<<<< Upstream, based on origin/MESv1.5
 #disruptiontrackerView--headerText-inner {
   color: #74d2e7;
   text-shadow: none;
@@ -2385,6 +2390,11 @@ td {
   color: #0D5D76; }
   #disruptiontrackerView--exportbutton-inner > span {
     color: #0D5D76; }
+=======
+#disruptiontrackerView--navBack .sapMBtnIcon,
+#disruptiontrackerView--navBack .sapMBtnContent {
+  color: white; }
+>>>>>>> 83c7bfe [acpnglinks] work on new view to select coumns
 
 #disruptiontrackerView--gotoDisruptionKpi.sapMBtn:hover {
   background-color: rgba(0, 86, 112, 0.2); }
@@ -2698,6 +2708,7 @@ RESSOURCEPOOL
   opacity: 1; }
 
 #resourcePool .sapMPageWithSubHeader > section {
+<<<<<<< Upstream, based on origin/MESv1.5
   top: calc(3rem + 18px); }
   #resourcePool .sapMPageWithSubHeader > section .resourcePoolSubheader li {
     height: 3rem;
@@ -2708,6 +2719,17 @@ RESSOURCEPOOL
     border: none;
     color: #0D5D76;
     border-left: 1px solid #8db9ca;
+=======
+  top: calc(3rem + 5px); }
+  #resourcePool .sapMPageWithSubHeader > section .resourcePoolSubheader li {
+    height: 3rem;
+    line-height: 3rem;
+    display: inline-block;
+    font-size: 1.075rem;
+    vertical-align: top;
+    border: none;
+    color: #0D5D76;
+>>>>>>> 83c7bfe [acpnglinks] work on new view to select coumns
     background-color: transparent; }
     #resourcePool .sapMPageWithSubHeader > section .resourcePoolSubheader li:hover {
       background-color: rgba(0, 86, 112, 0.2); }
@@ -7060,6 +7082,7 @@ DATE PICKER
   #stationHandoverView--TreeTableBasic #stationHandoverView--TreeTableBasic-sapUiTableRowHdrScr {
     display: block;
     z-index: 0; }
+<<<<<<< Upstream, based on origin/MESv1.5
 
 /********************
 MES Document Viewer
@@ -7078,6 +7101,8 @@ MES Document Viewer
   padding: 5px 3px 2px 3px;
   min-width: 650px;
   margin-top: 18px !important; }
+=======
+>>>>>>> 83c7bfe [acpnglinks] work on new view to select coumns
 
 /*************
 GENERALE RULES
