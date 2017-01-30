@@ -9,7 +9,7 @@ airbus.mes.stationHandover.util.ModelManager = {
        
        init : function(core) {
     	  
-    	   var aModel = ["testModel"]
+    	   var aModel = ["testModel","msnModel"]
     	   airbus.mes.shell.ModelManager.createJsonModel(core,aModel);
            
            //core.getModel("stationHandovershiftsModel").attachRequestCompleted(airbus.mes.stationHandover.util.ModelManager.onShiftsLoad);
@@ -71,6 +71,22 @@ airbus.mes.stationHandover.util.ModelManager = {
 	        var GroupingBoxingManager = airbus.mes.stationHandover.util.GroupingBoxingManager;
 	        GroupingBoxingManager.parseShift();
 	    },
-	  	  	    
 	  
+	    getMsn : function() {
+	    	
+	    	var aMsn = airbus.mes.settings.oView.byId("selectMSN").getItems();
+	        var aModel = [];
+	    	var oViewModel = airbus.mes.stationHandover.oView.getModel("msnModel");
+	    	
+	    	aMsn.forEach(function(el) {
+
+	    		aModel.push({
+	    			"msn" : el.mProperties.text,
+	    			"key" : el.mProperties.key,
+	    		})
+	    	})
+	    	
+	    	oViewModel.setData(aModel);
+	    	oViewModel.refresh();	    	    	
+	    }
 };

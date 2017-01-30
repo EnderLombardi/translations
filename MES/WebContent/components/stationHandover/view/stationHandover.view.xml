@@ -13,18 +13,22 @@
 				selectionMode="MultiToggle" enableSelectAll="true"
 				visibleRowCountMode="Auto">
 				<extension>
+					
 					<m:Toolbar id="kpiHeaderToolbar"
 						class="classKpiheaderToolbar pageHeader kpiPageHeader contentNoPad">
 						<m:Label id="stationHandover" text="{stationHandoverI18n>stationHandover}"
 							class="classDateLabel" />
 						<m:Select id="selectStationHandover" class="comboStationHandover"
-							change="changeShift" items="{ path : 'stationTrackerShift>/' }">
-							<core:Item key="{stationTrackerShift>shiftID}" text="{stationTrackerShift>shiftName}" />
+							change="changeShift" items="{ path : 'msnModel>/' , sorter : {
+            path : 'text' , descending : 'false'            
+         } }">
+							<core:Item key="{selectMSN>key}" text="{TrackerShift>shiftName}" />
 						</m:Select>
 						<m:Select id="selectMsnHandover" class="comboStationHandover"
 							change="changeShift"
-							items="{ path : 'stationTrackerShift>/' , sorter : { path : 'ProductName' , descending : 'false' } }">
-							<core:Item key="{stationTrackerShift>shiftID}" text="{stationTrackerShift>shiftName}" />
+							items="{ path : 'msnModel>/' }">
+							<core:Item key="{msnModel>key}" text="{msnModel>msn}" />
+
 						</m:Select>
 
 					</m:Toolbar>

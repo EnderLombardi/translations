@@ -360,6 +360,7 @@ sap.ui.controller(
                      */
                     stationHandover : function() {
                     	
+                    	airbus.mes.stationHandover.util.ModelManager.getMsn();
                     	
                     },
                     /**
