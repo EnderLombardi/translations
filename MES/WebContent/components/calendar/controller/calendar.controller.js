@@ -66,17 +66,17 @@ sap.ui.controller("airbus.mes.calendar.controller.calendar", {
         airbus.mes.calendar.oView.byId("buttonViewMode").rerender();
         airbus.mes.calendar.oView.byId("buttonViewMode").setSelectedKey("day");
         
-        if ( airbus.mes.calendar.util.ShiftManager.shiftIdSelected === "ALL" ) {
+     //   if ( airbus.mes.calendar.util.ShiftManager.shiftIdSelected === "ALL" ) {
         	
             calendar.updateView();
         	
-        } else  {
-        	
-        	airbus.mes.calendar.util.GroupingBoxingManager.parseShift();
-	    	airbus.mes.calendar.util.ShiftManager.init(airbus.mes.calendar.util.GroupingBoxingManager.shiftNoBreakHierarchy);
-	    	airbus.mes.calendar.util.GroupingBoxingManager.computeCalendarHierarchy();
-        	
-        }
+//        } else  {
+//        	
+//        	airbus.mes.calendar.util.GroupingBoxingManager.parseShift();
+//	    	airbus.mes.calendar.util.ShiftManager.init(airbus.mes.calendar.util.GroupingBoxingManager.shiftNoBreakHierarchy);
+//	    	airbus.mes.calendar.util.GroupingBoxingManager.computeCalendarHierarchy();
+//        	
+//        }
         
         
     },
@@ -93,7 +93,7 @@ sap.ui.controller("airbus.mes.calendar.controller.calendar", {
         airbus.mes.calendar.util.ShiftManager.dayDisplay = false;
         airbus.mes.calendar.util.ShiftManager.taktDisplay = true;
         
-        var sTime = airbus.mes.calendar.util.Formatter.jsDateFromDayTimeStr(airbus.mes.settings.ModelManager.taktEnd) - airbus.mes.calendar.util.Formatter.jsDateFromDayTimeStr(airbus.mes.settings.ModelManager.takStart)
+        var sTime = airbus.mes.calendar.util.Formatter.jsDateFromDayTimeStr(airbus.mes.settings.ModelManager.taktEnd) - airbus.mes.calendar.util.Formatter.jsDateFromDayTimeStr(airbus.mes.settings.ModelManager.taktStart)
        
         // Takt is over one day
         if ( Math.abs(sTime) > 86400000 ) {

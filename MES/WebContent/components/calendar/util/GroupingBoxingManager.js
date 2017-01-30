@@ -239,11 +239,11 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 		var ShiftManager = airbus.mes.calendar.util.ShiftManager;
 		
 		// Use the previous start date and test if it is in shift hierearchy otherwise take last shift of the shift collection
-		if  ( airbus.mes.calendar.util.ShiftManager.taktDisplay ) {
+//		if  ( airbus.mes.calendar.util.ShiftManager.taktDisplay ) {
+//			
+//			calendar.updateView();
 			
-			calendar.updateView();
-			
-		} else {
+	//	} else {
 			
 			if ( ShiftManager.shifts.length != 0 ) {
 				
@@ -275,7 +275,7 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 				aBox = [];
 				calendar.callEvent("onOptionsLoad", []);
 			}
-		} 
+	//	} 
 		
 		calendar.clearAll();
 		calendar.deleteMarkedTimespan();

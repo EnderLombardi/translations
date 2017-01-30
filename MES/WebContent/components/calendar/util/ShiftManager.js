@@ -492,10 +492,24 @@ airbus.mes.calendar.util.ShiftManager = {
 			
 			var dEndDate=airbus.mes.calendar.util.Formatter.jsDateFromDayTimeStr(airbus.mes.settings.ModelManager.taktEnd);
 			var dStartDate=airbus.mes.calendar.util.Formatter.jsDateFromDayTimeStr(airbus.mes.settings.ModelManager.taktStart);
-				
-				
-			calendar.matrix.timeline.x_size += Math.ceil((dEndDate - dStartDate)/1000/60/60/24);
-			return dStartDate;
+			
+			calendar.matrix.timeline.x_size = 0;
+			 
+	        var sTime = airbus.mes.calendar.util.Formatter.jsDateFromDayTimeStr(airbus.mes.settings.ModelManager.taktEnd) - airbus.mes.calendar.util.Formatter.jsDateFromDayTimeStr(airbus.mes.settings.ModelManager.taktStart)
+	       
+	        // Takt is over one day
+	        if ( Math.abs(sTime) > 86400000 ) {
+		        // Takt is over one day step is done by day
+	        	calendar.matrix.timeline.x_size += Math.ceil((dEndDate - dStartDate)/1000/60/60/24);
+				return dStartDate;
+	        	
+	        } else  {
+		        // Takt is over one day step is done by hour
+	        	calendar.matrix.timeline.x_size += Math.ceil((dEndDate - dStartDate)/1000/60/60);
+				return dStartDate;
+	        	
+	        }
+			
 
 		}
 		
