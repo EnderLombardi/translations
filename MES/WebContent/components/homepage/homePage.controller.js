@@ -85,7 +85,9 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 		return this.getView().getModel("i18n").getProperty(sKey);
 	},
     setVisible : function() {
-        return airbus.mes.shell.RoleManager.isAllowed(airbus.mes.shell.RoleManager.parseRoleValue("HOMESCREEN"), 'V');
+        var flag = airbus.mes.shell.RoleManager.isAllowed(airbus.mes.shell.RoleManager.parseRoleValue("HOMESCREEN"), 'V');
+        airbus.mes.shell.RoleManager.userRoles = [];
+        return flag;
     }
 	/**
 	 * Similar to onAfterRendering, but this hook is invoked before the controller's

@@ -192,12 +192,21 @@ airbus.mes.disruptiontracker.Formatter = {
 	 * Set Roles for type of Table Column
 	 */
 	setType : function(){
-		var Flag = airbus.mes.shell.RoleManager.isAllowed(airbus.mes.shell.RoleManager.parseRoleValue("DISRUPTION_DISRUPTION_LIST"), 'V');
+		var Flag = airbus.mes.shell.RoleManager.isAllowed(airbus.mes.shell.RoleManager.parseRoleValue("DISRUPTION_DISRUPTION DETAILED VIEW"), 'V');
+        airbus.mes.shell.RoleManager.userRoles = [];
 		if(Flag === true){
 			return "Navigation"
 		}
 		else if(Flag === false){
 			return "Inactive"
 		}
+	},
+	/**
+	 * Set Disruption table visible on the basis of Roles
+	 */
+	setVisible : function(){
+		var Flag = airbus.mes.shell.RoleManager.isAllowed(airbus.mes.shell.RoleManager.parseRoleValue("DISRUPTION_DISRUPTION_LIST"), 'V');
+        airbus.mes.shell.RoleManager.userRoles = [];
+        return Flag;
 	}
 };

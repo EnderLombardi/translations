@@ -54,7 +54,7 @@ airbus.mes.shell.RoleManager = {
 				//login popup
                 if (!this.myProfileDailog) {
                     this.myProfileDailog = sap.ui.xmlfragment("airbus.mes.shell.myProfile", this);
-                    this.getView().addDependent(this._myProfileDialog);
+//                    sap.ui.getCore().addDependent(this._myProfileDialog);
                 }
 
                 this.myProfileDailog.open();
@@ -110,6 +110,7 @@ airbus.mes.shell.RoleManager = {
 		}
 		// Roles hardcoded for particular features so that everyone has access to every feature. Has to be removed.
 		airbus.mes.shell.RoleManager.userRoles.push("SAP_XMII_User","Everyone");
+
 		return airbus.mes.shell.RoleManager.userRoles;
 	}
 

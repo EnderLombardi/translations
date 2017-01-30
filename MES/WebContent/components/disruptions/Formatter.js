@@ -505,6 +505,22 @@ airbus.mes.disruptions.Formatter = {
 			var sIcon = "sap-icon://document-text"
 		}
 		return sIcon;
+	},
+	/**
+	 * Set Edit button Enable/Disable based on Roles
+	 */
+	setEnabled: function(){
+		var flag = airbus.mes.shell.RoleManager.isAllowed(airbus.mes.shell.RoleManager.parseRoleValue("DISRUPTION_DISRUPTION DETAILED VIEW_EDIT"), 'V');
+        airbus.mes.shell.RoleManager.userRoles = [];
+        return flag;
+	},
+	/**
+	 * Set ACK,Reject,Refuse,markSolved button Enable/Disable based on Roles
+	 */
+	setButtonEnabled: function(){
+		var flag = airbus.mes.shell.RoleManager.isAllowed(airbus.mes.shell.RoleManager.parseRoleValue("DISRUPTION_DISRUPTION DETAILED VIEW_UPDATE"), 'V');
+        airbus.mes.shell.RoleManager.userRoles = [];
+        return flag;		
 	}
 	/*setNumberofAttachment : function(number) {
 		var sValue = number + "\n" + " Attachments";

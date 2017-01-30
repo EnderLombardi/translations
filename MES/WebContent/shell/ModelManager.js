@@ -111,10 +111,10 @@ airbus.mes.shell.ModelManager = {
 			return JSON.parse(rep.responseText);
 		},
 		
-	    getRolesForFeature : function() {
+	    getRolesForSite : function() {
 	        var rep = jQuery.ajax({
 	            async : false,
-	            url : this.urlModel.getProperty('urlgetrolesfromfeature'),
+	            url : this.urlModel.getProperty('urlgetrolesfromsite'),
 	            type : 'POST',///
 	            /////
 	        });   

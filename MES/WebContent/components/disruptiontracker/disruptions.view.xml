@@ -30,19 +30,19 @@
 				<Toolbar>
 					<ComboBox id="stationComboBox" class="sapUiMediumMarginEnd customComboBox"
 						placeholder="{disruptiontrackerI18n>selectStation}" items="{ path:'plantModel>/Rowsets/Rowset/0/Row' }"
-						selectedKey="" selectionChange="filterByStation">
+						selectedKey="" selectionChange="filterByStation" enabled="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setVisible'}">
 						<core:Item key="{plantModel>station}" text="{plantModel>stationDescription}" />
 					</ComboBox>
 
 					<ComboBox id="msnComboBox" class="sapUiMediumMarginEnd customComboBox"
 						placeholder="{disruptiontrackerI18n>selectMSN}" items="{ path:'plantModel>/Rowsets/Rowset/0/Row' }"
-						selectedKey="" selectionChange="filterByStation">
+						selectedKey="" selectionChange="filterByStation" enabled="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setVisible'}">
 						<core:Item key="{plantModel>msn}" text="{plantModel>msn}" />
 					</ComboBox>
 
 					<ComboBox id="statusComboBox" class="sapUiMediumMarginEnd customComboBox"
 						placeholder="{disruptiontrackerI18n>selectStatus}" selectedKey=""
-						selectionChange="filterDisruptions">
+						selectionChange="filterDisruptions" enabled="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setVisible'}">
 						<core:Item key="" text="{disruptiontrackerI18n>All}" />
 						<core:Item key="Pending" text="{disruptiontrackerI18n>status.pending}" />
 						<core:Item key="Acknowledged"
@@ -54,7 +54,7 @@
 
 					<ComboBox id="resolutionGroupBox" class="sapUiMediumMarginEnd customComboBox"
 						placeholder="{disruptiontrackerI18n>resolutionGroup}" items="{disruptionsTrackerModel>/Rowsets/Rowset/0/Row}"
-						selectedKey="" selectionChange="filterDisruptions">
+						selectedKey="" selectionChange="filterDisruptions" enabled="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setVisible'}">
 						<core:Item key="{disruptionsTrackerModel>ResponsibleGroup}"
 							text="{disruptionsTrackerModel>ResponsibleGroupDesc}" />
 					</ComboBox>
@@ -88,7 +88,7 @@
 
 		<Table id="disruptionsTable" class="disruptionsTable sapUiSmallMarginBottom"  mode="MultiSelect"   
 			items="{ path: 'disruptionsTrackerModel>/Rowsets/Rowset/0/Row' }"
-			growing="true" growingThreshold="50" >
+			growing="true" growingThreshold="50" visible="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setVisible'}">
 			<headerToolbar>
 			<Toolbar>
                     <Button
