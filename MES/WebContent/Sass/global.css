@@ -7061,6 +7061,24 @@ DATE PICKER
     display: block;
     z-index: 0; }
 
+/********************
+MES Document Viewer
+*********************/
+.docviewerView .pageHeader {
+  border-top: 0.6rem solid #ffffff; }
+
+#docviewerView--docHeaderInfo {
+  color: white;
+  font-size: 1.2rem; }
+
+#docviewerView--pdfViewer {
+  font-size: 10px;
+  height: 30px;
+  background: #eee;
+  padding: 5px 3px 2px 3px;
+  min-width: 650px;
+  margin-top: 18px !important; }
+
 /*************
 GENERALE RULES
 **************/
