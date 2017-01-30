@@ -9,6 +9,10 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 //        }
     
     },
+    
+    onBackPress : function(){
+        nav.back();
+    },
 	
 	
 	 /***************************************************************************

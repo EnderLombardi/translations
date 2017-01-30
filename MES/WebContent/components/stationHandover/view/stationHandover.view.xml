@@ -6,7 +6,7 @@
 		class="sapUiSizeCozy">
 		<m:content>
 
-
+ 
 
 			<TreeTable id="TreeTableBasic"
 				rows="{path:'testModel>/catalog/clothing', parameters: {arrayNames:['categories']}}"
