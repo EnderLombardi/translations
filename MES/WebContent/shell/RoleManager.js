@@ -31,9 +31,6 @@ airbus.mes.shell.RoleManager = {
 
 		var UserRoles = airbus.mes.shell.RoleManager.userProfile.IllumLoginRoles;
 		var FeatureRole = role;
-		// var FeatureRole = $.map(role, function(value, index) {
-		// return [ value ];
-		// });
 		var Feature;
 
 		for (var i = 0; i < FeatureRole.length; i++) {
@@ -53,17 +50,9 @@ airbus.mes.shell.RoleManager = {
 				{
 				//login popup
                 if (!this.myProfileDailog) {
-                    this.myProfileDailog = sap.ui.xmlfragment("airbus.mes.shell.myProfile", this);
-//                    sap.ui.getCore().addDependent(this._myProfileDialog);
+                	airbus.mes.shell.oView.oController.goToMyProfile();
                 }
 
-                this.myProfileDailog.open();
-                sap.ui.getCore().getElementById("msgstrpMyProfile").setVisible(false);
-                sap.ui.getCore().byId("uIdMyProfile").setValue("");
-                sap.ui.getCore().byId("badgeIdMyProfile").setValue("");
-                sap.ui.getCore().byId("userNameMyProfile").setValue("");
-                sap.ui.getCore().byId("passwordMyProfile").setValue("");
-                sap.ui.getCore().byId("pinCodeMyProfile").setValue("");
                 return true;
 				}
 			else {
@@ -77,15 +66,6 @@ airbus.mes.shell.RoleManager = {
 		} else {
 			return false;
 		}
-
-		// return
-		// airbus.mes.shell.RoleManager.userProfile.IllumLoginRoles.some(function(el)
-		// {
-		// return
-		// airbus.mes.shell.RoleManager.userProfile.IllumLoginRoles.indexOf(role)
-		// >= 0;
-		//
-		// });
 	},
 
 	// Set all information about current user log in userProfile variable
@@ -100,7 +80,6 @@ airbus.mes.shell.RoleManager = {
 	},
 	// getting all the Roles based on the feature
 	parseRoleValue : function(sFeature) {
-//		var sRoles = airbus.mes.shell.ModelManager.getRolesForFeature().Rowsets.Rowset[0].Row;
 		var sRoles = sap.ui.getCore().getModel("AllRolesModel").oData.Rowsets.Rowset[0].Row;
 
 		for (var i = 0; i < sRoles.length; i++) {

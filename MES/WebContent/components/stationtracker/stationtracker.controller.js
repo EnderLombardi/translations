@@ -1239,6 +1239,14 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
         binding.filter(Filter);
 
         airbus.mes.stationtracker.ModelManager.savePhStation(aValueSelected);
+    },
+    
+    //set the visible property of controls to true or false according to the roles
+    setVisible: function(){
+//		var Flag = airbus.mes.shell.RoleManager.isAllowed(airbus.mes.shell.RoleManager.parseRoleValue("XXXX"), 'V');
+//        airbus.mes.shell.RoleManager.userRoles = [];
+//        return Flag;
+        return true;
     }
 
 });
