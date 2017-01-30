@@ -2,6 +2,8 @@
 jQuery.sap.require("sap.ui.core.UIComponent");
 jQuery.sap.require("airbus.mes.stationHandover.util.Formatter");
 jQuery.sap.require("airbus.mes.stationHandover.util.ModelManager");
+jQuery.sap.require("airbus.mes.stationHandover.util.customIcon");
+
 
 jQuery.sap.declare("airbus.mes.stationHandover.Component");
 
