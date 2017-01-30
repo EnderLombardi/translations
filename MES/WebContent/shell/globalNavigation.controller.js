@@ -768,7 +768,7 @@ sap.ui.controller(
 
                     logOut : function() {
                         Cookies.remove("login");
-                        sessionStorage.loginType = undefined;
+                        sessionStorage.loginType = "";
                         location.reload();
 
                     },
