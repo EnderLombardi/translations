@@ -23,16 +23,15 @@
 						</m:Select>
 						<m:Select id="selectMsnHandover" class="comboStationHandover"
 							change="changeShift"
-							items="{ path : 'stationTrackerShift>/' , sorter : {
-            path : 'ProductName' , descending : 'false'            
-         } }">
+							items="{ path : 'stationTrackerShift>/' , sorter : { path : 'ProductName' , descending : 'false' } }">
 							<core:Item key="{stationTrackerShift>shiftID}" text="{stationTrackerShift>shiftName}" />
 						</m:Select>
 
 					</m:Toolbar>
 
-					<m:OverflowToolbar>
-						<m:SearchField width="10%" id="searchHandover" />
+					<m:OverflowToolbar id="headerstationhandover">
+						<m:Button id="navBack" icon="sap-icon://arrow-left" press="onBackPress" type="Transparent"/>
+						<m:SearchField width="15%" id="searchHandover" />
 						<m:Select id="selectHandover" change="changeShift"
 							items="{ path : 'stationTrackerShift>/' }" enabled="false">
 							<core:Item key="{stationTrackerShift>shiftID}" text="{stationTrackerShift>shiftName}" />
