@@ -52,6 +52,7 @@ airbus.mes.stationtracker.util.Formatter = {
             var oShiftManager = airbus.mes.stationtracker.ShiftManager;
             var dEndDate = sEndDate;
             var dStartDate = sStartDate;
+            var dMaxDate  = oShiftManager.shifts[oShiftManager.shifts.length -1].EndDate;
 
             if (dEndDate - dStartDate < oUtil.minSizeMinutes * 60 * 1000) {
                 if (oShiftManager.closestShift(dStartDate) != -1 && dStartDate > oShiftManager.shifts[0].StartDate) {
@@ -60,7 +61,7 @@ airbus.mes.stationtracker.util.Formatter = {
 
 	                    while (oShiftManager.isDateIgnored(dStartDate)) {
 
-	                    	 if ( dStartDate < oShiftManager[oShiftManager.length -1].EndDate ) {
+	                    	 if ( dStartDate < dMaxDate ) {
 	                    		 
 	                    		 dStartDate.setMinutes(dStartDate.getMinutes() + oUtil.minSizeMinutes);
 	                    		 var sDate = Math.max(dEndDate, dStartDate);
@@ -73,7 +74,6 @@ airbus.mes.stationtracker.util.Formatter = {
                     return new Date(sDate);
                 }
             }
-
             return sEndDate ;
 
         },
