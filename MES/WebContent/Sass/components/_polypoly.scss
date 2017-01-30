@@ -1,6 +1,17 @@
 /******************
 POLYPOLY
 *******************/
+#__bar2-BarLeft{
+	padding-top:4px;
+}
+#polypolytitle{
+	color: #74d2e7;
+    text-shadow: none;
+    padding: 20px 30px;
+    font-size: 0.875rem;
+    margin-top:4px;
+    border-right: 1px solid #8db9ca;
+}
 
 #polypoly--polypolyHeaderToolbar{
 	>label{
@@ -11,6 +22,16 @@ color: #74d2e7;
 		    border-right:  solid 1px #74d2e7;
 		    }
 }
+
+#polypoly--polypolyimg{
+	 border-left: 1px solid #8db9ca;
+}
+
+#polypoly--navBack, #polypoly--navBack-inner, #polypoly--navBack-inner .sapMBtnTransparent > .sapMBtnIcon, #polypoly--navBack .sapMBtnTransparent > .sapMBtnIcon {
+    color: #0D5D76 !important ;
+     border-right: 1px solid #8db9ca;
+   }
+  
 
 // Default Focus
 .noRows.sapUiTableColRowHdr{
@@ -333,6 +354,7 @@ button[id^="polypoly"].sapMBtn:hover> div[id^="polypoly"].sapMBtnHoverable{
     .sapUiTableMTbr{
         .sapMTB{
             background: #d4f1f7;
+            padding:0;
         }
     }
     .sapUiTable{
@@ -350,7 +372,7 @@ button[id^="polypoly"].sapMBtn:hover> div[id^="polypoly"].sapMBtnHoverable{
         border: 1px solid transparent;
     }
     >#polypolyPage-cont {
-        top: 3.6rem;
+        top: 4.2rem;
     }
 }
 .sap-desktop{

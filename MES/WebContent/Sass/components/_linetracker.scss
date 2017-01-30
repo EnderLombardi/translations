@@ -16,9 +16,16 @@ LineTracker Header
     }
 }
 
+.headerIcons{
+    font-family: 'SAP-icons';
+    color: #FFFFFF;
+    border-left: solid 1px #74d2e7 !important;
+    padding: 12px 0px 12px 25px;
+}
+
 #idLinetracker1--linetracker_dateLabel{
     color: #ffffff !important;
-    padding: 17px;
+    padding: 17px 20px 17px 10px;
     border-right: solid 1px #74d2e7 !important;
     text-shadow: none;
     margin-right: 15px;
@@ -215,16 +222,16 @@ Linetracker View (Main Table)
 
     }
     .lineTrackerTitle{
-        margin: 1rem !important;
-        font-style: normal;
-        font-weight: 500;
-        font-size: 1rem !important;
+        //margin: 1rem !important;
+        //font-style: normal;
+        //font-weight: 500;
+        //font-size: 1rem !important;
         color: #74d2e7 !important;
-        font-family: Arial,Helvetica;
+        //font-family: Arial,Helvetica;
         text-shadow: none;
-        border-right: solid 1px #74d2e7 !important;
-        padding: 18px 30px 18px 30px;
-    	width: 155px;
+        //border-right: solid 1px #74d2e7 !important;
+        padding: 0px 30px;
+    	//width: 155px;
     	 span{
     	 	font-size: 0.875rem
     	 	}

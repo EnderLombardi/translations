@@ -806,7 +806,7 @@ sap.ui.controller("airbus.mes.polypoly.polypoly",{
         //test
         //console.log("Start :" + sap.ui.getCore().byId("typeRow"))
 
-        var aControlsId = ["AddPolypoly"];
+        var aControlsId = ["AddPolypoly", "navBack"];
         this.setModePoly();
         this.hideContent(aControlsId);
         this.setPolyFilters();

@@ -1,11 +1,22 @@
 /********************
 RESSOURCEPOOL
 *********************/
+#resourcePool--pageHeader-BarLeft,#resourcePool--pageHeader-BarRight{
+	padding-top:4px;
+}
+
+#resourcePool--resourcePooltitle{
+	   color: #74d2e7;
+    text-shadow: none;
+    padding: 0px 30px;
+    font-size: 0.875rem
+}
 
 #resourcePool--resourcePoolName{
     &.resourcePoolName{
         color: white;
-        font-size: 1.2rem;
+        padding: 20px;
+         border-left: 1px solid #8db9ca;
     }
 }
 .resourcePoolSubheader{
@@ -285,7 +296,7 @@ RESSOURCEPOOL
     }
     .sapMPageWithSubHeader{
         &>section{
-            top: calc(3rem + 5px);
+            top: calc(3rem + 18px);
             .resourcePoolSubheader{
                 li{
                     height: 3rem;
@@ -295,6 +306,7 @@ RESSOURCEPOOL
                     vertical-align: top;
                     border: none;
                     color: #0D5D76;
+                    border-left: 1px solid #8db9ca;
                     &:hover{
                         background-color: $petrol-20;
                     }
@@ -317,6 +329,7 @@ RESSOURCEPOOL
                             &.sapMSegBBtnSel{
                                 background-color: #74D2E7;
                                 color: white;
+                                
                             }
                         }
                     }

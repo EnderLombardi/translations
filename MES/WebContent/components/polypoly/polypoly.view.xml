@@ -12,8 +12,10 @@
 		enableSelectAll="false" columnMove="onColumnMove" fixedColumnCount="6" visibleRowCountMode="Fixed">
 		<table:toolbar>
 			<Toolbar design="Transparent" id="toolbarPolypoly" class="Subheader">
-				<content>
-					<Image src="../components/polypoly/images/1.png" height="1.5rem"/>
+				<content id="polypolynav">
+					<Button id="navBack" icon="sap-icon://arrow-left" press="onBackPress" type="Transparent"/>
+					
+					<Image src="../components/polypoly/images/1.png" height="1.5rem" id="polypolyimg"/>
 					<Label class="QA-text-style" text = "Side 1"/>
 					<ToolbarSpacer width="1rem"/>
 					<Image src="../components/polypoly/images/2.png" height="1.5rem"/>

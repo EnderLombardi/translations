@@ -13,7 +13,7 @@
 						<Title text="{i18n>lineTrackerTitle}" 	class="lineTrackerTitle" />
 						<core:Icon src="sap-icon://appointment" class="headerIcons" color="#FFFFFF"></core:Icon>
 						<Label id="linetracker_dateLabel" text="" class="classDateLabel"></Label>
-						<core:Icon src="sap-icon://history" class="headerIcons"	color="#FFFFFF"></core:Icon>
+						<core:Icon src="sap-icon://history" class="headerIcons1"	color="#FFFFFF"></core:Icon>
 						<Label id="linetracker_timeLabel" text=""></Label>
 						<ToolbarSpacer />
 					</Toolbar>

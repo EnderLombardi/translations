@@ -3,31 +3,9 @@
 	xmlns="sap.m">
 	<Page class="disruptions" showHeader="false">
 
-		<subHeader>
-			<Bar class="pageHeader">
-				<contentLeft>
-					<Button id="navBack" icon="sap-icon://arrow-left" text="{disruptiontrackerI18n>back}"
-						press="onNavBack" type="Transparent" />
-				</contentLeft>
-				<contentMiddle>
-					<Text text="{disruptiontrackerI18n>disruptionsTitle}" class="headerText" />
-				</contentMiddle>
-			</Bar>
-		</subHeader>
 
-		<Panel width="100%">
-			<content>
-
-				<Toolbar class="sapUiSmallMarginTop" height="1rem">
-					<Label text="{disruptiontrackerI18n>selectStation}" width="13.7rem"
-						class="sapUiLargeMarginEnd" />
-					<Label text="{disruptiontrackerI18n>selectMSN}" width="13.7rem"
-						class="sapUiLargeMarginEnd" />
-					<Label text="{disruptiontrackerI18n>selectStatus}" width="13.7rem"
-						class="sapUiLargeMarginEnd" />
-					<Label text="{disruptiontrackerI18n>resolutionGroup}" />
-				</Toolbar>
-				<Toolbar>
+			<Toolbar class="pageHeader">
+					<Title text="{disruptiontrackerI18n>disruptionsTitle}" id="headerText" class="headerText" />
 					<ComboBox id="stationComboBox" class="sapUiMediumMarginEnd customComboBox"
 						placeholder="{disruptiontrackerI18n>selectStation}" items="{ path:'plantModel>/Rowsets/Rowset/0/Row' }"
 						selectedKey="" selectionChange="filterByStation" enabled="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setVisible'}">
@@ -58,27 +36,48 @@
 						<core:Item key="{disruptionsTrackerModel>ResponsibleGroup}"
 							text="{disruptionsTrackerModel>ResponsibleGroupDesc}" />
 					</ComboBox>
-					<!-- <SearchField width="13rem" placeholder="{disruptiontrackerI18n>search}" 
-						/> -->
-					<ToolbarSpacer />
+					
+			</Toolbar>
+
+
+		<Panel width="100%">
+			<content>
+
+				<!-- <Toolbar class="sapUiSmallMarginTop" height="1rem">
+					<Label text="{disruptiontrackerI18n>selectStation}" width="13.7rem"
+						class="sapUiLargeMarginEnd" />
+					<Label text="{disruptiontrackerI18n>selectMSN}" width="13.7rem"
+						class="sapUiLargeMarginEnd" />
+					<Label text="{disruptiontrackerI18n>selectStatus}" width="13.7rem"
+						class="sapUiLargeMarginEnd" />
+					<Label text="{disruptiontrackerI18n>resolutionGroup}" />
+				</Toolbar> -->
+				<Toolbar>
+					<Button id="navBack" icon="sap-icon://arrow-left" press="onBackPress" type="Transparent"/>
+					
 					
 					<!--[MES V1.5] [Beg]SD-SP1604983-DT-040 -->
-					<SearchField id="disruptionSearchField" width="50%" placeholder="search for..."
+					<SearchField id="disruptionSearchField" width="40%" placeholder="search for..."
 						enableSuggestions="true" search="onSearchDisruption" suggest="onDisruptionSuggestions">
-						<!-- <suggestionItems>
-							<SuggestionItem text="{disruptionsTrackerModel>Operation}"
-								 key="{disruptionsTrackerModel>Operation}" />
-						</suggestionItems> -->
 					</SearchField>
 					<!--[MES V1.5] [End]SD-SP1604983-DT-040 -->
 					
+					<ToolbarSpacer />
+					
+					<Button
+                        text="{disruptiontrackerI18n>ExporttoExcel}"
+                        icon="sap-icon://excel-attachment"
+                        press="handleSelectedRowExcelExport" 
+                        id="exportbutton"
+                        class="borderbutton"/>  
+					
 					<Button id="onDisruptionTableSettings" type="Transparent"
 						press="onDisruptionTableSettings" icon="sap-icon://drop-down-list"
-						tooltip="{disruptiontrackerI18n>disruptionFilter}" />
+						tooltip="{disruptiontrackerI18n>disruptionFilter}" class="borderbutton" />
 
 					<Button id="gotoDisruptionKpi" icon="sap-icon://area-chart"
 						text="{disruptiontrackerI18n>disruptionKPI}" press="onPressDisruptionKPI"
-						visible="false" />
+						visible="false" class="borderbutton"/>
 				</Toolbar>
 
 			</content>
@@ -89,15 +88,7 @@
 		<Table id="disruptionsTable" class="disruptionsTable sapUiSmallMarginBottom"  mode="MultiSelect"   
 			items="{ path: 'disruptionsTrackerModel>/Rowsets/Rowset/0/Row' }"
 			growing="true" growingThreshold="50" visible="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setVisible'}">
-			<headerToolbar>
-			<Toolbar>
-                    <Button
-                        text="{disruptiontrackerI18n>ExporttoExcel}"
-                        icon="sap-icon://excel-attachment"
-                        press="handleSelectedRowExcelExport" />                 
-                </Toolbar>
 
-			</headerToolbar>
 			<columns>
 				<Column>
 					<Text text="{disruptiontrackerI18n>operation}" />

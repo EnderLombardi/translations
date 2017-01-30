@@ -4,14 +4,13 @@
     xmlns:html="http://www.w3.org/1999/xhtml">
     <Page title="Resource Pool Maintenance" enableScrolling="false"
         showHeader="false" class="GenricBgColor">
+        
         <subHeader>
-            <Bar class="pageHeader">
+            <Bar id="pageHeader" class="pageHeader">
                 <contentLeft>
-                    <Button id="navBack" icon="sap-icon://arrow-left" text="{i18nModel>navBarBack}" press="onNavBack" type="Transparent"/>
-                </contentLeft>
-                <contentMiddle>
+                    <Label id="resourcePooltitle" text="{i18nModel>ResourcePool}" class="resourcePooltitle" />
                     <Label id="resourcePoolName" text="" class="resourcePoolName" />
-                </contentMiddle>
+                 </contentLeft>
                 <contentRight>
                     <Button text="{i18nModel>ButtonTeam}" type="Transparent"
                         class="tiffanyColor subHeaderButtonColor sapUiSmallMarginBegin"
@@ -22,6 +21,7 @@
         <content class="sapUiSmallMarginTop contentNoPad">
             <Toolbar class="resourcePoolSubheader">
                 <content>
+                    <Button id="navBack" icon="sap-icon://arrow-left" press="onBackPress" type="Transparent"/>
                     <SegmentedButton id="IconTabsPages">
                         <items>
                             <SegmentedButtonItem id="idUsers" icon="sap-icon://group"

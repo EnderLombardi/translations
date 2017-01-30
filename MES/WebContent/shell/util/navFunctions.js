@@ -91,15 +91,7 @@ airbus.mes.shell.util.navFunctions = {
                 customHeader: new sap.m.Bar({
                     height: "3rem",
                     design: 'SubHeader',
-                    contentLeft: [new sap.m.Button({
-                        icon: "sap-icon://arrow-left",
-                        type: "Transparent",
-                        press: function () {
-                            nav.back()
-                        },
-                        text: airbus.mes.polypoly.oView.getModel("PolypolyI18n").getProperty("back"),
-                    })],
-                    contentMiddle: [new sap.m.Label("polypolytitle").addStyleClass("pageWelcome sapUiTinyMarginBeginEnd")]
+                    contentLeft: [new sap.m.Label("polypolytitle").addStyleClass("polypolytitle")],
                 }).addStyleClass("pageHeader contentNoPad"),
             }).addStyleClass("classPolypolyPage");
 

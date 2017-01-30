@@ -60,6 +60,17 @@ TOOLBAR
     position: absolute;
 }
 
+#stationTrackerView--StationtrackerTitle-inner{
+	    color: #74d2e7;
+    text-shadow: none;
+    padding: 0px 30px;
+    font-size: 0.875rem
+    }
+
+#stationTrackerView--dateButton{
+	 border-left: 1px solid #8db9ca;
+}
+
 
 /********************
 WORK LIST POP OVER

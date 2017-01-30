@@ -18,6 +18,7 @@
 								expandAnimation="false" class="pageHeader kpiPageHeader contentNoPad">
 								<headerToolbar>
 									<Toolbar id="kpiHeaderToolbar" class="classKpiheaderToolbar">
+										<Title text="" 	id="StationtrackerTitle" class="StationtrackerTitle" />
 										<Button id="dateButton" icon="sap-icon://appointment" type="Transparent" tooltip="{StationTrackerI18n>Calendar}"
 											press="datePick" class="classDateButton" />
 										<Label id="dateLabel" text="" class="classDateLabel" />
@@ -309,6 +310,7 @@
 
 							<OverflowToolbar id="toolbarstationtracker" class="Subheader" width="100%">
 								<content>
+									<Button id="navBack" icon="sap-icon://arrow-left" press="onBackPress" type="Transparent"/>
 									<SegmentedButton id="buttonViewMode">
 										<layoutData>
 											<OverflowToolbarLayoutData priority="NeverOverflow" />

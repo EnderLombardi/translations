@@ -15,6 +15,11 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
             airbus.mes.shell.oView.byId('refreshTime').setEnabled(true);
         }
     },
+    
+    onBackPress : function(){
+        nav.back();
+    },
+    
     /**
      * Similar to onBeforeRendering, but this hook is invoked before the controller's View is re-rendered
      * (NOT before the first rendering! onInit() is used for that one!).
@@ -26,6 +31,14 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
         airbus.mes.stationtracker.oView.byId("oswButton").setVisible(true);
         airbus.mes.stationtracker.oView.byId("kpi_header").setExpanded(true);
         airbus.mes.stationtracker.oView.byId("hideKPI").setEnabled(true);
+        
+        // change title
+        //TODO : translate
+        if( airbus.mes.shell.util.navFunctions.splitMode == "WorkTracker" ){
+        	airbus.mes.stationtracker.oView.byId("stationTrackerView--StationtrackerTitle").setText("Work Tracker");
+        }else {
+        	airbus.mes.stationtracker.oView.byId("stationTrackerView--StationtrackerTitle").setText("Station Tracker");
+        }
 
     },
 
@@ -35,6 +48,7 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
      * @memberOf components.stationtracker.stationtracker
      */
     onAfterRendering: function () {
+
     },
 
     /***************************************************************************
