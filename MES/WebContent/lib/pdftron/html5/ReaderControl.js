@@ -1,135 +1,116 @@
 /*global Modernizr */
+
 (function(exports) {
     "use strict";
-    
-    exports.ReaderControl = exports.ReaderControl || {};
-    
-    var Text = XODText;
-    var CoreControls = exports.CoreControls;
-    // var Annotations = exports.Annotations;
-    // var Tools = exports.Tools;
 
-    var MAX_ZOOM = 5;
-    var MIN_ZOOM = 0.05;
+    exports.ReaderControl = exports.ReaderControl || {};
+
+    var Text = XODText;
+    var ToolMode = exports.PDFTron.WebViewer.ToolMode;
+
 
     /**
-     *
      * Creates a new instance of ReaderControl
      * @name ReaderControl
-     * @extends WebViewerInterface
+     * @extends BaseReaderControl
      * @class Represents the full-featured ReaderControl reusable UI component that extends DocumentViewer.
      * @see ReaderControl.html ReaderControl.js ReaderControl.css
-     * @param {element} viewerElement an element containing a DocumentViewer.
+     * @param {object} options Options for the reader control
      **/
-    exports.ReaderControl = function(viewerElement, enableAnnot, enableOffline) {
+    exports.ReaderControl = function(options) {
+        exports.BaseReaderControl.call(this, options);
+
         var me = this;
-        
-        this.enableAnnotations  = enableAnnot ? true : false;
-        this.enableOffline = enableOffline ? true : false;
-        this.docViewer = new exports.CoreControls.DocumentViewer();
-        this.docViewer.SetOptions({
-            enableAnnotations: this.enableAnnotations
-        });
-        this.onLoadedCallback = null;
-        this.doc_id = null;
-        this.server_url = null;
-        this.currUser = '';
-        
-        if (typeof ReaderControl.config !== "undefined" && typeof ReaderControl.config.defaultUser !== "undefined") {
-            this.currUser = ReaderControl.config.defaultUser;
-            
-            //load custom CSS file
-            if (typeof ReaderControl.config.customStyle !== "undefined") {
-                $("<link>").appendTo("head").attr({
-                    rel: "stylesheet",
-                    type: "text/css",
-                    href: ReaderControl.config.customStyle
-                });
-            }
-            
-            //load custom javaScript file
-            if (typeof ReaderControl.config.customScript !== "undefined") {
-                $.getScript(ReaderControl.config.customScript, function(data, textStatus, jqxhr) {
-                    /*jshint unused:false */
-                    //custom script was loaded
-                });
-            }
-        }
-        
-        this.isAdmin = false;
-        this.readOnly = undefined;
         this.eventsBound = false;
 
-        this.thumbContainerWidth = 180;
+        this.thumbContainerWidth = 170;
         this.thumbContainerHeight = 200;
-        this.requestedThumbs = [];
+        this.requestedThumbs = {};
         this.lastRequestedThumbs = [];
         this.clickedThumb = -1;
+        this.hasBeenClosed = false;
 
         this.clickedSearchResult = -1;
         this.clickedBookMark = -1;
-        
+
         // Key binding.
         var fKey = 70;
         var leftArrowKey = 37;
         var upArrowKey = 38;
         var rightArrowKey = 39;
         var downArrowKey = 40;
+        var pageDownKey = 34;
+        var pageUpKey = 33;
         var cKey = 67;
         var vKey = 86;
         var sKey = 83;
         var tKey = 84;
         var plusKeys = [187, 61];
         var minusKeys = [189, 173];
-        // var pageUpKey = 33, pageDownKey = 34;
-        
-        this.toolModeMap = {};
-        var ToolMode = exports.PDFTron.WebViewer.ToolMode;
-        this.toolModeMap[ToolMode.Pan] = Tools.PanTool;
-        this.toolModeMap[ToolMode.PanAndAnnotationEdit] = Tools.PanEditTool;
-        this.toolModeMap[ToolMode.TextSelect] = Tools.TextSelectTool;
-        this.toolModeMap[ToolMode.AnnotationEdit] = Tools.AnnotationEditTool;
-        this.toolModeMap[ToolMode.AnnotationCreateEllipse] = Tools.EllipseCreateTool;
-        this.toolModeMap[ToolMode.AnnotationCreateFreeHand] = Tools.FreeHandCreateTool;
-        this.toolModeMap[ToolMode.AnnotationCreateLine] = Tools.LineCreateTool;
-        this.toolModeMap[ToolMode.AnnotationCreateRectangle] = Tools.RectangleCreateTool;
-        this.toolModeMap[ToolMode.AnnotationCreateSticky] = Tools.StickyCreateTool;
-        this.toolModeMap[ToolMode.AnnotationCreateTextHighlight] = Tools.TextHighlightCreateTool;
-        this.toolModeMap[ToolMode.AnnotationCreateTextStrikeout] = Tools.TextStrikeoutCreateTool;
-        this.toolModeMap[ToolMode.AnnotationCreateTextUnderline] = Tools.TextUnderlineCreateTool;
-        this.toolModeMap[ToolMode.AnnotationCreatePolyline] = Tools.PolylineCreateTool;
-        this.toolModeMap[ToolMode.AnnotationCreatePolygon] = Tools.PolygonCreateTool;
-        this.toolModeMap[ToolMode.AnnotationCreateCallout] = Tools.CalloutCreateTool;
-        this.toolModeMap[ToolMode.AnnotationCreateFreeText] = Tools.FreeTextCreateTool;
-        
-        this.toolModeMap[ToolMode.AnnotationCreateCustom] = Tools.AnnotationEditTool; //no tools for this
-        this.defaultToolMode = Tools.PanEditTool;
+
+        if (options.hideAnnotationPanel) {
+            ReaderControl.config.ui.hideAnnotationPanel = true;
+        }
+
+        if (!options.pageHistory) {
+            $('#backPage').hide();
+            $('#forwardPage').hide();
+        }
+
         this.initUI();
+
+        if (!options.hideToolbar) {
+            // use a setTimeout here because setting the toolbar to be visible first
+            // affects the size of the scroll container because of loading elements in the toolbar
+            setTimeout(function() {
+                me.setToolbarVisibility(true);
+            }, 0);
+        }
+
+        var stickyNoteTool = this.toolModeMap[ToolMode.AnnotationCreateSticky];
+        stickyNoteTool.on('annotationAdded', function(e, annotation) {
+            /*jshint unused:false */
+            me.setToolMode(ToolMode.AnnotationEdit);
+        });
 
         $(exports).keydown(function(e) {
             var ctrlDown = e.metaKey || e.ctrlKey;
-            
+
             // document navigation
             // don't change pages if a text input is currently focused
-            var currentPage = me.docViewer.GetCurrentPage();
+            var currentPage = me.docViewer.getCurrentPage();
             var currentElementEditable = exports.utils.isEditableElement($(document.activeElement));
 
             if (!currentElementEditable) {
-                if (e.which === leftArrowKey || e.which === upArrowKey) {
+                if (e.which === leftArrowKey) {
                     if (currentPage > 1) {
-                        me.docViewer.SetCurrentPage(currentPage - 1);
+                        me.docViewer.setCurrentPage(currentPage - 1);
+                        me.trackPageHistory(currentPage - 1);
                     }
-                } else if (e.which === rightArrowKey || e.which === downArrowKey) {
-                    if (currentPage <= me.docViewer.GetPageCount()) {
-                        me.docViewer.SetCurrentPage(currentPage + 1);
+                } else if (e.which === rightArrowKey) {
+                    if (currentPage <= me.docViewer.getPageCount()) {
+                        me.docViewer.setCurrentPage(currentPage + 1);
+                        me.trackPageHistory(currentPage + 1);
                     }
+                } else if (e.which === upArrowKey) {
+                    e.preventDefault();
+                    scrollPage(-1, false, true);
+                } else if (e.which === downArrowKey) {
+                    e.preventDefault();
+                    scrollPage(1, false, true);
+                } else if (e.which === pageUpKey) {
+                    e.preventDefault();
+                    scrollPage(-1, true, true);
+                } else if (e.which === pageDownKey) {
+                    e.preventDefault();
+                    scrollPage(1, true, true);
                 }
             }
 
-            var am = me.docViewer.GetAnnotationManager();
+            var am = me.docViewer.getAnnotationManager();
             if (ctrlDown) {
                 if (e.which === fKey) {
-                    if($("#control").is(':visible')){
+                    if ($("#control").is(':visible')) {
                         document.getElementById('searchBox').focus();
                         return false;
                     }
@@ -144,13 +125,19 @@
                 } else if (!currentElementEditable) {
                     if (e.which === cKey && me.enableAnnotations) {
                         if (am) {
-                            am.UpdateCopiedAnnotations();
+                            am.updateCopiedAnnotations();
                         }
                     } else if (e.which === vKey && me.enableAnnotations) {
                         if (am) {
-                            am.PasteCopiedAnnotations();
+                            am.pasteCopiedAnnotations();
                         }
                     }
+                }
+
+                // ctrl + p to print
+                if (e.keyCode === 80) {
+                    me.print();
+                    return false;
                 }
             }
             else if (e.altKey) {
@@ -158,154 +145,139 @@
                     me.saveAnnotations();
                 } else if (e.which === tKey && me.enableAnnotations) {
                     if (am) {
-                        am.ToggleAnnotations();
-                        var ToolModes = exports.Tools;
-                        me.docViewer.SetToolMode(ToolModes.TextSelectTool);
+                        am.toggleAnnotations();
+                        me.setToolMode(ToolMode.TextSelect);
                     }
                 }
             }
-            // else {
-            //     var displayMode = me.docViewer.GetDisplayModeManager().GetDisplayMode();
-                
-                // if (displayMode.mode === 'Single') { //|| displayMode === me.docViewer.DisplayMode.Cover || displayMode === me.docViewer.DisplayMode.Facing) {
-                //     if (e.which == pageDownKey) {
 
-                //         //http://stackoverflow.com/questions/3898130/how-to-check-if-a-user-has-scrolled-to-the-bottom
-                //         if ($(exports).scrollTop() + $(exports).height() == $(iframe.contentDocument).height()) {
-                //             e.preventDefault(); //prevent the default page down behavior to affect us after we scroll to the top
-                //             me.GoToNextPage();
-                //             $(iframe.contentDocument).scrollTop(0);
-                //         }
-                //     } else if (e.which == pageUpKey) {
-                //         if ($(exports).scrollTop() == 0) {
-                //             e.preventDefault(); //prevent the default page up behavior to affect us after we scroll to the bottom
-                //             me.GoToPrevPage();
-                //             $(iframe.contentDocument).scrollTop($(iframe.contentDocument).height());
-                //         }
-                //     }
-                // }
-            // }
-            
         });
 
-        var $viewerElement = $(viewerElement);
+        var toolbarOffset = $('#control').outerHeight();
+        var $viewerElement = $('#DocumentViewer');
         $viewerElement.bind('mousewheel', function(event, delta) {
-            // use altKey to support a shortcut for Chrome
             if (event.ctrlKey || event.altKey) {
+                var sidePanelWidth = me.sidePanelVisible() ? $('#sidePanel').width() : 0;
                 // zoom in and out with ctrl + scrollwheel
-                // only seems to work in Firefox and IE
                 if (delta < 0) {
-                    setZoomLevelWithBounds(me.getZoomLevel() - 0.25);
+                    me.docViewer.zoomToMouse(calcZoomLevelWithBounds(me.getZoomLevel() * 0.8), sidePanelWidth, toolbarOffset);
                 } else {
-                    setZoomLevelWithBounds(me.getZoomLevel() + 0.25);
+                    me.docViewer.zoomToMouse(calcZoomLevelWithBounds(me.getZoomLevel() * 1.25), sidePanelWidth, toolbarOffset);
                 }
 
                 event.preventDefault();
                 return;
             }
 
-            var displayMode = me.docViewer.GetDisplayModeManager().GetDisplayMode();
-            if (displayMode.IsContinuous()) {
+            var displayMode = me.docViewer.getDisplayModeManager().getDisplayMode();
+            if (displayMode.isContinuous()) {
                 // don't need to scroll between pages if we're in continuous mode
                 return;
             }
-            
-            var pageNum;
+
             if (delta < 0) {
-                // scrolling down
-                // +1 because IE is sometimes one pixel off
-                var scrollBottom = $viewerElement.scrollTop() + $viewerElement.height() + 1;
-                if (scrollBottom >= $viewerElement[0].scrollHeight) {
-                    pageNum = getChangedPageIndex(1);
-                    if (pageNum >= 0) {
-                        me.docViewer.SetCurrentPage(pageNum + 1);
-                    }
-                }
+                // // scrolling down
+                scrollPage(1);
             } else if (delta > 0) {
                 // scrolling up
-                if (Math.abs($viewerElement.scrollTop()) <= 1) {
-                    pageNum = getChangedPageIndex(-1);
+                scrollPage(-1);
+            }
+        });
+
+        var scrollPage = function(change, pageKey, manualScroll) {
+            var pageNum;
+            var scrollPosition = $viewerElement.scrollTop();
+            var scrollAmount = pageKey ? (window.innerHeight - $('#control').outerHeight()) : 30;
+
+            if (change > 0) {
+                // scroll down
+                // +1 because IE is sometimes one pixel off
+                var scrollBottom = scrollPosition + $viewerElement.height() + 1;
+                if (scrollBottom >= $viewerElement[0].scrollHeight) {
+                    pageNum = getChangedPageIndex(change);
                     if (pageNum >= 0) {
-                        me.docViewer.SetCurrentPage(pageNum + 1);
+                        me.docViewer.setCurrentPage(pageNum + 1);
+                    }
+                } else if (manualScroll) {
+                    $viewerElement.scrollTop(scrollPosition + scrollAmount);
+                }
+            } else {
+                // scroll up
+                if (Math.abs(scrollPosition) <= 1) {
+                    pageNum = getChangedPageIndex(change);
+                    if (pageNum >= 0) {
+                        me.docViewer.setCurrentPage(pageNum + 1);
                         // scroll to the bottom of the new page
                         $viewerElement.scrollTop($viewerElement[0].scrollHeight);
                     }
+                } else if (manualScroll) {
+                    $viewerElement.scrollTop(scrollPosition - scrollAmount);
                 }
             }
-        });
-        
+        };
+
         // Get the updated page index when increasing the row by "change", returns -1 if that row would be invalid
         var getChangedPageIndex = function(change) {
-            var displayMode = me.docViewer.GetDisplayModeManager().GetDisplayMode();
+            var displayMode = me.docViewer.getDisplayModeManager().getDisplayMode();
             var cols = (displayMode.mode === exports.CoreControls.DisplayModes.Single) ? 1 : 2;
-            
+
             var rowNum;
             if (displayMode.mode === exports.CoreControls.DisplayModes.CoverFacing) {
-                rowNum = Math.floor(me.docViewer.GetCurrentPage() / cols);
+                rowNum = Math.floor(me.docViewer.getCurrentPage() / cols);
             } else {
-                rowNum = Math.floor((me.docViewer.GetCurrentPage() - 1) / cols);
+                rowNum = Math.floor((me.docViewer.getCurrentPage() - 1) / cols);
             }
-            
+
             rowNum += change;
             var pageIndex = rowNum * cols;
-            
+
             if (displayMode.mode === exports.CoreControls.DisplayModes.CoverFacing) {
                 if (pageIndex === 0) {
                     return 0;
-                } else if (pageIndex < (me.docViewer.GetPageCount() + 1)) {
+                } else if (pageIndex < (me.docViewer.getPageCount() + 1)) {
                     return pageIndex - 1;
                 } else {
                     return -1;
                 }
             } else {
-                if (pageIndex < me.docViewer.GetPageCount()) {
+                if (pageIndex < me.docViewer.getPageCount()) {
                     return pageIndex;
                 } else {
                     return -1;
                 }
             }
         };
-        
-        var setZoomLevelWithBounds = function(zoom) {
-            if (zoom <= MIN_ZOOM) {
-                zoom = MIN_ZOOM;
-            } else if (zoom > MAX_ZOOM) {
-                zoom = MAX_ZOOM;
+
+        var calcZoomLevelWithBounds = function(zoom) {
+            if (zoom <= me.MIN_ZOOM) {
+                zoom = me.MIN_ZOOM;
+            } else if (zoom > me.MAX_ZOOM) {
+                zoom = me.MAX_ZOOM;
             }
-            me.setZoomLevel(zoom);
+            return zoom;
         };
 
-        me.docViewer.on('documentLoaded', _(this.onDocumentLoaded).bind(this));
-        
-        me.docViewer.on('notify', exports.ControlUtils.getNotifyFunction);
-        
+        var setZoomLevelWithBounds = function(zoom) {
+            me.setZoomLevel(calcZoomLevelWithBounds(zoom));
+        };
+
         this.$thumbnailViewContainer = $("#thumbnailView");
         this.$thumbnailViewContainer.scroll(function() {
             clearTimeout(me.thumbnailRenderTimeout);
-       
-            me.thumbnailRenderTimeout = setTimeout(function() {
-                var visibleThumbs = me.getVisibleThumbs();
 
-                var thumbIndex;
-                for (var i = 0; i < me.lastRequestedThumbs.length; i++) {
-                    thumbIndex = me.lastRequestedThumbs[i];
-                    if (me.requestedThumbs[thumbIndex] && !_.contains(visibleThumbs, thumbIndex)) {
-                        // cancel thumbnail request if it is no longer visible
-                        me.docViewer.GetDocument().CancelThumbnailRequest(thumbIndex, 'thumbview');
-                        me.requestedThumbs[thumbIndex] = false;
-                    }
+            me.thumbnailRenderTimeout = setTimeout(function () {
+                if(me.docViewer.getRenderingPipeline().hasPipeline('ReaderControl.updateThumbnails')){
+                    me.docViewer.getRenderingPipeline().pushChange('ReaderControl.updateThumbnails', {
+                        'type': 'updateThumbnails'
+                    });
                 }
-
-                me.lastRequestedThumbs = visibleThumbs;
-
-                me.appendThumbs(visibleThumbs);
             }, 80);
         });
-        
+
         $('#lastPage').bind('click', function() {
-            me.docViewer.DisplayLastPage();
+            me.docViewer.displayLastPage();
         });
-        
+
         $('#zoomBox').keyup(function(e) {
             if (e.which === 13) {
                 var input = this.value;
@@ -328,7 +300,7 @@
             }
             setZoomLevelWithBounds(zoom);
         });
-        
+
         $("#zoomIn").click(function() {
             var zoom = me.getZoomLevel();
             if (zoom < 1.0 && (zoom + 0.25) > 1.0) {
@@ -338,10 +310,10 @@
             }
             setZoomLevelWithBounds(zoom);
         });
-        
+
         me.docViewer.on('zoomUpdated', function(e, zoom) {
             var zoomVal = Math.round(zoom * 100);
-            
+
             $('#zoomBox').val(zoomVal + "%");
             if ($("#slider").slider("value") !== zoomVal) {
                 $("#slider").slider({
@@ -350,17 +322,21 @@
             }
             me.fireEvent('zoomChanged', [zoom]);
         });
-        
+
         me.resize();
-        
-        $(window).resize(function() {
+
+        $(window).resize(function(e) {
+            if (e && e.target !== window) {
+                return;
+            }
+
             me.resize();
-            if (me.sidePanelVisible()) {
+            if (me.sidePanelVisible() || me.notesPanelVisible()) {
                 me.shiftSidePanel();
             }
             $("#thumbnailView").trigger('scroll');
         });
-        
+
         $("#slider").slider({
             slide: function(event, ui) {
                 var number = parseInt(ui.value, 10);
@@ -369,72 +345,103 @@
                 } else {
                     clearTimeout(me.zoomSliderTimeout);
                     me.zoomSliderTimeout = setTimeout(function() {
-                        me.docViewer.ZoomTo(number / 100.0);
+                        setZoomLevelWithBounds(number / 100.0);
                     }, 50);
                 }
             }
         });
-        
+
         $('#pageNumberBox').keyup(function(e) {
             // check for the enter key
             if (e.which === 13) {
                 var input = this.value;
                 var number = parseInt(input, 10);
-                if (isNaN(number) || number > me.docViewer.GetPageCount()) {
-                    $('#pageNumberBox').val(me.docViewer.GetCurrentPage());
+                if (isNaN(number) || number > me.docViewer.getPageCount() || number <= 0) {
+                    $('#pageNumberBox').val(me.docViewer.getCurrentPage());
                 } else {
-                    me.docViewer.SetCurrentPage(number);
+                    me.docViewer.setCurrentPage(number);
+                    me.trackPageHistory(number);
                 }
             }
         });
-        
-        me.docViewer.on('toolModeUpdated', function(e, newToolMode, oldToolMode) {
-            
-            var pan = $('#pan');
-            var textSelect = $('#textSelect');
-            pan.removeClass('active');
-            textSelect.removeClass('active');
 
-            if (newToolMode === me.defaultToolMode) {
-                pan.addClass('active');
-            } else if (newToolMode === Tools.TextSelectTool) {
-                textSelect.addClass('active');
+        me.docViewer.on('beforeDocumentLoaded', function() {
+            // switch to single page for large documents to improve initial load time
+            if (me.docViewer.getPageCount() >= 1000) {
+                me.setLayoutMode(exports.CoreControls.DisplayModes.Single);
             }
+        });
+
+        me.docViewer.on('layoutChanged', function(e, changes){
+            $('#totalPages').text('/' + me.docViewer.getPageCount());
+            //me.clearSidePanelData();
+
+            //me.applyPageChangesToThumbnails(changes);
+            me.docViewer.getRenderingPipeline().pushChange('ReaderControl.updateThumbnails', {
+                'type': 'applyPageChangesToThumbnails',
+                'changes': changes
+            });
+            me.docViewer.getRenderingPipeline().pushChange('ReaderControl.updateThumbnails', {
+                'type': 'updateThumbnails'
+            });
+            //me.updateThumbnailPages();
+            //me.updateThumbnailView();
+            //me.initBookmarkView();
+        });
+
+        me.docViewer.on('bookmarksUpdated', function(){
+            me.updateBookmarkView();
+        });
+
+        me.docViewer.on('toolModeUpdated', function(e, newToolMode, oldToolMode) {
             me.fireEvent('toolModeChanged', [newToolMode, oldToolMode]);
         });
 
         me.docViewer.on('pageNumberUpdated', function(e, pageNumber) {
             $('#pageNumberBox').val(pageNumber);
             var pageIndex = pageNumber - 1;
-            
+
             if (me.clickedThumb !== -1) {
                 $("#thumbContainer" + me.clickedThumb).removeClass('ui-state-active');
             }
 
+            var $selectedThumbContainer = $("#thumbContainer" + pageIndex);
             if (typeof me.thumbnailsElement !== 'undefined') {
-                var divTop = me.thumbnailsElement.scrollTop;
-                var divBottom = divTop + me.thumbnailsElement.offsetHeight;
-                var top = pageIndex * me.thumbContainerHeight;
-                var bottom = top + me.thumbContainerHeight;
+                //thumbnail control viewport
+                var viewportTop = me.thumbnailsElement.scrollTop;
+                var viewportHeight = me.thumbnailsElement.offsetHeight;
+                var viewportWidth = me.thumbnailsElement.offsetWidth - $.position.scrollbarWidth();
+                var viewportBottom = viewportTop + viewportHeight;
 
-                if (!(top >= divTop && bottom <= divBottom)) {
-                    me.thumbnailsElement.scrollTop = pageIndex * me.thumbContainerHeight;
+                //absolute height of thumbnail containers (including border/padding/margin)
+                var thumbContainerHeight = $selectedThumbContainer.outerHeight(true);
+                var thumbContainerWidth = $selectedThumbContainer.outerWidth(true);
+                var numColumns = Math.floor(viewportWidth / thumbContainerWidth);
+
+                var top = Math.floor(pageIndex / numColumns) * thumbContainerHeight;
+                var bottom = top + thumbContainerHeight;
+
+                if (top < viewportTop) {
+                    //thumbnail container is above the viewport
+                    me.thumbnailsElement.scrollTop = top;
+                } else if (bottom > viewportBottom) {
+                    //thumbnail container is below the viewport
+                    me.thumbnailsElement.scrollTop = top + thumbContainerHeight - viewportHeight;
                 }
             }
-            
+
             me.clickedThumb = pageIndex;
-            $("#thumbContainer" + pageIndex).addClass('ui-state-active');
-            
-            me.fireEvent('pageChanged',[pageNumber]);
+            $selectedThumbContainer.addClass('ui-state-active');
+            me.fireEvent('pageChanged', [pageNumber]);
         });
-        
+
         $("#layoutModeDropDown .content").on('click', 'li', function() {
             var layoutModeVal = $(this).data('layout-mode');
             if (layoutModeVal) {
                 me.setLayoutMode(layoutModeVal);
             }
         });
-        
+
         $("#rotateGroup").on('click', '[data-rotate]', function() {
             var action = $(this).data('rotate');
             if (action === "cc") {
@@ -443,7 +450,7 @@
                 me.rotateCounterClockwise();
             }
         });
-        
+
         var drop = new Drop({
             target: document.querySelector('#layoutModeDropDown .drop-target'),
             content: document.querySelector('#layoutModeDropDown .content'),
@@ -454,13 +461,13 @@
                 targetOffset: '10px 0'
             }
         });
-        
+
         drop.once('open', function() {
             me.docViewer.trigger('displayModeUpdated');
 
             var content = $(this.drop);
             content.i18n();
-            content.css('z-index', 1);
+            content.css('z-index', 50);
         });
 
         drop.on('close', function() {
@@ -472,24 +479,16 @@
             });
         });
 
-        $('#fitWidth').click(function() {
-            me.docViewer.SetFitMode(me.docViewer.FitMode.FitWidth);
-        });
-        
-        $('#fitPage').click(function() {
-            me.docViewer.SetFitMode(me.docViewer.FitMode.FitPage);
-        });
-        
-        $("#pan").click(function() {
-            me.docViewer.SetToolMode(me.defaultToolMode);
-        });
-        
-        $("#textSelect").click(function() {
-            me.docViewer.SetToolMode(Tools.TextSelectTool);
+        $('#fitWidth').on('click', function() {
+            me.docViewer.setFitMode(me.docViewer.FitMode.FitWidth);
         });
 
-        $('#fullScreenButton').click(function() {
-            var inFullScreenMode = document.fullscreenElement || 
+        $('#fitPage').on('click', function() {
+            me.docViewer.setFitMode(me.docViewer.FitMode.FitPage);
+        });
+
+        $('#fullScreenButton').on('click', function() {
+            var inFullScreenMode = document.fullscreenElement ||
                 document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement;
 
             if (inFullScreenMode) {
@@ -521,13 +520,15 @@
                 }
             }
         });
-        
-        me.docViewer.on('textSelected', function(e, quads, text) {
+
+        me.docViewer.on('textSelected', function() {
+            var allSelectedText = me.docViewer.getSelectedText();
+
             var $clipboard = $("#clipboard");
             var clipboard = $clipboard.get(0);
 
-            clipboard.value = text;
-            if (text.length > 0) {
+            clipboard.value = allSelectedText;
+            if (allSelectedText.length > 0) {
                 $clipboard.show();
                 clipboard.focus();
                 clipboard.selectionStart = 0;
@@ -537,9 +538,9 @@
             }
 
         });
-        
+
         me.docViewer.on('displayModeUpdated', function() {
-            var displayMode = me.docViewer.GetDisplayModeManager().GetDisplayMode();
+            var displayMode = me.docViewer.getDisplayModeManager().getDisplayMode();
 
             $('.layout-mode-dropdown-content #layoutModes [data-layout-mode]').removeClass('active');
             var sel = $('.layout-mode-dropdown-content #layoutModes [data-layout-mode=' + displayMode.mode + ']');
@@ -547,11 +548,11 @@
 
             me.fireEvent('layoutModeChanged', [displayMode]);
         });
-        
+
         me.docViewer.on('fitModeUpdated', function(e, fitMode) {
             var fitWidth = $('#fitWidth');
             var fitPage = $('#fitPage');
-            
+
             if (fitMode === me.docViewer.FitMode.FitWidth) {
                 fitWidth.addClass('active');
                 fitPage.removeClass('active');
@@ -563,73 +564,68 @@
                 fitWidth.removeClass('active');
                 fitPage.removeClass('active');
             }
-            
+
             me.fireEvent('fitModeChanged', [fitMode]);
         });
-        
-        // //Example of overriding the default link appearance and behavior
-        // //==============================================================
-        // me.docViewer.on('linkReady', function(e, linkElement, link){
-        //    if(link instanceof CoreControls.Hyperlink){
-        //        linkElement.onclick = function(){
-        //            //external link clicked
-        //            window.open(link.GetTarget());
-        //        };
-    
-        //    }else if(link instanceof CoreControls.Link) {
-        //        linkElement.parentClick = linkElement.onclick;
-        //        linkElement.onclick = function(){
-        //            this.parentClick();
-        //        //override the default behavior of internal links
-        //        };
-        //    }
-        // });
 
-        ////Example of inserting custom content on top of a page
-        ////==============================================================
-        // me.docViewer.on('pageComplete', function(e, pageIndex) {
-        //    var pageContainer = me.getPageContainer(pageIndex);
-        //    pageContainer.append('<div style="position:relative; float:right; z-index: 35">Watermark Text</div>');
-        //    //note that dom elements appended need to have the position:relative style to show up correctly
-        //    //also by default, text selection on div elements is disabled
-        // });
-        
         me.docViewer.on('pageComplete', function(e, pageIndex) {
-            if (me.hideAnnotations) {
-                var pageAnnotCanvas = me.docViewer.getAuxiliaryCanvas(pageIndex);
-                $(pageAnnotCanvas).hide();
-            }
-            
             me.fireEvent("pageCompleted", [pageIndex + 1]);
+        });
+
+        me.docViewer.on('beginRendering', function() {
+            me.beginRendering();
+        });
+
+        me.docViewer.on('finishedRendering', function() {
+            me.finishedRendering();
+        });
+
+        $(document).on('error', function (e,msg,userMessage) {
+            me.onError(e, msg, userMessage);
         });
     };
 
     exports.ReaderControl.prototype = {
+        MAX_ZOOM: 5,
+        MIN_ZOOM: 0.05,
+        // XOD uses 96 units per inch which is the same as window.print
+        printFactor: 1,
+        MIN_SIDE_PANEL_WIDTH: 195,
+        DEFAULT_SIDE_PANEL_WIDTH: 200,
+
         /**
          * Initialize UI controls.
          * @ignore
          */
         initUI: function(){
             var me = this;
-        
+
             $("#toggleSidePanel").on('click', function() {
                 me.setShowSideWindow(!me.sidePanelVisible());
             });
-                
+
+            $('#toggleNotesPanel').on('click', function() {
+                me.showNotesPanel(!me.notesPanelVisible());
+            });
+
             $("#slider").slider({
-                min: MIN_ZOOM * 100,
-                max: MAX_ZOOM * 100,
+                min: me.MIN_ZOOM * 100,
+                max: me.MAX_ZOOM * 100,
                 value: 100,
                 animate: true
             });
-            
+
             $('#optionsMenuList').hide().menu();
-            
+
+            context.init({
+                compress: true
+            });
+
             //extend
             $.widget( "ui.tabs", $.ui.tabs, {
                 updateHeight: function($panels) {
                     //if panel index is provided, only update height that panel
-                    
+
 //                    var $panels =  $("#tabs .ui-tabs-panel");
 //                    if(typeof index !== 'undefined'){
 //                        $panels = $($panels[index]);
@@ -637,14 +633,14 @@
                     if (typeof $panels === 'undefined') {
                         $panels = $("#tabs .ui-tabs-panel");
                     }
-                    var viewerHeight = me._getViewerHeight();
+                    var screenHeight = $('#ui-display').height();
                     var extraHeight = 0;
                     $('#tabs').children(':visible:not(.ui-tabs-panel)').each(function() {
                         extraHeight += $(this).outerHeight(true);
                     });
 
                     var extraBottomPadding = 4;
-                    var panelHeight = viewerHeight - extraHeight - extraBottomPadding;
+                    var panelHeight = screenHeight - extraHeight - extraBottomPadding;
 
                     $panels.each(function() {
                         var $this = $(this);
@@ -685,8 +681,6 @@
                 }
             });
 
-
-            
             var $tabs = $("#tabs");
             $tabs.tabs({
                 cache: true,
@@ -700,7 +694,12 @@
                     ui.newTab.find('span').addClass('active');
                 },
                 activate: function(event, ui) {
-                    $tabs.tabs("updateHeight", $(ui.newPanel));
+                    var $newPanel = $(ui.newPanel);
+                    $tabs.tabs("updateHeight", $newPanel);
+
+                    if ($newPanel.find('#searchView').length > 0) {
+                        $newPanel.find('#fullSearchBox').focus();
+                    }
                 },
                 afterUpdateHeight: function() {
                     if ($("#thumbnailView").is(':visible')) {
@@ -724,122 +723,157 @@
                 }
             });
 
-            var annotInitialized = false;
-            if (this.enableAnnotations) {
-                /*Ajax load the annotation panel.
-                 *Note: loading it directly here because we want the JS to run right away.
-                 */
-                if (!ReaderControl.config.ui.hideAnnotationPanel && !annotInitialized) {
-                    var li = $('<li><a href="#tabs-4"><span data-i18n="[title]sidepanel.annotations" class="glyphicons pencil"></span></a></li>');
-                    $tabs.find(".ui-tabs-nav").append(li);
-                    $("#tabs-4").load('AnnotationPanel.html', function() {
-                        // translate the tab when finished loading
-                        $('#tabs-4').i18n();
-                    }).appendTo($tabs);
-                    
-                    $tabs.tabs("refresh");
-                }
+            if (!this.enableAnnotations || ReaderControl.config.ui.hideAnnotationPanel || ReaderControl.config.ui.hideSidePanel) {
+                // hide notes panel button
+                $('#toggleNotesPanel').parent().hide();
+                $('#notesPanelWrapper').hide();
             }
-            
+
             if (!Modernizr.fullscreen) {
                 $("#fullScreenButton").hide();
             }
-            
+
             if (ReaderControl.config.ui.hidePrint) {
                 $('#printButton').hide();
             }
 
             if (!ReaderControl.config.ui.hideControlBar) {
                 //$("#control").show();
-                
+
                 if (ReaderControl.config.ui.hideDisplayModes) {
-                    document.getElementById('displayModes').parentNode.style.visibility = 'hidden';
+                    $('#layoutModeDropDown').parent().hide();
                 }
-                
-                var par, separator;
+
                 if (ReaderControl.config.ui.hideTextSearch) {
-                    var searchButton = document.getElementById('searchButton');
-                    par = searchButton.parentNode;
-                    par.removeChild(searchButton);
-                    var searchBox = document.getElementById('searchBox');
-                    separator = searchBox.nextElementSibling;
-                    par.removeChild(searchBox);
-                    par.removeChild(separator);
+                    $('#searchControl').parent().hide();
                 }
                 if (ReaderControl.config.ui.hideZoom) {
-                    var zoomBox = document.getElementById('zoomBox');
-                    par = zoomBox.parentNode;
-                    par.removeChild(zoomBox);
-                    var slider = document.getElementById('slider');
-                    par.removeChild(slider);
-                    var zoomPercent = document.getElementById('zoomPercent');
-                    separator = zoomPercent.nextElementSibling;
-                    par.removeChild(zoomPercent);
-                    par.removeChild(separator);
+                    $('#zoomBox').parent().hide();
                 }
             }
-            
+
+            var resizeHidden = false;
             // always initially hide the panel itself
-            $("#sidePanel").hide();
+            var $sidePanel = $('#sidePanel');
+            $sidePanel.hide();
+            $sidePanel.resizable({
+                handles: 'e',
+                resize: function() {
+                    if (resizeHidden) {
+                        $sidePanel.width(me.DEFAULT_SIDE_PANEL_WIDTH);
+                        return;
+                    }
+
+                    me.shiftSidePanel(false);
+
+                    if ($sidePanel.width() < me.MIN_SIDE_PANEL_WIDTH) {
+                        me.setShowSideWindow(false, false);
+                        $sidePanel.width(me.DEFAULT_SIDE_PANEL_WIDTH);
+                        resizeHidden = true;
+                    }
+                },
+                stop: function() {
+                    me.docViewer.scrollViewUpdated();
+                    resizeHidden = false;
+                }
+            });
 
             if (ReaderControl.config.ui.hideSidePanel) {
                 // don't show the toggle button in this case
                 document.getElementById('toggleSidePanel').style.visibility = 'hidden';
             }
-            
-            if (this.onLoadedCallback) {
-                this.onLoadedCallback();
-            }
-            /*http://forum.jquery.com/topic/chrome-text-select-cursor-on-drag */
-            document.onselectstart = function (e) {
-                if (!exports.utils.isEditableElement($(e.target))) {
-                    return false;
-                }
-            };
 
             $.extend({
                 alert: function (message, title) {
-                    
                     $(document.createElement('div'))
-                    .html(message)
-                    .dialog({
-                        // buttons: {
-                        //     OK: function() {
-                        //         $(this).dialog('close');
-                        //     }
-                        // },
-                        close: function() {
-                            $(this).remove();
-                        },
-                        dialogClass: 'alert',
-                        title: title,
-                        //draggable: true,
-                        modal: true,
-                        resizable: false
-                        //width: 'auto'
-                    });
-        
-                    // $("<div></div>").dialog( {
-                    //     buttons: {
-                    //         "Ok": function () {
-                    //             $(this).dialog("close");
-                    //         }
-                    //     },
-                    //     close: function (event, ui) {
-                    //         $(this).remove();
-                    //     },
-                    //     resizable: false,
-                    //     title: title,
-                    //     modal: true
-                    // }).text(message);
+                        .html(message)
+                        .dialog({
+                            close: function() {
+                                $(this).remove();
+                            },
+                            dialogClass: 'alert',
+                            title: title,
+                            modal: true,
+                            resizable: false
+                        });
                 }
             });
         },
-        
-        setLoadedCallback: function(callback) {
-            this.onLoadedCallback = callback;
+
+        onError: function (e, msg, userMessage) {
+            var errorDialog = $('<div>').attr({
+                'id': 'passwordDialog'
+            });
+
+            $('<label>').attr({
+                'for': 'passwordInput'
+            })
+            .text(userMessage)
+            .appendTo(errorDialog);
+
+            errorDialog.dialog({
+                modal: true,
+                resizable: false,
+                closeOnEscape: false,
+                buttons: {
+                    'OK': function () {
+                        $(this).dialog('close');
+                    },
+                }
+            });
+
         },
-        _getViewerHeight: function(){
+
+        setContextMenu: function(readonly) {
+            var me = this;
+
+            context.settings({
+                click: false,
+                right: false,
+                minWidth: true
+            });
+
+            // create context menu
+            var contextArray = [{ header: 'contextMenu.changeToolHeader' }];
+
+            function addToolOptions(toolMap) {
+                function addToolMode(toolName, toolMode) {
+                    contextArray.push({
+                        text: toolName,
+                        action: function(e) {
+                            e.preventDefault();
+                            me.docViewer.setToolMode(toolMode);
+                        }
+                    });
+                }
+
+                for (var toolName in toolMap) {
+                    addToolMode(toolName, toolMap[toolName]);
+                }
+            }
+
+            addToolOptions({
+                'contextMenu.pan': this.toolModeMap[ToolMode.Pan],
+                'contextMenu.textSelect': this.toolModeMap[ToolMode.TextSelect]
+            });
+
+            if (this.enableAnnotations && !readonly) {
+                addToolOptions({
+                    'contextMenu.highlight': this.toolModeMap[ToolMode.AnnotationCreateTextHighlight],
+                    'contextMenu.underline': this.toolModeMap[ToolMode.AnnotationCreateTextUnderline],
+                    'contextMenu.freeHand': this.toolModeMap[ToolMode.AnnotationCreateFreeHand],
+                    'contextMenu.freeText': this.toolModeMap[ToolMode.AnnotationCreateFreeText],
+                    'contextMenu.arrow': this.toolModeMap['AnnotationCreateArrow'],
+                    'contextMenu.note': this.toolModeMap[ToolMode.AnnotationCreateSticky],
+                    'contextMenu.signature': this.toolModeMap['AnnotationCreateSignature']
+                });
+            }
+
+            context.attach('#DocumentViewer', contextArray);
+            context.getElement().i18n();
+        },
+
+        getViewerHeight: function() {
             var viewerHeight = window.innerHeight;
             var $controlToolbar = $("#control");
             if ($controlToolbar.is(':visible')) {
@@ -847,60 +881,86 @@
             }
             return viewerHeight;
         },
-        resize: function(){
-            //find the height of the internal page
-            var scrollContainer = document.getElementById('DocumentViewer');
-            
-            //change the height of the viewer element
-            var viewerHeight = this._getViewerHeight();
-            $(scrollContainer).height(viewerHeight);
-            scrollContainer.width = window.innerWidth;
+        resize: function() {
+            // find the height of the internal page
+            var scrollContainer = $(document.getElementById('DocumentViewer'));
 
-  
+            // change the height of the viewer element
+            var viewerHeight = this.getViewerHeight();
+            scrollContainer.height(viewerHeight);
+
             $('#tabs').tabs("updateHeight");
+
+            var $sidePanel = $('#sidePanel');
+            var availableWidth = window.innerWidth - $('#control .right-aligned').width() - 45;
+            var maxWidth = Math.max(Math.min(availableWidth, window.innerWidth * 0.45), this.MIN_SIDE_PANEL_WIDTH);
+            $sidePanel.resizable('option', 'maxWidth', maxWidth);
+
+            // if we just resized to a smaller width then cap the current size of the panel
+            if ($sidePanel.width() > maxWidth) {
+                $sidePanel.width(maxWidth);
+            }
         },
-        
+
         onDocumentLoaded: function() {
+            if(this.hasBeenClosed) {
+                this.closeDocument();
+                return;
+            }
+            exports.BaseReaderControl.prototype.onDocumentLoaded.call(this);
             var me = this;
-            
+            var loaded = me.eventsBound;
+
             me.clearSidePanelData();
-            
-            if (!ReaderControl.config.ui.hideSidePanel) {
-                me.setShowSideWindow(true);
+            me.resize();
+
+            if (!loaded && !ReaderControl.config.ui.hideSidePanel) {
+                me.setShowSideWindow(this.userPreferences.showSideWindow, false);
             }
 
             me.initBookmarkView();
             me.initThumbnailView();
             me.initSearchView();
             me.setInterfaceDefaults();
-            
-            if (!me.eventsBound) {
-                me.eventsBound = true;
-                
-                me.bindEvents();
-            }
-            
-            //// Programmatically create a rectangle
-            ////----------------------------------------------
-            //var am = me.docViewer.GetAnnotationManager();
-            //var rectAnnot = new Annotations.RectangleAnnotation();
-            //rectAnnot.X =(500);
-            //rectAnnot.Y =(100);
-            //rectAnnot.Width =(500);
-            //rectAnnot.Height =(100);
-            //rectAnnot.PageNumber = 1;
-            //rectAnnot.Author = this.currUser;
-            //rectAnnot.FillColor = new Annotations.Color(0,255,0);
-            //rectAnnot.StrokeColor =  new Annotations.Color(255,0,0);
-            //rectAnnot.StrokeThickness = 1;
-            //am.AddAnnotation(rectAnnot);
 
-            ////Load existing annotations for this document
-            ////----------------------------------------------
-            var am = me.docViewer.GetAnnotationManager();
-            am.SetCurrentUser(this.currUser);
-            am.SetIsAdminUser(this.isAdmin);
-            am.SetReadOnly(this.readOnly);
+            if (!loaded) {
+                me.eventsBound = true;
+
+                me.bindEvents();
+                this.setContextMenu(this.readOnly);
+            }
+
+            this.pageHistory = [this.docViewer.getCurrentPage()];
+            this.pageHistoryTracker = 0; // the current pageHistory index that the viewer is on.
+            $('#forwardPage').removeClass('back-forward-enabled').addClass('back-forward-disabled');
+            $('#backPage').removeClass('back-forward-enabled').addClass('back-forward-disabled');
+
+            var origOnTrigger = exports.Actions.GoTo.prototype.onTriggered;
+            exports.Actions.GoTo.prototype.onTriggered = function() {
+                origOnTrigger.apply(this, arguments);
+                me.trackPageHistory(this.dest.page);
+            };
+
+            var origNamedOnTrigger = exports.Actions.Named.prototype.onTriggered;
+            exports.Actions.Named.prototype.onTriggered = function() {
+                origNamedOnTrigger.apply(this, arguments);
+                switch(this.action) {
+                    case "NextPage":
+                        me.trackPageHistory(me.docViewer.getCurrentPage() + 1);
+                        break;
+                    case "PrevPage":
+                        me.trackPageHistory(me.docViewer.getCurrentPage() - 1);
+                        break;
+                    case "FirstPage":
+                        me.trackPageHistory(1);
+                        break;
+                    case "LastPage":
+                        me.trackPageHistory(me.docViewer.getPageCount());
+                        break;
+                }
+            };
+
+            var am = me.docViewer.getAnnotationManager();
 
             // only want to initialize the textareas as flexible when they become visible
             // as it can take a significant amount of time when done on the initial load
@@ -926,62 +986,14 @@
             am.on('annotationPopupDeleted', function(e, annotation, $popupel, $textarea) {
                 $textarea.flexible('remove');
             });
-            
+
             //make it easier to select annotations
-            //Annotations.SelectionModel.selectionAccuracyPadding = 1;
+            Annotations.ControlHandle.selectionAccuracyPadding = 3;
             Annotations.SelectionAlgorithm.canvasVisibilityPadding = 10;
-            
-            var noServerURL = _.isUndefined(me.server_url) || _.isNull(me.server_url);
-            if (noServerURL && !_.isUndefined(ReaderControl.config) && !_.isUndefined(ReaderControl.config.serverURL)) {
-                me.server_url = ReaderControl.config.serverURL;
-            }
 
-            if (this.server_url !== null) {
-                var queryData = {};
-                
-                if (this.doc_id !== null && this.doc_id.length > 0) {
-                    queryData = {
-                        'did': this.doc_id
-                    };
-                }
-
-                $.ajax({
-                    url: this.server_url,
-                    cache: false,
-                    data : queryData,
-                    success: function(data) {
-                        if (!_.isNull(data) && !_.isUndefined(data)) {
-                            am.externalAnnotsExist = true;
-                            am.ImportAnnotationsAsync(data);
-                        }
-                    },
-                    error: function(jqXHR, textStatus, errorThrown) {
-                        /*jshint unused:false */
-                        console.warn("Annotations could not be loaded from the server.");
-                        am.externalAnnotsExist = false;
-                    },
-                    dataType: 'xml'
-                });
-
-                ////Enable timer for auto-saving
-                ////----------------------------------------------
-                //var updateAnnotsID = setInterval(this.updateAnnotations.bind(this), 300000);
-            }
-            
-            
-            if (this.enableOffline && (Modernizr.indexeddb || Modernizr.websqldatabase)) {
-                if (this.startOffline) {
-                    me.offlineReady();
-                } else {
-                    me.docViewer.GetDocument().InitOfflineDB(function() {
-                        me.offlineReady();
-                    });
-                }
-            }
-            
             me.fireEvent('documentLoaded');
         },
-        
+
         offlineReady: function() {
             var container = $('<div>').addClass('group');
             $('#control .right-aligned').prepend(container);
@@ -1002,47 +1014,47 @@
             })
             .appendTo(container)
             .i18n();
-            
-            var doc = this.docViewer.GetDocument();
-            
+
+            var doc = this.docViewer.getDocument();
+
             $('#offlineDownloadButton').click(function() {
                 var $this = $(this);
-            
+
                 var isDownloading = $this.data("downloading");
-            
+
                 if (isDownloading) {
                     // allow cancelling while the download is happening
                     $this.data("downloading", false);
-                    doc.CancelOfflineModeDownload();
+                    doc.cancelOfflineModeDownload();
                 } else {
                     $this.data("downloading", true);
-                    
-                    doc.StoreOffline(function() {
+
+                    doc.storeOffline(function() {
                         $this.data("downloading", false);
-                        
+
                         $this.removeClass('circle_remove').addClass('download');
 
-                        if (doc.IsDownloaded()) {
+                        if (doc.isDownloaded()) {
                             $('#toggleOfflineButton').removeClass('disabled');
                         }
-                        
+
                         $this.attr('data-i18n', '[title]offline.downloadOfflineViewing').i18n();
                     });
-                    
+
                     // switch to the cancel icon while the download is going on
                     $this.removeClass('download').addClass('circle_remove');
 
                     $this.attr('data-i18n', '[title]offline.cancelDownload').i18n();
                 }
             });
-            
+
             $('#toggleOfflineButton').click(function() {
                 if ($(this).hasClass('disabled')) {
                     return false;
                 }
 
-                var offlineEnabled = !doc.GetOfflineModeEnabled();
-                doc.SetOfflineModeEnabled(offlineEnabled);
+                var offlineEnabled = !doc.getOfflineModeEnabled();
+                doc.setOfflineModeEnabled(offlineEnabled);
 
                 toggleOfflineButtonText(offlineEnabled);
             });
@@ -1058,29 +1070,29 @@
                     button.removeClass('active');
                 }
             }
-            
-            if (doc.GetOfflineModeEnabled()) {
+
+            if (doc.getOfflineModeEnabled()) {
                 toggleOfflineButtonText(true);
             }
 
-            if (!doc.IsDownloaded()) {
+            if (!doc.isDownloaded()) {
                 $('#toggleOfflineButton').addClass('disabled');
             }
         },
-        
+
         updateAnnotations: function() {
-            if (this.server_url === null) {
+            if (this.serverUrl === null) {
                 console.warn("Server URL was not specified.");
                 return;
             }
-            
-            var am = this.docViewer.GetAnnotationManager();
-            var saveAnnotUrl = this.server_url;
-            if (this.doc_id !== null) {
-                saveAnnotUrl += "?did=" + this.doc_id;
+
+            var am = this.docViewer.getAnnotationManager();
+            var saveAnnotUrl = this.serverUrl;
+            if (this.docId !== null) {
+                saveAnnotUrl += "?did=" + this.docId;
             }
-            
-            var command = am.GetAnnotCommand();
+
+            var command = am.getAnnotCommand();
             $.ajax({
                 type: 'POST',
                 url: saveAnnotUrl,
@@ -1097,69 +1109,60 @@
                 dataType: 'xml'
             });
         },
-        
+
         saveAnnotations: function() {
             //---------------------------
             // Save annotations
             //---------------------------
             // You'll need server-side communication here
-            
+
             // 1) local saving
-            //var xfdfString = this.docViewer.GetAnnotationManager().ExportAnnotations();
+            //var xfdfString = this.docViewer.getAnnotationManager().exportAnnotations();
             //var uriContent = "data:text/xml," + encodeURIComponent(xfdfString);
             //newWindow = window.open(uriContent, 'XFDF Document');
-            
-            // 2) saving to server (simple)
-            if (this.server_url === null) {
-                console.warn("Not configured for server-side annotation saving.");
-                return;
-            }
 
-            var query = '?did=' + this.doc_id;
-            if (this.doc_id === null) {
-                //Document id is not available. did will not be set for server-side annotation handling.
-                query = '';
-            }
-            var am = this.docViewer.GetAnnotationManager();
-            if (am) {
-                var overlayMessage = $('#overlayMessage');
-                overlayMessage.attr('data-i18n', 'annotations.savingAnnotations');
-                overlayMessage.i18n();
-                
-                overlayMessage.dialog({
-                    dialogClass: 'no-title',
-                    draggable: false,
-                    resizable: false,
-                    minHeight: 50,
-                    minWidth: window.innerWidth / 3,
-                    show: {
-                        effect: 'fade',
-                        duration: 400
-                    },
-                    hide: {
-                        effect: 'fade',
-                        duration: 1000
-                    }
-                });
-                
-                var xfdfString = am.ExportAnnotations();
-                $.ajax({
-                    type: 'POST',
-                    url: this.server_url + query,
-                    data: {
-                        'data': xfdfString
+            // 2) saving to server (simple)
+
+            var me = this;
+
+            return new Promise(function(resolve, reject) {
+                var overlayMessage;
+
+                me.exportAnnotations({
+                    start: function() {
+                        overlayMessage = $('#overlayMessage');
+                        overlayMessage.attr('data-i18n', 'annotations.savingAnnotations');
+                        overlayMessage.i18n();
+
+                        overlayMessage.dialog({
+                            dialogClass: 'no-title',
+                            draggable: false,
+                            resizable: false,
+                            minHeight: 50,
+                            minWidth: window.innerWidth / 3,
+                            show: {
+                                effect: 'fade',
+                                duration: 400
+                            },
+                            hide: {
+                                effect: 'fade',
+                                duration: 1000
+                            }
+                        });
                     },
                     success: function(data) {
                         /*jshint unused:false */
                         //Annotations were sucessfully uploaded to server
                         overlayMessage.attr('data-i18n', 'annotations.saveSuccess');
                         overlayMessage.i18n();
+                        resolve();
                     },
                     error: function(jqXHR, textStatus, errorThrown) {
                         /*jshint unused:false */
                         console.warn("Failed to send annotations to server.");
                         overlayMessage.attr('data-i18n', 'annotations.saveError');
                         overlayMessage.i18n();
+                        reject();
                     },
                     complete: function() {
                         setTimeout(function() {
@@ -1167,90 +1170,102 @@
                         }, 1000);
                     }
                 });
-            }
-            
+            });
+
             // 3) saving to server (avoid conflicts)
             // NOT IMPLEMENTED
         },
-        
-        initBookmarkView: function() {
+
+        initBookmarkView: function(){
+            this.updateBookmarkView();
+        },
+
+        updateBookmarkView: function() {
             var me = this;
-            var doc = this.docViewer.GetDocument();
+            var doc = this.docViewer.getDocument();
 
-            displayBookmarks(doc.GetBookmarks(), $("#bookmarkView"), 0);
+            doc.getBookmarks().then(function(bookmarks){
+                $('#bookmarkView').empty();
+                //delegate event
+                $("#bookmarkView")
+                    .off("mouseenter").on("mouseenter", "div.bookmarkWrapper", function() {
+                        $(me).addClass("ui-state-hover");
+                    })
+                    .off("mouseleave").on("mouseleave", "div.bookmarkWrapper", function() {
+                        $(me).removeClass("ui-state-hover");
+                    });
+                displayBookmarks(bookmarks, $("#bookmarkView"), 0);
+                $("#bookmarkView").treeview();
+            }, function(err){
+                console.warn('Error retrieving bookmarks', err);
+            });
 
-            //delegate event
-            $("#bookmarkView")
-                .off("mouseenter").on("mouseenter", "div.bookmarkWrapper", function() {
-                    $(this).addClass("ui-state-hover");
-                })
-                .off("mouseleave").on("mouseleave", "div.bookmarkWrapper", function() {
-                    $(this).removeClass("ui-state-hover");
-                });
-            
             function displayBookmarks(bookmarks, currentNode, id) {
                 /*jshint loopfunc:true */
                 for (var i = 0; i < bookmarks.length; i++) {
                     var node = document.createElement('span');
                     node.id = "bookmark" + id;
-                    node.innerHTML = bookmarks[i].name;
-                    
+                    node.innerHTML = bookmarks[i].getName();
+
                     var newNode;
-                    if (bookmarks[i].children.length > 0) {
+                    if (bookmarks[i].getChildren().length > 0) {
                         newNode = $("<li class=\"closed\"></li>");
-                        node.className="Node";
+                        node.className = "Node";
                     } else {
                         newNode = $("<li></li>");
-                        node.className="Leaf";
+                        node.className = "Leaf";
                     }
                     var otherNode = $(node);
                     var wrapper = $("<div class='bookmarkWrapper' id=bookmarkWrapper" + id + "></div>");
                     newNode.append(wrapper.append(otherNode));
-                    
+
                     wrapper.data('data', {
                         bookmark: bookmarks[i],
                         id: id++
                     })
                     .click(function() {
+                        var bookmark = $(this).data("data").bookmark;
+                        if(!bookmark.isValid()){
+                            return;
+                        }
                         if (me.clickedBookmark !== -1) {
                             $("#bookmarkWrapper" + me.clickedBookmark).removeClass('ui-state-active');
                             me.clickedBookmark = -1;
                         }
                         me.clickedBookmark = $(this).data("data").id;
                         $(this).addClass('ui-state-active');
-                        
-                        me.docViewer.DisplayBookmark($(this).data("data").bookmark);
+
+                        me.docViewer.displayBookmark(bookmark);
+                        me.trackPageHistory(bookmark.pageNumber);
                     });
-                    
+
                     currentNode.append(newNode);
 
-                    if (bookmarks[i].children.length > 0) {
+                    if (bookmarks[i].getChildren().length > 0) {
                         var $list = $("<ul></ul>");
                         newNode.append($list);
-                        
-                        id = displayBookmarks(bookmarks[i].children, $list, id);
+
+                        id = displayBookmarks(bookmarks[i].getChildren(), $list, id);
                     }
                 }
-                
+
                 if (i === 0) {
                     $("#bookmarkView").append('<div style="padding:5px 3px;" data-i18n="sidepanel.outlineTab.noOutlines"></div>');
                     $("#bookmarkView").i18n();
                 }
-                
+
                 return id;
             }
-            $("#bookmarkView").treeview();
         },
-        
+
         initThumbnailView: function() {
             /*jshint loopfunc: true */
             var me = this;
+            me.requestedThumbs = {};
+            me.lastRequestedThumbs = [];
+            me.thumbNailPages = 0;
+            me.haveThumbs = {};
 
-            var nPages = this.docViewer.GetPageCount();
-            for (var i = 0; i < nPages; i++) {
-                this.requestedThumbs[i] = false;
-            }
-            
             //delegate event
             $("#thumbnailView")
                 .off("mouseenter").on("mouseenter", "div.ui-widget-content", function() {
@@ -1260,71 +1275,117 @@
                     $(this).removeClass("ui-state-hover");
                 });
 
-            var docFragment = document.createDocumentFragment();
+            me.docViewer.getRenderingPipeline().registerHandlers('ReaderControl.updateThumbnails', {
+                'read': function(state){
+                    var visibleThumbs = me.getVisibleThumbs();
+                    /* jshint unused:false */
+                    return {
+                        visibleThumbs: visibleThumbs
+                    };
+                },
+                'write': function(state, changes){
+                    changes.forEach(function(change){
+                        if(change['type'] === 'appendThumb'){
+                            if(me.haveThumbs[change['pageIndex']]){
+                                me.receivedThumb(change['thumb'], change['pageIndex']);
+                            }
+                        }else if(change['type'] === 'updateThumbnails'){
+                            me.updateThumbnailPages();
+                            me.updateThumbnailView(state.visibleThumbs);
+                        }else if(change['type'] === 'applyPageChangesToThumbnails'){
+                            me.applyPageChangesToThumbnails(change['changes']);
+                        }
+                    });
+                }
+            });
+
             this.thumbnailsElement = this.$thumbnailViewContainer.get(0);
 
-            for (var pageIndex = 0; pageIndex < nPages; pageIndex++) {
-                
-                var thumbContainer = document.createElement('div');
-                thumbContainer.id = "thumbContainer" + pageIndex;
-                thumbContainer.style.height = me.thumbContainerHeight + "px";
-                thumbContainer.className = "thumbContainer ui-widget-content";
-
-                var thumbDiv = document.createElement('div');
-                thumbDiv.className = "thumbdiv";
-
-                var span = document.createElement("span");
-                span.style.height = "150px";
-                span.style.display = "block";
-
-                thumbDiv.appendChild(span);
-                thumbContainer.appendChild(thumbDiv);
-
-                var div = document.createElement('div');
-                div.style.textAlign = "center";
-                div.innerHTML = pageIndex + 1;
-                thumbContainer.appendChild(div);
-                
-                (function(pageIndex) {
-                    thumbContainer.addEventListener('click', function() {
-                        var $this = $(this);
-                    
-                        if (me.clickedThumb !== -1) {
-                            $("#thumbContainer" + me.clickedThumb).removeClass('ui-state-active');
-                        }
-                        me.clickedThumb = pageIndex;
-
-                        $this.addClass('ui-state-active');
-
-                        var divTop = me.thumbnailsElement.scrollTop;
-                        var divBottom = divTop + me.thumbnailsElement.offsetHeight;
-                    
-                        var top = pageIndex * me.thumbContainerHeight;
-                        var bottom = top + me.thumbContainerHeight;
-
-                        if (!(top >= divTop && bottom <= divBottom)) {
-                            me.thumbnailsElement.scrollTop = pageIndex * me.thumbContainerHeight;
-                            if (bottom > divBottom) {
-                                me.thumbnailsElement.scrollTop = me.thumbnailsElement.scrollTop - me.thumbnailsElement.clientHeight + me.thumbContainerHeight;
-                            }
-                        }
-                        setTimeout(function() {
-                            me.docViewer.SetCurrentPage(pageIndex + 1);
-                        }, 0);
-                    });
-
-                    docFragment.appendChild(thumbContainer);
-
-                })(pageIndex);
-            }
-
             // add all thumbnails to DOM at once
-            this.thumbnailsElement.appendChild(docFragment);
-
-            var thumbs = this.getVisibleThumbs();
-            this.appendThumbs(thumbs);
+            //this.updateThumbnailPages();
+            this.docViewer.getRenderingPipeline().pushChange('ReaderControl.updateThumbnails', {
+                'type': 'updateThumbnails'
+            });
+            //this.updateThumbnailView();
         },
-        
+
+        createThumbnailContainer: function(pageIndex){
+            var me = this;
+            var thumbContainer = document.createElement('div');
+            thumbContainer.id = "thumbContainer" + pageIndex;
+            thumbContainer.style.height = me.thumbContainerHeight + "px";
+            thumbContainer.style.width = me.thumbContainerWidth + "px";
+            thumbContainer.className = "thumbContainer ui-widget-content";
+
+            var thumbDiv = document.createElement('div');
+            thumbDiv.className = "thumbdiv";
+
+            var span = document.createElement("span");
+            span.style.height = "150px";
+            span.style.display = "block";
+
+            thumbDiv.appendChild(span);
+            thumbContainer.appendChild(thumbDiv);
+
+            var div = document.createElement('div');
+            div.style.textAlign = "center";
+            div.innerHTML = pageIndex + 1;
+            thumbContainer.appendChild(div);
+
+            thumbContainer.addEventListener('click', function() {
+                var $this = $(this);
+
+                if (me.clickedThumb !== -1) {
+                    $("#thumbContainer" + me.clickedThumb).removeClass('ui-state-active');
+                }
+                me.clickedThumb = pageIndex;
+
+                $this.addClass('ui-state-active');
+                setTimeout(function() {
+                    me.docViewer.setCurrentPage(pageIndex + 1);
+                    me.trackPageHistory(pageIndex + 1);
+                }, 0);
+            });
+
+            return thumbContainer;
+        },
+        invalidateThumbnail: function(pageIndex){
+            if(pageIndex in this.requestedThumbs){
+                this.cancelThumbnail(this.requestedThumbs[pageIndex]);
+                delete this.requestedThumbs[pageIndex];
+            }
+            delete this.haveThumbs[pageIndex];
+            $('#thumbContainer' + pageIndex).find('.thumb').remove();
+        },
+        applyPageChangesToThumbnails: function(changes){
+            var me = this;
+            changes.removed.forEach(function(pageNum){
+                me.invalidateThumbnail(pageNum - 1);
+            });
+            changes.contentChanged.forEach(function(pageNum){
+                me.invalidateThumbnail(pageNum - 1);
+            });
+            Object.keys(changes.moved).forEach(function(pageNum){
+                me.invalidateThumbnail(pageNum - 1);
+            });
+        },
+        updateThumbnailPages: function(){
+            var docPages = this.docViewer.getPageCount();
+            if(this.thumbNailPages < docPages){
+                var frag = document.createDocumentFragment();
+                for(var i = this.thumbNailPages; i < docPages; ++i){
+                    frag.appendChild(this.createThumbnailContainer(i));
+                }
+                this.thumbnailsElement.appendChild(frag);
+            }else if(this.thumbNailPages > docPages){
+                var range = document.createRange();
+                range.setStartBefore(this.thumbnailsElement.children[docPages]);
+                range.setEndAfter(this.thumbnailsElement.children[this.thumbNailPages - 1]);
+                range.deleteContents();
+            }
+            this.thumbNailPages = docPages;
+        },
+
         initSearchView: function() {
             //delegate event
             $("#fullSearchView")
@@ -1335,68 +1396,140 @@
                     $(this).removeClass("ui-state-hover");
                 });
         },
-        
+
+        beginRendering: function() {
+            for (var page in this.requestedThumbs) {
+                this.cancelThumbnail(this.requestedThumbs[page]);
+            }
+            var arrLength = this.lastRequestedThumbs.length;
+            for (var i = 0; i < arrLength; ++i) {
+                delete this.requestedThumbs[this.lastRequestedThumbs[i]];
+            }
+            this.requestedThumbs = {};
+            this.lastRequestedThumbs = [];
+            this.viewerRendering = true;
+        },
+
+        finishedRendering: function() {
+            this.viewerRendering = false;
+            //this.updateThumbnailView();
+            if(this.docViewer.getRenderingPipeline().hasPipeline('ReaderControl.updateThumbnails')){
+                this.docViewer.getRenderingPipeline().pushChange('ReaderControl.updateThumbnails', {
+                    'type': 'updateThumbnails'
+                });
+            }
+        },
+
+        cancelThumbnail: function (requestId) {
+            this.docViewer.getDocument().cancelLoadThumbnail(requestId);
+        },
+
+        updateThumbnailView: function (visibleThumbs) {
+            var me = this;
+            visibleThumbs = visibleThumbs || me.getVisibleThumbs();
+
+            var thumbIndex;
+            for (var i = 0; i < me.lastRequestedThumbs.length; i++) {
+                thumbIndex = me.lastRequestedThumbs[i];
+                if (me.requestedThumbs[thumbIndex] && !_.contains(visibleThumbs, thumbIndex)) {
+                    // cancel thumbnail request if it is no longer visible
+                    me.cancelThumbnail(me.requestedThumbs[thumbIndex]);
+                    delete me.requestedThumbs[thumbIndex];
+                }
+            }
+
+            me.lastRequestedThumbs = visibleThumbs;
+
+            me.appendThumbs(visibleThumbs);
+
+
+        },
+
+        receivedThumb: function (thumb,pageIndex) {
+            var me = this;
+            delete me.requestedThumbs[pageIndex];
+
+            var width, height, ratio;
+            if (thumb.width > thumb.height) {
+                ratio = thumb.width / 150;
+                height = Math.round(thumb.height / ratio);
+                width = 150;
+            } else {
+                ratio = thumb.height / 150;
+                width = Math.round(thumb.width / ratio);  //Chrome has trouble displaying borders of non integer width canvases.
+                height = 150;
+            }
+            thumb.style.width = width + 'px';
+            thumb.style.height = height + 'px';
+
+            thumb.className = "thumb";
+
+            var $thumbContainer = $("#thumbContainer" + pageIndex);
+            $thumbContainer.find(".thumbdiv").empty().append(thumb);
+
+            // Vertical centering of canvas
+            var pad = document.createElement('div');
+            pad.className = "thumbPad";
+            var pHeight = me.thumbContainerHeight - height;
+            var size = parseInt(pHeight / 2.0, 10);
+
+            pad.style.marginBottom = size + 'px';
+
+            $thumbContainer.prepend(pad);
+        },
+
         appendThumbs: function(visibleThumbs) {
             /*jshint loopfunc: true */
             var me = this;
-            var doc = this.docViewer.GetDocument();
-            
+            if (me.viewerRendering) {
+                // we don't want to slow down the main viewer so wait until it is done
+                return;
+            }
+            var doc = this.docViewer.getDocument();
+
             for (var i = 0; i < visibleThumbs.length; i++) {
                 (function() {
                     var pageIndex = visibleThumbs[i];
-                    if (me.requestedThumbs[pageIndex] === true || $('#thumbContainer' + pageIndex).find('img').length > 0) {
+                    if (me.requestedThumbs[pageIndex] || $('#thumbContainer' + pageIndex).find('.thumb').length > 0) {
                         return;
                     }
-                    
-                    me.requestedThumbs[pageIndex] = true;
-                    doc.LoadThumbnailAsync(pageIndex, function(thumb) {
-
-                        me.requestedThumbs[pageIndex] = false;
-
-                        var width, height, ratio;
-                        if (thumb.width > thumb.height) {
-                            ratio = thumb.width / 150;
-                            height = Math.round(thumb.height / ratio);
-                            width = 150;
-                        } else {
-                            ratio = thumb.height / 150;
-                            width = Math.round(thumb.width / ratio);  //Chrome has trouble displaying borders of non integer width canvases.
-                            height = 150;
-                        }
-                        thumb.style.width = width + 'px';
-                        thumb.style.height = height + 'px';
-                        
-                        thumb.className = "thumb";
-                        
-                        var $thumbContainer = $("#thumbContainer" + pageIndex);
-                        $thumbContainer.find(".thumbdiv").empty().append(thumb);
-
-                        // Vertical centering of canvas
-                        var pad = document.createElement('div');
-                        pad.className = "thumbPad";
-                        var pHeight = me.thumbContainerHeight - height;
-                        var size = parseInt(pHeight / 2.0, 10);
-
-                        pad.style.marginBottom = size + 'px';
-                        
-                        $thumbContainer.prepend(pad);
-                    }, 'thumbview');
+                    var requestId = doc.loadThumbnailAsync(pageIndex, function(thumb) {
+                        me.haveThumbs[pageIndex] = true;
+                        delete me.requestedThumbs[pageIndex];
+                        me.docViewer.getRenderingPipeline().pushChange('ReaderControl.updateThumbnails', {
+                            'type': 'appendThumb',
+                            'thumb': thumb,
+                            'pageIndex': pageIndex
+                        });
+                    });
+                    me.requestedThumbs[pageIndex] = requestId;
                 })();
             }
         },
-        
-        getVisibleThumbs: function() {
+
+        getVisibleThumbs: function () {
+            if (this.docViewer.getDocument() === null) {
+                return [];
+            }
+
             var thumbIndexes = [];
-            var thumbContainerHeight = this.$thumbnailViewContainer.height(); //height of the current viewport
+            var thumbViewContainerHeight = this.thumbnailsElement.offsetHeight; //height of the current viewport
+            var thumbViewContainerWidth = this.thumbnailsElement.offsetWidth - $.position.scrollbarWidth();
             var thumbItemHeight = this.$thumbnailViewContainer.find('#thumbContainer0').outerHeight(true); //outer height including margin
+            var thumbItemWidth = this.$thumbnailViewContainer.find('#thumbContainer0').outerWidth(true);
             if (typeof this.thumbnailsElement === 'undefined') {
                 return thumbIndexes;
             }
             var scrollTop = this.thumbnailsElement.scrollTop;
-            var scrollBottom = scrollTop + thumbContainerHeight;
-            
-            var topVisiblePageIndex =  Math.floor(scrollTop / thumbItemHeight);
-            var bottomVisiblePageIndex = Math.ceil(scrollBottom / thumbItemHeight) - 1;
+            var scrollBottom = scrollTop + thumbViewContainerHeight;
+
+            var numColumns = Math.floor(thumbViewContainerWidth / thumbItemWidth);
+            var isPartiallyObstructed = thumbViewContainerWidth > 0 && numColumns === 0;
+            if (isPartiallyObstructed) {
+                numColumns = 1;
+            }
+            var topVisiblePageIndex =  Math.floor((scrollTop / thumbItemHeight) * numColumns);
+            var bottomVisiblePageIndex = Math.ceil((scrollBottom / thumbItemHeight) * numColumns) - 1;
             var totalVisiblePages = bottomVisiblePageIndex - topVisiblePageIndex  + 1;
 
             //keep around/pre-load surrounding thumbnails that are not immediately visible.
@@ -1404,28 +1537,51 @@
             if (topVisibleWithCache < 0) {
                 topVisibleWithCache = 0;
             }
-            var nPages = this.docViewer.GetPageCount();
+            var nPages = this.docViewer.getPageCount();
             var bottomVisibleWithCache = bottomVisiblePageIndex + (totalVisiblePages);
             if (bottomVisibleWithCache >= nPages) {
                 bottomVisibleWithCache = (nPages - 1);
             }
-            
+
             for (var i = topVisibleWithCache; i <= bottomVisibleWithCache; i++ ) {
                 thumbIndexes.push(i);
             }
             return thumbIndexes;
         },
-        
+
         sidePanelVisible: function() {
-            return $('#sidePanel').css('display') !== 'none';
+            return !!this._showSideWindow;
         },
 
-        shiftSidePanel: function() {
-            var scrollView = $('#DocumentViewer');
+        shiftSidePanel: function(doAnimate) {
+            if (typeof doAnimate === 'undefined') {
+                doAnimate = true;
+            }
 
-            var shiftAmount = $('#sidePanel').width();
-            var scale = (window.innerWidth - shiftAmount) * 100 / window.innerWidth;
-            scrollView.width(scale + '%').css('margin-left', shiftAmount);
+            var scrollView = $('#DocumentViewer');
+            var notesPanel = $('#notesPanelWrapper');
+            // there is a distinction between the notes panel being shown or not shown and it being completely invisible
+            // in this case we want to see if it's completely invisible because even when the panel isn't shown the bar still has a width
+            var notesPanelInvisible = notesPanel.css('display') === 'none';
+
+            var leftShift = this.sidePanelVisible() ? $('#sidePanel').width() : 0;
+            var rightShift = notesPanelInvisible ? 0 : notesPanel.width();
+            if (doAnimate) {
+                $('.right-content').animate({
+                    'margin-left': leftShift
+                }, 150);
+
+                scrollView.animate({
+                    'margin-right': rightShift
+                }, 150);
+            } else {
+                $('.right-content').css({
+                    'margin-left': leftShift
+                });
+                scrollView.css({
+                    'margin-right': rightShift
+                });
+            }
         },
 
         clearSidePanelData: function() {
@@ -1433,22 +1589,20 @@
             $('#bookmarkView').empty();
             $('#thumbnailView').empty();
         },
-        
+
         searchText: function(pattern, mode) {
             var me = this;
             if (pattern !== '') {
-                if (typeof mode === 'undefined') {
-                    mode = me.docViewer.SearchMode.e_page_stop | me.docViewer.SearchMode.e_highlight;
-                }
-                me.docViewer.TextSearchInit(pattern, mode, false);
+                mode = mode | me.docViewer.SearchMode.e_page_stop | me.docViewer.SearchMode.e_highlight;
+                me.docViewer.textSearchInit(pattern, mode, false);
             }
         },
-        
+
         fullTextSearch: function(pattern) {
             var pageResults = [];
-            
+
             $('#fullSearchView').empty();
-           
+
             var me = this;
             var searchResultLineId = 0;
             if (pattern !== '') {
@@ -1459,7 +1613,7 @@
                 if ($('#caseSensitiveSearch').prop('checked')) {
                     mode = mode | me.docViewer.SearchMode.e_case_sensitive;
                 }
-                me.docViewer.TextSearchInit(pattern, mode, true,
+                me.docViewer.textSearchInit(pattern, mode, true,
                     // onSearchCallback
                     function(result) {
                         if (result.resultCode === Text.ResultCode.e_found){
@@ -1479,10 +1633,10 @@
                                     me.clickedSearchResult = -1;
                                 }
                                 me.clickedSearchResult = $(this).data("data").searchResultLineId;
-                     
+
                                 $(this).addClass('ui-state-active');
 
-                                me.docViewer.DisplaySearchResult($(this).data("data").result);
+                                me.docViewer.displaySearchResult($(this).data("data").result);
                             }).appendTo($("#fullSearchView"));
                             if (searchResultLineId === 1) {
                                 $resultLine.click();
@@ -1498,39 +1652,86 @@
                     });
             }
         },
-        
+        trackPageHistory: function(pageNumber){
+            var me = this;
+            if (me.pageHistoryTracker+1 < me.pageHistory.length) {
+                // handle case where we have pages in the future due to back traversing.
+                me.pageHistory = me.pageHistory.slice(0, me.pageHistoryTracker+1);
+            }
+            if (me.pageHistory[me.pageHistory.length-1] !== pageNumber) {
+                me.pageHistoryTracker += 1;
+                // add page to keep track of in history and update history buttons
+                me.pageHistory.push(pageNumber);
+                $('#backPage').addClass('back-forward-enabled').removeClass('back-forward-disabled');
+                $('#forwardPage').addClass('back-forward-disabled').removeClass('back-forward-enabled');
+            }
+        },
         bindEvents: function() {
             var me = this;
-       
+
+            $('#backPage').on('click', function() {
+                if(me.pageHistoryTracker > 0){
+                    me.pageHistoryTracker -= 1;
+                    me.docViewer.setCurrentPage(me.pageHistory[me.pageHistoryTracker]);
+                    if(me.pageHistoryTracker > 0){
+                        $('#backPage').addClass('back-forward-enabled').removeClass('back-forward-disabled');
+                    } else {
+                        $('#backPage').addClass('back-forward-disabled').removeClass('back-forward-enabled');
+                    }
+                    $('#forwardPage').addClass('back-forward-enabled').removeClass('back-forward-disabled');
+                }
+            });
+
+            $('#forwardPage').on('click', function() {
+                if(me.pageHistoryTracker < me.pageHistory.length-1){
+                    me.pageHistoryTracker += 1;
+                    me.docViewer.setCurrentPage(me.pageHistory[me.pageHistoryTracker]);
+                    $('#backPage').addClass('back-forward-enabled').removeClass('back-forward-disabled');
+                    if(me.pageHistoryTracker < me.pageHistory.length - 1){
+                        $('#forwardPage').addClass('back-forward-enabled').removeClass('back-forward-disabled');
+                    } else {
+                        $('#forwardPage').addClass('back-forward-disabled').removeClass('back-forward-enabled');
+                    }
+                }
+            });
+
             $('#prevPage').on('click', function() {
-                var currentPage = me.docViewer.GetCurrentPage();
+                var currentPage = me.docViewer.getCurrentPage();
                 if (currentPage > 1) {
-                    me.docViewer.SetCurrentPage(currentPage - 1);
+                    me.docViewer.setCurrentPage(currentPage - 1);
+                    me.trackPageHistory(currentPage - 1);
                 }
             });
-        
+
             $('#nextPage').on('click', function() {
-                var currentPage = me.docViewer.GetCurrentPage();
-                if (currentPage <= me.docViewer.GetPageCount()) {
-                    me.docViewer.SetCurrentPage(currentPage + 1);
+                var currentPage = me.docViewer.getCurrentPage();
+                if (currentPage <= me.docViewer.getPageCount()) {
+                    me.docViewer.setCurrentPage(currentPage + 1);
+                    me.trackPageHistory(currentPage + 1);
                 }
             });
-           
+
             $('#searchButton').on('click', function() {
                 me.searchText($('#searchBox').val());
             });
-        
-            $('#searchBox').on('keypress', function(e) {                
+
+            $('#searchBox').on('keypress', function(e) {
                 if (e.which === 13) { //Enter keycode
-                    me.searchText($(this).val());
+                    var searchTerm = $(this).val();
+
+                    if (e.shiftKey) {
+                        me.searchText(searchTerm, me.docViewer.SearchMode.e_search_up);
+                    } else {
+                        me.searchText(searchTerm);
+                    }
                 }
             });
-            
+
             // Side Panel events
             $('#fullSearchButton').on('click', function() {
                 me.fullTextSearch($('#fullSearchBox').val());
             });
-        
+
             $('#fullSearchBox').on('keypress', function(e) {
                 if(e.which === 13) { //Enter keycode
                     me.fullTextSearch($(this).val());
@@ -1539,195 +1740,152 @@
 
             me.bindPrintEvents();
         },
-        
-        fireEvent: function(type, data) {
-            $(document).trigger(type, data);
-        },
 
-        startPrintJob: function(pages) {
-            var me = this;
-            if (!this.preparingForPrint) {
-                var totalPages = this.getPageCount();
-                var printDisplay = $('#printDisplay');
-
-                var getPagesToPrint = function() {
-                    // remove whitespace
-                    var pgs = (pages + '').replace(/\s+/g, '');
-                    var pageList = [];
-                    // no input, assume every page
-                    if (pgs.length === 0) {
-                        for (var k = 1; k <= totalPages; k++) {
-                            pageList.push(k);
-                        }
-                        return pageList;
-                    }
-
-                    var pageGroups = pgs.split(',');
-                    var rangeSplit, start, end;
-
-                    for (var i = 0; i < pageGroups.length; i++) {
-                        rangeSplit = pageGroups[i].split('-');
-                        if (rangeSplit.length === 1) {
-                            // single number
-                            pageList.push(parseInt(rangeSplit[0], 10));
-
-                        } else if (rangeSplit.length === 2) {
-                            // range of numbers e.g. 2-5
-                            start = parseInt(rangeSplit[0], 10);
-                            end = parseInt(rangeSplit[1], 10);
-                            if (end < start) {
-                                continue;
-                            }
-                            for (var j = start; j <= end; j++) {
-                                pageList.push(j);
-                            }
-                        }
-                    }
-
-                    // remove duplicates and NaNs, sort numerically ascending
-                    return pageList.filter(function(elem, pos, self) {
-                        return self.indexOf(elem) === pos && elem > 0 && elem <= totalPages;
-                    }).sort(function(a, b) {
-                        return a - b;
-                    });
-                };
-
-                var prepareDocument = function(pages) {
-                    printDisplay.empty();
-
-                    // draw all pages at 100% regardless of devicePixelRatio or other modifiers
-                    window.utils.setCanvasMultiplier(1);
-
-                    var zoom = 1;
-                    var pageIndex = 0;
-                    var canvas, dataurl, img;
-
-                    loadPageLoop();
-                    function loadPageLoop() {
-                        var doc = me.docViewer.GetDocument();
-                        doc.LoadCanvasAsync(pages[pageIndex] - 1, zoom, null, function(pageCanvas) {
-                            if (!me.preparingForPrint) {
-                                return;
-                            }
-                            canvas = pageCanvas[0];
-                            me.docViewer.GetAnnotationManager().DrawAnnotations(pages[pageIndex], canvas);
-
-                            dataurl = canvas.toDataURL();
-
-                            img = $('<img>')
-                                .attr('src', dataurl)
-                                .css({
-                                    'max-width': '100%',
-                                    'max-height': '100%'
-                                })
-                                .load(function() {
-                                    if (!me.preparingForPrint) {
-                                        return;
-                                    }
-
-                                    printDisplay.append(img);
-                                    me.fireEvent('printProgressChanged', [pageIndex + 1, pages.length]);
-
-                                    pageIndex++;
-                                    if (pageIndex < pages.length) {
-                                        loadPageLoop();
-                                    } else {
-                                        window.print();
-                                        window.utils.unsetCanvasMultiplier();
-                                        me.preparingForPrint = false;
-                                    }
-                                });
-
-                        }, function() {}, 1);
-                    }
-                };
-            
-            
-                var pagesToPrint = getPagesToPrint();
-                if (pagesToPrint.length === 0) {
-                    alert("No valid pages specified");
-                    return;
-                }
-                this.preparingForPrint = true;
-                prepareDocument(pagesToPrint);
+        getAllPageNumbers: function() {
+            var pageList = [];
+            for (var k = 1; k <= this.getPageCount(); k++) {
+                pageList.push(k);
             }
+            return pageList;
         },
 
-        endPrintJob: function(){
-            this.preparingForPrint = false;
+        endPrintJob: function() {
+            BaseReaderControl.prototype.endPrintJob.apply(this, arguments);
+            $('#invalidPageSelectionError').hide();
             $('#printProgress').hide();
             $('.progressLabel').hide();
-            $('#printDisplay').empty();
         },
 
-        bindPrintEvents: function() {
+        print: function() {
             var me = this;
-            var printProgress = $('#printProgress');
-            var progressLabel = $('.progressLabel');
-            var printPageNumbers = $('#printPageNumbers');
+            var printPageNumbers;
 
-            $('#printButton').click(function() {
-                $('#printDialog').dialog({
-                    modal: true,
-                    resizable: false,
-                    show: {effect: "scale", duration: 100},
-                    hide: {effect: "scale", duration: 100},
-                    open: function() {
-                        printPageNumbers.val(me.docViewer.GetCurrentPage());
-                    },
-                    close: function() {
-                        me.endPrintJob();
-                    },
-                    buttons: [
-                        {
-                            text: i18n.t("print.print"),
-                            click: function() {
-                                me.startPrintJob(printPageNumbers.val());
-                            }
-                        },
-                        {
-                            text: i18n.t("print.done"),
-                            click: function() {
-                                $(this).dialog("close");
-                            }
-                        }
-                    ]
-                });
+            function getPageNumbersToPrint() {
+                if ($('#allPages').prop("checked")) {
+                    return me.getAllPageNumbers();
+                }
+                var pageInput = $('#selectedPagesInput').val();
+                return me.getPagesToPrint(pageInput);
+            }
+
+            function updatePrintButton(numPagesToPrint) {
+                var printButton = $('#printStartButton');
+                if (numPagesToPrint === 0) {
+                    $('#invalidPageSelectionError').show();
+                    printButton.prop('disabled', true);
+                } else {
+                    $('#invalidPageSelectionError').hide();
+                    printButton.prop('disabled', false);
+                }
+            }
+
+            function updatePrintDialog() {
+                printPageNumbers = getPageNumbersToPrint();
+                $('.numberPagesLabel').attr('data-i18n', 'print.totalPageCount')
+                    .data('i18n-options', {
+                        "count": printPageNumbers.length
+                    })
+                    .i18n();
+
+                updatePrintButton(printPageNumbers.length);
+            }
+
+            $('#numberPagesToPrint').show();
+            $('.numberPagesLabel').show();
+            updatePrintDialog();
+
+            var changeElementsAffectingNumPages = [$('#allPages'), $('#selectedPages')];
+            for (var i = 0; i < changeElementsAffectingNumPages.length; i++) {
+                changeElementsAffectingNumPages[i].on("change", updatePrintDialog);
+            }
+            var customPagesTextbox = $('#selectedPagesInput');
+            var throttleUpdate = _.throttle(updatePrintDialog, 200, {leading: false});
+            customPagesTextbox.on("keyup", throttleUpdate);
+            customPagesTextbox.on("click", function() {
+               $('#selectedPages').prop("checked", true);
+               updatePrintDialog();
             });
 
-            $(document).on('printProgressChanged', function(e, pageNum, totalPages) {
-                printProgress.show().progressbar({
-                    'value': pageNum / totalPages * 100
-                });
-                progressLabel.show().attr('data-i18n', 'print.preparingPages')
-                .data('i18n-options', {
-                    "current": pageNum,
-                    "total": totalPages
-                })
-                .i18n();
+            $('#printDialog').dialog({
+              modal: true,
+              resizable: false,
+              show: {
+                effect: "scale",
+                duration: 100
+              },
+              hide: {
+                effect: "scale",
+                duration: 100
+              },
+              open: function() {
+                  $('#allPages').prop("checked", true);
+                  $('#selectedPagesInput').val("");
+                  updatePrintDialog();
+              },
+              close: function() {
+                me.endPrintJob();
+              },
+              buttons: [{
+                id: "printStartButton",
+                text: i18n.t("print.print"),
+                click: function() {
+                    me.startPrintJob(printPageNumbers, me.pageOrientations.Auto, false, function() {
+                        window.print();
+                    });
+                }
+              }, {
+                text: i18n.t("print.done"),
+                click: function() {
+                  $(this).dialog("close");
+                }
+              }]
             });
+        },
+
+        printHandler: function() {
+            var me = this;
+            me.print();
+        },
+
+
+        bindPrintEvents: function() {
+          var me = this;
+          var printProgress = $('#printProgress');
+          var progressLabel = $('.progressLabel');
+
+          $('#printButton').on('click', function(){
+            me.printHandler();
+          });
+
+          $(document).on('printProgressChanged', function(e, pageNum, totalPages) {
+            printProgress.show().progressbar({
+              'value': pageNum / totalPages * 100
+            });
+            progressLabel.show().attr('data-i18n', 'print.preparingPages')
+              .data('i18n-options', {
+                "current": pageNum,
+                "total": totalPages
+              })
+              .i18n();
+          });
         },
 
         getPageContainer: function(pageIndex) {
             return $('#DocumentViewer').find('#pageContainer' + pageIndex);
         },
-        
-        getDocumentViewer: function() {
-            return this.docViewer;
-        },
-        
+
         setInterfaceDefaults: function() {
-            var pageIndex = this.docViewer.GetCurrentPage() - 1;
-            
-            $('#totalPages').text('/' + this.docViewer.GetPageCount());
-            var zoom = Math.round(this.docViewer.GetZoom() * 100);
+            var pageIndex = this.docViewer.getCurrentPage() - 1;
+
+            $('#totalPages').text('/' + this.docViewer.getPageCount());
+            var zoom = Math.round(this.docViewer.getZoom() * 100);
             $('#zoomBox').val(zoom + "%");
             $('#slider').slider({
                 value: zoom
             });
             $('#pageNumberBox').val(pageIndex + 1);
-            
-            this.docViewer.SetToolMode(Tools.PanEditTool);            
+
+            this.docViewer.setToolMode(this.defaultToolMode);
             this.clickedThumb = pageIndex;
             $("#thumbContainer" + pageIndex).addClass('ui-state-active');
         },
@@ -1735,231 +1893,130 @@
         setVisibleTab: function(index) {
             $("#tabs").tabs("option", "active", index);
         },
-        
+
         //==========================================================
-        // Implementation to the WebViewer.js interface
+        // Implementation of the WebViewer.js interface
         //==========================================================
-        /**
-         * Loads a XOD document into the ReaderControl
-         * @function
-         * @param {string} doc a URL path to a XOD file
-         * @param {boolean} [streaming=false] indicates if streaming mode should be used. For the best performance, set streaming to false.
-         */
-        loadDocument: function(doc, streaming, decrypt, decryptOptions) {
-            // Example of how to decrypt a document thats been XORed with 0x4B
-            // It is passed as a parameter to the part retriever constructor.
-            // e.g. partRetriever = new window.CoreControls.PartRetrievers.HttpPartRetriever(doc, true, decrypt);
-            /*var decrypt = function(data) {
-
-                var arr = new Array(1024);
-                var j = 0;
-                var responseString = "";
-
-                while (j < data.length) {
-                    
-                    for (var k = 0; k < 1024 && j < data.length; ++k) {
-                        arr[k] = data.charCodeAt(j) ^ 0x4B;
-                        ++j;
-                    }
-                    responseString += String.fromCharCode.apply(null, arr.slice(0,k));
-                }
-                return responseString;
-            };*/
-            
-            var queryParams = window.ControlUtils.getQueryStringMap();
-            var path = queryParams.getString('p');
-
-            window.readerControl.startOffline = queryParams.getBoolean('startOffline', false);
-            var silverlightCORS =  queryParams.getBoolean('useSilverlightRequests', false);
-            var partRetriever;
-            try {
-                var cacheHinting = exports.CoreControls.PartRetrievers.CacheHinting;
-                if (window.readerControl.startOffline) {
-                    partRetriever = new CoreControls.PartRetrievers.WebDBPartRetriever();
-                } else if(silverlightCORS === true){
-                    partRetriever = new CoreControls.PartRetrievers.SilverlightPartRetriever(doc, cacheHinting.CACHE, decrypt, decryptOptions);
-                } else if (path !== null) {
-                    partRetriever = new CoreControls.PartRetrievers.ExternalHttpPartRetriever(doc, path);
-                } else if (streaming === true) {
-                    partRetriever = new CoreControls.PartRetrievers.StreamingPartRetriever(doc, cacheHinting.CACHE, decrypt, decryptOptions);
-                } else {
-                    partRetriever = new CoreControls.PartRetrievers.HttpPartRetriever(doc, cacheHinting.CACHE, decrypt, decryptOptions);
-                }
-            } catch(err) {
-                console.error(err);
-            }
-
-            var me = this;
-            partRetriever.SetErrorCallback(function(err) {
-                me.fireEvent('error', [err, 'xodLoad']);
-            });
-            
-            this.docViewer.LoadAsync(partRetriever, window.readerControl.doc_id);
-            
-        },
-        
         getShowSideWindow: function() {
-            if ($("#sidePanel").css('display') === "block") {
-                return true;
-            }
-            return false;
+            return !!this._showSideWindow;
         },
-        
-        setShowSideWindow: function(value) {
+
+        setShowSideWindow: function(value, animate) {
+            if (_.isUndefined(animate)) {
+                animate = true;
+            }
+
+            exports.ControlUtils.userPreferences.setViewerPreference('showSideWindow', value);
+
             var $sidePanel = $('#sidePanel');
-
-            if (value === true) {
-                this.shiftSidePanel();
-
-                $sidePanel.show();
-            } else {
-                // reset scroll view to its defaults
-                $('#DocumentViewer').width('100%').css('margin-left', 0);
-
-                $sidePanel.hide();
-            }
-
             var $toggleButton = $('#toggleSidePanel');
+            var animation = animate ?  {effect: "slide", duration: 150} : undefined;
 
-            if ($sidePanel.is(':visible')) {
+            if (value) {
+                $sidePanel.show(animation);
                 $toggleButton.addClass('customicons collapse_left').removeClass('collapse');
+                $('#ui-display').addClass('left-panel-visible');
             } else {
-                $toggleButton.addClass('collapse').removeClass('customicons');
+                $sidePanel.hide(animation);
+                $toggleButton.addClass('collapse').removeClass('customicons collapse_left');
+                $('#ui-display').removeClass('left-panel-visible');
+            }
+            this._showSideWindow = value;
+            this.shiftSidePanel(animate);
+            var me = this;
+            var timeout = animate ? 250 : 0;
+            setTimeout(function() {
+                me.docViewer.scrollViewUpdated();
+                me.fireEvent('sidePanelVisibilityChanged', value);
+            }, timeout);
+        },
+
+        notesPanelVisible: function() {
+            return !!this._showNotesPanel;
+        },
+
+        showNotesPanel: function(value) {
+            var me = this;
+            this._showNotesPanel = value;
+            var $notesPanelWrapper = $('#notesPanelWrapper');
+            var $notesPanel = $notesPanelWrapper.find('#notesPanel');
+            var $toggleNotesButton = $('#toggleNotesPanel');
+            if (value) {
+                $notesPanelWrapper.removeClass('hidden');
+                $notesPanel.removeClass('hidden');
+                $toggleNotesButton.addClass('active');
+                this.fireEvent('notesPanelBecomingVisible');
+            } else {
+                $notesPanelWrapper.addClass('hidden');
+                $notesPanel.addClass('hidden');
+                $toggleNotesButton.removeClass('active');
             }
 
-            this.docViewer.ScrollViewUpdated();
-        },
-        setToolbarVisibility: function(isVisible){
-          if(isVisible)  {
-              $("#control").show();
-          }else{
-              $("#control").hide();
-          }
-          this.resize();
-        },
-        getCurrentPageNumber: function() {
-            return this.docViewer.GetCurrentPage();
+            this.shiftSidePanel();
+            setTimeout(function(){
+                me.docViewer.scrollViewUpdated();
+                me.fireEvent('notesPanelVisibilityChanged', value);
+            }, 250);
         },
 
-        setCurrentPageNumber: function(pageNumber) {
-            this.docViewer.SetCurrentPage(pageNumber);
-        },
-
-        getPageCount: function() {
-            return this.docViewer.GetPageCount();
-        },
-
-        getZoomLevel: function() {
-            return this.docViewer.GetZoom();
-        },
-
-        setZoomLevel: function(zoomLevel) {
-            this.docViewer.ZoomTo(zoomLevel);
+        setToolbarVisibility: function(isVisible) {
+            if (isVisible) {
+                $("#control").show();
+            } else {
+                $("#control").hide();
+            }
+            this.resize();
         },
 
         rotateClockwise: function(pageNumber) {
-            this.docViewer.RotateClockwise(pageNumber);
+            this.docViewer.rotateClockwise(pageNumber);
         },
 
         rotateCounterClockwise: function(pageNumber) {
-            this.docViewer.RotateCounterClockwise(pageNumber);
-        },
-
-        getToolMode: function() {
-            var tool = this.docViewer.GetToolMode();
-            for (var key in this.toolModeMap) {
-                if (tool === this.toolModeMap[key]) {
-                    return key;
-                }
-            }
-            return null;
-        },
-
-        setToolMode: function(toolMode) {
-            var tool = this.toolModeMap[toolMode];
-            if (tool) {
-                this.docViewer.SetToolMode(tool);
-            }
+            this.docViewer.rotateCounterClockwise(pageNumber);
         },
 
         fitWidth: function() {
-            this.docViewer.SetFitMode(this.docViewer.FitMode.FitWidth);
+            this.docViewer.setFitMode(this.docViewer.FitMode.FitWidth);
         },
 
         fitPage: function() {
-            this.docViewer.SetFitMode(this.docViewer.FitMode.FitPage);
+            this.docViewer.setFitMode(this.docViewer.FitMode.FitPage);
         },
 
         fitZoom: function() {
-            this.docViewer.SetFitMode(this.docViewer.FitMode.Zoom);
+            this.docViewer.setFitMode(this.docViewer.FitMode.Zoom);
         },
+
         getFitMode: function() {
-            return this.docViewer.GetFitMode();
+            return this.docViewer.getFitMode();
         },
+
         setFitMode: function(fitMode) {
-            this.docViewer.SetFitMode(fitMode);
-        },
-        goToFirstPage: function() {
-            this.docViewer.DisplayFirstPage();
+            this.docViewer.setFitMode(fitMode);
         },
 
-        goToLastPage: function() {
-            this.docViewer.DisplayLastPage();
-        },
-
-        goToNextPage: function() {
-            var currentPage = this.docViewer.GetCurrentPage();
-            if (currentPage <= 0) {
-                return;
-            }
-            currentPage = currentPage + 1;
-            this.docViewer.SetCurrentPage(currentPage);
-        },
-
-        goToPrevPage: function() {
-            var currentPage = this.docViewer.GetCurrentPage();
-            if (currentPage <= 1) {
-                return;
-            }
-            currentPage = currentPage - 1;
-            this.docViewer.SetCurrentPage(currentPage);
-        },
-        
         getLayoutMode: function() {
-            return this.docViewer.GetDisplayModeManager().GetDisplayMode().mode;
+            return this.docViewer.getDisplayModeManager().getDisplayMode().mode;
         },
-        
+
         setLayoutMode: function(layoutMode) {
             var newDisplayMode = new exports.CoreControls.DisplayMode(this.docViewer, layoutMode);
-            this.docViewer.GetDisplayModeManager().SetDisplayMode(newDisplayMode);
+            this.docViewer.getDisplayModeManager().setDisplayMode(newDisplayMode);
         },
-         setAnnotationUser: function(username){
-            var am = this.docViewer.GetAnnotationManager();
-            this.currUser = username;
-            am.SetCurrentUser(this.currUser);
+
+
+        closeDocument: function() {
+            exports.BaseReaderControl.prototype.closeDocument.call(this);
+            // if doc is null, we aren't open yet so don't cancel thumbnail requests
+            if(this.docViewer.getDocument()){
+                for (var page in this.requestedThumbs) {
+                    this.cancelThumbnail(this.requestedThumbs[page]);
+                }
+            }
+            this.clearSidePanelData();
         },
-        getAnnotationUser: function(){
-            var am = this.docViewer.GetAnnotationManager();
-            return am.GetCurrentUser();
-        },
-        setAdminUser: function(isAdmin){
-            var am = this.docViewer.GetAnnotationManager();
-            this.isAdmin = isAdmin;
-            am.SetIsAdminUser(this.isAdmin);
-        },
-        isAdminUser: function(){
-            var am = this.docViewer.GetAnnotationManager();
-            return am.GetIsAdminUser();
-        },
-        setReadOnly: function(isReadOnly){
-            var am = this.docViewer.GetAnnotationManager();
-            this.readOnly = isReadOnly;
-            am.SetReadOnly(this.readOnly);
-        },
-        isReadOnly: function(){
-            var am = this.docViewer.GetAnnotationManager();
-            return am.GetReadOnly();
-        },
+
         /**
          *Sets the search mode.
          *All sub-sequent text searches will use the search mode that was set.
@@ -1977,11 +2034,18 @@
         }
     };
 
-    exports.ReaderControl.prototype = $.extend(new exports.WebViewerInterface(), exports.ReaderControl.prototype);
-    
+    exports.ReaderControl.prototype = $.extend({}, exports.BaseReaderControl.prototype, exports.ReaderControl.prototype);
 
-    
+
+
 /* ReaderControl event doclet */
+
+/**
+ * A global DOM event that is triggered when the viewer has been loaded and ReaderControl is constructed.
+ * @name ReaderControl#viewerLoaded
+ * @event
+ * @param e a JavaScript event object
+ */
 
 /**
  * A global DOM event that is triggered when a document has been loaded.
@@ -1989,7 +2053,7 @@
  * @event
  * @param e a JavaScript event object
  */
- 
+
 /** A global DOM event that is triggered when the document view's zoom level has changed.
  * @name ReaderControl#zoomChanged
  * @event
@@ -2029,120 +2093,8 @@
 })(window);
 
 $(function() {
-   $(window).on('hashchange', function() {        
-        window.location.reload();
-    });
-    
-    window.ControlUtils.i18nInit();
-
-    if (!window.CanvasRenderingContext2D) {
-        //unsupported browser detected, show error message
+    window.ControlUtils.initialize(function() {
         $('#ui-display').children().hide();
         $('#unsupportedErrorMessage').show();
-        return;
-    }
-    
-    var viewerElement = document.getElementById("DocumentViewer");
-    
-    var queryParams = window.ControlUtils.getQueryStringMap();
-    var configScript = queryParams.getString('config');
-    var xdomainUrls = queryParams.getString('xdomain_urls');
-
-    if (xdomainUrls !== null) {
-        window.ControlUtils.initXdomain(xdomainUrls);
-    }
-
-    function initializeReaderControl() {
-        var enableAnnot = queryParams.getBoolean('a', false);
-        var enableOffline = queryParams.getBoolean('offline', false);
-            
-        window.readerControl = new ReaderControl(viewerElement, enableAnnot, enableOffline);
-        
-        var doc = queryParams.getString('d');
-        
-        var doc_id = queryParams.getString('did');
-        if (doc_id !== null) {
-            window.readerControl.doc_id = doc_id;
-        }
-        
-        var server_url = queryParams.getString('server_url');
-        if (server_url !== null) {
-            window.readerControl.server_url = server_url;
-        }
-        
-        var user = queryParams.getString('user');
-        if (user !== null) {
-            window.readerControl.currUser = user;
-        }
-    
-        var admin = queryParams.getBoolean('admin', window.readerControl.isAdmin);
-        window.readerControl.isAdmin = admin;
-    
-        var readOnly = queryParams.getBoolean('readonly');
-        if (readOnly !== null) {
-            window.readerControl.readOnly = readOnly;
-        }
-    
-        var streaming = queryParams.getBoolean('streaming', false);
-        var auto_load = queryParams.getBoolean('auto_load', true);
-        
-        var showToolbar = queryParams.getBoolean('toolbar');
-        if(showToolbar !== null){
-            ReaderControl.config.ui.hideControlBar = !showToolbar;
-        }
-        
-        if (!ReaderControl.config.ui.hideControlBar) {
-            //this is kind of a weird place to do this... but we want to 
-            //make sure the toolbar is not shown before we read the query params
-            window.readerControl.setToolbarVisibility(true);
-        }
-        
-        window.readerControl.fireEvent("viewerLoaded");
-        
-        // auto loading may be set to false by webviewer if it wants to trigger the loading itself at a later time
-        if (doc === null || auto_load === false) {
-            return;
-        }
-
-        if (queryParams.getBoolean('startOffline')) {
-            $.ajaxSetup ({
-                cache: true
-            });
-
-            window.readerControl.loadDocument(doc, false);
-        } else {
-            window.ControlUtils.byteRangeCheck(function(status) {
-                // if the range header is supported then we will receive a status of 206
-                if (status === 200) {
-                    streaming = true;
-                    console.warn('HTTP range requests not supported. Switching to streaming mode.');
-                }
-                window.readerControl.loadDocument(doc, streaming);
-            
-            }, function() {
-                // some browsers that don't support the range header will return an error
-                streaming = true;
-                window.readerControl.loadDocument(doc, streaming);
-            });
-        }
-    }
-    
-    if(configScript !== null && configScript.length > 0) {
-        //override script path found, prepare ajax script injection
-        $.getScript(configScript)
-        .done(function(script, textStatus) {
-            /*jshint unused:false */
-            //override script successfully loaded
-            initializeReaderControl();
-        })
-        .fail(function(jqxhr, settings, exception) {
-            /*jshint unused:false */
-            console.warn("Config script could not be loaded. The default configuration will be used.");
-            initializeReaderControl();
-        });
-    } else {
-        //no override script path, use default
-        initializeReaderControl();
-    }
-
+    });
 });

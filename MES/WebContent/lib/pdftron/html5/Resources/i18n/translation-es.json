@@ -34,31 +34,6 @@
             "wholeWordOnly": "Sólo palabras completas",
             "caseSensitive": "Sensible a May. y Min.",
             "noResults": "No se han encontrado resultados."
-        },
-        "annotations": "Anotaciones",
-        "annotationTab": {
-            "buttonHide": "Ocultar",
-            "buttonShow": "Mostrar",
-            "buttonSave": "Guardar",
-            "toggleAnnotations": "Conmutar Anotaciones",
-            "saveAnnotations": "Guardar Anotaciones",
-            
-            "tooltips": {
-                "edit": "Editar Anotación",
-                "stickyNote": "Nota",
-                "highlight": "Resaltar texto",
-                "underline": "Subrayar texto",
-                "strikeout": "Tachar texto",
-                "rectangle": "Rectángulo",
-                "ellipse": "Elipse",
-                "line": "Línea",
-                "freeHand": "Mano alzada"
-            },
-            
-            "fill": "Relleno",
-            "stroke": "Trazo",
-            "thickness": "Grosor",
-            "setAsDefault": "Establecer por defecto"
         }
     },
     
@@ -81,6 +56,31 @@
             "ellipse": "Elipse",
             "line": "Línea",
             "freeHand": "Mano alzada"
+        },
+
+        "properties": {
+            "fill": "Relleno",
+            "stroke": "Trazo",
+            "thickness": "Grosor"
+        },
+
+        "annotations": "Anotaciones",
+        "buttonHide": "Ocultar",
+        "buttonShow": "Mostrar",
+        "buttonSave": "Guardar",
+        "toggleAnnotations": "Conmutar Anotaciones",
+        "saveAnnotations": "Guardar Anotaciones",
+        
+        "tooltips": {
+            "edit": "Editar Anotación",
+            "stickyNote": "Nota",
+            "highlight": "Resaltar texto",
+            "underline": "Subrayar texto",
+            "strikeout": "Tachar texto",
+            "rectangle": "Rectángulo",
+            "ellipse": "Elipse",
+            "line": "Línea",
+            "freeHand": "Mano alzada"
         }
     },
     
@@ -95,17 +95,17 @@
         "cancelDownload": "Cancelar descarga"
     },
     
+    "annotationPopup": {
+        "buttonDone": "Hecho",
+        "buttonDelete": "Eliminar",
+        "buttonNote": "Nota",
+        "buttonStroke": "Color de trazo",
+        "buttonFill": "Color de relleno",
+        "buttonThickness": "Grosor",
+        "buttonSave": "Guardar"
+    },
+    
     "mobile": {
-        "annotationPopup": {
-            "buttonDone": "Hecho",
-            "buttonDelete": "Eliminar",
-            "buttonNote": "Nota",
-            "buttonStroke": "Color de trazo",
-            "buttonFill": "Color de relleno",
-            "buttonThickness": "Grosor",
-            "buttonSave": "Guardar"
-        },
-        
         "bookmarks": {
             "bookmarks": "Marcadores",
             "noBookmarks": "Este documento no contiene marcadores.",

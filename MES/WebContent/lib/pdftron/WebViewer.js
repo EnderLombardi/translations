@@ -16,15 +16,21 @@ if (typeof console === "undefined") {
     };
 }
 
+if (window.PDFNet && !PDFTron.skipPDFNetWebViewerWarning)
+{
+    console.warn("PDFNet.js and WebViewer.js have been included in the same context. See pdftron.com/kb_same_context for an explanation of why this could be an error in your application.")
+}
+
+
 /**
  * Creates a WebViewer instance and embeds it on the HTML page.
  *
- * @class PDFTron.WebViewer Represents a WebViewer which is a document viewer built using either HTML5, Silverlight or Flash technologies.
+ * @class PDFTron.WebViewer Represents a WebViewer which is a document viewer built using HTML5.
  * @param {PDFTron.WebViewer.Options} options options passed to the specific WebViewer.
- * @example e.g. 
+ * @example e.g.
  *var viewerElement = document.getElementById('viewer');
  *myWebViewer = new PDFTron.WebViewer({
- *	type: "html5,html5Mobile,silverlight,flash",
+ *	type: "html5,html5Mobile",
  *	initialDoc : "/host/GettingStarted.xod",
  *	enableAnnotations: true,
  *	streaming : false
@@ -41,45 +47,30 @@ PDFTron.WebViewer = function WebViewer(options, element) {
         if (lastCharIndex > 0 && this.options.path[lastCharIndex] !== '/') {
             this.options.path += '/';
         }
-        this.options.flashPath = this.options.path + this.options.flashPath;
         this.options.html5Path = this.options.path + this.options.html5Path;
         this.options.html5MobilePath = this.options.path + this.options.html5MobilePath;
-        this.options.silverlightPath = this.options.path + this.options.silverlightPath;
     }
 
     this.element = element;
     $(this.element).css('overflow', 'hidden');
 
+    window.WebViewer = {
+        l: function() {
+            return options.l;
+        },
+        workerTransportPromise: function() {
+            return options.workerTransportPromise
+        }
+    };
 
     if (this.options.autoCreate) {
         this.create();
     }
-
-//    var me = this;  
-//    if (typeof this.options.initialDoc !== 'undefined') {
-//        var docPath = this._correctRelativePath(this.options.initialDoc);
-//        docPath = encodeURIComponent(docPath); //url-encode the doc path
-//        this.options.initialDoc = docPath;
-//        this._create();
-//    } else if (typeof this.options.cloudApiId !== 'undefined') {    
-//        $.get('https://api.pdftron.com/v2/download/' + this.options.cloudApiId + "?type=xod&redirect=false" , function(data) {
-//            if (typeof data.url === "undefined") {
-//                me.loadErrorPage();       
-//            } else {
-//                me.options.initialDoc = encodeURIComponent(data.url);
-//                me._create();    
-//            }
-//        }, 'json')
-//        .error(function() {
-//            me.loadErrorPage();       
-//        });   
-//    }
-
-}
+};
 
 
 PDFTron.WebViewer.prototype = {
-    version: '1.8.1',
+    version: '2.2.1',
     create: function() {
         var me = this;
         if (typeof this.options.initialDoc !== 'undefined') {
@@ -133,17 +124,21 @@ PDFTron.WebViewer.prototype = {
         if (viewers.length < 1)
             viewers[0] = "html5"; //use html5 as default
 
-        me._flashVer = "10.2";
-        // FABridgeId has to match FABridgeId in swf file
-        me._flashFABridgeId = "ReaderControl";
-        me._silverlightVer = "4.0";
         me._createViewer(viewers);
 
+    },
+    _notSupportedMobile: function() {
+        $(this.element).append("<div id=\"webviewer-browser-unsupported\">PDF document viewing is not currently supported by the mobile viewer.</div>");
     },
     _createViewer: function(viewers) {
         var me = this;
         me.selectedType = "none";
         if (this.isMobileDevice()) {
+            if (this.options.documentType === 'pdf') {
+                this._notSupportedMobile();
+                return;
+            }
+
             viewers = Array("html5Mobile");
             me.selectedType = "html5Mobile";
 
@@ -155,49 +150,37 @@ PDFTron.WebViewer.prototype = {
             }
         }
         var allowHTML5 = false;
-        var allowSilverlight = false;
-        var allowFlash = false;
 
         for (var i = 0; i < viewers.length; i++) {
             if (viewers[i].toLowerCase() === "html5mobile") {
+                if (this.options.documentType === 'pdf') {
+                    continue;
+                }
+
                 allowHTML5 = true;
-                if(me._testHTML5()){
-                     if (this.options.mobileRedirect) {
+                if (me._testHTML5()) {
+                    if (this.options.mobileRedirect) {
                         // redirect to new location
                         me.selectedType = "html5Mobile";
                         var newLocation = this.options.html5MobilePath + this._getHTML5OptionsURL();
                         window.location = newLocation;
                         return;
                     }
-                    if (me.isSameOrigin(decodeURIComponent(me.options.initialDoc)) || me._testCORS()) {
+                    if (this.options.xdomainProxyUrl || me.isSameOrigin(decodeURIComponent(me.options.initialDoc)) || me._testCORS()) {
                         me.selectedType = "html5Mobile";
                         break;
-                    }   
+                    }
                 }
             }
             if (viewers[i].toLowerCase() === "html5") {
                 allowHTML5 = true;
                 if (me._testHTML5()) {
                     var sameOrigin = me.isSameOrigin(decodeURIComponent(me.options.initialDoc));
-                    if (sameOrigin || (me._testCORS() || me._testSilverlight(me._silverlightVer))) {
-                        //if not same origin, need to support xdomain access, either through CORS or silverlight part retreiver.
+                    if (this.options.xdomainProxyUrl || sameOrigin || me._testCORS()) {
+                        //if not same origin, need to support xdomain access through CORS
                         me.selectedType = "html5";
                         break;
                     }
-                }
-            }
-            else if (viewers[i].toLowerCase() === "silverlight") {
-                allowSilverlight = true;
-                if (me._testSilverlight(me._silverlightVer)) {
-                    me.selectedType = "silverlight";
-                    break;
-                }
-            }
-            else if (viewers[i].toLowerCase() === "flash") {
-                allowFlash = true;
-                if (me._testFlash(me._flashVer)) {
-                    me.selectedType = "flash";
-                    break;
                 }
             }
         }
@@ -205,26 +188,11 @@ PDFTron.WebViewer.prototype = {
             me._createHTML5();
         } else if (me.selectedType === "html5Mobile") {
             me._createHTML5Mobile();
-        } else if (me.selectedType === "silverlight") {
-            me._createSilverlight();
-        } else if (me.selectedType === "flash") {
-            me._createFlash();
         } else {
-            var supportErrorArray = new Array();
-            supportErrorArray.push("Please");
             if (allowHTML5) {
-                supportErrorArray.push("use an HTML5 compatible browser");
-                if (allowSilverlight || allowFlash) {
-                    supportErrorArray.push("or");
-                }
+                var supportError = "Please use an HTML5 compatible browser";
+                $(me.element).append("<div id=\"webviewer-browser-unsupported\">" + supportError + ".</div>");
             }
-
-            if (allowSilverlight || allowFlash) {
-                var runtimesStr = "(" + (allowSilverlight ? "Silverlight" : '') + (allowSilverlight && allowFlash ? " or " : '') + (allowFlash ? "Flash" : '') + ")";
-                supportErrorArray.push("install the necessary runtime " + runtimesStr);
-            }
-
-            $(me.element).append("<div id=\"webviewer-browser-unsupported\">" + (supportErrorArray.join(' ')) + ".</div>");
         }
     },
     _viewerLoaded: function(iframe) {
@@ -234,26 +202,26 @@ PDFTron.WebViewer.prototype = {
         var viewerWindow = iframe.contentWindow;
 
         if (typeof me.options.encryption !== "undefined") {
-            var decrypt = viewerWindow.CoreControls.Encryption.Decrypt;
             var doc = decodeURIComponent(me.options.initialDoc);
-
-            var streaming = me.options.streaming;
+            var loadOptions = {
+                decrypt: viewerWindow.CoreControls.Encryption.decrypt,
+                decryptOptions: me.options.encryption
+            }; // get the load options set via constructor
 
             viewerWindow.ControlUtils.byteRangeCheck(function(status) {
                 // if the range header is supported then we will receive a status of 206
                 if (status === 200) {
-                    streaming = true;
+                    loadOptions.streaming = true;
                 }
-                me.instance.loadDocument(doc, streaming, decrypt, me.options.encryption);
-
+                me.loadDocument(doc, loadOptions);
             }, function() {
                 // some browsers that don't support the range header will return an error
-                streaming = true;
-                me.instance.loadDocument(doc, streaming, decrypt, me.options.encryption);
+                loadOptions.streaming = true;
+                me.loadDocument(doc, loadOptions);
             });
         }
 
-        if (me.instance.docViewer.GetDocument() == null) {
+        if (me.instance.docViewer.getDocument() === null) {
             //note, we need bind using the iframe window's instance of jQuery
             viewerWindow.$(iframe.contentDocument).bind('documentLoaded', function(event) {
                 me._trigger(event.type);
@@ -263,7 +231,7 @@ PDFTron.WebViewer.prototype = {
             me._trigger('documentLoaded');
         }
 
-        //bind the rest of the events/callbacks here 
+        //bind the rest of the events/callbacks here
         viewerWindow.$(iframe.contentDocument).bind
                 ('displayModeChanged layoutModeChanged zoomChanged pageChanged fitModeChanged toolModeChanged printProgressChanged error',
                         function(event, data1, data2) {
@@ -286,11 +254,35 @@ PDFTron.WebViewer.prototype = {
         var options = this.options;
         var url = "";
 
+        var me = this;
+
+        function acceptPdfUrl() {
+            // optionally force pdf backend, else default to auto
+            url += options.pdfBackend ? "&pdf=" + options.pdfBackend : "&pdf=auto";
+        }
+
         if (typeof options.initialDoc !== "undefined") {
             url += "#d=" + options.initialDoc;
         }
+        // If document type not specified, use extension to determine viewer to load
+        // Default to xod file format if not specified
+        if (options.documentType === 'pdf') {
+            if (typeof options.backendType === "undefined") {
+                acceptPdfUrl();
+            } else {
+                url += "&pdf=nodejs";
+            }
+        } else if (typeof options.documentType === "undefined" &&
+                typeof options.initialDoc !== "undefined" && options.initialDoc.toLowerCase().slice(-4) === '.pdf') {
+            acceptPdfUrl();
+        }
         if (options.streaming) {
             url += "&streaming=true";
+        }
+        if (options.externalPath) {
+            var path = this._correctRelativePath(options.externalPath);
+            path = encodeURIComponent(path);
+            url += "&p=" + path;
         }
         if (options.encryption) {
             // we want to stop the document from automatically loading if it's encrypted as we'll do that later passing the options to it
@@ -321,6 +313,9 @@ PDFTron.WebViewer.prototype = {
         if (options.enableReadOnlyMode) {
             url += "&readonly=1";
         }
+        if (options.hideAnnotationPanel) {
+            url += "&hideAnnotationPanel=1";
+        }
         if (typeof options.annotationUser !== 'undefined') {
             url += "&user=" + options.annotationUser;
         }
@@ -330,8 +325,20 @@ PDFTron.WebViewer.prototype = {
         if (typeof options.custom !== "undefined") {
             url += "&custom=" + encodeURIComponent(options.custom);
         }
+        if (typeof options.showLocalFilePicker !== "undefined") {
+            url += "&filepicker=" + (options.showLocalFilePicker ? 1 : 0);
+        }
+        if (typeof options.preloadPDFWorker !== "undefined") {
+            url += "&preloadWorker=" + (options.preloadPDFWorker ? 1 : 0);
+        }
+        if (typeof options.pdfnet !== "undefined") {
+            url += "&pdfnet=" + (options.pdfnet ? 1 : 0);
+        }
         if (typeof options.showToolbarControl !== "undefined") {
             url += "&toolbar=" + (options.showToolbarControl ? "true" : "false");
+        }
+        if (typeof options.showPageHistoryButtons !== "undefined") {
+            url += "&pageHistory=" + (options.showPageHistoryButtons ? 1 : 0);
         }
         if (typeof options.xdomainProxyUrl !== "undefined") {
             var urls;
@@ -347,6 +354,15 @@ PDFTron.WebViewer.prototype = {
             }
             url += "&xdomain_urls=" + encodeURIComponent(JSON.stringify(urls));
         }
+        if (options.azureWorkaround) {
+            url += "&azureWorkaround=1";
+        }
+        if (!options.useDownloader){
+            url += '&useDownloader=0';
+        }
+        if (typeof options.workerTransportPromise !== "undefined"){
+            url += '&useSharedWorker=' + (options.workerTransportPromise ? "true" : "false");
+        }
 
         // if there is no initial doc specified then the first character might not be a '#' so fix this
         if (url.length > 0 && url[0] === '&') {
@@ -358,12 +374,6 @@ PDFTron.WebViewer.prototype = {
     _createHTML5: function() {
         var me = this;
         var iframeSource = this.options.html5Path + this._getHTML5OptionsURL();
-        //var ieVer = me.getInternetExplorerVersion();
-
-        if (!me.isSameOrigin(decodeURIComponent(me.options.initialDoc)) && !me._testCORS() && this._testSilverlight(me._silverlightVer)) {
-            //use Silverlight part retriever wokraround for IE9
-            iframeSource += "&useSilverlightRequests=true";
-        }
 
         //_getHTML5OptionsURL
         var $rcFrame = $(document.createElement('iframe'));
@@ -377,12 +387,14 @@ PDFTron.WebViewer.prototype = {
             webkitallowfullscreen: true,
             mozallowfullscreen: true
         });
+        if (this.options.backgroundColor) {
+            $rcFrame.attr('data-bgcolor', this.options.backgroundColor);
+        }
 
         var outerWindow = window;
 
         $rcFrame.load(function() {
             me.instance = this.contentWindow.readerControl;
-
 
             //same the namespaces to the outer window
             outerWindow.CoreControls = outerWindow.CoreControls || {};
@@ -413,8 +425,6 @@ PDFTron.WebViewer.prototype = {
             id: this.rcId,
             src: iframeSource,
             frameborder: 0
-                    //            width: "100%",
-                    //            height: "100%"
         });
         $rcFrame.css('width', '100%').css("height", "100%");
         $rcFrame.load(function() {
@@ -435,239 +445,14 @@ PDFTron.WebViewer.prototype = {
         //$(this.element).load(iframeSource);
         return $rcFrame;
     },
-    _getSilverlightInitParam: function() {
-        var options = this.options;
-        var initParam = "";
-
-//        if (options.showSilverlightControls) {
-//            initParam += "UseJavaScript=false";
-//        }
-//        else {
-//            initParam += "UseJavaScript=true";
-//        }
-
-        initParam += "ShowToolbarControl=" + (options.showToolbarControl ? 'true' : 'false');
-
-        if (typeof options.initialDoc !== 'undefined') {
-            initParam += ",DocumentUri=" + (function decode(str) {
-                return unescape(str.replace(/\+/g, " "));
-            })(options.initialDoc);
-
-            if (options.streaming) {
-                initParam += ",Streaming=true";
-            }
-            else {
-                initParam += ",Streaming=false";
-            }
-            if (options.enableAnnotations) {
-                initParam += ",a=true";
-            } else {
-                initParam += ",a=false";
-            }
-            if (options.serverUrl) {
-                var serverUrl = this._correctRelativePath(options.serverUrl);
-                initParam += ",server_url=" + serverUrl;
-            }
-            if (options.documentId) {
-                initParam += ",did=" + options.documentId;
-            }
-            if (options.config) {
-                initParam += ",config=" + options.config;
-            }
-            if (options.enableOfflineMode) {
-                initParam += ",offline=true";
-            }
-            if (options.enableReadOnlyMode) {
-                initParam += ",readonly=true";
-            }
-            if (options.annotationUser) {
-                initParam += ",user=" + options.annotationUser;
-            }
-            if (typeof options.annotationAdmin !== 'undefined') {
-                if (options.annotationAdmin) {
-                    initParam += ",admin=true";
-                }
-                else {
-                    initParam += ",admin=false";
-                }
-            }
-            if (typeof options.custom !== 'undefined' && options.custom !== null) {
-                initParam += ",custom=" + encodeURIComponent(options.custom);
-            }
-            if (typeof options.nogui) {
-                initParam += ",nogui=" + options.nogui;
-            }
-        }
-        return initParam;
-    },
-    _createSilverlight: function() {
-        var me = this;
-        if (this.options.silverlightOptions) {
-            $.extend(this.options, this.options.silverlightOptions);
-        }
-        var options = this.options;
-        var initParam = this._getSilverlightInitParam();
-
-        var objectParams = {
-            'source': options.silverlightPath,
-            //'background': 'white',
-            //'background': 'transparent',
-            //'background': 'darkgrey',
-            'minRuntimeVersion': '4.0.50401.0',
-            'autoUpgrade': 'true'
-        };
-        $.extend(objectParams, options.silverlightObjectParams);
-
-        var objectElement = Silverlight.createObject(options.silverlightPath, null, me.rcId, objectParams, {
-            onLoad: function(sender, args) {
-                //args is always null
-                me.instance = sender.Content.ReaderControl;
-                me.instance.EnableAnnotations = options.enableAnnotations;
-                me.instance.onPropertyChanged = function(sender2, args2) {
-                    switch (args2.name) {
-                        case "CurrentPageNumber":
-                            me._trigger('pageChanged', null, {
-                                pageNumber: args2.pageNumber
-                            });
-                            break;
-                        case "DisplayMode":
-                            me._trigger('displayModeChanged');
-                            break;
-                        case "LayoutMode":
-                            me._trigger('layoutModeChanged');
-                            break;
-                        case "Zoom":
-                            me._trigger('zoomChanged');
-                            break;
-                        case "FitMode":
-                            me._trigger('fitModeChanged');
-                            break;
-                        case "ToolMode":
-                            me._trigger('toolModeChanged');
-                            break;
-                    }
-                };
-                me._trigger('ready');
-
-                //we assume onDocumentLoaded will not have been called before this point
-                me.instance.onDocumentLoaded = function(sender3, args3) {
-                    me._trigger('documentLoaded');
-                };
-
-            },
-            onError: function() {
-                console.error("Silverlight onError");
-            }
-        }, initParam, null);
-        $(objectElement).attr({
-            'width': '100%',
-            'height': '100%'
-        }).appendTo(me.element);
-
-    },
-    _createFlash: function() {
-        var me = this;
-        if (this.options.flashOptions) {
-            $.extend(this.options, this.options.flashOptions);
-        }
-        var options = this.options;
-        var swfUrlStr = options.flashPath;
-        var flashObj = document.createElement("object");
-        flashObj.setAttribute("id", me.rcId);
-        $(flashObj).appendTo(me.element);
-        var xiSwfUrl = ""; // flash player installer
-        var flashvars = {};
-        flashvars.bridgeName = me._flashFABridgeId;
-        if (options.initialDoc !== undefined)
-        {
-            flashvars.d = options.initialDoc;
-        }
-        if (options.streaming !== undefined)
-        {
-            flashvars.streaming = options.streaming;
-        }
-        flashvars.showToolbarControl = options.showToolbarControl;
-        ///////////////////////////////////////////////////////////////////////////////////
-        // to use Flash Sockets (HttpPartRetriever) switch the NonStreamingMode to SOCKETS.
-        // See flash/README.rtf for more details.
-        if (options.flashSockets === true)
-        {   
-            flashvars.NonStreamingMode = 'SOCKETS';
-        } else {
-            flashvars.NonStreamingMode = 'AJAX';
-        }
-        
-        ///////////////////////////////////////////////////////////////////////////////////
-        var params = {};
-        ///////////////////////////////////////////////////////////////////////////////////
-        // Control full screen mode using these options.
-        //params.allowfullscreen = "false"              // disable full screen
-        params.allowfullscreen = "true";                // keyboard input disabled 
-        params.allowFullScreenInteractive = "true";     // requires Flash Player 11.3+
-        ///////////////////////////////////////////////////////////////////////////////////
-        
-        if (!me.isSameOrigin(decodeURIComponent(me.options.initialDoc)) && !me._testCORS() && flashvars.NonStreamingMode === "AJAX") {
-            //we cannot use AJAX in this case, fallback to streaming 
-            flashvars.streaming = true;
-        }
-        
-        var attributes = {};
-        attributes.id = me._flashFABridgeId;
-        attributes.name = me._flashFABridgeId;
-
-        if (typeof options.encryption !== "undefined") {
-            // this has to be called before embedSWF
-            createHttpAjaxPartRetriever(me._flashFABridgeId, decodeURIComponent(flashvars.d), window.CoreControls.Encryption.DecryptSynchronous, options.encryption);
-        }
-
-        swfobject.embedSWF(swfUrlStr, me.rcId, "100%", "100%", me._flashVer, xiSwfUrl, flashvars, params, attributes,
-                function(e) {
-                    if (e.success) {
-                        FABridge.addInitializationCallback(me._flashFABridgeId, function(e) {
-                            me.instance = FABridge.ReaderControl.root();
-
-                            var _cb = function(event)
-                            {
-                                me._trigger(event.getType());
-                            }
-                            var _errorcb = function(event)
-                            {
-                                console.error(event.getText());
-                            }
-
-                            me.instance.addEventListener('zoomChanged', _cb);
-                            me.instance.addEventListener('pageChanged', _cb);
-                            me.instance.addEventListener('displayModeChanged', _cb);
-                            me.instance.addEventListener('fitModeChanged', _cb);
-                            me.instance.addEventListener('toolModeChanged', _cb);
-                            me.instance.addEventListener('errorEvent', _errorcb);
-                            
-                            me._trigger('ready');
-                            if (me.instance.IsDocLoaded()) {
-                                me._trigger('documentLoaded');
-                            }
-                            else {
-                                me.instance.addEventListener('documentLoaded', function(event) {
-                                    me._trigger('documentLoaded');
-                                });
-                            }
-                        });
-                    }
-                    else {
-                        console.error("swfobject.embedSWF failed");
-                    }
-                }
-        );
-    },
     _init: function() {
-        //console.log("_init");
     },
     /**
      * Gets the instance of the ReaderControl object loaded by WebViewer.
-     * @return a ReaderControl instance 
+     * @return a ReaderControl instance
      */
     getInstance: function() {
-        return (this.instance);
+        return this.instance;
     },
     loadErrorPage: function() {
         if (typeof this.options.errorPage === 'undefined') {
@@ -682,29 +467,16 @@ PDFTron.WebViewer.prototype = {
      * @returns {boolean} true if the side window is visible.
      */
     getSideWindowVisibility: function() {
-        if (this.selectedType === "html5" || this.selectedType === "html5Mobile") {
-            return this.getInstance().getShowSideWindow();
-
-        } else if (this.selectedType === "silverlight" || this.selectedType === "flash") {
-            return (this.getInstance().GetShowSideWindow());
-        }
+        return this.getInstance().getShowSideWindow();
     },
     /**
      * Gets the visibility of the default side window.
      * Not supported for mobile viewer.
-     * 
+     *
      * @param {boolean} value true to show the side window
      */
     setSideWindowVisibility: function(value) {
-        if (this.selectedType === "html5" || this.selectedType === "html5Mobile") {
-            this.getInstance().setShowSideWindow(value);
-        }
-        else if (this.selectedType === "silverlight") {
-            this.getInstance().SetShowSideWindow(value);
-        }
-        else if (this.selectedType === "flash") {
-            this.getInstance().SetShowSideWindow(value);
-        }
+        this.getInstance().setShowSideWindow(value);
     },
     /**
      * Gets the value whether the side window is visible or not.
@@ -729,133 +501,63 @@ PDFTron.WebViewer.prototype = {
      * @returns {boolean} true if the toolbar is visible.
      */
     getToolbarVisibility: function() {
-        if (this.selectedType === "html5" || this.selectedType === "html5Mobile") {
-            console.warn("Unsupported method getToolbarVisibility");
-        }
-        else if (this.selectedType === "silverlight") {
-            this.getInstance().getShowToolbar();
-        }
-        else if (this.selectedType === "flash") {
-            console.warn("Unsupported method getToolbarVisibility");
-        }
+        console.warn("Unsupported method getToolbarVisibility");
     },
     /**
      * Sets the visibilty of the default toolbar control.
      * @param {boolean} isVisible true if the toolbar is visible.
      */
     setToolbarVisibility: function(isVisible) {
-        if (this.selectedType === "html5") {
-            this.getInstance().setToolbarVisibility(isVisible);
-        }
-        else if (this.selectedType === "silverlight") {
-            console.warn("Unsupported method setToolbarVisibility");
-        }
-        else if (this.selectedType === "flash") {
-            this.getInstance().SetToolbarVisibility(isVisible);
-        }
+        this.getInstance().setToolbarVisibility(isVisible);
     },
     /**
      * Gets the current page number of the document loaded in the WebViewer.
      * @return the current page number of the document
      */
     getCurrentPageNumber: function() {
-        if (this.selectedType === "html5" || this.selectedType === "html5Mobile") {
-            return this.getInstance().getCurrentPageNumber();
-
-        } else if (this.selectedType === "flash") {
-            return this.getInstance().GetCurrentPage();
-
-        } else if (this.selectedType === "silverlight") {
-            return this.instance.CurrentPageNumber;
-        }
+        return this.getInstance().getCurrentPageNumber();
     },
     /**
      * Sets the current page number of the document loaded in the WebViewer.
      * @param pageNumber the page number of the document to set
      */
     setCurrentPageNumber: function(pageNumber) {
-        if (this.selectedType === "html5" || this.selectedType === "html5Mobile") {
-            this.getInstance().setCurrentPageNumber(pageNumber);
-        } else if (this.selectedType === "flash") {
-            this.getInstance().SetCurrentPage(pageNumber);
-        } else if (this.selectedType === "silverlight") {
-            this.getInstance().CurrentPageNumber = pageNumber;
-        }
+        this.getInstance().setCurrentPageNumber(pageNumber);
     },
     /**
      * Gets the total number of pages of the loaded document.
      * @return the total number of pages of the loaded document
      */
     getPageCount: function() {
-        if (this.selectedType === "html5" || this.selectedType === "html5Mobile") {
-            return this.getInstance().getPageCount();
-
-        } else if (this.selectedType === "flash") {
-            return this.getInstance().GetPageCount();
-
-        } else if (this.selectedType === "silverlight") {
-            return this.getInstance().PageCount;
-        }
+        return this.getInstance().getPageCount();
     },
     /**
      * Gets the zoom level of the document.
      * @return {number} the zoom level of the document
      */
     getZoomLevel: function() {
-        if (this.selectedType === "html5" || this.selectedType === "html5Mobile") {
-            return this.getInstance().getZoomLevel();
-
-        } else if (this.selectedType === "flash") {
-            return this.getInstance().GetZoomLevel();
-
-        } else if (this.selectedType === "silverlight") {
-            return this.getInstance().ZoomLevel;
-        }
+        return this.getInstance().getZoomLevel();
     },
     /**
      * Sets the zoom level of the document.
      * @param zoomLevel the new zoom level to set
      */
     setZoomLevel: function(zoomLevel) {
-        if (this.selectedType === "html5" || this.selectedType === "html5Mobile") {
-            this.getInstance().setZoomLevel(zoomLevel);
-
-        } else if (this.selectedType === "flash") {
-            this.getInstance().SetZoomLevel(zoomLevel);
-
-        } else if (this.selectedType === "silverlight") {
-            this.getInstance().ZoomLevel = zoomLevel;
-        }
+        this.getInstance().setZoomLevel(zoomLevel);
     },
     /**
      * Rotates the document in the WebViewer clockwise.
      * Not supported for mobile viewer.
      */
     rotateClockwise: function() {
-        if (this.selectedType === "html5" || this.selectedType === "html5Mobile") {
-            this.getInstance().rotateClockwise();
-
-        } else if (this.selectedType === "flash") {
-            this.getInstance().RotateClockwise();
-
-        } else if (this.selectedType === "silverlight") {
-            this.getInstance().RotateClockwise();
-        }
+        this.getInstance().rotateClockwise();
     },
     /**
      * Rotates the document in the WebViewer counter-clockwise.
      * Not supported for mobile viewer.
      */
     rotateCounterClockwise: function() {
-        if (this.selectedType === "html5" || this.selectedType === "html5Mobile") {
-            this.getInstance().rotateCounterClockwise();
-
-        } else if (this.selectedType === "flash") {
-            this.getInstance().RotateCounterClockwise();
-
-        } else if (this.selectedType === "silverlight") {
-            this.getInstance().RotateCounterClockwise();
-        }
+        this.getInstance().rotateCounterClockwise();
     },
     /**
      * Gets the layout mode of the document in the WebViewer.
@@ -863,46 +565,24 @@ PDFTron.WebViewer.prototype = {
      * @return {PDFTron.WebViewer.LayoutMode} the layout mode of the document
      */
     getLayoutMode: function() {
-        if (this.selectedType === "html5") {
-            var layoutMode = this.getInstance().getLayoutMode();
-            var displayModes = CoreControls.DisplayModes;
+        var layoutMode = this.getInstance().getLayoutMode();
+        var displayModes = CoreControls.DisplayModes;
 
-            // the HTML5 viewer has different naming schemes for this
-            if (layoutMode === displayModes.Single) {
-                return PDFTron.WebViewer.LayoutMode.Single;
-            } else if (layoutMode === displayModes.Continuous) {
-                return PDFTron.WebViewer.LayoutMode.Continuous;
-            } else if (layoutMode === displayModes.Facing) {
-                return PDFTron.WebViewer.LayoutMode.Facing;
-            } else if (layoutMode === displayModes.FacingContinuous) {
-                return PDFTron.WebViewer.LayoutMode.FacingContinuous;
-            } else if (layoutMode === displayModes.Cover) {
-                return PDFTron.WebViewer.LayoutMode.FacingCoverContinuous;
-            } else if (layoutMode === displayModes.CoverFacing) {
-                return PDFTron.WebViewer.LayoutMode.FacingCover;
-            } else {
-                return undefined;
-            }
-        }
-        // else if(this.selectedType == "html5Mobile"){
-        //     var ppw = this.getInstance().nPagesPerWrapper;
-        //     if(ppw == 1){
-        //         return PDFTron.WebViewer.LayoutMode.Single;
-        //     }else if(ppw ==2){
-        //         return PDFTron.WebViewer.LayoutMode.Facing;
-        //     }
-        // }
-        else if (this.selectedType === "html5Mobile") {
-            this.getInstance().getLayoutMode();
-        } else if (this.selectedType === "silverlight" || this.selectedType === "flash") {
-            var layoutMode = this.getInstance().GetLayoutMode();
-            if (layoutMode === "FacingCoverContinuous") {
-                layoutMode = PDFTron.WebViewer.LayoutMode.FacingCoverContinuous;
-            } else if (layoutMode === "FacingContinuous") {
-                layoutMode = PDFTron.WebViewer.LayoutMode.FacingContinuous;
-            }
-            return layoutMode;
-
+        // the HTML5 viewer has different naming schemes for this
+        if (layoutMode === displayModes.Single) {
+            return PDFTron.WebViewer.LayoutMode.Single;
+        } else if (layoutMode === displayModes.Continuous) {
+            return PDFTron.WebViewer.LayoutMode.Continuous;
+        } else if (layoutMode === displayModes.Facing) {
+            return PDFTron.WebViewer.LayoutMode.Facing;
+        } else if (layoutMode === displayModes.FacingContinuous) {
+            return PDFTron.WebViewer.LayoutMode.FacingContinuous;
+        } else if (layoutMode === displayModes.Cover) {
+            return PDFTron.WebViewer.LayoutMode.FacingCoverContinuous;
+        } else if (layoutMode === displayModes.CoverFacing) {
+            return PDFTron.WebViewer.LayoutMode.FacingCover;
+        } else {
+            return undefined;
         }
     },
     /**
@@ -911,40 +591,28 @@ PDFTron.WebViewer.prototype = {
      * @param {PDFTron.WebViewer.LayoutMode} layoutMode the layout mode to set.
      */
     setLayoutMode: function(layoutMode) {
-        if (this.selectedType === "html5") {
-            var displayModes = CoreControls.DisplayModes;
+        var displayModes = CoreControls.DisplayModes;
 
-            var displayMode = displayModes.Continuous;
+        var displayMode = displayModes.Continuous;
 
-            // the HTML5 viewer have different naming schemes for this
-            if (layoutMode === PDFTron.WebViewer.LayoutMode.Single) {
-                displayMode = displayModes.Single;
-            } else if (layoutMode === PDFTron.WebViewer.LayoutMode.Continuous) {
-                displayMode = displayModes.Continuous;
-            } else if (layoutMode === PDFTron.WebViewer.LayoutMode.Facing) {
-                displayMode = displayModes.Facing;
-            } else if (layoutMode === PDFTron.WebViewer.LayoutMode.FacingContinuous) {
-                displayMode = displayModes.FacingContinuous;
-            } else if (layoutMode === PDFTron.WebViewer.LayoutMode.FacingCover) {
-                displayMode = displayModes.CoverFacing;
-                //displayMode = displayModes.Cover;
-            } else if (layoutMode === PDFTron.WebViewer.LayoutMode.FacingCoverContinuous) {
-                displayMode = displayModes.Cover;
-                //displayMode = displayModes.CoverContinuous;
-            }
-
-            this.getInstance().setLayoutMode(displayMode);
-
-        } else if (this.selectedType === "html5Mobile") {
-            this.getInstance().setLayoutMode(layoutMode);
-
-        } else if (this.selectedType === "silverlight" || this.selectedType === "flash") {
-            if (layoutMode === PDFTron.WebViewer.LayoutMode.FacingCoverContinuous) {
-                this.getInstance().SetLayoutMode("FacingCoverContinuous");
-            } else {
-                this.getInstance().SetLayoutMode(layoutMode);
-            }
+        // the HTML5 viewer have different naming schemes for this
+        if (layoutMode === PDFTron.WebViewer.LayoutMode.Single) {
+            displayMode = displayModes.Single;
+        } else if (layoutMode === PDFTron.WebViewer.LayoutMode.Continuous) {
+            displayMode = displayModes.Continuous;
+        } else if (layoutMode === PDFTron.WebViewer.LayoutMode.Facing) {
+            displayMode = displayModes.Facing;
+        } else if (layoutMode === PDFTron.WebViewer.LayoutMode.FacingContinuous) {
+            displayMode = displayModes.FacingContinuous;
+        } else if (layoutMode === PDFTron.WebViewer.LayoutMode.FacingCover) {
+            displayMode = displayModes.CoverFacing;
+            //displayMode = displayModes.Cover;
+        } else if (layoutMode === PDFTron.WebViewer.LayoutMode.FacingCoverContinuous) {
+            displayMode = displayModes.Cover;
+            //displayMode = displayModes.CoverContinuous;
         }
+
+        this.getInstance().setLayoutMode(displayMode);
     },
     /**
      * Gets the current tool mode of the WebViewer.
@@ -952,11 +620,7 @@ PDFTron.WebViewer.prototype = {
      * @return {PDFTron.WebViewer.ToolMode} the current tool mode of the WebViewer
      */
     getToolMode: function() {
-        if (this.selectedType === "html5" || this.selectedType === "html5Mobile") {
-            return this.getInstance().getToolMode();
-        } else if (this.selectedType === "silverlight" || this.selectedType === "flash") {
-            return this.getInstance().GetToolMode();
-        }
+        return this.getInstance().getToolMode();
     },
     /**
      * Sets the tool mode of the WebViewer.
@@ -964,42 +628,25 @@ PDFTron.WebViewer.prototype = {
      * @param {PDFTron.WebViewer.ToolMode} toolMode  must be one of the PDFTron.WebViewer.ToolMode
      */
     setToolMode: function(toolMode) {
-        if (this.selectedType === "html5" || this.selectedType === "html5Mobile") {
-            this.getInstance().setToolMode(toolMode);
-
-        } else if (this.selectedType === "silverlight" || this.selectedType === "flash") {
-            this.getInstance().SetToolMode(toolMode);
-        }
+        this.getInstance().setToolMode(toolMode);
     },
     /**
      * Controls if the document's Zoom property will be adjusted so that the width of the current page or panel
-     * will exactly fit into the available space. 
+     * will exactly fit into the available space.
      * Not supported for mobile viewer.
      * @deprecated since 1.7. Use {@link PDFTron.WebViewer#setFitMode} instead.
      */
     fitWidth: function() {
-        if (this.selectedType === "html5" || this.selectedType === "html5Mobile") {
-            this.getInstance().fitWidth();
-        } else if (this.selectedType === "flash" || this.selectedType === "silverlight") {
-            this.getInstance().FitWidth();
-        }
+        this.getInstance().fitWidth();
     },
     /**
      * Controls if the document's Zoom property will be adjusted so that the height of the current page or panel
-     * will exactly fit into the available space. 
+     * will exactly fit into the available space.
      * Not supported for mobile viewer.
      * @deprecated since 1.7. Use {@link PDFTron.WebViewer#setFitMode} instead.
      */
     fitHeight: function() {
-        if (this.selectedType === "html5" || this.selectedType === "html5Mobile") {
-            this.getInstance().fitHeight();
-
-        } else if (this.selectedType === "flash") {
-            console.warn("Unsupported method fitHeight.");
-
-        } else if (this.selectedType === "silverlight") {
-            this.getInstance().FitHeight();
-        }
+        this.getInstance().fitHeight();
     },
     /**
      * Controls if the document's Zoom property will be adjusted so that the width and height of the current page or panel
@@ -1008,12 +655,7 @@ PDFTron.WebViewer.prototype = {
      * @deprecated since 1.7. Use {@link PDFTron.WebViewer#setFitMode} instead.
      */
     fitPage: function() {
-        if (this.selectedType === "html5" || this.selectedType === "html5Mobile") {
-            this.getInstance().fitPage();
-
-        } else if (this.selectedType === "flash" || this.selectedType === "silverlight") {
-            this.getInstance().FitPage();
-        }
+        this.getInstance().fitPage();
     },
     /**
      * Gets the current fit mode of the viewer
@@ -1021,28 +663,19 @@ PDFTron.WebViewer.prototype = {
      * @return {PDFTron.WebViewer.FitMode}
      */
     getFitMode: function() {
-        if (this.selectedType === "html5") {
-            var fitMode = this.getInstance().getFitMode();
-            var FitModeEnums = this.getInstance().docViewer.FitMode;
-            switch (fitMode) {
-                case FitModeEnums.FitWidth:
-                    return PDFTron.WebViewer.FitMode.FitWidth;
-                case FitModeEnums.FitHeight:
-                    return PDFTron.WebViewer.FitMode.FitHeight;
-                case FitModeEnums.FitPage:
-                    return PDFTron.WebViewer.FitMode.FitPage;
-                case FitModeEnums.Zoom:
-                    return PDFTron.WebViewer.FitMode.Zoom;
-                default:
-                    console.warn("Unsupported method getFitMode");
-            }
-        } else if (this.selectedType === "silverlight") {
-            return this.getInstance().getFitMode();
-        } else if (this.selectedType === "flash") {
-            var camel = this.getInstance().GetFitMode();
-            return camel.charAt(0).toUpperCase()  + camel.slice(1);
-        } else {
-            console.warn("Unsupported method getFitMode");
+        var fitMode = this.getInstance().getFitMode();
+        var FitModeEnums = this.getInstance().docViewer.FitMode;
+        switch (fitMode) {
+            case FitModeEnums.FitWidth:
+                return PDFTron.WebViewer.FitMode.FitWidth;
+            case FitModeEnums.FitHeight:
+                return PDFTron.WebViewer.FitMode.FitHeight;
+            case FitModeEnums.FitPage:
+                return PDFTron.WebViewer.FitMode.FitPage;
+            case FitModeEnums.Zoom:
+                return PDFTron.WebViewer.FitMode.Zoom;
+            default:
+                console.warn("Unsupported fit mode");
         }
     },
     /**
@@ -1054,12 +687,8 @@ PDFTron.WebViewer.prototype = {
     setFitMode: function(fitMode) {
         if (fitMode === PDFTron.WebViewer.FitMode.FitWidth) {
             this.fitWidth();
-        } else if (fitMode === PDFTron.WebViewer.FitMode.FitHeight) {  
-            if (this.selectedType === "flash") {
-                this.fitPage(); //flash does not have fit height
-            }else{
-                this.fitHeight();
-            }
+        } else if (fitMode === PDFTron.WebViewer.FitMode.FitHeight) {
+            this.fitHeight();
         } else if (fitMode === PDFTron.WebViewer.FitMode.FitPage) {
             this.fitPage();
         } else if (fitMode === PDFTron.WebViewer.FitMode.Zoom) {
@@ -1075,99 +704,50 @@ PDFTron.WebViewer.prototype = {
      * @deprecated since 1.7. Use {@link PDFTron.WebViewer#setFitMode} instead.
      */
     zoom: function() {
-        if (this.selectedType === "html5" || this.selectedType === "html5Mobile") {
-            this.getInstance().fitZoom();
-
-        } else if (this.selectedType === "flash") {
-            this.getInstance().FitZoom();
-
-        } else if (this.selectedType === "silverlight") {
-            this.getInstance().Zoom();
-        }
+        this.getInstance().fitZoom();
     },
     /**
      * Goes to the first page of the document. Makes the document viewer display the first page of the document.
      */
     goToFirstPage: function() {
-        if (this.selectedType === "html5" || this.selectedType === "html5Mobile") {
-            this.getInstance().goToFirstPage();
-
-        } else if (this.selectedType === "flash") {
-            this.getInstance().GoToFirstPage();
-
-        } else if (this.selectedType === "silverlight") {
-            this.getInstance().CurrentPageNumber = 1;
-        }
+        this.getInstance().goToFirstPage();
     },
     /**
      * Goes to the last page of the document. Makes the document viewer display the last page of the document.
      */
     goToLastPage: function() {
-        if (this.selectedType === "html5" || this.selectedType === "html5Mobile") {
-            this.getInstance().goToLastPage();
-
-        } else if (this.selectedType === "flash") {
-            this.getInstance().GoToLastPage();
-
-        } else if (this.selectedType === "silverlight") {
-            var totalPages = this.getInstance().PageCount;
-            this.getInstance().CurrentPageNumber = totalPages;
-        }
+        this.getInstance().goToLastPage();
     },
     /**
      * Goes to the next page of the document. Makes the document viewer display the next page of the document.
      */
     goToNextPage: function() {
-        if (this.selectedType === "html5" || this.selectedType === "html5Mobile") {
-            this.getInstance().goToNextPage();
-
-        } else if (this.selectedType === "flash") {
-            this.getInstance().GoToNextPage();
-
-        } else if (this.selectedType === "silverlight") {
-            var currentPage = this.getInstance().CurrentPageNumber;
-
-            if (currentPage <= 0)
-                return;
-
-            currentPage = currentPage + 1;
-            this.getInstance().CurrentPageNumber = currentPage;
-        }
+        this.getInstance().goToNextPage();
     },
     /**
      * Goes to the previous page of the document. Makes the document viewer display the previous page of the document.
      */
     goToPrevPage: function() {
-        if (this.selectedType === "html5" || this.selectedType === "html5Mobile") {
-            this.getInstance().goToPrevPage();
-
-        } else if (this.selectedType === "flash") {
-            this.getInstance().GoToPrevPage();
-
-        } else if (this.selectedType === "silverlight") {
-            var currentPage = this.getInstance().CurrentPageNumber;
-
-            if (currentPage <= 1)
-                return;
-
-            currentPage = currentPage - 1;
-            this.getInstance().CurrentPageNumber = currentPage;
-        }
+        this.getInstance().goToPrevPage();
     },
     /**
      * Loads a document to the WebViewer.
-     * @param {String} url the URL of the document to be loaded (relative urls may not work, it is recommended to use absolute urls)
-     * @param {String} [documentID] a  unique identifer for the document. When an annotation server is specified, this ID will be sent to the server.
+     * @param {String} url the URL of the document to be loaded
+     * @param loadOptions options for loading a new document
+     * @param loadOptions.documentId a unique identifer for the document. When an annotation server is specified, this ID will be sent to the server
+     * @param loadOptions.filename the filename of the document.
+     * @param loadOptions.customHeaders an object custom HTTP headers to use when retrieving the document from the specified url. For example: {'Authorization':'Basic dXNlcm5hbWU6cGFzc3dvcmQ='}
      */
-    loadDocument: function(url, documentID) {
-        if (this.selectedType === "html5" || this.selectedType === "html5Mobile") {
-            if(documentID){
-                this.getInstance().doc_id = documentID;
-            }
-            this.getInstance().loadDocument(this._correctRelativePath(url), this.options.streaming);
-        } else {
-            this.getInstance().LoadDocument(this._correctRelativePath(url), this.options.streaming);
+    loadDocument: function(url, options) {
+        var existingLoadOptions = {
+            streaming: this.options.streaming
+        };
+        var load_options = $.extend(true, {}, existingLoadOptions, options);
+        if (typeof load_options.documentId !== "undefined") {
+            //allow "null" values
+            this.getInstance().docId = load_options.documentId;
         }
+        this.getInstance().loadDocument(this._correctRelativePath(url), load_options);
     },
     /**
      * Searches the loaded document finding for the matching pattern.
@@ -1217,193 +797,48 @@ PDFTron.WebViewer.prototype = {
             }
         }
 
-        if (this.selectedType === "html5" || this.selectedType === "html5Mobile") {
-            if (typeof searchModes === 'undefined') {
-                this.getInstance().searchText(pattern);
-            } else {
-                this.getInstance().searchText(pattern, mode);
-            }
-
-        }
-        else if (this.selectedType === "silverlight") {
-            var modeString = $.isArray(searchModes) ? searchModes.join(',') : searchModes;
-            if (typeof modeString === 'undefined') {
-                modeString = '';
-            }
-            this.getInstance().SearchText(pattern, modeString);
-        }
-        else if (this.selectedType === "flash") {
-            if (typeof searchModes === 'undefined') {
-                this.getInstance().SearchText(pattern, 0);
-            } else {
-                this.getInstance().SearchText(pattern, mode);
-            }
-
+        if (typeof searchModes === 'undefined') {
+            this.getInstance().searchText(pattern);
+        } else {
+            this.getInstance().searchText(pattern, mode);
         }
     },
     /**
-     * Registers a callback when the document's page number is changed. (Silverlight only)
-     * @param callback  the JavaScript function to invoke when the document page number is changed
-     * @deprecated since version 1.5. Please use the pageChanged event instead.
-     */
-    setOnPageChangeCallback: function(callback) {
-        if (this.selectedType === "html5" || this.selectedType === "html5Mobile") {
-            this.getInstance().setOnPageChangeCallback(callback);
-
-        } else if (this.selectedType === "flash") {
-            //alert("Not yet supported");
-            console.warn("Unsupported method setOnPageChangeCallback");
-        }
-        else if (this.selectedType === "silverlight") {
-            this.getInstance().OnPageChangeCallback = callback;
-        }
-    },
-    /**
-     * Registers a callback when the document's zoom level is changed. (Silverlight only)
-     * @param callback the JavaScript function to invoke when the document zoom level is changed
-     * @deprecated since version 1.5. Please use the zoomChanged event instead.
-     */
-    setOnPageZoomCallback: function(callback) {
-        if (this.selectedType === "html5" || this.selectedType === "html5Mobile") {
-            this.getInstance().setOnPageZoomCallback(callback);
-
-        } else if (this.selectedType === "flash") {
-            //alert("Not yet supported");
-            console.warn("Unsupported method setOnPageZoomCallback");
-        } else if (this.selectedType === "silverlight") {
-            this.getInstance().OnPageZoomCallback = callback;
-        }
-    },
-    /**
-     * Sets the annotation author. (HTML5 only)
+     * Sets the annotation author.
      * @param {string} username
      */
     setAnnotationUser: function(username) {
-        if (this.selectedType === "html5" ||
-                this.selectedType === "html5Mobile" ||
-                this.selectedType === "silverlight"
-                ) {
-            this.getInstance().setAnnotationUser(username);
-        } else {
-            console.warn("Unsupported method setAnnotationUser");
-        }
+        this.getInstance().setAnnotationUser(username);
     },
     /**
-     * Sets the administrative permissions for the current annotation user. (HTML5 only)
+     * Sets the administrative permissions for the current annotation user.
      * @param {boolean} isAdminUser
      */
     setAdminUser: function(isAdminUser) {
-        if (this.selectedType === "html5" || this.selectedType === "html5Mobile") {
-            this.getInstance().setAdminUser(isAdminUser);
-        } else if (this.selectedType === "flash") {
-            console.warn("Unsupported method setAdminUser");
-        } else if (this.selectedType === "silverlight") {
-            console.warn("Unsupported method setAdminUser");
-        } else {
-            console.warn("Unsupported method setAdminUser");
-        }
+        this.getInstance().setAdminUser(isAdminUser);
     },
     /**
-     * Sets the viewer's annotation read-only state. When read-only, users will be allowed to view annotations and its popup text contents, but will not be able to edit or create new annotations. (HTML5 only)
+     * Sets the viewer's annotation read-only state. When read-only, users will be allowed to view annotations
+     and its popup text contents, but will not be able to edit or create new annotations.
      * @param {boolean} isReadOnly
      */
     setReadOnly: function(isReadOnly) {
-        if (this.selectedType === "html5" || this.selectedType === "html5Mobile") {
-            this.getInstance().setReadOnly(isReadOnly);
-        } else if (this.selectedType === "flash") {
-            console.warn("Unsupported method setReadOnly");
-        } else {
-            console.warn("Unsupported method setReadOnly");
-        }
-    },
-    /**
-     * Opens a dialog to initiate printing (Silverlight only)
-     * Note that browser-based printing is not reliable for documents with many pages.
-     * @since version 1.7
-     * @param {type} title
-     * @param {type} body
-     * @param {type} okstring
-     * @param {type} cancelstring
-     */
-    openPrintDialog: function(title, body, okstring, cancelstring) {
-        if (this.selectedType === "html5" || this.selectedType === "html5Mobile") {
-            //this._createSilverlight();
-            var sl_print_container = $("#sl-print");
-            if (sl_print_container.length > 0) {
-                //sl print should be here already, open dialog again
-                //$(sl_print_container).show();
-                $(sl_print_container).css('z-index', '999');
-
-
-                this._webviewerprint.getInstance().openPrintDialog(title, body, okstring, cancelstring);
-
-
-                //$("#sl-print").css('z-index', '-1');
-                return;
-            }
-
-            var sl_print_container = $('<div id="sl-print"></div>').appendTo('body');
-            sl_print_container.css({
-                width: '400px',
-                //'margin-left' : '-200px',
-                //position: 'absolute',
-                //background: 'transparent',
-                //background: 'darkgrey',
-                background: 'white',
-                //border: '5px solid black',
-                //top: '60px',
-                'height': '150px',
-                //left: '50%',
-                //right:0,
-                'text-align': 'center',
-                'z-index': -10
-            });
-
-            var clonedOptions = jQuery.extend(true, {}, this.options);
-            clonedOptions.type = "silverlight";
-            clonedOptions.silverlightPath = "silverlight/ReaderControl.xap";
-            clonedOptions.nogui = true;
-            clonedOptions.autoCreate = true;
-            clonedOptions.enableAnnotations = false;
-            clonedOptions.background = "transparent";
-            clonedOptions.windowless = "transparent";
-            //clonedOptions.silverlightObjectParams.background = 'blue';
-            clonedOptions.initialDoc = decodeURIComponent(this.options.initialDoc);
-            var _webviewerprint = new PDFTron.WebViewer(clonedOptions, sl_print_container);
-            this._webviewerprint = _webviewerprint;
-
-            $(sl_print_container).on('documentLoaded', function() {
-                $(sl_print_container).css('z-index', 999);
-                _webviewerprint.instance.onUIEvent = function(sender3, args3) {
-
-                    //console.log(args3.name);
-                    if (args3.name === "PrintDialogClosing") {
-                        //$(sl_print_container).hide();
-                        $(sl_print_container).css('z-index', '-1');
-                        $(sl_print_container).trigger('closing');
-                    }
-                    if (args3.name === "PrintStarted") {
-                        //$(sl_print_container).trigger('closing');
-                    }
-                };
-                _webviewerprint.openPrintDialog(title, body, okstring, cancelstring);
-            });
-        } else if (this.selectedType === "flash") {
-            console.warn("Unsupported method print");
-        } else if (this.selectedType === "silverlight") {
-            this.getInstance().openPrintDialog(title, body, okstring, cancelstring);
-        }
+        this.getInstance().setReadOnly(isReadOnly);
     },
     /**
      * Opens the XOD document through the browser to be downloaded.
      * @since version 1.7
      */
     downloadXodDocument: function() {
-        var url = decodeURIComponent(this.options.initialDoc);
-        window.open(url);
+        if (this.documentType === 'xod') {
+            var url = decodeURIComponent(this.options.initialDoc);
+            window.open(url);
+        } else {
+            console.warn("Unsupported method for this document type");
+        }
     },
     /**
-     * Starts a printing job for the passed in pages. (HTML5 Desktop only)
+     * Starts a printing job for the passed in pages. (Desktop only)
      * @param {string} pages The pages that should be printed. Multiple pages can be separated by commas
         and ranges can be specified by a dash (e.g. 1,3-5)
      */
@@ -1415,7 +850,7 @@ PDFTron.WebViewer.prototype = {
         }
     },
     /**
-     * Cleans up the resources that were used for printing. (HTML5 Desktop only)
+     * Cleans up the resources that were used for printing. (Desktop only)
      */
     endPrintJob: function() {
         if (this.selectedType === "html5") {
@@ -1424,33 +859,29 @@ PDFTron.WebViewer.prototype = {
             console.warn("Unsupported method endPrintJob");
         }
     },
-//    registerCustomAnnotations: function(){
-//        
-//    },
     /**
      * Gets the currently loaded viewer type. This is only valid after the documentLoaded event.
-	 * @return {string} the viewer type: "html5", "silverlight", "flash" or "html5Mobile"
+	 * @return {string} the viewer type: "html5" or "html5Mobile"
      */
     getViewerType: function() {
         return this.selectedType;
     },
     //JQuery UI Widget option method
     option: function(key, value) {
-        //console.log("option");
         // optional: get/change options post initialization
-        // ignore if you don't require them.        
+        // ignore if you don't require them.
 
-        // signature: $('#viewer').webViewer({ type: 'html5,silverlight' });
+        // signature: $('#viewer').webViewer({ type: 'html5' });
         if ($.isPlainObject(key)) {
             this.options = $.extend(true, this.options, key);
 
             // signature: $('#viewer').option('type'); - getter
         } else if (key && typeof value === "undefined") {
-            return this.options[ key ];
+            return this.options[key];
 
-            // signature: $('#viewer').webViewer('option', 'type', 'html5,silverlight');
+            // signature: $('#viewer').webViewer('option', 'type', 'html5');
         } else {
-            this.options[ key ] = value;
+            this.options[key] = value;
         }
 
         // required: option must return the current instance.
@@ -1462,18 +893,10 @@ PDFTron.WebViewer.prototype = {
     _correctRelativePath: function(path) {
         //get current url
         var curdir = window.location.pathname.substr(0, window.location.pathname.lastIndexOf('/'));
-        //pattern begins with --> https:// or http:// or file:// or / or %2F (%2F is '/' url encoded. Necessary to work with S3 signatures)
-        var pattern = /^(https?:\/\/|file:\/\/|\/|%2F)/i;
+        //pattern begins with --> https:// or http:// or file:// or / or blob: or %2F (%2F is '/' url encoded. Necessary to work with S3 signatures)
+        var pattern = /^(https?:\/\/|file:\/\/|\/|blob:|%2F|filesystem:)/i;
         //correct relative paths by prepending "../"
         return pattern.test(path) ? path : curdir + '/' + path;
-    },
-    _testSilverlight: function(v) {
-        try {
-            return (Silverlight && Silverlight.isInstalled(v));
-        } catch (e) {
-            console.warn(e);
-            return false;
-        }
     },
     _testHTML5: function() {
         try {
@@ -1504,10 +927,30 @@ PDFTron.WebViewer.prototype = {
      * @return {boolean} true if this page is loaded on a mobile device.
      */
     isMobileDevice: function() {
-        return (navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i)
+        return ((this.scrollbarWidth() === 0 && navigator.userAgent.match(/Edge/i))
+                || navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i)
                 || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i)
                 || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/Touch/i)
                 || navigator.userAgent.match(/IEMobile/i) || navigator.userAgent.match(/Silk/i));
+    },
+    // In windows 10 tablets, the tablet mode and desktop mode use the same user agent.  HOWEVER
+    // the scrollbar width in tablet mode is 0.  This means that we can find the scrollbar width
+    // and use it to determine if they are in tablet mode (mobile viewer) or desktop mode
+    scrollbarWidth: function() {
+        var scrollDiv = document.createElement("div");
+        scrollDiv.style.cssText = 'width:100px;height:100px;overflow:scroll !important;position:absolute;top:-9999px';
+        document.body.appendChild(scrollDiv);
+        var result = scrollDiv.offsetWidth - scrollDiv.clientWidth;
+        document.body.removeChild(scrollDiv);
+        return result;
+    },
+    isChrome: function() {
+        // opera and maxthon have chrome in their useragent string so we need to be careful!
+        // and so does edge...stupid sneaky edge
+        var opera = window.navigator.userAgent.match(/OPR/);
+        var maxthon = window.navigator.userAgent.match(/Maxthon/);
+        var edge = window.navigator.userAgent.match(/Edge/);
+        return (window.navigator.userAgent.match(/Chrome\/(.*?) /) && !opera && !maxthon && !edge);
     },
     /**
      * Detects if the give url string is in the same origin as the current page
@@ -1539,9 +982,6 @@ PDFTron.WebViewer.prototype = {
         }
 
         return (a.hostname === loc.hostname && a.protocol === loc.protocol && aPort === locPort);
-    },
-    _testFlash: function(v) {
-        return swfobject.hasFlashPlayerVersion(v);
     }
 };
 
@@ -1721,68 +1161,80 @@ PDFTron.WebViewer.ToolMode = {
 
 /**
  * @class Options for WebViewer on creation. Used when constructing a new {@link PDFTron.WebViewer} instance.
- * @property {string} [type="html5,silverlight,html5Mobile,flash"] the type of WebViewer to load. Values must be comma-separated in order of preferred WebViewer. (Possibe values: html5, html5Mobile, silverlight, flash)
- * @property {string} initialDoc the URL path to a xod document to load on startup, it is recommended to use absolute paths.
+ * @property {string} [type="html5,html5Mobile"] the type of WebViewer to load. Values must be comma-separated in order of preferred WebViewer. (Possibe values: html5, html5Mobile)
+ * @property {string} initialDoc the URL path to a xod document to load on startup
+ * @property {string} [externalPath] the path to a xod document folder generated using the external parts option
  * @property {boolean} [streaming=false] a boolean indicating whether to use http or streaming PartRetriever, it is recommended to keep streaming false for better performance.
- * @property {boolean} [enableAnnotations=false] name a boolean to enable annotations on supported viewer types. (HTML5 only)
- * @property {boolean} [enableOfflineMode] a boolean to enable offline mode.(HTML5 only, default false)
- * @property {boolean} [startOffline] whether to start loading the document in offline mode or not.(HTML5 only, default false)
- * @property {boolean} [enableReadOnlyMode] a boolean to enable annotations read-only mode.(HTML5 only, default false)
- * @property {string} [config] a URL path to a JavaScript configuration file that holds UI customizations. (HTML5 only)
- * @property {string} [serverUrl] a URL to the server-side script that handles annotations. (HTML5 only, required for full annotation support)
- * @property {string} [annotationUser] a user identifier for annotations. All annotations created will have this as the author. It is used for permission checking: user only permitted to modify annotations where annotationUser and author matches. (HTML5, Silverlight)
- * @property {boolean} [annotationAdmin] a boolean indicating this user has permission to modify all annotations, even if the annotationUser and author does not match. (HTML5 only)
- * @property {string} [documentId] an identifier for the document to be used with annotations. (HTML5 only, required for full annotation support)
+ * @property {boolean} [hideAnnotationPanel=false] whether to hide the annotation panel or not.
+ * @property {boolean} [enableAnnotations=false] a boolean to enable annotations.
+ * @property {boolean} [enableOfflineMode] a boolean to enable offline mode.(default false)
+ * @property {boolean} [startOffline] whether to start loading the document in offline mode or not.(default false)
+ * @property {boolean} [enableReadOnlyMode] a boolean to enable annotations read-only mode.(default false)
+ * @property {string} [config] a URL path to a JavaScript configuration file that holds UI customizations.
+ * @property {string} [l] the license key for viewing PDF files (PDF only)
+ * @property {string} [serverUrl] a URL to the server-side script that handles annotations. (required for full annotation support)
+ * @property {string} [annotationUser] a user identifier for annotations. All annotations created will have this as the author. It is used for permission checking: user only permitted to modify annotations where annotationUser and author matches.
+ * @property {boolean} [annotationAdmin] a boolean indicating this user has permission to modify all annotations, even if the annotationUser and author does not match.
+ * @property {string} [documentId] an identifier for the document to be used with annotations. (required for full annotation support)
+ * @property {string} [documentType] the type of document the viewer will be used with. Valid values are "xod" and "pdf". (default "xod")
  * @property {string} [cloudApiId] the share ID or session ID created from <a href="http://www.pdftron.com/pws/cloud" target="_blank">PWS Cloud</a>. Note: the browser must have CORS support. (optional, ignored when initialDoc is also set)
- * @property {string} [custom] a string of custom data that can be retrieved by the ReaderControl (HTML5 only)
- * @property {boolean} [mobileRedirect=true] a boolean indicating whether the mobile viewer should redirect to a new window or not (HTML5 mobile only, default true)
- * @property {object} [encryption] an object containing encryption properties (HTML5 and Flash only)
+ * @property {string} [custom] a string of custom data that can be retrieved by the ReaderControl
+ * @property {boolean} [mobileRedirect=true] a boolean indicating whether the mobile viewer should redirect to a new window or not (mobile only, default true)
+ * @property {object} [encryption] an object containing encryption properties (XOD only)
  * @property {string} [xdomainProxyUrl] a URL to the proxy HTML file on the remote server when using the xdomain CORS workaround. Can also be an object to specify multiple URLs.
- * @property {object} [silverlightObjectParams] an object containing properties that will be adding as param tags under the Silverlight object tag (Silverlight only)
- * @property {boolean} [flashSockets=false] use Flash sockets intead of JavaScript part retriever. The server hosting the XOD files must support sockets. See flash/README.rtf for more details.
+ * @property {boolean} [azureWorkaround] whether or not to workaround the issue of Azure not accepting range requests of a certain type. Enabling the workaround will add an extra HTTP request of overhead but will still allow documents to be loaded from other locations.
+ * @property {boolean} [showLocalFilePicker] a boolean to show/hide the local file picker (PDF only, default false)
+ * @property {boolean} [preloadPDFWorker] a boolean to enable the preloading of the PDF worker files (PDF only, default true)
+ * @property {boolean} [workerTransportPromise] a promise that will resolve to a PDF worker, used if you already create a worker on the outer page and want to share it with the viewer (PDF only)
+ * @property {boolean} [pdfnet] a boolean to enable the use of PDFNet.js library functions (PDF only, default false)
+ * @property {boolean} [useDownloader] enable or disable using Downloader on urls (PDF only, default true)
  * @property {boolean} [showToolbarControl] a boolean to show/hide the default toolbar control.
- * @property {PDFTron.WebViewer.Options} [html5Options] a PDFTron.WebViewer.Options object that overrides the existing options when the HTML5 viewer is loaded.
- * @property {PDFTron.WebViewer.Options} [html5MobileOptions] a PDFTron.WebViewer.Options object that overrides the existing options when the HTML5 Mobile viewer is loaded.
- * @property {PDFTron.WebViewer.Options} [silverlightOptions] a PDFTron.WebViewer.Options object that overrides the existing options when the Silverlight viewer is loaded.
- * @property {PDFTron.WebViewer.Options} [flashOptions] a PDFTron.WebViewer.Options object that overrides the existing options when the Flash viewer is loaded.
- * @property {string} [errorPage] a path to an HTML page to display errors. (optional)
- * @property {string} [path] an alternative path to the WebViewer root folder. (optional)
- * @property {string} [html5Path="html5/ReaderControl.html"] an alternative path to the HTML5 WebViewer, relative to the "path" option. (optional)
- * @property {string} [html5MobilePath="html5/MobileReaderControl.html"] an alternative path to the HTML5 Mobile WebViewer, relative to the "path" option. (optional)
- * @property {string} [silverlightPath="silverlight/ReaderControl.xap"] an alternative path to the Silverlight WebViewer, relative to the "path" option. (optional)
- * @property {string} [flashPath="flash/ReaderControl.swf"] an alternative path to the Flash WebViewer, relative to the "path" option. (optional)
+ * @property {boolean} [showPageHistoryButtons] a boolean to show/hide the page history buttons (default true)
+ * @property {PDFTron.WebViewer.Options} [html5Options] a PDFTron.WebViewer.Options object that overrides the existing options when the viewer is loaded.
+ * @property {PDFTron.WebViewer.Options} [html5MobileOptions] a PDFTron.WebViewer.Options object that overrides the existing options when the Mobile viewer is loaded.
+ * @property {string} [errorPage] a path to an HTML page to display errors.
+ * @property {string} [backgroundColor] a string to set the background color of the inner page to (desktop only)
+ * @property {string} [path] an alternative path to the WebViewer root folder.
+ * @property {string} [html5Path="html5/ReaderControl.html"] an alternative path to the WebViewer, relative to the "path" option.
+ * @property {string} [html5MobilePath="html5/MobileReaderControl.html"] an alternative path to the Mobile WebViewer, relative to the "path" option.
  * @property {boolean} [autoCreate=true] a boolean to control creating the viewer in the constructor. When set to false, invoke the create() method explicity. (default true)
+ * @property {string} [pdfBackend="auto"] a string to control PDF engine ["auto", "ems", "pnacl"](PDF only, default "auto" chooses the best option availible)
  */
 PDFTron.WebViewer.Options = {
-    type: "html5,silverlight,html5Mobile,flash",
+    type: "html5,html5Mobile",
     path: '',
     html5Path: "html5/ReaderControl.html",
     html5MobilePath: "html5/MobileReaderControl.html",
-    silverlightPath: "silverlight/ReaderControl.xap",
-    flashPath: "flash/ReaderControl.swf",
     autoCreate: true,
     initialDoc: undefined,
+    externalPath: undefined,
     cloudApiId: undefined,
+    hideAnnotationPanel: false,
     enableAnnotations: false,
     enableOfflineMode: false,
     startOffline: false,
     enableReadOnlyMode: false,
     errorPage: undefined,
+    backgroundColor: undefined,
     serverUrl: undefined,
     documentId: undefined,
+    documentType: undefined,
     streaming: false,
     config: undefined,
+    l: undefined,
     mobileRedirect: true,
     encryption: undefined,
     xdomainProxyUrl: undefined,
-    showToolbarControl: true,
-    showSilverlightControls: true, //deprecated
-	flashSockets: false,
-    silverlightObjectParams: {},
+    azureWorkaround: false,
+    preloadPDFWorker: true,
+    workerTransportPromise: undefined,
+    showLocalFilePicker: false,
+    pdfnet: false,
+    useDownloader: true,
+    showToolbarControl: undefined,
+    showPageHistoryButtons: true,
     html5Options: {},
-    html5MobileOptions: {},
-    silverlightOptions: {},
-    flashOptions: {}
+    html5MobileOptions: {}
 };
 
 
@@ -1795,7 +1247,7 @@ PDFTron.WebViewer.Options = {
  */
 PDFTron.WebViewer.FitMode = {
     /**
-     * 
+     *
      * A fit mode where the zoom level is fixed to the width of the page.
      */
     FitWidth: 'FitWidth',

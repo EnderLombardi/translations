@@ -43,10 +43,10 @@ airbus.mes.docviewer.ModelManager = {
 		
 		 // Initialize PDF Tron
         airbus.mes.docviewer.ModelManager.WebViewer = new PDFTron.WebViewer({
-            type: deviceType,
+            type: "html5",
             path: "../lib/pdftron",
             initialDoc: fileURL,
-            documentType: "pdf",
+            documentType: "xod",
             config: "../components/docviewer/config.js",
             serverUrl: "http://localhost/",
             documentId: "mes_document_viewer",

@@ -34,31 +34,6 @@
             "wholeWordOnly": "Só palabras completas",
             "caseSensitive": "Sensible a May. e Min.",
             "noResults": "Non se atoparon resultados."
-        },
-        "annotations": "Anotacións",
-        "annotationTab": {
-            "buttonHide": "Ocultar",
-            "buttonShow": "Mostrar",
-            "buttonSave": "Gardar",
-            "toggleAnnotations": "Conmutar Anotacións",
-            "saveAnnotations": "Gardar Anotacións",
-            
-            "tooltips": {
-                "edit": "Editar Anotación",
-                "stickyNote": "Nota",
-                "highlight": "Resaltar texto",
-                "underline": "Subliñar texto",
-                "strikeout": "Tachar texto",
-                "rectangle": "Rectángulo",
-                "ellipse": "Elipse",
-                "line": "Liña",
-                "freeHand": "Man alzada"
-            },
-            
-            "fill": "Recheo",
-            "stroke": "Trazo",
-            "thickness": "Grosor",
-            "setAsDefault": "Establecer por defecto"
         }
     },
     
@@ -81,6 +56,31 @@
             "ellipse": "Elipse",
             "line": "Liña",
             "freeHand": "Man alzada"
+        },
+
+        "properties": {
+            "fill": "Recheo",
+            "stroke": "Trazo",
+            "thickness": "Grosor"
+        },
+
+        "annotations": "Anotacións",
+        "buttonHide": "Ocultar",
+        "buttonShow": "Mostrar",
+        "buttonSave": "Gardar",
+        "toggleAnnotations": "Conmutar Anotacións",
+        "saveAnnotations": "Gardar Anotacións",
+        
+        "tooltips": {
+            "edit": "Editar Anotación",
+            "stickyNote": "Nota",
+            "highlight": "Resaltar texto",
+            "underline": "Subliñar texto",
+            "strikeout": "Tachar texto",
+            "rectangle": "Rectángulo",
+            "ellipse": "Elipse",
+            "line": "Liña",
+            "freeHand": "Man alzada"
         }
     },
     
@@ -95,17 +95,17 @@
         "cancelDownload": "Cancelar descarga"
     },
     
+    "annotationPopup": {
+        "buttonDone": "Feito",
+        "buttonDelete": "Eliminar",
+        "buttonNote": "Nota",
+        "buttonStroke": "Color de trazo",
+        "buttonFill": "Color de recheo",
+        "buttonThickness": "Grosor",
+        "buttonSave": "Gardar"
+    },
+    
     "mobile": {
-        "annotationPopup": {
-            "buttonDone": "Feito",
-            "buttonDelete": "Eliminar",
-            "buttonNote": "Nota",
-            "buttonStroke": "Color de trazo",
-            "buttonFill": "Color de recheo",
-            "buttonThickness": "Grosor",
-            "buttonSave": "Gardar"
-        },
-        
         "bookmarks": {
             "bookmarks": "Marcadores",
             "noBookmarks": "Este documento non contén marcadores.",

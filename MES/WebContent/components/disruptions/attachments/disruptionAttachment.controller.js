@@ -105,9 +105,9 @@ sap.ui
 		 * In order to re-appear the backdrop and pop-up
 		 */
 		onMESDocViewerClose: function(){
-			$("#sap-ui-blocklayer-popup").css('zIndex', '38');
+			$("#sap-ui-blocklayer-popup").css('zIndex', '1');
 
-			switch(nav.getCurrentPage().sId){
+			switch(nav.getPreviousPage().sId){
 			case "stationTrackerView":
 				$("#operationDetailPopup--operationDetailPopUp").css('display', 'block');
 				break;

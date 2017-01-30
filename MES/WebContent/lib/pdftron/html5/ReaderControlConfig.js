@@ -20,7 +20,7 @@
  */
 ReaderControl.config = {
     //customScript : 'defaultScriptExtension.js',
-    customStyle : 'defaultStyleExtension.css',
+    // customStyle : 'defaultStyleExtension.css',
     serverURL : "annotationHandler.php",    //The server-side script that handles saving/loading of annotations
     defaultUser: "Guest"                    //The default username for annotations created
 };

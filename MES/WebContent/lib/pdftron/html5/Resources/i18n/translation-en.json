@@ -1,6 +1,8 @@
 {
     "controlbar": {
         "fullScreen": "Full Screen",
+        "download": "Download File",
+        "open": "Open File",
         "print": "Print",
         "search": "Search",
         "textSelect": "Text Select",
@@ -12,8 +14,10 @@
         "zoomOut": "Zoom Out",
         "nextPage": "Next Page",
         "previousPage": "Previous Page",
+        "backPage": "Go Back",
+        "forwardPage": "Go Forward",
         "pageRotation": {
-            "title": "Rotate Page",
+            "title": "Rotate Pages",
             "cc90": "Rotate Clockwise 90°",
             "ccw90": "Rotate Counterclockwise 90°"
         },
@@ -26,9 +30,10 @@
             "cover": "Cover",
             "coverContinuous": "Cover Continuous"
         },
-        "toggleSidePanel": "Toggle Side Panel"
+        "toggleSidePanel": "Toggle Side Panel",
+        "toggleNotesPanel": "Toggle Notes Panel"
     },
-    
+
     "sidepanel": {
         "thumbnails": "Thumbnails",
         "outline": "Outline",
@@ -41,52 +46,72 @@
             "wholeWordOnly": "Whole word only",
             "caseSensitive": "Case Sensitive",
             "noResults": "No results were found."
-        },
-        "annotations": "Annotations",
-        "annotationTab": {
-            "buttonHide": "Hide",
-            "buttonShow": "Show",
-            "buttonSave": "Save",
-            "toggleAnnotations": "Toggle Annotations",
-            "saveAnnotations": "Save Annotations",
-            "noAnnotations": "This document has no annotations.",
-            "tooltips": {
-                "edit": "Edit Annotation",
-                "stickyNote": "Comment Note",
-                "highlight": "Text Highlight",
-                "underline": "Text Underline",
-                "strikeout": "Text Strikeout",
-                "rectangle": "Rectangle",
-                "ellipse": "Ellipse",
-                "line": "Line",
-                "freeHand": "Free Hand",
-                "polyline": "Polyline",
-                "polygon" : "Polygon",
-                "callout" : "Callout",
-                "freetext": "FreeText"
-            },
-            
-            "fill": "Fill Color",
-            "stroke": "Color",
-            "thickness": "Thickness",
-            "setAsDefault": "Set as Default"
         }
     },
-    
+
+    "contextMenu": {
+        "changeToolHeader": "Change Tool",
+        "pan": "Pan",
+        "textSelect": "Text Select",
+        "highlight": "Highlight",
+        "underline": "Underline",
+        "freeHand": "Free Hand",
+        "freeText": "Free Text",
+        "line": "Line",
+        "arrow": "Arrow",
+        "note": "Note",
+        "signature": "Signature"
+    },
+
+    "notesPanel": {
+        "edit": "Edit",
+        "delete": "Delete",
+        "showMore": "Show more",
+        "showLess": "Show less",
+        "save": "Save",
+        "reply": "Reply",
+        "cancel": "Cancel",
+        "deleteComment": "Delete this comment?",
+        "deleteCommentThread": "Delete this comment thread?",
+        "deleteAnnotation": "Delete this annotation?",
+        "enterReply": "Enter a reply...",
+        "orderBy": "Order by:",
+        "orderDocument": "Document",
+        "orderDocumentDesc": "Notes are placed relative to their position in the document",
+        "orderTime": "Time",
+        "orderTimeDesc": "Notes are ordered by time",
+        "searchComments": "Search in the comments...",
+        "annotLineDesc": "Page __pageNumber__: __subject__ \r\nBy __author__"
+    },
+
+    "signatureDialog": {
+        "cancel": "Cancel",
+        "clear": "Clear",
+        "add": "Add Signature",
+        "makeDefault": "Make Default Signature",
+        "signHere": "Sign Here",
+        "newSignature": "New Signature",
+        "mySignature": "My Signature"
+    },
+
+    "textSelection": {
+        "copy": "Copy"
+    },
+
     "annotations": {
         "permissionEdit": "You do not have permissions to edit this annotation.",
         "permissionDelete": "You do not have permissions to delete this annotation.",
         "readOnlyDelete": "Cannot delete annotations in read-only mode.",
         "readOnlyCreate": "Cannot create new annotations in read-only mode.",
         "readOnlyEdit": "Cannot edit annotations in read-only mode.",
-        "markupOffCreate": "Cannot create new annotations when markups are toggled off.",
-        
+        "markupOffCreate": "Cannot create new annotations when annotations are hidden.",
+
         "savingAnnotations": "Saving Annotations...",
         "saveSuccess": "Annotations were saved successfully",
         "saveError": "Annotations were not able to be saved",
-        
+
         "pageNumber": "Page __number__",
-        
+
         "types": {
             "stickyNote": "Comment",
             "highlight": "Highlight",
@@ -102,47 +127,120 @@
             "polygon": "Polygon",
             "callout" : "Callout",
             "freetext": "FreeText",
+            "polygon" : "Polygon",
+            "callout" : "Callout",
+            "arrow": "Arrow",
+            "signature": "Signature"
+        },
+
+        "properties": {
+            "fill": "Fill Color",
+            "stroke": "Color",
+            "textColor": "Text Color",
+            "fontSize": "Font Size",
+            "thickness": "Thickness",
+            "opacity": "Opacity",
+            "basic": "Basic",
+            "advanced": "Advanced"
+        },
+
+        "annotations": "Annotations",
+        "buttonHide": "Hide",
+        "buttonShow": "Show",
+        "buttonSave": "Save",
+        "toggleAnnotations": "Toggle Annotations",
+        "saveAnnotations": "Save Annotations",
+        "noAnnotations": "This document has no annotations.",
+        "tooltips": {
+            "edit": "Edit Annotation",
+            "stickyNote": "Comment Note",
+            "highlight": "Text Highlight",
+            "underline": "Text Underline",
+            "strikeout": "Text Strikeout",
+            "squiggly": "Text Squiggly Underline",
+            "rectangle": "Rectangle",
+            "ellipse": "Ellipse",
+            "line": "Line",
+            "arrow": "Arrow",
+            "signature": "Signature",
+            "freeHand": "Free Hand",
             "polyline": "Polyline",
             "polygon" : "Polygon",
-            "callout" : "Callout"
+            "polygoncloud" : "Cloud",
+            "callout" : "Callout",
+            "freetext": "Free Text",
+            "more": "More Tools"
         }
     },
-    
+
     "unsupportedBrowser": "You are viewing this application with an unsupported browser. Please see the list of supported browsers:",
-    
+
+    "error": {
+    	"load": "An error was encountered while loading the document",
+    	"PNaClCrashError": "The viewer Module has failed. Please file a bug report and refresh your browser.",
+    	"EmsWorkerError": "PDF Worker encountered an error. This is most likely due to browser incompatibility or memory constraints.",
+    	"EmsWorkerErrorIE": "PDF Worker encountered an error. You may be able to get around this error by restarting your browser or preferably by switching to a better supported browser such as Firefox or Chrome.",
+    	"PNaClLoadError": "The viewer Module failed to load. Please ensure your browser is up to date.",
+    	"PNaClSupportError": "The viewer Module failed to load. Please ensure that Native Client is enabled and supported by your browser.",
+        "ResourceLoadError": "Failed to load resource file. This could be due to an incorrect worker path or unsupported .res mime type on the server.",
+        "PDFLoadError": "Failed to load document. The document is either corrupt or not a valid PDF document.",
+    	"EncryptedAttemptsExceeded": "Failed to load encrypted document. Too many attempts.",
+    	"EncryptedUserCancelled": "Failed to load encrypted document. Password entry cancelled.",
+        "WorkerInitError": "Failed to start the Worker. Please ensure that you are on an up to date and supported Browser"
+    },
+
+    "Initializing": "Initializing...",
+
+    "initialize": {
+    	"pnacl": "Getting the viewer ready. Next time this will be much faster: ",
+    	"loadDocument": "Loading document: "
+    },
+
     "endOfDocument": "End of document.",
-    
+
     "offline": {
         "downloadOfflineViewing": "Download for Offline Viewing",
         "enableOffline": "Enable Offline Mode",
         "disableOffline": "Disable Offline Mode",
         "cancelDownload": "Cancel Download"
     },
-    
+
     "print": {
-        "pagesToPrint": "Pages to print: ",
+        "pagesToPrint": "Pages: ",
         "preparingPages": "Preparing pages: __current__ / __total__",
         "print": "Print",
         "done": "Done",
-        "hint": "e.g. 3, 4-10"
+        "cancel": "Cancel",
+        "hint": "e.g. 3, 4-10",
+        "orientation": "Page Orientation",
+        "auto": "Auto",
+        "portrait": "Portrait",
+        "landscape": "Landscape",
+        "all": "All",
+        "allPagesRadioTitle": "Print all pages",
+        "totalPageCount": "Total: __count__ page",
+        "totalPageCount_plural": "Total: __count__ pages",
+        "invalidPageSelectionMsg": "No valid pages specified"
+    },
+
+    "annotationPopup": {
+        "buttonDone": "Done",
+        "buttonDelete": "Delete",
+        "buttonStyle": "Style",
+        "buttonEdit": "Edit",
+        "buttonEditText": "Edit Text",
+        "buttonReply": "Reply",
+        "buttonView": "View",
+        "buttonNote": "Note",
+        "buttonStroke": "Color",
+        "buttonFill": "Fill Color",
+        "buttonThickness": "Thickness",
+        "buttonSave": "Save"
     },
 
     "mobile": {
         "annotationList": "Annotations",
 
-        "annotationPopup": {
-            "buttonDone": "Done",
-            "buttonDelete": "Delete",
-            "buttonEdit": "Edit",
-            "buttonReply": "Reply",
-            "buttonView": "View",
-            "buttonNote": "Note",
-            "buttonStroke": "Color",
-            "buttonFill": "Fill Color",
-            "buttonThickness": "Thickness",
-            "buttonSave": "Save"
-        },
-        
         "bookmarks": {
             "bookmarks": "Bookmarks",
             "noBookmarks": "This document has no bookmarks.",
@@ -168,9 +266,9 @@
             "viewingOptions": "Viewing",
             "highres": "High Resolution"
         },
-        
+
         "thumbnailPageNumber": "__current__ of __total__",
-        
+
         "unsupportedBrowser": "Unsupported browser. Canvas is not present."
     }
 }

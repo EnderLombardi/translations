@@ -2068,8 +2068,7 @@ BOX RESOLUTION EFFICIENCY
 .pageHeader {
   color: white !important;
   background: #0f2d65 !important;
-  border: 0;
-  height: 57px; }
+  border: 0; }
 
 .classSettingPage .pageHeader span {
   font-size: 1.2rem;
