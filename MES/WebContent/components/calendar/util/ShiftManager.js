@@ -18,7 +18,7 @@ airbus.mes.calendar.util.ShiftManager = {
 	//Array where is stock Id of marker display on the gantt
 	ShiftMarkerID :[],
 	
-	shiftIdSelected : undefined,
+	shiftIdSelected : "ALL",
 	sIndexCombobox : 0,
 	current_shift : undefined,
 	currentShiftStart : undefined,

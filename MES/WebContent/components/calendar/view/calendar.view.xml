@@ -54,8 +54,8 @@
 							text="{ressourcePoolModel>RESSOURCE_DESC}" />
 					</Select>
 
-					<Button id="calendarCapacity" type="Transparent" enabled="true"
-						icon="sap-icon://hide" text="{calendarI18n>showCapacity}" press="hideKPI" />
+					<Button id="calendarCapacity" type="Transparent" enabled="false"
+						icon="sap-icon://hide" text="{calendarI18n>showCapacity}"/>
 
 				</content>
 			</OverflowToolbar>

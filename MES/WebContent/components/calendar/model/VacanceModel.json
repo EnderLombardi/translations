@@ -6,7 +6,7 @@
                   "VALIDATED": "true",
                   "LOANED_FROM": "null",
                   "LOADED_TO": "null",
-                  "RESOURCE_POOLS": "toto",
+                  "RESOURCE_POOLS": "PP_ST_3",
                   "START_DATE_TIME": "2017-01-04 15:10:01",
                   "END_DATE_TIME": "2017-01-04 18:10:01"
                },
@@ -17,7 +17,7 @@
                   "VALIDATED": "true",
                   "LOANED_FROM": "true",
                   "LOADED_TO": "null",
-                  "RESOURCE_POOLS": "toto",
+                  "RESOURCE_POOLS": "PP_ST_1",
                   "START_DATE_TIME": "2017-01-04 15:10:01",
                   "END_DATE_TIME": "2017-01-04 18:10:01"
                },
@@ -28,7 +28,7 @@
                   "VALIDATED": "false",
                   "LOANED_FROM": "null",
                   "LOADED_TO": "true",
-                  "RESOURCE_POOLS": "toto",
+                  "RESOURCE_POOLS": "PP_ST_2",
                   "START_DATE_TIME": "2017-01-04 15:10:01",
                   "END_DATE_TIME": "2017-01-04 18:10:01"
                }

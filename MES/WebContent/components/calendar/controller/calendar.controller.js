@@ -120,17 +120,17 @@ sap.ui.controller("airbus.mes.calendar.controller.calendar", {
         airbus.mes.calendar.oView.byId("buttonViewMode").rerender();
         airbus.mes.calendar.oView.byId("buttonViewMode").setSelectedKey("takt");
        
-        if ( airbus.mes.calendar.util.ShiftManager.shiftIdSelected === "ALL" ) {
+//        if ( airbus.mes.calendar.util.ShiftManager.shiftIdSelected === "ALL" ) {
         	
             calendar.updateView();
         	
-        } else  {
+//        } else  {
         	
-        	airbus.mes.calendar.util.GroupingBoxingManager.parseShift();
-	    	airbus.mes.calendar.util.ShiftManager.init(airbus.mes.calendar.util.GroupingBoxingManager.shiftNoBreakHierarchy);
-	    	airbus.mes.calendar.util.GroupingBoxingManager.computeCalendarHierarchy();
+//        	airbus.mes.calendar.util.GroupingBoxingManager.parseShift();
+//	    	airbus.mes.calendar.util.ShiftManager.init(airbus.mes.calendar.util.GroupingBoxingManager.shiftNoBreakHierarchy);
+//	    	airbus.mes.calendar.util.GroupingBoxingManager.computeCalendarHierarchy();
         	
-        }
+//       }
         
 
     },

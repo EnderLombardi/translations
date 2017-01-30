@@ -39,7 +39,7 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 	oModelShift.forEach(function(el) {
 		
 		if ( airbus.mes.calendar.util.ShiftManager.shiftIdSelected === "ALL" || airbus.mes.calendar.util.ShiftManager.shiftIdSelected === el.poolId 
-			|| airbus.mes.calendar.util.ShiftManager.dayDisplay || airbus.mes.calendar.util.ShiftManager.takDisplay ) {
+			|| airbus.mes.calendar.util.ShiftManager.taktDisplay || airbus.mes.calendar.util.ShiftManager.takDisplay ) {
 
 		
 		if ( !oHierachy[el.day] ) {
@@ -149,7 +149,7 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 		//===============	
 		oModel.forEach(function(el){
 			// Filtering on ressource POOL
-			//if ( el.RESOURCE_POOLS === sPoolId || sPoolId === "ALL" ) {
+			if ( el.RESOURCE_POOLS === sPoolId || sPoolId === "ALL" ) {
 				// Home based
 				if ( el.LOANED_FROM === "null" && el.LOADED_TO === "null" ) {
 					
@@ -179,7 +179,7 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 				
 				oHierachy[sName][ el.USER + sCstSplit + el.FIRST_NAME + sCstSplit +  el.LAST_NAME + sCstSplit + sName].push(el);
 					
-			//}
+			}
 		})
 		//===============
 		//Compute aElements2 creation of group	
@@ -233,76 +233,49 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 			});
 	
 		});
-
-		
-		
-		
-		
-		
-		
-		
-//		var aElements2 = [ // original hierarhical array to display
-//			{key:10, label:"Web Testing Dep.", open: true, children: [
-//				{key:20, label:"Elizabeth Taylor"},
-//				{key:30, label:"Managers",  children: [
-//					{key:40, label:"John Williams"},
-//					{key:50, label:"David Miller"}
-//				]},
-//				{key:60, label:"Linda Brown"},
-//				{key:70, label:"George Lucas"}
-//			]},
-//			{key:110, label:"Human Relations Dep.", open:true, children: [
-//				{key:80, label:"Kate Moss"},
-//				{key:90, label:"Dian Fossey"}
-//			]}
-//		];
-		
-//	var aBox  = [
-//			{ start_date: "2014-06-30 09:00", end_date: "2014-06-30 12:00", text:"Task A-12458", section_id:20},
-//			{ start_date: "2014-06-30 10:00", end_date: "2014-06-30 16:00", text:"Task A-89411", section_id:20},
-//			{ start_date: "2014-06-30 10:00", end_date: "2014-06-30 14:00", text:"Task A-64168", section_id:20},
-//			{ start_date: "2014-06-30 16:00", end_date: "2014-06-30 17:00", text:"Task A-46598", section_id:20},
-//			
-//			{ start_date: "2014-06-30 12:00", end_date: "2014-06-30 20:00", text:"Task B-48865", section_id:40},
-//			{ start_date: "2014-06-30 14:00", end_date: "2014-06-30 16:00", text:"Task B-44864", section_id:40},
-//			{ start_date: "2014-06-30 16:30", end_date: "2014-06-30 18:00", text:"Task B-46558", section_id:40},
-//			{ start_date: "2014-06-30 18:30", end_date: "2014-06-30 20:00", text:"Task B-45564", section_id:40},
-//			
-//			{ start_date: "2014-06-30 08:00", end_date: "2014-06-30 12:00", text:"Task C-32421", section_id:50},
-//			{ start_date: "2014-06-30 14:30", end_date: "2014-06-30 16:45", text:"Task C-14244", section_id:50},
-//			
-//			{ start_date: "2014-06-30 09:20", end_date: "2014-06-30 12:20", text:"Task D-52688", section_id:60},
-//			{ start_date: "2014-06-30 11:40", end_date: "2014-06-30 16:30", text:"Task D-46588", section_id:60},
-//			{ start_date: "2014-06-30 12:00", end_date: "2014-06-30 18:00", text:"Task D-12458", section_id:60}
-//		];
-		
 		
 		calendar.matrix['timeline'].y_unit_original = aElements2;
 		calendar.callEvent("onOptionsLoad", []);
 		var ShiftManager = airbus.mes.calendar.util.ShiftManager;
 		
-		if ( ShiftManager.current_Date != undefined) {
-		
-			if ( ShiftManager.closestShift( ShiftManager.currentFullDate ) != -1 ){
-				
-				calendar.init( airbus.mes.calendar.oView.byId("calendar").getId() , new Date( ShiftManager.currentFullDate), "timeline");
+		// Use the previous start date and test if it is in shift hierearchy otherwise take last shift of the shift collection
+		if  ( airbus.mes.calendar.util.ShiftManager.taktDisplay ) {
 			
-			} else {
-				
-				calendar.init(airbus.mes.calendar.oView.byId("calendar").getId(), ShiftManager.shifts[ShiftManager.shifts.length -1 ].StartDate , "timeline");
-				
-			}
-						
-		} else if ( ShiftManager.closestShift(new Date()) != -1 ){
+			calendar.updateView();
 			
-			var fShiftIndex = ShiftManager.closestShift(new Date());
-			calendar.init( airbus.mes.calendar.oView.byId("calendar").getId() ,ShiftManager.shifts[fShiftIndex].StartDate , "timeline");		
-		
 		} else {
 			
-			calendar.init(airbus.mes.calendar.oView.byId("calendar").getId(), ShiftManager.shifts[ShiftManager.shifts.length - 1 ].StartDate , "timeline");
-			
-		}
+			if ( ShiftManager.shifts.length != 0 ) {
+				
+				if ( ShiftManager.current_Date != undefined) {
+				
+					if ( ShiftManager.closestShift( ShiftManager.currentFullDate ) != -1 ){
+						
+						calendar.init( airbus.mes.calendar.oView.byId("calendar").getId() , new Date( ShiftManager.currentFullDate), "timeline");
+					
+					} else {
+						
+						calendar.init(airbus.mes.calendar.oView.byId("calendar").getId(), ShiftManager.shifts[ShiftManager.shifts.length -1 ].StartDate , "timeline");
+						
+					}
+								
+				} else if ( ShiftManager.closestShift(new Date()) != -1 ){
+					
+					var fShiftIndex = ShiftManager.closestShift(new Date());
+					calendar.init( airbus.mes.calendar.oView.byId("calendar").getId() ,ShiftManager.shifts[fShiftIndex].StartDate , "timeline");		
+				
+				} else {
+					
+					calendar.init(airbus.mes.calendar.oView.byId("calendar").getId(), ShiftManager.shifts[ShiftManager.shifts.length - 1 ].StartDate , "timeline");
+					
+				}		
+			} else {
+				// No shift is present in the ressource pool => nothing to display
+				calendar.matrix['timeline'].y_unit_original = [];
+				aBox = [];
+				calendar.callEvent("onOptionsLoad", []);
+			}
+		} 
 		
 		calendar.clearAll();
 		calendar.deleteMarkedTimespan();
@@ -313,6 +286,6 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
         airbus.mes.shell.busyManager.unsetBusy(airbus.mes.calendar.oView);
 	    calendar.parse(aBox,"json");
 	    calendar.openAllSections();
-	   },
+		},
 	
 };
