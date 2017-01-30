@@ -18,13 +18,11 @@ sap.ui.core.Control.extend("airbus.mes.stationHandover.util.customIcon", {
 
 	renderer : function(r, c) {
 		
-		var sColor = c.color();
+		var sColor = c.getColor();
 			
 		r.write('<I');
 				r.writeControlData(c);
-				r.addClass('fa');
-				r.addClass('fa-exclamation-triangle');
-				r.addClass('fa-exclamation-triangle-triangle');				
+				r.addClass('fa fa-exclamation-triangle fa-exclamation-triangle-triangle');
 				r.addStyle('color', "blue");
 				r.writeStyles();
 				r.writeClasses();

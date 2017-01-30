@@ -1,6 +1,6 @@
 <core:View controllerName="airbus.mes.stationHandover.controller.stationHandover"
 	xmlns="sap.ui.table" xmlns:mvc="sap.ui.core.mvc" xmlns:m="sap.m"
-	xmlns:u="sap.ui.unified" xmlns:core="sap.ui.core"	xmlns:custom="airbus.mes.stationHandover.util.customIcon"
+	xmlns:u="sap.ui.unified" xmlns:core="sap.ui.core"	xmlns:custom="airbus.mes.stationHandover.util"
 	>
 
 	<m:Page showHeader="false" enableScrolling="false" height="100%"
