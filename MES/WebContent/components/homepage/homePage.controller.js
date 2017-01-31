@@ -84,6 +84,10 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 	getI18nValue : function(sKey) {
 		return this.getView().getModel("i18n").getProperty(sKey);
 	},
+	/**
+	 * Setting the visible property on tiles on the basis of roles
+	 * 
+	 */
     setVisible : function() {
 //        var flag = airbus.mes.shell.RoleManager.isAllowed(airbus.mes.shell.RoleManager.parseRoleValue("HOMESCREEN"), 'V');
 //        airbus.mes.shell.RoleManager.userRoles = [];
