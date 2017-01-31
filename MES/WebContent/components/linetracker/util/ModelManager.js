@@ -11,14 +11,14 @@ airbus.mes.linetracker.util.ModelManager = {
 
 		var aModel = [ "stationDataModel", // Model for Station Data
 		"lineVariantModel", // Model for Line variant Data
-		"KPIchartTaktAdherence", // Model for Takt Adherence KPI chart data
-		"KPItaktAdherence", // Model for KPI Takt Ahderence
-		"KPItaktEfficiency", // Model for KPI takt efficiency
-		"KPIdisruption", // Model for KPI Disruption
-		"KPIresolutionEfficiency", // Model for KPI Resolution Efficiency
-		"KPIopenAnomalies", // Model for Open Anomalies
-		"KPIextraWork", // Model for KPI Extra Work
-		"KPIshiftStaffing", // Model for KPI Shift Staffing
+		//"KPIchartTaktAdherence", // Model for Takt Adherence KPI chart data
+		//"KPItaktAdherence", // Model for KPI Takt Ahderence
+		//"KPItaktEfficiency", // Model for KPI takt efficiency
+		//"KPIdisruption", // Model for KPI Disruption
+		//"KPIresolutionEfficiency", // Model for KPI Resolution Efficiency
+		//"KPIopenAnomalies", // Model for Open Anomalies
+		//"KPIextraWork", // Model for KPI Extra Work
+		//"KPIshiftStaffing", // Model for KPI Shift Staffing
 		"airlineLogoModel" // Model for Airline Logo
 		]
 		airbus.mes.shell.ModelManager.createJsonModel(core, aModel);
@@ -35,13 +35,13 @@ airbus.mes.linetracker.util.ModelManager = {
 		this.loadStationDataModel();
 		this.loadLineVariantModel();
 
-		this.loadPlantModel();
+		//this.loadPlantModel();
 		this.loadFlightLogo();
 
 	},
 
 	loadLinetrackerKPI : function() {
-		this.loadKPIChartTaktAdherence();
+		/*this.loadKPIChartTaktAdherence();
 		this.loadKPItaktAdherence();
 		this.loadKPItaktEfficiency();
 		this.loadKPIdisruption();
@@ -49,7 +49,9 @@ airbus.mes.linetracker.util.ModelManager = {
 		this.loadKPIopenAnomalies();
 		this.loadKPIextraWork();
 		this.loadKPIshiftStaffing();
-		this.loadPlantModel();
+		this.loadPlantModel();*/
+		this.loadLineVariantModel();
+		
 
 	},
 	/**
@@ -92,7 +94,7 @@ airbus.mes.linetracker.util.ModelManager = {
 	 */
 	loadLineVariantModel : function() {
 		var oViewModel = sap.ui.getCore().getModel("lineVariantModel");
-		// airbus.mes.linetracker.oView.byId("linetrackerTable").setBusy(true);
+		 //sap.ui.getCore().byId("idLinetracker1").setBusy(true);
 		jQuery.ajax({
 			type : 'post',
 			url : this.urlModel.getProperty("urlLineVariant"),
@@ -108,12 +110,12 @@ airbus.mes.linetracker.util.ModelManager = {
 					data = JSON.parse(data);
 				}
 				oViewModel.setData(data);
-				// airbus.mes.linetracker.oView.byId("linetrackerTable").setBusy(false);
+				 //sap.ui.getCore().byId("idLinetracker1").setBusy(false);
 			},
 
 			error : function(error, jQXHR) {
 				jQuery.sap.log.info(error);
-				// airbus.mes.linetracker.oView.byId("linetrackerTable").setBusy(false);
+				// sap.ui.getCore().byId("idLinetracker1").setBusy(false);
 			}
 		});
 	},
@@ -122,7 +124,7 @@ airbus.mes.linetracker.util.ModelManager = {
 	 * BR:SD-PPC-LT-270
 	 * Load KPI Chart Takt Adherence Model
 	 */
-	loadKPIChartTaktAdherence : function() {
+/*	loadKPIChartTaktAdherence : function() {
 		var oViewModel = sap.ui.getCore().getModel("KPIchartTaktAdherence");
 		// airbus.mes.linetracker.oView.byId("linetrackerTable").setBusy(true);
 		jQuery.ajax({
@@ -149,12 +151,12 @@ airbus.mes.linetracker.util.ModelManager = {
 			}
 		});
 	},
-
+*/
 	/**
 	 * BR:SD-PPC-LT-270
 	 * Load KPI Takt Adherence Model
 	 */
-	loadKPItaktAdherence : function() {
+/*	loadKPItaktAdherence : function() {
 		var oViewModel = sap.ui.getCore().getModel("KPItaktAdherence");
 		// airbus.mes.linetracker.oView.byId("linetrackerTable").setBusy(true);
 		jQuery.ajax({
@@ -180,13 +182,13 @@ airbus.mes.linetracker.util.ModelManager = {
 				// airbus.mes.linetracker.oView.byId("linetrackerTable").setBusy(false);
 			}
 		});
-	},
+	},*/
 
 	/**
 	 * BR:SD-PPC-LT-270
 	 * Load KPI Takt Efficiency Model
 	 */
-	loadKPItaktEfficiency : function() {
+/*	loadKPItaktEfficiency : function() {
 		var oViewModel = sap.ui.getCore().getModel("KPItaktEfficiency");
 		// airbus.mes.linetracker.oView.byId("linetrackerTable").setBusy(true);
 		jQuery.ajax({
@@ -213,13 +215,13 @@ airbus.mes.linetracker.util.ModelManager = {
 			}
 		});
 
-	},
+	},*/
 
 	/**
 	 * BR:SD-PPC-LT-270
 	 * Load KPI Disruption/Andon Model
 	 */
-	loadKPIdisruption : function() {
+/*	loadKPIdisruption : function() {
 		var oViewModel = sap.ui.getCore().getModel("KPIdisruption");
 		// airbus.mes.linetracker.oView.byId("linetrackerTable").setBusy(true);
 		jQuery.ajax({
@@ -245,13 +247,13 @@ airbus.mes.linetracker.util.ModelManager = {
 				// airbus.mes.linetracker.oView.byId("linetrackerTable").setBusy(false);
 			}
 		});
-	},
+	},*/
 
 	/**
 	 * BR:SD-PPC-LT-270
 	 * Load KPI Resolution Efficiency Model
 	 */
-	loadKPIresolutionEfficiency : function() {
+/*	loadKPIresolutionEfficiency : function() {
 		var oViewModel = sap.ui.getCore().getModel("KPIresolutionEfficiency");
 		// airbus.mes.linetracker.oView.byId("linetrackerTable").setBusy(true);
 		jQuery.ajax({
@@ -277,13 +279,13 @@ airbus.mes.linetracker.util.ModelManager = {
 				// airbus.mes.linetracker.oView.byId("linetrackerTable").setBusy(false);
 			}
 		});
-	},
+	},*/
 
 	/**
 	 * BR:SD-PPC-LT-270
 	 * Load Open Anomalies Model
 	 */
-	loadKPIopenAnomalies : function() {
+/*	loadKPIopenAnomalies : function() {
 		var oViewModel = sap.ui.getCore().getModel("KPIopenAnomalies");
 		// airbus.mes.linetracker.oView.byId("linetrackerTable").setBusy(true);
 		jQuery.ajax({
@@ -309,13 +311,13 @@ airbus.mes.linetracker.util.ModelManager = {
 				// airbus.mes.linetracker.oView.byId("linetrackerTable").setBusy(false);
 			}
 		});
-	},
+	},*/
 
 	/**
 	 * BR:SD-PPC-LT-270
 	 * Load Extra Work Model
 	 */
-	loadKPIextraWork : function() {
+/*	loadKPIextraWork : function() {
 		var oViewModel = sap.ui.getCore().getModel("KPIextraWork");
 		// airbus.mes.linetracker.oView.byId("linetrackerTable").setBusy(true);
 		jQuery.ajax({
@@ -341,13 +343,13 @@ airbus.mes.linetracker.util.ModelManager = {
 				// airbus.mes.linetracker.oView.byId("linetrackerTable").setBusy(false);
 			}
 		});
-	},
+	},*/
 
 	/**
 	 * BR:SD-PPC-LT-270
 	 * Load KPI shift Staffing Model data
 	 */
-	loadKPIshiftStaffing : function() {
+/*	loadKPIshiftStaffing : function() {
 		var oViewModel = sap.ui.getCore().getModel("KPIshiftStaffing");
 		// TODO get current shift from real service
 		var sCurrentShift = "S0";
@@ -377,12 +379,12 @@ airbus.mes.linetracker.util.ModelManager = {
 				// airbus.mes.linetracker.oView.byId("linetrackerTable").setBusy(false);
 			}
 		});
-	},
+	},*/
 
 	/**
 	 * Load Plant Model Data
 	 */
-	loadPlantModel : function() {
+/*	loadPlantModel : function() {
 		var oViewModel = sap.ui.getCore().getModel("plantModel");
 		jQuery.ajax({
 			type : 'post',
@@ -405,7 +407,7 @@ airbus.mes.linetracker.util.ModelManager = {
 				jQuery.sap.log.info(error);
 			}
 		});
-	},
+	},*/
 
 	/**
 	 * Get current system date

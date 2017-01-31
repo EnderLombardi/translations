@@ -262,6 +262,8 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 
 		// open value help dialog filtered by the input value
 		this._valueHelpDialog.open();
+		//clear filters
+		sap.ui.getCore().byId("valueHelpDialogSelectLine").getBinding("items").filter();
 	},
 
 	/**

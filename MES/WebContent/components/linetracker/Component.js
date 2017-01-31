@@ -1,6 +1,6 @@
 "use strict";
-jQuery.sap.registerModulePath("airbus.mes.d3", "../lib/d3");
-jQuery.sap.require("airbus.mes.d3.d3_3_5_17_min");
+//jQuery.sap.registerModulePath("airbus.mes.d3", "../lib/d3");
+//jQuery.sap.require("airbus.mes.d3.d3_3_5_17_min");
 jQuery.sap.require("airbus.mes.linetracker.kpicharts.util.Formatter");
 jQuery.sap.require("sap.ui.core.UIComponent");
 jQuery.sap.require("sap.ui.base.Event");
@@ -49,17 +49,17 @@ airbus.mes.linetracker.Component.prototype.createContent = function() {
 		this.oView.setModel(sap.ui.getCore().getModel("stationDataModel"), "stationDataModel");
 		// this.oView.setModel(sap.ui.getCore().getModel("kpiI18n"), "kpiI18n");
 		this.oView.setModel(sap.ui.getCore().getModel("lineVariantModel"), "lineVariantModel");
-		this.oView.setModel(sap.ui.getCore().getModel("KPItaktAdherence"), "KPItaktAdherence");
-		this.oView.setModel(sap.ui.getCore().getModel("KPIshiftStaffing"), "KPIshiftStaffing");
-		this.oView.setModel(sap.ui.getCore().getModel("KPIextraWork"), "KPIextraWork");
-		this.oView.setModel(sap.ui.getCore().getModel("KPI"), "KPI");
-		this.oView.setModel(sap.ui.getCore().getModel("KPIchartTaktAdherence"), "KPIchartTaktAdherence");
-		this.oView.setModel(sap.ui.getCore().getModel("KPIdisruption"), "KPIdisruption");
-		this.oView.setModel(sap.ui.getCore().getModel("KPIresolutionEfficiency"), "KPIresolutionEfficiency");
-		this.oView.setModel(sap.ui.getCore().getModel("KPItaktEfficiency"), "KPItaktEfficiency");
-		this.oView.setModel(sap.ui.getCore().getModel("KPIopenAnomalies"), "KPIopenAnomalies");
+		//this.oView.setModel(sap.ui.getCore().getModel("KPItaktAdherence"), "KPItaktAdherence");
+		//this.oView.setModel(sap.ui.getCore().getModel("KPIshiftStaffing"), "KPIshiftStaffing");
+		//this.oView.setModel(sap.ui.getCore().getModel("KPIextraWork"), "KPIextraWork");
+		//this.oView.setModel(sap.ui.getCore().getModel("KPI"), "KPI");
+		//this.oView.setModel(sap.ui.getCore().getModel("KPIchartTaktAdherence"), "KPIchartTaktAdherence");
+		//this.oView.setModel(sap.ui.getCore().getModel("KPIdisruption"), "KPIdisruption");
+		//this.oView.setModel(sap.ui.getCore().getModel("KPIresolutionEfficiency"), "KPIresolutionEfficiency");
+		//this.oView.setModel(sap.ui.getCore().getModel("KPItaktEfficiency"), "KPItaktEfficiency");
+		//this.oView.setModel(sap.ui.getCore().getModel("KPIopenAnomalies"), "KPIopenAnomalies");
 
-		this.oView.setModel(sap.ui.getCore().getModel("plantModel"), "plantModel");
+		//this.oView.setModel(sap.ui.getCore().getModel("plantModel"), "plantModel");
 		this.oView.setModel(sap.ui.getCore().getModel("airlineLogoModel"), "airlineLogoModel");
 
 		airbus.mes.linetracker.oView = this.oView;

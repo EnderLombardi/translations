@@ -81,11 +81,13 @@ airbus.mes.shell.RoleManager = {
 	// getting all the Roles based on the feature
 	parseRoleValue : function(sFeature) {
 		var sRoles = sap.ui.getCore().getModel("AllRolesModel").oData.Rowsets.Rowset[0].Row;
-
+		//temporary if till this feature dosent work.// can be removed. does no harm anyway//vaibhav
+		if(sRoles){
 		for (var i = 0; i < sRoles.length; i++) {
 			if(sRoles[i].Feature === sFeature){
 				airbus.mes.shell.RoleManager.userRoles[i] = sRoles[i].Roles;
 			}
+		}
 		}
 		// Roles hardcoded for particular features so that everyone has access to every feature. Has to be removed.
 		airbus.mes.shell.RoleManager.userRoles.push("SAP_XMII_User","Everyone");
