@@ -2291,195 +2291,6 @@ html.sap-desktop .sapMBtnTransparent > .sapMBtnIcon {
   #settingsView--headTextProgram-listUl > li .classListProgramRadioBtn.sapMRbBTouched > label {
     color: #ffffff; }
 
-/************************
-DISRUPTIONTRACKER
-*************************/
-.sapMDialog > .sapMDialogSection {
-  width: 100%;
-  max-width: 100%; }
-
-.disruptions table th,
-td {
-  text-align: center !important; }
-
-.disruptions table td {
-  border-left: 2px solid #E9EEF3 !important; }
-.disruptions table tr:nth-child(even) {
-  background: #f7f9fb; }
-.disruptions table tr:hover {
-  background: #f0f0f0; }
-.disruptions .sapMListTblHasNav .sapMListTblRow > :nth-last-child(2) {
-  border-right: 2px solid #E9EEF3 !important; }
-.disruptions .sapMObjStatusWarning > .sapMObjStatusIcon {
-  color: #f4bd6c !important; }
-.disruptions .sapMObjStatusText {
-  color: black !important; }
-.disruptions .sapMListTbl th {
-  background-color: #e6ecf2 !important; }
-.disruptions .sapMListTblNavCol {
-  display: none !important; }
-.disruptions .pageHeader {
-  border-top: 0.6rem solid #ffffff; }
-.disruptions .sapMPanel,
-.sapMPage > .sapMPageHeader + section {
-  background-color: #ffffff !important; }
-.disruptions .sapMPanelContent:not(.sapMPanelBGTransparent) {
-  border-bottom: 0 !important;
-<<<<<<< Upstream, based on origin/MESv1.5
-  background-color: #e9fbfd;
-  padding: 0; }
-=======
-  background-color: #e9fbfd; }
->>>>>>> 83c7bfe [acpnglinks] work on new view to select coumns
-.disruptions .sapMComboBoxTextField,
-.disruptions .sapMSFF {
-  border: 1px solid #74D2E7; }
-.disruptions .sapMSFF {
-  border-radius: 3em;
-  border: 2px solid #74D2E7;
-  color: #74D2E7;
-  overflow: hidden; }
-  .disruptions .sapMSFF .sapMSFB.sapMSFS {
-    color: #74D2E7; }
-.disruptions .disruptionsTable {
-  width: auto !important;
-  margin: 0.7rem 0.7rem 0 0.7rem; }
-.disruptions header {
-  z-index: 10;
-  box-shadow: 0px 2px 15px -5px #0f2d65; }
-  .disruptions header .headerText {
-    text-shadow: none; }
-.disruptions .sapMTB {
-  border-bottom: none !important; }
-.disruptions .sapMIBar.sapMSubHeader-CTX {
-  color: white !important;
-  background: #0f2d65 !important;
-  color: #ffffff !important; }
-  .disruptions .sapMIBar.sapMSubHeader-CTX .headerText {
-    font-size: 1.2rem !important; }
-
-<<<<<<< Upstream, based on origin/MESv1.5
-#disruptiontrackerView--headerText-inner {
-  color: #74d2e7;
-  text-shadow: none;
-  padding: 0px 30px;
-  font-size: 0.875rem; }
-
-#disruptiontrackerView--navBack, #disruptiontrackerView--navBack-inner, #disruptiontrackerView--navBack-inner .sapMBtnTransparent > .sapMBtnIcon, #disruptiontrackerView--navBack .sapMBtnTransparent > .sapMBtnIcon {
-  color: #0D5D76 !important; }
-
-#disruptiontrackerView--disruptionSearchField {
-  border-left: 1px solid #8db9ca;
-  padding: 4px 10px; }
-
-#disruptiontrackerView--disruptionSearchField .sapMSFF {
-  border-radius: 1em;
-  border: 2px solid #74D2E7;
-  color: #74d2e7;
-  overflow: hidden; }
-#disruptiontrackerView--disruptionSearchField .sapMSFB.sapMSFS {
-  color: #74d2e7; }
-
-.borderbutton {
-  border-left: 1px solid #8db9ca;
-  padding-left: 10px; }
-
-#disruptiontrackerView--exportbutton-inner {
-  background: none;
-  border: none;
-  color: #0D5D76; }
-  #disruptiontrackerView--exportbutton-inner > span {
-    color: #0D5D76; }
-=======
-#disruptiontrackerView--navBack .sapMBtnIcon,
-#disruptiontrackerView--navBack .sapMBtnContent {
-  color: white; }
->>>>>>> 83c7bfe [acpnglinks] work on new view to select coumns
-
-#disruptiontrackerView--gotoDisruptionKpi.sapMBtn:hover {
-  background-color: rgba(0, 86, 112, 0.2); }
-#disruptiontrackerView--gotoDisruptionKpi.sapMBtn span {
-  color: #0D5D76; }
-#disruptiontrackerView--gotoDisruptionKpi.sapMBtn:hover > .sapMBtnHoverable, #disruptiontrackerView--gotoDisruptionKpi.sapMBtn > .sapMBtnHoverable {
-  background-color: transparent;
-  background: transparent;
-  border: none; }
-
-#disruptiontrackerView--onDisruptionTableSettings.sapMBtn:hover {
-  background-color: rgba(0, 86, 112, 0.2); }
-#disruptiontrackerView--onDisruptionTableSettings.sapMBtn span {
-  color: #0D5D76; }
-#disruptiontrackerView--onDisruptionTableSettings.sapMBtn:hover > .sapMBtnHoverable, #disruptiontrackerView--onDisruptionTableSettings.sapMBtn > .sapMBtnHoverable {
-  background-color: transparent;
-  background: transparent;
-  border: none; }
-
-#disruptiontrackerView table tr.sapMListTblRow:focus {
-  outline: none; }
-
-#disrptTrackerSettings-dialog {
-  background: #ffffff;
-  border: none;
-  border-radius: 0;
-  box-shadow: 0 0 5px #333; }
-  #disrptTrackerSettings-dialog header {
-    background: #d4f1f7; }
-
-#disrptTrackerSettings-title {
-  color: #434343; }
-
-#disrptTrackerSettings-page1-cont {
-  border-top: 3px solid rgba(255, 255, 255, 0); }
-
-#disrptTrackerSettings header {
-  box-shadow: 0 0 5px #333;
-  overflow: visible; }
-
-.classDisruptionDetailPopUp .sapMPageBusyCoversAll > section {
-  overflow-y: scroll !important; }
-
-#disruptiontrackerView--disruptionsTable #disruptiontrackerView--disruptionsTable-tblBody tr td {
-  text-align: justify !important; }
-
-#disruptionDetail {
-  overflow: auto;
-  background-color: #E9EEF3; }
-  #disruptionDetail .sapMFlexBox.sapMFlexBoxAlignContentStretch.sapMFlexBoxAlignItemsStretch.sapMFlexBoxJustifyStart.sapMFlexBoxWrapNoWrap.sapMFlexItem.sapMHBox {
-    background-color: #E9EEF3; }
-  #disruptionDetail .sapUiFormTitle {
-    background-color: transparent; }
-  #disruptionDetail .sapUiFormM .sapUiFormContainerTitle > .sapUiFormTitle {
-    height: 2rem;
-    line-height: 2rem; }
-  #disruptionDetail .sapMSlt > .sapMSltLabel,
-  #disruptionDetail .sapMSlt, #disruptionDetail .sapMSltArrow {
-    line-height: 2.5rem;
-    height: 2.5rem; }
-  #disruptionDetail .sapUiFormContainerTitle {
-    background-color: #E9EEF3; }
-  #disruptionDetail .sapUiFormResGrid.sapUiFormBackgrTranslucent > div {
-    background-color: #E9EEF3; }
-  #disruptionDetail .titleToolbar {
-    background-color: rgba(191, 198, 206, 0.59); }
-  #disruptionDetail .sapUiForm .sapUiFormTitle {
-    font-weight: bold;
-    line-height: 4rem; }
-  #disruptionDetail .sapMFlexItem .textSize:nth-child(1) {
-    font-weight: bold;
-    color: black; }
-  #disruptionDetail .attachmentIcon {
-    margin-top: 0.5rem !important;
-    z-index: 2 !important;
-    Position: absolute !important;
-    right: 1rem !important; }
-  #disruptionDetail .setMinWidth {
-    min-width: 200px !important; }
-  #disruptionDetail .pageSubHeader {
-    background: #0f2d65 !important;
-    border-top: 0.6rem solid #ffffff !important; }
-  #disruptionDetail .GenricBgColor {
-    background-color: #FFFFFF !important; }
-
 /********************
 RESSOURCEPOOL
 *********************/
@@ -2708,7 +2519,6 @@ RESSOURCEPOOL
   opacity: 1; }
 
 #resourcePool .sapMPageWithSubHeader > section {
-<<<<<<< Upstream, based on origin/MESv1.5
   top: calc(3rem + 18px); }
   #resourcePool .sapMPageWithSubHeader > section .resourcePoolSubheader li {
     height: 3rem;
@@ -2719,17 +2529,6 @@ RESSOURCEPOOL
     border: none;
     color: #0D5D76;
     border-left: 1px solid #8db9ca;
-=======
-  top: calc(3rem + 5px); }
-  #resourcePool .sapMPageWithSubHeader > section .resourcePoolSubheader li {
-    height: 3rem;
-    line-height: 3rem;
-    display: inline-block;
-    font-size: 1.075rem;
-    vertical-align: top;
-    border: none;
-    color: #0D5D76;
->>>>>>> 83c7bfe [acpnglinks] work on new view to select coumns
     background-color: transparent; }
     #resourcePool .sapMPageWithSubHeader > section .resourcePoolSubheader li:hover {
       background-color: rgba(0, 86, 112, 0.2); }
@@ -7031,7 +6830,10 @@ DATE PICKER
   border-left: solid 1px #74d2e7 !important;
   opacity: 1; }
 #stationHandoverView--kpiHeaderToolbar .sapMSltLabel {
-  line-height: 3rem; }
+  line-height: 3rem;
+  color: #74d2e7; }
+#stationHandoverView--kpiHeaderToolbar #stationHandoverView--selectMsnHandover-arrow, #stationHandoverView--kpiHeaderToolbar #stationHandoverView--selectStationHandover-arrow {
+  padding-top: 8px; }
 
 #stationHandoverView--headerstationhandover {
   background-color: #D5F1F8 !important; }
@@ -7082,7 +6884,6 @@ DATE PICKER
   #stationHandoverView--TreeTableBasic #stationHandoverView--TreeTableBasic-sapUiTableRowHdrScr {
     display: block;
     z-index: 0; }
-<<<<<<< Upstream, based on origin/MESv1.5
 
 /********************
 MES Document Viewer
@@ -7101,8 +6902,185 @@ MES Document Viewer
   padding: 5px 3px 2px 3px;
   min-width: 650px;
   margin-top: 18px !important; }
-=======
->>>>>>> 83c7bfe [acpnglinks] work on new view to select coumns
+
+/************************
+DISRUPTIONTRACKER
+*************************/
+.sapMDialog > .sapMDialogSection {
+  width: 100%;
+  max-width: 100%; }
+
+.disruptions table th,
+td {
+  text-align: center !important; }
+
+.disruptions table td {
+  border-left: 2px solid #E9EEF3 !important; }
+.disruptions table tr:nth-child(even) {
+  background: #f7f9fb; }
+.disruptions table tr:hover {
+  background: #f0f0f0; }
+.disruptions .sapMListTblHasNav .sapMListTblRow > :nth-last-child(2) {
+  border-right: 2px solid #E9EEF3 !important; }
+.disruptions .sapMObjStatusWarning > .sapMObjStatusIcon {
+  color: #f4bd6c !important; }
+.disruptions .sapMObjStatusText {
+  color: black !important; }
+.disruptions .sapMListTbl th {
+  background-color: #e6ecf2 !important; }
+.disruptions .sapMListTblNavCol {
+  display: none !important; }
+.disruptions .pageHeader {
+  border-top: 0.6rem solid #ffffff; }
+.disruptions .sapMPanel,
+.sapMPage > .sapMPageHeader + section {
+  background-color: #ffffff !important; }
+.disruptions .sapMPanelContent:not(.sapMPanelBGTransparent) {
+  border-bottom: 0 !important;
+  background-color: #e9fbfd;
+  padding: 0; }
+.disruptions .sapMComboBoxTextField,
+.disruptions .sapMSFF {
+  border: 1px solid #74D2E7; }
+.disruptions .sapMSFF {
+  border-radius: 3em;
+  border: 2px solid #74D2E7;
+  color: #74D2E7;
+  overflow: hidden; }
+  .disruptions .sapMSFF .sapMSFB.sapMSFS {
+    color: #74D2E7; }
+.disruptions .disruptionsTable {
+  width: auto !important;
+  margin: 0.7rem 0.7rem 0 0.7rem; }
+.disruptions header {
+  z-index: 10;
+  box-shadow: 0px 2px 15px -5px #0f2d65; }
+  .disruptions header .headerText {
+    text-shadow: none; }
+.disruptions .sapMTB {
+  border-bottom: none !important; }
+.disruptions .sapMIBar.sapMSubHeader-CTX {
+  color: white !important;
+  background: #0f2d65 !important;
+  color: #ffffff !important; }
+  .disruptions .sapMIBar.sapMSubHeader-CTX .headerText {
+    font-size: 1.2rem !important; }
+
+#disruptiontrackerView--headerText-inner {
+  color: #74d2e7;
+  text-shadow: none;
+  padding: 0px 30px;
+  font-size: 0.875rem; }
+
+#disruptiontrackerView--navBack, #disruptiontrackerView--navBack-inner, #disruptiontrackerView--navBack-inner .sapMBtnTransparent > .sapMBtnIcon, #disruptiontrackerView--navBack .sapMBtnTransparent > .sapMBtnIcon {
+  color: #0D5D76 !important; }
+
+#disruptiontrackerView--disruptionSearchField {
+  border-left: 1px solid #8db9ca;
+  padding: 4px 10px; }
+
+#disruptiontrackerView--disruptionSearchField .sapMSFF {
+  border-radius: 1em;
+  border: 2px solid #74D2E7;
+  color: #74d2e7;
+  overflow: hidden; }
+#disruptiontrackerView--disruptionSearchField .sapMSFB.sapMSFS {
+  color: #74d2e7; }
+
+.borderbutton {
+  border-left: 1px solid #8db9ca;
+  padding-left: 10px; }
+
+#disruptiontrackerView--exportbutton-inner {
+  background: none;
+  border: none;
+  color: #0D5D76; }
+  #disruptiontrackerView--exportbutton-inner > span {
+    color: #0D5D76; }
+
+#disruptiontrackerView--gotoDisruptionKpi.sapMBtn:hover {
+  background-color: rgba(0, 86, 112, 0.2); }
+#disruptiontrackerView--gotoDisruptionKpi.sapMBtn span {
+  color: #0D5D76; }
+#disruptiontrackerView--gotoDisruptionKpi.sapMBtn:hover > .sapMBtnHoverable, #disruptiontrackerView--gotoDisruptionKpi.sapMBtn > .sapMBtnHoverable {
+  background-color: transparent;
+  background: transparent;
+  border: none; }
+
+#disruptiontrackerView--onDisruptionTableSettings.sapMBtn:hover {
+  background-color: rgba(0, 86, 112, 0.2); }
+#disruptiontrackerView--onDisruptionTableSettings.sapMBtn span {
+  color: #0D5D76; }
+#disruptiontrackerView--onDisruptionTableSettings.sapMBtn:hover > .sapMBtnHoverable, #disruptiontrackerView--onDisruptionTableSettings.sapMBtn > .sapMBtnHoverable {
+  background-color: transparent;
+  background: transparent;
+  border: none; }
+
+#disruptiontrackerView table tr.sapMListTblRow:focus {
+  outline: none; }
+
+#disrptTrackerSettings-dialog {
+  background: #ffffff;
+  border: none;
+  border-radius: 0;
+  box-shadow: 0 0 5px #333; }
+  #disrptTrackerSettings-dialog header {
+    background: #d4f1f7; }
+
+#disrptTrackerSettings-title {
+  color: #434343; }
+
+#disrptTrackerSettings-page1-cont {
+  border-top: 3px solid rgba(255, 255, 255, 0); }
+
+#disrptTrackerSettings header {
+  box-shadow: 0 0 5px #333;
+  overflow: visible; }
+
+.classDisruptionDetailPopUp .sapMPageBusyCoversAll > section {
+  overflow-y: scroll !important; }
+
+#disruptiontrackerView--disruptionsTable #disruptiontrackerView--disruptionsTable-tblBody tr td {
+  text-align: justify !important; }
+
+#disruptionDetail {
+  overflow: auto;
+  background-color: #E9EEF3; }
+  #disruptionDetail .sapMFlexBox.sapMFlexBoxAlignContentStretch.sapMFlexBoxAlignItemsStretch.sapMFlexBoxJustifyStart.sapMFlexBoxWrapNoWrap.sapMFlexItem.sapMHBox {
+    background-color: #E9EEF3; }
+  #disruptionDetail .sapUiFormTitle {
+    background-color: transparent; }
+  #disruptionDetail .sapUiFormM .sapUiFormContainerTitle > .sapUiFormTitle {
+    height: 2rem;
+    line-height: 2rem; }
+  #disruptionDetail .sapMSlt > .sapMSltLabel,
+  #disruptionDetail .sapMSlt, #disruptionDetail .sapMSltArrow {
+    line-height: 2.5rem;
+    height: 2.5rem; }
+  #disruptionDetail .sapUiFormContainerTitle {
+    background-color: #E9EEF3; }
+  #disruptionDetail .sapUiFormResGrid.sapUiFormBackgrTranslucent > div {
+    background-color: #E9EEF3; }
+  #disruptionDetail .titleToolbar {
+    background-color: rgba(191, 198, 206, 0.59); }
+  #disruptionDetail .sapUiForm .sapUiFormTitle {
+    font-weight: bold;
+    line-height: 4rem; }
+  #disruptionDetail .sapMFlexItem .textSize:nth-child(1) {
+    font-weight: bold;
+    color: black; }
+  #disruptionDetail .attachmentIcon {
+    margin-top: 0.5rem !important;
+    z-index: 2 !important;
+    Position: absolute !important;
+    right: 1rem !important; }
+  #disruptionDetail .setMinWidth {
+    min-width: 200px !important; }
+  #disruptionDetail .pageSubHeader {
+    background: #0f2d65 !important;
+    border-top: 0.6rem solid #ffffff !important; }
+  #disruptionDetail .GenricBgColor {
+    background-color: #FFFFFF !important; }
 
 /*************
 GENERALE RULES

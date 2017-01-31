@@ -362,7 +362,7 @@
 							</OverflowToolbar>
 							
 							<layout:Splitter orientation="Vertical" id="splitWorkTra">
-										<custom:DHTMLXScheduler id="stationtracker"></custom:DHTMLXScheduler>
+										<custom:DHTMLXScheduler id="stationtracker"></custom:DHTMLXScheduler> 
 										<!-- For Disruption table in Station Tracker -->
 												<!-- <control:disruptionNotifications id="disruptNotifications"> <control:disruptionContent id="disruptContent"> </control:disruptionContent> </control:disruptionNotifications> -->
 												<!-- <HBox class="slidingUpDownPanel GenricBgColor" id="disruptNotifications">

@@ -24,8 +24,12 @@
     opacity: 1;  
     }
     .sapMSltLabel{
-            line-height: 3rem;   
+            line-height: 3rem;  
+            color: #74d2e7; 
         }
+     #stationHandoverView--selectMsnHandover-arrow,#stationHandoverView--selectStationHandover-arrow{
+     	padding-top:8px;
+     }
 }
 
 #stationHandoverView--headerstationhandover{
@@ -49,10 +53,8 @@
         overflow: hidden;
     }
     .sapMSFB.sapMSFS {
-        color: $twilight-blue;
-        
-    }
-     
+        color: $twilight-blue;  
+    }    
 }
 
  #stationHandoverView--TreeTableBasic-table{
@@ -72,7 +74,6 @@
                     
                     margin-left : 25px !important;
                 }
-     
      .DisOpAttLabelHandOver{
 	color:$cool-black;
 }
