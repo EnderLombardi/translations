@@ -2068,8 +2068,7 @@ BOX RESOLUTION EFFICIENCY
 .pageHeader {
   color: white !important;
   background: #0f2d65 !important;
-  border: 0;
-  height: 57px; }
+  border: 0; }
 
 .classSettingPage .pageHeader span {
   font-size: 1.2rem;
@@ -6978,7 +6977,8 @@ td {
   color: #74d2e7;
   text-shadow: none;
   padding: 0px 30px;
-  font-size: 0.875rem; }
+  font-size: 0.875rem !important;
+  line-height: 27px; }
 
 #disruptiontrackerView--navBack, #disruptiontrackerView--navBack-inner, #disruptiontrackerView--navBack-inner .sapMBtnTransparent > .sapMBtnIcon, #disruptiontrackerView--navBack .sapMBtnTransparent > .sapMBtnIcon {
   color: #0D5D76 !important; }

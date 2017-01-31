@@ -107,7 +107,8 @@ td{
     color: #74d2e7;
     text-shadow: none;
     padding: 0px 30px;
-    font-size: 0.875rem
+    font-size: 0.875rem !important ;
+    line-height: 27px;
     }
    
 #disruptiontrackerView--navBack, #disruptiontrackerView--navBack-inner, #disruptiontrackerView--navBack-inner .sapMBtnTransparent > .sapMBtnIcon, #disruptiontrackerView--navBack .sapMBtnTransparent > .sapMBtnIcon{
