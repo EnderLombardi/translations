@@ -244,7 +244,7 @@ airbus.mes.shell.util.navFunctions = {
             container.addPage(airbus.mes.disruptions.attachments.oView);
         }
         container.to(airbus.mes.disruptions.attachments.oView.getId(),{Desc:disruptionDesc});
-        
+
         airbus.mes.disruptions.ModelManager.AttachmentListModel();
     },
 
@@ -484,6 +484,15 @@ airbus.mes.shell.util.navFunctions = {
 
         // Navigate
         nav.to(airbus.mes.worktracker.detail.oView.getId());
+    },
+
+    testScanner : function(){
+        if (airbus.mes.scanner === undefined) {
+
+            jQuery.sap.registerModulePath("airbus.mes.scanner", "../components/scanner");
+            sap.ui.getCore().createComponent({ name: "airbus.mes.scanner", });
+            nav.addPage(airbus.mes.scanner.oView);
+        }
     }
 
 };
