@@ -1117,6 +1117,11 @@ airbus.mes.stationtracker.ModelManager = {
                     }
                 };
 
+                airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").setData(oOperModel);
+                airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").refresh();
+                sap.ui.getCore().getModel("operationDetailModel").setData(oOperModel);
+                sap.ui.getCore().getModel("operationDetailModel").refresh();                
+                
                 if (airbus.mes.operationdetail === undefined) {
                     jQuery.sap.registerModulePath("airbus.mes.operationdetail",
                             "../components/operationdetail");
@@ -1127,13 +1132,14 @@ airbus.mes.stationtracker.ModelManager = {
                     airbus.mes.operationdetail.oView = this.oOperationDetailComp.oView;
                     airbus.mes.operationdetail.parentId = airbus.mes.stationtracker.operationDetailPopup.sId;
                 }
+
                 airbus.mes.stationtracker.operationDetailPopup.open();
                 airbus.mes.operationdetail.oView.placeAt(airbus.mes.stationtracker.operationDetailPopup.sId    + "-scrollCont");
 
-                airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").setData(oOperModel);
-                airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").refresh();
-                sap.ui.getCore().getModel("operationDetailModel").setData(oOperModel);
-                sap.ui.getCore().getModel("operationDetailModel").refresh();
+//                airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").setData(oOperModel);
+//                airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").refresh();
+//                sap.ui.getCore().getModel("operationDetailModel").setData(oOperModel);
+//                sap.ui.getCore().getModel("operationDetailModel").refresh();
 
                 // If previously_started is true, the operation has to be on execution mode
 				if( aModel[0].PREVIOUSLY_STARTED === "true" ){

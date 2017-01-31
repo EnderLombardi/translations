@@ -13,7 +13,13 @@
     "complete_strings": {
       
     },
+    "node": {
+      
+    },
     "browser-extension": {
+      
+    },
+    "gulp": {
       
     }
   },

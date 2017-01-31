@@ -19,7 +19,7 @@ airbus.mes.jigtools.Component.prototype.createContent = function() {
 	if (airbus.mes.jigtools.oView === undefined) {
 		
         // Initialize ModelManager and load needed file
-        airbus.mes.jigtools.util.ModelManager.init(sap.ui.getCore());
+//        airbus.mes.jigtools.util.ModelManager.init(sap.ui.getCore());
         
 		// View on XML
 		this.oView = sap.ui.view({

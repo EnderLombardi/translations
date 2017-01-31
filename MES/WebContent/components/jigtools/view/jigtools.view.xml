@@ -23,7 +23,7 @@
 
 	<Table 	id="jigToolList" 
  			class="jigToolListtable"
-			items="{path: 'jigToolsWorkOrderDetail>/Rowsets/Rowset/0/Row/'}">
+			items="{path: 'jigToolsWorkOrderDetail>/toolInfoList/'}">
 			
 			<headerToolbar>
 					<!-- Search and sort item
@@ -60,9 +60,9 @@
 				<ColumnListItem>
 					<cells>
 						<Text text="{jigToolsWorkOrderDetail>materialNumber}" />
-						<Text text="{jigToolsWorkOrderDetail>warehouse}" />
-						<Text text="{jigToolsWorkOrderDetail>category}" />
-						<Text text="{jigToolsWorkOrderDetail>description}" />
+						<Text text="{jigToolsWorkOrderDetail>warehouse + warehouseDescription}" />
+						<Text text="{jigToolsWorkOrderDetail>prodResCat}" />
+						<Text text="{jigToolsWorkOrderDetail>toolDescription}" />
 						<Text text="{jigToolsWorkOrderDetail>quantity}" />
 					</cells>
 				</ColumnListItem>
