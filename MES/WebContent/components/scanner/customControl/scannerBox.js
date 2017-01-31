@@ -35,11 +35,17 @@ sap.ui.core.Control.extend("airbus.mes.scanner.customControl.scannerBox", {
         oRm.write("<div");
         oRm.addClass("buttonPlace");
         oRm.writeClasses();
-        oRm.write(">")
+        oRm.write(">");
         oRm.write("<button id='scanLaunch'");
-        oRm.write(">")
+        oRm.write(">");
         oRm.writeEscaped("Scan");
-        oRm.write("</button>")
+        oRm.write("</button>");
+        oRm.write("<button");
+        oRm.addClass("stop");
+        oRm.writeClasses();
+        oRm.write(">");
+        oRm.writeEscaped("Stop");
+        oRm.write("</button>");
         oRm.write("</div>");
 
         // end first fieldset
@@ -67,6 +73,10 @@ sap.ui.core.Control.extend("airbus.mes.scanner.customControl.scannerBox", {
         oRm.write(">");
         oRm.write("</div>");
 
+    },
+    onAfterRendering: function(){
+        jQuery.sap.require("airbus.mes.scanner.lib.quagga");
+        jQuery.sap.require("airbus.mes.scanner.lib.locator");
     }
 
 });

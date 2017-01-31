@@ -204,4 +204,9 @@ $(function() {
         console.log(code);
     });
 
+    $("#scanLaunch").on("click", function(e){
+        e.preventDefault();
+        App.init();
+    })
+
 });

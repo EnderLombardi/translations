@@ -1,8 +1,10 @@
 "use strict";
 
 jQuery.sap.registerModulePath("airbus.mes.scanner", "../components/scanner");
+jQuery.sap.registerResourcePath("airbus.mes.scanner.lib", "../component/scanner/lib");
 jQuery.sap.require("airbus.mes.scanner.util.ModelManager");
 jQuery.sap.require("airbus.mes.scanner.customControl.scannerBox");
+
 jQuery.sap.declare("airbus.mes.scanner.Component");
 
 sap.ui.core.UIComponent.extend("airbus.mes.scanner.Component", {
