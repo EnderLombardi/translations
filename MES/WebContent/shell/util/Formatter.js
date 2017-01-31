@@ -97,6 +97,12 @@ airbus.mes.shell.util.Formatter = {
 	},
 	displayPin : function(){
 		return airbus.mes.settings.AppConfManager.getConfiguration("MES_BADGE_PIN");
+	},
+	setVisible : function(key){
+//	var Flag = airbus.mes.shell.RoleManager.isAllowed(airbus.mes.shell.RoleManager.parseRoleValue("XXXX"), 'V');
+//      airbus.mes.shell.RoleManager.userRoles = [];
+//      return Flag;
+      return true;
 	}
 
 };

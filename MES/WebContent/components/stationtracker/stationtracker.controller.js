@@ -1256,11 +1256,11 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
     },
     
     //set the visible property of controls to true or false according to the roles
-    setVisible: function(key){
+//    setVisible: function(key){
 //		var Flag = airbus.mes.shell.RoleManager.isAllowed(airbus.mes.shell.RoleManager.parseRoleValue("XXXX"), 'V');
 //        airbus.mes.shell.RoleManager.userRoles = [];
 //        return Flag;
-        return true;
-    }
+//        return true;
+//    }
 
 });
