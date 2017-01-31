@@ -106,6 +106,18 @@
         display :block;
         z-index : 0;
     }
+}
 
-    
+
+   	#stationHandoverView--TreeTableBasic-rows-row0-rowselecttext.sapUiTableColRowHdr.sapUiTableSelAllEnabled::after, .sapUiTableColRowHdr.sapUiTableSelAllEnabled::after, .sapUiTableRowHdr::after, .sapUiTableRowHdr::after{
+	   		width: 1rem !important;
+	   		height: 1rem !important;
+	   		border: 1px #bfbfbf solid !important;
+	   }
+	  
+	#stationHandoverView--TreeTableBasic-sapUiTableRowHdrScr{
+		>.sapUiTableRowHdr{
+		border:none !important;
 		}
+		
+	}
