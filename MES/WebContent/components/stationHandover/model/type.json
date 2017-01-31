@@ -1,0 +1,14 @@
+[
+   {
+      "type": "Local",
+      "key": "Local"
+   },
+   {
+      "type": "responsability",
+      "key": "responsability"
+   },
+   {
+      "type": "noResponsability",
+      "key": "noResponsability"
+   }
+]

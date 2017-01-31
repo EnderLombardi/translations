@@ -8,6 +8,12 @@ airbus.mes.stationHandover.util.Formatter = {
 		
 		var oEvt
 		
+	},
+
+	translate : function(oEvt) {
+		
+	return	airbus.mes.stationHandover.oView.getModel("stationHandoverI18n").getProperty(oEvt);		
+	
 	}
 
 };

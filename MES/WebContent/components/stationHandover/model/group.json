@@ -1,0 +1,22 @@
+[
+   {
+      "type": "originStation",
+      "key": "originStation"
+   },
+   {
+      "type": "familyTarget",
+      "key": "FAMILY_TARGET"
+   },
+   {
+      "type": "workPackage",
+      "key": "WORK_PACKAGE"
+   },
+   {
+      "type": "TDL",
+      "key": "TDL"
+   },
+   {
+      "type": "Zoning",
+      "key": "ZONING"
+   }
+]

@@ -9,7 +9,7 @@ airbus.mes.stationHandover.util.ModelManager = {
        
        init : function(core) {
     	  
-    	   var aModel = ["testModel","msnModel"]
+    	   var aModel = ["oswModel","msnModel","typeModel","groupModel"]
     	   airbus.mes.shell.ModelManager.createJsonModel(core,aModel);
            
            //core.getModel("stationHandovershiftsModel").attachRequestCompleted(airbus.mes.stationHandover.util.ModelManager.onShiftsLoad);
@@ -47,6 +47,8 @@ airbus.mes.stationHandover.util.ModelManager = {
 		}
 		
 		this.loadTest();
+		this.loadType();
+		this.loadGroup();
 	},
 	
 	/* *********************************************************************** *
@@ -58,7 +60,7 @@ airbus.mes.stationHandover.util.ModelManager = {
 	
 	 loadTest : function() {
 
-	        var oViewModel = airbus.mes.stationHandover.oView.getModel("testModel");
+	        var oViewModel = airbus.mes.stationHandover.oView.getModel("oswModel");
 	        var getUrlShifts = this.urlModel.getProperty("urltest");
 	        var oData = airbus.mes.settings.ModelManager;
 	       
@@ -72,6 +74,26 @@ airbus.mes.stationHandover.util.ModelManager = {
 	        GroupingBoxingManager.parseShift();
 	    },
 	  
+	    loadType : function() {
+	    	
+	    	  var oViewModel = airbus.mes.stationHandover.oView.getModel("typeModel");
+		      var getUrl = this.urlModel.getProperty("urltype");
+		       
+		      oViewModel.loadData(getUrl, null, false);
+		      oViewModel.refresh();	    	    	
+
+	    },
+	    
+	    loadGroup : function() {
+	    	
+	    	  var oViewModel = airbus.mes.stationHandover.oView.getModel("groupModel");
+		      var getUrl = this.urlModel.getProperty("urlgroup");
+		       
+		      oViewModel.loadData(getUrl, null, false);
+		      oViewModel.refresh();	    	    	
+
+	    },
+	    
 	    getMsn : function() {
 	    	
 	    	var aMsn = airbus.mes.settings.oView.byId("selectMSN").getItems();

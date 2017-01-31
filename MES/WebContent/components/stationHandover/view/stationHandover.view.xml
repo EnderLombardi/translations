@@ -10,7 +10,7 @@
  
 
 			<TreeTable id="TreeTableBasic"
-				rows="{path:'testModel>/', parameters: {arrayNames:['row']}}"
+				rows="{path:'oswModel>/', parameters: {arrayNames:['row']}}"
 				selectionMode="MultiToggle" enableSelectAll="true"
 				visibleRowCountMode="Auto">
 				<extension>
@@ -36,174 +36,190 @@
 
 					<m:OverflowToolbar id="headerstationhandover">
 						<m:Button id="navBack" icon="sap-icon://arrow-left" press="onBackPress" type="Transparent"/>
-						<m:SearchField width="15%" id="searchHandover" />
-						<m:Select id="selectHandover" change="changeShift"
-							items="{ path : 'stationTrackerShift>/' }" enabled="false">
+						<m:SearchField width="15%" id="searchHandover" liveChange="filterWo" />
+						<m:Select id="groupHandover" change="sorterMode"
+							items="{ path : 'groupModel>/' }" >
+							<core:Item key="{groupModel>key}" text="{path:'groupModel>type' , formatter:'airbus.mes.stationHandover.util.Formatter.translate'}" />
+						</m:Select>
+					<m:Select id="typeHandOver" change=""
+							items="{ path : 'typeModel>/' }" >
+							<core:Item key="{typeModel>key}" text="{path:'typeModel>type' , formatter:'airbus.mes.stationHandover.util.Formatter.translate'}" />
+						</m:Select>
+					<m:Select id="originHandOver" change="changeShift"
+							items="{ path : 'stationTrackerShift>/' }">
 							<core:Item key="{stationTrackerShift>shiftID}" text="{stationTrackerShift>shiftName}" />
 						</m:Select>
+					
+						<m:ToolbarSpacer />
+									
 						<m:CheckBox text="{stationHandoverI18n>ShowOpwithNoTime}"
 							selected="true" />
 						<m:CheckBox text="{stationHandoverI18n>ShowInsertedLines}"
 							selected="true" />
+						
+						<m:ToolbarSpacer />
+												
+						<m:Button id="insertHandOver" text="{stationHandoverI18n>insert}"/>
+							
 					</m:OverflowToolbar>
 
 				</extension>
 				<columns>
-					<Column width="9rem">
+					<Column width="auto">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>Select}" />
 						<template>
-							<m:Text text="{testModel>name}" />
+							<m:Text text="{oswModel>name}" />
 						</template>
 					</Column>
-					<Column width="9rem">
+					<Column width="auto">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>Blocked}" />
 						<template>
 							<custom:customIcon />
 						</template>
 					</Column>
-					<Column width="9rem">
+					<Column width="auto">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>Type}" />
 						<template>
-							<m:Label text="{testModel>TYPE}" />
+							<m:Label text="{oswModel>TYPE}" />
 						</template>
 					</Column>
-						<Column width="9rem">
+						<Column width="auto">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>Reference}" />
 						<template>
-							<m:Label text="{testModel>REFERENCE}" />
+							<m:Label text="{oswModel>REFERENCE}" />
 						</template>
 					</Column>
-					<Column width="9rem">
+					<Column width="auto">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>Description}" />
 						<template>
-							<m:Label text="{testModel>DESCRIPTION}" />
+							<m:Label text="{oswModel>DESCRIPTION}" />
 						</template>
 					</Column>
-					<Column width="9rem">
+					<Column width="auto">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>FrozenTrackingTemplate}" />
 						<template>
-							<m:Label text="{testModel>FROZEN_TRACKING}" />
+							<m:Label text="{oswModel>FROZEN_TRACKING}" />
 						</template>
 					</Column>
-					<Column width="9rem">
+					<Column width="auto">
 						<m:Label class="DisOpAttLabelHandOver"
 							text="{stationHandoverI18n>FrozenListOFittedHandover}" />
 						<template>
-							<m:Label text="{testModel>FROZEN_LIST}" />
+							<m:Label text="{oswModel>FROZEN_LIST}" />
 						</template>
 					</Column>
-					<Column width="9rem">
+					<Column width="auto">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>RemainingTime}" />
 						<template>
-							<m:Label text="{testModel>REMAINING_TIME}" />
+							<m:Label text="{oswModel>REMAINING_TIME}" />
 						</template>
 					</Column>
-					<Column width="9rem">
+					<Column width="auto">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>Confirmation}" />
 						<template>
-							<m:Label text="{testModel>CONFIRMATION}" />
+							<m:Label text="{oswModel>CONFIRMATION}" />
 						</template>
 					</Column>
-					<Column width="9rem">
+					<Column width="auto">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>UserStatus}" />
 						<template>
-							<m:Label text="{testModel>USER_STATUS}" />
+							<m:Label text="{oswModel>USER_STATUS}" />
 						</template>
 					</Column>
-					<Column width="9rem">
+					<Column width="auto">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>Competence}" />
 						<template>
-							<m:Label text="{testModel>COMPETENCE}" />
+							<m:Label text="{oswModel>COMPETENCE}" />
 						</template>
 					</Column>
-					<Column width="9rem">
+					<Column width="auto">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>ReviewedEndDate}" />
 						<template>
-							<m:Label text="{testModel>REVIEWED_END_DATE}" />
+							<m:Label text="{oswModel>REVIEWED_END_DATE}" />
 						</template>
 					</Column>
-					<Column width="9rem">
+					<Column width="auto">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>FamilyTarget}" />
 						<template>
-							<m:Label text="{testModel>FAMILY_TARGET}" />
+							<m:Label text="{oswModel>FAMILY_TARGET}" />
 						</template>
 					</Column>
-					<Column width="9rem">
+					<Column width="auto">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>BlockingReason}" />
 						<template>
-							<m:Label text="{testModel>BLOCKING_REASON}" />
+							<m:Label text="{oswModel>BLOCKING_REASON}" />
 						</template>
 					</Column>
-					<Column width="9rem">
+					<Column width="auto">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>CA}" />
 						<template>
-							<m:Label text="{testModel>CA}" />
+							<m:Label text="{oswModel>CA}" />
 						</template>
 					</Column>
-					<Column width="9rem">
+					<Column width="auto">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>TDL}" />
 						<template>
-							<m:Label text="{testModel>TDL}" />
+							<m:Label text="{oswModel>TDL}" />
 						</template>
 					</Column>
-					<Column width="9rem">
+					<Column width="auto">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>Zoning}" />
 						<template>
-							<m:Label text="{testModel>ZONING}" />
+							<m:Label text="{oswModel>ZONING}" />
 						</template>
 					</Column>
-					<Column width="9rem">
+					<Column width="auto">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>ATA/subATA}" />
 						<template>
-							<m:Label text="{testModel>ATA_SUBATA}" />
+							<m:Label text="{oswModel>ATA_SUBATA}" />
 						</template>
 					</Column>
-					<Column width="9rem">
+					<Column width="auto">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>WorkPackage}" />
 						<template>
-							<m:Label text="{testModel>WORK_PACKAGE}" />
+							<m:Label text="{oswModel>WORK_PACKAGE}" />
 						</template>
 					</Column>
-					<Column width="9rem">
+					<Column width="auto">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>Note}" />
 						<template>
-							<m:Label text="{testModel>NOTE}" />
+							<m:Label text="{oswModel>NOTE}" />
 						</template>
 					</Column>
-					<Column width="9rem">
+					<Column width="auto">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>ACPWorkstation}" />
 						<template>
-							<m:Label text="{testModel>ACP_WORK_PACKAGE}" />
+							<m:Label text="{oswModel>ACP_WORK_PACKAGE}" />
 						</template>
 					</Column>
-					<Column width="9rem">
+					<Column width="auto">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>FatherLink}" />
 						<template>
-							<m:Label text="{testModel>FATHER_LINK}" />
+							<m:Label text="{oswModel>FATHER_LINK}" />
 						</template>
 					</Column>
-					<Column width="9rem">
+					<Column width="auto">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>ExecStation}" />
 						<template>
-							<m:Label text="{testModel>EXEC_STATION}" />
+							<m:Label text="{oswModel>EXEC_STATION}" />
 						</template>
 					</Column>
-					<Column width="9rem">
+					<Column width="auto">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>OriginWorkstation}" />
 						<template>
-							<m:Label text="{testModel>ORIGIN_WORKSTATION}" />
+							<m:Label text="{oswModel>ORIGIN_WORKSTATION}" />
 						</template>
 					</Column>
-					<Column width="9rem">
+					<Column width="auto">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>UpperFamily}" />
 						<template>
-							<m:Label text="{testModel>UPPER_FAMILY}" />
+							<m:Label text="{oswModel>UPPER_FAMILY}" />
 						</template>
 					</Column>
-					<Column width="9rem">
+					<Column width="auto">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>MaterialDescription}" />
 						<template>
-							<m:Label text="{testModel>MATERIAL_DESCRIPTION}" />
+							<m:Label text="{oswModel>MATERIAL_DESCRIPTION}" />
 						</template>
 					</Column>
 

@@ -1,6 +1,8 @@
 {
    "row": [
       {
+      
+      			"WOID" : "123415465",	
          "BLOCKED": "0",
          "TYPE": "0",
          "REFERENCE": "123415465",
@@ -12,7 +14,7 @@
          "USER_STATUS": "20%",
          "COMPETENCE": "20%",
          "REVIEWED_END_DATE": "12313211*",
-         "FAMILY_TARGET": "TOTO*",
+         "FAMILY_TARGET": "B",
          "BLOCKING_REASON": "BLOCKING_REASON*",
          "CA": "CA",
          "TDL": "TDL*",
@@ -27,10 +29,11 @@
          "UPPER_FAMILY": "UPPER_FAMILY*",
          "MATERIAL_DESCRIPTION": "MATERIAL_DESCRIPTION*",
          "row": [
-            {
-               "BLOCKED": "0",
+            {	
+            			"WOID" : "123415465",	
+            			"BLOCKED": "0",
                "TYPE": "0",
-               "REFERENCE": "123415465",
+               "REFERENCE": "10",
                "DESCRIPTION": 16.99,
                "REMAINING_TIME": "1231313132",
                "CONFIRMATION": "20%",
@@ -39,6 +42,92 @@
                "WORK_PACKAGE": "WP**"
             }
          ]
-      }
+      },
+      {
+      
+      			"WOID" : "123415464",	
+         "BLOCKED": "0",
+         "TYPE": "0",
+         "REFERENCE": "123415465",
+         "DESCRIPTION": "16.99",
+         "FROZEN_TRACKING": "FROZEN_TRACKAING",
+         "FROZEN_LIST": "FROZEN_LIST",
+         "REMAINING_TIME": "1231313132",
+         "CONFIRMATION": "20%",
+         "USER_STATUS": "20%",
+         "COMPETENCE": "20%",
+         "REVIEWED_END_DATE": "12313211*",
+         "FAMILY_TARGET": "A",
+         "BLOCKING_REASON": "BLOCKING_REASON*",
+         "CA": "CA",
+         "TDL": "TDL*",
+         "ZONING": "ZONING*",
+         "ATA_SUBATA": "ATA_SUBATA*",
+         "WORK_PACKAGE": "WP**",
+         "NOTE": "NOTE*",
+         "ACP_WORK_PACKAGE": "ACP_WORK_PACKAGE*",
+         "FATHER_LINK": "FATHER_LINK*",
+         "EXEC_STATION": "EXEC_LINK*",
+         "ORIGIN_WORKSTATION": "ORIGIN_WORKSTATION*",
+         "UPPER_FAMILY": "UPPER_FAMILY*",
+         "MATERIAL_DESCRIPTION": "MATERIAL_DESCRIPTION*",
+         "row": [
+            {	
+            			"WOID" : "123415464",	
+            			"BLOCKED": "0",
+               "TYPE": "0",
+               "REFERENCE": "10",
+               "DESCRIPTION": 16.99,
+               "REMAINING_TIME": "1231313132",
+               "CONFIRMATION": "20%",
+               "USER_STATUS": "20%",
+               "COMPETENCE": "20%",
+               "WORK_PACKAGE": "WP**"
+            }
+         ]
+        },
+        {
+      
+      			"WOID" : "1234154610",	
+         "BLOCKED": "0",
+         "TYPE": "0",
+         "REFERENCE": "123415465",
+         "DESCRIPTION": "16.99",
+         "FROZEN_TRACKING": "FROZEN_TRACKAING",
+         "FROZEN_LIST": "FROZEN_LIST",
+         "REMAINING_TIME": "12313131323",
+         "CONFIRMATION": "20%",
+         "USER_STATUS": "20%",
+         "COMPETENCE": "20%",
+         "REVIEWED_END_DATE": "12313211*",
+         "FAMILY_TARGET": "1",
+         "BLOCKING_REASON": "BLOCKING_REASON*",
+         "CA": "CA",
+         "TDL": "TDL*",
+         "ZONING": "ZONING*",
+         "ATA_SUBATA": "ATA_SUBATA*",
+         "WORK_PACKAGE": "WP**",
+         "NOTE": "NOTE*",
+         "ACP_WORK_PACKAGE": "ACP_WORK_PACKAGE*",
+         "FATHER_LINK": "FATHER_LINK*",
+         "EXEC_STATION": "EXEC_LINK*",
+         "ORIGIN_WORKSTATION": "ORIGIN_WORKSTATION*",
+         "UPPER_FAMILY": "UPPER_FAMILY*",
+         "MATERIAL_DESCRIPTION": "MATERIAL_DESCRIPTION*",
+         "row": [
+            {	
+            			"WOID" : "1234154610",	
+            			"BLOCKED": "0",
+               "TYPE": "0",
+               "REFERENCE": "30",
+               "DESCRIPTION": 16.99,
+               "REMAINING_TIME": "1231313132",
+               "CONFIRMATION": "20%",
+               "USER_STATUS": "20%",
+               "COMPETENCE": "20%",
+               "WORK_PACKAGE": "WP**"
+            }
+         ]
+        }
    ]
 }
