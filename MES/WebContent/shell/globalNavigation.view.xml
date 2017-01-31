@@ -9,7 +9,7 @@
 				<customHeader>
 					<Toolbar class="topPageHeader">
 		                  <content>	
-		                           <Image id="logo" src="{ResourceUrl>airbus.logo}" width="auto" height="1.3rem" press="goToHome"/>
+		                           <Image id="logo" src="{ResourceUrl>airbus.logo}" width="auto" height="1.5rem" press="goToHome"/>
 		                           <ToolbarSeparator />
 		                           		<Label text="MES - AOS" class="pageTitle unshrinkable" style="margin-left:0"/>
 		                           <ToolbarSpacer />

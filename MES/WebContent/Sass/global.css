@@ -2063,7 +2063,7 @@ BOX RESOLUTION EFFICIENCY
     margin-right: 0;
     padding: 0 20px; }
   .topPageHeader > label.pageTitle {
-    margin-left: 0; }
+    margin-left: 20px; }
 
 .pageHeader {
   color: white !important;
