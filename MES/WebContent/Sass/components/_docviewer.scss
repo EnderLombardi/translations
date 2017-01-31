@@ -15,5 +15,16 @@ MES Document Viewer
     background: #eee;
     padding: 5px 3px 2px 3px;
     min-width: 650px;
-    margin-top: 18px !important;
+    margin-top: 2px !important;
+}
+
+#docviewerView--pdfViewer .customButton{
+    cursor: pointer;
+    margin: 0 5px 0 0;
+    /* font: 24px/1em 'Glyphicons Regular'; */
+    /* font-style: normal; */
+    font-weight: normal;
+    font-size: 20px;
+    /* padding: 2px 4px 0 6px; */
+    color: #21578a !important;
 }

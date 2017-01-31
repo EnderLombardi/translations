@@ -19,44 +19,79 @@
     });
     
     $(document).on('documentLoaded', function() {
+    	
+    	
     	//========================================================
     	// Add button to the Tool Bar
     	//=========================================================
-    	var container = $('<div>').addClass('group');
-    	
-    	/*// Save Button
-    	var saveButton = $('<span>').attr({
-    		'id': 'saveDocumentButton',
-    		'class': 'glyphicons floppy_save'
-    	}).on('click', custom.close());
-
-    	container.append(saveButton);
-    	
-    	
-    	// Close Button
-    	var closeButton = $('<span>').attr({
-    		'id': 'closeDocumentButton',
-    		'class': 'glyphicons remove'
-    	}).on('click', function(){
-    		if(custom.close != undefined && custom.close != "")
-    			custom.close();
-    	});
-
-    	container.append(closeButton);
-    	
-    	// Toggle Annotations Button
-    	var toogleAnnotButton = $('<span>').attr({
-    		'id': 'toggleAnnotButton'
-    	})
-    	.text("Hide Annotations")
-    	.on('click', function(){
-    		alert();
-    	});
-
-    	container.append(toogleAnnotButton);*/
+    	var isMobile = {
+    	    Android: function() {
+    	        return navigator.userAgent.match(/Android/i);
+    	    },
+    	    BlackBerry: function() {
+    	        return navigator.userAgent.match(/BlackBerry/i);
+    	    },
+    	    iOS: function() {
+    	        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+    	    },
+    	    Opera: function() {
+    	        return navigator.userAgent.match(/Opera Mini/i);
+    	    },
+    	    Windows: function() {
+    	        return navigator.userAgent.match(/IEMobile/i);
+    	    },
+    	    any: function() {
+    	        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+    	    }
+    	};
     	
     	
-    	$('#control .right-aligned').append(container);
+    	if(!isMobile.any()){
+    	
+	    	var container = $('<div>').addClass('group');
+	    	
+	    	/*// Save Button
+	    	var saveButton = $('<span>').attr({
+	    		'id': 'saveDocumentButton',
+	    		'class': 'glyphicons floppy_save'
+	    	}).on('click', custom.close());
+	
+	    	container.append(saveButton);
+	    	
+	    	
+	    	// Close Button
+	    	var closeButton = $('<span>').attr({
+	    		'id': 'closeDocumentButton',
+	    		'class': 'glyphicons remove'
+	    	}).on('click', function(){
+	    		if(custom.close != undefined && custom.close != "")
+	    			custom.close();
+	    	});
+	
+	    	container.append(closeButton);*/
+	    	
+	    	// Toggle Annotations Button
+	    	var toggleAnnotButton = $('<span>').attr({
+	    		'id': 'toggleAnnotButton',
+	    		'class': 'customButton'
+	    	})
+	    	.text("Toggle Annotations")
+	    	.on('click', function(){
+	    		// Get Annotation Manager
+	    		var annotManager = readerControl.docViewer.getAnnotationManager();
+	    		
+	    		// Get Annotations
+	    		var annotations = annotManager.getAnnotationsList();
+	    		 
+	            // Toggle annotations
+	    		annotManager.toggleAnnotations(annotations);
+	    	});
+	
+	    	container.append(toggleAnnotButton);
+	    	
+	    	
+	    	$('#control .right-aligned').append(container);
+	    }	
     	
     	
     	

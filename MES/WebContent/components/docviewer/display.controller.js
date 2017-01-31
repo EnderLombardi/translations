@@ -67,15 +67,14 @@ sap.ui.controller("airbus.mes.docviewer.display", {
 	 */
 	hideAnnotations: function(){
 		
-		// Access Annotation Manager of PDF TRON
-		// Reader control is a PDF Tron's Object
-		var annotManager = readerControl.docViewer.getAnnotationManager();
+		// Get Annotation Manager
+		var annotManager = window.readerControl.annotationManager;
 		
-		
+		// Get Annotations
 		var annotations = annotManager.getAnnotationsList();
 		 
         // hide annotations
-        annotManager.hideAnnotations(annotations);
+		annotManager.hideAnnotations(annotations);
         
         this.getView().byId("hideAnnotationsButton").setVisible(false);
         this.getView().byId("showAnnotationsButton").setVisible(true);
@@ -88,15 +87,14 @@ sap.ui.controller("airbus.mes.docviewer.display", {
 	 */
 	showAnnotations: function(){
 		
-		// Access Annotation Manager of PDF TRON
-		// Reader control is a PDF Tron's Object
-		var annotManager = readerControl.docViewer.getAnnotationManager();
+		// Get Annotation Manager
+		var annotManager = window.readerControl.annotationManager;
 		
-		
+		// Get Annotations
 		var annotations = annotManager.getAnnotationsList();
 		 
-        // hide annotations
-        annotManager.showAnnotations(annotations);
+        // Hide annotations
+		annotManager.showAnnotations(annotations);
         
         this.getView().byId("hideAnnotationsButton").setVisible(true);
         this.getView().byId("showAnnotationsButton").setVisible(false);
