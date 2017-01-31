@@ -610,7 +610,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 		airbus.mes.stationtracker.ModelManager.selectMyShift();
 	   
 		scheduler.xy.scroll_width=20;
-	    scheduler.parse([],"json");
+	    scheduler.parse(aBox,"json");
 	    airbus.mes.shell.busyManager.unsetBusy(airbus.mes.stationtracker.oView, "stationtracker");
 	},
 	computeStatus : function(sState, sPaused, sPreviouslyStarted){
