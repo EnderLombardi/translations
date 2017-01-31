@@ -81,7 +81,7 @@ airbus.mes.shell.RoleManager = {
 	// getting all the Roles based on the feature
 	parseRoleValue : function(sFeature) {
 		var sRoles = sap.ui.getCore().getModel("AllRolesModel").oData.Rowsets.Rowset[0].Row;
-		//temporary if till this feature dosent work.// can be removed. does no harm anyway//vaibhav
+		//temporary 'if' till this table doses not have data.// can be removed once table has data. does no harm anyway//vaibhav
 		if(sRoles){
 		for (var i = 0; i < sRoles.length; i++) {
 			if(sRoles[i].Feature === sFeature){
