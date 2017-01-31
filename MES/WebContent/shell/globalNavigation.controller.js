@@ -775,6 +775,7 @@ sap.ui.controller(
                     
                     /**
                      * Render for LineTracker
+                     * Need to get the current variant from user settings and load it.
                      */
                     renderLineTracker : function(){
                     	if (  nav.getCurrentPage().getId() == "idLinetracker1" ) {
@@ -784,19 +785,10 @@ sap.ui.controller(
 
                             airbus.mes.shell.oView.getController().setInformationVisibility(true);
 
-                            // ** synchrone call **//
-//                            oModule.loadShifts();
-//                            oModule.loadAffectation();
-//                            airbus.mes.stationtracker.ShiftManager.init(airbus.mes.stationtracker.GroupingBoxingManager.shiftNoBreakHierarchy);
-//                            airbus.mes.stationtracker.AssignmentManager.computeAffectationHierarchy();
-
                             // ** asynchrone call **//
-                            airbus.mes.shell.oView.oController.loadLineTrackerKPI();
+                            //airbus.mes.shell.oView.oController.loadLineTrackerKPI();
+                            airbus.mes.linetracker.util.ModelManager.loadLinetrackerKPI();
                         }
                     },
-                    
-                    loadLineTrackerKPI: function(){
-                    	airbus.mes.linetracker.util.ModelManager.loadLinetrackerKPI();
-                    }
                 });
 
