@@ -1,10 +1,9 @@
-<core:FragmentDefinition xmlns="sap.m"
-	xmlns:core="sap.ui.core">
-	<SelectDialog id="valueHelpDialogSelectLine" title="{i18n>selectLine}" noDataText="{i18n>NoLinesToDisplay}"
-		class="sapUiPopupWithPadding" items="{lineVariantModel>/variantNameList}"
-		search="handleValueHelpSearch" liveChange="handleValueHelpSearch"
-		confirm="handleSelectedLineValueHelp" cancel="handleValueHelpClose">
-		<StandardListItem title="{lineVariantModel>variantName}"
-			description="{lineVariantModel>Description}" />
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog id="valueHelpDialogSelectLine" title="{i18n>selectLine}" noDataText="{i18n>NoLinesToDisplay}" class="sapUiPopupWithPadding" items="{lineVariantModel>/variantNameList}" search="handleValueHelpSearch" liveChange="handleValueHelpSearch" confirm="handleSelectedLineValueHelp" cancel="handleValueHelpClose">
+		<StandardListItem title="{lineVariantModel>variantName}" description="{lineVariantModel>description}">
+			<customData>
+				<core:CustomData key="{lineVariantModel>handle}" />
+			</customData>
+		</StandardListItem>
 	</SelectDialog>
 </core:FragmentDefinition>

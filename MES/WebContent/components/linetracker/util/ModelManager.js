@@ -4,8 +4,9 @@ jQuery.sap.declare("airbus.mes.linetracker.util.ModelManager");
 
 airbus.mes.linetracker.util.ModelManager = {
 	urlModel : undefined,
-	site : undefined,
+	//site : undefined,
 	program : undefined,
+	customLineBO : undefined,
 
 	init : function(core) {
 
@@ -25,7 +26,7 @@ airbus.mes.linetracker.util.ModelManager = {
 		// Airline Logo Model
 		sap.ui.getCore().getModel("airlineLogoModel").attachRequestCompleted(airbus.mes.linetracker.util.ModelManager.loadFlightLogo);
 
-		airbus.mes.linetracker.util.ModelManager.site = airbus.mes.settings.ModelManager.site;
+		//airbus.mes.linetracker.util.ModelManager.site = airbus.mes.settings.ModelManager.site;
 		
 	    // Handle URL Model
 		this.urlModel = airbus.mes.shell.ModelManager.urlHandler("airbus.mes.linetracker.config.url_config");
@@ -37,6 +38,7 @@ airbus.mes.linetracker.util.ModelManager = {
 
 		//this.loadPlantModel();
 		this.loadFlightLogo();
+		//set customLineBO from userSettings Model
 
 	},
 
@@ -51,6 +53,7 @@ airbus.mes.linetracker.util.ModelManager = {
 		this.loadKPIshiftStaffing();
 		this.loadPlantModel();*/
 		this.loadLineVariantModel();
+		this.loadStationDataModel();
 		
 
 	},
@@ -68,8 +71,8 @@ airbus.mes.linetracker.util.ModelManager = {
 			cache : false,
 			data : JSON.stringify({
 				"site" : airbus.mes.settings.ModelManager.site,
-				"station" : airbus.mes.settings.ModelManager.station,
-				"msn" : airbus.mes.settings.ModelManager.msn
+				"customLine" : airbus.mes.linetracker.util.ModelManager.customLineBO,
+				"lang" : sap.ui.getCore().byId("globalNavView--SelectLanguage").getSelectedItem().getKey()
 			}),
 
 			success : function(data) {
@@ -101,8 +104,7 @@ airbus.mes.linetracker.util.ModelManager = {
 			contentType : 'application/json',
 			data : JSON.stringify({
 				"site" : airbus.mes.settings.ModelManager.site,
-				"station" : airbus.mes.settings.ModelManager.station,
-				"msn" : airbus.mes.settings.ModelManager.msn
+				"lang" : sap.ui.getCore().byId("globalNavView--SelectLanguage").getSelectedItem().getKey()
 			}),
 
 			success : function(data) {
@@ -430,14 +432,9 @@ airbus.mes.linetracker.util.ModelManager = {
 		url = url.replace("$msn", "00002");
 		jQuery.ajax({
 			async : false,
-			type : 'post',
+			type : 'get',
 			url : url,
 			contentType : 'application/json',
-			data : JSON.stringify({
-			// "param.1" : "V",
-			// "param.2" : "000000000030",
-			// "param.3" : "00002"
-			}),
 
 			success : function(data) {
 				if (typeof data == "string") {
@@ -450,6 +447,41 @@ airbus.mes.linetracker.util.ModelManager = {
 				jQuery.sap.log.info(error);
 			}
 		});
+	},
+	updateLineInUserSettings : function(){
+//		var urlCustomLineBOInUserSetting = this.urlModel.getProperty('updatevarianthandle');
+		jQuery.ajax({
+			url : this.urlModel.getProperty('updatevarianthandle').replace("$customLineBO", airbus.mes.linetracker.util.ModelManager.customLineBO),
+			async : true,
+			type : 'get',
+			contentType : 'application/json',
+			success : function(data) {
+				if (typeof data == "string") {
+					data = JSON.parse(data);
+				}
+				console.log(data);
+			},
+
+			error : function(error, jQXHR) {
+				jQuery.sap.log.info(error);
+			}
+		})
+	},
+	/**
+	 * @param station, msn
+	 * set settings variables to corresponding station and msn so that the particular station can be opened from station tracker
+	 *  
+	 */
+	setProgramLineForStationMsn : function(station, msn) {
+		var arr = sap.ui.getCore().getModel("plantModel").getProperty("/Rowsets/Rowset/0/Row");
+		var result = arr.filter(function(o) {
+			return o.station == station && o.msn == msn;
+		});
+		result = result ? result[0] : null; // or undefined
+		airbus.mes.settings.ModelManager.program = result.program;
+		airbus.mes.settings.ModelManager.station = result.station;
+		airbus.mes.settings.ModelManager.msn = result.msn;
+		airbus.mes.settings.ModelManager.line = result.line;
 	}
 
 };

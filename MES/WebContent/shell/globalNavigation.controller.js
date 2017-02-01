@@ -780,16 +780,18 @@ sap.ui.controller(
                      */
                     renderLineTracker : function(){
                     	if (  nav.getCurrentPage().getId() == "idLinetracker1" ) {
-
                             //active busy
                             airbus.mes.shell.busyManager.setBusy(airbus.mes.linetracker.oView, "linetracker");
-
                             airbus.mes.shell.oView.getController().setInformationVisibility(true);
-
                             // ** asynchrone call **//
                             //airbus.mes.shell.oView.oController.loadLineTrackerKPI();
-                            airbus.mes.linetracker.util.ModelManager.loadLinetrackerKPI();
-                        }
+                            //assign the customLineBO to 
+                            airbus.mes.linetracker.util.ModelManager.customLineBO = sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/customLineBO");
+                            if(airbus.mes.linetracker.util.ModelManager.customLineBO || airbus.mes.linetracker.util.ModelManager.customLineBO!="null"){
+                            	airbus.mes.linetracker.oView.byId("selectLine").setValue(airbus.mes.linetracker.util.ModelManager.customLineBO.split(",")[1]);
+                            }
+                        	airbus.mes.linetracker.util.ModelManager.loadLinetrackerKPI();
+                       }
                     },
                 });
 

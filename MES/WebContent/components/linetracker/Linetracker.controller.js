@@ -31,10 +31,10 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 		this.getView().byId("linetracker_timeLabel").setText(oTimeFormat.format(oDate));
 
 		// Load User Settings Model to get Site
-		var oModel = airbus.mes.settings.ModelManager.core.getModel("userSettingModel").getData();
-		airbus.mes.linetracker.util.ModelManager.site = oModel.Rowsets.Rowset[0].Row[0].site;
+		//var oModel = airbus.mes.settings.ModelManager.core.getModel("userSettingModel").getData();
+		//airbus.mes.linetracker.util.ModelManager.site = oModel.Rowsets.Rowset[0].Row[0].site;
 		// To add hierarchy selectTree
-		this.addParent(this.selectTree, undefined);
+		//this.addParent(this.selectTree, undefined);
 
 	},
 	
@@ -126,7 +126,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	 * To create new line or to modify name or description of existing(selected)
 	 * line
 	 */
-	onCreateModifyLine : function() {
+	/*onCreateModifyLine : function() {
 
 		if (!this.oAddLineDialog) {
 			// create dialog via fragment factory
@@ -137,7 +137,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 		var lineVariantName = this.getView().byId("selectLine").getValue();
 		sap.ui.getCore().byId("variantName").setValue(lineVariantName);
 
-	},
+	},*/
 
 	/**
 	 * BR:SD-PPC-LT-260
@@ -164,7 +164,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	 * 
 	 * @param oEvent
 	 */
-	onEditStation : function(oEvent) {
+	/*onEditStation : function(oEvent) {
 
 		if (!this.oEditStation) {
 			// create dialog via fragment factory
@@ -210,7 +210,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 
 		}
 
-	},
+	},*/
 
 	/**
 	 * Called when cancel button clicked on editStation/editLine/deleteStation/saveVariant fragments
@@ -291,6 +291,8 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 		if (oSelectedItem) {
 			var selectLine = this.getView().byId("selectLine");
 			selectLine.setValue(oSelectedItem.getTitle());
+			airbus.mes.linetracker.util.ModelManager.customLineBO = oSelectedItem.getCustomData()[0].getKey();
+			airbus.mes.linetracker.util.ModelManager.updateLineInUserSettings();
 		}
 	},
 
@@ -299,7 +301,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	 * To display Station KPI Header slide
 	 * @Param {Object}:evt
 	 */
-	displayStationKPIHeader : function(evt) {
+	/*displayStationKPIHeader : function(evt) {
 		var state = sap.ui.getCore().byId("idLinetracker1--idSlideControl").getState();
 		if (state == true) {
 			sap.ui.getCore().byId("idLinetracker1--idSlideControl").closeNavigation();
@@ -309,19 +311,19 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 
 		this.oPopover.close();
 
-	},
+	},*/
 	/**
 	 * BR:SD-PPC-LT-260
 	 * To close the Station KPI slide
 	 * @param evt
 	 */
-	hideKPISlide : function(evt) {
+	/*hideKPISlide : function(evt) {
 		var state = sap.ui.getCore().byId("idLinetracker1--idSlideControl").getState();
 		if (state == true) {
 			sap.ui.getCore().byId("idLinetracker1--idSlideControl").closeNavigation();
 
 		}
-	},
+	},*/
 
 	/**
 	 * BR:SD-PPC-LT-260
@@ -351,19 +353,21 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	 * @param oEvent
 	 */
 
-	onDeleteStation : function(oEvent) {
+	/*onDeleteStation : function(oEvent) {
 		if (!this.oDeleteDialog) {
 			this.oDeleteDialog = sap.ui.xmlfragment("airbus.mes.linetracker.fragments.deleteStation", this);
 			this.getView().addDependent(this.oDeleteDialog);
 		}
 		this.oDeleteDialog.open();
-	},
+	},*/
 
 	/**
 	 * BR:SD-PPC-LT-260
 	 * To navigate to Station Tracker from Line Tracker
 	 */
-	gotoStationTracker : function() {
+	gotoStationTracker : function(oEvt) {
+		var element = sap.ui.getCore().byId("sapContentPopUpLinetracker")._oOpenBy;
+		airbus.mes.linetracker.util.ModelManager.setProgramLineForStationMsn(element.getStation(), element.getMsn());
 		airbus.mes.shell.util.navFunctions.stationTracker();
 	},
 
@@ -379,7 +383,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	 * BR:SD-PPC-LT-090
 	 * Tree to define the hierarchy for Program, Line and Station select boxes
 	 */
-	selectTree : {
+	/*selectTree : {
 		id : "selectProgram",
 		type : "select",
 		path : "program",
@@ -401,24 +405,24 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 				childs : []
 			} ]
 		} ]
-	},
+	},*/
 	/**
 	 * BR:SD-PPC-LT-090
 	 * For hierachy of select
 	 */
-	addParent : function(oTree, oParent) {
+/*	addParent : function(oTree, oParent) {
 		var that = this;
 		oTree.parent = oParent;
 		oTree.childs.forEach(function(oElement) {
 			that.addParent(oElement, oTree);
 		});
-	},
+	},*/
 
 	/**
 	 * BR:SD-PPC-LT-090
 	 * To find the element on selecting the option
 	 */
-	findElement : function(oTree, sId) {
+	/*findElement : function(oTree, sId) {
 		if (oTree.id == sId) {
 			return oTree;
 		} else {
@@ -431,23 +435,23 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 			}
 			return "";
 		}
-	},
+	},*/
 	/**
 	 * BR:SD-PPC-LT-090
 	 * clear other select boxes after changing the item of one select
 	 */
-	clearField : function(oTree) {
+/*	clearField : function(oTree) {
 		var that = this;
 		if (oTree.type == "select") {
 			sap.ui.getCore().byId(oTree.id).setSelectedKey();
 		}
 		oTree.childs.forEach(that.clearField.bind(that));
-	},
+	},*/
 	/**
 	 * BR:SD-PPC-LT-090
 	 * Filter tree
 	 */
-	filterField : function(oTree) {
+	/*filterField : function(oTree) {
 		if (oTree.type == "Return") {
 			return;
 		}
@@ -484,7 +488,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 		oTree.childs.forEach(function(oElement) {
 			that.filterField(oElement);
 		});
-	},
+	},*/
 	/**
 	 * BR:SD-PPC-LT-090
 	 * Set the Selected value
@@ -499,7 +503,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	 * Called when selecting Program, Line and Station from select in Add/Modify
 	 * Station Popup
 	 */
-	onSelectionChange : function(oEvt) {
+	/*onSelectionChange : function(oEvt) {
 		var that = this;
 		var id;
 		if (oEvt.getSource()) {
@@ -542,7 +546,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 			this.setEnabledSelect(true, true, true, true);
 
 		}
-	},
+	},*/
 	openTaktActionPopover : function(oEvt){
 		if (!this.oTaktActionPopover) {
 			this.oTaktActionPopover = sap.ui.xmlfragment("airbus.mes.linetracker.fragments.taktOperation", this);
