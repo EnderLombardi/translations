@@ -84,5 +84,42 @@ airbus.mes.disruptiontracker.kpi.ModelManager = {
 			}
 		});
 		oViewModel.refresh();
+	},
+
+	
+	/***********************************************************
+	 * Remove duplicates value from the filter selection boxes
+	***********************************************************/
+	removeDuplicates: function(){
+	    /*********** Filter for Line **************/
+	    var aFilters = [];
+	    var aTemp = [];
+	    var duplicatesFilter = new sap.ui.model.Filter({
+	        path: "line",
+	        test: function (value) {
+	            if (aTemp.indexOf(value) == -1) {
+	                aTemp.push(value)
+	                return true;
+	            } else {
+	                return false;
+	            }
+	        }
+	    });
+	
+	    aFilters.push(duplicatesFilter);
+	
+	    aFilters.push(new sap.ui.model.Filter("program", "EQ", airbus.mes.settings.ModelManager.program)); // Filter on selected A/C Program
+	
+	    sap.ui.getCore().byId("disruptionKPIView--lineComboBox")
+	        .getBinding("items").filter(new sap.ui.model.Filter(aFilters, true));
+	
+	    var lineItemAll = new sap.ui.core.Item();
+	    lineItemAll.setKey = "";
+	    lineItemAll.setText(airbus.mes.disruptiontracker.oView.getModel("disruptiontrackerI18n").getProperty("All"));
+	
+	    var lineBox = sap.ui.getCore().byId("disruptionKPIView--lineComboBox");
+	    lineBox.insertItem(lineItemAll, 0);
 	}
+
+
 }

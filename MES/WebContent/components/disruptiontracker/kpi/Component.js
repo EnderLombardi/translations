@@ -36,6 +36,10 @@ airbus.mes.disruptiontracker.kpi.Component.prototype.createContent = function() 
         //Model for disruptionKPI Attributes vs Time Lost Chart
         this.oView.setModel(sap.ui.getCore().getModel("TimeLostperAttribute"),"TimeLostperAttribute");
 
+        //Model Station Names
+        this.oView.setModel(sap.ui.getCore().getModel("plantModel"), "plantModel");
+
+
 
 
         return this.oView;

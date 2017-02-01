@@ -1,3 +1,22 @@
+.disruptionKPI{
+    .chart{
+        float: left;
+    }
+    .pageHeader{
+        -webkit-box-shadow: 0px 2px 15px -5px #0F2D65;
+        -moz-box-shadow: 0px 2px 15px -5px #0F2D65;
+        box-shadow: 0px 2px 15px -5px #0F2D65;
+        border: none;
+        border-top: 0.6rem solid #ffffff;
+        position: relative;
+        z-index: 10;
+        color: white !important;
+        background: #0F2D65 !important;
+        height: 57px !important;
+        line-height: 3rem!important;
+    }
+}
+
 .disruptionKPI .headerText > span {
     color: #74d2e7;
     text-shadow: none;
@@ -8,7 +27,13 @@
     background-color: $duck-egg-blue !important;    
     .sapMBtnIconLeft,
     .sapMBtnContent{
-        color: #0D5D76;
+        color: #0D5D76 !important;
     }   
         
+}
+
+
+// CSS for filter boxes in header bar
+#disruptionKPIView--lineComboBox{
+    @extend %headerFilterBoxes;
 }

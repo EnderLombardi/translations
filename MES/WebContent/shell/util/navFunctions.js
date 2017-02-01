@@ -363,6 +363,9 @@ airbus.mes.shell.util.navFunctions = {
         }
 
         airbus.mes.disruptiontracker.kpi.ModelManager.loadDisruptionKPIModel();
+        
+        airbus.mes.disruptiontracker.kpi.ModelManager.removeDuplicates();
+        
         nav.to(airbus.mes.disruptiontracker.kpi.oView.getId());
     },
 
