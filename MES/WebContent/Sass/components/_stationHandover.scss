@@ -78,7 +78,15 @@
 	color:$cool-black;
 }
      
+     .sapUiTableTreeIcon {
+         visibility: hidden;
+         width:0px;
+     }
      
+     .sapUiTableCell{
+     text-align: center;
+     }
+         
 }
 #stationHandoverView--TreeTableBasic{
     height: 50%;
@@ -94,17 +102,9 @@
 				}
                 
 			}
-    .sapUiTableCCnt {
-        .sapUiTableCtrlScr {
-            
-            margin-left:3rem
-        }    
-    }
     
-    #stationHandoverView--TreeTableBasic-sapUiTableRowHdrScr { 
-        display :block;
-        z-index : 0;
-    }
+     
+          
 }
 
    	#stationHandoverView--TreeTableBasic-rows-row0-rowselecttext.sapUiTableColRowHdr.sapUiTableSelAllEnabled::after, .sapUiTableColRowHdr.sapUiTableSelAllEnabled::after, .sapUiTableRowHdr::after, .sapUiTableRowHdr::after{
@@ -117,8 +117,15 @@
 		>.sapUiTableRowHdr{
 		border:none !important;
 		}
+        
 	}
 
+#stationHandoverView--TreeTableBasic-sapUiTableColHdrScr {
+    .sapUiTableColCell{
+          text-align: center ! important;
+         }  
+    
+}
 #stationHandoverView--headerstationhandover{
     label{
             background-color: transparent;

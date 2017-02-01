@@ -361,8 +361,9 @@ sap.ui.controller(
                     stationHandover : function() {
                     	
                     	airbus.mes.stationHandover.util.ModelManager.getMsn();
-                        airbus.mes.stationHandover.oView.byId("TreeTableBasic").expandToLevel(99);
-
+                    	airbus.mes.stationHandover.oView.getController().applyMyFilter();
+                    	airbus.mes.stationHandover.oView.byId("TreeTableBasic").expandToLevel(99);
+                                        	
                     },
                     /**
                      * Render Calendar Tracker and reload all model reload shift

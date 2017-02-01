@@ -1,14 +1,19 @@
 [
+			{
+      "type": "ALL",
+      "key": "ALL"
+   },
+   
    {
       "type": "Local",
-      "key": "Local"
+      "key": "0"
    },
    {
       "type": "responsability",
-      "key": "responsability"
+      "key": "1"
    },
    {
       "type": "noResponsability",
-      "key": "noResponsability"
+      "key": "2"
    }
 ]

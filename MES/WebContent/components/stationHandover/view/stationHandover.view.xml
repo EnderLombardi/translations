@@ -11,8 +11,10 @@
 
 			<TreeTable id="TreeTableBasic"
 				rows="{path:'oswModel>/', parameters: {arrayNames:['row']}}"
-				selectionMode="MultiToggle" enableSelectAll="true"
-				visibleRowCountMode="Auto">
+				selectionMode="None" enableSelectAll="true"
+				visibleRowCountMode="15rem"
+				showColumnVisibilityMenu="true"
+				cellClick ="onRowClick">
 				<extension>
 					
 					<m:Toolbar id="kpiHeaderToolbar"
@@ -41,21 +43,21 @@
 							items="{ path : 'groupModel>/' }" >
 							<core:Item key="{groupModel>key}" text="{path:'groupModel>type' , formatter:'airbus.mes.stationHandover.util.Formatter.translate'}" />
 						</m:Select>
-					<m:Select id="typeHandOver" change=""
+					<m:Select id="typeHandOver" change="filterOSW"
 							items="{ path : 'typeModel>/' }" >
 							<core:Item key="{typeModel>key}" text="{path:'typeModel>type' , formatter:'airbus.mes.stationHandover.util.Formatter.translate'}" />
 						</m:Select>
-					<m:Select id="originHandOver" change="changeShift"
-							items="{ path : 'stationTrackerShift>/' }">
-							<core:Item key="{stationTrackerShift>shiftID}" text="{stationTrackerShift>shiftName}" />
+					<m:Select id="originHandOver" change="changeStation"
+							items="{ path : 'oswModel>/row/' }">
+							<core:Item key="{oswModel>ORIGIN_STATION}" text="{oswModel>ORIGIN_STATION}" />
 						</m:Select>
 					
 						<m:ToolbarSpacer />
 									
 						<m:CheckBox text="{stationHandoverI18n>ShowOpwithNoTime}"
-							selected="true" />
+							selected="false" select="filterNoTime" />
 						<m:CheckBox text="{stationHandoverI18n>ShowInsertedLines}"
-							selected="true" />
+							selected="false" select="filterInsertedLines"/>
 						
 						<m:ToolbarSpacer />
 												
@@ -65,158 +67,159 @@
 
 				</extension>
 				<columns>
-					<Column width="auto">
-						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>Select}" />
+					<Column width="5rem">
+							<m:CheckBox class="DisOpAttLabelHandOver"/>
 						<template>
-							<m:Text text="{oswModel>name}" />
+							<m:CheckBox selected="{path:'oswModel>INSERTED' , formatter:'airbus.mes.stationHandover.util.Formatter.isInsert'}" 
+							enabled="{path:'oswModel>INSERTED' , formatter:'airbus.mes.stationHandover.util.Formatter.isInsertEnabled'}" />
 						</template>
 					</Column>
-					<Column width="auto">
+					<Column autoResizable="true">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>Blocked}" />
 						<template>
 							<custom:customIcon />
 						</template>
 					</Column>
-					<Column width="auto">
+					<Column autoResizable="true">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>Type}" />
 						<template>
 							<m:Label text="{oswModel>TYPE}" />
 						</template>
 					</Column>
-						<Column width="auto">
+						<Column autoResizable="true">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>Reference}" />
 						<template>
 							<m:Label text="{oswModel>REFERENCE}" />
 						</template>
 					</Column>
-					<Column width="auto">
+					<Column autoResizable="true">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>Description}" />
 						<template>
 							<m:Label text="{oswModel>DESCRIPTION}" />
 						</template>
 					</Column>
-					<Column width="auto">
+					<Column autoResizable="true">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>FrozenTrackingTemplate}" />
 						<template>
 							<m:Label text="{oswModel>FROZEN_TRACKING}" />
 						</template>
 					</Column>
-					<Column width="auto">
+					<Column autoResizable="true">
 						<m:Label class="DisOpAttLabelHandOver"
 							text="{stationHandoverI18n>FrozenListOFittedHandover}" />
 						<template>
 							<m:Label text="{oswModel>FROZEN_LIST}" />
 						</template>
 					</Column>
-					<Column width="auto">
+					<Column autoResizable="true">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>RemainingTime}" />
 						<template>
 							<m:Label text="{oswModel>REMAINING_TIME}" />
 						</template>
 					</Column>
-					<Column width="auto">
+					<Column autoResizable="true">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>Confirmation}" />
 						<template>
 							<m:Label text="{oswModel>CONFIRMATION}" />
 						</template>
 					</Column>
-					<Column width="auto">
+					<Column autoResizable="true">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>UserStatus}" />
 						<template>
 							<m:Label text="{oswModel>USER_STATUS}" />
 						</template>
 					</Column>
-					<Column width="auto">
+					<Column autoResizable="true">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>Competence}" />
 						<template>
 							<m:Label text="{oswModel>COMPETENCE}" />
 						</template>
 					</Column>
-					<Column width="auto">
+					<Column autoResizable="true">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>ReviewedEndDate}" />
 						<template>
 							<m:Label text="{oswModel>REVIEWED_END_DATE}" />
 						</template>
 					</Column>
-					<Column width="auto">
+					<Column autoResizable="true">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>FamilyTarget}" />
 						<template>
 							<m:Label text="{oswModel>FAMILY_TARGET}" />
 						</template>
 					</Column>
-					<Column width="auto">
+					<Column autoResizable="true">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>BlockingReason}" />
 						<template>
 							<m:Label text="{oswModel>BLOCKING_REASON}" />
 						</template>
 					</Column>
-					<Column width="auto">
+					<Column autoResizable="true">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>CA}" />
 						<template>
 							<m:Label text="{oswModel>CA}" />
 						</template>
 					</Column>
-					<Column width="auto">
+					<Column autoResizable="true">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>TDL}" />
 						<template>
 							<m:Label text="{oswModel>TDL}" />
 						</template>
 					</Column>
-					<Column width="auto">
+					<Column autoResizable="true">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>Zoning}" />
 						<template>
 							<m:Label text="{oswModel>ZONING}" />
 						</template>
 					</Column>
-					<Column width="auto">
+					<Column autoResizable="true">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>ATA/subATA}" />
 						<template>
 							<m:Label text="{oswModel>ATA_SUBATA}" />
 						</template>
 					</Column>
-					<Column width="auto">
+					<Column autoResizable="true">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>WorkPackage}" />
 						<template>
 							<m:Label text="{oswModel>WORK_PACKAGE}" />
 						</template>
 					</Column>
-					<Column width="auto">
+					<Column autoResizable="true">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>Note}" />
 						<template>
 							<m:Label text="{oswModel>NOTE}" />
 						</template>
 					</Column>
-					<Column width="auto">
+					<Column autoResizable="true">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>ACPWorkstation}" />
 						<template>
 							<m:Label text="{oswModel>ACP_WORK_PACKAGE}" />
 						</template>
 					</Column>
-					<Column width="auto">
+					<Column autoResizable="true">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>FatherLink}" />
 						<template>
 							<m:Label text="{oswModel>FATHER_LINK}" />
 						</template>
 					</Column>
-					<Column width="auto">
+					<Column autoResizable="true">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>ExecStation}" />
 						<template>
 							<m:Label text="{oswModel>EXEC_STATION}" />
 						</template>
 					</Column>
-					<Column width="auto">
+					<Column autoResizable="true">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>OriginWorkstation}" />
 						<template>
 							<m:Label text="{oswModel>ORIGIN_WORKSTATION}" />
 						</template>
 					</Column>
-					<Column width="auto">
+					<Column autoResizable="true">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>UpperFamily}" />
 						<template>
 							<m:Label text="{oswModel>UPPER_FAMILY}" />
 						</template>
 					</Column>
-					<Column width="auto">
+					<Column autoResizable="true">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>MaterialDescription}" />
 						<template>
 							<m:Label text="{oswModel>MATERIAL_DESCRIPTION}" />

@@ -1,8 +1,10 @@
 {
    "row": [
       {
-      
+      			"INSERTED" : "true",
+      			"NO_TIME" : "true",
       			"WOID" : "123415465",	
+        	"ORIGIN_STATION" : "ip1",
          "BLOCKED": "0",
          "TYPE": "0",
          "REFERENCE": "123415465",
@@ -17,7 +19,7 @@
          "FAMILY_TARGET": "B",
          "BLOCKING_REASON": "BLOCKING_REASON*",
          "CA": "CA",
-         "TDL": "TDL*",
+         "TDL": "x*",
          "ZONING": "ZONING*",
          "ATA_SUBATA": "ATA_SUBATA*",
          "WORK_PACKAGE": "WP**",
@@ -30,6 +32,9 @@
          "MATERIAL_DESCRIPTION": "MATERIAL_DESCRIPTION*",
          "row": [
             {	
+               "ORIGIN_STATION" : "ip",
+            		 "INSERTED" : "true",
+      									"NO_TIME" : "true",
             			"WOID" : "123415465",	
             			"BLOCKED": "0",
                "TYPE": "0",
@@ -44,7 +49,9 @@
          ]
       },
       {
-      
+     				 "INSERTED" : "false",
+     				"ORIGIN_STATION" : "ip2",
+     				"NO_TIME" : "false",
       			"WOID" : "123415464",	
          "BLOCKED": "0",
          "TYPE": "0",
@@ -60,7 +67,7 @@
          "FAMILY_TARGET": "A",
          "BLOCKING_REASON": "BLOCKING_REASON*",
          "CA": "CA",
-         "TDL": "TDL*",
+         "TDL": "z",
          "ZONING": "ZONING*",
          "ATA_SUBATA": "ATA_SUBATA*",
          "WORK_PACKAGE": "WP**",
@@ -72,7 +79,10 @@
          "UPPER_FAMILY": "UPPER_FAMILY*",
          "MATERIAL_DESCRIPTION": "MATERIAL_DESCRIPTION*",
          "row": [
-            {	
+            {	 
+            "ORIGIN_STATION" : "ip3",
+            "INSERTED" : "false",
+      			"NO_TIME" : "false",
             			"WOID" : "123415464",	
             			"BLOCKED": "0",
                "TYPE": "0",
@@ -87,7 +97,9 @@
          ]
         },
         {
-      
+        "ORIGIN_STATION" : "ip4",
+       "INSERTED" : "true",
+      			"NO_TIME" : "false",
       			"WOID" : "1234154610",	
          "BLOCKED": "0",
          "TYPE": "0",
@@ -103,7 +115,7 @@
          "FAMILY_TARGET": "1",
          "BLOCKING_REASON": "BLOCKING_REASON*",
          "CA": "CA",
-         "TDL": "TDL*",
+         "TDL": "a*",
          "ZONING": "ZONING*",
          "ATA_SUBATA": "ATA_SUBATA*",
          "WORK_PACKAGE": "WP**",
@@ -116,6 +128,9 @@
          "MATERIAL_DESCRIPTION": "MATERIAL_DESCRIPTION*",
          "row": [
             {	
+            "ORIGIN_STATION" : "ip5",
+             "INSERTED" : "true",
+      			"NO_TIME" : "false",
             			"WOID" : "1234154610",	
             			"BLOCKED": "0",
                "TYPE": "0",
