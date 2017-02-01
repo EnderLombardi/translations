@@ -47,7 +47,7 @@ sap.ui
         onAfterRendering: function () {
 
             var oModel = [sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0]];
-
+//            this.iconBarOpenPage();
             if (airbus.mes.stationtracker.GroupingBoxingManager.computeStatus(oModel[0].state, oModel[0].paused, oModel[0].previously_start) === "0") {
                 airbus.mes.operationdetail.oView.byId("idReschedule").setEnabled(false);
             } else {
@@ -62,14 +62,16 @@ sap.ui
             // Set button
             airbus.mes.operationdetail.status.oView.oController.setOperationActionButtons();
 
-            this.getView().byId("opDetailSegmentButtons").setSelectedButton(
-                this.getView().byId("opDetailSegmentButtons").getButtons()[0].sId);
+            this.getView().byId("opDetailSegmentButtons").setSelectedKey(
+                this.getView().byId("opDetailSegmentButtons").getSelectedKey()[0].sId);
 
             // Collapse Operation Detail panel and show Expand
             // button
             this.getView().byId("opDetailExpandButton").setVisible(true);
             this.getView().byId("opDetailCloseButton").setVisible(false);
             this.getView().byId("operationDetailPanel").setExpanded(false);
+            this.getView().byId("opDetailSegmentButtons").setExpanded(false);
+            this.getView().byId("opDetailSegmentButtons").setExpandable(false);
 
             var oSwitchButton = this.getView().byId("switchOperationModeBtn");
             if (oSwitchButton.getState() == true) {
@@ -86,6 +88,7 @@ sap.ui
             sap.ui.getCore().byId("operationDetailPopup--btnCancelDisruption").setVisible(false);
             sap.ui.getCore().byId("operationDetailPopup--btnReschedule").setVisible(false);
             airbus.mes.operationdetail.ModelManager.getDataConfirmationCheckList();
+
         },
 
         /***********************************************************
@@ -105,13 +108,13 @@ sap.ui
                     //Define visibility for header sections
                     $(".opDetailNavToolbar > ul > li ~ li").css("display", "inline-block");
                     oSwitchButton.setEnabled(false);
-                    
+
                     /**
                      * set the buttons according to the status of operation mode
                      */
                     airbus.mes.operationdetail.status.oView.oController.setOperationActionButtons();
-                    
-                    
+
+
                 } else {
                     $(".opDetailNavToolbar > ul > li ~ li").css("display", "none");
                     oSwitchButton.setEnabled(true);
@@ -131,7 +134,7 @@ sap.ui
          * Click on segmented button to respective page
          */
         openPage: function (oEvent) {
-            var sItemKey = oEvent.getSource().getKey();
+            var sItemKey = oEvent.getSource().getSelectedKey();
 
             switch (sItemKey) {
                 case "status":
@@ -144,7 +147,7 @@ sap.ui
 
                     airbus.mes.operationdetail.status.oView.oController.setOperationActionButtons();
                     break;
-                    
+
                 case "checkList":
                     if (airbus.mes.operationdetail.QDC === undefined || airbus.mes.operationdetail.QDC.oView === undefined) {
                         sap.ui.getCore().createComponent({ name: "airbus.mes.operationdetail.QDC" });
@@ -203,7 +206,7 @@ sap.ui
                     }
                     break;
                 case "touchngo":
-                    var selectedSegmentedButton = sap.ui.getCore().byId("operationDetailsView--opDetailSegmentButtons").getSelectedButton();
+                    var selectedSegmentedButton = sap.ui.getCore().byId("operationDetailsView--opDetailSegmentButtons").getSelectedKey();
                     var sWorkOrder = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].wo_no;
                     var operationId = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_no;
                     var erpSystem = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].erp_system.toLowerCase();
@@ -213,7 +216,7 @@ sap.ui
                     var oLink = "touchngo" + erpSystem + "://openpage/operation?workorder=" + sWorkOrder + "&operation=" + splitOpeId[3];
                     window.open(oLink, "_blank");
                     setTimeout(function () {
-                        sap.ui.getCore().byId("operationDetailsView--opDetailSegmentButtons").setSelectedButton(selectedSegmentedButton);
+                        sap.ui.getCore().byId("operationDetailsView--opDetailSegmentButtons").setSelected(selectedSegmentedButton);
                     }, 2000);
                     break;
                 case "jigntools":
@@ -249,7 +252,6 @@ sap.ui
 
             }
         },
-
 
         onNavigate: function (oEvent) {
 
@@ -317,7 +319,7 @@ sap.ui
                     }
 
                     break;
-                    
+
                 case "jigtoolsView":
                     airbus.mes.jigtools.oView.oController.checkSettingJigsTools();
                     break;
