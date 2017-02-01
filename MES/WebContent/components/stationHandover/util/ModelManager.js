@@ -5,11 +5,13 @@ airbus.mes.stationHandover.util.ModelManager = {
        urlModel : undefined,
        queryParams : jQuery.sap.getUriParameters(),
        i18nModel : undefined,
+       selectAll : false,
        filter : {
     	   "search" : undefined,
     	   "type" : undefined,
     	   "noTime" : new sap.ui.model.Filter("NO_TIME", "EQ", "false"),
     	   "inserted" : new sap.ui.model.Filter("INSERTED", "EQ", "false"),
+    	   "station" : undefined,
        },
        
        init : function(core) {

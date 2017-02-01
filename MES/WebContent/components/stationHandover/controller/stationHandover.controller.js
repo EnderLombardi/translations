@@ -191,6 +191,28 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 		
 	},
 	/***************************************************************************
+	 * trigger when the user Select the ph station and filter the tree table on station
+	 *  
+	 **************************************************************************/
+	filterStation : function(oEvt) {
+		
+		var sValue = oEvt.getSource().mProperties.selectedKey;
+		console.log(sValue);
+		if (sValue === "ALL" ) {
+
+			airbus.mes.stationHandover.util.ModelManager.filter.station = undefined;
+
+		} else {
+			
+			airbus.mes.stationHandover.util.ModelManager.filter.station = new sap.ui.model.Filter("ORIGIN_STATION", "EQ", sValue);
+
+		}
+		
+		this.applyMyFilter();
+		
+		
+	},
+	/***************************************************************************
 	 * trigger when the user Click on a Row and open operationd detail  
 	 *  
 	 **************************************************************************/
@@ -206,6 +228,29 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 		}
 		
 		
+	},
+	/***************************************************************************
+	 * trigger when the user Click on select all checkBox
+	 *  
+	 **************************************************************************/	
+	selectAll : function(oEvt) {
+
+		var sValue = oEvt.getSource().mProperties.selected;
+		
+		if ( sValue ) {
+			
+			airbus.mes.stationHandover.util.ModelManager.selectAll = true;
+
+			
+		} else {
+			
+			airbus.mes.stationHandover.util.ModelManager.selectAll = false;
+
+			
+		}
+
+		airbus.mes.stationHandover.oView.getModel("oswModel").refresh(true)		
+
 	}
 
 });

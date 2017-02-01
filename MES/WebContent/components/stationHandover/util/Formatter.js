@@ -25,9 +25,11 @@ airbus.mes.stationHandover.util.Formatter = {
 		}
 
 		if (oEvt === "false") {
-
+			if ( airbus.mes.stationHandover.util.ModelManager.selectAll ) {
+				
+				return true;
+			}
 			return false;
-
 		}
 
 	},

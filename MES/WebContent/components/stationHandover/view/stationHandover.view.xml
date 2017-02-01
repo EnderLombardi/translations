@@ -47,7 +47,7 @@
 							items="{ path : 'typeModel>/' }" >
 							<core:Item key="{typeModel>key}" text="{path:'typeModel>type' , formatter:'airbus.mes.stationHandover.util.Formatter.translate'}" />
 						</m:Select>
-					<m:Select id="originHandOver" change="changeStation"
+					<m:Select id="originHandOver" change="filterStation"
 							items="{ path : 'oswModel>/row/' }">
 							<core:Item key="{oswModel>ORIGIN_STATION}" text="{oswModel>ORIGIN_STATION}" />
 						</m:Select>
@@ -68,7 +68,7 @@
 				</extension>
 				<columns>
 					<Column width="5rem">
-							<m:CheckBox class="DisOpAttLabelHandOver"/>
+							<m:CheckBox class="DisOpAttLabelHandOver" select="selectAll"/>
 						<template>
 							<m:CheckBox selected="{path:'oswModel>INSERTED' , formatter:'airbus.mes.stationHandover.util.Formatter.isInsert'}" 
 							enabled="{path:'oswModel>INSERTED' , formatter:'airbus.mes.stationHandover.util.Formatter.isInsertEnabled'}" />
@@ -77,7 +77,7 @@
 					<Column autoResizable="true">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>Blocked}" />
 						<template>
-							<custom:customIcon />
+							<custom:customIcon color="{oswModel>BLOCKED}"/>
 						</template>
 					</Column>
 					<Column autoResizable="true">
