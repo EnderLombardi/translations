@@ -245,9 +245,9 @@ STATION TRACKER
   -moz-box-shadow: 0px 2px 15px -5px #0F2D65;
   box-shadow: 0px 2px 15px -5px #0F2D65;
   border: none;
-  border-top: 0.6rem solid #ffffff !important;
   position: relative;
-  z-index: 10; }
+  z-index: 10;
+  margin-top: 0.6rem; }
 
 .tooltip {
   visibility: hidden;
@@ -2293,9 +2293,6 @@ html.sap-desktop .sapMBtnTransparent > .sapMBtnIcon {
 /********************
 RESSOURCEPOOL
 *********************/
-#resourcePool--pageHeader-BarLeft, #resourcePool--pageHeader-BarRight {
-  padding-top: 4px; }
-
 #resourcePool--resourcePooltitle {
   color: #74d2e7;
   text-shadow: none;
@@ -2396,9 +2393,6 @@ RESSOURCEPOOL
   display: inline !important;
   line-height: normal !important;
   padding: 0px !important; }
-
-.headerText {
-  font-size: x-large !important; }
 
 .panelHeaderCustomStyle {
   font-size: 1.125rem !important;
@@ -2664,15 +2658,11 @@ RESSOURCEPOOL
 /******************
 POLYPOLY
 *******************/
-#__bar2-BarLeft {
-  padding-top: 4px; }
-
 #polypolytitle {
   color: #74d2e7;
   text-shadow: none;
-  padding: 20px 30px;
+  padding: 15px 30px;
   font-size: 0.875rem;
-  margin-top: 4px;
   border-right: 1px solid #8db9ca; }
 
 #polypoly--polypolyHeaderToolbar > label {
@@ -6908,7 +6898,17 @@ MES Document Viewer
   background: #eee;
   padding: 5px 3px 2px 3px;
   min-width: 650px;
-  margin-top: 18px !important; }
+  margin-top: 2px !important; }
+
+#docviewerView--pdfViewer .customButton {
+  cursor: pointer;
+  margin: 0 5px 0 0;
+  /* font: 24px/1em 'Glyphicons Regular'; */
+  /* font-style: normal; */
+  font-weight: normal;
+  font-size: 20px;
+  /* padding: 2px 4px 0 6px; */
+  color: #21578a !important; }
 
 /************************
 DISRUPTIONTRACKER
@@ -6938,7 +6938,7 @@ td {
 .disruptions .sapMListTblNavCol {
   display: none !important; }
 .disruptions .pageHeader {
-  border-top: 0.6rem solid #ffffff; }
+  margin-top: 0.6rem; }
 .disruptions .sapMPanel,
 .sapMPage > .sapMPageHeader + section {
   background-color: #ffffff !important; }

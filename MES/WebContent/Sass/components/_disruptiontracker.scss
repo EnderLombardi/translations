@@ -49,7 +49,7 @@ td{
         display:none !important;
     }
     .pageHeader {
-        border-top: 0.6rem solid $white-two;
+        margin-top: 0.6rem;
     }
     @at-root .disruptions .sapMPanel,
         .sapMPage>.sapMPageHeader + section{

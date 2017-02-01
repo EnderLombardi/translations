@@ -35,6 +35,11 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 
 
 	},
+	
+	
+    onBackPress : function(){
+        nav.back();
+    },
 
 	/**
 	 * Similar to onAfterRendering, but this hook is invoked before the
