@@ -48,7 +48,7 @@ module.exports = function (options) {
 			// assemble remote path = to + relative root + file name
 			var destPath = options.remotePath + '/' + relPath + path.basename(filePath);
 			
-			var type = fileExt.search(/^(json|properties|js)$/) < 0 ? 'BIN' : 'TXT';
+			var type = fileExt.search(/^(json|properties)$/) < 0 ? 'BIN' : 'TXT';
 			var content;
 			if (type === 'BIN') {
 				content = fs.readFileSync(filePath).toString('base64');

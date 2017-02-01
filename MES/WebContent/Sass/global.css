@@ -7125,6 +7125,17 @@ td {
   #disruptionDetail .GenricBgColor {
     background-color: #FFFFFF !important; }
 
+.disruptionKPI .headerText > span {
+  color: #74d2e7;
+  text-shadow: none;
+  padding: 0px 30px; }
+
+.disruptionKPI .Subheader {
+  background-color: #d5f1f8 !important; }
+  .disruptionKPI .Subheader .sapMBtnIconLeft,
+  .disruptionKPI .Subheader .sapMBtnContent {
+    color: #0D5D76; }
+
 /*************
 GENERALE RULES
 **************/
