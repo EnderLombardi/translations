@@ -64,9 +64,9 @@
 									<f:fields>
 										<Select id="selectFivemCategory" selectedKey=""
 											forceSelection="false" change="onSelectionChange"
-											items="{disruptionResolverModel>/Rowsets/Rowset/2/Row}">
+											items="{disruptionCategoryModell>/Rowsets/Rowset/2/Row}">
 											<items>
-												<core:Item text="{disruptionResolverModel>CATEGORY_CLASS}" key="{disruptionResolverModel>CATEGORY_CLASS}" />
+												<core:Item text="{disruptionCategoryModel>CATEGORY_CLASS}" key="{disruptionCategoryModel>CATEGORY_CLASS}" />
 												
 											</items>
 											<layoutData>
