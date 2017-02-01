@@ -90,49 +90,49 @@
 			growing="true" growingThreshold="50" visible="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setVisible'}">
 
 			<columns>
-				<Column>
+				<Column id="operationCol">
 					<Text text="{disruptiontrackerI18n>operation}" />
 				</Column>
-				<Column>
+				<Column id="gravityCol">
 					<Text text="{disruptiontrackerI18n>gravity}" />
 				</Column>
-				<Column>
+				<Column id="statusCol">
 					<Text text="{disruptiontrackerI18n>status}" />
 				</Column>
-				<Column>
+				<Column id="categoryCol">
 					<Text text="{disruptiontrackerI18n>category}" />
 				</Column>
-				<Column>
+				<Column id="reasonCol">
 					<Text text="{disruptiontrackerI18n>reason}" />
 				</Column>
-				<Column>
+				<Column id="originatorGroupCol">
 					<Text text="{disruptiontrackerI18n>originatorGroup}" />
 				</Column>
-				<Column>
+				<Column id="resolutionGroupCol">
 					<Text text="{disruptiontrackerI18n>resolutionGroup}" />
 				</Column>
-				<Column>
+				<Column id="escalationCol">
 					<Text text="{disruptiontrackerI18n>escalation}" />
 				</Column>
-				<Column>
+				<Column id="openingTimeCol">
 					<Text text="{disruptiontrackerI18n>openingTime}" />
 				</Column>
-				<Column>
+				<Column id="fixedByTimeCol">
 					<Text text="{disruptiontrackerI18n>fixedByTime}" />
 				</Column>
-				<Column>
+				<Column id="promisedDateCol">
 					<Text text="{disruptiontrackerI18n>promisedDate}" />
 				</Column>
-				<Column>
+				<Column id="timeBeforeNextEscCol">
 					<Text text="{disruptiontrackerI18n>timeBofreNextEsc}" />
 				</Column>
-				<Column>
+				<Column id="descriptionCol">
 					<Text text="{disruptiontrackerI18n>description}" />
 				</Column>
-				<Column>
+				<Column id="solutionCol">
 					<Text text="{disruptiontrackerI18n>solution}" />
 				</Column>
-				<Column>
+				<Column id="closureDateCol">
 					<Text text="{disruptiontrackerI18n>closureDate}" />
 				</Column>
 			</columns>

@@ -62,6 +62,16 @@
 					<ViewSettingsItem text="{disruptiontrackerI18n>All}" key=" " />
 				</items>
 			</ViewSettingsFilterItem>
-		</filterItems>
+			</filterItems>
+			<customTabs>
+			<ViewSettingsCustomTab id="columnOrderSettings" icon="sap-icon://action-settings"  title="Column order" tooltip="Column Order Settings">
+			<content>
+			<Button text="change column order" press="onPersoalisationButtonPressed" />
+			</content>
+			
+				
+			</ViewSettingsCustomTab>
+		</customTabs>
+		
 	</ViewSettingsDialog>
 </core:FragmentDefinition>

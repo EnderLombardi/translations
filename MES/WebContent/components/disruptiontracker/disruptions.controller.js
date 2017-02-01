@@ -16,6 +16,13 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
         if (airbus.mes.shell.oView.byId('refreshTime').setBusyIndicatorDelay(0)){
             airbus.mes.shell.oView.byId('refreshTime').setEnabled(true);
         }
+		jQuery.sap.require("airbus.mes.disruptiontracker.util.personalisationService");
+		jQuery.sap.require("sap.m.TablePersoController")
+		this._oTPC = new sap.m.TablePersoController({
+				table: this.getView().byId("disruptionsTable"),
+				componentName: "disruptiontrackerTable",
+				persoService: airbus.mes.disruptiontracker.util.personalisationService,
+			}).activate();
 	},
 
 	/**
@@ -484,7 +491,11 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
         $('#lnkDwnldLnk')[0].click();    
         document.body.removeChild(link);
 
-    }
+    },
+	onPersoalisationButtonPressed:function(){
+
+		this._oTPC.openDialog();
+	}
 
 	/**
 	 * search disruption on basis of work order/operation
