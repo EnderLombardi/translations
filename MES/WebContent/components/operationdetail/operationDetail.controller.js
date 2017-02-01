@@ -216,7 +216,7 @@ sap.ui
                     var oLink = "touchngo" + erpSystem + "://openpage/operation?workorder=" + sWorkOrder + "&operation=" + splitOpeId[3];
                     window.open(oLink, "_blank");
                     setTimeout(function () {
-                        sap.ui.getCore().byId("operationDetailsView--opDetailSegmentButtons").setSelected(selectedSegmentedButton);
+                        sap.ui.getCore().byId("operationDetailsView--opDetailSegmentButtons").setSelectedKey(selectedSegmentedButton);
                     }, 2000);
                     break;
                 case "jigntools":
