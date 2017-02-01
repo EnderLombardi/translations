@@ -42,6 +42,7 @@
 #stationHandoverView--searchHandover{
       border-left: 1px solid #8db9ca;
       padding: 4px 10px;
+      border-right: 1px solid #8db9ca;
  }
 
 #stationHandoverView--searchHandover {
@@ -97,8 +98,7 @@
         .sapUiTableCtrlScr {
             
             margin-left:3rem
-        }
-        
+        }    
     }
     
     #stationHandoverView--TreeTableBasic-sapUiTableRowHdrScr { 
@@ -106,7 +106,6 @@
         z-index : 0;
     }
 }
-
 
    	#stationHandoverView--TreeTableBasic-rows-row0-rowselecttext.sapUiTableColRowHdr.sapUiTableSelAllEnabled::after, .sapUiTableColRowHdr.sapUiTableSelAllEnabled::after, .sapUiTableRowHdr::after, .sapUiTableRowHdr::after{
 	   		width: 1rem !important;
@@ -118,5 +117,48 @@
 		>.sapUiTableRowHdr{
 		border:none !important;
 		}
-		
 	}
+
+#stationHandoverView--headerstationhandover{
+    label{
+            background-color: transparent;
+		    color: #0D5D76;
+		    height: 3rem;
+		    line-height: 3rem;
+		    border-right: 1px solid #8db9ca;
+		    padding-right: 5px;
+    }
+
+        .sapMSltArrow{
+                background-color: transparent;
+			    color: #0D5D76;
+			    height: 3rem;
+			    line-height: 3rem;
+			    border-right: 1px solid #8db9ca;
+        }
+        &.sapMSltPressed{
+            .sapMSltArrow{
+                background-color: #74D2E7;
+            }
+        }
+  
+   .sapMSlt{
+   	border :none ;
+   	height: 3rem;
+   	background-color: $duck-egg-blue !important;
+   }
+}
+
+#stationHandoverView--insertHandOver{
+	border-left: 1px solid #8db9ca;
+	background-color: $duck-egg-blue !important;
+}
+
+#stationHandoverView--insertHandOver-inner{
+	background: none;
+    border: none;
+    color: #0D5D76;
+    >span{
+        color: #0D5D76;	
+    }
+}

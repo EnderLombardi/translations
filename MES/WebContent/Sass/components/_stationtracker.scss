@@ -1082,6 +1082,7 @@ STATION TRACKER TOOLBAR
             color: #0D5D76;
             height: 3rem;
             line-height: 3rem;
+            border-right: 1px solid #8db9ca;;
         }
         &.sapMSltPressed{
             .sapMSltArrow{
@@ -1101,6 +1102,9 @@ STATION TRACKER TOOLBAR
             }
         }
     }
+   .sapMSlt{
+   	border :none ;
+   }
 }
 .sapMPopoverScroll{
     .sapMSelectListItemBaseSelected{
