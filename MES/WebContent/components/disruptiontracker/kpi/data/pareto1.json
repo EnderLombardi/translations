@@ -1,0 +1,29 @@
+{ "Rowsets" : { 
+	"DateCreated" : "2016-12-21T13:27:34", "Version" : "15.1 SP2 Patch 13 (Oct 6, 2016)", "StartDate" : "2016-12-21T12:27:34+0100", "EndDate" : "2016-12-21T13:27:34+0100", "CachedTime" : "", 
+	"Rowset" : [ 
+	{ "Columns" : { 
+		"Column" : [ ] }, 
+	"Row" : [
+                {"Disruptions": "DISRUPT-0211 / Material Missing","Occurrences": 25, "Percent": 20,"Value":6,"Values":100},
+                {"Disruptions": "DISRUPT-0211 / Jig Missing","Occurrences": 18, "Percent": 28,"Value":4,"Values":100},
+                {"Disruptions": "DISRUPT-0211 / Measuring Wrong","Occurrences": 15, "Percent":35,"Value":5,"Values":100},
+                {"Disruptions": "DISRUPT-0211 / Packaging defect","Occurrences": 12, "Percent": 45,"Value":3,"Values":100},
+                {"Disruptions": "DISRUPT-0211 / Documentation Wrong","Occurrences":12, "Percent": 55,"Value":3,"Values":100},
+                {"Disruptions": "DISRUPT-0211 / Support Functions","Occurrences": 12, "Percent":65,"Value":2,"Values":100},
+                
+                {"Disruptions": "DISRUPT-0212 / Process optimizable","Occurrences":10, "Percent": 73,"Value":1,"Values":100},
+                {"Disruptions": "DISRUPT-0212 / Cleansing","Occurrences":10, "Percent": 77,"Value":3,"Values":100},
+                {"Disruptions": "DISRUPT-0212 / Installation Nonconfirmation","Occurrences": 8, "Percent":80,"Value":4,"Values":100},
+                {"Disruptions": "DISRUPT-0212 / Accessability no available","Occurrences": 8, "Percent": 83,"Value":6,"Values":100},
+                {"Disruptions": "DISRUPT-0212 / FOD without Damage Wrong","Occurrences":6, "Percent": 86,"Value":7,"Values":100},
+                {"Disruptions": "DISRUPT-0212 / Supplied Jig Wrong","Occurrences": 6, "Percent":88,"Value":2,"Values":100},
+                
+                {"Disruptions": "DISRUPT-0213 / Documentation Missing","Occurrences": 6, "Percent": 90,"Value":2,"Values":100},
+                {"Disruptions": "DISRUPT-0213 /Work Order Wrong","Occurrences": 5, "Percent": 92,"Value":3,"Values":100},
+                {"Disruptions": "DISRUPT-0213 /Function non Confirmation","Occurrences": 3, "Percent":94,"Value":4,"Values":100},
+                {"Disruptions": "DISRUPT-0213 /Supply defect","Occurrences": 3, "Percent": 95,"Value":2,"Values":100},
+                {"Disruptions": "DISRUPT-0213 /Material Wrong","Occurrences":2, "Percent": 97,"Value":1,"Values":100},
+                {"Disruptions": "DISRUPT-0213 /Support not Provided","Occurrences": 1, "Percent":100,"Value":5,"Values":100}	                    
+            ]
+	 } ]
+} }

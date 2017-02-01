@@ -1,29 +1,132 @@
 <core:View controllerName="airbus.mes.disruptiontracker.kpi.disruptionKPIChart"
 	xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:viz="sap.viz.ui5.controls"
 	xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:viz.data="sap.viz.ui5.data"
-	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
-	xmlns:commons="sap.ui.commons">
+	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:commons="sap.ui.commons">
 
 	<Page showHeader="false" class="disruptionKPI">
-		<Bar id="disruptionKPITitleSubheader" class="pageHeader">
-			<contentLeft>
-				<Button id="navBack" icon="sap-icon://arrow-left" text="{i18n>back}"
-					press="onNavBack" type="Transparent" />
-			</contentLeft>
-			<contentMiddle>
-				<Label id="disruptionKPITitle" text="{i18n>disruptionKPITitle}"
-					class="lineTrackerName" />
-			</contentMiddle>
-		</Bar>
+		<!-- <Bar id="disruptionKPITitleSubheader" class="pageHeader"> <contentLeft> 
+			<Button id="navBack" icon="sap-icon://arrow-left" text="{i18n>back}" press="onNavBack" 
+			type="Transparent" /> </contentLeft> <contentMiddle> <Label id="disruptionKPITitle" 
+			text="{i18n>disruptionKPITitle}" class="lineTrackerName" /> </contentMiddle> 
+			</Bar> -->
+		<Toolbar class="pageHeader">
+			<Title text="{i18n>disruptionKPITitle}" id="headerText" class="headerText" />
+			<ComboBox id="stationComboBox" class="sapUiMediumMarginEnd customComboBox"
+				placeholder="{disruptiontrackerI18n>selectStation}" items="{ path:'plantModel>/Rowsets/Rowset/0/Row' }"
+				selectedKey="" selectionChange="filterByStation"
+				enabled="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setVisible'}">
+				<core:Item key="{plantModel>station}" text="{plantModel>stationDescription}" />
+			</ComboBox>
+
+			<ComboBox id="msnComboBox" class="sapUiMediumMarginEnd customComboBox"
+				placeholder="{disruptiontrackerI18n>selectMSN}" items="{ path:'plantModel>/Rowsets/Rowset/0/Row' }"
+				selectedKey="" selectionChange="filterByStation"
+				enabled="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setVisible'}">
+				<core:Item key="{plantModel>msn}" text="{plantModel>msn}" />
+			</ComboBox>
+
+			<ComboBox id="statusComboBox" class="sapUiMediumMarginEnd customComboBox"
+				placeholder="{disruptiontrackerI18n>selectStatus}" selectedKey=""
+				selectionChange="filterDisruptions"
+				enabled="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setVisible'}">
+				<core:Item key="" text="{disruptiontrackerI18n>All}" />
+				<core:Item key="Pending" text="{disruptiontrackerI18n>status.pending}" />
+				<core:Item key="Acknowledged"
+					text="{disruptiontrackerI18n>status.acknowledged}" />
+				<core:Item key="Solved" text="{disruptiontrackerI18n>status.solved}" />
+				<core:Item key="Closed" text="{disruptiontrackerI18n>status.closed}" />
+				<core:Item key="Rejected" text="{disruptiontrackerI18n>status.rejected}" />
+			</ComboBox>
+
+			<ComboBox id="resolutionGroupBox" class="sapUiMediumMarginEnd customComboBox"
+				placeholder="{disruptiontrackerI18n>resolutionGroup}" items="{disruptionsTrackerModel>/Rowsets/Rowset/0/Row}"
+				selectedKey="" selectionChange="filterDisruptions"
+				enabled="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setVisible'}">
+				<core:Item key="{disruptionsTrackerModel>ResponsibleGroup}"
+					text="{disruptionsTrackerModel>ResponsibleGroupDesc}" />
+			</ComboBox>
+
+		</Toolbar>
+
+
 		<content>
+			<OverflowToolbar class="Subheader"
+				width="100%">
+				<content>
+					<Button id="navBack" icon="sap-icon://arrow-left" press="onNavBack"
+						type="Transparent" />
+					<SegmentedButton id="buttonViewMode">
+						<layoutData>
+							<OverflowToolbarLayoutData priority="NeverOverflow" />
+						</layoutData>
+
+						<items>
+							<SegmentedButtonItem text="{calendarI18n>ButtonShift}"
+								press="onShiftPress" key="shift" />
+							<SegmentedButtonItem text="{calendarI18n>ButtonDay}"
+								press="onDayPress" key="day" />
+							<SegmentedButtonItem text="{calendarI18n>ButtonTAKT}"
+								press="onTaktPress" key="takt" />
+						</items>
+					</SegmentedButton>
+
+
+					<Label text="{calendarI18n>teamavaibility}" class="classDateLabel" />
+
+					<core:Icon id="calendarAbsence" src="sap-icon://color-fill" />
+					<Label id="calendarAbsenceLabel" text="{calendarI18n>calendarAbsence}"
+						class="initialFont" />
+
+					<core:Icon id="calendarDiversion" src="sap-icon://color-fill" />
+					<Label id="calendarDiversionLabel" text="{calendarI18n>calendarDiversion}"
+						class="initialFont" />
+
+					<core:Icon id="calendarLoaned" src="sap-icon://color-fill" />
+					<Label id="calendarLoanedLabel" text="{calendarI18n>calendarLoaned}"
+						class="initialFont" />
+
+
+
+					<ToolbarSpacer />
+
+					<Select id="calendarRessource" class="sapUiTinyMarginBeginEnd comboBoxStyle"
+						items="{ressourcePoolModel>/Rowsets/Rowset/0/Row}" change="filterByRessourcePool">
+						<core:ListItem key="{ressourcePoolModel>RESSOURCE_ID}"
+							text="{ressourcePoolModel>RESSOURCE_DESC}" />
+					</Select>
+
+					<Button id="calendarCapacity" type="Transparent" enabled="false"
+						icon="sap-icon://hide" text="{calendarI18n>showCapacity}" />
+					<!--[MES V1.5] [Beg]SD-SP1604983-DT-040 -->
+					<SearchField id="disruptionSearchField" width="40%"
+						placeholder="search for..." enableSuggestions="true" search="onSearchDisruption"
+						suggest="onDisruptionSuggestions">
+					</SearchField>
+					<!--[MES V1.5] [End]SD-SP1604983-DT-040 -->
+
+					<ToolbarSpacer />
+
+					<Button text="{disruptiontrackerI18n>ExporttoExcel}" icon="sap-icon://excel-attachment"
+						press="handleSelectedRowExcelExport" id="exportbutton" class="borderbutton" />
+
+					<Button id="onDisruptionTableSettings" type="Transparent"
+						press="onDisruptionTableSettings" icon="sap-icon://drop-down-list"
+						tooltip="{disruptiontrackerI18n>disruptionFilter}" class="borderbutton" />
+
+					<Button id="gotoDisruptionKpi" icon="sap-icon://area-chart"
+						text="{disruptiontrackerI18n>disruptionKPI}" press="onPressDisruptionKPI"
+						visible="false" class="borderbutton" />
+				</content>
+			</OverflowToolbar>
+
+
 			<l:Grid hSpacing="1" vSpacing="1" defaultSpan="L6 M12 S12">
 				<l:content>
 
 					<viz:VizFrame id="vizFrame" width="100%" class="chart"
 						uiConfig="{applicationSet:'fiori'}" legendVisible="false">
 						<viz:dataset>
-							<viz.data:FlattenedDataset
-								data="{TimeLostperAttribute>/category}">
+							<viz.data:FlattenedDataset data="{TimeLostperAttribute>/category}">
 								<viz.data:dimensions>
 									<viz.data:DimensionDefinition
 										axis="1" name="{i18n>Category}" value="{TimeLostperAttribute>name}" />
@@ -41,16 +144,16 @@
 								type="Measure" values="{i18n>TimeLost}" />
 						</viz:feeds>
 					</viz:VizFrame>
-                    
-                    <commons:HorizontalDivider id ="divider1" class="sapUiSmallMarginTopBottom" visible="" ></commons:HorizontalDivider>
-					
-					
-					
+
+					<commons:HorizontalDivider id="divider1"
+						class="sapUiSmallMarginTopBottom" visible=""></commons:HorizontalDivider>
+
+
+
 					<viz:VizFrame id="vizFrame2" width="100%" class="chart"
 						uiConfig="{applicationSet:'fiori'}" legendVisible="false">
 						<viz:dataset width="50%">
-							<viz.data:FlattenedDataset
-								data="{TimeLostperAttribute>/reason}">
+							<viz.data:FlattenedDataset data="{TimeLostperAttribute>/reason}">
 								<viz.data:dimensions>
 									<viz.data:DimensionDefinition
 										axis="1" name="{i18n>Reason}" value="{TimeLostperAttribute>name}" />
@@ -68,15 +171,16 @@
 								type="Measure" values="{i18n>TimeLost}" />
 						</viz:feeds>
 					</viz:VizFrame>
-					
-					<commons:HorizontalDivider id ="divider2" class="sapUiSmallMarginTopBottom" visible="true"></commons:HorizontalDivider>
-					<commons:HorizontalDivider id ="divider3" class="sapUiSmallMarginTopBottom"></commons:HorizontalDivider>
-					
+
+					<commons:HorizontalDivider id="divider2"
+						class="sapUiSmallMarginTopBottom" visible="true"></commons:HorizontalDivider>
+					<commons:HorizontalDivider id="divider3"
+						class="sapUiSmallMarginTopBottom"></commons:HorizontalDivider>
+
 					<viz:VizFrame id="vizFrame3" width="100%" class="chart"
 						vizType="bar" uiConfig="{applicationSet:'fiori'}" legendVisible="false">
 						<viz:dataset width="50%">
-							<viz.data:FlattenedDataset
-								data="{TimeLostperAttribute>/operation}">
+							<viz.data:FlattenedDataset data="{TimeLostperAttribute>/operation}">
 								<viz.data:dimensions>
 									<viz.data:DimensionDefinition
 										axis="1" name="{i18n>operation}"
@@ -95,16 +199,16 @@
 								type="Measure" values="{i18n>TimeLost}" />
 						</viz:feeds>
 					</viz:VizFrame>
-                    
-                    <commons:HorizontalDivider id ="divider4" class="sapUiSmallMarginTopBottom" visible =""></commons:HorizontalDivider>
-					
-					
-					
+
+					<commons:HorizontalDivider id="divider4"
+						class="sapUiSmallMarginTopBottom" visible=""></commons:HorizontalDivider>
+
+
+
 					<viz:VizFrame id="vizFrame4" width="100%" class="chart"
 						vizType="bar" uiConfig="{applicationSet:'fiori'}" legendVisible="false">
 						<viz:dataset width="50%">
-							<viz.data:FlattenedDataset
-								data="{TimeLostperAttribute>/msn}">
+							<viz.data:FlattenedDataset data="{TimeLostperAttribute>/msn}">
 								<viz.data:dimensions>
 									<viz.data:DimensionDefinition
 										axis="1" name="{i18n>MSN}" value="{TimeLostperAttribute>name}" />
