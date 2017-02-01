@@ -53,69 +53,7 @@
 			<OverflowToolbar class="Subheader"
 				width="100%">
 				<content>
-					<Button id="navBack" icon="sap-icon://arrow-left" press="onNavBack"
-						type="Transparent" />
-					<SegmentedButton id="buttonViewMode">
-						<layoutData>
-							<OverflowToolbarLayoutData priority="NeverOverflow" />
-						</layoutData>
-
-						<items>
-							<SegmentedButtonItem text="{calendarI18n>ButtonShift}"
-								press="onShiftPress" key="shift" />
-							<SegmentedButtonItem text="{calendarI18n>ButtonDay}"
-								press="onDayPress" key="day" />
-							<SegmentedButtonItem text="{calendarI18n>ButtonTAKT}"
-								press="onTaktPress" key="takt" />
-						</items>
-					</SegmentedButton>
-
-
-					<Label text="{calendarI18n>teamavaibility}" class="classDateLabel" />
-
-					<core:Icon id="calendarAbsence" src="sap-icon://color-fill" />
-					<Label id="calendarAbsenceLabel" text="{calendarI18n>calendarAbsence}"
-						class="initialFont" />
-
-					<core:Icon id="calendarDiversion" src="sap-icon://color-fill" />
-					<Label id="calendarDiversionLabel" text="{calendarI18n>calendarDiversion}"
-						class="initialFont" />
-
-					<core:Icon id="calendarLoaned" src="sap-icon://color-fill" />
-					<Label id="calendarLoanedLabel" text="{calendarI18n>calendarLoaned}"
-						class="initialFont" />
-
-
-
-					<ToolbarSpacer />
-
-					<Select id="calendarRessource" class="sapUiTinyMarginBeginEnd comboBoxStyle"
-						items="{ressourcePoolModel>/Rowsets/Rowset/0/Row}" change="filterByRessourcePool">
-						<core:ListItem key="{ressourcePoolModel>RESSOURCE_ID}"
-							text="{ressourcePoolModel>RESSOURCE_DESC}" />
-					</Select>
-
-					<Button id="calendarCapacity" type="Transparent" enabled="false"
-						icon="sap-icon://hide" text="{calendarI18n>showCapacity}" />
-					<!--[MES V1.5] [Beg]SD-SP1604983-DT-040 -->
-					<SearchField id="disruptionSearchField" width="40%"
-						placeholder="search for..." enableSuggestions="true" search="onSearchDisruption"
-						suggest="onDisruptionSuggestions">
-					</SearchField>
-					<!--[MES V1.5] [End]SD-SP1604983-DT-040 -->
-
-					<ToolbarSpacer />
-
-					<Button text="{disruptiontrackerI18n>ExporttoExcel}" icon="sap-icon://excel-attachment"
-						press="handleSelectedRowExcelExport" id="exportbutton" class="borderbutton" />
-
-					<Button id="onDisruptionTableSettings" type="Transparent"
-						press="onDisruptionTableSettings" icon="sap-icon://drop-down-list"
-						tooltip="{disruptiontrackerI18n>disruptionFilter}" class="borderbutton" />
-
-					<Button id="gotoDisruptionKpi" icon="sap-icon://area-chart"
-						text="{disruptiontrackerI18n>disruptionKPI}" press="onPressDisruptionKPI"
-						visible="false" class="borderbutton" />
+					<Button id="navBack" icon="sap-icon://arrow-left" press="onNavBack" type="Transparent" />
 				</content>
 			</OverflowToolbar>
 
