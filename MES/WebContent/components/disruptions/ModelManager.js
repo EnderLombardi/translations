@@ -186,11 +186,11 @@ airbus.mes.disruptions.ModelManager = {
 		sap.ui.getCore().byId("createDisruptionView--selectResolver").setBusy(true);
 		
 		
-		var url = airbus.mes.disruptions.ModelManager.getRsnResponsibleGrpURL(sResolverGroup)
+		var url = airbus.mes.disruptions.ModelManager.getResolverModelURL(sResolverGroup)
 		sap.ui.getCore().getModel("disruptionResolverModel").loadData(url);	
 	},
 	
-	getResolverModelURL : function(sMsgType) {
+	getResolverModelURL : function(sResolverGroup) {
 		var urlGetRsnResponsibleGrp = this.urlModel.getProperty("urlGetResolver");
 		urlGetRsnResponsibleGrp = airbus.mes.shell.ModelManager.replaceURI(urlGetRsnResponsibleGrp,
 				"$site", airbus.mes.settings.ModelManager.site);
@@ -357,7 +357,6 @@ airbus.mes.disruptions.ModelManager = {
 	 */
 
 	getURLCreateDisruption : function() {
-		airbus.mes.operationdetail.oView.setBusy(true); // Set Busy Indicator
 		var urlCreateDisruption = this.urlModel
 				.getProperty("urlCreateDisruption");
 		return urlCreateDisruption;
@@ -378,10 +377,7 @@ airbus.mes.disruptions.ModelManager = {
 					type : 'POST',
 					data : {
 						"Param.1" : airbus.mes.settings.ModelManager.site,
-						/* "Param.2" : "NG42E7A", */
-						"Param.2" : sap.ui.getCore().getModel(
-								"userSettingModel").getProperty(
-								"/Rowsets/Rowset/0/Row/0/user"),
+						"Param.2" : sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"),
 						"Param.3" : messageType,
 						"Param.4" : messageSubject,
 						"Param.5" : messageBody,
@@ -389,8 +385,7 @@ airbus.mes.disruptions.ModelManager = {
 							payloadAttributelist : payloadData
 						}),
 						"Param.7" : messageHandle,
-						// gravity
-						"Param.8" : payloadData[0].payload[8].value,
+						"Param.8" : payloadData[0].payload[8].value,	// gravity
 						"Param.9": sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/sfc"),
 						"Param.10": sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/operation_bo").split(",")[1],  //Operation number
 						"Param.11": "DEFAULT"
@@ -407,22 +402,20 @@ airbus.mes.disruptions.ModelManager = {
 										.messageShow(data.Rowsets.Rowset[0].Row[0].Message);
 
 								// load disruption Model again for new message
+								airbus.mes.disruptions.ModelManager.createEditFlag =true;
 								var operationBO = sap.ui.getCore().getModel(
 										"operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_bo;
 								var sSfcStepRef = sap.ui.getCore().getModel(
 										"operationDetailModel").oData.Rowsets.Rowset[0].Row[0].sfc_step_ref;
-								airbus.mes.disruptions.ModelManager
-										.loadDisruptionsByOperation(
-												operationBO, sSfcStepRef);
+								
+								airbus.mes.disruptions.ModelManager.loadDisruptionsByOperation(operationBO, sSfcStepRef);
+								
 								// Refresh station tracker
-								airbus.mes.shell.oView.getController()
-										.renderStationTracker();
+								airbus.mes.shell.oView.getController().renderStationTracker();
 
 
 								// navigate to View Disruption after success message
 								sap.ui.getCore().byId("operationDetailsView--operDetailNavContainer").back();
-								
-								airbus.mes.disruptions.ModelManager.createEditFlag =true;
 								
 								if(airbus.mes.disruptions.ModelManager.gravity_temp == "3"){ // if blocking disruption created
 									// set paused value in operation detail model
@@ -546,39 +539,32 @@ airbus.mes.disruptions.ModelManager = {
 
 								if (currentPage == "stationTrackerView") {
 
-									// Load disruption Model again for updated
-									// message
+									// Load disruption Model again for updated message
+									airbus.mes.disruptions.ModelManager.createEditFlag =true;
 									var operationBO = sap.ui.getCore()
 											.getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_bo;
 									var sSfcStepRef = sap.ui.getCore()
 											.getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].sfc_step_ref;
-									airbus.mes.disruptions.ModelManager
-											.loadDisruptionsByOperation(
-													operationBO, sSfcStepRef);
+									airbus.mes.disruptions.ModelManager.loadDisruptionsByOperation(operationBO, sSfcStepRef);
+									
 									// Refresh station tracker
-									airbus.mes.shell.oView.getController()
-											.renderStationTracker();
+									airbus.mes.shell.oView.getController().renderStationTracker();
 
 									sap.ui
 											.getCore()
-											.byId(
-													"operationDetailsView--operDetailNavContainer")
+											.byId("operationDetailsView--operDetailNavContainer")
 											.back();
 
 								} else if (currentPage == "disruptiontrackerView") {
-									airbus.mes.disruptions.ModelManager
-											.updateDisruptionModel();
-									airbus.mes.disruptiontracker.oView
-											.getController().disruptionTrackerRefresh = true;
+									airbus.mes.disruptions.ModelManager.updateDisruptionModel();
+									airbus.mes.disruptiontracker.oView.getController().disruptionTrackerRefresh = true;
 									sap.ui
 											.getCore()
-											.byId(
-													"disruptionDetailPopup--disruptDetailNavContainer")
+											.byId("disruptionDetailPopup--disruptDetailNavContainer")
 											.back();
 
 								}
 
-								airbus.mes.disruptions.ModelManager.createEditFlag =true;
 								
 								if(airbus.mes.disruptions.ModelManager.gravity_temp == "3"){ // if disruption is set to blocking
 									// set paused value in operation detail model

@@ -50,18 +50,31 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
 				var sCateoryKey= this.getView().byId("selectFivemCategory").getSelectedKey();
 				aFilters.push(new sap.ui.model.Filter("CATEGORY_CLASS", sap.ui.model.FilterOperator.EQ, sCateoryKey));
 				this.getView().byId("selectCategory").getBinding("items").filter(aFilters);
+				this.getView().byId("selectCategory").setSelectedKey();
     	   
-    	   case "selectCategory":				
+    	   case "selectCategory":
+    		   
 				if(airbus.mes.disruptions.ModelManager.createViewMode == "Edit")
 					airbus.mes.disruptions.ModelManager.createViewMode = "Update";
+				
+    		   	if(this.getView().byId("selectCategory").getSelectedKey() == ""){ // Avoid un-necessary ajax call
+	   		   		this.afterRsnRespGrpModelLoad();
+			   		break;
+	   		   	}
 				
 				airbus.mes.disruptions.ModelManager.loadRsnResponsibleGrp(this.getView().byId("selectCategory").getSelectedKey());
 				break;
 				
-    	   case "selectResponsibleGrp":	//+V1.5			
+    	   case "selectResponsibleGrp":	//+V1.5
+	   		   	
 				if(airbus.mes.disruptions.ModelManager.createViewMode == "Edit")
 					airbus.mes.disruptions.ModelManager.createViewMode = "Update";
 				
+	   		   	if(this.getView().byId("selectResponsibleGrp").getSelectedKey() == ""){ // Avoid un-necessary ajax call
+	   		   		this.afterResolverModelLoad();
+			   		break;
+	   		   	}
+	   		   	
 				airbus.mes.disruptions.ModelManager.loadResolverModel(this.getView().byId("selectResponsibleGrp").getSelectedKey());
 				break;  
 					
@@ -92,8 +105,14 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
     	   if(airbus.mes.disruptions.ModelManager.createViewMode == "Create" || airbus.mes.disruptions.ModelManager.createViewMode == "Update"){
    				oView.byId("selectreason").setSelectedKey();
 	   			oView.byId("selectResponsibleGrp").setSelectedKey();
-	   			oView.byId("selectreason").setEnabled(true);
-	   			oView.byId("selectResponsibleGrp").setEnabled(true);
+	   			
+	   			if(this.getView().byId("selectCategory").getSelectedKey() == ""){
+		   			oView.byId("selectreason").setEnabled(false);
+		   			oView.byId("selectResponsibleGrp").setEnabled(false);
+	   			}else{
+		   			oView.byId("selectreason").setEnabled(true);
+		   			oView.byId("selectResponsibleGrp").setEnabled(true);
+	   			}
 	   			
 	   			// Disable Resolver name field 
 	   			oView.byId("selectResolver").setEnabled(false);  //+V1.5
@@ -132,7 +151,11 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
 
     	   if(airbus.mes.disruptions.ModelManager.createViewMode == "Create" || airbus.mes.disruptions.ModelManager.createViewMode == "Update"){
    				oView.byId("selectResolver").setSelectedKey();
-	   			oView.byId("selectResolver").setEnabled(true);
+   				
+   				if(this.getView().byId("selectResponsibleGrp").getSelectedKey() == "")
+   					oView.byId("selectResolver").setEnabled(false);
+   				else
+   					oView.byId("selectResolver").setEnabled(true);
 	   		} 
 	   		else if(airbus.mes.disruptions.ModelManager.createViewMode == "Edit"){
 
@@ -336,14 +359,9 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
               var sComment = airbus.mes.disruptions.Formatter.actions.create +
 			   				 oView.byId("comment").getValue();
 
-              // forcefully set handle as the first item in the list
-              // after selecting Category, Reason, Responsible and
-              // RootCasue,
-              // As this handle will act as a unique key for selection
-
-              oView.byId("handle").setSelectedKey(oView.byId("handle").getItemAt(0).getText());
-
-              var sHandle = oView.byId("handle").getSelectedKey();
+              // Get handle for the selected disruption custom data row - hanlde is a unique for Custom Data
+              var sPathReason = oView.byId("selectreason").getSelectedItem().getBindingInfo("key").binding.getContext().sPath
+              var sHandle     = oView.getModel("disruptionRsnRespGrp").getProperty(sPathReason).HANDLE;
 
               // Create a JSON for payload attributes
               var aModelData = []
@@ -404,9 +422,6 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
                            }, {
                                   "attribute" : "JIG_TOOLS",
                                   "value" : sJigtools
-                           }, {
-                                  "attribute" : "ISSUER", // V1.5
-                                  "value" : oView.byId("selectIssuer").getSelectedKey()
                            }, {
                                   "attribute" : "FIVEM_CATEGORY", // V1.5
                                   "value" : oView.byId("selectFivemCategory").getSelectedKey()
