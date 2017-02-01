@@ -317,7 +317,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 					//"SFC_STEP_REF" : el.SFC_STEP_REF
 					"FAMILY_AVL_GROUPING" : el.FAMILY_AVL_GROUPING,
 					"FAMILY_AVL_BOXING" : el.FAMILY_AVL_BOXING,
-					"ROUTERSTEPBO" : el.ROUTERSTEPBO
+					"ROUTERSTEPBO" : el.ROUTER_STEP_BO
 										
 			};
 			
@@ -466,7 +466,7 @@ airbus.mes.stationtracker.GroupingBoxingManager	 = {
 						sPaused = el.PAUSED;
 						sPreviouslyStarted = el.PREVIOUSLY_STARTED;
 						
-						sRouterStepBo = el.ROUTERSTEPBO;
+						sRouterStepBo = el.ROUTER_STEP_BO;
 						
 						if ( sBox === oGroupingBoxingManager.specialGroup) {
 							

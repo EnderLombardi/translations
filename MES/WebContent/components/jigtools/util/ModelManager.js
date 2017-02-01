@@ -32,8 +32,9 @@ airbus.mes.jigtools.util.ModelManager = {
 
 	//load
 	loadjigToolsWorkOrderDetail : function() {
-		var ddata;
-		var that = this;
+		
+		this.workOrder = airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].wo_no;
+		
         var oViewModel = sap.ui.getCore().getModel("jigToolsWorkOrderDetail");
 //        airbus.mes.stationtracker.oView.byId("boxTaktAdherenceRight").setBusy(true);
         jQuery.ajax({
@@ -41,8 +42,8 @@ airbus.mes.jigtools.util.ModelManager = {
             url : this.urlModel.getProperty("jigToolsWorkOrderDetail"),
             contentType : 'application/json',
             data : JSON.stringify({
-                "site" : "FNZ1", //airbus.mes.settings.ModelManager.site,
-                "shopOrder" : "112307" //this.workOrder
+                "site" : airbus.mes.settings.ModelManager.site,
+                "shopOrder" : this.workOrder
             }),
 
             success : function(data) {
@@ -51,13 +52,10 @@ airbus.mes.jigtools.util.ModelManager = {
                     data = JSON.parse(data);
                 }
                 oViewModel.setData(data);
-//                airbus.mes.stationtracker.oView.byId("boxTaktAdherenceRight").setBusy(false);
             },
 
             error : function(error, jQXHR) {
                 console.log(error);
-//                airbus.mes.stationtracker.oView.byId("boxTaktAdherenceRight").setBusy(false);
-
             }
         });
 		

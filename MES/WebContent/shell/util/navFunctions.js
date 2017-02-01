@@ -195,7 +195,12 @@ airbus.mes.shell.util.navFunctions = {
 
             jQuery.sap.registerModulePath("airbus.mes.jigtools", "../components/jigtools");
             sap.ui.getCore().createComponent({ name: "airbus.mes.jigtools" });
+        } else if (airbus.mes.jigtools.oView.oController && airbus.mes.jigtools.util.ModelManager) {
+            //load data in the model at the init of the component
+            airbus.mes.jigtools.util.ModelManager.loadjigToolsWorkOrderDetail();
         }
+        
+        
         if (container.getPage("jigtoolsView") === null) {
             container.addPage(airbus.mes.jigtools.oView);
         }
@@ -382,7 +387,6 @@ airbus.mes.shell.util.navFunctions = {
             nav.addPage(airbus.mes.docviewer.oView);
         }
 
-        // Set function to be executed on closing the document viewer (Not mandatory - can be undefined or empty as well)
         airbus.mes.docviewer.ModelManager.onCloseFunction = closeFunction;
 
         // Navigate to the view

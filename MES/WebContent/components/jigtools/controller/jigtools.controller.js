@@ -59,7 +59,7 @@ sap.ui.controller("airbus.mes.jigtools.controller.jigtools", {
 	filterJigsTools: function (sScope) {
 		switch (sScope) {
 			case airbus.mes.jigtools.util.ModelManager.operation:
-				sap.ui.getCore().byId("jigtoolsView--jigToolList").getBinding("items").filter(new sap.ui.model.Filter("operation", "EQ", "operation2"));
+				sap.ui.getCore().byId("jigtoolsView--jigToolList").getBinding("items").filter(new sap.ui.model.Filter("routerStep", "EQ", sap.ui.getCore().getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].routerStepBo));
 				break;
 			case airbus.mes.jigtools.util.ModelManager.workOrder:
 				sap.ui.getCore().byId("jigtoolsView--jigToolList").getBinding("items").filter();

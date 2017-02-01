@@ -25,19 +25,6 @@
  			class="jigToolListtable"
 			items="{path: 'jigToolsWorkOrderDetail>/toolInfoList/'}">
 			
-			<headerToolbar>
-					<!-- Search and sort item
-						 <OverflowToolbar id="otbSubheader">
-                        <ToolbarSpacer/>
-                        <SearchField id="maxPrice" liveChange="onFilter">
-                            <layoutData><OverflowToolbarLayoutData minWidth="200px" maxWidth="300px" shrinkable="true"/></layoutData>
-                        </SearchField>
-                        <Button text="Reset" type="" press="onReset"/>
-                        <OverflowToolbarButton type="" text="Sort" icon="sap-icon://sort" press="onSort"/>
-                        <OverflowToolbarButton type="" text="Group" icon="sap-icon://group-2" press="onGroup"/>
-                    </OverflowToolbar> -->
-			</headerToolbar>
-			
 			<columns>
 				<Column>
 					<Text text="{i18nJigstoolsModel>materialNumber}" />
@@ -60,7 +47,7 @@
 				<ColumnListItem>
 					<cells>
 						<Text text="{jigToolsWorkOrderDetail>materialNumber}" />
-						<Text text="{jigToolsWorkOrderDetail>warehouse + warehouseDescription}" />
+						<Text text="{jigToolsWorkOrderDetail>warehouse} - {jigToolsWorkOrderDetail>warehouseDescription}" />
 						<Text text="{jigToolsWorkOrderDetail>prodResCat}" />
 						<Text text="{jigToolsWorkOrderDetail>toolDescription}" />
 						<Text text="{jigToolsWorkOrderDetail>quantity}" />
