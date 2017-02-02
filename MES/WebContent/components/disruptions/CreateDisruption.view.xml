@@ -78,7 +78,7 @@
 
 
 
-								<!-- <f:FormElement>
+								 <f:FormElement visible="false">
 									<f:label>
 										<Label required="true" text="{i18nModel>Issuer}">
 											<layoutData>
@@ -99,7 +99,7 @@
 											</layoutData>
 										</ComboBox>
 									</f:fields>
-								</f:FormElement> -->
+								</f:FormElement>
 
 
 								

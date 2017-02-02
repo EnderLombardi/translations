@@ -59,7 +59,7 @@ airbus.mes.disruptions.Component.prototype.createContent = function() {
         this.oView.viewDisruption.setModel(sap.ui.getCore().getModel("operationDisruptionsModel"),"operationDisruptionsModel");
 
         //Model for Issuer of create disruption - V1.5
-        this.oView.createDisruption.setModel(sap.ui.getCore().getModel("ressourcePoolModel"),"ressourcePoolModel");
+       // this.oView.createDisruption.setModel(sap.ui.getCore().getModel("ressourcePoolModel"),"ressourcePoolModel");
 
 
         //Model for custom data of edit disruption

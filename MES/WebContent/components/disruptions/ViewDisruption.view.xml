@@ -70,7 +70,7 @@
 											</f:fields>
 										</f:FormElement>
 										
-										<f:FormElement>
+										<f:FormElement visible="false">
 											<f:label>
 												<Label class="detailLabels" text="{i18nModel>Issuer}">
 													<layoutData>
@@ -126,8 +126,7 @@
 												</Text>
 											</f:fields>
 										</f:FormElement>
-										
-										
+																			
 										
 										<f:FormElement>
 											<f:label>
@@ -423,6 +422,9 @@
 										<Text text="|" class="sapUiSmallMarginBeginEnd"></Text>
 										<Text
 											text="{i18nModel>action} : {parts: [ {path: 'operationDisruptionsModel>Action'}, {path: 'operationDisruptionsModel>Comments'}], formatter: 'airbus.mes.disruptions.Formatter.formatCommentAction'}"></Text>
+											<Text text="|" class="sapUiSmallMarginBeginEnd"></Text>
+										<Text
+											text="{i18nModel>date/time} : {path: 'operationDisruptionsModel>Date'}"></Text>
 									</items>
 								</HBox>
 
