@@ -23,7 +23,8 @@
                     rows="{getOpeAttachments>/Rowsets/Rowset/0/Row}"
                     ariaLabelledBy="title"
                     toggleOpenState="onToggleTreeTable"
-                    selectionMode="None">
+                    selectionMode="None"
+                    firstVisibleRowChanged="onScroll">
                 <columns>
                     <Column width="20%">
                         <m:Label class="DisOpAttLabel" text="{i18nDisplayOpeAttachmentsModel>Documents}"/>

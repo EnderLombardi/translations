@@ -72,7 +72,7 @@ airbus.mes.displayOpeAttachments.util.ModelManager = {
 		var treeTableArray = this.treeTableArray;
 
 		for (i = 0; i < oViewModelRow.length; i++) {
-			treeTableArray.push(this.addObjDocType(i));
+			treeTableArray.push(this.addObjDocType(i, oViewModelRow));
 
 			for (var j = 0; j < oViewModelRow[i].documents.length; j++) {
 				treeTableArray.push(this.addObjDoc());
@@ -81,11 +81,12 @@ airbus.mes.displayOpeAttachments.util.ModelManager = {
 	},
 
 	//create an object doc type for createTreeTableArray
-	addObjDocType: function (i) {
+	addObjDocType: function (i, oViewModelRow) {
 		var objDocType = {};
 		objDocType.isDocType = true;
 		objDocType.isOpened = false;
 		objDocType.position = i;
+		objDocType.nbOfDocs = parseInt(oViewModelRow[i].dokarOrDoknr.split(" ")[2], 10);
 		return objDocType;
 	},
 
