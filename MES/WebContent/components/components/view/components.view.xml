@@ -1,99 +1,113 @@
-<mvc:View 
-	xmlns:core="sap.ui.core" 
-	xmlns:mvc="sap.ui.core.mvc"
-	xmlns="sap.m" 
-	controllerName="airbus.mes.components.controller.components"
-	xmlns:f="sap.ui.layout.form" 
-	xmlns:l="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml"
-	xmlns:cData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" >
+<mvc:View
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:table="sap.ui.table"
+    controllerName="airbus.mes.components.controller.components"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:cData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" >
 
-	<Page enableScrolling="false" showHeader="false" height="100%">
-	<content>
-		
-	<!-- <Text id="jigToollabel" class="jigToolListlabel" text="{i18nJigstoolsModel>JigTool}" /> -->
-	
-	<VBox id="ComponentsCheck" class="ComponentsCheck">
- 			<RadioButtonGroup columns="2" select="onSelectLevel">
-				<buttons>
-					<RadioButton id="operationButton" text="{i18nComponentsModel>componentsOperation}"/>
-					<RadioButton id="workOrderButton" text="{i18nComponentsModel>componentsWorkOrder}"/>
-				</buttons>
-			</RadioButtonGroup>
-	</VBox>
+    <Page enableScrolling="false" showHeader="false" height="100%">
+    <content>
 
-	<Table 	id="ComponentsList" class="ComponentsList"
-			items="{path: 'componentsWorkOrderDetail>/Rowsets/Rowset/0/Row/'}">
-			
-			<headerToolbar>
-					<!-- Search and sort item  -->
-						<OverflowToolbar id="otbSubheader">
-						<Button id="idFilterComponent"
-							text="{i18nComponentsModel>SelectFilter}"
-							type="Transparent" class="ClassProductionButton whiteColor whiteButton" press="onSelectFilter"/>	
-                        <SearchField id="idSearchComponent" liveChange="onFilterComponent">
-                            <layoutData><OverflowToolbarLayoutData minWidth="200px" maxWidth="300px" shrinkable="true"/></layoutData>
-                        </SearchField>
-                        </OverflowToolbar>
-			</headerToolbar>
-			
-			<columns>
-				<Column>
-					<Text text="{i18nComponentsModel>itemNumber}" />
-				</Column>
-				<Column>
-					<Text text="{i18nComponentsModel>operationNumber}" />
-				</Column>
-				<Column>
-					<Text text="{i18nComponentsModel>materialType}" />
-				</Column>
-				<Column>
-					<Text text="{i18nComponentsModel>materialDescription}" />
-				</Column>
-				<Column>
-					<Text text="{i18nComponentsModel>storageLocation}" />
-				</Column>
-				<Column>
-					<Text text="{i18nComponentsModel>freestockKanbanBulkMaterial}" />
-				</Column>
-				<Column>
-					<Text text="{i18nComponentsModel>requiredQty}" />
-				</Column>
-				<Column>
-					<Text text="{i18nComponentsModel>withdrawQty}" />
-				</Column>		
-				<Column>
-					<Text text="{i18nComponentsModel>shortage}" />
-				</Column>							
-				<Column>
-					<Text text="{i18nComponentsModel>unit}" />
-				</Column>
-				<Column>
-					<Text text="{i18nComponentsModel>serialNumber}" />
-				</Column>				
-			</columns>
+    <!-- <Text id="jigToollabel" class="jigToolListlabel" text="{i18nJigstoolsModel>JigTool}" /> -->
 
-			<items>
-				<ColumnListItem>
-					<cells>
-						<Text text="{componentsWorkOrderDetail>itemNumber}" />
-						<Text text="{componentsWorkOrderDetail>operationNumber}" />
-						<Text text="{componentsWorkOrderDetail>materialType}" />
-						<Text text="{componentsWorkOrderDetail>materialDescription}" />
-						<Text text="{componentsWorkOrderDetail>storageLocation}" />
-						<Text text="{componentsWorkOrderDetail>freestockKanbanBulkMaterial}" />
-						<Text text="{componentsWorkOrderDetail>requiredQty}" />
-						<Text text="{componentsWorkOrderDetail>withdrawQty}" />			
-						<Text text="{componentsWorkOrderDetail>shortage}" />		
-						<Text text="{componentsWorkOrderDetail>unit}" />			
-						<Text text="{componentsWorkOrderDetail>serialNumber}" />																											
-					</cells>
-				</ColumnListItem>
-			</items>
+    <VBox id="ComponentsCheck" class="ComponentsCheck">
+             <RadioButtonGroup columns="2" select="onSelectLevel">
+                <buttons>
+                    <RadioButton id="operationButton" text="{i18nComponentsModel>componentsOperation}"/>
+                    <RadioButton id="workOrderButton" text="{i18nComponentsModel>componentsWorkOrder}"/>
+                </buttons>
+            </RadioButtonGroup>
+    </VBox>
+        <table:Table id="ComponentsList" class="ComponentsList"
+                     rows="{componentsWorkOrderDetail>/Rowsets/Rowset/0/Row/}"
+                     selectionMode="None"
+                     editable="true">
+        <table:columns>
+            <table:Column  width="11rem">
+                <Label text="{i18nComponentsModel>itemNumber}" />
+                <table:template>
+                    <Label text="{componentsWorkOrderDetail>itemNumber}" />
+                </table:template>
+            </table:Column>
+            <table:Column  width="11rem">
+                <Label text="{i18nComponentsModel>operationNumber}" />
+                <table:template>
+                    <Label text="{componentsWorkOrderDetail>operationNumber}"/>
+                </table:template>
+            </table:Column>
+            <table:Column  width="11rem">
+                <Label text="{i18nComponentsModel>materialType}" />
+                <table:template>
+                    <Label text="{componentsWorkOrderDetail>materialType}"  />
+                </table:template>
+            </table:Column>
+            <table:Column  width="11rem">
+                <Label text="{i18nComponentsModel>materialDescription}" />
+                <table:template>
+                    <Label text="{componentsWorkOrderDetail>materialDescription}"  />
+                </table:template>
+            </table:Column>
+            <table:Column  width="11rem">
+                <Label text="{i18nComponentsModel>storageLocation}" />
+                <table:template>
+                    <Label text="{componentsWorkOrderDetail>storageLocation}"  />
+                </table:template>
+            </table:Column>
+            <table:Column  width="11rem">
+                <Label text="{i18nComponentsModel>freestockKanbanBulkMaterial}" />
+                <table:template>
+                    <Label text="{componentsWorkOrderDetail>freestockKanbanBulkMaterial}"  />
+                </table:template>
+            </table:Column>
+            <table:Column  width="11rem">
+                <Label text="{i18nComponentsModel>requiredQty}" />
+                <table:template>
+                    <Label text="{componentsWorkOrderDetail>requiredQty}"  />
+                </table:template>
+            </table:Column>
+            <table:Column  width="11rem">
+                <Label text="{i18nComponentsModel>withdrawQty}" />
+                <table:template>
+                    <Label text="{componentsWorkOrderDetail>withdrawQty}"  />
+                </table:template>
+            </table:Column>
+            <table:Column  width="11rem">
+                <Label text="{i18nComponentsModel>shortage}" />
+                <table:template>
+                    <Label text="{componentsWorkOrderDetail>shortage}"  />
+                </table:template>
+            </table:Column>
+            <table:Column  width="11rem">
+                <Label text="{i18nComponentsModel>unit}" />
+                <table:template>
+                    <Label text="{componentsWorkOrderDetail>unit}"  />
+                </table:template>
+            </table:Column>
+            <table:Column  width="11rem">
+                <Label text="{i18nComponentsModel>serialNumber}" />
+                <table:template>
+                    <Label text="{componentsWorkOrderDetail>serialNumber}"  />
+                </table:template>
+            </table:Column>
+            <table:Column  width="11rem">
+                <Label text="{i18nComponentsModel>committed}" />
+                <table:template>
+                    <Label text="{componentsWorkOrderDetail>committed}" />
+                </table:template>
+            </table:Column>
+            <table:Column  width="11rem">
+                <Label text="{i18nComponentsModel>fitted}" />
+                <table:template>
+                    <Label text="{componentsWorkOrderDetail>fitted}"  />
+                </table:template>
+            </table:Column>
+        </table:columns>
+        </table:Table>
+    </content>
 
-		</Table>
-
-	</content>
-
-	</Page>
+    </Page>
 </mvc:View>
 
