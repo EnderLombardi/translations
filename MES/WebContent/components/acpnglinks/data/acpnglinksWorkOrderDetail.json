@@ -22,7 +22,7 @@
 					"SQLDataType": 1,
 					"MinRange": 1.0,
 					"MaxRange": 1.0,
-					"Visible": "false"
+					"Visible": "true"
 				}, {
 					"Name": "Review_end",
 					"SourceColumn": "Review_end",
@@ -54,7 +54,7 @@
 					"SQLDataType": 1,
 					"MinRange": 1.0,
 					"MaxRange": 1.0,
-					"Visible": "true"
+					"Visible": "false"
 				}, {
 					"Name": "STV",
 					"SourceColumn": "STV",
@@ -62,7 +62,7 @@
 					"SQLDataType": 1,
 					"MinRange": 1.0,
 					"MaxRange": 1.0,
-					"Visible": "true"
+					"Visible": "false"
 				}, {
 					"Name": "ACP_workstation",
 					"SourceColumn": "ACP_workstation",
@@ -70,7 +70,7 @@
 					"SQLDataType": 1,
 					"MinRange": 1.0,
 					"MaxRange": 1.0,
-					"Visible": "true"
+					"Visible": "false"
 				}, {
 					"Name": "CA",
 					"SourceColumn": "CA",
@@ -78,7 +78,7 @@
 					"SQLDataType": 1,
 					"MinRange": 1.0,
 					"MaxRange": 1.0,
-					"Visible": "true"
+					"Visible": "false"
 				}, {
 					"Name": "Father_link",
 					"SourceColumn": "Father_link",
@@ -86,7 +86,7 @@
 					"SQLDataType": 1,
 					"MinRange": 1.0,
 					"MaxRange": 1.0,
-					"Visible": "true"
+					"Visible": "false"
 				}, {
 					"Name": "Blocking_reason",
 					"SourceColumn": "Blocking_reason",
@@ -94,7 +94,7 @@
 					"SQLDataType": 1,
 					"MinRange": 1.0,
 					"MaxRange": 1.0,
-					"Visible": "true"
+					"Visible": "false"
 				}, {
 					"Name": "User_status",
 					"SourceColumn": "User_status",
@@ -102,7 +102,7 @@
 					"SQLDataType": 1,
 					"MinRange": 1.0,
 					"MaxRange": 1.0,
-					"Visible": "true"
+					"Visible": "false"
 				}, {
 					"Name": "Execution_station",
 					"SourceColumn": "Execution_station",
@@ -110,7 +110,7 @@
 					"SQLDataType": 1,
 					"MinRange": 1.0,
 					"MaxRange": 1.0,
-					"Visible": "true"
+					"Visible": "false"
 				}, {
 					"Name": "Origin_workstation",
 					"SourceColumn": "Origin_workstation",
@@ -118,7 +118,7 @@
 					"SQLDataType": 1,
 					"MinRange": 1.0,
 					"MaxRange": 1.0,
-					"Visible": "true"
+					"Visible": "false"
 				}, {
 					"Name": "TDL",
 					"SourceColumn": "TDL",
@@ -126,7 +126,7 @@
 					"SQLDataType": 1,
 					"MinRange": 1.0,
 					"MaxRange": 1.0,
-					"Visible": "true"
+					"Visible": "false"
 				}, {
 					"Name": "Upper_family",
 					"SourceColumn": "Upper_family",
@@ -134,7 +134,7 @@
 					"SQLDataType": 1,
 					"MinRange": 1.0,
 					"MaxRange": 1.0,
-					"Visible": "true"
+					"Visible": "false"
 				}, {
 					"Name": "Zoning",
 					"SourceColumn": "Zoning",
@@ -142,7 +142,7 @@
 					"SQLDataType": 1,
 					"MinRange": 1.0,
 					"MaxRange": 1.0,
-					"Visible": "true"
+					"Visible": "false"
 				}, {
 					"Name": "Material_description",
 					"SourceColumn": "Material_description",
@@ -150,7 +150,7 @@
 					"SQLDataType": 1,
 					"MinRange": 1.0,
 					"MaxRange": 1.0,
-					"Visible": "true"
+					"Visible": "false"
 				}, {
 					"Name": "ATA",
 					"SourceColumn": "ATA",
@@ -158,7 +158,7 @@
 					"SQLDataType": 1,
 					"MinRange": 1.0,
 					"MaxRange": 1.0,
-					"Visible": "true"
+					"Visible": "false"
 				}, {
 					"Name": "Father_Type",
 					"SourceColumn": "Father_Type",
@@ -166,7 +166,7 @@
 					"SQLDataType": 1,
 					"MinRange": 1.0,
 					"MaxRange": 1.0,
-					"Visible": "true"
+					"Visible": "false"
 				}, {
 					"Name": "Father_ID",
 					"SourceColumn": "Father_ID",
@@ -174,7 +174,7 @@
 					"SQLDataType": 1,
 					"MinRange": 1.0,
 					"MaxRange": 1.0,
-					"Visible": "true"
+					"Visible": "false"
 				}]
 			},
 			"Row": [{

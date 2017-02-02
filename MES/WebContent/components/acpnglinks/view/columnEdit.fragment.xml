@@ -1,16 +1,19 @@
 <core:FragmentDefinition xmlns="sap.m"
 	xmlns:core="sap.ui.core" xmlns:html="http://www.w3.org/1999/xhtml"
 	xmlns:ui="sap.ui.layout">
-	<Dialog title="Columns Edit" icon="sap-icon://edit" type="Default Message">
-		<content>
+	<Dialog title="{i18nacpnglinksModel>ColumnEditTitle}" icon="sap-icon://edit"
+		contentWidth="40%" contentHeight="60%">
+		<content height="100%" width="100%">
 			<HBox height="100%" class="fixHboxItemDisplay">
 				<Panel class="panelBorder" expanded="true" expandable="false"
-					id="AcpngPanel" width="100%" height="100%" headerText="Header">
+					id="AcpngPanel" width="100%" height="100%"
+					headerText="i18nacpnglinksModel>ColumnEditUnassignedColumns">
 					<headerToolbar>
 						<Toolbar>
 							<Bar design="Header">
 								<contentMiddle>
-									<Text class="sapMPanelHdr panelHeaderCustomStyle" text="title" />
+									<Text class="sapMPanelHdr panelHeaderCustomStyle"
+										text="{i18nacpnglinksModel>ColumnEditUnassignedColumns}" />
 								</contentMiddle>
 							</Bar>
 						</Toolbar>
@@ -18,33 +21,37 @@
 					<content height="100%">
 						<HBox height="100%" class="fixHboxItemDisplay">
 							<List id="listAvailableColumns" mode="SingleSelectMaster"
-								items="{acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column}">
-								<CustomListItem 
+								items="{acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column}"
+								growingScrollToLoad="true" growing="true" growingThreshold="1000">
+								<CustomListItem
 									visible="{path:'acpnglinksWorkOrderDetail>Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanLeft'}">
-									<HBox><ui:HorizontalLayout> <Text text="{acpnglinksWorkOrderDetail>Name}" > </Text> </ui:HorizontalLayout> </HBox>
+									<HBox class="fixHboxItemDisplay">
+										<ui:HorizontalLayout>
+											<Text text="{acpnglinksWorkOrderDetail>Name}"></Text>
+										</ui:HorizontalLayout>
+									</HBox>
 								</CustomListItem>
 							</List>
 						</HBox>
 					</content>
-
 				</Panel>
 				<VBox class="shiftButtons" justifyContent="Center" alignItems="Center">
 					<items>
 						<Button icon="sap-icon://navigation-right-arrow" press="onAssignColumns"
-							tooltip="{i18nModel>Assign}" />
+							tooltip="{i18nacpnglinksModel>ColumnEditAssign}" />
 						<Button icon="sap-icon://navigation-left-arrow" press="onUnassignColumns"
-							tooltip="{i18nModel>Remove}" />
+							tooltip="{i18nacpnglinksModel>ColumnEditRemove}" />
 					</items>
 				</VBox>
 				<Panel class="panelBorder" expanded="true" expandable="false"
-					id="assignedUsersPanel" width="100%" height="95%"
-					headerText="{i18nModel>AssignedUsers}">
+					id="assignedColumnsPanel" width="100%" height="100%"
+					headerText="{i18nacpnglinksModel>ColumnEditAssignedColumns}">
 					<headerToolbar>
-
 						<Toolbar>
 							<Bar design="Header">
 								<contentMiddle>
-									<Text class="sapMPanelHdr panelHeaderCustomStyle" text="{i18nModel>AssignedUsers}" />
+									<Text class="sapMPanelHdr panelHeaderCustomStyle"
+										text="{i18nacpnglinksModel>ColumnEditAssignedColumns}" />
 								</contentMiddle>
 							</Bar>
 						</Toolbar>
@@ -53,14 +60,17 @@
 						<HBox height="100%" class="fixHboxItemDisplay">
 							<List id="listAllocatedcolumns"
 								items="{acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column}"
-								mode="SingleSelectMaster">
-								<CustomListItem visible="{path:'acpnglinksWorkOrderDetail>Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanRight'}"> 
+								mode="SingleSelectMaster" growingScrollToLoad="true" growing="true"
+								growingThreshold="1000">
+								<CustomListItem
+									visible="{path:'acpnglinksWorkOrderDetail>Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanRight'}">
 									<content>
-										<ui:HorizontalLayout
-											>
-											<Text text="{acpnglinksWorkOrderDetail>Name}">
-											</Text>
-										</ui:HorizontalLayout>
+										<HBox class="fixHboxItemDisplay">
+											<ui:HorizontalLayout>
+												<Text text="{acpnglinksWorkOrderDetail>Name}">
+												</Text>
+											</ui:HorizontalLayout>
+										</HBox>
 									</content>
 								</CustomListItem>
 							</List>

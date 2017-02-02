@@ -51,11 +51,9 @@ sap.ui.controller("airbus.mes.acpnglinks.controller.acpnglinks", {
     onAssignColumns : function(oEvt){
     	 var aColumnsToAssign = sap.ui.getCore().byId("columnEdit--listAvailableColumns").getSelectedItem();
     	 airbus.mes.acpnglinks.oView.getModel("acpnglinksWorkOrderDetail").setProperty(aColumnsToAssign.getBindingContextPath()+"/Visible","true");
-    	 console.log(aColumnsToAssign);
     },
     onUnassignColumns : function(oEvt){
    	 var aColumnsToAssign = sap.ui.getCore().byId("columnEdit--listAllocatedcolumns").getSelectedItem();
    	 airbus.mes.acpnglinks.oView.getModel("acpnglinksWorkOrderDetail").setProperty(aColumnsToAssign.getBindingContextPath()+"/Visible","false");
-   	 console.log(aColumnsToAssign);
    }
 });
