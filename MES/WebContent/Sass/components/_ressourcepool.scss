@@ -290,7 +290,6 @@ RESSOURCEPOOL
     }
     .sapMPageWithSubHeader{
         &>section{
-            top: calc(3rem + 18px);
             .resourcePoolSubheader{
                 li{
                     height: 3rem;

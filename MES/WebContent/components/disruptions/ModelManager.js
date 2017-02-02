@@ -118,9 +118,8 @@ airbus.mes.disruptions.ModelManager = {
 		
 		// Get user to which operation is affected else current logged in user
 		var sUserBo = this.getIssuer();
+		urlCustomCategory = airbus.mes.shell.ModelManager.replaceURI(urlCustomCategory, "$userbo", sUserBo);
 		
-		urlCustomCategory = airbus.mes.shell.ModelManager.replaceURI(
-			urlCustomCategory, "$userbo", sUserBo)
 		return urlCustomCategory;
 
 	},
