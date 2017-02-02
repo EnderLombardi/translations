@@ -72,6 +72,7 @@ sap.ui
             this.getView().byId("operationDetailPanel").setExpanded(false);
             this.getView().byId("opDetailSegmentButtons").setExpanded(false);
             this.getView().byId("opDetailSegmentButtons").setExpandable(false);
+            this.setToolbarVisible();
 
             var oSwitchButton = this.getView().byId("switchOperationModeBtn");
             if (oSwitchButton.getState() == true) {
@@ -105,8 +106,7 @@ sap.ui
                 //when the operation goes on execution mode, it is too activate
                 var bResult = airbus.mes.operationdetail.status.oView.getController().activateOperation();
                 if (bResult) {
-                    //Define visibility for header sections
-                    $(".opDetailNavToolbar > ul > li ~ li").css("display", "inline-block");
+                    this.setToolbarVisible();
                     oSwitchButton.setEnabled(false);
 
                     /**
@@ -116,7 +116,7 @@ sap.ui
 
 
                 } else {
-                    $(".opDetailNavToolbar > ul > li ~ li").css("display", "none");
+                    this.setToolbarVisible();
                     oSwitchButton.setEnabled(true);
                     oSwitchButton.setState(false);
                     this.getView().byId("switchStatusLabel").setText(this.getView().getModel("i18n").getProperty("ReadOnly"));
@@ -125,9 +125,34 @@ sap.ui
             } else {
                 this.getView().byId("switchStatusLabel").setText(this.getView().getModel("i18n").getProperty("ReadOnly"));
                 //Define visibility for header sections
-                $(".opDetailNavToolbar > ul > li ~ li").css("display", "none");
+                this.setToolbarVisible();
             }
 
+        },
+
+        setToolbarVisible : function(){
+            var state = sap.ui.getCore().byId("operationDetailsView--switchOperationModeBtn").getState();
+            if(!state){
+                sap.ui.getCore().byId("operationDetailsView--idCheckList").setVisible(false);
+                sap.ui.getCore().byId("operationDetailsView--idDisruption").setVisible(false);
+                sap.ui.getCore().byId("operationDetailsView--idDisplayOpeAttachments").setVisible(false);
+                sap.ui.getCore().byId("operationDetailsView--idReschedule").setVisible(false);
+                sap.ui.getCore().byId("operationDetailsView--idtouchngo").setVisible(false);
+                sap.ui.getCore().byId("operationDetailsView--idJignTools").setVisible(false);
+                sap.ui.getCore().byId("operationDetailsView--idComponents").setVisible(false);
+                sap.ui.getCore().byId("operationDetailsView--idACPnGLinks").setVisible(false);
+                sap.ui.getCore().byId("operationDetailsView--idNCDisplay").setVisible(false);
+            }else{
+                sap.ui.getCore().byId("operationDetailsView--idCheckList").setVisible(true);
+                sap.ui.getCore().byId("operationDetailsView--idDisruption").setVisible(true);
+                sap.ui.getCore().byId("operationDetailsView--idDisplayOpeAttachments").setVisible(true);
+                sap.ui.getCore().byId("operationDetailsView--idReschedule").setVisible(true);
+                sap.ui.getCore().byId("operationDetailsView--idtouchngo").setVisible(true);
+                sap.ui.getCore().byId("operationDetailsView--idJignTools").setVisible(true);
+                sap.ui.getCore().byId("operationDetailsView--idComponents").setVisible(false);
+                sap.ui.getCore().byId("operationDetailsView--idACPnGLinks").setVisible(true);
+                sap.ui.getCore().byId("operationDetailsView--idNCDisplay").setVisible(true);
+            }
         },
 
         /***********************************************************
