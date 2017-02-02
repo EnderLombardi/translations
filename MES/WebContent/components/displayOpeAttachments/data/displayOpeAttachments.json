@@ -134,6 +134,55 @@
                         "revision": "B",
                         "descriptionWI": "It's a text file",
                         "URL": "http://doc.content.airbus.corp/147856789.pdf"
+                    },
+                    {
+                        "workInstruction": "POD-901234599-M5-SmallPOC",
+                        "docTypeDescription": "POD_description",
+                        "revision": "A",
+                        "descriptionWI": "A shift",
+                        "URL": "http://doc.content.airbus.corp/11254.pdf"
+                    },
+                    {
+                        "workInstruction": "AOS-901234599-M5-shift",
+                        "docTypeDescription": "AOS : description",
+                        "revision": "P",
+                        "descriptionWI": "A shift",
+                        "URL": "http://doc.content.airbus.corp/198156433.pdf"
+                    },
+                    {
+                        "workInstruction": "AOU-457823456-M5-myTab",
+                        "docTypeDescription": "AOU : description",
+                        "revision": "A",
+                        "descriptionWI": "Tab",
+                        "URL": "http://doc.content.airbus.corp/102457789.pdf"
+                    },
+                    {
+                        "workInstruction": "AIQ-157898456-P2-myTextFile",
+                        "docTypeDescription": "AIQ files are : description",
+                        "revision": "B",
+                        "descriptionWI": "It's a text file",
+                        "URL": "http://doc.content.airbus.corp/147856789.pdf"
+                    },
+                    {
+                        "workInstruction": "AOX-901234599-M5-shift",
+                        "docTypeDescription": "AOX : description",
+                        "revision": "P",
+                        "descriptionWI": "A shift",
+                        "URL": "http://doc.content.airbus.corp/198156433.pdf"
+                    },
+                    {
+                        "workInstruction": "AOW-457823456-M5-myTab",
+                        "docTypeDescription": "AOW : description",
+                        "revision": "A",
+                        "descriptionWI": "Tab",
+                        "URL": "http://doc.content.airbus.corp/102457789.pdf"
+                    },
+                    {
+                        "workInstruction": "AIU-157898456-P2-myTextFile",
+                        "docTypeDescription": "AIU files are : description",
+                        "revision": "B",
+                        "descriptionWI": "It's a text file",
+                        "URL": "http://doc.content.airbus.corp/147856789.pdf"
                     }
                 ]
             }

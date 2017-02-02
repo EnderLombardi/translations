@@ -178,11 +178,6 @@ airbus.mes.shell.util.navFunctions = {
         if (airbus.mes.displayOpeAttachments === undefined || airbus.mes.displayOpeAttachments.oView === undefined) {
             jQuery.sap.registerModulePath("airbus.mes.displayOpeAttachments", "../components/displayOpeAttachments");
             sap.ui.getCore().createComponent({ name: "airbus.mes.displayOpeAttachments" });
-        } else if (airbus.mes.displayOpeAttachments.oView.oController && airbus.mes.displayOpeAttachments.util.ModelManager) {
-            //load data in the model at the init of the component
-            airbus.mes.displayOpeAttachments.oView.oController.collapseAllNodes();
-            airbus.mes.displayOpeAttachments.util.ModelManager.loadDOADetail();
-            airbus.mes.displayOpeAttachments.util.ModelManager.createTreeTableArray();
         }
 
         if (container.getPage("displayOpeAttachmentsView") === null) {
@@ -191,11 +186,11 @@ airbus.mes.shell.util.navFunctions = {
     },
 
     jigToolsDetail: function (container) {
-    	
-//    	Retrieve current workOrder Display
-    	var sCurrentWorkOrder = sap.ui.getCore().getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].wo_no;
-    	
-    	
+
+        //    	Retrieve current workOrder Display
+        var sCurrentWorkOrder = sap.ui.getCore().getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].wo_no;
+
+
         if (airbus.mes.jigtools === undefined || airbus.mes.jigtools.oView === undefined) {
 
             jQuery.sap.registerModulePath("airbus.mes.jigtools", "../components/jigtools");
@@ -206,8 +201,8 @@ airbus.mes.shell.util.navFunctions = {
             airbus.mes.jigtools.oView.getController().getOwnerComponent().setWorkOrder(airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].wo_no);
             airbus.mes.jigtools.util.ModelManager.loadjigToolsWorkOrderDetail();
         }
-        
-        
+
+
         if (container.getPage("jigtoolsView") === null) {
             container.addPage(airbus.mes.jigtools.oView);
         }
@@ -255,7 +250,7 @@ airbus.mes.shell.util.navFunctions = {
         if (container.getPage("DisruptionAttachmentView") == null) {
             container.addPage(airbus.mes.disruptions.attachments.oView);
         }
-        container.to(airbus.mes.disruptions.attachments.oView.getId(),{Desc:disruptionDesc});
+        container.to(airbus.mes.disruptions.attachments.oView.getId(), { Desc: disruptionDesc });
 
         airbus.mes.disruptions.ModelManager.AttachmentListModel();
     },
@@ -372,11 +367,11 @@ airbus.mes.shell.util.navFunctions = {
 
 
         airbus.mes.disruptionkpi.ModelManager.loadDisruptionKPIModel();
-        
+
         airbus.mes.disruptionkpi.ModelManager.setPreSelectionCriteria();
         airbus.mes.disruptionkpi.ModelManager.removeDuplicates();
-        
-        
+
+
         nav.to(airbus.mes.disruptionkpi.oView.getId());
     },
 
@@ -499,7 +494,7 @@ airbus.mes.shell.util.navFunctions = {
         nav.to(airbus.mes.worktracker.detail.oView.getId());
     },
 
-    testScanner : function(){
+    testScanner: function () {
         if (airbus.mes.scanner === undefined) {
 
             jQuery.sap.registerModulePath("airbus.mes.scanner", "../components/scanner");

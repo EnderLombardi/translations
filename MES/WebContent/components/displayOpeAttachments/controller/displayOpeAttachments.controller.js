@@ -4,6 +4,44 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 
 	firstVisibleRow: 0, //first row displayed (it changes on scroll)
 
+	onAfterRendering: function () {
+		this.init();
+	},
+
+	init: function () {
+		var oModule = airbus.mes.displayOpeAttachments.util.ModelManager;
+		oModule.loadDOADetail();
+		oModule.createTreeTableArray();
+
+		this.firstVisibleRow = 0;
+
+		var oTTbl = airbus.mes.displayOpeAttachments.oView.byId("DOATable");
+		var treeTableArray = airbus.mes.displayOpeAttachments.util.ModelManager.treeTableArray;
+		oTTbl.setFirstVisibleRow(0);
+
+		//reinitialize treetable view
+		this.collapseAllNodes();//we collapse all so the treeExpandAll functions can work
+		this.treeExpandAll(treeTableArray, oTTbl);
+		this.updateTreeTableView(treeTableArray);
+	},
+
+	treeExpandAll: function (treeTableArray, oTTbl) {
+		var nbOfDocTypes = this.getNbOfDocTypes(treeTableArray);
+		for (var i = nbOfDocTypes; i > 0; i--) {
+			oTTbl.expand(i - 1);
+		}
+	},
+
+	getNbOfDocTypes: function (treeTableArray) {
+		var nbOfDocTypes = 0;
+		for (var i = 0; i < treeTableArray.length; i++) {
+			if (treeTableArray[i].isDocType) {
+				nbOfDocTypes++;
+			}
+		}
+		return nbOfDocTypes;
+	},
+
 	/////////////////////////////////
 	//	EVENTS FUNCTIONS
 	/////////////////////////////////
@@ -166,7 +204,6 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 		var elementsAvailableAfter = elementsAvailableAfter - (numberOfDocsByType - nbOfDocsDisplayed);
 
 		//then we check if there is enough documents (if not there will be a rerender)
-		//var gapAfter = (10 - nbOfDocsDisplayed) - (elementsAvailableAfter);
 		var gapAfter = nbOfDocsDisplayed - elementsAvailableAfter;
 		var firstRowGap = Math.min(elementsAvailableBefore, gapAfter);//the min will indicate the gap between the index of the actual first row and the index of the first row cwhich will be displayed
 		if (firstRowGap < 0) {
@@ -188,7 +225,7 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 				}
 			}
 		} else {//scroll top
-			
+
 			//we find the arrayIndex of the first row displayed
 			var numberOfRows = 0, arrayIndex = 0;
 			//we will increment to have the same numberofRows in the function than the newFirstVisibleRow (which represents the number of rows displayed)
@@ -366,12 +403,18 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 		paramArray.push(site);
 		paramArray.push(routerStepBO);
 
-		//load data in the model at the init of the component
-		var oModule = airbus.mes.displayOpeAttachments.util.ModelManager;
-		oModule.loadDOADetail();
-		oModule.createTreeTableArray();
-		this.collapseAllNodes();
-		this.updateTreeTableView(oModule.treeTableArray);
+		this.init();
+
+		// //load data in the model at the init of the component
+		// var oModule = airbus.mes.displayOpeAttachments.util.ModelManager;
+		// oModule.loadDOADetail();
+		// oModule.createTreeTableArray();
+
+		// //to expand all
+		// var oTTbl = airbus.mes.displayOpeAttachments.oView.byId("DOATable");
+		// var treeTableArray = airbus.mes.displayOpeAttachments.util.ModelManager.treeTableArray;
+		// this.treeExpandAll(treeTableArray, oTTbl);
+		// this.updateTreeTableView(oModule.treeTableArray);
 	},
 
 });

@@ -15,14 +15,9 @@ airbus.mes.displayOpeAttachments.util.ModelManager = {
 
 		var aModel = ["getOpeAttachments"];
 		airbus.mes.shell.ModelManager.createJsonModel(core, aModel);
-		
-	    // Handle URL Model
-		this.urlModel = airbus.mes.shell.ModelManager.urlHandler("airbus.mes.displayOpeAttachments.config.url_config");
 
-		//load data in the model at the init of the component
-		var oModule = airbus.mes.displayOpeAttachments.util.ModelManager;
-		oModule.loadDOADetail();
-		oModule.createTreeTableArray();
+		// Handle URL Model
+		this.urlModel = airbus.mes.shell.ModelManager.urlHandler("airbus.mes.displayOpeAttachments.config.url_config");
 	},
 
 	/* *********************************************************************** *
@@ -71,30 +66,32 @@ airbus.mes.displayOpeAttachments.util.ModelManager = {
 		this.treeTableArray = [];//we reset the tab to handle onSelectLevel case (change between operation and wo mode)
 		var treeTableArray = this.treeTableArray;
 
+		var previousPosition = 0;
 		for (i = 0; i < oViewModelRow.length; i++) {
-			treeTableArray.push(this.addObjDocType(i, oViewModelRow));
-
+			treeTableArray.push(this.addObjDocType(i, previousPosition, oViewModelRow));
+			previousPosition++;
 			for (var j = 0; j < oViewModelRow[i].documents.length; j++) {
-				treeTableArray.push(this.addObjDoc());
+				treeTableArray.push(this.addObjDoc(previousPosition));
+				previousPosition++;
 			}
 		}
 	},
 
 	//create an object doc type for createTreeTableArray
-	addObjDocType: function (i, oViewModelRow) {
+	addObjDocType: function (i, previousPosition, oViewModelRow) {
 		var objDocType = {};
 		objDocType.isDocType = true;
-		objDocType.isOpened = false;
-		objDocType.position = i;
+		objDocType.isOpened = true;//set to true
+		objDocType.position = previousPosition;
 		objDocType.nbOfDocs = parseInt(oViewModelRow[i].dokarOrDoknr.split(" ")[2], 10);
 		return objDocType;
 	},
 
 	//create an object document for createTreeTableArray
-	addObjDoc: function () {
+	addObjDoc: function (previousPosition) {
 		var document = {};
 		document.isDocType = false;
-		document.position = null;
+		document.position = previousPosition;
 		return document;
 	},
 
