@@ -29,5 +29,27 @@ sap.ui.controller("airbus.mes.acpnglinks.controller.acpnglinks", {
     	} catch(exception) {
     		//do nothing
     	}
+    },
+    
+    onColumnsChange : function(){
+    	 if (airbus.mes.acpnglinks.oColumnEditDialog === undefined) {
+
+             airbus.mes.acpnglinks.oColumnEditDialog = sap.ui
+                     .xmlfragment(
+                             "columnEdit",
+                             "airbus.mes.acpnglinks.view.columnEdit",
+                             airbus.mes.acpnglinks.oView
+                                     .getController());
+             airbus.mes.acpnglinks.oView
+                     .addDependent(airbus.mes.acpnglinks.oColumnEditDialog);
+         }
+
+         // Open
+         airbus.mes.acpnglinks.oColumnEditDialog.open();
+    },
+    
+    onAssignColumns : function(oEvt){
+    	 var aColumnsToAssign = sap.ui.getCore().byId("columnEdit--listAvailableColumns").getSelectedItems();
+    	 console.log(aColumnsToAssign);
     }
 });

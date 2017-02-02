@@ -22,7 +22,7 @@
 					"SQLDataType": 1,
 					"MinRange": 1.0,
 					"MaxRange": 1.0,
-					"Visible": "true"
+					"Visible": "false"
 				}, {
 					"Name": "Review_end",
 					"SourceColumn": "Review_end",

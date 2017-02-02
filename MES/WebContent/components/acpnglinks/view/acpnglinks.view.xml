@@ -10,6 +10,13 @@
 					rows="{acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Row/}"
 					cellClick="OnSelectionChange"
 					visibleRowCountMode="Fixed" selectionMode="Single" height="100%" >
+					<tab:toolbar>
+                    <Toolbar>
+                        <Title id="title" text="ACPnG Links"/>
+                        <ToolbarSpacer/>
+                        <Button text="Change Columns" press="onColumnsChange"/>
+                    </Toolbar>
+                    </tab:toolbar>
 					<tab:columns>
 						<tab:Column visible="true" sortProperty="Type">
 							<Label class="ACPnGtLabel" text="Type" />

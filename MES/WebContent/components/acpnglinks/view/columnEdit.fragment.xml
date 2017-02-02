@@ -1,11 +1,11 @@
-<!-- <core:FragmentDefinition xmlns="sap.m"
-    xmlns:core="sap.ui.core" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:ui="sap.ui.layout" >
-		<Page showHeader="false" height="100%" enableScrolling="false">
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:ui="sap.ui.layout">
+	<Dialog title="Columns Edit" icon="sap-icon://edit" type="Default Message">
 		<content>
 			<HBox height="100%" class="fixHboxItemDisplay">
 				<Panel class="panelBorder" expanded="true" expandable="false"
-					id="AcpngPanel" width="100%" height="95%"
-					headerText="Header">
+					id="AcpngPanel" width="100%" height="100%" headerText="Header">
 					<headerToolbar>
 						<Toolbar>
 							<Bar design="Header">
@@ -15,66 +15,21 @@
 							</Bar>
 						</Toolbar>
 					</headerToolbar>
-					<infoToolbar>
-						<Toolbar>
-							<content>
-								<CheckBox id="allAvailableUsers" select="onSelectAllUsers"
-									enabled="{path:'i18nModel>ResourcePool',formatter:'airbus.mes.resourcepool.util.Formatter.isEnabled'}" />
-								<SearchField id="searchAvailableUsers" liveChange="onSearchUsers" placeholder="{i18nModel>searchBox}"
-									width="100%" />
-							</content>
-						</Toolbar>
-					</infoToolbar>
 					<content height="100%">
 						<HBox height="100%" class="fixHboxItemDisplay">
 
-							<List id="listAvailableUsers" height="100%"
-								items="{ResourcePoolDetailModel>/Rowsets/Rowset/3/Row}"
-								mode="{path:'ResourcePoolDetailModel>',formatter:'airbus.mes.resourcepool.util.Formatter.selectionMode'}"
-								includeItemInSelection="true" noDataText="{i18nModel>NoUserAvailable}"
-								rememberSelections="false" growingScrollToLoad="true" growing="true"
+							<List id="listAvailableColumns" height="100%"
+								items="{acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column}"
+								includeItemInSelection="true" noDataText="{i18nModel>NoColumnAvailable}"
+								rememberSelections="true" growingScrollToLoad="true" growing="true" mode="true" selectionMode="Single"
 								growingThreshold="1000">
-								<CustomListItem>
-									<content>
-										<ui:HorizontalLayout class="fixDsiplayRpImg">
-											<Image class="ylabelUserImage"
-												visible="{ path : 'ResourcePoolDetailModel>userId', formatter : 'airbus.mes.resourcepool.util.Formatter.displayImage' }"
-												error = "{ path : 'ResourcePoolDetailModel>userId', formatter : 'airbus.mes.shell.UserImageManager.getErrorUserImage' }"
-												src="{ path : 'ResourcePoolDetailModel>userId', formatter : 'airbus.mes.resourcepool.util.Formatter.selectImageToDisplay' }"
-												></Image>
-
-											<VBox>
-												<HBox>
-													<Text class="customlistTitle" text="{ResourcePoolDetailModel>name}"></Text>
-													<Text text="{ResourcePoolDetailModel>userId}" class="floatRight"></Text>
-												</HBox>
-												<Text class="listItemDescrption"
-													text="{parts: ['ResourcePoolDetailModel>loanedToRPName', 'ResourcePoolDetailModel>assignedToRPName'], formatter:'airbus.mes.resourcepool.util.Formatter.userAlreadyAssigned'}"></Text>
-											</VBox>
-										</ui:HorizontalLayout>
-									</content>
-									<customData>
-										<core:CustomData key="personal_no"
-											value="{ResourcePoolDetailModel>personalNo}" />
-										<core:CustomData key="erp_user_id"
-											value="{ResourcePoolDetailModel>erpUserId}" />
-										<core:CustomData key="loan"
-											value="{ResourcePoolDetailModel>loanedToPool}" />
-										<core:CustomData key="assignedToPool"
-											value="{ResourcePoolDetailModel>assignedToRPName}" />
-										<core:CustomData key="loanedToPool"
-											value="{ResourcePoolDetailModel>loanedToRPName}" />
-										<core:CustomData key="fName"
-											value="{ResourcePoolDetailModel>name}" />
-										<core:CustomData key="lName" value="" />
-										<core:CustomData key="user_id"
-											value="{ResourcePoolDetailModel>userId}" />
-										<core:CustomData key="type"
-											value="{ResourcePoolDetailModel>type}" />
-										<core:CustomData key="handle"
-											value="{ResourcePoolDetailModel>handle}" />
-									</customData>
-								</CustomListItem>
+									
+														<core:Item key="{Name}" text="{Name}" />
+									
+										<!-- <ui:HorizontalLayout visible="{path:'acpnglinksWorkOrderDetail>Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanLeft'}">
+													<Text text="{acpnglinksWorkOrderDetail>Name}" > </Text>
+													
+										</ui:HorizontalLayout> -->
 							</List>
 						</HBox>
 					</content>
@@ -82,12 +37,15 @@
 				</Panel>
 				<VBox class="shiftButtons" justifyContent="Center" alignItems="Center">
 					<items>
-						<Button icon="sap-icon://navigation-right-arrow" press="assignUsers" tooltip="{i18nModel>Assign}" />
-						<Button icon="sap-icon://navigation-left-arrow" press="unassignUsers" tooltip="{i18nModel>Remove}" />
+						<Button icon="sap-icon://navigation-right-arrow" press="onAssignColumns"
+							tooltip="{i18nModel>Assign}" />
+						<Button icon="sap-icon://navigation-left-arrow" press="onAssignColumns"
+							tooltip="{i18nModel>Remove}" />
 					</items>
 				</VBox>
 				<Panel class="panelBorder" expanded="true" expandable="false"
-					id="assignedUsersPanel" width="100%" height="95%" headerText="{i18nModel>AssignedUsers}">
+					id="assignedUsersPanel" width="100%" height="95%"
+					headerText="{i18nModel>AssignedUsers}">
 					<headerToolbar>
 
 						<Toolbar>
@@ -98,63 +56,18 @@
 							</Bar>
 						</Toolbar>
 					</headerToolbar>
-					<infoToolbar>
-						<Toolbar>
-							<content>
-								<CheckBox id="allAssignedUsers" select="onSelectAllUsers"
-									enabled="{path:'i18nModel>ResourcePool',formatter:'airbus.mes.resourcepool.util.Formatter.isEnabled'}" />
-								<SearchField id="searchAssignedUsers" liveChange="onSearchUsers" placeholder="{i18nModel>searchBox}"
-									width="100%" />
-							</content>
-						</Toolbar>
-					</infoToolbar>
 					<content>
 						<HBox height="100%" class="fixHboxItemDisplay">
-							<List id="listAllocatedUsers" items="{ResourcePoolDetailModel>/Rowsets/Rowset/1/Row}"
-								mode="{path:'ResourcePoolDetailModel>',formatter:'airbus.mes.resourcepool.util.Formatter.selectionMode'}"
+							<List id="listAllocatedcolumns" items="{acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column}"
 								includeItemInSelection="true" rememberSelections="false"
 								growingScrollToLoad="true" growing="true" growingThreshold="1000"
 								noDataText="{i18nModel>NoUserAssigned}">
-
 								<CustomListItem>
 									<content>
-										<ui:HorizontalLayout class="fixDsiplayRpImg">
-											<Image class="ylabelUserImage"
-												visible="{ path : 'ResourcePoolDetailModel>userId', formatter : 'airbus.mes.resourcepool.util.Formatter.displayImage' }"
-												error = "{ path : 'ResourcePoolDetailModel>userId', formatter : 'airbus.mes.shell.UserImageManager.getErrorUserImage' }"
-												src="{ path : 'ResourcePoolDetailModel>userId', formatter : 'airbus.mes.resourcepool.util.Formatter.selectImageToDisplay' }"
-												></Image>
-											<VBox>
-												<HBox>
-													<Text class="customlistTitle" text="{ResourcePoolDetailModel>name}"></Text>
-													<Text text="{ResourcePoolDetailModel>userId}" class="floatRight"></Text>
-												</HBox>
-												<Text class="listItemDescrption"
-													text="{parts: ['ResourcePoolDetailModel>loanedToRPName', 'ResourcePoolDetailModel>assignedToRPName'], formatter:'airbus.mes.resourcepool.util.Formatter.assignedToSelf'}"></Text>
-											</VBox>
+										<ui:HorizontalLayout visible="{path:'acpnglinksWorkOrderDetail>Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanRight'}">
+													<Text text="{acpnglinksWorkOrderDetail>Name}" > </Text>				
 										</ui:HorizontalLayout>
 									</content>
-									<customData>
-										<core:CustomData key="personal_no"
-											value="{ResourcePoolDetailModel>personalNo}" />
-										<core:CustomData key="erp_user_id"
-											value="{ResourcePoolDetailModel>erpUserId}" />
-										<core:CustomData key="loan"
-											value="{ResourcePoolDetailModel>loanedToPool}" />
-										<core:CustomData key="assignedToPool"
-											value="{ResourcePoolDetailModel>assignedToRPName}" />
-										<core:CustomData key="loanedToPool"
-											value="{ResourcePoolDetailModel>loanedToRPName}" />
-										<core:CustomData key="fName"
-											value="{ResourcePoolDetailModel>name}" />
-										<core:CustomData key="lName" value="" />
-										<core:CustomData key="user_id"
-											value="{ResourcePoolDetailModel>userId}" />
-										<core:CustomData key="type"
-											value="{ResourcePoolDetailModel>type}" />
-										<core:CustomData key="handle"
-											value="{ResourcePoolDetailModel>handle}" />
-									</customData>
 								</CustomListItem>
 							</List>
 						</HBox>
@@ -162,5 +75,5 @@
 				</Panel>
 			</HBox>
 		</content>
-	</Page>
- </core:FragmentDefinition> -->
+	</Dialog>
+</core:FragmentDefinition>

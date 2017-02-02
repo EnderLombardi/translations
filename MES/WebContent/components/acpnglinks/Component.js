@@ -1,7 +1,7 @@
 "use strict";
 
 jQuery.sap.registerModulePath("airbus.mes.acpnglinks", "../components/acpnglinks");
-//jQuery.sap.require("airbus.mes.acpnglinks.util.Formatter");
+jQuery.sap.require("airbus.mes.acpnglinks.util.Formatter");
 jQuery.sap.require("airbus.mes.acpnglinks.model.ModelManager");
 jQuery.sap.declare("airbus.mes.acpnglinks.Component");
 
