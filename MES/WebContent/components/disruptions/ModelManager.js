@@ -117,12 +117,7 @@ airbus.mes.disruptions.ModelManager = {
 		
 		
 		// Get user to which operation is affected else current logged in user
-		var sUserBo = sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/sfc") == "---" ? 
-			"UserBO:" +
-			airbus.mes.settings.ModelManager.site +
-			"," +
-			sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user")
-			: sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/sfc")
+		var sUserBo = this.getIssuer();
 		
 		urlCustomCategory = airbus.mes.shell.ModelManager.replaceURI(
 			urlCustomCategory, "$userbo", sUserBo)
@@ -1221,6 +1216,22 @@ airbus.mes.disruptions.ModelManager = {
 		// Refresh model
 		sap.ui.getCore().getModel("operationDetailModel").refresh();
 	},
+	
+	
+	/*******************************************************************
+	 * Get the issuer of the disruption
+	 */
+	getIssuer: function(){
+		var sUserBo = sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/USER_BO") == "---" ? 
+			( "UserBO:" +
+			airbus.mes.settings.ModelManager.site +
+			"," +
+			sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user") )//Current Logged in user
+			: sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/USER_BO") // Affected User
+			
+		return sUserBo;
+	},
+	
 	/***************************************************************************
 	 * Attachment Model in disruption
 	 **************************************************************************/	
