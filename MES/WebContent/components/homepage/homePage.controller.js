@@ -90,10 +90,10 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 	 * 
 	 */
     setVisible : function() {
-//        var flag = airbus.mes.shell.RoleManager.isAllowed(airbus.mes.shell.RoleManager.parseRoleValue("HOMESCREEN"), 'V');
-//        airbus.mes.shell.RoleManager.userRoles = [];
-//        return flag;
-    	return true;
+        var flag = airbus.mes.shell.RoleManager.isAllowed(airbus.mes.shell.RoleManager.parseRoleValue("HOMESCREEN"), 'V');
+        airbus.mes.shell.RoleManager.userRoles = [];
+        return flag;
+//    	return true;
     }
 	/**
 	 * Similar to onAfterRendering, but this hook is invoked before the controller's

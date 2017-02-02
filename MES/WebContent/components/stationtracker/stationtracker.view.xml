@@ -84,7 +84,7 @@
 													</VBox>
 												</VBox>
 												
-												<VBox id="boxTaktAdherenceRight" width="50%" class="kpiBoxes" visible = "{ path : 'groupModel>Value' , formatter : '.setVisible' }">
+												<VBox id="boxTaktAdherenceRight" width="50%" class="kpiBoxes" visible = "{ path : 'groupModel>Value' , formatter : '.setTaktVisible' }">
 													<Label text="{StationTrackerI18n>TaktAdherence}"
 														class="whiteTextHeader" />
 													<VBox justifyContent="SpaceAround" height="100%" class="taktAdherenceBox">
@@ -188,7 +188,7 @@
 											</VBox>
 										</VBox>
 				
-										<VBox id="boxOpenDisruptions" width="22%" class="contentHeaderCont kpiBoxes" visible = "{ path : 'groupModel>Value' , formatter : '.setVisible' }">
+										<VBox id="boxOpenDisruptions" width="22%" class="contentHeaderCont kpiBoxes" visible = "{ path : 'groupModel>Value' , formatter : '.setKPIDisruptionVisible' }">
 											<Label text="{StationTrackerI18n>disruptions/andon}"
 												class="whiteTextHeader" />
 											<HBox class="kpiBodyWithoutMargin">
@@ -327,13 +327,13 @@
 									<!-- <Label text="{StationTrackerI18n>GroupingSortBy}" /> -->
 									<!-- <Label text="{StationTrackerI18n>Grouping}"/> -->
 									<Select id="selectGroup" class="sapUiTinyMarginBeginEnd comboBoxStyle"
-										items="{groupModel>/Rowsets/Rowset/0/Row/Grouping}" change="changeGroup" visible = "{ path : 'groupModel>Value' , formatter : '.setVisible' }">
+										items="{groupModel>/Rowsets/Rowset/0/Row/Grouping}" change="changeGroup" visible = "{ path : 'groupModel>Value' , formatter : '.setBoxVisible' }">
 										<core:ListItem key="{groupModel>key}"
 											text="{ path : 'groupModel>Value' , formatter : '.getI18nValue' }" />
 									</Select>
 									<!-- <Label id="selectBoxLabel" text="{StationTrackerI18n>Granularity}"/> -->
 									<Select id="selectBox" class="sapUiTinyMarginBeginEnd comboBoxStyle"
-										items="{groupModel>/Rowsets/Rowset/0/Row/Boxing}" change="changeBox" visible = "{ path : 'groupModel>Value' , formatter : '.setVisible' }">
+										items="{groupModel>/Rowsets/Rowset/0/Row/Boxing}" change="changeBox" visible = "{ path : 'groupModel>Value' , formatter : '.setGroupVisible' }">
 										<core:ListItem key="{groupModel>key}"
 											text="{ path : 'groupModel>Value' , formatter : '.getI18nValue' }" />
 										<!-- <core:Item text="Operations" key="OPERATION_ID"/> <core:Item text="WorkOrder" 
@@ -343,16 +343,16 @@
 									<HBox id="toolbarDate" class="sapUiTinyMarginBeginEnd"></HBox>
 									<ToolbarSpacer />
 									<Button text="{StationTrackerI18n>missingParts}" enabled="false"
-										type="Transparent" icon="sap-icon://task" class="sapUiTinyMarginBeginEnd" visible = "{ path : 'groupModel>Value' , formatter : '.setVisible' }"></Button>
+										type="Transparent" icon="sap-icon://task" class="sapUiTinyMarginBeginEnd" visible = "{ path : 'groupModel>Value' , formatter : '.setMissingVisible' }"></Button>
 									<ToggleButton text="{StationTrackerI18n>ButtonShowCP}" type="Transparent"
 										icon="sap-icon://kpi-corporate-performance" class="sapUiTinyMarginBeginEnd"
-										press="onCPPress" pressed="false" visible = "{ path : 'groupModel>Value' , formatter : '.setVisible' }" />
+										press="onCPPress" pressed="false" visible = "{ path : 'groupModel>Value' , formatter : '.setCriticalVisible' }" />
 						
 									<Button text="{StationTrackerI18n>disruptions/andon}" press="showDisruption"
-										type="Transparent" icon="sap-icon://alert" class="sapUiTinyMarginBeginEnd" visible = "{ path : 'groupModel>Value' , formatter : '.setVisible' }"></Button>
+										type="Transparent" icon="sap-icon://alert" class="sapUiTinyMarginBeginEnd" visible = "{ path : 'groupModel>Value' , formatter : '.setDisruptionpVisible' }"></Button>
 									<Button id="oswButton" text="{StationTrackerI18n>ButtonOutstandingWork}"
 										type="Transparent" icon="sap-icon://cause" class="sapUiTinyMarginBeginEnd"
-										press="onOSWPress" visible = "{ path : 'groupModel>Value' , formatter : '.setVisible' }"></Button>
+										press="onOSWPress" visible = "{ path : 'groupModel>Value' , formatter : '.setOSWVisible' }"></Button>
 									<Button id="unplannedButton" text="{StationTrackerI18n>UnplannedActivities}" type="Transparent"
 										icon="sap-icon://inspect" class="sapUiTinyMarginBeginEnd" press="onUnplannedPress"></Button>
 									<ToggleButton text="{StationTrackerI18n>ButtonInitial}" type="Transparent"

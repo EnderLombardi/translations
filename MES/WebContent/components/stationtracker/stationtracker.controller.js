@@ -1256,11 +1256,59 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
     },
     
     //set the visible property of controls to true or false according to the roles
-    setVisible: function(){
+//    setVisible: function(){
 //		var Flag = airbus.mes.shell.RoleManager.isAllowed(airbus.mes.shell.RoleManager.parseRoleValue("XXXX"), 'V');
 //        airbus.mes.shell.RoleManager.userRoles = [];
 //        return Flag;
-        return true;
+//        return true;
+//    },
+    setCriticalVisible: function(){
+//		var Flag = airbus.mes.shell.RoleManager.isAllowed(airbus.mes.shell.RoleManager.parseRoleValue("STATION_GANTT_CRITICAL"), 'V');
+//        airbus.mes.shell.RoleManager.userRoles = [];
+//        return Flag;
+    	return true;
+    },
+    setBoxVisible: function(){
+//		var Flag = airbus.mes.shell.RoleManager.isAllowed(airbus.mes.shell.RoleManager.parseRoleValue("STATION_GANTT_BOXING"), 'V');
+//        airbus.mes.shell.RoleManager.userRoles = [];
+//        return Flag;
+    	return true;
+    },
+    setGroupVisible: function(){
+//		var Flag = airbus.mes.shell.RoleManager.isAllowed(airbus.mes.shell.RoleManager.parseRoleValue("STATION_GANTT_GROUPING"), 'V');
+//        airbus.mes.shell.RoleManager.userRoles = [];
+//        return Flag;
+    	return true;
+    },
+    setMissingVisible: function(){
+//		var Flag = airbus.mes.shell.RoleManager.isAllowed(airbus.mes.shell.RoleManager.parseRoleValue("STATION_DRILL_MISSING"), 'V');
+//        airbus.mes.shell.RoleManager.userRoles = [];
+//        return Flag;
+    	return true;
+    },
+    setDisruptionpVisible: function(){
+//		var Flag = airbus.mes.shell.RoleManager.isAllowed(airbus.mes.shell.RoleManager.parseRoleValue("STATION_DRILL_DISRUPTION"), 'V');
+//        airbus.mes.shell.RoleManager.userRoles = [];
+//        return Flag;
+    	return true;
+    },
+    setOSWVisible: function(){
+//		var Flag = airbus.mes.shell.RoleManager.isAllowed(airbus.mes.shell.RoleManager.parseRoleValue("STATION_DRILL_OSW"), 'V');
+//        airbus.mes.shell.RoleManager.userRoles = [];
+//        return Flag;
+    	return true;
+    },
+    setTaktVisible: function(){
+//		var Flag = airbus.mes.shell.RoleManager.isAllowed(airbus.mes.shell.RoleManager.parseRoleValue("STATION_KPI_TAKT"), 'V');
+//        airbus.mes.shell.RoleManager.userRoles = [];
+//        return Flag;
+    	return true;
+    },
+    setKPIDisruptionVisible: function(){
+//		var Flag = airbus.mes.shell.RoleManager.isAllowed(airbus.mes.shell.RoleManager.parseRoleValue("STATION_KPI_DISRUPTIONS"), 'V');
+//        airbus.mes.shell.RoleManager.userRoles = [];
+//        return Flag;
+    	return true;
     }
 
 });

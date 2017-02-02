@@ -510,17 +510,19 @@ airbus.mes.disruptions.Formatter = {
 	 * Set Edit button Enable/Disable based on Roles
 	 */
 	setEnabled: function(){
-		var flag = airbus.mes.shell.RoleManager.isAllowed(airbus.mes.shell.RoleManager.parseRoleValue("DISRUPTION_DISRUPTION DETAILED VIEW_EDIT"), 'V');
-        airbus.mes.shell.RoleManager.userRoles = [];
-        return flag;
+//		var flag = airbus.mes.shell.RoleManager.isAllowed(airbus.mes.shell.RoleManager.parseRoleValue("DISRUPTION_DIS_DETAIL_EDIT"), 'V');
+//        airbus.mes.shell.RoleManager.userRoles = [];
+//        return flag;
+		return true;
 	},
 	/**
 	 * Set ACK,Reject,Refuse,markSolved button Enable/Disable based on Roles
 	 */
 	setButtonEnabled: function(){
-		var flag = airbus.mes.shell.RoleManager.isAllowed(airbus.mes.shell.RoleManager.parseRoleValue("DISRUPTION_DISRUPTION DETAILED VIEW_UPDATE"), 'V');
-        airbus.mes.shell.RoleManager.userRoles = [];
-        return flag;		
+//		var flag = airbus.mes.shell.RoleManager.isAllowed(airbus.mes.shell.RoleManager.parseRoleValue("DISRUPTION_DIS_DETAIL_UPDATE"), 'V');
+//        airbus.mes.shell.RoleManager.userRoles = [];
+//        return flag;		
+		return true;
 	}
 	/*setNumberofAttachment : function(number) {
 		var sValue = number + "\n" + " Attachments";
