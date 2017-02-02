@@ -11,18 +11,20 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 	 */
 	disruptionTrackerRefresh : false,
 	mFilterParams : undefined,
-	onInit : function() { 
-		//if the page is not busy
-        if (airbus.mes.shell.oView.byId('refreshTime').setBusyIndicatorDelay(0)){
-            airbus.mes.shell.oView.byId('refreshTime').setEnabled(true);
-        }
-		jQuery.sap.require("airbus.mes.disruptiontracker.util.personalisationService");
-		jQuery.sap.require("sap.m.TablePersoController")
-		this._oTPC = new sap.m.TablePersoController({
-				table: this.getView().byId("disruptionsTable"),
-				componentName: "disruptiontrackerTable",
-				persoService: airbus.mes.disruptiontracker.util.personalisationService,
-			}).activate();
+	onInit : function() {
+		// if the page is not busy
+		if (airbus.mes.shell.oView.byId('refreshTime').setBusyIndicatorDelay(0)) {
+			airbus.mes.shell.oView.byId('refreshTime').setEnabled(true);
+		}
+		/*
+		 * jQuery.sap.require("airbus.mes.disruptiontracker.util.personalisationService");
+		 * jQuery.sap.require("sap.m.TablePersoController") this._oTPC = new
+		 * sap.m.TablePersoController({ table:
+		 * this.getView().byId("disruptionsTable"), componentName:
+		 * "disruptiontrackerTable", persoService:
+		 * airbus.mes.disruptiontracker.util.personalisationService,
+		 * }).activate();
+		 */
 	},
 
 	/**
@@ -36,17 +38,15 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		var oSorter = new sap.ui.model.Sorter("OpeningTime", true);
 
 		// sorting based on opening time
-		this.getView().byId("disruptiontrackerView--disruptionsTable").getBinding("items").sort(oSorter);
+		this.getView().byId("disruptiontrackerView--disruptionsTable").getBinding("rows").sort(oSorter);
 
 		airbus.mes.disruptiontracker.oView.byId("gotoDisruptionKpi").setVisible(true);
 
-
 	},
-	
-	
-    onBackPress : function(){
-        nav.back();
-    },
+
+	onBackPress : function() {
+		nav.back();
+	},
 
 	/**
 	 * Similar to onAfterRendering, but this hook is invoked before the
@@ -303,8 +303,8 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 			// Pause the Refresh timer till the Pop-Up is opened
 			// airbus.mes.shell.AutoRefreshManager.pauseRefresh();
 			// this.getView().byId('refreshTime').setVisible(false);
-//			airbus.mes.shell.oView.byId('refreshTime').setVisible(false); 
-//			this.setDataForViewDisruptionDetail();
+			// airbus.mes.shell.oView.byId('refreshTime').setVisible(false);
+			// this.setDataForViewDisruptionDetail();
 			/** *********************MES V1.5 [End]******************** */
 
 		} else {
@@ -344,7 +344,8 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 			// airbus.mes.shell.AutoRefreshManager.pauseRefresh();
 			// this.getView().byId('refreshTime').setVisible(false);
 			// --commented by MJ
-			//airbus.mes.shell.oView.byId('refreshTime').setVisible(false); // ++
+			// airbus.mes.shell.oView.byId('refreshTime').setVisible(false); //
+			// ++
 			// MJ
 			// this.getView().byId('refreshTime').setVisible(false);
 
@@ -390,19 +391,20 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 			sap.ui.getCore().byId("disruptionDetailPopup--btnCancelDisruption").setVisible(true);
 		}
 	},
-//	/***************************************************************************
-//	 * set the data in disruption detail page call set data for edit disruption
-//	 * function MESV 1.5
-//	 */
-//	setDataForViewDisruptionDetail : function() {
-//
-//		if (!this.disruptionsCustomDataFlag) {
-//			airbus.mes.disruptions.ModelManager.loadData();
-//			this.disruptionsCustomDataFlag = true;
-//		} else {
-//			airbus.mes.disruptions.oView.createDisruption.oController.setDataForEditDisruption();
-//		}
-//	},
+	// /***************************************************************************
+	// * set the data in disruption detail page call set data for edit
+	// disruption
+	// * function MESV 1.5
+	// */
+	// setDataForViewDisruptionDetail : function() {
+	//
+	// if (!this.disruptionsCustomDataFlag) {
+	// airbus.mes.disruptions.ModelManager.loadData();
+	// this.disruptionsCustomDataFlag = true;
+	// } else {
+	// airbus.mes.disruptions.oView.createDisruption.oController.setDataForEditDisruption();
+	// }
+	// },
 	/**
 	 * [MES V1.5] [Beg]SD-SP1604983-DT-040 search disruption on basis of work
 	 * order/operation
@@ -422,120 +424,105 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 
 	},
 	/**
-	 * Export Disruption Data to excel
-	 * [MES V1.5]
-	 * [SD-SP1604983-EXT-005]
+	 * Export Disruption Data to excel [MES V1.5] [SD-SP1604983-EXT-005]
 	 */
-	handleSelectedRowExcelExport:function(){
+	handleSelectedRowExcelExport : function() {
 		var oTable = this.getView().byId("disruptionsTable");
 		var aContexts = oTable.getSelectedContexts();
-		var aItems = aContexts.map(function(oEvent){
-		        return oEvent.getObject();
-		    });
+		var aItems = aContexts.map(function(oEvent) {
+			return oEvent.getObject();
+		});
 		this.jsonToCSVConvertor(aItems, "Disruption Data", true);
-		
+
 	},
-	jsonToCSVConvertor: function(JSONData, ReportTitle, ShowLabel){
+	jsonToCSVConvertor : function(JSONData, ReportTitle, ShowLabel) {
 
-        //If JSONData is not an object then JSON.parse will parse the JSON string in an Object
-        var arrData = typeof JSONData != 'object' ? JSON.parse(JSONData) : JSONData;
-        var CSV = '';    
-        //This condition will generate the Label/Header
-        if (ShowLabel) {
-            var row = "";
+		// If JSONData is not an object then JSON.parse will parse the JSON
+		// string in an Object
+		var arrData = typeof JSONData != 'object' ? JSON.parse(JSONData) : JSONData;
+		var CSV = '';
+		// This condition will generate the Label/Header
+		if (ShowLabel) {
+			var row = "";
 
-            //This loop will extract the label from 1st index of on array
-            for (var index in arrData[0]) {
-                //Now convert each value to string and comma-seprated
-                row += index + ',';
-            }
-            row = row.slice(0, -1);
-            //append Label row with line break
-            CSV += row + '\r\n';
-        }
+			// This loop will extract the label from 1st index of on array
+			for ( var index in arrData[0]) {
+				// Now convert each value to string and comma-seprated
+				row += index + ',';
+			}
+			row = row.slice(0, -1);
+			// append Label row with line break
+			CSV += row + '\r\n';
+		}
 
-        //1st loop is to extract each row
-        for (var i = 0; i < arrData.length; i++) {
-            var row = "";
-            //2nd loop will extract each column and convert it in string comma-seprated
-            for (var index in arrData[i]) {
-                row += '"' + arrData[i][index] + '",';
-            }
-            row.slice(0, row.length - 1);
-            //add a line break after each row
-            CSV += row + '\r\n';
-        }
+		// 1st loop is to extract each row
+		for (var i = 0; i < arrData.length; i++) {
+			var row = "";
+			// 2nd loop will extract each column and convert it in string
+			// comma-seprated
+			for ( var index in arrData[i]) {
+				row += '"' + arrData[i][index] + '",';
+			}
+			row.slice(0, row.length - 1);
+			// add a line break after each row
+			CSV += row + '\r\n';
+		}
 
-        if (CSV == '') {        
-            alert("Invalid data");
-            return;
-        }   
+		if (CSV == '') {
+			alert("Invalid data");
+			return;
+		}
 
-        //this trick will generate a temp "a" tag
-        var link = document.createElement("a");    
-        link.id="lnkDwnldLnk";
+		// this trick will generate a temp "a" tag
+		var link = document.createElement("a");
+		link.id = "lnkDwnldLnk";
 
-        //this part will append the anchor tag and remove it after automatic click
-        document.body.appendChild(link);
+		// this part will append the anchor tag and remove it after automatic
+		// click
+		document.body.appendChild(link);
 
-        var csv = CSV;  
-        var blob = new Blob([csv], { type: 'text/csv' }); 
-        var csvUrl = window.URL.createObjectURL(blob);
-        var filename = 'UserExport.csv';
-        $("#lnkDwnldLnk")
-        .attr({
-            'download': filename,
-            'href': csvUrl
-        }); 
+		var csv = CSV;
+		var blob = new Blob([ csv ], {
+			type : 'text/csv'
+		});
+		var csvUrl = window.URL.createObjectURL(blob);
+		var filename = 'UserExport.csv';
+		$("#lnkDwnldLnk").attr({
+			'download' : filename,
+			'href' : csvUrl
+		});
 
-        $('#lnkDwnldLnk')[0].click();    
-        document.body.removeChild(link);
+		$('#lnkDwnldLnk')[0].click();
+		document.body.removeChild(link);
 
-    },
-	onPersoalisationButtonPressed:function(){
+	},
+	onPersoalisationButtonPressed : function() {
 
 		this._oTPC.openDialog();
+	},
+	openDisruptionDeatail : function() {
+		airbus.mes.shell.util.navFunctions.disruptionsDetail(nav, 0, 0, 0, 0);
+		nav.to(airbus.mes.disruptions.oView.disruptionDetail.getId());
 	}
 
-	/**
-	 * search disruption on basis of work order/operation
-	 * 
-	 * @param {object}
-	 *            oEvt take control as an object
-	 */
-	/*onDisruptionSuggestions : function(oEvt) {
-		var oSF = this.getView().byId("disruptionSearchField");
-		var value = oEvt.getParameter("suggestValue");
-		var aTemp = [];
-		if (value) {
-			oSF.getBinding("suggestionItems").filter(new sap.ui.model.Filter({
-				path : "Operation",
-				test : function(sText) {
-					if (((sText || "").toUpperCase().indexOf(value.toUpperCase()) > -1) && (aTemp.indexOf(sText) == -1) ) {
-							aTemp.push(sText);
-							return true;
-						} else {
-							return false;
-						}
-				
-				}
-			}));
-		}
-		if (!value) {
-			oSF.getBinding("suggestionItems").filter(new sap.ui.model.Filter({
-				path : "Operation",
-				test : function(sText) {
-					if (aTemp.indexOf(sText) == -1) {
-						aTemp.push(sText);
-						return true;
-					} else {
-						return false;
-					}
-				}
-			}));
-		}
-		oSF.suggest();
-		this.onSearchDisruption(oEvt);
-
-	}*/
+/**
+ * search disruption on basis of work order/operation
+ * 
+ * @param {object}
+ *            oEvt take control as an object
+ */
+/*
+ * onDisruptionSuggestions : function(oEvt) { var oSF =
+ * this.getView().byId("disruptionSearchField"); var value =
+ * oEvt.getParameter("suggestValue"); var aTemp = []; if (value) {
+ * oSF.getBinding("suggestionItems").filter(new sap.ui.model.Filter({ path :
+ * "Operation", test : function(sText) { if (((sText ||
+ * "").toUpperCase().indexOf(value.toUpperCase()) > -1) && (aTemp.indexOf(sText) ==
+ * -1) ) { aTemp.push(sText); return true; } else { return false; }
+ *  } })); } if (!value) { oSF.getBinding("suggestionItems").filter(new
+ * sap.ui.model.Filter({ path : "Operation", test : function(sText) { if
+ * (aTemp.indexOf(sText) == -1) { aTemp.push(sText); return true; } else {
+ * return false; } } })); } oSF.suggest(); this.onSearchDisruption(oEvt);
+ *  }
+ */
 });

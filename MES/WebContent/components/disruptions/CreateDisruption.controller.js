@@ -966,8 +966,73 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
 
        },
        onEditDisruption : function() {
-              this.setDataForEditDisruption();
+              //this.setDataForEditDisruption();
+              this.getView().byId("commentBox").setVisible(true);
 
-       }
+       },
+       /***********************************************************
+		 * Hide Comment Box to Add Comments
+		 * @param {object} oEvt take event riggering control as an input
+		 */
+		hideCommentBox : function(oEvt) {
+			sap.ui.getCore().byId("disruptionDetail--commentBox").setVisible(false)
+
+		},
+
+		/***********************************************************
+		 * Submit Disruption Comment
+		 * @param {object} oEvt take event riggering control as an input
+		 */
+		submitComment : function(oEvt) {
+			
+			var status = oEvt.getSource().getBindingContext(
+					"operationDisruptionsModel").getObject(
+					"Status");
+			
+			if (status == airbus.mes.disruptions.Formatter.status.deleted || status == airbus.mes.disruptions.Formatter.status.closed) {
+				
+				sap.m.MessageToast.show(this.getView().getModel("i18nModel").getProperty("cannotComment"));
+				
+				return;
+			}
+				
+			var path = oEvt.getSource().sId;
+
+			var msgRef = oEvt.getSource().getBindingContext(
+					"operationDisruptionsModel").getObject(
+					"MessageRef");
+
+			var listnum = path.split("-");
+			listnum = listnum[listnum.length - 1];
+
+			var sComment = airbus.mes.disruptions.Formatter.actions.comment +
+						   this.getView().byId(this.getView().sId + "--commentArea-"
+							   	+ this.getView().sId + "--disrptlist-"
+							   	+ listnum).getValue();
+			
+			var currDate = new Date();
+			var date = currDate.getFullYear() + "-" + currDate.getMonth() + "-" + currDate.getDate();
+
+			var oComment = {
+					"Action" : this.getView().getModel("i18nModel").getProperty("comment"),
+					"Comments" : sComment,
+					"Counter" : "",
+					"Date" : date,
+					"MessageRef" : msgRef,
+					"UserFullName" : ( sap.ui.getCore().getModel("userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/first_name").toLowerCase() + " " +
+							   sap.ui.getCore().getModel("userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/last_name").toLowerCase() )
+			};
+
+			var i18nModel = airbus.mes.disruptions.oView.viewDisruption
+					.getModel("i18nModel");
+
+			// Call Add comment Service
+			airbus.mes.disruptions.ModelManager.addComment(oComment, i18nModel);
+
+			this.getView().byId(
+					this.getView().sId + "--commentArea-"
+							+ this.getView().sId + "--disrptlist-"
+							+ listnum).setValue("");
+		}
 
 });

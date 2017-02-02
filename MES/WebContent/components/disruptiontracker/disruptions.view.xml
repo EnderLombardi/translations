@@ -1,83 +1,85 @@
 <mvc:View controllerName="airbus.mes.disruptiontracker.disruptions"
 	xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
-	xmlns="sap.m">
+	xmlns="sap.m" xmlns:ui="sap.ui.table">
 	<Page class="disruptions" showHeader="false">
 
 
-			<Toolbar class="pageHeader">
-					<Title text="{disruptiontrackerI18n>disruptionsTitle}" id="headerText" class="headerText" />
-					<ComboBox id="stationComboBox" class="sapUiMediumMarginEnd customComboBox"
-						placeholder="{disruptiontrackerI18n>selectStation}" items="{ path:'plantModel>/Rowsets/Rowset/0/Row' }"
-						selectedKey="" selectionChange="filterByStation" enabled="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setVisible'}">
-						<core:Item key="{plantModel>station}" text="{plantModel>stationDescription}" />
-					</ComboBox>
+		<Toolbar class="pageHeader">
+			<Title text="{disruptiontrackerI18n>disruptionsTitle}" id="headerText"
+				class="headerText" />
+			<ComboBox id="stationComboBox" class="sapUiMediumMarginEnd customComboBox"
+				placeholder="{disruptiontrackerI18n>selectStation}" items="{ path:'plantModel>/Rowsets/Rowset/0/Row' }"
+				selectedKey="" selectionChange="filterByStation"
+				enabled="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setVisible'}">
+				<core:Item key="{plantModel>station}" text="{plantModel>stationDescription}" />
+			</ComboBox>
 
-					<ComboBox id="msnComboBox" class="sapUiMediumMarginEnd customComboBox"
-						placeholder="{disruptiontrackerI18n>selectMSN}" items="{ path:'plantModel>/Rowsets/Rowset/0/Row' }"
-						selectedKey="" selectionChange="filterByStation" enabled="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setVisible'}">
-						<core:Item key="{plantModel>msn}" text="{plantModel>msn}" />
-					</ComboBox>
+			<ComboBox id="msnComboBox" class="sapUiMediumMarginEnd customComboBox"
+				placeholder="{disruptiontrackerI18n>selectMSN}" items="{ path:'plantModel>/Rowsets/Rowset/0/Row' }"
+				selectedKey="" selectionChange="filterByStation"
+				enabled="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setVisible'}">
+				<core:Item key="{plantModel>msn}" text="{plantModel>msn}" />
+			</ComboBox>
 
-					<ComboBox id="statusComboBox" class="sapUiMediumMarginEnd customComboBox"
-						placeholder="{disruptiontrackerI18n>selectStatus}" selectedKey=""
-						selectionChange="filterDisruptions" enabled="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setVisible'}">
-						<core:Item key="" text="{disruptiontrackerI18n>All}" />
-						<core:Item key="Pending" text="{disruptiontrackerI18n>status.pending}" />
-						<core:Item key="Acknowledged"
-							text="{disruptiontrackerI18n>status.acknowledged}" />
-						<core:Item key="Solved" text="{disruptiontrackerI18n>status.solved}" />
-						<core:Item key="Closed" text="{disruptiontrackerI18n>status.closed}" />
-						<core:Item key="Rejected" text="{disruptiontrackerI18n>status.rejected}" />
-					</ComboBox>
+			<ComboBox id="statusComboBox" class="sapUiMediumMarginEnd customComboBox"
+				placeholder="{disruptiontrackerI18n>selectStatus}" selectedKey=""
+				selectionChange="filterDisruptions"
+				enabled="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setVisible'}">
+				<core:Item key="" text="{disruptiontrackerI18n>All}" />
+				<core:Item key="Pending" text="{disruptiontrackerI18n>status.pending}" />
+				<core:Item key="Acknowledged"
+					text="{disruptiontrackerI18n>status.acknowledged}" />
+				<core:Item key="Solved" text="{disruptiontrackerI18n>status.solved}" />
+				<core:Item key="Closed" text="{disruptiontrackerI18n>status.closed}" />
+				<core:Item key="Rejected" text="{disruptiontrackerI18n>status.rejected}" />
+			</ComboBox>
 
-					<ComboBox id="resolutionGroupBox" class="sapUiMediumMarginEnd customComboBox"
-						placeholder="{disruptiontrackerI18n>resolutionGroup}" items="{disruptionsTrackerModel>/Rowsets/Rowset/0/Row}"
-						selectedKey="" selectionChange="filterDisruptions" enabled="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setVisible'}">
-						<core:Item key="{disruptionsTrackerModel>ResponsibleGroup}"
-							text="{disruptionsTrackerModel>ResponsibleGroupDesc}" />
-					</ComboBox>
-					
-			</Toolbar>
+			<ComboBox id="resolutionGroupBox" class="sapUiMediumMarginEnd customComboBox"
+				placeholder="{disruptiontrackerI18n>resolutionGroup}" items="{disruptionsTrackerModel>/Rowsets/Rowset/0/Row}"
+				selectedKey="" selectionChange="filterDisruptions"
+				enabled="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setVisible'}">
+				<core:Item key="{disruptionsTrackerModel>ResponsibleGroup}"
+					text="{disruptionsTrackerModel>ResponsibleGroupDesc}" />
+			</ComboBox>
+
+		</Toolbar>
 
 
 		<Panel width="100%">
 			<content>
 
-				<!-- <Toolbar class="sapUiSmallMarginTop" height="1rem">
-					<Label text="{disruptiontrackerI18n>selectStation}" width="13.7rem"
-						class="sapUiLargeMarginEnd" />
-					<Label text="{disruptiontrackerI18n>selectMSN}" width="13.7rem"
-						class="sapUiLargeMarginEnd" />
-					<Label text="{disruptiontrackerI18n>selectStatus}" width="13.7rem"
-						class="sapUiLargeMarginEnd" />
-					<Label text="{disruptiontrackerI18n>resolutionGroup}" />
-				</Toolbar> -->
+				<!-- <Toolbar class="sapUiSmallMarginTop" height="1rem"> <Label text="{disruptiontrackerI18n>selectStation}" 
+					width="13.7rem" class="sapUiLargeMarginEnd" /> <Label text="{disruptiontrackerI18n>selectMSN}" 
+					width="13.7rem" class="sapUiLargeMarginEnd" /> <Label text="{disruptiontrackerI18n>selectStatus}" 
+					width="13.7rem" class="sapUiLargeMarginEnd" /> <Label text="{disruptiontrackerI18n>resolutionGroup}" 
+					/> </Toolbar> -->
 				<Toolbar>
-					<Button id="navBack" icon="sap-icon://arrow-left" press="onBackPress" type="Transparent"/>
-					
-					
+					<Button id="navBack" icon="sap-icon://arrow-left" press="onBackPress"
+						type="Transparent" />
+
+
 					<!--[MES V1.5] [Beg]SD-SP1604983-DT-040 -->
-					<SearchField id="disruptionSearchField" width="40%" placeholder="search for..."
-						enableSuggestions="true" search="onSearchDisruption" suggest="onDisruptionSuggestions">
+					<SearchField id="disruptionSearchField" width="40%"
+						placeholder="search for..." enableSuggestions="true" search="onSearchDisruption"
+						suggest="onDisruptionSuggestions">
 					</SearchField>
 					<!--[MES V1.5] [End]SD-SP1604983-DT-040 -->
-					
+
 					<ToolbarSpacer />
-					
-					<Button
-                        text="{disruptiontrackerI18n>ExporttoExcel}"
-                        icon="sap-icon://excel-attachment"
-                        press="handleSelectedRowExcelExport" 
-                        id="exportbutton"
-                        class="borderbutton"/>  
-					
+
+					<Button text="{disruptiontrackerI18n>ExporttoExcel}" icon="sap-icon://excel-attachment"
+						press="handleSelectedRowExcelExport" id="exportbutton" class="borderbutton" />
+
 					<Button id="onDisruptionTableSettings" type="Transparent"
 						press="onDisruptionTableSettings" icon="sap-icon://drop-down-list"
 						tooltip="{disruptiontrackerI18n>disruptionFilter}" class="borderbutton" />
 
 					<Button id="gotoDisruptionKpi" icon="sap-icon://area-chart"
 						text="{disruptiontrackerI18n>disruptionKPI}" press="onPressDisruptionKPI"
-						visible="false" class="borderbutton"/>
+						visible="false" class="borderbutton" />
+						<Button id="gotoDisruptionDetail" icon="sap-icon://area-chart"
+						text="{disruptiontrackerI18n>disruptionKPI}" press="openDisruptionDeatail"
+						visible="true" class="borderbutton" />
 				</Toolbar>
 
 			</content>
@@ -85,63 +87,22 @@
 		</Panel>
 
 
-		<Table id="disruptionsTable" class="disruptionsTable sapUiSmallMarginBottom"  mode="MultiSelect"   
-			items="{ path: 'disruptionsTrackerModel>/Rowsets/Rowset/0/Row' }"
-			growing="true" growingThreshold="50" visible="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setVisible'}">
+		<ui:Table id="disruptionsTable" 
+			rows="{ path: 'disruptionsTrackerModel>/Rowsets/Rowset/0/Row' }" selectionMode="MultiToggle"			
+			visible="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setVisible'}" cellClick="onTableClick">
 
-			<columns>
-				<Column id="operationCol">
-					<Text text="{disruptiontrackerI18n>operation}" />
-				</Column>
-				<Column id="gravityCol">
-					<Text text="{disruptiontrackerI18n>gravity}" />
-				</Column>
-				<Column id="statusCol">
-					<Text text="{disruptiontrackerI18n>status}" />
-				</Column>
-				<Column id="categoryCol">
-					<Text text="{disruptiontrackerI18n>category}" />
-				</Column>
-				<Column id="reasonCol">
-					<Text text="{disruptiontrackerI18n>reason}" />
-				</Column>
-				<Column id="originatorGroupCol">
-					<Text text="{disruptiontrackerI18n>originatorGroup}" />
-				</Column>
-				<Column id="resolutionGroupCol">
-					<Text text="{disruptiontrackerI18n>resolutionGroup}" />
-				</Column>
-				<Column id="escalationCol">
-					<Text text="{disruptiontrackerI18n>escalation}" />
-				</Column>
-				<Column id="openingTimeCol">
-					<Text text="{disruptiontrackerI18n>openingTime}" />
-				</Column>
-				<Column id="fixedByTimeCol">
-					<Text text="{disruptiontrackerI18n>fixedByTime}" />
-				</Column>
-				<Column id="promisedDateCol">
-					<Text text="{disruptiontrackerI18n>promisedDate}" />
-				</Column>
-				<Column id="timeBeforeNextEscCol">
-					<Text text="{disruptiontrackerI18n>timeBofreNextEsc}" />
-				</Column>
-				<Column id="descriptionCol">
-					<Text text="{disruptiontrackerI18n>description}" />
-				</Column>
-				<Column id="solutionCol">
-					<Text text="{disruptiontrackerI18n>solution}" />
-				</Column>
-				<Column id="closureDateCol">
-					<Text text="{disruptiontrackerI18n>closureDate}" />
-				</Column>
-			</columns>
-
-			<items>
-				<ColumnListItem type="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setType'}" press="onTableClick">
-					<cells>
+			<ui:columns>
+				<ui:Column id="operationCol">
+					<Label text="{disruptiontrackerI18n>operation}" />
+					<ui:template>
 						<Text
 							text="{disruptionsTrackerModel>WorkOrder} / {path: 'disruptionsTrackerModel>Operation', formatter: 'airbus.mes.disruptiontracker.Formatter.setOperationText'}" />
+					</ui:template>
+				</ui:Column>
+				
+				<ui:Column id="gravityCol">
+					<Label text="{disruptiontrackerI18n>gravity}" />
+					<ui:template>
 						<HBox>
 							<core:Icon
 								src="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setIcon'}"
@@ -150,28 +111,118 @@
 							<Text
 								text="{parts: [ {path: 'disruptionsTrackerModel>Status'}, {path: 'disruptionsTrackerModel>Gravity'}, {path: 'disruptionsTrackerModel>gravity'} ], formatter: 'airbus.mes.disruptiontracker.Formatter.setText'}" />
 						</HBox>
+					</ui:template>
+				</ui:Column>
+				
+				<ui:Column id="statusCol">
+					<Label text="{disruptiontrackerI18n>status}" />
+					<ui:template>
 						<Text
 							text="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setDisruptionTrackerStatus'}" />
-						<Text text="{disruptionsTrackerModel>Category}" />
+					</ui:template>
+				</ui:Column>
+				
+				<ui:Column id="categoryCol">
+					<Label text="{disruptiontrackerI18n>category}" />
+					<ui:template>
+						<Text text="{disruptionsTrackerModel>Category}" />						
+					</ui:template>
+				</ui:Column>
+				
+				<ui:Column id="reasonCol">
+					<Label text="{disruptiontrackerI18n>reason}" />
+					<ui:template>
 						<Text text="{disruptionsTrackerModel>Reason}" />
+					</ui:template>
+				</ui:Column>
+				
+				<ui:Column id="originatorGroupCol">
+					<Label text="{disruptiontrackerI18n>originatorGroup}" />
+					<ui:template>
 						<Text text="{disruptionsTrackerModel>OriginatorGroupDesc}" />
+					</ui:template>
+				</ui:Column>
+				
+				<ui:Column id="resolutionGroupCol">
+					<Label text="{disruptiontrackerI18n>resolutionGroup}" />
+					<ui:template>
 						<Text text="{disruptionsTrackerModel>ResponsibleGroupDesc}" />
+					</ui:template>
+				</ui:Column>
+				
+				<ui:Column id="escalationCol">
+					<Label text="{disruptiontrackerI18n>escalation}" />
+					<ui:template>
 						<Text
 							text="{path: 'disruptionsTrackerModel>EscalationLevel', formatter: 'airbus.mes.disruptiontracker.Formatter.setEscalationText'}" />
+					</ui:template>
+				</ui:Column>
+				
+				<ui:Column id="openingTimeCol">
+					<Label text="{disruptiontrackerI18n>openingTime}" />
+					<ui:template>
 						<Text
 							text="{parts: [ {path: 'disruptionsTrackerModel>OpeningTime'}, {path: 'disruptionsTrackerModel>ClosureDate'}], formatter: 'airbus.mes.disruptiontracker.Formatter.formatOpeningTime'}" />
+					</ui:template>
+				</ui:Column>
+				
+				<ui:Column id="fixedByTimeCol">
+					<Label text="{disruptiontrackerI18n>fixedByTime}" />
+					<ui:template>
 						<Text
 							text="{path :'disruptionsTrackerModel>TimeLost', formatter : 'airbus.mes.disruptiontracker.Formatter.setTimeLostValue'}" />
+					</ui:template>
+				</ui:Column>
+				
+				<ui:Column id="promisedDateCol">
+					<Label text="{disruptiontrackerI18n>promisedDate}" />
+					<ui:template>
 						<Text text="{disruptionsTrackerModel>PromisedDateTime}" />
+					</ui:template>
+				</ui:Column>
+				
+				<ui:Column id="timeBeforeNextEscCol">
+					<Label text="{disruptiontrackerI18n>timeBofreNextEsc}" />
+					<ui:template>
 						<Text text="{disruptionsTrackerModel>TimeBeforeNextEscalation}" />
+					</ui:template>
+				</ui:Column>
+				
+				<ui:Column id="descriptionCol">
+					<Label text="{disruptiontrackerI18n>description}" />
+					<ui:template>
 						<Text text="{disruptionsTrackerModel>Description}" />
+					</ui:template>
+				</ui:Column>
+				
+				<ui:Column id="solutionCol">
+					<Label text="{disruptiontrackerI18n>solution}" />
+					<ui:template>
 						<Text text="{disruptionsTrackerModel>Solution}" />
+					</ui:template>
+				</ui:Column>
+				
+				<ui:Column id="closureDateCol">
+					<Label text="{disruptiontrackerI18n>closureDate}" />
+					<ui:template>
 						<Text text="{disruptionsTrackerModel>ClosureDate}" />
+					</ui:template>
+				</ui:Column>
+			</ui:columns>
+
+			<!-- <items>
+				<ColumnListItem
+					type="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setType'}"
+					press="onTableClick">
+					<cells>
+						
+						
+						
 					</cells>
 				</ColumnListItem>
-			</items>
+			</items> -->
 
-		</Table>
+		</ui:Table>
 	</Page>
 
 </mvc:View>

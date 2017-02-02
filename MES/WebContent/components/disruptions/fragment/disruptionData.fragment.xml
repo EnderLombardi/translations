@@ -8,16 +8,17 @@
 			<f:content>
 
 				<core:Title text="" />
-				<!-- 5Mclass is removed according to SD-SP1604983-DT-Detail-010 
-				     it's invisible here not removed to avoid conflicts with disruption create page -->
+				<!-- 5Mclass is removed according to SD-SP1604983-DT-Detail-010 it's 
+					invisible here not removed to avoid conflicts with disruption create page -->
 				<Label text="{i18nModel>5Mclass}" />
 				<Select id="selectFivemCategory" selectedKey=""
-											forceSelection="false" change="onSelectionChange"
-											items="{disruptionCustomData>/Rowsets/Rowset/1/Row}" visible="false">
-											<items>
-												<core:Item text="{disruptionCustomData>FivemCategory}" key="{disruptionCustomData>FivemCategory}" />
-												
-											</items>
+					forceSelection="false" change="onSelectionChange"
+					items="{disruptionCustomData>/Rowsets/Rowset/1/Row}" visible="false">
+					<items>
+						<core:Item text="{disruptionCustomData>FivemCategory}"
+							key="{disruptionCustomData>FivemCategory}" />
+
+					</items>
 				</Select>
 				<Label text="{i18nModel>openDate}" />
 				<DatePicker enabled="false" id="OpenDate" displayFormat="short"
@@ -210,7 +211,7 @@
 				</Select>
 			</f:content>
 		</f:SimpleForm>
-		<f:SimpleForm id="Des_sol" editable="true"
+		<f:SimpleForm id="Des_sol" editable="true" visible="false"
 			layout="ResponsiveGridLayout" title="{i18nModel>description_solution}"
 			labelSpanL="12" labelSpanM="12" width="100%" adjustLabelSpan="false"
 			emptySpanL="0" emptySpanM="0" columnsL="1" columnsM="1">
@@ -234,11 +235,56 @@
 					</items>
 				</Select>
 				<Input id="description" maxLength="40" visible="false" />
-									
+
 
 			</f:content>
 
 
+		</f:SimpleForm>
+		<f:SimpleForm id="disruptionComments" editable="false"
+			layout="ResponsiveGridLayout" title="{i18nModel>description_solution}"
+			labelSpanL="12" labelSpanM="12" width="100%" adjustLabelSpan="false"
+			emptySpanL="0" emptySpanM="0" columnsL="1" columnsM="1">
+			<f:content>
+			<List showNoData="false" class="sapUiSmallMarginBeginEnd"
+							items="{path: 'operationDisruptionsModel>/Rowsets/Rowset/1/Row'}">
+
+							<CustomListItem class="msgColor">
+								<HBox
+									class="sapUiSmallMarginBeginEnd sapUiTinyMarginTopBottom msgHeaderText">
+									<items>
+										<Text
+											text="{i18nModel>from} : {path: 'operationDisruptionsModel>UserFullName', formatter: 'airbus.mes.disruptions.Formatter.textCaseFormat'}"></Text>
+										<Text text="|" class="sapUiSmallMarginBeginEnd"></Text>
+										<Text
+											text="{i18nModel>action} : {parts: [ {path: 'operationDisruptionsModel>Action'}, {path: 'operationDisruptionsModel>Comments'}], formatter: 'airbus.mes.disruptions.Formatter.formatCommentAction'}"></Text>
+									</items>
+								</HBox>
+
+								<Text text="{path: 'operationDisruptionsModel>Comments', formatter: 'airbus.mes.disruptions.Formatter.formatComment'}"
+									class="sapUiSmallMarginBegin  sapUiSmallMarginEnd sapUiSmallMarginBottom"></Text>
+							</CustomListItem>
+						</List>
+				<Panel id="commentBox" visible="false">
+
+							<VBox >
+								<TextArea id="commentArea" placeholder="{i18nModel>addComment}"
+									width="100%" />
+
+								<HBox>
+									<Button text="{i18nModel>submitComment}" type="Accept"
+										press="submitComment" class="sapUiSmallMarginEnd buttonAccept"
+										width="12rem" />
+
+									<Button text="{i18nModel>cancel}" type="Reject"
+										press="hideCommentBox" class="sapUiSmallMarginEnd buttonReject"
+										width="12rem" />
+								</HBox>
+
+							</VBox>
+
+						</Panel>
+			</f:content>
 		</f:SimpleForm>
 	</VBox>
 </core:FragmentDefinition>
