@@ -377,6 +377,7 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",    {
 
                              airbus.mes.stationtracker.ModelManager.OpenWorkList(id);
                              scheduler._drag_mode = ""
+                             this.byPassOnDrag = true;
                              return false;
 
                         }));
