@@ -11,7 +11,7 @@ airbus.mes.stationtracker.ModelManager = {
        i18nModel : undefined,
        operationType : undefined,
        fIsLoad : 0,
-       timeMinR : 900000,
+       timeMinR : undefined,
        firstTime : undefined,
        stationInProgress: {
            ShopOrderBO: undefined,
@@ -62,7 +62,6 @@ airbus.mes.stationtracker.ModelManager = {
            core.getModel("ressourcePoolModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onRessourcePoolLoad);
            core.getModel("phStationSelected").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onPhStationLoad);
            core.getModel("taktModel").attachRequestCompleted(airbus.mes.stationtracker.ModelManager.onTaktLoad);          
-        
 	        // Handle URL Model
 			this.urlModel = airbus.mes.shell.ModelManager.urlHandler("airbus.mes.stationtracker.config.url_config");
 			
@@ -1391,6 +1390,41 @@ airbus.mes.stationtracker.ModelManager = {
 				jQuery.sap.log.info(error);
 			}
 		});
-	}
+	},
+	
+	loadTimeMinRModel : function() {
+		 
+	    var urlMinRModel = this.urlModel.getProperty("urlminr");
+        
+        jQuery.ajax({
+			type : 'post',
+			url : urlMinRModel,
+			contentType : 'application/json',
+				
+			success : function(data) {
+				
+				try {
+					
+					var sValue = data.Rowsets.Rowset[0].Row.filter(function (el) {
+			               return el.Name ===  "minHorizontalDrag" &&
+		                      el.Context ===  "*"
+		                   
+		             });;
+					// Store value in ms
+		             airbus.mes.stationtracker.ModelManager.timeMinR = sValue[0].Value*1000*60;
+			
+				} catch (e) {
+					// default value in ms
+					airbus.mes.stationtracker.ModelManager.timeMinR = 5*1000*60;
+					console.log("no min time for rescheduling click load");
+				}
+		
+			},
 
+			error : function(error, jQXHR) {
+				jQuery.sap.log.info(error);
+			}
+		});
+	},
+	
 };

@@ -477,6 +477,7 @@ sap.ui.controller(
                         oModule.loadFilterUnplanned();
                         oModule.loadKPI();
                         oModule.getPhStation();
+                        oModule.loadTimeMinRModel();
                     },
 
                     setInformationVisibility : function(bSet) {
