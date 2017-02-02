@@ -19,7 +19,7 @@ airbus.mes.operationdetail.ModelManager = {
     init: function (core) {
 
         // Handle URL Model
-		this.urlModel = airbus.mes.shell.ModelManager.urlHandler("airbus.mes.operationdetail.config.url_config");
+        this.urlModel = airbus.mes.shell.ModelManager.urlHandler("airbus.mes.operationdetail.config.url_config");
 
         airbus.mes.shell.ModelManager.createJsonModel(core, ["reasonCodeModel"]);
     },
@@ -96,7 +96,11 @@ airbus.mes.operationdetail.ModelManager = {
                 airbus.mes.operationdetail.ModelManager.messageShow(sMessageError);
             },
             success : function(result, status, xhr) {
-                getData = result.Rowsets.Rowset[0].Row[0];
+                if(result.Rowsets.Rowset === undefined){
+                    return;
+                }else{
+                    getData = result.Rowsets.Rowset[0].Row[0];
+                }
 
             }
         });
