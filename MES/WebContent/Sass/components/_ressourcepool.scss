@@ -290,6 +290,10 @@ RESSOURCEPOOL
     }
     .sapMPageWithSubHeader{
         &>section{
+<<<<<<< Upstream, based on origin/MESv1.5
+=======
+            //top: calc(3rem + 18px);
+>>>>>>> 5f6b0d1 [css] -fix for polypoly & disruption
             .resourcePoolSubheader{
                 li{
                     height: 3rem;

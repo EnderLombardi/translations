@@ -420,7 +420,7 @@ SETTINGS
   padding: 0 1rem; }
 
 /************************************
-D├⌐filement text tooltip
+D├®filement text tooltip
 ************************************/
 @-webkit-keyframes marqueelike {
   0%, 100% {
@@ -2699,22 +2699,19 @@ POLYPOLY
 .noRows.sapUiTableColRowHdr, .sapUiTableColHdr .sapUiTableCol, .sapUiTableColHdr .sapUiTableTr > td {
   border-right: 0px solid #dddddd; }
 
-.sapUiTableCCnt .sapUiTableRowHdrScr, .sapUiTableColHdrCnt .sapUiTableColRowHdr {
+#polypoly--oTablePolypoly-tableCCnt > .sapUiTableRowHdrScr {
   display: none; }
-
-.sapUiTableCCnt .sapUiTableCtrlScr, .sapUiTableColHdrCnt .sapUiTableColHdrScr, [id^="polypoly"] {
+#polypoly--oTablePolypoly-tableCCnt .sapUiTableCCnt .sapUiTableCtrlScr, .sapUiTableColHdrCnt .sapUiTableColHdrScr, [id^="polypoly"] {
   margin: 0; }
-
-[id^="polypoly--oTablePolypoly-table"] .sapUiTableCol,
-.sapUiTableTr > td,
-[id^="polypoly--oTablePolypoly-table"] .sapUiTableTr > td,
-#polypoly--oTablePolypoly.sapUiTable > div.sapUiTableCnt,
-#polypoly--oTablePolypoly.sapUiTable > div.sapUiTableCnt .sapUiTableColHdrCnt {
+#polypoly--oTablePolypoly-tableCCnt [id^="polypoly--oTablePolypoly-table"] .sapUiTableCol,
+#polypoly--oTablePolypoly-tableCCnt .sapUiTableTr > td,
+#polypoly--oTablePolypoly-tableCCnt [id^="polypoly--oTablePolypoly-table"] .sapUiTableTr > td,
+#polypoly--oTablePolypoly-tableCCnt #polypoly--oTablePolypoly.sapUiTable > div.sapUiTableCnt,
+#polypoly--oTablePolypoly-tableCCnt #polypoly--oTablePolypoly.sapUiTable > div.sapUiTableCnt .sapUiTableColHdrCnt {
   border: none;
   outline: 1px dotted transparent; }
-
-[id^="polypoly--oTablePolypoly-table"] tr,
-.sapUiTableCnt .sapUiTableColHdrCnt {
+#polypoly--oTablePolypoly-tableCCnt [id^="polypoly--oTablePolypoly-table"] tr,
+#polypoly--oTablePolypoly-tableCCnt .sapUiTableCnt .sapUiTableColHdrCnt {
   background-color: #ffffff;
   -webkit-transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out;
   -moz-transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out;
@@ -2725,15 +2722,12 @@ POLYPOLY
     background-color: #f5f5f5; }
   [id^="polypoly--oTablePolypoly-table-fixed"] td:nth-child(2), [id^="polypoly--oTablePolypoly-table-fixed"] td:nth-child(3) {
     background-color: #e9fbfd; }
-
-.sapUiTableCtrlFixed [id^="polypoly--oTablePolypoly-table-fixed"] .sapUiTableTr:not(.sapUiTableGroupHeader) > td:last-child,
-.sapUiTableCtrlFixed [id^="polypoly--oTablePolypoly-table-fixed"] [id^="polypoly--oTablePolypoly-rows"] td:nth-child(3) {
+#polypoly--oTablePolypoly-tableCCnt .sapUiTableCtrlFixed [id^="polypoly--oTablePolypoly-table-fixed"] .sapUiTableTr:not(.sapUiTableGroupHeader) > td:last-child,
+#polypoly--oTablePolypoly-tableCCnt .sapUiTableCtrlFixed [id^="polypoly--oTablePolypoly-table-fixed"] [id^="polypoly--oTablePolypoly-rows"] td:nth-child(3) {
   border-right: 2px solid #ffffff; }
-
-.sapUiTable .sapUiTableCtrl [id^="polypoly--oTablePolypoly-rows"].sapUiTableRowHvr > td {
+#polypoly--oTablePolypoly-tableCCnt .sapUiTable .sapUiTableCtrl [id^="polypoly--oTablePolypoly-rows"].sapUiTableRowHvr > td {
   background: transparent; }
-
-.sapMFlexItem > [id^="__select"] {
+#polypoly--oTablePolypoly-tableCCnt .sapMFlexItem > [id^="__select"] {
   border: 2px solid #ebeff4; }
 
 .sapUiTableColHdrScr .sapUiTableColHdr:nth-child(2) .sapMLabel {
@@ -2756,7 +2750,7 @@ div[id^="polypoly--oTablePolypoly"] {
 #polypoly .sapUiTableRSel .sapUiTableCtrlScrFixed {
   margin-left: 0px !important; }
 
-.sapUiTableCCnt .sapUiTableRowHdrScr {
+#polypoly--oTablePolypoly-sapUiTableRowHdrScr .sapUiTableCCnt .sapUiTableRowHdrScr {
   z-index: -1; }
 
 [id^="polypoly--oTablePolypoly-table"] td {
@@ -2869,15 +2863,13 @@ button[id^="polypoly"].sapMBtn:hover > div[id^="polypoly"].sapMBtnHoverable, htm
 .classPolypolyPage .sapUiTableMTbr .sapMTB {
   background: #d4f1f7;
   padding: 0; }
-.classPolypolyPage .sapUiTable > .sapUiTableTbr.sapUiTableMTbr {
-  margin-bottom: 10px; }
 .classPolypolyPage .sapUiIcon {
   color: #8fd4e2;
   outline: 1px dotted transparent; }
 .classPolypolyPage form {
   border: 1px solid transparent; }
 .classPolypolyPage > #polypolyPage-cont {
-  top: 4.2rem; }
+  top: 3.6rem; }
 
 .sap-desktop .classPolypolyPage .sapMBtnTransparent > .sapMBtnIcon {
   color: #ffffff; }
@@ -7085,6 +7077,8 @@ td {
 .classDisruptionDetailPopUp .sapMPageBusyCoversAll > section {
   overflow-y: scroll !important; }
 
+#disruptiontrackerView--disruptionsTable .sapUiTableColHdrCnt {
+  height: 40px !important; }
 #disruptiontrackerView--disruptionsTable #disruptiontrackerView--disruptionsTable-tblBody tr td {
   text-align: justify !important; }
 
