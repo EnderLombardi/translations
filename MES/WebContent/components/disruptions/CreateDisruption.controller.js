@@ -114,15 +114,16 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
 		   			oView.byId("selectResponsibleGrp").setEnabled(true);
 	   			}
 	   			
-	   			// Disable Resolver name field 
-	   			oView.byId("selectResolver").setEnabled(false);  //+V1.5
+	   			// Disable and empty Resolver name field   +V1.5
+	   			oView.byId("selectResolver").setEnabled(false);
+	   			oView.byId("selectResolver").setSelectedKey();
 	   		} 
 	   		else if(airbus.mes.disruptions.ModelManager.createViewMode == "Edit"){
 				
 				var oModel = sap.ui.getCore().getModel("DisruptionDetailModel")
 
 				// Set Responsible Group
-				oView.byId("selectResponsible").setSelectedKey(oModel.getProperty("/ResponsibleGroup"));
+				oView.byId("selectResponsibleGrp").setSelectedKey(oModel.getProperty("/ResponsibleGroup"));
 				
 				// Set Reason
 				var sReason = oModel.getProperty("/Reason");
