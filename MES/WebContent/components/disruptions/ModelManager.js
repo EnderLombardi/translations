@@ -114,6 +114,18 @@ airbus.mes.disruptions.ModelManager = {
 				urlCustomCategory, "$site", airbus.mes.settings.ModelManager.site);
 		urlCustomCategory = airbus.mes.shell.ModelManager.replaceURI(
 				urlCustomCategory, "$station", airbus.mes.settings.ModelManager.station);
+		
+		
+		// Get user to which operation is affected else current logged in user
+		var sUserBo = sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/sfc") == "---" ? 
+			"UserBO:" +
+			airbus.mes.settings.ModelManager.site +
+			"," +
+			sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user")
+			: sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/sfc")
+		
+		urlCustomCategory = airbus.mes.shell.ModelManager.replaceURI(
+			urlCustomCategory, "$userbo", sUserBo)
 		return urlCustomCategory;
 
 	},
