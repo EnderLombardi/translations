@@ -423,12 +423,15 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
                                   "attribute" : "JIG_TOOLS",
                                   "value" : sJigtools
                            }, {
-                                  "attribute" : "FIVEM_CATEGORY", // V1.5
-                                  "value" : oView.byId("selectFivemCategory").getSelectedKey()
+                               	  "attribute" : "ISSUER", // V1.5
+                                  "value" : airbus.mes.disruptions.ModelManager.getIssuer()
                            }, {
-                                  "attribute" : "RESOLVER", // V1.5
-                                  "value" : oView.byId("selectResolver").getSelectedKey()
-                           } ]
+	                              "attribute" : "FIVEM_CATEGORY", // V1.5
+	                              "value" : oView.byId("selectFivemCategory").getSelectedKey()
+	                       }, {
+	                              "attribute" : "RESOLVER", // V1.5
+	                              "value" : oView.byId("selectResolver").getSelectedKey()
+	                       } ]
 
               }
               aModelData.push(oJson);

@@ -36,8 +36,8 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 				airbus.mes.shell.util.navFunctions.stationTracker();
 				break;
 			case "ResourcePool":
-				//airbus.mes.shell.util.navFunctions.resourcePool();
-				airbus.mes.shell.util.navFunctions.docViewer("/MES/components/disruptions/attachments/Files/GettingStarted.xod", undefined);
+				airbus.mes.shell.util.navFunctions.resourcePool();
+				//airbus.mes.shell.util.navFunctions.docViewer("/MES/components/disruptions/attachments/Files/GettingStarted.xod", undefined);
 				break;
 			case "LineTracker":
 				airbus.mes.shell.util.navFunctions.lineTracker();

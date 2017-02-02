@@ -1,7 +1,7 @@
 <mvc:View controllerName="airbus.mes.disruptiontracker.disruptions"
 	xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m" xmlns:ui="sap.ui.table">
-	<Page class="disruptions" showHeader="false">
+	<Page class=" sapUiSizeCozy disruptions" showHeader="false">
 
 
 		<Toolbar class="pageHeader">
@@ -45,7 +45,7 @@
 		</Toolbar>
 
 
-		<Panel width="100%">
+		<Panel  width="100%">
 			<content>
 
 				<!-- <Toolbar class="sapUiSmallMarginTop" height="1rem"> <Label text="{disruptiontrackerI18n>selectStation}" 
@@ -87,8 +87,9 @@
 		</Panel>
 
 
-		<ui:Table id="disruptionsTable" 
-			rows="{ path: 'disruptionsTrackerModel>/Rowsets/Rowset/0/Row' }" selectionMode="MultiToggle"			
+		<ui:Table id="disruptionsTable"  
+			rows="{ path: 'disruptionsTrackerModel>/Rowsets/Rowset/0/Row' }" 
+			selectionMode="MultiToggle"
 			visible="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setVisible'}" cellClick="onTableClick">
 
 			<ui:columns>

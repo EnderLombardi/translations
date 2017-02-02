@@ -1,7 +1,7 @@
 <core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m" xmlns:ui="sap.ui.layout" controllerName="airbus.mes.resourcepool.views.Main"
 	xmlns:html="http://www.w3.org/1999/xhtml">
-	<Page showHeader="false" height="100%" enableScrolling="false">
+	<Page showHeader="false" height="100%" enableScrolling="false" classs="apUiSizeCozy">
 		<content>
 			<HBox height="100%" class="fixHboxItemDisplay">
 				<Panel class="panelBorder" expanded="true" expandable="false"

@@ -78,6 +78,7 @@ td{
         }
     }
     .disruptionsTable{
+
         width: auto !important;
         margin: 0.7rem 0.7rem 0 0.7rem;
     }
@@ -102,6 +103,10 @@ td{
         }
     }
 }
+
+
+
+
 
 #disruptiontrackerView--headerText-inner{
     color: #74d2e7;
@@ -147,6 +152,7 @@ td{
 }
 
 #disruptiontrackerView--gotoDisruptionKpi{
+	
     &.sapMBtn{
         &:hover{
             background-color: $petrol-20;
@@ -215,6 +221,9 @@ td{
     }
 }
 #disruptiontrackerView--disruptionsTable{
+	.sapUiTableColHdrCnt{
+		height:40px !important;
+	}
     #disruptiontrackerView--disruptionsTable-tblBody{
         tr{
             td{

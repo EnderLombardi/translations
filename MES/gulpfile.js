@@ -123,6 +123,7 @@ gulp.task('copy', ['clean'], function () {
 			'./Sass/*.png',
 			'./components/homepage/data/1TileLineHome.json',
 			'./components/homepage/images/**',
+			'./components/calendar/model/**',
 			'./components/settings/model/**',
 			'./components/settings/data/program.json',
 			'./components/settings/icon/**',
@@ -134,6 +135,7 @@ gulp.task('copy', ['clean'], function () {
 			'./components/stationtracker/data/KPIModel.json',
 			'./components/disruptions/local/Jigtool_Server.json',
 			'./components/disruptions/local/MaterialList_Server.json',
+			
 		], { cwd: src, cwdbase: true }).pipe(gulp.dest(dest));
 });
 

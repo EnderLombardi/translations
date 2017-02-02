@@ -21,7 +21,7 @@
         <content class="sapUiSmallMarginTop contentNoPad">
             <Toolbar class="resourcePoolSubheader">
                 <content>
-                    <Button id="navBack" icon="sap-icon://arrow-left" press="onBackPress" type="Transparent"/>
+                    <Button id="navBack" icon="sap-icon://arrow-left" press="onNavBack" type="Transparent"/>
                     <SegmentedButton id="IconTabsPages">
                         <items>
                             <SegmentedButtonItem id="idUsers" icon="sap-icon://group"
