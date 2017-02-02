@@ -3623,9 +3623,6 @@ header#sapContentPopUpLinetracker-intHeader + div#sapContentPopUpLinetracker-con
   header#sapContentPopUpLinetracker-intHeader + div#sapContentPopUpLinetracker-cont + footer .sapMBtnContent {
     font-weight: 600; }
 
-#taktActionPopover #taktActionPopover-cont {
-  background-color: #FFFFFF; }
-  
 /**************************
 Custom Progress Bar
 *************************/
@@ -3664,6 +3661,9 @@ Custom Progress Bar
   -webkit-transition: width .6s ease;
   -o-transition: width .6s ease;
   transition: width 0.6s ease; }
+
+#taktActionPopover #taktActionPopover-cont {
+  background-color: #FFFFFF; }
 
 /*********************************
 Physical Station
