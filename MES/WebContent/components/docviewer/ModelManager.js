@@ -40,7 +40,7 @@ airbus.mes.docviewer.ModelManager = {
 		}*/
 			
 		
-		if (sap.ui.Device.system.desktop) {
+		//if (!sap.ui.Device.system.desktop) {
 			// Initialize PDF Tron
 	        airbus.mes.docviewer.ModelManager.WebViewer = new PDFTron.WebViewer({
 	            type: "html5",
@@ -50,6 +50,7 @@ airbus.mes.docviewer.ModelManager = {
 	            config: "../components/docviewer/config.js",
 	            serverUrl: window.location.host,
 	            documentId: "mes_document_viewer",
+	            mobileRedirect: false,
 	            /*custom: JSON.stringify({
 	            	'save' :  airbus.mes.docviewer.ModelManager.save,
 	            	'close': airbus.mes.docviewer.ModelManager.onCloseFunction}),*/
@@ -57,7 +58,7 @@ airbus.mes.docviewer.ModelManager = {
 	            streaming: false,
 	            useDownloader: false
 	        }, oViewerElement);
-		}
+		/*}
 		else{
 			if (sap.ui.Device.system.phone) {
 				oViewerElement.innerHTML = "<iframe frameborder='0' allowtransparency='true' scrolling='no' " +
@@ -75,7 +76,7 @@ airbus.mes.docviewer.ModelManager = {
 						"&pageHistory=1" +
 						"&useDownloader=0" +
 						"'></iframe>";
-			}
+			}*/
 		}
 		
 	},

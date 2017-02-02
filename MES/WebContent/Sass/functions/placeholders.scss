@@ -13,17 +13,14 @@ GLOBAL
     font: inherit;
     vertical-align: baseline;
 }
-
 %headerFilterBoxes{
     font-size: 16px;
     height: 3rem;
     margin: 0;
     line-height: 3rem;
-    text-transform: capitalize;
     margin-right: 0px !important;
-	border-left: solid 1px #74d2e7 !important;
-    border-right: solid 1px #74d2e7 !important;
-    background: #0f2d65 !important;
+    border-right: solid 1px $twilight-blue !important;
+    background: $teal-blue-hover !important;
     border: 0;
     
     .sapMSltLabel, .sapMSltArrow{

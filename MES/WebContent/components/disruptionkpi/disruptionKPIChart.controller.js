@@ -1,5 +1,5 @@
 "use strict";
-sap.ui.controller("airbus.mes.disruptiontracker.kpi.disruptionKPIChart", {
+sap.ui.controller("airbus.mes.disruptionkpi.disruptionKPIChart", {
 
 	/* ============================================================ */
 	/* Life-cycle Handling                                          */
@@ -12,18 +12,18 @@ sap.ui.controller("airbus.mes.disruptiontracker.kpi.disruptionKPIChart", {
 	onInit : function() {	
 
 		window.onresize = this.resize;
-		  // Set Model (i18n) for Frame Titles
+		  // Set Model (i18nModel) for Frame Titles
 		var i18nModel = new sap.ui.model.resource.ResourceModel({
-	        bundleName : "airbus.mes.disruptiontracker.kpi.i18n.i18n"
+	        bundleName : "airbus.mes.disruptionkpi.i18n.i18n"
 	     });
-		this.oView.setModel(i18nModel, "i18n"); 		
-		airbus.mes.disruptiontracker.kpi.oView = this.oView 
+		this.oView.setModel(i18nModel, "i18nModel"); 		
+		airbus.mes.disruptionkpi.oView = this.oView 
 //     Title For Category
 		var vizframe1 = this.getView().byId("vizFrame");
 		vizframe1.setVizProperties({
 			title : { 
 				visible : true, 
-				text : airbus.mes.disruptiontracker.kpi.oView.getModel("i18n").getProperty("frame1Title")
+				text : airbus.mes.disruptionkpi.oView.getModel("i18nModel").getProperty("frame1Title")
 			},
 			
 			plotArea: {
@@ -62,7 +62,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.kpi.disruptionKPIChart", {
 		vizframe2.setVizProperties({
 			title : { 
 				visible : true, 
-				text : airbus.mes.disruptiontracker.kpi.oView.getModel("i18n").getProperty("frame2Title")
+				text : airbus.mes.disruptionkpi.oView.getModel("i18nModel").getProperty("frame2Title")
 			},
 			
 			plotArea: {
@@ -101,7 +101,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.kpi.disruptionKPIChart", {
 		vizframe3.setVizProperties({
 			title : { 
 				visible : true, 
-				text : airbus.mes.disruptiontracker.kpi.oView.getModel("i18n").getProperty("frame3Title")
+				text : airbus.mes.disruptionkpi.oView.getModel("i18nModel").getProperty("frame3Title")
 			},
 			plotArea: {
                 dataLabel: {
@@ -121,7 +121,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.kpi.disruptionKPIChart", {
 		vizframe4.setVizProperties({
 			title : { 
 				visible : true, 
-				text : airbus.mes.disruptiontracker.kpi.oView.getModel("i18n").getProperty("frame4Title")
+				text : airbus.mes.disruptionkpi.oView.getModel("i18nModel").getProperty("frame4Title")
 			},
 			plotArea: {
                 dataLabel: {
@@ -142,6 +142,20 @@ sap.ui.controller("airbus.mes.disruptiontracker.kpi.disruptionKPIChart", {
 		this.resize();
 		
 	}, 
+	
+	
+	filterByLine: function(oEvt){
+		var aFilters = [];
+		var sLine = this.getView().byId("lineComboBox").getSelectedKey();
+		
+		if(sLine != "All")
+			aFilters.push(new sap.ui.model.Filter("line", sap.ui.model.FilterOperator.EQ, sLine));
+		
+		this.getView().byId("stationComboBox").getBinding("items").filter(aFilters);
+		this.getView().byId("stationComboBox").removeAllSelectedItems();
+	},
+	
+	
 	resize: function(){
 		 if(window.innerWidth <= 1022){
 			 sap.ui.getCore().byId("disruptionKPIView--divider1").setVisible(true);
@@ -152,7 +166,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.kpi.disruptionKPIChart", {
 			 sap.ui.getCore().byId("disruptionKPIView--divider4").setVisible(false);
 			 sap.ui.getCore().byId("disruptionKPIView--divider3").setVisible(true);
 		 }
-		},
+	},
 	
 	onNavBack: function(oEvent){
 		nav.back();

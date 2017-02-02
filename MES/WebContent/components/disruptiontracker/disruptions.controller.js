@@ -245,7 +245,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		 * .getSelectedKey(); // sap.ui.core.BusyIndicator.show(0);
 		 * airbus.mes.shell.util.navFunctions .disruptionKPI(sStation);
 		 */
-		// airbus.mes.disruptiontracker.kpi.ModelManager.loadDisruptionKPIModel(sStation);
+		// airbus.mes.disruptionkpi.ModelManager.loadDisruptionKPIModel(sStation);
 	},
 
 	onNavBack : function(oEvent) {

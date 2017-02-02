@@ -35,5 +35,57 @@
 
 // CSS for filter boxes in header bar
 #disruptionKPIView--lineComboBox{
+	border-left: solid 1px $twilight-blue !important;
     @extend %headerFilterBoxes;
+}
+#disruptionKPIView--stationComboBox.sapMMultiComboBox{
+    width: 18rem !important;
+    height: 3rem;
+    margin: 0;
+    line-height: 3rem;
+    border: 0px;
+	border-right: solid 1px $twilight-blue !important;
+	margin: 0px !important;
+	
+	.sapMMultiComboBoxBorder{
+	    background: $teal-blue-hover !important;
+	    border: 0;
+	    
+	    .sapMTokenizer .sapMToken{
+	    	margin-top: -0.175rem;
+	    	margin-bottom: 0px;
+	    	vertical-align: middle;    
+	    	    
+	    	.sapMTokenIcon{
+	    		cursor:pointer;
+		    }
+		}
+		    
+	    input.sapMComboBoxTextFieldInner{
+			font-size: 16px;
+		    color: #F5F5F5;
+	    	border: 0px !important;
+	    }
+	    input.sapMComboBoxTextFieldInner::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+		    color:    #F5F5F5;
+		}
+		input.sapMComboBoxTextFieldInner:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+		   color:    #F5F5F5;
+		   opacity:  1;
+		}
+		input.sapMComboBoxTextFieldInner::-moz-placeholder { /* Mozilla Firefox 19+ */
+		   color:    #F5F5F5;
+		   opacity:  1;
+		}
+		input.sapMComboBoxTextFieldInner:-ms-input-placeholder { /* Internet Explorer 10-11 */
+		   color:    #F5F5F5;
+		}
+	    
+	    button.sapMMultiComboBoxArrow{
+			font-size: 12px;
+	    	background: $teal-blue-hover;
+		    color: #F5F5F5;
+		    border: 0px;
+	    }
+	}
 }

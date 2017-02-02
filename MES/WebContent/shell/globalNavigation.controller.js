@@ -227,7 +227,7 @@ sap.ui.controller(
  
                                 break;
                             case "disruptionKPIView":
-                                airbus.mes.disruptiontracker.kpi.ModelManager.loadDisruptionKPIModel();
+                                airbus.mes.disruptionkpi.ModelManager.loadDisruptionKPIModel();
                                 airbus.mes.shell.AutoRefreshManager.clearInterval();
                                 //refresh
                                 

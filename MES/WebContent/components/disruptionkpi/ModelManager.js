@@ -1,7 +1,12 @@
 "use strict";
-jQuery.sap.declare("airbus.mes.disruptiontracker.kpi.ModelManager")
-airbus.mes.disruptiontracker.kpi.ModelManager = {
+jQuery.sap.declare("airbus.mes.disruptionkpi.ModelManager")
+airbus.mes.disruptionkpi.ModelManager = {
 	urlModel : undefined,
+	
+	oFilters:{
+		line: "",
+		station: ""
+	},
 	
 	//sStaion: "",
 
@@ -10,8 +15,29 @@ airbus.mes.disruptiontracker.kpi.ModelManager = {
 		 airbus.mes.shell.ModelManager.createJsonModel(core,["TimeLostperAttribute"]);
 		
 	    // Handle URL Model
-		this.urlModel = airbus.mes.shell.ModelManager.urlHandler("airbus.mes.disruptiontracker.kpi.config.url_config");
+		this.urlModel = airbus.mes.shell.ModelManager.urlHandler("airbus.mes.disruptionkpi.config.url_config");
 	},
+	
+	
+	setPreSelectionCriteria: function(){
+		
+		// Line
+		if(this.oFilters.line == ""){
+			this.oFilters.line = airbus.mes.settings.ModelManager.line;
+			sap.ui.getCore().byId("disruptionKPIView--lineComboBox").setSelectedKey(this.oFilters.line);
+		}else{
+			sap.ui.getCore().byId("disruptionKPIView--lineComboBox").setSelectedKey(this.oFilters.line);
+		}
+		
+		// Station
+		if(this.oFilters.station == ""){
+			sap.ui.getCore().byId("disruptionKPIView--stationComboBox").removeAllSelectedItems()
+			sap.ui.getCore().byId("disruptionKPIView--stationComboBox").addSelectedKeys(airbus.mes.settings.ModelManager.station);
+		}else{
+			sap.ui.getCore().byId("disruptionKPIView--stationComboBox").addSelectedKeys(this.oFilters.station);
+		}
+	},
+	
 	
 	/*getKPIData : function() {
 		var urlCategoryData = this.urlModel.getProperty("getDisruptionKPIURL");
@@ -21,7 +47,7 @@ airbus.mes.disruptiontracker.kpi.ModelManager = {
 	},*/
 	
 	loadDisruptionKPIModel : function() {
-		airbus.mes.disruptiontracker.kpi.oView.setBusy(true); //Set Busy Indicator
+		airbus.mes.disruptionkpi.oView.setBusy(true); //Set Busy Indicator
 		var oViewModel = sap.ui.getCore().getModel("TimeLostperAttribute");
 		var station="";
 		var msn="";
@@ -70,14 +96,14 @@ airbus.mes.disruptiontracker.kpi.ModelManager = {
 					data.reason = [data.reason];
 				}
 				oViewModel.setData(data);
-				airbus.mes.disruptiontracker.kpi.oView.setBusy(false);
+				airbus.mes.disruptionkpi.oView.setBusy(false);
 				/*airbus.mes.stationtracker.oView.byId("boxSLBEfficiecy").setBusy(false);
 				airbus.mes.stationtracker.oView.byId("boxLabourEfficiency").setBusy(false);*/
 			},
 
 			error : function(error, jQXHR) {
 				console.log(error);
-				airbus.mes.disruptiontracker.kpi.oView.setBusy(false);
+				airbus.mes.disruptionkpi.oView.setBusy(false);
 				/*airbus.mes.stationtracker.oView.byId("boxSLBEfficiecy").setBusy(false);
 				airbus.mes.stationtracker.oView.byId("boxLabourEfficiency").setBusy(false);*/
 
@@ -110,15 +136,42 @@ airbus.mes.disruptiontracker.kpi.ModelManager = {
 	
 	    aFilters.push(new sap.ui.model.Filter("program", "EQ", airbus.mes.settings.ModelManager.program)); // Filter on selected A/C Program
 	
-	    sap.ui.getCore().byId("disruptionKPIView--lineComboBox")
-	        .getBinding("items").filter(new sap.ui.model.Filter(aFilters, true));
+	    var lineBox = sap.ui.getCore().byId("disruptionKPIView--lineComboBox")
+	    
+	    lineBox.getBinding("items").filter(new sap.ui.model.Filter(aFilters, true));
 	
 	    var lineItemAll = new sap.ui.core.Item();
-	    lineItemAll.setKey = "";
-	    lineItemAll.setText(airbus.mes.disruptiontracker.oView.getModel("disruptiontrackerI18n").getProperty("All"));
-	
-	    var lineBox = sap.ui.getCore().byId("disruptionKPIView--lineComboBox");
+	    lineItemAll.setKey("All");
+	    lineItemAll.setText(airbus.mes.disruptionkpi.oView.getModel("i18nModel").getProperty("All") +
+	    	" " +
+	    	airbus.mes.disruptionkpi.oView.getModel("i18nModel").getProperty("Lines"));
 	    lineBox.insertItem(lineItemAll, 0);
+	    
+	    
+
+	    /*********** Filter for Station **************/
+	    var aFilters = [];
+	    
+	    if(airbus.mes.disruptionkpi.ModelManager.oFilters.line != "All")
+	    	aFilters.push(new sap.ui.model.Filter("line", "EQ", airbus.mes.disruptionkpi.ModelManager.oFilters.line)); // Filter on selected Line
+        
+	    var aFilters = [];
+        var aTemp = [];
+        var duplicatesFilter = new sap.ui.model.Filter({
+            path: "station",
+            test: function (value) {
+                if (aTemp.indexOf(value) == -1) {
+                    aTemp.push(value)
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        });
+
+        aFilters.push(duplicatesFilter);
+        
+        sap.ui.getCore().byId("disruptionKPIView--stationComboBox").getBinding("items").filter(new sap.ui.model.Filter(aFilters, true));
 	}
 
 

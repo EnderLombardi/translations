@@ -1,30 +1,30 @@
-<core:View controllerName="airbus.mes.disruptiontracker.kpi.disruptionKPIChart"
+<core:View controllerName="airbus.mes.disruptionkpi.disruptionKPIChart"
 	xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:viz="sap.viz.ui5.controls"
 	xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:viz.data="sap.viz.ui5.data"
 	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:commons="sap.ui.commons">
 
 	<Page showHeader="false" class="disruptionKPI">
 		<!-- <Bar id="disruptionKPITitleSubheader" class="pageHeader"> <contentLeft> 
-			<Button id="navBack" icon="sap-icon://arrow-left" text="{i18n>back}" press="onNavBack" 
+			<Button id="navBack" icon="sap-icon://arrow-left" text="{i18nModel>back}" press="onNavBack" 
 			type="Transparent" /> </contentLeft> <contentMiddle> <Label id="disruptionKPITitle" 
-			text="{i18n>disruptionKPITitle}" class="lineTrackerName" /> </contentMiddle> 
+			text="{i18nModel>disruptionKPITitle}" class="lineTrackerName" /> </contentMiddle> 
 			</Bar> -->
 		<Toolbar class="pageHeader">
-			<Title text="{i18n>disruptionKPITitle}" id="headerText" class="headerText" />
+			<Title text="{i18nModel>disruptionKPITitle}" id="headerText" class="headerText" />
 			
 			<Select id="lineComboBox" class="sapUiTinyMarginBeginEnd" forceSelection="falce"
-				placeholder="{disruptiontrackerI18n>selectLine}" items="{ path:'plantModel>/Rowsets/Rowset/0/Row' }"
-				selectedKey="" selectionChange="filterByLine" >
+				placeholder="{i18nModel>selectLine}" items="{ path:'plantModel>/Rowsets/Rowset/0/Row' }"
+				selectedKey="" change="filterByLine" >
 				<core:Item key="{plantModel>line}" text="{plantModel>lineDescription}" />
 			</Select>
-			<ComboBox id="stationComboBox" class="sapUiMediumMarginEnd customComboBox"
-				placeholder="{disruptiontrackerI18n>selectStation}" items="{ path:'plantModel>/Rowsets/Rowset/0/Row' }"
+			<MultiComboBox id="stationComboBox" class="sapUiTinyMarginBeginEnd"
+				placeholder="{i18nModel>selectStation}" items="{ path:'plantModel>/Rowsets/Rowset/0/Row' }"
 				selectedKey="" selectionChange="filterByStation" >
 				<core:Item key="{plantModel>station}" text="{plantModel>stationDescription}" />
-			</ComboBox>
+			</MultiComboBox>
 
 			<ComboBox id="msnComboBox" class="sapUiMediumMarginEnd customComboBox"
-				placeholder="{disruptiontrackerI18n>selectMSN}" items="{ path:'plantModel>/Rowsets/Rowset/0/Row' }"
+				placeholder="{i18nModel>selectMSN}" items="{ path:'plantModel>/Rowsets/Rowset/0/Row' }"
 				selectedKey="" selectionChange="filterByStation" >
 				<core:Item key="{plantModel>msn}" text="{plantModel>msn}" />
 			</ComboBox>
@@ -50,19 +50,19 @@
 							<viz.data:FlattenedDataset data="{TimeLostperAttribute>/category}">
 								<viz.data:dimensions>
 									<viz.data:DimensionDefinition
-										axis="1" name="{i18n>Category}" value="{TimeLostperAttribute>name}" />
+										axis="1" name="{i18nModel>Category}" value="{TimeLostperAttribute>name}" />
 								</viz.data:dimensions>
 								<viz.data:measures>
-									<viz.data:MeasureDefinition name="{i18n>TimeLost}"
+									<viz.data:MeasureDefinition name="{i18nModel>TimeLost}"
 										value="{path: 'TimeLostperAttribute>value' , formatter: 'airbus.mes.disruptiontracker.Formatter.msToMinutesConverter'}" />
 								</viz.data:measures>
 							</viz.data:FlattenedDataset>
 						</viz:dataset>
 						<viz:feeds>
 							<viz.feeds:FeedItem uid="axisLabels" type="Dimension"
-								values="{i18n>Category}" />
+								values="{i18nModel>Category}" />
 							<viz.feeds:FeedItem id='valueAxisFeed1' uid="primaryValues"
-								type="Measure" values="{i18n>TimeLost}" />
+								type="Measure" values="{i18nModel>TimeLost}" />
 						</viz:feeds>
 					</viz:VizFrame>
 
@@ -77,19 +77,19 @@
 							<viz.data:FlattenedDataset data="{TimeLostperAttribute>/reason}">
 								<viz.data:dimensions>
 									<viz.data:DimensionDefinition
-										axis="1" name="{i18n>Reason}" value="{TimeLostperAttribute>name}" />
+										axis="1" name="{i18nModel>Reason}" value="{TimeLostperAttribute>name}" />
 								</viz.data:dimensions>
 								<viz.data:measures>
-									<viz.data:MeasureDefinition name="{i18n>TimeLost}"
+									<viz.data:MeasureDefinition name="{i18nModel>TimeLost}"
 										value="{path: 'TimeLostperAttribute>value' , formatter: 'airbus.mes.disruptiontracker.Formatter.msToMinutesConverter'}" />
 								</viz.data:measures>
 							</viz.data:FlattenedDataset>
 						</viz:dataset>
 						<viz:feeds>
 							<viz.feeds:FeedItem uid="axisLabels" type="Dimension"
-								values="{i18n>Reason}" />
+								values="{i18nModel>Reason}" />
 							<viz.feeds:FeedItem id='valueAxisFeed2' uid="primaryValues"
-								type="Measure" values="{i18n>TimeLost}" />
+								type="Measure" values="{i18nModel>TimeLost}" />
 						</viz:feeds>
 					</viz:VizFrame>
 
@@ -104,20 +104,20 @@
 							<viz.data:FlattenedDataset data="{TimeLostperAttribute>/operation}">
 								<viz.data:dimensions>
 									<viz.data:DimensionDefinition
-										axis="1" name="{i18n>operation}"
+										axis="1" name="{i18nModel>operation}"
 										value="{ path: 'TimeLostperAttribute>name' , formatter: 'airbus.mes.disruptiontracker.Formatter.formatOperation'}" />
 								</viz.data:dimensions>
 								<viz.data:measures>
-									<viz.data:MeasureDefinition name="{i18n>TimeLost}"
+									<viz.data:MeasureDefinition name="{i18nModel>TimeLost}"
 										value="{path: 'TimeLostperAttribute>value' , formatter: 'airbus.mes.disruptiontracker.Formatter.msToMinutesConverter'}" />
 								</viz.data:measures>
 							</viz.data:FlattenedDataset>
 						</viz:dataset>
 						<viz:feeds>
 							<viz.feeds:FeedItem uid="axisLabels" type="Dimension"
-								values="{i18n>operation}" />
+								values="{i18nModel>operation}" />
 							<viz.feeds:FeedItem id='valueAxisFeed3' uid="primaryValues"
-								type="Measure" values="{i18n>TimeLost}" />
+								type="Measure" values="{i18nModel>TimeLost}" />
 						</viz:feeds>
 					</viz:VizFrame>
 
@@ -132,19 +132,19 @@
 							<viz.data:FlattenedDataset data="{TimeLostperAttribute>/msn}">
 								<viz.data:dimensions>
 									<viz.data:DimensionDefinition
-										axis="1" name="{i18n>MSN}" value="{TimeLostperAttribute>name}" />
+										axis="1" name="{i18nModel>MSN}" value="{TimeLostperAttribute>name}" />
 								</viz.data:dimensions>
 								<viz.data:measures>
-									<viz.data:MeasureDefinition name="{i18n>TimeLost}"
+									<viz.data:MeasureDefinition name="{i18nModel>TimeLost}"
 										value="{path: 'TimeLostperAttribute>value' , formatter: 'airbus.mes.disruptiontracker.Formatter.msToMinutesConverter'}" />
 								</viz.data:measures>
 							</viz.data:FlattenedDataset>
 						</viz:dataset>
 						<viz:feeds>
 							<viz.feeds:FeedItem uid="axisLabels" type="Dimension"
-								values="{i18n>MSN}" />
+								values="{i18nModel>MSN}" />
 							<viz.feeds:FeedItem id='valueAxisFeed4' uid="primaryValues"
-								type="Measure" values="{i18n>TimeLost}" />
+								type="Measure" values="{i18nModel>TimeLost}" />
 						</viz:feeds>
 					</viz:VizFrame>
 

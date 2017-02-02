@@ -322,7 +322,7 @@ airbus.mes.shell.util.navFunctions = {
             .getBinding("items").filter(new sap.ui.model.Filter(aFilters, true));
 
         var stationItemAll = new sap.ui.core.Item();
-        stationItemAll.setKey = "";
+        stationItemAll.setKey("");
         stationItemAll.setText(airbus.mes.disruptiontracker.oView.getModel("disruptiontrackerI18n").getProperty("All"));
 
         var stationBox = sap.ui.getCore().byId("disruptiontrackerView--stationComboBox");
@@ -353,7 +353,7 @@ airbus.mes.shell.util.navFunctions = {
         }
 
         var msnItemAll = new sap.ui.core.Item();
-        msnItemAll.setKey = "";
+        msnItemAll.setKey("");
         msnItemAll.setText(airbus.mes.disruptiontracker.oView.getModel("disruptiontrackerI18n").getProperty("All"));
 
         var msnBox = sap.ui.getCore().byId("disruptiontrackerView--msnComboBox");
@@ -362,21 +362,20 @@ airbus.mes.shell.util.navFunctions = {
     },
 
     disruptionKPI: function () {
-        if (airbus.mes.disruptiontracker === undefined) {
-            jQuery.sap.registerModulePath("airbus.mes.disruptiontracker", "../components/disruptiontracker");
+        if (airbus.mes.disruptionkpi === undefined || airbus.mes.disruptionkpi.oView === undefined) {
+            jQuery.sap.registerModulePath("airbus.mes.disruptionkpi", "../components/disruptionkpi");
+            sap.ui.getCore().createComponent({ name: "airbus.mes.disruptionkpi", });
+            nav.addPage(airbus.mes.disruptionkpi.oView);
         }
 
-        if (airbus.mes.disruptiontracker.kpi === undefined || airbus.mes.disruptiontracker.kpi.oView === undefined) {
-            jQuery.sap.registerModulePath("airbus.mes.disruptiontracker.kpi", "../components/disruptiontracker/kpi");
-            sap.ui.getCore().createComponent({ name: "airbus.mes.disruptiontracker.kpi", });
-            nav.addPage(airbus.mes.disruptiontracker.kpi.oView);
-        }
 
-        airbus.mes.disruptiontracker.kpi.ModelManager.loadDisruptionKPIModel();
+        airbus.mes.disruptionkpi.ModelManager.loadDisruptionKPIModel();
         
-        airbus.mes.disruptiontracker.kpi.ModelManager.removeDuplicates();
+        airbus.mes.disruptionkpi.ModelManager.setPreSelectionCriteria();
+        airbus.mes.disruptionkpi.ModelManager.removeDuplicates();
         
-        nav.to(airbus.mes.disruptiontracker.kpi.oView.getId());
+        
+        nav.to(airbus.mes.disruptionkpi.oView.getId());
     },
 
     /************************

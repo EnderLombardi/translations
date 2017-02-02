@@ -46,7 +46,7 @@ airbus.mes.shell.AutoRefreshConfig = {
 		"timer" : undefined,
 		"useraction" : false,
 		"area" : function() {
-			return airbus.mes.disruptiontracker.kpi.ModelManager.loadDisruptionKPIModel();
+			return airbus.mes.disruptionkpi.ModelManager.loadDisruptionKPIModel();
 		}
 	},
 

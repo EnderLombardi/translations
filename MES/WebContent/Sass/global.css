@@ -30,9 +30,7 @@ time, mark, audio, video {
   height: 3rem;
   margin: 0;
   line-height: 3rem;
-  text-transform: capitalize;
   margin-right: 0px !important;
-  border-left: solid 1px #74d2e7 !important;
   border-right: solid 1px #74d2e7 !important;
   background: #0f2d65 !important;
   border: 0; }
@@ -7153,6 +7151,50 @@ td {
   .disruptionKPI .Subheader .sapMBtnIconLeft,
   .disruptionKPI .Subheader .sapMBtnContent {
     color: #0D5D76 !important; }
+
+#disruptionKPIView--lineComboBox {
+  border-left: solid 1px #74d2e7 !important; }
+
+#disruptionKPIView--stationComboBox.sapMMultiComboBox {
+  width: 18rem !important;
+  height: 3rem;
+  margin: 0;
+  line-height: 3rem;
+  border: 0px;
+  border-right: solid 1px #74d2e7 !important;
+  margin: 0px !important; }
+  #disruptionKPIView--stationComboBox.sapMMultiComboBox .sapMMultiComboBoxBorder {
+    background: #0f2d65 !important;
+    border: 0; }
+    #disruptionKPIView--stationComboBox.sapMMultiComboBox .sapMMultiComboBoxBorder .sapMTokenizer .sapMToken {
+      margin-top: -0.175rem;
+      margin-bottom: 0px;
+      vertical-align: middle; }
+      #disruptionKPIView--stationComboBox.sapMMultiComboBox .sapMMultiComboBoxBorder .sapMTokenizer .sapMToken .sapMTokenIcon {
+        cursor: pointer; }
+    #disruptionKPIView--stationComboBox.sapMMultiComboBox .sapMMultiComboBoxBorder input.sapMComboBoxTextFieldInner {
+      font-size: 16px;
+      color: #F5F5F5;
+      border: 0px !important; }
+    #disruptionKPIView--stationComboBox.sapMMultiComboBox .sapMMultiComboBoxBorder input.sapMComboBoxTextFieldInner::-webkit-input-placeholder {
+      /* WebKit, Blink, Edge */
+      color: #F5F5F5; }
+    #disruptionKPIView--stationComboBox.sapMMultiComboBox .sapMMultiComboBoxBorder input.sapMComboBoxTextFieldInner:-moz-placeholder {
+      /* Mozilla Firefox 4 to 18 */
+      color: #F5F5F5;
+      opacity: 1; }
+    #disruptionKPIView--stationComboBox.sapMMultiComboBox .sapMMultiComboBoxBorder input.sapMComboBoxTextFieldInner::-moz-placeholder {
+      /* Mozilla Firefox 19+ */
+      color: #F5F5F5;
+      opacity: 1; }
+    #disruptionKPIView--stationComboBox.sapMMultiComboBox .sapMMultiComboBoxBorder input.sapMComboBoxTextFieldInner:-ms-input-placeholder {
+      /* Internet Explorer 10-11 */
+      color: #F5F5F5; }
+    #disruptionKPIView--stationComboBox.sapMMultiComboBox .sapMMultiComboBoxBorder button.sapMMultiComboBoxArrow {
+      font-size: 12px;
+      background: #0f2d65;
+      color: #F5F5F5;
+      border: 0px; }
 
 /*************
 GENERALE RULES

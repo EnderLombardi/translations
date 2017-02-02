@@ -102,7 +102,7 @@ gulp.task('ui5preload_disruptionkpi', ['clean'], function() {
 		        //.pipe(gulpif('**/*.js',uglify()))    //only pass .js files to uglify 
 		        //.pipe(gulpif('**/*.xml',prettydata({type:'minify'}))) // only pass .xml to prettydata  
 		        .pipe(gulpif('**/i18n/*.properties', escapeProperties({ type: "properties" })))
-		        .pipe(ui5preload({base:'./WebContent/components/disruptiontracker/kpi', namespace:'airbus.mes.disruptiontracker.kpi'}))
+		        .pipe(ui5preload({base:'./WebContent/components/disruptiontracker/kpi', namespace:'airbus.mes.disruptionkpi'}))
 		        .pipe(gulp.dest(dest + '/components/disruptiontracker/kpi'));
 });
 

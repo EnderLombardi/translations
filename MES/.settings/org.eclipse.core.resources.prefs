@@ -1,10 +1,10 @@
 eclipse.preferences.version=1
 encoding/.jshintrc=UTF-8
+encoding//WebContent/components/disruptionkpi/i18n/i18n_fr.properties=UTF-8
 encoding//WebContent/components/disruptions/i18n/i18n_en.properties=UTF-8
 encoding//WebContent/components/disruptions/i18n/i18n_fr.properties=UTF-8
 encoding//WebContent/components/disruptiontracker/i18n/i18n_en.properties=UTF-8
 encoding//WebContent/components/disruptiontracker/i18n/i18n_fr.properties=UTF-8
-encoding//WebContent/components/disruptiontracker/kpi/i18n/i18n_fr.properties=UTF-8
 encoding//WebContent/components/homepage/i18n/i18n_fr.properties=UTF-8
 encoding//WebContent/components/linetracker/i18n/i18n_en.properties=UTF-8
 encoding//WebContent/components/linetracker/i18n/i18n_fr.properties=UTF-8
