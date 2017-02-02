@@ -17,19 +17,12 @@
 					</headerToolbar>
 					<content height="100%">
 						<HBox height="100%" class="fixHboxItemDisplay">
-
-							<List id="listAvailableColumns" height="100%"
-								items="{acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column}"
-								includeItemInSelection="true" noDataText="{i18nModel>NoColumnAvailable}"
-								rememberSelections="true" growingScrollToLoad="true" growing="true" mode="true" selectionMode="Single"
-								growingThreshold="1000">
-									
-														<core:Item key="{Name}" text="{Name}" />
-									
-										<!-- <ui:HorizontalLayout visible="{path:'acpnglinksWorkOrderDetail>Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanLeft'}">
-													<Text text="{acpnglinksWorkOrderDetail>Name}" > </Text>
-													
-										</ui:HorizontalLayout> -->
+							<List id="listAvailableColumns" mode="SingleSelectMaster"
+								items="{acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column}">
+								<CustomListItem 
+									visible="{path:'acpnglinksWorkOrderDetail>Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanLeft'}">
+									<HBox><ui:HorizontalLayout> <Text text="{acpnglinksWorkOrderDetail>Name}" > </Text> </ui:HorizontalLayout> </HBox>
+								</CustomListItem>
 							</List>
 						</HBox>
 					</content>
@@ -39,7 +32,7 @@
 					<items>
 						<Button icon="sap-icon://navigation-right-arrow" press="onAssignColumns"
 							tooltip="{i18nModel>Assign}" />
-						<Button icon="sap-icon://navigation-left-arrow" press="onAssignColumns"
+						<Button icon="sap-icon://navigation-left-arrow" press="onUnassignColumns"
 							tooltip="{i18nModel>Remove}" />
 					</items>
 				</VBox>
@@ -58,14 +51,15 @@
 					</headerToolbar>
 					<content>
 						<HBox height="100%" class="fixHboxItemDisplay">
-							<List id="listAllocatedcolumns" items="{acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column}"
-								includeItemInSelection="true" rememberSelections="false"
-								growingScrollToLoad="true" growing="true" growingThreshold="1000"
-								noDataText="{i18nModel>NoUserAssigned}">
-								<CustomListItem>
+							<List id="listAllocatedcolumns"
+								items="{acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column}"
+								mode="SingleSelectMaster">
+								<CustomListItem visible="{path:'acpnglinksWorkOrderDetail>Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanRight'}"> 
 									<content>
-										<ui:HorizontalLayout visible="{path:'acpnglinksWorkOrderDetail>Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanRight'}">
-													<Text text="{acpnglinksWorkOrderDetail>Name}" > </Text>				
+										<ui:HorizontalLayout
+											>
+											<Text text="{acpnglinksWorkOrderDetail>Name}">
+											</Text>
 										</ui:HorizontalLayout>
 									</content>
 								</CustomListItem>
