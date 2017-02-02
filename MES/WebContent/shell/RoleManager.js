@@ -4,10 +4,10 @@ airbus.mes.shell.RoleManager = {
 
 	init : function(core) {
 		// Load all the roles based on site
-		airbus.mes.shell.ModelManager.getRolesForSite();
-		airbus.mes.shell.RoleManager.parseProfile();
-		
-		airbus.mes.shell.RoleManager.parseRoleValue();
+//		airbus.mes.shell.ModelManager.getRolesForSite();
+//		airbus.mes.shell.RoleManager.parseProfile();
+//		
+//		airbus.mes.shell.RoleManager.parseRoleValue();
 	},
 
 	userProfile : {},
@@ -43,7 +43,7 @@ airbus.mes.shell.RoleManager = {
 //		var iLength = airbus.mes.shell.RoleManager.Profile.connectedUser.permission.length;
 //		for(var i = 0; i<iLength; i++){
 //			if(airbus.mes.shell.RoleManager.Profile.connectedUser.permission[i][feature] === !undefined){
-//				airbus.mes.shell.RoleManager.Profile.connectedUser.permission[i][feature] = airbus.mes.shell.RoleManager.Profile.connectedUser.IllumLoginRoles.containsOneOf(airbus.mes.shell.RoleManager.features.positiveRoles.funcRoles || airbus.mes.shell.RoleManager.features.positiveRoles.techRoles)& !(airbus.mes.shell.RoleManager.Profile.connectedUser.IllumLoginRoles.containsOneOf(airbus.mes.shell.RoleManager.features.negativeRoles.funcRoles || airbus.mes.shell.RoleManager.features.negativeRoles.techRoles) )
+//				airbus.mes.shell.RoleManager.Profile.connectedUser.permission[i][feature] = airbus.mes.shell.RoleManager.Profile.connectedUser.IllumLoginRoles.indexOf(airbus.mes.shell.RoleManager.features.positiveRoles.funcRoles || airbus.mes.shell.RoleManager.features.positiveRoles.techRoles)& !(airbus.mes.shell.RoleManager.Profile.connectedUser.IllumLoginRoles.containsOneOf(airbus.mes.shell.RoleManager.features.negativeRoles.funcRoles || airbus.mes.shell.RoleManager.features.negativeRoles.techRoles) )
 //; 
 //			}
 //		}
