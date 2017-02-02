@@ -202,6 +202,8 @@ airbus.mes.shell.util.navFunctions = {
             sap.ui.getCore().createComponent({ name: "airbus.mes.jigtools" });
         } else if (airbus.mes.jigtools.oView.oController.workOrder !== sCurrentWorkOrder) {
 //          If WorkdOrder changed, need to reload data in the model
+            airbus.mes.jigtools.oView.getController().getOwnerComponent().setSite(airbus.mes.settings.ModelManager.site);
+            airbus.mes.jigtools.oView.getController().getOwnerComponent().setWorkOrder(airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].wo_no);
             airbus.mes.jigtools.util.ModelManager.loadjigToolsWorkOrderDetail();
         }
         

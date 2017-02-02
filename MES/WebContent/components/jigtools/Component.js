@@ -28,9 +28,6 @@ airbus.mes.jigtools.Component.prototype.createContent = function() {
 
 	if (airbus.mes.jigtools.oView === undefined) {
 		
-        // Initialize ModelManager and load needed file
-        airbus.mes.jigtools.util.ModelManager.init(sap.ui.getCore());
-        
 		// View on XML
 		this.oView = sap.ui.view({
 			id : "jigtoolsView",
@@ -42,6 +39,9 @@ airbus.mes.jigtools.Component.prototype.createContent = function() {
 
 		var i18nModel = new sap.ui.model.resource.ResourceModel({ bundleName : "airbus.mes.jigtools.i18n.i18n" });
 		this.oView.setModel(i18nModel, "i18nJigstoolsModel");		
+
+        // Initialize ModelManager and load needed file
+        airbus.mes.jigtools.util.ModelManager.init(sap.ui.getCore());		
 		
 		return this.oView;
 		
