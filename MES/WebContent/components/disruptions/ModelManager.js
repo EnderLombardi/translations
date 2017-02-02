@@ -276,6 +276,7 @@ airbus.mes.disruptions.ModelManager = {
 	 */
 	loadDisruptionsByOperation : function(operation, sSfcStepRef) {
 
+		airbus.mes.operationdetail.oView.setBusyIndicatorDelay(0);
 		airbus.mes.operationdetail.oView.setBusy(true); // Set Busy Indicator
 
 		var oViewModel = airbus.mes.disruptions.oView.viewDisruption

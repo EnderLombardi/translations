@@ -1,6 +1,6 @@
 "use strict";
-jQuery.sap.declare("airbus.mes.disruptions.attachments.ModelManager")
-airbus.mes.disruptions.attachments.ModelManager = {
+jQuery.sap.declare("airbus.mes.disruptionattachments.ModelManager")
+airbus.mes.disruptionattachments.ModelManager = {
 		urlModel : undefined,
 		
 		i18nModel: undefined,
@@ -13,7 +13,7 @@ airbus.mes.disruptions.attachments.ModelManager = {
     	   airbus.mes.shell.ModelManager.createJsonModel(core,aModel);
 		
 			// Handle URL Model
-			this.urlModel = airbus.mes.shell.ModelManager.urlHandler("airbus.mes.disruptions.attachments.config.url_config");
+			this.urlModel = airbus.mes.shell.ModelManager.urlHandler("airbus.mes.disruptionattachments.config.url_config");
 							
 			// TODO DEPLACE this in shell controller and when service is ok remove all of this function
 			this.attachmentDisruptions();		

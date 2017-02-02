@@ -1,8 +1,8 @@
 "use strict";
 
-jQuery.sap.declare("airbus.mes.disruptions.attachments.Formatter");
+jQuery.sap.declare("airbus.mes.disruptionattachments.Formatter");
 
-airbus.mes.disruptions.attachments.Formatter = {
+airbus.mes.disruptionattachments.Formatter = {
 
 	status : {
 		"pending" 	: "Pending",
@@ -19,13 +19,13 @@ airbus.mes.disruptions.attachments.Formatter = {
 		
 		switch(gravity) {
 		case "1":
-			property = airbus.mes.disruptions.attachments.oView.getModel("i18nModel").getProperty("NotBlocked");
+			property = airbus.mes.disruptionattachments.oView.getModel("i18nModel").getProperty("NotBlocked");
 			break;
 		case "2":
-			property = airbus.mes.disruptions.attachments.oView.getModel("i18nModel").getProperty("Disturbed");
+			property = airbus.mes.disruptionattachments.oView.getModel("i18nModel").getProperty("Disturbed");
 			break;
 		case "3":
-			property = airbus.mes.disruptions.attachments.oView.getModel("i18nModel").getProperty("Blocked");
+			property = airbus.mes.disruptionattachments.oView.getModel("i18nModel").getProperty("Blocked");
 			break;
 		default:
 			break;
@@ -36,7 +36,7 @@ airbus.mes.disruptions.attachments.Formatter = {
 
 	
 	setDisruptionStatuses : function(status){
-		return airbus.mes.disruptions.attachments.oView.getModel("i18nModel").getProperty(status);
+		return airbus.mes.disruptionattachments.oView.getModel("i18nModel").getProperty(status);
 	},
 	setCount : function(){
 		var oModel = sap.ui.getCore().getModel("attachDisruption");

@@ -17,12 +17,8 @@ sap.ui
          */
         onInit: function () {
             this.nav = this.getView().byId("operDetailNavContainer");
-            if (airbus.mes.operationdetail.status === undefined || airbus.mes.operationdetail.status.oView === undefined) {
-                sap.ui.getCore().createComponent({
-                    name: "airbus.mes.operationdetail.status",
-                });
-                this.nav.addPage(airbus.mes.operationdetail.status.oView);
-            }
+            
+            airbus.mes.shell.util.navFunctions.operationstatus(this.nav, false);
         },
 
         expandOperationDetailPanel: function (oEvent) {
@@ -57,10 +53,10 @@ sap.ui
             this.disruptionsFlag = false;
 
             // Navigation to Status every time pop-up is opened
-            this.nav.to(airbus.mes.operationdetail.status.oView.getId());
+            this.nav.to(airbus.mes.operationstatus.oView.getId());
 
             // Set button
-            airbus.mes.operationdetail.status.oView.oController.setOperationActionButtons();
+            airbus.mes.operationstatus.oView.oController.setOperationActionButtons();
 
             this.getView().byId("opDetailSegmentButtons").setSelectedKey(
                 this.getView().byId("opDetailSegmentButtons").getSelectedKey()[0].sId);
@@ -104,7 +100,7 @@ sap.ui
                 this.getView().byId("switchStatusLabel").setText(this.getView().getModel("i18n").getProperty("Execution"));
 
                 //when the operation goes on execution mode, it is too activate
-                var bResult = airbus.mes.operationdetail.status.oView.getController().activateOperation();
+                var bResult = airbus.mes.operationstatus.oView.getController().activateOperation();
                 if (bResult) {
                     this.setToolbarVisible();
                     oSwitchButton.setEnabled(false);
@@ -112,7 +108,7 @@ sap.ui
                     /**
                      * set the buttons according to the status of operation mode
                      */
-                    airbus.mes.operationdetail.status.oView.oController.setOperationActionButtons();
+                    airbus.mes.operationstatus.oView.oController.setOperationActionButtons();
 
 
                 } else {
@@ -163,24 +159,13 @@ sap.ui
 
             switch (sItemKey) {
                 case "status":
-                    if (airbus.mes.operationdetail.status === undefined || airbus.mes.operationdetail.status.oView === undefined) {
-                        sap.ui.getCore().createComponent({ name: "airbus.mes.operationdetail.status" });
-                        this.nav.addPage(airbus.mes.operationdetail.status.oView);
-                    }
-
-                    this.nav.to(airbus.mes.operationdetail.status.oView.getId());
-
-                    airbus.mes.operationdetail.status.oView.oController.setOperationActionButtons();
+                    airbus.mes.shell.util.navFunctions.operationstatus(this.nav, true);
                     break;
 
                 case "checkList":
-                    if (airbus.mes.operationdetail.QDC === undefined || airbus.mes.operationdetail.QDC.oView === undefined) {
-                        sap.ui.getCore().createComponent({ name: "airbus.mes.operationdetail.QDC" });
-                        this.nav.addPage(airbus.mes.operationdetail.QDC.oView);
-                    }
-                    this.nav.to(airbus.mes.operationdetail.QDC.oView.getId());
-
+                	airbus.mes.shell.util.navFunctions.qdc(this.nav);
                     break;
+                    
                 case "disruption":
                     airbus.mes.shell.util.navFunctions.disruptionsDetail(this.nav,
                         sap.ui.getCore().byId("operationDetailPopup--reportDisruption"), // Report Disruption Button

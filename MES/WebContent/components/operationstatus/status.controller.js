@@ -1,5 +1,5 @@
 "use strict";
-sap.ui.controller("airbus.mes.operationdetail.status.status", {
+sap.ui.controller("airbus.mes.operationstatus.status", {
 
     /**
      * Called when a controller is instantiated and its View
@@ -7,7 +7,7 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
      * to modify the View before it is displayed, to bind event
      * handlers and do other one-time initialization.
      *
-     * @memberOf components.operationdetail.status.status
+     * @memberOf components.operationstatus.status
      */
     onInit : function() {
 
@@ -27,7 +27,7 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
      * before the controller's View is re-rendered (NOT before
      * the first rendering! onInit() is used for that one!).
      *
-     * @memberOf components.operationdetail.status.status
+     * @memberOf components.operationstatus.status
      */
     // onBeforeRendering: function() {
     //
@@ -52,7 +52,7 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
      **********************************************************/
     activateOperation : function() {
 
-        var oView = airbus.mes.operationdetail.status.oView;
+        var oView = airbus.mes.operationstatus.oView;
 
         //active busy
         airbus.mes.shell.busyManager.setBusy(airbus.mes.stationtracker.oView, "stationtracker");
@@ -114,7 +114,7 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
         //active busy
         airbus.mes.shell.busyManager.setBusy(airbus.mes.stationtracker.oView, "stationtracker");
 
-        var oView = airbus.mes.operationdetail.status.oView;
+        var oView = airbus.mes.operationstatus.oView;
 
         var data = oView.getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0];
         var sMessageSuccess = oView.getModel("i18n").getProperty("SuccessfulPause");
@@ -164,7 +164,7 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
 
     confirmOperation : function(oEvent) {
         oEvent.reset();
-        var oView = airbus.mes.operationdetail.status.oView;
+        var oView = airbus.mes.operationstatus.oView;
         var oModel = [sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0]];
         airbus.mes.operationdetail.ModelManager.durationNeededForCalc = oModel[0].duration;
         // click on confirm
@@ -192,7 +192,7 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
     },
     completeOperation : function(oEvent) {
 
-        var oView = airbus.mes.operationdetail.status.oView;
+        var oView = airbus.mes.operationstatus.oView;
         var dataConfirm = airbus.mes.operationdetail.ModelManager.jsonConfirmationCheckList;
 
         // Click on Complete
@@ -362,7 +362,7 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
     },
 
     onCancelConfirmation : function() {
-        var oView = airbus.mes.operationdetail.status.oView;
+        var oView = airbus.mes.operationstatus.oView;
 
         oView._oUserConfirmationDialog.close();
     },
@@ -381,7 +381,7 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
         //setTimeout of 1ms because the setBusy begins after if we don't use this trick
         setTimeout(function() {
             var sMessageSuccess = "";
-            var oView = airbus.mes.operationdetail.status.oView;
+            var oView = airbus.mes.operationstatus.oView;
 
             var uID = sap.ui.getCore().byId("UIDForConfirmation").getValue();
             var bID = sap.ui.getCore().byId("badgeIDForConfirmation").getValue();
@@ -399,7 +399,7 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
             } else {
                 sMessageSuccess = oView.getModel("i18n").getProperty("SuccessfulConfirmation");
             }
-            var sWo = airbus.mes.operationdetail.status.oView.getModel("operationDetailModel").getProperty(
+            var sWo = airbus.mes.operationstatus.oView.getModel("operationDetailModel").getProperty(
                     "/Rowsets/Rowset/0/Row/0/wo_no");
             var sMessageError = oView.getModel("i18n").getProperty("ErrorDuringConfirmation");
 
@@ -467,7 +467,7 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
      * ReasonCode Fragment Methods
      **********************************************************/
     onSubmitReasonCode : function(oEvent) {
-        var oView = airbus.mes.operationdetail.status.oView;
+        var oView = airbus.mes.operationstatus.oView;
 
         // store reason Code text
         oView.getController().reasonCodeText = sap.ui.getCore().byId("reasonCodeSelectBox").getSelectedKey() + "-"
@@ -509,7 +509,7 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
 
     onCancelReasonCode : function() {
 
-        var oView = airbus.mes.operationdetail.status.oView;
+        var oView = airbus.mes.operationstatus.oView;
 
         sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].progress_new = sap.ui
                 .getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].progress;
@@ -536,30 +536,30 @@ sap.ui.controller("airbus.mes.operationdetail.status.status", {
 
         if (sap.ui.getCore().byId("operationDetailsView--switchOperationModeBtn").getState() == false) {
             this.setProgressScreenBtn(false, false, false);
-            if (this.getView().byId("operationStatus").getText() === airbus.mes.operationdetail.status.oView.getModel(
+            if (this.getView().byId("operationStatus").getText() === airbus.mes.operationstatus.oView.getModel(
                     "i18n").getProperty("blocked")) {
                 this.getView().byId("blockedText").setVisible(true);
                 this.getView().byId("goToDisruption").setVisible(true);
             }
-        } else if (this.getView().byId("operationStatus").getText() === airbus.mes.operationdetail.status.oView
+        } else if (this.getView().byId("operationStatus").getText() === airbus.mes.operationstatus.oView
                 .getModel("i18n").getProperty("notStarted")
-                || this.getView().byId("operationStatus").getText() === airbus.mes.operationdetail.status.oView
+                || this.getView().byId("operationStatus").getText() === airbus.mes.operationstatus.oView
                         .getModel("i18n").getProperty("paused")) {
 
             this.setProgressScreenBtn(false, true, false);
 
-        } else if (this.getView().byId("operationStatus").getText() === airbus.mes.operationdetail.status.oView
+        } else if (this.getView().byId("operationStatus").getText() === airbus.mes.operationstatus.oView
                 .getModel("i18n").getProperty("in_progress")) {
 
             this.setProgressScreenBtn(true, false, true);
 
-        } else if (this.getView().byId("operationStatus").getText() === airbus.mes.operationdetail.status.oView
+        } else if (this.getView().byId("operationStatus").getText() === airbus.mes.operationstatus.oView
                 .getModel("i18n").getProperty("blocked")) {
             this.setProgressScreenBtn(false, false, true);
             this.getView().byId("blockedText").setVisible(true);
             this.getView().byId("goToDisruption").setVisible(true);
 
-        } else if (this.getView().byId("operationStatus").getText() === airbus.mes.operationdetail.status.oView
+        } else if (this.getView().byId("operationStatus").getText() === airbus.mes.operationstatus.oView
                 .getModel("i18n").getProperty("confirmed")) {
 
             this.setProgressScreenBtn(false, false, false);

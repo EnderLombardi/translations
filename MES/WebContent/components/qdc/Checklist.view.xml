@@ -3,7 +3,7 @@
 	xmlns:core="sap.ui.core"
 	xmlns:html="http://www.w3.org/1999/xhtml" 
 	xmlns:tab="sap.ui.table"
-	controllerName="airbus.mes.operationdetail.QDC.Checklist" >
+	controllerName="airbus.mes.qdc.Checklist" >
 
 	
 	

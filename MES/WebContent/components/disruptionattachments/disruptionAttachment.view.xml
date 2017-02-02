@@ -1,5 +1,5 @@
 <mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
-	xmlns="sap.m" controllerName="airbus.mes.disruptions.attachments.disruptionAttachment"
+	xmlns="sap.m" controllerName="airbus.mes.disruptionattachments.disruptionAttachment"
 	xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml"
 	xmlns:cData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" >
 
@@ -32,9 +32,9 @@
  			<Panel expandable="true" expanded="true"> 
  				<headerToolbar> 
  					<Toolbar> 
- 						<Title text="{attachDisruption>wo_no}-{attachDisruption>op_no}-{attachDisruption>dis_no}-{attachDisruption>dis_des}-{path: 'attachDisruption>gravity', formatter: 'airbus.mes.disruptions.attachments.Formatter.setGravityTexts'}-{path: 'attachDisruption>status', formatter: 'airbus.mes.disruptions.attachments.Formatter.setDisruptionStatuses'}" /> 
+ 						<Title text="{attachDisruption>wo_no}-{attachDisruption>op_no}-{attachDisruption>dis_no}-{attachDisruption>dis_des}-{path: 'attachDisruption>gravity', formatter: 'airbus.mes.disruptionattachments.Formatter.setGravityTexts'}-{path: 'attachDisruption>status', formatter: 'airbus.mes.disruptionattachments.Formatter.setDisruptionStatuses'}" /> 
  					    <ToolbarSpacer></ToolbarSpacer>
- 					    <Title id="idAttachmentCount" text="{path: 'attachDisruption>wo_no', formatter: 'airbus.mes.disruptions.attachments.Formatter.setCount'}"/>
+ 					    <Title id="idAttachmentCount" text="{path: 'attachDisruption>wo_no', formatter: 'airbus.mes.disruptionattachments.Formatter.setCount'}"/>
  					</Toolbar> 								
  				</headerToolbar> 
  				<List id = "idListItems" items="{path: 'attachDisruption>File/'}"> 

@@ -37,7 +37,7 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 				break;
 			case "ResourcePool":
 				airbus.mes.shell.util.navFunctions.resourcePool();
-				//airbus.mes.shell.util.navFunctions.docViewer("/MES/components/disruptions/attachments/Files/GettingStarted.xod", undefined);
+				//airbus.mes.shell.util.navFunctions.docViewer("/MES/components/disruptionattachments/Files/GettingStarted.xod", undefined);
 				break;
 			case "LineTracker":
 				airbus.mes.shell.util.navFunctions.lineTracker();
@@ -47,7 +47,7 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 				break;
 			case "TeamCompetencies":
 				airbus.mes.shell.util.navFunctions.polypoly();
-				//airbus.mes.shell.util.navFunctions.docViewer("../components/disruptions/attachments/Files/sample.pdf", undefined);
+				//airbus.mes.shell.util.navFunctions.docViewer("../components/disruptionattachments/Files/sample.pdf", undefined);
 				break;
 			case "TeamAvailability":
 				airbus.mes.shell.util.navFunctions.calendar();

@@ -1,5 +1,5 @@
 <core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
-	xmlns="sap.m" controllerName="airbus.mes.operationdetail.status.status"
+	xmlns="sap.m" controllerName="airbus.mes.operationstatus.status"
 	xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:html="http://www.w3.org/1999/xhtml">
 	<Page showHeader="false" enableScrolling="false" >
 		

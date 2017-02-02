@@ -2,7 +2,7 @@
 
 sap.ui
 .controller(
-	"airbus.mes.disruptions.attachments.disruptionAttachment",
+	"airbus.mes.disruptionattachments.disruptionAttachment",
 	{
 //		onBeforeRendering: function(oEvt){
 //			var aFilter = [];
@@ -97,7 +97,7 @@ sap.ui
 			}
 
 			// Open Document viewer
-			airbus.mes.shell.util.navFunctions.docViewer(url, airbus.mes.disruptions.attachments.oView.oController.onMESDocViewerClose);
+			airbus.mes.shell.util.navFunctions.docViewer(url, airbus.mes.disruptionattachments.oView.oController.onMESDocViewerClose);
 		},
 
 		/******************************************
