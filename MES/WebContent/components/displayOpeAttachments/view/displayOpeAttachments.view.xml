@@ -23,6 +23,7 @@
                     rows="{getOpeAttachments>/Rowsets/Rowset/0/Row}"
                     ariaLabelledBy="title"
                     toggleOpenState="onToggleTreeTable"
+                    expandFirstLevel="true"
                     selectionMode="None"
                     firstVisibleRowChanged="onScroll">
                 <columns>
