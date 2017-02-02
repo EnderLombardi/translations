@@ -11,7 +11,7 @@ airbus.mes.stationtracker.ModelManager = {
        i18nModel : undefined,
        operationType : undefined,
        fIsLoad : 0,
-       
+       timeMinR : 900000,
        firstTime : undefined,
        stationInProgress: {
            ShopOrderBO: undefined,

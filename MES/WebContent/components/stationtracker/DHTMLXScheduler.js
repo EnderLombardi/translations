@@ -152,13 +152,16 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",    {
                             	
                             }
                             
+                            
+                            
                           //To avoid call rescheduling when drag and drop check if moved the operation if not we dont launch the drag
-                    		if ( sInitialAvlLine === sNewAvlLine && oInitial.start_date - oFinal.start_date === 0) {
+                    		if ( sInitialAvlLine === sNewAvlLine && Math.abs(oInitial.start_date - oFinal.start_date) < airbus.mes.stationtracker.ModelManager.timeMinR ) {
                     			
                     			  airbus.mes.stationtracker.ModelManager.OpenWorkList(this.id);
                     			  delete ev._move_delta
                                   scheduler._drag_mode = ""
-                                  return false;
+                                  this.byPassOnDrag = true;
+                    			  return false;
                     			
                     		}
                            
