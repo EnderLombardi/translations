@@ -11,7 +11,7 @@ airbus.mes.stationtracker.ModelManager = {
        i18nModel : undefined,
        operationType : undefined,
        fIsLoad : 0,
-       
+       timeMinR : 900000,
        firstTime : undefined,
        stationInProgress: {
            ShopOrderBO: undefined,
@@ -1086,6 +1086,7 @@ airbus.mes.stationtracker.ModelManager = {
                                 "avlLine" : aModel[0].AVL_LINE,
                                 "sfc" : aModel[0].SFC,
                                 "sfc_step_ref" : aModel[0].SFC_STEP_REF,
+                                "USER_BO": aModel[0].USER_BO,
                                 "operation_bo" : aModel[0].OPERATION_BO,
                                 "operation_id" : aModel[0].OPERATION_ID,
                                 "operation_no" : aModel[0].OPERATION_BO.split(",")[1],

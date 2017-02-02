@@ -1,35 +1,33 @@
 <core:View controllerName="airbus.mes.stationHandover.controller.stationHandover"
 	xmlns="sap.ui.table" xmlns:mvc="sap.ui.core.mvc" xmlns:m="sap.m"
-	xmlns:u="sap.ui.unified" xmlns:core="sap.ui.core"	xmlns:custom="airbus.mes.stationHandover.util"
-	>
+	xmlns:u="sap.ui.unified" xmlns:core="sap.ui.core" xmlns:custom="airbus.mes.stationHandover.util">
 
 	<m:Page showHeader="false" enableScrolling="false" height="100%"
 		class="sapUiSizeCozy">
 		<m:content>
 
- 
+
 
 			<TreeTable id="TreeTableBasic"
 				rows="{path:'oswModel>/', parameters: {arrayNames:['row']}}"
-				selectionMode="None" enableSelectAll="true"
-				visibleRowCountMode="15rem"
-				showColumnVisibilityMenu="true"
-				cellClick ="onRowClick">
+				selectionMode="None" enableSelectAll="true" visibleRowCountMode="15rem"
+
+				cellClick="onRowClick" enableBusyIndicator="true" enableCellFilter="true">
 				<extension>
-					
+
 					<m:Toolbar id="kpiHeaderToolbar"
 						class="classKpiheaderToolbar pageHeader kpiPageHeader contentNoPad">
 						<m:Label id="stationHandover" text="{stationHandoverI18n>stationHandover}"
 							class="classDateLabel" />
 						<m:Select id="selectStationHandover" class="comboStationHandover"
-							change="changeShift" items="{ path : 'msnModel>/' , sorter : {
+							change="changeShift"
+							items="{ path : 'msnModel>/' , sorter : {
             path : 'text' , descending : 'false'            
          } }">
 							<core:Item key="{selectMSN>key}" text="{TrackerShift>shiftName}" />
 						</m:Select>
 						<m:Select id="selectMsnHandover" class="comboStationHandover"
-							change="changeShift"
-							items="{ path : 'msnModel>/' }">
+							change="changeShift" items="{ path : 'msnModel>/' }">
 							<core:Item key="{msnModel>key}" text="{msnModel>msn}" />
 
 						</m:Select>
@@ -37,47 +35,53 @@
 					</m:Toolbar>
 
 					<m:OverflowToolbar id="headerstationhandover">
-						<m:Button id="navBack" icon="sap-icon://arrow-left" press="onBackPress" type="Transparent"/>
-						<m:SearchField width="15%" id="searchHandover" liveChange="filterWo" />
+						<m:Button id="navBack" icon="sap-icon://arrow-left"
+							press="onBackPress" type="Transparent" />
+						<m:SearchField width="15%" id="searchHandover"
+							liveChange="filterWo" />
 						<m:Select id="groupHandover" change="sorterMode"
-							items="{ path : 'groupModel>/' }" >
-							<core:Item key="{groupModel>key}" text="{path:'groupModel>type' , formatter:'airbus.mes.stationHandover.util.Formatter.translate'}" />
+							items="{ path : 'groupModel>/' }">
+							<core:Item key="{groupModel>key}"
+								text="{path:'groupModel>type' , formatter:'airbus.mes.stationHandover.util.Formatter.translate'}" />
 						</m:Select>
-					<m:Select id="typeHandOver" change="filterOSW"
-							items="{ path : 'typeModel>/' }" >
-							<core:Item key="{typeModel>key}" text="{path:'typeModel>type' , formatter:'airbus.mes.stationHandover.util.Formatter.translate'}" />
+						<m:Select id="typeHandOver" change="filterOSW"
+							items="{ path : 'typeModel>/' }">
+							<core:Item key="{typeModel>key}"
+								text="{path:'typeModel>type' , formatter:'airbus.mes.stationHandover.util.Formatter.translate'}" />
 						</m:Select>
-					<m:Select id="originHandOver" change="filterStation"
+						<m:Select id="originHandOver" change="filterStation"
 							items="{ path : 'oswModel>/row/' }">
 							<core:Item key="{oswModel>ORIGIN_STATION}" text="{oswModel>ORIGIN_STATION}" />
 						</m:Select>
-					
+
 						<m:ToolbarSpacer />
-									
+
 						<m:CheckBox text="{stationHandoverI18n>ShowOpwithNoTime}"
 							selected="false" select="filterNoTime" />
 						<m:CheckBox text="{stationHandoverI18n>ShowInsertedLines}"
-							selected="false" select="filterInsertedLines"/>
-						
+							selected="false" select="filterInsertedLines" />
+
 						<m:ToolbarSpacer />
-												
-						<m:Button id="insertHandOver" text="{stationHandoverI18n>insert}"/>
-							
+
+						<m:Button id="insertHandOver" text="{stationHandoverI18n>insert}" />
+
 					</m:OverflowToolbar>
 
 				</extension>
 				<columns>
-					<Column width="5rem">
-							<m:CheckBox class="DisOpAttLabelHandOver" select="selectAll"/>
+					<Column width="5rem" showFilterMenuEntry="true"
+						showSortMenuEntry="true">
+						<m:CheckBox class="DisOpAttLabelHandOver" select="selectAll" />
 						<template>
-							<m:CheckBox selected="{path:'oswModel>INSERTED' , formatter:'airbus.mes.stationHandover.util.Formatter.isInsert'}" 
-							enabled="{path:'oswModel>INSERTED' , formatter:'airbus.mes.stationHandover.util.Formatter.isInsertEnabled'}" />
+							<m:CheckBox
+								selected="{path:'oswModel>INSERTED' , formatter:'airbus.mes.stationHandover.util.Formatter.isInsert'}"
+								enabled="{path:'oswModel>INSERTED' , formatter:'airbus.mes.stationHandover.util.Formatter.isInsertEnabled'}" />
 						</template>
 					</Column>
-					<Column autoResizable="true">
+					<Column autoResizable="true" 	sortProperty="BLOCKED" filterProperty="BLOCKED">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>Blocked}" />
 						<template>
-							<custom:customIcon color="{oswModel>BLOCKED}"/>
+							<custom:customIcon color="{oswModel>BLOCKED}" />
 						</template>
 					</Column>
 					<Column autoResizable="true">
@@ -86,7 +90,7 @@
 							<m:Label text="{oswModel>TYPE}" />
 						</template>
 					</Column>
-						<Column autoResizable="true">
+					<Column autoResizable="true" 	sortProperty="REFERENCE" filterProperty="REFERENCE">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>Reference}" />
 						<template>
 							<m:Label text="{oswModel>REFERENCE}" />
@@ -99,7 +103,8 @@
 						</template>
 					</Column>
 					<Column autoResizable="true">
-						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>FrozenTrackingTemplate}" />
+						<m:Label class="DisOpAttLabelHandOver"
+							text="{stationHandoverI18n>FrozenTrackingTemplate}" />
 						<template>
 							<m:Label text="{oswModel>FROZEN_TRACKING}" />
 						</template>

@@ -60,24 +60,22 @@ airbus.mes.docviewer.ModelManager = {
 	        }, oViewerElement);
 		/*}
 		else{
-			if (sap.ui.Device.system.phone) {
-				oViewerElement.innerHTML = "<iframe frameborder='0' allowtransparency='true' scrolling='no' " +
-						"style='height: 100%; width: 100%;'" +
-						"src='" +
-						"/MES/lib/pdftron/html5/MobileReaderControl.html" +
-						"#d=" + fileURL +
-						"&a=1" +
-						"&server_url=" + window.location.host +
-						"&did=mes_document_viewer" +
-						"&config=/MES/components/docviewer/config.js" +
-						"&filepicker=0" +
-						"&preloadWorker=1" +
-						"&pdfnet=0" +
-						"&pageHistory=1" +
-						"&useDownloader=0" +
-						"'></iframe>";
-			}*/
-		}
+			oViewerElement.innerHTML = "<iframe frameborder='0' allowtransparency='true' scrolling='no' " +
+					"style='height: 100%; width: 100%;'" +
+					"src='" +
+					"/MES/lib/pdftron/html5/MobileReaderControl.html" +
+					"#d=" + fileURL +
+					"&a=1" +
+					"&server_url=" + window.location.host +
+					"&did=mes_document_viewer" +
+					"&config=/MES/components/docviewer/config.js" +
+					"&filepicker=0" +
+					"&preloadWorker=1" +
+					"&pdfnet=0" +
+					"&pageHistory=1" +
+					"&useDownloader=0" +
+					"'></iframe>";
+		}*/
 		
 	},
 	
@@ -104,5 +102,5 @@ airbus.mes.docviewer.ModelManager = {
 		 	},
 		 	dataType: 'xml'
 		});
-	 },
+	 }
 };

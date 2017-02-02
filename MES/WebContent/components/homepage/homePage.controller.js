@@ -89,7 +89,7 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 	 * Setting the visible property on tiles on the basis of roles
 	 * @flag true or false
 	 */
-    setVisible : function() {
+    setVisible : function() { 
 //        var flag = airbus.mes.shell.RoleManager.isAllowed("HOMESCREEN");
 //        airbus.mes.shell.RoleManager.userRoles = [];
 //        return flag;
