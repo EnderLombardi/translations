@@ -95,9 +95,30 @@ airbus.mes.calendar.util.ModelManager = {
 	        var oViewModel = airbus.mes.calendar.oView.getModel("ressourcePoolModel");
 	        var geturlRessourcePool = this.urlModel.getProperty('urlRessourcePoolModel');
 	        
-	        oViewModel.loadData(geturlRessourcePool, null, true);
-	    	
-	    },
+	        jQuery.ajax({
+	            type : 'post',
+	            url : geturlRessourcePool,
+	            data : JSON.stringify({
+	                "site" : airbus.mes.settings.ModelManager.site,
+	                "phstation" : airbus.mes.settings.ModelManager.station,
+	               
+	            }),
+
+	            success : function(data) {
+	                if(typeof data == "string"){
+	                    data = JSON.parse(data);
+	                }
+	                oViewModel.setData(data);
+	                airbus.mes.stationHandover.util.ModelManager.onRessourcePoolLoad();
+	            },
+
+	            error : function(error, jQXHR) {
+	                console.log(error);
+
+	            }
+	        });
+	        
+	     },
 	    
 	    onRessourcePoolLoad : function() {
 
