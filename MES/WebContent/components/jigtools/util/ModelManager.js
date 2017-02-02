@@ -10,16 +10,15 @@ airbus.mes.jigtools.util.ModelManager = {
 	operation : "O",
 
 //	variable for operation
+	site      : undefined,
 	workOrder : undefined,
 		
-	badgeReader:undefined,
-	brOnMessageCallBack:function (data) {},
 
 	init : function(core) {
 
 		this.core = core;
 
-		this.workOrder = airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].wo_no;		
+		this.setProperties();		
 		
 	    // Handle URL Model
 		this.urlModel = airbus.mes.shell.ModelManager.urlHandler("airbus.mes.jigtools.config.url_config");
@@ -42,13 +41,12 @@ airbus.mes.jigtools.util.ModelManager = {
             url : this.urlModel.getProperty("jigToolsWorkOrderDetail"),
             contentType : 'application/json',
             data : JSON.stringify({
-                "site" : airbus.mes.settings.ModelManager.site,
-                "shopOrder" : this.workOrder
+                "site" : airbus.mes.jigtools.oView.getController().getOwnerComponent().getSite(),
+                "shopOrder" : airbus.mes.jigtools.oView.getController().getOwnerComponent().getWorkOrder()
             }),
 
             success : function(data) {
                 if(typeof data == "string"){
-                	that.ddata = data;
                     data = JSON.parse(data);
                 }
                 oViewModel.setData(data);
@@ -59,18 +57,11 @@ airbus.mes.jigtools.util.ModelManager = {
             }
         });
 		
-//		var oModel = sap.ui.getCore().getModel("jigToolsWorkOrderDetail");
-//		oModel.loadData(this.getjigToolsWorkOrderDetail(), null, false);
 	},
-	
-	//get 
-//	getjigToolsWorkOrderDetail : function() {
-//		var url = this.urlModel.getProperty("jigToolsWorkOrderDetail");
-//		url = airbus.mes.shell.ModelManager.replaceURI(url, "$site", airbus.mes.settings.ModelManager.site);
-//		return url;
-//	},
-	
-
+	setProperties : function() {
+		this.site = airbus.mes.settings.ModelManager.site;
+		this.workOrder = airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].wo_no;
+	},
 
 	
 };

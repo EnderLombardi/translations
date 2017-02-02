@@ -3,10 +3,14 @@ jQuery.sap.registerModulePath("airbus.mes.operationdetail", "../components/opera
 jQuery.sap.require("airbus.mes.operationdetail.Formatter");
 jQuery.sap.require("airbus.mes.operationdetail.ModelManager");
 
-// Instanciate component 
+// instantiate component 
 if (jQuery.sap.getObject("airbus.mes.jigtools.Component") === undefined) {
 	jQuery.sap.registerModulePath("airbus.mes.jigtools", "../components/jigtools");
-	sap.ui.getCore().createComponent({name : "airbus.mes.jigtools"});
+	sap.ui.getCore().createComponent({
+		name : "airbus.mes.jigtools", 
+		site : airbus.mes.settings.ModelManager.site,
+	    workOrder : airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].wo_no
+});
 }
 
 

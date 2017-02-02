@@ -6,9 +6,19 @@ jQuery.sap.declare("airbus.mes.jigtools.Component");
 
 sap.ui.core.UIComponent.extend("airbus.mes.jigtools.Component", {
 	metadata : {
-		properties : { },
+		properties : { 
+			site : undefined,
+			workOrder : undefined,
+		},
 	}
 });
+
+
+airbus.mes.jigtools.Component.prototype.init = function () {
+    // call the init function of the parent
+	sap.ui.core.UIComponent.prototype.init.apply(this, arguments);
+};
+
 
 airbus.mes.jigtools.Component.prototype.createContent = function() {
 
@@ -19,7 +29,7 @@ airbus.mes.jigtools.Component.prototype.createContent = function() {
 	if (airbus.mes.jigtools.oView === undefined) {
 		
         // Initialize ModelManager and load needed file
-//        airbus.mes.jigtools.util.ModelManager.init(sap.ui.getCore());
+        airbus.mes.jigtools.util.ModelManager.init(sap.ui.getCore());
         
 		// View on XML
 		this.oView = sap.ui.view({
