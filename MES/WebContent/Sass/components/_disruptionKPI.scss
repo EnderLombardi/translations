@@ -14,28 +14,27 @@
         background: #0F2D65 !important;
         height: 57px !important;
         line-height: 3rem!important;
+        
+        span.sapMText{
+			font-size: 12px;
+		    color: #F5F5F5;
+		}
     }
 }
 
 .disruptionKPI .headerText > span {
-    color: #74d2e7;
+    color: $twilight-blue;
     text-shadow: none;
     padding: 0px 30px;
-}
-
-.disruptionKPI .Subheader{
-    background-color: $duck-egg-blue !important;    
-    .sapMBtnIconLeft,
-    .sapMBtnContent{
-        color: #0D5D76 !important;
-    }   
-        
 }
 
 
 // CSS for filter boxes in header bar
 #disruptionKPIView--lineComboBox{
 	border-left: solid 1px $twilight-blue !important;
+    @extend %headerFilterBoxes;
+}
+#disruptionKPIView--timeUnit{
     @extend %headerFilterBoxes;
 }
 #disruptionKPIView--stationComboBox.sapMMultiComboBox{
@@ -62,7 +61,7 @@
 		}
 		    
 	    input.sapMComboBoxTextFieldInner{
-			font-size: 16px;
+			font-size: 12px;
 		    color: #F5F5F5;
 	    	border: 0px !important;
 	    }
@@ -88,4 +87,14 @@
 		    border: 0px;
 	    }
 	}
+}
+
+// CSS for filter boxes in subheader
+.disruptionKPI .Subheader{
+    background-color: $duck-egg-blue !important;    
+    .sapMBtnIconLeft,
+    .sapMBtnContent{
+        color: #0D5D76 !important;
+    }   
+        
 }

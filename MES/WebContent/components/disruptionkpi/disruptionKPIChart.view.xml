@@ -12,22 +12,22 @@
 		<Toolbar class="pageHeader">
 			<Title text="{i18nModel>disruptionKPITitle}" id="headerText" class="headerText" />
 			
-			<Select id="lineComboBox" class="sapUiTinyMarginBeginEnd" forceSelection="falce"
-				placeholder="{i18nModel>selectLine}" items="{ path:'plantModel>/Rowsets/Rowset/0/Row' }"
-				selectedKey="" change="filterByLine" >
+			<Select id="lineComboBox" class="sapUiTinyMarginBeginEnd" forceSelection="falce" items="{ path:'plantModel>/Rowsets/Rowset/0/Row' }"
+				selectedKey="" change="onChangeSelection" >
 				<core:Item key="{plantModel>line}" text="{plantModel>lineDescription}" />
 			</Select>
+			
 			<MultiComboBox id="stationComboBox" class="sapUiTinyMarginBeginEnd"
 				placeholder="{i18nModel>selectStation}" items="{ path:'plantModel>/Rowsets/Rowset/0/Row' }"
-				selectedKey="" selectionChange="filterByStation" >
+				selectedKey="" selectionFinish="onChangeSelection" >
 				<core:Item key="{plantModel>station}" text="{plantModel>stationDescription}" />
 			</MultiComboBox>
 
-			<ComboBox id="msnComboBox" class="sapUiMediumMarginEnd customComboBox"
-				placeholder="{i18nModel>selectMSN}" items="{ path:'plantModel>/Rowsets/Rowset/0/Row' }"
-				selectedKey="" selectionChange="filterByStation" >
-				<core:Item key="{plantModel>msn}" text="{plantModel>msn}" />
-			</ComboBox>
+			<Text text="{i18nModel>timeUnit}:" class="sapUiTinyMarginBegin" />
+			<Select id="timeUnit" forceSelection="true" selectedKey="Minutes" change="onChangeSelection" >
+				<core:Item key="Minutes" text="{i18nModel>Minutes}" />
+				<core:Item key="Hours" text="{i18nModel>Hours}" />
+			</Select>
 
 		</Toolbar>
 

@@ -144,17 +144,36 @@ sap.ui.controller("airbus.mes.disruptionkpi.disruptionKPIChart", {
 	}, 
 	
 	
-	filterByLine: function(oEvt){
-		var aFilters = [];
-		var sLine = this.getView().byId("lineComboBox").getSelectedKey();
+	changeSelection: function(oEvt){
 		
-		if(sLine != "All")
-			aFilters.push(new sap.ui.model.Filter("line", sap.ui.model.FilterOperator.EQ, sLine));
-		
-		this.getView().byId("stationComboBox").getBinding("items").filter(aFilters);
-		this.getView().byId("stationComboBox").removeAllSelectedItems();
+		var id = oEvt.getSource().getId().split("--")[1];
+
+ 	   	switch(id){
+ 	   
+	 	   	case "lineComboBox":
+				var sLine = this.getView().byId("lineComboBox").getSelectedKey();
+				
+				airbus.mes.disruptionkpi.ModelManager.oFilters.line = sLine;
+
+				var aFilters = [];
+				if(sLine != "All")
+					aFilters.push(new sap.ui.model.Filter("line", sap.ui.model.FilterOperator.EQ, sLine));
+
+				this.getView().byId("stationComboBox").removeAllSelectedItems();
+				this.getView().byId("stationComboBox").getBinding("items").filter(aFilters);
+				
+				break;
+				
+	 	   	case "stationComboBox":
+	 	   		airbus.mes.disruptionkpi.ModelManager.oFilters.station = sap.ui.getCore().byId("disruptionKPIView--stationComboBox").getSelectedKeys();
+	 	   		break;
+	 	   	
+	 	   	case "timeUnit":
+	 	   		airbus.mes.disruptionkpi.ModelManager.oFilters.timeUnit = sap.ui.getCore().byId("disruptionKPIView--timeUnit").getSelectedKey();
+	 	   		break;
+	 	   		break;
+ 	   	}
 	},
-	
 	
 	resize: function(){
 		 if(window.innerWidth <= 1022){

@@ -4,8 +4,9 @@ airbus.mes.disruptionkpi.ModelManager = {
 	urlModel : undefined,
 	
 	oFilters:{
-		line: "",
-		station: ""
+		line: airbus.mes.settings.ModelManager.line,
+		station: airbus.mes.settings.ModelManager.station,
+		timeUnit: "Minutes"
 	},
 	
 	//sStaion: "",
@@ -22,20 +23,14 @@ airbus.mes.disruptionkpi.ModelManager = {
 	setPreSelectionCriteria: function(){
 		
 		// Line
-		if(this.oFilters.line == ""){
-			this.oFilters.line = airbus.mes.settings.ModelManager.line;
-			sap.ui.getCore().byId("disruptionKPIView--lineComboBox").setSelectedKey(this.oFilters.line);
-		}else{
-			sap.ui.getCore().byId("disruptionKPIView--lineComboBox").setSelectedKey(this.oFilters.line);
-		}
+		sap.ui.getCore().byId("disruptionKPIView--lineComboBox").setSelectedKey(this.oFilters.line);
 		
 		// Station
-		if(this.oFilters.station == ""){
-			sap.ui.getCore().byId("disruptionKPIView--stationComboBox").removeAllSelectedItems()
-			sap.ui.getCore().byId("disruptionKPIView--stationComboBox").addSelectedKeys(airbus.mes.settings.ModelManager.station);
-		}else{
-			sap.ui.getCore().byId("disruptionKPIView--stationComboBox").addSelectedKeys(this.oFilters.station);
-		}
+		sap.ui.getCore().byId("disruptionKPIView--stationComboBox").removeAllSelectedItems()
+		sap.ui.getCore().byId("disruptionKPIView--stationComboBox").addSelectedKeys(this.oFilters.station);
+
+		// Time Unite
+		sap.ui.getCore().byId("disruptionKPIView--timeUnit").setSelectedKey(this.oFilters.timeUnit);
 	},
 	
 	

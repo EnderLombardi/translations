@@ -25,8 +25,7 @@ time, mark, audio, video {
   font: inherit;
   vertical-align: baseline; }
 
-#disruptionKPIView--lineComboBox {
-  font-size: 16px;
+#disruptionKPIView--lineComboBox, #disruptionKPIView--timeUnit {
   height: 3rem;
   margin: 0;
   line-height: 3rem;
@@ -34,7 +33,7 @@ time, mark, audio, video {
   border-right: solid 1px #74d2e7 !important;
   background: #0f2d65 !important;
   border: 0; }
-  #disruptionKPIView--lineComboBox .sapMSltLabel, #disruptionKPIView--lineComboBox .sapMSltArrow {
+  #disruptionKPIView--lineComboBox .sapMSltLabel, #disruptionKPIView--timeUnit .sapMSltLabel, #disruptionKPIView--lineComboBox .sapMSltArrow, #disruptionKPIView--timeUnit .sapMSltArrow {
     top: 0;
     bottom: 0;
     line-height: 3rem;
@@ -420,7 +419,7 @@ SETTINGS
   padding: 0 1rem; }
 
 /************************************
-D├®filement text tooltip
+D├⌐filement text tooltip
 ************************************/
 @-webkit-keyframes marqueelike {
   0%, 100% {
@@ -7135,17 +7134,14 @@ td {
   background: #0F2D65 !important;
   height: 57px !important;
   line-height: 3rem !important; }
+  .disruptionKPI .pageHeader span.sapMText {
+    font-size: 12px;
+    color: #F5F5F5; }
 
 .disruptionKPI .headerText > span {
   color: #74d2e7;
   text-shadow: none;
   padding: 0px 30px; }
-
-.disruptionKPI .Subheader {
-  background-color: #d5f1f8 !important; }
-  .disruptionKPI .Subheader .sapMBtnIconLeft,
-  .disruptionKPI .Subheader .sapMBtnContent {
-    color: #0D5D76 !important; }
 
 #disruptionKPIView--lineComboBox {
   border-left: solid 1px #74d2e7 !important; }
@@ -7168,7 +7164,7 @@ td {
       #disruptionKPIView--stationComboBox.sapMMultiComboBox .sapMMultiComboBoxBorder .sapMTokenizer .sapMToken .sapMTokenIcon {
         cursor: pointer; }
     #disruptionKPIView--stationComboBox.sapMMultiComboBox .sapMMultiComboBoxBorder input.sapMComboBoxTextFieldInner {
-      font-size: 16px;
+      font-size: 12px;
       color: #F5F5F5;
       border: 0px !important; }
     #disruptionKPIView--stationComboBox.sapMMultiComboBox .sapMMultiComboBoxBorder input.sapMComboBoxTextFieldInner::-webkit-input-placeholder {
@@ -7190,6 +7186,12 @@ td {
       background: #0f2d65;
       color: #F5F5F5;
       border: 0px; }
+
+.disruptionKPI .Subheader {
+  background-color: #d5f1f8 !important; }
+  .disruptionKPI .Subheader .sapMBtnIconLeft,
+  .disruptionKPI .Subheader .sapMBtnContent {
+    color: #0D5D76 !important; }
 
 /*************
 GENERALE RULES

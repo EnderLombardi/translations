@@ -519,6 +519,7 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
 
        resolutionGroupSettings : function() {
 
+           this.getView().byId("selectFivemCategory").setEnabled(false);
            this.getView().byId("selectCategory").setEnabled(false);
            this.getView().byId("selectreason").setEnabled(false);
           // this.getView().byId("selectRootCause").setEnabled(true);	//-V1.5
@@ -538,6 +539,7 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
 
        originatorGroupSettings : function() {
 
+           this.getView().byId("selectFivemCategory").setEnabled(false);
            this.getView().byId("selectCategory").setEnabled(false);
            this.getView().byId("selectreason").setEnabled(true);
           // this.getView().byId("selectRootCause").setEnabled(true);	//-V1.5
@@ -557,6 +559,7 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
 
        createDisruptionSettings : function() {
 
+           this.getView().byId("selectFivemCategory").setEnabled(true);
     	   this.getView().byId("selectCategory").setEnabled(true);
            this.getView().byId("selectreason").setEnabled(false);
           // this.getView().byId("selectRootCause").setEnabled(false);	//-V1.5
