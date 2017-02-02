@@ -1,9 +1,6 @@
 "use strict";
 jQuery.sap.declare("airbus.mes.operationdetail.ModelManager")
 
-jQuery.sap.registerModulePath("airbus.mes.jigtools", "../components/jigtools");
-jQuery.sap.require("airbus.mes.jigtools.util.ModelManager");
-
 airbus.mes.operationdetail.ModelManager = {
 
     urlModel: undefined,
@@ -25,9 +22,6 @@ airbus.mes.operationdetail.ModelManager = {
 		this.urlModel = airbus.mes.shell.ModelManager.urlHandler("airbus.mes.operationdetail.config.url_config");
 
         airbus.mes.shell.ModelManager.createJsonModel(core, ["reasonCodeModel"]);
-
-//      Retrieve data for jigsTool
-        airbus.mes.jigtools.util.ModelManager.init(core);
     },
 
     /***************************************************************************

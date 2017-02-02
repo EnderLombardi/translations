@@ -3,6 +3,12 @@ jQuery.sap.registerModulePath("airbus.mes.operationdetail", "../components/opera
 jQuery.sap.require("airbus.mes.operationdetail.Formatter");
 jQuery.sap.require("airbus.mes.operationdetail.ModelManager");
 
+// Instanciate component 
+if (jQuery.sap.getObject("airbus.mes.jigtools.Component") === undefined) {
+	jQuery.sap.registerModulePath("airbus.mes.jigtools", "../components/jigtools");
+	sap.ui.getCore().createComponent({name : "airbus.mes.jigtools"});
+}
+
 
 jQuery.sap.declare("airbus.mes.operationdetail.Component");
 

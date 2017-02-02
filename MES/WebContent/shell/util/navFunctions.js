@@ -191,12 +191,17 @@ airbus.mes.shell.util.navFunctions = {
     },
 
     jigToolsDetail: function (container) {
+    	
+//    	Retrieve current workOrder Display
+    	var sCurrentWorkOrder = sap.ui.getCore().getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].wo_no;
+    	
+    	
         if (airbus.mes.jigtools === undefined || airbus.mes.jigtools.oView === undefined) {
 
             jQuery.sap.registerModulePath("airbus.mes.jigtools", "../components/jigtools");
             sap.ui.getCore().createComponent({ name: "airbus.mes.jigtools" });
-        } else if (airbus.mes.jigtools.oView.oController && airbus.mes.jigtools.util.ModelManager) {
-            //load data in the model at the init of the component
+        } else if (airbus.mes.jigtools.oView.oController.workOrder !== sCurrentWorkOrder) {
+//          If WorkdOrder changed, need to reload data in the model
             airbus.mes.jigtools.util.ModelManager.loadjigToolsWorkOrderDetail();
         }
         
