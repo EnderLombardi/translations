@@ -565,14 +565,10 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	 * BR:SD-PPC-LT-230
 	 * Takt actions – load next MSN
 	 */
-<<<<<<< Upstream, based on origin/MESv1.5
 	loadNextMsn : function(oEvt){		
 		
 		oEvt.getSource().getParent().getParent()._oOpenBy.setSrc("sap-icon://media-pause");
 		
-=======
-	loadNextMsn : function(oEvt){
->>>>>>> b886fd6 [linetracker] station data service integration in progress
 		this.actionButtonStatus(false,true,false,false,true);
 //		sap.ui.getCore().byId("loadNextMSN").setEnabled(false);
 //		sap.ui.getCore().byId("startAssembly").setEnabled(true);
@@ -596,10 +592,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	 * Takt actions – end of assembly
 	 */
 	endAssembly : function(oEvt){
-<<<<<<< Upstream, based on origin/MESv1.5
 		oEvt.getSource().getParent().getParent()._oOpenBy.setSrc("sap-icon://accept");
-=======
->>>>>>> b886fd6 [linetracker] station data service integration in progress
 		this.actionButtonStatus(true,false,false,true,true);
 	},
 	
@@ -608,12 +601,9 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	 * Takt actions – empty station
 	 */
 	emptyStation : function(oEvt){
-<<<<<<< Upstream, based on origin/MESv1.5
 		
 		oEvt.getSource().getParent().getParent()._oOpenBy.setSrc("sap-icon://border");
 		
-=======
->>>>>>> b886fd6 [linetracker] station data service integration in progress
 		this.actionButtonStatus(true,false,false,false,true);
 	},
 	
@@ -621,7 +611,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	 * BR: SD-PPC-LT-250
 	 * Takt actions – undo 
 	 */
-	undo : function(oEvt){
+	undo : function(){
 		this.actionButtonStatus(true,true,true,true,true);
 	},
 	
