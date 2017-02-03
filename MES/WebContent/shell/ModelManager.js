@@ -114,7 +114,7 @@ airbus.mes.shell.ModelManager = {
 	    getRolesForSite : function() {
 	        var rep = jQuery.ajax({
 	            async : false,
-	            url : this.urlModel.getProperty('urlgetrolesfromsite'),
+	            url : this.urlModel.getProperty('urlgetrolesfromsite'), 
 	            type : 'POST',///
 	            /////
 	        });   
