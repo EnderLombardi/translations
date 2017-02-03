@@ -112,12 +112,12 @@ Linetracker View (Main Table)
         background-color: #EAFBFD !important;
     }
 
-    .classLineTrackerTable table tr td:nth-child(3) {
+    .classLineTrackerTable table tr td:nth-child(2) {
         background-image: url("grid.svg");
         vertical-align: middle !important;
     }
 
-    .classLineTrackerTable table tr th:nth-child(3) {
+    .classLineTrackerTable table tr th:nth-child(2) {
         background-image: url("grid.svg");
         vertical-align: middle !important;
     }
@@ -356,11 +356,8 @@ Custom Progress Bar
 }
 
 #taktActionPopover{ #taktActionPopover-cont {
-  background-color: #FFFFFF; }}
-  
-  .sapUiTableRSel .sapUiTableColHdrCnt>.sapUiTableColRowHdr {
-    display: none;
-}
+  background-color: #FFFFFF; }} 
+
   
 /*********************************
 Physical Station

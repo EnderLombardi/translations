@@ -56,7 +56,7 @@ airbus.mes.linetracker.util.Formatter = {
 	// TODO $TF, $Application_ID and $msn values to be changed
 	loadFlightLogo : function(msn) {
 		var that =this;
-		msn= msn.split("_")[0];//to remove the hand from msn
+		//msn= msn.split("_")[0];//to remove the hand from msn
 		//var oViewModel = sap.ui.getCore().getModel("airlineLogoModel");
 		var url = airbus.mes.linetracker.util.ModelManager.urlModel.getProperty("urlAirline_logo");
 		url = url.replace("$TF", "V");

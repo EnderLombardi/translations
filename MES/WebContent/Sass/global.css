@@ -3495,10 +3495,10 @@ Linetracker View (Main Table)
   text-align: center !important; }
 #idLinetracker1 .classLineTrackerTable table tr th:nth-child(1), #idLinetracker1 td:nth-child(2), #idLinetracker1 th:nth-child(2) {
   background-color: #EAFBFD !important; }
-#idLinetracker1 .classLineTrackerTable table tr td:nth-child(3) {
+#idLinetracker1 .classLineTrackerTable table tr td:nth-child(2) {
   background-image: url("grid.svg");
   vertical-align: middle !important; }
-#idLinetracker1 .classLineTrackerTable table tr th:nth-child(3) {
+#idLinetracker1 .classLineTrackerTable table tr th:nth-child(2) {
   background-image: url("grid.svg");
   vertical-align: middle !important; }
 #idLinetracker1 .classLineTrackerTable table tr th:nth-child(2) .sapMFlexItem {
@@ -3653,9 +3653,6 @@ Custom Progress Bar
 
 #taktActionPopover #taktActionPopover-cont {
   background-color: #FFFFFF; }
-
-.sapUiTableRSel .sapUiTableColHdrCnt > .sapUiTableColRowHdr {
-  display: none; }
 
 /*********************************
 Physical Station
