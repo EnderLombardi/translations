@@ -17,7 +17,7 @@ sap.ui
          */
         onInit: function () {
             this.nav = this.getView().byId("operDetailNavContainer");
-            
+
             airbus.mes.shell.util.navFunctions.operationstatus(this.nav, false);
         },
 
@@ -145,7 +145,7 @@ sap.ui
                 sap.ui.getCore().byId("operationDetailsView--idReschedule").setVisible(true);
                 sap.ui.getCore().byId("operationDetailsView--idtouchngo").setVisible(true);
                 sap.ui.getCore().byId("operationDetailsView--idJignTools").setVisible(true);
-                sap.ui.getCore().byId("operationDetailsView--idComponents").setVisible(false);
+                sap.ui.getCore().byId("operationDetailsView--idComponents").setVisible(true);
                 sap.ui.getCore().byId("operationDetailsView--idACPnGLinks").setVisible(true);
                 sap.ui.getCore().byId("operationDetailsView--idNCDisplay").setVisible(true);
             }
@@ -163,9 +163,9 @@ sap.ui
                     break;
 
                 case "checkList":
-                	airbus.mes.shell.util.navFunctions.qdc(this.nav);
+                    airbus.mes.shell.util.navFunctions.qdc(this.nav);
                     break;
-                    
+
                 case "disruption":
                     airbus.mes.shell.util.navFunctions.disruptionsDetail(this.nav,
                         sap.ui.getCore().byId("operationDetailPopup--reportDisruption"), // Report Disruption Button
