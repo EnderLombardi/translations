@@ -77,8 +77,8 @@
 							<HBox alignItems="Center" justifyContent="Center">
 
 							<core:Icon id="lineTrackerActionIcon" press="openTaktActionPopover"
-											src="{path:'stationDataModel>actionIcon', formatter : 'airbus.mes.linetracker.util.Formatter.getActionIcon' }" />
-<!-- 											src="{ parts :[{path:'stationDataModel>msn'},{path:'stationDataModel>date'}], formatter : 'airbus.mes.linetracker.util.Formatter.getActionIcon' }"  -->
+									  src="{ parts :[{path:'stationDataModel>msn'},{path:'stationDataModel>completion_date'},{path:'stationDataModel>actual_start_date'}], formatter : 'airbus.mes.linetracker.util.Formatter.getActionIcon' }"/>											
+<!-- 										src="{path:'stationDataModel>actionIcon', formatter : 'airbus.mes.linetracker.util.Formatter.getActionIcon' }"   -->
 								<control:PhysicalStationBox id="linetrackerEditStation"
 									color="#bcf6ff" actionIconColor="black"
 									station="{stationDataModel>stationName}" msn="{stationDataModel>msn}"
