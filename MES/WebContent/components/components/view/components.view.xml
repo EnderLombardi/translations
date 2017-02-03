@@ -31,7 +31,6 @@
         </OverflowToolbar>
         <table:Table id="ComponentsList" class="ComponentsList"
                      rows="{componentsWorkOrderDetail>/Rowsets/Rowset/0/Row/}"
-                     selectionMode="None"
                      editable="true"
                      width="100%">
         <table:columns>
@@ -104,13 +103,37 @@
             <table:Column id="editableRowCom"  width="11rem">
                 <Label text="{i18nComponentsModel>committed}" />
                 <table:template>
-                    <Input class="editRow" editable="true" value="{componentsWorkOrderDetail>committed}" />
+                   <HBox>
+                    <Button text="toto" />
+                    <StepInput
+                               value="{value}"
+                               min="{min}"
+                               max="{max}"
+                               width="{width}"
+                               step="{step}"
+                               valueState="{valueState}"
+                               enabled="{enabled}"
+                               editable="{editable}"
+                               change="onChange"/>
+                   </HBox>
                 </table:template>
             </table:Column>
             <table:Column id="editableRowFit" width="11rem">
                 <Label text="{i18nComponentsModel>fitted}" />
                 <table:template>
-                    <Input class="editRow" editable="true" value="{componentsWorkOrderDetail>fitted}"  />
+                    <HBox>
+                        <Button text="toto" />
+                        <StepInput
+                                   value="{value}"
+                                   min="{min}"
+                                   max="{max}"
+                                   width="{width}"
+                                   step="{step}"
+                                   valueState="{valueState}"
+                                   enabled="{enabled}"
+                                   editable="{editable}"
+                                   change="onChange"/>
+                    </HBox>
                 </table:template>
             </table:Column>
         </table:columns>

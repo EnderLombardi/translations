@@ -9,6 +9,12 @@ sap.ui.controller("airbus.mes.components.controller.components", {
     onAfterRendering: function () {
         this.oFilterSearch = undefined;
         this.oFilterFilter = undefined;
+        var oTable = sap.ui.getCore().byId("componentsView--ComponentsList");
+        oTable.setSelectionMode("None");
+        oTable.attachCellClick(function(e){
+            e.getSource().setEditable(true);
+            console.log(e.getSource());
+        })
 //        Reset value
 //        this.getView().byId("idSearchComponent").setValue();
     },
