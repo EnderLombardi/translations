@@ -25,7 +25,6 @@ airbus.mes.linetracker.util.ModelManager = {
 		airbus.mes.shell.ModelManager.createJsonModel(core, aModel);
 		// Airline Logo Model
 //		sap.ui.getCore().getModel("airlineLogoModel").attachRequestCompleted(airbus.mes.linetracker.util.ModelManager.loadFlightLogo);
-
 		//airbus.mes.linetracker.util.ModelManager.site = airbus.mes.settings.ModelManager.site;
 		
 	    // Handle URL Model
