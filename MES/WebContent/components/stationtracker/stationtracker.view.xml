@@ -20,8 +20,8 @@
 									<Toolbar id="kpiHeaderToolbar" class="classKpiheaderToolbar">
 										<Title text="" 	id="StationtrackerTitle" class="StationtrackerTitle" />
 										<Button id="dateButton" icon="sap-icon://appointment" type="Transparent" tooltip="{StationTrackerI18n>Calendar}"
-											press="datePick" class="classDateButton" />
-										<Label id="dateLabel" text="" class="classDateLabel" />
+											press="datePick" class="classDateButton" text="03 Feb 2017"/>
+<!-- 										<Label id="dateLabel" text="" class="classDateLabel" /> -->
 										<Select id="selectShift"
 											class="sapUiTinyMarginBeginEnd" change="changeShift"
 											items="{ path : 'stationTrackerShift>/' }" enabled="false">

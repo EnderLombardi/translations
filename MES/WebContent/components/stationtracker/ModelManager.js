@@ -729,7 +729,7 @@ airbus.mes.stationtracker.ModelManager = {
             pattern : "dd MMM yyyy",
             calendarType : sap.ui.core.CalendarType.Gregorian
         });
-        var oText = airbus.mes.stationtracker.oView.byId("dateLabel");
+        var oText = airbus.mes.stationtracker.oView.byId("dateButton");
         oText.setText(oFormatddMMyyy.format(oDate));
 
         this.loadKPIshiftStaffing();

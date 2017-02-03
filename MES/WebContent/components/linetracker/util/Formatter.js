@@ -25,7 +25,7 @@ airbus.mes.linetracker.util.Formatter = {
      * @param msn
      * @returns image url
      */
-    getAirlineImage:function(msn){
+    /*getAirlineImage:function(msn){
 //	   var urlFlightImage = airbus.mes.linetracker.util.ModelManager.urlModel.getProperty("urlAirline_logo");
 //    	var urlFlightImage = sap.ui.getCore().getModel("airlineLogoModel").oData["Rowsets"].Rowset[0].Row[0].airline_logo_url;
     	var urlFlightImage = airbus.mes.linetracker.util.Formatter.loadFlightLogo(msn);
@@ -37,7 +37,7 @@ airbus.mes.linetracker.util.Formatter = {
 			//sap.ui.getCore().byId(imageId).onerror = airbus.mes.linetracker.util.Formatter.getErrorFlightImage;
 //    	console.log(urlFlightImage);
 		return urlFlightImage;    	
-    },
+    },*/
     
     /**
      * BR: SD-PPC-LT-110
@@ -46,7 +46,7 @@ airbus.mes.linetracker.util.Formatter = {
      * @return ImageUrl
      */
     getErrorFlightImage: function(){
-		return "../images_locale/lufthansa-logo.jpg";
+		return "../images_locale/Airbus.jpg";
 		
 	},
 	/**
@@ -72,8 +72,22 @@ airbus.mes.linetracker.util.Formatter = {
 				if (typeof data == "string") {
 					data = JSON.parse(data);
 				}
-				that.setSrc(data.Rowsets.Rowset[0].Row[0].airline_logo_url);
-				//return data.Rowsets.Rowset[0].Row[0].airline_logo_url;
+				if(data.Rowsets.Rowset[0].Row[0].airline_logo_url && data.Rowsets.Rowset[0].Row[0].airline_logo_url.length!=0){
+					var url = data.Rowsets.Rowset[0].Row[0].airline_logo_url;
+					jQuery.ajax({async : true,
+						type : 'get',
+						url : data.Rowsets.Rowset[0].Row[0].airline_logo_url,
+						success : function(data) {
+							that.setSrc(url);
+						},
+						error : function(){
+							that.setSrc(airbus.mes.linetracker.util.Formatter.getErrorFlightImage())
+						}	
+						});
+					that.setSrc(data.Rowsets.Rowset[0].Row[0].airline_logo_url);
+				}else{
+					that.setSrc(airbus.mes.linetracker.util.Formatter.getErrorFlightImage());
+				}//return data.Rowsets.Rowset[0].Row[0].airline_logo_url;
 			},
 
 			error : function(error, jQXHR) {

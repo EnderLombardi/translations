@@ -1081,14 +1081,14 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 
     updateDateLabel: function (oCalendar) {
         var oFormatddMMyyy = sap.ui.core.format.DateFormat.getInstance({ pattern: "dd MMM yyyy", calendarType: sap.ui.core.CalendarType.Gregorian });
-        var oText = airbus.mes.stationtracker.oView.byId("dateLabel");
+        var oText = airbus.mes.stationtracker.oView.byId("dateButton");
         var aSelectedDates = oCalendar.getSelectedDates();
         var oDate;
         if (aSelectedDates.length > 0) {
             oDate = aSelectedDates[0].getStartDate();
             oText.setText(oFormatddMMyyy.format(oDate));
         } else {
-            oText.setValue("No Date Selected");
+            oText.setText("No Date Selected");
         }
     },
     onCloseDialog: function (oEvent) {
