@@ -137,12 +137,10 @@ html
             }
         }
     }
-    /*#sap-ui-static{
-        .sapMPopover:not(.informationColor):not(#stationTrackerView--toolbarstationtracker-popover){
-            background-color: #2c2a29;
-            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
-        }
-    }*/
+    #settingPopOver{
+        background-color: #2c2a29;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+    }
     .sapMDialog{
         &:not(.theme-disabled){
             background: $white-two;

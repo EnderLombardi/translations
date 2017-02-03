@@ -1,6 +1,6 @@
 <core:FragmentDefinition xmlns="sap.m"
 	xmlns:core="sap.ui.core">
-	<Popover showHeader="false" placement="Bottom" showArrow="false">
+	<Popover id="settingPopOver" showHeader="false" placement="Bottom" showArrow="false">
 		<VBox justifyContent="start">
 			<items>
 				<Button id="popupSettingsButton" width="100%" type="Transparent" text="{ShellI18n>ChangeStation}"
