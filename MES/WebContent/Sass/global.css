@@ -1785,7 +1785,7 @@ reschedule
 
 #reschedulePage--reschedulefield.sapUiMediumMarginTop {
   width: 95% !important;
-  margin: 50px auto !important;
+  margin: 30px auto !important;
   padding: 0; }
 
 /********************
@@ -6131,7 +6131,7 @@ Physical Station Popover
 
 #jigtoolsView--jigToolcheck.jigToolListcheck {
   width: 50%;
-  margin: 50px auto 10px auto;
+  margin: 20px auto 10px auto;
   padding: 0;
   text-align: center; }
 
@@ -6561,7 +6561,7 @@ DATE PICKER
 
 #ncdisplayView--ncDisplayCheck.ncDisplayListcheck {
   width: 50%;
-  margin: 50px auto 10px auto;
+  margin: 20px auto 10px auto;
   padding: 0;
   text-align: center; }
 #ncdisplayView--ncDisplayCheck.ncDisplayListcheck .sapMRbGCol {
@@ -6653,16 +6653,22 @@ DATE PICKER
 
 #componentsView--ComponentsCheck.ComponentsCheck {
   width: 50%;
-  margin: 50px auto 10px auto;
+  margin: 20px auto 10px auto;
   padding: 0;
   text-align: center; }
 
 #componentsView--otbSubheader {
-  width: 25%;
-  margin: 10px auto 20px auto;
+  width: 40%;
+  margin: 10px auto 10px auto;
   padding: 0;
   text-align: center;
   border: none; }
+#componentsView--otbSubheader > button:first-child {
+  width: 20% !important; }
+#componentsView--otbSubheader > div {
+  width: 75% !important;
+  max-width: none !important;
+  min-width: 0 !important; }
 
 #componentsView--ComponentsCheck.jigToolListlabel {
   font-weight: bold;
