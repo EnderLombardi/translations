@@ -67,32 +67,33 @@ airbus.mes.displayOpeAttachments.util.ModelManager = {
 		this.treeTableArray = [];//we reset the tab to handle onSelectLevel case (change between operation and wo mode)
 		var treeTableArray = this.treeTableArray;
 
-		var previousPosition = 0;
+		var position = 0;
 		for (i = 0; i < oViewModelRow.length; i++) {
-			treeTableArray.push(this.addObjDocType(i, previousPosition, oViewModelRow));
-			previousPosition++;
+			treeTableArray.push(this.addObjDocType(i, position, oViewModelRow));
+			position++;
 			for (var j = 0; j < oViewModelRow[i].documents.length; j++) {
-				treeTableArray.push(this.addObjDoc(previousPosition));
-				previousPosition++;
+				treeTableArray.push(this.addObjDoc(position, oViewModelRow[i].documents[j].URL));
+				position++;
 			}
 		}
 	},
 
 	//create an object doc type for createTreeTableArray
-	addObjDocType: function (i, previousPosition, oViewModelRow) {
+	addObjDocType: function (i, position, oViewModelRow) {
 		var objDocType = {};
 		objDocType.isDocType = true;
 		objDocType.isOpened = true;//set to true
-		objDocType.position = previousPosition;
+		objDocType.position = position;
 		objDocType.nbOfDocs = parseInt(oViewModelRow[i].dokarOrDoknr.split(" ")[2], 10);
 		return objDocType;
 	},
 
 	//create an object document for createTreeTableArray
-	addObjDoc: function (previousPosition) {
+	addObjDoc: function (position, url) {
 		var document = {};
 		document.isDocType = false;
-		document.position = previousPosition;
+		document.position = position;
+		document.url = url;
 		return document;
 	},
 

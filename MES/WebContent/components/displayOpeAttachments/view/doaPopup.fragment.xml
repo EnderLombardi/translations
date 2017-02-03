@@ -2,8 +2,10 @@
 	<Dialog id="doaPopup" stretchOnPhone="false" showHeader="true" title="{i18nDisplayOpeAttachmentsModel>Documents}">
 		<content>
 			<HBox>
-				<Button id="downloadDocument" text="{i18nDisplayOpeAttachmentsModel>Download}" icon="sap-icon://download"/>
-				<Button id="openDocument" text="{i18nDisplayOpeAttachmentsModel>Open}" icon="sap-icon://vds-file"/>
+				<Button id="downloadDocument" text="{i18nDisplayOpeAttachmentsModel>Download}" icon="sap-icon://download" 
+						press="airbus.mes.displayOpeAttachments.oView.oController.downloadDocument"/>
+				<Button id="openDocument" text="{i18nDisplayOpeAttachmentsModel>Open}" icon="sap-icon://vds-file" 
+						press="airbus.mes.displayOpeAttachments.oView.oController.openDocument"/>
 			</HBox>
 		</content>
 		<buttons>

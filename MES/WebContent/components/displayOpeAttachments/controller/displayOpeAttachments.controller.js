@@ -3,6 +3,7 @@
 sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachments", {
 
 	firstVisibleRow: 0, //first row displayed (it changes on scroll)
+	popUrl: null,
 
 	onAfterRendering: function () {
 		this.init();
@@ -307,7 +308,10 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 					this.selectTreeTableRow(positionMax).addClass("document");
 
 					if (!events.click) {
-						this.selectTreeTableRow(positionMax).on("click", this.openDocumentPopup);//we attach click event
+						this.selectTreeTableRow(positionMax).on("click", { url: treeTableArray[j].url }, this.openDocumentPopup);//we attach click event
+					} else {
+						this.selectTreeTableRow(positionMax).off("click", this.openDocumentPopup);//we remove click event
+						this.selectTreeTableRow(positionMax).on("click", { url: treeTableArray[j].url }, this.openDocumentPopup);//we attach click event
 					}
 				} else if (treeTableArray[j].position !== null && treeTableArray[j].isDocType) {
 					this.selectTreeTableRow(positionMax).removeClass("document");
@@ -353,10 +357,12 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 	/////////////////////////////////
 
 	//open the choice popup
-	openDocumentPopup: function () {
+	openDocumentPopup: function (oEvent) {
 		if (!airbus.mes.displayOpeAttachments.doaPopup) {
 			airbus.mes.displayOpeAttachments.doaPopup = sap.ui.xmlfragment("airbus.mes.displayOpeAttachments.view.doaPopup", this);
 		}
+
+		airbus.mes.displayOpeAttachments.oView.oController.popUrl = oEvent.handleObj.data.url;
 
 		airbus.mes.displayOpeAttachments.doaPopup.setModel(airbus.mes.displayOpeAttachments.oView.getModel("getOpeAttachments"), "getOpeAttachments");
 		airbus.mes.displayOpeAttachments.doaPopup.setModel(airbus.mes.displayOpeAttachments.oView.getModel("i18nDisplayOpeAttachmentsModel"), "i18nDisplayOpeAttachmentsModel");
@@ -366,7 +372,16 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 
 	//close the choice popup
 	closeDocumentPopup: function () {
+		this.popUrl = null;
 		airbus.mes.displayOpeAttachments.doaPopup.close();
+	},
+
+	downloadDocument: function () {
+		console.log(airbus.mes.displayOpeAttachments.oView.oController.popUrl);
+	},
+
+	openDocument: function () {
+		console.log(airbus.mes.displayOpeAttachments.oView.oController.popUrl);
 	},
 
 	/////////////////////////////////
