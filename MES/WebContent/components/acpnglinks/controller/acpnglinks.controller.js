@@ -64,22 +64,8 @@ sap.ui.controller("airbus.mes.acpnglinks.controller.acpnglinks", {
 		$("#"+listUlId).addClass('ui-sortable');
 		$("#"+listUlId).sortable({
 			connectWith : ".ui-sortable",
-//				start: function(event, ui) {
-//		            var start_pos = ui.item.index();
-//		            ui.item.data('start_pos', start_pos);
-//		        },
-//		        change: function(event, ui) {
-//		            var start_pos = ui.item.data('start_pos');
-//		            var index = ui.placeholder.index();
-//		            if (start_pos < index) {
-//		                $('#sortable li:nth-child(' + index + ')').addClass('highlights');
-//		            } else {
-//		                $('#sortable li:eq(' + (index + 1) + ')').addClass('highlights');
-//		            }
-//		        },
 		        update: function(oEvent, ui) {
 		        	sap.ui.getCore().byId("acpnglinksView--ACPnGTreeTable").fireColumnMove( { column : sap.ui.getCore().byId("acpnglinksView--ACPnGTreeTable").getColumns()[ui.item.index()], newPos : 3 } );
-//		            $('#sortable li').removeClass('highlights');
 		        }
 		}).disableSelection();
 		
@@ -108,7 +94,16 @@ sap.ui.controller("airbus.mes.acpnglinks.controller.acpnglinks", {
 
    },
    
-   updateColumn : function(a) {
-	   console.log(a); // TODO column management
+   updateColumn : function(oEvt) {
+	// TODO column management
+	   if ( oEvt.getParameters().column != undefined ) {
+		   console.log(oEvt.getParameters().column); 
+	   }
+	   
+	   if ( oEvt.getParameters().newPos != undefined ) {
+		   console.log(oEvt.getParameters().newPos); 
+	   }
+	   
+	   console.log(oEvt.getSource());
    }
 });
