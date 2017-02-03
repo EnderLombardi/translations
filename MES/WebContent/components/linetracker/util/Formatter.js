@@ -72,22 +72,26 @@ airbus.mes.linetracker.util.Formatter = {
 				if (typeof data == "string") {
 					data = JSON.parse(data);
 				}
-				if(data.Rowsets.Rowset[0].Row[0].airline_logo_url && data.Rowsets.Rowset[0].Row[0].airline_logo_url.length!=0){
-					var url = data.Rowsets.Rowset[0].Row[0].airline_logo_url;
-					jQuery.ajax({async : true,
-						type : 'get',
-						url : data.Rowsets.Rowset[0].Row[0].airline_logo_url,
-						success : function(data) {
-							that.setSrc(url);
-						},
-						error : function(){
-							that.setSrc(airbus.mes.linetracker.util.Formatter.getErrorFlightImage())
-						}	
-						});
-					that.setSrc(data.Rowsets.Rowset[0].Row[0].airline_logo_url);
-				}else{
+				try{
+					if(data.Rowsets.Rowset[0].Row[0].airline_logo_url && data.Rowsets.Rowset[0].Row[0].airline_logo_url.length!=0){
+						var url = data.Rowsets.Rowset[0].Row[0].airline_logo_url;
+						jQuery.ajax({async : true,
+							type : 'get',
+							url : data.Rowsets.Rowset[0].Row[0].airline_logo_url,
+							success : function(data) {
+								that.setSrc(url);
+							},
+							error : function(){
+								that.setSrc(airbus.mes.linetracker.util.Formatter.getErrorFlightImage())
+							}	
+							});
+						that.setSrc(data.Rowsets.Rowset[0].Row[0].airline_logo_url);
+					}else{
+						that.setSrc(airbus.mes.linetracker.util.Formatter.getErrorFlightImage());
+					}//return data.Rowsets.Rowset[0].Row[0].airline_logo_url;
+				}catch(oException){
 					that.setSrc(airbus.mes.linetracker.util.Formatter.getErrorFlightImage());
-				}//return data.Rowsets.Rowset[0].Row[0].airline_logo_url;
+				}
 			},
 
 			error : function(error, jQXHR) {

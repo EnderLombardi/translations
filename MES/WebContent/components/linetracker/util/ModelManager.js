@@ -436,13 +436,20 @@ airbus.mes.linetracker.util.ModelManager = {
 				if (typeof data == "string") {
 					data = JSON.parse(data);
 				}
-				console.log(data);
+				//if success update settings for user locally in user model.
+				airbus.mes.linetracker.util.ModelManager.updateLineInUserSettingsLocally();
 			},
 
 			error : function(error, jQXHR) {
 				jQuery.sap.log.info(error);
 			}
 		})
+	},
+	/**
+	 * to set user settings in local model so that user open this setting when he visits lien tracker next time
+	 */
+	updateLineInUserSettingsLocally : function(){
+		sap.ui.getCore().getModel("userSettingModel").setProperty("/Rowsets/Rowset/0/Row/0/customLineBO",airbus.mes.linetracker.util.ModelManager.customLineBO);
 	},
 	/**
 	 * @param station, msn
