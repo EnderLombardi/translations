@@ -786,7 +786,7 @@ sap.ui.controller(
                     renderLineTracker : function(){
                     	if (  nav.getCurrentPage().getId() == "idLinetracker1" ) {
                             //active busy
-                            airbus.mes.shell.busyManager.setBusy(airbus.mes.linetracker.oView, "linetracker");
+                            airbus.mes.shell.busyManager.setBusy(airbus.mes.linetracker.oView, "linetrackerTable");
                             airbus.mes.shell.oView.getController().setInformationVisibility(true);
                             // ** asynchrone call **//
                             //airbus.mes.shell.oView.oController.loadLineTrackerKPI();
