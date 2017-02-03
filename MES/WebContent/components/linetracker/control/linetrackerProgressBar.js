@@ -3,12 +3,12 @@ sap.ui.core.Control.extend("airbus.mes.linetracker.control.linetrackerProgressBa
 	metadata : {
 		properties : {
 			confirmed : {
-				type : "float",
+				type : "String",
 				defaultValue : "0"
 					
 			},
 			planned : {
-				type : "float",
+				type : "String",
 				defaultValue : "0"
 			}
 
@@ -17,16 +17,18 @@ sap.ui.core.Control.extend("airbus.mes.linetracker.control.linetrackerProgressBa
 	
 	renderer : function(oRm, oControl) {
 		
+		var gc = +oControl.getConfirmed();
+		var gp = +oControl.getPlanned();
 		oRm.write("<div ");
 		oRm.writeControlData(oControl);
 		oRm.addClass("progress");
 		oRm.writeClasses();
 		oRm.write(">");
-		if (oControl.getConfirmed() == 100) {
+		if (gc == 100) {
 			oRm.write("<div ");
 			oRm.addClass("progress-bar");
 			oRm.writeClasses();
-			oRm.addStyle("width", oControl.getConfirmed() - 0.4 + "%");
+			oRm.addStyle("width", gc - 0.4 + "%");
 			oRm.writeStyles();
 			oRm.write(">");
 
@@ -48,13 +50,13 @@ sap.ui.core.Control.extend("airbus.mes.linetracker.control.linetrackerProgressBa
 			oRm.write(">");
 			oRm.write("</div>");
 
-		}else if (oControl.getConfirmed() < oControl.getPlanned()){
+		}else if (gc < gp){
 			oRm.write("<div ");
 			oRm.addClass("progress-bar");
 
 			oRm.addClass("progress-bar-warning");
 			oRm.writeClasses();
-			oRm.addStyle("width", oControl.getConfirmed() + "%");
+			oRm.addStyle("width", gc + "%");
 			oRm.writeStyles();
 			oRm.write(">");
 			oRm.write("</div>");
@@ -62,8 +64,8 @@ sap.ui.core.Control.extend("airbus.mes.linetracker.control.linetrackerProgressBa
 			oRm.addClass("progress-bar");
 			oRm.addClass("progress-bar-grey");
 			oRm.writeClasses();
-			oRm.addStyle("width", oControl.getPlanned()
-					- oControl.getConfirmed() - 0.4 + "%");
+			oRm.addStyle("width", gp
+					- gc - 0.4 + "%");
 			oRm.writeStyles();
 			oRm.write(">");
 			oRm.write("</div>");
@@ -83,7 +85,7 @@ sap.ui.core.Control.extend("airbus.mes.linetracker.control.linetrackerProgressBa
 
 			oRm.addClass("progress-bar-success");
 			oRm.writeClasses();
-			oRm.addStyle("width", oControl.getPlanned() - 0.4 + "%");
+			oRm.addStyle("width", gp - 0.4 + "%");
 			oRm.writeStyles();
 			oRm.write(">");
 			oRm.write("</div>");
@@ -101,8 +103,8 @@ sap.ui.core.Control.extend("airbus.mes.linetracker.control.linetrackerProgressBa
 			oRm.addClass("progress-bar");
 			oRm.addClass("progress-bar-success");
 			oRm.writeClasses();
-			oRm.addStyle("width", oControl.getConfirmed()
-					- oControl.getPlanned() + "%");
+			oRm.addStyle("width", gc
+					- gp + "%");
 			oRm.writeStyles();
 			oRm.write(">");
 			oRm.write("</div>");

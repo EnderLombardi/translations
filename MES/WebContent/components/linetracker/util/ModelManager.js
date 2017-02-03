@@ -30,7 +30,7 @@ airbus.mes.linetracker.util.ModelManager = {
 	    // Handle URL Model
 		this.urlModel = airbus.mes.shell.ModelManager.urlHandler("airbus.mes.linetracker.config.url_config");
 		
-		core.getModel("stationDataModel").loadData(this.urlModel.getProperty("urlstationData"), null, false);
+		//core.getModel("stationDataModel").loadData(this.urlModel.getProperty("urlstationData"), null, false);
 
 		//this.loadStationDataModel();
 		//this.loadLineVariantModel();
@@ -78,6 +78,9 @@ airbus.mes.linetracker.util.ModelManager = {
 				if (typeof data == "string") {
 					data = JSON.parse(data);
 				}
+				if(!data.stationData[0]){
+					data.stationData = [data.stationData];
+				}
 				oViewModel.setData(data);
 				// this is required to scroll the Linetracker table. Don't
 				// remove/comment
@@ -109,6 +112,9 @@ airbus.mes.linetracker.util.ModelManager = {
 			success : function(data) {
 				if (typeof data == "string") {
 					data = JSON.parse(data);
+				}
+				if(!data.variantNameList[0]){
+					data.variantNameList = [data.variantNameList];
 				}
 				oViewModel.setData(data);
 				 //sap.ui.getCore().byId("idLinetracker1").setBusy(false);

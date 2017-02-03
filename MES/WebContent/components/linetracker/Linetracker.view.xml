@@ -19,7 +19,7 @@
 					</Toolbar>
 				</headerToolbar>
 			</Panel>
-			<uiTable:Table id="linetrackerTable" rows="{stationDataModel>/}" selectionMode="None"
+			<uiTable:Table id="linetrackerTable" rows="{stationDataModel>/stationData}" selectionMode="None"
 				visibleRowCount="12" enableColumnReordering="false" threshold="20" noData="{i18n>NoStationsToDisplay}" >
 				<uiTable:toolbar>
 					<Toolbar class="toolbar">
