@@ -5,8 +5,8 @@
 
 
 		<Toolbar class="pageHeader">
-			<Title text="{disruptiontrackerI18n>disruptionsTitle}" id="headerText"
-				class="headerText" />
+			<Label text="{disruptiontrackerI18n>disruptionsTitle}" id="headerText" class="headerText sapUiSmallMarginBeginEnd" />
+			
 			<ComboBox id="stationComboBox" class="sapUiMediumMarginEnd customComboBox"
 				placeholder="{disruptiontrackerI18n>selectStation}" items="{ path:'plantModel>/Rowsets/Rowset/0/Row' }"
 				selectedKey="" selectionChange="filterByStation"

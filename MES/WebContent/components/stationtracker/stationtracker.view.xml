@@ -18,7 +18,7 @@
 								expandAnimation="false" class="pageHeader kpiPageHeader contentNoPad">
 								<headerToolbar>
 									<Toolbar id="kpiHeaderToolbar" class="classKpiheaderToolbar">
-										<Title text="" 	id="StationtrackerTitle" class="StationtrackerTitle" />
+										<Label text="" 	id="StationtrackerTitle" class="headerText sapUiSmallMarginBeginEnd" />
 										<Button id="dateButton" icon="sap-icon://appointment" type="Transparent" tooltip="{StationTrackerI18n>Calendar}"
 											press="datePick" class="classDateButton" text="03 Feb 2017"/>
 <!-- 										<Label id="dateLabel" text="" class="classDateLabel" /> -->

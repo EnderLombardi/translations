@@ -8,7 +8,7 @@
 		enableScrolling="false " class="GenricBgColor">
 
 		<Toolbar id="kpiHeaderToolbar" class="classKpiheaderToolbar pageHeader kpiPageHeader contentNoPad">
-			<Label id="teamAvaibility" text="{calendarI18n>teamavaibility}" class="classDateLabel" />
+			<Label id="teamAvaibility" text="{calendarI18n>teamavaibility}" class="headerText sapUiSmallMarginBeginEnd" />
 			
 			<Button id="calendardateButton" icon="sap-icon://appointment"
 				type="Transparent" tooltip="{calendarI18n>Calendar}" press="datePick"/>

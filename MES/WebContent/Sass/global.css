@@ -453,7 +453,7 @@ SETTINGS
   padding: 0 1rem; }
 
 /************************************
-D├®filement text tooltip
+D├⌐filement text tooltip
 ************************************/
 @-webkit-keyframes marqueelike {
   0%, 100% {
@@ -504,12 +504,12 @@ TOOLBAR
   margin: 20px 0 0 8px;
   position: absolute; }
 
-#stationTrackerView--StationtrackerTitle-inner {
-  color: #74d2e7;
-  text-shadow: none;
-  padding: 0px 30px;
-  font-size: 0.875rem; }
-
+/*#stationTrackerView--StationtrackerTitle-inner{
+	    color: #74d2e7;
+    text-shadow: none;
+    padding: 0px 30px;
+    font-size: 0.875rem
+    }*/
 #stationTrackerView--dateButton {
   border-left: 1px solid #8db9ca; }
 
@@ -2345,12 +2345,6 @@ html.sap-desktop .sapMBtnTransparent > .sapMBtnIcon {
 /********************
 RESSOURCEPOOL
 *********************/
-#resourcePool--resourcePooltitle {
-  color: #74d2e7;
-  text-shadow: none;
-  padding: 0px 30px;
-  font-size: 0.875rem; }
-
 #resourcePool--resourcePoolName.resourcePoolName {
   color: white;
   padding: 20px;
@@ -7207,10 +7201,6 @@ td {
     font-size: 12px;
     color: #F5F5F5; }
 
-.disruptionKPI label.headerText {
-  color: #74d2e7;
-  text-shadow: none; }
-
 #disruptionKPIView--lineComboBox {
   border-left: solid 1px #74d2e7 !important; }
 
@@ -7536,5 +7526,11 @@ Pop up
 /*******************
 FROM HOMEPAGE
 ********************/
+/*************************
+For Page title in headers
+**************************/
+label.headerText {
+  color: #74d2e7 !important;
+  text-shadow: none !important; }
 
 /*# sourceMappingURL=global.css.map */

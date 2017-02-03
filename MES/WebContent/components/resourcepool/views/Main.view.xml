@@ -8,7 +8,7 @@
         <subHeader>
             <Bar id="pageHeader" class="pageHeader">
                 <contentLeft>
-                    <Label id="resourcePooltitle" text="{i18nModel>ResourcePool}" class="resourcePooltitle" />
+                    <Label id="resourcePooltitle" text="{i18nModel>ResourcePool}" class="headerText sapUiSmallMarginBeginEnd" />
                     <Label id="resourcePoolName" text="" class="resourcePoolName" />
                  </contentLeft>
                 <contentRight>

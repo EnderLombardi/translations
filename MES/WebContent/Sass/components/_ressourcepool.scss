@@ -1,13 +1,6 @@
 /********************
 RESSOURCEPOOL
 *********************/
-#resourcePool--resourcePooltitle{
-	   color: #74d2e7;
-    text-shadow: none;
-    padding: 0px 30px;
-    font-size: 0.875rem
-}
-
 #resourcePool--resourcePoolName{
     &.resourcePoolName{
         color: white;
@@ -290,10 +283,6 @@ RESSOURCEPOOL
     }
     .sapMPageWithSubHeader{
         &>section{
-<<<<<<< Upstream, based on origin/MESv1.5
-=======
-
->>>>>>> 49aa2d8 -fix css 
             .resourcePoolSubheader{
                 li{
                     height: 3rem;
