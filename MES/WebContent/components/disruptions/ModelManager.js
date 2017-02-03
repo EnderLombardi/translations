@@ -179,7 +179,7 @@ airbus.mes.disruptions.ModelManager = {
 		// Un-Set Busy's
 		sap.ui.getCore().byId("createDisruptionView--selectreason").setBusy(false);
 		sap.ui.getCore().byId("createDisruptionView--selectResponsibleGrp").setBusy(false);
-		sap.ui.getCore().byId("createDisruptionView--selectRootCause").setBusy(false);
+		//sap.ui.getCore().byId("createDisruptionView--selectRootCause").setBusy(false);
 	},
 	
 	/**************************************************************************************
@@ -405,9 +405,9 @@ airbus.mes.disruptions.ModelManager = {
 						var rowExists = data.Rowsets.Rowset;
 						if (rowExists != undefined) {
 							if (data.Rowsets.Rowset[0].Row[0].Message_Type == "S") {
-								airbus.mes.shell.ModelManager.messageShow(
+								/*airbus.mes.shell.ModelManager.messageShow(
 									airbus.mes.operationdetail.createDisruption.oView.getModel("i18nModel").getProperty("DisruptCreateSuccess"));
-
+*/
 								// load disruption Model again for new message
 								airbus.mes.disruptions.ModelManager.createEditFlag =true;
 								var operationBO = sap.ui.getCore().getModel(

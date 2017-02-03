@@ -112,6 +112,30 @@ airbus.mes.disruptions.Formatter = {
 
 	},
 
+	// New function created for "Required Fix By" as MII parsing error on Date using getDate function
+  getFixedByDate : function(datetime) {
+		
+		if (datetime == null || datetime === undefined) {
+			var today = new Date();
+			var dd = today.getDate();
+			var mm = today.getMonth()+1; // January is 0!
+
+			var yyyy = today.getFullYear();
+			if (dd < 10) {
+				dd = '0' + dd
+			}
+
+			if (mm < 10) {
+				mm = '0' + mm
+			}
+
+			return (yyyy + '-' + mm + '-' + dd);
+		} else {
+			return datetime.split(" ")[0];
+		}
+
+	},
+
 	getTime : function(datetime) {
 
 		if (datetime == null || datetime === undefined) {

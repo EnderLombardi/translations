@@ -301,7 +301,7 @@
 									<f:fields>
 										<DatePicker id="expectedDate" valueFormat="yyyy-MM-dd"
 											displayFormat="long"
-											value="{path: 'DisruptionDetailModel>/RequiredFixBy', formatter: 'airbus.mes.disruptions.Formatter.getDate'}"
+											value="{path: 'DisruptionDetailModel>/RequiredFixBy', formatter: 'airbus.mes.disruptions.Formatter.getFixedByDate'}"
 											change="onExpectedDateChange">
 											<layoutData>
 												<l:GridData span="L2 M5 S6" />
