@@ -40,6 +40,7 @@ airbus.mes.settings.ModelManager = {
 
 		this.loadSiteModel();
 		this.getProgram();
+		this.checkLanguage();
 
 	},
 
