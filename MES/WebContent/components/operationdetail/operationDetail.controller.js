@@ -6,6 +6,7 @@ sap.ui
         reasonCodeText: undefined,
         operationStatus: undefined,
         disruptionsFlag: false,
+        tabSelected: "#operationDetailsView--idStatus",
 
         /**
          * Called when a controller is instantiated and its View
@@ -41,9 +42,12 @@ sap.ui
          * @memberOf components.operationdetail.operationDetail
          */
         onAfterRendering: function () {
+            //tabselection
+            $(this.tabSelected).removeClass("operationDetailTabSelected");
+            this.tabSelected = "#operationDetailsView--idStatus";
+            $(this.tabSelected).addClass("operationDetailTabSelected");
 
             var oModel = [sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0]];
-//            this.iconBarOpenPage();
             if (airbus.mes.stationtracker.GroupingBoxingManager.computeStatus(oModel[0].state, oModel[0].paused, oModel[0].previously_start) === "0") {
                 airbus.mes.operationdetail.oView.byId("idReschedule").setEnabled(false);
             } else {
@@ -126,9 +130,9 @@ sap.ui
 
         },
 
-        setToolbarVisible : function(){
+        setToolbarVisible: function () {
             var state = sap.ui.getCore().byId("operationDetailsView--switchOperationModeBtn").getState();
-            if(!state){
+            if (!state) {
                 sap.ui.getCore().byId("operationDetailsView--idCheckList").setVisible(false);
                 sap.ui.getCore().byId("operationDetailsView--idDisruption").setVisible(false);
                 sap.ui.getCore().byId("operationDetailsView--idDisplayOpeAttachments").setVisible(false);
@@ -138,7 +142,7 @@ sap.ui
                 sap.ui.getCore().byId("operationDetailsView--idComponents").setVisible(false);
                 sap.ui.getCore().byId("operationDetailsView--idACPnGLinks").setVisible(false);
                 sap.ui.getCore().byId("operationDetailsView--idNCDisplay").setVisible(false);
-            }else{
+            } else {
                 sap.ui.getCore().byId("operationDetailsView--idCheckList").setVisible(true);
                 sap.ui.getCore().byId("operationDetailsView--idDisruption").setVisible(true);
                 sap.ui.getCore().byId("operationDetailsView--idDisplayOpeAttachments").setVisible(true);
@@ -159,14 +163,29 @@ sap.ui
 
             switch (sItemKey) {
                 case "status":
+                    //tabselection
+                    $(this.tabSelected).removeClass("operationDetailTabSelected");
+                    this.tabSelected = "#operationDetailsView--idStatus";
+                    $(this.tabSelected).addClass("operationDetailTabSelected");
+
                     airbus.mes.shell.util.navFunctions.operationstatus(this.nav, true);
                     break;
 
                 case "checkList":
+                    //tabselection
+                    $(this.tabSelected).removeClass("operationDetailTabSelected");
+                    this.tabSelected = "#operationDetailsView--idCheckList";
+                    $(this.tabSelected).addClass("operationDetailTabSelected");
+
                     airbus.mes.shell.util.navFunctions.qdc(this.nav);
                     break;
 
                 case "disruption":
+                    //tabselection
+                    $(this.tabSelected).removeClass("operationDetailTabSelected");
+                    this.tabSelected = "#operationDetailsView--idDisruption";
+                    $(this.tabSelected).addClass("operationDetailTabSelected");
+
                     airbus.mes.shell.util.navFunctions.disruptionsDetail(this.nav,
                         sap.ui.getCore().byId("operationDetailPopup--reportDisruption"), // Report Disruption Button
                         sap.ui.getCore().byId("operationDetailPopup--btnCreateDisruption"), // Create Button
@@ -188,7 +207,22 @@ sap.ui
                     this.nav.to(airbus.mes.disruptions.oView.viewDisruption.getId());
 
                     break;
+                case "displayOpeAttachments":
+                    //tabselection
+                    $(this.tabSelected).removeClass("operationDetailTabSelected");
+                    this.tabSelected = "#operationDetailsView--idDisplayOpeAttachments";
+                    $(this.tabSelected).addClass("operationDetailTabSelected");
+
+                    airbus.mes.shell.util.navFunctions.displayOpeAttachments(this.nav);
+
+                    /** Navigate **/
+                    this.nav.to(airbus.mes.displayOpeAttachments.oView.getId());
+                    break;
                 case "reschedule":
+                    //tabselection
+                    $(this.tabSelected).removeClass("operationDetailTabSelected");
+                    this.tabSelected = "#operationDetailsView--idReschedule";
+                    $(this.tabSelected).addClass("operationDetailTabSelected");
 
                     var aModel = [sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0]];
 
@@ -216,6 +250,11 @@ sap.ui
                     }
                     break;
                 case "touchngo":
+                    //tabselection
+                    $(this.tabSelected).removeClass("operationDetailTabSelected");
+                    this.tabSelected = "#operationDetailsView--idtouchngo";
+                    $(this.tabSelected).addClass("operationDetailTabSelected");
+
                     var selectedSegmentedButton = sap.ui.getCore().byId("operationDetailsView--opDetailSegmentButtons").getSelectedKey();
                     var sWorkOrder = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].wo_no;
                     var operationId = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_no;
@@ -230,30 +269,42 @@ sap.ui
                     }, 2000);
                     break;
                 case "jigntools":
-                    console.log(this.nav);
+                    //tabselection
+                    $(this.tabSelected).removeClass("operationDetailTabSelected");
+                    this.tabSelected = "#operationDetailsView--idJignTools";
+                    $(this.tabSelected).addClass("operationDetailTabSelected");
+
                     airbus.mes.shell.util.navFunctions.jigToolsDetail(this.nav);
 
                     /** Navigate **/
                     this.nav.to(airbus.mes.jigtools.oView.getId());
                     break;
                 case "components":
-                    console.log(this.nav);
+                    //tabselection
+                    $(this.tabSelected).removeClass("operationDetailTabSelected");
+                    this.tabSelected = "#operationDetailsView--idComponents";
+                    $(this.tabSelected).addClass("operationDetailTabSelected");
+
                     airbus.mes.shell.util.navFunctions.componentsDetail(this.nav);
 
                     /** Navigate **/
                     this.nav.to(airbus.mes.components.oView.getId());
                     break;
-                case "displayOpeAttachments":
-                    airbus.mes.shell.util.navFunctions.displayOpeAttachments(this.nav);
-
-                    /** Navigate **/
-                    this.nav.to(airbus.mes.displayOpeAttachments.oView.getId());
-                    break;
                 case "ACPnGLinks":
+                    //tabselection
+                    $(this.tabSelected).removeClass("operationDetailTabSelected");
+                    this.tabSelected = "#operationDetailsView--idACPnGLinks";
+                    $(this.tabSelected).addClass("operationDetailTabSelected");
+
                     airbus.mes.shell.util.navFunctions.acpnglinksDetail(this.nav);
                     this.nav.to(airbus.mes.acpnglinks.oView.getId());
                     break;
                 case "ncDisplay":
+                    //tabselection
+                    $(this.tabSelected).removeClass("operationDetailTabSelected");
+                    this.tabSelected = "#operationDetailsView--idNCDisplay";
+                    $(this.tabSelected).addClass("operationDetailTabSelected");
+
                     airbus.mes.shell.util.navFunctions.ncDisplayLink(this.nav);
                     this.nav.to(airbus.mes.ncdisplay.oView.getId());
                     break;

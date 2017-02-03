@@ -30,6 +30,7 @@
 	padding:0;
 	.sapUiTableCnt{
 		height: calc(100% - 10px);
+		border-bottom: 1px solid #767879;
 		.sapUiTableColHdrCnt{
 			height:46px !important;
 			background-color : $teal-blue;
@@ -43,6 +44,9 @@
 					}
 				}	
 			}
+		}
+		.sapUiTableCCnt {
+			border-right: 1px solid #767879;
 		}
 	}
 }

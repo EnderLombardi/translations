@@ -103,13 +103,15 @@
         height:auto;
         .sapMSegBBtn{
             position:relative;
-            color:#333333;
+            color:$sapui-font-black;
         }
-        .sapMSegBBtn{
-            &.sapMSegBBtnSel{            	
-            	color: $petrol;
+        .operationDetailTabSelected{
+            >.sapMITBText{
+                color: $petrol !important;
                 background: transparent;
                 font-weight:bold;
+                margin: 1rem 0 0 0;
+                height: calc(100% - 1rem);
                 &:after{
                     content: "";
                     height: 4px;
@@ -242,9 +244,6 @@
             margin-left: 0;
             li {
                 border: 0px !important;
-            }
-            li ~ li{
-                //display: none;
             }
         }
     }
@@ -400,9 +399,6 @@
         background-color: darkorange !important;
     }
 }
-.AllignItem{
-    Display:flex;
-}
 /* tab - Statut - */
 #idStatusView--StatutLabel.StatutLabel{
         font-weight: bold;
@@ -453,15 +449,14 @@
 }
 
 #operationDetailsView--opDetailSegmentButtons{
-    div {
-        height: 100%;
-    }
     >div.sapMITH {
+        height: 100%;
         box-shadow:none;
         >span {
             top:0;
         }
         >div {
+            height: 100%;
             >div {
                 margin-top: 0;
             }
