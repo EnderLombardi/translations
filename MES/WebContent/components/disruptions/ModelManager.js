@@ -75,40 +75,49 @@ airbus.mes.disruptions.ModelManager = {
 	/***************************************************************************
 	 * Load Category and custom Data
 	 */
-	loadData : function(sMode) {
+	loadData : function(sMode, sUserBo) {
 
 		this.createViewMode = sMode;
 
 		// Set Busy Indicator
 		airbus.mes.disruptions.ModelManager.setBusy();
-		
-		airbus.mes.disruptions.oView.createDisruption.oController.resetAllFields(); // Reset All fields
 
-		this.loadDisruptionCategory();
+		airbus.mes.disruptions.oView.createDisruption.oController.resetAllFields(); // Reset
+																					// All
+																					// fields
+
+		this.loadDisruptionCategory(sUserBo);
 		this.loadMaterialList();
 		this.loadJigtoolList();
-		
-		if(this.createViewMode == "Edit"){
-			var oModel   = sap.ui.getCore().getModel("DisruptionDetailModel");
+
+		if (this.createViewMode == "Edit") {
+			var oModel = sap.ui.getCore().getModel("DisruptionDetailModel");
 			var sMsgType = oModel.getProperty("/MessageType");
 			var sResolverGroup = oModel.getProperty("/ResponsibleGroup");
-			
+
 			this.loadRsnResponsibleGrp(sMsgType);
 			this.loadResolverModel(sResolverGroup);
-			
-			airbus.mes.disruptions.oView.createDisruption.oController.editPreSettings();
+			// If opened by support team from disruption tracker - V1.5
+			if (sap.ui.Device.system.desktop && nav.getPreviousPage().sId == "disruptiontrackerView") {
+				airbus.mes.disruptions.oView.disruptionDetail.oController.editPreSettings();
+			} else {
+				airbus.mes.disruptions.oView.createDisruption.oController.editPreSettings();
+			}
+
 		}
-		
+
 	},
 	
 	/***************************************************************************
 	 * Set the Models for Category of Disruption Creation
+	 * 
+	 * @param{string} sUserBo-take user id as input
 	 **************************************************************************/
-	loadDisruptionCategory : function() {
-		var url = airbus.mes.disruptions.ModelManager.getDisruptionCategoryURL();
+	loadDisruptionCategory : function(sUserBo) {
+		var url = airbus.mes.disruptions.ModelManager.getDisruptionCategoryURL(sUserBo);
 		sap.ui.getCore().getModel("disruptionCategoryModel").loadData(url);
 	},
-	getDisruptionCategoryURL : function() {
+	getDisruptionCategoryURL : function(sUserBo) {
 		var urlCustomCategory = this.urlModel.getProperty("urlGetCategory");
 		urlCustomCategory = airbus.mes.shell.ModelManager.replaceURI(
 				urlCustomCategory, "$site", airbus.mes.settings.ModelManager.site);
@@ -117,8 +126,13 @@ airbus.mes.disruptions.ModelManager = {
 		
 		
 		// Get user to which operation is affected else current logged in user
-		var sUserBo = this.getIssuer();
-		urlCustomCategory = airbus.mes.shell.ModelManager.replaceURI(urlCustomCategory, "$userbo", sUserBo);
+		//MES V1.5  from disruption tracker originator field will contain userBo
+		if (!sUserBo) {
+			var sOpUserBo = this.getIssuer();
+			urlCustomCategory = airbus.mes.shell.ModelManager.replaceURI(urlCustomCategory, "$userbo", sOpUserBo);
+		} else {
+			urlCustomCategory = airbus.mes.shell.ModelManager.replaceURI(urlCustomCategory, "$userbo", sUserBo);
+		}
 		
 		return urlCustomCategory;
 
@@ -128,10 +142,9 @@ airbus.mes.disruptions.ModelManager = {
 		// Reset in hard the model of the view otherwise its not rebinded...
 		airbus.mes.disruptions.oView.createDisruption.getModel("disruptionCategoryModel").setData(sap.ui.getCore().getModel("disruptionCategoryModel").oData);
 
-		if(airbus.mes.disruptions.ModelManager.createViewMode == "Create"){
+		if (airbus.mes.disruptions.ModelManager.createViewMode == "Create") {
 			airbus.mes.disruptions.oView.createDisruption.oController.createDisruptionSettings();
-		} 
-		else if(airbus.mes.disruptions.ModelManager.createViewMode == "Edit"){
+		} else if (airbus.mes.disruptions.ModelManager.createViewMode == "Edit") {
 			airbus.mes.disruptions.oView.createDisruption.oController.editDisruptionSettings();
 		} 
 

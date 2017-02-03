@@ -22,14 +22,14 @@
 				</Select>
 				<Label text="{i18nModel>openDate}" />
 				<DatePicker enabled="false" id="OpenDate" displayFormat="short"
-					value="{path: 'DisruptionDetailModel>/OpeningTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}">
+					value="{path: 'DisruptionDetailModel>/Rowsets/Rowset/0/Row/0/OpeningTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}">
 					<layoutData>
 						<l:GridData span="L7 M7 S7" />
 					</layoutData>
 				</DatePicker>
 				<TimePicker enabled="false" id="openTime" displayFormat="HH:mm"
 					valueFormat="HH:mm"
-					value="{path: 'DisruptionDetailModel>/OpeningTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}">
+					value="{path: 'DisruptionDetailModel>/Rowsets/Rowset/0/Row/0/OpeningTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}">
 					<layoutData>
 						<l:GridData span="L5 M5 S5" />
 					</layoutData>
@@ -48,12 +48,11 @@
 
 				<core:Title text="" />
 				<Label text="{i18nModel>category}" />
-				<Select id="selectCategory" enabled="false"
-					items="{disruptionCategoryModel>/Rowsets/Rowset/1/Row}" change="onSelectionChange"
-					forceSelection="false">
+				<Select id="selectCategory" items="{disruptionCategoryModel>/Rowsets/Rowset/0/Row}"
+					change="onSelectionChange" forceSelection="false">
 					<items>
-						<core:Item text="{disruptionCategoryModel>Category}"
-							key="{disruptionCategoryModel>MessageType}" />
+						<core:Item text="{disruptionCategoryModel>DESCRIPTION}"
+							key="{disruptionCategoryModel>MESSAGE_TYPE}" />
 					</items>
 				</Select>
 				<Label text="{i18nModel>expectedResolutionDate}">
@@ -67,7 +66,7 @@
 				</DatePicker>
 				<TimePicker id="expectedTime" displayFormat="HH:mm"
 					valueFormat="HH:mm"
-					value="{path: 'DisruptionDetailModel>/RequiredFixBy', formatter: 'airbus.mes.disruptions.Formatter.getTime'}"
+					value="{path: 'DisruptionDetailModel>/Rowsets/Rowset/0/Row/0/RequiredFixBy', formatter: 'airbus.mes.disruptions.Formatter.getTime'}"
 					change="onExpectedDateChange" enabled="false">
 					<layoutData>
 						<l:GridData span="L5 M5 S5" />
@@ -76,9 +75,10 @@
 
 				<Label text="{i18nModel>issuerGroup}" />
 				<Select id="selectOriginator" selectedKey="" forceSelection="false"
-					items="{disruptionCustomData>/Rowsets/Rowset/0/Row}" enabled="false">
+					items="{disruptionCategoryModel>/Rowsets/Rowset/1/Row}">
 					<items>
-						<core:Item text="{disruptionCustomData>group_desc}" key="{disruptionCustomData>group_name}" />
+						<core:Item text="{disruptionCategoryModel>group_desc}"
+							key="{disruptionCategoryModel>group_name}" />
 					</items>
 				</Select>
 
@@ -90,10 +90,10 @@
 
 				<core:Title text="" />
 				<Label text="{i18nModel>reason}" />
-				<Select id="selectreason" items="{disruptionCustomData>/Rowsets/Rowset/1/Row}"
-					change="onSelectionChange" forceSelection="false" enabled="false">
+				<Select id="selectreason" items="{disruptionRsnRespGrp>/Rowsets/Rowset/0/Row}"
+					forceSelection="false">
 					<items>
-						<core:Item text="{disruptionCustomData>Reason}" key="{disruptionCustomData>Reason}" />
+						<core:Item text="{disruptionRsnRespGrp>REASON}" key="{disruptionRsnRespGrp>REASON}" />
 					</items>
 				</Select>
 				<Label text="{i18nModel>stMaterial}" />
@@ -102,11 +102,11 @@
 					enabled="false">
 				</MultiInput>
 				<Label text="{i18nModel>resolverGroup}" />
-				<Select id="selectResponsibleGrp" items="{disruptionCategoryModel>/Rowsets/Rowset/0/Row}"
-					change="onSelectionChange" forceSelection="false" enabled="false">
+				<Select id="selectResponsibleGrp" items="{disruptionRsnRespGrp>/Rowsets/Rowset/1/Row}"
+					change="onSelectionChange" forceSelection="false">
 					<items>
-						<core:Item text="{disruptionCategoryModel>ResponsibleGroupDesc}"
-							key="{disruptionCategoryModel>ResponsibleGroup}" />
+						<core:Item text="{disruptionRsnRespGrp>ResponsibleGroupDesc}"
+							key="{disruptionRsnRespGrp>ResponsibleGroup}" />
 					</items>
 				</Select>
 
@@ -154,7 +154,7 @@
 				<Label text="{i18nModel>commitedResolutionDate}" id="promisedDateLabel" />
 				<DatePicker id="promisedDate" valueFormat="yyyy-MM-dd"
 					displayFormat="short"
-					value="{path: 'DisruptionDetailModel>/PromisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}"
+					value="{path: 'DisruptionDetailModel>/Rowsets/Rowset/0/Row/0/PromisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}"
 					enabled="false">
 					<layoutData>
 						<l:GridData span="L7 M7 S7" />
@@ -162,7 +162,7 @@
 				</DatePicker>
 				<TimePicker id="promisedTime" displayFormat="HH:mm"
 					valueFormat="HH:mm:ss"
-					value="{path: 'DisruptionDetailModel>/PromisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}"
+					value="{path: 'DisruptionDetailModel>/Rowsets/Rowset/0/Row/0/PromisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}"
 					enabled="false">
 					<layoutData>
 						<l:GridData span="L5 M5 S5" />
@@ -186,14 +186,14 @@
 
 				<Label text="{i18nModel>dateOfEscalation}" />
 				<DatePicker displayFormat="short"
-					value="{path: 'DisruptionDetailModel>/EscalationDateTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}"
+					value="{path: 'DisruptionDetailModel>/Rowsets/Rowset/0/Row/0/EscalationDateTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}"
 					enabled="false">
 					<layoutData>
 						<l:GridData span="L7 M7 S7" />
 					</layoutData>
 				</DatePicker>
 				<TimePicker valueFormat="HH:mm" enabled="false"
-					value="{path: 'DisruptionDetailModel>/EscalationDateTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}"
+					value="{path: 'DisruptionDetailModel>/Rowsets/Rowset/0/Row/0/EscalationDateTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}"
 					displayFormat="HH:mm">
 					<layoutData>
 						<l:GridData span="L5 M5 S5" />
@@ -204,9 +204,11 @@
 
 				<core:Title text="" />
 				<Label text="{i18nModel>Resolver}" />
-				<Select enabled="false">
+				<Select id="selectResolver"
+					items="{ path : 'disruptionResolverModel>/Rowsets/Rowset/0/Row' }"
+					forceSelection="false">
 					<items>
-						<core:Item text="J.carter" />
+						<core:Item text="{disruptionResolverModel>Name}" key="{disruptionResolverModel>UserID}" />
 					</items>
 				</Select>
 			</f:content>
@@ -246,44 +248,47 @@
 			labelSpanL="12" labelSpanM="12" width="100%" adjustLabelSpan="false"
 			emptySpanL="0" emptySpanM="0" columnsL="1" columnsM="1">
 			<f:content>
-			<List showNoData="false" class="sapUiSmallMarginBeginEnd"
-							items="{path: 'operationDisruptionsModel>/Rowsets/Rowset/1/Row'}">
+				<VBox>
 
-							<CustomListItem class="msgColor">
-								<HBox
-									class="sapUiSmallMarginBeginEnd sapUiTinyMarginTopBottom msgHeaderText">
-									<items>
-										<Text
-											text="{i18nModel>from} : {path: 'operationDisruptionsModel>UserFullName', formatter: 'airbus.mes.disruptions.Formatter.textCaseFormat'}"></Text>
-										<Text text="|" class="sapUiSmallMarginBeginEnd"></Text>
-										<Text
-											text="{i18nModel>action} : {parts: [ {path: 'operationDisruptionsModel>Action'}, {path: 'operationDisruptionsModel>Comments'}], formatter: 'airbus.mes.disruptions.Formatter.formatCommentAction'}"></Text>
-									</items>
-								</HBox>
+					<Panel id="commentBox" visible="false">
 
-								<Text text="{path: 'operationDisruptionsModel>Comments', formatter: 'airbus.mes.disruptions.Formatter.formatComment'}"
-									class="sapUiSmallMarginBegin  sapUiSmallMarginEnd sapUiSmallMarginBottom"></Text>
-							</CustomListItem>
-						</List>
-				<Panel id="commentBox" visible="false">
+						<VBox>
+							<TextArea id="commentArea" placeholder="{i18nModel>addComment}"
+								width="100%" />
 
-							<VBox >
-								<TextArea id="commentArea" placeholder="{i18nModel>addComment}"
-									width="100%" />
+							<HBox>
+								<Button text="{i18nModel>submitComment}" type="Accept"
+									press="submitComment" class="sapUiSmallMarginEnd buttonAccept"
+									width="12rem" />
 
-								<HBox>
-									<Button text="{i18nModel>submitComment}" type="Accept"
-										press="submitComment" class="sapUiSmallMarginEnd buttonAccept"
-										width="12rem" />
+								<Button text="{i18nModel>cancel}" type="Reject" press="hideCommentBox"
+									class="sapUiSmallMarginEnd buttonReject" width="12rem" />
+							</HBox>
 
-									<Button text="{i18nModel>cancel}" type="Reject"
-										press="hideCommentBox" class="sapUiSmallMarginEnd buttonReject"
-										width="12rem" />
-								</HBox>
+						</VBox>
 
-							</VBox>
+					</Panel>
+					<List showNoData="false" class="sapUiSmallMarginBeginEnd"
+						items="{path: 'DisruptionDetailModel>/Rowsets/Rowset/1/Row'}">
 
-						</Panel>
+						<CustomListItem>
+							<HBox
+								class="sapUiSmallMarginBeginEnd sapUiTinyMarginTopBottom msgHeaderText">
+								<items>
+									<Text
+										text="{i18nModel>from} : {path: 'DisruptionDetailModel>UserFullName', formatter: 'airbus.mes.disruptions.Formatter.textCaseFormat'}"></Text>
+									<Text text="|" class="sapUiSmallMarginBeginEnd"></Text>
+									<Text
+										text="{i18nModel>action} : {parts: [ {path: 'DisruptionDetailModel>Action'}, {path: 'operationDisruptionsModel>Comments'}], formatter: 'airbus.mes.disruptions.Formatter.formatCommentAction'}"></Text>
+								</items>
+							</HBox>
+
+							<Text
+								text="{path: 'DisruptionDetailModel>Comments', formatter: 'airbus.mes.disruptions.Formatter.formatComment'}"
+								class="sapUiSmallMarginBegin  sapUiSmallMarginEnd sapUiSmallMarginBottom"></Text>
+						</CustomListItem>
+					</List>
+				</VBox>
 			</f:content>
 		</f:SimpleForm>
 	</VBox>

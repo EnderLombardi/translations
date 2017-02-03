@@ -268,11 +268,12 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 	onTableClick : function(oEvt) {
 
 		// set data of the selected row to Data Model
-
+		// binding context changed as table used is sap.ui.table
+		var sPath = oEvt.getParameters().rowBindingContext.getPath();
 		var disruptionData = {
 			"Rowsets" : {
 				"Rowset" : [ {
-					"Row" : [ oEvt.getSource().getBindingContext("disruptionsTrackerModel").getObject() ]
+					"Row" : [ oEvt.getParameters().rowBindingContext.oModel.getProperty(sPath) ]
 				}, {
 					"Row" : []
 				} ]
@@ -280,8 +281,8 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		};
 
 		var aComments = sap.ui.getCore().getModel("disruptionsTrackerModel").getData().Rowsets.Rowset[1].Row;
-		var sCurrMessageRef = oEvt.getSource().getBindingContext("disruptionsTrackerModel").getObject().MessageRef;
-
+		//var sCurrMessageRef = oEvt.getSource().getBindingContext("disruptionsTrackerModel").getObject().MessageRef;
+		var sCurrMessageRef = oEvt.getParameters().rowBindingContext.oModel.getProperty(sPath).MessageRef;
 		aComments.find(function(el) {
 			if (el.MessageRef == sCurrMessageRef)
 				disruptionData.Rowsets.Rowset[1].Row.push(el);
@@ -297,14 +298,15 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 			sap.ui.getCore().getModel("operationDisruptionsModel").setData(disruptionData);
 			var oModel = sap.ui.getCore().getModel("DisruptionDetailModel");
 			// set the data in disruption Detail Model
-			oModel.setData(sap.ui.getCore().getModel("operationDisruptionsModel").oData.Rowsets.Rowset[0].Row[0]);
+			oModel.setData(disruptionData);
 			nav.to(airbus.mes.disruptions.oView.disruptionDetail.getId())
+			this.setDataForViewDisruptionDetail();
 
 			// Pause the Refresh timer till the Pop-Up is opened
 			// airbus.mes.shell.AutoRefreshManager.pauseRefresh();
 			// this.getView().byId('refreshTime').setVisible(false);
 			// airbus.mes.shell.oView.byId('refreshTime').setVisible(false);
-			// this.setDataForViewDisruptionDetail();
+			// 
 			/** *********************MES V1.5 [End]******************** */
 
 		} else {
@@ -391,20 +393,20 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 			sap.ui.getCore().byId("disruptionDetailPopup--btnCancelDisruption").setVisible(true);
 		}
 	},
-	// /***************************************************************************
-	// * set the data in disruption detail page call set data for edit
-	// disruption
-	// * function MESV 1.5
-	// */
-	// setDataForViewDisruptionDetail : function() {
-	//
-	// if (!this.disruptionsCustomDataFlag) {
-	// airbus.mes.disruptions.ModelManager.loadData();
-	// this.disruptionsCustomDataFlag = true;
-	// } else {
-	// airbus.mes.disruptions.oView.createDisruption.oController.setDataForEditDisruption();
-	// }
-	// },
+	 /***************************************************************************
+	 * set the data in disruption detail page call set data for edit
+	 disruption
+	 * function MESV 1.5
+	 */
+	 setDataForViewDisruptionDetail : function() {
+	
+	 if (!this.disruptionsCustomDataFlag) {
+	 airbus.mes.disruptions.ModelManager.loadData("Edit",sap.ui.getCore().getModel("DisruptionDetailModel").oData.Rowsets.Rowset[0].Row[0].OriginatorID);
+	 this.disruptionsCustomDataFlag = true;
+	 } else {
+	 airbus.mes.disruptions.oView.createDisruption.oController.setDataForEditDisruption();
+	 }
+	 },
 	/**
 	 * [MES V1.5] [Beg]SD-SP1604983-DT-040 search disruption on basis of work
 	 * order/operation
