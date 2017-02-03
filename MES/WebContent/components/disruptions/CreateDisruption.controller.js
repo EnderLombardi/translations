@@ -439,7 +439,7 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
 
               //var sDescription = oView.byId("description").getValue(); -V1.5
               // message subject is passed as description because
-              // subject is compulsory
+
               airbus.mes.disruptions.ModelManager.createDisruption(sHandle, sCategory, sComment, aModelData);
        },
 

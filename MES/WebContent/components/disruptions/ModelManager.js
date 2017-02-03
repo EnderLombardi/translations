@@ -405,8 +405,8 @@ airbus.mes.disruptions.ModelManager = {
 						var rowExists = data.Rowsets.Rowset;
 						if (rowExists != undefined) {
 							if (data.Rowsets.Rowset[0].Row[0].Message_Type == "S") {
-								airbus.mes.shell.ModelManager
-										.messageShow(data.Rowsets.Rowset[0].Row[0].Message);
+								airbus.mes.shell.ModelManager.messageShow(
+									airbus.mes.operationdetail.createDisruption.oView.getModel("i18nModel").getProperty("DisruptCreateSuccess"));
 
 								// load disruption Model again for new message
 								airbus.mes.disruptions.ModelManager.createEditFlag =true;
@@ -433,11 +433,9 @@ airbus.mes.disruptions.ModelManager = {
 
 							} else if (data.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
 								if (data.Rowsets.Rowset[0].Row[0].Message === undefined)
-									airbus.mes.shell.ModelManager
-											.messageShow(airbus.mes.operationdetail.createDisruption.oView
-													.getModel("i18nModel")
-													.getProperty(
-															"DisruptionNotSaved"));
+									airbus.mes.shell.ModelManager.messageShow(
+										airbus.mes.operationdetail.createDisruption.oView.getModel("i18nModel").getProperty("DisruptionNotSaved"));
+								
 								else
 									airbus.mes.shell.ModelManager
 											.messageShow(data.Rowsets.Rowset[0].Row[0].Message)
@@ -458,10 +456,8 @@ airbus.mes.disruptions.ModelManager = {
 						// Un-Set Busy Indicator
 						airbus.mes.disruptions.ModelManager.unSetBusy();
 						
-						airbus.mes.shell.ModelManager
-								.messageShow(airbus.mes.operationdetail.createDisruption.oView
-										.getModel("i18nModel").getProperty(
-												"DisruptionNotSaved"));
+						airbus.mes.shell.ModelManager.messageShow(
+							airbus.mes.operationdetail.createDisruption.oView.getModel("i18nModel").getProperty("DisruptionNotSaved"));
 
 						airbus.mes.shell.util.navFunctions.disruptionButtons.create
 								.setEnabled(true);
