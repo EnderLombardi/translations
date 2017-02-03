@@ -384,10 +384,10 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
                            }, {
                                   "attribute" : "SFC_STEP_BO",
                                   "value" : sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/sfc_step_ref"),
-                           }, {
+                           }, /*{
                                   "attribute" : "DESCRIPTION",
                                   "value" : oView.byId("description").getValue()
-                           }, {
+                           },*/ {
                                   "attribute" : "REASON",
                                   "value" : oView.byId("selectreason").getSelectedKey()
                            }, {
@@ -403,7 +403,7 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
                                   "attribute" : "STATUS",
                                   "value" : airbus.mes.disruptions.Formatter.status.pending
                            }, /*{
-                                  "attribute" : "ROOT_CAUSE",
+                                  "attribute" : "ROOT_CAUSE",                                  
                                   "value" : oView.byId("selectRootCause").getSelectedKey()
                            },*/ {
                                   "attribute" : "MSN",
