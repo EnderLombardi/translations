@@ -280,7 +280,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/viz/ui5/DualCombination", "sap
 	}, 
 	
 	
-	changeSelection: function(oEvt){
+	onChangeSelection: function(oEvt){
 		
 		var id = oEvt.getSource().getId().split("--")[1];
 		var oView = this.getView();
@@ -313,7 +313,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/viz/ui5/DualCombination", "sap
 					return;
 				}
 					
-	 	   		this.oFilters.startDateTime = oTime;
+	 	   		airbus.mes.disruptionkpi.ModelManager.oFilters.startDateTime = oTime;
 				break;
 	 	   		
 	 	   	case "endDateTime":
@@ -324,12 +324,11 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/viz/ui5/DualCombination", "sap
 					return;
 				}
 				
-				this.oFilters.endDateTime = oTime;
+				airbus.mes.disruptionkpi.ModelManager.oFilters.endDateTime = oTime;
 				break;
 	 	   	
 	 	   	case "timeUnit":
 	 	   		airbus.mes.disruptionkpi.ModelManager.oFilters.timeUnit = oView.byId("timeUnit").getSelectedKey();
-	 	   		break;
 	 	   		break;
  	   	}
 	},
@@ -348,8 +347,13 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/viz/ui5/DualCombination", "sap
 	
 	onNavBack: function(oEvent){
 		nav.back();
+	},
+	
+	onAfterRendering: function(oEvent){
+        
+        document.getElementById("disruptionKPIView--startDateTime-inner").disabled = true
+        document.getElementById("disruptionKPIView--endDateTime-inner").disabled = true
 	}
-
 
 	});
 });
