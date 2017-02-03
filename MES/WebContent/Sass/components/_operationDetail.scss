@@ -1,4 +1,5 @@
 // CSS for Sub header - Operation Details Sub Header and Menu Bar
+
 .operationDetailHeadPanel{
     overflow: visible;
     z-index: 1001;
@@ -105,8 +106,8 @@
             color:#333333;
         }
         .sapMSegBBtn{
-            &.sapMSegBBtnSel{
-                color: $petrol;
+            &.sapMSegBBtnSel{            	
+            	color: $petrol;
                 background: transparent;
                 font-weight:bold;
                 &:after{
@@ -117,9 +118,24 @@
                     left:0;
                     right:0;
                     background:$blood-orange;
+                    
+                //IN sap ui5 1.4 is not a list...we need to play with "tabindex"; who change with the active tab
+				// exemple
+				// 	#operationDetailsView--idDisplayOpeAttachments{
+				// 	>.sapMITBContentArrow{
+				//                     content: "";
+				//                     height: 4px;
+				//                     position:absolute;
+				//                     bottom:0;
+				//                     left:0;
+				//                     right:0;
+				//                     background:$blood-orange;
+				//                 }
+				//      }
                 }
             }
         }
+     
     }
     @at-root html{
         &.sap-desktop{

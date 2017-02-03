@@ -127,8 +127,6 @@
             "polygon": "Polygon",
             "callout" : "Callout",
             "freetext": "FreeText",
-            "polygon" : "Polygon",
-            "callout" : "Callout",
             "arrow": "Arrow",
             "signature": "Signature"
         },
