@@ -18,7 +18,7 @@ airbus.mes.jigtools.util.ModelManager = {
 
 		this.core = core;
 
-		this.setProperties();		
+//		this.setProperties();		
 		
 	    // Handle URL Model
 		this.urlModel = airbus.mes.shell.ModelManager.urlHandler("airbus.mes.jigtools.config.url_config");
@@ -50,6 +50,7 @@ airbus.mes.jigtools.util.ModelManager = {
                     data = JSON.parse(data);
                 }
                 oViewModel.setData(data);
+                oViewModel.refresh();
             },
 
             error : function(error, jQXHR) {
@@ -58,10 +59,10 @@ airbus.mes.jigtools.util.ModelManager = {
         });
 		
 	},
-	setProperties : function() {
-		this.site = airbus.mes.settings.ModelManager.site;
-		this.workOrder = airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].wo_no;
-	},
+//	setProperties : function() {
+//		this.site = airbus.mes.settings.ModelManager.site;
+//		this.workOrder = airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].wo_no;
+//	},
 
 	
 };

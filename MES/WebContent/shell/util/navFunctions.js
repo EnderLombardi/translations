@@ -227,8 +227,10 @@ airbus.mes.shell.util.navFunctions = {
             airbus.mes.jigtools.oView.getController().getOwnerComponent().setWorkOrder(airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].wo_no);
             airbus.mes.jigtools.util.ModelManager.loadjigToolsWorkOrderDetail();
         }
-
-
+        
+        airbus.mes.jigtools.oView.getController().getOwnerComponent().setOperation(sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_no);
+        airbus.mes.jigtools.oView.getController().checkSettingJigsTools();
+       
         if (container.getPage("jigtoolsView") === null) {
             container.addPage(airbus.mes.jigtools.oView);
         }

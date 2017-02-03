@@ -9,6 +9,7 @@ sap.ui.core.UIComponent.extend("airbus.mes.jigtools.Component", {
 		properties : { 
 			site : undefined,
 			workOrder : undefined,
+			operation : undefined
 		},
 	}
 });
@@ -22,9 +23,9 @@ airbus.mes.jigtools.Component.prototype.init = function () {
 
 airbus.mes.jigtools.Component.prototype.createContent = function() {
 
-	//Set current work Order and operation
-    airbus.mes.jigtools.workOrder = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].wo_no;
-    airbus.mes.jigtools.operation = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_no;
+//	//Set current work Order and operation
+//    airbus.mes.jigtools.workOrder = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].wo_no;
+//    airbus.mes.jigtools.operation = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_no;
 
 	if (airbus.mes.jigtools.oView === undefined) {
 		

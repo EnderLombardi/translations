@@ -2,31 +2,34 @@
 
 sap.ui.controller("airbus.mes.jigtools.controller.jigtools", {
 
+	sSet : undefined,
+	
 	// Get setting from ME/MII and select the good button between operation and work order
 	onAfterRendering: function () {
 	},
 	
 	checkSettingJigsTools: function () {
-
-		// confirm if we have already check the ME settings
 		
-		if (airbus.mes.shell.util.navFunctions.jigsAndTools.configME === undefined){
-			
-			//will be the configuration received in AppConfManager
-			
-			//var sSet = airbus.mes.settings.AppConfManager.getConfiguration("VIEW_ATTACHED_TOOL");
-			var sSet = "P";
-			
-			//Add value to global variable
-			airbus.mes.shell.util.navFunctions.jigsAndTools.configME = sSet;
-			
-		} else {
-			
-			// set the global variable
-			var sSet = airbus.mes.shell.util.navFunctions.jigsAndTools.configME;
+		// confirm if we have already check the ME settings
+		if (this.sSet === undefined){
+			if (airbus.mes.shell.util.navFunctions.jigsAndTools.configME === undefined){
+				
+				//will be the configuration received in AppConfManager
+				
+				//var sSet = airbus.mes.settings.AppConfManager.getConfiguration("VIEW_ATTACHED_TOOL");
+				this.sSet = "P";
+				
+				//Add value to global variable
+				airbus.mes.shell.util.navFunctions.jigsAndTools.configME = this.sSet;
+				
+			} else {
+				
+				// set the global variable
+				this.sSet = airbus.mes.shell.util.navFunctions.jigsAndTools.configME;
+			}
 		}
 		
-		switch (sSet) {
+		switch (this.sSet) {
 			case "O"://operation
 				sap.ui.getCore().byId("jigtoolsView--operationButton").setSelected(true);
 				break;
@@ -36,7 +39,7 @@ sap.ui.controller("airbus.mes.jigtools.controller.jigtools", {
 			default: //if Null
 				break;
 		}
-		this.filterJigsTools(sSet);
+		this.filterJigsTools(this.sSet);
 	},
 
 	//get user action on the checkbox field
@@ -57,6 +60,7 @@ sap.ui.controller("airbus.mes.jigtools.controller.jigtools", {
 
 	//table filter 
 	filterJigsTools: function (sScope) {
+		this.sSet = sScope;
 		switch (sScope) {
 			case airbus.mes.jigtools.util.ModelManager.operation:
 				sap.ui.getCore().byId("jigtoolsView--jigToolList").getBinding("items").filter(new sap.ui.model.Filter("routerStep", "EQ", sap.ui.getCore().getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].routerStepBo));
