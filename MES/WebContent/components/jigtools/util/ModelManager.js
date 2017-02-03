@@ -18,8 +18,6 @@ airbus.mes.jigtools.util.ModelManager = {
 
 		this.core = core;
 
-//		this.setProperties();		
-		
 	    // Handle URL Model
 		this.urlModel = airbus.mes.shell.ModelManager.urlHandler("airbus.mes.jigtools.config.url_config");
 		
@@ -32,10 +30,8 @@ airbus.mes.jigtools.util.ModelManager = {
 	//load
 	loadjigToolsWorkOrderDetail : function() {
 		
-		this.workOrder = airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].wo_no;
-		
         var oViewModel = sap.ui.getCore().getModel("jigToolsWorkOrderDetail");
-//        airbus.mes.stationtracker.oView.byId("boxTaktAdherenceRight").setBusy(true);
+
         jQuery.ajax({
             type : 'post',
             url : this.urlModel.getProperty("jigToolsWorkOrderDetail"),
@@ -59,10 +55,5 @@ airbus.mes.jigtools.util.ModelManager = {
         });
 		
 	},
-//	setProperties : function() {
-//		this.site = airbus.mes.settings.ModelManager.site;
-//		this.workOrder = airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].wo_no;
-//	},
-
 	
 };

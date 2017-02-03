@@ -9,8 +9,10 @@ if (jQuery.sap.getObject("airbus.mes.jigtools.Component") === undefined) {
 	sap.ui.getCore().createComponent({
 		name : "airbus.mes.jigtools", 
 		site : airbus.mes.settings.ModelManager.site,
-	    workOrder : airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].wo_no,
-	    operation : sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_no
+		phStation : airbus.mes.settings.ModelManager.station,
+		workOrder : airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getData().Rowsets.Rowset[0].Row[0].wo_no,
+	    operation : sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_no,
+	    sSet      : airbus.mes.shell.util.navFunctions.jigsAndTools.configME
 });
 }
 

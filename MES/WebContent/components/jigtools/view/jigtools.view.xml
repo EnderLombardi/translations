@@ -8,56 +8,54 @@
 	xmlns:cData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" >
 
 	<Page enableScrolling="false" showHeader="false">
-	<content>
-		
-	<!-- <Text id="jigToollabel" class="jigToolListlabel" text="{i18nJigstoolsModel>JigTool}" /> -->
-	
-	<VBox id="jigToolcheck" class="jigToolListcheck">
- 			<RadioButtonGroup columns="2" select="onSelectLevel">
-				<buttons>
-					<RadioButton id="operationButton" text="{i18nJigstoolsModel>JigToolOperation}"/>
-					<RadioButton id="workOrderButton" text="{i18nJigstoolsModel>JigToolWorkOrder}"/>
-				</buttons>
-			</RadioButtonGroup>
-	</VBox>
-
-	<Table 	id="jigToolList" 
- 			class="jigToolListtable"
-			items="{path: 'jigToolsWorkOrderDetail>/toolInfoList/'}">
+		<content>
 			
-			<columns>
-				<Column>
-					<Text text="{i18nJigstoolsModel>materialNumber}" />
-				</Column>
-				<Column>
-					<Text text="{i18nJigstoolsModel>warehouse}" />
-				</Column>
-				<Column>
-					<Text text="{i18nJigstoolsModel>category}" />
-				</Column>
-				<Column>
-					<Text text="{i18nJigstoolsModel>description}" />
-				</Column>
-				<Column>
-					<Text text="{i18nJigstoolsModel>quantity}" />
-				</Column>
-			</columns>
-
-			<items>
-				<ColumnListItem>
-					<cells>
-						<Text text="{jigToolsWorkOrderDetail>materialNumber}" />
-						<Text text="{jigToolsWorkOrderDetail>warehouse} - {jigToolsWorkOrderDetail>warehouseDescription}" />
-						<Text text="{jigToolsWorkOrderDetail>prodResCat}" />
-						<Text text="{jigToolsWorkOrderDetail>toolDescription}" />
-						<Text text="{jigToolsWorkOrderDetail>quantity}" />
-					</cells>
-				</ColumnListItem>
-			</items>
-
-		</Table>
-
-	</content>
+			<VBox id="jigToolcheck" class="jigToolListcheck">
+		 			<RadioButtonGroup columns="2" select="onSelectLevel">
+						<buttons>
+							<RadioButton id="operationButton" text="{i18nJigstoolsModel>JigToolOperation}"/>
+							<RadioButton id="workOrderButton" text="{i18nJigstoolsModel>JigToolWorkOrder}"/>
+						</buttons>
+					</RadioButtonGroup>
+			</VBox>
+		
+			<Table 	id="jigToolList" 
+		 			class="jigToolListtable"
+					items="{path: 'jigToolsWorkOrderDetail>/toolInfoList/'}">
+					
+					<columns>
+						<Column>
+							<Text text="{i18nJigstoolsModel>materialNumber}" />
+						</Column>
+						<Column>
+							<Text text="{i18nJigstoolsModel>warehouse}" />
+						</Column>
+						<Column>
+							<Text text="{i18nJigstoolsModel>category}" />
+						</Column>
+						<Column>
+							<Text text="{i18nJigstoolsModel>description}" />
+						</Column>
+						<Column>
+							<Text text="{i18nJigstoolsModel>quantity}" />
+						</Column>
+					</columns>
+		
+					<items>
+						<ColumnListItem>
+							<cells>
+								<Text text="{jigToolsWorkOrderDetail>materialNumber}" />
+								<Text text="{jigToolsWorkOrderDetail>warehouse} - {jigToolsWorkOrderDetail>warehouseDescription}" />
+								<Text text="{jigToolsWorkOrderDetail>prodResCat}" />
+								<Text text="{jigToolsWorkOrderDetail>toolDescription}" />
+								<Text text="{jigToolsWorkOrderDetail>quantity}" />
+							</cells>
+						</ColumnListItem>
+					</items>
+		
+			</Table>
+	
+		</content>
 
 	</Page>
 </mvc:View>

@@ -12,20 +12,17 @@ sap.ui.controller("airbus.mes.jigtools.controller.jigtools", {
 		
 		// confirm if we have already check the ME settings
 		if (this.sSet === undefined){
-			if (airbus.mes.shell.util.navFunctions.jigsAndTools.configME === undefined){
+			if (this.getOwnerComponent().getSSet() === undefined){
 				
 				//will be the configuration received in AppConfManager
-				
-				//var sSet = airbus.mes.settings.AppConfManager.getConfiguration("VIEW_ATTACHED_TOOL");
-				this.sSet = "P";
-				
-				//Add value to global variable
-				airbus.mes.shell.util.navFunctions.jigsAndTools.configME = this.sSet;
+//				Application manager configuration is setting to physical station level, we concatenate the ID VIEW_ATTACHED_TOOL with the physical station
+				var sSet = airbus.mes.settings.AppConfManager.getConfiguration("VIEW_ATTACHED_TOOL_" + this.getOwnerComponent().getPhStation());
+				this.sSet = sSet;
 				
 			} else {
 				
 				// set the global variable
-				this.sSet = airbus.mes.shell.util.navFunctions.jigsAndTools.configME;
+				this.sSet = this.getOwnerComponent().getSSet();
 			}
 		}
 		
@@ -36,7 +33,8 @@ sap.ui.controller("airbus.mes.jigtools.controller.jigtools", {
 			case "P"://work order
 				sap.ui.getCore().byId("jigtoolsView--workOrderButton").setSelected(true);
 				break;
-			default: //if Null
+			default: //if Null operation default mode
+				sap.ui.getCore().byId("jigtoolsView--operationButton").setSelected(true);
 				break;
 		}
 		this.filterJigsTools(this.sSet);
