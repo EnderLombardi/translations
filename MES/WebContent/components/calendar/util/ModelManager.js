@@ -2,149 +2,134 @@
 jQuery.sap.declare("airbus.mes.calendar.util.ModelManager");
 
 airbus.mes.calendar.util.ModelManager = {
-       urlModel : undefined,
-       i18nModel : undefined,
+	urlModel : undefined,
+	i18nModel : undefined,
 
-       
-       init : function(core) {
-    	  
-    	   var aModel = ["ressourcePoolModel" ,"calendarshiftsModel","calendarTrackerModel"]
-    	   airbus.mes.shell.ModelManager.createJsonModel(core,aModel);
-           
-    	   //core.getModel("testModel").attachRequestCompleted(airbus.mes.calendar.util.ModelManager.toto);
-           core.getModel("calendarshiftsModel").attachRequestCompleted(airbus.mes.calendar.util.ModelManager.onShiftsLoad);
-           core.getModel("calendarTrackerModel").attachRequestCompleted(airbus.mes.calendar.util.ModelManager.onCalendarTrackerLoad);
-           core.getModel("ressourcePoolModel").attachRequestCompleted(airbus.mes.calendar.util.ModelManager.onRessourcePoolLoad);
+	init : function(core) {
 
-		
-			// Handle URL Model
-			this.urlModel = airbus.mes.shell.ModelManager.urlHandler("airbus.mes.calendar.config.url_config");
-	
-			this.loadRessourcePool();
+		var aModel = [ "ressourcePoolModel", "calendarshiftsModel", "calendarTrackerModel" ]
+		airbus.mes.shell.ModelManager.createJsonModel(core, aModel);
+
+		//core.getModel("testModel").attachRequestCompleted(airbus.mes.calendar.util.ModelManager.toto);
+		core.getModel("calendarshiftsModel").attachRequestCompleted(airbus.mes.calendar.util.ModelManager.onShiftsLoad);
+		core.getModel("calendarTrackerModel").attachRequestCompleted(airbus.mes.calendar.util.ModelManager.onCalendarTrackerLoad);
+		core.getModel("ressourcePoolModel").attachRequestCompleted(airbus.mes.calendar.util.ModelManager.onRessourcePoolLoad);
+
+		// Handle URL Model
+		this.urlModel = airbus.mes.shell.ModelManager.urlHandler("airbus.mes.calendar.config.url_config");
 
 	},
-	
+
 	/* *********************************************************************** *
 	 *  Replace URL Parameters                                                 *
 	 * *********************************************************************** */
 	replaceURI : function(sURI, sFrom, sTo) {
 		return sURI.replace(sFrom, encodeURIComponent(sTo));
 	},
-	
-	 loadShifts : function() {
 
-	        var oViewModelshift = airbus.mes.calendar.oView.getModel("calendarshiftsModel");
-	        var getUrlShifts = this.urlModel.getProperty("urlshifts");
-	        var oData = airbus.mes.settings.ModelManager;
-	        var reqResult = "";
-	        getUrlShifts = airbus.mes.calendar.util.ModelManager.replaceURI(getUrlShifts, "$site", oData.site);
-	        getUrlShifts = airbus.mes.calendar.util.ModelManager.replaceURI(getUrlShifts, "$station", oData.station);
-	        getUrlShifts = airbus.mes.calendar.util.ModelManager.replaceURI(getUrlShifts, "$msn", oData.msn);
+	loadShifts : function() {
 
-	        oViewModelshift.loadData(getUrlShifts, null, false);
+		var oViewModelshift = airbus.mes.calendar.oView.getModel("calendarshiftsModel");
+		var getUrlShifts = this.urlModel.getProperty("urlshifts");
+		var oData = airbus.mes.settings.ModelManager;
+		var reqResult = "";
+		getUrlShifts = airbus.mes.calendar.util.ModelManager.replaceURI(getUrlShifts, "$site", oData.site);
+		getUrlShifts = airbus.mes.calendar.util.ModelManager.replaceURI(getUrlShifts, "$station", oData.station);
+		getUrlShifts = airbus.mes.calendar.util.ModelManager.replaceURI(getUrlShifts, "$msn", oData.msn);
 
-	        reqResult = airbus.mes.shell.util.Formatter.getMiiMessageType(oViewModelshift.oData);
+		oViewModelshift.loadData(getUrlShifts, null, false);
 
-	        switch (reqResult) {
-	        case "S":
-	            break;
-	        case "E":
-	            sap.m.MessageToast.show("Error : " + airbus.mes.shell.util.Formatter.getMiiTextFromData(oViewModelshift.oData));
-	            break;
-	        default:
-	        }
+		reqResult = airbus.mes.shell.util.Formatter.getMiiMessageType(oViewModelshift.oData);
 
-	    },
-	    
-	    onShiftsLoad : function() {
+		switch (reqResult) {
+		case "S":
+			break;
+		case "E":
+			sap.m.MessageToast.show("Error : " + airbus.mes.shell.util.Formatter.getMiiTextFromData(oViewModelshift.oData));
+			break;
+		default:
+		}
 
-	        var GroupingBoxingManager = airbus.mes.calendar.util.GroupingBoxingManager;
-	        GroupingBoxingManager.parseShift();
-	    },
-	  	  	    
-	    loadCalendarTracker : function() {
+	},
 
-	        var oData = airbus.mes.settings.ModelManager;
-	        var oViewModel = airbus.mes.calendar.oView.getModel("calendarTrackerModel");
-	        var geturlcalendartracker = this.urlModel.getProperty('urlCalendaroperation');
+	onShiftsLoad : function() {
 
-	        geturlcalendartracker = airbus.mes.calendar.util.ModelManager.replaceURI(geturlcalendartracker, "$site", oData.site);
-	        geturlcalendartracker = airbus.mes.calendar.util.ModelManager.replaceURI(geturlcalendartracker, "$station", oData.station);
-	        geturlcalendartracker = airbus.mes.calendar.util.ModelManager.replaceURI(geturlcalendartracker, "$msn", oData.msn);
-	        geturlcalendartracker = airbus.mes.calendar.util.ModelManager.replaceURI(geturlcalendartracker, "$productionGroup", oData.prodGroup);
-	       // geturlcalendartracker = airbus.mes.calendar.util.ModelManager.replaceURI(geturlcalendartracker, "$user", airbus.mes.calendar.util.AssignmentManager.userSelected);
-	        //console.log(geturlcalendartracker);
-	     	
-	        oViewModel.loadData(geturlcalendartracker, null, true);
+		var GroupingBoxingManager = airbus.mes.calendar.util.GroupingBoxingManager;
+		GroupingBoxingManager.parseShift();
+	},
 
-	    },
-	    
-	    onCalendarTrackerLoad : function() {
+	loadCalendarTracker : function() {
 
-	        var GroupingBoxingManager = airbus.mes.calendar.util.GroupingBoxingManager;
+		var oData = airbus.mes.settings.ModelManager;
+		var oViewModel = airbus.mes.calendar.oView.getModel("calendarTrackerModel");
+		var geturlcalendartracker = this.urlModel.getProperty('urlCalendaroperation');
 
-	        GroupingBoxingManager.computeCalendarHierarchy();
+		geturlcalendartracker = airbus.mes.calendar.util.ModelManager.replaceURI(geturlcalendartracker, "$site", oData.site);
+		geturlcalendartracker = airbus.mes.calendar.util.ModelManager.replaceURI(geturlcalendartracker, "$station", oData.station);
+		geturlcalendartracker = airbus.mes.calendar.util.ModelManager.replaceURI(geturlcalendartracker, "$msn", oData.msn);
+		geturlcalendartracker = airbus.mes.calendar.util.ModelManager.replaceURI(geturlcalendartracker, "$productionGroup", oData.prodGroup);
+		// geturlcalendartracker = airbus.mes.calendar.util.ModelManager.replaceURI(geturlcalendartracker, "$user", airbus.mes.calendar.util.AssignmentManager.userSelected);
+		//console.log(geturlcalendartracker);
 
-	        airbus.mes.shell.busyManager.unsetBusy(airbus.mes.calendar.oView);
+		oViewModel.loadData(geturlcalendartracker, null, true);
 
-	    },
-	    
-	    loadRessourcePool : function() {
+	},
 
-	        var oData = airbus.mes.settings.ModelManager;
-	        var oViewModel = airbus.mes.calendar.oView.getModel("ressourcePoolModel");
-	        var geturlRessourcePool = this.urlModel.getProperty('urlRessourcePoolModel');
-	        
-	        jQuery.ajax({
-	            type : 'post',
-	            url : geturlRessourcePool,
-	            data : JSON.stringify({
-	                "site" : airbus.mes.settings.ModelManager.site,
-	                "phstation" : airbus.mes.settings.ModelManager.station,
-	               
-	            }),
+	onCalendarTrackerLoad : function() {
 
-	            success : function(data) {
-	                if(typeof data == "string"){
-	                    data = JSON.parse(data);
-	                }
-	                oViewModel.setData(data);
-	                airbus.mes.stationHandover.util.ModelManager.onRessourcePoolLoad();
-	            },
+		var GroupingBoxingManager = airbus.mes.calendar.util.GroupingBoxingManager;
 
-	            error : function(error, jQXHR) {
-	                console.log(error);
+		GroupingBoxingManager.computeCalendarHierarchy();
 
-	            }
-	        });
-	        
-	     },
-	    
-	    onRessourcePoolLoad : function() {
+	},
 
-	        var aModel = airbus.mes.calendar.oView.getModel("ressourcePoolModel");
+	loadRessourcePool : function() {
 
-	        if (aModel.getProperty("/Rowsets/Rowset/0/Row")) {
+		var oData = airbus.mes.settings.ModelManager;
+		var oViewModel = airbus.mes.calendar.oView.getModel("ressourcePoolModel");
+		var geturlRessourcePool = this.urlModel.getProperty('urlRessourcePoolModel');
 
-	            aModel.oData.Rowsets.Rowset[0].Row.unshift({
-	                "RESSOURCE_ID" : "ALL",
-	                "RESSOURCE_DESC" : "ALL",
-	            });
+		jQuery.ajax({
+			type : 'post',
+			url : geturlRessourcePool,
+			contentType : 'application/json',
+			async : 'true',
+			data : JSON.stringify({
+				"site" : airbus.mes.settings.ModelManager.site,
+				"phStation" : airbus.mes.settings.ModelManager.station	               
+			}),
 
-	            aModel.oData.Rowsets.Rowset[0].Row = aModel.oData.Rowsets.Rowset[0].Row.reduce(function(field, e1){
-	                var matches = field.filter(function(e2){return e1.RESSOURCE_ID === e2.RESSOURCE_ID});
-	                if (matches.length === 0){
-	                    field.push(e1);
-	                }return field;
-	            }, []);
+			success : function(data) {
 
-	            airbus.mes.calendar.oView.getModel("ressourcePoolModel").refresh(true);
+				try {
 
-	        } else {
-	            console.log("NO ressource pool load");
-	        }
+					data.resourcePoolList.unshift({
+						"id" : "ALL",
+						"description" : "ALL",
+					});
 
-	    },
-	    
-	  
+					oViewModel.setData(data);
+					airbus.mes.calendar.oView.getModel("ressourcePoolModel").refresh(true);
+
+				} catch (e) {
+
+					var oData = {"resourcePoolList" : []}
+					oData.resourcePoolList.unshift({
+						"id" : "ALL",
+						"description" : "ALL",
+					});
+					oViewModel.setData(data);
+					airbus.mes.calendar.oView.getModel("ressourcePoolModel").refresh(true);
+					console.log("NO ressource pool load");
+				}
+
+			},
+
+			error : function(error, jQXHR) {
+				console.log("NO ressource pool load");
+
+			}
+		});
+
+	},
 };

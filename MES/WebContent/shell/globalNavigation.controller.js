@@ -118,6 +118,8 @@ sap.ui.controller(
                             sap.ui.getCore().getConfiguration().setLanguage(sap.ui.getCore().getConfiguration().getLanguage().slice(0, 2))
                             break;
                         }
+                        
+                        airbus.mes.shell.oView.byId("SelectLanguage").setSelectedKey(sText);
                     },
 
                     /**
@@ -383,6 +385,7 @@ sap.ui.controller(
 
                         // ** asynchrone call **//
                         oModule.loadCalendarTracker();
+                        oModule.loadRessourcePool();
                         
                         // **Calculation of hiehgt of scheduler** //
                         var jqToolbar = $(airbus.mes.calendar.oView.byId('toolbarcalendar').getDomRef());

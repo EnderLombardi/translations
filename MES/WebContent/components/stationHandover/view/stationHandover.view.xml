@@ -8,10 +8,10 @@
 
 
 
-			<Table id="TreeTableBasic"
-				rows="{path:'oswModel>/row/'}"
-				selectionMode="MultiToggle" enableSelectAll="true" visibleRowCountMode="15rem"
-
+		<TreeTable id="TreeTableBasic"
+				rows="{path:'oswModel>/', parameters: {arrayNames:['row']}}"
+				selectionMode="None" enableSelectAll="true" visibleRowCountMode="15rem"
+			
 				cellClick="onRowClick" enableBusyIndicator="true" enableCellFilter="true">
 				<extension>
 
@@ -234,7 +234,7 @@
 
 
 				</columns>
-			</Table>
+			</TreeTable>
 		</m:content>
 	</m:Page>
 </core:View>

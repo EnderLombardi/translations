@@ -13,7 +13,7 @@ airbus.mes.calendar.util.ShiftManager = {
 	fSwipe: false,
 	//Variables for shift combobox Day/Shit view
 	BoxSelected : 0,
-	ShiftSelected : {},
+	ShiftSelected : "ALL",
 	selectFirstShift : false,
 	//Array where is stock Id of marker display on the gantt
 	ShiftMarkerID :[],

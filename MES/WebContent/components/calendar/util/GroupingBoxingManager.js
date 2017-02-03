@@ -131,7 +131,7 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 		var oModel =  airbus.mes.calendar.oView.getModel("calendarTrackerModel");
 		var aElements2 = [];
 		var aBox = [];
-		var sPoolId = airbus.mes.calendar.oView.byId("calendarRessource").getSelectedKey();
+		var sPoolId = airbus.mes.calendar.util.ShiftManager.shiftIdSelected;
 		
 		// Erase hierarchy
 		oHierachy = {};
@@ -283,9 +283,10 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 	    airbus.mes.calendar.util.ShiftManager.addMarkedShifts();
 		airbus.mes.calendar.oView.getController().UpdateDateSwipe();		
 		calendar.xy.scroll_width=20;
-        airbus.mes.shell.busyManager.unsetBusy(airbus.mes.calendar.oView);
 	    calendar.parse(aBox,"json");
 	    calendar.openAllSections();
+        airbus.mes.shell.busyManager.unsetBusy(airbus.mes.calendar.oView);
+
 		},
 	
 };
