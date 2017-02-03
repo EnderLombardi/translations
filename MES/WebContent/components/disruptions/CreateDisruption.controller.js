@@ -70,6 +70,8 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
 				if(airbus.mes.disruptions.ModelManager.createViewMode == "Edit")
 					airbus.mes.disruptions.ModelManager.createViewMode = "Update";
 				
+				this.getView().byId("selectResolver").setSelectedKey();
+				
 	   		   	if(this.getView().byId("selectResponsibleGrp").getSelectedKey() == ""){ // Avoid un-necessary ajax call
 	   		   		this.afterResolverModelLoad();
 			   		break;
@@ -151,7 +153,6 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
     	   var oView = this.getView();
 
     	   if(airbus.mes.disruptions.ModelManager.createViewMode == "Create" || airbus.mes.disruptions.ModelManager.createViewMode == "Update"){
-   				oView.byId("selectResolver").setSelectedKey();
    				
    				if(this.getView().byId("selectResponsibleGrp").getSelectedKey() == "")
    					oView.byId("selectResolver").setEnabled(false);
