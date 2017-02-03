@@ -6,6 +6,9 @@ airbus.mes.disruptionkpi.ModelManager = {
 	oFilters:{
 		line: airbus.mes.settings.ModelManager.line,
 		station: airbus.mes.settings.ModelManager.station,
+		station: airbus.mes.settings.ModelManager.station,
+		startDateTime: "",
+		endDateTime: "",
 		timeUnit: "Minutes"
 	},
 	
@@ -28,8 +31,19 @@ airbus.mes.disruptionkpi.ModelManager = {
 		// Station
 		sap.ui.getCore().byId("disruptionKPIView--stationComboBox").removeAllSelectedItems()
 		sap.ui.getCore().byId("disruptionKPIView--stationComboBox").addSelectedKeys(this.oFilters.station);
+		
+		// Period of Time
+		if(this.oFilters.startDateTime ==""){
+			sap.ui.getCore().byId("disruptionKPIView--timePeriod").setDateValue();
+			sap.ui.getCore().byId("disruptionKPIView--timePeriod").setSecondDateValue(new Date());
+			this.oFilters.startDateTime = sap.ui.getCore().byId("disruptionKPIView--timePeriod").getDateValue();
+			this.oFilters.endDateTime   = sap.ui.getCore().byId("disruptionKPIView--timePeriod").getSecondDateValue();
+		}else{
+			sap.ui.getCore().byId("disruptionKPIView--timePeriod").setDateValue(this.oFilters.startDateTime);
+			sap.ui.getCore().byId("disruptionKPIView--timePeriod").setSecondDateValue(this.oFilters.endDateTime);
+		}
 
-		// Time Unite
+		// Time Unit
 		sap.ui.getCore().byId("disruptionKPIView--timeUnit").setSelectedKey(this.oFilters.timeUnit);
 	},
 	

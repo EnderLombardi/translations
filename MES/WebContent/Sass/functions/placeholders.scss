@@ -18,9 +18,9 @@ GLOBAL
     margin: 0;
     line-height: 3rem;
     margin-right: 0px !important;
+    border: 0;
     border-right: solid 1px $twilight-blue !important;
     background: $teal-blue-hover !important;
-    border: 0;
     
     .sapMSltLabel, .sapMSltArrow{
 	    top: 0;
@@ -31,6 +31,26 @@ GLOBAL
     }
 }
 
+%greyPlaceholder{
+	    input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+			font-size: 12px;
+		    color:    #F5F5F5;
+		}
+		input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+			font-size: 12px;
+		   	color:    #F5F5F5;
+		   	opacity:  1;
+		}
+		input::-moz-placeholder { /* Mozilla Firefox 19+ */
+			font-size: 12px;
+		   	color:    #F5F5F5;
+		   	opacity:  1;
+		}
+		input:-ms-input-placeholder { /* Internet Explorer 10-11 */		
+			font-size: 12px;
+		   	color:    #F5F5F5;
+		}
+}
 
 
 /*********************

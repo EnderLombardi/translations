@@ -30,15 +30,34 @@ time, mark, audio, video {
   margin: 0;
   line-height: 3rem;
   margin-right: 0px !important;
+  border: 0;
   border-right: solid 1px #74d2e7 !important;
-  background: #0f2d65 !important;
-  border: 0; }
+  background: #0f2d65 !important; }
   #disruptionKPIView--lineComboBox .sapMSltLabel, #disruptionKPIView--timeUnit .sapMSltLabel, #disruptionKPIView--lineComboBox .sapMSltArrow, #disruptionKPIView--timeUnit .sapMSltArrow {
     top: 0;
     bottom: 0;
     line-height: 3rem;
     color: #F5F5F5;
     font-size: 12px; }
+
+#disruptionKPIView--stationComboBox.sapMMultiComboBox .sapMMultiComboBoxBorder input::-webkit-input-placeholder, #disruptionKPIView--startDateTime input::-webkit-input-placeholder, #disruptionKPIView--endDateTime input::-webkit-input-placeholder {
+  /* WebKit, Blink, Edge */
+  font-size: 12px;
+  color: #F5F5F5; }
+#disruptionKPIView--stationComboBox.sapMMultiComboBox .sapMMultiComboBoxBorder input:-moz-placeholder, #disruptionKPIView--startDateTime input:-moz-placeholder, #disruptionKPIView--endDateTime input:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  font-size: 12px;
+  color: #F5F5F5;
+  opacity: 1; }
+#disruptionKPIView--stationComboBox.sapMMultiComboBox .sapMMultiComboBoxBorder input::-moz-placeholder, #disruptionKPIView--startDateTime input::-moz-placeholder, #disruptionKPIView--endDateTime input::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  font-size: 12px;
+  color: #F5F5F5;
+  opacity: 1; }
+#disruptionKPIView--stationComboBox.sapMMultiComboBox .sapMMultiComboBoxBorder input:-ms-input-placeholder, #disruptionKPIView--startDateTime input:-ms-input-placeholder, #disruptionKPIView--endDateTime input:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  font-size: 12px;
+  color: #F5F5F5; }
 
 /*********************
 STATION TRACKER
@@ -7143,10 +7162,9 @@ td {
     font-size: 12px;
     color: #F5F5F5; }
 
-.disruptionKPI .headerText > span {
+.disruptionKPI label.headerText {
   color: #74d2e7;
-  text-shadow: none;
-  padding: 0px 30px; }
+  text-shadow: none; }
 
 #disruptionKPIView--lineComboBox {
   border-left: solid 1px #74d2e7 !important; }
@@ -7168,29 +7186,28 @@ td {
       vertical-align: middle; }
       #disruptionKPIView--stationComboBox.sapMMultiComboBox .sapMMultiComboBoxBorder .sapMTokenizer .sapMToken .sapMTokenIcon {
         cursor: pointer; }
-    #disruptionKPIView--stationComboBox.sapMMultiComboBox .sapMMultiComboBoxBorder input.sapMComboBoxTextFieldInner {
+    #disruptionKPIView--stationComboBox.sapMMultiComboBox .sapMMultiComboBoxBorder input {
       font-size: 12px;
       color: #F5F5F5;
       border: 0px !important; }
-    #disruptionKPIView--stationComboBox.sapMMultiComboBox .sapMMultiComboBoxBorder input.sapMComboBoxTextFieldInner::-webkit-input-placeholder {
-      /* WebKit, Blink, Edge */
-      color: #F5F5F5; }
-    #disruptionKPIView--stationComboBox.sapMMultiComboBox .sapMMultiComboBoxBorder input.sapMComboBoxTextFieldInner:-moz-placeholder {
-      /* Mozilla Firefox 4 to 18 */
-      color: #F5F5F5;
-      opacity: 1; }
-    #disruptionKPIView--stationComboBox.sapMMultiComboBox .sapMMultiComboBoxBorder input.sapMComboBoxTextFieldInner::-moz-placeholder {
-      /* Mozilla Firefox 19+ */
-      color: #F5F5F5;
-      opacity: 1; }
-    #disruptionKPIView--stationComboBox.sapMMultiComboBox .sapMMultiComboBoxBorder input.sapMComboBoxTextFieldInner:-ms-input-placeholder {
-      /* Internet Explorer 10-11 */
-      color: #F5F5F5; }
     #disruptionKPIView--stationComboBox.sapMMultiComboBox .sapMMultiComboBoxBorder button.sapMMultiComboBoxArrow {
       font-size: 12px;
       background: #0f2d65;
       color: #F5F5F5;
       border: 0px; }
+
+#disruptionKPIView--startDateTime, #disruptionKPIView--endDateTime {
+  width: 200px !important;
+  border-right: solid 1px #74d2e7 !important; }
+  #disruptionKPIView--startDateTime input, #disruptionKPIView--endDateTime input {
+    color: #0d5d76;
+    font-size: 12px;
+    line-height: 3rem;
+    border: 0 !important;
+    background: #d5f1f8 !important; }
+  #disruptionKPIView--startDateTime span.sapUiIcon, #disruptionKPIView--endDateTime span.sapUiIcon {
+    background: transparent;
+    color: #F5F5F5; }
 
 .disruptionKPI .Subheader {
   background-color: #d5f1f8 !important; }
@@ -7243,66 +7260,70 @@ html {
   -moz-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out;
   transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; }
 
-#mes #content .sapUiComponentContainer #login .sapMPage section #login--logblock {
-  margin: 3% auto !important; }
-#mes #content #globalNavView #globalNavView--refreshTime-inner {
-  color: #74d2e7 !important;
-  text-shadow: none;
-  font-size: 12px; }
-#mes #content #globalNavView #globalNavView--localDELog-inner {
-  color: #74d2e7 !important;
-  text-shadow: none; }
-#mes #content #globalNavView #globalNavView--refreshTime-img {
-  color: #74d2e7;
-  text-shadow: none; }
-#mes #content #globalNavView .sapMBtn:hover > #globalNavView--refreshTime,
-#mes #content #globalNavView .sapMBtn:hover > #globalNavView--localDELog {
-  background-color: rgba(255, 255, 255, 0.2); }
-#mes #sap-ui-static .sapMPopover:not(.informationColor):not(#stationTrackerView--toolbarstationtracker-popover) {
-  background-color: #2c2a29;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5); }
-#mes .sapMDialog:not(.theme-disabled) {
-  background: #ffffff;
-  border: none;
-  border-radius: 0;
-  box-shadow: 0 0 5px #333; }
-  #mes .sapMDialog:not(.theme-disabled) header {
-    box-shadow: 0 0 5px #333;
-    overflow: visible;
-    background-color: #d4f1f7;
-    color: #434343; }
-  #mes .sapMDialog:not(.theme-disabled) footer {
-    background-color: #0f2d65; }
-#mes .sapMToggleBtnPressed,
-#mes .sapMIBar-CTX .sapMToggleBtnPressed,
-#mes .sapMTB-Transparent-CTX .sapMBtnInner.sapMToggleBtnPressed {
-  background-image: none;
-  background-color: transparent;
-  border-color: transparent;
-  color: transparent;
-  text-shadow: none; }
-#mes .Subheader:not(.theme-disabled) button:not(.sapMBtnDisabled) {
-  padding: 0; }
-  #mes .Subheader:not(.theme-disabled) button:not(.sapMBtnDisabled):hover {
-    background-color: rgba(0, 86, 112, 0.2); }
-    #mes .Subheader:not(.theme-disabled) button:not(.sapMBtnDisabled):hover > div.sapMBtnActive {
-      color: #ffffff;
-      background-color: #74D2E7; }
-  #mes .Subheader:not(.theme-disabled) button:not(.sapMBtnDisabled) span:hover {
-    background-color: transparent; }
-  #mes .Subheader:not(.theme-disabled) button:not(.sapMBtnDisabled) > div {
+#mes {
+  /*#sap-ui-static{
+      .sapMPopover:not(.informationColor):not(#stationTrackerView--toolbarstationtracker-popover){
+          background-color: #2c2a29;
+          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+      }
+  }*/ }
+  #mes #content .sapUiComponentContainer #login .sapMPage section #login--logblock {
+    margin: 3% auto !important; }
+  #mes #content #globalNavView #globalNavView--refreshTime-inner {
+    color: #74d2e7 !important;
+    text-shadow: none;
+    font-size: 12px; }
+  #mes #content #globalNavView #globalNavView--localDELog-inner {
+    color: #74d2e7 !important;
+    text-shadow: none; }
+  #mes #content #globalNavView #globalNavView--refreshTime-img {
+    color: #74d2e7;
+    text-shadow: none; }
+  #mes #content #globalNavView .sapMBtn:hover > #globalNavView--refreshTime,
+  #mes #content #globalNavView .sapMBtn:hover > #globalNavView--localDELog {
+    background-color: rgba(255, 255, 255, 0.2); }
+  #mes .sapMDialog:not(.theme-disabled) {
+    background: #ffffff;
+    border: none;
     border-radius: 0;
-    border: 0;
-    height: 3rem; }
-    #mes .Subheader:not(.theme-disabled) button:not(.sapMBtnDisabled) > div > span {
-      line-height: 3rem;
-      max-height: 3rem; }
-#mes .Subheader:not(.theme-disabled) button[aria-pressed^="true"] {
-  background-color: #74D2E7; }
-  #mes .Subheader:not(.theme-disabled) button[aria-pressed^="true"]:hover {
-    background-color: #49a4bc; }
-  #mes .Subheader:not(.theme-disabled) button[aria-pressed^="true"] span {
-    color: #ffffff; }
+    box-shadow: 0 0 5px #333; }
+    #mes .sapMDialog:not(.theme-disabled) header {
+      box-shadow: 0 0 5px #333;
+      overflow: visible;
+      background-color: #d4f1f7;
+      color: #434343; }
+    #mes .sapMDialog:not(.theme-disabled) footer {
+      background-color: #0f2d65; }
+  #mes .sapMToggleBtnPressed,
+  #mes .sapMIBar-CTX .sapMToggleBtnPressed,
+  #mes .sapMTB-Transparent-CTX .sapMBtnInner.sapMToggleBtnPressed {
+    background-image: none;
+    background-color: transparent;
+    border-color: transparent;
+    color: transparent;
+    text-shadow: none; }
+  #mes .Subheader:not(.theme-disabled) button:not(.sapMBtnDisabled) {
+    padding: 0; }
+    #mes .Subheader:not(.theme-disabled) button:not(.sapMBtnDisabled):hover {
+      background-color: rgba(0, 86, 112, 0.2); }
+      #mes .Subheader:not(.theme-disabled) button:not(.sapMBtnDisabled):hover > div.sapMBtnActive {
+        color: #ffffff;
+        background-color: #74D2E7; }
+    #mes .Subheader:not(.theme-disabled) button:not(.sapMBtnDisabled) span:hover {
+      background-color: transparent; }
+    #mes .Subheader:not(.theme-disabled) button:not(.sapMBtnDisabled) > div {
+      border-radius: 0;
+      border: 0;
+      height: 3rem; }
+      #mes .Subheader:not(.theme-disabled) button:not(.sapMBtnDisabled) > div > span {
+        line-height: 3rem;
+        max-height: 3rem; }
+  #mes .Subheader:not(.theme-disabled) button[aria-pressed^="true"] {
+    background-color: #74D2E7; }
+    #mes .Subheader:not(.theme-disabled) button[aria-pressed^="true"]:hover {
+      background-color: #49a4bc; }
+    #mes .Subheader:not(.theme-disabled) button[aria-pressed^="true"] span {
+      color: #ffffff; }
 
 .sapMNav.navContAutoHeight .sapMNavItem,
 .sapMNav.navContAutoHeight .sapMPage > section {

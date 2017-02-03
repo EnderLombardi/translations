@@ -10,7 +10,7 @@
 			text="{i18nModel>disruptionKPITitle}" class="lineTrackerName" /> </contentMiddle> 
 			</Bar> -->
 		<Toolbar class="pageHeader">
-			<Title text="{i18nModel>disruptionKPITitle}" id="headerText" class="headerText" />
+			<Label text="{i18nModel>disruptionKPITitle}" id="headerText" class="headerText sapUiSmallMarginBeginEnd" />
 			
 			<Select id="lineComboBox" class="sapUiTinyMarginBeginEnd" forceSelection="falce" items="{ path:'plantModel>/Rowsets/Rowset/0/Row' }"
 				selectedKey="" change="onChangeSelection" >
@@ -22,6 +22,11 @@
 				selectedKey="" selectionFinish="onChangeSelection" >
 				<core:Item key="{plantModel>station}" text="{plantModel>stationDescription}" />
 			</MultiComboBox>
+			
+			<Text text="{i18nModel>PeriodOfTime}:" class="sapUiTinyMarginBegin" />
+			<DateRangeSelection id="timePeriod" dateValue="{path:'/dateValueDRS2'}" 
+				secondDateValue="{path:'/secondDateValueDRS2'}" minDate="{path:'/dateMinDRS2'}"
+				maxDate="{path:'/dateMaxDRS2'}" change="onChangeSelection" />
 
 			<Text text="{i18nModel>timeUnit}:" class="sapUiTinyMarginBegin" />
 			<Select id="timeUnit" forceSelection="true" selectedKey="Minutes" change="onChangeSelection" >
@@ -37,14 +42,25 @@
 				width="100%">
 				<content>
 					<Button id="navBack" icon="sap-icon://arrow-left" press="onNavBack" type="Transparent" />
+					
+					<Text text="{i18nModel>PeriodOfTime}:" class="sapUiTinyMarginBeginEnd" />
+					<Text text="{i18nModel>From}" class="sapUiTinyMarginBegin" />
+					<DateTimePicker id="startDateTime" placeholder="Enter Date ..." change="onChangeSelection"/>
+					<Text text="{i18nModel>To}" class="sapUiTinyMarginBegin" />
+					<DateTimePicker id="endDateTime" placeholder="Enter Date ..." change="onChangeSelection"/>
 				</content>
 			</OverflowToolbar>
 
+			
+			<viz:VizFrame id="idParettoCategoryReason" width="100%" height="80%" uiConfig="{applicationSet:'fiori'}" />
+						
+			<commons:HorizontalDivider class="sapUiSmallMarginTopBottom" />
 
+						
 			<l:Grid hSpacing="1" vSpacing="1" defaultSpan="L6 M12 S12">
 				<l:content>
 
-					<viz:VizFrame id="vizFrame" width="100%" class="chart"
+					<!-- <viz:VizFrame id="vizFrame" width="100%" class="chart"
 						uiConfig="{applicationSet:'fiori'}" legendVisible="false">
 						<viz:dataset>
 							<viz.data:FlattenedDataset data="{TimeLostperAttribute>/category}">
@@ -96,7 +112,7 @@
 					<commons:HorizontalDivider id="divider2"
 						class="sapUiSmallMarginTopBottom" visible="true"></commons:HorizontalDivider>
 					<commons:HorizontalDivider id="divider3"
-						class="sapUiSmallMarginTopBottom"></commons:HorizontalDivider>
+						class="sapUiSmallMarginTopBottom"></commons:HorizontalDivider> -->
 
 					<viz:VizFrame id="vizFrame3" width="100%" class="chart"
 						vizType="bar" uiConfig="{applicationSet:'fiori'}" legendVisible="false">
