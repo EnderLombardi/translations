@@ -33,8 +33,8 @@ airbus.mes.linetracker.util.ModelManager = {
 		
 		core.getModel("stationDataModel").loadData(this.urlModel.getProperty("urlstationData"), null, false);
 
-		this.loadStationDataModel();
-		this.loadLineVariantModel();
+		//this.loadStationDataModel();
+		//this.loadLineVariantModel();
 
 		//this.loadPlantModel();
 		this.loadFlightLogo();
@@ -71,7 +71,7 @@ airbus.mes.linetracker.util.ModelManager = {
 			cache : false,
 			data : JSON.stringify({
 				"site" : airbus.mes.settings.ModelManager.site,
-				"customLine" : airbus.mes.linetracker.util.ModelManager.customLineBO,
+				"customLine" : airbus.mes.linetracker.util.ModelManager.customLineBO,//.split(",")[1],
 				"lang" : sap.ui.getCore().byId("globalNavView--SelectLanguage").getSelectedItem().getKey()
 			}),
 
@@ -482,6 +482,15 @@ airbus.mes.linetracker.util.ModelManager = {
 		airbus.mes.settings.ModelManager.station = result.station;
 		airbus.mes.settings.ModelManager.msn = result.msn;
 		airbus.mes.settings.ModelManager.line = result.line;
+		var oModel = sap.ui.getCore().getModel("userSettingModel");
+		oModel.setProperty("/Rowsets/Rowset/0/Row/0/stationDescription",result.stationDescription);
+		oModel.setProperty("/Rowsets/Rowset/0/Row/0/msn",result.msn);
+		oModel.setProperty("/Rowsets/Rowset/0/Row/0/lineDescription",result.lineDescription);
+		oModel.setProperty("/Rowsets/Rowset/0/Row/0/programDescription",result.lineDescription);
+		oModel.setProperty("/Rowsets/Rowset/0/Row/0/station",result.station);
+		oModel.setProperty("/Rowsets/Rowset/0/Row/0/line",result.line);
+		oModel.setProperty("/Rowsets/Rowset/0/Row/0/program",result.line);
+		oModel.refresh();
 	}
 
 };
