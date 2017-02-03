@@ -34,9 +34,9 @@
 
 								</f:FormElement>
 
-								<!-- <f:FormElement>
+								<f:FormElement visible="false">
 									<f:label>
-										<Label required="true" text="{i18nModel>Description}">
+										<Label  text="{i18nModel>Description}">
 											<layoutData>
 												<l:GridData span="L2 M3 S12" linebreak="true" />
 											</layoutData>
@@ -49,7 +49,7 @@
 											</layoutData>
 										</Input>
 									</f:fields>
-								</f:FormElement> -->
+								</f:FormElement>
 
 
 								<!-- SD-SP1604983-CDP-010 -->

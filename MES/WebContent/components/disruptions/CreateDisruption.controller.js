@@ -188,7 +188,7 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
 				
 				// Set Status and Description
 				this.getView().byId("status").setValue(oModel.getProperty("/Status"));
-				this.getView().byId("description").setValue(oModel.getProperty("/Description"));
+				//this.getView().byId("description").setValue(oModel.getProperty("/Description"));  V1.5
 				
 				// Empty Comment
 				this.getView().byId("comment").setValue();
@@ -437,20 +437,21 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
               }
               aModelData.push(oJson);
 
-              var sDescription = oView.byId("description").getValue();
+              //var sDescription = oView.byId("description").getValue(); -V1.5
               // message subject is passed as description because
               // subject is compulsory
-              airbus.mes.disruptions.ModelManager.createDisruption(sHandle, sCategory, sDescription, sComment, aModelData);
+              airbus.mes.disruptions.ModelManager.createDisruption(sHandle, sCategory, sComment, aModelData);
        },
 
        /***************************************************************************
        * Validate inputs while creating/updating disruption
        */
        validateDisruptionInput : function(oView) {
-              if (oView.byId("description").getValue() == "") {
+              /*if (oView.byId("description").getValue() == "") {
                      airbus.mes.shell.ModelManager.messageShow(oView.getModel("i18nModel").getProperty("CompulsaryDescription"));
                      return false;
-              } else if (oView.byId("selectCategory").getSelectedKey() == "") {
+              } else*/
+            	  if (oView.byId("selectCategory").getSelectedKey() == "") {
                      airbus.mes.shell.ModelManager.messageShow(oView.getModel("i18nModel").getProperty("CompulsaryCategory"));
                      return false;
               } else if (oView.byId("selectreason").getSelectedKey() == "") {
@@ -629,7 +630,7 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption", {
           this.getView().byId("gravity").setSelectedKey();
           this.getView().byId("timeLost").setValue();
           this.getView().byId("comment").setValue();
-          this.getView().byId("description").setValue();
+         // this.getView().byId("description").setValue();   V1.5 description no longer needed
 
           this.getView().byId("materials").destroyTokens();
           this.getView().byId("jigtools").destroyTokens();
