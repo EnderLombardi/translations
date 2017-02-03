@@ -50,7 +50,7 @@ gulp.task('ui5preload_shell', ['clean'], function() {
           .pipe(gulpif('**/i18n/*.properties', escapeProperties({ type: "properties" })))
           .pipe(ui5preload({base:'./WebContent/shell/', namespace:'airbus.mes.shell'}))
           .pipe(gulp.dest(dest + '/shell'));
-     });
+});
 
 //--------------------------------------------------------------------------------------------------------------------------//
 //																															//
@@ -69,11 +69,11 @@ gulp.task('ui5preload_shell', ['clean'], function() {
 		//console.log(component.length); // return 0	
 
 //Synchronous 
-		component =  fs.readdirSync('../MES/WebContent/components/');
+	component =  fs.readdirSync('../MES/WebContent/components/');
 
 //Generic
 for(let i=0; i<component.length; i++){
-	if(component[i] != "shell" || component[i] != "disruptionkpi" ){
+	if(component[i] != "shell"){
 	
 	//generate list of name ui5preload
 	buildname.push('ui5preload_'+component[i]);
@@ -92,19 +92,6 @@ for(let i=0; i<component.length; i++){
 	     });
 	}
 }
-
-//Disruption Tracker
-gulp.task('ui5preload_disruptionkpi', ['clean'], function() {
-		return gulp.src([
-						  './WebContent/components/disruptiontracker/kpi/**.+(js|xml|properties|css|json)',
-		                  './WebContent/components/disruptiontracker/kpi/*/**.+(js|xml|properties|css|json)',
-						  '!./WebContent/components/disruptiontracker/kpi/dist/**'
-		                ])
-
-		        .pipe(gulpif('**/i18n/*.properties', escapeProperties({ type: "properties" })))
-		        .pipe(ui5preload({base:'./WebContent/components/disruptiontracker/kpi', namespace:'airbus.mes.disruptionkpi'}))
-		        .pipe(gulp.dest(dest + '/components/disruptiontracker/kpi'));
-});
 
 //--------------------------------------------------------------------------------------------------------------------------//
 
@@ -198,7 +185,6 @@ gulp.task('bump', ['bump_ver', 'build'], function () {
 
 
 //table for build
-buildname.push('ui5preload_disruptionkpi');
 buildname.unshift('copy_index', 'copy', 'copy_res','ui5preload_shell')
 console.log("==================== list of components for build =======================")
 console.log(buildname);
