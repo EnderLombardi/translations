@@ -9,7 +9,7 @@
 				<tab:TreeTable id="ACPnGTreeTable" class="ACPnGTreeTable"
 					rows="{acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Row/}"
 					cellClick="OnSelectionChange"
-					visibleRowCountMode="Fixed" selectionMode="Single" height="100%" >
+					visibleRowCountMode="Fixed" selectionMode="Single" height="100%" enableColumnReordering="true"  columnMove="updateColumn">
 					<tab:toolbar>
                     <Toolbar>
                         <Title id="title" text="ACPnG Links"/>

@@ -1,8 +1,8 @@
 <core:FragmentDefinition xmlns="sap.m"
 	xmlns:core="sap.ui.core" xmlns:html="http://www.w3.org/1999/xhtml"
 	xmlns:ui="sap.ui.layout">
-	<Dialog title="{i18nacpnglinksModel>ColumnEditTitle}" icon="sap-icon://edit"
-		contentWidth="40%" contentHeight="60%">
+	<Dialog title="{i18nacpnglinksModel>ColumnEditTitle}" icon="sap-icon://edit" showCloseButton="true"
+		contentWidth="40%" contentHeight="60%" id="columnEditDialog">
 		<content height="100%" width="100%">
 			<HBox height="100%" class="fixHboxItemDisplay">
 				<Panel class="panelBorder" expanded="true" expandable="false"
@@ -21,8 +21,7 @@
 					<content height="100%">
 						<HBox height="100%" class="fixHboxItemDisplay">
 							<List id="listAvailableColumns" mode="SingleSelectMaster"
-								items="{acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column}"
-								growingScrollToLoad="true" growing="true" growingThreshold="1000">
+								items="{acpnglinksWorkOrderDetail>/Rowsets/Rowset/0/Columns/Column}">
 								<CustomListItem
 									visible="{path:'acpnglinksWorkOrderDetail>Visible' , formatter:'airbus.mes.acpnglinks.util.Formatter.toBooleanLeft'}">
 									<HBox class="fixHboxItemDisplay">
@@ -79,5 +78,8 @@
 				</Panel>
 			</HBox>
 		</content>
+		<endButton>
+            <Button type="Transparent" icon="sap-icon://decline" class="sapUiTinyMarginBeginEnd" text="{i18nacpnglinksModel>Close}" press="onDialogClose" />
+        </endButton>
 	</Dialog>
 </core:FragmentDefinition>
