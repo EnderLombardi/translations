@@ -283,11 +283,12 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/viz/ui5/DualCombination", "sap
 	changeSelection: function(oEvt){
 		
 		var id = oEvt.getSource().getId().split("--")[1];
+		var oView = this.getView();
 
  	   	switch(id){
  	   
 	 	   	case "lineComboBox":
-				var sLine = this.getView().byId("lineComboBox").getSelectedKey();
+				var sLine = oView.byId("lineComboBox").getSelectedKey();
 				
 				airbus.mes.disruptionkpi.ModelManager.oFilters.line = sLine;
 
@@ -295,22 +296,39 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/viz/ui5/DualCombination", "sap
 				if(sLine != "All")
 					aFilters.push(new sap.ui.model.Filter("line", sap.ui.model.FilterOperator.EQ, sLine));
 
-				this.getView().byId("stationComboBox").removeAllSelectedItems();
-				this.getView().byId("stationComboBox").getBinding("items").filter(aFilters);
+				oView.byId("stationComboBox").removeAllSelectedItems();
+				oView.byId("stationComboBox").getBinding("items").filter(aFilters);
 				
 				break;
 				
 	 	   	case "stationComboBox":
-	 	   		airbus.mes.disruptionkpi.ModelManager.oFilters.station = sap.ui.getCore().byId("disruptionKPIView--stationComboBox").getSelectedKeys();
+	 	   		airbus.mes.disruptionkpi.ModelManager.oFilters.station = oView.byId("stationComboBox").getSelectedKeys();
 	 	   		break;
 	 	   		
-	 	   	case "timePeriod":
-				this.oFilters.periodOfTimeStartDate = sap.ui.getCore().byId("disruptionKPIView--timePeriod").getDateValue();
-				this.oFilters.periodOfTimeEndDate   = sap.ui.getCore().byId("disruptionKPIView--timePeriod").getSecondDateValue();
+	 	   	case "startDateTime":
+				var oTime = oView.byId("startDateTime").getDateValue();
+				if(oTime == ""){
+					oView.byId("startDateTime").focus();
+					airbus.mes.shell.ModelManager.messageShow(oView.getModel("i18nModel").getProperty("startDateNoEmpty"));
+					return;
+				}
+					
+	 	   		this.oFilters.startDateTime = oTime;
+				break;
+	 	   		
+	 	   	case "endDateTime":
+				var oTime = oView.byId("endDateTime").getDateValue();
+				if(oTime == ""){
+					airbus.mes.shell.ModelManager.messageShow(oView.getModel("i18nModel").getProperty("endDateNoEmpty"));
+					oView.byId("endDateTime").focus();
+					return;
+				}
+				
+				this.oFilters.endDateTime = oTime;
 				break;
 	 	   	
 	 	   	case "timeUnit":
-	 	   		airbus.mes.disruptionkpi.ModelManager.oFilters.timeUnit = sap.ui.getCore().byId("disruptionKPIView--timeUnit").getSelectedKey();
+	 	   		airbus.mes.disruptionkpi.ModelManager.oFilters.timeUnit = oView.byId("timeUnit").getSelectedKey();
 	 	   		break;
 	 	   		break;
  	   	}

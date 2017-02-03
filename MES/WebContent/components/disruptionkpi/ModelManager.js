@@ -34,13 +34,13 @@ airbus.mes.disruptionkpi.ModelManager = {
 		
 		// Period of Time
 		if(this.oFilters.startDateTime ==""){
-			sap.ui.getCore().byId("disruptionKPIView--timePeriod").setDateValue();
-			sap.ui.getCore().byId("disruptionKPIView--timePeriod").setSecondDateValue(new Date());
-			this.oFilters.startDateTime = sap.ui.getCore().byId("disruptionKPIView--timePeriod").getDateValue();
-			this.oFilters.endDateTime   = sap.ui.getCore().byId("disruptionKPIView--timePeriod").getSecondDateValue();
+			sap.ui.getCore().byId("disruptionKPIView--startDateTime").setDateValue();
+			sap.ui.getCore().byId("disruptionKPIView--endDateTime").setDateValue(new Date());
+			this.oFilters.startDateTime = sap.ui.getCore().byId("disruptionKPIView--startDateTime").getDateValue();
+			this.oFilters.endDateTime   = sap.ui.getCore().byId("disruptionKPIView--endDateTime").getDateValue();
 		}else{
-			sap.ui.getCore().byId("disruptionKPIView--timePeriod").setDateValue(this.oFilters.startDateTime);
-			sap.ui.getCore().byId("disruptionKPIView--timePeriod").setSecondDateValue(this.oFilters.endDateTime);
+			sap.ui.getCore().byId("disruptionKPIView--startDateTime").setDateValue(this.oFilters.startDateTime);
+			sap.ui.getCore().byId("disruptionKPIView--endDateTime").setDateValue(this.oFilters.endDateTime);
 		}
 
 		// Time Unit

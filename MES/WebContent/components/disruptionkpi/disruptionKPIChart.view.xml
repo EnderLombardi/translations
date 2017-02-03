@@ -23,10 +23,10 @@
 				<core:Item key="{plantModel>station}" text="{plantModel>stationDescription}" />
 			</MultiComboBox>
 			
-			<Text text="{i18nModel>PeriodOfTime}:" class="sapUiTinyMarginBegin" />
+			<!-- <Text text="{i18nModel>PeriodOfTime}:" class="sapUiTinyMarginBegin" />
 			<DateRangeSelection id="timePeriod" dateValue="{path:'/dateValueDRS2'}" 
 				secondDateValue="{path:'/secondDateValueDRS2'}" minDate="{path:'/dateMinDRS2'}"
-				maxDate="{path:'/dateMaxDRS2'}" change="onChangeSelection" />
+				maxDate="{path:'/dateMaxDRS2'}" change="onChangeSelection" /> -->
 
 			<Text text="{i18nModel>timeUnit}:" class="sapUiTinyMarginBegin" />
 			<Select id="timeUnit" forceSelection="true" selectedKey="Minutes" change="onChangeSelection" >
@@ -43,11 +43,10 @@
 				<content>
 					<Button id="navBack" icon="sap-icon://arrow-left" press="onNavBack" type="Transparent" />
 					
-					<Text text="{i18nModel>PeriodOfTime}:" class="sapUiTinyMarginBeginEnd" />
-					<Text text="{i18nModel>From}" class="sapUiTinyMarginBegin" />
-					<DateTimePicker id="startDateTime" placeholder="Enter Date ..." change="onChangeSelection"/>
+					<Text text="{i18nModel>PeriodOfTime}:" class="sapUiTinyMarginBegin" />
+					<DateTimePicker id="startDateTime" placeholder="{i18nModel>EnterStartDateTime}" change="onChangeSelection"/>
 					<Text text="{i18nModel>To}" class="sapUiTinyMarginBegin" />
-					<DateTimePicker id="endDateTime" placeholder="Enter Date ..." change="onChangeSelection"/>
+					<DateTimePicker id="endDateTime" placeholder="{i18nModel>EnterEndDateTime}" change="onChangeSelection"/>
 				</content>
 			</OverflowToolbar>
 

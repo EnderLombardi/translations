@@ -73,25 +73,6 @@
 	    }
 	}
 }
-#disruptionKPIView--startDateTime, #disruptionKPIView--endDateTime{
-	width: 200px !important;
-    border-right: solid 1px $twilight-blue !important;
-		
-	input{
-		color: #0d5d76;
-		font-size: 12px;
-    	line-height: 3rem;
-    	border: 0 !important;
-    	background: $duck-egg-blue !important;
-	}
-	
-	@extend %greyPlaceholder;
-	
-	span.sapUiIcon{
-		background: transparent;
-   		color: #F5F5F5;
-	}
-}
 
 #disruptionKPIView--timeUnit{
     @extend %headerFilterBoxes;
@@ -100,10 +81,38 @@
 
 // CSS for filter boxes in subheader
 .disruptionKPI .Subheader{
-    background-color: $duck-egg-blue !important;    
-    .sapMBtnIconLeft,
-    .sapMBtnContent{
+    background-color: $duck-egg-blue !important;
+        
+    .sapMBtnIconLeft{
         color: #0D5D76 !important;
+        border-right: 1px solid #8db9ca;
     }   
+    
+    span{
+    	color:#0d5d76;
+    }
+    
+    // CSS for Date Time Range Selection
+	#disruptionKPIView--startDateTime, #disruptionKPIView--endDateTime{
+		width: 220px !important;
+			
+		input{
+			color: #0d5d76;
+	    	line-height: 3rem;
+	    	border: 0 !important;
+	    	background: $duck-egg-blue !important;
+		}
+		
+		@extend %bluePlaceholder;
+		
+		span.sapUiIcon{
+    		color:#0d5d76 !important;
+			background: transparent !important;
+		}
+	}
+	
+	#disruptionKPIView--endDateTime{
+		border-right: 1px solid #8db9ca;
+	}
         
 }

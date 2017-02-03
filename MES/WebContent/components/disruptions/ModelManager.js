@@ -405,9 +405,9 @@ airbus.mes.disruptions.ModelManager = {
 						var rowExists = data.Rowsets.Rowset;
 						if (rowExists != undefined) {
 							if (data.Rowsets.Rowset[0].Row[0].Message_Type == "S") {
-								/*airbus.mes.shell.ModelManager.messageShow(
-									airbus.mes.operationdetail.createDisruption.oView.getModel("i18nModel").getProperty("DisruptCreateSuccess"));
-*/
+								airbus.mes.shell.ModelManager.messageShow(
+									airbus.mes.disruptions.oView.createDisruption.getModel("i18nModel").getProperty("DisruptCreateSuccess"));
+
 								// load disruption Model again for new message
 								airbus.mes.disruptions.ModelManager.createEditFlag =true;
 								var operationBO = sap.ui.getCore().getModel(
@@ -434,7 +434,7 @@ airbus.mes.disruptions.ModelManager = {
 							} else if (data.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
 								if (data.Rowsets.Rowset[0].Row[0].Message === undefined)
 									airbus.mes.shell.ModelManager.messageShow(
-										airbus.mes.operationdetail.createDisruption.oView.getModel("i18nModel").getProperty("DisruptionNotSaved"));
+										airbus.mes.disruptions.oView.createDisruption.getModel("i18nModel").getProperty("DisruptionNotSaved"));
 								
 								else
 									airbus.mes.shell.ModelManager
@@ -457,7 +457,7 @@ airbus.mes.disruptions.ModelManager = {
 						airbus.mes.disruptions.ModelManager.unSetBusy();
 						
 						airbus.mes.shell.ModelManager.messageShow(
-							airbus.mes.operationdetail.createDisruption.oView.getModel("i18nModel").getProperty("DisruptionNotSaved"));
+							airbus.mes.disruptions.oView.createDisruption.getModel("i18nModel").getProperty("DisruptionNotSaved"));
 
 						airbus.mes.shell.util.navFunctions.disruptionButtons.create
 								.setEnabled(true);
@@ -579,7 +579,7 @@ airbus.mes.disruptions.ModelManager = {
 							} else if (data.Rowsets.Rowset[0].Row[0].Message_Type == "E") {
 								if (data.Rowsets.Rowset[0].Row[0].Message === undefined)
 									airbus.mes.shell.ModelManager
-											.messageShow(airbus.mes.operationdetail.createDisruption.oView
+											.messageShow(airbus.mes.disruptions.oView.createDisruption
 													.getModel("i18nModel")
 													.getProperty(
 															"DisruptionNotUpdated"));
@@ -605,7 +605,7 @@ airbus.mes.disruptions.ModelManager = {
 						// Busy
 						// Indicator
 						airbus.mes.shell.ModelManager
-								.messageShow(airbus.mes.operationdetail.createDisruption.oView
+								.messageShow(airbus.mes.disruptions.oView.createDisruption
 										.getModel("i18nModel").getProperty(
 												"DisruptionNotSaved"));
 
