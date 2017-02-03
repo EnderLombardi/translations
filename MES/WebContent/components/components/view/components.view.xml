@@ -95,7 +95,7 @@
             <table:Column  width="11rem">
                 <Label text="{i18nComponentsModel>committed}" />
                 <table:template>
-                    <Label text="{componentsWorkOrderDetail>committed}" />
+                    <Input value="{componentsWorkOrderDetail>committed}" />
                 </table:template>
             </table:Column>
             <table:Column  width="11rem">
