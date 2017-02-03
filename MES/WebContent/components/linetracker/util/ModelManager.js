@@ -20,11 +20,11 @@ airbus.mes.linetracker.util.ModelManager = {
 		//"KPIopenAnomalies", // Model for Open Anomalies
 		//"KPIextraWork", // Model for KPI Extra Work
 		//"KPIshiftStaffing", // Model for KPI Shift Staffing
-		"airlineLogoModel" // Model for Airline Logo
+		//"airlineLogoModel" // Model for Airline Logo
 		]
 		airbus.mes.shell.ModelManager.createJsonModel(core, aModel);
 		// Airline Logo Model
-		sap.ui.getCore().getModel("airlineLogoModel").attachRequestCompleted(airbus.mes.linetracker.util.ModelManager.loadFlightLogo);
+//		sap.ui.getCore().getModel("airlineLogoModel").attachRequestCompleted(airbus.mes.linetracker.util.ModelManager.loadFlightLogo);
 
 		//airbus.mes.linetracker.util.ModelManager.site = airbus.mes.settings.ModelManager.site;
 		
@@ -37,7 +37,7 @@ airbus.mes.linetracker.util.ModelManager = {
 		//this.loadLineVariantModel();
 
 		//this.loadPlantModel();
-		this.loadFlightLogo();
+		//this.loadFlightLogo();
 		//set customLineBO from userSettings Model
 
 	},
@@ -419,35 +419,7 @@ airbus.mes.linetracker.util.ModelManager = {
 		return (new Date()).toISOString().slice(0, 10).replace(/-/g, "");
 	},
 
-	/**
-	 * BR: SD-PPC-LT-110
-	 * Load Airline Logo Model
-	 */
-	// TODO $TF, $Application_ID and $msn values to be changed
-	loadFlightLogo : function() {
-		var oViewModel = sap.ui.getCore().getModel("airlineLogoModel");
-		var url = this.urlModel.getProperty("urlAirline_logo");
-		url = url.replace("$TF", "V");
-		url = url.replace("$Application_ID", "000000000030");
-		url = url.replace("$msn", "00002");
-		jQuery.ajax({
-			async : false,
-			type : 'get',
-			url : url,
-			contentType : 'application/json',
 
-			success : function(data) {
-				if (typeof data == "string") {
-					data = JSON.parse(data);
-				}
-				oViewModel.setData(data);
-			},
-
-			error : function(error, jQXHR) {
-				jQuery.sap.log.info(error);
-			}
-		});
-	},
 	updateLineInUserSettings : function(){
 //		var urlCustomLineBOInUserSetting = this.urlModel.getProperty('updatevarianthandle');
 		jQuery.ajax({

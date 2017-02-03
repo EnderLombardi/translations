@@ -9,52 +9,78 @@ airbus.mes.linetracker.util.Formatter = {
 	 * @param {string} :msn
 	 * @Returns Image Url
 	 */
-	selectImageToDisplay : function(msn){
+	/*selectImageToDisplay : function(msn){
         var src = airbus.mes.linetracker.util.Formatter.getAirlineImage(this.sId, msn);
         return src;
-    },
+    },*/
     /**
      * BR: SD-PPC-LT-110
      * To display Airline Logo
      * @Returns {boolean}: true
      */
-    
-    displayFlightImage:function(){
-    	 return airbus.mes.settings.AppConfManager.getConfiguration("MES_PHOTO_DISPLAY");
-    },
-	
+  
     /**
      * BR: SD-PPC-LT-110
      * To display Airline Logo
-     * @param image Id
      * @param msn
      * @returns image url
      */
-    getAirlineImage:function(imageId, msn){
+    getAirlineImage:function(msn){
 //	   var urlFlightImage = airbus.mes.linetracker.util.ModelManager.urlModel.getProperty("urlAirline_logo");
-    	var urlFlightImage = sap.ui.getCore().getModel("airlineLogoModel").oData["Rowsets"].Rowset[0].Row[0].airline_logo_url;
+//    	var urlFlightImage = sap.ui.getCore().getModel("airlineLogoModel").oData["Rowsets"].Rowset[0].Row[0].airline_logo_url;
+    	var urlFlightImage = airbus.mes.linetracker.util.Formatter.loadFlightLogo(msn);
 //	   urlFlightImage = urlFlightImage.replace("$username", username.toUpperCase());
 //	   urlFlightImage = urlFlightImage.replace("$TF", "V");
 //	   urlFlightImage = urlFlightImage.replace("$Application_ID", "000000000030");
 //	   urlFlightImage = urlFlightImage.replace("$msn", "00002");
-		if(sap.ui.getCore().byId(imageId))
-			sap.ui.getCore().byId(imageId).onerror = airbus.mes.linetracker.util.Formatter.getErrorFlightImage;
-
+		//if(sap.ui.getCore().byId(imageId))
+			//sap.ui.getCore().byId(imageId).onerror = airbus.mes.linetracker.util.Formatter.getErrorFlightImage;
+//    	console.log(urlFlightImage);
 		return urlFlightImage;    	
     },
+    
     /**
      * BR: SD-PPC-LT-110
      * Get Error Airline Logo 
      * Default Logo url will be sent
      * @return ImageUrl
      */
-    getErrorFlightImage: function(img){
-			if(this.setSrc)
-				this.setSrc ( "../images_locale/lufthansa-logo.jpg");
-			else
-				img.src =  "../images_locale/lufthansa-logo.jpg";
+    getErrorFlightImage: function(){
+		return "../images_locale/lufthansa-logo.jpg";
+		
 	},
-	
+	/**
+	 * BR: SD-PPC-LT-110
+	 * Load Airline Logo Model
+	 */
+	// TODO $TF, $Application_ID and $msn values to be changed
+	loadFlightLogo : function(msn) {
+		var that =this;
+		msn= msn.split("_")[0];//to remove the hand from msn
+		//var oViewModel = sap.ui.getCore().getModel("airlineLogoModel");
+		var url = airbus.mes.linetracker.util.ModelManager.urlModel.getProperty("urlAirline_logo");
+		url = url.replace("$TF", "V");
+		url = url.replace("$Application_ID", "000000000030");
+		url = url.replace("$msn", msn);
+		jQuery.ajax({
+			async : true,
+			type : 'get',
+			url : url,
+			contentType : 'application/json',
+
+			success : function(data) {
+				if (typeof data == "string") {
+					data = JSON.parse(data);
+				}
+				that.setSrc(data.Rowsets.Rowset[0].Row[0].airline_logo_url);
+				//return data.Rowsets.Rowset[0].Row[0].airline_logo_url;
+			},
+
+			error : function(error, jQXHR) {
+				that.setSrc(airbus.mes.linetracker.util.Formatter.getErrorFlightImage());
+			}
+		});
+	},
 	
 	/**
 	 * BR: SD-PPC-LT-150

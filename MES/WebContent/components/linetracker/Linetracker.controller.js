@@ -492,6 +492,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	/**
 	 * BR:SD-PPC-LT-090
 	 * Set the Selected value
+	 * @param
 	 */
 	setEnabledSelect : function(fProgram, fLine, fStation, fMsn) {
 		sap.ui.getCore().byId("selectLine").setEnabled(fLine);
@@ -553,6 +554,78 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 			this.getView().addDependent(this.oTaktActionPopover);
 		}
 		this.oTaktActionPopover.openBy(oEvt.getSource());
+	},
+	
+	/**
+	 * BR:SD-PPC-LT-230
+	 * Takt actions – load next MSN
+	 */
+	loadNextMsn : function(){
+		this.actionButtonStatus(false,true,false,false,true);
+//		sap.ui.getCore().byId("loadNextMSN").setEnabled(false);
+//		sap.ui.getCore().byId("startAssembly").setEnabled(true);
+//		sap.ui.getCore().byId("endAssembly").setEnabled(false);
+//		sap.ui.getCore().byId("emptyStation").setEnabled(false);
+		
+	},
+	
+	/**
+	 * BR:SD-PPC-LT-210
+	 * Takt actions – start of assembly
+	 */
+	startAssembly : function(){
+		this.actionButtonStatus(false,false,true,false,true);
+		sap.ui.getCore().byId("idLinetracker1--lineTrackerActionIcon").setSrc("sap-icon://media-play");
+//		sap.ui.getCore().byId("loadNextMSN").setEnabled(false);
+//		sap.ui.getCore().byId("startAssembly").setEnabled(false);
+//		sap.ui.getCore().byId("endAssembly").setEnabled(true);
+//		sap.ui.getCore().byId("emptyStation").setEnabled(false);
+
+	},
+	
+	/**
+	 * BR:SD-PPC-LT-220
+	 * Takt actions – end of assembly
+	 */
+	endAssembly : function(){
+		this.actionButtonStatus(true,false,false,true,true);
+//		sap.ui.getCore().byId("loadNextMSN").setEnabled(true);
+//		sap.ui.getCore().byId("startAssembly").setEnabled(false);
+//		sap.ui.getCore().byId("endAssembly").setEnabled(false);
+//		sap.ui.getCore().byId("emptyStation").setEnabled(true);
+	},
+	
+	/**
+	 * BR:SD-PPC-LT-240
+	 * Takt actions – empty station
+	 */
+	emptyStation : function(){
+		this.actionButtonStatus(true,false,false,false,true);
+//		sap.ui.getCore().byId("loadNextMSN").setEnabled(true);
+//		sap.ui.getCore().byId("startAssembly").setEnabled(false);
+//		sap.ui.getCore().byId("endAssembly").setEnabled(false);
+//		sap.ui.getCore().byId("emptyStation").setEnabled(false);
+	},
+	
+	/**
+	 * BR: SD-PPC-LT-250
+	 * Takt actions – undo 
+	 */
+	undo : function(){
+		this.actionButtonStatus(true,true,true,true,true);
+//		sap.ui.getCore().byId("loadNextMSN").setEnabled(true);
+//		sap.ui.getCore().byId("startAssembly").setEnabled(true);
+//		sap.ui.getCore().byId("endAssembly").setEnabled(true);
+//		sap.ui.getCore().byId("emptyStation").setEnabled(true);
+	},
+	
+	actionButtonStatus:function(load,start,end,empty,undo){
+		sap.ui.getCore().byId("loadNextMSN").setEnabled(load);
+		sap.ui.getCore().byId("startAssembly").setEnabled(start);
+		sap.ui.getCore().byId("endAssembly").setEnabled(end);
+		sap.ui.getCore().byId("emptyStation").setEnabled(empty);
+		sap.ui.getCore().byId("undo").setEnabled(undo);
 	}
+	
 
 });

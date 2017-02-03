@@ -3654,6 +3654,9 @@ Custom Progress Bar
 #taktActionPopover #taktActionPopover-cont {
   background-color: #FFFFFF; }
 
+.sapUiTableRSel .sapUiTableColHdrCnt > .sapUiTableColRowHdr {
+  display: none; }
+
 /*********************************
 Physical Station
 ********************************/
