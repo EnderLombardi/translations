@@ -117,16 +117,17 @@ airbus.mes.linetracker.util.Formatter = {
 	 * @param msn, completion_date_time and Actual_date_time
 	 * @param return Icon
 	 */
-	getActionIcon: function(msn, date){
-		if(msn == ""){
+	getActionIcon: function(actionIcon){
+		if(actionIcon == "empty"){
 			return "sap-icon://border";
-		}else if(msn != "" && date == ""){
+		}else if(actionIcon == "end" ){
 			return "sap-icon://accept";
-		}else if(msn != "" && date != "" ){
+		}else if(actionIcon == "start"){
 			return "sap-icon://media-play";
-		}else{
+		}else if(actionIcon == "load"){
 			return "sap-icon://media-pause";
+		}else{
+			return "";
 		}
-		
 	}
 }

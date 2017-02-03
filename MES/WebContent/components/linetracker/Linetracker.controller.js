@@ -556,11 +556,18 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 		this.oTaktActionPopover.openBy(oEvt.getSource());
 	},
 	
+//	getSelectedRowId:function(){
+//		
+//	},
+	
 	/**
 	 * BR:SD-PPC-LT-230
 	 * Takt actions – load next MSN
 	 */
-	loadNextMsn : function(){
+	loadNextMsn : function(oEvt){		
+		
+		oEvt.getSource().getParent().getParent()._oOpenBy.setSrc("sap-icon://media-pause");
+		
 		this.actionButtonStatus(false,true,false,false,true);
 //		sap.ui.getCore().byId("loadNextMSN").setEnabled(false);
 //		sap.ui.getCore().byId("startAssembly").setEnabled(true);
@@ -573,13 +580,9 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	 * BR:SD-PPC-LT-210
 	 * Takt actions – start of assembly
 	 */
-	startAssembly : function(){
+	startAssembly : function(oEvt){
 		this.actionButtonStatus(false,false,true,false,true);
-		sap.ui.getCore().byId("idLinetracker1--lineTrackerActionIcon").setSrc("sap-icon://media-play");
-//		sap.ui.getCore().byId("loadNextMSN").setEnabled(false);
-//		sap.ui.getCore().byId("startAssembly").setEnabled(false);
-//		sap.ui.getCore().byId("endAssembly").setEnabled(true);
-//		sap.ui.getCore().byId("emptyStation").setEnabled(false);
+		oEvt.getSource().getParent().getParent()._oOpenBy.setSrc("sap-icon://media-play");
 
 	},
 	
@@ -587,24 +590,20 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	 * BR:SD-PPC-LT-220
 	 * Takt actions – end of assembly
 	 */
-	endAssembly : function(){
+	endAssembly : function(oEvt){
+		oEvt.getSource().getParent().getParent()._oOpenBy.setSrc("sap-icon://accept");
 		this.actionButtonStatus(true,false,false,true,true);
-//		sap.ui.getCore().byId("loadNextMSN").setEnabled(true);
-//		sap.ui.getCore().byId("startAssembly").setEnabled(false);
-//		sap.ui.getCore().byId("endAssembly").setEnabled(false);
-//		sap.ui.getCore().byId("emptyStation").setEnabled(true);
 	},
 	
 	/**
 	 * BR:SD-PPC-LT-240
 	 * Takt actions – empty station
 	 */
-	emptyStation : function(){
+	emptyStation : function(oEvt){
+		
+		oEvt.getSource().getParent().getParent()._oOpenBy.setSrc("sap-icon://border");
+		
 		this.actionButtonStatus(true,false,false,false,true);
-//		sap.ui.getCore().byId("loadNextMSN").setEnabled(true);
-//		sap.ui.getCore().byId("startAssembly").setEnabled(false);
-//		sap.ui.getCore().byId("endAssembly").setEnabled(false);
-//		sap.ui.getCore().byId("emptyStation").setEnabled(false);
 	},
 	
 	/**
@@ -613,10 +612,6 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	 */
 	undo : function(){
 		this.actionButtonStatus(true,true,true,true,true);
-//		sap.ui.getCore().byId("loadNextMSN").setEnabled(true);
-//		sap.ui.getCore().byId("startAssembly").setEnabled(true);
-//		sap.ui.getCore().byId("endAssembly").setEnabled(true);
-//		sap.ui.getCore().byId("emptyStation").setEnabled(true);
 	},
 	
 	actionButtonStatus:function(load,start,end,empty,undo){
