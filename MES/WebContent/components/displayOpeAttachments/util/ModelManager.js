@@ -6,6 +6,7 @@ airbus.mes.displayOpeAttachments.util.ModelManager = {
 	urlModel: undefined,
 	i18nModel: undefined,
 	treeTableArray: [],
+	nbOfDocTypes: 0,
 
 	//todo :will be the configuration received in AppConfManager
 	//sSet : airbus.mes.settings.AppConfManager.getConfiguration("VIEW_ATTACHED_TOOL");

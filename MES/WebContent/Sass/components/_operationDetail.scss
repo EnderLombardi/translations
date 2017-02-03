@@ -409,7 +409,6 @@
   // to do
 }
 
-
 //CheckList and Records
 #idCheckListView--Checklist.Checklist{
     width:95% !important;
@@ -419,4 +418,37 @@
 
 .ConfirmChecklist{
     margin-top:20px;
+}
+
+#operationDetailsView--operationDetailPanel {
+    >header {
+        >div{
+            height: 4.375rem !important;
+        }
+    }
+}
+
+#operationDetailsView--opDetailNavToolbar {
+    height: 3rem;
+}
+
+#operationDetailsView--operDetailNavContainer {
+    height: calc(100% - 4.375rem - 3rem - 1rem) !important;
+}
+
+#operationDetailsView--opDetailSegmentButtons{
+    div {
+        height: 100%;
+    }
+    >div.sapMITH {
+        box-shadow:none;
+        >span {
+            top:0;
+        }
+        >div {
+            >div {
+                margin-top: 0;
+            }
+        }
+    }
 }

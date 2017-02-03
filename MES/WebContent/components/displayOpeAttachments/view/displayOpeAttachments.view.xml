@@ -25,7 +25,8 @@
                     toggleOpenState="onToggleTreeTable"
                     expandFirstLevel="true"
                     selectionMode="None"
-                    firstVisibleRowChanged="onScroll">
+                    firstVisibleRowChanged="onScroll"
+                    visibleRowCount="9">
                 <columns>
                     <Column width="20%">
                         <m:Label class="DisOpAttLabel" text="{i18nDisplayOpeAttachmentsModel>Documents}"/>

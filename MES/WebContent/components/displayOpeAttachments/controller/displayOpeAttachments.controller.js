@@ -63,7 +63,7 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 		var bExpanded = oEvent.getParameter("expanded");//expanding (true) or collapsing (false)
 		var iRowIndex = oEvent.getParameter("rowIndex");//row index (sapui5)
 
-		//we check if the first row has changed, this case happens when we have scroll bottom and collapsed an element, which ends with less than 10 elements in the array
+		//we check if the first row has changed, this case happens when we have scroll bottom and collapsed an element, which ends with less than 9 elements in the array
 		if (!bExpanded) {
 			//if the first row has changed, we may have a gap of elements in the view to anticipate
 			var documentsGap = this.checkIfFirstRowChanged(treeTableArray, iRowIndex);//indicate the number of rows in the gap
@@ -159,7 +159,7 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 	//we check and calculate the gap if we are in this case
 	checkIfFirstRowChanged: function (treeTableArray, iRowIndex) {
 		var maxPosition = Math.max.apply(Math, treeTableArray.map(function (o) { return o.position; }));
-		if (maxPosition < 9) {// means that the treetable isn't filled with 10 elements so no first row changed
+		if (maxPosition < 8) {// means that the treetable isn't filled with 9 elements so no first row changed
 			return 0;
 		}
 
@@ -183,7 +183,7 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 					elementsAvailableBefore++;
 				}
 			}
-			if (treeTableArray[i].position === 9) {//if we have reached the ninth position we will calculate the elements available to be displayed but not currently displayed
+			if (treeTableArray[i].position === 8) {//if we have reached the ninth position we will calculate the elements available to be displayed but not currently displayed
 				afterNinthElementsDisplayed = true;
 				if (treeTableArray[i].isOpened === false) {
 					i += treeTableArray[i].nbOfDocs;
@@ -194,7 +194,7 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 		var arrayIndex = this.findSelectedDocType(treeTableArray, iRowIndex);
 		var nbOfDocsDisplayed = 0, x = arrayIndex + 1;
 		//calculate numbers of document of this type displayed
-		while (x < treeTableArray.length && treeTableArray[x].position <= 9 && !treeTableArray[x].isDocType) {
+		while (x < treeTableArray.length && treeTableArray[x].position <= 8 && !treeTableArray[x].isDocType) {
 			nbOfDocsDisplayed++;
 			x++;
 		}
@@ -301,7 +301,7 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 		var positionMax, events;
 		for (var j = 0; j < treeTableArray.length; j++) {
 			positionMax = treeTableArray[j].position + 1;
-			if (positionMax <= 10) {
+			if (positionMax <= 9) {
 				events = $._data(this.selectTreeTableRow(positionMax)[0], 'events');//events list of the row
 				if (treeTableArray[j].position !== null && !treeTableArray[j].isDocType) {
 					this.selectTreeTableRow(positionMax).addClass("document");
@@ -316,7 +316,7 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 						this.selectTreeTableRow(positionMax).off("click", this.openDocumentPopup);//we remove click event
 					}
 				}
-			} else {//we have filled the 10 rows of the view
+			} else {//we have filled the 9 rows of the view
 				break;//so we break the loop
 			}
 		}
@@ -325,8 +325,8 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 		var k = treeTableArray.length - 1, rowIndex;
 		//we browse the treetableArray to remove class/event if it's a document displayed
 		while (k >= 0) {
-			//if position <=10 it means it's displayed, furthermore if it's a document we remove the document class and the event
-			if (treeTableArray[k].position !== null && treeTableArray[k].position <= 9 && treeTableArray[k].isDocType) {
+			//if position <=8 it means it's displayed, furthermore if it's a document we remove the document class and the event
+			if (treeTableArray[k].position !== null && treeTableArray[k].position <= 8 && treeTableArray[k].isDocType) {
 				rowIndex = treeTableArray[k].position + 1;//index difference between a javascript array and a jquery element
 				this.selectTreeTableRow(rowIndex).removeClass("document");
 
@@ -404,17 +404,6 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 		paramArray.push(routerStepBO);
 
 		this.init();
-
-		// //load data in the model at the init of the component
-		// var oModule = airbus.mes.displayOpeAttachments.util.ModelManager;
-		// oModule.loadDOADetail();
-		// oModule.createTreeTableArray();
-
-		// //to expand all
-		// var oTTbl = airbus.mes.displayOpeAttachments.oView.byId("DOATable");
-		// var treeTableArray = airbus.mes.displayOpeAttachments.util.ModelManager.treeTableArray;
-		// this.treeExpandAll(treeTableArray, oTTbl);
-		// this.updateTreeTableView(oModule.treeTableArray);
 	},
 
 });
