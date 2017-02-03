@@ -73,7 +73,6 @@ gulp.task('ui5preload_shell', ['clean'], function() {
 
 //Generic
 for(let i=0; i<component.length; i++){
-	
 	if(component[i] != "shell" || component[i] != "disruptionkpi" ){
 	
 	//generate list of name ui5preload
@@ -85,6 +84,8 @@ for(let i=0; i<component.length; i++){
 		                './WebContent/components/'+component[i]+'/*/**.+(js|xml|properties|css|json)',
 		                '!./WebContent/components/'+component[i]+'/kpi/**',
 	                  ])
+	        //.pipe(gulpif('**/*.js',uglify()))    //only pass .js files to uglify 
+		    //.pipe(gulpif('**/*.xml',prettydata({type:'minify'}))) // only pass .xml to prettydata  
 	          .pipe(gulpif('**/i18n/*.properties', escapeProperties({ type: "properties" })))
 	          .pipe(ui5preload({base:'./WebContent/components/'+component[i]+'/', namespace:'airbus.mes.'+component[i]}))
 	          .pipe(gulp.dest(dest + '/components/'+component[i]));
@@ -99,8 +100,7 @@ gulp.task('ui5preload_disruptionkpi', ['clean'], function() {
 		                  './WebContent/components/disruptiontracker/kpi/*/**.+(js|xml|properties|css|json)',
 						  '!./WebContent/components/disruptiontracker/kpi/dist/**'
 		                ])
-		        //.pipe(gulpif('**/*.js',uglify()))    //only pass .js files to uglify 
-		        //.pipe(gulpif('**/*.xml',prettydata({type:'minify'}))) // only pass .xml to prettydata  
+
 		        .pipe(gulpif('**/i18n/*.properties', escapeProperties({ type: "properties" })))
 		        .pipe(ui5preload({base:'./WebContent/components/disruptiontracker/kpi', namespace:'airbus.mes.disruptionkpi'}))
 		        .pipe(gulp.dest(dest + '/components/disruptiontracker/kpi'));

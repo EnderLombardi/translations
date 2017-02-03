@@ -199,15 +199,23 @@ div{
 
 //sapUI TABAL COL ROW HDR
 #polypoly{
+	.sapUiTableCHdr .sapUiTableColHdrCnt{
+		
+		background:#fff;
+	}
     .sapUiTableRSel{
         .sapUiTableColHdrFixed{
             margin: 0;
+            visibility:hidden;
         }
     }
     @at-root #polypoly .sapUiTableCol:hover{
         @at-root &, #polypoly .sapUiTableColRowHdr:hover{
             background-color:rgba(255, 255, 255, 0);
         }
+    }
+   .sapUiTableColCell {
+    padding: 5px 0.5rem;
     }
 }
 

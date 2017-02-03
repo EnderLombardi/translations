@@ -290,6 +290,10 @@ RESSOURCEPOOL
     }
     .sapMPageWithSubHeader{
         &>section{
+<<<<<<< Upstream, based on origin/MESv1.5
+=======
+ //top: calc(3rem + 18px);
+>>>>>>> d4ce539 fix
             .resourcePoolSubheader{
                 li{
                     height: 3rem;

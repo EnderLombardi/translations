@@ -2778,10 +2778,15 @@ div[id^="polypoly--oTablePolypoly"] {
 div[id^="polypoly--oTablePolypoly"] .sapUiTableColRowHdr {
   display: none; }
 
+#polypoly .sapUiTableCHdr .sapUiTableColHdrCnt {
+  background: #fff; }
 #polypoly .sapUiTableRSel .sapUiTableColHdrFixed {
-  margin: 0; }
+  margin: 0;
+  visibility: hidden; }
 #polypoly .sapUiTableCol:hover, #polypoly .sapUiTableColRowHdr:hover {
   background-color: rgba(255, 255, 255, 0); }
+#polypoly .sapUiTableColCell {
+  padding: 5px 0.5rem; }
 
 [id^="polypoly--oTablePolypoly-table-fixed"] .sapUiTableTr:not(.sapUiTableGroupHeader) > td:last-child {
   border-right: 3px solid #ffffff; }

@@ -1,7 +1,7 @@
 <core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m" xmlns:ui="sap.ui.layout" controllerName="airbus.mes.resourcepool.views.Main"
 	xmlns:html="http://www.w3.org/1999/xhtml">
-	<Page showHeader="false" height="100%" enableScrolling="false" classs="apUiSizeCozy">
+	<Page showHeader="false" height="100%" enableScrolling="false" class="sapUiSizeCozy">
 		<content>
 			<HBox height="100%" class="fixHboxItemDisplay">
 				<Panel class="panelBorder" expanded="true" expandable="false"
@@ -34,10 +34,10 @@
 								mode="{path:'ResourcePoolDetailModel>',formatter:'airbus.mes.resourcepool.util.Formatter.selectionMode'}"
 								includeItemInSelection="true" noDataText="{i18nModel>NoUserAvailable}"
 								rememberSelections="false" growingScrollToLoad="true" growing="true"
-								growingThreshold="1000">
+								growingThreshold="1000" class="sapUiSizeCozy">
 								<CustomListItem>
 									<content>
-										<ui:HorizontalLayout class="fixDsiplayRpImg">
+										<ui:HorizontalLayout>
 											<Image class="ylabelUserImage"
 												visible="{ path : 'ResourcePoolDetailModel>userId', formatter : 'airbus.mes.resourcepool.util.Formatter.displayImage' }"
 												error = "{ path : 'ResourcePoolDetailModel>userId', formatter : 'airbus.mes.shell.UserImageManager.getErrorUserImage' }"
