@@ -12,6 +12,7 @@ airbus.mes.linetracker.util.ModelManager = {
 
 		var aModel = [ "stationDataModel", // Model for Station Data
 		"lineVariantModel", // Model for Line variant Data
+		"statusActionModel"
 		//"KPIchartTaktAdherence", // Model for Takt Adherence KPI chart data
 		//"KPItaktAdherence", // Model for KPI Takt Ahderence
 		//"KPItaktEfficiency", // Model for KPI takt efficiency
@@ -480,7 +481,10 @@ airbus.mes.linetracker.util.ModelManager = {
 		oModel.setProperty("/Rowsets/Rowset/0/Row/0/program",result.line);
 		oModel.refresh();
 	},
-	
+	/**
+	 * @param station, msn, action
+	 * perform takt action based on the chosen action amd relaod all the model
+	 */
 	performTaktAction : function(station, msn, action){
 		jQuery.ajax({
 			type : 'post',
@@ -507,6 +511,18 @@ airbus.mes.linetracker.util.ModelManager = {
 				// sap.ui.getCore().byId("idLinetracker1").setBusy(false);
 			}
 		});
+	},
+	/**
+	 * @param msn, status
+	 * to add the nextMsn and status from the chosen row to current popover model
+	 */
+	populateStatusActionModel : function(nextMsn, status){
+		var data = {
+			"msn" : nextMsn,
+			"status" : status
+		} 
+		sap.ui.getCore().getModel("statusActionModel").setData(data);
+		sap.ui.getCore().getModel("statusActionModel").refresh();
 	}
 
 };

@@ -566,6 +566,9 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 			this.oTaktActionPopover = sap.ui.xmlfragment("airbus.mes.linetracker.fragments.taktOperation", this);
 			this.getView().addDependent(this.oTaktActionPopover);
 		}
+		var status = sap.ui.getCore().getModel("stationDataModel").getProperty(oEvt.getSource().getBindingContext("stationDataModel").getPath()).status
+		var nextMsn = sap.ui.getCore().getModel("stationDataModel").getProperty(oEvt.getSource().getBindingContext("stationDataModel").getPath()).nextMsn
+		airbus.mes.linetracker.util.ModelManager.populateStatusActionModel(nextMsn, status);
 		this.oTaktActionPopover.openBy(oEvt.getSource());
 	},
 	
