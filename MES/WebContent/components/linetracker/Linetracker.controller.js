@@ -564,15 +564,15 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 		}
 	},*/
 	openTaktActionPopover : function(oEvt){
-		if (!this.oTaktActionPopover) {
-			this.oTaktActionPopover = sap.ui.xmlfragment("airbus.mes.linetracker.fragments.taktOperation", this);
-			this.getView().addDependent(this.oTaktActionPopover);
-		}
 		var station = sap.ui.getCore().getModel("stationDataModel").getProperty(oEvt.getSource().getBindingContext("stationDataModel").getPath()).station
 		var status = sap.ui.getCore().getModel("stationDataModel").getProperty(oEvt.getSource().getBindingContext("stationDataModel").getPath()).status
 		var msn = sap.ui.getCore().getModel("stationDataModel").getProperty(oEvt.getSource().getBindingContext("stationDataModel").getPath()).msn
 		var nextMsn = sap.ui.getCore().getModel("stationDataModel").getProperty(oEvt.getSource().getBindingContext("stationDataModel").getPath()).nextMsn
 		airbus.mes.linetracker.util.ModelManager.populateStatusActionModel(station,msn,nextMsn, status);
+		if (!this.oTaktActionPopover) {
+			this.oTaktActionPopover = sap.ui.xmlfragment("airbus.mes.linetracker.fragments.taktOperation", this);
+			this.getView().addDependent(this.oTaktActionPopover);
+		}
 		this.oTaktActionPopover.openBy(oEvt.getSource());
 	},
 	
@@ -583,7 +583,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	 */
 	loadNextMsn : function(oEvt){		
 		
-		oEvt.getSource().getParent().getParent()._oOpenBy.setSrc("sap-icon://media-pause");
+//		oEvt.getSource().getParent().getParent()._oOpenBy.setSrc("sap-icon://media-pause");
 		//to be done with model
 //		this.actionButtonStatus(false,true,false,false,true);
 		//extract msn and station
@@ -595,8 +595,8 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	 * BR:SD-PPC-LT-210
 	 * Takt actions – start of assembly
 	 */
-	startAssembly : function(oEvt){
-		oEvt.getSource().getParent().getParent()._oOpenBy.setSrc("sap-icon://media-play");
+	startAssembly : function(oEvt){		
+//		oEvt.getSource().getParent().getParent()._oOpenBy.setSrc("sap-icon://media-play");
 		//extract msn and station
 		airbus.mes.linetracker.util.ModelManager.performTaktAction(airbus.mes.linetracker.util.ModelManager.aTaktAction[1]);
 		//to be done with model
@@ -610,7 +610,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	 * Takt actions – end of assembly
 	 */
 	endAssembly : function(oEvt){
-		oEvt.getSource().getParent().getParent()._oOpenBy.setSrc("sap-icon://accept");
+//		oEvt.getSource().getParent().getParent()._oOpenBy.setSrc("sap-icon://accept");
 		//extract msn and station
 		airbus.mes.linetracker.util.ModelManager.performTaktAction(airbus.mes.linetracker.util.ModelManager.aTaktAction[2]);
 		//to be done with model
@@ -623,7 +623,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	 */
 	emptyStation : function(oEvt){
 		
-		oEvt.getSource().getParent().getParent()._oOpenBy.setSrc("sap-icon://border");
+//		oEvt.getSource().getParent().getParent()._oOpenBy.setSrc("sap-icon://border");
 		//extract msn and station
 		airbus.mes.linetracker.util.ModelManager.performTaktAction(airbus.mes.linetracker.util.ModelManager.aTaktAction[3]);
 		//to be done with model

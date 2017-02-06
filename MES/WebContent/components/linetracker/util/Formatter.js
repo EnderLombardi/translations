@@ -160,20 +160,31 @@ airbus.mes.linetracker.util.Formatter = {
 		}
 
 	},
+	
 	showHideButtonsOnStatus : function(status) {
-		if (this.getId() === "loadNextMSN" && ( status === "IN_PROGRESS" || status === "COMPLETE") )
-			return true;
-		else if (this.getId() === "startAssembly" && ( status === "LOADED" || status === "COMPLETE" ))
-			return true;
-		else if (this.getId() === "emptyStation" && ( status === "UN_LOADED" ))
-			return true;
-		if (this.getId() === "endAssembly" && ( status === "UN_LOADED" || status === "LOADED" ))
-			return true;
-		if (this.getId() === "undo" && ( status === "COMPLETE" || status === "IN_PROGRESS" || status === "LOADED" || status === "UN_LOADED"))
-			return true;
-		/*status is msn here for last case*/
-		if (this.getId() === "nextMsnImage" && status && status!=="NA")
-			return true;
+		if (this.getId() === "loadNextMSN"){
+//			if(status === "UN_LOADED" || status === "COMPLETE" || status === "TO_BE_LOADED")
+				 if( status === "LOADED" || status === "IN_PROGRESS" || status === "COMPLETE")
+				return false;
+		}else if (this.getId() === "startAssembly"){
+//			 if( status !== "LOADED" || status !== "IN_PROGRESS" )
+			if(status === "IN_PROGRESS" || status === "UN_LOADED" || status === "COMPLETE" || status === "TO_BE_LOADED")
+				return false;				 
+		}else if (this.getId() === "emptyStation" ){
+//			if( status !== "UN_LOADED" )
+			if( status === "UN_LOADED" || status === "TO_BE_LOADED" )
+				return false;
+		}else if (this.getId() === "endAssembly"){
+//			 if( status !== "IN_PROGRESS" || status !== "LOADED" )
+			 if(status === "UN_LOADED" || status === "COMPLETE" || status === "TO_BE_LOADED")
+				return false;				 
+		}else if (this.getId() === "undo" ){
+			if( status === "COMPLETE" || status === "IN_PROGRESS" || status === "LOADED" || status === "UN_LOADED" || status === "TO_BE_LOADED")
+				return true;
+		}else if (this.getId() === "nextMsnImage"){ 	// /*status is msn here for last case*/
+			if( status!=="NA") 
+				return true;
+		}
 
 	}
 }

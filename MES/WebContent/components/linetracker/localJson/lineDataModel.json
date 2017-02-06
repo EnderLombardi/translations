@@ -1,8 +1,5 @@
 {"variantNameList": [
-	{"variantName" : "Line 1","Description" : "Line Description"},
-	{"variantName" : "Line 2","Description" : "Line2 Description"},
-	{"variantName" : "Line 3","Description" : "Line3 Description"},
-	{"variantName" : "Line 4","Description" : "Line4 Description"},
-	{"variantName" : "Siva","Description" : "TEST Description"}
+	{"variantName" : "CHES_BUILDING_1","Description" : "Line Description"},
+	{"variantName" : "A330_LINE_GROUP_1","Description" : "Line2 Description"}
 	]
 }

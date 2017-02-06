@@ -1,4 +1,4 @@
-[{
+{"stationData":[{
 	"site": "FNZ1",
 	"program": "A330",
 	"line": "CHES_BUILDING_1",
@@ -373,4 +373,4 @@
 	"openDisruption": "4",
 	"openAndon": "5",
 	"status":"IN_PROGRESS"
-}]
+}]}
