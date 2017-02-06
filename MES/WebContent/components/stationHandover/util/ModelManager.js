@@ -3,6 +3,8 @@ jQuery.sap.declare("airbus.mes.stationHandover.util.ModelManager");
 
 airbus.mes.stationHandover.util.ModelManager = {
        urlModel : undefined,
+       aSelected : [],
+       aSelectedChild : [],
        queryParams : jQuery.sap.getUriParameters(),
        i18nModel : undefined,
        selectAll : false,

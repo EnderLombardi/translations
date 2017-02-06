@@ -4,12 +4,12 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 
 	onAfterRendering : function() {
 		var aColumns = airbus.mes.stationHandover.oView.byId("TreeTableBasic").getColumns();
-    	
-    	aColumns.forEach(function(el,indice){
-    		
-    		airbus.mes.stationHandover.oView.byId("TreeTableBasic").autoResizeColumn(indice);
-    	
-    	});
+
+		aColumns.forEach(function(el, indice) {
+
+			airbus.mes.stationHandover.oView.byId("TreeTableBasic").autoResizeColumn(indice);
+
+		});
 
 	},
 
@@ -17,11 +17,11 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 		nav.back();
 	},
 
-	/***********************************************************************
+	/***************************************************************************
 	 * Display the stationHandover in view mode "Shift" only on shift is
 	 * represented and the step of stationHandover is set to 30min
 	 * 
-	 **********************************************************************/
+	 **************************************************************************/
 	onShiftPress : function() {
 
 		airbus.mes.stationHandover.util.ShiftManager.shiftDisplay = true;
@@ -59,15 +59,15 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 			airbus.mes.stationHandover.util.ModelManager.filter.search = undefined;
 
 		}
-		
+
 		this.applyMyFilter();
 
 		airbus.mes.stationHandover.oView.byId("TreeTableBasic").expandToLevel(99);
 
 	},
 	/***************************************************************************
-	 *Apply filters on the stationHandoverTracker it can user several filter at
-	 *the same time
+	 * Apply filters on the stationHandoverTracker it can user several filter at
+	 * the same time
 	 * 
 	 **************************************************************************/
 	applyMyFilter : function() {
@@ -75,35 +75,35 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 		var oMyfilter = airbus.mes.stationHandover.util.ModelManager.filter;
 		var oTreeTable = airbus.mes.stationHandover.oView.byId("TreeTableBasic").getBinding("rows");
 		var aFilter = [];
-		
-		for (var i in oMyfilter) {
-			
-			if ( oMyfilter[i] != undefined ) {
-			
-			aFilter.push(oMyfilter[i]);
-			
+
+		for ( var i in oMyfilter) {
+
+			if (oMyfilter[i] != undefined) {
+
+				aFilter.push(oMyfilter[i]);
+
 			}
 		}
-		
-		if ( aFilter.length === 0  ){
+
+		if (aFilter.length === 0) {
 
 			oTreeTable.filter();
 
-		} else  {
-			
-			oTreeTable.filter(new sap.ui.model.Filter(aFilter,true)); 
-		}
-		
-		airbus.mes.stationHandover.oView.byId("TreeTableBasic").expandToLevel(99);
-		//ReBind to apply colors
-		 setTimeout(function() {
-			 airbus.mes.stationHandover.oView.byId("TreeTableBasic").getModel("oswModel").refresh(true);
-	       }, 1);
+		} else {
 
-		
+			oTreeTable.filter(new sap.ui.model.Filter(aFilter, true));
+		}
+
+		airbus.mes.stationHandover.oView.byId("TreeTableBasic").expandToLevel(99);
+		// ReBind to apply colors
+		setTimeout(function() {
+			airbus.mes.stationHandover.oView.byId("TreeTableBasic").getModel("oswModel").refresh(true);
+		}, 1);
+
 	},
 	/***************************************************************************
-	 * trigger when the user select a group and sort parent ascending  by the value selected
+	 * trigger when the user select a group and sort parent ascending by the
+	 * value selected
 	 * 
 	 **************************************************************************/
 	sorterMode : function(oEvt) {
@@ -118,7 +118,7 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 
 				sorter : new sap.ui.model.Sorter({
 					// Change this value dynamic
-					path : sValue, 
+					path : sValue,
 					descending : false,
 				})
 			});
@@ -135,7 +135,8 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 
 	},
 	/***************************************************************************
-	 * trigger when the user select the type of OSW and filter the tree table by type
+	 * trigger when the user select the type of OSW and filter the tree table by
+	 * type
 	 * 
 	 **************************************************************************/
 	filterOSW : function(oEvt) {
@@ -154,118 +155,140 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 
 	},
 	/***************************************************************************
-	 * trigger when the user check/unechek the NO time checkbox it filter
-	 * the tree table regading the NoTime value  
-	 *  
+	 * trigger when the user check/unechek the NO time checkbox it filter the
+	 * tree table regading the NoTime value
+	 * 
 	 **************************************************************************/
 	filterNoTime : function(oEvt) {
-		
+
 		var sValue = oEvt.getSource().mProperties.selected;
 		if (sValue) {
 
 			airbus.mes.stationHandover.util.ModelManager.filter.noTime = new sap.ui.model.Filter("NO_TIME", "EQ", "true");
 
 		} else {
-			
-			airbus.mes.stationHandover.util.ModelManager.filter.noTime =  new sap.ui.model.Filter("NO_TIME", "EQ", "false");
+
+			airbus.mes.stationHandover.util.ModelManager.filter.noTime = new sap.ui.model.Filter("NO_TIME", "EQ", "false");
 
 		}
-		
+
 		this.applyMyFilter();
-		
+
 	},
 	/***************************************************************************
 	 * trigger when the user check/unechek the INsertedLine checkbox it filter
-	 * the tree table regading the INsertedLine value  
-	 *  
+	 * the tree table regading the INsertedLine value
+	 * 
 	 **************************************************************************/
 	filterInsertedLines : function(oEvt) {
-		
+
 		var sValue = oEvt.getSource().mProperties.selected;
 		if (sValue) {
 
 			airbus.mes.stationHandover.util.ModelManager.filter.inserted = undefined;
 
 		} else {
-			
+
 			airbus.mes.stationHandover.util.ModelManager.filter.inserted = new sap.ui.model.Filter("INSERTED", "EQ", "false");
 
 		}
-		
+
 		this.applyMyFilter();
-		
+
 	},
 	/***************************************************************************
-	 * trigger when the user Select the ph station and filter the tree table on station
-	 *  
+	 * trigger when the user Select the ph station and filter the tree table on
+	 * station
+	 * 
 	 **************************************************************************/
 	filterStation : function(oEvt) {
-		
+
 		var sValue = oEvt.getSource().mProperties.selectedKey;
 		console.log(sValue);
-		if (sValue === "ALL" ) {
+		if (sValue === "ALL") {
 
 			airbus.mes.stationHandover.util.ModelManager.filter.station = undefined;
 
 		} else {
-			
+
 			airbus.mes.stationHandover.util.ModelManager.filter.station = new sap.ui.model.Filter("ORIGIN_STATION", "EQ", sValue);
 
 		}
-		
+
 		this.applyMyFilter();
-		
-		
+
 	},
 	/***************************************************************************
-	 * trigger when the user Click on a Row and open operationd detail  
-	 *  
+	 * trigger when the user Click on a Row and open operationd detail
+	 * 
 	 **************************************************************************/
 	onRowClick : function(oEvt) {
-		
+
 		var sPath = oEvt.mParameters.rowBindingContext.sPath;
 		var oRow = airbus.mes.stationHandover.oView.getModel("oswModel").getProperty(sPath);
-		
-		if (oEvt.mParameters.columnIndex != "0" ) {
-			
+
+		if (oEvt.mParameters.columnIndex != "0") {
+
 			console.log(oEvt);
 
 		}
-		
-		
+
 	},
 	/***************************************************************************
 	 * trigger when the user Click on select all checkBox
-	 *  
-	 **************************************************************************/	
+	 * 
+	 **************************************************************************/
 	selectAll : function(oEvt) {
 
 		var sValue = oEvt.getSource().mProperties.selected;
-		
-		if ( sValue ) {
-			
-			airbus.mes.stationHandover.util.ModelManager.selectAll = true;
 
-			
+		if (sValue) {
+
+			airbus.mes.stationHandover.util.ModelManager.applyAll = true;
+
 		} else {
-			
-			airbus.mes.stationHandover.util.ModelManager.selectAll = false;
 
-			
+			airbus.mes.stationHandover.util.ModelManager.applyAll = false;
+
 		}
 
-		airbus.mes.stationHandover.oView.getModel("oswModel").refresh(true)		
-
+		airbus.mes.stationHandover.oView.getModel("oswModel").refresh(true);
+		airbus.mes.stationHandover.util.ModelManager.applyAll = undefined;
 	},
 	/***************************************************************************
 	 * trigger when the user Click on combobox of a row
-	 *  
-	 **************************************************************************/	
+	 * 
+	 **************************************************************************/
 	onSelectRow : function(oEvt) {
-		
+
 		var sValue = oEvt.getSource().mProperties.selected;
+		var aValueSelected = airbus.mes.stationHandover.util.ModelManager.aSelected;
+		var sPath = oEvt.getSource().oPropagatedProperties.oBindingContexts.oswModel.sPath;
+		var oModel = airbus.mes.stationHandover.oView.getModel("oswModel").getProperty(sPath);
+
+		// Check if we selected a chill or not
+		if (oModel.MATERIAL_DESCRIPTION != undefined) {
+			// store in array the WOID TO select 
+			if (sValue) {
+
+				aValueSelected.push(oModel.WOID)
+
+			} else {
+
+				var fIndice = aValueSelected.indexOf(oModel.WOID);
+				aValueSelected.splice(fIndice, 1);
+
+			}
+		} else {
+
+			airbus.mes.stationHandover.util.ModelManager.applyAll = "child";
+			
+			}
 		
-				
+		// Update model to fire formatter
+		airbus.mes.stationHandover.oView.getModel("oswModel").refresh(true);
+		airbus.mes.stationHandover.util.ModelManager.applyAll = undefined;
+
 	}
 
 });

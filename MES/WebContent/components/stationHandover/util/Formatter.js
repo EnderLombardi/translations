@@ -18,22 +18,45 @@ airbus.mes.stationHandover.util.Formatter = {
 
 	isInsert : function(oEvt) {
 
-		if (oEvt === "true") {
+		var aValueSelected = airbus.mes.stationHandover.util.ModelManager.aSelected;
+		var applyAll = airbus.mes.stationHandover.util.ModelManager.applyAll;
 
-			return true;
+		if (oEvt != null) {
 
-		}
+			var sPath = this.oPropagatedProperties.oBindingContexts.oswModel.sPath;
+			var oModel = airbus.mes.stationHandover.oView.getModel("oswModel").getProperty(sPath);
 
-		if (oEvt === "false") {
-			if ( airbus.mes.stationHandover.util.ModelManager.selectAll ) {
-				
+			if (oModel.INSERTED === "true") {
+
 				return true;
-			}
-			return false;
-		}
 
+			}
+
+			if (oModel.INSERTED === "false") {
+				// Apply selection/unselection of box all only when clicking on the button All
+				switch (applyAll) {
+				case false:
+					return false
+					break;
+				case true:
+					return true;
+					break;
+				case "child":
+					return this.getSelected();
+					break;
+				default:
+					if (aValueSelected.indexOf(oModel.WOID) != -1) {
+
+						return true;
+
+					}
+				}
+
+			}
+
+		}
 	},
-	
+
 	isInsertEnabled : function(oEvt) {
 
 		if (oEvt === "true") {
@@ -49,20 +72,20 @@ airbus.mes.stationHandover.util.Formatter = {
 		}
 
 	},
-	
+
 	setColorLine : function(oEvt) {
-		
+
 		var oRow = "#" + this.getParent().sId;
-		
-		if ( oEvt != null  ) {
-			if ( oEvt.TYPE === "0" ) {
-				
+
+		if (oEvt != null) {
+			if (oEvt.TYPE === "0") {
+
 				$(oRow).removeClass("blue");
 				$(oRow).addClass("blue");
-	
+
 			}
 		} else {
-			
+
 			$(oRow).removeClass("blue");
 		}
 	}

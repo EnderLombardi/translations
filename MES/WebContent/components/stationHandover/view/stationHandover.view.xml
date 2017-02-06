@@ -10,7 +10,7 @@
 
 		<TreeTable id="TreeTableBasic"
 				rows="{path:'oswModel>/', parameters: {arrayNames:['row']}}"
-				selectionMode="None" enableSelectAll="true" visibleRowCountMode="15rem"
+				selectionMode="None" enableSelectAll="true" visibleRowCountMode="Auto"
 				enableBusyIndicator="true" enableCellFilter="true">
 				<extension>
 
@@ -76,7 +76,8 @@
 								select="onSelectRow"
 								selected="{path:'oswModel>INSERTED' , formatter:'airbus.mes.stationHandover.util.Formatter.isInsert'}"
 								enabled="{path:'oswModel>INSERTED' , formatter:'airbus.mes.stationHandover.util.Formatter.isInsertEnabled'}"
-								visible="{path:'oswModel>' , formatter:'airbus.mes.stationHandover.util.Formatter.setColorLine'}" />
+								visible="{path:'oswModel>' , formatter:'airbus.mes.stationHandover.util.Formatter.setColorLine'}"
+								 />
 						</template>
 					</Column>
 					<Column autoResizable="true">
