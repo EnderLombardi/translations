@@ -34,6 +34,7 @@ airbus.mes.jigtools.util.ModelManager = {
 
         jQuery.ajax({
             type : 'post',
+            async : false,
             url : this.urlModel.getProperty("jigToolsWorkOrderDetail"),
             contentType : 'application/json',
             data : JSON.stringify({
