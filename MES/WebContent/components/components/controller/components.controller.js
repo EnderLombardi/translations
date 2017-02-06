@@ -11,10 +11,7 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         this.oFilterFilter = undefined;
         var oTable = sap.ui.getCore().byId("componentsView--ComponentsList");
         oTable.setSelectionMode("None");
-        oTable.attachCellClick(function(e){
-            e.getSource().setEditable(true);
-            console.log(e.getSource());
-        })
+        oTable.setVisibleRowCount(oTable.getBinding("rows").oList.length);
 //        Reset value
 //        this.getView().byId("idSearchComponent").setValue();
     },
@@ -72,10 +69,10 @@ sap.ui.controller("airbus.mes.components.controller.components", {
     filterComponents: function (sScope) {
         switch (sScope) {
             case airbus.mes.components.util.ModelManager.operation:
-                sap.ui.getCore().byId("componentsView--componentsList").getBinding("items").filter(new sap.ui.model.Filter("operationNumber", "EQ", "operationNumber1"));
+                sap.ui.getCore().byId("componentsView--ComponentsList").getBinding("rows").filter(new sap.ui.model.Filter("operationNumber", "EQ", "operationNumber1"));
                 break;
             case airbus.mes.components.util.ModelManager.workOrder:
-                sap.ui.getCore().byId("componentsView--componentsList").getBinding("items").filter();
+                sap.ui.getCore().byId("componentsView--ComponentsList").getBinding("rows").filter();
                 break;
             default:
                 break;
@@ -86,7 +83,6 @@ sap.ui.controller("airbus.mes.components.controller.components", {
 
         // add filter for search
         var sQuery = oEvent.getSource().getValue();
-        console.log(sQuery);
         if (sQuery && sQuery.length > 0) {
             var aFilters = [];
 

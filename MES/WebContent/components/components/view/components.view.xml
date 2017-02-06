@@ -107,7 +107,7 @@
                        <Button icon="sap-icon://synchronize" press="synchronizeFieldCommitted" />
                     <StepInput
                                class="stepInputComponent"
-                               value="{value}"
+                               value="{componentsWorkOrderDetail>committed}"
                                min="{min}"
                                max="{max}"
                                width="{width}"
@@ -126,7 +126,7 @@
                         <Button icon="sap-icon://synchronize" press="synchronizeFieldFitted" />
                         <StepInput
                                    class="stepInputComponent"
-                                   value="{value}"
+                                   value="{componentsWorkOrderDetail>fitted}"
                                    min="{min}"
                                    max="{max}"
                                    width="{width}"

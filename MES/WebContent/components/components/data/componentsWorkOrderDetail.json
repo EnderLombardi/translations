@@ -92,8 +92,8 @@
                 "shortage": "0",
                 "unit": "unit",
                 "serialNumber": "serialNumber",
-                "committed": "test",
-                "fitted": "test"
+                "committed": "6",
+                "fitted": "3"
             }, {
                 "workOrder": "wo1",
                 "itemNumber": "itemNumber",
@@ -107,8 +107,8 @@
                 "shortage": "5",
                 "unit": "unit",
                 "serialNumber": "serialNumber",
-                "committed": "test",
-                "fitted": "test"
+                "committed": "18",
+                "fitted": "6"
             }, {
                 "workOrder": "wo2",
                 "itemNumber": "itemNumber",
@@ -122,8 +122,8 @@
                 "shortage": "48",
                 "unit": "unit",
                 "serialNumber": "serialNumber",
-                "committed": "test",
-                "fitted": "test"
+                "committed": "5",
+                "fitted": "10"
             }, {
                 "workOrder": "wo2",
                 "itemNumber": "itemNumber",
@@ -137,8 +137,8 @@
                 "shortage": "0",
                 "unit": "unit",
                 "serialNumber": "serialNumber",
-                "committed": "test",
-                "fitted": "test"
+                "committed": "6",
+                "fitted": "7"
             }]
         }]
     }
