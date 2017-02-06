@@ -506,8 +506,7 @@ airbus.mes.linetracker.util.ModelManager = {
 				}
 				if(data.success=="true"){
 					airbus.mes.linetracker.util.ModelManager.loadStationDataModel();
-				}
-				else{
+				}else{
 					airbus.mes.shell.ModelManager.messageShow(airbus.mes.linetracker.oView.getModel("i18n").getProperty("couldNotPerformRequestedAction"));
 				}
 			},
