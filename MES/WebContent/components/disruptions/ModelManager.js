@@ -1238,14 +1238,12 @@ airbus.mes.disruptions.ModelManager = {
 	 * Get the issuer of the disruption
 	 */
 	getIssuer: function(){
-		var sUserBo = sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/USER_BO") == "---" ? 
-			( "UserBO:" +
-			airbus.mes.settings.ModelManager.site +
-			"," +
+		var sUser = sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/USER_BO") == "---" ? 
+			( 
 			sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user") )//Current Logged in user
-			: sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/USER_BO") // Affected User
+			: sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/USER_BO").split(",")[1] // Affected User
 			
-		return sUserBo;
+		return sUser;
 	},
 	
 	/***************************************************************************
