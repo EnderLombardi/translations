@@ -8,14 +8,14 @@
 				press="displayStationKPIHeader" /> -->
 			<Button text="{i18n>disruption_AndonTracker}" type="Transparent"
 				press="gotoDisruptionAndonTracker" />
-			<Button text="{i18n>stationHandover}" type="Transparent" />
+			<Button text="{i18n>stationHandover}" type="Transparent" press="gotoStationHandover" />
 		</VBox>
 		<footer>
-			<Toolbar>
+			<!-- <Toolbar>
 				<core:Icon src="sap-icon://alert" class="sapUiSmallMarginBegin" />
 				<Button id="reportDisruption" text="{i18n>reportDisruption}"
 					press="handleEmailPress" />
-			</Toolbar>
+			</Toolbar> -->
 		</footer>
 	</Popover>
 </core:FragmentDefinition>

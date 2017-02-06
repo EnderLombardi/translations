@@ -1,14 +1,18 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
 	<Popover id="taktActionPopover" class="sapUiContentPadding" placement="PreferredBottomOrFlip" showHeader="false">
 		<VBox>
-			<Button id="loadNextMSN" width="100%" text="{i18n>loadNextMsn}" type="Transparent" press="loadNextMsn" />
-			<HBox alignItems="Center" justifyContent="Middle">
+			<Button id="loadNextMSN" width="100%" text="{i18n>loadNextMsn}" type="Transparent" press="loadNextMsn" 
+					icon="sap-icon://synchronize" tooltip="{i18n>loadNextMsn}"/>
+			<!-- <HBox alignItems="Center" justifyContent="Middle">
 				<Text text="07428" />
 				<Image height="1.8rem" width="100%" src="../images_locale/Emirates_logo.jpg"></Image>
-			</HBox>
-			<Button id="startAssembly" width="100%" text="{i18n>startAssembly}" type="Transparent" press="startAssembly" />
-			<Button id="endAssembly" width="100%" text="{i18n>endAssembly}" type="Transparent" press="endAssembly" />
-			<Button id="emptyStation" width="100%" text="{i18n>emptyStation}" type="Transparent" press="emptyStation" />
+			</HBox> -->
+			<Button id="startAssembly" width="100%" text="{i18n>startAssembly}" type="Transparent" press="startAssembly" 
+					icon="sap-icon://media-play"/>
+			<Button id="endAssembly" width="100%" text="{i18n>endAssembly}" type="Transparent" press="endAssembly" 
+					icon="sap-icon://accept"/>
+			<Button id="emptyStation" width="100%" text="{i18n>emptyStation}" type="Transparent" press="emptyStation" 
+					icon="sap-icon://border"/>
 			<Button id="undo" width="100%" text="{i18n>undo}" type="Transparent" press="undo" />
 		</VBox>
 	</Popover>

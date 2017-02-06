@@ -25,10 +25,10 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 		this.getView().byId("linetracker_dateLabel").setText(oDateFormat.format(oDate));
 
 		// Time in Header
-		var oTimeFormat = sap.ui.core.format.DateFormat.getTimeInstance({
-			pattern : "HH:mm"
-		}); // Returns a DateFormat instance for time
-		this.getView().byId("linetracker_timeLabel").setText(oTimeFormat.format(oDate));
+//		var oTimeFormat = sap.ui.core.format.DateFormat.getTimeInstance({
+//			pattern : "HH:mm"
+//		}); // Returns a DateFormat instance for time
+//		this.getView().byId("linetracker_timeLabel").setText(oTimeFormat.format(oDate));
 
 		// Load User Settings Model to get Site
 		//var oModel = airbus.mes.settings.ModelManager.core.getModel("userSettingModel").getData();
@@ -213,7 +213,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	},*/
 
 	/**
-	 * Called when cancel button clicked on editStation/editLine/deleteStation/saveVariant fragments
+	 * Called when cancel button clicked on editStation/editLine/deleteStation/saveVariant/undoAction fragments
 	 * 
 	 * @param evt
 	 */
@@ -239,7 +239,9 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 		case "deleteStation":
 			this.oDeleteDialog.close();
 			break;
-
+		case "undoAction":
+			this.oUndoAction.close();
+			break;
 		default:
 			return;
 		}
@@ -339,7 +341,9 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 			this.getView().addDependent(this.oPopover);
 
 		}
-
+//		this.oPopover.setTitle(oEvent.oSource.getParent().getParent().oBindingContexts.stationDataModel.oModel.oData.stationData[
+//		                  oEvent.oSource.getParent().getParent().oBindingContexts.stationDataModel.sPath].stationName);
+		this.oPopover.setTitle(oEvent.oSource.getStation());
 		// delay because addDependent will do a async rerendering and the
 		// actionSheet will immediately close without it.
 		var oButton = oEvent.getSource();
@@ -378,6 +382,14 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	 */
 	gotoDisruptionAndonTracker : function() {
 		airbus.mes.shell.util.navFunctions.disruptionTracker();
+	},
+	
+	/**
+	 * BR:SD-PPC-LT-260
+	 * To navigate to StationHandover from Line Tracker
+	 */
+	gotoStationHandover:function(){
+		airbus.mes.shell.util.navFunctions.stationHandover();
 	},
 
 	/**
@@ -618,11 +630,17 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	 * BR: SD-PPC-LT-250
 	 * Takt actions – undo 
 	 */
-	undo : function(){
+	undo : function(oEvt){
 		//extract msn and station
 		performTaktAction(station, msn, airbus.mes.linetracker.util.ModelManager.aTaktAction[4]);
 		//to be done with model
 		this.actionButtonStatus(true,true,true,true,true);
+		
+		if (!this.oUndoAction) {
+			this.oUndoAction = sap.ui.xmlfragment("airbus.mes.linetracker.fragments.undoAction", this);
+			this.getView().addDependent(this.oUndoAction);
+		}
+		this.oUndoAction.open();
 	},
 	
 	actionButtonStatus:function(load,start,end,empty,undo){
