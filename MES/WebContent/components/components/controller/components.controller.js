@@ -9,7 +9,6 @@ sap.ui.controller("airbus.mes.components.controller.components", {
     onAfterRendering: function () {
         this.oFilterSearch = undefined;
         this.oFilterFilter = undefined;
-
 //        Reset value
 //        this.getView().byId("idSearchComponent").setValue();
     },
@@ -81,6 +80,7 @@ sap.ui.controller("airbus.mes.components.controller.components", {
 
         // add filter for search
         var sQuery = oEvent.getSource().getValue();
+        console.log(sQuery);
         if (sQuery && sQuery.length > 0) {
             var aFilters = [];
 
@@ -94,6 +94,8 @@ sap.ui.controller("airbus.mes.components.controller.components", {
             aFilters.push(this.addFilter("shortage", sQuery));
             aFilters.push(this.addFilter("unit", sQuery));
             aFilters.push(this.addFilter("serialNumber", sQuery));
+            aFilters.push(this.addFilter("committed", sQuery));
+            aFilters.push(this.addFilter("fitted", sQuery));
 
 
 //            OR Filter
@@ -189,7 +191,7 @@ sap.ui.controller("airbus.mes.components.controller.components", {
 
         // update list binding
         var list = this.getView().byId("ComponentsList");
-        var binding = list.getBinding("items");
+        var binding = list.getBinding("rows");
 
         //        AND Filter
         if (this.oFilterSearch === undefined && this.oFilterFilter === undefined ) {

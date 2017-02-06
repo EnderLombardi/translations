@@ -21,87 +21,96 @@
                 </buttons>
             </RadioButtonGroup>
     </VBox>
+        <OverflowToolbar id="otbSubheader">
+            <Button id="idFilterComponent"
+                    text="{i18nComponentsModel>SelectFilter}"
+                    type="Transparent" class="ClassProductionButton whiteColor whiteButton" press="onSelectFilter"/>
+            <SearchField id="idSearchComponent" liveChange="onFilterComponent">
+                <layoutData><OverflowToolbarLayoutData minWidth="200px" maxWidth="300px" shrinkable="true"/></layoutData>
+            </SearchField>
+        </OverflowToolbar>
         <table:Table id="ComponentsList" class="ComponentsList"
                      rows="{componentsWorkOrderDetail>/Rowsets/Rowset/0/Row/}"
                      selectionMode="None"
-                     editable="true">
+                     editable="true"
+                     width="100%">
         <table:columns>
             <table:Column  width="11rem">
                 <Label text="{i18nComponentsModel>itemNumber}" />
                 <table:template>
-                    <Label text="{componentsWorkOrderDetail>itemNumber}" />
+                    <Text text="{componentsWorkOrderDetail>itemNumber}" />
                 </table:template>
             </table:Column>
             <table:Column  width="11rem">
                 <Label text="{i18nComponentsModel>operationNumber}" />
                 <table:template>
-                    <Label text="{componentsWorkOrderDetail>operationNumber}"/>
+                    <Text text="{componentsWorkOrderDetail>operationNumber}"/>
                 </table:template>
             </table:Column>
             <table:Column  width="11rem">
                 <Label text="{i18nComponentsModel>materialType}" />
                 <table:template>
-                    <Label text="{componentsWorkOrderDetail>materialType}"  />
+                    <Text text="{componentsWorkOrderDetail>materialType}"  />
                 </table:template>
             </table:Column>
             <table:Column  width="11rem">
                 <Label text="{i18nComponentsModel>materialDescription}" />
                 <table:template>
-                    <Label text="{componentsWorkOrderDetail>materialDescription}"  />
+                    <Text text="{componentsWorkOrderDetail>materialDescription}"  />
                 </table:template>
             </table:Column>
             <table:Column  width="11rem">
                 <Label text="{i18nComponentsModel>storageLocation}" />
                 <table:template>
-                    <Label text="{componentsWorkOrderDetail>storageLocation}"  />
+                    <Text text="{componentsWorkOrderDetail>storageLocation}"  />
                 </table:template>
             </table:Column>
             <table:Column  width="11rem">
                 <Label text="{i18nComponentsModel>freestockKanbanBulkMaterial}" />
                 <table:template>
-                    <Label text="{componentsWorkOrderDetail>freestockKanbanBulkMaterial}"  />
+                    <Text text="{componentsWorkOrderDetail>freestockKanbanBulkMaterial}"  />
                 </table:template>
             </table:Column>
             <table:Column  width="11rem">
                 <Label text="{i18nComponentsModel>requiredQty}" />
                 <table:template>
-                    <Label text="{componentsWorkOrderDetail>requiredQty}"  />
+                    <Text text="{componentsWorkOrderDetail>requiredQty}"  />
                 </table:template>
             </table:Column>
             <table:Column  width="11rem">
                 <Label text="{i18nComponentsModel>withdrawQty}" />
                 <table:template>
-                    <Label text="{componentsWorkOrderDetail>withdrawQty}"  />
+                    <Text text="{componentsWorkOrderDetail>withdrawQty}"  />
                 </table:template>
             </table:Column>
             <table:Column  width="11rem">
                 <Label text="{i18nComponentsModel>shortage}" />
                 <table:template>
-                    <Label text="{componentsWorkOrderDetail>shortage}"  />
+                    <Text text="{componentsWorkOrderDetail>shortage}"  />
                 </table:template>
             </table:Column>
             <table:Column  width="11rem">
                 <Label text="{i18nComponentsModel>unit}" />
                 <table:template>
-                    <Label text="{componentsWorkOrderDetail>unit}"  />
+                    <Text text="{componentsWorkOrderDetail>unit}"  />
                 </table:template>
             </table:Column>
             <table:Column  width="11rem">
                 <Label text="{i18nComponentsModel>serialNumber}" />
                 <table:template>
-                    <Label text="{componentsWorkOrderDetail>serialNumber}"  />
+                    <Text text="{componentsWorkOrderDetail>serialNumber}"  />
                 </table:template>
             </table:Column>
-            <table:Column  width="11rem">
+            <table:Column id="editableRowCom"  width="11rem">
                 <Label text="{i18nComponentsModel>committed}" />
                 <table:template>
-                    <Input value="{componentsWorkOrderDetail>committed}" />
+                    <Input class="editRow" editable="true" value="{componentsWorkOrderDetail>committed}" />
                 </table:template>
             </table:Column>
-            <table:Column  width="11rem">
+            <table:Column id="editableRowFit" width="11rem">
                 <Label text="{i18nComponentsModel>fitted}" />
                 <table:template>
-                    <Label text="{componentsWorkOrderDetail>fitted}"  />
+                    <Input class="editRow" editable="true" value="{componentsWorkOrderDetail>fitted}"  />
                 </table:template>
             </table:Column>
         </table:columns>
