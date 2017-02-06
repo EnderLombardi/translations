@@ -92,15 +92,22 @@ airbus.mes.disruptions.ModelManager = {
 
 		if (this.createViewMode == "Edit") {
 			var oModel = sap.ui.getCore().getModel("DisruptionDetailModel");
-			var sMsgType = oModel.getProperty("/MessageType");
-			var sResolverGroup = oModel.getProperty("/ResponsibleGroup");
-
-			this.loadRsnResponsibleGrp(sMsgType);
-			this.loadResolverModel(sResolverGroup);
 			// If opened by support team from disruption tracker - V1.5
 			if (sap.ui.Device.system.desktop && nav.getPreviousPage().sId == "disruptiontrackerView") {
-				airbus.mes.disruptions.oView.disruptionDetail.oController.editPreSettings();
+				
+				this.sMsgType = oModel.oData.Rowsets.Rowset[0].Row[0].MessageType;
+				this.sResolverGroup = oModel.oData.Rowsets.Rowset[0].Row[0].ResponsibleGroup;
+
+				this.loadRsnResponsibleGrp(this.sMsgType);
+				this.loadResolverModel(this.sResolverGroup);
+				airbus.mes.disruptions.oView.disruptionDetail.oController.editdisruptionDetailPreSettings();
 			} else {
+				
+				this.sMsgType = oModel.getProperty("/MessageType");
+				this.sResolverGroup = oModel.getProperty("/ResponsibleGroup");
+
+				this.loadRsnResponsibleGrp(this.sMsgType);
+				this.loadResolverModel(this.sResolverGroup);
 				airbus.mes.disruptions.oView.createDisruption.oController.editPreSettings();
 			}
 
