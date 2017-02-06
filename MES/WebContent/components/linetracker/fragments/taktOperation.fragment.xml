@@ -4,13 +4,13 @@
 		placement="PreferredBottomOrFlip" showHeader="false">
 		<VBox>
 			<HBox alignItems="Center" justifyContent="Middle">
-				<Button id="loadNextMSN" text="{statusActionModel>msn}" type="Transparent"
+				<Button id="loadNextMSN" text="{statusActionModel>nextMsn}" type="Transparent"
 					press="loadNextMsn" icon="sap-icon://synchronize" tooltip="{i18n>loadNextMsn}"
 					enabled="{ path : 'statusActionModel>status', formatter : 'airbus.mes.linetracker.util.Formatter.showHideButtonsOnStatus' }" />
 				<Image id="nextMsnImage" height="1.8rem" width="auto"
-					visible="{ path : 'statusActionModel>msn', formatter : 'airbus.mes.linetracker.util.Formatter.showHideButtonsOnStatus' }"
-					error="{ path : 'statusActionModel>msn', formatter : 'airbus.mes.linetracker.util.Formatter.getErrorFlightImage' }"
-					src="{ path : 'statusActionModel>msn', formatter : 'airbus.mes.linetracker.util.Formatter.loadFlightLogo' }">
+					visible="{ path : 'statusActionModel>nextMsn', formatter : 'airbus.mes.linetracker.util.Formatter.showHideButtonsOnStatus' }"
+					error="{ path : 'statusActionModel>nextMsn', formatter : 'airbus.mes.linetracker.util.Formatter.getErrorFlightImage' }"
+					src="{ path : 'statusActionModel>nextMsn', formatter : 'airbus.mes.linetracker.util.Formatter.loadFlightLogo' }">
 				</Image>
 			</HBox>
 			<Button id="startAssembly" width="100%" text="{i18n>startAssembly}"

@@ -587,7 +587,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 		//to be done with model
 //		this.actionButtonStatus(false,true,false,false,true);
 		//extract msn and station
-		performTaktAction(station, msn, airbus.mes.linetracker.util.ModelManager.aTaktAction[0]);
+		performTaktAction(airbus.mes.linetracker.util.ModelManager.aTaktAction[0]);
 		
 	},
 	
@@ -598,7 +598,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	startAssembly : function(oEvt){
 		oEvt.getSource().getParent().getParent()._oOpenBy.setSrc("sap-icon://media-play");
 		//extract msn and station
-		performTaktAction(station, msn, airbus.mes.linetracker.util.ModelManager.aTaktAction[1]);
+		performTaktAction(airbus.mes.linetracker.util.ModelManager.aTaktAction[1]);
 		//to be done with model
 //		this.actionButtonStatus(false,false,true,false,true);
 
@@ -612,7 +612,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	endAssembly : function(oEvt){
 		oEvt.getSource().getParent().getParent()._oOpenBy.setSrc("sap-icon://accept");
 		//extract msn and station
-		performTaktAction(station, msn, airbus.mes.linetracker.util.ModelManager.aTaktAction[2]);
+		performTaktAction(airbus.mes.linetracker.util.ModelManager.aTaktAction[2]);
 		//to be done with model
 //		this.actionButtonStatus(true,false,false,true,true);
 	},
@@ -625,7 +625,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 		
 		oEvt.getSource().getParent().getParent()._oOpenBy.setSrc("sap-icon://border");
 		//extract msn and station
-		performTaktAction(station, msn, airbus.mes.linetracker.util.ModelManager.aTaktAction[3]);
+		performTaktAction(airbus.mes.linetracker.util.ModelManager.aTaktAction[3]);
 		//to be done with model
 //		this.actionButtonStatus(true,false,false,false,true);
 	},
@@ -677,9 +677,9 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	 * Takt actions – undo 
 	 * When user pressed on Confirm button of Undo fragment 
 	 */
-	onUndoConfirm:function(station, msn){
+	onUndoConfirm:function(oEvt){
 		//extract msn and station
-		performTaktAction(station, msn, airbus.mes.linetracker.util.ModelManager.aTaktAction[4]);
+		performTaktAction(airbus.mes.linetracker.util.ModelManager.aTaktAction[4]);
 	}
 	
 	

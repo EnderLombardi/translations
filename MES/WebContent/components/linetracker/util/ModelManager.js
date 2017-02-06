@@ -127,6 +127,7 @@ airbus.mes.linetracker.util.ModelManager = {
 
 			error : function(error, jQXHR) {
 				jQuery.sap.log.info(error);
+				airbus.mes.shell.ModelManager.messageShow(airbus.mes.linetracker.oView.getModel("i18n").getProperty("couldNotPerformRequestedAction"));
 				// sap.ui.getCore().byId("idLinetracker1").setBusy(false);
 			}
 		});
@@ -447,6 +448,7 @@ airbus.mes.linetracker.util.ModelManager = {
 
 			error : function(error, jQXHR) {
 				jQuery.sap.log.info(error);
+				airbus.mes.shell.ModelManager.messageShow(airbus.mes.linetracker.oView.getModel("i18n").getProperty("couldNotPerformRequestedAction"));
 			}
 		})
 	},
@@ -485,7 +487,8 @@ airbus.mes.linetracker.util.ModelManager = {
 	 * @param station, msn, action
 	 * perform takt action based on the chosen action amd relaod all the model
 	 */
-	performTaktAction : function(station, msn, action){
+	performTaktAction : function(action){
+
 		jQuery.ajax({
 			type : 'post',
 			url : this.urlModel.getProperty("urltaktaction"),
@@ -493,8 +496,8 @@ airbus.mes.linetracker.util.ModelManager = {
 			data : JSON.stringify({
 				"site" : airbus.mes.settings.ModelManager.site,
 				"lang" : sap.ui.getCore().byId("globalNavView--SelectLanguage").getSelectedItem().getKey(),
-				"msn" : msn,
-				"station" : station,
+				"msn" : sap.ui.getCore().getModel("statusActionModel").getProperty("/currentMsn"),
+				"station" : sap.ui.getCore().getModel("statusActionModel").getProperty("/station"),
 				"action" : action
 			}),
 
@@ -502,13 +505,17 @@ airbus.mes.linetracker.util.ModelManager = {
 				if (typeof data == "string") {
 					data = JSON.parse(data);
 				}
-				oViewModel.setData(data);
-				 //sap.ui.getCore().byId("idLinetracker1").setBusy(false);
+				if(data.success=="true"){
+					airbus.mes.linetracker.util.ModelManager.loadStationDataModel();
+				}
+				else{
+					airbus.mes.shell.ModelManager.messageShow(airbus.mes.linetracker.oView.getModel("i18n").getProperty("couldNotPerformRequestedAction"));
+				}
 			},
 
 			error : function(error, jQXHR) {
 				jQuery.sap.log.info(error);
-				// sap.ui.getCore().byId("idLinetracker1").setBusy(false);
+				airbus.mes.shell.ModelManager.messageShow(airbus.mes.linetracker.oView.getModel("i18n").getProperty("couldNotPerformRequestedAction"));
 			}
 		});
 	},
