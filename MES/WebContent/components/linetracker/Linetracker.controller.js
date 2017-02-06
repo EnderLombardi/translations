@@ -587,7 +587,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 		//to be done with model
 //		this.actionButtonStatus(false,true,false,false,true);
 		//extract msn and station
-		performTaktAction(airbus.mes.linetracker.util.ModelManager.aTaktAction[0]);
+		airbus.mes.linetracker.util.ModelManager.performTaktAction(airbus.mes.linetracker.util.ModelManager.aTaktAction[0]);
 		
 	},
 	
@@ -598,7 +598,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	startAssembly : function(oEvt){
 		oEvt.getSource().getParent().getParent()._oOpenBy.setSrc("sap-icon://media-play");
 		//extract msn and station
-		performTaktAction(airbus.mes.linetracker.util.ModelManager.aTaktAction[1]);
+		airbus.mes.linetracker.util.ModelManager.performTaktAction(airbus.mes.linetracker.util.ModelManager.aTaktAction[1]);
 		//to be done with model
 //		this.actionButtonStatus(false,false,true,false,true);
 
@@ -612,7 +612,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	endAssembly : function(oEvt){
 		oEvt.getSource().getParent().getParent()._oOpenBy.setSrc("sap-icon://accept");
 		//extract msn and station
-		performTaktAction(airbus.mes.linetracker.util.ModelManager.aTaktAction[2]);
+		airbus.mes.linetracker.util.ModelManager.performTaktAction(airbus.mes.linetracker.util.ModelManager.aTaktAction[2]);
 		//to be done with model
 //		this.actionButtonStatus(true,false,false,true,true);
 	},
@@ -625,7 +625,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 		
 		oEvt.getSource().getParent().getParent()._oOpenBy.setSrc("sap-icon://border");
 		//extract msn and station
-		performTaktAction(airbus.mes.linetracker.util.ModelManager.aTaktAction[3]);
+		airbus.mes.linetracker.util.ModelManager.performTaktAction(airbus.mes.linetracker.util.ModelManager.aTaktAction[3]);
 		//to be done with model
 //		this.actionButtonStatus(true,false,false,false,true);
 	},
@@ -657,7 +657,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 		
 		var text=this.getView().getModel("i18n").getProperty(undoText);
 		if(text!=undefined){			
-		text=text.replace("$paramCurrentMsn",nextMsn);paramPreviousMsn
+		text=text.replace("$paramCurrentMsn",nextMsn);
 		text=text.replace("$paramPreviousMsn",previousMsn);
 		}
 		sap.ui.getCore().byId("undoText").setText(text);
@@ -679,7 +679,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	 */
 	onUndoConfirm:function(oEvt){
 		//extract msn and station
-		performTaktAction(airbus.mes.linetracker.util.ModelManager.aTaktAction[4]);
+		airbus.mes.linetracker.util.ModelManager.performTaktAction(airbus.mes.linetracker.util.ModelManager.aTaktAction[4]);
 	}
 	
 	
