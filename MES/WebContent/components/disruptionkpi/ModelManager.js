@@ -47,14 +47,6 @@ airbus.mes.disruptionkpi.ModelManager = {
 		sap.ui.getCore().byId("disruptionKPIView--timeUnit").setSelectedKey(this.oFilters.timeUnit);
 	},
 	
-	
-	/*getKPIData : function() {
-		var urlCategoryData = this.urlModel.getProperty("getDisruptionKPIURL");
-		urlCategoryData = airbus.mes.shell.ModelManager.replaceURI(urlCategoryData,"$site", airbus.mes.settings.ModelManager.site);
-		urlCategoryData = airbus.mes.shell.ModelManager.replaceURI(urlCategoryData,"$station", this.sStation);
-		return urlCategoryData;
-	},*/
-	
 	loadDisruptionKPIModel : function() {
 		airbus.mes.disruptionkpi.oView.setBusy(true); //Set Busy Indicator
 		var oViewModel = sap.ui.getCore().getModel("TimeLostperAttribute");
@@ -92,7 +84,7 @@ airbus.mes.disruptionkpi.ModelManager = {
 					data = JSON.parse(data);
 				}
 				/*to avoid array inconsistency.. as the service dosent return an array [] when only one value pair has to be returned*/
-				/*if(!data.msn[0]){
+				if(!data.msn[0]){
 					data.msn = [data.msn];
 				}
 				if(!data.category[0]){
@@ -104,10 +96,8 @@ airbus.mes.disruptionkpi.ModelManager = {
 				if(!data.reason[0]){
 					data.reason = [data.reason];
 				}
-				oViewModel.setData(data);*/
+				oViewModel.setData(data);
 				airbus.mes.disruptionkpi.oView.setBusy(false);
-				/*airbus.mes.stationtracker.oView.byId("boxSLBEfficiecy").setBusy(false);
-				airbus.mes.stationtracker.oView.byId("boxLabourEfficiency").setBusy(false);*/
 			},
 
 			error : function(error, jQXHR) {

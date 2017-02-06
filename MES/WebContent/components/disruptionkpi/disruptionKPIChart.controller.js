@@ -21,53 +21,49 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/viz/ui5/DualCombination", "sap
 		/******************************************
 		 * Initialize Pareto chart for Time Lost Per Couple Category and Reason
 		 */
-		/*var oParetto = this.oVizFrame = this.getView().byId("idParettoCategoryReason");
+		var oParetto = this.oVizFrame = this.getView().byId("idParettoCategoryReason");
 		var sum = 0;
 		var fValue = 0;
 		var oTotal = 0;
 		var FIORI_PERCENTAGE_FORMAT_2 = "__UI5__PercentageMaxFraction2";
-		var chartFormatter = ChartFormatter
-				.getInstance();
-		chartFormatter
-				.registerCustomFormatter(
-						FIORI_PERCENTAGE_FORMAT_2,
-						function(value) {
-							var percentage = sap.ui.core.format.NumberFormat
-									.getPercentInstance({
-										style : 'precent',
-										maxFractionDigits : 0
-									});
-							var val = value;
-							return percentage
-									.format(value / 100);
-						});
 		
-		sap.viz.api.env.Format
-				.numericFormatter(chartFormatter);
-		var oDataset = sap.viz.ui5.data
-				.FlattenedDataset({
-					dimensions : [
+		var chartFormatter = ChartFormatter.getInstance();
+		chartFormatter.registerCustomFormatter(
+			FIORI_PERCENTAGE_FORMAT_2,
+			function(value) {
+				var percentage = sap.ui.core.format.NumberFormat.getPercentInstance({
+							style : 'precent',
+							maxFractionDigits : 0
+				});
+				var val = value;
+				return percentage.format(value / 100);
+		});
+		
+		
+		sap.viz.api.env.Format.numericFormatter(chartFormatter);
+		
+		var oDataset = new sap.viz.ui5.data.FlattenedDataset({
+			dimensions : [
 							{
 								axis : 1,
-								name : "Reason",
-								value : "{Model>Disruptions}"
+								name : "Category Per Reason",
+								value : "{TimeLostperAttribute>CategoryReason}"
 							},
 							{
 								axis : 2,
-								name : "Value",
-								value : "{Model>Value}"
+								name : "Number of Disruptions",
+								value : "{TimeLostperAttribute>Value}"
 							} ],
-					measures : [
+			measures : [
 							{
 								name : "Time Lost",
-								value : "{Model>Occurrences}"
+								value : "{TimeLostperAttribute>Occurrences}"
 							},
 							{
 								name : "Percent",
 								value : {
-									path : "Model>Value",
-									formatter : function(
-											fValue) {
+									path : "TimeLostperAttribute>Value",
+									formatter : function(fValue) {
 										if (fValue !== null) {
 											if (oTotal === undefined) {
 												var oTotal = 0;
@@ -89,18 +85,15 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/viz/ui5/DualCombination", "sap
 										}
 									}
 								}
-							} ],
-					data : {
-						path : "Model>/Rowsets/Rowset/0/Row"
-					}
-				});
-		oParetto.setDataset(oDataset);
-		oParetto
-				.setVizType('dual_stacked_combination');
-		// oParetto.setvizScales({});
-		oParetto
-				.setVizProperties({
+							}
+						],
+			data : { path : "TimeLostperAttribute>/Pareto1"	}
+		});
 		
+		
+		oParetto.setDataset(oDataset);
+		oParetto.setVizType('dual_stacked_combination')
+				.setVizProperties({
 					plotArea : {
 						secondaryScale : {
 							fixedRange : true,
@@ -116,43 +109,41 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/viz/ui5/DualCombination", "sap
 						}
 					},
 					categoryAxis : {
-		
 						label : {
 							hideSubLevels : false,
 						}
 					},
-					valueAxis : {},
+					valueAxis  : {},
 					valueAxis2 : {
-		
-						label : {
+						label  : {
 							visible : true,
 							formatString : FIORI_PERCENTAGE_FORMAT_2
 						}
 					},
 					title : {
 						visible : "true",
-						text : "Profit & Measure By Region & Company"
+						text : airbus.mes.disruptionkpi.oView.getModel("i18nModel").getProperty("Pareto1Title")
 					}
 				});
-		var feedValueAxis1 = new sap.viz.ui5.controls.common.feeds.FeedItem(
-				{
-					'uid' : "valueAxis",
-					'type' : "Measure",
-					'values' : [ "Time Lost" ]
-				}), feedValueAxis2 = new sap.viz.ui5.controls.common.feeds.FeedItem(
-				{
-					'uid' : "valueAxis2",
-					'type' : "Measure",
-					'values' : [ "Percent" ]
-				}), feedCategoryAxis = new sap.viz.ui5.controls.common.feeds.FeedItem(
-				{
-					'uid' : "categoryAxis",
-					'type' : "Dimension",
-					'values' : [ "Reason", "Value" ]
-				});
+		
+		var feedValueAxis1 = new sap.viz.ui5.controls.common.feeds.FeedItem({
+				'uid' : "valueAxis",
+				'type' : "Measure",
+				'values' : [ airbus.mes.disruptionkpi.oView.getModel("i18nModel").getProperty("TimeLost") ]
+			}), 
+			feedValueAxis2 = new sap.viz.ui5.controls.common.feeds.FeedItem({
+				'uid' : "valueAxis2",
+				'type' : "Measure",
+				'values' : [ airbus.mes.disruptionkpi.oView.getModel("i18nModel").getProperty("Percent") ]
+			}), 
+			feedCategoryAxis = new sap.viz.ui5.controls.common.feeds.FeedItem({
+				'uid' : "categoryAxis",
+				'type' : "Dimension",
+				'values' : [ airbus.mes.disruptionkpi.oView.getModel("i18nModel").getProperty("catPerReason"), airbus.mes.disruptionkpi.oView.getModel("i18nModel").getProperty("NoOfDisrupts") ]
+			});
 		oParetto.addFeed(feedValueAxis1);
 		oParetto.addFeed(feedValueAxis2);
-		oParetto.addFeed(feedCategoryAxis);*/
+		oParetto.addFeed(feedCategoryAxis);
 		
 		
 		
@@ -348,6 +339,11 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/viz/ui5/DualCombination", "sap
 	onNavBack: function(oEvent){
 		nav.back();
 	},
+	
+	onAfterRendering: function(oEvent){
+        airbus.mes.disruptionkpi.ModelManager.setPreSelectionCriteria();
+        airbus.mes.disruptionkpi.ModelManager.removeDuplicates();
+	}
 	
 
 	});

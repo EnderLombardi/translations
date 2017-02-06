@@ -396,10 +396,6 @@ airbus.mes.shell.util.navFunctions = {
 
         airbus.mes.disruptionkpi.ModelManager.loadDisruptionKPIModel();
 
-        airbus.mes.disruptionkpi.ModelManager.setPreSelectionCriteria();
-        airbus.mes.disruptionkpi.ModelManager.removeDuplicates();
-
-
         nav.to(airbus.mes.disruptionkpi.oView.getId());
     },
 
