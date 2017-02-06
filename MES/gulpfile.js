@@ -223,7 +223,11 @@ gulp.task('bump', ['bump_ver', 'build'], function () {
 			url: pushServiceUrlDMI,
 			root: dest,
 			remotePath: rootRemotePath + '/v' + version.toString(),
-		}));
+		})).pipe(pushMii({
+			url: pushServiceUrlMDI,
+			root: dest,
+			remotePath: rootRemotePath + '/v' + version.toString(),
+		}));;
 });
 
 
