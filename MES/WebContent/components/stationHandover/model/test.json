@@ -1,8 +1,8 @@
 {
    "row": [
       {
-      			"INSERTED" : "true",
-      			"NO_TIME" : "true",
+      			"INSERTED" : "false",
+      			"NO_TIME" : "false",
       			"WOID" : "123415465",	
         	"ORIGIN_STATION" : "ALL",
          "BLOCKED": "0",
@@ -33,8 +33,8 @@
          "row": [
             {	
                "ORIGIN_STATION" : "ip",
-            		 "INSERTED" : "true",
-      									"NO_TIME" : "true",
+            		 "INSERTED" : "false",
+      									"NO_TIME" : "false",
             			"WOID" : "123415465",	
             			"BLOCKED": "0",
                "TYPE": "0",

@@ -84,6 +84,7 @@ for(let i=0; i<component.length; i++){
 	  return gulp.src([
 						'./WebContent/components/'+component[i]+'/**.+(js|xml|properties|css|json)',
 		                './WebContent/components/'+component[i]+'/*/**.+(js|xml|properties|css|json)',
+		                './WebContent/components/'+component[i]+'/*/*/**.+(js|xml|properties|css|json)',
 		                '!./WebContent/components/'+component[i]+'/kpi/**',
 	                  ])
 	        //.pipe(gulpif('**/*.js',uglify()))    //only pass .js files to uglify 
@@ -219,10 +220,6 @@ gulp.task('bump_ver', function () {
 gulp.task('bump', ['bump_ver', 'build'], function () {
 		return gulp.src(['./**'], { cwd: dest }) // .+(json|properties|css|js)
 		.pipe(pushMii({
-			url: pushServiceUrlMDI,
-			root: dest,
-			remotePath: rootRemotePath + '/v' + version.toString(),
-		})).pipe(pushMii({
 			url: pushServiceUrlDMI,
 			root: dest,
 			remotePath: rootRemotePath + '/v' + version.toString(),

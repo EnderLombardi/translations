@@ -245,6 +245,7 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 		if (sValue) {
 
 			airbus.mes.stationHandover.util.ModelManager.applyAll = true;
+			
 
 		} else {
 
@@ -253,6 +254,7 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 		}
 
 		airbus.mes.stationHandover.oView.getModel("oswModel").refresh(true);
+		airbus.mes.stationHandover.util.ModelManager.aSelected = [];
 		airbus.mes.stationHandover.util.ModelManager.applyAll = undefined;
 	},
 	/***************************************************************************
