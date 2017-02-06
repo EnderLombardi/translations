@@ -23,9 +23,9 @@ color: #74d2e7;
   
 
 // Default Focus
-.noRows.sapUiTableColRowHdr{
-    @at-root &, .sapUiTableColHdr .sapUiTableTr>td{
-        @at-root &, .sapUiTableColHdr .sapUiTableCol{
+#polypoly .noRows.sapUiTableColRowHdr{
+    @at-root &, #polypoly .sapUiTableColHdr .sapUiTableTr>td{
+        @at-root &, #polypoly .sapUiTableColHdr .sapUiTableCol{
             border-right: 0px solid #dddddd;
         }
     }

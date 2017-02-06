@@ -2716,7 +2716,7 @@ POLYPOLY
   color: #0D5D76 !important;
   border-right: 1px solid #8db9ca; }
 
-.noRows.sapUiTableColRowHdr, .sapUiTableColHdr .sapUiTableCol, .sapUiTableColHdr .sapUiTableTr > td {
+#polypoly .noRows.sapUiTableColRowHdr, #polypoly .sapUiTableColHdr .sapUiTableCol, #polypoly .sapUiTableColHdr .sapUiTableTr > td {
   border-right: 0px solid #dddddd; }
 
 #polypoly--oTablePolypoly-tableCCnt > .sapUiTableRowHdrScr {
