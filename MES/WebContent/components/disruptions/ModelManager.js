@@ -46,8 +46,13 @@ airbus.mes.disruptions.ModelManager = {
 			sap.ui.getCore().byId("operationDetailPopup--operationDetailPopUp").setBusy(true);
 			break;
 		case "disruptiontrackerView":
-			sap.ui.getCore().byId("disruptionDetailPopup--disruptionDetailPopUp").setBusyIndicatorDelay(0);
-			sap.ui.getCore().byId("disruptionDetailPopup--disruptionDetailPopUp").setBusy(true);
+			if(!sap.ui.Device.system.desktop){
+				sap.ui.getCore().byId("disruptionDetailPopup--disruptionDetailPopUp").setBusyIndicatorDelay(0);
+				sap.ui.getCore().byId("disruptionDetailPopup--disruptionDetailPopUp").setBusy(true);
+			} else{
+				sap.ui.getCore().byId("disruptionDetail").setBusyIndicatorDelay(0);
+				sap.ui.getCore().byId("disruptionDetail").setBusy(true);
+			}
 			break;
 		default:
 			break;
@@ -64,7 +69,11 @@ airbus.mes.disruptions.ModelManager = {
 			sap.ui.getCore().byId("operationDetailPopup--operationDetailPopUp").setBusy(false);
 			break;
 		case "disruptiontrackerView":
-			sap.ui.getCore().byId("disruptionDetailPopup--disruptionDetailPopUp").setBusy(false);
+			if(!sap.ui.Device.system.desktop){
+				sap.ui.getCore().byId("disruptionDetailPopup--disruptionDetailPopUp").setBusy(false);
+			} else{
+				sap.ui.getCore().byId("disruptionDetail").setBusy(false);
+			}
 			break;
 		default:
 			break;
@@ -97,8 +106,8 @@ airbus.mes.disruptions.ModelManager = {
 
 			this.loadRsnResponsibleGrp(this.sMsgType);
 			this.loadResolverModel(this.sResolverGroup);
-			this.bCheck = airbus.mes.disruptions.Formatter.checkPreviousPageandDevice(nav);
-			if (this.bCheck == true) {
+			
+			if (airbus.mes.disruptions.Formatter.isSupportTeamViaDestop()) {
 				airbus.mes.disruptions.oView.disruptionDetail.oController.editPreSettings();
 			} else {
 				airbus.mes.disruptions.oView.createDisruption.oController.editPreSettings();
@@ -123,7 +132,7 @@ airbus.mes.disruptions.ModelManager = {
 		urlCustomCategory = airbus.mes.shell.ModelManager.replaceURI(urlCustomCategory, "$station", airbus.mes.settings.ModelManager.station);
 
 		// Get user to which operation is affected else current logged in user
-		// MES V1.5 from disruption tracker originator field will contain userBo
+		// From disruption tracker originator field will contain userBo
 		if (!sUserBo) {
 			var sOpUserBo = this.getIssuer();
 			urlCustomCategory = airbus.mes.shell.ModelManager.replaceURI(urlCustomCategory, "$userbo", sOpUserBo);
@@ -137,19 +146,19 @@ airbus.mes.disruptions.ModelManager = {
 
 	onLoadDisruptionCategory : function() {
 		// Reset in hard the model of the view otherwise its not rebinded...
-		var oCurrentView;
-		this.bCheck = airbus.mes.disruptions.Formatter.checkPreviousPageandDevice(nav);
-		if (this.bCheck == true) {
-			oCurrentView = airbus.mes.disruptions.oView.disruptionDetail
+		var oView;
+		if (airbus.mes.disruptions.Formatter.isSupportTeamViaDestop()) {
+			oView = airbus.mes.disruptions.oView.disruptionDetail;
 		} else {
-			oCurrentView = airbus.mes.disruptions.oView.createDisruption
+			oView = airbus.mes.disruptions.oView.createDisruption;
 		}
-		oCurrentView.getModel("disruptionCategoryModel").setData(sap.ui.getCore().getModel("disruptionCategoryModel").oData);
+		
+		oView.getModel("disruptionCategoryModel").setData(sap.ui.getCore().getModel("disruptionCategoryModel").oData);
 
 		if (airbus.mes.disruptions.ModelManager.createViewMode == "Create") {
-			oCurrentView.oController.createDisruptionSettings();
+			oView.oController.createDisruptionSettings();
 		} else if (airbus.mes.disruptions.ModelManager.createViewMode == "Edit") {
-			oCurrentView.oController.editDisruptionSettings();
+			oView.oController.editDisruptionSettings();
 		}
 
 		// Un-Set Busy Indicator
@@ -182,25 +191,22 @@ airbus.mes.disruptions.ModelManager = {
 	},
 
 	onLoadDisruptionRsnRespGrp : function() {
-		var oCurrentView;
-		this.bCheck = airbus.mes.disruptions.Formatter.checkPreviousPageandDevice(nav);
-		if (this.bCheck == true) {
-			oCurrentView = airbus.mes.disruptions.oView.disruptionDetail
-			// Reset in hard the model of the view otherwise its not rebinded...
-			oCurrentView.getModel("disruptionRsnRespGrp").setData(sap.ui.getCore().getModel("disruptionRsnRespGrp").oData);
-
-			oCurrentView.oController.afterRsnRespGrpModelLoad();
+		var oView;
+		if (airbus.mes.disruptions.Formatter.isSupportTeamViaDestop()) {
+			oView = airbus.mes.disruptions.oView.disruptionDetail;
 		} else {
-			oCurrentView = airbus.mes.disruptions.oView.createDisruption
-			oCurrentView.getModel("disruptionRsnRespGrp").setData(sap.ui.getCore().getModel("disruptionRsnRespGrp").oData);
-
-			oCurrentView.oController.afterRsnRespGrpModelLoad();
-			// Un-Set Busy's
-			sap.ui.getCore().byId("createDisruptionView--selectreason").setBusy(false);
-			sap.ui.getCore().byId("createDisruptionView--selectResponsibleGrp").setBusy(false);
-			// sap.ui.getCore().byId("createDisruptionView--selectRootCause").setBusy(false);
+			oView = airbus.mes.disruptions.oView.createDisruption;
 		}
+		
+		// Reset in hard the model of the view otherwise its not rebinded...
+		oView.getModel("disruptionRsnRespGrp").setData(sap.ui.getCore().getModel("disruptionRsnRespGrp").oData);
 
+		oView.oController.afterRsnRespGrpModelLoad();
+
+		// Un-Set Busy's
+		sap.ui.getCore().byId(oView.sId+"--selectreason").setBusy(false);
+		sap.ui.getCore().byId(oView.sId+"--selectResponsibleGrp").setBusy(false);
+		// sap.ui.getCore().byId("createDisruptionView--selectRootCause").setBusy(false);
 		
 	},
 
@@ -227,17 +233,17 @@ airbus.mes.disruptions.ModelManager = {
 	},
 
 	onLoadDisruptionResolver : function() {
-		var oCurrentView;
-		this.bCheck = airbus.mes.disruptions.Formatter.checkPreviousPageandDevice(nav);
-		if (this.bCheck == true) {
-			oCurrentView = airbus.mes.disruptions.oView.disruptionDetail
+		var oView;
+		if (airbus.mes.disruptions.Formatter.isSupportTeamViaDestop()) {
+			oView = airbus.mes.disruptions.oView.disruptionDetail;
 		} else {
-			oCurrentView = airbus.mes.disruptions.oView.createDisruption
+			oView = airbus.mes.disruptions.oView.createDisruption;
 		}
+		
 		// Reset in hard the model of the view otherwise its not rebinded...
-		oCurrentView.getModel("disruptionResolverModel").setData(sap.ui.getCore().getModel("disruptionResolverModel").oData);
+		oView.getModel("disruptionResolverModel").setData(sap.ui.getCore().getModel("disruptionResolverModel").oData);
 
-		oCurrentView.oController.afterResolverModelLoad();
+		oView.oController.afterResolverModelLoad();
 
 		// Un-Set Busy's
 		sap.ui.getCore().byId("createDisruptionView--selectResolver").setBusy(false);
@@ -1128,13 +1134,11 @@ airbus.mes.disruptions.ModelManager = {
 	 * Get the issuer of the disruption
 	 */
 	getIssuer : function() {
-		var sUser = sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/USER_BO") == "---" ? (sap.ui.getCore().getModel(
-			"userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"))// Current
-																			// Logged
-																			// in
-																			// user
-		: sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/USER_BO").split(",")[1] // Affected
-																															// User
+		var sUser = sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/USER_BO") == "---" 
+			// Current logged in user
+			? (sap.ui.getCore().getModel(	"userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"))
+			// Affected User
+			: sap.ui.getCore().getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/USER_BO").split(",")[1];
 
 		return sUser;
 	},

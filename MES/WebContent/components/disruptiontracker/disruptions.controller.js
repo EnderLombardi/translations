@@ -281,32 +281,22 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 		};
 
 		var aComments = sap.ui.getCore().getModel("disruptionsTrackerModel").getData().Rowsets.Rowset[1].Row;
-		//var sCurrMessageRef = oEvt.getSource().getBindingContext("disruptionsTrackerModel").getObject().MessageRef;
 		var sCurrMessageRef = oEvt.getParameters().rowBindingContext.oModel.getProperty(sPath).MessageRef;
 		aComments.find(function(el) {
 			if (el.MessageRef == sCurrMessageRef)
 				disruptionData.Rowsets.Rowset[1].Row.push(el);
 		});
 
-		/**
-		 * MES V1.5 Navigate to disruption Detail Page [Begin]
+		/***************************
+		 * MES V1.5 Navigate to disruption Detail Page if opened from Desktop/Laptop [Begin]
 		 */
-
 		if (sap.ui.Device.system.desktop) {
-			airbus.mes.shell.util.navFunctions.disruptionsDetail(nav, 0, 0, 0, 0);
-			var oModel = sap.ui.getCore().getModel("DisruptionDetailModel");
-			// set the data in disruption Detail Model
-			oModel.setData(disruptionData.Rowsets.Rowset[0].Row[0]);
-			nav.to(airbus.mes.disruptions.oView.disruptionDetail.getId())
-			this.setDataForViewDisruptionDetail();
-
-			// Pause the Refresh timer till the Pop-Up is opened
-			// airbus.mes.shell.AutoRefreshManager.pauseRefresh();
-			// this.getView().byId('refreshTime').setVisible(false);
-			// airbus.mes.shell.oView.byId('refreshTime').setVisible(false);
-			// 
-			/** *********************MES V1.5 [End]******************** */
-
+			airbus.mes.shell.util.navFunctions.disruptionsDetailScreen(disruptionData);
+			
+			 
+		/*************************
+		 * Open Pop -Up if Mobile or Tablet devices
+		 */
 		} else {
 
 			// create Pop-Up as a fragment
@@ -318,18 +308,15 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 				airbus.mes.disruptiontracker.oView.addDependent(airbus.mes.disruptiontracker.detailPopUp);
 			}
 
-			// Add View Disruptions view to pop-up navigation
-			// container
+			// Add View Disruptions view to pop-up navigation container
 			this.nav = sap.ui.getCore().byId("disruptionDetailPopup--disruptDetailNavContainer");
-
-			airbus.mes.shell.util.navFunctions.disruptionsDetail(this.nav, 0, // Report
-			// Disruption
-			// Button
-			0, // Create Button
-			sap.ui.getCore().byId("disruptionDetailPopup--btnUpdateDisruption"), // Update
-			// Button
-			sap.ui.getCore().byId("disruptionDetailPopup--btnCancelDisruption") // Cancel
-			// Button
+			airbus.mes.shell.util.navFunctions.disruptionsDetail(this.nav, 
+				0, // Report Disruption Button
+				0, // Create Button
+				// Update Button
+				sap.ui.getCore().byId("disruptionDetailPopup--btnUpdateDisruption"), 
+				// Cancel Button
+				sap.ui.getCore().byId("disruptionDetailPopup--btnCancelDisruption") 
 			);
 			sap.ui.getCore().getModel("operationDisruptionsModel").setData(disruptionData);
 
@@ -339,15 +326,6 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 			sap.ui.getCore().byId("ViewDisruptionView").getContent()[0].getContent()[1].getItems()[0].getContent()[0].setExpandable(false);
 
 			this.nav.to(airbus.mes.disruptions.oView.viewDisruption.getId());
-
-			// Pause the Refresh timer till the Pop-Up is opened
-			// airbus.mes.shell.AutoRefreshManager.pauseRefresh();
-			// this.getView().byId('refreshTime').setVisible(false);
-			// --commented by MJ
-			// airbus.mes.shell.oView.byId('refreshTime').setVisible(false); //
-			// ++
-			// MJ
-			// this.getView().byId('refreshTime').setVisible(false);
 
 		}
 
@@ -391,14 +369,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 			sap.ui.getCore().byId("disruptionDetailPopup--btnCancelDisruption").setVisible(true);
 		}
 	},
-	 /***************************************************************************
-	 * set the data in disruption detail page call set data for edit
-	 disruption
-	 * function MESV 1.5
-	 */
-	 setDataForViewDisruptionDetail : function() {
-	 airbus.mes.disruptions.ModelManager.loadData("Edit",sap.ui.getCore().getModel("DisruptionDetailModel").getProperty("/OriginatorID"));	 
-	 },
+
 	/**
 	 * [MES V1.5] [Beg]SD-SP1604983-DT-040 search disruption on basis of work
 	 * order/operation
@@ -494,10 +465,6 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 
 		this._oTPC.openDialog();
 	},
-	openDisruptionDeatail : function() {
-		airbus.mes.shell.util.navFunctions.disruptionsDetail(nav, 0, 0, 0, 0);
-		nav.to(airbus.mes.disruptions.oView.disruptionDetail.getId());
-	}
 
 /**
  * search disruption on basis of work order/operation

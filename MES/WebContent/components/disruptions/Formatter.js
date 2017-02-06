@@ -560,7 +560,7 @@ airbus.mes.disruptions.Formatter = {
 	 * @param {object} nav navigation object hold id's of previous pages
 	 * @return {boolean} true or false
 	 */
-	checkPreviousPageandDevice : function(nav) {
+	isSupportTeamViaDestop : function() {
 		if (sap.ui.Device.system.desktop && nav.getPreviousPage().sId == "disruptiontrackerView") {
 			return true;
 		} else {

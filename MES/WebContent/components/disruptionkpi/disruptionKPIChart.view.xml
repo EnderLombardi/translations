@@ -43,10 +43,16 @@
 				<content>
 					<Button id="navBack" icon="sap-icon://arrow-left" press="onNavBack" type="Transparent" />
 					
-					<Text text="{i18nModel>PeriodOfTime}:" class="sapUiTinyMarginBegin" />
+					<Text text="{i18nModel>PeriodOfTime}:" class="subHeaderthemeColor sapUiTinyMarginBegin" />
 					<DateTimePicker id="startDateTime" placeholder="{i18nModel>EnterStartDateTime}" change="onChangeSelection"/>
-					<Text text="{i18nModel>To}" class="sapUiTinyMarginBegin" />
+					<Text text="{i18nModel>To}" class="subHeaderthemeColor sapUiTinyMarginBegin" />
 					<DateTimePicker id="endDateTime" placeholder="{i18nModel>EnterEndDateTime}" change="onChangeSelection"/>
+					
+					<ToolbarSpacer />
+					
+					<Label text='Toggle No. of Disruptions' design="Bold"></Label>
+					<Switch customTextOn="{i18nModel>On}" customTextOff="{i18nModel>Off}" change='onToggleDisruptions' state="true" />
+					
 				</content>
 			</OverflowToolbar>
 

@@ -170,7 +170,6 @@ airbus.mes.shell.util.navFunctions = {
         if (container.getPage("ViewDisruptionView") == null) {
             container.addPage(airbus.mes.disruptions.oView.viewDisruption);
             container.addPage(airbus.mes.disruptions.oView.createDisruption);
-            container.addPage(airbus.mes.disruptions.oView.disruptionDetail);// add new page disruption detail in nav container MES V1.5
         }
 
         // Set click event on report disruption button
@@ -199,6 +198,18 @@ airbus.mes.shell.util.navFunctions = {
         airbus.mes.shell.util.navFunctions.disruptionButtons.update = updateButton;
         airbus.mes.shell.util.navFunctions.disruptionButtons.cancel = cancelButton;
     },
+
+    disruptionAttachment: function (container, disruptionDesc) {
+        if (airbus.mes.disruptionattachments === undefined || airbus.mes.disruptionattachments.oView === undefined) {
+            jQuery.sap.registerModulePath("airbus.mes.disruptionattachments", "../components/disruptionattachments");
+            sap.ui.getCore().createComponent({ name: "airbus.mes.disruptionattachments" });
+            container.addPage(airbus.mes.disruptionattachments.oView);
+        }
+        if (container.getPage("DisruptionAttachmentView") == null) {
+            container.addPage(airbus.mes.disruptionattachments.oView);
+        }
+        container.to(airbus.mes.disruptionattachments.oView.getId(), { Desc: disruptionDesc })
+    }, 
 
     displayOpeAttachments: function (container) {
         if (airbus.mes.displayOpeAttachments === undefined || airbus.mes.displayOpeAttachments.oView === undefined) {
@@ -267,18 +278,6 @@ airbus.mes.shell.util.navFunctions = {
         if (container.getPage("ncdisplayView") === null) {
             container.addPage(airbus.mes.ncdisplay.oView);
         }
-    },
-
-    disruptionAttachment: function (container, disruptionDesc) {
-        if (airbus.mes.disruptionattachments === undefined || airbus.mes.disruptionattachments.oView === undefined) {
-            jQuery.sap.registerModulePath("airbus.mes.disruptionattachments", "../components/disruptionattachments");
-            sap.ui.getCore().createComponent({ name: "airbus.mes.disruptionattachments" });
-            container.addPage(airbus.mes.disruptionattachments.oView);
-        }
-        if (container.getPage("DisruptionAttachmentView") == null) {
-            container.addPage(airbus.mes.disruptionattachments.oView);
-        }
-        container.to(airbus.mes.disruptionattachments.oView.getId(), { Desc: disruptionDesc })
     },
 
     disruptionTracker: function () {
@@ -397,6 +396,33 @@ airbus.mes.shell.util.navFunctions = {
         airbus.mes.disruptionkpi.ModelManager.loadDisruptionKPIModel();
 
         nav.to(airbus.mes.disruptionkpi.oView.getId());
+    },   
+    
+    // Screen to be called from disruption tracker on Laptop/Desktop by support team only -  V1.5
+    disruptionsDetailScreen: function (oDataset) {
+
+        if (airbus.mes.disruptions === undefined || airbus.mes.disruptions.oView === undefined) {
+            jQuery.sap.registerModulePath("airbus.mes.disruptions", "../components/disruptions");
+            sap.ui.getCore().createComponent({ name: "airbus.mes.disruptions", });
+            nav.addPage(airbus.mes.disruptions.oView.disruptionDetail);
+        }
+        
+		
+		// Set Data in disruption Detail Model with comments
+		var oData = oDataset.Rowsets.Rowset[0].Row[0];
+		oData.comments = oDataset.Rowsets.Rowset[1].Row;
+		
+		var oModel = sap.ui.getCore().getModel("DisruptionDetailModel");
+		oModel.setData(oData);
+
+		// Load data from back-end services - Call load data function in Edit Mode
+		 var sOriginatorID = sap.ui.getCore().getModel("DisruptionDetailModel").getProperty("/OriginatorID")
+		 airbus.mes.disruptions.ModelManager.loadData("Edit", sOriginatorID);
+		 
+
+		nav.to(airbus.mes.disruptions.oView.disruptionDetail.getId());
+		/** *********************MES V1.5 [End]******************** */
+
     },
 
     /************************

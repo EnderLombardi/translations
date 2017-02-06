@@ -7233,7 +7233,7 @@ td {
   .disruptionKPI .Subheader .sapMBtnIconLeft {
     color: #0D5D76 !important;
     border-right: 1px solid #8db9ca; }
-  .disruptionKPI .Subheader span {
+  .disruptionKPI .Subheader span.subHeaderthemeColor {
     color: #0d5d76; }
   .disruptionKPI .Subheader #disruptionKPIView--startDateTime, .disruptionKPI .Subheader #disruptionKPIView--endDateTime {
     width: 220px !important; }

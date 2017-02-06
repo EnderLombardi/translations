@@ -38,7 +38,7 @@ airbus.mes.disruptions.Component.prototype.createContent = function() {
             height:"100%"
         })
        this.oView.disruptionDetail = sap.ui.view({
-            id : "disruptionDetail",
+            id : "disruptionDetailView",
             viewName : "airbus.mes.disruptions.disruptionDetail",
             type : "XML",
             height:"100%"
@@ -57,10 +57,6 @@ airbus.mes.disruptions.Component.prototype.createContent = function() {
 
         // Model for Disruptions details
         this.oView.viewDisruption.setModel(sap.ui.getCore().getModel("operationDisruptionsModel"),"operationDisruptionsModel");
-
-        //Model for Issuer of create disruption - V1.5
-       // this.oView.createDisruption.setModel(sap.ui.getCore().getModel("ressourcePoolModel"),"ressourcePoolModel");
-
 
         //Model for custom data of edit disruption
         this.oView.createDisruption.setModel(sap.ui.getCore().getModel("DisruptionDetailModel"),"DisruptionDetailModel");

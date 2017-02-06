@@ -21,7 +21,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/viz/ui5/DualCombination", "sap
 		/******************************************
 		 * Initialize Pareto chart for Time Lost Per Couple Category and Reason
 		 */
-		var oParetto = this.oVizFrame = this.getView().byId("idParettoCategoryReason");
+		var oParetto = this.getView().byId("idParettoCategoryReason");
 		var sum = 0;
 		var fValue = 0;
 		var oTotal = 0;
@@ -32,8 +32,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/viz/ui5/DualCombination", "sap
 			FIORI_PERCENTAGE_FORMAT_2,
 			function(value) {
 				var percentage = sap.ui.core.format.NumberFormat.getPercentInstance({
-							style : 'precent',
-							maxFractionDigits : 0
+					style : 'precent',
+					maxFractionDigits : 0
 				});
 				var val = value;
 				return percentage.format(value / 100);
@@ -67,27 +67,23 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/viz/ui5/DualCombination", "sap
 										if (fValue !== null) {
 											if (oTotal === undefined) {
 												var oTotal = 0;
-												var lolength = this
-														.getModel("Model").oData.Rowsets.Rowset[0].Row.length;
+												var lolength = this.getModel("TimeLostperAttribute").oData.pareto1.length;
+												
 												for (var i = 0; i < lolength; i++) {
-													var val = this
-															.getModel("Model").oData.Rowsets.Rowset[0].Row[i].Value;
-													var oTotal = oTotal
-															+ val;
+													var val = this.getModel("TimeLostperAttribute").oData.pareto1[i].Value;
+													var oTotal = oTotal + val;
 												}
 											}
-											sum = sum
-													+ fValue;
+											sum = sum + fValue;
 											var Total = (sum / oTotal) * 100;
-											var oTol = Math
-													.round(Total * 10) / 10;
+											var oTol = Math.round(Total * 10) / 10;
 											return (oTol);
 										}
 									}
 								}
 							}
 						],
-			data : { path : "TimeLostperAttribute>/Pareto1"	}
+			data : { path : "TimeLostperAttribute>/pareto1"	}
 		});
 		
 		
@@ -129,17 +125,17 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/viz/ui5/DualCombination", "sap
 		var feedValueAxis1 = new sap.viz.ui5.controls.common.feeds.FeedItem({
 				'uid' : "valueAxis",
 				'type' : "Measure",
-				'values' : [ airbus.mes.disruptionkpi.oView.getModel("i18nModel").getProperty("TimeLost") ]
+				'values' : [ "Time Lost" ]
 			}), 
 			feedValueAxis2 = new sap.viz.ui5.controls.common.feeds.FeedItem({
 				'uid' : "valueAxis2",
 				'type' : "Measure",
-				'values' : [ airbus.mes.disruptionkpi.oView.getModel("i18nModel").getProperty("Percent") ]
+				'values' : [ "Percent" ]
 			}), 
 			feedCategoryAxis = new sap.viz.ui5.controls.common.feeds.FeedItem({
 				'uid' : "categoryAxis",
 				'type' : "Dimension",
-				'values' : [ airbus.mes.disruptionkpi.oView.getModel("i18nModel").getProperty("catPerReason"), airbus.mes.disruptionkpi.oView.getModel("i18nModel").getProperty("NoOfDisrupts") ]
+				'values' : [ "Category Per Reason", "Number of Disruptions" ]
 			});
 		oParetto.addFeed(feedValueAxis1);
 		oParetto.addFeed(feedValueAxis2);
@@ -270,6 +266,21 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/viz/ui5/DualCombination", "sap
 		
 	}, 
 	
+	onToggleDisruptions : function(oEvent) {
+		var oVizFrame = this.getView().byId("idParettoCategoryReason");
+		
+		if (oVizFrame) {
+			var state = oEvent.getParameter('state');
+			
+			oVizFrame.setVizProperties({
+				categoryAxis: {
+					label: {
+						hideSubLevels: !oEvent.getParameter('state')
+					}
+				},
+			});
+		}
+	},
 	
 	onChangeSelection: function(oEvt){
 		
