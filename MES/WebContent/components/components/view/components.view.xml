@@ -105,14 +105,13 @@
                 <table:template>
                    <HBox>
                        <Button icon="sap-icon://synchronize" type="Default" press="synchronizeFieldCommitted" />
-                    <StepInput type="Default"
+                    <StepInput ValueState="None"
                                class="stepInputComponent"
                                value="{componentsWorkOrderDetail>committed}"
                                min="{min}"
                                max="{max}"
                                width="{width}"
                                step="{step}"
-                               valueState="{valueState}"
                                enabled="{enabled}"
                                editable="{editable}"
                                change="committedLiveChange"/>
@@ -124,14 +123,13 @@
                 <table:template>
                     <HBox>
                         <Button icon="sap-icon://synchronize" type="Default" press="synchronizeFieldFitted" />
-                        <StepInput type="Default"
+                        <StepInput ValueState="None"
                                    class="stepInputComponent"
                                    value="{componentsWorkOrderDetail>fitted}"
                                    min="{min}"
                                    max="{max}"
                                    width="{width}"
                                    step="{step}"
-                                   valueState="{valueState}"
                                    enabled="{enabled}"
                                    editable="{editable}"
                                    change="fittedLiveChange"/>

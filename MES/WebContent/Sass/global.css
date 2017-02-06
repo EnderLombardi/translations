@@ -3243,6 +3243,7 @@ DATE PICKER
 #componentsView--ComponentsList { height: 450px !important; }
 #componentsView--ComponentsList .sapUiTableColCell { text-align: center !important; }
 #componentsView--ComponentsList .stepInputComponent { top: 4px; left: 4px; }
+#componentsView--ComponentsList .stepInputComponent span::before { color: #000000; }
 #componentsView--ComponentsList .stepInputComponent .sapMInputBaseInner { text-align: center !important; }
 
 #componentsView--ComponentsList-sapUiTableColHdrScr { height: 32px; }
