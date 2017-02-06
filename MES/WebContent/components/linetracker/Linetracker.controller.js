@@ -642,23 +642,25 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 			this.oUndoAction = sap.ui.xmlfragment("airbus.mes.linetracker.fragments.undoAction", this);
 			this.getView().addDependent(this.oUndoAction);
 		}
-		var nextMsn=sap.ui.getCore().getModel("statusActionModel").oData.nextMsn;
-		var previousMsn=sap.ui.getCore().getModel("statusActionModel").oData.msn;
+		//var nextMsn=sap.ui.getCore().getModel("statusActionModel").oData.nextMsn;
+		var currentMsn=sap.ui.getCore().getModel("statusActionModel").oData.msn;
 		var undoStatus= sap.ui.getCore().getModel("statusActionModel").oData.status;
+		var undoText;
 		if(undoStatus=="UN_LOADED" || undoStatus == "TO_BE_LOADED"){
-			undoText="undoActionText4";
+			undoText="undoActionText1";
 		}else if(undoStatus=="COMPLETE"){
 			undoText="undoActionText2";
-		}else if(undoStatus=="COMPLETE"){
+		}else if(undoStatus=="IN_PROGRESS"){
 			undoText="undoActionText3";
+		}if(undoStatus=="LOADED"){
+			undoText="undoActionText4";
 		}else{
 			undoText="undoActionText1";
 		}
 		
 		var text=this.getView().getModel("i18n").getProperty(undoText);
 		if(text!=undefined){			
-		text=text.replace("$paramCurrentMsn",nextMsn);
-		text=text.replace("$paramPreviousMsn",previousMsn);
+		text=text.replace("$paramCurrentMsn",currentMsn);		
 		}
 		sap.ui.getCore().byId("undoText").setText(text);
 		this.oUndoAction.open();

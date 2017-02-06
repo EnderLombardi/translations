@@ -81,8 +81,7 @@ airbus.mes.linetracker.util.ModelManager = {
 				}
 				if(data.stationData && !data.stationData[0]){
 					data.stationData = [data.stationData];
-				}
-				else if(!data.stationData){
+				}else if(!data.stationData){
 					data.stationData = [];
 				}
 				oViewModel.setData(data);
