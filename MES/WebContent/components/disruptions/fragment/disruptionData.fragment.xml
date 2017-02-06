@@ -22,14 +22,14 @@
 				</Select>
 				<Label text="{i18nModel>openDate}" />
 				<DatePicker enabled="false" id="OpenDate" displayFormat="short"
-					value="{path: 'DisruptionDetailModel>/Rowsets/Rowset/0/Row/0/OpeningTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}">
+					value="{path:'DisruptionDetailModel>/OpeningTime', formatter:'airbus.mes.disruptions.Formatter.getDate'}">
 					<layoutData>
 						<l:GridData span="L7 M7 S7" />
 					</layoutData>
 				</DatePicker>
 				<TimePicker enabled="false" id="openTime" displayFormat="HH:mm"
 					valueFormat="HH:mm"
-					value="{path: 'DisruptionDetailModel>/Rowsets/Rowset/0/Row/0/OpeningTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}">
+					value="{path: 'DisruptionDetailModel>/OpeningTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}">
 					<layoutData>
 						<l:GridData span="L5 M5 S5" />
 					</layoutData>
@@ -66,7 +66,7 @@
 				</DatePicker>
 				<TimePicker id="expectedTime" displayFormat="HH:mm"
 					valueFormat="HH:mm"
-					value="{path: 'DisruptionDetailModel>/Rowsets/Rowset/0/Row/0/RequiredFixBy', formatter: 'airbus.mes.disruptions.Formatter.getTime'}"
+					value="{path: 'DisruptionDetailModel>/RequiredFixBy', formatter: 'airbus.mes.disruptions.Formatter.getTime'}"
 					change="onExpectedDateChange" enabled="false">
 					<layoutData>
 						<l:GridData span="L5 M5 S5" />
@@ -154,7 +154,7 @@
 				<Label text="{i18nModel>commitedResolutionDate}" id="promisedDateLabel" />
 				<DatePicker id="promisedDate" valueFormat="yyyy-MM-dd"
 					displayFormat="short"
-					value="{path: 'DisruptionDetailModel>/Rowsets/Rowset/0/Row/0/PromisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}"
+					value="{path: 'DisruptionDetailModel>/PromisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}"
 					enabled="false">
 					<layoutData>
 						<l:GridData span="L7 M7 S7" />
@@ -162,7 +162,7 @@
 				</DatePicker>
 				<TimePicker id="promisedTime" displayFormat="HH:mm"
 					valueFormat="HH:mm:ss"
-					value="{path: 'DisruptionDetailModel>/Rowsets/Rowset/0/Row/0/PromisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}"
+					value="{path: 'DisruptionDetailModel>/PromisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}"
 					enabled="false">
 					<layoutData>
 						<l:GridData span="L5 M5 S5" />
@@ -186,14 +186,14 @@
 
 				<Label text="{i18nModel>dateOfEscalation}" />
 				<DatePicker displayFormat="short"
-					value="{path: 'DisruptionDetailModel>/Rowsets/Rowset/0/Row/0/EscalationDateTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}"
+					value="{path: 'DisruptionDetailModel>/EscalationDateTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}"
 					enabled="false">
 					<layoutData>
 						<l:GridData span="L7 M7 S7" />
 					</layoutData>
 				</DatePicker>
 				<TimePicker valueFormat="HH:mm" enabled="false"
-					value="{path: 'DisruptionDetailModel>/Rowsets/Rowset/0/Row/0/EscalationDateTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}"
+					value="{path: 'DisruptionDetailModel>/EscalationDateTime', formatter: 'airbus.mes.disruptions.Formatter.getTime'}"
 					displayFormat="HH:mm">
 					<layoutData>
 						<l:GridData span="L5 M5 S5" />

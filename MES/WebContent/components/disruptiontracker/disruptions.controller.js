@@ -294,11 +294,9 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 
 		if (sap.ui.Device.system.desktop) {
 			airbus.mes.shell.util.navFunctions.disruptionsDetail(nav, 0, 0, 0, 0);
-
-			sap.ui.getCore().getModel("operationDisruptionsModel").setData(disruptionData);
 			var oModel = sap.ui.getCore().getModel("DisruptionDetailModel");
 			// set the data in disruption Detail Model
-			oModel.setData(disruptionData);
+			oModel.setData(disruptionData.Rowsets.Rowset[0].Row[0]);
 			nav.to(airbus.mes.disruptions.oView.disruptionDetail.getId())
 			this.setDataForViewDisruptionDetail();
 
@@ -399,9 +397,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 	 * function MESV 1.5
 	 */
 	 setDataForViewDisruptionDetail : function() {
-	 airbus.mes.disruptions.ModelManager.loadData("Edit",sap.ui.getCore().getModel("DisruptionDetailModel").oData.Rowsets.Rowset[0].Row[0].OriginatorID);
-	 this.disruptionsCustomDataFlag = true;
-	 
+	 airbus.mes.disruptions.ModelManager.loadData("Edit",sap.ui.getCore().getModel("DisruptionDetailModel").getProperty("/OriginatorID"));	 
 	 },
 	/**
 	 * [MES V1.5] [Beg]SD-SP1604983-DT-040 search disruption on basis of work
