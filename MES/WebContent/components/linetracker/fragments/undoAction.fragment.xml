@@ -1,11 +1,11 @@
 <core:FragmentDefinition xmlns="sap.m"
 	xmlns:core="sap.ui.core">
-	<Dialog id="undoAction">
+	<Dialog id="undoAction" title="Warning"	type="Message" state="Warning">
 		<content>
-			<Label text="{i18n>undoActionText}"></Label>
+			<Label id="undoText" text="{i18n>undoActionText}"></Label>
 		</content>
 		<buttons>
-			<Button text="{i18n>confirm}" press="onConfirm" />
+			<Button text="{i18n>confirm}" press="onUndoConfirm" />
 			<Button text="{i18n>cancel}" press="onCancel" />
 		</buttons>
 	</Dialog>

@@ -14,7 +14,7 @@
 	"workContent": "71",
 	"openDisruption": "5",
 	"openAndon": "1",
-	"actionIcon":"start"
+	"status":"UN_LOADED"
 }, {
 	"site": "FNZ1",
 	"program": "CHES_BUILDING_1",
@@ -31,7 +31,7 @@
 	"workContent": "17",
 	"openDisruption": "6",
 	"openAndon": "2",
-	"actionIcon":"start"
+	"status":"TO_BE_LOADED"
 }, {
 	"site": "FNZ1",
 	"program": "A330",
@@ -48,7 +48,7 @@
 	"workContent": "9",
 	"openDisruption": "4",
 	"openAndon": "3",
-	"actionIcon":"end"
+	"status":"LOADED"
 }, {
 	"site": "FNZ1",
 	"program": "CHES_BUILDING_1",
@@ -65,7 +65,7 @@
 	"workContent": "8",
 	"openDisruption": "1",
 	"openAndon": "2",
-	"actionIcon":"start"
+	"status":"TO_BE_LOADED"
 }, {
 	"site": "FNZ1",
 	"program": "A330",
@@ -82,7 +82,7 @@
 	"workContent": "2",
 	"openDisruption": "7",
 	"openAndon": "6",
-	"actionIcon":"start"
+	"status":"UN_LOADED"
 }, {
 	"site": "FNZ1",
 	"program": "CHES_BUILDING_1",
@@ -99,7 +99,7 @@
 	"workContent": "4",
 	"openDisruption": "6",
 	"openAndon": "2",
-	"actionIcon":"start"
+	"status":"LOADED"
 },
 {
 	"site": "FNZ1",
@@ -117,7 +117,7 @@
 	"workContent": "29",
 	"openDisruption": "9",
 	"openAndon": "4",
-	"actionIcon":"start"
+	"status":"TO_BE_LOADED"
 }, {
 	"site": "FNZ1",
 	"program": "CHES_BUILDING_1",
@@ -134,7 +134,7 @@
 	"workContent": "5",
 	"openDisruption": "3",
 	"openAndon": "1",
-	"actionIcon":"load"
+	"status":"LOADED"
 }, {
 	"site": "FNZ1",
 	"program": "A330",
@@ -151,7 +151,7 @@
 	"workContent": "12",
 	"openDisruption": "1",
 	"openAndon": "2",
-	"actionIcon":"end"
+	"status":"COMPLETE"
 }, {
 	"site": "FNZ1",
 	"program": "CHES_BUILDING_1",
@@ -168,7 +168,7 @@
 	"workContent": "43",
 	"openDisruption": "6",
 	"openAndon": "3",
-	"actionIcon":"load"
+	"status":"IN_PROGRESS"
 }, {
 	"site": "FNZ1",
 	"program": "A330",
@@ -185,7 +185,7 @@
 	"workContent": "20",
 	"openDisruption": "8",
 	"openAndon": "4",
-	"actionIcon":"start"
+	"status":"IN_PROGRESS"
 }, {
 	"site": "FNZ1",
 	"program": "CHES_BUILDING_1",
@@ -202,7 +202,7 @@
 	"workContent": "1",
 	"openDisruption": "4",
 	"openAndon": "5",
-	"actionIcon":"start"
+	"status":"LOADED"
 }, {
 	"site": "FNZ1",
 	"program": "CHES_BUILDING_1",
@@ -219,7 +219,7 @@
 	"workContent": "5",
 	"openDisruption": "3",
 	"openAndon": "1",
-	"actionIcon":"start"
+	"status":"IN_PROGRESS"
 }, {
 	"site": "FNZ1",
 	"program": "A330",
@@ -236,7 +236,7 @@
 	"workContent": "12",
 	"openDisruption": "1",
 	"openAndon": "2",
-	"actionIcon":"end"
+	"status":"COMPLETE"
 }, {
 	"site": "FNZ1",
 	"program": "CHES_BUILDING_1",
@@ -253,7 +253,7 @@
 	"workContent": "43",
 	"openDisruption": "6",
 	"openAndon": "3",
-	"actionIcon":"load"
+	"status":"LOADED"
 }, {
 	"site": "FNZ1",
 	"program": "A330",
@@ -270,7 +270,7 @@
 	"workContent": "20",
 	"openDisruption": "8",
 	"openAndon": "4",
-	"actionIcon":"start"
+	"status":"IN_PROGRESS"
 }, {
 	"site": "FNZ1",
 	"program": "CHES_BUILDING_1",
@@ -287,7 +287,7 @@
 	"workContent": "1",
 	"openDisruption": "4",
 	"openAndon": "5",
-	"actionIcon":"start"
+	"status":"IN_PROGRESS"
 }, {
 	"site": "FNZ1",
 	"program": "CHES_BUILDING_1",
@@ -304,7 +304,7 @@
 	"workContent": "5",
 	"openDisruption": "3",
 	"openAndon": "1",
-	"actionIcon":"start"
+	"status":"LOADED"
 }, {
 	"site": "FNZ1",
 	"program": "A330",
@@ -321,7 +321,7 @@
 	"workContent": "12",
 	"openDisruption": "1",
 	"openAndon": "2",
-	"actionIcon":"end"
+	"status":"COMPLETE"
 }, {
 	"site": "FNZ1",
 	"program": "CHES_BUILDING_1",
@@ -338,7 +338,7 @@
 	"workContent": "43",
 	"openDisruption": "6",
 	"openAndon": "3",
-	"actionIcon":"load"
+	"status":"LOADED"
 }, {
 	"site": "FNZ1",
 	"program": "A330",
@@ -355,7 +355,7 @@
 	"workContent": "20",
 	"openDisruption": "8",
 	"openAndon": "4",
-	"actionIcon":"start"
+	"status":"IN_PROGRESS"
 }, {
 	"site": "FNZ1",
 	"program": "CHES_BUILDING_1",
@@ -372,5 +372,5 @@
 	"workContent": "1",
 	"openDisruption": "4",
 	"openAndon": "5",
-	"actionIcon":"start"
+	"status":"IN_PROGRESS"
 }]
