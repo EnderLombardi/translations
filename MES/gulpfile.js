@@ -25,11 +25,12 @@ var dest = rootdest + '/current';
 
 // url - log - pwd
 // TODO : create a table for multi push
-var miiHost = 'http://swinsapdi01.ptx.fr.sopra:50000';
-var miiUser = 'S00DB44';
-var miiPassword = 'start000';
+var miiHost = ['http://swinsapdi01.ptx.fr.sopra:50000','https://dmiswde0.eu.airbus.corp'];
+var miiUser = ['S00DB44','NG560DB'];
+var miiPassword = ['start000','pierre248'];
 var miiTransaction = 'XX_MOD1684_MES_Temp%2FTools%2FCreateFile';
-var pushServiceUrl = `${ miiHost }/XMII/Illuminator?QueryTemplate=${ miiTransaction }&j_user=${ miiUser }&j_password=${ miiPassword }`;
+var pushServiceUrlMDI = `${ miiHost[0] }/XMII/Illuminator?QueryTemplate=${ miiTransaction }&j_user=${ miiUser[0] }&j_password=${ miiPassword[0] }`;
+var pushServiceUrlDMI = `${ miiHost[1] }/XMII/Illuminator?QueryTemplate=${ miiTransaction }&j_user=${ miiUser[1] }&j_password=${ miiPassword[1] }`;
 var rootRemotePath = "WEB://XX_MOD1684_MES_Temp/ui/mes";
 
 //table for build
@@ -115,6 +116,7 @@ gulp.task('copy_index', ['clean'], function () {
 gulp.task('copy', ['clean'], function () {
 		return gulp.src([
 			'./shell/config/res_config_prod.properties',
+			'./shell/data/**',
 			'./components/homepage/css/margin.css',
 			'./Sass/global.css',
 			'./Sass/*.png',
@@ -127,6 +129,7 @@ gulp.task('copy', ['clean'], function () {
 			'./components/polypoly/model/needlevels.json',
 			'./components/polypoly/images/**',
 			'./components/linetracker/images/**',
+			'./components/stationHandover/model/**',
 			'./components/stationtracker/css/img/**',
 			'./components/stationtracker/data/groupModel.json',
 			'./components/stationtracker/data/KPIModel.json',
@@ -216,11 +219,16 @@ gulp.task('bump_ver', function () {
 gulp.task('bump', ['bump_ver', 'build'], function () {
 		return gulp.src(['./**'], { cwd: dest }) // .+(json|properties|css|js)
 		.pipe(pushMii({
-			url: pushServiceUrl,
+			url: pushServiceUrlMDI,
+			root: dest,
+			remotePath: rootRemotePath + '/v' + version.toString(),
+		})).pipe(pushMii({
+			url: pushServiceUrlDMI,
 			root: dest,
 			remotePath: rootRemotePath + '/v' + version.toString(),
 		}));
 });
+
 
 //--------------------------------------------------------------------------------------------------------------------------//
 //																															//
