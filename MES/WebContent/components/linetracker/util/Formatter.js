@@ -146,8 +146,6 @@ airbus.mes.linetracker.util.Formatter = {
 	 * @param return
 	 *            Icon
 	 */
-	getActionIcon : function(msn, completionDate, actualStartDate) {
-		if (msn == null) {
 	getActionIcon: function(status){
 	/*	if(status == "UN_LOADED" || status == "TO_BE_LOADED"){ 
 			return "sap-icon://border";
