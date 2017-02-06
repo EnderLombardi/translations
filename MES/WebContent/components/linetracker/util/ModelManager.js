@@ -7,7 +7,7 @@ airbus.mes.linetracker.util.ModelManager = {
 	//site : undefined,
 	program : undefined,
 	customLineBO : undefined,
-
+	aTaktAction : ["LOAD_NEXT_MSN","START_OF_ASSEMBLY","END_OF_ASSEMBLY","EMPTY_STATION","UNDO"],
 	init : function(core) {
 
 		var aModel = [ "stationDataModel", // Model for Station Data
@@ -479,6 +479,34 @@ airbus.mes.linetracker.util.ModelManager = {
 		oModel.setProperty("/Rowsets/Rowset/0/Row/0/line",result.line);
 		oModel.setProperty("/Rowsets/Rowset/0/Row/0/program",result.line);
 		oModel.refresh();
+	},
+	
+	performTaktAction : function(station, msn, action){
+		jQuery.ajax({
+			type : 'post',
+			url : this.urlModel.getProperty("urltaktaction"),
+			contentType : 'application/json',
+			data : JSON.stringify({
+				"site" : airbus.mes.settings.ModelManager.site,
+				"lang" : sap.ui.getCore().byId("globalNavView--SelectLanguage").getSelectedItem().getKey(),
+				"msn" : msn,
+				"station" : station,
+				"action" : action
+			}),
+
+			success : function(data) {
+				if (typeof data == "string") {
+					data = JSON.parse(data);
+				}
+				oViewModel.setData(data);
+				 //sap.ui.getCore().byId("idLinetracker1").setBusy(false);
+			},
+
+			error : function(error, jQXHR) {
+				jQuery.sap.log.info(error);
+				// sap.ui.getCore().byId("idLinetracker1").setBusy(false);
+			}
+		});
 	}
 
 };

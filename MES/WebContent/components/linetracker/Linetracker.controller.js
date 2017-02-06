@@ -568,12 +568,10 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	loadNextMsn : function(oEvt){		
 		
 		oEvt.getSource().getParent().getParent()._oOpenBy.setSrc("sap-icon://media-pause");
-		
+		//to be done with model
 		this.actionButtonStatus(false,true,false,false,true);
-//		sap.ui.getCore().byId("loadNextMSN").setEnabled(false);
-//		sap.ui.getCore().byId("startAssembly").setEnabled(true);
-//		sap.ui.getCore().byId("endAssembly").setEnabled(false);
-//		sap.ui.getCore().byId("emptyStation").setEnabled(false);
+		//extract msn and station
+		performTaktAction(station, msn, airbus.mes.linetracker.util.ModelManager.aTaktAction[0]);
 		
 	},
 	
@@ -582,8 +580,12 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	 * Takt actions – start of assembly
 	 */
 	startAssembly : function(oEvt){
-		this.actionButtonStatus(false,false,true,false,true);
 		oEvt.getSource().getParent().getParent()._oOpenBy.setSrc("sap-icon://media-play");
+		//extract msn and station
+		performTaktAction(station, msn, airbus.mes.linetracker.util.ModelManager.aTaktAction[1]);
+		//to be done with model
+		this.actionButtonStatus(false,false,true,false,true);
+
 
 	},
 	
@@ -593,6 +595,9 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	 */
 	endAssembly : function(oEvt){
 		oEvt.getSource().getParent().getParent()._oOpenBy.setSrc("sap-icon://accept");
+		//extract msn and station
+		performTaktAction(station, msn, airbus.mes.linetracker.util.ModelManager.aTaktAction[2]);
+		//to be done with model
 		this.actionButtonStatus(true,false,false,true,true);
 	},
 	
@@ -603,7 +608,9 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	emptyStation : function(oEvt){
 		
 		oEvt.getSource().getParent().getParent()._oOpenBy.setSrc("sap-icon://border");
-		
+		//extract msn and station
+		performTaktAction(station, msn, airbus.mes.linetracker.util.ModelManager.aTaktAction[3]);
+		//to be done with model
 		this.actionButtonStatus(true,false,false,false,true);
 	},
 	
@@ -612,6 +619,9 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	 * Takt actions – undo 
 	 */
 	undo : function(){
+		//extract msn and station
+		performTaktAction(station, msn, airbus.mes.linetracker.util.ModelManager.aTaktAction[4]);
+		//to be done with model
 		this.actionButtonStatus(true,true,true,true,true);
 	},
 	
