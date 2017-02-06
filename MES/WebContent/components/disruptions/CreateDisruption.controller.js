@@ -613,7 +613,10 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption",
 		 */
 		resetAllFields : function() {
 			this.getView().byId("selectFivemCategory").setSelectedKey();
+			
 			this.getView().byId("selectCategory").setSelectedKey();
+			this.getView().byId("selectCategory").getBinding("items").filter();
+			
 			this.getView().byId("selectreason").setSelectedKey();
 			this.getView().byId("selectResponsibleGrp").setSelectedKey();
 			this.getView().byId("selectResolver").setSelectedKey(); // +V1.5
@@ -633,7 +636,6 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption",
 		/***********************************************************************
 		 * requesting material list to select on create disruption
 		 **********************************************************************/
-
 		onMaterialValueHelpRequest : function() {
 			if (!this._materialListDialog) {
 
@@ -980,8 +982,7 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption",
 		 *            oEvt take event riggering control as an input
 		 */
 		hideCommentBox : function(oEvt) {
-			sap.ui.getCore().byId("disruptionDetail--commentBox").setVisible(false)
-
+			sap.ui.getCore().byId("disruptionDetail--commentBox").setVisible(false);
 		},
 
 		/***********************************************************************
