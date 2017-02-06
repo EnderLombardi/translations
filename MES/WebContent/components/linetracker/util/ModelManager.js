@@ -516,9 +516,11 @@ airbus.mes.linetracker.util.ModelManager = {
 	 * @param msn, status
 	 * to add the nextMsn and status from the chosen row to current popover model
 	 */
-	populateStatusActionModel : function(nextMsn, status){
+	populateStatusActionModel : function(station,msn,nextMsn, status){
 		var data = {
-			"msn" : nextMsn,
+			"station":station,
+			"msn":msn,
+			"nextMsn" : nextMsn,
 			"status" : status
 		} 
 		sap.ui.getCore().getModel("statusActionModel").setData(data);

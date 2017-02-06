@@ -147,21 +147,18 @@ airbus.mes.linetracker.util.Formatter = {
 	 *            Icon
 	 */
 	getActionIcon: function(status){
-	/*	if(status == "UN_LOADED" || status == "TO_BE_LOADED"){ 
+		if(status == "UN_LOADED" || status == "TO_BE_LOADED"){ 
 			return "sap-icon://border";
-		} else if (completionDate != null) {
-		}else if(status == "COMPLETE"){
+		} else if(status == "COMPLETE"){
 			return "sap-icon://accept";
-		} else if (actualStartDate != null) {
-		}else if(status == "IN_PROGRESS"){
+		} else if(status == "IN_PROGRESS"){
 			return "sap-icon://media-play";
-		} else if (actualStartDate == null) {
-		}else if(status == "LOADED"){
+		} else if(status == "LOADED"){
 			return "sap-icon://media-pause";
 		} else {
-			return "";
-		}*/
-		return  "sap-icon://media-play";
+			return "sap-icon://media-play";
+		}
+
 	},
 	showHideButtonsOnStatus : function(status) {
 		if (this.getId() === "loadNextMSN" && status)

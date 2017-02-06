@@ -568,9 +568,11 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 			this.oTaktActionPopover = sap.ui.xmlfragment("airbus.mes.linetracker.fragments.taktOperation", this);
 			this.getView().addDependent(this.oTaktActionPopover);
 		}
+		var station = sap.ui.getCore().getModel("stationDataModel").getProperty(oEvt.getSource().getBindingContext("stationDataModel").getPath()).station
 		var status = sap.ui.getCore().getModel("stationDataModel").getProperty(oEvt.getSource().getBindingContext("stationDataModel").getPath()).status
+		var msn = sap.ui.getCore().getModel("stationDataModel").getProperty(oEvt.getSource().getBindingContext("stationDataModel").getPath()).msn
 		var nextMsn = sap.ui.getCore().getModel("stationDataModel").getProperty(oEvt.getSource().getBindingContext("stationDataModel").getPath()).nextMsn
-		airbus.mes.linetracker.util.ModelManager.populateStatusActionModel(nextMsn, status);
+		airbus.mes.linetracker.util.ModelManager.populateStatusActionModel(station,msn,nextMsn, status);
 		this.oTaktActionPopover.openBy(oEvt.getSource());
 	},
 	
@@ -640,7 +642,24 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 			this.oUndoAction = sap.ui.xmlfragment("airbus.mes.linetracker.fragments.undoAction", this);
 			this.getView().addDependent(this.oUndoAction);
 		}
-		var text=this.getView().getModel("i18n").getProperty("undoActionText1");
+		var nextMsn=sap.ui.getCore().getModel("statusActionModel").oData.nextMsn;
+		var previousMsn=sap.ui.getCore().getModel("statusActionModel").oData.msn;
+		var undoStatus= sap.ui.getCore().getModel("statusActionModel").oData.status;
+		if(undoStatus=="UN_LOADED" || undoStatus == "TO_BE_LOADED""){
+			undoText="undoActionText4";
+		}else if(undoStatus=="COMPLETE"){
+			undoText="undoActionText2";
+		}else if(undoStatus=="COMPLETE"){
+			undoText="undoActionText3";
+		}else{
+			undoText="undoActionText1";
+		}
+		
+		var text=this.getView().getModel("i18n").getProperty(undoText);
+		if(text!=undefined){			
+		text=text.replace("$paramCurrentMsn",nextMsn);paramPreviousMsn
+		text=text.replace("$paramPreviousMsn",previousMsn);
+		}
 		sap.ui.getCore().byId("undoText").setText(text);
 		this.oUndoAction.open();
 	},

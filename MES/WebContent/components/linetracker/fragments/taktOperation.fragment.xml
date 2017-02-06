@@ -1,15 +1,30 @@
-<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
-	<Popover id="taktActionPopover" class="sapUiContentPadding" placement="PreferredBottomOrFlip" showHeader="false">
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<Popover id="taktActionPopover" class="sapUiContentPadding"
+		placement="PreferredBottomOrFlip" showHeader="false">
 		<VBox>
 			<HBox alignItems="Center" justifyContent="Middle">
-				<Button id="loadNextMSN" text="{statusActionModel>msn}" type="Transparent" press="loadNextMsn" icon="sap-icon://synchronize" tooltip="{i18n>loadNextMsn}" enabled="{ path : 'statusActionModel>status', formatter : 'airbus.mes.linetracker.util.Formatter.showHideButtonsOnStatus' }" />
-				<Image id="nextMsnImage" height="1.8rem" width="auto" visible="{ path : 'statusActionModel>msn', formatter : 'airbus.mes.linetracker.util.Formatter.showHideButtonsOnStatus' }" error="{ path : 'statusActionModel>msn', formatter : 'airbus.mes.linetracker.util.Formatter.getErrorFlightImage' }" src="{ path : 'statusActionModel>msn', formatter : 'airbus.mes.linetracker.util.Formatter.loadFlightLogo' }">
+				<Button id="loadNextMSN" text="{statusActionModel>msn}" type="Transparent"
+					press="loadNextMsn" icon="sap-icon://synchronize" tooltip="{i18n>loadNextMsn}"
+					enabled="{ path : 'statusActionModel>status', formatter : 'airbus.mes.linetracker.util.Formatter.showHideButtonsOnStatus' }" />
+				<Image id="nextMsnImage" height="1.8rem" width="auto"
+					visible="{ path : 'statusActionModel>msn', formatter : 'airbus.mes.linetracker.util.Formatter.showHideButtonsOnStatus' }"
+					error="{ path : 'statusActionModel>msn', formatter : 'airbus.mes.linetracker.util.Formatter.getErrorFlightImage' }"
+					src="{ path : 'statusActionModel>msn', formatter : 'airbus.mes.linetracker.util.Formatter.loadFlightLogo' }">
 				</Image>
 			</HBox>
-			<Button id="startAssembly" width="100%" text="{i18n>startAssembly}" type="Transparent" press="startAssembly" icon="sap-icon://media-play" enabled="{ path : 'statusActionModel>status', formatter : 'airbus.mes.linetracker.util.Formatter.showHideButtonsOnStatus' }" />
-			<Button id="endAssembly" width="100%" text="{i18n>endAssembly}" type="Transparent" press="endAssembly" icon="sap-icon://accept" enabled="{ path : 'statusActionModel>status', formatter : 'airbus.mes.linetracker.util.Formatter.showHideButtonsOnStatus' }" />
-			<Button id="emptyStation" width="100%" text="{i18n>emptyStation}" type="Transparent" press="emptyStation" icon="sap-icon://border" enabled="{ path : 'statusActionModel>status', formatter : 'airbus.mes.linetracker.util.Formatter.showHideButtonsOnStatus' }" />
-			<Button id="undo" width="100%" text="{i18n>undo}" type="Transparent" press="undo" enabled="{ path : 'statusActionModel>status', formatter : 'airbus.mes.linetracker.util.Formatter.showHideButtonsOnStatus' }" />
+			<Button id="startAssembly" width="100%" text="{i18n>startAssembly}"
+				type="Transparent" press="startAssembly" icon="sap-icon://media-play"
+				enabled="{ path : 'statusActionModel>status', formatter : 'airbus.mes.linetracker.util.Formatter.showHideButtonsOnStatus' }" />
+			<Button id="endAssembly" width="100%" text="{i18n>endAssembly}"
+				type="Transparent" press="endAssembly" icon="sap-icon://accept"
+				enabled="{ path : 'statusActionModel>status', formatter : 'airbus.mes.linetracker.util.Formatter.showHideButtonsOnStatus' }" />
+			<Button id="emptyStation" width="100%" text="{i18n>emptyStation}"
+				type="Transparent" press="emptyStation" icon="sap-icon://border"
+				enabled="{ path : 'statusActionModel>status', formatter : 'airbus.mes.linetracker.util.Formatter.showHideButtonsOnStatus' }" />
+			<Button id="undo" width="100%" text="{i18n>undo}" type="Transparent"
+				press="undo" icon="sap-icon://undo"
+				enabled="{ path : 'statusActionModel>status', formatter : 'airbus.mes.linetracker.util.Formatter.showHideButtonsOnStatus' }" />
 		</VBox>
 	</Popover>
 </core:FragmentDefinition>
