@@ -104,8 +104,8 @@
                 <Label text="{i18nComponentsModel>committed}" />
                 <table:template>
                    <HBox>
-                       <Button icon="sap-icon://synchronize" press="synchronizeFieldCommitted" />
-                    <StepInput
+                       <Button icon="sap-icon://synchronize" type="Default" press="synchronizeFieldCommitted" />
+                    <StepInput type="Default"
                                class="stepInputComponent"
                                value="{componentsWorkOrderDetail>committed}"
                                min="{min}"
@@ -123,8 +123,8 @@
                 <Label text="{i18nComponentsModel>fitted}" />
                 <table:template>
                     <HBox>
-                        <Button icon="sap-icon://synchronize" press="synchronizeFieldFitted" />
-                        <StepInput
+                        <Button icon="sap-icon://synchronize" type="Default" press="synchronizeFieldFitted" />
+                        <StepInput type="Default"
                                    class="stepInputComponent"
                                    value="{componentsWorkOrderDetail>fitted}"
                                    min="{min}"

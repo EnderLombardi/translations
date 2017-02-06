@@ -12,8 +12,26 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         var oTable = sap.ui.getCore().byId("componentsView--ComponentsList");
         oTable.setSelectionMode("None");
         oTable.setVisibleRowCount(oTable.getBinding("rows").oList.length);
+        this.changeButtonColor();
+        sap.ui.getCore().byId("operationDetailPopup--btnComponentsSave").setVisible(false);
 //        Reset value
 //        this.getView().byId("idSearchComponent").setValue();
+    },
+
+    changeButtonColor: function(){
+        var oTable = sap.ui.getCore().byId("componentsView--ComponentsList");
+        var count = oTable.getBinding("rows").oList.length;
+        for(var i = 0; i < count; i++){
+            oTable.getRows()[i];
+            var dataIndex = oTable.getModel("componentsWorkOrderDetail").oData.Rowsets.Rowset[0].Row[i];
+            if(dataIndex.withdrawQty === dataIndex.requiredQty){
+                oTable.getRows()[i].getCells()[11].getItems()[0].setType("Accept");
+                oTable.getRows()[i].getCells()[12].getItems()[0].setType("Accept");
+            }else{
+                oTable.getRows()[i].getCells()[11].getItems()[0].setType("Default");
+                oTable.getRows()[i].getCells()[12].getItems()[0].setType("Default");
+            }
+        }
     },
 
     checkSettingComponents: function () {
@@ -212,6 +230,22 @@ sap.ui.controller("airbus.mes.components.controller.components", {
             binding.filter(oFilter);
         }
 
+    },
+
+    synchronizeFieldCommitted: function(oEvent){
+        var oTable = sap.ui.getCore().byId("componentsView--ComponentsList");
+        var index = oEvent.getSource().oParent.oParent.getCells()[0].oParent.getIndex();
+        var dataIndex = oTable.getModel("componentsWorkOrderDetail").oData.Rowsets.Rowset[0].Row[index];
+        oEvent.getSource().oParent.getItems()[1].setValue(dataIndex.withdrawQty);
+        sap.ui.getCore().byId("operationDetailPopup--btnComponentsSave").setVisible(true);
+    },
+
+    synchronizeFieldFitted: function(oEvent){
+        var oTable = sap.ui.getCore().byId("componentsView--ComponentsList");
+        var index = oEvent.getSource().oParent.oParent.getCells()[0].oParent.getIndex();
+        var dataIndex = oTable.getModel("componentsWorkOrderDetail").oData.Rowsets.Rowset[0].Row[index];
+        oEvent.getSource().oParent.getItems()[1].setValue(dataIndex.withdrawQty);
+        sap.ui.getCore().byId("operationDetailPopup--btnComponentsSave").setVisible(true);
     }
 
 });

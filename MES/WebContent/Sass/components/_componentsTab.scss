@@ -30,26 +30,26 @@
 }
 
 #componentsView--ComponentsCheck.ComponentsCheck{
-	width: 50%;
+    width: 50%;
     margin: 20px auto 10px auto;
     padding: 0;
     text-align: center;
 }
 
 #componentsView--otbSubheader{
-	width: 40%;
+    width: 40%;
     margin: 10px auto 10px auto;
     padding: 0;
     text-align: center;
     border : none;
-	>button:first-child {
-		width: 20% !important;
-	}
-	>div {
-		width: 75% !important;
-		max-width: none !important;
-		min-width: 0 !important;
-	}
+    >button:first-child {
+        width: 20% !important;
+    }
+    >div {
+        width: 75% !important;
+        max-width: none !important;
+        min-width: 0 !important;
+    }
 }
 
 #componentsView--ComponentsCheck.jigToolListlabel{
@@ -63,7 +63,8 @@
         text-align: center !important;
     }
     .stepInputComponent{
-        padding: 4px;
+        top: 4px;
+        left: 4px;
         .sapMInputBaseInner{
             text-align: center !important;
         }
