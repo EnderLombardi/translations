@@ -91,7 +91,7 @@ airbus.mes.shell.util.navFunctions = {
                 customHeader: new sap.m.Bar({
                     height: "3rem",
                     design: 'SubHeader',
-                    contentLeft: [new sap.m.Label("polypolytitle").addStyleClass("polypolytitle")],
+                    contentLeft: [new sap.m.Label("polypolytitle").addStyleClass("headerText sapUiSmallMarginBeginEnd")],
                 }).addStyleClass("pageHeader contentNoPad"),
             }).addStyleClass("classPolypolyPage");
 

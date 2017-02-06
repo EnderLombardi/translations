@@ -10,7 +10,7 @@
 				image="" expandAnimation="false" class="pageHeader kpiPageHeader contentNoPad">
 				<headerToolbar>
 					<Toolbar>
-						<Title text="{i18n>lineTrackerTitle}" 	class="lineTrackerTitle" />
+						<Label text="{i18n>lineTrackerTitle}" id="headerText" class="headerText sapUiSmallMarginBeginEnd" />
 						<core:Icon src="sap-icon://appointment" class="headerIcons" color="#FFFFFF"></core:Icon>
 						<Label id="linetracker_dateLabel" text="" class="classDateLabel"></Label>
 <!-- 						<core:Icon src="sap-icon://history" class="headerIcons1"	color="#FFFFFF"></core:Icon> -->

@@ -42,10 +42,14 @@
 	    background: $teal-blue-hover !important;
 	    border: 0;
 	    
-	    .sapMTokenizer .sapMToken{
-	    	margin-top: -0.175rem;
-	    	margin-bottom: 0px;
-	    	vertical-align: middle;    
+	    .sapMTokenizer{
+	    	z-index: 1;
+	    	
+	    	.sapMToken{
+		    	margin-top: -0.175rem;
+		    	margin-bottom: 0px;
+		    	vertical-align: middle;
+		    }    
 	    	    
 	    	.sapMTokenIcon{
 	    		cursor:pointer;
@@ -92,6 +96,7 @@
 		width: 220px !important;
 			
 		input{
+			pointer-events:none; // Very import to avoid user to add value manually using keyboard
 			color: #0d5d76;
 	    	line-height: 3rem;
 	    	border: 0 !important;

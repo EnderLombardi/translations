@@ -221,21 +221,8 @@ Linetracker View (Main Table)
         margin-left: 0;
 
     }
-    .lineTrackerTitle{
-        //margin: 1rem !important;
-        //font-style: normal;
-        //font-weight: 500;
-        //font-size: 1rem !important;
-        color: #74d2e7 !important;
-        //font-family: Arial,Helvetica;
-        text-shadow: none;
-        //border-right: solid 1px #74d2e7 !important;
-        padding: 0px 30px;
-    	//width: 155px;
-    	 span{
-    	 	font-size: 0.875rem
-    	 	}
-    }
+
+
     span{
         &.sapUiIcon{
             &.trendIconLinetracker{

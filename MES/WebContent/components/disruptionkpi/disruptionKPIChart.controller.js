@@ -307,18 +307,18 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/viz/ui5/DualCombination", "sap
 	 	   		
 	 	   	case "startDateTime":
 				var oTime = oView.byId("startDateTime").getDateValue();
-				if(oTime == ""){
+				if(oTime == null){
 					oView.byId("startDateTime").focus();
 					airbus.mes.shell.ModelManager.messageShow(oView.getModel("i18nModel").getProperty("startDateNoEmpty"));
 					return;
 				}
-					
+				
 	 	   		airbus.mes.disruptionkpi.ModelManager.oFilters.startDateTime = oTime;
 				break;
 	 	   		
 	 	   	case "endDateTime":
 				var oTime = oView.byId("endDateTime").getDateValue();
-				if(oTime == ""){
+				if(oTime == null){
 					airbus.mes.shell.ModelManager.messageShow(oView.getModel("i18nModel").getProperty("endDateNoEmpty"));
 					oView.byId("endDateTime").focus();
 					return;
@@ -349,11 +349,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/viz/ui5/DualCombination", "sap
 		nav.back();
 	},
 	
-	onAfterRendering: function(oEvent){
-        
-        document.getElementById("disruptionKPIView--startDateTime-inner").disabled = true
-        document.getElementById("disruptionKPIView--endDateTime-inner").disabled = true
-	}
 
 	});
 });

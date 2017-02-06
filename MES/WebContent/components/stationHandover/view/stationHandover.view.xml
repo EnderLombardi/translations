@@ -16,8 +16,8 @@
 
 					<m:Toolbar id="kpiHeaderToolbar"
 						class="classKpiheaderToolbar pageHeader kpiPageHeader contentNoPad">
-						<m:Label id="stationHandover" text="{stationHandoverI18n>stationHandover}"
-							class="classDateLabel" />
+						<m:Label text="{stationHandoverI18n>stationHandover}" id="headerText" class="headerText sapUiSmallMarginBeginEnd" />
+
 						<m:Select id="selectStationHandover" class="comboStationHandover"
 							change="changeShift"
 							items="{ path : 'msnModel>/' , sorter : {
