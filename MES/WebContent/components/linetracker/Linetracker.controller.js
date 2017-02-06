@@ -645,7 +645,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 		var nextMsn=sap.ui.getCore().getModel("statusActionModel").oData.nextMsn;
 		var previousMsn=sap.ui.getCore().getModel("statusActionModel").oData.msn;
 		var undoStatus= sap.ui.getCore().getModel("statusActionModel").oData.status;
-		if(undoStatus=="UN_LOADED" || undoStatus == "TO_BE_LOADED""){
+		if(undoStatus=="UN_LOADED" || undoStatus == "TO_BE_LOADED"){
 			undoText="undoActionText4";
 		}else if(undoStatus=="COMPLETE"){
 			undoText="undoActionText2";
