@@ -34,78 +34,79 @@
                      editable="true"
                      width="100%">
         <table:columns>
-            <table:Column  width="11rem">
+            <table:Column  width="12rem">
                 <Label text="{i18nComponentsModel>itemNumber}" />
                 <table:template>
                     <Text text="{componentsWorkOrderDetail>itemNumber}" />
                 </table:template>
             </table:Column>
-            <table:Column  width="11rem">
+            <table:Column  width="12rem">
                 <Label text="{i18nComponentsModel>operationNumber}" />
                 <table:template>
                     <Text text="{componentsWorkOrderDetail>operationNumber}"/>
                 </table:template>
             </table:Column>
-            <table:Column  width="11rem">
+            <table:Column  width="12rem">
                 <Label text="{i18nComponentsModel>materialType}" />
                 <table:template>
                     <Text text="{componentsWorkOrderDetail>materialType}"  />
                 </table:template>
             </table:Column>
-            <table:Column  width="11rem">
+            <table:Column  width="12rem">
                 <Label text="{i18nComponentsModel>materialDescription}" />
                 <table:template>
                     <Text text="{componentsWorkOrderDetail>materialDescription}"  />
                 </table:template>
             </table:Column>
-            <table:Column  width="11rem">
+            <table:Column  width="12rem">
                 <Label text="{i18nComponentsModel>storageLocation}" />
                 <table:template>
                     <Text text="{componentsWorkOrderDetail>storageLocation}"  />
                 </table:template>
             </table:Column>
-            <table:Column  width="11rem">
+            <table:Column  width="12rem">
                 <Label text="{i18nComponentsModel>freestockKanbanBulkMaterial}" />
                 <table:template>
                     <Text text="{componentsWorkOrderDetail>freestockKanbanBulkMaterial}"  />
                 </table:template>
             </table:Column>
-            <table:Column  width="11rem">
+            <table:Column  width="12rem">
                 <Label text="{i18nComponentsModel>requiredQty}" />
                 <table:template>
                     <Text text="{componentsWorkOrderDetail>requiredQty}"  />
                 </table:template>
             </table:Column>
-            <table:Column  width="11rem">
+            <table:Column  width="12rem">
                 <Label text="{i18nComponentsModel>withdrawQty}" />
                 <table:template>
                     <Text text="{componentsWorkOrderDetail>withdrawQty}"  />
                 </table:template>
             </table:Column>
-            <table:Column  width="11rem">
+            <table:Column  width="12rem">
                 <Label text="{i18nComponentsModel>shortage}" />
                 <table:template>
                     <Text text="{componentsWorkOrderDetail>shortage}"  />
                 </table:template>
             </table:Column>
-            <table:Column  width="11rem">
+            <table:Column  width="12rem">
                 <Label text="{i18nComponentsModel>unit}" />
                 <table:template>
                     <Text text="{componentsWorkOrderDetail>unit}"  />
                 </table:template>
             </table:Column>
-            <table:Column  width="11rem">
+            <table:Column  width="12rem">
                 <Label text="{i18nComponentsModel>serialNumber}" />
                 <table:template>
                     <Text text="{componentsWorkOrderDetail>serialNumber}"  />
                 </table:template>
             </table:Column>
-            <table:Column id="editableRowCom"  width="11rem">
+            <table:Column id="editableRowCom"  width="12rem">
                 <Label text="{i18nComponentsModel>committed}" />
                 <table:template>
                    <HBox>
-                    <Button text="toto" />
+                       <Button icon="sap-icon://synchronize" press="synchronizeFieldCommitted" />
                     <StepInput
+                               class="stepInputComponent"
                                value="{value}"
                                min="{min}"
                                max="{max}"
@@ -114,16 +115,17 @@
                                valueState="{valueState}"
                                enabled="{enabled}"
                                editable="{editable}"
-                               change="onChange"/>
+                               change="committedLiveChange"/>
                    </HBox>
                 </table:template>
             </table:Column>
-            <table:Column id="editableRowFit" width="11rem">
+            <table:Column id="editableRowFit" width="12rem">
                 <Label text="{i18nComponentsModel>fitted}" />
                 <table:template>
                     <HBox>
-                        <Button text="toto" />
+                        <Button icon="sap-icon://synchronize" press="synchronizeFieldFitted" />
                         <StepInput
+                                   class="stepInputComponent"
                                    value="{value}"
                                    min="{min}"
                                    max="{max}"
@@ -132,7 +134,7 @@
                                    valueState="{valueState}"
                                    enabled="{enabled}"
                                    editable="{editable}"
-                                   change="onChange"/>
+                                   change="fittedLiveChange"/>
                     </HBox>
                 </table:template>
             </table:Column>

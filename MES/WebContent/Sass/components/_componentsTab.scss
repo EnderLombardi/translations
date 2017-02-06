@@ -62,6 +62,12 @@
     .sapUiTableColCell{
         text-align: center !important;
     }
+    .stepInputComponent{
+        padding: 4px;
+        .sapMInputBaseInner{
+            text-align: center !important;
+        }
+    }
 }
 #componentsView--ComponentsList-sapUiTableColHdrScr{
     height: 32px;
