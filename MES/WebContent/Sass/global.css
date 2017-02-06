@@ -440,7 +440,7 @@ SETTINGS
   padding: 0 1rem; }
 
 /************************************
-D├⌐filement text tooltip
+D├®filement text tooltip
 ************************************/
 @-webkit-keyframes marqueelike {
   0%, 100% {
@@ -3021,6 +3021,7 @@ button[id^="polypoly"].sapMBtn:hover > div[id^="polypoly"].sapMBtnHoverable, htm
 .operationDetailHeadPanel + .opDetailNavToolbar .sapMSegBBtn {
   position: relative;
   color: #333333; }
+<<<<<<< Upstream, based on origin/MESv1.5
 .operationDetailHeadPanel + .opDetailNavToolbar .operationDetailTabSelected > .sapMITBText {
   color: rgba(0, 86, 112, 0.94) !important;
   background: transparent;
@@ -3028,6 +3029,13 @@ button[id^="polypoly"].sapMBtn:hover > div[id^="polypoly"].sapMBtnHoverable, htm
   margin: 1rem 0 0 0;
   height: calc(100% - 1rem); }
 .operationDetailHeadPanel + .opDetailNavToolbar .operationDetailTabSelected > .sapMITBText:after {
+=======
+.operationDetailHeadPanel + .opDetailNavToolbar .sapMSegBBtn.sapMSegBBtnSel {
+  color: rgba(0, 86, 112, 0.94);
+  background: transparent;
+  font-weight: bold; }
+.operationDetailHeadPanel + .opDetailNavToolbar .sapMSegBBtn.sapMSegBBtnSel:after {
+>>>>>>> 6bf600b [calandar] work in progress
   content: "";
   height: 4px;
   position: absolute;
@@ -3233,8 +3241,11 @@ html.sap-desktop .operationDetailHeadPanel .opDetailNavToolbar .sapMSegBBtnFocus
   box-shadow: none; }
 #operationDetailsView--opDetailSegmentButtons > div.sapMITH > span {
   top: 0; }
+<<<<<<< Upstream, based on origin/MESv1.5
 #operationDetailsView--opDetailSegmentButtons > div.sapMITH > div {
   height: 100%; }
+=======
+>>>>>>> 6bf600b [calandar] work in progress
 #operationDetailsView--opDetailSegmentButtons > div.sapMITH > div > div {
   margin-top: 0; }
 
@@ -6504,6 +6515,7 @@ DATE PICKER
   margin: 0 auto;
   padding: 0; }
 #displayOpeAttachmentsView--DOATable .sapUiTableCnt {
+<<<<<<< Upstream, based on origin/MESv1.5
   height: calc(100% - 10px);
   border-bottom: 1px solid #767879; }
 #displayOpeAttachmentsView--DOATable .sapUiTableCnt .sapUiTableColHdrCnt {
@@ -6518,6 +6530,19 @@ DATE PICKER
   border-right: 1px solid white; }
 #displayOpeAttachmentsView--DOATable .sapUiTableCnt .sapUiTableCCnt {
   border-right: 1px solid #767879; }
+=======
+  height: calc(100% - 10px); }
+#displayOpeAttachmentsView--DOATable .sapUiTableCnt .sapUiTableColHdrCnt {
+  height: 46px !important;
+  background-color: #0085ad; }
+#displayOpeAttachmentsView--DOATable .sapUiTableCnt .sapUiTableColHdrCnt .sapUiTableColHdrScr {
+  border: solid 1px #97999b;
+  background-color: #0085ad; }
+#displayOpeAttachmentsView--DOATable .sapUiTableCnt .sapUiTableColHdrCnt .sapUiTableColHdrScr > div {
+  height: 100%; }
+#displayOpeAttachmentsView--DOATable .sapUiTableCnt .sapUiTableColHdrCnt .sapUiTableColHdrScr > div > div.sapUiTableCol {
+  border-right: 1px solid white; }
+>>>>>>> 6bf600b [calandar] work in progress
 
 #displayOpeAttachmentsView--DOATable-table > tbody tr:nth-child(even) {
   background: #fff; }
@@ -6748,6 +6773,7 @@ DATE PICKER
 #stationHandoverView--searchHandover .sapMSFB.sapMSFS {
   color: #74d2e7; }
 
+<<<<<<< Upstream, based on origin/MESv1.5
 #stationHandoverView--TreeTableBasic-table > tbody tr:nth-child(even) {
   background: #fff; }
 #stationHandoverView--TreeTableBasic-table > tbody tr:nth-child(odd) {
@@ -6759,6 +6785,10 @@ DATE PICKER
 #stationHandoverView--TreeTableBasic-table > tbody > tr > td {
   text-align: left !important;
   border-left: 1px solid #767879; }
+=======
+#stationHandoverView--TreeTableBasic-table .blue {
+  background-color: aquamarine; }
+>>>>>>> 6bf600b [calandar] work in progress
 #stationHandoverView--TreeTableBasic-table .sapUiTableCtrlScr {
   margin-left: 25px !important; }
 #stationHandoverView--TreeTableBasic-table .DisOpAttLabelHandOver {
@@ -7045,6 +7075,13 @@ DISRUPTIONTRACKER
 .disruptionKPI .pageHeader span.sapMText {
   font-size: 12px;
   color: #F5F5F5; }
+<<<<<<< Upstream, based on origin/MESv1.5
+=======
+
+.disruptionKPI label.headerText {
+  color: #74d2e7;
+  text-shadow: none; }
+>>>>>>> 6bf600b [calandar] work in progress
 
 #disruptionKPIView--lineComboBox {
   border-left: solid 1px #74d2e7 !important; }
@@ -7139,6 +7176,7 @@ html {
   -moz-transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out;
   transition: background-color 0.2s ease-in-out, background 0.2s ease-in-out; }
 
+<<<<<<< Upstream, based on origin/MESv1.5
 #mes #content .sapUiComponentContainer #login .sapMPage section #login--logblock {
   margin: 3% auto !important; }
 #mes #content #globalNavView #globalNavView--refreshTime-inner {
@@ -7156,6 +7194,29 @@ html {
 #mes #settingPopOver {
   background-color: #2c2a29;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5); }
+=======
+#mes {
+  /*#sap-ui-static{
+      .sapMPopover:not(.informationColor):not(#stationTrackerView--toolbarstationtracker-popover){
+          background-color: #2c2a29;
+          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+      }
+  }*/ }
+#mes #content .sapUiComponentContainer #login .sapMPage section #login--logblock {
+  margin: 3% auto !important; }
+#mes #content #globalNavView #globalNavView--refreshTime-inner {
+  color: #74d2e7 !important;
+  text-shadow: none;
+  font-size: 12px; }
+#mes #content #globalNavView #globalNavView--localDELog-inner {
+  color: #74d2e7 !important;
+  text-shadow: none; }
+#mes #content #globalNavView #globalNavView--refreshTime-img {
+  color: #74d2e7;
+  text-shadow: none; }
+#mes #content #globalNavView .sapMBtn:hover > #globalNavView--refreshTime, #mes #content #globalNavView .sapMBtn:hover > #globalNavView--localDELog {
+  background-color: rgba(255, 255, 255, 0.2); }
+>>>>>>> 6bf600b [calandar] work in progress
 #mes .sapMDialog:not(.theme-disabled) {
   background: #ffffff;
   border: none;

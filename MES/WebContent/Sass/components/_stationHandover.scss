@@ -58,18 +58,9 @@
 }
 
  #stationHandoverView--TreeTableBasic-table{
-	>tbody {
-				tr:nth-child(even) {background: #fff}
-				tr:nth-child(odd) {background: #fcfcfc}
-				tr:hover{background-color: #efefef}
-				>tr{
-					height : 46px;
-					>td{
-						text-align:left !important;
-						border-left:1px solid $cool-grey-hover;
-					}
-				}
-		}
+	.blue{
+        background-color: aquamarine;     
+     }
      .sapUiTableCtrlScr {
                     
                     margin-left : 25px !important;

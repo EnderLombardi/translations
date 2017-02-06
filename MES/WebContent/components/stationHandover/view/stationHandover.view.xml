@@ -11,8 +11,7 @@
 		<TreeTable id="TreeTableBasic"
 				rows="{path:'oswModel>/', parameters: {arrayNames:['row']}}"
 				selectionMode="None" enableSelectAll="true" visibleRowCountMode="15rem"
-			
-				cellClick="onRowClick" enableBusyIndicator="true" enableCellFilter="true">
+				enableBusyIndicator="true" enableCellFilter="true">
 				<extension>
 
 					<m:Toolbar id="kpiHeaderToolbar"
@@ -74,11 +73,13 @@
 						<m:CheckBox class="DisOpAttLabelHandOver" select="selectAll" />
 						<template>
 							<m:CheckBox
+								select="onSelectRow"
 								selected="{path:'oswModel>INSERTED' , formatter:'airbus.mes.stationHandover.util.Formatter.isInsert'}"
-								enabled="{path:'oswModel>INSERTED' , formatter:'airbus.mes.stationHandover.util.Formatter.isInsertEnabled'}" />
+								enabled="{path:'oswModel>INSERTED' , formatter:'airbus.mes.stationHandover.util.Formatter.isInsertEnabled'}"
+								visible="{path:'oswModel>' , formatter:'airbus.mes.stationHandover.util.Formatter.setColorLine'}" />
 						</template>
 					</Column>
-					<Column autoResizable="true" 	sortProperty="BLOCKED" filterProperty="BLOCKED">
+					<Column autoResizable="true">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>Blocked}" />
 						<template>
 							<custom:customIcon color="{oswModel>BLOCKED}" />

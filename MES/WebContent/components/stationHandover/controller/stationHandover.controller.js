@@ -95,6 +95,11 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 		}
 		
 		airbus.mes.stationHandover.oView.byId("TreeTableBasic").expandToLevel(99);
+		//ReBind to apply colors
+		 setTimeout(function() {
+			 airbus.mes.stationHandover.oView.byId("TreeTableBasic").getModel("oswModel").refresh(true);
+	       }, 1);
+
 		
 	},
 	/***************************************************************************
@@ -251,6 +256,16 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 
 		airbus.mes.stationHandover.oView.getModel("oswModel").refresh(true)		
 
+	},
+	/***************************************************************************
+	 * trigger when the user Click on combobox of a row
+	 *  
+	 **************************************************************************/	
+	onSelectRow : function(oEvt) {
+		
+		var sValue = oEvt.getSource().mProperties.selected;
+		
+				
 	}
 
 });
