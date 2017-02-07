@@ -429,7 +429,7 @@
 								</HBox>
 
 								<Text text="{path: 'operationDisruptionsModel>Comments', formatter: 'airbus.mes.disruptions.Formatter.formatComment'}"
-									class="sapUiSmallMarginBegin  sapUiSmallMarginEnd sapUiSmallMarginBottom"></Text>
+									class="sapUiSmallMarginBeginEnd sapUiTinyMarginBottom"></Text>
 							</CustomListItem>
 						</List>
 
@@ -458,7 +458,7 @@
 
 							<Button id="addComment" text="{i18nModel>addComment}"
 								type="Emphasized"
-								visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>ResponsibleFlag'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setAddCommentButtonVisibility'}"
+								visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>ResponsibleFlag'}, {path: 'operationDisruptionsModel>ResolverID'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setAddCommentButtonVisibility'}"
 								press="showCommentBox" design="Transparent"/>
 
 							<ToolbarSpacer />

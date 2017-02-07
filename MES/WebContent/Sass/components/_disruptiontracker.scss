@@ -108,75 +108,17 @@ td{
 
 
 
-
-#disruptiontrackerView--stationComboBox-inner,
-#disruptiontrackerView--msnComboBox-inner,
-#disruptiontrackerView--statusComboBox-inner,
-#disruptiontrackerView--resolutionGroupBox-inner{
-	background: #0f2d65 !important;
-    color: white;
-    border: none;
- }
-
-#disruptiontrackerView--stationComboBox-inner.sapMComboBoxInner,
-#disruptiontrackerView--stationComboBox-inner.sapMComboBoxTextFieldInner,
-#disruptiontrackerView--stationComboBox-inner.sapMComboBoxTextFieldInnerWidthExtraPadding,
-#disruptiontrackerView--stationComboBox-inner.sapMInputBaseInner,
-#disruptiontrackerView--msnComboBox-inner.sapMComboBoxInner,
-#disruptiontrackerView--msnComboBox-inner.sapMComboBoxTextFieldInner,
-#disruptiontrackerView--msnComboBox-inner.sapMComboBoxTextFieldInnerWidthExtraPadding,
-#disruptiontrackerView--msnComboBox-inner.sapMInputBaseInner,
-#disruptiontrackerView--statusComboBox-inner.sapMComboBoxInner,
-#disruptiontrackerView--statusComboBox-inner.sapMComboBoxTextFieldInner,
-#disruptiontrackerView--statusComboBox-inner.sapMComboBoxTextFieldInnerWidthExtraPadding,
-#disruptiontrackerView--statusComboBox-inner.sapMInputBaseInner,
-#disruptiontrackerView--resolutionGroupBox-inner.sapMComboBoxInner,
-#disruptiontrackerView--resolutionGroupBox-inner.sapMComboBoxTextFieldInner,
-#disruptiontrackerView--resolutionGroupBox-inner.sapMComboBoxTextFieldInnerWidthExtraPadding,
-#disruptiontrackerView--resolutionGroupBox-inner.sapMInputBaseInner,		
-{
-    	border:none !important;
+// CSS for Header selection boxes
+#disruptiontrackerView--stationComboBox{
+	border-left: solid 1px $twilight-blue !important;
 }
-
 #disruptiontrackerView--stationComboBox,
 #disruptiontrackerView--msnComboBox,
 #disruptiontrackerView--statusComboBox,
 #disruptiontrackerView--resolutionGroupBox{
-    color: white;
-    border:none;
-    padding:0;
-    margin: 0 !important;
-    height: 2.9rem;
-    >.sapUiMediumMarginEnd{
-    	margin: 0 !important;
-    }
-   >.sapMComboBoxTextField{
-   	height: 2.9rem;
-   } 
- }
-
-#disruptiontrackerView--stationComboBox{
-	border-left: 1px solid #8db9ca;
+    @extend %headerFilterBoxes;
 }
 
-
-#disruptiontrackerView--stationComboBox-arrow,
-#disruptiontrackerView--msnComboBox-arrow,
-#disruptiontrackerView--statusComboBox-arrow,
-#disruptiontrackerView--resolutionGroupBox-arrow{
-    color: white;
-    border:none;
-    border-right: 1px solid #8db9ca;
-	background: #0f2d65 !important;
- }
-
-#disruptiontrackerView--stationComboBox-arrow:hover,
-#disruptiontrackerView--msnComboBox-arrow:hover,
-#disruptiontrackerView--statusComboBox-arrow:hover,
-#disruptiontrackerView--resolutionGroupBox-arrow:hover{
-    border:none;
-    border-right: 1px solid #8db9ca;
- }
 
 #disruptiontrackerView--headerText-inner{
     color: #74d2e7;
