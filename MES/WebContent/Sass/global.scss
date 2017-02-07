@@ -361,7 +361,7 @@ FORM
     .sapMInputVH:not(.sapMInputBaseReadonly) .sapMInputValHelp>.sapMInputValHelpInner:hover, .sapMInputVH:not(.sapMInputBaseReadonly) .sapMInputValHelp>.sapMInputValHelpInner:focus {
     background-color: $navy-blue;
     }
-    .sapMInputBaseInner {
+    #mes .sapMInputBase > .sapMInputBaseInner {
         border: 1px solid $ligth-grey;
 
     }

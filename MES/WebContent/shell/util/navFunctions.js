@@ -426,17 +426,14 @@ airbus.mes.shell.util.navFunctions = {
 		
 		var oModel = sap.ui.getCore().getModel("DisruptionDetailModel");
 		oModel.setData(oData);
+		 
+		// Navigate
+		nav.to(airbus.mes.disruptions.oView.disruptionDetail.getId());
 
 		// Load data from back-end services - Call load data function in Edit Mode
-		 var sOriginatorID = sap.ui.getCore().getModel("DisruptionDetailModel").getProperty("/OriginatorID")
-		 
-		 
-
-		nav.to(airbus.mes.disruptions.oView.disruptionDetail.getId());
-		 airbus.mes.disruptions.ModelManager.loadData("Edit", sOriginatorID);
-		/** *********************MES V1.5 [End]******************** */
-
+		airbus.mes.disruptions.ModelManager.loadData("Edit");
     },
+    
 
     /************************
      * Open MES Document Viewer

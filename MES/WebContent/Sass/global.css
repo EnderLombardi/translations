@@ -7484,7 +7484,7 @@ FORM
   cursor: pointer; }
 #mes .sapMInputVH:not(.sapMInputBaseReadonly) .sapMInputValHelp > .sapMInputValHelpInner:hover, #mes .sapMInputVH:not(.sapMInputBaseReadonly) .sapMInputValHelp > .sapMInputValHelpInner:focus {
   background-color: rgba(0, 32, 91, 0.94); }
-#mes .sapMInputBaseInner {
+#mes #mes .sapMInputBase > .sapMInputBaseInner {
   border: 1px solid #ccc; }
 #mes .sapMInputBaseInner:not(.sapMInputBaseReadonlyInner):not(.sapMInputBaseStateInner):not(.sapMInputBaseDisabledInner):hover {
   border-color: #74d2e7; }

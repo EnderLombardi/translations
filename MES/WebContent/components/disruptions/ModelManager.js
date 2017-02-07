@@ -86,18 +86,18 @@ airbus.mes.disruptions.ModelManager = {
 	/***************************************************************************
 	 * Load Category and custom Data
 	 */
-	loadData : function(sMode, sUserBo) {
+	loadData : function(sMode) {
 
 		this.createViewMode = sMode;
 
 		// Set Busy Indicator
 		airbus.mes.disruptions.ModelManager.setBusy();
-
-		airbus.mes.disruptions.oView.createDisruption.oController.resetAllFields(); // Reset
-		// All
-		// fields
-
-		this.loadDisruptionCategory(sUserBo);
+		
+		// Reset All fields
+		airbus.mes.disruptions.oView.createDisruption.oController.resetAllFields();
+		
+		
+		this.loadDisruptionCategory();
 		this.loadMaterialList();
 		this.loadJigtoolList();
 
@@ -122,25 +122,25 @@ airbus.mes.disruptions.ModelManager = {
 
 	/***************************************************************************
 	 * Set the Models for Category of Disruption Creation
-	 * 
-	 * @param{string} sUserBo-take user id as input
 	 **************************************************************************/
-	loadDisruptionCategory : function(sUserBo) {
-		var url = airbus.mes.disruptions.ModelManager.getDisruptionCategoryURL(sUserBo);
+	loadDisruptionCategory : function() {
+		var url = airbus.mes.disruptions.ModelManager.getDisruptionCategoryURL();
 		sap.ui.getCore().getModel("disruptionCategoryModel").loadData(url);
 	},
-	getDisruptionCategoryURL : function(sUserBo) {
+	getDisruptionCategoryURL : function() {
 		var urlCustomCategory = this.urlModel.getProperty("urlGetCategory");
 		urlCustomCategory = airbus.mes.shell.ModelManager.replaceURI(urlCustomCategory, "$site", airbus.mes.settings.ModelManager.site);
 		urlCustomCategory = airbus.mes.shell.ModelManager.replaceURI(urlCustomCategory, "$station", airbus.mes.settings.ModelManager.station);
 
 		// Get user to which operation is affected else current logged in user
-		// From disruption tracker originator field will contain userBo
-		if (!sUserBo) {
-			var sOpUserBo = this.getIssuer();
-			urlCustomCategory = airbus.mes.shell.ModelManager.replaceURI(urlCustomCategory, "$userbo", sOpUserBo);
+		// In Edit Mode originator field will contain Issuer
+		var sIssuer = "";
+		if (this.createViewMode == "Create") {
+			sIssuer = this.getIssuer();
+			urlCustomCategory = airbus.mes.shell.ModelManager.replaceURI(urlCustomCategory, "$userbo", sIssuer);
 		} else {
-			urlCustomCategory = airbus.mes.shell.ModelManager.replaceURI(urlCustomCategory, "$userbo", sUserBo);
+			sIssuer = sap.ui.getCore().getModel("DisruptionDetailModel").getProperty("/OriginatorID");
+			urlCustomCategory = airbus.mes.shell.ModelManager.replaceURI(urlCustomCategory, "$userbo", sIssuer);
 		}
 
 		return urlCustomCategory;

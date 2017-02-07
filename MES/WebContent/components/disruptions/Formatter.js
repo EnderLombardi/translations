@@ -554,11 +554,11 @@ airbus.mes.disruptions.Formatter = {
 	 * setNumberofAttachment : function(number) { var sValue = number + "\n" + "
 	 * Attachments"; return sValue; }
 	 */
+	
+	
 	/**
-	 * MES V1.5
-	 * 
-	 * @param {object} nav navigation object hold id's of previous pages
-	 * @return {boolean} true or false
+	 * Check and return if Detailed view is opened by support team from disruption tracker
+	 * using Laptop/Desktop
 	 */
 	isSupportTeamViaDestop : function() {
 		if (sap.ui.Device.system.desktop && nav.getPreviousPage().sId == "disruptiontrackerView") {
