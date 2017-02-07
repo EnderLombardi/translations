@@ -189,6 +189,11 @@ airbus.mes.shell.RoleManager = {
 
 		queryParam: function(param, value) {
 			return airbus.mes.shell.RoleManager.queryParams.get(param) == value;
+		},
+		
+		feature: function(name) {
+			var featurelist = airbus.mes.shell.RoleManager.queryParams.get('features').split(',');
+			return featurelist.indexOf(name) >= 0;
 		}
 	
 	},
