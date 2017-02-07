@@ -163,7 +163,7 @@ airbus.mes.disruptions.Formatter = {
 		else if (escalationLevel == 3)
 			return airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("FinalEscalation");
 		else
-			return "-----";
+			return "-----"; 	
 	},
 
 	setEditButtonVisibility : function(originatorFlag, responsibleFlag, status) {

@@ -615,14 +615,19 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption",
 			this.getView().byId("selectFivemCategory").setSelectedKey();
 			
 			this.getView().byId("selectCategory").setSelectedKey();
+
 			this.getView().byId("selectCategory").getBinding("items").filter();
 			
+
+			this.getView().byId("expectedDate").setDateValue(new Date());
+			this.getView().byId("expectedTime").setDateValue(new Date());
+			this.getView().byId("openTime").setDateValue(new Date());
+
 			this.getView().byId("selectreason").setSelectedKey();
 			this.getView().byId("selectResponsibleGrp").setSelectedKey();
 			this.getView().byId("selectResolver").setSelectedKey(); // +V1.5
 			this.getView().byId("selectOriginator").setSelectedKey();
-			// this.getView().byId("selectRootCause").setSelectedKey(); // MES
-			// V1.5 root cause Removed
+			// this.getView().byId("selectRootCause").setSelectedKey(); // MES V1.5 root cause Removed
 			this.getView().byId("gravity").setSelectedKey();
 			this.getView().byId("timeLost").setValue();
 			this.getView().byId("comment").setValue();

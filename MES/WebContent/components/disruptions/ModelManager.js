@@ -15,12 +15,15 @@ airbus.mes.disruptions.ModelManager = {
 
 		this.core = core;
 		core.setModel(new sap.ui.model.json.JSONModel(), "AttachmentList");
+
 		airbus.mes.shell.ModelManager.createJsonModel(core, [ "operationDisruptionsModel", "DisruptionDetailModel", "disruptionCategoryModel",
 			"MaterialListModel", // Material List Model
 			"JigtoolListModel", // Jigtool List Model
 			"disruptionRsnRespGrp", // model for reason and responsible group
 			"disruptionResolverModel" // Model for resolver name
 		]);
+
+
 
 		/***********************************************************************
 		 * Attach request complete methods

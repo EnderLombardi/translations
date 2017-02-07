@@ -62,7 +62,7 @@
 											</f:label>
 											<f:fields>
 
-												<Text text="{path: 'operationDisruptionsModel>Fivem_Category'}">
+												<Text text="{path: 'operationDisruptionsModel>CategoryClass'}">
 													<layoutData>
 														<l:GridData span="L3 M3 S12" />
 													</layoutData>
@@ -197,7 +197,7 @@
 											</f:label>
 											<f:fields>
 
-												<Text text="{path: 'operationDisruptionsModel>Resolver'}">
+												<Text text="{path: 'operationDisruptionsModel>ResolverName'}">
 													<layoutData>
 														<l:GridData span="L3 M3 S12" />
 													</layoutData>
@@ -209,7 +209,7 @@
 
 <!--                                       [Del] V1.5 Beg -->
 
-										<f:FormElement>
+										<f:FormElement visible="false">
 											<f:label>
 												<Label class="detailLabels" text="{i18nModel>RootCause}">
 													<layoutData>
