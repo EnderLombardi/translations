@@ -53,8 +53,8 @@ airbus.mes.disruptions.ModelManager = {
 				sap.ui.getCore().byId("disruptionDetailPopup--disruptionDetailPopUp").setBusyIndicatorDelay(0);
 				sap.ui.getCore().byId("disruptionDetailPopup--disruptionDetailPopUp").setBusy(true);
 			} else{
-				sap.ui.getCore().byId("disruptionDetail").setBusyIndicatorDelay(0);
-				sap.ui.getCore().byId("disruptionDetail").setBusy(true);
+				sap.ui.getCore().byId("disruptionDetailView").setBusyIndicatorDelay(0);
+				sap.ui.getCore().byId("disruptionDetailView").setBusy(true);
 			}
 			break;
 		default:
@@ -75,7 +75,7 @@ airbus.mes.disruptions.ModelManager = {
 			if(!sap.ui.Device.system.desktop){
 				sap.ui.getCore().byId("disruptionDetailPopup--disruptionDetailPopUp").setBusy(false);
 			} else{
-				sap.ui.getCore().byId("disruptionDetail").setBusy(false);
+				sap.ui.getCore().byId("disruptionDetailView").setBusy(false);
 			}
 			break;
 		default:
