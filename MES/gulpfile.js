@@ -411,6 +411,7 @@ gulp.task('copy', ['clean'], function () {
 		return gulp.src([
 			'./shell/config/res_config_prod.properties',
 			'./shell/data/**',
+			'./shell/model/**',
 			'./components/homepage/css/margin.css',
 			'./Sass/global.css',
 			'./Sass/*.png',
@@ -429,6 +430,7 @@ gulp.task('copy', ['clean'], function () {
 			'./components/stationtracker/data/KPIModel.json',
 			'./components/disruptions/local/Jigtool_Server.json',
 			'./components/disruptions/local/MaterialList_Server.json',
+			
 			
 		], { cwd: src, cwdbase: true }).pipe(gulp.dest(dest));
 });

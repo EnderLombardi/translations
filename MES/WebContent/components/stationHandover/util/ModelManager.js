@@ -3,8 +3,7 @@ jQuery.sap.declare("airbus.mes.stationHandover.util.ModelManager");
 
 airbus.mes.stationHandover.util.ModelManager = {
        urlModel : undefined,
-       aSelected : [],
-       aSelectedChild : [],
+       aSelected : {},
        queryParams : jQuery.sap.getUriParameters(),
        i18nModel : undefined,
        selectAll : false,
@@ -21,7 +20,7 @@ airbus.mes.stationHandover.util.ModelManager = {
     	   var aModel = ["oswModel","msnModel","typeModel","groupModel"]
     	   airbus.mes.shell.ModelManager.createJsonModel(core,aModel);
            
-           //core.getModel("stationHandovershiftsModel").attachRequestCompleted(airbus.mes.stationHandover.util.ModelManager.onShiftsLoad);
+           core.getModel("oswModel").attachRequestCompleted(airbus.mes.stationHandover.util.ModelManager.onTestLoad);
                 
     	var dest;
 
@@ -76,6 +75,40 @@ airbus.mes.stationHandover.util.ModelManager = {
 	        oViewModel.loadData(getUrlShifts, null, false);
 
 	 },
+	 
+
+		 onTestLoad : function() {
+
+		var oViewModel = airbus.mes.stationHandover.oView.getModel("oswModel");
+		var aValueSelected = airbus.mes.stationHandover.util.ModelManager.aSelected;
+
+		 try {
+
+		var aModel = oViewModel.oData.row;
+
+		aModel.forEach(function(el, indice) {
+
+			aValueSelected[el.WOID] = {
+				"open" : undefined
+			};
+
+			aModel[indice].row.forEach(function(al, indice1) {
+
+				var sID = al.WOID + "##||##" + al.REFERENCE;
+
+				aValueSelected[al.WOID][sID] = {
+					"open" : undefined
+				};
+
+			})
+		})
+
+		 } catch(e) {
+					
+			 console.log("Error");
+		 
+		 }
+	},
 	    
 	    onShiftsLoad : function() {
 

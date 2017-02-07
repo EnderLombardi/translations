@@ -9,7 +9,7 @@
 				tiles="{1TileLineHome>/buttonDetail}" height="100%">
 				<CustomTile press="onPressLine1" class="customTiles">
 				
-<!-- 				 visible="{Profile>/identifiedUser/permissions/HOMESCREEN}" -->
+				 visible="{Profile>/identifiedUser/permissions/HOMESCREEN}"
 				  
 					<customData>
 						<core:CustomData key="enabled" value="{1TileLineHome>enable}" writeToDom="true" />

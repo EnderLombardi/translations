@@ -53,7 +53,7 @@
 			"Description": "",
 			"Authenticate" : "false",
 			"Roles" : [ "SAP_XMII_Developer", "SAP_XMII_User", "Everyone",
-						"!eval 'SAP_XMII_Developer'" ]
+						"!eval host('[^d].i.*airbus')" ]
 		}
 	]
 }

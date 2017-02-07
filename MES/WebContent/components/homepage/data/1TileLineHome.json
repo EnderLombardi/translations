@@ -6,7 +6,7 @@
 		"icon": "calendar",
 		"app":"",
 		"url": "/MES/WebContent/components/stationtracker/index.html",
-		"enable": "true"
+		"enable": "calendarEnabled"
 	},{
 
 		"text": "TeamCompetencies",
@@ -61,7 +61,7 @@
 		"icon": "horizontal-bar-chart",
 		"app":"",
 		"url": "/MES/WebContent/components/stationtracker/index.html",
-		"enable": "false"
+		"enable": "true"
 	},
 	 {
 		"text": "StationHandover",
@@ -69,7 +69,7 @@
 		"icon": "product",
 		"app":"",
 		"url": "/MES/WebContent/components/stationtracker/index.html",
-		"enable": "{Profile>/connectedUser/permissions/calendarEnabled}"
+		"enable": "stationHandoverEnabled"
 	}
 	]
 }

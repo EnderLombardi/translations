@@ -16,7 +16,7 @@
 		"text": "TeamAvailability",
 		"app":"",
 		"url": "/MES/WebContent/components/stationtracker/index.html",
-		"enable": false
+		"enable": "{Profile>/connectedUser/permissions/calendarEnabled}"
 	}, {
 
 		"text": "TeamCompetencies",

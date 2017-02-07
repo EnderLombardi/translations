@@ -95,6 +95,24 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 //        var flag = airbus.mes.shell.RoleManager.isAllowed("HOMESCREEN");
 //        airbus.mes.shell.RoleManager.userRoles = [];
 //        return flag;
+    setVisible : function(oEvt) {
+    	
+    	var oPermission = airbus.mes.shell.RoleManager.profile.connectedUser.permissions;
+    	
+    	if ( oPermission[oEvt] ) {
+    		
+    		return oPermission[oEvt];
+    	}
+    	    	
+    	if ( oEvt === "true" ) {
+    		
+    		return true;
+    	} else {
+    		
+    		return false;
+    	}
+    	
+    	
     	
 //    	if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.homescreen === true ){
 //    	return true;

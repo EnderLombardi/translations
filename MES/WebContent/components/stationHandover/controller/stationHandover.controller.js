@@ -241,21 +241,26 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 	selectAll : function(oEvt) {
 
 		var sValue = oEvt.getSource().mProperties.selected;
+		var aValueSelected = airbus.mes.stationHandover.util.ModelManager.aSelected;
 
-		if (sValue) {
+		Object.keys(aValueSelected).forEach(function(el, indice) {
 
-			airbus.mes.stationHandover.util.ModelManager.applyAll = true;
-			
+			if (el != "open") {
 
-		} else {
+				aValueSelected[el].open = sValue;
 
-			airbus.mes.stationHandover.util.ModelManager.applyAll = false;
+				Object.keys(aValueSelected[el]).forEach(function(al, indice1) {
 
-		}
+					if (al != "open") {
+
+						aValueSelected[el][al].open = sValue;
+
+					}
+				})
+			}
+		})
 
 		airbus.mes.stationHandover.oView.getModel("oswModel").refresh(true);
-		airbus.mes.stationHandover.util.ModelManager.aSelected = [];
-		airbus.mes.stationHandover.util.ModelManager.applyAll = undefined;
 	},
 	/***************************************************************************
 	 * trigger when the user Click on combobox of a row
@@ -270,23 +275,26 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 
 		// Check if we selected a chill or not
 		if (oModel.MATERIAL_DESCRIPTION != undefined) {
-			// store in array the WOID TO select 
-			if (sValue) {
 
-				aValueSelected.push(oModel.WOID)
+			aValueSelected[oModel.WOID].open = sValue;
 
-			} else {
+			Object.keys(aValueSelected[oModel.WOID]).forEach(function(el, indice) {
 
-				var fIndice = aValueSelected.indexOf(oModel.WOID);
-				aValueSelected.splice(fIndice, 1);
+				if (el != "open") {
 
-			}
+					aValueSelected[oModel.WOID][el].open = sValue;
+
+				}
+
+			})
 		} else {
+			// store in array the WOID + OPERATION TO select 
+			var sID = oModel.WOID + "##||##" + oModel.REFERENCE
 
-			airbus.mes.stationHandover.util.ModelManager.applyAll = "child";
-			
-			}
-		
+			aValueSelected[oModel.WOID][sID].open = sValue;
+
+		}
+
 		// Update model to fire formatter
 		airbus.mes.stationHandover.oView.getModel("oswModel").refresh(true);
 		airbus.mes.stationHandover.util.ModelManager.applyAll = undefined;
