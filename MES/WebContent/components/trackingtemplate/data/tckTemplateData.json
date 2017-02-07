@@ -1,0 +1,156 @@
+{
+    "Rowsets": {
+        "DateCreated": "2016-11-17T17:38:56",
+        "Version": "15.1 SP2 Patch 13 (Oct 6, 2016)",
+        "StartDate": "2016-11-17T16:38:56+0100",
+        "EndDate": "2016-11-17T17:38:56+0100",
+        "CachedTime": "",
+        "Rowset": [{
+            "Columns": {
+                "Column": [{
+                    "Name": "user",
+                    "SourceColumn": "user",
+                    "Description": "",
+                    "SQLDataType": 1,
+                    "MinRange": 1,
+                    "MaxRange": 1
+                }, {
+                    "Name": "firstName",
+                    "SourceColumn": "firstName",
+                    "Description": "",
+                    "SQLDataType": 1,
+                    "MinRange": 1,
+                    "MaxRange": 1
+                }, {
+                    "Name": "lastName",
+                    "SourceColumn": "lastName",
+                    "Description": "",
+                    "SQLDataType": 1,
+                    "MinRange": 1,
+                    "MaxRange": 1
+                }, {
+                    "Name": "picture",
+                    "SourceColumn": "picture",
+                    "Description": "",
+                    "SQLDataType": 1,
+                    "MinRange": 1,
+                    "MaxRange": 1
+                }, {
+                    "Name": "avlLine",
+                    "SourceColumn": "avlLine",
+                    "Description": "",
+                    "SQLDataType": 1,
+                    "MinRange": 1,
+                    "MaxRange": 1
+                }, {
+                    "Name": "shiftName",
+                    "SourceColumn": "shiftName",
+                    "Description": "",
+                    "SQLDataType": 1,
+                    "MinRange": 1,
+                    "MaxRange": 1
+                }, {
+                    "Name": "shiftID",
+                    "SourceColumn": "shiftID",
+                    "Description": "",
+                    "SQLDataType": 1,
+                    "MinRange": 1,
+                    "MaxRange": 1
+                }, {
+                    "Name": "day",
+                    "SourceColumn": "day",
+                    "Description": "",
+                    "SQLDataType": 1,
+                    "MinRange": 1,
+                    "MaxRange": 1
+                }, {
+                    "Name": "warn",
+                    "SourceColumn": "warn",
+                    "Description": "",
+                    "SQLDataType": 1,
+                    "MinRange": 1,
+                    "MaxRange": 1
+                }, {
+                    "Name": "skills",
+                    "SourceColumn": "skills",
+                    "Description": "",
+                    "SQLDataType": 1,
+                    "MinRange": 1,
+                    "MaxRange": 1
+                }]
+            },
+            "Row": [
+                {
+                    "status": "Open",
+                    "type": "NC",
+                    "referenceNumber": "0 - -857",
+                    "title": "Essie",
+                    "idOpe": "0020"
+                },
+                {
+                    "status": "Open",
+                    "type": "NC",
+                    "referenceNumber": "5987 - 11117",
+                    "title": "Jean",
+                    "idOpe": "0054"
+                },
+                {
+                    "status": "Open",
+                    "type": "NC",
+                    "referenceNumber": "11974 - 23091",
+                    "title": "Yang",
+                    "idOpe": "0020"
+                },
+                {
+                    "status": "Open",
+                    "type": "DQN",
+                    "referenceNumber": "17961 - 35065",
+                    "title": "Gabrielle",
+                    "idOpe": "5462"
+                },
+                {
+                    "status": "Open",
+                    "type": "IR",
+                    "referenceNumber": "23948 - 47039",
+                    "title": "Manning",
+                    "idOpe": "0065"
+                },
+                {
+                    "status": "Closed",
+                    "type": "IR",
+                    "referenceNumber": "29935 - 59013",
+                    "title": "Becker",
+                    "idOpe": "0020"
+                },
+                {
+                    "status": "Closed",
+                    "type": "NC",
+                    "referenceNumber": "35922 - 70987",
+                    "title": "Logan",
+                    "idOpe": "0016"
+                },
+                {
+                    "status": "Closed",
+                    "type": "IR",
+                    "referenceNumber": "41909 - 82961",
+                    "title": "Roy",
+                    "idOpe": "0016"
+                },
+                {
+                    "status": "Open",
+                    "type": "WO",
+                    "referenceNumber": "47896 - 94935",
+                    "title": "Dickerson",
+                    "idOpe": 16
+                },
+                {
+                    "status": "Open",
+                    "type": "IR",
+                    "referenceNumber": "53883 - 106909",
+                    "title": "Natalia",
+                    "idOpe": 16
+                }
+            ]
+        }]
+    }
+}

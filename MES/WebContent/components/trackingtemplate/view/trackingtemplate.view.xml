@@ -1,0 +1,64 @@
+<mvc:View
+          xmlns:core="sap.ui.core"
+          xmlns:mvc="sap.ui.core.mvc"
+          xmlns="sap.m"
+          controllerName="airbus.mes.trackingtemplate.controller.trackingtemplate"
+          xmlns:f="sap.ui.layout.form"
+          xmlns:l="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml"
+          xmlns:cData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" >
+
+    <Page enableScrolling="false" showHeader="false">
+        <content>
+
+			<!-- Confirmation Notes -->
+			<Panel expandable="true" expanded="false" headerText="{i18n>cn_title}" width="auto" class="sapUiResponsiveMargin">
+				<content>
+				
+					<!-- Header ToolBar -->
+					<OverflowToolbar height="3rem">
+						<CheckBox text="{i18n>cn_toolbar_last}" enabled="true" selected="false"/>
+						<CheckBox text="{i18n>cn_toolbar_confirmed}" enabled="true" selected="false"/>
+					</OverflowToolbar>
+					
+					<!-- List Comment -->
+					<List headerText="Custom Content" mode="Delete" items="{path: '/ProductCollection'}" >
+					<CustomListItem>
+					<HBox>
+						<core:Icon size="2rem" src="sap-icon://attachment-photo" />
+						<Label text="REF - "/>
+						<Label text="NAME - "/>
+						<Label text="COMMENT"/>
+					</HBox>
+					</CustomListItem>
+					</List>
+				</content>
+			</Panel>
+			
+			<!-- Work Order Notes -->
+			<Panel expandable="true" expanded="false" headerText="{i18n>won_title}" width="auto" class="sapUiResponsiveMargin">
+				<content>
+				
+					<!-- Header ToolBar -->
+					<OverflowToolbar height="3rem">
+						<CheckBox id="idCheckBox" text="{i18n>won_toolbar_last}" enabled="true" selected="false"/>
+						<ToolbarSpacer />
+                		<Button text="{i18n>won_toolbar_edit}" icon="sap-icon://edit"/>
+                		<Button text="{i18n>won_toolbar_add}" icon="sap-icon://add"/>
+                		<Button text="{i18n>won_toolbar_print}" icon="sap-icon://print"/>
+						<!-- ICON ONLY
+						<ToolbarSpacer />
+						<OverflowToolbarButton text="Create Note" icon="sap-icon://edit"/>
+                		<OverflowToolbarButton text="Attach Document" icon="sap-icon://add"/>
+                		<OverflowToolbarButton text="Print" icon="sap-icon://print"/>
+                		-->
+					</OverflowToolbar>
+					<!-- List Comment -->
+					
+					
+				</content>
+			</Panel>
+        </content>
+    </Page>
+</mvc:View>
+
+
