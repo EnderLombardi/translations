@@ -105,45 +105,47 @@ airbus.mes.resourcepool.util.Formatter = {
     isEnabled : function() {
         // return true;
 
-        return airbus.mes.shell.RoleManager.isAllowed('MII_MOD1684_PRODMNG')
-                || airbus.mes.shell.RoleManager.isAllowed('MII_MOD1684_MANUFMNG')
-                || airbus.mes.shell.RoleManager.isAllowed('MII_MOD1684_HOOPE')
-                || airbus.mes.shell.RoleManager.isAllowed('MII_MOD1684_MFTEAM');
-
+//        return airbus.mes.shell.RoleManager.isAllowed('MII_MOD1684_PRODMNG')
+//                || airbus.mes.shell.RoleManager.isAllowed('MII_MOD1684_MANUFMNG')
+//                || airbus.mes.shell.RoleManager.isAllowed('MII_MOD1684_HOOPE')
+//                || airbus.mes.shell.RoleManager.isAllowed('MII_MOD1684_MFTEAM');
+return true;
     },
 
 
     isEditable : function() {
         // return true;
-        return airbus.mes.shell.RoleManager.isAllowed('MII_MOD1684_PRODMNG')
-                || airbus.mes.shell.RoleManager.isAllowed('MII_MOD1684_MANUFMNG')
-                || airbus.mes.shell.RoleManager.isAllowed('MII_MOD1684_HOOPE')
-                || airbus.mes.shell.RoleManager.isAllowed('MII_MOD1684_MFTEAM');
-
+//        return airbus.mes.shell.RoleManager.isAllowed('MII_MOD1684_PRODMNG')
+//                || airbus.mes.shell.RoleManager.isAllowed('MII_MOD1684_MANUFMNG')
+//                || airbus.mes.shell.RoleManager.isAllowed('MII_MOD1684_HOOPE')
+//                || airbus.mes.shell.RoleManager.isAllowed('MII_MOD1684_MFTEAM');
+return true;
     },
 
     selectionMode : function() {
-        if (airbus.mes.shell.RoleManager.isAllowed('MII_MOD1684_PRODMNG')
-                || airbus.mes.shell.RoleManager.isAllowed('MII_MOD1684_MANUFMNG')
-                || airbus.mes.shell.RoleManager.isAllowed('MII_MOD1684_HOOPE')
-                || airbus.mes.shell.RoleManager.isAllowed('MII_MOD1684_MFTEAM'))
-
-            return "MultiSelect";
-        else
-            return "None";
-
+//        if (airbus.mes.shell.RoleManager.isAllowed('MII_MOD1684_PRODMNG')
+//                || airbus.mes.shell.RoleManager.isAllowed('MII_MOD1684_MANUFMNG')
+//                || airbus.mes.shell.RoleManager.isAllowed('MII_MOD1684_HOOPE')
+//                || airbus.mes.shell.RoleManager.isAllowed('MII_MOD1684_MFTEAM'))
+//
+//            return "MultiSelect";
+//        else
+//            return "None";
+        return "MultiSelect";
     },
     AssignShiftEnabled : function() {
-        return airbus.mes.shell.RoleManager.isAllowed('MII_MOD1684_PRODMNG')
-                || airbus.mes.shell.RoleManager.isAllowed('MII_MOD1684_MANUFMNG')
-                || airbus.mes.shell.RoleManager.isAllowed('MII_MOD1684_HOOPE')
-                || airbus.mes.shell.RoleManager.isAllowed('MII_MOD1684_MFTEAM');
+//        return airbus.mes.shell.RoleManager.isAllowed('MII_MOD1684_PRODMNG')
+//                || airbus.mes.shell.RoleManager.isAllowed('MII_MOD1684_MANUFMNG')
+//                || airbus.mes.shell.RoleManager.isAllowed('MII_MOD1684_HOOPE')
+//                || airbus.mes.shell.RoleManager.isAllowed('MII_MOD1684_MFTEAM');
+    	return true;
     },
     saveAllowed : function() {
-        return airbus.mes.shell.RoleManager.isAllowed('MII_MOD1684_PRODMNG')
-                || airbus.mes.shell.RoleManager.isAllowed('MII_MOD1684_MANUFMNG')
-                || airbus.mes.shell.RoleManager.isAllowed('MII_MOD1684_HOOPE')
-                || airbus.mes.shell.RoleManager.isAllowed('MII_MOD1684_MFTEAM');
+//        return airbus.mes.shell.RoleManager.isAllowed('MII_MOD1684_PRODMNG')
+//                || airbus.mes.shell.RoleManager.isAllowed('MII_MOD1684_MANUFMNG')
+//                || airbus.mes.shell.RoleManager.isAllowed('MII_MOD1684_HOOPE')
+//                || airbus.mes.shell.RoleManager.isAllowed('MII_MOD1684_MFTEAM');
+    	return true;
     },
     displayImage : function() {
         return airbus.mes.settings.AppConfManager.getConfiguration("MES_PHOTO_DISPLAY");
