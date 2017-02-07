@@ -453,7 +453,7 @@ SETTINGS
   padding: 0 1rem; }
 
 /************************************
-D├®filement text tooltip
+D├⌐filement text tooltip
 ************************************/
 @-webkit-keyframes marqueelike {
   0%, 100% {
@@ -3545,7 +3545,7 @@ Linetracker View (Main Table)
   width: 100%;
   font-weight: 500;
   text-align: center !important; }
-#idLinetracker1 .classLineTrackerTable table tr th:nth-child(1), #idLinetracker1 td:nth-child(2), #idLinetracker1 th:nth-child(2) {
+#idLinetracker1 .classLineTrackerTable table tr th:nth-child(1), #idLinetracker1 td:nth-child(1), #idLinetracker1 td:nth-child(2), #idLinetracker1 th:nth-child(2) {
   background-color: #EAFBFD !important; }
 #idLinetracker1 .classLineTrackerTable table tr td:nth-child(2) {
   background-image: url("grid.svg");
@@ -4189,6 +4189,15 @@ Physical Station Popover
 ****************************/
 .popOverbgColor {
   background-color: #f7f7f7 !important; }
+
+#lineStationTracker-inner {
+  text-align: left !important; }
+
+#lineStationHandover-inner {
+  text-align: left !important; }
+
+#lineDisruptionAndonTracker-inner {
+  text-align: left !important; }
 
 /*!
 *  Font Awesome 4.5.0 by @davegandy - http://fontawesome.io - @fontawesome

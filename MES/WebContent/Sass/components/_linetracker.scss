@@ -108,7 +108,7 @@ Linetracker View (Main Table)
         text-align: center !important;
     }
 
-    .classLineTrackerTable table tr th:nth-child(1), td:nth-child(2), th:nth-child(2) {
+    .classLineTrackerTable table tr th:nth-child(1), td:nth-child(1), td:nth-child(2), th:nth-child(2) {
         background-color: #EAFBFD !important;
     }
 
@@ -816,4 +816,16 @@ Physical Station Popover
 ****************************/
 .popOverbgColor{
 background-color: #f7f7f7 !important;
+}
+#lineStationTracker-inner {
+text-align:left !important;
+
+}
+#lineStationHandover-inner {
+text-align:left !important;
+
+}
+#lineDisruptionAndonTracker-inner{
+text-align:left !important;
+
 }
