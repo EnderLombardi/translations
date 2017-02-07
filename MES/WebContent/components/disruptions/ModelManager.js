@@ -53,6 +53,9 @@ airbus.mes.disruptions.ModelManager = {
 				sap.ui.getCore().byId("disruptionDetailView").setBusy(true);
 			}
 			break;
+		case "disruptionDetailView":
+			sap.ui.getCore().byId("disruptionDetailView").setBusyIndicatorDelay(0);
+			sap.ui.getCore().byId("disruptionDetailView").setBusy(true);
 		default:
 			break;
 		}
@@ -74,8 +77,21 @@ airbus.mes.disruptions.ModelManager = {
 				sap.ui.getCore().byId("disruptionDetailView").setBusy(false);
 			}
 			break;
+		case "disruptionDetailView":
+			sap.ui.getCore().byId("disruptionDetailView").setBusy(false);
 		default:
 			break;
+		}
+	},
+	
+	/***************************************************************************
+	 * Get View object
+	 **************************************************************************/
+	getView: function(){
+		if (airbus.mes.disruptions.Formatter.isSupportTeamViaDestop()) {
+			return airbus.mes.disruptions.oView.disruptionDetail;
+		} else {
+			return airbus.mes.disruptions.oView.createDisruption;
 		}
 	},
 
@@ -169,12 +185,13 @@ airbus.mes.disruptions.ModelManager = {
 	 * Group)
 	 **************************************************************************/
 	loadRsnResponsibleGrp : function(sMsgType) {
-
+		var oView = airbus.mes.disruptions.ModelManager.getView();
+		
 		// Set Busy's
-		sap.ui.getCore().byId("createDisruptionView--selectreason").setBusyIndicatorDelay(0);
-		sap.ui.getCore().byId("createDisruptionView--selectreason").setBusy(true);
-		sap.ui.getCore().byId("createDisruptionView--selectResponsibleGrp").setBusyIndicatorDelay(0);
-		sap.ui.getCore().byId("createDisruptionView--selectResponsibleGrp").setBusy(true);
+		oView.byId("selectreason").setBusyIndicatorDelay(0);
+		oView.byId("selectreason").setBusy(true);
+		oView.byId("selectResponsibleGrp").setBusyIndicatorDelay(0);
+		oView.byId("selectResponsibleGrp").setBusy(true);
 
 		var url = airbus.mes.disruptions.ModelManager.getRsnResponsibleGrpURL(sMsgType)
 		sap.ui.getCore().getModel("disruptionRsnRespGrp").loadData(url);
@@ -190,12 +207,7 @@ airbus.mes.disruptions.ModelManager = {
 	},
 
 	onLoadDisruptionRsnRespGrp : function() {
-		var oView;
-		if (airbus.mes.disruptions.Formatter.isSupportTeamViaDestop()) {
-			oView = airbus.mes.disruptions.oView.disruptionDetail;
-		} else {
-			oView = airbus.mes.disruptions.oView.createDisruption;
-		}
+		var oView = airbus.mes.disruptions.ModelManager.getView();
 		
 		// Reset in hard the model of the view otherwise its not rebinded...
 		oView.getModel("disruptionRsnRespGrp").setData(sap.ui.getCore().getModel("disruptionRsnRespGrp").oData);
@@ -203,9 +215,9 @@ airbus.mes.disruptions.ModelManager = {
 		oView.oController.afterRsnRespGrpModelLoad();
 
 		// Un-Set Busy's
-		sap.ui.getCore().byId(oView.sId+"--selectreason").setBusy(false);
-		sap.ui.getCore().byId(oView.sId+"--selectResponsibleGrp").setBusy(false);
-		// sap.ui.getCore().byId("createDisruptionView--selectRootCause").setBusy(false);
+		oView.byId("selectreason").setBusy(false);
+		oView.byId("selectResponsibleGrp").setBusy(false);
+		// oView.byId("selectRootCause").setBusy(false);
 		
 	},
 
@@ -214,10 +226,11 @@ airbus.mes.disruptions.ModelManager = {
 	 * Resolver Group)
 	 **************************************************************************/
 	loadResolverModel : function(sResolverGroup) {
+		var oView = airbus.mes.disruptions.ModelManager.getView();
 
 		// Set Busy's
-		sap.ui.getCore().byId("createDisruptionView--selectResolver").setBusyIndicatorDelay(0);
-		sap.ui.getCore().byId("createDisruptionView--selectResolver").setBusy(true);
+		oView.byId("selectResolver").setBusyIndicatorDelay(0);
+		oView.byId("selectResolver").setBusy(true);
 
 		var url = airbus.mes.disruptions.ModelManager.getResolverModelURL(sResolverGroup)
 		sap.ui.getCore().getModel("disruptionResolverModel").loadData(url);
@@ -232,12 +245,7 @@ airbus.mes.disruptions.ModelManager = {
 	},
 
 	onLoadDisruptionResolver : function() {
-		var oView;
-		if (airbus.mes.disruptions.Formatter.isSupportTeamViaDestop()) {
-			oView = airbus.mes.disruptions.oView.disruptionDetail;
-		} else {
-			oView = airbus.mes.disruptions.oView.createDisruption;
-		}
+		var oView = airbus.mes.disruptions.ModelManager.getView();
 		
 		// Reset in hard the model of the view otherwise its not rebinded...
 		oView.getModel("disruptionResolverModel").setData(sap.ui.getCore().getModel("disruptionResolverModel").oData);
@@ -245,7 +253,7 @@ airbus.mes.disruptions.ModelManager = {
 		oView.oController.afterResolverModelLoad();
 
 		// Un-Set Busy's
-		sap.ui.getCore().byId("createDisruptionView--selectResolver").setBusy(false);
+		oView.byId("selectResolver").setBusy(false);
 	},
 
 	/***************************************************************************
