@@ -247,7 +247,6 @@ gulp.task('connect', function () {
 			return [
 				function (req, res, next) {
 					// treat POST request like GET during dev
-					console.log(req.url);
 					if(req.url.endsWith('.json')) {
 						req.method = 'GET';
 					}
