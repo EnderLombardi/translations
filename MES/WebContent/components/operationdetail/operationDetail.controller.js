@@ -312,7 +312,7 @@ sap.ui
                 case "tckTemplate":
                 	 //tabselection
                     $(this.tabSelected).removeClass("operationDetailTabSelected");
-                    this.tabSelected = "#trackingtemplateView--idNCDisplay";
+                    this.tabSelected = "#operationDetailsView--idTrackingTemplate";
                     $(this.tabSelected).addClass("operationDetailTabSelected");
                     
                     airbus.mes.shell.util.navFunctions.tckTemplateLink(this.nav);
