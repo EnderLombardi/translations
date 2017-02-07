@@ -154,7 +154,7 @@ airbus.mes.linetracker.util.Formatter = {
 		} else if(status == "IN_PROGRESS"){
 			return "sap-icon://media-play";
 		} else if(status == "LOADED"){
-			return "sap-icon://media-pause";
+			return "sap-icon://synchronize";
 		} else {
 			return "sap-icon://media-play";
 		}
@@ -162,28 +162,52 @@ airbus.mes.linetracker.util.Formatter = {
 	},
 	
 	showHideButtonsOnStatus : function(status) {
+		
 		if (this.getId() === "loadNextMSN"){
 //			if(status === "UN_LOADED" || status === "COMPLETE" || status === "TO_BE_LOADED")
 				 if( status === "LOADED" || status === "IN_PROGRESS" || status === "COMPLETE")
 				return false;
-		}else if (this.getId() === "startAssembly"){
+				 else
+					 return true;
+		}
+		
+		if (this.getId() === "startAssembly"){
 //			 if( status !== "LOADED" || status !== "IN_PROGRESS" )
 			if(status === "IN_PROGRESS" || status === "UN_LOADED" || status === "COMPLETE" || status === "TO_BE_LOADED")
-				return false;				 
-		}else if (this.getId() === "emptyStation" ){
-//			if( status !== "UN_LOADED" )
-			if( status === "UN_LOADED" || status === "TO_BE_LOADED" )
 				return false;
-		}else if (this.getId() === "endAssembly"){
+			 else
+				 return true;
+
+		}
+		if (this.getId() === "emptyStation" ){
+//			if( status !== "UN_LOADED" )
+			if( status === "UN_LOADED" || status === "TO_BE_LOADED" || status === "IN_PROGRESS"  || status === "LOADED" )
+				return false;
+			 else
+				 return true;
+
+		}
+		if (this.getId() === "endAssembly"){
 //			 if( status !== "IN_PROGRESS" || status !== "LOADED" )
-			 if(status === "UN_LOADED" || status === "COMPLETE" || status === "TO_BE_LOADED")
-				return false;				 
-		}else if (this.getId() === "undo" ){
-			if( status === "COMPLETE" || status === "IN_PROGRESS" || status === "LOADED" || status === "UN_LOADED" || status === "TO_BE_LOADED")
+			 if(status === "UN_LOADED" || status === "COMPLETE" || status === "TO_BE_LOADED" || status === "LOADED" )
+				return false;
+			 else
+				 return true;
+
+		}
+		
+		if (this.getId() === "undo" ){
+			if( status === "COMPLETE" || status === "IN_PROGRESS" || status === "LOADED" || status === "UN_LOADED" )
 				return true;
-		}else if (this.getId() === "nextMsnImage"){ 	// /*status is msn here for last case*/
+			 else
+				 return false;
+
+		}
+		
+		if (this.getId() === "nextMsnImage"){ 	// /*status is msn here for last case*/
 			if( status!=="NA") 
 				return true;
+			
 		}
 
 	}

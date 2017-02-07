@@ -81,7 +81,10 @@
 <!-- 									  src="{ parts :[{path:'stationDataModel>msn'},{path:'stationDataModel>completion_date'},{path:'stationDataModel>actual_start_date'}], formatter : 'airbus.mes.linetracker.util.Formatter.getActionIcon' }"/>											 -->
 								<control:PhysicalStationBox id="linetrackerEditStation"
 									color="#bcf6ff" actionIconColor="black"
-									station="{stationDataModel>stationName}" msn="{stationDataModel>msn}"
+									station="{stationDataModel>station}"
+									stationName="{stationDataModel>stationName}"
+									msn="{stationDataModel>msn}"
+									
 									press="handlePopoverPress" width="80%">
 									
 <!-- 									<control:actionIconButton>
@@ -107,7 +110,7 @@
 						</uiTable:template>
 					</uiTable:Column>
 
-					<uiTable:Column width="44%">
+					<uiTable:Column width="44%" resizable="false">
 						<FlexBox height="2.5rem" alignItems="Center"
 							justifyContent="SpaceAround">
 							<Text text="10%" />

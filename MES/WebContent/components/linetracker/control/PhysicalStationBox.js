@@ -5,6 +5,7 @@ sap.ui.core.Control.extend(
 			metadata : {
 				properties : {
 					"station" : "",
+					"stationName" : "",
 					"msn" : "",
 				},
 
@@ -63,7 +64,7 @@ sap.ui.core.Control.extend(
 				oRm.write("<label");
 				oRm.addClass("StationLabel");
 				oRm.writeClasses();
-				var html = ">" + oControl.getStation() + "</label>" + "</div>";
+				var html = ">" + oControl.getStationName() + "</label>" + "</div>";
 				oRm.write(html);
 				if (msn) {
 

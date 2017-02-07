@@ -340,7 +340,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 			this.oPopover = sap.ui.xmlfragment("airbus.mes.linetracker.fragments.PhStationPopover", this);
 			this.getView().addDependent(this.oPopover);
 		}
-		this.oPopover.setTitle(oEvent.oSource.getStation());
+		this.oPopover.setTitle(oEvent.oSource.getStationName());
 		var msn = oEvent.oSource.getMsn();
 		if(msn==undefined){
 			sap.ui.getCore().byId("stationTracker").setEnabled(false);
@@ -383,6 +383,8 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	 * To navigate to Disruption & Andon Tracker from Line Tracker
 	 */
 	gotoDisruptionAndonTracker : function() {
+		var element = sap.ui.getCore().byId("sapContentPopUpLinetracker")._oOpenBy;
+		airbus.mes.linetracker.util.ModelManager.setProgramLineForStationMsn(element.getStation(), element.getMsn());
 		airbus.mes.shell.util.navFunctions.disruptionTracker();
 	},
 	
@@ -654,7 +656,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 			undoText="undoActionText2";
 		}else if(undoStatus=="IN_PROGRESS"){
 			undoText="undoActionText3";
-		}if(undoStatus=="LOADED"){
+		}else if(undoStatus=="LOADED"){
 			undoText="undoActionText4";
 		}else{
 			undoText="undoActionText1";
