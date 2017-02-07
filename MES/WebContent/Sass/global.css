@@ -453,7 +453,7 @@ SETTINGS
   padding: 0 1rem; }
 
 /************************************
-D├⌐filement text tooltip
+D├®filement text tooltip
 ************************************/
 @-webkit-keyframes marqueelike {
   0%, 100% {
@@ -2708,6 +2708,10 @@ POLYPOLY
   font-style: italic;
   padding: 15px 30px;
   border-right: solid 1px #74d2e7; }
+
+#polypolyPage #polypolytitle.headerText {
+  border-right: solid 1px #74d2e7 !important;
+  padding: 16px 30px 16px 10px; }
 
 #polypoly--polypolyimg {
   border-left: 1px solid #8db9ca; }

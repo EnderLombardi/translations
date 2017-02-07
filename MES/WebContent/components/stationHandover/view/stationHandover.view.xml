@@ -62,7 +62,7 @@
 
 						<m:ToolbarSpacer />
 
-						<m:Button id="insertHandOver" text="{stationHandoverI18n>insert}" />
+						<m:Button icon="sap-icon://add-activity" id="insertHandOver" text="{stationHandoverI18n>insert}" />
 
 					</m:OverflowToolbar>
 
