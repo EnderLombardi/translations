@@ -10,6 +10,9 @@ var pushMii = require('./src/gulp-push-mii');
 var clean = require('gulp-clean');
 var rename = require("gulp-rename");
 var fs = require("fs");
+var connect 			= require('gulp-connect');
+var runSequence         = require('run-sequence');
+var open 				= require('gulp-open');
 
 var pkg = JSON.parse(fs.readFileSync('./package.json', 'utf-8'));
 var version = {};
@@ -228,6 +231,32 @@ gulp.task('bump', ['bump_ver', 'build'], function () {
 			root: dest,
 			remotePath: rootRemotePath + '/v' + version.toString(),
 		}));;
+});
+
+//--------------------------------------------------------------------------------------------------------------------------//
+//																															//
+//															connect															//
+//																															//
+//--------------------------------------------------------------------------------------------------------------------------//
+
+gulp.task('connect', function () {
+    return connect.server({
+        root: 'WebContent',
+        port: 8080,
+        livereload: true
+    });
+});
+
+gulp.task('open', function(){
+  gulp.src(__filename)
+  .pipe(open({uri: 'http://localhost:8080/shell'}));
+});
+
+gulp.task('serve', function (callback) {
+    runSequence(
+        'connect',
+        'open',
+        callback);
 });
 
 
