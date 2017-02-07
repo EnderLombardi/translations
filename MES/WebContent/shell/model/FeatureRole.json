@@ -60,6 +60,12 @@
 			"Authenticate" : "false",
 			"Roles" : [ "SAP_XMII_Developer", "SAP_XMII_User", "Everyone",
 						"!eval host('[^d].i.*airbus')" ]
+		}, {
+			"Feature" : "operationDetailsJigNTool",
+			"Description": "",
+			"Authenticate" : "false",
+			"Roles" : [ "SAP_XMII_Developer", "SAP_XMII_User", "Everyone",
+						"eval host('[^d].i.*airbus')" ]
 		}
 	]
 }

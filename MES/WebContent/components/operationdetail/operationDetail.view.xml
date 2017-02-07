@@ -117,8 +117,13 @@
                         <IconTabFilter id="idDisplayOpeAttachments" enabled="{Profile>/connectedUser/permissions/displayOpeAttachments}" text="{i18n>Documents}" tooltip="{i18n>Documents}" key="displayOpeAttachments"></IconTabFilter>
                         <IconTabFilter id="idReschedule" text="{i18n>Reschedule}" tooltip="{i18n>Reschedule}" key="reschedule"></IconTabFilter>
                         <IconTabFilter id="idtouchngo" text="{i18n>Touchngo}" tooltip="{i18n>Touchngo}" key="touchngo"></IconTabFilter>
+<<<<<<< Upstream, based on origin/MESv1.5
                         <IconTabFilter id="idJignTools" text="{i18n>JignTools}" tooltip="{i18n>JignTools}" key="jigntools"></IconTabFilter>
                         <IconTabFilter id="idComponents" enabled="{Profile>/identifiedUser/permissions/topic_componentsOpeDetail}" text="{i18n>Components}" tooltip="{i18n>Components}" key="components"></IconTabFilter>
+=======
+                        <IconTabFilter enabled="{Profile>/connectedUser/permissions/operationDetailsJigNTool}"  id="idJignTools" text="{i18n>JignTools}" tooltip="{i18n>JignTools}" key="jigntools"></IconTabFilter>
+                        <IconTabFilter id="idComponents" text="{i18n>Components}" tooltip="{i18n>Components}" key="components"></IconTabFilter>
+>>>>>>> 0bfc097 [jigs&tools] - enable / disable
                         <IconTabFilter id="idACPnGLinks" text="{i18n>ACPnGLinks}" tooltip="{i18n>ACPnGLinks}" key="ACPnGLinks"></IconTabFilter>
                         <IconTabFilter id="idNCDisplay" text="{i18n>ncDisplay}" tooltip="{i18n>ncDisplay}" key="ncDisplay"></IconTabFilter>
                            <IconTabFilter id="idTrackingTemplate" text="{i18n>tckTemplate}" tooltip="{i18n>tckTemplate}" key="tckTemplate"></IconTabFilter>
