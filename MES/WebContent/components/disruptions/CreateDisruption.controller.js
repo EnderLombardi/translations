@@ -345,12 +345,11 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption",
 				return;
 
 			var sCategory = oView.byId("selectCategory").getSelectedKey();
-			// var sRootCause = oView.byId("selectRootCause")
-			// .getSelectedKey();
+			// var sRootCause = oView.byId("selectRootCause").getSelectedKey();
 			var sComment = airbus.mes.disruptions.Formatter.actions.create + oView.byId("comment").getValue();
 
-			// Get handle for the selected disruption custom data row - hanlde
-			// is a unique for Custom Data
+			// Get handle for the selected disruption custom data row 
+			// hanlde is a unique for Custom Data
 			var sPathReason = oView.byId("selectreason").getSelectedItem().getBindingInfo("key").binding.getContext().sPath
 			var sHandle = oView.getModel("disruptionRsnRespGrp").getProperty(sPathReason).HANDLE;
 
@@ -496,8 +495,10 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption",
 			var sMessageRef = sap.ui.getCore().getModel("DisruptionDetailModel").getProperty("/MessageRef")
 			var sReason = oView.byId("selectreason").getSelectedKey();
 			var sResponsibleGroup = oView.byId("selectResponsibleGrp").getSelectedKey();
+			
+			// -[MES V1.5] root cause removed
 			// var sRootCause = oView.byId("selectRootCause").getSelectedKey();
-			// // [MES V1.5] root cause removed
+			
 			var iTimeLost = airbus.mes.disruptions.Formatter.timeToMilliseconds(oView.byId("timeLost").getValue());
 			var dFixedByTime = oView.byId("expectedDate").getValue() + " " + oView.byId("expectedTime").getValue();
 			var sComment = airbus.mes.disruptions.Formatter.actions.edit + oView.byId("comment").getValue();
@@ -657,10 +658,6 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption",
 		 * Adds new free text Material along with quantity to the list
 		 */
 		addNewMaterialToList : function() {
-
-			// var oModelData = sap.ui.getCore().getModel(
-			// "MaterialListModel").getProperty(
-			// "/MaterialList");
 
 			if (sap.ui.getCore().byId("customMaterial").getValue() != "") {
 
@@ -873,174 +870,10 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption",
 		onJigToolTokenChange : function() {
 			this.onJigToolValueHelpRequest();
 		},
-		onNavBack : function() {
-			nav.back();
-		},
-
-		/**
-		 * Called when the Controller is destroyed. Use this one to free
-		 * resources and finalize activities.
-		 * 
-		 * @memberOf airbus.mes.components.disruptions.CreateDisruption
-		 */
-		/**
-		 * 
-		 * MES V1.5 initially all fields will be non editable [Begin]
-		 */
-		setDisruptionDetailData : function() {
-
-			try {
-				this.resetAllFields();
-
-				if (sap.ui.getCore().getModel("DisruptionDetailModel").getData() != undefined) {
-
-					// fill select boxes on CreateDisruptionView for
-					// edit screen
-					var oModel = sap.ui.getCore().getModel("DisruptionDetailModel");
-
-					this.getView().byId("selectCategory").setSelectedKey(oModel.getProperty("/MessageType"));
-
-					this.getView().byId("selectResponsibleGrp").setSelectedKey(oModel.getProperty("/ResponsibleGroup"));
-
-					this.getView().byId("selectreason").setSelectedKey(oModel.getProperty("/Reason"));
-
-					this.getView().byId("selectOriginator").setSelectedKey(oModel.getProperty("/OriginatorGroup"));
-
-					// this.getView().byId("selectRootCause").setSelectedKey(oModel.getProperty("/RootCause"));
-					// // MES V1.5 root cause Removed
-
-					this.getView().byId("gravity").setSelectedKey(oModel.getProperty("/Gravity"));
-
-					this.getView().byId("timeLost").setValue(airbus.mes.disruptions.Formatter.timeMillisecondsToConfig(oModel.getProperty("/TimeLost")));
-
-					this.getView().byId("status").setValue(oModel.getProperty("/Status"));
-
-					this.getView().byId("description").setValue(oModel.getProperty("/Description"));
-
-					this.getView().byId("comment").setValue();
-
-					this.getView().byId("escalationLevel").setValue(oModel.getProperty("/EscalationLevel"));
-
-					// *****************************************
-
-					var oMatInp = this.getView().byId("materials");
-					var oJiginp = this.getView().byId("jigtools");
-
-					var aMatArray = oModel.oData.Materials.split(",");
-					var aJigArray = oModel.oData.JigTools.split(",");
-
-					var aMatTokens = [];
-					var aJigTokens = [];
-
-					for ( var i in aMatArray) {
-
-						if (aMatArray[i] !== "") {
-
-							var loMatToken = new sap.m.Token({
-								text : aMatArray[i],
-								editable : false,
-							});
-
-							aMatTokens.push(loMatToken)
-
-						}
-					}
-
-					oMatInp.setTokens(aMatTokens);
-					this._materialListDialog.close();
-
-					for ( var j in aJigArray) {
-
-						if (aJigArray[j] != "") {
-							var loJigToken = new sap.m.Token({
-								text : aJigArray[j],
-								editable : false,
-							});
-
-							aJigTokens.push(loJigToken)
-
-						}
-					}
-
-					oJiginp.setTokens(aJigTokens);
-					this.jigToolSelectDialog.close();
-
-				}
-			} catch (err) {
-				sap.m.MessageToast.show(airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty("error"));
-
-				if (nav.getCurrentPage().getId() == "disruptionDetail") {
-					nav.back();
-				}
-			}
-
-		},
-		onEditDisruption : function() {
-			// this.setDataForEditDisruption();
-			this.getView().byId("commentBox").setVisible(true);
-
-		},
-		/***********************************************************************
-		 * Hide Comment Box to Add Comments
-		 * 
-		 * @param {object}
-		 *            oEvt take event riggering control as an input
-		 */
-		hideCommentBox : function(oEvt) {
-			sap.ui.getCore().byId("disruptionDetail--commentBox").setVisible(false);
-		},
-
-		/***********************************************************************
-		 * Submit Disruption Comment
-		 * 
-		 * @param {object}
-		 *            oEvt take event riggering control as an input
-		 */
-		submitComment : function(oEvt) {
-
-			var status = oEvt.getSource().getBindingContext("operationDisruptionsModel").getObject("Status");
-
-			if (status == airbus.mes.disruptions.Formatter.status.deleted || status == airbus.mes.disruptions.Formatter.status.closed) {
-
-				sap.m.MessageToast.show(this.getView().getModel("i18nModel").getProperty("cannotComment"));
-
-				return;
-			}
-
-			var path = oEvt.getSource().sId;
-
-			var msgRef = oEvt.getSource().getBindingContext("operationDisruptionsModel").getObject("MessageRef");
-
-			var listnum = path.split("-");
-			listnum = listnum[listnum.length - 1];
-
-			var sComment = airbus.mes.disruptions.Formatter.actions.comment
-				+ this.getView().byId(this.getView().sId + "--commentArea-" + this.getView().sId + "--disrptlist-" + listnum).getValue();
-
-			var currDate = new Date();
-			var date = currDate.getFullYear() + "-" + currDate.getMonth() + "-" + currDate.getDate();
-
-			var oComment = {
-				"Action" : this.getView().getModel("i18nModel").getProperty("comment"),
-				"Comments" : sComment,
-				"Counter" : "",
-				"Date" : date,
-				"MessageRef" : msgRef,
-				"UserFullName" : (sap.ui.getCore().getModel("userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/first_name").toLowerCase() + " " + sap.ui
-					.getCore().getModel("userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/last_name").toLowerCase())
-			};
-
-			var i18nModel = airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel");
-
-			// Call Add comment Service
-			airbus.mes.disruptions.ModelManager.addComment(oComment, i18nModel);
-
-			this.getView().byId(this.getView().sId + "--commentArea-" + this.getView().sId + "--disrptlist-" + listnum).setValue("");
-		},
+		
 		/***********************************************************************
 		 * Settings to be done in parallel to load model when screen called in
-		 * edit mode. MES V1.5 set disruption detail page data in view mode If
-		 * opened by support team from disruption tracker
+		 * edit mode.
 		 **********************************************************************/
 		editdisruptionDetailPreSettings : function() {
 
@@ -1057,9 +890,9 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption",
 				this.getView().byId("selectreason").setSelectedKey(oDisruptionData.Reason);
 				// Set Originator
 				this.getView().byId("selectOriginator").setSelectedKey(oDisruptionData.OriginatorGroup);
-
+				
+				// -V1.5 root cause Removed
 				// this.getView().byId("selectRootCause").setSelectedKey(oModel.getProperty("/RootCause"));
-				// // MES V1.5 root cause Removed
 				
 				// Set Gravity
 				this.getView().byId("gravity").setSelectedKey(oDisruptionData.Gravity);
@@ -1070,8 +903,7 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption",
 
 				// Set Status and Description
 				this.getView().byId("status").setValue(oDisruptionData.Status);
-				// this.getView().byId("description").setValue(oModel.getProperty("/Description"));
-				// V1.5
+				// this.getView().byId("description").setValue(oModel.getProperty("/Description")); -V1.5
 
 				// Empty Comment
 				this.getView().byId("comment").setValue();
@@ -1142,6 +974,76 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption",
 			this.getView().byId("promisedDateLabel").setVisible(true);
 			this.getView().byId("promisedDate").setVisible(true);
 			this.getView().byId("promisedTime").setVisible(true);
-		}
+		},
+		
+
+		/***********************************************************************
+		 * From Disruption Detail Screen - Hide Comment Box to Add Comments
+		 */
+		onEditDisruption : function() {
+			this.getView().byId("commentBox").setVisible(true);
+
+		},
+		/***********************************************************************
+		 * From Disruption Detail Screen - Hide Comment Box to Add Comments
+		 * @param {object}
+		 *            oEvt take event triggering control as an input
+		 */
+		hideCommentBox : function(oEvt) {
+			this.getView().byId("commentBox").setVisible(false);
+		},
+
+
+		/***********************************************************************
+		 * From Disruption Detail Screen - Submit Disruption Comment
+		 * @param {object}
+		 *            oEvt take event triggering control as an input
+		 */
+		submitComment : function(oEvt) {
+
+			var status = oEvt.getSource().getBindingContext("operationDisruptionsModel").getObject("Status");
+
+			if (status == airbus.mes.disruptions.Formatter.status.deleted || status == airbus.mes.disruptions.Formatter.status.closed) {
+
+				sap.m.MessageToast.show(this.getView().getModel("i18nModel").getProperty("cannotComment"));
+
+				return;
+			}
+
+			var path = oEvt.getSource().sId;
+
+			var msgRef = oEvt.getSource().getBindingContext("operationDisruptionsModel").getObject("MessageRef");
+
+			var listnum = path.split("-");
+			listnum = listnum[listnum.length - 1];
+
+			var sComment = airbus.mes.disruptions.Formatter.actions.comment
+				+ this.getView().byId(this.getView().sId + "--commentArea-" + this.getView().sId + "--disrptlist-" + listnum).getValue();
+
+			var currDate = new Date();
+			var date = currDate.getFullYear() + "-" + currDate.getMonth() + "-" + currDate.getDate();
+
+			var oComment = {
+				"Action" : this.getView().getModel("i18nModel").getProperty("comment"),
+				"Comments" : sComment,
+				"Counter" : "",
+				"Date" : date,
+				"MessageRef" : msgRef,
+				"UserFullName" : (sap.ui.getCore().getModel("userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/first_name").toLowerCase() + " " + sap.ui
+					.getCore().getModel("userDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/last_name").toLowerCase())
+			};
+
+			var i18nModel = airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel");
+
+			// Call Add comment Service
+			airbus.mes.disruptions.ModelManager.addComment(oComment, i18nModel);
+
+			this.getView().byId(this.getView().sId + "--commentArea-" + this.getView().sId + "--disrptlist-" + listnum).setValue("");
+		},
+		
+		
+		onNavBack : function() {
+			nav.back();
+		},
 
 	});
