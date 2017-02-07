@@ -380,12 +380,12 @@ sap.ui.controller(
                         airbus.mes.shell.oView.getController().setInformationVisibility(true);
                       
                         // ** synchrone call **//
+                        oModule.loadRessourcePool();
                         oModule.loadShifts();
                         airbus.mes.calendar.util.ShiftManager.init(airbus.mes.calendar.util.GroupingBoxingManager.shiftNoBreakHierarchy);
 
                         // ** asynchrone call **//
                         oModule.loadCalendarTracker();
-                        oModule.loadRessourcePool();
                         
                         // **Calculation of hiehgt of scheduler** //
                         var jqToolbar = $(airbus.mes.calendar.oView.byId('toolbarcalendar').getDomRef());

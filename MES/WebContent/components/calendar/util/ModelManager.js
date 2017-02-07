@@ -64,15 +64,35 @@ airbus.mes.calendar.util.ModelManager = {
 		var oViewModel = airbus.mes.calendar.oView.getModel("calendarTrackerModel");
 		var geturlcalendartracker = this.urlModel.getProperty('urlCalendaroperation');
 
-		geturlcalendartracker = airbus.mes.calendar.util.ModelManager.replaceURI(geturlcalendartracker, "$site", oData.site);
-		geturlcalendartracker = airbus.mes.calendar.util.ModelManager.replaceURI(geturlcalendartracker, "$station", oData.station);
-		geturlcalendartracker = airbus.mes.calendar.util.ModelManager.replaceURI(geturlcalendartracker, "$msn", oData.msn);
-		geturlcalendartracker = airbus.mes.calendar.util.ModelManager.replaceURI(geturlcalendartracker, "$productionGroup", oData.prodGroup);
-		// geturlcalendartracker = airbus.mes.calendar.util.ModelManager.replaceURI(geturlcalendartracker, "$user", airbus.mes.calendar.util.AssignmentManager.userSelected);
-		//console.log(geturlcalendartracker);
+		jQuery.ajax({
+			type : 'post',
+			url : geturlcalendartracker,
+			contentType : 'application/json',
+			async : 'true',
+			data : JSON.stringify({
+				"site" : oData.site,
+				"physicalStation" : oData.station,
+				"msn" : oData.msn,
+				
+			}),
 
-		oViewModel.loadData(geturlcalendartracker, null, true);
+			success : function(data) {
+				try {
+					console.log(data);
+					oViewModel.setData();
+				} catch (e) {
+					console.log("NO calendar data load");
+					
+				}
 
+			},
+
+			error : function(error, jQXHR) {
+				console.log("NO calendar data load");
+
+			}
+		});	
+	
 	},
 
 	onCalendarTrackerLoad : function() {
@@ -93,7 +113,7 @@ airbus.mes.calendar.util.ModelManager = {
 			type : 'post',
 			url : geturlRessourcePool,
 			contentType : 'application/json',
-			async : 'true',
+			async : 'false',
 			data : JSON.stringify({
 				"site" : airbus.mes.settings.ModelManager.site,
 				"phStation" : airbus.mes.settings.ModelManager.station	               
