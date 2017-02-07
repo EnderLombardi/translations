@@ -210,7 +210,7 @@
 
 			<!-- <items>
 				<ColumnListItem
-					type="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setType'}"
+					type="{path: 'Profile>/connectedUser/permissions/DISRUPTION_DIS_DETAIL_CONSULT', formatter: 'airbus.mes.disruptiontracker.Formatter.setType'}"
 					press="onTableClick">
 					<cells>
 						

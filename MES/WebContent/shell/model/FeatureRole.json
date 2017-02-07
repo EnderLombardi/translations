@@ -36,6 +36,12 @@
 			"Authenticate" : "false",
 			"Roles" : [ "SAP_XMII_Developer", "SAP_XMII_User", "Everyone",
 						"!eval host('[^d].i.*airbus')" ]
+		},
+		{
+			"Feature" : "HOMESCREEN",
+			"Description": "Click on screen to open",
+			"Authenticate" : "false",
+			"Roles" : [ "eval host('local|sopra|dmi')&&!feature('role')" ]
 		}
 	]
 }

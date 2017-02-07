@@ -242,6 +242,6 @@ airbus.mes.linetracker.util.Formatter = {
 //	    	}
 			return true;
 		}
-		
+		return true;
 	}
 }

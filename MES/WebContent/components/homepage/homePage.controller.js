@@ -91,7 +91,7 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 	 * @param 
 	 * @returns {true or false}
 	 */
-    setVisible : function() {
+//    setVisible : function() {
 //        var flag = airbus.mes.shell.RoleManager.isAllowed("HOMESCREEN");
 //        airbus.mes.shell.RoleManager.userRoles = [];
 //        return flag;
@@ -101,8 +101,8 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 //    	} else { 
 //    	return false;
 //    	}
-    	return true;
-    }
+//    	return true;
+//    }
 	/**
 	 * Similar to onAfterRendering, but this hook is invoked before the controller's
 	 * View is re-rendered (NOT before the first rendering! onInit() is used for

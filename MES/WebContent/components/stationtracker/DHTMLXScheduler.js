@@ -164,7 +164,16 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",    {
                     			  return false;
                     			
                     		}
-                           
+//                    		if ( sInitialAvlLine === sNewAvlLine){
+//                    	    	if(sap.ui.getCore().getModel("Profile").oData.identifiedUser.permissions.STATION_GANTT_RESCHEDULE === false ){
+//                        	    	return false;
+//                        	    	} 
+//                    		} else{
+//                    	    	if(sap.ui.getCore().getModel("Profile").oData.identifiedUser.permissions.STATION_GANTT_RESCHEDULE === false ){
+//                        	    	return false;
+//                        	    	} 
+//                    			alert("vertical");
+//                    		}
                                 //Store oFinal and oInitial value in case of check qa is not successfull
                                 airbus.mes.stationtracker.oFinal = oFinal;
                                 airbus.mes.stationtracker.oInitial = oInitial;
@@ -182,7 +191,6 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",    {
 
                         scheduler.eventId.push(scheduler.attachEvent("onBeforeDrag",function blockReadonly(id) {
                         	console.log(scheduler._drag_mode);
-
                         	var that = this;
                         	this.byPassOnDrag = false;
                         	this.id = id;
