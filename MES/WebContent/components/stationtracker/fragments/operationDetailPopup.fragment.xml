@@ -16,7 +16,6 @@
             <Button id="btnUpdateDisruption" text="{StationTrackerI18n>update}" icon="sap-icon://save" type="Transparent" press="onUpdateDisruption" visible="false" />
             <Button id="btnCancelDisruption" text="{StationTrackerI18n>cancel}" icon="sap-icon://sys-cancel" type="Transparent" press="onCancelCreateDisruption" visible="false" />
             <Button id="reportDisruption" text="{StationTrackerI18n>reportDisruption}" press="" icon="sap-icon://add" visible="false" enabled = "{path: 'StationTrackerI18n>reportDisruption', formatter: 'airbus.mes.stationtracker.util.Formatter.setEnabled' }"/>
-            <Button id="btnComponentsSave" visible="false" text="{StationTrackerI18n>save}" icon="sap-icon://save" type="Transparent" press="onbtnComponentsSave" />
 
             <Button id="btnReschedule" visible="false" text="{StationTrackerI18n>confirm}" icon="sap-icon://history" type="Transparent" press="onRescheduleConfirm" />
 

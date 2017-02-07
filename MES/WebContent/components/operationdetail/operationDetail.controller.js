@@ -139,7 +139,7 @@ sap.ui
                 sap.ui.getCore().byId("operationDetailsView--idReschedule").setVisible(false);
                 sap.ui.getCore().byId("operationDetailsView--idtouchngo").setVisible(false);
                 sap.ui.getCore().byId("operationDetailsView--idJignTools").setVisible(false);
-                sap.ui.getCore().byId("operationDetailsView--idComponents").setVisible(false);
+                sap.ui.getCore().byId("operationDetailsView--idComponents").setVisible(true);
                 sap.ui.getCore().byId("operationDetailsView--idACPnGLinks").setVisible(false);
                 sap.ui.getCore().byId("operationDetailsView--idNCDisplay").setVisible(false);
             } else {

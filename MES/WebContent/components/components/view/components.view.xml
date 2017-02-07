@@ -108,8 +108,8 @@
                     <StepInput ValueState="None"
                                class="stepInputComponent"
                                value="{componentsWorkOrderDetail>committed}"
-                               min="{min}"
-                               max="{max}"
+                               min="0"
+                               max="{componentsWorkOrderDetail>withdrawQty}"
                                width="{width}"
                                step="{step}"
                                enabled="{enabled}"
@@ -126,8 +126,8 @@
                         <StepInput ValueState="None"
                                    class="stepInputComponent"
                                    value="{componentsWorkOrderDetail>fitted}"
-                                   min="{min}"
-                                   max="{max}"
+                                   min="0"
+                                   max="{componentsWorkOrderDetail>withdrawQty}"
                                    width="{width}"
                                    step="{step}"
                                    enabled="{enabled}"
@@ -138,6 +138,10 @@
             </table:Column>
         </table:columns>
         </table:Table>
+        <HBox id="servicesButtonComponents">
+            <Button id="btnComponentsSave" visible="true" enabled="false" text="{i18nComponentsModel>save}" icon="sap-icon://save" type="Emphasized" press="onbtnComponentsSave" />
+            <Button id="btnComponentsFreeze" visible="true" enabled="false" text="{i18nComponentsModel>freeze}" icon="sap-icon://stop" type="Emphasized" press="onbtnComponentsFreeze" />
+        </HBox>
     </content>
 
     </Page>
