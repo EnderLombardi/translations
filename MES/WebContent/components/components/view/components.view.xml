@@ -112,8 +112,8 @@
                                max="{componentsWorkOrderDetail>withdrawQty}"
                                width="{width}"
                                step="{step}"
-                               enabled="{enabled}"
-                               editable="{editable}"
+                               enabled="true"
+                               editable="true"
                                change="committedLiveChange"/>
                    </HBox>
                 </table:template>
@@ -130,8 +130,8 @@
                                    max="{componentsWorkOrderDetail>withdrawQty}"
                                    width="{width}"
                                    step="{step}"
-                                   enabled="{enabled}"
-                                   editable="{editable}"
+                                   enabled="true"
+                                   editable="true"
                                    change="fittedLiveChange"/>
                     </HBox>
                 </table:template>

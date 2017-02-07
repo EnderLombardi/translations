@@ -237,7 +237,7 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         var dataIndex = oTable.getModel("componentsWorkOrderDetail").oData.Rowsets.Rowset[0].Row[index];
         oEvent.getSource().oParent.getItems()[1].setValue(dataIndex.withdrawQty);
         sap.ui.getCore().byId("componentsView--btnComponentsSave").setEnabled(true);
-        sap.ui.getCore().byId("componentsView--btnComponentsFreeze").setEnabled(true);
+        sap.ui.getCore().byId("componentsView--btnComponentsSave").setEnabled(true);
     },
 
     synchronizeFieldFitted: function(oEvent){
@@ -246,7 +246,11 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         var dataIndex = oTable.getModel("componentsWorkOrderDetail").oData.Rowsets.Rowset[0].Row[index];
         oEvent.getSource().oParent.getItems()[1].setValue(dataIndex.withdrawQty);
         sap.ui.getCore().byId("componentsView--btnComponentsSave").setEnabled(true);
-        sap.ui.getCore().byId("componentsView--btnComponentsFreeze").setEnabled(true);
+        sap.ui.getCore().byId("componentsView--btnComponentsSave").setEnabled(true);
+    },
+
+    committedLiveChange: function(){
+        console.log("toto");
     }
 
 });
