@@ -3,12 +3,12 @@
 	<Popover id="sapContentPopUpLinetracker" class="sapUiContentPadding"
 		placement="VerticalPreferredBottom">
 		<VBox >
-			<Button id="stationTracker" text="{i18n>stationTracker}" type="Transparent" press="gotoStationTracker"/>
+			<Button id="lineStationTracker" text="{i18n>stationTracker}" type="Transparent" press="gotoStationTracker" width="100%"/>
 			<!-- <Button text="{i18n>stationKPIHeader}" type="Transparent"
 				press="displayStationKPIHeader" /> -->
-			<Button id="disruptionAndonTracker" text="{i18n>disruptionAndonTracker}" type="Transparent"
+			<Button id="lineDisruptionAndonTracker" text="{i18n>disruptionAndonTracker}" type="Transparent"
 				press="gotoDisruptionAndonTracker" width="100%"/>
-			<Button id="stationHandover" text="{i18n>stationHandover}" type="Transparent" press="gotoStationHandover" width="100%"/>
+			<Button id="lineStationHandover" text="{i18n>stationHandover}" type="Transparent" press="gotoStationHandover" width="100%"/>
 		</VBox>
 		<footer>
 			<!-- <Toolbar>

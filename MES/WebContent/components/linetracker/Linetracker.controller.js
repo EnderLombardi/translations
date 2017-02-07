@@ -343,8 +343,8 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 		this.oPopover.setTitle(oEvent.oSource.getStationName());
 		var msn = oEvent.oSource.getMsn();
 		if(msn==undefined){
-			sap.ui.getCore().byId("stationTracker").setEnabled(false);
-			sap.ui.getCore().byId("stationHandover").setEnabled(false);
+			sap.ui.getCore().byId("lineStationTracker").setEnabled(false);
+			sap.ui.getCore().byId("lineStationHandover").setEnabled(false);
 		}
 		// delay because addDependent will do a async rerendering and the
 		// actionSheet will immediately close without it.
