@@ -99,10 +99,22 @@ airbus.mes.shell.util.Formatter = {
 		return airbus.mes.settings.AppConfManager.getConfiguration("MES_BADGE_PIN");
 	},
 	setVisible : function(key){
-//	var Flag = airbus.mes.shell.RoleManager.isAllowed(airbus.mes.shell.RoleManager.parseRoleValue("XXXX"), 'V');
-//      airbus.mes.shell.RoleManager.userRoles = [];
-//      return Flag;
+		//  var flag = airbus.mes.shell.RoleManager.isAllowed("WORK_OP_PAUSE");
+		//  airbus.mes.shell.RoleManager.userRoles = [];
+		//  return flag;
       return true;
+	},
+	setLangVisible : function(){
+		//  var flag = airbus.mes.shell.RoleManager.isAllowed("PROFILE _PREF_LANG");
+		//  airbus.mes.shell.RoleManager.userRoles = [];
+		//  return flag;
+		return true;
+	},
+	setEnable : function(){
+		//  var flag = airbus.mes.shell.RoleManager.isAllowed("MES_ADMIN_SETTING");
+		//  airbus.mes.shell.RoleManager.userRoles = [];
+		//  return flag;
+		return true;
 	}
 
 };

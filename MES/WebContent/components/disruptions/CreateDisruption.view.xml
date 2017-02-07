@@ -455,7 +455,8 @@
 												uploadUrl="{i18nModel>uploadURL}" tooltip="{i18nModel>attachFile}" icon="sap-icon://attachment"
 												uploadComplete="airbus.mes.disruptions.AttachmentManager.onUploadComplete" class="attachIcon"
 												change="airbus.mes.disruptions.AttachmentManager.onFileSelect" buttonOnly="true"
-												iconOnly="true" style="Transparent" fileType="{path:'AttachmentList>/FileType/0/key', formatter: 'airbus.mes.disruptions.Formatter.setFileType'}">
+												iconOnly="true" style="Transparent" fileType="{path:'AttachmentList>/FileType/0/key', formatter: 'airbus.mes.disruptions.Formatter.setFileType'}"
+												visible="{path:'i18nModel>myFileUpload', formatter: 'airbus.mes.disruptions.Formatter.setVisible'}">
 
 											</u:FileUploader>
 											<Button type="Transparent" icon="sap-icon://camera"

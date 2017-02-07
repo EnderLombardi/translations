@@ -611,7 +611,7 @@ sap.ui.controller("airbus.mes.operationstatus.status", {
 			break;
 		}
 
-    },
+    }
 
 //	/**
 //	 * Used to know if an operation is started/paused/notStarted/complete

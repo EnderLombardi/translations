@@ -567,5 +567,28 @@ airbus.mes.disruptions.Formatter = {
 			return false;
 		}
 
+	},
+	/**
+	 * Set Attachment button, import images button visible true or false as per roles
+	 */
+	setVisible: function(sKey){
+		if (sKey === "myFileUpload") {
+			//  var flag = airbus.mes.shell.RoleManager.isAllowed("WORK_DIS_PICTURE");
+			//  airbus.mes.shell.RoleManager.userRoles = [];
+			//  return flag;
+			return true;
+		} else {
+			//  var flag = airbus.mes.shell.RoleManager.isAllowed("WORK_DIS_ATTACH_DOC");
+			//  airbus.mes.shell.RoleManager.userRoles = [];
+			//  return flag;	
+			return true;
+		}
+		return true;
+	},
+	setCloseEnabled: function(){
+		//  var flag = airbus.mes.shell.RoleManager.isAllowed("WORK_DIS_CLOSE");
+		//  airbus.mes.shell.RoleManager.userRoles = [];
+		//  return flag;		
+		return true;
 	}
 };
