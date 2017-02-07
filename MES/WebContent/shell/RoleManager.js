@@ -192,8 +192,9 @@ airbus.mes.shell.RoleManager = {
 		},
 		
 		feature: function(name) {
-			var featurelist = airbus.mes.shell.RoleManager.queryParams.get('features').split(',');
-			return featurelist.indexOf(name) >= 0;
+			var featurelist = airbus.mes.shell.RoleManager.queryParams.get('features') || "";
+			var featuretab = featurelist.split(',');
+			return featuretab.indexOf(name) >= 0;
 		}
 	
 	},
