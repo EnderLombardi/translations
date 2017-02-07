@@ -308,6 +308,17 @@ sap.ui
                     airbus.mes.shell.util.navFunctions.ncDisplayLink(this.nav);
                     this.nav.to(airbus.mes.ncdisplay.oView.getId());
                     break;
+                    
+                case "tckTemplate":
+                	 //tabselection
+                    $(this.tabSelected).removeClass("operationDetailTabSelected");
+                    this.tabSelected = "#trackingtemplateView--idNCDisplay";
+                    $(this.tabSelected).addClass("operationDetailTabSelected");
+                    
+                    airbus.mes.shell.util.navFunctions.tckTemplateLink(this.nav);
+                    this.nav.to(airbus.mes.trackingtemplate.oView.getId());
+                    break;
+                    
                 default:
                     break;
 

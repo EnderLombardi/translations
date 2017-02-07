@@ -279,6 +279,16 @@ airbus.mes.shell.util.navFunctions = {
             container.addPage(airbus.mes.ncdisplay.oView);
         }
     },
+    
+    tckTemplateLink: function (container) {
+        if (airbus.mes.trackingtemplate === undefined || airbus.mes.trackingtemplate.oView === undefined) {
+            jQuery.sap.registerModulePath("airbus.mes.trackingtemplate", "../components/trackingtemplate");
+            sap.ui.getCore().createComponent({ name: "airbus.mes.trackingtemplate" });
+        }
+        if (container.getPage("trackingtemplateView") === null) {
+            container.addPage(airbus.mes.trackingtemplate.oView);
+        }
+    },
 
     disruptionTracker: function () {
         if (airbus.mes.disruptiontracker === undefined
