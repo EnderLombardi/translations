@@ -77,9 +77,7 @@
 					<Button id="gotoDisruptionKpi" icon="sap-icon://area-chart"
 						text="{disruptiontrackerI18n>disruptionKPI}" press="onPressDisruptionKPI"
 						visible="false" class="borderbutton" />
-						<Button id="gotoDisruptionDetail" icon="sap-icon://area-chart"
-						text="{disruptiontrackerI18n>disruptionKPI}" press="openDisruptionDeatail"
-						visible="true" class="borderbutton" />
+				
 				</Toolbar>
 
 			</content>

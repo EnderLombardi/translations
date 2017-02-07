@@ -414,10 +414,12 @@ airbus.mes.shell.util.navFunctions = {
         if (airbus.mes.disruptions === undefined || airbus.mes.disruptions.oView === undefined) {
             jQuery.sap.registerModulePath("airbus.mes.disruptions", "../components/disruptions");
             sap.ui.getCore().createComponent({ name: "airbus.mes.disruptions", });
-            nav.addPage(airbus.mes.disruptions.oView.disruptionDetail);
         }
         
-		
+        if (nav.getPage("disruptionDetailView") == null) {
+            nav.addPage(airbus.mes.disruptions.oView.disruptionDetail)
+        }
+        
 		// Set Data in disruption Detail Model with comments
 		var oData = oDataset.Rowsets.Rowset[0].Row[0];
 		oData.comments = oDataset.Rowsets.Rowset[1].Row;
@@ -427,10 +429,11 @@ airbus.mes.shell.util.navFunctions = {
 
 		// Load data from back-end services - Call load data function in Edit Mode
 		 var sOriginatorID = sap.ui.getCore().getModel("DisruptionDetailModel").getProperty("/OriginatorID")
-		 airbus.mes.disruptions.ModelManager.loadData("Edit", sOriginatorID);
+		 
 		 
 
 		nav.to(airbus.mes.disruptions.oView.disruptionDetail.getId());
+		 airbus.mes.disruptions.ModelManager.loadData("Edit", sOriginatorID);
 		/** *********************MES V1.5 [End]******************** */
 
     },
