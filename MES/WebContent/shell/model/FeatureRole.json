@@ -47,7 +47,7 @@
 			"Description": "",
 			"Authenticate" : "false",
 			"Roles" : [ "SAP_XMII_Developer", "SAP_XMII_User", "Everyone",
-						"!eval host('[^d].i.*airbus')" ]
+						"!eval 'SAP_XMII_Developer'" ]
 		},	{
 			"Feature" : "calendarEnabled",
 			"Description": "",
