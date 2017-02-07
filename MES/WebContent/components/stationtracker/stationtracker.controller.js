@@ -1263,51 +1263,67 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 //        return true;
 //    },
     setCriticalVisible: function(){
-//		var Flag = airbus.mes.shell.RoleManager.isAllowed(airbus.mes.shell.RoleManager.parseRoleValue("STATION_GANTT_CRITICAL"), 'V');
-//        airbus.mes.shell.RoleManager.userRoles = [];
-//        return Flag;
+//    	if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.STATION_GANTT_CRITICAL === true ){
+//    	return true;
+//    	} else { 
+//    	return false;
+//    	}
     	return true;
     },
     setBoxVisible: function(){
-//		var Flag = airbus.mes.shell.RoleManager.isAllowed(airbus.mes.shell.RoleManager.parseRoleValue("STATION_GANTT_BOXING"), 'V');
-//        airbus.mes.shell.RoleManager.userRoles = [];
-//        return Flag;
+//    	if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.STATION_GANTT_BOXING === true ){
+//    	return true;
+//    	} else { 
+//    	return false;
+//    	}
     	return true;
     },
     setGroupVisible: function(){
-//		var Flag = airbus.mes.shell.RoleManager.isAllowed(airbus.mes.shell.RoleManager.parseRoleValue("STATION_GANTT_GROUPING"), 'V');
-//        airbus.mes.shell.RoleManager.userRoles = [];
-//        return Flag;
+//    	if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.STATION_GANTT_GROUPING === true ){
+//    	return true;
+//    	} else { 
+//    	return false;
+//    	}
     	return true;
     },
     setMissingVisible: function(){
-//		var Flag = airbus.mes.shell.RoleManager.isAllowed(airbus.mes.shell.RoleManager.parseRoleValue("STATION_DRILL_MISSING"), 'V');
-//        airbus.mes.shell.RoleManager.userRoles = [];
-//        return Flag;
+//    	if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.STATION_DRILL_MISSING === true ){
+//    	return true;
+//    	} else { 
+//    	return false;
+//    	}
     	return true;
     },
     setDisruptionpVisible: function(){
-//		var Flag = airbus.mes.shell.RoleManager.isAllowed(airbus.mes.shell.RoleManager.parseRoleValue("STATION_DRILL_DISRUPTION"), 'V');
-//        airbus.mes.shell.RoleManager.userRoles = [];
-//        return Flag;
+//    	if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.STATION_DRILL_DISRUPTION === true ){
+//    	return true;
+//    	} else { 
+//    	return false;
+//    	}
     	return true;
     },
     setOSWVisible: function(){
-//		var Flag = airbus.mes.shell.RoleManager.isAllowed(airbus.mes.shell.RoleManager.parseRoleValue("STATION_DRILL_OSW"), 'V');
-//        airbus.mes.shell.RoleManager.userRoles = [];
-//        return Flag;
+//    	if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.STATION_DRILL_OSW === true ){
+//    	return true;
+//    	} else { 
+//    	return false;
+//    	}
     	return true;
     },
     setTaktVisible: function(){
-//		var Flag = airbus.mes.shell.RoleManager.isAllowed(airbus.mes.shell.RoleManager.parseRoleValue("STATION_KPI_TAKT"), 'V');
-//        airbus.mes.shell.RoleManager.userRoles = [];
-//        return Flag;
+//    	if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.STATION_KPI_TAKT === true ){
+//    	return true;
+//    	} else { 
+//    	return false;
+//    	}
     	return true;
     },
     setKPIDisruptionVisible: function(){
-//		var Flag = airbus.mes.shell.RoleManager.isAllowed(airbus.mes.shell.RoleManager.parseRoleValue("STATION_KPI_DISRUPTIONS"), 'V');
-//        airbus.mes.shell.RoleManager.userRoles = [];
-//        return Flag;
+//    	if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.STATION_KPI_DISRUPTIONS === true ){
+//    	return true;
+//    	} else { 
+//    	return false;
+//    	}
     	return true;
     }
 

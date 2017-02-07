@@ -532,22 +532,22 @@ airbus.mes.disruptions.Formatter = {
 	 * Set Edit button Enable/Disable based on Roles
 	 */
 	setEnabled : function() {
-		// var flag =
-		// airbus.mes.shell.RoleManager.isAllowed(airbus.mes.shell.RoleManager.parseRoleValue("DISRUPTION_DIS_DETAIL_EDIT"),
-		// 'V');
-		// airbus.mes.shell.RoleManager.userRoles = [];
-		// return flag;
+//    	if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.DISRUPTION_DIS_DETAIL_EDIT === true ){
+//    	return true;
+//    	} else { 
+//    	return false;
+//    	}
 		return true;
 	},
 	/**
 	 * Set ACK,Reject,Refuse,markSolved button Enable/Disable based on Roles
 	 */
 	setButtonEnabled : function() {
-		// var flag =
-		// airbus.mes.shell.RoleManager.isAllowed(airbus.mes.shell.RoleManager.parseRoleValue("DISRUPTION_DIS_DETAIL_UPDATE"),
-		// 'V');
-		// airbus.mes.shell.RoleManager.userRoles = [];
-		// return flag;
+//    	if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.DISRUPTION_DIS_DETAIL_UPDATE === true ){
+//    	return true;
+//    	} else { 
+//    	return false;
+//    	}
 		return true;
 	},
 	/*
@@ -573,22 +573,28 @@ airbus.mes.disruptions.Formatter = {
 	 */
 	setVisible: function(sKey){
 		if (sKey === "myFileUpload") {
-			//  var flag = airbus.mes.shell.RoleManager.isAllowed("WORK_DIS_PICTURE");
-			//  airbus.mes.shell.RoleManager.userRoles = [];
-			//  return flag;
+//	    	if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.WORK_DIS_PICTURE === true ){
+//	        	return true;
+//	        	} else { 
+//	        	return false;
+//	        	}
 			return true;
-		} else {
-			//  var flag = airbus.mes.shell.RoleManager.isAllowed("WORK_DIS_ATTACH_DOC");
-			//  airbus.mes.shell.RoleManager.userRoles = [];
-			//  return flag;	
+		} else {	
+//	    	if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.WORK_DIS_ATTACH_DOC === true ){
+//        	return true;
+//        	} else { 
+//        	return false;
+//        	}
 			return true;
 		}
 		return true;
 	},
-	setCloseEnabled: function(){
-		//  var flag = airbus.mes.shell.RoleManager.isAllowed("WORK_DIS_CLOSE");
-		//  airbus.mes.shell.RoleManager.userRoles = [];
-		//  return flag;		
+	setCloseEnabled: function(){	
+//    	if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.WORK_DIS_CLOSE === true ){
+//    	return true;
+//    	} else { 
+//    	return false;
+//    	}
 		return true;
 	}
 };

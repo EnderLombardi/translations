@@ -99,21 +99,27 @@ airbus.mes.shell.util.Formatter = {
 		return airbus.mes.settings.AppConfManager.getConfiguration("MES_BADGE_PIN");
 	},
 	setVisible : function(key){
-		//  var flag = airbus.mes.shell.RoleManager.isAllowed("WORK_OP_PAUSE");
-		//  airbus.mes.shell.RoleManager.userRoles = [];
-		//  return flag;
+//    	if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.WORK_OP_PAUSE === true ){
+//    	return true;
+//    	} else { 
+//    	return false;
+//    	}
       return true;
 	},
 	setLangVisible : function(){
-		//  var flag = airbus.mes.shell.RoleManager.isAllowed("PROFILE _PREF_LANG");
-		//  airbus.mes.shell.RoleManager.userRoles = [];
-		//  return flag;
+//    	if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.PROFILE_PREF_LANG === true ){
+//    	return true;
+//    	} else { 
+//    	return false;
+//    	}
 		return true;
 	},
 	setEnable : function(){
-		//  var flag = airbus.mes.shell.RoleManager.isAllowed("MES_ADMIN_SETTING");
-		//  airbus.mes.shell.RoleManager.userRoles = [];
-		//  return flag;
+//    	if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.MES_ADMIN_SETTING === true ){
+//    	return true;
+//    	} else { 
+//    	return false;
+//    	}
 		return true;
 	}
 

@@ -919,29 +919,39 @@ airbus.mes.stationtracker.util.Formatter = {
 
 	setEnabled : function(sKey) {
 		if (sKey === "Activate") {
-			//  var flag = airbus.mes.shell.RoleManager.isAllowed("WORK_OP_ACTIVATE");
-			//  airbus.mes.shell.RoleManager.userRoles = [];
-			//  return flag;
+//	    	if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.WORK_OP_ACTIVATE === true ){
+//        	return true;
+//        	} else { 
+//        	return false;
+//        	}
 			return true;
 		} else if (sKey === "Confirm") {
-			//  var flag = airbus.mes.shell.RoleManager.isAllowed("WORK_OP_PAR_CONF");
-			//  airbus.mes.shell.RoleManager.userRoles = [];
-			//  return flag;	
+//	    	if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.WORK_OP_PAR_CONF === true ){
+//        	return true;
+//        	} else { 
+//        	return false;
+//        	}
 			return true;
 		} else if (sKey === "Pause") {
-			//  var flag = airbus.mes.shell.RoleManager.isAllowed("WORK_OP_PAUSE");
-			//  airbus.mes.shell.RoleManager.userRoles = [];
-			//  return flag;
+//	    	if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.WORK_OP_PAUSE === true ){
+//        	return true;
+//        	} else { 
+//        	return false;
+//        	}
 			return true;
 		} else if (sKey === "Complete") {
-			//  var flag = airbus.mes.shell.RoleManager.isAllowed("WORK_OP_TOT_CONF");
-			//  airbus.mes.shell.RoleManager.userRoles = [];
-			//  return flag;
+//	    	if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.WORK_OP_TOT_CONF === true ){
+//        	return true;
+//        	} else { 
+//        	return false;
+//        	}
 			return true;
 		} else if (sKey === "Report Disruption") {
-			//  var flag = airbus.mes.shell.RoleManager.isAllowed("WORK_DIS_CREATE");
-			//  airbus.mes.shell.RoleManager.userRoles = [];
-			//  return flag;
+//	    	if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.WORK_DIS_CREATE === true ){
+//        	return true;
+//        	} else { 
+//        	return false;
+//        	}
 			return true;
 		}
 		return true;

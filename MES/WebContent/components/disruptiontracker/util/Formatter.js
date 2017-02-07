@@ -194,14 +194,12 @@ airbus.mes.disruptiontracker.Formatter = {
 	 * Set Roles for type of Table Column
 	 */
 	setType : function(){
-//		var Flag = airbus.mes.shell.RoleManager.isAllowed(airbus.mes.shell.RoleManager.parseRoleValue("DISRUPTION_DIS_DETAIL_CONSULT"), 'V');
-//        airbus.mes.shell.RoleManager.userRoles = [];
-//		if(Flag === true){
-//			return "Navigation"
-//		}
-//		else if(Flag === false){
-//			return "Inactive"
-//		}
+//    	if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.DISRUPTION_DIS_DETAIL_CONSULT === true ){
+//    	return "Navigation"
+//    	} else { 
+//    	return Inactive"
+//    	}
+		
 		return "Navigation"
 
 	},
@@ -210,9 +208,11 @@ airbus.mes.disruptiontracker.Formatter = {
 	 */
 
 	setVisible : function(){
-//		var Flag = airbus.mes.shell.RoleManager.isAllowed(airbus.mes.shell.RoleManager.parseRoleValue("DISRUPTION_DISRUPTION_LIST"), 'V');
-//        airbus.mes.shell.RoleManager.userRoles = [];
-//        return Flag;
+//    	if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.DISRUPTION_DISRUPTION_LIST === true ){
+//    	return true;
+//    	} else { 
+//    	return false;
+//    	}
 		return true;
 	}
 
