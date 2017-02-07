@@ -101,13 +101,12 @@ airbus.mes.shell.ModelManager = {
 		},
 
 
-		getRoles : function() {
+		getCurrentProfile : function() {
 			var rep = jQuery.ajax({
 				async : false,
-				url : this.urlModel.getProperty('urlgetroles'),
+				url : this.urlModel.getProperty('urlgetcurrentprofile'),
 				type : 'POST',
 			});
-
 			return JSON.parse(rep.responseText);
 		},
 		
@@ -115,16 +114,21 @@ airbus.mes.shell.ModelManager = {
 	        var rep = jQuery.ajax({
 	            async : false,
 	            url : this.urlModel.getProperty('urlgetrolesfromsite'), 
-	            type : 'POST',///
-	            /////
-	        });   
-			var oModel=new sap.ui.model.json.JSONModel();
-			oModel.setData(rep.responseJSON);
-			sap.ui.getCore().setModel(oModel,"AllRolesModel");
+	            type : 'POST',
+	        });
 	        return rep.responseJSON;
 	        
 	    },
-
+		
+		loadFeatureRoleModel : function(){
+			var rep = jQuery.ajax({
+				async : false,
+				url : this.urlModel.getProperty('FeatureRoleModelurl'),
+				type : 'POST',
+			});
+			return JSON.parse(rep.responseText);
+		},
+		
 		json2xml : function(o, tab) {
 			var toXml = function(v, name, ind) {
 				var m;
@@ -298,6 +302,7 @@ airbus.mes.shell.ModelManager = {
 		 // websocket is closed.
 		  console.log("Connection is closed..."); 
 		},
+		
 		/**
 	     * Permit to create new sap ui5 json model
 	     *
@@ -314,10 +319,5 @@ airbus.mes.shell.ModelManager = {
 							
 			})
 				
-		},
-		
-		loadFeatureRoleModel : function(){
-			var oViewModel = sap.ui.getCore().getModel("FeatureRoleModel");
-			oViewModel.loadData(this.urlModel.getProperty("FeatureRoleModelurl"), null, false);
 		}
 }

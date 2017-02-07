@@ -1,53 +1,41 @@
-{ "Rowsets" : { 
-	"DateCreated" : "2017-01-24T14:25:59", "Version" : "15.1 SP2 Patch 13 (Oct 6, 2016)", "StartDate" : "2017-01-24T13:25:58+0100", "EndDate" : "2017-01-24T14:25:58+0100", "CachedTime" : "", 
-	"Rowset" : [  
-	{ "Columns" : { 
-		"Column" : [ 
-		{ "Name" : "Feature", "SourceColumn" : "Feature", "Description" : "Feature", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 }, 
-		{ "Name" : "Roles", "SourceColumn" : "Roles", "Description" : "Roles", "SQLDataType" : 1, "MinRange" : 1.0, "MaxRange" : 1.0 } ] }, 
-	"Row" : [ 
-		{ "Site" : "FNZ1", "Feature" : "HOMESCREEN","Feature_Description" : "Click on screen to open","Authenticate" : "", "Roles" : "MII_MOD1684_PGL" }, 
-		{ "Site" : "FNZ1", "Feature" : "HOMESCREEN","Feature_Description" : "Click on screen to open","Authenticate" : "", "Roles" : "MII_MOD1684_UNITMANAGER" }, 
-		{ "Site" : "FNZ1", "Feature" : "HOMESCREEN","Feature_Description" : "Click on screen to open","Authenticate" : "", "Roles" : "MII_MOD1684_HOPLANT" }, 
-		{ "Site" : "FNZ1", "Feature" : "HOMESCREEN","Feature_Description" : "Click on screen to open","Authenticate" : "", "Roles" : "MII_MOD1684_QLTY" }, 
-		{ "Site" : "FNZ1", "Feature" : "HOMESCREEN","Feature_Description" : "Click on screen to open","Authenticate" : "", "Roles" : "MII_MOD1684_ADM" }, 
-		{ "Site" : "FNZ1", "Feature" : "DISRUPTION_DISRUPTION_LIST", "Authenticate" : "","Roles" : "MII_MOD1684_OPERATOR" }, 
-		{ "Site" : "FNZ1", "Feature" : "DISRUPTION_DISRUPTION_LIST", "Authenticate" : "","Roles" : "MII_MOD1684_PGL" }, 
-		{ "Site" : "FNZ1", "Feature" : "DISRUPTION_DISRUPTION_LIST","Authenticate" : "", "Roles" : "MII_MOD1684_1STLINEMANAGER" }, 
-		{ "Site" : "FNZ1", "Feature" : "DISRUPTION_DISRUPTION_LIST","Authenticate" : "", "Roles" : "MII_MOD1684_UNITMANAGER" }, 
-		{ "Site" : "FNZ1", "Feature" : "DISRUPTION_DISRUPTION_LIST", "Authenticate" : "","Roles" : "MII_MOD1684_HOCDT" }, 
-		{ "Site" : "FNZ1", "Feature" : "DISRUPTION_DISRUPTION_LIST", "Authenticate" : "","Roles" : "MII_MOD1684_HOPLANT" }, 
-		{ "Site" : "FNZ1", "Feature" : "DISRUPTION_DISRUPTION_LIST", "Authenticate" : "","Roles" : "MII_MOD1684_QLTY" }, 
-		{ "Site" : "FNZ1", "Feature" : "DISRUPTION_DISRUPTION DETAILED VIEW","Authenticate" : "", "Roles" : "MII_MOD1684_1STLINEMANAGER" }, 
-		{ "Site" : "FNZ1", "Feature" : "DISRUPTION_DISRUPTION DETAILED VIEW", "Authenticate" : "","Roles" : "MII_MOD1684_HOCDT" }, 
-		{ "Site" : "FNZ1", "Feature" : "DISRUPTION_DISRUPTION DETAILED VIEW","Authenticate" : "", "Roles" : "MII_MOD1684_QLTY" }, 
-		{ "Site" : "FNZ1", "Feature" : "DISRUPTION_DISRUPTION DETAILED VIEW_EDIT", "Authenticate" : "","Roles" : "MII_MOD1684_OPERATOR_EXT" }, 
-		{ "Site" : "FNZ1", "Feature" : "DISRUPTION_DISRUPTION DETAILED VIEW_EDIT", "Authenticate" : "","Roles" : "MII_MOD1684_1STLINEMANAGER" }, 
-		{ "Site" : "FNZ1", "Feature" : "DISRUPTION_DISRUPTION DETAILED VIEW_EDIT", "Authenticate" : "","Roles" : "MII_MOD1684_HOCDT" }, 
-		{ "Site" : "FNZ1", "Feature" : "DISRUPTION_DISRUPTION DETAILED VIEW_EDIT", "Authenticate" : "","Roles" : "MII_MOD1684_QLTY" }, 
-		{ "Site" : "FNZ1", "Feature" : "DISRUPTION_DISRUPTION DETAILED VIEW_UPDATE","Authenticate" : "", "Roles" : "MII_MOD1684_OPERATOR_EXT" }, 
-		{ "Site" : "FNZ1", "Feature" : "DISRUPTION_DISRUPTION DETAILED VIEW_UPDATE","Authenticate" : "", "Roles" : "MII_MOD1684_UNITMANAGER" }, 
-		{ "Site" : "FNZ1", "Feature" : "DISRUPTION_DISRUPTION DETAILED VIEW_UPDATE", "Authenticate" : "","Roles" : "MII_MOD1684_HOCDT" }, 
-		{ "Site" : "FNZ1", "Feature" : "DISRUPTION_DISRUPTION DETAILED VIEW_ESCALATE", "Authenticate" : "","Roles" : "MII_MOD1684_1STLINEMANAGER" }, 
-		{ "Site" : "FNZ1", "Feature" : "DISRUPTION_DISRUPTION DETAILED VIEW_ESCALATE", "Authenticate" : "","Roles" : "MII_MOD1684_UNITMANAGER" }, 
-		{ "Site" : "FNZ1", "Feature" : "DISRUPTION_DISRUPTION DETAILED VIEW_ESCALATE","Authenticate" : "", "Roles" : "MII_MOD1684_HOPLANT" }, 
-		{ "Site" : "FNZ1", "Feature" : "DISRUPTION_DISRUPTION DETAILED VIEW_ESCALATE","Authenticate" : "", "Roles" : "MII_MOD1684_QLTY" }, 
-		{ "Site" : "FNZ1", "Feature" : "DISRUPTION_DISRUPTION DETAILED VIEW","Authenticate" : "", "Roles" : "MII_MOD1684_OPERATOR" }, 
-		{ "Site" : "FNZ1", "Feature" : "HOMESCREEN","Feature_Description" : "Click on screen to open","Authenticate" : "", "Roles" : "MII_MOD1684_OPERATOR" }, 
-		{ "Site" : "FNZ1", "Feature" : "HOMESCREEN","Feature_Description" : "Click on screen to open","Authenticate" : "", "Roles" : "MII_MOD1684_1STLINEMANAGER" }, 
-		{ "Site" : "FNZ1", "Feature" : "DISRUPTION_DISRUPTION DETAILED VIEW","Authenticate" : "", "Roles" : "MII_MOD1684_PGL" }, 
-		{ "Site" : "FNZ1", "Feature" : "DISRUPTION_DISRUPTION DETAILED VIEW","Authenticate" : "", "Roles" : "MII_MOD1684_UNITMANAGER" }, 
-		{ "Site" : "FNZ1", "Feature" : "DISRUPTION_DISRUPTION DETAILED VIEW", "Authenticate" : "","Roles" : "MII_MOD1684_HOPLANT" }, 
-		{ "Site" : "FNZ1", "Feature" : "DISRUPTION_DISRUPTION DETAILED VIEW_EDIT", "Authenticate" : "","Roles" : "MII_MOD1684_PGL" }, 
-		{ "Site" : "FNZ1", "Feature" : "DISRUPTION_DISRUPTION DETAILED VIEW_EDIT", "Authenticate" : "","Roles" : "MII_MOD1684_UNITMANAGER" }, 
-		{ "Site" : "FNZ1", "Feature" : "DISRUPTION_DISRUPTION DETAILED VIEW_EDIT", "Authenticate" : "","Roles" : "MII_MOD1684_HOPLANT" }, 
-		{ "Site" : "FNZ1", "Feature" : "DISRUPTION_DISRUPTION DETAILED VIEW_UPDATE","Authenticate" : "", "Roles" : "MII_MOD1684_PGL" }, 
-		{ "Site" : "FNZ1", "Feature" : "DISRUPTION_DISRUPTION DETAILED VIEW_UPDATE", "Authenticate" : "","Roles" : "MII_MOD1684_1STLINEMANAGER" }, 
-		{ "Site" : "FNZ1", "Feature" : "DISRUPTION_DISRUPTION DETAILED VIEW_UPDATE","Authenticate" : "", "Roles" : "MII_MOD1684_HOPLANT" }, 
-		{ "Site" : "FNZ1", "Feature" : "DISRUPTION_DISRUPTION DETAILED VIEW_UPDATE", "Authenticate" : "","Roles" : "MII_MOD1684_QLTY" }, 
-		{ "Site" : "FNZ1", "Feature" : "DISRUPTION_DISRUPTION DETAILED VIEW_ESCALATE","Authenticate" : "", "Roles" : "MII_MOD1684_PGL" }, 
-		{ "Site" : "FNZ1", "Feature" : "DISRUPTION_DISRUPTION DETAILED VIEW_ESCALATE", "Authenticate" : "","Roles" : "MII_MOD1684_HOCDT" }
-		]
-		 } ]
-	 }
- }
+{ "Roles":
+	[
+		{
+			"Feature" : "homescreen",
+			"Description": "",
+			"Authenticate" : "false",
+			"Roles" : [ "SAP_XMII_Developer", "SAP_XMII_User", "Everyone",
+						"!eval host('[^d].i.*airbus')" ]
+		}, {
+			"Feature" : "disruptionDisplayList",
+			"Description": "",
+			"Authenticate" : "false",
+			"Roles" : [ "SAP_XMII_Developer", "SAP_XMII_User", "Everyone",
+						"!eval host('[^d].i.*airbus')" ]
+		}, {
+			"Feature" : "disruptionDetailedView",
+			"Description": "",
+			"Authenticate" : "false",
+			"Roles" : [ "SAP_XMII_Developer", "SAP_XMII_User", "Everyone",
+						"!eval host('[^d].i.*airbus')" , "!eval host('localhost')||hasRole('Everyone')&&!queryParam('url_config','local')" ]
+		}, {
+			"Feature" : "disruptionEdit",
+			"Description": "",
+			"Authenticate" : "false",
+			"Roles" : [ "SAP_XMII_Developer", "SAP_XMII_User", "Everyone",
+						"!eval host('[^d].i.*airbus')" ]
+		}, {
+			"Feature" : "disruptionEscalate",
+			"Description": "",
+			"Authenticate" : "false",
+			"Roles" : [ "SAP_XMII_Developer", "SAP_XMII_User", "Everyone",
+						"!eval host('[^d].i.*airbus')" ]
+		}, {
+			"Feature" : "stationTrackerEnabled",
+			"Description": "",
+			"Authenticate" : "false",
+			"Roles" : [ "SAP_XMII_Developer", "SAP_XMII_User", "Everyone",
+						"!eval host('[^d].i.*airbus')" ]
+		}
+	]
+}

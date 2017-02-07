@@ -20,7 +20,7 @@
 							       	<ToolbarSpacer />	                   
 									<Button id="refreshTime"  		type="Transparent"									icon="sap-icon://refresh" press="refreshbtn" text="" visible="false" enabled="false" ></Button>
 									<Button id="localDELog" press="logOut" text="{ShellI18n>Cookie}" type="Transparent"></Button>                      
-		                         	<Select id="SelectLanguage" class="sapUiTinyMarginBeginEnd" change="onChangeLanguage"> 
+		                         	<Select id="SelectLanguage" class="sapUiTinyMarginBeginEnd" enabled="{Profile>/connectedUser/permissions/homescreen}" change="onChangeLanguage"> 
 			                           	<core:Item text="English" key="en"/>
 			                           	<core:Item text="Deutsch" key="de"/>
 			                           	<core:Item text="Français" key="fr"/>

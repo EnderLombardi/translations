@@ -1,234 +1,224 @@
 "use strict";
 jQuery.sap.declare("airbus.mes.shell.RoleManager")
 airbus.mes.shell.RoleManager = {
-
-	init : function(core) {
-		// Load all the roles based on site
-		airbus.mes.shell.ModelManager.getRolesForSite();
-		airbus.mes.shell.RoleManager.parseProfile();
-
-		airbus.mes.shell.RoleManager.parseRoleValue();
+	
+	profile: {
+		connectedUser: {},
+		identifiedUser: {}
 	},
 
-	userProfile : {},
-	Profile : {},
-	features : [],
-	positiveRoles : {},
-	negativeRoles : {},
-	funcRoles : [],
-	techRoles : [],
-	userFeatureRoles : [],
-	usertechRoles : [],
-	featureName : [],
-	flag : [],
-	aflag : [],
+	features: {},
+
 	queryParams : jQuery.sap.getUriParameters(),
-
 	
 	/**
-	 * check if the current user has the right to access a particular feature
+	 * Initialize Role Manager.
 	 * 
-	 * @param {String}
-	 *            feature : Feature
-	 * @returns {Boolean} aFlagVal : true or false
+	 * @param {sap.ui.Core} core: core app.
 	 */
-	isAllowed : function(feature) {
-		// var dest = "";
-		// switch (window.location.hostname) {
-		// case "localhost":
-		// dest = "local";
-		// break;
-		// default:
-		// dest = "airbus";
-		// break;
-		// }
-		// if (this.queryParams.get("url_config")) {
-		// dest = this.queryParams.get("url_config");
-		// }
-		// if (dest == "local")
-		// return true;
+	init : function(core) {
 		
-		var iLength = airbus.mes.shell.RoleManager.Profile.connectedUser.permission.length;
-		for (var i = 0; i < iLength; i++) {
-			//if condition would only run for the particular feature which is passed as an input parameter.
-			if (airbus.mes.shell.RoleManager.features[i][feature]){
-				//fetching the positive funcRoles and techRoles
-			var aPositivefuncRoles = airbus.mes.shell.RoleManager.features[i][feature][0].positiveRoles.funcRoles[0];
-			var aPositivetechRoles = airbus.mes.shell.RoleManager.features[i][feature][0].positiveRoles.techRoles[0];
-				//fetching the negative funcRoles and techRoles
-			var aNegativefuncRoles = airbus.mes.shell.RoleManager.features[i][feature][0].negativeRoles.funcRoles[0];
-			var aNegativetechRoles = airbus.mes.shell.RoleManager.features[i][feature][0].negativeRoles.techRoles[0];
-				//merging both positive & negative funcRoles and techRoles into one 
-				//aPositiveRoles array and aNegativeRoles array
-			var aPositiveRoles = aPositivefuncRoles.concat(aPositivetechRoles);
-			var aNegativeRoles = aNegativefuncRoles.concat(aNegativetechRoles);
-				//Roles based on the logged in user
-			var aIllumLoginRoles = airbus.mes.shell.RoleManager.Profile.connectedUser.IllumLoginRoles;
-				
-				//checking if at least one of the array element from aPositiveRoles is present in aIllumLoginRoles
-				//if it matches, true is stored in the array flag[]
-				//if it doesn't matches, false is stored in the array flag[]
-			for (var q = 0; q < aPositiveRoles.length; q++) {
-				if (aIllumLoginRoles.indexOf(aPositiveRoles[q]) > -1) {
-					airbus.mes.shell.RoleManager.flag[q] = "true"
-				} else {
-					airbus.mes.shell.RoleManager.flag[q] = "false"
-				}
-			}
-				//checking if at least one of the array element from aNegativeRoles is present in aIllumLoginRoles
-				//if it matches, true is stored in the array aflag[]
-				//if it doesn't matches, false is stored in the array aflag[]
-			for (var w = 0; w < aNegativeRoles.length; w++) {
-				if (aIllumLoginRoles.indexOf(aNegativeRoles[w]) > -1) {
-					airbus.mes.shell.RoleManager.aflag[w] = "true"
-				} else {
-					airbus.mes.shell.RoleManager.aflag[w] = "false"
-				}
-			}
-			
-			//checking if an element "true" exist in flag[] and aflag[]
-			var iVal = (airbus.mes.shell.RoleManager.flag.indexOf("true") > 0) & !(airbus.mes.shell.RoleManager.aflag.indexOf("true") > 0);
-			var bVal = "true"
-			if (iVal === 1) {
-				bVal = "true";
-			} else if (iVal === 0) {
-				bVal = "false"
-			}
-			//if bVal is true, then corresponding feature value is set to true, and vice versa.
-			if (airbus.mes.shell.RoleManager.Profile.connectedUser.permission[i][feature] === "false"
-				|| airbus.mes.shell.RoleManager.Profile.connectedUser.permission[i][feature] === "true") {
-				airbus.mes.shell.RoleManager.Profile.connectedUser.permission[i][feature] = bVal;
-			}
-			
-		}
-		}
+		// Featch feature list
+		this.fetchTechnicalFeatures();
+		this.fetchFunctionnalFeatures();
 		
-		//For a particular logged in user, the feature is checked, accordingly aFlagVal is returned.
-		var iPermissionLength = airbus.mes.shell.RoleManager.Profile.connectedUser.permission.length;
-		var aFlagVal;
-		for (var n = 0; n < iPermissionLength; n++) {
-			if (airbus.mes.shell.RoleManager.features[n][feature]){
-		if(airbus.mes.shell.RoleManager.Profile.connectedUser.permission[n][feature] === "true")	{
-			aFlagVal =  true;
-		}else{
-			aFlagVal = false;
-			}
+		// Fetch connected user profile
+		this.profile.connectedUser = this.parseConnectedProfile();
+		this.profile.connectedUser.permissions = this.computePermissions(this.profile.connectedUser.roles);
 		
-		}
-		}
-		return aFlagVal;
+		// Initialize identified user with the same values as connected user
+		this.profile.identifiedUser = this.profile.connectedUser;
 		
+		// Share profile in Profile
+		airbus.mes.shell.ModelManager.createJsonModel(core, ["Profile"])
+		core.getModel("Profile").setData(this.profile);
+		core.getModel("Profile").refresh(true);
 	},
-
 	
 	/**
-	 * Set all information about current user log in userProfile variable
-	 * 
+	 * Fetch Technical Roles from the JSON Model and then parse the list of roles
+	 * to populate 'this.features' object with each feature and the list of positive
+	 * and negative roles associated.
 	 */
-	parseProfile : function() {
-		var profile = airbus.mes.shell.ModelManager.getRoles().Rowsets.Rowset[0].Row;
-		for (var i = 0; i < profile.length; i++) {
-			airbus.mes.shell.RoleManager.userProfile[profile[i].Name] = profile[i].Value;
-		}
-
-		airbus.mes.shell.RoleManager.userProfile.IllumLoginRoles = airbus.mes.shell.RoleManager.userProfile.IllumLoginRoles.replace(/'/g, "").split(",");
-
-		var sRoles = sap.ui.getCore().getModel("AllRolesModel").oData.Rowsets.Rowset[0].Row;
-		if (sRoles) {
-			for (var k = 0; k < sRoles.length; k++) {
-				// Getting all the features from the model
-				airbus.mes.shell.RoleManager.featureName[k] = sRoles[k].Feature;
-			}
-		}
-
-		// Getting distinct Feature Name from the Model
-		var aFeatureList = airbus.mes.shell.RoleManager.featureName;
-		var aDistinctFeature = airbus.mes.shell.RoleManager.getUnique(aFeatureList);
-		airbus.mes.shell.RoleManager.userProfile.permission = [];
-		// Updating the Feature name in the user Profile
-		for (var j = 0; j < aDistinctFeature.length; j++) {
-			var abc = aDistinctFeature[j].valueOf().toString();
-			var arr = {};
-			arr[abc] = "false";
-			airbus.mes.shell.RoleManager.userProfile.permission.push(arr);
-		}
-		// Setting the data for connected user and identified user
-		airbus.mes.shell.RoleManager.Profile = {
-			connectedUser : airbus.mes.shell.RoleManager.userProfile,
-			identifiedUser : airbus.mes.shell.RoleManager.userProfile
-		};
-
-	},
-	/**
-	 * function to get unique records from an array
-	 * 
-	 * @param {Array}
-	 *            inputArray : array of duplicate features
-	 * @returns {Array} outputArray : distinct features
-	 */
-	getUnique : function(inputArray) {
-		var outputArray = [];
-
-		for (var i = 0; i < inputArray.length; i++) {
-			if ((jQuery.inArray(inputArray[i], outputArray)) == -1) {
-				outputArray.push(inputArray[i]);
-			}
-		}
-		return outputArray;
-	},
-
-	/**
-	 * Distinct features with Positive Roles and Negative Roles are store in features array 
-	 */
-	parseRoleValue : function(sFeature) {
-		var sRoles = sap.ui.getCore().getModel("AllRolesModel").oData.Rowsets.Rowset[0].Row;
-		// temporary 'if' till this table doses not have data.// can be removed
-		// once table has data. does no harm anyway//vaibhav
-		if (sRoles) {
-			for (var i = 0; i < sRoles.length; i++) {
-				// if (sRoles[i].Feature === sFeature) {
-				airbus.mes.shell.RoleManager.userFeatureRoles[i] = sRoles[i].Roles;
-				// }
-			}
-		}
-
-		var aRoles = sap.ui.getCore().getModel("FeatureRoleModel").oData.Rowsets.Rowset[0].Row;
-
-		if (aRoles) {
-			for (var p = 0; p < aRoles.length; p++) {
-				airbus.mes.shell.RoleManager.usertechRoles[p] = aRoles[p].Roles;
-			}
-		}
-
-		// Roles hard coded for particular features so that everyone has access
-		// to every feature. Has to be removed.
-		airbus.mes.shell.RoleManager.userFeatureRoles.push("SAP_XMII_User", "Everyone");
-		airbus.mes.shell.RoleManager.funcRoles.push(airbus.mes.shell.RoleManager.userFeatureRoles);
-		airbus.mes.shell.RoleManager.techRoles.push(airbus.mes.shell.RoleManager.usertechRoles);
-
-		airbus.mes.shell.RoleManager.positiveRoles = ({
-			funcRoles : airbus.mes.shell.RoleManager.funcRoles,
-			techRoles : airbus.mes.shell.RoleManager.techRoles
-		});
-		airbus.mes.shell.RoleManager.negativeRoles = ({
-			funcRoles : airbus.mes.shell.RoleManager.funcRoles,
-			techRoles : airbus.mes.shell.RoleManager.techRoles
-		});
-		//All the feature are store in aFeatureList
-		var aFeatureList = airbus.mes.shell.RoleManager.featureName;
-		//All Distinct features are stored in aDistinctFeature
-		var aDistinctFeature = airbus.mes.shell.RoleManager.getUnique(aFeatureList);
+	fetchTechnicalFeatures: function() {
+		var roleModel = airbus.mes.shell.ModelManager.loadFeatureRoleModel();
+		var roleTable = jQuery.sap.getObject("Roles", undefined, roleModel) || [];
 		
-		//All Distinct features with their respective Positive Roles and Negative Roles are store in features array
-		for (var j = 0; j < aDistinctFeature.length; j++) {
-			var abc = aDistinctFeature[j].valueOf().toString();
-			var arr = {};
-			arr[abc] = [ {
-				positiveRoles : airbus.mes.shell.RoleManager.positiveRoles,
-				negativeRoles : airbus.mes.shell.RoleManager.negativeRoles
-			} ];
-			airbus.mes.shell.RoleManager.features.push(arr);
+		function addRoles(feature, _role) {
+			var attr = _role[0] == '!' ? 'negativeRoles' : 'positiveRoles';
+			var role = _role[0] == '!' ? _role.substring(1) : _role;
+			feature[attr].techRoles.push(role);
 		}
+		
+		function collectRoles(col, rec) {
+			col[rec.Feature] = col[rec.Feature] || { positiveRoles: { funcRoles: [], techRoles: [] },
+													 negativeRoles: { funcRoles: [], techRoles: [] } };
+			rec.Roles.forEach(addRoles.bind(this, col[rec.Feature]));
+			return col;
+		}
+		
+		this.features = roleTable.reduce(collectRoles, {}); // Populate initially
+	},
+	
+	/**
+	 * Fetch Functionnal Roles from the Customizing Table and then parse the list of roles
+	 * to populate 'this.features' object with each feature and the list of positive
+	 * and negative roles associated.
+	 */
+	fetchFunctionnalFeatures: function() {
+		var roleModel = airbus.mes.shell.ModelManager.getRolesForSite();
+		var roleTable = jQuery.sap.getObject("Rowsets.Rowset.0.Row", undefined, roleModel) || [];
+		
+		function collectRoles(col, rec) {
+			col[rec.Feature] = col[rec.Feature] || { positiveRoles: { funcRoles: [], techRoles: [] },
+													 negativeRoles: { funcRoles: [], techRoles: [] } };
+			var attr = rec.Roles[0] == '!' ? 'negativeRoles' : 'positiveRoles';
+			var role = rec.Roles[0] == '!' ? rec.Roles.substring(1) : rec.Roles;
+			col[rec.Feature][attr].funcRoles.push(role);
+			return col;
+		}
+		
+		this.features = roleTable.reduce(collectRoles, this.features); // Augment initially populated list
+	},
+	
+
+	/**
+	 * Fetch profile of current user and parse it as a user profile + role mapping.
+	 * 
+	 * @return {Map} User Profile as key => value map.
+	 */
+	parseConnectedProfile: function() {
+		var profileModel = airbus.mes.shell.ModelManager.getCurrentProfile();
+		var profile = jQuery.sap.getObject("Rowsets.Rowset.0.Row", undefined, profileModel) || [];
+		
+		var userProfile = profile.reduce(function(col, rec) { col[rec.Name] = rec.Value; return col; }, {});
+		userProfile.roles = userProfile.IllumLoginRoles.replace(/'/g, "").split(",");
+		return userProfile;
+	},
+	
+	/**
+	 * Compute permissions associated to this role list.
+	 * 
+	 * @param {Array} roles: list of roles
+	 * @return {Map} permission => allowed? mapping
+	 */
+	computePermissions: function(roles) {
+		var roleMap = this.listToMap(roles, true);
+		var allowed = this.isAllowed.bind(this, roleMap);
+		
+		function permToAllowed(perms, feature) {
+			perms[feature] = allowed(feature);
+			return perms;
+		}
+		
+		return Object.keys(this.features).reduce(permToAllowed, {});
+	},
+	
+	/**
+	 * Is the role map given allowed for the requested feature.
+	 * The role map can be computed from the (identified|connected) user's
+	 * role with the listToMap converter.
+	 * 
+	 * @param {Map} userRoleMap: role map of user
+	 * @param {String} featureName: feature name
+	 * @return {Boolean} allowed?
+	 */
+	isAllowed: function(userRoleMap, featureName) {
+		var feature = this.features[featureName];
+		var oneOf = this.hasOneOf.bind(this, userRoleMap);
+		return !( oneOf(feature.negativeRoles.funcRoles) || oneOf(feature.negativeRoles.techRoles) )
+			&& ( oneOf(feature.positiveRoles.funcRoles) || oneOf(feature.positiveRoles.techRoles) );
+	},
+	
+	/**
+	 * Check if the provided list of roles contain any element
+	 * which is valid (with regard to the given role map).
+	 * 
+	 * @param {Map} roleMap: role map associated to a user profile
+	 * @param {Array} roles: list of roles to check
+	 * @return {Boolean} one of the role is valid?
+	 */
+	hasOneOf: function(roleMap, roles) {
+		var checkRole = this.isValidRole.bind(this);
+		return roles.some(function(r) { return checkRole(r, roleMap); });
+	},
+	
+	/**
+	 * Convert an Array<String> to a Map<String, Any>.
+	 * Each element of the array is used as a key of the newly
+	 * created map and all the map values are set to the provided
+	 * value.
+	 * 
+	 * @param {Array} list: the list to convert
+	 * @param {Any} value: the default's map values
+	 * @return {Map} a key => value map
+	 */
+	listToMap: function(list, value) {
+		return list.reduce(function(map, el) { map[el] = value; return map; }, {});
+	},
+	
+	/**
+	 * Check if the role is valid with regard to the
+	 * provided role map.
+	 * 
+	 * @param {String} role: the role
+	 * @param {Map} roleMap: role map of user profile
+	 * @return {Boolean} validity of role 
+	 */
+	isValidRole: function(role, roleMap) {
+		if (role.startsWith('eval ')) {
+			return this.evaluate(role.substring(5), roleMap);
+		} else {
+			return Boolean(roleMap[role]);	
+		}
+	},
+	
+	/** Evaluation context for complex expressions. */
+	evaluation: {
+		
+		roleMap: {},
+		
+		host: function(pattern) {
+			var regex = new RegExp(pattern);
+			return regex.test(window.location.hostname);
+		},
+		
+		hasRole: function(role) {
+			return Boolean(this.roleMap[role]);
+		},
+
+		queryParam: function(param, value) {
+			return airbus.mes.shell.RoleManager.queryParams.get(param) == value;
+		}
+	
+	},
+	
+	/**
+	 * Evaluate an expression in the context of RoleManager.evaluation
+	 * (i.e. all attributes and methods of RoleManager.evaluation are
+	 * available either as toplevel in expr or in this for inner
+	 * functions).
+	 * 
+	 *  @param {String} expr: an expression to evaluate
+	 *  @param {Map} roleMap: the role map
+	 *  @return {Boolean} result of the evaluation
+	 */
+	evaluate: function(expr, roleMap) {
+		var res = false;
+		var code = "";
+		this.evaluation.roleMap = roleMap;
+		for (var key in this.evaluation) {
+			if (this.evaluation.hasOwnProperty(key)) {
+				if (typeof this.evaluation[key] === "function") {
+					code += 'var ' + key + ' = this.evaluation.' + key + '.bind(this.evaluation);';
+				} else {
+					code += 'var ' + key + ' = this.evaluation.' + key + ';';
+				}
+			}
+		}
+		code += 'res = ' + expr + ';';
+		eval(code);
+		return Boolean(res);
 	}
-
+	
 };
