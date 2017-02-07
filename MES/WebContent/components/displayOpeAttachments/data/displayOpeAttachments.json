@@ -45,13 +45,6 @@
                 },
                 "Row": [
                     {
-                        "workInstruction": "AOT-902156999-M5-myGantt",
-                        "docTypeDescription": "AOT : description",
-                        "revision": "A",
-                        "descriptionWI": "Page one of Airbus Gantt",
-                        "URL": "http://doc.content.airbus.corp/AOT-902156999-M5-myGantt.pdf"
-                    },
-                    {
                         "workInstruction": "SOI-123456789-P1-myForecast",
                         "docTypeDescription": "Description of SOI",
                         "revision": "A",
@@ -73,13 +66,6 @@
                         "URL": "http://doc.content.airbus.corp/POC-9014599-M5-SmallPOC.pdf"
                     },
                     {
-                        "workInstruction": "AOT-901234599-M5-shift",
-                        "docTypeDescription": "AOT : description",
-                        "revision": "O",
-                        "descriptionWI": "A shift",
-                        "URL": "http://doc.content.airbus.corp/AOT-901234599-M5-shift.pdf"
-                    },
-                    {
                         "workInstruction": "POC-123010156-P1-SmallPOC",
                         "docTypeDescription": "POC_description",
                         "revision": "C",
@@ -94,11 +80,11 @@
                         "URL": "http://doc.content.airbus.corp/SOI-123123456-P1-myForecastv9.pdf"
                     },
                     {
-                        "workInstruction": "AIPI-157898456-P2-myTextFile",
-                        "docTypeDescription": "AIPI files are : description",
+                        "workInstruction": "APDF-157898456-P2-OrimiPdftest",
+                        "docTypeDescription": "APDF files are PDF.",
                         "revision": "B",
-                        "descriptionWI": "It's a text file",
-                        "URL": "http://doc.content.airbus.corp/AIPI-157898456-P2-myTextFile.pdf"
+                        "descriptionWI": "Basic PDF to test",
+                        "URL": "http://www.orimi.com/pdf-test.pdf"
                     },
                     {
                         "workInstruction": "POC-123123456-P1-SmallPOC",
@@ -106,6 +92,13 @@
                         "revision": "B",
                         "descriptionWI": "Forecast of new project",
                         "URL": "http://doc.content.airbus.corp/POC-123123456-P1-SmallPOC.pdf"
+                    },
+                    {
+                        "workInstruction": "AZIP-157898456-P2-thinkbroadbandMP3",
+                        "docTypeDescription": "ZIP files",
+                        "revision": "A",
+                        "descriptionWI": "Small ZIP to test from thinkbroadband",
+                        "URL": "http://ipv4.download.thinkbroadband.com/20MB.zip"
                     },
                     {
                         "workInstruction": "POC-901234599-M5-SmallPOC",
@@ -157,25 +150,25 @@
                         "URL": "http://doc.content.airbus.corp/POD-901234599-M5-SmallPOC.pdf"
                     },
                     {
-                        "workInstruction": "AOS-901234599-M5-shift",
-                        "docTypeDescription": "AOS : description",
+                        "workInstruction": "AAUDIO-901234599-M5-Sample audio",
+                        "docTypeDescription": "MP3 files",
                         "revision": "P",
-                        "descriptionWI": "A shift",
-                        "URL": "http://doc.content.airbus.corp/AOS-901234599-M5-shift.pdf"
+                        "descriptionWI": "MP3 sample from All things audio",
+                        "URL": "https://allthingsaudio.wikispaces.com/file/view/05%20Piano_Work_02.mp3/504710292/05%20Piano_Work_02.mp3"
                     },
                     {
-                        "workInstruction": "AOW-457823456-M5-myTab",
-                        "docTypeDescription": "AOW : description",
+                        "workInstruction": "TAOW-457823456-M5-myTab",
+                        "docTypeDescription": "TAOW : description",
                         "revision": "A",
                         "descriptionWI": "Tab",
-                        "URL": "http://doc.content.airbus.corp/AOW-457823456-M5-myTab.pdf"
+                        "URL": "http://doc.content.airbus.corp/TAOW-457823456-M5-myTab.pdf"
                     },
                     {
-                        "workInstruction": "AIU-157898456-P2-myTextFile",
-                        "docTypeDescription": "AIU files are : description",
+                        "workInstruction": "APIC-157898456-P2-Snake river jpg",
+                        "docTypeDescription": "Pictures",
                         "revision": "B",
-                        "descriptionWI": "It's a text file",
-                        "URL": "http://doc.content.airbus.corp/AIU-157898456-P2-myTextFile.pdf"
+                        "descriptionWI": "Snake river picture",
+                        "URL": "https://upload.wikimedia.org/wikipedia/commons/2/2d/Snake_River_%285mb%29.jpg"
                     }
                 ]
             }

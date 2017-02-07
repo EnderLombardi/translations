@@ -4,6 +4,7 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 
 	firstVisibleRow: 0, //first row displayed (it changes on scroll)
 	popUrl: null,
+	$idown: null,
 
 	onAfterRendering: function () {
 		this.init();
@@ -377,6 +378,35 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 	},
 
 	downloadDocument: function () {
+		//If in Chrome or Safari - download via virtual link click
+		//Creating new link node.
+		var sUrl = airbus.mes.displayOpeAttachments.oView.oController.popUrl;
+		var link = document.createElement('a');
+		link.href = sUrl;
+		link.setAttribute('target', '_blank');
+
+		if (link.download !== undefined) {
+			//Set HTML5 download attribute. This will prevent file from opening if supported.
+			var fileName = sUrl.substring(sUrl.lastIndexOf('/') + 1, sUrl.length);
+			link.download = fileName;
+		}
+
+		//Dispatching click event.
+		if (document.createEvent) {
+			var e = document.createEvent('MouseEvents');
+			e.initEvent('click', true, true);
+			link.dispatchEvent(e);
+			return true;
+		}
+
+		// Force file download (whether supported by server).
+		if (sUrl.indexOf('?') === -1) {
+			sUrl += '?download';
+		}
+
+		window.open(sUrl, '_blank');
+		return true;
+
 		console.log(airbus.mes.displayOpeAttachments.oView.oController.popUrl);
 	},
 
