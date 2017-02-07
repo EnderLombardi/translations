@@ -146,13 +146,6 @@ return true;
 //                || airbus.mes.shell.RoleManager.isAllowed('MII_MOD1684_HOOPE')
 //                || airbus.mes.shell.RoleManager.isAllowed('MII_MOD1684_MFTEAM');
     	return true;
-    },
-    displayImage : function() {
-        return airbus.mes.settings.AppConfManager.getConfiguration("MES_PHOTO_DISPLAY");
-    },
-    selectImageToDisplay : function(userId){
-        var src = airbus.mes.shell.UserImageManager.getUserImage(this.sId, userId);
-        return src;
     }
 
 };

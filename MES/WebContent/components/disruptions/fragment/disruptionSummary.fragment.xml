@@ -26,11 +26,12 @@
 					<Text text="closed" />
 				</HBox>
 				<HBox class=" sapUiSmallMarginTop sapUiTinyMarginBegin">
-				<Image
-					src="https://dmiswde0.eu.airbus.corp/irj/go/km/docs/documents/Public%20Documents/Photos/NG000524.jpg"
-					class="setImage " width="100%">
-				</Image>
-				<Text text="{i18nModel>issuedBy} R.Bouvard" class=" sapUiSmallMarginBegin">
+				<Image class="ylabelUserImage setImage" width="100%"
+												visible="{ path : 'DisruptionDetailModel>OriginatorID', formatter : 'airbus.mes.shell.UserImageManager.displayImage' }"
+												error = "{ path : 'DisruptionDetailModel>OriginatorID', formatter : 'airbus.mes.shell.UserImageManager.getErrorUserImage' }"
+												src="{ path : 'DisruptionDetailModel>OriginatorID', formatter : 'airbus.mes.shell.UserImageManager.selectImageToDisplay' }"
+												></Image>
+				<Text text="{i18nModel>issuedBy} {DisruptionDetailModel>OriginatorName}" class=" sapUiSmallMarginBegin">
 				</Text>
 				<layoutData>
 					<l:GridData span="L12 M8 S8" />
@@ -38,11 +39,12 @@
 			</HBox>
 
 			<HBox class="sapUiSmallMarginTop sapUiTinyMarginBegin">
-				<Image
-					src="https://dmiswde0.eu.airbus.corp/irj/go/km/docs/documents/Public%20Documents/Photos/NG1FCF2.jpg"
-					class="setImage" width="100%">
-				</Image>
-				<Text text="{i18nModel>assignedTo} N.Simond" class="sapUiSmallMarginBegin">
+				<Image class="ylabelUserImage setImage" width="100%"
+												visible="{ path : 'DisruptionDetailModel>ResolverID', formatter : 'airbus.mes.shell.UserImageManager.displayImage' }"
+												error = "{ path : 'DisruptionDetailModel>ResolverID', formatter : 'airbus.mes.shell.UserImageManager.getErrorUserImage' }"
+												src="{ path : 'DisruptionDetailModel>ResolverID', formatter : 'airbus.mes.shell.UserImageManager.selectImageToDisplay' }"
+												></Image>
+				<Text text="{i18nModel>assignedTo} {DisruptionDetailModel>ResolverName}" class="sapUiSmallMarginBegin">
 				</Text>
 				<layoutData>
 					<l:GridData span="L6 M8 S8" />

@@ -85,13 +85,12 @@
 		</Panel>
 
 
-		<ui:Table id="disruptionsTable"  
-			rows="{ path: 'disruptionsTrackerModel>/Rowsets/Rowset/0/Row' }" 
-			selectionMode="MultiToggle"
+		<ui:Table id="disruptionsTable" enableCellFilter="true" showNoData="false" selectionMode="Single" selectionBehavior="RowOnly"
+			rows="{ path: 'disruptionsTrackerModel>/Rowsets/Rowset/0/Row' }"
 			visible="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setVisible'}" cellClick="onTableClick">
 
 			<ui:columns>
-				<ui:Column id="operationCol">
+				<ui:Column id="operationCol" >
 					<Label text="{disruptiontrackerI18n>operation}" />
 					<ui:template>
 						<Text
@@ -99,7 +98,7 @@
 					</ui:template>
 				</ui:Column>
 				
-				<ui:Column id="gravityCol">
+				<ui:Column id="gravityCol" filterProperty="Gravity">
 					<Label text="{disruptiontrackerI18n>gravity}" />
 					<ui:template>
 						<HBox>
@@ -113,7 +112,7 @@
 					</ui:template>
 				</ui:Column>
 				
-				<ui:Column id="statusCol">
+				<ui:Column id="statusCol" filterProperty="Status">
 					<Label text="{disruptiontrackerI18n>status}" />
 					<ui:template>
 						<Text
@@ -121,14 +120,14 @@
 					</ui:template>
 				</ui:Column>
 				
-				<ui:Column id="categoryCol">
+				<ui:Column id="categoryCol" filterProperty="Category">
 					<Label text="{disruptiontrackerI18n>category}" />
 					<ui:template>
 						<Text text="{disruptionsTrackerModel>Category}" />						
 					</ui:template>
 				</ui:Column>
 				
-				<ui:Column id="reasonCol">
+				<ui:Column id="reasonCol" filterProperty="Reason">
 					<Label text="{disruptiontrackerI18n>reason}" />
 					<ui:template>
 						<Text text="{disruptionsTrackerModel>Reason}" />
@@ -173,7 +172,7 @@
 					</ui:template>
 				</ui:Column>
 				
-				<ui:Column id="promisedDateCol">
+				<ui:Column id="promisedDateCol" >
 					<Label text="{disruptiontrackerI18n>promisedDate}" />
 					<ui:template>
 						<Text text="{disruptionsTrackerModel>PromisedDateTime}" />
