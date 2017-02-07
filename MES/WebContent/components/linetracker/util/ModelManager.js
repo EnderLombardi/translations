@@ -429,7 +429,9 @@ airbus.mes.linetracker.util.ModelManager = {
 		return (new Date()).toISOString().slice(0, 10).replace(/-/g, "");
 	},
 
-
+	/**
+	 * function to update the current line selected in user settings model locally.
+	 */
 	updateLineInUserSettings : function(){
 //		var urlCustomLineBOInUserSetting = this.urlModel.getProperty('updatevarianthandle');
 		jQuery.ajax({
@@ -484,7 +486,7 @@ airbus.mes.linetracker.util.ModelManager = {
 	},
 	/**
 	 * @param station, msn, action
-	 * perform takt action based on the chosen action amd relaod all the model
+	 * perform takt action based on the chosen action and reload all the model
 	 */
 	performTaktAction : function(action){
 
