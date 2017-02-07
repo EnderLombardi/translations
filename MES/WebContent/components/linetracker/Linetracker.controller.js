@@ -391,6 +391,8 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	 * To navigate to StationHandover from Line Tracker
 	 */
 	gotoStationHandover:function(){
+		var element = sap.ui.getCore().byId("sapContentPopUpLinetracker")._oOpenBy;
+		airbus.mes.linetracker.util.ModelManager.setProgramLineForStationMsn(element.getStation(), element.getMsn());
 		airbus.mes.shell.util.navFunctions.stationHandover();
 	},
 
