@@ -69,7 +69,7 @@
 		"icon": "product",
 		"app":"",
 		"url": "/MES/WebContent/components/stationtracker/index.html",
-		"enable": "true"
+		"enable": "{Profile>/connectedUser/permissions/calendarEnabled}"
 	}
 	]
 }
