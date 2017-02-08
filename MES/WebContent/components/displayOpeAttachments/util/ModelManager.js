@@ -29,34 +29,72 @@ airbus.mes.displayOpeAttachments.util.ModelManager = {
 		return sURI.replace(sFrom, encodeURIComponent(sTo));
 	},
 
+	//load the parameters needed for the documents request
+	getLoadDOAParam: function () {
+		var paramArray = [], shopOrderBO, routerBO, site, routerStepBO, erpId;
+
+		site = airbus.mes.settings.ModelManager.site;
+		erpId = airbus.mes.stationtracker.ModelManager.stationInProgress.ERP_SYSTEM;
+		shopOrderBO = airbus.mes.stationtracker.ModelManager.stationInProgress.ShopOrderBO;
+		routerStepBO = airbus.mes.stationtracker.ModelManager.stationInProgress.RouterStepBO;
+		routerBO = routerStepBO.split(":")[1] + ":" + routerStepBO.split(":")[2];//delete the first part ("RouterStepBO:")
+		routerBO = routerBO.replace(/,[^,]+$/, "");//delete all after the last comma
+
+		//fill the parameters array
+		paramArray.push(site);
+		paramArray.push(erpId);
+		paramArray.push(shopOrderBO);
+		paramArray.push(routerBO);
+		paramArray.push(routerStepBO);
+
+		return paramArray;
+	},
+
 	//request + loadData + formatter on response + model refresh
 	loadDOADetail: function () {
 		var oViewModel = airbus.mes.displayOpeAttachments.oView.getModel("getOpeAttachments");
-		oViewModel.loadData(this.getDOADetail(), null, false);
 
-		var row = oViewModel.oData.Rowsets.Rowset[0].Row;
-		airbus.mes.displayOpeAttachments.util.Formatter.extractWorkinstruction(row);//create dokar, doknr & doktl using workInstruction
-		airbus.mes.displayOpeAttachments.util.Formatter.sortByDocType(row);//sort the documents by doc type
-		oViewModel.oData.Rowsets.Rowset[0].Row = airbus.mes.displayOpeAttachments.util.Formatter.addDocTypeHierarchy(row);//create a parent object by foc type
-		oViewModel.refresh(true);//refresh the model (and so the view)
+		if (sessionStorage.loginType !== "local") {
+			var paramArray = this.getLoadDOAParam();
+		} else {
+			var paramArray = [];
+		}
+		
+		oViewModel.loadData(this.getDOADetail(paramArray), null, false);
+
+		if (oViewModel.oData.Rowsets) {
+			var row = oViewModel.oData.Rowsets.Rowset[0].Row;
+			airbus.mes.displayOpeAttachments.util.Formatter.extractWorkinstruction(row);//create dokar, doknr & doktl using workInstruction
+			airbus.mes.displayOpeAttachments.util.Formatter.sortByDocType(row);//sort the documents by doc type
+			oViewModel.oData.Rowsets.Rowset[0].Row = airbus.mes.displayOpeAttachments.util.Formatter.addDocTypeHierarchy(row);//create a parent object by foc type
+			oViewModel.refresh(true);//refresh the model (and so the view)
+		}
 	},
 
 	//replace the url with the several parameters needed
 	getDOADetail: function (paramArray) {
 		var url, set = airbus.mes.displayOpeAttachments.util.ModelManager.sSet;
 
-		//local config to change between operation and work order
-		if (set === "O") {
-			url = this.urlModel.getProperty("getOpeAttachments");
-		} else if (set === "P") {
-			url = this.urlModel.getProperty("getOpeAttachments_wo");
-		}
+		url = this.urlModel.getProperty("getOpeAttachments");
+		if (sessionStorage.loginType !== "local") {
+			url = this.replaceURI(url, "$Site", paramArray[0]);
+			url = this.replaceURI(url, "$ErpId", paramArray[1]);
+			url = this.replaceURI(url, "$ShopOrderBO", paramArray[2]);
 
-		//TODO : replace the urls
-		// iftoadd : url = airbus.mes.displayOpeAttachments.ModelManager.replaceURI(url, "$ShopOrderBO", paramArray[0]);
-		// url = airbus.mes.displayOpeAttachments.ModelManager.replaceURI(url, "$RouterBO", paramArray[1]);
-		// iftoadd : url = airbus.mes.displayOpeAttachments.ModelManager.replaceURI(url, "$RouterStepBO", paramArray[2]);
-		// url = airbus.mes.displayOpeAttachments.ModelManager.replaceURI(url, "$Site", paramArray[3]);
+			//operation or work order
+			if (set === "O") {
+				url = this.replaceURI(url, "$RouterBO", paramArray[3]);
+				url = this.replaceURI(url, "$RouterStepBO", paramArray[4]);
+			} else if (set === "P") {
+			}
+		} else {//LOCAL
+			//operation or work order
+			if (set === "O") {
+				url = this.urlModel.getProperty("getOpeAttachments");
+			} else if (set === "P") {
+				url = this.urlModel.getProperty("getOpeAttachments_wo");
+			}
+		}
 		return url;
 	},
 

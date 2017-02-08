@@ -13,18 +13,20 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 	init: function () {
 		var oModule = airbus.mes.displayOpeAttachments.util.ModelManager;
 		oModule.loadDOADetail();
-		oModule.createTreeTableArray();
+		if (airbus.mes.displayOpeAttachments.oView.getModel("getOpeAttachments").oData.Rowsets) {
+			oModule.createTreeTableArray();
 
-		this.firstVisibleRow = 0;
+			this.firstVisibleRow = 0;
 
-		var oTTbl = airbus.mes.displayOpeAttachments.oView.byId("DOATable");
-		var treeTableArray = airbus.mes.displayOpeAttachments.util.ModelManager.treeTableArray;
-		oTTbl.setFirstVisibleRow(0);
+			var oTTbl = airbus.mes.displayOpeAttachments.oView.byId("DOATable");
+			var treeTableArray = airbus.mes.displayOpeAttachments.util.ModelManager.treeTableArray;
+			oTTbl.setFirstVisibleRow(0);
 
-		//reinitialize treetable view
-		this.collapseAllNodes();//we collapse all so the treeExpandAll functions can work
-		this.treeExpandAll(treeTableArray, oTTbl);
-		this.updateTreeTableView(treeTableArray);
+			//reinitialize treetable view
+			this.collapseAllNodes();//we collapse all so the treeExpandAll functions can work
+			this.treeExpandAll(treeTableArray, oTTbl);
+			this.updateTreeTableView(treeTableArray);
+		}
 	},
 
 	treeExpandAll: function (treeTableArray, oTTbl) {
@@ -243,11 +245,11 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 
 			//then we operate the changes
 			var position = 0;
-			for (var i = arrayIndex; i < treeTableArray.length; i++) {
-				treeTableArray[i].position = position;
+			for (var j = arrayIndex; j < treeTableArray.length; j++) {
+				treeTableArray[j].position = position;
 				position++;
-				if (treeTableArray[i].isDocType && !treeTableArray[i].isOpened) {
-					i += treeTableArray[i].nbOfDocs;
+				if (treeTableArray[j].isDocType && !treeTableArray[j].isOpened) {
+					j += treeTableArray[j].nbOfDocs;
 				}
 			}
 		}
@@ -299,7 +301,6 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 	//apply css and events for the document displayed (on the row)
 	updateTreeTableView: function (treeTableArray) {
 		//we add and remove class for the rows displayed
-		var doaTable = $("#displayOpeAttachmentsView--DOATable-table").children("tbody").children();
 		var positionMax, events;
 		for (var j = 0; j < treeTableArray.length; j++) {
 			positionMax = treeTableArray[j].position + 1;
@@ -406,8 +407,6 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 
 		window.open(sUrl, '_blank');
 		return true;
-
-		console.log(airbus.mes.displayOpeAttachments.oView.oController.popUrl);
 	},
 
 	openDocument: function () {
@@ -418,14 +417,8 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 	//	SELECT LEVEL
 	/////////////////////////////////
 
-	//todo : get user action on the checkbox field
 	onSelectLevel: function (oEvent) {
-		var paramArray = [], shopOrderBO = undefined, routerBO = undefined, site = undefined, routerStepBO = undefined, previousSet;
-
-		shopOrderBO = airbus.mes.stationtracker.ModelManager.stationInProgress.ShopOrderBO;
-		//routerBO = something; TODO
-		site = airbus.mes.settings.ModelManager.site;
-		routerStepBO = airbus.mes.stationtracker.ModelManager.stationInProgress.RouterStepBO;
+		var previousSet;
 
 		//change operation/wo mode
 		previousSet = airbus.mes.displayOpeAttachments.util.ModelManager.sSet;
@@ -441,12 +434,6 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 			default: //if Null
 				break;
 		}
-
-		//fill the tab
-		paramArray.push(shopOrderBO);
-		paramArray.push(routerBO);
-		paramArray.push(site);
-		paramArray.push(routerStepBO);
 
 		this.init();
 	},

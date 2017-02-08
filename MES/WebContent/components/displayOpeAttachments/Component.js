@@ -34,6 +34,7 @@ airbus.mes.displayOpeAttachments.Component.prototype.createContent = function ()
 		});
 
 		this.oView.setModel(i18nModel, "i18nDisplayOpeAttachmentsModel");
+		
 		// Set instant display for busy indicator
 		this.oView.setBusyIndicatorDelay(0);
 

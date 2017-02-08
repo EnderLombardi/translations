@@ -15,7 +15,8 @@ airbus.mes.stationtracker.ModelManager = {
        firstTime : undefined,
        stationInProgress: {
            ShopOrderBO: undefined,
-           RouterStepBO: undefined
+           RouterStepBO: undefined,
+           ErpElement: undefined
        },
 
 //     parameters from the settings component
@@ -1049,7 +1050,8 @@ airbus.mes.stationtracker.ModelManager = {
 
                 //informations for Document request
                 airbus.mes.stationtracker.ModelManager.stationInProgress.ShopOrderBO = aModel[0].SHOP_ORDER_BO;
-                airbus.mes.stationtracker.ModelManager.stationInProgress.RouterStepBO = aModel[0].ROUTERSTEPBO;//not working for the moment
+                airbus.mes.stationtracker.ModelManager.stationInProgress.RouterStepBO = aModel[0].ROUTERSTEPBO;
+                airbus.mes.stationtracker.ModelManager.stationInProgress.ERP_SYSTEM = aModel[0].ERP_SYSTEM;
                 
                 
                 // calculate status of operation
