@@ -68,5 +68,10 @@
     margin-right: 0.8125rem;
 
 }
-
+.btnRadius{
+   
+    &>.sapMBtnInner{
+    border-radius: 211px;
+    }
+}
 }
