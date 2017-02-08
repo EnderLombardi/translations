@@ -94,7 +94,7 @@ airbus.mes.linetracker.util.Formatter = {
 					} else {
 						that.setSrc(airbus.mes.linetracker.util.Formatter.getErrorFlightImage());
 					}// return
-						// data.Rowsets.Rowset[0].Row[0].airline_logo_url;
+					// data.Rowsets.Rowset[0].Row[0].airline_logo_url;
 				} catch (oException) {
 					that.setSrc(airbus.mes.linetracker.util.Formatter.getErrorFlightImage());
 				}
@@ -146,17 +146,17 @@ airbus.mes.linetracker.util.Formatter = {
 	 * @param return
 	 *            Icon
 	 */
-	getActionIcon: function(status){
-		if(status == "UN_LOADED" || status == "TO_BE_LOADED"){ 
+	getActionIcon : function(status) {
+		if (status == "UN_LOADED" || status == "TO_BE_LOADED") {
 			return "sap-icon://border";
-		} else if(status == "COMPLETE"){
+		} else if (status == "COMPLETE") {
 			return "sap-icon://accept";
-		} else if(status == "IN_PROGRESS"){
+		} else if (status == "IN_PROGRESS") {
 			return "sap-icon://media-play";
-		} else if(status == "LOADED"){
+		} else if (status == "LOADED") {
 			return "sap-icon://synchronize";
 		} else {
-			return "sap-icon://media-play";
+			return "sap-icon://alert";
 		}
 
 	},
@@ -168,79 +168,93 @@ airbus.mes.linetracker.util.Formatter = {
 	 *            
 	 */
 	showHideButtonsOnStatus : function(status) {
-		
-		if (this.getId() === "loadNextMSN"){
-				 if( status === "LOADED" || status === "IN_PROGRESS" || status === "COMPLETE")
-				return false;
-				 else
-					 return true;
-		}
-		
-		if (this.getId() === "startAssembly"){
-			if(status === "IN_PROGRESS" || status === "UN_LOADED" || status === "COMPLETE" || status === "TO_BE_LOADED")
-				return false;
-			 else
-				 return true;
-		}
-		if (this.getId() === "emptyStation" ){
-			if( status === "UN_LOADED" || status === "TO_BE_LOADED" || status === "IN_PROGRESS"  || status === "LOADED" )
-				return false;
-			 else
-				 return true;
 
-		}
-		if (this.getId() === "endAssembly"){
-			 if(status === "UN_LOADED" || status === "COMPLETE" || status === "TO_BE_LOADED" || status === "LOADED" )
+		if (!status)
+			return false;
+		if (this.getId() === "loadNextMSN") {
+			// if(status === "UN_LOADED" || status === "COMPLETE" || status ===
+			// "TO_BE_LOADED")
+			if (status === "LOADED" || status === "IN_PROGRESS" || status === "COMPLETE")
 				return false;
-			 else
-				 return true;
-
-		}
-		
-		if (this.getId() === "undo" ){
-			if( status === "COMPLETE" || status === "IN_PROGRESS" || status === "LOADED" || status === "UN_LOADED" )
+			else
 				return true;
-			 else
-				 return false;
+		}
+
+		if (this.getId() === "startAssembly") {
+			// if( status !== "LOADED" || status !== "IN_PROGRESS" )
+			if (status === "IN_PROGRESS" || status === "UN_LOADED" || status === "COMPLETE" || status === "TO_BE_LOADED")
+				return false;
+			else
+				return true;
 
 		}
-		
-		if (this.getId() === "nextMsnImage"){ 	// /*status is msn here for last case*/
-			if( status!=="NA") 
+		if (this.getId() === "emptyStation") {
+			// if( status !== "UN_LOADED" )
+			if (status === "UN_LOADED" || status === "TO_BE_LOADED" || status === "IN_PROGRESS" || status === "LOADED")
+				return false;
+			else
 				return true;
-			
+
+		}
+		if (this.getId() === "endAssembly") {
+			// if( status !== "IN_PROGRESS" || status !== "LOADED" )
+			if (status === "UN_LOADED" || status === "COMPLETE" || status === "TO_BE_LOADED" || status === "LOADED")
+				return false;
+			else
+				return true;
+
+		}
+
+		if (this.getId() === "undo") {
+			if (status === "COMPLETE" || status === "IN_PROGRESS" || status === "LOADED" || status === "UN_LOADED")
+				return true;
+			else
+				return false;
+
+		}
+
+		if (this.getId() === "nextMsnImage") { // /*status is msn here for last
+												// case*/
+			if (status !== "NA")
+				return true;
+
 		}
 
 	},
-	
-	setVisible : function(sVal){
-		if (sVal === "Start of Assembly"){
-//	    	if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.LINE_START_ASSEMBLY === true ){
-//	    	return true;
-//	    	} else { 
-//	    	return false;
-//	    	}
+
+
+	setVisible : function(sVal) {
+		if (sVal === "Start of Assembly") {
+			// if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.LINE_START_ASSEMBLY
+			// === true ){
+			// return true;
+			// } else {
+			// return false;
+			// }
 			return true;
-		} else if (sVal === "End of Assembly"){
-//	    	if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.LINE_END_ASSEMBLY === true ){
-//	    	return true;
-//	    	} else { 
-//	    	return false;
-//	    	}
+		} else if (sVal === "End of Assembly") {
+			// if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.LINE_END_ASSEMBLY
+			// === true ){
+			// return true;
+			// } else {
+			// return false;
+			// }
 			return true;
-		} else if (sVal === "Empty Station"){
-//	    	if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.LINE_EMPTY_STAT === true ){
-//	    	return true;
-//	    	} else { 
-//	    	return false;
-//	    	}
+		} else if (sVal === "Empty Station") {
+			// if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.LINE_EMPTY_STAT
+			// === true ){
+			// return true;
+			// } else {
+			// return false;
+			// }
 			return true;
-		} else if (sVal === "Load Next Msn"){
-//	    	if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.LINE_EMPTY_STAT === true ){
-//	    	return true;
-//	    	} else { 
-//	    	return false;
-//	    	}
+		} else if (sVal === "Load Next Msn") {
+			// if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.LINE_EMPTY_STAT
+			// === true ){
+			// return true;
+			// } else {
+			// return false;
+			// }
 			return true;
 		}
 		return true;
