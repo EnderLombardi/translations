@@ -16,7 +16,7 @@
 						<headerToolbar>
 							<Toolbar>
 								<core:Icon src="sap-icon://alert" color="{parts: [ 'operationDisruptionsModel>Gravity','operationDisruptionsModel>EscalationLevel'], formatter: 'airbus.mes.disruptions.Formatter.setDisruptionTitle'}" class="sapUiSmallMarginEnd" />
-								<Title class="disrptlistdesc sapUiMediumLargeEnd" text="{i18nModel>Disruption} {operationDisruptionsModel>DisruptionNumber}" />
+								<Title class="disrptlistdesc sapUiMediumMarginEnd" text="{i18nModel>Disruption} {operationDisruptionsModel>DisruptionNumber}" />
 								<Title class="disrptlistdesc" text="{i18nModel>status} : {operationDisruptionsModel>Status} " />
 
 								<ToolbarSpacer />
