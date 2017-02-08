@@ -266,7 +266,10 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 	 *            oEvt control as an argument to this event
 	 */
 	onTableClick : function(oEvt) {
-
+		var sSelectionMode = oEvt.getSource().getSelectionMode();
+		if(sSelectionMode === "None"){
+			return;
+		}
 		// set data of the selected row to Data Model
 		// binding context changed as table used is sap.ui.table
 		var sPath = oEvt.getParameters().rowBindingContext.getPath();
@@ -394,6 +397,9 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 	handleSelectedRowExcelExport : function() {
 		var oTable = this.getView().byId("disruptionsTable");
 		var aIndices = oTable.getSelectedIndices();
+		if(aIndices == ""){
+			airbus.mes.shell.ModelManager.messageShow(this.getView().getModel("disruptiontrackerI18n").getProperty("notableSelect"));
+		}
 		var aContexts = [];
 		for(var i=0;i<aIndices.length;i++){
 			aContexts.push( oTable.getContextByIndex(i));
@@ -469,6 +475,17 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 	onPersoalisationButtonPressed : function() {
 
 		this._oTPC.openDialog();
+	},
+	/**
+	 * Set Roles for type of Table Column
+	 */
+	setSelectionMode : function(bAuthorized){
+    	if(bAuthorized === true ){
+    	return "MultiToggle"
+    	} else { 
+    	return "None"
+    	}
+
 	},
 
 /**

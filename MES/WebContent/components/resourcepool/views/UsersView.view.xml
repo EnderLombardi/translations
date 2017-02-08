@@ -83,8 +83,8 @@
 				</Panel>
 				<VBox class="shiftButtons" justifyContent="Center" alignItems="Center">
 					<items>
-						<Button icon="sap-icon://navigation-right-arrow" press="assignUsers" tooltip="{i18nModel>Assign}" />
-						<Button icon="sap-icon://navigation-left-arrow" press="unassignUsers" tooltip="{i18nModel>Remove}" />
+						<Button icon="sap-icon://navigation-right-arrow" press="assignUsers" tooltip="{i18nModel>Assign}" enable="{Profile>/identifiedUser/permissions/PM_RESOURCE_MANAGE}"/>
+						<Button icon="sap-icon://navigation-left-arrow" press="unassignUsers" tooltip="{i18nModel>Remove}" enable="{Profile>/identifiedUser/permissions/PM_RESOURCE_MANAGE}"/>
 					</items>
 				</VBox>
 				<Panel class="panelBorder" expanded="true" expandable="false"

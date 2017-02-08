@@ -193,31 +193,17 @@ airbus.mes.disruptiontracker.Formatter = {
 	},
 
 	/**
-	 * Set Roles for type of Table Column
-	 */
-	setType : function(bAuthorized) {
-		// if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.DISRUPTION_DIS_DETAIL_CONSULT
-		// === true ){
-		// return "Navigation"
-		// } else {
-		// return Inactive"
-		// }
-
-		return "Navigation"
-
-	},
-	/**
 	 * Set Disruption table visible on the basis of Roles
 	 */
 
-	setVisible : function() {
-		// if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.DISRUPTION_DISRUPTION_LIST
-		// === true ){
-		// return true;
-		// } else {
-		// return false;
-		// }
+	setVisible : function(){
+//    	if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.DISRUPTION_DISRUPTION_LIST === true ){
+//    	return true;
+//    	} else { 
+//    	return false;
+//    	}
 		return true;
 	}
+
 
 };

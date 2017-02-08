@@ -36,7 +36,6 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 			break;
 		case "ResourcePool":
 			airbus.mes.shell.util.navFunctions.resourcePool();
-			//airbus.mes.shell.util.navFunctions.docViewer("/MES/components/disruptionattachments/Files/GettingStarted.xod", undefined);
 			break;
 		case "LineTracker":
 			airbus.mes.shell.util.navFunctions.lineTracker();
@@ -46,7 +45,6 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 			break;
 		case "TeamCompetencies":
 			airbus.mes.shell.util.navFunctions.polypoly();
-			//airbus.mes.shell.util.navFunctions.docViewer("../components/disruptionattachments/Files/sample.pdf", undefined);
 			break;
 		case "TeamAvailability":
 			airbus.mes.shell.util.navFunctions.calendar();
@@ -57,7 +55,6 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 		default:
 			break;
 		}
-		//		}
 	},
 
 	/**
@@ -84,34 +81,14 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 	getI18nValue : function(sKey) {
 		return this.getView().getModel("i18n").getProperty(sKey);
 	},
-	/**
-	 * Setting the visible property on tiles on the basis of roles
+
+
+	 /* Similar to onAfterRendering, but this hook is invoked before the controller's
+	 * View is re-rendered (NOT before the first rendering! onInit() is used for
+	 * that one!).
 	 * 
-	 * @param 
-	 * @returns {true or false}
+	 * @memberOf components.globalnav.globalNavigation
 	 */
-	//    setVisible : function() {
-	//        var flag = airbus.mes.shell.RoleManager.isAllowed("HOMESCREEN");
-	//        airbus.mes.shell.RoleManager.userRoles = [];
-	//        return flag;
-	setVisible : function(oEvt) {
-
-		var oPermission = airbus.mes.shell.RoleManager.profile.connectedUser.permissions;
-
-		if (oPermission[oEvt]) {
-
-			return oPermission[oEvt];
-		}
-
-		if (oEvt === "true") {
-
-			return true;
-		} else {
-
-			return false;
-		}
-
-	}
 /**
  * Similar to onAfterRendering, but this hook is invoked before the controller's
  * View is re-rendered (NOT before the first rendering! onInit() is used for
@@ -138,4 +115,25 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
  */
 // onExit: function() {
 // }
+	// onBeforeRendering: function() {
+	// },
+	
+	/**
+	 * Called when the View has been rendered (so its HTML is part of the document).
+	 * Post-rendering manipulations of the HTML could be done here. This hook is the
+	 * same one that SAPUI5 controls get after being rendered.
+	 * 
+	 * @memberOf components.globalnav.globalNavigation
+	 */
+	// onAfterRendering : function() {
+	// },
+	
+	/**
+	 * Called when the Controller is destroyed. Use this one to free resources and
+	 * finalize activities.
+	 * 
+	 * @memberOf components.globalnav.globalNavigation
+	 */
+	// onExit: function() {
+	// }
 });

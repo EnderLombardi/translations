@@ -492,6 +492,11 @@ airbus.mes.linetracker.util.ModelManager = {
 	 */
 	performTaktAction : function(action){
 
+		var msn = sap.ui.getCore().getModel("statusActionModel").getProperty("/msn");
+		var status = sap.ui.getCore().getModel("statusActionModel").getProperty("/status");
+		if(action===airbus.mes.linetracker.util.ModelManager.aTaktAction[4] && (status==="TO_BE_LOADED" || status==="UN_LOADED")){
+			var msn = sap.ui.getCore().getModel("statusActionModel").getProperty("/previousMsn");
+		}
 		jQuery.ajax({
 			type : 'post',
 			url : this.urlModel.getProperty("urltaktaction"),
@@ -499,7 +504,7 @@ airbus.mes.linetracker.util.ModelManager = {
 			data : JSON.stringify({
 				"site" : airbus.mes.settings.ModelManager.site,
 				"lang" : sap.ui.getCore().byId("globalNavView--SelectLanguage").getSelectedItem().getKey(),
-				"msn" : sap.ui.getCore().getModel("statusActionModel").getProperty("/msn"),
+				"msn" : msn,
 				"station" : sap.ui.getCore().getModel("statusActionModel").getProperty("/station"),
 				"action" : action
 			}),
@@ -525,12 +530,13 @@ airbus.mes.linetracker.util.ModelManager = {
 	 * @param msn, status
 	 * to add the nextMsn and status from the chosen row to current popover model
 	 */
-	populateStatusActionModel : function(station,msn,nextMsn, status){
+	populateStatusActionModel : function(station, msn, nextMsn, status, previousMsn){
 		var data = {
 			"station":station,
 			"msn":msn,
 			"nextMsn" : nextMsn,
-			"status" : status
+			"status" : status,
+			"previousMsn" : previousMsn
 		} 
 		sap.ui.getCore().getModel("statusActionModel").setData(data);
 		sap.ui.getCore().getModel("statusActionModel").refresh();

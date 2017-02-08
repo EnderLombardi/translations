@@ -53,7 +53,7 @@
 
 			<HBox class="sapUiSmallMarginTop sapUiTinyMarginBegin">
 
-				<core:Icon src="sap-icon://pending" color="#009de0" size="2.5rem">
+				<core:Icon src="sap-icon://pending" color="#009de0" size="2.5rem" class="sapUiTinyMarginBegin">
 				</core:Icon>
 				<Text text="{i18nModel>timeLost}:25min" class="sapUiSmallMarginBegin sapUiSmallMarginTop" />
 				<layoutData>

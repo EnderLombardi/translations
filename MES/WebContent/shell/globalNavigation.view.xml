@@ -20,15 +20,15 @@
 							       	<ToolbarSpacer />	                   
 									<Button id="refreshTime"  		type="Transparent"									icon="sap-icon://refresh" press="refreshbtn" text="" visible="false" enabled="false" ></Button>
 									<Button id="localDELog" press="logOut" text="{ShellI18n>Cookie}" type="Transparent"></Button>                      
-		                         	<Select id="SelectLanguage" class="sapUiTinyMarginBeginEnd" enabled="{Profile>/connectedUser/permissions/homescreen}" change="onChangeLanguage" visible="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/stationDescription', formatter : 'airbus.mes.shell.util.Formatter.setLangVisible'}"> 
+		                         	<Select id="SelectLanguage" class="sapUiTinyMarginBeginEnd" enabled="{Profile>/identifiedUser/permissions/PROFILE_PREF_LANG}" change="onChangeLanguage"> 
 			                           	<core:Item text="English" key="en"/>
 			                           	<core:Item text="Deutsch" key="de"/>
 			                           	<core:Item text="Français" key="fr"/>
 			                        	<core:Item text="Spanish" key="sp"/>                                                      
 		                           	</Select>
 		                           	<Button id="informationButton" 	type="Transparent"  								icon="sap-icon://message-information" press="onInformation" visible="false"  class="whiteColor whiteButton" />
-		                           	<Button id="homeButton" 		enabled = "{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/stationDescription', formatter : 'airbus.mes.shell.util.Formatter.setEnable'}" type="Transparent" tooltip="{ShellI18n>Home}" 		icon="sap-icon://home"  press="goToHome" visible="false"  class="whiteColor whiteButton" />
-		                            <Button id="settingsButton" 	visible="{ path : 'userSettingModel>/Rowsets/Rowset/0/Row/0/stationDescription', formatter : 'airbus.mes.shell.util.Formatter.setVisible'}" type="Transparent" tooltip="{ShellI18n>Settings}" 	icon="sap-icon://action-settings" class="whiteColor whiteButton" press="openSettingPopup"></Button>
+		                           	<Button id="homeButton" 		enabled = "{Profile>/identifiededUser/permissions/PROFILE_PREF_HOME}" type="Transparent" tooltip="{ShellI18n>Home}" 		icon="sap-icon://home"  press="goToHome" visible="false"  class="whiteColor whiteButton" />
+		                            <Button id="settingsButton" 	visible="{Profile>/identifiedUser/permissions/MES_ADMIN_SETTING}" type="Transparent" tooltip="{ShellI18n>Settings}" 	icon="sap-icon://action-settings" class="whiteColor whiteButton" press="openSettingPopup"></Button>
 		                   </content>
 		             </Toolbar>
 				</customHeader>

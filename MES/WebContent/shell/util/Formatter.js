@@ -97,30 +97,6 @@ airbus.mes.shell.util.Formatter = {
 	},
 	displayPin : function(){
 		return airbus.mes.settings.AppConfManager.getConfiguration("MES_BADGE_PIN");
-	},
-	setVisible : function(key){
-//    	if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.WORK_OP_PAUSE === true ){
-//    	return true;
-//    	} else { 
-//    	return false;
-//    	}
-      return true;
-	},
-	setLangVisible : function(){
-//    	if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.PROFILE_PREF_LANG === true ){
-//    	return true;
-//    	} else { 
-//    	return false;
-//    	}
-		return true;
-	},
-	setEnable : function(){
-//    	if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.MES_ADMIN_SETTING === true ){
-//    	return true;
-//    	} else { 
-//    	return false;
-//    	}
-		return true;
 	}
 
 };

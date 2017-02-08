@@ -6,7 +6,7 @@
 			<HBox alignItems="Center" justifyContent="Middle">
 				<Button id="loadNextMSN" text="{statusActionModel>/nextMsn}" type="Transparent"
 					press="loadNextMsn" icon="sap-icon://synchronize" tooltip="{i18n>loadNextMsn}"
-					enabled="{ path : 'statusActionModel>/status', formatter : 'airbus.mes.linetracker.util.Formatter.showHideButtonsOnStatus' }" visible = "{path : 'i18n>loadNextMsn', formatter : 'airbus.mes.linetracker.util.Formatter.setVisible'}"/>
+					enabled="{ path : 'statusActionModel>/status', formatter : 'airbus.mes.linetracker.util.Formatter.showHideButtonsOnStatus' }" visible = "{Profile>/identifiedUser/permissions/LINE_LOAD_MSN}"/>
 				<Image id="nextMsnImage" height="1.8rem" width="auto"
 					visible="{ path : 'statusActionModel>/nextMsn', formatter : 'airbus.mes.linetracker.util.Formatter.showHideButtonsOnStatus' }"
 					error="{ path : 'statusActionModel>/nextMsn', formatter : 'airbus.mes.linetracker.util.Formatter.getErrorFlightImage' }"
@@ -15,13 +15,13 @@
 			</HBox>
 			<Button id="startAssembly" width="100%" text="{i18n>startAssembly}"
 				type="Transparent" press="startAssembly" icon="sap-icon://media-play"
-				enabled="{ path : 'statusActionModel>/status', formatter : 'airbus.mes.linetracker.util.Formatter.showHideButtonsOnStatus' }" visible = "{path : 'i18n>startAssembly', formatter : 'airbus.mes.linetracker.util.Formatter.setVisible'}"/>
+				enabled="{ path : 'statusActionModel>/status', formatter : 'airbus.mes.linetracker.util.Formatter.showHideButtonsOnStatus' }" visible = "{Profile>/identifiedUser/permissions/LINE_START_ASSEMBLY}"/>
 			<Button id="endAssembly" width="100%" text="{i18n>endAssembly}"
 				type="Transparent" press="endAssembly" icon="sap-icon://accept"
-				enabled="{ path : 'statusActionModel>/status', formatter : 'airbus.mes.linetracker.util.Formatter.showHideButtonsOnStatus' }" visible = "{path : 'i18n>endAssembly', formatter : 'airbus.mes.linetracker.util.Formatter.setVisible'}"/>
+				enabled="{ path : 'statusActionModel>/status', formatter : 'airbus.mes.linetracker.util.Formatter.showHideButtonsOnStatus' }" visible = "{Profile>/identifiedUser/permissions/LINE_END_ASSEMBLY}"/>
 			<Button id="emptyStation" width="100%" text="{i18n>emptyStation}"
 				type="Transparent" press="emptyStation" icon="sap-icon://border"
-				enabled="{ path : 'statusActionModel>/status', formatter : 'airbus.mes.linetracker.util.Formatter.showHideButtonsOnStatus' }" visible = "{path : 'i18n>emptyStation', formatter : 'airbus.mes.linetracker.util.Formatter.setVisible'}"/>
+				enabled="{ path : 'statusActionModel>/status', formatter : 'airbus.mes.linetracker.util.Formatter.showHideButtonsOnStatus' }" visible = "{Profile>/identifiedUser/permissions/LINE_EMPTY_STAT}"/>
 			<Button id="undo" width="100%" text="{i18n>undo}" type="Transparent"
 				press="undo" icon="sap-icon://undo"
 				enabled="{ path : 'statusActionModel>/status', formatter : 'airbus.mes.linetracker.util.Formatter.showHideButtonsOnStatus' }" />

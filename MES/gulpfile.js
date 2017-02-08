@@ -261,7 +261,7 @@ gulp.task('connect', function () {
 			return [
 				function (req, res, next) {
 					// treat POST request like GET during dev
-					if (req.url.endsWith('.json')) {
+					if (req.headers.referer && req.headers.referer.endsWith('url_config=local')) {
 						req.method = 'GET';
 					}
 

@@ -47,7 +47,7 @@
                                 <Switch type="AcceptReject"
                                     state="{path:'ResourcePoolDetailModel>shiftAssigned' ,formatter:'airbus.mes.resourcepool.util.Formatter.state'}"
                                     enabled="{path:'ResourcePoolDetailModel>' ,formatter:'airbus.mes.resourcepool.util.Formatter.AssignShiftEnabled'}"
-                                    change="changeAssignedShift" />
+                                    change="changeAssignedShift" visible="{Profile>/identifiedUser/permissions/PM_RESOURCE_MANAGE}" />
                             </cells>
                         </ColumnListItem>
                     </items>

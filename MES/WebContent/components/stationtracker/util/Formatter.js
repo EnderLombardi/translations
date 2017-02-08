@@ -931,46 +931,6 @@ airbus.mes.stationtracker.util.Formatter = {
 	},
 	sumKPI : function(value1, value2, value3) {
 		return parseFloat(value1) + parseFloat(value2) + parseFloat(value3);
-	},
-
-	setEnabled : function(sKey) {
-		if (sKey === "Activate") {
-//	    	if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.WORK_OP_ACTIVATE === true ){
-//        	return true;
-//        	} else { 
-//        	return false;
-//        	}
-			return true;
-		} else if (sKey === "Confirm") {
-//	    	if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.WORK_OP_PAR_CONF === true ){
-//        	return true;
-//        	} else { 
-//        	return false;
-//        	}
-			return true;
-		} else if (sKey === "Pause") {
-//	    	if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.WORK_OP_PAUSE === true ){
-//        	return true;
-//        	} else { 
-//        	return false;
-//        	}
-			return true;
-		} else if (sKey === "Complete") {
-//	    	if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.WORK_OP_TOT_CONF === true ){
-//        	return true;
-//        	} else { 
-//        	return false;
-//        	}
-			return true;
-		} else if (sKey === "Report Disruption") {
-//	    	if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.WORK_DIS_CREATE === true ){
-//        	return true;
-//        	} else { 
-//        	return false;
-//        	}
-			return true;
-		}
-		return true;
 	}
 
 };
