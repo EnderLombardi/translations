@@ -455,9 +455,6 @@ airbus.mes.shell.util.navFunctions = {
         // Navigate to the view
         nav.to(airbus.mes.docviewer.oView.getId());
 
-        // Get ID of the HBox where PDFTron will be placed
-        airbus.mes.docviewer.ModelManager.oViewerElement = document.getElementById("docviewerView--pdfViewer");
-
         // Finally open the document viewer with the document URL
         airbus.mes.docviewer.ModelManager.openDocumentByURL(fileURL);
     },
