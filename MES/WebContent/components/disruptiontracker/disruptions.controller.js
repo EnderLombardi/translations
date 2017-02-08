@@ -397,6 +397,9 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 	handleSelectedRowExcelExport : function() {
 		var oTable = this.getView().byId("disruptionsTable");
 		var aIndices = oTable.getSelectedIndices();
+		if(aIndices == ""){
+			airbus.mes.shell.ModelManager.messageShow(this.getView().getModel("disruptiontrackerI18n").getProperty("notableSelect"));
+		}
 		var aContexts = [];
 		for(var i=0;i<aIndices.length;i++){
 			aContexts.push( oTable.getContextByIndex(i));
