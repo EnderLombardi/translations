@@ -108,10 +108,7 @@
                        <Input     type="Number"
                                class="stepInputComponent"
                                value="{componentsWorkOrderDetail>committed}"
-                               min="0"
-                               max="{componentsWorkOrderDetail>withdrawQty}"
                                width="{width}"
-                               step="1"
                                enabled="true"
                                editable="true"
                                change="committedLiveChange"/>
@@ -126,10 +123,7 @@
                         <Input        type="Number"
                                    class="stepInputComponent"
                                    value="{componentsWorkOrderDetail>fitted}"
-                                   min="0"
-                                   max="{componentsWorkOrderDetail>withdrawQty}"
                                    width="{width}"
-                                   step="1"
                                    enabled="true"
                                    editable="true"
                                    change="fittedLiveChange"/>

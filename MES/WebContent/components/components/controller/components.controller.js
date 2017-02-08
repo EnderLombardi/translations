@@ -253,10 +253,9 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         var inputVal = oEvent.getSource().getValue();
         var dataJson = sap.ui.getCore().getModel("componentsWorkOrderDetail").getData().Rowsets.Rowset[0].Row;
         var index = oEvent.getSource().oParent.oParent.getIndex();
-        if(inputVal > dataJson[index].withdrawQty){
-            oEvent.getSource().setValue(dataJson[index].withdrawQty);
-        }
-        if(inputVal < 0){
+        if(inputVal >= 0 && inputVal <= dataJson[index].requiredQty){
+            oEvent.getSource().setValue(inputVal);
+        }else{
             oEvent.getSource().setValue(0);
         }
         sap.ui.getCore().byId("componentsView--btnComponentsSave").setEnabled(true);
@@ -267,14 +266,36 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         var inputVal = oEvent.getSource().getValue();
         var dataJson = sap.ui.getCore().getModel("componentsWorkOrderDetail").getData().Rowsets.Rowset[0].Row;
         var index = oEvent.getSource().oParent.oParent.getIndex();
-        if(inputVal > dataJson[index].withdrawQty){
-            oEvent.getSource().setValue(dataJson[index].withdrawQty);
-        }
-        if(inputVal < 0){
+        if(inputVal >= 0 && inputVal <= dataJson[index].requiredQty){
+            oEvent.getSource().setValue(inputVal);
+        }else{
             oEvent.getSource().setValue(0);
         }
         sap.ui.getCore().byId("componentsView--btnComponentsSave").setEnabled(true);
         sap.ui.getCore().byId("componentsView--btnComponentsFreeze").setEnabled(true);
+    },
+
+    onbtnComponentsSave: function(oEvent){
+        var oTable = sap.ui.getCore().byId("componentsView--ComponentsList");
+        var count = oTable.getBinding("rows").oList.length;
+        for(var i = 0; i < count; i++){
+            var tableVal = oTable.getRows()[i].getCells()[11].getItems()[1].getValue();
+            var dataIndex = oTable.getModel("componentsWorkOrderDetail").oData.Rowsets.Rowset[0].Row[i];
+            if(dataIndex.committed != tableVal){
+                dataIndex.committed = tableVal;
+            }
+            airbus.mes.components.util.ModelManager.dataSaveJson.push(dataIndex);
+        }
+    },
+    onbtnComponentsFreeze: function(oEvent){
+        var buttonText = oEvent.getSource().getText();
+        var freeze = airbus.mes.components.oView.getModel("i18nComponentsModel").getProperty("freeze");
+        var unfreeze = airbus.mes.components.oView.getModel("i18nComponentsModel").getProperty("unfreeze");
+        if(buttonText === freeze){
+            oEvent.getSource().setText(unfreeze);
+        }else{
+            oEvent.getSource().setText(freeze);
+        }
     }
 
 });
