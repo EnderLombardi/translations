@@ -280,9 +280,13 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         var count = oTable.getBinding("rows").oList.length;
         for(var i = 0; i < count; i++){
             var tableVal = oTable.getRows()[i].getCells()[11].getItems()[1].getValue();
+            var tableValFitt = oTable.getRows()[i].getCells()[12].getItems()[1].getValue();
             var dataIndex = oTable.getModel("componentsWorkOrderDetail").oData.Rowsets.Rowset[0].Row[i];
             if(dataIndex.committed != tableVal){
                 dataIndex.committed = tableVal;
+            }
+            if(dataIndex.fitted != tableValFitt){
+                dataIndex.fitted = tableValFitt;
             }
             airbus.mes.components.util.ModelManager.dataSaveJson.push(dataIndex);
         }
