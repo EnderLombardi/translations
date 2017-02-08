@@ -33,25 +33,20 @@ airbus.mes.stationHandover.util.Formatter = {
 			}
 
 			if (oModel.INSERTED === "false") {
-				// Apply selection/unselection of box all only when clicking on the button All
-				switch (applyAll) {
-				case false:
-					return false
-					break;
-				case true:
-					return true;
-					break;
-				case "child":
-					return this.getSelected();
-					break;
-				default:
-					if (aValueSelected.indexOf(oModel.WOID) != -1) {
+				// Apply selection/unselection of box all only when clicking on
+				
+					// Check if we selected a chill or not
+					if (oModel.MATERIAL_DESCRIPTION != undefined) {
+						
+						return aValueSelected[oModel.WOID].open;
 
-						return true;
-
+						
+					} else {
+						
+						return aValueSelected[oModel.WOID][oModel.WOID + "##||##" + oModel.REFERENCE].open;
+						
 					}
-				}
-
+				
 			}
 
 		}

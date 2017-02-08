@@ -393,7 +393,12 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 	 */
 	handleSelectedRowExcelExport : function() {
 		var oTable = this.getView().byId("disruptionsTable");
-		var aContexts = oTable.getSelectedContexts();
+		var aIndices = oTable.getSelectedIndices();
+		var aContexts = [];
+		for(var i=0;i<aIndices.length;i++){
+			aContexts.push( oTable.getContextByIndex(i));
+		}
+		//var aContexts = oTable.getSelectedContexts();
 		var aItems = aContexts.map(function(oEvent) {
 			return oEvent.getObject();
 		});
@@ -451,7 +456,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 			type : 'text/csv'
 		});
 		var csvUrl = window.URL.createObjectURL(blob);
-		var filename = 'UserExport.csv';
+		var filename = 'Disruption Data.csv';
 		$("#lnkDwnldLnk").attr({
 			'download' : filename,
 			'href' : csvUrl

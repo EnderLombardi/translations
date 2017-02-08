@@ -7,40 +7,40 @@
 		<Toolbar class="pageHeader">
 			<Label text="{disruptiontrackerI18n>disruptionsTitle}" id="headerText" class="headerText sapUiSmallMarginBeginEnd" />
 			
-			<ComboBox id="stationComboBox" class="sapUiMediumMarginEnd customComboBox"
+			<Select id="stationComboBox" class="sapUiMediumMarginEnd"
 				placeholder="{disruptiontrackerI18n>selectStation}" items="{ path:'plantModel>/Rowsets/Rowset/0/Row' }"
-				selectedKey="" selectionChange="filterByStation"
+				selectedKey="" change="filterByStation"
 				enabled="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setVisible'}">
 				<core:Item key="{plantModel>station}" text="{plantModel>stationDescription}" />
-			</ComboBox>
+			</Select>
 
-			<ComboBox id="msnComboBox" class="sapUiMediumMarginEnd customComboBox"
+			<Select id="msnComboBox" class="sapUiMediumMarginEnd"
 				placeholder="{disruptiontrackerI18n>selectMSN}" items="{ path:'plantModel>/Rowsets/Rowset/0/Row' }"
-				selectedKey="" selectionChange="filterByStation"
+				selectedKey="" change="filterByStation"
 				enabled="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setVisible'}">
 				<core:Item key="{plantModel>msn}" text="{plantModel>msn}" />
-			</ComboBox>
+			</Select>
 
-			<ComboBox id="statusComboBox" class="sapUiMediumMarginEnd customComboBox"
+			<Select id="statusComboBox" class="sapUiMediumMarginEnd"
 				placeholder="{disruptiontrackerI18n>selectStatus}" selectedKey=""
-				selectionChange="filterDisruptions"
+				change="filterDisruptions"
 				enabled="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setVisible'}">
-				<core:Item key="" text="{disruptiontrackerI18n>All}" />
+				<core:Item key="" text="{disruptiontrackerI18n>All} {disruptiontrackerI18n>status}" />
 				<core:Item key="Pending" text="{disruptiontrackerI18n>status.pending}" />
 				<core:Item key="Acknowledged"
 					text="{disruptiontrackerI18n>status.acknowledged}" />
 				<core:Item key="Solved" text="{disruptiontrackerI18n>status.solved}" />
 				<core:Item key="Closed" text="{disruptiontrackerI18n>status.closed}" />
 				<core:Item key="Rejected" text="{disruptiontrackerI18n>status.rejected}" />
-			</ComboBox>
+			</Select>
 
-			<ComboBox id="resolutionGroupBox" class="sapUiMediumMarginEnd customComboBox"
+			<Select id="resolutionGroupBox" class="sapUiMediumMarginEnd"
 				placeholder="{disruptiontrackerI18n>resolutionGroup}" items="{disruptionsTrackerModel>/Rowsets/Rowset/0/Row}"
-				selectedKey="" selectionChange="filterDisruptions"
+				selectedKey="" change="filterDisruptions"
 				enabled="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setVisible'}">
 				<core:Item key="{disruptionsTrackerModel>ResponsibleGroup}"
 					text="{disruptionsTrackerModel>ResponsibleGroupDesc}" />
-			</ComboBox>
+			</Select>
 
 		</Toolbar>
 
@@ -67,7 +67,7 @@
 
 					<ToolbarSpacer />
 
-					<Button text="{disruptiontrackerI18n>ExporttoExcel}" icon="sap-icon://excel-attachment"
+					<Button text="{disruptiontrackerI18n>extractDisruptionList}" icon="sap-icon://excel-attachment"
 						press="handleSelectedRowExcelExport" id="exportbutton" class="borderbutton" />
 
 					<Button id="onDisruptionTableSettings" type="Transparent"
@@ -85,7 +85,7 @@
 		</Panel>
 
 
-		<ui:Table id="disruptionsTable" enableCellFilter="true" showNoData="false" selectionMode="Single" selectionBehavior="RowOnly"
+		<ui:Table id="disruptionsTable" enableCellFilter="true" showNoData="false" selectionMode="MultiToggle" selectionBehavior="Row"
 			rows="{ path: 'disruptionsTrackerModel>/Rowsets/Rowset/0/Row' }"
 			visible="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setVisible'}" cellClick="onTableClick">
 

@@ -243,7 +243,7 @@ gulp.task('bump', ['bump_ver', 'build'], function () {
 
 gulp.task('styles', function () {
 	gulp.src('WebContent/Sass/**/*.scss')
-		.pipe(sass().on('error', sass.logError))
+		.pipe(sass({ outputStyle: 'compacted' }).on('error', sass.logError))
 		.pipe(gulp.dest('WebContent/Sass/'))
 });
 
@@ -316,7 +316,7 @@ gulp.task('serve', function (callback) {
 
 gulp.task('watch', false, function () {
 	gulp.watch(
-		'WebContent/Sass/**/*.scss', 
+		'WebContent/Sass/**/*.scss',
 		['styles']
 	);
 });

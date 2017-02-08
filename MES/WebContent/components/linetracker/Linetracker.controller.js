@@ -342,6 +342,8 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 		}
 		this.oPopover.setTitle(oEvent.oSource.getStationName());
 		var msn = oEvent.oSource.getMsn();
+		sap.ui.getCore().byId("lineStationTracker").setEnabled(true);
+		sap.ui.getCore().byId("lineStationHandover").setEnabled(true);
 		if(msn==undefined){
 			sap.ui.getCore().byId("lineStationTracker").setEnabled(false);
 			sap.ui.getCore().byId("lineStationHandover").setEnabled(false);
@@ -586,10 +588,6 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	 * Takt actions – load next MSN
 	 */
 	loadNextMsn : function(oEvt){		
-		
-//		oEvt.getSource().getParent().getParent()._oOpenBy.setSrc("sap-icon://media-pause");
-		//to be done with model
-//		this.actionButtonStatus(false,true,false,false,true);
 		//extract msn and station
 		airbus.mes.linetracker.util.ModelManager.performTaktAction(airbus.mes.linetracker.util.ModelManager.aTaktAction[0]);
 		
@@ -600,12 +598,8 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	 * Takt actions – start of assembly
 	 */
 	startAssembly : function(oEvt){		
-//		oEvt.getSource().getParent().getParent()._oOpenBy.setSrc("sap-icon://media-play");
 		//extract msn and station
 		airbus.mes.linetracker.util.ModelManager.performTaktAction(airbus.mes.linetracker.util.ModelManager.aTaktAction[1]);
-		//to be done with model
-//		this.actionButtonStatus(false,false,true,false,true);
-
 
 	},
 	
@@ -614,11 +608,9 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	 * Takt actions – end of assembly
 	 */
 	endAssembly : function(oEvt){
-//		oEvt.getSource().getParent().getParent()._oOpenBy.setSrc("sap-icon://accept");
 		//extract msn and station
 		airbus.mes.linetracker.util.ModelManager.performTaktAction(airbus.mes.linetracker.util.ModelManager.aTaktAction[2]);
-		//to be done with model
-//		this.actionButtonStatus(true,false,false,true,true);
+
 	},
 	
 	/**
@@ -626,12 +618,10 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	 * Takt actions – empty station
 	 */
 	emptyStation : function(oEvt){
-		
-//		oEvt.getSource().getParent().getParent()._oOpenBy.setSrc("sap-icon://border");
+
 		//extract msn and station
 		airbus.mes.linetracker.util.ModelManager.performTaktAction(airbus.mes.linetracker.util.ModelManager.aTaktAction[3]);
-		//to be done with model
-//		this.actionButtonStatus(true,false,false,false,true);
+
 	},
 	
 	/**
@@ -639,8 +629,6 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	 * Takt actions – undo 
 	 */
 	undo : function(oEvt){		
-		//to be done with model
-//		this.actionButtonStatus(true,true,true,true,true);
 		
 		if (!this.oUndoAction) {
 			this.oUndoAction = sap.ui.xmlfragment("airbus.mes.linetracker.fragments.undoAction", this);
@@ -670,13 +658,6 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 		this.oUndoAction.open();
 	},
 	
-	/*actionButtonStatus:function(load,start,end,empty,undo){
-		sap.ui.getCore().byId("loadNextMSN").setEnabled(load);
-		sap.ui.getCore().byId("startAssembly").setEnabled(start);
-		sap.ui.getCore().byId("endAssembly").setEnabled(end);
-		sap.ui.getCore().byId("emptyStation").setEnabled(empty);
-		sap.ui.getCore().byId("undo").setEnabled(undo);
-	},*/
 	
 	/**
 	 * BR: SD-PPC-LT-250

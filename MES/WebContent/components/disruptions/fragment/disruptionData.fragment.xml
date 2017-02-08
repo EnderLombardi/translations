@@ -269,7 +269,7 @@
 
 					</Panel>
 					<List showNoData="false" class="sapUiSmallMarginBeginEnd"
-						items="{path: 'DisruptionDetailModel>/Rowsets/Rowset/1/Row'}">
+						items="{path: 'DisruptionDetailModel>/comments'}">
 
 						<CustomListItem>
 							<HBox

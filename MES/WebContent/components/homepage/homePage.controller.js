@@ -15,7 +15,6 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 	 */
 	// onInit : function() {
 	// },
-
 	/**
 	 * Navigation management on the homepage
 	 * 
@@ -24,41 +23,41 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 	 */
 	onPress : function(text) {
 
-			switch (text) {
-			case "StationTracker":
-				//variable for split StationTracker
-				airbus.mes.shell.util.navFunctions.splitMode = "StationTracker";
-				airbus.mes.shell.util.navFunctions.stationTracker();
-				break;
-			case "WorkerOrderTracker":
-				//variable for split worktracker
-				airbus.mes.shell.util.navFunctions.splitMode = "WorkTracker";
-				airbus.mes.shell.util.navFunctions.stationTracker();
-				break;
-			case "ResourcePool":
-				airbus.mes.shell.util.navFunctions.resourcePool();
-				//airbus.mes.shell.util.navFunctions.docViewer("/MES/components/disruptionattachments/Files/GettingStarted.xod", undefined);
-				break;
-			case "LineTracker":
-				airbus.mes.shell.util.navFunctions.lineTracker();
-				break;
-			case "DisruptionAndon":
-				airbus.mes.shell.util.navFunctions.disruptionTracker();
-				break;
-			case "TeamCompetencies":
-				airbus.mes.shell.util.navFunctions.polypoly();
-				//airbus.mes.shell.util.navFunctions.docViewer("../components/disruptionattachments/Files/sample.pdf", undefined);
-				break;
-			case "TeamAvailability":
-				airbus.mes.shell.util.navFunctions.calendar();
-				break;
-			case "StationHandover":
-				airbus.mes.shell.util.navFunctions.stationHandover();
-				break;
-			default:
-				break;
-			}
-//		}
+		switch (text) {
+		case "StationTracker":
+			//variable for split StationTracker
+			airbus.mes.shell.util.navFunctions.splitMode = "StationTracker";
+			airbus.mes.shell.util.navFunctions.stationTracker();
+			break;
+		case "WorkerOrderTracker":
+			//variable for split worktracker
+			airbus.mes.shell.util.navFunctions.splitMode = "WorkTracker";
+			airbus.mes.shell.util.navFunctions.stationTracker();
+			break;
+		case "ResourcePool":
+			airbus.mes.shell.util.navFunctions.resourcePool();
+			//airbus.mes.shell.util.navFunctions.docViewer("/MES/components/disruptionattachments/Files/GettingStarted.xod", undefined);
+			break;
+		case "LineTracker":
+			airbus.mes.shell.util.navFunctions.lineTracker();
+			break;
+		case "DisruptionAndon":
+			airbus.mes.shell.util.navFunctions.disruptionTracker();
+			break;
+		case "TeamCompetencies":
+			airbus.mes.shell.util.navFunctions.polypoly();
+			//airbus.mes.shell.util.navFunctions.docViewer("../components/disruptionattachments/Files/sample.pdf", undefined);
+			break;
+		case "TeamAvailability":
+			airbus.mes.shell.util.navFunctions.calendar();
+			break;
+		case "StationHandover":
+			airbus.mes.shell.util.navFunctions.stationHandover();
+			break;
+		default:
+			break;
+		}
+		//		}
 	},
 
 	/**
@@ -91,44 +90,52 @@ sap.ui.controller("airbus.mes.homepage.homePage", {
 	 * @param 
 	 * @returns {true or false}
 	 */
-//    setVisible : function() {
-//        var flag = airbus.mes.shell.RoleManager.isAllowed("HOMESCREEN");
-//        airbus.mes.shell.RoleManager.userRoles = [];
-//        return flag;
-    	
-//    	if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.homescreen === true ){
-//    	return true;
-//    	} else { 
-//    	return false;
-//    	}
-//    	return true;
-//    }
-	/**
-	 * Similar to onAfterRendering, but this hook is invoked before the controller's
-	 * View is re-rendered (NOT before the first rendering! onInit() is used for
-	 * that one!).
-	 * 
-	 * @memberOf components.globalnav.globalNavigation
-	 */
-	// onBeforeRendering: function() {
-	// },
-	
-	/**
-	 * Called when the View has been rendered (so its HTML is part of the document).
-	 * Post-rendering manipulations of the HTML could be done here. This hook is the
-	 * same one that SAPUI5 controls get after being rendered.
-	 * 
-	 * @memberOf components.globalnav.globalNavigation
-	 */
-	// onAfterRendering : function() {
-	// },
-	
-	/**
-	 * Called when the Controller is destroyed. Use this one to free resources and
-	 * finalize activities.
-	 * 
-	 * @memberOf components.globalnav.globalNavigation
-	 */
-	// onExit: function() {
-	// }
+	//    setVisible : function() {
+	//        var flag = airbus.mes.shell.RoleManager.isAllowed("HOMESCREEN");
+	//        airbus.mes.shell.RoleManager.userRoles = [];
+	//        return flag;
+	setVisible : function(oEvt) {
+
+		var oPermission = airbus.mes.shell.RoleManager.profile.connectedUser.permissions;
+
+		if (oPermission[oEvt]) {
+
+			return oPermission[oEvt];
+		}
+
+		if (oEvt === "true") {
+
+			return true;
+		} else {
+
+			return false;
+		}
+
+	}
+/**
+ * Similar to onAfterRendering, but this hook is invoked before the controller's
+ * View is re-rendered (NOT before the first rendering! onInit() is used for
+ * that one!).
+ * 
+ * @memberOf components.globalnav.globalNavigation
+ */
+// onBeforeRendering: function() {
+// },
+/**
+ * Called when the View has been rendered (so its HTML is part of the document).
+ * Post-rendering manipulations of the HTML could be done here. This hook is the
+ * same one that SAPUI5 controls get after being rendered.
+ * 
+ * @memberOf components.globalnav.globalNavigation
+ */
+// onAfterRendering : function() {
+// },
+/**
+ * Called when the Controller is destroyed. Use this one to free resources and
+ * finalize activities.
+ * 
+ * @memberOf components.globalnav.globalNavigation
+ */
+// onExit: function() {
+// }
 });

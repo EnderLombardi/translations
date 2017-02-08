@@ -357,7 +357,8 @@ airbus.mes.shell.util.navFunctions = {
 
         var stationItemAll = new sap.ui.core.Item();
         stationItemAll.setKey("");
-        stationItemAll.setText(airbus.mes.disruptiontracker.oView.getModel("disruptiontrackerI18n").getProperty("All"));
+        stationItemAll.setText(airbus.mes.disruptiontracker.oView.getModel("disruptiontrackerI18n").getProperty("All")
+			+ " " + airbus.mes.disruptiontracker.oView.getModel("disruptiontrackerI18n").getProperty("PhyStation"));
 
         var stationBox = sap.ui.getCore().byId("disruptiontrackerView--stationComboBox");
         stationBox.insertItem(stationItemAll, 0);
@@ -388,7 +389,8 @@ airbus.mes.shell.util.navFunctions = {
 
         var msnItemAll = new sap.ui.core.Item();
         msnItemAll.setKey("");
-        msnItemAll.setText(airbus.mes.disruptiontracker.oView.getModel("disruptiontrackerI18n").getProperty("All"));
+        msnItemAll.setText(airbus.mes.disruptiontracker.oView.getModel("disruptiontrackerI18n").getProperty("All")
+			+ " MSN");
 
         var msnBox = sap.ui.getCore().byId("disruptiontrackerView--msnComboBox");
         msnBox.insertItem(msnItemAll, 0);

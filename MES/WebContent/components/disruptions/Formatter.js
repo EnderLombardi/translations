@@ -232,15 +232,20 @@ airbus.mes.disruptions.Formatter = {
 		return false;
 	},
 
-	setAddCommentButtonVisibility : function(originatorFlag, responsibleFlag, status) {
+	setAddCommentButtonVisibility : function(originatorFlag, responsibleFlag, resolverID, status) {
+		
+		if(status == airbus.mes.disruptions.Formatter.status.acknowledged){
+			if (responsibleFlag == "X" && 
+				resolverID == sap.ui.getCore().getModel("userSettingModel").getProperty("/Rowsets/Rowset/0/Row/0/user"))
+				return true;
+			else
+				return false;
+		}
 
-		if (originatorFlag == "X" && status == airbus.mes.disruptions.Formatter.status.acknowledged)
+		else if (status == airbus.mes.disruptions.Formatter.status.deleted || status == airbus.mes.disruptions.Formatter.status.closed)
 			return false;
 
 		else if (originatorFlag != "X" && responsibleFlag != "X")
-			return false;
-
-		else if (status == airbus.mes.disruptions.Formatter.status.deleted || status == airbus.mes.disruptions.Formatter.status.closed)
 			return false;
 
 		else
@@ -314,12 +319,11 @@ airbus.mes.disruptions.Formatter = {
 		return airbus.mes.disruptions.oView.viewDisruption.getModel("i18nModel").getProperty(action.toLowerCase()).toLowerCase();
 	},
 	formatComment : function(comment) {
-
+		
 		if (comment.indexOf("\$\$") > -1) {
-			return comment.split("\$\$")[1];
-		} else {
-			return comment;
+			comment =  comment.split("\$\$")[1];
 		}
+		return comment;
 	},
 
 	setClosureDateVisibility : function(status) {

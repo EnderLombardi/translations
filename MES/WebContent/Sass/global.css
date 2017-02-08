@@ -25,7 +25,11 @@ time, mark, audio, video {
   font: inherit;
   vertical-align: baseline; }
 
-#disruptionKPIView--lineComboBox, #disruptionKPIView--timeUnit {
+#disruptiontrackerView--stationComboBox,
+#disruptiontrackerView--msnComboBox,
+#disruptiontrackerView--statusComboBox,
+#disruptiontrackerView--resolutionGroupBox, #disruptionKPIView--lineComboBox,
+#disruptionKPIView--timeUnit {
   height: 3rem;
   margin: 0;
   line-height: 3rem;
@@ -33,7 +37,15 @@ time, mark, audio, video {
   border: 0;
   border-right: solid 1px #74d2e7 !important;
   background: #0f2d65 !important; }
-  #disruptionKPIView--lineComboBox .sapMSltLabel, #disruptionKPIView--timeUnit .sapMSltLabel, #disruptionKPIView--lineComboBox .sapMSltArrow, #disruptionKPIView--timeUnit .sapMSltArrow {
+  #disruptiontrackerView--stationComboBox .sapMSltLabel,
+  #disruptiontrackerView--msnComboBox .sapMSltLabel,
+  #disruptiontrackerView--statusComboBox .sapMSltLabel,
+  #disruptiontrackerView--resolutionGroupBox .sapMSltLabel, #disruptionKPIView--lineComboBox .sapMSltLabel,
+  #disruptionKPIView--timeUnit .sapMSltLabel, #disruptiontrackerView--stationComboBox .sapMSltArrow,
+  #disruptiontrackerView--msnComboBox .sapMSltArrow,
+  #disruptiontrackerView--statusComboBox .sapMSltArrow,
+  #disruptiontrackerView--resolutionGroupBox .sapMSltArrow, #disruptionKPIView--lineComboBox .sapMSltArrow,
+  #disruptionKPIView--timeUnit .sapMSltArrow {
     top: 0;
     bottom: 0;
     line-height: 3rem;
@@ -3555,7 +3567,8 @@ section #ViewDisruptionView .sapMLIBFocusable:focus {
 
 .disruptionDetail .msgColor {
   background: #F5F5F5 !important;
-  color: #0f86ae !important; }
+  color: #0f86ae !important;
+  padding-bottom: 0.5rem; }
 
 #disruptionAckCommentDialogue {
   background: #ffffff;
@@ -7366,70 +7379,8 @@ td {
   .disruptions .sapMIBar.sapMSubHeader-CTX .headerText {
     font-size: 1.2rem !important; }
 
-#disruptiontrackerView--stationComboBox-inner,
-#disruptiontrackerView--msnComboBox-inner,
-#disruptiontrackerView--statusComboBox-inner,
-#disruptiontrackerView--resolutionGroupBox-inner {
-  background: #0f2d65 !important;
-  color: white;
-  border: none; }
-
-#disruptiontrackerView--stationComboBox-inner.sapMComboBoxInner,
-#disruptiontrackerView--stationComboBox-inner.sapMComboBoxTextFieldInner,
-#disruptiontrackerView--stationComboBox-inner.sapMComboBoxTextFieldInnerWidthExtraPadding,
-#disruptiontrackerView--stationComboBox-inner.sapMInputBaseInner,
-#disruptiontrackerView--msnComboBox-inner.sapMComboBoxInner,
-#disruptiontrackerView--msnComboBox-inner.sapMComboBoxTextFieldInner,
-#disruptiontrackerView--msnComboBox-inner.sapMComboBoxTextFieldInnerWidthExtraPadding,
-#disruptiontrackerView--msnComboBox-inner.sapMInputBaseInner,
-#disruptiontrackerView--statusComboBox-inner.sapMComboBoxInner,
-#disruptiontrackerView--statusComboBox-inner.sapMComboBoxTextFieldInner,
-#disruptiontrackerView--statusComboBox-inner.sapMComboBoxTextFieldInnerWidthExtraPadding,
-#disruptiontrackerView--statusComboBox-inner.sapMInputBaseInner,
-#disruptiontrackerView--resolutionGroupBox-inner.sapMComboBoxInner,
-#disruptiontrackerView--resolutionGroupBox-inner.sapMComboBoxTextFieldInner,
-#disruptiontrackerView--resolutionGroupBox-inner.sapMComboBoxTextFieldInnerWidthExtraPadding,
-#disruptiontrackerView--resolutionGroupBox-inner.sapMInputBaseInner {
-  border: none !important; }
-
-#disruptiontrackerView--stationComboBox,
-#disruptiontrackerView--msnComboBox,
-#disruptiontrackerView--statusComboBox,
-#disruptiontrackerView--resolutionGroupBox {
-  color: white;
-  border: none;
-  padding: 0;
-  margin: 0 !important;
-  height: 2.9rem; }
-  #disruptiontrackerView--stationComboBox > .sapUiMediumMarginEnd,
-  #disruptiontrackerView--msnComboBox > .sapUiMediumMarginEnd,
-  #disruptiontrackerView--statusComboBox > .sapUiMediumMarginEnd,
-  #disruptiontrackerView--resolutionGroupBox > .sapUiMediumMarginEnd {
-    margin: 0 !important; }
-  #disruptiontrackerView--stationComboBox > .sapMComboBoxTextField,
-  #disruptiontrackerView--msnComboBox > .sapMComboBoxTextField,
-  #disruptiontrackerView--statusComboBox > .sapMComboBoxTextField,
-  #disruptiontrackerView--resolutionGroupBox > .sapMComboBoxTextField {
-    height: 2.9rem; }
-
 #disruptiontrackerView--stationComboBox {
-  border-left: 1px solid #8db9ca; }
-
-#disruptiontrackerView--stationComboBox-arrow,
-#disruptiontrackerView--msnComboBox-arrow,
-#disruptiontrackerView--statusComboBox-arrow,
-#disruptiontrackerView--resolutionGroupBox-arrow {
-  color: white;
-  border: none;
-  border-right: 1px solid #8db9ca;
-  background: #0f2d65 !important; }
-
-#disruptiontrackerView--stationComboBox-arrow:hover,
-#disruptiontrackerView--msnComboBox-arrow:hover,
-#disruptiontrackerView--statusComboBox-arrow:hover,
-#disruptiontrackerView--resolutionGroupBox-arrow:hover {
-  border: none;
-  border-right: 1px solid #8db9ca; }
+  border-left: solid 1px #74d2e7 !important; }
 
 #disruptiontrackerView--headerText-inner {
   color: #74d2e7;
