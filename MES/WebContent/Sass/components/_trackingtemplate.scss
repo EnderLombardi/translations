@@ -1,0 +1,10 @@
+.trackingTemplateButton {
+    .sapMBtnInner.sapMBtnText.sapMBtnIconFirst, .sapMBtnInner.sapMBtnText.sapMBtnBack {
+        border:none;
+        background: transparent;
+        color : $petrol;
+    }
+    .sapUiIcon:before {
+        color : $petrol;
+    }
+}

@@ -7,7 +7,7 @@
           xmlns:l="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml"
           xmlns:cData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" >
 
-    <Page enableScrolling="false" showHeader="false">
+    <Page enableScrolling="false" showHeader="false" class="trackingTemplate">
         <content>
 
 			<!-- Confirmation Notes -->
@@ -39,12 +39,12 @@
 				<content>
 				
 					<!-- Header ToolBar -->
-					<OverflowToolbar height="3rem">
+					<OverflowToolbar class="trackingTemplateButton" height="3rem">
 						<CheckBox id="idCheckBox" text="{i18n>won_toolbar_last}" enabled="true" selected="false"/>
 						<ToolbarSpacer />
-                		<Button text="{i18n>won_toolbar_edit}" icon="sap-icon://edit"/>
-                		<Button text="{i18n>won_toolbar_add}" icon="sap-icon://add"/>
-                		<Button text="{i18n>won_toolbar_print}" icon="sap-icon://print"/>
+                		<Button class="icon-edit" text="{i18n>won_toolbar_edit}" icon="sap-icon://edit"/>
+                		<Button class="icon-add" text="{i18n>won_toolbar_add}" icon="sap-icon://add"/>
+                		<Button class="icon-print" text="{i18n>won_toolbar_print}" icon="sap-icon://print"/>
 						<!-- ICON ONLY
 						<ToolbarSpacer />
 						<OverflowToolbarButton text="Create Note" icon="sap-icon://edit"/>
