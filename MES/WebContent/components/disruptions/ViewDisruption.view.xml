@@ -30,13 +30,13 @@
 									visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setCloseButtonVisibility'}"
 									design="Transparent" icon="sap-icon://accept" press="onCloseDisruption" class="disruptionTitleBarButtons" enabled="{Profile>/identifiedUser/permissions/WORK_DIS_CLOSE}"/>
 
-								<Button text="{i18nModel>edit}" type="Emphasized"
-									visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>ResponsibleFlag'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setEditButtonVisibility'}"
-									press="onEditDisruption" design="Transparent" icon="sap-icon://edit" class="disruptionTitleBarButtons"/>
-
 								<Button text="{i18nModel>delete}" type="Reject"
 									visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setDeleteButtonVisibility'}"
 									design="Transparent" icon="sap-icon://delete" press="onDeleteDisruption" class="disruptionTitleBarButtons"/>
+
+								<Button text="{i18nModel>editButton}" type="Emphasized"
+									visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>ResponsibleFlag'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setEditButtonVisibility'}"
+									press="onEditDisruption" design="Transparent" icon="sap-icon://edit" class="disruptionTitleBarButtons"/>
 
 							</Toolbar>
 						</headerToolbar>

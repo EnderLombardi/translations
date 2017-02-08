@@ -343,7 +343,7 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 	afterCloseDisruptnDetailPopUp : function() {
 
 		// Reset Expandable
-		sap.ui.getCore().byId("ViewDisruptionView").getContent()[0].getContent()[1].getItems()[0].getContent()[0].setExpandable(true);
+		//sap.ui.getCore().byId("ViewDisruptionView").getContent()[0].getContent()[1].getItems()[0].getContent()[0].setExpandable(true);
 
 		// Empty Model
 		airbus.mes.disruptions.oView.viewDisruption.getModel("operationDisruptionsModel").setData();

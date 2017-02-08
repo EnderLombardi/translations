@@ -128,9 +128,9 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption",
 				oView.byId("selectResolver").setSelectedKey();
 			} else if (airbus.mes.disruptions.ModelManager.createViewMode == "Edit") {
 
-				var oModel = sap.ui.getCore().getModel("DisruptionDetailModel")
+				var oModel = oView.getModel("DisruptionDetailModel");
 
-				// Set Responsible Group
+				// Set Responsible Gro	up
 				oView.byId("selectResponsibleGrp").setSelectedKey(oModel.getProperty("/ResponsibleGroup"));
 
 				// Set Reason
@@ -164,7 +164,7 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption",
 					oView.byId("selectResolver").setEnabled(true);
 			} else if (airbus.mes.disruptions.ModelManager.createViewMode == "Edit") {
 
-				var oModel = sap.ui.getCore().getModel("DisruptionDetailModel")
+				var oModel = oView.getModel("DisruptionDetailModel");
 
 				// Set Resolver Name
 				oView.byId("selectResolver").setSelectedKey(oModel.getProperty("/ResolverID"));
@@ -176,17 +176,18 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption",
 		 * edit mode.
 		 **********************************************************************/
 		editPreSettings : function() {
+			var oView = this.getView();
 
-			if (sap.ui.getCore().getModel("DisruptionDetailModel").getData() != undefined) {
+			if (oView.getModel("DisruptionDetailModel").getData() != undefined) {
 
 				// fill select boxes on edit screen
-				var oModel = sap.ui.getCore().getModel("DisruptionDetailModel");
+				var oModel = oView.getModel("DisruptionDetailModel");
 
 				// Set Gravity
-				this.getView().byId("gravity").setSelectedKey(oModel.getProperty("/Gravity"));
+				oView.byId("gravity").setSelectedKey(oModel.getProperty("/Gravity"));
 
 				// Set Time Lost
-				this.getView().byId("timeLost").setValue(airbus.mes.disruptions.Formatter.timeMillisecondsToConfig(oModel.getProperty("/TimeLost")));
+				oView.byId("timeLost").setValue(airbus.mes.disruptions.Formatter.timeMillisecondsToConfig(oModel.getProperty("/TimeLost")));
 
 				// Set Status and Description
 				this.getView().byId("status").setValue(oModel.getProperty("/Status"));
@@ -194,15 +195,15 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption",
 				// V1.5
 
 				// Empty Comment
-				this.getView().byId("comment").setValue();
+				oView.byId("comment").setValue();
 
 				// If opened by support team from disruption tracker - V1.5
 				if (sap.ui.Device.system.desktop && nav.getPreviousPage().sId == "disruptiontrackerView") {
-					this.getView().byId("escalationLevel").setValue(oModel.getProperty("/EscalationLevel"));
+					oView.byId("escalationLevel").setValue(oModel.getProperty("/EscalationLevel"));
 				}
 
-				var oMatInp = this.getView().byId("materials");
-				var oJiginp = this.getView().byId("jigtools");
+				var oMatInp = oView.byId("materials");
+				var oJiginp = oView.byId("jigtools");
 
 				var aMatArray = oModel.oData.Materials.split(",");
 				var aJigArray = oModel.oData.JigTools.split(",");
@@ -251,9 +252,8 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption",
 
 				// Disable/Enable inputs according to
 				// Originator/Resolution Group
-				var origFlag = sap.ui.getCore().getModel("DisruptionDetailModel").getData().OriginatorFlag;
-
-				var resFlag = sap.ui.getCore().getModel("DisruptionDetailModel").getData().ResponsibleFlag;
+				var origFlag = oModel.getProperty("/OriginatorFlag");
+				var resFlag = oModel.getProperty("/ResponsibleFlag");
 
 				if (origFlag != "X" && resFlag == "X") {
 					this.resolutionGroupSettings();
@@ -262,9 +262,9 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption",
 			}
 
 			// promised date has to be visible while editing
-			this.getView().byId("promisedDateLabel").setVisible(true);
-			this.getView().byId("promisedDate").setVisible(true);
-			this.getView().byId("promisedTime").setVisible(true);
+			oView.byId("promisedDateLabel").setVisible(true);
+			oView.byId("promisedDate").setVisible(true);
+			oView.byId("promisedTime").setVisible(true);
 		},
 
 		/***********************************************************************
@@ -272,19 +272,20 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption",
 		 * originaotr and 5-M Category fields
 		 */
 		editDisruptionSettings : function() {
+			var oView = this.getView();
+			
+			if (oView.getModel("DisruptionDetailModel").getData() != undefined) {
 
-			if (sap.ui.getCore().getModel("DisruptionDetailModel").getData() != undefined) {
-
-				var oModel = sap.ui.getCore().getModel("DisruptionDetailModel");
+				var oModel = oView.getModel("DisruptionDetailModel");
 
 				// V1.5 - Set 5M-Category
-				this.getView().byId("selectFivemCategory").setSelectedKey(oModel.getProperty("/CategoryClass"));
+				oView.byId("selectFivemCategory").setSelectedKey(oModel.getProperty("/CategoryClass"));
 
 				// Set Message Category (Object)
-				this.getView().byId("selectCategory").setSelectedKey(oModel.getProperty("/MessageType"));
+				oView.byId("selectCategory").setSelectedKey(oModel.getProperty("/MessageType"));
 
 				// Set Originator
-				this.getView().byId("selectOriginator").setSelectedKey(oModel.getProperty("/OriginatorGroup"));
+				oView.byId("selectOriginator").setSelectedKey(oModel.getProperty("/OriginatorGroup"));
 			}
 		},
 
@@ -494,7 +495,7 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption",
 		onUpdateDisruption : function() {
 			var oView = airbus.mes.disruptions.oView.createDisruption;
 
-			var sMessageRef = sap.ui.getCore().getModel("DisruptionDetailModel").getProperty("/MessageRef")
+			var sMessageRef = oView.getModel("DisruptionDetailModel").getProperty("/MessageRef")
 			var sReason = oView.byId("selectreason").getSelectedKey();
 			var sResponsibleGroup = oView.byId("selectResponsibleGrp").getSelectedKey();
 			
@@ -878,42 +879,43 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption",
 		 * edit mode.
 		 **********************************************************************/
 		editdisruptionDetailPreSettings : function() {
+			var oView = this.getView();
 
-			if (sap.ui.getCore().getModel("DisruptionDetailModel").getData() != undefined) {
+			if (oView.getModel("DisruptionDetailModel").getData() != undefined) {
 				// fill select boxes on edit screen
-				var oModel = sap.ui.getCore().getModel("DisruptionDetailModel");
+				var oModel = oView.getModel("DisruptionDetailModel");
 				var oDisruptionData = oModel.oData.Rowsets.Rowset[0].Row[0];
 				
 				// Set category
-				this.getView().byId("selectCategory").setSelectedKey(oDisruptionData.MessageType);
+				oView.byId("selectCategory").setSelectedKey(oDisruptionData.MessageType);
 				// Set Responsible
-				this.getView().byId("selectResponsibleGrp").setSelectedKey(oDisruptionData.ResponsibleGroup);
+				oView.byId("selectResponsibleGrp").setSelectedKey(oDisruptionData.ResponsibleGroup);
 				// Set Reason
-				this.getView().byId("selectreason").setSelectedKey(oDisruptionData.Reason);
+				oView.byId("selectreason").setSelectedKey(oDisruptionData.Reason);
 				// Set Originator
-				this.getView().byId("selectOriginator").setSelectedKey(oDisruptionData.OriginatorGroup);
+				oView.byId("selectOriginator").setSelectedKey(oDisruptionData.OriginatorGroup);
 				
 				// -V1.5 root cause Removed
-				// this.getView().byId("selectRootCause").setSelectedKey(oModel.getProperty("/RootCause"));
+				// oView.byId("selectRootCause").setSelectedKey(oModel.getProperty("/RootCause"));
 				
 				// Set Gravity
-				this.getView().byId("gravity").setSelectedKey(oDisruptionData.Gravity);
+				oView.byId("gravity").setSelectedKey(oDisruptionData.Gravity);
 
 				// Set Time Lost
-				this.getView().byId("timeLost").setValue(
+				oView.byId("timeLost").setValue(
 					airbus.mes.disruptions.Formatter.timeMillisecondsToConfig(oDisruptionData.TimeLost));
 
 				// Set Status and Description
-				this.getView().byId("status").setValue(oDisruptionData.Status);
-				// this.getView().byId("description").setValue(oModel.getProperty("/Description")); -V1.5
+				oView.byId("status").setValue(oDisruptionData.Status);
+				// oView.byId("description").setValue(oModel.getProperty("/Description")); -V1.5
 
 				// Empty Comment
-				this.getView().byId("comment").setValue();
+				oView.byId("comment").setValue();
 
-				this.getView().byId("escalationLevel").setValue(oDisruptionData.EscalationLevel);
+				oView.byId("escalationLevel").setValue(oDisruptionData.EscalationLevel);
 
-				var oMatInp = this.getView().byId("materials");
-				var oJiginp = this.getView().byId("jigtools");
+				var oMatInp = oView.byId("materials");
+				var oJiginp = oView.byId("jigtools");
 
 				var aMatArray = oDisruptionData.Materials.split(",");
 				var aJigArray = oDisruptionData.JigTools.split(",");
@@ -973,9 +975,9 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption",
 			}
 
 			// promised date has to be visible while editing
-			this.getView().byId("promisedDateLabel").setVisible(true);
-			this.getView().byId("promisedDate").setVisible(true);
-			this.getView().byId("promisedTime").setVisible(true);
+			oView.byId("promisedDateLabel").setVisible(true);
+			oView.byId("promisedDate").setVisible(true);
+			oView.byId("promisedTime").setVisible(true);
 		},
 		
 
