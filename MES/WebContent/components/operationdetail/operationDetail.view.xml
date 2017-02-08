@@ -114,13 +114,8 @@
                         <IconTabFilter id="idStatus" text="{i18n>Status}" tooltip="{i18n>Status}" key="status"></IconTabFilter>
                         <IconTabFilter id="idCheckList" text="{i18n>CheckListAndRecords}" tooltip="{i18n>CheckListAndRecords}" key="checkList"></IconTabFilter>
                         <IconTabFilter id="idDisruption" text="{i18n>Disruption}" tooltip="{i18n>Disruption}" key="disruption"></IconTabFilter>
-<<<<<<< Upstream, based on origin/MESv1.5
                         <IconTabFilter id="idDisplayOpeAttachments" enabled="{Profile>/connectedUser/permissions/displayOpeAttachments}" text="{i18n>Documents}" tooltip="{i18n>Documents}" key="displayOpeAttachments"></IconTabFilter>
-                        <IconTabFilter id="idReschedule" text="{i18n>Reschedule}" tooltip="{i18n>Reschedule}" key="reschedule"></IconTabFilter>
-=======
-                        <IconTabFilter id="idDisplayOpeAttachments" text="{i18n>Documents}" tooltip="{i18n>Documents}" key="displayOpeAttachments"></IconTabFilter>
                         <IconTabFilter id="idReschedule" text="{i18n>Reschedule}" tooltip="{i18n>Reschedule}" key="reschedule" visible="{Profile>/identifiedUser/permissions/STATION_DRILL_RESCHEDULE}"></IconTabFilter>
->>>>>>> 1857228 [Roles and Auth] Update in ResourcePool,poly poly, disruption, linetracker roles updated in views
                         <IconTabFilter id="idtouchngo" text="{i18n>Touchngo}" tooltip="{i18n>Touchngo}" key="touchngo"></IconTabFilter>
                         <IconTabFilter id="idComponents" enabled="{Profile>/identifiedUser/permissions/topic_componentsOpeDetail}" text="{i18n>Components}" tooltip="{i18n>Components}" key="components"></IconTabFilter>
                         <IconTabFilter enabled="{Profile>/identifiedUser/permissions/operationDetailsJigNTool}"  id="idJignTools" text="{i18n>JignTools}" tooltip="{i18n>JignTools}" key="jigntools"></IconTabFilter>
