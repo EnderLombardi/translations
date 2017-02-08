@@ -1,6 +1,6 @@
 <core:FragmentDefinition xmlns="sap.m"
     xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form">
-    <Dialog title="{i18n>userConfirmation}" type="Message" id="partial" width="70% !important" >
+    <Dialog title="{i18n>userConfirmation}" type="Message" id="partial" width="70% !important" height="100%" >
             <content>
            <HBox id="confirmationCheckList">
                <Button type="Transparent" icon="" class=""  id="QAWA"  text="{i18n>qawa}"/>

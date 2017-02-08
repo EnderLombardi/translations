@@ -12,7 +12,6 @@ airbus.mes.calendar.util.ModelManager = {
 
 		//core.getModel("testModel").attachRequestCompleted(airbus.mes.calendar.util.ModelManager.toto);
 		core.getModel("calendarshiftsModel").attachRequestCompleted(airbus.mes.calendar.util.ModelManager.onShiftsLoad);
-		core.getModel("calendarTrackerModel").attachRequestCompleted(airbus.mes.calendar.util.ModelManager.onCalendarTrackerLoad);
 		core.getModel("ressourcePoolModel").attachRequestCompleted(airbus.mes.calendar.util.ModelManager.onRessourcePoolLoad);
 
 		// Handle URL Model
@@ -79,7 +78,8 @@ airbus.mes.calendar.util.ModelManager = {
 			success : function(data) {
 				try {
 					console.log(data);
-					oViewModel.setData();
+					oViewModel.setData(data);
+					airbus.mes.calendar.util.ModelManager.onCalendarTrackerLoad();
 				} catch (e) {
 					console.log("NO calendar data load");
 					
@@ -105,7 +105,6 @@ airbus.mes.calendar.util.ModelManager = {
 
 	loadRessourcePool : function() {
 
-		var oData = airbus.mes.settings.ModelManager;
 		var oViewModel = airbus.mes.calendar.oView.getModel("ressourcePoolModel");
 		var geturlRessourcePool = this.urlModel.getProperty('urlRessourcePoolModel');
 

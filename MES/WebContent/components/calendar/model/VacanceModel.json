@@ -1,38 +1,117 @@
-{"Response": [ 
-               { 
-                  "USER": "S007C96",
-                  "FIRST_NAME": "CEDRIC",
-                  "LAST_NAME": "DANEL",
-                  "VALIDATED": "true",
-                  "LOANED_FROM": "null",
-                  "LOADED_TO": "null",
-                  "RESOURCE_POOLS": "PP_ST_3",
-                  "START_DATE_TIME": "2017-01-04 15:10:01",
-                  "END_DATE_TIME": "2017-01-04 18:10:01"
-               },
-               { 
-                  "USER": "NG1FCF2",
-                  "FIRST_NAME": "CEDRIC",
-                  "LAST_NAME": "DANEL",
-                  "VALIDATED": "true",
-                  "LOANED_FROM": "true",
-                  "LOADED_TO": "null",
-                  "RESOURCE_POOLS": "PP_ST_1",
-                  "START_DATE_TIME": "2017-01-04 15:10:01",
-                  "END_DATE_TIME": "2017-01-04 18:10:01"
-               },
-                { 
-                  "USER": "NG1FCF2",
-                  "FIRST_NAME": "CEDRICbdfbdbdfbdfb",
-                  "LAST_NAME": "DANELbdfbfdbdfbdbbdfb",
-                  "VALIDATED": "false",
-                  "LOANED_FROM": "null",
-                  "LOADED_TO": "true",
-                  "RESOURCE_POOLS": "PP_ST_2",
-                  "START_DATE_TIME": "2017-01-04 15:10:01",
-                  "END_DATE_TIME": "2017-01-04 18:10:01"
-               }
-               
-               
-            ]
+{
+   "message": "S",
+   "site": "VM",
+   "workStation": "STATION1",
+   "msn": "0001",
+   "userCalendarDisplayData":    [
+            {
+         "id": "8",
+         "userId": "USER3",
+         "firstName": "User3 FirstName",
+         "lastName": "User3 Last Name",
+         "resourcePoolId": "12",
+         "startdDateTime": "2016-12-21T12:00:00.000+01:00",
+         "endDateTime": "2016-12-21T22:00:00.000+01:00",
+         "loanedTo": "true",
+         "loanedFrom": "false"
+      },
+            {
+         "id": "6",
+         "userId": "USER1",
+         "firstName": "User1 FirstName",
+         "lastName": "User1 Last Name",
+         "resourcePoolId": "10",
+         "startdDateTime": "2016-12-22T12:00:00.000+01:00",
+         "endDateTime": "2016-12-22T14:00:00.000+01:00",
+         "loanedTo": "false",
+         "loanedFrom": "false"
+      },
+            {
+         "id": "7",
+         "userId": "USER2",
+         "lastName": "user2",
+         "resourcePoolId": "12",
+         "startdDateTime": "2016-12-21T12:00:00.000+01:00",
+         "endDateTime": "2016-12-21T22:00:00.000+01:00",
+         "loanedTo": "false",
+         "loanedFrom": "false"
+      },
+            {
+         "id": "21",
+         "userId": "USER3",
+         "firstName": "User3 FirstName",
+         "lastName": "User3 Last Name",
+         "resourcePoolId": "12",
+         "startdDateTime": "2017-02-02T12:00:00.000+01:00",
+         "endDateTime": "2017-02-02T13:00:00.000+01:00",
+         "loanedTo": "true",
+         "loanedFrom": "false"
+      },
+            {
+         "id": "22",
+         "userId": "USER3",
+         "firstName": "User3 FirstName",
+         "lastName": "User3 Last Name",
+         "resourcePoolId": "12",
+         "startdDateTime": "2017-02-02T12:00:00.000+01:00",
+         "endDateTime": "2017-02-02T13:00:00.000+01:00",
+         "loanedTo": "true",
+         "loanedFrom": "false"
+      },
+            {
+         "id": "23",
+         "userId": "USER3",
+         "firstName": "User3 FirstName",
+         "lastName": "User3 Last Name",
+         "resourcePoolId": "12",
+         "startdDateTime": "2017-02-02T12:00:00.000+01:00",
+         "endDateTime": "2017-02-02T13:00:00.000+01:00",
+         "loanedTo": "true",
+         "loanedFrom": "false"
+      },
+            {
+         "id": "24",
+         "userId": "USER3",
+         "firstName": "User3 FirstName",
+         "lastName": "User3 Last Name",
+         "resourcePoolId": "12",
+         "startdDateTime": "2017-02-02T12:00:00.000+01:00",
+         "endDateTime": "2017-02-02T13:00:00.000+01:00",
+         "loanedTo": "true",
+         "loanedFrom": "false"
+      },
+            {
+         "id": "25",
+         "userId": "USER3",
+         "firstName": "User3 FirstName",
+         "lastName": "User3 Last Name",
+         "resourcePoolId": "12",
+         "startdDateTime": "2017-02-02T12:00:00.000+01:00",
+         "endDateTime": "2017-02-02T13:00:00.000+01:00",
+         "loanedTo": "true",
+         "loanedFrom": "false"
+      },
+            {
+         "id": "26",
+         "userId": "USER3",
+         "firstName": "User3 FirstName",
+         "lastName": "User3 Last Name",
+         "resourcePoolId": "12",
+         "startdDateTime": "2017-02-02T12:00:00.000+01:00",
+         "endDateTime": "2017-02-02T13:00:00.000+01:00",
+         "loanedTo": "true",
+         "loanedFrom": "false"
+      },
+            {
+         "id": "12",
+         "userId": "USER1",
+         "firstName": "User1 FirstName",
+         "lastName": "User1 Last Name",
+         "resourcePoolId": "10",
+         "startdDateTime": "2016-12-23T12:00:00.000+01:00",
+         "endDateTime": "2016-12-23T14:00:00.000+01:00",
+         "loanedTo": "false",
+         "loanedFrom": "false"
+      }
+   ]
 }

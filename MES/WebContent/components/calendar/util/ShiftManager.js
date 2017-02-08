@@ -280,7 +280,7 @@ airbus.mes.calendar.util.ShiftManager = {
 				text: airbus.mes.calendar.oView.getModel("calendarI18n").getProperty("LastShiftReached"),
 				expire: 2000
 			});
-			return date;
+			return this.shifts[c].StartDate;
 		}
 		if (c + step < 0) {
 			dhtmlx.message({

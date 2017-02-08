@@ -138,8 +138,8 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 		//===============
 		// check if model full or not
 		//===============	
-		if (oModel.getProperty("/Response")) {              	
-			oModel = oModel.oData.Response;	
+		if (oModel.getProperty("/userCalendarDisplayData")) {              	
+			oModel = oModel.oData.userCalendarDisplayData;	
         } else  {
         	oModel = [];
         	console.log("no Holidays operation load");
@@ -149,18 +149,18 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 		//===============	
 		oModel.forEach(function(el){
 			// Filtering on ressource POOL
-			if ( el.RESOURCE_POOLS === sPoolId || sPoolId === "ALL" ) {
+			if ( el.resourcePoolId === sPoolId || sPoolId === "ALL" ) {
 				// Home based
-				if ( el.LOANED_FROM === "null" && el.LOADED_TO === "null" ) {
+				if ( el.loanedFrom === "null" && el.loanedTo === "null" ) {
 					
 					var sName = airbus.mes.calendar.oView.getModel("calendarI18n").getProperty("HomeBased");
 					
 				} else {
-					// LOANED_FROM 
-					if ( el.LOANED_FROM === "true" ) {
+					// loanedFrom 
+					if ( el.loanedFrom === "true" ) {
 						
 						var sName = airbus.mes.calendar.oView.getModel("calendarI18n").getProperty("LoanedFrom");
-					// LOADED_TO 	
+					// loanedTo 	
 					} else {
 						
 						var sName = airbus.mes.calendar.oView.getModel("calendarI18n").getProperty("LoadedTo");
@@ -172,12 +172,12 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 					
 					oHierachy[sName] = {};
 				}
-				if ( !oHierachy[sName][el.USER + sCstSplit + el.FIRST_NAME + sCstSplit +  el.LAST_NAME + sCstSplit + sName ] ) {
+				if ( !oHierachy[sName][el.userId + sCstSplit + el.firstName + sCstSplit +  el.lastName + sCstSplit + sName ] ) {
 					
-					oHierachy[sName][ el.USER + sCstSplit + el.FIRST_NAME + sCstSplit +  el.LAST_NAME + sCstSplit + sName ] = [];
+					oHierachy[sName][ el.userId + sCstSplit + el.firstName + sCstSplit +  el.lastName + sCstSplit + sName ] = [];
 				}
 				
-				oHierachy[sName][ el.USER + sCstSplit + el.FIRST_NAME + sCstSplit +  el.LAST_NAME + sCstSplit + sName].push(el);
+				oHierachy[sName][ el.userId + sCstSplit + el.firstName + sCstSplit +  el.lastName + sCstSplit + sName].push(el);
 					
 			}
 		})
@@ -220,10 +220,10 @@ airbus.mes.calendar.util.GroupingBoxingManager	 = {
 					var oBox = {
 						"loaned" : el.LOANED,
 						"diversion" : el.DIVERSION,
-						"validated" : el.VALIDATED,
+						"validated" : el.validated,
 						"section_id" : airbus.mes.calendar.util.Formatter.idName(line),
-						"start_date" : new Date(oFormatter.jsDateFromDayTimeStr(el.START_DATE_TIME)),
-						"end_date" : new Date(oFormatter.jsDateFromDayTimeStr(el.END_DATE_TIME)),
+						"start_date" : new Date(oFormatter.jsDateFromDayTimeStr(el.startdDateTime)),
+						"end_date" : new Date(oFormatter.jsDateFromDayTimeStr(el.endDateTime)),
 					};
 					
 					aBox.push(oBox)

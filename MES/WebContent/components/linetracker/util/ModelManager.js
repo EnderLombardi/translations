@@ -499,7 +499,7 @@ airbus.mes.linetracker.util.ModelManager = {
 			data : JSON.stringify({
 				"site" : airbus.mes.settings.ModelManager.site,
 				"lang" : sap.ui.getCore().byId("globalNavView--SelectLanguage").getSelectedItem().getKey(),
-				"msn" : sap.ui.getCore().getModel("statusActionModel").getProperty("/currentMsn"),
+				"msn" : sap.ui.getCore().getModel("statusActionModel").getProperty("/msn"),
 				"station" : sap.ui.getCore().getModel("statusActionModel").getProperty("/station"),
 				"action" : action
 			}),
