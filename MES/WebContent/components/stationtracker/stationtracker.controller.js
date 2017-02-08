@@ -1,6 +1,7 @@
 "use strict";
 
 jQuery.sap.require("airbus.mes.stationtracker.util.Formatter");
+jQuery.sap.require("airbus.mes.stationtracker.ModelManager");
 
 sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 
@@ -915,6 +916,8 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
 
             airbus.mes.stationtracker.AssignmentManager.userSelected = oSelected.key;
             airbus.mes.shell.oView.getController().loadStationTrackerGantKPI();
+
+            airbus.mes.stationtracker.ModelManager.loadSplitModel();
 
             if (airbus.mes.shell.util.navFunctions.splitMode == "StationTracker") {
                 //show split screen if select user

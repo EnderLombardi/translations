@@ -24,6 +24,22 @@ airbus.mes.stationtracker.util.Formatter = {
 		}
 	},
 
+	dateForWorkTracker : function(startDate, endDate) {
+		var startTime = new Date(startDate);
+		var endTime = new Date(endDate);
+		var diffDate;
+		var returnValue;
+
+		returnValue = ("0" + startTime.getHours()).substr(-2) + ':' + ("0" + startTime.getMinutes()).substr(-2) + '-' + ("0" + endTime.getHours()).substr(-2) + ':' + ("0" + endTime.getMinutes()).substr(-2);
+		
+		diffDate = endTime.getDay() - startTime.getDay();
+		if(diffDate) {
+			returnValue = returnValue + '(+' + 1 +')';
+		} 
+		return returnValue;
+		
+	},
+
 	KPIiconTrendSrc : function(bTrend) {
 		if (bTrend == "true") {
 			return "sap-icon://up"

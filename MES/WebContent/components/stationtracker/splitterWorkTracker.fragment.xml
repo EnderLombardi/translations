@@ -30,12 +30,12 @@
 			<items>
 				<ColumnListItem>
 					<cells>
-						<Text key="{SplitDetailModel>StartEnd}" text="{SplitDetailModel>StartEnd}" />
-						<Text key="{SplitDetailModel>Odescription}" text="{SplitDetailModel>Odescription}" />
-						<Text key="{SplitDetailModel>WOdescription}" text="{SplitDetailModel>WOdescription}" />
-						<Text key="{SplitDetailModel>Wcenter}" 		text="{SplitDetailModel>Wcenter}" />
-						<Text key="{SplitDetailModel>Competency}" 	text="{SplitDetailModel>Competency}" />
-						<Text key="{SplitDetailModel>Pstation}" 	text="{SplitDetailModel>Pstation}" />
+						<Text key="{SplitDetailModel>START_TIME}" text="{ parts: ['SplitDetailModel>START_TIME', 'SplitDetailModel>END_TIME'], formatter: 'airbus.mes.stationtracker.util.Formatter.dateForWorkTracker'}" />
+						<Text key="{SplitDetailModel>OPERATION_DESCRIPTION}" text="{SplitDetailModel>OPERATION_DESCRIPTION}" />
+						<Text key="{SplitDetailModel>WORKORDER_DESCRIPTION}" text="{SplitDetailModel>WORKORDER_DESCRIPTION}" />
+						<Text key="{SplitDetailModel>WORK_CENTER}" 		text="{SplitDetailModel>WORK_CENTER}" />
+						<Text key="{SplitDetailModel>COMPETENCY}" 	text="{SplitDetailModel>COMPETENCY}" />
+						<Text key="{SplitDetailModel>PP_STATION}" 	text="{SplitDetailModel>PP_STATION}" />
 						
 					</cells>
 				</ColumnListItem>
