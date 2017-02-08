@@ -59,6 +59,19 @@
         }
     }
 }
+.seeAttachButton{
+		background:transparent !important;
+        .sapMBtnInner{
+        	border:0px !important;
+        }
+        span{
+            color: #0f86ae !important
+        }
+        :not(.sapMBtnDisabled)>.sapMBtnInner.sapMBtnActive{
+			background:transparent !important;
+            color: #0f86ae !important
+        }
+}
 section{
     #ViewDisruptionView{
         .sapMLIBFocusable{
@@ -107,6 +120,9 @@ section{
             &>div{
                 background-color: transparent !important;
             }
+        }
+        &.sapUiFormEdit .sapMText{
+        	min-height: 2rem !important;
         }
     }
     .statusText{

@@ -15,7 +15,7 @@
 		</content>
 		<buttons>
 			<Button id="btnUpdateDisruption" text="{disruptiontrackerI18n>update}"
-				type="Transparent" icon="sap-icon://save" press="onUpdateDisruption" visible="false" />=
+				type="Transparent" icon="sap-icon://save" press="onUpdateDisruption" visible="false" />
 			<Button id="btnCancelDisruption" text="{disruptiontrackerI18n>cancel}"
 				type="Transparent" icon="sap-icon://sys-cancel" press="onCancelCreateDisruption" visible="false" />
 

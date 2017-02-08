@@ -317,12 +317,15 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 				// Cancel Button
 				sap.ui.getCore().byId("disruptionDetailPopup--btnCancelDisruption") 
 			);
+			
+			// Set Data in Model
 			sap.ui.getCore().getModel("operationDisruptionsModel").setData(disruptionData);
+			airbus.mes.disruptions.oView.viewDisruption.getModel("operationDisruptionsModel").setData(disruptionData);
 
 			airbus.mes.disruptiontracker.detailPopUp.open();
 
 			// Set Expanded by Default
-			sap.ui.getCore().byId("ViewDisruptionView").getContent()[0].getContent()[1].getItems()[0].getContent()[0].setExpandable(false);
+			//sap.ui.getCore().byId("ViewDisruptionView").getContent()[0].getContent()[1].getItems()[0].getContent()[0].setExpandable(false);
 
 			this.nav.to(airbus.mes.disruptions.oView.viewDisruption.getId());
 

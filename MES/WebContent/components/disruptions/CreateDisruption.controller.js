@@ -420,7 +420,10 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption",
 					}, {
 						"attribute" : "RESOLVER", // V1.5
 						"value" : oView.byId("selectResolver").getSelectedKey()
-					} ]
+					}, {
+						"attribute" : "LINE",
+						"value" : airbus.mes.settings.ModelManager.line
+					}, ]
 
 			}
 			aModelData.push(oJson);

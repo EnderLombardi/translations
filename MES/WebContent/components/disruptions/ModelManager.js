@@ -766,8 +766,14 @@ airbus.mes.disruptions.ModelManager = {
 					var operationDisruptionsModel =  airbus.mes.disruptions.oView.viewDisruption.getModel("operationDisruptionsModel");
 
 					//load again disruptions data
-					var operationBO = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_bo;
-                	var sSfcStepRef = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].sfc_step_ref;
+					if(nav.getCurrentPage().getId() == "stationTrackerView"){
+						var operationBO = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].operation_bo;
+						var sSfcStepRef = sap.ui.getCore().getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0].sfc_step_ref;
+					
+					}else if(nav.getCurrentPage().getId() == "disruptiontrackerView"){
+						var operationBO = airbus.mes.disruptions.oView.viewDisruption.getModel("operationDisruptionsModel").oData.Rowsets.Rowset[0].Row[0].Operation;
+						var sSfcStepRef = airbus.mes.disruptions.oView.viewDisruption.getModel("operationDisruptionsModel").oData.Rowsets.Rowset[0].Row[0].SfcStepBO;
+					}
                 	airbus.mes.disruptions.ModelManager.loadDisruptionsByOperation(operationBO,sSfcStepRef);
 
                 	// Set Refresh disruption tracker flag

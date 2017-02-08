@@ -91,7 +91,16 @@ airbus.mes.disruptions.Formatter = {
 
 		return 0 + " " + timeUnit;
 	},
-
+	
+	formatTimeBeforeEsc: function(sEscLEvel, sTime){
+		if(sEscLEvel == "3")
+			return 'Escalated';
+		else if(sTime == '')
+			return '-';
+		else
+			return sTime;
+	},
+	
 	getDate : function(datetime) {
 
 		if (datetime == null || datetime === undefined) {

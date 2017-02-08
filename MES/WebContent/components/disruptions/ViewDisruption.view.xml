@@ -67,24 +67,6 @@
 												</Text>
 											</f:fields>
 										</f:FormElement>
-										
-										<f:FormElement visible="false">
-											<f:label>
-												<Label class="detailLabels" text="{i18nModel>Issuer}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
-												</Label>
-											</f:label>
-											<f:fields>
-
-												<Text text="{path: 'operationDisruptionsModel>Issuer'}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
-												</Text>
-											</f:fields>
-										</f:FormElement>
 <!-- 									MES V1.5 [End] -->
 
 										<f:FormElement>
@@ -104,7 +86,61 @@
 												</Text>
 											</f:fields>
 										</f:FormElement>
+													
+										<f:FormElement>
+											<f:label>
+												<Label class="detailLabels" text="{i18nModel>reason}">
+													<layoutData>
+														<l:GridData span="L3 M3 S12" />
+													</layoutData>
+												</Label>
+											</f:label>
+											<f:fields>
+
+												<Text text="{operationDisruptionsModel>Reason}">
+													<layoutData>
+														<l:GridData span="L3 M3 S12" />
+													</layoutData>
+												</Text>
+											</f:fields>
+										</f:FormElement>
 										
+										<f:FormElement>
+											<f:label>
+												<Label class="detailLabels" text="{i18nModel>gravity}">
+													<layoutData>
+														<l:GridData span="L3 M3 S12" />
+													</layoutData>
+												</Label>
+											</f:label>
+											<f:fields>
+
+												<Text
+													text="{path: 'operationDisruptionsModel>Gravity', formatter: 'airbus.mes.disruptions.Formatter.setGravityText'}">
+													<layoutData>
+														<l:GridData span="L3 M3 S12" />
+													</layoutData>
+												</Text>
+											</f:fields>
+										</f:FormElement>
+										
+										<f:FormElement>
+											<f:label>
+												<Label class="detailLabels" text="{i18nModel>OpenDate}">
+													<layoutData>
+														<l:GridData span="L3 M3 S12" />
+													</layoutData>
+												</Label>
+											</f:label>
+											<f:fields>
+												<Text text="{operationDisruptionsModel>OpeningTime}">
+
+													<layoutData>
+														<l:GridData span="L3 M3 S12" />
+													</layoutData>
+												</Text>
+											</f:fields>
+										</f:FormElement>
 										
 										<f:FormElement>
 											<f:label>
@@ -124,27 +160,7 @@
 												</Text>
 											</f:fields>
 										</f:FormElement>
-																			
-										
-										<f:FormElement>
-											<f:label>
-												<Label class="detailLabels" text="{i18nModel>reason}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
-												</Label>
-											</f:label>
-											<f:fields>
-
-												<Text text="{operationDisruptionsModel>Reason}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
-												</Text>
-											</f:fields>
-										</f:FormElement>
-										
-										
+									
 										<f:FormElement>
 											<f:label>
 												<Label class="detailLabels" text="{i18nModel>resGroup}">
@@ -162,28 +178,7 @@
 												</Text>
 											</f:fields>
 										</f:FormElement>
-																				
-
-										<f:FormElement>
-											<f:label>
-												<Label class="detailLabels" text="{i18nModel>gravity}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
-												</Label>
-											</f:label>
-											<f:fields>
-
-												<Text
-													text="{path: 'operationDisruptionsModel>gravity', formatter: 'airbus.mes.disruptions.Formatter.setGravityText'}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
-												</Text>
-											</f:fields>
-										</f:FormElement>
 										
-		
 		<!-- 						MES V1.5 [BEG] -->								
 										<f:FormElement>
 											<f:label>
@@ -204,28 +199,9 @@
 										</f:FormElement>
 <!-- 									MES V1.5 [End] -->
 
-										<!-- <f:FormElement>
-											<f:label>
-												<Label class="detailLabels" text="{i18nModel>RootCause}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
-												</Label>
-											</f:label>
-											<f:fields>
-
-												<Text text="{operationDisruptionsModel>RootCause}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
-												</Text>
-											</f:fields>
-										</f:FormElement> -->
-																																			
-
 										<f:FormElement>
 											<f:label>
-												<Label class="detailLabels" text="{i18nModel>escalation}">
+												<Label class="detailLabels" text="{i18nModel>TimeLost}">
 													<layoutData>
 														<l:GridData span="L3 M3 S12" />
 													</layoutData>
@@ -233,35 +209,30 @@
 											</f:label>
 											<f:fields>
 
-												<Text
-													text="{path: 'operationDisruptionsModel>EscalationLevel', formatter: 'airbus.mes.disruptions.Formatter.setEscalationText'}">
+												<Text text="{path: 'operationDisruptionsModel>TimeLost', formatter: 'airbus.mes.disruptions.Formatter.setTimeLostValue'}">
 													<layoutData>
 														<l:GridData span="L3 M3 S12" />
 													</layoutData>
 												</Text>
 											</f:fields>
 										</f:FormElement>
-
-
-
+										
 										<f:FormElement>
 											<f:label>
-												<Label class="detailLabels" text="{i18nModel>OpenDate}">
+												<Label class="detailLabels" text="{i18nModel>Expected}">
 													<layoutData>
 														<l:GridData span="L3 M3 S12" />
 													</layoutData>
 												</Label>
 											</f:label>
 											<f:fields>
-												<Text text="{operationDisruptionsModel>OpeningTime}">
-
+												<Text text="{operationDisruptionsModel>RequiredFixBy}">
 													<layoutData>
 														<l:GridData span="L3 M3 S12" />
 													</layoutData>
 												</Text>
 											</f:fields>
 										</f:FormElement>
-
 
 										<f:FormElement>
 											<f:label>
@@ -281,42 +252,7 @@
 												</Text>
 											</f:fields>
 										</f:FormElement>
-
-										<f:FormElement>
-											<f:label>
-												<Label class="detailLabels" text="{i18nModel>expected}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
-												</Label>
-											</f:label>
-											<f:fields>
-												<Text text="{operationDisruptionsModel>RequiredFixBy}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
-												</Text>
-											</f:fields>
-										</f:FormElement>
-
-										<f:FormElement>
-											<f:label>
-												<Label class="detailLabels" text="{i18nModel>TimeLost}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
-												</Label>
-											</f:label>
-											<f:fields>
-
-												<Text text="{path: 'operationDisruptionsModel>TimeLost', formatter: 'airbus.mes.disruptions.Formatter.setTimeLostValue'}">
-													<layoutData>
-														<l:GridData span="L3 M3 S12" />
-													</layoutData>
-												</Text>
-											</f:fields>
-										</f:FormElement>
-
+										
 										<f:FormElement>
 											<f:label>
 												<Label class="detailLabels" text="{i18nModel>timeBeforeNextEsc}">
@@ -326,24 +262,44 @@
 												</Label>
 											</f:label>
 											<f:fields>
-												<Text text="{=${operationDisruptionsModel>EscalationLevel} === 3 ? 'Escalated' : ${operationDisruptionsModel>TimeBeforeNextEscalation}}">
+												<Text text="{parts: [ {path: 'operationDisruptionsModel>EscalationLevel'}, {path: 'operationDisruptionsModel>TimeBeforeNextEscalation'}], formatter: 'airbus.mes.disruptions.Formatter.formatTimeBeforeEsc'}" >
 													<layoutData>
 														<l:GridData span="L3 M3 S12" />
 													</layoutData>
 												</Text>
 											</f:fields>
 										</f:FormElement>
-										
-										<f:FormElement>
+
+										<!-- <f:FormElement>
 											<f:label>
-												<Label class="detailLabels" text="{i18nModel>stMaterial}">
+												<Label class="detailLabels" text="{i18nModel>RootCause}">
 													<layoutData>
 														<l:GridData span="L3 M3 S12" />
 													</layoutData>
 												</Label>
 											</f:label>
 											<f:fields>
-												<Text text="{path: 'operationDisruptionsModel>Materials', formatter: 'airbus.mes.disruptions.Formatter.setMaterialqty'}">
+
+												<Text text="{operationDisruptionsModel>RootCause}">
+													<layoutData>
+														<l:GridData span="L3 M3 S12" />
+													</layoutData>
+												</Text>
+											</f:fields>
+										</f:FormElement> -->
+
+										<f:FormElement>
+											<f:label>
+												<Label class="detailLabels" text="{i18nModel>escalation}">
+													<layoutData>
+														<l:GridData span="L3 M3 S12" />
+													</layoutData>
+												</Label>
+											</f:label>
+											<f:fields>
+
+												<Text
+													text="{path: 'operationDisruptionsModel>EscalationLevel', formatter: 'airbus.mes.disruptions.Formatter.setEscalationText'}">
 													<layoutData>
 														<l:GridData span="L3 M3 S12" />
 													</layoutData>
@@ -361,6 +317,23 @@
 											</f:label>
 											<f:fields>
 												<Text text="{path: 'operationDisruptionsModel>JigTools', formatter: 'airbus.mes.disruptions.Formatter.setMaterialqty'}">
+													<layoutData>
+														<l:GridData span="L3 M3 S12" />
+													</layoutData>
+												</Text>
+											</f:fields>
+										</f:FormElement>
+										
+										<f:FormElement>
+											<f:label>
+												<Label class="detailLabels" text="{i18nModel>stMaterial}">
+													<layoutData>
+														<l:GridData span="L3 M3 S12" />
+													</layoutData>
+												</Label>
+											</f:label>
+											<f:fields>
+												<Text text="{path: 'operationDisruptionsModel>Materials', formatter: 'airbus.mes.disruptions.Formatter.setMaterialqty'}">
 													<layoutData>
 														<l:GridData span="L3 M3 S12" />
 													</layoutData>
@@ -449,8 +422,8 @@
 
 						<Toolbar class="disruptionBottomBar">
 								
-							<Button text="{i18nModel>seeAttachment} (2)" type="Accept" icon="sap-icon://attachment"
-								press="viewAttachments" design="Transparent" />
+							<Button text="{i18nModel>seeAttachment} (2)" icon="sap-icon://attachment"
+								press="viewAttachments" design="Transparent" class="seeAttachButton"  />
 
 							<ToolbarSpacer />
 						
