@@ -7,7 +7,7 @@ sap.ui
 				"airbus.mes.disruptions.ViewDisruption",
 				{
 					pressEvent : undefined,
-					expandedDisruptionPanel : undefined,
+					/*expandedDisruptionPanel : undefined,*/
 
 					/**
 					 * Called when a controller is instantiated and its View
@@ -874,7 +874,7 @@ sap.ui
 					/***********************************************************
 					 * Close other panels when one panel is expanded
 					 */
-					handleDisruptionPanelExpand : function(oevent) {
+					/*handleDisruptionPanelExpand : function(oevent) {
 						
 						if (!oevent.oSource.getExpanded())
 							return;
@@ -892,7 +892,7 @@ sap.ui
 												currentPanel.setExpanded(false)
 										});
 
-					},
+					},*/
 
 					/***********************************************************
 					 * When Comment is Submitted to Escalate Disruption
@@ -933,9 +933,9 @@ sap.ui
 						airbus.mes.disruptions.ModelManager.loadData("Create");
 						
 						
-						// Close expanded disruption panel
+						/*// Close expanded disruption panel
 						if(this.expandedDisruptionPanel)
-							sap.ui.getCore().byId(this.expandedDisruptionPanel).setExpanded(false);
+							sap.ui.getCore().byId(this.expandedDisruptionPanel).setExpanded(false);*/
 						
 						var oOperDetailNavContainer = sap.ui.getCore().byId("operationDetailsView--operDetailNavContainer");
 						oOperDetailNavContainer.to(airbus.mes.disruptions.oView.createDisruption.getId());
@@ -998,9 +998,9 @@ sap.ui
 						airbus.mes.disruptions.ModelManager.loadData("Edit");
 												
 
-						// Close expanded disruption panel
+						/*// Close expanded disruption panel
 						if(this.expandedDisruptionPanel)
-							sap.ui.getCore().byId(this.expandedDisruptionPanel).setExpanded(false);
+							sap.ui.getCore().byId(this.expandedDisruptionPanel).setExpanded(false);*/
 
 						// Navigate to Edit Screen
 						this.getView().oParent.to(airbus.mes.disruptions.oView.createDisruption.getId());

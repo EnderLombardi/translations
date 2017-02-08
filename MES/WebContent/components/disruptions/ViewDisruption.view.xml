@@ -11,18 +11,16 @@
 
 				<CustomListItem>
 
-					<Panel expandable="true" expanded="false" class="disruptionExpandablePanel"
-						expand="handleDisruptionPanelExpand">
+					<!-- <Panel expandable="true" expanded="false" class="disruptionExpandablePanel" expand="handleDisruptionPanelExpand"> -->
+					<Panel class="disruptionExpandablePanel">
 						<headerToolbar>
 							<Toolbar>
 								<core:Icon src="sap-icon://alert" color="{parts: [ 'operationDisruptionsModel>Gravity','operationDisruptionsModel>EscalationLevel'], formatter: 'airbus.mes.disruptions.Formatter.setDisruptionTitle'}" class="sapUiSmallMarginEnd" />
-								<Title class="disrptlistdesc" text="{i18nModel>Disruption} {operationDisruptionsModel>DisruptionNumber} --- {i18nModel>status} : {operationDisruptionsModel>Status} " />
+								<Title class="disrptlistdesc sapUiMediumLargeEnd" text="{i18nModel>Disruption} {operationDisruptionsModel>DisruptionNumber}" />
+								<Title class="disrptlistdesc" text="{i18nModel>status} : {operationDisruptionsModel>Status} " />
 
 								<ToolbarSpacer />
 								
-								<Button text="{i18nModel>Attachment}" type="Accept"
-									design="Transparent" icon="sap-icon://attachment" press="viewAttachments" class="disruptionTitleBarButtons"/>
-
 								<Text
 									text="{i18nModel>closureDate} : {operationDisruptionsModel>ClosureDate}"
 									visible="{path: 'operationDisruptionsModel>Status', formatter: 'airbus.mes.disruptions.Formatter.setClosureDateVisibility'}"
@@ -206,10 +204,7 @@
 										</f:FormElement>
 <!-- 									MES V1.5 [End] -->
 
-
-<!--                                       [Del] V1.5 Beg -->
-
-										<f:FormElement visible="false">
+										<!-- <f:FormElement>
 											<f:label>
 												<Label class="detailLabels" text="{i18nModel>RootCause}">
 													<layoutData>
@@ -225,9 +220,7 @@
 													</layoutData>
 												</Text>
 											</f:fields>
-										</f:FormElement>
-
-<!--                                       [Del] V1.5 END -->
+										</f:FormElement> -->
 																																			
 
 										<f:FormElement>
@@ -455,13 +448,17 @@
 						</Panel>
 
 						<Toolbar class="disruptionBottomBar">
+								
+							<Button text="{i18nModel>seeAttachment} (2)" type="Accept" icon="sap-icon://attachment"
+								press="viewAttachments" design="Transparent" />
+
+							<ToolbarSpacer />
+						
 
 							<Button id="addComment" text="{i18nModel>addComment}"
 								type="Emphasized"
 								visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>ResponsibleFlag'}, {path: 'operationDisruptionsModel>ResolverID'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setAddCommentButtonVisibility'}"
 								press="showCommentBox" design="Transparent"/>
-
-							<ToolbarSpacer />
 
 							<Button text="{i18nModel>acknowledge}" type="Accept"
 								visible="{parts: [ {path: 'operationDisruptionsModel>ResponsibleFlag'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setAcknowledgeButtonVisibility'}"

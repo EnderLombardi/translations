@@ -20,7 +20,7 @@
 
 					</items>
 				</Select>
-				<Label text="{i18nModel>openDate}" />
+				<Label text="{i18nModel>OpenDate}" />
 				<DatePicker enabled="false" id="OpenDate" displayFormat="short"
 					value="{path:'DisruptionDetailModel>/OpeningTime', formatter:'airbus.mes.disruptions.Formatter.getDate'}">
 					<layoutData>
@@ -47,7 +47,7 @@
 
 
 				<core:Title text="" />
-				<Label text="{i18nModel>category}" />
+				<Label text="{i18nModel>Category}" />
 				<Select id="selectCategory" items="{disruptionCategoryModel>/Rowsets/Rowset/0/Row}"
 					change="onSelectionChange" forceSelection="false">
 					<items>
@@ -55,7 +55,7 @@
 							key="{disruptionCategoryModel>MESSAGE_TYPE}" />
 					</items>
 				</Select>
-				<Label text="{i18nModel>expectedResolutionDate}">
+				<Label text="{i18nModel>Expected}">
 				</Label>
 				<DatePicker id="expectedDate" displayFormat="short"
 					value="{path: 'DisruptionDetailModel>/RequiredFixBy', formatter: 'airbus.mes.disruptions.Formatter.getDate'}"
@@ -101,7 +101,7 @@
 					tokenChange="onMaterialTokenChange" liveChange="onMaterialTokenChange"
 					enabled="false">
 				</MultiInput>
-				<Label text="{i18nModel>resolverGroup}" />
+				<Label text="{i18nModel>resGroup}" />
 				<Select id="selectResponsibleGrp" items="{disruptionRsnRespGrp>/Rowsets/Rowset/1/Row}"
 					change="onSelectionChange" forceSelection="false">
 					<items>
@@ -116,7 +116,7 @@
 
 
 				<core:Title text="" />
-				<Label text="{i18nModel>processSeverity}" />
+				<Label text="{i18nModel>gravity}" />
 				<Select id="gravity" selectedKey="1" enabled="false">
 					<items>
 						<core:Item text="{i18nModel>NotBlocked}" key="1" />
@@ -151,7 +151,7 @@
 						<core:Item text="{i18nModel>Closed}" key="{i18nModel>Closed}" />
 					</items>
 				</Select>
-				<Label text="{i18nModel>commitedResolutionDate}" id="promisedDateLabel" />
+				<Label text="{i18nModel>promisedDateTime}" id="promisedDateLabel" />
 				<DatePicker id="promisedDate" valueFormat="yyyy-MM-dd"
 					displayFormat="short"
 					value="{path: 'DisruptionDetailModel>/PromisedDateTime', formatter: 'airbus.mes.disruptions.Formatter.getDate'}"

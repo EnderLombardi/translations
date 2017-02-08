@@ -3319,33 +3319,35 @@ button[id^="polypoly"].sapMBtn:hover > div[id^="polypoly"].sapMBtnHoverable, htm
 
 #ViewDisruptionView--disrptlist .disrptlistdesc {
   font-size: 1rem !important;
-  text-transform: capitalize; }
+  text-transform: capitalize;
+  color: #fff;
+  text-shadow: none; }
 #ViewDisruptionView--disrptlist > .sapMPanelContent {
   padding: 0 1rem; }
 
 .disruptionTitleBarButtons > .sapMBtnReject {
   background-color: transparent !important;
-  color: #cc1919 !important;
+  color: #fff !important;
   border-color: transparent !important;
   text-shadow: none !important; }
   .disruptionTitleBarButtons > .sapMBtnReject > .sapMBtnIcon {
-    color: #cc1919 !important; }
+    color: #fff !important; }
 .disruptionTitleBarButtons:hover {
   background: rgba(0, 86, 112, 0.2) !important; }
 .disruptionTitleBarButtons > .sapMBtnEmphasized {
   background-color: transparent !important;
-  color: #008bc7 !important;
+  color: #fff !important;
   border-color: transparent !important;
   text-shadow: none !important; }
   .disruptionTitleBarButtons > .sapMBtnEmphasized > .sapMBtnIcon {
-    color: #008bc7 !important; }
+    color: #fff !important; }
 .disruptionTitleBarButtons > .sapMBtnAccept {
   background-color: transparent !important;
-  color: #005f28 !important;
+  color: #fff !important;
   border-color: transparent !important;
   text-shadow: none !important; }
   .disruptionTitleBarButtons > .sapMBtnAccept > .sapMBtnIcon {
-    color: #005f28 !important; }
+    color: #fff !important; }
 
 section #ViewDisruptionView .sapMLIBFocusable:focus {
   outline: none; }
@@ -3361,6 +3363,8 @@ section #ViewDisruptionView .sapMLIBFocusable:focus {
   padding: 0;
   margin: 25px 0 25px 2.5% !important; }
 
+.disruptionDetail .disruptionExpandablePanel > div[role=toolbar] {
+  background-color: #fe5000 !important; }
 .disruptionDetail .disruptionExpandablePanel .sapMPanelBGTranslucent {
   background-color: #F5F5F5 !important; }
   .disruptionDetail .disruptionExpandablePanel .sapMPanelBGTranslucent .sapMPanelContent {

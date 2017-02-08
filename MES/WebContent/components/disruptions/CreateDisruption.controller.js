@@ -35,7 +35,6 @@ sap.ui.controller("airbus.mes.disruptions.CreateDisruption",
 			 * false, false, false); }
 			 */
 			this.getView().byId("timeLost").setPlaceholder(airbus.mes.disruptions.Formatter.getConfigTimeFullUnit());
-
 		},
 
 		// *******************on change of item in the ComboBox
