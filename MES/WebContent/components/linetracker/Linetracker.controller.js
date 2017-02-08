@@ -588,7 +588,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	 * Takt actions – load next MSN
 	 */
 	loadNextMsn : function(oEvt){		
-		//extract msn and station
+		sap.ui.getCore().byId("taktActionPopover").close();
 		airbus.mes.linetracker.util.ModelManager.performTaktAction(airbus.mes.linetracker.util.ModelManager.aTaktAction[0]);
 		
 	},
@@ -598,7 +598,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	 * Takt actions – start of assembly
 	 */
 	startAssembly : function(oEvt){		
-		//extract msn and station
+		sap.ui.getCore().byId("taktActionPopover").close();
 		airbus.mes.linetracker.util.ModelManager.performTaktAction(airbus.mes.linetracker.util.ModelManager.aTaktAction[1]);
 
 	},
@@ -608,7 +608,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	 * Takt actions – end of assembly
 	 */
 	endAssembly : function(oEvt){
-		//extract msn and station
+		sap.ui.getCore().byId("taktActionPopover").close();
 		airbus.mes.linetracker.util.ModelManager.performTaktAction(airbus.mes.linetracker.util.ModelManager.aTaktAction[2]);
 
 	},
@@ -619,7 +619,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	 */
 	emptyStation : function(oEvt){
 
-		//extract msn and station
+		sap.ui.getCore().byId("taktActionPopover").close();
 		airbus.mes.linetracker.util.ModelManager.performTaktAction(airbus.mes.linetracker.util.ModelManager.aTaktAction[3]);
 
 	},
@@ -629,7 +629,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	 * Takt actions – undo 
 	 */
 	undo : function(oEvt){		
-		
+		sap.ui.getCore().byId("taktActionPopover").close();
 		if (!this.oUndoAction) {
 			this.oUndoAction = sap.ui.xmlfragment("airbus.mes.linetracker.fragments.undoAction", this);
 			this.getView().addDependent(this.oUndoAction);
