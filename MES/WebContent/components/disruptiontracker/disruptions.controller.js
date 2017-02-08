@@ -266,7 +266,10 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 	 *            oEvt control as an argument to this event
 	 */
 	onTableClick : function(oEvt) {
-
+		var sSelectionMode = oEvt.getSource().getSelectionMode();
+		if(sSelectionMode === "None"){
+			return;
+		}
 		// set data of the selected row to Data Model
 		// binding context changed as table used is sap.ui.table
 		var sPath = oEvt.getParameters().rowBindingContext.getPath();

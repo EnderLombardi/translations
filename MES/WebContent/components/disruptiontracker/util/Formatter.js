@@ -195,17 +195,14 @@ airbus.mes.disruptiontracker.Formatter = {
 	/**
 	 * Set Roles for type of Table Column
 	 */
-	setType : function(bAuthorized) {
-		// if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.DISRUPTION_DIS_DETAIL_CONSULT
-		// === true ){
-		// return "Navigation"
-		// } else {
-		// return Inactive"
-		// }
+	setSelectionMode : function(bAuthorized){
+    	if(bAuthorized === true ){
+    	return "MultiToggle"
+    	} else { 
+    	return "None"
+    	}
 
-		return "Navigation"
-
-	},
+	}
 
 
 };
