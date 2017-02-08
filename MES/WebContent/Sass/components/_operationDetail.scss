@@ -120,24 +120,24 @@
                     left:0;
                     right:0;
                     background:$blood-orange;
-                    
+
                 //IN sap ui5 1.4 is not a list...we need to play with "tabindex"; who change with the active tab
-				// exemple
-				// 	#operationDetailsView--idDisplayOpeAttachments{
-				// 	>.sapMITBContentArrow{
-				//                     content: "";
-				//                     height: 4px;
-				//                     position:absolute;
-				//                     bottom:0;
-				//                     left:0;
-				//                     right:0;
-				//                     background:$blood-orange;
-				//                 }
-				//      }
+                // exemple
+                //     #operationDetailsView--idDisplayOpeAttachments{
+                //     >.sapMITBContentArrow{
+                //                     content: "";
+                //                     height: 4px;
+                //                     position:absolute;
+                //                     bottom:0;
+                //                     left:0;
+                //                     right:0;
+                //                     background:$blood-orange;
+                //                 }
+                //      }
                 }
             }
         }
-     
+
     }
     @at-root html{
         &.sap-desktop{
@@ -160,9 +160,12 @@
         margin-bottom: 2rem;
     }
 }
+#partial{
+    height: 37%;
+}
 #confirmationCheckList{
     position: absolute;
-    top: 30%;
+    top: 15%;
     display: inline-block;
     width: 35%;
     border-right: 1px rgba(15, 45, 100, 0.15) solid;
@@ -314,7 +317,9 @@
     box-shadow: 0 0 5px #333;
     overflow: visible;
 }
-
+#partialConfirm{
+    margin-top: 15%;
+}
 //Pop-up confirm delete
 .ClassOperationDetailPopUp{
     .sapMPageBusyCoversAll{
