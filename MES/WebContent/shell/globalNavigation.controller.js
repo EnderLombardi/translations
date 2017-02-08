@@ -232,14 +232,14 @@ sap.ui.controller(
                                 airbus.mes.disruptionkpi.ModelManager.loadDisruptionKPIModel();
                                 airbus.mes.shell.AutoRefreshManager.clearInterval();
                                 //refresh
-                                
+                                airbus.mes.disruptionkpi.ModelManager.loadDisruptionKPIModel();
                                 airbus.mes.shell.AutoRefreshManager.setInterval("disruptionKPIView");
 
                                 break;
                             case "idLinetracker1":
                                 airbus.mes.shell.AutoRefreshManager.clearInterval();
                                 //refresh
-
+                                airbus.mes.linetracker.util.ModelManager.loadLinetrackerKPI();
                                 airbus.mes.shell.AutoRefreshManager.setInterval("idLinetracker1");
                                 
                                 break;

@@ -51,10 +51,10 @@ airbus.mes.shell.AutoRefreshConfig = {
 	},
 
 	idLinetracker1 : {
-		"timer" : 180,
+		"timer" : undefined,
 		"useraction" : false,
 		"area" : function() {
-			return airbus.mes.linetracker.oView.getController().renderStationTracker();
+			return airbus.mes.linetracker.util.ModelManager.loadLinetrackerKPI();
 		}
 	},
 	renderCalendarTracker : {
