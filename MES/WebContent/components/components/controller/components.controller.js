@@ -15,11 +15,6 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         this.changeButtonColor();
 //        Reset value
 //        this.getView().byId("idSearchComponent").setValue();
-//        console.log(oTable.getRows()[0].getCells()[11].getItems()[1])
-//        oTable.getRows()[0].getCells()[11].getItems()[1].attachEvent("onChange", function(oEvent){
-//            console.log(oEvent.getSource());
-//        });
-//        oTable.getRows()[0].getCells()[11].getItems()[1].fireEvent(oTable.getRows()[0].getCells()[11].getItems()[1].onChange)
     },
 
     changeButtonColor: function(){
@@ -254,8 +249,32 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         sap.ui.getCore().byId("componentsView--btnComponentsFreeze").setEnabled(true);
     },
 
-    committedLiveChange: function(){
-        console.log("toto");
+    committedLiveChange: function(oEvent){
+        var inputVal = oEvent.getSource().getValue();
+        var dataJson = sap.ui.getCore().getModel("componentsWorkOrderDetail").getData().Rowsets.Rowset[0].Row;
+        var index = oEvent.getSource().oParent.oParent.getIndex();
+        if(inputVal > dataJson[index].withdrawQty){
+            oEvent.getSource().setValue(dataJson[index].withdrawQty);
+        }
+        if(inputVal < 0){
+            oEvent.getSource().setValue(0);
+        }
+        sap.ui.getCore().byId("componentsView--btnComponentsSave").setEnabled(true);
+        sap.ui.getCore().byId("componentsView--btnComponentsFreeze").setEnabled(true);
+    },
+
+    fittedLiveChange: function(oEvent){
+        var inputVal = oEvent.getSource().getValue();
+        var dataJson = sap.ui.getCore().getModel("componentsWorkOrderDetail").getData().Rowsets.Rowset[0].Row;
+        var index = oEvent.getSource().oParent.oParent.getIndex();
+        if(inputVal > dataJson[index].withdrawQty){
+            oEvent.getSource().setValue(dataJson[index].withdrawQty);
+        }
+        if(inputVal < 0){
+            oEvent.getSource().setValue(0);
+        }
+        sap.ui.getCore().byId("componentsView--btnComponentsSave").setEnabled(true);
+        sap.ui.getCore().byId("componentsView--btnComponentsFreeze").setEnabled(true);
     }
 
 });
