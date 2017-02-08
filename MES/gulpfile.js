@@ -13,6 +13,7 @@ var fs = require("fs");
 var connect = require('gulp-connect');
 var runSequence = require('run-sequence');
 var open = require('gulp-open');
+var sass = require('gulp-sass');
 
 var pkg = JSON.parse(fs.readFileSync('./package.json', 'utf-8'));
 var version = {};
@@ -233,6 +234,44 @@ gulp.task('bump', ['bump_ver', 'build'], function () {
 		}));;
 });
 
+
+//--------------------------------------------------------------------------------------------------------------------------//
+//																															//
+//	 													sass     															//
+//																															//
+//--------------------------------------------------------------------------------------------------------------------------//
+
+gulp.task('styles', function () {
+	gulp.src('WebContent/Sass/**/*.scss')
+		.pipe(sass().on('error', sass.logError))
+		.pipe(gulp.dest('WebContent/Sass/'))
+});
+
+/**
+ * This task permits to inject file references into index.html.
+ * Once the injection is done , we do a connect.reload in order to perform a livereload.
+ */
+gulp.task('injectToHtml', false, function () {
+	var target = gulp.src(userConfig.build_dir + '/index.html');
+	// It's not necessary to read the files (will speed up things), we're only after their paths:
+	var sources = gulp.src([
+		userConfig.build_dir + '/src/app/modules.js',
+		userConfig.build_dir + '/src/app/app.js',
+		userConfig.build_dir + '/templates-app.js',
+		userConfig.build_dir + '/templates-fwk.js',
+		userConfig.build_dir + '/src/app/**/*.js',
+		userConfig.build_dir + '/assets/styles/' + pkg.name + '-' + pkg.version + '.css',
+	], { read: false });
+
+	return target
+		.pipe(inject(sources, { addRootSlash: false, ignorePath: userConfig.build_dir }))
+		.pipe(replaceTask({ patterns: [{ match: 'moduleName', replacement: bootstrapModule }] }))
+		.pipe(gulp.dest(userConfig.build_dir))
+		.pipe(connect.reload());
+
+
+
+});
 //--------------------------------------------------------------------------------------------------------------------------//
 //																															//
 //															connect															//
@@ -241,16 +280,16 @@ gulp.task('bump', ['bump_ver', 'build'], function () {
 
 gulp.task('connect', function () {
 	return connect.server({
-		// root: 'WebContent',
+		root: 'WebContent',
 		port: 8080,
 		middleware: function (connect, opt) {
 			return [
 				function (req, res, next) {
 					// treat POST request like GET during dev
-					if(req.url.endsWith('.json')) {
+					if (req.url.endsWith('.json')) {
 						req.method = 'GET';
 					}
-					
+
 					return next();
 				}
 			];
@@ -261,17 +300,26 @@ gulp.task('connect', function () {
 
 gulp.task('open', function () {
 	gulp.src(__filename)
-		.pipe(open({ uri: 'http://localhost:8080/WebContent/shell' }));
+		.pipe(open({ uri: 'http://localhost:8080/shell' }));
 });
 
 gulp.task('serve', function (callback) {
 	runSequence(
+		'styles',
 		'connect',
 		'open',
+		'watch',
 		callback);
+
 });
 
 
+gulp.task('watch', false, function () {
+	gulp.watch(
+		'WebContent/Sass/**/*.scss', 
+		['styles']
+	);
+});
 //--------------------------------------------------------------------------------------------------------------------------//
 //																															//
 //															build															//
