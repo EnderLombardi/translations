@@ -67,7 +67,7 @@
 
 					<ToolbarSpacer />
 
-					<Button text="{disruptiontrackerI18n>ExporttoExcel}" icon="sap-icon://excel-attachment"
+					<Button text="{disruptiontrackerI18n>extractDisruptionList}" icon="sap-icon://excel-attachment"
 						press="handleSelectedRowExcelExport" id="exportbutton" class="borderbutton" />
 
 					<Button id="onDisruptionTableSettings" type="Transparent"
@@ -85,7 +85,7 @@
 		</Panel>
 
 
-		<ui:Table id="disruptionsTable" enableCellFilter="true" showNoData="false" selectionMode="Single" selectionBehavior="RowOnly"
+		<ui:Table id="disruptionsTable" enableCellFilter="true" showNoData="false" selectionMode="MultiToggle" selectionBehavior="Row"
 			rows="{ path: 'disruptionsTrackerModel>/Rowsets/Rowset/0/Row' }"
 			visible="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setVisible'}" cellClick="onTableClick">
 
