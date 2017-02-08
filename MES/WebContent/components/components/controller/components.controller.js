@@ -15,7 +15,11 @@ sap.ui.controller("airbus.mes.components.controller.components", {
         this.changeButtonColor();
 //        Reset value
 //        this.getView().byId("idSearchComponent").setValue();
-        console.log(oTable.getRows()[0].getCells()[11].getItems()[1])
+//        console.log(oTable.getRows()[0].getCells()[11].getItems()[1])
+//        oTable.getRows()[0].getCells()[11].getItems()[1].attachEvent("onChange", function(oEvent){
+//            console.log(oEvent.getSource());
+//        });
+//        oTable.getRows()[0].getCells()[11].getItems()[1].fireEvent(oTable.getRows()[0].getCells()[11].getItems()[1].onChange)
     },
 
     changeButtonColor: function(){
