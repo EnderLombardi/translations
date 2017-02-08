@@ -635,8 +635,9 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 			this.oUndoAction = sap.ui.xmlfragment("airbus.mes.linetracker.fragments.undoAction", this);
 			this.getView().addDependent(this.oUndoAction);
 		}
-		//var nextMsn=sap.ui.getCore().getModel("statusActionModel").oData.nextMsn;
+		var nextMsn=sap.ui.getCore().getModel("statusActionModel").oData.nextMsn;
 		var currentMsn=sap.ui.getCore().getModel("statusActionModel").oData.msn;
+		var previousMsn=sap.ui.getCore().getModel("statusActionModel").oData.previousMsn;
 		var undoStatus= sap.ui.getCore().getModel("statusActionModel").oData.status;
 		var undoText;
 		if(undoStatus=="UN_LOADED" || undoStatus == "TO_BE_LOADED"){
@@ -650,10 +651,24 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 		}else{
 			undoText="undoActionText1";
 		}
-		
+		sap.ui.getCore().byId("idUndoConfirm").setEnabled(true);
 		var text=this.getView().getModel("i18n").getProperty(undoText);
 		if(text!=undefined){			
-		text=text.replace("$paramCurrentMsn",currentMsn);		
+		if(previousMsn=="NA" && currentMsn){
+			text=this.getView().getModel("i18n").getProperty("undoActionText5");
+			text=text.replace("$paramCurrentMsn",currentMsn);
+		}
+		else if(!currentMsn && previousMsn=="NA"){
+			text=this.getView().getModel("i18n").getProperty("undoActionText6");
+			sap.ui.getCore().byId("idUndoConfirm").setEnabled(false);
+		}
+		else if(!currentMsn && previousMsn && previousMsn!="NA")
+			text=text.replace("$paramCurrentMsn",previousMsn);
+		}
+		else{
+			text=text.replace("$paramCurrentMsn",currentMsn);
+			text=text.replace("$paramPreviousMsn",previousMsn);
+
 		}
 		sap.ui.getCore().byId("undoText").setText(text);
 		this.oUndoAction.open();

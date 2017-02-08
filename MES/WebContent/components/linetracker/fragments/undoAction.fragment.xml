@@ -5,7 +5,7 @@
 			<Label id="undoText" text="{i18n>undoActionText}"></Label>
 		</content>
 		<buttons>
-			<Button text="{i18n>confirm}" press="onUndoConfirm" />
+			<Button id="idUndoConfirm" text="{i18n>confirm}" press="onUndoConfirm" />
 			<Button text="{i18n>cancel}" press="onCancel" />
 		</buttons>
 	</Dialog>
