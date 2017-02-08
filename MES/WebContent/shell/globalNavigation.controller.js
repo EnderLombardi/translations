@@ -175,7 +175,7 @@ sap.ui.controller(
                             break;
                         case "disruptiontrackerView":
                             textButtonTo = "Go to Disruption Tracker";
-                            airbus.mes.settings.GlobalFunction.navigateTo(textButtonTo, "back");
+                            airbus.mes.settings.GlobalFunction.navigateTo(textButtonTo, "disruptiontracker");
                             break;
                         case "disruptionKPIView":
                             textButtonTo = "Go to Disruption KPI";

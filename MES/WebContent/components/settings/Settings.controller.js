@@ -563,7 +563,7 @@ sap.ui.controller("airbus.mes.settings.Settings",
 
                 /** Disruption Tracker **/
                 case "disruptiontracker":
-                    airbus.mes.shell.util.navFunctions.disruptionTracker();
+                    nav.to(airbus.mes.homepage.oView.sId);
                     break;
 
                 /** Disruption Tracker KPI **/

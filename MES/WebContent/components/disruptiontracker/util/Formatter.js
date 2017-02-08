@@ -77,7 +77,9 @@ airbus.mes.disruptiontracker.Formatter = {
 	},
 
 	formatOpeningTime : function(openDate, closureDate) {
-
+		if (openDate != undefined)
+			return 0;
+		
 		if (closureDate == undefined || closureDate == "")
 			return 0;
 
@@ -174,8 +176,8 @@ airbus.mes.disruptiontracker.Formatter = {
 		return airbus.mes.disruptiontracker.Formatter.removeDecimal(time);
 	},
 	setDisruptionTrackerStatus : function(status) {
-		if(status)
-		return airbus.mes.disruptiontracker.oView.getModel("disruptiontrackerI18n").getProperty("status." + status.toLowerCase());
+		if (status)
+			return airbus.mes.disruptiontracker.oView.getModel("disruptiontrackerI18n").getProperty("status." + status.toLowerCase());
 	},
 	/**
 	 * @param milli
@@ -193,13 +195,14 @@ airbus.mes.disruptiontracker.Formatter = {
 	/**
 	 * Set Roles for type of Table Column
 	 */
-	setType : function(bAuthorized){
-//    	if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.DISRUPTION_DIS_DETAIL_CONSULT === true ){
-//    	return "Navigation"
-//    	} else { 
-//    	return Inactive"
-//    	}
-		
+	setType : function(bAuthorized) {
+		// if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.DISRUPTION_DIS_DETAIL_CONSULT
+		// === true ){
+		// return "Navigation"
+		// } else {
+		// return Inactive"
+		// }
+
 		return "Navigation"
 
 	},
@@ -207,12 +210,13 @@ airbus.mes.disruptiontracker.Formatter = {
 	 * Set Disruption table visible on the basis of Roles
 	 */
 
-	setVisible : function(){
-//    	if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.DISRUPTION_DISRUPTION_LIST === true ){
-//    	return true;
-//    	} else { 
-//    	return false;
-//    	}
+	setVisible : function() {
+		// if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.DISRUPTION_DISRUPTION_LIST
+		// === true ){
+		// return true;
+		// } else {
+		// return false;
+		// }
 		return true;
 	}
 
