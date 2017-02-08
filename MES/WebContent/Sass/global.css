@@ -3349,13 +3349,13 @@ button[id^="polypoly"].sapMBtn:hover > div[id^="polypoly"].sapMBtnHoverable, htm
   .disruptionTitleBarButtons > .sapMBtnAccept > .sapMBtnIcon {
     color: #fff !important; }
 
-.seeAttachButton {
+.transparentBlueButton {
   background: transparent !important; }
-  .seeAttachButton .sapMBtnInner {
+  .transparentBlueButton .sapMBtnInner {
     border: 0px !important; }
-  .seeAttachButton span {
+  .transparentBlueButton span {
     color: #0f86ae !important; }
-  .seeAttachButton :not(.sapMBtnDisabled) > .sapMBtnInner.sapMBtnActive {
+  .transparentBlueButton :not(.sapMBtnDisabled) > .sapMBtnInner.sapMBtnActive {
     background: transparent !important;
     color: #0f86ae !important; }
 

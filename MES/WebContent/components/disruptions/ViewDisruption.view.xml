@@ -15,7 +15,7 @@
 					<Panel class="disruptionExpandablePanel">
 						<headerToolbar>
 							<Toolbar>
-								<core:Icon src="sap-icon://alert" color="{parts: [ 'operationDisruptionsModel>Gravity','operationDisruptionsModel>EscalationLevel'], formatter: 'airbus.mes.disruptions.Formatter.setDisruptionTitle'}" class="sapUiSmallMarginEnd" />
+								<!-- <core:Icon src="sap-icon://alert" color="{parts: [ 'operationDisruptionsModel>Gravity','operationDisruptionsModel>EscalationLevel'], formatter: 'airbus.mes.disruptions.Formatter.setDisruptionTitle'}" class="sapUiSmallMarginEnd" /> -->
 								<Title class="disrptlistdesc sapUiMediumMarginEnd" text="{i18nModel>Disruption} {operationDisruptionsModel>DisruptionNumber}" />
 								<Title class="disrptlistdesc" text="{i18nModel>status} : {operationDisruptionsModel>Status} " />
 
@@ -60,7 +60,7 @@
 											</f:label>
 											<f:fields>
 
-												<Text text="{path: 'operationDisruptionsModel>CategoryClass'}">
+												<Text text="{=${operationDisruptionsModel>CategoryClass} == '' ? '-' : ${operationDisruptionsModel>CategoryClass}}">
 													<layoutData>
 														<l:GridData span="L3 M3 S12" />
 													</layoutData>
@@ -363,8 +363,8 @@
 							</f:formContainers>
 						</f:Form>
 
-						<Text text="{i18nModel>status} : {path: 'operationDisruptionsModel>Status', formatter: 'airbus.mes.disruptions.Formatter.setDisruptionStatus'}"
-							class="sapUiMediumMarginBegin statusText" />
+						<!-- <Text text="{i18nModel>status} : {path: 'operationDisruptionsModel>Status', formatter: 'airbus.mes.disruptions.Formatter.setDisruptionStatus'}"
+							class="sapUiMediumMarginBegin statusText" /> -->
 
 						<VBox
 							visible="{path: 'operationDisruptionsModel>Solution', formatter: 'airbus.mes.disruptions.Formatter.setSolutionVisibility'}"
@@ -375,6 +375,9 @@
 							<Text text="{path: 'operationDisruptionsModel>Solution', formatter: 'airbus.mes.disruptions.Formatter.formatComment'}"
 								class="sapUiSmallMarginBegin  sapUiSmallMarginEnd sapUiSmallMarginBottom"></Text>
 						</VBox>
+						
+						<Button text="{i18nModel>seeMoreMessages}" icon="sap-icon://email" press="viewMoreMesssages"
+							design="Transparent" class="transparentBlueButton sapUiSmallMarginTop sapUiTinyMarginTopBottom"  />
 
 						<List showNoData="false" class="sapUiSmallMarginBeginEnd"
 							items="{path: 'operationDisruptionsModel>/Rowsets/Rowset/1/Row'}">
@@ -399,7 +402,6 @@
 							</CustomListItem>
 						</List>
 
-
 						<Panel id="commentBox" visible="false">
 
 							<VBox width="79%">
@@ -422,8 +424,8 @@
 
 						<Toolbar class="disruptionBottomBar">
 								
-							<Button text="{i18nModel>seeAttachment} (2)" icon="sap-icon://attachment"
-								press="viewAttachments" design="Transparent" class="seeAttachButton"  />
+							<Button text="{i18nModel>seeAttachment}" icon="sap-icon://attachment"
+								press="viewAttachments" design="Transparent" class="transparentBlueButton"  />
 
 							<ToolbarSpacer />
 						
