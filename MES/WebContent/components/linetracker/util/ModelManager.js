@@ -478,11 +478,13 @@ airbus.mes.linetracker.util.ModelManager = {
 		oModel.setProperty("/Rowsets/Rowset/0/Row/0/stationDescription",result.stationDescription);
 		oModel.setProperty("/Rowsets/Rowset/0/Row/0/msn",result.msn);
 		oModel.setProperty("/Rowsets/Rowset/0/Row/0/lineDescription",result.lineDescription);
-		oModel.setProperty("/Rowsets/Rowset/0/Row/0/programDescription",result.lineDescription);
+		oModel.setProperty("/Rowsets/Rowset/0/Row/0/programDescription",result.programDescription);
 		oModel.setProperty("/Rowsets/Rowset/0/Row/0/station",result.station);
 		oModel.setProperty("/Rowsets/Rowset/0/Row/0/line",result.line);
-		oModel.setProperty("/Rowsets/Rowset/0/Row/0/program",result.line);
+		oModel.setProperty("/Rowsets/Rowset/0/Row/0/program",result.program);
 		oModel.refresh();
+		
+		
 	},
 	/**
 	 * @param station, msn, action

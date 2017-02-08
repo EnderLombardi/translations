@@ -160,11 +160,16 @@ airbus.mes.linetracker.util.Formatter = {
 		}
 
 	},
-	
+	/**
+	 * BR:SD-PPC-ST-1910 Set the progress Icon for takt operations 
+	 * on takt popover fragment
+	 * @param 
+	 * @param return boolean
+	 *            
+	 */
 	showHideButtonsOnStatus : function(status) {
 		
 		if (this.getId() === "loadNextMSN"){
-//			if(status === "UN_LOADED" || status === "COMPLETE" || status === "TO_BE_LOADED")
 				 if( status === "LOADED" || status === "IN_PROGRESS" || status === "COMPLETE")
 				return false;
 				 else
@@ -172,15 +177,12 @@ airbus.mes.linetracker.util.Formatter = {
 		}
 		
 		if (this.getId() === "startAssembly"){
-//			 if( status !== "LOADED" || status !== "IN_PROGRESS" )
 			if(status === "IN_PROGRESS" || status === "UN_LOADED" || status === "COMPLETE" || status === "TO_BE_LOADED")
 				return false;
 			 else
 				 return true;
-
 		}
 		if (this.getId() === "emptyStation" ){
-//			if( status !== "UN_LOADED" )
 			if( status === "UN_LOADED" || status === "TO_BE_LOADED" || status === "IN_PROGRESS"  || status === "LOADED" )
 				return false;
 			 else
@@ -188,7 +190,6 @@ airbus.mes.linetracker.util.Formatter = {
 
 		}
 		if (this.getId() === "endAssembly"){
-//			 if( status !== "IN_PROGRESS" || status !== "LOADED" )
 			 if(status === "UN_LOADED" || status === "COMPLETE" || status === "TO_BE_LOADED" || status === "LOADED" )
 				return false;
 			 else
