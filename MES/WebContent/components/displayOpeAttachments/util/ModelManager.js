@@ -62,7 +62,7 @@ airbus.mes.displayOpeAttachments.util.ModelManager = {
 		
 		oViewModel.loadData(this.getDOADetail(paramArray), null, false);
 
-		if (oViewModel.oData.Rowsets) {
+		if (oViewModel.oData.Rowsets && oViewModel.oData.Rowsets.Rowset && oViewModel.oData.Rowsets.Rowset[0].Row) {
 			var row = oViewModel.oData.Rowsets.Rowset[0].Row;
 			airbus.mes.displayOpeAttachments.util.Formatter.extractWorkinstruction(row);//create dokar, doknr & doktl using workInstruction
 			airbus.mes.displayOpeAttachments.util.Formatter.sortByDocType(row);//sort the documents by doc type

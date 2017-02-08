@@ -13,7 +13,8 @@ sap.ui.controller("airbus.mes.displayOpeAttachments.controller.displayOpeAttachm
 	init: function () {
 		var oModule = airbus.mes.displayOpeAttachments.util.ModelManager;
 		oModule.loadDOADetail();
-		if (airbus.mes.displayOpeAttachments.oView.getModel("getOpeAttachments").oData.Rowsets) {
+		var model = airbus.mes.displayOpeAttachments.oView.getModel("getOpeAttachments");
+		if (model.oData.Rowsets && model.oData.Rowsets && model.oData.Rowsets.Rowset && model.oData.Rowsets.Rowset[0].Row) {
 			oModule.createTreeTableArray();
 
 			this.firstVisibleRow = 0;
