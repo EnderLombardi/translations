@@ -501,7 +501,7 @@ airbus.mes.calendar.util.ShiftManager = {
 	        if ( Math.abs(sTime) > 86400000 ) {
 		        // Takt is over one day step is done by day
 	        	calendar.matrix.timeline.x_size += Math.ceil((dEndDate - dStartDate)/1000/60/60/24);
-				return dStartDate;
+				return dStartDate.setHours(0);
 	        	
 	        } else  {
 		        // Takt is over one day step is done by hour
