@@ -96,10 +96,10 @@ sap.ui.controller("airbus.mes.operationstatus.status", {
             // Re-Render Station Tracker
             /*airbus.mes.shell.oView.getController().renderStationTracker();*/
 
-			// update operationDetailsModel
-			sap.ui.getCore().getModel("operationDetailModel").setProperty("/Rowsets/Rowset/0/Row/0/status", "IN_WORK");
-			sap.ui.getCore().getModel("operationDetailModel").setProperty("/Rowsets/Rowset/0/Row/0/paused", "false");
-			sap.ui.getCore().getModel("operationDetailModel").refresh();
+            // update operationDetailsModel
+            sap.ui.getCore().getModel("operationDetailModel").setProperty("/Rowsets/Rowset/0/Row/0/status", "IN_WORK");
+            sap.ui.getCore().getModel("operationDetailModel").setProperty("/Rowsets/Rowset/0/Row/0/paused", "false");
+            sap.ui.getCore().getModel("operationDetailModel").refresh();
 
             // Refresh Station tracker Gantt Chart
             /*airbus.mes.shell.oView.getController().renderStationTracker();*/
@@ -155,7 +155,7 @@ sap.ui.controller("airbus.mes.operationstatus.status", {
 
             // update operationDetailsModel
             sap.ui.getCore().getModel("operationDetailModel").setProperty("/Rowsets/Rowset/0/Row/0/status", "IN_QUEUE")
-			sap.ui.getCore().getModel("operationDetailModel").setProperty("/Rowsets/Rowset/0/Row/0/paused", "---");
+            sap.ui.getCore().getModel("operationDetailModel").setProperty("/Rowsets/Rowset/0/Row/0/paused", "---");
             sap.ui.getCore().getModel("operationDetailModel").refresh();
         } else {
             airbus.mes.shell.busyManager.unsetBusy(airbus.mes.stationtracker.oView, "stationtracker");
@@ -209,7 +209,7 @@ sap.ui.controller("airbus.mes.operationstatus.status", {
             sap.ui.getCore().byId("confirmPinLabel").setVisible(true);
             sap.ui.getCore().byId("pinForConfirmation").setVisible(true);
         }
-
+        airbus.mes.operationdetail.ModelManager.getDataConfirmationCheckList();
         airbus.mes.operationdetail.Formatter.setIconTypeConfirmation();
         oView._oUserConfirmationDialog.open();
         airbus.mes.operationdetail.Formatter.setIconColor();
@@ -568,117 +568,117 @@ sap.ui.controller("airbus.mes.operationstatus.status", {
     },
 
 
-	setProgressScreenBtn : function(actionBtnStatus, activateBtnStatus, confirmBtnStatus) {
-		sap.ui.getCore().byId("operationDetailPopup--btnPause").setVisible(actionBtnStatus);
-		sap.ui.getCore().byId("operationDetailPopup--btnComplete").setVisible(actionBtnStatus);
-		sap.ui.getCore().byId("operationDetailPopup--btnActivate").setVisible(activateBtnStatus);
-		sap.ui.getCore().byId("operationDetailPopup--btnConfirm").setVisible(confirmBtnStatus);
-	},
-	
-	setOperationActionButtons : function() {
-		
-		 // Not started ever
-		if (airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/previously_start") != "true") { 
-			this.setProgressScreenBtn(false, false, false);
-			
-			return;
-		} 
-		
-		
-		// Get status
-		var sStatus = airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/status");
-		
-		switch(sStatus){
-		
-		case airbus.mes.operationdetail.Formatter.status.notStarted:
-		case airbus.mes.operationdetail.Formatter.status.paused:
-			
-			this.setProgressScreenBtn(false, true, false);
-			break;
-			
-		case airbus.mes.operationdetail.Formatter.status.active:
-			
-			this.setProgressScreenBtn(true, false, true);
-			break;
-			
-		case airbus.mes.operationdetail.Formatter.status.blocked:
-			
-			this.setProgressScreenBtn(false, false, true);
-			break;
-			
-		case airbus.mes.operationdetail.Formatter.status.completed:
-			this.setProgressScreenBtn(false, false, false);
-			break;
-		}
+    setProgressScreenBtn : function(actionBtnStatus, activateBtnStatus, confirmBtnStatus) {
+        sap.ui.getCore().byId("operationDetailPopup--btnPause").setVisible(actionBtnStatus);
+        sap.ui.getCore().byId("operationDetailPopup--btnComplete").setVisible(actionBtnStatus);
+        sap.ui.getCore().byId("operationDetailPopup--btnActivate").setVisible(activateBtnStatus);
+        sap.ui.getCore().byId("operationDetailPopup--btnConfirm").setVisible(confirmBtnStatus);
+    },
+
+    setOperationActionButtons : function() {
+
+         // Not started ever
+        if (airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/previously_start") != "true") {
+            this.setProgressScreenBtn(false, false, false);
+
+            return;
+        }
+
+
+        // Get status
+        var sStatus = airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").getProperty("/Rowsets/Rowset/0/Row/0/status");
+
+        switch(sStatus){
+
+        case airbus.mes.operationdetail.Formatter.status.notStarted:
+        case airbus.mes.operationdetail.Formatter.status.paused:
+
+            this.setProgressScreenBtn(false, true, false);
+            break;
+
+        case airbus.mes.operationdetail.Formatter.status.active:
+
+            this.setProgressScreenBtn(true, false, true);
+            break;
+
+        case airbus.mes.operationdetail.Formatter.status.blocked:
+
+            this.setProgressScreenBtn(false, false, true);
+            break;
+
+        case airbus.mes.operationdetail.Formatter.status.completed:
+            this.setProgressScreenBtn(false, false, false);
+            break;
+        }
 
     }
 
-//	/**
-//	 * Used to know if an operation is started/paused/notStarted/complete
-//	 * and Display button to pause/confirm/complete/activate
-//	 * 
-//	 */
-//	operationIsActive : function() {
-//		
-//		var aModel = airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0];
-//		var sPreviousStarted = aModel.previously_start;
-//		var sStatus = aModel.realStatus;
-//		var sPaused = aModel.paused;
-//		
-//		
-////		// Operation is started
-////		if ( sPreviousStarted === "true" ) {
-////			this.setProgressScreenBtn( true, false, true );				
-////		}
-////		
-////		// Operation is paused
-////		if ( sPaused === "---" && sPreviousStarted === "true" ) {
-////			this.setProgressScreenBtn( false, true, false );
-////		}
-////		
-////		// Operation is not started
-////		if (  sPreviousStarted === "false" ) {	
-////			this.setProgressScreenBtn( false, true, false );				
-////		}
-//		
-//		switch	(sPreviousStarted) {
-//		
-//		case "true":
-//			
-//			switch	(sPaused) {
-//			
-//			case "---":
-//				// Operation is paused				
-//				this.setProgressScreenBtn( false, true, false );
-//				break;
-//				
-//			default :
-//				// Operation is started				
-//				this.setProgressScreenBtn( true, false, true );		
-//				break;						
-//			}
-//						
-//			break;
-//		case "false":
-//			
-//			this.setProgressScreenBtn( false, false, false );	
-//			break;			
-//		default :
-//		
+//    /**
+//     * Used to know if an operation is started/paused/notStarted/complete
+//     * and Display button to pause/confirm/complete/activate
+//     *
+//     */
+//    operationIsActive : function() {
 //
-//			break;			
-//		}
+//        var aModel = airbus.mes.stationtracker.operationDetailPopup.getModel("operationDetailModel").oData.Rowsets.Rowset[0].Row[0];
+//        var sPreviousStarted = aModel.previously_start;
+//        var sStatus = aModel.realStatus;
+//        var sPaused = aModel.paused;
 //
-//		// Operation is complete
-//		if ( sStatus === "0" ) {	
-//			//No action available on complete status
-//			this.setProgressScreenBtn( false, false, false );				
-//		}
 //
-//		// Operation is blocked
-//		if ( sStatus === "4" ||  sStatus === "5" ) {
-//			//No action available on complete status
-//			this.setProgressScreenBtn( false, false, true );			
-//		}
-//	}
+////        // Operation is started
+////        if ( sPreviousStarted === "true" ) {
+////            this.setProgressScreenBtn( true, false, true );
+////        }
+////
+////        // Operation is paused
+////        if ( sPaused === "---" && sPreviousStarted === "true" ) {
+////            this.setProgressScreenBtn( false, true, false );
+////        }
+////
+////        // Operation is not started
+////        if (  sPreviousStarted === "false" ) {
+////            this.setProgressScreenBtn( false, true, false );
+////        }
+//
+//        switch    (sPreviousStarted) {
+//
+//        case "true":
+//
+//            switch    (sPaused) {
+//
+//            case "---":
+//                // Operation is paused
+//                this.setProgressScreenBtn( false, true, false );
+//                break;
+//
+//            default :
+//                // Operation is started
+//                this.setProgressScreenBtn( true, false, true );
+//                break;
+//            }
+//
+//            break;
+//        case "false":
+//
+//            this.setProgressScreenBtn( false, false, false );
+//            break;
+//        default :
+//
+//
+//            break;
+//        }
+//
+//        // Operation is complete
+//        if ( sStatus === "0" ) {
+//            //No action available on complete status
+//            this.setProgressScreenBtn( false, false, false );
+//        }
+//
+//        // Operation is blocked
+//        if ( sStatus === "4" ||  sStatus === "5" ) {
+//            //No action available on complete status
+//            this.setProgressScreenBtn( false, false, true );
+//        }
+//    }
 });
