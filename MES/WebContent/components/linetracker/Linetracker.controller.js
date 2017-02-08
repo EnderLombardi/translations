@@ -668,6 +668,7 @@ sap.ui.controller("airbus.mes.linetracker.Linetracker", {
 	onUndoConfirm:function(oEvt){
 		//extract msn and station
 		airbus.mes.linetracker.util.ModelManager.performTaktAction(airbus.mes.linetracker.util.ModelManager.aTaktAction[4]);
+		this.oUndoAction.close();
 	}
 	
 	
