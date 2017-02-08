@@ -243,35 +243,10 @@ gulp.task('bump', ['bump_ver', 'build'], function () {
 
 gulp.task('styles', function () {
 	gulp.src('WebContent/Sass/**/*.scss')
-		.pipe(sass({ outputStyle: 'compacted' }).on('error', sass.logError))
+		.pipe(sass().on('error', sass.logError))
 		.pipe(gulp.dest('WebContent/Sass/'))
 });
 
-/**
- * This task permits to inject file references into index.html.
- * Once the injection is done , we do a connect.reload in order to perform a livereload.
- */
-gulp.task('injectToHtml', false, function () {
-	var target = gulp.src(userConfig.build_dir + '/index.html');
-	// It's not necessary to read the files (will speed up things), we're only after their paths:
-	var sources = gulp.src([
-		userConfig.build_dir + '/src/app/modules.js',
-		userConfig.build_dir + '/src/app/app.js',
-		userConfig.build_dir + '/templates-app.js',
-		userConfig.build_dir + '/templates-fwk.js',
-		userConfig.build_dir + '/src/app/**/*.js',
-		userConfig.build_dir + '/assets/styles/' + pkg.name + '-' + pkg.version + '.css',
-	], { read: false });
-
-	return target
-		.pipe(inject(sources, { addRootSlash: false, ignorePath: userConfig.build_dir }))
-		.pipe(replaceTask({ patterns: [{ match: 'moduleName', replacement: bootstrapModule }] }))
-		.pipe(gulp.dest(userConfig.build_dir))
-		.pipe(connect.reload());
-
-
-
-});
 //--------------------------------------------------------------------------------------------------------------------------//
 //																															//
 //															connect															//
