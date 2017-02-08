@@ -32,50 +32,24 @@ airbus.mes.docviewer.ModelManager = {
 		
 		// Firstly - Empty the container
 		oViewerElement.innerHTML = ""
-			
-		/*// Set device type
-			var deviceType = "html5";
-		if (sap.ui.Device.system.phone) {
-			deviceType = "html5mobile";
-		}*/
-			
 		
-		//if (!sap.ui.Device.system.desktop) {
-			// Initialize PDF Tron
-	        airbus.mes.docviewer.ModelManager.WebViewer = new PDFTron.WebViewer({
-	            type: "html5",
-	            path: "../lib/pdftron",
-	            initialDoc: fileURL,
-	            documentType: "xod",
-	            config: "../components/docviewer/config.js",
-	            serverUrl: window.location.host,
-	            documentId: "mes_document_viewer",
-	            mobileRedirect: false,
-	            /*custom: JSON.stringify({
-	            	'save' :  airbus.mes.docviewer.ModelManager.save,
-	            	'close': airbus.mes.docviewer.ModelManager.onCloseFunction}),*/
-	            enableAnnotations: true,
-	            streaming: false,
-	            useDownloader: false
-	        }, oViewerElement);
-		/*}
-		else{
-			oViewerElement.innerHTML = "<iframe frameborder='0' allowtransparency='true' scrolling='no' " +
-					"style='height: 100%; width: 100%;'" +
-					"src='" +
-					"/MES/lib/pdftron/html5/MobileReaderControl.html" +
-					"#d=" + fileURL +
-					"&a=1" +
-					"&server_url=" + window.location.host +
-					"&did=mes_document_viewer" +
-					"&config=/MES/components/docviewer/config.js" +
-					"&filepicker=0" +
-					"&preloadWorker=1" +
-					"&pdfnet=0" +
-					"&pageHistory=1" +
-					"&useDownloader=0" +
-					"'></iframe>";
-		}*/
+		// Initialize PDF Tron
+        airbus.mes.docviewer.ModelManager.WebViewer = new PDFTron.WebViewer({
+            type: "html5",
+            path: "../lib/pdftron",
+            initialDoc: fileURL,
+            documentType: "xod",
+            config: "../components/docviewer/config.js",
+            serverUrl: window.location.host,
+            documentId: "mes_document_viewer",
+            mobileRedirect: false,
+            /*custom: JSON.stringify({
+            	'save' :  airbus.mes.docviewer.ModelManager.save,
+            	'close': airbus.mes.docviewer.ModelManager.onCloseFunction}),*/
+            enableAnnotations: true,
+            streaming: false,
+            useDownloader: false
+        }, oViewerElement);
 		
 	},
 	
