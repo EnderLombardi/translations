@@ -87,7 +87,7 @@
 
 		<ui:Table id="disruptionsTable" enableCellFilter="true" showNoData="false" selectionMode="MultiToggle" selectionBehavior="Row"
 			rows="{ path: 'disruptionsTrackerModel>/Rowsets/Rowset/0/Row' }"
-			visible="{path: 'disruptionsTrackerModel>Status', formatter: 'airbus.mes.disruptiontracker.Formatter.setVisible'}" cellClick="onTableClick">
+			visible="{Profile>/identifiedUser/permissions/DISRUPTION_DISRUPTION_LIST}" cellClick="onTableClick">
 
 			<ui:columns>
 				<ui:Column id="operationCol" >

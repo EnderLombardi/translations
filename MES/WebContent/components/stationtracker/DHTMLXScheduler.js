@@ -164,16 +164,15 @@ sap.ui.core.Control.extend("airbus.mes.stationtracker.DHTMLXScheduler",    {
                     			  return false;
                     			
                     		}
-//                    		if ( sInitialAvlLine === sNewAvlLine){
-//                    	    	if(sap.ui.getCore().getModel("Profile").oData.identifiedUser.permissions.STATION_GANTT_RESCHEDULE === false ){
-//                        	    	return false;
-//                        	    	} 
-//                    		} else{
-//                    	    	if(sap.ui.getCore().getModel("Profile").oData.identifiedUser.permissions.STATION_GANTT_RESCHEDULE === false ){
-//                        	    	return false;
-//                        	    	} 
-//                    			alert("vertical");
-//                    		}
+                    		if ( sInitialAvlLine === sNewAvlLine){
+                    	    	if(sap.ui.getCore().getModel("Profile").oData.identifiedUser.permissions.STATION_GANTT_RESCHEDULE === false ){
+                        	    	return false;
+                        	    	} 
+                    		} else{
+                    	    	if(sap.ui.getCore().getModel("Profile").oData.identifiedUser.permissions.STATION_GANTT_MOVE === false ){
+                        	    	return false;
+                        	    	} 
+                    		}
                                 //Store oFinal and oInitial value in case of check qa is not successfull
                                 airbus.mes.stationtracker.oFinal = oFinal;
                                 airbus.mes.stationtracker.oInitial = oInitial;

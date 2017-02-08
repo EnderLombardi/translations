@@ -1,78 +1,235 @@
-{ "Roles":
-    [
-        {
-            "Feature" : "homescreen",
-            "Description": "",
-            "Authenticate" : "false",
-            "Roles" : [ "SAP_XMII_Developer", "SAP_XMII_User", "Everyone",
-                        "!eval host('[^d].i.*airbus')" ]
-        }, {
-            "Feature" : "disruptionDisplayList",
-            "Description": "",
-            "Authenticate" : "false",
-            "Roles" : [ "SAP_XMII_Developer", "SAP_XMII_User", "Everyone",
-                        "!eval host('[^d].i.*airbus')" ]
-        }, {
-            "Feature" : "disruptionDetailedView",
-            "Description": "",
-            "Authenticate" : "false",
-            "Roles" : [ "SAP_XMII_Developer", "SAP_XMII_User", "Everyone",
-                        "!eval host('[^d].i.*airbus')" , "!eval host('localhost')||hasRole('Everyone')&&!queryParam('url_config','local')" ]
-        }, {
-            "Feature" : "disruptionEdit",
-            "Description": "",
-            "Authenticate" : "false",
-            "Roles" : [ "SAP_XMII_Developer", "SAP_XMII_User", "Everyone",
-                        "!eval host('[^d].i.*airbus')" ]
-        }, {
-            "Feature" : "disruptionEscalate",
-            "Description": "",
-            "Authenticate" : "false",
-            "Roles" : [ "SAP_XMII_Developer", "SAP_XMII_User", "Everyone",
-                        "!eval host('[^d].i.*airbus')" ]
-        }, {
-            "Feature" : "stationTrackerEnabled",
-            "Description": "",
-            "Authenticate" : "false",
-            "Roles" : [ "SAP_XMII_Developer", "SAP_XMII_User", "Everyone",
-                        "!eval host('[^d].i.*airbus')" ]
-        }, {
-            "Feature" : "displayOpeAttachments",
-            "Description": "",
-            "Authenticate" : "false",
-            "Roles" : [ "SAP_XMII_Developer", "SAP_XMII_User", "Everyone",
-                        "!eval host('[^d].i.*airbus')" ]
-        },
-        {
-            "Feature" : "HOMESCREEN",
-            "Description": "Click on screen to open",
-            "Authenticate" : "false",
-            "Roles" : [ "eval host('local|sopra|dmi')&&!feature('role')" ]
-        },{
-            "Feature" : "stationHandoverEnabled",
-            "Description": "",
-            "Authenticate" : "false",
-            "Roles" : [ "SAP_XMII_Developer", "SAP_XMII_User", "Everyone",
-                        "!eval 'SAP_XMII_Developer'" ]
-        },    {
-            "Feature" : "calendarEnabled",
-            "Description": "",
-            "Authenticate" : "false",
-            "Roles" : [ "SAP_XMII_Developer", "SAP_XMII_User", "Everyone",
-                        "!eval host('[^d].i.*airbus')" ]
-        }, {
-            "Feature" : "operationDetailsJigNTool",
-            "Description": "",
-            "Authenticate" : "false",
-            "Roles" : [ "SAP_XMII_Developer", "SAP_XMII_User", "Everyone",
-                        "eval host('[^d].i.*airbus')" ]
-        },
-        {
-            "Feature" : "topic_componentsOpeDetail",
-            "Description": "",
-            "Authenticate" : "false",
-            "Roles" : [ "SAP_XMII_Developer", "SAP_XMII_User", "Everyone",
-                       "!eval host('[^d].i.*airbus')" ]
-        }
-    ]
+{
+	"Roles": [
+		{
+			"SITE": "FNZ1",
+			"Feature": "HOMESCREEN",
+			"Description": "Homescreen>Click screen to open",
+			"Roles": ["MII_MOD1684_HOPLANT", "MII_MOD1684_PGL", "MII_MOD1684_UNITMANAGER", "MII_MOD1684_QLTY", "MII_MOD1684_ADM", "MII_MOD1684_OPERATOR", "MII_MOD1684_1STLINEMANAGER", "SAP_XMII_Developer", "SAP_XMII_User", "Everyone", "eval host('local|sopra|dmi')&&!feature('role')"]
+		}, {
+			"SITE": "FNZ1",
+			"Feature": "DISRUPTION_DISRUPTION_LIST",
+			"Description": "Disruption list>Filter and display disruption list per criteria",
+			"Roles": ["MII_MOD1684_OPERATOR", "MII_MOD1684_PGL", "MII_MOD1684_1STLINEMANAGER", "MII_MOD1684_UNITMANAGER", "MII_MOD1684_HOCDT", "MII_MOD1684_HOPLANT", "MII_MOD1684_QLTY", "SAP_XMII_Developer", "SAP_XMII_User", "Everyone", "eval host('local|sopra|dmi')&&!feature('role')"]
+		}, {
+			"SITE": "FNZ1",
+			"Feature": "DISRUPTION_DIS_DETAIL_CONSULT",
+			"Description": "Disruption_Detail>Consult disruption detailed information",
+			"Roles": ["MII_MOD1684_OPERATOR", "MII_MOD1684_PGL", "MII_MOD1684_1STLINEMANAGER", "MII_MOD1684_UNITMANAGER", "MII_MOD1684_HOCDT", "MII_MOD1684_HOPLANT", "MII_MOD1684_QLTY", "SAP_XMII_Developer", "SAP_XMII_User", "Everyone", "eval host('local|sopra|dmi')&&!feature('role')"]
+		}, {
+			"SITE": "FNZ1",
+			"Feature": "DISRUPTION_DIS_DETAIL_EDIT",
+			"Description": "Disruption_Detail>Edit a disruption",
+			"Roles": ["MII_MOD1684_1STLINEMANAGER", "MII_MOD1684_UNITMANAGER", "MII_MOD1684_HOCDT", "MII_MOD1684_HOPLANT", "MII_MOD1684_QLTY", "SAP_XMII_Developer", "SAP_XMII_User", "Everyone", "eval host('local|sopra|dmi')&&!feature('role')"]
+		}, {
+			"SITE": "FNZ1",
+			"Feature": "DISRUPTION_DIS_DETAIL_UPDATE",
+			"Description": "Disruption_Detail>Update disruption status (ACK, in progress, solution solved)",
+			"Roles": ["MII_MOD1684_OPERATOR_EXT", "MII_MOD1684_PGL", "MII_MOD1684_1STLINEMANAGER", "MII_MOD1684_UNITMANAGER", "MII_MOD1684_HOCDT", "MII_MOD1684_HOPLANT", "MII_MOD1684_QLTY", "SAP_XMII_Developer", "SAP_XMII_User", "Everyone", "eval host('local|sopra|dmi')&&!feature('role')"]
+		}, {
+			"SITE": "FNZ1",
+			"Feature": "DISRUPTION_DIS_DETAIL_EDIT",
+			"Description": "Disruption_Detail>Edit a disruption",
+			"Roles": ["MII_MOD1684_OPERATOR_EXT", "MII_MOD1684_PGL", "SAP_XMII_Developer", "SAP_XMII_User", "Everyone", "eval host('local|sopra|dmi')&&!feature('role')"]
+		}, {
+			"SITE": "FNZ1",
+			"Feature": "DISRUPTION_DIS_DETAIL_ESCALATE",
+			"Description": "Disruption_Detail>Escalate a disruption",
+			"Roles": ["MII_MOD1684_PGL", "MII_MOD1684_1STLINEMANAGER", "MII_MOD1684_UNITMANAGER", "MII_MOD1684_HOCDT", "MII_MOD1684_HOPLANT", "MII_MOD1684_QLTY", "SAP_XMII_Developer", "SAP_XMII_User", "Everyone", "eval host('local|sopra|dmi')&&!feature('role')"]
+		}, {
+			"SITE": "FNZ1",
+			"Feature": "STATION_GANTT_BOXING",
+			"Description": "Station Tracker>Gantt>Boxing",
+			"Roles": ["MII_MOD1684_OPERATOR", "MII_MOD1684_PGL", "MII_MOD1684_1STLINEMANAGER", "MII_MOD1684_UNITMANAGER", "MII_MOD1684_HOCDT", "MII_MOD1684_HOPLANT", "MII_MOD1684_QLTY", "SAP_XMII_Developer", "SAP_XMII_User", "Everyone", "eval host('local|sopra|dmi')&&!feature('role')"]
+		}, {
+			"SITE": "FNZ1",
+			"Feature": "STATION_GANTT_GROUPING",
+			"Description": "Station Tracker>Gantt>Grouping",
+			"Roles": ["MII_MOD1684_OPERATOR", "MII_MOD1684_PGL", "MII_MOD1684_1STLINEMANAGER", "MII_MOD1684_UNITMANAGER", "MII_MOD1684_HOCDT", "MII_MOD1684_HOPLANT", "MII_MOD1684_QLTY", "SAP_XMII_Developer", "SAP_XMII_User", "Everyone", "eval host('local|sopra|dmi')&&!feature('role')"]
+		}, {
+			"SITE": "FNZ1",
+			"Feature": "STATION_GANTT_CRITICAL",
+			"Description": "Station Tracker>Gantt>Critical path view",
+			"Roles": ["MII_MOD1684_OPERATOR", "MII_MOD1684_PGL", "MII_MOD1684_1STLINEMANAGER", "MII_MOD1684_UNITMANAGER", "MII_MOD1684_HOCDT", "MII_MOD1684_HOPLANT", "MII_MOD1684_QLTY", "SAP_XMII_Developer", "SAP_XMII_User", "Everyone", "eval host('local|sopra|dmi')&&!feature('role')"]
+		}, {
+			"SITE": "FNZ1",
+			"Feature": "STATION_DRILL_MISSING",
+			"Description": "Station Tracker>Drill Down>Missing Part Info",
+			"Roles": ["MII_MOD1684_OPERATOR", "MII_MOD1684_PGL", "MII_MOD1684_1STLINEMANAGER", "MII_MOD1684_UNITMANAGER", "MII_MOD1684_HOCDT", "MII_MOD1684_HOPLANT", "MII_MOD1684_QLTY", "SAP_XMII_Developer", "SAP_XMII_User", "Everyone", "eval host('local|sopra|dmi')&&!feature('role')"]
+		}, {
+			"SITE": "FNZ1",
+			"Feature": "STATION_DRILL_OSW",
+			"Description": "Station Tracker>Drill Down>OSW info",
+			"Roles": ["MII_MOD1684_PGL", "MII_MOD1684_1STLINEMANAGER", "MII_MOD1684_HOCDT", "MII_MOD1684_QLTY", "SAP_XMII_Developer", "SAP_XMII_User", "Everyone", "eval host('local|sopra|dmi')&&!feature('role')"]
+		}, {
+			"SITE": "FNZ1",
+			"Feature": "STATION_DRILL_DISRUPTION",
+			"Description": "Station Tracker>Drill Down>Disruption info",
+			"Roles": ["MII_MOD1684_PGL", "MII_MOD1684_1STLINEMANAGER", "MII_MOD1684_UNITMANAGER", "MII_MOD1684_HOPLANT", "MII_MOD1684_QLTY", "SAP_XMII_Developer", "SAP_XMII_User", "Everyone", "eval host('local|sopra|dmi')&&!feature('role')"]
+		}, {
+			"SITE": "FNZ1",
+			"Feature": "STATION_KPI_DISRUPTIONS",
+			"Description": "Disruption Overview",
+			"Roles": ["MII_MOD1684_OPERATOR", "MII_MOD1684_PGL", "MII_MOD1684_1STLINEMANAGER", "MII_MOD1684_UNITMANAGER", "MII_MOD1684_HOCDT", "MII_MOD1684_HOPLANT", "MII_MOD1684_QLTY", "SAP_XMII_Developer", "SAP_XMII_User", "Everyone", "eval host('local|sopra|dmi')&&!feature('role')"]
+		}, {
+			"SITE": "FNZ1",
+			"Feature": "STATION_KPI_TAKT",
+			"Description": "Takt Adherence",
+			"Roles": ["MII_MOD1684_1STLINEMANAGER", "MII_MOD1684_UNITMANAGER", "MII_MOD1684_HOCDT", "MII_MOD1684_HOPLANT", "MII_MOD1684_QLTY", "MII_MOD1684_OPERATOR", "MII_MOD1684_PGL", "SAP_XMII_Developer", "SAP_XMII_User", "Everyone", "eval host('local|sopra|dmi')&&!feature('role')"]
+		}, {
+			"SITE": "FNZ1",
+			"Feature": "WORK_OP_ACTIVATE",
+			"Description": "Work Tracker>Operation>Activate an OP",
+			"Roles": ["MII_MOD1684_OPERATOR", "MII_MOD1684_PGL", "MII_MOD1684_1STLINEMANAGER_EXT", "SAP_XMII_Developer", "SAP_XMII_User", "Everyone", "eval host('local|sopra|dmi')&&!feature('role')"]
+		}, {
+			"SITE": "FNZ1",
+			"Feature": "WORK_OP_PAUSE",
+			"Description": "Work Tracker>Operation>Pause an OP",
+			"Roles": ["MII_MOD1684_OPERATOR", "MII_MOD1684_PGL", "MII_MOD1684_1STLINEMANAGER_EXT", "SAP_XMII_Developer", "SAP_XMII_User", "Everyone", "eval host('local|sopra|dmi')&&!feature('role')"]
+		}, {
+			"SITE": "FNZ1",
+			"Feature": "WORK_OP_PAR_CONF",
+			"Description": "Work Tracker>Operation>Partial confirm an OP",
+			"Roles": ["MII_MOD1684_OPERATOR", "MII_MOD1684_PGL", "MII_MOD1684_1STLINEMANAGER_EXT", "SAP_XMII_Developer", "SAP_XMII_User", "Everyone", "eval host('local|sopra|dmi')&&!feature('role')"]
+		}, {
+			"SITE": "FNZ1",
+			"Feature": "WORK_OP_TOT_CONF",
+			"Description": "Work Tracker>Operation>Total confirm an OP",
+			"Roles": ["MII_MOD1684_OPERATOR", "MII_MOD1684_PGL", "MII_MOD1684_1STLINEMANAGER_EXT", "SAP_XMII_Developer", "SAP_XMII_User", "Everyone", "eval host('local|sopra|dmi')&&!feature('role')"]
+		}, {
+			"SITE": "FNZ1",
+			"Feature": "WORK_DIS_CREATE",
+			"Description": "Work Tracker>Disruption>Create",
+			"Roles": ["MII_MOD1684_OPERATOR", "MII_MOD1684_PGL", "MII_MOD1684_1STLINEMANAGER_EXT", "SAP_XMII_Developer", "SAP_XMII_User", "Everyone", "eval host('local|sopra|dmi')&&!feature('role')"]
+		}, {
+			"SITE": "FNZ1",
+			"Feature": "WORK_DIS_PICTURE",
+			"Description": "Work Tracker>Disruption>Take and import picture",
+			"Roles": ["MII_MOD1684_OPERATOR", "MII_MOD1684_PGL", "MII_MOD1684_1STLINEMANAGER_EXT", "SAP_XMII_Developer", "SAP_XMII_User", "Everyone", "eval host('local|sopra|dmi')&&!feature('role')"]
+		}, {
+			"SITE": "FNZ1",
+			"Feature": "WORK_DIS_ANNOTATE_DOC",
+			"Description": "Work Tracker>Disruption>Annotate document",
+			"Roles": ["MII_MOD1684_OPERATOR", "MII_MOD1684_PGL", "MII_MOD1684_1STLINEMANAGER_EXT", "SAP_XMII_Developer", "SAP_XMII_User", "Everyone", "eval host('local|sopra|dmi')&&!feature('role')"]
+		}, {
+			"SITE": "FNZ1",
+			"Feature": "WORK_DIS_ATTACH_DOC",
+			"Description": "Work Tracker>Disruption>Attach document",
+			"Roles": ["MII_MOD1684_OPERATOR", "MII_MOD1684_PGL", "MII_MOD1684_1STLINEMANAGER_EXT", "SAP_XMII_Developer", "SAP_XMII_User", "Everyone", "eval host('local|sopra|dmi')&&!feature('role')"]
+		}, {
+			"SITE": "FNZ1",
+			"Feature": "WORK_DIS_ESCALATE",
+			"Description": "Work Tracker>Disruption>ESCALATE",
+			"Roles": ["MII_MOD1684_1STLINEMANAGER_EXT", "SAP_XMII_Developer", "SAP_XMII_User", "Everyone", "eval host('local|sopra|dmi')&&!feature('role')"]
+		}, {
+			"SITE": "FNZ1",
+			"Feature": "WORK_DIS_TIME_LOST",
+			"Description": "Work Tracker>Disruption>Enter time lost",
+			"Roles": ["MII_MOD1684_OPERATOR", "MII_MOD1684_PGL", "MII_MOD1684_1STLINEMANAGER_EXT", "SAP_XMII_Developer", "SAP_XMII_User", "Everyone", "eval host('local|sopra|dmi')&&!feature('role')"]
+		}, {
+			"SITE": "FNZ1",
+			"Feature": "WORK_DIS_CLOSE",
+			"Description": "Work Tracker>Disruption>close",
+			"Roles": ["MII_MOD1684_OPERATOR", "MII_MOD1684_PGL", "MII_MOD1684_1STLINEMANAGER_EXT", "SAP_XMII_Developer", "SAP_XMII_User", "Everyone", "eval host('local|sopra|dmi')&&!feature('role')"]
+		}, {
+			"SITE": "FNZ1",
+			"Feature": "PROFILE _PREF_LANG",
+			"Description": "My_Profile>Preference>langage",
+			"Roles": ["MII_MOD1684_OPERATOR", "MII_MOD1684_PGL", "MII_MOD1684_1STLINEMANAGER", "MII_MOD1684_UNITMANAGER", "MII_MOD1684_HOCDT", "MII_MOD1684_HOPLANT", "MII_MOD1684_QLTY", "MII_MOD1684_ADM", "SAP_XMII_Developer", "SAP_XMII_User", "Everyone", "eval host('local|sopra|dmi')&&!feature('role')"]
+		}, {
+			"SITE": "FNZ1",
+			"Feature": "PROFILE_PREF_HOME",
+			"Description": "My_Profile>Preference>homepage",
+			"Roles": ["MII_MOD1684_OPERATOR", "MII_MOD1684_PGL", "MII_MOD1684_1STLINEMANAGER", "MII_MOD1684_UNITMANAGER", "MII_MOD1684_HOCDT", "MII_MOD1684_HOPLANT", "MII_MOD1684_QLTY", "MII_MOD1684_ADM", "SAP_XMII_Developer", "SAP_XMII_User", "Everyone", "eval host('local|sopra|dmi')&&!feature('role')"]
+		}, {
+			"SITE": "FNZ1",
+			"Feature": "MES_ADMIN_SETTING",
+			"Description": "MES Administration>Site Settings",
+			"Roles": ["MII_MOD1684_ADM", "SAP_XMII_Developer", "SAP_XMII_User", "Everyone", "eval host('local|sopra|dmi')&&!feature('role')"]
+		}, {
+			"SITE": "FNZ1",
+			"Feature": "LINE_DIS_LINE_STAT",
+			"Description": "Line Tracker>Display Line Status",
+			"Roles": ["MII_MOD1684_OPERATOR", "MII_MOD1684_PGL", "MII_MOD1684_1STLINEMANAGER", "MII_MOD1684_UNITMANAGER", "MII_MOD1684_HOCDT", "MII_MOD1684_HOPLANT", "MII_MOD1684_QLTY", "SAP_XMII_Developer", "SAP_XMII_User", "Everyone", "eval host('local|sopra|dmi')&&!feature('role')"]
+		}, {
+			"SITE": "FNZ1",
+			"Feature": "LINE_START_ASSEMBLY",
+			"Description": "Line Tracker>Start of Assembly",
+			"Roles": ["MII_MOD1684_1STLINEMANAGER", "MII_MOD1684_UNITMANAGER", "MII_MOD1684_HOCDT", "SAP_XMII_Developer", "SAP_XMII_User", "Everyone", "eval host('local|sopra|dmi')&&!feature('role')"]
+		}, {
+			"SITE": "FNZ1",
+			"Feature": "LINE_END_ASSEMBLY",
+			"Description": "Line Tracker>End of Assembly",
+			"Roles": ["MII_MOD1684_1STLINEMANAGER", "MII_MOD1684_UNITMANAGER", "MII_MOD1684_HOCDT", "SAP_XMII_Developer", "SAP_XMII_User", "Everyone", "eval host('local|sopra|dmi')&&!feature('role')"]
+		}, {
+			"SITE": "FNZ1",
+			"Feature": "LINE_LOAD_MSN",
+			"Description": "Line Tracker>Load Next MSN",
+			"Roles": ["MII_MOD1684_1STLINEMANAGER", "MII_MOD1684_UNITMANAGER", "MII_MOD1684_HOCDT", "SAP_XMII_Developer", "SAP_XMII_User", "Everyone", "eval host('local|sopra|dmi')&&!feature('role')"]
+		}, {
+			"SITE": "FNZ1",
+			"Feature": "LINE_EMPTY_STAT",
+			"Description": "Line Tracker>Empty Station",
+			"Roles": ["MII_MOD1684_1STLINEMANAGER", "MII_MOD1684_UNITMANAGER", "MII_MOD1684_HOCDT", "SAP_XMII_Developer", "SAP_XMII_User", "Everyone", "eval host('local|sopra|dmi')&&!feature('role')"]
+		}, {
+			"SITE": "FNZ1",
+			"Feature": "STATION_GANTT_RESCHEDULE",
+			"Description": "Station Tracker>Gantt View>Reschedule an OP inside a line balance",
+			"Roles": ["MII_MOD1684_PGL", "MII_MOD1684_1STLINEMANAGER", "MII_MOD1684_UNITMANAGER", "SAP_XMII_Developer", "SAP_XMII_User", "Everyone", "eval host('local|sopra|dmi')&&!feature('role')"]
+		}, {
+			"SITE": "FNZ1",
+			"Feature": "STATION_GANTT_CREATE",
+			"Description": "Station Tracker>Gantt View>Create a new line balance in the Gantt",
+			"Roles": ["MII_MOD1684_PGL_EXT", "MII_MOD1684_1STLINEMANAGER", "MII_MOD1684_UNITMANAGER", "SAP_XMII_Developer", "SAP_XMII_User", "Everyone", "eval host('local|sopra|dmi')&&!feature('role')"]
+		}, {
+			"SITE": "FNZ1",
+			"Feature": "STATION_GANTT_MOVE",
+			"Description": "Station Tracker>Gantt View>Move an OP from a line to a different one",
+			"Roles": ["MII_MOD1684_PGL", "MII_MOD1684_1STLINEMANAGER", "MII_MOD1684_UNITMANAGER", "SAP_XMII_Developer", "SAP_XMII_User", "Everyone", "eval host('local|sopra|dmi')&&!feature('role')"]
+		}, {
+			"SITE": "FNZ1",
+			"Feature": "STATION_OSW_OPEN",
+			"Description": "Station Tracker>OSW>Open list of OSW/Unplanned activities",
+			"Roles": ["MII_MOD1684_OPERATOR", "MII_MOD1684_PGL", "MII_MOD1684_1STLINEMANAGER", "MII_MOD1684_UNITMANAGER", "SAP_XMII_Developer", "SAP_XMII_User", "Everyone", "eval host('local|sopra|dmi')&&!feature('role')"]
+		}, {
+			"SITE": "FNZ1",
+			"Feature": "STATION_OSW_FILTER",
+			"Description": "Station Tracker>OSW>Filter list per criteria",
+			"Roles": ["MII_MOD1684_OPERATOR", "MII_MOD1684_PGL", "MII_MOD1684_1STLINEMANAGER", "MII_MOD1684_UNITMANAGER", "SAP_XMII_Developer", "SAP_XMII_User", "Everyone", "eval host('local|sopra|dmi')&&!feature('role')"]
+		}, {
+			"SITE": "FNZ1",
+			"Feature": "STATION_OSW_SELECT",
+			"Description": "Station Tracker>OSW>Select and Insert an OP on a line balance",
+			"Roles": ["MII_MOD1684_PGL", "MII_MOD1684_1STLINEMANAGER", "MII_MOD1684_UNITMANAGER", "SAP_XMII_Developer", "SAP_XMII_User", "Everyone", "eval host('local|sopra|dmi')&&!feature('role')"]
+		}, {
+			"SITE": "FNZ1",
+			"Feature": "PM_RESOURCE_MANAGE",
+			"Description": "PM>Resource Pool>Manage link between resource pool and users, shifts and WC",
+			"Roles": ["MII_MOD1684_1STLINEMANAGER", "MII_MOD1684_PGL", "MII_MOD1684_1STLINEMANAGER", "MII_MOD1684_UNITMANAGER", "SAP_XMII_Developer", "SAP_XMII_User", "Everyone", "eval host('local|sopra|dmi')&&!feature('role')"]
+		}, {
+			"SITE": "FNZ1",
+			"Feature": "PM_POLY_ASSESS",
+			"Description": "PM>POLY>Assess Personnel",
+			"Roles": ["MII_MOD1684_PGL", "MII_MOD1684_1STLINEMANAGER", "MII_MOD1684_UNITMANAGER", "SAP_XMII_Developer", "SAP_XMII_User", "Everyone", "eval host('local|sopra|dmi')&&!feature('role')"]
+		}, {
+			"SITE": "FNZ1",
+			"Feature": "STATION_DRILL_RESCHEDULE",
+			"Description": "Station Tracker>Drill>Reschedule Dates",
+			"Roles": ["MII_MOD1684_OPERATOR", "MII_MOD1684_PGL", "MII_MOD1684_1STLINEMANAGER", "MII_MOD1684_UNITMANAGER", "MII_MOD1684_HOCDT", "MII_MOD1684_HOPLANT", "SAP_XMII_Developer", "SAP_XMII_User", "Everyone", "eval host('local|sopra|dmi')&&!feature('role')"]
+		}, {
+			"SITE": "FNZ1",
+			"Feature": "STATION_DRILL_OSW",
+			"Description": "Station Tracker>Drill Down>OSW info",
+			"Roles": ["MII_MOD1684_OPERATOR", "MII_MOD1684_UNITMANAGER", "MII_MOD1684_HOPLANT", "SAP_XMII_Developer", "SAP_XMII_User", "Everyone", "eval host('local|sopra|dmi')&&!feature('role')"]
+		}, {
+			"SITE": "FNZ1",
+			"Feature": "STATION_DRILL_DISRUPTION",
+			"Description": "Station Tracker>Drill Down>Disruption info",
+			"Roles": ["MII_MOD1684_OPERATOR", "MII_MOD1684_HOCDT", "SAP_XMII_Developer", "SAP_XMII_User", "Everyone", "eval host('local|sopra|dmi')&&!feature('role')"]
+		}
+
+
+
+
+
+	]
 }

@@ -532,28 +532,7 @@ airbus.mes.disruptions.Formatter = {
 		}
 		return sIcon;
 	},
-	/**
-	 * Set Edit button Enable/Disable based on Roles
-	 */
-	setEnabled : function() {
-//    	if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.DISRUPTION_DIS_DETAIL_EDIT === true ){
-//    	return true;
-//    	} else { 
-//    	return false;
-//    	}
-		return true;
-	},
-	/**
-	 * Set ACK,Reject,Refuse,markSolved button Enable/Disable based on Roles
-	 */
-	setButtonEnabled : function() {
-//    	if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.DISRUPTION_DIS_DETAIL_UPDATE === true ){
-//    	return true;
-//    	} else { 
-//    	return false;
-//    	}
-		return true;
-	},
+
 	/*
 	 * setNumberofAttachment : function(number) { var sValue = number + "\n" + "
 	 * Attachments"; return sValue; }
@@ -571,34 +550,5 @@ airbus.mes.disruptions.Formatter = {
 			return false;
 		}
 
-	},
-	/**
-	 * Set Attachment button, import images button visible true or false as per roles
-	 */
-	setVisible: function(sKey){
-		if (sKey === "myFileUpload") {
-//	    	if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.WORK_DIS_PICTURE === true ){
-//	        	return true;
-//	        	} else { 
-//	        	return false;
-//	        	}
-			return true;
-		} else {	
-//	    	if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.WORK_DIS_ATTACH_DOC === true ){
-//        	return true;
-//        	} else { 
-//        	return false;
-//        	}
-			return true;
-		}
-		return true;
-	},
-	setCloseEnabled: function(){	
-//    	if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.WORK_DIS_CLOSE === true ){
-//    	return true;
-//    	} else { 
-//    	return false;
-//    	}
-		return true;
 	}
 };

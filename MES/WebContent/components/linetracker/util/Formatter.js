@@ -220,43 +220,6 @@ airbus.mes.linetracker.util.Formatter = {
 
 		}
 
-	},
-
-
-	setVisible : function(sVal) {
-		if (sVal === "Start of Assembly") {
-			// if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.LINE_START_ASSEMBLY
-			// === true ){
-			// return true;
-			// } else {
-			// return false;
-			// }
-			return true;
-		} else if (sVal === "End of Assembly") {
-			// if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.LINE_END_ASSEMBLY
-			// === true ){
-			// return true;
-			// } else {
-			// return false;
-			// }
-			return true;
-		} else if (sVal === "Empty Station") {
-			// if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.LINE_EMPTY_STAT
-			// === true ){
-			// return true;
-			// } else {
-			// return false;
-			// }
-			return true;
-		} else if (sVal === "Load Next Msn") {
-			// if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.LINE_EMPTY_STAT
-			// === true ){
-			// return true;
-			// } else {
-			// return false;
-			// }
-			return true;
-		}
-		return true;
 	}
+
 }

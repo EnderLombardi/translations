@@ -7,9 +7,8 @@
 		<content>
 			<TileContainer tileDelete="handleTileDelete"
 				tiles="{1TileLineHome>/buttonDetail}" height="100%">
-				<CustomTile press="onPressLine1" class="customTiles"
-				
-				 visible="{ path : '1TileLineHome>enable' , formatter : '.setVisible' }" enabled="{ path : '1TileLineHome>enable' , formatter : '.setVisible' }" >
+				<CustomTile press="onPressLine1" class="customTiles" visible="{Profile>/identifiedUser/permissions/HOMESCREEN}"> 
+	
 			  
 					<customData>
 						<core:CustomData key="enabled" value="{1TileLineHome>enable}" writeToDom="true" />
