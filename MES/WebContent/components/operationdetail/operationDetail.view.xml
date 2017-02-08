@@ -1,6 +1,7 @@
 <core:View xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout"
     xmlns:f="sap.ui.layout.form" xmlns:html="http://www.w3.org/1999/xhtml"
-    controllerName="airbus.mes.operationdetail.operationDetail">
+    controllerName="airbus.mes.operationdetail.operationDetail"
+    xmlns:cData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
     <Page showHeader="false" height="100%" enableScrolling="false"
         class="WhiteBG">
 
@@ -117,10 +118,10 @@
                         <IconTabFilter id="idReschedule" text="{i18n>Reschedule}" tooltip="{i18n>Reschedule}" key="reschedule"></IconTabFilter>
                         <IconTabFilter id="idtouchngo" text="{i18n>Touchngo}" tooltip="{i18n>Touchngo}" key="touchngo"></IconTabFilter>
                         <IconTabFilter id="idJignTools" text="{i18n>JignTools}" tooltip="{i18n>JignTools}" key="jigntools"></IconTabFilter>
-                        <IconTabFilter id="idComponents" text="{i18n>Components}" tooltip="{i18n>Components}" key="components"></IconTabFilter>
+                        <IconTabFilter id="idComponents" enabled="{Profile>/identifiedUser/permissions/topic_componentsOpeDetail}" text="{i18n>Components}" tooltip="{i18n>Components}" key="components"></IconTabFilter>
                         <IconTabFilter id="idACPnGLinks" text="{i18n>ACPnGLinks}" tooltip="{i18n>ACPnGLinks}" key="ACPnGLinks"></IconTabFilter>
                         <IconTabFilter id="idNCDisplay" text="{i18n>ncDisplay}" tooltip="{i18n>ncDisplay}" key="ncDisplay"></IconTabFilter>
-                   	    <IconTabFilter id="idTrackingTemplate" text="{i18n>tckTemplate}" tooltip="{i18n>tckTemplate}" key="tckTemplate"></IconTabFilter>
+                           <IconTabFilter id="idTrackingTemplate" text="{i18n>tckTemplate}" tooltip="{i18n>tckTemplate}" key="tckTemplate"></IconTabFilter>
                     </items>
                 </IconTabBar>
             </Toolbar>
