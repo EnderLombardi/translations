@@ -279,7 +279,8 @@ airbus.mes.stationtracker.ShiftManager = {
 				text: airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("LastShiftReached"),
 				expire: 2000
 			});
-			return date;
+			// Return date of last shift
+			return this.shifts[c].StartDate;
 		}
 		if (c + step < 0) {
 			dhtmlx.message({
