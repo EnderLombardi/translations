@@ -193,15 +193,16 @@ airbus.mes.disruptiontracker.Formatter = {
 	},
 
 	/**
-	 * Set Roles for type of Table Column
+	 * Set Disruption table visible on the basis of Roles
 	 */
-	setSelectionMode : function(bAuthorized){
-    	if(bAuthorized === true ){
-    	return "MultiToggle"
-    	} else { 
-    	return "None"
-    	}
 
+	setVisible : function(){
+//    	if(sap.ui.getCore().getModel("Profile").oData.connectedUser.permissions.DISRUPTION_DISRUPTION_LIST === true ){
+//    	return true;
+//    	} else { 
+//    	return false;
+//    	}
+		return true;
 	}
 
 

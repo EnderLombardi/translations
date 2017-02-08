@@ -85,7 +85,7 @@
 		</Panel>
 
 
-		<ui:Table id="disruptionsTable" enableCellFilter="true" showNoData="false" selectionMode="{path: 'Profile>/identifiedUser/permissions/DISRUPTION_DIS_DETAIL_CONSULT', formatter: 'airbus.mes.disruptiontracker.util.Formatter.setSelectionMode'}" selectionBehavior="Row"
+		<ui:Table id="disruptionsTable" enableCellFilter="true" showNoData="false" selectionMode="{path: 'Profile>/identifiedUser/permissions/DISRUPTION_DIS_DETAIL_CONSULT', formatter: '.setSelectionMode'}" selectionBehavior="Row"
 			rows="{ path: 'disruptionsTrackerModel>/Rowsets/Rowset/0/Row' }"
 			visible="{Profile>/identifiedUser/permissions/DISRUPTION_DISRUPTION_LIST}" cellClick="onTableClick">
 

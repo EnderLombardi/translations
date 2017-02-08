@@ -476,6 +476,17 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 
 		this._oTPC.openDialog();
 	},
+	/**
+	 * Set Roles for type of Table Column
+	 */
+	setSelectionMode : function(bAuthorized){
+    	if(bAuthorized === true ){
+    	return "MultiToggle"
+    	} else { 
+    	return "None"
+    	}
+
+	},
 
 /**
  * search disruption on basis of work order/operation
