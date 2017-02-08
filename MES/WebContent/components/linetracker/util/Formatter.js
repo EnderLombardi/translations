@@ -174,7 +174,7 @@ airbus.mes.linetracker.util.Formatter = {
 		if (this.getId() === "loadNextMSN") {
 			// if(status === "UN_LOADED" || status === "COMPLETE" || status ===
 			// "TO_BE_LOADED")
-			if (status === "LOADED" || status === "IN_PROGRESS" || status === "COMPLETE")
+			if ((status === "LOADED" || status === "IN_PROGRESS" || status === "COMPLETE" || status === "UN_LOADED") /*&& msn && msn!=="NA" || msn.length()==""*/ )
 				return false;
 			else
 				return true;
@@ -206,7 +206,7 @@ airbus.mes.linetracker.util.Formatter = {
 		}
 
 		if (this.getId() === "undo") {
-			if (status === "COMPLETE" || status === "IN_PROGRESS" || status === "LOADED" || status === "UN_LOADED")
+			if (status === "COMPLETE" || status === "IN_PROGRESS" || status === "LOADED" || status === "UN_LOADED" || status === "TO_BE_LOADED")
 				return true;
 			else
 				return false;
