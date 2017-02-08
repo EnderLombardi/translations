@@ -77,7 +77,7 @@ airbus.mes.disruptiontracker.Formatter = {
 	},
 
 	formatOpeningTime : function(openDate, closureDate) {
-		if (openDate != undefined)
+		if (openDate == undefined || openDate =="")
 			return 0;
 		
 		if (closureDate == undefined || closureDate == "")

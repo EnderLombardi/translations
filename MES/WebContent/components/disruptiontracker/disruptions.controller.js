@@ -82,37 +82,33 @@ sap.ui.controller("airbus.mes.disruptiontracker.disruptions", {
 	 */
 	filterByStation : function(oEvent) {
 		airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.station = this.getView().byId("stationComboBox").getSelectedKey();
+		
+		if(oEvent.getSource().getId() == "disruptiontrackerView--stationComboBox"){
+			if (this.getView().byId("stationComboBox").getSelectedKey() == " " || this.getView().byId("stationComboBox").getSelectedKey() == "") {
+				sap.ui.getCore().byId("disruptiontrackerView--msnComboBox").getBinding("items").filter(new sap.ui.model.Filter("station", "EQ", "DISPLAY_NO_MSN"));
+			} else {
 
-		if (airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.station != "") {
-			// When Station is selected on Model Loading
-			sap.ui.getCore().byId("disruptiontrackerView--msnComboBox").getBinding("items").filter(
-				new sap.ui.model.Filter("station", "EQ", airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.station));
-		} else {
-			sap.ui.getCore().byId("disruptiontrackerView--msnComboBox").getBinding("items").filter(new sap.ui.model.Filter("station", "EQ", "DISPLAY_NO_MSN"));
+				// When Station is selected on Model Loading
+				sap.ui.getCore().byId("disruptiontrackerView--msnComboBox").getBinding("items").filter(
+					new sap.ui.model.Filter("station", "EQ", airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.station));
+			}
+			
 
+			var msnBox = this.getView().byId("msnComboBox");
+
+			// Add item All into MSN ComboBox
+			var msnItemAll = new sap.ui.core.Item();
+			msnItemAll.setKey = "";
+			msnItemAll.setText(this.getView().getModel("disruptiontrackerI18n").getProperty("All") + " MSN");
+			msnBox.insertItem(msnItemAll, 0);
+			
+			// Clear MSN ComboBox when Station is changed
+				msnBox.setSelectedKey("");
 		}
-
-		// Clear MSN ComboBox when Station is changed
-		var msnBox = sap.ui.getCore().byId("disruptiontrackerView--msnComboBox");
-		if (oEvent.getSource().getId() == "disruptiontrackerView--stationComboBox")
-			msnBox.setSelectedKey("");
 
 		airbus.mes.disruptiontracker.ModelManager.oDisruptionFilter.msn = this.getView().byId("msnComboBox").getSelectedKey();
 
 		airbus.mes.disruptiontracker.ModelManager.loadDisruptionTrackerModel();
-
-		if (this.getView().byId("stationComboBox").getSelectedKey() == " " || this.getView().byId("stationComboBox").getSelectedKey() == "") {
-			sap.ui.getCore().byId("disruptiontrackerView--msnComboBox").getBinding("items").filter(new sap.ui.model.Filter());
-		} else {
-			sap.ui.getCore().byId("disruptiontrackerView--msnComboBox").getBinding("items").filter(
-				new sap.ui.model.Filter("station", "EQ", airbus.mes.disruptiontracker.oView.byId("stationComboBox").getSelectedKey()));
-		}
-
-		// Add item All into MSN ComboBox
-		var msnItemAll = new sap.ui.core.Item();
-		msnItemAll.setKey = "";
-		msnItemAll.setText(this.getView().getModel("disruptiontrackerI18n").getProperty("All"));
-		msnBox.insertItem(msnItemAll, 0);
 
 		/*
 		 * filterByResolutionGroup:function(oEvent){ sValue =
