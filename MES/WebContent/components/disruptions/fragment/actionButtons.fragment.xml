@@ -6,7 +6,7 @@
 			<core:Title text="" />
 			<Label text="" />
 
-			<Button text="{i18nModel>acknowledge}" type="Accept"
+			<Button text="{i18nModel>acknowledge}" type="Accept" width="50%"
 				visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>ResponsibleFlag'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setAcknowledgeButtonVisibility'}"
 				press="onAckDisruption" design="Transparent" class="btnRadius"  enabled="{Profile>/identifiedUser/permissions/DISRUPTION_DIS_DETAIL_UPDATE}">
 				<layoutData>
@@ -14,7 +14,7 @@
 				</layoutData>
 			</Button>
 
-			<Button id="rejectDisruption" text="{i18nModel>reject}" type="Reject"
+			<Button id="rejectDisruption" text="{i18nModel>reject}" type="Reject" width="50%"
 				visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>ResponsibleFlag'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setRejectButtonVisibility'}"
 				press="onRejectDisruption" design="Transparent" class="btnRadius"  enabled="{Profile>/identifiedUser/permissions/DISRUPTION_DIS_DETAIL_UPDATE}">
 				<layoutData>
@@ -23,7 +23,7 @@
 			</Button>
 
 	
-			<Button text="{i18nModel>markSolved}" type="Accept"
+			<Button text="{i18nModel>markSolved}" type="Accept" width="50%"
 				visible="{parts: [ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>ResponsibleFlag'}, {path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setMarkSolvedButtonVisibility'}"
 				press="onMarkSolvedDisruption" design="Transparent" class="btnRadius"  enabled="{Profile>/identifiedUser/permissions/DISRUPTION_DIS_DETAIL_UPDATE}">
 				<layoutData>
@@ -31,7 +31,7 @@
 				</layoutData>
 			</Button>
 
-			<Button text="{i18nModel>refuse}" type="Reject"
+			<Button text="{i18nModel>refuse}" type="Reject" width="50%"
 				visible="{parts: 
 				[ {path: 'operationDisruptionsModel>OriginatorFlag'}, {path: 'operationDisruptionsModel>ResponsibleFlag'}, 
 				{path: 'operationDisruptionsModel>Status'} ], formatter: 'airbus.mes.disruptions.Formatter.setRefuseButtonVisibility'}"
@@ -42,7 +42,7 @@
 			</Button>
 
 
-			<Button text="{i18nModel>edit}" type="Emphasized" press="onEditDisruption"
+			<Button text="{i18nModel>edit}" type="Emphasized" press="onEditDisruption" width="50%"
 				class="btnRadius" enabled="{Profile>/identifiedUser/permissions/DISRUPTION_DIS_DETAIL_EDIT}">
 				<layoutData>
 					<l:GridData span="L12 M12 S12" />
