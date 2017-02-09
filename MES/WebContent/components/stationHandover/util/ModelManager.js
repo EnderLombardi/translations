@@ -7,13 +7,36 @@ airbus.mes.stationHandover.util.ModelManager = {
        queryParams : jQuery.sap.getUriParameters(),
        i18nModel : undefined,
        selectAll : false,
+       Indice : 0,
        filter : {
     	   "search" : undefined,
-    	   "type" : undefined,
+    	   "type" :  new sap.ui.model.Filter({ 
+			path :  "TYPE",
+			test : function(oValue){
+				
+				if ( airbus.mes.stationHandover.util.ModelManager.filter.aType.indexOf(oValue) != -1 ){
+					
+					return true;
+			} else {
+				
+				return false;
+			}
+		}}),
     	   "noTime" : new sap.ui.model.Filter("NO_TIME", "EQ", "false"),
     	   "inserted" : new sap.ui.model.Filter("INSERTED", "EQ", "false"),
-    	   "station" : undefined,
-    	   "aType" : [],
+    	   "station" : new sap.ui.model.Filter({ 
+			path :  "ORIGIN_STATION",
+			test : function(oValue){
+				
+				if ( airbus.mes.stationHandover.util.ModelManager.filter.aStation.indexOf(oValue) != -1 ){
+					
+					return true;
+			} else {
+				
+				return false;
+			}
+		}}),
+    	   "aType" : [0],
     	   "aStation" : [],
        },
        
@@ -80,20 +103,30 @@ airbus.mes.stationHandover.util.ModelManager = {
 	 
 
 		 onTestLoad : function() {
-
+		
+		var oModelManager = airbus.mes.stationHandover.util.ModelManager;	 
 		var oViewModel = airbus.mes.stationHandover.oView.getModel("oswModel");
 		var aValueSelected = airbus.mes.stationHandover.util.ModelManager.aSelected;
-
+		var sDateSaved = 0;
+		
+		
 		 try {
 
 		var aModel = oViewModel.oData.row;
-
+		//Create tre of for manage selection of tree
 		aModel.forEach(function(el, indice) {
 
 			aValueSelected[el.WOID] = {
 				"open" : undefined
 			};
 
+			//As a default, the physical station with the biggest planned start date/time should be selected.
+        	if ( new Date(el.TaktStart) > new Date(sDateSaved) ) {
+        		
+        		sDateSaved = el.TaktStart;
+        		oModelManager.Indice = indice;	            		
+        	}
+        	
 			aModel[indice].row.forEach(function(al, indice1) {
 
 				var sID = al.WOID + "##||##" + al.REFERENCE;
@@ -104,6 +137,9 @@ airbus.mes.stationHandover.util.ModelManager = {
 
 			})
 		})
+		
+		oModelManager.filter.aStation.push(aModel[oModelManager.Indice].ORIGIN_STATION);
+		
 
 		 } catch(e) {
 					

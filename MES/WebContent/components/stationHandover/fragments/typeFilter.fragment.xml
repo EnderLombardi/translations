@@ -9,7 +9,7 @@
 			<items>
 				<StandardListItem class="stationFilter" key="{typeModel>key}"
 					title="{path:'typeModel>type' , formatter:'airbus.mes.stationHandover.util.Formatter.translate'}"
-					iconDensityAware="false" iconInset="false" />
+					iconDensityAware="false" iconInset="false"/>
 			</items>
 
 		</List>

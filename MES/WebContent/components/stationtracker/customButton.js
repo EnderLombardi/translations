@@ -28,7 +28,7 @@ sap.m.Button.extend("airbus.mes.stationtracker.customButton", {
         oRm.writeClasses();
         oRm.write(">");
         oRm.write("<div");
-        oRm.addClass("sapMBtnHoverable sapMBtnIconFirst sapMBtnInner sapMBtnText sapMBtnTransparent sapMFocusable");
+        oRm.addClass("sapMBtnHoverable sapMBtnIconFirst sapMBtnInner sapMBtnText sapMBtnTransparent sapMFocusable customButton");
         oRm.writeClasses();
         oRm.write(">");
         oRm.write("<span");
