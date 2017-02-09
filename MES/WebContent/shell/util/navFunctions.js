@@ -28,7 +28,9 @@ airbus.mes.shell.util.navFunctions = {
             sap.ui.getCore().createComponent({ name: "airbus.mes.stationHandover", });
             nav.addPage(airbus.mes.stationHandover.oView);
         }
-
+        // reDisplay all columns
+        airbus.mes.stationHandover.oView.byId("TreeTableBasic").getColumns()[5].setVisible(true);
+        airbus.mes.stationHandover.oView.byId("TreeTableBasic").getColumns()[6].setVisible(true);
         airbus.mes.shell.util.navFunctions.jigsAndTools.configME = undefined;
 
         nav.to(airbus.mes.stationHandover.oView.getId());

@@ -6,8 +6,10 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 		var aColumns = airbus.mes.stationHandover.oView.byId("TreeTableBasic").getColumns();
 
 		aColumns.forEach(function(el, indice) {
-
+			// Don't do auto resize blocked line it bug
+			if ( indice != 1 ) {
 			airbus.mes.stationHandover.oView.byId("TreeTableBasic").autoResizeColumn(indice);
+			}
 
 		});
 
@@ -79,9 +81,11 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 		for ( var i in oMyfilter) {
 
 			if (oMyfilter[i] != undefined) {
-
-				aFilter.push(oMyfilter[i]);
-
+				
+				if (!Array.isArray(oMyfilter[i])) {
+				
+					aFilter.push(oMyfilter[i]);
+				} 
 			}
 		}
 
@@ -135,24 +139,115 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 
 	},
 	/***************************************************************************
-	 * trigger when the user select the type of OSW and filter the tree table by
-	 * type
+	 * trigger when cick on the type open list selection
 	 * 
 	 **************************************************************************/
-	filterOSW : function(oEvt) {
+	openFilterType : function(oEvt) {
 
-		var sValue = oEvt.getSource().mProperties.selectedKey;
-		if (sValue != "ALL") {
+        var oView = airbus.mes.stationHandover.oView;
+        
+		if (airbus.mes.stationHandover.typeFilter === undefined) {
+            
+            airbus.mes.stationHandover.typeFilter  = sap.ui.xmlfragment("typeFilter", "airbus.mes.stationHandover.fragments.typeFilter", airbus.mes.stationHandover.oView.getController());
+            airbus.mes.stationHandover.typeFilter.addStyleClass("alignTextLeft");
+            oView.addDependent(airbus.mes.stationHandover.typeFilter);
+        
+			}
+		
+        airbus.mes.stationHandover.typeFilter.openBy(oView.byId("typeHandOver"));
 
-			airbus.mes.stationHandover.util.ModelManager.filter.type = new sap.ui.model.Filter("TYPE", "EQ", sValue);
-
-		} else {
-			// Reset filter
-			airbus.mes.stationHandover.util.ModelManager.filter.type = undefined;
-		}
-
+	},
+	/***************************************************************************
+	 * trigger when click on filter on origin station
+	 * 
+	 **************************************************************************/
+	openFilterStation : function(oEvt) {
+		
+		 var oView = airbus.mes.stationHandover.oView;
+	        
+			if (airbus.mes.stationHandover.stationFilter === undefined) {
+	            
+	            airbus.mes.stationHandover.stationFilter  = sap.ui.xmlfragment("stationFilter", "airbus.mes.stationHandover.fragments.stationFilter", airbus.mes.stationHandover.oView.getController());
+	            airbus.mes.stationHandover.stationFilter.addStyleClass("alignTextLeft");
+	            oView.addDependent(airbus.mes.stationHandover.stationFilter);
+	        
+				}
+			
+	        airbus.mes.stationHandover.stationFilter.openBy(oView.byId("originHandOver"));
+		
+	},
+	/***************************************************************************
+	 * trigger when the user Select the ph station and filter the tree table on
+	 * station
+	 * 
+	 **************************************************************************/
+	filterStation : function(oEvt) {
+		
+		var aPath = oEvt.getSource().getContent()[0].getSelectedContextPaths()
+		var oModel = airbus.mes.stationHandover.oView.getModel("oswModel");
+		
+		airbus.mes.stationHandover.util.ModelManager.filter.station = undefined;
+		airbus.mes.stationHandover.util.ModelManager.filter.aStation = [];
+		
+		aPath.forEach(function(el){
+			
+			var sKey = oModel.getProperty(el).ORIGIN_STATION;
+			airbus.mes.stationHandover.util.ModelManager.filter.aStation.push(sKey.toUpperCase());
+			
+		});
+		
+		airbus.mes.stationHandover.util.ModelManager.filter.station = new sap.ui.model.Filter({ 
+			path :  "ORIGIN_STATION",
+			test : function(oValue){
+				
+				if ( airbus.mes.stationHandover.util.ModelManager.filter.aStation.indexOf(oValue) != -1 ){
+					
+					return true;
+			} else {
+				
+				return false;
+			}
+		}});
+			
 		this.applyMyFilter();
+		
+	},
+	/***************************************************************************
+	 * Trigger when the use leave the typeSelection popOver it filter the osw
+	 * list on TYPE
+	 * 
+	 **************************************************************************/
+	filterType : function(oEvt) {
 
+		var aPath = oEvt.getSource().getContent()[0].getSelectedContextPaths()
+		var oModel = airbus.mes.stationHandover.oView.getModel("typeModel");
+		
+		airbus.mes.stationHandover.util.ModelManager.filter.type = undefined;
+		airbus.mes.stationHandover.util.ModelManager.filter.aType = [];
+		
+		aPath.forEach(function(el){
+			
+			var sKey = oModel.getProperty(el).key;
+			airbus.mes.stationHandover.util.ModelManager.filter.aType.push(sKey.toUpperCase());
+			
+		});
+		
+		airbus.mes.stationHandover.util.ModelManager.filter.type = new sap.ui.model.Filter({ 
+			path :  "TYPE",
+			test : function(oValue){
+				
+				if ( airbus.mes.stationHandover.util.ModelManager.filter.aType.indexOf(oValue) != -1 ){
+					
+					return true;
+			} else {
+				
+				return false;
+			}
+		}});
+		
+		
+		this.applyMyFilter();
+		
 	},
 	/***************************************************************************
 	 * trigger when the user check/unechek the NO time checkbox it filter the
@@ -190,28 +285,6 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 		} else {
 
 			airbus.mes.stationHandover.util.ModelManager.filter.inserted = new sap.ui.model.Filter("INSERTED", "EQ", "false");
-
-		}
-
-		this.applyMyFilter();
-
-	},
-	/***************************************************************************
-	 * trigger when the user Select the ph station and filter the tree table on
-	 * station
-	 * 
-	 **************************************************************************/
-	filterStation : function(oEvt) {
-
-		var sValue = oEvt.getSource().mProperties.selectedKey;
-		console.log(sValue);
-		if (sValue === "ALL") {
-
-			airbus.mes.stationHandover.util.ModelManager.filter.station = undefined;
-
-		} else {
-
-			airbus.mes.stationHandover.util.ModelManager.filter.station = new sap.ui.model.Filter("ORIGIN_STATION", "EQ", sValue);
 
 		}
 
@@ -288,7 +361,7 @@ sap.ui.controller("airbus.mes.stationHandover.controller.stationHandover", {
 
 			})
 		} else {
-			// store in array the WOID + OPERATION TO select 
+			// store in array the WOID + OPERATION TO select
 			var sID = oModel.WOID + "##||##" + oModel.REFERENCE
 
 			aValueSelected[oModel.WOID][sID].open = sValue;

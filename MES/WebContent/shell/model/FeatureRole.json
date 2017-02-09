@@ -1,3 +1,4 @@
+<<<<<<< Upstream, based on origin/MESv1.5
 {
 	"Roles": [
 		{
@@ -233,3 +234,83 @@
 
 	]
 }
+=======
+{ "Roles":
+    [
+        {
+            "Feature" : "homescreen",
+            "Description": "",
+            "Authenticate" : "false",
+            "Roles" : [ "SAP_XMII_Developer", "SAP_XMII_User", "Everyone",
+                        "!eval host('[^d].i.*airbus')" ]
+        }, {
+            "Feature" : "disruptionDisplayList",
+            "Description": "",
+            "Authenticate" : "false",
+            "Roles" : [ "SAP_XMII_Developer", "SAP_XMII_User", "Everyone",
+                        "!eval host('[^d].i.*airbus')" ]
+        }, {
+            "Feature" : "disruptionDetailedView",
+            "Description": "",
+            "Authenticate" : "false",
+            "Roles" : [ "SAP_XMII_Developer", "SAP_XMII_User", "Everyone",
+                        "!eval host('[^d].i.*airbus')" , "!eval host('localhost')||hasRole('Everyone')&&!queryParam('url_config','local')" ]
+        }, {
+            "Feature" : "disruptionEdit",
+            "Description": "",
+            "Authenticate" : "false",
+            "Roles" : [ "SAP_XMII_Developer", "SAP_XMII_User", "Everyone",
+                        "!eval host('[^d].i.*airbus')" ]
+        }, {
+            "Feature" : "disruptionEscalate",
+            "Description": "",
+            "Authenticate" : "false",
+            "Roles" : [ "SAP_XMII_Developer", "SAP_XMII_User", "Everyone",
+                        "!eval host('[^d].i.*airbus')" ]
+        }, {
+            "Feature" : "stationTrackerEnabled",
+            "Description": "",
+            "Authenticate" : "false",
+            "Roles" : [ "SAP_XMII_Developer", "SAP_XMII_User", "Everyone",
+                        "!eval host('[^d].i.*airbus')" ]
+        }, {
+            "Feature" : "displayOpeAttachments",
+            "Description": "",
+            "Authenticate" : "false",
+            "Roles" : [ "SAP_XMII_Developer", "SAP_XMII_User", "Everyone",
+                        "!eval host('[^d].i.*airbus')" ]
+        },
+        {
+            "Feature" : "HOMESCREEN",
+            "Description": "Click on screen to open",
+            "Authenticate" : "false",
+            "Roles" : [ "eval host('local|sopra|dmi')&&!feature('role')" ]
+        },{
+            "Feature" : "stationHandoverEnabled",
+            "Description": "",
+            "Authenticate" : "false",
+            "Roles" : [ "SAP_XMII_Developer", "SAP_XMII_User", "Everyone",
+                        "!eval host('[^d].i.*airbus')"  ]
+        },    {
+            "Feature" : "calendarEnabled",
+            "Description": "",
+            "Authenticate" : "false",
+            "Roles" : [ "SAP_XMII_Developer", "SAP_XMII_User", "Everyone",
+                        "!eval host('[^d].i.*airbus')" ]
+        }, {
+            "Feature" : "operationDetailsJigNTool",
+            "Description": "",
+            "Authenticate" : "false",
+            "Roles" : [ "SAP_XMII_Developer", "SAP_XMII_User", "Everyone",
+                        "eval host('[^d].i.*airbus')" ]
+        },
+        {
+            "Feature" : "topic_componentsOpeDetail",
+            "Description": "",
+            "Authenticate" : "false",
+            "Roles" : [ "SAP_XMII_Developer", "SAP_XMII_User", "Everyone",
+                       "!eval host('[^d].i.*airbus')" ]
+        }
+    ]
+}
+>>>>>>> 5559c4e [calendar] [sstationHANDOVER]

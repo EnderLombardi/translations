@@ -1,49 +1,23 @@
 <core:FragmentDefinition xmlns:l="sap.ui.layout"
-	xmlns:core="sap.ui.core"
-	xmlns:mvc="sap.ui.core.mvc"
-	xmlns="sap.m">
-	<Popover placement="Bottom" 
-	showHeader="false"
-	showArrow="false" 
-	contentWidth="auto" 
-	contentHeight="auto"
-	offsetY="5px"
-	offsetX="5px" 
-	class="MyproductionGroupPopover"
-	afterClose="onProdGroupSelFinish" >
-		
-		<!-- <List id="myList"
-			items="{ path : 'productionGroupModel>/Rowsets/Rowset/0/Row' }"
-			mode="MultiSelect"
-			includeItemInSelection="true"
-			showArrow="false"
-			>
-			<items>
-				<InputListItem key="{productionGroupModel>PROD_GROUP}" 
-				              label="{productionGroupModel>PROD_GROUP}" >
-				</InputListItem>
-			</items>
-		</List> -->
-				
+	xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m">
+	<Popover placement="Bottom" showHeader="false" showArrow="false"
+		contentWidth="auto" contentHeight="auto" offsetY="5px" offsetX="5px"
+		class="MyproductionGroupPopover" afterClose="onProdGroupSelFinish">
+
 		<List id="myList"
-		items="{ path : 'productionGroupModel>/Rowsets/Rowset/0/Row' }" 
-		mode="MultiSelect" 
-		includeItemInSelection="true" 
-		selectionChange="onSelectionChange">
-				<items>
-					<StandardListItem
-						class="MyproductionGroupPopoverList"
-						key="{productionGroupModel>PROD_GROUP}" 
-				        title="{productionGroupModel>PROD_GROUP}"
-						iconDensityAware="false"
-						iconInset="false" />
-				</items>
-				
-				<infoToolbar>
-					<Toolbar visible="false" id="idInfoToolbar" >
-						<Label id="idFilterLabel" />
-					</Toolbar>
-				</infoToolbar>
+			items="{ path : 'productionGroupModel>/Rowsets/Rowset/0/Row' }" mode="MultiSelect"
+			includeItemInSelection="true" selectionChange="onSelectionChange">
+			<items>
+				<StandardListItem class="MyproductionGroupPopoverList"
+					key="{productionGroupModel>PROD_GROUP}" title="{productionGroupModel>PROD_GROUP}"
+					iconDensityAware="false" iconInset="false" />
+			</items>
+
+			<infoToolbar>
+				<Toolbar visible="false" id="idInfoToolbar">
+					<Label id="idFilterLabel" />
+				</Toolbar>
+			</infoToolbar>
 		</List>
 	</Popover>
 </core:FragmentDefinition>

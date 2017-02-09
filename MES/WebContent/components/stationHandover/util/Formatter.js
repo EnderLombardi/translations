@@ -68,20 +68,20 @@ airbus.mes.stationHandover.util.Formatter = {
 
 	},
 
-	setColorLine : function(oEvt) {
-
-		var oRow = "#" + this.getParent().sId;
-
-		if (oEvt != null) {
-			if (oEvt.TYPE === "0") {
-
-				$(oRow).removeClass("blue");
-				$(oRow).addClass("blue");
-
-			}
-		} else {
-
-			$(oRow).removeClass("blue");
-		}
-	}
+//	setColorLine : function(oEvt) {
+//
+//		var oRow = "#" + this.getParent().sId;
+//
+//		if (oEvt != null) {
+//			if (oEvt.TYPE === "0") {
+//
+//				$(oRow).removeClass("blue");
+//				$(oRow).addClass("blue");
+//
+//			}
+//		} else {
+//
+//			$(oRow).removeClass("blue");
+//		} 							visible="{path:'oswModel>' , formatter:'airbus.mes.stationHandover.util.Formatter.setColorLine'}"
+//	}
 };

@@ -138,6 +138,21 @@
    	height: 3rem;
    	background-color: $duck-egg-blue !important;
    }
+    .sapMBtnDefault {
+        background: transparent;
+    border: none;
+    color: #0D5D76;
+        
+    }
+    
+      
+    #stationHandoverView--typeHandOver{
+      border-right: 1px solid #8db9ca;
+     }
+    #stationHandoverView--originHandOver{
+      border-right: 1px solid #8db9ca;
+     }
+    
 }
 
 #stationHandoverView--insertHandOver{

@@ -121,7 +121,15 @@ airbus.mes.calendar.util.ModelManager = {
 			success : function(data) {
 
 				try {
-
+					// In reste service if there is only one response data.resourcePoolList is type of object expected array 
+					if ( !Array.isArray(data.resourcePoolList) ) {
+						
+						var oData = data.resourcePoolList;
+						
+						data.resourcePoolList = [oData];
+						
+					}
+					
 					data.resourcePoolList.unshift({
 						"id" : "ALL",
 						"description" : "ALL",

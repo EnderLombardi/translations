@@ -13,6 +13,8 @@ airbus.mes.stationHandover.util.ModelManager = {
     	   "noTime" : new sap.ui.model.Filter("NO_TIME", "EQ", "false"),
     	   "inserted" : new sap.ui.model.Filter("INSERTED", "EQ", "false"),
     	   "station" : undefined,
+    	   "aType" : [],
+    	   "aStation" : [],
        },
        
        init : function(core) {

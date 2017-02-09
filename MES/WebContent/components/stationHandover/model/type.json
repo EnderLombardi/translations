@@ -1,9 +1,5 @@
 [
-			{
-      "type": "ALL",
-      "key": "ALL"
-   },
-   
+		
    {
       "type": "Local",
       "key": "0"

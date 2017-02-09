@@ -1,0 +1,17 @@
+<core:FragmentDefinition xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m">
+	<Popover placement="Bottom" showHeader="false" showArrow="false"
+		contentWidth="auto" contentHeight="auto" offsetY="5px" offsetX="5px"
+		class="MyproductionGroupPopover" afterClose="filterType">
+
+		<List id="typeFilter" items="{ path : 'typeModel>/' }" mode="MultiSelect"
+			includeItemInSelection="true" selectionChange="onSelectionChange">
+			<items>
+				<StandardListItem class="stationFilter" key="{typeModel>key}"
+					title="{path:'typeModel>type' , formatter:'airbus.mes.stationHandover.util.Formatter.translate'}"
+					iconDensityAware="false" iconInset="false" />
+			</items>
+
+		</List>
+	</Popover>
+</core:FragmentDefinition>

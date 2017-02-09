@@ -4,7 +4,7 @@
       			"INSERTED" : "false",
       			"NO_TIME" : "false",
       			"WOID" : "123415465",	
-        	"ORIGIN_STATION" : "ALL",
+        	"ORIGIN_STATION" : "ip1",
          "BLOCKED": "0",
          "TYPE": "0",
          "REFERENCE": "123415465",
@@ -32,7 +32,7 @@
          "MATERIAL_DESCRIPTION": "MATERIAL_DESCRIPTION*",
          "row": [
             {	
-               "ORIGIN_STATION" : "ip",
+               "ORIGIN_STATION" : "ip1",
             		 "INSERTED" : "false",
       									"NO_TIME" : "false",
             			"WOID" : "123415465",	
@@ -80,7 +80,7 @@
          "MATERIAL_DESCRIPTION": "MATERIAL_DESCRIPTION*",
          "row": [
             {	 
-            "ORIGIN_STATION" : "ip3",
+            "ORIGIN_STATION" : "ip2",
             "INSERTED" : "false",
       							"NO_TIME" : "false",
             			"WOID" : "123415464",	
@@ -128,7 +128,7 @@
          "MATERIAL_DESCRIPTION": "MATERIAL_DESCRIPTION*",
          "row": [
             {	
-            "ORIGIN_STATION" : "ip5",
+            "ORIGIN_STATION" : "ip4",
              "INSERTED" : "true",
       			"NO_TIME" : "false",
             			"WOID" : "1234154610",	

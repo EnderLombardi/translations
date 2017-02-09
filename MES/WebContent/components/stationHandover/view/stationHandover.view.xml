@@ -8,7 +8,7 @@
 
 
 
-		<TreeTable id="TreeTableBasic"
+			<TreeTable id="TreeTableBasic"
 				rows="{path:'oswModel>/', parameters: {arrayNames:['row']}}"
 				selectionMode="None" enableSelectAll="true" visibleRowCountMode="Auto"
 				enableBusyIndicator="true" enableCellFilter="true">
@@ -16,7 +16,8 @@
 
 					<m:Toolbar id="kpiHeaderToolbar"
 						class="classKpiheaderToolbar pageHeader kpiPageHeader contentNoPad">
-						<m:Label text="{stationHandoverI18n>stationHandover}" id="headerText" class="headerText sapUiSmallMarginBeginEnd" />
+						<m:Label text="{stationHandoverI18n>stationHandover}" id="headerText"
+							class="headerText sapUiSmallMarginBeginEnd" />
 
 						<m:Select id="selectStationHandover" class="comboStationHandover"
 							change="changeShift"
@@ -43,16 +44,8 @@
 							<core:Item key="{groupModel>key}"
 								text="{path:'groupModel>type' , formatter:'airbus.mes.stationHandover.util.Formatter.translate'}" />
 						</m:Select>
-						<m:Select id="typeHandOver" change="filterOSW"
-							items="{ path : 'typeModel>/' }">
-							<core:Item key="{typeModel>key}"
-								text="{path:'typeModel>type' , formatter:'airbus.mes.stationHandover.util.Formatter.translate'}" />
-						</m:Select>
-						<m:Select id="originHandOver" change="filterStation"
-							items="{ path : 'oswModel>/row/' }">
-							<core:Item key="{oswModel>ORIGIN_STATION}" text="{oswModel>ORIGIN_STATION}" />
-						</m:Select>
-
+						<m:Button id="typeHandOver" press="openFilterType" text="{stationHandoverI18n>typeOfWo}"></m:Button>
+						<m:Button id="originHandOver" press="openFilterStation" text="{stationHandoverI18n>typeOfWo}"></m:Button>
 						<m:ToolbarSpacer />
 
 						<m:CheckBox text="{stationHandoverI18n>ShowOpwithNoTime}"
@@ -62,7 +55,8 @@
 
 						<m:ToolbarSpacer />
 
-						<m:Button icon="sap-icon://add-activity" id="insertHandOver" text="{stationHandoverI18n>insert}" />
+						<m:Button icon="sap-icon://add-activity" id="insertHandOver"
+							text="{stationHandoverI18n>insert}" />
 
 					</m:OverflowToolbar>
 
@@ -72,15 +66,12 @@
 						showSortMenuEntry="true">
 						<m:CheckBox class="DisOpAttLabelHandOver" select="selectAll" />
 						<template>
-							<m:CheckBox
-								select="onSelectRow"
+							<m:CheckBox select="onSelectRow"
 								selected="{path:'oswModel>INSERTED' , formatter:'airbus.mes.stationHandover.util.Formatter.isInsert'}"
-								enabled="{path:'oswModel>INSERTED' , formatter:'airbus.mes.stationHandover.util.Formatter.isInsertEnabled'}"
-								visible="{path:'oswModel>' , formatter:'airbus.mes.stationHandover.util.Formatter.setColorLine'}"
-								 />
+								enabled="{path:'oswModel>INSERTED' , formatter:'airbus.mes.stationHandover.util.Formatter.isInsertEnabled'}" />
 						</template>
 					</Column>
-					<Column autoResizable="true">
+					<Column autoResizable="true" width="5rem">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>Blocked}" />
 						<template>
 							<custom:customIcon color="{oswModel>BLOCKED}" />
@@ -92,7 +83,7 @@
 							<m:Label text="{oswModel>TYPE}" />
 						</template>
 					</Column>
-					<Column autoResizable="true" 	sortProperty="REFERENCE" filterProperty="REFERENCE">
+					<Column autoResizable="true">
 						<m:Label class="DisOpAttLabelHandOver" text="{stationHandoverI18n>Reference}" />
 						<template>
 							<m:Label text="{oswModel>REFERENCE}" />

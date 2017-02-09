@@ -284,62 +284,20 @@ sap.ui.controller("airbus.mes.stationtracker.stationtracker", {
      *
      ****************************************************************************/
     onOSWPress: function () {
-
-        if (airbus.mes.stationtracker.ImportOswUnplannedPopover === undefined) {
-            airbus.mes.stationtracker.ImportOswUnplannedPopover = sap.ui.xmlfragment("ImportOswUnplannedPopover", "airbus.mes.stationtracker.ImportOswUnplannedPopover", airbus.mes.stationtracker.oView.getController());
-            airbus.mes.stationtracker.ImportOswUnplannedPopover.addStyleClass("alignTextLeft");
-            airbus.mes.stationtracker.ImportOswUnplannedPopover.setModel(sap.ui.getCore().getModel("groupModel"), "groupModel");
-            airbus.mes.stationtracker.oView.addDependent(airbus.mes.stationtracker.ImportOswUnplannedPopover);
-            var oModel = sap.ui.getCore().getModel("OSWModel");
-
-            //Changed the data of the worklist by OSW model
-            airbus.mes.stationtracker.ImportOswUnplannedPopover.setModel(new sap.ui.model.json.JSONModel(oModel.oData.Rowsets.Rowset[0].Row), "WorkListModel");
-            airbus.mes.stationtracker.ImportOswUnplannedPopover.setBusyIndicatorDelay(0);
-        }
-
-        sap.ui.getCore().byId("ImportOswUnplannedPopover--myList").bindAggregation('items', {
-            path: "WorkListModel>/",
-            template: sap.ui.getCore().byId("ImportOswUnplannedPopover--sorterList"),
-            sorter: []
-        });
-
-        airbus.mes.stationtracker.CheckQa = "OSW";
-        sap.ui.getCore().byId("ImportOswUnplannedPopover--filterPhStation").setVisible(true);
-        sap.ui.getCore().byId("ImportOswUnplannedPopover--LabelTitle").setText(airbus.mes.stationtracker.oView.getModel("StationTrackerI18n").getProperty("WorklistHeaderOSW"));
-        var oModel = sap.ui.getCore().getModel("OSWModel");
-
-        //Changed the data of the worklist by OSW model
-        airbus.mes.stationtracker.ImportOswUnplannedPopover.setModel(new sap.ui.model.json.JSONModel(oModel.oData.Rowsets.Rowset[0].Row), "WorkListModel");
-        airbus.mes.stationtracker.ImportOswUnplannedPopover.getModel("WorkListModel").refresh(true);
-
-        var temp = [];
-        var binding = sap.ui.getCore().byId("ImportOswUnplannedPopover--filterPhStation").getBinding("items");
-        // Erase duplicate key in combobox selection
-        var Filter = new sap.ui.model.Filter({
-            path: "WORK_CENTER",
-            test: function (value) {
-                if (temp.indexOf(value) == -1) {
-                    temp.push(value);
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-        });
-
-        binding.filter(Filter);
-
-        airbus.mes.stationtracker.ModelManager.onPhStationLoad();
-        //Regroup on Compentecy by default
-        airbus.mes.stationtracker.oView.getController().changeGroupUnplannedOsw("", "COMPETENCY");
-        //reset name pop up
-        sap.ui.getCore().byId("ImportOswUnplannedPopover--filterStatus").setSelectedKey("StatusAll");
-        sap.ui.getCore().byId("ImportOswUnplannedPopover--selectGroupingOSW").setSelectedKey(0);
-        // delay because addDependent will do a async rerendering and the popover will immediately close without it
-        jQuery.sap.delayedCall(0, this, function () {
-            airbus.mes.stationtracker.ImportOswUnplannedPopover.open();
-
-        });
+    	
+    	// Create component and go on stationHandover
+        airbus.mes.shell.util.navFunctions.stationHandover();
+       
+        //Hide column not used in that mode SD-PPC-ST-1840
+        airbus.mes.stationHandover.oView.byId("TreeTableBasic").getColumns()[5].setVisible(false);
+        airbus.mes.stationHandover.oView.byId("TreeTableBasic").getColumns()[6].setVisible(false);
+        
+        
+//        // delay because addDependent will do a async rerendering and the popover will immediately close without it
+//        jQuery.sap.delayedCall(0, this, function () {
+//        	airbus.mes.stationtracker.ImportOswUnplannedPopover;
+//
+//        });
 
     },
 
